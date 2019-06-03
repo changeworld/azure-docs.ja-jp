@@ -287,6 +287,8 @@
               href: application-proxy-connector-installation-problem.md
             - name: サインインの問題
               href: application-sign-in-problem-on-premises-application-proxy.md
+            - name: アプリケーション プロキシでの CORS の問題
+              href: application-proxy-understand-cors-issues.md
 - name: リファレンス
   items:
     - name: アプリケーション プロキシのバージョン履歴

@@ -247,6 +247,10 @@
       href: ../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
     - name: ネットワーク アクセス
       items:
+        - name: HDInsight 仮想ネットワーク アーキテクチャ
+          href: ../hdinsight-virtual-network-architecture.md
+        - name: ファイアウォールを使用したアウトバウンド トラフィックの制限
+          href: ../hdinsight-restrict-outbound-traffic.md
         - name: Azure VNet の HDInsight
           href: ../hdinsight-extend-hadoop-virtual-network.md
         - name: HDInsight とオンプレミス ネットワークの接続

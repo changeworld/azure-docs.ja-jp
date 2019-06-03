@@ -1,25 +1,18 @@
 ---
-title: Azure Marketplace で既存の VM プランを更新する |Microsoft Docs
+title: Azure Marketplace で既存の VM オファーを更新する
 description: Azure Marketplace で既存の VM プランを更新する方法について説明します。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 08/27/2018
 ms.author: Ankit.Sud
-ms.openlocfilehash: 254215389d129874f7ac3fc855b26819d41a095c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 4a75d706d55512201786b2b74376047ff75380a7
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57852476"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64938129"
 ---
 # <a name="update-an-existing-vm-offer-on-azure-marketplace"></a>Azure Marketplace で既存の VM プランを更新する
 
@@ -63,7 +56,7 @@ VM イメージがセキュリティ パッチ、追加機能などによって�
 
 3.  **[SKU]** タブで、更新する VM イメージに関連付けられている SKU をクリックします。
 
-4.  **[Disk version]\(ディスク バージョン\)** で、**[+New Disk Version]\(+新しいディスク バージョン\)** をクリックして新しい VM イメージを追加します。
+4.  **[Disk version]\(ディスク バージョン\)** で、 **[+New Disk Version]\(+新しいディスク バージョン\)** をクリックして新しい VM イメージを追加します。
 
 5.  新しい VM イメージの**ディスク バージョン**を指定します。 ディスク バージョンは、[セマンティック バージョン](https://semver.org/)形式に従う必要があります。 バージョンの形式は X.Y.Z で、X、Y、Z は整数です。 提供する新しいバージョンが以前のすべてのバージョンよりも大きいことを確認します。そうしないと、再発行後、新しいバージョンはポータルまたは Azure Marketplace に表示されません。
 
@@ -103,7 +96,7 @@ SKU が新しいリージョンで利用できるようになると、その特�
 
 2.  **[すべてのプラン]** から、更新するプランを見つけます。
 
-3.  **[SKU]** タブで、**[Add new SKU] (新しい SKU の追加)** をクリックし、ポップアップに **[SKU ID]** を指定します。
+3.  **[SKU]** タブで、 **[Add new SKU] (新しい SKU の追加)** をクリックし、ポップアップに **[SKU ID]** を指定します。
 
 4.  記事「[Azure Marketplace への仮想マシンの発行](./cpp-publish-offer.md)」で説明されているように、VM を再発行します。
 
@@ -149,7 +142,7 @@ SKU が新しいリージョンで利用できるようになると、その特�
 <!-- TD: This has been implemented, need to change the SKU Tab topic to reflect and move this section there. -->
 ### <a name="simplified-currency-pricing"></a>簡略化された通貨による価格
 
-2018 年 9 月 1 日以降、**[Simplified Currency Pricing] (簡略化された通貨による価格)** という新しいセクションがポータルに追加されます。 Microsoft では、世界中でより予測可能な価格とお客様からの回収を実現することにより、Azure Marketplace でのビジネスの合理化を図っています。 この合理化には、お客様に請求する通貨の数を減らすことが含まれます。
+2018 年 9 月 1 日以降、 **[Simplified Currency Pricing] (簡略化された通貨による価格)** という新しいセクションがポータルに追加されます。 Microsoft では、世界中でより予測可能な価格とお客様からの回収を実現することにより、Azure Marketplace でのビジネスの合理化を図っています。 この合理化には、お客様に請求する通貨の数を減らすことが含まれます。
 
 この新しいセクションには、これらの新しい通貨で価格が表示されます。 これらの新しい決済通貨にすべてのお客様を移行すると、元の価格セクションは廃止され、[Simplified Currency Pricing] (簡略化された通貨による価格) セクションのみが残ります。
 
@@ -163,7 +156,7 @@ SKU が新しいリージョンで利用できるようになると、その特�
 
 ## <a name="compare-feature"></a>機能の比較
 
-既に発行されているプランを変更する場合、**[比較]** 機能を活用して加えられた変更を監査することができます。 この機能を使用するには:
+既に発行されているプランを変更する場合、 **[比較]** 機能を活用して加えられた変更を監査することができます。 この機能を使用するには:
 
 1.  編集プロセス中の任意のタイミングで、プランの **[比較]** をクリックします。
 

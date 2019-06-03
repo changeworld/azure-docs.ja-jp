@@ -3,8 +3,8 @@ title: Azure トラフィック分析 | Microsoft Docs
 description: トラフィック分析を使用して、Azure ネットワーク セキュリティ グループ フロー ログを分析する方法について説明します。
 services: network-watcher
 documentationcenter: na
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 ms.service: network-watcher
 ms.devlang: na
@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
-ms.author: yagup;jdial
-ms.openlocfilehash: 2f283421a851914822f5b0c9d05ed6bc929d28c4
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.author: yagup;kumud
+ms.openlocfilehash: a4ae997398c85dc99af8711f1c6ce4e743592d73
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60150015"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64939888"
 ---
 # <a name="traffic-analytics"></a>Traffic Analytics
 
@@ -42,7 +42,7 @@ Azure 仮想ネットワークには、個々のネットワーク インター�
 
 ## <a name="key-components"></a>主なコンポーネント
 
-- **ネットワーク セキュリティ グループ (NSG)**:Azure Virtual Network に接続されたリソースへのネットワーク トラフィックを許可または拒否する一連のセキュリティ規則が含まれています。 NSG はサブネットに関連付けることができるほか、クラシック モデルについては個々の VM に、Resource Manager モデルについては VM にアタッチされた個々のネットワーク インターフェイス (NIC) に関連付けることができます。 詳細については、[ネットワーク セキュリティ グループの概要](../virtual-network/security-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)に関する記事をご覧ください。
+- **ネットワーク セキュリティ グループ (NSG)** :Azure Virtual Network に接続されたリソースへのネットワーク トラフィックを許可または拒否する一連のセキュリティ規則が含まれています。 NSG はサブネットに関連付けることができるほか、クラシック モデルについては個々の VM に、Resource Manager モデルについては VM にアタッチされた個々のネットワーク インターフェイス (NIC) に関連付けることができます。 詳細については、[ネットワーク セキュリティ グループの概要](../virtual-network/security-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)に関する記事をご覧ください。
 - **ネットワーク セキュリティ グループ (NSG) フロー ログ**:ネットワーク セキュリティ グループを使用して、イングレス/エグレス IP トラフィックの情報を確認できます。 NSG フロー ログは JSON 形式で記述され、規則ごとの送信フローと受信フロー、フローが適用される NIC、フローに関する 5 組の情報 (送信元/宛先 IP アドレス、送信元/宛先ポート、プロトコル)、トラフィックが許可されているか拒否されているかが示されます。 NSG フロー ログの詳細については、[NSG フロー ログ](network-watcher-nsg-flow-logging-overview.md)に関する記事をご覧ください。
 - **Log Analytics**:監視データを収集し、そのデータを中央リポジトリに格納する Azure サービス。 このデータには、Azure API によって提供されるイベント、パフォーマンス データ、またはカスタム データを含めることができます。 一度収集されたデータは、アラート、分析、エクスポートに使用できます。 Network Performance Monitor やトラフィック分析などの監視アプリケーションは、Azure Monitor ログを基盤として構築されています。 詳細については、[Azure Monitor ログ](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)に関するページを参照してください。
 - **Log Analytics ワークスペース**:Azure アカウントに関するデータが格納される、Azure Monitor ログのインスタンス。 Log Analytics ワークスペースの詳細については、[Log Analytics ワークスペースの作成](../azure-monitor/learn/quick-create-workspace.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)に関するページを参照してください。
@@ -135,7 +135,7 @@ Log Analytics ワークスペースは、次のリージョンに存在する必
 
 NSG フロー ログを有効にする前に、フローをログに記録する、対象のネットワーク セキュリティ グループを選択する必要があります。 ネットワーク セキュリティ グループがない場合、作成方法については、[ネットワーク セキュリティ グループの作成](../virtual-network/manage-network-security-group.md#create-a-network-security-group)に関する記事をご覧ください。
 
-Azure Portal の左側にある **[監視]** を選択し、**[Network Watcher]**、**[NSG フロー ログ]** の順に選択します。 次の図に示すように、NSG フロー ログを有効にするネットワーク セキュリティ グループを選択します。
+Azure Portal の左側にある **[監視]** を選択し、 **[Network Watcher]** 、 **[NSG フロー ログ]** の順に選択します。 次の図に示すように、NSG フロー ログを有効にするネットワーク セキュリティ グループを選択します。
 
 ![NSG フロー ログを有効にする必要がある NSG の選択](./media/traffic-analytics/selection-of-nsgs-that-require-enablement-of-nsg-flow-logging.png)
 
@@ -164,25 +164,25 @@ New-AzStorageAccount `
 
 図に示すように、次のオプションを選択します。
 
-1. *[状態]* で、**[オン]** を選択します。
-2. **[フロー ログ バージョン]** で、*[バージョン 2]* を選択します。 バージョン 2 には、フローセッションの統計 (バイトおよびパケット) が含まれます。
+1. *[状態]* で、 **[オン]** を選択します。
+2. **[フロー ログ バージョン]** で、 *[バージョン 2]* を選択します。 バージョン 2 には、フローセッションの統計 (バイトおよびパケット) が含まれます。
 3. フロー ログを保存する既存のストレージ アカウントを選択します。 データを無期限に保存する場合は、値を *0* に設定します。 ストレージ アカウントに対して Azure Storage の料金が発生します。
 4. **[リテンション期間]** を、データを保存する日数に設定します。
-5. *[Traffic Analytics Status]\(Traffic Analytics の状態\)* で、**[オン]** を選択します。
-6. 既存の Log Analytics (OMS) ワークスペースを選択するか、**[新しいワークスペースの作成]** を選択して新規作成します。 Log Analytics ワークスペースは、分析の生成に使用される集計済みのインデックス付きデータを格納するために、Traffic Analytics で使用されます。 既存のワークスペースを選択する場合は、[サポートされているリージョン](#supported-regions)のいずれかに存在し、新しいクエリ言語にアップグレードされている必要があります。 既存のワークスペースをアップグレードするのが望ましくない場合や、サポートされているリージョンにワークスペースがない場合は、新しいワークスペースを作成します。 クエリ言語の詳細については、「[新しいログ検索への Azure Log Analytics のアップグレード](../log-analytics/log-analytics-log-search-upgrade.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)」をご覧ください。
+5. *[Traffic Analytics Status]\(Traffic Analytics の状態\)* で、 **[オン]** を選択します。
+6. 既存の Log Analytics (OMS) ワークスペースを選択するか、 **[新しいワークスペースの作成]** を選択して新規作成します。 Log Analytics ワークスペースは、分析の生成に使用される集計済みのインデックス付きデータを格納するために、Traffic Analytics で使用されます。 既存のワークスペースを選択する場合は、[サポートされているリージョン](#supported-regions)のいずれかに存在し、新しいクエリ言語にアップグレードされている必要があります。 既存のワークスペースをアップグレードするのが望ましくない場合や、サポートされているリージョンにワークスペースがない場合は、新しいワークスペースを作成します。 クエリ言語の詳細については、「[新しいログ検索への Azure Log Analytics のアップグレード](../log-analytics/log-analytics-log-search-upgrade.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)」をご覧ください。
 
     トラフィック分析ソリューションをホストするログ分析ワークスペースと NSG は、同じリージョンに存在する必要はありません。 たとえば、西ヨーロッパ リージョンのワークスペースにトラフィック分析があり、米国東部と米国西部に NSG があっても構いません。 同じワークスペースに複数の NSG を構成できます。
 7. **[保存]** を選択します。
 
     ![ストレージ アカウント、Log Analytics ワークスペース、Traffic Analytics の有効化の選択](./media/traffic-analytics/selection-of-storage-account-log-analytics-workspace-and-traffic-analytics-enablement-nsg-flowlogs-v2.png)
 
-トラフィック分析を有効にするその他の NSG に対して前の手順を繰り返します。 フロー ログのデータはワークスペースに送信されるので、ワークスペースが存在するリージョンでのデータの保存が、お住まいの国の法律や規制で許可されていることを確認してください。
+トラフィック分析を有効にするその他の NSG に対して前の手順を繰り返します。 フロー ログのデータはワークスペースに送信されるので、ワークスペースが存在するリージョンでのデータの保存が、お住まいの国/地域の法律や規制で許可されていることを確認してください。
 
 また、Azure PowerShell で [Set-AzNetworkWatcherConfigFlowLog](/powershell/module/az.network/set-aznetworkwatcherconfigflowlog) PowerShell コマンドレットを使用して、トラフィック分析を構成できます。 `Get-Module -ListAvailable Az` を実行して、インストールされているバージョンを見つけます。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-Az-ps)に関するページを参照してください。
 
 ## <a name="view-traffic-analytics"></a>トラフィック分析の表示
 
-ポータルの左側にある **[すべてのサービス]** を選択し、**[フィルター]** ボックスに「*監視*」と入力します。 検索結果に **[監視]** が表示されたら、それを選択します。 トラフィック分析とその機能の探索を開始するには、**[Network Watcher]**、**[トラフィック分析 ]** の順に選択します。
+ポータルの左側にある **[すべてのサービス]** を選択し、 **[フィルター]** ボックスに「*監視*」と入力します。 検索結果に **[監視]** が表示されたら、それを選択します。 トラフィック分析とその機能の探索を開始するには、 **[Network Watcher]** 、 **[トラフィック分析 ]** の順に選択します。
 
 ![Traffic Analytics ダッシュボードへのアクセス](./media/traffic-analytics/accessing-the-traffic-analytics-dashboard.png)
 
@@ -206,7 +206,7 @@ Traffic Analytics が完全に構成された後に得られる洞察の一部�
 - 許可/ブロックされた悪意のあるトラフィックの統計
   - ホストは悪意のあるトラフィックをなぜ受信しているのですか、また、悪意のあるソースからのフローがなぜ許可されているのですか。 この動作には、より詳細な調査を行い、構成を適切に最適化することが必要になります。
 
-    次の図に示すように、**[ホスト]** にある **[See all]\(すべて表示\)** を選択します。
+    次の図に示すように、 **[ホスト]** にある **[See all]\(すべて表示\)** を選択します。
 
     ![トラフィックが多いホストの詳細を示すダッシュボード](media/traffic-analytics/dashboard-showcasing-host-with-most-traffic-details.png)
 
@@ -222,7 +222,7 @@ Traffic Analytics が完全に構成された後に得られる洞察の一部�
     - ホストが大量のトラフィックを許可またはブロックしている理由。
 - 会話が多いホスト ペアの間で最も頻繁に使用されるアプリケーション プロトコル:
     - これらのアプリケーションは、このネットワークで許可されていますか。
-    - アプリケーションは正しく構成されていますか。 それらは適切なプロトコルを通信に使用していますか。 次の図に示すように、**[頻度が最大の会話]** の **[See all]\(すべて表示\)** を選択します。
+    - アプリケーションは正しく構成されていますか。 それらは適切なプロトコルを通信に使用していますか。 次の図に示すように、 **[頻度が最大の会話]** の **[See all]\(すべて表示\)** を選択します。
 
         ![頻度が最大の会話を示すダッシュボード](./media/traffic-analytics/dashboard-showcasing-most-frequent-conversation.png)
 
@@ -234,7 +234,7 @@ Traffic Analytics が完全に構成された後に得られる洞察の一部�
 
 - 環境で最も使用されているのはどのアプリケーション プロトコルか。また、そのアプリケーション プロトコルを最も使用しているのは、会話しているどのホスト ペアか。
     - これらのアプリケーションは、このネットワークで許可されていますか。
-    - アプリケーションは正しく構成されていますか。 それらは適切なプロトコルを通信に使用していますか。 想定された動作は、80 や 443 などの一般的なポートです。 標準の通信で通常とは異なるポートが表示された場合、構成を変更する必要があります。 次の図に示すように、**[アプリケーション　ポート]** の **[See all]\(すべて表示\)** を選択します。
+    - アプリケーションは正しく構成されていますか。 それらは適切なプロトコルを通信に使用していますか。 想定された動作は、80 や 443 などの一般的なポートです。 標準の通信で通常とは異なるポートが表示された場合、構成を変更する必要があります。 次の図に示すように、 **[アプリケーション　ポート]** の **[See all]\(すべて表示\)** を選択します。
 
         ![上位のアプリケーション プロトコルを示すダッシュ ボード](./media/traffic-analytics/dashboard-showcasing-top-application-protocols.png)
 
@@ -250,7 +250,7 @@ Traffic Analytics が完全に構成された後に得られる洞察の一部�
     - 各 VPN SKU では一定量の帯域幅を許可します。 VPN ゲートウェイは十分に活用されていますか。
     - ゲートウェイは容量に達しつつありますか。 1 つ上位の SKU にアップグレードする必要はありますか。
 - 会話が多いホストはどれか。それらのホストが使用しているポートと VPN ゲートウェイはどれか。
-    - これは通常のパターンですか。 次の図に示すように、**[VPN ゲートウェイ]** にある **[See all]\(すべて表示\)** を選択します。
+    - これは通常のパターンですか。 次の図に示すように、 **[VPN ゲートウェイ]** にある **[See all]\(すべて表示\)** を選択します。
 
         ![上位のアクティブ VPN 接続を示すダッシュボード](./media/traffic-analytics/dashboard-showcasing-top-active-vpn-connections.png)
 
@@ -266,17 +266,17 @@ Traffic Analytics が完全に構成された後に得られる洞察の一部�
   - データ センターの負荷の増加が見られる場合は、効率的なトラフィック分布を計画できます。
   - 承認されていないネットワークがデータ センターで会話している場合は、NSG ルールを修正してそれらをブロックします。
 
-    次の図に示すように、**[Your environment]\(使用している環境\)** の **[マップの表示]** を選択します。
+    次の図に示すように、 **[Your environment]\(使用している環境\)** の **[マップの表示]** を選択します。
 
     ![トラフィック分布を示すダッシュボード](./media/traffic-analytics/dashboard-showcasing-traffic-distribution.png)
 
-- geo マップの上部には、データ センター (デプロイ済み/デプロイなし/アクティブ/非アクティブ/Traffic Analytics 有効/Traffic Analytics 無効) や、アクティブなデプロイへの問題のないトラフィックまたは悪意のあるトラフィックに関与している国などのパラメーターを選択できるリボンが表示されます。
+- geo マップの上部には、データ センター (デプロイ済み/デプロイなし/アクティブ/非アクティブ/Traffic Analytics 有効/Traffic Analytics 無効) や、アクティブなデプロイへの問題のないトラフィックまたは悪意のあるトラフィックに関与している国/リージョンなどのパラメーターを選択できるリボンが表示されます。
 
     ![アクティブなデプロイを示す geo マップ ビュー](./media/traffic-analytics/geo-map-view-showcasing-active-deployment.png)
 
-- geo マップには、通信している国や大陸からデータ センターへのトラフィック分布が、青色 (問題のないトラフィック) と赤色 (悪意のあるトラフィック) の線で表示されます。
+- geo マップには、通信している国/リージョンや大陸からデータ センターへのトラフィック分布が、青色 (問題のないトラフィック) と赤色 (悪意のあるトラフィック) の線で表示されます。
 
-    ![国や大陸へのトラフィック分布を示す geo マップ ビュー](./media/traffic-analytics/geo-map-view-showcasing-traffic-distribution-to-countries-and-continents.png)
+    ![国/リージョンや大陸へのトラフィック分布を示す geo マップ ビュー](./media/traffic-analytics/geo-map-view-showcasing-traffic-distribution-to-countries-and-continents.png)
 
     ![ログ検索におけるトラフィック分布のフローの詳細](./media/traffic-analytics/flow-details-for-traffic-distribution-in-log-search.png)
 
@@ -288,7 +288,7 @@ Traffic Analytics が完全に構成された後に得られる洞察の一部�
   - どの仮想ネットワークがどの仮想ネットワークと会話しているかを把握します。 会話が想定外の場合は修正できます。
   - 承認されていないネットワークが仮想ネットワークと会話している場合は、NSG ルールを修正して承認されていないネットワークをブロックできます。
  
-    次の図に示すように、**[Your environment]\(使用している環境\)** の **[View VNets]\(VNets の表示\)** を選択します。
+    次の図に示すように、 **[Your environment]\(使用している環境\)** の **[View VNets]\(VNets の表示\)** を選択します。
 
     ![仮想ネットワークの分布を示すダッシュボード](./media/traffic-analytics/dashboard-showcasing-virtual-network-distribution.png)
 

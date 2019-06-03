@@ -10,12 +10,12 @@ ms.subservice: bing-visual-search
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: scottwhi
-ms.openlocfilehash: 511a95eaea65c1a0e67973ef56942bc05bb43f81
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 1639b8066f3c9943bc42f5151fcb456585441baf
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60002789"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64866246"
 ---
 # <a name="language-and-region-support-for-the-bing-visual-search-api"></a>Bing Visual Search API の言語と地域のサポート
 
@@ -34,7 +34,7 @@ Bing Visual Search API では 30 を超える国/地域がサポートされ、�
 > - レシピ、ショッピング、画像を含むページなどの分析情報が使用できるのは en-US 市場のみです。
 
 
-## <a name="countries"></a>国
+## <a name="countriesregions"></a>国/地域
 
 |国/リージョン|コード|
 |-------|----|

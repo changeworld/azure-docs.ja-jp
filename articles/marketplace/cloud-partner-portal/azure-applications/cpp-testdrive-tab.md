@@ -1,25 +1,18 @@
 ---
-title: Azure アプリケーション プランの体験版 | Microsoft Docs
+title: Azure アプリケーション オファーの体験版 | Azure Marketplace
 description: Azure Marketplace 上の Azure アプリケーション プランの体験版を構成する方法。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: dan-wesley
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
-ms.date: 12/06/2018
-ms.author: pbutlerm
-ms.openlocfilehash: d51c7330acd37d8a861c136ea85a2ff456eb264e
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.date: 04/23/2019
+ms.author: pabutler
+ms.openlocfilehash: 42e533cdcedfb47a46934f77714d61a640a8d7d1
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57446488"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64942865"
 ---
 # <a name="azure-applications-test-drive-tab"></a>Azure アプリケーションの [体験版] タブ
 
@@ -58,23 +51,25 @@ ms.locfileid: "57446488"
 
 ![体験版を構成する](./media/managed-app-configure-testdrive.png)
 
-次の表では、お客様のマネージド アプリケーションの体験版を設定するうえで必須のフィールドについて説明します。
+次の表では、お客様のマネージド アプリケーションの体験版を設定するうえで必須のフィールドについて説明します。  アスタリスクが付いているフィールドは必須です。
 
-|    **フィールド**       |  **説明**  |
+|      フィールド         |  説明      |
 |  ---------------   |  ---------------  |
-|      説明              |   お客様の体験版でできることについて説明します。 この説明は、基本的な HTML タグを使用して書式設定できます。 たとえば、&lt;p&gt;、&lt;em&gt;、&lt;ul&gt;、&lt;li&gt;、&lt;ol&gt; のほか、見出しが使用できます。                |
-|    ユーザー マニュアル                |     お客様の顧客が体験版を利用する際に使用できるユーザー マニュアルをアップロードします。 このドキュメントは .pdf ファイルでなければなりません。              |
-|         Test Drive Demo Video (体験版のデモ ビデオ) (省略可)           |       お客様の体験版のビデオ チュートリアルを提供できます。 顧客は体験版を利用する前にこのビデオを視聴できます。 YouTube または Vimeo にあるビデオの URL を指定します。 **[+ ビデオの追加]** を選択した場合、次の情報を指定するように求められます。<ul><li>Name</li><li>URL</li><li>サムネイル (PNG 形式、533 x 324 ピクセル)</li></ul>            |
-|       Instances             |        お客様が必要とするインスタンスの数、リージョン、お客様の顧客が体験版を取得できる速さを構成します。 詳細については、「[体験版の発行方法](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive#how-to-publish-a-test-drive)」を参照してください。           |
-|       Test Drive Duration (hours) (体験版の期間 (時間))             |       時間数を整数で入力してください。 指定できる範囲は 1 から 999 です。            |
-|        Test Drive ARM Template (体験版 ARM テンプレート)            |        お客様のアプリの Azure Resource Manager テンプレートが含まれた圧縮 (.zip) ファイルをアップロードします。 詳細については、「[Azure Resource Manager の体験版](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive)」を参照してください。            |
-|        Access Information (アクセス情報)            |         お客様の顧客が体験版を入手した後のアクセス情報を指定します。 たとえば、体験版にアクセスするための URL やサインイン情報が該当します。 。 この説明は、基本的な HTML タグを使用して書式設定できます。 たとえば、&lt;p&gt;、&lt;em&gt;、&lt;ul&gt;、&lt;li&gt;、&lt;ol&gt; のほか、見出しが使用できます。          |
-|       Access Subscription Id (アクセス サブスクリプション ID)             |       Azure サービスと Azure portal へのアクセス権を付与します。 このサブスクリプションで、リソースの使用状況がレポートされ、サービスが課金されます。 体験版専用の独立した Azure サブスクリプションがまだない場合は、サブスクリプションを作成してください。             |
-|          Azure AD Tenant Id (Azure AD テナント ID)          |        Azure Active Directory の既存のテナントを指定するか、この体験版用にテナントを作成します。           |
-|         Azure AD App Id (Azure AD アプリ ID)           |       新しいアプリケーションを作成して登録します。 Microsoft は、このアプリケーションを使用して、お客様の体験版インスタンスの操作を実行します。            |
-|          Azure AD App Key (Azure AD アプリ キー)          |         アプリの認証キーを作成して、このフィールドに貼り付けてください。          |
+| **説明\***  |  お客様の体験版でできることについて説明します。 この説明は、基本的な HTML タグを使用して書式設定できます。 たとえば、&lt;p&gt;、&lt;em&gt;、&lt;ul&gt;、&lt;li&gt;、&lt;ol&gt; のほか、見出しが使用できます。                |
+| **[User Manual]\(ユーザー マニュアル\)\***  |  お客様の顧客が体験版を利用する際に使用できるユーザー マニュアルをアップロードします。 このドキュメントは .pdf ファイルでなければなりません。    |
+| **Test Drive Demo Video (体験版のデモ ビデオ)** |  お客様の体験版のビデオ チュートリアル (省略可能)。 顧客は体験版を利用する前にこのビデオを視聴できます。 YouTube または Vimeo にあるビデオの URL を指定します。 **[+ ビデオの追加]** を選択した場合、次の情報を指定するように求められます。<ul><li>Name</li><li>URL</li><li>サムネイル (PNG 形式、533 x 324 ピクセル)</li></ul>  |
+| **[インスタンス]\***      | お客様が必要とするインスタンスの数、リージョン、お客様の顧客が体験版を取得できる速さを構成します。 詳細については、「[体験版の発行方法](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive#how-to-publish-a-test-drive)」を参照してください。           |
+| **[Test Drive Duration (hours)]\(体験版の期間 (時間)\)\*** | 時間数を整数で入力してください。 指定できる範囲は 1 から 999 です。 |
+| **[Test Drive ARM Template]\(体験版 ARM テンプレート\)\***     | お客様のアプリの Azure Resource Manager テンプレートが含まれた圧縮 (.zip) ファイルをアップロードします。 詳細については、「[Azure Resource Manager の体験版](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive)」を参照してください。 |
+| **[Access Information]\(アクセス情報\)\***          | お客様の顧客が体験版を入手した後のアクセス情報を指定します。 たとえば、体験版にアクセスするための URL やサインイン情報が該当します。 。 この説明は、基本的な HTML タグを使用して書式設定できます。 たとえば、&lt;p&gt;、&lt;em&gt;、&lt;ul&gt;、&lt;li&gt;、&lt;ol&gt; のほか、見出しが使用できます。 |
+| **[Azure サブスクリプション ID]\***       | Azure サービスと Azure portal へのアクセス権を付与します。 このサブスクリプションで、リソースの使用状況がレポートされ、サービスが課金されます。 体験版専用の独立した Azure サブスクリプションがまだない場合は、サブスクリプションを作成してください。  |
+| **[Azure AD Tenant ID]\(Azure AD テナント ID\)\***          | Azure Active Directory の既存のテナントを指定するか、この体験版用にテナントを作成します。  |
+| **[Azure AD App Id]\(Azure AD アプリ ID\)\***             | 新しいアプリケーションを作成して登録します。 Microsoft は、このアプリケーションを使用して、お客様の体験版インスタンスの操作を実行します。  |
+| **[Azure AD App Key]\(Azure AD アプリ キー\)\***            | アプリの認証キーを作成して、このフィールドに貼り付けてください。   |
+|  |  |
 
-すべての必須情報を指定した後、**[保存]** を選択すれば、体験版の設定は完了です。
+すべての必須情報を指定した後、 **[保存]** を選択すれば、体験版の設定は完了です。
+
 
 ## <a name="next-steps"></a>次の手順
 

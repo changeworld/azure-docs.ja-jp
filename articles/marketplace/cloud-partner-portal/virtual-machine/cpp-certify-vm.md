@@ -1,25 +1,18 @@
 ---
-title: Azure Marketplace 向けに VM イメージを認定する | Microsoft Docs
+title: Azure Marketplace 向けに VM イメージを認定する
 description: VM イメージをテストし送信して､Azure Marketplace の認定を受ける方法を説明しています。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: pbutlerm
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 09/26/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 24430b1b785a24da06a8ea51594147040e6d5bd6
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.author: pabutler
+ms.openlocfilehash: 0dbf1abbb91f9e5c3bd2d042c57f87591d52c9cd
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53190392"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64938495"
 ---
 # <a name="certify-your-vm-image"></a>VM イメージを認定する
 
@@ -31,10 +24,10 @@ ms.locfileid: "53190392"
 Azure 認定用の認定テスト ツールはローカルの Windows マシン上で動作しますが、そのテスト対象は Azure ベースの Windows と Linux VM です。  ユーザーの VM イメージが Microsoft Azure に適合していること、つまり VHD を準備するにあたってのガイダンスと要件が満たされていることを確認するツールとなります。 VM 認定の申請は、このツールの出力として得られる互換性チェックを [Cloud パートナー ポータル](https://cloudpartner.azure.com)にアップロードすることで行います。
 
 1. 次のリンクから、[Azure 認定用の認定テスト ツール](https://www.microsoft.com/download/details.aspx?id=44299)の最新版をダウンロードしてインストールします。 
-2. 認定ツールを開き、**[新規テストの開始]** をクリックします。
+2. 認定ツールを開き、 **[新規テストの開始]** をクリックします。
 3. **[テスト情報]** 画面で、実行する**テストの名前**を入力します。
 4. VM の**プラットフォーム**として、`Windows Server` または `Linux` を選択します。 ここでのプラットフォームの選択は、以降のオプションに影響します。
-5. 該当するデータベース サービスを VM で使用している場合、**[Test for Azure SQL Database]\(Azure SQL Database のテスト\)** チェック ボックスをオンにします。
+5. 該当するデータベース サービスを VM で使用している場合、 **[Test for Azure SQL Database]\(Azure SQL Database のテスト\)** チェック ボックスをオンにします。
 
    ![認定テスト ツールの初期ページ](./media/publishvm_025.png)
 
@@ -46,7 +39,7 @@ Azure 認定用の認定テスト ツールはローカルの Windows マシン�
 ### <a name="connect-the-certification-tool-to-a-linux-vm-image"></a>Linux VM イメージに認定ツールを接続する
 
 1. **[SSH 認証]** モード (`Password Authentication` または `key File Authentication`) を選択します。
-2. パスワード ベースの認証を使用する場合は、**[VM DNS Name]\(VM の DNS 名\)**、**[ユーザー名]**、**[パスワード]** の値を入力します。  既定の **SSH ポート**番号は、必要に応じて変更できます。
+2. パスワード ベースの認証を使用する場合は、 **[VM DNS Name]\(VM の DNS 名\)** 、 **[ユーザー名]** 、 **[パスワード]** の値を入力します。  既定の **SSH ポート**番号は、必要に応じて変更できます。
 
      ![Linux VM イメージのパスワード認証](./media/publishvm_026.png)
 
@@ -63,13 +56,13 @@ Azure 認定用の認定テスト ツールはローカルの Windows マシン�
 
 ## <a name="run-a-certification-test"></a>認定テストを実行する
 
-認定ツールで VM イメージのパラメーター値を入力したら、**[接続のテスト]** を選択して、VM への接続が有効であることを確認します。 接続の確認後、**[次へ]** をクリックしてテストを開始します。  テストが完了すると、テスト結果 (合格/不合格/警告) のテーブルが表示されます。  Linux VM のテスト結果の例を次に示します。 
+認定ツールで VM イメージのパラメーター値を入力したら、 **[接続のテスト]** を選択して、VM への接続が有効であることを確認します。 接続の確認後、 **[次へ]** をクリックしてテストを開始します。  テストが完了すると、テスト結果 (合格/不合格/警告) のテーブルが表示されます。  Linux VM のテスト結果の例を次に示します。 
 
 ![Linux VM イメージの認定テスト結果](./media/publishvm_029.png)
 
 いずれかのテストが失敗した場合、イメージは認定 "*されません*"。 その場合は、要件と失敗のメッセージを確認し、指示された変更を加えたうえで、テストを再実行してください。 
 
-自動テストが済むと、**アンケート**画面で VM イメージに関する追加情報の入力を求められます。  この画面は、必要事項を入力するための 2 つのタブで構成されます。  **[General Assessment]\(一般的な評価\)** タブには、**True/False** 形式の質問が、**[Kernel Customization]\(カーネルのカスタマイズ\)** には、複数選択形式の質問と自由形式の質問が表示されます。  両方のタブの質問に回答して、**[次へ]** を選択します。
+自動テストが済むと、**アンケート**画面で VM イメージに関する追加情報の入力を求められます。  この画面は、必要事項を入力するための 2 つのタブで構成されます。  **[General Assessment]\(一般的な評価\)** タブには、**True/False** 形式の質問が、 **[Kernel Customization]\(カーネルのカスタマイズ\)** には、複数選択形式の質問と自由形式の質問が表示されます。  両方のタブの質問に回答して、 **[次へ]** を選択します。
 
 ![認定ツールのアンケート](./media/publishvm_030.png)
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2017
 ms.author: apimpm
-ms.openlocfilehash: db701a239aedb312c7671e403cdfde7135130c6d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 644cc2a4175043b523d53b39f17483c6f3acfe96
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58089609"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64696741"
 ---
 # <a name="how-to-authorize-developer-accounts-by-using-azure-active-directory-b2c-in-azure-api-management"></a>Azure API Management で Azure Active Directory B2C を使用して開発者アカウントを承認する方法
 
@@ -48,7 +48,7 @@ Azure Active Directory B2C は、コンシューマー向け Web アプリケー
 
    ![AAD B2C ID プロバイダーのリダイレクト URL][api-management-howto-copy-b2c-identity-provider-redirect-url]
 
-4. 新しいタブで、Azure portal の Azure Active Directory B2C テナントにアクセスし、**[Applications]** \(アプリケーション) ブレードを開きます。
+4. 新しいタブで、Azure portal の Azure Active Directory B2C テナントにアクセスし、 **[Applications]** \(アプリケーション) ブレードを開きます。
 
    ![新しいアプリケーション 1 の登録][api-management-howto-aad-b2c-portal-menu]
 
@@ -56,11 +56,11 @@ Azure Active Directory B2C は、コンシューマー向け Web アプリケー
 
    ![新しいアプリケーション 2 の登録][api-management-howto-aad-b2c-add-button]
 
-6. **[新しいアプリケーション]** ブレードで、アプリケーションの名前を入力します。 **[Web App/Web API (Web アプリ/Web API)]** で **[はい]** を選択し、**[暗黙的フローを許可する]** で **[はい]** を選択します。 続けて、手順 3 でコピーした **[リダイレクト URL]** を **[応答 URL]** テキスト ボックスに貼り付けます。
+6. **[新しいアプリケーション]** ブレードで、アプリケーションの名前を入力します。 **[Web App/Web API (Web アプリ/Web API)]** で **[はい]** を選択し、 **[暗黙的フローを許可する]** で **[はい]** を選択します。 続けて、手順 3 でコピーした **[リダイレクト URL]** を **[応答 URL]** テキスト ボックスに貼り付けます。
 
    ![新しいアプリケーション 3 の登録][api-management-howto-aad-b2c-app-details]
 
-7. **[作成]** ボタンをクリックします。 アプリケーションが作成され、**[アプリケーション]** ブレードに表示されます。 アプリケーション名をクリックすると、その詳細が表示されます。
+7. **[作成]** ボタンをクリックします。 アプリケーションが作成され、 **[アプリケーション]** ブレードに表示されます。 アプリケーション名をクリックすると、その詳細が表示されます。
 
    ![新しいアプリケーション 4 の登録][api-management-howto-aad-b2c-app-created]
 
@@ -69,29 +69,20 @@ Azure Active Directory B2C は、コンシューマー向け Web アプリケー
    ![アプリケーション ID 1][api-management-howto-aad-b2c-app-id]
 
 9. API Management の **[Add identity provider]** \(ID プロバイダーの追加) ウィンドウに戻り、ID を **[Client Id]** \(クライアント ID) テキスト ボックスに貼り付けます。
-
-   ![アプリケーション ID 2][api-management-howto-aad-b2c-client-id]
-
-10. B2C アプリ登録に戻り、**[キー]** をクリックし、**[キーの生成]** をクリックします。 **[保存]** をクリックして構成を保存し、**アプリ キー**を表示します。 キーをクリップボードにコピーします。
+    
+10. B2C アプリ登録に戻り、 **[キー]** をクリックし、 **[キーの生成]** をクリックします。 **[保存]** をクリックして構成を保存し、**アプリ キー**を表示します。 キーをクリップボードにコピーします。
 
     ![アプリ キー 1][api-management-howto-aad-b2c-app-key]
 
 11. API Management の **[Add identity provider]** \(ID プロバイダーの追加) ウィンドウに戻り、キーを **[Client Secret]** \(クライアント シークレット) テキスト ボックスに貼り付けます。
+    
+12. **[Signin tenant]** (サインインするテナント) ボックスに、Azure Active Directory B2C テナントのドメイン名を指定します。
 
-    ![アプリ キー 2][api-management-howto-aad-b2c-client-secret]
+13. **[Authority]** (認定機関) フィールドを使用して、使用する Azure AD B2C のログイン URL を制御できます。 値を **< your_b2c_tenant_name >. b2clogin.com**に設定します。
 
-12. **[許可されるテナント]** ボックスに、Azure Active Directory B2C テナントのドメイン名を指定します。
+14. B2C テナントのポリシーから、 **[Signup Policy]** \(サインアップ ポリシー) と **[Signin Policy]** \(サインイン ポリシー) を指定します。 必要に応じて、 **[Profile Editing Policy (プロファイル編集ポリシー)]** と **[Password Reset Policy (パスワードのリセット ポリシー)]** も指定します。
 
-    ![許可されるテナント][api-management-howto-aad-b2c-allowed-tenant]
-
-13. B2C テナントのポリシーから、**[Signup Policy]** \(サインアップ ポリシー) と **[Signin Policy]** \(サインイン ポリシー) を指定します。 必要に応じて、**[Profile Editing Policy (プロファイル編集ポリシー)]** と **[Password Reset Policy (パスワードのリセット ポリシー)]** も指定します。
-
-    ![ポリシー][api-management-howto-aad-b2c-policies]
-
-    > [!NOTE]
-    > ポリシーの詳細については、「[Azure Active Directory B2C: 拡張ポリシー フレームワーク]」を参照してください。
-
-14. 必要な構成を指定したら、**[保存]** をクリックします。
+15. 必要な構成を指定したら、 **[保存]** をクリックします。
 
     変更が保存されると、開発者は新しいアカウントを作成し、Azure Active Directory B2C を使用して開発者ポータルにサインインできるようになります。
 

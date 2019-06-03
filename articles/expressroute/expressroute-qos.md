@@ -5,15 +5,15 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 01/08/2019
+ms.date: 04/22/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: bc946587cf54142278472652449db40096ca27b8
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 9bdeb91b145f8c7f31be8c1dcd5c5158d50ff2f6
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54117216"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64712315"
 ---
 # <a name="expressroute-qos-requirements"></a>ExpressRoute QoS の要件
 Skype for Business には、特化した QoS 処理を必要とするさまざまなワークロードがあります。 ExpressRoute で音声サービスを使用する場合、以下の要件に従う必要があります。
@@ -25,9 +25,9 @@ Skype for Business には、特化した QoS 処理を必要とするさまざ�
 > 
 > 
 
-次の表は、Skype for Business で使用される DSCP マーキングを一覧にしたものです。 詳細については、「 [Skype for Business の QoS の管理](https://docs.microsoft.com/SkypeForBusiness/manage/network-management/qos/managing-quality-of-service-QoS) 」を参照してください。
+次の表は、Microsoft チームと Skype for Business で使用される DSCP マーキングを一覧にしたものです。 詳細については、「 [Skype for Business の QoS の管理](https://docs.microsoft.com/SkypeForBusiness/manage/network-management/qos/managing-quality-of-service-QoS) 」を参照してください。
 
-| **トラフィック クラス** | **処理 (DSCP マーキング)** | **Skype for Business ワークロード** |
+| **トラフィック クラス** | **処理 (DSCP マーキング)** | **Microsoft チームと Skype for Business のワークロード** |
 | --- | --- | --- |
 | **音声** |EF (46) |Skype / Lync 音声 |
 | **対話** |AF41 (34) |ビデオ、VBSS |

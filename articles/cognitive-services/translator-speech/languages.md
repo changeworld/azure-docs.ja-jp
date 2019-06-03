@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 3/5/2018
 ms.author: v-jansko
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 63592a0afc7e5da0a37c25c226b92b587aa5f886
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 513fd93f148a8a133901a5dbb60722fbc4a7d9e7
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56673701"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64866247"
 ---
 # <a name="languages-supported-by-the-translator-speech-api"></a>Translator Speech API でサポートされている言語
 
@@ -27,13 +27,13 @@ ms.locfileid: "56673701"
 | 音声言語    |
 |:----------- |
 | アラビア語 (現代標準)      |
+| ポルトガル語 (ブラジル)     |
 | 中国語 (標準)      |
 | 英語      |
 | フランス語      |
 | ドイツ語      |
 | イタリア語      |
 | 日本語      |
-| ポルトガル語 (ブラジル)     |
 | ロシア語      |
 | スペイン語      |
 

@@ -1,25 +1,19 @@
 ---
-title: Azure Marketplace と AppSource の発行元プロファイルを管理する | Microsoft Docs
+title: Azure Marketplace と AppSource の発行元プロファイルを管理する | Azure Marketplace
 description: Azure Marketplace と AppSource の発行元プロファイルを管理する方法について説明します。
 services: Azure, Marketplace, AppSource, Cloud Partner Portal
-documentationcenter: ''
 author: v-miclar
 manager: pbutlerm
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 03/12/2019
-ms.author: pbutlerm
-ms.openlocfilehash: fd3f5750f050db0d57a8747b28798c04f666b077
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: pabutler
+ms.openlocfilehash: 6ca0eb23dad218262eff5d80543628df273022c9
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59796513"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64942235"
 ---
 # <a name="manage-your-azure-marketplace-and-appsource-publisher-profile"></a>Azure Marketplace と AppSource の発行元プロファイルを管理する
 
@@ -39,7 +33,7 @@ ms.locfileid: "59796513"
 
 ### <a name="view-and-manage-your-publisher-profile"></a>発行元プロファイルを表示して管理する
 
-発行元プロファイルを表示して管理するには、右上のメニュー バーで、**[発行元プロファイル]** タブをクリックします。
+発行元プロファイルを表示して管理するには、右上のメニュー バーで、 **[発行元プロファイル]** タブをクリックします。
 
 ![[発行元プロファイル] タブ - 発行元プロファイル](./media/publisherprofilenew.png)
 

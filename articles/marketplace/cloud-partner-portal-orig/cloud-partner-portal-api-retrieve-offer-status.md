@@ -1,25 +1,18 @@
 ---
-title: プランの状態を取得する | Microsoft Docs
+title: プランの状態の取得 | Azure Marketplace
 description: API によって、プランの現在の状態が取得されます。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: reference
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 9233a5919ad86adcbb7947cd095945654ed015a7
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.author: pabutler
+ms.openlocfilehash: 26ee8b5b1879c505f8200671558fe065ace068a3
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48808276"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64935458"
 ---
 <a name="retrieve-offer-status"></a>プランの状態の取得 
 =====================
@@ -31,11 +24,11 @@ ms.locfileid: "48808276"
 <a name="uri-parameters"></a>URI パラメーター
 --------------
 
-|  **名前**       |   **説明**                            |  **データの種類** |
+|  **Name**       |   **説明**                            |  **データの種類** |
 |  -------------  |  ------------------------------------------  |  ------------  |
-|  publisherId    | 発行元の ID。たとえば、`Contoso`  |     String     |
+|  publisherId    | パブリッシャー ID。たとえば、`Contoso`  |     String     |
 |  offerId        | プランを一意に識別する GUID      |     String     |
-|  api-version    | API の最新バージョン                        |     日付       |
+|  api-version    | API の最新バージョン                        |     Date       |
 |  |  |
 
 
@@ -129,7 +122,7 @@ ms.locfileid: "48808276"
 
 ### <a name="response-body-properties"></a>応答本文のプロパティ
 
-|  **名前**             |    **説明**                                                                             |
+|  **Name**             |    **説明**                                                                             |
 | --------------------  |   -------------------------------------------------------------------------------------------- |
 |  status               | プランの状態。 使用可能な値の一覧については、下の「[オファーの状態](#offer-status)」を参照してください。 |
 |  messages             | プランに関連付けられている一連のメッセージ                                                    |
@@ -159,7 +152,7 @@ ms.locfileid: "48808276"
 
 ### <a name="offer-status"></a>オファーの状態
 
-|  **名前**                    |    **説明**                                       |
+|  **Name**                    |    **説明**                                       |
 |  --------------------------  |  ------------------------------------------------------  |
 |  NeverPublished              | オファーは発行されていません。                          |
 |  NotStarted                  | 新しいオファーですが、開始されていません。                            |
@@ -173,7 +166,7 @@ ms.locfileid: "48808276"
 
 ### <a name="step-status"></a>手順の状態
 
-|  **名前**                    |    **説明**                           |
+|  **Name**                    |    **説明**                           |
 |  -------------------------   |  ------------------------------------------  |
 |  NotStarted                  | 手順が開始されていません。                        |
 |  InProgress                  | 手順を実行しています。                             |

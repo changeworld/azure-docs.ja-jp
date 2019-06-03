@@ -1,25 +1,18 @@
 ---
-title: Azure Marketplace 対応の Cloud パートナー ポータルでのナビゲーション | Microsoft Docs
-description: 。
+title: Azure Marketplace の Cloud パートナー ポータルでのナビゲーション
+description: Azure Marketplace の Cloud パートナー ポータル内のナビゲーションに関する説明です。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/09/2018
-ms.author: pbutlerm
-ms.openlocfilehash: e963734af450a96ac08830769560a2b5e8eef9c6
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.author: pabutler
+ms.openlocfilehash: ef329bfef9dc4f98dfd975a33c190f0b1825df4e
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52266527"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64942079"
 ---
 # <a name="cloud-partner-portal-navigation"></a>Cloud パートナー ポータルでのナビゲーション
 
@@ -61,7 +54,7 @@ ms.locfileid: "52266527"
 ![フィードバック フォーム](./media/feedback-form.png)
 
 > [!TIP]
-> お客様のフィードバックが Cloud パートナー ポータルの特定のページに関するものである場合は、**[フィードバック]** ボタンをクリックする前に、該当のページへ移動してください。  お客様のセッションの UI 状態が取得できるように、**[スクリーンショットを含める]** チェックボックスがオンになっていることを確認してから、フィードバックを送信してください。 
+> お客様のフィードバックが Cloud パートナー ポータルの特定のページに関するものである場合は、 **[フィードバック]** ボタンをクリックする前に、該当のページへ移動してください。  お客様のセッションの UI 状態が取得できるように、 **[スクリーンショットを含める]** チェックボックスがオンになっていることを確認してから、フィードバックを送信してください。 
 
 
 ### <a name="publisher-menu"></a>[発行元] メニュー
@@ -85,8 +78,8 @@ ms.locfileid: "52266527"
 | ![[ユーザー] 項目](./media/left-navbar5.png) | [[ユーザー]](./cpp-users-page.md) ページでは、登録されているクラウド パートナーに関連する現在のユーザー アカウントをすべて一覧表示します。 |
 | ![[履歴] 項目](./media/left-navbar6.png) | [[履歴]](./cpp-history-page.md) ページでは、すべての発行元のプランの発行と変更イベントを一覧表示します。 |
 | ![[分析情報] 項目](./media/left-navbar7.png) | [[分析情報]](./cpp-insights-page.md) ページには、このポータルの *Seller Insights* 機能を構成する各種のダッシュボードが用意されています。 |
-| ![[ドキュメント] 項目](./media/left-navbar8.png) | 新しいタブで Cloud パートナー ポータルのドキュメント ホーム ページを開きます (**[ヘルプ]** メニューのエントリと重複します)。 |
-| ![[フォーラム] 項目](./media/left-navbar9.png)  | 新しいタブで、AppSource および Azure Marketplace のパートナー コミュニティ用のドキュメント ホーム ページを開きます (**[ヘルプ]** メニューのエントリと重複します)。 |
+| ![[ドキュメント] 項目](./media/left-navbar8.png) | 新しいタブで Cloud パートナー ポータルのドキュメント ホーム ページを開きます ( **[ヘルプ]** メニューのエントリと重複します)。 |
+| ![[フォーラム] 項目](./media/left-navbar9.png)  | 新しいタブで、AppSource および Azure Marketplace のパートナー コミュニティ用のドキュメント ホーム ページを開きます ( **[ヘルプ]** メニューのエントリと重複します)。 |
 |  |  |
 
 > [!NOTE]
@@ -95,4 +88,4 @@ ms.locfileid: "52266527"
 
 ## <a name="next-steps"></a>次の手順
 
-次の記事「[New Offer menu](./cpp-new-offer-menu.md)」([新しいプラン] メニュー) では、**[新しいプラン]** メニューで作成できるプランの種類の一覧を示します。
+次の記事「[New Offer menu](./cpp-new-offer-menu.md)」([新しいプラン] メニュー) では、 **[新しいプラン]** メニューで作成できるプランの種類の一覧を示します。

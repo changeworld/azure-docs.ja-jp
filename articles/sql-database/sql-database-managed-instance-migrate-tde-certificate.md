@@ -11,13 +11,13 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: carlrab, jovanpop
 manager: craigg
-ms.date: 03/12/2019
-ms.openlocfilehash: 43793380fab2bcece215c53b82e09a3c3a849af3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 04/25/2019
+ms.openlocfilehash: f54950ab96664b17aab056b468db0644216e8654
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57833915"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64706106"
 ---
 # <a name="migrate-certificate-of-tde-protected-database-to-azure-sql-database-managed-instance"></a>TDE で保護されたデータベースの証明書を Azure SQL Database Managed Instance に移行する
 
@@ -31,7 +31,7 @@ ms.locfileid: "57833915"
 TDE で保護されたデータベースと対応する証明書の両方を円滑に移行するためにフル マネージド サービスを使用する別の方法については、[Azure Database Migration Service を使用してオンプレミスのデータベースを Managed Instance に移行する方法](../dms/tutorial-sql-server-to-managed-instance.md)に関するページを参照してください。
 
 > [!IMPORTANT]
-> Azure SQL Database Managed Instance の Transparent Data Encryption は、サービス管理モードで動作します。 移行された証明書は TDE で保護されたデータベースの復元にのみ使用されます。 移行された証明書は、復元が実行された後すぐに、システムによって管理される別の証明書に置き換えられます。
+> 移行された証明書は TDE で保護されたデータベースの復元にのみ使用されます。 復元が終わり次第、移行済みの証明書は、インスタンスに設定した透過データ暗号化によりサービス マネージド証明書またはキー コンテナーの非同期キーのいずれかの異なるプロテクタに置き換わります。
 
 ## <a name="prerequisites"></a>前提条件
 

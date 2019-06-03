@@ -2,18 +2,18 @@
 title: クイック スタート - Azure Application Gateway を使用してエンド ツー エンド SSL 暗号化を構成する - Azure portal | Microsoft Docs
 description: Azure portal を使用して、エンド ツー エンド SSL 暗号化により Azure Application Gateway を作成する方法について説明します。
 services: application-gateway
-author: abshamsft
+author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 3/19/2019
+ms.date: 4/30/2019
 ms.author: absha
 ms.custom: mvc
-ms.openlocfilehash: e47a3e1231701f3339057e25ee4388aff0c9fbd7
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: bd165f81b45e3ae0c121fb8876ed88e68d493195
+ms.sourcegitcommit: ed66a704d8e2990df8aa160921b9b69d65c1d887
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58229339"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64946794"
 ---
 # <a name="configure-end-to-end-ssl-by-using-application-gateway-with-the-portal"></a>ポータルで Application Gateway を使用してエンド ツー エンド SSL を構成する
 
@@ -48,7 +48,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 4. **[プロトコル]** で **[HTTPS]** を選択します。 **[バックエンド認証証明書]** ウィンドウが表示されます。 
 
-5. **[バックエンド認証証明書]** で、**[新規作成]** を選択します。
+5. **[バックエンド認証証明書]** で、 **[新規作成]** を選択します。
 
 6. 適切な **[名前]** を入力します。
 
@@ -63,7 +63,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 エンド ツー エンド SSL 暗号化を使用して既存のアプリケーション ゲートウェイを構成するには、リスナーでまず SSL 終了を有効化する必要があります。 これにより、クライアントとアプリケーション ゲートウェイの間の通信で SSL 暗号化が有効になります。 その後、アプリケーション ゲートウェイとバックエンド サーバーの間の通信で SSL 暗号化を有効化するために、HTTP 設定でバックエンド サーバーの証明書をホワイトリストに登録する必要があります。これにより、エンド ツー エンド SSL 暗号化が実現されます。
 
-SSL 終了を有効化するために、HTTPS プロトコルおよび証明書を含むリスナーを使用する必要があります。 既存のリスナーのプロトコルを変更することはできません。 したがって、HTTPS プロトコルおよび証明書を含む既存のリスナーを使用するか、または新しいリスナーを作成するかを選択できます。 前者を選択した場合は、次に示す「**既存のアプリケーション ゲートウェイで SSL 終了を有効化する**」の手順を無視し、「**バックエンド サーバーの証明書をホワイトリストに登録する**」にそのまま進むことができます。 後者を選択した場合は、次の手順に従います。 
+SSL 終了を有効化するために、HTTPS プロトコルおよび証明書を含むリスナーを使用する必要があります。 既存のリスナーのプロトコルを変更することはできません。 したがって、HTTPS プロトコルおよび証明書を含む既存のリスナーを使用するか、または新しいリスナーを作成するかを選択できます。 前者を選択した場合は、次に示す「**既存のアプリケーション ゲートウェイで SSL 終了を有効化する**」の手順を無視し、「**バックエンド サーバーの証明書をホワイトリストに登録する**」にそのまま進むことができます。 後者を選択した場合は、次の手順を使用します。
 
 ### <a name="enable-ssl-termination-in-existing-application-gateway"></a>既存のアプリケーション ゲートウェイで SSL 終了を有効化する
 
@@ -94,7 +94,7 @@ SSL 終了を有効化するために、HTTPS プロトコルおよび証明書�
 
 4. **[プロトコル]** で **[HTTPS]** を選択します。 **[バックエンド認証証明書]** ウィンドウが表示されます。 
 
-5. **[バックエンド認証証明書]** で、**[新規作成]** を選択します。
+5. **[バックエンド認証証明書]** で、 **[新規作成]** を選択します。
 
 6. 適切な **[名前]** を入力します。
 

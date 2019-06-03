@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/08/2019
-ms.openlocfilehash: ac1a0e4eadc0b84fdd2a170c2e0f6e0a2f2af3a4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 2724451d44a793023f7b69196b186f68f6fc6a26
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59361784"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64720473"
 ---
 # <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>Azure HDInsight クラスターで使用するストレージ オプションを比較する
 
@@ -31,8 +31,12 @@ HDInsight クラスターを作成する際、次のいくつかの異なる Azu
 |Azure Data Lake Storage Gen2| 汎用 v2 | 階層構造 (ファイルシステム) | Blob | Standard | ホット、クール、アーカイブ | 3.6 以降 | All |
 |Azure Storage| 汎用 v2 | Object | Blob | Standard | ホット、クール、アーカイブ | 3.6 以降 | All |
 |Azure Storage| 汎用 v1 | Object | Blob | Standard | 該当なし | All | All |
-|Azure Storage| Blob Storage | Object | Blob | Standard | ホット、クール、アーカイブ | All | All |
+|Azure Storage| Blob Storage** | Object | ブロック BLOB | Standard | ホット、クール、アーカイブ | All | All |
 |Azure Data Lake Storage Gen1| 該当なし | 階層構造 (ファイルシステム) | 該当なし | 該当なし | 該当なし | 3.6 のみ | HBase を除くすべて |
+
+* * HDInsight クラスターの場合、セカンダリ ストレージ アカウントのみが型 BlobStorage になることができます。
+
+ストレージ アカウントの種類について詳しくは、「[Azure ストレージ アカウントの概要](../storage/common/storage-account-overview.md)」をご覧ください。
 
 Azure Storage アクセス層の詳細については、「[Azure Blob Storage:Premium ストレージ層 (プレビュー)、ホット ストレージ層、クール ストレージ層、アーカイブ ストレージ層](../storage/blobs/storage-blob-storage-tiers.md)」を参照してください。
 
@@ -40,16 +44,16 @@ Azure Storage アクセス層の詳細については、「[Azure Blob Storage:P
 
 | HDInsight のバージョン | プライマリ ストレージ | セカンダリ ストレージ | サポートされています |
 |---|---|---|---|
-| 3.6 と 4.0 | Standard Blob | Standard Blob | はい |
-| 3.6 と 4.0 | Standard Blob | Data Lake Storage Gen2 | いいえ  |
-| 3.6 と 4.0 | Standard Blob | Data Lake Storage Gen1 | はい |
+| 3.6 と 4.0 | General Purpose V1、General Purpose V2 | General Purpose V1、General Purpose V2、 BlobStorage (ブロック Blob) | はい |
+| 3.6 と 4.0 | General Purpose V1、General Purpose V2 | Data Lake Storage Gen2 | いいえ |
+| 3.6 と 4.0 | General Purpose V1、General Purpose V2 | Data Lake Storage Gen1 | はい |
 | 3.6 と 4.0 | Data Lake Storage Gen2* | Data Lake Storage Gen2 | はい |
-| 3.6 と 4.0 | Data Lake Storage Gen2* | Standard Blob | はい |
-| 3.6 と 4.0 | Data Lake Storage Gen2 | Data Lake Storage Gen1 | いいえ  |
+| 3.6 と 4.0 | Data Lake Storage Gen2* | General Purpose V1、General Purpose V2、 BlobStorage (ブロック Blob) | はい |
+| 3.6 と 4.0 | Data Lake Storage Gen2 | Data Lake Storage Gen1 | いいえ |
 | 3.6 | Data Lake Storage Gen1 | Data Lake Storage Gen1 | はい |
-| 3.6 | Data Lake Storage Gen1 | Standard Blob | はい |
-| 3.6 | Data Lake Storage Gen1 | Data Lake Storage Gen2 | いいえ  |
-| 4.0 | Data Lake Storage Gen1 | 任意 | いいえ  |
+| 3.6 | Data Lake Storage Gen1 | General Purpose V1、General Purpose V2、 BlobStorage (ブロック Blob) | はい |
+| 3.6 | Data Lake Storage Gen1 | Data Lake Storage Gen2 | いいえ |
+| 4.0 | Data Lake Storage Gen1 | 任意 | いいえ |
 
 *=すべてがクラスター アクセスに同じマネージド ID を使用するように構成されている限り、これは 1 つ以上の Data Lake Storage Gen2 アカウントの可能性があります。
 
@@ -119,7 +123,7 @@ Azure Storage は、堅牢な汎用ストレージ ソリューションであ�
 
 Microsoft では、既定のクラスター ストレージとビジネス データに別々のストレージ コンテナーを使用して、HDInsight のログと一時ファイルをご自身のビジネス データから切り離すことをお勧めしています。 また、アプリケーション ログとシステム ログが含まれている既定の BLOB コンテナーは、ストレージ コストを削減するために、それぞれのログを使用した後に削除することもお勧めしています。 コンテナーを削除する前に、ログを取り出してください。
 
-**[選択されたネットワーク]** で **[ファイアウォールと仮想ネットワーク]** に関する制限を使用してストレージ アカウントをセキュリティで保護する場合、**[Allow trusted Microsoft services]\(信頼された Microsoft サービスを許可)** の例外を有効にして、HDInsight ストレージ アカウントにアクセスできるようにしてください。
+**[選択されたネットワーク]** で **[ファイアウォールと仮想ネットワーク]** に関する制限を使用してストレージ アカウントをセキュリティで保護する場合、 **[Allow trusted Microsoft services]\(信頼された Microsoft サービスを許可)** の例外を有効にして、HDInsight ストレージ アカウントにアクセスできるようにしてください。
 
 ### <a name="hdinsight-storage-architecture"></a>HDInsight のストレージ アーキテクチャ
 

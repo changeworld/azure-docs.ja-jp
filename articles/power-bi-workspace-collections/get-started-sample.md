@@ -3,17 +3,17 @@ title: サンプルの使用
 description: この記事では、Power BI ワークスペース コレクションの使用を開始するためのサンプルを紹介します。
 services: power-bi-workspace-collections
 ms.service: power-bi-workspace-collections
-author: markingmyname
-ms.author: maghan
+author: rkarlin
+ms.author: rkarlin
 ms.topic: article
 ms.workload: powerbi
 ms.date: 09/25/2017
-ms.openlocfilehash: 6c80dc2ca4d0062fcb98aeb6431566ce6ca39411
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 6cf78bf9c83df0a1255c14499bbd2036a2be5ed6
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58519495"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64714513"
 ---
 # <a name="get-started-with-power-bi-workspace-collections-sample"></a>Power BI ワークスペース コレクションのサンプルの使用
 
@@ -68,7 +68,7 @@ Checking import state... Succeeded
 
 サンプル Web アプリは、**ワークスペース**にインポートされたレポートを表示するサンプル アプリケーションです。 サンプル Web アプリを構成する方法は以下のとおりです。
 
-1. **PowerBI-embedded** Visual Studio ソリューションで **EmbedSample** Web アプリケーションを右クリックして、**[スタートアップ プロジェクトに設定]** を選択します。
+1. **PowerBI-embedded** Visual Studio ソリューションで **EmbedSample** Web アプリケーションを右クリックして、 **[スタートアップ プロジェクトに設定]** を選択します。
 2. **web.config** の **EmbedSample** Web アプリケーションで、次の **appSettings** を編集します:**AccessKey**、**WorkspaceCollection** 名、および **WorkspaceId**。
 
     ```xml
@@ -81,7 +81,7 @@ Checking import state... Succeeded
     ```
 3. **EmbedSample** Web アプリケーションを実行します。
 
-**EmbedSample** Web アプリケーションを実行すると、左側のナビゲーション パネルに **[レポート]** メニューが表示されます。 インポートしたレポートを表示するには、**[レポート]** を展開して、レポートをクリックします。 [Retail Analysis Sample PBIX](https://go.microsoft.com/fwlink/?LinkID=780547) をインポートした場合、サンプル Web アプリは次のように表示されます。
+**EmbedSample** Web アプリケーションを実行すると、左側のナビゲーション パネルに **[レポート]** メニューが表示されます。 インポートしたレポートを表示するには、 **[レポート]** を展開して、レポートをクリックします。 [Retail Analysis Sample PBIX](https://go.microsoft.com/fwlink/?LinkID=780547) をインポートした場合、サンプル Web アプリは次のように表示されます。
 
 ![サンプル アプリケーション内の左側のナビゲーション](media/get-started-sample/sample-left-nav.png)
 
@@ -209,7 +209,7 @@ public ActionResult Reports()
 }
 ```
 
-Task<ActionResult> Report(string reportId)
+タスク\<ActionResult > レポート (reportId の文字列)
 
 ```csharp
 public async Task<ActionResult> Report(string reportId)

@@ -320,12 +320,14 @@
       maintainContext: true
     - name: ネットワーク アクセス
       items:
+        - name: HDInsight 仮想ネットワーク アーキテクチャ
+          href: ../hdinsight-virtual-network-architecture.md
+        - name: ファイアウォールを使用したアウトバウンド トラフィックの制限
+          href: ../hdinsight-restrict-outbound-traffic.md
         - name: Azure VNet の HDInsight
           href: ../hdinsight-extend-hadoop-virtual-network.md
-          maintainContext: true
         - name: HDInsight とオンプレミス ネットワークの接続
           href: ../connect-on-premises-network.md
-          maintainContext: true
     - name: Azure Monitor ログを使用した監視
       items:
         - name: Azure Monitor ログの使用

@@ -1,25 +1,18 @@
 ---
-title: Azure Application オファーの前提条件 | Microsoft Docs
+title: Azure アプリケーション オファーの前提条件 | Azure Marketplace
 description: Azure Marketplace で Azure アプリケーション オファーを発行するための前提条件。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 03/13/2019
-ms.author: pbutlerm
-ms.openlocfilehash: df127eec662f8598246f276ef9b1608ae3021512
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: pabutler
+ms.openlocfilehash: 296f843f9d09b57e12e867700f456126eca128b3
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58007164"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64942877"
 ---
 # <a name="azure-application-prerequisites"></a>Azure アプリケーションの前提条件
 
@@ -36,7 +29,7 @@ ms.locfileid: "58007164"
 * Azure クイックスタート テンプレート。<br> 詳細については、次を参照してください。
 
   * [Azure クイックスタート テンプレート](https://azure.microsoft.com/documentation/templates/)。 Azure Resource Manager を通じてコミュニティ提供のテンプレートで Azure リソースをデプロイし、生産性を高めます。 Azure リソース マネージャーでは、宣言型のテンプレートを使用してアプリケーションをプロビジョニングすることができます。 1 つのテンプレートで、複数のサービスをその依存関係と共にデプロイできます。 アプリケーション ライフサイクルの各ステージで、同じテンプレートを使用してアプリケーションを繰り返しデプロイします。
-  * [GitHub:Azure Resource Manager のクイックスタート テンプレート](https://github.com/azure/azure-quickstart-templates)。 このリポジトリには、コミュニティから提供され、現在利用できる Azure Resource Manager テンプレートがすべて含まれています。 検索可能なテンプレート索引が https://azure.microsoft.com/en-us/documentation/templates/ にあります。
+  * [GitHub:Azure Resource Manager のクイックスタート テンプレート](https://github.com/azure/azure-quickstart-templates)。 このリポジトリには、コミュニティから提供され、現在利用できる Azure Resource Manager テンプレートがすべて含まれています。 検索可能なテンプレート索引が https://azure.microsoft.com/documentation/templates/ にあります。
 * UI 定義を作成する<br>
 詳細については、「[マネージド アプリケーション用の Azure portal のユーザー インターフェイスを作成する](https://docs.microsoft.com/azure/azure-resource-manager/managed-application-createuidefinition-overview)」を参照してください。 この記事では、createUiDefinition.json ファイルの主要な概念について説明します。 Azure ポータルは、このファイルを使用して、マネージド アプリケーションを作成するためのユーザー インターフェイスを生成します。
 
@@ -50,7 +43,7 @@ ms.locfileid: "58007164"
 >[!NOTE]
 >Microsoft デベロッパー センター登録アカウントと同じアカウントを使用して、Cloud パートナー ポータルにサインインする必要があります。 複数の Azure Marketplace サービスに対して 1 つの Microsoft アカウントを使用してください。 このアカウントは、個々のサービスまたはオファーに固有のものにしないでください。
 
-* 会社 (またはその子会社) は、Azure Marketplace によってサポートされる販売元の国に所在している必要があります。 これらの国の最新の一覧については、「[Microsoft Azure Marketplace 参加ポリシー](https://azure.microsoft.com/support/legal/marketplace/participation-policies/)」をご覧ください。
+* 会社 (またはその子会社) は、Azure Marketplace によってサポートされる販売元の国/地域に所在している必要があります。 これらの国/地域の最新の一覧については、[Microsoft Azure Marketplace 参加ポリシー](https://azure.microsoft.com/support/legal/marketplace/participation-policies/)に関する資料をご覧ください。
 * Azure Marketplace でサポートされている課金モデルに対応した方法で、製品のライセンスを取得する必要があります。 詳細については、「[Azure Marketplace の課金オプション](https://docs.microsoft.com/azure/marketplace/marketplace-commercial-transaction-capabilities-and-considerations)」を参照してください。
 * 商取引上合理的な方法で、顧客に技術サポートを提供していただきます。 このサポートは、無償、有償、コミュニティ アプローチのいずれでもかまいません。
 * 会社のソフトウェアおよび依存関係にあるすべてのサード パーティ ソフトウェアのライセンス供与を行っていただきます。

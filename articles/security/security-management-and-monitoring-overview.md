@@ -1,10 +1,10 @@
 ---
-title: Azure セキュリティの管理と監視の概要 | Microsoft Docs
+title: 管理および監視セキュリティ機能 - Microsoft Azure | Microsoft Docs
 description: この記事では、Azure クラウド サービスと仮想マシンの管理と監視を支援するために Azure が提供するセキュリティ機能とサービスの概要を説明します。
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: StevenPo
+manager: barbkess
 editor: TomSh
 ms.assetid: 5cf2827b-6cd3-434d-9100-d7411f7ed424
 ms.service: security
@@ -12,18 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/30/2018
+ms.date: 04/28/2019
 ms.author: terrylan
-ms.openlocfilehash: f79f94c277b02a9f377b90bf74763ac617f65c16
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9f741f578ea44e27814ddfcde2fadc44a0e90536
+ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57892899"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64872065"
 ---
 # <a name="azure-security-management-and-monitoring-overview"></a>Azure セキュリティの管理と監視の概要
+この記事では、Azure クラウド サービスと仮想マシンの管理と監視を支援するために Azure が提供するセキュリティ機能とサービスの概要を説明します。
 
-Azure には、そのクラウド サービスと仮想マシン (VM) の管理と監視を支援するセキュリティ メカニズムが備わっています。 この記事では、これらの主要なセキュリティ機能とサービスの概要を示します。 それぞれの詳細について説明する記事へのリンクが用意されているため、さらに詳しく学習できます。
+## <a name="shared-responsibility"></a>Shared responsibility
 
 Microsoft クラウド サービスのセキュリティは、パートナーシップに基づくものであり、お客様と Microsoft が共有する責任です。 Microsoft は、Azure プラットフォームおよびそのデータ センターの (入室に ID カードが必要なドア、フェンス、守衛などのセキュリティ保護の使用による) 物理的なセキュリティの責任を負います。 Azure のソフトウェア レイヤーには強力なレベルのクラウド セキュリティが備わっており、セキュリティ、プライバシー、コンプライアンスに関する顧客のニーズを満たすことができます。
 
@@ -64,7 +65,7 @@ Symantec Endpoint Protection (SEP) も、Azure でサポートされています
 
 ## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 
-Azure Multi-Factor Authentication は、複数の検証方法の使用を要求する認証の方法です。 ユーザーのサインインとトランザクションに重要な第 2 のセキュリティ レイヤーを追加できます。 
+Azure Multi-Factor Authentication は、複数の検証方法の使用を要求する認証の方法です。 ユーザーのサインインとトランザクションに重要な第 2 のセキュリティ レイヤーを追加できます。
 
 Multi-Factor Authentication を使えば、シンプルなサインイン プロセスを好むユーザーのニーズに応えながら、データやアプリケーションへのアクセスを効果的に保護できます。 電話やテキスト メッセージ、モバイル アプリによる通知のほか、確認コードやサード パーティの OATH トークンなど、一連の照合方法を通じて確実な認証を行うことができます。
 
@@ -80,7 +81,7 @@ Azure ExpressRoute を使うと、接続プロバイダーが提供する専用�
 
 * 任意の環境間 (VPN IP) ネットワーク。
 * ポイント ツー ポイントのイーサネット ネットワーク。
-* コロケーション施設の接続プロバイダー経由での仮想クロス接続。 
+* コロケーション施設の接続プロバイダー経由での仮想クロス接続。
 
 ExpressRoute 接続はパブリックなインターネットを経由しません。 ExpressRoute 接続は一般的なインターネットでの接続よりも信頼性が高く、高速で、待ち時間が短く、セキュリティの高い接続を提供できます。
 
@@ -99,7 +100,7 @@ VPN ゲートウェイ (Azure 仮想ネットワーク ゲートウェイとも�
 
 ## <a name="privileged-identity-management"></a>Privileged Identity Management
 
-ユーザーは、Azure のリソース、または他の SaaS アプリケーションで、特権操作を実行することが必要になる場合があります。 通常は、組織がユーザーに Azure Active Directory (Azure AD) で永続的な特権アクセスを付与します。 
+ユーザーは、Azure のリソース、または他の SaaS アプリケーションで、特権操作を実行することが必要になる場合があります。 通常は、組織がユーザーに Azure Active Directory (Azure AD) で永続的な特権アクセスを付与します。
 
 しかし、この措置では、ユーザーが特権アクセスを使用して実行している内容を組織が十分に監視できないため、クラウドでホストされているリソースのセキュリティ リスクが増大します。 また、特権アクセスを持つユーザー アカウントが侵害された場合に、その 1 つの侵害が組織のクラウド セキュリティ全体に影響を与える可能性もあります。 Azure AD Privileged Identity Management では、特権の公開期間を短縮し、使用状況の可視性を向上させることによって、このリスクの解決を支援します。  
 
@@ -150,4 +151,3 @@ Security Center は、Azure リソースのセキュリティの最適化と監�
 
 <!--Image references-->
 [1]: ./media/security-management-and-monitoring-overview/shared-responsibility.png
-

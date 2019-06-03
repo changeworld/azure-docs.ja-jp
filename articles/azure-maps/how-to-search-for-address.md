@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 8ab2c73030c0860fc709a774b9fd84d20a6d7c99
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 497ffb5acf6262dfb42f490efe68e1ea26c777cb
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59785577"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64572375"
 ---
 # <a name="find-an-address-using-the-azure-maps-search-service"></a>Azure Maps Search サービスを使用して住所を検索する
 
@@ -40,7 +40,7 @@ Maps サービス API を呼び出すには、Maps アカウントとキーが�
 
 ### <a name="search-for-an-address-using-fuzzy-search"></a>あいまい検索を使用した住所の検索
 
-1. Postman アプリを開き、[新規]、[新規作成] の順にクリックして、**[GET request(\GET 要求\)]** を選択します。 **あいまい検索**の要求名を入力して、これを保存するコレクションまたはフォルダーを選択し、**[保存]** をクリックします。
+1. Postman アプリを開き、[新規]、[新規作成] の順にクリックして、 **[GET request(\GET 要求\)]** を選択します。 **あいまい検索**の要求名を入力して、これを保存するコレクションまたはフォルダーを選択し、 **[保存]** をクリックします。
 
 2. [Builder\(ビルダー\)] タブで、**GET** HTTP メソッドを選択し、API エンドポイントの要求 URL を入力します。
 
@@ -68,9 +68,9 @@ Maps サービス API を呼び出すには、Maps アカウントとキーが�
 
     あいまいなクエリ文字列 "pizza" によって、"pizza" と "restaurant" のカテゴリに含まれる 10 [か所の関心地点](https://docs.microsoft.com/rest/api/maps/search/getsearchpoi#searchpoiresponse) (POI) の結果が返されました。 各結果は、該当の場所の所在地住所、緯度/経度の値、ビュー ポート、およびエントリ ポイントを返します。
   
-    特定の参照場所に結び付けられておらず、このクエリの結果は変化します。 **countrySet** パラメーターを使用して、お使いのアプリケーションで対応する必要がある国のみを指定することができます。既定の動作では全世界を検索するため、潜在的に不要な結果が返されます。
+    特定の参照場所に結び付けられておらず、このクエリの結果は変化します。 **countrySet** パラメーターを使用して、お使いのアプリケーションで対応する必要がある国や地域のみを指定することができます。既定の動作では全世界を検索するため、潜在的に不要な結果が返されます。
 
-5. 次のキー/値のペアを **Params** セクションに追加し、**[送信]** をクリックします。
+5. 次のキー/値のペアを **Params** セクションに追加し、 **[送信]** をクリックします。
 
     | キー | 値 |
     |------------------|-------------------------|
@@ -80,7 +80,7 @@ Maps サービス API を呼び出すには、Maps アカウントとキーが�
   
     ある場所の結果を得るには、関心地点にクエリを実行して、返された緯度と経度の値をあいまい検索サービスの呼び出しの中で使用します。 ここでは、Search サービスを使用してシアトル スペース ニードルの場所が返され、緯度 /経度を使用して 検索に指向が付加されました。
   
-6. [パラメーター] に次のキーと値のペアを入力して、**[送信]** をクリックします。
+6. [パラメーター] に次のキーと値のペアを入力して、 **[送信]** をクリックします。
 
     ![あいまい検索](./media/how-to-search-for-address/fuzzy_search_latlon.png)
   
@@ -93,7 +93,7 @@ Maps サービス API を呼び出すには、Maps アカウントとキーが�
 
 住所検索の API に所在地住所のすべてまたは一部を渡すと、緯度と経度による位置の値と、市町村や区などの詳細な住所プロパティを含む応答を受け取ることができます。
 
-1. Postman で、**[新しい要求]** | **[GET request\(GET 要求\)]** をクリックして、「**Address Search**」 (住所検索) という名前を付けます。
+1. Postman で、 **[新しい要求]**  |  **[GET request\(GET 要求\)]** をクリックして、「**Address Search**」 (住所検索) という名前を付けます。
 2. [Builder]\(ビルダー\) タブで、**GET** HTTP メソッドを選択し、API エンドポイントの要求 URL を入力して、承認プロトコルを選択します (存在する場合)。
 
     ![住所検索](./media/how-to-search-for-address/address_search_url.png)
@@ -123,7 +123,7 @@ Maps サービス API を呼び出すには、Maps アカウントとキーが�
         400 Broad, Seattle
     ```
 
-6. 次のキー/値のペアを **Params** セクションに追加し、**[送信]** をクリックします。
+6. 次のキー/値のペアを **Params** セクションに追加し、 **[送信]** をクリックします。
 
     | キー | 値 |
     |-----|------------|
@@ -133,7 +133,7 @@ Maps サービス API を呼び出すには、Maps アカウントとキーが�
 
 ## <a name="search-for-a-street-address-using-reverse-address-search"></a>住所の逆引き検索を使用した所在地住所の検索
 
-1. Postman で、**[新しい要求]** | **[GET request\(GET 要求\)]** をクリックして、「**Reverse Address Search**」 (住所の逆引き検索) という名前を付けます。
+1. Postman で、 **[新しい要求]**  |  **[GET request\(GET 要求\)]** をクリックして、「**Reverse Address Search**」 (住所の逆引き検索) という名前を付けます。
 
 2. [Builder\(ビルダー\)] タブで、**GET** HTTP メソッドを選択し、API エンドポイントの要求 URL を入力します。
   
@@ -159,7 +159,7 @@ Maps サービス API を呼び出すには、Maps アカウントとキーが�
 
     応答には、セーフコ フィールドのキー アドレス情報が含まれます。
   
-5. 次のキー/値のペアを **Params** セクションに追加し、**[送信]** をクリックします。
+5. 次のキー/値のペアを **Params** セクションに追加し、 **[送信]** をクリックします。
 
     | キー | 値 |
     |-----|------------|
@@ -167,7 +167,7 @@ Maps サービス API を呼び出すには、Maps アカウントとキーが�
 
     [number](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) クエリ パラメーターが要求と共に送信された場合、通りの側 (左/右) とその数値からのオフセット位置を応答に含めることができます。
   
-6. 次のキー/値のペアを **Params** セクションに追加し、**[送信]** をクリックします。
+6. 次のキー/値のペアを **Params** セクションに追加し、 **[送信]** をクリックします。
 
     | キー | 値 |
     |-----|------------|
@@ -175,7 +175,7 @@ Maps サービス API を呼び出すには、Maps アカウントとキーが�
   
     [returnSpeedLimit](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) クエリ パラメーターが設定された場合、応答には公示されている速度制限が返されます。
 
-7. 次のキー/値のペアを **Params** セクションに追加し、**[送信]** をクリックします。
+7. 次のキー/値のペアを **Params** セクションに追加し、 **[送信]** をクリックします。
 
     | キー | 値 |
     |-----|------------|
@@ -183,7 +183,7 @@ Maps サービス API を呼び出すには、Maps アカウントとキーが�
 
     [returnRoadUse](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) クエリ パラメーターが設定された場合、応答には番地レベルで逆引き地理コードの道路用途の配列が返されます。
 
-8. 次のキー/値のペアを **Params** セクションに追加し、**[送信]** をクリックします。
+8. 次のキー/値のペアを **Params** セクションに追加し、 **[送信]** をクリックします。
 
     | キー | 値 |
     |-----|------------|
@@ -193,7 +193,7 @@ Maps サービス API を呼び出すには、Maps アカウントとキーが�
   
 ## <a name="search-for-the-cross-street-using-reverse-address-cross-street-search"></a>交差点住所の逆引き検索を使用して交差点を検索する
 
-1. Postman で、**[新しい要求]** | **[GET request\(GET 要求\)]** をクリックして、「**Reverse Address Cross Street Search**」 (交差点住所の逆引き検索) という名前を付けます。
+1. Postman で、 **[新しい要求]**  |  **[GET request\(GET 要求\)]** をクリックして、「**Reverse Address Cross Street Search**」 (交差点住所の逆引き検索) という名前を付けます。
 
 2. [Builder\(ビルダー\)] タブで、**GET** HTTP メソッドを選択し、API エンドポイントの要求 URL を入力します。
   

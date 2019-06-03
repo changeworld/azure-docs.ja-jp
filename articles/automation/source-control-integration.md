@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/15/2019
+ms.date: 04/26/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 81602f1a30fb753d7a8fcfccace581cd8c7b2f0c
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.openlocfilehash: 94912d5aa10ddd2e67c33bcbb416f007c85f105c
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59607094"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64574112"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Azure Automation でのソース管理の統合
 
@@ -37,29 +37,31 @@ Azure Automation は、次の 3 種類のソース管理をサポートしてい
 
 ## <a name="configure-source-control---azure-portal"></a>ソース管理を構成する - Azure portal
 
-Automation アカウント内で、**[ソース管理]** を選択し、**[+ 追加]** をクリックします
+Automation アカウント内で、 **[ソース管理]** を選択し、 **[+ 追加]** をクリックします
 
 ![ソース管理の選択](./media/source-control-integration/select-source-control.png)
 
-**[ソース管理の種類]** を選択し、**[認証]** をクリックします。 ブラウザー ウィンドウが開き、サインインを求められます。プロンプトに従って認証を完了します。
+**[ソース管理の種類]** を選択し、 **[認証]** をクリックします。 ブラウザー ウィンドウが開き、サインインを求められます。プロンプトに従って認証を完了します。
 
-**[Source Control Summary] (ソース管理の概要)** ページで情報を入力し、**[保存]** をクリックします。 次の表に、指定できるフィールドの説明を示します。
+**[Source Control Summary] (ソース管理の概要)** ページで情報を入力し、 **[保存]** をクリックします。 次の表に、指定できるフィールドの説明を示します。
 
 |プロパティ  |説明  |
 |---------|---------|
 |ソース管理名     | ソース管理のためのフレンドリ名。 *この名前は、アルファベットと数字でのみ構成されている必要があります。*        |
 |ソース管理の種類     | ソース管理のソースの種類。 使用できるオプションは次のとおりです。</br> GitHub</br>Azure Repos (Git)</br> Azure Repos (TFVC)        |
-|リポジトリ     | リポジトリまたはプロジェクトの名前。 最初の 200 個のリポジトリが返されます。 リポジトリを検索するには、フィールドに名前を入力して、**[Search on GitHub]\(GitHub で検索\)** をクリックします。|
+|リポジトリ     | リポジトリまたはプロジェクトの名前。 最初の 200 個のリポジトリが返されます。 リポジトリを検索するには、フィールドに名前を入力して、 **[Search on GitHub]\(GitHub で検索\)** をクリックします。|
 |[Branch]\(ブランチ)     | ソース ファイルの抽出元のブランチ。 TFVC ソース管理の種類では、ブランチのターゲット設定は使用できません。          |
 |フォルダー パス     | 同期する Runbook が含まれているフォルダー。例: /Runbooks </br>*指定されたフォルダー内の Runbook のみが同期されます。再帰はサポートされていません。*        |
-|自動同期     | ソース管理リポジトリでコミットが行われたときに、自動同期をオンまたはオフにします         |
+|自動同期<sup>1</sup>     | ソース管理リポジトリでコミットが行われたときに、自動同期をオンまたはオフにします         |
 |Runbook の発行     | **[オン]** に設定されている場合は、ソース管理から同期されたときに Runbook が自動的に発行されます。         |
 |説明     | 詳細情報を入力するテキスト フィールド        |
+
+<sup>1</sup> Azure Repos でソース管理の統合を構成する際に自動同期を有効にするには、プロジェクト管理者でなければなりません。
 
 ![ソース管理の概要](./media/source-control-integration/source-control-summary.png)
 
 > [!NOTE]
-> ソース管理を構成する際は、確実に正しいアカウントでログインします。 正しいかどうかが不明な場合、ブラウザーで新しいタブを開き、visualstudio.com または github.com からログアウトし、ソース管理にもう一度接続してみてください。
+> ソース管理リポジトリのログインは、Azure portal のログインと異なる可能性があります。 ソース管理を構成する際は、ソース管理リポジトリの正しいアカウントでログインするようにしてください。 正しいかどうかが不明な場合、ブラウザーで新しいタブを開き、visualstudio.com または github.com からログアウトし、ソース管理にもう一度接続してみてください。
 
 ## <a name="configure-source-control---powershell"></a>ソース管理を構成する - PowerShell
 
@@ -120,7 +122,7 @@ Azure Repos で個人用アクセス トークンを作成する方法につい�
 
 **[ソース管理]** ページの表でソースを選択します。 **[Start Sync] (同期の開始)** をクリックして、同期プロセスを開始します。
 
-**[Sync jobs] (同期ジョブ)** タブをクリックすると、現在の同期ジョブまたは以前の同期ジョブの状態を表示することができます。**[ソース管理]** ドロップダウン リストで、ソース管理を選択します。
+**[Sync jobs] (同期ジョブ)** タブをクリックすると、現在の同期ジョブまたは以前の同期ジョブの状態を表示することができます。 **[ソース管理]** ドロップダウン リストで、ソース管理を選択します。
 
 ![同期状態](./media/source-control-integration/sync-status.png)
 

@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/14/2019
+ms.date: 04/29/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6911b19c680c2fdb8c372347c4dd0fca60bb0e0b
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: ff151ff8e14b5cf9602d4e7e2e9c6cb2118a8a65
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60007561"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64918497"
 ---
 # <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Azure AD Connect: AD DS コネクタ アカウントのアクセス許可の構成 
 
@@ -25,7 +25,7 @@ ms.locfileid: "60007561"
 ## <a name="overview"></a>概要 
 以下の PowerShell コマンドレットを使用すると、AD DS コネクタ アカウントの Active Directory アクセス許可を、Azure AD Connect で有効にする機能ごとに設定することができます。 問題を防ぐため、フォレストに接続するためにカスタム ドメイン アカウントを使用して Azure AD Connect をインストールしたい場合は、必ず事前に Active Directory のアクセス許可を準備してください。 この ADSyncConfig モジュールは、Azure AD Connect のデプロイ後にアクセス許可を構成する場合も使用できます。
 
-![](media/how-to-connect-configure-ad-ds-connector-account/configure1.png)
+![AD DS アカウントの概要](media/how-to-connect-configure-ad-ds-connector-account/configure1.png)
 
 Azure AD Connect の高速インストールでは、自動的に生成されたアカウント (MSOL_nnnnnnnnnn) が、必要なすべてのアクセス許可が付与されて Active Directory に作成されます。そのため、組織単位または Azure AD に同期する特定の Active Directory オブジェクトでアクセス許可の継承がブロックされている場合を除き、この ADSyncConfig モジュールを使用する必要はありません。 
  

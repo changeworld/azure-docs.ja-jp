@@ -1,5 +1,5 @@
 ---
-title: Azure Virtual Machines で使用される Azure のセキュリティ機能 | Microsoft Docs
+title: Azure 仮想マシンで使用するセキュリティ機能 - Azure セキュリティ | Microsoft Docs
 description: この記事では、Azure 仮想マシンで使用できる Azure のコア セキュリティ機能の概要について説明します。
 services: security
 documentationcenter: na
@@ -12,16 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/30/2018
+ms.date: 04/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 15ac70891f23d95709d1998bca1ce29ad735cb87
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 3467050214cba6ce5723c2747d2c13e40e86609b
+ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56109080"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64872028"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Azure 仮想マシンのセキュリティの概要
+この記事では、仮想マシンで使用できるコアの Azure セキュリティ機能の概要を示します。
 
 Azure Virtual Machines を使うと、さまざまなコンピューティング ソリューションを俊敏にデプロイできます。 このサービスは、Microsoft Windows、Linux、Microsoft SQL Server、Oracle、IBM、SAP、および Azure BizTalk Services をサポートします。 したがって、ほぼすべてのオペレーティング システム上に任意のワークロードと言語を展開できます。
 
@@ -33,9 +34,7 @@ Azure によって、セキュリティが強化され、コンプライアン�
 * 機密データを暗号化します。
 * ネットワーク トラフィックをセキュリティで保護します。
 * 脅威を識別して検出します。
-* コンプライアンス要件を満たします。
-
-この記事の目的は、仮想マシンで使用できる Azure のコア セキュリティ機能の概要を説明することです。 各機能の詳細記事へのリンクが用意されているため、さらに詳しく学習できます。  
+* コンプライアンス要件を満たします。  
 
 ## <a name="antimalware"></a>マルウェア対策
 
@@ -77,14 +76,14 @@ Azure の Microsoft マルウェア対策を展開して有効にすると、次
 * [管理と API](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/management-apis)
 * [Microsoft の脅威保護](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/threat-protection-integration)
 
-詳細情報: 
+詳細情報:
 
 * [WDATP の使用を開始する](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/get-started)  
 * [WDATP 機能の概要](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/overview)  
 
 ## <a name="hardware-security-module"></a>ハードウェア セキュリティ モジュール
 
-キーのセキュリティを高めると、暗号化と認証による保護を強化できます。 大切な秘密情報とキーを Azure Key Vault に格納して、それらの管理とセキュリティ保護をシンプルにできます。 
+キーのセキュリティを高めると、暗号化と認証による保護を強化できます。 大切な秘密情報とキーを Azure Key Vault に格納して、それらの管理とセキュリティ保護をシンプルにできます。
 
 Key Vault では、オプションとして、キーを保管するためのハードウェア セキュリティ モジュール (HSM) が提供されています。HSM は FIPS 140-2 レベル 2 標準に準拠しています。 バックアップまたは [Transparent Data Encryption](https://msdn.microsoft.com/library/bb934049.aspx) 用の SQL Server 暗号化キーに加えて、アプリケーションのすべてのキーや秘密情報を Key Vault に格納できます。 保護されたこれらのアイテムに対するアクセス許可とアクセスは、[Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/) を通して管理されます。
 
@@ -133,7 +132,7 @@ Site Recovery:
 
 ## <a name="virtual-networking"></a>仮想ネットワーク
 
-仮想マシンには、ネットワーク接続が必要です。 その要件に対応するため、Azure では、仮想マシンによる Azure 仮想ネットワークへの接続が必要となります。 
+仮想マシンには、ネットワーク接続が必要です。 その要件に対応するため、Azure では、仮想マシンによる Azure 仮想ネットワークへの接続が必要となります。
 
 Azure 仮想ネットワークは、物理的な Azure ネットワーク ファブリック上に構築される論理的な構築物です。 各論理 Azure 仮想ネットワークは、他のすべての Azure 仮想ネットワークから分離されています。 この分離は、他の Microsoft Azure ユーザーによるデプロイ内のネットワーク トラフィックへのアクセスを防ぐ上で役立ちます。
 
@@ -169,14 +168,13 @@ Azure Virtual Machines は、FISMA、FedRAMP、HIPAA、PCI DSS レベル 1、そ
 
 ## <a name="confidential-computing"></a>Confidential Computing
 
-Confidential Computing は、技術的には仮想マシンのセキュリティの一部ではありません。仮想マシンのセキュリティのトピックは、"コンピューティング" のセキュリティの、高レベルのテーマに属します。 Confidential Computing は、カテゴリとしては、"コンピューティング" のセキュリティに属しています。 
+Confidential Computing は、技術的には仮想マシンのセキュリティの一部ではありません。仮想マシンのセキュリティのトピックは、"コンピューティング" のセキュリティの、高レベルのテーマに属します。 Confidential Computing は、カテゴリとしては、"コンピューティング" のセキュリティに属しています。
 
 Confidential Computing により、データが効率的な処理のために必要な "クリアの状態" にあるとき、データは信頼できる実行環境 https://en.wikipedia.org/wiki/Trusted_execution_environment (TEE - エンクレーブとも呼ばれます) 内で確実に保護されるようになっています。その例を、下の図に示しています。  
 
-TEE によって、外部からは、デバッガーを使用しても内部のデータや操作を見る方法がないようになっています。 それらは、承認されたコードのみがデータへのアクセスを許可されるようにさえしています。 コードが変更されたり改ざんされたりしている場合、操作は拒否され、環境が無効にされます。 TEE は、その内部でのコードの実行全体を通して、これらの保護を強制します。 
+TEE によって、外部からは、デバッガーを使用しても内部のデータや操作を見る方法がないようになっています。 それらは、承認されたコードのみがデータへのアクセスを許可されるようにさえしています。 コードが変更されたり改ざんされたりしている場合、操作は拒否され、環境が無効にされます。 TEE は、その内部でのコードの実行全体を通して、これらの保護を強制します。
 
 詳細情報:
 
 * [Azure Confidential Computing の概要](https://azure.microsoft.com/blog/introducing-azure-confidential-computing/)  
 * [Azure Confidential Computing](https://azure.microsoft.com/blog/azure-confidential-computing/)  
-

@@ -1,25 +1,19 @@
 ---
-title: アプリケーションの発行を要求する | Microsoft Docs
+title: アプリケーションの発行を要求する
 description: 。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: pbutlerm
 manager: Ricardo.Villalobos
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: a3243310e1639591b19c1f426285d8ee6d8dddaa
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.author: pabutler
+ms.openlocfilehash: e272d051af6070007bcebc0f697d2854cd721497
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48807209"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64943581"
 ---
 # <a name="request-to-publish-the-app"></a>アプリの発行を要求する
 

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/20/2018
+ms.date: 04/29/2019
 ms.author: rkarlin
-ms.openlocfilehash: 9b63fb963408b8f22453c7ea78e36a49402273a7
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: e2bcd92ffc8799b2edf04251b6ce160e96c7609c
+ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56105724"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64875599"
 ---
 # <a name="customize-the-sql-information-protection-policy-in-azure-security-center-preview"></a>Azure Security Center 上で SQL 情報保護ポリシーをカスタマイズする (プレビュー)
  
@@ -41,12 +41,11 @@ Information Protection には、既定で使用されるラベルと情報の種
 ## <a name="customize-the-information-protection-policy"></a>情報の保護ポリシーをカスタマイズする
 Azure テナントの情報保護ポリシーをカスタマイズするには、[テナントのルート管理グループに対する管理特権](security-center-management-groups.md)が必要です。 
  
-1. Security Center のメイン メニューで、**[セキュリティ ポリシー]** を選択します。
-2. **[階層ビュー (プレビュー)]** を選択し、**[Tenant Root Group]\(テナント ルート グループ\)** の下の **[設定の編集]** をクリックします。
- 
+1. Security Center のメイン メニューの **[リソース セキュリティの検疫]** の下で、 **[データ + ストレージ]** に移動して、 **[SQL Information Protection]** ボタンをクリックします。
+
    ![情報保護ポリシーを構成する](./media/security-center-info-protection-policy/security-policy.png) 
  
-3. **[ポリシー コンポーネント]** の下の **[Information Protection]** をクリックします。 **[Information protection settings]\(Information Protection の設定\)** ページで、現在のラベル セットを表示できます。 これらは、データの機密レベルの分類に使用される主な分類属性です。 ここから、テナントの **[Information protection labels]\(Information Protection ラベル\)** と **[情報の種類]** を構成できます。 
+2. **[SQL Information Protection]** ページで、ラベルの現行セットを表示することができます。 これらは、データの機密レベルの分類に使用される主な分類属性です。 ここから、テナントの **[Information protection labels]\(Information Protection ラベル\)** と **[情報の種類]** を構成できます。 
  
 ### <a name="customizing-labels"></a>ラベルのカスタマイズ
  
@@ -56,7 +55,7 @@ Azure テナントの情報保護ポリシーをカスタマイズするには�
  
    ![機密ラベルの構成](./media/security-center-info-protection-policy/config-sensitivity-label.png)
  
-4. ラベルは、機密度の昇順で一覧表示されます。 ラベルの順位付けを変更するには、テーブル内でラベルをドラッグして並べ替えるか、**[上へ移動]** と **[下へ移動]** を使用して順序を変更します。 
+4. ラベルは、機密度の昇順で一覧表示されます。 ラベルの順位付けを変更するには、テーブル内でラベルをドラッグして並べ替えるか、 **[上へ移動]** と **[下へ移動]** を使用して順序を変更します。 
  
     ![情報保護ポリシーを構成する](./media/security-center-info-protection-policy/move-up.png)
  
@@ -71,8 +70,8 @@ Azure テナントの情報保護ポリシーをカスタマイズするには�
     ![情報保護ポリシーを構成する](./media/security-center-info-protection-policy/info-types.png)
  
 3. 追加の検索パターン文字列の追加、既存の文字列の一部の無効化、または説明の変更により、組み込みの **[情報の種類]** を構成することもできます。 組み込みの **[情報の種類]** を削除したり、その名前を編集したりすることはできません。 
-4. **[情報の種類]** は、検出の順位付けの昇順で一覧表示されます。つまり、リスト内の上位の種類の照合が最初に試みられます。 情報の種類間で順位を変更するには、テーブル内で種類を適切な位置にドラッグするか、**[上へ移動]** と **[下へ移動]** を使用して順序を変更します。 
-5. 完了したら、**[OK]** をクリックします。
+4. **[情報の種類]** は、検出の順位付けの昇順で一覧表示されます。つまり、リスト内の上位の種類の照合が最初に試みられます。 情報の種類間で順位を変更するには、テーブル内で種類を適切な位置にドラッグするか、 **[上へ移動]** と **[下へ移動]** を使用して順序を変更します。 
+5. 完了したら、 **[OK]** をクリックします。
 6. 情報の種類の管理が完了したら、特定のラベルの **[構成]** をクリックし、情報の種類を適宜追加または削除することで、適切なラベルに適切な種類を関連付けてください。
 7. メインの **[ラベル]** ブレードで **[保存]** をクリックして、すべての変更を適用します。
  

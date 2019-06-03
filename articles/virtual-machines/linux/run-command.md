@@ -5,15 +5,15 @@ services: automation
 ms.service: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/25/2018
+ms.date: 04/26/2019
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: e865d4e9cbad2c2064d961bc6e407440ce8556fc
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: fe0547c1ddb89b8d9ab3e876e83bbdea17a58743
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158807"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64570586"
 ---
 # <a name="run-shell-scripts-in-your-linux-vm-with-run-command"></a>実行コマンドを使用して Linux VM でシェル スクリプトを実行する
 
@@ -54,16 +54,16 @@ az vm run-command invoke -g myResourceGroup -n myVm --command-id RunShellScript 
 
 ## <a name="azure-portal"></a>Azure ポータル
 
-[Azure](https://portal.azure.com) で VM に移動し、**[操作]** で **[実行コマンド]** を選択します。 VM 上で実行できるコマンドの一覧が表示されます。
+[Azure](https://portal.azure.com) で VM に移動し、 **[操作]** で **[実行コマンド]** を選択します。 VM 上で実行できるコマンドの一覧が表示されます。
 
 ![実行コマンドの一覧](./media/run-command/run-command-list.png)
 
-実行するコマンドを選択します。 コマンドによっては、省略可能または必須の入力パラメーターがある場合があります。 これらのコマンドの場合、パラメーターは、入力値を指定するためのテキスト フィールドとして表示されます。 コマンドごとに、**[スクリプトの表示]** を展開することによって、実行されるスクリプトを表示できます。 **RunShellScript** は、独自のカスタム スクリプトを指定できる点で他のコマンドとは異なります。
+実行するコマンドを選択します。 コマンドによっては、省略可能または必須の入力パラメーターがある場合があります。 これらのコマンドの場合、パラメーターは、入力値を指定するためのテキスト フィールドとして表示されます。 コマンドごとに、 **[スクリプトの表示]** を展開することによって、実行されるスクリプトを表示できます。 **RunShellScript** は、独自のカスタム スクリプトを指定できる点で他のコマンドとは異なります。
 
 > [!NOTE]
 > 組み込みコマンドは編集できません。
 
-コマンドを選択したら、**[実行]** をクリックしてスクリプトを実行します。 スクリプトが実行され、完了すると、出力ウィンドウで出力および発生したエラーが返されます。 次のスクリーンショットは、**ifconfig** コマンドの実行の出力例を示しています。
+コマンドを選択したら、 **[実行]** をクリックしてスクリプトを実行します。 スクリプトが実行され、完了すると、出力ウィンドウで出力および発生したエラーが返されます。 次のスクリーンショットは、**ifconfig** コマンドの実行の出力例を示しています。
 
 ![実行コマンド スクリプトの出力](./media/run-command/run-command-script-output.png)
 
@@ -71,16 +71,16 @@ az vm run-command invoke -g myResourceGroup -n myVm --command-id RunShellScript 
 
 この表は、Linux VM で使用可能なコマンドの一覧を示しています。 **RunShellScript** コマンドを使用すると、必要な任意のカスタム スクリプトを実行できます。
 
-|**名前**|**説明**|
+|**Name**|**説明**|
 |---|---|
 |**RunShellScript**|Linux シェル スクリプトを実行します。|
 |**ifconfig**| すべてのネットワーク インターフェイスの構成を取得します。|
 
 ## <a name="limiting-access-to-run-command"></a>実行コマンドへのアクセスの制限
 
-実行コマンドを一覧表示したり、コマンドの詳細を表示したりするには、組み込みの[閲覧者](../../role-based-access-control/built-in-roles.md#reader)ロール以上が持っている `Microsoft.Compute/locations/runCommands/read` アクセス許可が必要です。
+実行コマンドを一覧表示したり、コマンドの詳細を表示したりするには、組み込みの[閲覧者](../../role-based-access-control/built-in-roles.md#reader)ロール以上が持っている `Microsoft.Compute/locations/runCommands/read` アクセス許可がサブスクリプション レベルで必要です。
 
-コマンドを実行するには、[共同作成者](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)ロール以上が持っている `Microsoft.Compute/virtualMachines/runCommand/action` アクセス許可が必要です。
+コマンドを実行するには、[仮想マシン共同作成者](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)ロール以上が持っている `Microsoft.Compute/virtualMachines/runCommand/action` アクセス許可がサブスクリプション レベルで必要です。
 
 実行コマンドを使用するには、いずれかの[組み込み](../../role-based-access-control/built-in-roles.md)ロールを使用するか、または[カスタム](../../role-based-access-control/custom-roles.md) ロールを作成することができます。
 

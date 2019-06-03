@@ -23,8 +23,8 @@ ms.locfileid: "58006179"
 このチュートリアルに含まれるタスクは次のとおりです。
 
 > [!div class="checklist"]
-> * HCL (HashiCorp 言語) を使用して、ハブ スポーク トポロジにハブ VNet を実装する
-> * Terraform プランを使用して、デプロイするリソースを確認する
+> * HCL (HashiCorp 言語) を使用して、ハブ スポーク トポロジでハブ VNet を実装する
+> * Terraform plan を使用して、デプロイするリソースを確認する
 > * Terraform apply を使用して、Azure にリソースを作成する
 > * 異なるネットワークの間の接続を確認する
 > * Terraform を使用して、すべてのリソースを破棄する

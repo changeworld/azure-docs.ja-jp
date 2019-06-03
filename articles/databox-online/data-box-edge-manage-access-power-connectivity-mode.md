@@ -1,5 +1,5 @@
 ---
-title: Microsoft Azure Data Box Edge デバイスのアクセス、電源、接続モード | Microsoft Docs
+title: Azure Data Box Edge デバイスへのアクセス、＠＠能力、および接続モード | Microsoft Docs
 description: Azure へのデータ転送に役立つ Azure Data Box Edge デバイスのアクセス、電源、および接続モードを管理する方法について説明します
 services: databox
 author: alkohli
@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 813563b500b9365289285a89536f2724fb87acad
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.openlocfilehash: 5fbe8f3eb05ac60918e488c68869c3fe44051a3f
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58417804"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64924362"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-edge"></a>Azure Data Box Edge のアクセス、電源、接続モードを管理する
 
@@ -35,7 +35,7 @@ Data Box Edge デバイスへのアクセスは、デバイスのパスワード
 
 デバイスのパスワードを変更するには、ローカル UI で次の手順のようにします。
 
-1. ローカル Web UI で、**[メンテナンス] > [Password change]\(パスワード変更\)** に移動します。
+1. ローカル Web UI で、 **[メンテナンス] > [Password change]\(パスワード変更\)** に移動します。
 2. 現在のパスワードを入力し、新しいパスワードを入力ます。 指定するパスワードは 8 ～ 16 文字にする必要があります。 パスワードには、大文字、小文字、数字、および特殊文字のうち 3 種類の文字を使用する必要があります。 新しいパスワードを確認入力します。
 
     ![パスワードの変更](media/data-box-edge-manage-access-power-connectivity-mode/change-password-1.png)
@@ -46,7 +46,7 @@ Data Box Edge デバイスへのアクセスは、デバイスのパスワード
 
 リセット ワークフローでは、ユーザーは古いパスワードを思い出す必要がなく、パスワードを忘れた場合に便利です。 このワークフローは、Azure portal で実行します。
 
-1. Azure portal で、**[概要] > [管理パスワードのリセット]** に移動します。
+1. Azure portal で、 **[概要] > [管理パスワードのリセット]** に移動します。
 
     ![[パスワードのリセット]](media/data-box-edge-manage-access-power-connectivity-mode/reset-password-1.png)
 
@@ -71,8 +71,8 @@ Data Box Edge デバイスへのアクセスは、デバイスのパスワード
 
 デバイスのモードを変更するには、次の手順のようにします。
 
-1. デバイスのローカル Web UI で、**[構成] > [クラウドの設定]** に移動します。
-2. デバイスを操作するモードをドロップダウン リストから選びます。 **[Fully connected]\(完全接続\)**、**[Partially connected]\(部分接続\)**、**[Fully disconnected]\(完全切断\)** から選択することができます。 デバイスを部分切断モードで実行するには、**[Azure portal management]\(Azure portal 管理\)** を有効にします。
+1. デバイスのローカル Web UI で、 **[構成] > [クラウドの設定]** に移動します。
+2. デバイスを操作するモードをドロップダウン リストから選びます。 **[Fully connected]\(完全接続\)** 、 **[Partially connected]\(部分接続\)** 、 **[Fully disconnected]\(完全切断\)** から選択することができます。 デバイスを部分切断モードで実行するには、 **[Azure portal management]\(Azure portal 管理\)** を有効にします。
 
     ![接続モード](media/data-box-edge-manage-access-power-connectivity-mode/connectivity-mode.png)
  
@@ -80,12 +80,12 @@ Data Box Edge デバイスへのアクセスは、デバイスのパスワード
 
 ローカル Web UI を使用して、物理デバイスをシャットダウンまたは再起動できます。 再起動する前に、データ サーバーの共有をオフラインにしてから、デバイスをオフラインにすることをお勧めします。 この操作により、データ破損の可能性を最小限に抑えられます。
 
-1. ローカル Web UI で、**[メンテナンス] > [Power settings]\(電源設定\)** に移動します。
-2. 何を行うかに応じて、**[シャットダウン]** または **[再起動]** を選択します。
+1. ローカル Web UI で、 **[メンテナンス] > [Power settings]\(電源設定\)** に移動します。
+2. 何を行うかに応じて、 **[シャットダウン]** または **[再起動]** を選択します。
 
     ![電源設定](media/data-box-edge-manage-access-power-connectivity-mode/shut-down-restart-1.png)
 
-3. 確認を求められたら、**[はい]** を選択して続行します。
+3. 確認を求められたら、 **[はい]** を選択して続行します。
 
 > [!NOTE]
 > 物理デバイスをシャット ダウンした場合、デバイスの電源を入れるには、電源ボタンを押す必要があります。

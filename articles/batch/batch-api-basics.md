@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 12/18/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 1107842444ad0ac77ab890f07e65c8b489030461
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.openlocfilehash: 1fbe5b0a49960248133c35fb4a0401a31b95fb35
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59617485"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64700928"
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Batch を使って大規模な並列コンピューティング ソリューションを開発する
 
@@ -87,7 +87,7 @@ Batch では、次の Azure ストレージ アカウントの種類がサポー
 
 ストレージ アカウントについて詳しくは、「[Azure ストレージ アカウントの概要](../storage/common/storage-account-overview.md)」をご覧ください。
 
-ストレージ アカウントは、Batch アカウントの作成時に (または後で) Batch アカウントに関連付けることができます。 ストレージ アカウントを選択するときに、コストとパフォーマンスの要件を検討してください。 たとえば、GPv2 アカウントおよび BLOB ストレージ アカウントのオプションでは、サポートされる[容量とスケーラビリティの上限](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/)が GPv1 よりも高くなっています  (容量の上限の引き上げを希望する場合、Azure サポートにお問い合わせください)。これらのアカウント オプションでは、ストレージ アカウントからの読み取りまたはストレージ アカウントへの書き込みを行う多数の並列タスクが含まれた、Batch ソリューションのパフォーマンスを向上させることができます。
+ストレージ アカウントは、Batch アカウントの作成時に (または後で) Batch アカウントに関連付けることができます。 ストレージ アカウントを選択するときに、コストとパフォーマンスの要件を検討してください。 たとえば、GPv2 アカウントおよび BLOB ストレージ アカウントのオプションでは、サポートされる[容量とスケーラビリティの上限](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/)が GPv1 よりも高くなっています (容量の上限の引き上げを希望する場合、Azure サポートにお問い合わせください)。これらのアカウント オプションでは、ストレージ アカウントからの読み取りまたはストレージ アカウントへの書き込みを行う多数の並列タスクが含まれた、Batch ソリューションのパフォーマンスを向上させることができます。
 
 ## <a name="compute-node"></a>コンピューティング ノード
 コンピューティング ノードは、アプリケーションの一部のワークロードの処理に特化した Azure 仮想マシン (VM) またはクラウド サービス VM です。 ノードのサイズによって、CPU コアの数、メモリ容量、およびノードに割り当てられるローカル ファイル システムのサイズが決まります。 Azure Cloud Services か、[Azure Virtual Machines Marketplace][vm_marketplace] のイメージを使用して Windows ノードまたは Linux ノードのプールを作成することができます。 これらの各オプションの詳細については、以下の「 [プール](#pool) 」セクションを参照してください。
@@ -132,7 +132,7 @@ Batch プールを作成するときは、Azure 仮想マシン構成と、プ�
 
 - **仮想マシン構成**: プールが Azure 仮想マシンで構成されるように指定します。 これらの VM は、Linux イメージまたは Windows イメージのいずれかから作成できます。 
 
-    仮想マシン構成に基づいてプールを作成する場合は、ノードのサイズと使用するイメージのソースだけでなく、ノードにインストールする**仮想マシン イメージの参照**と Batch **ノード エージェント SKU** も指定する必要があります。 プールに関するこれらのプロパティの指定の詳細については、「 [Azure Batch プールの Linux コンピューティング ノードのプロビジョニング](batch-linux-nodes.md)」を参照してください。 必要に応じて、Marketplace イメージから作成される VM をプールするために 1 つまたは複数の空のデータ ディスクをアタッチするか、VM の作成に使用するカスタム イメージにデータ ディスクを含めることができます。
+    仮想マシン構成に基づいてプールを作成する場合は、ノードのサイズと使用するイメージのソースだけでなく、ノードにインストールする**仮想マシン イメージの参照**と Batch **ノード エージェント SKU** も指定する必要があります。 プールに関するこれらのプロパティの指定の詳細については、「 [Azure Batch プールの Linux コンピューティング ノードのプロビジョニング](batch-linux-nodes.md)」を参照してください。 必要に応じて、Marketplace イメージから作成される VM をプールするために 1 つまたは複数の空のデータ ディスクをアタッチするか、VM の作成に使用するカスタム イメージにデータ ディスクを含めることができます。 データ ディスクを含める場合は、それらを使用する VM 内からディスクを マウントおよびフォーマットする必要があります。
 
 - **Cloud Services 構成**: プールが Microsoft Azure Cloud Services ノードで構成されるように指定します。 Cloud Services では Windows コンピューティング ノード "*のみ*" が提供されます。
 

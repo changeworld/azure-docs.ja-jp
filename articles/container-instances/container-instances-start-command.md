@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: danlep
-ms.openlocfilehash: 78136a081e52ef3f12d672d01449ce616534462e
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: da94a4c79694f511d41e5c8dda8c786fc7049726
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60011012"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64569643"
 ---
 # <a name="set-the-command-line-in-a-container-instance-to-override-the-default-command-line-operation"></a>コンテナー インスタンスにコマンド ラインを設定して既定のコマンド ライン操作をオーバーライドする
 
@@ -24,7 +24,15 @@ ms.locfileid: "60011012"
 
 * 既定では、このコマンド ラインでは、コンテナーで*シェルを使用せずに開始する単一のプロセス*を指定します。 たとえば、コマンド ラインにより Python スクリプトまたは実行ファイルを実行できます。 
 
-* 複数のコマンドを実行するには、コンテナーのオペレーティング システムでシェル環境を設定することで、コマンド ラインを開始します (例: `bin/sh`、`/bin/bash`、`cmd`)。 シェルの表記規則に従って、複数のコマンドを順番に実行します。
+* 複数のコマンドを実行するには、コンテナーのオペレーティング システムでサポートされるシェル環境を設定することで、コマンド ラインを開始します。 次に例を示します。
+
+  |オペレーティング システム  |既定のシェル  |
+  |---------|---------|
+  |Ubuntu     |   `/bin/bash`      |
+  |Alpine     |   `/bin/sh`      |
+  |Windows     |    `cmd`     |
+
+  シェルの表記規則に従って、複数のコマンドを順番に実行します。
 
 * コンテナーの構成によっては、コマンドライン実行可能ファイルへの完全パスまたは引数を設定する必要があります。
 
@@ -50,8 +58,8 @@ ms.locfileid: "60011012"
 
 |    |  Azure CLI   | ポータル | Template | 
 | ---- | ---- | --- | --- |
-| 単一のコマンド | `--command-line "python myscript.py arg1 arg2"` | **[Command override]\(コマンドのオーバーライド\)**: `python, myscript.py, arg1, arg2` | `"command": ["python", "myscript.py", "arg1", "arg2"]` |
-| 複数のコマンド | `--command-line "/bin/bash -c 'mkdir test; touch test/myfile; tail -f /dev/null'"` |**[Command override]\(コマンドのオーバーライド\)**: `/bin/bash, -c, mkdir test; touch test/myfile; tail -f /dev/null` | `"command": ["/bin/bash", "-c", "mkdir test; touch test/myfile; tail -f /dev/null"]` |
+| 単一のコマンド | `--command-line "python myscript.py arg1 arg2"` | **[Command override]\(コマンドのオーバーライド\)** : `python, myscript.py, arg1, arg2` | `"command": ["python", "myscript.py", "arg1", "arg2"]` |
+| 複数のコマンド | `--command-line "/bin/bash -c 'mkdir test; touch test/myfile; tail -f /dev/null'"` |**[Command override]\(コマンドのオーバーライド\)** : `/bin/bash, -c, mkdir test; touch test/myfile; tail -f /dev/null` | `"command": ["/bin/bash", "-c", "mkdir test; touch test/myfile; tail -f /dev/null"]` |
 
 ## <a name="azure-cli-example"></a>Azure CLI の例
 

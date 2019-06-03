@@ -1,22 +1,28 @@
 ---
 title: Azure Maps でサポートされている言語 | Microsoft Docs
 description: Azure Maps のサービスでサポートされている言語について説明します
-author: juliekohler
-ms.author: julieko
-ms.date: 04/08/2019
+author: walsehgal
+ms.author: v-musehg
+ms.date: 04/25/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: ad5913224724dcb9cb9033d89010cefb4d9e1f89
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 1928185521419006a487a933e2ecba79894a09d3
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59784162"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64686785"
 ---
-# <a name="azure-maps-supported-languages"></a>Azure Maps でサポートされている言語
-Azure Maps は、サービス全体にわたってさまざまな言語にローカライズされています。  次の表は、各サービスでサポートされている言語コードを示しています。  
+# <a name="localization-support-in-azure-maps"></a>Azure Maps でのローカライズのサポート
+
+Azure Maps は、さまざまな言語および国/地域に基づくビューをサポートします。 このアーティクルでは、サポートされる言語と、Azure Maps の実装に役立つビューを提供します。
+
+
+## <a name="azure-maps-supported-languages"></a>Azure Maps でサポートされている言語
+
+Azure Maps は、サービス全体にわたってさまざまな言語にローカライズされています。 次の表は、各サービスでサポートされている言語コードを示しています。  
   
 
 | ID         | Name                   |  マップ | Search | ルーティング | トラフィック インシデント | JS マップ コントロール | タイム ゾーン |
@@ -75,3 +81,30 @@ Azure Maps は、サービス全体にわたってさまざまな言語にロー
 | tr-TR      | トルコ語                |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
 | uk-UA      | ウクライナ語               |       |    ✓   |         |                   |                |     ✓     |
 | vi-VN      | ベトナム語             |       |    ✓   |         |                   |                |     ✓     |
+
+
+## <a name="azure-maps-supported-views"></a>Azure Maps でサポートされているビュー
+
+Azure Maps のビュー パラメーター (「ユーザーの地域のパラメーター」とも呼ばれる) は 2 文字 ISO 3166 国番号であり、その国/地域のマップに対し地域的に分散する境界やラベルのどのセットをマップ上に表示するのが適切かを指定します。  既定ではビューのパラメータは **"Unified"** に設定されています。  ビューの一覧に示されていない国/地域は、既定で"Unified"ビューに設定されます。 ユーザーの場所を特定し、その場所を正しく View パラメーターを設定するのはユーザーの責任です。 Azure Maps の View パラメーターは、Azure Maps へのアクセスを承認されたマップ、イメージ、およびその他のデータとサード パーティ コンテンツを表示できる国のマッピングに関する法律など、該当する法律に準拠していなければなりません。
+
+次の表に、サポートされるビューを示します。
+
+| 表示         | 説明                            |  マップ | Search | JS マップ コントロール |
+|--------------|----------------------------------------|:-----:|:------:|:--------------:|
+| AE           | アラブ首長国連邦、AE    |   ✓   |        |     ✓          |
+| AR           | アルゼンチン (アルゼンチン ビュー)           |   ✓   |    ✓   |     ✓          |
+| BH           | バーレーン (アラビアのビュー)                 |   ✓   |        |     ✓          |
+| IN           | インド (インド ビュー)                    |   ✓   |   ✓     |     ✓          |
+| IQ           | イラク (アラビアのビュー)                    |   ✓   |        |     ✓          |
+| JO           | ヨルダン (アラビアのビュー)                  |   ✓   |        |     ✓          |
+| KW           | クウェート (アラビアのビュー)                  |   ✓   |        |     ✓          |
+| LB           | レバノン (アラビアのビュー)                 |   ✓   |        |     ✓          |
+| MA           | モロッコ (モロッコのビュー)                |   ✓   |   ✓     |     ✓          |
+| OM           | オマーン (アラビアのビュー)                    |   ✓   |        |     ✓          |
+| PK           | パキスタン (パキスタンのビュー)              |   ✓   |    ✓    |     ✓          |
+| PS           | パレスチナ自治政府 (アラビアのビュー)    |   ✓   |        |     ✓          |
+| QA           | カタール (アラビアのビュー)                   |   ✓   |        |     ✓          |
+| SA           | サウジアラビア (アラビアのビュー)            |   ✓   |        |     ✓          |
+| SY           | シリア (アラビアのビュー)                   |   ✓   |        |     ✓          |
+| YE           | イエメン (アラビアのビュー)                   |   ✓   |        |     ✓          |
+| 統一      | 統一されたビュー (その他)                  |   ✓   |   ✓     |     ✓          |

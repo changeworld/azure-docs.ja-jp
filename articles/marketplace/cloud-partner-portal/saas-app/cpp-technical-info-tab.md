@@ -1,25 +1,18 @@
 ---
-title: Azure SaaS アプリケーション オファーの技術関連の構成 | Microsoft Docs
+title: Azure SaaS アプリケーション オファーの技術関連の構成 | Azure Marketplace
 description: Azure Marketplace の SaaS アプリケーション オファーに対する技術関連の情報を構成します。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: dan-wesley
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
-ms.date: 12/06/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 891d9b7b34e3d30efb46b69ef1aa75566fe634c4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 04/24/2019
+ms.author: pabutler
+ms.openlocfilehash: 46dcf4aeb7ddb67028eb23dde9236f2b7709f86d
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58120756"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64941721"
 ---
 # <a name="saas-application-technical-info-tab"></a>SaaS アプリケーションの [Technical Info]\(技術情報\) タブ
 
@@ -27,16 +20,19 @@ ms.locfileid: "58120756"
 
 ![[Technical Configuration]\(技術構成\) フォーム](./media/saas-techinfo-techconfig.png)
 
+
 ## <a name="technical-configuration-form"></a>[Technical Configuration]\(技術構成\) フォーム
 
 このフォームには 2 つのフィールドがあります。[Product]\(製品\) と [Call to action]\(勧誘方法\) です。
 
+
 ### <a name="product-field"></a>[Product]\(製品\) フィールド
 
 SaaS アプリは、次の両方のネットショップに対して提供できます。
-- ビジネス ユーザー向けの場合は、**[Listing]\(リスト掲載\)** オプションを選択します。
-- IT 管理者ユーザー向けの場合は、**[Sell through Microsoft]\(Microsoft を通じて販売\)** を選択します。
+- ビジネス ユーザー向けの場合は、 **[Listing]\(リスト掲載\)** オプションを選択します。
+- IT 管理者ユーザー向けの場合は、 **[Sell through Microsoft]\(Microsoft を通じて販売\)** を選択します。
 作成している SaaS アプリがどちらの種類に該当するかを判断するときは、「[ネットショップの選択について理解する](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type#understand-storefront-selection)」を参考にしてください。
+
 
 #### <a name="sell-through-microsoft"></a>Microsoft を通じた販売
 このエクスペリエンスを作成するには、次の情報を構成する必要があります。
@@ -46,18 +42,19 @@ SaaS アプリは、次の両方のネットショップに対して提供でき
 
   ![[Sell through Microsoft]\(Microsoft を通じて販売\) フォーム](./media/saas-techinfo-sellthrough-ms.png)
 
-次の表では、Microsoft を通じた販売のために必要なフィールドについて説明します。
+次の表では、**Microsoft を通じた販売**のために必要なフィールドについて説明します。  必須フィールドはアスタリスク (*) で示されます。
 
 |  **フィールド名**   |  **説明**  |
 |  ---------------  |  ---------------  |
-|    Preview Subscription IDs (プレビュー サブスクリプション ID)               |    一般に公開する前にプレビューでオファーをテストするために使用されるすべての Azure サブスクリプション識別子。               |
-|     Getting Started Instructions (使用開始時の説明)              |   SaaS アプリに接続するときに役立つ、顧客と共有する指示。 基本的な HTML タグを使用できます (例: &lt;p&gt;、&lt;h1&gt;、&lt;li&gt; など)。                |
-|    Landing Page URL (ランディング ページの URL)  |   Azure portal から取得した後の顧客に対して表示するサイトの URL。 この URL は、Microsoft との取引を容易にするための接続 API を受信するエンドポイントにもなります。                |
-|  Connection Webhook (接続 Webhook)    |  Microsoft が顧客に代わってパートナーに送信する必要があるすべての非同期イベント (例:Azure サブスクリプションが無効になりました) のために、パートナーは Microsoft に接続 Webhook を提供する必要があります。 Webhook システムをまだ導入していない場合、最も簡単な構成は、送信されたイベントをリッスンする HTTP エンドポイント ロジック アプリを作成し、イベントを適切に処理することです。 詳しくは、「<a href="https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint">ロジック アプリで HTTP エンドポイントを通じてワークフローを呼び出し、トリガーし、入れ子にする</a>」をご覧ください                |
-|  Azure AD Tenant ID and App ID (Azure AD のテナント ID とアプリ ID)      |   Azure portal 内では、Microsoft の 2 つのサービス間の接続が認証済みの通信の背後で行われることを Microsoft が検証できるように、パートナーは Active Directory アプリを作成する必要があります。 これらのフィールドについては、AD アプリを作成し、対応するテナント ID とアプリ ID を貼り付ける必要があります。 アプリ ID はお使いの publisherID に関連付けられていることに注意してください。 そのため、すべてのオファーでアプリ ID が同じであることを確認してください。             |
+|  **[Preview Subscription IDs]\(プレビュー サブスクリプション ID\)\***   |  一般に公開する前にプレビューでオファーをテストするために使用されるすべての Azure サブスクリプション識別子。  |
+|  **[Preview AAD/MSA accounts]\(プレビュー AAD/MSA アカウント\)\***   |  プレビューへのアクセスを許可する、コンマで区切られた Azure AD/MSA アカウント。 |
+|  **[Getting Started Instructions]\(使用開始時の説明\)** |  SaaS アプリに接続するときに役立つ、顧客と共有する指示。 基本的な HTML タグを使用できます (例: &lt;p&gt;、&lt;h1&gt;、&lt;li&gt; など)。    |
+|  **[Landing Page URL]\(ランディング ページの URL\)\***           |  Azure portal から取得した後の顧客に対して表示するサイトの URL。 この URL は、Microsoft との取引を容易にするための接続 API を受信するエンドポイントにもなります。   |
+| **[Connection Webhook]\(接続 Webhook\)\***            |  Microsoft が顧客に代わってパートナーに送信する必要があるすべての非同期イベント (例:Azure サブスクリプションが無効になりました) のために、パートナーは Microsoft に接続 Webhook を提供する必要があります。 Webhook システムをまだ導入していない場合、最も簡単な構成は、送信されたイベントをリッスンする HTTP エンドポイント ロジック アプリを作成し、イベントを適切に処理することです。 詳しくは、「<a href="https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint">ロジック アプリで HTTP エンドポイントを通じてワークフローを呼び出し、トリガーし、入れ子にする</a>」をご覧ください    |
+|  **[Azure AD Tenant ID]\(Azure AD テナント ID\)\*** および **[App ID]\(アプリ ID\)\***      |   Azure portal 内では、Microsoft の 2 つのサービス間の接続が認証済みの通信の背後で行われることを Microsoft が検証できるように、パートナーは Active Directory アプリを作成する必要があります。 これらのフィールドについては、AD アプリを作成し、対応するテナント ID とアプリ ID を貼り付ける必要があります。 アプリ ID はお使いの publisherID に関連付けられていることに注意してください。 そのため、すべてのオファーでアプリ ID が同じであることを確認してください。   |
+|   |   |
 
-
-最後に、**[Sell through Microsoft]\(Microsoft を通じて販売\)** を選択した場合、[新しいプラン] に **[プラン]** という名前の別のタブが表示されます。 
+最後に、 **[Sell through Microsoft]\(Microsoft を通じて販売\)** を選択した場合、[新しいプラン] に **[プラン]** という名前の別のタブが表示されます。 
 
 [[プラン] タブ](./cpp-plans-tab.md)には、SaaS アプリでサポートされる特定のプランとそれに対応する価格が一覧表示されます。 現時点では、月額料金と、1 または 3 か月間の無料アクセスの許可に対応しています。 これらのプランと価格は、パートナーの SaaS アプリ サイトで示されているプランおよび価格と正確に一致する必要があります。
 

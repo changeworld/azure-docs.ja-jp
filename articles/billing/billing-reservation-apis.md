@@ -1,24 +1,22 @@
 ---
 title: Azure の予約の自動化に関する API | Microsoft Docs
 description: 予約の情報をプログラムで取得するために使用できる Azure API について説明します。
-documentationcenter: ''
 author: yashesvi
 manager: yashesvi
-editor: ''
 tags: billing
 ms.service: billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/13/2019
+ms.date: 04/25/2019
 ms.author: banders
-ms.openlocfilehash: 246278df61d4f13e2634a1cdfc5ff6b635cecbbf
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 6d63f9a393dbb40c3b0952eba9ab9449fd7b558d
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60008214"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64702618"
 ---
 # <a name="apis-for-azure-reservation-automation"></a>Azure の予約の自動化に関する API
 
@@ -32,7 +30,38 @@ Consumption API の使用状況の詳細を使って、リソースの使用状�
 
 ## <a name="buy-a-reservation"></a>予約の購入
 
-現在は、プログラムで予約を購入することはできません。 予約の購入については、以下の記事をご覧ください。
+REST API を使用して、Azure の予約やソフトウェア プランをプログラムから購入できるようになりました。 詳細は、「[Reservation Order - Purchase API](/rest/api/reserved-vm-instances/reservationorder/purchase)」 (予約注文 - 購入 API) を参照してください。
+
+REST API を使用して購入する場合のサンプル要求を以下に示します。
+
+```
+PUT https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/<GUID>?api-version=2019-04-01
+```
+
+要求本文:
+
+```
+{
+ "sku": {
+    "name": "standard_D1"
+  },
+ "location": "westus",
+ "properties": {
+    "reservedResourceType": "VirtualMachines",
+    "billingScopeId": "/subscriptions/ed3a1871-612d-abcd-a849-c2542a68be83",
+    "term": "P1Y",
+    "quantity": "1",
+    "displayName": "TestReservationOrder",
+    "appliedScopes": null,
+    "appliedScopeType": "Shared",
+    "reservedResourceProperties": {
+      "instanceFlexibility": "On"
+    }
+  }
+}
+```
+
+予約は Azure portal でも購入できます。 詳細については、次の記事を参照してください。
 
 サービス プラン:
 - [仮想マシン](../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/billing/TOC.json)

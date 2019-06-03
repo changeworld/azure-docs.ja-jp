@@ -1,25 +1,18 @@
 ---
-title: Dynamics 365 for Customer Engagement オファーの前提条件 - Azure Marketplace | Microsoft Docs
+title: Dynamics 365 for Customer Engagement オファーの前提条件 | Azure Marketplace
 description: Azure Marketplace で Azure アプリケーション オファーを発行するための前提条件。
 services: Dynamics 365 for Customer Engagement offer, Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 03/13/2019
-ms.author: pbutlerm
-ms.openlocfilehash: b08312040f9702b8a9100886c198138431012e3f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: pabutler
+ms.openlocfilehash: 0b14180c894977d822aa30ea5f46a2e21e247dc1
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58007377"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64942330"
 ---
 # <a name="dynamics-365-for-customer-engagement-prerequisites"></a>Dynamics 365 for Customer Engagement の前提条件
 

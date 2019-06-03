@@ -3,28 +3,28 @@ title: Azure Active Directory B2C でページ コントラクトを選択する
 description: Azure Active Directory B2C でページ コントラクトを選択する方法について説明します。
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 04/25/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 39198c0093f018b64a1292f023914651b51b4faf
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 4cd29df19179f07fd9b61a2f484b1d49cc05c4cf
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403784"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64570583"
 ---
 # <a name="select-a-page-contract-in-azure-active-directory-b2c-using-custom-policies"></a>カスタム ポリシーを使用して Azure Active Directory B2C でページ コントラクトを選択する | Microsoft Docs
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-ユーザー フローを使用しているか、カスタム ポリシーを使用しているかに関係なく、Azure Active Directory (Azure AD) B2C ポリシーでクライアント側 JavaScript コードを有効にできます。 この記事では、[カスタム ポリシー](active-directory-b2c-overview-custom.md)でページ コントラクトを構成して、Azure AD B2C でページ コントラクトを選択する方法について説明します。 ページ コントラクトは、Azure AD B2C が提供する要素とお客様が指定するコンテンツの関連付けです。 [Javascript](javascript-samples.md) を使用する場合は、カスタム ポリシー内のすべてのコンテンツ定義に対してページ コントラクト バージョンを定義する必要があります。
+ユーザー フローを使用しているか、カスタム ポリシーを使用しているかに関係なく、Azure Active Directory (Azure AD) B2C ポリシーでクライアント側 JavaScript コードを有効にできます。 アプリケーションで JavaScript を有効にするには、[カスタム ポリシー](active-directory-b2c-overview-custom.md)に要素を追加し、ページ コントラクトを選択して要求内に[b2clogin.com](b2clogin.md)を使用します。 ページ コントラクトは、Azure AD B2C が提供する要素とお客様が指定するコンテンツの関連付けです。 この記事では、カスタム ポリシーでページ コントラクトを構成して、Azure AD B2C でページ コントラクトを選択する方法について説明します。
 
 > [!NOTE]
-> ユーザー フローに対して JavaScript を有効にする場合、「[About using JavaScript and page contract versions in a user flow](user-flow-javascript-overview.md)」(ユーザー フローでの JavaScript とページ コントラクト バージョンの使用について) を参照してください。
+> ユーザー フローに対して JavaScript を有効にする場合、「[avaScript and page contract versions in Azure Active Directory B2C](user-flow-javascript-overview.md)」(Azure Active Directory B2Cでの JavaScript とページ コントラクト バージョン) を参照してください。
 
 ## <a name="replace-datauri-values"></a>DataUri 値を置換する
 

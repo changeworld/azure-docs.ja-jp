@@ -1,25 +1,18 @@
 ---
-title: Microsoft Azure での仮想マシンの前提条件 | Microsoft Docs
+title: Microsoft Azure での仮想マシンの前提条件 | Azure Marketplace
 description: Azure Marketplace に VM オファーを発行するために必要な前提条件の一覧です。
 services: Azure, Marketplace, Cloud Partner Portal
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 03/13/2019
-ms.author: pbutlerm
-ms.openlocfilehash: 5c26fd3d6c2593217aef8588e2a58377a86412ae
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: pabutler
+ms.openlocfilehash: 258d21eae5af50b5dc0bed6887618e2999cae45a
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58010853"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66257394"
 ---
 # <a name="virtual-machine-prerequisites"></a>仮想マシンの前提条件
 
@@ -43,13 +36,13 @@ ms.locfileid: "58010853"
 <!-- TD: Aren't most of these business requirements common to all AMP offerings?  If yes, then move to higher level, perhaps to the AMP section "Become a Cloud Marketplace Publisher" -->
 <!-- TD: Need references for remaining docs/business reqs!-->
 
-- 登録済みのクラウド マーケットプレース パブリッシャーである必要があります。  まだ登録していない場合は、「[クラウド マーケットプレース パブリッシャーになる](../../become-publisher.md)」の手順に従ってください。
+- 登録済みのクラウド マーケットプレース パブリッシャーである必要があります。  まだ登録していない場合は、「[クラウド マーケットプレース パブリッシャーになる](https://docs.microsoft.com/azure/marketplace/become-publisher)」の手順に従ってください。
 
     > [!NOTE]
     > Microsoft デベロッパー センター登録アカウントと同じアカウントを使用して、[Cloud パートナー ポータル](https://cloudpartner.azure.com)にサインオンする必要があります。
     > 複数の Azure Marketplace サービスに対して 1 つの Microsoft アカウントを使用してください。 個々のサービスおよびオファーに対して固有のアカウントを作成してはなりません。
     
-- 貴社 (またはその子会社) は、Azure Marketplace によってサポートされる販売元の国に所在している必要があります。  これらの国の最新の一覧については、「[Microsoft Azure Marketplace 参加ポリシー](https://azure.microsoft.com/support/legal/marketplace/participation-policies/)」をご覧ください。
+- 貴社 (またはその子会社) は、Azure Marketplace によってサポートされる販売元の国/地域に所在している必要があります。  これらの国/地域の最新の一覧については、[Microsoft Azure Marketplace 参加ポリシー](https://azure.microsoft.com/support/legal/marketplace/participation-policies/)に関する資料をご覧ください。
 - Azure Marketplace でサポートされている課金モデルに対応した方法で、製品のライセンスを取得する必要があります。  詳細については、「[Azure Marketplace の課金オプション](https://docs.microsoft.com/azure/marketplace/billing-options-azure-marketplace)」を参照してください。 
 - 商取引上合理的な方法で、顧客に技術サポートを提供していただきます。 このサポートは、無償、有償、コミュニティ アプローチのいずれでもかまいません。
 - 貴社のソフトウェアおよび依存関係にあるすべてのサード パーティ ソフトウェアのライセンス供与を行っていただきます。

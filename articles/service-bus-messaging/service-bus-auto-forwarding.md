@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 85ab5e3bb963ee692e5b70af3eb90cc68cec361f
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: 86fa7f62230c0ae0530b67ff2384942c876083d4
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56593388"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64686131"
 ---
 # <a name="chaining-service-bus-entities-with-autoforwarding"></a>自動転送を使用した Service Bus エンティティのチェーン
 
@@ -46,6 +46,10 @@ namespaceManager.CreateSubscription(srcSubscription));
 ![自動転送のシナリオ][1]
 
 Alice が休暇中の場合、ERP トピックではなく、個人用のキューがいっぱいになります。 このシナリオでは、1 人の営業担当者がメッセージをまったく受信しないため、すべての ERP トピックがクォータに達しません。
+
+> [!NOTE]
+> 自動転送がセットアップされると、宛先での AutoDeleteOnIdle の値は自動的にデータ型の最大値に設定されます。
+> これは、常に宛先がメッセージの転送先となるようにします。
 
 ## <a name="autoforwarding-considerations"></a>自動転送に関する考慮事項
 

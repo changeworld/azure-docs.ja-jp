@@ -1,6 +1,6 @@
 ---
-title: コンピューティング ノードの環境変数 - Azure Batch | Microsoft Docs
-description: Azure 一括分析のコンピューティング ノードの環境変数に関するリファレンスです。
+title: タスク実行環境変数 - Azure Batch | Microsoft Docs
+description: タスク実行の環境変数に関するガイダンスと Azure Batch 解析のリファレンスです。
 services: batch
 author: laurenhughes
 manager: jeconnoc
@@ -10,16 +10,16 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
-ms.date: 02/07/2019
+ms.date: 04/23/2019
 ms.author: lahugh
-ms.openlocfilehash: 9902f38ddfd3035adcce697c2eb5b77bdc1d8c9c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c46f75c447becc8b15d4a6b8f979330db7ab95c7
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57874763"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64575592"
 ---
-# <a name="azure-batch-compute-node-environment-variables"></a>Azure Batch コンピューティング ノードの環境変数
+# <a name="azure-batch-runtime-environment-variables"></a>Azure Batch ランタイム環境変数
 
 [Azure Batch サービス](https://azure.microsoft.com/services/batch/)は、コンピューティング ノードで以下の環境変数を設定します。 これらの環境変数は、タスク コマンドラインと、コマンド ラインにより実行されるプログラムとスクリプトで参照できます。
 
@@ -28,6 +28,12 @@ Batch での環境変数の使用に関する詳細については、[「タス�
 ## <a name="environment-variable-visibility"></a>環境変数の可視性
 
 これらの環境変数は、**タスク ユーザー**のコンテキスト、つまりタスクが実行されるノードのユーザー アカウントだけで表示されます。 リモート デスクトップ プロトコル (RDP) や Secure Shell (SSH) を介してコンピューティング ノードに*リモート接続*して環境変数を一覧表示しようとしても、それらは "[表示されません](https://azure.microsoft.com/documentation/articles/batch-api-basics/#connecting-to-compute-nodes)"。 これは、リモート接続に使用されるユーザー アカウントが、タスクで使用されるアカウントと異なることが原因です。
+
+環境変数の現在の値を取得するには、Windows コンピューティング ノード上で`cmd.exe`を、またはLinux ノード上で`/bin/sh`を起動します。
+
+`cmd /c set <ENV_VARIABLE_NAME>`
+
+`/bin/sh printenv <ENV_VARIABLE_NAME>`
 
 ## <a name="command-line-expansion-of-environment-variables"></a>環境変数のコマンドライン拡張
 

@@ -1,25 +1,18 @@
 ---
-title: Seller Insights リリース ノート | Microsoft Docs
+title: Seller Insights リリース ノート
 description: Seller Insights の機能への変更に関する情報を提供します。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 3/3/2019
-ms.author: pbutlerm
-ms.openlocfilehash: 7df96d53b02e80283f263901dc7e26ed4edb947d
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.author: pabutler
+ms.openlocfilehash: c6e9e4fe672c7e171ed4b1cd60655f9e71a562e6
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57342379"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64943121"
 ---
 # <a name="seller-insights-release-notes"></a>Seller Insights リリース ノート 
 

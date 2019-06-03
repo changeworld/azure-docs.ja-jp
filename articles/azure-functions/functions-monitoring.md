@@ -11,18 +11,18 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: glenga
-ms.openlocfilehash: 96656da078b79474dbf6576455a485d17868db49
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.openlocfilehash: fecf6759dd7b277dda10fa2656e6ae9407490370
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59565966"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64922960"
 ---
 # <a name="monitor-azure-functions"></a>Azure Functions を監視する
 
 [Azure Functions](functions-overview.md) には、関数を監視するための [Azure Application Insights](../azure-monitor/app/app-insights-overview.md) とのビルトイン統合機能が用意されています。 この記事では、システムによって生成されたログ ファイルを Azure Functions が Application Insights に送信するように構成する方法を示します。
 
-Application Insights を使用することをお勧めします。これにより、ログ、パフォーマンス、およびエラー データが収集されます。 また、パフォーマンスの異常が自動的に検出されるほか、問題の診断や、関数がどのように使用されているかの理解に役立つ強力な分析ツールも含まれています。 Application Insights は、パフォーマンスやユーザビリティを継続的に向上させるうえで役立つように設計されています。 ローカル関数アプリ プロジェクトの開発中に Application Insights を使用することもできます。 詳細については、「[Application Insights とは何か?](../azure-monitor/app/app-insights-overview.md)」を参照してください。
+Application Insights を使用することをお勧めします。これにより、ログ、パフォーマンス、およびエラー データが収集されます。 また、パフォーマンスの異常が自動的に検出されるほか、問題の診断や、関数がどのように使用されているかの理解に役立つ強力な分析ツールも含まれています。 Application Insights は、パフォーマンスやユーザビリティを継続的に向上させるうえで役立つように設計されています。 ローカル関数アプリ プロジェクトの開発中に Application Insights を使用することもできます。 詳細については、「[Application Insights とは何か](../azure-monitor/app/app-insights-overview.md)」を参照してください。
 
 必要な Application Insights インストルメンテーションは Azure Functions に組み込まれているため、必要になるのは、関数アプリを Application Insights リソースに接続するための有効なインストルメンテーション キーだけです。
 
@@ -55,13 +55,13 @@ Function App との Application Insights 統合は無料でお試しいただく
 
 ## <a name="view-telemetry-in-monitor-tab"></a>[監視] タブにテレメトリを表示する
 
-[Application Insights 統合が有効になっている](#enable-application-insights-integration)場合は、**[監視]** タブでテレメトリ データを表示できます。
+[Application Insights 統合が有効になっている](#enable-application-insights-integration)場合は、 **[監視]** タブでテレメトリ データを表示できます。
 
-1. 関数アプリのページで、Application Insights が構成されてから少なくとも 1 回実行された関数を選択します。 その後、**[監視]** タブを選択します。
+1. 関数アプリのページで、Application Insights が構成されてから少なくとも 1 回実行された関数を選択します。 その後、 **[監視]** タブを選択します。
 
    ![[監視] タブを選択する](media/functions-monitoring/monitor-tab.png)
 
-1. 関数呼び出しの一覧が表示されるまで、**[更新]** を一定間隔で選択します。
+1. 関数呼び出しの一覧が表示されるまで、 **[更新]** を一定間隔で選択します。
 
    テレメトリ クライアントではサーバーに送信するデータをバッチ処理するため、一覧が表示されるには最大で 5 分かかる場合があります。 (この遅延は、[Live Metrics Stream](../azure-monitor/app/live-stream.md) には適用されません。 このサービスは、ページの読み込み時に Functions ホストに接続するため、ログがページに直接ストリーム配信されます)。
 
@@ -616,7 +616,7 @@ Functions での Application Insights 統合に関する問題をレポートし
 
 ### <a name="portal"></a>ポータル
 
-ポータルでストリーミング ログを表示するには、関数アプリで **[プラットフォーム機能]** タブを選択します。 次に、**[監視]** の **[ログ ストリーミング]** を選択します。
+ポータルでストリーミング ログを表示するには、関数アプリで **[プラットフォーム機能]** タブを選択します。 次に、 **[監視]** の **[ログ ストリーミング]** を選択します。
 
 ![ポータルでストリーミング ログを有効にする](./media/functions-monitoring/enable-streaming-logs-portal.png)
 
@@ -626,7 +626,7 @@ Functions での Application Insights 統合に関する問題をレポートし
 
 ### <a name="azure-cli"></a>Azure CLI
 
-[Azure コマンド ライン インターフェイス (CLI)](/cli/azure/install-azure-cli) を使用して、ストリーミング ログを有効にすることができます。 Azure CLI では、次のコマンドを使用して、サインイン、ご使用のサブスクリプションの選択、ログ ファイルのストリーミングを行います。
+[Azure CLI](/cli/azure/install-azure-cli) を使用して、ストリーミング ログを有効にできます。 次のコマンドを使用してサインインし、サブスクリプションを選択し、ログ ファイルをストリーミングします。
 
 ```azurecli
 az login

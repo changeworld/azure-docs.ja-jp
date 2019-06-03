@@ -1,18 +1,19 @@
 ---
 title: Microsoft Azure Data Box Gateway のユース ケース | Microsoft Docs
-description: データを Azure に転送できる仮想アプライアンス ストレージ ソリューションである Azure Data Box Gateway のユース ケースについて説明します
+description: Azure にデータを転送できる仮想アプライアンス ストレージ ソリューションである、Azure Data Box Gateway のユース ケースについて説明します。
 services: databox
 author: alkohli
 ms.service: databox
+ms.subservice: gateway
 ms.topic: article
-ms.date: 03/2/2019
+ms.date: 03/02/2019
 ms.author: alkohli
-ms.openlocfilehash: 37ec1d05d07f33343b9ff21380a277d00b242b7c
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: cdc1b07b93386c0225c1e6c5f570ea1247e450b5
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403801"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64924392"
 ---
 # <a name="use-cases-for-azure-data-box-gateway"></a>Azure Data Box Gateway のユース ケース
 
@@ -78,11 +79,11 @@ Data Box Gateway の主な利点の 1 つは、データ サイズに関係な�
 
 Data Box Gateway を使用して継続的なインジェストを行うには、以下の手順に従います。
 
-1. Data Box Gateway 上にクラウド共有を作成します。 この共有から、データが Azure ストレージ アカウントに自動的にアップロードされます。 お客様の Data Box Gateway リソースの **[共有]** に移動して、**+ [共有の追加]** をクリックします。
+1. Data Box Gateway 上にクラウド共有を作成します。 この共有から、データが Azure ストレージ アカウントに自動的にアップロードされます。 お客様の Data Box Gateway リソースの **[共有]** に移動して、 **+ [共有の追加]** をクリックします。
 
     ![+ [共有の追加] のクリック](media/data-box-gateway-use-cases/add-share1.png)
 
-2. この共有が、シード済みのデータを含むコンテナーにマップされるようにします。 **[BLOB コンテナーの選択]** で、**[既存のものを使用]** を選択し、Data Box からのデータが転送されたコンテナーを参照します。
+2. この共有が、シード済みのデータを含むコンテナーにマップされるようにします。 **[BLOB コンテナーの選択]** で、 **[既存のものを使用]** を選択し、Data Box からのデータが転送されたコンテナーを参照します。
 
     ![共有の設定](media/data-box-gateway-use-cases/share-settings-select-existing-container1.png)
 

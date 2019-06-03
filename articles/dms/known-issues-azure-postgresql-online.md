@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 03/12/2019
-ms.openlocfilehash: f52eb1699b980e84195ec34eb543c4523328c893
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 04/23/2019
+ms.openlocfilehash: 83c5401298d2682328da4e45d150d2d0416601fc
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58181998"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64691947"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-db-for-postgresql"></a>Azure DB for PostgreSQL へのオンライン移行に関する既知の問題と移行の制限事項
 
@@ -25,6 +25,10 @@ PostgreSQL から Azure Database for PostgreSQL へのオンライン移行に�
 ## <a name="online-migration-configuration"></a>オンライン移行の構成
 - ソースの PostgreSQL サーバーは、バージョン 9.5.11、9.6.7、または 10.3 以降を実行している必要があります。 詳しくは、「[サポートされている PostgreSQL Database バージョン](../postgresql/concepts-supported-versions.md)」の記事をご覧ください。
 - 同じバージョンの移行のみがサポートされています。 たとえば、PostgreSQL 9.5.11 から Azure Database for PostgreSQL 9.6.7 への移行はサポートされていません。
+
+    > [!NOTE]
+    > PostgreSQL バージョン 10 では、現在、バージョン 10.3 から Azure Database for PostgreSQL への移行をサポートしているのは DMS のみです。 近日中に PostgreSQL の新しいバージョンをサポートする予定です。
+
 - **ソース PostgreSQL の postgresql.conf** ファイルで論理レプリケーションを有効にするには、次のパラメーターを設定します。
     - **wal_level** = logical
     - **max_replication_slots** = [移行対象のデータベースの最大数]。4 つのデータベースを移行する場合は、値を 4 に設定します

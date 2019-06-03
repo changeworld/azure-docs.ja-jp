@@ -13,12 +13,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/16/2018
 ms.author: glenga
-ms.openlocfilehash: 28f2b395c7f9be1b194b500ef20456be8ff405b0
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 039b0951484a6bf57703d9a91d604c9c5e5c9a66
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58438699"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64571184"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions の Python 開発者向けガイド
 
@@ -28,7 +28,7 @@ ms.locfileid: "58438699"
 
 ## <a name="programming-model"></a>プログラミング モデル
 
-Azure 関数は、入力を処理して出力を生成する Python スクリプト内でステートレスなメソッドである必要があります。 既定で、ランタイムでは、これは `main()` と呼ばれるグローバル メソッドとして `__init__.py` ファイル内に実装されると想定されます。
+Azure 関数は、入力を処理して出力を生成する Python スクリプト内でステートレスなメソッドである必要があります。 既定で、ランタイムでは、このメソッドは `main()` と呼ばれるグローバル メソッドとして `__init__.py` ファイル内に実装されると想定されます。
 
 `function.json` ファイル内で `scriptFile` プロパティと `entryPoint` プロパティを指定すれば、既定の構成を変更することができます。 たとえば、以下の _function.json_ では、ご利用の Azure 関数のエントリ ポイントとして、_main.py_ ファイル内の _customentry()_ メソッドを使用するようにランタイムに指示が出されます。
 
@@ -109,15 +109,16 @@ Python 関数プロジェクトのフォルダー構造は、次のようにな�
 from ..SharedCode import myFirstHelperFunction
 ```
 
-Functions ランタイムで使用されるバインディング拡張機能は、`extensions.csproj` ファイル内に定義されており、実際のライブラリ ファイルは `bin` フォルダー内にあります。 ローカルで開発する場合は、Azure Functions Core Tools を使用して、[バインディング拡張機能を登録する](./functions-bindings-register.md#local-development-azure-functions-core-tools)必要があります。 
+Functions ランタイムで使用されるバインディング拡張機能は、`extensions.csproj` ファイル内に定義されており、実際のライブラリ ファイルは `bin` フォルダー内にあります。 ローカルで開発する場合は、Azure Functions Core Tools を使用して、[バインディング拡張機能を登録する](./functions-bindings-register.md#local-development-with-azure-functions-core-tools-and-extension-bundles)必要があります。 
 
 Functions プロジェクトを Azure 内のご利用の関数アプリにデプロイする場合は、フォルダー自体ではなく、パッケージに FunctionApp フォルダーの内容全体を含める必要があります。
 
-## <a name="inputs"></a>入力
+## <a name="triggers-and-inputs"></a>トリガーと入力
 
-Azure Functions では、入力はトリガー入力と追加入力の 2 つのカテゴリに分けられます。 `function.json` ではこれらは同じではありませんが、Python コードでは同じように使用されます。 次のコード スニペットを例として使用します。
+Azure Functions では、入力はトリガー入力と追加入力の 2 つのカテゴリに分けられます。 `function.json` ではこれらは同じではありませんが、Python コードでは同じように使用されます。  トリガーの接続文字列と入力ソースは、`local.settings.json`ファイル内の値と、Azure で実行するアプリケーション設定をローカルにマッピングします。 次のコード スニペットを例として使用します。
 
 ```json
+// function.json
 {
   "scriptFile": "__init__.py",
   "bindings": [
@@ -139,7 +140,19 @@ Azure Functions では、入力はトリガー入力と追加入力の 2 つの�
 }
 ```
 
+```json
+// local.settings.json
+{
+  "IsEncrypted": false,
+  "Values": {
+    "FUNCTIONS_WORKER_RUNTIME": "python",
+    "AzureWebJobsStorage": "<azure-storage-connection-string>"
+  }
+}
+```
+
 ```python
+# __init__.py
 import azure.functions as func
 import logging
 
@@ -149,7 +162,8 @@ def main(req: func.HttpRequest,
     logging.info(f'Python HTTP triggered function processed: {obj.read()}')
 ```
 
-この関数が呼び出されると、HTTP 要求は `req` として関数に渡されます。 エントリは、ルート URL 内の _id_ に基づいて Azure Blob Storage から取得され、関数の本体で `obj` として使用できるようになります。
+この関数が呼び出されると、HTTP 要求は `req` として関数に渡されます。 エントリは、ルート URL 内の _ID_ に基づいて Azure Blob Storage から取得され、関数の本体で `obj` として使用できるようになります。  ここで、指定されるストレージ アカウントは、`AzureWebJobsStorage`で見つかる接続文字列であり、関数アプリケーションで使用されるストレージ アカウントと同じものです。
+
 
 ## <a name="outputs"></a>出力
 
@@ -211,7 +225,7 @@ def main(req):
 
 他にもログ記録メソッドが用意されています。これにより、さまざまなトレース レベルでコンソールへの書き込みが可能になります。
 
-| 方法                 | 説明                                |
+| Method                 | 説明                                |
 | ---------------------- | ------------------------------------------ |
 | logging.**critical(_message_)**   | ルート ロガー上に CRITICAL レベルのメッセージを書き込みます。  |
 | logging.**error(_message_)**   | ルート ロガー上に ERROR レベルのメッセージを書き込みます。    |
@@ -253,7 +267,7 @@ def main():
 
 実行中に関数の呼び出しコンテキストを取得するには、そのシグニチャに `context` 引数を含めます。 
 
-例: 
+例:
 
 ```python
 import azure.functions

@@ -1,25 +1,18 @@
 ---
-title: 仮想マシンを事前に検証するための自己テスト クライアント - Azure Marketplace | Microsoft Docs
+title: 仮想マシンを事前に検証するための自己テスト クライアント | Azure Marketplace
 description: Azure Marketplace の仮想マシン イメージを事前に検証するための自己テスト クライアントを作成する方法。
 services: Azure, Marketplace, Cloud Partner Portal, Virtual Machine
-documentationcenter: ''
 author: dan-wesley
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/23/2018
-ms.author: pbutlerm
-ms.openlocfilehash: ae01b0fb088035240e670c16d4d457d8abda1bfa
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: pabutler
+ms.openlocfilehash: 117249feea04381b34f8fc1d95f77c2c1a567dba
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58848933"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64938720"
 ---
 # <a name="create-a-self-test-client-to-pre-validate-an-azure-virtual-machine-image"></a>Azure 仮想マシン イメージを事前に検証するための自己テスト クライアントを作成する
 
@@ -227,17 +220,17 @@ https://isvapp.azurewebsites.net/selftest-vm
 次の手順を使用して、アプリケーションを作成する Azure AD テナントを選択します。
 
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
-2. 上部のメニュー バーにある自分のアカウントを選択し、[ディレクトリ] 一覧から、アプリケーションを登録する Active Directory テナントを選択します。 または、**[ディレクトリ + サブスクリプション]** アイコンを選択してグローバル サブスクリプション フィルターを表示します。 次のスクリーン キャプチャは、このフィルターの例を示しています。
+2. 上部のメニュー バーにある自分のアカウントを選択し、[ディレクトリ] 一覧から、アプリケーションを登録する Active Directory テナントを選択します。 または、 **[ディレクトリ + サブスクリプション]** アイコンを選択してグローバル サブスクリプション フィルターを表示します。 次のスクリーン キャプチャは、このフィルターの例を示しています。
 
    ![サブスクリプション フィルターを選択する](./media/stclient-subscription-filter.png)
 
-3. 左側のナビゲーション バーで、**[すべてのサービス]** を選択してから **[Azure Active Directory]** を選択します。
+3. 左側のナビゲーション バーで、 **[すべてのサービス]** を選択してから **[Azure Active Directory]** を選択します。
 
    次の手順では、テナント名 (またはディレクトリ名) やテナント ID (またはディレクトリ ID) が必要になる場合があります。
 
    **テナント情報を取得するには:**
 
-   **Azure Active Directory の [概要]** で "プロパティ" を検索し、**[プロパティ]** を選択します。 例として次のスクリーン キャプチャを使用します。
+   **Azure Active Directory の [概要]** で "プロパティ" を検索し、 **[プロパティ]** を選択します。 例として次のスクリーン キャプチャを使用します。
 
    - **名前** - テナント名またはディレクトリ名
    - **ディレクトリ ID** - テナント ID またはディレクトリ ID。またはスクロール バーを使用して [プロパティ] を見つけます。
@@ -248,7 +241,7 @@ https://isvapp.azurewebsites.net/selftest-vm
 
 次の手順を使用して、クライアント アプリを登録します。
 
-1. 左側のナビゲーション バーで、**[すべてのサービス]** を選択してから **[アプリの登録]** を選択します。
+1. 左側のナビゲーション バーで、 **[すべてのサービス]** を選択してから **[アプリの登録]** を選択します。
 2. **[アプリの登録]** で **[+ 新しいアプリケーションの登録]** を選択します。
 3. **[作成]** の以下のフィールドに必要な情報を入力します。
 
@@ -261,16 +254,16 @@ https://isvapp.azurewebsites.net/selftest-vm
 
    ![アプリケーション ID を取得する](./media/stclient-app-id.png)
 
-6. 登録済みのアプリのツール バーで、**[設定]** を選択します。
+6. 登録済みのアプリのツール バーで、 **[設定]** を選択します。
 7. **[必要なアクセス許可]** を選択して、アプリケーションのアクセス許可を構成します。
 8. **[必要なアクセス許可]** で **[+ 追加]** を選択します。
 9. **[API アクセスの追加]** ページで **[API を選択します]** を選択します。
 10. **[API を選択します]** で「Windows Azure classic deployment model (Windows Azure クラシック デプロイ モデル)」と入力して API を検索します。
-11. 検索結果から **[Windows Azure classic deployment model]\(Windows Azure クラシック デプロイ モデル\)** を選択し、**[選択]** をクリックします。
+11. 検索結果から **[Windows Azure classic deployment model]\(Windows Azure クラシック デプロイ モデル\)** を選択し、 **[選択]** をクリックします。
 
     ![アプリのマルチテナントを構成する](./media/stclient-select-api.png)
 
-12. **[API アクセスの追加]** で、**[アクセス許可を選択します]** を選択します。
+12. **[API アクセスの追加]** で、 **[アクセス許可を選択します]** を選択します。
 13. **[Access "Windows Azure Service Management API"]\("Windows Azure Service Management API" へのアクセス\)** を選択します。
 
     ![アプリの API アクセスを有効にする](./media/stclient-enable-api-access.png)

@@ -11,18 +11,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: 2646941e2384acf6d303615f564b65d616931180
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 319def9072dbf38eff44ca4459428f1ef99a2b54
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59794254"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64867964"
 ---
 # <a name="metrics-in-azure-monitor"></a>Azure Monitor のメトリック
 
 > [!NOTE]
 > Azure Monitor データ プラットフォームは、2 つの基本的なデータの種類に基づいています。メトリックとログです。 この記事では、メトリックについて説明します。 ログの詳細な説明については、「[Logs in Azure Monitor](data-platform-logs.md)」(Azure Monitor のログ) を参照し、これら 2 つの比較については、「[Azure Monitor data platforn](data-platform.md)」(Azure Monitor データ プラットフォーム) を参照してください。
-
 
 Azure Monitor のログは軽量であり、ほぼリアルタイムのシナリオをサポートできるため、アラートと問題の迅速な検出に特に役立ちます。 この記事では、メトリックの構造と、メトリックを使用してできること、およびメトリックにデータを保存できるさまざまなデータ ソースについて説明します。
 
@@ -42,7 +41,6 @@ Azure Monitor のログは軽量であり、ほぼリアルタイムのシナリ
 | 取得 | [PowerShell コマンドレット](https://docs.microsoft.com/powershell/module/az.applicationinsights)を使用して、コマンド ラインからメトリック値にアクセスします。<br>[REST API](rest-api-walkthrough.md) を使用して、カスタム アプリケーションからメトリック値にアクセスします。<br>[CLI](/cli/azure/monitor/metrics) を使用して、コマンド ラインからメトリック値にアクセスします。 |
 | アーカイブ | コンプライアンス、監査、オフライン レポートの目的で、リソースのパフォーマンスや正常性の履歴を[アーカイブ](..//learn/tutorial-archive-data.md)します。 |
 
-
 ## <a name="how-is-data-in-azure-monitor-metrics-structured"></a>Azure Monitor メトリックのデータの構造
 Azure Monitor メトリックによって収集されるデータは、タイムスタンプ付きのデータの分析用に最適化された時系列データベースに保存されます。 メトリック値の各セットは、次のプロパティを持つ時系列です。
 
@@ -53,10 +51,8 @@ Azure Monitor メトリックによって収集されるデータは、タイム
 * 値そのもの
 * 「[多次元メトリック](#multi-dimensional-metrics)」で説明されているように、一部のメトリックは複数のディメンションを持ちます。 カスタム メトリックは最大 10 個のディメンションを持つことができます。
 
-Azure のメトリックは 93 日間保存されます。 長期的な傾向を見るために、[Azure Monitor リソースのプラットフォーム メトリックを Log Analytics ワークスペースに送信](diagnostic-logs-stream-log-store.md)できます。
-
 ## <a name="multi-dimensional-metrics"></a>多次元メトリック
-メトリック データの課題の 1 つは、収集された値のコンテキストを提供するための情報が限定されている場合が多いことです。 Azure Monitor では、多次元メトリックを使用してこの課題に対処します。 メトリックのディメンションは、メトリックの値を記述するための追加データを保持する名前と値のペアです。 たとえば、_使用可能なディスク領域_ メトリックは、_C:_、_D:_ という値がある _ドライブ_と呼ばれるディメンションを持つことができ、これらの値を使用して、すべてのドライブまたは個別のドライブで使用可能なディスク領域を表示できます。
+メトリック データの課題の 1 つは、収集された値のコンテキストを提供するための情報が限定されている場合が多いことです。 Azure Monitor では、多次元メトリックを使用してこの課題に対処します。 メトリックのディメンションは、メトリックの値を記述するための追加データを保持する名前と値のペアです。 たとえば、_使用可能なディスク領域_ メトリックは、_C:_ 、_D:_ という値がある _ドライブ_と呼ばれるディメンションを持つことができ、これらの値を使用して、すべてのドライブまたは個別のドライブで使用可能なディスク領域を表示できます。
 
 次の例は、_ネットワーク スループット_という名前の架空のメトリック用の 2 つのデータセットを示しています。 最初のデータセットにはディメンションがありません。 2 番目のデータセットは、_IP アドレス_と_方向_という 2 つのディメンションの値を示しています。
 
@@ -101,6 +97,13 @@ Azure Monitor によって収集されるメトリックのソースには、基
 
 **カスタム メトリック**は、自動的に利用できる標準メトリックに加えて、ユーザーが定義するメトリックです。 Application Insights によって監視される[カスタム メトリックをアプリケーション内で定義](../app/api-custom-events-metrics.md)したり、[カスタム メトリック API](metrics-store-custom-rest-api.md) を使用して Azure サービスのカスタム メトリックを作成したりできます。
 
+## <a name="retention-of-metrics"></a>メトリックの保有期間
+Azure の多くのリソースでは、メトリックは 93 日間保存されます。 ただし、例外があります。
+  * **クラシック ゲストの OS メトリック**。 クラシック ゲストの OS メトリックは 14 日間保持されます。 保有期間が長い場合、[Windows Diagnostic Extension (WAD)](../platform/diagnostics-extension-overview.md) を使用して収集した新規ゲスト OS メトリックを使用し、Linux 仮想マシンの場合は [InfluxData Telegraf エージェント](https://www.influxdata.com/time-series-platform/telegraf/)を使用することをお勧めします。
+  * **Application Insights ログベースのメトリック** バック グラウンドで[ログ ベースのメトリック](../app/pre-aggregated-metrics-log-metrics.md)をログ クエリに変換します。 そのリテンション期間は、基になるログのイベントのリテンション期間と一致します。 Application Insights リソースの場合、ログは 90 日間保存されます。 
+
+> [!NOTE]
+> 長期的な傾向を見るために、[Azure Monitor リソースのプラットフォーム メトリックを Log Analytics ワークスペースに送信](diagnostic-logs-stream-log-store.md)できます。
 
 ## <a name="next-steps"></a>次の手順
 

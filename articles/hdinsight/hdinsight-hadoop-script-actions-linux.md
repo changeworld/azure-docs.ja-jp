@@ -1,27 +1,22 @@
 ---
-title: Linux ベースの HDInsight でのスクリプト アクション開発 - Azure
-description: Bash スクリプトを使用して Linux ベースの HDInsight クラスターをカスタマイズする方法について説明します。 HDInsight のスクリプト アクション機能では、クラスターの作成中または作成後にスクリプトを実行できます。 スクリプトを使用して、クラスター構成設定を変更したり、追加のソフトウェアをインストールしたりできます。
-services: hdinsight
+title: Azure HDInsight クラスターをカスタマイズするスクリプト 操作を開発します。
+description: Bash スクリプトを使用して HDInsight クラスターをカスタマイズする方法について説明します。 スクリプト 操作により、クラスター作成の最中または後にクラスターの構成設定を変更または追加のソフトウェアをインストールすることができます。
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 02/15/2019
-ms.author: hrasheed
-ms.openlocfilehash: 0d56d901ca932f044ef71ef2bc24933bcf18c24a
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.date: 04/22/2019
+ms.openlocfilehash: 66132a2a6a7b5b89bca0767efe7c194ca3dec051
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59544587"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64687443"
 ---
 # <a name="script-action-development-with-hdinsight"></a>HDInsight でのスクリプト アクション開発
 
 Bash スクリプトを使用して、HDInsight クラスターをカスタマイズする方法について説明します。 スクリプト アクションは、クラスターの作成時または作成後に、HDInsight をカスタマイズする方法です。
-
-> [!IMPORTANT]  
-> このドキュメントの手順では、Linux を使用する HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
 ## <a name="what-are-script-actions"></a>スクリプト アクションとは
 
@@ -61,13 +56,28 @@ HDInsight クラスター向けのカスタム スクリプトを開発する際
 
 HDInsight のバージョンが異なれば、異なるバージョンの Hadoop サービスとコンポーネントがインストールされます。 スクリプトに特定のバージョンのサービスまたはコンポーネントが期待される場合、必要なコンポーネントを含むバージョンの HDInsight スクリプトのみを使用する必要があります。 HDInsight に含まれているコンポーネントのバージョンの情報は、 [HDInsight コンポーネントのバージョン管理](hdinsight-component-versioning.md) に関するドキュメントで確認できます。
 
-### <a name="bps10"></a>ターゲット OS バージョン
+### <a name="checking-the-operating-system-version"></a>オペレーティング システム バージョンの確認
+
+異なるバージョンの HDInsight は、特定のバージョンの Ubuntu に依存します。 スクリプトで確認する必要がある OS バージョンによって違いがある可能性があります。 たとえば、Ubuntu のバージョンに関連付けられているバイナリをインストールする必要がある可能性があります。
+
+オペレーティング システムのバージョンを確認するには、`lsb_release` を使用します。 たとえば、以下のスクリプトは、OS のバージョンによって異なる特定の tar ファイルを参照する方法を示します。
+
+```bash
+OS_VERSION=$(lsb_release -sr)
+if [[ $OS_VERSION == 14* ]]; then
+    echo "OS version is $OS_VERSION. Using hue-binaries-14-04."
+    HUE_TARFILE=hue-binaries-14-04.tgz
+elif [[ $OS_VERSION == 16* ]]; then
+    echo "OS version is $OS_VERSION. Using hue-binaries-16-04."
+    HUE_TARFILE=hue-binaries-16-04.tgz
+fi
+```
+
+### <a name="bps10"></a>オペレーティング システム バージョンをターゲットにします。
 
 Linux ベースの HDInsight は、Ubuntu Linux ディストリビューションに基づいています。 異なるバージョンの HDInsight は、異なるバージョンの Ubuntu に依存し、スクリプトの動作が変わる可能性があります。 たとえば、HDInsight 3.4 以前は、Upstart を使用する Ubuntu バージョンに基づいています。 バージョン 3.5 以降は、Systemd を使用する Ubuntu 16.04 に基づいています。 Systemd と Upstart は、異なるコマンドに依存しているため、両方で動作するスクリプトを記述する必要があります。
 
-HDInsight 3.4 と 3.5 のもう 1 つの重要な違いは `JAVA_HOME` が Java 8 を指すようになった点です。
-
-`lsb_release` を使用して、オペレーティング システムのバージョンを確認できます。 次のコードでは、スクリプトが Ubuntu 14 または 16 で実行されているかどうかを判断する方法を示しています。
+HDInsight 3.4 と 3.5 のもう 1 つの重要な違いは `JAVA_HOME` が Java 8 を指すようになった点です。 次のコードでは、スクリプトが Ubuntu 14 または 16 で実行されているかどうかを判断する方法を示しています。
 
 ```bash
 OS_VERSION=$(lsb_release -sr)
@@ -136,10 +146,10 @@ Linux ベースの HDInsight クラスターは、クラスター内でアクテ
 
 クラスターにインストールするコンポーネントに、Apache Hadoop 分散ファイル システム (HDFS) ストレージを使用する既定の構成が含まれる可能性があります。 HDInsight は、既定のストレージとして Azure Storage または Data Lake Storage のいずれかを使用します。 両方ともデータを保持する HDFS 互換ファイル システムを提供します (、クラスターが削除された場合でも)。 HDFS の代わりに WASB または ADL を使用するように、インストールするコンポーネントを構成しなければならない場合があります。
 
-ほとんどの操作では、ファイル システムを指定する必要はありません。 たとえば、次の場合 giraph-examples.jar ファイルがローカル ファイル システムからクラスター ストレージにコピーされます。
+ほとんどの操作では、ファイル システムを指定する必要はありません。 たとえば、次の場合 hadoop-common.jar ファイルがローカル ファイル システムからクラスター ストレージにコピーされます。
 
 ```bash
-hdfs dfs -put /usr/hdp/current/giraph/giraph-examples.jar /example/jars/
+hdfs dfs -put /usr/hdp/current/hadoop-client/hadoop-common.jar /example/jars/
 ```
 
 この例では、`hdfs` コマンドは、既定のクラスター ストレージを透過的に使用します。 一部の操作では、URI を指定しなければならない場合があります。 たとえば、Azure Data Lake Storage Gen1 の場合は `adl:///example/jars`、Data Lake Storage Gen2 の場合は`abfs:///example/jars`、Azure Storage の場合は `wasb:///example/jars` です。
@@ -151,13 +161,13 @@ HDInsight のログは、STDOUT と STDERR に書き込まれた出力を記述�
 > [!NOTE]  
 > Apache Ambari は、クラスターが正常に作成された場合にのみ使用できます。 クラスターの作成時にスクリプト アクションを使用して作成に失敗した場合は、 [スクリプト アクションを使用した HDInsight クラスターのカスタマイズ](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting) に関するトラブルシューティング セクションで、ログに記録された情報にアクセスする他の方法を確認してください。
 
-ほとんどのユーティリティとインストール パッケージは STDOUT および STDERR に情報を書き込みますが、ログ記録を追加したい場合もあります。 STDOUT にテキストを送信するには、`echo` を使用します。 例: 
+ほとんどのユーティリティとインストール パッケージは STDOUT および STDERR に情報を書き込みますが、ログ記録を追加したい場合もあります。 STDOUT にテキストを送信するには、`echo` を使用します。 例:
 
 ```bash
 echo "Getting ready to install Foo"
 ```
 
-既定では、`echo` は STDOUT に文字列を送信します。 STDERR に転送するには、`echo` の前に `>&2` を追加します。 例: 
+既定では、`echo` は STDOUT に文字列を送信します。 STDERR に転送するには、`echo` の前に `>&2` を追加します。 例:
 
 ```bash
 >&2 echo "An error occurred installing Foo"
@@ -289,23 +299,6 @@ Azure Storage account または Azure Data Lake Storage にファイルを格納
 
 > [!NOTE]  
 > スクリプトの参照に使用する URI 形式は、使用されるサービスによって異なります。 HDInsight クラスターに関連付けられているストレージ アカウントの場合は、`wasb://` または `wasbs://` を使用します。 パブリックに読み取り可能な URI の場合は、`http://` または `https://` を使用します。 Data Lake Storage の場合は、`adl://` を使用します。
-
-### <a name="checking-the-operating-system-version"></a>オペレーティング システム バージョンの確認
-
-異なるバージョンの HDInsight は、特定のバージョンの Ubuntu に依存します。 スクリプトで確認する必要がある OS バージョンによって違いがある可能性があります。 たとえば、Ubuntu のバージョンに関連付けられているバイナリをインストールする必要がある可能性があります。
-
-オペレーティング システムのバージョンを確認するには、`lsb_release` を使用します。 たとえば、以下のスクリプトは、OS のバージョンによって異なる特定の tar ファイルを参照する方法を示します。
-
-```bash
-OS_VERSION=$(lsb_release -sr)
-if [[ $OS_VERSION == 14* ]]; then
-    echo "OS version is $OS_VERSION. Using hue-binaries-14-04."
-    HUE_TARFILE=hue-binaries-14-04.tgz
-elif [[ $OS_VERSION == 16* ]]; then
-    echo "OS version is $OS_VERSION. Using hue-binaries-16-04."
-    HUE_TARFILE=hue-binaries-16-04.tgz
-fi
-```
 
 ## <a name="deployScript"></a>スクリプト アクションのデプロイ用チェックリスト
 

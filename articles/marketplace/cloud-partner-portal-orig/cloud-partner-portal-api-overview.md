@@ -1,25 +1,18 @@
 ---
-title: Cloud パートナー ポータルの API リファレンス | Microsoft Docs
+title: Cloud パートナー ポータルの API リファレンス | Azure Marketplace
 description: マーケットプレース API 操作の説明、使用のための前提条件、一覧。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 116eb48330381c7560c55ea9535b3c1b7c6a6a70
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.author: pabutler
+ms.openlocfilehash: 9626fdb5dbdf720a65217421565fc559a0cee684
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48807789"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64935471"
 ---
 <a name="cloud-partner-portal-api-reference"></a>Cloud パートナー ポータルの API リファレンス
 ==================================
@@ -53,7 +46,7 @@ API を使用する前に、次の点を確認してください。
 -   [オファーの作成](./cloud-partner-portal-api-creating-offer.md)
 -   [プランの発行](./cloud-partner-portal-api-publish-offer.md)
 
-### <a name="operations"></a>[操作]
+### <a name="operations"></a>Operations
 
 -   [操作の取得](./cloud-partner-portal-api-retrieve-operations.md)
 -   [操作のキャンセル](./cloud-partner-portal-api-cancel-operations.md)

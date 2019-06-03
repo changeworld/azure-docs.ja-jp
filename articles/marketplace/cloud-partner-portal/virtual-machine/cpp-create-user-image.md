@@ -1,25 +1,18 @@
 ---
-title: Azure Marketplace 向けのユーザー VM イメージを作成する | Microsoft Docs
+title: Azure Marketplace 向けのユーザー VM イメージを作成する
 description: ユーザー VM イメージを作成するために必要な手順と参照情報の一覧を示します。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 11/29/2018
-ms.author: pbutlerm
-ms.openlocfilehash: bf87856dc28e83fb1308f20613338b9bbfd8f896
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.author: pabutler
+ms.openlocfilehash: 0005ab517d38903b87889b67449569495e396265
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53196121"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64938327"
 ---
 # <a name="create-a-user-vm-image"></a>ユーザー VM イメージの作成
 

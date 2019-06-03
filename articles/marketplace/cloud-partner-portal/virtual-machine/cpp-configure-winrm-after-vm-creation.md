@@ -1,25 +1,18 @@
 ---
-title: Azure 仮想マシンを作成した後で WinRM を構成する | Microsoft Docs
+title: Azure 仮想マシンを作成した後で WinRM を構成する | Azure Marketplace
 description: Azure でホストされる仮想マシンを作成した後で Windows リモート管理 (WinRM) を構成する方法について説明します。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/27/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 6350d5bde737c46cf14a9aef75a7ec57260a6afa
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.author: pabutler
+ms.openlocfilehash: 4a4248efcfda76dfd8907069e167fdfa144d0365
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53196190"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64938515"
 ---
 # <a name="configure-winrm-after-virtual-machine-creation"></a>仮想マシンの作成後に WinRM を構成する
 
@@ -33,7 +26,7 @@ ms.locfileid: "53196190"
 
 HTTPS プロトコル経由の WinRM では、ポート 5896 が使用されます。このポートは、Azure Marketplace で提供される事前構成済みの Windows VM では、既定では有効になっていません。 このプロトコルを有効にするには、[Azure portal](https://portal.azure.com) で次の手順を使用してネットワーク セキュリティ グループ (NSG) に新しい規則を追加します。  NSG について詳しくは、「[セキュリティ グループ](https://docs.microsoft.com/azure/virtual-network/security-overview)」をご覧ください。
 
-1.  **[Virtual Machines] >**   <*VM 名*>  **> [Settings/Networking]\(設定/ネットワーク\)** ブレードに移動します。
+1.  **[Virtual Machines] >**   <*VM 名*>   **> [Settings/Networking]\(設定/ネットワーク\)** ブレードに移動します。
 2.  NSG の名前 (この例では **testvm11002**) をクリックして、そのプロパティを表示します。
 
     ![ネットワーク セキュリティ グループのプロパティ](./media/nsg-properties.png)
@@ -43,7 +36,7 @@ HTTPS プロトコル経由の WinRM では、ポート 5896 が使用されま�
 
     ![受信ネットワーク セキュリティ規則を追加する](./media/nsg-new-rule.png)
 
-5. 値の指定が終わったら、**[OK]** をクリックします。  受信セキュリティ規則の一覧に、次の新しいエントリが含まれるはずです。
+5. 値の指定が終わったら、 **[OK]** をクリックします。  受信セキュリティ規則の一覧に、次の新しいエントリが含まれるはずです。
 
     ![受信ネットワーク セキュリティ規則の一覧](./media/nsg-new-inbound-listing.png)
 
@@ -57,7 +50,7 @@ Windows VM で Windows リモート管理機能を有効にして構成するに
     - [ConfigureWinRM.ps1](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vm-winrm-windows/ConfigureWinRM.ps1)
     - [makecert.exe](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vm-winrm-windows/makecert.exe)
     - [winrmconf.cmd](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vm-winrm-windows/winrmconf.cmd)
-3. 昇格された特権 (**[管理者として実行]**) で、**PowerShell コンソール**を開きます。 
+3. 昇格された特権 ( **[管理者として実行]** ) で、**PowerShell コンソール**を開きます。 
 4. 必須のパラメーター (VM の完全修飾ドメイン名 (FQDN)) を指定して、次のコマンドを実行します。 <br/>
    `ConfigureWinRM.ps1 <vm-domain-name>`
 

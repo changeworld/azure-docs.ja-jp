@@ -1,29 +1,26 @@
 ---
 title: Hadoop の高可用性 - Azure HDInsight
 description: HDInsight クラスターで、追加のヘッド ノードを使用することで、信頼性と可用性を改善する方法について説明します。 その結果が Ambari や Hive などの Hadoop サービスに与える影響、SSH を使用して各ヘッド ノードに個別に接続する方法についても説明します。
-services: hdinsight
 ms.reviewer: jasonh
 author: hrasheed-msft
 keywords: Hadoop の高可用性
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 03/22/2018
+ms.date: 04/24/2019
 ms.author: hrasheed
-ms.openlocfilehash: ca6b072ba81f55802bc01d61ed44b06680cedbb2
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: 6cb72730ef3dbef81e2b2c9bc1c5cfd3bbd88b65
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58362001"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64704931"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>HDInsight における Apache Hadoop クラスターの可用性と信頼性
 
 HDInsight クラスターは 2 つのヘッド ノードを備え、実行中の Apache Hadoop サービスおよびジョブの可用性と信頼性を高めています。
 
 Hadoop は、クラスター内の複数のノードにわたってサービスやデータを複製することにより、高い可用性と信頼性を実現します。 ただし、Hadoop の標準ディストリビューションに含まれるヘッド ノードは、通常 1 つのみです。 この 1 つのヘッド ノードで障害が発生すると、クラスターが動作を停止する可能性があります。 Hadoop の可用性と信頼性を向上させるために、HDInsight では 2 つのヘッド ノードが提供されます。
-
-[!INCLUDE [windows-retirement-notice](../../includes/windows-retirement-notice.md)]
 
 ## <a name="availability-and-reliability-of-nodes"></a>ノードの高可用性と信頼性
 
@@ -105,7 +102,7 @@ Ambari REST API の使用方法の詳細については、[Apache Ambari REST AP
 
 ### <a name="ambari-web-ui"></a>Ambari Web UI
 
-Ambari Web UI は https://CLUSTERNAME.azurehdinsight.net で表示できます。 **CLUSTERNAME** をクラスターの名前に置き換えます。 メッセージが表示されたら、クラスターの HTTP ユーザーの資格情報を入力します。 既定の HTTP ユーザー名は **admin** であり、パスワードはクラスターを作成するときに入力したパスワードです。
+Ambari Web UI は `https://CLUSTERNAME.azurehdinsight.net` で表示できます。 **CLUSTERNAME** をクラスターの名前に置き換えます。 メッセージが表示されたら、クラスターの HTTP ユーザーの資格情報を入力します。 既定の HTTP ユーザー名は **admin** であり、パスワードはクラスターを作成するときに入力したパスワードです。
 
 Ambari ページにアクセスすると、インストールされているサービスがページの左側に表示されます。
 
@@ -242,33 +239,31 @@ SSH クライアントを使用するときと同様に、クラスターへの�
 > [!NOTE]  
 > Ambari を使用してログ ファイルにアクセスするには、SSH トンネルを使用する必要があります。 個々のサービスの Web インターフェイスは、インターネットでの一般公開はされていません。 SSH トンネルの使用方法の詳細については、[SSH トンネリングの使用](hdinsight-linux-ambari-ssh-tunnel.md)に関するドキュメントを参照してください。
 
-Ambari Web UI から、ログ (例: YARN) を表示するサービスを選択します。 その後、**[クイック リンク]** を使用して、ログを表示するヘッド ノードを選択します。
+Ambari Web UI から、ログ (例: YARN) を表示するサービスを選択します。 その後、 **[クイック リンク]** を使用して、ログを表示するヘッド ノードを選択します。
 
 ![クイック リンクを使用したログの表示](./media/hdinsight-high-availability-linux/viewlogs.png)
 
 ## <a name="how-to-configure-the-node-size"></a>ノード サイズの構成方法
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
 ノードのサイズを選択できるのは、クラスターの作成中のみです。 「[HDInsight の料金](https://azure.microsoft.com/pricing/details/hdinsight/)」ページで、HDInsight で使用できるまざまな VM サイズの一覧を確認できます。
 
-クラスターを作成するときに、ノードのサイズを指定できます。 次の情報では、[Azure portal][preview-portal]、[Azure PowerShell][azure-powershell]、[Azure クラシック CLI][azure-cli] を使用してサイズを指定する方法について説明します。
+クラスターを作成するときに、ノードのサイズを指定できます。 次の情報では、[Azure Portal][preview-portal]、[Azure PowerShell モジュール Az][azure-powershell]、[Azure CLI][azure-cli] を使用してサイズを指定する方法について説明します。
 
 * **Azure ポータル**:クラスターを作成するときに、クラスターによって使用されるノードのサイズを設定できます。
 
     ![ノード サイズの選択画面を示しているクラスター作成ウィザードの画像](./media/hdinsight-high-availability-linux/headnodesize.png)
 
-* **Azure クラシック CLI**: `azure hdinsight cluster create` コマンドを使用するときに、`--headNodeSize`、`--workerNodeSize`、および `--zookeeperNodeSize` パラメーターを使用してヘッド ノード、ワーカー ノード、および ZooKeeper ノードのサイズを設定できます。
+* **Azure CLI**:[az hdinsight create](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) コマンドを使用するときに、`--headnode-size`、`--workernode-size`、および`--zookeepernode-size`のパラメーターを使用してヘッド ノード、ワーカー ノード、および ZooKeeper ノードのサイズを設定できます。
 
-* **Azure PowerShell**:`New-AzHDInsightCluster` コマンドレットを使用するときに、`-HeadNodeVMSize`、`-WorkerNodeSize`、および `-ZookeeperNodeSize` パラメーターを使用してヘッド ノード、ワーカー ノード、および ZooKeeper ノードのサイズを設定できます。
+* **Azure PowerShell**:[New-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) コマンドレットを使用するときに、`-HeadNodeSize`、`-WorkerNodeSize`、および`-ZookeeperNodeSize`のパラメーターを使用してヘッド、ワーカー ノード、および ZooKeeper ノードのサイズを設定できます。
 
 ## <a name="next-steps"></a>次の手順
 
 このドキュメントに記載された事柄の詳細については、次のリンクを参照してください。
 
 * [Apache Ambari REST リファレンス](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)
-* [Azure クラシック CLI のインストールと構成](../cli-install-nodejs.md)
-* [Azure PowerShell のインストールおよび構成](/powershell/azure/overview)
+* [Azure CLI のインストールと構成](https://docs.microsoft.com//cli/azure/install-azure-cli?view=azure-cli-latest)
+* [Azure PowerShell モジュール Az をインストールして構成します](/powershell/azure/overview)。
 * [Apache Ambari を使用した HDInsight の管理](hdinsight-hadoop-manage-ambari.md)
 * [Provision Linux-based HDInsight clusters (Linux ベースの HDInsight クラスターのプロビジョニング)](hdinsight-hadoop-provision-linux-clusters.md)
 

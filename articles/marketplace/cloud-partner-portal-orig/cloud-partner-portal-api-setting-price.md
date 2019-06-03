@@ -1,25 +1,18 @@
 ---
-title: 仮想マシン プランの価格 | Microsoft Docs
+title: 仮想マシン プランの価格 | Azure Marketplace
 description: 仮想マシン プランの価格を指定する 3 つの方法について説明します。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: a029477dfd8046863ebfe34cd839562a0b1f3d87
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.author: pabutler
+ms.openlocfilehash: dde3e04dc8f30ea5657139d50dd4456e5dfb57c2
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59607797"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64935718"
 ---
 <a name="pricing-for-virtual-machine-offers"></a>仮想マシン プランの価格
 ==================================

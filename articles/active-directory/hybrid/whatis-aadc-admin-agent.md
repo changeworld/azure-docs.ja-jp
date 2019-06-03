@@ -7,39 +7,52 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/03/2019
+ms.date: 04/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e33143626e136523b4af086e841b92e9ad30fa86
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: 36ab3fff4294b4cda3d1554ef2761d3f4acaca35
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59577611"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64687251"
 ---
 # <a name="what-is-the-azure-ad-connect-admin-agent"></a>Azure AD Connect 管理エージェントとは 
-Azure AD Connect 管理エージェントは Azure Active Directory Connect の新しいコンポーネントであり、Azure Active Directory Connect サーバーにインストールされます。 サポート ケースを開いたとき、Microsoft のサポート エンジニアの問題解決に役立つ特定のデータを Active Directory 環境から収集するために使用されます。
+Azure AD Connect 管理エージェントは Azure Active Directory Connect の新しいコンポーネントであり、Azure Active Directory Connect サーバーにインストールできます。 サポート ケースを開いたとき、Microsoft のサポート エンジニアの問題解決に役立つ特定のデータを Active Directory 環境から収集するために使用されます。 
 
-インストールされると、Azure AD Connect 管理エージェントは Azure Active Directory からデータに対する特定の要求を待ち、同期環境から要求されたデータを取得し、Azure Active Directory にそのデータを送信します。Azure Active Directory でそのデータが Microsoft サポート エンジニアに提示されます。
+>[!NOTE]
+>管理者エージェントはインストールされず、既定で有効になっています。  サポート ケースを支援するためにデータを収集するには、エージェントをインストールする必要があります。
 
-Azure AD Connect 管理エージェントが環境から取得した情報はどこにも格納されません。提出された Azure Active Directory Connect 関連のサポート ケースを調査し、問題を解決する目的で、Microsoft サポート エンジニアにのみ表示されます。
+インストールされると、Azure AD Connect 管理エージェントは Azure Active Directory からデータに対する特定の要求を待ち、同期環境から要求されたデータを取得し、Azure Active Directory にそのデータを送信します。Azure Active Directory でそのデータが Microsoft サポート エンジニアに提示されます。 
 
-## <a name="how-is-the-azure-ad-connect-admin-agent-installed-on-the-azure-ad-connect-server"></a>Azure AD Connect 管理エージェントはどのように Azure AD Connect サーバーにインストールされますか。 
-管理エージェントがインストールされると、サーバーのコントロール パネルの [プログラムの追加と削除] に新しいプログラムが 2 つ表示されます。 
+Azure AD Connect 管理エージェントが環境から取得した情報はどこにも格納されません。提出された Azure Active Directory Connect 関連のサポート ケースを調査し、問題を解決する目的で、Microsoft サポート エンジニアにのみ表示されます。Azure AD Connect 管理エージェントは既定では Azure AD Connect Server にはインストールされません。 
+
+## <a name="install-the-azure-ad-connect-administration-agent-on-the-azure-ad-connect-server"></a>Azure AD Connect サーバーに Azure AD Connect 管理エージェントをインストールします。 
+Azure AD Connect 管理エージェントのバイナリは、AAD Connect サーバーに配置されます。 エージェントをインストールするには、次の操作を行います。 
+
+
+
+1. 管理者モードで powershell を開く 
+2. アプリケーションが配置されている ディレクトリに移動し、cd"C:\Program files \microsoft Azure Active Directory Connect\SetupFiles"と入力します 
+3. AADConnectAdminAgentSetup.exe アプリケーションを実行します。 
+ 
+プロンプトが表示されたら、Azure AD グローバル管理者の資格情報を入力します。 
+
+>[!NOTE]
+>資格情報を複数回求める既知の問題があります。 これは次のリリースで修正される予定です。
+
+エージェントがインストールされると、サーバーのコントロール パネルの [プログラムの追加と削除] に新しいプログラムが 2 つ表示されます。 
 
 ![管理エージェント](media/whatis-aadc-admin-agent/adminagent1.png)
 
-Azure AD Connect インストールの非常に重要な部分であるため、これらのプログラムは削除したり、アンインストールしたりしないでください。
+## <a name="what-data-in-my-sync-service-is-shown-to-the-microsoft-service-engineer"></a>Microsoft サービス エンジニアには自分の同期サービスのどのデータが表示されますか。 
+サポート ケースを開くと、Microsoft サポート エンジニアは、特定のユーザーに関して、Active Directory の関連データ、Azure Active Directory Connect サーバーの Active Directory コネクター スペース、Azure Active Directory Connect サーバーのメタバースを見ることができます。 
 
-## <a name="what-data-in-my-sync-service-is-shown-to-the-microsoft-service-engineer"></a>Microsoft サービス エンジニアには自分の同期サービスのどのデータが表示されますか。
-サポート ケースを開くと、Microsoft サポート エンジニアは、特定のユーザーに関して、Active Directory の関連データ、Azure Active Directory Connect サーバーの Active Directory コネクター スペース、Azure Active Directory Connect サーバーのメタバースを見ることができます。
-
-Microsoft サポート エンジニアはシステム内のいかなるデータも変更できません。また、いかなるパスワードも表示できません。
+Microsoft サポート エンジニアはシステム内のいかなるデータも変更できません。また、いかなるパスワードも表示できません。 
 
 ## <a name="what-if-i-dont-want-the-microsoft-support-engineer-to-access-my-data"></a>Microsoft サポート エンジニアには自分のデータにアクセスして欲しくない場合、どうすればよいですか。 
- 
-サポート時、Microsoft サービス エンジニアには自分のデータにアクセスして欲しくない場合、次の説明に従ってサービス構成ファイルを変更することで、これを無効にできます。 
+エージェントがインストールされると、サポート時、Microsoft サービス エンジニアには自分のデータにアクセスして欲しくない場合、次の説明に従ってサービス構成ファイルを変更することで、機能を無効にできます。 
 
 1.  **C:\Program Files\Microsoft Azure AD Connect Administration Agent\AzureADConnectAdministrationAgentService.exe.config** をメモ帳で開きます。
 2.  **UserDataEnabled** 設定を下の画像のように無効にします。 **UserDataEnabled** 設定があり、true に設定されている場合、それを false に設定します。 この設定がない場合、次のように設定を追加します。    

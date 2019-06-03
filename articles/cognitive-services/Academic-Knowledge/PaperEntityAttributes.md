@@ -10,23 +10,23 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/31/2017
 ms.author: alch
-ms.openlocfilehash: bd37665e962ada59149b54075d7f8acbea895c50
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 92844b5faf691b67617c9f3424a1322aa05429bb
+ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57437464"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64875738"
 ---
 # <a name="paper-entity"></a>論文エンティティ
 
 <sub> *次の属性は、論文エンティティに固有です。(Ty = '0') </sub>
 
 
-Name    |説明                                        |type       | 操作
+Name    |説明                                        |Type       | Operations
 ------- | ------------------------------------------------- | --------- | ----------------------------
 Id      |エンティティ ID                                          |Int64      |等しい
 Ti      |論文のタイトル                                        |String     |Equals、<br/>StartsWith
-L       | "\@@@" で区切られた論文の言語コード            |String     |等しい
+L       |"\@\@\@" によって区切られたペーパー言語コード          |String     |等しい
 Y       |論文の年                                         |Int32      |Equals、<br/>IsBetween
 D       |論文の日付                                         |Date       |Equals、<br/>IsBetween
 CC      |引用数                                     |Int32      |なし  

@@ -1,25 +1,19 @@
 ---
-title: Cloud パートナー ポータルでのユーザーの管理 - Azure Marketplace | Microsoft Docs
+title: Cloud パートナー ポータルでのユーザーの管理 | Azure Marketplace
 description: クラウド パートナー ポータルでのユーザーの管理
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
 manager: pbutlerm
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 04/01/2019
-ms.author: pbutlerm
-ms.openlocfilehash: 6ab010a5fb8399fb14d3f45c8bb3b4571657d883
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: pabutler
+ms.openlocfilehash: 21c49ad0d73721dd204a7a3899d11cf10d43521b
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59784421"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64942070"
 ---
 # <a name="managing-users-on-the-cloud-partner-portal"></a>Cloud パートナー ポータルでのユーザーの管理
 
@@ -29,7 +23,7 @@ ms.locfileid: "59784421"
 
 オファーを発行するために、ユーザーを追加し、ロールを割り当てるには、次の手順に従います。
 
-1. 左側にあるナビゲーション ウィンドウで、**[ユーザー]** タブをクリックします。
+1. 左側にあるナビゲーション ウィンドウで、 **[ユーザー]** タブをクリックします。
 
     ![[ユーザー] タブ](./media/userstab.png)
 
@@ -66,7 +60,7 @@ ms.locfileid: "59784421"
 
 ## <a name="delete-an-existing-user"></a>既存のユーザーを削除する
 
-既存のユーザーを削除するには、**[ユーザー]** タブで目的のユーザーのメールを検索し、右側の **[削除]** ボタンを押します。
+既存のユーザーを削除するには、 **[ユーザー]** タブで目的のユーザーのメールを検索し、右側の **[削除]** ボタンを押します。
 
 
 ## <a name="next-steps"></a>次の手順

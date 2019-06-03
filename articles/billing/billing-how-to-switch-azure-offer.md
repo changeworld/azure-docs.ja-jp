@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: banders
-ms.openlocfilehash: bbdcbdc7ef288eeeb279c7e5e59baee492e1f292
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 11d3deb029ef0d8478844b64c54db7982ed1091e
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57835273"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64570985"
 ---
 # <a name="change-your-azure-pay-as-you-go-subscription-to-a-different-offer"></a>Azure の従量課金制サブスクリプションを別のオファーに変更する
 
 [従量課金制](https://azure.microsoft.com/offers/ms-azr-0003p/)のお客様は、[アカウント センター](https://account.windowsazure.com/Subscriptions)で Azure サブスクリプションを別のオファーに切り替えることができます。 たとえば、この機能を使えば、[Visual Studio サブスクライバー向けの月単位のクレジット](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を有効活用できます。 
 
-**無料試用版からアップグレードしたいだけの場合:**  [従量課金制へのアップグレード](billing-upgrade-azure-subscription.md)に関する記事をご覧ください。
+**無料試用版からアップグレードしたいだけの場合:** [従量課金制へのアップグレード](billing-upgrade-azure-subscription.md)に関する記事をご覧ください。
 
 ## <a name="whats-supported"></a>サポート対象:
 
@@ -76,7 +76,7 @@ Azure オファーとは、ご利用の Azure サブスクリプションの*種
 
 ### <a name="why-dont-i-see-the-button"></a>ボタンが表示されないのはなぜですか。
 
-次の場合、**[別のプランに切り替える]** ボタンは表示されません。
+次の場合、 **[別のプランに切り替える]** ボタンは表示されません。
 
 * [従量課金制](https://azure.microsoft.com/offers/ms-azr-0003p/)を利用していない。 現時点では、別のオファーに切り替えられるのは従量課金制サブスクリプションのみです。
   * [無料試用版](https://azure.microsoft.com/free/)をご利用の場合は、[従量課金制にアップグレードする](billing-upgrade-azure-subscription.md)方法を確認してください。
@@ -86,7 +86,7 @@ Azure オファーとは、ご利用の Azure サブスクリプションの*種
 ### <a name="why-do-i-see-there-are-no-offers-available-in-your-region-or-country-at-this-time"></a>次の場合、"現在、お客様がお住まいのリージョンまたは国で利用できるプランはありません。" と表示されるのはなぜですか。
 
 * プラン切り替えの対象ではない可能性があります。 [切り替え可能なプランの一覧](#whats-supported)をチェックして、Visual Studio または Bizspark で適切に特典をアクティブ化していることを確認してください。
-* 国によっては一部のプランをご利用いただけません。
+* 国や地域によっては一部のプランをご利用いただけません。
 
 ### <a name="what-does-switching-azure-offers-do-to-my-service-and-billing"></a>Azure のプランを切り替えると、サービスと請求はどうなりますか?
 

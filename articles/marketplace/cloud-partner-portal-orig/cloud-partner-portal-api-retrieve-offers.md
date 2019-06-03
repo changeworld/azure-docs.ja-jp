@@ -1,25 +1,18 @@
 ---
-title: オファーの取得 API | Microsoft Docs
+title: オファーの取得 API | Azure Marketplace
 description: この API は、パブリッシャーの名前空間に含まれるオファーを要約した一覧を取得します。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: reference
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: de9261548ec79e206b0db87caabc1fa4c9ad6771
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.author: pabutler
+ms.openlocfilehash: 67109c3605ea96123ff41cb88d5ac328a09991e6
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56591552"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64935340"
 ---
 <a name="retrieve-offers"></a>オファーを取得する
 ===============
@@ -80,7 +73,7 @@ ms.locfileid: "56591552"
 |  status         | オファーの状態。 使用可能な値の一覧については、下の「[オファーの状態](#offer-status)」を参照してください。                         |
 |  id             | パブリッシャーの名前空間内のオファーを一意に示す GUID。                                                    |
 |  version        | オファーの現在のバージョン。 バージョン プロパティはクライアントでは変更できません。 発行のたびにインクリメントされます。 |
-|  定義     | ワークロードの実際の定義の要約ビューが含まれます。 詳細な定義を取得するには、[Retrieve specific offer](./cloud-partner-portal-api-retrieve-specific-offer.md) API を使用します。 |
+|  definition     | ワークロードの実際の定義の要約ビューが含まれます。 詳細な定義を取得するには、[Retrieve specific offer](./cloud-partner-portal-api-retrieve-specific-offer.md) API を使用します。 |
 |  changedTime    | オファーが最後に変更されたときの UTC 日時                                                                              |
 |  |  |
 

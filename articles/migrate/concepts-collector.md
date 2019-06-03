@@ -4,15 +4,15 @@ description: Azure Migrate の Collector アプライアンスに関する情報
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 03/26/2019
+ms.date: 04/26/2019
 ms.author: snehaa
 services: azure-migrate
-ms.openlocfilehash: 224511b9748c540f2cd48a3d8393a9c74f76ce32
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: d00899e0ca358b4e2970caa8c63c98e375ea970c
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58498419"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64728022"
 ---
 # <a name="about-the-collector-appliance"></a>Collector アプライアンスについて
 
@@ -85,18 +85,18 @@ Collector が Azure Migrate サービスに接続し、検出されたデータ�
 - プロキシ サーバーの IP アドレスまたは FQDN は、*http:\//IPaddress* または *http:\//FQDN* と指定する必要があります。
 - サポートされるのは HTTP プロキシのみです。 HTTPS ベースのプロキシ サーバーは、Collector ではサポートされていません。
 - プロキシ サーバーがインターセプト プロキシである場合は、Collector 仮想マシンにプロキシ証明書をインポートする必要があります。
-  1. Collector 仮想マシンで、**[スタート メニュー]** > **[コンピューター証明書の管理]** に移動します。
-  2. 証明書ツールの **[証明書 - ローカル コンピューター]** で、**[信頼された発行元]** > **[証明書]** を探します。
+  1. Collector 仮想マシンで、 **[スタート メニュー]**  >  **[コンピューター証明書の管理]** に移動します。
+  2. 証明書ツールの **[証明書 - ローカル コンピューター]** で、 **[信頼された発行元]**  >  **[証明書]** を探します。
 
       ![証明書ツール](./media/concepts-intercepting-proxy/certificates-tool.png)
 
   3. Collector 仮想マシンにプロキシ証明書をコピーします。 証明書はネットワーク管理者から取得することが必要になる場合があります。
-  4. 証明書をダブルクリックして開き、**[証明書のインストール]** をクリックします。
-  5. 証明書インポート ウィザードで、[ストアの場所] に移動して、**[ローカル マシン]** を選択します。
+  4. 証明書をダブルクリックして開き、 **[証明書のインストール]** をクリックします。
+  5. 証明書インポート ウィザードで、[ストアの場所] に移動して、 **[ローカル マシン]** を選択します。
 
      ![証明書ストアの場所](./media/concepts-intercepting-proxy/certificate-store-location.png)
 
-  6. **[証明書をすべて次のストアに配置する]** > **[参照]** > **[信頼された発行元]** を選択します。 **[完了]** をクリックして、証明書をインポートします。
+  6. **[証明書をすべて次のストアに配置する]**  >  **[参照]**  >  **[信頼された発行元]** を選択します。 **[完了]** をクリックして、証明書をインポートします。
 
      ![証明書ストア](./media/concepts-intercepting-proxy/certificate-store.png)
 
@@ -214,7 +214,7 @@ Azure Migrate によって収集される VMware カウンターの完全なリ�
 ネットワーク アダプターの詳細 (NIC ごと) | IPv6 アドレス | vm.Guest.Net
 ネットワーク アダプターの詳細 (NIC ごと) | 読み取りスループットの 1 秒あたりのメガバイト数 | net.received.average
 ネットワーク アダプターの詳細 (NIC ごと) | 書き込みスループットの 1 秒あたりのメガバイト数 | net.transmitted.average
-インベントリ パスの詳細 | 名前 | container.GetType().Name
+インベントリ パスの詳細 | Name | container.GetType().Name
 インベントリ パスの詳細 | 子オブジェクトの型 | container.ChildType
 インベントリ パスの詳細 | 参照の詳細 | container.MoRef
 インベントリ パスの詳細 | 完全なインベントリ パス | container.Name with complete path
@@ -238,7 +238,7 @@ Azure Migrate によって収集される VMware カウンターの完全なリ�
 
 ## <a name="os-license-in-the-collector-vm"></a>Collector 仮想マシンの OS ライセンス
 
-Collector には、180 日間有効な Windows Server 2012 R2 評価版ライセンスが付属します。 Collector 仮想マシンの評価期間が期限切れになった場合は、新しい OVA をダウンロードして、新しいアプライアンスを作成することをお勧めします。
+Collector には、180 日間有効な Windows Server 2016 評価版ライセンスが付属します。 Collector 仮想マシンの評価期間が期限切れになった場合は、新しい OVA をダウンロードして、新しいアプライアンスを作成することをお勧めします。
 
 ## <a name="updating-the-os-of-the-collector-vm"></a>Collector 仮想マシンの OS の更新
 

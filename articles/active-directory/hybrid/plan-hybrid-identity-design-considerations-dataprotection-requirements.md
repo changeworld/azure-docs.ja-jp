@@ -12,22 +12,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/30/2018
+ms.date: 04/29/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e734b932976896b2fb4d86e2627b7827d40a2545
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 056d0caf2bfc6e99d5d659a2561bc41844feb79a
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56189891"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64918792"
 ---
 # <a name="plan-for-enhancing-data-security-through-a-strong-identity-solution"></a>強力な ID ソリューションによりデータ セキュリティを強化するための計画
 データを保護する最初の手順は、そのデータにアクセスできるユーザーを特定することです。 また、認証および承認機能を提供するようにシステムと統合可能なIDソリューションが必要です。 認証と承認は混同され、その役割が誤解されることがよくあります。 実際には、次の図のように、大変異っています：
 
-![](./media/plan-hybrid-identity-design-considerations/mobile-devicemgt-lifecycle.png)
+![モバイル デバイスのライフサイクル](./media/plan-hybrid-identity-design-considerations/mobile-devicemgt-lifecycle.png)
 
 **モバイル デバイス管理のライフ サイクル段階**
 
@@ -44,7 +44,7 @@ ms.locfileid: "56189891"
 一方、業界に関係なく、探索し、および検証される必要があるセキュリティ上の側面がいくつかあります。
 
 ## <a name="data-protection-paths"></a>データ保護のパス
-![](./media/plan-hybrid-identity-design-considerations/data-protection-paths.png)
+![データ保護のパス](./media/plan-hybrid-identity-design-considerations/data-protection-paths.png)
 
 **データ保護のパス**
 

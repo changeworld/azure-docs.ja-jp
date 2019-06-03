@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/30/2018
+ms.date: 04/29/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d69ddbd38798d0667ce69fb7696597a972b5098
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 16d20e9ea2203c788a2b7b5eb0507b357350407d
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56166999"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64918500"
 ---
 # <a name="plan-for-hybrid-identity-lifecycle"></a>ハイブリッド ID ライフサイクルの計画を立てる
 ID はエンタープライズ モビリティとアプリケーション アクセスの戦略基盤の 1 つです。 モバイル デバイスにサインオンする場合でも、SaaS アプリにサインオンする場合でも、ID があらゆるアクセスを得るための鍵となります。 ID 管理ソリューションとは、概して、ID リポジトリ間の統一と同期であり、その中にリソースのプロビジョニングというプロセスの自動化と集中化が含まれます。 ID ソリューションはオンプレミスとクラウドにわたり ID を一元化するものでなければならず、また、何らかの形式の ID フェデレーションを利用し、認証を一元化し、外部のユーザーや企業と安全に共有し、共同作業するものです。 リソースは、オペレーティング システムやアプリケーションから組織内のユーザーや関連組織まで多岐にわたります。 組織構造を変更し、プロビジョニングのポリシーと手続を調整できます。
@@ -32,7 +32,7 @@ ID ソリューションを調整し、ユーザーにセルフサービス機�
 ## <a name="determine-hybrid-identity-management-tasks"></a>ハイブリッド ID 管理タスクを決定する
 組織内で管理タスクを配分することで、管理の精度と効果が上がり、組織の作業負荷のバランスが良くなります。 堅牢な ID 管理システムは、次のような軸を基に定義されます。
 
- ![](./media/plan-hybrid-identity-design-considerations/Identity_management_considerations.png)
+ ![ID 管理に関する考慮事項](./media/plan-hybrid-identity-design-considerations/Identity_management_considerations.png)
 
 ハイブリッド ID 管理タスクを定義するには、ハイブリッド ID を導入する組織の本質的特性を理解する必要があります。 ID ソースとして利用されている現在のリポジトリを理解することが重要です。 以上の中心的要素を知ることで、基礎的な要件が与えられ、それに基づいてさらに細かく質問に答えることで、ID ソリューションの設計が効率的に導き出されます。  
 
@@ -61,7 +61,7 @@ ID ソリューションを調整し、ユーザーにセルフサービス機�
 ## <a name="synchronization-management"></a>同期管理
 ID マネージャーの目標の 1 つは、あらゆる ID プロバイダーを同期させることです。 権限のあるマスター ID プロバイダーに基づき、データを同期します。 同期管理モデルのあるハイブリッド ID シナリオでは、オンプレミス サーバーですべてのユーザーとデバイスの ID を管理し、アカウントと、必要に応じて、パスワードをクラウドに同期します。 ユーザーはクラウドと同じパスワードをオンプレミスで入力します。サインイン時にパスワードが ID ソリューションにより検証されます。 このモデルではディレクトリ同期ツールが使用されます。
 
-![](./media/plan-hybrid-identity-design-considerations/Directory_synchronization.png) ハイブリッド ID ソリューションの同期を適切に設計するには、次の質問に答えます。•    ハイブリッド ID ソリューションに利用できる同期ソリューションは何ですか。
+![ディレクトリ同期](./media/plan-hybrid-identity-design-considerations/Directory_synchronization.png)ハイブリッド ID ソリューションの同期を適正に設計するために、次の質問の回答を確認します。 •    ハイブリッド ID ソリューションに利用できる同期ソリューションは何ですか。
 •    どのようなシングル サインオン機能が利用できますか。
 •    B2B と B2C の間の ID フェデレーションにはどのような選択肢がありますか。
 

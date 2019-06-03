@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 11/28/2018
+ms.date: 04/26/2019
 ms.author: jingwang
-ms.openlocfilehash: 772b9b191a2e6464ff481ff6661308e00ef6033a
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 6a52749c78cd0f090e66220fe51e3d04985f96e7
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59545435"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64869531"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Azure Data Factory を使用して Dynamics 365 (Common Data Service) または Dynamics CRM をコピー元またはコピー先としてデータをコピーする
 
@@ -27,7 +27,7 @@ ms.locfileid: "59545435"
 
 Dynamics 365 (Common Data Service) または Dynamics CRM から、サポートされている任意のシンク データ ストアにデータをコピーできます。 サポートされている任意のソース データ ストアから Dynamics 365 (Common Data Service) または Dynamics CRM にデータをコピーすることもできます。 コピー アクティビティによってソースまたはシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関するページの表をご覧ください。
 
-この Dynamics コネクタは、次の Dynamics のバージョンと認証の種類をサポートします  (IFD は Internet Facing Deployment の省略形です)。
+この Dynamics コネクタは、次の Dynamics のバージョンと認証の種類をサポートします (IFD は Internet Facing Deployment の省略形です)。
 
 | Dynamics のバージョン | 認証の種類 | リンクされたサービスの例 |
 |:--- |:--- |:--- |
@@ -69,9 +69,6 @@ Dynamics のリンクされたサービスでは、次のプロパティがサ�
 | password | username に指定したユーザー アカウントのパスワードを指定します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 | ソースの場合は「いいえ」、シンクの場合は「はい」 (ソースにリンクされたサービスに統合ランタイムがない場合) |
 
->[!IMPORTANT]
->Dynamics にデータをコピーする場合は、既定の Azure Integration Runtime を使用してコピーを実行することはできません。 言い換えると、ソースのリンクされたサービスに指定された統合ランタイムがない場合は、Dynamics インスタンスに近い場所に明示的に [Azure Integration Runtime を作成](create-azure-integration-runtime.md#create-azure-ir)します。 [Dynamics 365 の地域一覧](https://docs.microsoft.com/dynamics365/customer-engagement/admin/datacenter/new-datacenter-regions)を参照して、Dynamics インスタンスのある場所を確認してください。 次の例のように、Dynamics のリンクされたサービスに関連付けます。
-
 >[!NOTE]
 >Dynamics コネクタは、省略可能な "organizationName" プロパティを使用して Dynamics CRM/365 Online インスタンスを識別するために使用されていました。 それは引き続き機能しますが、代わりに新しい "serviceUri" プロパティを指定して、インスタンス検出のパフォーマンスを向上させることをお勧めします。
 
@@ -103,7 +100,7 @@ Dynamics のリンクされたサービスでは、次のプロパティがサ�
 
 ### <a name="dynamics-365-and-dynamics-crm-on-premises-with-ifd"></a>IFD 対応 Dynamics 365 および Dynamics CRM (オンプレミス)
 
-"*Dyanmics Online と比べた場合に追加されたプロパティは、"hostName" と "port" です。*"
+"*Dyanmics Online と比べた場合に追加されたプロパティは、"hostName" と "port" です。* "
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
@@ -116,9 +113,6 @@ Dynamics のリンクされたサービスでは、次のプロパティがサ�
 | ユーザー名 | Dynamics に接続するためのユーザー名を指定します。 | はい |
 | password | username に指定したユーザー アカウントのパスワードを指定します。 このフィールドを SecureString としてマークして ADF に安全に格納するか、Azure Key Vault にパスワードを格納し、データ コピーの実行時にコピー アクティビティでそこからプルするかを選択できます。詳しくは、[Key Vault への資格情報の格納](store-credentials-in-key-vault.md)に関するページをご覧ください。 | はい |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 | ソースの場合はいいえ、シンクの場合ははい |
-
->[!IMPORTANT]
->Dynamics にコピーするには、Dynamics インスタンスに近い場所に明示的に [Azure Integration Runtime を作成](create-azure-integration-runtime.md#create-azure-ir)します。 次の例のように、リンクされたサービスに関連付けます。
 
 **例:IFD 認証を使用する IFD 対応オンプレミス Dynamics**
 
@@ -160,8 +154,8 @@ Dynamics をコピー元またはコピー先としてデータをコピーす�
 | entityName | 取得するエンティティの論理名。 | ソースの場合はいいえ (アクティビティ ソースの "query" が指定されている場合)、シンクの場合ははい |
 
 > [!IMPORTANT]
->- Dynamics からデータをコピーする場合､"structure" セクションは省略できますが、確定的なコピーの結果を得るには､Dynamics データセットに含めることを推奨します。 それは、コピーする Dynamics のデータの列名とデータ型を定義します。 詳細については、「[データセット構造](concepts-datasets-linked-services.md#dataset-structure)」と「[Dynamics のデータ型のマッピング](#data-type-mapping-for-dynamics)」を参照してください。
->- UI 作成でスキーマをインポートするさい､ADF は Dynamics のクエリ結果の上位の行をサンプリングすることで (値のない列は除外)､スキーマを推論し､構造体構築を初期化します｡ Dynamics データセット スキーマ/構造体を調べて、必要に応じて複数の列を追加できます。この変更は､コピーのランライム時に受け入れられます｡
+>- Dynamics からデータをコピーするときに、"structure" セクションは省略できますが、Dynamics データセットでは確定的なコピー結果にするために強くお勧めします。 それは、コピーする Dynamics のデータの列名とデータ型を定義します。 詳細については、「[データセット構造](concepts-datasets-linked-services.md#dataset-structure-or-schema)」と「[Dynamics のデータ型のマッピング](#data-type-mapping-for-dynamics)」を参照してください。
+>- UI 作成でスキーマをインポートするさい､ADF は Dynamics のクエリ結果の上位の行をサンプリングすることで (値のない列は除外)､スキーマを推論し､構造体構築を初期化します｡ 明示的な構造体定義がない場合は、実行をコピーする同じ動作が適用されます。 Dynamics データセット スキーマ/構造体を調べて、必要に応じて複数の列を追加できます。この変更は､コピーのランライム時に受け入れられます｡
 >- Dynamics にデータをコピーする場合、Dynamics データセットの "structure" セクションは省略可能です。 コピー先の列は、ソース データ スキーマによって決定されます。 ソースがヘッダーのない CSV ファイルの場合、入力データセットに列名とデータ型を "structure" で指定します。 それらは、1 つづつ順番に CSV ファイルのフィールドにマップされます。
 
 **例:**
@@ -275,12 +269,12 @@ Dynamics にデータをコピーするは、コピー アクティビティの�
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | コピー アクティビティのシンクの type プロパティは **DynamicsSink** に設定する必要があります。 | はい |
-| writeBehavior | 操作の書き込み動作。<br/>使用可能な値: **"Upsert"**。 | はい |
+| writeBehavior | 操作の書き込み動作。<br/>使用可能な値: **"Upsert"** 。 | はい |
 | writeBatchSize | 各バッチで Dynamics に書き込まれたデータの行数。 | いいえ (既定値は 10) |
 | ignoreNullValues | 書き込み操作時に入力データ (キー フィールドを除く) からの null 値を無視するかどうかを示します。<br/>使用可能な値: **true** および **false**。<br>- **True**:upsert または更新操作を行うときに、対象オブジェクト内のデータが変更されないようにします。 挿入操作を実行するときに、定義済みの既定値を挿入します。<br/>- **False**:upsert または更新操作を行うときに、対象オブジェクト内のデータを NULL に更新します。 挿入操作を実行するときに、NULL 値を挿入します。 | いいえ (既定値は false) |
 
 >[!NOTE]
->Dynamics シンクでのシンク "**writeBatchSize**" とコピー アクティビティ "**[parallelCopies](copy-activity-performance.md#parallel-copy)**" の既定値は、どちらも 10 です。 そのため、100 個のレコードが Dynamics に同時に送信されます。
+>Dynamics シンクでのシンク "**writeBatchSize**" とコピー アクティビティ " **[parallelCopies](copy-activity-performance.md#parallel-copy)** " の既定値は、どちらも 10 です。 そのため、100 個のレコードが Dynamics に同時に送信されます。
 
 Dynamics 365 オンラインでは、[1 組織あたりの同時バッチ呼び出し数が 2](https://msdn.microsoft.com/library/jj863631.aspx#Run-time%20limitations) という制限があります。 この制限を超えた場合、最初の要求が実行される前に "サーバー ビジー" 状態が発生します。 "writeBatchSize" を 10 以下に保つと、このような同時呼び出しの制限が回避されます。
 
@@ -330,7 +324,7 @@ Dynamics からデータをコピーするとき、次の Dynamics のデータ�
 |:--- |:--- |:--- |:--- |
 | AttributeTypeCode.BigInt | long | ✓ | ✓ |
 | AttributeTypeCode.Boolean | Boolean | ✓ | ✓ |
-| AttributeType.Customer | Guid | ✓ | | 
+| AttributeType.Customer | Guid | ✓ | |
 | AttributeType.DateTime | DateTime | ✓ | ✓ |
 | AttributeType.Decimal | Decimal | ✓ | ✓ |
 | AttributeType.Double | Double | ✓ | ✓ |

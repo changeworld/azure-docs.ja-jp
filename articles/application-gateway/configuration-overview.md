@@ -2,17 +2,17 @@
 title: Azure Application Gateway 構成の概要
 description: この記事では、Azure Application Gateway のコンポーネントを構成する方法について説明します。
 services: application-gateway
-author: abshamsft
+author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 4/30/2019
 ms.author: absha
-ms.openlocfilehash: 4b8e04babfffaf49d3719d8a7e90af16598814f4
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 5bfd1f930c190e717e435856f424f0cdf80deb2c
+ms.sourcegitcommit: ed66a704d8e2990df8aa160921b9b69d65c1d887
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59998908"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64946808"
 ---
 # <a name="application-gateway-configuration-overview"></a>アプリケーション ゲートウェイ構成の概要
 
@@ -71,7 +71,7 @@ Application Gateway は、インスタンスごとに 1 つのプライベート
 
 v1 SKU の場合、ユーザー定義ルート (UDR) は、エンド ツー エンドの要求/応答の通信を変えない限り、Application Gateway サブネットでサポートされます。 たとえば、パケットの検査のためにファイアウォール アプライアンスを指すように Application Gateway サブネットの UDR を設定できます。 ただし、検査後にパケットが目的の宛先に到達できることを確認する必要があります。 これに失敗すると、不適切な正常性プローブやトラフィック ルーティング動作が発生する場合があります。 これには仮想ネットワークの Azure ExpressRoute や VPN ゲートウェイによってプロパゲートされる学習済みのルートまたは既定の 0.0.0.0/0 ルートが含まれます。
 
-v2 SKU の場合、Application Gateway サブネット上の UDR はサポートされません。 詳細については、[Application Gateway での自動スケールとゾーン冗長](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant#known-issues-and-limitations)に関するページを参照してください。
+v2 SKU の場合、Application Gateway サブネット上の UDR はサポートされません。 詳細については、[Azure Application Gateway v2 SKU](application-gateway-autoscaling-zone-redundant.md#differences-with-v1-sku) をご覧ください。
 
 > [!NOTE]
 > Application Gateway サブネット上で UDR を使用すると、[バックエンドの正常性ビュー](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics#back-end-health)に正常性状態が "不明" と表示されます。 また、Application Gateway ログとメトリックの生成が失敗します。 バックエンドの正常性、ログ、およびメトリックを表示できるように、Application Gateway サブネット上で UDR を使用しないことをお勧めします。
@@ -84,7 +84,7 @@ v2 SKU の場合、Application Gateway サブネット上の UDR はサポート
 
 1 つのパブリック IP アドレスまたは 1 つのプライベート IP アドレスしかサポートされません。 アプリケーション ゲートウェイを作成するときにフロントエンド IP を選択します。
 
-- パブリック IP の場合は、新しいパブリック IP アドレスの作成またはアプリケーション ゲートウェイと同じ場所にある既存のパブリック IP を使用できます。 新しいパブリック IP を作成する場合、選択した IP アドレスの種類 (静的または動的) を後で変更することはできません。 詳細については、[静的なパブリック IP アドレスと動的なパブリック IP アドレス](https://docs.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-vs-dynamic-public-ip-address)に関するページを参照してください。
+- パブリック IP の場合は、新しいパブリック IP アドレスの作成またはアプリケーション ゲートウェイと同じ場所にある既存のパブリック IP を使用できます。 新しいパブリック IP を作成する場合、選択した IP アドレスの種類 (静的または動的) を後で変更することはできません。 詳細については、[静的なパブリック IP アドレスと動的なパブリック IP アドレス](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#static-vs-dynamic-public-ip-address)に関するページを参照してください。
 
 - プライベート IP の場合は、アプリケーション ゲートウェイが作成されるサブネットのプライベート IP アドレスを指定できます。 指定しないと、サブネットから任意の IP アドレスが自動的に選択されます。 詳細については、[内部ロード バランサーを使用したアプリケーション ゲートウェイの作成](https://docs.microsoft.com/azure/application-gateway/application-gateway-ilb-arm)に関するページを参照してください。
 
@@ -209,13 +209,13 @@ v2 SKU の場合、完全一致が URL パス マップ内のパスの順序よ�
 
 ### <a name="redirection-setting"></a>リダイレクト設定
 
-基本規則でリダイレクトが構成されている場合、関連付けられているリスナーのすべての要求はターゲットにリダイレクトされます。 これは "*グローバル*" なリダイレクトです。 パスベースの規則に対してリダイレクトが構成されている場合は、特定のサイト領域内の要求のみがリダイレクトされます。 たとえば、*/cart/\** で示されるショッピング カート領域です。 これが*パスベース*のリダイレクトです。
+基本規則でリダイレクトが構成されている場合、関連付けられているリスナーのすべての要求はターゲットにリダイレクトされます。 これは "*グローバル*" なリダイレクトです。 パスベースの規則に対してリダイレクトが構成されている場合は、特定のサイト領域内の要求のみがリダイレクトされます。 たとえば、 */cart/\** で示されるショッピング カート領域です。 これが*パスベース*のリダイレクトです。
 
 リダイレクトの詳細については、「[Application Gateway のリダイレクトの概要](https://docs.microsoft.com/azure/application-gateway/redirect-overview)」を参照してください。
 
 #### <a name="redirection-type"></a>リダイレクトの種類
 
-必要なリダイレクトの種類を選択します。*Permanent(301)*、*Temporary(307)*、*Found(302)*、または *See other(303)* があります。
+必要なリダイレクトの種類を選択します。*Permanent(301)* 、*Temporary(307)* 、*Found(302)* 、または *See other(303)* があります。
 
 #### <a name="redirection-target"></a>リダイレクト ターゲット
 
@@ -314,7 +314,7 @@ Application Gateway では、要求のバックエンド サーバーへのル�
 
 たとえば、バックエンドとしてのマルチテナント サービスのケースなどです。 アプリ サービスは、単一の IP アドレスを持つ共有領域を使用するマルチテナント サービスです。 そのため、アプリ サービスにアクセスするには、カスタム ドメイン設定で構成されているホスト名を使用する必要があります。
 
-既定ではカスタム ドメイン名は *example.azurewebsites.<i></i>net* です。 アプリケーション ゲートウェイを使用して、App Service に明示的に登録されていないホスト名またはアプリケーション ゲートウェイの FQDN によって App Service にアクセスするには、元の要求のホスト名をオーバーライドして、アプリ サービスのホスト名にする必要があります。 これを行うために、**[バックエンド アドレスからホスト名を選択します]** 設定を有効にします。
+既定ではカスタム ドメイン名は *example.azurewebsites.<i></i>net* です。 アプリケーション ゲートウェイを使用して、App Service に明示的に登録されていないホスト名またはアプリケーション ゲートウェイの FQDN によって App Service にアクセスするには、元の要求のホスト名をオーバーライドして、アプリ サービスのホスト名にする必要があります。 これを行うために、 **[バックエンド アドレスからホスト名を選択します]** 設定を有効にします。
 
 既存のカスタム DNS 名がアプリ サービスにマップされているカスタム ドメインの場合、この設定を有効にする必要はありません。
 

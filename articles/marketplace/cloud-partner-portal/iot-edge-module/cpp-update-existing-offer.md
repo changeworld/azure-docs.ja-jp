@@ -1,25 +1,18 @@
 ---
-title: 既存の Azure IoT Edge モジュール プランの更新 | Microsoft Docs
+title: 既存の Azure IoT Edge モジュール プランの更新 | Azure Marketplace
 description: Azure Marketplace で既存の IoT Edge モジュール プランを更新する方法。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: dan-wesley
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 10/18/2018
-ms.author: pbutlerm
-ms.openlocfilehash: ca7bed26d91c28304638e85d6da93708bfcfcada
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: pabutler
+ms.openlocfilehash: 1dc6832fe09a610634ad934e3b173be6cc3331e6
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58170311"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64942173"
 ---
 # <a name="update-an-existing-iot-edge-module-offer"></a>既存の IoT Edge モジュール プランの更新
 
@@ -57,7 +50,7 @@ IoT Edge モジュール イメージがセキュリティ パッチ、追加機
 
 3.  **[SKU]** タブで、更新する IoT Edge モジュール イメージに関連付けられている SKU を選択します。
 
-4.  **[Edge モジュール イメージ]** で、**[+ New Image Version (新しいイメージ バージョンの追加)]** を選択し、新しい IoT Edge モジュール イメージを追加します。
+4.  **[Edge モジュール イメージ]** で、 **[+ New Image Version (新しいイメージ バージョンの追加)]** を選択し、新しい IoT Edge モジュール イメージを追加します。
 
 5.  新しい IoT Edge モジュール **イメージ バージョン**を指定します。 イメージ バージョンでは、以前のバージョンと同じタグのガイドラインに従う必要があります。 バージョン タグの形式は X.Y.Z で、X、Y、Z は整数です。 指定した新しいバージョンが以前のすべてのバージョンよりも大きいことを確認します。
 
@@ -71,7 +64,7 @@ IoT Edge モジュール イメージがセキュリティ パッチ、追加機
 
 2.  **[すべてのプラン]** から、更新するプランを見つけます。
 
-3.  **[SKU]** タブで、**[Add new SKU (新しい SKU の追加)]** を選択し、ポップアップ ウィンドウに **[SKU ID]** を指定します。
+3.  **[SKU]** タブで、 **[Add new SKU (新しい SKU の追加)]** を選択し、ポップアップ ウィンドウに **[SKU ID]** を指定します。
 
 4.  [IoT Edge モジュールの Azure Marketplace への発行](./cpp-publish-offer.md)に関する記事で説明している手順に従って、IoT Edge モジュールを再発行します。
 
@@ -92,7 +85,7 @@ IoT Edge モジュール イメージがセキュリティ パッチ、追加機
 
 ## <a name="compare-feature"></a>機能の比較
 
-発行されているプランを変更する場合、**[比較]** 機能を使用して、実行した変更を監査することができます。 
+発行されているプランを変更する場合、 **[比較]** 機能を使用して、実行した変更を監査することができます。 
 
 **比較機能を使用する方法**
 

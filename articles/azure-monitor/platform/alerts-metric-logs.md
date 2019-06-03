@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: 9f47ba44e7940414932371ef1b7a360d0b01e1ff
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 1c744e0063d5c56b2ca17f2b6c6fa694ad13a26c
+ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58483864"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64872572"
 ---
 # <a name="create-metric-alerts-for-logs-in-azure-monitor"></a>Azure Monitor でのログのメトリック アラートの作成
 
@@ -57,8 +57,8 @@ Log Analytics データで収集されたログのメトリックを機能させ
 
 1. **アクティブな Log Analytics ワークスペース**: 有効かつアクティブな Log Analytics ワークスペースが存在する必要があります。 詳細については、[Azure portal での Log Analytics ワークスペースの作成](../../azure-monitor/learn/quick-create-workspace.md)に関するページをご覧ください。
 2. **Log Analytics ワークスペースのエージェントを構成する**: 前の手順で使用した Log Analytics ワークスペースにデータを送信するために、Azure VM およびオンプレミスの VM でエージェントを構成する必要があります。 詳細については、[Log Analytics エージェントの概要](../../azure-monitor/platform/agents-overview.md)に関する記事をご覧ください。
-3. **サポートされている Log Analytics ソリューションをインストールする**: Log Analytics ソリューションを構成し、Log Analytics ワークスペースにデータを送信する必要があります。サポートされているソリューションは、[Windows および Linux のパフォーマンス カウンター](../../azure-monitor/platform/data-sources-performance-counters.md)、[Agent Health のハートビート レコード](../../azure-monitor/insights/solution-agenthealth.md)、Update Management、[イベント データ](../../azure-monitor/platform/data-sources-windows-events.md)です。
-4. **ログを送信するように構成された Log Analytics ソリューション**: Log Analytis ソリューションでは、[Log Analytics ワークスペースでサポートされるメトリック](../../azure-monitor/platform/metrics-supported.md#microsoftoperationalinsightsworkspaces)に対応するログまたはデータが必要です。 たとえば、*% Available Memory* の場合、[パフォーマンス カウンター](../../azure-monitor/platform/data-sources-performance-counters.md) ソリューションでこのメトリックのカウンターを構成しておく必要があります。
+3. **サポートされている Log Analytics ソリューションをインストールする**: Log Analytics ソリューションを構成して、データを Log Analytics ワークスペースに送信する必要があります。サポートされるソリューションは、[Windows および Linux のパフォーマンス カウンター](../../azure-monitor/platform/data-sources-performance-counters.md)、[Agent Health のハートビート レコード](../../azure-monitor/insights/solution-agenthealth.md)、[更新管理](../../automation/automation-update-management.md)、および[イベント データ](../../azure-monitor/platform/data-sources-windows-events.md)です。
+4. **ログを送信するように構成された Log Analytics ソリューション**: Log Analytis ソリューションでは、[Log Analytics ワークスペースでサポートされるメトリック](../../azure-monitor/platform/metrics-supported.md#microsoftoperationalinsightsworkspaces)に対応するログまたはデータが必要です。 たとえば、 *% Available Memory* の場合、[パフォーマンス カウンター](../../azure-monitor/platform/data-sources-performance-counters.md) ソリューションでこのメトリックのカウンターを構成しておく必要があります。
 
 ## <a name="configuring-metric-alert-for-logs"></a>ログのメトリック アラートの構成
 

@@ -1,25 +1,18 @@
 ---
-title: Azure テーブル | Microsoft Docs
+title: Azure テーブル | Azure Marketplace
 description: Azure テーブル用にリード管理を構成します。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: dan-wesley
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 2a8ae3ab71b258d92d9761cc813b168717e44d82
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: pabutler
+ms.openlocfilehash: af582e51875f84503116f4ec7131464d51e54a99
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58878011"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64935838"
 ---
 # <a name="lead-management-instructions-for-azure-table"></a>Azure テーブルでの潜在顧客管理の手順
 
@@ -50,16 +43,16 @@ ms.locfileid: "58878011"
 この例を、Azure テーブルに新しい潜在顧客が追加されたら電子メール通知を自動的に送信する単純なフローを作成するためのガイドとして使用してください。 この例では、テーブル ストレージが更新された場合は、1 時間ごとに潜在顧客情報を送信するための繰り返しを設定します。
 
 1. Microsoft Flow アカウントにサインインします。
-2. 左側のナビゲーション バーで、**[マイ フロー]** を選択します。
-3. 上部のナビゲーション バーで、**[+ 新規]** を選択します。  
-4. ドロップダウン リストで、**[一から作成]** を選択します。
-5. [フローを一から作成する] で、**[一から作成]** を選択します。
+2. 左側のナビゲーション バーで、 **[マイ フロー]** を選択します。
+3. 上部のナビゲーション バーで、 **[+ 新規]** を選択します。  
+4. ドロップダウン リストで、 **[一から作成]** を選択します。
+5. [フローを一から作成する] で、 **[一から作成]** を選択します。
 
    ![新しいフローを一から作成する](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-create-from-blank.png)
 
-6. コネクタとトリガーの検索ページで、**[トリガー]** を選択します。
-7. **[トリガー]** で、**[繰り返し]** を選択します。
-8. **[繰り返し]** ウィンドウで、**[間隔]** に対する 1 の既定の設定を保持します。 **[頻度]** ドロップダウン リストから、**[時間]** を選択します。
+6. コネクタとトリガーの検索ページで、 **[トリガー]** を選択します。
+7. **[トリガー]** で、 **[繰り返し]** を選択します。
+8. **[繰り返し]** ウィンドウで、 **[間隔]** に対する 1 の既定の設定を保持します。 **[頻度]** ドロップダウン リストから、 **[時間]** を選択します。
 
    >[!NOTE] 
    >この例では 1 時間の間隔を使用していますが、ビジネス ニーズに最適な間隔と頻度を選択できます。
@@ -71,7 +64,7 @@ ms.locfileid: "58878011"
 
     ![[過去の時間を取得] アクションを検索して選択する](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-search-getpasttime.png)
 
-11. **[過去の時間を取得]** ウィンドウで、**[間隔]** を 1 に設定します。  **[時間単位]** ドロップダウン リストから、**[時間]** を選択します。
+11. **[過去の時間を取得]** ウィンドウで、 **[間隔]** を 1 に設定します。  **[時間単位]** ドロップダウン リストから、 **[時間]** を選択します。
     >[!IMPORTANT] 
     >この間隔と時間単位が、繰り返しとして構成した間隔と頻度に一致することを確認してください。
 
@@ -82,8 +75,8 @@ ms.locfileid: "58878011"
 
 次の一連のステップでは、Azure テーブルに接続し、新しい潜在顧客を処理するための処理ロジックを設定します。
 
-1. [過去の時間を取得] ステップの後、**[+ 新しいステップ]** を選択し、"[Get entities] (エンティティの取得)" を検索します。
-2. **[アクション]** で、**[Get entities] (エンティティの取得)**、**[詳細オプションを表示する]** の順に選択します。
+1. [過去の時間を取得] ステップの後、 **[+ 新しいステップ]** を選択し、"[Get entities] (エンティティの取得)" を検索します。
+2. **[アクション]** で、 **[Get entities] (エンティティの取得)** 、 **[詳細オプションを表示する]** の順に選択します。
 3. **[Get entities] (エンティティの取得)** ウィンドウで、次のフィールドの情報を指定します。
 
    - **[テーブル]** – Azure Table Storage の名前を入力します。 次の画面キャプチャは、この例で "MarketPlaceLeads" が入力されたときのプロンプトを示しています。 
@@ -98,11 +91,11 @@ ms.locfileid: "58878011"
 
    ![新しいステップを使用して Azure テーブルをスキャンする条件を追加する](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-add-filterquery-new-step.png)
 
-5. **[アクションの選択]** ウィンドウで、**[アクション]** を選択してから、**[条件]** コントロールを選択します。
+5. **[アクションの選択]** ウィンドウで、 **[アクション]** を選択してから、 **[条件]** コントロールを選択します。
 
      ![[条件] コントロールを追加する](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-action-condition-control.png)
 
-6. **[条件]** ウィンドウで、**[値の選択]** フィールドを選択してから、ポップアップ ウィンドウで **[式]** を選択します。
+6. **[条件]** ウィンドウで、 **[値の選択]** フィールドを選択してから、ポップアップ ウィンドウで **[式]** を選択します。
 7. ***[fx]*** フィールドに `length(body('Get_entities')?['value'])` を貼り付けます。 **[OK]** を選択して、この関数を追加します。 条件の設定を完了するには、次の手順を実行します。
 
    - ドロップダウン リストから [is greater than] (次の値より大きい) を選択します。
@@ -140,7 +133,7 @@ ms.locfileid: "58878011"
 
  ![フローの管理](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-manage-completed.png)
 
-フローは、**[Turn flow off] (フローを停止)** オプションを使用して停止するまで実行状態を維持します。
+フローは、 **[Turn flow off] (フローを停止)** オプションを使用して停止するまで実行状態を維持します。
 
 潜在顧客の電子メール通知を何も受信していない場合、それは Azure テーブルに新しい潜在顧客が追加されていないことを示しています。 フローに何かエラーがある場合は、次の画面キャプチャにある例のような電子メールを受信します。
 

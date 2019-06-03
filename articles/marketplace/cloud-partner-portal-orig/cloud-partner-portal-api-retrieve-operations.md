@@ -1,25 +1,18 @@
 ---
-title: 操作の取得 API | Microsoft Docs
+title: 操作の取得 API | Azure Marketplace
 description: オファーのすべての操作を取得するか、指定した operationId の特定の操作を取得します。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: reference
 ms.date: 09/14/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 3f0f087c98f2b6594ab7e841f92ffac7ffe4003e
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.author: pabutler
+ms.openlocfilehash: 1fbcc1d50dbc4488c4123be64e85de612233ccc3
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48807819"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64935774"
 ---
 <a name="retrieve-operations"></a>操作の取得
 ===================
@@ -38,20 +31,20 @@ ms.locfileid: "48807819"
 <a name="uri-parameters"></a>URI パラメーター
 --------------
 
-|  **名前**          |      **説明**                                                                                           | **データの種類** |
+|  **Name**          |      **説明**                                                                                           | **データの種類** |
 |  ----------------  |     --------------------------------------------------------------------------------------------------------   |  -----------  |
 |  publisherId       |  パブリッシャー ID。たとえば、`Contoso`                                                                   |  String       |
 |  offerId           |  オファー ID                                                                                              |  String       |
 |  operationId       |  オファーの操作を一意に識別する GUID。 operationId はこの API を使用して取得できます。また、[オファーの発行](./cloud-partner-portal-api-publish-offer.md) API など、実行時間の長い任意の操作に対する応答の HTTP ヘッダーでも返されます。  |   Guid   |
 |  filteredStatus    | この API によって返されるコレクションを状態 (たとえば `running`) でフィルター処理するために使用されるオプションのクエリ パラメーター。  |   String |
-|  api-version       | API の最新バージョン                                                                                           |    日付      |
+|  api-version       | API の最新バージョン                                                                                           |    Date      |
 |  |  |  |
 
 
 <a name="header"></a>ヘッダー
 ------
 
-|  **名前**          |  **値**           |
+|  **Name**          |  **値**           |
 |  ---------------   | -------------------- |
 |  Content-Type      | `application/json`   |
 |  Authorization     | `Bearer YOUR_TOKEN`  |
@@ -183,13 +176,13 @@ ms.locfileid: "48807819"
 
 ### <a name="response-body-properties"></a>応答本文のプロパティ
 
-|  **名前**                    |  **説明**                                                                                  |
+|  **Name**                    |  **説明**                                                                                  |
 |  --------------------        |  ------------------------------------------------------------------------------------------------ |
 |  id                          | 操作を一意に識別する GUID                                                       |
 |  submissionType              | 報告されているオファーの操作の種類を特定します。たとえば、`Publish/GGoLive`      |
 |  createdDateTime             | 操作が作成された UTC 日時                                                       |
 |  lastActionDateTime          | 操作に対する最終更新の UTC 日時                                       |
-|  status                      | 操作の状態。以下のいずれか: 「未開始 | 実行中 | 失敗 | 完了`. Only one operation can have status `実行中」の状態を持つ操作は一度に 1 つだけです。 |
+|  status                      | 操作の状態。`not started` \| `running` \| `failed` \| `completed` のいずれか。 `running` 状態にできるのは、一度に 1 つの操作だけです。 |
 |  error                       | 失敗した操作のエラー メッセージ                                                               |
 |  |  |
 

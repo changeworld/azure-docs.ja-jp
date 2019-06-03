@@ -1,25 +1,18 @@
 ---
-title: HTTPS エンドポイント | Microsoft Docs
+title: HTTPS エンドポイント | Azure Marketplace
 description: HTTPS エンドポイントの潜在顧客管理を構成します。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: dan-wesley
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/24/2018
-ms.author: pbutlerm
-ms.openlocfilehash: cfcd154b2f44c9e8acf12a9666abc9ce95fb3c26
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.author: pabutler
+ms.openlocfilehash: 058ab30358811cb66ae033fb464974639569ae18
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58648352"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64935274"
 ---
 # <a name="configure-lead-management-using-an-https-endpoint"></a>HTTPS エンドポイントを使用して潜在顧客管理を構成する
 
@@ -46,7 +39,7 @@ HTTPS エンドポイントを使用して、Azure Marketplace と AppSource の
 
     ![HTTP 要求の受信トリガーを選択する](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-pick-request-trigger.png)
 
-7. 以下のいずれかの手順を使用して、**[要求本文の JSON スキーマ]** を構成します。
+7. 以下のいずれかの手順を使用して、 **[要求本文の JSON スキーマ]** を構成します。
 
    - この記事の最後にある [JSON スキーマ](#json-schema)を **[要求本文の JSON スキーマ]** テキスト ボックスにコピーします。
    - **[サンプルのペイロードを使用してスキーマを生成する]** を選びます。 **[サンプルの JSON ペイロードを入力するか、貼り付けます]** テキスト ボックスに [JSON の例](#json-example)を貼り付けます。 **[完了]** を選択してスキーマを作成します。
@@ -69,7 +62,7 @@ HTTPS エンドポイントを使用して、Azure Marketplace と AppSource の
 
     ![動的なコンテンツの追加](./media/cloud-partner-portal-lead-management-instructions-https/https-image013.png)
 
-5. 必要なフィールドをマップし、**[保存]** を選択してフローを保存します。
+5. 必要なフィールドをマップし、 **[保存]** を選択してフローを保存します。
 
 6. HTTP POST URL が要求に作成されます。 この URL をコピーし、HTTPS エンドポイントとして使用します。
 
@@ -79,7 +72,7 @@ HTTPS エンドポイントを使用して、Azure Marketplace と AppSource の
 
 1. **[+ New step (+ 新しいステップ)]** を選択します。
 2. **[アクションを選択してください]** で **[アクション]** を選択します。
-3. **[アクション]** で、**[電子メールの送信]** を選択します。
+3. **[アクション]** で、 **[電子メールの送信]** を選択します。
 
     ![電子メール アクションを作成する](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-add-email-action.png)
 
@@ -103,7 +96,7 @@ HTTPS エンドポイントを使用して、Azure Marketplace と AppSource の
 
 ## <a name="configure-your-offer-to-send-leads-to-the-https-endpoint"></a>潜在顧客を HTTPS エンドポイントに送信するようにオファーを構成する
 
-オファー用の潜在顧客管理情報を構成するときは、**[Lead Destination]\(潜在顧客の宛先\)** で **[HTTPS エンドポイント]** を選択し、前のステップでコピーした HTTP POST URL を貼り付けます。  
+オファー用の潜在顧客管理情報を構成するときは、 **[Lead Destination]\(潜在顧客の宛先\)** で **[HTTPS エンドポイント]** を選択し、前のステップでコピーした HTTP POST URL を貼り付けます。  
 
 ![動的なコンテンツの追加](./media/cloud-partner-portal-lead-management-instructions-https/https-image017.png)
 

@@ -4,18 +4,18 @@ description: Azure Logic Apps と Enterprise Integration Pack の EDIFACT メッ
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
-author: divyaswarnkar
-ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+author: ecfan
+ms.author: estfan
+ms.reviewer: jonfan, divswa, LADocs
 ms.topic: article
 ms.assetid: 0e61501d-21a2-4419-8c6c-88724d346e81
 ms.date: 01/27/2017
-ms.openlocfilehash: b101922d15a3f90c29eff51c223d2ea7dc30ddf2
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: ccad6eab68fff0891ba287a076692f9437495a4c
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43125354"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64696191"
 ---
 # <a name="decode-edifact-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>Enterprise Integration Pack を使用して Azure Logic Apps の EDIFACT メッセージをデコードする
 
@@ -51,7 +51,7 @@ Decode EDIFACT メッセージ コネクタを使用すると、EDI と取引先
     | 接続名 * |接続の任意の名前を入力します。 |
     | 統合アカウント * |統合アカウントの名前を入力します。 統合アカウントとロジック アプリが同じ Azure の場所にあることを確認してください。 |
 
-4. 接続の作成が完了したら、**[作成]** を選択します。 接続の詳細は次の例のようになります。
+4. 接続の作成が完了したら、 **[作成]** を選択します。 接続の詳細は次の例のようになります。
 
     ![統合アカウントの詳細](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage3.png)  
 
@@ -59,7 +59,7 @@ Decode EDIFACT メッセージ コネクタを使用すると、EDI と取引先
 
     ![integration account connection created](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage4.png)  
 
-    例: 
+    例:
 
     ![デコードする EDIFACT フラット ファイル メッセージの選択](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage5.png)  
 
@@ -81,13 +81,13 @@ Decode EDIFACT コネクタは次のタスクを実行します。
   * インターチェンジ内の他のグループ制御番号と照らし合わせて、グループ制御番号を確認する。 
   * グループ内の他のトランザクション セット制御番号と照らし合わせて、トランザクション セット制御番号を確認する。
 * インターチェンジをトランザクション セットに分割するか、インターチェンジ全体を保持する。
-  * [インターチェンジをトランザクション セットとして分割 - エラー発生時にトランザクション セットを中断]: インターチェンジをトランザクション セットに分割し、各トランザクション セットを解析します。 
+  * インターチェンジをトランザクション セットとして分割 - エラー発生時にトランザクション セットを中断インターチェンジをトランザクション セットに分割し、各トランザクション セットを解析します。 
   X12 Decode アクションは、検証が失敗したこれらのトランザクション セットのみを `badMessages` に出力し、残りのトランザクション セットを `goodMessages` に出力します。
-  * [インターチェンジをトランザクション セットとして分割 - エラー発生時にインターチェンジを中断]: インターチェンジをトランザクション セットに分割し、各トランザクション セットを解析します。 
+  * インターチェンジをトランザクション セットとして分割 - エラー発生時にインターチェンジを中断インターチェンジをトランザクション セットに分割し、各トランザクション セットを解析します。 
   インターチェンジの 1 つ以上のトランザクション セットが検証に失敗した場合、X12 Decode アクションはそのインターチェンジのすべてのトランザクション セットを `badMessages` に出力します。
-  * [インターチェンジの保存 - エラー発生時にトランザクション セットを中断]: インターチェンジを保持し、バッチ インターチェンジ全体を処理します。 
+  * インターチェンジの保存 - エラー発生時にトランザクション セットを中断インターチェンジを保持し、バッチ インターチェンジ全体を処理します。 
   X12 Decode アクションは、検証が失敗したこれらのトランザクション セットのみを `badMessages` に出力し、残りのトランザクション セットを `goodMessages` に出力します。
-  * [インターチェンジの保存 - エラー発生時にインターチェンジを中断]: インターチェンジを保持し、バッチ インターチェンジ全体を処理します。 
+  * インターチェンジの保存 - エラー発生時にインターチェンジを中断インターチェンジを保持し、バッチ インターチェンジ全体を処理します。 
   インターチェンジの 1 つ以上のトランザクション セットが検証に失敗した場合、X12 Decode アクションはそのインターチェンジのすべてのトランザクション セットを `badMessages` に出力します。
 * 技術 (制御) 確認または機能確認を生成する (構成されている場合)
   * 技術確認または制御確認は、完全に受信したインターチェンジの構文チェックの結果を報告します。

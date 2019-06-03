@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 04/03/2019
 ms.author: rambala
-ms.openlocfilehash: 4923c7f2048b7368af6314d5e2288216115bc3bc
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 3bc189cf269084fdb26f141a36755c96554cad7b
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59784741"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64866001"
 ---
 # <a name="cross-network-connectivity"></a>ネットワーク間接続
 
@@ -119,7 +119,7 @@ ExpressRoute Global Reach は、異なる ExpressRoute 回線に接続されて�
 
 VNet と VNet ピアリングについてさらにご質問がある場合、「[仮想ネットワークに関する FAQ][VNet-FAQ]」をご覧ください。 ExpressRoute と仮想ネットワーク接続についてさらにご質問がある場合は、「[ExpressRoute の FAQ][ER-FAQ]」をご覧ください。
 
-Global Reach は国ごとにロールアウトされています。 Global Reach が必要な国で使用可能かどうかを確認するには、「[ExpressRoute Global Reach][Global Reach]」を参照してください。
+Global Reach は国や地域ごとに国や地域でロールアウトされています。 Global Reach が必要な国や地域で使用可能かどうかを確認するには、「[ExpressRoute Global Reach][Global Reach]」を参照してください。
 
 <!--Image References-->
 [1]: ./media/cross-network-connectivity/premergerscenario.png "アプリケーションのシナリオ"

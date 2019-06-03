@@ -1,25 +1,18 @@
 ---
-title: Azure アプリケーション オファーを作成する | Microsoft Docs
+title: Azure アプリケーション オファーを作成する | Azure Marketplace
 description: Azure Marketplace で新しい Azure アプリケーション オファーを公開する方法。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: dan-wesley
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/14/2018
-ms.author: pbutlerm
-ms.openlocfilehash: cae657736d78958259c04dee48034f97ac9d3d1c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: pabutler
+ms.openlocfilehash: 2eed5ed60d5aed7fb537e886f39b97dfc8257f19
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57871230"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64943004"
 ---
 # <a name="create-an-azure-application-offer"></a>Azure アプリケーション オファーを作成する
 

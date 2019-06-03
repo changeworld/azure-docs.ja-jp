@@ -1,25 +1,18 @@
 ---
-title: Azure と Dynamics 365 のコンサルティング サービス プラン - プランの設定を定義する |Microsoft Docs
-description: Cloud パートナー ポータルで Azure または Dynamics 365 コンサルティング サービス プランの設定を定義するためのガイド。
+title: コンサルティング サービス オファーのオファーの設定を定義する | Azure Marketplace
+description: Azure Marketplace の Cloud パートナー ポータルで Azure または Dynamics 365 コンサルティング サービス オファーのオファーの設定を定義します。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: qianw211
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
-ms.date: 11/30/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 590aa440f35f97e854fa827b0d8db1c3f9211faf
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.date: 04/23/2019
+ms.author: pabutler
+ms.openlocfilehash: 601ad62bddd1373742b0cab5a388a55cfd52f4bc
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54231939"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64942786"
 ---
 # <a name="offer-settings-tab"></a>[プランの設定] タブ
 
@@ -27,7 +20,8 @@ ms.locfileid: "54231939"
 
 ![新しいコンサルティング サービス オファーの作成 - [プランの設定] タブ](media/consultingoffer-settings-tab.png)
 
-### <a name="offer-id"></a>プラン ID
+
+### <a name="offer-id"></a>[オファー ID]*
 
 この ID は、最初にオファーを送信するときに作成する一意の名前です。 小文字の英数字、ハイフン、アンダースコアのみで構成する必要があります。 **オファー ID** は URL に表示され、検索エンジンの結果に影響します。 たとえば、*yourcompanyname_exampleservice* です。
 
@@ -36,11 +30,13 @@ ms.locfileid: "54231939"
 >[!Note]
 >オファーが運用開始になると、その識別子を更新することはできません。
 
-### <a name="publisher-id"></a>パブリッシャー ID
+
+### <a name="publisher-id"></a>[発行元 ID]*
 
 この識別子は、ご自分のアカウントに関連しています。 組織アカウントでサインインすると、ドロップダウン メニューに**パブリッシャー ID** が表示されます。
 
-### <a name="name"></a>Name
+
+### <a name="name"></a>[名前]*
 
 この文字列が、AppSource または Azure Marketplace 上で、オファー名として表示されます。 **[名前]** ボックスは 50 文字に制限されています。 オファー名に期間とオファーの種類を付加するために、レビュー担当者がタイトルを編集しなければならない場合があります。
 
@@ -53,7 +49,7 @@ ms.locfileid: "54231939"
 -   **期間:** エディターの **[Storefront Details]\(ネットショップの詳細\)** タブで定義します。 期間は、時間、日、週で表現できます。
 -   **サービスの種類:** エディターの **[Storefront Details]\(ネットショップの詳細\)** タブで定義します。 サービスの種類は、`Assessment`、`Briefing`、`Implementation`、`Proof of concept`、`Workshop` です。
 -   **前置詞:** レビュー担当者によって挿入されます。
--   **[名前]:****[プランの設定]** ページで定義します。
+-   **[名前]:** **[プランの設定]** ページで定義します。
 
 >[!Note]
 >**[名前]** ボックスは 50 文字に制限されています。 オファー名に期間とオファーの種類を付加するために、レビュー担当者がタイトルを編集しなければならない場合があります。
@@ -72,7 +68,7 @@ ms.locfileid: "54231939"
 -   CRM クイック スタート: 1 日のワークショップ
 -   Dynamics 365 for Sales: 2 日間の評価
 
-**[プランの設定]** タブの入力が完了したら、送信内容を保存します。 オファー名はエディターの上に表示されるようになり、**[すべてのプラン]** にも表示されます。
+**[プランの設定]** タブの入力が完了したら、送信内容を保存します。 オファー名はエディターの上に表示されるようになり、 **[すべてのプラン]** にも表示されます。
 
 ## <a name="next-steps"></a>次の手順
 

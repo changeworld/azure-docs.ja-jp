@@ -1,25 +1,18 @@
 ---
-title: Azure SaaS アプリケーション オファー体験版の構成 | Microsoft Docs
+title: Azure SaaS アプリケーション オファー体験版の構成 | Azure Marketplace
 description: Azure Marketplace にある SaaS アプリケーション オファーの体験版を構成します。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: dan-wesley
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
-ms.date: 12/04/2018
-ms.author: pbutlerm
-ms.openlocfilehash: b12ba53f847b46479b3100c088c29372b58c1b8e
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.date: 04/24/2019
+ms.author: pabutler
+ms.openlocfilehash: c76290d6c96108ff04799151c82334264a4c3dd0
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58649035"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64941716"
 ---
 # <a name="saas-application-test-drive-tab"></a>SaaS アプリケーションの [体験版] タブ
 
@@ -31,9 +24,11 @@ ms.locfileid: "58649035"
 
 体験版では、実際の実装シナリオの中で製品の主な機能や利点を体験できる、実践的なセルフガイド型の試用版を顧客に提供します。
 
+
 ## <a name="how-a-test-drive-works"></a>体験版のしくみ
 
 潜在顧客が Marketplace でアプリケーションを検索して発見します。 顧客がサインインし、使用条件に同意します。 この時点で顧客は、あらかじめ構成された環境を受け取り、決められた時間数だけ試すことができます。一方、発行元はフォローアップすべき見込みの高いリードを獲得します。 詳細については、「[体験版とは](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive)」を参照してください。
+
 
 ## <a name="publishing-steps"></a>発行手順
 
@@ -43,6 +38,7 @@ ms.locfileid: "58649035"
 2. Resource Manager テンプレートをビルドし、変更する
 3. 体験版のステップバイステップのマニュアルを作成する
 4. オファーの再発行
+
 
 ## <a name="setting-up-a-test-drive"></a>体験版をセットアップする
 
@@ -54,13 +50,15 @@ ms.locfileid: "58649035"
 |       ホストされている             |       ホストされた体験版では、体験版のユーザー プロビジョニングとプロビジョニング解除を実行するサービスを Microsoft がホストして管理するので、セットアップの複雑さがなくなります。             |         [ホストされた体験版](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/hosted-test-drive)          |
 |      ロジック アプリ              |       ロジック アプリ体験版は、あらゆる複雑なソリューション アーキテクチャに対応するように意図されたデプロイ テンプレートです。 すべての Dynamics アプリケーションやカスタム製品には、この種類の体験版を使用する必要があります。            |      [ロジック アプリの体験版](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/logic-app-test-drive)             |
 |       Power BI             |         Power BI 体験版は、カスタム ビルドされたダッシュボードへの埋め込みリンクで構成されています。 インタラクティブな Power BI の視覚化のデモンストレーションを行う製品には、この種類の体験版を使用する必要があります。 必要なのは、埋め込み Power BI の URL をアップロードすることだけです。          |        [Power BI の体験版](#power-bi-test-drive)           |
+|   |   |   |
+
 
 ### <a name="power-bi-test-drive"></a>Power BI の体験版
 
 以下の手順に従って体験版を構成します。
 
 1. [新しいプラン] の **[体験版]** を選択します。
-2. [体験版] で、**[はい]** を選択します。
+2. [体験版] で、 **[はい]** を選択します。
 
    ![体験版を有効にする](./media/saas-enable-test-drive.png)
 
@@ -79,7 +77,7 @@ ms.locfileid: "58649035"
    - [Type of Test Drive]\(体験版の種類) – ドロップダウン リストから **[Power BI]** を選択します。
    - Power BI ダッシュ ボードへのリンク – ダッシュ ボードへのリンクを提供します。
 
-5. 体験版の構成が終了したら、**[保存]** を選択します。
+5. 体験版の構成が終了したら、 **[保存]** を選択します。
 
 
 ## <a name="next-steps"></a>次の手順

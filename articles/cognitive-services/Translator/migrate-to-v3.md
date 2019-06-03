@@ -10,19 +10,19 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: v-jansko
-ms.openlocfilehash: d3ffdcb79a56bf2f9f4a6eb192293bbc6bab7dab
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: fa1733ddd70de3f8ef93452a880094ccf8b9ef56
+ms.sourcegitcommit: 807c318f5c034f8256f91c241e9d6f8f4d7de90a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58916718"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64951470"
 ---
 # <a name="translator-text-api-v2-to-v3-migration"></a>Translator Text API を V2 から V3 に移行する
 
 > [!NOTE]
-> V2 は 2018 年 4 月 30 日をもって非推奨となり、2019 年 4 月 30 日をもってサービス停止となります。
+> V2 は、2018 年 4 月 30 日に非推奨となりました。 V3 で独占的に使用できる新しい機能を活用するためにアプリケーションを V3 に移行してください。
 > 
-> Microsoft Translator Hub は、2019 年 4 月 30 日をもって廃止されます。 [重要な移行情報と日付を確認してください](https://www.microsoft.com/translator/business/hub/)。  
+> Microsoft Translator Hub は、2019 年 5 月 17 日をもって廃止されます。 [重要な移行情報と日付を確認してください](https://www.microsoft.com/translator/business/hub/)。  
 
 Microsoft Translator チームは Translator Text API のバージョン 3 (V3) をリリースしました。 このリリースには、新しい機能、非推奨になったメソッド、Microsoft Translator Service との間でデータを送受信するための新しい形式が含まれています。 このドキュメントでは、V3 を使用するためにアプリケーションを変更する方法に関する情報を提供します。 
 
@@ -110,7 +110,7 @@ Microsoft Translator V3 の価格設定は V2 のときと同じであり、ス�
 
 > [!NOTE]
 > 
-> Microsoft Translator Hub は、2019 年 4 月 30 日をもって廃止されます。 [重要な移行情報と日付を確認してください](https://www.microsoft.com/translator/business/hub/)。   
+> Microsoft Translator Hub は、2019 年 5 月 17 日をもって廃止されます。 [重要な移行情報と日付を確認してください](https://www.microsoft.com/translator/business/hub/)。   
 
 Microsoft Translator V3 では、ニューラル機械翻訳が既定で使用されます。 そのため、Microsoft Translator Hub では使用できません。 Translator Hub は、従来の統計的な機械翻訳のみをサポートしています。 ニューラル翻訳のカスタマイゼーションは、Custom Translator を使用してご利用いただけるようになりました。 [ニューラル機械翻訳のカスタマイゼーションに関する詳細](custom-translator/overview.md)
 
@@ -118,8 +118,8 @@ V3 テキスト API によるニューラル翻訳では、標準カテゴリ (S
 
 | |エンドポイント|    GDPR のプロセッサ準拠|  Translator Hub の使用| カスタム トランスレーター (プレビュー) の使用|
 |:-----|:-----|:-----|:-----|:-----|
-|Translator Text API Version 2| api.microsofttranslator.com|    いいえ   |はい    |いいえ |
-|Translator Text API Version 3| api.cognitive.microsofttranslator.com|  はい|    いいえ | はい|
+|Translator Text API Version 2| api.microsofttranslator.com|    いいえ  |はい    |いいえ|
+|Translator Text API Version 3| api.cognitive.microsofttranslator.com|  はい|    いいえ| はい|
 
 **Translator Text API Version 3**
 * 一般提供されており完全にサポートされます。
@@ -130,7 +130,6 @@ V3 テキスト API によるニューラル翻訳では、標準カテゴリ (S
 使用しているエンドポイントが api.cognitive.microsofttranslator.com である場合、ご使用の Translator Text API のバージョンは 3 です。
 
 **Translator Text API Version 2**
-* 非推奨となっています。 2019 年 4 月 30 日をもってサービス停止となります。 
 * ISO 20001、20018、SOC 3 の認定要件をすべて満たしているわけではありません。 
 * Translator のカスタマイズ機能を使ってカスタマイズしたニューラル ネットワーク翻訳システムを呼び出すことはできません。
 * Microsoft Translator Hub を使用して作成されたカスタム翻訳システムにアクセスすることができます。

@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: b7af0149a690e3cc3a357a5cb769751e3674d374
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 49f89d39b3b917ec6357b241d7c413c2790eca25
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59698203"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64575605"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Functions のネットワーク オプション
 
@@ -31,24 +31,27 @@ ms.locfileid: "59698203"
 
 ## <a name="matrix-of-networking-features"></a>ネットワーク機能のマトリックス
 
-|                |[従量課金プラン](functions-scale.md#consumption-plan)|⚠ [Premium プラン](functions-scale.md#premium-plan-public-preview)|[[App Service プラン]](functions-scale.md#app-service-plan)|[App Service 環境](../app-service/environment/intro.md)|
+|                |[従量課金プラン](functions-scale.md#consumption-plan)|[Premium プラン](functions-scale.md#premium-plan-public-preview) (プレビュー)|[[App Service プラン]](functions-scale.md#app-service-plan)|[App Service 環境](../app-service/environment/intro.md)|
 |----------------|-----------|----------------|---------|-----------------------|  
 |[受信 IP の制限](#inbound-ip-restrictions)|✅はい|✅はい|✅はい|✅はい|
+|[送信 IP の制限](#private-site-access)|❌いいえ| ❌いいえ|❌いいえ|✅はい|
 |[仮想ネットワークの統合](#virtual-network-integration)|❌いいえ|❌いいえ|✅はい|✅はい|
-|[仮想ネットワーク統合のプレビュー (Azure ExpressRoute とサービス エンドポイント)](#preview-version-of-virtual-network-integration)|❌いいえ|⚠はい|⚠はい|✅はい|
+|[仮想ネットワーク統合のプレビュー (Azure ExpressRoute とサービス エンドポイント送信)](#preview-version-of-virtual-network-integration)|❌いいえ|✅はい|✅はい|✅はい|
 |[ハイブリッド接続](#hybrid-connections)|❌いいえ|❌いいえ|✅はい|✅はい|
-|[プライベート サイトへのアクセス](#private-site-access)|❌いいえ| ❌いいえ|❌いいえ|✅はい|
-
-⚠ プレビュー機能は実稼働用ではありません。
+|[プライベート サイトへのアクセス](#private-site-access)|❌いいえ| ✅はい|✅はい|✅はい|
 
 ## <a name="inbound-ip-restrictions"></a>受信 IP の制限
 
 IP 制限を使用すると、アプリへのアクセスを許可または拒否する IP アドレスの優先順のリストを定義できます。 このリストには、IPv4 アドレスと IPv6 アドレスを含めることができます。 1 つまたは複数のエントリがある場合、リストの末尾には暗黙的な "すべて拒否" が存在します。 IP 制限は、すべての関数ホスティング オプションで有効です。
 
 > [!NOTE]
-> Azure portal エディターを使用するには、実行中の関数アプリに Azure portal が直接アクセスできる必要があります。 また、ポータルにアクセスするために使用しているデバイスの IP がホワイトリストに登録されている必要があります。 ネットワーク制限が設定されていても、**[プラットフォーム機能]** タブのどの機能にもアクセスできます。
+> Azure portal エディターを使用するには、実行中の関数アプリに Azure portal が直接アクセスできる必要があります。 また、ポータルにアクセスするために使用しているデバイスの IP がホワイトリストに登録されている必要があります。 ネットワーク制限が設定されていても、 **[プラットフォーム機能]** タブのどの機能にもアクセスできます。
 
 詳細については、「[Azure App Service の静的なアクセス制限](../app-service/app-service-ip-restrictions.md)」を参照してください。
+
+## <a name="outbound-ip-restrictions"></a>送信 IP の制限
+
+送信 IP の制限は、App Service Environment に展開された関数のみで利用可能です。 App Service Environment が展開されている仮想ネットワークの送信制限を構成することができます。
 
 ## <a name="virtual-network-integration"></a>仮想ネットワークの統合
 
@@ -88,7 +91,10 @@ Azure Functions で使用されるとき、各ハイブリッド接続は、単�
 
 ## <a name="private-site-access"></a>プライベート サイトへのアクセス
 
-プライベート サイト アクセスとは、Azure 仮想ネットワークなどプライベート ネットワークのみからアプリにアクセスできるようにすることです。 プライベート サイトには、内部ロード バランサー (ILB) を使用して App Service Environment が構成されている場合のみアクセスできます。 詳細については、「[App Service Environment で内部ロード バランサーを作成して使用する](../app-service/environment/create-ilb-ase.md)」を参照してください。
+プライベート サイト アクセスとは、Azure 仮想ネットワークなどプライベート ネットワークのみからアプリにアクセスできるようにすることです。 
+* プライベート サイトへのアクセスは、**サービス エンドポイント**が構成されている場合に Premium と App Service プランで利用可能です。詳細については、「[virtual network service endpoints](../virtual-network/virtual-network-service-endpoints-overview.md)」 (仮想ネットワークのサービス エンドポイント) を参照してください。
+    * サービス エンドポイントがあれば、VNET 統合が構成されていても関数からインターネットにフルに送信アクセスできます。
+* プライベート サイトには、内部ロード バランサー (ILB) を使用して App Service Environment が構成されている場合のみアクセスできます。 詳細については、「[App Service Environment で内部ロード バランサーを作成して使用する](../app-service/environment/create-ilb-ase.md)」を参照してください。
 
 他のホスティング オプションで仮想ネットワーク リソースにアクセスする方法は多数あります。 ただし、App Service Environment は、仮想ネットワーク上で関数のトリガーを発生させることができる唯一の方法です。
 

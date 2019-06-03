@@ -1,25 +1,18 @@
 ---
-title: 既存の Azure アプリケーション プランを更新する | Microsoft Docs
+title: 既存の Azure アプリケーション オファーを更新する | Azure Marketplace
 description: Azure Marketplace にある既存の Azure アプリケーション プランを更新する方法。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: dan-wesley
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 1019c06afbdab0a6b0e172133da316aea01a5504
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.author: pabutler
+ms.openlocfilehash: a36df757e3a2682af641101ed82583a0cd293e0a
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57216902"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64942813"
 ---
 # <a name="update-an-existing-azure-application-offer"></a>既存の Azure アプリケーション プランを更新する
 
@@ -63,7 +56,7 @@ ms.locfileid: "57216902"
 
 1. [Cloud パートナー ポータル](https://cloudpartner.azure.com/)にサインインします。
 2. **[すべてのプラン]** から、更新するプランを見つけます。
-3. **[SKU]** タブで、**[Add new SKU (新しい SKU の追加)]** を選択し、ポップアップ ウィンドウに **[SKU ID]** を指定します。
+3. **[SKU]** タブで、 **[Add new SKU (新しい SKU の追加)]** を選択し、ポップアップ ウィンドウに **[SKU ID]** を指定します。
 4. [Azure アプリケーション プランの発行](./cpp-publish-offer.md)に関するページで説明している手順を使用して、プランを再発行します。
 5. **[発行]** を選択し、新しい SKU を発行するワークフローを開始します。
 

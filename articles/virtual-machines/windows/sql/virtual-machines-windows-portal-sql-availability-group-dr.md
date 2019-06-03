@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
-ms.openlocfilehash: 542505c5a6c3af91669ebe28287ae6e1477e214d
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: f9e31ac7685d597c741033bc165c6a51280e3d72
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58487178"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64571737"
 ---
 # <a name="configure-an-always-on-availability-group-on-azure-virtual-machines-in-different-regions"></a>さまざまな地域に存在する Azure 仮想マシンに Always On 可用性グループを構成します｡
 
@@ -96,7 +96,7 @@ ms.locfileid: "58487178"
 
 1. クラスターに IP アドレス リソースを作成します。
 
-   IP アドレス リソースはフェールオーバー クラスター マネージャーで作成できます。 可用性グループ ロールを右クリックし、**[リソースの追加]**、**[その他のリソース]** の順にクリックして、**[IP アドレス]** をクリックします。
+   IP アドレス リソースはフェールオーバー クラスター マネージャーで作成できます。 可用性グループ ロールを右クリックし、 **[リソースの追加]** 、 **[その他のリソース]** の順にクリックして、 **[IP アドレス]** をクリックします。
 
    ![IP アドレスを作成する](./media/virtual-machines-windows-portal-sql-availability-group-dr/20-add-ip-resource.png)
 
@@ -145,7 +145,7 @@ ms.locfileid: "58487178"
 
 可能であれば、`MultiSubnetFailover=Yes` を設定するようにクライアント接続文字列を更新します。 「[MultiSubnetFailover を使用した接続](https://msdn.microsoft.com/library/gg471494#Anchor_0)」をご覧ください。
 
-接続文字列を変更できない場合は、名前解決キャッシュを構成できます。 「[Connection Timeouts in Multi-subnet Availability Group](https://blogs.msdn.microsoft.com/alwaysonpro/2014/06/03/connection-timeouts-in-multi-subnet-availability-group/)」(マルチサブネット可用性グループでの接続タイムアウト) をご覧ください。
+接続文字列を変更できない場合は、名前解決キャッシュを構成できます。 「[Time-out error and you cannot connect to a SQL Server 2012 AlwaysOn availability group listener in a multi-subnet environment](https://support.microsoft.com/help/2792139/time-out-error-and-you-cannot-connect-to-a-sql-server-2012-alwayson-av)」 (タイムアウト エラーおよび複数サブネット環境で SQL Server 2012 AlwaysOn 可用性グループ リスナーに接続できない) を参照してください。
 
 ## <a name="fail-over-to-remote-region"></a>リモート リージョンにフェールオーバーする
 
@@ -153,15 +153,15 @@ ms.locfileid: "58487178"
 
 1. **オブジェクト エクスプローラー**で、プライマリ レプリカをホストする SQL Server のインスタンスに接続します。
 1. **[AlwaysOn 可用性グループ]** の **[可用性グループ]** で、可用性グループを右クリックして **[プロパティ]** をクリックします。
-1. **[全般]** ページの **[可用性レプリカ]** で、DR サイトのセカンダリ レプリカを、**[同期コミット]** 可用性モードと **[自動]** フェールオーバー モードを使うように設定します。
+1. **[全般]** ページの **[可用性レプリカ]** で、DR サイトのセカンダリ レプリカを、 **[同期コミット]** 可用性モードと **[自動]** フェールオーバー モードを使うように設定します。
 1. 高可用性のためにプライマリ レプリカと同じサイトにセカンダリ レプリカがある場合は、このレプリカを **[非同期コミット]** および **[手動]** に設定します。
 1. [OK] をクリックします。
-1. **オブジェクト エクスプローラー**で、可用性グループを右クリックし、**[ダッシュボードの表示]** をクリックします。
+1. **オブジェクト エクスプローラー**で、可用性グループを右クリックし、 **[ダッシュボードの表示]** をクリックします。
 1. ダッシュボードで、DR サイトのレプリカが同期されていることを確認します。
-1. Explore**オブジェクト エクスプローラー**で、可用性グループを右クリックし、**[フェールオーバー...]** をクリックします。SQL Server Management Studio で、SQL Server をフェールオーバーするためのウィザードが開きます。  
+1. Explore**オブジェクト エクスプローラー**で、可用性グループを右クリックし、 **[フェールオーバー...]** をクリックします。SQL Server Management Studio で、SQL Server をフェールオーバーするためのウィザードが開きます。  
 1. **[次へ]** をクリックし、DR サイトの SQL Server インスタンスを選びます。 もう一度 **[次へ]** をクリックします。
-1. DR サイトの SQL Server インスタンスに接続し、**[次へ]** をクリックします。
-1. **[概要]** ページで設定を確認し、**[完了]** をクリックします。
+1. DR サイトの SQL Server インスタンスに接続し、 **[次へ]** をクリックします。
+1. **[概要]** ページで設定を確認し、 **[完了]** をクリックします。
 
 接続をテストした後は、プライマリ レプリカをプライマリ データ センターに戻し、可用性モードを通常の動作設定に戻します。 次の表では、このドキュメントで説明されているアーキテクチャの通常の動作設定を示します。
 

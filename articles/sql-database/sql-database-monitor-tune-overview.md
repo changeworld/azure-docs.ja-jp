@@ -12,12 +12,12 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 0c93888af16ed7f7162f38c73be5f6330c886c65
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 2a7a6ed5bd28bcc83500da6e82b6c4ff48b2989c
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60001577"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64719086"
 ---
 # <a name="monitoring-and-performance-tuning"></a>監視とパフォーマンスのチューニング
 
@@ -29,11 +29,11 @@ Azure での SQL データベースのパフォーマンスの監視は、選択
 
 データベースのパフォーマンスの監視とトラブルシューティングには、次のオプションを使用できます。
 
-- [Azure Portal](https://portal.azure.com) で、**[SQL データベース]** をクリックし、データベースを選択してから、監視グラフを使用して上限に近づいているリソースを見つけます。 DTU 消費は、既定で表示されます。 **[編集]** をクリックして、表示される時間の範囲と値を変更します。
+- [Azure Portal](https://portal.azure.com) で、 **[SQL データベース]** をクリックし、データベースを選択してから、監視グラフを使用して上限に近づいているリソースを見つけます。 DTU 消費は、既定で表示されます。 **[編集]** をクリックして、表示される時間の範囲と値を変更します。
 - [Query Performance Insight](sql-database-query-performance.md) を使用して、最もリソースを消費しているクエリを特定します。
 - [SQL Database Advisor](sql-database-advisor-portal.md) を使用して、インデックスの作成と削除、クエリのパラメーター化、およびスキーマの問題の修正に関する推奨事項を表示します。
 - データベース パフォーマンスの自動監視には、[Azure SQL Intelligent Insights](sql-database-intelligent-insights.md) を使用します。 パフォーマンスの問題が検出されたら、問題の詳細と根本原因分析 (RCA) が記載された診断ログが生成されます。 可能な場合は、パフォーマンス改善の推奨事項も提供されます。
-- [自動チューニングを有効にします](sql-database-automatic-tuning-enable.md)。これにより、Azure SQL Database では、特定されたパフォーマンスの問題を自動的に修正できるようになります。
+- [自動チューニングを有効にします](sql-database-automatic-tuning-enable.md)。これにより、Azure SQL データベースでは、特定されたパフォーマンスの問題を自動的に修正できるようになります。
 - [動的管理ビュー (DMV)](sql-database-monitoring-with-dmvs.md)、[拡張イベント](sql-database-xevent-db-diff-from-svr.md)、および[クエリ ストア](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)を使用して、パフォーマンスの問題のトラブルシューティングをより詳細に行います。
 
 > [!TIP]
@@ -41,14 +41,14 @@ Azure での SQL データベースのパフォーマンスの監視は、選択
 
 ## <a name="monitor-databases-using-the-azure-portal"></a>Azure ポータルを使用したデータベースの監視
 
-[Azure portal](https://portal.azure.com/) で、ご使用のデータベースを選択し、**[監視]** グラフをクリックすることによって個々のデータベースの使用を監視できます。 これにより、**[メトリック]** ウィンドウが表示されます。**[グラフの編集]** ボタンをクリックすると、内容を編集できます。 次のメトリックを追加します。
+[Azure portal](https://portal.azure.com/) で、ご使用のデータベースを選択し、 **[監視]** グラフをクリックすることによって個々のデータベースの使用を監視できます。 これにより、 **[メトリック]** ウィンドウが表示されます。 **[グラフの編集]** ボタンをクリックすると、内容を編集できます。 次のメトリックを追加します。
 
 - CPU の割合
 - DTU の割合
 - データ IO の割合
 - データベース サイズの割合
 
-これらのメトリックを追加したら、これらを **[監視]** グラフに引き続き表示し、**[メトリック]** ウィンドウにはさらに詳細な情報を表示できます。 4 つのメトリックはいずれも、データベースの **DTU** を基準とする平均使用率を示しています。 サービス レベルの詳細については、[DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)と[仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md)に関する記事を参照してください。  
+これらのメトリックを追加したら、これらを **[監視]** グラフに引き続き表示し、 **[メトリック]** ウィンドウにはさらに詳細な情報を表示できます。 4 つのメトリックはいずれも、データベースの **DTU** を基準とする平均使用率を示しています。 サービス レベルの詳細については、[DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)と[仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md)に関する記事を参照してください。  
 
 ![データベース パフォーマンスのサービス階層の監視](./media/sql-database-single-database-monitoring/sqldb_service_tier_monitoring.png)
 
@@ -87,7 +87,7 @@ Azure での SQL データベースのパフォーマンスの監視は、選択
 
 ### <a name="ParamSniffing"></a> パラメーター依存クエリ実行プランの問題があるクエリをトラブルシューティングする
 
-パラメーター依存プラン (PSP) の問題とは、クエリ オプティマイザーが特定のパラメーター値 (または値のセット) に対してのみ最適なクエリ実行プランを生成し、キャッシュされたプランが連続実行で使用されるパラメーター値に対して最適ではないシナリオのことです。 その場合、最適ではないプランによりクエリ パフォーマンスの問題が発生し、ワークロード全体のスループットが低下する可能性があります。 パラメーター スニッフィングとクエリ処理の詳細については、[クエリ処理 アーキテクチャ ガイド](https://docs.microsoft.com/sql/relational-databases/query-processing-architecture-guide.md7#ParamSniffing)を参照してください。
+パラメーター依存プラン (PSP) の問題とは、クエリ オプティマイザーが特定のパラメーター値 (または値のセット) に対してのみ最適なクエリ実行プランを生成し、キャッシュされたプランが連続実行で使用されるパラメーター値に対して最適ではないシナリオのことです。 その場合、最適ではないプランによりクエリ パフォーマンスの問題が発生し、ワークロード全体のスループットが低下する可能性があります。 パラメーター スニッフィングとクエリ処理の詳細については、[クエリ処理 アーキテクチャ ガイド](/sql/relational-databases/query-processing-architecture-guide#ParamSniffing)を参照してください。
 
 問題を軽減するために使用される回避策が複数あり、それぞれに関連するトレードオフと欠点があります。
 

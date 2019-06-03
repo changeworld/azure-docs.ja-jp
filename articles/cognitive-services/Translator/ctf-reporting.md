@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: v-jansko
-ms.openlocfilehash: da321aa2a4db441fa5bb51e4986d00889cb7482d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 178747ffddbadb06751ce0db7d16701c3cea7416
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58917398"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64712824"
 ---
 # <a name="how-to-use-collaborative-translation-framework-ctf-reporting"></a>コラボレーション翻訳フレームワーク (CTF) レポートを使用する方法
 
@@ -23,8 +23,6 @@ ms.locfileid: "58917398"
 > このメソッドは非推奨です。 これは Translator Text API の V3.0 では使用できません。
 > 
 > コラボレーション翻訳フレームワーク (CTF) は、以前 Translator Text API の V2.0 で利用可能でしたが、2018 年 2 月 1 日をもって廃止されました。 AddTranslation と AddTranslationArray 関数により、ユーザーは、コラボレーション翻訳フレームワークによる修正を有効にできます。 2018 年 1 月 31 日以降、これら 2 つの関数は、新しい文の送信を受け付けなくなり、ユーザーにはエラー メッセージが表示されます。 これらの関数は廃止されており、置き換えられることはありません。
-> 
-> 同様の機能は Translator Hub API で利用可能で、自身の用語およびスタイルでカスタム翻訳システムをビルドできます。これは、Translator Text API でカテゴリ ID を使用して呼び出すことができます。 Translator Hub: [https://hub.microsofttranslator.com](https://hub.microsofttranslator.com)。 Translator Hub API: [https://hub.microsofttranslator.com/swagger](https://hub.microsofttranslator.com/swagger)。
 
 コラボレーション翻訳フレームワーク (CTF) レポート API は、CTF ストア内の統計情報と実際のコンテンツを返します。 この API は、次の理由により、GetTranslations() メソッドと異なります。
 * ユーザーのアカウント (appId または Azure Marketplace アカウント) からのみ、翻訳されたコンテンツとその合計数を返します。

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/12/2018
 ms.author: jonbeck
-ms.openlocfilehash: 70dca655d5300fcd34b4198093e136f6a971963b
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 44b965bd60d976d4d28dc5e31d78a1c838d4ee02
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49344491"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64704675"
 ---
 # <a name="high-performance-compute-virtual-machine-sizes"></a>ハイ パフォーマンス コンピューティング仮想マシンのサイズ
 
@@ -33,8 +33,10 @@ ms.locfileid: "49344491"
 
 ### <a name="mpi"></a>MPI 
 
-Intel MPI 5.x バージョンのみがサポートされています。 Intel MPI ランタイム ライブラリの以降のバージョン (2017、2018) は、Azure Linux RDMA ドライバーと互換性がありません。
+Intel MPI 5.x バージョンのみがサポートされています。
 
+> [!NOTE]
+> Intel MPI ランタイム ライブラリの以降のバージョン (2017、2018) は、Azure Linux RDMA ドライバーと互換性がある場合と無い場合があります。
 
 ### <a name="distributions"></a>ディストリビューション
  
@@ -62,7 +64,7 @@ Azure には、次に示すような、RDMA ネットワークを使用して通
 
 * **仮想マシン** - 同じ可用性セット内に RDMA 対応の HPC VM をデプロイします (Azure Resource Manager デプロイ モデルを使用する場合)。 クラシック デプロイ モデルを使用する場合は、同じクラウド サービス内に VM をデプロイします。 
 
-* **仮想マシン スケール セット** - VM スケール セットでは、デプロイを 1 つの配置グループに制限するようにしてください。 たとえば、Resource Manager テンプレートでは、`singlePlacementGroup` プロパティを `true` に設定します。 
+* **Virtual Machine Scale Sets** - VM スケール セットで、単一の配置グループにデプロイを制限するようにします。 たとえば、Resource Manager テンプレートでは、`singlePlacementGroup` プロパティを `true` に設定します。 
 
 * **Azure CycleCloud** - [Azure CycleCloud](/azure/cyclecloud/) 内に HPC クラスターを作成して、Linux ノード上で MPI ジョブを実行します。
 

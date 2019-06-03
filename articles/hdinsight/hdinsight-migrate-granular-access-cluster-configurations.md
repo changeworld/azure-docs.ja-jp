@@ -1,18 +1,18 @@
 ---
 title: クラスター構成できめ細かなロールベースのアクセスに移行する - Azure HDInsight
-description: クラスター構成できめ細かなロールベースのアクセスに移行するために必要な変更について学習します。
+description: HDInsight クラスター構成の詳細なロールベースのアクセスを移行の一環として求める変更について説明します。
 author: tylerfox
 ms.author: tyfox
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 04/19/2019
-ms.openlocfilehash: 0422d848ccdf9ba82e68813de64eec863ee4ad29
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.date: 04/26/2019
+ms.openlocfilehash: 8bcb20ec5c85c3cfa2e481a4a5848f404a2fb4eb
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60006235"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64685459"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>クラスター構成できめ細かなロールベースのアクセスに移行する
 
@@ -21,9 +21,11 @@ ms.locfileid: "60006235"
 ## <a name="what-is-changing"></a>何が変わるのですか?
 
 以前は、所有者、共同作成者、または閲覧者の [RBAC ロール](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles) を保有するクラスター ユーザーが、HDInsight API を介してシークレットを取得することができました。
-今後、ユーザーは閲覧者ロールを使用してこれらのシークレットにアクセスできなくなります。 また、共同作成者または所有者の管理アクセス許可を付与されなくても、シークレットを取得することができる新しい 'HDInisght クラスター オペレーター' ロールも導入されます。 まとめると次のようになります。
+今後、ユーザーは閲覧者ロールを使用してこれらのシークレットにアクセスできなくなります。 シークレットは、ユーザーのロールよりもさらに高度なアクセス権を取得するために使用できる値として定義されます。 これらには、クラスター ゲートウェイ HTTP 資格情報、ストレージ アカウント キー、およびデータベースの資格情報などの値が含まれます。
 
-| Role                                  | 以前                                                                                       | Now       |
+また、共同作成者または所有者の管理アクセス許可を付与されなくても、シークレットを取得することができる新しい[HDInisght クラスター オペレーター](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator) ロールも導入されます。 まとめると次のようになります。
+
+| Role                                  | 以前                                                                                       | 今後の予定       |
 |---------------------------------------|--------------------------------------------------------------------------------------------------|-----------|
 | Reader                                | - シークレットを含む読み取りアクセス                                                                   | - シークレットを**除く**読み取りアクセス |           |   |   |
 | HDInsight クラスター オペレーター<br>(新しいロール) | 該当なし                                                                                              | - シークレットを含む読み取り/書き込みアクセス         |   |   |
@@ -37,15 +39,14 @@ HDInsight クラスター オペレーター ロールの割り当てを特定�
 次のエンティティとシナリオには影響があります。
 
 - [API](#api):`/configurations` エンドポイントまたは `/configurations/{configurationName}` エンドポイントを使用しているユーザー。
-- ___ およびそれ以前のバージョンの [Azure HDInsight Tools for Visual Studio Code](#azure-hdinsight-tools-for-visual-studio-code)。
-- ___ およびそれ以前のバージョンの [Azure Toolkit for IntelliJ](#azure-toolkit-for-intellij)。
-- ___ およびそれ以前のバージョンの [Azure Toolkit for Eclipse](#azure-toolkit-for-eclipse)。
+- [Azure HDInsight Tools for Visual Studio Code](#azure-hdinsight-tools-for-visual-studio-code) バージョン 1.1.1 以下。
+- [Azure Toolkit for IntelliJ](#azure-toolkit-for-intellij) バージョン 3.20.0 以下。
 - [.NET 用 SDK](#sdk-for-net)
     - [バージョン 1.x または 2.x](#versions-1x-and-2x): ConfigurationsOperationsExtensions クラスから `GetClusterConfigurations`、`GetConnectivitySettings`、`ConfigureHttpSettings`、`EnableHttp`、または `DisableHttp` メソッドを使用しているユーザー。
-    - [バージョン 3.x 以降](#versions-3x-and-up): `ConfigurationsOperationsExtensions` クラスから `EnableHttp`、`DisableHttp`、`Update`、または `Get` メソッドを使用しているユーザー。
-- [Python 用 SDK](#sdk-for-python): ConfigurationsOperations クラスから `get` または `update` メソッドを使用しているユーザー。
-- [Java 用 SDK](#sdk-for-java): ConfigurationsInner クラスから `update` メソッドまたは `get` メソッドを使用しているユーザー。
-- [Go 用 SDK](#sdk-for-go): ConfigurationsClient 構造体から `Get` メソッドまたは `Update` メソッドを使用しているユーザー。
+    - [バージョン 3.x 以降](#versions-3x-and-up): `ConfigurationsOperationsExtensions` クラスから `Get`、`Update`、`EnableHttp`、または `DisableHttp` メソッドを使用しているユーザー。
+- [Python 用 SDK](#sdk-for-python): `ConfigurationsOperations` クラスから `get` または `update` のメソッドを使用しているユーザー
+- [Java 用 SDK](#sdk-for-java): `ConfigurationsInner` クラスから `update` または `get` のメソッドを使用しているユーザー
+- [Go 用 SDK](#sdk-for-go): `ConfigurationsClient` 構造体から `Get` または `Update` のメソッドを使用しているユーザー
 
 ご利用のシナリオの移行手順を確認するには、以下のセクションを参照 (または上記のリンクを使用) してください。
 
@@ -53,23 +54,23 @@ HDInsight クラスター オペレーター ロールの割り当てを特定�
 
 次の API は変更されるか非推奨となります。
 
-- [**GET /configurations/{configurationName}**](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#get-configuration) (機密情報が削除される) https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/configurations/{configurationName}?api-version={api-version}
+- [**GET /configurations/{configurationName}** ](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#get-configuration) (機密情報が削除される)
     - 以前は、個々の構成の種類 (機密情報を含む) を取得するために使用されていました。
-    - この API 呼び出しからは、シークレットを省略した状態で個々の構成の種類が返されるようになります。 シークレットを含むすべての構成を取得するには、新しい [POST/configurations]() 呼び出しを使用します。 ゲートウェイ設定だけを取得するには、新しい [POST/getGatewaySettings]() 呼び出しを使用します。
-- [**GET /configurations**](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#get-configurations) (非推奨) https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/configurations?api-version={api-version}
+    - この API 呼び出しからは、シークレットを省略した状態で個々の構成の種類が返されるようになります。 シークレットを含むすべての構成を取得するには、新しい POST/configurations 呼び出しを使用します。 ゲートウェイ設定だけを取得するには、新しい POST/getGatewaySettings 呼び出しを使用します。
+- [**GET /configurations**](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#get-configurations) (非推奨)
     - 以前は、すべての構成 (機密情報を含む) を取得するために使用されていました。
-    - この API 呼び出しはサポートされなくなります。 今後すべての構成を取得するには、新しい [POST /configurations]() 呼び出しを使用します。 機密性の高いパラメーターを省略した状態で構成を取得するには、[GET /configurations/{configurationName}]() 呼び出しを使用します。
-- [**POST /configurations/{configurationName}**](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#change-connectivity-settings) (非推奨) https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/configurations/{configurationName}?api-version={api-version}
+    - この API 呼び出しはサポートされなくなります。 今後すべての構成を取得するには、新しい POST /configurations 呼び出しを使用します。 機密性の高いパラメーターを省略した状態で構成を取得するには、GET /configurations/{configurationName} 呼び出しを使用します。
+- [**POST /configurations/{configurationName}** ](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#change-connectivity-settings) (非推奨)
     - 以前はゲートウェイの資格情報を更新するために使用されていました。
-    - この API 呼び出しは非推奨となり、サポートされなくなります。 代わりに、新しい [POST/updateGatewaySettings]() を使用してください。
+    - この API 呼び出しは非推奨となり、サポートされなくなります。 代わりに、新しい POST/updateGatewaySettings を使用してください。
 
 次の代わりとなる API が追加されました。</span>
 
-- **POST /configurations** https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/configurations?api-version={api-version}
+- [**POST /configurations**](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#list-configurations)
     - この API は機密情報を含むすべての構成を取得する場合に使用します。
-- **POST /getGatewaySettings** https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/getGatewaySettings?api-version={api-version}
+- [**POST /getGatewaySettings**](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#get-gateway-settings)
     - この API はゲートウェイ設定を取得する場合に取得します。
-- **POST /updateGatewaySettings** https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/updateGatewaySettings?api-version={api-version}
+- [**POST /updateGatewaySettings**](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#update-gateway-settings)
     - この API はゲートウェイ設定 (ユーザー名やパスワード) を更新する場合に使用します。
 
 ### <a name="azure-hdinsight-tools-for-visual-studio-code"></a>Azure HDInsight Tools for Visual Studio Code
@@ -78,11 +79,7 @@ HDInsight クラスター オペレーター ロールの割り当てを特定�
 
 ### <a name="azure-toolkit-for-intellij"></a>Azure Toolkit for IntelliJ
 
-3.21.0 またはそれよりも古いバージョンを使用している場合は、中断を回避するために[最新バージョンの Azure Toolkit for IntelliJ プラグインに更新](https://plugins.jetbrains.com/plugin/8053-azure-toolkit-for-intellij)してください。
-
-### <a name="azure-toolkit-for-eclipse"></a>Azure Toolkit for Eclipse
-
-2019-03-29 またはそれよりも古いリリースを使用している場合は、中断を回避するために最新バージョンの Azure Toolkit for Eclipse に更新してください。
+3.20.0 またはそれよりも古いバージョンを使用している場合は、中断を回避するために[最新バージョンの Azure Toolkit for IntelliJ プラグインに更新](https://plugins.jetbrains.com/plugin/8053-azure-toolkit-for-intellij)してください。
 
 ### <a name="sdk-for-net"></a>.NET 用 SDK
 
@@ -105,9 +102,9 @@ HDInsight クラスター オペレーター ロールの割り当てを特定�
 [バージョン 5.0.0](https://www.nuget.org/packages/Microsoft.Azure.Management.HDInsight/5.0.0) の HDInsight SDK for .NET に更新してください。 以下の変更に影響されるメソッドを使用している場合、最小限のコード変更が必要になる可能性があります。
 
 - [`ConfigurationOperationsExtensions.Get`](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.get?view=azure-dotnet) では、ストレージ キー (コア サイト) や HTTP 資格情報 (ゲートウェイ) などの**機密性の高いパラメーターが返されなくなります**。
-    - 機密性の高いパラメーターを含むすべての構成を取得するには、今後は `ConfigurationOperationsExtensions.List` を使います。  "閲覧者" ロールを持つユーザーはこのメソッドを使用できないことに注意してください。 これにより、クラスターの機密情報にアクセスできるユーザーをきめ細かく制御できます。 
-    - HTTP ゲートウェイ資格情報だけを取得するには、`ClusterOperationsExtensions.GetGatewaySettings` を使います。 
-- [`ConfigurationsOperationsExtensions.Update`](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.update?view=azure-dotnet) は非推奨になり、`ClusterOperationsExtensions.UpdateGatewaySettings` に置き換えられています。 
+    - 機密性の高いパラメーターを含むすべての構成を取得するには、今後は [`ConfigurationOperationsExtensions.List`](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.list?view=azure-dotnet) を使用します。  "閲覧者" ロールを持つユーザーはこのメソッドを使用できないことに注意してください。 これにより、クラスターの機密情報にアクセスできるユーザーをきめ細かく制御できます。 
+    - HTTP ゲートウェイ資格情報だけを取得するには、[`ClusterOperationsExtensions.GetGatewaySettings`](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.hdinsight.clustersoperationsextensions.getgatewaysettings?view=azure-dotnet) を使用します。 
+- [`ConfigurationsOperationsExtensions.Update`](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.update?view=azure-dotnet) は非推奨になり、[`ClusterOperationsExtensions.UpdateGatewaySettings`](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.hdinsight.clustersoperationsextensions.updategatewaysettings?view=azure-dotnet) に置き換えられています。 
 - [`ConfigurationsOperationsExtensions.EnableHttp`](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.enablehttp?view=azure-dotnet) と [`DisableHttp`](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.disablehttp?view=azure-dotnet) は非推奨となりました。 HTTP は常に有効にされるようになったので、これらのメソッドはもう必要ありません。
 
 ### <a name="sdk-for-python"></a>Python 用 SDK
@@ -124,9 +121,9 @@ HDInsight クラスター オペレーター ロールの割り当てを特定�
 [バージョン 1.0.0](https://search.maven.org/artifact/com.microsoft.azure.hdinsight.v2018_06_01_preview/azure-mgmt-hdinsight/) の HDInsight SDK for Java に更新してください。 以下の変更に影響されるメソッドを使用している場合、最小限のコード変更が必要になる可能性があります。
 
 - [`ConfigurationsInner.get`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018__06__01__preview.implementation._configurations_inner.get) では、ストレージ キー (コア サイト) や HTTP 資格情報 (ゲートウェイ) などの**機密性の高いパラメーターが返されなくなります**。
-    - 機密性の高いパラメーターを含むすべての構成を取得するには、今後は `ConfigurationsInner.list` を使います。  "閲覧者" ロールを持つユーザーはこのメソッドを使用できないことに注意してください。 これにより、クラスターの機密情報にアクセスできるユーザーをきめ細かく制御できます。 
-    - HTTP ゲートウェイ資格情報だけを取得するには、`ConfigurationsOperations.get_gateway_settings` を使います。
-- [`ConfigurationsInner.update`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018__06__01__preview.implementation._configurations_inner.update) は非推奨になり、`ClusterOperationsExtensions.update_gateway_settings` に置き換えられています。
+    - 機密性の高いパラメーターを含むすべての構成を取得するには、今後は [`ConfigurationsInner.list`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018_06_01_preview.implementation.configurationsinner.list?view=azure-java-stable) を使用します。  "閲覧者" ロールを持つユーザーはこのメソッドを使用できないことに注意してください。 これにより、クラスターの機密情報にアクセスできるユーザーをきめ細かく制御できます。 
+    - HTTP ゲートウェイ資格情報だけを取得するには、[`ConfigurationsOperations.get_gateway_settings`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018_06_01_preview.implementation.clustersinner.getgatewaysettings?view=azure-java-stable) を使用します。
+- [`ConfigurationsInner.update`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018__06__01__preview.implementation._configurations_inner.update) は非推奨になり、[`ClusterOperationsExtensions.update_gateway_settings`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018_06_01_preview.implementation.clustersinner.updategatewaysettings?view=azure-java-stable) に置き換えられています。
 
 ### <a name="sdk-for-go"></a>Go 用 SDK
 
@@ -139,23 +136,31 @@ HDInsight クラスター オペレーター ロールの割り当てを特定�
 
 ## <a name="add-the-hdinsight-cluster-operator-role-assignment-to-a-user"></a>HDInsight クラスター オペレーター ロールの割り当てをユーザーに追加する
 
-[共同作成者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor)ロールまたは[所有者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)ロールを保有するユーザーは、クラスター ゲートウェイ資格情報やストレージ アカウント キーなどの HDInsight クラスター シークレットへの読み取り/書き込みアクセスを許可されるユーザーに HDInsight Cluster Operator ロールを付与することができます。
+[共同作成者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor)ロールまたは[所有者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)ロールを保有するユーザーは、機密 HDInsight クラスター 構成 (クラスター ゲートウェイ資格情報やストレージ アカウント キーなど) への読み取り/書き込みアクセスを求めるユーザーに[ HDInsight Cluster Operator](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator) ロールを付与することができます。
 
 ### <a name="using-the-azure-cli"></a>Azure CLI の使用
 
-このロール割り当てを追加するには、Azure CLI 内で次のコマンドを使用するのが最も簡単な方法です。
-
-```azurecli-interactive
-az role assignment create --role "HDInsight Cluster Operator" --assignee user@domain.com
-```
+このロール割り当てを追加するには、Azure CLI 内で `az role assignemnt create` コマンドを使用するのが最も簡単な方法です。
 
 > [!NOTE]
 > このコマンドは、共同作成者ロールまたは所有者ロールを保有するユーザーによって、それらのアクセス許可が付与される場合にのみ、実行される必要があります。 `--assignee` は HDInsight クラスター オペレーター ロールの割り当て先とするユーザーの電子メール アドレスです。
 
-上記のコマンドでは、サブスクリプション レベルでこのロールが付与されます。 リソース グループ レベルでこのロールを付与するには、コマンドをそのように変更することができます。
+#### <a name="grant-role-at-the-resource-cluster-level"></a>リソース (クラスター) レベルでロールを付与します。
+
+```azurecli-interactive
+az role assignment create --role "HDInsight Cluster Operator" --assignee <user@domain.com> --scope /subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroupName>/providers/Microsoft.HDInsight/clusters/<ClusterName>
+```
+
+#### <a name="grant-role-at-the-resource-group-level"></a>リソース グループ レベルでロールを付与します。
 
 ```azurecli-interactive
 az role assignment create --role "HDInsight Cluster Operator" --assignee user@domain.com -g <ResourceGroupName>
+```
+
+#### <a name="grant-role-at-the-subscription-level"></a>サブスクリプション レベルでロールを付与します。
+
+```azurecli-interactive
+az role assignment create --role "HDInsight Cluster Operator" --assignee user@domain.com
 ```
 
 ### <a name="using-the-azure-portal"></a>Azure ポータルの使用

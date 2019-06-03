@@ -1,25 +1,18 @@
 ---
-title: Azure アプリケーションの技術アセットを作成する | Microsoft Docs
+title: Azure アプリケーションの技術アセットを作成する | Azure Marketplace
 description: Azure アプリケーション オファー用の技術アセットを作成します。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 12/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: a498fb2bc3efcc3a081a0ab854df107135a4e008
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: pabutler
+ms.openlocfilehash: cbe1b8c8f1159d90fbf97eeae272c1c50ec9b9bb
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58104694"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64942980"
 ---
 # <a name="prepare-your-azure-application-technical-assets"></a>Azure アプリケーションの技術アセットを準備する
 

@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect:接続に関する問題のトラブルシューティング | Microsoft Docs
+title: Azure AD Connect:Azure AD 接続性に関する問題のトラブルシューティング | Microsoft Docs
 description: Azure AD Connect での接続に関する問題のトラブルシューティング方法について説明します。
 services: active-directory
 documentationcenter: ''
@@ -12,18 +12,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/18/2017
+ms.date: 04/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c0afc31bf08a5037d91885bc6a85c6aeaf858825
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 7519f47037d2d7ff37564ab27c1cc58b65ff6c14
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57436665"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64572783"
 ---
-# <a name="troubleshoot-connectivity-issues-with-azure-ad-connect"></a>Azure AD Connect での接続に関する問題のトラブルシューティング
+# <a name="troubleshoot-azure-ad-connectivity"></a>Azure AD 接続性のトラブルシューティング
 この記事では、Azure AD Connect と Azure AD の間の接続のしくみと、接続に関する問題のトラブルシューティング方法について説明します。 このような問題は、プロキシ サーバーを備えた環境において発生する可能性が最も高くなります。
 
 ## <a name="troubleshoot-connectivity-issues-in-the-installation-wizard"></a>インストール ウィザードにおける接続に関する問題のトラブルシューティング
@@ -43,7 +43,7 @@ Azure AD Connect では、認証に先進認証方式 (ADAL ライブラリを�
 
 その中でも、次の表に記載したものは Azure AD への接続に最低限必要な URL です。 この一覧には、パスワード ライトバックや Azure AD Connect Health のようなオプション機能は含まれていません。 ここには、初期構成に関するトラブルシューティングに役立つものが記載されています。
 
-| URL | ポート | 説明 |
+| URL | Port | 説明 |
 | --- | --- | --- |
 | mscrl.microsoft.com |HTTP/80 |CRL リストのダウンロードに使用します。 |
 | \*.verisign.com |HTTP/80 |CRL リストのダウンロードに使用します。 |
@@ -81,7 +81,7 @@ Azure AD Connect では、認証に先進認証方式 (ADAL ライブラリを�
 * そのパスワードは一時パスワードで、変更が必要ではないでしょうか。 また、本当に正しいパスワードでしょうか。 Azure AD Connect サーバーとは別のコンピューターで https://login.microsoftonline.com へのサインインを試し、アカウントが使用可能であることを確認してください。
 
 ### <a name="verify-proxy-connectivity"></a>プロキシ接続を検証する
-Azure AD Connect サーバーがプロキシおよびインターネットと実際に接続できているかどうかを検証するには、PowerShell を使用して、プロキシが Web 要求を許可しているかどうかを確認します。 PowerShell プロンプトで、`Invoke-WebRequest -Uri https://adminwebservice.microsoftonline.com/ProvisioningService.svc` を実行します  (厳密には、最初に呼び出すのは https://login.microsoftonline.com です。この URI は同様に機能しますが、応答が速いのは前の URI です)。
+Azure AD Connect サーバーがプロキシおよびインターネットと実際に接続できているかどうかを検証するには、PowerShell を使用して、プロキシが Web 要求を許可しているかどうかを確認します。 PowerShell プロンプトで、`Invoke-WebRequest -Uri https://adminwebservice.microsoftonline.com/ProvisioningService.svc` を実行します (厳密には、最初に呼び出すのは https://login.microsoftonline.com です。この URI は同様に機能しますが、応答が速いのは前の URI です)。
 
 PowerShell は、machine.config 内の構成を使用してプロキシに接続します。 winhttp や netsh 内の設定値がこれらのコマンドレットに影響することはありません。
 
