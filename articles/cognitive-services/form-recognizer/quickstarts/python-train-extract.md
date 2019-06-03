@@ -9,34 +9,48 @@ ms.subservice: form-recognizer
 ms.topic: quickstart
 ms.date: 04/24/2019
 ms.author: pafarley
-ms.openlocfilehash: 98d1870105038c4314a6b038ec198342bb2ca1d0
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 139c0c29033dc45d07fd0987c2eee92308512329
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025559"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65906971"
 ---
-# <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-using-rest-api-with-python"></a>クイック スタート:Python で REST API を使用して Form Recognizer モデルをトレーニングし、フォーム データを抽出する
+# <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-python"></a>クイック スタート:Python で REST API を使用して Form Recognizer モデルをトレーニングし、フォーム データを抽出する
 
-このクイックスタートでは、Python で Form Recognizer の REST API を使用してトレーニングし、フォームをスコア付けしてキーと値のペアおよびテーブルを抽出します。
+このクイックスタートでは、Python で Azure Form Recognizer の REST API を使用してトレーニングし、フォームをスコア付けしてキーと値のペアおよびテーブルを抽出します。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 ## <a name="prerequisites"></a>前提条件
+このクイック スタートを完了するには、以下が必要です。
+- アクセスが制限された Form Recognizer プレビューへのアクセス。 プレビューへのアクセスを取得するには、[Form Recognizer アクセス要求](https://aka.ms/FormRecognizerRequestAccess)フォームに記入して送信します。
+- インストールされている [Python](https://www.python.org/downloads/) (サンプルをローカルで実行する場合)。
+- 同じ種類の少なくとも 5 つのフォームのセット。 このクイックスタートでは、[サンプル データセット](https://go.microsoft.com/fwlink/?linkid=2090451)を使用できます。
 
--  アクセスが制限された Form Recognizer プレビューへのアクセスを取得する必要があります。 プレビューへのアクセスを取得するには、[Cognitive Services Form Recognizer アクセス要求](https://aka.ms/FormRecognizerRequestAccess)フォームに記入して送信します。 
-- サンプルをローカルで実行するには、[Python](https://www.python.org/downloads/) がインストールされている必要があります。
-- Form Recognizer のサブスクリプション キーが必要です。 「[サブスクリプション キーを取得する](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)」をご覧ください。
-- 最小セットとして、同じ種類の 5 つのフォームが必要です。 このクイックスタートでは、[サンプル データセット](https://go.microsoft.com/fwlink/?linkid=2090451)を使用できます。
+## <a name="create-a-form-recognizer-resource"></a>Form Recognizer リソースを作成する
+
+Form Recognizer を使用するためのアクセスが認められている場合、複数のリンクおよびリソースを含むウェルカム メールを受信します。 そのメッセージ内の "Azure portal" リンクを使用して、Azure portal を開き、Form Recognizer リソースを作成します。 **[作成]** ウィンドウには以下の情報が表示されます。
+
+|    |    |
+|--|--|
+| **Name** | リソースのわかりやすい名前。 わかりやすい名前 (*MyNameFaceAPIAccount* など) を使用することをお勧めします。 |
+| **サブスクリプション** | アクセスが許可されている Azure サブスクリプションを選択します。 |
+| **場所** | Cognitive Services インスタンスの場所。 別の場所を選択すると待機時間が生じる可能性がありますが、リソースのランタイムの可用性には影響しません。 |
+| **[価格レベル]** | リソースのコストは、選択した価格レベルと使用量に依存します。 詳細については、「[API の価格の詳細](https://azure.microsoft.com/pricing/details/cognitive-services/)」をご覧ください。
+| **リソース グループ** | リソースを含む [Azure リソース グループ](https://docs.microsoft.com/azure/architecture/cloud-adoption/governance/resource-consistency/azure-resource-access#what-is-an-azure-resource-group)。 新しいグループを作成することも、既存のグループに追加することもできます。 |
+
+> [!IMPORTANT]
+> 通常、Azure portal で Cognitive Service リソースを作成するときに、マルチ サービスのサブスクリプション キー (複数の Cognitive Services で使用) または 単一サービスのサブスクリプション キー (特定の Cognitive Services でのみ使用) を作成するオプションがあります。 ただし、Form Recognizer はプレビュー リリースなので、複数のサービス サブスクリプションに含まれず、ウェルカム メールに記載されているリンクを使用しない限り、単一サービスのサブスクリプションを作成できません。
+
+Form Recognizer リソースがデプロイが完了すると、ポータルの **[すべてのリソース]** の一覧からこれを検索して選択します。 続いて、 **[キー]** タブを選択してサブスクリプション キーを表示します。 どちらのキーも、リソースへのアクセス権をアプリに与えます。 **KEY 1** の値をコピーします。 これは、次のセクションで使用します。
 
 ## <a name="create-and-run-the-sample"></a>サンプルの作成と実行
 
 サンプルを作成して実行するには、以下のコード スニペットに次の変更を加えます。
-
-1. `<subscription_key>` 値を、サブスクリプション キーに置き換えます。
-1. `<Endpoint>` の値を、サブスクリプション キーを取得した Azure リージョンの Form Recognizer リソースのエンドポイント URL で置き換えます。
-1. `<SAS URL>` を、トレーニング データのある Azure BLOB Storage コンテナー共有アクセス署名 (SAS) URL で置き換えます。  
-
+1. `<Endpoint>` を、サブスクリプション キーを取得した Azure リージョンの Form Recognizer リソースのエンドポイント URL で置き換えます。
+1. `<SAS URL>` を、トレーニング データの場所の Azure BLOB Storage コンテナー共有アクセス署名 (SAS) URL で置き換えます。  
+1. `<Subscription key>` を、前の手順からコピーしたサブスクリプション キーに置き換えます。
     ```python
     ########### Python Form Recognizer Train #############
     from requests import post as http_post
@@ -58,7 +72,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     except Exception as e:
         print(str(e))
     ```
-1. `.py` 拡張子のファイルとして、コードを保存します。 たとえば、「 `form-recognize-train.py` 」のように入力します。
+1. .py 拡張子のファイルにコードを保存します。 たとえば、*form-recognize-train.py* です。
 1. コマンド プロンプト ウィンドウを開きます。
 1. プロンプトで、`python` コマンドを使用してサンプルを実行します。 たとえば、「 `python form-recognize-train.py` 」のように入力します。
 
@@ -103,16 +117,16 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 }
 ```
 
-以降のステップで必要になるため、`"modelId"` の値を書き留めておきます。
+`"modelId"` 値をメモします。 これは、以降の手順に必要になります。
   
 ## <a name="extract-key-value-pairs-and-tables-from-forms"></a>フォームからキーと値のペアとテーブルを抽出する
 
-次に、ドキュメントを分析して、そこからキーと値のペアとテーブルを抽出します。 次の Python スクリプトを実行して **Model - Analyze** API を呼び出します。 コマンドを実行する前に、次の変更を加えます。
+次に、ドキュメントを分析して、そこからキーと値のペアとテーブルを抽出します。 次の Python スクリプトを実行して **Model - Analyze** API を呼び出します。 コマンドを実行する前に、次の変更を行います。
 
-1. `<Endpoint>` を、Form Recognizer サブスクリプション キーで取得したエンドポイントで置き換えます。 これは、Form Recognizer リソースの概要タブにあります。
-1. `<File Path>` を、データを抽出するフォームがあるファイル パスの場所または URL で置き換えます。
-1. `<modelID>` を、前のモデル トレーニングのステップで受信したモデル ID で置き換えます。
-1. `<file type>` をファイルの種類で置き換えます。サポートされる種類は、pdf、image/jpeg、image/png です。
+1. `<Endpoint>` を、Form Recognizer サブスクリプション キーで取得したエンドポイントで置き換えます。 これは、Form Recognizer リソースの **[概要]** タブにあります。
+1. `<File Path>` を、データの抽出元となるフォームの場所のファイル パスまたは URL に置き換えます。
+1. `<modelID>` を、前のセクションで受信したモデル ID で置き換えます。
+1. `<file type>` を、ファイルの種類で置き換えます。 サポートされている種類は pdf、image/jpeg、image/png です。
 1. `<subscription key>` は、実際のサブスクリプション キーで置き換えてください。
 
     ```python
@@ -140,13 +154,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
         print(str(e))
     ```
 
-1. `.py` 拡張子のファイルとして、コードを保存します。 たとえば、「 `form-recognize-analyze.py` 」のように入力します。
+1. .py 拡張子のファイルにコードを保存します。 たとえば、*form-recognize-analyze.py* です。
 1. コマンド プロンプト ウィンドウを開きます。
 1. プロンプトで、`python` コマンドを使用してサンプルを実行します。 たとえば、「 `python form-recognize-analyze.py` 」のように入力します。
 
 ### <a name="examine-the-response"></a>結果の確認
 
-正常な応答が JSON で返され、フォームから抽出されたキーと値のペアとテーブルが示されます。
+成功応答が JSON で返されます。 フォームから抽出されたキーと値のペアおよびテーブルを表します。
 
 ```bash
 {
@@ -471,7 +485,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="next-steps"></a>次の手順
 
-このガイドでは、Python で Form Recognizer REST API を使用してモデルをトレーニングし、サンプル ケースで実行しました。 次に、Form Recognizer API の詳細を把握するためにリファレンス ドキュメントを参照します。
+このクイックスタートでは、Python で Form Recognizer REST API を使用してモデルをトレーニングし、サンプル シナリオで実行しました。 次に、Form Recognizer API の詳細を把握するためにリファレンス ドキュメントを参照します。
 
 > [!div class="nextstepaction"]
 > [REST API リファレンス ドキュメント](https://aka.ms/form-recognizer/api)

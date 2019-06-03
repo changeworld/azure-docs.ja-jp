@@ -36,7 +36,7 @@ Azure Functions および Azure SignalR Service で構築されたサーバー�
 
 ### <a name="negotiate-function"></a>negotiate 関数
 
-クライアント アプリケーションでは、Azure SignalR Service に接続するために、有効なアクセス トークンが必要になります。 アクセス トークンは匿名でも特定のユーザー ID に認証することもできます。 サーバーレスの SignalR Service アプリケーションでは、トークンと、SignalR Service エンドポイント URL などの他の接続情報を取得するために「negotiate」という名前の HTTP エンドポイントが必要です。
+クライアント アプリケーションでは、Azure SignalR Service に接続するために、有効なアクセス トークンが必要になります。 アクセス トークンは匿名か、または特定のユーザー ID に認証済みのものを使用できます。 サーバーレスの SignalR Service アプリケーションでは、トークンと、SignalR Service エンドポイント URL などの他の接続情報を取得するために「negotiate」という名前の HTTP エンドポイントが必要です。
 
 HTTP によってトリガーされる Azure 関数と *SignalRConnectionInfo* 入力バインドを使用して、接続情報オブジェクトを生成します。 関数には、`/negotiate` で終わる HTTP ルートが必要です。
 
@@ -46,7 +46,7 @@ negotiate 関数を作成する方法の詳細については、[*SignalRConnect
 
 ### <a name="sending-messages-and-managing-group-membership"></a>メッセージの送信とグループ メンバーシップの管理
 
-*SignalR* 出力バインドを使用して、Azure SignalR Service に接続したクライアントにメッセージを送信します。 すべてのクライアントにメッセージをブロードキャストすることも、特定のユーザー ID で認証されるか、特定のグループに追加されていたクライアントのサブセットにそれらを送信することもできます。
+*SignalR* 出力バインドを使用して、Azure SignalR Service に接続したクライアントにメッセージを送信します。 すべてのクライアントにメッセージをブロードキャストすることも、特定のユーザー ID で認証されたか、特定のグループに追加されたクライアントのサブセットにそれらを送信することもできます。
 
 ユーザーは、1 つ以上のグループに追加できます。 *SignalR* 出力バインドを使用して、グループに対してユーザーを追加または削除することもできます。
 
@@ -136,7 +136,7 @@ SignalR クライアントが negotiate 関数を呼び出すために、Access-
 
 Azure Functions には認証が組み込まれており、Facebook、Twitter、Microsoft アカウント、Google、Azure Active Directory などの一般的なプロバイダーをサポートしています。 この機能を *SignalRConnectionInfo* バインドと統合して、ユーザー ID に認証された Azure SignalR Service への接続を作成できます。 アプリケーションは、そのユーザー ID を対象とする *SignalR* 出力バインドを使用してメッセージを送信できます。
 
-Azure portal の関数アプリの *[プラットフォーム機能]* タブで、*[認証/承認]* 設定ウィンドウを開きます。 [[App Service 認証]](../app-service/overview-authentication-authorization.md) のドキュメントに従って、選択した ID プロバイダーを使用して認証を構成します。
+Azure portal の関数アプリの *[プラットフォーム機能]* タブで、 *[認証/承認]* 設定ウィンドウを開きます。 [[App Service 認証]](../app-service/overview-authentication-authorization.md) のドキュメントに従って、選択した ID プロバイダーを使用して認証を構成します。
 
 構成すると、認証された HTTP 要求には、認証された ID のユーザー名とユーザー ID をそれぞれ含んだ `x-ms-client-principal-name` および `x-ms-client-principal-id` ヘッダーが収められます。
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/21/2018
 ms.author: cynthn;davberg
 ms.custom: include file
-ms.openlocfilehash: 366dec6c687c0b9f40d61e0debb7c15910b9fa99
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ca0c45b5d74140e0398595070df71da669caab53
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57964206"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66160087"
 ---
 Azure コンピューティング ユニット (ACU) の概念は、Azure SKU 間で計算 (CPU) パフォーマンスを比較する手段を提供します。 これは、パフォーマンス ニーズを満たす可能性が最も高い SKU を簡単に見つけるのに役立ちます。  現在、ACU は小さい (Standard_A1) VM を 100 として標準化されており、他のすべての SKU についてはその SKU が標準ベンチマークをそれよりどれくらい速く実行できるかが表されます。 
 
@@ -46,6 +46,8 @@ Azure コンピューティング ユニット (ACU) の概念は、Azure SKU �
 | [G1 - G5](../articles/virtual-machines/virtual-machines-windows-sizes-memory.md) |180 ～ 240* | 1:1 |
 | [GS1 - GS5](../articles/virtual-machines/virtual-machines-windows-sizes-memory.md) |180 ～ 240* | 1:1 |
 | [H](../articles/virtual-machines/windows/sizes-hpc.md) |290 ～ 300* | 1:1 |
+| [HB](../articles/virtual-machines/windows/sizes-hpc.md) |199 - 216** | 1:1 |
+| [HC](../articles/virtual-machines/windows/sizes-hpc.md) |297 - 315* | 1:1 |
 | [L4s - L32s](../articles/virtual-machines/windows/sizes-storage.md) |180 ～ 240* | 1:1 |
 | [L8s_v2 - L80s_v2](../articles/virtual-machines/windows/sizes-storage.md) |150 - 175** | 2:1 |
 | [M](../articles/virtual-machines/virtual-machines-windows-sizes-memory.md) | 160 から 180 | 2:1\*\*\* |

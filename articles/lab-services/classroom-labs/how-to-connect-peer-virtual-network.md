@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/28/2019
+ms.date: 05/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 465352af52cbc84773e52782233065b3000921e7
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: c9b305beae1b385d4714e3a80e6843c7e76a4f60
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652875"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65410991"
 ---
 # <a name="connect-your-labs-network-with-a-peer-virtual-network-in-azure-lab-services"></a>Azure Lab Services でラボのネットワークとピア仮想ネットワークを接続する 
 この記事では、ラボのネットワークと別のネットワークのピアリングに関する情報を提供します。 
@@ -33,7 +33,6 @@ ms.locfileid: "58652875"
 
 特定のオンプレミスのネットワークは [ExpressRoute](../../expressroute/expressroute-introduction.md) または [Virtual Network ゲートウェイ](../../vpn-gateway/vpn-gateway-about-vpngateways.md)のどちらかを使用して Azure Virtual Network に接続しています。 これらのサービスは、Azure Lab Services の外部で設定する必要があります。 ExpressRoute を使用してオンプレミスのネットワークを Azure に接続する方法の詳細については、[ExpressRoute の概要] (../expressroute/expressroute-introduction.md) を参照してください。 Virtual Network ゲートウェイを使用してオンプレミスと接続するには、ゲートウェイ、指定された仮想ネットワーク、ラボのアカウントがすべて同じリージョンにある必要があります。
 
-
 ## <a name="configure-at-the-time-of-lab-account-creation"></a>ラボ アカウントの作成時に構成する
 新しいラボ アカウントの作成中に、**[仮想ネットワークのピアリング]** ドロップダウン リストに表示される既存の仮想ネットワークを選択することができます。 選択した仮想ネットワークが、そのラボ アカウントによって作成されたラボに接続 (ピアリング) されます。 この変更を行った後に作成されるラボのすべての仮想マシンが、ピアリングされた仮想ネットワーク上のリソースにアクセスできます。 
 
@@ -44,15 +43,14 @@ ms.locfileid: "58652875"
 
 
 ## <a name="configure-after-the-lab-is-created"></a>ラボの作成後に構成する
-ラボ アカウントの作成時にピア ネットワークを設定しなかった場合、**ラボ アカウント**のページの **[Labs configuration]\(ラボ構成\)** タブから同じプロパティを有効にすることができます。 この設定に加えられた変更は、変更後に作成されたラボにのみ適用されます。
+ラボ アカウントの作成時にピア ネットワークを設定しなかった場合、**ラボ アカウント**のページの **[Labs configuration]\(ラボ構成\)** タブから同じプロパティを有効にすることができます。 この設定に加えられた変更は、変更後に作成されたラボにのみ適用されます。 画像のように、ラボ アカウントでラボに対して **[仮想ネットワークのピアリング]** を有効または無効にすることができます。 
 
 ![ラボの作成後に VNet のピアリングを有効または無効にする](../media/how-to-connect-peer-virtual-network/select-vnet-to-peer-existing-lab.png) 
 
-画像のように、ラボ アカウントでラボに対して **[仮想ネットワークのピアリング]** を有効または無効にすることができます。 
+**[仮想ネットワークのピアリング]** フィールドで仮想ネットワークを選択すると、**[ラボ作成者にラボの場所の選択を許可する]** オプションが無効になります。 ピア仮想ネットワーク内のリソースと接続するためには、ラボ アカウント内のラボがラボ アカウントと同じリージョンに存在する必要があるためです。 
 
 > [!IMPORTANT]
 > この設定の変更は、変更後に作成されたラボにのみ適用され、既存のラボには適用されません。 
-
 
 
 ## <a name="next-steps"></a>次の手順

@@ -6,7 +6,7 @@
         - name: VMware Solution by CloudSimple とは
           href: cloudsimple-vmware-solutions-overview.md
         - name: 管理の主要な概念
-          href: 'https://docs.azure.cloudsimple.com/key-concepts/'
+          href: key-concepts.md
     - name: クイック スタート
       expanded: true
       items:
@@ -21,7 +21,7 @@
     - name: 概念
       items:
         - name: Service
-          href: 'https://docs.azure.cloudsimple.com/cloudsimple-service/'
+          href: cloudsimple-service.md
         - name: Nodes
           href: cloudsimple-node.md
         - name: プライベート クラウド
@@ -45,13 +45,13 @@
         - name: プライベート クラウド上の VMware
           href: vmware-components.md
         - name: セキュリティの概要
-          href: 'https://docs.azure.cloudsimple.com/cloudsimple-security/'
+          href: cloudsimple-security.md
         - name: ノード クォータ
           href: node-quota.md
         - name: メンテナンスと更新
           href: cloudsimple-maintenance-updates.md
         - name: FAQ
-          href: 'https://docs.azure.cloudsimple.com/cloudsimple-faq/'
+          href: cloudsimple-faq.md
     - name: チュートリアル
       items:
         - name: リソース プロバイダーを有効にする
@@ -138,22 +138,16 @@
               href: 'https://docs.azure.cloudsimple.com/set-vcenter-identity/'
             - name: Azure Application Gateway と VMware VM
               href: 'https://docs.azure.cloudsimple.com/azure-application-gateway/'
-            - name: Azure パブリック ロード バランサ―と VMware VM
-              href: 'https://docs.azure.cloudsimple.com/load-balancers/'
             - name: プライベート クラウドの vCenter サーバーを vRealize Automation エンドポイントとして構成する
               href: 'https://docs.azure.cloudsimple.com/configure-server-vra-endpoint/'
             - name: プライベート クラウドへのワークロード VM の移行
               href: 'https://docs.azure.cloudsimple.com/migrate-workloads/'
             - name: Azure 上の VMware におけるアプリケーション高可用性の確保
-              href: 'https://docs.azure.cloudsimple.com/ha-ensuring/'
+              href: 'https://docs.azure.cloudsimple.com/ensuring-high-availability/'
         - name: VMware のエコシステム
           items:
-            - name: ディザスター リカバリー ソリューション
-              href: 'https://docs.azure.cloudsimple.com/zerto-solutionguide/'
-            - name: VMware SRM を使用したディザスター リカバリー
-              href: 'https://docs.azure.cloudsimple.com/disaster-recovery-srm/'
             - name: ワークロード仮想マシンのバックアップ
-              href: 'https://docs.azure.cloudsimple.com/veeam/'
+              href: 'https://docs.azure.cloudsimple.com/backup-workloads-veeam/'
             - name: VMware Horizon ソリューションのガイド
               href: 'https://docs.azure.cloudsimple.com/horizon-guide/'
             - name: プライベート クラウドの vSAN 暗号化の構成
@@ -165,6 +159,6 @@
             - name: プライベート クラウド vCenter の Azure AD ID ソース
               href: 'https://docs.azure.cloudsimple.com/azure-ad/'
             - name: ExpressRoute を使用したオンプレミス ネットワーク接続
-              href: 'https://docs.azure.cloudsimple.com/er-connection/'
+              href: 'https://docs.azure.cloudsimple.com/on-premises-connection/'
             - name: ExpressRoute を使用した Azure 仮想ネットワーク接続
-              href: 'https://docs.azure.cloudsimple.com/azure-er-connection/'
+              href: 'https://docs.azure.cloudsimple.com/azure-expressroute-connection/'

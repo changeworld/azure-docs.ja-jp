@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: sngun
-ms.openlocfilehash: 64aef17663fdc28a467172bbe8954fc06fdb7ff0
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 7574985dbcc502d03bc886c7651c859b22968c5f
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59680401"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65596096"
 ---
 # <a name="build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account"></a>.NET コンソール アプリをビルドして Azure Cosmos DB SQL API アカウントのデータを管理する
 
@@ -63,10 +63,10 @@ Azure サブスクリプションまたは Cosmos DB の無料試用版アカウ
 
 1. [前提条件](#prerequisites)がインストールされていることを確認します。 
 1. ダウンロードした *GetStarted.sln* ソリューション ファイルを Visual Studio で開きます。
-1. **ソリューション エクスプローラー**で **GetStarted** プロジェクトを右クリックし、**[NuGet パッケージの管理]** を選択します。
+1. **ソリューション エクスプローラー**で **GetStarted** プロジェクトを右クリックし、 **[NuGet パッケージの管理]** を選択します。
 1. **[NuGet]** タブの **[復元]** を選択して、Azure Cosmos DB .NET SDK への参照を復元します。
 1. 「[Azure Cosmos DB アカウントに接続する](#Connect)」セクションの説明に従って、*App.config* ファイルの `EndpointUrl` と `PrimaryKey` の値を更新します。
-1. **[デバッグ]** > **[デバッグなしで開始]** を選択するか、**Ctrl**+**F5** キーを押して、アプリをビルドし、実行します。
+1. **[デバッグ]**  >  **[デバッグなしで開始]** を選択するか、**Ctrl**+**F5** キーを押して、アプリをビルドし、実行します。
 
 ## <a name="create-an-azure-cosmos-db-account"></a>Azure Cosmos DB アカウントを作成する
 
@@ -76,19 +76,19 @@ Azure サブスクリプションまたは Cosmos DB の無料試用版アカウ
 
 ## <a id="SetupVS"></a>Visual Studio ソリューションを設定する
 
-1. Visual Studio 2017 で、**[ファイル]** > **[新規]** > **[プロジェクト]** の順に選択します。
+1. Visual Studio 2017 で、 **[ファイル]**  >  **[新規]**  >  **[プロジェクト]** の順に選択します。
    
-1. **[新しいプロジェクト]** ダイアログで、**[Visual C#]** > **[コンソール アプリ (.NET Framework)]** の順に選択し、ご自分のプロジェクトに *AzureCosmosDBApp* という名前を付け、**[OK]** を選択します。
+1. **[新しいプロジェクト]** ダイアログで、 **[Visual C#]**  >  **[コンソール アプリ (.NET Framework)]** の順に選択し、ご自分のプロジェクトに *AzureCosmosDBApp* という名前を付け、 **[OK]** を選択します。
    
    ![[新しいプロジェクト] ウィンドウのスクリーンショット](./media/sql-api-get-started/nosql-tutorial-new-project-2.png)
    
-1. **ソリューション エクスプローラー**で **AzureCosmosDBApp** プロジェクトを右クリックし、**[NuGet パッケージの管理]** を選択します。
+1. **ソリューション エクスプローラー**で **AzureCosmosDBApp** プロジェクトを右クリックし、 **[NuGet パッケージの管理]** を選択します。
    
    ![プロジェクト コンテキスト メニュー](./media/sql-api-get-started/nosql-tutorial-manage-nuget-pacakges.png)
    
 1. **[NuGet]** タブの **[参照]** を選択し、検索ボックスに「*azure documentdb*」と入力します。
    
-1. **Microsoft.Azure.DocumentDB** を検索して選択し、**[インストール]** を選択します (まだインストールしていない場合)。
+1. **Microsoft.Azure.DocumentDB** を検索して選択し、 **[インストール]** を選択します (まだインストールしていない場合)。
    
    Azure Cosmos DB SQL API クライアント ライブラリのパッケージ ID は [Microsoft Azure Cosmos DB クライアント ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/) です。
 
@@ -97,7 +97,7 @@ Azure サブスクリプションまたは Cosmos DB の無料試用版アカウ
 
    ![Azure Cosmos DB クライアント SDK を見つける NuGet メニューのスクリーンショット](./media/sql-api-get-started/nosql-tutorial-manage-nuget-pacakges-2.png)
    
-   ソリューションの変更のプレビューに関するメッセージが表示されたら、**[OK]** を選択します。 ライセンスの同意に関するメッセージが表示されたら、**[同意する]** を選択します。
+   ソリューションの変更のプレビューに関するメッセージが表示されたら、 **[OK]** を選択します。 ライセンスの同意に関するメッセージが表示されたら、 **[同意する]** を選択します。
 
 ## <a id="Connect"></a>Azure Cosmos DB アカウントに接続する
 
@@ -123,7 +123,7 @@ Azure サブスクリプションまたは Cosmos DB の無料試用版アカウ
       private DocumentClient client;
    ```
    
-1. エンドポイント URL とプライマリ キーにより、ご自分のアプリがご使用の Azure Cosmos DB アカウントに接続し、Azure Cosmos DB アカウントがその接続を信頼できます。 [Azure portal](https://portal.azure.com) からキーをコピーし、ご自分のコードに貼り付けます。 
+1. エンドポイント URL とプライマリ キーにより、ご自分のアプリがご使用の Azure Cosmos DB アカウントに接続でき、Azure Cosmos DB アカウントはその接続を信頼することができます。 [Azure portal](https://portal.azure.com) からキーをコピーし、ご自分のコードに貼り付けます。 
 
    
    1. ご使用の Azure Cosmos DB アカウントの左側のナビゲーションにある **[キー]** を選択します。
@@ -145,6 +145,20 @@ Azure サブスクリプションまたは Cosmos DB の無料試用版アカウ
       {
         client = new DocumentClient(new Uri(EndpointUrl), PrimaryKey);
       }
+   ```
+
+   プロキシ オブジェクトを使用して Azure Cosmos DB に接続している場合は、代わりに次のコード ブロックを使用して DocumentClient オブジェクトを作成する必要があります。 このドキュメントにあるサンプルはプロキシ オブジェクトを使用していないため、次の例は参考のためだけです。
+
+   ```csharp
+   HttpClientHandler handler = new HttpClientHandler()
+   {
+     Proxy = proxyObject
+     UseProxy = true,
+   };
+
+   //Pass handler to the constructor of DocumentClient.
+   DocumentClient client = new DocumentClient(new Uri(EndpointUrl), PrimaryKey, handler);
+   
    ```
    
 1. `Main` メソッドに、`GetStartedDemo` タスクを実行する次のコードを追加します。 `Main` メソッドは例外をキャッチし、コンソールに書き込みます。

@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: article
 ms.date: 03/21/2019
 ms.author: diberry
-ms.openlocfilehash: f59f281b1bf7fa2851ab7759a0167b5d39ef44c1
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 3e54e8dcb6efa9251262c651730376a0d04edcf9
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59678991"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65144963"
 ---
 # <a name="use-active-learning-to-improve-your-knowledge-base"></a>アクティブ ラーニングを使用してナレッジ ベースを改善する
 
@@ -75,7 +75,7 @@ QnA Maker ポータルで質問が提案されたら、それらの提案をレ�
 
 ## <a name="add-active-learning-suggestion-to-knowledge-base"></a>アクティブ ラーニングの提案をナレッジ ベースに追加する
 
-1. 提案された質問を表示するには、ナレッジ ベースの **[Edit] (編集)** ページで **[Show Suggestions] (提案の表示)** を選択します。 
+1. 提案された質問を表示するには、ナレッジ ベースの **[Edit]\(編集\)** ページで、**[View Options]\(オプションの表示\)**、**[Show active learning suggestions]\(アクティブ ラーニングの提案を表示\)** の順に選択します。 
 
     [![アクティブ ラーニングの新しい代わりの質問を表示するためには、ポータルの[Edit]\(編集\) セクションで [Show Suggestions]\(提案の表示\) を選択します。](../media/improve-knowledge-base/show-suggestions-button.png)](../media/improve-knowledge-base/show-suggestions-button.png#lightbox)
 

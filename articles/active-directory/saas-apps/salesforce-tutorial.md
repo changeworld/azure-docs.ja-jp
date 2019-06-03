@@ -17,11 +17,11 @@ ms.date: 04/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 27a61205426cbf43fd3b3b549909ffa13ff07dc7
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59500364"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65903826"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-salesforce"></a>チュートリアル:Azure Active Directory と Salesforce の統合
 
@@ -66,7 +66,7 @@ Azure AD への Salesforce の統合を構成するには、ギャラリーか�
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** ボタンをクリックします。
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
@@ -112,15 +112,15 @@ Salesforce で Azure AD シングル サインオンを構成するには、次�
 
     a. **[サインオン URL]** ボックスに、次のパターンを使用して値を入力します。
 
-    エンタープライズ アカウント:  `https://<subdomain>.my.salesforce.com`
+    エンタープライズ アカウント: `https://<subdomain>.my.salesforce.com`
 
-    開発者アカウント:  `https://<subdomain>-dev-ed.my.salesforce.com`
+    開発者アカウント: `https://<subdomain>-dev-ed.my.salesforce.com`
 
     b. **[識別子]** ボックスに、次の形式で値を入力します。
 
-    エンタープライズ アカウント:  `https://<subdomain>.my.salesforce.com`
+    エンタープライズ アカウント: `https://<subdomain>.my.salesforce.com`
 
-    開発者アカウント:  `https://<subdomain>-dev-ed.my.salesforce.com`
+    開発者アカウント: `https://<subdomain>-dev-ed.my.salesforce.com`
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 これらの値を取得するには、[Salesforce クライアント サポート チーム](https://help.salesforce.com/support)に問い合わせてください。

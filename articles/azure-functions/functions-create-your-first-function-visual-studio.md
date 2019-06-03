@@ -13,18 +13,18 @@ ms.topic: quickstart
 ms.date: 10/17/2018
 ms.author: glenga
 ms.custom: mvc, devcenter, vs-azure, 23113853-34f2-4f
-ms.openlocfilehash: 51f6fb8c0dc1450a39173fafb0d71efc9a59a536
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 1c07da0121b8e350c55b139901d56cfe2133386d
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49649977"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65864494"
 ---
 # <a name="create-your-first-function-using-visual-studio"></a>Visual Studio を使用して初めての関数を作成する
 
 Azure Functions を使用すると、最初に VM を作成したり Web アプリケーションを発行したりしなくても、[サーバーレス](https://azure.microsoft.com/solutions/serverless/)環境でコードを実行できます。
 
-この記事では、Visual Studio 2017 Tools for Azure Functions を使用して、"hello world" 関数をローカルで作成してテストする方法を学習します。 その後、関数コードを Azure に発行します。 これらのツールは、Visual Studio 2017 の Azure 開発ワークロードの一部として利用できます。
+この記事では、Visual Studio 2019 Tools for Azure Functions を使用して、"hello world" 関数をローカルで作成およびテストする方法を学習します。 その後、関数コードを Azure に発行します。 これらのツールは、Visual Studio 2019 の Azure の開発ワークロードの一部として使用できます。
 
 ![ブラウザーでの関数 localhost の応答](./media/functions-create-your-first-function-visual-studio/functions-create-your-first-function-visual-studio-browser-local-final.png)
 
@@ -34,7 +34,7 @@ Azure Functions を使用すると、最初に VM を作成したり Web アプ�
 
 このチュートリアルを完了するには、以下が必要です。
 
-* [Visual Studio 2017](https://azure.microsoft.com/downloads/) をインストールし、**Azure 開発**ワークロードもインストールされていることを確認します。
+* [Visual Studio 2019](https://azure.microsoft.com/downloads/) をインストールし、 **[Azure の開発]** ワークロードもインストールされていることを確認します。
 
 * [最新の Azure Functions ツール](functions-develop-vs.md#check-your-tools-version)があることを確認します。
 

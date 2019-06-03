@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/03/2019
 ms.author: chlandsi
-ms.openlocfilehash: f25c3801553b0ac0c725170cda95f5c1eacc3637
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 67f2531b24796de1e00505fdc757f3c2244c5054
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65020750"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66002350"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-macos-using-the-speech-sdk"></a>クイック スタート:macOS で Objective-C と Speech SDK を使用して音声を認識する
 
@@ -34,7 +34,7 @@ ms.locfileid: "65020750"
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-Cognitive Services Speech SDK の現在のバージョンは `1.5.0` です。
+Cognitive Services Speech SDK の現在のバージョンは `1.5.1` です。
 
 Mac 用の Cognitive Services Speech SDK は、フレームワーク バンドルとして配布されています。
 Xcode プロジェクトで [CocoaPod](https://cocoapods.org/) として使用することも、 https://aka.ms/csspeech/macosbinary からダウンロードして手動でリンクすることも可能です。 このガイドでは CocoaPod を使用します。
@@ -71,7 +71,7 @@ Xcode を起動し、**[File]** > **[New]** > **[Project]** の順にクリッ�
     ```
     target 'helloworld' do
         platform :osx, '10.13'
-        pod 'MicrosoftCognitiveServicesSpeech-macOS', '~> 1.5.0'
+        pod 'MicrosoftCognitiveServicesSpeech-macOS', '~> 1.5.1'
     end
     ```
 1. ターミナルで `helloworld` ディレクトリに移動して、`pod install` コマンドを実行します。 これにより、サンプル アプリと依存関係としての Speech SDK の両方を含んだ、`helloworld.xcworkspace` という Xcode ワークスペースが生成されます。 以降、このワークスペースを使用します。
@@ -79,7 +79,8 @@ Xcode を起動し、**[File]** > **[New]** > **[Project]** の順にクリッ�
 ## <a name="add-the-sample-code"></a>サンプル コードを追加する
 
 1. Xcode で `helloworld.xcworkspace` ワークスペースを開きます。
-1. 自動生成された `AppDelegate.m` ファイルの内容を次のように置き換えます。[!code-objectivec[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/objectivec-macos/helloworld/helloworld/AppDelegate.m#code)]
+1. 次の操作によって、自動生成された `AppDelegate.m` ファイルの内容を置き換えます。  
+   [!code-objectivec[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/objectivec-macos/helloworld/helloworld/AppDelegate.m#code)]
 1. 文字列 `YourSubscriptionKey` をサブスクリプション キーに置き換えます。
 1. 文字列 `YourServiceRegion` を、サブスクリプションに関連付けられた[リージョン](regions.md) (たとえば、無料試用版サブスクリプションでは `westus`) に置き換えます。
 

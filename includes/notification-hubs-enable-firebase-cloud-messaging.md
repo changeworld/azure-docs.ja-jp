@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/05/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: e6b949824ec5da60c5e2485be830e61d156a11ff
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 5f919a04b47aa6fdef9500f3d7e6bef4ddaa239e
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55830660"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66140245"
 ---
 1. [Firebase コンソール](https://firebase.google.com/console/)にサインインします。 Firebase プロジェクトがまだない場合は、新しく作成します。
 2. プロジェクトを作成した後、**[Add Firebase to your Android app]\(Android アプリに Firebase を追加する\)** を選択します。 
@@ -39,11 +39,12 @@ ms.locfileid: "55830660"
         implementation 'com.google.firebase:firebase-core:16.0.1'
         ```
 
-    3. **app-level build.gradle** ファイルの末尾で、dependenices セクションの後に次の行を追加します。 
+    3. **app-level build.gradle** ファイルの最後の dependencies セクションの後に次の行を追加します。 
 
         ```
         apply plugin: 'com.google.gms.google-services'
         ```        
+    4. ツールバーの **[Sync now] (今すぐ同期)*** を選択します。 
  
         ![build.gradle の構成変更](./media/notification-hubs-enable-firebase-cloud-messaging/build-gradle-configurations.png)
 6. ページで **[次へ]** を選択します。 

@@ -1,25 +1,18 @@
 ---
-title: SaaS Fulfillment API - Azure Marketplace | Microsoft Docs
+title: SaaS Fulfillment API | Azure Marketplace
 description: ご自身の SaaS オファーを Azure Marketplace に統合できるようにする Fulfillment API のバージョンについて説明します。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 03/26/2019
-ms.author: pbutlerm
-ms.openlocfilehash: c7da46984d592abc6ed97d7490fde732bf26b0ba
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: pabutler
+ms.openlocfilehash: ec206c2d637f9fb2727d72cf17087050a765672c
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59798735"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64941960"
 ---
 # <a name="saas-fulfillment-apis"></a>SaaS Fulfillment API
 

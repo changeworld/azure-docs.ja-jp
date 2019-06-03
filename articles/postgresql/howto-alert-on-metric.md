@@ -1,19 +1,19 @@
 ---
-title: Azure Portal での Azure Database for PostgreSQL のメトリック アラートの構成
-description: この記事では、Azure Portal から Azure Database for PostgreSQL のメトリック アラートを構成およびアクセスする方法について説明します。
+title: Azure portal での Azure Database for PostgreSQL - Single Server のメトリック アラートの構成
+description: この記事では、Azure portal から Azure Database for PostgreSQL - Single Server のメトリック アラートを構成してアクセスする方法について説明します。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 01/11/2019
-ms.openlocfilehash: 7211ffddf82b38ca27b776ecfd12bca25ebbb0f6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 5/6/2019
+ms.openlocfilehash: 000dfe2d3e594c71f9c7ebbff7bce7141243668a
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58121946"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65067290"
 ---
-# <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql"></a>Azure Portal を使用して Azure Database for PostgreSQL のメトリックのアラートを設定する 
+# <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql---single-server"></a>Azure portal を使用して Azure Database for PostgreSQL - Single Server のメトリックのアラートを設定する
 
 この記事では、Azure Portal を使用して Azure Database for PostgreSQL のアラートを設定する方法について説明します。 お使いの Azure のサービスの監視メトリックに基づいてアラートを受け取ることができます。
 

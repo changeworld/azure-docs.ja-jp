@@ -1,27 +1,22 @@
 ---
-title: HDInsight (Hadoop) に Giraph をインストールして使用する - Azure
-description: スクリプト アクションを使用して Linux ベースの HDInsight クラスターに Giraph をインストールする方法について説明します。 スクリプト アクションでは、クラスター構成を変更するか、サービスとユーティリティをインストールすることで、クラスターを作成時にカスタマイズできます。
-services: hdinsight
+title: Azure HDInsight クラスターに Giraph をインストールして使用する
+description: スクリプト アクションを使用して HDInsight クラスターに Giraph をインストールする方法について説明します。 Giraph を使用して、Azure クラウドでの Apache Hadoop でグラフ処理を行うことができます。
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 04/23/2018
-ms.author: hrasheed
-ms.openlocfilehash: a2f964915efda6ce83439c3c1970de58b0467456
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.date: 04/22/2019
+ms.openlocfilehash: aa13d8dfc65f020f3f27183423913933cd0b9404
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58201723"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64697601"
 ---
 # <a name="install-apache-giraph-on-hdinsight-hadoop-clusters-and-use-giraph-to-process-large-scale-graphs"></a>HDInsight Hadoop クラスターに Apache Giraph をインストールし、Giraph を使用して大規模なグラフを処理する
 
 HDInsight クラスターで Apache Giraph をインストールする方法について説明します。 HDInsight のスクリプト アクション機能では、bash スクリプトを実行してクラスターをカスタマイズできます。 スクリプトを使用して、クラスターの作成時および作成後にクラスターをカスタマイズできます。
-
-> [!IMPORTANT]  
-> このドキュメントの手順では、Linux を使用する HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
 ## <a name="whatis"></a>Giraph とは
 
@@ -58,7 +53,7 @@ HDInsight クラスターに Giraph をインストールするサンプル ス�
 > [!NOTE]  
 > スクリプト アクションは、次の方法を使用して適用できます。
 > * Azure PowerShell
-> * Azure クラシック CLI
+> * Azure CLI
 > * HDInsight .NET SDK
 > * Azure Resource Manager のテンプレート
 > 
@@ -68,19 +63,19 @@ HDInsight クラスターに Giraph をインストールするサンプル ス�
 
 2. **[オプションの構成]** セクションで **[スクリプト アクション]** を選択し、以下の情報を指定します。
 
-   * **[名前]**: スクリプト アクションのフレンドリ名を入力します。
+   * **[名前]** : スクリプト アクションのフレンドリ名を入力します。
 
-   * **[スクリプト URI]**: https://hdiconfigactions.blob.core.windows.net/linuxgiraphconfigactionv01/giraph-installer-v01.sh
+   * **[スクリプト URI]** : https://hdiconfigactions.blob.core.windows.net/linuxgiraphconfigactionv01/giraph-installer-v01.sh
 
-   * **[ヘッド]**: このエントリをオンにします。
+   * **[ヘッド]** : このエントリをオンにします。
 
-   * **[ワーカー]**: このエントリはオフのままにします。
+   * **[ワーカー]** : このエントリはオフのままにします。
 
-   * **[ZooKeeper]**: このエントリはオフのままにします。
+   * **[ZooKeeper]** : このエントリはオフのままにします。
 
-   * **[パラメーター]**: このフィールドは空のままにします。
+   * **[パラメーター]** : このフィールドは空のままにします。
 
-3. **[スクリプト アクション]** の下部で、**[選択]** を使用して構成を保存します。 最後に、**[オプションの構成]** セクションの下部にある **[選択]** を使用して、オプションの構成情報を保存します。
+3. **[スクリプト アクション]** の下部で、 **[選択]** を使用して構成を保存します。 最後に、 **[オプションの構成]** セクションの下部にある **[選択]** を使用して、オプションの構成情報を保存します。
 
 4. 「[Linux ベースの HDInsight クラスターの作成](hdinsight-hadoop-create-linux-clusters-portal.md)」の説明に従って、クラスターの作成を続行します。
 
@@ -148,7 +143,7 @@ HDInsight クラスターに Giraph をインストールするサンプル ス�
 
     これらのパラメーターと Giraph サンプルで使用されるその他のパラメーターの詳細については、 [Giraph のクイックスタート](https://giraph.apache.org/quick_start.html)のページを参照してください。
 
-6. ジョブが完了すると、結果が **/example/out/shotestpaths** ディレクトリに格納されます。 出力ファイルの名前の先頭は **part-m-**、末尾はファイルの順番を示す数字です。 次のコマンドを使用して、出力を表示します。
+6. ジョブが完了すると、結果が **/example/out/shotestpaths** ディレクトリに格納されます。 出力ファイルの名前の先頭は **part-m-** 、末尾はファイルの順番を示す数字です。 次のコマンドを使用して、出力を表示します。
 
     ```bash
     hdfs dfs -text /example/output/shortestpaths/*

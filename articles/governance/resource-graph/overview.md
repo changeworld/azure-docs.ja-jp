@@ -7,12 +7,12 @@ ms.date: 05/06/2019
 ms.topic: overview
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: 45d5cf7c4235d10e136cc96364d52aa4319bbf79
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 9d3385b688208065e5854b6358819b5afad8fe65
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65137775"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66162076"
 ---
 # <a name="overview-of-the-azure-resource-graph-service"></a>Azure Resource Graph サービスの概要
 
@@ -63,9 +63,15 @@ Resource Graph を使用するためには、最低限、照会したいリソ�
 
 ## <a name="throttling"></a>Throttling
 
-無料サービスとして、すべてのお客様に最適なエクスペリエンスと応答時間が提供されるよう、Resource Graph へのクエリはスロットルされます。 お客様の組織が大規模かつ頻繁なクエリに Resource Graph API を使用したい場合、Resource Graph のページからポータルの "フィードバック" を使用してください。 必ずビジネス ケースを明記し、チームが連絡できるように [Microsoft からフィードバックについてメールをお送りする場合があります] チェック ボックスをオンにしてください。
+無料サービスとして、すべてのお客様に最適なエクスペリエンスと応答時間が提供されるよう、Resource Graph へのクエリはスロットルされます。 お客様の組織が大規模かつ頻繁なクエリに Resource Graph API を使用したい場合、[Resource Graph ポータル ページ](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyMenuBlade/ResourceGraph)からポータルの "フィードバック" を使用してください。
+ビジネス ケースを明記し、チームが連絡できるように [Microsoft からフィードバックについてメールをお送りする場合があります] チェック ボックスをオンにしてください。
 
-Resource Graph では、テナント レベルでスロットルが行われます。 テナント内のユーザーが使用できる残りのクエリ数を示すよう、サービスによって、`x-ms-ratelimit-remaining-tenant-reads` 応答ヘッダーがオーバーライドおよび設定されます。 Resource Graph では、1 時間ごとではなく、5 秒ごとにクォータがリセットされます。 詳細については、「[Resource Manager の要求のスロットル](../../azure-resource-manager/resource-manager-request-limits.md)」を参照してください。
+Resource Graph では、ユーザー レベルでクエリのスロットルが行われます。 サービスの応答には、次の HTTP ヘッダーが含まれています。
+
+- `x-ms-user-quota-remaining` (int):ユーザーの残りリソース クォータ。 この値はクエリ カウントにマップされます。
+- `x-ms-user-quota-resets-after` (hh:mm:ss):ユーザーのクォータ消費量がリセットされるまでの期間
+
+詳細については、「[Resource Manager の要求のスロットル](../../azure-resource-manager/resource-manager-request-limits.md)」を参照してください。
 
 ## <a name="running-your-first-query"></a>最初のクエリを送信する
 

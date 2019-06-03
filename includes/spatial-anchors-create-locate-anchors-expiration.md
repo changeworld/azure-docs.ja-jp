@@ -1,10 +1,10 @@
 ---
 ms.openlocfilehash: 1598d89d254e788ecf94f9a42b83cbe22b62204a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57907674"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66110796"
 ---
 ## <a name="set-expiration"></a>有効期限の設定
 

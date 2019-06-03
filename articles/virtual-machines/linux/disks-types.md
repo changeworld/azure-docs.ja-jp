@@ -4,17 +4,17 @@ description: Ultra SSD、Premium SSD、Standard SSD、Standard HDD など、Linu
 services: virtual-machines-linux,storage
 author: roygara
 ms.author: rogarana
-ms.date: 02/11/2019
+ms.date: 05/10/2019
 ms.topic: article
 ms.service: virtual-machines-linux
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: 217130f51f3bdf19a4f399060efc0d16791173d7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2413cfe02dfb3be61ec01518e4fdd7f4b78f5773
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58007090"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65538374"
 ---
 [!INCLUDE [virtual-machines-disk-types](../../../includes/virtual-machines-managed-disks-types-overview.md)]
 

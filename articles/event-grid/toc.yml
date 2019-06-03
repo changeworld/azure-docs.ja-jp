@@ -101,6 +101,8 @@
       href: event-sources.md
     - name: イベント ハンドラー
       href: event-handlers.md
+    - name: geo ディザスター リカバリー
+      href: geo-disaster-recovery.md
 - name: ハウツー ガイド
   items:
     - name: カスタム トピックへの投稿

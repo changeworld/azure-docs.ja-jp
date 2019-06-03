@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: c767406ceec703b5c14680ec96fdf703c2316044
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 2c206d42e220534225cfef0415a65c1f9494f761
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59500143"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64569797"
 ---
 # <a name="message-sessions-first-in-first-out-fifo"></a>メッセージ セッション: 先入れ先出し (FIFO) 
 
@@ -79,8 +79,7 @@ Service Bus の観点からは、メッセージ セッションの状態は、S
 
 ## <a name="next-steps"></a>次の手順
 
-- .NET 標準ライブラリを使用して Service Bus キューからのセッション ベースのメッセージを送受信する[詳細な例](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/Microsoft.Azure.ServiceBus/BasicSendReceiveUsingQueueClient)。
-- .NET Framework クライアントを使用してセッション対応メッセージを処理する[例](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/Sessions)。 
+- セッション対応メッセージを処理するために .NET フレームワークを使用する例としては、[Microsoft.Azure.ServiceBus samples](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/Sessions) または [Microsoft.ServiceBus.Messaging samples](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/Sessions) を参照してください。 
 
 Service Bus メッセージングの詳細については、次のトピックをご覧ください。
 

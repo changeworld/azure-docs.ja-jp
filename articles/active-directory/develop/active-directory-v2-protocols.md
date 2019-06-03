@@ -3,8 +3,8 @@ title: Microsoft ID プラットフォームでサポートされる認証プロ
 description: Microsoft ID プラットフォームのエンドポイントでサポートされている OAuth 2.0 および OpenID Connect プロトコルのガイドです。
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.assetid: 5fb4fa1b-8fc4-438e-b3b0-258d8c145f22
 ms.service: active-directory
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2019
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7471bb82aece2b4c11f5071b6b3746f1a55a4a60
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 536210922d13f66aaa5a09bd87bd2d92da8d416c
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64917344"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65546111"
 ---
 # <a name="microsoft-identity-platform-protocols"></a>Microsoft ID プラットフォームのプロトコル
 
@@ -45,7 +45,7 @@ OAuth 2.0 と OpenID Connect におけるフローはほぼすべて、情報の
 
 ## <a name="app-registration"></a>アプリケーションの登録
 
-個人用アカウントと職場または学校アカウントの両方を受け付けるアプリはすべて、[Azure portal](https://portal.azure.com/?Microsoft_AAD_RegisteredApps=true#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) の新しい**アプリの登録 (プレビュー)** エクスペリエンスを通じて登録する必要があります。登録後、OAuth 2.0 または OpenID Connect を使用して、それらのユーザーをサインインさせることができます。 アプリの登録プロセスでは、いくつかの値が収集され、対象のアプリに割り当てられます。
+個人用アカウントと職場や学校のアカウントの両方を受け付けるアプリはすべて、[Azure portal](https://aka.ms/appregistrations) の**アプリの登録** エクスペリエンスを通じて登録する必要があります。登録後、OAuth 2.0 または OpenID Connect を使用して、それらのユーザーをサインインさせることができます。 アプリの登録プロセスでは、いくつかの値が収集され、対象のアプリに割り当てられます。
 
 * アプリを一意に識別する**アプリケーション ID**。
 * **リダイレクト URI** または**パッケージ識別子** (アプリに戻す応答をリダイレクトする際に使用)。

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: iainfou
-ms.openlocfilehash: bababa723e70cdc5268fb04f1104cca9e254984d
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: faac0f02d1a1b8927fa0c651f44f8b120a583d9a
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59678796"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65230152"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Services (AKS) における Kubernetes の中心概念
 
@@ -99,9 +99,11 @@ Kubernetes のコア コンポーネントは、各ノード (*kubelet*、*kube-
 
 ### <a name="node-pools"></a>ノード プール
 
-同じ構成のノードは、*ノード プール*にグループ化できます。 1 つの Kubernetes クラスターには、1 つ以上のノード プールが含まれています。 ノードとサイズの最初の数は、*既定のノード プール*の作成が行われる AKS クラスターの作成時に定義されています。 AKS のこの既定のノード プールには、お使いのエージェント ノードを実行する基本の VM が含まれています。
+同じ構成のノードは、*ノード プール*にグループ化できます。 1 つの Kubernetes クラスターには、1 つ以上のノード プールが含まれています。 ノードとサイズの最初の数は、*既定のノード プール*の作成が行われる AKS クラスターの作成時に定義されています。 AKS のこの既定のノード プールには、お使いのエージェント ノードを実行する基本の VM が含まれています。 複数のノード プールのサポートは、現在 AKS ではプレビュー段階です。
 
-AKS クラスターをスケーリングまたはアップグレードするとき、既定のノード プールに対してアクションが実行されます。 アップグレード操作では、すべてのノードが正常にアップグレードされるまで、実行中のコンテナーはノード プ―ル内の他のノード上にスケジュールされます。
+AKS クラスターをスケーリングまたはアップグレードするとき、既定のノード プールに対してアクションが実行されます。 特定のノード プールに対して、スケーリングまたはアップグレードのいずれを選択することもできます。 アップグレード操作では、すべてのノードが正常にアップグレードされるまで、実行中のコンテナーはノード プ―ル内の他のノード上にスケジュールされます。
+
+AKS での複数のノード プールの使用方法の詳細については、[AKS でのクラスターの複数のノード プールの作成と管理][use-multiple-node-pools]に関する記事をご覧ください。
 
 ## <a name="pods"></a>ポッド
 
@@ -245,3 +247,4 @@ AKS クラスターを作成すると、次の名前空間が利用可能にな�
 [aks-helm]: kubernetes-helm.md
 [operator-best-practices-cluster-security]: operator-best-practices-cluster-security.md
 [operator-best-practices-scheduler]: operator-best-practices-scheduler.md
+[use-multiple-node-pools]: use-multiple-node-pools.md

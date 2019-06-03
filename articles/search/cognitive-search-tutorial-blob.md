@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: tutorial
-ms.date: 05/02/2019
+ms.date: 05/28/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 55d4f4bdf204453ccfe353e0d79abedb118bd9d8
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: fb45d2e36939a53d6242cf7cd5a0b9f1990780c3
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65021607"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66299047"
 ---
 # <a name="rest-tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline"></a>REST チュートリアル:Azure Search のインデックス パイプラインで Cognitive Services API を呼び出す
 
@@ -45,13 +45,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 このチュートリアルでは、次のサービス、ツール、およびデータを使用します。 
 
-[Azure Search サービスを作成](search-create-service-portal.md)するか、現在のサブスクリプションから[既存のサービスを見つけます](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 このチュートリアル用には、無料のサービスを使用できます。
++ サンプル データの格納のための [Azure ストレージ アカウントを作成](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)します。 ストレージ アカウントが Azure Search と同じリージョンにあることを確認します。
 
-サンプル データの格納のための [Azure ストレージ アカウントを作成](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)します。
++ [Postman デスクトップ アプリ](https://www.getpostman.com/)は、Azure Search への REST 呼び出しを行うために使用されます。
 
-[Postman デスクトップ アプリ](https://www.getpostman.com/)は、Azure Search への REST 呼び出しを行うために使用されます。
++ [サンプル データ](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4)は、さまざまなタイプの小さいファイル セットで構成されています。 
 
-[サンプル データ](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4)は、さまざまなタイプの小さいファイル セットで構成されています。 
++ [Azure Search サービスを作成](search-create-service-portal.md)するか、現在のサブスクリプションから[既存のサービスを見つけます](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 このチュートリアル用には、無料のサービスを使用できます。
 
 ## <a name="get-a-key-and-url"></a>キーと URL を入手する
 
@@ -59,7 +59,7 @@ REST 呼び出しには、要求ごとにサービス URL とアクセス キー
 
 1. [Azure portal にサインイン](https://portal.azure.com/)し、ご使用の検索サービスの **[概要]** ページで、URL を入手します。 たとえば、エンドポイントは `https://mydemo.search.windows.net` のようになります。
 
-1. **[設定]** > **[キー]** で、サービスに対する完全な権限の管理者キーを取得します。 管理キーをロールオーバーする必要がある場合に備えて、2 つの交換可能な管理キーがビジネス継続性のために提供されています。 オブジェクトの追加、変更、および削除の要求には、主キーまたはセカンダリ キーのどちらかを使用できます。
+1. **[設定]**  >  **[キー]** で、サービスに対する完全な権限の管理者キーを取得します。 管理キーをロールオーバーする必要がある場合に備えて、2 つの交換可能な管理キーがビジネス継続性のために提供されています。 オブジェクトの追加、変更、および削除の要求には、主キーまたはセカンダリ キーのどちらかを使用できます。
 
 ![HTTP エンドポイントとアクセス キーを取得する](media/search-fiddler/get-url-key.png "HTTP エンドポイントとアクセス キーを取得する")
 
@@ -69,7 +69,7 @@ REST 呼び出しには、要求ごとにサービス URL とアクセス キー
 
 エンリッチメント パイプラインは、Azure データ ソースから取得されます。 ソース データは、サポートされているデータ ソースの種類の [Azure Search インデクサー](search-indexer-overview.md)から取得する必要があります。 Cognitive Search では Azure Table Storage はサポートされていません。 この演習では、BLOB ストレージを使用して複数のコンテンツ タイプを示します。
 
-1. [Azure portal にサインインし](https://portal.azure.com)、Azure ストレージ アカウントに移動して **[BLOB]** をクリックし、**[+ コンテナー]** をクリックします。
+1. [Azure portal にサインインし](https://portal.azure.com)、Azure ストレージ アカウントに移動して **[BLOB]** をクリックし、 **[+ コンテナー]** をクリックします。
 
 1. [BLOB コンテナーを作成](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)してサンプル データを含めます。 パブリック アクセス レベルは、有効な任意の値に設定できます。
 
@@ -77,7 +77,7 @@ REST 呼び出しには、要求ごとにサービス URL とアクセス キー
 
    ![Azure Blob Storage 内のソース ファイル](./media/cognitive-search-quickstart-blob/sample-data.png)
 
-1. サンプル ファイルが読み込まれたら、BLOB ストレージのコンテナー名と接続文字列を取得します。 これは、Azure portal でストレージ アカウントに移動して実行できます。 **[アクセス キー]** で、**[接続文字列]** フィールドをコピーします。
+1. サンプル ファイルが読み込まれたら、BLOB ストレージのコンテナー名と接続文字列を取得します。 これは、Azure portal でストレージ アカウントに移動して実行できます。 **[アクセス キー]** で、 **[接続文字列]** フィールドをコピーします。
 
    接続文字列は次の例のような URL です。
 
@@ -419,7 +419,7 @@ Content-Type: application/json
 
 警告は、一部のソース ファイルとスキルの組み合わせではよく見られ、必ずしも問題を示すわけではありません。 このチュートリアルでは、警告は無害です (たとえば、JPEG ファイルからのテキスト入力がない)。 インデックスの作成中に生成される警告についての詳細情報については、状態応答を確認することができます。
  
-## <a name="verify-content"></a>コンテンツを検証する
+## <a name="query-your-index"></a>インデックスの照会
 
 インデックス作成が完了したら、個々 のフィールドの内容を返すクエリを実行します。 既定では、Azure Search によって上位 50 件の結果が返されます。 サンプル データは小さいため、既定値で問題なく動作します。 ただし、より大きなデータ セットを使用する場合は、より多くの結果が返されるよう、クエリ文字列にパラメーターを含める必要がある場合があります。 手順については、「[Azure Search でのページ検索結果の表示方法](search-pagination-page-layout.md)」をご覧ください。
 
@@ -445,74 +445,8 @@ Content-Type: application/json
 
 クエリ文字列の複雑さと長さによっては、GET や POST を使用できます。 詳細については、[REST API を使用したクエリ](https://docs.microsoft.com/rest/api/searchservice/search-documents)に関するページをご覧ください。
 
-<a name="access-enriched-document"></a>
 
-## <a name="accessing-the-enriched-document"></a>エンリッチされたドキュメントへのアクセス
 
-コグニティブ検索では、エンリッチされたドキュメントの構造を確認できます。 エンリッチされたドキュメントは、エンリッチメント中に作成されてプロセスが完了すると削除される、一時的な構造体です。
-
-インデックス作成時に作成されるエンリッチされたドキュメントのスナップショットをキャプチャするには、インデックスに ```enriched``` という名前のフィールドを追加します。 インデクサーは、そのドキュメントのすべてのエンリッチメントの文字列表現を、このフィールド内に自動的にダンプします。
-
-```enriched``` フィールドには、メモリ内のエンリッチされたドキュメントの JSON での論理表現である文字列が含まれます。  ただし、フィールド値は有効な JSON ドキュメントです。 引用符はエスケープされるため、書式設定された JSON としてドキュメントを表示するためには、`\"` を `"` に置き換える必要があります。  
-
-```enriched``` フィールドはデバッグのために使用するフィールドであり、式を評価するコンテンツの論理構造を理解するうえでは役に立ちます。 スキルセットを理解してデバッグするには便利なツールです。
-
-エンリッチされたドキュメントの内容をキャプチャする `enriched` フィールドを含み、前述の演習を繰り返します。
-
-### <a name="request-body-syntax"></a>要求本文の構文
-```json
-{
-  "fields": [
-    {
-      "name": "id",
-      "type": "Edm.String",
-      "key": true,
-      "searchable": true,
-      "filterable": false,
-      "facetable": false,
-      "sortable": true
-    },
-    {
-      "name": "content",
-      "type": "Edm.String",
-      "sortable": false,
-      "searchable": true,
-      "filterable": false,
-      "facetable": false
-    },
-    {
-      "name": "languageCode",
-      "type": "Edm.String",
-      "searchable": true,
-      "filterable": false,
-      "facetable": false
-    },
-    {
-      "name": "keyPhrases",
-      "type": "Collection(Edm.String)",
-      "searchable": true,
-      "filterable": false,
-      "facetable": false
-    },
-    {
-      "name": "organizations",
-      "type": "Collection(Edm.String)",
-      "searchable": true,
-      "sortable": false,
-      "filterable": false,
-      "facetable": false
-    },
-    {
-      "name": "enriched",
-      "type": "Edm.String",
-      "searchable": false,
-      "sortable": false,
-      "filterable": false,
-      "facetable": false
-    }
-  ]
-}
-```
 <a name="reset"></a>
 
 ## <a name="reset-and-rerun"></a>リセットして再実行する

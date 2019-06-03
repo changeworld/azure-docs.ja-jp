@@ -9,14 +9,16 @@ ms.date: 03/28/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: a83b8a56a8108f86d868e3420d8368c74fba308a
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 86aab19eb0203e75fb8586adbdeb3f6fff9d14bd
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58578197"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64575437"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>チュートリアル:SQL Server データベースを使用したエッジでのデータの格納
+
+Azure IoT Edge を実行している Linux デバイスにデータを格納するための SQL Server モジュールをデプロイします。
 
 Azure IoT Edge と SQL Server を使用し、エッジでデータを格納してクエリを実行します。 Azure IoT Edge には、デバイスがオフラインになった場合にメッセージをキャッシュして、接続が再確立されるとそれらのメッセージを転送するという基本のストレージ機能があります。 しかし、ローカルでデータのクエリを実行する機能など、より高度なストレージ機能が必要になる場合があります。 お使いの IoT Edge デバイスは、IoT Hub への接続を維持する必要なく、ローカルなデータベースを使用してより複雑なコンピューティングを実行できます。 
 
@@ -34,60 +36,30 @@ Azure IoT Edge と SQL Server を使用し、エッジでデータを格納し�
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure IoT Edge デバイス:
+このチュートリアルを開始する前に、前のチュートリアルを完了して、Linux コンテナー開発用の開発環境を設定しておく必要があります。[Linux のデバイス用の IoT Edge モジュールを開発する](tutorial-develop-for-linux.md)。 このチュートリアルを完了すると、次の前提条件が満たされます。 
 
-* [Linux](quickstart-linux.md) 用のクイック スタートに記載された手順に従うことで、Azure 仮想マシンを IoT Edge デバイスとして使用できます。
-* SQL Server でサポートされるのは Linux コンテナーのみです。 Windows デバイスを IoT Edge デバイスとして使用し、このチュートリアルを試したい場合は、Linux コンテナーを使用するようにそれを構成する必要があります。 Windows 上の Linux コンテナー向けに IoT Edge ランタイムを構成するための前提条件とインストール手順については、[Windows に Azure IoT Edge ランタイムをインストールする方法](how-to-install-iot-edge-windows.md)に関するページを参照してください。
+* Azure の Free レベルまたは Standard レベルの [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)。
+* [Azure IoT Edge を実行している Linux デバイス](quickstart-linux.md)
+* コンテナー レジストリ ([Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) など)。
+* [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) を使用して構成された [Visual Studio Code](https://code.visualstudio.com/)。
+* Linux コンテナーを実行するように構成された [Docker CE](https://docs.docker.com/install/)。
 
-クラウド リソース:
+このチュートリアルでは、Azure Functions モジュールを使用して SQL Server にデータを送信します。 Azure Functions を使用して IoT Edge モジュールを開発するには、開発用マシンに次の追加の前提条件をインストールします。 
 
-* Azure の Free レベルまたは Standard レベルの [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)。 
-
-開発リソース:
-
-* [Visual Studio Code](https://code.visualstudio.com/)。 
 * [Visual Studio Code 用の C# (OmniSharp を使用) 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)。 
-* [Visual Studio Code 用 Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge)。 
 * [.NET Core 2.1 SDK](https://www.microsoft.com/net/download)。 
-* [Docker CE](https://docs.docker.com/install/)。 
-  * Windows マシン上で開発している場合は、Docker が [Linux コンテナーを使用するように構成](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers)されていることを確認してください。 
-
-## <a name="create-a-container-registry"></a>コンテナー レジストリの作成
-
-このチュートリアルでは、Visual Studio Code 用の Azure IoT Tools を使用してモジュールをビルドし、ファイルから**コンテナー イメージ**を作成します。 その後、このイメージを**レジストリ**にプッシュし、格納および管理します。 最後に、レジストリからイメージを展開し、IoT Edge デバイスで実行します。  
-
-コンテナー イメージは、Docker と互換性のある任意のレジストリを使用して格納できます。 2 つの一般的な Docker レジストリ サービスは、[Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) と [Docker Hub](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags) です。 このチュートリアルでは、Azure Container Registry を使用します。 
-
-コンテナー レジストリがまだない場合は、次の手順に従って、Azure に新しいコンテナー レジストリを作成します。
-
-1. [Azure portal](https://portal.azure.com) で、**[リソースの作成]** > **[コンテナー]** > **[コンテナー レジストリ]** の順に選択します。
-
-2. コンテナー レジストリを作成するには、以下の値を指定します。
-
-   | フィールド | 値 | 
-   | ----- | ----- |
-   | レジストリ名 | 一意の名前を指定します。 |
-   | サブスクリプション | ドロップダウン リストで、サブスクリプションを選択します。 |
-   | リソース グループ | IoT Edge のクイック スタートおよびチュートリアルで作成するすべてのテスト リソースに、同じリソース グループを使用することをお勧めします。 たとえば、**IoTEdgeResources** を使用します。 |
-   | Location | 近くの場所を選択します。 |
-   | 管理者ユーザー | **[有効]** に設定します。 |
-   | SKU | **[Basic]** を選択します。 | 
-
-5. **作成**を選択します。
-
-6. コンテナー レジストリが作成されたら、その場所を参照し、**[アクセス キー]** を選択します。 
-
-7. **ログイン サーバー**、**ユーザー名**、および**パスワード**の値をコピーします。 これらの値は、このチュートリアルで後ほどコンテナー レジストリへのアクセスを提供するために使用します。  
 
 ## <a name="create-a-function-project"></a>関数プロジェクトを作成する
 
 データベースにデータを送信するには、データを正しく構造化してテーブルに格納できるモジュールが必要です。 
 
+### <a name="create-a-new-project"></a>新しいプロジェクトを作成する
+
 次の手順では、Visual Studio Code と Azure IoT Tools を使用して、IoT Edge 関数を作成する方法を説明します。
 
 1. Visual Studio Code を開きます。
 
-2. **[表示]** > **[コマンド パレット]** を選択して、VS Code コマンド パレットを開きます。
+2. **[表示]**  >  **[コマンド パレット]** を選択して、VS Code コマンド パレットを開きます。
 
 3. コマンド パレットで、**Azure IoT Edge: New IoT Edge solution** コマンドを入力して実行します。 コマンド パレットで、次の情報を指定してソリューションを作成します。 
 
@@ -101,24 +73,27 @@ Azure IoT Edge デバイス:
 
    VS Code ウィンドウによって、ご自身の IoT Edge ソリューション ワークスペースが読み込まれます。 
    
-4. IoT Edge ソリューション内の \.env ファイルを開きます。 
+### <a name="add-your-registry-credentials"></a>レジストリ資格情報を追加する
 
-   新しい IoT Edge ソリューションを作成するたびに、該当するレジストリの資格情報を \.env ファイルで入力するよう VS Code から求められます。 このファイルは git では無視され、IoT Edge 拡張機能が後から、ご利用の IoT Edge デバイスへのレジストリ アクセスを提供するために使用します。 
+コンテナー レジストリの資格情報は、環境ファイルに格納され、IoT Edge ランタイムと共有されます。 ランタイムでご自身のプライベート イメージを IoT Edge デバイスにプルするとき、ランタイムではこれらの資格情報が必要になります。
 
-   前の手順でコンテナー レジストリを指定せずに、既定の localhost:5000 を受け入れた場合、\.env ファイルは作成されません。
+1. VS Code エクスプローラーで、.env ファイルを開きます。
+2. ご自身の Azure コンテナー レジストリからコピーした**ユーザー名**と**パスワード**の値を使用して、フィールドを更新します。
+3. このファイルを保存します。
 
-5. IoT Edge ランタイムがモジュール イメージにアクセスできるように、.env ファイルでこの IoT Edge ランタイムにレジストリ資格情報を渡します。 **CONTAINER_REGISTRY_USERNAME** と **CONTAINER_REGISTRY_PASSWORD** セクションを探し、等号記号の後に資格情報を挿入します。 
+### <a name="select-your-target-architecture"></a>ターゲット アーキテクチャを選択する
 
-   ```env
-   CONTAINER_REGISTRY_USERNAME_yourregistry=<username>
-   CONTAINER_REGISTRY_PASSWORD_yourregistry=<password>
-   ```
+現在、Visual Studio Code では、Linux AMD64 および Linux ARM32v7 デバイス用の C モジュールを開発できます。 ソリューションごとにターゲットとするアーキテクチャを選択する必要があります。これは、アーキテクチャの種類によって、コンテナーのビルド方法と実行方法が異なるためです。 既定値は Linux AMD64 です。 
 
-6. .env ファイルを保存します。
+1. コマンド パレットを開き、次を検索します: 「**Azure IoT Edge: Set Default Target Platform for Edge Solution (Azure IoT Edge: Edge ソリューションの既定のターゲット プラットフォームの設定)** 」。または、ウィンドウの下部にあるサイド バーで、ショートカット アイコンを選択します。 
 
-7. VS Code エクスプローラーで、**[モジュール]** > **[sqlFunction]** > **[sqlFunction.cs]** の順に開きます。
+2. コマンド パレットで、オプションの一覧からターゲット アーキテクチャを選択します。 このチュートリアルでは、Ubuntu 仮想マシンを IoT Edge デバイスとして使用するため、既定値の **amd64** を維持します。 
 
-8. ファイルの内容全体を次のコードに置き換えます。
+### <a name="update-the-module-with-custom-code"></a>カスタム コードでモジュールを更新する
+
+1. VS Code エクスプローラーで、 **[モジュール]**  >  **[sqlFunction]**  >  **[sqlFunction.cs]** の順に開きます。
+
+2. ファイルの内容全体を次のコードに置き換えます。
 
    ```csharp
    using System;
@@ -205,29 +180,29 @@ Azure IoT Edge デバイス:
    }
    ```
 
-6. 行 35 で、文字列 **\<sql connection string\>** を次の文字列に置き換えます。 **Data Source** プロパティは SQL Server コンテナーを参照します。これはまだ存在しませんが、次のセクションで **SQL** という名前で作成します。 
+3. 行 35 で、文字列 **\<sql connection string\>** を次の文字列に置き換えます。 **Data Source** プロパティは SQL Server コンテナーを参照します。これはまだ存在しませんが、次のセクションで **SQL** という名前で作成します。 
 
    ```csharp
    Data Source=tcp:sql,1433;Initial Catalog=MeasurementsDB;User Id=SA;Password=Strong!Passw0rd;TrustServerCertificate=False;Connection Timeout=30;
    ```
 
-7. **sqlFunction.cs** ファイルを保存します。 
+4. **sqlFunction.cs** ファイルを保存します。 
 
-8. **sqlFunction.csproj** ファイルを開きます。
+5. **sqlFunction.csproj** ファイルを開きます。
 
-9. パッケージ参照のグループを見つけ、SqlClient をインクルードするための新しいものを追加します。 
+6. パッケージ参照のグループを見つけ、SqlClient をインクルードするための新しいものを追加します。 
 
    ```csproj
    <PackageReference Include="System.Data.SqlClient" Version="4.5.1"/>
    ```
 
-10. **sqlFunction.csproj** ファイルを保存します。
+7. **sqlFunction.csproj** ファイルを保存します。
 
 ## <a name="add-the-sql-server-container"></a>SQL Server コンテナーの追加
 
 [配置マニフェスト](module-composition.md)では、IoT Edge ランタイムによって IoT Edge デバイスにインストールされるモジュールを宣言します。 前のセクションではカスタム関数モジュールを作成するコードを追加しましたが、SQL Server モジュールは既に構築済みであり、Azure Marketplace で入手できます。 IoT Edge ランタイムがそれを含み、デバイス上で構成するよう指定する必要があります。 
 
-1. Visual Studio Code で、**[表示]** > **[コマンド パレット]** を選択してコマンド パレットを開きます。
+1. Visual Studio Code で、 **[表示]**  >  **[コマンド パレット]** を選択してコマンド パレットを開きます。
 
 2. コマンド パレットで、**Azure IoT Edge: Add IoT Edge module** コマンドを入力して実行します。 コマンド パレットで、次の情報を入力して新しいモジュールを追加します。 
 
@@ -255,7 +230,7 @@ Azure IoT Edge デバイス:
 
 これまでのセクションでは、1 つのモジュールと共にソリューションを作成して、別のモジュールを配置マニフェスト テンプレートに追加しました。 SQL Server モジュールは Microsoft によって公式にホストされていますが、自分でコードを Functions モジュールにコンテナー化する必要があります。 このセクションでは、ソリューションを構築し、sqlFunction モジュールのコンテナー イメージを作成して、そのイメージをコンテナー レジストリにプッシュします。 
 
-1. Visual Studio Code で、**[表示]** > **[ターミナル]** の順に選択して、統合ターミナルを開きます。  
+1. Visual Studio Code で、 **[表示]**  >  **[ターミナル]** の順に選択して、統合ターミナルを開きます。  
 
 1. Visual Studio Code でコンテナー レジストリにサインインします。これで、イメージをレジストリにプッシュできます。 .env ファイルに追加したのと同じ Azure Container Registry (ACR) 資格情報を使用します。 統合ターミナルで次のコマンドを入力します。
 
@@ -265,7 +240,7 @@ Azure IoT Edge デバイス:
     
     --password-stdin パラメーターの使用を推奨するセキュリティ警告が表示される場合があります。 このパラメーターの使用について、ここでは説明していませんが、このベスト プラクティスに従うことをお勧めします。 詳細については、[docker login](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) コマンドのリファレンスを参照してください。 
 
-2. VS Code エクスプローラーで、**deployment.template.json** ファイルを右クリックし、**[Build and Push IoT Edge solution]\(IoT Edge ソリューションのビルドとプッシュ\)** を選択します。 
+2. VS Code エクスプローラーで、**deployment.template.json** ファイルを右クリックし、 **[Build and Push IoT Edge solution]\(IoT Edge ソリューションのビルドとプッシュ\)** を選択します。 
 
 ソリューションのビルドを指示すると、最初に Visual Studio Code によって配置テンプレートの情報が読み取られて、**config** という名前の新しいフォルダーに deployment.json ファイルが生成されます。次に、`docker build` と `docker push` の 2 つのコマンドが統合ターミナルで実行されます。 これらの 2 つのコマンドによって、コードがビルドされ、モジュールがコンテナー化されたうえで、ソリューションを初期化したときに指定したコンテナー レジストリにコードがプッシュされます。 
 
@@ -275,19 +250,11 @@ sqlFunction モジュールがコンテナー レジストリに正常にプッ�
 
 IoT ハブを通じてデバイスにモジュールを設定できますが、Visual Studio Code を通じて IoT ハブとデバイスにアクセスすることもできます。 このセクションでは、IoT ハブへのアクセスを設定してから、VS Code を使用してソリューションを IoT Edge デバイスに配置します。 
 
-1. VS Code コマンド パレットで、**[Azure IoT Hub: Select IoT Hub]\(Azure IoT Hub: IoT ハブの選択\)** を選びます。
+1. VS Code エクスプローラーで、 **[Azure IoT Hub Devices]\(Azure IoT Hub デバイス\)** セクションを展開します。 
 
-2. プロンプトに従って Azure アカウントにサインインします。 
+2. 配置でターゲットにするデバイスを右クリックし、 **[Create deployment for single device]\(単一デバイスのデプロイの作成\)** を選択します。 
 
-3. コマンド パレットで、Azure サブスクリプション、IoT ハブの順に選択します。 
-
-4. VS Code エクスプローラーで、**[Azure IoT Hub Devices]\(Azure IoT Hub デバイス\)** セクションを展開します。 
-
-5. 配置でターゲットにするデバイスを右クリックし、**[Create deployment for single device]\(単一デバイスのデプロイの作成\)** を選択します。 
-
-   ![単一デバイスのデプロイを作成する](./media/tutorial-store-data-sql-server/create-deployment.png)
-
-6. エクスプローラーで、ソリューション内の **config** フォルダーに移動して、**deployment.amd64** を選択します。 **[Select Edge Deployment Manifest]\(Edge 配置マニフェストの選択\)** をクリックします。 
+3. エクスプローラーで、ソリューション内の **config** フォルダーに移動して、**deployment.amd64** を選択します。 **[Select Edge Deployment Manifest]\(Edge 配置マニフェストの選択\)** をクリックします。 
 
    deployment.template.json ファイルを配置マニフェストとして使用しないでください。
 
@@ -360,7 +327,7 @@ SQL コマンド ツール内から次のコマンドを実行して、書式設
 
 このチュートリアルでは、IoT Edge デバイスで生成された生データをフィルター処理するコードを含む、Azure Functions モジュールを作成しました。 独自のモジュールをビルドする準備ができたら、[Visual Studio Code 用の Azure IoT Edge で Azure 関数を開発する](how-to-develop-csharp-function.md)方法の詳細をご覧ください。 
 
-引き続き次のチュートリアルを実行すると、Azure IoT Edge を利用して、エッジでデータをビジネス上の分析情報に変える他の方法について学習できます。
+エッジで別の格納方法を試す場合は、IoT Edge 上の Azure Blob Storage を使用する方法に関する記事を参照してください。 
 
 > [!div class="nextstepaction"]
-> [C# コードを使用してセンサー データをフィルター処理する](tutorial-csharp-module.md)
+> [IoT Edge 上の Azure Blob Storage を使用してエッジにデータを格納する](how-to-store-data-blob.md)

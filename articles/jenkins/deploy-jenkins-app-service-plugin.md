@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 07/31/2018
-ms.openlocfilehash: 58835b66824d55b64b77e34df64d34c8da1c269a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 29a842f7dfcf720f29fcff80d2e736893c824f5a
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57864815"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65949556"
 ---
 # <a name="deploy-to-azure-app-service-by-using-the-jenkins-plugin"></a>Jenkins プラグインを使用した Azure App Service へのデプロイ 
 
@@ -72,7 +72,7 @@ Jenkins でジョブを設定する前に、Java アプリを実行するため�
 
 
 1. `az appservice plan create` [Azure CLI コマンド](/cli/azure/appservice/plan#az-appservice-plan-create)を使用して、**Free** 価格レベルで Azure App Service プランを作成します。 App Service プランでは、アプリをホストするために使用される物理リソースを定義します。 App Service プランに割り当てられたすべてのアプリケーションがこれらのリソースを共有します。 共有リソースにより、複数のアプリをホストするときにコストを節約できます。
-2. Web アプリを作成します。 [Azure Portal](/azure/app-service-web/web-sites-configure) または次の `az` Azure CLI コマンドをご利用いただけます。
+2. Web アプリを作成します。 [Azure Portal](/azure/app-service/configure-common) または次の `az` Azure CLI コマンドをご利用いただけます。
     ```azurecli-interactive 
     az webapp create --name <myAppName> --resource-group <myResourceGroup> --plan <myAppServicePlan>
     ```

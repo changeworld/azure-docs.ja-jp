@@ -9,14 +9,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 02/28/2019
+ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 9099cdbb91e41998065d953b9d48b3b501df7c10
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: e77cd2290981de62ba7fce7f04174cd0c5ec2af3
+ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57336939"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65072172"
 ---
 # <a name="dimension-prebuilt-entity-for-a-luis-app"></a>LUIS アプリの dimension 作成済みエンティティ
 作成済みの dimension エンティティは、LUIS アプリのカルチャに関係なく、さまざまな種類の寸法を検出します。 このエンティティは既にトレーニングされているので、寸法を含む発話の例をアプリケーション意図に追加する必要はありません。 dimension エンティティは、[多くのカルチャ](luis-reference-prebuilt-entities.md)でサポートされています。 
@@ -27,6 +27,9 @@ dimension は [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/b
 
 
 ## <a name="resolution-for-dimension-entity"></a>dimension エンティティの解決
+
+### <a name="api-version-2x"></a>API バージョン 2.x
+
 次の例では、**builtin.dimension** エンティティの解決を示します。
 
 ```json
@@ -54,6 +57,70 @@ dimension は [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/b
       }
     }
   ]
+}
+```
+
+### <a name="preview-api-version-3x"></a>プレビュー API バージョン 3.x
+
+次の JSON は、`verbose` パラメーターが `false` に設定されている場合です。
+
+```json
+{
+    "query": "it takes more than 10 1/2 miles of cable and wire to hook it all up , and 23 computers.",
+    "prediction": {
+        "normalizedQuery": "it takes more than 10 1/2 miles of cable and wire to hook it all up , and 23 computers.",
+        "topIntent": "None",
+        "intents": {
+            "None": {
+                "score": 0.400049
+            }
+        },
+        "entities": {
+            "dimension": [
+                {
+                    "number": 10.5,
+                    "unit": "Mile"
+                }
+            ]
+        }
+    }
+}
+```
+
+次の JSON は、`verbose` パラメーターが `true` に設定されている場合です。
+
+```json
+{
+    "query": "it takes more than 10 1/2 miles of cable and wire to hook it all up , and 23 computers.",
+    "prediction": {
+        "normalizedQuery": "it takes more than 10 1/2 miles of cable and wire to hook it all up , and 23 computers.",
+        "topIntent": "None",
+        "intents": {
+            "None": {
+                "score": 0.400049
+            }
+        },
+        "entities": {
+            "dimension": [
+                {
+                    "number": 10.5,
+                    "unit": "Mile"
+                }
+            ],
+            "$instance": {
+                "dimension": [
+                    {
+                        "type": "builtin.dimension",
+                        "text": "10 1/2 miles",
+                        "startIndex": 19,
+                        "length": 12,
+                        "modelTypeId": 2,
+                        "modelType": "Prebuilt Entity Extractor"
+                    }
+                ]
+            }
+        }
+    }
 }
 ```
 

@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: vlvinogr
 ms.openlocfilehash: 3a46462f761e7608ae7554604577a1e9d7f88b15
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51572354"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66238112"
 ---
 ## <a name="go-to-your-api-management-instance"></a>API Management インスタンスに移動します。
 
@@ -21,7 +21,7 @@ ms.locfileid: "51572354"
 
 3. 検索ボックスに「 `api management`」と入力します。
 
-4. 検索結果で、**[API Management サービス]** を選択します。
+4. 検索結果で、 **[API Management サービス]** を選択します。
 
 5. お使いの API Management サービス インスタンスを選択します。
 

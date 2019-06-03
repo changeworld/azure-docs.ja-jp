@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/05/2019
+ms.date: 05/02/2019
 ms.author: kumud
-ms.openlocfilehash: a42a56b8a4a54c33297461a427a2b64b72357020
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: d5f52829f5895b30afd160cc8ded755332aca5c5
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57194080"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190166"
 ---
 # <a name="outbound-connections-in-azure"></a>Azure の送信接続
 
@@ -40,7 +40,7 @@ Azure は送信元ネットワーク アドレス変換 (SNAT) を使用して�
 
 [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) を使用している場合、Azure Load Balancer と関連するリソースは明示的に定義されます。  現在 Azure には、Azure Resource Manager リソースの送信接続を実現するのに 3 つの異なる方法があります。 
 
-| SKU | シナリオ | 方法 | IP プロトコル | 説明 |
+| SKU | シナリオ | Method | IP プロトコル | 説明 |
 | --- | --- | --- | --- | --- |
 | Standard、Basic | [1.インスタンス レベル パブリック IP アドレスを含む VM (ロード バランサーあり、またはなし)](#ilpip) | SNAT (ポート マスカレードは不使用) | TCP、UDP、ICMP、ESP | インスタンスの NIC の IP 構成に割り当てられたパブリック IP が Azure によって使用されます。 インスタンスには、使用可能なすべてのエフェメラル ポートがあります。 Standard Load Balancer を使用する場合は、[アウトバウンド規則](load-balancer-outbound-rules-overview.md)を使って、アウトバウンド接続を明示的に定義する必要があります |
 | Standard、Basic | [2.VM に関連付けられたパブリック ロード バランサー (インスタンスにインスタンス レベルのパブリック IP アドレスなし)](#lb) | ロード バランサー フロントエンドを使用したポート マスカレード (PAT) による SNAT | TCP、UDP |Azure によってパブリック ロード バランサー フロントエンドのパブリック IP アドレスが複数のプライベート IP アドレスと共有されます。 Azure では、フロントエンドのエフェメラル ポートが PAT に使用されます。 |
@@ -176,13 +176,13 @@ SNAT ポートの割り当ては、IP トランスポート プロトコル固�
 
 ### <a name="tcp-snat-port-release"></a>TCP SNAT ポートの解放
 
-- サーバーとクライアントの両方が FIN/ACK を送信すると、SNAT ポートは 240 秒後に解放されます。
+- サーバー/クライアントのどちらかが FINACK を送信すると、SNAT ポートは 240 秒後に解放されます。
 - RST が送信されると、SNAT ポートは 15 秒後に解放されます。
-- アイドル タイムアウトに達した場合。
+- アイドル タイムアウトに達すると、ポートは解放されます。
 
 ### <a name="udp-snat-port-release"></a>UDP SNAT ポートの解放
 
-- アイドル タイムアウトに達した場合。
+- アイドル タイムアウトに達すると、ポートは解放されます。
 
 ## <a name="problemsolving"></a> 問題の解決 
 

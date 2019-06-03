@@ -1,21 +1,21 @@
 ---
-title: Azure Database for PostgreSQL のクエリ ストア
-description: この記事では、Azure Database for PostgreSQL のクエリ ストア機能について説明します。
+title: Azure Database for PostgreSQL - Single Server でのクエリ ストア
+description: この記事では、Azure Database for PostgreSQL - Single Server でのクエリ ストア機能について説明します。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 03/26/2019
-ms.openlocfilehash: c904b6e6cd7a4dc0f9d5a442e20738e43595b369
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.date: 5/6/2019
+ms.openlocfilehash: b622de3e21d26676bb11d81a6facf8fea18cabc1
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58485919"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65067197"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>クエリ ストアによるパフォーマンスの監視
 
-**適用対象:** Azure Database for PostgreSQL 9.6 および 10
+**適用対象:** Azure Database for PostgreSQL - Single Server 9.6 および 10
 
 Azure Database for PostgreSQL のクエリ ストア機能では、一定期間にわたってクエリ パフォーマンスを追跡する手段が提供されます。 クエリ ストアを使用すると、実行時間が最長のクエリおよびリソースを最も消費しているクエリを迅速に特定できるので、パフォーマンスのトラブルシューティングが簡単になります。 クエリ ストアでは、クエリおよびランタイム統計の履歴が自動的にキャプチャされて保持されるので、それらを確認できます。 データベースの使用パターンを確認できるように、データが時間枠で区切られます。 すべてのユーザー、データベース、クエリに関するデータが Azure Database for PostgreSQL インスタンス内の **azure_sys** という名前のデータベースに格納されます。
 

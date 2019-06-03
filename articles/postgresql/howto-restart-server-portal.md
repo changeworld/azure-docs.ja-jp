@@ -1,19 +1,19 @@
 ---
-title: Azure portal を使用して Azure Database for PostgreSQL サーバーを再起動する
-description: この記事では、Azure portal を使用して Azure Database for PostgreSQL サーバーを再起動する方法について説明します。
+title: Azure portal を使用して Azure Database for PostgreSQL - 単一サーバーを再起動する
+description: この記事では、Azure portal を使用して Azure Database for PostgreSQL - 単一サーバーを再起動する方法について説明します。
 author: ajlam
 ms.author: andrela
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 3/18/2019
-ms.openlocfilehash: bf73120e462b740de5d2245f8a647896ac61f2c8
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.date: 5/6/2019
+ms.openlocfilehash: fd92e27f53f52de3e9a7fd65d577c9dfea44991b
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58621832"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65066836"
 ---
-# <a name="restart-azure-database-for-postgresql-server-using-the-azure-portal"></a>Azure portal を使用して Azure Database for PostgreSQL サーバーを再起動する
+# <a name="restart-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>Azure portal を使用して Azure Database for PostgreSQL - 単一サーバーを再起動する
 このトピックでは、Azure Database for PostgreSQL サーバーを再起動する方法について説明します。 メンテナンス上の理由でサーバーの再起動が必要な場合があります。これを行うと、サーバーが操作を実行しているときに短時間の停止が発生します。
 
 サービスがビジー状態の場合、サーバーの再起動はブロックされます。 たとえば、仮想コアのスケーリングなどの前に要求した操作がサービスで処理中である場合があります。
@@ -48,4 +48,4 @@ ms.locfileid: "58621832"
 
 ## <a name="next-steps"></a>次の手順
 
-[Azure Database for PostgreSQL でパラメーターを設定する方法](howto-configure-server-parameters-using-portal.md)について確認する。
+[Azure Database for PostgreSQL でパラメーターを設定する方法](howto-configure-server-parameters-using-portal.md)について確認する

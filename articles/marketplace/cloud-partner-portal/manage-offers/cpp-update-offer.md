@@ -1,25 +1,18 @@
 ---
-title: Marketplace のオファーを更新する - Azure Marketplace | Microsoft Docs
+title: Marketplace のオファーを更新する | Azure Marketplace
 description: Cloud パートナー ポータルを使用して Azure Marketplace および AppSource Marketplace でオファーを更新する
 services: Azure, AppSource, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/11/2019
-ms.author: pbutlerm
-ms.openlocfilehash: 76b607502324c3ca25b3536d5197a97dbb80399d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: pabutler
+ms.openlocfilehash: 73e2812c678dca7e21089ee9cc091db756d7e25a
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58102147"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64942411"
 ---
 # <a name="update-azure-marketplace-and-appsource-offers"></a>Azure Marketplace および AppSource のオファーを更新する
 
@@ -90,7 +83,7 @@ SKU が新しいリージョンで利用できるようになると、その特�
 既存のオファーで新しい SKU を利用できるようにするには、以下の手順に従います。
 
 1. **[すべてのプラン]** ページで、オファーを見つけます。
-3. **[SKU]** フォームで、**[Add new SKU]\(新しい SKU の追加\)** をクリックし、ポップアップに **[SKU ID]** を指定します。
+3. **[SKU]** フォームで、 **[Add new SKU]\(新しい SKU の追加\)** をクリックし、ポップアップに **[SKU ID]** を指定します。
 4. 「[仮想マシンのオファーを発行する](../virtual-machine/cpp-publish-offer.md)」で説明されている残りの手順に従います。
 5. **[発行]** を選択して、発行プロセスを開始します。
 
@@ -100,7 +93,7 @@ SKU が新しいリージョンで利用できるようになると、その特�
 会社のロゴ、オファーの説明など、マーケットプレースのテキストベースとイメージの資産を更新する必要があるシナリオも考えられます。このような資産は、以下の手順で更新します。
 
 1. **[すべてのプラン]** ページで、オファーを見つけます。 
-2. **[Marketplace]** タブを選択し、オファーの "*[Marketplace] タブ*" トピックの指示に従います。
+2. **[Marketplace]** タブを選択し、オファーの " *[Marketplace] タブ*" トピックの指示に従います。
 3. **[発行]** を選択して、発行プロセスを開始します。
 
 
@@ -118,7 +111,7 @@ SKU が新しいリージョンで利用できるようになると、その特�
 
 ## <a name="compare-feature"></a>機能の比較
 
-発行済みのオファーを変更する場合、*[比較]* 機能を使用して変更を監査することができます。 この機能を利用するには:
+発行済みのオファーを変更する場合、 *[比較]* 機能を使用して変更を監査することができます。 この機能を利用するには:
 
 1. 編集プロセス中は、いつでもオファーの **[エディター]** タブで **[比較]** ボタンをクリックすることができます。
 2. 比較ウィンドウには、マーケットプレースのオファーとの比較として、このオファーに対する保存された変更の並列バージョンが表示されます。 

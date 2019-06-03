@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 04/13/2017
 ms.author: ralfwi
 ms.openlocfilehash: 38ff91fe9ac50a85d684895d0ccb6333f6257284
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59488250"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66155810"
 ---
 # <a name="connect-to-azure-germany-by-using-powershell"></a>PowerShell を使用して Azure Germany に接続する
 Azure Germany で Azure PowerShell を使用するには、グローバル Azure ではなく Azure Germany に接続する必要があります。 Azure PowerShell を使用すると、スクリプトで大規模なサブスクリプションを管理したり、現在 Azure portal にはない機能を利用したりすることができます。 グローバル Azure で PowerShell を使用したことがある場合は、操作の大部分は同じです。 Azure Germany で異なるのは次の点です。

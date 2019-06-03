@@ -34,6 +34,8 @@
       href: 'https://azure.microsoft.com/resources/samples/?service=stream-analytics'
 - name: 概念
   items:
+    - name: ストリーミング分析テクノロジの選択
+      href: streaming-technologies.md
     - name: ジョブの入力の種類
       items:
         - name: 入力の概要
@@ -147,7 +149,7 @@
           href: 'https://github.com/Azure/azure-stream-analytics/tree/master/Samples/ASAOneClick'
         - name: IoT Edge ジョブへの API の使用
           href: stream-analytics-cicd-api.md
-    - name: Visual Studio と VS Code
+    - name: Visual Studio
       items:
         - name: ツールをインストールする
           href: stream-analytics-tools-for-visual-studio-install.md
@@ -163,8 +165,14 @@
           href: stream-analytics-tools-for-visual-studio-cicd.md
         - name: Edge 用の .NET UDF の記述
           href: stream-analytics-edge-csharp-udf-methods.md
-        - name: VS Code における Stream Analytics の詳細
-          href: vs-code-how-to.md
+    - name: Visual Studio Code
+      items:
+        - name: サンプル データに対する
+          href: vscode-local-run.md
+        - name: CI/CD パイプラインの設定
+          href: setup-cicd-vs-code.md
+        - name: ジョブの探索
+          href: vscode-explore-jobs.md
     - name: トラブルシューティング
       items:
         - name: 入力
@@ -175,6 +183,8 @@
           href: stream-analytics-troubleshoot-query.md
         - name: アクティビティ ログと診断ログ
           href: stream-analytics-job-diagnostic-logs.md
+        - name: データ エラー
+          href: data-errors.md
     - name: Machine Learning との統合
       items:
         - name: ML モデルを利用したセンチメント分析

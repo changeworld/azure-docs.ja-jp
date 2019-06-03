@@ -9,12 +9,12 @@ ms.date: 12/07/2018
 ms.author: normesta
 ms.reviewer: seguler
 ms.custom: seodec18
-ms.openlocfilehash: 4b074c9dee93ba44659b0321ae3eee7fbea1c61f
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 7320f5cd8d012973139adb099785cddae123f775
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65145052"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65949609"
 ---
 # <a name="tutorial-use-azure-cdn-to-enable-a-custom-domain-with-ssl-for-a-static-website"></a>チュートリアル: Azure CDN を使用し、静的な Web サイトに対して SSL を使ってカスタム ドメインを有効にする
 
@@ -44,8 +44,9 @@ ms.locfileid: "65145052"
 1. **[新しいエンドポイント]** セクションで、フィールドに入力して新しい CDN エンドポイントを作成します。
 1. エンドポイント名 (*mystaticwebsiteCDN* など) を入力します。
 1. CDN エンドポイントのホスト名として、Web サイトのドメインを入力します。
-1. 配信元のホスト名については、静的な Web サイト エンドポイントを入力します。 静的な Web サイト エンドポイントを見つけるには、ストレージ アカウントの **[静的な Web サイト]** セクションに移動して、エンドポイントをコピーします。 
+1. 配信元のホスト名については、静的な Web サイト エンドポイントを入力します。 静的な Web サイト エンドポイントを見つけるには、ストレージ アカウントの **[静的な Web サイト]** セクションに移動して、エンドポイントをコピーします (先頭の https:// は削除します)
 1. ブラウザーで *mywebsitecdn.azureedge.net* に移動して、CDN エンドポイントをテストします。
+1. さらに、確認のために **[新規エンドポイント]** の下の設定の配信元に移動し、配信元のタイプが *[カスタムの配信元]* に設定され、 *[配信元のホスト名]* に静的な Web サイト エンドポイント名が表示されていることを確認します。
 
 ## <a name="enable-custom-domain-and-ssl"></a>カスタム ドメインと SSL を有効にする
 

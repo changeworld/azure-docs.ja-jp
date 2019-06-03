@@ -9,11 +9,11 @@ ms.date: 02/21/2018
 ms.author: tomfitz
 ms.custom: include file
 ms.openlocfilehash: dc4281c17b92e1720625764a52a34a94d6f296ab
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "64732740"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66164601"
 ---
 項目を作成する前に、スコープの概念について確認しましょう。 Azure には、管理グループ、サブスクリプション、リソース グループ、およびリソースという 4 つのレベルの管理が用意されています。 現在、[管理グループ](../articles/billing/billing-enterprise-mgmt-group-overview.md)はプレビュー リリースです。 次の図に、これらのレイヤーの例を示します。
 

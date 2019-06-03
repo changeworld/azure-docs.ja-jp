@@ -219,7 +219,7 @@ powershell -ExecutionPolicy Unrestricted -command "Install-WindowsFeature Web-IP
 ```
 
 ## <a name="create-a-powershell-startup-task"></a>PowerShell のスタートアップ タスクを作成する
-Windows PowerShell のスクリプトは [ServiceDefinition.csdef] ファイルから直接呼び出すことはできませんが、スタートアップ バッチ ファイルから呼び出すことができます。
+Windows PowerShell のスクリプトは [ServiceDefinition.csdef] から直接呼び出すことはできませんが、スタートアップ バッチ ファイルから呼び出すことができます。
 
 PowerShell では (既定では) 未署名のスクリプトは実行されません。 スクリプトに署名しない場合は、未署名のスクリプトを実行するように PowerShell を構成する必要があります。 未署名のスクリプトを実行するには、**ExecutionPolicy** を **Unrestricted** に設定する必要があります。 使用する **ExecutionPolicy** の設定は、Windows PowerShell のバージョンに基づきます。
 

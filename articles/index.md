@@ -6,12 +6,12 @@ description: Microsoft Azure Cloud Services を使用して、強力なアプリ
 ms.topic: hub-page
 featureFlags:
 - clicktale
-ms.openlocfilehash: b36302e349327354e31ef4ea5adb9842d04ed4f1
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: ce7e7aa471017fba7632018db116f7855a50d32e
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149338"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357552"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -649,6 +649,12 @@ PowerShell でスクリプトを使用した Azure タスクの自動化</a>
                                     <h3>Azure Stack</h3>
                                     <ul>
                                         <li>
+                                            <a href="/azure-stack">
+                                                <img src="media/index/azure-stack.svg" alt="" />
+                                                <p>Azure Stack</p>
+                                            </a>
+                                        </li>
+                                        <li>
                                             <a href="/azure/azure-stack/">
                                                 <img src="media/index/azure-stack.svg" alt="" />
                                                 <p>Azure Stack オペレーター</p>
@@ -658,6 +664,11 @@ PowerShell でスクリプトを使用した Azure タスクの自動化</a>
                                             <a href="/azure/azure-stack/user">
                                                 <img src="media/index/azure-stack.svg" alt="" />
                                                 <p>Azure Stack ユーザー</p>
+                                            </a>
+                                        </li>                                        <li>
+                                            <a href="/azure-stack/asdk/">
+                                                <img src="media/index/azure-stack.svg" alt="" />
+                                                <p>Azure Stack Development Kit (ASDK)</p>
                                             </a>
                                         </li>
                                     </ul>
@@ -965,7 +976,7 @@ PowerShell でスクリプトを使用した Azure タスクの自動化</a>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/azure/cognitive-services/labs/anomaly-finder/overview">
+                                            <a href="/azure/cognitive-services/Anomaly-Detector/overview">
                                                 <img src="media/index/API_Anomaly_Finder.svg" alt="" />
                                                 <p>Anomaly Finder</p>
                                             </a>
@@ -4041,7 +4052,7 @@ PowerShell でスクリプトを使用した Azure タスクの自動化</a>
                                                                 </a>
                                                             </li>
                                                             <li>
-                                                                <a class="barLink" href="/azure/cognitive-services/labs/anomaly-finder/overview">
+                                                                <a class="barLink" href="/azure/cognitive-services/Anomaly-Detector/overview">
                                                                     <img src="media/index/API_Anomaly_Finder.svg" alt="" />
                                                                     <span>Anomaly Finder</span>
                                                                 </a>
@@ -5959,6 +5970,25 @@ PowerShell でスクリプトを使用した Azure タスクの自動化</a>
                         <a href="#stack">Azure Stack</a>
                         <ul id="stack" class="cardsA">
                             <li>
+                                <a href="/azure-stack">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/azure-stack.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Azure Stack</h3>
+                                                    <p>Azure のサービスと機能をオンプレミスに拡張し、クラウドの境界をまたいでハイブリッド クラウド アプリケーションとエッジ アプリケーションを構築およびデプロイ</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
                                 <a href="/azure/azure-stack/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
@@ -5970,7 +6000,7 @@ PowerShell でスクリプトを使用した Azure タスクの自動化</a>
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Azure Stack オペレーター</h3>
-                                                    <p>この新しいハイブリッド クラウド プラットフォームを使用してお客様自身のデータセンターから Azure サービスを提供</p>
+                                                    <p>Azure Stack 統合システム インフラストラクチャを管理する方法とサービスを提供する方法の詳細</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -5989,6 +6019,23 @@ PowerShell でスクリプトを使用した Azure タスクの自動化</a>
                                             <div class="cardText">
                                                 <h3>Azure Stack ユーザー</h3>
                                                 <p>Azure Stack でサービスを使用し、アプリケーションを作成</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure-stack/asdk/">
+                                    <div class="cardPadding">
+                                        <div class="card">
+                                            <div class="cardImageOuter">
+                                                <div class="cardImage">
+                                                    <img src="media/index/azure-stack.svg" alt="" />
+                                                </div>
+                                            </div>
+                                            <div class="cardText">
+                                                <h3>Azure Stack Development Kit (ASDK)</h3>
+                                                <p>評価とテストのための非運用環境</p>
                                             </div>
                                         </div>
                                     </div>

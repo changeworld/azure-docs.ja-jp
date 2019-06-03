@@ -14,22 +14,22 @@ ms.topic: overview
 ms.date: 03/26/2018
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 9d789572abf0545eb51b357da091e5a1d712eab2
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: fd790d27c958bf982f95b98426c6ab4d94c5f17f
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57433809"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65412728"
 ---
-# <a name="what-is-azure-cache-for-redis"></a>Azure Cache for Redis とは
+# <a name="azure-cache-for-redis-description"></a>Azure Cache for Redis の説明
 
 Azure Cache for Redis は、人気のあるソフトウェア [Redis](https://redis.io/) が基になっています。 Azure Redis Cache は通常、バックエンドのデータストアに大きく依存するシステムのパフォーマンスとスケーラビリティを向上させるためのキャッシュとして使用されます。 アプリケーションに近い場所にある高速ストレージに、アクセス頻度が高いデータを一時的にコピーすることで、パフォーマンスが向上します。 [Azure Cache for Redis](https://redis.io/) を使用すると、この高速ストレージは、データベースによってディスクから読み込まれずに、Azure Cache for Redis を使用してメモリ内に配置されます。
 
-Azure Cache for Redis は、メモリ内のデータ構造ストア、分散型の非リレーショナル データベース、およびメッセージ ブローカーとして使用することも可能です。 Redis エンジンの短い待機時間、高スループットのパフォーマンスを活用して、アプリケーションのパフォーマンスが向上します。
+Azure Cache for Redis は、メモリ内のデータ構造ストア、分散型の非リレーショナル データベース、およびメッセージ ブローカーとして使用することもできます。 Redis エンジンの短い待機時間、高スループットのパフォーマンスを活用して、アプリケーションのパフォーマンスが向上します。
 
-Azure Cache for Redis を使用すると、Microsoft で管理され、Azure 内でホストされ、Azure 内外の任意のアプリケーションにアクセスできる、セキュリティで保護された専用の Azure Cache for Redis にアクセスできます。
+Azure Cache for Redis を使用すると、セキュリティ保護された専用の Redis Cache にアクセスできます。 Azure Cache for Redis は、Microsoft で管理されており、Azure 内でホストされ、Azure 内外の任意のアプリケーションからアクセスできます。
 
-## <a name="why-use-azure-cache-for-redis"></a>Azure Cache for Redis を使用する理由
+## <a name="using-azure-cache-for-redis"></a>Azure Cache for Redis の使用
 
 アプリケーションのアーキテクチャをサポートするため、またはアプリケーションのパフォーマンスを向上させるために、Azure Cache for Redis が使用される多数の一般的なパターンがあります。 次に、最も一般的なものをいくつか示します。
 
@@ -49,7 +49,7 @@ Azure Cache for Redis は以下のレベルでご利用いただけます。
 |---|---|
 Basic | 単一ノード キャッシュ。 このレベルでは、複数のメモリ サイズ (250 MB ～ 53 GB) をサポートします。 これは、開発/テスト、およびクリティカルではない負荷に最適なレベルです。 Basic レベルには、サービス レベル アグリーメント (SLA) はありません。 |
 | Standard | Microsoft が管理しているプライマリとセカンダリの 2 つのノード構成にレプリケートされたキャッシュ。高可用性の SLA が付きます (99.9%)。 |
-| Premium | Premium レベルは、エンタープライズ対応のレベルです。 Premium レベルのキャッシュでは、より多くの機能をサポートし、より短い待機時間でより高いスループットを実現します。 Premium レベルのキャッシュは、Basic または Standard レベルと比較して優れたパフォーマンスを発揮する、より高性能なハードウェア上にデプロイされます。 この利点によって、Premium レベルでは、Standard レベルと比較して、同じサイズのキャッシュのスループットがより高くなります。 |
+| Premium | Premium レベルは、エンタープライズ対応レベルです。 Premium レベルのキャッシュでは、より多くの機能をサポートし、より短い待機時間でより高いスループットを実現します。 Premium レベルのキャッシュは、Basic または Standard レベルと比較して優れたパフォーマンスを発揮する、より高性能なハードウェア上にデプロイされます。 この利点によって、Premium レベルでは、Standard レベルと比較して、同じサイズのキャッシュのスループットがより高くなります。 |
 
 > [!TIP]
 > Premium キャッシュのサイズ、スループット、帯域幅の詳細については、「[Azure Cache for Redis FAQ](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)」(Azure Redis Cache の FAQ) を参照してください。
@@ -67,9 +67,10 @@ Basic | 単一ノード キャッシュ。 このレベルでは、複数のメ�
 | [Redis データの保持](cache-how-to-premium-persistence.md) |✔|-|-|
 | [Redis クラスター](cache-how-to-premium-clustering.md) |✔|-|-|
 | [ファイアウォール規則によるセキュリティ](cache-configure.md#firewall) |✔|✔|✔|
+| 転送中の暗号化 |✔|✔|✔|
 | [VNet による強化されたセキュリティと分離](cache-how-to-premium-vnet.md) |✔|-|-|
 | [Import/Export](cache-how-to-import-export-data.md) |✔|-|-|
-| [更新のスケジュール](cache-administration.md#schedule-updates) |✔|-|-|
+| [スケジュールされた更新](cache-administration.md#schedule-updates) |✔|✔|✔|
 | [geo レプリケーション](cache-how-to-geo-replication.md) |✔|-|-|
 | [Reboot](cache-administration.md#reboot) |✔|✔|✔|
 

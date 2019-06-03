@@ -10,14 +10,14 @@ ms.topic: quickstart
 ms.date: 11/29/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: c13a01b392b9bbc93fff2e997cb6d168a441ad07
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: b8d7556607cdb73c3e3ae19109bcbf34b72b0915
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52679921"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595350"
 ---
-# <a name="quickstart-run-your-first-azure-batch-job-with-the-net-api"></a>クイック スタート: .NET API で最初の Azure Batch ジョブを実行する
+# <a name="quickstart-run-your-first-azure-batch-job-with-the-net-api"></a>クイック スタート:.NET API で最初の Azure Batch ジョブを実行する
 
 このクイック スタートでは、Azure Batch .NET API に基づいて構築された C# アプリケーションから Azure Batch ジョブを実行します。 このアプリでは、複数の入力データ ファイルを Azure Storage にアップロードしてから、Batch コンピューティング ノード (仮想マシン) の "*プール*" を作成します。 その後、基本的なコマンドを使用してプールの各入力ファイルを処理するための "*タスク*" を実行するサンプル "*ジョブ*" を作成します。 このクイック スタートを完了すると、Batch サービスの主要な概念を理解し、より大規模でより現実的なワークロードで Batch を試せるようになります。
 
@@ -27,7 +27,7 @@ ms.locfileid: "52679921"
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Visual Studio 2017](https://www.visualstudio.com/vs) (または Linux、macOS、Windows 用 [.NET Core 2.1](https://www.microsoft.com/net/download/dotnet-core/2.1))。 
+* [Visual Studio 2017 以降](https://www.visualstudio.com/vs)、あるいは Linux、macOS、または Windows 用の [.NET Core 2.1](https://www.microsoft.com/net/download/dotnet-core/2.1)。 
 
 * Batch アカウントおよびリンクされた Azure ストレージ アカウント。 これらのアカウントを作成するには、[Azure Portal](quick-create-portal.md) または [Azure CLI](quick-create-cli.md) を使用した Batch のクイック スタートを参照してください。 
 
@@ -66,7 +66,7 @@ private const string StorageAccountKey  = "xxxxxxxxxxxxxxxxy4/xxxxxxxxxxxxxxxxfw
 
 Batch ワークフローの動作を確認するには、Visual Studio またはコマンド ライン (`dotnet build` コマンドと `dotnet run` コマンド) でアプリケーションをビルドして実行します。 アプリケーションの実行後に、コードを確認して、アプリケーションの各部分での処理内容を学習します。 たとえば Visual Studio で次の操作を実行します。
 
-* ソリューション エクスプローラーでソリューションを右クリックし、**[ソリューションのビルド]** をクリックします。 
+* ソリューション エクスプローラーでソリューションを右クリックし、 **[ソリューションのビルド]** をクリックします。 
 
 * メッセージに従って NuGet パッケージの復元を確認します。 不足しているパッケージをダウンロードする必要がある場合は、[NuGet Package Manager](https://docs.nuget.org/consume/installing-nuget) がインストールされていることを確認します。
 
@@ -113,7 +113,7 @@ stderr:
 
 ### <a name="preliminaries"></a>準備
 
-ストレージ アカウントを操作するために、アプリでは .NET 用 Azure Storage クライアント ライブラリを使用します。 [CloudStorageAccount](/dotnet/api/microsoft.windowsazure.storage.cloudstorageaccount) を使用してアカウントへの参照を作成し、それを基にして [CloudBlobClient](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobclient) を作成します。
+ストレージ アカウントを操作するために、アプリでは .NET 用 Azure Storage クライアント ライブラリを使用します。 [CloudStorageAccount](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount) を使用してアカウントへの参照を作成し、それを基にして [CloudBlobClient](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient) を作成します。
 
 ```csharp
 CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
@@ -246,7 +246,7 @@ foreach (CloudTask task in completedtasks)
 
 アプリは自動的に、作成された入力用ストレージ コンテナーを削除し、Batch プールとジョブを削除するためのオプションを表示します。 ジョブがスケジュールされていない場合でも、ノードの実行中はプールに対して料金が発生します。 プールは不要になったら、削除してください。 プールを削除すると、ノード上のタスク出力はすべて削除されます。
 
-リソース グループ、Batch アカウント、ストレージ アカウントは、不要になったら削除します。 Azure Portal でこれを行うには、Batch アカウントのリソース グループを選択し、**[リソース グループの削除]** をクリックしてください。
+リソース グループ、Batch アカウント、ストレージ アカウントは、不要になったら削除します。 Azure Portal でこれを行うには、Batch アカウントのリソース グループを選択し、 **[リソース グループの削除]** をクリックしてください。
 
 ## <a name="next-steps"></a>次の手順
 

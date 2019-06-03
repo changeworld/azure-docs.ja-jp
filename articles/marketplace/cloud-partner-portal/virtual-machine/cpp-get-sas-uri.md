@@ -1,25 +1,18 @@
 ---
-title: Microsoft Azure ベースの VM イメージの Shared Access Signature URI を取得する | Microsoft Docs
+title: Microsoft Azure ベースの VM イメージの Shared Access Signature URI を取得する | Azure Marketplace
 description: VM イメージの Shared Access Signature (SAS) URI を取得する方法について説明します。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: pbutlerm
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 10/19/2018
-ms.author: pbutlerm
-ms.openlocfilehash: c21fa3cf819f48dcda46f2d444ed52bc2eb9ae3d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: pabutler
+ms.openlocfilehash: 4da82b2f6aaa3fc664d2e91b80722329533b0cd0
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58113522"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64938661"
 ---
 # <a name="get-shared-access-signature-uri-for-your-vm-image"></a>VM イメージの Shared Access Signature URI の取得
 
@@ -66,7 +59,7 @@ Azure CLI を使用して SAS URI を生成するには次の手順に従いま�
  
 4. この PowerShell スクリプトに対する変更を保存します。
 5. 管理特権を使用してこのスクリプトを実行し、コンテナー レベル アクセスに使用する "*SAS 接続文字列*" を生成します。  基本的な方法として、次の 2 つを使用できます。
-   - コンソールからスクリプトを実行します。  たとえば、Windows でスクリプトを右クリックし、**[管理者として実行]** を選択します。
+   - コンソールからスクリプトを実行します。  たとえば、Windows でスクリプトを右クリックし、 **[管理者として実行]** を選択します。
    - 管理特権を使用して、PowerShell スクリプト エディター ([Windows PowerShell ISE](https://docs.microsoft.com/powershell/scripting/core-powershell/ise/introducing-the-windows-powershell-ise) など) からスクリプトを実行します。 
      次の図は、このエディター内で SAS 接続文字列が生成されるようすを示しています。 
 
@@ -74,7 +67,7 @@ Azure CLI を使用して SAS URI を生成するには次の手順に従いま�
 
 6. 結果の SAS 接続文字列をコピーし、テキスト ファイルとして安全な場所に保存します。  この文字列を編集して関連する VHD の場所情報を追加し、最終的な SAS URI を作成します。 
 7. Azure portal で、新しく生成された URI に関連付けられている VHD を含んだ Blob Storage に移動します。
-8. 次に示すように、**[Blob service エンドポイント]** の URL 値をコピーします。
+8. 次に示すように、 **[Blob service エンドポイント]** の URL 値をコピーします。
 
     ![Azure portal の [Blob service エンドポイント]](./media/publishvm_033.png)
 
@@ -95,8 +88,8 @@ Microsoft Azure Storage Explorer で、次の手順を使用して SAS URI を�
 
 1. [Microsoft Azure ストレージ エクスプローラーをダウンロードしてインストールする](https://azure.microsoft.com/features/storage-explorer/)。
 2. エクスプローラーを開き、左側のメニュー バーの **[アカウントの追加]** アイコンをクリックします。  **[Azure Storage へ接続]** ダイアログ ボックスが表示されます。
-3. **[Add an Azure Account]\(Azure アカウントの追加\)** を選択し、**[サインイン]** をクリックします。  必要な手順を続行して、Azure アカウントにサインインします。
-4. 左側の **[エクスプローラー]** ウィンドウで、**[ストレージ アカウント]** に移動して、このノードを展開します。
+3. **[Add an Azure Account]\(Azure アカウントの追加\)** を選択し、 **[サインイン]** をクリックします。  必要な手順を続行して、Azure アカウントにサインインします。
+4. 左側の **[エクスプローラー]** ウィンドウで、 **[ストレージ アカウント]** に移動して、このノードを展開します。
 5. 対象の VHD を右クリックし、コンテキスト メニューから **[Get Shared Access Signature]\(Shared Access Signature の取得\)** を選択します。 
 
     ![Azure Explorer で SAS 項目を取得する](./media/publishvm_034.png)
@@ -133,7 +126,7 @@ Microsoft Azure Storage Explorer で、次の手順を使用して SAS URI を�
 - URI に実際の VHD イメージのファイル名 (拡張子 ".vhd" を含む) が含まれている。
 - URI の中間付近に `sp=rl` が指定されている。 この文字列は、`Read` アクセスと `List` アクセスが指定されていることを示します。
 - その後ろに、`sr=c` も表示されている。 この文字列は、コンテナー レベルのアクセスが指定されていることを示します。
-- この URI をコピーしてブラウザーに貼り付けて、関連する BLOB をダウンロードします   (この操作は、ダウンロードの完了前に取り消すことができます)。
+- この URI をコピーしてブラウザーに貼り付けて、関連する BLOB をダウンロードします  (この操作は、ダウンロードの完了前に取り消すことができます)。
 
 
 ## <a name="next-steps"></a>次の手順

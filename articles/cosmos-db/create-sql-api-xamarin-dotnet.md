@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB は:Xamarin を使用した todo アプリの構築
+title: Azure Cosmos DB:Xamarin を使用した todo アプリの構築
 description: Azure Cosmos DB への接続とデータの照会に使用できる Xamarin コード サンプルについて説明します
 author: codemillmatt
 ms.service: cosmos-db
@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/30/2018
 ms.author: masoucou
-ms.openlocfilehash: 1f86690b97fc7d65afed650664a76200ef490f33
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: a17461a90a19d775b8c7cac86d0bc6e9a18856bd
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58517115"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65860886"
 ---
 # <a name="quickstart-build-a-todo-app-with-xamarin-using-azure-cosmos-db-sql-api-account"></a>クイック スタート:Azure Cosmos DB SQL API アカウントを使用して Xamarin で todo アプリを構築する
 
@@ -37,7 +37,7 @@ Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモ
 
 ## <a name="prerequisites"></a>前提条件
 
-Windows 上で開発していて、まだ Visual Studio 2017 をインストールしていない場合は、**無料**の [Visual Studio 2017 Community エディション](https://www.visualstudio.com/downloads/)をダウンロードして使用できます。 Visual Studio のセットアップ中に、必ず **[Azure の開発]** と **[.NET によるモバイル開発]** ワークロードを有効にしてください。
+Windows 上で開発しており、Visual Studio 2019 がまだインストールされていない場合は、**無料の** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/) をダウンロードして使用できます。 Visual Studio のセットアップ中に、必ず **[Azure の開発]** と **[.NET によるモバイル開発]** ワークロードを有効にしてください。
 
 Mac を使用している場合は、**無料**の [Visual Studio for Mac](https://www.visualstudio.com/vs/mac/) をダウンロードできます。
 
@@ -88,11 +88,11 @@ Mac を使用している場合は、**無料**の [Visual Studio for Mac](https
 
 ここで Azure Portal に戻り、API キー情報を取得して、アプリにコピーします。
 
-1. [Azure Portal](https://portal.azure.com/) で、Azure Cosmos DB SQL API アカウントの左のナビゲーションから、**[キー]** をクリックし、**[読み取り/書き込みキー]** をクリックします。 次の手順では、画面の右側のコピー ボタンを使用して、URI と主キーを APIKeys.cs ファイルにコピーします。
+1. [Azure Portal](https://portal.azure.com/) で、Azure Cosmos DB SQL API アカウントの左のナビゲーションから、 **[キー]** をクリックし、 **[読み取り/書き込みキー]** をクリックします。 次の手順では、画面の右側のコピー ボタンを使用して、URI と主キーを APIKeys.cs ファイルにコピーします。
 
     ![Azure Portal の [キー] ブレードでアクセス キーを表示およびコピーする](./media/create-sql-api-xamarin-dotnet/keys.png)
 
-2. Visual Studio 2017 または Visual Studio for Mac で、azure-documentdb-dotnet/samples/xamarin/ToDoItems/ToDoItems.Core/Helpers フォルダーにある APIKeys.cs ファイルを開きます。
+2. Visual Studio 2019 または Visual Studio for Mac のどちらかで、azure-documentdb-dotnet/samples/xamarin/ToDoItems/ToDoItems.Core/Helpers フォルダー内の APIKeys.cs ファイルを開きます。
 
 3. ポータルから (コピー ボタンを使用して) [URI] 値をコピーし、APIKeys.cs 内の `CosmosEndpointUrl` 変数の値に設定します。
 
@@ -223,7 +223,7 @@ ToDoItems ソリューションのコードには、次の項目が含まれて�
 
     ![ToDo アプリの起動画面](./media/create-sql-api-xamarin-dotnet/ios-droid-started.png)
 
-4. iOS 上で todo 項目を "完了" と設定するには、項目を左にスライドし、**[Complete]** ボタンをタップします。 Android 上で todo 項目を "完了" と設定するには、項目を長押しし、[Complete] ボタンをタップします。
+4. iOS 上で todo 項目を "完了" と設定するには、項目を左にスライドし、 **[Complete]** ボタンをタップします。 Android 上で todo 項目を "完了" と設定するには、項目を長押しし、[Complete] ボタンをタップします。
 
     ![todo 項目を "完了" と設定する](./media/create-sql-api-xamarin-dotnet/simulator-complete.png)
 

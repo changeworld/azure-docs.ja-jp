@@ -9,11 +9,11 @@ ms.date: 03/04/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: de9bc91e438ff694c96966486908c54562e93902
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57410372"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66119235"
 ---
 パートナーが提供するサービスの詳細については、このセクションのリンクを参照してください。 お客様のブランチ デバイス パートナーが次のセクションに記載されていない場合は、ブランチ デバイス プロバイダーにお問い合わせください。 パートナーは azurevirtualwan@microsoft.com にメールを送信して Microsoft に問い合わせることができます。
 

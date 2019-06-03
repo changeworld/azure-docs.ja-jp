@@ -5,11 +5,11 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/07/2019
 ms.openlocfilehash: fe1b4699a300831294c26b103d322fb83ad87d3b
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65151093"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66116755"
 ---
 送信要求を行うために HTTP プロキシを構成する必要がある場合は、次の 2 つの引数を使用します。
 

@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 06/12/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 7e4364a06a3d20edc7aafd54a4dcd86dfd039043
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 8508dbecceb9984f53a133d9634882603549cdd1
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64573575"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65199638"
 ---
 # <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>App Service Environment で内部ロード バランサーを作成して使用する #
 
@@ -133,8 +133,8 @@ ASE を作成すると、ドメイン名には、お客様が指定したドメ�
 
 ILB ASE には、有効な SSL 証明書が必要です。 内部証明機関を使用して、外部の発行者から証明書を購入するか、または自己署名証明書を使用します。 どのようなソースから SSL 証明書を取得した場合でも、以下の証明書属性を適切に構成する必要があります。
 
-* **サブジェクト**:この属性は、*.your-root-domain-here に設定する必要があります。
-* **サブジェクトの別名**:この属性は、**.your-root-domain-here* と **.scm.your-root-domain-here* を両方とも含むように設定する必要があります。 各アプリに関連付けられた SCM/Kudu サイトへの SSL 接続が、*your-app-name.scm.your-root-domain-here* 形式のアドレスを使用します。
+* **Subject**:この属性は、*\.your-root-domain-here に設定されている必要があります。
+* **Subject Alternative Name**:この属性には、*\.your-root-domain-here* と *\.scm.your-root-domain-here* の両方が含まれている必要があります。 各アプリに関連付けられた SCM/Kudu サイトへの SSL 接続が、*your-app-name.scm.your-root-domain-here* 形式のアドレスを使用します。
 
 SSL 証明書を .pfx ファイルとして変換、保存します。 .pfx ファイルは、すべての中間証明書とルート証明書を含んでいる必要があります。 パスワードで保護してください。
 
@@ -203,7 +203,7 @@ ILB ASE で Azure Functions を使用するときに、"現在、関数を取得
 
 ## <a name="publish-with-an-ilb-ase"></a>ILB ASE で発行する ##
 
-作成されるすべてのアプリにはエンドポイントが 2 つあります。 ILB ASE には、*&lt;アプリ名>.&lt;ILB ASE ドメイン>* と*&lt;アプリ名>.scm.&lt;ILB ASE ドメイン>* があります。 
+作成されるすべてのアプリにはエンドポイントが 2 つあります。 ILB ASE には、*&lt;アプリ名>.&lt;ILB ASE ドメイン>* と *&lt;アプリ名>.scm.&lt;ILB ASE ドメイン>* があります。 
 
 SCM サイト名をクリックすると、Azure Portal 内の Kudu コンソールに移動します。これは、**高度なポータル**と呼ばれます。 Kudu コンソールでは、環境変数の表示、ディスクの確認、コンソールの使用などができます。 詳しくは、[Azure App Service の Kudu コンソール][Kudu]に関するビデオをご覧ください。 
 

@@ -8,81 +8,82 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 56b846ae-a1e7-45ae-a79d-992a87f075ba
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/16/2018
+ms.date: 04/24/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b09e14bfee700750192c5a007cbb3140fd49d137
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f31361dc3d7e24092677f1a78b2c405ae84578ed
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57885489"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65230063"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-beta"></a>チュートリアル:Azure Active Directory と Zscaler Beta の統合
 
 このチュートリアルでは、Zscaler Beta と Azure Active Directory (Azure AD) を統合する方法について説明します。
-Zscaler Beta と Azure AD の統合には、次の利点があります。
+Zscaler Beta を Azure AD に統合すると、次のことを実行できます。
 
-* Zscaler Beta にアクセスするユーザーを Azure AD で管理できます。
-* ユーザーが自分の Azure AD アカウントを使用して Zscaler Beta に自動的にサインイン (シングル サインオン) できるようにすることができます。
-* 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
+* Zscaler Beta にアクセスするユーザーを Azure AD で管理する。
+* ユーザーが Azure AD アカウントを使用して Zscaler Beta に自動的にサインインできるようにする。 このアクセス制御はシングル サインオン (SSO) と呼ばれます。
+* Azure portal を使用して 1 つの中央サイトでアカウントを管理する。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+サービスとしてのソフトウェア (SaaS) アプリと Azure AD との統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」をご覧ください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
 
 Zscaler Beta と Azure AD の統合を構成するには、次の項目が必要です。
 
-* Azure AD サブスクリプション。 Azure AD の環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます
-* Zscaler Beta でのシングル サインオンが有効なサブスクリプション
+* Azure AD サブスクリプション。 Azure AD の環境がない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
+* シングル サインオンを使用する Zscaler Beta サブスクリプション。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Zscaler Beta では、**SP** によって開始される SSO がサポートされます
-* Zscaler Beta では、**Just In Time** ユーザー プロビジョニングがサポートされます
+* Zscaler Beta では、SP によって開始される SSO がサポートされます。
+* Zscaler Beta では、Just In Time ユーザー プロビジョニングがサポートされます
 
-## <a name="adding-zscaler-beta-from-the-gallery"></a>ギャラリーからの Zscaler Beta の追加
+## <a name="add-zscaler-beta-from-the-azure-marketplace"></a>Azure Marketplace から Zscaler Beta を追加する
 
-Azure AD への Zscaler Beta の統合を構成するには、管理対象の SaaS アプリ一覧に Zscaler Beta をギャラリーから追加する必要があります。
+Azure AD への Zscaler Beta の統合を構成するには、Zscaler Beta を Azure Marketplace からマネージド SaaS アプリの一覧に追加する必要があります。
 
-**ギャラリーから Zscaler Beta を追加するには、次の手順に従います。**
+Azure Marketplace から Zscaler Beta を追加するには、次の手順に従います。
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+1. [Azure portal](https://portal.azure.com) の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** を選択します。
 
-    ![Azure Active Directory のボタン](common/select-azuread.png)
+    ![[Azure Active Directory] ボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
+2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+3. 新しいアプリケーションを追加するには、ダイアログ ボックスの上部の **[新しいアプリケーション]** を選択します。
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Zscaler Beta**」と入力し、結果パネルで **[Zscaler Beta]** を選択してから **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに、「**Zscaler Beta**」と入力します。 結果のパネルから **[Zscaler Beta]** を選択して、**[追加]** を選択します。
 
      ![結果一覧の Zscaler Beta](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Zscaler Beta で Azure AD のシングル サインオンを構成し、テストします。
-シングル サインオンを機能させるには、Azure AD ユーザーと Zscaler Beta 内の関連ユーザー間にリンク関係が確立されている必要があります。
+このセクションでは、Britta Simon というテスト ユーザーに基づいて Zscaler Beta で Azure AD のシングル サインオンを構成してテストします。
+シングル サインオンを機能させるには、Azure AD ユーザーと Zscaler Beta の関連ユーザーとの間にリンク関係を確立します。
 
-Zscaler Beta で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
+Zscaler Beta で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了してください。
 
-1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Zscaler Beta シングル サインオンの構成](#configure-zscaler-beta-single-sign-on)** - アプリケーション側でシングル サインオン設定を構成します。
-3. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[Zscaler Beta のテスト ユーザーの作成](#create-zscaler-beta-test-user)** - Zscaler Beta で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-6. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
+- [Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on) - ユーザーがこの機能を使用できるようにします。
+- [Zscaler Beta シングル サインオンの構成](#configure-zscaler-beta-single-sign-on) - アプリケーション側でシングル サインオン設定を構成します。
+- [Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user) - Britta Simon で Azure AD のシングル サインオンをテストします。
+- [Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user) - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+- [Zscaler Beta テスト ユーザーの作成](#create-a-zscaler-beta-test-user) - Zscaler Beta で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+- [シングル サインオンのテスト](#test-single-sign-on) - 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -94,11 +95,11 @@ Zscaler Beta で Azure AD シングル サインオンを構成するには、�
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
-2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
+2. **[シングル サインオン方式の選択]** ダイアログ ボックスで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
     ![シングル サインオン選択モード](common/select-saml-option.png)
 
-3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** を選択して **[基本的な SAML 構成]** ダイアログ ボックスを開きます。
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -106,157 +107,162 @@ Zscaler Beta で Azure AD シングル サインオンを構成するには、�
 
     ![[Zscaler Beta のドメインと URL] のシングル サインオン情報](common/sp-intiated.png)
 
-    [サインオン URL] ボックスに、ユーザーが Zscaler Beta アプリケーションへのサインオンに使用する URL を入力します。
+    - **[サインオン URL]** ボックスに、ユーザーが Zscaler Beta アプリケーションへのサインインに使用する URL を入力します。
 
     > [!NOTE]
-    > この値は実際のものではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[Zscaler Beta クライアント サポート チーム](https://www.zscaler.com/company/contact)に問い合わせてください。
+    > これは実際の値ではありません。 実際のサインオン URL 値でこの値を更新します。 この値を取得するには、[Zscaler Beta クライアント サポート チーム](https://www.zscaler.com/company/contact)に問い合わせてください。
 
-5. Zscaler Beta アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成します。 これらの属性の値は、アプリケーション統合ページの **[ユーザー属性]** セクションで管理できます。 **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** ボタンをクリックして **[ユーザー属性]** ダイアログを開きます。
+5. Zscaler Beta アプリケーションでは、特定の形式の SAML アサーションを予期しています。 カスタム属性マッピングを SAML トークン属性構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。  **[編集]** を選択して **[ユーザー属性]**  ダイアログ ボックスを開きます。
 
-    ![image](common/edit-attribute.png)
+    ![[ユーザー属性] ダイアログ ボックス](common/edit-attribute.png)
 
-6. **[ユーザー属性]** ダイアログの **[ユーザーの要求]** セクションで、**編集アイコン**を使用して要求を編集するか、**[新しい要求の追加]** を使用して要求を追加することで、上の図のように SAML トークン属性を構成し、次の手順を実行します。
+6. Zscaler Beta アプリケーションでは、いくつかの追加の属性が SAML 応答で返されることを予期しています。 **[ユーザー属性]** ダイアログの **[ユーザー要求]** セクションで、次の手順を実行して、以下の表に示すように SAML トークン属性を追加します。
     
     | Name | ソース属性 | 
     | ---------------| --------------- |
     | memberOf  | user.assignedroles |
 
-    a. **[新しい要求の追加]** をクリックして **[ユーザー要求の管理]** ダイアログを開きます。
+    a. **[新しい要求の追加]** を選択して **[ユーザー要求の管理]** ダイアログ ボックスを開きます。
 
-    ![image](common/new-save-attribute.png)
+    ![ユーザー要求のダイアログ ボックス](common/new-save-attribute.png)
 
-    ![image](common/new-attribute-details.png)
+    ![[ユーザー要求の管理] ダイアログ ボックス](common/new-attribute-details.png)
 
-    b. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
+    b. **[名前]** ボックスに、その行に表示される属性名を入力します。
 
-    c. **[名前空間]** は空白のままにします。
+    c. **[名前空間]** ボックスは空白のままにします。
 
-    d. [ソース] として **[属性]** を選択します。
+    d. **[ソース]** で **[属性]** を選択します。
 
     e. **[ソース属性]** の一覧から、その行に表示される属性値を入力します。
 
-    f. **[OK]** をクリックします。
+    f. **[OK]** を選択します。
 
-    g. **[Save]** をクリックします。
+    g. **[保存]** を選択します。
 
     > [!NOTE]
-    > Azure AD で役割を構成する方法については、[ここ](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-app-role-management)をクリックしてください
+    > Azure AD でロールを構成する方法については、[ロール要求の構成](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-app-role-management)に関する記事を参照してください。
 
-7. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
+7. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** を選択して**証明書 (Base64)** をダウンロードします。 それを自分のコンピューターに保存します。
 
-    ![証明書のダウンロードのリンク](common/certificatebase64.png)
+    ![証明書のダウンロード リンク](common/certificatebase64.png)
 
-8. **[Zscaler Beta のセットアップ]** セクションで、要件に従って適切な URL をコピーします。
+8. **[Set up Zscaler Beta]\(Zscaler Beta の設定\)** セクションで、要件に従って必要な URL をコピーします。
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
 
-    a. ログイン URL
-
-    b. Azure AD 識別子
-
-    c. ログアウト URL
+    - ログイン URL
+    - Azure AD 識別子
+    - ログアウト URL
 
 ### <a name="configure-zscaler-beta-single-sign-on"></a>Zscaler Beta シングル サインオンの構成
 
-1. 別の Web ブラウザー ウィンドウで、Zscaler Beta 企業サイトに管理者としてログインします。
+1. Zscaler Beta 内での構成を自動化するには、**[拡張機能のインストール]** を選択して **[アプリによるセキュリティで保護されたサインイン拡張機能]** をインストールします。
 
-2. **[Administration]\(管理\) > [Authentication]\(認証\) > [Authentication Settings]\(認証の設定\)** に移動し、次の手順を実行します。
+    ![マイ アプリの拡張機能](common/install-myappssecure-extension.png)
+
+2. ブラウザーに拡張機能を追加した後は、**[Zscaler Beta の設定]** を選択すると Zscaler Beta アプリケーションが表示されます。 そこから、管理者資格情報を入力して Zscaler Beta にサインインします。 ブラウザー拡張機能によりアプリケーションが自動的に構成され、手順 3 から 6 が自動化されます。
+
+    ![セットアップの構成](common/setup-sso.png)
+
+3. Zscaler Beta を手動で設定するには、新しい Web ブラウザー ウィンドウを開きます。 Zscaler Beta の会社サイトに管理者としてサインインし、次の手順を実行します。
+
+4. **[Administration]\(管理\)** > **[Authentication]\(認証\)** > **[Authentication Settings]\(認証設定\)** の順に選択し、次の手順を実行します。
    
     ![Administration](./media/zscaler-beta-tutorial/ic800206.png "Administration")
 
-    a. [Authentication Type]\(認証の種類\)で **[SAML]** を選択します。
+    a. **[Authentication Type]\(認証の種類\)** で **[SAML]** を選択します。
 
-    b. **[Configure SAML]** をクリックします。
+    b. **[Configure SAML]\(SAML の構成\)** を選択します。
 
-3. **[Edit SAML]\(SAML の編集)** ウィンドウで次の手順を実行して、[保存] をクリックします。  
+5. **[Edit SAML]\(SAML の編集\)** ウィンドウで、次の手順に従います。 
             
     ![ユーザーと認証の管理](./media/zscaler-beta-tutorial/ic800208.png "Manage Users & Authentication")
     
-    a. **[SAML Portal URL]\(SAML ポータル URL\)** テキスト ボックスに、Azure portal からコピーした**ログイン URL** を貼り付けます。
+    a. **[SAML Portal URL]\(SAML ポータル URL\)** ボックスに、Azure portal からコピーした**ログイン URL** を貼り付けます。
 
-    b. **[Login Name Attribute]\(ログイン名属性\)** テキスト ボックスに **NameID** の値を入力します。
+    b. **[Login Name Attribute]\(ログイン名属性\)** ボックスに **NameID** の値を入力します。
 
-    c. **アップロード** をクリックして、Azure portal からダウンロードした Azure SAML 署名証明書を **Public SSL Certificate\(パブリック SSL 証明書\)** にアップロードします。
+    c. **[パブリック SSL 証明書]** ボックスで、**[アップロード]** を選択して、Azure portal からダウンロードした Azure SAML 署名証明書をアップロードします。
 
-    d. **[SAML 自動プロビジョニングを有効にする]** を選択します。
+    d. **[SAML 自動プロビジョニングを有効にする]** を切り替えます。
 
-    e. displayName 属性に SAML 自動プロビジョニングを有効にするには、**[User Display Name Attribute]\(ユーザー表示名属性\)** テキスト ボックスに **displayName** の値を入力します。
+    e. displayName 属性で SAML 自動プロビジョニングを有効にするには、**[User Display Name Attribute]\(ユーザー表示名属性\)** ボックスに **displayName** の値を入力します。
 
-    f. memberOf 属性に SAML 自動プロビジョニングを有効にするには、**[Group Name Attribute]\(グループ名属性\)** テキスト ボックスに **memberOf** の値を入力します。
+    f. memberOf 属性で SAML 自動プロビジョニングを有効にするには、**[Group Name Attribute]\(グループ名属性\)** ボックスに **memberOf** の値を入力します。
 
-    g. department 属性に SAML 自動プロビジョニングを有効にするには、**[Department Name Attribute]\(部署名属性\)** テキスト ボックスに **department** の値を入力します。
+    g. department 属性で SAML 自動プロビジョニングを有効にするには、**[Department Name Attribute]\(部署名属性\)** ボックスに **department** の値を入力します。
 
-    h. **[Save]** をクリックします。
+    h. **[保存]** を選択します。
 
-4. **[ユーザー認証の構成]** ダイアログ ページで、次の手順に従います。
+6. **[ユーザー認証の構成]** ダイアログ ページで、次の手順に従います。
 
-    ![管理](./media/zscaler-beta-tutorial/ic800207.png)
+    ![[アクティブ化] メニューと [アクティブ化] ボタン](./media/zscaler-beta-tutorial/ic800207.png)
 
     a. 左下の **[Activation]\(アクティブ化\)** メニューにポインターを置きます。
 
-    b. **[アクティブ化]** をクリックします。
+    b. **[アクティブ化]** を選択します。
 
-## <a name="configuring-proxy-settings"></a>プロキシ設定の構成
-### <a name="to-configure-the-proxy-settings-in-internet-explorer"></a>Internet Explorer でプロキシ設定を構成するには
+## <a name="configure-proxy-settings"></a>プロキシ設定の構成
+Internet Explorer でプロキシ設定を構成するには、次の手順に従ってください。
 
 1. **Internet Explorer**を開始します。
 
-2. **[ツール]** メニューの **[インターネット オプション]** を選択し、**[インターネット オプション]** ダイアログを開きます。   
+2. **[ツール]** メニューの **[インターネット オプション]** を選択し、**[インターネット オプション]** ダイアログ ボックスを開きます。 
     
-     ![インターネット オプション](./media/zscaler-beta-tutorial/ic769492.png "Internet Options")
+     ![[インターネット オプション] ダイアログ ボックス](./media/zscaler-beta-tutorial/ic769492.png "[インターネット オプション]")
 
-3. **[接続]** タブをクリックします。   
+3. **[接続]** タブを選択します。 
   
-     ![接続](./media/zscaler-beta-tutorial/ic769493.png "Connections")
+     ![[接続] タブ](./media/zscaler-beta-tutorial/ic769493.png "[接続]")
 
-4. **[LAN の設定]** をクリックして **[LAN の設定]** ダイアログを開きます。
+4. **[LAN の設定]** を選択して **[ローカル エリア ネットワーク (LAN) の設定]** ダイアログ ボックスを開きます。
 
-5. [プロキシ サーバー] セクションで、次の手順を実行します。   
+5. **[プロキシ サーバー]** セクションで、次の手順に従います。 
    
-    ![プロキシ サーバー](./media/zscaler-beta-tutorial/ic769494.png "Proxy server")
+    ![[プロキシ サーバー] セクション](./media/zscaler-beta-tutorial/ic769494.png "[プロキシ サーバー]")
 
-    a. **[LAN にプロキシ サーバーを使用する]** をオンにします。
+    a. **[LAN にプロキシ サーバーを使用する]** チェック ボックスを選択します。
 
-    b. [アドレス] ボックスに「**gateway.Zscaler Beta.net**」と入力します。
+    b. **[アドレス]** ボックスに「**gateway.Zscaler Beta.net**」と入力します。
 
-    c. [ポート] ボックスに「 **80**」と入力します。
+    c. **[ポート]** ボックスに「**80**」と入力します。
 
-    d. **[ローカル アドレスにはプロキシ サーバーを使用しない]** を選択します。
+    d. **[ローカル アドレスにはプロキシ サーバーを使用しない]** チェック ボックスを選択します。
 
-    e. **[OK]** をクリックして **[ローカル エリア ネットワーク (LAN) の設定]** ダイアログを閉じます。
+    e. **[OK]** を選択して **[ローカル エリア ネットワーク (LAN) の設定]** ダイアログ ボックスを閉じます。
 
-6. **[OK]** をクリックして **[インターネット オプション]** ダイアログを閉じます。
+6. **[OK]** を選択して **[インターネット オプション]** ダイアログ ボックスを閉じます。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
-このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
+Azure Portal で Britta Simon というテスト ユーザーを作成します。
 
-1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
+1. Azure portal の左側のウィンドウで、**[Azure Active Directory]** > **[ユーザー]** > **[すべてのユーザー]** の順に選択します。
 
-    ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
+    ![[ユーザー] と [すべてのユーザー] のリンク](common/users.png)
 
 2. 画面の上部にある **[新しいユーザー]** を選択します。
 
     ![[新しいユーザー] ボタン](common/new-user.png)
 
-3. [ユーザーのプロパティ] で、次の手順を実行します。
+3. **[ユーザー]** ダイアログ ボックスで、次の手順に従います。
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します  
-    たとえば、BrittaSimon@contoso.com のように指定します。
+    b. **[ユーザー名]** ボックスに「`brittasimon@yourcompanydomain.extension`」と入力します。 例: BrittaSimon@contoso.com。
 
-    c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
+    c. **[パスワードを表示]** チェック ボックスを選択します。 **[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d. **作成** を選択します。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
-このセクションでは、Britta Simon に Zscaler Beta へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
+Zscaler Beta へのアクセスを許可することで、Britta Simon が Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[Zscaler Beta]** を選択します。
+1. Azure portal で、**[エンタープライズ アプリケーション]** > **[すべてのアプリケーション]** > **[Zscaler Beta]** の順に選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -268,40 +274,38 @@ Zscaler Beta で Azure AD シングル サインオンを構成するには、�
 
     ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** を選択します。 **[割り当ての追加]** ダイアログ ボックスで **[ユーザーとグループ]** を選択します。
 
-    ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
+    ![[ユーザーの追加] ボタン](common/add-assign-user.png)
 
-5. **[ユーザーとグループ]** ダイアログの一覧から **[Britta Simon]** などのユーザーを選択し、画面の下部にある **[選択]** ボタンをクリックします。
+5. **[ユーザーとグループ]** ダイアログ ボックスで、一覧から **[Britta Simon]** のようなユーザーを選択します。 次に、画面の下部にある **[選択]** を選択します。
 
-    ![image](./media/zscaler-beta-tutorial/tutorial_zscalerbeta_users.png)
+    ![[ユーザーとグループ] ダイアログ ボックス](./media/zscaler-beta-tutorial/tutorial_zscalerbeta_users.png)
 
-6. **[ロールの選択]** ダイアログで、一覧から適切なユーザー ロールを選択し、画面の下部にある **[選択]** ボタンをクリックします。
+6. **ロールの選択** ダイアログ ボックスで、一覧から適切なユーザー ロールを選択します。 次に、画面の下部にある **[選択]** を選択します。
 
-    ![image](./media/zscaler-beta-tutorial/tutorial_zscalerbeta_roles.png)
+    ![[ロールの選択] ダイアログ ボックス](./media/zscaler-beta-tutorial/tutorial_zscalerbeta_roles.png)
 
-7. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンを選択します。
+7. **[割り当ての追加]** ダイアログ ボックスで **[割り当て]** を選びます。
 
-    ![image](./media/zscaler-beta-tutorial/tutorial_zscalerbeta_assign.png)
+    ![[割り当ての追加] ダイアログ ボックス](./media/zscaler-beta-tutorial/tutorial_zscalerbeta_assign.png)
 
-### <a name="create-zscaler-beta-test-user"></a>Zscaler Beta テスト ユーザーの作成
+### <a name="create-a-zscaler-beta-test-user"></a>Zscaler Beta テスト ユーザーの作成
 
-このセクションでは、Britta Simon というユーザーを Zscaler Beta に作成します。 Zscaler Beta では、**Just-In-Time ユーザー プロビジョニング**がサポートされています。この設定は既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 Zscaler Beta にユーザーがまだ存在していない場合は、認証後に新規に作成されます。
+このセクションでは、Britta Simon というユーザーを Zscaler Beta に作成します。 Zscaler Beta では、**Just-In-Time ユーザー プロビジョニング**がサポートされています。この設定は既定で有効になっています。 このセクションでは実行することはありません。 Zscaler Beta にユーザーがまだ存在していない場合は、認証後に新規に作成されます。
 
 >[!Note]
->ユーザーを手動で作成する必要がある場合は、 [Zscaler Beta サポート チーム](https://www.zscaler.com/company/contact)にお問い合わせください。
+>ユーザーを手動で作成するには、[Zscaler Beta サポート チーム](https://www.zscaler.com/company/contact)にお問い合わせください。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 
-このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
+アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [Zscaler Beta] タイルをクリックすると、SSO を設定した Zscaler Beta に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [Zscaler Beta] タイルを選択すると、SSO を設定した Zscaler Beta に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
-
 - [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
-
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

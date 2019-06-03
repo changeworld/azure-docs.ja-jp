@@ -5,26 +5,23 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 02/01/2019
+ms.date: 04/23/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 660bbf50e1a8ae73bd7bbe1f7c42691ed62d276a
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 40c8cb41ad3bcd46e9973a5f96134ff1bfd02fd2
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57552995"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66150802"
 ---
-VNet がまだない場合は、PowerShell を使用して簡単に作成できます。 仮想ネットワークは、Azure portal を使用して作成することもできます。
+VNet を簡単に作成するために、この記事の [使ってみる] をクリックして PowerShell コンソールを開くことができます。 値を調整し、コマンドをコピーしてコンソール ウィンドウに貼り付けます。 Az モジュールと AzureRM の互換性の詳細については、「[Introducing the new Azure PowerShell Az module (新しい Azure PowerShell Az モジュールの概要)](/powershell/azure/new-azureps-module-az)」を参照してください。 Az モジュールのインストール手順については、[Azure PowerShell のインストール](/powershell/azure/install-az-ps)を参照してください。
 
-* 作成する VNet のアドレス空間が接続する他の VNet のアドレス範囲やオンプレミス ネットワークのアドレス空間と重複しないことを確認してください。 
-* VNet が既にある場合は、VNet が必要な条件を満たしていて、仮想ネットワーク ゲートウェイがないことを確認します。
-
-この記事の [使ってみる] をクリックして PowerShell コンソールを開くと、VNet を簡単に作成することができます。 値を調整し、コマンドをコピーしてコンソール ウィンドウに貼り付けます。
+作成する VNet のアドレス空間が接続する他の VNet のアドレス範囲やオンプレミス ネットワークのアドレス空間と重複しないことを確認してください。
 
 ### <a name="create-a-resource-group"></a>リソース グループの作成
 
-PowerShell コマンドを調整した後、リソース グループを作成します。
+使用するリソース グループがまだ存在しない場合は、新たに作成します。 使用するリソース グループ名を反映するように PowerShell コマンドを調整し、次のコマンドレットを実行します。
 
 ```azurepowershell-interactive
 New-AzResourceGroup -ResourceGroupName WANTestRG -Location WestUS

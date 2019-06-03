@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: robreed
-ms.openlocfilehash: 2130dcc27f81eb1e33fa56a7a4f963d81ac0de5b
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 6ec85e840f8e61c46e86b0fa8fb947fb763a4265
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64926111"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65518857"
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Azure Desired State Configuration 拡張機能ハンドラーの概要
 
@@ -136,7 +136,6 @@ configuration IISInstall
 
 ```powershell
 $resourceGroup = 'dscVmDemo'
-$location = 'westus'
 $vmName = 'myVM'
 $storageName = 'demostorage'
 #Publish the configuration script to user storage

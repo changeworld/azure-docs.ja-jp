@@ -2,17 +2,17 @@
 title: Web ダッシュボードで Azure Kubernetes Service クラスターを管理する
 description: 組み込みの Kubernetes Web UI ダッシュボードを使用して、Azure Kubernetes Service (AKS) クラスターを管理する方法について説明します
 services: container-service
-author: iainfoulds
+author: tylermsft
 ms.service: container-service
 ms.topic: article
 ms.date: 10/08/2018
-ms.author: iainfou
-ms.openlocfilehash: e831979e0a9f9c8b4d812f682403ecf466abbd13
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: twhitney
+ms.openlocfilehash: 80c0bd630ba2263696b72b003e27c53f1e457704
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57993883"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66304540"
 ---
 # <a name="access-the-kubernetes-web-dashboard-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で Kubernetes Web ダッシュボードにアクセスする
 
@@ -62,15 +62,15 @@ Kubernetes ダッシュボードによって管理タスクの複雑さを軽減
 アプリケーションを作成するには、次の手順を実行します。
 
 1. 右上のウィンドウの **[作成]** ボタンを選択します。
-1. グラフィカル ウィザードを使用する場合は、**[Create an app]** (アプリの作成) を選択します。
+1. グラフィカル ウィザードを使用する場合は、 **[Create an app]** (アプリの作成) を選択します。
 1. デプロイの名前 (*nginx* など) を指定します
 1. 使用するコンテナー イメージの名前 (*nginx:1.15.5* など) を入力します。
-1. Web トラフィック用にポート 80 を公開するため、Kubernetes サービスを作成します。 **[サービス]** で、**[外部]** を選択し、ポートとターゲット ポートの両方に「**80**」を入力します。
-1. 準備ができたら、**[デプロイ]** を選択して、アプリケーションを作成します。
+1. Web トラフィック用にポート 80 を公開するため、Kubernetes サービスを作成します。 **[サービス]** で、 **[外部]** を選択し、ポートとターゲット ポートの両方に「**80**」を入力します。
+1. 準備ができたら、 **[デプロイ]** を選択して、アプリケーションを作成します。
 
 ![Kubernetes Web ダッシュボードでアプリケーションをデプロイする](./media/kubernetes-dashboard/create-app.png)
 
-パブリック外部 IP アドレスが Kubernetes サービスに割り当てられるまで 1、2 秒かかります。 左側の **[Discovery and Load Balancing]** (検出と負荷分散) の下の **[サービス]** を選択します。 次の例に示すように、*[外部エンドポイント]* を含むアプリケーションのサービスが一覧表示されます。
+パブリック外部 IP アドレスが Kubernetes サービスに割り当てられるまで 1、2 秒かかります。 左側の **[Discovery and Load Balancing]** (検出と負荷分散) の下の **[サービス]** を選択します。 次の例に示すように、 *[外部エンドポイント]* を含むアプリケーションのサービスが一覧表示されます。
 
 ![サービスとエンドポイントの一覧の表示](./media/kubernetes-dashboard/view-services.png)
 
@@ -95,11 +95,11 @@ Kubernetes ダッシュボードでは、基本的な監視メトリックおよ
 1. 左側のメニューで **[デプロイメント]** を選択し、*nginx* デプロイメントを選択します。
 1. 右上のナビゲーション バーにある **[編集]** を選択します。
 1. 20 行あたりにある `spec.replica` 値を見つけます。 アプリケーションのレプリカの数を増やすには、この値を *1* から *3* に変更します。
-1. 準備ができたら、**[更新]** を選択します。
+1. 準備ができたら、 **[更新]** を選択します。
 
 ![デプロイメントを編集してレプリカの数を更新する](./media/kubernetes-dashboard/edit-deployment.png)
 
-レプリカ セット内に新しいポッドが作成されるまで数分かかります。 左側のメニューで、**[レプリカ セット]** を選択し、*nginx* レプリカ セットを選択します。 ポッドの一覧には、次の出力例に示すように、更新されたレプリカ数が反映されます。
+レプリカ セット内に新しいポッドが作成されるまで数分かかります。 左側のメニューで、 **[レプリカ セット]** を選択し、*nginx* レプリカ セットを選択します。 ポッドの一覧には、次の出力例に示すように、更新されたレプリカ数が反映されます。
 
 ![レプリカ セットに関する情報の表示](./media/kubernetes-dashboard/view-replica-set.png)
 

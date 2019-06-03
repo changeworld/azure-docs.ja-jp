@@ -2,21 +2,21 @@
 title: データ読み込みのベスト プラクティス - Azure SQL Data Warehouse | Microsoft Docs
 description: Azure SQL Data Warehouse へのデータの読み込みに関する推奨事項とパフォーマンスの最適化。
 services: sql-data-warehouse
-author: ckarst
+author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: implement
+ms.subservice: load data
 ms.date: 04/17/2018
-ms.author: cakarst
-ms.reviewer: jrasnick
+ms.author: kevin
+ms.reviewer: igorstan
 ms.custom: seoapril2019
-ms.openlocfilehash: a8cb3714d11994b36991e56df7fc0f97d08c89ff
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: f1bfd6a9f7b5d6b7622b3fc79848b986172ff746
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59791373"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66240840"
 ---
 # <a name="best-practices-for-loading-data-into-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse へのデータ読み込みのベスト プラクティス
 

@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: cephalin
-ms.openlocfilehash: 3074048dd4426a10e706e37e6d375ea4995fcbbb
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 9422d543ad83f29d60fd7e1de51a79c3416e5b14
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64919785"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956165"
 ---
 # <a name="configure-a-linux-nodejs-app-for-azure-app-service"></a>Azure App Service 向けの Linux Node.js アプリを構成する
 
@@ -137,7 +137,7 @@ Azure エクスプローラーで、デバッグするアプリを見つけ、�
 
 ## <a name="access-environment-variables"></a>環境変数へのアクセス
 
-App Service では、アプリ コードの外部で[アプリ設定を指定](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#app-settings)できます。 その後、標準の Node.js パターンを使用して、それらにアクセスできます。 たとえば、`NODE_ENV` というアプリ設定にアクセスするには、次のコードを使用します。
+App Service では、アプリ コードの外部で[アプリ設定を指定](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)できます。 その後、標準の Node.js パターンを使用して、それらにアクセスできます。 たとえば、`NODE_ENV` というアプリ設定にアクセスするには、次のコードを使用します。
 
 ```javascript
 process.env.NODE_ENV
@@ -253,7 +253,7 @@ if (req.secure) {
     - *package.json* に応じて、実稼働モードに別々のパッケージ (`dependencies` と `devDependencies`) がインストールされる場合があります。
     - 特定の Web フレームワークでは、実稼働モードで静的ファイルを別にデプロイすることがあります。
     - 特定の Web フレームワークでは、実稼働モードで実行しているときにカスタム スタートアップ スクリプトを使用することがあります。
-- 開発モードの App Service でアプリを実行します。 たとえば、[MEAN.js](https://meanjs.org/) で、[`NODE_ENV` アプリ設定を指定する](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)ことによって、実行時に開発モードにアプリを設定できます。
+- 開発モードの App Service でアプリを実行します。 たとえば、[MEAN.js](https://meanjs.org/) で、[`NODE_ENV` アプリ設定を指定する](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)ことによって、実行時に開発モードにアプリを設定できます。
 
 ## <a name="next-steps"></a>次の手順
 

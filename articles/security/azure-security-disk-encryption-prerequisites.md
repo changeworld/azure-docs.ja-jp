@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1da35b55a458ad73689f51c49e73855fd33ee45f
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 6874258c31d4dd7d2a0aa0042624ee57616c0a89
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59496252"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66234282"
 ---
 # <a name="azure-disk-encryption-prerequisites"></a>Azure Disk Encryption の前提条件
 
@@ -187,8 +187,8 @@ Azure PowerShell で [New-AzKeyVault](/powershell/module/az.keyvault/New-azKeyVa
 
 [Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create)を使用してキー コンテナーを作成できます。
 
-1. Azure クイックスタート テンプレートで、**[Azure に配置する]** をクリックします。
-2. サブスクリプション、リソース グループ、リソース グループの場所、キー コンテナー名、オブジェクト ID、法律条項および契約を選択し、**[購入]** をクリックします。 
+1. Azure クイックスタート テンプレートで、 **[Azure に配置する]** をクリックします。
+2. サブスクリプション、リソース グループ、リソース グループの場所、キー コンテナー名、オブジェクト ID、法律条項および契約を選択し、 **[購入]** をクリックします。 
 
 
 ## <a name="bkmk_KVper"></a>キー コンテナーに高度なアクセス ポリシーを設定する
@@ -238,9 +238,9 @@ Azure プラットフォームには、Key Vault 内の暗号化キーまたは�
 
 ### <a name="bkmk_KVperrm"></a> Azure portal を使用してキー コンテナーに高度なアクセス ポリシーを設定する
 
-1. キー コンテナーを選択し、**[アクセス ポリシー]** に移動し、**[クリックして高度なアクセス ポリシーを表示する]** を選択します。
+1. キー コンテナーを選択し、 **[アクセス ポリシー]** に移動し、 **[クリックして高度なアクセス ポリシーを表示する]** を選択します。
 2. **[ボリューム暗号化に対して Azure Disk Encryption へのアクセスを有効にする]** というボックスをオンにします。
-3. 必要に応じて、**[展開に対して Azure Virtual Machines へのアクセスを有効にする]** と **[テンプレートの展開に対して Azure Resource Manager へのアクセスを有効にする]** の一方または両方をオンにします。 
+3. 必要に応じて、 **[展開に対して Azure Virtual Machines へのアクセスを有効にする]** と **[テンプレートの展開に対して Azure Resource Manager へのアクセスを有効にする]** の一方または両方をオンにします。 
 4. **[Save]** をクリックします。
 
 ![Azure Key Vault の高度なアクセス ポリシー](./media/azure-security-disk-encryption/keyvault-portal-fig4.png)
@@ -287,7 +287,7 @@ PowerShell スクリプトを使用する前に、Azure Disk Encryption の前�
      # Fill in 'MyKeyEncryptionKey' with your value.
      
      $keyEncryptionKeyName = 'MyKeyEncryptionKey';
-     Add-AzKeyVaultKey -VaultName $KeyVaultName -Name $keyEncryptionKeyName -Destination 'Software';
+     Add-AzKeyVaultKey -VaultName $KeyVaultName -Name $keyEncryptionKeyName -Destination 'HSM';
      $keyEncryptionKeyUrl = (Get-AzKeyVaultKey -VaultName $KeyVaultName -Name $keyEncryptionKeyName).Key.kid;
      
  #Step 4: Encrypt the disks of an existing IaaS VM

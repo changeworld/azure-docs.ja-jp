@@ -7,12 +7,12 @@ ms.date: 03/06/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 38cf6decb8e61768faa9680058f6366e1550ba40
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 479f77791a0b035f2d1de6085dfb12f5196288ee
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59793274"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65979325"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>Azure リソースの配列プロパティのポリシーを作成する
 
@@ -207,9 +207,9 @@ Azure portal からこのポリシー定義を作成しようとすると、次�
 
 ## <a name="next-steps"></a>次の手順
 
-- [Azure Policy のサンプル](../samples/index.md)を確認する
-- [ポリシー定義の構造](../concepts/definition-structure.md)を確認する
-- [ポリシーの効果について](../concepts/effects.md)確認する
-- [プログラムによってポリシーを作成する](programmatically-create.md)方法を理解する
-- [準拠していないリソースを修復する](remediate-resources.md)方法を確認する
+- [Azure Policy のサンプル](../samples/index.md)を確認します。
+- 「[Azure Policy の定義の構造](../concepts/definition-structure.md)」を確認します。
+- 「[Policy の効果について](../concepts/effects.md)」を確認します。
+- [プログラムによってポリシーを作成する](programmatically-create.md)方法を理解します。
+- [準拠していないリソースを修復する](remediate-resources.md)方法を学習します。
 - 「[Azure 管理グループのリソースを整理する](../../management-groups/overview.md)」で、管理グループとは何かを確認します。

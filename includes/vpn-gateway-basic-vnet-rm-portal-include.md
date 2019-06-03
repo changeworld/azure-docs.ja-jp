@@ -9,11 +9,11 @@ ms.date: 11/30/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 835f23f98ebe56e0b19081f07dc3302ef93b27b9
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53109242"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66171586"
 ---
 VNet は、Resource Manager デプロイ モデルと Azure portal を使用し、以下の手順に従って作成できます。 仮想ネットワークの詳細については、[Virtual Network の概要](../articles/virtual-network/virtual-networks-overview.md)に関するページを参照してください。
 
@@ -24,7 +24,7 @@ VNet は、Resource Manager デプロイ モデルと Azure portal を使用し�
 
 1. [Azure portal](http://portal.azure.com) にサインインして **[リソースの作成]** を選択します。 **[新規]** ページが開きます。
 
-2. **[Marketplace を検索]** フィールドに「*仮想ネットワーク*」と入力して、返されたリストから **[仮想ネットワーク]** を選択します。 **[仮想ネットワーク]** ウィンドウが開きます。
+2. **[Marketplace を検索]** フィールドに「*仮想ネットワーク*」と入力し、返された一覧から **[仮想ネットワーク]** を選択します。 **[仮想ネットワーク]** ウィンドウが開きます。
 
    ![仮想ネットワーク リソース ページの検索](./media/vpn-gateway-basic-vnet-rm-portal-include/newvnetportal700.png "仮想ネットワーク リソース ページの検索")
 
@@ -46,4 +46,4 @@ VNet は、Resource Manager デプロイ モデルと Azure portal を使用し�
 
    - **[サブネット]**: サブネットの**名前**と**アドレス範囲**を追加します。 その他のサブネットは後で、VNet を作成した後に追加できます。 
      
-5. **作成**を選択します。
+5. **作成** を選択します。

@@ -12,12 +12,12 @@ ms.author: mathoma
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: 409c1abd7e9f532bb243ecab00228b402215c77e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c8d5df0f83a7ae37b9f06a5e255e9809288b6d67
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57852763"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64917030"
 ---
 # <a name="transactional-replication-with-single-pooled-and-instance-databases-in-azure-sql-database"></a>Azure SQL Database での単一データベース、プールされたデータベース、インスタンス データベースを使用したトランザクション レプリケーション
 
@@ -52,9 +52,9 @@ ms.locfileid: "57852763"
 
 | Role | 単一データベースとプールされたデータベース | インスタンス データベース |
 | :----| :------------- | :--------------- |
-| **発行元** | いいえ  | はい | 
-| **ディストリビューター** | いいえ  | はい|
-| **プル サブスクライバー** | いいえ  | はい|
+| **発行元** | いいえ | はい | 
+| **ディストリビューター** | いいえ | はい|
+| **プル サブスクライバー** | いいえ | はい|
 | **プッシュ サブスクライバー**| はい | はい|
 | &nbsp; | &nbsp; | &nbsp; |
 
@@ -68,18 +68,18 @@ ms.locfileid: "57852763"
 | :----| :------------- | :--------------- |
 | [**トランザクション**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | はい (サブスクライバーとしてのみ) | はい | 
 | [**スナップショット**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | はい (サブスクライバーとしてのみ) | はい|
-| [**マージ レプリケーション**](https://docs.microsoft.com/sql/relational-databases/replication/merge/merge-replication) | いいえ  | いいえ |
-| [**ピア ツー ピア**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/peer-to-peer-transactional-replication) | いいえ  | いいえ |
+| [**マージ レプリケーション**](https://docs.microsoft.com/sql/relational-databases/replication/merge/merge-replication) | いいえ | いいえ|
+| [**ピア ツー ピア**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/peer-to-peer-transactional-replication) | いいえ | いいえ|
 | **一方向** | はい | はい|
-| [**双方向**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | いいえ  | はい|
-| [**更新可能なサブスクリプション**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication) | いいえ  | いいえ |
+| [**双方向**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | いいえ | はい|
+| [**更新可能なサブスクリプション**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication) | いいえ | いいえ|
 | &nbsp; | &nbsp; | &nbsp; |
 
   >[!NOTE]
   > - 以前のバージョンを使用してレプリケーションを構成しようとすると、エラー番号 MSSQL_REPL20084 (プロセスはサブスクライバーに接続できませんでした) および MSSQ_REPL40532 (ログインによって要求されたサーバー \<name> を開くことができません。 ログインに失敗しました) のエラーが発生する可能性があります。
   > - Azure SQL Database のすべての機能を使用するには、最新バージョンの [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) および [SQL Server Data Tools (SSDT)](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt) を使用する必要があります。
   
-  ### <a name="supportabilty-matrix-for-instance-databases-and-on-premises-systems"></a>インスタンス データベースとオンプレミス システムのサポータビリティ マトリックス
+  ### <a name="supportability-matrix-for-instance-databases-and-on-premises-systems"></a>インスタンス データベースとオンプレミス システムのサポート性マトリックス
   インスタンス データベースのレプリケーション サポータビリティ マトリックスは、SQL Server オンプレミスのものと同じです。 
   
   | **発行元**   | **ディストリビューター** | **サブスクライバー** |
@@ -140,7 +140,7 @@ ms.locfileid: "57852763"
 
 ## <a name="next-steps"></a>次の手順
 
-1. [マネージド インスタンスのトランザクション レプリケーションを構成します](replication-with-sql-database-managed-instance.md#configure-publishing-and-distribution-example)。 
+1. [マネージド インスタンスのトランザクション レプリケーションを構成します](replication-with-sql-database-managed-instance.md)。 
 1. [パブリケーションを作成します](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)。
 1. Azure SQL Database サーバー名をサブスクライバーとして (`N'azuresqldbdns.database.windows.net` など)、Azure SQL Database 名を宛先データベースとして (**AdventureWorks** など) 使用して、[プッシュ サブスクリプションを作成します](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription)。 )
 

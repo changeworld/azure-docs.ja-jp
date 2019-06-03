@@ -14,14 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: c0571e202448951de0994d34f68e1649eabd5519
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 65e5b5502b7d63d89845781487443f539a708816
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259076"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64866968"
 ---
 # <a name="configure-content-protection-policies-by-using-the-azure-portal"></a>Azure Portal を使用したコンテンツ保護ポリシーの構成
+
+> [!NOTE]
+> このチュートリアルを完了するには、Azure アカウントが必要です。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。   > Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
+>
+
  Azure Media Services を使用すると、メディアがコンピューターから離れてから、保存、処理、配信されるまでのセキュリティ保護が可能になります。 Media Services では、Advanced Encryption Standard (AES) 128 ビット暗号化キーを使用して、動的に暗号化されたコンテンツを配信できます。 また、PlayReady や Widevine デジタル著作権管理 (DRM) と Apple FairPlay を使用した共通暗号化 (CENC) と共に使用することもできます。 
 
 Media Services は、承認されたクライアントに DRM ライセンスと AES クリア キーを配信するためのサービスを提供しています。 Azure Portal を使用して、すべての種類の暗号化に対して 1 つのキー/ライセンス承認ポリシーを作成できます。
@@ -77,7 +82,7 @@ Widevine 権利テンプレートの詳細については、「[Widevine ライ�
 ![高度なコンテンツの保護](./media/media-services-portal-content-protection/media-services-content-protection005.png)
 
 ## <a name="fairplay-configuration"></a>FairPlay 構成
-FairPlay の暗号化を有効にするには、**[FairPlay の構成]** を選択します。 **[アプリ証明書]** を選択し、「**Application Secret Key**」と入力します。 FairPlay の構成と要件の詳細については、「[Apple FairPlay または Microsoft PlayReady による HLS コンテンツの保護](media-services-protect-hls-with-FairPlay.md)」を参照してください。
+FairPlay の暗号化を有効にするには、 **[FairPlay の構成]** を選択します。 **[アプリ証明書]** を選択し、「**Application Secret Key**」と入力します。 FairPlay の構成と要件の詳細については、「[Apple FairPlay または Microsoft PlayReady による HLS コンテンツの保護](media-services-protect-hls-with-FairPlay.md)」を参照してください。
 
 ![FairPlay 構成](./media/media-services-portal-content-protection/media-services-content-protection006.png)
 
@@ -85,12 +90,12 @@ FairPlay の暗号化を有効にするには、**[FairPlay の構成]** を選�
 動的暗号化を利用するには、ソース ファイルを、一連のアダプティブ ビットレート MP4 ファイルにエンコードします。
 
 ### <a name="select-an-asset-that-you-want-to-encrypt"></a>暗号化するアセットを選択する
-すべてのアセットを表示するには、**[設定]**  >  **[アセット]** の順にクリックします。
+すべてのアセットを表示するには、 **[設定]**  >  **[アセット]** の順にクリックします。
 
 ![アセットのオプション](./media/media-services-portal-content-protection/media-services-content-protection007.png)
 
 ### <a name="encrypt-with-aes-or-drm"></a>AES または DRM による暗号化
-アセットの **[暗号化]** を選択すると、**[AES]** または **[DRM]** の 2 つの選択肢が表示されます。 
+アセットの **[暗号化]** を選択すると、 **[AES]** または **[DRM]** の 2 つの選択肢が表示されます。 
 
 #### <a name="aes"></a>AES
 AES クリア キー暗号化は、Smooth Streaming、HLS、および MPEG-DASH のすべてのストリーミング プロトコルで有効になります。
@@ -110,11 +115,11 @@ AES クリア キー暗号化は、Smooth Streaming、HLS、および MPEG-DASH 
     
     e. **HLS とのみの FairPlay**: FairPlay により HLS ストリームが動的に暗号化されます。
 
-1. FairPlay 暗号化を有効にするには、**[Content Protection Global Settings]\(コンテンツ保護のグローバル設定\)** ブレードで、**[FairPlay の構成]** を選択します。 **[アプリ証明書]** を選択し、「**Application Secret Key**」と入力します。
+1. FairPlay 暗号化を有効にするには、 **[Content Protection Global Settings]\(コンテンツ保護のグローバル設定\)** ブレードで、 **[FairPlay の構成]** を選択します。 **[アプリ証明書]** を選択し、「**Application Secret Key**」と入力します。
 
     ![暗号化の種類](./media/media-services-portal-content-protection/media-services-content-protection009.png)
 
-1. 暗号化を選択したら、**[適用]** を選択します。
+1. 暗号化を選択したら、 **[適用]** を選択します。
 
 >[!NOTE] 
 >AES で暗号化された HLS を Safari で再生する予定の場合は、[Safari の暗号化された HLS](https://azure.microsoft.com/blog/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/) に関するのブログ投稿を参照してください。

@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 02/19/2018
 ms.author: tomfitz
 ms.custom: include file
-ms.openlocfilehash: 0b3af1bd7b3ab48074432d9e39552d72c6664b98
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d1e7fa1ed1649508f0d4923db8817d17ad556ca1
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58124733"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66164570"
 ---
 リソースを Azure に展開する場合、展開するリソースの種類、展開先、設定方法を決定するときにとても柔軟に対応できます。 ただし、その柔軟性によって、組織内で許可するオプションよりも多くのオプションを使用できるようになる可能性があります。 Azure にリソースを展開することを検討する場合、次のような懸案事項があります。
 
-* 特定の国でのデータの主権に関する法的要件を満たすにはどうすればよいか
+* 特定の国/地域でのデータの主権に関する法的要件を満たすにはどうすればよいか
 * コストを管理するにはどうすればよいか
 * 重要なシステムが誤って変更されないようにするにはどうすればよいか
 * リソース コストを追跡し、正確に請求するにはどうすればよいか

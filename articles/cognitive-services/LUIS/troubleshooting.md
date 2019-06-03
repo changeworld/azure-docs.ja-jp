@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: ea3bb551a32fdfb7e4a378c36858860808e27419
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 132ba922fa73c73d0e001e84659b5a24996d406b
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65072772"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65235800"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding についてよくあるご質問 (FAQ)
 
@@ -294,7 +294,7 @@ Build 2019 Conference では、次の機能が公開されました。
 
 * [V3 API 移行ガイドのプレビュー](luis-migration-api-v3.md)
 * [改善された分析ダッシュ ボード](luis-how-to-use-dashboard.md)
-* [改善された事前構築済みドメイン](luis-reference-prebuilt-domains.md)は V2 および V3 API で機能します
+* [改善された事前構築済みドメイン](luis-reference-prebuilt-domains.md) 
 
 ## <a name="next-steps"></a>次の手順
 

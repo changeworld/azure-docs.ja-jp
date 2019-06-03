@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: tutorial
 ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: a755a0bada0dbf6797465ea40ddbb30a84e3f289
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 75e52398386e7ef1b338d13a8cfe8f20c06abcc6
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60005992"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65541518"
 ---
 # <a name="tutorial-use-computer-vision-to-generate-image-metadata-in-azure-storage"></a>チュートリアル:Computer Vision を使用して Azure Storage に画像メタデータを生成する
 
@@ -40,21 +40,15 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="create-a-computer-vision-resource"></a>Computer Vision リソースを作成する
 
-お客様の Azure アカウント用に Computer Vision リソースを作成する必要があります。このリソースによって、Azure の Computer Vision サービスへのアクセスが管理されます。
+お客様の Azure アカウント用に Computer Vision リソースを作成する必要があります。このリソースによって、Azure の Computer Vision サービスへのアクセスが管理されます。 
 
-1. [Azure portal](https://ms.portal.azure.com) にサインインし、**[リソースの作成]**、**[AI + Machine Learning]**、**[Computer Vision]** の順にクリックします。
+1. [Azure Cognitive Services リソースを作成する](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#single-service-subscription)の指示に従って、Computer Vision リソースを作成します。
 
-    ![新しい Computer Vision API サブスクリプションの作成](../Images/new-vision-api.png)
-
-1. ダイアログ ウィンドウで、**[名前]** フィールドに「vision-api-key」と入力し、**[価格レベル]** として **[F0]** を選択します。 お客様の Azure ストレージ アカウントを設定するときに選択したのと同じ**場所**を選択します。 **[リソース グループ]** で、**[既存のものを使用]** を選択し、同様に同じリソース グループを選択します。 **確認**のチェック ボックスをオンにし、**[作成]** をクリックします。
-
-    ![Computer Vision API へのサブスクライブ](../Images/create-vision-api.png)
-
-1. お客様のリソース グループのメニューに戻り、お客様が先ほど作成した Computer Vision API サブスクリプションをクリックします。 **[エンドポイント]** の下の URL を、一瞬で簡単に取得できる場所にコピーします。 次に、**[アクセス キーを表示]** をクリックします。
+1. 次に、お客様のリソース グループのメニューに移動し、お客様が先ほど作成した Computer Vision API サブスクリプションをクリックします。 **[エンドポイント]** の下の URL を、一瞬で簡単に取得できる場所にコピーします。 次に、 **[アクセス キーを表示]** をクリックします。
 
     ![エンドポイントの URL とアクセス キーのリンクを強調した Azure portal ページ](../Images/copy-vision-endpoint.png)
 
-1. 次のウィンドウで、**[キー 1]** の値をクリップボードにコピーします。
+1. 次のウィンドウで、 **[キー 1]** の値をクリップボードにコピーします。
 
     ![コピー ボタンが強調表示された [キーの管理] ダイアログ](../Images/copy-vision-key.png)
 
@@ -69,7 +63,7 @@ Visual Studio でお客様の ASP.NET Web アプリケーションを開き、�
 <add key="VisionEndpoint" value="VISION_ENDPOINT" />
 ```
 
-次に、ソリューション エクスプローラーで、プロジェクトを右クリックし、**[NuGet パッケージの管理]** コマンドを使用してパッケージ **Microsoft.Azure.CognitiveServices.Vision.ComputerVision** をインストールします。 このパッケージには、Computer Vision API を呼び出すために必要な型が含まれています。
+次に、ソリューション エクスプローラーで、プロジェクトを右クリックし、 **[NuGet パッケージの管理]** コマンドを使用してパッケージ **Microsoft.Azure.CognitiveServices.Vision.ComputerVision** をインストールします。 このパッケージには、Computer Vision API を呼び出すために必要な型が含まれています。
 
 ## <a name="add-metadata-generation-code"></a>メタデータ生成コードを追加する
 
@@ -134,7 +128,7 @@ Visual Studio でお客様の ASP.NET Web アプリケーションを開き、�
 
 ![コンピューターによって生成されたキャプション](../Images/thumbnail-with-tooltip.png)
 
-アタッチされているメタデータをすべて表示するには、Azure Storage Explorer を使用して、お客様が画像に使用しているストレージ コンテナーを表示します。 コンテナー内の任意の BLOB を右クリックして、**[プロパティ]** を選択します。 ダイアログに、キーと値のペアの一覧が表示されます。 コンピューターによって生成された画像の説明は "Caption" という項目に格納され、検索キーワードは "Tag0"、”Tag1" などに格納されます。 完了したら、**[キャンセル]** をクリックしてダイアログを閉じます。
+アタッチされているメタデータをすべて表示するには、Azure Storage Explorer を使用して、お客様が画像に使用しているストレージ コンテナーを表示します。 コンテナー内の任意の BLOB を右クリックして、 **[プロパティ]** を選択します。 ダイアログに、キーと値のペアの一覧が表示されます。 コンピューターによって生成された画像の説明は "Caption" という項目に格納され、検索キーワードは "Tag0"、”Tag1" などに格納されます。 完了したら、 **[キャンセル]** をクリックしてダイアログを閉じます。
 
 ![メタデータ タグが一覧表示された画像のプロパティ ダイアログ ウィンドウ](../Images/blob-metadata.png)
 

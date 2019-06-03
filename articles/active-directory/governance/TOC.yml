@@ -27,8 +27,6 @@
           href: manage-guest-access-with-access-reviews.md
         - name: レビューでのユーザー アクセスの管理
           href: manage-user-access-with-access-reviews.md
-        - name: プログラムとそのコントロールの管理
-          href: manage-programs-controls.md
         - name: 条件付きアクセスから除外されたユーザーの管理
           href: conditional-access-exclusion.md
 - name: ハウツー ガイド
@@ -64,8 +62,6 @@
               href: review-your-access.md
             - name: アクセス レビューを完了する
               href: complete-access-review.md
-            - name: アクセス レビュー結果の取得
-              href: retrieve-access-review.md
         - name: Azure AD ロール
           items:
             - name: アクセス レビューの作成

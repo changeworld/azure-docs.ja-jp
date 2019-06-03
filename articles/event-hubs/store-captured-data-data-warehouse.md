@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.date: 12/06/2018
 ms.topic: tutorial
 ms.service: event-hubs
-ms.openlocfilehash: 234febe92727e5a47d4cfc5b836cd5593e99b5b5
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 90a17839afdddb4d6ad8abfa57963b4c76b100ed
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56238370"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65604302"
 ---
 # <a name="migrate-captured-event-hubs-data-to-a-sql-data-warehouse-using-event-grid-and-azure-functions"></a>Event Grid と Azure Functions を使用してキャプチャされた Event Hubs データを SQL Data Warehouse に移行する
 
@@ -39,7 +39,7 @@ Event Hubs [Capture](https://docs.microsoft.com/azure/event-hubs/event-hubs-capt
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-- [Visual Studio 2017 バージョン 15.3.2 以上](https://www.visualstudio.com/vs/)。 インストール時に、次のワークロードがインストールされることを確認します。.NET デスクトップ開発、Azure 開発、ASP.NET および Web 開発、Node.js 開発、Python 開発。
+- [Visual Studio 2019](https://www.visualstudio.com/vs/)。 インストール時に、次のワークロードがインストールされることを確認します。.NET デスクトップ開発、Azure 開発、ASP.NET および Web 開発、Node.js 開発、Python 開発。
 - [Git サンプルのダウンロード](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo)。 サンプル ソリューションには、次のコンポーネントが含まれます。
     - *WindTurbineDataGenerator* – 風力タービンのサンプル データを Capture が有効なイベント ハブに送信する単純な発行元。
     - *FunctionDWDumper* – Azure Blob Storage に Avro ファイルがキャプチャされたときに、Event Grid の通知を受信する Azure 関数。 BLOB の URI パスを受信し、その内容を読み取り、データを SQL Data Warehouse にプッシュします。
@@ -106,13 +106,13 @@ WITH (CLUSTERED COLUMNSTORE INDEX, DISTRIBUTION = ROUND_ROBIN);
 
 ## <a name="publish-code-to-the-functions-app"></a>関数アプリにコードを発行する
 
-1. Visual Studio 2017 (15.3.2 以上) で *EventHubsCaptureEventGridDemo.sln* ソリューションを開きます。 
+1. Visual Studio 2019 で *EventHubsCaptureEventGridDemo.sln* ソリューションを開きます。
 
-1. ソリューション エクスプローラーで、*[FunctionEGDWDumper]* を右クリックし、**[発行]** を選択します。
+1. ソリューション エクスプローラーで、 *[FunctionEGDWDumper]* を右クリックし、 **[発行]** を選択します。
 
    ![関数アプリの発行](./media/store-captured-data-data-warehouse/publish-function-app.png)
 
-1. **[Azure 関数アプリ]** を選択して、**[既存のものを選択]** を選択します。 **[発行]** を選択します。
+1. **[Azure 関数アプリ]** を選択して、 **[既存のものを選択]** を選択します。 **[発行]** を選択します。
 
    ![対象の関数アプリ](./media/store-captured-data-data-warehouse/pick-target.png)
 
@@ -120,7 +120,7 @@ WITH (CLUSTERED COLUMNSTORE INDEX, DISTRIBUTION = ROUND_ROBIN);
 
    ![関数アプリの選択](./media/store-captured-data-data-warehouse/select-function-app.png)
 
-1. Visual Studio でプロファイルを構成している場合は、**[発行]** を選択します。
+1. Visual Studio でプロファイルを構成している場合は、 **[発行]** を選択します。
 
    ![発行の選択](./media/store-captured-data-data-warehouse/select-publish.png)
 
@@ -141,7 +141,7 @@ WITH (CLUSTERED COLUMNSTORE INDEX, DISTRIBUTION = ROUND_ROBIN);
 
    ![[サブスクリプションの追加]](./media/store-captured-data-data-warehouse/add-event-grid-subscription.png)
 
-1. Event Grid サブスクリプションに名前をつけます。 **Event Hubs の名前空間** をイベントの種類として使用します。 Event Hubs 名前空間のインスタンスを選択する値を提供します。 指定された値としてサブスクライバーのエンドポイントのままにします。 **作成**を選択します。
+1. Event Grid サブスクリプションに名前をつけます。 **Event Hubs の名前空間** をイベントの種類として使用します。 Event Hubs 名前空間のインスタンスを選択する値を提供します。 指定された値としてサブスクライバーのエンドポイントのままにします。 **作成** を選択します。
 
    ![サブスクリプションの作成](./media/store-captured-data-data-warehouse/set-subscription-values.png)
 

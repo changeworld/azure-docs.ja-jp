@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 02/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: c68bae87440bddf704d18b575aeb1f4ba4760bbb
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: 3f62557d024f56b7014784b6956f15a950f8cca7
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59578245"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64926246"
 ---
 # <a name="how-to-change-the-licensing-model-for-a-sql-server-virtual-machine-in-azure"></a>Azure での SQL Server 仮想マシンのライセンス モデルを変更する方法
 このアーティクルでは、新しい SQL VM リソース プロバイダーである、**Microsoft.SqlVirtualMachine** を使用して Azure での SQL Server 仮想マシンのライセンス モデルを変更する方法を説明します。 SQL Server をホストする仮想マシン (VM) には、従量課金制とライセンス持ち込み (BYOL) の 2 種類のライセンス モデルがあります。 そして現在は、Azure portal、Azure CLI、または PowerShell を使用して、SQL Server VM で使用するライセンス モデルを変更することができます。 
@@ -33,10 +33,13 @@ ms.locfileid: "59578245"
 
 ## <a name="remarks"></a>解説
 
+
  - CSP のお客様は、最初に従量課金制の VM をデプロイした後、それをライセンス持ち込みに変換することによって、Azure ハイブリッド特典を利用できます。 
  - カスタム SQL Server VM イメージをリソース プロバイダーに登録するとき、ライセンスの種類を 'AHUB' として指定します。 ライセンスの種類を空白のままにするか、'PAYG' を指定すると、登録は失敗します。 
  - SQL Server VM リソースを削除する場合は、イメージのハード コーディングされたライセンス設定に戻ります。 
+ - SQL Server VM を可用性セットに追加するには、VM を再作成する必要があります。 そのため、可用性セットに追加されたすべての VM は既定の従量課金制ライセンス タイプに戻ることになります。さらに、AHB をもう一度有効にする必要があります。 
  - ライセンス モデルを変更する機能は、SQL VM リソース プロバイダーの機能です。 Azure portal を介してマーケットプレース イメージをデプロイすると、SQL Server VM がリソース プロバイダーに自動的に登録されます。 ただし、SQL Server を自分でインストールするお客様は、手動で [SQL Server VM を登録](#register-sql-server-vm-with-the-sql-vm-resource-provider)する必要があります。 
+ 
 
  
 ## <a name="limitations"></a>制限事項
@@ -58,7 +61,7 @@ SQL VM リソース プロバイダーを利用するには、SQL IaaS 拡張機
 ライセンス モデルをポータルから直接変更できます。 
 
 1. [Azure portal](https://portal.azure.com) 内で SQL Server VM に移動します。 
-1. **[設定]** ウィンドウで、**[SQL Server の構成]** を選択します。 
+1. **[設定]** ウィンドウで、 **[SQL Server の構成]** を選択します。 
 1. **[SQL Server ライセンス]** ウィンドウで **[編集]** を選択して、ライセンスを変更します。 
 
 ![ポータルの AHB](media/virtual-machines-windows-sql-ahb/ahb-in-portal.png)
@@ -132,7 +135,7 @@ $SqlVm | Set-AzResource -Force
 
 1. Azure portal を開き、**すべてのサービス**に移動します。 
 1. **サブスクリプション**に移動し、関心のあるサブスクリプションを選択します。  
-1. **[サブスクリプション]** ブレードで、**[リソース プロバイダー]** に移動します。 
+1. **[サブスクリプション]** ブレードで、 **[リソース プロバイダー]** に移動します。 
 1. フィルター内に`sql`と入力し、SQL 関連のリソース プロバイダーを表示します。 
 1. 目的となるアクションに応じて、*登録*、*再登録*、または*登録解除*のいずれかを **Microsoft.SqlVirtualMachine** プロバイダーで選択します。 
 
@@ -172,7 +175,7 @@ PowerShell で次のコード スニペットを使用して、SQL Server VM を
 # Register your existing SQL Server VM with the new resource provider
 # example: $vm=Get-AzVm -ResourceGroupName AHBTest -Name AHBTest
 $vm=Get-AzVm -ResourceGroupName <ResourceGroupName> -Name <VMName>
-New-AzResource -ResourceName $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $vm.Location -ResourceType Microsoft.SqlVirtualMachine/sqlVirtualMachines -Proper
+New-AzResource -ResourceName $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $vm.Location -ResourceType Microsoft.SqlVirtualMachine/sqlVirtualMachines -Properties @{virtualMachineResourceId=$vm.Id}
 ```
 
 
@@ -190,7 +193,7 @@ SQL IaaS 拡張機能は、SQL Server VM を SQL VM リソース プロバイダ
   > SQL IaaS 拡張機能をインストールすると SQL Server サービスが再起動されるため、メンテナンス期間中にのみ実行する必要があります。 詳細については、[SQL IaaS 拡張機能のインストール](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension#installation)に関するページを参照してください。 
 
 
-### <a name="the-resource-microsoftsqlvirtualmachinesqlvirtualmachinesresource-group-under-resource-group-resource-group-was-not-found-the-property-sqlserverlicensetype-cannot-be-found-on-this-object-verify-that-the-property-exists-and-can-be-set"></a>リソース グループ '<resource-group>' にリソース 'Microsoft.SqlVirtualMachine/SqlVirtualMachines/<resource-group>' が見つかりませんでした。 このオブジェクトにプロパティ 'sqlServerLicenseType' が見つかりません。 プロパティが存在し、設定可能であることを確認してください。
+### <a name="the-resource-microsoftsqlvirtualmachinesqlvirtualmachinesresource-group-under-resource-group-resource-group-was-not-found-the-property-sqlserverlicensetype-cannot-be-found-on-this-object-verify-that-the-property-exists-and-can-be-set"></a>リソース 'Microsoft.SqlVirtualMachine/SqlVirtualMachines/\<resource-group>' under resource group '\<resource-group>' が見つかりませんでした。 このオブジェクトにプロパティ 'sqlServerLicenseType' が見つかりません。 プロパティが存在し、設定可能であることを確認してください。
 このエラーは、SQL Server VM で SQL リソース プロバイダーに登録されていないライセンス モデルを変更しようとしたときに発生します。 リソース プロバイダーを[サブスクリプション](#register-sql-vm-resource-provider-with-subscription)に登録した後、SQL Server VM を SQL [リソース プロバイダー](#register-sql-server-vm-with-sql-resource-provider)に登録する必要があります。 
 
 ### <a name="cannot-validate-argument-on-parameter-sku"></a>パラメーター 'Sku' の引数を検証できない

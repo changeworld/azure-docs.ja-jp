@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: danlep
-ms.openlocfilehash: b2398e7db7ed91dee8d85c0c50058bb15b9f4c7e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: d50d5bc91fbb86e5c0c3d2acc3b55c7d02c71723
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58894134"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65192264"
 ---
 # <a name="acr-tasks-reference-yaml"></a>ACR タスクの参照:YAML
 
@@ -452,8 +452,10 @@ ACR タスクには、タスク ステップを実行するときに使用でき
 * `Run.ID`
 * `Run.Registry`
 * `Run.Date`
+* `Run.Commit`
+* `Run.Branch`
 
-### <a name="run46id"></a>Run&#46;ID
+### <a name="runid"></a>Run.ID
 
 各 Run、`az acr run` の使用、または `az acr task create` を通じて作成されたタスクのトリガー ベースの実行は、一意の ID を持ちます。 ID は、現在実行中の Run を表します。
 
@@ -478,6 +480,14 @@ steps:
 ### <a name="rundate"></a>Run.Date
 
 実行が開始された現在の UTC 時間。
+
+### <a name="runcommit"></a>Run.Commit
+
+GitHub リポジトリへのコミットによってトリガーされるタスクの場合、コミット ID。
+
+### <a name="runbranch"></a>Run.Branch
+
+GitHub リポジトリへのコミットによってトリガーされるタスクの場合、ブランチ名。
 
 ## <a name="next-steps"></a>次の手順
 

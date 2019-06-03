@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 04/16/2019
 ms.author: aahi
-ms.openlocfilehash: c179620d6858658dface5f706f7994d51f1a199b
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: c8319dbcb8cebe51dae2a4d7e8d9749c3ab7674f
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59997310"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65231423"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Text Analytics で名前付きエンティティの認識を使用する方法
 
@@ -63,7 +63,7 @@ Text Analytics [バージョン 2.1](https://westcentralus.dev.cognitive.microso
 | URL           | 該当なし\*         | "https:\//www.bing.com"    |
 | Email         | 該当なし\*         | "support@contoso.com" |
 
-\* 入力および抽出されたエンティティによっては、一部エンティティで `SubType` が省略されることがあります。
+\* 入力および抽出されたエンティティによっては、一部エンティティで `SubType` が省略されることがあります。  一覧に含まれているすべてのサポートされているエンティティ型は、英語、簡体字中国語、フランス語、ドイツ語、およびスペイン語でのみ使用できます。
 
 
 

@@ -9,12 +9,12 @@ ms.date: 11/01/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 7a5a92635114be87e59fe8f779c36d4c401a1427
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 194ebcc1f1779c927503e09e9c42a96afddb12c9
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58087161"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64575812"
 ---
 # <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>チュートリアル: Custom Vision Service を使用してエッジで画像の分類を実行する
 
@@ -25,7 +25,6 @@ Azure IoT Edge では、ワークロードをクラウドからエッジに移�
 このチュートリアルでは、以下の内容を学習します。 
 
 > [!div class="checklist"]
->
 > * Custom Vision を使用して、画像分類器を構築する。
 > * デバイス上の Custom Vision Web サーバーに対してクエリを実行する IoT Edge モジュールを開発する。
 > * 画像分類器の結果を IoT Hub に送信する。
@@ -39,25 +38,19 @@ Azure IoT Edge では、ワークロードをクラウドからエッジに移�
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure IoT Edge デバイス:
+このチュートリアルを開始する前に、前のチュートリアルを完了して、Linux コンテナー開発用の開発環境を設定しておく必要があります。[Linux のデバイス用の IoT Edge モジュールを開発する](tutorial-develop-for-linux.md)。 このチュートリアルを完了すると、次の前提条件が満たされます。 
 
-* [Linux 用のクイック スタート](quickstart-linux.md)に記載された手順に従って、開発マシンまたは仮想マシンを Edge デバイスとして使用できます。
-* 現在、Custom Vision モジュールは、x64 アーキテクチャ向けの Linux コンテナーとしてのみ使用できます。 
+* Azure の Free レベルまたは Standard レベルの [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)。
+* [Azure IoT Edge を実行している Linux デバイス](quickstart-linux.md)
+* コンテナー レジストリ ([Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) など)。
+* [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) を使用して構成された [Visual Studio Code](https://code.visualstudio.com/)。
+* Linux コンテナーを実行するように構成された [Docker CE](https://docs.docker.com/install/)。
 
-クラウド リソース:
-
-* Azure の Standard レベルの [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)。 
-* コンテナー レジストリ。 このチュートリアルでは、[Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) を使用します。 
-* コンテナー レジストリの[管理者アカウント](../container-registry/container-registry-authentication.md#admin-account)の資格情報を把握している必要があります。
-
-開発リソース:
+Custom Vision サービスを使用して IoT Edge モジュールを開発するには、開発用マシンに次の追加の前提条件をインストールします。 
 
 * [Python](https://www.python.org/downloads/)
 * [Git](https://git-scm.com/downloads)
-* [Visual Studio Code](https://code.visualstudio.com/)
-* Visual Studio Code 用の [Azure IoT Edge](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) 拡張機能
 * Visual Studio Code 用の [Python 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
-* [Docker CE](https://docs.docker.com/install/)
 
 ## <a name="build-an-image-classifier-with-custom-vision"></a>Custom Vision を使用して画像分類器を構築する
 
@@ -96,9 +89,9 @@ Azure IoT Edge デバイス:
    git clone https://github.com/Microsoft/Cognitive-CustomVision-Windows.git
    ```
 
-2. Custom Vision プロジェクトに戻り、**[Add images]\(画像の追加\)** を選択します。 
+2. Custom Vision プロジェクトに戻り、 **[Add images]\(画像の追加\)** を選択します。 
 
-3. ローカルに複製した Git リポジトリを参照し、最初の画像フォルダー **Cognitive-CustomVision-Windows/Samples/Images/Hemlock** に移動します。 フォルダー内の 10 個の画像をすべて選択し、**[開く]** を選択します。 
+3. ローカルに複製した Git リポジトリを参照し、最初の画像フォルダー **Cognitive-CustomVision-Windows/Samples/Images/Hemlock** に移動します。 フォルダー内の 10 個の画像をすべて選択し、 **[開く]** を選択します。 
 
 4. この画像のグループにタグ **hemlock** を追加し、**Enter** キーを押してタグを適用します。 
 
@@ -106,17 +99,17 @@ Azure IoT Edge デバイス:
 
    ![Custom Vision にドクニンジンのタグが付けられたファイルをアップロードする](./media/tutorial-deploy-custom-vision/upload-hemlock.png)
 
-6. 画像が正常にアップロードされたら、**[完了]** を選択します。
+6. 画像が正常にアップロードされたら、 **[完了]** を選択します。
 
 7. **[Add images]\(画像の追加\)** をもう一度選択します。
 
-8. 2 つ目の画像フォルダー **Cognitive-CustomVision-Windows/Samples/Images/Japanese Cherry** を参照します。 フォルダー内の 10 個の画像をすべて選択し、**[開く]** を選択します。 
+8. 2 つ目の画像フォルダー **Cognitive-CustomVision-Windows/Samples/Images/Japanese Cherry** を参照します。 フォルダー内の 10 個の画像をすべて選択し、 **[開く]** を選択します。 
 
 9. この画像のグループにタグ **japanese cherry** を追加し、**Enter** キーを押してタグを適用します。 
 
-10. **[Upload 10 files]\(10 ファイルをアップロード\)** を選択します。 画像が正常にアップロードされたら、**[完了]** を選択します。 
+10. **[Upload 10 files]\(10 ファイルをアップロード\)** を選択します。 画像が正常にアップロードされたら、 **[完了]** を選択します。 
 
-11. 両方の画像のセットがタグ付けされ、アップロードされたら、**[Train]\(トレーニング\)** を選択して分類器をトレーニングします。 
+11. 両方の画像のセットがタグ付けされ、アップロードされたら、 **[Train]\(トレーニング\)** を選択して分類器をトレーニングします。 
 
 ### <a name="export-your-classifier"></a>分類器をエクスポートする
 
@@ -132,7 +125,7 @@ Azure IoT Edge デバイス:
 
    ![Linux コンテナーを持つ DockerFile としてエクスポートする](./media/tutorial-deploy-custom-vision/export-2.png)
 
-5. エクスポートが完了したら、**[ダウンロード]** を選択し、.zip パッケージをローカルのコンピューターに保存します。 パッケージのすべてのファイルを展開します。 画像分類器サーバーを含む IoT Edge モジュールを作成するために、これらのファイルを使用します。 
+5. エクスポートが完了したら、 **[ダウンロード]** を選択し、.zip パッケージをローカルのコンピューターに保存します。 パッケージのすべてのファイルを展開します。 画像分類器サーバーを含む IoT Edge モジュールを作成するために、これらのファイルを使用します。 
 
 ここまでで、Custom Vision プロジェクトの作成とトレーニングが完了しました。 次のセクションでは、エクスポートしたファイルを使用します。Custom Vision Web ページの使用は、これで終了です。 
 
@@ -144,7 +137,7 @@ Azure IoT Edge デバイス:
 
 ソリューションとは、単一の IoT Edge デプロイ用に複数のモジュールを開発、整理するための論理的な方法のことです。 ソリューションには、1 つまたは複数のモジュールのコードと、それらを IoT Edge デバイス上でどのように構成するかを宣言する配置マニフェストが含まれています。 
 
-1. Visual Studio Code で、**[表示]** > **[ターミナル]** の順に選択し、VS Code 統合ターミナルを開きます。
+1. Visual Studio Code で、 **[表示]**  >  **[ターミナル]** の順に選択し、VS Code 統合ターミナルを開きます。
 
 2. 統合ターミナルで、次のコマンドを入力して、**cookiecutter** をインストール (または更新) します。これは、VS Code で IoT Edge Python モジュール テンプレートを作成するときに使用します。
 
@@ -154,7 +147,7 @@ Azure IoT Edge デバイス:
    >[!Note]
    >コマンド プロンプトから起動できるように、cookiecutter をインストールするディレクトリが環境の `Path` にあることを確認してください。
 
-3. **[表示]** > **[コマンド パレット]** を選択して、VS Code コマンド パレットを開きます。 
+3. **[表示]**  >  **[コマンド パレット]** を選択して、VS Code コマンド パレットを開きます。 
 
 4. コマンド パレットで、**Azure IoT Edge: New IoT Edge solution** コマンドを入力して実行します。 コマンド パレットで、次の情報を指定してソリューションを作成します。 
 
@@ -169,6 +162,22 @@ Azure IoT Edge デバイス:
    ![Docker イメージ リポジトリを指定する](./media/tutorial-deploy-custom-vision/repository.png)
 
 Visual Studio Code ウィンドウによって、IoT Edge ソリューション ワークスペースが読み込まれます。
+
+### <a name="add-your-registry-credentials"></a>レジストリ資格情報を追加する
+
+コンテナー レジストリの資格情報は、環境ファイルに格納され、IoT Edge ランタイムと共有されます。 ランタイムでご自身のプライベート イメージを IoT Edge デバイスにプルするとき、ランタイムではこれらの資格情報が必要になります。
+
+1. VS Code エクスプローラーで、.env ファイルを開きます。
+2. ご自身の Azure コンテナー レジストリからコピーした**ユーザー名**と**パスワード**の値を使用して、フィールドを更新します。
+3. このファイルを保存します。
+
+### <a name="select-your-target-architecture"></a>ターゲット アーキテクチャを選択する
+
+現在、Visual Studio Code では、Linux AMD64 および Linux ARM32v7 デバイス用のモジュールを開発できます。 ソリューションごとにターゲットとするアーキテクチャを選択する必要があります。これは、アーキテクチャの種類によって、コンテナーのビルド方法と実行方法が異なるためです。 既定値は Linux AMD64 です。 
+
+1. コマンド パレットを開き、次を検索します: 「**Azure IoT Edge: Set Default Target Platform for Edge Solution (Azure IoT Edge: Edge ソリューションの既定のターゲット プラットフォームの設定)** 」。または、ウィンドウの下部にあるサイド バーで、ショートカット アイコンを選択します。 
+
+2. コマンド パレットで、オプションの一覧からターゲット アーキテクチャを選択します。 このチュートリアルでは、Ubuntu 仮想マシンを IoT Edge デバイスとして使用するため、既定値の **amd64** を維持します。 
 
 ### <a name="add-your-image-classifier"></a>画像分類器を追加する
 
@@ -213,7 +222,7 @@ Visual Studio Code の Python モジュール テンプレートには、IoT Edg
    | Select deployment template file (配置テンプレート ファイルの選択) | CustomVisionSolution フォルダー内の deployment.template.json ファイルを選択します。 |
    | Select module template (モジュール テンプレートの選択) | **[Python モジュール]** を選択します |
    | Provide a module name (モジュール名の指定) | モジュールに **cameraCapture** という名前を付けます |
-   | Provide Docker image repository for the module (モジュールの Docker イメージ リポジトリの指定) | **localhost:5000** を、Azure コンテナー レジストリのログイン サーバーの値に置き換えます。 最終的には、**\<レジストリ名\>.azurecr.io/cameracapture** のような文字列になります。 |
+   | Provide Docker image repository for the module (モジュールの Docker イメージ リポジトリの指定) | **localhost:5000** を、Azure コンテナー レジストリのログイン サーバーの値に置き換えます。 最終的には、 **\<レジストリ名\>.azurecr.io/cameracapture** のような文字列になります。 |
 
    VS Code ウィンドウで、新しいモジュールがソリューション ワークスペースに読み込まれ、deployment.template.json ファイルが更新されます。 これで、classifier と cameraCapture という 2 つのモジュール フォルダーが表示されるようになりました。 
 
@@ -348,7 +357,7 @@ Visual Studio Code の Python モジュール テンプレートには、IoT Edg
 
 3. IoT Edge ソリューションのディレクトリに移動し、**modules** / **cameraCapture** フォルダーにテスト画像を貼り付けます。 この画像は、前のセクションで編集した main.py ファイルと同じフォルダー内にある必要があります。 
 
-3. Visual Studio Code で、cameraCapture モジュールの **Dockerfile.amd64** ファイルを開きます  (ARM32 は、現時点では Custom Vision モジュールでサポートされていません)。 
+3. Visual Studio Code で、cameraCapture モジュールの **Dockerfile.amd64** ファイルを開きます (ARM32 は、現時点では Custom Vision モジュールでサポートされていません)。 
 
 4. 作業ディレクトリ `WORKDIR /app` を確立する行の後に、次のコード行を追加します。 
 
@@ -392,28 +401,6 @@ Visual Studio Code 用の IoT Edge 拡張機能では、各 IoT Edge ソリュ�
 
 7. **deployment.template.json** ファイルを保存します。
 
-### <a name="add-your-registry-credentials"></a>レジストリ資格情報を追加する
-
-このチュートリアルの前提条件の一覧には、作成したモジュールのコンテナー イメージを格納するために必要なコンテナー レジストリが含まれていました。 レジストリのアクセス資格情報を、2 つの場所で指定する必要があります。1 つは Visual Studio Code で、イメージをビルドして、レジストリにプッシュできるようにします。もう 1 つは配置マニフェストで、IoT Edge デバイスがイメージをプルしてデプロイできるようにします。 
-
-Azure Container Registry を使用している場合は、[管理者アカウント](../container-registry/container-registry-authentication.md#admin-account)のユーザー名、ログイン サーバー、およびパスワードを把握しておく必要があります。 
-
-1. Visual Studio Code で、**[表示]** > **[ターミナル]** の順に選択して、統合ターミナルを開きます。 
-
-2. 統合ターミナルで次のコマンドを入力します。 
-
-    ```csh/sh
-    docker login -u <registry username> <registry login server>
-    ```
-
-3. レジストリのパスワードを求めるメッセージが表示されたら、それを入力し、**Enter** キーを押します。
-
-4. ソリューション フォルダー内の **.env** ファイルを開きます。 このファイルは Git では無視されます。このファイルにはレジストリ資格情報が格納されているため、資格情報を配置テンプレート ファイル内にハードコードする必要はありません。 
-
-5. コンテナー レジストリのユーザー名とパスワードを入力してください。値は引用符で囲みません。 
-
-6. **.env** ファイルを保存します。
-
 ## <a name="build-and-deploy-your-iot-edge-solution"></a>IoT Edge ソリューションをビルドして展開する
 
 両方のモジュールを作成し、配置マニフェスト テンプレートを構成したので、コンテナー イメージをビルドしてコンテナー レジストリにプッシュする準備ができました。 
@@ -422,23 +409,17 @@ Azure Container Registry を使用している場合は、[管理者アカウン
 
 まず、ソリューションをビルドしてコンテナー レジストリにプッシュします。 
 
-1. VS Code エクスプローラーで、**deployment.template.json** ファイルを右クリックし、**[Build and push IoT Edge solution]\(IoT Edge ソリューションのビルドとプッシュ\)** を選択します。 VS Code の統合ターミナルで、この操作の進行状況を確認できます。 
+1. VS Code エクスプローラーで、**deployment.template.json** ファイルを右クリックし、 **[Build and push IoT Edge solution]\(IoT Edge ソリューションのビルドとプッシュ\)** を選択します。 VS Code の統合ターミナルで、この操作の進行状況を確認できます。 
 2. ソリューションに新しいフォルダー **config** が追加されたことに注意してください。このフォルダーを展開し、その中の **deployment.json** ファイルを開きます。
 3. deployment.json ファイル内の情報を確認します。 deployment.json ファイルは、構成した配置テンプレート ファイルと、ソリューションの情報 (.env ファイルや module.json ファイルなど) に基づいて、自動的に作成 (または更新) されます。 
 
-次に、Visual Studio Code 内から IoT Hub へのアクセスを設定します。 
+次に、デバイスを選択し、ソリューションをデプロイします。
 
-1. VS Code コマンド パレットで、**Azure IoT Hub: Select IoT Hub\(Azure IoT Hub: IoT ハブの選択\)** を選びます。
-2. プロンプトに従って Azure アカウントにサインインします。 
-3. コマンド パレットで、Azure サブスクリプション、IoT ハブの順に選択します。 
-
-最後に、デバイスを選択し、ソリューションをデプロイします。
-
-1. VS Code エクスプローラーで、**[Azure IoT Hub Devices]\(Azure IoT Hub デバイス\)** セクションを展開します。 
-2. 配置でターゲットにするデバイスを右クリックし、**[Create deployment for single device]\(単一デバイスのデプロイの作成\)** を選択します。 
+1. VS Code エクスプローラーで、 **[Azure IoT Hub Devices]\(Azure IoT Hub デバイス\)** セクションを展開します。 
+2. 配置でターゲットにするデバイスを右クリックし、 **[Create deployment for single device]\(単一デバイスのデプロイの作成\)** を選択します。 
 3. エクスプローラーで、ソリューション内の **config** フォルダーに移動して、**deployment.json** を選択します。 **[Select Edge Deployment Manifest]\(Edge 配置マニフェストの選択\)** をクリックします。 
 
-デプロイが成功すると、確認メッセージが VS Code の出力に表示されます。 VS Code エクスプローラーで、このデプロイに使用した IoT Edge デバイスの詳細を展開します。 モジュールがすぐに表示されない場合、[最新の情報に更新] ボタンを有効にするには、**[Azure IoT Hub Devices]\(Azure IoT Hub デバイス\)** ヘッダーにカーソルを合わせます。 モジュールが起動し、IoT Hub にレポートするまでに、少し時間がかかる場合があります。 
+デプロイが成功すると、確認メッセージが VS Code の出力に表示されます。 VS Code エクスプローラーで、このデプロイに使用した IoT Edge デバイスの詳細を展開します。 モジュールがすぐに表示されない場合、[最新の情報に更新] ボタンを有効にするには、 **[Azure IoT Hub Devices]\(Azure IoT Hub デバイス\)** ヘッダーにカーソルを合わせます。 モジュールが起動し、IoT Hub にレポートするまでに、少し時間がかかる場合があります。 
 
 また、すべてのモジュールが動作していることをデバイス自体で確認することもできます。 IoT Edge デバイスで、次のコマンドを実行してモジュールの状態を表示します。 モジュールが起動するまでに、少し時間がかかる場合があります。
 
@@ -456,7 +437,7 @@ Azure Container Registry を使用している場合は、[管理者アカウン
    iotedge logs cameraCapture
    ```
 
-Visual Studio Code では、IoT Edge デバイスの名前を右クリックして、**[Start monitoring D2C message]\(D2C メッセージの監視を開始する\)** を選択します。 
+Visual Studio Code では、IoT Edge デバイスの名前を右クリックして、 **[Start monitoring D2C message]\(D2C メッセージの監視を開始する\)** を選択します。 
 
 cameraCapture モジュールからのメッセージとして送信される、Custom Vision モジュールの結果には、画像がドクニンジンまたは桜のものである確率が含まれます。 画像はドクニンジンであるため、確率は 1.0 と表示されるはずです。 
 
@@ -465,12 +446,9 @@ cameraCapture モジュールからのメッセージとして送信される、
 
 次の推奨記事に進む場合は、作成したリソースおよび構成を維持して、再利用することができます。 また、同じ IoT Edge デバイスをテスト デバイスとして使用し続けることもできます。 
 
-それ以外の場合は、課金されないようにするために、ローカル構成と、この記事で作成した Azure リソースを削除してもかまいません。 
+それ以外の場合は、課金されないようにするために、ローカル構成と、この記事で使用した Azure リソースを削除してもかまいません。 
 
 [!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
-
-[!INCLUDE [iot-edge-clean-up-local-resources](../../includes/iot-edge-clean-up-local-resources.md)]
-
 
 
 ## <a name="next-steps"></a>次の手順
@@ -482,4 +460,4 @@ cameraCapture モジュールからのメッセージとして送信される、
 引き続き次のチュートリアルを実行すると、Azure IoT Edge を利用して、エッジでデータをビジネス上の分析情報に変える他の方法について学習できます。
 
 > [!div class="nextstepaction"]
-> [Azure Stream Analytics でフローティング ウィンドウを使用して平均値を見つける](tutorial-deploy-stream-analytics.md)
+> [SQL Server データベースを使用してエッジでデータを格納する](tutorial-store-data-sql-server.md)

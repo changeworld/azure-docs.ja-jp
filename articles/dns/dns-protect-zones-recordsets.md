@@ -2,17 +2,18 @@
 title: Azure DNS ゾーンとレコードを保護する
 description: Microsoft Azure DNS で DNS ゾーンとレコード セットを保護する方法
 services: dns
-author: vhorne
+author: WenJason
 ms.service: dns
 ms.topic: article
-ms.date: 12/4/2018
-ms.author: victorh
+origin.date: 12/4/2018
+ms.date: 03/04/2019
+ms.author: v-jay
 ms.openlocfilehash: 9340a43eb88b4be03c0f0ccc0d07a32f22a9001c
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55997381"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66121450"
 ---
 # <a name="how-to-protect-dns-zones-and-records"></a>DNS ゾーンとレコードを保護する方法
 
@@ -117,8 +118,7 @@ Contoso Corporation が顧客アカウントごとの CNAME レコードをゾ�
         "Microsoft.Insights/alertRules/*",
         "Microsoft.ResourceHealth/availabilityStatuses/read",
         "Microsoft.Resources/deployments/*",
-        "Microsoft.Resources/subscriptions/resourceGroups/read",
-        "Microsoft.Support/*"
+        "Microsoft.Resources/subscriptions/resourceGroups/read"
     ],
     "NotActions": [
     ],

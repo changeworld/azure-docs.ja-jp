@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 3/25/2019
 ms.author: rohink
-ms.openlocfilehash: fe63b76589c841706ae335c61e56a57c3c33fb3e
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: e0f3de95cfd4a18294e5e8e2adcf3b52a7487dbb
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59527185"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65411352"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Azure 仮想ネットワーク内のリソースの名前解決
 
@@ -96,7 +96,7 @@ DNS クエリには、ネットワーク経由で送信する必要がないも�
   * `systemctl start dnsmasq.service` を使用して、dnsmasq サービスを開始します。 
   * **/etc/sysconfig/network/config** を編集して、*NETCONFIG_DNS_FORWARDER=""* を *dnsmasq* に変更します。
   * `netconfig update` を使用して resolv.conf を更新し、キャッシュをローカル DNS リゾルバーとして設定します。
-* **OpenLogic (NetworkManager を使用)**:
+* **CentOS (NetworkManager を使用)**: 
   * `sudo yum install dnsmasq` を使用して dnsmasq パッケージをインストールします。
   * `systemctl enable dnsmasq.service` を使用して、dnsmasq サービスを有効にします。
   * `systemctl start dnsmasq.service` を使用して、dnsmasq サービスを開始します。
@@ -129,7 +129,7 @@ resolv.conf ファイルは通常は自動生成され、編集すべきでは�
 * **SUSE** (netconf を使用):
   1. *timeout:1 attempts:5* を **/etc/sysconfig/network/config** の **NETCONFIG_DNS_RESOLVER_OPTIONS=""** パラメーターに追加します。
   2. `netconfig update` を実行して更新します。
-* **OpenLogic** (NetworkManager を使用):
+* **CentOS** (NetworkManager を使用): 
   1. *echo "options timeout:1 attempts:5"* を **/etc/NetworkManager/dispatcher.d/11-dhclient** に追加します。
   2. `service network restart` を使用して更新します。
 
@@ -169,7 +169,7 @@ Azure へのクエリの転送がニーズに合わない場合は、独自の D
 * 外部エージェントによる脅威を軽減するために、インターネットからのアクセスをセキュリティ保護する。
 
 > [!NOTE]
-> 最高のパフォーマンスを得るには、Azure VM を DNS サーバーとして使用するときに IPv6 を無効にする必要があります。 [パブリック IP アドレス](virtual-network-public-ip-address.md)を各 DNS サーバーの VM に割り当てる必要があります。 Windows Server を DNS サーバーとして使用したときの追加のパフォーマンスの分析と最適化については、[再帰的な Windows DNS Server 2012 R2 の名前解決のパフォーマンス](http://blogs.technet.com/b/networking/archive/2015/08/19/name-resolution-performance-of-a-recursive-windows-dns-server-2012-r2.aspx)に関する記事を参照してください。
+> 最高のパフォーマンスを得るには、Azure VM を DNS サーバーとして使用するときに IPv6 を無効にする必要があります。 [パブリック IP アドレス](virtual-network-public-ip-address.md)を各 DNS サーバーの VM に割り当てる必要があります。 Windows Server を DNS サーバーとして使用したときの追加のパフォーマンスの分析と最適化については、[再帰的な Windows DNS Server 2012 R2 の名前解決のパフォーマンス](https://blogs.technet.com/b/networking/archive/2015/08/19/name-resolution-performance-of-a-recursive-windows-dns-server-2012-r2.aspx)に関する記事を参照してください。
 > 
 > 
 

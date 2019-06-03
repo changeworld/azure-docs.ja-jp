@@ -2,31 +2,25 @@
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
-ms.date: 09/04/2018
+ms.date: 04/24/2019
 ms.author: glenga
-ms.openlocfilehash: 914c006daf49e22ebec870a549bfdbc63f882647
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: a3f75b7273164abc5318f16e9ab8d9883ff0c0aa
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55147978"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66132138"
 ---
-## <a name="test"></a>関数をテストする
+## <a name="test"></a>Azure で関数をテストする
 
-cURL を使用して、Mac または Linux コンピューターで、または Windows で PowerShell を使用して、デプロイした関数をテストします。 次の cURL コマンドを実行します。`<app_name>` プレースホルダーを Function App の名前に置き換えます。 URL にクエリ文字列 `&name=<yourname>` を追加します。
-
-```powershell
-Invoke-WebRequest -Uri "https://<app_name>.azurewebsites.net/api/MyHttpTrigger?name=<yourname>"
-```
+cURL を使用して、デプロイした関数をテストします。 前の手順からコピーした URL を使用して、URL にクエリ文字列 `&name=<yourname>` を次の例のように追加します。
 
 ```bash
-curl https://<app_name>.azurewebsites.net/api/MyHttpTrigger?name=<yourname>
-```  
+curl https://myfunctionapp.azurewebsites.net/api/httptrigger?code=cCr8sAxfBiow548FBDLS1....&name=<yourname>
+```
 
-![ブラウザーに表示された関数の応答。](./media/functions-test-function-code/functions-azure-cli-function-test-curl.png)  
+![cURL を使用した Azure の関数の呼び出し。](./media/functions-test-function-code/functions-azure-cli-function-test-curl.png) 
 
-コマンド ラインで使用可能な `cURL` または `Invoke-WebRequest` がない場合は、Web ブラウザーのアドレスに同じ URL を入力します。 再度、`<app_name>` プレースホルダーを関数アプリの名前に置き換え、URL にクエリ文字列 `&name=<yourname>` を追加して、要求を実行します。
+コピーした URL を Web ブラウザーのアドレスに貼り付けることもできます。 繰り返しになりますが、要求を実行する前に、URL にクエリ文字列 `&name=<yourname>` を追加してください。
 
-    https://<app_name>.azurewebsites.net/api/MyHttpTrigger?name=<yourname>
-   
-![ブラウザーに表示された関数の応答。](./media/functions-test-function-code/functions-azure-cli-function-test-browser.png)  
+![Web ブラウザーを使用した関数の呼び出し。](./media/functions-test-function-code/functions-azure-cli-function-test-browser.png)  

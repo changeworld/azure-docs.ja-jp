@@ -1,64 +1,60 @@
 ---
-title: Azure 向け Cloud パートナー ポータルの仮想マシンの [Marketplace] タブ | Microsoft Docs
+title: Azure Marketplace 向け Cloud パートナー ポータルの仮想マシンの [Marketplace] タブ
 description: Azure Marketplace の VM プランの作成で使用される [Marketplace] タブについて説明します。
 services: Azure, Marketplace, Cloud Partner Portal, virtual machine
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
-ms.date: 10/19/2018
-ms.author: pbutlerm
-ms.openlocfilehash: b1b62c68ef4e18f4d4d36a78078ad7431717b754
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 04/25/2019
+ms.author: pabutler
+ms.openlocfilehash: d9b259ba93be369658638d034f109a3a6ba4c4a4
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57995642"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64938186"
 ---
 # <a name="virtual-machine-marketplace-tab"></a>仮想マシンの [Marketplace] タブ
 
-**[新しいプラン]** ページの **[Marketplace]** タブでは、マーケティング、販売、および法律に関する情報と契約を見込み客に提供できるほか、マーケットプレースによって生成されるリードを管理できます。 この長いフォームは、4 つのセクションに分かれています: **[概要]**、**[Marketing Artifacts]\(マーケティングの成果物\)**、**[Lead Management]\(潜在顧客の管理\)**、**[法的情報]**。 
+**[新しいプラン]** ページの **[Marketplace]** タブでは、マーケティング、販売、および法律に関する情報と契約を見込み客に提供できるほか、マーケットプレースによって生成されるリードを管理できます。 この長いフォームは、4 つのセクションに分かれています: **[概要]** 、 **[Marketing Artifacts]\(マーケティングの成果物\)** 、 **[Lead Management]\(潜在顧客の管理\)** 、 **[法的情報]** 。
+
 
 ## <a name="overview-section"></a>[概要] セクション
 このセクションでは、Azure Marketplace プランについての一般的な情報を入力します。  フィールド名に付いているアスタリスク (*) は、そのフィールドが必須であることを示します。
 
-![仮想マシン用の [新しいプラン] フォームにある [Marketplace] タブの [概要] セクション](./media/publishvm_008.png)
+![仮想マシン用の [Marketplace] タブの [概要] セクション](./media/publishvm_008.png)
 
-次の表では、これらのフィールドの目的および内容について説明しています。
+次の表では、これらのフィールドの目的および内容について説明しています。 必須フィールドはアスタリスク (*) で示されます。
 
 |  **フィールド**                |     **説明**                                                          |
 |  ---------                |     ---------------                                                          |
-| **タイトル**                 | プランのタイトル。通常は長い正式な名前。 このタイトルは、マーケットプレースで目立つように表示されます。  最大長は 50 文字です。 |
-| **まとめ**               | ソリューションの簡潔な目的または機能。  最大長は 100 文字です。 |
-| **Long Summary (長い要約)**          | ソリューションの目的または機能。  最大長は 256 文字です。 |
-| **説明**           | ソリューションの説明。  最大長は 3,000 文字で、単純な HTML 書式がサポートされています。 |
-| **Microsoft CSP Reseller channel (Microsoft CSP リセラー チャネル)** | クラウド ソリューション プロバイダー (CSP) のパートナー チャネル オプトインが利用できるようになりました。  Microsoft CSP パートナー チャネルを通じたオファーのマーケティングの詳細については、「[Cloud Solution Providers (クラウド ソリューション プロバイダー)](../../cloud-solution-providers.md)」を参照してください。 |
-| **Marketing Identifier (マーケティング識別子)**  | このプランに関連付ける一意の URL。通常、組織およびソリューションの名前が含まれ、最大長は 50 文字です。  例:  <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp`  |
-| **Preview Subscription IDs (プレビュー サブスクリプション ID)** | 1 から 100 個のプレビューアーのサブスクリプション識別子を追加します。 ホワイトリストに登録されたこれらのサブスクリプションは、プランの発行後、運用が開始される前にプランにアクセスできます。 |
+| **タイトル\***                 | プランのタイトル。通常は長い正式な名前。 このタイトルは、マーケットプレースで目立つように表示されます。  最大長は 50 文字です。 |
+| **Summary (概要)\***               | ソリューションの簡潔な目的または機能。  最大長は 100 文字です。 |
+| **[Long Summary]\(長い概要\)\***          | ソリューションの目的または機能。  最大長は 256 文字です。 |
+| **説明\***           | ソリューションの説明。  最大長は 3,000 文字で、単純な HTML 書式がサポートされています。 |
+| **Microsoft CSP Reseller channel (Microsoft CSP リセラー チャネル)\*** | クラウド ソリューション プロバイダー (CSP) のパートナー チャネル オプトインが利用できるようになりました。  Microsoft CSP パートナー チャネルを通じたオファーのマーケティングの詳細については、「[Cloud Solution Providers (クラウド ソリューション プロバイダー)](../../cloud-solution-providers.md)」を参照してください。 |
+| **[Marketing Identifier]\(マーケティング識別子\)\***  | このプランに関連付ける一意の URL。通常、組織およびソリューションの名前が含まれ、最大長は 50 文字です。  例: <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp`  |
+| **Preview Subscription Ids (プレビュー サブスクリプション ID)\*** | 1 から 100 個のプレビューアーのサブスクリプション識別子を追加します。 ホワイトリストに登録されたこれらのサブスクリプションは、プランの発行後、運用が開始される前にプランにアクセスできます。 |
 | **役に立つリンク**          | ドキュメント、リリース ノート、FAQ などに URL を追加します。 |
-| **推奨されるカテゴリ (最大 5 個)** | プランが最もよく当てはまる、複数選択が可能なビジネスおよび技術のカテゴリ。  最大で 5 個設定できます。  |
+| **Suggested Categories (Max 5) (推奨されるカテゴリ (最大 5 個))\*** | プランが最もよく当てはまる、複数選択が可能なビジネスおよび技術のカテゴリ。  最大で 5 個設定できます。  |
 |  |  |
 
 
 ## <a name="marketing-artifacts-section"></a>[マーケティングの成果物] セクション
 
-この 2 番目のセクションは、次の 3 つのサブセクションに分かれています: **[ロゴ]**、**[スクリーンショット]**、**[ビデオ]**。 必須のマーケティングの成果物はロゴだけですが、顧客へのアピールを最大にするために、すべて設定することをお勧めします。
+この 2 番目のセクションは、次の 3 つのサブセクションに分かれています: **[ロゴ]** 、 **[スクリーンショット]** 、 **[ビデオ]** 。 必須のマーケティングの成果物はロゴだけですが、顧客へのアピールを最大にするために、すべて設定することをお勧めします。 
 
 ![仮想マシン用の [新しいプラン] フォームにある [Marketplace] タブの [Marketing Artifacts]\(マーケティングの成果物\) セクション](./media/publishvm_009.png)
+
+次の表では、これらのフィールドの目的および内容について説明しています。 必須フィールドはアスタリスク (*) で示されます。
 
 |  **フィールド**                |     **説明**                                                          |
 |  ---------                |     ---------------                                                          |
 | *ロゴ*  |  |
-| **Small**                 | 40 x 40 ピクセルの .ico ビットマップ                                                      |
-| **Medium**                | 90 x 90 ピクセルの .ico ビットマップ                                                      |
-| **Large**                 | 115 x 115 ピクセルの .ico ビットマップ                                                   |
-| **ワイド**                  | 255 x 115 ピクセルの .ico ビットマップ                                                    |
+| **S\***                 | 40 x 40 ピクセルの .ico ビットマップ                                                      |
+| **M\***                | 90 x 90 ピクセルの .ico ビットマップ                                                      |
+| **L\***                 | 115 x 115 ピクセルの .ico ビットマップ                                                   |
+| **ワイド\***                  | 255 x 115 ピクセルの .ico ビットマップ                                                    |
 | **ヒーロー**                  | 815 x 290 のビットマップ。  オプション。ただし、ヒーロー アイコンはアップロードしたら削除できません。 |
 | *スクリーンショット*  | オプション。ただし、SKU あたり最大 5 つのスクリーンショット。 |
 | **Name**                  | 名前またはタイトル <!-- TODO - max char length? none specified in UI -->                               |
@@ -67,8 +63,7 @@ ms.locfileid: "57995642"
 | **Name**                  | 名前またはタイトル  <!-- TODO - max char length? -->                              |
 | **リンク**                  | ビデオの URL。YouTube や Vimeo でホストされます                                        |
 | **サムネイル**             | 533 x 324 のビットマップ                                                               |
-|  |  |
-
+|   |   |
 
 ### <a name="logo-guidelines"></a>ロゴのガイドライン
 
@@ -105,7 +100,6 @@ Cloud パートナー ポータルにアップロードされるすべてのロ�
 
 
 ## <a name="lead-management-section"></a>[リード管理] セクション
-<!-- this all should be referenced in a common location for lead management, not in this file. nothing unique for a vm specifically. -->
 
 3 つ目のセクションでは、Azure Marketplace プランから生成された顧客リードを収集することができます。 このリード情報に対して、(ドロップダウン リストで) 以下のストレージ オプションが用意されています。
 
@@ -122,15 +116,16 @@ Cloud パートナー ポータルにアップロードされるすべてのロ�
 
 ## <a name="legal-section"></a>[法的情報] セクション
 
-この最後のセクションでは、各オファーに必須の次の 2 つの法的ドキュメントを指定することができます: プライバシー ポリシーと利用規約。
+この最後のセクションでは、各オファーに必須の法的ドキュメントを指定することができます。  
 
-|  **フィールド**                |     **説明**                                                          |
-|  ---------                |     ---------------                                                          |
-| **プライバシー ポリシーの URL**    | 投稿済みのプライバシー ポリシーの URL                                            |
-| **使用条件**          | プレーンテキストまたは単純な HTML のポリシー。  <!-- TODO - max char length? -->       |
+|  **フィールド**                    |     **説明**                                        |
+|  ---------                    |     ---------------                                        |
+| **プライバシー ポリシーの URL\***      | 投稿済みのプライバシー ポリシーの URL                          |
+| **Use Standard Contract? (標準契約を使用しますか?)\***  |   |
+| **利用規約\***            | プレーンテキストまたは単純な HTML のポリシー。                       |
 |  |  |
 
-<br/>
+
+## <a name="next-steps"></a>次の手順
 
 次の [[サポート]](./cpp-support-tab.md) タブでは、プランに対してテクニカル サポートとユーザー サポートのリソースを指定します。
-

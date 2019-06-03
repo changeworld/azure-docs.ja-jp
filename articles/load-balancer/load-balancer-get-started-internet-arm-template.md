@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: af72eb0214f46c1e001f9e93934d38cb934503e4
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: 7d8997b6c4ee68ae6857d2a1605277fc7d5f7a0a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56592487"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66122225"
 ---
 # <a name="creating-a-public-load-balancer-using-a-template"></a>テンプレートを使用したパブリック ロード バランサーの作成
 

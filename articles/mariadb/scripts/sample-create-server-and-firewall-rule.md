@@ -9,11 +9,11 @@ ms.topic: sample
 ms.custom: mvc
 ms.date: 11/28/2018
 ms.openlocfilehash: a7e8a4c8f8572cfdd236b1752e89b3a1b4e7b758
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53546812"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66171376"
 ---
 # <a name="create-a-mariadb-server-and-configure-a-firewall-rule-using-the-azure-cli"></a>Azure CLI を使用して MariaDB サーバーを作成し、ファイアウォール規則を構成する
 このサンプル CLI スクリプトは、Azure Database for MariaDB サーバーを作成して、サーバー レベルのファイアウォール規則を構成するものです。 スクリプトが正常に実行されると、すべての Azure サービスと構成済みの IP アドレスから MariaDB サーバーにアクセスできるようになります。

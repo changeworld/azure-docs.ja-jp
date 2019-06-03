@@ -1,25 +1,18 @@
 ---
-title: クラウド パートナー ポータルのサポート | Microsoft Docs
+title: クラウド パートナー ポータルのサポート | Azure Marketplace
 description: クラウド パートナー ポータルでサポートを利用します。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: dan-wesley
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/17/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 54ceb8768ed641beac8ab812a9d90936c4c911f5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: pabutler
+ms.openlocfilehash: 35a5a4c4cfdbfa26ea00f0f4d76f91f9f76a1ca5
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58085356"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64935375"
 ---
 # <a name="get-support-for-cloud-partner-portal"></a>クラウド パートナー ポータルのサポートを利用する
 
@@ -34,7 +27,7 @@ ms.locfileid: "58085356"
 
 1.  [Cloud パートナー ポータル](https://cloudpartner.azure.com/)に移動し、職場または学校アカウントを使用してサインインします。
 
-2. ページの右上にあるメニューで **[ヘルプ]** アイコンを選択し、**[サポート]** を選択します。
+2. ページの右上にあるメニューで **[ヘルプ]** アイコンを選択し、 **[サポート]** を選択します。
 
 ![support1](./media/cloud-partner-portal-support-for-cloud-partner-portal/support1.png)
 

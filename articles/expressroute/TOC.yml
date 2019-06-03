@@ -21,13 +21,12 @@
     - name: 回線とピアリング
       href: expressroute-circuit-peerings.md
     - name: 場所とパートナー
-      href: expressroute-locations.md
       items:
         - name: 場所別のプロバイダー
           href: expressroute-locations-providers.md
         - name: プロバイダー別の場所
           href: expressroute-locations.md
-    - name: 仮想ネットワーク ゲートウェイについて
+    - name: 仮想ネットワーク ゲートウェイと FastPath
       href: expressroute-about-virtual-network-gateways.md
     - name: 前提条件
       href: expressroute-prerequisites.md

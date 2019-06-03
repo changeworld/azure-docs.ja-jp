@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/28/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 61f65340c3b683674be195f1d30788494b6855a7
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 6cd0c72f94c020f9243a1a95faa799f1f798f36c
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58671685"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65199204"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Azure IaaS VM ディスクと Premium マネージド ディスクおよびアンマネージド ディスクについてよく寄せられる質問
 
@@ -140,6 +140,20 @@ Azure Managed Disks では、現在、ローカル冗長ストレージ マネ�
 **Azure ディスクで GPT パーティション分割を使用できますか?**
 
 GPT パーティション分割は OS ディスクではなく、データ ディスクでのみ使用できます。 OS ディスクは、MBR パーティション分割のスタイルを使用する必要があります。
+
+## <a name="uploading-to-a-managed-disk"></a>マネージド ディスクへのアップロード
+
+**既存のマネージド ディスクにデータをアップロードできますか?**
+
+いいえ。アップロードは、**ReadyToUpload** 状態を持つ新しい空のディスクの作成中にのみ使用できます。
+
+**VM がアップロード状態にある間、その VM にディスクを接続できますか?**
+
+いいえ。
+
+**アップロード状態にあるマネージド ディスクのスナップショットを取得できますか?**
+
+いいえ。
 
 ## <a name="standard-ssd-disks"></a>Standard SSD ディスク
 

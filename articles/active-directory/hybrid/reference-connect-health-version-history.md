@@ -15,12 +15,12 @@ ms.topic: reference
 ms.date: 03/20/2019
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46e70850ba9e5984e36643f1b9ecc9db29eec149
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: f273104366b3e583bd98ebcc6d50387a3fb1d335
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58294537"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64572814"
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health: バージョンのリリース履歴
 Azure Active Directory チームは、Azure AD Connect Health を新機能で定期的に更新しています。 この記事では、リリースされたバージョンと機能の一覧を示します。  
@@ -31,18 +31,23 @@ Azure Active Directory チームは、Azure AD Connect Health を新機能で定
 
 Azure AD Connect Health for Sync は、Azure AD Connect のインストールと統合されます。 詳細については、[Azure AD Connect のリリース履歴](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history)に関する記事をご覧ください。機能のフィードバックについては、[Connnect Health User Voice チャネル](https://feedback.azure.com/forums/169401-azure-active-directory/filters/new?category_id=165591)で投票してください
 
+## <a name="april-2019"></a>2019 年 4 月
+**エージェントの更新:** 
+* AD FS 用の Azure AD Connect Health エージェント (バージョン 3.1.46.0) 
+   1. ADFS の重複する SPN アラート プロセスの修正確認
+
 ## <a name="march-2019"></a>2019 年 3 月
 **エージェントの更新:** 
-* AD DS 用の Azure AD Connect Health エージェント (バージョン 3.1.41.0) 
-* .NET バージョンのコレクション。
-* 特定のカテゴリが不足している場合のパフォーマンス カウンター収集の機能強化。
-* 複数の Monitoring Agent インスタンスの生成を防ぐためのバグ修正。
+* AD DS 用の Azure AD Connect Health エージェント (バージョン 3.1.41.0)  
+   1. .NET バージョンのコレクション
+   2. 特定のカテゴリが不足している場合のパフォーマンス カウンター収集の機能強化。
+   3. 複数の Monitoring Agent インスタンスの生成を防ぐためのバグ修正。
 
 * AD FS 用の Azure AD Connect Health エージェント (バージョン 3.1.41.0) 
-* ADFSToolBox を使用した AD FS テスト スクリプトの統合およびアップグレード。
-* .NET バージョンのコレクション。
-* 特定のカテゴリが不足している場合のパフォーマンス カウンター収集の機能強化。
-* 複数の Monitoring Agent インスタンスの生成を防ぐためのバグ修正。
+   1. ADFSToolBox を使用した AD FS テスト スクリプトの統合およびアップグレード。
+   2. .NET バージョンのコレクションの実装。
+   3. 特定のカテゴリが不足している場合のパフォーマンス カウンター収集の機能強化。
+   4. 複数の Monitoring Agent インスタンスの生成を防ぐためのバグ修正。
 
 
 ## <a name="november-2018"></a>2018 年 11 月
@@ -51,15 +56,15 @@ Azure AD Connect Health for Sync は、Azure AD Connect のインストールと
 
 **エージェントの更新:** 
 * AD DS 用の Azure AD Connect Health エージェント (バージョン 3.1.24.0) 
-* トランスポート層セキュリティ (TLS) プロトコル バージョン 1.2 の対応と適用
-* グローバル カタログのアラート ノイズの削減
-* 正常性エージェント登録のバグの修正
+   1. トランスポート層セキュリティ (TLS) プロトコル バージョン 1.2 の対応と適用
+   2. グローバル カタログのアラート ノイズの削減
+   3. 正常性エージェント登録のバグの修正
 
-* AD FS 用の Azure AD Connect Health エージェント (バージョン 3.1.24.0)
-* トランスポート層セキュリティ (TLS) プロトコル バージョン 1.2 の対応と適用
-* ローカライズされたオペレーティング システムに対する Test-ADFSRequestToken のサポート
-* 診断エージェント EventHandler のロックの問題の解決
-* 正常性エージェント登録のバグの修正
+* AD FS 用の Azure AD Connect Health エージェント (バージョン 3.1.24.0)  
+   1. トランスポート層セキュリティ (TLS) プロトコル バージョン 1.2 の対応と適用
+   2. ローカライズされたオペレーティング システムに対する Test-ADFSRequestToken のサポート
+   3. 診断エージェント EventHandler のロックの問題の解決
+   4. 正常性エージェント登録のバグの修正
 
 ## <a name="august-2018"></a>2018 年 8 月 
 *  Azure AD Connect バージョン 1.1.880.0 と共にリリースされた同期用 Azure AD Connect Health エージェント (バージョン 3.1.7.0)。    
@@ -189,7 +194,7 @@ Azure AD Connect Health for Sync は、Azure AD Connect のインストールと
 ## <a name="november-2015"></a>2015 年 11 月
 **新機能:**
 
-*  [ロールベースのアクセス制御](how-to-connect-health-operations.md#manage-access-with-role-based-access-control)
+* [ロールベースのアクセス制御](how-to-connect-health-operations.md#manage-access-with-role-based-access-control)
 
 **新しいプレビュー機能:**
 

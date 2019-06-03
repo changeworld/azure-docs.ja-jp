@@ -1,25 +1,25 @@
 ---
-title: Azure Database for PostgreSQL の接続ライブラリ
-description: この記事では、アプリケーションをコーディングして PostgreSQL for Azure Database に接続およびクエリを実行するときに、開発者が使用できるさまざまなライブラリやドライバーについて説明します。
+title: Azure Database for PostgreSQL - Single Server の接続ライブラリ
+description: この記事では、Azure Database for PostgreSQL - Single Server の接続およびクエリを実行するアプリケーションをコーディングするときに開発者が使用できるいくつかのライブラリとドライバーについて説明します。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 02/28/2018
-ms.openlocfilehash: 0e762a2d7cf82e2957fb276fcea0a20553f719e3
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 5/6/2019
+ms.openlocfilehash: 85110126f9bdec225b1644860814cd89832132a1
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53536017"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65073604"
 ---
-# <a name="connection-libraries-for-azure-database-for-postgresql"></a>Azure Database for PostgreSQL の接続ライブラリ
+# <a name="connection-libraries-for-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server の接続ライブラリ
 この記事では、Azure Database for PostgreSQL に接続およびクエリを実行するアプリケーションの開発に使用できるライブラリとドライバーを紹介します。
 
 ## <a name="client-interfaces"></a>クライアント インターフェイス
 PostgreSQL サーバーへの接続に使用されるほとんどの言語クライアント ライブラリは外部プロジェクトであり、個別に配布されています。 一覧に示されたライブラリは、Windows、Linux、および Macプラットフォームで Azure Database for PostgreSQL への接続のためにサポートされています。 「次のステップ」セクションで、いくつかのクイックスタートの例を示します。
 
-| **言語** | **クライアント インターフェイス** | **追加情報** | **ダウンロード** |
+| **Language** | **クライアント インターフェイス** | **追加情報** | **ダウンロード** |
 |--------------|----------------------------------------------------------------|-------------------------------------|--------------------------------------------------------------------|
 | Python | [psycopg](http://initd.org/psycopg/) | DB API 2.0 に準拠している | [ダウンロード](http://initd.org/psycopg/download/) |
 | PHP | [php-pgsql](https://secure.php.net/manual/en/book.pgsql.php) | データベース拡張機能 | [インストール](https://secure.php.net/manual/en/pgsql.installation.php) |

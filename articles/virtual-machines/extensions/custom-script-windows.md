@@ -8,14 +8,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 04/15/2019
+ms.date: 05/02/2019
 ms.author: gwallace
-ms.openlocfilehash: e2b36633996f961d100f0a98abb09135fd4393e4
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: b71ba69bcf4965ea607e097c392573e77aab6865
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60007085"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65408287"
 ---
 # <a name="custom-script-extension-for-windows"></a>Windows でのカスタムのスクリプト拡張機能
 
@@ -206,6 +206,16 @@ Set-AzVMExtension -ResourceGroupName <resourceGroupName> `
 
 * 拡張機能 **Name** パラメーターは拡張機能の前のデプロイと同じです。
 * 構成を更新します。そうしないと、コマンドは再実行されません。 コマンドには、タイムスタンプなどの動的プロパティを追加できます。
+
+または、[ForceUpdateTag](/dotnet/api/microsoft.azure.management.compute.models.virtualmachineextension.forceupdatetag) プロパティを **true** に設定できます。
+
+### <a name="using-invoke-webrequest"></a>Invoke-WebRequest の使用
+
+スクリプトで [Invoke-WebRequest](/powershell/module/microsoft.powershell.utility/invoke-webrequest) を使っている場合は、パラメーター `-UseBasicParsing` を指定する必要があります。そうしないと、詳細な状態をチェックするときに次のエラーを受け取ります。
+
+```error
+The response content cannot be parsed because the Internet Explorer engine is not available, or Internet Explorer's first-launch configuration is not complete. Specify the UseBasicParsing parameter and try again.
+```
 
 ## <a name="classic-vms"></a>クラシック VM
 

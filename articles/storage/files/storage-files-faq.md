@@ -8,12 +8,12 @@ ms.date: 01/02/2019
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 4186af31e17acea09e6b3c1a0121d2fcbe63f800
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: cdffbfd11a0f1c7d99818fa00f550965774b9b31
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64917607"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190066"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Azure Files に関してよく寄せられる質問 (FAQ)
 [Azure Files](storage-files-introduction.md) はクラウドで、業界標準の [Server Message Block (SMB) プロトコル](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)を介してアクセスできる、完全に管理されたファイル共有を提供します。 Azure ファイル共有は、クラウドまたはオンプレミスにデプロイされた Windows、Linux、macOS で同時にマウントできます。 また、データが使用される場所に近接した Windows Server マシンに、Azure File Sync で Azure ファイル共有をキャッシュすることによって、高速なアクセスを実現することもできます。
@@ -145,7 +145,7 @@ ms.locfileid: "64917607"
 
 * <a id="afs-os-support"></a>
   **Windows Server 2008 R2、Linux、または自分のネットワーク接続ストレージ (NAS) デバイスで Azure File Sync を使用することはできますか。**  
-    現在 Azure File Sync でサポートされるのは、Windows Server 2016 および Windows Server 2012 R2 のみです。 現時点でお伝えできる他の計画はありませんが、お客様の要望に応じてサポートするプラットフォームを増やしていきたいと考えています。 サポート対象としてご希望のプラットフォームがあれば、[Azure Files の UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files) までお寄せください。
+    現在、Azure File Sync は Windows Server 2019、Windows Server 2016、および Windows Server 2012 R2 のみをサポートしています。 現時点でお伝えできる他の計画はありませんが、お客様の要望に応じてサポートするプラットフォームを増やしていきたいと考えています。 サポート対象としてご希望のプラットフォームがあれば、[Azure Files の UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files) までお寄せください。
 
 * <a id="afs-tiered-files-out-of-endpoint"></a>
   **階層化されたファイルがサーバー エンドポイント名前空間の外部に存在するのはなぜですか。**  
@@ -222,7 +222,7 @@ ms.locfileid: "64917607"
 * <a id="encryption-at-rest"></a>
 **Azure ファイル共有に保存時の暗号化を確保するには、どうすればよいですか。**  
 
-    現在、すべてのリージョンにおいて Azure Storage Service Encryption を既定で有効にするプロセスが進行中です。 これらのリージョンでは、暗号化を有効にするために何かする必要はありません。 その他のリージョンについては、[サーバー側の暗号化](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)に関するページを参照してください。
+    はい。 詳細については、[Azure Storage Service Encryption](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) に関するページを参照してください。
 
 * <a id="access-via-browser"></a>
 **Web ブラウザーを使用して特定のファイルにアクセスできるようにするにはどうすればよいですか。**  

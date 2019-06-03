@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/03/2016
 ms.author: cephalin
 ms.openlocfilehash: 2be66b742d7a4572d3613a8b1fdeafd5fb7ed271
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56825868"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66111267"
 ---
 リソースを Azure にデプロイするには、Azure アカウントにサインインし、Azure Resource Manager モジュールを使用する必要があります。 Azure リソース マネージャーを Azure PowerShell または Azure CLI で使用する方法については、次のトピックを参照してください。
 

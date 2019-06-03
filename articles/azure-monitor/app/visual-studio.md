@@ -15,12 +15,12 @@ ms.date: 07/07/2017
 ms.pm_owner: daviste;NumberByColors
 ms.reviewer: mbullwin
 ms.author: daviste
-ms.openlocfilehash: b22f52ce9aa7f57e5b6638eef580a2675d5c9b1f
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 1b2f429129c0bb9098f4f5029cb07ce06bc5db13
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54117573"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66255133"
 ---
 # <a name="debug-your-applications-with-azure-application-insights-in-visual-studio"></a>Visual Studio の Azure Application Insights でアプリケーションをデバッグする
 Visual Studio (2015 以降) では、[Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) からのテレメトリを使用して、ASP.NET Web アプリのパフォーマンスの分析と問題の診断を、デバッグ中と運用環境の両方において実行できます。
@@ -105,5 +105,5 @@ Visual Studio 2015 Update 2 以降、Application Insights ポータルにテレ�
 |  |  |
 | --- | --- |
 | **[データの追加](../../azure-monitor/app/asp-net-more.md)**<br/>使用状況、可用性、依存関係、例外の監視。 ログ記録フレームワークからのトレースを統合します。 カスタム テレメトリを記述します。 |![Visual studio](./media/visual-studio/64.png) |
-| **[Application Insights ポータルの操作](../../azure-monitor/app/app-insights-dashboards.md)**<br/>ダッシュボード、強力な診断および分析ツール、アラート、アプリケーションのリアルタイム依存関係マップ、エクスポートされたテレメトリ データを表示します。 |![Visual studio](./media/visual-studio/62.png) |
+| **[Application Insights ポータルの操作](../../azure-monitor/app/overview-dashboard.md)**<br/>ダッシュボード、強力な診断および分析ツール、アラート、アプリケーションのリアルタイム依存関係マップ、エクスポートされたテレメトリ データを表示します。 |![Visual studio](./media/visual-studio/62.png) |
 

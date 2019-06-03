@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/21/2019
 ms.author: v-jansko
-ms.openlocfilehash: 3b938f07ef5b1feb9d5859f27423eaa79c2937cc
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: 8de9d7e6aac052ca24f1eef5f99c3146029bddbb
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59577594"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64690145"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>Translator Text API の言語と地域のサポート
 
@@ -28,7 +28,7 @@ Translator Text API では、テキスト対テキストの翻訳について、
 **V2 Translator API**
 
 > [!NOTE]
-> V2 は 2018 年 4 月 30 日をもって非推奨となり、2019 年 4 月 30 日をもってサービス停止となります。
+> V2 は、2018 年 4 月 30 日に非推奨となりました。 V3 で排他的に使用できる新しい機能を活用するためにアプリケーションを V3 に移行してください。
 
 * 統計のみ: この言語では、ニューラル システムは利用できません。
 * ニューラルが利用可能: ニューラル システムを利用できます。 ニューラル システムにアクセスするには、パラメーター `category=generalnn` を使用します。
@@ -230,14 +230,17 @@ Languages メソッドを使用して、Translator Text API v3.0 でサポート
 | インドネシア語|   `id`    |
 | イタリア語      | `it`          |
 | 日本語      | `ja`          |
+|スワヒリ語| `sw`    |
 | 韓国語      | `ko`          |
 | ラトビア語      | `lv`          |
 | リトアニア語      | `lt`          |
+|マダガスカル語|  `mg`    |
 | ノルウェー語      | `nb`          |
 | ポーランド語      | `pl`          |
 | ポルトガル語      | `pt`          |
 | ルーマニア語      | `ro`          |
 | ロシア語      | `ru`          |
+|サモア語|    `sm`    |
 | セルビア語 (ラテン)      | `sr-Latn`          |
 | スロバキア語     | `sk`          |
 | スロベニア語      | `sl`          |

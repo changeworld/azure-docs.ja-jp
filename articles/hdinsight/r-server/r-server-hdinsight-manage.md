@@ -71,7 +71,7 @@ RStudio はクラスターのエッジ ノードで実行されているため�
 
 ### <a name="step-3-use-rstudio-community-version-with-the-user-created"></a>手順 3:ユーザーが作成された RStudio Community バージョンを使用する
 
-https://CLUSTERNAME.azurehdinsight.net/rstudio/ から RStudio にアクセスします。 クラスターの作成後、初めてログインする場合は、クラスター管理者の資格情報を入力してから、作成した SSH ユーザーの資格情報を入力します。 初めてのログインではない場合は、作成した SSH ユーザーの資格情報だけを入力します。
+[https://CLUSTERNAME.azurehdinsight.net/rstudio/](https://CLUSTERNAME.azurehdinsight.net/rstudio/) から RStudio にアクセスします。 クラスターの作成後、初めてログインする場合は、クラスター管理者の資格情報を入力してから、作成した SSH ユーザーの資格情報を入力します。 初めてのログインではない場合は、作成した SSH ユーザーの資格情報だけを入力します。
 
 同時に、別のブラウザー ウィンドウから元の資格情報 (既定では *sshuser*) を使用してサインインすることもできます。
 
@@ -305,7 +305,7 @@ HDInsight ML Services を使うと、Hive および Parquet 内のデータに�
 
 3. **[スクリプト操作を追加]** で、次の情報を指定します。
 
-   * **[スクリプトの種類]** で、**[カスタム]** を選択します。
+   * **[スクリプトの種類]** で、 **[カスタム]** を選択します。
 
    * **[名前]** で、スクリプト操作の名前を指定します。
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: jlembicz
 ms.custom: seodec2018
-ms.openlocfilehash: cb8e42400847ba9fb13568d05dffac86d9cec85f
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: bc183cb8ac2155b8dd31dc603d70506ad3d5e20a
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024620"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65797479"
 ---
 # <a name="how-full-text-search-works-in-azure-search"></a>Azure Search のフルテキスト検索のしくみ
 
@@ -392,8 +392,6 @@ Azure Search のすべてのインデックスは自動的に複数のシャー�
 + [言語に固有の字句解析器](https://docs.microsoft.com/rest/api/searchservice/language-support)を適用する方法について書かれた記事を参照します。
 
 + 特定のフィールドに対して最小限の処理または特殊な処理を適用するための[カスタム アナライザーを構成](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search)します。
-
-+ このデモ Web サイトで横並びに表示される[標準アナライザーと英語アナライザーを比較](https://alice.unearth.ai/)してください。 
 
 ## <a name="see-also"></a>関連項目
 

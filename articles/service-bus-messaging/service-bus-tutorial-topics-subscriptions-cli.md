@@ -9,12 +9,12 @@ ms.date: 09/22/2018
 ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
-ms.openlocfilehash: 60c4d1631717eea602e391387d57afe268efbace
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e55c8c6a579489c8ed5a13ccb93f0e72c286ab13
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58075886"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65991939"
 ---
 # <a name="tutorial-update-inventory-using-cli-and-topicssubscriptions"></a>チュートリアル:CLI とトピック/サブスクリプションを使用して在庫を更新する
 
@@ -324,6 +324,9 @@ public CompletableFuture<Void> receiveAllMessageFromSubscription(String subscrip
     return new CompletableFuture().completedFuture(null);
 }
 ```
+
+> [!NOTE]
+> Service Bus リソースは、[Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/) で管理できます。 Service Bus Explorer を使用すると、ユーザーは Service Bus 名前空間に接続し、簡単な方法でメッセージング エンティティを管理できます。 このツールには、インポート/エクスポート機能や、トピック、キュー、サブスクリプション、リレー サービス、通知ハブ、イベント ハブをテストする機能などの高度な機能が用意されています。 
 
 ## <a name="next-steps"></a>次の手順
 

@@ -10,16 +10,14 @@ ms.subservice: speech-service
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: 9a00dfd1186d19ce9432db8e636bffa40eb977af
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 0e24f66369cf990f6b271b894a31dc8395068e17
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59280538"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66257345"
 ---
 # <a name="tutorial-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>チュートリアル:C# 用の Speech SDK を使用して音声の意図を認識する
-
-[!INCLUDE [Article selector](../../../includes/cognitive-services-speech-service-how-to-recognize-intents-from-speech-selector.md)]
 
 Cognitive Services [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) は [Language Understanding サービス (LUIS)](https://www.luis.ai/home) と統合して**意図認識**機能を提供します。 意図は、航空機の予約や天気のチェック、あるいは電話を掛けるなどのユーザーが実行したい行動です。 ユーザーは、自然だと思われるどのような用語でも使用できます。 LUIS は機械学習を使用して、定義されている意図にユーザーの要求をマップします。
 
@@ -64,7 +62,7 @@ Azure ダッシュ ボードで LUIS のリソースを作成した後、[LUIS �
 
 [Keys and endpoints]\(キーとエンドポイント\) の設定ページで、次のようにします。
 
-1. [Resources and Keys]\(リソースとキー\) セクションまでスクロールし、**[Assign resource]\(リソースの割り当て\)** をクリックします。
+1. [Resources and Keys]\(リソースとキー\) セクションまでスクロールし、 **[Assign resource]\(リソースの割り当て\)** をクリックします。
 1. **[アプリへのキーの割り当て]** ダイアログで、次を選択します。
 
     * [Tenant]\(テナント\) として Microsoft を選択します。

@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 12/05/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 349896a7114fba83d852b8bc066f4f7eb0a070ba
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: e1fc405951789305b0df86fd0f7b91890fb45c06
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58850306"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242632"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Batch の診断の評価と監視用のメトリック、アラート、およびログ
 
@@ -45,9 +45,9 @@ Azure Portal で Batch アカウントのメトリックを表示します。 �
 
 すべての Batch アカウントのメトリックを表示するには: 
 
-1. ポータルで、**[すべてのサービス]** > **[Batch アカウント]** をクリックし、Batch アカウントの名前をクリックします。
+1. ポータルで、 **[すべてのサービス]**  >  **[Batch アカウント]** をクリックし、Batch アカウントの名前をクリックします。
 2. **[監視]** で **[メトリック]** をクリックします。
-3. 1 つまたは複数のメトリックを選択します。 必要に応じて、**[サブスクリプション]**、**[リソース グループ]**、**[リソースの種類]**、および **[リソース]** のドロップダウンを使用して、追加のリソース メトリックを選択します。
+3. 1 つまたは複数のメトリックを選択します。 必要に応じて、 **[サブスクリプション]** 、 **[リソース グループ]** 、 **[リソースの種類]** 、および **[リソース]** のドロップダウンを使用して、追加のリソース メトリックを選択します。
 
     ![Batch メトリック](media/batch-diagnostics/metrics-portal.png)
 
@@ -67,8 +67,8 @@ Azure Portal で Batch アカウントのメトリックを表示します。 �
 
 ポータルでメトリック アラートを構成するには:
 
-1. **[すべてのサービス]** > **[Batch アカウント]** の順にクリックし、Batch アカウントの名前をクリックします。
-2. **[監視]** で、**[アラート ルール]** > **[メトリック アラートの追加]** をクリックします。
+1. **[すべてのサービス]**  >  **[Batch アカウント]** の順にクリックし、Batch アカウントの名前をクリックします。
+2. **[監視]** で、 **[アラート ルール]**  >  **[メトリック アラートの追加]** をクリックします。
 3. メトリック、アラート条件 (メトリックが期間中に特定の値を超えた場合など)、および 1 つ以上の通知を選択します。
 
 リアルタイムに近い通知は、[REST API](https://docs.microsoft.com/rest/api/monitor/) を使用して構成することもできます。 詳しくは、[アラートの概要](../azure-monitor/platform/alerts-overview.md)に関するページをご覧ください。
@@ -99,8 +99,8 @@ Azure Portal で Batch アカウントのメトリックを表示します。 �
 
 ### <a name="enable-collection-of-batch-diagnostic-logs"></a>Batch 診断ログの収集を有効にする
 
-1. ポータルで、**[すべてのサービス]** > **[Batch アカウント]** をクリックし、Batch アカウントの名前をクリックします。
-2. **[監視]** で、**[診断ログ]** > **[診断の有効化]** をクリックします。
+1. ポータルで、 **[すべてのサービス]**  >  **[Batch アカウント]** をクリックし、Batch アカウントの名前をクリックします。
+2. **[監視]** で、 **[診断ログ]**  >  **[診断の有効化]** をクリックします。
 3. **[診断設定]** に、設定の名前を入力し、ログの保存先 (既存の Storage アカウント、Event Hub、または Azure Monitor ログ) を選択します。 **[ServiceLog]** と **[AllMetrics]** のいずれかまたは両方を選択します。
 
     ストレージ アカウントを選択するときに、必要に応じて保持ポリシーを設定します。 リテンション期間の日数を指定しない場合は、ストレージ アカウントが有効である間、データは保持されます。
@@ -109,7 +109,7 @@ Azure Portal で Batch アカウントのメトリックを表示します。 �
 
     ![Batch 診断](media/batch-diagnostics/diagnostics-portal.png)
 
-ログの収集を有効にするためのオプションとして、他に次のオプションがあります。ポータルで Azure Monitor を使用して診断設定を構成する。[Resource Manager テンプレート](../azure-monitor/platform/diagnostic-logs-stream-template.md)を使用する。または Azure PowerShell または Azure CLI を使用する。 「[Azure リソースからのログ データの収集と使用](../azure-monitor/platform/diagnostic-logs-overview.md#how-to-enable-collection-of-diagnostic-logs)」を参照してください。
+ログの収集を有効にするためのオプションとして、他に次のオプションがあります。ポータルで Azure Monitor を使用して診断設定を構成する。[Resource Manager テンプレート](../azure-monitor/platform/diagnostic-logs-stream-template.md)を使用する。または Azure PowerShell または Azure CLI を使用する。 「[Azure リソースからのログ データの収集と使用](../azure-monitor/platform/diagnostic-logs-overview.md)」を参照してください。
 
 
 ### <a name="access-diagnostics-logs-in-storage"></a>ストレージ内の診断ログにアクセスする

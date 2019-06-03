@@ -3,19 +3,19 @@ title: クイック スタート:Bing Visual Search SDK for C# を使用して�
 titleSuffix: Azure Cognitive Services
 description: Bing Visual Search SDK を使用して画像をアップロードし、画像に関する分析情報を取得する方法について説明します。
 services: cognitive-services
-author: mikedodaro
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 05/16/2018
+ms.date: 05/15/2019
 ms.author: v-gedod
-ms.openlocfilehash: a7fc4686ec31b4c3a23d3e0ff72e5e2a270015b0
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 9fd693207b429ddc0a2bfdd772f4822f188ac3f7
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57532101"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65884933"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-sdk-for-c"></a>クイック スタート:Bing Visual Search SDK for C# を使用して画像に関する分析情報を取得する
 
@@ -23,7 +23,7 @@ ms.locfileid: "57532101"
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Visual Studio 2017](https://www.visualstudio.com/downloads/) の任意のエディション。
+* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)。
 * Linux/macOS を使用している場合、このアプリケーションは [Mono](https://www.mono-project.com/) を使用して実行できます。
 * NuGet Visual Search パッケージ。 
     - Visual Studio でソリューション エクスプ ローラーから、プロジェクトを右クリックして、メニューから `Manage NuGet Packages` を選択します。 `Microsoft.Azure.CognitiveServices.Search.VisualSearch` パッケージをインストールします。 NuGet パッケージをインストールすると、次のものもインストールされます。

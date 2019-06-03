@@ -12,12 +12,12 @@ ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
 ms.date: 04/19/2019
-ms.openlocfilehash: 6ad4cf251ad09adb7e1f11ebd42d7eab0d6a9183
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: c3a29c6b4d0308b41e29f38fc29d79634727d593
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60006473"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64926016"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-keys-in-azure-key-vault-bring-your-own-key-support"></a>Azure Key Vault のユーザー管理キーを使用した Azure SQL Transparent Data Encryption:Bring Your Own Key のサポート
 
@@ -61,6 +61,7 @@ Key Vault の TDE 保護機能を使用するように TDE が最初に構成さ
 - 必要なリソースに使用するサブスクリプションを決定します。後でサーバーをサブスクリプション間で移動するには、BYOK 対応 TDE の新しいセットアップが必要になります。 リソースの移動の詳細については、[こちら](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)をご覧ください。
 - TDE と Azure Key Vault を構成するときは、ラップ/ラップ解除操作の繰り返しによってキー コンテナーにかかる負荷を考慮することが重要です。 たとえば、SQL Database サーバーに関連付けられているすべてのデータベースで同じ TDE 保護機能が使用されるため、そのサーバーのフェールオーバーが発生すると、サーバー内のデータベースと同じ数のキー操作がコンテナーに対してトリガーされます。 これまでの経験と文書化されている [Key Vault サービスの制限](https://docs.microsoft.com/azure/key-vault/key-vault-service-limits)に基づき、コンテナー内の TDE 保護機能にアクセスするときに高可用性を常に確保するために、1 つのサブスクリプションの 1 つの Azure Key Vault に関連付けるデータベースの数を、Standard/General Purpose データベースの場合は最大 500 個、Premium/Business Critical データベースの場合は最大 200 個にすることをお勧めします。
 - 推奨:TDE 保護機能のコピーをオンプレミスに保持します。  これには、TDE 保護機能をローカルに作成するための HSM デバイスと、TDE 保護機能のローカル コピーを格納するためのキー エスクロー システムが必要です。  ローカル HSM から Azure Key Vault にキーを転送する方法については、[こちら](https://docs.microsoft.com/azure/key-vault/key-vault-hsm-protected-keys)をご覧ください。
+- 既存の構成に関する問題については、「[TDE のトラブルシューティング](https://docs.microsoft.com/sql/relational-databases/security/encryption/troubleshoot-tde)」を参照してください。
 
 ### <a name="guidelines-for-configuring-azure-key-vault"></a>Azure Key Vault の構成に関するガイドライン
 
@@ -72,7 +73,7 @@ Key Vault の TDE 保護機能を使用するように TDE が最初に構成さ
 - Azure Active Directory (Azure AD) ID を使用して、SQL Database サーバーにキー コンテナーへのアクセス権を付与します。  ポータル UI を使用すると、Azure AD ID が自動的に作成され、キー コンテナーのアクセス許可がサーバーに付与されます。  PowerShell を使用して BYOK 対応 TDE を構成する場合は、Azure AD ID を作成し、完了を確認する必要があります。 PowerShell を使用するときの詳細な手順については、[BYOK 対応 TDE の構成](transparent-data-encryption-byok-azure-sql-configure.md)と [Managed Instance 用 BYOK 対応 TDE の構成](https://aka.ms/sqlmibyoktdepowershell)に関する記事を参照してください。
 
   > [!NOTE]
-  > Azure AD ID が**誤って削除された場合や、サーバーのアクセス許可が取り消された場合** (キー コンテナーのアクセス ポリシーを使用)、サーバーはキー コンテナーへのアクセスを失い、TDE で暗号化されたデータベースは 24 時間以内にアクセスできなくなります。
+  > Azure AD の ID **が誤って削除されたか、または Key Vault のアクセス ポリシーを使用するかあるいはサーバーを誤って別のサブスクリプションに移動することによってサーバーのアクセス許可が取り消された場合**、サーバーは Key Vault にアクセスできなくなり、TDE 暗号化データベースには 24 時間が経過するまでアクセスできなくなります。  
 
 - Azure Key Vault でファイアウォールと仮想ネットワークを使用するときは、次を構成する必要があります。 
   - [Allow trusted Microsoft services to bypass this firewall]\(信頼された Microsoft サービスがこのファイアウォールをバイパスすることを許可する\) - [はい] を選択

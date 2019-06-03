@@ -1,6 +1,6 @@
 ---
-title: Azure の施設、建物、および物理上のセキュリティ | Microsoft Docs
-description: この記事では、物理インフラストラクチャ、セキュリティ、およびコンプライアンス サービスなど、Azure データセンターについて説明します。
+title: Azure データセンターの物理上のセキュリティ - Microsoft Azure | Microsoft Docs
+description: この記事では、物理インフラストラクチャ、セキュリティ、コンプライアンス サービスなど、Azure データセンターを保護するための Microsoft の取り組みについて説明します。
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -12,19 +12,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/28/2018
+ms.date: 04/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 5f8378de18796fd679354c88880942df83399ad5
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: d1b95695de809668987ebb6ef6720a3751205171
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56112046"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64939846"
 ---
 # <a name="azure-facilities-premises-and-physical-security"></a>Azure の施設、建物、および物理上のセキュリティ
+この記事では Azure インフラストラクチャを保護するための Microsoft の取り組みについて説明します。
+
+## <a name="datacenter-infrastructure"></a>データセンター インフラストラクチャ
 Azure は、何千ものオンライン サービスをサポートし、世界中に安全性の高い 100 以上の施設を展開している、[グローバルに分散したデータセンター インフラストラクチャ](https://azure.microsoft.com/global-infrastructure/)から成り立っています。
 
-このインフラストラクチャは、世界中のユーザーの傍にアプリケーションを届けるように設計されています。また、データの保存場所を確保し、お客様に包括的なコンプライアンスと回復性のオプションを提供します。 Azure は世界中に 52 のリージョンを備え、140 の国で利用できます。
+このインフラストラクチャは、世界中のユーザーの傍にアプリケーションを届けるように設計されています。また、データの保存場所を確保し、お客様に包括的なコンプライアンスと回復性のオプションを提供します。 Azure は世界中に 52 のリージョンを備え、140 の国/地域で利用できます。
 
 リージョンとは、大規模かつ回復性の高いネットワーを経由して、相互に接続された一連のデータセンターです。 ネットワークは既定で、コンテンツの配布、負荷分散、冗長性、および暗号化を備えています。 他のどのクラウド プロバイダーよりも多くのグローバル リージョンを提供している Azure では、必要に応じてアプリケーションを自在にデプロイできます。
 
@@ -67,9 +70,9 @@ Microsoft では、[NIST 800-88 コンプライアンス](https://csrc.nist.gov/
 システムの寿命がくると、Microsoft 運用担当者は、データを格納しているハードウェアが信頼できない第三者の手に渡らないよう、厳格なデータ処理およびハードウェア廃棄の手続きを実行します。 セキュリティで保護された消去アプローチは、それをサポートしているハード ドライブに使用されます。 ワイプできないハード ドライブの場合、このドライブを破壊して情報の復旧を不可能にする破棄プロセスが使用されます。 この破棄のプロセスでは、分解、損壊、粉砕、または焼却処理が可能です。 資産の種類に従って破棄の手段が決定されます。 破棄の記録が保存されます。 すべての Azure サービスは、承認済みのメディア ストレージと破棄管理サービスを利用します。
 
 ## <a name="compliance"></a>コンプライアンス
-Azure インフラストラクチャは、ISO 27001、HIPAA、FedRAMP、SOC 1、SOC 2 など、国際的かつ業界固有の広範なコンプライアンス標準に適合するように設計および管理されています。 また、オーストラリアの IRAP、英国の G-Cloud、シンガポールの MTCS など、国に固有の標準にも適合します。 British Standards Institute が行うようなサード パーティによる厳正な監査により、これらの基準に定められている厳密なセキュリティ管理要件を満たしていることが証明されています。
+Azure インフラストラクチャは、ISO 27001、HIPAA、FedRAMP、SOC 1、SOC 2 など、国際的かつ業界固有の広範なコンプライアンス標準に適合するように設計および管理されています。 また、オーストラリアの IRAP、英国の G-Cloud、シンガポールの MTCS など、国 (地域) に固有の標準にも適合します。 British Standards Institute が行うようなサード パーティによる厳正な監査により、これらの基準に定められている厳密なセキュリティ管理要件を満たしていることが証明されています。
 
-Azure が準拠しているコンプライアンス標準の完全な一覧については、「[コンプライアンス認証](https://www.microsoft.com/trustcenter/compliance/complianceofferings)」をご覧ください。 
+Azure が準拠しているコンプライアンス標準の完全な一覧については、「[コンプライアンス認証](https://www.microsoft.com/trustcenter/compliance/complianceofferings)」をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 Microsoft が Azure インフラストラクチャのセキュリティ保護を支援するために行っていることの詳細については、以下を参照してください。

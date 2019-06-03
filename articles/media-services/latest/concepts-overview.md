@@ -1,6 +1,6 @@
 ---
-title: Azure Media Services の概念 - Azure | Microsoft Docs
-description: このトピックでは、Azure Media Services の概念を簡単に説明し、詳細がわかるリンクを提供します。
+title: Azure Media Services の用語と概念 - Azure | Microsoft Docs
+description: このトピックでは、Azure Media Services の用語と概念を簡単に説明し、詳細情報へのリンクを提供します。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -9,23 +9,41 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 05/13/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 8f21374ae5da76c9954acc5227f593ab4be19ce9
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.openlocfilehash: 1e76569c7f5157dce681d15ec8d499b90e080102
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58630548"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65762308"
 ---
 # <a name="media-services-concepts"></a>Media Services の概念
 
-このトピックでは、Azure Media Services の概念を簡単に説明し、Media Services v3 の概念と機能について詳しく説明しているページのリンクを提供します。 開発を始める前に、これらのトピックで説明されている基本的な概念を確認する必要があります。
+このトピックでは、Azure Media Services の用語と概念について簡単に説明します。 また、この記事では、Media Services v3 の概念と機能を詳細に説明する記事へのリンクを提供します。 
+
+開発を始める前に、これらのトピックで説明されている基本的な概念を確認する必要があります。
 
 > [!NOTE]
-> 現時点では、Azure portal を使用して v3 リソースを管理することはできません。 [REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref)、サポートされている [SDK](developers-guide.md) のいずれかを使用します。
+> 現時点では、Azure portal を使用して v3 リソースを管理することはできません。 [REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref)、またはサポートされている [SDK](media-services-apis-overview.md#sdks) のいずれかを使用してください。
 
+## <a name="terminology"></a>用語集
+
+このセクションでは、いくつかの一般的な業界用語が Media Services v3 API にどのようにマップされるかを示します。
+
+### <a name="live-event"></a>ライブ イベント
+
+**ライブ イベント**は、動画、音声、およびリアルタイム メタデータのライブ ストリームの取り込み、コード変換 (省略可能)、およびパッケージ化を表します。
+
+Media Services v2 API から移行するお客様の場合、**ライブ イベント**は v2 の **Channel** エンティティに置き換わるものです。 詳細については、[v2 から v3 への移行](migrate-from-v2-to-v3.md)に関する記事を参照してください。
+
+### <a name="streaming-endpoint-packaging-and-origin"></a>ストリーミング エンドポイント (パッケージ化と配信元)
+
+**ストリーミング エンドポイント**は、ダイナミック (Just-In-Time) パッケージおよび配信元サービスを表します。これは、いずれかの一般的なストリーミング メディア プロトコル (HLS または DASH) を使用して、ライブのオンデマンド コンテンツをクライアント プレーヤー アプリケーションに直接配信できます。 また、**ストリーミング エンドポイント**は、業界最先端の DRM に動的 (Just-In-Time) 暗号化を提供します。
+
+メディア ストリーミング業界では、このサービスは、一般的に**パッケージャー**または**配信元**と呼ばれます。  この機能に関するその他の一般的な業界用語には、JITP (Just-in-time-packager) や JITE (Just-in-time-encryption) があります。 
+ 
 ## <a name="cloud-upload-and-storage"></a>クラウドのアップロードとストレージ
 
 Azure でメディア コンテンツの管理、暗号化、エンコード、分析、およびストリーミングを開始するには、Media Services アカウントを作成し、デジタル ファイルを**アセット**にアップロードする必要があります。
@@ -52,13 +70,13 @@ Media Services v3 でエンコードするには、**変換**と**ジョブ**を
 
 ## <a name="packaging-delivery-protection"></a>パッケージ化、デリバリー、保護
 
-コンテンツがエンコードされたら、**ダイナミック パッケージ**を活用できます。 **ストリーミング エンドポイント**は、メディア コンテンツをクライアント プレーヤーに届ける Media Services のダイナミック パッケージ サービスです。 出力アセット内のビデオをクライアントが再生できるようにするには、**ストリーミング ロケーター**を作成し、ストリーミング URL をビルドする必要があります。 
+コンテンツがエンコードされたら、**ダイナミック パッケージ**を活用できます。 Media Services では、**ストリーミング エンドポイント** (配信元) は、メディア コンテンツをクライアント プレーヤーに配信するために使用されるダイナミック パッケージ サービスです。 出力アセット内のビデオをクライアントが再生できるようにするには、**ストリーミング ロケーター**を作成し、ストリーミング URL をビルドする必要があります。 
 
 **ストリーミング ロケーター**を作成するときに、アセット名に加えて、**ストリーミング ポリシー**を指定する必要があります。 **ストリーミング ポリシー**を使用して、**ストリーミング ロケーター**のためのストリーミング プロトコルと暗号化オプション (該当する場合) を定義できます。
 
 ダイナミック パッケージは、コンテンツのストリーミングがライブの場合でもオンデマンドの場合でも使用されます。 次の図は、ダイナミック パッケージのワークフローを使用したオンデマンド ストリーミングを示しています。
 
-![ダイナミック パッケージ](./media/dynamic-packaging-overview/media-services-dynamic-packaging.svg)
+![ダイナミック パッケージ](./media/dynamic-packaging-overview/media-services-dynamic-packaging.png)
 
 Media Services では、Advanced Encryption Standard (AES-128) または主要な 3 つのデジタル著作権管理 (DRM) システム (Microsoft PlayReady、Google Widevine、Apple FairPlay) によって動的に暗号化されたライブまたはオンデマンドのコンテンツを配信できます。 Media Services では、承認されたクライアントに AES キーと DRM (PlayReady、Widevine、FairPlay) ライセンスを配信するためのサービスも提供しています。
 
@@ -115,6 +133,10 @@ Azure Monitor を使用して、アプリケーションの実行状況を理解
 Azure Media Player を使用すると、Media Services によってストリーミングされたメディア コンテンツをさまざまなブラウザーやデバイス上で再生できます。 Azure Media Player では、HTML5、Media Source Extensions (MSE)、Encrypted Media Extensions (EME) といった業界標準を使用して、強化されたアダプティブ ストリーミングを提供します。 
 
 - [Azure Media Player の概要](use-azure-media-player.md)
+
+## <a name="ask-questions-give-feedback-get-updates"></a>質問、フィードバックの提供、最新情報の入手
+
+「[Azure Media Services community (Azure Media Services コミュニティ)](media-services-community.md)」を参照して、さまざまな質問の方法、フィードバックする方法、Media Services に関する最新情報の入手方法を確認してください。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -13,14 +13,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 10/27/2017
+ms.date: 02/22/2019
 ms.author: gokuma
-ms.openlocfilehash: 74fe2345af5d1249d6704c7560b42323561bc623
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: bb04d6c8b16a6b9bdbbb95b0b4f577cf4cc3ed86
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58918248"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235076"
 ---
 # <a name="introduction-to-azure-data-science-virtual-machine-for-linux-and-windows"></a>Linux および Windows 用の Azure データ サイエンス仮想マシンの概要
 
@@ -45,6 +45,10 @@ Data Science Virtual Machine (DSVM) の目標は、業界を越えてすべて�
 
 ### <a name="on-demand-elastic-capacity-for-large-scale-projects"></a>大規模なプロジェクトのためのオンデマンドで柔軟な容量
 データ サイエンスのハッカーソンや競技または大規模なデータ モデリングと探索では、スケールアウトしたハードウェア容量が通常は短期間に必要になります。 データ サイエンス VM は、高性能コンピューティング リソースを実行する必要がある実験を可能にするスケールアウトされたサーバー上で、必要に応じて迅速にデータ サイエンス環境を複製できます。
+
+### <a name="custom-compute-power-for-azure-notebooks"></a>Azure Notebooks のカスタム コンピューティング能力
+
+[Azure Notebooks](/azure/notebooks/azure-notebooks-overview) は、インストールせずに、クラウドで Jupyter ノートブックを開発、実行、および共有するための無料のホストされるサービスです。 ただし、無料のサービス レベルは 4GB のメモリと 1GB のデータに制限されています。 すべての制限を解放するには、その後 Notebooks プロジェクトを Data Science VM か、または Jupyter サーバーを実行している他の任意の VM に接続できます。 Azure Active Directory を使用してアカウント (会社のアカウントなど) で Azure Notebooks にサインインすると、Notebooks には、そのアカウントに関連付けられたいずれかのサブスクリプションの Data Science VM が自動的に表示されます。 詳細については、「プロジェクトの管理と構成」の「[Compute tier (コンピューティング レベル)](/azure/notebooks/configure-manage-azure-notebooks-projects#compute-tier)」を参照してください。
 
 ### <a name="short-term-experimentation-and-evaluation"></a>短期的な実験と評価
 データ サイエンス VM は、Microsoft ML Server、SQL Server、Visual Studio ツール、Jupyter、ディープ ラーニング/ML ツールキット、およびコミュニティで人気のあるセットアップ作業が最小限の新しいツールなど、ツールの学習と評価のために使用できます。 Data Science VM は迅速に設定できるので、公開された実験の複製、デモの実行、オンライン セッションでのチュートリアルの実施、会議チュートリアルなど、他の短期的な使用シナリオに適用できます。

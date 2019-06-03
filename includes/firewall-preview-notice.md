@@ -9,11 +9,11 @@ ms.date: 7/11/2018
 ms.author: victorh
 ms.custom: include file
 ms.openlocfilehash: ea1d331eefe07980547ffae18fbbca920475ec06
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58500850"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66148438"
 ---
 > [!IMPORTANT]
 > 現在、Azure Firewall はマネージド パブリック プレビュー段階にあります。 `Register-AzProviderFeature` PowerShell コマンドを使用して、明示的に有効にすることができます。

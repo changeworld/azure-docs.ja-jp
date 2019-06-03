@@ -1,5 +1,5 @@
 ---
-title: VHD からデータをインポートし、Microsoft Azure Data Box を使用してマネージド ディスクにコピーする| Microsoft Docs
+title: 'チュートリアル: Azure Data Box を使用して VHD からマネージド ディスクにデータをコピーする| Microsoft Docs'
 description: オンプレミスの VM ワークロードの VHD から Azure Data Box にデータをコピーする方法について説明します
 services: databox
 author: alkohli
@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 02/27/2019
 ms.author: alkohli
-ms.openlocfilehash: ec2013a793f766221a66912d6de9d8da8b8106dd
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 3284821e0ec65a76b29d5195315136639304e411
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59282561"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925475"
 ---
 # <a name="tutorial-use-data-box-to-import-data-as-managed-disks-in-azure"></a>チュートリアル:Data Box を使用して Azure のマネージド ディスクとしてデータをインポートする
 
@@ -97,7 +97,7 @@ Windows Server ホスト コンピューターを使用している場合は、�
     C: \>
     ```
 
-4. Windows キーを押しながら R キーを押します。**[ファイル名指定して実行]** ウィンドウで、「`\\<device IP address>\<ShareName>`」と入力します。 **[OK]** をクリックして、エクスプローラーを開きます。
+4. Windows キーを押しながら R キーを押します。 **[ファイル名指定して実行]** ウィンドウで、「`\\<device IP address>\<ShareName>`」と入力します。 **[OK]** をクリックして、エクスプローラーを開きます。
     
     ![エクスプローラーで共有に接続する 2](media/data-box-deploy-copy-data-from-vhds/connect-shares-file-explorer1.png)
 
@@ -110,11 +110,11 @@ Windows Server ホスト コンピューターを使用している場合は、�
 
 Linux ホスト コンピューターを使用している場合は、次の手順を実行して、NFS クライアントへのアクセスを許可するように Data Box を構成します。
 
-1. 共有にアクセスできる許可するクライアントの IP アドレスを指定します。 ローカル Web UI で、**[接続とコピー]** ページに移動します。 **[NFS の設定]** で、**[NFS のクライアント アクセス]** をクリックします。
+1. 共有にアクセスできる許可するクライアントの IP アドレスを指定します。 ローカル Web UI で、 **[接続とコピー]** ページに移動します。 **[NFS の設定]** で、 **[NFS のクライアント アクセス]** をクリックします。
 
     ![NFS のクライアント アクセスを構成する 1](media/data-box-deploy-copy-data-from-vhds/nfs-client-access1.png)
 
-2. NFS クライアントの IP アドレスを指定して、**[追加]** をクリックします。 この手順を繰り返すことにより、複数の NFS クライアントに対するアクセスを構成できます。 Click **OK**.
+2. NFS クライアントの IP アドレスを指定して、 **[追加]** をクリックします。 この手順を繰り返すことにより、複数の NFS クライアントに対するアクセスを構成できます。 Click **OK**.
 
     ![NFS のクライアント アクセスを構成する 2](media/data-box-deploy-copy-data-from-vhds/nfs-client-access2.png)
 
@@ -149,7 +149,7 @@ SMB と NFS のどちらを経由して接続するかに応じて、次の方�
 
 ![エラーがない **[接続とコピー]** ページ](media/data-box-deploy-copy-data-from-vhds/verify-no-errors-connect-and-copy.png)
 
-コピー プロセス中にエラーがある場合は、**[接続とコピー]** ページからログをダウンロードします。
+コピー プロセス中にエラーがある場合は、 **[接続とコピー]** ページからログをダウンロードします。
 
 - 512 バイトにアラインされていないファイルをコピーした場合、そのファイルはステージング用のストレージ アカウントにページ BLOB としてアップロードされません。 ログにエラーが表示されます。 そのファイルを削除し、512 バイトにアラインされているファイルをコピーします。
 

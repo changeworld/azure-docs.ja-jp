@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 04/10/2019
 ms.author: spelluru
-ms.openlocfilehash: eb19833251fc9ee08a12aaf6ffcef55d59cea5d6
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.openlocfilehash: 076e3b41a50681e453c1a07575ac6cb7071d97d2
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59500636"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65992035"
 ---
 # <a name="quickstart-use-the-azure-cli-to-create-a-service-bus-queue"></a>クイック スタート:Azure CLI を使用して Service Bus キューを作成する
 このクイック スタートでは、Azure CLI と Service Bus Java ライブラリを使って、Service Bus とメッセージを送受信する方法について説明します。 最後に、技術的な詳細に関心がある場合は、サンプル コードの主要な要素の[説明を読む](#understand-the-sample-code)ことができます。
@@ -366,6 +366,9 @@ void registerReceiver(QueueClient queueClient, ExecutorService executorService) 
 
 }
 ```
+
+> [!NOTE]
+> Service Bus リソースは、[Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/) で管理できます。 Service Bus Explorer を使用すると、ユーザーは Service Bus 名前空間に接続し、簡単な方法でメッセージング エンティティを管理できます。 このツールには、インポート/エクスポート機能や、トピック、キュー、サブスクリプション、リレー サービス、通知ハブ、イベント ハブをテストする機能などの高度な機能が用意されています。 
 
 ## <a name="next-steps"></a>次の手順
 

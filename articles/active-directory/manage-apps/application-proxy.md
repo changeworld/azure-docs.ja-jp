@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/07/2019
+ms.date: 05/09/2019
 ms.author: celested
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ac94574ac297da7b3555be8d92ba3c5b62a990c5
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e490ed9d104fc039a79083a94ddaebdeba766d2a
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56174760"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65506656"
 ---
 # <a name="remote-access-to-on-premises-applications-through-azure-active-directorys-application-proxy"></a>Azure Active Directory アプリケーション プロキシからのオンプレミス アプリケーションへのリモート アクセス 
 
@@ -43,6 +43,8 @@ Azure AD アプリケーション プロキシの特徴:
 * Active Directory Authentication Library (ADAL) と統合されるリッチ クライアント アプリ
 
 アプリケーション プロキシは、シングル サインオンをサポートします。 サポートされている方法の詳細については、「[シングル サインオンの方法の選択](what-is-single-sign-on.md#choosing-a-single-sign-on-method)」を参照してください。
+
+外部のリモート ユーザーに対して内部リソースへのアクセス権を付与するには、アプリケーション プロキシをお勧めします。 アプリケーション プロキシは、VPN またはリバース プロキシが必要な場合に代わりに使用できます。 企業ネットワーク上の内部ユーザー用ではありません。  内部ユーザーがアプリケーション プロキシを不必要に使用すると、予期せず、望ましくないパフォーマンスの問題が発生する可能性があります。
 
 ## <a name="how-application-proxy-works"></a>アプリケーション プロキシの動作
 

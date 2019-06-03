@@ -5,21 +5,20 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: include
-ms.date: 02/15/2019
+ms.date: 02/22/2019
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: d9562bb9c91700e817c120934e59c0c308d1e55b
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 498a4471d1ba6803d68e0b497c7c8352f19ff743
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56323411"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66153460"
 ---
 | Category | データ ストア |
 |:--- |:--- |
 | **Azure** |[Azure BLOB Storage](../articles/data-factory/connector-azure-blob-storage.md) |
 | &nbsp; |[Azure Cosmos DB (SQL API)](../articles/data-factory/connector-azure-cosmos-db.md) |
-| &nbsp; |[Azure Cosmos DB の MongoDB 用 API](../articles/data-factory/connector-azure-cosmos-db-mongodb-api.md) |
 | &nbsp; |[Azure Data Explorer](../articles/data-factory/connector-azure-data-explorer.md) |
 | &nbsp; |[Azure Data Lake Storage Gen1](../articles/data-factory/connector-azure-data-lake-store.md) |
 | &nbsp; |[Azure Data Lake Storage Gen2](../articles/data-factory/connector-azure-data-lake-storage.md) |
@@ -28,7 +27,7 @@ ms.locfileid: "56323411"
 | &nbsp; |[Azure Database for PostgreSQL](../articles/data-factory/connector-azure-database-for-postgresql.md) |
 | &nbsp; |[Azure Files](../articles/data-factory/connector-azure-file-storage.md) |
 | &nbsp; |[Azure SQL Database](../articles/data-factory/connector-azure-sql-database.md) |
-| &nbsp; |[Azure SQL Database Managed Instance](../articles/data-factory/connector-azure-sql-database-managed-insance.md) |
+| &nbsp; |[Azure SQL Database マネージド インスタンス](../articles/data-factory/connector-azure-sql-database-managed-insance.md) |
 | &nbsp; |[Azure SQL Data Warehouse](../articles/data-factory/connector-azure-sql-data-warehouse.md) |
 | &nbsp; |[Azure Table Storage](../articles/data-factory/connector-azure-table-storage.md) |
 | **データベース** |[Amazon Redshift](../articles/data-factory/connector-amazon-redshift.md) |
@@ -58,7 +57,6 @@ ms.locfileid: "56323411"
 | &nbsp; |[Vertica](../articles/data-factory/connector-vertica.md) |
 | **NoSQL** |[Cassandra](../articles/data-factory/connector-cassandra.md) |
 | &nbsp; |[Couchbase (プレビュー)](../articles/data-factory/connector-couchbase.md) |
-| &nbsp; |[MongoDB](../articles/data-factory/connector-mongodb.md) |
 | **ファイル** |[Amazon S3](../articles/data-factory/connector-amazon-simple-storage-service.md) |
 | &nbsp; |[ファイル システム](../articles/data-factory/connector-file-system.md) |
 | &nbsp; |[FTP](../articles/data-factory/connector-ftp.md) |
@@ -68,7 +66,6 @@ ms.locfileid: "56323411"
 | **汎用プロトコル** |[汎用 HTTP](../articles/data-factory/connector-http.md) |
 | &nbsp; |[汎用 OData](../articles/data-factory/connector-odata.md) |
 | &nbsp; |[汎用 ODBC](../articles/data-factory/connector-odbc.md) |
-| &nbsp; |[汎用 REST](../articles/data-factory/connector-rest.md) |
 | **サービスとアプリ** |[Amazon Marketplace Web Service (プレビュー)](../articles/data-factory/connector-amazon-marketplace-web-service.md) |
 | &nbsp; |[Common Data Service for Apps](../articles/data-factory/connector-dynamics-crm-office-365.md) |✓
 | &nbsp; |[Concur (プレビュー)](../articles/data-factory/connector-concur.md) |
@@ -82,7 +79,8 @@ ms.locfileid: "56323411"
 | &nbsp; |[Marketo (プレビュー)](../articles/data-factory/connector-marketo.md) |
 | &nbsp; |[Oracle Eloqua (プレビュー)](../articles/data-factory/connector-oracle-eloqua.md) |
 | &nbsp; |[Oracle Responsys (プレビュー)](../articles/data-factory/connector-oracle-responsys.md) |
-| &nbsp; |[Oracle Service Cloud (プレビュー)](../articles/data-factory/connector-oracle-service-cloud.md) || &nbsp; |[Paypal (プレビュー)](../articles/data-factory/connector-paypal.md) |
+| &nbsp; |[Oracle Service Cloud (プレビュー)](../articles/data-factory/connector-oracle-service-cloud.md) |
+| &nbsp; |[Paypal (プレビュー)](../articles/data-factory/connector-paypal.md) |
 | &nbsp; |[QuickBooks (プレビュー)](../articles/data-factory/connector-quickbooks.md) |
 | &nbsp; |[Salesforce](../articles/data-factory/connector-salesforce.md) |
 | &nbsp; |[Salesforce Service Cloud](../articles/data-factory/connector-salesforce.md) |

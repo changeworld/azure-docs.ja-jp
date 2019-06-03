@@ -4,6 +4,7 @@
   items:
     - name: HDInsight 上の Apache Hadoop について
       href: apache-hadoop-introduction.md
+      maintainContext: true
     - name: HDInsight の Apache Hadoop アーキテクチャ
       href: ../hdinsight-hadoop-architecture.md
       maintainContext: true
@@ -270,7 +271,7 @@
             - name: cURL とAzure REST API を使用する
               href: ../hdinsight-hadoop-create-linux-clusters-curl-rest.md
               maintainContext: true
-            - name: Azure クラシック CLI を使用する
+            - name: Azure CLI の使用
               href: ../hdinsight-hadoop-create-linux-clusters-azure-cli.md
               maintainContext: true
         - name: HDInsight クラスターの管理
@@ -288,7 +289,7 @@
             - name: Azure PowerShell の使用
               href: ../hdinsight-administer-use-powershell.md
               maintainContext: true
-            - name: Azure クラシック CLI を使用する
+            - name: Azure CLI の使用
               href: ../hdinsight-administer-use-command-line.md
               maintainContext: true
         - name: Apache Ambari Web UI を使用したクラスターの管理
@@ -422,7 +423,8 @@
       items:
         - name: HDInsight 仮想ネットワーク アーキテクチャ
           href: ../hdinsight-virtual-network-architecture.md
-          maintainContext: true
+        - name: ファイアウォールを使用したアウトバウンド トラフィックの制限
+          href: ../hdinsight-restrict-outbound-traffic.md
         - name: Azure VNet の HDInsight
           href: ../hdinsight-extend-hadoop-virtual-network.md
           maintainContext: true

@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: overview
 ms.date: 12/22/2018
 ms.author: azfuncdf, glenga
-ms.openlocfilehash: 4c7b4733d05f18d3c30e45fd08c3cf9c50354ebc
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 2228f3fe05e1021d0f87ce0b0d33a8287f048a8c
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55816096"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65872807"
 ---
 # <a name="what-are-durable-functions"></a>Durable Functions とは
 
@@ -43,13 +43,13 @@ Durable Functions の主なユース ケースは、サーバーレス アプリ
 
 Durable Functions では、現在次の言語をサポートしています。
 
-* **C#**: [プリコンパイル済みクラス ライブラリ](../functions-dotnet-class-library.md)と [C# スクリプト](../functions-reference-csharp.md)の両方。
-* **F#**: プリコンパイル済みクラス ライブラリと F# スクリプト。 F# スクリプトは、Azure Functions ランタイムのバージョン 1.x でのみサポートされています。
+* **C#** : [プリコンパイル済みクラス ライブラリ](../functions-dotnet-class-library.md)と [C# スクリプト](../functions-reference-csharp.md)の両方。
+* **F#** : プリコンパイル済みクラス ライブラリと F# スクリプト。 F# スクリプトは、Azure Functions ランタイムのバージョン 1.x でのみサポートされています。
 * **JavaScript**: Azure Functions ランタイムのバージョン 2.x でのみサポートされています。 Durable Functions 拡張機能のバージョン 1.7.0 以降が必要です。 
 
 Durable Functions では、すべての [Azure Functions 言語](../supported-languages.md)をサポートすることを目標としています。 追加言語をサポートするための最新の作業状況については、[Durable Functions の問題の一覧](https://github.com/Azure/azure-functions-durable-extension/issues)を参照してください。
 
-Azure Functions と同様に、[Visual Studio 2017](durable-functions-create-first-csharp.md)、[Visual Studio Code](quickstart-js-vscode.md)、および [Azure portal](durable-functions-create-portal.md) を使用して永続関数を開発するのに役立つテンプレートがあります。
+Azure Functions と同様に、[Visual Studio 2019](durable-functions-create-first-csharp.md)、[Visual Studio Code](quickstart-js-vscode.md)、および [Azure portal](durable-functions-create-portal.md) を使用して Durable Functions を開発するのに役立つテンプレートがあります。
 
 ## <a name="billing"></a>課金
 
@@ -59,7 +59,7 @@ Durable Functions は Azure Functions と同じように課金されます。 �
 
 次の言語固有のクイック スタート チュートリアルのいずれかを完了することで、10 分足らずで Durable Functions を使い始めることができます。
 
-* [C# と Visual Studio 2017 を使用する場合](durable-functions-create-first-csharp.md)
+* [C# と Visual Studio 2019 を使用する場合](durable-functions-create-first-csharp.md)
 * [Visual Studio Code と JavaScript を使用する場合](quickstart-js-vscode.md)
 
 どちらのクイック スタートでも、"hello world" という永続関数をローカルで作成してテストします。 その後、関数コードを Azure に発行します。 作成した関数は、他の関数の呼び出しを調整し、連結します。

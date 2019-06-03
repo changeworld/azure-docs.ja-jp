@@ -1,28 +1,20 @@
 ---
-title: 操作のキャンセル API | Microsoft Docs
+title: 操作のキャンセル API | Azure Marketplace
 description: 操作をキャンセルします。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: reference
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 18f00391beded0744c80eab73bb1efe1c6ab8dbc
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.author: pabutler
+ms.openlocfilehash: 70ffd13be4ba934b423e3bb5344eea0a9c36886c
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48807206"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64935560"
 ---
-<a name="cancel-operation"></a>操作を取り消す 
-=================
+# <a name="cancel-operation"></a>操作を取り消す 
 
 この API は、現在プランで進行中の操作をキャンセルします。 この API に渡す `operationId` は、[操作の取得 API](./cloud-partner-portal-api-retrieve-operations.md) を使用して取得します。 キャンセルは同期操作であるのが一般的ですが、一部の複雑なシナリオでは、既存の操作をキャンセルするために新しい操作が必要になることがあります。 このケースでは、状態を照会するために使用すべき操作の場所が HTTP 応答本文に格納されます。
 
@@ -33,18 +25,18 @@ ms.locfileid: "48807206"
 <a name="uri-parameters"></a>URI パラメーター
 --------------
 
-|  **名前**    |      **説明**                                  |    **データの種類**  |
+|  **Name**    |      **説明**                                  |    **データの種類**  |
 | ------------ |     ----------------                                  |     -----------   |
 | publisherId  |  パブリッシャー ID (例: `contoso`)         |   String          |
-| offerId      |  プラン ID                                     |   String          |
-| api-version  |  API の現在のバージョン                               |    日付           |
+| offerId      |  オファー ID                                     |   String          |
+| api-version  |  API の現在のバージョン                               |    Date           |
 |  |  |  |
 
 
 <a name="header"></a>ヘッダー
 ------
 
-|  **名前**              |  **値**         |
+|  **Name**              |  **値**         |
 |  ---------             |  ----------        |
 |  Content-Type          |  application/json  |
 |  Authorization         |  Bearer <実際のトークン> |
@@ -66,7 +58,7 @@ ms.locfileid: "48807206"
 
 ### <a name="request-body-properties"></a>要求本文のプロパティ
 
-|  **名前**                |  **説明**                                               |
+|  **Name**                |  **説明**                                               |
 |  --------                |  ---------------                                               |
 |  notification-emails     | 発行操作の進捗状況を通知するメール ID の、コンマ区切りの一覧です。 |
 |  |  |
@@ -79,7 +71,7 @@ ms.locfileid: "48807206"
 
 ### <a name="response-header"></a>応答ヘッダー
 
-|  **名前**             |    **値**                       |
+|  **Name**             |    **値**                       |
 |  ---------            |    ----------                      |
 | Operation-Location    | 操作の現在の状態を確認するための、クエリ可能な URL。 |
 |  |  |

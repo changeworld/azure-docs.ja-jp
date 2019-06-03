@@ -7,12 +7,12 @@ ms.date: 04/01/2019
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: 729e9fe749212942c6dc18fc7d6301934e7dd184
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: ff9513418857562408c162533c48f6495b1f83c4
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59788240"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65137856"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>大規模な Azure リソース データ セットの処理
 
@@ -67,8 +67,18 @@ Search-AzGraph -Query "project name | order by name asc" -Skip 10
 
 **resultTruncated** が **true** のときは、応答で **$skipToken** プロパティが設定されます。 この値は、クエリに一致した次のレコード セットを取得するために、同じクエリ値とサブスクリプション値で使用されます。
 
+次の例では、Azure CLI および Azure PowerShell で、最初の 3000 個のレコードを**スキップ**し、これらのスキップされたレコードの後の**最初の** 1000 個のレコードを返す方法を示します。
+
+```azurecli-interactive
+az graph query -q "project id, name | order by id asc" --first 1000 --skip 3000
+```
+
+```azurepowershell-interactive
+Search-AzGraph -Query "project id, name | order by id asc" -First 1000 -Skip 3000
+```
+
 > [!IMPORTANT]
-> 改ページ位置の自動修正が機能するためには、**id** フィールドをクエリに**反映する**必要があります。 それがクエリにないと、REST API の応答には **$skipToken** が含まれません。
+> 改ページ位置の自動修正が機能するためには、**id** フィールドをクエリに**反映する**必要があります。 それがクエリにないと、応答には **$skipToken** が含まれません。
 
 例については、REST API のドキュメントの「[Next page query (次のページのクエリ)](/rest/api/azureresourcegraph/resources/resources#next_page_query)」をご覧ください。
 

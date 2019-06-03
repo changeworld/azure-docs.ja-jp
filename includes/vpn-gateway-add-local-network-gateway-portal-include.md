@@ -9,11 +9,11 @@ ms.date: 12/19/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 03a4005da7794a989166f914e4ba4d03f93ae8b9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58125117"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66170134"
 ---
 1. ポータルで **+ [リソースの作成]** をクリックします。
 2. 検索ボックスに「**ローカル ネットワーク ゲートウェイ**」と入力し、**Enter** キーを押して検索します。 これにより、結果の一覧が返されます。 **[ローカル ネットワーク ゲートウェイ]** をクリックし、**[作成]** ボタンをクリックして **[ローカル ネットワーク ゲートウェイの作成]** ページを開きます。

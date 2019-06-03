@@ -14,24 +14,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: df967c56d84650894d2e07054e9ec8d6f830192b
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: c6271b5bb64eacf66c771b84139cead722a2e7b3
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58294690"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64869397"
 ---
 # <a name="use-playready-andor-widevine-dynamic-common-encryption"></a>PlayReady および Widevine に動的な Common Encryption を使用する
 
-> [!div class="op_single_selector"]
-> * [.NET](media-services-protect-with-playready-widevine.md)
-> * [Java](https://github.com/southworkscom/azure-sdk-for-media-services-java-samples)
-> * [PHP](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices)
->
-
 > [!NOTE]
-> 最新バージョンの Java SDK を入手し、Java での開発を始めるには、「[Azure Media Services 用 Java クライアント SDK の概要](https://docs.microsoft.com/azure/media-services/media-services-java-how-to-use)」を参照してください。 <br/>
-> Media Services 用の最新の PHP SDK をダウンロードするには、[Packagist リポジトリ](https://packagist.org/packages/microsoft/windowsazure#v0.5.7)でバージョン 0.5.7 の Microsoft/WindowsAzure パッケージを検索してください。 
+> このチュートリアルを完了するには、Azure アカウントが必要です。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。   > Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
+>   
 
 ## <a name="overview"></a>概要
 
@@ -164,7 +158,7 @@ Console.WriteLine("The authorization token is:\nBearer {0}", testToken);
 
 ## <a name="example"></a>例
 
-次の例では、Media Services SDK for .NET バージョン 3.5.2 で導入された機能を示します  (具体的には、Widevine ライセンス テンプレートを定義し、Media Services から Widevine ライセンスを要求する機能などです)。
+次の例では、Media Services SDK for .NET バージョン 3.5.2 で導入された機能を示します (具体的には、Widevine ライセンス テンプレートを定義し、Media Services から Widevine ライセンスを要求する機能などです)。
 
 Program.cs ファイルのコードを、このセクションで示されているコードで上書きします。
 
@@ -619,6 +613,9 @@ namespace DynamicEncryptionWithDRM
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>関連項目
+
 * [CENC とマルチ DRM およびアクセス制御の使用](media-services-cenc-with-multidrm-access-control.md)
 * [Media Services による Widevine パッケージの構成](https://mingfeiy.com/how-to-configure-widevine-packaging-with-azure-media-services)
-* [Azure Media Services での Google Widevine ライセンス配信サービスのお知らせ](https://azure.microsoft.com/blog/announcing-general-availability-of-google-widevine-license-services/)
+* [Azure Media Services 用 Java クライアント SDK の概要](https://docs.microsoft.com/azure/media-services/media-services-java-how-to-use)
+* Media Services 用の最新の PHP SDK をダウンロードするには、[Packagist リポジトリ](https://packagist.org/packages/microsoft/windowsazure#v0.5.7)でバージョン 0.5.7 の Microsoft/WindowsAzure パッケージを検索してください。 
+

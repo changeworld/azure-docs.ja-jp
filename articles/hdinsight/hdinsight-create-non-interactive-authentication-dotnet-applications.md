@@ -8,21 +8,21 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: b07a932ef048aa894af990baa57b87529d9da3aa
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 8b96c38d5bb24a267ad0203083e485d1780f28c8
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64717395"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241478"
 ---
 # <a name="create-a-non-interactive-authentication-net-hdinsight-application"></a>非対話型認証 .NET HDInsight アプリケーションを作成する
 アプリケーション独自の ID (非対話型) またはアプリケーションのサインイン ユーザーの ID (対話型) のいずれかで、Microsoft .NET Azure HDInsight アプリケーションを実行できます。 この記事では、Azure に接続して HDInsight を管理する非対話型認証 .NET アプリケーションを作成する方法について説明します。 対話型アプリケーションのサンプルについては、「[Azure HDInsight への接続](hdinsight-administer-use-dotnet-sdk.md#connect-to-azure-hdinsight)」をご覧ください。 
 
 非対話型 .NET アプリケーションでは、以下が必要です。
 
-* Azure サブスクリプションのテナント ID (別名: *ディレクトリ ID*)。 「[Get tenant ID](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-id)」 (テナント ID を取得する) を参照してください。
-* Azure Active Directory (Azure AD) アプリケーションのクライアント ID。 「[Azure Active Directory アプリケーションを作成する](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)」および「[アプリケーション ID と認証キーを取得する](../active-directory/develop/howto-create-service-principal-portal.md#get-application-id-and-authentication-key)」をご覧ください。
-* Azure AD アプリケーションの秘密鍵。 「[アプリケーション ID と認証キーを取得する](../active-directory/develop/howto-create-service-principal-portal.md#get-application-id-and-authentication-key)」をご覧ください。
+* Azure サブスクリプションのテナント ID (別名: *ディレクトリ ID*)。 「[Get tenant ID](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)」 (テナント ID を取得する) を参照してください。
+* Azure Active Directory (Azure AD) アプリケーションのクライアント ID。 「[Azure Active Directory アプリケーションを作成する](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)」および「[アプリケーション ID と認証キーを取得する](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)」をご覧ください。
+* Azure AD アプリケーションの秘密鍵。 「[アプリケーション ID と認証キーを取得する](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 * HDInsight クラスター。 [使用に関するチュートリアル](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster)をご覧ください。
@@ -37,7 +37,7 @@ Azure AD アプリケーションに[ロール](../role-based-access-control/bui
 3. このチュートリアルの後半で Hive クエリを実行する HDInsight クラスターを含むリソース グループを選択します。 多数のリソース グループがある場合は、フィルターを使って目的のものを見つけることができます。
 4. リソース グループ メニューで **[アクセス制御 (IAM)]** を選択します。
 5. **[ロールの割り当て]** タブを選択して、現在のロールの割り当てを表示します。
-6. ページの上部で、**[ロールの割り当ての追加]** を選択します。
+6. ページの上部で、 **[ロールの割り当ての追加]** を選択します。
 7. 説明に従って、所有者ロールを Azure AD アプリケーションに追加します。 ロールが正常に追加されると、アプリケーションが所有者ロールに一覧表示されます。 
 
 ## <a name="develop-an-hdinsight-client-application"></a>HDInsight クライアント アプリケーションを開発する

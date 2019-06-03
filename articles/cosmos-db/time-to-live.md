@@ -4,15 +4,15 @@ description: Microsoft Azure Cosmos DB では TTL を使って、一定期間経
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 05/21/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 27540c3dfce73788e01f0f8ab0892c733f153fdf
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 692e0ec575904ff0a70b8c73268d2df62e776bb6
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59271273"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65978790"
 ---
 # <a name="time-to-live-ttl-in-azure-cosmos-db"></a>Azure Cosmos DB の Time to Live (TTL) 
 

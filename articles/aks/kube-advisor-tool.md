@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 11/05/2018
 ms.author: seanmck
-ms.openlocfilehash: 29f98e334b0d2527b5159e1a5394109c5041024a
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 03c5eb2e32a0a8ec51844511276d9efba5651068
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60000132"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65073774"
 ---
 # <a name="checking-for-kubernetes-best-practices-in-your-cluster"></a>クラスターでの Kubernetes のベスト プラクティスを確認する
 
@@ -21,6 +21,8 @@ ms.locfileid: "60000132"
 ## <a name="about-kube-advisor"></a>kube-advisor について
 
 [kube-advisor ツール][kube-advisor-github]は、お使いのクラスターで動作するように設計された単一のコンテナーです。 このツールを使用すると、ご自身のデプロイに関する情報を Kubernetes API サーバーに照会し、推奨される一連の改善点を取得できます。
+
+kube-advisor ツールは、PodSpecs for Windows アプリケーションおよび Linux アプリケーションに欠けているリソース要求と制限を報告することができますが、kube-advisor ツール自体は Linux ポッドでスケジュールする必要があります。 ポッドの構成で[ノード セレクター][k8s-node-selector]を使用して、特定の OS のノード プールで実行するようにポッドをスケジュールすることができます。
 
 > [!NOTE]
 > kube-advisor ツールは、ベストエフォート方式で Microsoft によってサポートされます。 問題と提案は GitHub で提出する必要があります。
@@ -73,3 +75,4 @@ RBAC が有効になっていないクラスターに対してツールを実行
 
 [kube-cpumem]: https://github.com/Azure/azure-quickstart-templates
 [kube-advisor-github]: https://github.com/azure/kube-advisor
+[k8s-node-selector]: concepts-clusters-workloads.md#node-selectors

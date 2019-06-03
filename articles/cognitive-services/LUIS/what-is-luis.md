@@ -9,12 +9,12 @@ ms.subservice: language-understanding
 ms.topic: overview
 ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: c26f3d6c3b34ed90a5455bb94ea71d7556b47751
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 2bb50f985b99a3fb62e7b8a61bb0f9ce2dd402e1
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57441969"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65521998"
 ---
 # <a name="what-is-language-understanding-luis"></a>Language Understanding (LUIS) とは
 
@@ -33,7 +33,7 @@ LUIS アプリの発行後、クライアント アプリケーションは、LU
 
 ![チャット ボットと連携し、Natural Language Understanding (NLP) でユーザー テキストを予測する LUIS の概念図](./media/luis-overview/luis-overview-process-2.png "チャット ボットと連携し、Natural Language Understanding (NLP) でユーザー テキストを予測する LUIS の概念図")
 
-|手順|アクション|
+|手順|Action|
 |:--|:--|
 |1|クライアント アプリケーションがユーザーの "_発話_" (自分の言葉で表現されたテキスト) を送信します。ここでは、"I want to call my HR rep." を LUIS エンドポイントに HTTP 要求として送信します。|
 |2|LUIS は、自然言語テキストに対して学習済みのモデルを適用し、ユーザー入力についてのインテリジェントな解釈を提供します。 LUIS は、"HRContact" を最上位の意図とする JSON 形式の応答を返します。 エンドポイントからの JSON 形式の応答には、少なくとも、クエリの発話と上位スコアの意図が含まれます。 Contact Type エンティティなどのデータを抽出することもできます。|
@@ -53,7 +53,7 @@ LUIS アプリには、特定の領域 (ドメイン) に固有の自然言語�
 * **カスタム エンティティ**: LUIS では、さまざまな方法で、独自の意図とエンティティ (機械学習によるエンティティ、具体的で逐語的なエンティティ、および機械学習によるエンティティと逐語的なエンティティの組み合わせなど) を識別する方法が用意されています。
 
 ## <a name="build-the-luis-model"></a>LUIS モデルの構築
-モデルの構築には、[オーサリング](https://aka.ms/luis-authoring-apis) API または LUIS ポータルを使用します。
+モデルの構築には、[オーサリング](https://go.microsoft.com/fwlink/?linkid=2092087) API または LUIS ポータルを使用します。
 
 LUIS モデルの出発点は、ユーザーの目的のカテゴリです。これを "**[意図](luis-concept-intent.md)**" といいます。 意図にはそれぞれ、ユーザー **[発話](luis-concept-utterance.md)** の例が必要です。 それぞれの発話からさまざまなデータが得られますが、それらのデータは、**[エンティティ](luis-concept-entity-types.md)** を使って抽出する必要があります。 
 
@@ -65,7 +65,7 @@ LUIS モデルの出発点は、ユーザーの目的のカテゴリです。こ
 
 ## <a name="query-prediction-endpoint"></a>予測エンドポイントに対するクエリの実行
 
-モデルが構築されてエンドポイントに発行された後、クライアント アプリケーションは、その発行済みの予測[エンドポイント](https://aka.ms/luis-endpoint-apis)の API に発話を送信します。 解析の対象となるテキストには、この API によってモデルが適用されます。 API は、予測結果を JSON 形式の応答として返します。  
+モデルが構築されてエンドポイントに発行された後、クライアント アプリケーションは、その発行済みの予測[エンドポイント](https://go.microsoft.com/fwlink/?linkid=2092356)の API に発話を送信します。 解析の対象となるテキストには、この API によってモデルが適用されます。 API は、予測結果を JSON 形式の応答として返します。  
 
 エンドポイントからの JSON 形式の応答には、少なくとも、クエリの発話と上位スコアの意図が含まれます。 **Contact Type** エンティティ (下記) などのデータを抽出することもできます。 
 
@@ -126,6 +126,6 @@ LUIS を使用したサンプル:
 
 [bot-framework]: https://docs.microsoft.com/bot-framework/
 [flow]: https://docs.microsoft.com/connectors/luis/
-[authoring-apis]: https://aka.ms/luis-authoring-api
-[endpoint-apis]: https://aka.ms/luis-endpoint-apis
+[authoring-apis]: https://go.microsoft.com/fwlink/?linkid=2092087
+[endpoint-apis]: https://go.microsoft.com/fwlink/?linkid=2092356
 [qnamaker]: https://qnamaker.ai/

@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 5e7c1ce6ab217149acd3aed9e5268b70fbd664df
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59274192"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65890385"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-qualtrics"></a>チュートリアル:Azure Active Directory と Qualtrics の統合
 

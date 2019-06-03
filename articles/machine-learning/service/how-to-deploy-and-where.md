@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 05/02/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 1da232c2a81c9989cc78eccf1be97b5d75a48666
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 45421a249642abf37c89aa33e2e8a1b4a9e5e497
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024482"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65507001"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Azure Machine Learning service を使用してモデルをデプロイする
 
@@ -42,7 +42,7 @@ Web サービスとして Azure クラウドに、または IoT Edge デバイ�
 
 ## <a name="prerequisites-for-deployment"></a>デプロイの前提条件
 
-- モデル。 トレーニング済みのモデルがない場合、[こちらのチュートリアル](http://aka.ms/azml-deploy-cloud)で与えられたモデルと依存関係のファイルを使用できます。
+- モデル。 トレーニング済みのモデルがない場合、[こちらのチュートリアル](https://aka.ms/azml-deploy-cloud)で与えられたモデルと依存関係のファイルを使用できます。
 
 - [Machine Learning サービス向けの Azure CLI 拡張機能](reference-azure-machine-learning-cli.md)または [Azure Machine Learning Python SDK](https://aka.ms/aml-sdk)。
 
@@ -63,6 +63,9 @@ print(model.name, model.id, model.version, sep='\t')
 ```
 
 ### <a name="register-an-externally-created-model"></a>外部で作成されたモデルを登録する
+
+[!INCLUDE [trusted models](../../../includes/machine-learning-service-trusted-model.md)]
+
 モデルの**ローカル パス**を指定することで、外部で作成されたモデルを登録できます。 フォルダーまたは 1 個のファイルを提供できます。
 
 **Python SDK による ONNX の例:**
@@ -123,7 +126,7 @@ dependencies:
   - python=3.6.2
   - pip:
     - azureml-defaults
-    - scikit-learn
+    - scikit-learn==0.20.0
     - inference-schema[numpy-support]
 ```
 
@@ -458,7 +461,7 @@ Azure Machine Learning のコンピューティング ターゲットは、Azure
 Azure Machine Learning コンピューティングを使用したバッチ推論のチュートリアルについては、[バッチ予測を実行する方法](how-to-run-batch-predictions.md)に関する記事を参照してください。
 
 ## <a id="iotedge"></a> IoT Edge での推論
-エッジにデプロイするためのサポートは現在、プレビューの段階にあります。 詳細については、[IoT Edge モジュールとして Azure Machine Learning をデプロイする](https://docs.microsoft.com/en-us/azure/iot-edge/tutorial-deploy-machine-learning)方法に関する記事を参照してください。
+エッジにデプロイするためのサポートは現在、プレビューの段階にあります。 詳細については、[IoT Edge モジュールとして Azure Machine Learning をデプロイする](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-machine-learning)方法に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 * [デプロイ トラブルシューティング](how-to-troubleshoot-deployment.md)

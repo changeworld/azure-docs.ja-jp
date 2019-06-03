@@ -6,14 +6,14 @@ author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 08/17/2018
+ms.date: 04/25/2019
 ms.author: iainfou
-ms.openlocfilehash: ae92a5c894b186a1c8b471c1b446a88299742aec
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 17bc1d2b7a08314f19f1bf8f87d0c774afc37500
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60004858"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65508176"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) についてよく寄せられる質問
 
@@ -53,10 +53,27 @@ Kured の使用について詳しくは、[AKS 上のノードへのセキュリ
 
 各 AKS デプロイは、2 つのリソース グループにまたがります。
 
-- 1 つは自分が作成したリソース グループで、Kubernetes サービス リソースのみが含まれます。 AKS リソース プロバイダーは、*MC_myResourceGroup_myAKSCluster_eastus* のような 2 つ目のリソース グループをデプロイ時に自動的に作成します。
+- 1 つは自分が作成したリソース グループで、Kubernetes サービス リソースのみが含まれます。 AKS リソース プロバイダーは、*MC_myResourceGroup_myAKSCluster_eastus* のような 2 つ目のリソース グループをデプロイ時に自動的に作成します。 この 2 つ目のリソース グループの名前を指定する方法については、次のセクションをご覧ください。
 - *MC_myResourceGroup_myAKSCluster_eastus* などのこの 2 つ目のリソース グループには、クラスターに関連付けられたインフラストラクチャ リソースがすべて含まれます。 これらのリソースには、Kubernetes ノードの VM、仮想ネットワー キング、およびストレージが含まれます。 この別個のリソース グループは、リソースのクリーンアップを簡略化するために作成されます。
 
 ストレージ アカウントや予約済みパブリック IP アドレスなど、AKS クラスターで使用するリソースを作成する場合は、自動的に生成されたリソース グループにそれらを配置します。
+
+## <a name="can-i-provide-my-own-name-for-the-aks-infrastructure-resource-group"></a>AKS インフラストラクチャ リソース グループに独自の名前を指定できますか?
+
+はい。 既定では、AKS リソース プロバイダーは、*MC_myResourceGroup_myAKSCluster_eastus* のようなセカンダリ リソース グループをデプロイ時に自動的に作成します。 企業ポリシーに準拠するために、この管理対象クラスター (*MC_*) リソース グループに独自の名前を指定できます。
+
+独自のリソース グループ名を指定するには、[aks-preview][aks-preview-cli] Azure CLI 拡張機能バージョン *0.3.2* 以降をインストールします。 [az aks create][az-aks-create] コマンドを使用して AKS クラスターを作成するときに、*--node-resource-group* パラメーターを使用して、リソース グループの名前を指定します。 [Azure Resource Manager テンプレートを使用][aks-rm-template]して AKS クラスターをデプロイする場合は、*nodeResourceGroup* プロパティを使用してリソース グループ名を定義できます。
+
+* このリソース グループは、自分のサブスクリプションの Azure リソース プロバイダーによって自動的に作成されます。
+* クラスターが作成されるときにのみ、カスタムのリソース グループ名を指定できます。
+
+次のシナリオはサポートされていません。
+
+* *MC_* グループに既存のリソース グループを指定することはできません。
+* *MC_* リソース グループに異なるサブスクリプションを指定することはできません。
+* クラスターが作成された後で、*MC_* リソース グループ名を変更することはできません。
+* *MC_* リソース グループ内の管理対象リソースに名前を指定することはできません。
+* *MC_* リソース グループ内の管理対象リソースのタグを変更したり、削除したりすることはできません (追加情報については、次のセクションを参照してください)。
 
 ## <a name="can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-mc-resource-group"></a>MC_* リソース グループ内の AKS リソースのタグや他のプロパティを変更できますか?
 
@@ -91,15 +108,31 @@ Windows Server コンテナーを実行するには、Windows Server ベース�
 
 サービス レベル アグリーメント (SLA) では、公開されたサービス レベルを満たしていない場合に、プロバイダーがサービスの費用を顧客に払い戻すことに同意します。 AKS 自体は無料であるため、払い戻せる費用はありません。したがって、これは正式な SLA ではありません。 ただし、AKS では、Kubernetes API サーバーの 99.5% 以上の可用性を維持できるようにしています。
 
+## <a name="why-can-i-not-set-maxpods-below-30"></a>`maxPods` を 30 未満に設定できないのはなぜですか?
+
+AKS では、Azure CLI および Azure Resource Manager テンプレートによるクラスター作成時の `maxPods` 値の設定をサポートしています。 ただし、次に示すように Kubenet と Azure CNI の両方に対し、*最小値* (作成時に検証される) があります。
+
+| ネットワーク | 最小値 | 最大値 |
+| -- | :--: | :--: |
+| Azure CNI | 30 | 250 |
+| Kubenet | 30 | 110 |
+
+AKS はマネージド サービスであるため、クラスターの一部としてデプロイして管理するアドオンとポッドを提供しています。 以前はユーザーが、マネージド ポッドの実行に必要な値よりも小さい値 `maxPods` (30 など) を設定できましたが、現在 AKS では ((maxPods または (maxPods * vm_count)) > マネージド アドオン ポッドの最小値によって、ポッドの最小数が計算されるようになりました。
+
+ユーザーは、最小の `maxPods` 検証をオーバーライドできません。
+
 <!-- LINKS - internal -->
 
-[aks-regions]: ./container-service-quotas.md#region-availability
+[aks-regions]: ./quotas-skus-regions.md#region-availability
 [aks-upgrade]: ./upgrade-cluster.md
 [aks-cluster-autoscale]: ./autoscaler.md
 [virtual-kubelet]: virtual-kubelet.md
 [aks-advanced-networking]: ./configure-azure-cni.md
 [aks-rbac-aad]: ./azure-ad-integration.md
 [node-updates-kured]: node-updates-kured.md
+[aks-preview-cli]: /cli/azure/ext/aks-preview/aks
+[az-aks-create]: /cli/azure/aks#az-aks-create
+[aks-rm-template]: /rest/api/aks/managedclusters/createorupdate#managedcluster
 
 <!-- LINKS - external -->
 
@@ -108,4 +141,3 @@ Windows Server コンテナーを実行するには、Windows Server ベース�
 [hexadite]: https://github.com/Hexadite/acs-keyvault-agent
 [admission-controllers]: https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/
 [keyvault-flexvolume]: https://github.com/Azure/kubernetes-keyvault-flexvol
-

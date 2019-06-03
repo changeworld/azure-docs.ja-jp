@@ -11,30 +11,30 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 02/08/2019
-ms.openlocfilehash: 46a620900896d07273da22e53171330b85d3f1ec
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 04/26/2019
+ms.openlocfilehash: f17df53c1ea77bf99ab86329fe914d058eb00f64
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59360181"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65072702"
 ---
-# <a name="azure-sql-database-purchasing-models"></a>Azure SQL Database の購入モデル
+# <a name="choose-between-the-vcore-and-the-dtu-purchasing-model"></a>仮想コアと DTU の購入モデルのいずれかを選択
 
 Azure SQL Database では、パフォーマンスとコストのニーズに合ったフル マネージド PaaS データベース エンジンを簡単に購入できます。 Azure SQL Database のデプロイ モデルに応じて、ニーズに合った購入モデルを選択できます。
 
-- [仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md) (推奨)。これによりワークロードのニーズに合わせて正確な量のストレージ容量を選択し、計算することができます。
-- [DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)。一般的なワークロード向けに配分されたコンピューティングとストレージのバンドル パッケージを選択できます。
+- [仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md) (推奨)。 この購入モデルでは、プロビジョニングされたコンピューティング レベルとサーバーレス (プレビュー) コンピューティング レベルのいずれかを選択できます。 プロビジョニングされたコンピューティング レベルでは、お使いのワークロードに対して常にプロビジョニングされる正確なコンピューティング量を選択します。 サーバーレス コンピューティング レベルでは、構成可能なコンピューティングの範囲で、コンピューティングの自動スケーリングを構成します。 このコンピューティング レベルでは、ワークロード アクティビティに基づいてデータベースを自動的に一時停止および再開するオプションもあります。 時間単位あたり仮想コアの単価は、プロビジョニングされたコンピューティング レベルの方がサーバーレス コンピューティング レベルよりも低くなります。
+- [DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)。 この購入モデルでは、一般的なワークロード向けに配分されたコンピューティングとストレージのバンドル パッケージが提供されます。
 
 Azure SQL Database のデプロイ モデルでは、次のようなさまざまな購入モデルを利用できます。
 
-- [Azure SQL Database](sql-database-technical-overview.md) の[単一データベース](sql-database-single-databases-manage.md)と[エラスティック プール](sql-database-elastic-pool.md) デプロイ オプションでは、[DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)と[仮想コア ベースの購入モデル](sql-database-service-tiers-vcore.md)の両方が提供されます。
+- [Azure SQL Database](sql-database-technical-overview.md) の[単一データベース](sql-database-single-databases-manage.md)と[エラスティック プール](sql-database-elastic-pool.md) デプロイ オプションでは、[DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)と[仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md)の両方が提供されます。
 - Azure SQL Database の[マネージド インスタンス](sql-database-managed-instance.md) デプロイ オプションでは、[仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md)のみが提供されます。
 
-> [!IMPORTANT]
-> [ハイパースケール サービス レベル (プレビュー)](sql-database-service-tier-hyperscale.md) は、仮想コア購入モデルを使用する単一データベースのみを対象とするパブリック プレビューです。
 
-次の表とグラフは、この 2 つの購入モデルを比較しています。
+- [ハイパースケール サービス レベル](sql-database-service-tier-hyperscale.md)を現在利用できるのは、[仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md)を使用した単一のデータベースです。
+
+次の表とグラフは、仮想コアと DTU の購入モデルを比較しています。
 
 |**購入モデル**|**説明**|**最適な用途**|
 |---|---|---|
@@ -46,7 +46,13 @@ Azure SQL Database のデプロイ モデルでは、次のようなさまざま
 
 ## <a name="compute-costs"></a>コンピューティング コスト
 
-コンピューティング コストには、アプリケーションに対してプロビジョニングされたコンピューティング能力の合計が反映されています。 Business Critical サービス レベルでは、少なくとも 3 つのレプリカが自動的に割り当てられます。 追加で割り当てられたこのコンピューティング リソースを反映するため、仮想コアベースの購入モデルでは、General Purpose サービス レベルより Business Critical サービス レベルの方が約 2.7 倍高くなっています。 同じ理由で、Business Critical サービス レベルでは GB あたりのストレージ価格も高く、これには SSD ストレージの高 IO と低遅延が反映されています。 一方、バックアップ ストレージについては、両方のケースで Standard Storage クラスが使用されているため、2 つのサービス レベルの間でコストに違いはありません。
+### <a name="provisioned-compute-costs"></a>プロビジョニングされたコンピューティングのコスト
+
+プロビジョニングされたコンピューティング レベルのコンピューティング コストには、アプリケーションに対してプロビジョニングされたコンピューティング能力の合計が反映されています。  Business Critical サービス レベルでは、少なくとも 3 つのレプリカが自動的に割り当てられます。 追加で割り当てられたこのコンピューティング リソースを反映するため、仮想コアベースの購入モデルでは、General Purpose サービス レベルより Business Critical サービス レベルの方が約 2.7 倍高くなっています。 同じ理由で、Business Critical サービス レベルでは GB あたりのストレージ価格も高く、これには SSD ストレージの高 IO と低遅延が反映されています。 一方、バックアップ ストレージについては、両方のケースで Standard Storage クラスが使用されているため、2 つのサービス レベルの間でコストに違いはありません。
+
+### <a name="serverless-compute-costs"></a>サーバーレス コンピューティング コスト
+
+サーバーレス コンピューティング レベルの場合、コンピューティング能力の定義方法とコストの計算方法の説明については、「[SQL Database サーバーレス (プレビュー)](sql-database-serverless.md)」を参照してください。
 
 ## <a name="storage-costs"></a>ストレージ コスト
 
@@ -58,7 +64,7 @@ Azure SQL Database のデプロイ モデルでは、次のようなさまざま
 
 ## <a name="vcore-based-purchasing-model"></a>仮想コアベースの購入モデル
 
-仮想コアは、ハードウェアの世代とハードウェアの物理特性 (コア数、メモリ、ストレージ サイズなど) を選択できる論理 CPU を表します。 仮想コアベースの購入モデルでは、個々のリソース使用量において柔軟性、管理性、透明性が実現されており、オンプレミスのワークロード要件をクラウドに容易に移行できます。 このモデルでは、ワークロードの必要性に基づいて、コンピューティング、メモリ、ストレージを選択できます。 仮想コアベースの購入モデルでは、[単一データベース](sql-database-single-database-scale.md)、[エラスティック プール](sql-database-elastic-pool.md)、および[マネージド インスタンス](sql-database-managed-instance.md)について、[General Purpose](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability) または [Business Critical](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability) のいずれかのサービス レベルを選択できます。 単一データベースの場合は、[ハイパースケール サービス レベル (プレビュー)](sql-database-service-tier-hyperscale.md) も選択できます。
+仮想コアは、ハードウェアの世代とハードウェアの物理特性 (コア数、メモリ、ストレージ サイズなど) を選択できる論理 CPU を表します。 仮想コアベースの購入モデルでは、個々のリソース使用量において柔軟性、管理性、透明性が実現されており、オンプレミスのワークロード要件をクラウドに容易に移行できます。 このモデルでは、ワークロードの必要性に基づいて、コンピューティング、メモリ、ストレージを選択できます。 仮想コアベースの購入モデルでは、[単一データベース](sql-database-single-database-scale.md)、[エラスティック プール](sql-database-elastic-pool.md)、および[マネージド インスタンス](sql-database-managed-instance.md)について、[General Purpose](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability) または [Business Critical](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability) のいずれかのサービス レベルを選択できます。 単一データベースの場合は、[ハイパースケール サービス レベル](sql-database-service-tier-hyperscale.md)も選択できます。
 
 仮想コアベースの購入モデルでは、コンピューティングおよびストレージ リソースを個別に選択し、オンプレミスのパフォーマンスを一致させて、コストを最適化できます。 仮想コアベースの購入モデルでは、お客様には次のものに対してお支払いいただきます。
 
@@ -110,7 +116,7 @@ DTU は、さまざまなコンピューティング サイズとサービス �
 
 プールは、多数のデータベースが一定のパターンで使用されている場合に適しています。 あるデータベースは、使用が急増することはあまりなく、使用量平均が低いパターンの特徴を持っています。 SQL Database は、既存の SQL Database サーバー内にあるデータベースのリソース使用量の履歴を自動的に評価し、Azure ポータルでのプールの適切な構成を推奨します。 詳細については、「[エラスティック プールの使用に適した状況](sql-database-elastic-pool.md)」を参照してください。
 
-## <a name="purchase-model-frequently-asked-questions-faq"></a>購入モデルに関してよくあるご質問 (FAQ)
+## <a name="purchase-models-frequently-asked-questions-faq"></a>購入モデル: よく寄せられる質問 (FAQ)
 
 ### <a name="do-i-need-to-take-my-application-offline-to-convert-from-a-dtu-based-database-to-a-vcore-based-service-tier"></a>DTU ベースのデータベースから仮想コアベースのサービス レベルに変更するには、アプリケーションをオフラインにする必要がありますか
 

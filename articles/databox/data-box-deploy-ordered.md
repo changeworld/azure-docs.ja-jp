@@ -1,19 +1,19 @@
 ---
-title: Microsoft Azure Data Box を注文する| Microsoft Docs
+title: Azure Data Box の注文方法のチュートリアル | Microsoft Docs
 description: Azure Data Box の展開の前提条件と注文方法について説明します
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 03/05/2019
+ms.date: 04/23/2019
 ms.author: alkohli
-ms.openlocfilehash: 07ccd2aaec6b2325d6eef09a466a5d0707836b4b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b0204673c0706403c8c5a7367be19e590d9cb134
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57834270"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65604089"
 ---
 # <a name="tutorial-order-azure-data-box"></a>チュートリアル:Azure Data Box を注文する
 
@@ -60,20 +60,20 @@ Azure Data Box は、迅速かつ簡単な信頼性の高い方法でオンプ�
 
 3. **Create** をクリックしてください。
 
-4. ご利用のリージョンで Data Box サービスが利用可能かどうかを確認します。 次の情報を入力または選択し、**[適用]** をクリックします。 
+4. ご利用のリージョンで Data Box サービスが利用可能かどうかを確認します。 次の情報を入力または選択し、 **[適用]** をクリックします。 
 
     |Setting  |値  |
     |---------|---------|
     |サブスクリプション     | Data Box サービス用の EA、CSP、または Azure スポンサー サブスクリプションを選択します。 <br> サブスクリプションは、課金アカウントにリンクされます。       |
     |転送の種類     | **[Azure へインポート]** を選択します。        |
-    |ソースの国     |   データが現在存在する国を選択します。         |
+    |ソースの国     |   データが現在存在する国/地域を選択します。         |
     |宛先 Azure リージョン     |     データを転送する Azure リージョンを選択します。        |
 
-5. **[Data Box]** を選択します。 1 つの注文での使用可能な最大容量は 786 TB です。 データ サイズがこれより大きい場合は、複数の注文を作成できます。
+5. **[Data Box]** を選択します。 1 つの注文での使用可能な最大容量は 80 TB です。 データ サイズがこれより大きい場合は、複数の注文を作成できます。
 
       [![Data Box の選択 - オプション 1](media/data-box-deploy-ordered/select-data-box-option1.png)](media/data-box-deploy-ordered/select-data-box-option1.png#lightbox)
 
-6. **[注文]** で**注文の詳細**を指定します。 次の情報を入力または選択し、**[次へ]** をクリックします。
+6. **[注文]** で**注文の詳細**を指定します。 次の情報を入力または選択し、 **[次へ]** をクリックします。
     
     |Setting  |値  |
     |---------|---------|
@@ -109,7 +109,7 @@ Azure Data Box は、迅速かつ簡単な信頼性の高い方法でオンプ�
 
 ## <a name="track-the-order"></a>注文を追跡する
 
-注文後、Azure portal から注文の状態を追跡できます。 Data Box の注文に移動し、**[概要]** に移動して状態を表示します。 ポータルでは、注文は、**[注文済み]** 状態で表示されます。
+注文後、Azure portal から注文の状態を追跡できます。 Data Box の注文に移動し、 **[概要]** に移動して状態を表示します。 ポータルでは、注文は、 **[注文済み]** 状態で表示されます。
 
 デバイスが使用できない場合は、通知されます。 デバイスが使用可能な場合は、Microsoft が配送用のデバイスを特定し、配送の準備をします。 デバイスの準備中に、次のアクションが実行されます。
 
@@ -132,7 +132,7 @@ Azure Data Box は、迅速かつ簡単な信頼性の高い方法でオンプ�
 
 注文は、注文した後、注文の状態が [処理済み] とマークされるまでの間の任意の時点でキャンセルできます。
  
-キャンセルされた注文を削除するには、**[概要]** に移動し、コマンド バーの **[削除]** をクリックします。
+キャンセルされた注文を削除するには、 **[概要]** に移動し、コマンド バーの **[削除]** をクリックします。
 
 ## <a name="next-steps"></a>次の手順
 

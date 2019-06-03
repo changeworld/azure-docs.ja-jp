@@ -4,14 +4,14 @@ description: この記事では、Azure Cosmos DB の Azure Cosmos DB 内の変�
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/06/2018
+ms.date: 05/21/2019
 ms.author: rimman
-ms.openlocfilehash: 459ed4b6f16d3cfe5bb792be7f063a1253a3006e
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: e008b44ee2859f319d0250658d7c2beb190af1c2
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242041"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65967163"
 ---
 # <a name="reading-azure-cosmos-db-change-feed"></a>Azure Cosmos DB の変更フィードの読み取り
 

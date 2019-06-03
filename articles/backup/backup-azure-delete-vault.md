@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 03/28/2019
+ms.date: 05/07/2019
 ms.author: raynew
-ms.openlocfilehash: 23e98fd7ea3decc478fc359cec457c70b8fc99dc
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: e7cea725a25d48ac9f1ffad6acc434e21145890e
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652223"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65473241"
 ---
 # <a name="delete-a-recovery-services-vault"></a>Recovery Services コンテナーを削除する
 
@@ -45,49 +45,35 @@ ms.locfileid: "58652223"
 ![コンテナーのエラーを削除する](./media/backup-azure-delete-vault/error.png)
 
 
-## <a name="delete-the-recovery-services-vault-by-force"></a>Recovery Services コンテナーを強制的に削除する
-
-PowerShell を使ってコンテナーを強制的に削除できます。 強制削除は、コンテナーと、関連付けられたすべてのバックアップ データとが完全に削除されることを意味します。
+## <a name="delete-the-recovery-services-vault-using-azure-resource-manager-client"></a>Azure Resource Manager クライアントを使用して Recovery Services コンテナーを削除する
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
+1. [ここ](https://chocolatey.org/)から Chocolatey をインストールして、ARMClient をインストールするために、以下のコマンドを実行します。
 
-コンテナーを強制的に削除するには
+   ` choco install armclient --source=https://chocolatey.org/api/v2/ `
+2. 以下のコマンドを実行して、Azure アカウントにログインします。
 
-1. `Connect-AzAccount` コマンドを使用してご利用の Azure サブスクリプションにサインインし、画面上の指示に従います。
+    ` ARMClient.exe login [environment name] `
 
-   ```powershell
-    Connect-AzAccount
+3. Azure portal で、削除するコンテナーのサブスクリプション ID とリソース グループ名を収集します。
+
+ARMClient コマンドの詳細については、この[ドキュメント](https://github.com/projectkudu/ARMClient/blob/master/README.md)を参照してください。
+
+### <a name="use-azure-resource-manager-client-to-delete-recovery-services-vault"></a>Azure Resource Manager クライアントを使用して Recovery Services コンテナーを削除する
+
+1. ご利用のサブスクリプション ID、リソース グループ名、コンテナー名を使用して、次のコマンドを実行します。 このコマンドを実行すると、依存関係がない場合にコンテナーが削除されます。
+
    ```
-2. Azure Backup を最初に使用するときは、[Register-AzResourceProvider](/powershell/module/az.Resources/Register-azResourceProvider) を使ってサブスクリプション内で Azure Recovery Service プロバイダーを登録する必要があります。
-
-   ```powershell
-    Register-AzResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
-   ```
-
-3. 管理者特権で PowerShell ウィンドウを開きます。
-4. `Set-ExecutionPolicy Unrestricted` を使用して、すべての制約を解除します。
-5. 次のコマンドを実行して、Azure Resource Manager クライアント パッケージを chocolately.org からダウンロードします。
-
-    `iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))`
-
-6. 次のコマンドを使用して、Azure Resource Manager API クライアントをインストールします。
-
-   `choco.exe install armclient`
-
-7. Azure portal で、削除するコンテナーのサブスクリプション ID とリソース グループ名を収集します。
-8. PowerShell で、ご利用のサブスクリプション ID、リソース グループ名、コンテナー名を使用して、次のコマンドを実行します。 このコマンドを実行すると、コンテナーとすべての依存関係が削除されます。
-
-   ```powershell
    ARMClient.exe delete /subscriptions/<subscriptionID>/resourceGroups/<resourcegroupname>/providers/Microsoft.RecoveryServices/vaults/<recovery services vault name>?api-version=2015-03-15
    ```
-9. コンテナーが空ではない場合、"内部にリソースが存在するため、コンテナーを削除できません" という内容のエラーが発生します。 コンテナー内に含まれているリソースを削除するには、次の操作を行います。
+2. コンテナーが空ではない場合、"内部にリソースが存在するため、コンテナーを削除できません" という内容のエラーが発生します。 コンテナー内にある保護されたアイテムまたはコンテナーを削除するには、次の操作を行います。
 
-   ```powershell
+   ```
    ARMClient.exe delete /subscriptions/<subscriptionID>/resourceGroups/<resourcegroupname>/providers/Microsoft.RecoveryServices/vaults/<recovery services vault name>/registeredIdentities/<container name>?api-version=2016-06-01
    ```
 
-10. Azure portal で、値が削除されていることを確認します。
+3. Azure portal で、値が削除されていることを確認します。
 
 
 ## <a name="remove-vault-items-and-delete-the-vault"></a>コンテナー アイテムを削除してコンテナーを削除する
@@ -130,22 +116,10 @@ PowerShell を使ってコンテナーを強制的に削除できます。 強�
 
     ![目的のコンテナーを選択してそのダッシュボードを開く](./media/backup-azure-delete-vault/delete-backup-management-servers.png)
 
-2. アイテムを右クリックして、**[削除]** をクリックします。
-
-    ![バックアップの種類を選択する](./media/backup-azure-delete-vault/azure-storage-selected-list.png)
-
-3. 。 **[バックアップの停止]** > **[オプションの選択]** の順に進み、**[バックアップ データの削除]** を選択します。
-4. アイテムの名前を入力し、**[バックアップの停止]** をクリックします。
-   - これで、コンテナーの削除を希望していることが確認されます。
-   - 確認後、**[バックアップの停止]** ボタンがアクティブになります。
-   - データを保持し、データを削除しない場合、コンテナーを削除することはできません。
-
-     ![[バックアップ データの削除]](./media/backup-azure-delete-vault/stop-backup-blade-delete-backup-data.png)
-
-5. 必要に応じて、データを削除する理由を入力し、コメントを追加します。
-6. 削除ジョブが完了したことを確認するには、Azure メッセージを調べます。 ![[バックアップ データの削除]](./media/backup-azure-delete-vault/messages.png)。
-7. ジョブが完了すると、"**バックアップ プロセスが停止されたことと、バックアップ データが削除されたこと**" を示すメッセージがサービスから送信されます。
-8. 一覧のアイテムを削除した後、**[Backup Items ]\(バックアップ アイテム\)** メニューの **[更新]** をクリックして、コンテナー内のアイテムを確認します。
+3. アイテムを右クリックして、**[削除]** をクリックします。
+4. 削除ジョブが完了したことを確認するには、Azure メッセージを調べます。 ![[バックアップ データの削除]](./media/backup-azure-delete-vault/messages.png)。
+5. ジョブが完了すると、"**バックアップ プロセスが停止されたことと、バックアップ データが削除されたこと**" を示すメッセージがサービスから送信されます。
+6. 一覧のアイテムを削除した後、**[バックアップ インフラストラクチャ]** メニューの **[更新]** をクリックして、コンテナー内のアイテムを確認します。
 
 
 ### <a name="remove-azure-backup-agent-recovery-points"></a>Azure Backup エージェントの復旧ポイントを削除する
@@ -168,32 +142,23 @@ PowerShell を使ってコンテナーを強制的に削除できます。 強�
     ![選択したサーバーを削除する](./media/backup-azure-delete-vault/selected-protected-server-click-delete.png)
 
 6. **[削除]** メニューで、アイテムの名前を入力し、**[削除]** をクリックします。
-   - これで、コンテナーの削除を希望していることが確認されます。
-   - 確認後、**[バックアップの停止]** ボタンがアクティブになります。
-   - データを保持し、データを削除しない場合、コンテナーを削除することはできません。
 
      ![[バックアップ データの削除]](./media/backup-azure-delete-vault/delete-protected-server-dialog.png)
 
 7. 必要に応じて、データを削除する理由を入力し、コメントを追加します。
 8. 削除ジョブが完了したことを確認するには、Azure メッセージを調べます。 ![[バックアップ データの削除]](./media/backup-azure-delete-vault/messages.png)。
-7. ジョブが完了すると、"**バックアップ プロセスが停止されたことと、バックアップ データが削除されたこと**" を示すメッセージがサービスから送信されます。
-8. 一覧のアイテムを削除した後、**[Backup Items ]\(バックアップ アイテム\)** メニューの **[更新]** をクリックして、コンテナー内のアイテムを確認します。
-
-
-
-
-
+9. 一覧のアイテムを削除した後、**[バックアップ インフラストラクチャ]** メニューの **[更新]** をクリックして、コンテナー内のアイテムを確認します。
 
 ### <a name="delete-the-vault-after-removing-dependencies"></a>依存関係を削除してからコンテナーを削除する
 
 1. すべての依存関係が削除されたら、コンテナー メニュー内の **[Essentials]** ウィンドウにスクロールします。
 2. 一覧に **[バックアップ アイテム]**、**[バックアップ管理サーバー]**、**[レプリケートされたアイテム]** のどれも表示されないことを確認します。 コンテナー内にまだアイテムが表示されている場合は、それを削除します。
 
-2. コンテナーにアイテムがなくなったら、コンテナー ダッシュボードで **[削除]** をクリックします。
+3. コンテナーにアイテムがなくなったら、コンテナー ダッシュボードで **[削除]** をクリックします。
 
     ![[バックアップ データの削除]](./media/backup-azure-delete-vault/vault-ready-to-delete.png)
 
-1. コンテナーを削除することを確認するために、**[はい]** をクリックします。 コンテナーが削除され、ポータルが **[新規]** サービス メニューに戻ります。
+4. コンテナーを削除することを確認するために、**[はい]** をクリックします。 コンテナーが削除され、ポータルが **[新規]** サービス メニューに戻ります。
 
 ## <a name="what-if-i-stop-the-backup-process-but-retain-the-data"></a>バックアップ プロセスを停止した一方でデータを保持した場合の対処
 

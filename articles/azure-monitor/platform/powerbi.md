@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/19/2018
+ms.date: 05/01/219
 ms.author: bwren
-ms.openlocfilehash: 53e24a6874a1e43b0de07893a6ace3a44b81d373
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2db6ddf57802f6fcf38cfc3ad7094ed94eaca3d8
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58110173"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65234190"
 ---
 # <a name="import-azure-monitor-log-data-into-power-bi"></a>Azure Monitor ログ データを Power BI にインポートする
 
@@ -60,7 +60,9 @@ Power BI Desktop は、Power BI に発行可能なデータセットおよび �
 ## <a name="publish-to-power-bi"></a>Power BI に発行する
 Power BI に発行すると、データセットとレポートが作成されます。  Power BI Desktop でレポートを作成すると、お使いのデータを使用したレポートが発行されます。  そうしない場合は、空のレポートが作成されます。  Power BI でレポートを変更したり、データセットに基づく新しいレポートを作成したりできます。
 
-1. お使いのデータに基づくレポートを作成します。  不慣れな場合には [Power BI Desktop のドキュメント](https://docs.microsoft.com/power-bi/desktop-report-view)を使用してください。  Power BI に送信する準備ができたら、**[発行]** をクリックします。  メッセージが表示されたら、Power BI アカウント内で発行先を選択します。  特定の発行先がない限りは、**[マイ ワークスペース]** を使用します。
+1. お使いのデータに基づくレポートを作成します。  不慣れな場合には [Power BI Desktop のドキュメント](https://docs.microsoft.com/power-bi/desktop-report-view)を使用してください。  
+1. Power BI に送信する準備ができたら、**[発行]** をクリックします。  
+1. メッセージが表示されたら、Power BI アカウント内で発行先を選択します。  特定の発行先がない限りは、**[マイ ワークスペース]** を使用します。
 
     ![Power BI Desktop の発行](media/powerbi/desktop-publish.png)
 
@@ -70,7 +72,10 @@ Power BI に発行すると、データセットとレポートが作成され�
 ### <a name="configure-scheduled-refresh"></a>スケジュールされた更新を構成する
 Power BI で作成されたデータセットには、前に Power BI Desktop で見たのと同じデータがあります。  再度クエリを実行して Azure Monitor から最新データを取り込むために、データセットを定期的に更新する必要があります。  
 
-1. レポートをアップロードしたワークスペースをクリックし、**[データセット]** メニューを選択します。 新しいデータセットの横にあるコンテキスト メニューを選択し、**[設定]** を選択します。 **[データ ソースの資格情報]** に、資格情報が無効であることを示すメッセージがあるはずです。  これは、そのデータを更新するときにデータセットが使用する資格情報を、まだ指定していないためです。  **[資格情報の編集]** をクリックし、Azure Monitor の Log Analytics ワークスペースにアクセスできる資格情報を指定します。
+1. レポートをアップロードしたワークスペースをクリックし、**[データセット]** メニューを選択します。 
+1. 新しいデータセットの横にあるコンテキスト メニューを選択し、**[設定]** を選択します。 
+1. **[データ ソースの資格情報]** に、資格情報が無効であることを示すメッセージがあるはずです。  これは、そのデータを更新するときにデータセットが使用する資格情報を、まだ指定していないためです。  
+1. **[資格情報の編集]** をクリックし、Azure Monitor の Log Analytics ワークスペースにアクセスできる資格情報を指定します。 2 要素認証が必要な場合は、**[認証方法]** で **[OAuth2]** を選択して、自分の資格情報でログインするように求められるようにします。
 
     ![Power BI のスケジュール](media/powerbi/powerbi-schedule.png)
 

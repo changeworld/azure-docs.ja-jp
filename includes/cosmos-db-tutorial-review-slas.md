@@ -2,23 +2,24 @@
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: include
-ms.date: 11/09/2018
+ms.date: 03/22/2019
 ms.author: sngun
-ms.openlocfilehash: e07a59ba0484910d87329be94f0fcc58b1011b95
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: b940d7308648a3a55ed031d7d57542f3b31e9f27
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51572370"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66151352"
 ---
-Azure ポータルでは、アカウント内のスループット、ストレージ、可用性、待機時間、およびリソースの整合性が監視されます。 これらのメトリックを簡単に見てみましょう。 
+Azure portal では、Cosmos DB アカウントのスループット、ストレージ、可用性、待ち時間、および一貫性が監視されます。 [Azure Cosmos DB サービス レベル アグリーメント (SLA)](https://azure.microsoft.com/support/legal/sla/cosmos-db/) に関連付けられたメトリックのグラフに、実際のパフォーマンスと比較された SLA の値が示されます。 この一連のメトリックによって、SLA の監視が透明化されます。
 
-1. ナビゲーション メニューで **[メトリック]** をクリックします。
+メトリックと SLA を確認するには: 
 
-   ![Azure Portal のメトリック](./media/cosmos-db-tutorial-review-slas/metrics.png)
-
-2. 各タブをクリックして、Azure Cosmos DB が提供するメトリックを確認します。 
-
-    [Azure Cosmos DB サービス レベル アグリーメント (SLA)](https://azure.microsoft.com/support/legal/sla/cosmos-db/) に関連付けられているそれぞれのグラフは、SLA のいずれかに違反していることを示す情報を提供します。 Azure Cosmos DB は、この一連のメトリックを使用して SLA の監視を透明化します。 
-
+1. Cosmos DB アカウントのナビゲーション メニューで **[メトリック]** を選択します。
+   
+2. **[待機時間]** など、タブを選択し、右側で期間を選択します。 グラフ上の **[実際]** と **[SLA]** の線を比較します。
+   
    ![Azure Cosmos DB の一連のメトリック](./media/cosmos-db-tutorial-review-slas/metrics-suite.png)
+   
+3. 他のタブでメトリックを確認します。 
+

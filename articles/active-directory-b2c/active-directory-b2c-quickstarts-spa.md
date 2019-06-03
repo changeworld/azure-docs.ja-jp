@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 10/24/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 51e0f6b7162c9bfa6c34f091bdce2b896bd5e284
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 2e5f16fa42e86442f6600e375df343f3b6369986
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64688962"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190382"
 ---
 # <a name="quickstart-set-up-sign-in-for-a-single-page-app-using-azure-active-directory-b2c"></a>クイック スタート:Azure Active Directory B2C を使用したシングルページ アプリのサインインの設定
 
@@ -25,7 +25,7 @@ Azure Active Directory (Azure AD) B2C は、アプリケーション、ビジネ
 
 ## <a name="prerequisites"></a>前提条件
 
-- [Visual Studio 2017](https://www.visualstudio.com/downloads/) と **ASP.NET および開発**ワークロード。
+- **[ASP.NET および Web の開発]** ワークロードを含む [Visual Studio 2019](https://www.visualstudio.com/downloads/)。
 -  [Node.js](https://nodejs.org/en/download/)
 - Facebook、Google、Microsoft、または Twitter のソーシャル アカウント。
 - [ZIP ファイルをダウンロード](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp/archive/master.zip)するか、GitHub からサンプル Web アプリを複製します。
@@ -64,7 +64,7 @@ Azure Active Directory (Azure AD) B2C は、アプリケーション、ビジネ
 
     ![サインインまたはサインアップ用のプロバイダー](media/active-directory-b2c-quickstarts-spa/sign-in-or-sign-up-spa.png)
 
-    ユーザーは、ソーシャル アカウントの資格情報を使用して認証 (サインイン) を行うと共に、ソーシャル アカウントから情報を読み取ることについての承認をアプリケーションに与えることになります。 アクセスを許可することにより、アプリケーションはソーシャル アカウントからプロファイル情報 (名前やお住まいの都市など) を取得できるようになります。 
+    ユーザーは、ソーシャル アカウントの資格情報を使用して認証 (サインイン) し、アプリケーションがそのソーシャル アカウントから情報を読み取ることを承認します。 アクセスを許可することにより、アプリケーションはソーシャル アカウントからプロファイル情報 (名前やお住まいの都市など) を取得できるようになります。 
 
 3. ID プロバイダーのサインイン プロセスを完了します。
 
@@ -82,7 +82,12 @@ Azure Active Directory (Azure AD) B2C は、アプリケーション、ビジネ
 
 ## <a name="next-steps"></a>次の手順
 
-このクイック スタートでは、サンプルのシングルページ アプリケーションを使用して、カスタム ログイン ページでのサインインとソーシャル ID プロバイダーでのサインイン、Azure AD B2C アカウントの作成を行った後、Azure AD B2C で保護された Web API を呼び出しました。 
+このクイック スタートでは、サンプルのシングルページ アプリケーションを使用して次のことを行いました。
+
+* カスタム ログイン ページを使用してサインインする
+* ソーシャル ID プロバイダーを使用してサインインする
+* Azure AD B2C アカウントを作成する
+* Azure AD B2C によって保護された Web API を呼び出す
 
 独自の Azure AD B2C テナントを作成してみましょう。
 

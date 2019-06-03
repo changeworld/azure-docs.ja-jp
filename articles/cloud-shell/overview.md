@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 09/04/2018
 ms.author: damaerte
 ms.openlocfilehash: 5608b3e0f9b98db62d22245de5a864f757f48799
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.sourcegitcommit: f4469b7bb1f380bf9dddaf14763b24b1b508d57c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57243977"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "60199665"
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Azure Cloud Shell の概要
 Azure Cloud Shell は、Azure リソースを管理するための、ブラウザーでアクセスできるインタラクティブなシェルです。

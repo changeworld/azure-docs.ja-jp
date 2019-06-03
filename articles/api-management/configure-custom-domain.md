@@ -9,14 +9,14 @@ editor: ''
 ms.service: api-management
 ms.workload: integration
 ms.topic: article
-ms.date: 12/14/2017
+ms.date: 05/29/2019
 ms.author: apimpm
-ms.openlocfilehash: a771b437258046f937b97a9e37ffedbe0a17c1c1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a8bfa7c5baa316b4019480bfc146b6cc61eff979
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58079795"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66141299"
 ---
 # <a name="configure-a-custom-domain-name"></a>カスタム ドメイン名の構成 
 
@@ -36,8 +36,6 @@ API Management (APIM) インスタンスを作成すると、Azure によって 
 + APIM インスタンス。 詳細については、[Azure API Management インスタンスの作成](get-started-create-service-instance.md)に関する記事を参照してください。
 + 自己所有しているカスタム ドメイン名。 使用するカスタム ドメイン名は別途入手して DNS サーバーでホストしている必要があります。 このトピックでは、カスタム ドメイン名をホストする方法の手順は説明しません。
 + パブリックおよびプライベート キー (.PFX) 付きの有効な証明書。 サブジェクトまたはサブジェクト代替名 (SAN) はドメイン名と一致している必要があります (これにより、APIM は SSL 経由で URL を安全に公開できます)。
-
-[!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
 ## <a name="use-the-azure-portal-to-set-a-custom-domain-name"></a>Azure ポータルを使用してカスタム ドメイン名を設定する
 

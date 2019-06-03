@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: a86e63f17230ed30bd5ae164d2d17d65b5cde745
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: ae0b8bb6dec4b129a4965426789819e119a25c53
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65408065"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65991501"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-meta-networks-connector"></a>チュートリアル:Azure Active Directory と Meta Networks Connector の統合
 
@@ -54,11 +54,11 @@ Azure AD への Meta Networks Connector の統合を構成するには、ギャ�
 
 **ギャラリーから Meta Networks Connector を追加するには、次の手順を行います。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
     ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
+2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -66,7 +66,7 @@ Azure AD への Meta Networks Connector の統合を構成するには、ギャ�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Meta Networks Connector**」と入力して、結果パネルから **Meta Networks Connector** を選択し、**[追加]** ボタンをクリックしてアプリケーションを追加します。
+4. 検索ボックスに「**Meta Networks Connector**」と入力して、結果パネルから **Meta Networks Connector** を選択し、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
 
      ![結果一覧の Meta Networks Connector](common/search-new-app.png)
 
@@ -90,15 +90,15 @@ Meta Networks Connector で Azure AD のシングル サインオンを構成し
 
 Meta Networks Connector で Azure AD シングル サインオンを構成するには、次の手順を行います。
 
-1. [Azure portal](https://portal.azure.com/) の **Meta Networks Connector** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Meta Networks Connector** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
-2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
+2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
     ![シングル サインオン選択モード](common/select-saml-option.png)
 
-3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -110,7 +110,7 @@ Meta Networks Connector で Azure AD シングル サインオンを構成する
 
     b. **[応答 URL]** ボックスに、`https://login.nsof.io/v1/<ORGANIZATION-SHORT-NAME>/sso/saml` のパターンを使用して URL を入力します
 
-5. アプリケーションを **SP** 開始モードで構成する場合は、**[追加の URL を設定します]** をクリックして次の手順を実行します。
+5. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
     ![[Meta Networks Connector のドメインと URL] のシングル サインオン情報](common/both-advanced-urls.png)
 
@@ -121,7 +121,7 @@ Meta Networks Connector で Azure AD シングル サインオンを構成する
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL に値を置き換えます。実際の値については後で説明します。
 
-6. Meta Networks Connector アプリケーションでは、特定の形式の SAML アサーションが求められます。そのため、カスタム属性マッピングを SAML トークン属性構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。  **[編集]** アイコンをクリックして、 **[ユーザー属性]** ダイアログを開きます。
+6. Meta Networks Connector アプリケーションでは、特定の形式の SAML アサーションが求められます。そのため、カスタム属性マッピングを SAML トークン属性構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。  **[編集]**  アイコンをクリックして、 **[ユーザー属性]**  ダイアログを開きます。
 
     ![image](common/edit-attribute.png)
     
@@ -131,8 +131,8 @@ Meta Networks Connector で Azure AD シングル サインオンを構成する
     | ---------------| --------------- | -------- |
     | firstname | User.givenname | |
     | lastname | User.surname | |
-    | emailaddress| User.mail| `https://schemas.xmlsoap.org/ws/2005/05/identity/claims` |
-    | name | user.userprincipalname| `https://schemas.xmlsoap.org/ws/2005/05/identity/claims` |
+    | emailaddress| User.mail| `http://schemas.xmlsoap.org/ws/2005/05/identity/claims` |
+    | name | user.userprincipalname| `http://schemas.xmlsoap.org/ws/2005/05/identity/claims` |
     | phone | user.telephonenumber | |
 
     a. **[新しい要求の追加]** をクリックして **[ユーザー要求の管理]** ダイアログを開きます。
@@ -153,7 +153,7 @@ Meta Networks Connector で Azure AD シングル サインオンを構成する
 
     g. **[Save]** をクリックします。
 
-8. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
+8. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
@@ -172,7 +172,7 @@ Meta Networks Connector で Azure AD シングル サインオンを構成する
 1. ブラウザーで新しいタブを開き、Meta Networks Connector の管理者アカウントにログインします。
     
     > [!NOTE]
-    > Meta Networks Connector は、セキュリティで保護されたシステムです。 したがって、ポータルにアクセスする前に、接続先側でパブリック IP アドレスをホワイトリストに登録する必要があります。 パブリック IP アドレスを取得するには、[ここ](https://whatismyipaddress.com/)で指定されているリンクに従います。 IP アドレスを [Meta Networks Connector クライアント サポート チーム](mailto:support@metanetworks.com)に送信し、IP アドレスをホワイトリストに登録します。
+    > Meta Networks Connector は、セキュリティで保護されたシステムです。 したがって、ポータルにアクセスする前に、接続先側でパブリック IP アドレスを許可リストに登録する必要があります。 パブリック IP アドレスを取得するには、[ここ](https://whatismyipaddress.com/)で指定されているリンクに従います。 IP アドレスを [Meta Networks Connector クライアント サポート チーム](mailto:support@metanetworks.com)に送信して、IP アドレスを許可リストに登録してもらいます。
     
 2. **[管理者]** に移動して **[設定]** を選択します。
     
@@ -190,11 +190,11 @@ Meta Networks Connector で Azure AD シングル サインオンを構成する
     
     ![Configure single sign-on](./media/metanetworksconnector-tutorial/configure2.png)
     
-    a. **[SSO URL]** の値をコピーし、**[Meta Networks Connector ドメインと URL]** セクションの **[サインイン URL]** テキスト ボックスに貼り付けます。
+    a. **[SSO URL]** の値をコピーし、 **[Meta Networks Connector ドメインと URL]** セクションの **[サインイン URL]** テキスト ボックスに貼り付けます。
     
-    b. **[Recipient URL]\(受信者 URL\)** の値をコピーし、**[Meta Networks Connector ドメインと URL]** セクションの **[応答 URL]** テキスト ボックスに貼り付けます。
+    b. **[Recipient URL]\(受信者 URL\)** の値をコピーし、 **[Meta Networks Connector ドメインと URL]** セクションの **[応答 URL]** テキスト ボックスに貼り付けます。
     
-    c. **[Audience URI (SP Entity ID)]\(オーディエンス URI (SP エンティティ ID)\)** の値をコピーし、**[Meta Networks Connector ドメインと URL]** セクションの **[識別子 (エンティティ ID)]** テキスト ボックスに貼り付けます。
+    c. **[Audience URI (SP Entity ID)]\(オーディエンス URI (SP エンティティ ID)\)** の値をコピーし、 **[Meta Networks Connector ドメインと URL]** セクションの **[識別子 (エンティティ ID)]** テキスト ボックスに貼り付けます。
     
     d. SAML を有効にします
     
@@ -206,7 +206,7 @@ Meta Networks Connector で Azure AD シングル サインオンを構成する
 
     b. **[Identity Provider Issuer]\(ID プロバイダーの発行者\)** に、Azure portal からコピーした **[Azure AD 識別子]** の値を貼り付けます。
 
-    c. Azure Portal からダウンロードした証明書をメモ帳で開き、**[X.509 Certificate]\(X.509 証明書\)** ボックスに貼り付けます。
+    c. Azure Portal からダウンロードした証明書をメモ帳で開き、 **[X.509 Certificate]\(X.509 証明書\)** ボックスに貼り付けます。
 
     d. **[Just-in-Time Provisioning]\(ジャストイン タイム プロビジョニング\)** を有効にします。
 
@@ -214,7 +214,7 @@ Meta Networks Connector で Azure AD シングル サインオンを構成する
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
+1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
@@ -239,7 +239,7 @@ Meta Networks Connector で Azure AD シングル サインオンを構成する
 
 このセクションでは、Britta Simon に Meta Networks Connector へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[Meta Networks Connector]** を選択します。
+1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[Meta Networks Connector]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -251,15 +251,15 @@ Meta Networks Connector で Azure AD シングル サインオンを構成する
 
     ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
 5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
+6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
 
-7. **[割り当ての追加]** ダイアログで、**[割り当て]** をクリックします。
+7. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
 ### <a name="create-meta-networks-connector-test-user"></a>Meta Networks Connector のテスト ユーザーの作成
 

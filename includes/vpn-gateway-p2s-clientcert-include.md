@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 12/11/2018
 ms.author: cherylmc
 ms.openlocfilehash: 31ccf14c82f6248c74d6af932fe9e338d26d2747
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57964199"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66157234"
 ---
 お客様がポイント対サイト接続を使用して VNet に接続する各クライアント コンピューターには、クライアント証明書がインストールされていなければなりません。 ルート証明書からそれを生成し、各クライアント コンピューターにインストールします。 有効なクライアント証明書をインストールしないと、クライアントが VNet への接続を試行したときに認証が失敗します。
 

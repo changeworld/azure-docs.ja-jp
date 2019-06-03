@@ -16,12 +16,12 @@ ms.date: 04/24/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d32564808151c4895d2b3802fb48d2bd2d8f753
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: e6120637bdf52db4b6863fb87feb1d52c78ca088
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64729535"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65508113"
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Azure AD Connect 同期: Azure Active Directory に同期される属性
 このトピックでは、Azure AD Connect Sync によって同期される属性の一覧を示します。  
@@ -48,7 +48,7 @@ ms.locfileid: "64729535"
 | pwdLastSet |X |機械的なプロパティ。 既に発行されているトークンを無効にする時期を確認するために使用されます。 パスワード ハッシュ同期、パススルー認証、およびフェデレーションのすべてで使用されます。 |
 |samAccountName|X| |
 | sourceAnchor |X |機械的なプロパティ。 ADDS と Azure AD 間の関係を維持する変更不可の識別子です。 |
-| usageLocation |X |機械的なプロパティ。 ユーザーの国。 ライセンスの割り当てに使用されます。 |
+| usageLocation |X |機械的なプロパティ。 ユーザーの国/リージョン。 ライセンスの割り当てに使用されます。 |
 | userPrincipalName |X |UPN は、ユーザーのログイン ID です。 多くの場合、[mail] 値と同じです。 |
 
 ## <a name="exchange-online"></a>Exchange Online
@@ -168,7 +168,7 @@ ms.locfileid: "64729535"
 | thumbnailphoto |X |X | | |
 | title |X |X | | |
 | unauthOrig |X |X |X | |
-| usageLocation |X | | |機械的なプロパティ。 ユーザーの国。 ライセンスの割り当てに使用されます。 |
+| usageLocation |X | | |機械的なプロパティ。 ユーザーの国/リージョン。 ライセンスの割り当てに使用されます。 |
 | userCertificate |X |X | | |
 | userPrincipalName |X | | |UPN は、ユーザーのログイン ID です。 多くの場合、[mail] 値と同じです。 |
 | userSMIMECertificates |X |X | | |
@@ -251,7 +251,8 @@ ms.locfileid: "64729535"
 | title |X |X | | |
 | unauthOrig |X |X |X | |
 | url |X |X | | |
-| usageLocation |X | | |機械的なプロパティ。 ユーザーの国。 ライセンスの割り当てに使用されます。 |
+| usageLocation |X | | |機械的なプロパティ。 ユーザーの国/リージョン
+。 ライセンスの割り当てに使用されます。 |
 | userPrincipalName |X | | |UPN は、ユーザーのログイン ID です。 多くの場合、[mail] 値と同じです。 |
 | wWWHomePage |X |X | | |
 
@@ -299,7 +300,7 @@ ms.locfileid: "64729535"
 | telephoneNumber |X |X | | |
 | thumbnailphoto |X |X | | |
 | title |X |X | | |
-| usageLocation |X | | |機械的なプロパティ。 ユーザーの国。 ライセンスの割り当てに使用されます。 |
+| usageLocation |X | | |機械的なプロパティ。 ユーザーの国/リージョン。 ライセンスの割り当てに使用されます。 |
 | userPrincipalName |X | | |UPN は、ユーザーのログイン ID です。 多くの場合、[mail] 値と同じです。 |
 | wWWHomePage |X |X | | |
 
@@ -315,7 +316,7 @@ ms.locfileid: "64729535"
 | proxyAddresses |X |X |X |機械的なプロパティ。 Azure AD によって使用されます。 ユーザー向けのすべてのセカンダリの電子メール アドレスが含まれています。 |
 | pwdLastSet |X | | |機械的なプロパティ。 既に発行されているトークンを無効にする時期を確認するために使用されます。 |
 | sourceAnchor |X |X |X |機械的なプロパティ。 ADDS と Azure AD 間の関係を維持する変更不可の識別子です。 |
-| usageLocation |X | | |機械的なプロパティ。 ユーザーの国。 ライセンスの割り当てに使用されます。 |
+| usageLocation |X | | |機械的なプロパティ。 ユーザーの国/リージョン。 ライセンスの割り当てに使用されます。 |
 | userPrincipalName |X | | |この UPN は、ユーザーのログイン ID です。 多くの場合、[mail] 値と同じです。 |
 
 ## <a name="intune"></a>Intune
@@ -333,7 +334,7 @@ ms.locfileid: "64729535"
 | proxyAddresses |X |X |X | |
 | pwdLastSet |X | | |機械的なプロパティ。 既に発行されているトークンを無効にする時期を確認するために使用されます。 パスワード ハッシュ同期、パススルー認証、およびフェデレーションのすべてで使用されます。 |
 | sourceAnchor |X |X |X |機械的なプロパティ。 ADDS と Azure AD 間の関係を維持する変更不可の識別子です。 |
-| usageLocation |X | | |機械的なプロパティ。 ユーザーの国。 ライセンスの割り当てに使用されます。 |
+| usageLocation |X | | |機械的なプロパティ。 ユーザーの国/リージョン。 ライセンスの割り当てに使用されます。 |
 | userPrincipalName |X | | |UPN は、ユーザーのログイン ID です。 多くの場合、[mail] 値と同じです。 |
 
 ## <a name="dynamics-crm"></a>Dynamics CRM
@@ -365,7 +366,7 @@ ms.locfileid: "64729535"
 | streetAddress |X |X | | |
 | telephoneNumber |X |X | | |
 | title |X |X | | |
-| usageLocation |X | | |機械的なプロパティ。 ユーザーの国。 ライセンスの割り当てに使用されます。 |
+| usageLocation |X | | |機械的なプロパティ。 ユーザーの国/リージョン。 ライセンスの割り当てに使用されます。 |
 | userPrincipalName |X | | |UPN は、ユーザーのログイン ID です。 多くの場合、[mail] 値と同じです。 |
 
 ## <a name="3rd-party-applications"></a>サード パーティ製アプリケーション
@@ -381,6 +382,7 @@ ms.locfileid: "64729535"
 | accountEnabled |X | | |アカウントが有効な場合に定義します。 |
 | cn |X | |X | |
 | displayName |X |X |X | |
+| employeeID |X |  |  | |
 | givenName |X |X | | |
 | mail |X | |X | |
 | managedBy | | |X | |
@@ -391,7 +393,7 @@ ms.locfileid: "64729535"
 | pwdLastSet |X | | |機械的なプロパティ。 既に発行されているトークンを無効にする時期を確認するために使用されます。 パスワード ハッシュ同期、パススルー認証、およびフェデレーションのすべてで使用されます。 |
 | sn |X |X | | |
 | sourceAnchor |X |X |X |機械的なプロパティ。 ADDS と Azure AD 間の関係を維持する変更不可の識別子です。 |
-| usageLocation |X | | |機械的なプロパティ。 ユーザーの国。 ライセンスの割り当てに使用されます。 |
+| usageLocation |X | | |機械的なプロパティ。 ユーザーの国/リージョン。 ライセンスの割り当てに使用されます。 |
 | userPrincipalName |X | | |UPN は、ユーザーのログイン ID です。 多くの場合、[mail] 値と同じです。 |
 
 ## <a name="windows-10"></a>Windows 10
@@ -420,7 +422,7 @@ Windows 10 のドメイン参加コンピューター (デバイス) は、一�
 ## <a name="exchange-hybrid-writeback"></a>Exchange ハイブリッドの書き戻し
 次の属性は、 **Exchange ハイブリッド**を有効にした場合に Azure AD からオンプレミスの Active Directory に書き戻されます。 Exchange のバージョンに応じて、同期される属性が少なくなる場合があります。
 
-| 属性名 (Connect の UI) |属性名 (オンプレミスの AD) | User | Contact | Group | Comment (コメント) |
+| 属性名 (オンプレミスの AD) | 属性名 (Connect の UI) | User | Contact | Group | Comment (コメント) |
 | --- |:---:|:---:|:---:| --- |---|
 | msDS ExternalDirectoryObjectID| ms-DS-External-Directory-Object-Id |X | | |Azure AD の cloudAnchor から派生します。 この属性は、Exchange 2016 と Windows Server 2016 AD で導入されました。 |
 | msExchArchiveStatus| ms-Exch-ArchiveStatus |X | | |オンライン アーカイブ: 顧客によるメールのアーカイブを有効にします。 |

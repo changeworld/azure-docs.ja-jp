@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 05/01/2019
-ms.openlocfilehash: 9aadfd1f3685466c8c0beb6dff3bb8d063f4bfd8
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.date: 05/08/2019
+ms.openlocfilehash: e971fd160a43be088f6d3c4a9fb6fddc7dd769b0
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65137397"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65415671"
 ---
 # <a name="tutorial-migrate-rds-mysql-to-azure-database-for-mysql-online-using-dms"></a>チュートリアル:DMS を使用して RDS MySQL を Azure Database for MySQL にオンラインで移行する
 
@@ -24,10 +24,9 @@ Azure Database Migration Service を使用して、RDS MySQL インスタンス�
 
 このチュートリアルでは、以下の内容を学習します。
 > [!div class="checklist"]
->
 > * mysqldump および mysql ユーティリティを使用して、サンプル スキーマを移行する。
 > * Azure Database Migration Service のインスタンスを作成する。
-> * Azure Database Migration Service を使用して、移行プロジェクトを作成する。
+> * Azure Database Migration Service を使用して移行プロジェクトを作成する。
 > * 移行を実行する。
 > * 移行を監視する。
 
@@ -55,7 +54,7 @@ Azure Database Migration Service を使用して、RDS MySQL インスタンス�
 
 * [MySQL **Employees** サンプル データベース](https://dev.mysql.com/doc/employee/en/employees-installation.html)をダウンロードしてインストールします。
 * [Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/quickstart-create-mysql-server-database-using-azure-portal) のインスタンスを作成します。
-* Azure Resource Manager デプロイ モデルを使用して、Azure Database Migration Service 用の Azure 仮想ネットワーク (VNet) を作成します。これで、[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) または [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) を使用したオンプレミスのソース サーバーへのサイト間接続が提供されます。
+* Azure Resource Manager デプロイ モデルを使用して、Azure Database Migration Service 用の Azure 仮想ネットワーク (VNet) を作成します。これで、[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) または [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) を使用したオンプレミスのソース サーバーへのサイト間接続が提供されます。 VNet の作成方法の詳細については、[Virtual Network のドキュメント](https://docs.microsoft.com/azure/virtual-network/)、特に詳細な手順を提供するクイックスタートの記事を参照してください。
 * VNet ネットワーク セキュリティ グループの規則によって、Azure Database Migration Service への以下のインバウンド通信ポートが確実にブロックされないようにします:443、53、9354、445、12000。 Azure VNet NSG トラフィックのフィルター処理の詳細については、[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルター処理](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)に関する記事を参照してください。
 * [データベース エンジン アクセスのために Windows ファイアウォール](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)を構成します。
 * Azure Database Migration Service でソース MySQL サーバーにアクセスできるように Windows ファイアウォールを開きます。既定では TCP ポート 3306 が使用されます。
@@ -123,7 +122,7 @@ Azure Database Migration Service を使用して、RDS MySQL インスタンス�
 
 4. クエリ結果内の外部キー削除 (2 列目) を実行して、外部キーを削除します。
 
-5. データにトリガー (insert または update トリガー) が含まれている場合は、ソースからのデータのレプリケートの前にターゲットでデータの整合性が適用されます。 移行時は*ターゲットの* すべてのテーブル内のトリガーを無効にし、移行の完了後にトリガーを有効にすることをお勧めします。
+5. データにトリガー (insert または update トリガー) が含まれている場合は、ソースからデータをレプリケートする前にターゲットでデータの整合性が適用されます。 移行時は*ターゲットの*すべてのテーブル内のトリガーを無効にし、移行の完了後にトリガーを有効にすることをお勧めします。
 
     ターゲット データベース内のトリガーを無効にするには、次のように指定します。
 
@@ -168,7 +167,7 @@ Azure Database Migration Service を使用して、RDS MySQL インスタンス�
 
     Azure portal で VNet を作成する方法の詳細については、[Azure portal を使用した仮想ネットワークの作成](https://aka.ms/DMSVnet)に関する記事を参照してください。
 
-6. 価格レベルを選択します。このオンライン移行では、必ず、[Premium: 4vCores]\(Premium: 4 仮想コア\) 価格レベルを選択してください。
+6. 価格レベルを選択します。このオンライン移行では、Premium:4 仮想コア価格レベルを選択してください。
 
     ![Azure Database Migration Service インスタンス設定を構成する](media/tutorial-rds-mysql-server-azure-db-for-mysql-online/dms-settings3.png)
 
@@ -239,9 +238,9 @@ Azure Database Migration Service を使用して、RDS MySQL インスタンス�
 
     ![アクティビティの状態 - 実行中](media/tutorial-rds-mysql-server-azure-db-for-mysql-online/dms-activity-status4.png)
 
-2. **[データベース名]** で、特定のデータベースを選択して、**データ全体の読み込み**操作と**増分データ同期**操作の移行状態を取得します。
+2. **[データベース名]** で、特定のデータベースを選択して、**[データ全体の読み込み]** 操作と **[増分データ同期]** 操作の移行状態を取得します。
 
-    **データ全体の読み込み**には初回の読み込みの移行状態が表示され、**増分データ同期**には変更データ キャプチャ (CDC) の状態が表示されます。
+    **データ全体の読み込み** には初回の読み込みの移行状態が表示され、**増分データ同期** には変更データ キャプチャ (CDC) の状態が表示されます。
 
     ![インベントリ画面 - データ全体の読み込み](media/tutorial-rds-mysql-server-azure-db-for-mysql-online/dms-inventory-full-load.png)
 

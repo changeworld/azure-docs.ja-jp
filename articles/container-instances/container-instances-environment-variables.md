@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 04/17/2019
 ms.author: danlep
 ms.openlocfilehash: 4a4b19338d96094f28b4f4bedd8042723f67f10a
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59994777"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66149140"
 ---
 # <a name="set-environment-variables-in-container-instances"></a>コンテナー インスタンスで環境変数を設定する
 

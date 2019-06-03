@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 02/28/2019
+ms.date: 05/24/2019
 ms.author: diberry
-ms.openlocfilehash: f74d43d90a288a145887878305a95e1052ab8c05
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 0f40ed3d0b77662e23e4042f568b8241cef130c6
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58880017"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66256606"
 ---
 # <a name="get-answers-to-a-question-from-a-knowledge-base-with-python"></a>Python を使用してナレッジ ベースから質問の回答を取得する
 
@@ -25,8 +25,8 @@ ms.locfileid: "58880017"
 
 * [Python 3.6 以上](https://www.python.org/downloads/)
 * [Visual Studio Code](https://code.visualstudio.com/)
-* [QnA Maker サービス](../How-To/set-up-qnamaker-service-azure.md)が必要です。 キーを取得するには、QnA Maker リソースの Azure ダッシュボードで、**[リソース管理]** の **[キー]** を選択します。 
-* **[発行]** ページの設定。 発行済みのナレッジ ベースがない場合は、空のナレッジ ベースを作成し、**[設定]** ページでナレッジ ベースをインポートして発行してください。 [こちらの基本的なナレッジ ベース](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/knowledge-bases/basic-kb.tsv)をダウンロードしてご使用ください。 
+* [QnA Maker サービス](../How-To/set-up-qnamaker-service-azure.md)が必要です。 キーを取得するには、QnA Maker リソースの Azure ダッシュボードで、 **[リソース管理]** の **[キー]** を選択します。 
+* **[発行]** ページの設定。 発行済みのナレッジ ベースがない場合は、空のナレッジ ベースを作成し、 **[設定]** ページでナレッジ ベースをインポートして発行してください。 [こちらの基本的なナレッジ ベース](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/knowledge-bases/basic-kb.tsv)をダウンロードしてご使用ください。 
 
     発行ページの設定には、POST ルート値、Host 値、EndpointKey 値が含まれています。 
 
@@ -44,11 +44,11 @@ VSCode を開き、`get-answer-3x.py` という名前の新しいファイルを
 
 [!code-python[Add the required dependencies](~/samples-qnamaker-python/documentation-samples/quickstarts/get-answer/get-answer-3x.py?range=1-2 "Add the required dependencies")]
 
-ホストとルートは、**[発行]** ページでの表示と異なります。 これは、ホストでのルーティングが Python ライブラリでは許可されていないためです。 **[発行]** ページにホストの一部として表示されるルーティングは、ルートに移動されています。
+ホストとルートは、 **[発行]** ページでの表示と異なります。 これは、ホストでのルーティングが Python ライブラリでは許可されていないためです。 **[発行]** ページにホストの一部として表示されるルーティングは、ルートに移動されています。
 
 ## <a name="add-the-required-constants"></a>必要な定数を追加する
 
-QnA Maker にアクセスするために必要な定数を追加します。 これらの値は、ナレッジ ベースを発行した後、**[発行]** ページにあります。 
+QnA Maker にアクセスするために必要な定数を追加します。 これらの値は、ナレッジ ベースを発行した後、 **[発行]** ページにあります。 
 
 [!code-python[Add the required constants](~/samples-qnamaker-python/documentation-samples/quickstarts/get-answer/get-answer-3x.py?range=5-25 "Add the required constants")]
 
@@ -79,4 +79,4 @@ python get-answer-3x.py
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [QnA Maker (V4) REST API リファレンス](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)
+> [QnA Maker (V4) REST API リファレンス](https://go.microsoft.com/fwlink/?linkid=2092179)

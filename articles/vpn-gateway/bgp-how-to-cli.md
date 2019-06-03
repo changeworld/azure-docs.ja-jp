@@ -1,5 +1,5 @@
 ---
-title: 'Azure VPN ゲートウェイ: Resource Manager と CLI で BGP を構成する | Microsoft Docs'
+title: 'Azure VPN ゲートウェイで BGP を構成する: Resource Manager と CLI | Microsoft Docs'
 description: この記事では、Azure Resource Manager と CLI を使用して Azure VPN ゲートウェイで BGP を構成する方法を説明します。
 services: vpn-gateway
 documentationcenter: na
@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: yushwang
-ms.openlocfilehash: f0367a360de97d3935c7fa8de9f3dafa6555811e
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 51402196c8429797b644357822a1e3c08982b384
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49471358"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65209503"
 ---
 # <a name="how-to-configure-bgp-on-an-azure-vpn-gateway-by-using-cli"></a>CLI を使用して Azure VPN ゲートウェイで BGP を構成する方法
 
@@ -50,7 +50,7 @@ BGP の利点の詳しい説明と、BGP を使用する場合の技術面の要
 
 最新バージョンの CLI コマンド (2.0 以降) をインストールします。 CLI コマンドのインストール方法については、「[Azure CLI のインストール](/cli/azure/install-azure-cli)」および「[Azure CLI を使ってみる](/cli/azure/get-started-with-azure-cli)」を参照してください。
 
-### <a name="step-1-create-and-configure-testvnet1"></a>手順 1: TestVNet1 を作成し、構成する
+### <a name="step-1-create-and-configure-testvnet1"></a>手順 1:TestVNet1 の作成と構成
 
 #### <a name="Login"></a>1.サブスクリプションへの接続
 
@@ -66,28 +66,28 @@ az group create --name TestBGPRG1 --location eastus
 
 #### <a name="3-create-testvnet1"></a>手順 3.TestVNet1 を作成する
 
-以下の例では、TestVNet1 という名前の仮想ネットワークと 3 つのサブネット(GatewaySubnet、FrontEnd、BackEnd) を作成します。 値を代入するときは、ゲートウェイ サブネットの名前を必ず GatewaySubnet にすることが重要です。 別の名前にすると、ゲートウェイの作成は失敗します。
+次の例では、TestVNet1 という名前の仮想ネットワークと、次の 3 つのサブネットを作成します: GatewaySubnet、FrontEnd、BackEnd。 値を代入するときは、ゲートウェイ サブネットの名前を必ず GatewaySubnet にすることが重要です。 別の名前にすると、ゲートウェイの作成は失敗します。
 
 1 番目のコマンドは、フロントエンド アドレス空間と、FrontEnd サブネットを作成します。 2 番目のコマンドでは、BackEnd サブネット用に追加のアドレス空間を作成します。 3 番目と 4 番目のコマンドは、BackEnd サブネットと GatewaySubnet を作成します。
 
 ```azurecli
-az network vnet create -n TestVNet1 -g TestBGPRG1 --address-prefix 10.11.0.0/16 -l eastus --subnet-name FrontEnd --subnet-prefix 10.11.0.0/24 
- 
-az network vnet update -n TestVNet1 --address-prefixes 10.11.0.0/16 10.12.0.0/16 -g TestBGPRG1 
- 
-az network vnet subnet create --vnet-name TestVNet1 -n BackEnd -g TestBGPRG1 --address-prefix 10.12.0.0/24 
- 
-az network vnet subnet create --vnet-name TestVNet1 -n GatewaySubnet -g TestBGPRG1 --address-prefix 10.12.255.0/27 
+az network vnet create -n TestVNet1 -g TestBGPRG1 --address-prefix 10.11.0.0/16 -l eastus --subnet-name FrontEnd --subnet-prefix 10.11.0.0/24 
+ 
+az network vnet update -n TestVNet1 --address-prefixes 10.11.0.0/16 10.12.0.0/16 -g TestBGPRG1 
+ 
+az network vnet subnet create --vnet-name TestVNet1 -n BackEnd -g TestBGPRG1 --address-prefix 10.12.0.0/24 
+ 
+az network vnet subnet create --vnet-name TestVNet1 -n GatewaySubnet -g TestBGPRG1 --address-prefix 10.12.255.0/27 
 ```
 
-### <a name="step-2-create-the-vpn-gateway-for-testvnet1-with-bgp-parameters"></a>手順 2: BGP パラメーターを指定して TestVNet1 の VPN ゲートウェイを作成する
+### <a name="step-2-create-the-vpn-gateway-for-testvnet1-with-bgp-parameters"></a>手順 2:BGP パラメーターを指定して TestVNet1 の VPN ゲートウェイを作成する
 
 #### <a name="1-create-the-public-ip-address"></a>1.パブリック IP アドレスの作成
 
 パブリック IP アドレスを要求します。 仮想ネットワーク用に作成した VPN ゲートウェイにパブリック IP アドレスが割り当てられます。
 
 ```azurecli
-az network public-ip create -n GWPubIP -g TestBGPRG1 --allocation-method Dynamic 
+az network public-ip create -n GWPubIP -g TestBGPRG1 --allocation-method Dynamic 
 ```
 
 #### <a name="2-create-the-vpn-gateway-with-the-as-number"></a>2.AS 番号で VPN ゲートウェイを作成する
@@ -107,14 +107,14 @@ az network vnet-gateway create -n VNet1GW -l eastus --public-ip-address GWPubIP 
 次のコマンドを実行し、出力の上部にある `bgpSettings` セクションを確認します。
 
 ```azurecli
-az network vnet-gateway list -g TestBGPRG1 
- 
-  
-"bgpSettings": { 
-      "asn": 65010, 
-      "bgpPeeringAddress": "10.12.255.30", 
-      "peerWeight": 0 
-    }
+az network vnet-gateway list -g TestBGPRG1 
+ 
+  
+"bgpSettings": { 
+      "asn": 65010, 
+      "bgpPeeringAddress": "10.12.255.30", 
+      "peerWeight": 0 
+    }
 ```
 
 ゲートウェイが作成されたら、このゲートウェイを使用して、BGP でクロスプレミス接続または VNet 間接続を確立することができます。
@@ -126,23 +126,23 @@ az network vnet-gateway list -g TestBGPRG1
 ![クロスプレミス用の BGP](./media/vpn-gateway-bgp-resource-manager-ps/bgp-crossprem.png)
 
 
-### <a name="step-1-create-and-configure-the-local-network-gateway"></a>手順 1: ローカル ネットワーク ゲートウェイを作成して構成する
+### <a name="step-1-create-and-configure-the-local-network-gateway"></a>手順 1:ローカル ネットワーク ゲートウェイを作成して構成する
 
 この演習では、引き続き、図に示されている構成を作成します。 値は実際の構成で使用する値に置換します。 ローカル ネットワーク ゲートウェイを使用する場合は、次のことにご注意ください。
 
 * ローカル ネットワーク ゲートウェイは、VPN ゲートウェイと同じ場所およびリソース グループに配置することも、別の場所およびリソース グループに配置することもできます。 この例では、異なる場所の異なるリソース グループのゲートウェイを示します。
-* ローカル ネットワーク ゲートウェイ用に宣言する必要がある最小限のプレフィックスは、VPN デバイスの BGP ピア IP アドレスのホスト アドレスです。 この場合は、10.52.255.254/32 の /32 プレフィックスです。
+* ローカル ネットワーク ゲートウェイ用に宣言する必要がある最小限のプレフィックスは、VPN デバイスの BGP ピア IP アドレスのホスト アドレスです。 この場合は、10.51.255.254/32 の /32 プレフィックスです。
 * 既に説明したように、オンプレミスのネットワークと Azure 仮想ネットワークでは、異なる BGP ASN を使用する必要があります。 これらが同じ場合、オンプレミス VPN デバイスが既に ASN を使用して他の BGP 近隣ノードとピアリングしているのであれば、VNet ASN を変更する必要があります。
 
 先に進む前に、この演習の「[VPN ゲートウェイに対して BGP を有効にする](#enablebgp)」セクションが終了していること、さらにサブスクリプション 1 にまだ接続されていることをご確認ください。 この例では、新しいリソース グループを作成します。 また、ローカル ネットワーク ゲートウェイ用の 2 つの追加パラメーターである `Asn` と `BgpPeerAddress` にもご注意ください。
 
 ```azurecli
-az group create -n TestBGPRG5 -l eastus2 
- 
+az group create -n TestBGPRG5 -l eastus2 
+ 
 az network local-gateway create --gateway-ip-address 23.99.221.164 -n Site5 -g TestBGPRG5 --local-address-prefixes 10.51.255.254/32 --asn 65050 --bgp-peering-address 10.51.255.254
 ```
 
-### <a name="step-2-connect-the-vnet-gateway-and-local-network-gateway"></a>手順 2: VNet ゲートウェイとローカル ネットワーク ゲートウェイを接続する
+### <a name="step-2-connect-the-vnet-gateway-and-local-network-gateway"></a>手順 2:VNet ゲートウェイとローカル ネットワーク ゲートウェイを接続する
 
 この手順では、TestVNet1 から Site5 への接続を作成します。 この接続に対して BGP を有効にするには、`--enable-bgp` パラメーターを指定する必要があります。 
 
@@ -161,18 +161,18 @@ az network vnet-gateway show -n VNet1GW -g TestBGPRG1
 出力例:
 
 ```
-{ 
-  "activeActive": false, 
-  "bgpSettings": { 
-    "asn": 65010, 
-    "bgpPeeringAddress": "10.12.255.30", 
-    "peerWeight": 0 
-  }, 
-  "enableBgp": true, 
-  "etag": "W/\"<your etag number>\"", 
-  "gatewayDefaultSite": null, 
-  "gatewayType": "Vpn", 
-  "id": "/subscriptions/<subscription ID>/resourceGroups/TestBGPRG1/providers/Microsoft.Network/virtualNetworkGateways/VNet1GW",
+{ 
+  "activeActive": false, 
+  "bgpSettings": { 
+    "asn": 65010, 
+    "bgpPeeringAddress": "10.12.255.30", 
+    "peerWeight": 0 
+  }, 
+  "enableBgp": true, 
+  "etag": "W/\"<your etag number>\"", 
+  "gatewayDefaultSite": null, 
+  "gatewayType": "Vpn", 
+  "id": "/subscriptions/<subscription ID>/resourceGroups/TestBGPRG1/providers/Microsoft.Network/virtualNetworkGateways/VNet1GW",
 ```
 
 `"id":` の後の値は、メモ帳などのテキスト エディターにコピーしてください。そうすることで、接続の作成時に簡単に貼り付けることができます。 
@@ -219,7 +219,7 @@ eBGP Multihop        : Ensure the "multihop" option for eBGP is enabled on your 
 
 以下の手順は、前のセクションで説明した手順の続きです。 BGP で TestVNet1 と VPN ゲートウェイを作成して構成するには、「[VPN ゲートウェイに対して BGP を有効にする](#enablebgp)」セクションが完了している必要があります。
 
-### <a name="step-1-create-testvnet2-and-the-vpn-gateway"></a>手順 1: TestVNet2 と VPN ゲートウェイを作成する
+### <a name="step-1-create-testvnet2-and-the-vpn-gateway"></a>手順 1:TestVNet2 と VPN ゲートウェイを作成する
 
 新しい仮想ネットワークである TestVNet2 の IP アドレス空間がどの VNet 範囲とも重ならないようにすることが重要です。
 
@@ -236,12 +236,12 @@ az group create -n TestBGPRG2 -l westus
 1 番目のコマンドは、フロントエンド アドレス空間と、FrontEnd サブネットを作成します。 2 番目のコマンドでは、BackEnd サブネット用に追加のアドレス空間を作成します。 3 番目と 4 番目のコマンドは、BackEnd サブネットと GatewaySubnet を作成します。
 
 ```azurecli
-az network vnet create -n TestVNet2 -g TestBGPRG2 --address-prefix 10.21.0.0/16 -l westus --subnet-name FrontEnd --subnet-prefix 10.21.0.0/24 
- 
-az network vnet update -n TestVNet2 --address-prefixes 10.21.0.0/16 10.22.0.0/16 -g TestBGPRG2 
- 
-az network vnet subnet create --vnet-name TestVNet2 -n BackEnd -g TestBGPRG2 --address-prefix 10.22.0.0/24 
- 
+az network vnet create -n TestVNet2 -g TestBGPRG2 --address-prefix 10.21.0.0/16 -l westus --subnet-name FrontEnd --subnet-prefix 10.21.0.0/24 
+ 
+az network vnet update -n TestVNet2 --address-prefixes 10.21.0.0/16 10.22.0.0/16 -g TestBGPRG2 
+ 
+az network vnet subnet create --vnet-name TestVNet2 -n BackEnd -g TestBGPRG2 --address-prefix 10.22.0.0/24 
+ 
 az network vnet subnet create --vnet-name TestVNet2 -n GatewaySubnet -g TestBGPRG2 --address-prefix 10.22.255.0/27
 ```
 
@@ -256,16 +256,16 @@ az network public-ip create -n GWPubIP2 -g TestBGPRG2 --allocation-method Dynami
 #### <a name="4-create-the-vpn-gateway-with-the-as-number"></a>4.AS 番号で VPN ゲートウェイを作成する
 
 TestVNet2 用の仮想ネットワーク ゲートウェイを作成します。 Azure VPN ゲートウェイでは既定の ASN をオーバーライドする必要があります。 BGP とトランジット ルーティングを有効にするために、接続された仮想ネットワークの ASN はそれぞれ異なっている必要があります。
- 
+ 
 ```azurecli
 az network vnet-gateway create -n VNet2GW -l westus --public-ip-address GWPubIP2 -g TestBGPRG2 --vnet TestVNet2 --gateway-type Vpn --sku Standard --vpn-type RouteBased --asn 65020 --no-wait
 ```
 
-### <a name="step-2-connect-the-testvnet1-and-testvnet2-gateways"></a>手順 2: TestVNet1 と TestVNet2 のゲートウェイを接続する
+### <a name="step-2-connect-the-testvnet1-and-testvnet2-gateways"></a>手順 2:TestVNet1 と TestVNet2 のゲートウェイを接続する
 
 この手順では、TestVNet1 から Site5 への接続を作成します。 この接続に対して BGP を有効にするには、`--enable-bgp` パラメーターを指定する必要があります。
 
-次の例では、仮想ネットワーク ゲートウェイとローカル ネットワーク ゲートウェイがそれぞれ異なるリソース グループにあります。 ゲートウェイがそれぞれ異なるリソース グループに属している場合は、仮想ネットワーク間の接続を設定するために、2 つのゲートウェイのリソース ID 全体を指定する必要があります。 
+次の例では、仮想ネットワーク ゲートウェイとローカル ネットワーク ゲートウェイがそれぞれ異なるリソース グループにあります。 ゲートウェイがそれぞれ異なるリソース グループに属している場合は、仮想ネットワーク間の接続を設定するために、2 つのゲートウェイのリソース ID 全体を指定する必要があります。 
 
 #### <a name="1-get-the-resource-id-of-vnet1gw"></a>1.VNet1GW のリソース ID を取得する 
 

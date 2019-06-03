@@ -1,25 +1,18 @@
 ---
-title: オファーの発行の自動化 | Microsoft Docs
+title: オファーの発行の自動化 | Azure Marketplace
 description: プログラムで仮想マシンのワークフロー発行を自動化する方法について説明します。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 929bff618bfca0405b8c1a2b53d5fbacad9ad5f5
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.author: pabutler
+ms.openlocfilehash: 0a927c72a82c6aa3c79988c599ea8b840821a2b8
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48808997"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64935895"
 ---
 <a name="automate-offer-publishing"></a>オファーの発行の自動化
 =========================

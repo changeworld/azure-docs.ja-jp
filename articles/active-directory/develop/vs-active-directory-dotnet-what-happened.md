@@ -13,12 +13,12 @@ ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd57eadc2c42c17343eee6d813072866e8ea09e3
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 1e40a1fd72adf353d5c4d856544482cb7bd68f43
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56196214"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65413996"
 ---
 # <a name="what-happened-to-my-mvc-project-visual-studio-azure-active-directory-connected-service"></a>MVC プロジェクト (Visual Studio Azure Active Directory 接続済みサービス) の変更点
 
@@ -34,7 +34,7 @@ ms.locfileid: "56196214"
 
 プロジェクト ファイル (*.NET 参照) と `packages.config` (NuGet 参照) に影響します。
 
-| type | リファレンス |
+| Type | リファレンス |
 | --- | --- |
 | .NET; NuGet | Microsoft.IdentityModel.Protocol.Extensions |
 | .NET; NuGet | Microsoft.Owin |
@@ -49,7 +49,7 @@ ms.locfileid: "56196214"
 
 追加の参照 (**[ディレクトリ データの読み取り]** オプションを選択した場合):
 
-| type | リファレンス |
+| Type | リファレンス |
 | --- | --- |
 | .NET; NuGet | EntityFramework |
 | .NET        | EntityFramework.SqlServer (Visual Studio 2015 のみ) |
@@ -63,7 +63,7 @@ ms.locfileid: "56196214"
 
 次の参照は削除されます (Visual Studio 2015 では ASP.NET 4 プロジェクトのみ)。
 
-| type | リファレンス |
+| Type | リファレンス |
 | --- | --- |
 | .NET; NuGet | Microsoft.AspNet.Identity.Core |
 | .NET; NuGet | Microsoft.AspNet.Identity.EntityFramework |
@@ -145,7 +145,7 @@ ms.locfileid: "56196214"
 
 ### <a name="file-backup-visual-studio-2015"></a>ファイル バックアップ (Visual Studio 2015)
 
-接続済みサービスを追加するとき、Visual Studio 2015 は変更されるファイルや削除されるファイルをバックアップします。 影響を受けるすべてのファイルがフォルダー `Backup/AzureAD` に保存されます。 Visual Studio 2017 ではバックアップは作成されません。
+接続済みサービスを追加するとき、Visual Studio 2015 は変更されるファイルや削除されるファイルをバックアップします。 影響を受けるすべてのファイルがフォルダー `Backup/AzureAD` に保存されます。 Visual Studio 2017 以降ではバックアップは作成されません。
 
 - `Startup.cs`
 - `App_Start\IdentityConfig.cs`

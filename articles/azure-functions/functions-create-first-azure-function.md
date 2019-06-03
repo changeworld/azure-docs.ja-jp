@@ -1,5 +1,5 @@
 ---
-title: Azure Portal で初めての関数を作成する | Microsoft Docs
+title: Azure portal から最初の関数を作成する | Microsoft Docs
 description: Azure Portal を使用して、サーバーレス実行のための最初の Azure 関数を作成する方法について説明します。
 services: functions
 documentationcenter: na
@@ -12,23 +12,23 @@ ms.topic: quickstart
 ms.date: 03/28/2018
 ms.author: glenga
 ms.custom: mvc, devcenter, cc996988-fb4f-47
-ms.openlocfilehash: 1b7efd4f36d5587667010d25f30a3e7945faee4f
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 4a49cb3de2dc36dcd933a0b31b6a55b838eb1336
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52997807"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65864596"
 ---
 # <a name="create-your-first-function-in-the-azure-portal"></a>Azure Portal で初めての関数を作成する
 
-Azure Functions を使用すると、最初に VM を作成したり Web アプリケーションを発行したりしなくても、[サーバーレス](https://azure.microsoft.com/solutions/serverless/)環境でコードを実行できます。 このトピックでは、Functions を使用して Azure Portal で "hello world" 関数を作成する方法について説明します。
+Azure Functions を使用すると、最初に VM を作成したり Web アプリケーションを発行したりしなくても、[サーバーレス](https://azure.microsoft.com/solutions/serverless/)環境でコードを実行できます。 この記事では、Functions を使用して Azure portal で "hello world" 関数を作成する方法について説明します。
 
 ![Azure Portal での Function App の作成](./media/functions-create-first-azure-function/function-app-in-portal-editor.png)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 > [!NOTE]
-> C# の開発者は、[初めての関数をポータルではなく Visual Studio 2017 で作成](functions-create-your-first-function-visual-studio.md)することをお勧めします。 
+> C# の開発者は、ポータルではなく [Visual Studio 2019 で最初の関数を作成する](functions-create-your-first-function-visual-studio.md)ことを考慮してください。 
 
 ## <a name="log-in-to-azure"></a>Azure にログインする
 
@@ -44,11 +44,11 @@ Azure アカウントで Azure Portal (<https://portal.azure.com>) にサイン�
 
 ## <a name="create-function"></a>HTTP によってトリガーされる関数の作成
 
-1. 新しい関数アプリを展開し、**[関数]** の横にある **[+]** ボタン、**[ポータル内]**、**[続行]** の順に選択します。
+1. 新しい関数アプリを展開し、 **[関数]** の横にある **[+]** ボタン、 **[ポータル内]** 、 **[続行]** の順に選択します。
 
-    ![Functions のクイック スタート: プラットフォームを選択する。](./media/functions-create-first-azure-function/function-app-quickstart-choose-portal.png)
+    ![プラットフォームを選択するための Functions のクイック スタート。](./media/functions-create-first-azure-function/function-app-quickstart-choose-portal.png)
 
-1. **[webhook + API]** を選択し、**[作成]** を選択します。
+1. **[webhook + API]** を選択し、 **[作成]** を選択します。
 
     ![Azure Portal での関数のクイック スタート。](./media/functions-create-first-azure-function/function-app-quickstart-node-webhook.png)
 
@@ -58,7 +58,7 @@ HTTP によってトリガーされる関数の言語固有のテンプレート
 
 ## <a name="test-the-function"></a>関数をテストする
 
-1. 新しい関数で、右上の **[</> 関数の URL の取得]** をクリックし、**[既定値 (関数キー)]** を選択して、**[コピー]** をクリックします。 
+1. 新しい関数で、右上の **[</> 関数の URL の取得]** をクリックし、 **[既定値 (関数キー)]** を選択して、 **[コピー]** をクリックします。 
 
     ![Azure Portal からの関数 URL のコピー](./media/functions-create-first-azure-function/function-app-develop-tab-testing.png)
 
@@ -80,7 +80,7 @@ HTTP によってトリガーされる関数の言語固有のテンプレート
 
 ## <a name="next-steps"></a>次の手順
 
-HTTP によってトリガーされる単純な関数を含む Function App を作成しました。  
+HTTP によってトリガーされる単純な関数を含む関数アプリが作成されました。  
 
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-next-steps.md)]
 

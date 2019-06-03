@@ -1,20 +1,19 @@
 ---
 title: Apache Mahout と HDInsight を使用してリコメンデーションを生成する (SSH) - Azure
 description: Apache Mahout 機械学習ライブラリを使用して HDInsight (Hadoop) で映画のリコメンデーションを生成する方法について説明します。
-services: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/01/2018
-ms.openlocfilehash: 6e27d00e4b12ade82cfde6b3a4927edc7d69798a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 04/24/2019
+ms.openlocfilehash: d566b57ae12520b9eee26334a67d2e10c05f8040
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58075818"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64709090"
 ---
 # <a name="generate-movie-recommendations-by-using-apache-mahout-with-linux-based-apache-hadoop-in-hdinsight-ssh"></a>HDInsight 上の Apache Mahout と Linux ベースの Hadoop を使用して映画のリコメンデーションを生成する (SSH)
 
@@ -22,16 +21,13 @@ ms.locfileid: "58075818"
 
 [Apache Mahout](https://mahout.apache.org) 機械学習ライブラリを使用して Azure HDInsight で映画のリコメンデーションを生成する方法について説明します。
 
-Mahout は、Apache Hadoop の[機械学習][ml]ライブラリの 1 つです。 Mahout には、フィルター処理、分類、クラスタリングなどデータを処理するためのアルゴリズムが含まれています。 この記事では、リコメンデーション エンジンを使用し、友人たちが鑑賞した映画に基づいて映画のリコメンデーションを生成します。
+Mahout は、Apache Hadoop の[機械学習](https://en.wikipedia.org/wiki/Machine_learning)ライブラリの 1 つです。 Mahout には、フィルター処理、分類、クラスタリングなどデータを処理するためのアルゴリズムが含まれています。 この記事では、リコメンデーション エンジンを使用し、友人たちが鑑賞した映画に基づいて映画のリコメンデーションを生成します。
 
 ## <a name="prerequisites"></a>前提条件
 
-* Linux ベースの HDInsight クラスター。 作成の詳細については、「[Hadoop チュートリアル: HDInsight で Linux ベースの Hadoop を使用する][getstarted]」を参照してください。
+* HDInsight の Apache Hadoop クラスター。 [Linux での HDInsight の概要](./apache-hadoop-linux-tutorial-get-started.md)に関するページを参照してください。
 
-> [!IMPORTANT]  
-> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](../hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
-
-* SSH クライアント 詳細については、[HDInsight での SSH の使用](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するドキュメントを参照してください。
+* SSH クライアント 詳細については、[SSH を使用して HDInsight (Apache Hadoop) に接続する方法](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
 ## <a name="apache-mahout-versioning"></a>Apache Mahout のバージョン
 
@@ -43,15 +39,15 @@ Mahout で提供される機能の 1 つが、リコメンデーション エン
 
 映画のデータを使用したシンプルなワークフローの例を次に示します。
 
-* **共起**: Joe、Alice、Bob は全員、好きな映画として "*Star Wars (スター ウォーズ)*"、"*The Empire Strikes Back (帝国の逆襲)*"、"*Return of the Jedi (ジェダイの帰還)*" を挙げました。 Mahout では、これらの映画のいずれかを好きなユーザーが他の 2 作品も好きであると判断します。
+* **共起**: Joe、Alice、Bob は全員、好きな映画として "*Star Wars (スター ウォーズ)* "、"*The Empire Strikes Back (帝国の逆襲)* "、"*Return of the Jedi (ジェダイの帰還)* " を挙げました。 Mahout では、これらの映画のいずれかを好きなユーザーが他の 2 作品も好きであると判断します。
 
-* **共起**: Bob と Alice は "*The Phantom Menace (ファントム メナス)*"、"*Attack of the Clones (クローンの攻撃)*"、"*Revenge of the Sith (シスの復讐)*" も好きな映画として選びました。 Mahout では、この例の最初の 3 作品を好きなユーザーがこれらの 3 作品も好きであると判断します。
+* **共起**: Bob と Alice は "*The Phantom Menace (ファントム メナス)* "、"*Attack of the Clones (クローンの攻撃)* "、"*Revenge of the Sith (シスの復讐)* " も好きな映画として選びました。 Mahout では、この例の最初の 3 作品を好きなユーザーがこれらの 3 作品も好きであると判断します。
 
-* **類似性のレコメンデーション**: Joe は、この例の最初の 3 作品を好きな映画として選びました。Mahout では、嗜好が似ている他のユーザーが好きな映画の中で、Joe がまだ観ていない映画を調べます (好み/順位)。 この場合、Mahout では、「*The Phantom Menace (ファントム メナス)*」、「*Attack of the Clones (クローンの攻撃)*」、「*Revenge of the Sith (シスの復讐)*」を推薦します。
+* **類似性のレコメンデーション**: Joe は、この例の最初の 3 作品を好きな映画として選びました。Mahout では、嗜好が似ている他のユーザーが好きな映画の中で、Joe がまだ観ていない映画を調べます (好み/順位)。 この場合、Mahout では、「*The Phantom Menace (ファントム メナス)* 」、「*Attack of the Clones (クローンの攻撃)* 」、「*Revenge of the Sith (シスの復讐)* 」を推薦します。
 
 ### <a name="understanding-the-data"></a>データの説明
 
-[GroupLens Research][movielens] では利便性を高めるために、Mahout と互換性のある形式で映画の評価データを提供します。 このデータは、クラスターの既定の記憶域 ( `/HdiSamples/HdiSamples/MahoutMovieData`) にあります。
+[GroupLens Research](https://grouplens.org/datasets/movielens/) では利便性を高めるために、Mahout と互換性のある形式で映画の評価データを提供します。 このデータは、クラスターの既定の記憶域 ( `/HdiSamples/HdiSamples/MahoutMovieData`) にあります。
 
 `moviedb.txt` と `user-ratings.txt` という 2 つのファイルがあります。 `user-ratings.txt` ファイルは分析時に使用されます。 `moviedb.txt` ファイルは、結果を表示するときにわかりやすいテキストを提供するために使用されます。
 
@@ -201,15 +197,3 @@ hdfs dfs -rm -f -r /temp/mahouttemp
 * [HDInsight での Apache Hive の使用](hdinsight-use-hive.md)
 * [HDInsight での Apache Pig の使用](hdinsight-use-pig.md)
 * [HDInsight での MapReduce の使用](hdinsight-use-mapreduce.md)
-
-[build]: https://mahout.apache.org/developers/buildingmahout.html
-[movielens]: https://grouplens.org/datasets/movielens/
-[100k]: https://files.grouplens.org/datasets/movielens/ml-100k.zip
-[getstarted]:apache-hadoop-linux-tutorial-get-started.md
-[upload]: hdinsight-upload-data.md
-[ml]: https://en.wikipedia.org/wiki/Machine_learning
-[forest]: https://en.wikipedia.org/wiki/Random_forest
-[enableremote]: ./media/hdinsight-mahout/enableremote.png
-[connect]: ./media/hdinsight-mahout/connect.png
-[hadoopcli]: ./media/hdinsight-mahout/hadoopcli.png
-[tools]: https://github.com/Blackmist/hdinsight-tools

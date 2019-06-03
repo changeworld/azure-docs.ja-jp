@@ -5,15 +5,15 @@ services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: article
-ms.date: 11/30/2018
+ms.date: 04/15/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 0a1e3c2facc10b68fe4b33d4cd0531f181b1e813
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: df9c3ecbec6dccd9ba8db2b375cfab3276005098
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57838151"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "65072980"
 ---
 # <a name="azure-container-instances-and-container-orchestrators"></a>Azure Container Instances とコンテナー オーケストレーター
 
@@ -56,7 +56,7 @@ Azure Container Instances 専用の環境は、すばやく起動し、秒単位
 
 ## <a name="sample-implementation-virtual-nodes-for-azure-kubernetes-service-aks"></a>サンプル実装: Azure Kubernetes Service (AKS) 用の仮想ノード
 
-[Azure Kubernetes Service](../aks/intro-kubernetes.md) (AKS) クラスターでアプリケーション ワークロードをすばやくスケーリングするには、Azure Container Instances 内で動的に作成された "*仮想ノード*" を使用できます。 仮想ノード (現在プレビュー段階) を使用すると、ACI および AKS クラスターで実行されているポッド間でのネットワーク通信が可能になります。 
+[Azure Kubernetes Service](../aks/intro-kubernetes.md) (AKS) クラスターでアプリケーション ワークロードをすばやくスケーリングするには、Azure Container Instances 内で動的に作成された "*仮想ノード*" を使用できます。 仮想ノードを使用すると、ACI および AKS クラスターで実行されているポッド間でのネットワーク通信が可能になります。 
 
 仮想ノードでは、現在、Linux コンテナー インスタンスがサポートされています。 仮想ノードを使い始めるには、[Azure CLI](https://go.microsoft.com/fwlink/?linkid=2047538) または [Azure portal](https://go.microsoft.com/fwlink/?linkid=2047545) を使用します。
 

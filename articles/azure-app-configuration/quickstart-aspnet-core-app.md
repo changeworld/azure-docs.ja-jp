@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ASP.NET Core
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 29cea7e72d6bd7f64f6cf2a68b7620090ea4eef3
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: e53f0bd1af3940b4d2f653b5ef43170212c09a43
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59995935"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65408696"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>クイック スタート:Azure App Configuration を使用して ASP.NET Core アプリを作成する
 
@@ -28,6 +28,8 @@ Azure App Configuration は、Azure 内にあるマネージド構成サービ�
 ASP.NET Core では、アプリケーションによって指定される 1 つ以上のデータ ソースからの設定を使用して、キーと値に基づく 1 つの構成オブジェクトが作成されます。 これらのデータ ソースは、"*構成プロバイダー*" と呼ばれます。 App Configuration の .NET Core クライアントはそのようなプロバイダーとして実装されるため、このサービスは他のデータ ソースと同じように表示されます。
 
 このクイック スタートの手順は、任意のコード エディターを使用して実行できます。 推奨のエディターは [Visual Studio Code](https://code.visualstudio.com/) です (Windows、macOS、および Linux プラットフォームで使用できます)。
+
+![クイック スタートのアプリ (ローカルで起動)](./media/quickstarts/aspnet-core-app-launch-local.png)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,7 +41,7 @@ ASP.NET Core では、アプリケーションによって指定される 1 つ�
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. **[キー/値のエクスプローラー]** > **[+ 作成]** の順に選択して、次のキーと値のペアを追加します。
+6. **[Configuration Explorer]\(構成エクスプローラー)\** > **[+ 作成]** の順に選択して、次のキーと値のペアを追加します。
 
     | キー | 値 |
     |---|---|
@@ -86,7 +88,7 @@ ASP.NET Core では、アプリケーションによって指定される 1 つ�
 
 1. 次のコマンドを実行して、`Microsoft.Extensions.Configuration.AzureAppConfiguration` NuGet パッケージへの参照を追加します。
 
-        dotnet add package Microsoft.Extensions.Configuration.AzureAppConfiguration --version 1.0.0-preview-007830001
+        dotnet add package Microsoft.Extensions.Configuration.AzureAppConfiguration --version 1.0.0-preview-008520001
 
 2. 次のコマンドを実行して、プロジェクトのパッケージを復元します。
 
@@ -100,11 +102,11 @@ ASP.NET Core では、アプリケーションによって指定される 1 つ�
 
         dotnet user-secrets set ConnectionStrings:AppConfig <your_connection_string>
 
-    シークレット マネージャーは、Web アプリをローカルにテストするためだけに使用されます。 アプリをデプロイするときは (たとえば、[Azure App Service](https://azure.microsoft.com/services/app-service/web) に)、アプリケーションの設定 (たとえば、App Service での**接続文字列**) を使用します。 シークレット マネージャーで接続文字列を保存するのではなく、この設定を使用します。
+    シークレット マネージャーは、Web アプリをローカルにテストするためだけに使用されます。 たとえば [Azure App Service](https://azure.microsoft.com/services/app-service/web) にアプリをデプロイするときは、シークレット マネージャーで接続文字列を格納する代わりに、App Service でアプリケーションの設定の**接続文字列**を使用します。
 
     このシークレットには、構成 API を使用してアクセスします。 サポートされているすべてのプラットフォームで、構成 API を使用する際の構成名にコロン (:) を使用できます。 [環境別の構成](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/index?tabs=basicconfiguration&view=aspnetcore-2.0)に関するページを参照してください。
 
-4. *Program.cs* を開き、App Configuration .NET Core 構成プロバイダーへの参照を追加します。
+4. *Program.cs* を開き、.NET Core App Configuration プロバイダーへの参照を追加します。
 
     ```csharp
     using Microsoft.Extensions.Configuration.AzureAppConfiguration;
@@ -118,15 +120,12 @@ ASP.NET Core では、アプリケーションによって指定される 1 つ�
             .ConfigureAppConfiguration((hostingContext, config) =>
             {
                 var settings = config.Build();
-                config.AddAzureAppConfiguration(options => {
-                    options.Connect(settings["ConnectionStrings:AppConfig"])
-                           .SetOfflineCache(new OfflineFileCache());
-                });
+                config.AddAzureAppConfiguration(settings["ConnectionStrings:AppConfig"]);
             })
             .UseStartup<Startup>();
     ```
 
-6. Views の Home ディレクトリにある Index.cshtml を開いて、内容を次のコードに置き換えます。
+6. Views の Home ディレクトリにある *Index.cshtml* を開いて、内容を次のコードに置き換えます。
 
     ```html
     @using Microsoft.Extensions.Configuration
@@ -152,7 +151,7 @@ ASP.NET Core では、アプリケーションによって指定される 1 つ�
     </html>
     ```
 
-7. Views の Shared ディレクトリにある _Layout.cshtml を開いて、内容を次のコードに置き換えます。
+7. Views の Shared ディレクトリにある *_Layout.cshtml* を開いて、内容を次のコードに置き換えます。
 
     ```html
     <!DOCTYPE html>
@@ -190,8 +189,6 @@ ASP.NET Core では、アプリケーションによって指定される 1 つ�
         dotnet run
 
 3. ブラウザー ウィンドウを開いて、`http://localhost:5000` (ローカルでホストされた Web アプリの既定の URL) に移動します。
-
-    ![クイック スタートのアプリ (ローカルで起動)](./media/quickstarts/aspnet-core-app-launch-local.png)
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

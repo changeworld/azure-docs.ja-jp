@@ -7,17 +7,17 @@ ms.subservice: development
 ms.custom: ''
 ms.devlang: python
 ms.topic: quickstart
-author: CarlRabeler
-ms.author: carlrab
+author: stevestein
+ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 03/25/2019
-ms.openlocfilehash: 788e21dc5d866bdd6641349ceeeeacbfab98c25c
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 7fbb9265ac12126fb13a26650fbb5d65f3d39260
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58444981"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65792081"
 ---
 # <a name="quickstart-use-python-to-query-an-azure-sql-database"></a>クイック スタート:Python を使用して Azure SQL データベースに照会する
 
@@ -99,7 +99,7 @@ Azure SQL データベースに接続するために必要な接続情報を取�
 
 ## <a name="next-steps"></a>次の手順
 
-- [最初の Azure SQL Database の設計](sql-database-design-first-database.md)
+- [最初の Azure SQL データベースの設計](sql-database-design-first-database.md)
 - [SQL Server 用 Microsoft Python ドライバー](https://docs.microsoft.com/sql/connect/python/python-driver-for-sql-server/)
 - [Python デベロッパー センター](https://azure.microsoft.com/develop/python/?v=17.23h)
 

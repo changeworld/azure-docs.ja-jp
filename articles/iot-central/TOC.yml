@@ -89,6 +89,8 @@
               href: howto-export-data-event-hubs-service-bus.md
             - name: Blob Storage へのエクスポート
               href: howto-export-data-blob-storage.md
+        - name: カスタム規則の作成
+          href: howto-create-custom-rules.md
         - name: Power BI でのデータの視覚化
           href: howto-connect-powerbi.md
         - name: その他の IoT クラウドの接続

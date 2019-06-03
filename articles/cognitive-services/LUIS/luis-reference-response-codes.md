@@ -11,19 +11,19 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 03/04/2019
 ms.author: diberry
-ms.openlocfilehash: 18ec59200d3cf820794ac353e38106ad26aca697
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: f6742bf64ce26e6cce93dfcdfd06756f3c340d9e
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57337246"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65522981"
 ---
 # <a name="common-api-response-codes-and-their-meaning"></a>一般的な API 応答コードとその意味
 
-[オーサリング](https://aka.ms/luis-authoring-apis) API と[エンドポイント](https://aka.ms/luis-endpoint-apis) API は HTTP 応答コードを返します。 応答メッセージには、要求に固有の情報が含まれていますが、HTTP 応答の状態コードは全般的なものです。 
+[オーサリング](https://go.microsoft.com/fwlink/?linkid=2092087) API と[エンドポイント](https://go.microsoft.com/fwlink/?linkid=2092356) API は HTTP 応答コードを返します。 応答メッセージには、要求に固有の情報が含まれていますが、HTTP 応答の状態コードは全般的なものです。 
 
 ## <a name="common-status-codes"></a>一般的な状態コード
-次の表に、[オーサリング](https://aka.ms/luis-authoring-apis) API と[エンドポイント](https://aka.ms/luis-endpoint-apis) API の最も一般的な HTTP 応答状態コードの一部を示します。
+次の表に、[オーサリング](https://go.microsoft.com/fwlink/?linkid=2092087) API と[エンドポイント](https://go.microsoft.com/fwlink/?linkid=2092356) API の最も一般的な HTTP 応答状態コードの一部を示します。
 
 |コード|API|説明|
 |:--|--|--|

@@ -1,5 +1,5 @@
 ---
-title: Microsoft Azure Data Box Disk にデータをコピーする | Microsoft Docs
+title: Azure Data Box Disk にデータをコピーするチュートリアル | Microsoft Docs
 description: このチュートリアルでは、Azure Data Box Disk にデータをコピーする方法について説明します。
 services: databox
 author: alkohli
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 418b158b127a688314fb3a0a506d116cc27da98c
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: f5c498fc3f3fe051070b3565041e506bc40fceda
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59678498"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925162"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-disk-and-verify"></a>チュートリアル:Azure Data Box Disk にデータをコピーして確認する
 
@@ -173,7 +173,7 @@ ms.locfileid: "59678498"
     |----------------|--------------------------------------------------------|--------------------------------------------------------|--------------------------------------------------------|
     |    Data Box Disk        |    4 Robocopy セッション* <br> セッションあたり 16 スレッド    |    2 Robocopy セッション* <br> セッションあたり 16 スレッド    |    2 Robocopy セッション* <br> セッションあたり 16 スレッド    |
     
-    *"*各 Robocopy セッションには、最大で 7,000 ディレクトリと 1 億 5,000 万ファイルを含めることができます。*"
+    *"*各 Robocopy セッションには、最大で 7,000 ディレクトリと 1 億 5,000 万ファイルを含めることができます。* "
     
     >[!NOTE]
     > 上記で推奨されているパラメーターは、社内テストで使用された環境に基づいています。

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 4fa5402b87eea969a5a4093000dda06d3cb5675d
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 883f6022f3d0f609de2d8f33b0285d8c40b7bee9
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58312990"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65142125"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>IoT Edge デバイスを構成してプロキシ サーバー経由で通信する
 
@@ -43,22 +43,28 @@ IoT Edge デバイスでは、HTTPS 要求を送信して IoT Hub と通信し�
 
 Linux デバイス上に IoT Edge ランタイムをインストールしている場合、プロキシ サーバーを経由してインストール パッケージにアクセスするように、パッケージ マネージャーを構成します。 たとえば、[http-proxy を使用するように apt-get を設定](https://help.ubuntu.com/community/AptGet/Howto/#Setting_up_apt-get_to_use_a_http-proxy)します。 パッケージ マネージャーが構成されたら、通常どおり 「[Linux に Azure IoT Edge ランタイムをインストールする (ARM32v7/armhf)](how-to-install-iot-edge-linux-arm.md)」または「[Linux に Azure IoT Edge ランタイムをインストールする (x64)](how-to-install-iot-edge-linux.md)」の手順に従います。
 
-Windows デバイス上に IoT Edge ランタイムをインストールしている場合、プロキシ サーバーを 2 回通過する必要があります。 最初の接続はインストーラー スクリプト ファイルをダウンロードするためのもので、2 回目の接続はインストール中に必要なコンポーネントをダウンロードするためのものです。 Windows 設定でプロキシ情報を構成するか、またはインストール スクリプトにプロキシ情報を直接含めることができます。 次の Powershell スクリプトは、`-proxy` 引数を使用した Windows インストールの例です。
+Windows デバイス上に IoT Edge ランタイムをインストールしている場合、プロキシ サーバーを 2 回通過する必要があります。 最初の接続はインストーラー スクリプト ファイルをダウンロードするためのもので、2 回目の接続はインストール中に必要なコンポーネントをダウンロードするためのものです。 Windows 設定でプロキシ情報を構成するか、または PowerShell コマンドにプロキシ情報を直接含めることができます。 以下の手順は、`-proxy` 引数を使用した Windows インストールの例です。
 
-```powershell
-. {Invoke-WebRequest -proxy <proxy URL> -useb aka.ms/iotedge-win} | Invoke-Expression; `
-Install-SecurityDaemon -Manual -ContainerOs Windows -proxy <proxy URL>
-```
+1. Invoke-WebRequest コマンドは、インストーラー スクリプトにアクセスするためにプロキシ情報が必要です。 次に、Deploy-IoTEdge コマンドで、インストール ファイルをダウンロードするためにプロキシ情報が必要になります。 
 
-プロキシ サーバーの資格情報が複雑で URL に含めることができない場合は、`-InvokeWebRequestParameters` 内で `-ProxyCredential` パラメーターを使用してください。 たとえば、次のように入力します。
+   ```powershell
+   . {Invoke-WebRequest -proxy <proxy URL> -useb aka.ms/iotedge-win} | Invoke-Expression; Deploy-IoTEdge -proxy <proxy URL>
+   ```
+
+2. Initialize IoTEdge コマンドはプロキシ サーバーを経由する必要がないため、2 番目の手順では、Invoke-WebRequest のプロキシ情報のみが必要になります。
+
+   ```powershell
+   . {Invoke-WebRequest -proxy <proxy URL> -useb aka.ms/iotedge-win} | Invoke-Expression; Initialize-IoTEdge
+
+If you have complicated credentials for the proxy server that can't be included in the URL, use the `-ProxyCredential` parameter within `-InvokeWebRequestParameters`. For example,
 
 ```powershell
 $proxyCredential = (Get-Credential).GetNetworkCredential()
 . {Invoke-WebRequest -proxy <proxy URL> -ProxyCredential $proxyCredential -useb aka.ms/iotedge-win} | Invoke-Expression; `
-Install-SecurityDaemon -Manual -ContainerOs Windows -InvokeWebRequestParameters @{ '-Proxy' = '<proxy URL>'; '-ProxyCredential' = $proxyCredential }
+Deploy-IoTEdge -InvokeWebRequestParameters @{ '-Proxy' = '<proxy URL>'; '-ProxyCredential' = $proxyCredential }
 ```
 
-プロキシのパラメーターについて詳しくは、「[Invoke-WebRequest](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest)」を参照してください。 インストール オプションの詳細については、[Windows への Azure IoT Edge ランタイムのインストール](how-to-install-iot-edge-windows.md)に関するページを参照してください。
+プロキシのパラメーターについて詳しくは、「[Invoke-WebRequest](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest)」を参照してください。 Windows インストール オプションの詳細については、[Windows への Azure IoT Edge ランタイムのインストール](how-to-install-iot-edge-windows.md)に関するページを参照してください。
 
 IoT Edge ランタイムがインストールされたら、次のセクションに進み、プロキシ情報を使ってランタイムを構成します。 
 

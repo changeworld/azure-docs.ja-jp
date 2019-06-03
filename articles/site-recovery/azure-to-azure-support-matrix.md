@@ -1,23 +1,22 @@
 ---
 title: Azure Site Recovery を使用した Azure リージョン間での Azure VM のディザスター リカバリーに関するサポート マトリックス | Microsoft Docs
-description: ディザスター リカバリー (DR) のニーズに応じて、リージョン間で Azure 仮想マシン (VM) を Azure Site Recovery でレプリケートするときのサポートされるオペレーティング システムと構成についてまとめます。
-services: site-recovery
+description: Azure Site Recovery を使用したリージョン間での Azure VM のディザスター リカバリーの前提条件とサポートをまとめています
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 04/22/2019
+ms.date: 04/29/2019
 ms.author: raynew
-ms.openlocfilehash: c64148fbc0432bd25c5b02fb20b3e44134c1d9d5
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.openlocfilehash: 1118d1de72ca7cd44844a0b526efd85eb419bc67
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60149947"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65412774"
 ---
 # <a name="support-matrix-for-replicating-azure-vms-from-one-region-to-another"></a>リージョン間の Azure VM のレプリケートに関するサポート マトリックス
 
-この記事は、[Azure Site Recovery](site-recovery-overview.md) サービスを使用して、ある Azure リージョンから別の Azure リージョンへの Azure VM のレプリケート、フェールオーバー、および復旧を行うディザスター リカバリーをデプロイするときにサポートされる構成とコンポーネントをまとめたものです。
+この記事は、[Azure Site Recovery](site-recovery-overview.md) サービスを使用して、Azure リージョン間での Azure VM のディザスター リカバリーを設定するときのサポートと前提条件をまとめたものです。
 
 
 ## <a name="deployment-method-support"></a>デプロイ方法のサポート
@@ -48,7 +47,7 @@ ms.locfileid: "60149947"
 **地理クラスター** | **Azure リージョン**
 -- | --
 アメリカ | カナダ東部、カナダ中部、米国中南部、米国中西部、米国東部、米国東部 2、米国西部、米国西部 2、米国中部、米国中北部
-ヨーロッパ | 英国西部、英国南部、北ヨーロッパ、西ヨーロッパ、フランス中部、フランス南部
+ヨーロッパ | 英国西部、英国南部、北ヨーロッパ、西ヨーロッパ、フランス中部、フランス南部、南アフリカ西部、南アフリカ北部
 アジア | インド南部、インド中部、東南アジア、東アジア、東日本、西日本、韓国中部、韓国南部
 オーストラリア   | オーストラリア東部、オーストラリア南東部、オーストラリア中部、オーストラリア中部 2
 Azure Government    | 米国政府バージニア、US Gov アイオワ、米国政府アリゾナ、米国政府テキサス、米国防総省東部、米国防総省中部
@@ -96,10 +95,10 @@ Windows Server 2008 R2 | SP1 以降を実行
 Red Hat Enterprise Linux | 6.7、6.8、6.9、6.10、7.0、7.1、7.2、7.3、7.4、7.5、7.6  
 CentOS | 6.5、6.6、6.7、6.8、6.9、6.10、7.0、7.1、7.2、7.3、7.4、7.5、7.6
 Ubuntu 14.04 LTS Server | [サポートされるカーネル バージョン](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)
-Ubuntu 16.04 LTS Server | [サポートされるカーネル バージョン](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)<br/><br/> パスワード ベースの認証とログインを使用しており、cloud-init パッケージを使用してクラウド VM を構成する Ubuntu サーバーでは、(cloudinit 構成に応じて) フェールオーバー時にパスワード ベースのログインが無効になっている場合があります。 パスワード ベースのログインは、Azure portal で、フェールオーバーされた VM の [サポート] > [トラブルシューティング] > [設定] メニューからパスワードをリセットすることで、その仮想マシンで再度有効にできます。
+Ubuntu 16.04 LTS Server | [サポートされるカーネル バージョン](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)<br/><br/> パスワード ベースの認証とサインインを使用しており、cloud-init パッケージを使用してクラウド VM を構成する Ubuntu サーバーでは、(cloudinit 構成に応じて) フェールオーバー時にパスワード ベースのサインインが無効になっている場合があります。 パスワード ベースのサインインは、Azure portal で、フェールオーバーされた VM の [サポート] > [トラブルシューティング] > [設定] メニューからパスワードをリセットすることで、その仮想マシンで再度有効にできます。
 Debian 7 | [サポートされるカーネル バージョン](#supported-debian-kernel-versions-for-azure-virtual-machines)
 Debian 8 | [サポートされるカーネル バージョン](#supported-debian-kernel-versions-for-azure-virtual-machines)
-SUSE Linux Enterprise Server 12 | SP1、SP2、SP3、SP4。 [(サポートされるカーネル バージョン)](#supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines)
+SUSE Linux Enterprise Server 12 | SP1、SP2、SP3、SP4 [(サポートされるカーネル バージョン)](#supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines)
 SUSE Linux Enterprise Server 11 | SP3<br/><br/> レプリケートするマシンの SP3 から SP4 へのアップグレードはサポートされません。 レプリケートされたマシンがアップグレードされた場合は、レプリケーションを無効にして、アップグレード後にレプリケーションを再度有効にする必要があります。
 SUSE Linux Enterprise Server 11 | SP4
 Oracle Linux | 6.4、6.5、6.6、6.7、6.8、6.9、6.10、7.0、7.1、7.2、7.3、7.4、7.5 <br/><br/> Red Hat 互換カーネルまたは Unbreakable Enterprise カーネル リリース 3 (UEK3) のいずれかを実行している。
@@ -157,6 +156,7 @@ Azure ギャラリー イメージ - サード パーティが公開 | サポー
 カスタム イメージ - サード パーティが公開 | サポートされています | サポート対象のオペレーティング システムで VM が実行されている場合にサポートされます。
 Site Recovery を使用して移行された VM | サポートされています | Site Recovery を使用して Azure に移行された VMware VM または物理マシンの場合は、マシンで実行されている古いバージョンのモビリティ サービスをアンインストールし、マシンを再起動してから、それを他の Azure リージョンにレプリケートする必要があります。
 RBAC ポリシー | サポートされていません | VM でのロールベースのアクセス制御 (RBAC) ポリシーは、ターゲット リージョンのフェールオーバー VM にレプリケートされません。
+Extensions | サポートされていません | 拡張機能は、ターゲット リージョン内のフェールオーバー VM にはレプリケートされません。 これはフェールオーバー後に手動でインストールする必要があります。
 
 ## <a name="replicated-machines---disk-actions"></a>レプリケートされるマシン - ディスクのアクション
 
@@ -187,11 +187,12 @@ OS ディスクの最大サイズ | 2048 GB | VM ディスクに関する[詳細
 Standard SSD | サポートされています |
 冗長性 | LRS と GRS がサポートされます。<br/><br/> ZRS はサポートされていません。
 クールおよびホット ストレージ | サポートされていません | VM ディスクは、クールおよびホット ストレージではサポートされません
-記憶域 | サポートされています |
+記憶域スペース | サポートされています |
 保存時の暗号化 (SSE) | サポートされています | SSE はストレージ アカウントでの既定の設定です。   
 Windows OS 用 Azure Disk Encryption (ADE) | [Azure AD アプリでの暗号化](https://aka.ms/ade-aad-app)を有効になっているVMはサポートされています。 |
 Linux OS 用 Azure Disk Encryption (ADE) | サポートされていません |
-ディスクのホット アド/削除 | サポートされていません | VM 上でデータ ディスクを追加または削除する場合は、レプリケーションを無効にしてから、もう一度 VM に対してレプリケーションを有効にする必要があります。
+ホット アド | サポートされています | マネージド ディスクを使用する VM では、レプリケートされた Azure VM に追加するデータ ディスクのレプリケーションの有効化がサポートされています。
+ディスクのホット リムーブ | サポートされていません | VM 上でデータ ディスクを削除する場合は、レプリケーションを無効にしてから、もう一度 VM に対してレプリケーションを有効にする必要があります。
 ディスクの除外 | サポート。 [PowerShell](azure-to-azure-exclude-disks.md) を使用して構成する必要があります。 |  一時ディスクは既定で除外されます。
 記憶域スペース ダイレクト  | クラッシュ整合性復旧ポイントに対してサポートされています。 アプリケーション整合性復旧ポイントはサポートされていません。 |
 スケールアウト ファイル サーバー  | クラッシュ整合性復旧ポイントに対してサポートされています。 アプリケーション整合性復旧ポイントはサポートされていません。 |

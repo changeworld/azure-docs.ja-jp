@@ -2,20 +2,20 @@
 title: テーブルの設計 - Azure SQL Data Warehouse | Microsoft Docs
 description: Azure SQL Data Warehouse でのテーブル設計の概要。
 services: sql-data-warehouse
-author: ronortloff
+author: XiaoyuL-Preview
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: implement
+ms.subservice: development
 ms.date: 03/15/2019
-ms.author: rortloff
+ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 1073e1b4ad38c4b05c9195cf4ea16ade7416fbce
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 06bdd21363aee8202ce7178f157f01a5c26e3a52
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58133409"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65851587"
 ---
 # <a name="designing-tables-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse でのテーブルの設計
 

@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 04/04/2019
 ms.author: sngun
-ms.openlocfilehash: cb132c8e36797e4ae089420e48d75271cddb5c04
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: a54c7493dd40d26151311a4211a791a99b0a265e
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59270542"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65833552"
 ---
 # <a name="azure-cosmos-db-net-examples-for-the-sql-api"></a>Azure Cosmos DB: SQL API の .NET のサンプル
 > [!div class="op_single_selector"]
@@ -34,8 +34,8 @@ ms.locfileid: "59270542"
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure 開発ワークフローがインストールされている Visual Studio 2017
-- **無料**の [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/) をダウンロードして使用できます。 Visual Studio のセットアップ中に、必ず **[Azure の開発]** を有効にしてください。 
+Azure 開発ワークフローがインストールされている Visual Studio 2019
+- **無料**の [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/) をダウンロードして使用できます。 Visual Studio のセットアップ中に、必ず **[Azure の開発]** を有効にしてください。 
 
 [Microsoft.Azure.DocumentDB NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/) 
 

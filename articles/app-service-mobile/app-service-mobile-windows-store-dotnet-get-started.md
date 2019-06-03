@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: crdun
-ms.openlocfilehash: 289d50fc9d71ee5ea8960fd077e91ef6f68027cb
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 959c1ff8b199320105f650a7eb62a04bedb03b3b
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57771312"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65412780"
 ---
 # <a name="create-a-windows-app-with-an-azure-backend"></a>Azure バックエンドを使用して Windows アプリを作成する
 
@@ -39,7 +39,7 @@ UWP アプリの他のすべての Mobile Apps チュートリアルを行う前
 
 * アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料モバイル アプリを入手できます。 このアプリは評価終了後も使用できます。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
 * Windows 10。
-* [Visual Studio Community 2017]。
+* [Visual Studio Community]。
 * UWP アプリ開発に関する知識。 UWP アプリをビルドするための[セットアップ](https://docs.microsoft.com/windows/uwp/get-started/get-set-up)方法については、[UWP のドキュメント](https://docs.microsoft.com/windows/uwp/)を参照してください。
 
 ## <a name="create-a-new-azure-mobile-app-backend"></a>新しい Azure Mobile App バックエンドの作成
@@ -70,7 +70,7 @@ UWP アプリの他のすべての Mobile Apps チュートリアルを行う前
     これで、Azure でホストされている新しいモバイル アプリ バックエンドに POST 要求が送信されます。
 
 > [!TIP]
-> .NET バックエンドを使用している場合、サーバー プロジェクトと同じソリューションに UWP アプリ プロジェクトを追加できます。 これにより、同じ Visual Studio ソリューションでアプリとバックエンドの両方をより簡単にデバッグおよびテストできるようになります。 UWP アプリ プロジェクトをバックエンド ソリューションに追加するには、Visual Studio 2017 を使用する必要があります。
+> .NET バックエンドを使用している場合、サーバー プロジェクトと同じソリューションに UWP アプリ プロジェクトを追加できます。 これにより、同じ Visual Studio ソリューションでアプリとバックエンドの両方をより簡単にデバッグおよびテストできるようになります。 UWP アプリ プロジェクトをバックエンド ソリューションに追加するには、Visual Studio 2017 以降を使用する必要があります。
 
 ## <a name="next-steps"></a>次の手順
 
@@ -86,4 +86,4 @@ UWP アプリの他のすべての Mobile Apps チュートリアルを行う前
 <!-- URLs. -->
 [Mobile App SDK]: https://go.microsoft.com/fwlink/?LinkId=257545
 [Azure portal]: https://portal.azure.com/
-[Visual Studio Community 2017]: https://go.microsoft.com/fwLink/p/?LinkID=534203
+[Visual Studio Community]: https://go.microsoft.com/fwLink/p/?LinkID=534203

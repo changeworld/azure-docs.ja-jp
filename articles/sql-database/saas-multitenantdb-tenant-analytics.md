@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: anjangsh,billgib,genemi
 manager: craigg
 ms.date: 09/19/2018
-ms.openlocfilehash: 0146f6ca610a25e57771fb21436a70acbdd5a5ef
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 4bf97c0c447bfabc1454959d457bbd50f3490299
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58481384"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242796"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---multi-tenant-app"></a>抽出されたデータを使用したクロステナント分析 - マルチテナント アプリ
  
@@ -90,8 +90,8 @@ ms.locfileid: "58481384"
 次の手順では、**tenantanalytics** という分析ストアをデプロイします。 このチュートリアルで後ほど設定する、定義済みのテーブルもデプロイします。
 1. PowerShell ISE で *…\Learning Modules\Operational Analytics\Tenant Analytics\Demo-TenantAnalytics.ps1* を開きます。 
 2. 選択した分析ストアに合わせて、スクリプト内の $DemoScenario 変数を設定します。 学習目的のため、列ストアなしの SQL データベースの使用をお勧めします。
-    - 列ストアを使用せずに SQL データベースを使用するには、**$DemoScenario** = **2** と設定します。
-    - 列ストアを使用して SQL データベースを使用するには、**$DemoScenario** = **3** と設定します。  
+    - 列ストアを使用せずに SQL データベースを使用するには、 **$DemoScenario** = **2** と設定します。
+    - 列ストアを使用して SQL データベースを使用するには、 **$DemoScenario** = **3** と設定します。  
 3. **F5** キーを押して、テナント分析ストアを作成するデモ スクリプト (*Deploy-TenantAnalytics\<XX>.ps1* スクリプトを呼び出すスクリプト) を実行します。 
 
 アプリケーションをデプロイし、対象のテナント データを入力しました。次に、[SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) を使用して、**tenants1-mt-\<User\>** サーバーと **catalog-mt-\<User\>** サーバーを接続します。ログイン名として「*developer*」、パスワードとして「*P\@ssword1*」を使用します。
@@ -171,7 +171,7 @@ SSMS オブジェクト エクスプローラーで分析ストア ノードを�
 
 1. Power BI Desktop を起動します。
 2. [ホーム] リボンの **[データを取得]** をクリックし、メニューの **[その他…]**  を選択します。
-3. **[データを取得]** ウィンドウで、Azure SQL Database を選択します。
+3. **[データを取得]** ウィンドウで、[Azure SQL Database] を選択します。
 4. データベース ログイン ウィンドウで、サーバー名 (catalog-mt-\<User\>.database.windows.net) を入力します。 **[データ接続モード]** の **[インポート]** を選択し、[OK] をクリックします。 
 
     ![powerBISignIn](media/saas-multitenantdb-tenant-analytics/powerBISignIn.PNG)
@@ -210,7 +210,7 @@ Contoso Concert Hall の上記のプロットは、購入が殺到する状態�
 
 チケット販売パターンに関する洞察により、Wingtip Tickets でビジネス モデルを最適化できます。 Wingtip では、すべてのテナントに均等に課金するのではなく、コンピューティング サイズが異なるサービス レベルを導入する必要があると考えられます。 1 日により多くのチケットを販売する必要がある大規模な会場には、サービス レベル アグリーメント (SLA) が高い上位層を提供できます。 これらの会場では、データベースごとのリソースの上限が高いプールにデータベースを配置できます。 各サービス層に時間単位の販売割り当てを設定し、割り当てを超えた場合は追加料金が課金されるようにすることもできます。 売上が定期的に激増する大規模な会場は上位層からメリットが得られ、Wingtip Tickets はサービスをより効率的に収益化できます。
 
-その一方で、Wingtip Tickets の一部の顧客は、サービス コストに見合うだけのチケットを販売するのに苦戦していると不満を漏らしています。 これらの洞察の中に、業績が低迷している会場のチケットの売上を伸ばす機会がおそらくあります。 売上が増加すれば、サービスの知覚価値が高まります。 fact_Tickets を右クリックし、**[新しいメジャー]** を選択します。 **AverageTicketsSold** という新しいメジャーの次の式を入力します。
+その一方で、Wingtip Tickets の一部の顧客は、サービス コストに見合うだけのチケットを販売するのに苦戦していると不満を漏らしています。 これらの洞察の中に、業績が低迷している会場のチケットの売上を伸ばす機会がおそらくあります。 売上が増加すれば、サービスの知覚価値が高まります。 fact_Tickets を右クリックし、 **[新しいメジャー]** を選択します。 **AverageTicketsSold** という新しいメジャーの次の式を入力します。
 
 ```
 AverageTicketsSold = DIVIDE(DIVIDE(COUNTROWS(fact_Tickets),DISTINCT(dim_Venues[VenueCapacity]))*100, COUNTROWS(dim_Events))
@@ -242,5 +242,5 @@ Wingtip Tickets SaaS マルチテナント データベース アプリケーシ
 ## <a name="additional-resources"></a>その他のリソース
 
 [Wingtip SaaS アプリケーションに基づく作業のための追加のチュートリアル](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials) 
-- [エラスティック ジョブ](sql-database-elastic-jobs-overview.md)
+- [エラスティック ジョブ](elastic-jobs-overview.md)
 - [抽出されたデータを使用したクロステナント分析 - シングルテナント アプリ](saas-tenancy-tenant-analytics.md) 

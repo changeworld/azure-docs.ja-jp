@@ -1,7 +1,10 @@
 - name: Azure Dev Spaces
+  href: ./index.yml
   items:
     - name: 概要
-      href: index.yml
+      items:
+        - name: Azure Dev Spaces について
+          href: about.md
     - name: クイック スタート
       items:
         - name: チーム開発
@@ -10,7 +13,7 @@
           href: quickstart-java.md
         - name: .NET Core (VS Code と CLI)
           href: quickstart-netcore.md
-        - name: .NET Core (Visual Studio 2017)
+        - name: .NET Core (Visual Studio)
           href: quickstart-netcore-visualstudio.md
         - name: Node.js (VS Code と CLI)
           href: quickstart-nodejs.md
@@ -32,7 +35,7 @@
               href: multi-service-netcore.md
             - name: 3 - チーム開発
               href: team-development-netcore.md
-        - name: .NET Core (Visual Studio 2017)
+        - name: .NET Core (Visual Studio)
           items:
             - name: 1 - はじめに
               href: get-started-netcore-visualstudio.md

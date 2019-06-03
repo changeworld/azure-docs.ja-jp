@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: pryerram
 ms.custom: mvc
-ms.openlocfilehash: 9a59255097c6cb2a6728a14c3dbe19dbcbb0932a
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 5129af1f34f8a2604e7b70c9638b370c7cad029a
+ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236782"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66015541"
 ---
 # <a name="tutorial-use-azure-key-vault-with-an-azure-web-app-in-net"></a>チュートリアル:.NET で Azure Web アプリを使用して Azure Key Vault を使用する
 
@@ -43,7 +43,7 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 * Mac の場合:[Visual Studio for Mac](https://visualstudio.microsoft.com/vs/mac/)
 * Windows、Mac、Linux:
   * [Git](https://git-scm.com/downloads)
-  * このチュートリアルでは、Azure CLI をローカルで実行する必要があります。 Azure CLI バージョン 2.0.4 以降がインストールされている必要があります。 バージョンを確認するには、`az --version` を実行します。 CLI をインストールまたはアップグレードする必要がある場合は、「[Install Azure CLI 2.0 (Azure CLI 2.0 のインストール)](https://review.docs.microsoft.com/cli/azure/install-azure-cli)」を参照してください。
+  * このチュートリアルでは、Azure CLI をローカルで実行する必要があります。 Azure CLI バージョン 2.0.4 以降がインストールされている必要があります。 バージョンを確認するには、`az --version` を実行します。 CLI をインストールまたはアップグレードする必要がある場合は、「[Install Azure CLI 2.0 (Azure CLI 2.0 のインストール)](https://docs.microsoft.com/cli/azure/install-azure-cli)」を参照してください。
   * [.NET Core](https://www.microsoft.com/net/download/dotnet-core/2.1)
 
 ## <a name="about-managed-service-identity"></a>マネージド サービス ID について
@@ -85,7 +85,7 @@ Azure リソース グループとは、Azure リソースのデプロイと管�
 
 * キー コンテナー名: 数字 (0-9)、文字 (a-z、A-Z)、ハイフン (-) のみを含んだ 3 から 24 文字の文字列
 * リソース グループ名
-* 場所:**[米国西部]**
+* 場所: **[米国西部]**
 
 Azure CLI で、次のコマンドを入力します。
 
@@ -127,7 +127,7 @@ az keyvault secret show --name "AppSecret" --vault-name "<YourKeyVaultName>"
 
 ## <a name="open-and-edit-the-solution"></a>ソリューションを開いて編集する
 
-1. **[ページ]** > **[About.cshtml.cs]** ファイルの順に移動します。
+1. **[ページ]**  >  **[About.cshtml.cs]** ファイルの順に移動します。
 
 1. 次の NuGet パッケージをインストールします。
    - [AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication)
@@ -191,7 +191,7 @@ az keyvault secret show --name "AppSecret" --vault-name "<YourKeyVaultName>"
 
 ## <a name="run-the-web-app"></a>Web アプリの実行
 
-1. Visual Studio 2017 のメイン メニューで、**[デバッグ]** > **[開始]** の順に選択します ("デバッグあり" と "デバッグなし" のどちらでもかまいません)。 
+1. Visual Studio 2019 のメイン メニューで、 **[デバッグ]**  >  **[開始]** の順に選択します ("デバッグあり" と "デバッグなし" のどちらでもかまいません)。 
 1. ブラウザーで **[バージョン情報]** ページに移動します。  
     **AppSecret** の値が表示されます。
 
@@ -236,7 +236,7 @@ az keyvault set-policy --name '<YourKeyVaultName>' --object-id <PrincipalId> --s
 ライブ Web アプリからシークレット値をフェッチできることを確認するために、もう一度 Web アプリを Azure に発行します。
 
 1. Visual Studio で、**key-vault-dotnet-core-quickstart** プロジェクトを選択します。
-2. **[発行]** > **[開始]** の順に選択します。
+2. **[発行]**  >  **[開始]** の順に選択します。
 3. **作成** を選択します。
 
 アプリケーションを実行すると、シークレット値を取得できることが確認できます。

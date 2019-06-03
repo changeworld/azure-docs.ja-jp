@@ -4,14 +4,14 @@ description: Azure Cosmos DB でデータベース アカウントを管理す�
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 05/06/2019
+ms.date: 05/23/2019
 ms.author: mjbrown
-ms.openlocfilehash: 57116327168a76f971a22b61144850199cb0cbae
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 07d177987db1dea261520e8ee2543d871d552acb
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65068805"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66240889"
 ---
 # <a name="manage-an-azure-cosmos-account"></a>Azure Cosmos アカウントを管理する
 
@@ -79,13 +79,13 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
 
 1. [Azure ポータル](https://portal.azure.com)にサインインします。 
 
-1. お使いの Azure Cosmos アカウントに移動して、**[データをグローバルにレプリケートする]** メニューを開きます。
+1. お使いの Azure Cosmos アカウントに移動して、 **[データをグローバルにレプリケートする]** メニューを開きます。
 
-1. リージョンを追加するには、目的のリージョンに対応する六角形 (**+** ラベルが付いたもの) をマップ上で選択します。 別の方法でリージョンを追加するには、**[+ リージョンの追加]** オプションを選択し、ドロップダウン メニューからリージョンを選択します。
+1. リージョンを追加するには、目的のリージョンに対応する六角形 ( **+** ラベルが付いたもの) をマップ上で選択します。 別の方法でリージョンを追加するには、 **[+ リージョンの追加]** オプションを選択し、ドロップダウン メニューからリージョンを選択します。
 
 1. リージョンを削除するには、チェック マークの付いた青い六角形をマップ上で選択して、1 つ以上のリージョンを消去します。 または、右側で、リージョンの横にある "ごみ箱" (🗑) アイコンを選択します。
 
-1. 変更を保存するには、**[OK]** を選択します。
+1. 変更を保存するには、 **[OK]** を選択します。
 
    ![リージョンの追加や削除を行うメニュー](./media/how-to-manage-database-account/add-region.png)
 
@@ -165,7 +165,7 @@ Set-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
 
 ### <a id="configure-multiple-write-regions-portal"></a>Azure Portal
 
-**[データをグローバルにレプリケートする]** タブを開き、**[有効]** を選択して複数リージョンの書き込みを有効にします。 複数リージョンの書き込みを有効にすると、アカウントで現在用意されているすべての読み取りリージョンが読み書きリージョンになります。 
+**[データをグローバルにレプリケートする]** タブを開き、 **[有効]** を選択して複数リージョンの書き込みを有効にします。 複数リージョンの書き込みを有効にすると、アカウントで現在用意されているすべての読み取りリージョンが読み書きリージョンになります。 
 
 > [!NOTE]
 > 複数リージョンの書き込みを有効にした後、無効にすることはできません。 
@@ -245,13 +245,13 @@ Set-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
 
 ### <a id="enable-automatic-failover-via-portal"></a>Azure Portal
 
-1. Azure Cosmos DB アカウントで、**[データをグローバルにレプリケートする]** メニューを開きます。
+1. Azure Cosmos DB アカウントで、 **[データをグローバルにレプリケートする]** メニューを開きます。
 
-2. ウィンドウの上部で、**[自動フェールオーバー]** を選択します。
+2. ウィンドウの上部で、 **[自動フェールオーバー]** を選択します。
 
    ![[データをグローバルにレプリケートする] メニュー](./media/how-to-manage-database-account/replicate-data-globally.png)
 
-3. **[自動フェールオーバー]** ウィンドウで、**[自動フェールオーバーの有効化]** を **[ON]** に設定してください。 
+3. **[自動フェールオーバー]** ウィンドウで、 **[自動フェールオーバーの有効化]** を **[ON]** に設定してください。 
 
 4. **[保存]** を選択します。
 
@@ -294,13 +294,13 @@ Cosmos アカウントに自動フェールオーバーを構成した後、リ�
 
 ### <a id="set-failover-priorities-via-portal"></a>Azure Portal
 
-1. お使いの Azure Cosmos アカウントで、**[データをグローバルにレプリケートする]** ウィンドウを開きます。
+1. お使いの Azure Cosmos アカウントで、 **[データをグローバルにレプリケートする]** ウィンドウを開きます。
 
-2. ウィンドウの上部で、**[自動フェールオーバー]** を選択します。
+2. ウィンドウの上部で、 **[自動フェールオーバー]** を選択します。
 
    ![[データをグローバルにレプリケートする] メニュー](./media/how-to-manage-database-account/replicate-data-globally.png)
 
-3. **[自動フェールオーバー]** ウィンドウで、**[自動フェールオーバーの有効化]** を **[ON]** に設定してください。
+3. **[自動フェールオーバー]** ウィンドウで、 **[自動フェールオーバーの有効化]** を **[ON]** に設定してください。
 
 4. フェールオーバーの優先度を変更するには、カーソルを置くと行の左側に表示される 3 つのドットを使い、読み込みリージョンをドラッグします。
 
@@ -348,15 +348,15 @@ Invoke-AzResourceAction -Action failoverPriorityChange `
 
 ### <a id="enable-manual-failover-via-portal"></a>Azure Portal
 
-1. お使いの Azure Cosmos アカウントに移動して、**[データをグローバルにレプリケートする]** メニューを開きます。
+1. お使いの Azure Cosmos アカウントに移動して、 **[データをグローバルにレプリケートする]** メニューを開きます。
 
-2. メニューの上部で、**[手動フェールオーバー]** を選択します。
+2. メニューの上部で、 **[手動フェールオーバー]** を選択します。
 
    ![[データをグローバルにレプリケートする] メニュー](./media/how-to-manage-database-account/replicate-data-globally.png)
 
 3. **[手動フェールオーバー]** メニューで、新しい書き込みリージョンを選択します。 チェック ボックスをオンにして、このオプションによって書き込みリージョンが変更されることを理解していることを示します。
 
-4. フェールオーバーをトリガーするには、**[OK]** を選択します。
+4. フェールオーバーをトリガーするには、 **[OK]** を選択します。
 
    ![手動フェールオーバーのポータル メニュー](./media/how-to-manage-database-account/manual-failover.png)
 

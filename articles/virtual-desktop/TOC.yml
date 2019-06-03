@@ -14,6 +14,8 @@
       href: create-host-pools-azure-marketplace.md
     - name: 4. アプリ グループを管理する
       href: manage-app-groups.md
+    - name: 5. サービスの更新プログラムを検証するためのホスト プールを作成する
+      href: create-validation-host-pool.md
 - name: 操作方法
   items:
     - name: Windows Virtual Desktop リソースに接続する
@@ -30,10 +32,10 @@
       href: create-host-pools-user-profile.md
     - name: Windows Virtual Desktop の負荷分散方法を構成する
       href: configure-host-pool-load-balancing.md
-    - name: 診断機能を使用して問題を特定する
-      href: diagnostics-role-service.md
     - name: マスター VHD イメージを準備してカスタマイズする
       href: set-up-customize-master-image.md
+    - name: マスター VHD イメージに Office をインストールする
+      href: install-office-on-wvd-master-image.md
     - name: Windows Virtual Desktop の GPU を構成する
       href: configure-vm-gpu.md
     - name: セッション ホストを自動的にスケーリングする
@@ -46,10 +48,14 @@
       href: delegated-access-virtual-desktop.md
     - name: ホスト プールの負荷分散方法
       href: host-pool-load-balancing.md
+    - name: FSLogix プロファイル コンテナーと Azure のファイル
+      href: fslogix-containers-azure-files.md
 - name: トラブルシューティング
   items:
     - name: トラブルシューティングの概要、フィードバック、サポート
       href: troubleshoot-set-up-overview.md
+    - name: 診断機能を使用して問題を特定する
+      href: diagnostics-role-service.md
     - name: テナントとホスト プールの作成
       href: troubleshoot-set-up-issues.md
     - name: セッション ホスト仮想マシンの構成

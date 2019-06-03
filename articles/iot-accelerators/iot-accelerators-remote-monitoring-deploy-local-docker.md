@@ -3,17 +3,17 @@ title: リモート監視ソリューションのローカルでのデプロイ 
 description: この攻略ガイドでは、リモート監視ソリューション アクセラレータをテストおよび開発のために Docker を使用してローカル コンピューターにデプロイする方法を示します。
 author: avneet723
 manager: hegate
-ms.author: avneet723
+ms.author: avneets
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/25/2018
 ms.topic: conceptual
-ms.openlocfilehash: c00e62e237fe263f54926c8e74fb6211a2e5a4e4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: db934725fe91a142c43ba66701919e9d5a70a4b2
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57993048"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65967549"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---docker"></a>リモート監視ソリューション アクセラレータのローカルでのデプロイ - Docker
 

@@ -10,11 +10,11 @@ ms.date: 08/15/2018
 ms.topic: article
 ms.custom: bfmigrate
 ms.openlocfilehash: f411e4fce32e31bfd02db554999e467770409857
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59490750"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66165935"
 ---
 # <a name="migrate-security-resources-to-global-azure"></a>セキュリティ リソースをグローバル Azure に移行する
 

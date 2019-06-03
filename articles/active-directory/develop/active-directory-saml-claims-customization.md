@@ -3,8 +3,8 @@ title: Azure AD のエンタープライズ アプリケーションの SAML ト
 description: Azure AD のエンタープライズ アプリケーションの SAML トークンで発行された要求をカスタマイズする方法について説明します。
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.assetid: f1daad62-ac8a-44cd-ac76-e97455e47803
 ms.service: active-directory
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/03/2019
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6fe74852824c10d24729f785e5e33a17b793161
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b137b8cd4e3a2b7a308170904e9b3d09b11137f9
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58878572"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65231347"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>方法:エンタープライズ アプリケーションの SAML トークンで発行された要求のカスタマイズ
 
@@ -116,7 +116,7 @@ NameIDPolicy 属性について詳しくは、「[シングル サインオン�
 | **ToUpper()** | 選択した属性の文字を大文字に変換します。 |
 | **Contains()** | 入力が指定した値と一致する場合、属性または定数を出力します。 一致しない場合は、別の出力を指定できます。<br/>たとえば、ユーザーのメール アドレスに "@contoso.com" が含まれる場合はメール アドレスを値とする要求を出力し、それ以外の場合はユーザー プリンシパル名を出力するものとします。 これを行うには、次の値を構成します。<br/>*Parameter 1 (入力)*: user.email<br/>*Value*: "@contoso.com"<br/>Parameter 2 (出力): user.email<br/>Parameter 3 (一致しない場合の出力): user.userprincipalname |
 | **EndWith()** | 入力が指定した値で終わっている場合、属性または定数を出力します。 一致しない場合は、別の出力を指定できます。<br/>たとえば、ユーザーの employeeid が "000" で終わっている場合は employeeid を値とする要求を出力し、それ以外の場合は拡張属性を出力するものとします。 これを行うには、次の値を構成します。<br/>*Parameter 1 (入力)*: user.employeeid<br/>*値*: "000"<br/>Parameter 2 (出力): user.employeeid<br/>Parameter 3 (一致しない場合の出力): user.extensionattribute1 |
-| **StartWith()** | 入力が指定した値で始まっている場合、属性または定数を出力します。 一致しない場合は、別の出力を指定できます。<br/>たとえば、country が "US" で始まっている場合はユーザーの employeeid を値とする要求を出力し、それ以外の場合は拡張属性を出力するものとします。 これを行うには、次の値を構成します。<br/>*Parameter 1 (入力)*: user.country<br/>*値*: "US"<br/>Parameter 2 (出力): user.employeeid<br/>Parameter 3 (一致しない場合の出力): user.extensionattribute1 |
+| **StartWith()** | 入力が指定した値で始まっている場合、属性または定数を出力します。 一致しない場合は、別の出力を指定できます。<br/>たとえば、country/region が "US" で始まっている場合はユーザーの employeeid を値とする要求を出力し、それ以外の場合は拡張属性を出力するものとします。 これを行うには、次の値を構成します。<br/>*Parameter 1 (入力)*: user.country<br/>*値*: "US"<br/>Parameter 2 (出力): user.employeeid<br/>Parameter 3 (一致しない場合の出力): user.extensionattribute1 |
 | **Extract() - 一致の後** | 指定した値との一致より後の部分文字列を返します。<br/>たとえば、入力の値が "Finance_BSimon" で、一致する値が "Finance_" の場合、要求の出力は "BSimon" です。 |
 | **Extract() - 一致の前** | 指定した値との一致より前の部分文字列を返します。<br/>たとえば、入力の値が "BSimon_US" で、一致する値が "_US" の場合、要求の出力は "BSimon" です。 |
 | **Extract() - 一致の間** | 指定した値との一致より前の部分文字列を返します。<br/>たとえば、入力の値が "Finance_BSimon_US" で、1 番目の一致する値が "Finance_"、2 番目の一致する値が "_US" である場合、要求の出力は "BSimon" です。 |

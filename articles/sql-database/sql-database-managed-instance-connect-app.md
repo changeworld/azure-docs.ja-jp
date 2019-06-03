@@ -12,12 +12,12 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 manager: craigg
 ms.date: 11/09/2018
-ms.openlocfilehash: ed9fbdd3e999cfd262ecbcf05a843c19cc969ed1
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 52a9cfa52cd63715addadcbfb367510ded56fd76
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59360426"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65142722"
 ---
 # <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>Azure SQL Database Managed Instance にアプリケーションを接続する
 
@@ -146,7 +146,8 @@ Azure App Service をマネージド インスタンスに接続する場合の�
 |JDBC ドライバー| 6.4.0 |
 |Node.js ドライバー| 2.1.1 |
 |OLEDB ドライバー| 18.0.2.0 |
-|SSMS| 17.8.1 [以上](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) |
+|SSMS| 18.0 [以降](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) |
+|[SMO](https://docs.microsoft.com/sql/relational-databases/server-management-objects-smo/sql-server-management-objects-smo-programming-guide) | [150](https://www.nuget.org/packages/Microsoft.SqlServer.SqlManagementObjects) 以降 |
 
 ## <a name="next-steps"></a>次の手順
 

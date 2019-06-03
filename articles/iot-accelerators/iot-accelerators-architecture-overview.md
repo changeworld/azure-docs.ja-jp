@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-accelerators
 services: iot-accelerators
 manager: philmea
-ms.openlocfilehash: ba5eb50dcf800c186124db348ac584ff6f55cebb
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 1e3ec677f2c3ce2a7f942c47269fe1f70885ac02
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54467317"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65466455"
 ---
 # <a name="introduction-to-the-azure-iot-reference-architecture"></a>Azure IoT リファレンス アーキテクチャの概要
 
@@ -38,7 +38,7 @@ ms.locfileid: "54467317"
 
 リファレンス アーキテクチャでは、次の図に示すコア サブシステムを確認します。
 
-![コア サブシステム](media/iot-accelerators-architecture-overview/CoreSubsystems.png)
+![コア サブシステム](media/iot-accelerators-architecture-overview/coresubsystems1.png)
 
 以降のセクションでは、リモート監視ソリューション アクセラレータのコンポーネントがコア サブシステムにどのようにマップされているかを説明します。
 

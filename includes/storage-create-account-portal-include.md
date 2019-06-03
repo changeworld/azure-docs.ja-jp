@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 09/18/2018
+ms.date: 05/06/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 3b770c3e51b17fa5d70abb03360e17e1073974d8
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: 56545b02c35d68455497c93582073c73d6c75da5
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51222163"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66114657"
 ---
 Azure Portal で汎用 v2 ストレージ アカウントを作成するには、次の手順に従います。
 
@@ -31,12 +31,12 @@ Azure Portal で汎用 v2 ストレージ アカウントを作成するには�
    |フィールド  |値  |
    |---------|---------|
    |デプロイメント モデル     |リソース マネージャー         |
-   |[パフォーマンス]     |標準         |
+   |パフォーマンス     |Standard         |
    |アカウントの種類     |StorageV2 (汎用 v2)         |
-   |レプリケーション     |ローカル冗長ストレージ (LRS)         |
+   |レプリケーション     |読み取りアクセス geo 冗長ストレージ (RA-GRS)         |
    |アクセス層     |ホット         |
 
 1. **[確認および作成]** を選択して、ストレージ アカウントの設定を確認し、アカウントを作成します。
-1. **作成**を選択します。
+1. **作成** を選択します。
 
 ストレージ アカウントの種類およびその他のストレージ アカウントの設定について詳しくは、「[Azure ストレージ アカウントの概要](https://docs.microsoft.com/azure/storage/common/storage-account-overview)」をご覧ください。 リソース グループの詳細については、「[Azure Resource Manager の概要](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)」をご覧ください。 

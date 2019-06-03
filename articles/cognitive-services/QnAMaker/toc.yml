@@ -112,7 +112,7 @@
           href: How-To/test-knowledge-base.md
         - name: アクティブ ラーニングを使用してナレッジ ベースを改善する
           href: How-to/improve-knowledge-base.md
-          displayName: 'active learning, suggestion, dialog prompt, train api, feedback loop, autolearn, auto-learn, user setting, service setting, services setting, accept, reject, filter by suggestion, filter active learning'
+          displayName: 'active learning, suggestion, dialog prompt, train api, feedback loop, autolearn, auto-learn, user setting, service setting, services setting, accept, reject, filter by suggestion, filter active learning, clusterHead, totalAutoSuggestedCount, totalUserSuggestedCount, autoSuggestedCount, userSuggestedCount'
     - name: サービスの管理
       items:
         - name: QnA Maker サービスの設定
@@ -144,7 +144,7 @@
 - name: リファレンス
   items:
     - name: REST API リファレンス
-      href: 'https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff'
+      href: 'https://go.microsoft.com/fwlink/?linkid=2092179'
     - name: FAQ
       href: faqs.md
     - name: 制限
@@ -184,6 +184,8 @@
   items:
     - name: リージョン別の提供状況
       href: 'https://azure.microsoft.com/global-infrastructure/services/'
+    - name: コンプライアンス
+      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/'
     - name: 料金と制限

@@ -1,19 +1,19 @@
 ---
-title: Azure Kubernetes Service (AKS) と Azure Database for PostgreSQL を接続する
-description: Azure Kubernetes Service と Azure Database for PostgreSQL を接続する方法について説明します
+title: Azure Kubernetes Service (AKS) と Azure Database for PostgreSQL - Single Server を接続する
+description: Azure Kubernetes Service と Azure Database for PostgreSQL - Single Server の接続について説明します
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
-ms.date: 11/27/2018
+ms.date: 5/6/2019
 ms.topic: conceptual
-ms.openlocfilehash: f25d87c7c557404071d777f4efcf22e53886d96d
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: a98d9b89db0406d67d1b067c3e53eb5c3dae7957
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55242622"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65068937"
 ---
-# <a name="connecting-azure-kubernetes-service-and-azure-database-for-postgresql"></a>Azure Kubernetes Service と Azure Database for PostgreSQL を接続する
+# <a name="connecting-azure-kubernetes-service-and-azure-database-for-postgresql---single-server"></a>Azure Kubernetes Service と Azure Database for PostgreSQL - Single Server を接続する
 
 Azure Kubernetes Service (AKS) からは、Azure で使用できるマネージド Kubernetes クラスターが提供されます。 AKS と Azure Database for PostgreSQL を併用してアプリケーションを作成するときに考慮する選択肢を下にいくつか示します。
 

@@ -1,52 +1,54 @@
 ---
-title: Azure Cloud Shell での Bash を使用した Ansible の実行
-description: Azure Cloud Shell で Bash を使用してさまざまな Ansible タスクを実行する方法について説明します
-ms.service: azure
+title: クイック スタート - Azure Cloud Shell での Bash を使用した Ansible プレイブックの実行| Microsoft Docs
+description: このクイックスタートでは、Azure Cloud Shell で Bash を使用してさまざまな Ansible タスクを実行する方法について説明します
 keywords: Ansible, Azure, DevOps, Bash, Cloud Shell, プレイブック, Bash
+ms.topic: quickstart
+ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
-ms.date: 08/07/2018
-ms.topic: quickstart
-ms.openlocfilehash: 37426f1cdc51734c28b2c9739e26ad35f08e606f
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.date: 04/30/2019
+ms.openlocfilehash: 083d10de94c39ab134b8e475b66ebf2df30088bc
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57791394"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65407647"
 ---
-# <a name="run-ansible-with-bash-in-azure-cloud-shell"></a>Azure Cloud Shell での Bash を使用した Ansible の実行
+# <a name="quickstart-run-ansible-playbooks-via-bash-in-azure-cloud-shell"></a>クイック スタート:Azure Cloud Shell での Bash を使用した Ansible プレイブックの実行
 
-このチュートリアルでは、Cloud Shell 内で Bash を使用して、Ansible ワークスペースとして Azure サブスクリプションを構成する方法について説明します。 
+Azure Cloud Shell は、Azure リソースを管理するための、ブラウザーでアクセスできるインタラクティブなシェルです。 Cloud Shell を使用すると、Bash または Powershell のコマンド ラインを使用することができます。 この記事では、Azure Cloud Shell 内で Bash を使用して Ansible プレイブックを実行します。
 
 ## <a name="prerequisites"></a>前提条件
 
-- **Azure サブスクリプション** - Azure サブスクリプションをお持ちでない場合は、[無料のアカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)を作成してください。
-
-- **Azure Cloud Shell の構成** - Azure Cloud Shell を初めて使う場合は、Cloud Shell を起動および構成する方法について、「[Azure Cloud Shell の Bash のクイックスタート](https://docs.microsoft.com/azure/cloud-shell/quickstart)」を参照してください。 
-
+[!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
+- **Azure Cloud Shell の構成** - Azure Cloud Shell を初めて使用する場合は、「[Azure Cloud Shell の Bash のクイック スタート](https://docs.microsoft.com/azure/cloud-shell/quickstart)」を参照してください。
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="automatic-credential-configuration"></a>資格情報の自動構成
 
-Cloud Shell にサインインするとき、Ansible は Azure で認証され、追加構成なしでインフラストラクチャを管理できます。 複数のサブスクリプションを持っている場合は、`AZURE_SUBSCRIPTION_ID` 環境変数をエクスポートすることにより、Ansible で使用するサブスクリプションを選択できます。 すべての Azure サブスクリプションを一覧表示するには、次のコマンドを実行します。
+Cloud Shell にサインインするとき、Ansible は Azure で認証され、追加構成なしでインフラストラクチャを管理できます。 
+
+複数のサブスクリプションを操作する場合は、`AZURE_SUBSCRIPTION_ID` 環境変数をエクスポートして、Ansible で使用されるサブスクリプションを指定します。 
+
+すべての Azure サブスクリプションを一覧表示するには、次のコマンドを実行します。
 
 ```azurecli-interactive
 az account list
 ```
 
-使用するサブスクリプションの **id** を使用して、**AZURE_SUBSCRIPTION_ID** を次のように設定します。
+Azure サブスクリプション ID を使用して、次のように `AZURE_SUBSCRIPTION_ID` を設定します。
 
 ```azurecli-interactive
 export AZURE_SUBSCRIPTION_ID=<your-subscription-id>
 ```
 
 ## <a name="verify-the-configuration"></a>構成を確認する
-正しく構成されたことを確認するには、Ansible を使用してリソース グループを作成します。
+正しく構成されたことを確認するには、Ansible を使用して Azure リソース グループを作成します。
 
-[!INCLUDE [create-resource-group-with-ansible.md](../../includes/ansible-create-resource-group.md)]
+[!INCLUDE [create-resource-group-with-ansible.md](../../includes/ansible-snippet-create-resource-group.md)]
 
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"] 
-> [Ansible を使用して Azure で基本的な仮想マシンを作成する](/azure/virtual-machines/linux/ansible-create-vm)
+> [クイック スタート:Ansible を使用して Azure で仮想マシンを構成する](/azure/virtual-machines/linux/ansible-create-vm)

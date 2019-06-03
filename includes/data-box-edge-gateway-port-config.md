@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 03/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 98f9e0377e560fa0bba2fd470ff01431b2ed21d9
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58431430"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66161051"
 ---
 | ポート番号| インまたはアウト | ポート範囲| 必須|   メモ |   |
 |--------|-----|-----|-----------|----------|-----------|

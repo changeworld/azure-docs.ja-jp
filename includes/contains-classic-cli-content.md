@@ -7,12 +7,12 @@ manager: carmonm
 ms.date: 06/12/2018
 ms.topic: include
 ms.custom: include file
-ms.openlocfilehash: 1d7d9bf40c0765ee9479bb533c2211c2b21169a8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 6f4f8882952dbc4da64c3f7d601be59abd49601b
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47002252"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66122187"
 ---
 > [!IMPORTANT]
 > この記事には、Azure クラシック CLI を必要とするコンテンツが含まれます。 これは古いバージョンの Azure CLI であり、Azure クラシック デプロイ モデルでのみ使用する必要があります。

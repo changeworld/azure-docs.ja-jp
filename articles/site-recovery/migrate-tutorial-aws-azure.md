@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/18/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 17acd4eebe53704699d3ec9a3f4f121eed79794d
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: b2ff67e207f8a3a2b79635b080c78021162f0ac6
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58310389"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65519232"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>アマゾン ウェブ サービス (AWS) VM を Azure に移行する
 
@@ -115,7 +115,11 @@ Azure portal のコンテナー ページで、**[作業の開始]** セクシ�
 
 完了したら、**[OK]** を選択して次のセクションに進みます。
 
-### <a name="2-prepare-source"></a>2.ソースを準備する
+### <a name="2-select-deployment-planning"></a>2.デプロイ計画を選択する
+
+**[Have you completed deployment planning]\(デプロイ計画は完了していますか\)** でドロップダウンから **[I will do it later]\(後で実行する\)** を選択し、**[OK]** を選択します。
+
+### <a name="3-prepare-source"></a>3:ソースを準備する
 
 **[ソースの準備]** ページで、**[+ 構成サーバー]** を選択します。
 
@@ -140,7 +144,7 @@ Azure portal のコンテナー ページで、**[作業の開始]** セクシ�
 
 構成サーバーの設定が完了したら、ポータルに戻り、作成したサーバーを **[構成サーバー]** で選択します。 **[OK]** を選択して、「3:ターゲットを準備する」に進みます。
 
-### <a name="3-prepare-target"></a>3:ターゲットを準備する
+### <a name="4-prepare-target"></a>4:ターゲットを準備する
 
 このセクションでは、このチュートリアルの「[Azure リソースの準備](#prepare-azure-resources)」で作成したリソースに関する情報を入力します。
 
@@ -149,8 +153,7 @@ Azure portal のコンテナー ページで、**[作業の開始]** セクシ�
 3. Site Recovery によって、互換性のある Azure ストレージ アカウントとネットワークが 1 つ以上あるかどうかが確認されます。 これらは、このチュートリアルの「[Azure リソースの準備](#prepare-azure-resources)」で作成したリソースである必要があります。
 4. 終了したら、**[OK]** を選択します。
 
-
-### <a name="4-prepare-replication-settings"></a>4:レプリケーションの設定を準備する
+### <a name="5-prepare-replication-settings"></a>5:レプリケーションの設定を準備する
 
 レプリケーションを有効にする前に、レプリケーション ポリシーを作成する必要があります。
 
@@ -158,12 +161,7 @@ Azure portal のコンテナー ページで、**[作業の開始]** セクシ�
 2. **[名前]** に「**myReplicationPolicy**」と入力します。
 3. その他の設定は既定のままにして、**[OK]** を選択してポリシーを作成します。 この新しいポリシーは自動的に構成サーバーに関連付けられます。
 
-### <a name="5-select-deployment-planning"></a>5:デプロイ計画を選択する
-
-**[Have you completed deployment planning]\(デプロイ計画は完了していますか\)** でドロップダウンから **[I will do it later]\(後で実行する\)** を選択し、**[OK]** を選択します。
-
 5 つのセクションがすべて完了したら、**[インフラストラクチャの準備]** で **[OK]** を選択します。
-
 
 ## <a name="enable-replication"></a>レプリケーションを有効にする
 

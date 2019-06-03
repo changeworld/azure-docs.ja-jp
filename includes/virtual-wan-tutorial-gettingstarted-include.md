@@ -9,11 +9,11 @@ ms.date: 09/12/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: a5563d0bab76d11af895165a28fc0544864cfcd1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60460135"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66150812"
 ---
 **[ワイド エリア ネットワーク (WAN)]** ページで、作成した WAN を選択します。 左側のメニューから、**[Getting Started]\(概要\)** ページを選択します。 このページには、仮想 WAN リソースの作成順序が表示されます。 機能する WAN を作成するためには、手順 1 ～ 4 を完了する必要があります。 サイトとハブは相互に依存しないため、任意の順序で作成できます。 ただし、サイトとハブを関連付ける前に、それらを作成しておく必要があります。
 

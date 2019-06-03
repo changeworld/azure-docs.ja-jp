@@ -7,17 +7,17 @@ ms.subservice: single-database
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: CarlRabeler
-ms.author: carlrab
+author: stevestein
+ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 03/20/2019
-ms.openlocfilehash: b3514eca8db5d5b68b3e5784ee95e8583813945c
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 0e4d87ee0d0d09a84e960d511ded87dc226515ea
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60008972"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65762664"
 ---
 # <a name="resource-limits-for-single-databases-using-the-dtu-based-purchasing-model"></a>DTU ベースの購入モデルを使用した単一データベースに対するリソース制限
 
@@ -27,7 +27,7 @@ ms.locfileid: "60008972"
 
 ## <a name="single-database-storage-sizes-and-compute-sizes"></a>単一データベース:ストレージ サイズとコンピューティング サイズ
 
-次の表では、各サービス レベルおよびコンピューティング サイズにおいて単一データベースで使用可能なリソースを示します。 [Azure portal](sql-database-single-databases-manage.md#manage-an-existing-sql-database-server)、[Transact-SQL](sql-database-single-databases-manage.md#transact-sql-manage-sql-database-servers-and-single-databases)、[PowerShell](sql-database-single-databases-manage.md#powershell-manage-sql-database-servers-and-single-databases)、[Azure CLI](sql-database-single-databases-manage.md#azure-cli-manage-sql-database-servers-and-single-databases)、または [REST API](sql-database-single-databases-manage.md#rest-api-manage-sql-database-servers-and-single-databases) を使って、単一のデータベースにサービス レベル、コンピューティング サイズ、ストレージ量を設定できます。
+次の表では、各サービス レベルおよびコンピューティング サイズにおいて単一データベースで使用可能なリソースを示します。 [Azure portal](sql-database-single-databases-manage.md#manage-an-existing-sql-database-server)、[Transact-SQL](sql-database-single-databases-manage.md#transact-sql-manage-sql-database-servers-and-single-databases)、[PowerShell](sql-database-single-databases-manage.md#powershell-manage-sql-database-servers-and-single-databases)、[Azure CLI](sql-database-single-databases-manage.md#azure-cli-manage-sql-database-servers-and-single-databases)、または [REST API](sql-database-single-databases-manage.md#rest-api-manage-sql-database-servers-and-single-databases) を使って、単一のデータベースにサービス レベル、コンピューティング サイズ、ストレージ容量を設定できます。
 
 > [!IMPORTANT]
 > スケーリングのガイダンスと考慮事項については、[単一データベースのスケーリング](sql-database-single-database-scale.md)に関するページを参照してください

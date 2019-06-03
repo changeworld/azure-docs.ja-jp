@@ -1,6 +1,6 @@
 ---
-title: Azure インフラストラクチャの可用性
-description: この記事では、顧客のデータの最大の可用性を提供する冗長性のレベルについて説明します。
+title: Azure インフラストラクチャの可用性 - Azure セキュリティ
+description: この記事では、Azure インフラストラクチャをセキュリティで保護し、顧客データの可用性を最大限にするために Microsoft が行っている事柄についての情報を提供します。
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/06/2018
+ms.date: 04/28/2019
 ms.author: terrylan
-ms.openlocfilehash: a9a55f61f032512be032897d5f21ece405844634
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: d13c79152afe00cb326f69b523e9fd7f0c3550b0
+ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56105877"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64872604"
 ---
 # <a name="azure-infrastructure-availability"></a>Azure インフラストラクチャの可用性
-Azure は、仮想化テクノロジで実現される広範囲の冗長性に基づいた堅牢な可用性を提供します。 Azure には、顧客のデータの最大の可用性を提供するさまざまなレベルの冗長性が用意されています。
+この記事では、Azure インフラストラクチャをセキュリティで保護し、顧客データの可用性を最大限にするために Microsoft が行っている事柄についての情報を提供します。 Azure は、仮想化テクノロジで実現される広範囲の冗長性に基づいた堅牢な可用性を提供します。
 
 ## <a name="temporary-outages-and-natural-disaster"></a>一時的な停止および自然災害
 Microsoft Cloud Infrastructure and Operations チームは、クラウド インフラストラクチャの設計、構築、運用、およびセキュリティの改善を行っています。 このチームは、Azure インフラストラクチャが、高可用性と信頼性、高効率、およびスマート スケーラビリティを提供していることを保証します。 チームは、さらにセキュリティで保護された、プライベートな信頼できるクラウドを提供します。

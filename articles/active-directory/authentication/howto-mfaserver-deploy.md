@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 05/20/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ae1db992984e8bb1dca71afed9fadd6b411b3dd
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: aa3d7d22ed032379f452eb4648c9a1cf87293df9
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58370246"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956585"
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>Azure Multi-Factor Authentication Server の概要
 
@@ -27,6 +27,9 @@ ms.locfileid: "58370246"
 オンプレミスの Multi-Factor Authentication Server を使用することに決めました。次に進みましょう。 このページでは、新しいサーバーのインストールや、オンプレミスの Active Directory を使用したそのサーバーのセットアップについて説明します。 MFA サーバーを既にインストールしており、アップグレードを検討している場合、「[Upgrade to the latest Azure Multi-Factor Authentication Server (最新の Azure Multi-factor Authentication Server へのアップグレード)](howto-mfaserver-deploy-upgrade.md)」を参照してください。 Web サービスをインストールする方法については、[Azure Multi-Factor Authentication Server モバイル アプリ Web サービスのデプロイ](howto-mfaserver-deploy-mobileapp.md)に関する記事を参照してください。
 
 ## <a name="plan-your-deployment"></a>デプロイを計画する
+
+> [!WARNING]
+> 2019 年 3 月以降、MFA Server をダウンロードできるのは有料のテナントだけです。 無料/試用版テナントが、アクティブ化資格情報をダウンロードまたは生成することはできません。
 
 Azure Multi-Factor Authentication Server をダウンロードする前に、負荷と高可用性の要件の内容について検討してください。 デプロイの方法と場所を決める際にこの情報を使用します。
 
@@ -90,6 +93,9 @@ Azure MFA Server は、次の 3 つの Web コンポーネントで構成され�
 
 ## <a name="download-the-mfa-server"></a>MFA Server のダウンロード
 
+> [!WARNING]
+> 2019 年 3 月以降、MFA Server をダウンロードできるのは有料のテナントだけです。 無料/試用版テナントが、アクティブ化資格情報をダウンロードまたは生成することはできません。
+
 Azure Portal から Azure Multi-Factor Authentication Server をダウンロードするには、次の手順に従います。
 
 1. [Azure Portal](https://portal.azure.com) に管理者としてサインインします。
@@ -102,9 +108,6 @@ Azure Portal から Azure Multi-Factor Authentication Server をダウンロー�
 5. このページは、インストーラーの実行後に参照するので開いたままにしておいてください。
 
 ## <a name="install-and-configure-the-mfa-server"></a>MFA Server のインストールと構成
-
-> [!WARNING]
-> 2019 年 3 月以降、MFA Server をダウンロードできるのは有料のテナントだけです。 無料/試用版テナントが、アクティブ化資格情報をダウンロードまたは生成することはできません。
 
 サーバーをダウンロードできたので、インストールと構成を行うことができます。 インストール先のサーバーが、計画セクションに記載されている要件を満たすようにしてください。
 

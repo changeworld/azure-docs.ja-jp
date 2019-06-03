@@ -17,16 +17,14 @@ ms.date: 04/10/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0a40c9ee06751edfb7b218cf15275019c142545
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 3851e53bb648811b46ec69d9c4fc91b920ce80fb
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59491323"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65784952"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-console-app-using-apps-identity"></a>クイック スタート:トークンを取得し、コンソール アプリからアプリの ID を使用して Microsoft Graph API を呼び出す
-
-[!INCLUDE [active-directory-develop-applies-v2-msal](../../../includes/active-directory-develop-applies-v2-msal.md)]
 
 このチュートリアルでは、アプリ自体の ID を使用してアクセス トークンを取得した後、Microsoft Graph API を呼び出して、ディレクトリ内の[ユーザーの一覧](https://docs.microsoft.com/graph/api/user-list)を表示する .NET Core アプリケーションを記述する方法について説明します。 このシナリオは、オペレーターがいない無人のジョブや、ユーザーの ID ではなくアプリケーション ID を使用して実行する必要がある Windows サービスがある状況で役立ちます。
 
@@ -48,7 +46,7 @@ ms.locfileid: "59491323"
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>選択肢 1: アプリを登録して自動構成を行った後、コード サンプルをダウンロードする
 >
 > 1. 新しい [Azure portal の [アプリの登録]](https://portal.azure.com/?Microsoft_AAD_RegisteredApps=true#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/DotNetCoreDaemonQuickstartPage/sourceType/docs) ウィンドウに移動します。
-> 1. アプリケーションの名前を入力し、**[登録]** を選択します。
+> 1. アプリケーションの名前を入力し、 **[登録]** を選択します。
 > 1. 画面の指示に従ってダウンロードし、1 回クリックするだけで、新しいアプリケーションが自動的に構成されます。
 >
 > ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>オプション 2:アプリケーションを登録し、アプリケーションとコード サンプルを手動で構成する
@@ -62,12 +60,12 @@ ms.locfileid: "59491323"
 > 1. 開発者用の Microsoft ID プラットフォームの [[アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) ページに移動します。
 > 1. **[新規登録]** を選択します。
 > 1. **[アプリケーションの登録]** ページが表示されたら、以下のアプリケーションの登録情報を入力します。 
-> 1. **[名前]** セクションに、アプリのユーザーに表示されるわかりやすいアプリケーション名 (`Daemon-console` など) を入力した後、**[登録]** を選択してアプリケーションを作成します。
-> 1. 登録されたら、**[証明書とシークレット]** メニューを選択します。
-> 1. **[クライアント シークレット]** で、**[+ 新しいクライアント シークレット]** を選択します。 名前を付け、**[追加]** を選択します。 シークレットを安全な場所にコピーします。 コード内でそれを使用する必要があります。
-> 1. 次に、**[API のアクセス許可]** メニューを選択し、**[+ アクセス許可の追加]** ボタンをクリックし、**[Microsoft Graph]** を選択します。
+> 1. **[名前]** セクションに、アプリのユーザーに表示されるわかりやすいアプリケーション名 (`Daemon-console` など) を入力した後、 **[登録]** を選択してアプリケーションを作成します。
+> 1. 登録されたら、 **[証明書とシークレット]** メニューを選択します。
+> 1. **[クライアント シークレット]** で、 **[+ 新しいクライアント シークレット]** を選択します。 名前を付け、 **[追加]** を選択します。 シークレットを安全な場所にコピーします。 コード内でそれを使用する必要があります。
+> 1. 次に、 **[API のアクセス許可]** メニューを選択し、 **[+ アクセス許可の追加]** ボタンをクリックし、 **[Microsoft Graph]** を選択します。
 > 1. **[アプリケーションのアクセス許可]** を選択します。
-> 1. **[ユーザー]** ノードで、**[User.Read.All]** を選択し、**[アクセス許可の追加]** を選択します。
+> 1. **[ユーザー]** ノードで、 **[User.Read.All]** を選択し、 **[アクセス許可の追加]** を選択します。
 
 > [!div class="sxs-lookup" renderon="portal"]
 > ### <a name="download-and-configure-your-quickstart-app"></a>クイックスタート アプリをダウンロードして構成する
@@ -101,12 +99,12 @@ ms.locfileid: "59491323"
     > [!div renderon="docs"]
     >> 各値の説明:
     >> * `Enter_the_Application_Id_Here` - 登録したアプリケーションの**アプリケーション (クライアント) ID**。
-    >> * `Enter_the_Tenant_Id_Here` - この値を**テナント ID** または**テナント名** (例: contoso.microsoft.com) に置き換えます。
+    >> * `Enter_the_Tenant_Id_Here` - この値を **テナント ID** または**テナント名** (例: contoso.microsoft.com) に置き換えます。
     >> * `Enter_the_Client_Secret_Here` - この値を手順 1 で作成されたクライアント シークレットに置き換えます。
 
     > [!div renderon="docs"]
     > > [!TIP]
-    > > **アプリケーション (クライアント) ID** と**ディレクトリ (テナント) ID** の値を見つけるには、Azure portal 上でアプリの **[概要]** ページに移動します。 新しいキーを生成するには、**[証明書とシークレット]** ページに移動します。
+    > > **アプリケーション (クライアント) ID** と**ディレクトリ (テナント) ID** の値を見つけるには、Azure portal 上でアプリの **[概要]** ページに移動します。 新しいキーを生成するには、 **[証明書とシークレット]** ページに移動します。
     
 #### <a name="step-4-admin-consent"></a>手順 4:管理者の同意
 
@@ -115,10 +113,10 @@ ms.locfileid: "59491323"
 ##### <a name="global-tenant-administrator"></a>グローバル テナント管理者
 
 > [!div renderon="docs"]
-> グローバル テナント管理者の場合は、Azure Portal 上で [アプリケーションの登録 (プレビュー)] の **[API のアクセス許可]** ページに移動し、**[{Tenant Name} に管理者の同意を与えます]** ({Tenant Name} はお使いのディレクトリの名前) を選択します。
+> グローバル テナント管理者の場合は、Azure Portal 上で [アプリケーションの登録 (プレビュー)] の **[API のアクセス許可]** ページに移動し、 **[{Tenant Name} に管理者の同意を与えます]** ({Tenant Name} はお使いのディレクトリの名前) を選択します。
 
 > [!div renderon="portal" class="sxs-lookup"]
-> グローバル管理者の場合は、**[API のアクセス許可]** ページに移動し、**[Enter_the_Tenant_Name_Here に管理者の同意を与えます]** を選択します。
+> グローバル管理者の場合は、 **[API のアクセス許可]** ページに移動し、 **[Enter_the_Tenant_Name_Here に管理者の同意を与えます]** を選択します。
 > > [!div id="apipermissionspage"]
 > > [[API のアクセス許可] ページに移動する]()
 
@@ -159,7 +157,7 @@ dotnet run
 
 ### <a name="msalnet"></a>MSAL.NET
 
-MSAL ([Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client)) はユーザーをサインインし、Microsoft ID プラットフォームによって保護されている API へのアクセス用のトークンを要求するために使用するライブラリです。 説明したとおり、このクイック スタートでは、委任されたアクセス許可ではなく、アプリケーション自体の ID を使用してトークンを要求しています。 ここで使用される認証フローは、"*[クライアント資格情報 OAuth フロー](v2-oauth2-client-creds-grant-flow.md)*" と呼ばれます。 クライアント資格情報フローで MSAL.NET を使用する方法の詳細については、[こちらの記事](https://aka.ms/msal-net-client-credentials)を参照してください。
+MSAL ([Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client)) はユーザーをサインインし、Microsoft ID プラットフォームによって保護されている API へのアクセス用のトークンを要求するために使用するライブラリです。 説明したとおり、このクイック スタートでは、委任されたアクセス許可ではなく、アプリケーション自体の ID を使用してトークンを要求しています。 ここで使用される認証フローは、" *[クライアント資格情報 OAuth フロー](v2-oauth2-client-creds-grant-flow.md)* " と呼ばれます。 クライアント資格情報フローで MSAL.NET を使用する方法の詳細については、[こちらの記事](https://aka.ms/msal-net-client-credentials)を参照してください。
 
  MSAL.NET は、Visual Studio の**パッケージ マネージャー コンソール**で次のコマンドを実行することでインストールできます。
 
@@ -198,7 +196,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 > | `config.ClientId` | Azure portal に登録されているアプリケーションの "**アプリケーション (クライアント) ID**"。 この値は、Azure portal のアプリの **[概要]** ページで確認できます。 |
 > | `config.Authority`    | (省略可能) ユーザーを認証するための STS エンドポイント。 通常、パブリック クラウド上では <https://login.microsoftonline.com/{tenant}> です。{tenant} はご自分のテナントの名前またはテナント ID です。|
 
-詳細については、[`ConfidentialClientApplication` 用の参照ドキュメント](https://docs.microsoft.com/en-us/dotnet/api/microsoft.identity.client.iconfidentialclientapplication?view=azure-dotnet)をご覧ください。
+詳細については、[`ConfidentialClientApplication` 用の参照ドキュメント](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.iconfidentialclientapplication?view=azure-dotnet)をご覧ください。
 
 ### <a name="requesting-tokens"></a>トークンの要求
 

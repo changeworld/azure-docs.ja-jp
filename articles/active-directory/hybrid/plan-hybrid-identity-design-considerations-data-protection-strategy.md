@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/13/2017
+ms.date: 04/29/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c5cad3f735494ee74156e22a9bf150911c36eb0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 05c1575781f280b3be1843abee0469af52baeb2d
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58091479"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64918426"
 ---
 # <a name="define-data-protection-strategy-for-your-hybrid-identity-solution"></a>ハイブリッド ID ソリューションのデータ保護戦略の定義
 このタスクでは、次のトピックで定義したビジネス要件を満たすために、ハイブリッド ID ソリューションのデータ保護戦略を定義します。
@@ -89,7 +89,7 @@ Azure AD を使用してハイブリッド ID インフラストラクチャを�
 ## <a name="define-access-control-options"></a>アクセス制御オプションの定義
 Azure AD で使うことができる認証、承認、アクセス制御の機能を活用することにより、次の図に示すように、自社で中央の ID リポジトリを使いながら、ユーザーやパートナーにシングル サインオン (SSO) の使用を許可することができます。
 
-![](./media/plan-hybrid-identity-design-considerations/centralized-management.png)
+![一元管理](./media/plan-hybrid-identity-design-considerations/centralized-management.png)
 
 一元管理および他のディレクトリとの完全統合
 
@@ -115,7 +115,7 @@ Azure AD のサポートを使用すると、モバイル ビジネス アプリ
 
 Azure AD を使ってユーザーが認証されたら、そのユーザーが持つアクセスのレベルを評価する必要があります。 リソースに対するユーザーのアクセス レベルは異なる場合があります。 Azure AD は一部のリソースへのアクセスを制御することによりセキュリティ層を追加できますが、ファイル サーバーにあるファイルのアクセス制御など、リソース自体にそれぞれ独自のアクセス制御リストを持たせることができる点にも注意してください。 次の図は、ハイブリッド シナリオで使うことができるアクセス制御のレベルをまとめたものです。
 
-![](./media/plan-hybrid-identity-design-considerations/accesscontrol.png)
+![アクセスの制御](./media/plan-hybrid-identity-design-considerations/accesscontrol.png)
 
 図 X に示した個々のやり取りは、Azure AD で対応できる 1 つのアクセス制御シナリオを表しています。 各シナリオの説明を以下に示します。
 

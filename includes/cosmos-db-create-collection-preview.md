@@ -9,11 +9,11 @@ ms.date: 11/19/2018
 ms.author: dech
 ms.custom: include file
 ms.openlocfilehash: c3cbfda674abaeea1adf35c3ee0d2b5ddf6b2f84
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52853491"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66153744"
 ---
 Azure Portal でデータ エクスプローラー ツールを使用してデータベースとコレクションを作成できるようになりました。 
 
@@ -36,7 +36,7 @@ Azure Portal でデータ エクスプローラー ツールを使用してデ�
     
     上記の設定に加え、必要に応じて、このコレクション用に**一意なキー**を追加できます。 この例では、このフィールドを空のままにしましょう。 一意なキーを使用すると、開発者はデータベースにデータ整合性のレイヤーを追加できます。 コレクションの作成中に一意キー ポリシーを作成すると、パーティション キーごとに 1 つ以上の値の一意性が保証されます。 詳細については、記事「[Azure Cosmos DB における一意なキー](../articles/cosmos-db/unique-keys.md)」を参照してください。
     
-    Click **OK**.
+    **OK** をクリックします。
 
     新しいデータベースとコレクションがデータ エクスプローラーに表示されます。
 

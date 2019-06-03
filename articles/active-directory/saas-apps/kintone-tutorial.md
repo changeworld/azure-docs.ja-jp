@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
 ms.openlocfilehash: a66d1cb16f47ebe7aeba3685b3567620ae4a8a51
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59564851"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65898019"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kintone"></a>チュートリアル:Azure Active Directory と Kintone の統合
 

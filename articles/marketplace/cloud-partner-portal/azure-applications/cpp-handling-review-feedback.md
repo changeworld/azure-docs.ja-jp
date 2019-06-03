@@ -1,25 +1,18 @@
 ---
-title: Azure アプリケーションに対するレビュー フィードバックを処理する - Azure Marketplace | Microsoft Docs
+title: Azure アプリケーションに対するレビュー フィードバックを処理する | Azure Marketplace
 description: Azure DevOps を使用して、Azure Marketplace の Azure アプリケーション オファーに対するレビュー フィードバックを処理する方法について説明します。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 02/05/2019
-ms.author: pbutlerm
-ms.openlocfilehash: e5fe076cfe733b4fa0151570603c090af98de0e8
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.author: pabutler
+ms.openlocfilehash: 57efbfe12df8072d619cf71f4b08da2e2e5be3ce
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56882690"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64942954"
 ---
 # <a name="handling-review-feedback"></a>レビュー フィードバックの処理
 
@@ -42,12 +35,12 @@ ms.locfileid: "56882690"
     - プル要求リンク。次に例を示します。`https://solutiontemplates.visualstudio.com/marketplacesolutions/_git/contoso/pullrequest/<number>`  この URL は、通知メッセージまたは 401 応答ページのアドレスから取得できます。
     - アクセスを付与する発行元組織の個人のメール アドレス。  この一覧には、Cloud パートナー ポータルでパブリッシャーとして登録するときに指定した所有者アドレスを含める必要があります。
 2. サポート インシデントを作成する  Cloud パートナー ポータルのタイトル バーで **[ヘルプ]** ボタンを選択し、メニューから **[サポート]** を選択します。  既定の Web ブラウザーが起動し、Microsoft の新しいサポート インシデント ページに移動します  (場合によっては、最初にサインインする必要があります)。
-3. **[問題の種類]** に **[Marketplace Onboarding]\(マーケットプレースのオンボード\)**、**[カテゴリ]** に **[Access problem]\(アクセスの問題\)** を指定し、**[Start request]\(要求の開始\)** を選択します。
+3. **[問題の種類]** に **[Marketplace Onboarding]\(マーケットプレースのオンボード\)** 、 **[カテゴリ]** に **[Access problem]\(アクセスの問題\)** を指定し、 **[Start request]\(要求の開始\)** を選択します。
 
     ![サポート チケットのカテゴリ](./media/support-incident1.png)
 
-4. **[手順 1/2]** ページに連絡先情報を入力し、**[続行]** を選択します。
-5. **[手順 2/2]** ページにインシデントのタイトル (`Request VSTS access` など) を指定し、最初の手順 (前述) で収集した情報を入力します。  条項を読み、同意してから、**[送信]** を選択します。
+4. **[手順 1/2]** ページに連絡先情報を入力し、 **[続行]** を選択します。
+5. **[手順 2/2]** ページにインシデントのタイトル (`Request VSTS access` など) を指定し、最初の手順 (前述) で収集した情報を入力します。  条項を読み、同意してから、 **[送信]** を選択します。
 
 インシデントの作成に成功すると、確認ページが表示されます。  後で参照できるように、このページ上の確認情報を保存します。  Microsoft サポート チームは、数営業日以内にお客様のアクセス要求に返信します。
 
@@ -61,7 +54,7 @@ ms.locfileid: "56882690"
     [![pull request のホーム ページ](./media/pr-home-page-thumb.png)](./media/pr-home-page.png)
     <br/> *拡大するには画像をクリックしてください。*
     
-2. (省略可能) ウィンドウの右側にある **[ポリシー]** セクションで、問題のメッセージをクリックして (この例では、**Policy Validation failed\(ポリシーの検証に失敗しました\)**)、問題の低レベルの詳細 (関連付けられているログ ファイルを含む) を調査します。  通常、エラーはログ ファイルの下部に表示されます。
+2. (省略可能) ウィンドウの右側にある **[ポリシー]** セクションで、問題のメッセージをクリックして (この例では、**Policy Validation failed\(ポリシーの検証に失敗しました\)** )、問題の低レベルの詳細 (関連付けられているログ ファイルを含む) を調査します。  通常、エラーはログ ファイルの下部に表示されます。
 
 3. ホーム ページの左側にあるメニューで、**ファイル**を選択して、このオファーの技術資産を構成するリスト ファイルを表示します。  検出された重大な問題について説明するコメントが Microsoft のレビュー担当者によって追加されているはずです。  次の例では、2 つの問題が検出されました。 
 

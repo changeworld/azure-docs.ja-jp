@@ -6,12 +6,12 @@ author: vhorne
 ms.service: firewall
 ms.date: 4/10/2019
 ms.author: victorh
-ms.openlocfilehash: c2d49defa2e0fbbd12c5403ccca74e91cf4ec981
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 7c30e0aa0ae9735f5d08e1a2c4d6e6d36d778e27
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59501832"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65410242"
 ---
 # <a name="deploy-and-configure-azure-firewall-using-azure-powershell"></a>Azure PowerShell を使用して Azure Firewall のデプロイと構成を行う
 
@@ -42,7 +42,7 @@ Azure サブネットから外に向かうアウトバウンド ネットワー�
 > * 外部 DNS サーバーへのアクセスを許可するようにネットワーク ルールを構成する
 > * ファイアウォールをテストする
 
-好みに応じて、[Azure portal](tutorial-firewall-deploy-portal.md) を使ってこの手順を実行することもできます。
+好みに応じて、[Azure portal](tutorial-firewall-deploy-portal.md) を使ってこの手順を行うこともできます。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -234,10 +234,10 @@ $NIC | Set-AzNetworkInterface
 1. 次のコマンドを実行します。
 
    ```
-   Invoke-WebRequest -Uri http://www.google.com
+   Invoke-WebRequest -Uri https://www.google.com
    Invoke-WebRequest -Uri https://www.google.com
 
-   Invoke-WebRequest -Uri http://www.microsoft.com
+   Invoke-WebRequest -Uri https://www.microsoft.com
    Invoke-WebRequest -Uri https://www.microsoft.com
    ```
 

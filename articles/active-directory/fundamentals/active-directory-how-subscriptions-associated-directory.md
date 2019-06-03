@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 06b6fdf7a3d21a6b7dc84c4347824d4eaeac046f
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 7f37c501bb53b3b73c30d02d00d49515f907e4ae
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64918405"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65463622"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>Azure サブスクリプションを Azure Active Directory テナントに関連付けるまたは追加する
 
@@ -64,8 +64,8 @@ Azure サブスクリプションには、Azure Active Directory (Azure AD) と�
 
     サブスクリプションのディレクトリが変更され、成功メッセージが表示されます。
 
-    ![ディレクトリ変更の成功メッセージ](media/active-directory-how-subscriptions-associated-directory/edit-directory-success.png)    
-4. **ディレクトリ スイッチャー**を使用して、新しいディレクトリに移動します。 すべてが正しく表示されるまで、最大で 10 分かかる場合があります。
+    ![ディレクトリ変更の成功メッセージ](media/active-directory-how-subscriptions-associated-directory/edit-directory-success.png)
+4. **ディレクトリ スイッチャー**を使用して、新しいディレクトリに移動します。 すべてが適切に表示されるまでに数時間かかる場合があります。 時間がかかりすぎると思われる場合は、移動したサブスクリプションの **[グローバルなサブスクリプション フィルター]** をチェックして、単に隠れている可能性がないか確認してください。
 
     ![サンプル情報が含まれたディレクトリ スイッチャーのページ](media/active-directory-how-subscriptions-associated-directory/directory-switcher.png)
 

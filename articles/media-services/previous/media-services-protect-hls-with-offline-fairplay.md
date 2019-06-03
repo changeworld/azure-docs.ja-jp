@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2019
 ms.author: willzhan, dwgeo
-ms.openlocfilehash: 31da745727d567e1b3b85b3508df368d78ad84a0
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: bc939011f87f03ef1de7e728fc52fc0c9887dd31
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60002665"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64935400"
 ---
 # <a name="offline-fairplay-streaming-for-ios"></a>オフラインの iOS 用 FairPlay Streaming 
 
@@ -42,8 +42,8 @@ Azure Media Services では、次のものを対象にして、適切に設計�
 さまざまなストリーミング プロトコルでのオンライン ストリーミングのコンテンツの保護だけでなく、保護されたコンテンツのオフライン モードも、よく要求される機能です。 オフライン モードのサポートは、次のシナリオで必要です。
 
 * 旅行中など、インターネット接続を利用できないときに再生します。
-* コンテンツ プロバイダーによっては、国境を越えた DRM ライセンス配信を許可しないことがあります。 海外旅行中にコンテンツを視聴したい場合は、オフライン ダウンロードが必要です。
-* 一部の国では、インターネットの使用や帯域幅がまだ制限されています。 ユーザーは先にダウンロードしておくことで、満足できる十分に高い解像度でコンテンツを視聴できます。 通常、この場合の問題はネットワークの可用性ではなく、ネットワーク帯域幅の制限です。 Over-the-Top (OTT)/オンライン ビデオ プラットフォーム (OVP) プロバイダーは、オフライン モードのサポートを要求します。
+* コンテンツ プロバイダーによっては、国/地域の境界を越えた DRM ライセンス配信を許可しない場合があります。 ユーザーが国/地域の外で旅行中にコンテンツを視聴する場合、オフライン ダウンロードが必要です。
+* 一部の国/地域では、インターネットの可用性や帯域幅にまだ制限があります。 ユーザーは先にダウンロードしておくことで、満足できる十分に高い解像度でコンテンツを視聴できます。 通常、この場合の問題はネットワークの可用性ではなく、ネットワーク帯域幅の制限です。 Over-the-Top (OTT)/オンライン ビデオ プラットフォーム (OVP) プロバイダーは、オフライン モードのサポートを要求します。
 
 この記事では、iOS 10 以降を搭載するデバイスを対象とする FairPlay Streaming (FPS) のオフライン モードのサポートについて説明します。 この機能は、watchOS、tvOS、Safari on macOS など、他の Apple プラットフォームではサポートされていません。
 
@@ -207,7 +207,7 @@ FPS Server SDK のバージョン 3 またはバージョン 4 サンプルで�
 - **audio-only=false を追加した後もまだ、オフライン モードの間は、オーディオのみが再生されて、ビデオが再生されないのはなぜですか。** コンテンツ配信ネットワーク (CDN) キャッシュ キーの設計によっては、コンテンツがキャッシュされることがあります。 キャッシュを消去します。
 - **FPS オフライン モードは、iOS 10 だけでなく iOS 11 でもサポートされますか。** はい。 FPS オフライン モードは iOS 10 と iOS 11 でサポートされています。
 - **ドキュメント『Offline Playback with FairPlay Streaming and HTTP Live Streaming』(FairPlay Streaming と HTTP ライブ ストリーミングでのオフライン再生) が FPS Server SDK で見つからないのはなぜですか。** FPS Server SDK バージョン 4 以降、このドキュメントは『FairPlay Streaming Programming Guide』(FairPlay Streaming プログラミング ガイド) にまとめられています。
-- **FPS オフライン モードの次の API で、最後のパラメーターは何を表していますか。**
+- **FPS オフライン モードの次の API で、最後のパラメーターは何を表していますか。** 
 `Microsoft.WindowsAzure.MediaServices.Client.FairPlay.FairPlayConfiguration.CreateSerializedFairPlayOptionConfiguration(objX509Certificate2, pfxPassword, pfxPasswordId, askId, iv, RentalAndLeaseKeyType.PersistentUnlimited, 0x9999);`
 
     この API のドキュメントについては、「[FairPlayConfiguration.CreateSerializedFairPlayOptionConfiguration Method](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.mediaservices.client.FairPlay.FairPlayconfiguration.createserializedFairPlayoptionconfiguration?view=azure-dotnet)」(FairPlayConfiguration.CreateSerializedFairPlayOptionConfiguration メソッド) を参照してください。 このパラメーターはオフライン レンタルの期間を表します (単位は時間)。

@@ -1,25 +1,18 @@
 ---
-title: オファーを作成または変更する |Microsoft Docs
+title: オファーを作成または変更する | Azure Marketplace
 description: オファーの新規作成または既存オファーの更新を行うための API です。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: reference
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: c7aed97c442c414e86c9531f9b0a8431e22b8b44
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.author: pabutler
+ms.openlocfilehash: 55f6aa60c836d55333e1c5b02a44114b91df822d
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48807156"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64935517"
 ---
 <a name="create-or-modify-an-offer"></a>オファーを作成または変更する
 =========================
@@ -32,17 +25,17 @@ ms.locfileid: "48807156"
 <a name="uri-parameters"></a>URI パラメーター
 --------------
 
-|  **名前**         |  **説明**                      |  **データの種類**  |
+|  **Name**         |  **説明**                      |  **データの種類**  |
 |  --------         |  ----------------                     |  -------------  |
 | publisherId       |  パブリッシャー ID。たとえば、`contoso` |   String |
 | offerId           |  オファー ID                     |   String        |
-| api-version       |  API の最新バージョン            |   日付           |
+| api-version       |  API の最新バージョン            |   Date           |
 |  |  |  |
 
 <a name="header"></a>ヘッダー
 ------
 
-|  **名前**        |  **値**               |
+|  **Name**        |  **値**               |
 |  ---------       |  ----------              | 
 | Content-Type     | `application/json`       |
 | Authorization    | `Bearer YOUR_TOKEN`      |

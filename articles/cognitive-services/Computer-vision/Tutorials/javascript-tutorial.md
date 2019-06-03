@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:イメージの操作を実行する - JavaScript
+title: イメージの操作を実行する - JavaScript
 titlesuffix: Azure Cognitive Services
 description: Microsoft Cognitive Services の Computer Vision API を使用する基本的な JavaScript アプリを探索します。 OCR を実行し、サムネイルを作成して、イメージ内の視覚的な特徴を操作します。
 services: cognitive-services
@@ -7,62 +7,58 @@ author: KellyDF
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
-ms.topic: tutorial
-ms.date: 09/19/2017
+ms.topic: conceptual
+ms.date: 04/30/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 7ac8b9e28996c14e702730b72265fd6165798227
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 91af70406590ab8e65a5d4a4b53835e9e4d4ed2a
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55865075"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65231668"
 ---
-# <a name="tutorial-computer-vision-api-javascript"></a>チュートリアル:Computer Vision API JavaScript
+# <a name="use-computer-vision-features-with-the-rest-api-and-javascript"></a>REST API と JavaScript を使用して Computer Vision 機能を使用する
 
-このチュートリアルでは、Azure Cognitive Services の Computer Vision REST API の機能について説明します。
+このガイドでは、Azure Cognitive Services の Computer Vision REST API の機能について説明します。
 
 Computer Vision REST API を使用して、光学文字認識 (OCR) を実行し、スマート トリミングされたサムネイルを作成するほか、イメージ内の視覚的な特徴 (顔など) を検出、カテゴライズ、タグ付け、および記述する、JavaScript アプリケーションについて確認します。 この例では、分析および処理用にイメージ の URL を送信できます。 このオープン ソースの例を、Computer Vision REST API を使用する独自の JavaScript アプリを構築するためのテンプレートとして使用できます。
 
-JavaScript フォーム アプリケーションは既に記述されていますが、Computer Vision の機能がありません。 このチュートリアルでは、Computer Vision REST API 固有のコードを追加して、アプリの機能を完成させます。
+JavaScript フォーム アプリケーションは既に記述されていますが、Computer Vision の機能がありません。 このガイドでは、Computer Vision REST API 固有のコードを追加して、アプリケーションの機能を完成させます。
 
 ## <a name="prerequisites"></a>前提条件
 
 ### <a name="platform-requirements"></a>プラットフォームの要件
 
-このチュートリアルは、単純なテキスト エディターを使用して開発されています。
+単純なテキスト エディターを使用して、このガイドの手順に従うことができます。
 
-### <a name="subscribe-to-computer-vision-api-and-get-a-subscription-key"></a>Computer Vision API にサブスクライブしてサブスクリプション キーを取得する 
+### <a name="subscribe-to-computer-vision-api-and-get-a-subscription-key"></a>Computer Vision API にサブスクライブしてサブスクリプション キーを取得する
 
-例を作成する前に、Azure Cognitive Services の一部である Computer Vision API をサブスクライブする必要があります。 サブスクリプションとキーの管理の詳細については、[サブスクリプション](https://azure.microsoft.com/try/cognitive-services/)に関するページを参照してください。 このチュートリアルでは、主キーと 2 次キーの両方を使用できます。 
+例を作成する前に、Azure Cognitive Services の一部である Computer Vision API をサブスクライブする必要があります。 サブスクリプションとキーの管理の詳細については、[サブスクリプション](https://azure.microsoft.com/try/cognitive-services/)に関するページを参照してください。 このガイドでは、主キーとセカンダリ キーの両方を使用できます。
 
-## <a name="acquire-the-incomplete-tutorial-project"></a>不完全なチュートリアル プロジェクトを取得する
+## <a name="acquire-incomplete-tutorial-project"></a>不完全なチュートリアル プロジェクトを取得する
 
-### <a name="download-the-tutorial-project"></a>チュートリアル プロジェクトをダウンロードする
+### <a name="download-the-project"></a>プロジェクトのダウンロード
 
 [Cognitive Services JavaScript Computer Vision チュートリアル](https://github.com/Azure-Samples/cognitive-services-javascript-computer-vision-tutorial)を複製するか、または .zip ファイルをダウンロードしそれを空のディレクトリに抽出します。
 
-すべてのチュートリアル コードが追加された完成したチュートリアルの使用を希望する場合は、**Completed** フォルダー内のファイルを使用できます。
+すべてのチュートリアル コードが追加された完成したプロジェクトの使用を希望する場合は、**Completed** フォルダー内のファイルを使用できます。
 
-## <a name="add-the-tutorial-code-to-the-project"></a>チュートリアル コードをプロジェクトに追加する
+## <a name="add-tutorial-code-to-the-project"></a>チュートリアル コードをプロジェクトに追加する
 
-JavaScript アプリケーションは、機能ごとに 1 つ、合計で 6 つの .html ファイルで設定されています。 各ファイルは Computer Vision の別個の関数を示します (分析、OCR など)。 チュートリアルの 6 つのセクションは互いに独立しているため、チュートリアル コードを 1 つまたは 6 つすべてのファイルに追加することも、いくつかのファイルにのみ追加することもできます。 チュートリアル コードは任意の順番でファイルに追加できます。
-
-それでは始めましょう。
+JavaScript アプリケーションは、機能ごとに 1 つ、合計で 6 つの .html ファイルで設定されています。 各ファイルは Computer Vision の別個の関数を示します (分析、OCR など)。 6 つのセクションは互いに独立しているため、チュートリアル コードを 1 つまたは 6 つすべてのファイルに追加することも、いくつかのファイルにのみ追加することもできます。 チュートリアル コードは任意の順番でファイルに追加できます。
 
 ### <a name="analyze-an-image"></a>イメージを分析する
 
-Computer Vision の分析機能では、2,000 を超える認識可能なオブジェクト、生物、シーン、およびアクションについて画像をスキャンします。 分析が完了すると、分析機能は、わかりやすいタグ、色の分析、キャプションなどでイメージを説明する、JSON オブジェクトを返します。
+Computer Vision の分析機能では、数千を超える認識可能なオブジェクト、生物、シーン、およびアクションについて画像をスキャンします。 分析が完了すると、分析機能は、わかりやすいタグ、色の分析、キャプションなどでイメージを説明する、JSON オブジェクトを返します。
 
-チュートリアル アプリケーションの分析機能を完成させるには、次の手順を実行します。
+アプリケーションの分析機能を完成させるには、次の手順を実行します。
 
-#### <a name="add-the-event-handler-code-for-the-form-button"></a>フォーム ボタンのイベント ハンドラー コードを追加する
+#### <a name="add-the-event-handler-code-for-the-analyze-button"></a>分析ボタンのイベント ハンドラー コードを追加する
 
 テキスト エディターで **analyze.html** ファイルを開き、ファイル下部にある **analyzeButtonClick** 関数を探します。
 
-**analyzeButtonClick** イベント ハンドラー関数はフォームをクリアし、URL で指定されたイメージを表示して、その後 **AnalyzeImage** 関数を呼び出してイメージを分析します。
-
-次のコードをコピーして **analyzeButtonClick** 関数に貼り付けます。
+**analyzeButtonClick** イベント ハンドラー関数はフォームをクリアし、URL で指定されたイメージを表示して、その後 **AnalyzeImage** 関数を呼び出してイメージを分析します。 次のコードをコピーして **analyzeButtonClick** 関数に貼り付けます。
 
 ```javascript
 function analyzeButtonClick() {
@@ -154,7 +150,7 @@ function AnalyzeImage(sourceImageUrl, responseTextArea, captionSpan) {
 }
 ```
 
-#### <a name="run-the-application"></a>アプリケーションの実行
+#### <a name="run-the-analyze-function"></a>分析関数を実行する
 
 **analyze.html** ファイルを保存し、Web ブラウザーで開きます。 **[Subscription Key]\(サブスクリプション キー\)** フィールドにサブスクリプション キーを入力し、**[Subscription Region]\(サブスクリプション リージョン\)** で正しいリージョンが使用されていることを確認します。 分析するイメージへの URL を入力し、**[Analyze Image]\(イメージの分析\)** ボタンをクリックしてイメージを分析し、結果を確認します。
 
@@ -162,15 +158,13 @@ function AnalyzeImage(sourceImageUrl, responseTextArea, captionSpan) {
 
 Computer Vision のランドマーク機能は、山や有名な建物などの自然および人口のランドマークのイメージを分析します。 分析が完了すると、ランドマーク機能はイメージで見つかったランドマークを識別する JSON オブジェクトを返します。
 
-チュートリアル アプリケーションのランドマーク機能を完成させるには、次の手順を実行します。
+アプリケーションのランドマーク機能を完成させるには、次の手順を実行します。
 
-#### <a name="add-the-event-handler-code-for-the-form-button"></a>フォーム ボタンのイベント ハンドラー コードを追加する
+#### <a name="add-the-event-handler-code-for-the-landmark-button"></a>ランドマーク ボタンのイベント ハンドラー コードを追加する
 
 テキスト エディターで **landmark.html** ファイルを開き、ファイル下部にある **landmarkButtonClick** 関数を探します。
 
-**landmarkButtonClick** イベント ハンドラー関数はフォームをクリアし、URL で指定されたイメージを表示して、その後 **IdentifyLandmarks** 関数を呼び出してイメージを分析します。
-
-次のコードをコピーして **landmarkButtonClick** 関数に貼り付けます。
+**landmarkButtonClick** イベント ハンドラー関数はフォームをクリアし、URL で指定されたイメージを表示して、その後 **IdentifyLandmarks** 関数を呼び出してイメージを分析します。 次のコードをコピーして **landmarkButtonClick** 関数に貼り付けます。
 
 ```javascript
 function landmarkButtonClick() {
@@ -261,7 +255,7 @@ function IdentifyLandmarks(sourceImageUrl, responseTextArea, captionSpan) {
 }
 ```
 
-#### <a name="run-the-application"></a>アプリケーションの実行
+#### <a name="run-the-landmark-function"></a>ランドマーク関数を実行する
 
 **landmark.html** ファイルを保存し、Web ブラウザーで開きます。 **[Subscription Key]\(サブスクリプション キー\)** フィールドにサブスクリプション キーを入力し、**[Subscription Region]\(サブスクリプション リージョン\)** で正しいリージョンが使用されていることを確認します。 分析するイメージへの URL を入力し、**[Analyze Image]\(イメージの分析\)** ボタンをクリックしてイメージを分析し、結果を確認します。
 
@@ -269,15 +263,13 @@ function IdentifyLandmarks(sourceImageUrl, responseTextArea, captionSpan) {
 
 Computer Vision の著名人機能は、有名な人物のイメージを分析します。 分析が完了すると、著名人機能はイメージで見つかった著名人を識別する JSON オブジェクトを返します。
 
-チュートリアル アプリケーションの著名人機能を完成させるには、次の手順を実行します。
+アプリケーションの著名人機能を完成させるには、次の手順を実行します。
 
-#### <a name="add-the-event-handler-code-for-the-form-button"></a>フォーム ボタンのイベント ハンドラー コードを追加する
+#### <a name="add-the-event-handler-code-for-the-celebrities-button"></a>著名人ボタンのイベント ハンドラー コードを追加する
 
 テキスト エディターで **celebrities.html** ファイルを開き、ファイル下部にある **celebritiesButtonClick** 関数を探します。
 
-**celebritiesButtonClick** イベント ハンドラー関数はフォームをクリアし、URL で指定されたイメージを表示して、その後 **IdentifyCelebrities** 関数を呼び出してイメージを分析します。
-
-次のコードをコピーして **celebritiesButtonClick** 関数に貼り付けます。
+**celebritiesButtonClick** イベント ハンドラー関数はフォームをクリアし、URL で指定されたイメージを表示して、その後 **IdentifyCelebrities** 関数を呼び出してイメージを分析します。 次のコードをコピーして **celebritiesButtonClick** 関数に貼り付けます。
 
 ```javascript
 function celebritiesButtonClick() {
@@ -364,7 +356,7 @@ function IdentifyCelebrities(sourceImageUrl, responseTextArea, captionSpan) {
 }
 ```
 
-#### <a name="run-the-application"></a>アプリケーションの実行
+#### <a name="run-the-celebrities-function"></a>著名人関数を実行する
 
 **celebrities.html** ファイルを保存し、Web ブラウザーで開きます。 **[Subscription Key]\(サブスクリプション キー\)** フィールドにサブスクリプション キーを入力し、**[Subscription Region]\(サブスクリプション リージョン\)** で正しいリージョンが使用されていることを確認します。 分析するイメージへの URL を入力し、**[Analyze Image]\(イメージの分析\)** ボタンをクリックしてイメージを分析し、結果を確認します。
 
@@ -372,15 +364,13 @@ function IdentifyCelebrities(sourceImageUrl, responseTextArea, captionSpan) {
 
 Computer Vision のサムネイル機能はイメージのサムネイルを生成します。 サムネイル機能は**スマート トリミング**機能を使用して、イメージ内の対象の領域を特定してサムネイルをその領域の中央に配置し、より美しいサムネイル イメージを生成します。
 
-チュートリアル アプリケーションのサムネイル機能を完成させるには、次の手順を実行します。
+アプリケーションのサムネイル機能を完成させるには、次の手順を実行します。
 
-#### <a name="add-the-event-handler-code-for-the-form-button"></a>フォーム ボタンのイベント ハンドラー コードを追加する
+#### <a name="add-the-event-handler-code-for-the-thumbnail-button"></a>サムネイル ボタンのイベント ハンドラー コードを追加する
 
 テキスト エディターで **thumbnail.html** ファイルを開き、ファイル下部にある **thumbnailButtonClick** 関数を探します。
 
-**thumbnailButtonClick** イベント ハンドラー関数がフォームをクリアし、URL で指定されているイメージを表示して、その後 **getThumbnail** 関数を 2 回呼び出して、スマート トリミングされたサムネイルとスマート トリミングされていないサムネイルの 2 つのサムネイルを作成します。
-
-次のコードをコピーして **thumbnailButtonClick** 関数に貼り付けます。
+**thumbnailButtonClick** イベント ハンドラー関数がフォームをクリアし、URL で指定されているイメージを表示して、その後 **getThumbnail** 関数を 2 回呼び出して、スマート トリミングされたサムネイルとスマート トリミングされていないサムネイルの 2 つのサムネイルを作成します。 次のコードをコピーして **thumbnailButtonClick** 関数に貼り付けます。
 
 ```javascript
 function thumbnailButtonClick() {
@@ -485,7 +475,7 @@ function getThumbnail (sourceImageUrl, smartCropping, imageElement, responseText
 }
 ```
 
-#### <a name="run-the-application"></a>アプリケーションの実行
+#### <a name="run-the-thumbnail-function"></a>サムネイル関数を実行する
 
 **thumbnail.html** ファイルを保存し、Web ブラウザーで開きます。 **[Subscription Key]\(サブスクリプション キー\)** フィールドにサブスクリプション キーを入力し、**[Subscription Region]\(サブスクリプション リージョン\)** で正しいリージョンが使用されていることを確認します。 分析するイメージへの URL を入力し、**[Generate Thumbnails]\(サムネイルの生成\)** ボタンをクリックしてイメージを分析し、結果を確認します。
 
@@ -493,15 +483,13 @@ function getThumbnail (sourceImageUrl, smartCropping, imageElement, responseText
 
 Computer Vision の光学式文字認識 (OCR) 機能は、印字されたテキストのイメージを分析します。 分析が完了すると、OCR 機能はテキストとイメージ内のそのテキストの位置が含まれる JSON オブジェクトを返します。
 
-チュートリアル アプリケーションの OCR 機能を完成させるには、次の手順を実行します。
+アプリケーションの OCR 機能を完成させるには、次の手順を実行します。
 
-### <a name="ocr-step-1-add-the-event-handler-code-for-the-form-button"></a>OCR の手順 1: フォーム ボタンのイベント ハンドラー コードを追加する
+### <a name="add-the-event-handler-code-for-the-ocr-button"></a>OCR ボタンのイベント ハンドラー コードを追加する
 
 テキスト エディターで **ocr.html** ファイルを開き、ファイル下部にある **ocrButtonClick** 関数を探します。
 
-**ocrButtonClick** イベント ハンドラー関数はフォームをクリアし、URL で指定されたイメージを表示して、その後 **ReadOcrImage** 関数を呼び出してイメージを分析します。
-
-次のコードをコピーして **ocrButtonClick** 関数に貼り付けます。
+**ocrButtonClick** イベント ハンドラー関数はフォームをクリアし、URL で指定されたイメージを表示して、その後 **ReadOcrImage** 関数を呼び出してイメージを分析します。 次のコードをコピーして **ocrButtonClick** 関数に貼り付けます。
 
 ```javascript
 function ocrButtonClick() {
@@ -580,7 +568,7 @@ function ReadOcrImage(sourceImageUrl, responseTextArea) {
 }
 ```
 
-#### <a name="run-the-application"></a>アプリケーションの実行
+#### <a name="run-the-ocr-function"></a>OCR 関数を実行する
 
 **ocr.html** ファイルを保存し、Web ブラウザーで開きます。 **[Subscription Key]\(サブスクリプション キー\)** フィールドにサブスクリプション キーを入力し、**[Subscription Region]\(サブスクリプション リージョン\)** で正しいリージョンが使用されていることを確認します。 読み取るテキストのイメージへの URL を入力し、**[Read Image]\(イメージの読み取り\)** ボタンをクリックしてイメージを分析し、結果を確認します。
 
@@ -588,9 +576,9 @@ function ReadOcrImage(sourceImageUrl, responseTextArea) {
 
 Computer Vision の手書き認識機能は、手書きのテキストのイメージを分析します。 分析が完了すると、手書き認識機能はテキストとイメージ内のそのテキストの位置が含まれる JSON オブジェクトを返します。
 
-チュートリアル アプリケーションの手書き認識機能を完成させるには、次の手順を実行します。
+アプリケーションの手書き認識機能を完成させるには、次の手順を実行します。
 
-#### <a name="add-the-event-handler-code-for-the-form-button"></a>フォーム ボタンのイベント ハンドラー コードを追加する
+#### <a name="add-the-event-handler-code-for-the-handwriting-button"></a>手書きボタンのイベント ハンドラー コードを追加する
 
 テキスト エディターで **handwriting.html** ファイルを開き、ファイル下部にある **handwritingButtonClick** 関数を探します。
 
@@ -739,11 +727,12 @@ function ReadHandwrittenImage(sourceImageUrl, responseTextArea) {
 }
 ```
 
-#### <a name="run-the-application"></a>アプリケーションの実行
+#### <a name="run-the-handwriting-function"></a>手書き関数を実行する
 
 **handwriting.html** ファイルを保存し、Web ブラウザーで開きます。 **[Subscription Key]\(サブスクリプション キー\)** フィールドにサブスクリプション キーを入力し、**[Subscription Region]\(サブスクリプション リージョン\)** で正しいリージョンが使用されていることを確認します。 読み取るテキストのイメージへの URL を入力し、**[Read Image]\(イメージの読み取り\)** ボタンをクリックしてイメージを分析し、結果を確認します。
 
 ## <a name="next-steps"></a>次の手順
 
-- [Computer Vision API C&#35; チュートリアル](CSharpTutorial.md)
-- [Computer Vision API Python チュートリアル](PythonTutorial.md)
+このガイドでは、Computer Vision REST API と JavaScript を使用して、利用可能な画像分析機能の多くをテストしました。 次は、リファレンス ドキュメントを参照して、関連する API の詳細について学習してください。
+
+- [Computer Vision REST API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)

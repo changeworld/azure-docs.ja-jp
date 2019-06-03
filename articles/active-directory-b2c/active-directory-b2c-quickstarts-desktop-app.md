@@ -11,12 +11,12 @@ ms.custom: mvc
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 909b9db08b9ee0ed1af716a0847e09264fb9accc
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 94e7972530afee15937b13ae35239a64d9bc986e
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64697512"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190543"
 ---
 # <a name="quickstart-set-up-sign-in-for-a-desktop-app-using-azure-active-directory-b2c"></a>クイック スタート:Azure Active Directory B2C を使用したデスクトップ アプリのサインインの設定 
 
@@ -26,7 +26,7 @@ Azure Active Directory (Azure AD) B2C は、アプリケーション、ビジネ
 
 ## <a name="prerequisites"></a>前提条件
 
-- [Visual Studio 2017](https://www.visualstudio.com/downloads/) と **ASP.NET および開発**ワークロード。 
+- **[ASP.NET および Web の開発]** ワークロードを含む [Visual Studio 2019](https://www.visualstudio.com/downloads/)。 
 - Facebook、Google、Microsoft、または Twitter のソーシャル アカウント。
 - [ZIP ファイルをダウンロード](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop/archive/master.zip)するか、GitHub からサンプル Web アプリを複製します。
 
@@ -45,14 +45,14 @@ Azure Active Directory (Azure AD) B2C は、アプリケーション、ビジネ
 
     ![サンプル アプリケーション](media/active-directory-b2c-quickstarts-desktop-app/wpf-sample-application.png)
 
-    このサンプルは、ソーシャル ID プロバイダーを使用する方法や、メール アドレスを使用してローカル アカウントを作成する方法など、複数のサインアップ方法に対応しています。 このクイック スタートでは、Facebook、Google、Microsoft、または Twitter のいずれかのソーシャル ID プロバイダー アカウントを使用します。 
+    このサンプルは、いくつかのサインアップ オプションをサポートしています。 これらのオプションには、ソーシャル ID プロバイダーの使用や、メール アドレスを使用したローカル アカウントの作成が含まれます。 このクイック スタートでは、Facebook、Google、Microsoft、または Twitter のいずれかのソーシャル ID プロバイダー アカウントを使用します。 
 
 
 2. このサンプル Web アプリでは、Wingtip Toys という架空のブランドのカスタム ログイン ページが Azure AD B2C により表示されます。 ソーシャル ID プロバイダーを使用してサインアップするには、使用する ID プロバイダーのボタンをクリックします。 
 
     ![サインインまたはサインアップ用のプロバイダー](media/active-directory-b2c-quickstarts-desktop-app/sign-in-or-sign-up-wpf.png)
 
-    ユーザーは、ソーシャル アカウントの資格情報を使用して認証 (サインイン) を行うと共に、ソーシャル アカウントから情報を読み取ることについての承認をアプリケーションに与えることになります。 アクセスを許可することにより、アプリケーションはソーシャル アカウントからプロファイル情報 (名前やお住まいの都市など) を取得できるようになります。 
+    ユーザーは、ソーシャル アカウントの資格情報を使用して認証 (サインイン) し、アプリケーションがそのソーシャル アカウントから情報を読み取ることを承認します。 アクセスを許可することにより、アプリケーションはソーシャル アカウントからプロファイル情報 (名前やお住まいの都市など) を取得できるようになります。 
 
 2. ID プロバイダーのサインイン プロセスを完了します。
 
@@ -88,7 +88,12 @@ Azure AD B2C ユーザー アカウントを使用して、Azure AD B2C で保�
 
 ## <a name="next-steps"></a>次の手順
 
-このクイック スタートでは、サンプル デスクトップ アプリケーションを使用して、カスタム ログイン ページでのサインインとソーシャル ID プロバイダーでのサインイン、Azure AD B2C アカウントの作成を行った後、Azure AD B2C で保護された Web API を呼び出しました。 
+このクイック スタートでは、サンプルのデスクトップ アプリケーションを使用して次のことを行いました。 
+
+* カスタム ログイン ページを使用してサインインする
+* ソーシャル ID プロバイダーを使用してサインインする
+* Azure AD B2C アカウントを作成する
+* Azure AD B2C によって保護された Web API を呼び出す
 
 独自の Azure AD B2C テナントを作成してみましょう。 
 

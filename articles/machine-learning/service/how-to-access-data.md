@@ -11,12 +11,12 @@ author: mx-iao
 ms.reviewer: sgilley
 ms.date: 02/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0ab01187b03b3d658b171029003667588382bd7f
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.openlocfilehash: 15118535578419f9e1230c5b2fcfd0d7c42257ea
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59563536"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65909005"
 ---
 # <a name="access-data-from-your-datastores"></a>データストアからデータにアクセスする
 
@@ -30,7 +30,7 @@ ms.locfileid: "59563536"
 
 ## <a name="prerequisites"></a>前提条件
 
-データストアを使用するには、まず[ワークスペース](concept-azure-machine-learning-architecture.md#workspace)が必要です。
+データストアを使用するには、まず[ワークスペース](concept-workspace.md)が必要です。
 
 まず、[新しいワークスペースを作成する](setup-create-workspace.md#sdk)か、既存のワークスペースを取得します。
 
@@ -153,7 +153,7 @@ ds.download(target_path='your target path',
 
 次の表では、実行中にデータストアの使用方法をコンピューティング先に指示する [`DataReference`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py) メソッドの一覧を示します。
 
-方法|方法|説明|
+方法|Method|説明|
 ----|-----|--------
 マウントする| [`as_mount()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-mount--)| コンピューティング先にデータストアをマウントするために使用します。
 ダウンロード|[`as_download()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-)|データストアの内容を `path_on_compute` によって指定された場所にダウンロードするために使用します。 <br> トレーニング実行のコンテキストでは、このダウンロードは実行の前に行われます。

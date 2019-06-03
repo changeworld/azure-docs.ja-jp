@@ -3,16 +3,16 @@ title: Azure 管理グループでリソースを整理する - Azure Governance
 description: 管理グループ、そのアクセス許可のしくみ、その使用方法について説明します。
 author: rthorn17
 ms.assetid: 482191ac-147e-4eb6-9655-c40c13846672
-ms.service: azure-resource-manager
+ms.service: governance
 ms.date: 04/22/2019
 ms.author: rithorn
 ms.topic: overview
-ms.openlocfilehash: ceb606f2243ef723866e485c6580a6323c1c92ec
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 1958a829df2643bd218d4e8d7f6dd563b5b395e8
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64722490"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237177"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Azure 管理グループでリソースを整理する
 
@@ -113,7 +113,7 @@ Azure 管理グループは、すべてのリソース アクセスとロール�
 
 ![管理グループが含まれているアクティビティ ログ](media/al-mg.png)
 
-Azure portal の外部で管理グループに対するクエリを使用する場合、管理グループのターゲット スコープは、**"/providers/Microsoft.Management/managementGroups/{yourMgID}"** のようになります。
+Azure portal の外部で管理グループに対するクエリを使用する場合、管理グループのターゲット スコープは、 **"/providers/Microsoft.Management/managementGroups/{yourMgID}"** のようになります。
 
 ## <a name="next-steps"></a>次の手順
 

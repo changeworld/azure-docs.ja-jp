@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 02/15/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 4dbd65a391bdc5726436ba461a34e1ca7cab87b0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c103e6cb3626750414ee5083dad3e34b6be4986c
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57855182"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65408941"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>Azure で Node.js Web アプリを作成する
 
@@ -54,7 +54,7 @@ const port = process.env.PORT || 1337;
 
 App Service はアプリケーションに process.env.PORT を挿入し、コードが変数を使用して、どのポートをリッスンするかを知るようにします。 
 
-ターミナル ウィンドウで、Node.js のサンプル プロジェクトのルート ディレクトリに移動します (_index.js_ が含まれるディレクトリ)。
+ターミナル ウィンドウで、サンプルの Node.js プロジェクトの**ルート ディレクトリ**に移動します (_index.js_ が含まれるディレクトリ)。
 
 ## <a name="run-the-app-locally"></a>アプリをローカルで実行する
 
@@ -75,7 +75,19 @@ Web ブラウザーを開き、`http://localhost:1337` のサンプル アプリ
 > [!NOTE]
 > Azure App Service では、アプリは、[iisnode](https://github.com/Azure/iisnode) を使用して IIS で実行されます。 Iisnode でアプリを実行できるようにするために、アプリのルート ディレクトリに web.config ファイルが含まれています。 このファイルが IIS によって読み取られます。iisnode 関連の設定については、[iisnode GitHub リポジトリ](https://github.com/Azure/iisnode/blob/master/src/samples/configuration/web.config)を参照してください。
 
-[!INCLUDE [Create ZIP file](../../includes/app-service-web-create-zip.md)]
+## <a name="create-a-project-zip-file"></a>プロジェクトの ZIP ファイルを作成する
+
+まだサンプル プロジェクトの**ルート ディレクトリ**にいることを確認します (_index.js_ が含まれるディレクトリ)。 プロジェクト内のすべての ZIP アーカイブを作成します。 次のコマンドには、お使いの端末の既定のツールを使用します。
+
+```
+# Bash
+zip -r myAppFiles.zip .
+
+# PowerShell
+Compress-Archive -Path * -DestinationPath myAppFiles.zip
+```
+
+その後、この ZIP ファイルを Azure にアップロードし、App Service にデプロイします。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -153,7 +165,7 @@ Node.js のサンプル コードは、Azure App Service の Web アプリで実
 response.end("Hello Azure!");
 ```
 
-ローカルのターミナル ウィンドウで、アプリケーションのルート ディレクトリに移動し、更新されたプロジェクトの新しい ZIP ファイルを作成します。
+ローカルのターミナル ウィンドウで、アプリケーションの**ルート ディレクトリ** (_index.js_ が含まれるディレクトリ) に移動し、更新されたプロジェクトの新しい ZIP ファイルを作成します。
 
 ```azurecli-interactive
 # Bash

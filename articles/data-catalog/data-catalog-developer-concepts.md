@@ -8,12 +8,12 @@ ms.assetid: 89de9137-a0a4-40d1-9f8d-625acad31619
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 42e4b545a48bcbd0ad4b7faf077ebdbfe21648b1
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 3cfd6bd453cd06be4676a806997697a71afb0b59
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60006694"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64727395"
 ---
 # <a name="azure-data-catalog-developer-concepts"></a>Azure Data Catalog 開発者の概念
 Microsoft **Azure Data Catalog** は、データ ソース検出およびデータ ソース メタデータのクラウド ソーシングの機能を提供する、フル マネージドのクラウド サービスです。 開発者は、REST API を介してサービスを使用できます。 開発者が **Azure Data Catalog**を使いこなすには、サービスに実装されている概念を理解することが重要です。
@@ -92,7 +92,7 @@ Azure Data Catalog の重要な側面は、システム内のメタデータの�
 <p>
 これらのプロパティは、すべてのルート資産の型に適用されます。
 
-<table><tr><td><b>プロパティ名</b></td><td><b>データ型</b></td><td><b>説明</b></td></tr><tr><td>name</td><td>String</td><td>データ ソースの場所の情報から派生した名前。</td></tr><tr><td>dsl</td><td>DataSourceLocation</td><td>データ ソースを一意に説明するもので、資産の識別子の 1 つです  (デュアル ID のセクションを参照してください)。  dsl の構造は、プロトコルとソースの種類によって異なります。</td></tr><tr><td>dataSource</td><td>DataSourceInfo</td><td>資産の型の詳細な説明。</td></tr><tr><td>lastRegisteredBy</td><td>SecurityPrincipal</td><td>この資産を最後に登録したユーザーを説明します。  ユーザーの一意の ID (upn) と、表示名 (lastName および firstName) の両方が含まれています。</td></tr><tr><td>containerId</td><td>String</td><td>データ ソースのコンテナーの資産の ID です。 このプロパティは、コンテナー型ではサポートされていません。</td></tr></table>
+<table><tr><td><b>プロパティ名</b></td><td><b>データ型</b></td><td><b>説明</b></td></tr><tr><td>name</td><td>String</td><td>データ ソースの場所の情報から派生した名前。</td></tr><tr><td>dsl</td><td>DataSourceLocation</td><td>データ ソースを一意に説明するもので、資産の識別子の 1 つです (デュアル ID のセクションを参照してください)。  dsl の構造は、プロトコルとソースの種類によって異なります。</td></tr><tr><td>dataSource</td><td>DataSourceInfo</td><td>資産の型の詳細な説明。</td></tr><tr><td>lastRegisteredBy</td><td>SecurityPrincipal</td><td>この資産を最後に登録したユーザーを説明します。  ユーザーの一意の ID (upn) と、表示名 (lastName および firstName) の両方が含まれています。</td></tr><tr><td>containerId</td><td>String</td><td>データ ソースのコンテナーの資産の ID です。 このプロパティは、コンテナー型ではサポートされていません。</td></tr></table>
 
 ### <a name="common-non-singleton-annotation-properties"></a>シングルトン以外の注釈の共通プロパティ
 これらのプロパティは、シングルトン以外のすべての注釈の型に適用されます (1 つの資産に対して複数の注釈を適用できます)。
@@ -114,7 +114,7 @@ Azure Data Catalog の重要な側面は、システム内のメタデータの�
 <table>
 <tr><td><b>注釈の種類 (入れ子になったビュー名)</b></td><td><b>追加のプロパティ</b></td><td><b>データ型</b></td><td><b>説明</b></td></tr>
 
-<tr><td>Description ("descriptions")</td><td></td><td></td><td>このプロパティには、資産の説明が含まれています。 システムの各ユーザーは、独自の説明を追加できます。  そのユーザーだけが説明オブジェクトを編集できます   (管理者および資産の所有者は、Description オブジェクトを削除できますが、編集することはできません)。 システムでは、ユーザーの説明を個別に管理します。  したがって、資産ごとに説明の配列が存在します (場合により、データ ソースから派生した情報を含む説明。加えて、資産に関する知識を提供した各ユーザーの説明)。</td></tr>
+<tr><td>Description ("descriptions")</td><td></td><td></td><td>このプロパティには、資産の説明が含まれています。 システムの各ユーザーは、独自の説明を追加できます。  そのユーザーだけが説明オブジェクトを編集できます  (管理者および資産の所有者は、Description オブジェクトを削除できますが、編集することはできません)。 システムでは、ユーザーの説明を個別に管理します。  したがって、資産ごとに説明の配列が存在します (場合により、データ ソースから派生した情報を含む説明。加えて、資産に関する知識を提供した各ユーザーの説明)。</td></tr>
 <tr><td></td><td>description</td><td>string</td><td>資産の簡単な説明 (2 ～ 3 行)</td></tr>
 
 <tr><td>Tag ("tags")</td><td></td><td></td><td>このプロパティで、資産のタグを定義します。 システムの各ユーザーは、資産に対して複数のタグを追加できます。  Tag オブジェクトを作成したユーザーのみがそれらのオブジェクトを編集できます  (管理者および資産の所有者は、Tag オブジェクトを削除できますが、編集することはできません)。 システムでは、ユーザーのタグを個別に管理します。  したがって、各資産に Tag オブジェクトの配列があります。</td></tr>
@@ -134,7 +134,7 @@ Azure Data Catalog の重要な側面は、システム内のメタデータの�
 <tr><td></td><td>columnName</td><td>String</td><td>このタグが参照する列の名前。</td></tr>
 <tr><td></td><td>tag</td><td>String</td><td>列を説明するタグ。</td></tr>
 
-<tr><td>Expert ("experts")</td><td></td><td></td><td>このプロパティには、データ セット内のエキスパートと見なされるユーザーが含まれています。 説明の一覧を表示すると、エキスパートの意見 (説明) が UX の一番上に表示されます。 各ユーザーは、独自のエキスパートを指定できます。 そのユーザーだけがエキスパート オブジェクトを編集できます  (管理者および資産の所有者は、Expert オブジェクトを削除できますが、編集することはできません)。</td></tr>
+<tr><td>Expert ("experts")</td><td></td><td></td><td>このプロパティには、データ セット内のエキスパートと見なされるユーザーが含まれています。 説明の一覧を表示すると、エキスパートの意見 (説明) が UX の一番上に表示されます。 各ユーザーは、独自のエキスパートを指定できます。 そのユーザーだけがエキスパート オブジェクトを編集できます (管理者および資産の所有者は、Expert オブジェクトを削除できますが、編集することはできません)。</td></tr>
 <tr><td></td><td>expert</td><td>SecurityPrincipal</td><td></td></tr>
 
 <tr><td>Preview ("previews")</td><td></td><td></td><td>プレビューには、資産のデータの上位 20 行のスナップショットが含まれています。 プレビューは、一部の資産の型に対してのみ意味を持ちます (テーブルに対しては意味を持ちますが、メジャーに対しては意味を持ちません)。</td></tr>
@@ -174,9 +174,9 @@ Azure Data Catalog の重要な側面は、システム内のメタデータの�
 
 <tr><td>DataSourceLocation</td><td></td><td></td><td></td></tr>
 <tr><td></td><td>protocol</td><td>string</td><td>必須。 データ ソースとの通信に使用されるプロトコルについて説明します。 例: SQl Server の "tds"、Oracle の "oracle" など。現在サポートされているプロトコルの一覧については、<a href="https://docs.microsoft.com/azure/data-catalog/data-catalog-dsr">データ ソース参照の仕様の DSL 構造体</a>を参照してください。</td></tr>
-<tr><td></td><td>address</td><td>Dictionary<string, object></td><td>必須。 アドレスは、参照対象データ ソースの識別に使用されるプロトコルに固有の一連のデータです。 特定のプロトコルを対象にしたアドレス データ。つまり、プロトコルが不明な場合は意味がありません。</td></tr>
+<tr><td></td><td>address</td><td>ディクショナリ&lt;文字列、オブジェクト&gt;</td><td>必須。 アドレスは、参照対象データ ソースの識別に使用されるプロトコルに固有の一連のデータです。 特定のプロトコルを対象にしたアドレス データ。つまり、プロトコルが不明な場合は意味がありません。</td></tr>
 <tr><td></td><td>認証</td><td>string</td><td>省略可能。 データ ソースとの通信に使用される認証スキーマ。 例: windows、oauth など。</td></tr>
-<tr><td></td><td>connectionProperties</td><td>Dictionary<string, object></td><td>省略可能。 データ ソースに接続する方法の追加情報。</td></tr>
+<tr><td></td><td>connectionProperties</td><td>ディクショナリ&lt;文字列、オブジェクト&gt;</td><td>省略可能。 データ ソースに接続する方法の追加情報。</td></tr>
 
 <tr><td>SecurityPrincipal</td><td></td><td></td><td>バックエンドでは公開時に AAD に対して指定されたプロパティの検証は実行されません。</td></tr>
 <tr><td></td><td>upn</td><td>string</td><td>ユーザーの一意の電子メール アドレス。 objectId が指定されていない場合や、"lastRegisteredBy" プロパティのコンテキストでは、この値を指定する必要があります。それ以外の場合は、任意で指定できます。</td></tr>

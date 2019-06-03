@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 02/04/2019
 ms.author: diberry
-ms.openlocfilehash: ddeccd34cbdc72d76d8dd26e36a533f44a9274b8
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 85d5fa1cc036737497e276413985e0828e3b51f6
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55866306"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65788717"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-java"></a>クイック スタート:Java を使用して QnA Maker のナレッジ ベースを作成する
 
@@ -125,4 +125,4 @@ main メソッドで KB を作成した後、状態をポーリングします�
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [QnA Maker (V4) REST API リファレンス](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)
+> [QnA Maker (V4) REST API リファレンス](https://go.microsoft.com/fwlink/?linkid=2092179)

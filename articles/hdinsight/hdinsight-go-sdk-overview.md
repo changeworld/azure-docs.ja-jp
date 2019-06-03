@@ -1,23 +1,23 @@
 ---
-title: Azure HDInsight Go SDK
-description: Azure HDInsight Go SDK のリファレンス
+title: Azure HDInsight SDK for Go
+description: Azure HDInsight SDK for Go のリファレンス
 author: tylerfox
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 09/21/2018
+ms.date: 05/8/2019
 ms.author: tyfox
 ms.custom: seodec18
-ms.openlocfilehash: 2e5b7816fda89e25dcb0de26f526e5187e0640b9
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 113948d77d87a34822f81f020b03f6628b9c5e84
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64700619"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65466214"
 ---
-# <a name="hdinsight-go-management-sdk-preview"></a>HDInsight Go Management SDK プレビュー
+# <a name="hdinsight-sdk-for-go-preview"></a>HDInsight SDK for Go (プレビュー)
 
 ## <a name="overview"></a>概要
-HDInsight Go SDK に用意されているクラスと関数を使用して HDInsight クラスターを管理できます。 これには、スクリプト アクションを作成、削除、更新、一覧表示、サイズ変更、実行したり、HDInsight クラスターのプロパティを監視、取得したりする操作が含まれます。
+HDInsight SDK for Go に用意されているクラスと関数を使用して HDInsight クラスターを管理できます。 これには、スクリプト アクションを作成、削除、更新、一覧表示、サイズ変更、実行したり、HDInsight クラスターのプロパティを監視、取得したりする操作が含まれます。
 
 > [!NOTE]  
 >この SDK の GoDoc 参考資料は[こちらでも入手できます](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight)。

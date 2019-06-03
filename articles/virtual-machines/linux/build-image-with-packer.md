@@ -13,17 +13,20 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 05/03/2018
+ms.date: 05/07/2019
 ms.author: cynthn
-ms.openlocfilehash: 3a7ac2e7a86a135f20f46b03be2c38af330a5367
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: c0ec2616d8bdcf3cfd6d649f12e9bfceea33690a
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55730341"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65467739"
 ---
 # <a name="how-to-use-packer-to-create-linux-virtual-machine-images-in-azure"></a>Packer を使用して Azure に Linux 仮想マシンのイメージを作成する方法
 Azure の各仮想マシン (VM) は、Linux ディストリビューションと OS のバージョンを定義するイメージから作成されます。 イメージには、プリインストールされているアプリケーションと構成を含めることができます。 Azure Marketplace には、ほとんどのディストリビューションおよびアプリケーション環境用の自社製およびサード パーティ製のイメージが数多く用意されています。また、ニーズに合わせて独自のイメージを作成することもできます。 この記事では、オープン ソース ツール [Packer](https://www.packer.io/) を使用して Azure に独自のイメージを定義およびビルドする方法について、詳しく説明します。
+
+> [!NOTE]
+> Azure では、お客様独自のカスタム イメージを定義して作成できるサービス (Azure Image Builder (プレビュー)) が提供されるようになっています。 Azure Image Builder は Packer が基になっているため、既存の Packer シェル プロビジョナー スクリプトを使うこともできます。 Azure Image Builder の概要については、「[Azure Image Builder で Linux VM を作成する](image-builder.md)」をご覧ください。
 
 
 ## <a name="create-azure-resource-group"></a>Azure リソース グループを作成する
@@ -232,6 +235,4 @@ Web ブラウザーを開き、アドレス バーに「`http://publicIpAddress`
 
 
 ## <a name="next-steps"></a>次の手順
-この例では、Packer を使用して NGINX が既にインストールされた VM イメージを作成しました。 この VM イメージは、アプリを Ansible、Chef、Puppet でイメージから作成した VM にデプロイするなど、既存のデプロイ ワークフローとともに使用できます。
-
-他の Linux ディストリビューション用の追加の Packer テンプレートの例については、[この GitHub リポジトリ](https://github.com/hashicorp/packer/tree/master/examples/azure)をご覧ください。
+[Azure Image Builder](image-builder.md) では既存の Packer プロビジョナー スクリプトを使うこともできます。

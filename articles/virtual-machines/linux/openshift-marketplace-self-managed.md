@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/18/2019
+ms.date: 05/7/2019
 ms.author: haroldw
-ms.openlocfilehash: 1228c770799de37c85b8a48b1dc923ac8294eeca
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 9b981924dcaf715dd1d05d452b756a40b63f8dac
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60013048"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233083"
 ---
 # <a name="configure-prerequisites"></a>構成の前提条件
 
@@ -39,8 +39,8 @@ Marketplace オファーを使用して自己管理型 OpenShift Container Platf
 - **ディスクの種類**: マネージド ディスクが使用されます。
 - **ネットワーク**:新規または既存のネットワークと、カスタムの CIDR 範囲をサポートします。
 - **CNS**: CNS を有効にできます。
-- **[メトリック]**:メトリックを有効にできます。
-- **ログ**: ログ記録を有効にできます。
+- **[メトリック]**:Hawkular メトリックを有効にできます。
+- **ログ**:EFK ログ記録を有効にできます。
 - **Azure Cloud Provider**: 既定で有効になっており、無効化できます。
 
 Azure portal の左上で、**[リソースの作成]** をクリックして、検索ボックスに「openshift container platform」と入力して Enter キーを押します。
@@ -81,7 +81,7 @@ Azure portal の左上で、**[リソースの作成]** をクリックして、
 
 | 入力パラメーター | パラメーターの説明 |
 |-----------------------|-----------------|
-| [OCP Cluster Name Prefix]\(OCP クラスター名のプレフィックス\) | すべての VM インスタンスで作成される管理者ユーザー |
+| [OCP Cluster Name Prefix]\(OCP クラスター名のプレフィックス\) | すべてのノードに対してホスト名を構成するために使用されるクラスター プレフィックス。 1 から 20 文字まで |
 | [Master Node Size]\(マスター ノード サイズ\) | 既定の VM サイズを受け入れるか、**[サイズの変更]** をクリックして異なる VM サイズを選択します。  ワークロードに適した VM サイズを選択します |
 | [Infrastructure Node Size]\(インフラストラクチャ ノード サイズ\) | 既定の VM サイズを受け入れるか、**[サイズの変更]** をクリックして異なる VM サイズを選択します。  ワークロードに適した VM サイズを選択します |
 | [Number of Application Nodes]\(アプリケーション ノードの数) | 既定の VM サイズを受け入れるか、**[サイズの変更]** をクリックして異なる VM サイズを選択します。  ワークロードに適した VM サイズを選択します |

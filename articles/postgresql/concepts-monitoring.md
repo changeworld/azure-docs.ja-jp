@@ -1,19 +1,19 @@
 ---
-title: Azure Database for PostgreSQL を監視およびチューニングします
-description: この記事では、Azure Database for PostgreSQL の監視およびチューニング機能について説明します。
+title: Azure Database for PostgreSQL (単一サーバー) を監視およびチューニングする
+description: この記事では、Azure Database for PostgreSQL (単一サーバー) の監視およびチューニング機能について説明します。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 11/05/2018
-ms.openlocfilehash: 0d5508fe6b07bd5664bd0708960559537d8f6be1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 5/6/2019
+ms.openlocfilehash: 5e03a3e33d618c393241a649be50fe78632caafe
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58098493"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65068995"
 ---
-# <a name="monitor-and-tune"></a>監視と調整
+# <a name="monitor-and-tune-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL (単一サーバー) を監視およびチューニングする
 サーバーに関する監視データは、ワークロードをトラブルシューティングしたり最適化したりするのに役立ちます。 Azure Database for PostgreSQL には、サーバーの動作の分析情報を提供する各種の監視オプションが用意されています。
 
 ## <a name="metrics"></a>メトリック

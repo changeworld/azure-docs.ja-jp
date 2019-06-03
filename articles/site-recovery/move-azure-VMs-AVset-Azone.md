@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: b6107211f49978bbacd1a827a9adc37ccef60a5b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7562d720b200e127fbfd56c403f0e29e28b3b5d8
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57855413"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65793750"
 ---
 # <a name="move-azure-vms-into-availability-zones"></a>Azure VM を Availability Zones に移動する
 Azure の Availability Zones は、アプリケーションとデータをデータセンターの障害から保護するのに役立ちます。 それぞれの可用性ゾーンは、独立した電源、冷却手段、ネットワークを備えた 1 つまたは複数のデータセンターで構成されています。 回復性を確保するため、有効になっているリージョンにはいずれも最低 3 つのゾーンが別個に存在しています。 Availability Zones はリージョン内で物理的に分離されているため、データセンターで障害が発生してもアプリケーションとデータは保護されます。 Availability Zones により、Azure では仮想マシン (VM) の 99.99% のアップタイムというサービス レベル アグリーメント (SLA) が提供されます。 「[Azure の Availability Zones の概要](https://docs.microsoft.com/azure/availability-zones/az-overview#regions-that-support-availability-zones)」で説明されているように、Availability Zones は一部のリージョンでサポートされています。
@@ -50,7 +50,7 @@ VM を "*単一インスタンス*" として特定のリージョンにデプ�
 4. Linux VM の場合は、Linux ディストリビューターから提供されるガイダンスに従って、VM で最新の信頼されたルート証明書と証明書失効リストを取得します。
 5. 移動しようとする VM のネットワーク接続を制御するために認証プロキシを使用していないことを確認します。
 
-6. 移動しようとしている VM にインターネットへのアクセスが存在しない場合や、ファイアウォール プロキシを使用してアウトバウンド アクセスを制御している場合は、「[発信ネットワーク接続の構成](azure-to-azure-tutorial-enable-replication.md#configure-outbound-network-connectivity)」で要件を確認してください。
+6. 移動しようとしている VM にインターネットへのアクセスが存在しない場合や、ファイアウォール プロキシを使用してアウトバウンド アクセスを制御している場合は、「[発信ネットワーク接続の構成](azure-to-azure-tutorial-enable-replication.md#set-up-outbound-network-connectivity-for-vms)」で要件を確認してください。
 
 7. ソース ネットワーク レイアウトと確認のために現在使用しているリソースを特定します (ロード バランサー、NSG、パブリック IP など)。
 
@@ -82,11 +82,11 @@ VM を "*単一インスタンス*" として特定のリージョンにデプ�
 以下の手順では、最終的にデータを Availability Zones に移動する前に、Azure Site Recovery を使用して、ターゲット リージョンへのデータのレプリケーションを有効にする方法を説明しています。
 
 > [!NOTE]
-> これらの手順は単一の VM 用です。 同じ手順を複数の VM に拡張できます。 Recovery Services コンテナーに移動して、**[+ レプリケート]** を選択し、一緒に関連する VM を選択します。
+> これらの手順は単一の VM 用です。 同じ手順を複数の VM に拡張できます。 Recovery Services コンテナーに移動して、 **[+ レプリケート]** を選択し、一緒に関連する VM を選択します。
 
 1. Azure portal で **[仮想マシン]** を選択して、Availability Zones に移動する VM を選択します。
-2. **[操作]** で、**[ディザスター リカバリー]** を選択します。
-3. **[ディザスター リカバリーの構成]** > **[ターゲット リージョン]** で、レプリケート先のターゲット リージョンを選択します。 このリージョンで Availability Zones が[サポートされている](https://docs.microsoft.com/azure/availability-zones/az-overview#regions-that-support-availability-zones)ことを確認します。
+2. **[操作]** で、 **[ディザスター リカバリー]** を選択します。
+3. **[ディザスター リカバリーの構成]**  >  **[ターゲット リージョン]** で、レプリケート先のターゲット リージョンを選択します。 このリージョンで Availability Zones が[サポートされている](https://docs.microsoft.com/azure/availability-zones/az-overview#regions-that-support-availability-zones)ことを確認します。
 
     ![ターゲット リージョンの選択](media/azure-vms-to-zones/enable-rep-1.PNG)
 
@@ -104,7 +104,7 @@ VM を "*単一インスタンス*" として特定のリージョンにデプ�
 
 レプリケーション ジョブの完了後、レプリケーションの状態を確認し、レプリケーションの設定を変更して、デプロイをテストできます。
 
-1. VM のメニューで、**[ディザスター リカバリー]** を選択します。
+1. VM のメニューで、 **[ディザスター リカバリー]** を選択します。
 2. レプリケーションの正常性、作成された復旧ポイント、およびマップ上のソース リージョンとターゲット リージョンを確認できます。
 
    ![レプリケーションの状態](media/azure-to-azure-quickstart/replication-status.png)
@@ -124,7 +124,7 @@ VM を "*単一インスタンス*" として特定のリージョンにデプ�
     > [!IMPORTANT]
     > テスト フェールオーバーには、VM の移動先となるターゲット リージョンの運用環境のネットワークではなく、別個の Azure VM ネットワークを使用することをお勧めします。
 
-4. 移動テストを開始するには、**[OK]** を選択します。 進行状況を追跡するには、VM を選択して、そのプロパティを開きます。 または、コンテナー名の **[設定]** > **[ジョブ]** > **[Site Recovery ジョブ]** で、**テスト フェールオーバー** ジョブを選択することもできます。
+4. 移動テストを開始するには、 **[OK]** を選択します。 進行状況を追跡するには、VM を選択して、そのプロパティを開きます。 または、コンテナー名の **[設定]**  >  **[ジョブ]**  >  **[Site Recovery ジョブ]** で、**テスト フェールオーバー** ジョブを選択することもできます。
 5. フェールオーバーの完了後、レプリカの Azure VM は、Azure Portal の **[仮想マシン]** に表示されます。 VM が実行中で、適切なサイズであること、また、適切なネットワークに接続されていることを確認してください。
 6. 移動テストの過程で作成した VM を削除する場合は、[レプリケートされたアイテム] の **[テスト フェールオーバーのクリーンアップ]** を選択します。 **[メモ]** を使用して、テストに関連する観察結果をすべて記録し、保存します。
 

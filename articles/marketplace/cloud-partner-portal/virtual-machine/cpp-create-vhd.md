@@ -1,25 +1,18 @@
 ---
-title: Azure Marketplace 向けの Azure と互換性のある VHD の作成 | Microsoft Docs
+title: Azure Marketplace 向けの Azure と互換性のある VHD の作成
 description: Azure Marketplace での仮想マシン プランのための VHD を作成する方法について説明します。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: pbutlerm
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 08/27/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 04a1741bbe4e60567a22445c5674ec03b232640c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: pabutler
+ms.openlocfilehash: 6886c8a2ddc3345650d9dbb4d8ffa7eed86cf2bd
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59793078"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64938344"
 ---
 # <a name="create-an-azure-compatible-vhd"></a>Azure と互換性のある VHD の作成
 
@@ -50,7 +43,7 @@ VM イメージのオペレーティング システム VHD は、Azure 承認�
 1. VM プランを発行する Azure サブスクリプションの Microsoft アカウントでポータルにサインインします。
 2. 新しいリソース グループを作成して、 **リソース グループ名**、**サブスクリプション**、**リソース グループの場所**を指定します。  詳細なガイダンスについては、[リソース グループの管理](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal)に関するページを参照してください。
 3. 左のメニュー バーの **[Virtual Machines]** をクリックして、仮想マシンの詳細ページを表示します。 
-4. この新しいページで、**[+ 追加]** をクリックして、**[コンピューティング]** ブレードを表示します。  最初の画面に VM の種類が表示されない場合は、基本 VM の名前を検索することができます。例:
+4. この新しいページで、 **[+ 追加]** をクリックして、 **[コンピューティング]** ブレードを表示します。  最初の画面に VM の種類が表示されない場合は、基本 VM の名前を検索することができます。例:
 
     ![新しい VM のコンピューティング ブレード](./media/publishvm_014.png)
 
@@ -68,11 +61,11 @@ VM イメージのオペレーティング システム VHD は、Azure 承認�
 
    ![新しい VM のサイズ ブレード](./media/publishvm_015.png)
 
-7. **[設定]** ブレードで、**[マネージド ディスクの使用]** オプションを **[いいえ]** に設定します。  これにより、新しい VHD を手動で管理できるようになります。 (**[設定]** ブレードでは、他にもストレージやネットワークのオプションを変更することができます。例: **[ディスクの種類]** で **[Premium (SSD)]** を選択します。)**[OK]** をクリックして続行します。
+7. **[設定]** ブレードで、 **[マネージド ディスクの使用]** オプションを **[いいえ]** に設定します。  これにより、新しい VHD を手動で管理できるようになります。 ( **[設定]** ブレードでは、他にもストレージやネットワークのオプションを変更することができます。例: **[ディスクの種類]** で **[Premium (SSD)]** を選択します。) **[OK]** をクリックして続行します。
 
     ![新しい VM の設定ブレード](./media/publishvm_016.png)
 
-8. **[概要]** をクリックして、選択内容を確認します。 **"検証に成功しました"** というメッセージが表示されたら、**[OK]** をクリックします。
+8. **[概要]** をクリックして、選択内容を確認します。 **"検証に成功しました"** というメッセージが表示されたら、 **[OK]** をクリックします。
 
     ![新しい VM の概要ブレード](./media/publishvm_017.png)
 

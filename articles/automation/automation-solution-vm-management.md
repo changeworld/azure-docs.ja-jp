@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/31/2019
+ms.date: 05/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6d7b99da3e8e81973c51bbd68a15517828c9736d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 017c2fd934f35a64f26687f4a58634dda9a821a3
+ms.sourcegitcommit: 1d257ad14ab837dd13145a6908bc0ed7af7f50a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58762941"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65501971"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Azure Automation でのピーク時間外 VM 起動/停止ソリューション
 
@@ -47,6 +47,74 @@ Start/Stop VMs during off-hours ソリューションでは、ユーザー定義
 
 Start/Stop VM ソリューションには、別の Automation アカウントを使用することをお勧めします。 この理由は、Azure モジュールのバージョンが頻繁にアップグレードされ、パラメーターが変更される可能性があるからです。 Start/Stop VM ソリューションは同じ周期でアップグレードされないため、使用しているコマンドレットの新しいバージョンで機能しない場合があります。 モジュールの更新は、実稼働用の Automation アカウントにインポートする前に、テスト用の Automation アカウントでテストすることをお勧めします。
 
+### <a name="permissions-needed-to-deploy"></a>デプロイに必要なアクセス許可
+
+ユーザーが Start/Stop VMs during off-hours ソリューション をデプロイするために必要な特定のアクセス許可があります。 これらのアクセス許可は、デプロイ時に、事前に作成された Automation アカウントおよび Log Analytics ワークスペースを使用する場合と、新しいものを作成する場合とで異なります。
+
+#### <a name="pre-existing-automation-account-and-log-analytics-account"></a>既存の Automation アカウントと Log Analytics アカウント
+
+Automation アカウントと Log Analytics に対して Start/Stop VMs during off-hours ソリューションをデプロイするには、ソリューションをデプロイするユーザーは**リソース グループ**に対して次のアクセス許可を持っている必要があります。 ロールの詳細については、「[Azure リソースのカスタム ロール](../role-based-access-control/custom-roles.md)」をご覧ください。
+
+| アクセス許可 | Scope (スコープ)|
+| --- | --- |
+| Microsoft.Automation/automationAccounts/read | リソース グループ |
+| Microsoft.Automation/automationAccounts/variables/write | リソース グループ |
+| Microsoft.Automation/automationAccounts/schedules/write | リソース グループ |
+| Microsoft.Automation/automationAccounts/runbooks/write | リソース グループ |
+| Microsoft.Automation/automationAccounts/connections/write | リソース グループ |
+| Microsoft.Automation/automationAccounts/certificates/write | リソース グループ |
+| Microsoft.Automation/automationAccounts/modules/write | リソース グループ |
+| Microsoft.Automation/automationAccounts/modules/read | リソース グループ |
+| Microsoft.automation/automationAccounts/jobSchedules/write | リソース グループ |
+| Microsoft.Automation/automationAccounts/jobs/write | リソース グループ |
+| Microsoft.Automation/automationAccounts/jobs/read | リソース グループ |
+| Microsoft.OperationsManagement/solutions/write | リソース グループ |
+| Microsoft.OperationalInsights/workspaces/* | リソース グループ |
+| Microsoft.Insights/diagnosticSettings/write | リソース グループ |
+| Microsoft.Insights/ActionGroups/WriteMicrosoft.Insights/ActionGroups/read | リソース グループ |
+| Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループ |
+| Microsoft.Resources/deployments/* | リソース グループ |
+
+#### <a name="new-automation-account-and-a-new-log-analytics-workspace"></a>新しい Automation アカウントと新しい Log Analytics ワークスペース
+
+新しい Automation アカウントと Log Analytics ワークスペースに Start/Stop VMs during off-hours ソリューションをデプロイするには、ソリューションをデプロイするユーザーは前のセクションで定義されているアクセス許可と次のアクセス許可を持っている必要があります。
+
+- サブスクリプションの共同管理者 - これは、クラシック実行アカウントを作成するために必要です。
+- **アプリケーション開発者**ロールに属していること。 実行アカウントの構成の詳細については、[実行アカウントを構成するためのアクセス許可](manage-runas-account.md#permissions)に関するページをご覧ください。
+
+| アクセス許可 |Scope (スコープ)|
+| --- | --- |
+| Microsoft.Authorization/roleAssignments/read | サブスクリプション |
+| Microsoft.Authorization/roleAssignments/write | サブスクリプション |
+| Microsoft.Automation/automationAccounts/connections/read | リソース グループ |
+| Microsoft.Automation/automationAccounts/certificates/read | リソース グループ |
+| Microsoft.Automation/automationAccounts/write | リソース グループ |
+| Microsoft.OperationalInsights/workspaces/write | リソース グループ |
+
+### <a name="region-mappings"></a>リージョンのマッピング
+
+Start/Stop VMs during off-hours を有効にすると、Log Analytics ワークスペースと Automation アカウントをリンクするために特定のリージョンのみがサポートされます。
+
+サポートするマッピングを次の表に示します。
+
+|**Log Analytics ワークスペース リージョン**|**Azure Automation リージョン**|
+|---|---|
+|AustraliaSoutheast|AustraliaSoutheast|
+|CanadaCentral|CanadaCentral|
+|CentralIndia|CentralIndia|
+|EastUS<sup>1</sup>|EastUS2|
+|JapanEast|JapanEast|
+|SoutheastAsia|SoutheastAsia|
+|WestCentralUS<sup>2</sup>|WestCentralUS<sup>2</sup>|
+|西ヨーロッパ|西ヨーロッパ|
+|UKSouth|UKSouth|
+|USGovVirginia|USGovVirginia|
+|EastUS2EUAP<sup>1</sup>|CentralUSEUAP|
+
+<sup>1</sup> EastUS2EUAP および EastUS の Log Analytics ワークスペースと Automation アカウントのマッピングは、同じリージョンどうしのマッピングではありませんが、正しいマッピングです。
+
+<sup>2</sup> 容量の制約により、新しいリソースを作成するときにリージョンを使用できません。 これには、Automation アカウントと Log Analytics ワークスペースが含まれます。 ただし、リージョン内のリンクされた既存のリソースは引き続き動作します。
+
 ## <a name="deploy-the-solution"></a>ソリューションのデプロイ方法
 
 Start/Stop VMs during off-hours ソリューションを、ご利用の Automation アカウントに追加し、変数を設定してソリューションをカスタマイズするには、以下の手順を実行します。
@@ -57,6 +125,7 @@ Start/Stop VMs during off-hours ソリューションを、ご利用の Automati
 
    > [!NOTE]
    > Azure portal のどこからでも、**[リソースの作成]** をクリックして作成できます。 [Marketplace] ページで、「**Start**」、「**Start/Stop**」などのキーワードを入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 または、ソリューションのフルネームから 1 つ以上のキーワードを入力し、Enter キーを押すこともできます。 検索結果から **Start/Stop VMs during off-hours** を選択します。
+
 2. 選択したソリューションの **[Start/Stop VMs during off-hours]** ページで概要を確認し、**[作成]** をクリックします。
 
    ![Azure ポータル](media/automation-solution-vm-management/azure-portal-01.png)
@@ -203,7 +272,7 @@ Start/Stop VMs during off-hours ソリューションを、ご利用の Automati
 |ScheduledStartStop_Parent | アクション:Start または Stop <br>VMList <br> WhatIf: True または False | この設定は、サブスクリプション内のすべての VM に影響します。 これらの対象のリソース グループでのみ実行されるように、**External_Start_ResourceGroupNames** と **External_Stop_ResourceGroupNames** を編集します。 **External_ExcludeVMNames** 変数を更新することで、特定の VM を除外することもできます。<br> VMList: VM のコンマ区切りリストです。 _vm1, vm2, vm3_ など。<br> _WhatIf_ は Runbook ロジックを実行せずに検証します。|
 |SequencedStartStop_Parent | アクション:Start または Stop <br> WhatIf: True または False<br>VMList| 起動/停止アクティビティのシーケンスを指定する各 VM に、**sequencestart** および **sequencestop** という名前のタグを作成します。 これらのタグ名では、大文字と小文字が区別されます。 タグの値は、起動または停止する順序に対応する正の整数 (1、2、3) にする必要があります。 <br> VMList: VM のコンマ区切りリストです。 _vm1, vm2, vm3_ など。 <br> _WhatIf_ は Runbook ロジックを実行せずに検証します。 <br> **メモ**:Azure Automation 変数で External_Start_ResourceGroupNames、External_Stop_ResourceGroupNames、および External_ExcludeVMNames として定義されたリソース グループ内に VM が存在する必要があります。 アクションを有効にするための適切なタグが必要です。|
 
-### <a name="variables"></a>variables
+### <a name="variables"></a>変数
 
 次の表は、Automation アカウント内に作成される変数の一覧です。 **External** プレフィックスが付いた変数のみを変更するようにしてください。 **Internal** プレフィックスが付いた変数を変更すると、望ましくない効果がもたらされます。
 
@@ -292,8 +361,8 @@ Automation により、ジョブ ログとジョブ ストリームの 2 種類�
 
 |Query | 説明|
 |----------|----------|
-|正常に終了した Runbook ScheduledStartStop_Parent のジョブを検索する | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "ScheduledStartStop_Parent" ) <br>&#124;  where ( ResultType == "Completed" )  <br>&#124;  summarize <br>&#124; AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|
-|正常に終了した Runbook SequencedStartStop_Parent のジョブを検索する | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "SequencedStartStop_Parent" ) <br>&#124;  where ( ResultType == "Completed" ) <br>&#124;  summarize <br>&#124; AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc```|
+|正常に終了した Runbook ScheduledStartStop_Parent のジョブを検索する | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "ScheduledStartStop_Parent" ) <br>&#124;  where ( ResultType == "Completed" )  <br>&#124;  summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|
+|正常に終了した Runbook SequencedStartStop_Parent のジョブを検索する | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "SequencedStartStop_Parent" ) <br>&#124;  where ( ResultType == "Completed" ) <br>&#124;  summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|
 
 ## <a name="viewing-the-solution"></a>ソリューションの表示
 

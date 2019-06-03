@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 182a936e97cd6ed2527d618dfe777ae861c757e3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5bb95b80e12c818641e2be2b929cdfd01f8f5b5c
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58182253"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66304224"
 ---
 # <a name="filter-events-for-event-grid"></a>Event Grid のイベントのフィルター処理
 
@@ -184,8 +184,6 @@ az eventgrid event-subscription create \
 ## <a name="filter-by-operators-and-data"></a>演算子とデータでフィルター処理する
 
 フィルター処理の柔軟性を高めるために、演算子とデータ プロパティを使用してイベントをフィルター処理することもできます。
-
-[!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
 
 ### <a name="subscribe-with-advanced-filters"></a>高度なフィルターを使用してサブスクライブする
 

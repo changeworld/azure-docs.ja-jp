@@ -12,14 +12,14 @@ ms.workload: na
 ms.date: 12/09/2018
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: a615ab26e4ea046ced70ce2c154a0c304b741986
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: dd7e29f8f37572565e505aade97b964254b6d72c
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138349"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65466551"
 ---
-# <a name="enable-safe-deployment-practices-with-azure-deployment-manager-private-preview"></a>Azure Deployment Manager で安全なデプロイを実施できるようにする (プライベート プレビュー)
+# <a name="enable-safe-deployment-practices-with-azure-deployment-manager-public-preview"></a>Azure Deployment Manager で安全なデプロイを実施できるようにする (パブリック プレビュー)
 
 多くのリージョンにわたってサービスをデプロイし、各リージョンで期待どおりに実行できるようにするには、Azure Deployment Manager を使用してサービスの段階的ロールアウトを調整します。 Azure のデプロイの場合と同様に、[Resource Manager テンプレート](resource-group-authoring-templates.md)でサービスのリソースを定義します。 テンプレートを作成した後、Deployment Manager を使用して、サービスのトポロジとロールアウトする方法について記述します。
 
@@ -200,7 +200,9 @@ ID は、Deployment Manager のサポートされている場所のいずれか�
 
 ### <a name="steps"></a>手順
 
-デプロイ操作の前または後に実行する手順を定義できます。 現在使用できるのは `wait` 手順だけです。 待機手順は、続行する前にデプロイを一時停止します。 次のサービス ユニットをデプロイする前に、サービスが期待どおりに実行されていることを確認できます。 次の例は、待機手順の一般的な形式を示します。
+デプロイ操作の前または後に実行する手順を定義できます。 現在は、`wait` 手順と "healthCheck" 手順だけを利用できます。 
+
+待機手順は、続行する前にデプロイを一時停止します。 次のサービス ユニットをデプロイする前に、サービスが期待どおりに実行されていることを確認できます。 次の例は、待機手順の一般的な形式を示します。
 
 ```json
 {
@@ -219,7 +221,7 @@ ID は、Deployment Manager のサポートされている場所のいずれか�
 
 duration プロパティは、[ISO 8601 標準](https://en.wikipedia.org/wiki/ISO_8601#Durations)を使用します。 前述の例では、1 分間の待機を指定します。
 
-詳細については、[steps テンプレート リファレンス](/azure/templates/Microsoft.DeploymentManager/steps)を参照してください。
+正常性チェック手順の詳細については、「[]()」と「[]()」を参照してください。詳細については、[手順テンプレート リファレンス](/azure/templates/Microsoft.DeploymentManager/steps)を参照してください。
 
 ### <a name="rollouts"></a>ロールアウト
 

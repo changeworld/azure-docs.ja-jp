@@ -5,15 +5,15 @@ services: expressroute
 author: mialdrid
 ms.service: expressroute
 ms.topic: overview
-ms.date: 10/18/2018
+ms.date: 05/20/2019
 ms.author: mialdrid
 ms.custom: seodec18
-ms.openlocfilehash: 56baabb95a7873b48a27943a58b8e26c56efb6b7
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 9b13c57728c43e02f7ebf9d7730d82d681f5fc1f
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139556"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65965883"
 ---
 # <a name="expressroute-overview"></a>ExpressRoute の概要
 ExpressRoute を利用すると、接続プロバイダーが提供するプライベート接続を介して、オンプレミスのネットワークを Microsoft クラウドに拡張できます。 ExpressRoute では、Microsoft Azure、Office 365、Dynamics 365 などの Microsoft クラウド サービスへの接続を確立できます。
@@ -59,8 +59,11 @@ ExpressRoute でサポートされているサービスの詳しい一覧につ�
 
 たとえば、ExpressRoute を介してアムステルダムの Microsoft に接続している場合、北ヨーロッパと西ヨーロッパでホストされているすべての Microsoft クラウド サービスにアクセスできます。 地政学的領域、関連付けられている Microsoft クラウド リージョン、対応する ExpressRoute のピアリングの場所の概要については、「[ExpressRoute パートナーとピアリングの場所](expressroute-locations.md)」という記事をご覧ください。
 
-### <a name="global-connectivity-with-expressroute-premium-add-on"></a>ExpressRoute Premium アドオンによるグローバル接続
-ExpressRoute Premium アドオン機能を有効にすると、地政学的境界を越えて接続を拡張できます。 たとえば、ExpressRoute を介してアムステルダムの Microsoft に接続している場合、世界中のあらゆるリージョンでホストされているすべての Microsoft クラウド サービスにアクセスできます (国内クラウドは除外します)。 北ヨーロッパ リージョンと西ヨーロッパ リージョンにアクセスする場合と同じ方法で南アメリカやオーストラリアにデプロイされているサービスにアクセスできます。
+### <a name="global-connectivity-with-expressroute-premium"></a>ExpressRoute Premium を使用したグローバル接続
+[ExpressRoute Premium](expressroute-faqs.md) を有効にすると、地理的境界を越えて接続を拡張できます。 たとえば、ExpressRoute を介してアムステルダムの Microsoft に接続している場合、世界中のあらゆるリージョンでホストされているすべての Microsoft クラウド サービスにアクセスできます (国内クラウドは除外します)。 北ヨーロッパ リージョンと西ヨーロッパ リージョンにアクセスする場合と同じ方法で南アメリカやオーストラリアにデプロイされているサービスにアクセスできます。
+
+### <a name="local-connectivity-with-expressroute-local"></a>ExpressRoute Local を使用したローカル接続
+目的の Azure リージョンに近い ExpressRoute の場所にデータを運ぶことができる場合は、[Local SKU](expressroute-faqs.md) を有効にすることによって、費用対効果の高い方法でデータを転送できます。 ローカルでは、データ転送は ExpressRoute のポート料金に含まれます。 
 
 ### <a name="across-on-premises-connectivity-with-expressroute-global-reach"></a>ExpressRoute Global Reach によるオンプレミスを越えての接続
 ExpressRoute Global Reach を有効にして ExpressRoute 回線を接続することで、オンプレミス サイト間でデータを交換することができます。 たとえば、カリフォルニア州シリコン バレーの ExpressRoute に接続されているプライベート データ センターがあり、テキサス州ダラスの ExpressRoute に接続されている別のプライベート データ センターがある場合、ExpressRoute Global Reach を使用すれば、2 つの ExpressRoute 回線を通してこれらのプライベート データ センターを互いに接続できます。 データ センター間のトラフィックは、Microsoft のネットワークの中を通って行き来します。

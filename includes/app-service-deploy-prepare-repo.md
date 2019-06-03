@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: 2b9706241bd65ee75869d8b1fe58c6922d9e246a
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 7ec4028c319749b6a3da019e1d320d3937e9c4b2
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64951544"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66133173"
 ---
 ## <a name="prepare-your-repository"></a>リポジトリを準備する
 
@@ -26,7 +26,7 @@ Azure App Service Kudu ビルド サーバーから自動ビルドを取得す�
 | PHP | _index.php_ |
 | Ruby (Linux のみ) | _Gemfile_ |
 | Node.js | _server.js_、_app.js_、またはスタート スクリプトを含む _package.json_ |
-| Python (Windows のみ) | _\*.py_、_requirements.txt_、または _runtime.txt_ |
+| Python | _\*.py_、_requirements.txt_、または _runtime.txt_ |
 | HTML | _default.htm_、_default.html_、_default.asp_、_index.htm_、_index.html_、または _iisstart.htm_ |
 | WebJobs | _App\_Data/jobs/continuous_ (継続的 WebJobs の場合) または _App\_Data/jobs/triggered_ (トリガーされた WebJobs の場合) 配下の _\<job_name>/run.\<extension>_。 詳細については、[Kudu WebJobs のドキュメント](https://github.com/projectkudu/kudu/wiki/WebJobs)をご覧ください。 |
 | Functions | [Azure Functions の継続的なデプロイ](../articles/azure-functions/functions-continuous-deployment.md#requirements-for-continuous-deployment)に関するページをご覧ください。 |

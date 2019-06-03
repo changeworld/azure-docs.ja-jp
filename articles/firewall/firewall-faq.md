@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 4/17/2019
+ms.date: 5/3/2019
 ms.author: victorh
-ms.openlocfilehash: 5e009d5659a503fe8168f21a26939acff9944f2f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 84b42654ec472ea2c7c81bed545f56b647158c95
+ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64718813"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66016016"
 ---
 # <a name="azure-firewall-faq"></a>Azure Firewall に関する FAQ
 
@@ -87,7 +87,7 @@ Azure PowerShell の *deallocate* メソッドと *allocate* メソッドを使�
 例: 
 
 ```azurepowershell
-# Stop an exisitng firewall
+# Stop an existing firewall
 
 $azfw = Get-AzFirewall -Name "FW Name" -ResourceGroupName "RG Name"
 $azfw.Deallocate()
@@ -123,11 +123,9 @@ Azure Firewall サービスの制限については、「[Azure サブスクリ�
 
 既定では強制トンネル処理はサポートされていませんが、サポートの支援により有効にすることができます。
 
-Azure Firewall には、インターネットへの直接接続が必要です。 AzureFirewallSubnet には既定で、NextHopType の値が **Internet** に設定された 0.0.0.0/0 ルートがあります。
+Azure Firewall には、インターネットへの直接接続が必要です。 AzureFirewallSubnet が BGP 経由のオンプレミス ネットワークへの既定のルートを学習する場合は、インターネットへの直接接続を保持するために、**NextHopType** の値を **Internet** に設定した 0.0.0.0/0 UDR でこれを上書きする必要があります。 既定では、Azure Firewall はオンプレミス ネットワークへの強制トンネリングをサポートしません。
 
-ExpressRoute または VPN Gateway 経由でのオンプレミスへの強制トンネリングを有効にしている場合は、NextHopType の値が Internet に設定された 0.0.0.0/0 ユーザー定義ルート (UDR) を明示的に構成し、それを AzureFirewallSubnet に関連付ける必要があります。 これにより、オンプレミス ネットワークに戻される可能性のある既定のゲートウェイ BGP アドバタイズがオーバーライドされます。
-
-組織で、既定のゲートウェイ トラフィックをオンプレミス ネットワーク経由で戻すための Azure Firewall の強制トンネリングが必要である場合は、サポートにお問い合わせください。 Microsoft にて貴社のサブスクリプションをホワイトリストに登録し、必要なファイアウォールのインターネット接続を確保いたします。
+ただし、オンプレミス ネットワークへの強制トンネリングが必要な構成の場合、Microsoft は状況に応じてサポートします。 サポートにお問い合わせいただければ、お客様の状況を確認させていただきます。 認められた場合は、Microsoft にて貴社のサブスクリプションをホワイトリストに登録し、必要なファイアウォールのインターネット接続を確保いたします。
 
 ## <a name="are-there-any-firewall-resource-group-restrictions"></a>ファイアウォール リソース グループの制限はありますか。
 

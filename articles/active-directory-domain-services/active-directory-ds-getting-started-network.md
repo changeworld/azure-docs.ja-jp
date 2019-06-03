@@ -3,7 +3,7 @@ title: Azure Active Directory Domain Services:はじめに | Microsoft Docs
 description: Azure Portal を使用して Azure Active Directory Domain Services を有効にする
 services: active-directory-ds
 documentationcenter: ''
-author: eringreenlee
+author: MikeStephens-MS
 manager: daveba
 editor: curtand
 ms.assetid: ace1ed4a-bf7f-43c1-a64a-6b51a2202473
@@ -13,20 +13,20 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/23/2018
-ms.author: ergreenl
-ms.openlocfilehash: 3020d7b29f19ec2ab578acbebac8db8ea320a844
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 05/22/2019
+ms.author: mstephen
+ms.openlocfilehash: 65cc63b32afcc565f1901c4df2893ad103ec0da3
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58098027"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66234904"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-the-azure-portal"></a>Azure Portal を使用して Azure Active Directory Domain Services を有効にする
 
 
 ## <a name="before-you-begin"></a>開始する前に
-[Azure Active Directory Domain Services のネットワークに関する考慮事項](active-directory-ds-networking.md)のページを参照してください。
+[Azure Active Directory Domain Services のネットワークに関する考慮事項](network-considerations.md)のページを参照してください。
 
 
 ## <a name="task-2-configure-network-settings"></a>タスク 2: ネットワーク設定を構成する
@@ -41,7 +41,7 @@ ms.locfileid: "58098027"
 3. Azure AD Domain Services を有効にする仮想ネットワークを選択します。 既存の仮想ネットワークを選択することも、新しい仮想ネットワークを作成することもできます。
 
    > [!TIP]
-   > **マネージド ドメインは、Azure AD Domain Services を有効にした後、別の仮想ネットワークに移動できません。** マネージド ドメインを有効にするには、適切な仮想ネットワークを選択します。 マネージド ドメインを作成したら、そのマネージド ドメインは、一度削除しないと別の仮想ネットワークには移動できません。 詳細については、「[Azure AD Domain Services のネットワークに関する考慮事項](active-directory-ds-networking.md)」を参照してください。  
+   > **マネージド ドメインは、Azure AD Domain Services を有効にした後、別の仮想ネットワークに移動できません。** マネージド ドメインを有効にするには、適切な仮想ネットワークを選択します。 マネージド ドメインを作成したら、そのマネージド ドメインは、一度削除しないと別の仮想ネットワークには移動できません。 詳細については、「[Azure AD Domain Services のネットワークに関する考慮事項](network-considerations.md)」を参照してください。  
    >
 
 4. **仮想ネットワークを作成する:** **[新規作成]** をクリックして新しい仮想ネットワークを作成します。 Azure AD Domain Services の専用サブネットをご使用ください。 たとえば、"DomainServices" という名前のサブネットを作成すると、サブネット内にデプロイされている内容を他の管理者が理解しやすくなります。 完了したら **[OK]** をクリックします。
@@ -57,11 +57,11 @@ ms.locfileid: "58098027"
 
    > [!NOTE]
    > **サブネットを選択するためのガイドライン**
-   > 1. Azure AD Domain Services の専用サブネットをご使用ください。 他の仮想マシンをこのサブネットにデプロイしないでください。 この構成を使用すると、マネージド ドメインに支障をきたすことなく、ワークロード/仮想マシンのネットワーク セキュリティ グループ (NSG) を構成できます。 詳細については、[Azure Active Directory Domain Services のネットワークに関する考慮事項](active-directory-ds-networking.md)を参照してください。
+   > 1. Azure AD Domain Services の専用サブネットをご使用ください。 他の仮想マシンをこのサブネットにデプロイしないでください。 この構成を使用すると、マネージド ドメインに支障をきたすことなく、ワークロード/仮想マシンのネットワーク セキュリティ グループ (NSG) を構成できます。 詳細については、[Azure Active Directory Domain Services のネットワークに関する考慮事項](network-considerations.md)を参照してください。
    > 2. ゲートウェイ サブネットは、サポートされている構成ではないため、Azure AD Domain Services のデプロイでは選択しないでください。
    > 3. 選択したサブネットは、アドレススペースの中で使用できるIPアドレスを、少なくとも 3 個から 5 個持っていなければなりません。
 
-6. 完了したら、**[OK]** をクリックして、ウィザードの **[管理者グループ]** ページに進みます。
+6. 完了したら、 **[OK]** をクリックして、ウィザードの **[管理者グループ]** ページに進みます。
 
 
 ## <a name="next-step"></a>次のステップ

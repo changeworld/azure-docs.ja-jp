@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: kumud;tyao
-ms.openlocfilehash: 1d6343705e8d27fb2d22827cf792de332861456e
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: da56c9664ce533709676ded677add4a2391dce03
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60007969"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64865862"
 ---
 # <a name="what-is-geo-filtering-on-a-domain-for-azure-front-door"></a>Azure Front Door のドメインに対する geo フィルタリングとは
 
-既定では、Azure Front Door Service は、要求を行っているユーザーの場所に関係なくユーザーの要求に応答します。 ただし、場合によっては、国ごとに Web アプリケーションへのアクセスを制限しなければならないことも考えられます。 Front Door の Web アプリケーション ファイアウォール (WAF) では、エンドポイントの特定のパスに対するカスタム アクセス ルールを使用してポリシーを定義することにより、指定した国からのアクセスを許可したりブロックしたりすることができます。 
+既定では、Azure Front Door Service は、要求を行っているユーザーの場所に関係なくユーザーの要求に応答します。 ただし、場合によっては、国/リージョンごとに Web アプリケーションへのアクセスを制限しなければならないことも考えられます。 Front Door の Web アプリケーション ファイアウォール (WAF) では、エンドポイントの特定のパスに対するカスタム アクセス ルールを使用してポリシーを定義することにより、指定した国/リージョンからのアクセスを許可したりブロックしたりすることができます。 
 
 WAF ポリシーには通常、一連のカスタム ルールが含まれています。 ルールは、一致条件、アクション、優先順位で構成されます。 一致条件には、一致の変数、演算子、一致の値を定義します。  geo フィルタリング ルールの場合、一致変数は REMOTE_ADDR で、演算子は GeoMatch、値は対象となる 2 文字の国別コードです。 GeoMatch 条件と REQUEST_URI 文字列の一致条件を組み合わせて、パス ベースの geo フィルタリング ルールを作成することができます。
 

@@ -3,22 +3,22 @@ title: SQL Server Stretch Database サービスに関するすべてのトピッ
 description: https://azure.microsoft.com/documentation/articles/ にある SQL Server Stretch Database という名前の Azure サービスに関するすべてのトピックの一覧 (タイトルと説明)。
 services: sql-server-stretch-database
 documentationcenter: ''
-author: DouglasL
-manager: jhubbard
-editor: MightyPen
 ms.assetid: b1718024-84d6-4f5c-a912-3a99edb3f632
 ms.service: sql-server-stretch-database
 ms.workload: sql-server-stretch-database
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/05/2016
-ms.author: DouglasL
-ms.openlocfilehash: 02089d69ec8e049b2d0d0daf1c76875a9ebab403
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+author: blazem-msft
+ms.author: blazem
+ms.reviewer: jroth
+manager: jroth
+ms.openlocfilehash: 81f1ac3280381ef08a1daf1fa4e041227a07aeaf
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57992554"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66003021"
 ---
 # <a name="all-topics-for-azure-sql-server-stretch-database-service"></a>Azure SQL Server Stretch Database サービスに関するすべてのトピック
 このトピックでは、Azure **SQL Server Stretch Database** サービスに直接適用されるすべてのトピックを示します。 この Web ページでは、 **Ctrl + F**を使用してキーワード検索することで、現在関心があるトピックを見つけることができます。

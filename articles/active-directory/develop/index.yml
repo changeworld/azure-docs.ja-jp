@@ -6,7 +6,7 @@ metadata:
   description: Microsoft ID プラットフォームを使用することで、すべての Microsoft ID 内のユーザーに安全にサインインして、Microsoft Graph、その他の Microsoft API、または開発者が作成した API を呼び出すトークンを取得するアプリを構築する方法について説明します。
   services: active-directory
   author: CelesteDG
-  manager: mtillman
+  manager: CelesteDG
   ms.service: active-directory
   ms.subservice: develop
   ms.tgt_pltfrm: na
@@ -15,15 +15,15 @@ metadata:
   ms.date: 05/07/2019
   ms.author: celested
 abstract:
-  description: Microsoft ID プラットフォームは、Azure Active Directory (Azure AD) の ID サービスおよび開発者プラットフォームの進化版です。 これにより、すべての Microsoft ID にサインインして、Microsoft API (Microsoft Graph) や開発者が構築した API を呼び出すためのトークンを取得するアプリケーションを開発者が構築できます。 これはフル機能を備えたプラットフォームであり、OAuth 2.0 および OpenID Connect 標準に準拠した認証サービス、オープンソース ライブラリ、アプリケーションの登録および構成、充実した概念とリファレンスのドキュメント、クイック スタート サンプル、コード サンプル、チュートリアル、攻略ガイドによって構成されています。
+  description: Microsoft ID プラットフォームは、Azure Active Directory (Azure AD) 開発者プラットフォームの進化版です。 これにより、すべての Microsoft ID にサインインして、Microsoft API (Microsoft Graph) や開発者が構築した API を呼び出すためのトークンを取得するアプリケーションを開発者が構築できます。 これはフル機能を備えたプラットフォームであり、OAuth 2.0 および OpenID Connect 標準に準拠した認証サービス、オープンソース ライブラリ、アプリケーションの登録および構成、充実した概念とリファレンスのドキュメント、クイック スタート サンプル、コード サンプル、チュートリアル、攻略ガイドによって構成されています。
   aside:
     image:
       alt: null
       height: 110
-      src: ./media/index/video-featured.png
+      src: ./media/index/identity-platform-thumbnail.png
       width: 250
-    title: 認証を使用した Web アプリ ソリューションの構築 (9 分 31 秒)
-    href: 'https://www.youtube.com/watch?v=QWh5HZK9vRA'
+    title: 'Microsoft ID プラットフォームの概要 (2:20)'
+    href: 'https://youtu.be/y_fgJAatVhk'
     width: 250
 sections:
   - items:

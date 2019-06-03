@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 3df54c6805c5117e627afe0a2b4caa0ddd94b182
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 7ca7a670e8d660efb43861312b2670efbaac6638
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64723705"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190237"
 ---
 # <a name="tutorial-enable-authentication-in-a-native-client-application-using-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C を使用してネイティブ クライアント アプリケーションで認証を有効にする
 
@@ -32,8 +32,8 @@ ms.locfileid: "64723705"
 
 ## <a name="prerequisites"></a>前提条件
 
-- [ユーザー フローを作成](tutorial-create-user-flows.md)して、アプリケーションのユーザー エクスペリエンスを有効にします。 
-- **.NET デスクトップ開発**と **ASP.NET および Web 開発**のワークロードと共に、[Visual Studio 2017](https://www.visualstudio.com/downloads/) をインストールする。
+- [ユーザー フローを作成](tutorial-create-user-flows.md)してアプリケーションでのユーザー エクスペリエンスを有効にする。 
+- **[.NET デスクトップ開発]** および **[ASP.NET および Web の開発]** ワークロードと共に [Visual Studio 2019](https://www.visualstudio.com/downloads/) をインストールする。
 
 ## <a name="add-the-native-client-application"></a>ネイティブ クライアント アプリケーションを追加する
 

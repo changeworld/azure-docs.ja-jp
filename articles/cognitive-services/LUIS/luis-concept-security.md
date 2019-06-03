@@ -11,18 +11,18 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 12/18/2018
 ms.author: diberry
-ms.openlocfilehash: 5abc2026362e19b406b34a4321e766c3229cc0b4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 499854bcf6774c3e4eee350c1dd4a2204885f3b1
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58894185"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65522472"
 ---
 # <a name="authoring-and-endpoint-user-access"></a>オーサリングとエンドポイントのユーザー アクセス
 オーサリング アクセスは、所有者とコラボレーターが利用できます。 プライベート アプリについては、エンドポイント アクセスは所有者とコラボレーターが利用できます。 パブリック アプリについては、エンドポイント アクセスは、自分の LUIS アカウントを持ち、パブリック アプリの ID を持つすべてのユーザーが利用できます。 
 
 ## <a name="access-to-authoring"></a>オーサリングへのアクセス
-[LUIS](luis-reference-regions.md#luis-website) Web サイトまたは[オーサリング API](https://aka.ms/luis-authoring-apis) からアプリへのアクセスは、そのアプリの所有者によって制御されます。 
+[LUIS](luis-reference-regions.md#luis-website) Web サイトまたは[オーサリング API](https://go.microsoft.com/fwlink/?linkid=2092087) からアプリへのアクセスは、そのアプリの所有者によって制御されます。 
 
 所有者とすべてのコラボレーターが、アプリのオーサリング アクセスを持ちます。 
 

@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: a26f61eb199d8f370e1a9dd010932dc868b74ae4
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 04/29/2019
+ms.openlocfilehash: 8a78a9b8f0772a83e45ac2b926878e61e6ee2e61
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53545180"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64926327"
 ---
 # <a name="server-logs-in-azure-database-for-mariadb"></a>Azure Database for MariaDB でのサーバー ログ
 Azure Database for MariaDB では、ユーザーは低速クエリ ログを使用できます。 トランザクション ログへのアクセスはサポートされていません。 低速クエリ ログは、トラブルシューティングの目的でパフォーマンスのボトルネックを特定するために使用できます。
@@ -21,9 +21,9 @@ Azure Database for MariaDB では、ユーザーは低速クエリ ログを使�
 ## <a name="access-server-logs"></a>サーバー ログへのアクセス
 Azure portal と Azure CLI を使用して、Azure Database for MariaDB のサーバー ログを一覧表示およびダウンロードできます。
 
-Azure portal で Azure Database for MariaDB サーバーを選択します。 **[監視]** の見出しの下の、**[サーバー ログ]** ページを選択します。
+Azure portal で Azure Database for MariaDB サーバーを選択します。 **[監視]** の見出しの下の、 **[サーバー ログ]** ページを選択します。
 
-<!-- For more information on Azure CLI, see [Configure and access server logs using Azure CLI](howto-configure-server-logs-in-cli.md).-->
+Azure CLI の詳細については、「[Configure and access server logs using Azure CLI (Azure CLI を使用したサーバー ログの構成とアクセス)](howto-configure-server-logs-cli.md)」を参照してください。
 
 ## <a name="log-retention"></a>ログのリテンション期間
 ログは、作成日から最大 7 日間使用できます。 使用可能なログの合計サイズが 7 GB を超える場合は、空き領域を利用できるようになるまで、古いファイルから削除されます。
@@ -41,6 +41,42 @@ Azure portal で Azure Database for MariaDB サーバーを選択します。 **
 - **log_throttle_queries_not_using_indexes**:このパラメーターは、低速クエリ ログに書き込むことができる、インデックスを使用していないクエリの数を制限します。 このパラメーターは、Log_queries_not_using_indexes がオンに設定されている場合に有効です。
 
 低速クエリ ログのパラメーターの完全な説明については、MariaDB の[低速クエリ ログのドキュメント](https://mariadb.com/kb/en/library/slow-query-log-overview/)を参照してください。
+
+## <a name="diagnostic-logs"></a>診断ログ
+Azure Database for MariaDB は、Azure Monitor 診断ログと統合されます。 MariaDB サーバーで低速クエリ ログを有効にした場合、それらが Azure Monitor のログ、イベント ハブ、または Azure Storage に出力されるようにすることもできます。 診断ログを有効にする方法の詳細については、[診断ログのドキュメント](../azure-monitor/platform/diagnostic-logs-overview.md)の操作方法のセクションを参照してください。
+
+> [!IMPORTANT]
+> サーバー ログに対するこの診断機能は、General Purpose 価格レベルとメモリ最適化[価格レベル](concepts-pricing-tiers.md)でのみ使用できます。
+
+次の表は、各ログの内容を説明しています。 出力方法に応じて、含まれるフィールドとそれらが表示される順序が異なることがあります。
+
+| **プロパティ** | **説明** |
+|---|---|
+| `TenantId` | テナント ID |
+| `SourceSystem` | `Azure` |
+| `TimeGenerated` [UTC] | ログが記録されたときのタイムスタンプ (UTC) |
+| `Type` | ログの種類。 常に `AzureDiagnostics` |
+| `SubscriptionId` | サーバーが属するサブスクリプションの GUID |
+| `ResourceGroup` | サーバーが属するリソース グループの名前 |
+| `ResourceProvider` | リソース プロバイダーの名前。 常に `MICROSOFT.DBFORMARIADB` |
+| `ResourceType` | `Servers` |
+| `ResourceId` | リソース URI |
+| `Resource` | サーバーの名前 |
+| `Category` | `MySqlSlowLogs` |
+| `OperationName` | `LogEvent` |
+| `Logical_server_name_s` | サーバーの名前 |
+| `start_time_t` [UTC] | クエリの開始時刻 |
+| `query_time_s` | クエリの実行にかかった合計時間 |
+| `lock_time_s` | クエリがロックされていた合計時間 |
+| `user_host_s` | ユーザー名 |
+| `rows_sent_s` | 送信された行の数 |
+| `rows_examined_s` | 検査された行の数 |
+| `last_insert_id_s` | [last_insert_id](https://mariadb.com/kb/en/library/last_insert_id/) |
+| `insert_id_s` | 挿入 ID |
+| `sql_text_s` | クエリ全体 |
+| `server_id_s` | サーバー ID |
+| `thread_id_s` | スレッド ID |
+| `\_ResourceId` | リソース URI |
 
 ## <a name="next-steps"></a>次の手順
 - [Azure portal からサーバー ログを構成しアクセスする方法](howto-configure-server-logs-portal.md)

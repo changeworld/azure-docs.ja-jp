@@ -3,8 +3,8 @@ title: Azure Active Directory アプリケーション プロキシを使用す�
 description: Azure AD アプリケーション プロキシを使用する場合のネットワーク トポロジに関する注意事項について説明しています。
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/28/2017
-ms.author: celested
+ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d80f58215b1a8f1b93db158cd2f47186ba6354a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: cf8e7fed30a9b25b2960e3321eca5c4398911f35
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56180294"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236244"
 ---
 # <a name="network-topology-considerations-when-using-azure-active-directory-application-proxy"></a>Azure Active Directory アプリケーション プロキシを使用する場合のネットワーク トポロジに関する注意事項
 
@@ -39,7 +39,7 @@ ms.locfileid: "56180294"
 
 ## <a name="tenant-location-and-application-proxy-service"></a>テナントの場所とアプリケーション プロキシ サービス
 
-Azure AD テナントにサインアップするとき、指定した国によってテナントのリージョンが決まります。 アプリケーション プロキシを有効にすると、テナント用のアプリケーション プロキシ サービス インスタンスは、Azure AD テナントと同じリージョン、またはその最寄りのリージョン内で選択されるか作成されます。
+Azure AD テナントにサインアップするとき、指定した国/地域によってテナントのリージョンが決まります。 アプリケーション プロキシを有効にすると、テナント用のアプリケーション プロキシ サービス インスタンスは、Azure AD テナントと同じリージョン、またはその最寄りのリージョン内で選択されるか作成されます。
 
 たとえば、Azure AD テナントの国またはリージョンが英国の場合、すべてのアプリケーション プロキシ コネクタは、EU のデータ センターにあるサービス インスタンスを使用します。 ユーザーが公開アプリケーションにアクセスする場合、トラフィックはこの場所のアプリケーション プロキシ サービス インスタンスを経由して送信されます。
 
@@ -78,7 +78,7 @@ Azure と企業ネットワークの間に専用の VPN または ExpressRoute �
 
 ## <a name="focus-your-optimization-strategy"></a>最適化戦略に焦点を合わせる
 
-ユーザーとアプリケーション プロキシ サービス間の接続を制御するために実行できることはほとんどありません。 ユーザーは、ホーム ネットワーク、コーヒー ショップ、または別の国からアプリをアクセスする可能性があります。 代わりに、アプリケーション プロキシ サービスからアプリケーション プロキシ コネクタへの接続とアプリケーション プロキシ コネクタからアプリへの接続を最適化できます。 環境内に次のパターンを組み込むことを検討してください。
+ユーザーとアプリケーション プロキシ サービス間の接続を制御するために実行できることはほとんどありません。 ユーザーは、ホーム ネットワーク、コーヒー ショップ、または別の国/地域からアプリにアクセスする可能性があります。 代わりに、アプリケーション プロキシ サービスからアプリケーション プロキシ コネクタへの接続とアプリケーション プロキシ コネクタからアプリへの接続を最適化できます。 環境内に次のパターンを組み込むことを検討してください。
 
 ### <a name="pattern-1-put-the-connector-close-to-the-application"></a>パターン 1:アプリケーションの近くへのコネクタの配置
 
@@ -102,7 +102,7 @@ Azure と企業ネットワークとの間に、プライベート ピアリン�
 
 この記事ではコネクタの配置を中心に取り上げていますが、アプリケーションの配置を変更して待ち時間特性を改善することもできます。
 
-ホスト環境にネットワークを移動する組織が増えています。 これにより組織は、企業ネットワークの一部でもあり、ドメイン内のままであるホスト環境にアプリを配置できます。 この場合は、前のセクションで説明したパターンをアプリケーションの新しい場所に適用できます。 このオプションを検討する場合は、[Azure AD Domain Services](../../active-directory-domain-services/active-directory-ds-overview.md) に関するページをご覧ください。
+ホスト環境にネットワークを移動する組織が増えています。 これにより組織は、企業ネットワークの一部でもあり、ドメイン内のままであるホスト環境にアプリを配置できます。 この場合は、前のセクションで説明したパターンをアプリケーションの新しい場所に適用できます。 このオプションを検討する場合は、[Azure AD Domain Services](../../active-directory-domain-services/overview.md) に関するページをご覧ください。
 
 さらに、別々の場所やネットワーク内にある対象アプリケーションに接続するコネクタを、[コネクタ グループ](application-proxy-connector-groups.md)を使用して整理することを検討してください。 
 

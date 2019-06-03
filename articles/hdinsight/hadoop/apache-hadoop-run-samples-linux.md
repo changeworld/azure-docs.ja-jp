@@ -2,20 +2,19 @@
 title: HDInsight 上で Apache Hadoop の MapReduce サンプルを実行する - Azure
 description: HDInsight に含まれる jar ファイルの MapReduce のサンプルを使用します。 SSH を使用してクラスターに接続し、Hadoop コマンドを使用してサンプル ジョブを実行します。
 keywords: hadoop サンプル jar、hadoop サンプル jar、hadoop mapreduce サンプル、mapreduce サンプル
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 05/16/2018
+ms.date: 04/25/2019
 ms.author: hrasheed
-ms.openlocfilehash: 7ff91a4fdc4bf0118c231a1ac18ebb521530a980
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: f0251e3926c569b45ebebcd18b98df5af4564443
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58447012"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64706667"
 ---
 # <a name="run-the-mapreduce-examples-included-in-hdinsight"></a>HDInsight に含まれる MapReduce サンプルを実行する
 
@@ -25,12 +24,9 @@ HDInsight 上の Apache Hadoop に含まれている MapReduce サンプルを�
 
 ## <a name="prerequisites"></a>前提条件
 
-* **HDInsight クラスター**:[Linux 上の HDInsight で Apache Hadoop と Apache Hive の使用の開始](apache-hadoop-linux-tutorial-get-started.md)に関するページを参照してください
+* HDInsight の Apache Hadoop クラスター。 [Linux での HDInsight の概要](./apache-hadoop-linux-tutorial-get-started.md)に関するページを参照してください。
 
-    > [!IMPORTANT]  
-    > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](../hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
-
-* **SSH クライアント**:詳細については、[HDInsight での SSH の使用](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
+* SSH クライアント 詳細については、[SSH を使用して HDInsight (Apache Hadoop) に接続する方法](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
 ## <a name="the-mapreduce-examples"></a>MapReduce サンプル
 
@@ -65,7 +61,11 @@ HDInsight 上の Apache Hadoop に含まれている MapReduce サンプルを�
 
 ## <a name="run-the-wordcount-example"></a>Wordcount 例の実行
 
-1. SSH を使用して HDInsight に接続する。 詳細については、[HDInsight での SSH の使用](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
+1. SSH を使用して HDInsight に接続する。 `CLUSTER` をクラスターの名前に置き換えてから、次のコマンドを入力します。
+
+    ```cmd
+    ssh sshuser@CLUSTER-ssh.azurehdinsight.net
+    ```
 
 2. `username@#######:~$` プロンプトで、次のコマンドを使用してサンプルの一覧を表示します。
 
@@ -163,11 +163,11 @@ yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar 
 
 このコマンドによって返される値は、**3.14159155000000000000** です。 参考までに、Pi の小数点以下 10 桁までは 3.1415926535 です。
 
-## <a name="10-gb-greysort-example"></a>10 GB Greysort の例
+## <a name="10-gb-graysort-example"></a>10 GB GraySort の例
 
 GraySort はベンチマーク ソートです。 その評価尺度は、大量のデータ (通常は最低でも 100 TB のデータ) をソートした際のソート速度 (TB/分) です。
 
-このサンプルでは、比較的高速に実行できるように、中程度のサイズの 10 GB のデータを使用します。 使用する MapReduce アプリケーションは、Owen O'Malley と Arun Murthy によって開発されたものです。 これらのアプリケーションは、2009 年にテラバイト ソート ベンチマークの汎用目的 ("daytona") 部門で 0.578 TB/分 (173 分で 100 TB) という年間記録を樹立しました。 これも含めたソート ベンチマークの詳細については、 [Sortbenchmark](https://sortbenchmark.org/) サイトを参照してください。
+このサンプルでは、比較的高速に実行できるように、中程度のサイズの 10 GB のデータを使用します。 使用する MapReduce アプリケーションは、Owen O'Malley と Arun Murthy によって開発されたものです。 これらのアプリケーションは、2009 年にテラバイト ソート ベンチマークの汎用目的 ("Daytona") 部門で 0.578 TB/分 (173 分で 100 TB) という年間記録を樹立しました。 これも含めたソート ベンチマークの詳細については、 [Sort Benchmark](https://sortbenchmark.org/) サイトを参照してください。
 
 このサンプルでは 3 組の MapReduce プログラムを使用します。
 
@@ -212,7 +212,3 @@ GraySort はベンチマーク ソートです。 その評価尺度は、大量
 * [HDInsight 上の Apache Hadoop で Apache Pig を使用する](hdinsight-use-pig.md)
 * [HDInsight 上の Apache Hadoop で Apache Hive を使用する](hdinsight-use-hive.md)
 * [HDInsight 上の Apache Hadoop で MapReduce を使用する](hdinsight-use-mapreduce.md)
-
-[hdinsight-submit-jobs]:submit-apache-hadoop-jobs-programmatically.md
-[hdinsight-introduction]:apache-hadoop-introduction.md
-

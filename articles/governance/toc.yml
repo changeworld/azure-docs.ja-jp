@@ -22,25 +22,12 @@
       href: policy/overview.md
     - name: ブループリント
       href: blueprints/overview.md
-- name: 実装
-  expanded: true
+- name: クラウド導入フレームワーク
   items:
-    - name: エンタープライズ クラウドの導入
-      items:
-        - name: クラウド リソース ガバナンスとは
-          href: /azure/architecture/cloud-adoption/getting-started/what-is-governance?toc=/azure/governance/toc.json
-        - name: Azure でのリソース アクセス ガバナンス
-          href: /azure/architecture/cloud-adoption/getting-started/azure-resource-access?toc=/azure/governance/toc.json
-        - name: 単一チーム向けのガバナンス設計
-          href: /azure/architecture/cloud-adoption/governance/governance-single-team?toc=/azure/governance/toc.json
-        - name: 複数チーム向けのガバナンス設計
-          href: /azure/architecture/cloud-adoption/governance/governance-multiple-teams?toc=/azure/governance/toc.json
-    - name: Azure エンタープライズ スキャフォールディング
-      items:
-        - name: サブスクリプションの規範的なガバナンス
-          href: /azure/architecture/cloud-adoption/appendix/azure-scaffold?toc=/azure/governance/toc.json
-        - name: Azure エンタープライズ スキャフォールディングの実装
-          href: /azure/architecture/cloud-adoption/appendix/azure-scaffold-examples?toc=/azure/governance/toc.json
+    - name: 概要
+      href: /azure/architecture/cloud-adoption/index?toc=/azure/governance/toc.json
+    - name: ガバナンスの概要
+      href: /azure/architecture/cloud-adoption/governance/index?toc=/azure/governance/toc.json
 - name: リソース
   items:
     - name: Azure のロードマップ

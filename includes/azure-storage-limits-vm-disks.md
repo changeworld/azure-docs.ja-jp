@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 03/18/2019
 ms.author: rogarana
 ms.openlocfilehash: 2936fd318f08c74675f7e8b382c861f4a28319fc
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58261554"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66148161"
 ---
 Azure 仮想マシンには複数のデータ ディスクを接続できます。 VM のデータ ディスクのスケーラビリティとパフォーマンスの目標に基づいて、パフォーマンスとキャパシティの要件を満たすために必要なディスクの数と種類を決定します。
 
@@ -20,7 +20,7 @@ Azure 仮想マシンには複数のデータ ディスクを接続できます�
 
 次の表は、サブスクリプションあたりのリージョンごとのリソース数の既定の制限と上限を示しています。
 
-> | リソース | 既定の制限  | 上限 |
+> | Resource | 既定の制限  | 上限 |
 > | --- | --- | --- |
 > | Standard マネージド ディスク | 25,000 | 50,000 |
 > | Standard SSD マネージド ディスク | 25,000 | 50,000 |

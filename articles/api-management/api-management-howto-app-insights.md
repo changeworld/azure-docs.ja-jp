@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: 69f36773b702d9f0059e0cd27dbb864ccd7f7b2b
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 3bbab82831fba389cd4bf172e7ea762d5971579b
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54262763"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241838"
 ---
 # <a name="how-to-integrate-azure-api-management-with-azure-application-insights"></a>Azure API Management と Azure Application Insights を統合する方法
 
@@ -51,7 +51,7 @@ Azure Application Insights を使用する前に、このサービスのイン�
     ![App Insights ロガー](media/api-management-howto-app-insights/apim-app-insights-logger-2.png)  
 
 > [!NOTE]
-> バックグラウンドで、API Management インスタンスのインストルメンテーション キーを含む[ロガー](https://docs.microsoft.com/rest/api/apimanagement/logger/createorupdate) エンティティが Application Insights インスタンス内に作成されます。
+> バックグラウンドで、API Management インスタンスのインストルメンテーション キーを含む[ロガー](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/logger/createorupdate) エンティティが Application Insights インスタンス内に作成されます。
 
 ## <a name="enable-application-insights-logging-for-your-api"></a>API で Application Insights ログを有効にする
 
@@ -59,25 +59,25 @@ Azure Application Insights を使用する前に、このサービスのイン�
 2. 左にあるメニューから **[API]** を選択します。
 3. API をクリックします。今回は **Demo Conference API** です。
 4. 上のバーで **[設定]** 他部に移動します。
-5. 下にスクロールし、**[診断ログ]** セクションを表示します。  
+5. 下にスクロールし、 **[診断ログ]** セクションを表示します。  
     ![App Insights ロガー](media/api-management-howto-app-insights/apim-app-insights-api-1.png)  
 6. **[有効化]** ボックスをオンにします。
 7. **[Destination]\(出力先\)** ドロップダウンで、接続済みのロガーを選択します。
-8. **[Sampling (%)]\(サンプリング (%)\)** に **100** と入力し、**[Always log errors]\(エラーは常に記録する\)** チェックボックスをオンにします。
+8. **[Sampling (%)]\(サンプリング (%)\)** に **100** と入力し、 **[Always log errors]\(エラーは常に記録する\)** チェックボックスをオンにします。
 9. **[Save]** をクリックします。
 
 > [!WARNING]
 > **[First bytes of body]\(本文の最初のバイト\)** フィールドの既定値 **0** を上書きすると、API のパフォーマンスが大幅に低下する可能性があります。
 
 > [!NOTE]
-> バックグラウンドで、'applicationinsights' という名前の[診断](https://docs.microsoft.com/rest/api/apimanagement/diagnostic/createorupdate)エンティティが API レベルで作成されます。
+> バックグラウンドで、'applicationinsights' という名前の[診断](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/diagnostic/createorupdate)エンティティが API レベルで作成されます。
 
 | 設定名                        | 値の型                        | 説明                                                                                                                                                                                                                                                                                                                                      |
 |-------------------------------------|-----------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 有効化                              | ブール値                           | この API のログ記録が有効になっているかどうかを指定します。                                                                                                                                                                                                                                                                                                |
 | 宛先                         | Azure Application Insights ロガー | 使用する Azure Application Insights ロガーを指定します。                                                                                                                                                                                                                                                                                           |
-| [Sampling (%)]\(サンプリング (%)\)                        | 小数点                           | 0 から 100 までの値 (パーセント)。 <br/> Azure Application Insights に記録する要求のパーセンテージを指定します。 0% サンプリングの場合、要求はまったく記録されません。100% サンプリングの場合、すべての要求が記録されます。 <br/> この設定は、Azure Application Insights に要求記録が与えるパフォーマンス上の影響を抑える目的で使用されます (下のセクションをご覧ください)。 |
-| [Always log errors]\(エラーは常に記録する\)                   | ブール値                           | この設定が選択されている場合、**[サンプリング]** 設定に関係なく、すべてのエラーが Azure Application Insights に記録されます。                                                                                                                                                                                                                  |
+| [Sampling (%)]\(サンプリング (%)\)                        | decimal                           | 0 から 100 までの値 (パーセント)。 <br/> Azure Application Insights に記録する要求のパーセンテージを指定します。 0% サンプリングの場合、要求はまったく記録されません。100% サンプリングの場合、すべての要求が記録されます。 <br/> この設定は、Azure Application Insights に要求記録が与えるパフォーマンス上の影響を抑える目的で使用されます (下のセクションをご覧ください)。 |
+| [Always log errors]\(エラーは常に記録する\)                   | ブール値                           | この設定が選択されている場合、 **[サンプリング]** 設定に関係なく、すべてのエラーが Azure Application Insights に記録されます。                                                                                                                                                                                                                  |
 | 基本オプション: headers              | list                              | Azure Application Insights に記録する、要求と応答のヘッダーを指定します。  既定値: ヘッダーはログに記録されません。                                                                                                                                                                                                             |
 | 基本オプション: [First bytes of body]\(本文の最初のバイト\)  | integer                           | Azure Application Insights に記録する、要求本文と応答本文の最初のバイト数を指定します。  既定値: 本文は記録されません。                                                                                                                                                                                              |
 | 詳細オプション: [Frontend Request]\(フロントエンド要求\)  |                                   | *フロントエンド要求*を Azure Application Insights に記録するかどうか、また、その方法を指定します。 *フロントエンド要求*は、Azure API Management サービスで受信する要求です。                                                                                                                                                                        |
@@ -113,7 +113,7 @@ Azure Application Insights に届くデータ:
 
 社内負荷テストによると、要求のペースが毎秒 1,000 件を超えるとき、この機能を有効にすると、スループットに 40%-50% の減少がありました。 Azure Application Insights は、アプリケーション パフォーマンスの評価に統計分析を利用するように設計されています。 監査システムとしては設計されておらず、たくさんの API を対象に要求を 1 つずつ記録するのには適していません。
 
-記録する要求の数は、**[サンプリング]** 設定を調整することで操作できます (上の手順をご覧ください)。 値が 100% の場合、すべての要求が記録されます。値が 0% の場合、何も記録されません。 **サンプリング**を利用することで利用統計情報の量が減り、パフォーマンスの大きな低下を効果的に回避しながら、ログ利用の長所を維持できます。
+記録する要求の数は、 **[サンプリング]** 設定を調整することで操作できます (上の手順をご覧ください)。 値が 100% の場合、すべての要求が記録されます。値が 0% の場合、何も記録されません。 **サンプリング**を利用することで利用統計情報の量が減り、パフォーマンスの大きな低下を効果的に回避しながら、ログ利用の長所を維持できます。
 
 要求と応答のヘッダーと本文を記録しないことも、パフォーマンス問題の解消に効果があります。
 

@@ -9,11 +9,11 @@ ms.date: 03/28/2018
 ms.author: wesmc
 ms.custom: include file
 ms.openlocfilehash: 7f03072c2b7ee1f08fc5fa306da6c5b8368742ae
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53111665"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66133094"
 ---
 キャッシュをダッシュボードにピン留めしていなかった場合には、[Azure Portal](https://portal.azure.com) で **[すべてのサービス]** を使ってキャッシュを検索してください。
 

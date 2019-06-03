@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 02/19/2019
+ms.date: 05/02/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 2ec2ddbac5d0368aaf1b46208c9ebb44bf12a622
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 0fc44bfdb98b81bf218cb2f1824f0f1bb14de4fa
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447312"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65235671"
 ---
 # <a name="assets"></a>アセット
 
@@ -33,6 +33,9 @@ Azure Media Services の[アセット](https://docs.microsoft.com/rest/api/media
 ## <a name="upload-digital-files-into-assets"></a>アセットへのデジタル ファイルのアップロード
 
 Media Services の一般的なワークフローの 1 つに、ファイルのアップロード、エンコード、ストリーム配信があります。 このセクションでは、一般的な手順について説明します。
+
+> [!TIP]
+> 開発を開始する前に、「[Media Services v3 API を使用した開発](media-services-apis-overview.md)」を確認してください (API や命名規則などへのアクセスに関する情報が含まれています)。
 
 1. Media Services v3 API を使用して、新しい "入力" アセットを作成します。 この操作により、Media Services アカウントに関連付けられているストレージ アカウントにコンテナーが作成されます。 API からコンテナー名が返されます (例: `"container": "asset-b8d8b68a-2d7f-4d8c-81bb-8c7bbbe67ee4"`)。
    

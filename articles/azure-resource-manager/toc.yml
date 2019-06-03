@@ -54,7 +54,7 @@
 - name: 概念
   items:
     - name: テンプレート ファイルの構造
-      displayName: 'parameters,variables,resources,outputs'
+      displayName: 'parameters,variables,resources,outputs,condition'
       href: resource-group-authoring-templates.md
     - name: テンプレートのベスト プラクティス
       href: template-best-practices.md
@@ -165,7 +165,7 @@
           href: grant-access-to-create-subscription.md
         - name: テナントをまたいだ認証
           href: authenticate-multi-tenant.md
-    - name: デプロイの監査
+    - name: 変更の監査
       items:
         - name: アクティビティ ログを表示する
           href: resource-group-audit.md

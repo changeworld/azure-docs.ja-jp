@@ -24,12 +24,17 @@
       displayName: 'best practice, design'
     - name: 基本的な概念
       items:
-        - name: '機能: アクションとコンテキスト'
+        - name: '特徴: アクションとコンテキスト'
           href: concepts-features.md
           displayName: 'action, context, feature, namespace, JSON, best practice, set'
+        - name: 報酬
+          href: concept-rewards.md
+          displayName: 'reward, wait time, default reward'
         - name: 強化学習
           href: concepts-reinforcement-learning.md
           displayName: 'RL, contextual bandits, Vowpal Wabbit'
+        - name: 探索
+          href: concepts-exploration.md
     - name: 分析
       items:
         - name: オフライン評価
@@ -44,14 +49,6 @@
       items:
         - name: オフライン評価
           href: how-to-offline-evaluation.md
-    - name: コンテナーの使用
-      items:
-        - name: コンテナーのインストールと実行
-          displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull, run, apikey'
-          href: personalizer-container-howto.md
-        - name: コンテナーを構成する
-          href: personalizer-container-configuration.md
-          displayName: 'docker, run, apikey'
 - name: リファレンス
   items:
     - name: サンプル
@@ -68,6 +65,8 @@
   items:
     - name: リージョン別の提供状況
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+    - name: コンプライアンス
+      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Azure のロードマップ
       href: 'https://go.microsoft.com/fwlink/?linkid=2092153'
     - name: 価格

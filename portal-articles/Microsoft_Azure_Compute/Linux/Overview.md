@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 04/27/2017
 ms.author: sewatson
 ms.openlocfilehash: b0a8deb5f656fafde358dbcf2e1a2724f1a84113
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61225441"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "64727617"
 ---
 # <a name="linux-virtual-machines-documentation"></a>Linux 仮想マシンのドキュメント
 

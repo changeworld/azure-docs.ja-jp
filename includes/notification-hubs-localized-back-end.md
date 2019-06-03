@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/02/2018
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 527567ee3f3a939c7358fb6a62271cbe38e16974
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: c15d695e072e72c6e7be6dcf49f3ea049a9b70b7
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42915159"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66152406"
 ---
 テンプレート通知を送信する場合、必要なことは一連のプロパティを提供することだけです。 このシナリオでは、一連プロパティには現在のニュースのローカライズされたバージョンが格納されます。
 

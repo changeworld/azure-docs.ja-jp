@@ -12,11 +12,11 @@ ms.date: 10/20/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 3b4e8c78d7402c254c91c3e100814e1f3eafc41b
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56867203"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "61429418"
 ---
 # <a name="what-is-the-team-data-science-process"></a>Team Data Science Process とは
 

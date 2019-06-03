@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 04/10/2019
+ms.date: 04/26/2019
 ms.author: damaerte
-ms.openlocfilehash: 46c9350dd2a33d0d25fe193b2ae50c954f2d1f95
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: f873f20f97b822e1f4dee716cb69535b0522dc2c
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59500619"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64866508"
 ---
 # <a name="features--tools-for-azure-cloud-shell"></a>Azure Cloud Shell の機能とツール
 
@@ -50,6 +50,18 @@ Azure ドライブを使用すると、ファイル システムのナビゲー�
 Azure リソースに対するすべての変更は、Azure Portal で直接行われたものも、Azure PowerShell コマンドレット経由で行われたものも、Azure ドライブに反映されます。  `dir -Force` を実行してリソースを最新の情報に更新できます。
 
 ![](media/features-powershell/azure-drive.png)
+
+### <a name="manage-exchange-online"></a>Manage Exchange Online
+
+Cloud Shell の PowerShell には、Exchange Online モジュールのプライベート ビルドが含まれています。  Exchange コマンドレットを取得するには、`Connect-EXOPSSession`を実行します。
+
+![](media/features-powershell/exchangeonline.png)
+
+ `Get-Command -Module tmp_*` を実行します。
+> [!NOTE]
+> 同じプレフィックスを持つモジュールをインストールした場合、モジュール名の先頭には`tmp_`が付き、そのコマンドレットも表面化します。 
+
+![](media/features-powershell/exchangeonlinecmdlets.png)
 
 ### <a name="deep-integration-with-open-source-tooling"></a>オープンソース ツールとの緊密な統合
 

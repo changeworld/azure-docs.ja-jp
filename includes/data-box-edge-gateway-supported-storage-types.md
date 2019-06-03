@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/25/2018
 ms.author: alkohli
 ms.openlocfilehash: b7e679b6019fe810e6998f45dd7a049b20eec908
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51263497"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66161002"
 ---
 デバイスでサポートされるストレージの種類の一覧を次に示します。
 

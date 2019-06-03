@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 82a2330aeadb14bb421260a290a25581232293e5
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 9144165a3ce593dce11b5e50ce5f0af9f0afa480
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65073353"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237671"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Azure Files のデプロイの計画
 
@@ -25,7 +25,7 @@ ms.locfileid: "65073353"
 
 ![ファイル構造](./media/storage-files-introduction/files-concepts.png)
 
-* **[ストレージ アカウント]**: Azure のストレージにアクセスする場合には必ず、ストレージ アカウントを使用します。 ストレージ アカウントの容量の詳細については、[拡張性とパフォーマンスのターゲット](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)に関するページを参照してください。
+* **[ストレージ アカウント]** : Azure のストレージにアクセスする場合には必ず、ストレージ アカウントを使用します。 ストレージ アカウントの容量の詳細については、[拡張性とパフォーマンスのターゲット](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)に関するページを参照してください。
 
 * **共有**:File Storage 共有は、Azure 内の SMB ファイル共有です。 ディレクトリとファイルはすべて親の共有に作成する必要があります。 アカウントに含まれる共有の数と、共有に格納できるファイル数には制限がなく、ファイル共有の合計容量 5 TiB まで増やすことができます。
 
@@ -94,7 +94,7 @@ Premium ファイル共有 (プレビュー) は、固定 GiB/IOPS/スループ�
 
 ベスト エフォート方式では、すべての共有は、プロビジョニングされたストレージの GiB ごとに 3 IOPS まで、共有のサイズに応じて 60 分またはそれ以上バーストできます。 新しい共有は、プロビジョニングされた容量に基づく完全なバースト クレジットで開始されます。
 
-共有は 1 GiB 単位でプロビジョニングする必要があります。 最小サイズは 100 GiB になり、次のサイズは 101 GIB になり、他も同様になります。
+共有は 1 GiB 単位でプロビジョニングする必要があります。 最小サイズは 100 GiB、次のサイズは 101 GiB、以下同様です。
 
 > [!TIP]
 > ベースライン IOPS = 1 * プロビジョニング済み GiB。 (最大 100,000 IOPS まで)。
@@ -189,9 +189,9 @@ Azure ファイル同期を使って複数の Azure ファイル共有を 1 つ�
 オンプレミスのファイル共有などの既存のファイル共有から Azure Files にデータを一括転送するには、多くの簡単なオプションがあります。 以下は一般的な方法の一部です (すべてではありません)。
 
 * **Azure File Sync**:Azure のファイル共有 ("クラウド エンドポイント") と Windows ディレクトリ名前空間 ("サーバー エンドポイント") との間で最初に行われる同期の一部として、Azure File Sync では、すべてのデータが既存のファイル共有から Azure Files にレプリケートされます。
-* **[Azure Import/Export](../common/storage-import-export-service.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)**:Azure Import/Export サービスを使うと、ハード ディスク ドライブを Azure データセンターに送付することで、大量のデータを Azure ファイル共有に安全に転送できます。 
-* **[Robocopy](https://technet.microsoft.com/library/cc733145.aspx)**:Robocopy は、Windows および Windows Server に付属するよく知られたコピー ツールです。 Robocopy では、ファイル共有をローカルにマウントした後、マウントした場所を Robocopy コマンドのコピー先として使って、Azure Files にデータを転送できます。
-* **[AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#upload-files-to-an-azure-file-share)**:AzCopy は、最高のパフォーマンスの単純なコマンドを使って Azure Files および Azure Blob Storage との間で双方向にデータをコピーするために設計された、コマンドライン ユーティリティです。 AzCopy は Windows と Linux で使うことができます。
+* **[Azure Import/Export](../common/storage-import-export-service.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)** :Azure Import/Export サービスを使うと、ハード ディスク ドライブを Azure データセンターに送付することで、大量のデータを Azure ファイル共有に安全に転送できます。 
+* **[Robocopy](https://technet.microsoft.com/library/cc733145.aspx)** :Robocopy は、Windows および Windows Server に付属するよく知られたコピー ツールです。 Robocopy では、ファイル共有をローカルにマウントした後、マウントした場所を Robocopy コマンドのコピー先として使って、Azure Files にデータを転送できます。
+* **[AzCopy](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)** :AzCopy は、最高のパフォーマンスの単純なコマンドを使って Azure Files および Azure Blob Storage との間で双方向にデータをコピーするために設計された、コマンドライン ユーティリティです。
 
 ## <a name="next-steps"></a>次の手順
 * [Azure File Sync のデプロイの計画](storage-sync-files-planning.md)

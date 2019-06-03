@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 03/26/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 539d80310f07031f7a92bb5c1d6155e5948c2653
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 656e2519dc814baffa2f1c427d46e66054969e25
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59997446"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357166"
 ---
 # <a name="quickstart-extract-handwritten-text-using-the-computer-vision-c-sdk"></a>クイック スタート:Computer Vision C# SDK を使用して手書きテキストを抽出する
 
@@ -34,9 +34,9 @@ ms.locfileid: "59997446"
 
 1. Visual Studio で、新しい Visual C# コンソール アプリを作成します。
 1. Computer Vision クライアント ライブラリの NuGet パッケージをインストールします。
-    1. メニューの **[ツール]** で **[NuGet パッケージ マネージャー]** を選択し、**[ソリューションの NuGet パッケージの管理]** を選択します。
-    1. **[参照]** タブをクリックし、**[検索]** ボックスに「Microsoft.Azure.CognitiveServices.Vision.ComputerVision」と入力します。
-    1. **[Microsoft.Azure.CognitiveServices.Vision.ComputerVision]** が表示されたら選択し、対象のプロジェクト名の横のチェック ボックスをオンにして、**[インストール]** をクリックします。
+    1. メニューの **[ツール]** で **[NuGet パッケージ マネージャー]** を選択し、 **[ソリューションの NuGet パッケージの管理]** を選択します。
+    1. **[参照]** タブをクリックし、 **[検索]** ボックスに「Microsoft.Azure.CognitiveServices.Vision.ComputerVision」と入力します。
+    1. **[Microsoft.Azure.CognitiveServices.Vision.ComputerVision]** が表示されたら選択し、対象のプロジェクト名の横のチェック ボックスをオンにして、 **[インストール]** をクリックします。
 1. `Program.cs` を以下のコードに置き換えます。 `BatchReadFileAsync` メソッドと `BatchReadFileInStreamAsync` メソッドは、それぞれリモート画像とローカル画像の[バッチ読み取り API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) をラップします。 `GetReadOperationResultAsync` メソッドは、[取得、読み取り操作結果 API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) をラップします。
 
     ```csharp
@@ -53,10 +53,6 @@ ms.locfileid: "59997446"
         {
             // subscriptionKey = "0123456789abcdef0123456789ABCDEF"
             private const string subscriptionKey = "<Subscription key>";
-
-            // For printed text, change to TextRecognitionMode.Printed
-            private const TextRecognitionMode textRecognitionMode =
-                TextRecognitionMode.Handwritten;
 
             // localImagePath = @"C:\Documents\LocalImage.jpg"
             private const string localImagePath = @"<LocalImage>";
@@ -106,7 +102,7 @@ ms.locfileid: "59997446"
                 // Start the async process to read the text
                 BatchReadFileHeaders textHeaders =
                     await computerVision.BatchReadFileAsync(
-                        imageUrl, textRecognitionMode);
+                        imageUrl);
 
                 await GetTextAsync(computerVision, textHeaders.OperationLocation);
             }
@@ -127,7 +123,7 @@ ms.locfileid: "59997446"
                     // Start the async process to recognize the text
                     BatchReadFileInStreamHeaders textHeaders =
                         await computerVision.BatchReadFileInStreamAsync(
-                            imageStream, textRecognitionMode);
+                            imageStream);
 
                     await GetTextAsync(computerVision, textHeaders.OperationLocation);
                 }
@@ -177,7 +173,6 @@ ms.locfileid: "59997446"
 
 1. `<Subscription Key>` を、有効なサブスクリプション キーに置き換えます。
 1. 必要に応じて、`computerVision.Endpoint` をサブスクリプション キーに関連付けられている Azure リージョンに変更します。
-1. 必要に応じて、`textRecognitionMode` を `TextRecognitionMode.Printed` に設定します。
 1. `<LocalImage>` を、ローカル画像のパスとファイル名に置き換えます。
 1. 必要に応じて、`remoteImageUrl` を別の画像に設定します。
 1. プログラムを実行します。

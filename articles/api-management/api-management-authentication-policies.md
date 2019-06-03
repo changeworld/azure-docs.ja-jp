@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: 9ee4a9fb5c63061eed32389b5672652aad01208a
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: c0f8da779ca656cf357c418b8766a53307643695
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59994947"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64708799"
 ---
 # <a name="api-management-authentication-policies"></a>API Management の認証ポリシー
 このトピックでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](https://go.microsoft.com/fwlink/?LinkID=398186)」をご覧ください。  
@@ -73,15 +73,20 @@ ms.locfileid: "59994947"
 ### <a name="policy-statement"></a>ポリシー ステートメント  
   
 ```xml  
-<authentication-certificate thumbprint="thumbprint" />  
+<authentication-certificate thumbprint="thumbprint" certificate-id="resource name"/>  
 ```  
   
-### <a name="example"></a>例  
+### <a name="examples"></a>例  
   
+この例では、クライアントの証明書は拇印によって識別されます。
 ```xml  
-<authentication-certificate thumbprint="....." />  
+<authentication-certificate thumbprint="CA06F56B258B7A0D4F2B05470939478651151984" />  
+``` 
+この例では、クライアントの証明書はリソース名によって識別されます。
+```xml  
+<authentication-certificate certificate-id="544fe9ddf3b8f30fb490d90f" />  
 ```  
-  
+
 ### <a name="elements"></a>要素  
   
 |Name|説明|必須|  
@@ -92,7 +97,8 @@ ms.locfileid: "59994947"
   
 |Name|説明|必須|既定値|  
 |----------|-----------------|--------------|-------------|  
-|thumbprint|クライアント証明書のサムプリント。|はい|該当なし|  
+|thumbprint|クライアント証明書のサムプリント。|`thumbprint` または `certificate-id` のいずれかが存在しなければなりません。|該当なし|  
+|証明書 ID|証明書リソースの名前。|`thumbprint` または `certificate-id` のいずれかが存在しなければなりません。|該当なし|  
   
 ### <a name="usage"></a>使用法  
  このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
@@ -127,8 +133,8 @@ ms.locfileid: "59994947"
 |Name|説明|必須|既定値|  
 |----------|-----------------|--------------|-------------|  
 |resource|文字列 をオンにします。 Azure Active Directory におけるターゲット Web API のアプリ ID の URI (セキュリティで保護されたリソース)。|はい|該当なし|  
-|output-token-variable-name|文字列 をオンにします。 オブジェクトの種類 `string` としてトークン値を受け取るコンテキスト変数の名前。|いいえ |該当なし|  
-|ignore-error|ブール値。 `true` に設定された場合、アクセス トークンが取得されなかったとしても、ポリシー パイプラインは引き続き実行されます。|いいえ |false|  
+|output-token-variable-name|文字列 をオンにします。 オブジェクトの種類 `string` としてトークン値を受け取るコンテキスト変数の名前。|いいえ|該当なし|  
+|ignore-error|ブール値。 `true` に設定された場合、アクセス トークンが取得されなかったとしても、ポリシー パイプラインは引き続き実行されます。|いいえ|false|  
   
 ### <a name="usage"></a>使用法  
  このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  

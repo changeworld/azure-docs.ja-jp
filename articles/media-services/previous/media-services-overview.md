@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/19/2019
 ms.author: juliako
-ms.openlocfilehash: efdc3f657712794325f8af6f1b0178915e7a8e6b
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 7f0a071012685ee192d4f866396a5953d0a4508c
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60000302"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64937248"
 ---
 # <a name="azure-media-services-overview"></a>Azure Media Services の概要 
 
@@ -50,7 +50,10 @@ Media Services ソリューションを構築するために、以下を使用�
 
 * [Media Services REST API](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference)
 * 使用可能な次のいずれかの SDK:
-    * [Azure Media Services SDK for .NET](https://github.com/Azure/azure-sdk-for-media-services)
+    * Azure Media Services SDK for .NET
+    
+        * [NuGet パッケージ](https://www.nuget.org/packages/windowsazure.mediaservices/)
+        * [GitHub ソース コード](https://github.com/Azure/azure-sdk-for-media-services)
     * [Azure SDK for Java](https://github.com/Azure/azure-sdk-for-java)
     * [Azure PHP SDK](https://github.com/Azure/azure-sdk-for-php)
     * [Azure Media Services for Node.js](https://github.com/michelle-becker/node-ams-sdk/blob/master/lib/request.js) (これは、Node.js SDK の Microsoft 以外のバージョンです。 コミュニティによって管理されており、現在 AMS API を 100% カバーしてはいません。)

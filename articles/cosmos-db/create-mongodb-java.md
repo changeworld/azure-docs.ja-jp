@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 12/26/2017
 ms.author: rimman
-ms.openlocfilehash: 2fcd5f9e68d7f8bfa15cd596407c78af7fc8976b
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 8ae4c5f64ad834e27db219fac8d30ff5250c3286
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56587261"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65519071"
 ---
 # <a name="quickstart-build-a-web-app-using-azure-cosmos-dbs-api-for-mongodb-and-java-sdk"></a>クイック スタート:Azure Cosmos DB の MongoDB 用 API と Java SDK を使用して Web アプリを構築する
 
@@ -26,14 +26,14 @@ ms.locfileid: "56587261"
 > * [Golang](create-mongodb-golang.md)
 >  
 
-Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモデル データベース サービスです。 Cosmos DB の中核であるグローバル配布と水平スケーリングの機能を利用して、ドキュメント、キー/値、グラフの各データベースの作成とクエリをすばやく行うことができます。 
+Azure Cosmos DB、Microsoft のグローバルに配布されるマルチモデル データベース サービスです。 Cosmos DB の中核であるグローバル配布と水平スケーリングの機能を利用して、ドキュメント、キー/値、グラフの各データベースの作成とクエリをすばやく行うことができます。 
 
 このクイック スタートでは、[Azure Cosmos DB の MongoDB 用 API](mongodb-introduction.md) を使用して Cosmos アカウントを作成する方法を示します。 さらに、[MongoDB Java ドライバー](https://docs.mongodb.com/ecosystem/drivers/java/)を使用してコンソール アプリを構築し、デプロイします。 
 
 ## <a name="prerequisites"></a>前提条件
 
 このサンプルを実行する前に、以下の前提条件を満たしている必要があります。
-* JDK 1.7 以降 (JDK がない場合は、`apt-get install default-jdk` を実行します)
+* [Azure 用の JDK および Azure Stack JDK バージョン 8 をインストールする] (https://aka.ms/azure-jdks)
 * Maven (Maven がない場合は、`apt-get install maven` を実行します)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]

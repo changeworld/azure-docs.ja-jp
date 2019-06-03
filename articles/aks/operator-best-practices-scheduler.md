@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: iainfou
-ms.openlocfilehash: 8233330973946e552e36a85a11bdbbfb06c739f0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f6e370442c9c359a38025762fb90269119ec0ea6
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58178137"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "65074126"
 ---
 # <a name="best-practices-for-basic-scheduler-features-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での基本的なスケジューラ機能に関するベスト プラクティス
 
@@ -126,6 +126,8 @@ kubectl apply -f nginx-pdb.yaml
 
 [kube-advisor][kube-advisor] ツールでは、Kubernetes クラスターをスキャンし、見つかった問題について報告する、関連する AKS オープンソース プロジェクトです。 確認の際に、リソースの要求と制限が存在しないポッドの特定もできるため便利です。
 
+kube-advisor ツールは、PodSpecs for Windows アプリケーションおよび Linux アプリケーションに欠けているリソース要求と制限を報告することができますが、kube-advisor ツール自体は Linux ポッドでスケジュールする必要があります。 ポッドの構成で[ノード セレクター][k8s-node-selector]を使用して、特定の OS のノード プールで実行するようにポッドをスケジュールすることができます。
+
 複数の開発チームとアプリケーションをホストする AKS クラスターでは、これらのリソースの要求と制限が設定されていないポッドを追跡するのは困難な場合があります。 ベスト プラクティスとしては、AKS クラスターで `kube-advisor` を定期的に実行します (特に、リソース クォータを名前空間に割り当てていない場合)。
 
 ## <a name="next-steps"></a>次の手順
@@ -147,3 +149,4 @@ kubectl apply -f nginx-pdb.yaml
 [aks-best-practices-cluster-isolation]: operator-best-practices-cluster-isolation.md
 [aks-best-practices-advanced-scheduler]: operator-best-practices-advanced-scheduler.md
 [aks-best-practices-identity]: operator-best-practices-identity.md
+[k8s-node-selector]: concepts-clusters-workloads.md#node-selectors

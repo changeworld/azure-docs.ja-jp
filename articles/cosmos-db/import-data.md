@@ -4,14 +4,14 @@ description: オープン ソースの Azure Cosmos DB データ移行ツール�
 author: deborahc
 ms.service: cosmos-db
 ms.topic: tutorial
-ms.date: 02/22/2019
+ms.date: 05/20/2019
 ms.author: dech
-ms.openlocfilehash: 023b344d796ea5297cda202e7baa2f0e0ef5eebd
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 792dca41a052930bf2c853846cdd0c09661c5cd3
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58315812"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65954503"
 ---
 # <a name="use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>データ移行ツールを使用して Azure Cosmos DB にデータを移行する
 
@@ -85,6 +85,19 @@ Azure Cosmos DB で使用する API を教えてください。
 JSON ファイル ソース インポーター オプションを使用すると、1 つ以上の単一ドキュメント JSON ファイル、またはそれぞれに JSON ドキュメントの配列が含まれた JSON ファイルをインポートできます。 インポートする JSON ファイルが含まれたフォルダーを追加する際は、サブフォルダー内のファイルを再帰的に検索できます。
 
 ![JSON ファイル ソース オプションのスクリーンショット - データベース移行ツール](./media/import-data/jsonsource.png)
+
+接続文字列は次の形式です。
+
+`AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>`
+
+* `<CosmosDB Endpoint>` はエンドポイント URI です。 この値は Azure portal から取得できます。 Azure Cosmos アカウントに移動します。 **[概要]** ウィンドウを開き、**URI** 値をコピーします。
+* `<AccountKey>` は "パスワード" または**主キー**です。 この値は Azure portal から取得できます。 Azure Cosmos アカウントに移動します。 **[接続文字列]** または **[キー]** ウィンドウを開き、"パスワード" または**主キー**値をコピーします。
+* `<CosmosDB Database>` は CosmosDB データベース名です。
+
+例: `AccountEndpoint=https://myCosmosDBName.documents.azure.com:443/;AccountKey=wJmFRYna6ttQ79ATmrTMKql8vPri84QBiHTt6oinFkZRvoe7Vv81x9sn6zlVlBY10bEPMgGM982wfYXpWXWB9w==;Database=myDatabaseName`
+
+> [!NOTE]
+> [確認] を使用して、[接続文字列] フィールドで指定した Cosmos DB アカウントにアクセスできることを確認してください。
 
 JSON ファイルをインポートするためのコマンド ライン サンプルを以下にいくつか示します。
 

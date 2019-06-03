@@ -1,25 +1,18 @@
 ---
-title: Microsoft Azure ベースの仮想マシンに接続する | Microsoft Docs
+title: Microsoft Azure ベースの仮想マシンに接続する | Azure Marketplace
 description: Azure に作成された新しい仮想マシンに接続する方法について説明します。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 10/19/2018
-ms.author: pbutlerm
-ms.openlocfilehash: fd68846b9144c3efcc71dec369d64119427758a3
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.author: pabutler
+ms.openlocfilehash: ca002a77fd7252466f604b995af949b54694bc8c
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49639093"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64938574"
 ---
 # <a name="connect-to-your-azure-based-virtual-machine"></a>Azure ベースの仮想マシンに接続する
 
@@ -29,7 +22,7 @@ ms.locfileid: "49639093"
 
 Azure にホストされている Windows ベースの VM には、リモート デスクトップ クライアントを使用して接続することになります。  ほとんどのバージョンの Windows は、リモート デスクトップ プロトコル (RDP) をネイティブでサポートしています。  その他のマシンのクライアントについて詳しくは、「[リモート デスクトップ クライアント](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-clients)」を参照してください。  
 
-ビルトインの Windows RDP サポートを使用して VM に接続する方法については、「[Windows が実行されている Azure 仮想マシンに接続してログオンする方法](../../../virtual-machines/windows/connect-logon.md)」の記事で詳しく説明しています。  
+ビルトインの Windows RDP サポートを使用して VM に接続する方法については、[Windows が実行されている Azure 仮想マシンに接続してサインオンする方法](../../../virtual-machines/windows/connect-logon.md)に関する記事で詳しく説明しています。  
 
 >[!TIP]
 > このプロセス中にセキュリティ警告が表示されることがあります (.rdp ファイルの発行元が不明、ユーザーの資格情報を確認できないなど)。  これらの警告は無視しても問題ありません。
@@ -69,7 +62,7 @@ Azure では、実行中 "*またはアイドル状態*" の VM のホスティ�
 
 ほどなくして Azure の "*割り当て解除*" と呼ばれるプロセスで VM が停止されます。このプロセスにより、VM 上のオペレーティング システムがシャットダウンされるだけでなく、VM にプロビジョニングされていたハードウェア リソースとネットワーク リソースも解放されます。
 
-停止した VM を後で再度有効にしたければ、その VM を選択して、**[Start]\(スタート\)** ボタンをクリックしてください。
+停止した VM を後で再度有効にしたければ、その VM を選択して、 **[Start]\(スタート\)** ボタンをクリックしてください。
 
 
 ## <a name="next-steps"></a>次の手順

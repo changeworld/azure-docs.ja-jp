@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: janders
 manager: femila
-ms.openlocfilehash: a200649493354f1264afb0df4cf74acb4a274017
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: e370916d420a7bc4cd16d021c69a2f8609093d30
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65406419"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65544702"
 ---
 # <a name="what-is-azure-blockchain-service"></a>Azure Blockchain Service とは
 
@@ -77,7 +77,7 @@ Azure Log Analytics により、ユーザーは、Quorum 台帳に関するロ�
 ## <a name="next-steps"></a>次の手順
 
 まず最初に、クイック スタートを試すか、以下のリソースで詳細を確認してください。
-* [Azure portal を使用したブロックチェーン メンバーの作成](create-member.md)または [Azure CLI を使用したブロックチェーン メンバーの作成]()に関する記事
+* [Azure portal を使用したブロックチェーン メンバーの作成](create-member.md)または [Azure CLI を使用したブロックチェーン メンバーの作成](create-member-cli.md)に関する記事
 * コストの比較と計算ツールについては、[価格のページ](https://azure.microsoft.com/pricing/details/blockchain-service)をご覧ください。
 * [Azure Blockchain Development Kit](https://github.com/Azure-Samples/blockchain-devkit) を使用して最初のアプリを作成してください
 * Azure Blockchain VSCode 拡張機能の[ユーザー ガイド](https://github.com/Microsoft/vscode-azure-blockchain-ethereum/wiki)

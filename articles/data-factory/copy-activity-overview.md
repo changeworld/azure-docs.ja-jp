@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 04/29/2019
 ms.author: jingwang
-ms.openlocfilehash: 28d8c077f106f12812f7ed710217febd24d81efc
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 8f5a7d3f6300be100feffd23b98bd7dcd8f48148
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59267159"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65150861"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Azure Data Factory のコピー アクティビティ
 
@@ -74,7 +74,7 @@ Azure Data Factory のコピー アクティビティを使用するには、次
 
 1. **ソース データ ストアとシンク データ ストアのリンクされたサービスを作成します。** 構成方法およびサポートされるプロパティについては、コネクタの記事の「リンクされたサービスのプロパティ」セクションを参照してください。 サポートされるコネクタの一覧は、「[サポートされるデータ ストアと形式](#supported-data-stores-and-formats)」セクションで見つけることができます。
 2. **ソースとシンクのデータセットを作成します。** 構成方法およびサポートされるプロパティについては、ソースおよびシンク コネクタの記事の「データセットのプロパティ」セクションを参照してください。
-3. **コピー アクティビティを含むパイプラインを作成します。** 次のセクションでは、例を示します。  
+3. **コピー アクティビティを含むパイプラインを作成します。** 次のセクションでは、例を示します。
 
 ### <a name="syntax"></a>構文
 
@@ -148,7 +148,7 @@ Azure Data Factory の [Author & Monitor]\(作成者と監視\) という UI ま
 
 ### <a name="monitor-visually"></a>視覚的な監視
 
-コピー アクティビティの実行を視覚的に監視するには、お使いのデータ ファクトリ -> **[Author & Monitor]\(作成者と監視\)** -> **[監視] タブ** の順に移動して、**[アクション]** 列にある [View Activity Runs]\(アクティビティ実行の表示\) リンクを使ってパイプライン実行の一覧を表示します。 
+コピー アクティビティの実行を視覚的に監視するには、お使いのデータ ファクトリ -> **[Author & Monitor]\(作成者と監視\)** -> **[監視] タブ** の順に移動して、**[アクション]** 列にある [View Activity Runs]\(アクティビティ実行の表示\) リンクを使ってパイプライン実行の一覧を表示します。
 
 ![パイプラインの実行を監視する](./media/load-data-into-azure-data-lake-store/monitor-pipeline-runs.png)
 
@@ -156,7 +156,7 @@ Azure Data Factory の [Author & Monitor]\(作成者と監視\) という UI ま
 
 ![アクティビティの実行を監視する](./media/load-data-into-azure-data-lake-store/monitor-activity-runs.png)
 
-**[アクション]** にある **[詳細]** リンクをクリックして、コピー アクティビティ実行の詳細とパフォーマンス特性を確認します。 source から sink にコピーされた volume/rows/files のデータ、スループット、対応する期間に処理されるステップ、お使いのコピー シナリオで使用される構成などの情報が表示されます。 
+**[アクション]** にある **[詳細]** リンクをクリックして、コピー アクティビティ実行の詳細とパフォーマンス特性を確認します。 source から sink にコピーされた volume/rows/files のデータ、スループット、対応する期間に処理されるステップ、お使いのコピー シナリオで使用される構成などの情報が表示されます。
 
 >[!TIP]
 >一部のシナリオでは、コピーの監視ページの上部に "**パフォーマンス チューニングに関するヒント**" も表示されます。これは、特定されたボトルネックを示しています。このヒントを参考にして、コピーのスループットを強化するために変更すべき点を把握することができます。詳しい情報と例については、[こちら](#performance-and-tuning)を参照してください。
@@ -176,12 +176,14 @@ Azure Data Factory の [Author & Monitor]\(作成者と監視\) という UI ま
 | dataRead | ソースから読み取られたデータ サイズ | Int64 値 **(バイト数)** |
 | dataWritten | シンクに書き込まれたデータ サイズ | Int64 値 **(バイト数)** |
 | filesRead | ファイル ストレージからデータをコピーするときに、コピーされるファイルの数。 | Int64 値 (単位なし) |
-| fileScanned | ソース ファイル ストレージからスキャンされているファイルの数。 | Int64 値 (単位なし) |
 | filesWritten | ファイル ストレージにデータをコピーするときに、コピーされるファイルの数。 | Int64 値 (単位なし) |
-| rowsCopied | コピーされた行数 (バイナリ コピーには適用されません)。 | Int64 値 (単位なし) |
+| rowsRead | ソースから読み取られる行数 (バイナリ コピーには適用されません)。 | Int64 値 (単位なし) |
+| rowsCopied | シンクにコピーされる行数 (バイナリ コピーには適用されません)。 | Int64 値 (単位なし) |
 | rowsSkipped | スキップされた互換性のない行の数。 この機能は、"enableSkipIncompatibleRow" を true に設定することによって有効にできます。 | Int64 値 (単位なし) |
-| throughput | データが転送された速度 | 浮動小数点数 **(KB/秒)** |
-| copyDuration | コピーの持続期間 | Int32 値 (秒数) |
+| throughput | データが転送される速度。 | 浮動小数点数 **(KB/秒)** |
+| copyDuration | コピーの持続期間。 | Int32 値 (秒数) |
+| sourcePeakConnections | コピー中にソース データ ストアで確立されたコンカレント接続のピーク数。 | Int32 値 |
+| sinkPeakConnections| コピー中にシンク データ ストアで確立されたコンカレント接続のピーク数。| Int32 値 |
 | sqlDwPolyBase | SQL Data Warehouse にデータをコピーするときに PolyBase が使用される場合。 | Boolean |
 | redshiftUnload | Redshift からデータをコピーするときに UNLOAD が使用される場合。 | Boolean |
 | hdfsDistcp | HDFS からデータをコピーするときに DistCp が使用される場合。 | Boolean |
@@ -241,12 +243,12 @@ Azure Data Factory でのデータ移動 (コピー アクティビティ) の�
 
 **例: パフォーマンスのチューニングに関するヒントを使用した Azure SQL DB へのコピー**
 
-このサンプルでは、コピーの実行中に ADF が、シンク Azure SQL DB が書き込み操作を遅くする高 DTU 使用率に達したため、より多くの DTU のある Azure SQL DB 層を増やすという提案を通知します。 
+このサンプルでは、コピーの実行中に ADF が、シンク Azure SQL DB が書き込み操作を遅くする高 DTU 使用率に達したため、より多くの DTU のある Azure SQL DB 層を増やすという提案を通知します。
 
 ![パフォーマンスのチューニングに関するヒントを使用したコピーの監視](./media/copy-activity-overview/copy-monitoring-with-performance-tuning-tips.png)
 
-## <a name="incremental-copy"></a>増分コピー 
-Data Factory では、ソース データ ストアからコピー先データ ストアに差分データを増分コピーするシナリオをサポートしています。 [データの増分コピーに関するチュートリアル](tutorial-incremental-copy-overview.md)を参照してください。 
+## <a name="incremental-copy"></a>増分コピー
+Data Factory では、ソース データ ストアからコピー先データ ストアに差分データを増分コピーするシナリオをサポートしています。 [データの増分コピーに関するチュートリアル](tutorial-incremental-copy-overview.md)を参照してください。
 
 ## <a name="read-and-write-partitioned-data"></a>パーティション分割されたデータの読み取りおよび書き込み
 Azure Data Factory のバージョン 1 では、パーティション分割されたデータの読み取りと書き込みを SliceStart/SliceEnd/WindowStart/WindowEnd システム変数を使用してサポートしていました。 現在のバージョンでは、パイプライン パラメーターと、そのパラメーターの値としてのトリガーの開始時刻/スケジュールされた時刻を使用してこの動作を実現できます。 詳しくは、[パーティション分割されたデータの読み取りまたは書き込みを行う方法](how-to-read-write-partitioned-data.md)に関するページをご覧ください。

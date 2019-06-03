@@ -9,11 +9,11 @@ ms.date: 04/04/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 9a5e2e7e735404efad75d6dd318e965ebbefe73c
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53444232"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66170135"
 ---
 1. 仮想ネットワークの **[設定]** ページで、**[DNS サーバー]** に移動し、クリックして **[DNS サーバー]** ページを開きます。
 

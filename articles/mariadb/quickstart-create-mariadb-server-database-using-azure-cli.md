@@ -9,11 +9,11 @@ ms.topic: quickstart
 ms.date: 01/09/2019
 ms.custom: mvc
 ms.openlocfilehash: 7d94834523e331ff048f787760561739765e7023
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57842296"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66171412"
 ---
 # <a name="create-an-azure-database-for-mariadb-server-by-using-the-azure-cli"></a>Azure CLI を使用して Azure Database for MariaDB サーバーを作成する
 
@@ -216,7 +216,7 @@ mysql コマンドライン ツールを使用してサーバーに接続する�
    | 接続名 | **Demo connection** | この接続のラベル (任意の接続名) を入力します |
    | 接続方法 | **Standard (TCP/IP)** | TCP/IP プロトコルを使用して Azure Database for MariaDB に接続します |
    | ホスト名 | **mydemoserver.mariadb.database.azure.com** | 先ほど書き留めたサーバー名。 |
-   | ポート | **3306** | Azure Database for MariaDB 用の既定のポート。 |
+   | Port | **3306** | Azure Database for MariaDB 用の既定のポート。 |
    | ユーザー名 | **myadmin\@mydemoserver** | 先ほど書き留めたサーバー管理者ログイン。 |
    | パスワード | *<お使いのパスワード>* | 先ほど設定した管理者アカウントのパスワードを使用します。 |
 

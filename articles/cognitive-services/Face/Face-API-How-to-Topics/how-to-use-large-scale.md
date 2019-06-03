@@ -8,44 +8,27 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: sample
-ms.date: 03/01/2018
+ms.date: 05/01/2019
 ms.author: sbowles
-ms.openlocfilehash: 2d96a04b1287033999dd5f026dd7d8d017259eb4
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 5a4085f713d66859a464ab59b00d856921db8ec3
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859048"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66124479"
 ---
-# <a name="example-how-to-use-the-large-scale-feature"></a>例:大規模機能を使用する方法
+# <a name="example-use-the-large-scale-feature"></a>例:大規模なフィーチャーを使用する
 
-このガイドは、既存の PersonGroup と FaceList からそれぞれ LargePersonGroup と LargeFaceList にスケールアップするコードの移行に関する高度な記事です。
-このガイドでは、PersonGroup と FaceList の基本的な使用方法を理解していることを前提として移行プロセスについて説明します。
-基本的な操作を理解するには、「[画像内の顔を識別する方法](HowtoIdentifyFacesinImage.md)」など、他のチュートリアルを参照してください。
+このガイドは、既存の PersonGroup オブジェクトと FaceList オブジェクトからそれぞれ LargePersonGroup オブジェクトと LargeFaceList オブジェクトにスケールアップする方法に関する高度な記事です。 このガイドではこの移行プロセスについて説明します。 ここでは、PersonGroup オブジェクトと FaceList オブジェクト、[トレーニング](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599ae2d16ac60f11b48b5aa4)操作、および顔認識機能に関する基本的な知識があることを前提としています。 これらの内容の詳細については、[顔認識](../concepts/face-recognition.md)に関する概念ガイドを参照してください。
 
-Face API は、大規模シナリオ (LargePersonGroup と LargeFaceList) を有効にするために、最近 2 つの機能をリリースしました。これらはまとめて大規模操作と呼ばれます。
-LargePersonGroup には、最大 1,000,000 人、その 1 人あたり最大 248 個の顔を保持できます。LargeFaceList には、最大 1,000,000 人の顔を保持できます。
+LargePersonGroup と LargeFaceList は、まとめて大規模操作と呼びます。 LargePersonGroup には、最大 100 万人、その 1 人あたり最大 248 個の顔を保持できます。 LargeFaceList には、最大 100 万人の顔を保持できます。 大規模操作は、従来の PersonGroup と FaceList に似ていますが、新しいアーキテクチャなのでいくつかの違いがあります。 
 
-大規模操作は、従来の PersonGroup と FaceList に似ていますが、新しいアーキテクチャなのでいくつかの重要な違いがあります。
-このガイドでは、PersonGroup と FaceList の基本的な使用方法を理解していることを前提として移行プロセスについて説明します。
-サンプルは Face API クライアント ライブラリを使用して C# で記述されています。
+サンプルは Azure Cognitive Services Face API クライアント ライブラリを使用して C# で記述されています。
 
-Identification と FindSimilar に対して大規模な顔検索パフォーマンスを有効にするには、トレーニング操作を導入して LargeFaceList と LargePersonGroup を事前に処理する必要があります。
-トレーニング時間は実際の容量によって変わり、数秒から約 30 分かかります。
-以前にトレーニングに成功している場合、トレーニング期間中でも Identification と FindSimilar を実行できます。
-ただし、欠点は、大規模なトレーニングへの新しい移行後処理が完了するまで、新しく追加された人物/顔が結果に表示されないことです。
+> [!NOTE]
+> Identification と FindSimilar に対して大規模な顔検索パフォーマンスを有効にするには、トレーニング操作を導入して LargeFaceList と LargePersonGroup を事前に処理します。 トレーニング時間は実際の容量に応じて変わり、数秒から約 30 分かかります。 以前にトレーニング操作に成功している場合、トレーニング期間中に Identification と FindSimilar を実行できます。 欠点は、大規模なトレーニングへの新しい移行後処理が完了するまで、新しく追加された人物や顔が結果に表示されないことです。
 
-## <a name="concepts"></a>概念
-
-このガイドの次の概念についてよくわからない場合は、[用語集](../Glossary.md)で定義を参照してください。
-
-- LargePersonGroup: 上限が 1,000,000 の Persons のコレクション。
-- LargeFaceList: 上限が 1,000,000 の Faces のコレクション。
-- トレーニング:Identification/FindSimilar のパフォーマンスを確保するための前処理。
-- 識別: PersonGroup または LargePersonGroup から 1 つまたは複数の顔を識別することです。
-- FindSimilar: FaceList または LargeFaceList から似た顔を検索します。
-
-## <a name="step-1-authorize-the-api-call"></a>手順 1:API 呼び出しを承認する
+## <a name="step-1-initialize-the-client-object"></a>手順 1:クライアント オブジェクトを初期化する
 
 Face API クライアント ライブラリを使用する場合、サブスクリプション キーとサブスクリプション エンドポイントは、FaceServiceClient クラスのコンストラクターを介して渡されます。 例: 
 
@@ -56,25 +39,24 @@ string SubscriptionRegion = "https://westcentralus.api.cognitive.microsoft.com/f
 FaceServiceClient FaceServiceClient = new FaceServiceClient(SubscriptionKey, SubscriptionRegion);
 ```
 
-対応するエンドポイントがあるサブスクリプション キーは、Azure portal の [Marketplace] ページから取得できます。
-[サブスクリプション](https://azure.microsoft.com/services/cognitive-services/directory/vision/)に関するページを参照してください。
+サブスクリプションキーを対応するエンドポイントで取得するには、Azure portal から Azure Marketplace にアクセスします。
+詳細については、[サブスクリプション](https://azure.microsoft.com/services/cognitive-services/directory/vision/)に関する記事を参照してください。
 
-## <a name="step-2-code-migration-in-action"></a>手順 2:コード移行を実施する
+## <a name="step-2-code-migration"></a>手順 2:コードの移行
 
-このセクションでは、PersonGroup/FaceList の実装を LargePersonGroup/LargeFaceList に移行することのみに焦点を当てています。
-LargePersonGroup/LargeFaceList は PersonGroup/FaceList と設計と内部実装の点で異なりますが、API インターフェイスは下位互換性のために似ています。
+このセクションでは、PersonGroup または FaceList の実装を LargePersonGroup または LargeFaceList に移行する方法に焦点を当てています。 LargePersonGroup または LargeFaceList は、設計と内部実装の点で PersonGroup または FaceList とは異なりますが、API インターフェイスは下位互換性のために似ています。
 
-データの移行はサポートされていないので、代わりに LargePersonGroup/LargeFaceList を再作成する必要があります。
+データ移行はサポートされていません。 代わりに LargePersonGroup または LargeFaceList を再作成します。
 
-## <a name="step-21-migrate-persongroup-to-largepersongroup"></a>手順 2.1:PersonGroup を LargePersonGroup に移行する
+### <a name="migrate-a-persongroup-to-a-largepersongroup"></a>PersonGroup を LargePersonGroup に移行する
 
-PersonGroup から LargePersonGroup への移行は、まったく同じグループレベルの操作を共有するため、スムーズです。
+PersonGroup から LargePersonGroup への移行は簡単です。 これらはまったく同じグループ レベルの操作を共有します。
 
-PersonGroup/Person 関連の実装では、API パスまたは SDK クラス/モジュールを LargePersonGroup と LargePersonGroup Person に変更するだけで済みます。
+PersonGroup または Person 関連の実装では、API パスまたは SDK クラス/モジュールを LargePersonGroup と LargePersonGroup Person に変更するだけで済みます。
 
-データ移行に関しては、「[How to Add Faces](how-to-add-faces.md)」(顔を追加する方法) を参照してください。
+すべての顔と人を PersonGroup から新しい LargePersonGroup に追加します。 詳細については、「[顔を追加する方法](how-to-add-faces.md)」を参照してください。
 
-## <a name="step-22-migrate-facelist-to-largefacelist"></a>手順 2.2:FaceList を LargeFaceList に移行する
+### <a name="migrate-a-facelist-to-a-largefacelist"></a>FaceList を LargeFaceList に移行する
 
 | FaceList の API | LargeFaceList の API |
 |:---:|:---:|
@@ -86,10 +68,7 @@ PersonGroup/Person 関連の実装では、API パスまたは SDK クラス/モ
 | - | トレーニング |
 | - | トレーニング状態の取得 |
 
-上の表は、FaceList と LargeFaceList の間のリストレベル操作の比較です。
-ご覧のように、FaceList と比較すると、LargeFaceList にはトレーニングとトレーニング状態の取得という新しい操作が追加されています。
-LargeFaceList をトレーニングすることは、[FindSimilar](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) 操作の前提条件ですが、FaceList に必要なトレーニングはありません。
-次のスニペットは、LargeFaceList のトレーニングを待機するヘルパー関数です。
+上の表は、FaceList と LargeFaceList の間のリストレベル操作の比較です。 ご覧のように、FaceList と比較すると、LargeFaceList にはトレーニングとトレーニング状態の取得という新しい操作が追加されています。 LargeFaceList のトレーニングは、[FindSimilar](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) 操作の前提条件です。 FaceList にはトレーニングは必要ありません。 次のスニペットは、LargeFaceList のトレーニングを待機するヘルパー関数です。
 
 ```CSharp
 /// <summary>
@@ -139,7 +118,7 @@ private static async Task TrainLargeFaceList(
 }
 ```
 
-顔を追加した FaceList と FindSimilar の以前の一般的な使用方法を次に示します。
+以前は、顔を追加した FaceList と FindSimilar の一般的な使用方法は、次のようなものでした。
 
 ```CSharp
 // Create a FaceList.
@@ -209,57 +188,47 @@ using (Stream stream = File.OpenRead(QueryImagePath))
 }
 ```
 
-上に示したように、データ管理と FindSimilar 部分はほぼ同じです。
-唯一の例外は、FindSimilar が動作する前に、LargeFaceList で新しい事前処理のトレーニング操作が完了する必要があることです。
+前述のとおり、データ管理と FindSimilar 部分はほぼ同じです。 唯一の例外は、FindSimilar が動作する前に、LargeFaceList で新しい事前処理のトレーニング操作が完了する必要があることです。
 
 ## <a name="step-3-train-suggestions"></a>手順 3:候補をトレーニングする
 
-トレーニング操作によって [FindSimilar](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) と [Identification](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) は高速になりますが、特に大規模になるとトレーニング時間が長くなります。
-さまざまな規模での推定トレーニング時間を次の表に示します。
+トレーニング操作によって [FindSimilar](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) と [Identification](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) は高速になりますが、特に大規模になるとトレーニング時間が長くなります。 さまざまな規模での推定トレーニング時間を次の表に示します。
 
 | 規模 (顔または人の数) | 推定トレーニング時間 |
 |:---:|:---:|
-| 1,000 | 1 から 2 秒 |
-| 10,000 | 5 から 10 秒 |
-| 100,000 | 1 から 2 分 |
-| 1,000,000 | 10 から 30 分 |
+| 1,000 | 1 ～ 2 秒 |
+| 10,000 | 5 ～ 10 秒 |
+| 100,000 | 1 ～ 2 分 |
+| 1,000,000 | 10 ～ 30 分 |
 
-大規模機能をより有効に活用するには、いくつかの戦略を考慮することをお勧めします。
+大規模機能をより有効に活用するには、以下の戦略をお勧めします。
 
-## <a name="step-31-customize-time-interval"></a>手順 3.1: 時間間隔をカスタマイズする
+### <a name="step-31-customize-time-interval"></a>手順 3.1: 時間間隔をカスタマイズする
 
-`TrainLargeFaceList()` でわかるように、無限のトレーニング状態チェック プロセスが遅延する `timeIntervalInMilliseconds` があります。
-顔が多い LargeFaceList の場合、間隔を広げると、呼び出し回数とコストが減ります。
-時間間隔は、LargeFaceList の予想容量に従ってカスタマイズすることをお勧めします。
+`TrainLargeFaceList()` でわかるように、無限のトレーニング状態チェック プロセスが遅延する時間間隔 (ミリ秒) があります。 顔が多い LargeFaceList の場合、間隔を広げると、呼び出し回数とコストが減ります。 時間間隔は、LargeFaceList の予想容量に従ってカスタマイズします。
 
-同じ戦略が LargePersonGroup にも適用されます。
-たとえば、1,000,000 人の LargePersonGroup をトレーニングする場合、`timeIntervalInMilliseconds` は 60,000 (つまり 1 分間隔) になる可能性があります。
+同じ戦略が LargePersonGroup にも適用されます。 たとえば、100 万人の人物が含まれる、LargePersonGroup をトレーニングする場合、`timeIntervalInMilliseconds` は 60,000 (1 分間隔) になります。
 
-## <a name="step-32-small-scale-buffer"></a>手順 3.2 小規模なバッファー
+### <a name="step-32-small-scale-buffer"></a>手順 3.2: 小規模なバッファー
 
-LargePersonGroup/LargeFaceList の Persons/Faces は、トレーニングが完了した後にのみ検索できます。
-動的なシナリオでは、新しい人/顔が絶えず追加され、すぐに検索できるようにする必要がありますが、望ましい時間よりもトレーニング時間が長くなる可能性があります。
-この問題を軽減するには、新しく追加されたエントリに対してのみ、追加の小規模な LargePersonGroup/LargeFaceList をバッファーとして利用します。
-このバッファーはサイズがはるかに小さいので、トレーニングにかかる時間が短く、この一時的なバッファーに対する即時検索が機能するはずです。
-より長い間隔で (たとえば毎日深夜に) マスター トレーニングを実行して、このバッファーとマスター LargePersonGroup/LargeFaceList に対するトレーニングを組み合わせて使用します。
+LargePersonGroup または LargeFaceList の Persons または Faces は、トレーニングが完了した後にのみ検索できます。 動的なシナリオでは、新しい人または顔が絶えず追加され、すぐに検索できるようにする必要がありますが、望ましい時間よりもトレーニング時間が長くなる可能性があります。 
+
+この問題を軽減するには、新しく追加されたエントリに対してのみ、追加の小規模な LargePersonGroup または LargeFaceList をバッファーとして利用します。 このバッファーはサイズが小さいため、トレーニングにかかる時間が短くなります。 この一時的なバッファーに対する即時検索機能が機能するはずです。 より長い間隔でマスター トレーニングを実行することで、このバッファーとマスター LargePersonGroup または LargeFaceList に対するトレーニングを組み合わせて使用します。 たとえば、毎日深夜に実行します。
 
 ワークフローの例:
-1. マスター LargePersonGroup/LargeFaceList (マスター コレクション) とバッファー LargePersonGroup/LargeFaceList (バッファー コレクション) を作成します。 バッファー コレクションは、新しく追加された Persons/Faces の専用です。
-1. マスター コレクションとバッファー コレクションの両方に新しい Persons/Faces を追加します。
+
+1. マスター LargePersonGroup または LargeFaceList (マスター コレクション) を作成します。 バッファー LargePersonGroup または LargeFaceList (バッファー コレクション) を作成します。 バッファー コレクションは、新しく追加された人または顔の専用です。
+1. マスター コレクションとバッファー コレクションの両方に新しい人または顔を追加します。
 1. 新しく追加されたエントリが有効になるように、短時間の間隔でバッファー コレクションのみをトレーニングします。
-1. マスター コレクションとバッファー コレクションの両方に対して Identification/FindSimilar を呼び出し、結果をマージします。
-1. バッファー コレクションのサイズが増えてしきい値に達するか、システム アイドル時間になったら、新しいバッファー コレクションを作成し、マスター収集に対するトレーニングをトリガーします。
+1. マスター コレクションとバッファー コレクションの両方に対して Identification または FindSimilar を呼び出します。 結果をマージします。
+1. バッファー コレクションのサイズが増えてしきい値に達するか、システム アイドル時間になったら、新しいバッファー コレクションを作成します。 マスター コレクションに対するトレーニングをトリガーします。
 1. マスター コレクションに対するトレーニングの完了後に古いバッファー コレクションを削除します。
 
-## <a name="step-33-standalone-training"></a>手順 3.3 スタンドアロン トレーニング
+### <a name="step-33-standalone-training"></a>手順 3.3: スタンドアロン トレーニング
 
-比較的長い待機時間を許容できる場合は、新しいデータを追加した直後にトレーニング操作をトリガーする必要はありません。
-代わりに、トレイン操作をメイン ロジックから分割して、定期的にトリガーすることができます。
-この戦略は、許容できる待機時間がある動的なシナリオに適しています。また、静的シナリオに適用してトレーニング頻度をさらに減らすことができます。
+比較的長い待機時間を許容できる場合は、新しいデータを追加した直後にトレーニング操作をトリガーする必要はありません。 代わりに、トレイン操作をメイン ロジックから分割して、定期的にトリガーすることができます。 この戦略は、許容できる待機時間がある動的なシナリオに適しています。 これは、トレーニングの頻度をさらに減らすために、静的なシナリオに適用することができます。
 
-`TrainLargeFaceList` と似た `TrainLargePersonGroup` 関数があるとします。
-[`Timer`](https://msdn.microsoft.com/library/system.timers.timer(v=vs.110).aspx) クラス 
-(`System.Timers` 内) を呼び出すことで LargePersonGroup に対してスタンドアロン トレーニングを実行する一般的な実装を次に示します。
+`TrainLargeFaceList` と似た `TrainLargePersonGroup` 関数があるとします。 `System.Timers` の [`Timer`](https://msdn.microsoft.com/library/system.timers.timer(v=vs.110).aspx) クラスを呼び出して LargePersonGroup に対してスタンドアロン トレーニングを実行する一般的な実装を次に示します。
 
 ```CSharp
 private static void Main()
@@ -269,15 +238,15 @@ private static void Main()
     const string LargePersonGroupName = "MyLargePersonGroupDisplayName";
     FaceServiceClient.CreateLargePersonGroupAsync(LargePersonGroupId, LargePersonGroupName).Wait();
 
-    // Setup a standalone training at regular intervals.
-    const int TimeIntervalForStatus = 1000 * 60; // 1 minute interval for getting training status.
-    const double TimeIntervalForTrain = 1000 * 60 * 60; // 1 hour interval for training.
+    // Set up standalone training at regular intervals.
+    const int TimeIntervalForStatus = 1000 * 60; // 1-minute interval for getting training status.
+    const double TimeIntervalForTrain = 1000 * 60 * 60; // 1-hour interval for training.
     var trainTimer = new Timer(TimeIntervalForTrain);
     trainTimer.Elapsed += (sender, args) => TrainTimerOnElapsed(LargePersonGroupId, TimeIntervalForStatus);
     trainTimer.AutoReset = true;
     trainTimer.Enabled = true;
 
-    // Other operations like creating persons, adding faces and Identification except for Train.
+    // Other operations like creating persons, adding faces, and identification, except for Train.
     // ...
 }
 
@@ -287,16 +256,18 @@ private static void TrainTimerOnElapsed(string largePersonGroupId, int timeInter
 }
 ```
 
-データ管理と識別に関連する実装の詳細については、「[How to Add Faces](how-to-add-faces.md)」(顔を追加する方法) と「[画像内の顔を識別する方法](HowtoIdentifyFacesinImage.md)」を参照してください。
+データ管理と識別に関連する実装の詳細については、「[顔を追加する方法](how-to-add-faces.md)」と「[画像内の顔を識別する方法](HowtoIdentifyFacesinImage.md)」を参照してください。
 
 ## <a name="summary"></a>まとめ
 
-このガイドでは、(データではなく) 既存の PersonGroup/FaceList コードを LargePersonGroup/LargeFaceList に移行する方法を学びました。
+このガイドでは、データではなく、既存の PersonGroup または FaceList コードを、LargePersonGroup または LargeFaceList に移行する方法を学びました。
 
-- LargePaceGroup と LargeFaceList は、LargeFaceList によるトレーニング操作が必要であることを除けば、PersonGroup/FaceList と同様に機能します。
+- LargePaceGroup と LargeFaceList は、LargeFaceList によるトレーニング操作が必要であることを除けば、PersonGroup または FaceList と同様に機能します。
 - 大規模なデータセットの動的なデータ更新には、適切なトレーニング戦略を実行してください。
 
-## <a name="related-topics"></a>関連トピック
+## <a name="next-steps"></a>次の手順
 
-- [画像内の顔を識別する方法](HowtoIdentifyFacesinImage.md)
-- [顔を追加する方法](how-to-add-faces.md)
+ハウツー ガイドに従って、PersonGroup に顔を追加する方法、または PersonGroup で識別操作を実行する方法を学習します。
+
+- [顔を追加する](how-to-add-faces.md)
+- [画像内の顔を識別する](HowtoIdentifyFacesinImage.md)

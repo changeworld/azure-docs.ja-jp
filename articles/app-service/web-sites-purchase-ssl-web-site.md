@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: apurvajo;cephalin
 ms.custom: seodec18
-ms.openlocfilehash: b561091eedb43e1c77f3c97951beeb92bfcf4751
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 0febb8fadd973b67ed232d6094d85894fb383d14
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65202924"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65955716"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-azure-app-service"></a>Azure App Service の SSL 証明書を購入して構成する
 
@@ -166,4 +166,4 @@ ms.locfileid: "65202924"
 * [HTTPS の適用](app-service-web-tutorial-custom-ssl.md#enforce-https)
 * [TLS 1.1/1.2 の適用](app-service-web-tutorial-custom-ssl.md#enforce-tls-versions)
 * [Azure App Service のアプリケーション コードに SSL 証明書を使用する](app-service-web-ssl-cert-load.md)
-* [FAQ:App Service 証明書](https://blogs.msdn.microsoft.com/appserviceteam/2017/07/24/faq-app-service-certificates/)
+* [FAQ:App Service 証明書](https://docs.microsoft.com/azure/app-service/faq-configuration-and-management/)

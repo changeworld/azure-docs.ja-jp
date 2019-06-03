@@ -2,54 +2,54 @@
 title: Azure Time Series Insights プレビューでのタイム シリーズ モデル | Microsoft Docs
 description: Azure Time Series Insights のタイム シリーズ モデルについて。
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 ms.workload: big-data
 manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 12/04/2018
+ms.date: 04/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: eeab01146c938ec118deae08a30af85af4186a2e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 3e6e8ae76c0ae6f688dd4a039b34c52af16b6e0f
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64714066"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244019"
 ---
 # <a name="time-series-model"></a>タイム シリーズ モデル
 
 この記事では、Azure Time Series Insights プレビューのタイム シリーズ モデル部分について説明します。 モデル自体やその機能について説明すると共に、独自のモデルの構築や更新を開始する方法についても説明します。
 
-これまで、IoT デバイスから収集されたデータにはコンテキスト情報が不足していたため、センサーをすばやく検索して分析することが困難でした。 タイム シリーズ モデルの主な目的は、IoT データの検索と分析を簡素化することです。 この目的は、時系列データのキュレーション、メンテナンス、エンリッチメントを可能にし、コンシューマー対応データセットを簡単に準備できるようにすることで達成されます。 
+これまで、IoT デバイスから収集されたデータにはコンテキスト情報が不足していたため、センサーをすばやく検索して分析することが困難でした。 タイム シリーズ モデルの主な目的は、IoT データの検索と分析を簡素化することです。 この目的は、時系列データのキュレーション、メンテナンス、エンリッチメントを可能にし、コンシューマー対応データセットを簡単に準備できるようにすることで達成されます。
 
 タイム シリーズ モデルは、クエリやナビゲーションにおいて重要な役割を果たします。デバイス エンティティや非デバイス エンティティをコンテキスト化することができるためです。 タイム シリーズ モデル内で保持されているデータについては、それらに格納された数式を利用できるので、時系列クエリの計算が強化されます。
 
-![tsm][1]
+[![タイム シリーズ モデルの概要](media/v2-update-tsm/tsm.png)](media/v2-update-tsm/tsm.png#lightbox)
 
 ## <a name="key-capabilities"></a>主な機能
 
 時系列データのコンテキスト化をシンプルかつ簡単に管理できるようにするため、タイム シリーズ モデルでは、Time Series Insights プレビューで次の機能が使用できるようになっています。 これは以下のことに役立ちます。
 
 * 計算や数式の作成と管理、スカラー関数を活用したデータの変換、操作の集計などを行う。
-
 * 親子関係を定義してナビゲーションと参照を可能にし、時系列テレメトリにコンテキストを提供する。
-
 * "*インスタンス フィールド*" のインスタンス部分に関連付けられたプロパティを定義し、それらを使用して階層を作成する。
 
-## <a name="times-series-model-key-components"></a>タイム シリーズ モデルの主要コンポーネント
+## <a name="entity-components"></a>エンティティ コンポーネント
 
-タイム シリーズ モデルには、次の 3 つの主要コンポーネントがあります。
+タイム シリーズ モデルには次の 3 つのコア コンポーネントがあります。
 
-* タイム シリーズ モデルの "*型*"
-* タイム シリーズ モデルの "*階層*"
-* タイム シリーズ モデルの "*インスタンス*"
+* <a href="#time-series-model-types">タイム シリーズ モデルの型</a>
+* <a href="#time-series-model-hierarchies">タイム シリーズ モデルの階層</a>
+* <a href="#time-series-model-instances">タイム シリーズ モデルのインスタンス</a>
+
+これらのコンポーネントを組み合わせて、タイム シリーズ モデルを指定し、Azure Time Series Insights データを整理します。
 
 ## <a name="time-series-model-types"></a>タイム シリーズ モデルの型
 
 タイム シリーズ モデルの "*型*" は、計算を行うための変数や数式を定義するのに役立ちます。 型は、特定の Time Series Insights インスタンスに関連付けられます。 1 つの型は、1 つまたは複数の変数を持つことができます。 たとえば、Time Series Insights インスタンスの型が "*温度センサー*" の場合は、その型を、"*平均温度*"、"*最低温度*"、"*最高温度*" という変数から構成することができます。 Time Series Insights はデータが最初に送信される際に、既定の型を作成します。 既定の型は、モデル設定から取得したり更新することができます。 既定の型には、イベントの数をカウントする変数が含まれています。
 
-## <a name="time-series-model-type-json-example"></a>タイム シリーズ モデルの型の JSON サンプル
+### <a name="time-series-model-type-json-example"></a>タイム シリーズ モデルの型の JSON サンプル
 
 サンプル:
 
@@ -76,32 +76,20 @@ ms.locfileid: "64714066"
 
 タイム シリーズ モデルの種類について詳しくは、[リファレンス ドキュメント](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#types-api)をご覧ください。
 
-## <a name="variables"></a>変数
+### <a name="variables"></a>変数
 
 Time Series Insights の型には変数があります。これは、イベントからの値に対する名前付き計算です。 Time Series Insights の変数の定義には、数式と計算の規則が含まれます。 変数の定義には、"*種類*"、"*値*"、"*フィルター*"、"*削減*"、および "*境界*" が含まれます。 変数は、タイム シリーズ モデル内の型の定義に保存されます。クエリ API を通じて変数をインラインで指定すると、保存されている定義をオーバーライドすることができます。
 
 次の表は、変数の定義の凡例です。
 
-![table][2]
+[![変数定義テーブルの入力](media/v2-update-tsm/table.png)](media/v2-update-tsm/table.png#lightbox)
 
-### <a name="variable-kind"></a>変数の種類
-
-次の種類の変数がサポートされています。
-
-* *数値*
-* *集計*
-
-### <a name="variable-filter"></a>変数のフィルター
-
-変数のフィルターでは、計算で考慮される行の数を条件に応じて制限するための、オプションのフィルター句を指定します。
-
-### <a name="variable-value"></a>変数の値
-
-変数の値は計算で使用されます。 これは、参照するイベント内の列です。
-
-### <a name="variable-aggregation"></a>変数の集計
-
-変数の集計関数を使用すると、一部の計算が実行可能になります。 Time Series Insights では、通常の集計がサポートされています ("*最小*"、"*最大*"、"*平均*"、"*合計*"、"*カウント*")。
+| 定義 | 説明 |
+| --- | ---|
+| 変数の種類 |  *[数値]* と *[集計]* の種類がサポートされています |
+| 変数のフィルター | 変数のフィルターでは、計算で考慮される行の数を条件に応じて制限するための、オプションのフィルター句を指定します。 |
+| 変数の値 | 変数の値は計算で使用されます。 当該のデータ ポイントについて参照する関連するフィールド。 |
+| 変数の集計 | 変数の集計関数を使用すると、一部の計算が実行可能になります。 Time Series Insights では、通常の集計がサポートされています ("*最小*"、"*最大*"、"*平均*"、"*合計*"、"*カウント*")。 |
 
 ## <a name="time-series-model-hierarchies"></a>タイム シリーズ モデルの階層
 
@@ -146,7 +134,7 @@ Time Series Insights の型には変数があります。これは、イベン�
 | ID4 | "building" = "1000", "floor" = "10"  |
 | ID5 | "building"、"floor"、"room" のどれも設定されていない |
 
-上記の例の場合、ID1 と ID4 は Azure Time Series Insights エクスプローラーで階層 H1 の一部として表示され、残りの階層は、指定されたデータ階層に一致しないため、"*親のないインスタンス*" に分類されます。
+上記の例の場合、**ID1** と **ID4** は Azure Time Series Insights エクスプローラーで階層 H1 の一部として表示され、残りの階層は、指定されたデータ階層に一致しないため、"*親のないインスタンス*" に分類されます。
 
 ## <a name="time-series-model-instances"></a>タイム シリーズ モデルのインスタンス
 
@@ -156,9 +144,9 @@ Time Series Insights の型には変数があります。これは、イベン�
 
 *instanceFields* は、インスタンスのプロパティと、インスタンスを定義する任意の静的データです。 これらによって、階層プロパティや非階層プロパティの値が定義されます。また、検索操作を実行するためのインデックスを作成することもできます。
 
-*name* プロパティは、オプションであり、大文字小文字が区別されます。 *name* は、使用できない場合、既定でタイム シリーズ ID になります。 *name* を指定しても、タイム シリーズ ID も Well で使用可能になります (エクスプローラーのチャートの下のグリッド)。 
+*name* プロパティは、オプションであり、大文字小文字が区別されます。 *name* は、使用できない場合、既定でタイム シリーズ ID になります。 *name* を指定しても、タイム シリーズ ID も Well で使用可能になります (エクスプローラーのチャートの下のグリッド)。
 
-## <a name="time-series-model-instance-json-example"></a>タイム シリーズ モデルのインスタンスの JSON サンプル
+### <a name="time-series-model-instance-json-example"></a>タイム シリーズ モデルのインスタンスの JSON サンプル
 
 サンプル:
 
@@ -180,7 +168,7 @@ Time Series Insights の型には変数があります。これは、イベン�
 
 タイム シリーズ モデルのインスタンスについて詳しくは、[リファレンス ドキュメント](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#instances-api)をご覧ください。
 
-## <a name="time-series-model-settings-example"></a>タイム シリーズ モデルの設定の例
+### <a name="time-series-model-settings-example"></a>タイム シリーズ モデルの設定の例
 
 サンプル:
 
@@ -206,7 +194,3 @@ Time Series Insights の型には変数があります。これは、イベン�
 - 「[Azure Time Series Insights プレビューのストレージとイングレス](./time-series-insights-update-storage-ingress.md)」をご覧ください。
 
 - 新しい[タイム シリーズ モデル](https://docs.microsoft.com/rest/api/time-series-insights/preview-model)をご覧ください。
-
-<!-- Images -->
-[1]: media/v2-update-tsm/tsm.png
-[2]: media/v2-update-tsm/table.png

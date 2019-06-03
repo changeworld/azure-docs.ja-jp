@@ -3,8 +3,8 @@ title: Microsoft ID プラットフォームの進化 - Azure
 description: Azure Active Directory (Azure AD) の ID サービスおよび開発者プラットフォームの進化版である Microsoft ID プラットフォームについて説明します。
 services: active-directory
 documentationcenter: dev-center-name
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -13,20 +13,20 @@ ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/07/2019
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0b912b6f3fe42c724468347f9b3a7f0b4efa054
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 807045089f70e117d46754412d974be7fba5a77a
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65067969"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65832494"
 ---
 # <a name="evolution-of-microsoft-identity-platform"></a>Microsoft ID プラットフォームの進化
 
-Microsoft ID プラットフォームは、Azure Active Directory (Azure AD) の ID サービスおよび開発者プラットフォームの進化版です。 これにより、ユーザーをサインインし、Microsoft API (Microsoft Graph) や開発者が構築した API を呼び出すためのトークンを取得するアプリケーションを開発者がビルドできます。 これは、認証サービス、オープン ソース ライブラリ、(開発者ポータルとアプリケーション API による) アプリケーションの登録と構成、完全な開発者向けドキュメント、クイックスタート サンプル、コード サンプル、チュートリアル、ハウツー ガイド、その他の開発者向けコンテンツによって構成されています。 Microsoft ID プラットフォームでは、OAuth 2.0 や OpenID Connect など業界標準のプロトコルがサポートされています。
+Microsoft ID プラットフォームは、Azure Active Directory (Azure AD) 開発者プラットフォームの進化版です。 これにより、ユーザーをサインインし、Microsoft API (Microsoft Graph) や開発者が構築した API を呼び出すためのトークンを取得するアプリケーションを開発者がビルドできます。 これは、認証サービス、オープン ソース ライブラリ、(開発者ポータルとアプリケーション API による) アプリケーションの登録と構成、完全な開発者向けドキュメント、クイックスタート サンプル、コード サンプル、チュートリアル、ハウツー ガイド、その他の開発者向けコンテンツによって構成されています。 Microsoft ID プラットフォームでは、OAuth 2.0 や OpenID Connect など業界標準のプロトコルがサポートされています。
 
 これまで、ほとんどの開発者は Azure AD v1.0 プラットフォームを使用して (Azure AD によりプロビジョニングされる) 職場や学校のアカウントを認証してきました。これは、Azure AD Authentication Library (ADAL)、アプリケーションの登録と構成用の Azure portal、プログラムによるアプリケーション構成用の Azure AD Graph API を使用して、Azure AD v1.0 エンドポイントからトークンを要求することによって行われていました。
 

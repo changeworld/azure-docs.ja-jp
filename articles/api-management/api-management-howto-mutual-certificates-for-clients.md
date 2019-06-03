@@ -11,22 +11,20 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/01/2017
+ms.date: 05/29/2019
 ms.author: apimpm
-ms.openlocfilehash: 450ebc621758363c5ea9ab6d631cd6c7df38794b
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: ac9910358cf19eac3f704f1bf3e259e9a1543dcc
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58619724"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66141511"
 ---
 # <a name="how-to-secure-apis-using-client-certificate-authentication-in-api-management"></a>API Management でクライアント証明書認証を使用して API を保護する方法
 
 API Management には、クライアント証明書を使用して API (つまりクライアントから API Management) へのアクセスを保護する機能が備わっています。 現時点では、クライアント証明書の拇印が目的の値であるかを確認できます。 API Management にアップロードした既存の証明書に対する拇印を確認することもできます。  
 
 クライアント証明書を使用して API のバックエンド サービスへのアクセス (つまり API Management からバックエンド) を保護する方法については、[クライアント証明書認証を使用して、バックエンド サービスを保護する方法](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates)に関するページを参照してください。
-
-[!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
 ## <a name="checking-the-expiration-date"></a>有効期限の確認
 

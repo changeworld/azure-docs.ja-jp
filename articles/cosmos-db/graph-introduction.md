@@ -5,18 +5,18 @@ author: LuisBosquez
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: overview
-ms.date: 09/05/2018
+ms.date: 05/20/2019
 ms.author: lbosq
-ms.openlocfilehash: 36465c253996e4cecc665b2fd1d59c03adc78a2f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6f5d90f8b825b7076a1a5122dbef3c8b2990e216
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58110547"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65954261"
 ---
 # <a name="introduction-to-azure-cosmos-db-gremlin-api"></a>Azure Cosmos DB の概要: Gremlin API
 
-[Azure Cosmos DB](introduction.md) は、ミッション クリティカルなアプリケーション向けの、Microsoft のグローバル分散マルチモデル データベース サービスです。 また、マルチモデル データベースでもあり、ドキュメント、キーと値、グラフ、列指向の各データ モデルがサポートされています。 Azure Cosmos DB Gremlin API は、グラフ データの保存と操作に使用されます。 Gremlin API ではグラフ データのモデル化がサポートされており、グラフ データを走査する API が用意されています。
+[Azure Cosmos DB](introduction.md) は、ミッション クリティカルなアプリケーション向けの、Microsoft のグローバル分散マルチモデル データベース サービスです。 これはマルチモデル データベースであり、ドキュメント、キー値、グラフ、および列指向データ モデルをサポートします。 Azure Cosmos DB Gremlin API は、グラフ データの保存と操作に使用されます。 Gremlin API ではグラフ データのモデル化がサポートされており、グラフ データを走査する API が用意されています。
 
 この記事では、Azure Cosmos DB Gremlin API の概要と、これを使用して何十億もの頂点と辺のある大規模なグラフを保存する方法について説明します。 ミリ秒の待機時間で、グラフにクエリを実行し、グラフの構造とスキーマを簡単に改善できます。 Azure Cosmos DB にクエリを実行するには、[Apache TinkerPop](https://tinkerpop.apache.org) のグラフ トラバーサル言語である [Gremlin](https://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps) を使用できます。
 

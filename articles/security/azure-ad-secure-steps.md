@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 06/18/2018
 ms.author: martincoetzer
-ms.openlocfilehash: 92546e6aabdf43c2f9cb0339fb21dd2dfc641d44
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 8e9101a1e23d361e66c5c30969069cbd4b971590
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57314315"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236778"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>ID インフラストラクチャをセキュリティ保護する 5 つのステップ
 
@@ -59,12 +59,12 @@ ms.locfileid: "57314315"
 
 多くの組織は、従来の複雑さ (特殊文字、数字、大文字、小文字を要求する) とパスワードの有効期限に関するルールを使用しています。 [Microsoft の調査](https://aka.ms/passwordguidance)によると、これらのポリシーは推測されやすいパスワードをユーザーが選択する原因となります。
 
-Azure AD の[パスワードの動的禁止](https://docs.microsoft.com/azure/active-directory/active-directory-secure-passwords)機能では、簡単に推測できるパスワードをユーザーが設定するの防ぐために、現在の攻撃者の行動が利用されます。 この機能はユーザーがクラウドで作成されるときは常に有効ですが、[Windows Server Active Directory 用の Azure AD パスワード保護](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad-on-premises)をデプロイするときにハイブリッド組織に対しても使用できるようになっています。 Azure AD パスワード保護は、ユーザーがこれらの一般的なパスワードを選択することをブロックし、指定したカスタム キーワードを含むパスワードをブロックするように拡張できます。 たとえば、ユーザーが会社の製品名や地元のスポーツ チームを含むパスワードを選択するのを防止することができます。
+Azure AD の[パスワードの動的禁止](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad)機能では、簡単に推測できるパスワードをユーザーが設定するの防ぐために、現在の攻撃者の行動が利用されます。 この機能はユーザーがクラウドで作成されるときは常に有効ですが、[Windows Server Active Directory 用の Azure AD パスワード保護](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad-on-premises)をデプロイするときにハイブリッド組織に対しても使用できるようになっています。 Azure AD パスワード保護は、ユーザーがこれらの一般的なパスワードを選択することをブロックし、指定したカスタム キーワードを含むパスワードをブロックするように拡張できます。 たとえば、ユーザーが会社の製品名や地元のスポーツ チームを含むパスワードを選択するのを防止することができます。
 
 [NIST ガイダンス](https://pages.nist.gov/800-63-3/sp800-63b.html)に基づく次のような先進のパスワード ポリシーを採用することをお勧めします。
 
 1. パスワードに 8 文字以上を必要とする。 ユーザーが予測可能なパスワードを選んだり、パスワードをファイルに保存したり、書き留めたりする原因となるため、必ずしも長ければ長いほど良いというわけではありません。
-2. 有効期限のルールを無効にする。このルールは、簡単に推測されるパスワード (**Summer2018!** など) をユーザーが使用する原因になります
+2. 有効期限のルールを無効にする。このルールは、簡単に推測されるパスワード (**Spring2019!** など) をユーザーが使用する原因になります
 3. 文字構成の要件を無効にして、よく攻撃されるパスワードをユーザーが選択するのを防ぐ。これは、文字構成の要件が、パスワードで予測可能な文字置換をユーザーが選択する原因となるためです。
 
 Azure AD で直接 ID を作成した場合、[PowerShell を使用してユーザーのパスワードの期限切れを防ぐ](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-policy)ことができます。 ハイブリッド組織では、[ドメイン グループ ポリシー設定](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/hh994572(v%3dws.10))または [Windows PowerShell](https://docs.microsoft.com/powershell/module/addsadministration/set-addefaultdomainpasswordpolicy) を使用してこれらのポリシーを実装する必要があります。
@@ -166,7 +166,7 @@ Azure AD Identity Protection で提供される 2 つの重要なレポートを
 
 ### <a name="audit-apps-and-consented-permissions"></a>監査アプリと同意されたアクセス許可
 
-だまされたユーザーが侵害された Web サイトやアプリに移動することで、それらがユーザーのプロファイル情報やメールなどのユーザー データにアクセスできるようになる可能性があります。 悪意のあるアクターは、受け取った同意されたアクセス許可を使用して、メールボックスの内容を暗号化し、メールボックス データを回復するための身代金を要求できます。 ユーザーによって付与されたアクセスを許可を[管理者は確認および監査する必要があります](https://blogs.technet.microsoft.com/office365security/defending-against-illicit-consent-grants/)。
+だまされたユーザーが侵害された Web サイトやアプリに移動することで、それらがユーザーのプロファイル情報やメールなどのユーザー データにアクセスできるようになる可能性があります。 悪意のあるアクターは、受け取った同意されたアクセス許可を使用して、メールボックスの内容を暗号化し、メールボックス データを回復するための身代金を要求できます。 ユーザーによって付与されたアクセスを許可を[管理者は確認および監査する必要があります](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants)。
 
 ## <a name="step-5---enable-end-user-self-help"></a>ステップ 5. - エンドユーザー セルフヘルプを有効にする
 

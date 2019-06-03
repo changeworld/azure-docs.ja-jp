@@ -4,7 +4,7 @@ description: Microsoft Authentication Library for .NET (MSAL.NET) と Azure AD A
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
-manager: celested
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -17,12 +17,12 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2576121bfc945b90ce8ec0260ea30ec110e14dd8
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: f9be13ac22e6eda32668d635032ebcccf417b6c7
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65138825"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65785218"
 ---
 # <a name="migrating-applications-to-msalnet"></a>MSAL.NET へのアプリケーションの移行
 
@@ -192,7 +192,7 @@ var result = await app.AcquireTokenInteractive(scopes).ExecuteAsync();
 Azure AD で使用されるロジックは次のとおりです。
 - v1.0 アクセス トークン (使用可能な場合のみ) を使用する ADAL (v1.0) エンドポイントの場合、aud=resource となります
 - v2.0 トークンを受け入れるリソースのためにアクセス トークンを要求する MSAL (v2.0 エンドポイント) の場合は、aud=resource.AppId となります
-- v1.0 アクセス トークンを受け入れるリソースのためにアクセス トークンを要求する MSAL (v2.0 エンドポイント) の場合 (上記の例の場合)、Azure AD では、最後のスラッシュの前のすべてを取得し、それをリソース ID として使用することで、要求されたスコープからの目的の対象ユーザーを解析します。 そのため、 https://database.windows.net で "https://database.windows.net/" の対象ユーザーが予期される場合、 https://database.windows.net//.default のスコープを要求する必要があります。 問題 #[747](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747) の「Resource url's trailing slash is omitted, which caused sql auth failure #747」 (リソース URL の末尾のスラッシュが省略されたため、SQL 認証エラー #747 が発生した) も参照してください
+- v1.0 アクセス トークンを受け入れるリソースのためにアクセス トークンを要求する MSAL (v2.0 エンドポイント) の場合 (上記の例の場合)、Azure AD では、最後のスラッシュの前のすべてを取得し、それをリソース ID として使用することで、要求されたスコープからの目的の対象ユーザーを解析します。 そのため、https:\//database.windows.net が "https://database.windows.net/" の対象ユーザーを必要とする場合、https:\//database.windows.net//.default のスコープを要求する必要があります。 問題 #[747](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747) の「Resource url's trailing slash is omitted, which caused sql auth failure #747」 (リソース URL の末尾のスラッシュが省略されたため、SQL 認証エラー #747 が発生した) も参照してください
 
 
 ### <a name="scopes-to-request-access-to-all-the-permissions-of-a-v10-application"></a>v1.0 アプリケーションのすべてのアクセス許可へのアクセス権を要求するスコープ

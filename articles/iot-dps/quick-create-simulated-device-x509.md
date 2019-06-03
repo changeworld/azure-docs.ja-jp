@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 2a27ec63ea4ae25823c604612bd3bcf3a057da61
-ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
+ms.openlocfilehash: ae5a1708b56db45bec38a4482b5dfd936bdedd4a
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "61249945"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65901238"
 ---
 # <a name="quickstart-provision-an-x509-simulated-device-using-the-azure-iot-c-sdk"></a>クイック スタート: シミュレートされた X.509 デバイスを Azure IoT C SDK を使用してプロビジョニングする
 
@@ -35,7 +35,7 @@ Azure IoT Device Provisioning Service では、次の 2 種類の登録がサポ
 
 ## <a name="prerequisites"></a>前提条件
 
-* ["C++ によるデスクトップ開発"](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) ワークロードを有効にした Visual Studio 2015 または [Visual Studio 2017](https://www.visualstudio.com/vs/)。
+* ['C++ によるデスクトップ開発'](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) ワークロードが有効になった [Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 以降。
 * [Git](https://git-scm.com/download/) の最新バージョンがインストールされている。
 
 
@@ -104,11 +104,11 @@ Azure IoT C SDK のサンプル コードを使用して、シミュレートさ
 
 1. Visual Studio を起動し、`azure_iot_sdks.sln` という名前の新しいソリューション ファイルを開きます。 このソリューション ファイルは、以前に azure-iot-sdk-c git リポジトリのルートに作成した `cmake` フォルダーにあります。
 
-2. Visual Studio のメニューで **[ビルド]** > **[ソリューションのビルド]** の順に選択して、ソリューション内のすべてのプロジェクトをビルドします。
+2. Visual Studio のメニューで **[ビルド]**  >  **[ソリューションのビルド]** の順に選択して、ソリューション内のすべてのプロジェクトをビルドします。
 
-3. Visual Studio の "*ソリューション エクスプローラー*" ウィンドウで、**Provision\_Tools** フォルダーに移動します。 **[dice\_device\_enrollment]** プロジェクトを右クリックし、**[スタートアップ プロジェクトに設定]** を選択します。 
+3. Visual Studio の "*ソリューション エクスプローラー*" ウィンドウで、**Provision\_Tools** フォルダーに移動します。 **[dice\_device\_enrollment]** プロジェクトを右クリックし、 **[スタートアップ プロジェクトに設定]** を選択します。 
 
-4. Visual Studio のメニューで **[デバッグ]** > **[デバッグなしで開始]** の順に選択して、ソリューションを実行します。 出力ウィンドウで、確認を求められたら個々の登録を行うための「**i**」を入力します。 
+4. Visual Studio のメニューで **[デバッグ]**  >  **[デバッグなしで開始]** の順に選択して、ソリューションを実行します。 出力ウィンドウで、確認を求められたら個々の登録を行うための「**i**」を入力します。 
 
     シミュレートされたデバイスについて、ローカルで生成された自己署名 X.509 証明書が出力ウィンドウに表示されます。 出力内容の **-----BEGIN CERTIFICATE-----** から最初の **-----END CERTIFICATE-----** までをクリップボードにコピーします。この両方の行を確実に含めるようにしてください。 出力ウィンドウの最初の証明書のみが必要です。
  
@@ -121,7 +121,7 @@ Azure IoT C SDK のサンプル コードを使用して、シミュレートさ
 
 2. **[登録を管理します]** タブをクリックし、上部にある **[Add individual enrollment]\(個別登録の追加\)** ボタンをクリックします。 
 
-3. **[Add Enrollment] (登録の追加)** で、次の情報を入力し、**[保存]** ボタンをクリックします。
+3. **[Add Enrollment] (登録の追加)** で、次の情報を入力し、 **[保存]** ボタンをクリックします。
 
     - **メカニズム:** ID 構成証明の "*メカニズム*" として **[X.509]** を選択します。
     - **プライマリ証明書の .pem ファイルまたは .cer ファイル:** **[ファイルの選択]** をクリックし、先ほど作成した証明書ファイル X509testcert.pem を選択します。
@@ -129,7 +129,7 @@ Azure IoT C SDK のサンプル コードを使用して、シミュレートさ
 
       [![X.509 構成証明の個々の登録をポータルで追加](./media/quick-create-simulated-device-x509/device-enrollment.png)](./media/quick-create-simulated-device-x509/device-enrollment.png#lightbox)
 
-      登録に成功すると、*[個々の登録]* タブの *[登録 ID]* 列に X.509 デバイスが **riot-device-cert** として表示されます。 
+      登録に成功すると、 *[個々の登録]* タブの *[登録 ID]* 列に X.509 デバイスが **riot-device-cert** として表示されます。 
 
 
 
@@ -141,7 +141,7 @@ Azure IoT C SDK のサンプル コードを使用して、シミュレートさ
 
 
 
-1. Azure portal で、Device Provisioning Service の **[概要]** タブをクリックし、**[_ID スコープ_]** の値を書き留めます。
+1. Azure portal で、Device Provisioning Service の **[概要]** タブをクリックし、 **[_ID スコープ_]** の値を書き留めます。
 
     ![ポータルのブレードから Device Provisioning サービスのエンドポイント情報を抽出](./media/quick-create-simulated-device-x509/extract-dps-endpoints.png) 
 
@@ -161,9 +161,9 @@ Azure IoT C SDK のサンプル コードを使用して、シミュレートさ
     hsm_type = SECURE_DEVICE_TYPE_X509;
     ```
 
-5. **prov\_dev\_client\_sample** プロジェクトを右クリックし、**[スタートアップ プロジェクトに設定]** を選択します。 
+5. **prov\_dev\_client\_sample** プロジェクトを右クリックし、 **[スタートアップ プロジェクトに設定]** を選択します。 
 
-6. Visual Studio のメニューで **[デバッグ]** > **[デバッグなしで開始]** の順に選択して、ソリューションを実行します。 プロジェクトをリビルドするよう求められたら、**[はい]** をクリックして、プロジェクトをリビルドしてから実行します。
+6. Visual Studio のメニューで **[デバッグ]**  >  **[デバッグなしで開始]** の順に選択して、ソリューションを実行します。 プロジェクトをリビルドするよう求められたら、 **[はい]** をクリックして、プロジェクトをリビルドしてから実行します。
 
     次の出力は、プロビジョニング デバイス クライアントのサンプルが正常に起動し、Provisioning Service インスタンスに接続して、IoT ハブの情報を取得し、登録した場合の例です。
 
@@ -180,7 +180,7 @@ Azure IoT C SDK のサンプル コードを使用して、シミュレートさ
     test-docs-hub.azure-devices.net, deviceId: test-docs-cert-device    
     ```
 
-7. ポータルで、Provisioning Service にリンクされた IoT ハブに移動し、**[IoT デバイス]** タブをクリックします。シミュレートされた X.509 デバイスをハブにプロビジョニングすると、そのデバイス ID が **有効** な "*状態*" で **[IoT デバイス]** ブレードに表示されます。 必要に応じて、一番上の **[更新]** ボタンをクリックします。 
+7. ポータルで、Provisioning Service にリンクされた IoT ハブに移動し、 **[IoT デバイス]** タブをクリックします。シミュレートされた X.509 デバイスをハブにプロビジョニングすると、そのデバイス ID が **有効** な "*状態*" で **[IoT デバイス]** ブレードに表示されます。 必要に応じて、一番上の **[更新]** ボタンをクリックします。 
 
     ![IoT ハブに登録されたデバイス](./media/quick-create-simulated-device/hub-registration.png) 
 
@@ -190,7 +190,7 @@ Azure IoT C SDK のサンプル コードを使用して、シミュレートさ
 引き続きデバイス クライアント サンプルを使用する場合は、このクイックスタートで作成したリソースをクリーンアップしないでください。 使用する予定がない場合は、次の手順を使用して、このクイックスタートで作成したすべてのリソースを削除してください。
 
 1. マシンに表示されているデバイス クライアント サンプルの出力ウィンドウを閉じます。
-1. Azure Portal の左側のメニューにある **[すべてのリソース]** をクリックし、Device Provisioning サービスを選択します。 サービスの **[登録を管理します]** を開き、**[個々の登録]** タブをクリックします。このクイックスタートで登録したデバイスの*登録 ID* を選択し、上部の **[削除]** ボタンをクリックします。 
+1. Azure Portal の左側のメニューにある **[すべてのリソース]** をクリックし、Device Provisioning サービスを選択します。 サービスの **[登録を管理します]** を開き、 **[個々の登録]** タブをクリックします。このクイックスタートで登録したデバイスの*登録 ID* を選択し、上部の **[削除]** ボタンをクリックします。 
 1. Azure Portal の左側のメニューにある **[すべてのリソース]** をクリックし、IoT ハブを選択します。 ハブの **[IoT デバイス]** を開き、このクイック スタートで登録したデバイスの "*デバイス ID*" を選択し、一番上の **[削除]** ボタンをクリックします。
 
 ## <a name="next-steps"></a>次の手順

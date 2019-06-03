@@ -3,33 +3,23 @@ title: Web アプリケーション ファイアウォールを有効にする -
 description: Azure CLI を使用して、アプリケーション ゲートウェイ上の Web アプリケーション ファイアウォールで Web トラフィックを制限する方法について説明します。
 services: application-gateway
 author: vhorne
-manager: jpconnock
 ms.service: application-gateway
 ms.topic: tutorial
-ms.workload: infrastructure-services
-ms.date: 7/14/2018
+ms.date: 5/20/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 1387dc5bb2cabf9a3078474564aadc81b28fd9a7
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 1822fe032a7c7a6382dbae2cb9f7095d1d076008
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58443622"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65955496"
 ---
 # <a name="enable-web-application-firewall-using-the-azure-cli"></a>Azure CLI を使用して Web アプリケーション ファイアウォールを有効にする
 
-> [!div class="op_single_selector"]
->
-> - [Azure Portal](application-gateway-web-application-firewall-portal.md)
-> - [PowerShell](tutorial-restrict-web-traffic-powershell.md)
-> - [Azure CLI](tutorial-restrict-web-traffic-cli.md)
->
-> 
+[Web アプリケーション ファイアウォール](waf-overview.md) (WAF) で[アプリケーション ゲートウェイ](overview.md)上のトラフィックを制限できます。 WAF は、[OWASP](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) ルールを使用してアプリケーションを保護します。 こうしたルールには、SQL インジェクション、クロスサイト スクリプティング攻撃、セッション ハイジャックなどの攻撃に対する保護が含まれます。
 
-[Web アプリケーション ファイアウォール](waf-overview.md) (WAF) で[アプリケーション ゲートウェイ](overview.md)上のトラフィックを制限できます。 WAF は、[OWASP](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) ルールを使用してアプリケーションを保護します。 こうしたルールには、SQL インジェクション、クロスサイト スクリプティング攻撃、セッション ハイジャックなどの攻撃に対する保護が含まれます。 
-
-このチュートリアルでは、以下の内容を学習します。
+この記事では、次のことについて説明します。
 
 > [!div class="checklist"]
 > * ネットワークのセットアップ
@@ -39,13 +29,13 @@ ms.locfileid: "58443622"
 
 ![Web アプリケーション ファイアウォールの例](./media/tutorial-restrict-web-traffic-cli/scenario-waf.png)
 
-必要に応じて、[Azure PowerShell](tutorial-restrict-web-traffic-powershell.md) を使ってこのチュートリアルの手順を完了できます。
+好みに応じて、[Azure PowerShell](tutorial-restrict-web-traffic-powershell.md) を使ってこの手順を実行することもできます。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.4 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
+CLI をローカルにインストールして使用する場合、この記事では、Azure CLI バージョン 2.0.4 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
 
@@ -148,7 +138,7 @@ az vmss extension set \
 
 ## <a name="create-a-storage-account-and-configure-diagnostics"></a>ストレージ アカウントの作成と診断の構成
 
-このチュートリアルでは、アプリケーション ゲートウェイは、検出および防止の目的で、ストレージ アカウントを使用してデータを格納します。 Azure Monitor ログまたはイベント ハブを使用して、データを記録することもできます。 
+この記事では、アプリケーション ゲートウェイは、検出および防止の目的で、ストレージ アカウントを使用してデータを格納します。 Azure Monitor ログまたはイベント ハブを使用して、データを記録することもできます。 
 
 ### <a name="create-a-storage-account"></a>ストレージ アカウントの作成
 
@@ -196,18 +186,9 @@ az network public-ip show \
 必要がなくなったら、リソース グループ、アプリケーション ゲートウェイ、およびすべての関連リソースを削除します。
 
 ```azurecli-interactive
-az group delete --name myResourceGroupAG --location eastus
+az group delete --name myResourceGroupAG 
 ```
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、以下の内容を学習しました。
-
-> [!div class="checklist"]
-> * ネットワークのセットアップ
-> * WAF 対応のアプリケーション ゲートウェイの作成
-> * 仮想マシン スケール セットを作成する
-> * ストレージ アカウントの作成と診断の構成
-
-> [!div class="nextstepaction"]
-> [SSL 終了でアプリケーション ゲートウェイを作成する](./tutorial-ssl-cli.md)
+* [SSL 終了でアプリケーション ゲートウェイを作成する](./tutorial-ssl-cli.md)

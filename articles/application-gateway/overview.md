@@ -6,14 +6,14 @@ author: vhorne
 ms.service: application-gateway
 ms.topic: overview
 ms.custom: mvc
-ms.date: 4/18/2019
+ms.date: 4/30/2019
 ms.author: victorh
-ms.openlocfilehash: 91e94c70444430725ffec836d1663aef99eb5496
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 78dd4b31991a15d3d946c47c5394f64bb3afea95
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60003362"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "64947264"
 ---
 # <a name="what-is-azure-application-gateway"></a>Azure Application Gateway とは
 
@@ -21,48 +21,29 @@ Azure Application Gateway は、Web アプリケーションに対するトラ�
 
 ![Application Gateway の概念](media/overview/figure1-720.png)
 
-一方、Application Gateway では、より詳細に指定できます。 たとえば、着信 URL に基づいてトラフィックをルーティングできます。 そのため、`/images` が着信 URL にある場合、画像用に構成された特定のサーバー セット (プールと呼ばれます) にトラフィックをルーティングできます。 `/video` がこの URL にある場合、そのトラフィックはビデオ用に最適化された別のプールにルーティングされます。
+Application Gateway では、URI パスやホスト ヘッダーなど、HTTP 要求の追加属性に基づいてルーティングを決定できます。 たとえば、着信 URL に基づいてトラフィックをルーティングできます。 そのため、`/images` が着信 URL にある場合、画像用に構成された特定のサーバー セット (プールと呼ばれます) にトラフィックをルーティングできます。 `/video` が URL にある場合、そのトラフィックはビデオ用に最適化された別のプールにルーティングされます。
 
 ![imageURLroute](./media/application-gateway-url-route-overview/figure1-720.png)
 
-この種類のルーティングは、アプリケーション レイヤー (OSI レイヤー 7) の負荷分散と呼ばれます。 Azure Application Gateway は URL ベースのルーティングなどを行うことができます。 
+この種類のルーティングは、アプリケーション レイヤー (OSI レイヤー 7) の負荷分散と呼ばれます。 Azure Application Gateway は URL ベースのルーティングなどを行うことができます。
 
 Azure Application Gateway には、次の機能があります。
 
-## <a name="autoscaling-public-preview"></a>自動スケーリングのパブリック プレビュー
-
-Application Gateway では、この記事で説明されている機能の他に、自動スケーリングとその他の重要なパフォーマンス強化を実現する新しい SKU [Standard_V2] のパブリック プレビューも提供されています。
-
-- **自動スケーリング** - 自動スケーリング SKU の下での Application Gateway または WAF のデプロイは、トラフィック負荷パターンの変化に基づいてスケールアップまたはスケールダウンできます。 また、自動スケールにより、プロビジョニングの間にデプロイのサイズまたはインスタンスの数を選択する必要がなくなります。 
-
-- **ゾーン冗長性** - Application Gateway または WAF のデプロイは複数の可用性ゾーンを対象にできるため、Traffic Manager を使ってゾーンごとに個別に Application Gateway のインスタンスをプロビジョニングして稼働させる必要はありません。
-
-- **静的 VIP** - アプリケーション ゲートウェイの VIP は、静的な VIP の種類だけをサポートするようになります。 これにより、アプリケーション ゲートウェイに関連付けられた VIP は、再起動後でも変化しません。
-
-- 一般提供の SKU と比較して、**デプロイと更新の時間が短縮**。 
-
-- 一般提供の SKU と比較して、**SSL オフロードのパフォーマンスが 5 倍**。
-
-Application Gateway のパブリック プレビューの機能の詳細については、「[自動スケールとゾーン冗長 Application Gateway (パブリック プレビュー)](application-gateway-autoscaling-zone-redundant.md)」を参照してください。
-
 ## <a name="secure-sockets-layer-ssl-termination"></a>Secure Sockets Layer (SSL) ターミネーション
 
-アプリケーション ゲートウェイは、ゲートウェイの SSL ターミネーションをサポートします。通常、トラフィックは、その後、暗号化されないままバックエンド サーバーに渡されます。 この機能により、Web サーバーは、負荷の大きい暗号化と復号化のオーバーヘッドから開放されます。 ただし、サーバーに対する暗号化されていない通信を利用できない場合があります。 その理由として、セキュリティ要件、コンプライアンス要件、またはセキュリティで保護された接続以外はアプリケーションで受け入れられない場合があります。 このようなアプリケーションのために、Application Gateway では、エンド ツー エンドの SSL 暗号化がサポートされています。
+アプリケーション ゲートウェイは、ゲートウェイの SSL ターミネーションをサポートします。通常、トラフィックは、その後、暗号化されないままバックエンド サーバーに渡されます。 この機能により、Web サーバーは、負荷の大きい暗号化と復号化のオーバーヘッドから開放されます。 ただし、サーバーに対する暗号化されていない通信を利用できない場合があります。 これは、セキュリティ要件やコンプライアンス要件が理由であったり、セキュリティで保護された接続以外はアプリケーションで受け入れられないためであったりします。 このようなアプリケーションのために、Application Gateway では、エンド ツー エンドの SSL 暗号化がサポートされています。
 
-## <a name="azure-kubernetes-service-aks-ingress-controller-preview"></a>Azure Kubernetes Service (AKS) のイングレス コントローラーの概要 
+## <a name="autoscaling"></a>自動スケール
 
-Application Gateway イングレス コントローラーは、AKS クラスター内のポッドとして実行され、Application Gateway が AKS クラスターに対する入り口として機能できるようにします。 これは、Application Gateway v2 でのみサポートされます。
+Standard_v2 または WAF_v2 SKU の Application Gateway または WAF デプロイでは、自動スケーリングがサポートされており、トラフィック負荷パターンの変化に基づいてスケールアップまたはスケールダウンできます。 また、自動スケールにより、プロビジョニングの間にデプロイのサイズまたはインスタンスの数を選択する必要がなくなります。 Application Gateway Standard_v2 および WAF_v2 の機能の詳細については、[自動スケーリング v2 SKU](application-gateway-autoscaling-zone-redundant.md) に関するページを参照してください。
 
-詳細については、「[Azure Application Gateway Ingress Controller (Azure Application Gateway イングレス コントローラー)](https://azure.github.io/application-gateway-kubernetes-ingress/)」を参照してください。
+## <a name="zone-redundancy"></a>ゾーン冗長性
 
-## <a name="connection-draining"></a>接続のドレイン
+Standard_v2 または WAF_v2 SKU の Application Gateway または WAF のデプロイは、複数の可用性ゾーンを対象にできるため、障害回復性が高く、ゾーンごとに個別の Application Gateway をプロビジョニングする必要がありません。
 
-接続のドレインを使用すると、計画的なサービスの更新中にバックエンド プール メンバーを正常に削除することができます。 この設定は、バックエンド http 設定を通じて有効にされ、ルールの作成中にバックエンド プールのすべてのメンバーに適用することができます。 有効にすると、Application Gateway は、バックエンド プールのすべての登録解除インスタンスが新しい要求を受け取らないようにし、既存の要求は構成された制限時間内に完了するようにします。 これは、API 呼び出しによってバックエンド プールから明示的に削除されたバックエンド インスタンスと、正常性プローブの判断によって異常であるとレポートされたバックエンド インスタンスの両方に適用されます。
+## <a name="static-vip"></a>静的 VIP
 
-## <a name="custom-error-pages"></a>カスタム エラー ページ
-Application Gateway では、既定のエラー ページを表示する代わりに、カスタム エラー ページを作成することができます。 カスタム エラー ページでは、独自のブランディングとレイアウトを使用することができます。
-
-詳細については、「[Create Application Gateway custom error pages (Application Gateway のカスタム エラー ページを作成する)](custom-error.md)」を参照してください。
+Standard_v2 または WAF_v2 SKU のアプリケーション ゲートウェイの VIP は、静的な VIP の種類だけをサポートします。 これにより、アプリケーション ゲートウェイに関連付けられた VIP は、Application Gateway の有効期間を過ぎても変化しません。
 
 ## <a name="web-application-firewall"></a>Web アプリケーション ファイアウォール
 
@@ -92,9 +73,9 @@ URL パス ベースのルーティングを使用すると、要求の URL パ�
 
 ## <a name="redirection"></a>リダイレクト
 
-HTTP を HTTPS に自動的にリダイレクトして、アプリケーションとユーザーの間のすべての通信が暗号化されたパスで行われるようにすることは、多くの Web アプリケーションでよくあるシナリオです。 
+HTTP を HTTPS に自動的にリダイレクトして、アプリケーションとユーザーの間のすべての通信が暗号化されたパスで行われるようにすることは、多くの Web アプリケーションでよくあるシナリオです。
 
-これまでは、HTTP で受信した要求を HTTPS にリダイレクトすることが唯一の目的である専用のプールの作成といった手法を使う場合がありました。 Application Gateway は、Application Gateway 上でトラフィックをリダイレクトする機能をサポートしています。 これにより、アプリケーションの構成が簡単になり、リソースの使用が最適化され、グローバルなリダイレクトやパスに基づくリダイレクトなどの新しいリダイレクト シナリオがサポートされるようになります。 Application Gateway のリダイレクトのサポートは、HTTP から HTTPS へのリダイレクトだけではありません。 これは一般的なリダイレクト メカニズムなので、規則を使用して定義した任意のポート間とリダイレクトできます。 同様に、外部サイトへのリダイレクトもサポートします。
+これまでは、HTTP で受信した要求を HTTPS にリダイレクトすることが唯一の目的である専用のプールを作成する手法を使う場合がありました。 Application Gateway は、Application Gateway 上でトラフィックをリダイレクトする機能をサポートしています。 これにより、アプリケーションの構成が簡単になり、リソースの使用が最適化され、グローバルなリダイレクトやパスに基づくリダイレクトなどの新しいリダイレクト シナリオがサポートされるようになります。 Application Gateway のリダイレクトのサポートは、HTTP から HTTPS へのリダイレクトだけではありません。 これは一般的なリダイレクト メカニズムなので、規則を使用して定義した任意のポート間とリダイレクトできます。 同様に、外部サイトへのリダイレクトもサポートします。
 
 Application Gateway のリダイレクトのサポートでは、次の機能が提供されます。
 
@@ -114,22 +95,41 @@ Application Gateway は、WebSocket および HTTP/2 プロトコルをネイテ
 
 WebSocket および HTTP/2 プロトコルによって、長時間実行されている TCP 接続上でサーバーとクライアント間の全二重通信が可能になります。 この機能により、HTTP ベースの実装では必須だったポーリングを使用することなく、Web サーバーとクライアントの間により対話的な双方向通信が可能になります。 これらのプロトコルは、HTTP とは異なってオーバーヘッドが少なく、複数の要求や応答で同じ TCP 接続を再利用できるため、リソースをより効率的に使用できます。 これらのプロトコルは、従来の HTTP ポート 80 および 443 上で動作するよう設計されています。
 
-詳細については、[WebSocket のサポート](https://docs.microsoft.com/azure/application-gateway/application-gateway-websocket)と [HTTP/2 のサポート](https://docs.microsoft.com/azure/application-gateway/configuration-overview#http2-support)に関するページを参照してください。 
+詳細については、[WebSocket のサポート](https://docs.microsoft.com/azure/application-gateway/application-gateway-websocket)と [HTTP/2 のサポート](https://docs.microsoft.com/azure/application-gateway/configuration-overview#http2-support)に関するページを参照してください。
 
-## <a name="rewrite-http-headers-public-preview"></a>HTTP ヘッダーを書き換える (パブリック プレビュー)
+## <a name="azure-kubernetes-service-aks-ingress-controller-preview"></a>Azure Kubernetes Service (AKS) のイングレス コントローラーの概要 
+
+Application Gateway イングレス コントローラーは、AKS クラスター内のポッドとして実行され、Application Gateway が AKS クラスターに対する入り口として機能できるようにします。 これは、Application Gateway v2 でのみサポートされます。
+
+詳細については、「[Azure Application Gateway Ingress Controller (Azure Application Gateway イングレス コントローラー)](https://azure.github.io/application-gateway-kubernetes-ingress/)」を参照してください。
+
+## <a name="connection-draining"></a>接続のドレイン
+
+接続のドレインを使用すると、計画的なサービスの更新中にバックエンド プール メンバーを正常に削除することができます。 この設定は、バックエンド http 設定を通じて有効にされ、ルールの作成中にバックエンド プールのすべてのメンバーに適用することができます。 Application Gateway が有効になると、バックエンド プールのすべての登録解除インスタンスが新しい要求を受け取らなくなり、既存の要求は構成された制限時間内に完了するようになります。 これは、API 呼び出しによってバックエンド プールから明示的に削除されたバックエンド インスタンスと、正常性プローブの判断によって異常であるとレポートされたバックエンド インスタンスの両方に適用されます。
+
+## <a name="custom-error-pages"></a>カスタム エラー ページ
+
+Application Gateway では、既定のエラー ページを表示する代わりに、カスタム エラー ページを作成することができます。 カスタム エラー ページでは、独自のブランディングとレイアウトを使用することができます。
+
+詳細については、[HTTP ヘッダーの書き換え](rewrite-http-headers.md)に関するページを参照してください。
+
+## <a name="rewrite-http-headers"></a>HTTP ヘッダーを書き換える
 
 クライアントとサーバーは、HTTP ヘッダーを使用して、要求または応答に追加の情報を渡すことができます。 これらの HTTP ヘッダーの書き換えによって、次のようないくつかの重要なシナリオを実現できます。
+
 - HSTS/ X-XSS-Protection などのセキュリティ関連ヘッダー フィールドを追加する。
 - 機密情報が漏れる可能性がある応答ヘッダー フィールドを削除する。
 - X-Forwarded-For ヘッダーからポート情報を削除する。
 
 Application Gateway では、要求/応答パケットがクライアントとバックエンド プールの間を移動する間に、HTTP 要求および応答ヘッダーを追加、削除、または更新する機能をサポートします。 また、条件を追加して、特定の条件が満たされた場合にのみ特定のヘッダーが書き換えられるようにする機能も提供されます。
 
-このパブリック プレビュー機能の詳細については、[HTTP ヘッダーの書き換え](rewrite-http-headers.md)に関するページを参照してください。
+詳細については、[HTTP ヘッダーの書き換え](rewrite-http-headers.md)に関するページを参照してください。
 
 ## <a name="sizing"></a>サイズ変更
 
-現在、Application Gateway は、**Small**、**Medium**、**Large** の 3 つのサイズで提供されています。 Small サイズのインスタンスは、開発用およびシナリオのテスト用です。
+Application Gateway Standard_v2 および WAF_v2 SKU は、自動スケーリング用、または固定サイズ デプロイ用に構成できます。 これらの SKU では、異なるインスタンスのサイズは提供されません。
+
+現在、Application Gateway の Standard および WAF SKU は、次の 3 つのサイズで提供されています。**Small**、**Medium**、**Large** の 3 つのサイズで提供されています。 Small サイズのインスタンスは、開発用およびシナリオのテスト用です。
 
 アプリケーション ゲートウェイの制限の詳細な一覧については、[Application Gateway サービスの制限](../azure-subscription-service-limits.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#application-gateway-limits)に関するページをご覧ください。
 
@@ -147,6 +147,6 @@ Application Gateway では、要求/応答パケットがクライアントと�
 
 要件と環境に応じて、Azure Portal、Azure PowerShell、または Azure CLI のいずれかを使用してテスト Application Gateway を作成できます。
 
-- [クイック スタート:Azure Application Gateway による Web トラフィックのルーティング - Azure portal](quick-create-portal.md)。
+- [クイック スタート:Azure Application Gateway による Web トラフィックのルーティング - Azure portal](quick-create-portal.md)
 - [クイック スタート:Azure Application Gateway による Web トラフィックのルーティング - Azure PowerShell](quick-create-powershell.md)
 - [クイック スタート:Azure Application Gateway による Web トラフィックのルーティング - Azure CLI](quick-create-cli.md)

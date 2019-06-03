@@ -10,14 +10,16 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 03/13/2019
 ms.author: erhopf
-ms.openlocfilehash: 9187863234dd62757efecf6f0817ff00da48064a
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: bf07e6a2daac7889e11df2cb5d689daef44266f9
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64685542"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65465650"
 ---
 # <a name="quickstart-translate-speech-with-the-speech-sdk-for-c"></a>クイック スタート:Speech SDK for C++ を使用して音声を翻訳する
+
+クイック スタートは[音声認識](quickstart-cpp-windows.md)と[テキスト読み上げ](quickstart-text-to-speech-cpp-windows.md)にも使用できます。
 
 このクイック スタートでは、コンピューターのマイクからユーザーの音声をキャプチャし、その音声を翻訳して、翻訳されたテキストをコマンド ラインにリアルタイムで表示する、単純な C++ アプリケーションを作成します。 このアプリケーションは、64 ビット Windows 上で実行するように設計されており、[Speech SDK NuGet パッケージ](https://aka.ms/csspeech/nuget)と Microsoft Visual Studio 2017 を使用してビルドされています。
 

@@ -1,25 +1,19 @@
 ---
-title: Azure アプリケーション ソリューション テンプレートのオファー発行ガイド
+title: Azure アプリケーション ソリューション テンプレートのオファー発行ガイド | Azure Marketplace
 description: この記事では、Azure Marketplace でソリューション テンプレートを発行するための要件を説明します
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-documentationcenter: ''
 author: ellacroi
 manager: nunoc
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 11/15/2018
 ms.author: ellacroi
-ms.openlocfilehash: bbf9ab56bd7e070e40e2454a69f0a5e313597f14
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: c2393b6ea9f1a2c2b35be63272743e081f4ae240
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57215373"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64937745"
 ---
 # <a name="azure-applications-solution-template-offer-publishing-guide"></a>Azure アプリケーション:ソリューション テンプレートのオファー発行ガイド
 

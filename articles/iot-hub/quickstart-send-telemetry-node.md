@@ -10,12 +10,12 @@ ms.devlang: node
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 02/22/2019
-ms.openlocfilehash: a4f0761af7da1add6a295b7627783daae6fac07c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b99ed85495e00282c6a27f42b5817e46f4736720
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59007107"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65597507"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-nodejs"></a>クイック スタート:デバイスから IoT ハブに利用統計情報を送信してバックエンド アプリケーションで読み取る (Node.js)
 
@@ -31,7 +31,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイック スタートで実行する 2 つのサンプル アプリケーションは、Node.js で書かれています。 開発用コンピューター上に Node.js v4.x.x 以降が必要です。
+このクイック スタートで実行する 2 つのサンプル アプリケーションは、Node.js で書かれています。 開発用コンピューター上に Node.js v10.x.x 以降が必要です。
 
 複数のプラットフォームに対応する Node.js を [nodejs.org](https://nodejs.org) からダウンロードできます。
 

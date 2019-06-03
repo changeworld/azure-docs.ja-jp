@@ -10,14 +10,16 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 4/03/2019
 ms.author: yinhew
-ms.openlocfilehash: a013189e45b1c1c8eeb88d62a718d495c0c415a2
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 3b7addd369d5e26554dd4300e65bee66b8a62768
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59012382"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65465574"
 ---
 # <a name="quickstart-synthesize-speech-with-the-speech-sdk-for-net-framework-windows"></a>クイック スタート:.NET Framework (Windows) 用 Speech SDK を使用して音声を合成する
+
+クイック スタートは[音声認識](quickstart-csharp-dotnet-windows.md)と[音声翻訳](quickstart-translate-speech-dotnetframework-windows.md)にも使用できます。
 
 このガイドでは、.NET framework for Windows と Speech SDK を使用してテキスト読み上げのコンソール アプリケーションを作成します。 完了すると、テキストから音声を合成し、その音声をスピーカーからリアルタイムで聞くことができます。
 

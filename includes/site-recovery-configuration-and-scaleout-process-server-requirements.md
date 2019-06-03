@@ -10,11 +10,11 @@ ms.date: 06/10/2018
 ms.author: raynew
 ms.custom: include file
 ms.openlocfilehash: 371cbcc50b574f95e8d9ba4efe79058b2b25a8ba
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58016670"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66127719"
 ---
 **構成/プロセス サーバー要件**
 
@@ -36,7 +36,7 @@ IIS | - 既存の Web サイトが存在しない <br> - ポート 443 でリッ
 | 
 **ネットワークの設定** | 
 IP アドレスの種類 | 静的 
-ポート | 443 (コントロール チャネルのオーケストレーション)<br>9443 (データ転送) 
+Port | 443 (コントロール チャネルのオーケストレーション)<br>9443 (データ転送) 
 NIC の種類 | VMXNET3 (構成サーバーが VMware VM である場合)
  |
 **インターネット アクセス** (サーバーは、次の URL にアクセスする必要があります (直接またはプロキシ経由))。|

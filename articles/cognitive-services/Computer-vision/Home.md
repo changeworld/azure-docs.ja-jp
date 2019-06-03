@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 03/04/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 87c5d24f0e9077acf66bacd97097cfc32bd49ead
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 3a307c32d15aa8c7809d728d98220b0819e91c7c
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57432109"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357389"
 ---
 # <a name="what-is-computer-vision"></a>Computer Vision とは
 
@@ -46,7 +46,7 @@ Computer Vision は、アプリケーションからネイティブ SDK を使�
 
 Computer Vision を使用し、画像からコンピューターが読み取り可能な文字のストリームへ、[光学式文字認識 (OCR)](concept-recognizing-text.md#ocr-optical-character-recognition-api) を使用してテキストを抽出します。 必要に応じて、OCR では、認識されたテキストの回転を修正し、各語句のフレーム座標を提供します。 OCR は 25 の言語をサポートし、認識されたテキストの言語を自動的に検出します。
 
-[読み取り API](concept-recognizing-text.md#read-api) を使用して、印刷されたテキストと手書きのテキストの両方を画像やテキスト量の多いドキュメントから抽出することもできます。 読み取り API では更新されたモデルを使用しており、レシート、ポスター、名刺、手紙、ホワイトボードなど、異なるサーフェスや背景を持つさまざまなオブジェクトに対応します。 現時点では、読み取り API はプレビュー段階であり、サポートされている言語は英語のみです。
+[読み取り API](concept-recognizing-text.md#read-api) を使用して、印刷されたテキストと手書きのテキストの両方を画像やテキスト量の多いドキュメントから抽出することもできます。 読み取り API では更新されたモデルを使用しており、レシート、ポスター、名刺、手紙、ホワイトボードなど、異なるサーフェスや背景を持つさまざまなオブジェクトに対応します。 現在、サポートされている言語は英語だけです。
 
 ## <a name="moderate-content-in-images"></a>画像内のコンテンツを調整する
 

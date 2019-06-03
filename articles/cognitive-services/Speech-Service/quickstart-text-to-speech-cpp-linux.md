@@ -10,14 +10,16 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 05/02/2019
 ms.author: yinhew
-ms.openlocfilehash: 211394186fe8fc0fd1514a5ce1dbc1e0efc10b7e
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: b5b768e52a40652840e9e3d3069df8a9c895f77b
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65020592"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66001614"
 ---
 # <a name="quickstart-synthesize-speech-in-c-on-linux-by-using-the-speech-sdk"></a>クイック スタート:Linux で C++ と Speech SDK を使用して音声を合成する
+
+クイック スタートは[音声認識](quickstart-cpp-linux.md)にも使用できます。
 
 この記事では、Linux (Ubuntu 16.04、Ubuntu 18.04、Debian 9) 用の C++ コンソール アプリケーションを作成します。 Cognitive Services [Speech SDK](speech-sdk.md) を使用して、テキスからリアルタイムに音声を合成し、PC のスピーカーで再生します。 このアプリケーションは、[Linux 向け Speech SDK](https://aka.ms/csspeech/linuxbinary) と Linux ディストリビューションの C++ コンパイラ (たとえば `g++`) を使用して構築します。
 
@@ -29,7 +31,7 @@ ms.locfileid: "65020592"
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-Cognitive Services Speech SDK の現在のバージョンは `1.5.0` です。
+Cognitive Services Speech SDK の現在のバージョンは `1.5.1` です。
 
 Linux 用 Speech SDK は、64 ビット アプリケーションと 32 ビット アプリケーションのどちらの構築にも使用できます。 必要なライブラリとヘッダー ファイルは、 https://aka.ms/csspeech/linuxbinary から tar ファイルとしてダウンロードできます。
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/11/2019
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: 02cff1be85f4489a9529383d90694581f2599cba
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: b332c11e76ad335772cc607edcf569f896acb873
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64939177"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65951396"
 ---
 # <a name="tutorial-access-data-lake-storage-gen2-data-with-azure-databricks-using-spark"></a>チュートリアル:Spark を使用して Azure Databricks で Data Lake Storage Gen2 のデータにアクセスする
 
@@ -48,7 +48,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
   > [!IMPORTANT]
   > Data Lake Storage Gen2 ストレージ アカウントの範囲内のロールを割り当てるようにしてください。 親リソース グループまたはサブスクリプションにロールを割り当てることはできますが、それらのロール割り当てがストレージ アカウントに伝達されるまで、アクセス許可関連のエラーが発生します。
 
-  :heavy_check_mark:記事の「[サインインするための値を取得する](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)」セクションの手順を実行するとき、テナント ID、アプリケーション ID、および認証キーの値をテキスト ファイルに貼り付けてください。 これらはすぐに必要になります。
+  :heavy_check_mark:記事の「[サインインするための値を取得する](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)」セクションの手順を行うときは、テナント ID、アプリ ID、およびパスワードの値をテキスト ファイルに貼り付けてください。 これらはすぐに必要になります。
 
 ### <a name="download-the-flight-data"></a>フライト データのダウンロード
 
@@ -66,7 +66,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 このセクションでは、Azure portal を使用して Azure Databricks サービスを作成します。
 
-1. Azure portal で、**[リソースの作成]** > **[分析]** > **[Azure Databricks]** の順に選択します。
+1. Azure portal で、 **[リソースの作成]**  >  **[分析]**  >  **[Azure Databricks]** の順に選択します。
 
     ![Azure Portal の Databricks](./media/data-lake-storage-use-databricks-spark/azure-databricks-on-portal.png "Azure Portal の Databricks")
 
@@ -82,15 +82,13 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
     ![Azure Databricks ワークスペースを作成する](./media/data-lake-storage-use-databricks-spark/create-databricks-workspace.png "Azure Databricks サービスを作成する")
 
-3. **[ダッシュボードにピン留めする]** チェック ボックスをオンにして、**[作成]** を選択します。
+3. アカウントの作成には数分かかります。 操作の状態を監視するには、上部の進行状況バーを確認します。
 
-4. アカウントの作成には数分かかります。 アカウント作成時に、ポータルの右側に **[Azure Databricks のデプロイを送信しています]** タイルが表示されます。 操作の状態を監視するには、上部の進行状況バーを確認します。
-
-    ![Databricks のデプロイのタイル](./media/data-lake-storage-use-databricks-spark/databricks-deployment-tile.png "Databricks のデプロイのタイル")
+4. **[ダッシュボードにピン留めする]** チェック ボックスをオンにして、 **[作成]** を選択します。
 
 ## <a name="create-a-spark-cluster-in-azure-databricks"></a>Azure Databricks で Spark クラスターを作成する
 
-1. Azure portal で、作成した Databricks サービスに移動し、**[Launch Workspace]\(ワークスペースの起動\)** を選択します。
+1. Azure portal で、作成した Databricks サービスに移動し、 **[Launch Workspace]\(ワークスペースの起動\)** を選択します。
 
 2. Azure Databricks ポータルにリダイレクトされます。 ポータルで **[クラスター]** を選択します。
 
@@ -109,51 +107,6 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
     * **[Terminate after \_\_ minutes of inactivity]\(アクティビティが \_\_ 分ない場合は終了する\)** チェック ボックスを必ずオンにします。 クラスターが使われていない場合は、クラスターを終了するまでの時間 (分単位) を指定します。
 
     * **[クラスターの作成]** を選択します。 クラスターが実行されたら、ノートブックをクラスターにアタッチして、Spark ジョブを実行できます。
-
-## <a name="create-a-file-system-and-mount-it"></a>ファイル システムを作成してマウントする
-
-このセクションでは、ストレージ アカウントにファイル システムとフォルダーを作成します。
-
-1. [Azure portal](https://portal.azure.com) で、作成した Azure Databricks サービスに移動し、**[Launch Workspace]\(ワークスペースの起動\)** を選択します。
-
-2. 左側の **[ワークスペース]** を選択します。 **[ワークスペース]** ドロップダウンで、**[作成]** > **[ノートブック]** の順に選択します。
-
-    ![Databricks でノートブックを作成する](./media/data-lake-storage-use-databricks-spark/databricks-create-notebook.png "Databricks でノートブックを作成する")
-
-3. **[ノートブックの作成]** ダイアログ ボックスでノートブックの名前を入力します。 言語として **[Python]** を選んで、前に作成した Spark クラスターを選びます。
-
-4. **作成** を選択します。
-
-5. 次のコード ブロックをコピーして最初のセルに貼り付けます。ただし、このコードはまだ実行しないでください。
-
-    ```Python
-    configs = {"fs.azure.account.auth.type": "OAuth",
-           "fs.azure.account.oauth.provider.type": "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider",
-           "fs.azure.account.oauth2.client.id": "<application-id>",
-           "fs.azure.account.oauth2.client.secret": "<authentication-id>",
-           "fs.azure.account.oauth2.client.endpoint": "https://login.microsoftonline.com/<tenant-id>/oauth2/token",
-           "fs.azure.createRemoteFileSystemDuringInitialization": "true"}
-
-    dbutils.fs.mount(
-    source = "abfss://<file-system-name>@<storage-account-name>.dfs.core.windows.net/folder1",
-    mount_point = "/mnt/flightdata",
-    extra_configs = configs)
-    ```
-
-18. このコード ブロックでは、`application-id`、`authentication-id`、`tenant-id`、および `storage-account-name` のプレースホルダー値を、このチュートリアルの前提条件の実行中に収集した値で置き換えます。 `file-system-name` プレースホルダーの値を、ファイル システムに付けたい名前に置き換えます。
-
-   * `application-id` および `authentication-id` は、サービス プリンシパルの作成の一環として Active Directory に登録したアプリのものです。
-
-   * `tenant-id` は、自分のサブスクリプションのものです。
-
-   * `storage-account-name` は、Azure Data Lake Storage Gen2 ストレージ アカウントの名前です。
-
-   > [!NOTE]
-   > 運用設定では、認証キーを Azure Databricks に格納することを検討してください。 次に、認証キーではなくルック アップ キーをコード ブロックに追加します。 このクイック スタートの完了後、Azure Databricks Web サイトの記事「[Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html)」で、このアプローチの例を参照してください。
-
-19. **Shift + Enter** キーを押して、このブロック内のコードを実行します。
-
-   このノートブックは開いたままにしておいてください。後でコマンドを追加します。
 
 ## <a name="ingest-data"></a>データの取り込み
 
@@ -175,11 +128,60 @@ AzCopy を使用して *.csv* ファイルから Data Lake Storage Gen2 アカ�
    azcopy cp "<csv-folder-path>" https://<storage-account-name>.dfs.core.windows.net/<file-system-name>/folder1/On_Time.csv
    ```
 
-   * プレースホルダー `<csv-folder-path>` の値は、*.csv* ファイルへのパスに置き換えます。
+   * プレースホルダー `<csv-folder-path>` の値は、 *.csv* ファイルへのパスに置き換えます。
 
-   * `storage-account-name` プレースホルダーの値は、実際のストレージ アカウントの名前に置き換えます。
+   * `<storage-account-name>` プレースホルダーの値は、実際のストレージ アカウントの名前に置き換えます。
+
+   * `<file-system-name>` プレースホルダーを、ファイル システムに付ける任意の名前に置き換えます。
+
+## <a name="create-a-file-system-and-mount-it"></a>ファイル システムを作成してマウントする
+
+このセクションでは、ストレージ アカウントにファイル システムとフォルダーを作成します。
+
+1. [Azure portal](https://portal.azure.com) で、作成した Azure Databricks サービスに移動し、 **[Launch Workspace]\(ワークスペースの起動\)** を選択します。
+
+2. 左側の **[ワークスペース]** を選択します。 **[ワークスペース]** ドロップダウンで、 **[作成]**  >  **[ノートブック]** の順に選択します。
+
+    ![Databricks でノートブックを作成する](./media/data-lake-storage-use-databricks-spark/databricks-create-notebook.png "Databricks でノートブックを作成する")
+
+3. **[ノートブックの作成]** ダイアログ ボックスでノートブックの名前を入力します。 言語として **[Python]** を選んで、前に作成した Spark クラスターを選びます。
+
+4. **作成** を選択します。
+
+5. 次のコード ブロックをコピーして最初のセルに貼り付けます。ただし、このコードはまだ実行しないでください。
+
+    ```Python
+    configs = {"fs.azure.account.auth.type": "OAuth",
+           "fs.azure.account.oauth.provider.type": "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider",
+           "fs.azure.account.oauth2.client.id": "<appId>",
+           "fs.azure.account.oauth2.client.secret": "<password>",
+           "fs.azure.account.oauth2.client.endpoint": "https://login.microsoftonline.com/<tenant>/oauth2/token",
+           "fs.azure.createRemoteFileSystemDuringInitialization": "true"}
+
+    dbutils.fs.mount(
+    source = "abfss://<file-system-name>@<storage-account-name>.dfs.core.windows.net/folder1",
+    mount_point = "/mnt/flightdata",
+    extra_configs = configs)
+    ```
+
+18. このコード ブロックでは、`appId`、`password`、`tenant`、および `storage-account-name` のプレースホルダー値を、このチュートリアルの前提条件の実行中に収集した値で置き換えます。 `file-system-name` プレースホルダーの値は、前の手順で ADLS ファイル システムに付けた名前に置き換えます。
+
+これらの値で、説明したプレース ホルダーを置き換えます。
+
+   * `appId` および `password` は、サービス プリンシパルの作成の一環として Active Directory に登録したアプリのものです。
+
+   * `tenant-id` は、自分のサブスクリプションのものです。
+
+   * `storage-account-name` は、Azure Data Lake Storage Gen2 ストレージ アカウントの名前です。
 
    * `file-system-name` プレースホルダーを、ファイル システムに付ける任意の名前に置き換えます。
+
+   > [!NOTE]
+   > 運用設定では、パスワードを Azure Databricks に格納することを検討してください。 次に、パスワードではなくルック アップ キーをコード ブロックに追加します。 このクイック スタートの完了後、Azure Databricks Web サイトの記事「[Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html)」で、このアプローチの例を参照してください。
+
+19. **Shift + Enter** キーを押して、このブロック内のコードを実行します。
+
+   このノートブックは開いたままにしておいてください。後でコマンドを追加します。
 
 ### <a name="use-databricks-notebook-to-convert-csv-to-parquet"></a>Databricks Notebook を使用して CSV を Parquet に変換する
 
@@ -222,7 +224,7 @@ dbutils.fs.ls("/mnt/flightdata/parquet/flights")
 
 データ ソースのデータフレームを作成するには、次のスクリプトを実行します。
 
-* プレースホルダー `<csv-folder-path>` の値は、*.csv* ファイルへのパスに置き換えます。
+* プレースホルダー `<csv-folder-path>` の値は、 *.csv* ファイルへのパスに置き換えます。
 
 ```python
 #Copy this into a Cmd cell in your notebook.
@@ -281,7 +283,7 @@ print('Airlines that fly to/from Texas: ', out1.show(100, False))
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-リソース グループおよび関連するすべてのリソースは、不要になったら削除します。 これを行うには、ストレージ アカウントのリソース グループを選択し、**[削除]** を選択してください。
+リソース グループおよび関連するすべてのリソースは、不要になったら削除します。 これを行うには、ストレージ アカウントのリソース グループを選択し、 **[削除]** を選択してください。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -10,22 +10,25 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 04/02/2019
+ms.date: 05/23/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: a0730073a8d17e063ee3f1364d5914200259c10f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: aa58d0405176a63ff9d1cc25b572f3f3754dbbdc
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58880051"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66238848"
 ---
-# <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-private-preview"></a>チュートリアル:Resource Manager テンプレートで Azure Deployment Manager を使用する (プライベート プレビュー)
+# <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-public-preview"></a>チュートリアル:Resource Manager テンプレートで Azure Deployment Manager を使用する (パブリック プレビュー)
 
 [Azure Deployment Manager](./deployment-manager-overview.md) を使用して、アプリケーションを複数の地域に配備する方法を学習します。 Deployment Manager を使用するには、次の 2 つのテンプレートを作成する必要があります。
 
 * **トポロジ テンプレート**: アプリケーションを構成する Azure リソースとその配備先を記述します。
 * **ロールアウト テンプレート**: アプリケーションを配備する際に行う手順を記述します。
+
+> [!IMPORTANT]
+> サブスクリプションが Azure の新機能をテストするためのカナリア用としてマークされている場合は、Azure Deployment Manager を使用したカナリア リージョンへのデプロイのみが可能です。 
 
 このチュートリアルに含まれるタスクは次のとおりです。
 
@@ -52,7 +55,6 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 この記事を完了するには、以下が必要です。
 
 * [Azure Resource Manager テンプレート](./resource-group-overview.md)を開発した経験がある。
-* Azure Deployment Manager はプライベート プレビュー段階です。 Azure Deployment Manager を使用してサインアップするには、[サインアップ シート](https://aka.ms/admsignup)に記入してください。 
 * Azure PowerShell。 詳細については、[Azure PowerShell の概要](https://docs.microsoft.com/powershell/azure/get-started-azureps)に関するページを参照してください。
 * Deployment Manager コマンドレット。 これらのプレリリース版のコマンドレットをインストールするには、最新バージョンの PowerShellGet が必要です。 最新バージョンを入手するには、「[PowerShellGet のインストール](/powershell/gallery/installing-psget)」を参照してください。 PowerShellGet をインストールし終えたら、PowerShell ウィンドウを閉じます。 管理者特権の PowerShell ウィンドウを新たに開き、次のコマンドを使用します。
 
@@ -103,18 +105,18 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 2 つのバージョン (1.0.0.0 と 1.0.0.1) は、[リビジョン配備](#deploy-the-revision)用です。 テンプレート成果物とバイナリ成果物の両方に 2 つのバージョンがある場合でも、2 つのバージョン間で違いがあるのはバイナリ成果物のみです。 実際に、バイナリ成果物はテンプレート成果物よりも頻繁に更新されます。
 
-1. テキスト エディターで、**\ArtifactStore\templates\1.0.0.0\ServiceWUS\CreateStorageAccount.json** を開きます。 これはストレージ アカウントを作成するための基本的なテンプレートです。  
-2. **\ArtifactStore\templates\1.0.0.0\ServiceWUS\CreateWebApplication.json** を開きます。 
+1. テキスト エディターで、 **\ArtifactStore\templates\1.0.0.0\ServiceWUS\CreateStorageAccount.json** を開きます。 これはストレージ アカウントを作成するための基本的なテンプレートです。
+2. **\ArtifactStore\templates\1.0.0.0\ServiceWUS\CreateWebApplication.json** を開きます。
 
     ![Azure Deployment Manager チュートリアルでは、Web アプリケーション テンプレートを作成します。](./media/deployment-manager-tutorial/azure-deployment-manager-tutorial-create-web-application-packageuri.png)
 
     そのテンプレートは、Web アプリケーションのファイルを収納する配備パッケージを呼び出します。 このチュートリアルでは、圧縮パッケージには index.html ファイルのみが収納されています。
-3. **\ArtifactStore\templates\1.0.0.0\ServiceWUS\CreateWebApplicationParameters.json** を開きます。 
+3. **\ArtifactStore\templates\1.0.0.0\ServiceWUS\CreateWebApplicationParameters.json** を開きます。
 
     ![Azure Deployment Manager チュートリアルでは、Web アプリケーション テンプレート パラメーターの containerRoot を作成します。](./media/deployment-manager-tutorial/azure-deployment-manager-tutorial-create-web-application-parameters-deploypackageuri.png)
 
     deployPackageUri の値は配備パッケージへのパスです。 パラメーターには **$containerRoot** 変数があります。 $containerRoot の値は、成果物ソース SAS の場所、成果物ルート、deployPackageUri を連結することにより、[ロールアウト テンプレート](#create-the-rollout-template)で提供されます。
-4. **\ArtifactStore\binaries\1.0.0.0\helloWorldWebAppWUS.zip\index.html** を開きます。  
+4. **\ArtifactStore\binaries\1.0.0.0\helloWorldWebAppWUS.zip\index.html** を開きます。
 
     ```html
     <html>
@@ -139,7 +141,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 4. 次の手順を使用して、コンテナーの SAS の場所を取得します。
 
     1. Azure Storage Explorer から BLOB コンテナーに移動します。
-    2. 左側のウィンドウで BLOB コンテナーを右クリックしたら、**[Shared Access Signature の取得]** を選択します。
+    2. 左側のウィンドウで BLOB コンテナーを右クリックしたら、 **[Shared Access Signature の取得]** を選択します。
     3. **[開始時刻]** と **[有効期限]** を構成します。
     4. **作成**を選択します。
     5. URL のコピーを作成します。 この URL は、[トポロジ パラメーター ファイル](#topology-parameters-file)と[ロールアウト パラメーター ファイル](#rollout-parameters-file)の 2 つのパラメーター ファイルにフィールドを設定するために必要です。
@@ -156,12 +158,12 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. [ユーザー割り当てマネージド ID](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md) を作成します。
 3. ポータルから、左側のメニューで **[サブスクリプション]** を選択したら、お使いのサブスクリプションを選択します。
-4. **[アクセス制御 (IAM)]** を選択したら、**[ロール割り当ての追加]** を選択します。
+4. **[アクセス制御 (IAM)]** を選択したら、 **[ロール割り当ての追加]** を選択します。
 5. 次の値を入力または選択します。
 
     ![Azure Deployment Manager チュートリアルでのユーザー割り当てマネージド ID のアクセス制御](./media/deployment-manager-tutorial/azure-deployment-manager-tutorial-access-control.png)
 
-    * **ロール**: 成果物の配備 (Web アプリケーションとストレージ アカウント) を完結するための十分な権限を与えます。 このチュートリアルでは、**[共同作成者]** を選択します。 実際には、アクセス許可を最小限に抑えます。
+    * **ロール**: 成果物の配備 (Web アプリケーションとストレージ アカウント) を完結するための十分な権限を与えます。 このチュートリアルでは、 **[共同作成者]** を選択します。 実際には、アクセス許可を最小限に抑えます。
     * **割り当て済みのアクセス先**: **[ユーザー割り当てマネージド ID]** を選択します。
     * チュートリアルの前半で作成したユーザー割り当てマネージド ID を選択します。
 6. **[保存]** を選択します。
@@ -210,7 +212,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 トポロジ テンプレートで使用されるパラメーター ファイルを作成します。
 
-1. Visual Studio Code またはいずれかのテキスト エディターで、**\ADMTemplates\CreateADMServiceTopology.Parameters** を開きます。
+1. Visual Studio Code またはいずれかのテキスト エディターで、 **\ADMTemplates\CreateADMServiceTopology.Parameters** を開きます。
 2. 次のパラメーター値を記入します。
 
     * **namePrefix**:4-5 文字の文字列を入力します。 このプレフィックスは、固有の azure リソース名を作成するために使用されます。
@@ -254,7 +256,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ![Azure Deployment Manager チュートリアルのロールアウト テンプレート リソース待機手順](./media/deployment-manager-tutorial/azure-deployment-manager-tutorial-rollout-template-resources-wait-step.png)
 
-期間には [ISO 8601 標準](https://en.wikipedia.org/wiki/ISO_8601#Durations)を使用しています。 **PT1M** (大文字必須) は 1 分間の待機の例です。 
+期間には [ISO 8601 標準](https://en.wikipedia.org/wiki/ISO_8601#Durations)を使用しています。 **PT1M** (大文字必須) は 1 分間の待機の例です。
 
 次のスクリーンショットでは、ロールアウトの定義の一部のみを示しています。
 
@@ -271,7 +273,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ロールアウト テンプレートで使用されるパラメーター ファイルを作成します。
 
-1. Visual Studio Code またはいずれかのテキスト エディターで、**\ADMTemplates\CreateADMRollout.Parameters** を開きます。
+1. Visual Studio Code またはいずれかのテキスト エディターで、 **\ADMTemplates\CreateADMRollout.Parameters** を開きます。
 2. 次のパラメーター値を記入します。
 
     * **namePrefix**:4-5 文字の文字列を入力します。 このプレフィックスは、固有の azure リソース名を作成するために使用されます。
@@ -289,13 +291,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="deploy-the-templates"></a>テンプレートの配備
 
-Azure PowerShell を使用すればテンプレートを配備できます。 
+Azure PowerShell を使用すればテンプレートを配備できます。
 
 1. サービス トポロジを配備するには、スクリプトを実行します。
 
     ```azurepowershell
     $resourceGroupName = "<Enter a Resource Group Name>"
-    $location = "Central US"  
+    $location = "Central US"
     $filePath = "<Enter the File Path to the Downloaded Tutorial Files>"
 
     # Create a resource group
@@ -315,7 +317,7 @@ Azure PowerShell を使用すればテンプレートを配備できます。
 
     ![Azure Deployment Manager チュートリアルの配備済みサービス トポロジ リソース](./media/deployment-manager-tutorial/azure-deployment-manager-tutorial-deployed-topology-resources.png)
 
-    リソースを参照するには、**[非表示型の表示]** を選択する必要があります。
+    リソースを参照するには、 **[非表示型の表示]** を選択する必要があります。
 
 3. <a id="deploy-the-rollout-template"></a>次のロールアウト テンプレートをデプロイします。
 
@@ -426,10 +428,10 @@ Azure リソースが不要になったら、リソース グループを削除�
     * **&lt;namePrefix>ServiceWUSrg**: ServiceWUS によって定義されたリソースが収納されます。
     * **&lt;namePrefix>ServiceEUSrg**: ServiceEUS によって定義されたリソースが収納されます。
     * ユーザー定義マネージド ID 用のリソース グループです。
-3. リソース グループ名を選択します。  
+3. リソース グループ名を選択します。
 4. トップ メニューから **[リソース グループの削除]** を選択します。
 5. このチュートリアルで作成した他のリソース グループを削除するには、最後の 2 つの手順を繰り返します。
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、Azure Deployment Manager を使用する方法について学習しました。 詳細は、「[Azure Resource Manager のドキュメント](/azure/azure-resource-manager/)」を参照してください。
+このチュートリアルでは、Azure Deployment Manager を使用する方法について学習しました。 Azure Deployment Manager に正常性の監視を統合する場合は、「[Tutorial:Use health check in Azure Deployment Manager](./deployment-manager-tutorial-health-check.md)」 (チュートリアル: Azure Deployment Manager で正常性チェックを使用する) を参照してください。

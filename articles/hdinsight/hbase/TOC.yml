@@ -1,38 +1,40 @@
 - name: Azure HDInsight のドキュメント
   href: /azure/hdinsight
-- name: HDInsight での Apache HBase
+- name: 概要
   items:
-    - name: 概要
+    - name: HDInsight の Apache HBase とは
       href: apache-hbase-overview.md
-    - name: HDInsight の Apache Hadoop コンポーネント
-      href: ../hdinsight-component-versioning.md
-      maintainContext: true
-    - name: HDInsight 4.0
-      href: ../hdinsight-version-release.md
-      maintainContext: true
+- name: クイック スタート
+  expanded: true
+  items:
+    - name: Apache HBase のクエリ - Apache Phoenix
+      href: apache-hbase-phoenix-squirrel-linux.md
+    - name: Apache HBase のクエリ - HBase シェル
+      href: ./query-hbase-with-hbase-shell.md
 - name: 作業開始
   items:
     - name: Apache HBase & NoSQL の開始
       href: apache-hbase-tutorial-get-started-linux.md
     - name: HDInsight アプリをインストールする
       href: ../hdinsight-apps-install-applications.md
-      maintainContext: true
     - name: クラスターの容量計画
       href: ../hdinsight-capacity-planning.md
-      maintainContext: true
+- name: 概念
+  items:
+    - name: HDInsight の Apache Hadoop コンポーネント
+      href: ../hdinsight-component-versioning.md
+    - name: HDInsight 4.0
+      href: ../hdinsight-version-release.md
 - name: 方法
   items:
     - name: クラスター ストレージの使用
       items:
         - name: Azure Storage を使用する
           href: ../hdinsight-hadoop-use-blob-storage.md
-          maintainContext: true
         - name: Azure Data Lake Storage Gen2 の使用
           href: ../hdinsight-hadoop-use-data-lake-storage-gen2.md
-          maintainContext: true
         - name: Azure Data Lake Storage Gen1 の使用
           href: ../hdinsight-hadoop-use-data-lake-store.md
-          maintainContext: true
     - name: 開発
       items:
         - name: .NET 用 Apache HBase SDK の使用
@@ -41,64 +43,48 @@
           href: apache-hbase-build-java-maven-linux.md
         - name: 空のエッジ ノードを使用する
           href: ../hdinsight-apps-use-edge-node.md
-          maintainContext: true
         - name: 非対話型認証 .NET HDInsight アプリケーションを作成する
           href: ../hdinsight-create-non-interactive-authentication-dotnet-applications.md
-          maintainContext: true
         - name: HDInsight の Apache Phoenix
           href: ../hdinsight-phoenix-in-hdinsight.md
-          maintainContext: true
-        - name: Apache Phoenix と SQLLine の使用
-          href: apache-hbase-phoenix-squirrel-linux.md
         - name: Apache Phoenix Query Server REST SDK の使用
           href: apache-hbase-using-phoenix-query-server-rest-sdk.md
     - name: ビッグ データの分析
       items:
         - name: Apache Spark を使用した Apache HBase データの読み取り/書き込み
           href: ../hdinsight-using-spark-query-hbase.md
-          maintainContext: true
     - name: クラスターを拡張する
       items:
         - name: ブートストラップを使用してクラスターをカスタマイズする
           href: ../hdinsight-hadoop-customize-cluster-bootstrap.md
-          maintainContext: true
         - name: スクリプト アクションを使用したクラスターのカスタマイズ
           href: ../hdinsight-hadoop-customize-cluster-linux.md
-          maintainContext: true
         - name: スクリプト アクションを開発する
           href: ../hdinsight-hadoop-script-actions-linux.md
-          maintainContext: true
         - name: HDInsight アプリケーションの構築
           items:
             - name: カスタム アプリをインストールする
               href: ../hdinsight-apps-install-custom-applications.md
-              maintainContext: true
             - name: REST を使用してアプリをインストールする
               href: 'https://msdn.microsoft.com/library/mt706515.aspx'
             - name: HDInsight アプリを Azure Marketplace に発行する
               href: ../hdinsight-apps-publish-applications.md
-              maintainContext: true
     - name: セキュリティ保護
       items:
         - name: HDInsight で SSH を使用する
           href: ../hdinsight-hadoop-linux-use-ssh-unix.md
-          maintainContext: true
         - name: SSH トンネリングを使用する
           href: ../hdinsight-linux-ambari-ssh-tunnel.md
-          maintainContext: true
     - name: 管理
       items:
         - name: HDInsight クラスターの作成
           href: ../hdinsight-hadoop-provision-linux-clusters.md
-          maintainContext: true
           items:
             - name: Azure ポータルの使用
               href: ../hdinsight-hadoop-create-linux-clusters-portal.md
-              maintainContext: true
             - name: Azure リソース マネージャー テンプレートの使用
               displayName: 'resource manager template, arm template, resource manager group'
               href: ../hdinsight-hadoop-create-linux-clusters-arm-templates.md
-              maintainContext: true
             - name: .NET 用 SDK の使用
               href: 'https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet#create-a-cluster'
             - name: Python 用 SDK の使用
@@ -107,22 +93,16 @@
               href: 'https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-stable#create-a-cluster'
             - name: Azure PowerShell の使用
               href: ../hdinsight-hadoop-create-linux-clusters-azure-powershell.md
-              maintainContext: true
             - name: cURL とAzure REST API を使用する
               href: ../hdinsight-hadoop-create-linux-clusters-curl-rest.md
-              maintainContext: true
-            - name: Azure クラシック CLI を使用する
+            - name: Azure CLI の使用
               href: ../hdinsight-hadoop-create-linux-clusters-azure-cli.md
-              maintainContext: true
             - name: オンデマンド クラスターの作成
               href: ../hdinsight-hadoop-create-linux-clusters-adf.md
-              maintainContext: true
         - name: オンデマンド クラスターの作成
           href: ../hdinsight-hadoop-create-linux-clusters-adf.md
-          maintainContext: true
         - name: HDInsight クラスターの管理
           href: ../hdinsight-administer-use-portal-linux.md
-          maintainContext: true
           items:
             - name: .NET 用 SDK の使用
               href: 'https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet#management'
@@ -134,42 +114,31 @@
               href: 'https://docs.microsoft.com/azure/hdinsight/hdinsight-go-sdk-overview'
             - name: Azure PowerShell の使用
               href: ../hdinsight-administer-use-powershell.md
-              maintainContext: true
-            - name: Azure クラシック CLI を使用する
+            - name: Azure CLI の使用
               href: ../hdinsight-administer-use-command-line.md
-              maintainContext: true
         - name: Apache Ambari Web UI を使用したクラスターの管理
           href: ../hdinsight-hadoop-manage-ambari.md
-          maintainContext: true
           items:
             - name: Apache Ambari Web UI を使用したクラスターの最適化
               href: ../hdinsight-changing-configs-via-ambari.md
-              maintainContext: true
             - name: Apache Ambari REST API の使用
               href: ../hdinsight-hadoop-manage-ambari-rest-api.md
-              maintainContext: true
         - name: 高速書き込み
           href: ../hbase/apache-hbase-accelerated-writes.md
         - name: HDInsight クラスターのスケーリングを行う
           href: ../hdinsight-scaling-best-practices.md
-          maintainContext: true
         - name: HDInsight クラスターのログを管理する
           href: ../hdinsight-log-management.md
-          maintainContext: true
         - name: ストレージ アカウントを追加する
           href: ../hdinsight-hadoop-add-storage.md
-          maintainContext: true
         - name: Apache Hadoop ジョブのデータのアップロード
           href: ../hdinsight-upload-data.md
-          maintainContext: true
         - name: psql を使用した Apache Phoenix へのデータの一括読み込み
           href: apache-hbase-phoenix-psql.md
         - name: 複数の HDInsight クラスターと Data Lake Storage
           href: ../hdinsight-multiple-clusters-data-lake-store.md
-          maintainContext: true
         - name: Apache Sqoop を使用したデータのインポートとエクスポート
           href: ../hdinsight-use-sqoop.md
-          maintainContext: true
           items:
             - name: SSH を使用した接続
               href: ../hadoop/apache-hadoop-use-sqoop-mac-linux.md
@@ -181,89 +150,41 @@
               href: ../hadoop/apache-hadoop-use-sqoop-powershell.md
         - name: クラスターとサービスのポートと URI
           href: ../hdinsight-hadoop-port-settings-for-services.md
-          maintainContext: true
         - name: 高可用性と信頼性
           href: ../hdinsight-high-availability-linux.md
-          maintainContext: true
         - name: HDInsight クラスターを新しいバージョンにアップグレードする
           href: ../hdinsight-upgrade-cluster.md
-          maintainContext: true
         - name: Apache HBase クラスターの新しいバージョンへの移行
           href: apache-hbase-migrate-new-version.md
         - name: HDInsight クラスター用の OS の修正プログラム
           href: ../hdinsight-os-patching.md
-          maintainContext: true
     - name: トラブルシューティング
       href: ../hdinsight-troubleshoot-guide.md
-      maintainContext: true
       items:
         - name: 処理速度が遅いか失敗した HDInsight クラスターのトラブルシューティング
           href: ../hdinsight-troubleshoot-failed-cluster.md
-          maintainContext: true
         - name: Apache Hadoop HDFS のトラブルシューティング
           href: ../hdinsight-troubleshoot-hdfs.md
-          maintainContext: true
         - name: Apache HBase のトラブルシューティング
           href: apache-troubleshoot-hbase.md
-          maintainContext: true
         - name: Apache Hadoop YARN のトラブルシューティング
           href: ../hdinsight-troubleshoot-yarn.md
-          maintainContext: true
         - name: リソース
           items:
             - name: Linux での HDInsight の使用方法
               href: ../hdinsight-hadoop-linux-information.md
-              maintainContext: true
             - name: Apache Hadoop のメモリとパフォーマンス
               href: ../hdinsight-hadoop-stack-trace-error-messages.md
-              maintainContext: true
             - name: Linux での Apache Hadoop YARN アプリケーション ログへのアクセス
               href: ../hdinsight-hadoop-access-yarn-app-logs-linux.md
-              maintainContext: true
             - name: Apache Hadoop サービスのヒープ ダンプの有効化
               href: ../hdinsight-hadoop-collect-debug-heap-dump-linux.md
-              maintainContext: true
             - name: WebHCat エラーの説明と解決策
               href: ../hdinsight-hadoop-templeton-webhcat-debug-errors.md
-              maintainContext: true
             - name: Apache Hive の設定によるメモリ不足エラーの解決
               href: ../hdinsight-hadoop-hive-out-of-memory-error-oom.md
-              maintainContext: true
             - name: Apache Hive クエリの最適化
               href: ../hdinsight-hadoop-optimize-hive-query.md
-              maintainContext: true
-- name: エンタープライズ対応
-  items:
-    - name: データのセキュリティ保護
-      href: ../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
-      maintainContext: true
-    - name: ネットワーク アクセス
-      items:
-        - name: Azure VNet の HDInsight
-          href: ../hdinsight-extend-hadoop-virtual-network.md
-          maintainContext: true
-        - name: HDInsight とオンプレミス ネットワークの接続
-          href: ../connect-on-premises-network.md
-          maintainContext: true
-        - name: Azure VNet での Apache HBase クラスターの作成
-          href: apache-hbase-provision-vnet.md
-        - name: Azure VNet での Apache HBase クラスターのレプリケーション
-          href: apache-hbase-replication.md
-        - name: Apache HBase と Apache Phoenix 向けのバックアップとレプリケーションの設定
-          href: apache-hbase-backup-replication.md
-    - name: Azure Monitor ログを使用した監視
-      items:
-        - name: Azure Monitor ログの使用
-          href: ../hdinsight-hadoop-oms-log-analytics-tutorial.md
-          maintainContext: true
-        - name: Azure Monitor ログでのクエリの使用
-          href: ../hdinsight-hadoop-oms-log-analytics-use-queries.md
-          maintainContext: true
-        - name: クラスター パフォーマンスの監視
-          href: ../hdinsight-key-scenarios-to-monitor.md
-          maintainContext: true
-        - name: Apache Phoenix のパフォーマンスに関するベスト プラクティス
-          href: apache-hbase-phoenix-performance.md
 - name: リファレンス
   items:
     - name: コード サンプル
@@ -287,26 +208,14 @@
     - name: Resource Manager テンプレート
       displayName: 'resource manager template, arm template, resource manager group'
       href: /azure/templates/microsoft.hdinsight/allversions
-- name: 関連項目
-  items:
-    - name: Windows クラスター
-      items:
-        - name: Windows クラスターを Linux クラスターに移行する
-          href: ../hdinsight-migrate-from-windows-to-linux.md
-          maintainContext: true
-        - name: .NET ソリューションを Linux クラスターに移行する
-          href: ../hdinsight-hadoop-migrate-dotnet-to-linux.md
-          maintainContext: true
 - name: リソース
   items:
     - name: リリース ノート
       items:
         - name: 最新のリリース ノート
           href: ../hdinsight-release-notes.md
-          maintainContext: true
         - name: アーカイブされたリリース ノート
           href: ../hdinsight-release-notes-archive.md
-          maintainContext: true
         - name: クラスター構成できめ細かなロールベースのアクセスに移行する
           href: ../hdinsight-migrate-granular-access-cluster-configurations.md
     - name: Azure のロードマップ
@@ -321,4 +230,41 @@
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: HDInsight 用の Windows ツール
       href: ../hdinsight-hadoop-windows-tools.md
-      maintainContext: true
+- name: エンタープライズ対応
+  items:
+    - name: データのセキュリティ保護
+      href: ../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
+    - name: ネットワーク アクセス
+      items:
+        - name: HDInsight 仮想ネットワーク アーキテクチャ
+          href: ../hdinsight-virtual-network-architecture.md
+        - name: ファイアウォールを使用したアウトバウンド トラフィックの制限
+          href: ../hdinsight-restrict-outbound-traffic.md
+        - name: Azure VNet の HDInsight
+          href: ../hdinsight-extend-hadoop-virtual-network.md
+        - name: HDInsight とオンプレミス ネットワークの接続
+          href: ../connect-on-premises-network.md
+        - name: Azure VNet での Apache HBase クラスターの作成
+          href: apache-hbase-provision-vnet.md
+        - name: Azure VNet での Apache HBase クラスターのレプリケーション
+          href: apache-hbase-replication.md
+        - name: Apache HBase と Apache Phoenix 向けのバックアップとレプリケーションの設定
+          href: apache-hbase-backup-replication.md
+    - name: Azure Monitor ログを使用した監視
+      items:
+        - name: Azure Monitor ログの使用
+          href: ../hdinsight-hadoop-oms-log-analytics-tutorial.md
+        - name: Azure Monitor ログでのクエリの使用
+          href: ../hdinsight-hadoop-oms-log-analytics-use-queries.md
+        - name: クラスター パフォーマンスの監視
+          href: ../hdinsight-key-scenarios-to-monitor.md
+        - name: Apache Phoenix のパフォーマンスに関するベスト プラクティス
+          href: apache-hbase-phoenix-performance.md
+- name: 関連項目
+  items:
+    - name: Windows クラスター
+      items:
+        - name: Windows クラスターを Linux クラスターに移行する
+          href: ../hdinsight-migrate-from-windows-to-linux.md
+        - name: .NET ソリューションを Linux クラスターに移行する
+          href: ../hdinsight-hadoop-migrate-dotnet-to-linux.md

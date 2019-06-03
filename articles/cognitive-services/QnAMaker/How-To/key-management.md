@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/04/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: c1d8104f94d3f215108000b904848f3b968492ee
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 458d587c7ac73f7c8dacdceae3c9f923263533b3
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57341915"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65792542"
 ---
 # <a name="how-to-manage-keys-in-qna-maker"></a>QnA Maker でキーを管理する方法
 
@@ -24,7 +24,7 @@ QnA Maker サービスは、**サブスクリプション キー**と**エンド
 
 ![キー管理](../media/qnamaker-how-to-key-management/key-management.png)
 
-1. **サブスクリプション キー**: これらのキーは、[QnA Maker 管理サービス API](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff) へのアクセスに使用されます。 これらの API を使用して、ナレッジ ベースを編集できます。  
+1. **サブスクリプション キー**: これらのキーは、[QnA Maker 管理サービス API](https://go.microsoft.com/fwlink/?linkid=2092179) へのアクセスに使用されます。 これらの API を使用して、ナレッジ ベースを編集できます。  
 
 2. **エンドポイント キー**: これらのキーは、ナレッジ ベースのエンドポイントにアクセスして、ユーザーの質問に対する回答を取得する目的で使用されます。 通常、このエンドポイントは、QnA Maker サービスを利用するチャット ボットまたはクライアント アプリ コードで使用します。
  

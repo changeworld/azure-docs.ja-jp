@@ -23,8 +23,10 @@
       items:
         - name: 1 - Azure でイメージをビルドする
           href: container-registry-tutorial-quick-task.md
-        - name: 2 - イメージのビルドを自動化する
+        - name: 2a - コードのコミット時の自動ビルド
           href: container-registry-tutorial-build-task.md
+        - name: 2b - コードのコミット時のマルチステップ タスク
+          href: container-registry-tutorial-multistep-task.md
         - name: 3 - 基本イメージ更新ビルド
           href: container-registry-tutorial-base-image-update.md
     - name: レジストリの geo レプリケーション
@@ -73,9 +75,10 @@
       items:
         - name: 仮想ネットワークでのアクセスの制限 (プレビュー)
           href: container-registry-vnet.md
-        - name: 認証の概要
-          href: container-registry-authentication.md
+        - name: Authentication
           items:
+            - name: 認証の概要
+              href: container-registry-authentication.md
             - name: サービス プリンシパルの認証
               href: container-registry-auth-service-principal.md
             - name: マネージド ID の認証
@@ -84,7 +87,7 @@
               href: container-registry-auth-aci.md
             - name: Azure Kubernetes Service (AKS) からの認証
               href: container-registry-auth-aks.md
-        - name: コンテンツの信頼 (プレビュー)
+        - name: コンテンツの信頼
           href: container-registry-content-trust.md
     - name: ビルドと修正プログラム
       items:
@@ -141,3 +144,5 @@
       href: 'https://stackoverflow.com/questions/tagged/azure-container-registry'
     - name: ビデオ
       href: 'https://azure.microsoft.com/resources/videos/index/?services=container-registry&sort=newest'
+    - name: FAQ
+      href: container-registry-faq.md

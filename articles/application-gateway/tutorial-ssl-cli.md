@@ -7,21 +7,21 @@ manager: jpconnock
 ms.service: application-gateway
 ms.topic: tutorial
 ms.workload: infrastructure-services
-ms.date: 7/14/2018
+ms.date: 5/20/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 8689918bf33b0efdd9bbfabc6d3751672959c6bb
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: d9007b3f1d4eee436452a3fa75b2880b9e5be461
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55753080"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65955687"
 ---
-# <a name="tutorial-create-an-application-gateway-with-ssl-termination-using-the-azure-cli"></a>チュートリアル:Azure CLI を使用して SSL 終了でアプリケーション ゲートウェイを作成する
+# <a name="create-an-application-gateway-with-ssl-termination-using-the-azure-cli"></a>Azure CLI を使用して SSL 終了でアプリケーション ゲートウェイを作成する
 
 Azure CLI を使用して、バックエンド サーバーに[仮想マシン スケール セット](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)を使用する [SSL 終了](ssl-overview.md)の証明書で、[アプリケーション ゲートウェイ](overview.md)を作成することができます。 この例では、アプリケーション ゲートウェイの既定のバックエンド プールに追加された 2 つの仮想マシン インスタンスがスケール セットに含まれています。
 
-このチュートリアルでは、以下の内容を学習します。
+この記事では、次のことについて説明します。
 
 > [!div class="checklist"]
 > * 自己署名証明書の作成
@@ -29,17 +29,17 @@ Azure CLI を使用して、バックエンド サーバーに[仮想マシン �
 > * 証明書でのアプリケーション ゲートウェイの作成
 > * 既定のバックエンド プールでの仮想マシン スケール セットの作成
 
-必要に応じて、[Azure PowerShell](tutorial-ssl-powershell.md) を使ってこのチュートリアルの手順を完了できます。
+好みに応じて、[Azure PowerShell](tutorial-ssl-powershell.md) を使ってこの手順を実行することもできます。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.4 以降を実行する必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
+CLI をローカルにインストールして使用する場合、この記事では、Azure CLI バージョン 2.0.4 以降を実行する必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
 
 ## <a name="create-a-self-signed-certificate"></a>自己署名証明書の作成
 
-実際の運用では、信頼できるプロバイダーによって署名された有効な証明書をインポートする必要があります。 このチュートリアルでは、openssl コマンドを使用して、自己署名証明書と pfx ファイルを作成します。
+実際の運用では、信頼できるプロバイダーによって署名された有効な証明書をインポートする必要があります。 この記事では、openssl コマンドを使用して、自己署名証明書と pfx ファイルを作成します。
 
 ```azurecli-interactive
 openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout privateKey.key -out appgwcert.crt
@@ -183,5 +183,4 @@ az group delete --name myResourceGroupAG --location eastus
 
 ## <a name="next-steps"></a>次の手順
 
-> [!div class="nextstepaction"]
-> [複数の Web サイトをホストするアプリケーション ゲートウェイを作成する](./tutorial-multiple-sites-cli.md)
+* [複数の Web サイトをホストするアプリケーション ゲートウェイを作成する](./tutorial-multiple-sites-cli.md)

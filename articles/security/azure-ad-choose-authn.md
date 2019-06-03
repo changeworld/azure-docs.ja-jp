@@ -9,12 +9,12 @@ ms.date: 04/12/2018
 ms.topic: article
 ms.service: active-directory
 ms.workload: identity
-ms.openlocfilehash: 1f950841946b65d618c7335ea3d8d42993a89481
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 773d4dd28da3165261d75e4f800750c1f54377d0
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58805263"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64702303"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Azure Active Directory ハイブリッド ID ソリューションの適切な認証方法を選択する 
 
@@ -49,7 +49,7 @@ Azure AD は、ハイブリッド ID ソリューションに対して次の認�
 ### <a name="cloud-authentication"></a>クラウド認証
 この認証方法を選ぶと、Azure AD がユーザーのサインイン プロセスを処理します。 シームレスなシングル サインオン (SSO) と組み合わせることで、ユーザーは資格情報を再入力しなくてもクラウド アプリにサインインできます。 クラウド認証では、2 つのオプションから選ぶことができます。 
 
-**Azure AD のパスワード ハッシュ同期**。 Azure AD でオンプレミスのディレクトリ オブジェクトの認証を有効にする最も簡単な方法です。 ユーザーはオンプレミスで使用しているものと同じユーザー名とパスワードを使用でき、追加のインフラストラクチャを展開する必要はありません。 Identity Protection など、Azure AD の一部のプレミアム機能には、認証方法の選択に関係なく、パスワード ハッシュ同期が必要です。
+**Azure AD のパスワード ハッシュ同期**。 Azure AD でオンプレミスのディレクトリ オブジェクトの認証を有効にする最も簡単な方法です。 ユーザーはオンプレミスで使用しているものと同じユーザー名とパスワードを使用でき、追加のインフラストラクチャを展開する必要はありません。 Identity Protection および[Azure AD Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started-password-sync)など、Azure AD の一部のプレミアム機能には、認証方法の選択に関係なく、パスワード ハッシュ同期が必要です。
 
 > [!NOTE] 
 > パスワードがクリア テキストで保存されたり、Azure AD の復元可能なアルゴリズムで暗号化されたりすることはありません。 パスワード ハッシュ同期の実際のプロセスについて詳しくは、「[Azure AD Connect 同期を使用したパスワード ハッシュ同期の実装](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-password-hash-synchronization)」をご覧ください。 
@@ -92,7 +92,7 @@ Azure AD は、ハイブリッド ID ソリューションに対して次の認�
 
 * **ユーザー エクスペリエンス**。 ユーザーのサインイン エクスペリエンスを向上させるには、パスワード ハッシュ同期と共にシームレス SSO を展開します。 シームレス SSO によって、ユーザーのサインイン時に不要なプロンプトが表示されないようになります。
 
-* **高度なシナリオ**。 組織は、Azure AD Premium P2 で Azure AD Identity Protection のレポートを使用して ID からの分析情報を使用することを選択できます。 その 1 つの例が漏洩した資格情報レポートです。 Windows Hello for Business には、[パスワード ハッシュ同期を使用するときの特定の要件](https://docs.microsoft.com/windows/access-protection/hello-for-business/hello-identity-verification)があります。 
+* **高度なシナリオ**。 組織は、Azure AD Premium P2 で Azure AD Identity Protection のレポートを使用して ID からの分析情報を使用することを選択できます。 その 1 つの例が漏洩した資格情報レポートです。 Windows Hello for Business には、[パスワード ハッシュ同期を使用するときの特定の要件](https://docs.microsoft.com/windows/access-protection/hello-for-business/hello-identity-verification)があります。 [Azure AD Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started-password-sync) では、ユーザーが会社の資格情報を使用してマネージド ドメインでプロビジョニングできるよう、パスワードのハッシュ同期を求めます。
 
     パスワード ハッシュ同期を使用する多要素認証が必要な組織は、Azure AD の多要素認証を使用する必要があります。 これらの組織は、サード パーティ製またはオンプレミスの多要素認証方法を使用できません。
 
@@ -176,7 +176,7 @@ Azure AD では検証できないルーティング不可能なドメインの�
 |認証が行われる場所|クラウド内|クラウド内で、オンプレミスの認証エージェントとのセキュリティで保護されたパスワード検証の交換後|オンプレミス|
 |プロビジョニング システム以外のオンプレミスのサーバーの要件: Azure AD Connect|なし|追加の認証エージェントごとに 1 つのサーバー|2 つ以上の AD FS サーバー<br><br>境界/DMZ ネットワークに 2 つ以上の WAP サーバー|
 |プロビジョニング システム以外のオンプレミスのインターネットおよびネットワークの要件|なし|認証エージェントを実行しているサーバーからの[発信インターネット アクセス](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-quick-start)|境界の WAP サーバーへの[着信インターネット アクセス](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-requirements)<br><br>境界の WAP サーバーから AD FS サーバーへの着信ネットワーク アクセス<br><br>ネットワークの負荷分散|
-|SSL 証明書の要件|いいえ |いいえ |はい|
+|SSL 証明書の要件|いいえ|いいえ|はい|
 |正常性の監視ソリューション|必要なし|エージェントの状態は [Azure Active Directory 管理センター](https://docs.microsoft.com/azure/active-directory/hybrid/tshoot-connect-pass-through-authentication)によって提供される|[Azure AD Connect Health](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-adfs)|
 |会社のネットワーク内のドメインに参加しているデバイスからクラウドのリソースへのユーザーのシングル サインオン|[シームレス SSO](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso) を使用して実行|[シームレス SSO](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso) を使用して実行|はい|
 |サポートされているサインインの種類|UserPrincipalName + パスワード<br><br>[シームレス SSO](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso) を使用した Windows 統合認証<br><br>[代替ログイン ID](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-custom)|UserPrincipalName + パスワード<br><br>[シームレス SSO](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso) を使用した Windows 統合認証<br><br>[代替ログイン ID](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-faq)|UserPrincipalName + パスワード<br><br>sAMAccountName + パスワード<br><br>Windows 統合認証<br><br>[証明書とスマート カード認証](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-user-certificate-authentication)<br><br>[代替ログイン ID](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)|

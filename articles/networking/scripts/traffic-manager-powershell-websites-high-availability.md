@@ -16,11 +16,11 @@ ms.workload: traffic-manager
 ms.date: 05/16/2017
 ms.author: gwallace
 ms.openlocfilehash: 1086fe6d656db9450d84fd6971a271775f54687d
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58202828"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66156923"
 ---
 # <a name="route-traffic-for-high-availability-of-applications"></a>高可用性アプリケーションのためのトラフィックのルーティング
 

@@ -10,12 +10,12 @@ ms.topic: overview
 ms.tgt_pltfrm: na
 ms.date: 10/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: da6c9bb6cbd94ab5078641f25e42ad2203ff7a53
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 48bb241a7871d2a209636f66837fb2afd95fd22c
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58402356"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66001810"
 ---
 # <a name="azure-managed-applications-overview"></a>Azure マネージド アプリケーションの概要
 
@@ -33,7 +33,7 @@ Azure マネージド アプリケーションを使用して、ユーザーが�
 
 IT チームは、マネージド アプリケーションを使用して、組織内のユーザーに事前承認済みのソリューションを提供できます。 これらのソリューションが組織の標準に準拠していることへの確信が得られます。
 
-マネージド アプリケーションでは現在、[Azure リソースのマネージド ID](../active-directory/managed-identities-azure-resources/overview.md) がサポートされません。
+マネージド アプリケーションでは、[Azure リソースのマネージド ID](./publish-managed-identity.md) はサポートされません。
 
 ## <a name="types-of-managed-applications"></a>マネージド アプリケーションの種類
 

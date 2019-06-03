@@ -7,14 +7,14 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 12/26/2018
-ms.author: adgera
+ms.author: v-adgera
 ms.custom: seodec18
-ms.openlocfilehash: 23759a6c3d920e2b791a10ddd5ac5c5285ed1889
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 3c35633c9b25eafdb738ed591c7c7022fbd8149a
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56959869"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65967814"
 ---
 # <a name="how-to-configure-monitoring-in-azure-digital-twins"></a>Azure Digital Twins で監視を構成する方法
 
@@ -50,7 +50,7 @@ Azure Digital Twins のアクティビティ ログの記録は既定で有効�
 
 1. **[Activity Log Analytics Overview]\(Activity Log Analytics の概要\)** には必須のアクティビティ ログ データがまとめられています。
 
-    ![Activity Log Analytics の概要][3]
+    ![Activity ログ分析の概要][3]
 
 >[!TIP]
 >**アクティビティ ログ**を使用して、サブスクリプション レベルのイベントを簡単に分析します。
@@ -82,7 +82,7 @@ Azure の[診断設定](../azure-monitor/platform/diagnostic-logs-overview.md)�
 >[!TIP]
 >**診断ログ**を使用してリソースの操作の分析情報を確認してください。
 
-## <a name="azure-monitor-and-log-analytics"></a>Azure Monitor と Azure Log Analytics
+## <a name="azure-monitor-and-log-analytics"></a>Azure Monitor と Azure ログ分析
 
 IoT アプリケーションはさまざまなリソース、デバイス、場所、データを 1 つに結合します。 きめ細かいログ記録により、アプリケーション アーキテクチャ全体における各部分、サービス、コンポーネントの詳細な情報を確認できますが、多くの場合メンテナンスやデバッグには統合された概要が必要です。
 

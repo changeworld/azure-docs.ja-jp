@@ -1,25 +1,18 @@
 ---
-title: API 前提条件 | Microsoft Docs
+title: API 前提条件 | Azure Marketplace
 description: クラウド パートナー ポータル API を使用するための前提条件
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 0d743d89c344ce9cb6eec116ed9c3e0cbe56f86e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: pabutler
+ms.openlocfilehash: a973ab0a406168756af61900fd35947c8be6d03b
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57878649"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64935381"
 ---
 <a name="api-prerequisites"></a>API 前提条件
 ================
@@ -41,16 +34,16 @@ ms.locfileid: "57878649"
 次の手順でサービス プリンシパルを追加します。
 
 1. クラウド パートナー ポータルにサインオンします。 
-2. 左のメニュー バーで **[ユーザー]** をクリックし、**[ユーザーの追加]** を選択します。
+2. 左のメニュー バーで **[ユーザー]** をクリックし、 **[ユーザーの追加]** を選択します。
 
    ![ユーザーをポータルに追加する](./media/cloud-partner-portal-api-prerequisites/add-user.jpg)
 
 3. **[種類]** ドロップダウンから **[サービス プリンシパル]** を選択し、次の詳細を追加します。
 
 -   サービス プリンシパルの**フレンドリ名**。たとえば、`spAccount`。
--   **アプリケーション ID**。 この ID を見つけるには、[[Azure portal]](https://portal.azure.com) に移動し、**[Azure Active Directory]** をクリックし、**[アプリの登録]** を選択して自分のアプリをクリックします。
+-   **アプリケーション ID**。 この ID を見つけるには、[[Azure portal]](https://portal.azure.com) に移動し、 **[Azure Active Directory]** をクリックし、 **[アプリの登録]** を選択して自分のアプリをクリックします。
 -   自分の Azure AD テナントの**テナント ID**。これは**ディレクトリ ID** とも呼ばれています。 この ID は、[Azure portal](https://portal.azure.com) の Azure Active Directory ページの **[プロパティ]** にあります。
--   サービス プリンシパル オブジェクトの**オブジェクト ID**。 この ID は Azure portal から取得できます。 **[Azure Active Directory]** に移動し、**[アプリの登録]** を選択し、自分のアプリをクリックし、**[ローカル ディレクトリでのマネージド アプリケーション]** の下にあるアプリ名をクリックします。 次に、**[プロパティ]** ページに移動し、オブジェクト ID を見つけます。 アプリに存在する最初のオブジェクト ID を取得せずに、マネージド アプリケーションのオブジェクト ID を取得してください。
+-   サービス プリンシパル オブジェクトの**オブジェクト ID**。 この ID は Azure portal から取得できます。 **[Azure Active Directory]** に移動し、 **[アプリの登録]** を選択し、自分のアプリをクリックし、 **[ローカル ディレクトリでのマネージド アプリケーション]** の下にあるアプリ名をクリックします。 次に、 **[プロパティ]** ページに移動し、オブジェクト ID を見つけます。 アプリに存在する最初のオブジェクト ID を取得せずに、マネージド アプリケーションのオブジェクト ID を取得してください。
 -   アカウントに関連付けられている**ロール**。RBAC に使用されます。
 
      ![マネージド アプリをポータルに追加する](./media/cloud-partner-portal-api-prerequisites/managedapp.png)

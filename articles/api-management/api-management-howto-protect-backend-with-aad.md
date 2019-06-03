@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2018
 ms.author: apimpm
-ms.openlocfilehash: 06350d30999cb056babbd001f98a6c3a5fdbac6c
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: b5467711f06380ca61b4a9d5150b66c3f945c08c
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39576996"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65141068"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>Azure Active Directory と API Management で OAuth 2.0 を使用して API を保護する
 
@@ -44,7 +44,7 @@ ms.locfileid: "39576996"
 
 Azure AD で API を保護するには、まず API を表すアプリケーションを Azure AD に登録します。 
 
-1. Azure AD テナントに移動し、**[アプリの登録]** に移動します。
+1. Azure AD テナントに移動し、**[アプリの登録 (レガシ)]** に移動します。
 
 2. **[新しいアプリケーションの登録]** を選択します。 
 
@@ -54,7 +54,7 @@ Azure AD で API を保護するには、まず API を表すアプリケーシ�
 
 5. **[サインオン URL]** にはプレースホルダーとして `https://localhost` を使用できます。
 
-6. **作成**を選択します。
+6. **作成** を選択します。
 
 アプリケーションが作成されたら、次の手順で使用する **[アプリケーション ID]** をメモします。 
 
@@ -62,7 +62,7 @@ Azure AD で API を保護するには、まず API を表すアプリケーシ�
 
 API を呼び出すすべてのクライアント アプリケーションも、Azure AD にアプリケーションとして登録する必要があります。 この例のサンプル クライアント アプリケーションは、API Management 開発者ポータルの Developer Console です。 Developer Console を表す別のアプリケーションを Azure AD に登録する方法は次のとおりです。
 
-1. **[新しいアプリケーションの登録]** を選択します。 
+1. **[アプリの登録 (レガシ)]** で **[新しいアプリケーションの登録]** を選択します。 
 
 2. アプリケーションの名前を入力します。 (この例では、名前は `client-app` です)。
 
@@ -70,7 +70,7 @@ API を呼び出すすべてのクライアント アプリケーションも、
 
 4. **[サインオン URL]** にはプレースホルダーとして `https://localhost` を使用するか、実際の API Management インスタンスのサインイン URL を使用できます (この例では、URL は `https://contoso5.portal.azure-api.net/signin` です)。
 
-5. **作成**を選択します。
+5. **作成** を選択します。
 
 アプリケーションが作成されたら、次の手順で使用する **[アプリケーション ID]** をメモします。 
 
@@ -86,7 +86,7 @@ API を呼び出すすべてのクライアント アプリケーションも、
 
 API と Developer Console を表す 2 つのアプリケーションを登録したら、次はクライアントアプリがバックエンドアプリを呼び出すことができるようにアクセス許可を付与する必要があります。  
 
-1. **[アプリの登録]** に移動します。 
+1. **[アプリの登録 (レガシ)]** に移動します。 
 
 2. `client-app` を選択し、**[設定]** に移動します。
 
@@ -100,8 +100,6 @@ API と Developer Console を表す 2 つのアプリケーションを登録し
 
 > [!NOTE]
 > **Azure Active Directory** が他のアプリケーションに対するアクセス許可の下に表示されない場合、**[追加]** を選択して、その一覧から追加します。
-> 
-> 
 
 ## <a name="enable-oauth-20-user-authorization-in-the-developer-console"></a>Developer Console で OAuth 2.0 のユーザー承認を有効にする
 
@@ -109,7 +107,7 @@ API と Developer Console を表す 2 つのアプリケーションを登録し
 
 この例では、Developer Console はクライアントアプリです。 次の手順では、Developer Console で OAuth 2.0 のユーザー承認を有効にする方法について説明します。 
 
-1. API Management インスタンスに移動します。
+1. Azure portal で API Management インスタンスに移動します。
 
 2. **[OAuth 2.0]** > **[追加]** の順に選択します。
 
@@ -120,6 +118,9 @@ API と Developer Console を表す 2 つのアプリケーションを登録し
 5. **[承認許可の種類]** として **[承認コード]** を選択します。
 
 6. **[承認エンドポイントの URL]** と **[トークン エンドポイントの URL]** を指定します。 これらの値は、Azure AD テナントの **[エンドポイント]** ページから取得します。 **[アプリの登録]** ページにもう一度移動し、**[エンドポイント]** を選択します。
+
+    >[!NOTE]
+    > ここで **v1** エンドポイントを使用します
 
 7. **[OAuth 2.0 承認エンドポイント]** をコピーし、**[承認エンドポイントの URL]** テキストボックスに貼り付けます。
 
@@ -133,7 +134,7 @@ API と Developer Console を表す 2 つのアプリケーションを登録し
 
 12. クライアント シークレットの直後には、承認コード付与タイプの **redirect_url** があります。 この URL をメモします。
 
-13. **作成**を選択します。
+13. **作成** を選択します。
 
 14. クライアントアプリの **[設定]** ページに戻ります。
 
@@ -154,6 +155,9 @@ OAuth 2.0 承認サーバーを設定したので、Developer Console で Azure 
 5. **[保存]** を選択します。
 
 ## <a name="successfully-call-the-api-from-the-developer-portal"></a>開発者ポータルから適切に API を呼び出す
+
+> [!NOTE]
+> このセクションは、開発者ポータルをサポートしていない**従量課金**レベルには適用されません。
 
 `Echo API` で OAuth 2.0 ユーザー承認が有効にすると、Developer Console は API を呼び出す前にユーザーの代理でアクセス トークンを取得するようになります。
 

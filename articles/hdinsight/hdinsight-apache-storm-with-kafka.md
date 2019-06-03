@@ -1,7 +1,6 @@
 ---
 title: 'チュートリアル: Apache Storm と Apache Kafka を使用してデータの読み書きを行う - Azure HDInsight'
 description: HDInsight の Apache Storm と Apache Kafka を使用してストリーミング パイプラインを作成する方法について説明します。 このチュートリアルでは、KafkaBolt コンポーネントと KafkaSpout コンポーネントを使用して Kafka からデータをストリーミングします。
-services: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 12/06/2018
-ms.openlocfilehash: dca789a850e5df58024d13b8f592765e55c39485
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: c89567115079887295704e216cd4046fae99c9d1
+ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58316951"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64873024"
 ---
 # <a name="tutorial-use-apache-storm-with-apache-kafka-on-hdinsight"></a>チュートリアル: HDInsight 上の Apache Kafka で Apache Storm を使用する
 
@@ -80,7 +79,7 @@ Apache Storm には、Apache Kafka を操作するためのコンポーネント
     * `org.apache.storm.kafka.bolt.mapper.FieldNameBasedTupleToKafkaMapper`:Storm トポロジ内で使用されるタプル データ構造から、Kafka に格納されたフィールドにマップします。
 
 これらのコンポーネントは、`org.apache.storm : storm-kafka` パッケージで提供されます。 Storm のバージョンに適合するパッケージ バージョンを使用してください。 HDInsight 3.6 の場合、Storm のバージョンは 1.1.0 です。
-その他の Kafka コンポーネントが含まれた `org.apache.kafka : kafka_2.10` パッケージも必要です。 Kafka のバージョンに適合するパッケージ バージョンを使用してください。 HDInsight 3.6 の場合、Kafka のバージョンは 0.10.0.0 です。
+その他の Kafka コンポーネントが含まれた `org.apache.kafka : kafka_2.10` パッケージも必要です。 Kafka のバージョンに適合するパッケージ バージョンを使用してください。 HDInsight 3.6 の場合、Kafka のバージョンは 1.1.1 です。
 
 次の XML は、[Apache Maven](https://maven.apache.org/) プロジェクトの `pom.xml` 内の依存関係宣言を示しています。
 
@@ -95,7 +94,7 @@ Apache Storm には、Apache Kafka を操作するためのコンポーネント
 <dependency>
     <groupId>org.apache.kafka</groupId>
     <artifactId>kafka_2.10</artifactId>
-    <version>0.10.0.0</version>
+    <version>1.1.1</version>
     <!-- Exclude components that are loaded from the Storm cluster at runtime -->
     <exclusions>
         <exclusion>
@@ -392,7 +391,7 @@ Azure 仮想ネットワークを作成し、その仮想ネットワーク内�
    
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fhdinsight-storm-java-kafka%2Fmaster%2Fcreate-kafka-storm-clusters-in-vnet.json" target="_blank"><img src="./media/hdinsight-apache-storm-with-kafka/deploy-to-azure.png" alt="Deploy to Azure"></a>
    
-    Azure Resource Manager テンプレートは、**https://github.com/Azure-Samples/hdinsight-storm-java-kafka/blob/master/create-kafka-storm-clusters-in-vnet.json** にあります。 このテンプレートは次のリソースを作成します。
+    Azure Resource Manager テンプレートは、 **https://github.com/Azure-Samples/hdinsight-storm-java-kafka/blob/master/create-kafka-storm-clusters-in-vnet.json** にあります。 このテンプレートは次のリソースを作成します。
     
     * Azure リソース グループ
     * Azure Virtual Network
@@ -403,9 +402,9 @@ Azure 仮想ネットワークを作成し、その仮想ネットワーク内�
    > [!WARNING]  
    > HDInsight で Kafka の可用性を保証するには、クラスターに少なくとも 3 つのワーカー ノードが必要です。 このテンプレートは、3 つのワーカー ノードが含まれる Kafka クラスターを作成します。
 
-2. 次のガイダンスに従って、**[カスタム デプロイ]** セクションの各エントリに入力します。
+2. 次のガイダンスに従って、 **[カスタム デプロイ]** セクションの各エントリに入力します。
 
-   1. 次の情報に従って、**[カスタマイズされたテンプレート]** セクションの各エントリに入力します。
+   1. 次の情報に従って、 **[カスタマイズされたテンプレート]** セクションの各エントリに入力します。
 
       | Setting | 値 |
       | --- | --- |
@@ -421,9 +420,9 @@ Azure 仮想ネットワークを作成し、その仮想ネットワーク内�
    
       ![テンプレート パラメーターの画像](./media/hdinsight-apache-storm-with-kafka/storm-kafka-template.png)
 
-3. **使用条件**を読み、**[上記の使用条件に同意する]** をオンにします。
+3. **使用条件**を読み、 **[上記の使用条件に同意する]** をオンにします。
 
-4. 最後に、**[ダッシュボードにピン留めする]** をオンにし、**[購入]** をクリックします。
+4. 最後に、 **[ダッシュボードにピン留めする]** をオンにし、 **[購入]** をクリックします。
 
 > [!NOTE]  
 > クラスターの作成には最大で 20 分かかります。
@@ -626,7 +625,7 @@ Storm クラスターへの SSH セッションで、次のコマンドを使用
 
 Azure Portal を使用してリソース グループを削除するには:
 
-1. Azure Portal で左側のメニューを展開してサービスのメニューを開き、__[リソース グループ]__ を選択して、リソース グループの一覧を表示します。
+1. Azure Portal で左側のメニューを展開してサービスのメニューを開き、 __[リソース グループ]__ を選択して、リソース グループの一覧を表示します。
 2. 削除するリソース グループを見つけて、一覧の右側にある __[詳細]__ ボタン ([...]) を右クリックします。
 3. __[リソース グループの削除]__ を選択し、確認します。
 

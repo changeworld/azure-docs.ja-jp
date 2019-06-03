@@ -15,16 +15,21 @@ ms.workload: identity
 ms.date: 01/24/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5fd2e30f7ae96ff38b0ded11c158fcef636e3a26
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 147ee2450a6a67f8ca02149105533401d038a53a
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58448812"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65191094"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage-via-access-key"></a>チュートリアル:Windows VM のシステム割り当てマネージド ID を使用してアクセス キーで Azure Storage にアクセスする
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
+
+
+> [!IMPORTANT] 
+> Azure Storage は、Azure AD 認証をサポートするようになりました。 ベスト プラクティスとして、アクセス キーの代わりに [Azure AD 認証](tutorial-vm-windows-access-storage.md)を使用してください。 
+
 
 このチュートリアルでは、Windows 仮想マシン (VM) のシステム割り当てマネージド ID を使用してストレージ アカウント アクセス キーを取得する方法について説明します。 ストレージ SDK の使用時など、ストレージ操作を実行するときに、ストレージ アクセス キーを通常どおりに使用できます。 このチュートリアルでは、Azure Storage PowerShell を使用して BLOB をアップロードおよびダウンロードします。 学習内容:
 

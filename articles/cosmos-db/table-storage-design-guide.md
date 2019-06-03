@@ -4,16 +4,16 @@ description: Azure ストレージ テーブルの設計ガイド:Azure Cosmos D
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 05/21/2019
 author: wmengmsft
 ms.author: wmeng
 ms.custom: seodec18
-ms.openlocfilehash: 84749332c5b7ab5fec2905c0fc36d89863adc3d2
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: af155b5adb2e4b45412a8b84818852ed1b1c5e72
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56960218"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65966100"
 ---
 # <a name="azure-storage-table-design-guide-designing-scalable-and-performant-tables"></a>Azure ストレージ テーブルの設計ガイド:拡張性があり、パフォーマンスに優れたテーブルを設計する
 
@@ -50,7 +50,7 @@ Table service とは 名前が示すとおり、Table service ではデータの
 <th>FirstName</th>
 <th>LastName</th>
 <th>Age</th>
-<th>電子メール</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Don</td>
@@ -70,7 +70,7 @@ Table service とは 名前が示すとおり、Table service ではデータの
 <th>FirstName</th>
 <th>LastName</th>
 <th>Age</th>
-<th>電子メール</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Jun</td>
@@ -107,7 +107,7 @@ Table service とは 名前が示すとおり、Table service ではデータの
 <th>FirstName</th>
 <th>LastName</th>
 <th>Age</th>
-<th>電子メール</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Ken</td>
@@ -1125,7 +1125,7 @@ Table service とは、*スキーマのない* テーブル ストアを 1 つ�
 <th>FirstName</th>
 <th>LastName</th>
 <th>Age</th>
-<th>電子メール</th>
+<th>Email</th>
 </tr>
 <tr>
 <td></td>
@@ -1145,7 +1145,7 @@ Table service とは、*スキーマのない* テーブル ストアを 1 つ�
 <th>FirstName</th>
 <th>LastName</th>
 <th>Age</th>
-<th>電子メール</th>
+<th>Email</th>
 </tr>
 <tr>
 <td></td>
@@ -1182,7 +1182,7 @@ Table service とは、*スキーマのない* テーブル ストアを 1 つ�
 <th>FirstName</th>
 <th>LastName</th>
 <th>Age</th>
-<th>電子メール</th>
+<th>Email</th>
 </tr>
 <tr>
 <td></td>
@@ -1218,7 +1218,7 @@ Table service とは、*スキーマのない* テーブル ストアを 1 つ�
 <th>FirstName</th>
 <th>LastName</th>
 <th>Age</th>
-<th>電子メール</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Employee</td>
@@ -1240,7 +1240,7 @@ Table service とは、*スキーマのない* テーブル ストアを 1 つ�
 <th>FirstName</th>
 <th>LastName</th>
 <th>Age</th>
-<th>電子メール</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Employee</td>
@@ -1281,7 +1281,7 @@ Table service とは、*スキーマのない* テーブル ストアを 1 つ�
 <th>FirstName</th>
 <th>LastName</th>
 <th>Age</th>
-<th>電子メール</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Employee</td>

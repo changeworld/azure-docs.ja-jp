@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: quickstart
-ms.date: 10/24/2018
+ms.date: 05/21/2019
 ms.author: sngun
-ms.openlocfilehash: 0e80fbc96bf1241308c80d108e9f9580122b801b
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: cb4ad20067783d8d6bd649710950fea51a22a454
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56587720"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65979139"
 ---
 # <a name="quickstart-build-a-java-application-using-azure-cosmos-db-sql-api-account"></a>クイック スタート:Azure Cosmos DB SQL API アカウントを使用して Java アプリケーションを構築する
 
@@ -35,8 +35,7 @@ ms.locfileid: "56587720"
 
 加えて次の作業を行います。 
 
-* [Java Development Kit (JDK) 1.8 以降](https://aka.ms/azure-jdks)
-    * Ubuntu で `apt-get install default-jdk` を実行して JDK をインストールします。
+* [Java Development Kit (JDK) バージョン 8](https://aka.ms/azure-jdks)
     * 必ず、JDK のインストール先フォルダーを指すように JAVA_HOME 環境変数を設定してください。
 * [Maven](https://maven.apache.org/) バイナリ アーカイブの[ダウンロード](https://maven.apache.org/download.cgi)と[インストール](https://maven.apache.org/install.html)
     * Ubuntu で `apt-get install maven` を実行して Maven をインストールします。

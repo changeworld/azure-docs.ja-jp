@@ -10,19 +10,19 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: 8e5131e0c44f6f46d47fc0bcdcfb8c0503500357
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: dc0871c0b16246fa178072e9d9f266d4c02ba1c4
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65200735"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66002984"
 ---
 # <a name="what-are-the-speech-services"></a>Speech Service とは
 
 Azure Speech Services は、音声テキスト変換、テキスト読み上げ、音声翻訳が 1 つの Azure サブスクリプションにまとめられたものです。 [Speech SDK](speech-sdk-reference.md)、[Speech Devices SDK](https://aka.ms/sdsdk-quickstart)、または [REST API](rest-apis.md) を使用して、アプリケーション、ツール、デバイスを簡単に音声対応にできます。
 
 > [!IMPORTANT]
-> Speech Services は、Bing Speech API、Translator Speech、Custom Speech に代わるものです。 移行の手順については、"*「ハウツー ガイド」の「移行」*" をご覧ください。
+> Speech Services は、Bing Speech API、Translator Speech、Custom Speech に代わるものです。 移行の手順については、" *「ハウツー ガイド」の「移行」* " をご覧ください。
 
 Azure Speech Services は次の機能で構成されています。 各機能の一般的なユース ケースの詳細を学習したり、API リファレンスを参照したりするには、次の表のリンクを使用してください。
 
@@ -42,7 +42,9 @@ Azure Speech Services は次の機能で構成されています。 各機能の
 Azure Speech Services の新機能について説明します。
 
 * 2019 年 5 月 - [会話の文字起こし](conversation-transcription-service.md)、[コール センター文字起こし](call-center-transcription.md)、[音声優先仮想アシスタント](voice-first-virtual-assistants.md)のドキュメントの公開を開始しました。
-* 2019 年 5 月 - Speech SDK 1.5.0 がリリースされました。 更新、拡張機能、既知の問題の完全な一覧については、「[リリース ノート](releasenotes.md)」を参照してください。
+* 2019 年 5 月
+    * Speech SDK 1.5.1 がリリースされました。 更新、拡張機能、既知の問題の完全な一覧については、「[リリース ノート](releasenotes.md)」を参照してください。
+    * Speech SDK 1.5.0 がリリースされました。 更新、拡張機能、既知の問題の完全な一覧については、「[リリース ノート](releasenotes.md)」を参照してください。
 * 2019 年 4 月 - Windows および Linux における C++、C#、Java 向けにテキスト読み上げ (Beta) をサポートする Speech SDK 1.4.0 をリリースしました。 また、この SDK では、Linux における C++ および C# 向けとして、新たに MP3 および Opus/Ogg のオーディオ形式がサポートされます。 更新、拡張機能、既知の問題の完全な一覧については、「[リリース ノート](releasenotes.md)」を参照してください。
 * 2019 年 3 月 - 特定のリージョンで利用可能な音声の完全なリストを返す、テキスト読み上げ (TTS) の新しいエンドポイントが利用可能になりました。 加えて、TTS で新しいリージョンがサポートされます。 詳細については、[テキスト読み上げ API リファレンス (REST)](rest-text-to-speech.md) のページを参照してください。
 
@@ -63,7 +65,7 @@ Azure Speech Services の新機能について説明します。
 Speech Services を使ってみた後、Speech SDK と LUIS を使用して音声から意図を認識する方法がわかるチュートリアルを試してください。
 
 * [チュートリアル:Speech SDK、LUIS、C# を使用して音声の意図を認識する](how-to-recognize-intents-from-speech-csharp.md)
-* [チュートリアル:テキストを翻訳してセンチメントを分析し、翻訳済みテキストから音声を合成する Flask アプリを作成する (REST)](https://docs.microsoft.com/en-us/azure/cognitive-services/translator/tutorial-build-flask-app-translation-synthesis?toc=%2fazure%2fcognitive-services%2fspeech-service%2ftoc.json&bc=%2fazure%2fcognitive-services%2fspeech-service%2fbreadcrumb%2ftoc.json&toc=%2Fen-us%2Fazure%2Fcognitive-services%2Fspeech-service%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json)
+* [チュートリアル:テキストを翻訳してセンチメントを分析し、翻訳済みテキストから音声を合成する Flask アプリを作成する (REST)](https://docs.microsoft.com/azure/cognitive-services/translator/tutorial-build-flask-app-translation-synthesis?toc=%2fazure%2fcognitive-services%2fspeech-service%2ftoc.json&bc=%2fazure%2fcognitive-services%2fspeech-service%2fbreadcrumb%2ftoc.json&toc=%2Fen-us%2Fazure%2Fcognitive-services%2Fspeech-service%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json)
 
 ## <a name="get-sample-code"></a>サンプル コードを取得する
 

@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b729327187a52f36d50f8a754f5521527bb07ac6
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: ae3d1b36b89bb1bce1ff384bfa12a1bf643614fd
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58848285"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65408772"
 ---
 # <a name="prepare-the-azure-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster-and-shared-disk-for-sap-ascsscs"></a>SAP ASCS/SCS 用の Windows フェールオーバー クラスターと共有ディスクを使用して SAP HA 向けに Azure インフラストラクチャを準備する
 
@@ -33,7 +33,7 @@ ms.locfileid: "58848285"
 [2243692]:https://launchpad.support.sap.com/#/notes/2243692
 
 [sap-installation-guides]:http://service.sap.com/instguides
-[tuning-failover-cluster-network-thresholds]:https://blogs.msdn.microsoft.com/clustering/2012/11/21/tuning-failover-cluster-network-thresholds/
+[tuning-failover-cluster-network-thresholds]:https://techcommunity.microsoft.com/t5/Failover-Clustering/Tuning-Failover-Cluster-Network-Thresholds/ba-p/371834
 
 [azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
 [azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md
@@ -160,7 +160,7 @@ ms.locfileid: "58848285"
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 
 
-> ![ Windows][Logo_Windows]  Windows
+> ![Windows][Logo_Windows] Windows
 >
 
 この記事では、SAP ASCS インスタンスのクラスタリングのオプションとして "*クラスター共有ディスク*" を使うことで、Windows フェールオーバー クラスター上に高可用性の SAP システムをインストールして構成するための Azure インフラストラクチャを準備する手順を説明します。
@@ -739,8 +739,9 @@ SAP ASCS/SCS インスタンス用の Windows Server フェールオーバー �
 
 Windows フェールオーバー クラスターが正常にインストールされた後、フェールオーバーの検出が Azure の状態に合うように、いくつかのしきい値を変更する必要があります。 変更するパラメーターについては、「[Tuning failover cluster network thresholds][tuning-failover-cluster-network-thresholds]」(フェールオーバー クラスター ネットワークのしきい値の調整) をご覧ください。 ASCS/SCS 用の Windows クラスター構成を構築する 2 つの VM が同じサブネットにあることを前提とした場合、次のようにパラメーターの値に変更します。
 
-- SameSubNetDelay = 2
+- SameSubNetDelay = 2000
 - SameSubNetThreshold = 15
+- RoutingHistoryLength = 30
 
 これらの設定はお客様とテストしたものであり、適切な妥協が提供されます。 十分な回復力がある一方で、SAP ソフトウェアの実際のエラー状態またはノードや VM の障害において十分に高速なフェールオーバーも提供します。
 

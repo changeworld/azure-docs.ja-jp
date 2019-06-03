@@ -2,18 +2,18 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: batch
-author: dlepow
+author: laurenhughes
 ms.service: batch
 ms.topic: include
 ms.date: 10/11/2018
-ms.author: danlep
+ms.author: lahugh
 ms.custom: include file
-ms.openlocfilehash: 6b48dbfc33890df12209c3a242d812ad2103e07a
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 9ffb02fce41e8805dfccf1dfd6e982cf107039ec
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57553791"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66127540"
 ---
 | **リソース** | **既定の制限** | **上限** |
 | --- | --- | --- |

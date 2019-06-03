@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: 1310ecd15498c4c319febc87cbc3b18e0a7ca524
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: fa722d749ec27a72a8be3bf8fcfd8097a1404458
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65020339"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65465600"
 ---
 # <a name="release-notes"></a>リリース ノート
 
@@ -24,7 +24,7 @@ ms.locfileid: "65020339"
 
 **新機能**
 
-* キーワード スポッティング機能 (KWS) は、Windows と Linux で利用できます。 KWS の機能は任意の種類のマイクでも動作する可能性がありますが、公式の KWS サポートは、現時点では Azure Kinect DK ハードウェアまたは Speech Devices SDK 内のマイク アレイに限定されています。
+* ウェイク ワード (キーワード スポッティング/KWS) 機能が Windows と Linux で使用できるようになりました。 KWS の機能は任意の種類のマイクでも動作する可能性がありますが、公式の KWS サポートは、現時点では Azure Kinect DK ハードウェアまたは Speech Devices SDK 内のマイク アレイに限定されています。
 * フレーズ ヒント機能は、この SDK を介して利用できます。 詳細については、[このページ](how-to-phrase-lists.md)を参照してください。
 * 会話の文字起こし機能は、この SDK を介して利用できます。 [こちら](conversation-transcription-service.md)を参照してください。
 * Direct Line Speech チャネルを使用して、音声優先仮想アシスタントのサポートを追加します。
@@ -58,7 +58,7 @@ ms.locfileid: "65020339"
 **新機能** 
 
 * SDK で、ベータ版としてテキスト読み上げサービスがサポートされるようになりました。 Windows および Linux デスクトップの C++ および C# からサポートされます。 詳細については、[テキスト読み上げの概要](text-to-speech.md#get-started-with-text-to-speech)に関する記事を参照してください。
-* SDK で、ストリーム入力ファイルとして MP3 および Opus/Ogg オーディオ ファイルがサポートされるようになりました。 この機能は、Linux の C++ と C# からのみ使用でき、現在はベータ版です (詳しくは[こちら](how-to-use-compressed-audio-input-streams.md))。
+* SDK は、ストリーム入力ファイルとして MP3 および Opus/OGG オーディオ ファイルをサポートするようになりました。 この機能は、Linux の C++ と C# からのみ使用でき、現在はベータ版です (詳しくは[こちら](how-to-use-codec-compressed-audio-input-streams.md))。
 * Java、.NET Core、C++、Objective-C 用の Speech SDK で、macOS がサポートされるようになりました。 Objective-C での MacOS のサポートは、現在ベータ版です。
 * iOS:iOS (Objective-C) 用の Speech SDK が、CocoaPod としても公開されるようになりました。
 * JavaScript:入力デバイスとしての既定以外のマイクのサポート。

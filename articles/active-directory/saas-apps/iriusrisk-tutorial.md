@@ -4,226 +4,197 @@ description: Azure Active Directory と IriusRisk の間でシングル サイ�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
-ms.reviewer: joflore
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: d2c854d5-101d-4d67-80e0-87749e1a0352
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 12/21/2017
+ms.topic: tutorial
+ms.date: 04/05/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c862628fb05e7518166d8e782c2e64538de785e
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 0c01cb1e7d937c691354270880c1e6be5cd44723
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652401"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65898030"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iriusrisk"></a>チュートリアル:Azure Active Directory と IriusRisk の統合
 
 このチュートリアルでは、IriusRisk と Azure Active Directory (Azure AD) を統合する方法について説明します。
-
 IriusRisk と Azure AD の統合には、次の利点があります。
 
-- IriusRisk にアクセス可能な Azure AD ユーザーを制御できます。
-- ユーザーが自分の Azure AD アカウントで自動的にIriusRisk にサインオン (シングル サインオン) できるように設定できます。
-- 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
+* IriusRisk にアクセス可能な Azure AD ユーザーを制御できます。
+* ユーザーが自分の Azure AD アカウントを使用して IriusRisk に自動的にサインイン (シングル サインオン) できるようにすることができます。
+* 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
 
 IriusRisk と Azure AD の統合を構成するには、次のものが必要です。
 
-- Azure AD サブスクリプション
-- IriusRisk でのシングル サインオンが有効なサブスクリプション
-
-> [!NOTE]
-> このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
-
-このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
-
-- 必要な場合を除き、運用環境は使用しないでください。
-- Azure AD の評価環境がない場合は、[1 か月の評価版を入手できます](https://azure.microsoft.com/pricing/free-trial/)。
+* Azure AD サブスクリプション。 Azure AD の環境がない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます
+* IriusRisk でのシングル サインオンが有効なサブスクリプション
 
 ## <a name="scenario-description"></a>シナリオの説明
-このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
-1. ギャラリーからの IriusRisk の追加
-1. Azure AD シングル サインオンの構成とテスト
+このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
+
+* IriusRisk では、**SP** によって開始される SSO がサポートされます
+* IriusRisk では、**Just In Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-iriusrisk-from-the-gallery"></a>ギャラリーからの IriusRisk の追加
+
 IriusRisk の Azure AD への統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に IriusRisk を追加する必要があります。
 
 **ギャラリーから IriusRisk を追加するには、次の手順に従います。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。 
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
-    ![Azure Active Directory のボタン][1]
+    ![Azure Active Directory のボタン](common/select-azuread.png)
 
-1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
 
-    ![[エンタープライズ アプリケーション] ブレード][2]
-    
-1. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-    ![[新しいアプリケーション] ボタン][3]
+3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-1. 検索ボックスに「**IriusRisk**」と入力し、結果パネルで **[IriusRisk]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
+    ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-    ![結果一覧の IriusRisk](./media/iriusrisk-tutorial/tutorial_iriusrisk_addfromgallery.png)
+4. 検索ボックスに「**IriusRisk**」と入力し、結果パネルで **[IriusRisk]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+
+    ![結果一覧の IriusRisk](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、"Britta Simon" というテスト ユーザーに基づいて、IriusRisk で Azure AD のシングル サインオンを構成し、テストします。
-
-シングル サインオンを機能させるには、Azure AD ユーザーに対応する IriusRisk ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと IriusRisk の関連ユーザーの間で、リンク関係が確立されている必要があります。
-
-IriusRisk で、Azure AD の **[ユーザー名]** の値に **Username** を割り当ててリンク関係を確立します。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、IriusRisk で Azure AD のシングル サインオンを構成し、テストします。
+シングル サインオンを機能させるには、Azure AD ユーザーと IriusRisk 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 IriusRisk で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-1. **[IriusRisk のテスト ユーザーの作成](#create-an-iriusrisk-test-user)** - IriusRisk で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-1. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
+2. **[IriusRisk シングル サインオンの構成](#configure-iriusrisk-single-sign-on)** - アプリケーション側でシングル サインオン設定を構成します。
+3. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+5. **[IriusRisk テスト ユーザーの作成](#create-iriusrisk-test-user)** - IriusRisk で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+6. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
-このセクションでは、Azure Portal で Azure AD のシングル サインオンを有効にして、IriusRisk アプリケーションでシングル サインオンを構成します。
+このセクションでは、Azure portal 上で Azure AD のシングル サインオンを有効にします。
 
-**IriusRisk で Azure AD シングル サインオンを構成するには、次の手順に従います。**
+IriusRisk で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. Azure Portal の **IriusRisk** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
+1. [Azure portal](https://portal.azure.com/) の **IriusRisk** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
 
-    ![シングル サインオン構成のリンク][4]
+    ![シングル サインオン構成のリンク](common/select-sso.png)
 
-1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
- 
-    ![[シングル サインオン] ダイアログ ボックス](./media/iriusrisk-tutorial/tutorial_iriusrisk_samlbase.png)
+2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
-1. **[IriusRisk のドメインと URL]** セクションで、次の手順を実行します。
+    ![シングル サインオン選択モード](common/select-saml-option.png)
 
-    ![[IriusRisk のドメインと URL] のシングル サインオン情報](./media/iriusrisk-tutorial/tutorial_iriusrisk_url.png)
+3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
-    a. **[サインオン URL]** ボックスに、`https://<companyname>.iriusrisk.com/ui#!login` のパターンを使用して URL を入力します。
+    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-    b. **[識別子]** テキストボックスに、値として「`iriusrisk-sp`」を入力します。
+4. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
 
-    > [!NOTE] 
-    > サインオン URL は実際の値ではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[IriusRisk クライアント サポート チーム](mailto:info@continuumsecurity.net)にお問い合わせください。 
+    ![[IriusRisk のドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
 
-1. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
+    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<companyname>.iriusrisk.com/ui#!login`
 
-    ![証明書のダウンロードのリンク](./media/iriusrisk-tutorial/tutorial_iriusrisk_certificate.png) 
+    b. **[識別子 (エンティティ ID)]** ボックスに、`iriusrisk-sp` という値を入力します。
 
-1. **[保存]** ボタンをクリックします。
+    > [!NOTE]
+    > サインオン URL は実際の値ではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[IriusRisk クライアント サポート チーム](mailto:info@continuumsecurity.net)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-    ![[シングル サインオンの構成] の [保存] ボタン](./media/iriusrisk-tutorial/tutorial_general_400.png)
+5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
-1. **IriusRisk** 側のシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [IriusRisk サポート チーム](mailto:info@continuumsecurity.net)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+    ![証明書のダウンロードのリンク](common/metadataxml.png)
 
-> [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
-> 
+6. **[IriusRisk の設定]** セクションで、要件に従って適切な URL をコピーします。
+
+    ![構成 URL のコピー](common/copy-configuration-urls.png)
+
+    a. ログイン URL
+
+    b. Azure AD 識別子
+
+    c. ログアウト URL
+
+### <a name="configure-iriusrisk-single-sign-on"></a>IriusRisk シングル サインオンの構成
+
+**IriusRisk** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [IriusRisk サポート チーム](mailto:info@continuumsecurity.net)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-   ![Azure AD のテスト ユーザーの作成][100]
+1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 
-**Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
+    ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
-1. Azure Portal の左側のウィンドウで、**Azure Active Directory** のボタンをクリックします。
+2. 画面の上部にある **[新しいユーザー]** を選択します。
 
-    ![Azure Active Directory のボタン](./media/iriusrisk-tutorial/create_aaduser_01.png)
+    ![[新しいユーザー] ボタン](common/new-user.png)
 
-1. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックします。
+3. [ユーザーのプロパティ] で、次の手順を実行します。
 
-    ![[ユーザーとグループ] と [すべてのユーザー] リンク](./media/iriusrisk-tutorial/create_aaduser_02.png)
+    ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-1. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+  
+    b. **[ユーザー名]** フィールドに「`brittasimon@yourcompanydomain.extension`」と入力します。 たとえば、「 BrittaSimon@contoso.com 」のように入力します。
 
-    ![[追加] ボタン](./media/iriusrisk-tutorial/create_aaduser_03.png)
-
-1. **[ユーザー]** ダイアログ ボックスで、次の手順に従います。
-
-    ![[ユーザー] ダイアログ ボックス](./media/iriusrisk-tutorial/create_aaduser_04.png)
-
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
-
-    b. **[ユーザー名]** ボックスに、ユーザーである Britta Simon の電子メール アドレスを入力します。
-
-    c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
+    c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
 
     d. **Create** をクリックしてください。
- 
-### <a name="create-an-iriusrisk-test-user"></a>IriusRisk のテスト ユーザーの作成
-
-このセクションの目的は、IriusRisk で Britta Simon というユーザーを作成することです。 IriusRisk では、Just-In-Time プロビジョニングがサポートされています。この設定は、既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 存在しない IriusRisk ユーザーにアクセスしようとすると、新しいユーザーが自動的に作成されます。
-
-> [!Note]
-> ユーザーを手動で作成する必要がある場合は、 [IriusRisk のサポート チーム](mailto:info@continuumsecurity.net)にお問い合わせください。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
 このセクションでは、Britta Simon に IriusRisk へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-![ユーザー ロールを割り当てる][200] 
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[IriusRisk]** を選択します。
 
-**IriusRisk に Britta Simon を割り当てるには、次の手順に従います。**
+    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-1. Azure Portal でアプリケーション ビューを開き、ディレクトリ ビューに移動します。次に、**[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** をクリックします。
+2. アプリケーションの一覧で **[IriusRisk]** を選択します。
 
-    ![ユーザーの割り当て][201] 
+    ![アプリケーションの一覧の [IriusRisk] リンク](common/all-applications.png)
 
-1. アプリケーションの一覧で **[IriusRisk]** を選択します。
+3. 左側のメニューで **[ユーザーとグループ]** を選びます。
 
-    ![アプリケーションの一覧の [IriusRisk] リンク](./media/iriusrisk-tutorial/tutorial_iriusrisk_app.png)  
+    ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-1. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
-    ![[ユーザーとグループ] リンク][202]
+    ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
-1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-    ![[割り当ての追加] ウィンドウ][203]
+6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
 
-1. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
 
-1. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+### <a name="create-iriusrisk-test-user"></a>IriusRisk テスト ユーザーの作成
 
-1. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
-    
+このセクションでは、Britta Simon というユーザーを IriusRisk に作成します。 IriusRisk では、Just-In-Time ユーザー プロビジョニングがサポートされています。この設定は既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 IriusRisk にユーザーがまだ存在していない場合は、認証後に新しく作成されます。
+
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [IriusRisk] タイルをクリックすると、自動的に IriusRisk アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
+アクセス パネルで [IriusRisk] タイルをクリックすると、SSO を設定した IriusRisk に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-* [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-<!--Image references-->
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-[1]: ./media/iriusrisk-tutorial/tutorial_general_01.png
-[2]: ./media/iriusrisk-tutorial/tutorial_general_02.png
-[3]: ./media/iriusrisk-tutorial/tutorial_general_03.png
-[4]: ./media/iriusrisk-tutorial/tutorial_general_04.png
-
-[100]: ./media/iriusrisk-tutorial/tutorial_general_100.png
-
-[200]: ./media/iriusrisk-tutorial/tutorial_general_200.png
-[201]: ./media/iriusrisk-tutorial/tutorial_general_201.png
-[202]: ./media/iriusrisk-tutorial/tutorial_general_202.png
-[203]: ./media/iriusrisk-tutorial/tutorial_general_203.png
-
+- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

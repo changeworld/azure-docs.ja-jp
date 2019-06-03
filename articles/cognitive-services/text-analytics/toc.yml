@@ -9,20 +9,30 @@
       href: text-analytics-user-scenarios.md
 - name: クイック スタート
   items:
-    - name: 'C#'
-      href: quickstarts/csharp.md
-    - name: Go
-      href: quickstarts/go.md
-    - name: Java
-      href: quickstarts/java.md
-    - name: Node.js
-      href: quickstarts/nodejs.md
-    - name: PHP
-      href: quickstarts/php.md
-    - name: Python
-      href: quickstarts/python.md
-    - name: Ruby
-      href: quickstarts/ruby.md
+    - name: REST API
+      items:
+        - name: Go
+          href: quickstarts/go.md
+        - name: Java
+          href: quickstarts/java.md
+        - name: Node.js
+          href: quickstarts/nodejs.md
+        - name: PHP
+          href: quickstarts/php.md
+        - name: Python
+          href: quickstarts/python.md
+        - name: Ruby
+          href: quickstarts/ruby.md
+    - name: SDK
+      items:
+        - name: 'C#'
+          href: quickstarts/csharp.md
+        - name: Python
+          href: quickstarts/python-sdk.md
+        - name: Go
+          href: quickstarts/go-sdk.md
+        - name: Ruby
+          href: quickstarts/ruby-sdk.md
 - name: チュートリアル
   items:
     - name: Power BI を統合して顧客からのフィードバックを分析する
@@ -95,6 +105,8 @@
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/'
     - name: リージョン別の提供状況
       href: 'https://azure.microsoft.com/global-infrastructure/services/'
+    - name: コンプライアンス
+      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: スタック オーバーフロー
       href: 'https://stackoverflow.com/questions/tagged/text-analytics-api'
     - name: Subscription key

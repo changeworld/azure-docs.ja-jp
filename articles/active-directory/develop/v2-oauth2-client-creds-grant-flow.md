@@ -3,8 +3,8 @@ title: Microsoft ID プラットフォームを使用して、セキュリティ
 description: Microsoft ID プラットフォームで導入された OAuth 2.0 認証プロトコルを利用して、Web アプリケーションを構築します。
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.assetid: 9b7cfbd7-f89f-4e33-aff2-414edd584b07
 ms.service: active-directory
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/12/2019
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6aed38c8c670c751ee51de95e6622685caea1ce
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 485f79f79c52067e89fa0a606e76a533c312fb84
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59500925"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65545091"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Microsoft ID プラットフォームと OAuth 2.0 クライアント資格情報フロー
 
@@ -92,7 +92,7 @@ ACL を使用する代わりに、API を使用してアプリケーションの
 組織の管理者にアクセス許可を要求する準備ができたら、Microsoft ID プラットフォームの*管理者の同意エンドポイント*にユーザーをリダイレクトできます。
 
 > [!TIP]
->  を必ず置き換えてください)。 (最良の結果を得るには、ご自身のアプリ ID を使用してください。チュートリアル アプリケーションでは有用なアクセス許可は要求されません。)[![Postman で実行](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
+> を必ず置き換えてください)。 (最良の結果を得るには、ご自身のアプリ ID を使用してください。チュートリアル アプリケーションでは有用なアクセス許可は要求されません。)[![Postman で実行](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
 ```
 // Line breaks are for legibility only.
@@ -154,7 +154,7 @@ GET http://localhost/myapp/permissions?error=permission_denied&error_description
 アプリケーションに必要な承認を獲得後、API のアクセス トークンの取得を開始します。 クライアント資格情報の許可を使用してトークンを取得するには、次のように `/token` Microsoft ID プラットフォーム エンドポイントに POST 要求を送信します。
 
 > [!TIP]
->  を必ず置き換えてください)。 (最良の結果を得るには、ご自身のアプリ ID を使用してください。チュートリアル アプリケーションでは有用なアクセス許可は要求されません。)[![Postman で実行](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
+> を必ず置き換えてください)。 (最良の結果を得るには、ご自身のアプリ ID を使用してください。チュートリアル アプリケーションでは有用なアクセス許可は要求されません。)[![Postman で実行](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
 ### <a name="first-case-access-token-request-with-a-shared-secret"></a>最初のケース:共有シークレットを使ったアクセス トークン要求
 
@@ -249,6 +249,10 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 | `timestamp` | エラーが発生した時刻。 |
 | `trace_id` | 診断に役立つ、要求の一意の識別子。 |
 | `correlation_id` | コンポーネント間での診断に役立つ、要求の一意の識別子。 |
+
+> [!NOTE]
+> アプリケーションが v2 トークンを受信できるようにするために、Microsoft Azure portal 内からアプリケーションのマニフェスト ファイルを更新できます。 属性 `accessTokenAcceptedVersion` を追加し、値を `"accessTokenAcceptedVersion": 2` として 2 に設定できます。 同じことについて詳しく理解するには、[アプリケーション マニフェスト](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest#manifest-reference)に関する記事を確認してください。 既定では、アプリケーションは現在、v1 トークンを受信します。 これがアプリケーション/Web API マニフェスト内で定義されていない場合、マニフェスト内のこの属性に対する値は、既定で 1 に設定され、したがってアプリケーションは v1 トークンを受信します。  
+
 
 ## <a name="use-a-token"></a>トークンを使用する
 

@@ -4,15 +4,15 @@ description: この記事では、Azure Cosmos DB のグローバル配信に関
 author: dharmas-cosmos
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/31/2019
+ms.date: 05/23/2019
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: 8c916a2fcff606a99e5c567318c1818ff7d5d273
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: c490657eb67a34e79c8dbaea31cb59b49cc6448e
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65071942"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241092"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db---under-the-hood"></a>Azure Cosmos DB でのグローバル データ分散 - 内部のしくみ
 
@@ -68,7 +68,7 @@ Cosmos DB のグローバル分散は、*レプリカ セット*と*パーティ
 
 複数の書き込みリージョンが構成されている Cosmos データベースの場合、システムによって、開発者が選択できる多数の柔軟な自動競合解決ポリシーが提供されています。以下の選択肢が含まれます。 
 
-- **[最後の書き込みが有効]**。既定では、ユーザーはシステム定義のタイムスタンプ プロパティを使用します (時刻同期クロック プロトコルに基づきます)。 また Cosmos DB を使用することによって、競合解決に使用する他のカスタムの数値型プロパティを指定できます。  
+- **[最後の書き込みが有効]** 。既定では、ユーザーはシステム定義のタイムスタンプ プロパティを使用します (時刻同期クロック プロトコルに基づきます)。 また Cosmos DB を使用することによって、競合解決に使用する他のカスタムの数値型プロパティを指定できます。  
 - **[Application-defined (Custom) conflict resolution policy]\(アプリケーション定義の (カスタム) 競合解決ポリシー\)** (マージ プロシージャを通じて表現)。これは、競合に対するアプリケーション定義のセマンティクスの調整用に設計されています。 これらのプロシージャは、データベース トランザクションの支援によって書き込み間の競合が検出されると、サーバー側で呼び出されます。 システムにより、コミットメント プロトコルの一部としてのマージ プロシージャの実行が 1 回だけとなることが保証されます。 利用可能な[いくつかの競合解決サンプル](how-to-manage-conflicts.md)が用意されています。  
 
 ## <a name="consistency-models"></a>整合性モデル

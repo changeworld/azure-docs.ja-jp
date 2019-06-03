@@ -8,93 +8,80 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 04/16/2019
+ms.date: 05/09/2019
 ms.author: aahi
-ms.openlocfilehash: 69eb3789586233b824da1ef6a9c338b07281f324
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 9ae894bee803c60b56a1bfacd5667f355aa44d2b
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60001390"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65799998"
 ---
-# <a name="quickstart-using-python-to-call-the-text-analytics-cognitive-service"></a>クイック スタート:Python を使用して Text Analytics Cognitive Service を呼び出す 
+# <a name="quickstart-using-the-python-rest-api-to-call-the-text-analytics-cognitive-service"></a>クイック スタート:Python REST API を使用して Text Analytics Cognitive Service を呼び出す 
 <a name="HOLTop"></a>
 
-このチュートリアルでは、T[Text Analytics API](//go.microsoft.com/fwlink/?LinkID=759711) を Python で使用して、[言語の検出](#Detect)、[センチメントの分析](#SentimentAnalysis)、および[キー フレーズの抽出](#KeyPhraseExtraction)を行う方法について説明します。
-
-この例は、コマンド ラインから実行するか、起動 Binder バッジ上でクリックすることで [MyBinder](https://mybinder.org) の Jupyter Notebook として実行できます。
-
-[![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=TextAnalytics.ipynb)
-
-### <a name="command-line"></a>コマンド ライン
-
-Jupyter のカーネルである [IPython](https://ipython.org/install.html) を更新する必要がある場合があります。
-```bash
-pip install --upgrade IPython
-```
-
-[Requests](http://docs.python-requests.org/en/master/) ライブラリを更新する必要がある場合があります。
-```bash
-pip install requests
-```
+このクイックスタートを使用して、Text Analytics REST API および Python を使用した言語の分析を開始します。 この記事では、[言語の検出](#Detect)、[感情分析](#SentimentAnalysis)、[キー フレーズの抽出](#KeyPhraseExtraction)、および[リンクされているエンティティの識別](#Entities)を行う方法について説明します。
 
 API の技術ドキュメントについては、[API の定義](//go.microsoft.com/fwlink/?LinkID=759346)に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-* [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
+* [Python 3.x](https://python.org)
 
 * サインアップ時に生成される[エンドポイントとアクセス キー](../How-tos/text-analytics-how-to-access-key.md)。
 
-* 以下のインポート、サブスクリプション キー、および `text_analytics_base_url` が、以下のすべてのクイック スタートで使用されます。 インポートを追加します。
+* Python の要求ライブラリ
+    
+    このコマンドでライブラリをインストールできます。
 
-    ```python
-    import requests
-    # pprint is pretty print (formats the JSON)
-    from pprint import pprint
-    from IPython.display import HTML
+    ```console
+    pip install --upgrade requests
     ```
+
+[!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
+
+
+## <a name="create-a-new-python-application"></a>新しい Python アプリケーションを作成する
+
+お気に入りのエディターまたは IDE で、新しい Python アプリケーションを作成します。 以下のインポートをご使用のファイルに追加します。
+
+```python
+import requests
+# pprint is used to format the JSON response
+from pprint import pprint
+from IPython.display import HTML
+```
+
+サブスクリプション キーと、Text Analytics REST API のエンドポイントのための変数を作成します。 エンドポイントのリージョンが、サインアップしたときに使用したリージョン (`westcentralus` など) に対応していることを確認します。 試用版のキーを使用している場合は、何も変更する必要はありません。
     
-    以下の行を追加し、`subscription_key` を、前に取得した有効なサブスクリプション キーに置き換えます。
-    
-    ```python
-    subscription_key = '<ADD KEY HERE>'
-    assert subscription_key
-    ```
-    
-    次に、以下の行を追加し、`text_analytics_base_url` のリージョンが、サービスの設定時に使用したリージョンに対応していることを確認します。 試用版のキーを使用している場合は、何も変更する必要はありません。
-    
-    ```python
-    text_analytics_base_url = "https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.1/"
-    ```
+```python
+subscription_key = "<ADD YOUR KEY HERE>"
+text_analytics_base_url = "https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.1/"
+```
+
+以降のセクションでは、API の各機能を呼び出す方法について説明します。
 
 <a name="Detect"></a>
 
 ## <a name="detect-languages"></a>言語を検出する
 
-言語検出 API では、[言語検出メソッド](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7)を使用してテキスト ドキュメントの言語を検出します。 お使いのリージョン用の言語検出 API のサービス エンドポイントは、次の URL 経由で利用できます。
-
+Text Analytics ベース エンドポイントに `languages` を追加して、言語検出 URL を形成します。 次に例を示します。`https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.1/languages`
+    
 ```python
 language_api_url = text_analytics_base_url + "languages"
-print(language_api_url)
 ```
 
-    https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.1/languages
-
-
-API に対するペイロードは、`documents` の一覧で構成され、それぞれに `id` と `text` 属性が含まれます。 `text` 属性は、分析対象のテキストを格納します。 
-
-`documents` ディクショナリを、言語検出を行うための任意のテキストに置き換えます。
+API に対するペイロードは、`id` 属性と `text` 属性を含むタプルである `documents` の一覧で構成されます。 `text` 属性には、分析対象のテキストが格納され、`id` には任意の値を指定できます。 
 
 ```python
-documents = { 'documents': [
-    { 'id': '1', 'text': 'This is a document written in English.' },
-    { 'id': '2', 'text': 'Este es un document escrito en Español.' },
-    { 'id': '3', 'text': '这是一个用中文写的文件' }
+documents = { "documents": [
+    { "id": "1", "text": "This is a document written in English." },
+    { "id": "2", "text": "Este es un document escrito en Español." },
+    { "id": "3", "text": "这是一个用中文写的文件" }
 ]}
 ```
 
-次の数行の新しいコードは、Python の `requests` ライブラリを使用して言語検出 API を呼び出して、ドキュメントの言語を判別します。
+要求ライブラリを使用して、ドキュメントを API に送信します。 `Ocp-Apim-Subscription-Key` ヘッダーにサブスクリプション キーを追加し、`requests.post()` を使用して要求を送信します。 
 
 ```python
 headers   = {"Ocp-Apim-Subscription-Key": subscription_key}
@@ -103,209 +90,284 @@ languages = response.json()
 pprint(languages)
 ```
 
-次のコード行は、JSON データを HTML テーブルとして表示します。
-
-```python
-table = []
-for document in languages["documents"]:
-    text  = next(filter(lambda d: d["id"] == document["id"], documents["documents"]))["text"]
-    langs = ", ".join(["{0}({1})".format(lang["name"], lang["score"]) for lang in document["detectedLanguages"]])
-    table.append("<tr><td>{0}</td><td>{1}</td>".format(text, langs))
-HTML("<table><tr><th>Text</th><th>Detected languages(scores)</th></tr>{0}</table>".format("\n".join(table)))
-```
-
-正常な JSON 応答:
+### <a name="output"></a>Output
 
 ```json
-    {'documents': [{'detectedLanguages': [{'iso6391Name': 'en',
-                                           'name': 'English',
-                                           'score': 1.0}],
-                    'id': '1'},
-                   {'detectedLanguages': [{'iso6391Name': 'es',
-                                           'name': 'Spanish',
-                                           'score': 1.0}],
-                    'id': '2'},
-                   {'detectedLanguages': [{'iso6391Name': 'zh_chs',
-                                           'name': 'Chinese_Simplified',
-                                           'score': 1.0}],
-                    'id': '3'}],
-     'errors': []}
+{
+"documents":[
+    {
+        "detectedLanguages":[
+        {
+            "iso6391Name":"en",
+            "name":"English",
+            "score":1.0
+        }
+        ],
+        "id":"1"
+    },
+    {
+        "detectedLanguages":[
+        {
+            "iso6391Name":"es",
+            "name":"Spanish",
+            "score":1.0
+        }
+        ],
+        "id":"2"
+    },
+    {
+        "detectedLanguages":[
+        {
+            "iso6391Name":"zh_chs",
+            "name":"Chinese_Simplified",
+            "score":1.0
+        }
+        ],
+        "id":"3"
+    }
+],
+"errors":[]
+}
 ```
 
 <a name="SentimentAnalysis"></a>
 
 ## <a name="analyze-sentiment"></a>センチメントを分析する
 
-Sentiment Analysis API では、[Sentiment メソッド](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9)を使用して、一連のテキスト レコードのセンチメント (肯定から否定までの範囲) を検出します。 次の例では、英語とスペイン語の 2 つのドキュメントをスコア付けしています。
-
-感情分析用のサービス エンドポイントは、次の URL 経由で、お使いのリージョンで利用できます。
-
+一連のドキュメントのセンチメント (正または負の範囲) を検出するには、Text Analytics ベース エンドポイントに `sentiment` を追加して言語検出 URL を形成します。 次に例を示します。`https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.1/sentiment`
+    
 ```python
-sentiment_api_url = text_analytics_base_url + "sentiment"
-print(sentiment_api_url)
+sentiment_url = text_analytics_base_url + "sentiment"
 ```
 
-    https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.1/sentiment
-
-言語検出の例に示すように、サービスには、ドキュメントの一覧で構成された `documents` キー付きのディクショナリが備わっています。 各ドキュメントは、`id`、分析対象の `text`、およびテキストの `language` で構成されるタプルです。 前のセクションで説明した言語検出 API を使用して、このフィールドを設定できます。
+言語検出の例に示すように、サービスには、ドキュメントの一覧で構成された `documents` キーを使用してディクショナリを作成します。 各ドキュメントは、`id`、分析対象の `text`、およびテキストの `language` で構成されるタプルです。 
 
 ```python
-documents = {'documents' : [
-  {'id': '1', 'language': 'en', 'text': 'I had a wonderful experience! The rooms were wonderful and the staff was helpful.'},
-  {'id': '2', 'language': 'en', 'text': 'I had a terrible time at the hotel. The staff was rude and the food was awful.'},  
-  {'id': '3', 'language': 'es', 'text': 'Los caminos que llevan hasta Monte Rainier son espectaculares y hermosos.'},  
-  {'id': '4', 'language': 'es', 'text': 'La carretera estaba atascada. Había mucho tráfico el día de ayer.'}
+documents = {"documents" : [
+  {"id": "1", "language": "en", "text": "I had a wonderful experience! The rooms were wonderful and the staff was helpful."},
+  {"id": "2", "language": "en", "text": "I had a terrible time at the hotel. The staff was rude and the food was awful."},  
+  {"id": "3", "language": "es", "text": "Los caminos que llevan hasta Monte Rainier son espectaculares y hermosos."},  
+  {"id": "4", "language": "es", "text": "La carretera estaba atascada. Había mucho tráfico el día de ayer."}
 ]}
 ```
 
-これで、センチメント API を使用して、ドキュメントのセンチメントを分析できます。
+要求ライブラリを使用して、ドキュメントを API に送信します。 `Ocp-Apim-Subscription-Key` ヘッダーにサブスクリプション キーを追加し、`requests.post()` を使用して要求を送信します。 
 
 ```python
 headers   = {"Ocp-Apim-Subscription-Key": subscription_key}
-response  = requests.post(sentiment_api_url, headers=headers, json=documents)
+response  = requests.post(sentiment_url, headers=headers, json=documents)
 sentiments = response.json()
 pprint(sentiments)
 ```
 
-正常な JSON 応答:
-
-```json
-{'documents': [{'id': '1', 'score': 0.7673527002334595},
-                {'id': '2', 'score': 0.18574094772338867},
-                {'id': '3', 'score': 0.5}],
-    'errors': []}
-```
+### <a name="output"></a>Output
 
 ドキュメントのセンチメント スコアは 0.0 と 1.0 の間であり、高いスコアは肯定的なセンチメントを示します。
+
+```json
+{
+  "documents":[
+    {
+      "id":"1",
+      "score":0.9708490371704102
+    },
+    {
+      "id":"2",
+      "score":0.0019068121910095215
+    },
+    {
+      "id":"3",
+      "score":0.7456425428390503
+    },
+    {
+      "id":"4",
+      "score":0.334433376789093
+    }
+  ],
+  "errors":[
+
+  ]
+}
+```
 
 <a name="KeyPhraseExtraction"></a>
 
 ## <a name="extract-key-phrases"></a>キー フレーズを抽出する
-
-Key Phrase Extraction API では、[Key Phrases メソッド](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6)を使用して、テキスト ドキュメントからキー フレーズを抽出します。 チュートリアルのこのセクションでは、英語とスペイン語の両方のドキュメントのキー フレーズを抽出します。
-
-キー フレーズ抽出サービス用のサービス エンドポイントは、次の URL 経由でアクセスされます。
-
+ 
+一連のドキュメントからキー フレーズを抽出するには、Text Analytics ベース エンドポイントに `keyPhrases` を追加して言語検出 URL を形成します。 次に例を示します。`https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.1/keyPhrases`
+    
 ```python
-key_phrase_api_url = text_analytics_base_url + "keyPhrases"
-print(key_phrase_api_url)
+keyphrase_url = text_analytics_base_url + "keyPhrases"
 ```
 
-    https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.1/keyPhrases
-
-ドキュメントのコレクションは、感情分析で使用したものと同じです。
+このドキュメントのコレクションは、感情分析の例で使用したものと同じです。
 
 ```python
-documents = {'documents' : [
-  {'id': '1', 'language': 'en', 'text': 'I had a wonderful experience! The rooms were wonderful and the staff was helpful.'},
-  {'id': '2', 'language': 'en', 'text': 'I had a terrible time at the hotel. The staff was rude and the food was awful.'},  
-  {'id': '3', 'language': 'es', 'text': 'Los caminos que llevan hasta Monte Rainier son espectaculares y hermosos.'},  
-  {'id': '4', 'language': 'es', 'text': 'La carretera estaba atascada. Había mucho tráfico el día de ayer.'}
+documents = {"documents" : [
+  {"id": "1", "language": "en", "text": "I had a wonderful experience! The rooms were wonderful and the staff was helpful."},
+  {"id": "2", "language": "en", "text": "I had a terrible time at the hotel. The staff was rude and the food was awful."},  
+  {"id": "3", "language": "es", "text": "Los caminos que llevan hasta Monte Rainier son espectaculares y hermosos."},  
+  {"id": "4", "language": "es", "text": "La carretera estaba atascada. Había mucho tráfico el día de ayer."}
 ]}
 ```
 
-JSON オブジェクトは、次のコード行を使用して HTML テーブルとして表示されます。
+要求ライブラリを使用して、ドキュメントを API に送信します。 `Ocp-Apim-Subscription-Key` ヘッダーにサブスクリプション キーを追加し、`requests.post()` を使用して要求を送信します。 
 
 ```python
-table = []
-for document in key_phrases["documents"]:
-    text    = next(filter(lambda d: d["id"] == document["id"], documents["documents"]))["text"]    
-    phrases = ",".join(document["keyPhrases"])
-    table.append("<tr><td>{0}</td><td>{1}</td>".format(text, phrases))
-HTML("<table><tr><th>Text</th><th>Key phrases</th></tr>{0}</table>".format("\n".join(table)))
-```
-
-次の数行の新しいコードは、Python の `requests` ライブラリを使用して言語検出 API を呼び出して、ドキュメントの言語を判別します。
-```python
-headers   = {'Ocp-Apim-Subscription-Key': subscription_key}
-response  = requests.post(key_phrase_api_url, headers=headers, json=documents)
+headers   = {"Ocp-Apim-Subscription-Key": subscription_key}
+response  = requests.post(keyphrase_url, headers=headers, json=documents)
 key_phrases = response.json()
 pprint(key_phrases)
 ```
 
-正常な JSON 応答:
+### <a name="output"></a>Output
+
 ```json
-{'documents': [
-    {'keyPhrases': ['wonderful experience', 'staff', 'rooms'], 'id': '1'},
-    {'keyPhrases': ['food', 'terrible time', 'hotel', 'staff'], 'id': '2'},
-    {'keyPhrases': ['Monte Rainier', 'caminos'], 'id': '3'},
-    {'keyPhrases': ['carretera', 'tráfico', 'día'], 'id': '4'}],
-    'errors': []
+{
+  "documents":[
+    {
+      "keyPhrases":[
+        "wonderful experience",
+        "staff",
+        "rooms"
+      ],
+      "id":"1"
+    },
+    {
+      "keyPhrases":[
+        "food",
+        "terrible time",
+        "hotel",
+        "staff"
+      ],
+      "id":"2"
+    },
+    {
+      "keyPhrases":[
+        "Monte Rainier",
+        "caminos"
+      ],
+      "id":"3"
+    },
+    {
+      "keyPhrases":[
+        "carretera",
+        "tráfico",
+        "día"
+      ],
+      "id":"4"
+    }
+  ],
+  "errors":[
+
+  ]
 }
 ```
+
+<a name="Entities"></a>
 
 ## <a name="identify-entities"></a>エンティティの識別
 
-Entities API は、[Entities メソッド](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)を使用して、テキスト ドキュメント内のよく知られたエンティティを識別します。 次の例では、英語のドキュメントのエンティティを識別しています。
-
-エンティティ リンク サービス用のサービス エンドポイントは、次の URL 経由でアクセスされます。
-
+テキスト ドキュメント内の既知のエンティティ (人、場所、物) を特定するには、Text Analytics ベース エンドポイントに `entities` を追加して言語検出 URL を形成します。 次に例を示します。`https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.1/entities`
+    
 ```python
-entity_linking_api_url = text_analytics_base_url + "entities"
-print(entity_linking_api_url)
+entities_url = text_analytics_base_url + "entities"
 ```
 
-    https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.1/entities
-
-ドキュメントのコレクションを次に示します。
+前の例と同様に、ドキュメントのコレクションを作成します。 
 
 ```python
-documents = {'documents' : [
-  {'id': '1', 'text': 'Microsoft is an It company.'}
+documents = {"documents" : [
+  {"id": "1", "text": "Microsoft was founded by Bill Gates and Paul Allen on April 4, 1975, to develop and sell BASIC interpreters for the Altair 8800."}
 ]}
 ```
-これで、ドキュメントを Text Analytics API に送信して、応答を受信できます。
+
+要求ライブラリを使用して、ドキュメントを API に送信します。 `Ocp-Apim-Subscription-Key` ヘッダーにサブスクリプション キーを追加し、`requests.post()` を使用して要求を送信します。
 
 ```python
 headers   = {"Ocp-Apim-Subscription-Key": subscription_key}
-response  = requests.post(entity_linking_api_url, headers=headers, json=documents)
+response  = requests.post(entities_url, headers=headers, json=documents)
 entities = response.json()
 ```
 
-正常な JSON 応答:
+### <a name="output"></a>Output
+
 ```json
-{  
-   "documents":[  
-      {  
-         "id":"1",
-         "entities":[  
-            {  
-               "name":"Microsoft",
-               "matches":[  
-                  {  
-                     "wikipediaScore":0.20872054383103444,
-                     "entityTypeScore":0.99996185302734375,
-                     "text":"Microsoft",
-                     "offset":0,
-                     "length":9
-                  }
-               ],
-               "wikipediaLanguage":"en",
-               "wikipediaId":"Microsoft",
-               "wikipediaUrl":"https://en.wikipedia.org/wiki/Microsoft",
-               "bingId":"a093e9b9-90f5-a3d5-c4b8-5855e1b01f85",
-               "type":"Organization"
-            },
-            {  
-               "name":"Technology company",
-               "matches":[  
-                  {  
-                     "wikipediaScore":0.82123868042800585,
-                     "text":"It company",
-                     "offset":16,
-                     "length":10
-                  }
-               ],
-               "wikipediaLanguage":"en",
-               "wikipediaId":"Technology company",
-               "wikipediaUrl":"https://en.wikipedia.org/wiki/Technology_company",
-               "bingId":"bc30426e-22ae-7a35-f24b-454722a47d8f"
-            }
-         ]
-      }
-   ],
-    "errors":[]
-}
+{'documents': [{'id': '1',
+   'entities': [{'name': 'Microsoft',
+     'matches': [{'wikipediaScore': 0.502357972145024,
+       'entityTypeScore': 1.0,
+       'text': 'Microsoft',
+       'offset': 0,
+       'length': 9}],
+     'wikipediaLanguage': 'en',
+     'wikipediaId': 'Microsoft',
+     'wikipediaUrl': 'https://en.wikipedia.org/wiki/Microsoft',
+     'bingId': 'a093e9b9-90f5-a3d5-c4b8-5855e1b01f85',
+     'type': 'Organization'},
+    {'name': 'Bill Gates',
+     'matches': [{'wikipediaScore': 0.5849375085784292,
+       'entityTypeScore': 0.999847412109375,
+       'text': 'Bill Gates',
+       'offset': 25,
+       'length': 10}],
+     'wikipediaLanguage': 'en',
+     'wikipediaId': 'Bill Gates',
+     'wikipediaUrl': 'https://en.wikipedia.org/wiki/Bill_Gates',
+     'bingId': '0d47c987-0042-5576-15e8-97af601614fa',
+     'type': 'Person'},
+    {'name': 'Paul Allen',
+     'matches': [{'wikipediaScore': 0.5314163053043621,
+       'entityTypeScore': 0.9988409876823425,
+       'text': 'Paul Allen',
+       'offset': 40,
+       'length': 10}],
+     'wikipediaLanguage': 'en',
+     'wikipediaId': 'Paul Allen',
+     'wikipediaUrl': 'https://en.wikipedia.org/wiki/Paul_Allen',
+     'bingId': 'df2c4376-9923-6a54-893f-2ee5a5badbc7',
+     'type': 'Person'},
+    {'name': 'April 4',
+     'matches': [{'wikipediaScore': 0.37312706493069636,
+       'entityTypeScore': 0.8,
+       'text': 'April 4',
+       'offset': 54,
+       'length': 7}],
+     'wikipediaLanguage': 'en',
+     'wikipediaId': 'April 4',
+     'wikipediaUrl': 'https://en.wikipedia.org/wiki/April_4',
+     'bingId': '52535f87-235e-b513-54fe-c03e4233ac6e',
+     'type': 'Other'},
+    {'name': 'April 4, 1975',
+     'matches': [{'entityTypeScore': 0.8,
+       'text': 'April 4, 1975',
+       'offset': 54,
+       'length': 13}],
+     'type': 'DateTime',
+     'subType': 'Date'},
+    {'name': 'BASIC',
+     'matches': [{'wikipediaScore': 0.35916049097766867,
+       'entityTypeScore': 0.8,
+       'text': 'BASIC',
+       'offset': 89,
+       'length': 5}],
+     'wikipediaLanguage': 'en',
+     'wikipediaId': 'BASIC',
+     'wikipediaUrl': 'https://en.wikipedia.org/wiki/BASIC',
+     'bingId': '5b16443d-501c-58f3-352e-611bbe75aa6e',
+     'type': 'Other'},
+    {'name': 'Altair 8800',
+     'matches': [{'wikipediaScore': 0.8697256853652899,
+       'entityTypeScore': 0.8,
+       'text': 'Altair 8800',
+       'offset': 116,
+       'length': 11}],
+     'wikipediaLanguage': 'en',
+     'wikipediaId': 'Altair 8800',
+     'wikipediaUrl': 'https://en.wikipedia.org/wiki/Altair_8800',
+     'bingId': '7216c654-3779-68a2-c7b7-12ff3dad5606',
+     'type': 'Other'}]}],
+ 'errors': []}
 ```
 
 ## <a name="next-steps"></a>次の手順

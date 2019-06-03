@@ -5,21 +5,21 @@ services: asc-for-iot
 ms.service: ascforiot
 documentationcenter: na
 author: mlottner
-manager: barbkess
+manager: rkarlin
 editor: ''
 ms.assetid: 670e6d2b-e168-4b14-a9bf-51a33c2a9aad
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/18/2019
+ms.date: 05/16/2019
 ms.author: mlottner
-ms.openlocfilehash: cac2f740c1b2ae109f29ce44cd035fc6a83dd148
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 7030ae1c3a28cdd74671dc95dce59cf86cacf4c9
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60010562"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65786159"
 ---
 # <a name="quickstart-enable-service-in-iot-hub"></a>クイック スタート:IoT Hub でサービスを有効にする
 
@@ -30,7 +30,7 @@ ms.locfileid: "60010562"
 この記事では、IoT Hub で Azure Security Center (ASC) for IoT プレビュー サービスを有効にする方法について説明します。  
 
 > [!NOTE]
-> Azure Security Center for IoT では、現在、Standard レベル以上の IoT Hub だけがサポートされています。
+> Azure Security Center for IoT では、現在、Standard レベルの IoT Hub だけがサポートされています。
 > Azure Security Center for IoT は、単一ハブのソリューションです。 複数のハブが必要な場合は、複数のソリューションが必要になります。 
 
 ## <a name="prerequisites-for-enabling-the-service"></a>サービスを有効にするための前提条件
@@ -38,20 +38,24 @@ ms.locfileid: "60010562"
 - Log Analytics ワークスペース
   - 既定では、ASC for IoT によって、2 種類の情報 (**セキュリティ アラート**と**レコメンデーション**) が Log Analytics ワークスペースに保存されます。 
   - 追加の情報の種類として**未加工のイベント**のストレージを追加することもできます。 Log Analytics に**未加工のイベント**を保存すると、追加のストレージ コストがかかることに注意してください。 
-- IoT Hub (Standard レベル以上)
+- IoT Hub (Standard レベル)
+- すべての[サービスの前提条件](service-prerequisites.md)を満たしていること 
+- サポートされているサービス リージョン
+  - 米国中部
+  - 北ヨーロッパ
+  - 東南アジア
 
 ## <a name="enable-asc-for-iot-on-your-iot-hub"></a>IoT Hub で ASC for IoT を有効にする 
 
 IoT Hub でセキュリティを有効にするには、以下の手順を実行します。 
 
 1. Azure portal で **[IoT Hub]** を開きます。 
-2. **[セキュリティ]** メニューの **[概要]** をクリックし、**[プレビューの開始]** をクリックします。 
+2. **[セキュリティ]** メニューの **[概要]** をクリックし、 **[プレビューの開始]** をクリックします。 
 3. **[Enable IoT Security]\(IoT セキュリティを有効にする\)** を選択します。 
 4. Log Analytics ワークスペースの詳細を指定します。 
    - **未加工イベント**のトグルを**オン**のままにして、ストレージの既定の情報の種類に加えて**未加工イベント**を保存することを選択します。 
    - **ツイン コレクション**のトグルを**オン**のままにして、**ツイン コレクション**を有効にすることを選択します。 
-5. Click **OK**. 
-6. **[Save]** をクリックします。 
+5. **[Save]** をクリックします。 
 
 お疲れさまでした。 IoT Hub で ASC for IoT を有効にすることができました。 
 

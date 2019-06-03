@@ -1,6 +1,6 @@
 ---
 title: Azure リソースのマネージド ID を使用して BLOB およびキューへのアクセスを認証する - Azure Storage | Microsoft Docs
-description: Azure Blob と Queue storage は、Azure リソースのマネージド ID を使用して Azure Active Directory 認証をサポートします。 Azure リソースの管理 ID を使用して、Azure の仮想マシン、関数アプリ、仮想マシン スケール セット、およびその他においてで実行されているアプリケーションから blob およびキューへのアクセスを認証することができます。
+description: Azure Blob と Queue storage は、Azure リソースのマネージド ID を使用して Azure Active Directory 認証をサポートします。 Azure リソースのマネージド ID を使用して、Azure の仮想マシン、関数アプリ、仮想マシン スケール セット、およびその他においてで実行されているアプリケーションから blob およびキューへのアクセスを認証することができます。
 services: storage
 author: tamram
 ms.service: storage
@@ -18,13 +18,13 @@ ms.locfileid: "65507884"
 ---
 # <a name="authenticate-access-to-blobs-and-queues-with-azure-active-directory-and-managed-identities-for-azure-resources"></a>Azure Active Directory と Azure リソースのマネージド ID を使用して BLOB およびキューへのアクセスを認証する
 
-Azure の Blob およびキュー ストレージは、Azure Active Directory (Azure AD) 認証を[ Azure リソースの管理 ID ](../../active-directory/managed-identities-azure-resources/overview.md)を使用してサポートします。 Azure リソースのマネージド ID により、Azure 仮想マシン (VM) で実行されているアプリケーション、関数アプリ、仮想マシン スケール セット、およびその他のサービスから Azure AD 資格情報を使用して、BLOB およびキューのデータへのアクセスを認証することができます。 Azure リソースのマネージド ID を Azure AD 認証と一緒に使用することで、クラウドで動作するアプリケーションに資格情報を保存することを避けることができます。  
+Azure の Blob およびキュー ストレージは、Azure Active Directory (Azure AD) 認証を[ Azure リソースのマネージド ID ](../../active-directory/managed-identities-azure-resources/overview.md)を使用してサポートします。 Azure リソースのマネージド ID により、Azure 仮想マシン (VM) で実行されているアプリケーション、関数アプリ、仮想マシン スケール セット、およびその他のサービスから Azure AD 資格情報を使用して、BLOB およびキューのデータへのアクセスを認証することができます。 Azure リソースのマネージド ID を Azure AD 認証と一緒に使用することで、クラウドで動作するアプリケーションに資格情報を保存することを避けることができます。  
 
 この記事では、マネージド ID を使用して Azure VM から BLOB またはキュー データへのアクセスを認証する方法について示します。 
 
-## <a name="enable-managed-identities-on-a-vm"></a>VM 上の管理 ID を有効にする
+## <a name="enable-managed-identities-on-a-vm"></a>VM 上のマネージド ID を有効にする
 
-Azure リソースのマネージド ID を使用して VM から BLOB およびキューへのアクセスを認証するには、最初に VM で Azure リソースのマネージド ID を有効にする必要があります。 Azure リソースの管理 ID を有効にする方法については、次の記事のいずれかを参照してください。
+Azure リソースのマネージド ID を使用して VM から BLOB およびキューへのアクセスを認証するには、最初に VM で Azure リソースのマネージド ID を有効にする必要があります。 Azure リソースのマネージド ID を有効にする方法については、次の記事のいずれかを参照してください。
 
 - [Azure Portal](https://docs.microsoft.com/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm)
 - [Azure PowerShell](../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
@@ -124,7 +124,7 @@ private static async Task<NewTokenAndFrequency> TokenRenewerAsync(Object state, 
 
 App Authentication ライブラリに関する詳細については、「[.NET を使用した Azure Key Vault に対するサービス間認証](../../key-vault/service-to-service-authentication.md)」を参照してください。 
 
-アクセス トークンを取得する方法についてさらに学習するには、「[アクセストークンを取得するために Azure VM 上の Azure リソースの管理 ID を使用する方法](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)」を参照してください。
+アクセス トークンを取得する方法についてさらに学習するには、「[アクセストークンを取得するために Azure VM 上の Azure リソースのマネージド ID を使用する方法](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)」を参照してください。
 
 > [!NOTE]
 > Azure AD を使用して BLOB またはキュー データに対する要求を承認するには、それらの要求に HTTPS を使用する必要があります。

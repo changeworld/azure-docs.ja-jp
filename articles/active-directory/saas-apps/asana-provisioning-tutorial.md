@@ -3,9 +3,8 @@ title: チュートリアル:Asana を構成し、Azure Active Directory を使�
 description: Azure Active Directory を構成して、ユーザー アカウントを Asana に自動的にプロビジョニング/プロビジョニング解除する方法を説明します。
 services: active-directory
 documentationcenter: ''
-author: asmalser-msft
-writer: asmalser-msft
-manager: sakula
+author: ArvindHarinder1
+manager: CelesteDG
 ms.assetid: 0b38ee73-168b-42cb-bd8b-9c5e5126d648
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
@@ -14,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2019
-ms.author: asmalser
-ms.reviewer: asmalser
+ms.author: arvinh
+ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a763b2516f88e8c92efc321db50dc15881f54c9b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 10d5ceedfd1f0fad0c6f03feba2150968aecf02b
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59265639"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65964224"
 ---
 # <a name="tutorial-configure-asana-for-automatic-user-provisioning"></a>チュートリアル:Asana を構成し、自動ユーザー プロビジョニングに対応させる
 

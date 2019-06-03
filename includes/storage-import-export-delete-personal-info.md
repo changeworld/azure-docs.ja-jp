@@ -9,11 +9,11 @@ ms.date: 05/18/2018
 ms.author: cshoe
 ms.custom: include file
 ms.openlocfilehash: e6a0ded137162328fd446b65ddb4a15fa6f1db88
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36313882"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66114971"
 ---
 ## <a name="deleting-personal-information"></a>個人情報の削除
 
@@ -23,11 +23,11 @@ ms.locfileid: "36313882"
 
 - 連絡先の名前
 - 電話番号
-- 電子メール
+- Email
 - 番地
 - City
 - 郵便番号
-- State
+- 状態
 - 国/地方/地域
 - ドライブ ID
 - 運送業者のアカウント番号

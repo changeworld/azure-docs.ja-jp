@@ -13,14 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 7763338a5c2d5ccb58fe912d9989ab5bb57d5932
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: c30a32466cbac795ef037a3295816e87995ad749
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58258498"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64868387"
 ---
 # <a name="protect-your-hls-content-with-apple-fairplay-or-microsoft-playready"></a>Apple FairPlay または Microsoft PlayReady による HLS コンテンツの保護
+
+> [!NOTE]
+> このチュートリアルを完了するには、Azure アカウントが必要です。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。   > Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
+>
+
 Azure Media Services では、次の形式を使用して HTTP ライブ ストリーミング (HLS) コンテンツを動的に暗号化することができます。  
 
 * **AES-128 エンベロープ クリア キー**
@@ -54,13 +59,13 @@ Media Services を使用して FairPlay で暗号化された HLS を配信し�
 
 Media Services キーの配信側で次の設定が必要です。
 
-  * **アプリ証明書 (AC)**: 秘密キーを含む .pfx ファイル。 このファイルを作成し、パスワードを使用して暗号化します。
+  * **アプリ証明書 (AC)** : 秘密キーを含む .pfx ファイル。 このファイルを作成し、パスワードを使用して暗号化します。
 
        キー配信ポリシーを構成する場合、パスワードと .pfx ファイルは Base64 形式にする必要があります。
 
       次の手順では、FairPlay 用の .pfx 証明書ファイルを生成する方法について説明します。
 
-    1.  https://slproweb.com/products/Win32OpenSSL.html から OpenSSL をインストールします。
+    1. https://slproweb.com/products/Win32OpenSSL.html から OpenSSL をインストールします。
 
         Apple によって提供される FairPlay 証明書とその他のファイルが含まれるフォルダーに移動します。
     2. コマンド ラインから次のコマンドを実行します。 このコマンドにより、.cer ファイルが .pem ファイルに変換されます。
@@ -77,7 +82,7 @@ Media Services キーの配信側で次の設定が必要です。
 
 FPS のクライアント側で、次の設定が必要です。
 
-  * **アプリ証明書 (AC)**: オペレーティング システムが一部のペイロードを暗号化する際に使用する公開キーを含む .cer/.der ファイル。 Media Services で把握しておく必要がある理由は、プレーヤーで必要になるからです。 復号化は、キー配信サービスが対応する秘密キーを使用して行います。
+  * **アプリ証明書 (AC)** : オペレーティング システムが一部のペイロードを暗号化する際に使用する公開キーを含む .cer/.der ファイル。 Media Services で把握しておく必要がある理由は、プレーヤーで必要になるからです。 復号化は、キー配信サービスが対応する秘密キーを使用して行います。
 
 FairPlay で暗号化されたストリームを再生するには、まず実際の ASK を取得してから、実際の証明書を生成する必要があります。 そのプロセスにより、3 つすべてのパートが作成されます。
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 7bb25aa1f77a49363fe2e08d1430282b9b33caae
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 0783251eaeef188c49c5b3aa61b5ecaec48127b7
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59549356"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65506705"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy の定義の構造
 
@@ -46,7 +46,7 @@ Azure Policy で使用されるスキーマについては、[https://schema.man
                     "strongType": "location",
                     "displayName": "Allowed locations"
                 },
-                "defaultValue": "westus2"
+                "defaultValue": [ "westus2" ]
             }
         },
         "displayName": "Allowed locations",
@@ -99,6 +99,7 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
   - `description`:パラメーターが何に使用されるかの説明。 許可される値の例を提示するために使用できます。
   - `displayName`:ポータル内に表示されるパラメーターのフレンドリ名。
   - `strongType`:(省略可能) ポータル経由でポリシー定義を割り当てるときに使用されます。 コンテキスト対応の一覧を提供します。 詳しくは、[strongType](#strongtype) に関するページをご覧ください。
+  - `assignPermissions`:(省略可能) ポリシーの割り当て中に Azure portal にロールの割り当てを作成させるには、_true_ に設定します。 このプロパティは、割り当てスコープ外でアクセス許可を割り当てたい場合に便利です。 ロールの割り当ては、ポリシーのロール定義ごと (またはイニシアチブのすべてのポリシーのロール定義ごとに) 1 つあります。 パラメーター値は、有効なリソースまたはスコープである必要があります。
 - `defaultValue`:(省略可能) 値が指定されていない場合、割り当ての中でパラメーターの値を設定します。 割り当てられている既存のポリシー定義を更新するときは、必須です。
 - `allowedValues`:(省略可能) 割り当て中にパラメーターが許可する値の配列を指定します。
 
@@ -113,7 +114,7 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
             "displayName": "Allowed locations",
             "strongType": "location"
         },
-        "defaultValue": "westus2",
+        "defaultValue": [ "westus2" ],
         "allowedValues": [
             "eastus2",
             "westus2",
@@ -148,6 +149,7 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
 - `omsWorkspace`
 - `Microsoft.EventHub/Namespaces/EventHubs`
 - `Microsoft.EventHub/Namespaces/EventHubs/AuthorizationRules`
+- `Microsoft.EventHub/Namespaces/AuthorizationRules`
 - `Microsoft.RecoveryServices/vaults`
 - `Microsoft.RecoveryServices/vaults/backupPolicies`
 
@@ -227,6 +229,10 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
 - `"notIn": ["value1","value2"]`
 - `"containsKey": "keyName"`
 - `"notContainsKey": "keyName"`
+- `"less": "value"`
+- `"lessOrEquals": "value"`
+- `"greater": "value"`
+- `"greaterOrEquals": "value"`
 - `"exists": "bool"`
 
 **like** 条件と **notLike** 条件を使用する場合は、値にワイルドカード (`*`) を指定できます。
@@ -375,7 +381,7 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
 
 ### <a name="effect"></a>効果
 
-ポリシーでは、次の種類の効果がサポートされています。
+Azure Policy では、次の種類の効果をサポートしています。
 
 - **Deny** はアクティビティ ログでイベントを生成し、要求は失敗します
 - **Audit**: アクティビティ ログ内に警告イベントを生成しますが、要求は失敗しません。
@@ -410,19 +416,29 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
 }
 ```
 
-各効果の詳細、評価の順序、プロパティ、例については、「[Policy の効果について](effects.md)」を参照してください。
+各効果の詳細、評価の順序、プロパティ、例については、「[Azure Policy の効果について](effects.md)」を参照してください。
 
 ### <a name="policy-functions"></a>ポリシー関数
 
-次の関数を除き、すべての [Resource Manager テンプレート関数](../../../azure-resource-manager/resource-group-template-functions.md)をポリシー規則内で使用できます。
+ポリシー規則では、次の関数およびユーザー定義関数を除くすべての [Resource Manager テンプレート関数](../../../azure-resource-manager/resource-group-template-functions.md)を使用できます。
 
 - copyIndex()
 - deployment()
 - list*
+- newGuid()
+- pickZones()
 - providers()
 - reference()
 - resourceId()
 - variables()
+
+ポリシー規則では、次の関数をすべて使用できますが、Azure Resource Manager テンプレートでの使用方法とは異なります。
+
+- addDays(dateTime, numberOfDaysToAdd)
+  - **dateTime**: [必須] 文字列 - ユニバーサル ISO 8601 日時形式 'yyyy-MM-ddTHH:mm:ss.fffffffZ' の文字列
+  - **numberOfDaysToAdd**: [必須] 整数 - 追加する日数
+- utcNow() - Resource Manager テンプレートとは異なり、これは defaultValue 外で使用できます。
+  - 現在の日時に設定されているユニバーサル ISO 8601 日時形式 'yyyy-MM-ddTHH:mm:ss.fffffffZ' の文字列が返されます。
 
 さらに、`field` 関数もポリシー規則で使用できます。 `field` は、主に **AuditIfNotExists** と **DeployIfNotExists** で、評価されるリソースのフィールドを参照するために使用されます。 使用例については、「[DeployIfNotExists の例](effects.md#deployifnotexists-example)」をご覧ください。
 
@@ -593,9 +609,9 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
 
 ## <a name="next-steps"></a>次の手順
 
-- [Azure Policy のサンプル](../samples/index.md)を確認する
-- [ポリシーの効果について](effects.md)確認する
-- [プログラムによってポリシーを作成する](../how-to/programmatically-create.md)方法を理解する
-- [コンプライアンス データを取得する](../how-to/getting-compliance-data.md)ための方法を学びます。
-- [準拠していないリソースを修復する](../how-to/remediate-resources.md)方法を確認する
+- [Azure Policy のサンプル](../samples/index.md)を確認します。
+- 「[Policy の効果について](effects.md)」を確認します。
+- [プログラムによってポリシーを作成する](../how-to/programmatically-create.md)方法を理解します。
+- [コンプライアンス データを取得する](../how-to/getting-compliance-data.md)方法を学習します。
+- [準拠していないリソースを修復する](../how-to/remediate-resources.md)方法を学習します。
 - 「[Azure 管理グループのリソースを整理する](../../management-groups/overview.md)」で、管理グループとは何かを確認します。

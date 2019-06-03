@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: d955654eee1d02994f303b6270b156eb9a61c29b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 19c2298c9bda03acba28496a97c89c2a53e3c44e
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58915256"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65964901"
 ---
 # <a name="tutorial-share-azure-spatial-anchors-across-sessions-and-devices-with-an-azure-cosmos-db-back-end"></a>チュートリアル:Azure Cosmos DB バックエンドを使用してセッションやデバイス間で Azure Spatial Anchors を共有する
 
@@ -70,7 +70,7 @@ Visual Studio を開き、`Sharing\SharingServiceSample` フォルダーのプ�
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、Azure Cosmos DB を使用して、デバイス間でアンカーの識別子を共有しました。 新しい Android アプリで Azure Spatial Anchors を使用する方法について詳しくは、次のチュートリアルに進んでください。
+このチュートリアルでは、Azure Cosmos DB を使用して、デバイス間でアンカーの識別子を共有しました。 新しい Unity HoloLens アプリで Azure Spatial Anchors を使用する方法をさらに学習する場合は、次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-> [新しい Android アプリの開始](./tutorial-new-android-app.md)
+> [新しい Android アプリの開始](./tutorial-new-unity-hololens-app.md)

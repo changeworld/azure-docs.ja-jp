@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/04/2019
 ms.author: jeedes
-ms.openlocfilehash: cc5d8e4791bc109f4a804aad33bfc258eed97a25
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: d42e266de9c958c8a71cc5fa680a78c2278cec6e
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59281881"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956783"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-netdocuments"></a>チュートリアル:Azure Active Directory と NetDocuments の統合
 
@@ -52,11 +52,11 @@ Azure AD への NetDocuments の統合を構成するには、ギャラリーか
 
 **ギャラリーから NetDocuments を追加するには、次の手順を実行します。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
     ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
+2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -64,7 +64,7 @@ Azure AD への NetDocuments の統合を構成するには、ギャラリーか
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**NetDocuments**」と入力し、結果ウィンドウで **[NetDocuments]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**NetDocuments**」と入力し、結果ウィンドウで **[NetDocuments]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の NetDocuments](common/search-new-app.png)
 
@@ -88,15 +88,15 @@ NetDocuments で Azure AD のシングル サインオンを構成してテス�
 
 NetDocuments で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure Portal](https://portal.azure.com/) の **NetDocuments** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
+1. [Azure Portal](https://portal.azure.com/) の **NetDocuments** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
-2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
+2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
     ![シングル サインオン選択モード](common/select-saml-option.png)
 
-3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -104,14 +104,14 @@ NetDocuments で Azure AD シングル サインオンを構成するには、�
 
     ![[NetDocuments のドメインと URL] のシングル サインオン情報](common/sp-reply.png)
 
-    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://vault.netvoyage.com/neWeb2/docCent.aspx?whr=<user identifier>`
+    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://vault.netvoyage.com/neWeb2/docCent.aspx?whr=<Repository ID>`
 
-    b. **[応答 URL]** ボックスに、`https://vault.netvoyage.com/neWeb2/docCent.aspx?whr=<user identifier>` のパターンを使用して URL を入力します
+    b. **[応答 URL]** ボックスに、`https://vault.netvoyage.com/neWeb2/docCent.aspx?whr=<Repository ID>` のパターンを使用して URL を入力します
 
     > [!NOTE]
-    > これらは実際の値ではありません。 これらの値を、実際のサインオン URL および応答 URL で更新してください。 これらの値を取得するには、[NetDocuments クライアント サポート チーム](https://support.netdocuments.com/hc/) に連絡してください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > これらは実際の値ではありません。 これらの値を、実際のサインオン URL および応答 URL で更新してください。 リポジトリ ID は、CA- で始まり、その後に NetDocuments リポジトリに関連付けられている 8 文字のコードが続く値です。 詳細については、[NetDocuments Federated Identity サポート ドキュメント](https://support.netdocuments.com/hc/en-us/articles/205220410-Federated-Identity-Login)を参照してください。 また、上の情報を使用して構成することが難しい場合は、[NetDocuments クライアント サポート チーム](https://support.netdocuments.com/hc/)に連絡して、これらの値を取得してください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
+5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
@@ -143,7 +143,7 @@ NetDocuments で Azure AD シングル サインオンを構成するには、�
    
     ![フェデレーション ID](./media/netdocuments-tutorial/ic795049.png "フェデレーション ID")
    
-    a. **[フェデレーション ID のサーバーの種類]** として、**[Active Directory フェデレーション サービス]** を選びます。
+    a. **[フェデレーション ID のサーバーの種類]** として、 **[Active Directory フェデレーション サービス]** を選びます。
    
     b. **[ファイルの選択]** をクリックして、Azure Portal からダウンロードしたメタデータ ファイルをアップロードします。
    
@@ -153,7 +153,7 @@ NetDocuments で Azure AD シングル サインオンを構成するには、�
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
+1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
@@ -178,7 +178,7 @@ NetDocuments で Azure AD シングル サインオンを構成するには、�
 
 このセクションでは、Britta Simon に NetDocuments へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]**、**[NetDocuments]** の順に選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** 、 **[NetDocuments]** の順に選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -190,15 +190,15 @@ NetDocuments で Azure AD シングル サインオンを構成するには、�
 
     ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
 5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
+6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
 
-7. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンをクリックします。
+7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
 
 ### <a name="create-netdocuments-test-user"></a>NetDocuments のテスト ユーザーの作成
 
@@ -217,7 +217,7 @@ NetDocuments の場合、プロビジョニングは手動で行います。
    
     ![リポジトリ](./media/netdocuments-tutorial/ic795047.png "リポジトリ")
 
-4. **[電子メール アドレス]** テキストボックスに、プロビジョニングする有効な Azure Active Directory アカウントの電子メール アドレスを入力して、**[ユーザーの追加]** をクリックします。
+4. **[電子メール アドレス]** テキストボックスに、プロビジョニングする有効な Azure Active Directory アカウントの電子メール アドレスを入力して、 **[ユーザーの追加]** をクリックします。
    
     ![電子メール アドレス](./media/netdocuments-tutorial/ic795053.png "電子メール アドレス")
    

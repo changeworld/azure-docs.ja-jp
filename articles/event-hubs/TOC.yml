@@ -51,8 +51,6 @@
           href: event-hubs-capture-python.md
     - name: Apache Kafka 用 Event Hubs へのストリーム配信
       href: event-hubs-quickstart-kafka-enabled-event-hubs.md
-    - name: 専用の Event Hubs クラスターの作成
-      href: event-hubs-dedicated-cluster-create-portal.md
 - name: チュートリアル
   items:
     - name: Event Hubs データ ストリームでデータの異常を視覚化する
@@ -86,14 +84,18 @@
       href: event-hubs-event-processor-host.md
     - name: プログラミング ガイド
       href: event-hubs-programming-guide.md
-    - name: Azure リソースのマネージド ID
-      href: event-hubs-managed-service-identity.md
-    - name: ロールベースのアクセス制御 (プレビュー)
-      href: event-hubs-role-based-access-control.md
-    - name: geo ディザスター リカバリーと geo レプリケーション
-      href: event-hubs-geo-dr.md
-    - name: 認証とセキュリティ モデルの概要
-      href: event-hubs-authentication-and-security-model-overview.md
+    - name: セキュリティ
+      items:
+        - name: Azure リソースのマネージド ID
+          href: event-hubs-managed-service-identity.md
+        - name: ロールベースのアクセス制御 (プレビュー)
+          href: event-hubs-role-based-access-control.md
+        - name: geo ディザスター リカバリーと geo レプリケーション
+          href: event-hubs-geo-dr.md
+        - name: 認証とセキュリティ モデルの概要
+          href: event-hubs-authentication-and-security-model-overview.md
+        - name: セキュリティ属性
+          href: event-hubs-security-attributes.md
     - name: 可用性と一貫性
       href: event-hubs-availability-and-consistency.md
     - name: AMQP 1.0 プロトコル ガイド

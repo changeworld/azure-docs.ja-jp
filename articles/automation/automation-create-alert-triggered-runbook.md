@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 09/18/2018
+ms.date: 04/29/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 88fe7740170638e9e0d7398a02dcf83ab81f6ffc
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 8a1ae906a72d781f638fb171a409b860ffa6d501
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54421685"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65517700"
 ---
 # <a name="use-an-alert-to-trigger-an-azure-automation-runbook"></a>Azure Automation Runbook をトリガーするアラートを使用する
 
@@ -23,17 +23,21 @@ ms.locfileid: "54421685"
 ## <a name="alert-types"></a>アラートの種類
 
 Automation Runbook は、次の 3 つの種類のアラートで使用できます。
-* クラシック メトリック アラート
+
+* 共通アラート
 * アクティビティ ログ アラート
 * ほぼリアルタイムのメトリック アラート
+
+> [!NOTE]
+> 共通アラート スキーマは、今日の Azure でのアラート通知の使用エクスペリエンスを標準化します。 これまで、今日の Azure の 3 種類のアラート (メトリック、ログ、アクティビティ ログ) は、独自の電子メール テンプレートや Webhook スキーマ などを持ちました。詳細については、「[共通アラート スキーマ](../azure-monitor/platform/alerts-common-schema.md)」を参照してください
 
 アラートが Runbook を呼び出すとき、実際の呼び出しは webhook に対する HTTP POST 要求です。 POST 要求の本文には、アラートに関する有用なプロパティを格納する JSON 形式のオブジェクトが含まれています。 次の表は、各アラートの種類のペイロード スキーマへのリンクを示しています。
 
 |アラート:  |説明|ペイロード スキーマ  |
 |---------|---------|---------|
-|[従来のメトリック アラート](../monitoring-and-diagnostics/insights-alerts-portal.md?toc=%2fazure%2fautomation%2ftoc.json)    |いずれかのプラットフォーム レベルのメトリックが特定の条件を満たしている場合に、通知が送信されます。 たとえば、過去 5 分間の VM の **CPU %** の値が **90** を超えている場合などです。| [クラシック メトリック アラートのペイロード スキーマ](../azure-monitor/platform/alerts-webhooks.md?toc=%2fazure%2fautomation%2ftoc.json#payload-schema)         |
+|[共通アラート](../azure-monitor/platform/alerts-common-schema.md?toc=%2fazure%2fautomation%2ftoc.json)|今日の Azure でのアラート通知の使用エクスペリエンスを標準化する共通アラート スキーマ。|[共通アラートのペイロード スキーマ](../azure-monitor/platform/alerts-common-schema-definitions.md?toc=%2fazure%2fautomation%2ftoc.json#sample-alert-payload)|
 |[アクティビティ ログ アラート](../azure-monitor/platform/activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)    |Azure のアクティビティ ログ内の新しいイベントのいずれかが特定の条件と一致する場合に、通知が送信されます。 たとえば、`Delete VM` 処理が **myProductionResourceGroup** で発生した場合、または状態が **[アクティブ]** な新しい Azure Service Health イベントが表示されている場合などです。| [アクティビティ ログ アラートのペイロード スキーマ](../azure-monitor/platform/activity-log-alerts-webhook.md)        |
-|[ほぼリアルタイムのメトリック アラート](../azure-monitor/platform/alerts-metric-near-real-time.md?toc=%2fazure%2fautomation%2ftoc.json)    |1 つまたは複数のプラットフォーム レベルのメトリックが指定した条件を満たす場合に、メトリック アラートよりも速く通知が送信されます。 たとえば、過去 5 分間の VM の **CPU %** の値が **90** より大きく、**[ネットワーク入力]** の値が **500 MB** より大きい場合などです。| [ほぼリアルタイムのメトリック アラートのペイロード スキーマ](../azure-monitor/platform/alerts-webhooks.md?toc=%2fazure%2fautomation%2ftoc.json#payload-schema)          |
+|[ほぼリアルタイムのメトリック アラート](../azure-monitor/platform/alerts-metric-near-real-time.md?toc=%2fazure%2fautomation%2ftoc.json)    |1 つまたは複数のプラットフォーム レベルのメトリックが指定した条件を満たす場合に、メトリック アラートよりも速く通知が送信されます。 たとえば、過去 5 分間の VM の **CPU %** の値が **90** より大きく、**[ネットワーク入力]** の値が **500 MB** より大きい場合などです。| [ほぼリアルタイムのメトリック アラートのペイロード スキーマ](../azure-monitor/platform/alerts-webhooks.md#payload-schema)          |
 
 種類ごとに提供されるデータは異なるため、アラートは種類ごとに異なる方法で処理されます。 次のセクションでは、さまざまな種類のアラートを処理する Runbook を作成する方法について説明します。
 
@@ -50,96 +54,86 @@ Runbook は、VM に対する管理アクションを実行するために、**A
 この例を使用して**Stop-AzureVmInResponsetoVMAlert** と呼ばれる Runbook を作成します。 PowerShell スクリプトは変更して、多くのさまざまなリソースで使用することができます。
 
 1. Azure Automation アカウントに移動します。
-1. **[プロセス オートメーション]** の **[Runbook]** を選択します。
-1. Runbook の一覧の上部で、**[Runbook の追加]** を選択します。 
-1. **[Runbook の追加]** ページで **[簡易作成]** を選択します。
-1. Runbook の名前には「**Stop-AzureVmInResponsetoVMAlert**」と入力します。 Runbook の種類として、**[PowerShell]** を選びます。 そのうえで **[Create]\(作成\)** を選択します。  
-1. **[編集]** ウィンドウに、次の PowerShell の例をコピーします。 
+2. **[プロセス オートメーション]** の **[Runbook]** を選択します。
+3. Runbook の一覧の上部で、**[+ Runbook の作成]** を選択します。
+4. **[Runbook の追加]** ページで、Runbook 名として「**Stop-AzureVmInResponsetoVMAlert**」と入力します。 Runbook の種類として、**[PowerShell]** を選びます。 そのうえで **[Create]\(作成\)** を選択します。  
+5. **[編集]** ページに、次の PowerShell の例をコピーします。
 
     ```powershell-interactive
-    <#
-    .SYNOPSIS
-    This runbook stops a resource management VM in response to an Azure alert trigger.
-
-    .DESCRIPTION
-    This runbook stops a resource management VM in response to an Azure alert trigger.
-    The input is alert data that has the information required to identify which VM to stop.
-    
-    DEPENDENCIES
-    - The runbook must be called from an Azure alert via a webhook.
-    
-    REQUIRED AUTOMATION ASSETS
-    - An Automation connection asset called "AzureRunAsConnection" that is of type AzureRunAsConnection.
-    - An Automation certificate asset called "AzureRunAsCertificate".
-
-    .PARAMETER WebhookData
-    Optional. (The user doesn't need to enter anything, but the service always passes an object.)
-    This is the data that's sent in the webhook that's triggered from the alert.
-
-    .NOTES
-    AUTHOR: Azure Automation Team
-    LASTEDIT: 2017-11-22
-    #>
-
     [OutputType("PSAzureOperationResponse")]
-
     param
     (
         [Parameter (Mandatory=$false)]
         [object] $WebhookData
     )
-
     $ErrorActionPreference = "stop"
 
     if ($WebhookData)
     {
-        # Get the data object from WebhookData.
+        # Get the data object from WebhookData
         $WebhookBody = (ConvertFrom-Json -InputObject $WebhookData.RequestBody)
 
-        # Get the info needed to identify the VM (depends on the payload schema).
+        # Get the info needed to identify the VM (depends on the payload schema)
         $schemaId = $WebhookBody.schemaId
         Write-Verbose "schemaId: $schemaId" -Verbose
-        if ($schemaId -eq "AzureMonitorMetricAlert") {
+        if ($schemaId -eq "azureMonitorCommonAlertSchema") {
+            # This is the common Metric Alert schema (released March 2019)
+            $Essentials = [object] ($WebhookBody.data).essentials
+            # Get the first target only as this script doesn't handle multiple
+            $alertTargetIdArray = (($Essentials.alertTargetIds)[0]).Split("/")
+            $SubId = ($alertTargetIdArray)[2]
+            $ResourceGroupName = ($alertTargetIdArray)[4]
+            $ResourceType = ($alertTargetIdArray)[6] + "/" + ($alertTargetIdArray)[7]
+            $ResourceName = ($alertTargetIdArray)[-1]
+            $status = $Essentials.monitorCondition
+        }
+        elseif ($schemaId -eq "AzureMonitorMetricAlert") {
             # This is the near-real-time Metric Alert schema
             $AlertContext = [object] ($WebhookBody.data).context
+            $SubId = $AlertContext.subscriptionId
+            $ResourceGroupName = $AlertContext.resourceGroupName
+            $ResourceType = $AlertContext.resourceType
             $ResourceName = $AlertContext.resourceName
             $status = ($WebhookBody.data).status
         }
         elseif ($schemaId -eq "Microsoft.Insights/activityLogs") {
             # This is the Activity Log Alert schema
             $AlertContext = [object] (($WebhookBody.data).context).activityLog
+            $SubId = $AlertContext.subscriptionId
+            $ResourceGroupName = $AlertContext.resourceGroupName
+            $ResourceType = $AlertContext.resourceType
             $ResourceName = (($AlertContext.resourceId).Split("/"))[-1]
             $status = ($WebhookBody.data).status
         }
         elseif ($schemaId -eq $null) {
             # This is the original Metric Alert schema
             $AlertContext = [object] $WebhookBody.context
+            $SubId = $AlertContext.subscriptionId
+            $ResourceGroupName = $AlertContext.resourceGroupName
+            $ResourceType = $AlertContext.resourceType
             $ResourceName = $AlertContext.resourceName
             $status = $WebhookBody.status
         }
         else {
-            # The schema isn't supported.
+            # Schema not supported
             Write-Error "The alert data schema - $schemaId - is not supported."
         }
 
         Write-Verbose "status: $status" -Verbose
-        if ($status -eq "Activated")
+        if (($status -eq "Activated") -or ($status -eq "Fired"))
         {
-            $ResourceType = $AlertContext.resourceType
-            $ResourceGroupName = $AlertContext.resourceGroupName
-            $SubId = $AlertContext.subscriptionId
             Write-Verbose "resourceType: $ResourceType" -Verbose
             Write-Verbose "resourceName: $ResourceName" -Verbose
             Write-Verbose "resourceGroupName: $ResourceGroupName" -Verbose
             Write-Verbose "subscriptionId: $SubId" -Verbose
 
-            # Use this only if this is a resource management VM.
+            # Determine code path depending on the resourceType
             if ($ResourceType -eq "Microsoft.Compute/virtualMachines")
             {
-                # This is the VM.
-                Write-Verbose "This is a resource management VM." -Verbose
+                # This is an Resource Manager VM
+                Write-Verbose "This is an Resource Manager VM." -Verbose
 
-                # Authenticate to Azure by using the service principal and certificate. Then, set the subscription.
+                # Authenticate to Azure with service principal and certificate and set subscription
                 Write-Verbose "Authenticating to Azure with service principal and certificate" -Verbose
                 $ConnectionAssetName = "AzureRunAsConnection"
                 Write-Verbose "Get connection asset: $ConnectionAssetName" -Verbose
@@ -149,22 +143,22 @@ Runbook は、VM に対する管理アクションを実行するために、**A
                     throw "Could not retrieve connection asset: $ConnectionAssetName. Check that this asset exists in the Automation account."
                 }
                 Write-Verbose "Authenticating to Azure with service principal." -Verbose
-                Connect-AzureRmAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint | Write-Verbose
+                Add-AzureRMAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint | Write-Verbose
                 Write-Verbose "Setting subscription to work against: $SubId" -Verbose
                 Set-AzureRmContext -SubscriptionId $SubId -ErrorAction Stop | Write-Verbose
 
-                # Stop the VM.
+                # Stop the Resource Manager VM
                 Write-Verbose "Stopping the VM - $ResourceName - in resource group - $ResourceGroupName -" -Verbose
                 Stop-AzureRmVM -Name $ResourceName -ResourceGroupName $ResourceGroupName -Force
                 # [OutputType(PSAzureOperationResponse")]
             }
             else {
-                # ResourceType isn't supported.
+                # ResourceType not supported
                 Write-Error "$ResourceType is not a supported resource type for this runbook."
             }
         }
         else {
-            # The alert status was not 'Activated', so no action taken.
+            # The alert status was not 'Activated' or 'Fired' so no action taken
             Write-Verbose ("No action taken. Alert status: " + $status) -Verbose
         }
     }
@@ -173,58 +167,31 @@ Runbook は、VM に対する管理アクションを実行するために、**A
         Write-Error "This runbook is meant to be started from an Azure alert webhook only."
     }
     ```
-1. **[発行]** を選択して Runbook を保存し、発行します。
 
-## <a name="create-an-action-group"></a>アクション グループを作成する
+6. **[発行]** を選択して Runbook を保存し、発行します。
 
-アクション グループとは、アラートによってトリガーされるアクションのコレクションです。 Runbook は、アクション グループで使用できるさまざまなアクションの 1 つにすぎません。
+## <a name="create-the-alert"></a>アラートを作成する
 
-1. Azure Portal で、**[モニター]** > **[設定]** > **[アクション グループ]** を選択します。
-1. **[アクション グループの追加]** を選択して、必要な情報を入力します。  
-    1. **[アクション グループ名]** ボックスに、名前を入力します。
-    1. **[短い名前]** ボックスに、名前を入力します。 短い名前は、通知がこのアクション グループを使用して送信されるときに長い名前の代わりに使用されます。
-    1. **[サブスクリプション]** ボックスには、現在のサブスクリプションが自動入力されます。 このサブスクリプションにアクション グループが保存されます。
-    1. アクション グループが保存されるリソース グループを選択します。
+アラートでは、アクション グループが使用されます。アクション グループは、アラートによってトリガーされるアクションのコレクションです。 Runbook は、アクション グループで使用できるさまざまなアクションの 1 つにすぎません。
 
-この例では、Runbook アクションと通知アクションの 2 つのアクションを作成します。
-
-### <a name="runbook-action"></a>Runbook アクション
-
-アクション グループに Runbook アクションを作成するには:
-
-1. **[アクション]** の **[アクション名]** にアクションの名前を入力します。 **[アクションの種類]** で **[Automation Runbook]** を選択します。
-1. **[詳細]** で、**[詳細の編集]** を選択します。  
-1. **[Runbook の構成]** ページの **[Runbook ソース]** で **[ユーザー]** を選択します。  
+1. Automation アカウントで、**[監視]** の下の **[アラート]** を選択します。
+1. **[+ 新しいアラート ルール]** を選択します。
+1. **[リソース]** の下の **[選択]** をクリックします。 **[リソースの選択]** ページで、アラートの対象となる VM を選択し、**[完了]** をクリックします。
+1. **[条件]** の下の **[条件の追加]** をクリックします。 使用するシグナル (たとえば、**[CPU の割合]**) を選択し、**[完了]** をクリックします。
+1. **[シグナル ロジックの構成]** ページで、**[アラート ロジック]** の下の **[しきい値]** に入力し、**[完了]** をクリックします。
+1. **[アクション グループ]** の **[新規作成]** を選択します。
+1. **[アクション グループの追加]** ページで、アクション グループに名前と短い名前を付けます。
+1. アクションの名前を指定します。 アクションの種類として、**[Automation Runbook]** を選択します。
+1. **[詳細の編集]** を選択します。 **[Runbook の構成]** ページの **[Runbook ソース]** で **[ユーザー]** を選択します。  
 1. **[サブスクリプション]** と **[Automation アカウント]** を選択し、**Stop-AzureVmInResponsetoVMAlert** Runbook を選択します。  
-1. 操作が完了したら、**[OK]** をクリックします。
-
-### <a name="notification-action"></a>通知アクション
-
-アクション グループに通知アクションを作成するには:
-
-1. **[アクション]** の **[アクション名]** にアクションの名前を入力します。 **[アクションの種類]** で **[電子メール]** を選択します。  
-1. **[詳細]** で、**[詳細の編集]** を選択します。  
-1. **[電子メール]** ページで、通知に使用する電子メール アドレスを入力して、**[OK]** を選択します。 Runbook だけでなく、電子メール アドレスもアクションとして追加すると便利です。 Runbook が開始されたときに通知されます。  
-
-    アクション グループは次の図のようになります。
-
-   ![[アクション グループの追加] ページ](./media/automation-create-alert-triggered-runbook/add-action-group.png)
+1. **[一般的なアラート スキーマを有効にします]** で **[はい]** を選択します。
 1. アクション グループを作成するには、**[OK]** を選択します。
 
-このアクション グループは作成した[アクティビティ ログ アラート](../azure-monitor/platform/activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)と[ほぼリアルタイムのアラート](../azure-monitor/platform/alerts-overview.md?toc=%2fazure%2fautomation%2ftoc.json)で使用することができます。
+    ![[アクション グループの追加] ページ](./media/automation-create-alert-triggered-runbook/add-action-group.png)
 
-## <a name="classic-alert"></a>クラシック アラート
+    このアクション グループは作成した[アクティビティ ログ アラート](../azure-monitor/platform/activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)と[ほぼリアルタイムのアラート](../azure-monitor/platform/alerts-overview.md?toc=%2fazure%2fautomation%2ftoc.json)で使用することができます。
 
-クラシック アラートはメトリックに基づいており、アクション グループを使用しません。 ただし、クラシック アラートに基づく Runbook アクションを設定することができます。 
-
-クラシック アラートを作成するには:
-
-1. **[メトリック アラートの追加]** を選択します。
-1. メトリック アラートに **myVMCPUAlert** という名前を付けます。 アラートに簡単な説明を入力します。
-1. メトリック アラートの条件に、**[次の値より大きい]** を選択します。 **[しきい値]** の値に、**10** を選択します。 **[期間]** の値に、**[Over the last five minutes]\(過去 5 分間\)** を選択します。
-1. **[アクションの実行]** で、**[このアラートから Runbook を実行します]** を選択します。
-1. **[Runbook の構成]** ページの **[Runbook ソース]** で **[ユーザー]** を選択します。 Automation アカウントを選択し、**Stop-AzureVmInResponsetoVMAlert** Runbook を選択します。 **[OK]** を選択します。
-1. アラート ルールを保存するには、**[OK]** を選択します。
+1. **[アラートの詳細]** で、アラート ルールの名前と説明を追加し、**[アラート ルールの作成]** をクリックします。
 
 ## <a name="next-steps"></a>次の手順
 
@@ -232,4 +199,3 @@ Runbook は、VM に対する管理アクションを実行するために、**A
 * Runbook を起動するさまざまな方法については、「 [Runbook の開始](automation-starting-a-runbook.md)」を参照してください。
 * アクティビティ ログ アラートの構成方法については、「[アクティビティ ログ アラートの作成](../azure-monitor/platform/activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)」をご覧ください。
 * ほぼリアルタイムのアラートの作成方法については、「[Azure Portal でアラート ルールを作成する](../azure-monitor/platform/alerts-metric.md?toc=/azure/azure-monitor/toc.json)」をご覧ください。
-

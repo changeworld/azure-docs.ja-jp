@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: sutalasi
-ms.openlocfilehash: 67526eddd19c5869aa54432f963d9b80396f878d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 7725563a80182be8f8c02d94ef1e6cfa382c04d3
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59270984"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64924848"
 ---
 # <a name="set-up-disaster-recovery-for-sql-server"></a>SQL Server のためにディザスター リカバリーを設定する
 
@@ -27,7 +27,7 @@ ms.locfileid: "59270984"
 多くのワークロードは SQL Server を基盤として使用します。これは SharePoint、Dynamics、SAP などのアプリと統合して、データ サービスを実装できます。  SQL Server は次のさまざまな方法でデプロイできます。
 
 * **スタンドアロンの SQL Server**: SQL Server とすべてのデータベースは、1 つのマシン (物理または仮想) 上でホストされます。 仮想化する場合、ローカルの高可用性のためにホストのクラスタリングを使用します。 ゲストレベルの高可用性は実装されません。
-* **SQL Server フェールオーバー クラスタリング インスタンス (Always On FCI)**: Windows フェールオーバー クラスター内には、共有ディスクを使用してインスタンス化された SQL Server を実行する 2 つ以上のノードが構成されます。 ノードが停止した場合、クラスターは SQL Server を別のインスタンスにフェールオーバーできます。 通常、この設定はプライマリ サイトに高可用性を実装するために使用されます。 このデプロイメントでは、共有ストレージ層の障害や停止は保護されません。 共有ディスクは、iSCSI、ファイバー チャネル、または共有 VHDX を使用して実装できます。
+* **SQL Server フェールオーバー クラスタリング インスタンス (Always On FCI)** : Windows フェールオーバー クラスター内には、共有ディスクを使用してインスタンス化された SQL Server を実行する 2 つ以上のノードが構成されます。 ノードが停止した場合、クラスターは SQL Server を別のインスタンスにフェールオーバーできます。 通常、この設定はプライマリ サイトに高可用性を実装するために使用されます。 このデプロイメントでは、共有ストレージ層の障害や停止は保護されません。 共有ディスクは、iSCSI、ファイバー チャネル、または共有 VHDX を使用して実装できます。
 * **SQL Always On 可用性グループ**: 2 つ以上のノードがシェアード ナッシング クラスター内に設定されます。この場合、SQL Server データベースは、同期レプリケーションと自動フェールオーバーを使用して可用性グループ内に構成されます。
 
   この記事では、次に示すネイティブの SQL ディザスター リカバリー テクノロジを活用して、データベースを リモート サイトに復旧します。
@@ -170,7 +170,7 @@ SQL Server が可用性グループ (または FCI) を使用して高可用性�
 
 このシナリオでは、Site Recovery レプリケーションを使用して、SQL Server マシンを保護することをお勧めします。 正確な手順は、SQL Server が VM か物理サーバーか、および Azure またはセカンダリ オンプレミス サイトのどちらにレプリケートするかによって異なります。 [Site Recovery のシナリオ](site-recovery-overview.md)に関するページをご覧ください。
 
-## <a name="protect-a-sql-server-cluster-standard-editionwindows-server-2008-r2"></a>SQL Server クラスターの保護 (Standard エディション/Windows Server 2008 R2)
+## <a name="protect-a-sql-server-cluster-standard-editionsql-server-2008-r2"></a>SQL Server クラスター (Standard Edition/SQL Server 2008 R2) を保護する
 
 SQL Server Standard エディション または SQL Server 2008 R2 を実行するクラスターでは、Site Recovery レプリケーションを使用して SQL Server を保護することをお勧めします。
 

@@ -3,8 +3,8 @@ title: Microsoft ID プラットフォームのコード サンプル | Microsof
 description: シナリオ別に整理された、利用可能な Microsoft ID プラットフォーム (V2 エンドポイント) コード サンプルのインデックスが提供されます。
 services: active-directory
 documentationcenter: dev-center-name
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.assetid: a242a5ff-7300-40c2-ba83-fb6035707433
 ms.service: active-directory
@@ -14,16 +14,16 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/26/2018
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9a04dfd7009028197bee2602394a34803b1f8c6
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.openlocfilehash: 09c5bd217f852f7130888d03e3368278af8abce5
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59565871"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190890"
 ---
 # <a name="microsoft-identity-platform-code-samples-v20-endpoint"></a>Microsoft ID プラットフォームのコード サンプル (v2.0 エンドポイント)
 
@@ -74,12 +74,12 @@ GitHub でサンプルに協力することもできます。 その方法につ
 
 | クライアント アプリケーション | プラットフォーム | フロー/許可 | Microsoft Graph の呼び出し | ASP.NET Core 2.0 Web API の呼び出し |
 | ------------------ | -------- |  ----------| ---------- | ------------------------- |
-| デスクトップ (WPF)      | ![.NET/C#](media/sample-v2-code/logo_NET.png) | 対話型 | [dotnet-desktop-msgraph-v2](https://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) | [dotnet-native-aspnetcore-v2](https://aka.ms/msidentity-aspnetcore-webapi) |
-| デスクトップ (コンソール)   | ![.NET/C# (デスクトップ)](media/sample-v2-code/logo_NET.png) | 統合 Windows 認証 | [dotnet-iwa-v2](https://github.com/azure-samples/active-directory-dotnet-iwa-v2) |  |
-| デスクトップ (コンソール)   | ![.NET/C# (デスクトップ)](media/sample-v2-code/logo_NETcore.png) | ユーザー名/パスワード |[dotnetcore-up-v2](https://github.com/azure-samples/active-directory-dotnetcore-console-up-v2) |  |
-| モバイル (Android、iOS、UWP)   | ![.NET/C# (Xamarin)](media/sample-v2-code/logo_xamarin.png) | 対話型 |[xamarin-native-v2](https://github.com/azure-samples/active-directory-xamarin-native-v2) |  |
-| モバイル (iOS)       | ![iOS / Objective C または Swift](media/sample-v2-code/logo_iOS.png) | 対話型 |[ios-swift-native-v2](https://github.com/azure-samples/active-directory-ios-swift-native-v2) </p> [ios-native-nxoauth2-v2](https://github.com/azure-samples/active-directory-ios-native-nxoauth2-v2) |  |
-| モバイル (Android)   | ![Android/Java](media/sample-v2-code/logo_Android.png) | 対話型 |  [android-native-v2](https://github.com/azure-samples/active-directory-android-native-v2 ) |  |
+| デスクトップ (WPF)      | ![.NET/C#](media/sample-v2-code/logo_NET.png) | [interactive](msal-authentication-flows.md#interactive)| [dotnet-desktop-msgraph-v2](https://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) | [dotnet-native-aspnetcore-v2](https://aka.ms/msidentity-aspnetcore-webapi) |
+| デスクトップ (コンソール)   | ![.NET/C# (デスクトップ)](media/sample-v2-code/logo_NET.png) | [統合 Windows 認証](msal-authentication-flows.md#integrated-windows-authentication) | [dotnet-iwa-v2](https://github.com/azure-samples/active-directory-dotnet-iwa-v2) |  |
+| デスクトップ (コンソール)   | ![.NET/C# (デスクトップ)](media/sample-v2-code/logo_NETcore.png) | [ユーザー名/パスワード](msal-authentication-flows.md#usernamepassword) |[dotnetcore-up-v2](https://github.com/azure-samples/active-directory-dotnetcore-console-up-v2) |  |
+| モバイル (Android、iOS、UWP)   | ![.NET/C# (Xamarin)](media/sample-v2-code/logo_xamarin.png) | [interactive](msal-authentication-flows.md#interactive) |[xamarin-native-v2](https://github.com/azure-samples/active-directory-xamarin-native-v2) |  |
+| モバイル (iOS)       | ![iOS / Objective C または Swift](media/sample-v2-code/logo_iOS.png) | [interactive](msal-authentication-flows.md#interactive) |[ios-swift-native-v2](https://github.com/azure-samples/active-directory-ios-swift-native-v2) </p> [ios-native-nxoauth2-v2](https://github.com/azure-samples/active-directory-ios-native-nxoauth2-v2) |  |
+| モバイル (Android)   | ![Android/Java](media/sample-v2-code/logo_Android.png) | [interactive](msal-authentication-flows.md#interactive) |  [android-native-v2](https://github.com/azure-samples/active-directory-android-native-v2 ) |  |
 
 ## <a name="daemon-applications"></a>デーモン アプリケーション
 
@@ -87,8 +87,8 @@ GitHub でサンプルに協力することもできます。 その方法につ
 
 | クライアント アプリケーション | プラットフォーム | フロー/許可 | Microsoft Graph の呼び出し |
 | ------------------ | -------- | ---------- | -------------------- |
-| コンソール | ![.NET Core](media/sample-v2-code/logo_NETcore.png)</p> ASP.NET  | クライアントの資格情報 | [dotnetcore-daemon-v2](https://github.com/azure-samples/active-directory-dotnetcore-daemon-v2) |
-| Web アプリ | ![ASP.NET](media/sample-v2-code/logo_NETframework.png)</p> ASP.NET  | クライアントの資格情報 | [dotnet-daemon-v2](https://github.com/azure-samples/active-directory-dotnet-daemon-v2) |
+| コンソール | ![.NET Core](media/sample-v2-code/logo_NETcore.png)</p> ASP.NET  | [クライアントの資格情報](msal-authentication-flows.md#client-credentials) | [dotnetcore-daemon-v2](https://github.com/azure-samples/active-directory-dotnetcore-daemon-v2) |
+| Web アプリ | ![ASP.NET](media/sample-v2-code/logo_NETframework.png)</p> ASP.NET  | [クライアントの資格情報](msal-authentication-flows.md#client-credentials) | [dotnet-daemon-v2](https://github.com/azure-samples/active-directory-dotnet-daemon-v2) |
 
 ## <a name="headless-applications"></a>ヘッドレス アプリケーション
 
@@ -96,7 +96,7 @@ GitHub でサンプルに協力することもできます。 その方法につ
 
 | クライアント アプリケーション | プラットフォーム | フロー/許可 | Microsoft Graph の呼び出し |
 | ------------------ | -------- |  ----------| ---------- |
-| デスクトップ (コンソール)   | ![.NET/C# (デスクトップ)](media/sample-v2-code/logo_NETcore.png) | デバイス コード フロー |[dotnetcore-devicecodeflow-v2](https://github.com/azure-samples/active-directory-dotnetcore-devicecodeflow-v2) |
+| デスクトップ (コンソール)   | ![.NET/C# (デスクトップ)](media/sample-v2-code/logo_NETcore.png) | [デバイス コード フロー](msal-authentication-flows.md#device-code) |[dotnetcore-devicecodeflow-v2](https://github.com/azure-samples/active-directory-dotnetcore-devicecodeflow-v2) |
 
 ## <a name="web-apis"></a>Web API
 

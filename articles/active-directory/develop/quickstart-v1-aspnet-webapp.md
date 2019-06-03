@@ -4,7 +4,7 @@ description: OpenID 接続を使用して、従来の Web ブラウザー ベー
 services: active-directory
 documentationcenter: dev-center-name
 author: andretms
-manager: mtillman
+manager: CelesteDG
 editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
@@ -13,32 +13,32 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/24/2018
+ms.date: 05/21/2019
 ms.author: andret
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a6119baf79b9323a5c1ad06d75e1410f632015f0
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 17aaff1a6da2c18e9b1d915f61844635b1ad130b
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59548561"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66001440"
 ---
-# <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>クイック スタート: ASP.NET Web アプリへの "Microsoft でサインイン" の追加
+# <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>クイック スタート:ASP.NET Web アプリへの "Microsoft でサインイン" の追加
 
 [!INCLUDE [active-directory-develop-applies-v1](../../../includes/active-directory-develop-applies-v1.md)]
 
-このクイック スタートでは、OpenID Connect を使用する従来の Web ブラウザー ベースのアプリケーションで、ASP.NET MVC ソリューションを使用して "Microsoft でサインイン" を実装する方法について説明します。 ASP.NET アプリケーションで職場や学校のアカウントからのサインインを有効にする方法について説明します。
+このクイック スタートでは、OpenID Connect を使用する従来の Web ブラウザー ベースのアプリケーションで、ASP.NET Model View Controller (MVC) ソリューションを使用して "Microsoft でサインイン" を実装する方法について説明します。 ASP.NET アプリケーションで職場や学校のアカウントからのサインインを有効にする方法について説明します。
 
 このクイック スタートの最後では、アプリケーションは Azure Active Directory (Azure AD) と統合された組織の職場および学校のアカウントのサインインを受け入れます。
 
 > [!NOTE]
-> 職場や学校のアカウントに加えて個人のアカウントのサインインを有効にする必要がある場合は、"*[Microsoft ID プラットフォーム エンドポイント](azure-ad-endpoint-comparison.md)*" を使用できます。 詳細については、[こちらの ASP.NET のチュートリアル](tutorial-v2-asp-webapp.md)と、"*Microsoft ID プラットフォーム エンドポイント*" を説明している[こちらの記事](active-directory-v2-limitations.md)をご覧ください。
+> 職場や学校のアカウントに加えて個人のアカウントのサインインを有効にする必要がある場合は、" *[Microsoft ID プラットフォーム エンドポイント](azure-ad-endpoint-comparison.md)* " を使用できます。 詳細については、[こちらの ASP.NET のチュートリアル](tutorial-v2-asp-webapp.md)と、"*Microsoft ID プラットフォーム エンドポイント*" を説明している[こちらの記事](active-directory-v2-limitations.md)をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
 最初に、これらの前提条件を満たしていることを確認します。
 
-* Visual Studio 2015 Update 3 または Visual Studio 2017 がインストールされている。 お持ちでない場合は、 [Visual Studio 2017 を無料でダウンロードできます。](https://www.visualstudio.com/downloads/)
+* Visual Studio 2015 Update 3 以降をインストール済みである。 お持ちでない場合は、 [Visual Studio 2019 を無料でダウンロードできます](https://www.visualstudio.com/downloads/)
 
 ## <a name="scenario-sign-in-users-from-work-and-school-accounts-in-your-aspnet-app"></a>シナリオ: ASP.NET アプリで職場や学校のアカウントからユーザーにサインインする
 
@@ -46,7 +46,7 @@ ms.locfileid: "59548561"
 
 このシナリオでは、ブラウザーが ASP.NET の Web サイトにアクセスし、サインイン ボタンを使用して認証を行うようユーザーに要求します。 このシナリオでは、Web ページを表示する処理の大半がサーバー側で発生します。
 
-このクイック スタートでは、空のテンプレートから開始して ASP.NET Web アプリケーションにユーザーをサインインさせる方法と、サインイン ボタンとすべてのコントローラーおよびメソッドの追加などの手順を示し、これらのタスクの背後にある概念について説明します。 または、[Visual Studio Web テンプレート](https://docs.microsoft.com/aspnet/visual-studio/overview/2013/creating-web-projects-in-visual-studio#organizational-account-authentication-options)を使用し、**[組織アカウント]** を選択してからクラウド オプションの 1 つ (このオプションでは、追加のコントローラー、メソッド、ビューを備えた、より豊富なテンプレートを使用します) を選択して、Azure AD ユーザー (職場および学校のアカウント) をサインインさせるプロジェクトも作成できます。
+このクイックスタートでは、空のテンプレートから始めて、Web アプリケーションでユーザーをサインインさせる方法について説明します。 また、サインイン ボタンとすべてのコントローラーおよびメソッドの追加などの手順も含んでおり、これらのタスクの背後にある概念について説明します。 [Visual Studio Web テンプレート](https://docs.microsoft.com/aspnet/visual-studio/overview/2013/creating-web-projects-in-visual-studio#organizational-account-authentication-options)を使用し、 **[組織アカウント]** を選択してからクラウド オプションの 1 つ (このオプションでは、追加のコントローラー、メソッド、ビューを備えた、より豊富なテンプレートを使用します) を選択して、Azure AD ユーザー (職場および学校のアカウント) をサインインさせるプロジェクトも作成できます。
 
 ## <a name="libraries"></a>ライブラリ
 
@@ -69,14 +69,15 @@ ms.locfileid: "59548561"
 
 ## <a name="step-2-create-your-aspnet-project"></a>手順 2:ASP.NET プロジェクトを作成する
 
-1. Visual Studio で、**[ファイル] > [新規] > [プロジェクト]** の順に移動します。
-2. **[Visual C#\Web]** で **[ASP.NET Web アプリケーション (.NET Framework)]** を選択します。
-3. アプリケーションに名前を付けて、**[OK]** を選択します。
-4. **[Empty]** を選択して、**MVC** 参照を追加するチェック ボックスをオンにします。
+1. Visual Studio で、 **[ファイル] > [新規] > [プロジェクト]** の順に移動します。
+2. **[プロジェクトの種類]** として **[Web]** を選択し、 **[ASP.NET Web Application (.NET Framework)]** を選択します。
+3. アプリケーションに名前を付けて、 **[作成]** を選択します。
+4. **[空]** を選択し、 **[フォルダーおよびコア参照を追加する]** の下で **[MVC]** を選択して MVC の参照を追加します。
+5. **作成** を選択します。
 
-## <a name="step-3-add-authentication-components"></a>手順 3: 認証コンポーネントの追加
+## <a name="step-3-add-authentication-components"></a>手順 3:認証コンポーネントの追加
 
-1. Visual Studio で、**[ツール]、[NuGet パッケージ マネージャー]、[パッケージ マネージャー コンソール]** の順に移動します。
+1. Visual Studio で、 **[ツール]、[NuGet パッケージ マネージャー]、[パッケージ マネージャー コンソール]** の順に移動します。
 2. パッケージ マネージャー コンソールのウィンドウで以下を入力し、**OWIN ミドルウェア NuGet パッケージ**を追加します。
 
     ```powershell
@@ -96,7 +97,7 @@ ms.locfileid: "59548561"
 
 > [!TIP]
 > プロジェクトのルート フォルダー内に `Startup.cs` ファイルがない場合:<br/>
-> 1. プロジェクトのルート フォルダーを右クリックして、**[追加]、[新しい項目...]、[OWIN Startup クラス]** の順に選択します。<br/>
+> 1. プロジェクトのルート フォルダーを右クリックして、 **[追加]、[新しい項目...]、[OWIN Startup クラス]** の順に選択します。<br/>
 > 2. これに `Startup.cs` という名前を付けます。<br/>
 >
 >> 選択したクラスが標準的な C# クラスではなく、OWIN Startup クラスであることを確認します。 これを確認するには、名前空間の上に `[assembly: OwinStartup(typeof({NameSpace}.Startup))]` があるかチェックします。
@@ -124,10 +125,10 @@ OWIN ミドルウェアの*スタートアップ クラス*を作成するには
 
 サインインとサインアウトの方法を公開する新しいコントローラーを作成します。
 
-1.  **Controllers** フォルダーを右クリックし、**[追加]、[コントローラー]** の順に選択します
+1.  **Controllers** フォルダーを右クリックし、 **[追加]、[コントローラー]** の順に選択します
 2.  **[MVC (.NET version) Controller – Empty] (MVC (.NET バージョン) コントローラー – 空)** を選択します。
 3.  **[追加]** を選択します。
-4.  これに `HomeController` という名前を付け、**[追加]** を選択します。
+4.  これに `HomeController` という名前を付け、 **[追加]** を選択します。
 5.  クラスに **OWIN** 名前空間を追加します。
 
     [!code-csharp[main](../../../WebApp-OpenIDConnect-DotNet/WebApp-OpenIDConnect-DotNet/Controllers/HomeController.cs?name=AddedNameSpaces "HomeController.cs")]
@@ -140,7 +141,7 @@ OWIN ミドルウェアの*スタートアップ クラス*を作成するには
 
 Visual Studio で新しいビューを作成してサインイン ボタンを追加し、認証後にユーザー情報を表示します。
 
-1. **Views\Home** フォルダーを右クリックし、**[ビューの追加]** を選択します。
+1. **Views\Home** フォルダーを右クリックし、 **[ビューの追加]** を選択します。
 1. これに **Index** という名前を付けます。
 1. サインイン ボタンが含まれいる次の HTML をファイルに追加します。
 
@@ -154,11 +155,11 @@ Visual Studio で新しいビューを作成してサインイン ボタンを�
 
 このコントローラーでは、コントローラーを保護する `[Authorize]` 属性の使用例を示します。 この属性は、認証されたユーザーのみを許可して、コントローラーへのアクセスを制限します。 次のコードではこの属性を利用して、サインインの一部として取得されたユーザー要求を表示します。
 
-1. **Controllers** フォルダーを右クリックして、**[追加]、[コントローラー]** の順に選択します。
+1. **Controllers** フォルダーを右クリックして、 **[追加]、[コントローラー]** の順に選択します。
 1. **[MVC (.NET version) Controller – Empty] (MVC (.NET バージョン) コントローラー – 空)** を選択します。
 1. **[追加]** を選択します。
 1. これに **ClaimsController** という名前を付けます。
-1. コントローラー クラスのコードを、以下のコードに置き換えます。これによって、クラスに `[Authorize]` 属性が追加されます。
+1. コントローラー クラスのコードを、以下のコードに置き換えます。この例では、クラスに `[Authorize]` 属性が追加されます。
 
     [!code-csharp[main](../../../WebApp-OpenIDConnect-DotNet/WebApp-OpenIDConnect-DotNet/Controllers/ClaimsController.cs?name=ClaimsController "ClaimsController.cs")]
 
@@ -171,7 +172,7 @@ Visual Studio で新しいビューを作成してサインイン ボタンを�
 
 Visual Studio で、Web ページでユーザー要求を表示するための新しいビューを作成します。
 
-1. **Views\Claims** フォルダーを右クリックして、**[ビューの追加]** を選択します。
+1. **Views\Claims** フォルダーを右クリックして、 **[ビューの追加]** を選択します。
 1. これに **Index** という名前を付けます。
 1. 次の HTML をファイルに追加します。
 
@@ -196,16 +197,17 @@ Visual Studio で、Web ページでユーザー要求を表示するための�
 4. プロジェクトの SSL URL をクリップボードにコピーします。<br/><br/>![プロジェクトのプロパティ](./media/quickstart-v1-aspnet-webapp/visual-studio-project-properties.png)<br />
 5. <code>web.config</code> で、<code>Enter_the_Redirect_URL_here</code> をプロジェクトの SSL URL に置き換えます。
 
-### <a name="register-your-application-in-the-azure-portal-then-add-its-information-to-webconfig"></a>Azure Portal でアプリケーションを登録し、その情報を *web.config* に追加します
+### <a name="register-your-application-in-the-azure-portal-then-add-its-information-to-webconfig"></a>Microsoft Azure portal でアプリケーションを登録し、その情報を *web.config* に追加します
 
-1. [[Microsoft Azure Portal - アプリの登録]](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps) に移動して、アプリケーションを登録します。
-2. **[新しいアプリケーションの登録]** を選択します。
-3. アプリケーションの名前を入力します。
-4. Visual Studio プロジェクトの *SSL URL* を **[サインオン URL]** に貼り付けます。 この URL は、登録するアプリケーションの応答 URL の一覧にも自動的に追加されます。
-5. **[作成]** を選んで、アプリケーションを登録します。 このアクションにより、アプリケーションの一覧に戻ります。
-6. ここで、作成したアプリケーションの検索や選択を行って、そのプロパティを開きます。
-7. **[アプリケーション ID]** の下にある GUID をクリップボードにコピーします。
-8. Visual Studio に戻り、`web.config` で `Enter_the_Application_Id_here` を登録したアプリケーションのアプリケーション ID に置き換えます。
+1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com/) にサインインします。
+2. ご利用のアカウントで複数のテナントにアクセスできる場合は、右上隅でアカウントを選択し、ポータルのセッションを目的の Azure AD テナントに設定します。
+3. 開発者用の Microsoft ID プラットフォームの [[アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) ページに移動します。
+4. **[新規登録]** を選択します。
+5. **[アプリケーションの登録]** ページが表示されたら、アプリケーションの名前を入力します。
+6. **[サポートされているアカウントの種類]** で、 **[Accounts in any organizational directory and personal Microsoft accounts]\(任意の組織のディレクトリ内のアカウントと個人用の Microsoft アカウント\)** を選択します。
+7. **[リダイレクト URI]** セクションで **[Web]** プラットフォームを選択し、値を Visual Studio プロジェクトの *SSL URL* (Azure AD がトークンを返す先の場所) に設定します。
+78. 終了したら、 **[登録]** を選択します。 アプリの **[概要]** ページで、 **[Application (client) ID]\(アプリケーション (クライアント) ID\)** の値をコピーします。
+9. Visual Studio に戻り、`web.config` で `Enter_the_Application_Id_here` を登録したアプリケーションのアプリケーション ID に置き換えます。
 
 > [!TIP]
 > アカウントが複数のディレクトリにアクセスするように構成されている場合は、Azure portal の右上にあるアカウント名をクリックし、選択したディレクトリを指定されたとおりに検証して、アプリケーションを登録する組織の適切なディレクトリを選択したことを確認します。<br/>![正しいディレクトリの選択](./media/quickstart-v1-aspnet-webapp/tenantselector.png)
@@ -216,11 +218,11 @@ Visual Studio で、Web ページでユーザー要求を表示するための�
 
 ### <a name="configure-your-application-to-allow-sign-ins-of-work-and-school-accounts-from-any-company-or-organization-multi-tenant"></a>任意の会社または組織の職場および学校のアカウントのサインインを許可するようにアプリケーションを構成する (マルチテナント)
 
-Azure AD と統合されている会社または組織の職場および学校のアカウントのサインインを受け入れる場合は、次の手順に従います。 これは、"*SaaS アプリケーション*" で一般的なシナリオです。
+Azure AD と統合されている会社または組織の職場および学校のアカウントのサインインを受け入れる場合は、次の手順に従います。 これは、*SaaS アプリケーション*で一般的なシナリオです。
 
-1. [[Microsoft Azure Portal - アプリの登録]](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps) に戻り、登録したアプリケーションを探します。
+1. [[Microsoft Azure portal - アプリの登録]](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps) に戻り、登録したアプリケーションを探します。
 2. **[すべての設定]** で **[プロパティ]** を選択します。
-3. **[マルチテナント]** プロパティを **[はい]** に変更して、**[保存]** を選択します。
+3. **[マルチテナント]** プロパティを **[はい]** に変更して、 **[保存]** を選択します。
 
 この設定およびマルチテナント アプリケーションの概念について詳しくは、[マルチテナントの概要](howto-convert-app-to-be-multi-tenant.md)をご覧ください。
 
@@ -265,7 +267,7 @@ In this step, you will configure your project to use SSL, and then use the SSL U
 
 ## <a name="step-11-test-your-code"></a>手順 11: コードのテスト
 
-1. **F5** を押して、Visual Studio でプロジェクトを実行します。 ブラウザーが開き、`http://localhost:{port}` に移動します。**[Microsoft アカウントでサインイン]** ボタンが表示されます。
+1. **F5** を押して、Visual Studio でプロジェクトを実行します。 ブラウザーが開き、`http://localhost:{port}` に移動します。 **[Microsoft アカウントでサインイン]** ボタンが表示されます。
 1. サインイン用ボタンを選択します。
 
 ### <a name="sign-in"></a>サインイン
@@ -278,7 +280,7 @@ In this step, you will configure your project to use SSL, and then use the SSL U
 
 #### <a name="expected-results"></a>予想される結果
 
-サインインすると、Microsoft アプリケーション登録ポータルのアプリケーションの登録情報で指定した HTTPS URL を持つ Web サイトのホーム ページにリダイレクトされます。 このページには "*こんにちは {ユーザー}*" とサインアウトのリンクの他に、ユーザーの要求を確認するリンク、つまり前に作成した承認コントローラーのリンクが表示されます。
+ユーザーはサインインすると、Microsoft アプリケーション登録ポータルのアプリケーションの登録情報で指定した HTTPS URL を持つ Web サイトのホーム ページにリダイレクトされます。 このページには "*こんにちは {ユーザー}* " とサインアウトのリンクの他に、ユーザーの要求を確認するリンク、つまり前に作成した承認コントローラーのリンクが表示されます。
 
 ### <a name="see-users-claims"></a>ユーザーの要求を確認する
 
@@ -292,7 +294,7 @@ In this step, you will configure your project to use SSL, and then use the SSL U
 |---|---|---|
 | Name | {ユーザーのフルネーム} | ユーザーの姓と名 |
 | ユーザー名 | <span>user@domain.com</span> | ログオンしたユーザーの識別に使用されるユーザー名 |
-| サブジェクト| {件名} |Web 上でユーザーのログオンを一意に識別する文字列 |
+| サブジェクト| {件名} |Web 上でユーザーのサインインを一意に識別する文字列 |
 | テナント ID | {Guid} | ユーザーの Azure AD 組織を一意に表す *guid* |
 
 さらに、認証要求に含まれるすべてのユーザー要求が記載されたテーブルが表示されます。 ID トークンに含まれるすべての要求の一覧とその説明については、[ID トークン内の要求の一覧](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims)をご覧ください。

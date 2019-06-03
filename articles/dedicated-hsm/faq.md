@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 4/15/2019
+ms.date: 5/8/2019
 ms.author: barclayn
-ms.openlocfilehash: d432dc25a1995a2f0348c7626a051f46ffbf418b
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.openlocfilehash: b73b6bdc0158591565281ca2e86a9a474c4196d9
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59608865"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65467736"
 ---
 # <a name="frequently-asked-questions-faq"></a>よく寄せられる質問 (FAQ)
 
@@ -233,7 +233,7 @@ Microsoft では、お客様に割り当てられている HSM に接続する�
 
 ### <a name="q-what-if-i-need-to-reboot-my-hsm"></a>Q:HSM を再起動する必要が生じたらどうすればよいですか。
 
- HSM にはコマンドラインの再起動オプションがあります。ハード リブート オプションを使用する必要があることに注意してください。 なんらかの理由で失敗した場合は、マイクロソフトにサポート リクエストを出してください。デバイスを物理的に再起動することができます。 
+HSM にはコマンド ラインの再起動オプションがありますが、断続的に再起動の停止の問題が発生しているため、安全に再起動できるように、Microsoft にサポート リクエストを送信してデバイスの物理的な再起動を依頼することをお勧めします。 
 
 ## <a name="cryptography-and-standards"></a>暗号化と標準
 

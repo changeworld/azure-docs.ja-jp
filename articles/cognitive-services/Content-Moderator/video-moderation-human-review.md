@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
-ms.date: 01/20/2018
+ms.date: 04/30/2019
 ms.author: sajagtap
-ms.openlocfilehash: 43a43ddcbfc656a3eb5a274e1bb63a473b7c89a2
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: a6c467d3153400815e37a5d461766140abd1fa32
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55867717"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65228117"
 ---
 # <a name="video-moderation-with-human-review"></a>目視レビューによるビデオのモデレート
 
@@ -28,52 +28,53 @@ Content Moderator のマシンによる[ビデオのモデレート](video-moder
 ## <a name="shot-detection"></a>ショット検出
 
 分類の詳細を出力する際に、追加のビデオ インテリジェンスがビデオの分析における柔軟性の向上に役立ちます。 フレームだけを出力する代わりに、Microsoft のビデオのモデレート サービスは、ショット レベルの情報も提供します。 ビデオをショット レベルとフレーム レベルで分析するオプションがあります。
- 
+
 ## <a name="key-frame-detection"></a>キー フレームの検出
 
 フレームを一定の間隔で出力する代わりに、ビデオのモデレート サービスは、完全 (良好) なフレームのみを識別し、出力します。 この機能により、フレーム レベルでの成人向けおよびわいせつ性の分析のためにフレームを効率的に生成できます。
 
 次の抽出は、潜在的なショット、キー フレーム、成人向けとわいせつ性のスコアを含む応答の一部を示しています。
 
-    "fragments": [
-    {
-      "start": 0,
-      "duration": 18000
-    },
-    {
-      "start": 18000,
-      "duration": 3600,
-      "interval": 3600,
-      "events": [
-        [
-          {
-            "reviewRecommended": false,
-            "adultScore": 0.00001,
-            "racyScore": 0.03077,
-            "index": 5,
-            "timestamp": 18000,
-            "shotIndex": 0
-          }
-        ]
+```json
+"fragments":[  
+  {  
+    "start":0,
+    "duration":18000
+  },
+  {  
+    "start":18000,
+    "duration":3600,
+    "interval":3600,
+    "events":[  
+      [  
+        {  
+          "reviewRecommended":false,
+          "adultScore":0.00001,
+          "racyScore":0.03077,
+          "index":5,
+          "timestamp":18000,
+          "shotIndex":0
+        }
       ]
-    },
-    {
-      "start": 18386372,
-      "duration": 119149,
-      "interval": 119149,
-      "events": [
-        [
-          {
-            "reviewRecommended": true,
-            "adultScore": 0.00000,
-            "racyScore": 0.91902,
-            "index": 5085,
-            "timestamp": 18386372,
-            "shotIndex": 62
-          }
-        ]
+    ]
+  },
+  {  
+    "start":18386372,
+    "duration":119149,
+    "interval":119149,
+    "events":[  
+      [  
+        {  
+          "reviewRecommended":true,
+          "adultScore":0.00000,
+          "racyScore":0.91902,
+          "index":5085,
+          "timestamp":18386372,
+          "shotIndex":62
+        }
       ]
-
+    ]
+```
 
 ## <a name="visualization-for-human-reviews"></a>目視レビューのための視覚化
 
@@ -101,10 +102,7 @@ Content Moderator のマシンによる[ビデオのモデレート](video-moder
 
 ## <a name="next-steps"></a>次の手順
 
-[ビデオのモデレートのクイック スタート](video-moderation-api.md)を開始する。 
-
-モデレート済みの出力からレビュー担当者のために[ビデオのレビュー](video-reviews-quickstart-dotnet.md)を生成する方法を学ぶ。
-
-[ビデオ トランスクリプト レビュー](video-transcript-reviews-quickstart-dotnet.md)をビデオのレビューに追加する。
-
-[完全なビデオ モデレーション ソリューション](video-transcript-moderation-review-tutorial-dotnet.md)を開発する方法に関する詳細なチュートリアルを確認する。 
+- [ビデオのモデレートのクイック スタート](video-moderation-api.md)を開始する。
+- モデレート済みの出力からレビュー担当者のために[ビデオのレビュー](video-reviews-quickstart-dotnet.md)を生成する方法を学ぶ。
+- [ビデオ トランスクリプト レビュー](video-transcript-reviews-quickstart-dotnet.md)をビデオのレビューに追加する。
+- [完全なビデオ モデレーション ソリューション](video-transcript-moderation-review-tutorial-dotnet.md)を開発する方法に関する詳細なチュートリアルを確認する。

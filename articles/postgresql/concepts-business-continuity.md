@@ -1,19 +1,19 @@
 ---
-title: Azure Database for PostgreSQL によるビジネス継続性の概要
+title: Azure Database for PostgreSQL - Single Server でのビジネス継続性の概要
 description: Azure Database for PostgreSQL でのビジネス継続性の概要について説明します。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 02/01/2019
-ms.openlocfilehash: b1d566ac571ddd2b2be3aff160f669e277887209
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.date: 5/6/2019
+ms.openlocfilehash: a31112f3b6f7bd79785f89822e2881b152708254
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55698242"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65068925"
 ---
-# <a name="overview-of-business-continuity-with-azure-database-for-postgresql"></a>Azure Database for PostgreSQL によるビジネス継続性の概要
+# <a name="overview-of-business-continuity-with-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server でのビジネス継続性の概要
 
 この概要では、Azure Database for PostgreSQL に用意されているビジネス継続性とディザスター リカバリーの機能について説明します。 また、データ損失につながる、またはデータベースやアプリケーションを使用不能状態に追い込む破壊的なイベントから復旧するためのオプションについて説明します。 ユーザーまたはアプリケーション エラーがデータ整合性に影響を及ぼすとき、Azure リージョンでシステム停止が発生したとき、あるいはアプリケーションにメンテナンスが必要なときの対処方法について説明します。
 

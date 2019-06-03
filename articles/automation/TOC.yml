@@ -42,6 +42,8 @@
           href: automation-onboard-solutions-from-vm.md
         - name: Automation アカウントからのオンボード
           href: automation-onboard-solutions-from-automation-account.md
+        - name: リージョンのマッピング
+          href: how-to/region-mappings.md
     - name: 更新管理
       items:
         - name: Update Management の概要

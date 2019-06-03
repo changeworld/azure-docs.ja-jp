@@ -1,5 +1,5 @@
 ---
-title: クイック スタート - Azure Active Directory B2C を使用した ASP.NET アプリケーションのサインインの設定 | Microsoft Docs
+title: クイック スタート - Azure Active Directory B2C を使用して ASP.NET アプリケーションへのサインインを設定する | Microsoft Docs
 description: Azure Active Directory B2C を使用してアカウント サインインを提供するサンプル ASP.NET Web アプリを実行します。
 services: active-directory-b2c
 author: davidmu1
@@ -10,14 +10,14 @@ ms.custom: mvc
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 0d82a174f9fcfab84b5caf71853242ce68ebb60d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 1d2fbe4dbbd7f5549d6c98f8183df58fa3f34e9d
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64699503"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190456"
 ---
-# <a name="quickstart-set-up-sign-in-for-an-aspnet-application-using-azure-active-directory-b2c"></a>クイック スタート:Azure Active Directory B2C を使用した ASP.NET アプリケーションのサインインの設定
+# <a name="quickstart-set-up-sign-in-for-an-aspnet-application-using-azure-active-directory-b2c"></a>クイック スタート:Azure Active Directory B2C を使用して ASP.NET アプリケーションへのサインインを設定する
 
 Azure Active Directory (Azure AD) B2C は、アプリケーション、ビジネス、顧客を保護するためのクラウド ID 管理を提供します。 Azure AD B2C に対応したアプリケーションは、オープンな標準プロトコルを使用し、ソーシャル アカウントやエンタープライズ アカウントで認証を行うことができます。 このクイック スタートでは、ASP.NET アプリケーションにソーシャル ID プロバイダーを使ってサインインし、Azure AD B2C で保護された Web API を呼び出します。
 
@@ -25,7 +25,7 @@ Azure Active Directory (Azure AD) B2C は、アプリケーション、ビジネ
 
 ## <a name="prerequisites"></a>前提条件
 
-- [Visual Studio 2017](https://www.visualstudio.com/downloads/) と **ASP.NET および開発**ワークロード。 
+- **[ASP.NET および Web の開発]** ワークロードを含む [Visual Studio 2019](https://www.visualstudio.com/downloads/)。 
 - Facebook、Google、Microsoft、または Twitter のソーシャル アカウント。
 - [ZIP ファイルをダウンロード](https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi/archive/master.zip)するか、GitHub からサンプル Web アプリケーションを複製します。
 
@@ -35,7 +35,7 @@ Azure Active Directory (Azure AD) B2C は、アプリケーション、ビジネ
 
     サンプル ソリューションには次の 2 つのプロジェクトがあります。
 
-    - **TaskWebApp** - タスク リストの作成と編集を行う Web アプリケーション。 この Web アプリケーションでは、**サインアップまたはサインイン** ユーザー フローを使用して、ユーザーをサインアップまたはサインインします。
+    - **TaskWebApp** - タスク リストの作成と編集を行う Web アプリケーション。 この Web アプリケーションは、**サインアップまたはサインイン**のユーザー フローを使用してユーザーをサインアップまたはサインインします。
     - **TaskService** - タスク リストの作成、読み取り、更新、削除機能をサポートする Web API。 この Web API は Azure AD B2C によって保護されており、Web アプリケーションによって呼び出されます。
 
 ## <a name="run-the-application-in-visual-studio"></a>Visual Studio でアプリケーションを実行する
@@ -57,11 +57,11 @@ Azure Active Directory (Azure AD) B2C は、アプリケーション、ビジネ
 
     このサンプルは、ソーシャル ID プロバイダーを使用する方法や、メール アドレスを使用してローカル アカウントを作成する方法など、複数のサインアップ方法に対応しています。 このクイック スタートでは、Facebook、Google、Microsoft、または Twitter のいずれかのソーシャル ID プロバイダー アカウントを使用します。
 
-2. このサンプル Web アプリケーションでは、Wingtip Toys という架空のブランドのカスタム ログイン ページが Azure AD B2C により表示されます。 ソーシャル ID プロバイダーを使用してサインアップするには、使用する ID プロバイダーのボタンをクリックします。
+2. Azure AD B2C は、サンプルの Web アプリケーションに対する Wingtip Toys と呼ばれる架空のブランドのカスタム サインイン ページを提供します。 ソーシャル ID プロバイダーを使用してサインアップするには、使用する ID プロバイダーのボタンをクリックします。
 
     ![サインインまたはサインアップ用のプロバイダー](media/active-directory-b2c-quickstarts-web-app/sign-in-or-sign-up-web.png)
 
-    ユーザーは、ソーシャル アカウントの資格情報を使用して認証 (サインイン) を行うと共に、ソーシャル アカウントから情報を読み取ることについての承認をアプリケーションに与えることになります。 アクセスを許可することにより、アプリケーションはソーシャル アカウントからプロファイル情報 (名前やお住まいの都市など) を取得できるようになります。 
+    ユーザーは、ソーシャル アカウントの資格情報を使用して認証 (サインイン) し、アプリケーションがそのソーシャル アカウントから情報を読み取ることを承認します。 アクセスを許可することにより、アプリケーションはソーシャル アカウントからプロファイル情報 (名前やお住まいの都市など) を取得できるようになります。 
 
 3. ID プロバイダーのサインイン プロセスを完了します。
 
@@ -95,7 +95,12 @@ Azure AD B2C ユーザー アカウントを使用して、Azure AD B2C で保�
 
 ## <a name="next-steps"></a>次の手順
 
-このクイック スタートでは、サンプル ASP.NET アプリケーションを使用して、カスタム ログイン ページでのサインインとソーシャル ID プロバイダーでのサインイン、Azure AD B2C アカウントの作成を行った後、Azure AD B2C で保護された Web API を呼び出しました。 
+このクイック スタートでは、サンプルの ASP.NET アプリケーションを使用して次のことを行いました。
+
+* カスタム ログイン ページを使用してサインインする
+* ソーシャル ID プロバイダーを使用してサインインする
+* Azure AD B2C アカウントを作成する
+* Azure AD B2C によって保護された Web API を呼び出す
 
 独自の Azure AD B2C テナントを作成してみましょう。
 

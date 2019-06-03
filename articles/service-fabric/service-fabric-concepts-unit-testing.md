@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/04/2018
 ms.author: atsenthi
-ms.openlocfilehash: ca473b9947a9b0df610a9c3dac66914b06cc9217
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: ad7cf3a1dfcef8795ceb378a59a1cf0b2010293e
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662569"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595507"
 ---
 # <a name="unit-testing-stateful-services-in-service-fabric"></a>Service Fabric のステートフル サービスの単体テスト
 
@@ -36,7 +36,7 @@ Service Fabric のステートフル サービスに対する単体テストに�
 
 ## <a name="common-practices"></a>一般的な実践
 
-次のセクションでは、ステートフル サービスの単体テストに関する最も一般的な実践について推奨事項を取り上げます。 また、Service Fabric のオーケストレーションや状態管理に近づけるためにモック作成レイヤーに必要な要素についての推奨事項も紹介します。 この機能を備えたライブラリは、モック作成ライブラリに存在します。 [ServiceFabric.Mocks](https://www.nuget.org/packages/ServiceFabric.Mocks/) (3.3.0 以降) はそのようなライブラリの 1 つであり、モック作成するために推奨され、かつ以下で取り上げる各種の実践に則した機能を備えています。
+次のセクションでは、ステートフル サービスの単体テストに関する最も一般的な実践について推奨事項を取り上げます。 また、Service Fabric のオーケストレーションや状態管理に近づけるためにモック作成レイヤーに必要な要素についての推奨事項も紹介します。 [ServiceFabric.Mocks](https://www.nuget.org/packages/ServiceFabric.Mocks/) (3.3.0 以降) はそのようなライブラリの 1 つであり、モック作成するために推奨され、かつ以下で取り上げる各種の実践に則した機能を備えています。
 
 ### <a name="arrangement"></a>準備
 

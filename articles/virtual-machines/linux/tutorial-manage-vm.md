@@ -17,11 +17,11 @@ ms.date: 03/23/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 270479061ad40fdda9db06571ad4ef24b00d6c4d
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55749144"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66171847"
 ---
 # <a name="tutorial-create-and-manage-linux-vms-with-the-azure-cli"></a>チュートリアル:Azure CLI を使用した Linux VM の作成と管理
 
@@ -155,7 +155,7 @@ az vm create --resource-group myResourceGroupVM --name myVM2 --image OpenLogic:C
 
 次の表は、ユース ケース別にサイズを分類したものです。  
 
-| type                     | サイズ           |    説明       |
+| Type                     | サイズ           |    説明       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [汎用](sizes-general.md)         |Dsv3、Dv3、DSv2、Dv2、DS、D、Av2、A0 - 7| CPU とメモリのバランスがとれています。 開発/テスト環境や、小中規模のアプリケーションとデータ ソリューションに最適です。  |
 | [コンピューティングの最適化](sizes-compute.md)   | Fs、F             | メモリに対する CPU の比が大きくなっています。 トラフィックが中程度のアプリケーション、ネットワーク アプライアンス、バッチ処理に適しています。        |

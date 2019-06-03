@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/17/2019
+ms.date: 05/18/2019
 ms.author: magoedte
-ms.openlocfilehash: 8fb1d0083796671119de2b4d7feefe738b602fe2
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 531e51fbddb99ebba11284d5291b4cca26559bc1
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60004042"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65906775"
 ---
 # <a name="understand-aks-cluster-performance-with-azure-monitor-for-containers"></a>コンテナーの Azure Monitor を使用して AKS クラスターのパフォーマンスを把握する 
 コンテナーの Azure Monitor を使用している場合、パフォーマンスのグラフと正常性状態を使用して、AKS クラスターから直接、または Azure Monitor からサブスクリプション内のすべての AKS クラスターという 2 つの観点から Azure Kubernetes Service (AKS) クラスターのワークロードを監視することができます。 Azure Container Instances (ACI) の表示は、特定の AKS クラスターを監視するときにも可能です。
@@ -27,7 +27,15 @@ ms.locfileid: "60004042"
 
 コンテナーの Azure Monitor を有効にする方法については、「[コンテナー用 Azure Monitor の利用を開始する方法](container-insights-onboard.md)」をご覧ください。
 
-Azure Monitor には、サブスクリプション内のリソース グループに展開されているすべての監視対象 AKS クラスターの正常性状態が表示される複数クラスター ビューが用意されています。  ソリューションによって監視されていない、検出された AKS クラスターが表示されます。 すぐにクラスターの正常性を理解することができ、ここからは、ノードとコントローラーのパフォーマンス ページにドリルダウンしたり、クラスターのパフォーマンス グラフを表示したりできます。  監視対象外として検出および識別された AKS クラスターについては、いつでも監視対象にできます。  
+Azure Monitor には、サブスクリプション内のリソース グループに展開されている、Linux および Windows Server 2019 を実行するすべての監視対象 AKS クラスターの正常性状態が表示される複数クラスター ビューが用意されています。  ソリューションによって監視されていない、検出された AKS クラスターが表示されます。 すぐにクラスターの正常性を理解することができ、ここからは、ノードとコントローラーのパフォーマンス ページにドリルダウンしたり、クラスターのパフォーマンス グラフを表示したりできます。  監視対象外として検出および識別された AKS クラスターについては、いつでも監視対象にできます。  
+
+コンテナーの Azure Monitor を使用して Windows Server クラスターを監視する場合の、Linux クラスターとの主な相違点は以下のとおりです。
+
+- Windows ノードとコンテナーではメモリ RSS メトリックを使用できません 
+- Windows ノードではディスク ストレージ容量の情報を使用できません
+- ライブ ログのサポートは Windows コンテナーのログを除き使用可能です。
+- ポッド環境のみが監視され、Docker 環境は対象外です。
+- プレビュー リリースでは、最大 30 の Windows Server コンテナーがサポートされます。 この制限は、Linux コンテナーには適用されません。  
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインします
 [Azure Portal](https://portal.azure.com) にサインインします。 
@@ -35,7 +43,7 @@ Azure Monitor には、サブスクリプション内のリソース グルー�
 ## <a name="multi-cluster-view-from-azure-monitor"></a>Azure Monitor の複数クラスター ビュー 
 展開されているすべての AKS クラスターの正常性状態を表示するには、Azure portal で左側のウィンドウから **[モニター]** を選択します。  **[分析情報]** セクションで **[コンテナー]** を選択します。  
 
-![Azure Monitor の複数クラスター ダッシュボードの例](./media/container-insights-analyze/azmon-containers-multiview-1018.png)
+![Azure Monitor の複数クラスター ダッシュボードの例](./media/container-insights-analyze/azmon-containers-multiview.png)
 
 **[Monitored clusters]\(監視対象クラスター\)** タブでは次のことがわかります。
 
@@ -128,11 +136,11 @@ Azure Monitor for containers では Azure Monitor の[メトリックス エク�
 
 ## <a name="analyze-nodes-controllers-and-container-health"></a>ノード、コントローラー、コンテナーの正常性を分析する
 
-**[ノード]**、**[コントローラー]**、および **[コンテナー]** タブに切り替えると、ページの右側に自動的にプロパティ ウィンドウが表示されます。  ここには選択された項目のプロパティが示され、Kubernetes オブジェクトを整理するために定義するラベルが含まれます。 ウィンドウの表示と非表示を切り替えるには、ウィンドウの **>>** リンクをクリックします。  
+**[ノード]**、**[コントローラー]**、および **[コンテナー]** タブに切り替えると、ページの右側に自動的にプロパティ ウィンドウが表示されます。 ここには選択された項目のプロパティが示され、Kubernetes オブジェクトを整理するために定義するラベルが含まれます。 Linux ノードを選択すると、**[Local Disk Capacity]\(ローカル ディスク容量\)** セクションの下に、ノードに対して表示される各ディスクの使用可能なディスク領域と使用割合も表示されます。 ウィンドウの表示と非表示を切り替えるには、ウィンドウの **>>** リンクをクリックします。 
 
 ![Kubernetes パースペクティブ プロパティ ウィンドウの例](./media/container-insights-analyze/perspectives-preview-pane-01.png)
 
-階層内のオブジェクトを展開すると、選択されたオブジェクトに基づいて、プロパティ ウィンドウが更新されます。 ウィンドウから、定義済みのログ検索を使用して Kubernetes イベントを表示することもできます。その場合は、ウィンドウの上部にある **[Kubernetes イベント ログの表示]** リンクをクリックします。 Kubernetes ログ データの表示の詳細については、「[データを分析するためのログの検索](container-insights-log-search.md)」を参照してください。 **[コンテナー]** ビューでコンテナーを確認している間、コンテナー ログをリアルタイムで表示できます。 この機能と、アクセスを許可および制御するために必要な構成の詳細については、「[How to view container logs real time with Azure Monitor for containers](container-insights-live-logs.md)」(コンテナーの Azure Monitor でリアルタイムにコンテナー ログを表示する方法) を参照してください。 
+階層内のオブジェクトを展開すると、選択されたオブジェクトに基づいて、プロパティ ウィンドウが更新されます。 ウィンドウから、定義済みのログ検索を使用して Kubernetes イベントを表示することもできます。その場合は、ウィンドウの上部にある **[Kubernetes イベント ログの表示]** リンクをクリックします。 Kubernetes ログ データの表示の詳細については、「[データを分析するためのログの検索](container-insights-log-search.md)」を参照してください。 クラスター リソースの表示中は、コンテナーのログとイベントをリアルタイムで確認できます。 この機能と、アクセスを許可および制御するために必要な構成の詳細については、[コンテナーの Azure Monitor でリアルタイムにログを表示する方法](container-insights-live-logs.md)に関する記事を参照してください。 
 
 ページ上部の **[+ フィルターの追加]** オプションを使用して、**[サービス]**、**[ノード]**、**[名前空間]**、または **[ノード プール]** でビューの結果をフィルター処理できます。また、フィルター スコープを選択した後は、**[値の選択]** フィールドに表示される値のいずれかを選択できます。  構成したフィルターは、AKS クラスターのいずれかの観点を表示するときにグローバルに適用されます。  数式は、等号のみがサポートされています。  最初のフィルターの上に新しいフィルターを追加して、結果をさらに絞り込むことができます。  たとえば、**ノード**によるフィルターを指定した場合、2 番目のフィルターとしては**サービス**または**名前空間**だけを選択できます。  
 
@@ -143,6 +151,10 @@ Azure Monitor for containers では Azure Monitor の[メトリックス エク�
 **[ノード]** タブに切り替えます。行階層では、クラスター内のノードから始まり、Kubernetes オブジェクト モデルに従います。 ノードを展開し、ノードで実行されている 1 つまたは複数のポッドを表示することができます。 複数のコンテナーがポッドにグループ化されている場合、階層内の最後の行として表示されます。 ホストでプロセッサまたはメモリが不足している場合、ホスト上でどのくらいの数のポッドに関連しないワークロードが実行されているかを確認することもできます。
 
 ![パフォーマンス ビューの Kubernetes ノード階層の例](./media/container-insights-analyze/containers-nodes-view.png)
+
+Windows Server 2019 OS を実行している Windows Server コンテナーは、リスト内のすべての Linux ベースのノードの後に表示されます。 Windows Server ノードを展開すると、そのノードで実行されている 1 つ以上のポッドおよびコンテナーを表示できます。 ノードを選択した場合、プロパティ ペインには、バージョン情報が表示されます。ただし、Windows Server ノードにはエージェントがインストールされていないため、エージェント情報は表示されません。  
+
+![Windows Server ノードがリストされているノード階層の例](./media/container-insights-analyze/nodes-view-windows.png) 
 
 Linux OS を実行している Azure Container Instances 仮想ノードは、一覧内の最後の AKS クラスター ノードの後に表示されます。  ACI 仮想ノードを展開すると、そのノードで実行されている 1 つ以上の ACI ポッドおよびコンテナーを表示できます。  メトリックはノードについては収集および報告されず、ポッドについてのみが報告されます。
 

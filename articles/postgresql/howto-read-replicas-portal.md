@@ -1,21 +1,24 @@
 ---
-title: Azure Portal から Azure Database for PostgreSQL の読み取りレプリカを管理する
-description: Azure Portal から Azure Database for PostgreSQL の読み取りレプリカを管理する方法について説明します。
+title: Azure portal から Azure Database for PostgreSQL - 単一サーバーの読み取りレプリカを管理する
+description: Azure portal から Azure Database for PostgreSQL - 単一サーバーの読み取りレプリカを管理する方法について説明します。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 04/01/2019
-ms.openlocfilehash: bf1fb1c1343173949ecb6348284cb537282b277b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 5/6/2019
+ms.openlocfilehash: 87371f91d9ea1f556d0f78beebd73b8a28977b71
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59787665"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510383"
 ---
-# <a name="create-and-manage-read-replicas-from-the-azure-portal"></a>Azure Portal から読み取りレプリカを作成および管理する
+# <a name="create-and-manage-read-replicas-in-azure-database-for-postgresql---single-server-from-the-azure-portal"></a>Azure portal から Azure Database for PostgreSQL - 単一サーバーの読み取りレプリカを作成および管理する
 
 この記事では、Azure Portal から Azure Database for PostgreSQL の読み取りレプリカを作成および管理する方法について説明します。 読み取りレプリカの詳細については、[概要](concepts-read-replicas.md)を参照してください。
+
+> [!IMPORTANT]
+> マスター サーバーと同じ Azure リージョン内、または選択した他の任意の Azure リージョン内に読み取りレプリカを作成できます。 リージョン間レプリケーションは、現在パブリック プレビュー段階です。
 
 
 ## <a name="prerequisites"></a>前提条件
@@ -58,9 +61,15 @@ ms.locfileid: "59787665"
 
    ![レプリカを追加する](./media/howto-read-replicas-portal/add-replica.png)
 
-4. 読み取りレプリカの名前を入力します。 **[OK]** を選択して、レプリカの作成を確認します。
+4. 読み取りレプリカの名前を入力します。 
 
-   ![レプリカに名前を付ける](./media/howto-read-replicas-portal/name-replica.png) 
+    ![レプリカに名前を付ける](./media/howto-read-replicas-portal/name-replica.png)
+
+5. レプリカの場所を選択します。 任意の Azure リージョンにレプリカを作成できます。 既定の場所は、マスター サーバーの場所と同じです。
+
+    ![場所を選択します。](./media/howto-read-replicas-portal/location-replica.png)
+
+6. **[OK]** を選択して、レプリカの作成を確認します。
 
 レプリカは、マスターと同じサーバー構成を使用して作成されます。 レプリカが作成されたら、マスター サーバーとは独立にいくつかの設定 (コンピューティング世代、仮想コア、ストレージ、およびバックアップ保持期間) を変更できます。 価格レベルも独立して変更できます (Basic レベルへの変更や Basic レベルからの変更を除く)。
 

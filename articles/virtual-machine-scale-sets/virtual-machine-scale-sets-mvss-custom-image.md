@@ -4,7 +4,7 @@ description: カスタム イメージを既存の Azure Virtual Machine Scale S
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: mayanknayar
-manager: jeconnoc
+manager: drewm
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
@@ -13,22 +13,21 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 5/10/2017
+ms.date: 04/26/2018
 ms.author: manayar
-ms.openlocfilehash: 2e3c8177a32082c251be74e597a18730ae1c9d37
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 2415d0dc2b9a2c4229d9910b42eb8ec9309ac7a7
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50739647"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64869107"
 ---
 # <a name="add-a-custom-image-to-an-azure-scale-set-template"></a>Azure スケール セット テンプレートにカスタム イメージを追加する
 
-この記事では、[実行可能な最小のスケール セット テンプレート](./virtual-machine-scale-sets-mvss-start.md)を変更してカスタム イメージをデプロイする方法を説明します。
+この記事では、[基本のスケール セット テンプレート](virtual-machine-scale-sets-mvss-start.md)を変更してカスタム イメージをデプロイする方法を説明します。
 
 ## <a name="change-the-template-definition"></a>テンプレートの定義を変更する
-
-実行可能な最小のスケール セット テンプレートは[こちら](https://raw.githubusercontent.com/gatneil/mvss/minimum-viable-scale-set/azuredeploy.json)で確認できます。また、スケール セットをカスタム イメージからデプロイするためのテンプレートは[こちら](https://raw.githubusercontent.com/gatneil/mvss/custom-image/azuredeploy.json)で確認できます。 このテンプレートを作成する際に使用する diff (`git diff minimum-viable-scale-set custom-image`) を項目ごとに確認しましょう。
+[前回のアーティクル](virtual-machine-scale-sets-mvss-start.md)では、基本的なスケール セット テンプレートを作成しました。 では、以前のテンプレートを使用して、スケール セットをカスタム イメージから展開するテンプレートを作成します。  
 
 ### <a name="creating-a-managed-disk-image"></a>マネージド ディスク イメージを作成する
 
@@ -58,7 +57,7 @@ ms.locfileid: "50739647"
    "resources": [
      {
 +      "type": "Microsoft.Compute/images",
-+      "apiVersion": "2016-04-30-preview",
++      "apiVersion": "2019-03-01",
 +      "name": "myCustomImage",
 +      "location": "[resourceGroup().location]",
 +      "properties": {
@@ -83,7 +82,7 @@ ms.locfileid: "50739647"
 
 ```diff
        "location": "[resourceGroup().location]",
-       "apiVersion": "2016-04-30-preview",
+       "apiVersion": "2019-03-01-preview",
        "dependsOn": [
 -        "Microsoft.Network/virtualNetworks/myVnet"
 +        "Microsoft.Network/virtualNetworks/myVnet",

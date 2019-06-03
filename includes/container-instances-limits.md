@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 02/13/2019
 ms.author: danlep
 ms.openlocfilehash: f8821060b98ebfc954a6e59abad60350e6779b76
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57553775"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66146236"
 ---
-| リソース | 既定の制限 |
+| Resource | 既定の制限 |
 | --- | :--- |
 | [サブスクリプション](../articles/billing-buy-sign-up-azure-subscription.md)あたりのコンテナー グループ数 | 100<sup>1</sup> |
 | コンテナー グループあたりのコンテナーの数 | 60 |

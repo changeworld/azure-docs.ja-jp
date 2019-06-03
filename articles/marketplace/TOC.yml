@@ -8,15 +8,6 @@
     - name: Azure Marketplace と AppSource の概要とメリット
       href: ./marketplace-publishers-guide.md
       items:
-        - name: マーケットプレースで発行元になる
-          href: ./become-publisher.md
-          items:
-            - name: Microsoft アカウントの作成
-              href: ./guidelines.md
-            - name: デベロッパー センターに登録する
-              href: ./register-dev-center.md
-            - name: Azure パートナーの顧客の使用状況の属性
-              href: ./azure-partner-customer-usage-attribution.md
         - name: 1 つのマーケットプレース、2 つのネットショップ
           href: ./comparing-appsource-azure-marketplace.md
         - name: 発行オプションと考慮事項
@@ -28,8 +19,10 @@
               href: ./marketplace-commercial-transaction-capabilities-and-considerations.md
             - name: プライベート オファー
               href: ./private-offers.md
-            - name: 標準的な契約
+            - name: 標準契約
               href: ./standard-contract.md
+            - name: Azure パートナーの顧客の使用状況の属性
+              href: ./azure-partner-customer-usage-attribution.md
         - name: プランの種類別の公開ガイド
           href: ./publisher-guide-by-offer-type.md
           items:
@@ -463,3 +456,38 @@
           href: ./cloud-partner-portal-orig/cloud-partner-portal-api-troubleshooting-authentication-errors.md
     - name: サポートの利用
       href: ./cloud-partner-portal-orig/cloud-partner-portal-support-for-cloud-partner-portal.md
+- name: パートナー センターの Commercial Marketplace ポータル
+  items:
+    - name: 概要
+      items:
+        - name: Commercial Marketplace とは
+          href: ./partner-center-portal/commercial-marketplace-overview.md
+    - name: アカウント管理
+      items:
+        - name: 新しいパートナー センター アカウントを作成する
+          href: ./partner-center-portal/create-account.md
+        - name: パートナー センター アカウントを管理する
+          href: ./partner-center-portal/manage-account.md
+        - name: 会社の職場アカウントを検索または作成する
+          href: ./partner-center-portal/company-work-accounts.md
+    - name: 新しいオファーを作成する
+      items:
+        - name: SaaS オファーを作成する
+          href: ./partner-center-portal/create-new-saas-offer.md
+        - name: SaaS Fulfillment API
+          href: ./partner-center-portal/pc-saas-fulfillment-apis.md
+          items:
+            - name: SaaS アプリケーションを登録する
+              href: ./partner-center-portal/pc-saas-registration.md
+            - name: SaaS Fulfillment API v2
+              href: ./partner-center-portal/pc-saas-fulfillment-api-v2.md
+            - name: SaaS Fulfillment API v1 (非推奨)
+              href: ./partner-center-portal/pc-saas-fulfillment-api-v1.md
+    - name: 発行状態
+      href: ./partner-center-portal/publishing-status.md
+    - name: 既存のオファーを更新する
+      href: ./partner-center-portal/update-existing-offer.md
+    - name: サポート オプション
+      href: ./partner-center-portal/support.md
+    - name: パートナー センターの分析
+      href: ./partner-center-portal/analytics.md

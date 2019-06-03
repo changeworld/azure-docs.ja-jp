@@ -15,17 +15,17 @@ ms.date: 02/20/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: ad1185cab2b2bd2d0fea10f21b7859fd9ab1339f
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56807611"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66158460"
 ---
 # <a name="create-custom-roles-for-azure-resources-using-azure-powershell"></a>Azure PowerShell を使用して Azure リソースのカスタム ロールを作成する
 
 [Azure リソースの組み込みロール](built-in-roles.md)が組織の特定のニーズを満たさない場合は、独自のカスタム ロールを作成することができます。 この記事では、Azure PowerShell を使用し、カスタム ロールを作成して管理する方法について説明します。
 
-カスタム ロールの作成方法に関するステップ倍ステップのチュートリアルが必要な場合は、「[チュートリアル: Azure PowerShell を使用して Azure リソースのカスタム ロールを作成する](tutorial-custom-role-powershell.md)」を参照してください。
+カスタム ロールの作成方法に関するステップバイステップのチュートリアルが必要な場合は、「[チュートリアル:Azure PowerShell を使用して Azure リソースのカスタム ロールを作成する](tutorial-custom-role-powershell.md)」を参照してください。
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 

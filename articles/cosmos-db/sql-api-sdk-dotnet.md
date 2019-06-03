@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB は:SQL .NET API、SDK、およびリソース
+title: Azure Cosmos DB:SQL .NET API、SDK、およびリソース
 description: リリース日、提供終了日、Azure Cosmos DB .NET SDK の各バージョン間の変更など、SQL .NET API と SDK に関するあらゆる詳細を提供します。
 author: SnehaGunda
 ms.service: cosmos-db
@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/09/2018
 ms.author: sngun
-ms.openlocfilehash: 83a866b20d2802b7d49363b7c6451356e938eac1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3c420882b734883039ec95d609c155617359fa25
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57838920"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510716"
 ---
 # <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>Azure Cosmos DB .NET SDK for SQL API: ダウンロードおよびリリース ノート
 > [!div class="op_single_selector"]
@@ -47,6 +47,20 @@ ms.locfileid: "57838920"
 * 最上位レベルの CosmosClient と関連する CosmosDatabases、CosmosContainers、および CosmosItems の各クラスとの間でメソッドが分割される新しいオブジェクト モデルです。 
 * ストリームをサポートします。 
 * 状態コードを返し、応答が返されない場合にのみ例外を返すようにサーバーからの CosmosResponseMessage を更新しました。 
+
+### <a name="a-name240240"></a><a name="2.4.0"/>2.4.0
+
+* SDK の System.Net.Http バージョンは、NuGet パッケージで定義されているものと一致します
+* LINQ クエリの小数点以下有効桁数のサイズが増えました。
+* 新しいクラス CompositePath、CompositePathSortOrder、SpatialSpec、SpatialType、PartitionKeyDefinitionVersion が追加されました
+* DocumentCollection に TimeToLivePropertyPath が追加されました
+* IndexPolicy に CompositeIndexes と SpatialIndexes が追加されました
+* PartitionKeyDefinition に Version が追加されました
+* PartitionKey に None が追加されました
+
+### <a name="a-name230230"></a><a name="2.3.0"/>2.3.0
+
+ * IdleTcpConnectionTimeout、OpenTcpConnectionTimeout、MaxRequestsPerTcpConnection、MaxTcpConnectionsPerEndpoint が、ConnectionPolicy に追加されました。
 
 ### <a name="a-name223223"></a><a name="2.2.3"/>2.2.3
 
@@ -359,8 +373,10 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 <br/>
 
-| Version | リリース日 | 提供終了日 |
+| バージョン | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [2.4.0](#2.4.0) |2019 年 5 月 5 日 |--- |
+| [2.3.0](#2.3.0) |2019 年 4 月 4 日 |--- |
 | [2.2.3](#2.2.3) |2019 年 2 月 11 日 |--- |
 | [2.2.2](#2.2.2) |2019 年 2 月 5 日 |--- |
 | [2.2.1](#2.2.1) |2018 年 12 月 24 日 |--- |

@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 10/31/2016
 ms.author: mbullwin
 ms.openlocfilehash: 5dfbc6fa18b5d1b5b3058db14eb1232be27a0c40
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58481793"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66130972"
 ---
 # <a name="use-powershell-to-set-alerts-in-application-insights"></a>PowerShell を使用して Application Insights のアラートを設定する
 
@@ -138,5 +138,5 @@ GUID は、サブスクリプション ID です (アプリケーションのイ
 ## <a name="see-also"></a>関連項目
 * [Application Insights を構成するスクリプト](powershell-script-create-resource.md)
 * [テンプレートから Application Insights と Web テスト リソースを作成する](powershell.md)
-* [Microsoft Azure 診断の Application Insights への結合を自動化する](powershell-azure-diagnostics.md)
+* [Microsoft Azure Diagnostics の Application Insights への結合を自動化する](powershell-azure-diagnostics.md)
 * [アラートへの対応を自動化する](../../azure-monitor/platform/alerts-webhooks.md)

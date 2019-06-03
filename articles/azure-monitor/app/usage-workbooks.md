@@ -13,12 +13,12 @@ ms.date: 09/19/2018
 ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: bcd4ae5b7092aafc452c5af3d17fd22c263b5d35
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 6d84ad69b067f730bbfbcad9e46bdc9ae2036ead
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56270149"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64569605"
 ---
 # <a name="create-interactive-reports-with-azure-monitor-workbooks"></a>Azure Monitor ブックを使用した対話型レポートの作成
 
@@ -43,7 +43,7 @@ Workbooks は次のようなシナリオで便利です。
 
 ![ブック ギャラリーのスクリーンショット](./media/usage-workbooks/002-workbook-gallery.png)
 
-ここでは、**[クイック スタート]** という見出しの下にある **[既定のテンプレート]** から始めます。
+ここでは、 **[クイック スタート]** という見出しの下にある **[既定のテンプレート]** から始めます。
 
 ![ブック ギャラリーのスクリーンショット](./media/usage-workbooks/003-default-template.png)
 
@@ -55,11 +55,11 @@ Workbooks は次のようなシナリオで便利です。
 
 1. セクションの編集が完了したら、セクションの左下隅にある **[編集完了]** をクリックします。
 
-2. セクションの複製を作成するには、**[このセクションの複製]** アイコンをクリックします。 セクションを複製すると、前のイテレーションを失うことなくクエリを繰り返すことができるので便利です。
+2. セクションの複製を作成するには、 **[このセクションの複製]** アイコンをクリックします。 セクションを複製すると、前のイテレーションを失うことなくクエリを繰り返すことができるので便利です。
 
-3. ブックのセクションを移動するには、**[上へ移動]** アイコンまたは **[下へ移動]** アイコンをクリックします。
+3. ブックのセクションを移動するには、 **[上へ移動]** アイコンまたは **[下へ移動]** アイコンをクリックします。
 
-4. セクションを完全に削除するには、**[削除]** アイコンをクリックします。
+4. セクションを完全に削除するには、 **[削除]** アイコンをクリックします。
 
 ## <a name="adding-text-and-markdown-sections"></a>テキストと [マークダウン] セクションを追加する
 
@@ -96,7 +96,7 @@ union app('app01').requests, app('app02').requests, requests
 
 ### <a name="advanced-analytic-query-settings"></a>分析クエリの詳細設定
 
-各セクションには独自の詳細設定があります。これらの設定には、**[パラメーターの追加]** ボタンの右側にある設定アイコン ![Application Insights の [ブック] セクションの編集コントロール](./media/usage-workbooks/005-settings.png) からアクセスできます。
+各セクションには独自の詳細設定があります。これらの設定には、 **[パラメーターの追加]** ボタンの右側にある設定アイコン ![Application Insights の [ブック] セクションの編集コントロール](./media/usage-workbooks/005-settings.png) からアクセスできます。
 
 ![Application Insights の [ブック] セクションの編集コントロール](./media/usage-workbooks/0006-settings-expanded.png)
 
@@ -120,7 +120,7 @@ union app('app01').requests, app('app02').requests, requests
 
 ![Application Insights の [ブック] セクションの編集コントロール](./media/usage-workbooks/004-active-users-trend.png)
 
- これは、テーブルの分析クエリの詳細設定で、**[When an item is selected, export a parameter]\(項目が選択されているときに、パラメーターをエクスポートする\)** を有効にすることによって可能になります。
+ これは、テーブルの分析クエリの詳細設定で、 **[When an item is selected, export a parameter]\(項目が選択されているときに、パラメーターをエクスポートする\)** を有効にすることによって可能になります。
 
 ![Application Insights の [ブック] セクションの編集コントロール](./media/usage-workbooks/007-settings-export.png)
 
@@ -170,7 +170,7 @@ union customEvents, pageViews
 
 これにより、テキスト ボックス内の値を任意の場所で使用できるようになります。 値には、テーブル名、列名、関数名、演算子などを指定できます。
 
-テキスト パラメーターには、**[Get default value from analytics query]\(分析クエリから既定値を取得する\)** という設定があります。この設定を使用すると、ブックの作成者はクエリを使用してそのテキスト ボックスの既定値を設定できます。
+テキスト パラメーターには、 **[Get default value from analytics query]\(分析クエリから既定値を取得する\)** という設定があります。この設定を使用すると、ブックの作成者はクエリを使用してそのテキスト ボックスの既定値を設定できます。
 
 分析クエリから取得した既定値を使用する場合、最初の行の最初の値 (行 0、列 0) だけが既定値として使用されます。 そのため、1 行および 1 列だけを返すようにクエリを制限することをお勧めします。 クエリによって返されるその他のデータは無視されます。 
 
@@ -206,7 +206,7 @@ datatable( column1:string, column2:string )
 
 ![Application Insights の [ブック] セクションの編集コントロール](./media/usage-workbooks/011-data-table.png)
 
-より適切な例として、ドロップダウンを使用した名前での国の選択があります。
+より適切な例として、ドロップダウンを使用した名前での国や地域の選択があります。
 
 ```
 customEvents
@@ -241,7 +241,7 @@ Workbooks は Application Insights リソース内の、ユーザー個人の **
 
 **[個人用レポート]** にあるブックを共有するには:
 
-1. 操作バーで、**[開く]** をクリックします。
+1. 操作バーで、 **[開く]** をクリックします。
 2. 共有するブックの横にある [...] ボタンをクリックします。
 3. **[Move to Shared Reports]\(共有レポートに移動\)** をクリックします。
 
@@ -249,7 +249,7 @@ Workbooks は Application Insights リソース内の、ユーザー個人の **
 
 ブックへのリンクを Azure Dashboard にピン留めするには:
 
-1. 操作バーで、**[開く]** をクリックします。
+1. 操作バーで、 **[開く]** をクリックします。
 2. ピン留めするブックの横にある [...] ボタンをクリックします。
 3. **[ダッシュボードにピン留め]** をクリックします。
 

@@ -15,14 +15,17 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: fc248292e2323d44a353473be87c2b0f1be8ea12
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: d125e0c0818efbc6ec8f317122859411a37a0d20
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55091669"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65232753"
 ---
-# <a name="tutorial-push-notification-to-specific-android-application-users-by-using-azure-notification-hubs"></a>チュートリアル:Azure Notification Hubs を使用して特定の Android アプリケーション ユーザーにプッシュ通知を送信する
+# <a name="tutorial-push-notification-to-specific-android-application-users-by-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>チュートリアル:Azure Notification Hubs および Google Cloud Messaging を使用して特定の Android アプリケーション ユーザーにプッシュ通知を送信する (非推奨)
+
+> [!WARNING]
+> 2018 年 4 月 10 日に、Google は Google Cloud Messaging (GCM) を非推奨としました。 GCM サーバーおよびクライアント API は非推奨となり、早ければ 2019 年 5 月 29日に削除されます。 詳しくは、[GCM and FCM Frequently Asked Questions](https://developers.google.com/cloud-messaging/faq) を参照してください。
 
 [!INCLUDE [notification-hubs-selector-aspnet-backend-notify-users](../../includes/notification-hubs-selector-aspnet-backend-notify-users.md)]
 
@@ -141,7 +144,7 @@ ms.locfileid: "55091669"
     ```xml
     <string name="usernameHint">Username</string>
     <string name="passwordHint">Password</string>
-    <string name="loginButton">1. Log in</string>
+    <string name="loginButton">1. Sign in</string>
     <string name="send_button">2. Send Notification</string>
     <string name="notification_message_hint">Notification message</string>
     <string name="notification_message_tag_hint">Recipient username</string>
@@ -257,7 +260,7 @@ ms.locfileid: "55091669"
     }
     ```
 
-    プッシュ通知を登録するために、このコンポーネントはアプリケーション バックエンドにアクセスするのに必要な REST 呼び出しを実装します。 「 *アプリ バックエンドからの登録* 」で説明しているとおり、Notification Hubs によって作成された [registrationIds](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend)もローカルに格納されます。 **[ログイン]** ボタンをクリックすると、ローカル ストレージに格納されている承認トークンが使用されます。
+    プッシュ通知を登録するために、このコンポーネントはアプリケーション バックエンドにアクセスするのに必要な REST 呼び出しを実装します。 「 *アプリ バックエンドからの登録* 」で説明しているとおり、Notification Hubs によって作成された [registrationIds](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend)もローカルに格納されます。 **[サインイン]** ボタンをクリックすると、ローカル ストレージに格納されている承認トークンが使用されます。
 4. クラスで、`NotificationHub` のプライベート フィールドを削除するか、またはコメントにして、`RegisterClient` クラスのフィールドと ASP.NET バックエンドのエンドポイントの文字列を追加します。 `<Enter Your Backend Endpoint>` を、前に取得した実際のバックエンド エンドポイントに必ず置き換えてください。 たとえば、「 `http://mybackend.azurewebsites.net` 」のように入力します。
 
     ```java
@@ -319,7 +322,7 @@ ms.locfileid: "55091669"
     Button sendPush = (Button) findViewById(R.id.sendbutton);
     sendPush.setEnabled(false);
     ```
-9. その後、 **[ログイン]** ボタン クリック イベントとプッシュ通知の送信を処理する次のメソッドを追加します。
+9. その後、**[サインイン]** ボタン クリック イベントとプッシュ通知の送信を処理する次のメソッドを追加します。
 
     ```java
     public void login(View view) throws UnsupportedEncodingException {
@@ -401,7 +404,7 @@ ms.locfileid: "55091669"
     }
     ```
 
-    **[ログイン]** ボタンの `login` ハンドラーは、入力ユーザー名とパスワードを使用して基本的な認証トークン (これは、認証スキームで使用される任意のトークンを表します) を生成してから、`RegisterClient` を使用して登録用のバックエンドを呼び出します。
+    **[サインイン]** ボタンの `login` ハンドラーは、入力ユーザー名とパスワードを使用して基本的な認証トークン (これは、認証スキームで使用される任意のトークンを表します) を生成してから、`RegisterClient` を使用して登録用のバックエンドを呼び出します。
 
     `sendPush` メソッドでは、バックエンドを呼び出して、ユーザーのタグに基づいてユーザーにセキュリティて保護された通知をトリガーします。 `sendPush` がターゲットとするプラットフォーム通知サービスは渡される `pns` 文字列によって異なります。
 
@@ -467,7 +470,7 @@ ms.locfileid: "55091669"
 
 1. デバイスまたは Android Studio を使用したエミュレーターでアプリケーションを実行します。
 2. Android アプリケーションで、ユーザー名とパスワードを入力します。 どちらも同じ文字列値にする必要があり、空白や特殊文字が含まれることはありません。
-3. Android アプリケーションで、 **[ログイン]** をクリックします。 「 **Logged in and registered (ログイン・登録済み)**」というトースト メッセージが表示されるまで待機します。 これは、**[Send Notification] (通知の送信)** ボタンを有効にします。
+3. Android アプリケーションで、 **[サインイン]** をクリックします。 「 **Logged in and registered (ログイン・登録済み)**」というトースト メッセージが表示されるまで待機します。 これは、**[Send Notification] (通知の送信)** ボタンを有効にします。
 
     ![][A2]
 4. トグル ボタンをクリックして、アプリを実行し、ユーザーを登録したすべてのプラットフォームを有効にします。

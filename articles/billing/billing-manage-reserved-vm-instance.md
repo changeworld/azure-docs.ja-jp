@@ -13,11 +13,11 @@ ms.workload: na
 ms.date: 04/13/2019
 ms.author: banders
 ms.openlocfilehash: 9a5b200ffb9441b90875c7764786004ff5f1e8a1
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59994965"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66127131"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Azure リソースに対する予約を管理する
 
@@ -114,7 +114,7 @@ Azure Reserved Virtual Machine Instances を購入した場合は、予約の最
 
 - [Azure Reserved VM Instances による仮想マシンの前払い](..//virtual-machines/windows/prepay-reserved-vm-instances.md#cancellations-and-exchanges)
 - [Azure の予約からの SUSE ソフトウェア プランの前払い](../virtual-machines/linux/prepay-suse-software-charges.md#cancellation-and-exchanges-not-allowed)
-- [Azure SQL Database の容量が予約された SQL Database 計算リソースの前払い](../sql-database/sql-database-reserved-capacity.md#cancellations-and-exchanges)
+- [Azure SQL Database の予約容量を使用した SQL Database 計算リソースの前払い](../sql-database/sql-database-reserved-capacity.md#cancellations-and-exchanges)
 
 ## <a name="change-optimize-setting-for-reserved-vm-instances"></a>予約 VM インスタンスの最適化設定を変更する
 
@@ -144,7 +144,7 @@ Azure の予約の詳細については、次の記事を参照してくださ�
 
 サービス プランの購入:
 - [Azure Reserved VM Instances による仮想マシンの前払い](../virtual-machines/windows/prepay-reserved-vm-instances.md)
-- [Azure SQL Database の容量が予約された SQL Database 計算リソースの前払い](../sql-database/sql-database-reserved-capacity.md)
+- [Azure SQL Database の予約容量を使用した SQL Database 計算リソースの前払い](../sql-database/sql-database-reserved-capacity.md)
 - [Azure Cosmos DB の容量が予約された Azure Cosmos DB リソースの前払い](../cosmos-db/cosmos-db-reserved-capacity.md)
 
 ソフトウェア プランの購入:

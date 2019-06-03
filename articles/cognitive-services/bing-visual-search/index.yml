@@ -7,7 +7,7 @@ metadata:
   description: Bing Visual Search API を使用して画像に関する分析情報を取得する方法について説明します。
   services: cognitive-services
   author: swhite-msft
-  manager: rosh
+  manager: nitinme
   ms.service: cognitive-services
   ms.subservice: bing-visual-search
   ms.tgt_pltfrm: na

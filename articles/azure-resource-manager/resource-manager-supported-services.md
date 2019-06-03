@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/25/2019
+ms.date: 04/19/2019
 ms.author: tomfitz
-ms.openlocfilehash: 520aeb8e47b5e94e6346e682f21f46cb0814f8f3
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: a3c6eca548eb61d6b7b239b4292b9c77ca2dec6f
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58445456"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64702695"
 ---
 # <a name="azure-resource-providers-and-types"></a>Azure リソース プロバイダーと種類
 
@@ -32,6 +32,8 @@ ms.locfileid: "58445456"
 
 これらの手順は、Azure Portal、Azure PowerShell、または Azure CLI を介して実行できます。
 
+リソース プロバイダーを Azure サービスにマップされるリストについては、「[Resource providers for Azure services](azure-services-resource-providers.md)」 (Azure サービスのリソースプロバイダー) を参照してください。
+
 ## <a name="azure-portal"></a>Azure ポータル
 
 すべてのリソース プロバイダー、およびサブスクリプションの登録状態を表示するには、以下を実行します。
@@ -40,13 +42,13 @@ ms.locfileid: "58445456"
 2. **[すべてのサービス]** を選択します。
 
     ![サブスクリプションの選択](./media/resource-manager-supported-services/select-subscriptions.png)
-3. **[すべてのサービス]** ボックスで **"サブスクリプション (subscription)"** と入力し、**[サブスクリプション]** を選択します。
+3. **[すべてのサービス]** ボックスで **"サブスクリプション (subscription)"** と入力し、 **[サブスクリプション]** を選択します。
 4. サブスクリプションの一覧から、表示するサブスクリプションを選択します。
 5. **[リソース プロバイダー]** を選択し、利用可能なリソース プロバイダーの一覧を表示します。
 
     ![リソース プロバイダーの表示](./media/resource-manager-supported-services/show-resource-providers.png)
 
-6. リソース プロバイダーの登録によって、サブスクリプションがリソース プロバイダーと連携するように構成されます。 登録の範囲は常にサブスクリプションです。 既定では、多数のリソース プロバイダーが自動的に登録されます。 ただし、一部のリソース プロバイダーについては、手動で登録する必要がある場合もあります。 リソース プロバイダーを登録するには、リソース プロバイダーの `/register/action` 操作を実行するためのアクセス許可が必要です。 この操作は、共同作成者ロールと所有者ロールに含まれます。 リソース プロバイダーを登録するには、**[登録]** を選択します。 前のスクリーン ショットでは、**Microsoft.Blueprint** の **[登録]** リンクが強調表示されています。
+6. リソース プロバイダーの登録によって、サブスクリプションがリソース プロバイダーと連携するように構成されます。 登録の範囲は常にサブスクリプションです。 既定では、多数のリソース プロバイダーが自動的に登録されます。 ただし、一部のリソース プロバイダーについては、手動で登録する必要がある場合もあります。 リソース プロバイダーを登録するには、リソース プロバイダーの `/register/action` 操作を実行するためのアクセス許可が必要です。 この操作は、共同作成者ロールと所有者ロールに含まれます。 リソース プロバイダーを登録するには、 **[登録]** を選択します。 前のスクリーン ショットでは、**Microsoft.Blueprint** の **[登録]** リンクが強調表示されています。
 
     サブスクリプション内に特定のリソース プロバイダーからのリソースの種類がまだある場合、そのリソース プロバイダーの登録を解除することはできません。
 
@@ -57,7 +59,7 @@ ms.locfileid: "58445456"
 
     ![[すべてのサービス] を選択する](./media/resource-manager-supported-services/more-services.png)
 
-3. **[すべてのサービス]** ボックスで **"リソース エクスプ ローラー (resource explorer)"** と入力し、**[リソース エクスプ ローラー]** を選択します。
+3. **[すべてのサービス]** ボックスで **"リソース エクスプ ローラー (resource explorer)"** と入力し、 **[リソース エクスプ ローラー]** を選択します。
 4. 右矢印を選択して **[プロバイダー]** を展開します。
 
     ![プロバイダーの選択](./media/resource-manager-supported-services/select-providers.png)
@@ -291,5 +293,5 @@ West US
 
 * リソース マネージャーのテンプレートの作成の詳細については、 [Azure リソース マネージャーのテンプレートの作成](resource-group-authoring-templates.md)に関するページを参照してください。 
 * リソース プロバイダーのテンプレートのスキーマを表示するには、「[テンプレート リファレンス](/azure/templates/)」を参照してください。
-* リソースをデプロイする方法を確認するには、「 [Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)」を参照してください。
+* リソース プロバイダーを Azure サービスにマップされるリストについては、「[Resource providers for Azure services](azure-services-resource-providers.md)」 (Azure サービスのリソースプロバイダー) を参照してください。
 * リソース プロバイダーの操作を表示するには、「[Azure REST API](/rest/api/)」を参照してください。

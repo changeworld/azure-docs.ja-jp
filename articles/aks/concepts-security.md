@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: iainfou
-ms.openlocfilehash: 8fd5b726c01b056d38e7e187cec8270ee4e127a9
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 2e655627267546d88f76a2487817bca3153ee91d
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60009006"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65074016"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのアプリケーションとクラスターに対するセキュリティの概念
 
@@ -34,9 +34,11 @@ AKS では、Kubernetes マスター コンポーネントは、Microsoft で提
 
 ## <a name="node-security"></a>ノードのセキュリティ
 
-AKS ノードは、ユーザーが管理および保守する Azure 仮想マシンです。 ノードは、Moby コンテナー ランタイムを使用して、最適化された Ubuntu Linux ディストリビューションを実行します。 AKS クラスターを作成またはスケールアップすると、ノードは自動的に、最新の OS セキュリティ更新プログラムと構成でデプロイされます。
+AKS ノードは、ユーザーが管理および保守する Azure 仮想マシンです。 Linux ノードは、Moby コンテナー ランタイムを使用して、最適化された Ubuntu ディストリビューションを実行します。 Windows Server ノード (現在 AKS でプレビュー中) は、最適化された Windows Server 2019 リリースを実行し、同様に Moby コンテナー ランタイムを使用します。 AKS クラスターを作成またはスケールアップすると、ノードは自動的に、最新の OS セキュリティ更新プログラムと構成でデプロイされます。
 
-Azure プラットフォームでは、OS セキュリティ更新プログラムが夜間スケジュールでノードに自動的に適用されます。 OS セキュリティ更新プログラムがホストの再起動を必要とする場合、再起動は自動的には実行されません。 ノードは手動で再起動できますが、一般的な方法は [Kured][kured] (Kubernetes 用のオープン ソースの再起動デーモン) を使用する方法です。 Kured は [DaemonSet][aks-daemonsets] として実行され、再起動が必要であることを示すファイルの存在を各ノードで監視します。 再起動は、クラスター アップグレードと同じ[切断およびドレイン プロセス](#cordon-and-drain)を使用するクラスターで管理されます。
+Azure プラットフォームでは、OS セキュリティ修正プログラムが夜間スケジュールで Linux ノードに自動的に適用されます。 Linux OS セキュリティ更新プログラムがホストの再起動を必要とする場合、再起動は自動的には実行されません。 Linux ノードは手動で再起動できますが、一般的な方法は [Kured][kured] (Kubernetes 用のオープン ソースの再起動デーモン) を使用する方法です。 Kured は [DaemonSet][aks-daemonsets] として実行され、再起動が必要であることを示すファイルの存在を各ノードで監視します。 再起動は、クラスター アップグレードと同じ[切断およびドレイン プロセス](#cordon-and-drain)を使用するクラスターで管理されます。
+
+Windows Server ノード (現在、AKS でプレビュー中) では、Windows Update が自動的に実行されて最新の更新プログラムを適用することはありません。 Windows Update のリリース サイクルと独自の検証プロセス周辺の定期的スケジュールで、AKS クラスター内の Windows Server ノード プールでアップグレードを実行する必要があります。 このアップグレード プロセスでは、最新の Windows Server イメージと修正プログラムを実行するノードが作成されて、古いノードが削除されます。 このプロセスの詳細については、[AKS でのノード プールのアップグレード][nodepool-upgrade]に関するページを参照してください。
 
 ノードは、パブリック IP アドレスが割り当てられていないプライベート仮想ネットワーク サブネットにデプロイされます。 トラブルシューティングと管理のために、既定では SSH が有効になっています。 この SSH アクセスは、内部 IP アドレスでのみ使用できるようにします。
 
@@ -50,12 +52,12 @@ Azure プラットフォームでは、OS セキュリティ更新プログラ�
 
 ### <a name="cordon-and-drain"></a>切断およびドレイン
 
-アップグレード プロセス中、AKS ノードはクラスターから個別に切断されるため、新しいポッドはそれらに対してはスケジュールされません。 ノードはその後でドレインされ、次のようにアップグレードされます。
+アップグレード プロセス中、AKS ノードはクラスターから個別に切断されるため、それらには新しいポッドはスケジュールされません。 ノードはその後でドレインされ、次のようにアップグレードされます。
 
-- 既存のポッドが正常に終了し、残りのノード上にスケジュールされます。
-- ノードが再起動され、アップグレード プロセスが完了すると、AKS クラスターに再度結合されます。
-- ポッドは、もう一度そこで実行されるようにスケジュールされます。
-- すべてのノードが正常にアップグレードされるまで、同じプロセスを使用してクラスター内の次のノードが切断およびドレインされます。
+- 新しいノードは、ノード プールにデプロイされます。 このノードは、最新の OS イメージと修正プログラムを実行します。
+- 既存のノードのいずれかで、アップグレードが識別されます。 このノード上のポッドは適切に終了されて、ノード プール内の他のノードにケジュールされます。
+- この既存のノードは、AKS クラスターから削除されます。
+- アップグレード プロセスの一部としてすべてのノードが正常に置き換えられるまで、同じプロセスを使用してクラスター内の次のノードが切断されてドレインされます。
 
 詳細については、「[AKS クラスターのアップグレード][aks-upgrade-cluster]」を参照してください。
 
@@ -102,3 +104,4 @@ Kubernetes と AKS の中心概念の追加情報については、次の記事�
 [aks-concepts-network]: concepts-network.md
 [cluster-isolation]: operator-best-practices-cluster-isolation.md
 [operator-best-practices-cluster-security]: operator-best-practices-cluster-security.md
+[nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool

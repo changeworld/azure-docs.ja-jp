@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 11/13/2018
 ms.author: jafreebe
 ms.custom: seodec18
-ms.openlocfilehash: 472ff85adaf72f91948c4072b12cca3ff8e59f37
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 6b9c9500423392ec07482f049697d9b49dc060bf
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59545352"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65603194"
 ---
 # <a name="tutorial-build-a-java-ee-and-postgres-web-app-in-azure"></a>チュートリアル:Azure で Java EE と Postgres の Web アプリを構築する
 
@@ -158,7 +158,7 @@ _pom.xml_ で、大文字のプレースホルダーの値を、Postgres サー�
 
 ## <a name="configure-the-wildfly-application-server"></a>WildFly アプリケーション サーバーを構成する
 
-再構成した目的のアプリケーションをデプロイする前に、Postgres モジュールとその依存関係を設定して WildFly アプリケーション サーバーを更新する必要があります。 他の構成情報については、「[Configure WildFly server (WildFly サーバーの構成)](configure-language-java.md#configure-wildfly-server)」を参照してください。
+再構成した目的のアプリケーションをデプロイする前に、Postgres モジュールとその依存関係を設定して WildFly アプリケーション サーバーを更新する必要があります。 他の構成情報については、「[Configure WildFly server (WildFly サーバーの構成)](configure-language-java.md#configure-java-ee-wildfly)」を参照してください。
 
 サーバーを構成するには、`wildfly_config/` ディレクトリに 4 つのファイルが必要になります。
 

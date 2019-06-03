@@ -9,12 +9,12 @@ ms.date: 09/22/2018
 ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
-ms.openlocfilehash: a325b976e657fbdc318a41b3b79b50e77a948e14
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5424a07f8ecd7eab962a4f865fac91741810e4b1
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58079845"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65991935"
 ---
 # <a name="tutorial-update-inventory-using-azure-portal-and-topicssubscriptions"></a>チュートリアル:Azure Portal とトピック/サブスクリプションを使用して在庫を更新する
 
@@ -100,7 +100,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-不要になったら、名前空間とキューを削除します。 これを行うには、ポータルでこれらのリソースを選択し、**[削除]** をクリックします。
+不要になったら、名前空間とキューを削除します。 これを行うには、ポータルでこれらのリソースを選択し、 **[削除]** をクリックします。
 
 ## <a name="understand-the-sample-code"></a>サンプル コードを理解する
 
@@ -393,6 +393,9 @@ private async Task ReceiveMessages(string subscription)
     await receiver.CloseAsync();
 }
 ```
+
+> [!NOTE]
+> Service Bus リソースは、[Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/) で管理できます。 Service Bus Explorer を使用すると、ユーザーは Service Bus 名前空間に接続し、簡単な方法でメッセージング エンティティを管理できます。 このツールには、インポート/エクスポート機能や、トピック、キュー、サブスクリプション、リレー サービス、通知ハブ、イベント ハブをテストする機能などの高度な機能が用意されています。 
 
 ## <a name="next-steps"></a>次の手順
 

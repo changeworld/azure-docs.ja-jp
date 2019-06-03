@@ -3,8 +3,8 @@ title: Node.js モジュールの操作
 description: Azure App Service または Cloud Services を使用する際の Node.js モジュールの使用方法について説明します。
 services: ''
 documentationcenter: nodejs
-author: TomArcher
-manager: routlaw
+author: rloutlaw
+manager: rloutlaw
 editor: ''
 ms.assetid: c0e6cd3d-932d-433e-b72d-e513e23b4eb6
 ms.service: multiple
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2016
-ms.author: tarcher
-ms.openlocfilehash: 045250f0b0f97cbefe05b36f1c8d4480244a172d
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.author: rloutlaw
+ms.openlocfilehash: 67ae9eec4e6cd4fc7697e54dfd74c5e0c8f1f59c
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45575849"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65540945"
 ---
 # <a name="using-nodejs-modules-with-azure-applications"></a>Azure アプリケーションでの Node.js モジュールの使用
 このドキュメントは、Azure でホストされているアプリケーションでの Node.js モジュールの使用に関するガイダンスを示します。 また、Azure でアプリケーションによって特定のバージョンのモジュールとネイティブ モジュールが確実に使用されるようにするためのガイダンスも紹介します。

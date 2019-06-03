@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 01/28/2019
+ms.date: 04/22/2019
 ms.author: juliako
-ms.openlocfilehash: 30cd77799837f9b1ef08a9c609e518fd679b9b15
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 393b87aeed759950b946ccb45a008da9af4b7ebe
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57871424"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64702791"
 ---
 # <a name="live-event-latency-in-media-services"></a>Media Services 内のライブ イベントの待機時間
 
@@ -27,7 +27,7 @@ ms.locfileid: "57871424"
 新しい **LowLatency** 機能を使用するには、**LiveEvent** の **StreamOptionsFlag** を **LowLatency** に設定します。 HLS 再生用に [LiveOutput](https://docs.microsoft.com/rest/api/media/liveoutputs) を作成する場合は、[LiveOutput.Hls.fragmentsPerTsSegment](https://docs.microsoft.com/rest/api/media/liveoutputs/create#hls) を 1 に設定します。 ストリームが稼働状態になったら、[Azure Media Player](https://ampdemo.azureedge.net/) (AMP のデモ ページ) を使用して、"Low Latency Heuristic Profile" を使用するように再生オプションを設定できます。
 
 > [!NOTE]
-> 現時点では、Azure Media Player の LowLatency HeuristicProfile は、DASH プロトコル、または CMAF を使用する HLS でストリームを再生するために設計されています。 (`format=m3u8-aapl` や `format=m3u8-aapl-v3` などの) TS を使用する HLS を介して MacOS または iOS デバイスをターゲットとする場合は、この設定を使用しないでください。この場合、AMP では、OS によって提供されるネイティブ プレーヤーが直接使用されるためです。
+> 現時点では、Azure Media Player の LowLatency HeuristicProfile は、CSF または CMAF 形式 (`format=mdp-time-csf` または `format=mdp-time-cmaf` など) のMPEG-DASH プロトコでストリームを再生するために設計されています。 
 
 次の .NET の例では、**LiveEvent** に対して **LowLatency** を設定する方法を示しています。
 

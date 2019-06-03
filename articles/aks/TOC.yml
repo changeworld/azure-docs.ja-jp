@@ -63,8 +63,9 @@
     - name: スケール
       href: concepts-scale.md
     - name: ベスト プラクティス
-      href: best-practices.md
       items:
+        - name: 概要
+          href: best-practices.md
         - name: クラスター オペレーター向け
           items:
             - name: マルチ テナントとクラスター分離
@@ -115,9 +116,9 @@
           maintainContext: true
         - name: 仮想ノードの作成
           items:
-            - name: Azure CLI
+            - name: Azure CLI の使用
               href: virtual-nodes-cli.md
-            - name: Azure ポータル
+            - name: Azure ポータルの使用
               href: virtual-nodes-portal.md
         - name: Virtual Kubelet の使用
           href: virtual-kubelet.md
@@ -165,9 +166,10 @@
             - name: 独自の証明書での TLS の使用
               href: ingress-own-tls.md
             - name: Let's Encrypt での TLS の使用
-              href: ingress-tls.md
               items:
-                - name: 静的パブリック IP の使用
+                - name: 動的パブリック IP アドレスの使用
+                  href: ingress-tls.md
+                - name: 静的パブリック IP アドレスの使用
                   href: ingress-static-ip.md
         - name: エグレス トラフィック
           href: egress.md
@@ -187,7 +189,7 @@
           href: api-server-authorized-ip-ranges.md
         - name: クラスターのサービス プリンシパルの資格情報の更新
           href: update-credentials.md
-        - name: クラスターのエグレス トラフィックの制限および制御
+        - name: クラスターのエグレス トラフィックの制限および制御 (プレビュー)
           href: limit-egress-traffic.md
         - name: Azure Active Directory の統合の有効化
           items:
@@ -212,6 +214,20 @@
         - name: リアルタイムのコンテナー ログの表示 (プレビュー)
           href: ../azure-monitor/insights/container-insights-live-logs.md
           maintainContext: true
+    - name: Windows Server コンテナーの使用 (プレビュー)
+      items:
+        - name: AKS クラスターの作成
+          href: windows-container-cli.md
+        - name: リモート接続
+          href: rdp.md
+        - name: 既知の制限事項
+          href: windows-node-limitations.md
+        - name: Kubernetes ダッシュボードの使用
+          href: kubernetes-dashboard.md
+        - name: Windows Server コンテナー用の Dockerfile の作成
+          href: 'https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/manage-windows-dockerfile?context=/azure/aks/context/aks-context'
+        - name: Windows Server コンテナー用の Dockerfile の最適化
+          href: 'https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/optimize-windows-dockerfile?context=/azure/aks/context/aks-context'
     - name: アプリケーションの開発と実行
       items:
         - name: Dev Spaces を使用した開発

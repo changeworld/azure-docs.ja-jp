@@ -1,7 +1,6 @@
 ---
 title: MapReduce と HDInsight 上の Apache Hadoop
 description: HDInsight クラスター上の Apache Hadoop で MapReduce ジョブを実行する方法について説明します。
-services: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.openlocfilehash: f2baaf598be8ede69fd6e1fa49a5f5a6b64c24ff
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 9da6b6ba3ab697887e55f9077b44cf6fa100a981
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58521202"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64707953"
 ---
 # <a name="use-mapreduce-in-apache-hadoop-on-hdinsight"></a>HDInsight 上の Apache Hadoop で MapReduce を使用する
 
@@ -52,8 +51,6 @@ Hadoop ストリーミングは、STDIN と STDOUT 上で mapper や reducer と
 HDInsight での Hadoop ストリーミングの使用例については、以下のドキュメントを参照してください。
 
 * [C# MapReduce ジョブの開発](apache-hadoop-dotnet-csharp-mapreduce-streaming.md)
-
-* [Python MapReduce ジョブの開発](apache-hadoop-streaming-python.md)
 
 ## <a id="data"></a>サンプル データ
 
@@ -141,8 +138,6 @@ public class WordCount {
 
 * [HDInsight 用 Java MapReduce アプリケーションの開発](apache-hadoop-develop-deploy-java-mapreduce-linux.md)
 
-* [HDInsight 用 Python MapReduce アプリケーションの開発](apache-hadoop-streaming-python.md)
-
 ## <a id="run"></a>MapReduce の実行
 
 HDInsight では、さまざまな方法を使用して HiveQL ジョブを実行できます。 次の表を使用して、適切な方法を判別してから、該当するチュートリアルのリンクをクリックしてください。
@@ -151,15 +146,13 @@ HDInsight では、さまざまな方法を使用して HiveQL ジョブを実�
 |:--- |:--- |:--- |:--- |
 | [SSH](apache-hadoop-use-mapreduce-ssh.md) |**SSH** |Linux |Linux、Unix、Mac OS X、または Windows |
 | [Curl](apache-hadoop-use-mapreduce-curl.md) |**REST** |Linux または Windows |Linux、Unix、Mac OS X、または Windows |
-| [Windows PowerShell](apache-hadoop-use-mapreduce-powershell.md) |**Windows PowerShell** |Linux または Windows | Windows |
+| [Windows PowerShell](apache-hadoop-use-mapreduce-powershell.md) |**Windows PowerShell** |Linux または Windows |Windows |
 
 ## <a id="nextsteps"></a>次のステップ
 
 HDInsight でのデータ操作の詳細については、次のドキュメントを参照してください。
 
 * [HDInsight 用 Java MapReduce プログラムの開発](apache-hadoop-develop-deploy-java-mapreduce-linux.md)
-
-* [HDInsight 用 Python ストリーミング MapReduce プログラムの開発](apache-hadoop-streaming-python.md)
 
 * [HDInsight での Apache Hive の使用][hdinsight-use-hive]
 

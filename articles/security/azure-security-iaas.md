@@ -12,33 +12,38 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/18/2018
+ms.date: 05/05/2019
 ms.author: barclayn
-ms.openlocfilehash: da165634f5323183b633ee3c8a59e0d2607e8ef1
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: f4b2506781df5572ddaff8dda34bf3edab8987be
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57409756"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65145201"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Azure における IaaS ワークロードのセキュリティに関するベスト プラクティス
+この記事では、VM とオペレーティング システムのセキュリティに関するベスト プラクティスについて説明します。
+
+これらのベスト プラクティスは、集約された意見に基づくものであり、Azure プラットフォームの最新の機能に対応しています。 人の考え方やテクノロジは時間の経過と共に変化する可能性があるため、この記事はそれらの変化に応じて更新されます。
 
 ほとんどの IaaS (サービスとしてのインフラストラクチャ) で、クラウド コンピューティングを使用している組織にとっての主要なワークロードは [Azure 仮想マシン (VM)](https://docs.microsoft.com/azure/virtual-machines/) です。 この事実は、ワークロードを段階的にクラウドに移行する[ハイブリッド シナリオ](https://social.technet.microsoft.com/wiki/contents/articles/18120.hybrid-cloud-infrastructure-design-considerations.aspx)で顕著となります。 [IaaS のセキュリティに関する一般的な考慮事項](https://social.technet.microsoft.com/wiki/contents/articles/3808.security-considerations-for-infrastructure-as-a-service-iaas.aspx)に従い、セキュリティのベスト プラクティスをすべての VM に適用することになります。
 
+## <a name="shared-responsibility"></a>Shared responsibility
 お客様のセキュリティの責任は、クラウド サービスの種類に応じて決まります。 表は、Microsoft とお客様の責任の分担をまとめたものです。
 
 ![責任の分担](./media/azure-security-iaas/sec-cloudstack-new.png)
 
 セキュリティ要件は、さまざまな種類のワークロードを含む多くの要因によって異なります。 ここで説明するベスト プラクティスの 1 つだけを適用してシステムを保護できるわけではありません。 セキュリティの他の要素と同様、適切なオプションを選択しつつ、複数のソリューションが互いに不足した部分を補完し合う方法について検討する必要があります。
 
-この記事では、VM とオペレーティング システムのセキュリティに関するベスト プラクティスについて説明します。
-
-これらのベスト プラクティスは、集約された意見に基づくものであり、Azure プラットフォームの最新の機能に対応しています。 人の考え方やテクノロジは時間の経過と共に変化する可能性があるため、この記事はそれらの変化に応じて更新されます。
-
 ## <a name="protect-vms-by-using-authentication-and-access-control"></a>認証とアクセス制御を使用して VM を保護する
 VM 保護の第一歩は、承認されたユーザーのみが新しい VM を設定し、VM にアクセスできるようにすることです。
 
-**ベスト プラクティス**:VM へのアクセスを制御する。   
+> [!NOTE]
+> Azure の Linux VM のセキュリティを強化するために、Azure AD の認証と統合できます。 [Linux VM に Azure AD の認証を使用する](../virtual-machines/linux/login-using-aad.md)ことで、VM へのアクセスを許可/拒否するポリシーを一元管理および施行します。
+>
+>
+
+**ベスト プラクティス**: VM へのアクセスを制御する。   
 **詳細**:[Azure ポリシー](../azure-policy/azure-policy-introduction.md)を使用して、組織内のリソース向けの規則を確立し、カスタマイズ ポリシーを作成します。 これらのポリシーを[リソース グループ](../azure-resource-manager/resource-group-overview.md)などのリソースに適用します。 リソース グループに属する VM は、それらのポリシーを継承します。
 
 組織に多数のサブスクリプションがある場合は、これらのサブスクリプションのアクセス、ポリシー、およびコンプライアンスを効率的に管理する方法が必要になることがあります。 [Azure 管理グループ](../azure-resource-manager/management-groups-overview.md)の範囲は、サブスクリプションを上回ります。 サブスクリプションを管理グループ (コンテナー) にまとめ、それらのグループに管理条件を適用できます。 管理グループ内のすべてのサブスクリプションは、グループに適用された条件を自動的に継承します。 管理グループを使うと、サブスクリプションの種類に関係なく、大きな規模でエンタープライズ レベルの管理を行うことができます。
@@ -102,7 +107,10 @@ Windows Update を使用している場合は、自動 Windows Update の設定�
 **ベスト プラクティス**:VM を定期的に再デプロイして、OS の最新バージョンを使用する。   
 **詳細**:VM を [Azure Resource Manager テンプレート](../azure-resource-manager/resource-group-authoring-templates.md)を使用して VM を定義して、簡単に再デプロイできるようにします。 テンプレートを使用すると、必要なときに、修正プログラムが適用されセキュリティで保護された VM を設定できます。
 
-**ベスト プラクティス**:最新のセキュリティ更新プログラムをインストールする。   
+**ベスト プラクティス**: VM にセキュリティ更新プログラムを迅速に適用する。   
+**詳細**: Azure Security Center (Free レベルまたは Standard レベル) を有効にし、[不足しているセキュリティ更新プログラムを特定して適用](../security-center/security-center-apply-system-updates.md)します。
+
+**ベスト プラクティス**: 最新のセキュリティ更新プログラムをインストールする。   
 **詳細**:お客様が最初に Azure に移動するワークロードに、ラボと外部向けのシステムがあります。 インターネットへのアクセスが必要なアプリケーションまたはサービスを Azure VM でホストしている場合は、修正プログラムの適用を忘れずに実行してください。 これは、オペレーティング システムへの修正プログラムの適用だけではありません。 サード パーティ アプリケーションでも、修正プログラムの未適用による脆弱性が原因で問題が発生する可能性があります。このような問題は、適切な修正プログラム管理が行われていれば回避できます。
 
 **ベスト プラクティス**:バックアップ ソリューションをデプロイしてテストする。   
@@ -138,7 +146,7 @@ VM のプロセスが必要以上に多くのリソースを消費している�
 [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview-metrics.md) を使用してリソースの正常性を把握することをお勧めします。 Azure Monitor には次の特長があります。
 
 - [Azure 診断ログ ファイル](../azure-monitor/platform/diagnostic-logs-overview.md):VM のリソースを監視し、パフォーマンスと可用性を損なう可能性がある問題を特定できます。
-- [Microsoft Azure 診断拡張機能](../azure-monitor/platform/diagnostics-extension-overview.md):Windows VM 監視と診断機能を備えています。 この拡張機能を [Azure Resource Manager テンプレート](../virtual-machines/windows/extensions-diagnostics-template.md)に含めることによって、これらの機能を有効にすることができます。
+- [Microsoft Azure Diagnostics 拡張機能](../azure-monitor/platform/diagnostics-extension-overview.md):Windows VM 監視と診断機能を備えています。 この拡張機能を [Azure Resource Manager テンプレート](../virtual-machines/windows/extensions-diagnostics-template.md)に含めることによって、これらの機能を有効にすることができます。
 
 VM のパフォーマンスを監視していない組織は、パフォーマンス パターンにおけるある変化が正常であるか異常であるかを判断できません。 消費しているリソースが通常よりも多い VM は、外部リソースからの攻撃を受けているか、その VM で実行されているプロセスが侵害されていることを示唆している可能性があります。
 
@@ -165,6 +173,18 @@ Azure Disk Encryption を適用すると、次のビジネス ニーズに対応
 
 - 業界標準の暗号化テクノロジを通して保存中の IaaS VM をセキュリティで保護し、組織のセキュリティおよびコンプライアンス要件に対処します。
 - IaaS VM はお客様が管理するキーとポリシーに従って起動します。さらに、キー コンテナー内のそれらの使用状況を監査できます。
+
+## <a name="restrict-direct-internet-connectivity"></a>インターネットへの直接接続を制限する
+VM からインターネットへの直接接続を監視して制限します。 攻撃者は、パブリック クラウドの IP 範囲を常にスキャンして開いている管理ポートを検索し、よく使用されるパスワードや修正プログラムが適用されていない既知の脆弱性などの "簡単な" 攻撃を試みます。 次の表に、こうした攻撃から保護するためのベスト プラクティスを示します。
+
+**ベスト プラクティス**: ネットワーク ルーティングやセキュリティの不注意による漏洩を回避する。   
+**詳細**: RBAC を使用して、中央のネットワーク グループのみがネットワーク リソースへのアクセス許可を持つようにします。
+
+**ベスト プラクティス**: "あらゆる" 発信元 IP アドレスからアクセス可能な露出した VM を特定して修復する。   
+**詳細**: Azure Security Center を使用します。 Security Center では、ネットワーク セキュリティ グループのいずれかに、"あらゆる" 発信元 IP アドレスからのアクセスを許可する 1 つ以上の受信規則が含まれている場合に、インターネットに接続するエンドポイント経由のアクセスを制限するよう推奨します。 Security Center では、これらの受信規則を編集して、実際にアクセスを必要とする発信元 IP アドレスに[アクセスを制限](../security-center/security-center-restrict-access-through-internet-facing-endpoints.md)するよう推奨します。
+
+**ベスト プラクティス**: 管理ポートを制限する (RDP、SSH)。   
+**詳細**: [Just-In-Time (JIT) VM アクセス](../security-center/security-center-just-in-time.md)を使用すると、Azure VM への受信トラフィックをロックダウンすることができるので、攻撃に対する露出が減り、VM への接続が必要な場合は簡単にアクセスできます。 JIT が有効になっている場合、Security Center ではネットワーク セキュリティ グループの規則の作成により、Azure VM への受信トラフィックがロックダウンされます。 ユーザーは VM 上の受信トラフィックがロックダウンされるポートを選択します。 これらのポートは、JIT ソリューションによって制御されます。
 
 ## <a name="next-steps"></a>次の手順
 Azure を使用してクラウド ソリューションを設計、デプロイ、管理するときに使用するセキュリティのベスト プラクティスの詳細については、「[Azure セキュリティのベスト プラクティスとパターン](security-best-practices-and-patterns.md)」を参照してください。

@@ -6,14 +6,14 @@ ms.author: andrela
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: tutorial
-ms.date: 04/01/2018
+ms.date: 04/29/2019
 ms.custom: mvc
-ms.openlocfilehash: 951cf377c7e33dd3dd5e13a7b42fa05bec06245d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 00c2efacab72c08d33b0004650bece2c369c757b
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58012371"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64935998"
 ---
 # <a name="tutorial-design-an-azure-database-for-mysql-using-azure-cli"></a>チュートリアル:Azure CLI を使用して Azure Database for MySQL を設計する
 
@@ -53,7 +53,7 @@ az group create --name myresourcegroup --location westus
 ## <a name="create-an-azure-database-for-mysql-server"></a>Azure Database for MySQL サーバーの作成
 az mysql server create コマンドを使用して、Azure Database for MySQL サーバーを作成します。 1 つのサーバーで複数のデータベースを管理できます。 通常は、プロジェクトまたはユーザーごとに個別のデータベースを使用します。
 
-次の例は、`westus` にあるリソース グループ `myresourcegroup` に、`mydemoserver` という名前の Azure Database for MySQL サーバーを作成します。 サーバーの管理者ログインの名前は `myadmin` です。 これは、2 個の仮想コアを備えた General Purpose Gen 5 サーバーです。 `<server_admin_password>` は独自の値に置き換えます。
+次の例は、`westus` にあるリソース グループ `myresourcegroup` に、`mydemoserver` という名前の Azure Database for MySQL サーバーを作成します。 サーバーの管理者ユーザーの名前は `myadmin` です。 これは、2 個の仮想コアを備えた General Purpose Gen 5 サーバーです。 `<server_admin_password>` は独自の値に置き換えます。
 
 ```azurecli-interactive
 az mysql server create --resource-group myresourcegroup --name mydemoserver --location westus --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen5_2 --version 5.7
@@ -118,7 +118,7 @@ az mysql server show --resource-group myresourcegroup --name mydemoserver
 ## <a name="connect-to-the-server-using-mysql"></a>mysql を使用してサーバーに接続する
 [mysql コマンドライン ツール](https://dev.mysql.com/doc/refman/5.6/en/mysql.html)を使用して、Azure Database for MySQL サーバーへの接続を確立します。 この例では、コマンドは次のようになります。
 ```cmd
-mysql -h mydemoserver.database.windows.net -u myadmin@mydemoserver -p
+mysql -h mydemoserver.mysql.database.azure.com -u myadmin@mydemoserver -p
 ```
 
 ## <a name="create-a-blank-database"></a>空のデータベースの作成

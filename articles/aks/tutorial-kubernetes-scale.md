@@ -2,18 +2,18 @@
 title: Kubernetes on Azure のチュートリアル - アプリケーションのスケーリング
 description: この Azure Kubernetes Service (AKS) チュートリアルでは、Kubernetes のノードとポッドをスケーリングする方法のほか、ポッドの水平自動スケーリングを導入する方法について説明します。
 services: container-service
-author: zr-msft
+author: tylermsft
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 12/19/2018
-ms.author: zarhoads
+ms.author: twhitney
 ms.custom: mvc
-ms.openlocfilehash: 74cd73cd7f9d5be9da552fb22ef2a2750ddc8321
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 062e16c0d196cf91d6e0adde46ed973f1c0d1191
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61029858"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66304438"
 ---
 # <a name="tutorial-scale-applications-in-azure-kubernetes-service-aks"></a>チュートリアル:Azure Kubernetes Service (AKS) でのアプリケーションのスケーリング
 
@@ -83,7 +83,7 @@ git clone https://github.com/kubernetes-incubator/metrics-server.git
 kubectl create -f metrics-server/deploy/1.8+/
 ```
 
-自動スケーラーを使うには、ポッドで CPU の要求と制限が定義されている必要があります。 `azure-vote-front` のデプロイでは、フロントエンド コンテナーによって既に 0.25 CPU が要求されています。上限は 0.5 CPU です。 これらのリソース要求と制限は、次のスニペットの例に示されているように定義されています。
+オートスケーラーを使用するには、ポッド内のすべてのコンテナーで CPU の要求と制限が定義されている必要があります。 `azure-vote-front` のデプロイでは、フロントエンド コンテナーによって既に 0.25 CPU が要求されています。上限は 0.5 CPU です。 これらのリソース要求と制限は、次のスニペットの例に示されているように定義されています。
 
 ```yaml
 resources:

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 414ca7156fd59ec1dc08e45c73e9eb30835078d4
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 617adbcda70799aa07248945bbc27f9d95aa77a3
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259926"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65952569"
 ---
 # <a name="manage-authentication-in-azure-maps"></a>Azure Maps での認証の管理
 
@@ -98,4 +98,8 @@ Azure AD からユーザーやサービス プリンシパルのアクセス ト
 
 ## <a name="next-steps"></a>次の手順
 
-* Azure AD の認証と Azure Maps Web SDK の詳細については、[Azure AD と Azure Maps Web SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control) に関するページをご覧ください。
+Azure AD の認証と Azure Maps Web SDK の詳細については、[Azure AD と Azure Maps Web SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control) に関するページをご覧ください。
+
+Azure Maps アカウントにおける API 使用状況のメトリックを表示する方法について確認します。
+> [!div class="nextstepaction"] 
+> [使用状況メトリックを表示する](how-to-view-api-usage.md)

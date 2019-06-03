@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 2a2df8b47b60f29d8ecd3c040e8ef979ee23afa8
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: b8caa5cd7476489a92ce97570794a1d397f32630
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64575406"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65230896"
 ---
 # <a name="azure-maps-geocoding-coverage"></a>Azure Maps でのジオコーディングの対象範囲
 
 Azure Maps を使って位置情報を検索するとき、検索サービスでは検索用語を取得して、緯度と経度の座標を返します。このプロセスはジオコーディングと呼ばれます。 しかし、Maps は、すべての地域と国に対して同じレベルの情報と精度を備えているわけではありません。 この記事を利用して、各地域ではどの種類の位置情報を確実に検索できるかを判断してください。 
 
-ある国でジオコーディングする機能は、ジオコーディング サービスによる道路データの網羅率とジオコーディングの精度に左右されます。 各国のジオコーディング サポート レベルを指定する際、次の分類が利用されます。
+ある国/リージョンでジオコーディングする機能は、ジオコーディング サービスによる道路データの網羅率とジオコーディングの精度に左右されます。 各国/リージョンのジオコーディング サポート レベルを指定する際、次の分類が利用されます。
 * **アドレス ポイント** - アドレス データは、アドレス パーセル (プロパティ境界) 内の緯度/経度座標に解決できます。 この精度は 'Rooftop' と呼ばれることもあります。 これは住所に利用できる最高レベルの精度です。 
 * **家番号** - 番地の緯度/経度座標に住所が補間されます。
 * **街路レベル** - 住所を含む通りの緯度/経度座標に住所が解決されます。 家番号は処理されない場合があります。

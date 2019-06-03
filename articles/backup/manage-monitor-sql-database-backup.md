@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/14/2018
 ms.author: raynew
-ms.openlocfilehash: ea5495867d5f453db014e000e01d533d049dc628
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: f5ec5a64f1de39cd0d196242fb1a93669dbab15d
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59787733"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64681846"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>バックアップされる SQL Server データベースを管理および監視する
 
@@ -23,7 +23,7 @@ SQL Server データベースにバックアップをまだ構成していない
 
 ## <a name="monitor-manual-backup-jobs-in-the-portal"></a>ポータルで手動バックアップ ジョブを監視する
 
-Azure Backup では、**[バックアップ ジョブ]** ポータルに、手動でトリガーされたジョブがすべて表示されます。 このポータルに表示されるジョブには、データベースの検出と登録、バックアップ操作、復元操作などがあります。
+Azure Backup では、 **[バックアップ ジョブ]** ポータルに、手動でトリガーされたジョブがすべて表示されます。 このポータルに表示されるジョブには、データベースの検出と登録、バックアップ操作、復元操作などがあります。
 
 ![[バックアップ ジョブ] ポータル](./media/backup-azure-sql-database/jobs-list.png)
 
@@ -46,11 +46,11 @@ Azure Backup では、**[バックアップ ジョブ]** ポータルに、手�
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 
-2. コンテナー ダッシュボードで、**[アラートとイベント]** を選択します。
+2. コンテナー ダッシュボードで、 **[アラートとイベント]** を選択します。
 
    ![[アラートとイベント] を選択する](./media/backup-azure-sql-database/vault-menu-alerts-events.png)
 
-3. **[アラートとイベント]** で、**[バックアップ アラート]** を選択します。
+3. **[アラートとイベント]** で、 **[バックアップ アラート]** を選択します。
 
    ![[バックアップ アラート] を選択する](./media/backup-azure-sql-database/backup-alerts-dashboard.png)
 
@@ -71,7 +71,7 @@ Azure Backup では、**[バックアップ ジョブ]** ポータルに、手�
 
 1. コンテナー ダッシュボードで **[バックアップ項目]** を選択します。
 
-2. **[バックアップの管理の種類]** で、**[Azure VM 内の SQL]** を選択します。
+2. **[バックアップの管理の種類]** で、 **[Azure VM 内の SQL]** を選択します。
 
     ![[SQL in Azure VM]\(Azure VM 内の SQL\) を選択する](./media/backup-azure-sql-database/sql-restore-backup-items.png)
 
@@ -79,7 +79,7 @@ Azure Backup では、**[バックアップ ジョブ]** ポータルに、手�
 
     ![保護を停止するデータベースを選択する](./media/backup-azure-sql-database/sql-restore-sql-in-vm.png)
 
-4. データベース メニューで、**[バックアップの停止]** を選択します。
+4. データベース メニューで、 **[バックアップの停止]** を選択します。
 
     ![[バックアップの停止] を選択する](./media/backup-azure-sql-database/stop-db-button.png)
 
@@ -93,15 +93,15 @@ Azure Backup では、**[バックアップ ジョブ]** ポータルに、手�
 
 ## <a name="resume-protection-for-a-sql-database"></a>SQL Database での保護の再開
 
-SQL データベースの保護を停止するとき、**[バックアップ データの保持]** オプションを選択した場合、後で保護を再開できます。 バックアップ データを保持しない場合、保護は再開できません。
+SQL データベースの保護を停止するとき、 **[バックアップ データの保持]** オプションを選択した場合、後で保護を再開できます。 バックアップ データを保持しない場合、保護は再開できません。
 
 SQL Database の保護を再開するには:
 
-1. バックアップ項目を開き、**[バックアップの再開]** を選択します。
+1. バックアップ項目を開き、 **[バックアップの再開]** を選択します。
 
     ![[バックアップの再開] を選択してデータベースの保護を再開する](./media/backup-azure-sql-database/resume-backup-button.png)
 
-2. **[バックアップ ポリシー]** メニューで、ポリシーを選択して、**[保存]** を選択します。
+2. **[バックアップ ポリシー]** メニューで、ポリシーを選択して、 **[保存]** を選択します。
 
 ## <a name="run-an-on-demand-backup"></a>オンデマンド バックアップを実行する
 
@@ -119,19 +119,19 @@ SQL Database の保護を再開するには:
 
 保護を無効にした後、コンテナーを削除する前に、SQL Server インスタンスの登録を解除します。
 
-1. コンテナー ダッシュボードの **[管理]** で、**[バックアップ インフラストラクチャ]** を選択します。  
+1. コンテナー ダッシュボードの **[管理]** で、 **[バックアップ インフラストラクチャ]** を選択します。  
 
    ![[バックアップ インフラストラクチャ] を選択する](./media/backup-azure-sql-database/backup-infrastructure-button.png)
 
-2. **[管理サーバー]** で、**[保護されたサーバー]** を選択します。
+2. **[管理サーバー]** で、 **[保護されたサーバー]** を選択します。
 
    ![[保護されたサーバー] を選択する](./media/backup-azure-sql-database/protected-servers.png)
 
 3. **[保護されたサーバー]** で、登録解除するサーバーを選択します。 コンテナーを削除するには、すべてのサーバーの登録を解除する必要があります。
 
-4. 保護されたサーバーを右クリックし、**[削除]** を選択します。
+4. 保護されたサーバーを右クリックし、 **[Unregister]** (登録解除) を選択します。
 
-   ![[削除] を選択する](./media/backup-azure-sql-database/delete-protected-server.png)
+   ![[削除] を選択する](./media/backup-azure-sql-database/delete-protected-server.jpg)
 
 ## <a name="re-register-extension-on-the-sql-server-vm"></a>SQL Server VM で拡張を再登録する
 

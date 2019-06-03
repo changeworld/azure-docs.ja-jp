@@ -9,17 +9,17 @@ ms.date: 02/20/2019
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: ace42278269ff6af31902dbecead81329815af12
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56588672"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66111115"
 ---
 ## <a name="create-a-topic-using-the-azure-portal"></a>Azure Portal を使用したトピックの作成
 1. **[Service Bus 名前空間]** ページで、左側のメニューの **[トピック]** を選択します。
 2. ツール バーの **[+ トピック]** を選択します。 
 4. トピックの**名前**を入力します。 他のオプションは既定値のままにしてください。
-5. **作成**を選択します。
+5. **作成** を選択します。
 
     ![トピックの作成](./media/service-bus-create-topics-subscriptions-portal/create-topic.png)
 

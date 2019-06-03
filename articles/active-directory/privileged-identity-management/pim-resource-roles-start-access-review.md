@@ -1,6 +1,6 @@
 ---
-title: PIM で Azure リソース ロールのアクセス レビューを開始する - Azure Active Directory | Microsoft Docs
-description: Azure AD Privileged Identity Management (PIM) で Azure リソース ロールに対するアクセス レビューを開始する方法を説明します。
+title: PIM で Azure リソース ロールのアクセス レビューを作成する - Azure Active Directory | Microsoft Docs
+description: Azure AD Privileged Identity Management (PIM) で Azure リソース ロールに対するアクセス レビューを作成する方法を説明します。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,69 +11,67 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: pim
-ms.date: 04/02/2018
+ms.date: 04/29/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46903967b375d882dc3c7a62cd0b7f8b6059f8b3
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 78e4de5bbc56f95c0e903b1dac4e8481373716f3
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58579497"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65143508"
 ---
-# <a name="start-an-access-review-for-azure-resource-roles-in-pim"></a>PIM で Azure リソース ロールのアクセス レビューを開始する
-ユーザーが持っているアクセス特権がユーザーには不要になった場合、そのロールの割り当ては "古く" なっています。 このような古くなったロールの割り当てに関連するリスクを軽減するために、特権ロール管理者はロールを定期的に確認する必要があります。 このドキュメントでは、Azure Active Directory (Azure AD) Privileged Identity Management (PIM) でアクセス レビューを開始する手順を説明します。
+# <a name="create-an-access-review-of-azure-resource-roles-in-pim"></a>PIM で Azure リソース ロールのアクセス レビューを作成する
 
-PIM アプリケーションのメイン ページで、以下に移動します。
+従業員の特権 Azure リソース ロールへのアクセスは、時間の経過に伴って変化します。 古くなったロールの割り当てに関連するリスクを軽減するために、アクセスを定期的に確認する必要があります。 Azure Active Directory (Azure AD) Privileged Identity Management (PIM) を使用して、特権 Azure リソース ロールのアクセス レビューを作成できます。 自動的に実行される定期的なアクセス レビューを構成することもできます。
 
-* **[アクセス レビュー]** > **[追加]**
+この記事では、特権 Azure リソース ロールに対して 1 つ以上のアクセス レビューを作成する方法について説明します。
 
-![アクセス レビューを追加する](media/azure-pim-resource-rbac/rbac-access-review-home.png)
+## <a name="prerequisites"></a>前提条件
 
-**[追加]** ボタンを選択すると、**[アクセス レビューの作成]** ブレードが表示されます。 このブレードでは、名前と時間制限を使用してレビューを構成し、確認するロールを選択し、レビューを実行するユーザーを決定します。
+- [特権ロール管理者](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)
 
-![アクセス レビューの作成](media/azure-pim-resource-rbac/rbac-create-access-review.png)
+## <a name="open-access-reviews"></a>アクセス レビューを開く
 
-### <a name="configure-the-review"></a>レビューを構成する
-アクセス レビューを作成するには、まず名前を付けてから、開始日と終了日を設定する必要があります。
+1. 特権ロール管理者ロールのメンバー ユーザーで [Azure portal](https://portal.azure.com/) にサインインします。
 
-![レビューを構成する - スクリーン ショット](media/azure-pim-resource-rbac/rbac-access-review-setting-1.png)
+1. **[Azure AD Privileged Identity Management]** を開きます。
 
-ユーザーが完了するための十分なレビューの期間の長さを作成します。 終了日の前に完了したら、常にレビューを早く停止できます。
+1. 左側のメニューで、**[Azure リソース]** をクリックします。
 
-### <a name="choose-a-role-to-review"></a>確認するロールを選択する
-各レビューでは、1 つのロールに重点を置いています。 特定のロールのブレードからアクセス レビューを開始した場合を除き、ここでロールを選択する必要があります。
+1. サブスクリプションや管理グループなど、管理するリソースをクリックします。
 
-1. **[ロール メンバーシップをレビュー]** に移動します。
-   
-    ![ロール メンバーシップを確認する - スクリーン ショット](media/azure-pim-resource-rbac/rbac-access-review-setting-2.png)
-2. 一覧から 1 つのロールを選択します。
+1. [管理] の下の **[アクセス レビュー]** をクリックします。
 
-### <a name="decide-who-will-perform-the-review"></a>レビューを実行するユーザを決定する
-レビューを実行するための 3 つのオプションがあります。 他のユーザーにレビューを割り当てて完了してもらうか、自分でレビューするか、または各ユーザーが自身のアクセスを確認できます。
+    ![Azure リソース - アクセス レビュー](./media/pim-resource-roles-start-access-review/access-reviews.png)
 
-1. いずれかのオプションを選択してください。
-   
-   * **[選択したユーザー]**: アクセスする必要があるユーザーがわからない場合は、このオプションを使用します。 このオプションでは、リソース所有者またはグループ マネージャーにレビューを割り当て、完了してもらうことができます。
-   * **[割り当て済み (セルフ)]**: ユーザーに自分のロール割り当てを確認してもらう場合は、このオプションを使用します。
-   
-2. **[レビュー担当者を選択する]** に移動します。
-   
-    ![レビュー担当者を選択する - スクリーン ショット](media/azure-pim-resource-rbac/rbac-access-review-setting-3.png)
 
-### <a name="start-the-review"></a>レビューを開始する
-最後に、アクセスを承認する理由をユーザーが入力することを必須にすることができます。 必要に応じて、レビューの説明を追加します。 **[開始]** を選択します。
+[!INCLUDE [Privileged Identity Management access reviews](../../../includes/active-directory-privileged-identity-management-access-reviews.md)]
 
-待機しているアクセス レビューがあることをユーザーに通知し、[アクセス レビューを実行する方法](pim-resource-roles-perform-access-review.md)を示します。
+
+## <a name="start-the-access-review"></a>アクセス レビューを開始する
+
+アクセス レビューの設定を指定したら、**[開始]** をクリックします。 アクセス レビューはステータスと共にリストに表示されます。
+
+![アクセス レビューのリスト](./media/pim-resource-roles-start-access-review/access-reviews-list.png)
+
+既定では、レビューの開始直後に Azure AD からレビュー担当者宛てにメールが送信されます。 Azure AD からメールを送信することを選択しなかった場合は、アクセス レビューが実行待ちになっていることを必ずレビュー担当者に伝えてください。 レビュー担当者には、[Azure リソース ロールのアクセス レビューを実行する](pim-resource-roles-perform-access-review.md)手順を案内することができます。
 
 ## <a name="manage-the-access-review"></a>アクセスレビューを管理する
-レビュー担当者がレビューを完了すると、PIM Azure リソース ダッシュボードで進行状況状況を追跡できます。 ディレクトリのアクセス権は、[レビューが完了する](pim-resource-roles-complete-access-review.md)まで変更されません。
 
-レビュー期間が終了するまで、レビューの完了をユーザーに通知するか、または [アクセス レビュー] セクションからレビューを早めに停止することができます。
+アクセス レビューの **[概要]** ページでは、レビュー担当者が完了したレビューの進捗状況を追跡できます。 ディレクトリのアクセス権は、[レビューが完了する](pim-resource-roles-complete-access-review.md)まで変更されません。
+
+![アクセス レビューの進捗状況](./media/pim-resource-roles-start-access-review/access-review-overview.png)
+
+これが 1 回限りのレビューである場合は、アクセス レビュー期間が終了するか、管理者がアクセス レビューを停止した後に、[Azure リソース ロールのアクセス レビューを完了する](pim-resource-roles-complete-access-review.md)手順に従って結果を確認および適用します。  
+
+アクセス レビューの系列を管理するには、アクセス レビューに移動し、[Scheduled]\(スケジュール済み\) レビューで今後予定されている実行を見つけ、それに応じて終了日を編集したり、レビュー担当者を追加/削除したりします。
+
+**[Upon completion]\(完了時\)** 設定での選択に基づいて、レビューの終了日の後、またはレビューを手動で停止したときに自動適用が実行されます。 レビューの状態は、**[完了]** から **[適用中]** などの中間状態を経由して、最後に状態 **[適用済み]** まで変化します。 拒否されたユーザーが存在する場合は、それらのユーザーが数分以内にロールから削除されることを確認できます。
 
 ## <a name="next-steps"></a>次の手順
 
-- [PIM で Azure リソース ロールのアクセス レビューを完了する](pim-resource-roles-complete-access-review.md)
-- [PIM で自分の Azure リソース ロールのアクセス レビューを実行する](pim-resource-roles-perform-access-review.md)
-- [PIM で Azure AD ロールのアクセス レビューを開始する](pim-how-to-start-security-review.md)
+- [Azure リソース ロールのアクセス レビューを実行する](pim-resource-roles-perform-access-review.md)
+- [Azure リソース ロールのアクセス レビューを完了する](pim-resource-roles-complete-access-review.md)
+- [Azure AD ロールのアクセス レビューを作成する](pim-how-to-start-security-review.md)

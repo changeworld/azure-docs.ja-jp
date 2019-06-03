@@ -3,8 +3,8 @@ title: Microsoft ID プラットフォームでの認証 | Azure
 description: Microsoft ID プラットフォームでの認証、アプリ モデル、API、プロビジョニング、および Microsoft ID プラットフォームでサポートされている最も一般的な認証シナリオについて説明します。
 services: active-directory
 documentationcenter: dev-center-name
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.assetid: 0c84e7d0-16aa-4897-82f2-f53c6c990fd9
 ms.service: active-directory
@@ -14,16 +14,16 @@ ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/05/2019
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: saeeda, sureshja, hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1d54347b9a3ccc72cfd5b88400d699d93132fbf
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c0be7a8b756ee3d1d71b15e10797176e50037a47
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59785574"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65540154"
 ---
 # <a name="what-is-authentication"></a>認証とは
 

@@ -16,11 +16,11 @@ ms.date: 12/11/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ae59e6820214d1f3291f4d95a0bc7094f8b488d7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57856075"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65904734"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---globalprotect"></a>チュートリアル:Azure Active Directory と Palo Alto Networks - GlobalProtect の統合
 
@@ -121,7 +121,7 @@ Palo Alto Networks - GlobalProtect を使用して Azure AD のシングル サ�
 
     | Name | ソース属性|
     | ------|--------- |
-    | username  | user.userprincipalname  |
+    | ユーザー名  | user.userprincipalname  |
     | | |
 
     a. **[新しい要求の追加]** をクリックして **[ユーザー要求の管理]** ダイアログを開きます。
@@ -196,7 +196,7 @@ Palo Alto Networks - GlobalProtect を使用して Azure AD のシングル サ�
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します  
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。

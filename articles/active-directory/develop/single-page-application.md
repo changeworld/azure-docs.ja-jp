@@ -3,8 +3,8 @@ title: Azure Active Directory のシングルページ アプリケーション
 description: シングルページ アプリケーション (SPA) の概要、この種のアプリのプロトコル フロー、登録、およびトークンの有効期限の基本について説明します。
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6704c00734d18b9918378db6e056696407421014
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 1f6f66779bec9ed4e38e5a662c2d3728ba2034b6
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56207179"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65545292"
 ---
 # <a name="single-page-applications"></a>シングルページ アプリケーション
 

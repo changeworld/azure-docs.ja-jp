@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: 56d91d7801c576064b941ac6089a52e74b4a3b7b
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: d1c1ed7388ff55e4f17559742054cea973f65ba7
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540926"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65192291"
 ---
 # <a name="aks-troubleshooting"></a>AKS のトラブルシューティング
 
@@ -94,3 +94,27 @@ AKS クラスター内のエージェント ノードのタグを変更したこ
 ## <a name="can-i-move-my-cluster-to-a-different-subscription-or-my-subscription-with-my-cluster-to-a-new-tenant"></a>自分のクラスターを別のサブスクリプションに移したり、自分のクラスターが含まれる自分のサブスクリプションを新しいテナントに移したりできますか?
 
 AKS クラスターを別のサブスクリプションに移したり、サブスクリプションを所有するクラスターを新しいテナントに移したりした場合は、ロールの割り当てやサービス プリンシパルの権限が失われるため、クラスターが機能を失います。 この制約により、**AKS はサブスクリプションまたはテナント間でのクラスターの移動をサポートしていません**。
+
+## <a name="im-receiving-errors-trying-to-use-features-that-require-virtual-machine-scale-sets"></a>仮想マシン スケール セットを必要とする機能を使用しようとするとエラーが発生します
+
+*このトラブルシューティングの支援は、aka.ms/aks-vmss-enablement に基づいています*
+
+次の例など、AKS クラスターが仮想マシン スケール セット上にないことを示すエラーが表示されます。
+
+**AgentPool 'agentpool' は自動スケールが有効に設定されていますが、Microsoft Azure Virtual Machine Scale Sets 上にありません**
+
+クラスター オートスケーラーや複数ノード プールなどの機能を使用するには、仮想マシン スケール セットを使用する AKS クラスターを作成する必要があります。 仮想マシン スケール セットに依存する機能を使用しようとして、通常の非仮想マシン スケール セットの AKS クラスターを対象とする場合、エラーが返されます。 仮想マシン スケール セットのサポートは現在 AKS でプレビューの段階です。
+
+適切なドキュメントの「*開始する前に*」に従って、仮想マシン スケール セット機能のプレビューに正しく登録し、AKS クラスターを作成します。
+
+* [クラスター オートスケーラーを使用する](cluster-autoscaler.md)
+* [複数のノード プールを作成し使用する](use-multiple-node-pools.md)
+ 
+## <a name="what-naming-restrictions-are-enforced-for-aks-resources-and-parameters"></a>AKS リソースおよびパラメーターにはどのような名前付けの制約が適用されますか。
+
+*このトラブルシューティングの支援は、aka.ms/aks-naming-rules に基づいています*
+
+名前付けの制約は、Azure プラットフォームと AKS の両方によって実装されます。 リソース名またはパラメーターがこれらのいずれかの制約に違反した場合、別の入力を行うように求めるエラーが返されます。 次の一般的な名前付けのガイドラインが適用されます。
+
+* AKS *MC_* リソース グループ名は、リソース グループ名とリソース名を結合します。 `MC_resourceGroupName_resourceName_AzureRegion` の自動生成された構文は、80 文字以内にする必要があります。 必要な場合は、リソース グループ名または AKS クラスター名の長さを短くします。
+* *dnsPrefix* の最初と最後は英数字の値にする必要があります。 有効な文字には英数字の値とハイフン (-) が含まれます。 *dnsPrefix* にはピリオド (.) などの特殊文字を含めることはできません。

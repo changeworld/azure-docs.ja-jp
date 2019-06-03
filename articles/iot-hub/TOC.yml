@@ -66,6 +66,8 @@
               href: tutorial-routing-config-message-routing-PowerShell.md
         - name: パート 2 - メッセージのルーティング結果の表示
           href: tutorial-routing-view-message-routing-results.md
+    - name: メッセージ エンリッチメント
+      href: tutorial-message-enrichments.md
     - name: メトリックと診断ログの使用
       href: tutorial-use-metrics-and-diags.md
     - name: 手動フェールオーバーの実行
@@ -78,6 +80,8 @@
       href: tutorial-connectivity.md
 - name: 概念
   items:
+    - name: メッセージ エンリッチメントの概要
+      href: iot-hub-message-enrichments-overview.md
     - name: デバイス管理の概要
       href: iot-hub-device-management-overview.md
     - name: IoT Hub と Event Hubs の比較

@@ -6,13 +6,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
-ms.date: 02/02/2018
-ms.openlocfilehash: 52bdbe6d34fb631cd4b2205dfad25399fe0e43fb
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 05/17/2019
+ms.openlocfilehash: d5bd291758d6bb445b757b93fd91a4c2321b97db
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59048389"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65898944"
 ---
 # <a name="quickstart-ingest-data-from-event-hub-into-azure-data-explorer"></a>クイック スタート:イベント ハブから Azure Data Explorer にデータを取り込む
 
@@ -22,11 +22,11 @@ Azure Data Explorer は、ログと利用統計情報データのための高速
 
 * Azure サブスクリプションをお持ちでない場合は、開始する前に[無料の Azure アカウント](https://azure.microsoft.com/free/)を作成してください。
 
-* [テスト用のクラスターとデータベース](create-cluster-database-portal.md)
+* [テスト用のクラスターとデータベース](create-cluster-database-portal.md)。
 
 * データを生成してイベント ハブに送信する[サンプル アプリ](https://github.com/Azure-Samples/event-hubs-dotnet-ingest)。 ご使用のシステムにサンプル アプリをダウンロードしてください。
 
-* サンプル アプリを実行する [Visual studio 2017 Version 15.3.2 以降](https://www.visualstudio.com/vs/)
+* サンプル アプリを実行するための [Visual Studio 2019](https://visualstudio.microsoft.com/vs/)。
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインします
 
@@ -74,11 +74,11 @@ Azure Data Explorer は、ログと利用統計情報データのための高速
 
 次は、Event Hubs からデータを送信する先のテーブルを Azure データ エクスプローラーで作成します。 「**前提条件**」でプロビジョニングしたクラスターとデータベースにテーブルを作成します。
 
-1. Azure portal でクラスターに移動し、**[クエリ]** を選択します。
+1. Azure portal でクラスターに移動し、 **[クエリ]** を選択します。
 
     ![アプリケーションの [クエリ] リンク](media/ingest-data-event-hub/query-explorer-link.png)
 
-1. 次のコマンドをウィンドウにコピーし、**[実行]** を選択して、取り込んだデータを受け取るテーブル (TestTable) を作成します。
+1. 次のコマンドをウィンドウにコピーし、 **[実行]** を選択して、取り込んだデータを受け取るテーブル (TestTable) を作成します。
 
     ```Kusto
     .create table TestTable (TimeStamp: datetime, Name: string, Metric: int, Source:string)
@@ -86,7 +86,7 @@ Azure Data Explorer は、ログと利用統計情報データのための高速
 
     ![クエリの作成の実行](media/ingest-data-event-hub/run-create-query.png)
 
-1. 次のコマンドをウィンドウにコピーし、**[実行]** を選択して、テーブル (TestTable) の列名とデータ型に受信 JSON データをマップします。
+1. 次のコマンドをウィンドウにコピーし、 **[実行]** を選択して、テーブル (TestTable) の列名とデータ型に受信 JSON データをマップします。
 
     ```Kusto
     .create table TestTable ingestion json mapping 'TestMapping' '[{"column":"TimeStamp","path":"$.timeStamp","datatype":"datetime"},{"column":"Name","path":"$.name","datatype":"string"},{"column":"Metric","path":"$.metric","datatype":"int"},{"column":"Source","path":"$.source","datatype":"string"}]'
@@ -98,11 +98,11 @@ Azure Data Explorer は、ログと利用統計情報データのための高速
 
 1. ツールバーの **[通知]** を選択して、イベント ハブのデプロイが成功したことを確認します。
 
-1. 作成したクラスターの **[データベース]**、**[TestDatabase]** の順に選択します。
+1. 作成したクラスターの **[データベース]** 、 **[TestDatabase]** の順に選択します。
 
     ![テスト データベースの選択](media/ingest-data-event-hub/select-test-database.png)
 
-1. **[データ インジェスト]**、**[データ接続の追加]** の順に選択します。 その後、フォームに次の情報を入力します。 終わったら **[作成]** を選択します。
+1. **[データ インジェスト]** 、 **[データ接続の追加]** の順に選択します。 その後、フォームに次の情報を入力します。 終わったら **[作成]** を選択します。
 
     ![イベント ハブの接続](media/ingest-data-event-hub/event-hub-connection.png)
 
@@ -118,7 +118,7 @@ Azure Data Explorer は、ログと利用統計情報データのための高速
 
     ターゲット テーブル: 
 
-    ルーティングには、"*静的*" と "*動的*" という 2 つのオプションがあります。 このクイック スタートでは、静的ルーティングを使用し、テーブル名、ファイル形式、およびマッピングを指定します。 そのため、**[My data includes routing info]\(データにルーティング情報が含まれている\)** はオフのままにしておきます。
+    ルーティングには、"*静的*" と "*動的*" という 2 つのオプションがあります。 このクイック スタートでは、静的ルーティングを使用し、テーブル名、ファイル形式、およびマッピングを指定します。 そのため、 **[My data includes routing info]\(データにルーティング情報が含まれている\)** はオフのままにしておきます。
     動的ルーティングを使用することもでき、その場合は必要なルーティング情報をデータに含めます。
 
      **設定** | **推奨値** | **フィールドの説明**
@@ -132,7 +132,7 @@ Azure Data Explorer は、ログと利用統計情報データのための高速
 
 前提条件の一覧にある[サンプル アプリ](https://github.com/Azure-Samples/event-hubs-dotnet-ingest)を実行する場合は、イベント ハブの名前空間用の接続文字列が必要です。
 
-1. 作成したイベント ハブ名前空間で、**[共有アクセス ポリシー]**、**[RootManageSharedAccessKey]** の順に選択します。
+1. 作成したイベント ハブ名前空間で、 **[共有アクセス ポリシー]** 、 **[RootManageSharedAccessKey]** の順に選択します。
 
     ![共有アクセス ポリシー](media/ingest-data-event-hub/shared-access-policies.png)
 
@@ -198,7 +198,7 @@ Azure Data Explorer は、ログと利用統計情報データのための高速
 
 1. **test-resource-group** で **[リソース グループの削除]** を選択します。
 
-1. 新しいウィンドウで、削除するリソース グループの名前 (*test-hub-rg*) を入力し、**[削除]** を選択します。
+1. 新しいウィンドウで、削除するリソース グループの名前 (*test-hub-rg*) を入力し、 **[削除]** を選択します。
 
 ## <a name="next-steps"></a>次の手順
 

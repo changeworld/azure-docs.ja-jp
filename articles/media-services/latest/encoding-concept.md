@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/21/2019
+ms.date: 05/08/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: ed798995807f4037f0127b08e25e04bdd0340d42
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 937a032bffbad4e8a7d737360aa140e59760f8e2
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64724304"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65472451"
 ---
 # <a name="encoding-with-media-services"></a>Media Services でのエンコード
 
@@ -87,11 +87,15 @@ Media Services では、特定のエンコーディング ニーズと要件を�
 - [CLI でプリセットをカスタマイズする](custom-preset-cli-howto.md)
 - [REST でプリセットをカスタマイズする](custom-preset-rest-howto.md)
 
+## <a name="preset-schema"></a>プリセット スキーマ
+
+Media Services v3 では、プリセットは API 自体で厳密に型指定されたエンティティです。 これらのオブジェクトの "スキーマ" 定義は、[Open API の仕様 (または Swagger)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01) にあります。 プリセット定義 (**StandardEncoderPreset** など) は、[REST API](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset)、[.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset?view=azure-dotnet) (またはその他の Media Services v3 SDK のリファレンス ドキュメント) でも確認できます。
+
 ## <a name="scaling-encoding-in-v3"></a>v3 でのエンコードのスケーリング
 
 メディア処理のスケール設定を行うには、[CLI を使用したスケーリング](media-reserved-units-cli-how-to.md)に関するトピックをご覧ください。
 
-## <a name="provide-feedback"></a>フィードバックの提供
+## <a name="ask-questions-give-feedback-get-updates"></a>質問、フィードバックの提供、最新情報の入手
 
 「[Azure Media Services community (Azure Media Services コミュニティ)](media-services-community.md)」を参照して、さまざまな質問の方法、フィードバックする方法、Media Services に関する最新情報の入手方法を確認してください。
 

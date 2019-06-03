@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: overview
 ms.date: 03/26/2019
-ms.openlocfilehash: a061c2705a5c0155b54dd2fa1e89f19223409a12
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.openlocfilehash: e972dfdd7694a1a43302fa5879ea22f2ecd051ad
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59609442"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66298851"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>HDInsight で使用できる Apache Hadoop コンポーネントおよびバージョンとは
 
@@ -83,7 +83,6 @@ HDInsight の最新バージョンに関する追加のリリース ノートは
 | HDInsight 4.0 |HDP 3.0 |Ubuntu 16.0.4 LTS |2018 年 9 月 24 日 | | |はい |はい |
 | HDInsight 3.6 |HDP 2.6 |Ubuntu 16.0.4 LTS |2017 年 4 月 4 日 | | |はい |はい |
 
-*&ast; Spark クラスターの種類についてのみ、HDInsight 3.5 のサポートが延長されました*
 
 > [!NOTE]  
 > バージョンのサポートが期限切れになると、Microsoft Azure Portal で使用できなくなります。 ただし、クラスター バージョンは、Windows PowerShell [New-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) コマンドの `Version` パラメーターと .NET SDK を使用することで、バージョンの提供終了日まで利用できます。
@@ -176,7 +175,7 @@ Azure HDInsight バージョン 3.3 が Windows 向け HDInsight の最終バー
 
 ### <a name="where-do-i-find-the-cluster-os-type"></a>クラスター OS の種類はどこでわかりますか。
 
-Azure Portal で [HDInsight クラスターの概要] ページに移動し、**[要点]** の下の **[クラスターの種類]** を見つけます。 クラスター OS の種類は、そのページに一覧表示されます。 
+Azure Portal で [HDInsight クラスターの概要] ページに移動し、 **[要点]** の下の **[クラスターの種類]** を見つけます。 クラスター OS の種類は、そのページに一覧表示されます。 
 
 ### <a name="i-cant-migrate-to-an-hdinsight-linux-cluster-by-july-31-2018-what-is-the-impact-to-my-hdinsight-windows-cluster"></a>2018 年 7 月 31 日までに Linux 向け HDInsight クラスターに移行できません。 Windows 向けの HDInsight クラスターにはどのような影響がありますか。
 

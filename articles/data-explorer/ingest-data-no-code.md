@@ -6,13 +6,13 @@ ms.author: orspodek
 ms.reviewer: jasonh
 ms.service: data-explorer
 ms.topic: tutorial
-ms.date: 04/07/2019
-ms.openlocfilehash: 9f4b7ee0dcc87ca03fd051be0dacedf0912b5320
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 04/29/2019
+ms.openlocfilehash: 187aa4b02e389c485b24ad7de256422d1880182b
+ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59262909"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64872599"
 ---
 # <a name="tutorial-ingest-data-in-azure-data-explorer-without-one-line-of-code"></a>チュートリアル:コードを 1 行も書かずに Azure Data Explorer にデータを取り込む
 
@@ -266,7 +266,7 @@ Azure Data Explorer の Web UI を使用して、Azure Data Explorer データ�
 
 Azure 診断ログでは、ストレージ アカウントまたはイベント ハブにメトリックをエクスポートできます。 このチュートリアルでは、イベント ハブ経由でメトリックをルーティングします。 Event Hubs 名前空間と、診断ログ用のイベント ハブを、次の手順で作成します。 Azure Monitor では、アクティビティ ログ用にイベント ハブ *insights-operational-logs* が作成されます。
 
-1. Azure portal で Azure Resource Manager テンプレートを使用して、イベント ハブを作成します。 この記事の残りの手順を実行するには、**[Azure へのデプロイ]** ボタンを右クリックして、**[新しいウィンドウで開く]** を選択します。 **[Azure へのデプロイ]** ボタンをクリックすると、Azure portal に移動します。
+1. Azure portal で Azure Resource Manager テンプレートを使用して、イベント ハブを作成します。 この記事の残りの手順を実行するには、 **[Azure へのデプロイ]** ボタンを右クリックして、 **[新しいウィンドウで開く]** を選択します。 **[Azure へのデプロイ]** ボタンをクリックすると、Azure portal に移動します。
 
     [![[Azure へのデプロイ] ボタン](media/ingest-data-no-code/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-event-hubs-create-event-hub-and-consumer-group%2Fazuredeploy.json)
 
@@ -295,13 +295,13 @@ Azure 診断ログでは、ストレージ アカウントまたはイベント 
 メトリックをエクスポートするリソースを選択します。 診断ログのエクスポートは、Event Hubs 名前空間、Azure Key Vault、Azure IoT Hub、Azure Data Explorer クラスターなど、複数のリソースの種類でサポートされます。 このチュートリアルでは、Azure Data Explorer クラスターをリソースとして使用します。
 
 1. Azure portal でお使いの Kusto クラスターを選択します。
-1. **[診断設定]** を選択してから、**[診断をオンにする]** リンクを選択します。 
+1. **[診断設定]** を選択してから、 **[診断をオンにする]** リンクを選択します。 
 
     ![診断設定](media/ingest-data-no-code/diagnostic-settings.png)
 
 1. **[診断設定]** ウィンドウが開きます。 次の手順を実行します。
    1. 診断ログ データに *ADXExportedData* という名前を付けます。
-   1. **[メトリック]** で、**[AllMetrics]** チェック ボックスをオンにします (省略可能)。
+   1. **[メトリック]** で、 **[AllMetrics]** チェック ボックスをオンにします (省略可能)。
    1. **[イベント ハブへのストリーム]** チェック ボックスをオンにします。
    1. **[構成]** をクリックします。
 
@@ -317,7 +317,7 @@ Azure 診断ログでは、ストレージ アカウントまたはイベント 
 
 ### <a name="connect-activity-logs-to-your-event-hub"></a>アクティビティ ログをイベント ハブに接続する
 
-1. Azure portal の左側のメニューで、**[アクティビティ ログ]** を選択します。
+1. Azure portal の左側のメニューで、 **[アクティビティ ログ]** を選択します。
 1. **[アクティビティ ログ]** ウィンドウが開きます。 **[イベント ハブにエクスポート]** を選択します。
 
     ![[アクティビティ ログ] ウィンドウ](media/ingest-data-no-code/activity-log.png)
@@ -328,9 +328,9 @@ Azure 診断ログでは、ストレージ アカウントまたはイベント 
 
 1. **[アクティビティ ログのエクスポート]** ウィンドウで、次の手順を実行します。
       1. サブスクリプションを選択します。
-      1. **[リージョン]** リストで、**[すべて選択]** を選択します。
+      1. **[リージョン]** リストで、 **[すべて選択]** を選択します。
       1. **[イベント ハブにエクスポート]** チェック ボックスをオンにします。
-      1. **[Service Bus 名前空間を選択してください。]** を選択して、**[イベント ハブの選択]** ウィンドウを開きます。
+      1. **[Service Bus 名前空間を選択してください。]** を選択して、 **[イベント ハブの選択]** ウィンドウを開きます。
       1. **[イベント ハブの選択]** ウィンドウで、ご自分のサブスクリプションを選択します。
       1. **[イベント ハブの名前空間の選択]** リストで、*AzureMonitoringData* を選択します。
       1. **[イベント ハブ ポリシー名の選択]** リストで、既定のイベント ハブ ポリシー名を選択します。
@@ -356,8 +356,8 @@ Azure 診断ログでは、ストレージ アカウントまたはイベント 
 
 1. *kustodocs* という名前の Azure Data Explorer クラスターで、左側のメニューの **[データベース]** を選択します。
 1. **[データベース]** ウィンドウで、ご自分の *TestDatabase* データベースを選択します。
-1. 左側のメニューで、**[データ インジェスト]** を選択します。
-1. **[データ インジェスト]** ウィンドウで、**[+ データ接続の追加]** をクリックします。
+1. 左側のメニューで、 **[データ インジェスト]** を選択します。
+1. **[データ インジェスト]** ウィンドウで、 **[+ データ接続の追加]** をクリックします。
 1. **[データ接続]** ウィンドウで、次の情報を入力します。
 
     ![イベント ハブのデータ接続](media/ingest-data-no-code/event-hub-data-connection.png)
@@ -372,7 +372,7 @@ Azure 診断ログでは、ストレージ アカウントまたはイベント 
     | **コンシューマー グループ** | *adxpipeline* | 作成したイベント ハブに定義されているコンシューマー グループ。 |
     | | |
 
-    ターゲット テーブル: 
+    ターゲット テーブル:
 
     ルーティングには、"*静的*" と "*動的*" という 2 つのオプションがあります。 このチュートリアルでは、静的ルーティング (既定) を使用し、テーブル名、データ形式、およびマッピングを指定します。 **[My data includes routing info]\(データにルーティング情報が含まれている\)** をオフのままにしておきます。
 
@@ -380,7 +380,7 @@ Azure 診断ログでは、ストレージ アカウントまたはイベント 
     |---|---|---|
     | **テーブル** | *DiagnosticLogsRawRecords* | 自分が *TestDatabase* データベースに作成したテーブル。 |
     | **データ形式** | *JSON* | テーブルで使用される形式。 |
-    | **列マッピング** | *DiagnosticLogsRecordsMapping* | 自分が *TestDatabase* データベースに作成したマッピング。これにより、受信 JSON データが *DiagnosticLogsRecords* の列名とデータ型にマッピングされます。|
+    | **列マッピング** | *DiagnosticLogsRecordsMapping* | 自分が *TestDatabase* データベースに作成したマッピング。これにより、受信 JSON データが *DiagnosticLogsRawRecords* テーブルの列名とデータ型にマッピングされます。|
     | | |
 
 1. **作成** を選択します。  
@@ -401,7 +401,7 @@ Azure 診断ログでは、ストレージ アカウントまたはイベント 
     | **コンシューマー グループ** | *$Default* | 既定のコンシューマー グループ。 必要な場合は、異なるコンシューマー グループを作成できます。 |
     | | |
 
-    ターゲット テーブル: 
+    ターゲット テーブル:
 
     ルーティングには、"*静的*" と "*動的*" という 2 つのオプションがあります。 このチュートリアルでは、静的ルーティング (既定) を使用し、テーブル名、データ形式、およびマッピングを指定します。 **[My data includes routing info]\(データにルーティング情報が含まれている\)** をオフのままにしておきます。
 

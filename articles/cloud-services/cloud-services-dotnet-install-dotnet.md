@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/22/2018
 ms.author: jeconnoc
-ms.openlocfilehash: 4b6aeb2968d7642881535753cb6c8434cfe10886
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: bc861b6730e8bf9db6ba2ab005496914f7b9ed89
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57534073"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64699679"
 ---
 # <a name="install-net-on-azure-cloud-services-roles"></a>Azure Cloud Services のロールに .NET をインストールする
 この記事では、Azure ゲスト OS に付属するバージョンとは異なるバージョンの .NET Framework をインストールする方法について説明します。 ゲスト OS にインストールした .NET を使用して、クラウド サービスの Web ロールおよび worker ロールを構成できます。
 
-たとえば、.NET 4.6 のどのリリースも付属していないゲスト OS ファミリ 4 に .NET 4.6.2 をインストールすることができます  (ゲスト OS ファミリ 5 には .NET 4.6 が付属しています)。Azure ゲスト OS のリリース版の最新情報については、[Azure ゲスト OS リリースに関するニュース](cloud-services-guestos-update-matrix.md)を参照してください。 
+たとえば、.NET 4.6 のどのリリースも付属していないゲスト OS ファミリ 4 に .NET 4.6.2 をインストールすることができます (ゲスト OS ファミリ 5 には .NET 4.6 が付属しています)。Azure ゲスト OS のリリース版の最新情報については、[Azure ゲスト OS リリースに関するニュース](cloud-services-guestos-update-matrix.md)を参照してください。 
 
 >[!IMPORTANT]
 >Azure SDK 2.9 には、ゲスト OS ファミリ 4 以前への .NET 4.6 のデプロイに制限があります。 この制限に対する修正は、[Microsoft Docs](https://github.com/MicrosoftDocs/azure-cloud-services-files/tree/master/Azure%20Targets%20SDK%202.9) サイトで公開されています。
@@ -34,15 +34,16 @@ Web ロールと worker ロールに .NET をインストールするには、.N
 ## <a name="add-the-net-installer-to-your-project"></a>プロジェクトに .NET インストーラーを追加する
 .NET Framework の Web インストーラーをダウンロードするには、次のうち、インストールするバージョンを選択します。
 
+* [.NET 4.8 Web インストーラー](https://dotnet.microsoft.com/download/thank-you/net48)
 * [.NET 4.7.2 Web インストーラー](https://go.microsoft.com/fwlink/?LinkId=863262)
 * [.NET 4.6.2 Web インストーラー](https://www.microsoft.com/download/details.aspx?id=53345)
 
 *Web* ロールのインストールを追加するには、次の操作を実行します。
-  1. **ソリューション エクスプローラー**で、該当するクラウド サービス プロジェクトの **[ロール]** の下の *Web* ロールを右クリックし、**[追加]** > **[新しいフォルダー]** の順に選択します。 **bin** という名前のフォルダーを作成します。
-  2. bin フォルダーを右クリックし、**[追加]** > **[既存の項目]** の順に選択します。 .NET インストーラーを選択して bin フォルダーに追加します。
+  1. **ソリューション エクスプローラー**で、該当するクラウド サービス プロジェクトの **[ロール]** の下の *Web* ロールを右クリックし、 **[追加]**  >  **[新しいフォルダー]** の順に選択します。 **bin** という名前のフォルダーを作成します。
+  2. bin フォルダーを右クリックし、 **[追加]**  >  **[既存の項目]** の順に選択します。 .NET インストーラーを選択して bin フォルダーに追加します。
   
 *worker* ロールのインストールを追加するには、次の操作を実行します。
-* *worker* ロールを右クリックし、**[追加]** > **[既存の項目]** の順に選択します。 .NET インストーラーを選択して、ロールに追加します。 
+* *worker* ロールを右クリックし、 **[追加]**  >  **[既存の項目]** の順に選択します。 .NET インストーラーを選択して、ロールに追加します。 
 
 この方法でロールの Content フォルダーに追加したファイルは、クラウド サービス パッケージに自動的に追加されます。 その後、ファイルは、仮想マシン上の一貫性のある場所にデプロイされます。 クラウド サービス内の各 Web ロールおよび worker ロールについて、すべてのロールがインストーラーのコピーを保持するように、このプロセスを繰り返します。
 
@@ -102,7 +103,8 @@ Web ロールと worker ロールに .NET をインストールするには、.N
    REM ***** To install .NET 4.7.1 set the variable netfx to "NDP471" ***** https://go.microsoft.com/fwlink/?LinkId=852095
    REM ***** To install .NET 4.7.2 set the variable netfx to "NDP472" ***** https://go.microsoft.com/fwlink/?LinkId=863262
    set netfx="NDP472"
-   
+   REM ***** To install .NET 4.8 set the variable netfx to "NDP48" ***** https://dotnet.microsoft.com/download/thank-you/net48
+      
    REM ***** Set script start timestamp *****
    set timehour=%time:~0,2%
    set timestamp=%date:~-4,4%%date:~-10,2%%date:~-7,2%-%timehour: =0%%time:~3,2%
@@ -199,7 +201,7 @@ Web ロールと worker ロールに .NET をインストールするには、.N
    EXIT /B 0
    ```
 
-3. このトピックで前述したように、**ソリューション エクスプローラー**で **[追加]** > **[既存の項目]** の順に選択して、各ロールに install.cmd ファイルを追加します。 
+3. このトピックで前述したように、**ソリューション エクスプローラー**で **[追加]**  >  **[既存の項目]** の順に選択して、各ロールに install.cmd ファイルを追加します。 
 
     この手順が完了したら、すべてのロールに .NET インストーラー ファイルと install.cmd ファイルが設定されます。
 

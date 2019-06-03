@@ -67,8 +67,10 @@
           href: data-box-edge-deploy-connect-setup-activate.md
         - name: 4 - 追加、共有への接続
           href: data-box-edge-deploy-add-shares.md
-        - name: 5 - コンピューティングの構成
+        - name: 5A - コンピューティングの構成 (簡易)
           href: data-box-edge-deploy-configure-compute.md
+        - name: 5B - コンピューティングの構成 (詳細)
+          href: data-box-edge-deploy-configure-compute-advanced.md
     - name: 概念
       items:
         - name: 要件を確認する
@@ -87,6 +89,8 @@
           items:
             - name: Edge コンピューティング
               href: data-box-edge-manage-compute.md
+            - name: Edge コンピューティングのネットワーク
+              href: data-box-edge-extend-compute-access-modules.md
             - name: 共有
               href: data-box-edge-manage-shares.md
             - name: ユーザー

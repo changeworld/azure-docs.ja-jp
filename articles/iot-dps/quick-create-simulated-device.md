@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: e705ce17f0f09d341f2c650dfaccbbad60da14c7
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.openlocfilehash: ca6914967d855123c70bf746a9d68d2e045e76d9
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59500194"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65908676"
 ---
 # <a name="quickstart-provision-a-simulated-tpm-device-using-the-azure-iot-c-sdk"></a>クイック スタート:Azure IoT C SDK を使用してシミュレートされた TPM デバイスをプロビジョニングする
 
@@ -34,7 +34,7 @@ Azure IoT Device Provisioning Service では、次の 2 種類の登録がサポ
 
 ## <a name="prerequisites"></a>前提条件
 
-* ["C++ によるデスクトップ開発"](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) ワークロードを有効にした Visual Studio 2015 または [Visual Studio 2017](https://www.visualstudio.com/vs/)。
+* ['C++ によるデスクトップ開発'](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) ワークロードが有効になった [Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 以降。
 * [Git](https://git-scm.com/download/) の最新バージョンがインストールされている。
 
 
@@ -111,11 +111,11 @@ Azure IoT Device Provisioning Service では、次の 2 種類の登録がサポ
 
 1. Visual Studio を起動し、`azure_iot_sdks.sln` という名前の新しいソリューション ファイルを開きます。 このソリューション ファイルは、以前に azure-iot-sdk-c git リポジトリのルートに作成した `cmake` フォルダーにあります。
 
-2. Visual Studio のメニューで **[ビルド]** > **[ソリューションのビルド]** の順に選択して、ソリューション内のすべてのプロジェクトをビルドします。
+2. Visual Studio のメニューで **[ビルド]**  >  **[ソリューションのビルド]** の順に選択して、ソリューション内のすべてのプロジェクトをビルドします。
 
-3. Visual Studio の "*ソリューション エクスプローラー*" ウィンドウで、**Provision\_Tools** フォルダーに移動します。 **tpm_device_provision** プロジェクトを右クリックし、**[スタートアップ プロジェクトに設定]** を選択します。 
+3. Visual Studio の "*ソリューション エクスプローラー*" ウィンドウで、**Provision\_Tools** フォルダーに移動します。 **tpm_device_provision** プロジェクトを右クリックし、 **[スタートアップ プロジェクトに設定]** を選択します。 
 
-4. Visual Studio のメニューで **[デバッグ]** > **[デバッグなしで開始]** の順に選択して、ソリューションを実行します。 アプリが**_登録 ID_** と**_保証キー_** を読み取って表示します。 これらの値をコピーします。 これらは次のセクションでデバイスを登録する際に使用します。 
+4. Visual Studio のメニューで **[デバッグ]**  >  **[デバッグなしで開始]** の順に選択して、ソリューションを実行します。 アプリが **_登録 ID_** と **_保証キー_** を読み取って表示します。 これらの値をコピーします。 これらは次のセクションでデバイスを登録する際に使用します。 
 
 
 <a id="portalenrollment"></a>
@@ -126,17 +126,17 @@ Azure IoT Device Provisioning Service では、次の 2 種類の登録がサポ
 
 2. **[登録を管理します]** タブをクリックし、上部にある **[Add individual enrollment]\(個別登録の追加\)** ボタンをクリックします。 
 
-3. **[Add enrollment]\(登録の追加\)** で、次の情報を入力し、**[保存]** をクリックします。
+3. **[Add enrollment]\(登録の追加\)** で、次の情報を入力し、 **[保存]** をクリックします。
 
     - **メカニズム**:ID 構成証明の "*メカニズム*" として **[TPM]** を選択します。
     - **保証キー**:*tpm_device_provision* プロジェクトを実行することで TPM デバイスに対して生成された "*保証キー*" を入力します。
     - **登録 ID**:*tpm_device_provision* プロジェクトを実行することで TPM デバイスに対して生成された "*登録 ID*" を入力します。
-    - **IoT Edge デバイス**:**[無効]** を選択します。
+    - **IoT Edge デバイス**: **[無効]** を選択します。
     - **IoT Hub のデバイス ID**:デバイスに ID を割り当てるために、「**test-docs-device**」と入力します。
 
       ![ポータルでデバイス登録情報を入力](./media/quick-create-simulated-device/enter-device-enrollment.png)  
 
-      登録に成功すると、*[Individual Enrollments]\(個々の登録\)* タブの一覧に、対象デバイスの "*登録 ID*" が表示されます。 
+      登録に成功すると、 *[Individual Enrollments]\(個々の登録\)* タブの一覧に、対象デバイスの "*登録 ID*" が表示されます。 
 
 
 <a id="firstbootsequence"></a>
@@ -145,7 +145,7 @@ Azure IoT Device Provisioning Service では、次の 2 種類の登録がサポ
 
 このセクションでは、[Advanced Message Queuing Protocol (AMQP)](https://wikipedia.org/wiki/Advanced_Message_Queuing_Protocol) を使用して、デバイスのブート シーケンスを Device Provisioning Service インスタンスに送信するようにサンプル コードを構成します。 このブート シーケンスにより、デバイスが認識され、Device Provisioning Service インスタンスにリンクされた IoT ハブに割り当てられます。
 
-1. Azure portal で、Device Provisioning Service の **[概要]** タブをクリックし、**[_ID スコープ_]** の値をコピーします。
+1. Azure portal で、Device Provisioning Service の **[概要]** タブをクリックし、 **[_ID スコープ_]** の値をコピーします。
 
     ![ポータルから Device Provisioning サービスのエンドポイント情報を抽出](./media/quick-create-simulated-device/extract-dps-endpoints.png) 
 
@@ -180,9 +180,9 @@ Azure IoT Device Provisioning Service では、次の 2 種類の登録がサポ
     //hsm_type = SECURE_DEVICE_TYPE_X509;
     ```
 
-6. **prov\_dev\_client\_sample** プロジェクトを右クリックし、**[スタートアップ プロジェクトに設定]** を選択します。 
+6. **prov\_dev\_client\_sample** プロジェクトを右クリックし、 **[スタートアップ プロジェクトに設定]** を選択します。 
 
-7. Visual Studio のメニューで **[デバッグ]** > **[デバッグなしで開始]** の順に選択して、ソリューションを実行します。 プロジェクトをリビルドするよう求められたら、**[はい]** をクリックして、プロジェクトをリビルドしてから実行します。
+7. Visual Studio のメニューで **[デバッグ]**  >  **[デバッグなしで開始]** の順に選択して、ソリューションを実行します。 プロジェクトをリビルドするよう求められたら、 **[はい]** をクリックして、プロジェクトをリビルドしてから実行します。
 
     次の出力は、プロビジョニング デバイス クライアントのサンプルが正常に起動し、Device Provisioning Service インスタンスに接続して、IoT ハブの情報を取得し、登録した場合の例です。
 
@@ -211,7 +211,7 @@ Azure IoT Device Provisioning Service では、次の 2 種類の登録がサポ
 
 1. マシンに表示されているデバイス クライアント サンプルの出力ウィンドウを閉じます。
 2. マシンに表示されている TPM シミュレーター ウィンドウを閉じます。
-3. Azure Portal の左側のメニューにある **[すべてのリソース]** をクリックし、Device Provisioning サービスを選択します。 サービスの **[登録を管理します]** を開き、**[個々の登録]** タブをクリックします。このクイックスタートで登録したデバイスの*登録 ID* を選択し、上部の **[削除]** ボタンをクリックします。 
+3. Azure Portal の左側のメニューにある **[すべてのリソース]** をクリックし、Device Provisioning サービスを選択します。 サービスの **[登録を管理します]** を開き、 **[個々の登録]** タブをクリックします。このクイックスタートで登録したデバイスの*登録 ID* を選択し、上部の **[削除]** ボタンをクリックします。 
 4. Azure Portal の左側のメニューにある **[すべてのリソース]** をクリックし、IoT ハブを選択します。 ハブの **[IoT デバイス]** を開き、このクイック スタートで登録したデバイスの "*デバイス ID*" を選択し、一番上の **[削除]** ボタンをクリックします。
 
 ## <a name="next-steps"></a>次の手順
@@ -219,5 +219,5 @@ Azure IoT Device Provisioning Service では、次の 2 種類の登録がサポ
 このクイックスタートでは、TPM のシミュレートされたデバイスをコンピューター上に作成し、IoT Hub Device Provisioning Service を使用して IoT ハブにプロビジョニングしました。 プログラミングによって TPM デバイスを登録する方法については、TPM デバイスのプログラミングによる登録のクイックスタートに進みます。 
 
 > [!div class="nextstepaction"]
-> [Azure クイック スタート - TPM デバイスを Azure IoT Hub Device Provisioning Service に登録する](quick-enroll-device-tpm-java.md)
+> [Azure クイックスタート - Azure IoT Hub Device Provisioning Service への TPM デバイスの登録](quick-enroll-device-tpm-java.md)
 

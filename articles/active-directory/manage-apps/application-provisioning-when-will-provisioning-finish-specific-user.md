@@ -3,8 +3,8 @@ title: 特定のユーザーがいつアプリケーションにアクセスで�
 description: 非常に重要なユーザーが、Azure AD でユーザー プロビジョニング向けに構成したアプリケーションにいつアクセスできるようになるかを確認する方法を説明します。
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2017
-ms.author: celested
+ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d2bb3b7385467d2606a2a4fa0afb43b9440ab79
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 08a78a311771395f7c2113f03d5137d59999d7a7
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56163106"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65783866"
 ---
 # <a name="find-out-when-a-specific-user-will-be-able-to-access-an-application"></a>特定のユーザーがいつアプリケーションにアクセスできるようになるかを確認する
 アプリケーションで自動ユーザー プロビジョニングを使用するとき、Azure AD は[ユーザーとグループの割り当て](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)などに基づいて、定期的にスケジュールされた間隔 (通常は 10 分ごと) で自動的にユーザー アカウントをアプリ内でプロビジョニングし、更新します。

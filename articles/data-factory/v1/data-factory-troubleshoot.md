@@ -3,22 +3,23 @@ title: Azure Data Factory のトラブルシューティング
 description: Azure Data Factory の使用に関する問題のトラブルシューティングを行う方法について説明します。
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
 ms.assetid: 38fd14c1-5bb7-4eef-a9f5-b289ff9a6942
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: douglasl
+author: gauravmalhot
+ms.author: gamal
+ms.reviewer: maghan
+manager: craigg
 robots: noindex
-ms.openlocfilehash: 5b9e0a30658e1cb8fe0f83d55c04f120637babaf
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 5f2627932eb2fd427d934eba322230222b5e6958
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57549206"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66002944"
 ---
 # <a name="troubleshoot-data-factory-issues"></a>Data Factory のトラブルシューティング
 > [!NOTE]

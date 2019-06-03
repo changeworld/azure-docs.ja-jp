@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: tutorial
 ms.date: 01/13/2019
 ms.author: spelluru
-ms.openlocfilehash: c2c49563bf505ce70c4900c6c0a8e41c0f6ac9c5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1ae7a18660d2a7324bc5897d6b3952da42b6c4b2
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58176618"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65603444"
 ---
 # <a name="tutorial-stream-big-data-into-a-data-warehouse"></a>チュートリアル: ビッグ データをデータ ウェアハウスにストリーミングする
 Azure [Event Grid](overview.md) は、アプリとサービスからの通知 (イベント) への対応を可能にするインテリジェントなイベント ルーティング サービスです。 たとえば、Azure BLOB ストレージや Azure Data Lake Storage にキャプチャされた Event Hubs データを処理する Azure 関数をトリガーして、データを別のデータ リポジトリに移行できます。 この [Event Hubs と Event Grid の統合のサンプル](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo)では、Event Hubs と Event Grid を使用して、キャプチャされた Event Hubs データを BLOB ストレージから SQL データ ウェアハウスにシームレスに移行する方法を説明しています。
@@ -45,7 +45,7 @@ Azure [Event Grid](overview.md) は、アプリとサービスからの通知 (�
 このチュートリアルを完了するには、以下が必要です。
 
 * Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
-* [Visual Studio 2017 バージョン 15.3.2 以上](https://www.visualstudio.com/vs/)で次のワークロードを使用: .NET デスクトップ開発、Azure 開発、ASP.NET および Web 開発、Node.js 開発、Python 開発。
+* [Visual Studio 2019](https://www.visualstudio.com/vs/) で次のワークロードを使用: .NET デスクトップ開発、Azure 開発、ASP.NET および Web 開発、Node.js 開発、Python 開発。
 * 自分のコンピューターに [EventHubsCaptureEventGridDemo サンプル プロジェクト](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo)をダウンロードします。
 
 ## <a name="deploy-the-infrastructure"></a>インフラストラクチャをデプロイする
@@ -67,8 +67,8 @@ Azure [Event Grid](overview.md) は、アプリとサービスからの通知 (�
 3. ブラウザーの下部に Cloud Shell が開かれるのがわかります。
 
     ![Cloud Shell](media/event-grid-event-hubs-integration/launch-cloud-shell.png) 
-4. Cloud Shell で、**[Bash]** と **[PowerShell]** のどちらかを選択するオプションが表示されたら、**[Bash]** を選択します。 
-5. Cloud Shell を初めて使用する場合は、**[ストレージの作成]** を選択してストレージ アカウントを作成します。 Azure Cloud Shell では、一部のファイルを格納するために Azure ストレージ アカウントが必要です。 
+4. Cloud Shell で、 **[Bash]** と **[PowerShell]** のどちらかを選択するオプションが表示されたら、 **[Bash]** を選択します。 
+5. Cloud Shell を初めて使用する場合は、 **[ストレージの作成]** を選択してストレージ アカウントを作成します。 Azure Cloud Shell では、一部のファイルを格納するために Azure ストレージ アカウントが必要です。 
 
     ![Cloud Shell 用のストレージを作成する](media/event-grid-event-hubs-integration/create-storage-cloud-shell.png)
 6. Cloud Shell が初期化されるまで待ちます。 
@@ -125,7 +125,7 @@ Azure [Event Grid](overview.md) は、アプリとサービスからの通知 (�
 
 ### <a name="use-azure-powershell"></a>Azure PowerShell の使用
 
-1. Azure Cloud Shell で PowerShell モードに切り替えます。 Azure Cloud Shell の左上隅にある下矢印を選択し、**[PowerShell]** を選択します。
+1. Azure Cloud Shell で PowerShell モードに切り替えます。 Azure Cloud Shell の左上隅にある下矢印を選択し、 **[PowerShell]** を選択します。
 
     ![PowerShell に切り替える](media/event-grid-event-hubs-integration/select-powershell-cloud-shell.png)
 2. 次のコマンドを実行して、Azure リソース グループを作成します。 
@@ -174,7 +174,7 @@ Azure [Event Grid](overview.md) は、アプリとサービスからの通知 (�
 2. SQL データ ウェアハウスのページで、左側のメニューの **[クエリ エディター (プレビュー)]** を選択します。 
 
     ![SQL データ ウェアハウスのページ](media/event-grid-event-hubs-integration/sql-data-warehouse-page.png)
-2. SQL サーバーの**ユーザー**の名前と**パスワード**を入力し、**[OK]** を選択します。 
+2. SQL サーバーの**ユーザー**の名前と**パスワード**を入力し、 **[OK]** を選択します。 
 
     ![SQL Server 認証](media/event-grid-event-hubs-integration/sql-server-authentication.png)
 4. クエリ ウィンドウに、次の SQL スクリプトをコピーして実行します。 
@@ -196,21 +196,21 @@ Azure [Event Grid](overview.md) は、アプリとサービスからの通知 (�
 
 ## <a name="publish-the-azure-functions-app"></a>Azure Functions アプリを発行する
 
-1. Visual Studio 2017 を起動します。 
+1. Visual Studio を起動します。
 2. お客様が前提条件の一環として [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) からダウンロードした **EventHubsCaptureEventGridDemo.sln** ソリューションを開きます。
-3. ソリューション エクスプローラーで、**[FunctionEGDWDumper]** を右クリックし、**[発行]** を選択します。
+3. ソリューション エクスプローラーで、 **[FunctionEGDWDumper]** を右クリックし、 **[発行]** を選択します。
 
    ![関数アプリの発行](media/event-grid-event-hubs-integration/publish-function-app.png)
-4. 次の画面が表示されたら、**[開始]** を選択します。 
+4. 次の画面が表示されたら、 **[開始]** を選択します。 
 
    ![発行の開始ボタン](media/event-grid-event-hubs-integration/start-publish-button.png) 
-5. **[発行先を選択]** ページで、**[既存のものを選択]** オプションを選択し、**[プロファイルの作成]** を選択します。 
+5. **[発行先を選択]** ページで、 **[既存のものを選択]** オプションを選択し、 **[プロファイルの作成]** を選択します。 
 
    ![発行先の選択](media/event-grid-event-hubs-integration/publish-select-existing.png)
-6. [App Service] ページで、お客様の **Azure サブスクリプション**を選択し、お客様のリソース グループ内の**関数アプリ**を選択して、**[OK]** をクリックします。 
+6. [App Service] ページで、お客様の **Azure サブスクリプション**を選択し、お客様のリソース グループ内の**関数アプリ**を選択して、 **[OK]** をクリックします。 
 
    ![[App Service] ページ](media/event-grid-event-hubs-integration/publish-app-service.png) 
-1. Visual Studio でプロファイルを構成している場合は、**[発行]** を選択します。
+1. Visual Studio でプロファイルを構成している場合は、 **[発行]** を選択します。
 
    ![発行の選択](media/event-grid-event-hubs-integration/select-publish.png)
 
@@ -237,7 +237,7 @@ Azure [Event Grid](overview.md) は、アプリとサービスからの通知 (�
         1. Azure サブスクリプションを選択します。
         2. Azure リソース グループを選択します。
         3. Event Hubs 名前空間を選択します。
-    2. **[イベント サブスクリプションの詳細]** ページで、サブスクリプションの名前 (captureEventSub など) を入力し、**[作成]** を選択します。 
+    2. **[イベント サブスクリプションの詳細]** ページで、サブスクリプションの名前 (captureEventSub など) を入力し、 **[作成]** を選択します。 
 
         ![Event Grid サブスクリプションを作成する](media/event-grid-event-hubs-integration/create-event-subscription.png)
 

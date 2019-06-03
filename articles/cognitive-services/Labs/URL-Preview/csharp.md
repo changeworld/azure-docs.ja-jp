@@ -10,12 +10,12 @@ ms.subservice: url-preview
 ms.topic: quickstart
 ms.date: 03/16/2018
 ms.author: rosh
-ms.openlocfilehash: 0e2d4b783068cfd14385eb1712ea246c94dc9500
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 2cb3f1de803b8549a88866da1042f4f32609a601
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55877271"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65827161"
 ---
 # <a name="quickstart-url-preview-query-in-c"></a>クイック スタート:C# での URL プレビュー クエリ
 
@@ -23,7 +23,7 @@ ms.locfileid: "55877271"
 
 ## <a name="prerequisites"></a>前提条件
 
-このコードを Windows 上で実行するには、[Visual Studio 2017](https://www.visualstudio.com/downloads/) が必要です  (無料の Community Edition でかまいません)。
+このコードを Windows 上で実行するには、[Visual Studio 2017 以降](https://www.visualstudio.com/downloads/) が必要です。 (無料の Community Edition でかまいません。)
 
 [Cognitive Services Labs](https://aka.ms/answersearchsubscription) で無料試用版のアクセス キーを取得します
 

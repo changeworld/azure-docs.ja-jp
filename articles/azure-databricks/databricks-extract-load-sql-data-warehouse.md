@@ -7,18 +7,17 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
-ms.workload: Active
-ms.date: 02/15/2019
-ms.openlocfilehash: e306245da2c76560ad447358fa1a57e491c370ee
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 05/17/2019
+ms.openlocfilehash: a6a681ace95f9bab3c77e4a0f9982a2281c778b8
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57855692"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65966430"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>チュートリアル:Azure Databricks を使用してデータの抽出、変換、読み込みを行う
 
-このチュートリアルでは、Azure Databricks を使用して ETL (データの抽出、変換、読み込み) 操作を実行します。 Azure Data Lake Storage Gen2 から Azure Databricks にデータを抽出し、Azure Databricks でデータの変換を実行した後、その変換済みのデータを Azure SQL Data Warehouse に読み込みます。
+このチュートリアルでは、Azure Databricks を使用して ETL (データの抽出、変換、読み込み) 操作を実行します。 Azure Data Lake Storage Gen2 から Azure Databricks にデータを抽出し、Azure Databricks でそのデータに対する変換を実行した後、変換されたデータを Azure SQL Data Warehouse に読み込みます。
 
 このチュートリアルの手順では、Azure Databricks 用の SQL Data Warehouse コネクタを使って Azure Databricks にデータを転送します。 その後、このコネクタによって、Azure Databricks クラスターと Azure SQL Data Warehouse の間で転送されるデータの一時記憶域として Azure Blob Storage が使用されます。
 
@@ -48,24 +47,23 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 このチュートリアルを始める前に、以下のタスクを完了します。
 
-* Azure SQL データ ウェアハウスを作成し、サーバーレベルのファイアウォール規則を作成して、サーバー管理者としてサーバーに接続します。「[クイック スタート:Azure SQL データ ウェアハウスの作成に関するクイック スタート](../sql-data-warehouse/create-data-warehouse-portal.md)を参照してください。
+* Azure SQL データ ウェアハウスを作成し、サーバーレベルのファイアウォール規則を作成して、サーバー管理者としてサーバーに接続します。「[クイック スタート:Azure Portal で Azure SQL データ ウェアハウスを作成し、クエリを実行する](../sql-data-warehouse/create-data-warehouse-portal.md)」を参照してください。
 
 * Azure SQL データ ウェアハウスに使用するデータベース マスター キーを作成します。 「[データベース マスター キーの作成](https://docs.microsoft.com/sql/relational-databases/security/encryption/create-a-database-master-key)」を参照してください。
 
-* Azure Blob Storage アカウントを作成し、そこにコンテナーを作成します。 また、ストレージ アカウントにアクセスするためのアクセス キーを取得します。 「[クイック スタート:Azure BLOB ストレージ アカウントの作成に関するクイック スタート](../storage/blobs/storage-quickstart-blobs-portal.md)を参照してください。
+* Azure Blob Storage アカウントを作成し、そこにコンテナーを作成します。 また、ストレージ アカウントにアクセスするためのアクセス キーを取得します。 「[クイック スタート:Azure portal を使用して BLOB をアップロード、ダウンロード、および一覧表示する](../storage/blobs/storage-quickstart-blobs-portal.md)」を参照してください。
 
-* Azure Data Lake Storage Gen2 ストレージ アカウントを作成します。 「[Azure Data Lake Storage Gen2 アカウントを作成する](../storage/blobs/data-lake-storage-quickstart-create-account.md)」をご覧ください。
+* Azure Data Lake Storage Gen2 ストレージ アカウントを作成します。 「[クイック スタート:Azure Data Lake Storage Gen2 ストレージ アカウントを作成する](../storage/blobs/data-lake-storage-quickstart-create-account.md)」を参照してください。
 
-*  サービス プリンシパルを作成する。 「[方法:リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)」のガイダンスに従って、サービス プリンシパルを作成します。
+* サービス プリンシパルを作成する。 「[方法:リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)」のガイダンスに従って、サービス プリンシパルを作成します。
 
    この記事の手順を実行する際に、いくつかの特定の作業を行う必要があります。
 
-   * 記事の「[アプリケーションをロールに割り当てる](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role)」セクションの手順を実行するときに、必ず**ストレージ BLOB データ共同作成者**ロールをサービス プリンシパルに割り当ててください。
+   * 記事の「[アプリケーションをロールに割り当てる](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role)」セクションの手順を行うときは、必ず、Data Lake Storage Gen2 アカウントのスコープ内で **ストレージ BLOB データ共同作成者**ロールをサービス プリンシパルに割り当ててください。 親リソース グループまたはサブスクリプションにロールを割り当てる場合、それらのロール割り当てがストレージ アカウントに伝達されるまで、アクセス許可関連のエラーが発生します。
 
-     > [!IMPORTANT]
-     > Data Lake Storage Gen2 ストレージ アカウントの範囲内のロールを割り当てるようにしてください。 親リソース グループまたはサブスクリプションにロールを割り当てることはできますが、それらのロール割り当てがストレージ アカウントに伝達されるまで、アクセス許可関連のエラーが発生します。
+      アクセス制御リスト (ACL) を使用して特定のファイルまたはディレクトリにサービス プリンシパルを関連付ける場合は、「[Azure Data Lake Storage Gen2 のアクセス制御](../storage/blobs/data-lake-storage-access-control.md)」を参照してください。
 
-   * 記事の「[サインインするための値を取得する](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)」セクションの手順を実行するとき、テナント ID、アプリケーション ID、および認証キーの値をテキスト ファイルに貼り付けてください。 これらはすぐに必要になります。
+   * 記事の「[サインインするための値を取得する](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)」セクションの手順を行うときは、テナント ID、アプリ ID、およびパスワードの値をテキスト ファイルに貼り付けてください。 これらはすぐに必要になります。
 
 * [Azure Portal](https://portal.azure.com/) にサインインします。
 
@@ -91,7 +89,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 このセクションでは、Azure portal を使用して Azure Databricks サービスを作成します。
 
-1. Azure portal で、**[リソースの作成]** > **[分析]** > **[Azure Databricks]** の順に選択します。
+1. Azure portal で、 **[リソースの作成]**  >  **[分析]**  >  **[Azure Databricks]** の順に選択します。
 
     ![Azure Portal の Databricks](./media/databricks-extract-load-sql-data-warehouse/azure-databricks-on-portal.png "Azure Portal の Databricks")
 
@@ -105,15 +103,13 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
     |**場所**     | **[米国西部 2]** を選択します。  使用可能な他のリージョンについては、「[リージョン別の利用可能な製品](https://azure.microsoft.com/regions/services/)」をご覧ください。      |
     |**価格レベル**     |  **[Standard]** を選択します。     |
 
-3. **[ダッシュボードにピン留めする]** チェック ボックスをオンにして、**[作成]** を選択します。
+3. アカウントの作成には数分かかります。 操作の状態を監視するには、上部の進行状況バーを確認します。
 
-4. アカウントの作成には数分かかります。 アカウント作成時に、ポータルの右側に **[Azure Databricks のデプロイを送信しています]** タイルが表示されます。 操作の状態を監視するには、上部の進行状況バーを確認します。
-
-    ![Databricks のデプロイのタイル](./media/databricks-extract-load-sql-data-warehouse/databricks-deployment-tile.png "Databricks のデプロイのタイル")
+4. **[ダッシュボードにピン留めする]** チェック ボックスをオンにして、 **[作成]** を選択します。
 
 ## <a name="create-a-spark-cluster-in-azure-databricks"></a>Azure Databricks で Spark クラスターを作成する
 
-1. Azure portal で、作成した Databricks サービスに移動し、**[Launch Workspace]\(ワークスペースの起動\)** を選択します。
+1. Azure portal で、作成した Databricks サービスに移動し、 **[Launch Workspace]\(ワークスペースの起動\)** を選択します。
 
 2. Azure Databricks ポータルにリダイレクトされます。 ポータルで **[クラスター]** を選択します。
 
@@ -137,9 +133,9 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 このセクションでは、Azure Databricks ワークスペースにノートブックを作成し、ストレージ アカウントを構成するコード スニペットを実行します
 
-1. [Azure portal](https://portal.azure.com) で、作成した Azure Databricks サービスに移動し、**[Launch Workspace]\(ワークスペースの起動\)** を選択します。
+1. [Azure portal](https://portal.azure.com) で、作成した Azure Databricks サービスに移動し、 **[Launch Workspace]\(ワークスペースの起動\)** を選択します。
 
-2. 左側の **[ワークスペース]** を選択します。 **[ワークスペース]** ドロップダウンで、**[作成]** > **[ノートブック]** の順に選択します。
+2. 左側の **[ワークスペース]** を選択します。 **[ワークスペース]** ドロップダウンで、 **[作成]**  >  **[ノートブック]** の順に選択します。
 
     ![Databricks でノートブックを作成する](./media/databricks-extract-load-sql-data-warehouse/databricks-create-notebook.png "Databricks でノートブックを作成する")
 
@@ -147,24 +143,39 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
     ![Databricks でノートブックの詳細情報を入力する](./media/databricks-extract-load-sql-data-warehouse/databricks-notebook-details.png "Databricks でノートブックの詳細情報を入力する")
 
-4. **作成**を選択します。
+4. **作成** を選択します。
 
-5. 次のコード ブロックをコピーして最初のセルに貼り付けます。
+5. 次のコード ブロックでは、Spark セッションでアクセスされる ADLS Gen 2 アカウント用の既定のサービス プリンシパル資格情報を設定します。 2 つ目のコード ブロックでは、特定の ADLS Gen 2 アカウントの資格情報を指定する設定にアカウント名を追加します。  いずれかのコード ブロックをコピーして、Azure Databricks ノートブックの最初のセルに貼り付けます。
+
+   **セッションの構成**
+
+   ```scala
+   spark.conf.set("fs.azure.account.auth.type", "OAuth")
+   spark.conf.set("fs.azure.account.oauth.provider.type", "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider")
+   spark.conf.set("fs.azure.account.oauth2.client.id", "<appID>")
+   spark.conf.set("fs.azure.account.oauth2.client.secret", "<password>")
+   spark.conf.set("fs.azure.account.oauth2.client.endpoint", "https://login.microsoftonline.com/<tenant-id>/oauth2/token")
+   spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "true")
+   dbutils.fs.ls("abfss://<file-system-name>@<storage-account-name>.dfs.core.windows.net/")
+   spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "false")
+   ```
+
+   **アカウントの構成**
 
    ```scala
    spark.conf.set("fs.azure.account.auth.type.<storage-account-name>.dfs.core.windows.net", "OAuth")
    spark.conf.set("fs.azure.account.oauth.provider.type.<storage-account-name>.dfs.core.windows.net", "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider")
-   spark.conf.set("fs.azure.account.oauth2.client.id.<storage-account-name>.dfs.core.windows.net", "<application-id>")
-   spark.conf.set("fs.azure.account.oauth2.client.secret.<storage-account-name>.dfs.core.windows.net", "<authentication-key>")
+   spark.conf.set("fs.azure.account.oauth2.client.id.<storage-account-name>.dfs.core.windows.net", "<appID>")
+   spark.conf.set("fs.azure.account.oauth2.client.secret.<storage-account-name>.dfs.core.windows.net", "<password>")
    spark.conf.set("fs.azure.account.oauth2.client.endpoint.<storage-account-name>.dfs.core.windows.net", "https://login.microsoftonline.com/<tenant-id>/oauth2/token")
    spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "true")
    dbutils.fs.ls("abfss://<file-system-name>@<storage-account-name>.dfs.core.windows.net/")
    spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "false")
    ```
 
-6. このコード ブロックでは、`application-id`、`authentication-id`、`tenant-id`、および `storage-account-name` のプレースホルダー値を、このチュートリアルの前提条件の実行中に収集した値で置き換えます。 `file-system-name` プレースホルダーの値を、ファイル システムに付けたい名前に置き換えます。
+6. このコード ブロックでは、`appID`、`password`、`tenant-id`、および `storage-account-name` のプレースホルダー値を、このチュートリアルの前提条件の実行中に収集した値で置き換えます。 `file-system-name` プレースホルダーの値を、ファイル システムに付けたい名前に置き換えます。
 
-   * `application-id` および `authentication-id` は、サービス プリンシパルの作成の一環として Active Directory に登録したアプリのものです。
+   * `appID` および `password` は、サービス プリンシパルの作成の一環として Active Directory に登録したアプリのものです。
 
    * `tenant-id` は、自分のサブスクリプションのものです。
 
@@ -325,7 +336,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
    sc.hadoopConfiguration.set(acntInfo, blobAccessKey)
    ```
 
-4. Azure SQL Data Warehouse インスタンスに接続するための値を指定します。 SQL データ ウェアハウスは、前提条件としてあらかじめ作成しておく必要があります。
+4. Azure SQL Data Warehouse インスタンスに接続するための値を指定します。 SQL データ ウェアハウスは、前提条件としてあらかじめ作成しておく必要があります。 **dwServer** の完全修飾サーバー名を使用します。 たとえば、「 `<servername>.database.windows.net` 」のように入力します。
 
    ```scala
    //SQL Data Warehouse related settings
@@ -356,6 +367,11 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
        .save()
    ```
 
+   > [!NOTE]
+   > このサンプルでは `forward_spark_azure_storage_credentials` フラグを使用します。これにより、SQL Data Warehouse は、アクセス キーを使用して BLOB ストレージからのデータにアクセスします。 これは、サポートされている唯一の認証方法です。
+   >
+   > Azure Blob Storage が仮想ネットワークを選択するように制限されている場合、SQL Data Warehouse には[アクセス キーではなく、マネージド サービス ID](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage) が必要です。 これにより、"This request is not authorized to perform this operation (この要求には、この操作を実行する権限がありません)" というエラーが発生します。
+
 6. SQL データベースに接続し、**SampleTable** という名前のデータベースが表示されることを確認します。
 
    ![サンプル テーブルを確認する](./media/databricks-extract-load-sql-data-warehouse/verify-sample-table.png "サンプル テーブルを確認する")
@@ -366,7 +382,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-チュートリアルが完了したら、クラスターを終了できます。 Azure Databricks ワークスペースで、左側の **[クラスター]** を選択します。 クラスターが終了するように、**[アクション]** の下にある省略記号 (...) をポイントし、**終了**アイコンを選択します。
+チュートリアルが完了したら、クラスターを終了できます。 Azure Databricks ワークスペースで、左側の **[クラスター]** を選択します。 クラスターが終了するように、 **[アクション]** の下にある省略記号 (...) をポイントし、**終了**アイコンを選択します。
 
 ![Databricks クラスターを停止する](./media/databricks-extract-load-sql-data-warehouse/terminate-databricks-cluster.png "Databricks クラスターを停止する")
 

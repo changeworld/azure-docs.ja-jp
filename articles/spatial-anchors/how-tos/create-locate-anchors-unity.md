@@ -4,16 +4,16 @@ description: Unity で Azure Spatial Anchors を使用してアンカーを作�
 author: ramonarguelles
 manager: vicenterivera
 services: azure-spatial-anchors
-ms.author: ramonarguelles
+ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: how-to
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: d1c5f906fef495f7ef1dde5df38a84629a6d6c61
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 5dc86aff7324b79f2c1b7a14b349337fc26a1901
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58915953"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244311"
 ---
 # <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors-in-unity"></a>Unity で Azure Spatial Anchors を使用してアンカーを作成して配置する方法
 
@@ -190,7 +190,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
     var hitResults = UnityARSessionNativeInterface.GetARSessionNativeInterface().HitTest(point, ARHitTestResultType.ARHitTestResultTypeEstimatedHorizontalPlane | ARHitTestResultType.ARHitTestResultTypeExistingPlaneUsingExtent);
     if (hitResults.Count > 0)
     {
-        // The hitTest method sorts the resulting list by distance from the camera, increasing
+        // The hitTest method sorts the resulting list by increasing distance from the camera
         // The first hit result will usually be the most relevant when responding to user input
         ARHitTestResult hitResult = hitResults[0];
         hitPosition = UnityARMatrixOps.GetPosition(hitResult.worldTransform);

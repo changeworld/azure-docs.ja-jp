@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 08/28/2018
 ms.author: apimpm
-ms.openlocfilehash: fe6a008a6cbd2ca4e8aedeeca6d96cc00f6b29d1
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: e5e8ffc18db902eeaa8484122e3844f35046191f
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59046055"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66243064"
 ---
 # <a name="import-an-azure-function-app-as-an-api-in-azure-api-management"></a>Azure API Management で Azure Function App を API としてインポートする
 
@@ -60,18 +60,18 @@ Azure API Management は、Azure Function App の新しい API としてのイ�
 
     ![Function App から追加する](./media/import-function-app-as-api/add-03.png)
 
-5. 関数のインポート元となる Function App を検索してクリックし、**[選択]** をクリックします。
+5. 関数のインポート元となる Function App を検索してクリックし、 **[選択]** をクリックします。
 
     ![Function App から追加する](./media/import-function-app-as-api/add-04.png)
 
-6. インポートする Function を選択して、**[選択]** をクリックします。
+6. インポートする Function を選択して、 **[選択]** をクリックします。
 
     ![Function App から追加する](./media/import-function-app-as-api/add-05.png)
 
     > [!NOTE]
     > HTTP トリガーに基づかない Function のみをインポートして、承認レベル設定を *Anonymous* または *Function* に設定できます。 現時点では、Linux 関数アプリはサポートされていません。
 
-7. **[完全]** ビューに切り替え、**[製品]** を新しい API に割り当てます。 必要に応じて、他の事前に設定されているフィールドを編集します。
+7. **[完全]** ビューに切り替え、 **[製品]** を新しい API に割り当てます。 必要に応じて、他の事前に設定されているフィールドを編集します。
 
     ![Function App から追加する](./media/import-function-app-as-api/add-06.png)
 
@@ -91,7 +91,7 @@ Azure API Management は、Azure Function App の新しい API としてのイ�
 
     ![Function App から追加する](./media/import-function-app-as-api/append-02.png)
 
-4. ポップアップ ウィンドウで、**[参照]** をクリックします。
+4. ポップアップ ウィンドウで、 **[参照]** をクリックします。
 
     ![Function App から追加する](./media/import-function-app-as-api/append-03.png)
 
@@ -99,11 +99,11 @@ Azure API Management は、Azure Function App の新しい API としてのイ�
 
     ![Function App から追加する](./media/import-function-app-as-api/add-03.png)
 
-6. 関数のインポート元となる Function App を検索してクリックし、**[選択]** をクリックします。
+6. 関数のインポート元となる Function App を検索してクリックし、 **[選択]** をクリックします。
 
     ![Function App から追加する](./media/import-function-app-as-api/add-04.png)
 
-7. インポートする Function を選択して、**[選択]** をクリックします。
+7. インポートする Function を選択して、 **[選択]** をクリックします。
 
     ![Function App から追加する](./media/import-function-app-as-api/add-05.png)
 
@@ -118,7 +118,7 @@ Azure Function App のインポートによって、次が自動的に生成さ�
 * apim-{<*お使いの Azure API Management サービス インスタンス名*>} という名前の、Function App 内のホスト キー。
 * {<*お使いの Azure Function App のインスタンス名*>}-key という名前の、Azure API Management インスタンス内の名前付きの値。作成されたホスト キーが含まれます。
 
-2019 年 4 月 4 日より後に作成された API では、ホスト キーが HTTP 要求のヘッダーで API Management から Function App に渡されます。 以前の API では、ホスト キーが[クエリ パラメーター](../azure-functions/functions-bindings-http-webhook.md#api-key-authorization)として渡されます。 Function App に関連付けられている *Backend* エンティティの`PATCH Backend` [REST API 呼び出し](https://docs.microsoft.com/rest/api/apimanagement/backend/update#backendcredentialscontract)では、この動作が変わる可能性があります。
+2019 年 4 月 4 日より後に作成された API では、ホスト キーが HTTP 要求のヘッダーで API Management から Function App に渡されます。 以前の API では、ホスト キーが[クエリ パラメーター](../azure-functions/functions-bindings-http-webhook.md#api-key-authorization)として渡されます。 Function App に関連付けられている *Backend* エンティティの`PATCH Backend` [REST API 呼び出し](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/backend/update#backendcredentialscontract)では、この動作が変わる可能性があります。
 
 > [!WARNING]
 > Azure Function App のホスト キーまたは Azure API Management の名前付きの値のいずれかの値を削除または変更すると、サービス間の通信が失われます。 値は自動的に同期されません。

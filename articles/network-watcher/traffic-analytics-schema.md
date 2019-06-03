@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: vinigam
-ms.openlocfilehash: 246c5256f56fd0b891d4e7d642c421b1e340fc6d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 491f19abfd87c28ede45e98a24f31fe7e599b18b
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59799335"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64691414"
 ---
 # <a name="schema-and-data-aggregation-in-traffic-analytics"></a>Traffic Analytics のスキーマとデータ集計
 
@@ -35,7 +35,7 @@ Traffic Analytics は、クラウド ネットワークでのユーザーとア�
 1. "FlowIntervalStartTime_t" から "FlowIntervalEndTime_t" までの間に NSG で記録されるすべてのフロー ログは、Traffic Analytics によって処理される前に、ストレージ アカウント内で 1 分間おきに BLOB としてキャプチャされます。 
 2. Traffic Analytics の既定の処理間隔は 60 分です。 つまり、Traffic Analytics は 60 分ごとに、集計のための BLOB をストレージから取得します。
 3. ソース IP、宛先 IP、宛先ポート、NSG 名、NSG ルール、フロー方向、およびトランスポート層プロトコル (TCP または UDP) が同じであるフロー (注:ソース ポートは集計から除外されます) は、Traffic Analytics によって 1 つのフローにまとめられます
-4. この単一レコードは Traffic Analytics によって修飾され (詳しくは下記のセクションを参照)、Log Analytics に取り込まれます。
+4. この単一レコードは Traffic Analytics によって修飾され (詳しくは下記のセクションを参照)、Log Analytics に取り込まれます。このプロセスには最大で 1 時間かかります。
 5. FlowStartTime_t フィールドは、"FlowIntervalStartTime_t" から "FlowIntervalEndTime_t" までのフロー ログ処理間隔の間に集計されたフロー (同じ 4 タプル) の、最初の発生日時を示します。 
 6. TA 内のリソースについては、UI に示されるフローは NSG から見たフロー総数ですが、Log Anlaytics のユーザーには 1 つのレコードのみが表示されます。 すべてのフローを表示するには、blob_id フィールドを使用します (これはストレージから参照できます)。 そのレコードの合計フロー数は、BLOB 内にある個々 のフローと一致します。
 
@@ -60,7 +60,7 @@ Traffic Analytics は Log Analytics をベースに構築されています。�
 | SrcIP_s | 送信元 IP アドレス | AzurePublic フローと ExternalPublic フローの場合には空白になります |
 | DestIP_s | 宛先 IP アドレス | AzurePublic フローと ExternalPublic フローの場合には空白になります |
 | VMIP_s | VM の IP | AzurePublic フローと ExternalPublic フローに使用されます |
-| PublicIP_S | パブリック IP アドレス | AzurePublic フローと ExternalPublic フローに使用されます |
+| PublicIP_s | パブリック IP アドレス | AzurePublic フローと ExternalPublic フローに使用されます |
 | DestPort_d | 宛先ポート | トラフィックが受信されるポート | 
 | L4Protocol_s  | * T <br> * U  | トランスポート プロトコル。 T = TCP <br> U = UDP | 
 | L7Protocol_s  | プロトコル名 | 宛先ポートから抽出されます |
@@ -121,6 +121,7 @@ Traffic Analytics は Log Analytics をベースに構築されています。�
 1. MaliciousFlow - 一方の IP アドレスは Azure 仮想ネットワークに属していて、もう一方の IP アドレスは、Azure ではないパブリック IP です。これは、"FlowIntervalStartTime_t" から "FlowIntervalEndTime_t" までの処理間隔用に Traffic Analytics が使用する ASC フィードで、悪意のあるフローとして報告されます。 
 1. UnknownPrivate - 一方の IP アドレスは Azure 仮想ネットワークに属していて、もう一方の IP アドレスは、RFC 1918 で定義されたプライベート IP 範囲に属しています。後者は、Traffic Analytics によってお客様所有のサイトまたは Azure 仮想ネットワークにマップできませんでした。
 1. Unknown – フロー内のどちらの IP アドレスも、Azure 内およびオンプレミス (サイト) 上のカスタマ トポロジを使用してマップできません。
+1. 一部のフィールド名は、_s または _d が付加されます。 これらは、送信先と送信元を示すものではありません。
 
 ### <a name="next-steps"></a>次の手順
 よく寄せられる質問への回答を確認するには、[トラフィック分析に関する FAQ](traffic-analytics-faq.md) をご覧ください。機能に関する詳細を確認するには、[Traffic Analytics のドキュメント](traffic-analytics.md)をご覧ください

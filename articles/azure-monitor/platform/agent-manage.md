@@ -1,6 +1,6 @@
 ---
 title: Azure Log Analytics エージェントの管理 | Microsoft Docs
-description: この記事では、コンピューターに配置された Microsoft Monitoring Agent (MMA) のライフサイクル中に通常実行する、さまざまな管理タスクについて説明します。
+description: この記事では、コンピューターに配置された Windows または Linux 用 Log Analytics エージェントのライフサイクル中に通常実行する、さまざまな管理タスクについて説明します。
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -11,30 +11,100 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/30/2018
+ms.date: 04/23/2019
 ms.author: magoedte
-ms.openlocfilehash: de27d5c4fd65515e25319f9e7ac3eafc4110b137
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 1809cc50f3ad3c285e0b69bc6e383a2c7c398238
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58481568"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65139261"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>Windows および Linux での Log Analytics エージェントの管理とメンテナンス
 
-Azure Monitor で Log Analytics Windows または Linux エージェントを最初にデプロイした後、エージェントを再構成したり、ライフ サイクルの提供終了段階に達したエージェントをコンピューターから削除したりする必要があります。 これらのルーチン メンテナンス タスクを手動またはオートメーションを介して管理することで、オペレーション エラーと経費の両方を減らすことができます。
+Azure Monitor で Windows または Linux 用 Log Analytics エージェントを最初に配置した後、エージェントを再構成したり、アップグレードしたり、ライフサイクルの提供終了段階に達したエージェントをコンピューターから削除したりする必要があります。 これらのルーチン メンテナンス タスクを手動またはオートメーションを介して管理することで、オペレーション エラーと経費の両方を減らすことができます。
+
+## <a name="upgrading-agent"></a>エージェントのアップグレード
+
+Windows および Linux 用 Log Analytics エージェントは、配置のシナリオおよび VM が実行されている環境に応じて、手動または自動で最新リリースにアップグレードできます。 エージェントをアップグレードするには、次の方法を使用できます。
+
+| 環境 | インストール方法 | アップグレード方法 |
+|--------|----------|-------------|
+| Azure VM | Windows/Linux 用の Log Analytics エージェント VM 拡張機能 | プロパティ *autoUpgradeMinorVersion* を **false** に設定することによってオプトアウトするよう Azure Resource Manager テンプレートを構成していない限り、エージェントは既定で自動的にアップグレードされます。 |
+| カスタム Azure VM イメージ | Windows/Linux 用 Log Analytics エージェントの手動インストール | コマンド ラインから Windows インストーラー パッケージまたは Linux 自己解凍およびインストール可能シェル スクリプト バンドルを実行して、エージェントの最新バージョンへの VM の更新を実行する必要があります。|
+| Azure 以外の VM | Windows/Linux 用 Log Analytics エージェントの手動インストール | コマンド ラインから Windows インストーラー パッケージまたは Linux 自己解凍およびインストール可能シェル スクリプト バンドルを実行して、エージェントの最新バージョンへの VM の更新を実行する必要があります。 |
+
+### <a name="upgrade-windows-agent"></a>Windows エージェントをアップグレードする 
+
+Windows VM 上のエージェントを、Log Analytics VM 拡張機能を使用してインストールされない最新バージョンに更新するには、コマンド プロンプト、スクリプト、またはその他の自動ソリューションから実行するか、または MMASetup-\<プラットフォーム\>.msi セットアップ ウィザードを使用して実行します。  
+
+Windows エージェントの最新バージョンは、次の手順を実行することによって、Log Analytics ワークスペースからダウンロードできます。
+
+1. [Azure Portal](https://portal.azure.com) にサインインします。
+
+2. Azure Portal で、**[すべてのサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics ワークスペース]** を選択します。
+
+3. Log Analytics ワークスペースの一覧からワークスペースを選択します。
+
+4. Log Analytics ワークスペースで、**[詳細設定]**、**[接続されたソース]**、**[Windows サーバー]** の順に選択します。
+
+5. **[Windows サーバー]** ページからの適切な **[Windows エージェントのダウンロード]** を選択して、Windows オペレーティング システムのプロセッサ アーキテクチャに応じてダウンロードします。
+
+>[!NOTE]
+>Windows 用 Log Analytics エージェントのアップグレードの間は、レポート先のワークスペースの構成または再構成はサポートされていません。 エージェントを構成するには、「[ワークスペースの追加または削除](#adding-or-removing-a-workspace)」で示されているサポートされる方法のいずれかに従う必要があります。
+>
+
+#### <a name="to-upgrade-using-the-setup-wizard"></a>セットアップ ウィザードを使用してアップグレードするには
+
+1. 管理者権限を持つアカウントでコンピューターにサインオンします。
+
+2. **MMASetup-\<プラットフォーム\>.exe** を実行して、セットアップ ウィザードを開始します。
+
+3. セットアップ ウィザードの最初のページで、**[次へ]** をクリックします。
+
+4. **[Microsoft Monitoring Agent のセットアップ]** ダイアログ ボックスで、**[同意する]** をクリックしてライセンス契約に同意します。
+
+5. **[Microsoft Monitoring Agent のセットアップ]** ダイアログ ボックスで、**[アップグレード]** をクリックします。 状態ページに、アップグレードの進行状況が表示されます。
+
+6. **[Microsoft Monitoring Agent の構成が正常に完了しました。]**  ページが表示されたら、**[完了]** をクリックします。
+
+#### <a name="to-upgrade-from-the-command-line"></a>コマンド ラインからアップグレードするには
+
+1. 管理者権限を持つアカウントでコンピューターにサインオンします。
+
+2. 管理者特権でのコマンド プロンプトからエージェント インストール ファイルを抽出するには、`MMASetup-<platform>.exe /c` を実行します。ファイルの抽出先のパスを指定するように求められます。 `MMASetup-<platform>.exe /c /t:<Full Path>` 引数を渡すことでパスを指定することもできます。
+
+3. 次のコマンドを実行します。D:\ はアップグレード ログ ファイルの場所です。
+
+    ```dos
+    setup.exe /qn /l*v D:\logs\AgentUpgrade.log AcceptEndUserLicenseAgreement=1
+    ```
+
+### <a name="upgrade-linux-agent"></a>Linux エージェントをアップグレードする 
+
+以前のバージョン (1.0.0-47 以降) からのアップグレードがサポートされています。 `--upgrade` コマンドを使用してインストールを実行すると、エージェントのすべてのコンポーネントが最新バージョンにアップグレードされます。
+
+エージェントをアップグレードするには、次のコマンドを実行します。
+
+`sudo sh ./omsagent-*.universal.x64.sh --upgrade`
 
 ## <a name="adding-or-removing-a-workspace"></a>ワークスペースの追加または削除
 
 ### <a name="windows-agent"></a>Windows エージェント
+このセクションの手順は、別のワークスペースに報告したり、その構成からワークスペースを削除したりするために Windows エージェントを再構成する場合だけでなく、複数のワークスペースに報告するようにエージェントを構成する場合にも (通常、マルチホームと呼ばれます) 必要です。 複数のワークスペースに報告するよう Windows エージェントを構成することは、エージェントの初期セットアップ後に、以下で説明する方法を使うことによってのみ、実行できます。    
 
 #### <a name="update-settings-from-control-panel"></a>コントロール パネルから設定を更新する
 
 1. 管理者権限を持つアカウントでコンピューターにサインオンします。
+
 2. **[コントロール パネル]** を開きます。
+
 3. **[Microsoft Monitoring Agent]** を選択した後、**[Azure Log Analytics]** タブをクリックします。
+
 4. ワークスペースを削除する場合は、削除するワークスペースを選択し、**[削除]** をクリックします。 エージェントによる報告を停止するその他のワークスペースに対して、この手順を繰り返します。
+
 5. ワークスペースを追加する場合は、**[追加]** をクリックし、**[Log Analytics ワークスペースの追加]** ダイアログ ボックスにワークスペース ID とワークスペース キー (主キー) を貼り付けます。 コンピューターが Azure Government クラウド内の Log Analytics ワークスペースに報告する必要がある場合は、[Azure クラウド] ドロップダウン リストから [Azure US Government] を選択します。
+
 6. **[OK]** をクリックして変更を保存します。
 
 #### <a name="remove-a-workspace-using-powershell"></a>PowerShell を使用してワークスペースを削除する
@@ -109,8 +179,11 @@ $mma.ReloadConfiguration()
 #### <a name="update-settings-using-control-panel"></a>コントロール パネルを使用して設定を更新する
 
 1. 管理者権限を持つアカウントでコンピューターにサインオンします。
+
 2. **[コントロール パネル]** を開きます。
+
 3. **[Microsoft Monitoring Agent]** を選択した後、**[プロキシ設定]** タブをクリックします。
+
 4. **[プロキシ サーバーの使用]** をクリックし、プロキシ サーバーまたはゲートウェイの URL とポート番号を指定します。 プロキシ サーバーまたは Log Analytics ゲートウェイで認証が必要な場合は、認証するためのユーザー名とパスワードを入力し、**[OK]** をクリックします。
 
 #### <a name="update-settings-using-powershell"></a>PowerShell を使用して設定を更新する
@@ -165,7 +238,9 @@ Linux コンピューターがプロキシ サーバーまたは Log Analytics �
 
 #### <a name="uninstall-from-control-panel"></a>コントロール パネルからアンインストールする
 1. 管理者権限を持つアカウントでコンピューターにサインオンします。
+
 2. **コントロール パネル**を開き、**[プログラムと機能]** をクリックします。
+
 3. **[プログラムと機能]** で、**[Microsoft Monitoring Agent]** をクリックし、**[アンインストール]** をクリックし、**[はい]** をクリックします。
 
 >[!NOTE]
@@ -175,7 +250,9 @@ Linux コンピューターがプロキシ サーバーまたは Log Analytics �
 ダウンロードしたエージェント ファイルは、IExpress で作成された自己完結型インストール パッケージです。 パッケージにはエージェントとサポート ファイルのセットアップ プログラムが含まれており、次の例に示すようにコマンドラインを使用して正しくアンインストールするためには、それらを抽出する必要があります。
 
 1. 管理者権限を持つアカウントでコンピューターにサインオンします。
+
 2. 管理者特権でのコマンド プロンプトからエージェント インストール ファイルを抽出するには、`extract MMASetup-<platform>.exe` を実行します。ファイルの抽出先のパスを指定するように求められます。 `extract MMASetup-<platform>.exe /c:<Path> /t:<Path>` 引数を渡すことでパスを指定することもできます。 IExpress がサポートするコマンドライン スイッチの詳細について、[IExpress のコマンド ライン スイッチ](https://support.microsoft.com/help/197147/command-line-switches-for-iexpress-software-update-packages)に関する記事を参照し、ニーズに合うようにコード例を更新してください。
+
 3. プロンプトで、`%WinDir%\System32\msiexec.exe /x <Path>:\MOMAgent.msi /qb` を入力します。
 
 ### <a name="linux-agent"></a>Linux エージェント
@@ -191,14 +268,23 @@ System Center Operations Manager 管理グループに報告するように Wind
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
 1. 管理者権限を持つアカウントでコンピューターにサインオンします。
+
 2. **[コントロール パネル]** を開きます。
+
 3. **Microsoft Monitoring Agent** をクリックした後、**[Operations Manager]** タブをクリックします。
+
 4. Operations Manager サーバーが Active Directory と統合されている場合は、 **[管理グループの割り当てを AD DS から自動的に更新する]** をクリックします。
+
 5. **[追加]** をクリックして、**[管理グループを追加する]** ダイアログ ボックスを開きます。
+
 6. **[管理グループ名]** フィールドに、管理グループの名前を入力します。
+
 7. **[プライマリ管理サーバー]** フィールドに、プライマリ管理サーバーのコンピューター名を入力します。
+
 8. **[管理サーバー ポート]** フィールドに、TCP ポート番号を入力します。
+
 9. **[エージェント アクション アカウント]** で、ローカル システム アカウントまたはローカル ドメイン アカウントのいずれかを選択します。
+
 10. **[OK]** をクリックして **[管理グループを追加する]** ダイアログ ボックスを閉じ、さらに **[OK]** をクリックして **[Microsoft Monitoring Agent のプロパティ]** ダイアログ ボックスを閉じます。
 
 ### <a name="linux-agent"></a>Linux エージェント
@@ -207,7 +293,9 @@ System Center Operations Manager 管理グループに報告するように Linu
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
 1.  `/etc/opt/omi/conf/omiserver.conf`
+
 2. `httpsport=` で始まる行にポート 1270 が定義されていることを確認します  (例: `httpsport=1270`)。
+
 3. `sudo /opt/omi/bin/service_control restart` で OMI サーバーを再起動します。
 
 ## <a name="next-steps"></a>次の手順

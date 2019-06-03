@@ -4,12 +4,12 @@ ms.author: robinsh
 ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
-ms.openlocfilehash: 1bdf73dc6a4edf0c170b51e70fca2128d22e0eb8
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 104849557a8580e16fa1860b7919d1c0252debe9
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59804488"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66238778"
 ---
 次の表には、各サービス レベル (S1、S2、S3、F1) に関連付けられている制限がリストされています。 各レベルのそれぞれの *ユニット* のコストについては、「 [Azure IoT Hub の価格](https://azure.microsoft.com/pricing/details/iot-hub/)」を参照してください。
 
@@ -40,9 +40,9 @@ ms.locfileid: "59804488"
 | クラウドからデバイスへのメッセージの <br/> messages |100 |
 | クラウドからデバイスへのメッセージに対する <br/> フィードバック メッセージの最大配信数 |100 |
 | クラウドからデバイスへのメッセージに対する <br/> フィードバック メッセージの最大 TTL |2 日 |
-| デバイス ツインの最大サイズ <br/> (タグ、報告されるプロパティ、および必要なプロパティ) | 8 KB |
+| [デバイス ツインの最大サイズ](../articles/iot-hub/iot-hub-devguide-device-twins.md#device-twin-size) <br/> (タグ、報告されるプロパティ、および必要なプロパティ) | 8 KB |
 | デバイス ツイン文字列値の最大サイズ | 4 KB |
-| デバイス ツインのオブジェクトの最大深度 | 5 |
+| [デバイス ツインのオブジェクトの最大深度](../articles/iot-hub/iot-hub-devguide-device-twins.md#tags-and-properties-format) | 5 |
 | ダイレクト メソッドのペイロードの最大サイズ | 128 KB |
 | ジョブ履歴の最大リテンション期間 | 30 日 |
 | 同時ジョブの最大数 | 10 (S3 の場合)、5 (S2 の場合)、1 (S1 の場合) |
@@ -51,10 +51,8 @@ ms.locfileid: "59804488"
 | 同時接続デバイス ストリームの最大数 | 50 (S1、S2、S3、および F1 の場合のみ) |
 | デバイス ストリームの最大データ転送量 | 1 日あたり 300 MB (S1、S2、S3、および F1 の場合のみ) |
 
-
 > [!NOTE]
 > Azure サブスクリプションで 50 個を超える有料 IoT Hub が必要な場合は、Microsoft サポートにお問い合わせください。
-
 
 > [!NOTE]
 > 現時点では、1 つの IoT ハブに接続できるデバイスの最大数は、1,000,000 です。 この制限を引き上げるには、[Microsoft サポート](https://azure.microsoft.com/support/options/)にお問い合わせください。

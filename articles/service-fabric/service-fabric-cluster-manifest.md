@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/12/2018
 ms.author: dekapur
-ms.openlocfilehash: f94a65e469fdb3cee4f02bc5a8f6f5a4a1ea5a16
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: ae7fbef864634e47866de13384871a98b8ce4675
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662331"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65209718"
 ---
 # <a name="configuration-settings-for-a-standalone-windows-cluster"></a>スタンドアロン Windows クラスターの構成設定
 この記事では、*ClusterConfig.json* ファイルで設定できる、スタンドアロン Azure Service Fabric クラスターの構成設定について説明します。 このファイルを使って、クラスターのノード、セキュリティ構成、およびフォールト ドメインとアップグレード ドメインに関するネットワーク トポロジに関する情報を指定します。  構成設定を変更または追加した後、[スタンドアロン クラスターを作成する](service-fabric-cluster-creation-for-windows-server.md)か、[スタンドアロン クラスターの構成をアップグレードする](service-fabric-cluster-config-upgrade-windows-server.md)かのいずれかを行うことができます。
@@ -122,7 +122,7 @@ security セクションは、セキュリティで保護されたスタンド�
 }
 ```
 
-metadata はセキュリティで保護されたクラスターの説明であり、セットアップに従って設定できます。 ClusterCredentialType と ServerCredentialType によって、クラスターとノードが実装するセキュリティの種類が決まります。 これらは、証明書ベースのセキュリティの場合は *X509*、Azure Active Directory ベースのセキュリティの場合は *Windows* に設定されます。 security セクションの残りの部分は、セキュリティの種類に基づきます。 security セクションの残りの部分の記述方法については、[スタンドアロン クラスターの証明書ベースのセキュリティ](service-fabric-windows-cluster-x509-security.md)に関する記事または[スタンドアロン クラスターの Windows セキュリティ](service-fabric-windows-cluster-windows-security.md)に関する記事を参照してください。
+metadata はセキュリティで保護されたクラスターの説明であり、セットアップに従って設定できます。 ClusterCredentialType と ServerCredentialType によって、クラスターとノードが実装するセキュリティの種類が決まります。 これらは、証明書ベースのセキュリティの場合は *X509* に、Active Directory ベースのセキュリティの場合は *Windows* に設定できます。 security セクションの残りの部分は、セキュリティの種類に基づきます。 security セクションの残りの部分の記述方法については、[スタンドアロン クラスターの証明書ベースのセキュリティ](service-fabric-windows-cluster-x509-security.md)に関する記事または[スタンドアロン クラスターの Windows セキュリティ](service-fabric-windows-cluster-windows-security.md)に関する記事を参照してください。
 
 ### <a name="node-types"></a>ノード タイプ
 nodeTypes セクションでは、クラスターに含まれるノードのタイプを記述します。 次のスニペットに示すように、クラスターにはノード タイプを少なくとも 1 つ指定する必要があります。 

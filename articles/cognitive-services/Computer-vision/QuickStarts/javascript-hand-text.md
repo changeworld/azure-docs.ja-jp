@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 03/04/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 969f7dc585e7ca518936636bbdcd859747ff089b
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: c93271fcd74d1369112a2c5d2bba98fd14ff7c84
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60007034"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357209"
 ---
 # <a name="quickstart-extract-handwritten-text-using-the-rest-api-and-javascript-in-computer-vision"></a>クイック スタート:Computer Vision で REST API および JavaScript を使用して手書きテキストを抽出する
 
@@ -43,7 +43,7 @@ Computer Vision のサブスクリプション キーが必要です。 無料�
 1. `.html` 拡張子のファイルとして、コードを保存します。 たとえば、「 `get-handwriting.html` 」のように入力します。
 1. ブラウザー ウィンドウを開きます。
 1. ブラウザーで、ブラウザー ウィンドウにファイルをドラッグ アンド ドロップします。
-1. ブラウザーに Web ページが表示されたら、**[Read image]\(画像の読み取り\)** ボタンをクリックします。
+1. ブラウザーに Web ページが表示されたら、 **[Read image]\(画像の読み取り\)** ボタンをクリックします。
 
 ```html
 <!DOCTYPE html>
@@ -74,11 +74,6 @@ Computer Vision のサブスクリプション キーが必要です。 無料�
         var uriBase =
             "https://westus.api.cognitive.microsoft.com/vision/v2.0/read/core/asyncBatchAnalyze";
 
-        // Request parameter.
-        var params = {
-            "mode": "Handwritten",
-        };
-
         // Display the image.
         var sourceImageUrl = document.getElementById("inputImage").value;
         document.querySelector("#sourceImage").src = sourceImageUrl;
@@ -88,7 +83,7 @@ Computer Vision のサブスクリプション キーが必要です。 無料�
         //
         // Make the first REST API call to submit the image for processing.
         $.ajax({
-            url: uriBase + "?" + $.param(params),
+            url: uriBase,
 
             // Request headers.
             beforeSend: function(jqXHR){

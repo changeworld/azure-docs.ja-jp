@@ -12,10 +12,10 @@ ms.date: 03/19/2019
 ms.author: erhopf
 ms.custom: seodec18
 ms.openlocfilehash: 9b8e12220f220bd8183675d13e25bdcab02707fd
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 05/27/2019
 ms.locfileid: "65020852"
 ---
 # <a name="language-and-region-support-for-the-speech-services"></a>Speech Services の言語とリージョンのサポート

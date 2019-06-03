@@ -1,28 +1,21 @@
 ---
-title: API の考慮事項 | Microsoft Docs
+title: API の考慮事項 | Azure Marketplace
 description: マーケットプレース API を使用する際のバージョン管理、エラー処理、認可の問題。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: c6cfb41cb6254145821ab3fef662e9a5e54f6298
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.author: pabutler
+ms.openlocfilehash: 6bf27db27daee50f78552344ae1b2b116d48a5c0
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48808086"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64935573"
 ---
-<a name="api-considerations"></a>API の考慮事項
-=================
+# <a name="api-considerations"></a>API の考慮事項
+
 
 <a name="api-versioning"></a>API のバージョン管理
 --------------

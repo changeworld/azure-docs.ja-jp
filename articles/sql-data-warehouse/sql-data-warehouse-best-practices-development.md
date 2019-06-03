@@ -2,20 +2,20 @@
 title: Azure SQL Data Warehouse の開発のベスト プラクティス | Microsoft Docs
 description: Azure SQL Data Warehouse のソリューションを開発する際に知っておく必要がある推奨事項とベスト プラクティス。
 services: sql-data-warehouse
-author: ronortloff
+author: XiaoyuL-Preview
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: implement
+ms.subservice: development
 ms.date: 09/04/2018
-ms.author: rortloff
+ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 1682a26ba713db564484e8984010e9c12ce9d79e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 76297be79fca62b1f2f777f9cba4a0a8fe134768
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57838512"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65851632"
 ---
 # <a name="development-best-practices-for-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse の開発のベスト プラクティス
 この記事では、独自のデータ ウェアハウス ソリューションを開発するにあたってのガイダンスとベスト プラクティスについて説明します。 

@@ -5,19 +5,19 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 02/26/2019
+ms.date: 04/23/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my local site to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: 4b44eec5557d2083c38fe2714d93800f79b21b0f
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: e8e251aa5031a8eadd2d567bff2830449c7decc3
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58338447"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64689510"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>チュートリアル:Azure Virtual WAN を使用してサイト間接続を作成する
 
-このチュートリアルでは、Virtual WAN を使用して IPsec/IKE (IKEv1 と IKEv2) VPN 接続経由で Azure のリソースに接続する方法を示します。 この種類の接続では、外部接続用パブリック IP アドレスが割り当てられていてるオンプレミスの VPN デバイスが必要です。 Virtual WAN の詳細については、[Virtual WAN の概要](virtual-wan-about.md)に関するページを参照してください
+このチュートリアルでは、Virtual WAN を使用して IPsec/IKE (IKEv1 と IKEv2) VPN 接続経由で Azure のリソースに接続する方法を示します。 この種類の接続では、外部接続用パブリック IP アドレスが割り当てられていてるオンプレミスの VPN デバイスが必要です。 Virtual WAN の詳細については、[Virtual WAN の概要](virtual-wan-about.md)に関するページを参照してください。
 
 > [!NOTE]
 > 通常、多くのサイトがある場合は、[Virtual WAN パートナー](https://aka.ms/virtualwan)を利用してこの構成を作成します。 ただし、ネットワークに慣れていて、独自の VPN デバイスの構成に熟練している場合は、この構成を自分で作成することができます。
@@ -32,6 +32,7 @@ ms.locfileid: "58338447"
 > * サイトを作成する
 > * ハブを作成する
 > * ハブをサイトに接続する
+> * まだ VNet がない場合は VNet を作成します。
 > * VNet をハブに接続する
 > * VPN デバイス構成をダウンロードして適用する
 > * 仮想 WAN を表示する
@@ -40,21 +41,15 @@ ms.locfileid: "58338447"
 
 ## <a name="before-you-begin"></a>開始する前に
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
 [!INCLUDE [Before you begin](../../includes/virtual-wan-tutorial-vwan-before-include.md)]
 
-## <a name="vnet"></a>1.仮想ネットワークの作成
-
-[!INCLUDE [Create a virtual network](../../includes/virtual-wan-tutorial-vnet-include.md)]
-
-## <a name="openvwan"></a>2.仮想 WAN を作成する
+## <a name="openvwan"></a>1.仮想 WAN を作成する
 
 ブラウザーから [Azure ポータル](https://aka.ms/azurevirtualwanpreviewfeatures) に移動し、Azure アカウントでサインインします。
 
 [!INCLUDE [Create a virtual WAN](../../includes/virtual-wan-tutorial-vwan-include.md)]
 
-## <a name="site"></a>3.サイトを作成する
+## <a name="site"></a>2.サイトを作成する
 
 物理的な場所に合わせて必要な数のサイトを作成します。 たとえば、NY、ロンドン、および LA にブランチ オフィスがある場合は、3 つの別個のサイトを作成します。 これらのサイトには、オンプレミス VPN デバイスのエンドポイントが含まれています。 現時点では、サイトに対してプライベート アドレス空間を 1 つだけ指定できます。
 
@@ -62,36 +57,42 @@ ms.locfileid: "58338447"
 2. **[VPN サイト]** ページで **[+ サイトの作成]** をクリックします。
 3. **[サイトの作成]** ページで、次のフィールドに入力します。
 
-   * **[名前]** - これは、オンプレミスのサイトの呼称です。
-   * **[パブリック IP アドレス]** - これは、オンプレミスのサイトにある VPN デバイスのパブリック IP アドレスです。
+   * **[名前]** - オンプレミスのサイトの呼称。
+   * **[パブリック IP アドレス]** - オンプレミスのサイトにある VPN デバイスのパブリック IP アドレス。
    * **[プライベート アドレス空間]** - これは、オンプレミスのサイトにある IP アドレス空間です。 このアドレス空間宛てのトラフィックは、ローカル サイトにルーティングされます。
    * **[サブスクリプション]** - サブスクリプションを確認します。
    * **[リソース グループ]** - 使用するリソース グループ。
-   * **場所**。
-4. **[詳細設定の表示]** をクリックして追加の設定を表示します。 **[BGP]** を選択して BGP を有効にすることができます。Azure のこのサイト用に作成されたすべての接続でこの機能が有効になります。 **[デバイス情報]** (省略可能なフィールド) に入力することもできます。 これにより、Azure チームがお客様の環境をよりよく理解し、将来の最適化の可能性を追加したり、トラブルシューティングに役立てることができます。
+   * **場所**
+4. **[詳細設定の表示]** をクリックして追加の設定を表示します。 **[BGP]** を選択して BGP を有効にすることができます。Azure のこのサイト用に作成されたすべての接続で BGP 機能が有効になります。 **[デバイス情報]** (省略可能なフィールド) に入力することもできます。 これにより、Azure チームがお客様の環境をよりよく理解し、将来の最適化の可能性を追加したり、トラブルシューティングを行ったりするのに役立ちます。
 5. **[Confirm]\(確認\)** をクリックします。
 6. **[確認]** をクリックすると、VPN サイト ページに状態が表示されます。 このサイトは "**プロビジョニング中**" から "**プロビジョニング済み**" に切り替わります。
 
-## <a name="hub"></a>4.ハブを作成する
+## <a name="hub"></a>3.ハブを作成する
 
 [!INCLUDE [Create a hub](../../includes/virtual-wan-tutorial-hub-include.md)]
 
-## <a name="associate"></a>5.サイトをハブに関連付ける
+## <a name="associate"></a>4.サイトをハブに関連付ける
 
 ハブは、通常、VNet が存在するリージョンと同じリージョンにあるサイトに関連付ける必要があります。
 
-1. **[VPN サイト]** ページで、ハブに関連付ける 1 つまたは複数のサイトを選択し、**[+ 新しいハブの関連付け]** をクリックします。
-2. **[Associate sites with one or more hubs]\(サイトを 1 つまたは複数のハブと関連付ける\)** ページで、ドロップダウンからハブを選択します。 サイトを追加のハブと関連付けるには、**[関連付けの追加]** をクリックします。
+1. **[VPN サイト]** ページで、ハブに関連付ける 1 つまたは複数のサイトを選択し、 **[+ 新しいハブの関連付け]** をクリックします。
+2. **[Associate sites with one or more hubs]\(サイトを 1 つまたは複数のハブと関連付ける\)** ページで、ドロップダウンからハブを選択します。 サイトを追加のハブと関連付けるには、 **[関連付けの追加]** をクリックします。
 3. ここで特定の **PSK** を追加するか、既定値を使用することもできます。
 4. **[Confirm]\(確認\)** をクリックします。
 5. **[VPN サイト]** ページで接続状態を表示できます。
+
+## <a name="vnet"></a>5.仮想ネットワークの作成
+
+VNet がまだない場合は、PowerShell または Azure portal を使用して簡単に作成できます。 VNet が既にある場合は、VNet が必要な条件を満たしていて、仮想ネットワーク ゲートウェイがないことを確認します。
+
+[!INCLUDE [Create a virtual network](../../includes/virtual-wan-tutorial-vnet-include.md)]
 
 ## <a name="vnet"></a>6.VNet をハブに接続する
 
 この手順では、ハブと VNet の間にピアリング接続を作成します。 接続する VNet ごとにこれらの手順を繰り返します。
 
-1. 仮想 WAN のページで、**[仮想ネットワーク接続]** をクリックします。
-2. 仮想ネットワーク接続のページで、**[+ 接続の追加]** をクリックします。
+1. 仮想 WAN のページで、 **[仮想ネットワーク接続]** をクリックします。
+2. 仮想ネットワーク接続のページで、 **[+ 接続の追加]** をクリックします。
 3. **[接続の追加]** ページで、次のフィールドに入力します。
 
     * **[接続名]** - 接続に名前を付けます。
@@ -104,7 +105,7 @@ ms.locfileid: "58338447"
 
 オンプレミス VPN デバイスを構成するには、VPN デバイス構成を使用します。
 
-1. 仮想 WAN のページで、**[概要]** をクリックします。
+1. 仮想 WAN のページで、 **[概要]** をクリックします。
 2. [概要] ページの上部にある **[VPN 構成をダウンロードする]** をクリックします。 Azure により、リソース グループ "microsoft-network-[location]" にストレージ アカウントが作成されます。ここで、location は WAN の場所です。 VPN デバイスに構成を適用した後は、このストレージ アカウントを削除できます。
 3. ファイルの作成が完了したら、リンクをクリックしてファイルをダウンロードできます。
 4. VPN デバイスに構成を適用します。
@@ -114,7 +115,7 @@ ms.locfileid: "58338447"
 デバイス構成ファイルには、オンプレミスの VPN デバイスを構成するときに使用する構成が含まれています。 このファイルを表示すると、次の情報を確認できます。
 
 * **vpnSiteConfiguration -** このセクションは、仮想 WAN に接続するサイトとして設定されたデバイスの詳細を示します。 ブランチ デバイスの名前とパブリック IP アドレスが含まれています。
-* **vpnSiteConnections -** このセクションには、次の情報が含まれています。
+* **vpnSiteConnections -** このセクションには、次の設定に関する情報が含まれています。
 
     * 仮想ハブ VNet の**アドレス空間**<br>例:
  
@@ -126,7 +127,7 @@ ms.locfileid: "58338447"
          ```
         "ConnectedSubnets":["10.2.0.0/16","10.30.0.0/16"]
          ```
-    * 仮想ハブ vpngateway の **IP アドレス**。 vpngateway にはアクティブ/アクティブ構成の 2 つのトンネルで構成される接続があるため、このファイルには両方の IP アドレスが示されています。 この例では、サイトごとに "Instance0" と "Instance1" が表示されています。<br>例:
+    * 仮想ハブ vpngateway の **IP アドレス**。 vpngateway の各接続はアクティブ/アクティブ構成の 2 つのトンネルで構成されているため、このファイルには両方の IP アドレスが示されています。 この例では、サイトごとに "Instance0" と "Instance1" が表示されています。<br>例:
 
         ``` 
         "Instance0":"104.45.18.186"
@@ -261,7 +262,7 @@ ms.locfileid: "58338447"
 ## <a name="viewhealth"></a>9.リソースの正常性を表示する
 
 1. WAN に移動します。
-2. WAN のページの **[サポート + トラブルシューティング]** セクションで、**[正常性]** をクリックしてリソースを表示します。
+2. WAN のページの **[サポート + トラブルシューティング]** セクションで、 **[正常性]** をクリックしてリソースを表示します。
 
 ## <a name="connectmon"></a>10.接続を監視する
 

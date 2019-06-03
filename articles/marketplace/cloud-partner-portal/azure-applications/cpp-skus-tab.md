@@ -1,25 +1,18 @@
 ---
-title: Azure アプリケーション オファーの SKU を構成する | Microsoft Docs
+title: Azure アプリケーション オファーの SKU を構成する | Azure Marketplace
 description: Azure マネージド アプリケーションと Azure ソリューション テンプレートの SKU を構成する方法。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: dan-wesley
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
-ms.date: 12/06/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 5d6ec0197699f603c79f414e015cdebcde6b9f60
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 04/23/2019
+ms.author: pabutler
+ms.openlocfilehash: ef4ea2419c64d0376023ea5d291460df48a51c63
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58905615"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64943454"
 ---
 # <a name="azure-application-skus-tab"></a>Azure アプリケーション SKU タブ
 
@@ -44,22 +37,25 @@ ms.locfileid: "58905615"
 
 ### <a name="sku-details-for-a-solution-template"></a>ソリューション テンプレートの SKU 詳細
 
-次の SKU 設定を指定します。
+次の画面キャプチャは、ソリューション テンプレートの SKU 詳細のフォームを示しています。
 
-- **[タイトル]** - SKU のタイトル。 このタイトルは、ギャラリーでこの項目に対して表示されます。
-- **[概要]** - SKU の概要の簡単な説明  (最大文字数は 100 文字です)。
-- **[説明]** - SKU の詳細な説明。
-- **[SKU の種類]** - "ソリューション テンプレート" と "マネージド アプリケーション" という値が含まれるドロップダウン リスト。 このシナリオでは、**[Solution Template]\(ソリューション テンプレート\)** を選択します。
-- **[Cloud Availability]\(クラウドの可用性\)** - SKU の場所。 既定値は **[パブリック Azure]** です。
-パブリック Azure - この仮想マシンは、Marketplace に統合しているすべてのパブリック Azure リージョン内の顧客へデプロイ可能になります。
-- **Azure Government Cloud** - この仮想マシンは Azure Government Cloud にデプロイされます。 [Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners) に発行する前に、パブリッシャーがソリューションをテストし、環境で想定どおりに動作することを検証することをお勧めします。 ステージングおよびテストするには、[試用版アカウント](https://azure.microsoft.com/offers/ms-azr-usgov-0044p/)をリクエストします。
+![ソリューション テンプレートの SKU 詳細のフォーム](./media/azureapp-sku-details-solutiontemplate.png)
 
-  >[!NOTE] 
-  >Microsoft Azure Government は政府用クラウドであり、米国連邦政府、州、地域または部族の顧客、およびこれらの団体にサービスを提供する資格を持つパートナー向けにアクセスが規制されています。
+次の SKU 値を指定します。  アスタリスクが付いているフィールドは必須です。
 
-- **Is this a private SKU? (プライベート SKU か)** – この SKU が一部の顧客グループのみ利用できる場合、[はい] を選択します。
+|    フィールド         |       説明                                                            |
+|  ---------       |     ---------------                                                          |
+|  **[Title]\(タイトル\)\***     | SKU のタイトル。 このタイトルは、ギャラリーでこの項目に対して表示されます。   |
+| **[Summary]\(概要\)\***    | SKU の概要の簡単な説明 (最大文字数は 100 文字です)。  |
+| **説明\*** | SKU の詳細な説明。 基本的な HTML がサポートされています。                 | 
+| **[SKU の種類]\***   | Azure アプリケーション ソリューションの種類。このシナリオでは、* **[Solution Template]\(ソリューション テンプレート\)** を選択します。 |
+| **[クラウドの可用性]\*** | SKU の場所。 既定値は **[パブリック Azure]** です。  <b/>   **[パブリック Azure]** - アプリは、Marketplace に統合しているすべてのパブリック Azure リージョン内の顧客へデプロイ可能になります。  <b/>   **[Azure Government Cloud]** - アプリは Azure Government Cloud にデプロイされます。 [Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners) に発行する前に、パブリッシャーがソリューションをテストし、この環境で想定どおりに動作することを検証することをお勧めします。 ステージングおよびテストするには、[試用版アカウント](https://azure.microsoft.com/offers/ms-azr-usgov-0044p/)をリクエストします。  |
+| **[Is this a private SKU?]\(プライベート SKU か\)\*** | – この SKU が一部の顧客グループのみ利用できる場合、 **[はい]** を選択します。 |
+|   |   |
 
-    ![ソリューション テンプレートの SKU 詳細のフォーム](./media/azureapp-sku-details-solutiontemplate.png)
+  > [!NOTE] 
+  > Microsoft Azure Government は政府用クラウドであり、米国連邦政府、州、地域または部族の顧客、およびこれらの団体にサービスを提供する資格を持つパートナー向けにアクセスが規制されています。
+
 
 ### <a name="sku-details-for-managed-application"></a>マネージド アプリケーションの SKU 詳細
 
@@ -67,51 +63,45 @@ ms.locfileid: "58905615"
 
    ![マネージド アプリケーションの SKU 詳細のフォーム](./media/azureapp-sku-details-managedapplication.png)
 
-次の SKU 設定を構成します。
+次の SKU 設定を構成します。 アスタリスクが付いているフィールドは必須です。
 
-- **[タイトル]** - SKU のタイトル。 このタイトルは、ギャラリーでこの項目に対して表示されます。
-- **[概要]** - SKU の概要の簡単な説明  (最大文字数は 100 文字です)。
-- **[説明]** - SKU の詳細な説明。
-- **[SKU の種類]** - "ソリューション テンプレート" と "マネージド アプリケーション" という値が含まれるドロップダウン リスト。 このシナリオでは、**[マネージド アプリケーション]** を選択します。
-- **[Cloud Availability]\(クラウドの可用性\)** - SKU の場所。 既定値は **[パブリック Azure]** です。
-- **パブリック Azure** - この仮想マシンは、Marketplace に統合しているすべてのパブリック Azure リージョン内の顧客へデプロイ可能になります。
-- **Azure Government Cloud** - この仮想マシンは Azure Government Cloud にデプロイされます。 [Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners) に発行する前に、パブリッシャーがソリューションをテストし、環境で想定どおりに動作することを検証することをお勧めします。 ステージングおよびテストするには、[試用版アカウント](https://azure.microsoft.com/offers/ms-azr-usgov-0044p/)をリクエストします。
+|    フィールド         |       説明                                                            |
+|  ---------       |     ---------------                                                          |
+|  **[Title]\(タイトル\)\***     | SKU のタイトル。 このタイトルは、ギャラリーでこの項目に対して表示されます。   |
+| **[Summary]\(概要\)\***    | SKU の概要の簡単な説明 (最大文字数は 100 文字です)。  |
+| **説明\*** | SKU の詳細な説明。 基本的な HTML がサポートされています。                 | 
+| **[SKU の種類]\***   | Azure アプリケーション ソリューションの種類。このシナリオでは、* **[Managed Application]\(マネージド アプリケーション\)** を選択します。 
+| **[クラウドの可用性]\*** | SKU の場所。 既定値は **[パブリック Azure]** です。  <b/>   **[パブリック Azure]** - アプリは、Marketplace に統合しているすべてのパブリック Azure リージョン内の顧客へデプロイ可能になります。  <b/>   **[Azure Government Cloud]** - アプリは Azure Government Cloud にデプロイされます。 [Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners) に発行する前に、パブリッシャーがソリューションをテストし、この環境で想定どおりに動作することを検証することをお勧めします。 ステージングおよびテストするには、[試用版アカウント](https://azure.microsoft.com/offers/ms-azr-usgov-0044p/)をリクエストします。   Microsoft Azure Government は政府用クラウドであり、米国連邦政府、州、地域または部族の顧客、およびこれらの団体にサービスを提供する資格を持つパートナー向けにアクセスが規制されています。 |
+| **[Is this a private SKU?]\(プライベート SKU か\)\*** | – この SKU が一部の顧客グループのみ利用できる場合、 **[はい]** を選択します。 |
+| **[国/リージョンの可用性]\*** | 利用できる国/リージョンの一覧を表示するには、 **[Select regions]\(リージョンの選択\)** を使用します。 国またはリージョンごとにチェックマークを入れ、 **[OK]** を選択して選択内容を保存します。  <b/>   ![[利用可能な国とリージョンの一覧]](./media/azure-app-select-country-region.png)  |
+| **[Old Pricing]\(以前の価格\)\*** | SKU の月額 (米国ドル)。 価格は構成時、最新の為替レートを使用して現地通貨で設定されます。 設定した価格は有効性を確認してください。最終的に、ここの設定が自分のものになります。 各国/各リージョンの価格を個別に設定または表示するには、価格スプレッドシートをエクスポートし、カスタム価格と共にインポートします。  価格データのエクスポート/インポートを有効にするには、価格設定変更を保存する必要があります。  |
+| **[Simplified Currency Pricing]\(簡略化された通貨による価格\)\*** | SKU の月額 (米国ドル)。 これは [Old Pricing]\(以前の価格\) と同じにする必要があります。 詳細については、「[簡略化された通貨による価格](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-update-existing-offer)」を参照してください。 |
+|  |  |
 
-  >[!NOTE] 
-  >Microsoft Azure Government は政府用クラウドであり、米国連邦政府、州、地域または部族の顧客、およびこれらの団体にサービスを提供する資格を持つパートナー向けにアクセスが規制されています。
-
-- **Is this a private SKU? (プライベート SKU か)** – この SKU が一部の顧客グループのみ利用できる場合、[はい] を選択します。
-- **国/リージョンの可用性** – 利用できる国/リージョンの一覧を表示するには、**[Select regions]\(リージョンの選択\)** を使用します。 国またはリージョンごとにチェックマークを入れ、**[OK]** を選択して選択内容を保存します。 
-
-   ![利用可能な国とリージョンの一覧](./media/azure-app-select-country-region.png)
-
-- **Old Pricing (以前の価格)** – SKU の月額を USD で入力します。 価格は構成時、最新の為替レートを使用して現地通貨で設定されます。 設定した価格は有効性を確認してください。最終的に、ここの設定が自分のものになります。 各国/各リージョンの価格を個別に設定または表示するには、価格スプレッドシートをエクスポートし、カスタム価格と共にインポートします。
-
-  >[!NOTE]
-  >価格データのエクスポート/インポートを有効にするには、価格設定変更を保存します。
-
-- **Simplified Currency Pricing (簡略化された通貨による価格)** – SKU の月額を USD で入力します。 これは [Old Pricing]\(以前の価格\) と同じにする必要があります。 詳細については、「[簡略化された通貨による価格](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-update-existing-offer)」を参照してください。
 
 ### <a name="package-details-for-solution-template"></a>ソリューション テンプレートのパッケージ詳細
 
-次のパッケージ詳細を指定してください。
+   ![ソリューション テンプレートのパッケージ詳細](./media/azureapp-sku-pkgdetails-solutiontemplate.png)
 
-- **バージョン** - アップロードするパッケージのバージョン。 バージョン タグが X.Y.Z 形式である必要がある (X、Y、Z は整数)。
-- **パッケージ ファイル (.zip)** - このパッケージには、次のファイルが含まれています。ファイルは .zip ファイルに保存されています。
+次の **[パッケージ詳細]** の値を指定してください。  アスタリスクが付いているフィールドは必須です。
+
+- **[バージョン]\*** - アップロードするパッケージのバージョン。 バージョン タグが X.Y.Z 形式である必要がある (X、Y、Z は整数)。
+- **[パッケージ ファイル (.zip)]\*** - このパッケージには、.zip ファイルに保存された次のファイルが含まれています。
   - MainTemplate.json - デプロイ テンプレート ファイル。ソリューションまたはアプリケーションをデプロイしたり、そのソリューションに対して定義されたリソースを作成したりするために使用されます。 詳細については、[デプロイ テンプレート ファイルの作成方法](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template)に関するページを参照してください。
   - createUIDefinition.json - このファイルは、このソリューションまたはアプリケーションをプロビジョニングするためのユーザー インターフェイスを生成するために、Azure portal によって使用されます。 詳細については、「[マネージド アプリケーション用の Azure portal のユーザー インターフェイスを作成する](https://docs.microsoft.com/azure/azure-resource-manager/managed-application-createuidefinition-overview)」を参照してください。
 
   >[!IMPORTANT] 
   >入れ子になったテンプレートまたはスクリプトがこのアプリケーションのプロビジョニングに必要であれば、このパッケージに含めてください。 MainTemplate.json ファイルと createUIDefinition.json ファイルは、ルート フォルダーに存在する必要があります。
 
-   ![ソリューション テンプレートのパッケージ詳細](./media/azureapp-sku-pkgdetails-solutiontemplate.png)
 
 ### <a name="package-details-for-managed-application"></a>マネージド アプリケーションのパッケージ詳細
 
-次のパッケージ詳細を指定してください。
+   ![マネージド アプリケーションのパッケージ詳細](./media/azureapp-sku-pkgdetails-managedapplication.png)
 
-- **バージョン** - アップロードするパッケージのバージョン。 バージョン タグが X.Y.Z 形式である必要がある (X、Y、Z は整数)。
-- **パッケージ ファイル (.zip)** - このパッケージには、次のファイルが含まれています。ファイルは .zip ファイルに保存されています。
+次の [パッケージ詳細] を指定してください。  アスタリスクが付いているフィールドは必須です。
+
+- **[バージョン]\*** - アップロードするパッケージのバージョン。 バージョン タグが X.Y.Z 形式である必要がある (X、Y、Z は整数)。
+- **[パッケージ ファイル (.zip)]\*** - このパッケージには、.zip ファイルに保存された次のファイルが含まれています。
   - applianceMainTemplate.json - デプロイ テンプレート ファイル。ソリューション/アプリケーションをデプロイしたり、定義されたリソースを作成したりする目的で使用されます。 詳細については、「[クイック スタート: Azure portal を使用した Azure Resource Manager テンプレートの作成とデプロイ](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal)」を参照してください。 
   - applianceCreateUIDefinition.json - このファイルは、このソリューション/アプリケーションをプロビジョニングするためのユーザー インターフェイスを生成するために Azure Portal によって使用されます。 詳細については、「[マネージド アプリケーション用の Azure portal のユーザー インターフェイスを作成する](https://docs.microsoft.com/azure/azure-resource-manager/managed-application-createuidefinition-overview)」を参照してください。
   - mainTemplate.json - Microsoft.Solution/appliances リソースのみを含むテンプレート ファイル。 詳細については、「[Azure Resource Manager テンプレートの構造と構文の詳細](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates)」をご覧ください。 <br>
@@ -123,24 +113,23 @@ ms.locfileid: "58905615"
   >[!IMPORTANT] 
   >入れ子になったテンプレートまたはスクリプトがこのアプリケーションのプロビジョニングに必要であれば、このパッケージに含めてください。 MainTemplate.json、applianceMainTemplate.json、applianceCreateUIDefinition.json は、ルート フォルダーに置く必要があります。
 
-- **[テナント ID]** - 組織の Azure Active Directory テナント ID。
-- **[Enable JIT Access?]\(JIT アクセスの有効化\)** – このオファーを使用し、顧客デプロイの Just-In-Time 管理アクセスを有効にするには、**[はい]** を選択します。
+- **[テナント ID]\*** - 組織の Azure Active Directory テナント ID。
+- **[Enable JIT Access?]\(JIT アクセスの有効化\)\*** – このオファーを使用し、顧客デプロイの Just-In-Time 管理アクセスを有効にするには、 **[はい]** を選択します。
 
   >[!NOTE] 
   >JIT を有効にした場合、JIT アクセスをサポートするように CreateUiDefinition.json ファイルを更新する必要があります。
 
-   ![マネージド アプリケーションのパッケージ詳細](./media/azureapp-sku-pkgdetails-managedapplication.png)
-
 マネージド アプリケーションの場合、承認設定とポリシー設定を構成する必要があります。
+
 
 #### <a name="authorization"></a>Authorization
 
 アクセス許可を付与するユーザー、グループ、アプリケーションの Azure Active Directory ID をマネージド リソース グループに追加します。 付与されるアクセス許可はロール定義 ID によって示されます。所有者、共同作成者、またはカスタム ロールになります。
 
+
 #### <a name="policy-settings"></a>ポリシー設定
 
 マネージド アプリが準拠するポリシーを追加します。 Azure リソース ポリシーの詳細ついては、「[Azure Policy とは](../../../governance/policy/overview.md)」をご覧ください。
-
 
    ![マネージド アプリケーションの承認設定とポリシー設定](./media/azureapp-sku-details-managedapp-auth-policy.png)
 
@@ -163,6 +152,7 @@ ms.locfileid: "58905615"
 
 4. **[ポリシー SKU]** については、ポリシー SKU の種類として Free または Standard を選択します。 監査ポリシーには Standard SKU が必要です。
 
+
 ## <a name="next-steps"></a>次の手順
 
-[[Marketplace] タブ](./cpp-marketplace-tab.md)
+[[Marketplace]](./cpp-marketplace-tab.md) タブで、オファーについてさらに説明し、マーケティング資産を提供します。 

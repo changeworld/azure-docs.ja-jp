@@ -9,12 +9,12 @@ ms.subservice: ink-recognizer
 ms.topic: article
 ms.date: 05/02/2019
 ms.author: aahi
-ms.openlocfilehash: c3f5c3ae8501f3114920f3b06f7f8cafa05e83bb
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 6237253922544dc47bb11aec4dd58139f99eb0da
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65406560"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65518625"
 ---
 # <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-java"></a>クイック スタート:Ink Recognizer REST API および Java を使用したデジタル インクの認識
 
@@ -36,7 +36,7 @@ ms.locfileid: "65406560"
     - [JSON in Java](https://mvnrepository.com/artifact/org.json/json) パッケージ
     - [Apache HttpClient](https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient) パッケージ
 
-- このクイックスタートのインク ストローク データのサンプルは、[GitHub](https://go.microsoft.com/fwlink/?linkid=2089904) にあります。
+- このクイックスタートのインク ストローク データのサンプルは、[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/InkRecognition/quickstart/example-ink-strokes.json) にあります。
 
 [!INCLUDE [cognitive-services-ink-recognizer-signup-requirements](../../../../includes/cognitive-services-ink-recognizer-signup-requirements.md)]
 
@@ -134,7 +134,7 @@ static void recognizeInk(String requestData) {
 
 ## <a name="run-the-application-and-view-the-response"></a>アプリケーションを実行し、応答を表示する
 
-アプリケーションを実行します。 成功応答が JSON 形式で返されます。 JSON 応答は [GitHub](https://go.microsoft.com/fwlink/?linkid=2089904) でも確認できます。
+アプリケーションを実行します。 成功応答が JSON 形式で返されます。 JSON 応答は [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/InkRecognition/quickstart/example-response.json) でも確認できます。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -3,8 +3,8 @@ title: GPO を使用して IE 用 Azure アクセス パネル拡張機能をデ
 description: グループ ポリシーを使用してマイ アプリ ポータル用の Internet Explorer アドオンをデプロイする方法。
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.devlang: na
@@ -12,16 +12,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/08/2018
-ms.author: celested
+ms.author: mimart
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c7dfdd46714d367b61248d9376ce3e8888bb1ef7
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 9b6f069489738e9dceeee350a36aa2b45715a314
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56176970"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65825028"
 ---
 # <a name="how-to-deploy-the-access-panel-extension-for-internet-explorer-using-group-policy"></a>グループ ポリシーを使用して Internet Explorer 用アクセス パネル拡張機能をデプロイする方法
 このチュートリアルでは、グループ ポリシーを使用して Internet Explorer 用のアクセス パネル拡張機能をユーザーのコンピューターにリモートでインストールする方法を示します。 この拡張機能は、 [パスワード ベースのシングル サインオン](what-is-single-sign-on.md#password-based-sso)を使用するように構成されているアプリにサインインする必要がある Internet Explorer ユーザーに必要なものです。

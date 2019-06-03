@@ -1,21 +1,22 @@
 ---
 title: Azure Data Lake Storage Gen2 ストレージ アカウントを作成する | Microsoft Docs
-description: Azure portal、Azure PowerShell、または Azure CLI を使用して、Data Lake Storage Gen2 にアクセスできる新しいストレージ アカウントを作成する方法をすばやく学習します
+description: Azure portal、Azure PowerShell、または Azure CLI を使用して、Data Lake Storage Gen2 にアクセスできる新しいストレージ アカウントを作成する方法をすばやく学習します。
 services: storage
-author: jamesbak
+author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: quickstart
 ms.date: 12/06/2018
-ms.author: jamesbak
-ms.openlocfilehash: 50cd039395b477a93d050458c2a014e768fc5f0a
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.author: normesta
+ms.reviewer: jamesbak
+ms.openlocfilehash: 18132ac4c218c766efdc9a9afae2cc3508c4f732
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59995678"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64939422"
 ---
-# <a name="quickstart-create-an-azure-data-lake-storage-gen2-storage-account"></a>クイック スタート: Azure Data Lake Storage Gen2 ストレージ アカウントを作成する
+# <a name="quickstart-create-an-azure-data-lake-storage-gen2-storage-account"></a>クイック スタート:Azure Data Lake Storage Gen2 ストレージ アカウントを作成する
 
 Azure Data Lake Storage Gen2 では、Hadoop 分散ファイル システム (HDFS) と連携するように調整された、ネイティブ ディレクトリベースのファイル システムを提供する[階層型名前空間がサポート](data-lake-storage-introduction.md)されています。 HDFS から Data Lake Storage Gen2 データにアクセスするには、[ABFS ドライバー](data-lake-storage-abfs-driver.md)を使用します。
 
@@ -69,7 +70,7 @@ Azure CLI はローカルにインストールして使用することもでき�
 
 Azure Portal でリソース グループを作成するには、次の手順に従います。
 
-1. Azure Portal で左側のメニューを展開してサービスのメニューを開き、**[リソース グループ]** を選択します。
+1. Azure Portal で左側のメニューを展開してサービスのメニューを開き、 **[リソース グループ]** を選択します。
 2. **[追加]** ボタンをクリックして新しいリソース グループを追加します。
 3. 新しいリソース グループの名前を入力します。
 4. 新しいリソース グループを作成するサブスクリプションを選択します。
@@ -85,7 +86,7 @@ Azure Portal で汎用 v2 ストレージ アカウントを作成するには�
 > [!NOTE]
 > 階層型名前空間は現在、すべてのパブリック リージョンで利用できます。
 
-1. Azure Portal で左側のメニューを展開してサービスのメニューを開き、**[すべてのサービス]** を選択します。 次に、下へスクロールして **[ストレージ]** の **[ストレージ アカウント]** を選択します。 表示された **[ストレージ アカウント]** ウィンドウで **[追加]** を選択します。
+1. Azure Portal で左側のメニューを展開してサービスのメニューを開き、 **[すべてのサービス]** を選択します。 次に、下へスクロールして **[ストレージ]** の **[ストレージ アカウント]** を選択します。 表示された **[ストレージ アカウント]** ウィンドウで **[追加]** を選択します。
 2. 先ほど作成した**サブスクリプション**と**リソース グループ**を選択します。
 3. ストレージ アカウントの名前を入力します。
 4. **[場所]** を **[米国西部 2]** に設定します
@@ -93,7 +94,7 @@ Azure Portal で汎用 v2 ストレージ アカウントを作成するには�
 6. ストレージ アカウントを作成するサブスクリプションを選択します。
 7. **[次へ] > [詳細]** の順に選択します。
 8. **[セキュリティ]** および **[仮想ネットワーク]** フィールド下の値は既定の設定のままにします。
-9. **[Data Lake Storage Gen2]** セクションで、**[階層構造の名前空間]** を **[有効]** に設定します。
+9. **[Data Lake Storage Gen2]** セクションで、 **[階層構造の名前空間]** を **[有効]** に設定します。
 10. **[確認および作成]** をクリックして、ストレージ アカウントを作成します。
 
     ![Azure portal でのストレージ アカウントの作成を示したスクリーンショット](./media/data-lake-storage-quickstart-create-account/azure-data-lake-storage-account-create-advanced.png)
@@ -104,8 +105,8 @@ Azure Portal で汎用 v2 ストレージ アカウントを作成するには�
 
 Azure Portal を使用してリソース グループを削除するには:
 
-1. Azure Portal で左側のメニューを展開してサービスのメニューを開き、**[リソース グループ]** を選択して、リソース グループの一覧を表示します。
-2. 削除するリソース グループを見つけて、一覧の右側にある **[詳細]** ボタン (**...**) を右クリックします。
+1. Azure Portal で左側のメニューを展開してサービスのメニューを開き、 **[リソース グループ]** を選択して、リソース グループの一覧を表示します。
+2. 削除するリソース グループを見つけて、一覧の右側にある **[詳細]** ボタン ( **...** ) を右クリックします。
 3. **[リソース グループの削除]** を選択し、確認します。
 
 ## <a name="create-an-account-using-powershell"></a>PowerShell を使用してアカウントを作成する

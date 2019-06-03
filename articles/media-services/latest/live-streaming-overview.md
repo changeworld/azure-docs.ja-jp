@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services を使用したライブ ストリーミングの概要 | Microsoft Docs
+title: Azure Media Services v3 を使用したライブ ストリーミングの概要 | Microsoft Docs
 description: この記事では、Azure Media Services v3 を使用したライブ ストリーミングの概要を説明します。
 services: media-services
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 04/03/2019
 ms.author: juliako
-ms.openlocfilehash: ad8e84d84665b20bfff53cf09473bc8bce9760d8
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 3cd22b89852706ed129373fd24ca9a9d9a27d25b
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58916038"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65153372"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Azure Media Services v3 を使用したライブ ストリーミング
 
@@ -26,7 +26,7 @@ Azure Media Services では、Azure クラウドで顧客にライブ イベン�
 
 - ライブ イベントをキャプチャするために使用するカメラ。<br/>設定のアイデアについては、「[Simple and portable event video gear setup (シンプルでポータブルなイベント ビデオ機器の設定)]( https://link.medium.com/KNTtiN6IeT)」を参照してください。
 
-    カメラにアクセスできない場合は、[Telestream Wirecast](http://www.telestream.net/wirecast/overview.htm) などのツールを使用して、ビデオ ファイルからライブ フィードを生成できます。
+    カメラにアクセスできない場合は、[Telestream Wirecast](https://www.telestream.net/wirecast/overview.htm) などのツールを使用して、ビデオ ファイルからライブ フィードを生成できます。
 - カメラ (またはノート PC などのデバイス) からの信号を Media Services に送信される投稿フィードに変換するライブ ビデオ エンコーダー。 投稿フィードでは、SCTE-35 マーカーなどの広告に関連する信号を含めることができます。<br/>推奨されるライブ ストリーミング エンコーダーの一覧については、[ライブ ストリーミング エンコーダー](recommended-on-premises-live-encoders.md)に関するページを参照してください。 また、ブログ「[Live streaming production with OBS (OBS を使用したライブ ストリーミングの製作)](https://link.medium.com/ttuwHpaJeT)」も参照してください。
 - コンテンツの取り込み、プレビュー、パッケージ、録画、暗号化、ライブ イベントのブロードキャスト (顧客のほか、CDN に配信して広域配信することもできる) を可能にする、Media Services のコンポーネント。
 
@@ -37,7 +37,7 @@ Azure Media Services では、Azure クラウドで顧客にライブ イベン�
 
 ## <a name="dynamic-packaging"></a>ダイナミック パッケージ
 
-Media Services では、ダイナミック パッケージ (dynamic-packaging-overview.md) を利用して、サービスに送信する投稿フィードからのライブ ストリームを [MPEG DASH、HLS、および Smooth Streaming 形式](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)でプレビューしてブロードキャストできます。 視聴者は、HLS、DASH、またはスムーズ ストリーミングと互換性のある任意のプレーヤーを使用して、ライブ ストリームを再生できます。 これらいずれかのプロトコルでストリームを配信するために、Web またはモバイル アプリケーションの [Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/index.html) を使用することができます。
+Media Services では、[ダイナミック パッケージ](dynamic-packaging-overview.md)を利用して、サービスに送信される投稿フィードからのライブ ストリームを [MPEG DASH、HLS、および Smooth Streaming 形式](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)でプレビューしてブロードキャストできます。 視聴者は、HLS、DASH、またはスムーズ ストリーミングと互換性のある任意のプレーヤーを使用して、ライブ ストリームを再生できます。 これらいずれかのプロトコルでストリームを配信するために、Web またはモバイル アプリケーションの [Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/index.html) を使用することができます。
 
 ## <a name="dynamic-encryption"></a>動的暗号化
 
@@ -73,7 +73,7 @@ Media Services v3 のライブ ストリーミング ワークフローを理解
 
 ### <a name="general-steps"></a>一般的な手順
 
-1. Media Services アカウントで、**ストリーミング エンドポイント**が実行されていることを確認します。 
+1. Media Services アカウントで、**ストリーミング エンドポイント** (配信元) が実行されていることを確認します。 
 2. [ライブ イベント](live-events-outputs-concept.md)を作成します。 <br/>イベントの作成時に、そのイベントを自動開始するように設定できます。 または、ストリーミングを開始する準備ができたら、イベントを開始できます。<br/> 自動開始が true に設定されている場合、ライブ イベントは作成の直後に開始されます。 ライブ イベントの実行が開始されるとすぐに課金が開始されます。 それ以上の課金を停止するには、ライブ イベント リソースの Stop を明示的に呼び出す必要があります。 詳細については、[ライブ イベントの状態と課金](live-event-states-billing.md)に関するページを参照してください。
 3. 取り込み URL を取得し、その URL を使用して投稿フィードを送信するようにオンプレミス エンコーダーを構成します。<br/>「[おすすめのライブ エンコーダー](recommended-on-premises-live-encoders.md)」を参照してください。
 4. プレビュー URL を取得し、それを使用して、エンコーダーからの入力が実際に受信されていることを確認します。
@@ -81,7 +81,7 @@ Media Services v3 のライブ ストリーミング ワークフローを理解
 6. **ライブ出力**を作成し、作成した資産の名前を使用します。<br/>**ライブ出力**により、ストリームが**資産**にアーカイブされます。
 7. 組み込みの**ストリーミング ポリシー** タイプで**ストリーミング ロケーター**を作成します。<br/>コンテンツを暗号化する場合は、「[コンテンツ保護の概要](content-protection-overview.md)」を確認してください。
 8. 使用する URL を返すためのパスを**ストリーミング ロケーター**に列挙します (これらは決定論的です)。
-9. ストリーミングする**ストリーミング エンドポイント**のホスト名を取得します。
+9. ストリーミングする**ストリーミング エンドポイント** (配信元) のホスト名を取得します。
 10. 手順 8.の URL と手順 9 のホスト名を組み合わせて、完全な URL を取得します。
 11. **ライブ イベント**の公開をやめる場合は、イベントのストリーミングを停止し、**ストリーミング ロケーター**を削除する必要があります。
 
@@ -92,6 +92,10 @@ Media Services v3 のライブ ストリーミング ワークフローを理解
 - [ライブ イベントの種類の機能の比較](live-event-types-comparison.md)
 - [状態と課金](live-event-states-billing.md)
 - [待機時間](live-event-latency.md)
+
+## <a name="ask-questions-give-feedback-get-updates"></a>質問、フィードバックの送信、最新情報の入手
+
+「[Azure Media Services community (Azure Media Services コミュニティ)](media-services-community.md)」を参照して、さまざまな質問の方法、フィードバックする方法、Media Services に関する最新情報の入手方法を確認してください。
 
 ## <a name="next-steps"></a>次の手順
 

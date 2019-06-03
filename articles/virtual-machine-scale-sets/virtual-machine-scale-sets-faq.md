@@ -4,7 +4,7 @@ description: 仮想マシン スケール セットについてよく寄せら�
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: mayanknayar
-manager: jeconnoc
+manager: drewm
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
@@ -13,15 +13,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/13/2019
+ms.date: 04/25/2019
 ms.author: manayar
 ms.custom: na
-ms.openlocfilehash: 56a31770c374cdccaec4dbee751925a6da00fa59
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: b5af6c5007130d71f94e1fa748adc333a8d08a48
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59683955"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64689317"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure Virtual Machine Scale Sets の FAQ
 
@@ -140,7 +140,7 @@ PowerShell を使用して仮想マシン スケール セットに対する自�
 
 ## <a name="certificates"></a>証明書
 
-### <a name="how-do-i-securely-ship-a-certificate-to-the-vm-how-do-i-provision-a-virtual-machine-scale-set-to-run-a-website-where-the-ssl-for-the-website-is-shipped-securely-from-a-certificate-configuration-the-common-certificate-rotation-operation-would-be-almost-the-same-as-a-configuration-update-operation-do-you-have-an-example-of-how-to-do-this"></a>証明書を VM に安全に配布するにはどうすればよいですか。 Web サイトの SSL が証明書の構成から安全に配布される Web サイトを実行するための仮想マシン スケール セットのプロビジョニング方法を教えてください。 (一般的な証明書交換操作は構成の更新操作とほぼ同じです。)具体的な例はありますか。
+### <a name="how-do-i-securely-ship-a-certificate-to-the-vm"></a>証明書を VM に安全に配布するにはどうすればよいですか。
 
 VM に対して証明書を安全に配布するには、お客様のキー コンテナーから Windows の証明書ストアに直接、証明書をインストールします。
 
@@ -167,14 +167,12 @@ VM に対して証明書を安全に配布するには、お客様のキー コ�
 詳細については、[仮想マシン スケール セットの作成または更新](https://msdn.microsoft.com/library/mt589035.aspx)に関するページを参照してください。
 
 
-### <a name="example-of-self-signed-certificates-provisioned-for-azure-service-fabric-clusters"></a>Azure Service Fabric クラスター用にプロビジョニングされた自己署名証明書の例
+### <a name="how-do-i-use-self-signed-certificates-provisioned-for-azure-service-fabric-clusters"></a>Azure Service Fabric クラスター用にプロビジョニングされた自己署名証明書の使用方法
 最新の例については、Azure シェル内で次の Azure CLI ステートメントを使用し、Service Fabric CLI モジュール例のドキュメント (StdOut に出力されます) を参照してください。
 
 ```bash
 az sf cluster create -h
 ```
-
-Azure の最新の API でサポートされる証明書操作については、Key Vault のドキュメントを参照してください。
 
 証明機関によって提供される分散型の信頼を自己署名証明書を使用して実現することはできません。エンタープライズ運用ソリューションのホストとして使用することを目的とした Service Fabric クラスターに自己署名証明書は使用しないでください。Service Fabric の詳しいセキュリティ ガイダンスについては、「[Azure Service Fabric セキュリティに関するベスト プラクティス](https://docs.microsoft.com/azure/security/azure-service-fabric-security-best-practices)」と「[Service Fabric クラスターのセキュリティに関するシナリオ](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/)」を参照してください。
 
@@ -202,9 +200,7 @@ Azure の最新の API でサポートされる証明書操作については、
 }
 ```
 
-この JSON ブロックは、[GitHub の 101-vm-sshkey クイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-sshkey/azuredeploy.json)で使用されています。
-
-この OS プロファイルは、[GitHub の grelayhost.json クイック スタート テンプレート](https://github.com/ExchMaster/gadgetron/blob/master/Gadgetron/Templates/grelayhost.json)でも使用されています。
+この JSON ブロックは、[この Azure クイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-sshkey/azuredeploy.json)で使用されています。
 
 詳細については、[仮想マシン スケール セットの作成または更新](https://msdn.microsoft.com/library/azure/mt589035.aspx#linuxconfiguration)に関するページを参照してください。
 
@@ -212,9 +208,9 @@ Azure の最新の API でサポートされる証明書操作については、
 
 今後非推奨の証明書を削除するには、コンテナーの証明書一覧からその古い証明書を削除します。 コンピューターに残しておきたい証明書はすべて一覧に残しておいてください。 この操作ですべての VM から証明書が削除されるわけではありません。 また、仮想マシン スケール セットに作成された新しい VM にその証明書が追加されることもありません。
 
-既存の VM から証明書を削除するには、証明書ストアから証明書を手動で削除するカスタム スクリプト拡張機能を作成する必要があります。
+既存の VM から証明書を削除するには、証明書ストアから証明書を手動で削除するカスタム スクリプト拡張機能を使用します。
 
-### <a name="how-do-i-inject-an-existing-ssh-public-key-into-the-virtual-machine-scale-set-ssh-layer-during-provisioning-i-want-to-store-the-ssh-public-key-values-in-azure-key-vault-and-then-use-them-in-my-resource-manager-template"></a>プロビジョニング時に、既存の SSH 公開キーを仮想マシン スケール セットの SSH レイヤーに挿入するにはどうすればよいですか。 SSH 公開キー値を Azure Key Vault に格納し、Resource Manager テンプレートで使用したいと思っています。
+### <a name="how-do-i-inject-an-existing-ssh-public-key-into-the-virtual-machine-scale-set-ssh-layer-during-provisioning"></a>プロビジョニング時に、既存の SSH 公開キーを仮想マシン スケール セットの SSH レイヤーに挿入するにはどうすればよいですか。
 
 VM に提供するのが SSH の公開キーだけであれば、その公開キーを Key Vault に配置する必要はありません。 公開キーはシークレットではないためです。
 
@@ -234,8 +230,8 @@ SSH 公開キーは、Linux VM の作成時にプレーン テキストで提供
 ```
 
 linuxConfiguration の要素名 | 必須 | Type | 説明
---- | --- | --- | --- 
-ssh | いいえ  | コレクション | Linux OS の SSH キーの構成を指定します。
+--- | --- | --- | ---
+ssh | いいえ | コレクション | Linux OS の SSH キーの構成を指定します。
 path | はい | String | SSH キーまたは証明書を配置する Linux ファイル パスを指定します。
 keyData | はい | String | Base64 でエンコードされた SSH 公開キーを指定します。
 
@@ -303,16 +299,6 @@ CRP コンポーネントは、ユーザーのシークレットを保持しま�
 
 スケールアウト時には、この問題が発生することはありません。(単一ファブリック テナント モデルでは) Azure Service Fabric にシークレットのコピーがキャッシュされているためです。
 
-### <a name="why-do-i-have-to-specify-the-exact-location-for-the-certificate-url-httpsname-of-the-vaultvaultazurenet443secretsexact-location-as-indicated-in-service-fabric-cluster-security-scenarioshttpsazuremicrosoftcomdocumentationarticlesservice-fabric-cluster-security"></a>「[Service Fabric クラスターのセキュリティに関するシナリオ](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/)」によれば、証明書 URL (\/\/\<コンテナーの名前>.vault.azure.net:443/secrets/\<正確な場所>) には場所を厳密に指定する必要がありますが、それはなぜですか。
-
-Azure Key Vault のドキュメントに記載されているように、Get Secret REST API は、バージョンが指定されていない場合にシークレットの最新バージョンを返します。
-
-Method | URL
---- | ---
-GET | <https://mykeyvault.vault.azure.net/secrets/{secret-name}/{secret-version}?api-version={api-version}>
-
-{*secret-name*} を取得するシークレットの名前に置き換え、{*secret-version*} をそのシークレットのバージョンに置き換えます。 シークレットのバージョンを除外しても間違いではありません。 その場合は、最新バージョンが取得されます。
-
 ### <a name="why-do-i-have-to-specify-the-certificate-version-when-i-use-key-vault"></a>Key Vault を使用するときに、証明書のバージョンを指定する必要があるのはなぜですか。
 
 証明書のバージョンを指定するという Key Vault の要件の目的は、VM にデプロイされる証明書をユーザーに明確に示すためです。
@@ -325,7 +311,7 @@ VM を作成してからキー コンテナーのシークレットを更新し�
 
 詳細については、「[X509Certificate.Export メソッド (X509ContentType, String)](https://msdn.microsoft.com/library/24ww6yzk(v=vs.110.aspx))」を参照してください。
 
-### <a name="i-do-not-see-an-option-for-users-to-pass-in-certificates-as-base64-strings-most-other-resource-providers-have-this-option"></a>ユーザーが Base64 文字列として証明書を渡す方法がわかりません。 他のリソース プロバイダーには、多くの場合、この方法が用意されています。
+### <a name="how-do-i-pass-in-certificates-as-base64-strings"></a>Base64 文字列として証明書で渡す方法
 
 Base64 文字列として証明書を渡す動作をエミュレートするには、Resource Manager テンプレート内で、バージョン管理された最新の URL を抽出してください。 Resource Manager テンプレートに次の JSON プロパティを追加します。
 
@@ -355,7 +341,7 @@ Base64 文字列として証明書を渡す動作をエミュレートするに�
 
 ### <a name="does-managed-identities-for-azure-resourceshttpsdocsmicrosoftcomazureactive-directorymsi-overview-work-with-virtual-machine-scale-sets"></a>[Azure リソースのマネージド ID](https://docs.microsoft.com/azure/active-directory/msi-overview) は仮想マシン スケール セットで機能しますか。
 
-はい。 Azure Quickstart テンプレートで、いくつかのサンプル MSI テンプレートを確認できます。 Linux: [https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi)。 Windows: [https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi)。
+はい。 [Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi) および [Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi) 用の Azure Quickstart テンプレートで、いくつかのサンプル MSI テンプレートを確認できます。
 
 
 ## <a name="extensions"></a>Extensions
@@ -378,46 +364,19 @@ Update-AzVmss -ResourceGroupName "resource_group_name" -VMScaleSetName "vmssName
 
 Azure Monitor ログと統合する仮想マシン スケール セット テンプレートの例については、[Azure Service Fabric クラスターをデプロイし、Azure Monitor ログを使って監視を有効にする方法](https://github.com/krnese/AzureDeploy/tree/master/OMS/MSOMS/ServiceFabric)に関するページの 2 番目の例を参照してください。
 
-### <a name="extensions-seem-to-run-in-parallel-on-virtual-machine-scale-sets-this-causes-my-custom-script-extension-to-fail-what-can-i-do-to-fix-this"></a>拡張機能が仮想マシン スケール セットで並列実行されているようです。 それが原因で、カスタム スクリプト拡張機能が失敗します。 修正するにはどうすればよいですか。
-
-仮想マシン スケール セットにおける拡張機能の実行順序については、[Azure Virtual Machine Scale Sets における拡張機能の実行順序](https://msftstack.wordpress.com/2016/05/12/extension-sequencing-in-azure-vm-scale-sets/)に関するページを参照してください。
-
-### <a name="how-do-i-reset-the-password-for-vms-in-my-virtual-machine-scale-set"></a>仮想マシン スケール セットの VM のパスワードをリセットするにはどうすればよいですか。
-
-スケール セット内の VM のパスワードを変更する主な方法は 2 つあります。
-
-- 仮想マシン スケール セット モデルを直接変更する。 Compute API 2017-12-01 以降で実行できます。
-
-    スケール セット モデルの管理者資格情報を直接更新します (たとえば Azure Resource Explorer、PowerShell、CLI を使用します)。 スケール セットが更新されると、すべての新しい VM では新しい資格情報が使用されます。 既存の VM では、新しい資格情報は、それらが再イメージ化された場合のみ使用されます。
-
-- VM アクセス拡張機能を使用してパスワードをリセットする。
-
-    次の PowerShell サンプルを使用します。
-
-    ```powershell
-    $vmssName = "myvmss"
-    $vmssResourceGroup = "myvmssrg"
-    $publicConfig = @{"UserName" = "newuser"}
-    $privateConfig = @{"Password" = "********"}
-
-    $extName = "VMAccessAgent"
-    $publisher = "Microsoft.Compute"
-    $vmss = Get-AzVmss -ResourceGroupName $vmssResourceGroup -VMScaleSetName $vmssName
-    $vmss = Add-AzVmssExtension -VirtualMachineScaleSet $vmss -Name $extName -Publisher $publisher -Setting $publicConfig -ProtectedSetting $privateConfig -Type $extName -TypeHandlerVersion "2.0" -AutoUpgradeMinorVersion $true
-    Update-AzVmss -ResourceGroupName $vmssResourceGroup -Name $vmssName -VirtualMachineScaleSet $vmss
-    ```
-
 ### <a name="how-do-i-add-an-extension-to-all-vms-in-my-virtual-machine-scale-set"></a>仮想マシン スケール セットのすべての VM に拡張機能を追加するにはどうすればよいですか。
 
 更新ポリシーが**自動**に設定されている場合は、拡張機能の新しいプロパティが含まれたテンプレートを再デプロイすると、すべての VM が更新されます。
 
 更新ポリシーが**手動**に設定されている場合は、まず拡張機能を更新したうえで、VM のすべてのインスタンスを手動で更新する必要があります。
 
-### <a name="if-the-extensions-associated-with-an-existing-virtual-machine-scale-set-are-updated-are-existing-vms-affected-that-is-will-the-vms-not-match-the-virtual-machine-scale-set-model-or-are-they-ignored-when-an-existing-machine-is-service-healed-or-reimaged-are-the-scripts-that-are-currently-configured-on-the-virtual-machine-scale-set-executed-or-are-the-scripts-that-were-configured-when-the-vm-was-first-created-used"></a>既存の仮想マシン スケール セットに関連付けられている拡張機能を更新した場合、既存の VM に影響はありますか  (つまり、既存の VM は仮想マシン スケール セット モデルと "*一致しなくなる*" のでしょうか)。それとも VM は無視されますか。 既存のマシンでサービス復旧や再イメージ化などを実行する場合、仮想マシン スケール セットで現在構成されているスクリプトと、その VM を最初に作成したときに構成されたスクリプトのどちらが使用されるのでしょうか。
+### <a name="if-the-extensions-associated-with-an-existing-virtual-machine-scale-set-are-updated-are-existing-vms-affected"></a>既存の仮想マシン スケール セットに関連付けられている拡張機能を更新した場合、既存の VM に影響はありますか
 
 仮想マシン スケール セット モデル内の拡張機能の定義を更新した場合、upgradePolicy プロパティが**自動**に設定されていれば VM が更新されます。 upgradePolicy プロパティが**手動**に設定されている場合は、拡張機能がモデルと一致しないことを示すフラグが設定されます。
 
-既存の VM でサービス復旧を実行した場合、これは VM の再起動と同様であり、拡張機能は再実行されません。 既存の VM を再イメージ化した場合、これは OS ドライブをソース イメージに置き換えた場合と同様です。 最新モデルの特性 (拡張機能など) が実行されます。
+### <a name="are-extensions-run-again-when-an-existing-machine-is-service-healed-or-reimaged"></a>既存のマシンがサービス復旧や再イメージ化される場合に拡張機能は再実行されますか?
+
+既存の VM でサービス復旧を実行した場合、これは VM の再起動と同様であり、拡張機能は再実行されません。 VM を再イメージ化した場合、プロセスは OS ドライブをソース イメージに置き換えた場合と同様になります。 最新モデルの特性 (拡張機能など) が再実行されます。
 
 ### <a name="how-do-i-join-a-virtual-machine-scale-set-to-an-active-directory-domain"></a>仮想マシン スケール セットを Active Directory ドメインに参加させるにはどうすればよいですか。
 
@@ -450,7 +409,7 @@ Azure Monitor ログと統合する仮想マシン スケール セット テン
 }
 ```
 
-### <a name="my-virtual-machine-scale-set-extension-is-trying-to-install-something-that-requires-a-reboot-for-example-commandtoexecute-powershellexe--executionpolicy-unrestricted-install-windowsfeature-name-fs-resource-manager-includemanagementtools"></a>私の仮想マシン スケール セット拡張機能が、何か再起動を必要とするものをインストールしようとしています。 たとえば、"commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted Install-WindowsFeature –Name FS-Resource-Manager –IncludeManagementTools" などです。
+### <a name="my-virtual-machine-scale-set-extension-is-trying-to-install-something-that-requires-a-reboot"></a>私の仮想マシン スケール セット拡張機能が、何か再起動を必要とするものをインストールしようとしています。
 
 仮想マシン スケール セット拡張機能で、再起動を必要とするものをインストールしようとしている場合、Azure Automation Desired State Configuration (Automation DSC) 拡張機能を使用してください。 オペレーティング システムが Windows Server 2012 R2 の場合、Azure は Windows Management Framework (WMF) 5.0 セットアップをプルし、再起動して構成を続行します。
 
@@ -473,9 +432,36 @@ Add-AzVmssExtension -VirtualMachineScaleSet $VMSS -Name "IaaSAntimalware" -Publi
 Update-AzVmss -ResourceGroupName $rgname -Name $vmssname -VirtualMachineScaleSet $VMSS
 ```
 
-### <a name="i-need-to-execute-a-custom-script-thats-hosted-in-a-private-storage-account-the-script-runs-successfully-when-the-storage-is-public-but-when-i-try-to-use-a-shared-access-signature-sas-it-fails-this-message-is-displayed-missing-mandatory-parameters-for-valid-shared-access-signature-linksas-works-fine-from-my-local-browser"></a>プライベート ストレージ アカウントでホストされているカスタム スクリプトを実行する必要があります。 ストレージがパブリックのときは正常に実行されますが、Shared Access Signature (SAS) を使用しようとすると失敗します。 次のメッセージが表示されます。"有効な Shared Access Signature で必須のパラメーターがありません" Link+SAS は、ローカル ブラウザーから正常に動作しています。
+### <a name="how-do-i-execute-a-custom-script-thats-hosted-in-a-private-storage-account"></a>プライベート ストレージ アカウントでホストされているカスタム スクリプトを実行する方法
 
-プライベート ストレージ アカウントでホストされているカスタム スクリプトを実行するには、ストレージ アカウント キーとストレージ アカウント名を使用して保護された設定を構成します。 詳細については、「[Windows でのカスタムのスクリプト拡張機能](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-extensions-customscript/#template-example-for-a-windows-vm-with-protected-settings)」を参照してください。
+プライベート ストレージ アカウントでホストされているカスタム スクリプトを実行するには、ストレージ アカウント キーとストレージ アカウント名を使用して保護された設定を構成します。 詳細については、「[Custom Script Extension](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-extensions-customscript/#template-example-for-a-windows-vm-with-protected-settings)」 (カスタムのスクリプト拡張機能) を参照してください。
+
+## <a name="passwords"></a>パスワード
+
+### <a name="how-do-i-reset-the-password-for-vms-in-my-virtual-machine-scale-set"></a>仮想マシン スケール セットの VM のパスワードをリセットするにはどうすればよいですか。
+
+スケール セット内の VM のパスワードを変更する主な方法は 2 つあります。
+
+- 仮想マシン スケール セット モデルを直接変更する。 API 2017-12-01 以降で利用できます。
+
+    スケール セット モデルの管理者資格情報を直接更新します (たとえば Azure Resource Explorer、PowerShell、CLI を使用します)。 スケール セットが更新されると、すべての新しい VM では新しい資格情報が使用されます。 既存の VM では、新しい資格情報は、それらが再イメージ化された場合のみ使用されます。
+
+- VM アクセス拡張機能を使用してパスワードをリセットする。
+
+    次の PowerShell サンプルを使用します。
+
+    ```powershell
+    $vmssName = "myvmss"
+    $vmssResourceGroup = "myvmssrg"
+    $publicConfig = @{"UserName" = "newuser"}
+    $privateConfig = @{"Password" = "********"}
+
+    $extName = "VMAccessAgent"
+    $publisher = "Microsoft.Compute"
+    $vmss = Get-AzVmss -ResourceGroupName $vmssResourceGroup -VMScaleSetName $vmssName
+    $vmss = Add-AzVmssExtension -VirtualMachineScaleSet $vmss -Name $extName -Publisher $publisher -Setting $publicConfig -ProtectedSetting $privateConfig -Type $extName -TypeHandlerVersion "2.0" -AutoUpgradeMinorVersion $true
+    Update-AzVmss -ResourceGroupName $vmssResourceGroup -Name $vmssName -VirtualMachineScaleSet $vmss
+    ```
 
 ## <a name="networking"></a>ネットワーク
 
@@ -533,10 +519,6 @@ IP アドレスは指定したサブネットから選択されます。
 
 既存の Azure 仮想ネットワークに仮想マシン スケール セットをデプロイする方法については、[仮想マシン スケール セットを既存の仮想ネットワークにデプロイする方法](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-existing-vnet)に関するページを参照してください。
 
-### <a name="how-do-i-add-the-ip-address-of-the-first-vm-in-a-virtual-machine-scale-set-to-the-output-of-a-template"></a>仮想マシン スケール セットの最初の VM の IP アドレスをテンプレートの出力に追加するにはどうすればよいですか。
-
-仮想マシン スケール セットの最初の VM の IP アドレスをテンプレートの出力に追加する方法については、「[Azure Resource Manager:Get virtual machine scale sets private IPs](https://stackoverflow.com/questions/42790392/arm-get-vmsss-private-ips)」(Azure Resource Manager: 仮想マシン スケール セットのプライベート IP を取得する) をご覧ください。
-
 ### <a name="can-i-use-scale-sets-with-accelerated-networking"></a>高速ネットワークでスケール セットを使用できますか?
 
 はい。 高速ネットワークを使用するには、スケール セットの networkInterfaceConfigurations 設定で enableAcceleratedNetworking を true に設定します。 たとえば、次のように入力します。
@@ -592,7 +574,7 @@ VM 数が 2 台未満の仮想マシン スケール セットを作成する理
 
 ### <a name="how-do-i-change-the-number-of-vms-in-a-virtual-machine-scale-set"></a>仮想マシン スケール セットの VM の数を変更するにはどうすればよいですか。
 
-Azure Portal で仮想マシン スケール セットの VM 数を変更するには、仮想マシン スケール セットのプロパティ セクションで、[スケーリング] ブレードをクリックし、スライダー バーを使用します。 インスタンス数を変更する他の方法については、「[Change the instance count of a virtual machine scale set (仮想マシン スケール セットのインスタンス数を変更する)](https://msftstack.wordpress.com/2016/05/13/change-the-instance-count-of-an-azure-vm-scale-set/)」をご覧ください。
+Azure Portal で仮想マシン スケール セットの VM 数を変更するには、仮想マシン スケール セットのプロパティ セクションで、[スケーリング] ブレードをクリックし、スライダー バーを使用します。
 
 ### <a name="how-do-i-define-custom-alerts-for-when-certain-thresholds-are-reached"></a>特定のしきい値に達したときのカスタム アラートを定義するにはどうすればよいですか。
 
@@ -623,7 +605,7 @@ Azure Portal で仮想マシン スケール セットの VM 数を変更する�
                 },
                 "webhooks": [
                     {
-                        "serviceUri": "https://events.pagerduty.com/integration/0b75b57246814149b4d87fa6e1273687/enqueue",
+                        "serviceUri": "<service uri>",
                         "properties": {
                             "key1": "custommetric",
                             "key2": "scalevmss"
@@ -636,7 +618,6 @@ Azure Portal で仮想マシン スケール セットの VM 数を変更する�
 }
 ```
 
-この例では、しきい値に達すると、アラートが Pagerduty.com に送信されます。
 
 ## <a name="patching-and-operations"></a>修正プログラムの適用と操作
 
@@ -652,11 +633,9 @@ Azure Portal で既存のリソース グループにスケール セットを�
 
 仮想マシン スケール セットを新しいイメージに更新し、パッチの適用を管理する方法については、「[仮想マシン スケール セットのアップグレード](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-upgrade-scale-set)」を参照してください。
 
-### <a name="can-i-use-the-reimage-operation-to-reset-a-vm-without-changing-the-image-that-is-i-want-reset-a-vm-to-factory-settings-rather-than-to-a-new-image"></a>イメージを変更せずに、再イメージ化操作を使用して VM をリセットすることはできますか  (つまり、新しいイメージにではなく、出荷時の設定に VM をリセットできますか)。
+### <a name="can-i-use-the-reimage-operation-to-reset-a-vm-without-changing-the-image-that-is-i-want-reset-a-vm-to-factory-settings-rather-than-to-a-new-image"></a>イメージを変更せずに、再イメージ化操作を使用して VM をリセットすることはできますか (つまり、新しいイメージにではなく、出荷時の設定に VM をリセットできますか)。
 
 はい。イメージを変更せずに、再イメージ化操作を使用して VM をリセットできます。 ただし、`version = latest` が指定されたプラットフォーム イメージを仮想マシン スケール セットが参照している場合、`reimage` を呼び出すと、VM が新しい OS イメージに更新される可能性があります。
-
-詳細については、[仮想マシン スケール セットのすべての VM の管理](https://docs.microsoft.com/rest/api/virtualmachinescalesets/manage-all-vms-in-a-set)に関するページを参照してください。
 
 ### <a name="is-it-possible-to-integrate-scale-sets-with-azure-monitor-logs"></a>複数のスケール セットを Azure Monitor ログに統合することはできますか。
 
@@ -707,7 +686,7 @@ Azure portal の Log Analytics ワークスペースに、必要な workspaceId 
 
 いいえ。仮想マシン スケール セットの VM にそれぞれ異なる拡張機能の引数を渡すことはできません。 ただし、拡張機能は、それが実行される VM の一意のプロパティ (マシン名など) に基づいて動作することができます。 また、拡張機能から http://169.254.169.254 でインスタンスのメタデータを照会して、VM についての詳細情報を取得することもできます。
 
-### <a name="why-are-there-gaps-between-my-virtual-machine-scale-set-vm-machine-names-and-vm-ids-for-example-0-1-3"></a>仮想マシン スケール セット VM のマシン名や VM ID に欠落があるのはなぜですか  例: 0、1、3...
+### <a name="why-are-there-gaps-between-my-virtual-machine-scale-set-vm-machine-names-and-vm-ids-for-example-0-1-3"></a>仮想マシン スケール セット VM のマシン名や VM ID に欠落があるのはなぜですか 例: 0、1、3...
 
 仮想マシン スケール セット VM のマシン名や VM ID に欠落があるのは、仮想マシン スケール セットの**過剰プロビジョニング** プロパティが既定値の **true** に設定されているためです。 過剰プロビジョニングが **true** の場合、要求した数よりも多くの VM が作成されます。 その後、余分な VM が削除されます。 この場合、連続した名前付けと連続した NAT (ネットワーク アドレス変換) 規則が失われる代わりに、デプロイの信頼性が向上します。
 
@@ -722,25 +701,25 @@ Azure portal の Log Analytics ワークスペースに、必要な workspaceId 
   - このシナリオに関連して、独自の自動スケール エンジンを作成しており、エンドツーエンドのスケーリングを高速化したい。
 - 仮想マシン スケール セットが障害ドメインまたは更新ドメインに対して均等に分散されていない。 その原因として、VM を選択的に削除したか、過剰プロビジョニング後に VM を削除したことが考えられます。 仮想マシン スケール セットに対して `stop deallocate` の後に `start` を実行すると、障害ドメインまたは更新ドメインに VM が均等に分散されます。
 
-### <a name="how-do-i-take-a-snapshot-of-a-vmss-instance"></a>VMSS インスタンスのスナップショットはどのように取得しますか。
-VMSS のインスタンスからスナップショットを作成します。
+### <a name="how-do-i-take-a-snapshot-of-a-virtual-machine-scale-set-instance"></a>仮想マシン スケール セットのインスタンスのスナップショットを取得する方法
+仮想マシン スケール セット のインスタンスからスナップショットを作成します。
 
 ```azurepowershell-interactive
 $rgname = "myResourceGroup"
 $vmssname = "myVMScaleSet"
 $Id = 0
 $location = "East US"
- 
+
 $vmss1 = Get-AzVmssVM -ResourceGroupName $rgname -VMScaleSetName $vmssname -InstanceId $Id     
 $snapshotconfig = New-AzSnapshotConfig -Location $location -AccountType Standard_LRS -OsType Windows -CreateOption Copy -SourceUri $vmss1.StorageProfile.OsDisk.ManagedDisk.id
 New-AzSnapshot -ResourceGroupName $rgname -SnapshotName 'mySnapshot' -Snapshot $snapshotconfig
-``` 
- 
+```
+
 スナップショットからマネージド ディスクを作成します。
 
 ```azurepowershell-interactive
 $snapshotName = "myShapshot"
 $snapshot = Get-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotName  
 $diskConfig = New-AzDiskConfig -AccountType Premium_LRS -Location $location -CreateOption Copy -SourceResourceId $snapshot.Id
-$osDisk = New-AzDisk -Disk $diskConfig -ResourceGroupName $rgname -DiskName ($snapshotName + '_Disk') 
+$osDisk = New-AzDisk -Disk $diskConfig -ResourceGroupName $rgname -DiskName ($snapshotName + '_Disk')
 ```

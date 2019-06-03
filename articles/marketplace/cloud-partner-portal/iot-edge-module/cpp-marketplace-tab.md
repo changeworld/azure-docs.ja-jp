@@ -1,30 +1,23 @@
 ---
-title: Azure IoT Edge モジュール用のマーケットプレースの説明 | Microsoft Docs
+title: Azure IoT Edge モジュール用のマーケットプレースの説明 | Azure Marketplace
 description: IoT Edge モジュール用のマーケットプレースの説明を作成します。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: dan-wesley
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
-ms.date: 10/18/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 30f44e0e8bae4071403b5c28cd4133970fc4d468
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 04/24/2019
+ms.author: pabutler
+ms.openlocfilehash: aa0c908e18233926965d8dc3cd1b474f876b8dda
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58010955"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64942426"
 ---
 # <a name="iot-edge-module-marketplace-tab"></a>IoT Edge モジュールの [Marketplace] タブ
 
+**[新しいプラン]** ページの **[Marketplace]** タブでは、マーケティング、販売、および法律に関する情報と契約を見込み客に提供できるほか、マーケットプレースによって生成されるリードを管理できます。 この長いフォームは、4 つのセクションに分かれています: **[概要]** 、 **[Marketing Artifacts]\(マーケティングの成果物\)** 、 **[Lead Management]\(潜在顧客の管理\)** 、 **[法的情報]** 。
 
-**[新しいプラン]** ページの **[Marketplace]** タブでは、マーケティング、販売、および法律に関する情報と契約を見込み客に提供できるほか、マーケットプレースによって生成されるリードを管理できます。 この長いフォームは、4 つのセクションに分かれています: **[概要]**、**[Marketing Artifacts]\(マーケティングの成果物\)**、**[Lead Management]\(潜在顧客の管理\)**、**[法的情報]**。
 
 ## <a name="overview"></a>概要
 
@@ -32,22 +25,25 @@ ms.locfileid: "58010955"
 
 ![IoT Edge モジュール用の [新しいプラン] フォームにある [Marketplace] タブの [概要] セクション](./media/iot-edge-module-marketplace-tab-overview.png)
 
-次の表では、これらのフィールドの目的および内容について説明しています。
+次の表では、これらのフィールドの目的および内容について説明しています。 必須フィールドはアスタリスク (*) で示されます。
 
 |  **フィールド**                |     **説明**                                                          |
 |  ---------                |     ---------------                                                          |
-| **タイトル**                 | プランのタイトル。 マーケットプレースで目立つように表示されます。  最大長は 50 文字です。 <!--ADD PICTURE IN ACTION-->|
-| **まとめ**               | プランの短い要約。 最大長は 100 文字です。 <!--ADD PICTURE IN ACTION-->|
-| **Long Summary (長い要約)**          | プランのより長い要約 (**[要約]** と同じでもかまいません)。  最大長は 256 文字です。 <!--ADD PICTURE IN ACTION-->|
-| **説明**           | プランの説明。  最大長は 3,000 文字で、単純な HTML 書式がサポートされています。<br/> 末尾に*最小ハードウェア要件*の段落が含まれている必要があります。 次に例を示します。 <br/> <p><u>最小ハードウェア要件:</u> Linux x64 および arm32 OS、1 GB の RAM、500 MB のストレージ</p>
-| **Marketing Identifier (マーケティング識別子)**  | このプランに関連付ける一意の URL。通常、組織およびソリューションの名前が含まれ、最大長は 50 文字です。  例:  <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleIoTEdgeModule`  |
+| **タイトル\***                 | プランのタイトル。 マーケットプレースで目立つように表示されます。  最大長は 50 文字です。 <!--ADD PICTURE IN ACTION-->|
+| **要約\***               | プランの短い要約。 最大長は 100 文字です。 <!--ADD PICTURE IN ACTION-->|
+| **[Long Summary]\(長い要約\)\***          | プランのより長い要約 ( **[要約]** と同じでもかまいません)。  最大長は 256 文字です。 <!--ADD PICTURE IN ACTION-->|
+| **説明\***           | プランの説明。  最大長は 3,000 文字で、単純な HTML 書式がサポートされています。<br/> 末尾に*最小ハードウェア要件*の段落が含まれている必要があります。 次に例を示します。 <br/> <p><u>最小ハードウェア要件:</u> Linux x64 および arm32 OS、1 GB の RAM、500 MB のストレージ</p>
+| **[Marketing Identifier]\(マーケティング識別子\)\***  | このプランに関連付ける一意の URL。通常、組織およびソリューションの名前が含まれ、最大長は 50 文字です。  例: <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleIoTEdgeModule`  |
 | **Preview Subscription IDs (プレビュー サブスクリプション ID)** | 1 から 100 個のプレビューアーのサブスクリプション識別子を追加します。 ホワイトリストに登録されたこれらのサブスクリプションは、プランの発行後、運用が開始される前にプランにアクセスできます。 |
 | **役に立つリンク**          | プランが最もよく当てはまる、複数選択が可能なビジネスおよび技術のカテゴリ。  最大で 10 個設定できます。 少なくともドキュメントへのリンクを 1 つと、[Azure IoT デバイス カタログ](https://catalog.azureiotsolutions.com/)に記載されている互換性のある IoT Edge デバイスへのリンクを 1 つ、追加するようにしてください。 |
-| **Suggested Categories (推奨されるカテゴリ)** | 最大 5 個までカテゴリを選択します。 これらは製品の詳細ページに表示されます。 参照ページでは、すべての IoT Edge モジュールが、*[モノのインターネット] \> [IoT Edge モジュール]* カテゴリの下に表示されます。|
+| **Suggested Categories (推奨されるカテゴリ)\*** | 最大 5 個までカテゴリを選択します。 これらは製品の詳細ページに表示されます。 参照ページでは、すべての IoT Edge モジュールが、 *[モノのインターネット] \> [IoT Edge モジュール]* カテゴリの下に表示されます。|
+|  |  |
+
 
 ### <a name="offer-example"></a>プランの例
 
- 次の例は、プランの **[タイトル]**、**[要約]**、**[説明]**、**[ロゴ]**、**[スクリーンショット]** の各フィールドが、さまざまなビューでどのように表示されるかを示しています。
+ 次の例は、プランの **[タイトル]** 、 **[要約]** 、 **[説明]** 、 **[ロゴ]** 、 **[スクリーンショット]** の各フィールドが、さまざまなビューでどのように表示されるかを示しています。
+
  
 #### <a name="on-the-azure-marketplace-website"></a>Azure Marketplace Web サイト:
 
@@ -58,6 +54,7 @@ ms.locfileid: "58010955"
 - プランの詳細を確認する場合:
 
     ![Web サイトで製品の詳細を確認するときに、IoT Edge モジュールがどのように表示されるか](./media/iot-edge-module-ampdotcom-pdp.png)
+
 
 #### <a name="on-the-azure-portal-website"></a>Azure portal Web サイト:
 
@@ -78,7 +75,7 @@ ms.locfileid: "58010955"
 
 ## <a name="marketing-artifacts"></a>マーケティングの成果物
 
-このセクションには、次のサブセクションがあります: **[ロゴ]**、**[スクリーンショット]**、**[ビデオ]**。 
+このセクションには、次のサブセクションがあります: **[ロゴ]** 、 **[スクリーンショット]** 、 **[ビデオ]** 。 
 
 >[!Note]
 >必須のマーケティングの成果物はロゴだけですが、顧客へのアピールを最大にするために、すべて設定することをお勧めします。
@@ -88,18 +85,19 @@ ms.locfileid: "58010955"
 |  **フィールド**                |     **説明**                                                          |
 |  ---------                |     ---------------                                                          |
 | *ロゴ*  | ロゴが使用される方法と場所を確認するには、前の画面キャプチャを参照してください。  |
-| **Small**                 | 40 x 40 ピクセルの PNG 形式                                                     |
-| **Medium**                | 90 x 90 ピクセルの PNG 形式                                                     |
-| **Large**                 | 115 x 115 ピクセルの PNG 形式                                                  |
-| **ワイド**                  | 255 x 115 ピクセルの PNG 形式                                                   |
+| **S\***                 | 40 x 40 ピクセルの PNG 形式                                                     |
+| **M\***                | 90 x 90 ピクセルの PNG 形式                                                     |
+| **L\***                 | 115 x 115 ピクセルの PNG 形式                                                  |
+| **ワイド\***                  | 255 x 115 ピクセルの PNG 形式                                                   |
 | **ヒーロー**                  | 815 x 290 ピクセルの PNG 形式。  オプション。ただし、ヒーロー アイコンはアップロードしたら削除できません。 |
 | *スクリーンショット*  | スクリーンショットは製品の詳細ページに表示されます。 その IoT Edge モジュール自体について、またそのしくみについて視覚的に伝えるのに適した方法です。 たとえば、アーキテクチャ ダイアグラムやユース ケースの例を表示できます。 オプション。ただし、SKU あたり最大 5 つのスクリーンショット。 |
 | **Name**                  | 名前またはタイトル。 最大長は 100 文字です。                             |
-| **Image**                 | 画面キャプチャ画像。533 x 324 ピクセルの PNG 形式                                         |
+| **Image**                 | 画面キャプチャ画像。533 x 324 ピクセルの PNG 形式                               |
 | *ビデオ*  | ビデオは製品の詳細ページに表示されます。 その IoT Edge モジュール自体について、またそのしくみについて視覚的に伝えるのに適した方法です。 |
-| **Name**                  | 名前またはタイトル。 最大長は 100 文字です。                              |
+| **Name**                  | 名前またはタイトル。 最大長は 100 文字です。                             |
 | **リンク**                  | ビデオの URL。YouTube や Vimeo でホストされます                                        |
-| **サムネイル**             | 533 x 324 ピクセルの PNG 形式                                                           |
+| **サムネイル**             | 533 x 324 ピクセルの PNG 形式                                                     |
+|  |  |
 
 
 ### <a name="logo-guidelines"></a>ロゴのガイドライン
@@ -114,6 +112,7 @@ Cloud パートナー ポータルにアップロードされるすべてのロ�
 *  ロゴではグラデーションの背景を使用しないでください。
 *  ロゴにはテキストを使用しないでください (会社またはブランドの名前であっても)。 ロゴのルック アンド フィールは "フラット" にする必要があり、グラデーションは避ける必要があります。
 *  ロゴを拡大しないでください。
+
 
 #### <a name="hero-logo"></a>Hero ロゴ
 
@@ -158,16 +157,18 @@ As an example, the following hero icon is for the Azure Container Service.
 3. amp.com the pricing tab
 4. amp.com the tile -->
 
+
 ## <a name="legal"></a>法的情報
 
 このセクションでは、各オファーに必須の 2 つの法的ドキュメントを指定できます。プライバシー ポリシーと利用規約。
 
-|  **フィールド**                |     **説明**                                                          |
-|  ---------                |     ---------------                                                          |
-| **プライバシー ポリシーの URL**    | 投稿済みのプライバシー ポリシーの URL                                            |
-| **使用条件**          | インラインの単純な HTML の利用規約か、投稿済みの利用規約へのリンク       |
+|  **フィールド**                    |     **説明**                                                          |
+|  ---------                    |     ---------------                                                          |
+| **プライバシー ポリシーの URL\***      | 投稿済みのプライバシー ポリシーの URL                                            |
+| **Use Standard Contract (標準契約を使用する)\***  | Microsoft 契約テンプレートを使用するかどうか。  詳細については、「[標準契約](https://docs.microsoft.com/azure/marketplace/standard-contract)」を参照してください。   |
+| **利用規約\***            | インラインの単純な HTML の*利用規約*か、投稿済みの利用規約へのリンク     |
+|  |  |
 
-<br/>
 
 ## <a name="next-steps"></a>次の手順
 

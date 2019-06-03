@@ -1,19 +1,19 @@
 ---
-title: Azure Database for PostgreSQL での PostgreSQL 拡張機能の使用
-description: Azure Database for PostgreSQL で拡張機能を使用して、データベースの機能を拡張する方法について説明します。
+title: Azure Database for PostgreSQL - Single Server での PostgreSQL 拡張機能の使用
+description: Azure Database for PostgreSQL - Single Server で拡張機能を使用して、データベースの機能を拡張する方法について説明します。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 03/18/2019
-ms.openlocfilehash: 7d052ee2d3d3bdf6cca99dd6a91b88176983113f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 5/6/2019
+ms.openlocfilehash: 962e2b10136cf1cbab7cc5d3d06059922c363b15
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57888078"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65410267"
 ---
-# <a name="postgresql-extensions-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL の PostgreSQL 拡張機能
+# <a name="postgresql-extensions-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server の PostgreSQL 拡張機能
 PostgreSQL では拡張機能を使用してデータベースの機能を拡張することができます。 拡張機能により、関連する複数の SQL オブジェクトを 1 つのパッケージにまとめて、1 つのコマンドでデータベースに読み込んだり、データベースから削除したりできます。 データベースに読み込まれた拡張機能は、組み込み機能と同じように動作します。 PostgreSQL 拡張機能の詳細については、「 [Packaging Related Objects into an Extension (拡張機能への関連オブジェクトのパッケージ化)](https://www.postgresql.org/docs/9.6/static/extend-extensions.html)」をご覧ください。
 
 ## <a name="how-to-use-postgresql-extensions"></a>PostgreSQL 拡張機能の使用方法
@@ -49,6 +49,7 @@ Azure Database for PostgreSQL で現在サポートされている標準的な P
 > | [pg\_trgm](https://www.postgresql.org/docs/9.6/static/pgtrgm.html) | trigram 一致に基づいて英数字テキストの類似性を特定する関数と演算子を提供します。 |
 > | [tablefunc](https://www.postgresql.org/docs/9.6/static/tablefunc.html) | クロス集計を含む、テーブル全体を操作する関数を提供します。 |
 > | [uuid-ossp](https://www.postgresql.org/docs/9.6/static/uuid-ossp.html) | 汎用一意識別子 (UUID) を生成します。 |
+> | [orafce](https://github.com/orafce/orafce) | 商用データベースからエミュレートされている関数およびパッケージのサブセットを提供します。 |
 
 ### <a name="full-text-search-extensions"></a>フルテキスト検索の拡張機能
 
@@ -72,7 +73,6 @@ Azure Database for PostgreSQL で現在サポートされている標準的な P
 > | **拡張機能** | **説明** |
 > |---|---|
 > | [plpgsql](https://www.postgresql.org/docs/9.6/static/plpgsql.html) | PL/pgSQL 読み込み可能な手続き型言語。 |
-> | [plv8](https://plv8.github.io/) | ストアド プロシージャ、トリガーなどに使用できる PostgreSQL の Javascript 言語拡張機能。 |
 
 ### <a name="miscellaneous-extensions"></a>その他の拡張機能
 
@@ -94,7 +94,7 @@ Azure Database for PostgreSQL で現在サポートされている標準的な P
 > [!div class="mx-tableFixed"]
 > | **拡張機能** | **説明** |
 > |---|---|
-> | [PostGIS](http://www.postgis.net/)、postgis\_topology、postgis\_tiger\_geocoder、postgis\_sfcgal | PostgreSQL の空間および地理なオブジェクト。 |
+> | [PostGIS](https://www.postgis.net/)、postgis\_topology、postgis\_tiger\_geocoder、postgis\_sfcgal | PostgreSQL の空間および地理なオブジェクト。 |
 > | address\_standardizer、address\_standardizer\_data\_us | 構成要素へのアドレスの解析に使用されます。 ジオコーディング アドレス正規化の手順をサポートするために使用されます。 |
 > | [pgrouting](https://pgrouting.org/) | PostGIS/PostgreSQL 地理空間データベースを拡張して、地理空間ルーティング機能を提供します。 |
 

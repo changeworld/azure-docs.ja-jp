@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: c8bc11b8f81fe034ceaa93c7bd8a49771d9407f9
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 63dd64e900cf68e708032569ca75ac2e8b221491
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025675"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65237007"
 ---
 # <a name="speech-devices-sdk-microphone-array-recommendations"></a>Speech Devices SDK のマイク配列の推奨事項
 
@@ -29,9 +29,11 @@ Microsoft Audio Stack で使用するために、次の配列のジオメトリ�
 
 |          | 循環配列    |       |  線形配列              |                |
 |----------|-------------------|-------------------|----------------|----------------|
-|          |![7 つのマイクの循環配列](media/speech-devices-sdk/7-mic-c.png)|![4 つのマイクの循環配列](media/speech-devices-sdk/4-mic-c.png)|![4 つのマイクの線形配列](media/speech-devices-sdk/4-mic-l.png)|![2 つのマイクの線形配列](media/speech-devices-sdk/2-mic-l.png)|
+|          |<img src="media/speech-devices-sdk/7-mic-c.png" alt="7 mic circular array" width="150"/>|<img src="media/speech-devices-sdk/4-mic-c.png" alt="4 mic circular array" width="150"/>|<img src="media/speech-devices-sdk/4-mic-l.png" alt="4 mic linear array" width="150"/>|<img src="media/speech-devices-sdk/2-mic-l.png" alt="2 mic linear array" width="150"/>|
 | \# マイクの数  | 7                 | 4                 | 4              | 2              |
 | ジオメトリ | 外側に 6、中央に 1、半径 42.5 mm、等間隔| 外側に 3、中央に 1、半径 42.5 mm、等間隔 | 長さ = 120 mm、間隔 = 40 mm | 間隔 = 40 mm |
+
+マイクのチャネルは、上の各配列に示されている番号に従って、0 から増加するように並べ替えるようにします。  Microsoft Audio Stack でエコー キャンセルを実行するには、オーディオ再生の追加の参照ストリームが必要です。
 
 ## <a name="component-selection"></a>コンポーネントの選択
 
@@ -110,4 +112,4 @@ PDM-to-TDM 変換などのハードウェア コンポーネントは、マイ�
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [Speech Devices SDK](speech-devices-sdk.md) についてさらに詳しく学習する
+> [Speech Devices SDK についてさらに詳しく学習する](speech-devices-sdk.md)

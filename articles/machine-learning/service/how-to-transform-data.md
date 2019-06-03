@@ -12,19 +12,19 @@ manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8b8cba8d0a400efb720d8374cdca886a2a638938
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: db23c8af7eaa4a86691ccb0bb831ce2cc28d635c
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65023784"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65471826"
 ---
 # <a name="transform-data-with-the-azure-machine-learning-data-prep-sdk"></a>Azure Machine Learning データ準備 SDK を使ってデータを変換する
 
-この記事では、Azure Machine Learning Data Prep SDK を使用してデータを変換するさまざまな方法について説明します。 SDK では、列の追加や不要な行または列の除去、欠損値対処を簡単に行うことができる関数が用意されています。 SDK の参照ドキュメントについては、[参照](https://aka.ms/data-prep-sdk) をご覧ください。
+この記事では、`azureml-dataprep` パッケージを使用してデータを変換するさまざまな方法について説明します。 このパッケージには、列の追加、不要な行または列の除外、および欠落している値の補完を簡単にする機能があります。 [azureml-dataprep パッケージ](https://aka.ms/data-prep-sdk)の詳細なリファレンス ドキュメントを参照してください。
 
 > [!Important]
-> 新しいソリューションを構築している場合は、データの変換、データのスナップショットの作成、およびバージョン管理されたデータセット定義の保管に [Azure Machine Learning Datasets](how-to-explore-prepare-data.md) (プレビュー) をお試しください。 Datasets は、次のバージョンのデータ準備 SDK であり、AI ソリューションでデータセットを管理するための拡張機能が提供されます。
+> 新しいソリューションを構築する場合は、データの変換、データのスナップショットの作成、およびバージョン管理されたデータセット定義の格納に [Azure Machine Learning Datasets](how-to-explore-prepare-data.md) (プレビュー) をお試しください。 Datasets は、次のバージョンのデータ準備 SDK であり、AI ソリューションでデータセットを管理するための拡張機能が提供されます。 `azureml-datasets` パッケージを使用してデータセットを作成するのではなく、`azureml-dataprep` パッケージを使用し、変換を使用してデータフローを作成した場合、後でスナップショットまたはバージョン管理されたデータセットを使用することはできません。
 
 ここでは、次のタスクの例を示します。
 
@@ -500,5 +500,4 @@ dflow.head(2)
 
 ## <a name="next-steps"></a>次の手順
 
-* 設計パターンと使用例については、SDK の [概要](https://aka.ms/data-prep-sdk) を参照してください
 * 特定のシナリオを解決するサンプルについては Azure Machine Learning Data Prep SDK の [チュートリアル](tutorial-data-prep.md) をご覧ください。

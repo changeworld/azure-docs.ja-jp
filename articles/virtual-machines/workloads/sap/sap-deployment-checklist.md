@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 04/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fef2d42282291bb0ea6afeea03e60234d3d47a4d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 93fae0babdee5eac87d50679fdd5b2b938c4df2e
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58878725"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236903"
 ---
 # <a name="sap-workload-on-azure-planning-and-deployment-checklist"></a>Azure での SAP ワークロードの計画とデプロイに関するチェックリスト 
 
@@ -140,9 +140,10 @@ ms.locfileid: "58878725"
       2. オンプレミスにデプロイされた SAP GUI インターフェイスと、Azure にデプロイされた SAP アプリケーション層の間での GUI のタイムアウトを回避するため、default.pfl またはインスタンス プロファイルで次のパラメーターが設定されていることを確認します。
          1.   rdisp/keepalive_timeout = 3600
          2.   rdisp/keepalive = 20
-      3. Windows フェールオーバー クラスター構成を使用する場合は、応答のないノードに対応する時間が Azure に対して正しく設定されていることを確認します。 Microsoft の記事「[Tuning Failover Cluster Network Thresholds (フェールオーバー クラスター ネットワークしきい値の調整)](https://blogs.msdn.microsoft.com/clustering/2012/11/21/tuning-failover-cluster-network-thresholds/)」では、パラメーターの一覧と、それらがフェールオーバーの感度に及ぼす影響が示されています。 一覧のパラメーターのうち、次の 2 つのパラメーターには次の値を設定する必要があります。
-         1.   SameSubNetDelay = 2
+      3. Windows フェールオーバー クラスター構成を使用する場合は、応答のないノードに対応する時間が Azure に対して正しく設定されていることを確認します。 Microsoft の記事「[Tuning Failover Cluster Network Thresholds (フェールオーバー クラスター ネットワークしきい値の調整)](https://techcommunity.microsoft.com/t5/Failover-Clustering/Tuning-Failover-Cluster-Network-Thresholds/ba-p/371834)」では、パラメーターの一覧と、それらがフェールオーバーの感度に及ぼす影響が示されています。 クラスター ノードが同じサブネット内にあるとすると、次のパラメーターを変更する必要があります。
+         1.   SameSubNetDelay = 2000
          2.   SameSubNetThreshold = 15
+         3.   RoutingHistorylength = 30
 4. 高可用性とディザスター リカバリーの手順をテストします
    1. VM (Windows ゲスト OS) をシャットダウンするか、またはオペレーティング システムをパニック モードにする (Linux ゲスト OS) ことによって、フェールオーバーの状況をシミュレートし、フェールオーバーの構成が設計どおりに動作するかどうかを確認します。 
    2. フェールオーバーの実行にかかる時間を測定します。 時間が長すぎる場合は、次のことを検討します。

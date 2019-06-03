@@ -8,16 +8,21 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 4/08/2019
 ms.author: raynew
-ms.openlocfilehash: 824782e54f2cd989f9ab13857d9b894b215fc550
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: 74ccc76ff139cae21e3583b0fea11596f5fd6b62
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59361367"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65413923"
 ---
 # <a name="azure-site-recovery-frequently-asked-questions-faq"></a>Azure Site Recovery: よく寄せられる質問 (FAQ)
-この記事では、Azure Site Recovery に関してよく寄せられる質問をまとめています。 
+この記事では、Azure Site Recovery に関してよく寄せられる質問をまとめています。</br>
+ASR シナリオごとに固有のクエリについては、シナリオ固有のよく寄せられる質問を参照してください。<br>
 
+- [Azure への Azure VM のディザスター リカバリー](azure-to-azure-common-questions.md)
+- [Azure への VMware VM のディザスター リカバリー](vmware-azure-common-questions.md)
+- [Azure への Hyper-V VM のディザスター リカバリー](hyper-v-azure-common-questions.md)
+ 
 ## <a name="general"></a>全般
 
 ### <a name="what-does-site-recovery-do"></a>Site Recovery は何をするものですか。
@@ -206,17 +211,17 @@ Azure は復元するように設計されています。 Site Recovery は、Az
 ### <a name="is-failover-automatic"></a>フェールオーバーは自動で行われますか。
 フェールオーバーは自動では行われません。 ポータルで 1 回クリックするだけでフェールオーバーを開始できます。または [Site Recovery PowerShell](/powershell/module/az.recoveryservices) を使用してフェールオーバーをトリガーすることもできます。 Site Recovery ポータルではフェールバックを簡単な操作で行えます。
 
-自動化するには、オンプレミスの Orchestrator または Operations Manager を使用すると、仮想マシンのエラーを監視し、SDK を使用してフェールオーバーをトリガーできます。
+自動化する場合は、オンプレミスの Orchestrator または Operations Manager を使用して仮想マシンのエラーを検出し、SDK を使用してフェールオーバーをトリガーします。
 
-* [こちら](site-recovery-create-recovery-plans.md) を参照してください。
-* [詳細については、こちらを参照してください。](site-recovery-failover.md) をご覧ください。
-* [詳細については、こちらを参照してください。](site-recovery-failback-azure-to-vmware.md) を参照してください
+* リカバリー プランについての[詳細をお読みください](site-recovery-create-recovery-plans.md)。
+* フェールオーバーについての[詳細をお読みください](site-recovery-failover.md)。
+* VMware VMs と物理サーバーのフェールバックについては、[こちら](site-recovery-failback-azure-to-vmware.md) を参照してください。
 
 ### <a name="if-my-on-premises-host-is-not-responding-or-crashed-can-i-fail-back-to-a-different-host"></a>オンプレミスのホストが応答しない場合やクラッシュした場合は、別のホストにフェールバックできますか?
 はい。alternate location recovery (別の場所への復旧) を使用すると、Azure から別のホストにフェールバックできます。
 
-* [VMware 仮想マシンの場合](concepts-types-of-failback.md#alternate-location-recovery-alr)
-* [Hyper-V 仮想マシンの場合](hyper-v-azure-failback.md#perform-failback)
+* [VMware 仮想マシン用](concepts-types-of-failback.md#alternate-location-recovery-alr)
+* [Hyper-V 仮想マシン用](hyper-v-azure-failback.md#perform-failback)
 
 ## <a name="automation"></a>Automation
 
@@ -225,7 +230,7 @@ Azure は復元するように設計されています。 Site Recovery は、Az
 
 * [VMM クラウドの Hyper-V VM を Azure PowerShell Resource Manager にレプリケートする](hyper-v-vmm-powershell-resource-manager.md)
 * [VMM なしの Hyper-V VM を Azure PowerShell Resource Manager にレプリケートする](hyper-v-azure-powershell-resource-manager.md)
-* [PowerShell Resource Manager を使用して Azure に VMware をレプリケートする](vmware-azure-disaster-recovery-powershell.md)
+* [PowerShell Resource Manager を使用して Azure へ VMware をレプリケートする](vmware-azure-disaster-recovery-powershell.md)
 
 ## <a name="componentprovider-upgrade"></a>コンポーネント/プロバイダーのアップグレード
 

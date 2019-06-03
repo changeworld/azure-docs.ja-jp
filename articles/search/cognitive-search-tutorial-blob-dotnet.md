@@ -9,12 +9,12 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: maheff
-ms.openlocfilehash: 1b3353cae73bb5710dc9343f1d211266d15743a2
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 7aab7f75e6489fcaea1ecafee34823ad546a6b48
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65153208"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244373"
 ---
 # <a name="c-tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline"></a>C# のチュートリアル: Azure Search のインデックス パイプラインで Cognitive Services APIs を呼び出す
 
@@ -44,13 +44,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 このチュートリアルでは、次のサービス、ツール、およびデータを使用します。 
 
-[Azure Search サービスを作成](search-create-service-portal.md)するか、現在のサブスクリプションから[既存のサービスを見つけます](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 このチュートリアル用には、無料のサービスを使用できます。
++ サンプル データの格納のための [Azure ストレージ アカウントを作成](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)します。 ストレージ アカウントが Azure Search と同じリージョンにあることを確認します。
 
-サンプル データの格納のための [Azure ストレージ アカウントを作成](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)します。
++ [サンプル データ](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4)は、さまざまなタイプの小さいファイル セットで構成されています。 
 
-[サンプル データ](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4)は、さまざまなタイプの小さいファイル セットで構成されています。 
++ IDE として使用するために [Visual Studio をインストール](https://visualstudio.microsoft.com/)します。
 
-IDE として使用するために [Visual Studio をインストール](https://visualstudio.microsoft.com/)します。
++ [Azure Search サービスを作成](search-create-service-portal.md)するか、現在のサブスクリプションから[既存のサービスを見つけます](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 このチュートリアル用には、無料のサービスを使用できます。
 
 ## <a name="get-a-key-and-url"></a>キーと URL を入手する
 
@@ -58,7 +58,7 @@ Azure Search サービスを使用するには、サービスの URL とアク�
 
 1. [Azure portal にサインイン](https://portal.azure.com/)し、ご使用の検索サービスの **[概要]** ページで、URL を入手します。 たとえば、エンドポイントは `https://mydemo.search.windows.net` のようになります。
 
-1. **[設定]** > **[キー]** で、サービスに対する完全な権限の管理者キーを取得します。 管理キーをロールオーバーする必要がある場合に備えて、2 つの交換可能な管理キーがビジネス継続性のために提供されています。 オブジェクトの追加、変更、および削除の要求には、主キーまたはセカンダリ キーのどちらかを使用できます。
+1. **[設定]**  >  **[キー]** で、サービスに対する完全な権限の管理者キーを取得します。 管理キーをロールオーバーする必要がある場合に備えて、2 つの交換可能な管理キーがビジネス継続性のために提供されています。 オブジェクトの追加、変更、および削除の要求には、主キーまたはセカンダリ キーのどちらかを使用できます。
 
    ![HTTP エンドポイントとアクセス キーを取得する](media/search-fiddler/get-url-key.png "HTTP エンドポイントとアクセス キーを取得する")
 
@@ -68,7 +68,7 @@ Azure Search サービスを使用するには、サービスの URL とアク�
 
 エンリッチメント パイプラインは、Azure データ ソースから取得されます。 ソース データは、サポートされているデータ ソースの種類の [Azure Search インデクサー](search-indexer-overview.md)から取得する必要があります。 Cognitive Search では Azure Table Storage はサポートされていません。 この演習では、BLOB ストレージを使用して複数のコンテンツ タイプを示します。
 
-1. [Azure portal にサインインし](https://portal.azure.com)、Azure ストレージ アカウントに移動して **[BLOB]** をクリックし、**[+ コンテナー]** をクリックします。
+1. [Azure portal にサインインし](https://portal.azure.com)、Azure ストレージ アカウントに移動して **[BLOB]** をクリックし、 **[+ コンテナー]** をクリックします。
 
 1. [BLOB コンテナーを作成](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)してサンプル データを含めます。 パブリック アクセス レベルは、有効な任意の値に設定できます。 このチュートリアルでは、コンテナー名が "basic-demo-data-pr" とします。
 
@@ -76,7 +76,7 @@ Azure Search サービスを使用するには、サービスの URL とアク�
 
    ![Azure Blob Storage 内のソース ファイル](./media/cognitive-search-quickstart-blob/sample-data.png)
 
-1. サンプル ファイルが読み込まれたら、BLOB ストレージのコンテナー名と接続文字列を取得します。 これは、Azure portal で自分のストレージ アカウントに移動して、**[アクセス キー]** を選択してから、**[接続文字列]** フィールドをコピーして行うこともできます。
+1. サンプル ファイルが読み込まれたら、BLOB ストレージのコンテナー名と接続文字列を取得します。 これは、Azure portal で自分のストレージ アカウントに移動して、 **[アクセス キー]** を選択してから、 **[接続文字列]** フィールドをコピーして行うこともできます。
 
    接続文字列は次の例のような URL です。
 
@@ -96,15 +96,15 @@ Azure Search サービスを使用するには、サービスの URL とアク�
 
 このプロジェクトでは、バージョン 9 の `Microsoft.Azure.Search` NuGet パッケージと最新の `Microsoft.Extensions.Configuration.Json` NuGet パッケージをインストールする必要があります。
 
-`Microsoft.Azure.Search` NuGet パッケージは、Visual Studio のパッケージ マネージャー コンソールを使用してインストールします。 パッケージ マネージャー コンソールを開くには、**[ツール]** > **[NuGet パッケージ マネージャー]** > **[パッケージ マネージャー コンソール]** を選択します。 実行するコマンドを取得するには、[Microsoft.Azure.Search NuGet パッケージ ページ](https://www.nuget.org/packages/Microsoft.Azure.Search)に移動してバージョン 9 を選択し、パッケージ マネージャー コマンドをコピーします。 パッケージ マネージャー コンソールで、このコマンドを実行します。
+`Microsoft.Azure.Search` NuGet パッケージは、Visual Studio のパッケージ マネージャー コンソールを使用してインストールします。 パッケージ マネージャー コンソールを開くには、 **[ツール]**  >  **[NuGet パッケージ マネージャー]**  >  **[パッケージ マネージャー コンソール]** を選択します。 実行するコマンドを取得するには、[Microsoft.Azure.Search NuGet パッケージ ページ](https://www.nuget.org/packages/Microsoft.Azure.Search)に移動してバージョン 9 を選択し、パッケージ マネージャー コマンドをコピーします。 パッケージ マネージャー コンソールで、このコマンドを実行します。
 
-Visual Studio で `Microsoft.Extensions.Configuration.Json` NuGet パッケージをインストールするには、**[ツール]** > **[NuGet パッケージ マネージャー]** > **[ソリューションの NuGet パッケージの管理...]** を選択します。[参照] を選択し、`Microsoft.Extensions.Configuration.Json` NuGet パッケージを検索します。 見つかったら、パッケージを選択し、プロジェクトを検索し、バージョンが最新の安定したバージョンであることを確認してから、[インストール] を選択します。
+Visual Studio で `Microsoft.Extensions.Configuration.Json` NuGet パッケージをインストールするには、 **[ツール]**  >  **[NuGet パッケージ マネージャー]**  >  **[ソリューションの NuGet パッケージの管理...]** を選択します。[参照] を選択し、`Microsoft.Extensions.Configuration.Json` NuGet パッケージを検索します。 見つかったら、パッケージを選択し、プロジェクトを検索し、バージョンが最新の安定したバージョンであることを確認してから、[インストール] を選択します。
 
 ## <a name="add-azure-search-service-information"></a>Azure Search サービス情報の追加
 
-Azure Search サービスに接続するには、検索サービスの情報をプロジェクトに追加する必要があります。 ソリューション エクスプローラーでプロジェクトを右クリックし、**[追加]** > **[新しい項目...]** を選択します。 ファイルに `appsettings.json` という名前を付けて、**[追加]** を選択します。 
+Azure Search サービスに接続するには、検索サービスの情報をプロジェクトに追加する必要があります。 ソリューション エクスプローラーでプロジェクトを右クリックし、 **[追加]**  >  **[新しい項目...]** を選択します。 ファイルに `appsettings.json` という名前を付けて、 **[追加]** を選択します。 
 
-このファイルは出力ディレクトリに含める必要があります。 そのためには、`appsettings.json` を右クリックし、**[プロパティ]** を選択します。 **[出力ディレクトリにコピー]** の値を **[Copy of newer]\(新しい場合はコピーする\)** に変更します。
+このファイルは出力ディレクトリに含める必要があります。 そのためには、`appsettings.json` を右クリックし、 **[プロパティ]** を選択します。 **[出力ディレクトリにコピー]** の値を **[Copy of newer]\(新しい場合はコピーする\)** に変更します。
 
 次の JSON を新しい JSON ファイルにコピーします。
 
@@ -121,7 +121,7 @@ Azure Search サービスに接続するには、検索サービスの情報を�
 
 検索サービスの情報は Azure portal の検索アカウント ページで取得できます。 アカウント名はメイン ページにあり、キーは **[キー]** を選択すると見つかります。
 
-BLOB の接続文字列を取得するには、Azure portal で自分のストレージ アカウントに移動して、**[アクセス キー]** を選択してから、**[接続文字列]** フィールドをコピーします。
+BLOB の接続文字列を取得するには、Azure portal で自分のストレージ アカウントに移動して、 **[アクセス キー]** を選択してから、 **[接続文字列]** フィールドをコピーします。
 
 ## <a name="add-namespaces"></a>名前空間の追加
 
@@ -425,7 +425,7 @@ catch (Exception e)
 
 このインデックスのフィールドはモデル クラスを使用して定義されます。 モデル クラスの各プロパティには、対応するインデックス フィールドの検索に関連した動作を決定する属性があります。 
 
-モデル クラスを新しい C# ファイルに追加します。 プロジェクトを右クリックして **[追加]** > **[新しい項目...]** を選択し、[クラス] を選択し、ファイルに `DemoIndex.cs` という名前を付けて、**[追加]** を選択します。
+モデル クラスを新しい C# ファイルに追加します。 プロジェクトを右クリックして **[追加]**  >  **[新しい項目...]** を選択し、[クラス] を選択し、ファイルに `DemoIndex.cs` という名前を付けて、 **[追加]** を選択します。
 
 `Microsoft.Azure.Search` および `Microsoft.Azure.Search.Models` 名前空間の種類を使用することを指定します。
 
@@ -611,7 +611,7 @@ catch (Exception e)
 
 警告は、一部のソース ファイルとスキルの組み合わせではよく見られ、必ずしも問題を示すわけではありません。 このチュートリアルでは、警告は無害です (たとえば、JPEG ファイルからのテキスト入力がない)。
  
-## <a name="verify-content"></a>コンテンツを検証する
+## <a name="query-your-index"></a>インデックスの照会
 
 インデックス作成が完了したら、個々のフィールドの内容を返すクエリを実行できします。 既定では、Azure Search によって上位 50 件の結果が返されます。 サンプル データは小さいため、既定値で問題なく動作します。 ただし、より大きなデータ セットを使用する場合は、より多くの結果が返されるよう、クエリ文字列にパラメーターを含める必要がある場合があります。 手順については、「[Azure Search でのページ検索結果の表示方法](search-pagination-page-layout.md)」をご覧ください。
 

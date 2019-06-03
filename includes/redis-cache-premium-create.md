@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: wesmc
 ms.openlocfilehash: 2627554647c6c20cbdedfec53c1028b3edfa9c9c
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53111826"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66132983"
 ---
 Premium キャッシュを作成するには、[Azure portal](https://portal.azure.com) にサインインし、**[リソースの作成]** > **[データベース]** > **[Azure Cache for Redis]** の順にクリックします。
 

@@ -1,23 +1,23 @@
 ---
-title: Azure Database for PostgreSQL のサーバーの概念
-description: この記事では、Azure Database for PostgreSQL サーバーを構成および管理するための考慮事項とガイドラインを示します。
+title: Azure Database for PostgreSQL - Single Server でのサーバーの概念
+description: この記事では、Azure Database for PostgreSQL - Single Server を構成および管理するための考慮事項とガイドラインを示します。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 11/07/2018
-ms.openlocfilehash: a5b6db9f4bfbe9a11119270e9236580b41fae8c7
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 5/6/2019
+ms.openlocfilehash: bc135e58d0fbabc809f3718915e9f4e35b8ed875
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53540864"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65067156"
 ---
-# <a name="azure-database-for-postgresql-servers"></a>Azure Database for PostgreSQL サーバー
-この記事では、Azure Database for PostgreSQL サーバーを操作するための考慮事項とガイドラインを示します。
+# <a name="azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server
+この記事では、Azure Database for PostgreSQL - Single Server を操作するための考慮事項とガイドラインを示します。
 
 ## <a name="what-is-an-azure-database-for-postgresql-server"></a>Azure Database for PostgreSQL サーバーとは
-Azure Database for PostgreSQL サーバーは、複数のデータベースの中央管理ポイントです。 これは、オンプレミスで一般的な PostgreSQL サーバー コンストラクトと同じです。 具体的には、PostgreSQL サービスが管理され、パフォーマンスが保証されるほか、アクセスと機能がサーバー レベルで公開されます。
+Azure Database for PostgreSQL - Single Server デプロイ オプションのサーバーは、複数のデータベースの中央管理ポイントです。 これは、オンプレミスで一般的な PostgreSQL サーバー コンストラクトと同じです。 具体的には、PostgreSQL サービスが管理され、パフォーマンスが保証されるほか、アクセスと機能がサーバー レベルで公開されます。
 
 Azure Database for PostgreSQL サーバーの特徴を次に示します。
 

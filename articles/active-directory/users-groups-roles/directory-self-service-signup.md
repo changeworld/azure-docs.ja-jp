@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0cfc31705909710e6a60e0d2fd3963e74e9397ee
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: f7aee10780512e284faccadface0dc928ef8270e
+ms.sourcegitcommit: 1d257ad14ab837dd13145a6908bc0ed7af7f50a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58201264"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65501890"
 ---
 # <a name="what-is-self-service-signup-for-azure-active-directory"></a>Azure Active Directory のセルフサービス サインアップについて
 
@@ -52,7 +52,7 @@ ms.locfileid: "58201264"
 AllowEmailVerifiedUsers と AllowAdHocSubscriptions は、管理対象ディレクトリにも管理対象外ディレクトリにも適用できるディレクトリ全体の設定です。 次のような例を示します。
 
 * contoso.com などの検証済みドメインを持つディレクトリを管理します
-* 別のディレクトリから B2B コラボレーションを使用して、constoso.com のホーム ディレクトリにまだ存在しないユーザー (userdoesnotexist@contoso.com) を招待します
+* 別のディレクトリから B2B コラボレーションを使用して、contoso.com のホーム ディレクトリにまだ存在しないユーザー (userdoesnotexist@contoso.com) を招待します
 * ホーム ディレクトリでは AllowEmailVerifiedUsers がオンになっています
 
 上記の条件が当てはまる場合、メンバー ユーザーがホーム ディレクトリに作成され、B2B ゲスト ユーザーが招待側のディレクトリに作成されます。

@@ -4,21 +4,22 @@ titlesuffix: Azure Load Balancer
 description: ソース IP アフィニティをサポートするように Azure Load Balancer の分散モードを構成する方法。
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: WenJason
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/25/2017
-ms.author: kumud
+origin.date: 09/25/2017
+ms.date: 03/04/2019
+ms.author: v-jay
 ms.openlocfilehash: afa840bd0b48cc9df1e9711caa035b85e8ec3855
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57883663"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66122426"
 ---
 # <a name="configure-the-distribution-mode-for-azure-load-balancer"></a>Azure Load Balancer の分散モードを構成する
 
@@ -61,14 +62,14 @@ Set-AzLoadBalancer -LoadBalancer $lb
 従来の仮想マシンの場合は、Azure PowerShell を使用して分散設定を変更します。 次のようにして、Azure エンドポイントを仮想マシンに追加してロード バランサー分散モードを構成します。
 
 ```powershell
-Get-AzureVM -ServiceName mySvc -Name MyVM1 | Add-AzureEndpoint -Name HttpIn -Protocol TCP -PublicPort 80 -LocalPort 8080 –LoadBalancerDistribution sourceIP | Update-AzureVM
+Get-AzureVM -ServiceName mySvc -Name MyVM1 | Add-AzureEndpoint -Name HttpIn -Protocol TCP -PublicPort 80 -LocalPort 8080 -LoadBalancerDistribution sourceIP | Update-AzureVM
 ```
 
 `LoadBalancerDistribution` 要素の値を、希望の負荷分散の量に合わせて設定します。 2 タプル (ソース IP と接続先 IP) の負荷分散の場合は sourceIP を指定します。 3 タプル (ソース IP、接続先 IP、プロトコルの種類) の負荷分散の場合は sourceIPProtocol を指定します。 既定の 5 タプルの負荷分散の動作の場合は none を指定します。
 
 次の設定を使用して、エンドポイント ロード バランサー分散モード構成を取得します。
 
-    PS C:\> Get-AzureVM –ServiceName MyService –Name MyVM | Get-AzureEndpoint
+    PS C:\> Get-AzureVM -ServiceName MyService -Name MyVM | Get-AzureEndpoint
 
     VERBOSE: 6:43:50 PM - Completed Operation: Get Deployment
     LBSetName : MyLoadBalancedSet
@@ -94,8 +95,8 @@ Get-AzureVM -ServiceName mySvc -Name MyVM1 | Add-AzureEndpoint -Name HttpIn -Pro
 
 エンドポイントが負荷分散エンドポイント セットの一部である場合、分散モードは負荷分散エンドポイント セットで構成される必要があります。
 
-```azurepowershell
-Set-AzureLoadBalancedEndpoint -ServiceName MyService -LBSetName LBSet1 -Protocol TCP -LocalPort 80 -ProbeProtocolTCP -ProbePort 8080 –LoadBalancerDistribution sourceIP
+```powershell
+Set-AzureLoadBalancedEndpoint -ServiceName MyService -LBSetName LBSet1 -Protocol TCP -LocalPort 80 -ProbeProtocolTCP -ProbePort 8080 -LoadBalancerDistribution sourceIP
 ```
 
 ### <a name="configure-distribution-mode-for-cloud-services-endpoints"></a>Cloud Services エンドポイントで分散モードを構成する
@@ -132,10 +133,10 @@ Azure クラシック デプロイ モデルを使用して、既存のデプロ
 
 #### <a name="request"></a>Request
 
-    POST https://management.core.windows.net/<subscription-id>/services/hostedservices/<cloudservice-name>/deployments/<deployment-name>?comp=UpdateLbSet   x-ms-version: 2014-09-01
+    POST https://management.core.chinacloudapi.cn/<subscription-id>/services/hostedservices/<cloudservice-name>/deployments/<deployment-name>?comp=UpdateLbSet   x-ms-version: 2014-09-01
     Content-Type: application/xml
 
-    <LoadBalancedEndpointList xmlns="http://schemas.microsoft.com/windowsazure" xmlns:i="https://www.w3.org/2001/XMLSchema-instance">
+    <LoadBalancedEndpointList xmlns="http://schemas.microsoft.com/windowsazure" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
       <InputEndpoint>
         <LoadBalancedEndpointSetName> endpoint-set-name </LoadBalancedEndpointSetName>
         <LocalPort> local-port-number </LocalPort>
@@ -170,3 +171,5 @@ Azure クラシック デプロイ モデルを使用して、既存のデプロ
 * [Azure 内部ロード バランサーの概要](load-balancer-internal-overview.md)
 * [インターネットに接続するロード バランサーの構成の開始](load-balancer-get-started-internet-arm-ps.md)
 * [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
+
+<!-- Update_Description: update meta properties, wording update, update link -->

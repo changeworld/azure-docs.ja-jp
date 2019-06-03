@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/07/2018
 ms.author: cynthn
-ms.openlocfilehash: b77ed879375cff8d45f7d532283647e70252bdab
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 838afe38cc3b2b98ddad358ddb23ab6b6727e867
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55732840"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236852"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>複数のネットワーク インターフェイス カードを使用して Linux 仮想マシンを Azure に作成する方法
 
@@ -100,7 +100,7 @@ az vm create \
     --nics myNic1 myNic2
 ```
 
-「[複数の NIC 用にゲスト OS を構成する](#configure-guest-os-for- multiple-nics)」の手順で、ゲスト OS にルーティング テーブルを追加します。
+「[複数の NIC 用にゲスト OS を構成する](#configure-guest-os-for-multiple-nics)」の手順で、ゲスト OS にルーティング テーブルを追加します。
 
 ## <a name="add-a-nic-to-a-vm"></a>VM に NIC を追加する
 前の手順では、複数の NIC を含む VM を作成しました。 Azure CLI を使用して NIC を既存の VM に追加することもできます。 [VM のサイズ](sizes.md)によってサポートされる NIC の数が異なります。VM のサイズを決める際はご注意ください。 必要な場合は、[VM のサイズを変更できます](change-vm-size.md)。
@@ -138,7 +138,7 @@ az vm nic add \
 az vm start --resource-group myResourceGroup --name myVM
 ```
 
-「[複数の NIC 用にゲスト OS を構成する](#configure-guest-os-for- multiple-nics)」の手順で、ゲスト OS にルーティング テーブルを追加します。
+「[複数の NIC 用にゲスト OS を構成する](#configure-guest-os-for-multiple-nics)」の手順で、ゲスト OS にルーティング テーブルを追加します。
 
 ## <a name="remove-a-nic-from-a-vm"></a>NIC を VM から削除する
 NIC を既存の VM から削除するには、最初に [az vm deallocate](/cli/azure/vm) を使用して VM の割り当てを解除します。 次の例では、*myVM* という名前の VM の割り当てを解除します。
@@ -183,7 +183,7 @@ Azure Resource Manager テンプレートで宣言型の JSON ファイルを使
 
 完全な例については、「 [Resource Manager テンプレートを使用して複数の NIC を作成する](../../virtual-network/template-samples.md)」を参照してください。
 
-「[複数の NIC 用にゲスト OS を構成する](#configure-guest-os-for- multiple-nics)」の手順で、ゲスト OS にルーティング テーブルを追加します。
+「[複数の NIC 用にゲスト OS を構成する](#configure-guest-os-for-multiple-nics)」の手順で、ゲスト OS にルーティング テーブルを追加します。
 
 ## <a name="configure-guest-os-for-multiple-nics"></a>複数の NIC 用にゲスト OS を構成する
 

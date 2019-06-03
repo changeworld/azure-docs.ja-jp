@@ -1,49 +1,46 @@
 ---
-title: Azure コンテナー イメージ用のサポートの設定 | Microsoft Docs
+title: Azure コンテナー イメージ用のサポートの設定 | Azure Marketplace
 description: Azure コンテナーのサポートの設定を構成します。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: dan-wesley
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
-ms.date: 11/01/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 90a103bcdfdcd5d61433c05d4cadfa746c67e192
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.date: 04/24/2019
+ms.author: pabutler
+ms.openlocfilehash: 71436d7ee82d9e5162780719d9a7a063fa903c6e
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50980249"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64942576"
 ---
 # <a name="container-support-tab"></a>[コンテナー サポート] タブ
 
-**[新しいプラン]** ページの **[サポート]** タブでは、オファーに対するテクニカル サポートとユーザー サポートのリソースを指定します。  [サポート] フォームには、**[Engineering Contact]\(エンジニアリング連絡先\)**、**[カスタマー サポート]**、**[サポート URL]** の各入力領域があります。 フィールド名に付いているアスタリスク (*) は、そのフィールドが必須であることを示します。
+**[新しいプラン]** ページの **[サポート]** タブでは、オファーに対するテクニカル サポートとユーザー サポートのリソースを指定します。  サポート フォームには、次の入力領域が用意されています。**Engineering Contact (エンジニアリングの連絡先)** 、**Customer Support (カスタマー サポート)** 、および **Support Urls (サポート URL)** 。 フィールド名に付いているアスタリスク (*) は、そのフィールドが必須であることを示します。
+
 
 ## <a name="support-form-fields"></a>[サポート] フォームのフィールド
 
 [Engineering Contact]\(エンジニアリング連絡先\) フィールドと [カスタマー サポート] フィールドに必要な情報を提供します。
 
+
 ### <a name="engineering-contact"></a>Engineering Contact (エンジニアリングの連絡先)
 
-エンジニアリング連絡先は、お客様の組織と Microsoft の間で行われる技術的なやり取りの担当者です。 必要な情報は以下のとおりです。
+エンジニアリング連絡先は、お客様の組織と Microsoft の間で行われる技術的なやり取りの担当者です。 必須フィールドはアスタリスク (*) で示されます。
 
-- **名前** - テクニカル/エンジニアリング サポートとして機能するユーザーまたはグループの名前です。
-- **メール アドレス** - この技術担当者のメール アドレスです。
-- **電話番号** - テクニカル サポートの電話番号です。
+- **名前\*** - テクニカル/エンジニアリング サポートを担当するユーザーまたはグループの名前です。
+- **メール アドレス\*** - この技術担当者のメール アドレスです。
+- **電話番号\*** - テクニカル サポートの電話番号です。
+
 
 ### <a name="customer-support"></a>カスタマー サポート
 
-カスタマー サポート連絡先は、Azure でお客様によって開かれたサポート チケットを受け取ります。 必要な情報は以下のとおりです。
+カスタマー サポート連絡先は、Azure でお客様によって開かれたサポート チケットを受け取ります。  必須フィールドはアスタリスク (*) で示されます。
 
-- **名前** - カスタマー サポートとして機能するユーザーまたはグループの名前です。
-- **メール アドレス** - このサポート連絡先のメール アドレスです。
-- **電話番号** - カスタマー サポートの電話番号です。
+- **名前\*** - カスタマー サポートを担当するユーザーまたはグループの名前です。
+- **メール アドレス\*** - このサポート担当者のメール アドレスです。
+- **電話番号\*** - カスタマー サポートの電話番号です。
+
 
 ## <a name="next-steps"></a>次の手順
 

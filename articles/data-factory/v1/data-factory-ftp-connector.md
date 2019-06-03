@@ -45,7 +45,7 @@ FTP サーバーとして、同じオンプレミスのコンピューターま�
 
 パイプラインを作成する最も簡単な方法は、**Data Factory コピー ウィザード**を使うことです。 手順については、「[チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」で、簡単なチュートリアルをご覧いただけます。
 
-また、次のツールを使用してパイプラインを作成することもできます。**Azure portal**、**Visual Studio**、**PowerShell**、**Azure Resource Manager テンプレート**、**.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。
+また、次のツールを使用してパイプラインを作成することもできます。**Azure portal**、**Visual Studio**、**PowerShell**、**Azure Resource Manager テンプレート**、 **.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。
 
 ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。
 
@@ -68,7 +68,7 @@ FTP サーバーとして、同じオンプレミスのコンピューターま�
 | type |FtpServer に設定します。 |はい |&nbsp; |
 | host |FTP サーバーの名前または IP アドレスを指定します。 |はい |&nbsp; |
 | authenticationType |認証の種類を指定します。 |はい |Basic、Anonymous |
-| ユーザー名 |FTP サーバーへのアクセスを持つユーザーを指定します。 |いいえ  |&nbsp; |
+| username |FTP サーバーへのアクセスを持つユーザーを指定します。 |いいえ  |&nbsp; |
 | password |ユーザー (username) のパスワードを指定します。 |いいえ  |&nbsp; |
 | encryptedCredential |FTP サーバーにアクセスするための暗号化された資格情報を指定します。 |いいえ  |&nbsp; |
 | gatewayName |オンプレミスの FTP サーバーに接続するための Data Management Gateway のゲートウェイの名前を指定します。 |いいえ  |&nbsp; |

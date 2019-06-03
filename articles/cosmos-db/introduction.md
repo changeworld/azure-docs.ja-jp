@@ -4,14 +4,14 @@ description: Azure Cosmos DB について説明します。 このグローバ�
 author: rimman
 ms.service: cosmos-db
 ms.topic: overview
-ms.date: 04/08/2019
+ms.date: 05/20/2019
 ms.author: rimman
-ms.openlocfilehash: a965db4334e88d032f767bd7b855dea6f3ff174f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: a338cec213b82d54b08f2a11a969ddecf72ea7e5
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59280946"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65953907"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Azure Cosmos DB の概要
 
@@ -44,7 +44,7 @@ Azure インフラストラクチャとの緊密な統合と、[透過的なマ�
 
 ### <a name="guaranteed-low-latency-at-99th-percentile-worldwide"></a>世界規模で保証される 99 パーセンタイルの低待機時間
 
-Cosmos DB を使用すると、応答性に優れた世界規模のアプリケーションを構築できます。 Cosmos DB では、その画期的なマルチマスター レプリケーション プロトコルと、ラッチフリーの[書き込みに最適化されたデータベース エンジン](index-policy.md)により、世界中のどこでも、99 パーセンタイルでの読み取り待機時間と (インデックス付きの) 書き込み待機時間の両方が 10 ミリ秒未満となることが保証されます。 この機能により、データのインジェストの維持と超高速のクエリが可能になり、アプリの応答性が向上します。
+Cosmos DB を使用すると、応答性に優れた世界規模のアプリケーションを構築できます。 その斬新なマルチマスター レプリケーション プロトコル、およびラッチフリーでかつ[書き込みに最適化されたデータベース エンジン](index-policy.md)により、Cosmos DB では、世界中で読み取り (インデックス付き) と書き込みの両方に対して 99 パーセンタイルでの 10 ミリ秒未満の待機時間が保証されます。 この機能により、データのインジェストの維持と超高速のクエリが可能になり、アプリの応答性が向上します。
 
 ### <a name="precisely-defined-multiple-consistency-choices"></a>明確に定義された複数の整合性の選択肢
 

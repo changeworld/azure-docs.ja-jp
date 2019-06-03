@@ -3,27 +3,26 @@ title: Android で ADAL を使用してクロス アプリ SSO を有効にす�
 description: ADAL SDK の機能を使用して、複数のアプリケーションでシングル サインオンを有効にする方法。
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
-editor: ''
+author: rwike77
+manager: CelesteDG
 ms.assetid: 40710225-05ab-40a3-9aec-8b4e96b6b5e7
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: android
 ms.devlang: java
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/24/2018
-ms.author: celested
-ms.reviewer: dadobali
+ms.author: ryanwi
+ms.reviewer: brandwe, jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5085acad8a82394340892a3a67a3d1e5d85384b
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: eb11a4a926c676d37a0bf6be456e3b831a5d8357
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57442173"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65962648"
 ---
 # <a name="how-to-enable-cross-app-sso-on-android-using-adal"></a>方法:Android で ADAL を使用してクロス アプリ SSO を有効にする
 
@@ -39,7 +38,7 @@ Microsoft の ID プラットフォームと SDK により、独自のアプリ�
 
 この方法では、次の操作方法がわかっていることを前提としています。
 
-- Azure Active Directory (Azure AD) の以前のポータルを使用してアプリをプロビジョニングする。 詳細については、「[Azure AD v1.0 エンドポイントを使用したアプリの登録](quickstart-v1-add-azure-ad-app.md)」を参照してください
+- Azure Active Directory (Azure AD) の以前のポータルを使用してアプリをプロビジョニングする。 詳細については、[アプリの登録](quickstart-register-app.md)に関するページを参照してください
 - アプリケーションを [Azure AD Android SDK](https://github.com/AzureAD/azure-activedirectory-library-for-android) に統合する。
 
 ## <a name="single-sign-on-concepts"></a>シングルサインオンの概念

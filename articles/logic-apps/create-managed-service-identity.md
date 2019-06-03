@@ -9,12 +9,12 @@ ms.service: logic-apps
 ms.suite: integration
 ms.topic: article
 ms.date: 03/29/2019
-ms.openlocfilehash: 8445b67fa049116d93f3710ff108f904ca7ecd77
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.openlocfilehash: 65fe89bf775a649d5654ce739d8d18e05d3048ca
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59010551"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65416116"
 ---
 # <a name="authenticate-and-access-resources-with-managed-identities-in-azure-logic-apps"></a>Azure Logic Apps でマネージド ID を使用して認証し、リソースにアクセスする
 
@@ -37,8 +37,8 @@ ms.locfileid: "59010551"
 
 システム割り当てマネージド ID の場合、その ID を手動で作成する必要はありません。 ロジック アプリのシステム割り当て ID を設定するには、次の方法を使用できます。 
 
-* [Azure ポータル](#azure-portal) 
-* [Azure Resource Manager のテンプレート](#template) 
+* [Azure Portal](#azure-portal) 
+* [Azure リソース マネージャーのテンプレート](#template) 
 * [Azure PowerShell](../active-directory/managed-identities-azure-resources/howto-assign-access-powershell.md) 
 
 <a name="azure-portal"></a>
@@ -113,7 +113,7 @@ Azure でロジック アプリを作成すると、そのロジック アプリ
 
 | プロパティ | 値 | 説明 | 
 |----------|-------|-------------|
-| **principalId** | <*principal-ID*> | Azure AD テナント内のロジック アプリを表すグローバル一意識別子 (GUID)。"オブジェクト ID" や次のように表示されることもあります。 `objectID` | 
+| **principalId** | <*principal-ID*> | Azure AD テナント内のロジック アプリを表し、"オブジェクト ID" や `objectID` として表示されることもあるグローバル一意識別子 (GUID) | 
 | **tenantId** | <*Azure-AD-tenant-ID*> | ロジック アプリが現在メンバーとなっている Azure AD テナントを表すグローバル一意識別子 (GUID)。 Azure AD テナント内では、サービス プリンシパルは、ロジック アプリ インスタンスと同じ名前を持ちます。 | 
 ||| 
 
@@ -132,7 +132,7 @@ Azure でロジック アプリを作成すると、そのロジック アプリ
 
 1. Azure portal で、マネージド ID にアクセスを割り当てる Azure リソースに移動します。 
 
-1. リソースのメニューから **[アクセス制御 (IAM)]** を選択し、**[ロールの割り当ての追加]** を選択します。 
+1. リソースのメニューから **[アクセス制御 (IAM)]** を選択します。 ツール バーで、**[追加]** > **[ロールの割り当ての追加]** の順に選択します。
 
    ![ロールの割り当ての追加](./media/create-managed-service-identity/add-permissions-logic-app.png)
 

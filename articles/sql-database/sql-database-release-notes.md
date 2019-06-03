@@ -8,14 +8,14 @@ ms.service: sql-database
 ms.subservice: service
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/10/2019
+ms.date: 05/07/2019
 ms.author: carlrab
-ms.openlocfilehash: 9b961436c81282381f963d16c6c6dd5f289d1259
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 923e475cd690902c61c2f89578c2c62effe4cd86
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59495107"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65406578"
 ---
 # <a name="sql-database-release-notes"></a>SQL Database リリース ノート
 
@@ -25,6 +25,7 @@ ms.locfileid: "59495107"
 
 | 機能 | 詳細 |
 | ---| --- |
+| サーバーレス コンピューティング レベル | 詳細については、「[SQL Database serverless (preview) (SQL Database サーバーレス (プレビュー))](sql-database-serverless.md)」を参照してください。|
 | エラスティック データベース ジョブ | 詳しくは、「[エラスティック ジョブの作成、構成、および管理](elastic-jobs-overview.md)」をご覧ください |
 | エラスティック トランザクション | [クラウド データベースにまたがる分散トランザクション](sql-database-elastic-transactions-overview.md) |
 | エラスティック クエリ | 詳しくは、[エラスティック クエリの概要](sql-database-elastic-query-overview.md)に関する記事をご覧ください |
@@ -45,6 +46,32 @@ ms.locfileid: "59495107"
 |SQL Analytics|詳細については、[Azure SQL Analytics](../azure-monitor/insights/azure-sql.md) に関するページをご覧ください。|
 | マネージド インスタンスのタイム ゾーンのサポート|詳細については、「[Azure SQL Database Managed Instance のタイム ゾーン](sql-database-managed-instance-timezone.md)」を参照してください。|
 |||
+
+## <a name="may-2019"></a>2019 年 5 月
+
+### <a name="service-improvements"></a>サービスの機能強化
+
+| サービスの機能強化 | 詳細 |
+| --- | --- |
+|ハイパースケール サービス レベル| 詳細については、「[最大 100 TB の Hyperscale サービス レベル](sql-database-service-tier-hyperscale.md)」を参照してください。|
+|サーバーレス コンピューティング レベル| 詳細については、「[SQL Database serverless (preview) (SQL Database サーバーレス (プレビュー))](sql-database-serverless.md)」を参照してください。|
+
+
+## <a name="april-2019"></a>2019 年 4 月
+
+### <a name="service-improvements"></a>サービスの機能強化
+
+| サービスの機能強化 | 詳細 |
+| --- | --- |
+| マネージド インスタンスのパブリック エンドポイント | 詳細については、[パブリック エンドポイントで安全に Azure SQL Database マネージド インスタンスを使用する方法](sql-database-managed-instance-public-endpoint-securely.md)に関するページを参照してください。
+| マネージド インスタンスのタイム ゾーンのサポート | 詳細については、[Azure SQL Database Managed Instance のタイム ゾーン (プレビュー)](sql-database-managed-instance-timezone.md) に関するページを参照してください。
+
+### <a name="documentation-improvements"></a>ドキュメントの改善
+
+| ドキュメントの改善 | 詳細 |
+| --- | --- |
+| マネージド インスタンスのパブリック エンドポイント | 詳細については、[パブリック エンドポイントで安全に Azure SQL Database マネージド インスタンスを使用する方法](sql-database-managed-instance-public-endpoint-securely.md)に関するページを参照してください。
+| マネージド インスタンスのタイム ゾーンのサポート | 詳細については、[Azure SQL Database Managed Instance のタイム ゾーン (プレビュー)](sql-database-managed-instance-timezone.md) に関するページを参照してください。
 
 ## <a name="march-2019"></a>2019 年 3 月
 

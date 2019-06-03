@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.openlocfilehash: 6dcec5b72be8868a83a5760ef95117d3e751bcc3
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: e9100a764ba3922e0254b7fa5cd03b18e204925f
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57538104"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65596002"
 ---
 # <a name="get-started-with-device-management-java"></a>デバイス管理の開始 (Java)
 
@@ -57,7 +57,7 @@ ms.locfileid: "57538104"
 
 * Maven 3。  <br/> [開発環境の準備](https://github.com/Azure/azure-iot-sdk-java/blob/master/doc/java-devbox-setup.md)に関するページでは、このチュートリアル用に [Maven](https://maven.apache.org/what-is-maven.html) を Windows または Linux にインストールする方法が説明されています。
 
-* [Node.js のバージョン 0.10.0 以降](https://nodejs.org)。
+* アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 (アカウントがない場合は、[無料アカウント](https://azure.microsoft.com/pricing/free-trial/) を数分で作成できます)。
 
 ## <a name="create-an-iot-hub"></a>IoT Hub の作成
 

@@ -8,18 +8,24 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 03/29/2019
+ms.date: 04/28/2019
 ms.author: yluiu
-ms.openlocfilehash: 8502d643986392ba846d509819c6d8f63f931c07
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 63f705061db7c89a80578e741d02ab8f8b1041c2
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59544552"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64917093"
 ---
 # <a name="face-api-release-notes"></a>Face API リリース ノート
 
 この記事は、Face API Service バージョン 1.0 に関連します。
+
+### <a name="release-changes-in-april-2019"></a>2019 年 4 月のリリース変更
+
+* `age` と `headPose` 属性の全体的な精度の向上。 `headPose` 属性も、`pitch` 値で更新されます。 これらの属性を、[Face - Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) `returnFaceAttributes`パラメーターの `returnFaceAttributes` パラメーターに指定して使用します。 
+
+* [Face - Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)、[FaceList - Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395250)、[LargeFaceList - Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a158c10d2de3616c086f2d3)、[PersonGroup Person - Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b)、および [LargePersonGroup Person - Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599adf2a3a7b9412a4d53f42) の速度が向上しました。
 
 ### <a name="release-changes-in-march-2019"></a>2019 年 3 月のリリース変更
 

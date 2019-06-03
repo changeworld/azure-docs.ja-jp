@@ -9,11 +9,11 @@ ms.date: 03/18/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 621d7b01a20748b0ef9349ff192c68988db49a04
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58372887"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66147866"
 ---
 | Standard ディスクの種類 | S4 | S6 | S10 | S15 | S20 | S30 | S40 | S50 | S60 | S70 | S80 |
 |--------------------|----|----|-----|-----|-----|-----|-----|-----|------|------|------|

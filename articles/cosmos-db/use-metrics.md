@@ -5,14 +5,14 @@ ms.service: cosmos-db
 author: kanshiG
 ms.author: sngun
 ms.topic: conceptual
-ms.date: 11/15/2018
+ms.date: 05/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: ff6e0b6084eebf236d01b4dd00a46897687938c2
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: b7633b75bbb6d37c68a562560a6459e35d03b810
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54034728"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242534"
 ---
 # <a name="monitor-and-debug-with-metrics-in-azure-cosmos-db"></a>Azure Cosmos DB のメトリックを使用した監視とデバッグ
 
@@ -22,7 +22,7 @@ Azure Cosmos DB には、スループット、ストレージ、整合性、可�
 
 ## <a name="understand-how-many-requests-are-succeeding-or-causing-errors"></a>成功した要求数とエラーになった要求数の把握
 
-まず [Azure Portal](https://portal.azure.com) を開き、**[メトリック]** ブレードに移動します。 このブレードで **[1 分あたりに容量を超過した要求の数]** グラフを見つけます。 このグラフには、状態コードで区分された毎分の合計要求が表示されます。 HTTP 状態コードの詳細については、「[HTTP Status Codes for Azure Cosmos DB](https://docs.microsoft.com/rest/api/cosmos-db/http-status-codes-for-cosmosdb)」(Azure Cosmos DB の HTTP 状態コード) を参照してください。
+まず [Azure Portal](https://portal.azure.com) を開き、 **[メトリック]** ブレードに移動します。 このブレードで **[1 分あたりに容量を超過した要求の数]** グラフを見つけます。 このグラフには、状態コードで区分された毎分の合計要求が表示されます。 HTTP 状態コードの詳細については、「[HTTP Status Codes for Azure Cosmos DB](https://docs.microsoft.com/rest/api/cosmos-db/http-status-codes-for-cosmosdb)」(Azure Cosmos DB の HTTP 状態コード) を参照してください。
 
 最も一般的なエラー状態コードは 429 (レート制限/調整) です。 このエラーは、Azure Cosmos DB への要求がプロビジョニングされたスループットを超えることを意味します。 この問題の最も一般的な解決策は、そのコレクションの [RU をスケール アップ](./set-throughput.md)することです。
 

@@ -3,18 +3,18 @@ title: カスタム ポリシー定義の作成
 description: カスタム ビジネス ルールを適用するための Azure Policy のカスタム ポリシー定義を作成します。
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 02/12/2019
+ms.date: 04/23/2019
 ms.topic: tutorial
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: bf3582036a28603c3b6ef33a2af28cb61926d91f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: e38eb1315cde3400b70925059d4dd50475a47835
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59267754"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65979663"
 ---
-# <a name="create-a-custom-policy-definition"></a>カスタム ポリシー定義の作成
+# <a name="tutorial-create-a-custom-policy-definition"></a>チュートリアル:カスタム ポリシー定義の作成
 
 カスタム ポリシー定義を使用すると、顧客が Azure を使用するための独自のルールを定義できます。 これらのルールは通常、次のものを適用します。
 
@@ -46,12 +46,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ご自分の要件では、リソースの "適切な状態" と "不適切な状態" の両方を明確に特定する必要があります。
 
-リソースの想定される状態は定義してありますが、非準拠リソースをどうするかはまだ定義していません。 ポリシーはさまざまな[効果](../concepts/effects.md)をサポートします。 このチュートリアルで定義するビジネス要件では、ビジネス ルールに準拠しないリソースが作成されないようにします。 この目標を達成するには、[Deny](../concepts/effects.md#deny) 効果を使用します。 また、特定の割り当てに対するポリシーを一時停止するオプションも必要です。 そのため、[Disabled](../concepts/effects.md#disabled) 効果を使用し、その効果をポリシー定義の[パラメーター](../concepts/definition-structure.md#parameters)にします。
+リソースの想定される状態は定義してありますが、非準拠リソースをどうするかはまだ定義していません。 Azure Policy ではさまざまな[効果](../concepts/effects.md)がサポートされます。 このチュートリアルで定義するビジネス要件では、ビジネス ルールに準拠しないリソースが作成されないようにします。 この目標を達成するには、[Deny](../concepts/effects.md#deny) 効果を使用します。 また、特定の割り当てに対するポリシーを一時停止するオプションも必要です。 そのため、[Disabled](../concepts/effects.md#disabled) 効果を使用し、その効果をポリシー定義の[パラメーター](../concepts/definition-structure.md#parameters)にします。
 
 ## <a name="determine-resource-properties"></a>リソースのプロパティを判別する
 
-ビジネス要件に基づいて、ポリシーを使用して監査する Azure リソースは、ストレージ アカウントです。
-ただし、ポリシー定義で使用するプロパティはわかりません。 ポリシーは、リソースの JSON 表現に対して評価を行います。そのため、そのリソースで使用可能なプロパティを把握する必要があります。
+ビジネス要件に基づいて、Azure Policy を使用して監査する Azure リソースは、ストレージ アカウントです。 ただし、ポリシー定義で使用するプロパティはわかりません。 Azure Policy では、リソースの JSON 表現に対して評価を行います。そのため、そのリソースで使用可能なプロパティを把握する必要があります。
 
 Azure リソースのプロパティを判別する方法はたくさんあります。 このチュートリアルでは、それぞれについて見ていきます。
 
@@ -69,9 +68,9 @@ Azure リソースのプロパティを判別する方法はたくさんあり�
 #### <a name="existing-resource-in-the-portal"></a>ポータルにおける既存のリソース
 
 プロパティを見つける最も簡単な方法は、同じ種類の既存リソースを確認することです。 適用する設定を使用して既に構成されているリソースには、比較対象の値もあります。
-その特定のリソースについて、Azure portal の (**[設定]** にある) **[Automation スクリプト]** ページを確認します。
+その特定のリソースについて、Azure portal の ( **[設定]** にある) **[テンプレートのエクスポート]** ページを確認します。
 
-![既存のリソースのテンプレート ページをエクスポートする](../media/create-custom-policy-definition/automation-script.png)
+![既存のリソースのテンプレート ページをエクスポートする](../media/create-custom-policy-definition/export-template.png)
 
 これにより、ストレージ アカウントの場合、次の例のようなテンプレートが表示されます。
 
@@ -121,10 +120,9 @@ Azure リソースのプロパティを判別する方法はたくさんあり�
 
 #### <a name="create-a-resource-in-the-portal"></a>ポータルでリソースを作成する
 
-ポータルを使用するもう 1 つの方法は、リソースの作成エクスペリエンスです。 ポータルを使用してストレージ アカウントを作成する際、**[詳細]** タブに **[安全な転送が必須]** オプションがあります。
-このプロパティには、"_無効_" と "_有効_" のオプションがあります。 情報アイコンには追加のテキストがあり、このオプションが目的のプロパティであることを確認できます。 ただし、ポータルのこの画面ではプロパティ名はわかりません。
+ポータルを使用するもう 1 つの方法は、リソースの作成エクスペリエンスです。 ポータルを使用してストレージ アカウントを作成する際、 **[詳細]** タブに **[安全な転送が必須]** オプションがあります。 このプロパティには、"_無効_" と "_有効_" のオプションがあります。 情報アイコンには追加のテキストがあり、このオプションが目的のプロパティであることを確認できます。 ただし、ポータルのこの画面ではプロパティ名はわかりません。
 
-**[確認と作成]** タブのページの下部に、**[Automation のテンプレートをダウンロードする]** リンクがあります。 このリンクを選択すると、構成したリソースを作成するテンプレートが開きます。 この場合は、2 つの重要な情報が表示されます。
+**[確認と作成]** タブのページの下部に、 **[Automation のテンプレートをダウンロードする]** リンクがあります。 このリンクを選択すると、構成したリソースを作成するテンプレートが開きます。 この場合は、2 つの重要な情報が表示されます。
 
 ```json
 ...
@@ -181,8 +179,7 @@ az provider show --namespace Microsoft.Storage --expand "resourceTypes/aliases" 
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-Azure PowerShell では、`Get-AzPolicyAlias` コマンドレットを使用してリソースのエイリアスを探します。
-これまでに Azure リソースについて取得した詳細に基づいて、**Microsoft.Storage** 名前空間でフィルター処理します。
+Azure PowerShell では、`Get-AzPolicyAlias` コマンドレットを使用してリソースのエイリアスを探します。 これまでに Azure リソースについて取得した詳細に基づいて、**Microsoft.Storage** 名前空間でフィルター処理します。
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
@@ -197,8 +194,9 @@ Azure CLI と同様に、その結果から **supportsHttpsTrafficOnly** とい�
 
 [Azure Resource Graph](../../resource-graph/overview.md) は、プレビュー段階の新しいサービスです。 これは、Azure リソースのプロパティを探すための別の方法となります。 Resource Graph を使用して単一のストレージ アカウントを探すサンプル クエリを次に示します。
 
-```Query
-where type=~'microsoft.storage/storageaccounts' | limit 1
+```kusto
+where type=~'microsoft.storage/storageaccounts'
+| limit 1
 ```
 
 ```azurecli-interactive
@@ -209,7 +207,23 @@ az graph query -q "where type=~'microsoft.storage/storageaccounts' | limit 1"
 Search-AzGraph -Query "where type=~'microsoft.storage/storageaccounts' | limit 1"
 ```
 
-これらの結果は、Resource Manager テンプレートや Azure Resource Explorer を使用した場合と似ています。 ただし、Azure Resource Graph の結果には[エイリアス](../concepts/definition-structure.md#aliases)の詳細も含まれます。 エイリアスに関するストレージ アカウントからの出力の例を次に示します。
+これらの結果は、Resource Manager テンプレートや Azure Resource Explorer を使用した場合と似ています。 しかし、Azure Resource Graph の結果には、_エイリアス_配列を_プロジェクションする_ことで、"[エイリアス](../concepts/definition-structure.md#aliases)" の詳細を含めることもできます。
+
+```kusto
+where type=~'microsoft.storage/storageaccounts'
+| limit 1
+| project aliases
+```
+
+```azurecli-interactive
+az graph query -q "where type=~'microsoft.storage/storageaccounts' | limit 1 | project aliases"
+```
+
+```azurepowershell-interactive
+Search-AzGraph -Query "where type=~'microsoft.storage/storageaccounts' | limit 1 | project aliases"
+```
+
+エイリアスに関するストレージ アカウントからの出力の例を次に示します。
 
 ```json
 "aliases": {
@@ -295,7 +309,8 @@ Azure Resource Graph (プレビュー) は [Cloud Shell](https://shell.azure.com
 
 ## <a name="determine-the-effect-to-use"></a>使用する効果を決定する
 
-非準拠リソースをどう処理するかを決定することは、最初に何を評価するかを決定することと同じくらい重要です。 非準拠リソースに対して考えられる応答はそれぞれ、[効果](../concepts/effects.md)と呼ばれます。 効果は、非準拠リソースがログ記録されるか、ブロックされるか、追加されるデータがあるか、リソースを準拠状態に戻すために関連付けられているデプロイがあるかを制御します。
+非準拠リソースをどう処理するかを決定することは、最初に何を評価するかを決定することと同じくらい重要です。 非準拠リソースに対して考えられる応答はそれぞれ、[効果](../concepts/effects.md)と呼ばれます。
+効果は、非準拠リソースがログ記録されるか、ブロックされるか、追加されるデータがあるか、リソースを準拠状態に戻すために関連付けられているデプロイがあるかを制御します。
 
 この例では、非準拠リソースを Azure 環境で作成したくないため、必要な効果は Deny です。 Audit は、ポリシーの効果を Deny に設定する前にポリシーの影響を判別するのに最適な効果です。 割り当てごとにより簡単に効果を変更できるようにする方法の 1 つは、効果をパラメーター化することです。 詳細な方法については、「[パラメーター](#parameters)」を参照してください。
 

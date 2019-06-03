@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: jonor;sivae
-ms.openlocfilehash: e0271c9212b093bd803518ebeaa4b7d9682cc773
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c1c64945aaa0bc4cd83cc769dab1c2a755896c01
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57997466"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65603430"
 ---
 # <a name="example-2-build-a-perimeter-network-to-protect-applications-with-a-firewall-and-nsgs"></a>例 2:境界ネットワークを構築し、ファイアウォールと NSG を使用してアプリケーションを保護する
 [「Microsoft クラウド サービスとネットワーク セキュリティ」ページに戻る][HOME]
@@ -550,7 +550,7 @@ PowerShell スクリプト ファイルに完全なスクリプトを保存し�
 この XML ファイルに実際のロケーション情報を反映して保存し、このファイルへのリンクを上記スクリプト内の $NetworkConfigFile 変数に追加します。
 
 ```xml
-    <NetworkConfiguration xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
+    <NetworkConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
       <VirtualNetworkConfiguration>
         <Dns>
           <DnsServers>

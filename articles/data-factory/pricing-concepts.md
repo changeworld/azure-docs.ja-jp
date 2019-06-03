@@ -3,23 +3,25 @@ title: Azure Data Factory の価格を実例から理解する | Microsoft Docs
 description: このアーティクルでは、詳細例を用いて Azure Data Factory の価格モデルの説明と実演を行います
 documentationcenter: ''
 author: shlo
-manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: shlo
-ms.openlocfilehash: 80b1f90ee0d9f5003c39eb6a853a07d2d64ca482
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a825982532047f6e311c5508394df243310f02ab
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58085339"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233925"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>Data Factory の価格を実例から理解する
 
 このアーティクルでは、詳細例を用いて Azure Data Factory の価格モデルの説明と実演を行います。
+
+> [!NOTE]
+> 次の例で使用されている価格は仮定的なものであり、実際の価格を暗示することを意図するものではありません。
 
 ## <a name="copy-data-from-aws-s3-to-azure-blob-storage-hourly"></a>データを AWS S3 から Azure Blob Storage に1時間に1度コピーする
 
@@ -122,6 +124,45 @@ ms.locfileid: "58085339"
   - データ移動アクティビティ = $0.166 (日割りの実行時間の 10 分間です。 $0.25/時間、 Azure 統合ランタイム)
   - パイプラインアクティビティ = $0.00003 （日割りの実行時間の1分間です。 $0.002/時間、 Azure 統合ランタイム)
   - 外部パイプラインアクティビティ = $0.000041 （日割の実行時間の10分間です。 $0.00025/時間、 Azure 統合ランタイム)
+
+## <a name="using-mapping-data-flow-debug-for-a-normal-workday-preview-pricing"></a>通常の平日にマッピング データ フロー デバッグを使用する (プレビュー価格)
+
+あなたは、データ エンジニアとして、毎日マッピング データ フローを設計、構築、テストする責任があります。 あなたは、朝に ADF UI にログインし、データ フローのデバッグ モードを有効にします。 デバッグ セッションの既定の TTL は、60 分です。 あなたは 1 日 10 時間働いているので、デバッグ セッションは期限切れになりません。 したがって、その日の料金は次のようになります。
+
+**10 (時間) x 8 (コア) x $0.112 = $8.96**
+
+## <a name="transform-data-in-blob-store-with-mapping-data-flows-preview-pricing"></a>マッピング データ フローを使用して BLOB ストア内のデータを変換する (プレビュー価格)
+
+このシナリオでは、時間単位のスケジュールで BLOB ストア内のデータを ADF マッピング データ フローで視覚的に変換します。
+
+シナリオを実現させるには、次の項目を含むパイプラインを作成する必要があります:
+
+1. 変換ロジックを含む Data Flow アクティビティ。
+
+2. Azure Storage 上のデータの入力データセット。
+
+3. Azure Storage 上のデータの出力データセット。
+
+4. パイプラインを毎時実行するスケジュールトリガー。
+
+| **操作** | **タイプとユニット** |
+| --- | --- |
+| リンクされたサービスを作成する | 2つの読み取り/書き込みエンティティ  |
+| データセットを作成する | 4 つの読み取り/書き込みエンティティ(データセットの作成用に 2 つ、リンクされたサービスの参照用に 2 つ) |
+| パイプラインを作成する | 3 つの読み取り/書き込みエンティティ (パイプラインの作成用に 1 つ、データセットの参照用に 2 つ) |
+| パイプラインを取得する | 1 つの読み取り/書き込みエンティティ |
+| パイプラインを実行する | 2 つのアクティビティの実行 (トリガーの実行用に 1 つ、アクティビティの実行用に 1 つ) |
+| Data Flow の前提条件: 実行時間 = 10 分 + TTL 10 分 | 10 \* 8 コアの一般コンピューティング (TTL 10) |
+| パイプライン監視の仮定:1 回の実行のみが発生 | 2つの監視実行レコードの再試行 (パイプラインの実行用に 1 つ、アクティビティの実行用に 1 つ) |
+
+**シナリオ価格の合計: $0.3011**
+
+- Data Factory の操作 = **$0.0001**
+  - 読み取り／書き込み = 10\*00001 = $0.0001 [1 R/W = $0.50/50000 = 0.00001]
+  - 監視  = 2\*000005 = $0.00001 [1 監視 = $0.25/50000 = 0.000005]
+- パイプラインのオーケストレーション &amp; 実行 = **$0.301**
+  - アクティビティの実行 = 001\*2 = 0.002 [1 実行 = $1/1000 = 0.001]
+  - データ フロー アクティビティ = $0.299: 20 分間の時間割り (実行時間 10 分 + TTL 10 分)。 Azure Integration Runtime で $0.112/時間、8 コアの一般コンピューティング
 
 ## <a name="next-steps"></a>次の手順
 

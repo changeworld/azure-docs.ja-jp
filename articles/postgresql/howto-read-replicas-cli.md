@@ -1,21 +1,24 @@
 ---
-title: Azure CLI から Azure Database for PostgreSQL の読み取りレプリカを管理する
-description: Azure CLI から Azure Database for PostgreSQL の読み取りレプリカを管理する方法について説明します。
+title: Azure CLI から Azure Database for PostgreSQL - 単一サーバーの読み取りレプリカを管理する
+description: Azure CLI から Azure Database for PostgreSQL - 単一サーバーの読み取りレプリカを管理する方法について説明します。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 04/05/2019
-ms.openlocfilehash: b5e0336a290090ed6bd7f5af508e691677780a80
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 5/6/2019
+ms.openlocfilehash: 9730faf3191ef2e2bd0b6c3caddefa0492b33fc5
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59789429"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510250"
 ---
 # <a name="create-and-manage-read-replicas-from-the-azure-cli"></a>Azure CLI から読み取りレプリカを作成および管理する
 
 この記事では、Azure CLI から Azure Database for PostgreSQL の読み取りレプリカを作成および管理する方法について説明します。 読み取りレプリカの詳細については、[概要](concepts-read-replicas.md)を参照してください。
+
+> [!NOTE]
+> Azure CLI では、マスター サーバーと異なるリージョンでのレプリカの作成がまだサポートされていません。 リージョン間レプリカを作成するには、[Azure portal](howto-read-replicas-portal.md) を使用します。
 
 ## <a name="prerequisites"></a>前提条件
 - マスター サーバーになる [Azure Database for PostgreSQL サーバー](quickstart-create-server-up-azure-cli.md)。

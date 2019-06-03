@@ -2,20 +2,20 @@
 title: SQL Data Warehouse でのユーザー定義スキーマの使用 |Microsoft Docs
 description: Azure SQL Data Warehouse でソリューションを開発するための T-SQL ユーザー定義スキーマの使用に関するヒント。
 services: sql-data-warehouse
-author: ronortloff
+author: XiaoyuL-Preview
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: implement
+ms.subservice: development
 ms.date: 04/17/2018
-ms.author: rortloff
+ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: ae017461767a207deae1d990980258a1f661df3d
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 7e22dc69a9da1d9b5a8c0ff13f73769b1ed4514a
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55468446"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65861717"
 ---
 # <a name="using-user-defined-schemas-in-sql-data-warehouse"></a>SQL Data Warehouse でのユーザー定義スキーマの使用
 Azure SQL Data Warehouse でソリューションを開発するための T-SQL ユーザー定義スキーマの使用に関するヒント。

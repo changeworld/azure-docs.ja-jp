@@ -2,20 +2,20 @@
 title: Azure SQL Data Warehouse への接続 (VSTS) | Microsoft Docs
 description: Visual Studio で SQL Data Warehouse に対してクエリを実行します。
 services: sql-data-warehouse
-author: KavithaJonnakuti
+author: XiaoyuL-Preview
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: consume
+ms.subservice: development
 ms.date: 04/17/2018
-ms.author: kavithaj
+ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 564a30767f650e4ead025acb22e518eb0da55bd4
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 6aa707d3c63b7ead6db94f84ebd9214302cc7367
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55463584"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65873726"
 ---
 # <a name="connect-to-sql-data-warehouse-with-visual-studio-and-ssdt"></a>Visual Studio および SSDT を使用して SQL Data Warehouse に接続する
 > [!div class="op_single_selector"]

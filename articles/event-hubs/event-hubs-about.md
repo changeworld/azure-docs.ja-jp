@@ -10,12 +10,12 @@ ms.topic: overview
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 80c98bea08018780ba1d439e369ab42343d1e615
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 83a1026cd9426e1b1651e0ec4f556b8babccb107
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59680332"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236231"
 ---
 # <a name="azure-event-hubs--a-big-data-streaming-platform-and-event-ingestion-service"></a>Azure Event Hubs - ビッグ データのストリーミング プラットフォームとなるイベント インジェスト サービス
 Azure Event Hubs は、ビッグ データのストリーミング プラットフォームとなるイベント インジェスト サービスです。 1 秒間に何百万ものイベントを受信して処理することができます。 イベント ハブに送信されたデータは、任意のリアルタイム分析プロバイダーやバッチ処理/ストレージ アダプターを使用して、変換および保存できます。
@@ -87,6 +87,7 @@ Event Hubs を使い始めるには、以下の**イベントの送受信**の�
 - [Go](event-hubs-go-get-started-send.md)
 - [C (送信のみ)](event-hubs-c-getstarted-send.md)
 - [Apache Storm (受信のみ)](event-hubs-storm-getstarted-receive.md)
+
 
 Event Hubs の詳細については、次の記事を参照してください。
 

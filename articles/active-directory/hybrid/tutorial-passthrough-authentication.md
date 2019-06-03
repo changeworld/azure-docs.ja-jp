@@ -11,12 +11,12 @@ ms.date: 09/18/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b951cc81d2f957214eb4c78125bde36b61ff64b8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1d848202840d49dde18d358769519329141c2b35
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58098044"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66233903"
 ---
 # <a name="tutorial--integrate-a-single-ad-forest-using-pass-through-authentication-pta"></a>チュートリアル: パススルー認証 (PTA) を使用して単一 AD フォレストを統合する
 
@@ -81,10 +81,10 @@ Set-VMFirmware -VMName $VMName -FirstBootDevice $DVDDrive
 1. Hyper-V マネージャーで仮想マシンをダブルクリックします。
 2. [スタート] ボタンをクリックします。
 3. "Press any key to boot from CD or DVD" というメッセージが表示されます。 キーを押して続行します。
-4. Windows Server の起動画面で言語を選択し、**[次へ]** をクリックします。
+4. Windows Server の起動画面で言語を選択し、 **[次へ]** をクリックします。
 5. **[今すぐインストール]** をクリックします。
-6. ライセンス キーを入力し、**[次へ]** をクリックします。
-7. [ライセンス条項に同意します] をオンにし、**[次へ]** をクリックします。
+6. ライセンス キーを入力し、 **[次へ]** をクリックします。
+7. [ライセンス条項に同意します] をオンにし、 **[次へ]** をクリックします。
 8. **[カスタム: Windows のみをインストールする (詳細設定)]** を選択します。
 9. **[次へ]** をクリックします
 10. インストールが完了したら、仮想マシンを再起動してサインインし、Windows の更新プログラムを実行して VM を最新の状態にします。  最新の更新プログラムをインストールします。
@@ -143,6 +143,7 @@ $LogPath = "c:\windows\NTDS"
 $SysVolPath = "c:\windows\SYSVOL"
 $featureLogPath = "c:\poshlog\featurelog.txt" 
 $Password = "Pass1w0rd"
+$SecureString = ConvertTo-SecureString $Password -AsPlainText -Force
 
 #Install AD DS, DNS and GPMC 
 start-job -Name addFeature -ScriptBlock { 
@@ -153,7 +154,7 @@ Wait-Job -Name addFeature
 Get-WindowsFeature | Where installed >>$featureLogPath
 
 #Create New AD Forest
-Install-ADDSForest -CreateDnsDelegation:$false -DatabasePath $DatabasePath -DomainMode $DomainMode -DomainName $DomainName -SafeModeAdministratorPassword $Password -DomainNetbiosName $DomainNetBIOSName -ForestMode $ForestMode -InstallDns:$true -LogPath $LogPath -NoRebootOnCompletion:$false -SysvolPath $SysVolPath -Force:$true
+Install-ADDSForest -CreateDnsDelegation:$false -DatabasePath $DatabasePath -DomainMode $DomainMode -DomainName $DomainName -SafeModeAdministratorPassword $SecureString -DomainNetbiosName $DomainNetBIOSName -ForestMode $ForestMode -InstallDns:$true -LogPath $LogPath -NoRebootOnCompletion:$false -SysvolPath $SysVolPath -Force:$true
 ```
 
 ## <a name="create-a-windows-server-ad-user"></a>Windows Server AD ユーザーを作成する
@@ -186,7 +187,7 @@ Set-ADUser -Identity $Identity -PasswordNeverExpires $true -ChangePasswordAtLogo
 1. [Azure portal](https://portal.azure.com) に移動し、Azure サブスクリプションがあるアカウントを使ってサインインします。
 2. **プラス (+) アイコン**を選択し、**Azure Active Directory** を検索します。
 3. 検索結果で **[Azure Active Directory]** を選択します。
-4. **作成**を選択します。</br>
+4. **作成** を選択します。</br>
 ![作成](media/tutorial-password-hash-sync/create1.png)</br>
 5. **組織の名前**と**初期ドメイン名**を入力します。 **[作成]** を選択します。 これにより、ディレクトリが作成されます。
 6. これが完了したら、**こちら**のリンクをクリックし、ディレクトリを管理します。
@@ -196,8 +197,8 @@ Azure AD テナントを作成したので、次は全体管理者アカウン�
 
 1.  **[管理]** にある **[ユーザー]** を選択します。</br>
 ![作成](media/tutorial-password-hash-sync/gadmin1.png)</br>
-2.  **[すべてのユーザー]** を選択し、**+ [新しいユーザー]** を選択します。
-3.  このユーザーの名前およびユーザー名を入力します。 これがテナントのグローバル管理者になります。 また、**[ディレクトリ ロール]** を **[全体管理者]** に変更してください。 一時パスワードを表示することもできます。 完了したら、**[作成]** を選択します。</br>
+2.  **[すべてのユーザー]** を選択し、 **+ [新しいユーザー]** を選択します。
+3.  このユーザーの名前およびユーザー名を入力します。 これがテナントのグローバル管理者になります。 また、 **[ディレクトリ ロール]** を **[全体管理者]** に変更してください。 一時パスワードを表示することもできます。 完了したら、 **[作成]** を選択します。</br>
 ![作成](media/tutorial-password-hash-sync/gadmin2.png)</br>
 4. これが完了したら、新しい Web ブラウザーを開き、新しい全体管理者アカウントと一時パスワードを使用して myapps.microsoft.com にサインインします。
 5. 全体管理者のパスワードを覚えやすいものに変更します。
@@ -205,11 +206,11 @@ Azure AD テナントを作成したので、次は全体管理者アカウン�
 ## <a name="add-the-custom-domain-name-to-your-directory"></a>カスタム ドメイン名をディレクトリに追加する
 テナントと全体管理者を作成したところで、Azure で確認できるようカスタム ドメインを追加する必要があります。  以下の手順を実行します。
 
-1. [Azure portal](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) に戻って、**[すべてのユーザー]** ブレードを閉じてください。
+1. [Azure portal](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) に戻って、 **[すべてのユーザー]** ブレードを閉じてください。
 2. 左側で **[カスタム ドメイン名]** を選択します。
 3. **[カスタム ドメインの追加]** を選択します。</br>
 ![カスタム](media/tutorial-federation/custom1.png)</br>
-4. **[カスタム ドメイン名]** で、ボックスにカスタム ドメインの名前を入力し、**[ドメインの追加]** をクリックします。
+4. **[カスタム ドメイン名]** で、ボックスにカスタム ドメインの名前を入力し、 **[ドメインの追加]** をクリックします。
 5. [カスタム ドメイン名] 画面では、TXT 情報または MX 情報が表示されます。  この情報は、ドメインのドメイン レジストラーの DNS 情報に追加する必要があります。  そのため、ドメイン レジストラーに移動して、ドメインの DNS 設定で TXT 情報または MX 情報を入力します。  これにより、Azure でドメインを確認できるようになります。  Azure による確認には最大で 24 時間かかる可能性があります。  詳細については、[カスタム ドメインの追加](../../active-directory/fundamentals/add-custom-domain.md)に関するドキュメントを参照してください。</br>
 ![カスタム](media/tutorial-federation/custom2.png)</br>
 6. 確認が確実に行われるよう、[確認] ボタンをクリックします。</br>
@@ -221,19 +222,19 @@ Azure AD テナントを作成したので、次は全体管理者アカウン�
 1. [Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) をダウンロードします。
 2. **AzureADConnect.msi**を検索し、ダブルクリックします。
 3. [ようこそ] 画面で、ライセンス条項に同意するチェック ボックスをオンにし、 **[続行]** をクリックします。  
-4. [簡単設定] 画面で、**[カスタマイズ]** をクリックします。  
+4. [簡単設定] 画面で、 **[カスタマイズ]** をクリックします。  
 5. [必須コンポーネントのインストール] 画面で、 **[インストール]** をクリックします。  
-6. [ユーザー サインイン] 画面で、**[パススルー認証]** と **[シングル サインオンを有効にする]** を選択し、**[次へ]** をクリックします。</br>
+6. [ユーザー サインイン] 画面で、 **[パススルー認証]** と **[シングル サインオンを有効にする]** を選択し、 **[次へ]** をクリックします。</br>
 ![PTA](media/tutorial-passthrough-authentication/pta1.png)</b>
-7. [Azure AD に接続] 画面で、上で作成した全体管理者のユーザー名とパスワードを入力し、**[次へ]** をクリックします。
-2. [ディレクトリの接続] 画面で、**[ディレクトリの追加]** をクリックします。  次に **[新しい AD アカウントを作成]** を選択し、contoso\Administrator のユーザー名とパスワードを入力して **[OK]** をクリックします。
+7. [Azure AD に接続] 画面で、上で作成した全体管理者のユーザー名とパスワードを入力し、 **[次へ]** をクリックします。
+2. [ディレクトリの接続] 画面で、 **[ディレクトリの追加]** をクリックします。  次に **[新しい AD アカウントを作成]** を選択し、contoso\Administrator のユーザー名とパスワードを入力して **[OK]** をクリックします。
 3. **[次へ]** をクリックします。
-4. [Azure AD サインインの構成] 画面で、**[一部の UPN サフィックスが確認済みドメインに一致していなくても続行する]** を選択し、**[次へ]** をクリックします。
-5. [ドメインと OU のフィルタリング] 画面で、**[次へ]** をクリックします。
-6. [一意のユーザー識別] 画面で、**[次へ]** をクリックします。
-7. [ユーザーおよびデバイスのフィルタリング] 画面で、**[次へ]** をクリックします。
-8. [オプション機能] 画面で、**[次へ]** をクリックします。
-9. [Enable single sign-on credentials]\(シングル サインオン資格情報を有効にする\) ページで、contoso\Administrator のユーザー名とパスワードを入力し、**[次へ]** をクリックします。
+4. [Azure AD サインインの構成] 画面で、 **[一部の UPN サフィックスが確認済みドメインに一致していなくても続行する]** を選択し、 **[次へ]** をクリックします。
+5. [ドメインと OU のフィルタリング] 画面で、 **[次へ]** をクリックします。
+6. [一意のユーザー識別] 画面で、 **[次へ]** をクリックします。
+7. [ユーザーおよびデバイスのフィルタリング] 画面で、 **[次へ]** をクリックします。
+8. [オプション機能] 画面で、 **[次へ]** をクリックします。
+9. [Enable single sign-on credentials]\(シングル サインオン資格情報を有効にする\) ページで、contoso\Administrator のユーザー名とパスワードを入力し、 **[次へ]** をクリックします。
 10. [構成の準備完了] 画面で、 **[インストール]** をクリックします。
 11. インストールが完了したら、 **[終了]** をクリックします。
 12. インストールの完了後、Sychronization Service Manager または同期規則エディターを使用する前に、サインアウトしてもう一度サインインします。

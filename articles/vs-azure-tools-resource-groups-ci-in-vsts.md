@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/01/2016
 ms.author: mlearned
-ms.openlocfilehash: a2a730e2c3ca466a2705f053d7db0db12d7941da
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 692c075b55efd138f6d731ffae43608f141abfdc
+ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59786938"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66019765"
 ---
 # <a name="continuous-integration-in-azure-devops-services-using-azure-resource-group-deployment-projects"></a>Azure リソース グループのデプロイ プロジェクトを使用した Azure DevOps Services での継続的インテグレーション
 Azure テンプレートをデプロイするには、さまざまな段階 (ビルド、テスト、Azure へのコピー ("ステージング" とも呼ばれる)、テンプレートのデプロイ) でタスクを実行します。 テンプレートを Azure DevOps Services にデプロイする方法は 2 つあります。 どちらの方法でも同じ結果になるため、ワークフローに最適な方法を選択します。
@@ -93,7 +93,7 @@ Azure Pipelines で PowerShell スクリプトを呼び出すには、ビルド 
       
       Azure CLI では、次を使用します。
       
-      `azure account show`
+      `az account show`
    8. サービス プリンシパル ID、サービス プリンシパル キー、およびテナント ID を取得するには、[Active Directory のアプリケーションとサービス プリンシパルをポータルで作成する方法](active-directory/develop/howto-create-service-principal-portal.md)に関するページか、[サービス プリンシパルを Azure Resource Manager で認証する方法](active-directory/develop/howto-authenticate-service-principal-powershell.md)に関するページの手順を行います。
    9. **[Azure サブスクリプションの追加]** ダイアログ ボックスにサービス プリンシパル ID、サービス プリンシパル キー、およびテナント ID 値を追加し、**[OK]** ボタンをクリックします。
       

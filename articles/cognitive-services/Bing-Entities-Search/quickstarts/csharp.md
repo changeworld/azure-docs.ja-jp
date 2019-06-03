@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 03/12/2019
 ms.author: aahi
-ms.openlocfilehash: d31be245d906ba0405a44d4482272051982c943c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 211f33d5b217714b26dc39ad63f9d1427950589a
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59488339"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595767"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-c"></a>クイック スタート:C# を使用して Bing Entity Search REST API に検索要求を送信する
 
@@ -26,14 +26,15 @@ ms.locfileid: "59488339"
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Visual Studio 2017](https://www.visualstudio.com/downloads/) の任意のエディション。
-* NuGet パッケージとして入手できる [Json.NET](https://www.newtonsoft.com/json) フレームワーク。
-    * Visual Studio に NuGet パッケージをインストールするには:
-        1. ソリューション エクスプローラー内で右クリックします
-        2.  **[NuGet パッケージの管理]**
-        3. **newtonsoft.json** を探してパッケージをインストールします
+- [Visual Studio 2017 またはそれ以降](https://www.visualstudio.com/downloads/)の任意のエディション。
 
-* Linux/macOS を使用している場合、このアプリケーションは [Mono](https://www.mono-project.com/) を使用して実行できます。
+- NuGet パッケージとして入手できる [Json.NET](https://www.newtonsoft.com/json) フレームワーク。 Visual Studio に NuGet パッケージをインストールするには、次の手順に従います。
+
+   1. **ソリューション エクスプローラー**で､プロジェクトを右クリックします｡
+   2. **[NuGet パッケージの管理]** を選択します。
+   3. *Newtonsoft.json* を探してパッケージをインストールします。
+
+- Linux/macOS を使用している場合、このアプリケーションは [Mono](https://www.mono-project.com/) を使用して実行できます。
 
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-entity-search-signup-requirements.md)]

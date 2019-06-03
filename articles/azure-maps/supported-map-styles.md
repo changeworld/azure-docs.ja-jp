@@ -3,17 +3,17 @@ title: Azure Maps でサポートされているマップ スタイル | Microso
 description: Azure Maps でサポートされているマップ スタイル
 author: walsehgal
 ms.author: v-musehg
-ms.date: 02/12/2019
+ms.date: 05/06/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 76ab49c7f28260249483bf3bc4387e8cbaca13b2
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: db396ad06bf46cbbaf486696b68393a6a4214c2f
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57570540"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65230832"
 ---
 # <a name="azure-maps-supported-map-styles"></a>Azure Maps でサポートされているマップ スタイル
 Azure Maps は、次に説明するように、いくつかの異なる組み込みマップ スタイルをサポートしています。
@@ -56,6 +56,17 @@ Azure Maps は、次に説明するように、いくつかの異なる組み込
 **該当する API:**
 * JS マップ コントロール 
 * Android マップ コントロール
+
+
+## <a name="grayscalelight"></a>grayscale_light
+**グレースケール ライト**は、道路マップ スタイルの薄いバージョンです。
+
+![グレースケール ライト](./media/supported-map-styles/grayscale_light.png)
+
+**該当する API:**
+* JS マップ コントロール
+* Android マップ コントロール
+
 
 ## <a name="night"></a>night
 **night** は、道路マップ スタイルの色の濃いバージョンで、道路と記号が色付きです。

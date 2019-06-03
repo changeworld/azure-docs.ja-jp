@@ -2,20 +2,20 @@
 title: チュートリアル:Azure SQL Data Warehouse へのデータの読み込み | Microsoft Docs
 description: チュートリアルでは、Azure Portal と SQL Server Management Studio を使って、パブリック Azure Blob から Azure SQL Data Warehouse に WideWorldImportersDW データ ウェアハウスを読み込みます。
 services: sql-data-warehouse
-author: ckarst
+author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: implement
+ms.subservice: load data
 ms.date: 04/17/2018
-ms.author: cakarst
+ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 44ad37120034d59161fe3b5f0ed521fc6f630b0f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 6bc1431ace55538c489d73e0a62d18f274c06d57
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55454336"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65873758"
 ---
 # <a name="tutorial-load-data-to-azure-sql-data-warehouse"></a>チュートリアル:Azure SQL Data Warehouse へのデータの読み込み
 
@@ -151,7 +151,7 @@ Azure Portal で、SQL サーバーの完全修飾サーバー名を取得しま
     | ------------ | --------------- | ----------- | 
     | サーバーの種類 | データベース エンジン | この値は必須です |
     | サーバー名 | 完全修飾サーバー名 | たとえば、**sample-svr.database.windows.net** は完全修飾サーバー名です。 |
-    | Authentication | パブリック | このチュートリアルで構成した認証の種類は "SQL 認証" のみです。 |
+    | Authentication | SQL Server 認証 | このチュートリアルで構成した認証の種類は "SQL 認証" のみです。 |
     | ログイン | サーバー管理者アカウント | これは、サーバーの作成時に指定したアカウントです。 |
     | パスワード | サーバー管理者アカウントのパスワード | これは、サーバーの作成時に指定したパスワードです。 |
 

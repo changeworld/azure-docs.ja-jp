@@ -11,14 +11,14 @@ ms.service: virtual-machines-windows
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 10/31/2018
+ms.date: 04/25/2019
 ms.author: genli
-ms.openlocfilehash: 6b77ceb2ab9abe232cec75254b30ce37c3dbbf60
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3c0152726aba115e1b370838308a7bf0af08cab7
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58105609"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64708137"
 ---
 # <a name="reset-local-windows-password-for-azure-vm-offline"></a>Azure VM のローカルの Windows パスワードをオフラインでリセットする
 Azure ゲスト エージェントがインストールされている場合、[Azure Portal または Azure PowerShell](reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) を使用して、Azure 内の VM のローカルの Windows パスワードをリセットできます。 これは、Azure VM のパスワードをリセットする最も一般的な方法です。 Azure のゲスト エージェントが応答しない場合やカスタム イメージのアップロード後にインストールに失敗する場合、Windows のパスワードを手動でリセットできます。 この記事では、ソース OS の仮想ディスクを別の VM に接続してローカル アカウントのパスワードをリセットする方法について説明します。 この記事に記載されている手順は、Windows ドメイン コントローラーには適用されません。 
@@ -62,12 +62,12 @@ Azure ゲスト エージェントへのアクセス権がない場合に Azure 
 
 1. Azure Portal で、影響を受ける VM を削除します。 VM を削除しても削除されるのは、Azure 内の VM の参照であるメタデータのみです。 VMが削除されても、仮想ディスクは保持されます。
    
-   * Azure Portal で VM を選んで、*[削除]* をクリックします。
+   * Azure Portal で VM を選んで、 *[削除]* をクリックします。
      
      ![既存の VM を削除する](./media/reset-local-password-without-agent/delete_vm.png)
 2. トラブルシューティング VM に VM の OS ディスクを接続します。 トラブルシューティング VM は、ソース VM の OS ディスクと同じリージョン (`West US` など) にある必要があります。
    
-   * Azure Portal でトラブルシューティング VM を選びます。 *[Disks]* | *[Attach existing]* をクリックします。
+   * Azure Portal でトラブルシューティング VM を選びます。 *[Disks]*  |  *[Attach existing]* をクリックします。
      
      ![既存のディスクを接続する](./media/reset-local-password-without-agent/disks_attach_existing.png)
      
@@ -84,7 +84,7 @@ Azure ゲスト エージェントへのアクセス権がない場合に Azure 
      ![ソース仮想ディスクを選択する](./media/reset-local-password-without-agent/disks_select_source_vhd.png)
 3. リモート デスクトップを使用してトラブルシューティング VM に接続し、ソース VM の OS ディスクが表示されていることを確認します。
    
-   * Azure Portal でトラブルシューティング VM を選択して、*[接続]* をクリックします。
+   * Azure Portal でトラブルシューティング VM を選択して、 *[接続]* をクリックします。
    * ダウンロードを行う RDP ファイルを開きます。 トラブルシューティング VM のユーザー名とパスワードを入力します。
    * エクスプローラーで、接続されているデータ ディスクを探します。 ソース VM の VHD がトラブルシューティングの VM に接続されている唯一のデータ ディスクの場合は、ソース VM の VHD が F: ドライブになっている必要があります。
      
@@ -106,7 +106,7 @@ Azure ゲスト エージェントへのアクセス権がない場合に Azure 
      ```
      
      ![gpt.ini を作成する](./media/reset-local-password-without-agent/create_gpt_ini.png)
-5. `\Windows\System32\GroupPolicy\Machine\Scripts\Startup` に `scripts.ini` を作成します。 非表示のフォルダーが表示されていることを確認します。 必要に応じて、`Machine` フォルダーまたは `Scripts` フォルダーを作成します。
+5. `\Windows\System32\GroupPolicy\Machines\Scripts\` に `scripts.ini` を作成します。 非表示のフォルダーが表示されていることを確認します。 必要に応じて、`Machine` フォルダーまたは `Scripts` フォルダーを作成します。
    
    * 作成した `scripts.ini` ファイルに次の行を追加します。
      
@@ -130,24 +130,24 @@ Azure ゲスト エージェントへのアクセス権がない場合に Azure 
     新しいパスワードを決めるときには、VM のパスワードの複雑さの要件を満たす必要があります。
 7. Azure Portal で、トラブルシューティング VM からディスクを取り外します。
    
-   * Azure Portal でトラブルシューティング VM を選び、*[Disks]* をクリックします。
-   * 手順 2 で接続したデータ ディスクを選んで、*[Detach]* をクリックします。
+   * Azure Portal でトラブルシューティング VM を選び、 *[Disks]* をクリックします。
+   * 手順 2 で接続したデータ ディスクを選んで、 *[Detach]* をクリックします。
      
      ![ディスクを取り外す](./media/reset-local-password-without-agent/detach_disk.png)
 8. VM を作成する前に、ソース OS ディスクへの URI を取得します。
    
-   * Azure Portal でストレージ アカウントを選んで、*[Blobs]* を選択します。
+   * Azure Portal でストレージ アカウントを選んで、 *[Blobs]* を選択します。
    * コンテナーを選びます。 ソース コンテナーは、通常 *VHD* です。
      
      ![ストレージ アカウント BLOB を選ぶ](./media/reset-local-password-without-agent/select_storage_details.png)
      
-     ソース VM の OS VHD を選び、*[URL]* 名の横にある *[コピー]* をクリックします。
+     ソース VM の OS VHD を選び、 *[URL]* 名の横にある *[コピー]* をクリックします。
      
      ![ディスクの URI をコピーする](./media/reset-local-password-without-agent/copy_source_vhd_uri.png)
 9. ソース VM の OS ディスクから VM を作成します。
    
    * [この Azure Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-specialized-vhd-new-or-existing-vnet)を使って、特殊な VHD から VM を作成します。 [`Deploy to Azure`] をクリックして Azure Portal を開きます。テンプレートの情報が自動入力されています。
-   * VM の以前の設定をすべて保持する場合は、*[Edit template]* を選んで、既存の VNet、サブネット、ネットワーク アダプター、パブリック IP のいずれかを入力します。
+   * VM の以前の設定をすべて保持する場合は、 *[Edit template]* を選んで、既存の VNet、サブネット、ネットワーク アダプター、パブリック IP のいずれかを入力します。
    * [`OSDISKVHDURI`] パラメーター テキスト ボックスに、前の手順で取得したソース VHD の URI を貼り付けます。
      
      ![テンプレートから VM を作成する](./media/reset-local-password-without-agent/create_new_vm_from_template.png)
@@ -156,7 +156,7 @@ Azure ゲスト エージェントへのアクセス権がない場合に Azure 
     
     * %Windir%\System32 から
       * FixAzureVM.cmd を削除します
-    * %windir%\System32\GroupPolicy\Machine\ から
+    * %windir%\System32\GroupPolicy\Machine\Scripts から
       * scripts.ini を削除します
     * %windir%\System32\GroupPolicy から
       * gpt.ini を削除します (以前に gpt.ini が存在し、gpt.ini.bak に名前を変更した場合、この .bak ファイルの名前を変更して gpt.ini に戻します)

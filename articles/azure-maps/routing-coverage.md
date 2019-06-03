@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 028f16b480ceb57598c6499739ab0e5745b4a132
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: 0991a0df8d34ddbcebf3d4097c0219b47793120b
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64870003"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65779935"
 ---
 # <a name="azure-maps-routing-coverage"></a>Azure Maps のルーティングの対象範囲
 
@@ -27,9 +27,9 @@ ms.locfileid: "64870003"
 
 | シンボル             | 意味                                |
 |--------------------|----------------------------------------|
-| ✓                  | 詳細なデータが提供される国。   |
-| Ø                  | 簡単なデータが提供される国。 |
-| 国名がない | 国データが提供されていない。          |
+| ✓                  | 詳細なデータが提供される国/リージョン。   |
+| Ø                  | 簡略化されたデータが提供される国/リージョン。 |
+| 国名がない | 国/リージョン データが提供されていない。          |
 
 <br>  
 
@@ -76,7 +76,6 @@ ms.locfileid: "64870003"
 | トーゴ                           |        ✓       |                       |             |
 | チュニジア                        |        ✓       |                       |             |
 | ウガンダ                         |        ✓       |                       |             |
-| 西サハラ                 |        ✓       |                       |             |
 | ザンビア                         |        ✓       |                       |             |
 | ジンバブエ                       |        ✓       |                       |             |
 
@@ -220,9 +219,9 @@ ms.locfileid: "64870003"
 | + バミューダ諸島                       |        ✓       |                      |             |
 | + 英領バージン諸島        |        ✓       |                      |             |
 | + ケイマン諸島                |        ✓       |                      |             |
-| + ジブラルタル                      |        ✓       |         ✓            |             | 
+| + ジブラルタル                     |        ✓       |         ✓            |             | 
 | + モンセラット                    |        ✓       |                      |             |
-| + タークス・カイコス諸島        |        ✓       |                      |             |
+| + タークス・カイコス諸島      |        ✓       |                      |             |
 | バチカン                   |        ✓       |         ✓            |             |
 | マン島                    |        ✓       |                      |             |
 

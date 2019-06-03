@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: iainfou
-ms.openlocfilehash: cbdbf7dcd6269991d23c61d316dcee68e6678171
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2d51699138914e4a8ad5d2a133161fcfce71e9fe
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58175668"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65074064"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>チュートリアル: Azure Kubernetes Service (AKS) でのアプリケーションに対するネットワークの概念
 
@@ -108,7 +108,7 @@ AKS では、NGINX などを使用してイングレス リソースを作成す
 
 既定では、AKS クラスター内のすべてのポッドは制限なしにトラフィックを送受信できます。 セキュリティ向上のために、トラフィック フローを制御する規則を定義することをお勧めします。 バックエンド アプリケーションは、多くの場合、必要とされるフロントエンド サービスにのみ公開され、データベース コンポーネントにアクセスできるのは、それらに接続するアプリケーション層だけです。
 
-ネットワーク ポリシーは、現在 AKS でプレビューの段階の Kubernetes の機能です。ポッド間のトラフィック フローを制御できます。 割り当てられたラベル、名前空間、トラフィック ポートなどの設定に基づいて、トラフィックを許可するか拒否するかを選択できます。 ネットワーク セキュリティ グループは、ポッドではなく、AKS ノードに向いています。 トラフィックのフローを制御するためには、ネットワーク ポリシーの使用の方がより適切で、クラウド ネイティブな方法です。 ポッドは AKS クラスター内で動的に作成されるため、必要なネットワーク ポリシーを自動的に適用できます。
+ネットワーク ポリシーは、ポッド間のトラフィック フローを制御できる、AKS で使用可能な Kubernetes の機能です。 割り当てられたラベル、名前空間、トラフィック ポートなどの設定に基づいて、トラフィックを許可するか拒否するかを選択できます。 ネットワーク セキュリティ グループは、ポッドではなく、AKS ノードに向いています。 トラフィックのフローを制御するためには、ネットワーク ポリシーの使用の方がより適切で、クラウド ネイティブな方法です。 ポッドは AKS クラスター内で動的に作成されるため、必要なネットワーク ポリシーを自動的に適用できます。
 
 詳細については、「[Azure Kubernetes Service (AKS) のネットワーク ポリシーを使用したポッド間のトラフィックの保護][use-network-policies]」を参照してください。
 

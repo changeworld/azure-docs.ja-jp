@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/21/2019
 ms.author: spelluru
-ms.openlocfilehash: 87599b05a3569bf6f28880352185a131f48a7f52
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 76a4c16afc9edef0a88ac9f2892de9738fd30289
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54470629"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66305066"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>Event Grid サブスクリプションでのイベントのフィルター処理を理解します
 
@@ -43,7 +43,7 @@ ms.locfileid: "54470629"
 
 イベントをカスタム トピックに発行する場合は、サブスクライバーがそのイベントに関心があるかどうかを簡単に知ることができるイベントの件名を作成してください。 サブスクライバーは、件名のプロパティを使用してイベントのフィルター処理またはルーティングを行います。 そのイベントが発生したパスを追加することにより、サブスクライバーがそのパスのセグメントでフィルター処理できるように考慮してください。 このパスにより、サブスクライバーはイベントを狭く、または幅広くフィルター処理できます。 `/A/B/C` のように件名に 3 つのセグメント パスを示した場合、サブスクライバーは最初のセグメント `/A` でフィルター処理して幅広い一連のイベントを取得できます。 これらのサブスクライバーは、`/A/B/C` や `/A/D/E` などの件名を持つイベントを取得します。 他のサブスクライバーは、`/A/B` でフィルター処理して、より狭い一連のイベントを取得できます。
 
-イベントの種類でフィルター処理を行うための JSON 構文を次に示します。
+件名でフィルター処理を行うための JSON 構文を次に示します。
 
 ```json
 "filter": {
@@ -80,7 +80,7 @@ ms.locfileid: "54470629"
 }
 ```
 
-### <a name="operator"></a>operator
+### <a name="operator"></a>Operator
 
 数値に対して使用できる演算子は次のとおりです。
 
@@ -109,7 +109,7 @@ Event Grid スキーマ内のイベントの場合、キーには次の値を使
 
 * Id
 * トピック
-* Subject
+* サブジェクト
 * EventType
 * DataVersion
 * イベント データ (Data.key1 など)
@@ -129,7 +129,7 @@ Cloud Events スキーマのイベントの場合は、キーの次の値を使�
 指定できる値は次のとおりです。
 
 * number
-* 文字列
+* string
 * ブール値
 * array
 
@@ -140,8 +140,6 @@ Cloud Events スキーマのイベントの場合は、キーの次の値を使�
 * Event Grid サブスクリプションあたり高度なフィルターは 5 つ
 * 文字列値あたり 512 文字
 * **in** 演算子および **not in** 演算子の値は 5 つ
-* キーの入れ子レベルは 1 つまでとします (data.key1 など)
-* カスタム イベント スキーマは、トップレベルのフィールドでのみフィルター処理できます。
 
 複数のフィルターで同じキーを使用できます。
 

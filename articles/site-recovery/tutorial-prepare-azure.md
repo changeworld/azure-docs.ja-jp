@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 3d2b22fc507b209a96870daa8bf12ea9ab60a466
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.openlocfilehash: d2de871176917dcc24d910b3742bdb2700c4f25d
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59617416"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64691762"
 ---
 # <a name="prepare-azure-resources-for-disaster-recovery-of-on-premises-machines"></a>オンプレミス マシンのディザスター リカバリーのために Azure リソースを準備する
 
@@ -35,7 +35,7 @@ ms.locfileid: "59617416"
 ## <a name="before-you-start"></a>開始する前に
 
 - [VMware](vmware-azure-architecture.md)、[Hyper-V](hyper-v-azure-architecture.md)、および[物理サーバー](physical-azure-architecture.md)のディザスター リカバリーのアーキテクチャを確認します。
-- [VMware](vmware-azure-common-questions.md) および Hyper-V(hyper-v-azure-common-questions.md) に関するよく寄せられる質問を確認します。
+- [VMware](vmware-azure-common-questions.md) および [Hyper-V](hyper-v-azure-common-questions.md) に関してよく寄せられる質問を確認します
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/pricing/free-trial/) を作成してください。 次に、[Azure Portal](https://portal.azure.com) にサインインします。
 
@@ -56,20 +56,20 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. Azure portal で **[+ リソースの作成]** をクリックし、Marketplace で "**Recovery**" を検索します。
 2. **[Backup and Site Recovery (OMS)]** をクリックし、[Backup and Site Recovery] ページで **[作成]** をクリックします。 
-1. **[Recovery Services コンテナー]** > **[名前]** に、コンテナーを識別するフレンドリ名を入力します。 この一連のチュートリアルでは、**ContosoVMVault** を使用します。
+1. **[Recovery Services コンテナー]**  >  **[名前]** に、コンテナーを識別するフレンドリ名を入力します。 この一連のチュートリアルでは、**ContosoVMVault** を使用します。
 2. **[リソース グループ]** で、既存のリソース グループを選択するか、新しいリソース グループを作成します。 このチュートリアルでは **contosoRG** を使用しています。
 3. **[場所]** で、コンテナーを配置するリージョンを選びます。 **[西ヨーロッパ]** を使います。
-4. ダッシュボードから資格情報コンテナーにすばやくアクセスするには、**[ダッシュボードにピン留めする]** > **[作成]** の順に選択します。
+4. ダッシュボードから資格情報コンテナーにすばやくアクセスするには、 **[ダッシュボードにピン留めする]**  >  **[作成]** の順に選択します。
 
    ![新しい資格情報コンテナーの作成](./media/tutorial-prepare-azure/new-vault-settings.png)
 
-   新しい資格情報コンテナーは、**[ダッシュボード]** > **[すべてのリソース]** と、メインの **[Recovery Services コンテナー]** ページに表示されます。
+   新しい資格情報コンテナーは、 **[ダッシュボード]**  >  **[すべてのリソース]** と、メインの **[Recovery Services コンテナー]** ページに表示されます。
 
 ## <a name="set-up-an-azure-network"></a>Azure ネットワークをセットアップ
 
 オンプレミスのマシンは Azure マネージド ディスクにレプリケートされます。 フェールオーバーが発生すると、Azure VM がこれらのマネージド ディスクから作成され、この手順で指定した Azure ネットワークに参加します。
 
-1. [Azure Portal](https://portal.azure.com) で、**[リソースの作成]** > **[ネットワーク]** > **[仮想ネットワーク]** の順に選択します。
+1. [Azure Portal](https://portal.azure.com) で、 **[リソースの作成]**  >  **[ネットワーク]**  >  **[仮想ネットワーク]** の順に選択します。
 2. デプロイ モデルとして **[リソース マネージャー]** をそのまま選択します。
 3. **[名前]** で、ネットワーク名を入力します。 Azure リソース グループ内で一意となる名前を使用してください。 このチュートリアルでは **ContosoASRnet** を使います。
 4. ネットワークを作成するリソース グループを指定します。 既存のリソース グループ **contosoRG** を使っています。

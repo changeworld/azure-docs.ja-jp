@@ -11,12 +11,12 @@ ms.subservice: qna-maker
 ms.topic: tutorial
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 85f8643a0936209c8f280498df92555a7b40c533
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: a80a815d4a1a892b5258aef1c1fc7ef4ab881fe7
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149922"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65594151"
 ---
 # <a name="tutorial-from-qna-maker-portal-create-a-knowledge-base"></a>チュートリアル:QnA Maker ポータルでナレッジ ベースを作成する
 
@@ -68,7 +68,7 @@ ms.locfileid: "65149922"
     |--|--|--|
     |URL|`https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs` |その URL にある FAQ のコンテンツは、質問の後に回答が続く形式になっています。 QnA Maker は、この形式を解釈して、質問とそれに関連付けられた回答を抽出することができます。|
     |ファイル |"_このチュートリアルでは使用しません_"|これにより、質問と回答に関するファイルがアップロードされます。 |
-    |[Chit-chat]\(おしゃべり\) の性格|[Friendly]\(フレンドリ\)|これにより、一般的な質問と回答には親しみやすくカジュアルな性格が指定されます。 これらの質問と回答は後で編集することができます。 |
+    |[Chit-chat]\(おしゃべり\) の性格|Friendly|これにより、一般的な質問と回答には親しみやすくカジュアルな[性格](../Concepts/best-practices.md#chit-chat)が指定されます。 これらの質問と回答は後で編集することができます。 |
 
     ![ナレッジ ベースの作成プロセスの手順 4](../media/qnamaker-tutorial-create-publish-query-in-portal/create-kb-step-4.png)
 
@@ -84,7 +84,7 @@ ms.locfileid: "65149922"
 
 1. 表の下部で、質問と回答の最後のページを選択します。 このページには、おしゃべりの性格からの質問と回答が表示されます。 
 
-1. 質問と回答の一覧の上にあるツール バーで、**[表示オプション]** アイコンを選択し、次に **[メタデータの表示]** を選択します。 これにより、各質問と回答のメタデータ タグが表示されます。 おしゃべりの質問には、**editorial: chit-chat** メタデータが既に設定されています。 このメタデータは、選択した回答と共にクライアント アプリケーションに返されます。 チャット ボットなどのクライアント アプリケーションでは、このフィルターされたメタデータを使用して、追加の処理やユーザーとの対話を判断することができます。
+1. 質問と回答の一覧の上にあるツール バーで、 **[表示オプション]** アイコンを選択し、次に **[メタデータの表示]** を選択します。 これにより、各質問と回答のメタデータ タグが表示されます。 おしゃべりの質問には、**editorial: chit-chat** メタデータが既に設定されています。 このメタデータは、選択した回答と共にクライアント アプリケーションに返されます。 チャット ボットなどのクライアント アプリケーションでは、このフィルターされたメタデータを使用して、追加の処理やユーザーとの対話を判断することができます。
 
     ![![メタデータの表示タグ](../media/qnamaker-tutorial-create-publish-query-in-portal/save-and-train-kb-chit-chat.png)](../media/qnamaker-tutorial-create-publish-query-in-portal/save-and-train-kb-chit-chat.png#lightbox)
 
@@ -92,7 +92,7 @@ ms.locfileid: "65149922"
 
 ## <a name="publish-to-get-kb-endpoints"></a>発行して KB のエンドポイントを取得する
 
-上部のメニューで **[Publish]\(発行\)** ボタンを選択します。 発行ページが表示されたら、**[キャンセル]** ボタンの横にある **[Publish]\(発行\)** を選択します。
+上部のメニューで **[Publish]\(発行\)** ボタンを選択します。 発行ページが表示されたら、 **[キャンセル]** ボタンの横にある **[Publish]\(発行\)** を選択します。
 
 ![発行](../media/qnamaker-tutorial-create-publish-query-in-portal/publish-1.png)
 

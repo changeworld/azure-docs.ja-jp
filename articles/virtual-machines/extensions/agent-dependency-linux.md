@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/29/2019
 ms.author: magoedte
-ms.openlocfilehash: 16491ccc8a9cdc24b82c4c4e27705fa30da61088
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 750393e6dba17ab8ba024f9f1fbb2f9127dd81ab
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58671661"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65521698"
 ---
 # <a name="azure-monitor-dependency-virtual-machine-extension-for-linux"></a>Linux 用 Azure Monitor Dependency 仮想マシン拡張機能
 
@@ -30,7 +30,7 @@ Azure Monitor for VMs のマップ機能では、Microsoft Dependency Agent か�
 
 ### <a name="operating-system"></a>オペレーティング システム
 
-Linux 用 Azure VM Dependency Agent 拡張機能は、Azure Monitor for VMs のデプロイに関する記事の「[サポートされているオペレーティング システム](../../azure-monitor/insights/vminsights-onboard.md#supported-operating-systems)」セクションに記載されたサポート対象オペレーティング システムに対して実行できます。
+Linux 用 Azure VM Dependency Agent 拡張機能は、Azure Monitor for VMs のデプロイに関する記事の「[サポートされているオペレーティング システム](../../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems)」セクションに記載されたサポート対象オペレーティング システムに対して実行できます。
 
 ## <a name="extension-schema"></a>拡張機能のスキーマ
 
@@ -74,7 +74,7 @@ Linux 用 Azure VM Dependency Agent 拡張機能は、Azure Monitor for VMs の�
 
 ### <a name="property-values"></a>プロパティ値
 
-| 名前 | 値/例 |
+| Name | 値/例 |
 | ---- | ---- |
 | apiVersion | 2015-01-01 |
 | publisher | Microsoft.Azure.Monitoring.DependencyAgent |

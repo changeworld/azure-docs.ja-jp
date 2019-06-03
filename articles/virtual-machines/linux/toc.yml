@@ -66,6 +66,8 @@
     - name: VM の種類とサイズ
       href: sizes.md
       items:
+        - name: 第 2 世代 VM
+          href: generation-2.md
         - name: 汎用
           href: sizes-general.md
           items:
@@ -216,11 +218,11 @@
           displayName: AAD
           items:
             - name: Red Hat Enterprise Linux
-              href: ../../active-directory-domain-services/active-directory-ds-join-rhel-linux-vm.md
+              href: ../../active-directory-domain-services/join-rhel-linux-vm.md
             - name: CentOS
-              href: ../../active-directory-domain-services/active-directory-ds-join-centos-linux-vm.md
+              href: ../../active-directory-domain-services/join-centos-linux-vm.md
             - name: Ubuntu
-              href: ../../active-directory-domain-services/active-directory-ds-join-ubuntu-linux-vm.md
+              href: ../../active-directory-domain-services/join-ubuntu-linux-vm.md
         - name: Azure Active Directory の資格情報でサインインする
           href: login-using-aad.md
         - name: 更新プログラムとパッチ

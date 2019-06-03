@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/31/2018
+ms.date: 04/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d1c10d9df85b04cf7b8ea7e0020bc8e802a0d5d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 2830e95f042d5c83d91d6c026d2fa2e70eb3e3b2
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59698930"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65901111"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bluejeans"></a>チュートリアル:Azure Active Directory と BlueJeans の統合
 
@@ -102,18 +102,17 @@ BlueJeans で Azure AD シングル サインオンを構成するには、次�
 
 3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
-    ![基本的な SAML 構成を編集する](common/edit-urls.png)
+    ![基本的な SAML 構成を編集する](media/bluejeans-tutorial/edit-urls-bluejeans.png)
 
-4. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
+4. **[基本的な SAML 構成]** ダイアログで、次の値を入力します。
 
-    ![[BlueJeans のドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
+    ![[BlueJeans のドメインと URL] のシングル サインオン情報](media/bluejeans-tutorial/tutorial_bluejeans-basic-configuration.png)
 
-    a. **[サインオン URL]** ボックスに、`https://<companyname>.BlueJeans.com` という形式で URL を入力します。
-
-    b. **[識別子]** テキスト ボックスに、`http://samlsp.bluejeans.com` という URL を入力します。
-
-    > [!NOTE]
-    > サインオン URL は実際の値ではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[BlueJeans クライアント サポート チーム](https://support.bluejeans.com/contact)に問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+   - **[識別子]** テキスト ボックスに「`http://samlsp.bluejeans.com`」と入力します。
+    
+   - **[サインオン URL]** テキスト ボックスに、BlueJeans から提供されるランディング ページ URL 「`https://<companyname>.bluejeans.com`」を入力します (この値を取得するには、[BlueJeans クライアント サポート チーム](https://support.bluejeans.com/contact)にお問い合わせください)。
+    
+   - **[Save]** をクリックします。
 
 5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 

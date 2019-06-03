@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/21/2019
 ms.author: tomfitz
-ms.openlocfilehash: 442551424fea353aa7eddef6e7eba6e934f95691
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: ca7cccb1d4f17ff9f80ca006da0ef7ce77109227
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58905853"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595529"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>Visual Studio での Azure リソース グループの作成とデプロイ
 
 Visual Studio では、インフラストラクチャとコードを Azure にデプロイするプロジェクトを作成することができます。 たとえば、アプリ用に Web ホスト、Web サイト、およびデータベースを定義し、そのインフラストラクチャをコードと共にデプロイできます。 Visual Studio では、一般的なシナリオのデプロイに適したさまざまなスターター テンプレートを多数用意しています。 この記事では、Web アプリと SQL Database をデプロイします。  
 
-この記事では、[Azure の開発ワークロードと ASP.NET ワークロードがインストールされている Visual Studio 2017](/dotnet/azure/dotnet-tools) を使用する方法を説明します。 Visual Studio 2015 Update 2 と Microsoft Azure SDK for .NET 2.9、または Visual Studio 2013 と Azure SDK 2.9 をご使用の場合、ここに記載した操作とほぼ同じです。
+この記事では、[[Azure の開発] および ASP.NET ワークロードがインストールされた Visual Studio 2017 以降](/dotnet/azure/dotnet-tools)を使用する方法について説明します。 Visual Studio 2015 Update 2 と Microsoft Azure SDK for .NET 2.9、または Visual Studio 2013 と Azure SDK 2.9 をご使用の場合、ここに記載した操作とほぼ同じです。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -32,10 +32,10 @@ Visual Studio では、インフラストラクチャとコードを Azure に�
 
 このセクションでは、**Web アプリ + SQL** テンプレートを使用して Azure リソース グループ プロジェクトを作成します。
 
-1. Visual Studio で、**[ファイル]**、**[新しいプロジェクト]** の順に選択し、**[C#]** または **[Visual Basic]** を選択します (これらのプロジェクトに含まれるのは JSON と PowerShell の内容だけであり、どちらの言語を選んでも、後のステージには影響しません)。 次に **[クラウド]** を選択し、**[Azure リソース グループ]** プロジェクトを選択します。
+1. Visual Studio で、 **[ファイル]** 、 **[新しいプロジェクト]** の順に選択し、 **[C#]** または **[Visual Basic]** を選択します (これらのプロジェクトに含まれるのは JSON と PowerShell の内容だけであり、どちらの言語を選んでも、後のステージには影響しません)。 次に **[クラウド]** を選択し、 **[Azure リソース グループ]** プロジェクトを選択します。
    
     ![Cloud Deployment プロジェクト](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/create-project.png)
-2. Azure リソース マネージャーにデプロイするテンプレートを選択します。 デプロイするプロジェクトの種類に応じて、さまざまなオプションがあります。 この記事では、**[Web アプリ + SQL]** テンプレートを選択します。
+2. Azure リソース マネージャーにデプロイするテンプレートを選択します。 デプロイするプロジェクトの種類に応じて、さまざまなオプションがあります。 この記事では、 **[Web アプリ + SQL]** テンプレートを選択します。
    
     ![テンプレートの選択](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/select-project.png)
    
@@ -117,14 +117,14 @@ Visual Studio では、テンプレートの編集時に使用できるプロパ
 ## <a name="deploy-the-resource-group-project-to-azure"></a>リソース グループ プロジェクトを Azure にデプロイする
 これでプロジェクトをデプロイする準備が整いました。 Azure リソース グループ プロジェクトをデプロイするとき、そのデプロイ先は Azure リソース グループとなります。 リソース グループとは、共通のライフサイクルを持ったリソースの論理上のまとまりです。
 
-1. デプロイ プロジェクト ノードのショートカット メニューで **[デプロイ]** > **[New (新規)]** の順に選択します。
+1. デプロイ プロジェクト ノードのショートカット メニューで **[デプロイ]**  >  **[New (新規)]** の順に選択します。
    
     ![メニュー項目 [配置]、[新しい配置]](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/deploy.png)
    
     **[リソース グループに配置する]** ダイアログ ボックスが表示されます。
    
     ![[リソース グループに配置する] ダイアログ ボックス](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/show-deployment.png)
-2. **[リソース グループ]** ボックスの一覧で、既存のリソース グループを選択するか、新しいリソース グループを作成します。 リソース グループを作成するには、**[リソース グループ]** ボックスの一覧を開き、**[新規作成]** を選択します。
+2. **[リソース グループ]** ボックスの一覧で、既存のリソース グループを選択するか、新しいリソース グループを作成します。 リソース グループを作成するには、 **[リソース グループ]** ボックスの一覧を開き、 **[新規作成]** を選択します。
    
     ![[リソース グループに配置する] ダイアログ ボックス](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/create-new-group.png)
    
@@ -170,7 +170,7 @@ Visual Studio では、テンプレートの編集時に使用できるプロパ
 ## <a name="deploy-code-with-your-infrastructure"></a>インフラストラクチャでコードをデプロイする
 この時点で、アプリ用のインフラストラクチャはデプロイ済みですが、実際のコードはプロジェクトでデプロイされていません。 この記事では、デプロイ時に Web アプリと SQL Database テーブルをデプロイする方法について説明します。 Web アプリではなく仮想マシンをデプロイする場合は、デプロイの一環としてマシン上で何らかのコードを実行します。 Web アプリのコードをデプロイするプロセスまたは仮想マシンを設定するプロセスは、ほぼ同じです。
 
-1. Visual Studio ソリューションにプロジェクトを追加します。 ソリューションを右クリックして、**[追加]** > **[新しいプロジェクト]** の順に選択します。
+1. Visual Studio ソリューションにプロジェクトを追加します。 ソリューションを右クリックして、 **[追加]**  >  **[新しいプロジェクト]** の順に選択します。
    
     ![add project](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/add-project.png)
 2. **ASP.NET Web アプリケーション**を追加します。 
@@ -182,7 +182,7 @@ Visual Studio では、テンプレートの編集時に使用できるプロパ
 4. Visual Studio によって Web アプリが作成されると、ソリューションに両方のプロジェクトが表示されます。
    
     ![show projects](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/show-projects.png)
-5. 次に、リソース グループ プロジェクトで新しいプロジェクトが認識されていることを確認する必要があります。 リソース グループ プロジェクト (AzureResourceGroup1) に戻ります。 **[参照]** を右クリックし、**[参照の追加]** を選択します。
+5. 次に、リソース グループ プロジェクトで新しいプロジェクトが認識されていることを確認する必要があります。 リソース グループ プロジェクト (AzureResourceGroup1) に戻ります。 **[参照]** を右クリックし、 **[参照の追加]** を選択します。
    
     ![[参照の追加]](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/add-new-reference.png)
 6. 作成した Web アプリ プロジェクトを選択します。

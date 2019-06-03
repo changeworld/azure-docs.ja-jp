@@ -16,11 +16,11 @@ ms.date: 02/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: edfc1f0b2d49510926cfbc306dacf6715225c5c1
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59272157"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65897826"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learningpool-act"></a>チュートリアル:Azure Active Directory と Learningpool Act の統合
 

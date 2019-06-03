@@ -10,12 +10,12 @@ ms.author: robreed
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: da746d80e3ae1fa5cc02683a8bb0ff0402722b8e
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: b486c30827ee67b58cbdc0027c8221cceed02e51
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59524942"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235939"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Azure Automation State Configuration の概要
 
@@ -69,7 +69,7 @@ Ubuntu  | 18.04
 
 ### <a name="dsc-requirements"></a>DSC 要件
 
-Azure で実行されているすべての Windows ノードに対して、[WMF 5.1](https://docs.microsoft.com/powershell/wmf/5.1/install-configure) がオンボード中にインストールされます。  Windows Server 2012 および Windows 7 を実行しているノードでは、[WinRM が有効になります](https://docs.microsoft.com/powershell/dsc/troubleshooting/troubleshooting#winrm-dependency)。
+Azure で実行されているすべての Windows ノードに対して、[WMF 5.1](https://docs.microsoft.com/powershell/wmf/setup/install-configure) がオンボード中にインストールされます。  Windows Server 2012 および Windows 7 を実行しているノードでは、[WinRM が有効になります](https://docs.microsoft.com/powershell/dsc/troubleshooting/troubleshooting#winrm-dependency)。
 
 Azure で実行しているすべての Linux ノードで、オンボード中に [Linux 用の PowerShell DSC](https://github.com/Microsoft/PowerShell-DSC-for-Linux) がインストールされます。
 
@@ -81,6 +81,16 @@ Azure で実行しているすべての Linux ノードで、オンボード中�
 * グローバル URL: *.azure-automation.net
 * 米国バージニア州 (政府機関向け) のグローバル URL: *.azure automation.us
 * エージェント サービス: https://\<workspaceId\>.agentsvc.azure-automation.net
+
+#### <a name="proxy-support"></a>プロキシのサポート
+
+DSC エージェントのプロキシは、Windows バージョン 1809 以降でサポートされます。
+このオプションを構成するには、ノードの登録に使用される [metaconfiguration スクリプト](automation-dsc-onboarding.md#generating-dsc-metaconfigurations)の **ProxyURL** と **ProxyCredential** の値を設定します。
+以前のバージョンの Windows では、DSC のプロキシは利用できません。
+
+Linux ノードでは、DSC エージェントがプロキシをサポートしており、http_proxy 変数を利用して URL が特定されます。
+
+#### <a name="azure-state-configuration-network-ranges-and-namespace"></a>Azure State Configuration のネットワークの範囲と名前空間
 
 例外を定義するときは、一覧に示されているアドレスを使用することをお勧めします。 [Microsoft Azure データセンターの IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)の IP アドレスをダウンロードできます。 このファイルは毎週更新され、現在デプロイされている範囲と今後変更される IP 範囲が反映されます。
 

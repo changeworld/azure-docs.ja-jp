@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 11e49d362508e9720cf65fc20e020930b5f5c3ad
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 9be99bc9ac4683fea97333c9d6cb783f0fde35c5
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57775035"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64575341"
 ---
 # <a name="glossary"></a>用語集
 
@@ -37,11 +37,11 @@ ms.locfileid: "57775035"
 
 <a name="antimeridian"></a> **逆子午線**:経度の -180 度と 180 度が出会う地点。180<sup> </sup>度経線とも呼ばれます。 地球のグリニッジ子午線の正反対に位置します。
 
-<a name="application-programming-interface-api"></a> **アプリケーション プログラミング インターフェイス (API)**:開発者によるアプリケーション作成を可能にする仕様。
+<a name="application-programming-interface-api"></a> **アプリケーション プログラミング インターフェイス (API)** :開発者によるアプリケーション作成を可能にする仕様。
 
 <a name="api-key"></a> **API キー**:「Azure Maps キー」を参照してください。
 
-<a name="area-of-interest-aoi"></a> **関心領域 (AOI: Area of Interest)**:マップまたはデータベースの作成の重点領域を定義する目的で使用される範囲。
+<a name="area-of-interest-aoi"></a> **関心領域 (AOI: Area of Interest)** :マップまたはデータベースの作成の重点領域を定義する目的で使用される範囲。
 
 <a name="asset-tracking"></a> **資産追跡**:資産 (人や車両、各種対象物など) の位置を追跡するプロセス。
 
@@ -51,7 +51,7 @@ ms.locfileid: "57775035"
 
 <a name="autosuggest"></a> **自動提案**:ユーザーの入力している内容について理にかなった候補を予測するアプリケーション機能。
 
-<a name="azure-location-based-services-lbs"></a> **Azure Location Based Services (LBS)**:プレビュー段階の Azure Maps の旧称。
+<a name="azure-location-based-services-lbs"></a> **Azure Location Based Services (LBS)** :プレビュー段階の Azure Maps の旧称。
 
 <a name="azure-maps-key"></a> **Azure Maps キー**:Azure Maps キーは、ユーザーの Azure Maps アプリケーションまたはサービス要求を認証する目的で使用される一意の文字列です。 
 
@@ -63,7 +63,7 @@ ms.locfileid: "57775035"
 
 <a name="bearing"></a> **方角**:あるポイントの別のポイントを基準とした水平方向。 これは、北を基準として時計回りに 0 度から 360 度の範囲の角度として表現されます。 
 
-<a name="boundary"></a> **境界線**:隣接する行政上の実体 (国、行政区、土地など) と区別する線または多角形。 境界線は必ずしも物理的な地物 (川、山、壁など) に沿ったものとは限りません。
+<a name="boundary"></a> **境界線**:隣接する行政上の実体 (国や地域、行政区、土地など) と区別する線または多角形。 境界線は必ずしも物理的な地物 (川、山、壁など) に沿ったものとは限りません。
 
 <a name="bounds"></a> **境界**:「[境界ボックス](#bounding-box)」を参照してください。
 
@@ -91,13 +91,13 @@ ms.locfileid: "57775035"
 
 <a name="coordinate-system"></a> **座標系**:2 次元空間または 3 次元空間におけるポイントの位置を定義するために使用される参照フレームワーク。
 
-<a name="country-code"></a> **国番号**:ISO 標準に基づく国の一意識別子。 ISO2 では 2 文字の国コードが使用されます (例: US)。ISO3 では、これが 3 文字のコードで表されます (例: USA)。
+<a name="country-code"></a> **国番号**:ISO 標準に基づく国や地域の一意識別子。 ISO2 では 2 文字の国コードが使用されます (例: US)。ISO3 では、これが 3 文字のコードで表されます (例: USA)。
 
-<a name="country-subdivision"></a> **国の下位区分**:国の第 1 レベルの下位区分。一般に、"州" または "都道府県" という名称で知られています。
+<a name="country-subdivision"></a> **国の下位区分**:国や地域の第 1 レベルの下位区分。一般に、"州" または "都道府県" という名称で知られています。
 
-<a name="country-secondary-subdivision"></a> **国の第 2 下位区分**:国の第 2 レベルの下位区分。一般に、"郡" という名称で知られています。
+<a name="country-secondary-subdivision"></a> **国の第 2 下位区分**:国や地域の第 2 レベルの下位区分。一般に、"郡" という名称で知られています。
 
-<a name="country-tertiary-subdivision"></a> **国の第 3 下位区分**:国の第 3 レベルの下位区分。一般に、"区" などの領域名が付いています。
+<a name="country-tertiary-subdivision"></a> **国の第 3 下位区分**:国や地域の第 3 レベルの下位区分。一般に、"区" などの領域名が付いています。
 
 <a name="cross-street"></a> **交差道路**:複数の道路が交差するポイント。
 
@@ -109,7 +109,7 @@ ms.locfileid: "57775035"
 
 <a name="dbf-file"></a> **DBF ファイル**:シェープファイル (SHP) と組み合わせて使用されるデータベース ファイル形式。
 
-<a name="degree-minutes-seconds-dms"></a> **度分秒 (DMS: Degree Minutes Seconds)**:緯度と経度を表す測定単位。 1 度は、円の 1/360<sup></sup> の角度です。 度はさらに、60 分に分割され、分は 60 秒に分割されます。
+<a name="degree-minutes-seconds-dms"></a> **度分秒 (DMS: Degree Minutes Seconds)** :緯度と経度を表す測定単位。 1 度は、円の 1/360<sup></sup> の角度です。 度はさらに、60 分に分割され、分は 60 秒に分割されます。
 
 <a name="delaunay-triangulation"></a> **ドロネー三角分割法**:ポイントのデータセットから、互いに重なることなく連続する三角形のメッシュを作成する手法。 それぞれの三角形の外接円は、その内部にデータセットのポイントを含みません。
 
@@ -117,7 +117,7 @@ ms.locfileid: "57775035"
 
 <a name="destination"></a> **目的地**:人の移動先となる終点または場所。
 
-<a name="digital-elevation-model-dem"></a> **数値標高モデル (DEM: Digital Elevation Model)**:エリア上で共通の測地系を使用し、一定の間隔でキャプチャされる、面を基準とする標高値のデータセット。 一般に DEM は、地形の起伏を表す目的で使用されます。
+<a name="digital-elevation-model-dem"></a> **数値標高モデル (DEM: Digital Elevation Model)** :エリア上で共通の測地系を使用し、一定の間隔でキャプチャされる、面を基準とする標高値のデータセット。 一般に DEM は、地形の起伏を表す目的で使用されます。
 
 <a name="dijkstra's-algorithm"></a> **ダイクストラ アルゴリズム**:ネットワークのつながりを調べて 2 点間の最短パスを探し出すアルゴリズム。
 
@@ -185,7 +185,7 @@ ms.locfileid: "57775035"
 
 <a name="great-circle-distance"></a> **大圏距離**:球体表面上にある 2 点間の最短距離。
 
-<a name="greenwich-mean-time-gmt"></a> **グリニッジ標準時 (GMT: Greenwich Mean Time)**:イギリスのグリニッジの王立天文台を通るグリニッジ子午線における時刻。
+<a name="greenwich-mean-time-gmt"></a> **グリニッジ標準時 (GMT: Greenwich Mean Time)** :イギリスのグリニッジの王立天文台を通るグリニッジ子午線における時刻。
 
 <a name="guid"></a> **GUID**:グローバル一意識別子。 インターフェイス、クラス、タイプ ライブラリ、コンポーネント カテゴリ、またはレコードを一意に識別するために使用される文字列。
 
@@ -221,7 +221,7 @@ ms.locfileid: "57775035"
 
 <a name="level-of-detail"></a> **詳細度**:「ズーム レベル」を参照してください。
 
-<a name="lidar"></a> **ライダー (Lidar)**:Light detection and ranging (光の検出および範囲) の頭字語。 レーザーを使用して反射面までの距離を測定するリモートセンシング技術です。
+<a name="lidar"></a> **ライダー (Lidar)** :Light detection and ranging (光の検出および範囲) の頭字語。 レーザーを使用して反射面までの距離を測定するリモートセンシング技術です。
 
 <a name="linear-interpolation"></a> **線状補間**:既知の値間の直線距離を使用して未知の値を推定すること。
 
@@ -273,7 +273,7 @@ ms.locfileid: "57775035"
 
 <a name="point"></a> **ポイント**:地図上の単一の位置を表すジオメトリ。 
 
-<a name="points-of-interest-poi"></a> **関心ポイント (POI: Points of interest)**:企業やランドマークなど、関心の対象となる一般的な場所。
+<a name="points-of-interest-poi"></a> **関心ポイント (POI: Points of interest)** :企業やランドマークなど、関心の対象となる一般的な場所。
 
 <a name="polygon"></a> **ポリゴン**:地図上のエリアを表す立体ジオメトリ。 
 
@@ -283,7 +283,7 @@ ms.locfileid: "57775035"
 
 <a name="post-code"></a> **郵便コード**:「[郵便番号](#postal-code)」を参照してください。
 
-<a name="postal-code"></a> **郵便番号**:特定の形式を持った一連の文字または数値あるいはその組み合わせ。国の郵便サービスが郵便物の配達を省力化するために、地域を区分けする目的で使用します。
+<a name="postal-code"></a> **郵便番号**:特定の形式を持った一連の文字または数値あるいはその組み合わせ。国や地域の郵便サービスが郵便物の配達を省力化するために、地域を区分けする目的で使用します。
 
 <a name="prime-meridian"></a> **グリニッジ子午線**:経度 0 度を表す経度線。 一般に、西方へ移動するときは 180 度になるまで経度値が減少し、東方へ移動するときは、-180 度になるまで経度値が増加します。 
 
@@ -297,7 +297,7 @@ ms.locfileid: "57775035"
 
 <a name="quadtree"></a> **4 分木**:それぞれのノードにちょうど 4 つの子が存在するデータ構造。 Azure Maps に使用されているタイリング システムでは、ユーザーによって 1 段階拡大されたときに各マップ タイルが 4 つのサブタイルに分割されるような方法で 4 分木構造が使用されています。  詳細については、「[ズーム レベルとタイル グリッド](zoom-levels-and-tile-grid.md)」を参照してください。
 
-<a name="queries-per-second-qps"></a> **1 秒あたりのクエリ数 (QPS: Queries Per Second)**:サービスまたはプラットフォームに対して 1 秒間に実行することのできるクエリまたは要求の数。 
+<a name="queries-per-second-qps"></a> **1 秒あたりのクエリ数 (QPS: Queries Per Second)** :サービスまたはプラットフォームに対して 1 秒間に実行することのできるクエリまたは要求の数。 
 
 ## <a name="r"></a>R
 
@@ -321,7 +321,7 @@ ms.locfileid: "57775035"
 
 <a name="route"></a> **ルート**:複数の場所を結ぶ経路。ルート上のウェイポイントに関する命令など、追加情報を含む場合もあります。
 
-<a name="requests-per-second-rps"></a> **1 秒あたりの要求数 (RPS: Requests Per Second)**:「[1 秒あたりのクエリ数 (QPS: Queries Per Second)](#queries-per-second-qps)」を参照してください。 
+<a name="requests-per-second-rps"></a> **1 秒あたりの要求数 (RPS: Requests Per Second)** :「[1 秒あたりのクエリ数 (QPS: Queries Per Second)](#queries-per-second-qps)」を参照してください。 
 
 <a name="rss"></a> **RSS**:ソースに応じて Really Simple Syndication、Resource Description Framework (RDF: リソース記述フレームワーク) Site Summary、または Rich Site Summary の頭字語。 異なる Web サイトにおけるコンテンツを共有するためのシンプルな構造化 XML 形式です。 RSS ドキュメントには、作成者、日付、タイトル、簡単な説明、ハイパーテキスト リンクなど、主要なメタデータ要素が含まれています。 この情報を頼りにユーザー (または RSS パブリッシャー サービス) は、さらに追求するだけの価値のあるコンテンツを見極めることができます。
 
@@ -329,9 +329,9 @@ ms.locfileid: "57775035"
 
 <a name="satellite-imagery"></a> **衛星映像**:真下を撮影する航空機や衛星によってキャプチャされた映像。
 
-<a name="software-development-kit-sdk"></a> **ソフトウェア開発キット (SDK: Software Development Kit)**:API を使用してアプリを作成する開発者を支援するために、ドキュメント、サンプル コード、サンプル アプリをまとめたもの。
+<a name="software-development-kit-sdk"></a> **ソフトウェア開発キット (SDK: Software Development Kit)** :API を使用してアプリを作成する開発者を支援するために、ドキュメント、サンプル コード、サンプル アプリをまとめたもの。
 
-<a name="shapefile-shp"></a> **シェープファイル (SHP)**:地物の位置情報、図形、属性を格納するためのベクター データ ストレージ形式。ESRI シェープファイルとも呼ばれます。 シェープファイルは、関連するファイル一式で保存されます。
+<a name="shapefile-shp"></a> **シェープファイル (SHP)** :地物の位置情報、図形、属性を格納するためのベクター データ ストレージ形式。ESRI シェープファイルとも呼ばれます。 シェープファイルは、関連するファイル一式で保存されます。
 
 <a name="spherical-mercator-projection"></a> **球面メルカトル図法**:「[Web メルカトル図法](#web-mercator)」を参照してください。 
 
@@ -351,11 +351,11 @@ ms.locfileid: "57775035"
 
 <a name="terrain"></a> **地形**:砂地や山岳地帯など、特定の特徴を備えた陸地のエリア。
 
-<a name="thematic-maps"></a> **主題地図**:主題地図は、地域についてのテーマを反映するために作られたシンプルな地図です。 この種の地図の一般的なシナリオとしては、何らかのデータのメトリックに基づいて行政区 (国など) を色付けすることが挙げられます。
+<a name="thematic-maps"></a> **主題地図**:主題地図は、地域についてのテーマを反映するために作られたシンプルな地図です。 この種の地図の一般的なシナリオとしては、何らかのデータのメトリックに基づいて行政区 (国や地域など) を色付けすることが挙げられます。
 
 <a name="tile-layer"></a> **タイル レイヤー**:複数のマップ タイル (四角形の断片) を集め、1 つにつながったレイヤーとすることで表示されたレイヤー。 これらのタイルには、ラスター イメージ タイルとベクター タイルとがあります。 ラスター タイル レイヤーは、事前にレンダリングしたうえでサーバーに画像として保存されるのが一般的です。 これによりストレージ スペースが大量に消費される場合があります。 ベクター タイル レイヤーは、クライアント アプリケーション内で実行中にレンダリングされるため、サーバー側のストレージ要件はそれよりも小さくなります。
 
-<a name="time-zone"></a> **タイム ゾーン**:地球上において、法律や商業、社会的な目的から同じ標準時刻が使用されている地域。 タイム ゾーンは多くの場合、国やその下位区分の境界を反映したものになっています。
+<a name="time-zone"></a> **タイム ゾーン**:地球上において、法律や商業、社会的な目的から同じ標準時刻が使用されている地域。 タイム ゾーンは多くの場合、国や地域やその下位区分の境界を反映したものになっています。
 
 <a name="transaction"></a> **トランザクション**:Azure Maps では、トランザクショナル ライセンス モデルが使用されています。
 
@@ -364,7 +364,7 @@ ms.locfileid: "57775035"
 
 <a name="transformation"></a> **変換**:異なる地理座標系間でデータを変換するプロセス。 たとえば、イギリスでキャプチャされた何らかのデータがあり、そのデータが OSGB 1936 の測地系に基づいているとします。 Azure Maps では、WGS84 の [EPSG:3857](https://epsg.io/3857) 座標参照系バリアントが使用されています。 そのため、データを正しく表示するためには、その座標系の変換が必要となります。
 
-<a name="traveling-salesmen-problem-tsp"></a> **巡回セールスマン問題 (TSP: Traveling Salesmen Problem)**:セールスマンが一連の訪問先を巡り出発地に戻る際の最も効率的な経路を探し出すハミルトン閉路問題。  
+<a name="traveling-salesmen-problem-tsp"></a> **巡回セールスマン問題 (TSP: Traveling Salesmen Problem)** :セールスマンが一連の訪問先を巡り出発地に戻る際の最も効率的な経路を探し出すハミルトン閉路問題。  
 
 <a name="trilateration"></a> **三辺測量**:地表におけるポイントの位置を、他の 2 つのポイントを基準として 3 点間の距離をすべて測定することにより特定するプロセス。
 
@@ -376,7 +376,7 @@ ms.locfileid: "57775035"
 
 <a name="vector-tile"></a> **ベクター タイル**:マップ コントロールと同じタイル システムを使用して地理空間ベクター データを格納するためのオープン データ仕様。 「[タイル レイヤー](#tile-layer)」も参照してください。
 
-<a name="vehicle-routing-problem-vrp"></a> **配送経路問題 (VRP: Vehicle Routing Problem)**:さまざまな制約を考慮に入れながら、多数の車両についての秩序立った一連のルートを計算する問題区分。 これらの制約の例としては、配送時間枠、さまざまな通行容量、移動時間制限が挙げられます。
+<a name="vehicle-routing-problem-vrp"></a> **配送経路問題 (VRP: Vehicle Routing Problem)** :さまざまな制約を考慮に入れながら、多数の車両についての秩序立った一連のルートを計算する問題区分。 これらの制約の例としては、配送時間枠、さまざまな通行容量、移動時間制限が挙げられます。
 
 <a name="voronoi-diagram"></a> **ボロノイ図**:一連の幾何学的対象物 (通常は点特徴) を囲む領域 (セル) にスペースを分割したもの。 これらのセル (多角形) は、ドロネー三角形の基準を満たしている必要があります。 同じ領域内であればどこであっても、その領域内にある対象物までの距離が、他の一連の領域内の対象物までの距離よりも短くなります。 ボロノイ図は、地物周辺の影響範囲の境界を示す目的でよく使用されます。 
 
@@ -386,7 +386,7 @@ ms.locfileid: "57775035"
 
 <a name="waypoint-optimization"></a> **ウェイポイント最適化**:与えられたすべてのウェイポイントを通過するために必要な移動時間または移動距離を最小限に抑える目的で一連のウェイポイントを調整するプロセス。 最適化の複雑さによっては、[巡回セールスマン問題](#traveling-salesmen-problem-tsp)や[配送経路問題](#vehicle-routing-problem-vrp)と呼ばれることもあります。
 
-<a name="web-map-service-wms"></a> **Web Map Service (WMS)**:WMS は、画像ベースの地図サービスを定義する Open Geographic Consortium (OGC) 標準です。 WMS サービスは、地図に含まれる特定のエリアの地図画像をオンデマンドで提供します。 画像は事前にレンダリングされた記号を含んでおり、サービスで名前付きスタイルが定義されていれば、そのいずれかのスタイルでレンダリングされる場合もあります。
+<a name="web-map-service-wms"></a> **Web Map Service (WMS)** :WMS は、画像ベースの地図サービスを定義する Open Geographic Consortium (OGC) 標準です。 WMS サービスは、地図に含まれる特定のエリアの地図画像をオンデマンドで提供します。 画像は事前にレンダリングされた記号を含んでおり、サービスで名前付きスタイルが定義されていれば、そのいずれかのスタイルでレンダリングされる場合もあります。
 
 <a name="web-mercator"></a> **Web メルカトル図法**:メルカトル図法とよく似ていますが、こちらは主に Web ベースのマッピング プログラムで使用されます。球面メルカトル図法とも呼ばれます。 使用される式は、小規模な地図に使用される標準的なメルカトル図法と同じです。 ただし、Web メルカトル図法では、規模に関係なく、球面の式が使用されます。一方、大規模なメルカトル図法の地図では、楕円形状の投影法を使用するのが一般的です。 両者の相違は、地球規模ではごくわずかですが、小さなエリアの地図では、同じ規模の正確な楕円メルカトル図法と比べて、地図に若干のずれが生じます。
 
@@ -398,5 +398,5 @@ ms.locfileid: "57775035"
 
 <a name="zip-code"></a> **ZIP コード**:「[郵便番号](#postal-code)」を参照してください。
 
-<a name="Zoom level"></a> **ズーム レベル**:地図が見える範囲と詳細度を指定します。 ズーム レベル 0 まで縮小した場合、通常、世界地図全体が見えますが、表示される情報は、国名や国境、海の名前などに限定されます。 ズーム レベル 17 まで拡大した場合、地図には、数ブロックから成るエリアが詳細な道路情報と共に表示されます。 詳細については、「[ズーム レベルとタイル グリッド](zoom-levels-and-tile-grid.md)」を参照してください。
+<a name="Zoom level"></a> **ズーム レベル**:地図が見える範囲と詳細度を指定します。 ズーム レベル 0 まで縮小した場合、通常、世界地図全体が見えますが、表示される情報は、国や地域の名前や国境、海の名前などに限定されます。 ズーム レベル 17 まで拡大した場合、地図には、数ブロックから成るエリアが詳細な道路情報と共に表示されます。 詳細については、「[ズーム レベルとタイル グリッド](zoom-levels-and-tile-grid.md)」を参照してください。
 

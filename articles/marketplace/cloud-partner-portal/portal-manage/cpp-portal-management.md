@@ -1,25 +1,18 @@
 ---
-title: Cloud パートナー ポータルでの管理 - Azure Marketplace | Microsoft Docs
+title: Cloud パートナー ポータルでの管理 | Azure Marketplace
 description: Azure Marketplace 用の Cloud パートナー ポータルのアカウント管理に使用できる操作の種類について説明します。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 04/01/2019
-ms.author: pbutlerm
-ms.openlocfilehash: 539bc7861a487e6eb563f565d3475efdda99b093
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: pabutler
+ms.openlocfilehash: 58451dd225a4f0625a6922bde672a6928ea50943
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59798181"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66257486"
 ---
 # <a name="cloud-partner-portal-management"></a>Cloud パートナー ポータルでの管理
 
@@ -31,7 +24,7 @@ ms.locfileid: "59798181"
 Cloud パートナー ポータルを使用する前に、次の記事を理解しておく必要があります。
 
 - 「[Azure Marketplace policies and terms (Azure Marketplace のポリシーと利用規約)](../../policies-terms.md)」。[Azure Marketplace](https://azuremarketplace.microsoft.com) および [AppSource](https://appsource.microsoft.com) のユーザーやパブリッシャーに適用される各種の法的および技術的な要件および規則が示されています。
-- 「[Become a Cloud Marketplace Publisher (クラウド Marketplace パブリッシャーになる)](../../become-publisher.md)」。公式の Microsoft クラウド パブリッシャーになるために必要なすべての手順が概説されています。
+- 「[Become a Cloud Marketplace Publisher (クラウド Marketplace パブリッシャーになる)](https://docs.microsoft.com/azure/marketplace/become-publisher)」。公式の Microsoft クラウド パブリッシャーになるために必要なすべての手順が概説されています。
 
 
 ## <a name="account-creation-and-management"></a>アカウントの作成および管理

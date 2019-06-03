@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/22/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 6afe54d269d273c6a93e6431e9f1c1af7b18cc0e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 416040d91da2f6346027f738de507777f804fd1f
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64720919"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237730"
 ---
 # <a name="how-to-deploy-azure-files"></a>Azure Files のデプロイ方法
 [Azure Files](storage-files-introduction.md) はクラウドで、業界標準の SMB プロトコルを介してアクセスできる、フル マネージドのファイル共有を提供します。 この記事では、実際に組織内で Azure Files をデプロイする方法を示します。
@@ -108,7 +108,7 @@ Robocopy は、Windows および Windows Server に付属するよく知られ�
 ### <a name="azcopy"></a>AzCopy
 AzCopy は、最高のパフォーマンスの単純なコマンドを使って Azure Files および Azure Blob Storage との間で双方向にデータをコピーするために設計された、コマンドライン ユーティリティです。 AzCopy の使用は簡単です。
 
-1. [最新バージョンの AzCopy on Windows](https://aka.ms/downloadazcopy) または AzCopy on [Linux](../common/storage-use-azcopy-linux.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#download-and-install-azcopy)をダウンロードします。
+1. [最新バージョンの AzCopy on Windows](https://aka.ms/downloadazcopy) または AzCopy on [Linux](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy-linux#download-and-install-azcopy)をダウンロードします。
 2. コマンドラインで `azcopy` を使用してデータを Azure ファイル共有に移動します。 Windows での構文は次のとおりです。 
 
     ```

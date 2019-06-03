@@ -11,16 +11,16 @@ ms.author: MayMSFT
 ms.reviewer: trbye
 ms.date: 03/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: a717fa4191c57c21705d24884397ebb485726492
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 67f3a0d10490c5c63dfe262d07985f51bb384e34
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025121"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65604480"
 ---
 # <a name="tutorial-prepare-data-for-regression-modeling"></a>チュートリアル:回帰モデリングのためにデータを準備する
 
-このチュートリアルでは、[Azure Machine Learning Data Prep SDK for Python](https://aka.ms/data-prep-sdk) を使用して回帰モデルのためにデータを準備する方法を説明します。 さまざまな変換を実行して、2 つの異なる NYC タクシー データ セットをフィルター処理して結合します。
+このチュートリアルでは、[Azure Machine Learning 用のデータ準備パッケージ](https://aka.ms/data-prep-sdk)を使用して、回帰モデリングのためのデータを準備する方法について説明します。 さまざまな変換を実行して、2 つの異なる NYC タクシー データ セットをフィルター処理して結合します。
 
 このチュートリアルは、**2 部構成のチュートリアル シリーズのパート 1 です**。 このチュートリアル シリーズを完了すると、データの特徴についてモデルをトレーニングして、タクシー移動のコストを予測できます。 これらの特徴には、乗車日時、乗客数、乗車場所が含まれます。
 
@@ -38,7 +38,7 @@ ms.locfileid: "65025121"
 「[開発環境を設定する](#start)」にスキップしてノートブックの手順を読むか、以下の手順に従ってノートブックを入手し、Azure Notebooks または独自のノートブック サーバーで実行します。 ノートブックを実行するには、以下のものが必要です。
 
 * 以下のものがインストールされている Python 3.6 ノートブック サーバー。
-    * Azure Machine Learning Data Prep SDK for Python
+    *  Azure Machine Learning SDK for Python の azureml-dataprep パッケージ
 * チュートリアル ノートブック
 
 * [ワークスペース内のクラウド ノートブック サーバー](#azure)を使用する 
@@ -56,8 +56,8 @@ ms.locfileid: "65025121"
 
 次の手順を使用して、コンピューターにローカルの Jupyter Notebook サーバーを作成します。  手順を完了したら、**tutorials/regression-part1-data-prep.ipynb** ノートブックを実行します。
 
-1. [[Azure Machine Learning Python のクイック スタート](quickstart-run-local-notebook.md)](setup-create-workspace.md#python)にあるインストール手順を完了して、Miniconda 環境を作成します。  「**ワークスペースを作成する**」セクションはスキップしてもかまいませんが、このチュートリアル シリーズの[パート 2](tutorial-auto-train-models.md) で必要になります。
-1. `pip install azureml-dataprep` を使用して、Data Prep SDK を環境にインストールします。
+1. [Azure Machine Learning Python のクイック スタート](setup-create-workspace.md#sdk)にあるインストール手順を完了して、Miniconda 環境を作成します。  「**ワークスペースを作成する**」セクションはスキップしてもかまいませんが、このチュートリアル シリーズの[パート 2](tutorial-auto-train-models.md) で必要になります。
+1. `pip install azureml-dataprep` を使用して、ご自分の環境に azureml-dataprep をインストールします。
 1. [GitHub リポジトリ](https://aka.ms/aml-notebooks)を複製します。
 
     ```

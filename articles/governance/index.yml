@@ -8,7 +8,7 @@ metadata:
   manager: carmonm
   ms.service: governance
   ms.topic: landing-page
-  ms.date: 09/18/2018
+  ms.date: 05/07/2019
   ms.author: dacoulte
 abstract:
   description: Azure ガバナンスは、さまざまな Azure リソースの大規模な管理を有効にするように設計された概念およびサービスのコレクションです。 これらのサービスを使用すると、サブスクリプションを論理的な方法で整理および構造化し、再利用可能な Azure ネイティブ リソース パッケージを作成およびデプロイすることで、リソースの定義、監査、修復など、さまざまな処理を実行できます。 これらの概念およびサービスの詳細と、現在の環境でそれらを有効化して使用する方法については、以下のページをご覧ください。
@@ -53,16 +53,16 @@ sections:
               alt: ブループリント
               src: ./media/blueprints-illustration.svg
             title: ブループリント
-  - title: 実装
+  - title: クラウド導入フレームワーク
   - items:
       - type: list
         style: cards
         className: cardsZ
         columns: 3
         items:
-          - href: /azure/architecture/cloud-adoption/getting-started/what-is-governance?toc=/azure/governance/toc.json
-            html: <p>以前は、インフラストラクチャからソフトウェアまで、あらゆるレベルのテクノロジの所有権と責任が企業にあることが前提になっていました。 今では、クラウドによって、必要に応じたリソースのプロビジョニングや使用が実現したことで、企業によるテクノロジの利用方法が転換される可能性があります。</p>
-            title: エンタープライズ クラウドの導入
-          - href: /azure/architecture/cloud-adoption/appendix/azure-scaffold?toc=/azure/governance/toc.json
-            html: <p>管理者は、ビジネス グループや開発者が各自の目標を速やかに達成するのを妨げることなく、組織のガバナンスの最小要件を満たすワークロードを実現できます。<br /><br /></p>
-            title: エンタープライズ スキャフォールディング
+          - href: /azure/architecture/cloud-adoption/index?toc=/azure/governance/toc.json
+            html: <p>クラウド導入フレームワークは Microsoft Azure の技術的なガイダンスを提供します。 お客様がまだクラウド ベンダーの選択段階にある可能性があるため、このフレームワークでは、より優れた決断を下せるように、可能な場合にはクラウドにとらわれないガイダンスを提供します。</p>
+            title: 概要
+          - href: /azure/architecture/cloud-adoption/governance/index?toc=/azure/governance/toc.json
+            html: <p>オンプレミスの IT 環境を管理する既存のポリシーを持つ組織の場合、クラウド ガバナンスはそれらのビジネス ポリシーを補完する必要があります。<br /><br /></p>
+            title: ガバナンスの概要

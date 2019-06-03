@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: sstein
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 97570a16c7d87a3c8182909b61c04fde30b3fe9b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bbb67845922dd9a3b2a78f76bf25d73bace98a82
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58000209"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66240133"
 ---
 # <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-sql-database"></a>SQL Database によるテナント単位データベース パターンを使用するマルチテナント SaaS アプリケーションをデプロイして操作する
 
@@ -54,7 +54,7 @@ SaaS の設計と管理のさまざまなパターンを確認するために、
 
 ### <a name="steps"></a>手順
 
-1. Azure Portal で Wingtip Tickets SaaS テナント単位データベース デプロイ テンプレートを開くには、**[Azure にデプロイ]** ボタンを選択します。
+1. Azure Portal で Wingtip Tickets SaaS テナント単位データベース デプロイ テンプレートを開くには、 **[Azure にデプロイ]** ボタンを選択します。
 
    <a href="https://aka.ms/deploywingtipdpt" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
 
@@ -63,8 +63,8 @@ SaaS の設計と管理のさまざまなパターンを確認するために、
     > [!IMPORTANT]
     > 一部の認証とサーバー ファイアウォールは、デモンストレーションのために、意図的に保護されていません。 新しいリソース グループを作成することをおすすめします。 既存のリソース グループ、サーバー、またはプールを使用しないでください。 運用環境には、このアプリケーション、スクリプト、およびデプロイされたリソースを使用しないでください。 関連する課金を停止するために、サンプル アプリケーションの操作が終了したら、このリソース グループを削除してください。
 
-    - **[リソース グループ]**:**[新規作成]** を選択し、先ほど選択したリソース グループの一意の名前を指定します。
-    - **[場所]**:ドロップダウン リストから場所を選択します。
+    - **[リソース グループ]** : **[新規作成]** を選択し、先ほど選択したリソース グループの一意の名前を指定します。
+    - **[場所]** :ドロップダウン リストから場所を選択します。
     - **User**:先ほど選択したユーザー名の値を使用します。
 
 1. アプリケーションをデプロイします。
@@ -73,7 +73,7 @@ SaaS の設計と管理のさまざまなパターンを確認するために、
 
     b. **[購入]** を選択します。
 
-1. デプロイの状態を監視するには、**[通知]** (検索ボックスの右にあるベル アイコン) を選択します。 Wingtip Tickets SaaS アプリのデプロイには約 5 分かかります。
+1. デプロイの状態を監視するには、 **[通知]** (検索ボックスの右にあるベル アイコン) を選択します。 Wingtip Tickets SaaS アプリのデプロイには約 5 分かかります。
 
    ![デプロイメント成功](media/saas-dbpertenant-get-started-deploy/succeeded.png)
 
@@ -87,8 +87,8 @@ SaaS の設計と管理のさまざまなパターンを確認するために、
 1. [WingtipTicketsSaaS-DbPerTenant GitHub リポジトリ][github-wingtip-dpt]を参照します。
 1. **[複製またはダウンロード]** を選択します。
 1. **[Download ZIP]/(ZIP をダウンロード/)** を選択し、ファイルを保存します。
-1. **WingtipTicketsSaaS-DbPerTenant-master.zip** ファイルを右クリックし、**[プロパティ]** を選択します。
-1. **[全般]** タブで **[ブロックの解除]** > **[適用]** と選択します。
+1. **WingtipTicketsSaaS-DbPerTenant-master.zip** ファイルを右クリックし、 **[プロパティ]** を選択します。
+1. **[全般]** タブで **[ブロックの解除]**  >  **[適用]** と選択します。
 1. **[OK]** を選択し、ファイルを展開します。
 
 スクリプトは、...\\WingtipTicketsSaaS-DbPerTenant-master\\Learning Modules フォルダーにあります。
@@ -115,7 +115,7 @@ SaaS の設計と管理のさまざまなパターンを確認するために、
 
     ![Events Hub](media/saas-dbpertenant-get-started-deploy/events-hub.png)
 
-2. Events Hub で  **[Fabrikam Jazz Club]**  を選択します。
+2. Events Hub で  **[Fabrikam Jazz Club]**   を選択します。
 
     ![events](./media/saas-dbpertenant-get-started-deploy/fabrikam.png)
 
@@ -129,8 +129,8 @@ Wingtip アプリケーションでは、 [*Azure Traffic Manager*](../traffic-
 
     | URL の部分        | 説明       |
     | :-------------- | :---------------- |
-    | http://events.wingtip-dpt | Wingtip アプリのイベントの部分。<br /><br /> *-dpt* によって、Wingtip Tickets の "*テナント単位データベース*" の実装が他の実装と区別されます。 たとえば、テナントごとの "*単一*" アプリ (*-sa*) の実装や "*マルチテナント データベース*" (*-mt*) の実装です。 |
-    | .*&lt;ユーザー&gt;* | この例では *af1*。 |
+    | http://events.wingtip-dpt | Wingtip アプリのイベントの部分。<br /><br /> *-dpt* によって、Wingtip Tickets の "*テナント単位データベース*" の実装が他の実装と区別されます。 たとえば、テナントごとの "*単一*" アプリ ( *-sa*) の実装や "*マルチテナント データベース*" ( *-mt*) の実装です。 |
+    | . *&lt;ユーザー&gt;* | この例では *af1*。 |
     | .trafficmanager.net/ | Traffic Manager、ベース URL。 |
     | fabrikamjazzclub | Fabrikam Jazz Club という名前のテナントを識別します。 |
     | &nbsp; | &nbsp; |
@@ -203,7 +203,7 @@ Wingtip アプリケーションでは、 [*Azure Traffic Manager*](../traffic-
 3. F5 キーを押してスクリプトを実行します。 現時点では、既定値をそのまま使用します。
 
    > [!NOTE]
-   > 多くの Wingtip SaaS スクリプトは、*$PSScriptRoot* を使用してフォルダーを参照し、他のスクリプト内の関数を呼び出します。 この変数は F5 キーを押してスクリプト全体が実行されたときにのみ評価されます。 F8 キーで選択項目を強調表示して実行すると、エラーが発生する可能性があります。 F5 キーを押して、スクリプトを実行します。
+   > 多くの Wingtip SaaS スクリプトは、 *$PSScriptRoot* を使用してフォルダーを参照し、他のスクリプト内の関数を呼び出します。 この変数は F5 キーを押してスクリプト全体が実行されたときにのみ評価されます。 F8 キーで選択項目を強調表示して実行すると、エラーが発生する可能性があります。 F5 キーを押して、スクリプトを実行します。
 
 新しいテナント データベースは次のように処理されます。
 
@@ -221,14 +221,14 @@ Events Hub を更新すると、新しいテナントが一覧に表示されま
 
 ここまでで、テナントのコレクションに対する負荷の実行を開始しました。次は、デプロイされたリソースをいくつか見てみましょう。
 
-1.  [Azure portal](https://portal.azure.com) で、SQL サーバーの一覧を参照します。 次に、 **catalog-dpt-&lt;ユーザー&gt;** サーバーを開きます。
+1.  [Azure portal](https://portal.azure.com) で、SQL サーバーの一覧を参照します。 次に、 **catalog-dpt-&lt;ユーザー&gt;**  サーバーを開きます。
     - カタログ サーバーには 2 つのデータベース **tenantcatalog** と **basetenantdb** (新しいテナントを作成するためにコピーされたテンプレート データベース) が含まれます。
 
    ![データベース](./media/saas-dbpertenant-get-started-deploy/databases.png)
 
 2. SQL サーバーの一覧に戻ります。
 
-3. テナント データベースを保持している **tenants1-dpt-&lt;ユーザー&gt;** サーバーを開きます。
+3. テナント データベースを保持している **tenants1-dpt-&lt;ユーザー&gt;**  サーバーを開きます。
 
 4. 次の項目を確認します。
 
@@ -241,7 +241,7 @@ Events Hub を更新すると、新しいテナントが一覧に表示されま
 
 *LoadGenerator.ps1* を数分間実行したら、十分な量のデータが生成されています。このデータを使って、一部の監視機能を見てみましょう。 これらの機能は、プールとデータベースに組み込まれています。
 
-**tenants1-dpt-&lt;ユーザー&gt;** サーバーを参照し、 **[Pool1]** をクリックしてプールのリソース使用率を表示します。 次のグラフでは、ロード ジェネレーターを 1 時間実行しました。
+**tenants1-dpt-&lt;ユーザー&gt;** サーバーを参照し、 **[Pool1]**  をクリックしてプールのリソース使用率を表示します。 次のグラフでは、ロード ジェネレーターを 1 時間実行しました。
 
    ![プールの監視](./media/saas-dbpertenant-get-started-deploy/monitor-pool.png)
 
@@ -254,7 +254,7 @@ Events Hub を更新すると、新しいテナントが一覧に表示されま
 
 - 詳細については、[データベース単位テナント Wingtip Tickets SaaS アプリケーションに基づく追加のチュートリアル](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)を参照してください。
 - エラスティック プールについては、 [Azure SQL エラスティック プールとは何か](sql-database-elastic-pool.md)に関するページを参照してください。
-- エラスティック ジョブについては、 [スケールアウトされたクラウド データベースの管理](sql-database-elastic-jobs-overview.md)に関するページを参照してください。
+- エラスティック ジョブについては、 [スケールアウトされたクラウド データベースの管理](elastic-jobs-overview.md)に関するページを参照してください。
 - マルチテナント SaaS アプリケーションについては、 [マルチテナント SaaS アプリケーションの設計パターン](saas-tenancy-app-design-patterns.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次の手順

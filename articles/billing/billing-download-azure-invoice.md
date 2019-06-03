@@ -28,7 +28,7 @@ ms.locfileid: "59264065"
 
 請求書を表示するアクセス許可を持つのは、特定のロール (アカウント管理者やエンタープライズ管理者など) だけです。 課金情報へのアクセス権の取得に関する詳細については、[ロールを使用した Azure の課金へのアクセス管理](billing-manage-access.md)に関するページをご覧ください。
 
-[Microsoft 顧客契約](#check-your-access-to-a-microsoft-customer-agreement)を結んでいる場合、請求書を取得するには、課金プロファイルの所有者、共同作成者、閲覧者、または請求書管理者である必要があります。 Microsoft 顧客契約の課金ロールの詳細については、「[課金プロファイルのロールとタスク](billing-understand-mca-roles.md#billing-profile-roles-and-tasks)」を参照してください。
+[Microsoft 顧客契約](#check-your-access-to-a-microsoft-customer-agreement)を結んでいる場合、請求書を取得するには、課金プロファイルの所有者、共同作成者、閲覧者、または請求書管理者である必要があります。 Microsoft Customer Agreement の課金ロールの詳細については、「[課金プロファイルのロールとタスク](billing-understand-mca-roles.md#billing-profile-roles-and-tasks)」を参照してください。
 
 ## <a name="download-your-azure-invoices-pdf"></a>Azure 請求書 (.pdf) のダウンロード
 
@@ -42,7 +42,7 @@ ms.locfileid: "59264065"
 
     ![Screenshot that shows the Billing & usage option](./media/billing-download-azure-invoice-daily-usage-date/billingandusage.png)
 
-3. PDF 請求書のコピーを表示するには、**[請求書のダウンロード]** をクリックします。 "**使用できません**" というメッセージが表示される場合は、「[前回の請求期間の請求書が表示されない理由](#noinvoice)」を参照してください。
+3. PDF 請求書のコピーを表示するには、 **[請求書のダウンロード]** をクリックします。 "**使用できません**" というメッセージが表示される場合は、「[前回の請求期間の請求書が表示されない理由](#noinvoice)」を参照してください。
 
     ![Screenshot that shows billing periods, the download option, and total charges for each billing period](./media/billing-download-azure-invoice-daily-usage-date/billing4.png)
 
@@ -56,12 +56,12 @@ ms.locfileid: "59264065"
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 1. **[コストの管理と請求]** で検索します。
-1. 課金プロファイルを選択します。 アクセス方法によっては、最初に請求先アカウントを選択することが必要な場合があります。
+1. 課金プロファイルを選択します。 お持ちのアクセス権によっては、最初に請求先アカウントを選択することが必要な場合があります。
 1. **[請求書]** を選択します。
 1. 請求書グリッドで、ダウンロードする請求書の行を探します。
 1. 行の末尾にある省略記号 (`...`) をクリックします。
     ![行の末尾にある省略記号を示すスクリーンショット](./media/billing-download-azure-invoice/billingprofile-invoicegrid.png)
-1. ダウンロードのコンテキスト メニューで、**[請求書]** を選択します。
+1. ダウンロードのコンテキスト メニューで、 **[請求書]** を選択します。
 
     ![コンテキスト メニューを示すスクリーンショット](./media/billing-download-azure-invoice/contextmenu.png)
 
@@ -73,7 +73,7 @@ ms.locfileid: "59264065"
 
 ### <a name="get-your-subscriptions-invoices-in-email"></a>サブスクリプションの請求書をメールで受け取る
 
-1. [[サブスクリプション] ページ](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)で、自分のサブスクリプションを選択します。 自分が所有するサブスクリプションごとにオプトインします。 **[請求書]** をクリックし、**[請求書を送信する]** をクリックします。
+1. [[サブスクリプション] ページ](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)で、自分のサブスクリプションを選択します。 自分が所有するサブスクリプションごとにオプトインします。 **[請求書]** をクリックし、 **[請求書を送信する]** をクリックします。
 
     ![オプトイン フローを示すスクリーン ショット](./media/billing-download-azure-invoice-daily-usage-date/InvoicesDeepLink.PNG)
 
@@ -89,7 +89,7 @@ ms.locfileid: "59264065"
 
 ### <a name="opt-out-of-getting-your-subscriptions-invoices-in-email"></a>サブスクリプションの請求書のメールによる取得をオプトアウトする
 
-上記の手順に従い、**[電子メールで送信した請求書からオプトアウトする]** をクリックすることで、電子メールの請求書の取得をオプトアウトできます。 このオプションにより、メールで請求書を受信するよう設定されているすべてのメール アドレスが削除されます。 オプトアウトを解除する場合、受信者を再構成できます。
+上記の手順に従い、 **[電子メールで送信した請求書からオプトアウトする]** をクリックすることで、電子メールの請求書の取得をオプトアウトできます。 このオプションにより、メールで請求書を受信するよう設定されているすべてのメール アドレスが削除されます。 オプトアウトを解除する場合、受信者を再構成できます。
 
  ![オプトアウト フローを示すスクリーン ショット](./media/billing-download-azure-invoice-daily-usage-date/InvoiceArticleStep4.PNG)
 
@@ -99,9 +99,9 @@ Microsoft 顧客契約を結んでいる場合は、メールの請求書の取�
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 1. **[コストの管理と請求]** で検索します。
-1. 課金プロファイルを選択します。 アクセス方法によっては、最初に請求先アカウントを選択することが必要な場合があります。
+1. 課金プロファイルを選択します。 お持ちのアクセス権によっては、最初に請求先アカウントを選択することが必要な場合があります。
 1. **[設定]** で **[プロパティ]** を選択します。
-1. **[請求書を電子メールで送信]** で、**[請求書を電子メールで送信の設定の更新]** を選択します。
+1. **[請求書を電子メールで送信]** で、 **[請求書を電子メールで送信の設定の更新]** を選択します。
 
     ![メールの請求書のプロパティを示すスクリーンショット](./media/billing-download-azure-invoice/billingprofile-email.png)
 
@@ -110,7 +110,7 @@ Microsoft 顧客契約を結んでいる場合は、メールの請求書の取�
 
 ### <a name="opt-out-of-getting-your-microsoft-customer-agreement-invoices-in-email"></a>Microsoft 顧客契約の請求書のメールによる取得をオプトアウトする
 
-上記の手順に従い、**[オプト アウト]** をクリックすることで、メールの請求書の取得をオプトアウトできます。すべての所有者、共同作成者、閲覧者、および請求書管理者も、メールの請求書の取得からオプトアウトされます。 閲覧者の場合は、メールの請求書の基本設定を変更できません。
+上記の手順に従い、 **[オプト アウト]** をクリックすることで、メールの請求書の取得をオプトアウトできます。すべての所有者、共同作成者、閲覧者、および請求書管理者も、メールの請求書の取得からオプトアウトされます。 閲覧者の場合は、メールの請求書の基本設定を変更できません。
 
 ### <a name="noinvoice"></a> 前回の請求期間の請求書が表示されない理由
 

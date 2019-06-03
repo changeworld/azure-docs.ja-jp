@@ -1,23 +1,21 @@
 ---
 title: Azure Data Factory でのデータ フローの実行アクティビティ | Microsoft Docs
-description: データ フローの実行アクティビティでデータ フローを実行します。
+description: データ ファクトリ パイプラインの内側からデータ フローを実行する方法。
 services: data-factory
 documentationcenter: ''
 author: kromerm
-manager: craigg
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/22/2019
 ms.author: makromer
-ms.openlocfilehash: 856f4bd9c2b04ff10ed598c5e641955e1de99398
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: e1d4ce355f34014d5099c4b46f4420d032363fce
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57792414"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236678"
 ---
 # <a name="execute-data-flow-activity-in-azure-data-factory"></a>Azure Data Factory でのデータ フローの実行アクティビティ
 データ フローの実行アクティビティを使用して、パイプライン デバッグ (サンドボックス) 実行とパイプライン トリガー実行で ADF データ フローを実行します。
@@ -61,13 +59,11 @@ ms.locfileid: "57792414"
 
 データ フロー デバッグでは、ウォーミングされたクラスターを利用して、パイプライン デバッグ実行でデータ フローを対話形式でテストします。 パイプライン内でデータ フローをテストするには、パイプライン デバッグ オプションを使用します。
 
-### <a name="compute-type"></a>コンピューティングの種類
+### <a name="run-on"></a>Run on (実行先)
 
-データ フローの要件に応じて、[汎用]、[コンピューティング最適化]、または [メモリ最適化] を選択できます。
+これは、データ フロー アクティビティの実行に使用する統合ランタイムを定義する必須フィールドです。 既定では、Data Factory は既定の自動解決 Azure 統合ランタイムを使用します。 ただし、データ フロー アクティビティを実行するための特定のリージョン、コンピューティングの種類、コア数、および TTL を定義する、独自の Azure 統合ランタイムを作成できます。
 
-### <a name="core-count"></a>コア数
-
-ジョブに割り当てるコア数を選択します。 小規模なジョブの場合、コア数が少ないほど効率的に動作します。
+データ フローの実行の既定の設定は、一般コンピューティングの 8 コアで、TTL は 60 分です。
 
 ### <a name="staging-area"></a>ステージング領域
 
@@ -82,6 +78,8 @@ ms.locfileid: "57792414"
 ### <a name="debugging-parameterized-data-flows"></a>パラメーター化されたデータ フローのデバッグ
 
 パラメーター化されたデータセットを使用するデータ フローは、データ フローの実行アクティビティを使用してパイプライン デバッグ実行からのみデバッグできます。 現時点では、ADF Data Flow での対話型デバッグ セッションは、パラメーター化されたデータセットでは機能しません。 パイプラインの実行とデバッグ実行では、パラメーターが使用されます。
+
+設計時に完全なメタデータ列の伝達を利用できるように、静的データセットを使用してデータ フローを構築することをお勧めします。 その後、データ フロー パイプラインを運用化するときに、静的データセットを動的パラメーター化データセットに置き換えます。
 
 ## <a name="next-steps"></a>次の手順
 Data Factory でサポートされている他の制御フロー アクティビティを参照してください。 

@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 04/10/2018
 ms.author: sngun
-ms.openlocfilehash: e4664f121601ecec4b8ed52d536e5212b3d0950f
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 2425d14e43abd98d80bef8ce01e1c1c5f73a78a0
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54039301"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65833077"
 ---
 # <a name="quickstart-build-a-table-api-app-with-python-and-azure-cosmos-db"></a>クイック スタート: Python と Azure Cosmos DB で Table API アプリを構築する
 
@@ -35,8 +35,8 @@ Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモ
 
 加えて次の作業を行います。
 
-* まだ Visual Studio 2017 をインストールしていない場合は、**無料**の [Visual Studio 2017 Community エディション](https://www.visualstudio.com/downloads/)をダウンロードして使用できます。 Visual Studio のセットアップ時に、必ず **[Azure の開発]** と **[Python 開発]** ワークロードを選択してください。
-* また、**[Python 開発]** ワークロードの [Python 2] オプションを選択するか、[python.org](https://www.python.org/downloads/release/python-2712/) から Python 2.7 をダウンロードします。
+* まだ Visual Studio 2019 をインストールしていない場合は、**無料**の [Visual Studio 2019 Community エディション](https://www.visualstudio.com/downloads/)をダウンロードして使用できます。 Visual Studio のセットアップ時に、必ず **[Azure の開発]** と **[Python 開発]** ワークロードを選択してください。
+* また、 **[Python 開発]** ワークロードの [Python 2] オプションを選択するか、[python.org](https://www.python.org/downloads/release/python-2712/) から Python 2.7 をダウンロードします。
 
 ## <a name="create-a-database-account"></a>データベース アカウントの作成
 

@@ -1,29 +1,22 @@
 ---
-title: Dynamics 365 for Customer Engagement の [技術情報] タブ - Azure Marketplace | Microsoft Docs
+title: Dynamics 365 for Customer Engagement の [技術情報] タブ | Azure Marketplace
 description: AppSource Marketplace で Dynamics 365 Customer Engagement アプリケーション用の技術情報を指定する方法です。
 services: Dynamics 365 for Customer Engagement Offer, Azure, Marketplace, Cloud Partner Portal, AppSource
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
-ms.date: 03/05/2019
-ms.author: pbutlerm
-ms.openlocfilehash: 1dd488c2eb419b5e210a48d7a94f7d0bb423a2b1
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.date: 04/24/2019
+ms.author: pabutler
+ms.openlocfilehash: df7f3be5a92a183176da7851ce1943793b8b57d0
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57731482"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64942407"
 ---
 # <a name="dynamics-365-for-customer-engagement-technical-info-tab"></a>Dynamics 365 for Customer Engagement の [技術情報] タブ
 
-**[New Offer]\(新しいオファー\)** ページの **[技術情報]** タブでは、CRM パッケージやマーケティング ロゴ アセットなど、Dynamics 365 for Customer Engagement アプリケーションに関する詳細な情報を指定することができます。  このタブは、次の 4 つのセクションに分かれています:**[Application Info]\(アプリケーション情報\)**、**[CRM Package]\(CRM パッケージ\)**、**[CRM Package Availability]\(CRM パッケージの利用可能性\)**、**[Marketing Artifacts]\(マーケティングの成果物\)**。 フィールド名に付いているアスタリスク (*) は、そのフィールドが必須であることを示します。 
+**[New Offer]\(新しいオファー\)** ページの **[技術情報]** タブでは、CRM パッケージやマーケティング ロゴ アセットなど、Dynamics 365 for Customer Engagement アプリケーションに関する詳細な情報を指定することができます。  このタブは、次の 4 つのセクションに分かれています: **[Application Info]\(アプリケーション情報\)** 、 **[CRM Package]\(CRM パッケージ\)** 、 **[CRM Package Availability]\(CRM パッケージの利用可能性\)** 、 **[Marketing Artifacts]\(マーケティングの成果物\)** 。 フィールド名に付いているアスタリスク (*) は、そのフィールドが必須であることを示します。 
 
 
 ## <a name="application-info-section"></a>[Application Info]\(アプリケーション情報\) セクション
@@ -32,13 +25,13 @@ ms.locfileid: "57731482"
 
 ![[技術情報] タブの [Application Info]\(アプリケーション情報\) セクション](./media/dynce-technical-info-tab1.png)
 
-次の表ではこれらのフィールドについて説明します。
+次の表ではこれらのフィールドについて説明します。 必須フィールドはアスタリスク (*) で示されます。
 
 |      フィールド                    |    説明                  |
 |    ---------                  |  ---------------                |
-|   基本ライセンス モデル          |  ライセンス モデルにより、Dynamics 365 管理センターで顧客にアプリケーションが割り当てられる方法が決まります。 **リソース** ライセンスがインスタンス ベースであるのに対し、**ユーザー** ライセンスはテナントごとに割り当てられます。  |
-|  S2S 送信と CRM Secure Store アクセス |  CRM Secure Store またはサーバー間 (S2S) 送信アクセスの構成を有効にします。 "*この機能を使用するには、認定フェーズの間に Dynamics 365 チームによる特別な考慮が必要です。*" この機能をサポートするための追加手順の実行について、Microsoft からご連絡します。  |
-| CRM ライフサイクル イベントのサブスクライブ | Dynamics 365 ライフサイクル イベントと統合するには、ユーザーは Microsoft との特別な契約によって登録される専用のサービスを提供する必要があります。 "*この機能を使用するには、認定フェーズの間に Dynamics 365 チームによる特別な考慮が必要です。*" この機能をサポートするための追加手順の実行については、こちらからご連絡します。  |
+|   Base license model (基本ライセンス モデル)\*          |  ライセンス モデルにより、Dynamics 365 管理センターで顧客にアプリケーションが割り当てられる方法が決まります。 **リソース** ライセンスがインスタンス ベースであるのに対し、**ユーザー** ライセンスはテナントごとに割り当てられます。  |
+|  S2S outbound & CRM Secure Store Access (S2S 送信と CRM Secure Store アクセス)\* |  CRM Secure Store またはサーバー間 (S2S) 送信アクセスの構成を有効にします。 "*この機能を使用するには、認定フェーズの間に Dynamics 365 チームによる特別な考慮が必要です。* " この機能をサポートするための追加手順の実行について、Microsoft からご連絡します。  |
+| Subscribe to CRM life-cycle events (CRM ライフサイクル イベントのサブスクライブ)\* | Dynamics 365 ライフサイクル イベントと統合するには、ユーザーは Microsoft との特別な契約によって登録される専用のサービスを提供する必要があります。 "*この機能を使用するには、認定フェーズの間に Dynamics 365 チームによる特別な考慮が必要です。* " この機能をサポートするための追加手順の実行については、こちらからご連絡します。  |
 | アプリケーション構成 URL | ユーザーがアプリケーションを構成できる Web ページの URL です |
 | 該当する Dynamics 365 製品  | このオファーが適用される Dynamics 365 製品を選択します。 このオファーは、AppSource で選択した製品の下に表示されます。  |
 | マーケティングのみの変更         | このオプションを [はい] に設定すると、マーケティング/説明的な変更のみが既存のオファーに対して行われたことを示します。  そのような変更が行われたオファーについては、認定およびプロビジョニングのステージをバイパスできます。  |
@@ -51,14 +44,14 @@ ms.locfileid: "57731482"
 
 ![[技術情報] タブの [CRM Package]\(CRM パッケージ\) セクション](./media/dynce-technical-info-tab2.png)
 
-次の表ではこれらのフィールドについて説明します。
+次の表ではこれらのフィールドについて説明します。  必須フィールドはアスタリスク (*) で示されます。
 
 |      フィールド                    |    説明                  |
 |    ---------                  |  ---------------                |
-|  パッケージのファイル名     |  パッケージ (.zip) のファイル名です。  この名前は公開 "*されず*"、Dynamics 365 認定チームによって内部的に使用されます。  |
-|  Url                          |  アップロードされたパッケージ ファイルを含む Azure Storage アカウントの URL です。 チームが検証用にパッケージを取得できるよう、この URL には読み取り専用の SAS キーが含まれている必要があります。  |
-| 複数の CRM パッケージ     | 異なるパッケージで CRM の複数のバージョンをサポートしている場合にのみ、[はい] を選択します。  バージョンごとに、対応するパッケージ ファイルを個別に作成する必要があります。  |
-| シナリオとユース ケースのアセット   | Dynamics 365 の検証チームが使用するため、アプリケーションの機能仕様ドキュメントのアップロードを有効にします。  この仕様の推奨される形式は、[E2E ユーザー シナリオ テンプレート](https://isvdocumentation.blob.core.windows.net/d365documentation/Power%20Platform%20E2E%20document.docx)です。  |
+|  Filename of your package (パッケージのファイル名)\*     |  パッケージ (.zip) のファイル名です。  この名前は公開 "*されず*"、Dynamics 365 認定チームによって内部的に使用されます。  |
+|  Url of package location (パッケージの場所の URL)\*      |  アップロードされたパッケージ ファイルを含む Azure Storage アカウントの URL です。 チームが検証用にパッケージを取得できるよう、この URL には読み取り専用の SAS キーが含まれている必要があります。  |
+| More than one crm package (複数の CRM パッケージ)\*     | 異なるパッケージで CRM の複数のバージョンをサポートしている場合にのみ、[はい] を選択します。  バージョンごとに、対応するパッケージ ファイルを個別に作成する必要があります。  |
+| Scenario and use case asset (シナリオとユース ケースのアセット)\*   | Dynamics 365 の検証チームが使用するため、アプリケーションの機能仕様ドキュメントのアップロードを有効にします。  この仕様の推奨される形式は、[E2E ユーザー シナリオ テンプレート](https://isvdocumentation.blob.core.windows.net/d365documentation/Power%20Platform%20E2E%20document.docx)です。  |
 |  |  |
 
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 5552e44fcca056bd4fd5b4fd19559adfbd005444
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b05a7ce260e8cc1da4ac8a0c186694ae097a3b1e
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59266190"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64721297"
 ---
 # <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>Azure ブループリントでのデプロイ シーケンスについて
 
@@ -41,6 +41,9 @@ JSON の例では、次の変数を独自の値で置き換える必要があり
 - リソース グループの子の**ロールの割り当て**成果物が、成果物の名前で並べ替えられます
 - リソース グループの子の**ポリシー割り当て**成果物が、成果物の名前で並べ替えられます
 - リソース グループの子の**Azure Resource Manager テンプレート**成果物が、成果物の名前で並べ替えられます
+
+> [!NOTE]
+> [artifacts()](../reference/blueprint-functions.md#artifacts) の使用により、参照される成果物の暗黙的な依存関係が作成されます。
 
 ## <a name="customizing-the-sequencing-order"></a>シーケンス順序のカスタマイズ
 

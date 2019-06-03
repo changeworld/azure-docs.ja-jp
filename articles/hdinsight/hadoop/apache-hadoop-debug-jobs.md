@@ -1,7 +1,6 @@
 ---
 title: Apache Hadoop のデバッグ:ログの表示とエラー メッセージの解釈 - Azure HDInsight
 description: PowerShell を使用して HDInsight を管理しているときに表示されることがあるエラー メッセージと、回復するために使用できる手順について説明します。
-services: hdinsight
 ms.reviewer: jasonh
 author: ashishthaps
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: a035789af08aa4c0d877a06295d9bd6fdedf6844
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: f96171e1c75676a185edf4a1901ef65b7181135a
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58449484"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64720999"
 ---
 # <a name="analyze-apache-hadoop-logs"></a>Apache Hadoop のログを分析する
 
@@ -33,7 +32,7 @@ HDInsight クラスターを作成すると、Linux ベースのクラスター�
 * ambariserverlog
 * ambariagentlog
 
-テーブルのファイル名は **u<ClusterName>DDMonYYYYatHHMMSSsss<TableName>** となります。
+テーブルのファイル名は**u\<ClusterName > DDMonYYYYatHHMMSSsss\<TableName >** です。
 
 これらのテーブルには次のフィールドが含まれます。
 
@@ -64,19 +63,19 @@ Power Query は、[Microsoft Power Query for Excel](https://www.microsoft.com/en
 **Power Query を使用してサービス ログを開いて分析する**
 
 1. **Microsoft Excel**を開きます。
-2. **[Power Query]** メニューの **[Azure から]** をクリックし、**[Microsoft Azure テーブル ストレージから]** をクリックします。
+2. **[Power Query]** メニューの **[Azure から]** をクリックし、 **[Microsoft Azure テーブル ストレージから]** をクリックします。
    
     ![HDInsight Hadoop Excel PowerQuery open Azure Table storage](./media/apache-hadoop-debug-jobs/hdinsight-hadoop-analyze-logs-using-excel-power-query-open.png)
 3. ストレージ アカウント名 (短い名前または FQDN) を入力します。
 4. ストレージ アカウント キーを入力します。 次のようなテーブルの一覧が表示されます。
    
     ![HDInsight Hadoop logs stored in Azure Table storage](./media/apache-hadoop-debug-jobs/hdinsight-hadoop-analyze-logs-table-names.png)
-5. **[ナビゲーター]** ウィンドウで hadoopservicelog テーブルを右クリックし、**[編集]** を選択します。 4 つの列が表示されます。 必要に応じて、**[パーティション キー]**、**[行キー]**、および **[タイムスタンプ]** 列を削除します。これには、削除する列を選択し、リボンのオプションから **[列の削除]** をクリックします。
+5. **[ナビゲーター]** ウィンドウで hadoopservicelog テーブルを右クリックし、 **[編集]** を選択します。 4 つの列が表示されます。 必要に応じて、 **[パーティション キー]** 、 **[行キー]** 、および **[タイムスタンプ]** 列を削除します。これには、削除する列を選択し、リボンのオプションから **[列の削除]** をクリックします。
 6. [コンテンツ] 列にある展開アイコンをクリックし、Excel スプレッドシートにインポートする列を選択します。 このデモでは、TraceLevel と ComponentName を選択しています。これで、問題があるコンポーネントに関する基本的な情報が得られます。
    
     ![HDInsight Hadoop logs choose columns](./media/apache-hadoop-debug-jobs/hdinsight-hadoop-analyze-logs-using-excel-power-query-filter.png)
 7. **[OK]** をクリックしてデータをインポートします。
-8. **[TraceLevel]**、[Role]、**[ComponentName]** の各列を選択し、リボンの **[グループ化]** コントロールをクリックします。
+8. **[TraceLevel]** 、[Role]、 **[ComponentName]** の各列を選択し、リボンの **[グループ化]** コントロールをクリックします。
 9. [グループ化] ダイアログ ボックスで **[OK]** をクリックします。
 10. [適用して閉じる] をクリックします。
 
@@ -88,9 +87,9 @@ Power Query は、[Microsoft Power Query for Excel](https://www.microsoft.com/en
 1. Visual Studio を開きます。
 2. **[表示]** メニューの **[Cloud Explorer]** をクリックします。 または、単に **Ctrl + \,、Ctrl + X** キーを押します。
 3. **Cloud Explorer** で **[リソースの種類]** を選択します。  そのほかに、 **[リソース グループ]** というオプションも選択できます。
-4. **[ストレージ アカウント]**、クラスターの既定のストレージ アカウント、**[テーブル]** の順に展開します。
+4. **[ストレージ アカウント]** 、クラスターの既定のストレージ アカウント、 **[テーブル]** の順に展開します。
 5. **hadoopservicelog**をダブルクリックします。
-6. フィルターを追加します。 例: 
+6. フィルターを追加します。 例:
    
         TraceLevel eq 'ERROR'
    
@@ -109,24 +108,24 @@ Azure テーブルに書き込まれたログは、HDInsight クラスターで�
 
 ## <a name="view-cluster-health-and-job-logs"></a>クラスターの状態とジョブ ログの表示
 ### <a name="access-the-ambari-ui"></a>Ambari UI にアクセスする
-Azure Portal から、HDInsight クラスター名をクリックし、クラスター ウィンドウを開きます。 クラスター ウィンドウから、**[ダッシュボード]** をクリックします。
+Azure Portal から、HDInsight クラスター名をクリックし、クラスター ウィンドウを開きます。 クラスター ウィンドウから、 **[ダッシュボード]** をクリックします。
 
 ![クラスター ダッシュボードの起動](./media/apache-hadoop-debug-jobs/hdi-debug-launch-dashboard.png)
 
 
 ### <a name="access-the-yarn-ui"></a>Yarn UI にアクセスする
-Azure Portal から、HDInsight クラスター名をクリックし、クラスター ウィンドウを開きます。 クラスター ウィンドウから、**[ダッシュボード]** をクリックします。 入力を求められたら、クラスターの管理者資格情報を入力します。 Ambari で、左側のサービスの一覧から **[YARN]** を選択します。 表示されるページで、**[クイック リンク]** を選択し、アクティブなヘッド ノード エントリとリソース マネージャー UI を選択します。
+Azure Portal から、HDInsight クラスター名をクリックし、クラスター ウィンドウを開きます。 クラスター ウィンドウから、 **[ダッシュボード]** をクリックします。 入力を求められたら、クラスターの管理者資格情報を入力します。 Ambari で、左側のサービスの一覧から **[YARN]** を選択します。 表示されるページで、 **[クイック リンク]** を選択し、アクティブなヘッド ノード エントリとリソース マネージャー UI を選択します。
 
 YARN UI では、次の操作を実行できます。
 
-* **クラスターの状態を取得します**。 左側のウィンドウから、**[Cluster]** を展開し、**[About]** をクリックします。 割り当て済みメモリの合計、使用済みコア、クラスター リソース マネージャーの状態、クラスター バージョンなど、クラスターの状態に関する詳細が表示されます。
+* **クラスターの状態を取得します**。 左側のウィンドウから、 **[Cluster]** を展開し、 **[About]** をクリックします。 割り当て済みメモリの合計、使用済みコア、クラスター リソース マネージャーの状態、クラスター バージョンなど、クラスターの状態に関する詳細が表示されます。
   
     ![クラスター ダッシュボードの起動](./media/apache-hadoop-debug-jobs/hdi-debug-yarn-cluster-state.png)
-* **ノードの状態を取得します**。 左側のウィンドウから、**[Cluster]** を展開し、**[Nodes]** をクリックします。 ここにはクラスターの全ノード、各ノードの HTTP アドレス、各ノードに割り当てられているリソースなどが一覧表示されます。
-* **ジョブの状態を監視します**。 左側のウィンドウから、**[Cluster]** を展開し、**[Applications]** をクリックし、クラスター内のすべてのジョブを一覧表示します。 特定の状態 (新規、送信済み、実行中など) のジョブを確認する場合、 **[Applications]** の下にある該当リンクをクリックします。 さらに、ジョブ名をクリックすると、出力やログなど、ジョブに関する詳細がわかります。
+* **ノードの状態を取得します**。 左側のウィンドウから、 **[Cluster]** を展開し、 **[Nodes]** をクリックします。 ここにはクラスターの全ノード、各ノードの HTTP アドレス、各ノードに割り当てられているリソースなどが一覧表示されます。
+* **ジョブの状態を監視します**。 左側のウィンドウから、 **[Cluster]** を展開し、 **[Applications]** をクリックし、クラスター内のすべてのジョブを一覧表示します。 特定の状態 (新規、送信済み、実行中など) のジョブを確認する場合、 **[Applications]** の下にある該当リンクをクリックします。 さらに、ジョブ名をクリックすると、出力やログなど、ジョブに関する詳細がわかります。
 
 ### <a name="access-the-hbase-ui"></a>HBase UI にアクセスする
-Azure Portal から、HDInsight HBase クラスター名をクリックし、クラスター ウィンドウを開きます。 クラスター ウィンドウから、**[ダッシュボード]** をクリックします。 入力を求められたら、クラスターの管理者資格情報を入力します。 Ambari で、サービスの一覧から [HBase] を選択します。 ページの上部にある **[クイック リンク]** を選択し、アクティブな Zookeeper ノード リンクをポイントして、[HBase Master UI] をクリックします。
+Azure Portal から、HDInsight HBase クラスター名をクリックし、クラスター ウィンドウを開きます。 クラスター ウィンドウから、 **[ダッシュボード]** をクリックします。 入力を求められたら、クラスターの管理者資格情報を入力します。 Ambari で、サービスの一覧から [HBase] を選択します。 ページの上部にある **[クイック リンク]** を選択し、アクティブな Zookeeper ノード リンクをポイントして、[HBase Master UI] をクリックします。
 
 ## <a name="hdinsight-error-codes"></a>HDInsight のエラー コード
 このセクションで取り上げるエラー メッセージは、Azure HDInsight で Hadoop のユーザーが Azure PowerShell を使用してサービスを管理する際に直面する可能性のあるエラー状況を理解するのに役立ちます。また、エラーから回復するための手順も示されています。

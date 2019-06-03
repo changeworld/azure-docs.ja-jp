@@ -17,12 +17,12 @@ ms.topic: article
 ms.date: 10/25/2018
 ms.author: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 97d0be1dfd77035a3522ef8a6b3f4ac93ae20741
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: e7e665f3124296392c8138f4f2bd3632b56e53de
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58519291"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65230932"
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>Azure Active Directory の Enterprise State Roaming を有効にする
 Enterprise State Roaming は、Azure AD Premium または Enterprise Mobility + Security (EMS) ライセンスを所有しているすべての組織が利用できます。 Azure AD サブスクリプションの取得方法の詳細について、[Azure AD の製品ページ](https://azure.microsoft.com/services/active-directory)を参照してください。
@@ -46,9 +46,9 @@ Enterprise State Roaming のデータは、Azure Active Directory のインス�
 
 国/リージョンの値 | データがホストされる場所
 ---------------------|-------------------------
-EMEA。フランス、ザンビアなど | ヨーロッパ内の 1 つ以上の Azure リージョン 
-北米。米国、カナダなど | 米国内の 1 つ以上の Azure リージョン
-APAC。オーストラリア、ニュージーランドなど | アジア内の 1 つ以上の Azure リージョン
+EMEA の国/地域 (フランス、ザンビアなど) | ヨーロッパ内の 1 つ以上の Azure リージョン 
+北米の国/地域 (米国、カナダなど) | 米国内の 1 つ以上の Azure リージョン
+APAC の国/地域 (オーストラリア、ニュージーランドなど) | アジア内の 1 つ以上の Azure リージョン
 南米/南極地域 | 米国内の 1 つ以上の Azure リージョン
 
 国/リージョンの値は Azure AD ディレクトリの作成プロセスで設定され、後から変更することはできません。 データの保管場所についてさらに詳しい情報が必要な場合は、[Azure サポート](https://azure.microsoft.com/support/options/)にチケットを提出してください。

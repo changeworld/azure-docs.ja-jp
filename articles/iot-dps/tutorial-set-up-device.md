@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 344cc3b8ba3f7698f5124d464f3c277b6cb5cdde
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.openlocfilehash: d5a4f6c7d7d19ced4f2cd9ff21b00e58703f795e
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59500976"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65911687"
 ---
 # <a name="set-up-a-device-to-provision-using-the-azure-iot-hub-device-provisioning-service"></a>Azure IoT Hub Device Provisioning Service を使用してプロビジョニングするデバイスの設定
 
@@ -27,7 +27,7 @@ ms.locfileid: "59500976"
 
 このチュートリアルは、前の「[クラウド リソースを設定する](tutorial-set-up-cloud.md)」チュートリアルの指示に従って、Device Provisioning Service インスタンスと IoT ハブが既に作成されていることを前提としています。
 
-このチュートリアルでは、[Azure IoT SDKs and libraries for C repository (C 用の Azure IoT SDK とライブラリのリポジトリ)](https://github.com/Azure/azure-iot-sdk-c) を使用します。これには、Device Provisioning Service Client SDK for C が含まれています。この SDK は、現在、Windows または Ubuntu 実装上で実行されているデバイスに対して TPM および X.509 サポートを提供しています。 このチュートリアルは、Windows 開発クライアントの使用をベースとしています。また、Visual Studio 2017 に関する基本的な知識を前提としています。 
+このチュートリアルでは、[Azure IoT SDKs and libraries for C repository (C 用の Azure IoT SDK とライブラリのリポジトリ)](https://github.com/Azure/azure-iot-sdk-c) を使用します。これには、Device Provisioning Service Client SDK for C が含まれています。この SDK は、現在、Windows または Ubuntu 実装上で実行されているデバイスに対して TPM および X.509 サポートを提供しています。 このチュートリアルは、Windows 開発クライアントの使用をベースとしています。また、Visual Studio に関する基本的な知識を前提としています。 
 
 自動プロビジョニングの処理に慣れていない場合は、「[自動プロビジョニングの概念](concepts-auto-provisioning.md)」を読んでから先に進んでください。 
 
@@ -36,14 +36,14 @@ ms.locfileid: "59500976"
 
 ## <a name="prerequisites"></a>前提条件
 
-* ["C++ によるデスクトップ開発"](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) ワークロードを有効にした Visual Studio 2015 または [Visual Studio 2017](https://www.visualstudio.com/vs/)。
+* ["C++ によるデスクトップ開発"](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) ワークロードが有効になった [Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 以降。
 * [Git](https://git-scm.com/download/) の最新バージョンがインストールされている。
 
 
 
 ## <a name="build-a-platform-specific-version-of-the-sdk"></a>SDK のプラットフォーム固有のバージョンを構築する
 
-Device Provisioning Service Client SDK は、デバイス登録ソフトウェアを実装するために役立ちます。 しかし、使用する前に、開発クライアント プラットフォームと構成証明メカニズムに固有の SDK のバージョンを構築する必要があります。 このチュートリアルでは、Windows 開発プラットフォーム上で Visual Studio 2017 を使用する、以下のサポートされている種類の構成証明書用の SDK を構築します。
+Device Provisioning Service Client SDK は、デバイス登録ソフトウェアを実装するために役立ちます。 しかし、使用する前に、開発クライアント プラットフォームと構成証明メカニズムに固有の SDK のバージョンを構築する必要があります。 このチュートリアルでは、Windows 開発プラットフォーム上で Visual Studio を使用する、以下のサポートされている種類の構成証明用の SDK を構築します。
 
 1. [CMake ビルド システム](https://cmake.org/download/)をダウンロードします。
 
@@ -118,15 +118,15 @@ TPM を使用するシミュレートされたデバイスのために構成証�
 
    1. Visual Studio を使用して、*cmake* フォルダーに生成された `azure_iot_sdks.sln` という名前のソリューションを開き、[ビルド] メニューの [ソリューションのビルド] コマンドを使用してビルドします。
 
-   1. Visual Studio の "*ソリューション エクスプローラー*" ウィンドウで、**Provision\_Tools** フォルダーに移動します。 **tpm_device_provision** プロジェクトを右クリックし、**[スタートアップ プロジェクトに設定]** を選択します。 
+   1. Visual Studio の "*ソリューション エクスプローラー*" ウィンドウで、**Provision\_Tools** フォルダーに移動します。 **tpm_device_provision** プロジェクトを右クリックし、 **[スタートアップ プロジェクトに設定]** を選択します。 
 
-   1. [デバッグ] メニューのいずれかの [開始] コマンドを使用してソリューションを実行します。 出力ウィンドウに、TPM シミュレーターの "**_登録 ID_**" と "**_保証キー_**" が表示されます。これらは、デバイスの加入と登録に必要です。 後で使用するために、これらの値をコピーしておきます。 このウィンドウ (登録 ID と保証キーのウィンドウ) は閉じてもかまいませんが、手順 1. で開始した TPM シミュレーター ウィンドウは実行したままにしておきます。
+   1. [デバッグ] メニューのいずれかの [開始] コマンドを使用してソリューションを実行します。 出力ウィンドウに、TPM シミュレーターの " **_登録 ID_** " と " **_保証キー_** " が表示されます。これらは、デバイスの加入と登録に必要です。 後で使用するために、これらの値をコピーしておきます。 このウィンドウ (登録 ID と保証キーのウィンドウ) は閉じてもかまいませんが、手順 1. で開始した TPM シミュレーター ウィンドウは実行したままにしておきます。
 
 - シミュレートされた X.509 デバイスの場合:
 
   1. Visual Studio を使用して、*cmake* フォルダーに生成された `azure_iot_sdks.sln` という名前のソリューションを開き、[ビルド] メニューの [ソリューションのビルド] コマンドを使用してビルドします。
 
-  1. Visual Studio の "*ソリューション エクスプローラー*" ウィンドウで、**Provision\_Tools** フォルダーに移動します。 **[dice\_device\_enrollment]** プロジェクトを右クリックし、**[スタートアップ プロジェクトに設定]** を選択します。 
+  1. Visual Studio の "*ソリューション エクスプローラー*" ウィンドウで、**Provision\_Tools** フォルダーに移動します。 **[dice\_device\_enrollment]** プロジェクトを右クリックし、 **[スタートアップ プロジェクトに設定]** を選択します。 
   
   1. [デバッグ] メニューのいずれかの [開始] コマンドを使用してソリューションを実行します。 出力ウィンドウで、確認を求められたら個々の登録を行うための「**i**」を入力します。 シミュレートされたデバイスについて、ローカルで生成された X.509 証明書が出力ウィンドウに表示されます。 出力内容の *-----BEGIN CERTIFICATE-----* から最初の *-----END CERTIFICATE-----* までをクリップボードにコピーします。この両方の行を確実に含めるようにしてください。 必要なのは出力ウィンドウの最初の証明書のみです。
  
@@ -141,7 +141,7 @@ TPM を使用するシミュレートされたデバイスのために構成証�
 > [!NOTE]
 > この手順では、シミュレートされたデバイスの使用を想定して、ワークステーションから SDK サンプル登録アプリケーションを実行します。 ただし、物理デバイスにデプロイするための登録アプリケーションを構築する場合も、同じ概念が適用されます。 
 
-1. Azure Portal で、Device Provisioning サービスの **[概要]** ブレードを選択し、**[_ID スコープ_]** の値をコピーします。 サービスによって "*ID スコープ*" が生成され、一意性が保証されます。 ID スコープは不変であり、登録 ID を一意に識別するために使用されます。
+1. Azure Portal で、Device Provisioning サービスの **[概要]** ブレードを選択し、 **[_ID スコープ_]** の値をコピーします。 サービスによって "*ID スコープ*" が生成され、一意性が保証されます。 ID スコープは不変であり、登録 ID を一意に識別するために使用されます。
 
     ![ポータルのブレードから Device Provisioning サービスのエンドポイント情報を抽出](./media/tutorial-set-up-device/extract-dps-endpoints.png) 
 
@@ -165,7 +165,7 @@ TPM を使用するシミュレートされたデバイスのために構成証�
 
 1. 変更を保存し、[ビルド] メニューの [ソリューションのビルド] を選択して、**prov\_dev\_client\_sample** サンプルを再ビルドします。 
 
-1. **Provision\_Samples** フォルダーの **prov\_dev\_client\_sample** プロジェクトを右クリックし、**[スタートアップ プロジェクトに設定]** を選択します。 まだサンプル アプリケーションを実行しないでください。
+1. **Provision\_Samples** フォルダーの **prov\_dev\_client\_sample** プロジェクトを右クリックし、 **[スタートアップ プロジェクトに設定]** を選択します。 まだサンプル アプリケーションを実行しないでください。
 
 > [!IMPORTANT]
 > まだデバイスを実行/起動しないでください。 デバイスを起動する前に、デバイスを Device Provisioning Service に加入させて、プロセスを完了する必要があります。 後の「次の手順」セクションで、次の記事に移動することができます。

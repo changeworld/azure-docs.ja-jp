@@ -11,12 +11,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: routlaw
-ms.openlocfilehash: cc598afbbdf7f3a1b12089b50ba747c5220ba1fa
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: ce7eb546c342ffd20557a95d5293d83b39ec3afb
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64922940"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65507192"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Functions の Java 開発者向けガイド
 
@@ -66,7 +66,7 @@ FunctionsProject
 
  Azure の関数は、HTTP 要求、タイマー、日付の更新などのトリガーで呼び出されます。 関数はそのトリガーと他の入力を処理して 1 つまたは複数の出力を生成する必要があります。
 
-[com.microsoft.azure.functions.annotation.*](/java/api/com.microsoft.azure.functions.annotation) パッケージに含まれる Java の注釈を使用して、入力と出力をメソッドにバインドします。 詳しくは、[Java リファレンスドキュメント](/java/api/com.microsoft.azure.functions.annotation)のページをご覧ください。
+[com.microsoft.azure.functions.annotation.*](/java/api/com.microsoft.azure.functions.annotation) パッケージに含まれる Java の注釈を使用して、入力と出力をメソッドにバインドします。 詳細については、[Java リファレンス ドキュメント](/java/api/com.microsoft.azure.functions.annotation)に関するページを参照してください。
 
 > [!IMPORTANT] 
 > Azure Storage Blob、Queue、または Table のトリガーをローカルに実行するには、[local.settings.json](/azure/azure-functions/functions-run-local#local-settings-file) に Azure Storage アカウントを構成する必要があります。
@@ -112,6 +112,37 @@ public class Function {
 Java 関数アプリをローカルで開発するには、[Azul Systems](https://www.azul.com/downloads/azure-only/zulu/) から [Azul Zulu Enterprise for Azure](https://assets.azul.com/files/Zulu-for-Azure-FAQ.pdf) Java 8 JDK をダウンロードして使用します。 Azure Functions は、関数アプリをクラウドにデプロイするときに Azul Java 8 JDK ランタイムを使用します。
 
 JKD および関数アプリに関する問題に対する [Azure サポート](https://azure.microsoft.com/support/)は、[認定サポート プラン](https://azure.microsoft.com/support/plans/)を通じてご利用いただけます。
+
+## <a name="customize-jvm"></a>JVM のカスタマイズ
+
+関数を使用すると、お使いの Java 関数の実行に使用する Java 仮想マシン (JVM) をカスタマイズできます。 既定で[次の JVM オプション](https://github.com/Azure/azure-functions-java-worker/blob/master/worker.config.json#L7)が使用されます。
+
+* `-XX:+TieredCompilation`
+* `-XX:TieredStopAtLevel=1`
+* `-noverify` 
+* `-Djava.net.preferIPv4Stack=true`
+* `-jar`
+
+`JAVA_OPTS` という名前のアプリ設定には、追加の引数を指定できます。 次のいずれかの方法で、Azure にデプロイされているお使いの関数アプリにアプリ設定を追加することができます。
+
+### <a name="azure-portal"></a>Azure ポータル
+
+[Azure portal](https://portal.azure.com) の [[アプリケーション設定]](functions-how-to-use-azure-function-app-settings.md#settings) タブを使用して `JAVA_OPTS` の設定を追加します。
+
+### <a name="azure-cli"></a>Azure CLI
+
+次の例のように、`JAVA_OPTS` の設定に [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings) コマンドを使用できます。
+
+    ```azurecli-interactive
+    az functionapp config appsettings set --name <APP_NAME> \
+    --resource-group <RESOURCE_GROUP> \
+    --settings "JAVA_OPTS=-Djava.awt.headless=true"
+    ```
+この例では、ヘッドレス モードが有効になります。 `<APP_NAME>` をお使いの関数アプリ名に置き換え、`<RESOURCE_GROUP> ` をリソース グループに置き換えます。
+
+> [!WARNING]  
+> [従量課金プラン](functions-scale.md#consumption-plan)を実行しているときは、`0` の値と共に `WEBSITE_USE_PLACEHOLDER` 設定を追加する必要があります。  
+この設定によって、Java 関数のコールド スタート時間が長くなることはありません。
 
 ## <a name="third-party-libraries"></a>サードパーティ製ライブラリ 
 
@@ -263,7 +294,7 @@ public class Function {
     }
 ```
 
-上記の関数が HttpRequest 上で呼び出され、複数の値が Azure キューに書き込まれます
+この関数が HttpRequest 上で呼び出され、複数の値が Azure キューに書き込まれます。
 
 ## <a name="httprequestmessage-and-httpresponsemessage"></a>HttpRequestMessage と HttpResponseMessage
 

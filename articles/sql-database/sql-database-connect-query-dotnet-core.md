@@ -7,17 +7,17 @@ ms.subservice: development
 ms.custom: ''
 ms.devlang: dotnet
 ms.topic: quickstart
-author: CarlRabeler
-ms.author: carlrab
+author: stevestein
+ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 03/25/2019
-ms.openlocfilehash: 460f79eb0679dc7d71bc929e4e790b68bd0f6774
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 8ca2346de84a97bff370a7d5bacb006130cb5116
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58447388"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65792468"
 ---
 # <a name="quickstart-use-net-core-c-to-query-an-azure-sql-database"></a>クイック スタート:.NET Core (C#) を使用して Azure SQL データベースに照会する
 
@@ -195,6 +195,6 @@ namespace sqltest
 ## <a name="next-steps"></a>次の手順
 
 - [Windows/Linux/macOS の .NET Core でのコマンド ラインの使用に関する概要](/dotnet/core/tutorials/using-with-xplat-cli)
-- [.NET Framework と Visual Studio で Azure SQL Database に接続してデータベースに照会](sql-database-connect-query-dotnet-visual-studio.md)する方法について学習します。  
+- [.NET Framework と Visual Studio で Azure SQL データベースに接続してデータベースに照会](sql-database-connect-query-dotnet-visual-studio.md)する方法について学習します。  
 - [SSMS を使用して初めての Azure SQL データベースを設計する](sql-database-design-first-database.md)方法や、[C# と ADO.NET で Azure SQL データベースを設計して接続する](sql-database-design-first-database-csharp.md)方法について学習します。
 - .NET の詳細については、[.NET のドキュメント](https://docs.microsoft.com/dotnet/)を参照してください。

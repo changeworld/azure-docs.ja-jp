@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: agaiha
-ms.openlocfilehash: af5d4e21bb5b41df4bcb88dc2f9eb7901fcaa597
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e43ba83581b6ce012c619036317361a7c1c0bf4f
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57997969"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64710413"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Linux Diagnostic Extension を使用して、メトリックとログを監視する
 
@@ -500,7 +500,9 @@ ReadsPerSecond | 1 秒あたりの読み取り操作
 WritesPerSecond | 1 秒あたりの書き込み操作
 TransfersPerSecond | 1 秒あたりの読み取りまたは書き込み操作
 
-すべてのファイル システムの集計値は、`"condition": "IsAggregate=True"` のように設定すると取得できます。 "/mnt" のような特定のマウントされたファイル システムの値は、`"condition": 'Name="/mnt"'` のように設定すると取得できます。
+すべてのファイル システムの集計値は、`"condition": "IsAggregate=True"` のように設定すると取得できます。 "/mnt" のような特定のマウントされたファイル システムの値は、`"condition": 'Name="/mnt"'` のように設定すると取得できます。 
+
+**注**: JSON ではなく Azure Portal を使用する場合、正しい条件フィールド形式は Name='/mnt' になります。
 
 ### <a name="builtin-metrics-for-the-disk-class"></a>"ディスク" クラスの組み込みメトリック
 

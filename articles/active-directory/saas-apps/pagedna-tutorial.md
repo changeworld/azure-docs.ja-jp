@@ -16,75 +16,75 @@ ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f01529af7725cded6e73c17b9c3f7b0b9b34dec
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 11cb309e6c49ed36247398909e5e1b7ad9f7bc42
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59283933"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65891211"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pagedna"></a>チュートリアル:Azure Active Directory と PageDNA の統合
 
 このチュートリアルでは、PageDNA と Azure Active Directory (Azure AD) を統合する方法について説明します。
+
 PageDNA と Azure AD の統合には、次の利点があります。
 
-* PageDNA にアクセスできるユーザーを Azure AD 上で制御できます。
-* ユーザーが自分の Azure AD アカウントを使用して PageDNA に自動的にサインイン (シングル サインオン) するように設定できます。
-* 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
+* Azure AD で、PageDNA にアクセスできるユーザーを制御できます。
+* ユーザーが自分の Azure AD アカウントを使用して PageDNA に自動的にサインイン (シングル サインオン) できるようにすることができます。
+* 1 つの中央サイト (Azure ポータル) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
-Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
+サービスとしてのソフトウェア (SaaS) アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
 PageDNA と Azure AD の統合を構成するには、次のものが必要です。
 
-* Azure AD サブスクリプション。 Azure AD の環境がない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます
-* PageDNA でのシングル サインオンが有効なサブスクリプション
+* Azure AD サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
+* シングル サインオンが有効な PageDNA のサブスクリプション。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
-このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
+このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストし、PageDNA を Azure AD と統合します。
 
-* PageDNA では、**SP** によって開始される SSO がサポートされます
+PageDNA では、次の機能をサポートしています。
 
-* PageDNA では、**Just In Time** ユーザー プロビジョニングがサポートされます
+* SP によって開始されるシングル サインオン (SSO)。
 
-## <a name="adding-pagedna-from-the-gallery"></a>ギャラリーからの PageDNA の追加
+* Just-In-Time のユーザー プロビジョニング。
 
-Azure AD への PageDNA の統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に PageDNA を追加する必要があります。
+## <a name="add-pagedna-from-the-azure-marketplace"></a>Azure Marketplace からの PageDNA の追加
 
-**ギャラリーから PageDNA を追加するには、次の手順に従います。**
+Azure AD への PageDNA の統合を構成するには、Azure Marketplace からマネージド SaaS アプリの一覧に PageDNA を追加する必要があります。
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+1. [Azure Portal](https://portal.azure.com?azure-portal=true) にサインインします。
+1. 左ウィンドウで、 **[Azure Active Directory]** を選択します。
 
-    ![Azure Active Directory のボタン](common/select-azuread.png)
+    ![[Azure Active Directory] オプション](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
+1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 
-    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
+    ![[エンタープライズ アプリケーション] ウィンドウ](common/enterprise-applications.png)
 
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+1. 新しいアプリケーションを追加するには、ウィンドウの上部の **[+ 新しいアプリケーション]** を選択します。
 
-    ![[新しいアプリケーション] ボタン](common/add-new-app.png)
+    ![[新しいアプリケーション] オプション](common/add-new-app.png)
 
-4. 結果ボックスに「**PageDNA**」と入力し、結果パネルで **[PageDNA]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
+1. 検索ボックスに「**PageDNA**」と入力します。 検索結果で **[PageDNA]** を選択し、 **[追加]** を選択してアプリケーションを追加します。
 
     ![結果一覧の PageDNA](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、PageDNA で Azure AD のシングル サインオンを構成し、テストします。
-シングル サインオンを機能させるには、Azure AD ユーザーと PageDNA 内の関連ユーザー間にリンク関係が確立されている必要があります。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、PageDNA で Azure AD のシングル サインオンを構成し、テストします。 シングル サインオンを機能させるには、Azure AD ユーザーと PageDNA 内の関連ユーザーとの間にリンク関係を確立する必要があります。
 
 PageDNA で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[PageDNA シングル サインオンの構成](#configure-pagedna-single-sign-on)** - アプリケーション側でシングル サインオン設定を構成します。
-3. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[PageDNA のテスト ユーザーの作成](#create-pagedna-test-user)** - PageDNA で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-6. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. **[PageDNA シングル サインオンの構成](#configure-pagedna-single-sign-on)** - アプリケーション側でシングル サインオン設定を構成します。
+1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+1. **[PageDNA テスト ユーザーの作成](#create-a-pagedna-test-user)** - Britta Simon という Azure AD ユーザーにリンクされている Britta Simon というユーザーが PageDNA に存在するようにします。
+1. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -92,126 +92,123 @@ PageDNA で Azure AD のシングル サインオンを構成してテストす�
 
 PageDNA で Azure AD シングル サインオンを構成するには、次の手順を実行します。
 
-1. [Azure portal](https://portal.azure.com/) の **PageDNA** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **PageDNA** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
 
-    ![シングル サインオン構成のリンク](common/select-sso.png)
+    ![シングル サインオン オプションを構成する](common/select-sso.png)
 
-2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
+1. **[シングル サインオン方式の選択]** ウィンドウで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
     ![シングル サインオン選択モード](common/select-saml-option.png)
 
-3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
+1. **[SAML でシングル サインオンをセットアップします]** ウィンドウで、**編集** (鉛筆アイコン) を選択して **[基本的な SAML 構成]** ウィンドウを開きます。
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-4. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
+1. **[基本的な SAML 構成]** ウィンドウで、次の手順を実行します。
 
-    ![[PageDNA ドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
+    ![[PageDNA のドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
 
-    a. **[サインオン URL]** ボックスに、次の形式で URL を入力します。
+    1. **[サインオン URL]** ボックスに、以下のいずれかの形式で URL を入力します。
 
-    ||
-    |--|
-    | `https://stores.pagedna.com/<your site>` |
-    | `https://<your domain>` |
-    | `https://<your domain>/<your site>` |
-    | `https://www.nationsprint.com/<your site>` |
-    | |
-    
-    b. **[識別子 (エンティティ ID)]** テキスト ボックスに、次のパターンで URL を入力します。
+        ||
+        |--|
+        | `https://stores.pagedna.com/<your site>` |
+        | `https://<your domain>` |
+        | `https://<your domain>/<your site>` |
+        | `https://www.nationsprint.com/<your site>` |
+        | |
 
-    ||
-    |--|
-    | `https://stores.pagedna.com/<your site>/saml2ep.cgi` |
-    | `https://www.nationsprint.com/<your site>/saml2ep.cgi` |
-    | |
+    1. **[識別子 (エンティティ ID)]** ボックスに、以下のいずれかの形式で URL を入力します。
+
+        ||
+        |--|
+        | `https://stores.pagedna.com/<your site>/saml2ep.cgi` |
+        | `https://www.nationsprint.com/<your site>/saml2ep.cgi` |
+        | |
 
     > [!NOTE]
-    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[PageDNA クライアント サポート チーム](mailto:success@pagedna.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 これらの値を取得するには、[PageDNA サポート チーム](mailto:success@pagedna.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** ウィンドウに示されているパターンを参照することもできます。
 
-5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (未加工)** をダウンロードして、お使いのコンピューターに保存します。
+1. **[SAML でシングル サインオンをセットアップします]** ウィンドウの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** を選択して特定のオプションの**証明書 (未加工)** をダウンロードし、コンピューターに保存します。
 
-    ![証明書のダウンロードのリンク](common/certificateraw.png)
+    ![証明書 (未加工) のダウンロード オプション](common/certificateraw.png)
 
-6. **[PageDNA のセットアップ]** セクションで、要件に従って適切な URL をコピーします。
+1. **[PageDNA のセットアップ]** セクションで、必要な URL をコピーします。
 
-    ![構成 URL のコピー](common/copy-configuration-urls.png)
+   * **ログイン URL**
+   * **Azure AD 識別子**
+   * **ログアウト URL**
 
-    a. ログイン URL
-
-    b. Azure AD 識別子
-
-    c. ログアウト URL
+    ![構成 URL をコピーする](common/copy-configuration-urls.png)
 
 ### <a name="configure-pagedna-single-sign-on"></a>PageDNA シングル サインオンの構成
 
-**PageDNA** 側でシングル サインオンを構成するには、ダウンロードした**証明書 (未加工)** と Azure portal からコピーした適切な URL を [PageDNA サポート チーム](mailto:success@pagedna.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+PageDNA 側でシングル サインオンを構成するには、ダウンロードした証明書 (未加工) と Azure portal からコピーした適切な URL を [PageDNA サポート チーム](mailto:success@pagedna.com)に送信する必要があります。 PageDNA チームは、SAML SSO 接続が両方の側で正しく設定されていることを確認します。
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
+### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
-このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
+このセクションでは、Azure portal で Britta Simon というテスト ユーザーを作成します。
 
-1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
+1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]**    >  **[ユーザー]**  >  **[すべてのユーザー]** の順に選択します。
 
-    ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
+    ![[ユーザー] と [すべてのユーザー] オプション](common/users.png)
 
-2. 画面の上部にある **[新しいユーザー]** を選択します。
+1. 画面の上部にある **[+ 新しいユーザー]** を選択します。
 
-    ![[新しいユーザー] ボタン](common/new-user.png)
+    ![[新しいユーザー] オプション](common/new-user.png)
 
-3. [ユーザーのプロパティ] で、次の手順を実行します。
+1. **[ユーザー]** ウィンドウで、次の手順を実行します。
 
-    ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
+    ![[ユーザー] ウィンドウ](common/user-properties.png)
 
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+    1. **[名前]** ボックスに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「`brittasimon@yourcompanydomain.extension`」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
+    1. **[ユーザー名]** ボックスに、「**BrittaSimon\@\<yourcompanydomain>.\<extension>** 」と入力します。 たとえば、「**BrittaSimon\@contoso.com**」です。
 
-    c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
+    1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    1. **作成** を選択します。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
 このセクションでは、Britta Simon に PageDNA へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]**、**[PageDNA]** の順に選択します。
+1. Azure portal で、 **[エンタープライズ アプリケーション]**  >  **[すべてのアプリケーション]**  >  **[PageDNA]** の順に選択します。
 
-    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
+    ![[エンタープライズ アプリケーション] ウィンドウ](common/enterprise-applications.png)
 
-2. アプリケーションの一覧で **[PageDNA]** を選択します。
+1. アプリケーションの一覧で **[PageDNA]** を選択します。
 
-    ![アプリケーションの一覧の PageDNA のリンク](common/all-applications.png)
+    ![アプリケーションの一覧の PageDNA](common/all-applications.png)
 
-3. 左側のメニューで **[ユーザーとグループ]** を選びます。
+1. 左側のウィンドウの **[管理]** で、 **[ユーザーとグループ]** を選択します。
 
-    ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
+    ![[ユーザーとグループ] オプション](common/users-groups-blade.png)
 
-4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[+ ユーザーの追加]** を選択し、 **[割り当ての追加]** ウィンドウで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
-5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
+1. **[ユーザーとグループ]** ウィンドウの **[ユーザー]** の一覧で **[Britta Simon]** を選択し、ウィンドウの下部にある **[選択]** を選択します。
 
-6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
+1. SAML アサーションでロール値が必要な場合は、 **[ロールの選択]** ウィンドウで、一覧からユーザーに適したロールを選択します。 ウィンドウの下部で、 **[選択]** を選択します。
 
-7. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンをクリックします。
+1. **[割り当ての追加]** ウィンドウで **[割り当て]** を選択します。
 
-### <a name="create-pagedna-test-user"></a>PageDNA のテスト ユーザーの作成
+### <a name="create-a-pagedna-test-user"></a>PageDNA テスト ユーザーの作成
 
-このセクションでは、Britta Simon というユーザーを PageDNA に作成します。 PageDNA では、Just-In-Time ユーザー プロビジョニングがサポートされており、既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 PageDNA にユーザーがまだ存在していない場合は、認証後に新しく作成されます。
+これで、Britta Simon というユーザーが PageDNA に作成されました。 このユーザーを作成するために、何かをする必要はありません。 PageDNA では、Just-In-Time ユーザー プロビジョニングがサポートされており、既定で有効になっています。 PageDNA に Britta Simon というユーザーがまだ存在しない場合は、認証後に新しく作成されます。
 
-### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
+### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 
-このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
+このセクションでは、マイ アプリ ポータルを使用して自分の Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [PageDNA] タイルをクリックすると、SSO を設定した PageDNA に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+マイ アプリ ポータルで **[PageDNA]** を選択すると、シングル サインオンを設定した PageDNA サブスクリプションに自動的にサインインするはずです。 マイアプリ ポータルの詳細については、「[マイ アプリ ポータルでアプリにアクセスして使用する](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)」を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+* [SaaS アプリケーションと Azure Active Directory との統合に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+* [Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+* [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

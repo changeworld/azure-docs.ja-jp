@@ -5,15 +5,15 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 12/11/2018
+ms.date: 04/24/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 598ddaa98b0c98d2123f0084a0b8b6dfaf615deb
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: d1662d17f37e668e989103989df9de49036bab6a
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59045715"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64726201"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-classic"></a>ExpressRoute 回線のピアリングの作成と変更 (クラシック)
 > [!div class="op_single_selector"]
@@ -187,6 +187,10 @@ Remove-AzureBGPPeering -AccessType Private -ServiceKey "************************
 ## <a name="azure-public-peering"></a>Azure パブリック ピアリング
 
 このセクションでは、ExpressRoute 回線用の Azure パブリック ピアリング構成を作成、取得、更新および削除する方法について説明します。
+
+> [!NOTE]
+> Azure パブリック ピアリングは、新しい回線では非推奨です。
+>
 
 ### <a name="to-create-azure-public-peering"></a>Azure パブリック ピアリングを作成するには
 

@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: dc871b29cdafa57d337f9be6cf01e76212f31b67
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50227454"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66167085"
 ---
 ## <a name="migrate-iaas-resources-from-the-classic-deployment-model-to-azure-resource-manager"></a>クラシック デプロイ モデルから Azure Resource Manager への IaaS リソースの移行
 最初に、サービスとしてのインフラストラクチャ (IaaS) リソースにおけるデータ プレーン操作と管理プレーン操作の違いについて理解することが重要です。

@@ -1,25 +1,19 @@
 ---
-title: "'Azure Marketplace' と 'AppSource' の発行元プロファイルを管理する"
-description: "'Azure Marketplace' と 'AppSource' の発行元プロファイルの管理"
+title: Azure Marketplace と AppSource のパブリッシャー プロファイルの管理
+description: Azure Marketplace と AppSource のパブリッシャー プロファイルの管理
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: qianw211
 manager: pbutlerm
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/15/2018
-ms.author: pbutlerm
-ms.openlocfilehash: c73c846db4b22d8c19ccdaa2ec99a3fe7fdadf78
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.author: pabutler
+ms.openlocfilehash: a72259e1deb97ca0256de5bfd3b2f6c78d92e3c8
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54076707"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64935358"
 ---
 # <a name="manage-azure-marketplace-and-appsource-publisher-profile"></a>'Azure Marketplace' と 'AppSource' の発行元プロファイルを管理する
 
@@ -39,7 +33,7 @@ ms.locfileid: "54076707"
 > [!NOTE]
 > Microsoft Cloud パートナー ポータルの [ユーザー] セクションで、左側のナビゲーション ウィンドウの [ユーザー] セクションから、ユーザー (作成者と所有者) を発行プロファイルに追加します
 
-**発行元プロファイルを表示するには**、右上のメニュー バーで、**[Publisher profile (発行元プロファイル)] タブ**をクリックします。
+**発行元プロファイルを表示するには**、右上のメニュー バーで、 **[Publisher profile (発行元プロファイル)] タブ**をクリックします。
 
 ![[発行元プロファイル] タブ - 発行元プロファイル](./media/cloud-partner-portal-how-to-manage-publisher-profile/publisherprofilenew.png)
 

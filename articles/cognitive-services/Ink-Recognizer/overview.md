@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: erhopf
 ms.openlocfilehash: 0ed1a72a5dc61458200b72c768ad722656b820d8
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 05/27/2019
 ms.locfileid: "65025607"
 ---
 # <a name="what-is-the-ink-recognizer-api"></a>Ink Recognizer API とは

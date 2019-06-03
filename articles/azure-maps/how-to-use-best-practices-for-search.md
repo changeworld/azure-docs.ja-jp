@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: f7a14e975a5ca3aee5588f55f43b28081c100074
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: 9cb0f89b4a48d7139adb35dcef48c0115b005c57
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59358149"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65205621"
 ---
 # <a name="best-practices-to-use-azure-maps-search-service"></a>Azure Maps Search Service を使用するためのベスト プラクティス
 
@@ -49,7 +49,7 @@ Azure Maps Search Service を使用して、完全な住所または部分的な
 
    ユーザーに関連する領域になるよう結果に geo バイアスを適用するには、常に、可能な限り詳細な場所入力を追加する必要があります。 検索結果を制限するには、次の入力の種類の追加を検討します。
 
-   1. `countrySet` パラメーターを設定します (例: "US, FR")。 既定の検索動作では世界全体が検索されるので、必要のない結果が返される可能性があります。 クエリに `countrySet` パラメーターが含まれていない場合、検索で不正確な結果が返される可能性があります。 たとえば、**Bellevue** という名前の都市を検索すると、**Bellevue** という名前の都市はフランスと米国にあるので、米国とフランスからの結果が返されます。
+   1. `countrySet` パラメーターを設定します (例: US、FR)。 既定の検索動作では世界全体が検索されるので、必要のない結果が返される可能性があります。 クエリに `countrySet` パラメーターが含まれていない場合、検索で不正確な結果が返される可能性があります。 たとえば、**Bellevue** という名前の都市を検索すると、**Bellevue** という名前の都市はフランスと米国にあるので、米国とフランスからの結果が返されます。
 
    2. `btmRight` および `topleft` パラメーターを使用して境界ボックスを設定し、マップ上の特定の領域に検索を制限することができます。
 
@@ -62,12 +62,12 @@ Azure Maps Search Service を使用して、完全な住所または部分的な
 
    2. また、`idxSet` パラメーターを使用することで、正確な結果の種類のセットを返すように指定することもできます。 そのためには、インデックスのコンマ区切りリストを送信できます。項目の順序は関係ありません。 次のインデックスがサポートされています。
 
-       * `Addr` -  **住所範囲** : 街路によっては、街路の開始と終了から補間される住所ポイントが存在します。このようなポイントは、住所範囲として表されます。
-       * `Geo` -  **地域** : 土地の行政区分を表すマップ上の領域です (つまり、国、州、市)。
-       * `PAD` -  **ポイント住所** : 街路名と番号を持つ特定の住所がインデックスで見つかるマップ上のポイントです (例: Soquel Dr 2501)。 それは住所に利用できる最高レベルの精度です。  
-       * `POI` -  **目的地** : 注目する価値があり興味を引く可能性があるマップ上のポイントです。  [Get Search Address](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress) では POI は返されません。  
-       * `Str` -  **街路** : マップ上の街路を表します。
-       * `XStr` -  **交差点** : 2 つの街路が交わる場所であるジャンクションを表します。
+       * `Addr` - **住所範囲**: 街路によっては、街路の開始と終了から補間される住所ポイントが存在します。このようなポイントは、住所範囲として表されます。
+       * `Geo` - **地域**: 土地の行政区分を表すマップ上の領域です (つまり、国、州、市)。
+       * `PAD` - **ポイント住所**: 街路名と番号を持つ特定の住所がインデックスで見つかるマップ上のポイントです (例: Soquel Dr 2501)。 それは住所に利用できる最高レベルの精度です。  
+       * `POI` - **目的地**: 注目する価値があり興味を引く可能性があるマップ上のポイントです。  [Get Search Address](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress) では POI は返されません。  
+       * `Str` - **街路**: マップ上の街路を表します。
+       * `XStr` - **交差点**: 2 つの街路が交わる場所であるジャンクションを表します。
 
 
        **使用例** : 
@@ -132,9 +132,9 @@ https://atlas.microsoft.com/search/address/reverse/json?api-version=1.0&subscrip
 
 ### <a name="predictive-mode-auto-suggest"></a>予測モード (自動提案)
 
-部分的なクエリに対して、より多くの一致を検索するには、`typeHead` パラメーターを "true" に設定する必要があります。 クエリは部分的な入力として解釈され、検索は予測モードになります。 そうでない場合、サービスはすべての関連情報が渡されたものと想定します。
+部分的なクエリに対して、より多くの一致を検索するには、`typeahead` パラメーターを "true" に設定する必要があります。 クエリは部分的な入力として解釈され、検索は予測モードになります。 そうでない場合、サービスはすべての関連情報が渡されたものと想定します。
 
-下のサンプル クエリでは、`typehead` パラメーターを **true** に設定して、Search Address Service で "Microso" のクエリを実行しています。 応答を確認すると、Search Service でクエリが部分クエリとして解釈され、応答に自動提案されたクエリの結果が含まれていることがわかります。
+下のサンプル クエリでは、`typeahead` パラメーターを **true** に設定して、Search Address Service で "Microso" のクエリを実行しています。 応答を確認すると、Search Service でクエリが部分クエリとして解釈され、応答に自動提案されたクエリの結果が含まれていることがわかります。
 
 **サンプル クエリ:**
 
@@ -242,7 +242,7 @@ https://atlas.microsoft.com/search/address/json?subscription-key={subscription-k
 
 交差点の住所を検索するには (つまり、"1st Avenue & Union Street, Seattle")、要求を送信する前に特殊文字 "&" をエンコードする必要があります。 URI で文字データをエンコードすることをお勧めします。その場合、すべての文字を、"%" 文字と、UTF-8 文字に対応する 2 文字の 16 進値を使用してエンコードします。
 
-**使用例** : 
+**使用例**: 
 
 Get Search Address:
 

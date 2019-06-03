@@ -116,8 +116,9 @@
             - name: アイテム保持ポリシーを設定してクリーンアップ スクリプトを実行する
               href: image-factory-set-retention-policy-cleanup.md
         - name: エンタープライズ内の DevTest Labs
-          href: devtest-lab-guidance-prescriptive-adoption.md
           items:
+            - name: エンタープライズ規模の DevTest Labs
+              href: devtest-lab-guidance-prescriptive-adoption.md
             - name: 参照アーキテクチャ
               href: devtest-lab-reference-architecture.md
             - name: DevTest Labs デプロイのスケールアップ
@@ -176,6 +177,8 @@
               href: integrate-environments-devops-pipeline.md
             - name: サービスとしてのプラットフォーム (PaaS) サービスの使用
               href: use-paas-services.md
+            - name: 入れ子になったテンプレートのデプロイ
+              href: deploy-nested-template-environments.md
         - name: ラボへのアクセスのセキュリティ保護
           items:
             - name: ラボの所有者とユーザーを追加する
@@ -188,6 +191,8 @@
           items:
             - name: ポリシーとスケジュールの設定
               href: devtest-lab-set-lab-policy.md
+            - name: 自動シャットダウン通知の送信
+              href: devtest-lab-auto-shutdown.md
             - name: コスト管理の構成
               href: devtest-lab-configure-cost-management.md
             - name: Azure Marketplace イメージの構成

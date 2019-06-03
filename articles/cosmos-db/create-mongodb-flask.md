@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-mongo
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 12/26/2018
-ms.openlocfilehash: 35159a1630c7f1268119cd55cc6e0ac99dfd7b5f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 07f213de3509ed16af627af5e0583cd985c278f6
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58119209"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65954654"
 ---
 # <a name="quickstart-build-a-python-app-using-azure-cosmos-dbs-api-for-mongodb"></a>クイック スタート:Azure Cosmos DB の MongoDB 用 API を使用して Python アプリをビルドする
 
@@ -26,9 +26,9 @@ ms.locfileid: "58119209"
 > * [Golang](create-mongodb-golang.md)
 >  
 
-Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモデル データベース サービスです。 Cosmos DB の中核であるグローバル配布と水平スケーリングの機能を利用して、ドキュメント、キー/値、グラフの各データベースの作成とクエリをすばやく行うことができます。
+Azure Cosmos DB、Microsoft のグローバルに配布されるマルチモデル データベース サービスです。 ドキュメント、キー/値、およびグラフ データベースをすばやく作成したり、クエリを実行したりでき、そのすべてで、Cosmos DB の中核にあるグローバル配信および水平スケール機能が活用されます。
 
-このクイック スタート ガイドでは、次の [Flask の例](https://github.com/Azure-Samples/CosmosDB-Flask-Mongo-Sample)を使用して、[Azure Cosmos DB Emulator](local-emulator.md) と Azure Cosmos DB の MongoDB 用 API で簡単な To-Do Flask アプリを構築する方法を示します。
+このクイック スタート ガイドでは、次の [Flask の例](https://github.com/Azure-Samples/CosmosDB-Flask-Mongo-Sample)を使用し、[Azure Cosmos DB Emulator](local-emulator.md) と Azure Cosmos DB の MongoDB 用 API を使用して単純な To-Do Flask アプリを構築する方法を示します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -104,7 +104,7 @@ Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモ
 
 2. ターミナル ウィンドウを開き、`cd` を実行してアプリが保存されているディレクトリに移動します。
 
-3. Mac を使用している場合は、Flask アプリの環境変数を `set FLASK_APP=app.py` または `export FLASK_APP=app.py` に設定します。
+3. 次に、Mac を使用している場合は、`set FLASK_APP=app.py`、PowerShell エディターの `$env:FLASK_APP = app.py`、または `export FLASK_APP=app.py` を使用して Flask アプリの環境変数を設定します。 
 
 4. `flask run` を使用してアプリを実行し、[http://127.0.0.1:5000/](http://127.0.0.1:5000/) を参照します。
 
@@ -118,7 +118,7 @@ Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモ
 
 動作している Cosmos アカウントに対してコードをテストする場合は、Azure portal に移動してアカウントを作成し、接続文字列の情報を取得します。 これをアプリにコピーします。
 
-1. [Azure portal](https://portal.azure.com/) の Cosmos アカウントで、左側のナビゲーションの **[接続文字列]** をクリックし、**[読み取り/書き込みキー]** をクリックします。 次の手順では、画面右側のコピー ボタンを使用して、ユーザー名、パスワード、ホストを Dal.cs ファイルにコピーします。
+1. [Azure portal](https://portal.azure.com/) の Cosmos アカウントで、左側のナビゲーションの **[接続文字列]** をクリックし、 **[読み取り/書き込みキー]** をクリックします。 次の手順では、画面右側のコピー ボタンを使用して、ユーザー名、パスワード、ホストを Dal.cs ファイルにコピーします。
 
 2. ルート ディレクトリ内の **app.py** ファイルを開きます。
 
@@ -142,7 +142,7 @@ Azure にデプロイする場合は、アプリケーション キーを削除�
     db.authenticate(name=os.getenv("MONGO_USERNAME"),password=os.getenv("MONGO_PASSWORD"))
 ```
 
-アプリケーション設定に MONGOURL、MONGO_PASSWORD、MONGO_USERNAME を追加する必要があります。 この[チュートリアル](https://docs.microsoft.com/azure/app-service-web/web-sites-configure#application-settings)に従って、Azure Web Apps のアプリケーション設定の詳細を確認できます。
+アプリケーション設定に MONGOURL、MONGO_PASSWORD、MONGO_USERNAME を追加する必要があります。 この[チュートリアル](https://docs.microsoft.com/azure/app-service/configure-common#configure-app-settings)に従って、Azure Web Apps のアプリケーション設定の詳細を確認できます。
 
 このリポジトリのフォークを作成しない場合は、下の [Azure へのデプロイ] をクリックすることもできます。 Azure に移動し、Cosmos DB アカウント情報でアプリケーション設定を設定する必要があります。
 

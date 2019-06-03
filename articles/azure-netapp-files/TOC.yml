@@ -21,6 +21,12 @@
       href: azure-netapp-files-metrics.md
     - name: Azure NetApp Files のパフォーマンス ベンチマーク
       href: azure-netapp-files-performance-benchmarks.md
+    - name: Azure NetApp Files のコスト モデル
+      href: azure-netapp-files-cost-model.md
+    - name: Azure NetApp Files のネットワーク計画のガイドライン
+      href: azure-netapp-files-network-topologies.md
+    - name: Azure NetApp Files についての FAQ
+      href: azure-netapp-files-faqs.md
 - name: ハウツー ガイド
   items:
     - name: Azure NetApp Files に登録する
@@ -47,6 +53,8 @@
       items:
         - name: REST
           href: azure-netapp-files-develop-with-rest-api.md
+        - name: Azure NetApp Files SDK
+          href: azure-netapp-files-sdk-cli.md
         - name: Azure NetApp Files のリソース プロバイダー エラーのトラブルシューティング
           href: azure-netapp-files-troubleshoot-resource-provider-errors.md
 - name: リファレンス

@@ -1,8 +1,7 @@
 ---
-title: 'Azure AD Connect 同期: Azure AD サービス アカウントを管理する方法 | Microsoft Docs'
-description: このトピックでは、Azure AD サービス アカウントを復元する方法を説明します。
+title: Azure AD コネクタ アカウント パスワードの変更 | Microsoft Docs
+description: このトピックでは、Azure AD コネクタ アカウントを復元する方法を説明します。
 services: active-directory
-keywords: AADSTS70002, AADSTS50054, Azure AD Connect 同期コネクタ サービス アカウントのパスワードをリセットする方法
 documentationcenter: ''
 author: billmath
 manager: daveba
@@ -13,22 +12,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/12/2017
+ms.date: 04/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f88318c87e29567b40b5eacf10f3b6f259adee8b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: d68c190b51b9bbb5faf21e8ea75b07d1a82005e5
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56196353"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64571404"
 ---
-# <a name="azure-ad-connect-sync-how-to-manage-the-azure-ad-service-account"></a>Azure AD Connect 同期: Azure AD サービス アカウントを管理する方法
-Azure AD コネクタで使用されるサービス アカウントは、無料のサービスであると想定されています。 その資格情報をリセットする必要がある場合、このトピックが役立ちます。 たとえば、グローバル管理者が PowerShell を使用してサービス アカウントのパスワードを誤ってリセットしてしまった場合などです。
+# <a name="change-the-azure-ad-connector-account-password"></a>Azure AD コネクタ アカウント パスワードの変更
+Azure AD コネクタ アカウントは、無料のサービスであると想定されています。 その資格情報をリセットする必要がある場合、このトピックが役立ちます。 たとえば、グローバル管理者が PowerShell を使用してアカウントのパスワードを誤ってリセットしてしまった場合などです。
 
 ## <a name="reset-the-credentials"></a>資格情報をリセットする
-Azure AD コネクタで定義されたサービス アカウントが認証の問題のために Azure AD に接続できない場合、パスワードをリセットすることができます。
+Azure AD コネクタのアカウントが認証の問題のために Azure AD に接続できない場合、パスワードをリセットすることができます。
 
 1. Azure AD Connect 同期サーバーにサインインし、PowerShell を起動します。
 2. `Add-ADSyncAADServiceAccount`を実行します。  
@@ -38,7 +37,7 @@ Azure AD コネクタで定義されたサービス アカウントが認証の�
 このコマンドレットは、Azure AD と同期エンジンの両方で、サービス アカウントのパスワードをリセットして更新します。
 
 ## <a name="known-issues-these-steps-can-solve"></a>上記の手順で解決できる既知の問題
-このセクションでは、ユーザーから報告された、Azure AD サービス アカウントの資格情報をリセットすることで修正されたエラーの一覧を示します。
+このセクションでは、ユーザーから報告された、Azure AD コネクタ アカウントの資格情報をリセットすることで修正されたエラーの一覧を示します。
 
 - - -
 イベント 6900  

@@ -10,12 +10,12 @@ ms.subservice: workload management
 ms.date: 05/01/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2074ea1028f6a5e8a0251c6d0c9519361db6ba8d
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 1c84bf84f8ba28a98937b02a463003a900aefaa0
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65150379"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66002912"
 ---
 # <a name="quickstart-create-a-workload-classifier-using-t-sql"></a>クイック スタート:T-SQL を使用してワークロード分類子を作成する
 
@@ -97,16 +97,16 @@ DROP USER [TheCEO]
 
     ![リソースのクリーンアップ](media/load-data-from-azure-blob-storage-using-polybase/clean-up-resources.png)
 
-2. コンピューティング リソースを一時停止するには、**[一時停止]** ボタンを選択します。 データ ウェアハウスが一時停止すると、ボタンの表示が **[開始]** になります。  コンピューティング リソースを再開するには、**[開始]** を選択します。
+2. コンピューティング リソースを一時停止するには、 **[一時停止]** ボタンを選択します。 データ ウェアハウスが一時停止すると、ボタンの表示が **[開始]** になります。  コンピューティング リソースを再開するには、 **[開始]** を選択します。
 
-3. コンピューティング リソースやストレージに課金されないようにデータ ウェアハウスを削除するには、**[削除]** を選択します。
+3. コンピューティング リソースやストレージに課金されないようにデータ ウェアハウスを削除するには、 **[削除]** を選択します。
 
-4. 作成した SQL Server を削除するには、前の画像の **mynewserver-20180430.database.windows.net** を選択して、**[削除]** を選択します。  サーバーを削除すると、サーバーに割り当てられているすべてのデータベースが削除されるので、削除には注意してください。
+4. 作成した SQL Server を削除するには、前の画像の **mynewserver-20180430.database.windows.net** を選択して、 **[削除]** を選択します。  サーバーを削除すると、サーバーに割り当てられているすべてのデータベースが削除されるので、削除には注意してください。
 
-5. リソース グループを削除するには、**myResourceGroup** を選択して、**[リソース グループの削除]** を選択します。
+5. リソース グループを削除するには、**myResourceGroup** を選択して、 **[リソース グループの削除]** を選択します。
 
 ## <a name="next-steps"></a>次の手順
 
-これで、ワークロード分類子が作成されました。 TheCEO としていくつかのクエリを実行して、それらがどのように実行されるかを確認します。 クエリと割り当てられている重要度を確認するには、「[sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql)」を参照してください。
-
-SQL Data Warehouse ワークロードの管理の詳細については、[SQL Data Warehouse Workload ワークロードの重要度](sql-data-warehouse-workload-importance.md)と、[SQL Data Warehouse ワークロードの分類](sql-data-warehouse-workload-classification.md)に関するページを参照してください。
+- これで、ワークロード分類子が作成されました。 TheCEO としていくつかのクエリを実行して、それらがどのように実行されるかを確認します。 クエリと割り当てられている重要度を確認するには、「[sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql)」を参照してください。
+- Azure SQL Data Warehouse ワークロードの管理の詳細については、[ワークロードの重要度](sql-data-warehouse-workload-importance.md)と、[ワークロードの分類](sql-data-warehouse-workload-classification.md)に関するページを参照してください。
+- [ワークロードの重要度を構成する](sql-data-warehouse-how-to-configure-workload-importance.md)方法に関する記事と、[Workload Management を管理および監視する](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md)方法を参照してください。

@@ -4,15 +4,15 @@ description: この記事では、Azure Cosmos DB でストアド プロシー�
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/08/2018
+ms.date: 05/23/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 101b5382eaa01ed87f05d83c82002fa1b93144b7
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: cc1815ce4a7a9ed40848e4a67a7fd9e032c1daa1
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55463941"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66226203"
 ---
 # <a name="javascript-query-api-in-azure-cosmos-db"></a>Azure Cosmos DB の JavaScript クエリ API
 

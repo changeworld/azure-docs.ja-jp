@@ -1,25 +1,18 @@
 ---
-title: Microsoft Dynamics 365 Business Central の新しいオファーを作成する方法 | Microsoft Docs
+title: Microsoft Dynamics 365 Business Central の新しいオファーを作成する方法 | Azure Marketplace
 description: Cloud パートナー ポータルを使用して、Microsoft Dynamics 365 Business Central の新しいオファーを作成する方法について説明します。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/17/2018
-ms.author: pbutlerm
-ms.openlocfilehash: bc6ca73d7cfbef73350d24be60c078994ea761c3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: pabutler
+ms.openlocfilehash: 603dd63b31536bf906afc49223f4d6ac99819293
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57853207"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64935039"
 ---
 <a name="how-to-create-your-new-microsoft-dynamics-365-business-central-offer"></a>Microsoft Dynamics 365 Business Central の新しいオファーを作成する方法
 ====================================================================

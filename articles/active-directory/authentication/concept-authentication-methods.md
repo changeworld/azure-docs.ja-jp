@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0c9af1a9ad8b816809f661d368133997f55329d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: f0bcaf356108984baf473cdef8c18c5561343cd9
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59360638"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66119362"
 ---
 # <a name="what-are-authentication-methods"></a>認証方法とは
 
@@ -165,7 +165,7 @@ OATH ハードウェア トークンはパブリック プレビュー段階で�
 いったんトークンを取得したら、次に示す例のように、UPN、シリアル番号、秘密鍵、間隔、製造元、モデルを含む、コンマ区切り値 (CSV) ファイル形式でアップロードする必要があります。
 
 ```csv
-upn,serial number,secret key,timeinterval,manufacturer,model
+upn,serial number,secret key,time interval,manufacturer,model
 Helga@contoso.com,1234567,1234567890abcdef1234567890abcdef,60,Contoso,HardwareKey
 ```
 

@@ -3,21 +3,21 @@ title: Databricks Python でデータを変換する - Azure | Microsoft Docs
 description: Databricks Python を実行してデータを処理または変換する方法を説明します。
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
-ms.assetid: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.author: douglasl
-ms.openlocfilehash: 60aafd983d1c21777276683a8685376a247d11f5
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+author: gauravmalhot
+ms.author: gamal
+ms.reviewer: maghan
+manager: craigg
+ms.openlocfilehash: 3ab3ec5380fbc90dffd4f258073ad8b477e2318a
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57541708"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66002843"
 ---
 # <a name="transform-data-by-running-a-python-activity-in-azure-databricks"></a>Azure Databricks で Python アクティビティを実行してデータを変換する
 
@@ -64,11 +64,11 @@ Databricks Python アクティビティのサンプルの JSON 定義を次に�
 
 |プロパティ|説明|必須|
 |---|---|---|
-|name|パイプラインのアクティビティの名前。|[はい]|
+|name|パイプラインのアクティビティの名前。|はい|
 |description|アクティビティの動作を説明するテキスト。|いいえ |
-|type|Databricks Python アクティビティでは、アクティビティの種類は DatabricksSparkPython です。|[はい]|
-|linkedServiceName|Python アクティビティが実行されている Databricks リンク サービスの名前です。 このリンクされたサービスの詳細については、 [コンピューティングのリンクされたサービス](compute-linked-services.md) に関する記事をご覧ください。|[はい]|
-|pythonFile|実行される Python ファイルの URI。 DBFS パスのみがサポートされています。|[はい]|
+|type|Databricks Python アクティビティでは、アクティビティの種類は DatabricksSparkPython です。|はい|
+|linkedServiceName|Python アクティビティが実行されている Databricks リンク サービスの名前です。 このリンクされたサービスの詳細については、 [コンピューティングのリンクされたサービス](compute-linked-services.md) に関する記事をご覧ください。|はい|
+|pythonFile|実行される Python ファイルの URI。 DBFS パスのみがサポートされています。|はい|
 |parameters|Python ファイルに渡されるコマンド ライン パラメーター。 文字列の配列です。|いいえ |
 |libraries|ジョブを実行するクラスターにインストールされるライブラリのリスト。 <文字列, オブジェクト> の配列を指定できます。|いいえ |
 

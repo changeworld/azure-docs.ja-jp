@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 80faf1899da0f16d25b9b7c68cb0edcbc1276632
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 0e792551f4cac857f56454c67d527e01cb9c4281
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59488236"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66113119"
 ---
 # <a name="vulnerabilities-detected-by-azure-active-directory-identity-protection"></a>Azure Active Directory Identity Protection で検出される脆弱性
 
@@ -29,8 +29,6 @@ ms.locfileid: "59488236"
 ## <a name="multi-factor-authentication-registration-not-configured"></a>未構成の多要素認証登録
 
 この脆弱性は、組織内の Azure Multi-Factor Authentication のデプロイを評価するのに役立ちます。
-
-MFA に登録されていないユーザーの数を表示するには、脆弱性をクリックします。すると、Identity Secure Score 内の統計情報にリダイレクトされます。
 
 Azure Multi-Factor Authentication は、ユーザー認証に対して第 2 のセキュリティ層を提供します。 シンプルなサインイン プロセスを好むユーザーのニーズに応えながら、データやアプリケーションへのアクセスを効果的に保護することが可能です。 Azure Multi-Factor Authentication には、次のような使いやすい検証オプションが用意されています。
 

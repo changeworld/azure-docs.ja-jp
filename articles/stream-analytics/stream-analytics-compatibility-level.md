@@ -5,13 +5,13 @@ author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 04/12/2019
-ms.openlocfilehash: e4bbfdbcf7a295089570d4c8b77b07fd7270b3fd
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.date: 5/2/2019
+ms.openlocfilehash: c1b2875e6899d2301a4c4b564882214dc7bc4981
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59998262"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65205454"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Azure Stream Analytics ジョブの互換性レベル
 
@@ -25,8 +25,8 @@ ms.locfileid: "59998262"
 
 Azure Stream Analytics では現在、次の 3 つの互換性レベルがサポートされています。
 
-* 1.0 - 既定のレベル
-* 1.1 - 現在のリリースの動作
+* 1.0 - 以前の動作
+* 1.1 - 既定の動作
 * 1.2 (プレビュー) - 評価中の最新の改善による最新の動作
 
 元の互換性レベル 1.0 は、数年前の Azure Stream Analytics の一般公開時に導入されました。
@@ -49,7 +49,7 @@ Azure portal でジョブの互換性レベルを更新するには:
 
 互換性レベルを更新すると、T-SQL コンパイラが、選択された互換性レベルに対応する構文を使用してジョブを検証します。
 
-## <a name="compatibility-level-12"></a>互換性レベル 1.2
+## <a name="compatibility-level-12-preview"></a>互換性レベル 1.2 (プレビュー)
 
 互換性レベル 1.2 では、以下の大きな変更が導入されました。
 

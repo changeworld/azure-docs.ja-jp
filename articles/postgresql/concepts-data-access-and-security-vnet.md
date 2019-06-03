@@ -1,21 +1,21 @@
 ---
-title: Azure Database for PostgreSQL サーバーの vnet サービス エンドポイントの概要
-description: Azure Database for PostgreSQL サーバーで VNET サービス エンドポイントがどのように機能するかについて説明します。
+title: Azure Database for PostgreSQL - Single Server での仮想ネットワーク (VNet) サービス エンドポイントの概要
+description: Azure Database for PostgreSQL - Single Server で仮想ネットワーク (VNet) サービス エンドポイントがどのように機能するかについて説明します。
 author: bolzmj
 ms.author: mbolz
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 08/20/2018
-ms.openlocfilehash: c6549ad170a0fc3b4387d5bc5163ca0548b92119
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.date: 5/6/2019
+ms.openlocfilehash: c873abcdf3c64f8357c584c8e24809270946bf74
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60009193"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65073473"
 ---
-# <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-postgresql"></a>Azure Database for PostgreSQL の仮想ネットワーク サービス エンドポイントとルールを使用する
+# <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server の仮想ネットワーク サービス エンドポイントと規則を使用する
 
-*仮想ネットワーク ルール*は、Azure Database for PostgreSQL サーバーが仮想ネットワーク内の特定のサブネットから送信される通信を許可するかどうかを制御する 1 つのファイアウォール セキュリティ機能です。 この記事では、仮想ネットワーク規則機能が、場合によっては Azure Database for PostgreSQL サーバーへの通信を安全に許可するための最善の選択になる理由を説明します。
+*仮想ネットワーク規則*は、Azure Database for PostgreSQL サーバーが仮想ネットワーク内の特定のサブネットから送信される通信を許可するかどうかを制御する 1 つのファイアウォール セキュリティ機能です。 この記事では、仮想ネットワーク規則機能が、場合によっては Azure Database for PostgreSQL サーバーへの通信を安全に許可するための最善の選択になる理由を説明します。
 
 仮想ネットワーク規則を作成するには、まず、[仮想ネットワーク][vm-virtual-network-overview] (VNet) と参照する規則の[仮想ネットワーク サービス エンドポイント][vm-virtual-network-service-endpoints-overview-649d]が必要です。 次の図は、仮想ネットワーク サービス エンドポイントが Azure Database for PostgreSQL でどのように動作するかを示しています。
 
@@ -33,9 +33,9 @@ ms.locfileid: "60009193"
 
 **サブネット:** 仮想ネットワークには**サブネット**が含まれます。 保持している任意の Azure 仮想マシン (VM) がサブネットに割り当てられます。 1 つのサブネットには、複数の VM や他のコンピューティング ノードが含まれる場合があります。 お使いの仮想ネットワークの外部にあるコンピューティング ノードは、アクセスを許可するようにセキュリティを構成しない限り、お使いの仮想ネットワークにはアクセスできません。
 
-**Virtual Network サービス エンドポイント:**[Virtual Network サービス エンドポイント][vm-virtual-network-service-endpoints-overview-649d]は、プロパティ値に 1 つ以上の正式な Azure サービスの種類名が含まれるサブネットです。 この記事では、"SQL Database" という名前の Azure サービスを参照する **Microsoft.Sql** という種類名に注目します。 このサービス タグは、Azure Database for PostgreSQL サービスと MySQL サービスにも適用されます。 VNet サービス エンドポイントに **Microsoft.Sql** サービス タグを適用すると、サブネットの Azure SQL Database、Azure Database for PostgreSQL、および Azure Database for MySQL のすべてのサーバーに対してサービス エンドポイント トラフィックが構成されることに注意することが重要です。 
+**仮想ネットワーク サービス エンドポイント:**[仮想ネットワーク サービス エンドポイント][vm-virtual-network-service-endpoints-overview-649d]は、プロパティ値に 1 つ以上の正式な Azure サービスの種類名が含まれるサブネットです。 この記事では、"SQL Database" という名前の Azure サービスを参照する **Microsoft.Sql** という種類名に注目します。 このサービス タグは、Azure Database for PostgreSQL サービスと MySQL サービスにも適用されます。 VNet サービス エンドポイントに **Microsoft.Sql** サービス タグを適用すると、サブネットの Azure SQL Database、Azure Database for PostgreSQL、および Azure Database for MySQL のすべてのサーバーに対してサービス エンドポイント トラフィックが構成されることに注意することが重要です。 
 
-**仮想ネットワーク ルール:** Azure Database for PostgreSQL サーバーの仮想ネットワーク規則は、Azure Database for PostgreSQL サーバーのアクセス制御リスト (ACL) に記載されているサブネットです。 Azure Database for PostgreSQL の ACL 内に記載するためには、サブネットに **Microsoft.Sql** という種類名が含まれている必要があります。
+**仮想ネットワーク規則:** Azure Database for PostgreSQL サーバーの仮想ネットワーク規則は、Azure Database for PostgreSQL サーバーのアクセス制御リスト (ACL) に記載されているサブネットです。 Azure Database for PostgreSQL の ACL 内に記載するためには、サブネットに **Microsoft.Sql** という種類名が含まれている必要があります。
 
 仮想ネットワーク規則は、サブネット上にあるどのノードからの通信も許可するように、Azure Database for PostgreSQL サーバーに指示します。
 

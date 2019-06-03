@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/12/2018
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 28df8f59944ccac9d731e15a558d864beed2f3ae
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 89ada41c5f3c9cf1ca7a2ac707363f57080c361d
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56817696"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64869981"
 ---
 # <a name="configure-expressroute-global-reach-by-using-the-azure-cli"></a>Azure CLI を使用して ExpressRoute Global Reach を構成する
 
@@ -48,13 +48,13 @@ az account set --subscription <your subscription ID>
 
 ### <a name="identify-your-expressroute-circuits-for-configuration"></a>構成のために ExpressRoute 回線を特定する
 
-任意の 2 つの ExpressRoute 回線間で ExpressRoute Global Reach を有効にすることができるのは、それらがサポートされている国に配置され、かつ異なるピアリングの場所で作成されている場合だけです。 サブスクリプションで両方の回線を所有している場合は、この記事の後半で説明されているように、どちらかの回線を選択して構成を実行できます。 2 つの回線が異なる Azure サブスクリプションにある場合、一方の Azure サブスクリプションで構成コマンドを実行するときに、もう一方の Azure サブスクリプションからの承認が必要であり、承認キーを渡す必要があります。
+任意の 2 つの ExpressRoute サーキットが、サポートされている国/地域内にあり、異なるピアリング場所で作成されていれば、それらの間で ExpressRoute Global Reach を有効にできます。 サブスクリプションで両方の回線を所有している場合は、この記事の後半で説明されているように、どちらかの回線を選択して構成を実行できます。 2 つの回線が異なる Azure サブスクリプションにある場合、一方の Azure サブスクリプションで構成コマンドを実行するときに、もう一方の Azure サブスクリプションからの承認が必要であり、承認キーを渡す必要があります。
 
 ## <a name="enable-connectivity-between-your-on-premises-networks"></a>オンプレミス ネットワーク間の接続を有効にする
 
 接続を有効にするためにコマンドを実行する場合、パラメーターの値に次の要件があることに注意してください。
 
-* *peer-circuit* は、完全なリソース ID にする必要があります。 例: 
+* *peer-circuit* は、完全なリソース ID にする必要があります。 例:
 
   > /subscriptions/{自分のサブスクリプション ID}/resourceGroups/{自分のリソース グループ}/providers/Microsoft.Network/expressRouteCircuits/{自分の回線名}
 

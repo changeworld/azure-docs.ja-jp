@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 05/01/2019
-ms.openlocfilehash: 131b86fec5fb51c6ff6f29a8e0beed86145a24b7
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.date: 05/08/2019
+ms.openlocfilehash: 266e4a16a69d7200fbe8b58bc20339b6979db877
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65136640"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65415917"
 ---
 # <a name="tutorial-migrate-sql-server-to-a-single-database-or-pooled-database-in-azure-sql-database-online-using-dms"></a>チュートリアル:DMS を使用して SQL Server を Azure SQL Database の単一データベースまたはプールされたデータベースにオンラインで移行する
 
@@ -54,22 +54,22 @@ Azure Database Migration Service を使用して、最短のダウンタイム�
     > SQL Server Integration Services (SSIS) を使用していて、SSIS プロジェクト/パッケージ (SSISDB) のカタログ データベースを SQL Server から Azure SQL Database に移行する場合は、SSIS を Azure Data Factory (ADF) にプロビジョニングしたときに移行先 SSISDB が自動的に作成および管理されます。 SSIS パッケージの移行の詳細については、記事「[SQL Server Integration Services パッケージを Azure に移行する](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages)」を参照してください。
 
 - [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) (DMA) v3.3 以降をダウンロードしてインストールします。
-- Azure Resource Manager デプロイ モデルを使用して、Azure Database Migration Service 用の Azure 仮想ネットワーク (VNET) を作成します。これで、[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) または [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) を使用したオンプレミスのソース サーバーとのサイト間接続を確立します。
+- Azure Resource Manager デプロイ モデルを使用して、Azure Database Migration Service 用の Azure 仮想ネットワーク (VNet) を作成します。これで、[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) または [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) を使用したオンプレミスのソース サーバーとのサイト間接続を確立します。 VNet の作成方法の詳細については、[Virtual Network のドキュメント](https://docs.microsoft.com/azure/virtual-network/)、特に詳細な手順を提供するクイックスタートの記事を参照してください。
 
     > [!NOTE]
-    > VNET のセットアップ中、Microsoft へのネットワーク ピアリングに ExpressRoute を使用した場合、サービスのプロビジョニング先となるサブネットに、次のサービス [エンドポイント](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)を追加してください。
+    > VNet のセットアップ中、Microsoft へのネットワーク ピアリングに ExpressRoute を使用する場合は、サービスのプロビジョニング先となるサブネットに、次のサービス [エンドポイント](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)を追加してください。
     > - ターゲット データベース エンドポイント (SQL エンドポイント、Cosmos DB エンドポイントなど)
     > - ストレージ エンドポイント
     > - サービス バス エンドポイント
     >
     > Azure Database Migration Service にはインターネット接続がないため、この構成が必要となります。
 
-- VNET のネットワーク セキュリティ グループの規則によって、Azure Database Migration Service への以下のインバウンド通信ポートがブロックされないことを確認します: 443、53、9354、445、12000。 Azure VNET NSG トラフィックのフィルター処理の詳細については、「[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルタリング](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)」を参照してください。
+- VNet ネットワーク セキュリティ グループの規則によって、Azure Database Migration Service への次のインバウンド通信ポートがブロックされないことを確認します:443、53、9354、445、12000。 Azure VNet NSG トラフィックのフィルター処理の詳細については、[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルター処理](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)に関する記事を参照してください。
 - [データベース エンジン アクセスのために Windows ファイアウォール](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)を構成します。
 - Azure Database Migration Service がソースの SQL Server にアクセスできるように Windows ファイアウォールを開きます。既定では TCP ポート 1433 が使用されます。
 - 動的ポートを使用して複数の名前付き SQL Server インスタンスを実行している場合は、SQL Browser サービスを有効にし、ファイアウォール経由の UDP ポート 1434 へのアクセスを許可することをお勧めします。これにより、Azure Database Migration Service はソース サーバー上の名前付きインスタンスに接続できるようになります。
 - ソース データベースの前でファイアウォール アプライアンスを使用する場合は、Azure Database Migration Service が移行のためにソース データベースにアクセスできるように、ファイアウォール規則を追加することが必要な場合があります。
-- Azure SQL Database サーバーのサーバー レベルの[ファイアウォール規則](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)を作成して、Azure Database Migration Service がターゲット データベースにアクセスできるようにします。 Azure Database Migration Service に使用される VNET のサブネット範囲を指定します。
+- Azure SQL Database サーバーのサーバー レベルの[ファイアウォール規則](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)を作成して、Azure Database Migration Service がターゲット データベースにアクセスできるようにします。 Azure Database Migration Service に使用される VNet のサブネット範囲を指定します。
 - ソースの SQL Server インスタンスへの接続に使用される資格情報に、[CONTROL SERVER](https://docs.microsoft.com/sql/t-sql/statements/grant-server-permissions-transact-sql) アクセス許可を含めます。
 - ターゲットの Azure SQL データベース インスタンスへの接続に使用される資格情報に、ターゲットの Azure SQL データベースに対する CONTROL DATABASE アクセス許可を含めます。
 - ソース SQL Server のバージョンは SQL Server 2005 以降である必要があります。 SQL Server インスタンスが実行されているバージョンを確認する方法については、「[バージョン、エディション、および SQL Server の更新プログラム レベルとそのコンポーネントを確認する方法](https://support.microsoft.com/help/321185/how-to-determine-the-version-edition-and-update-level-of-sql-server-an)」の記事を参照してください。
@@ -86,6 +86,7 @@ Azure Database Migration Service を使用して、最短のダウンタイム�
     FROM sys.tables WHERE type = 'U' and is_ms_shipped = 0 AND
     OBJECTPROPERTY(OBJECT_ID, 'TableHasPrimaryKey') = 0;
      ```
+
     >結果に 'is_tracked_by_cdc' が '0' のテーブルが 1 つ以上表示される場合は、「[変更データ キャプチャの有効化と無効化 (SQL Server)](https://docs.microsoft.com/sql/relational-databases/track-changes/enable-and-disable-change-data-capture-sql-server?view=sql-server-2017)」の記事で説明されているプロセスを使用して、データベースと特定のテーブルの変更キャプチャを有効にします。
 
 - ソース SQL Server のディストリビューター ロールを構成します。
@@ -99,6 +100,7 @@ Azure Database Migration Service を使用して、最短のダウンタイム�
     EXEC @installed = sys.sp_MS_replication_installed;
     SELECT @installed as installed;
     ```
+
     結果としてエラー メッセージが返されて、レプリケーション コンポーネントをインストールするよう提案された場合は、[SQL Server レプリケーションのインストール](https://docs.microsoft.com/sql/database-engine/install-windows/install-sql-server-replication?view=sql-server-2017)の記事のプロセスを使用して SQL Server レプリケーション コンポーネントをインストールします。
 
     レプリケーションが既にインストールされている場合は、次の T-SQL コマンドを使用して、ソース SQL Server にディストリビューション ロールが構成されているかどうかを確認します。
@@ -118,6 +120,7 @@ Azure Database Migration Service を使用して、最短のダウンタイム�
     select * from sys.triggers
     DISABLE TRIGGER (Transact-SQL)
     ```
+
     詳細については、記事「[DISABLE TRIGGER (Transact-SQL) ](https://docs.microsoft.com/sql/t-sql/statements/disable-trigger-transact-sql?view=sql-server-2017)」を参照してください。 
 
 ## <a name="assess-your-on-premises-database"></a>オンプレミス データベースを評価する
@@ -160,6 +163,7 @@ Azure Database Migration Service を使用して、最短のダウンタイム�
 
 > [!NOTE]
 > DMA で移行プロジェクトを作成する前に、Azure SQL データベースが前提要件での説明に従って既にプロビジョニングされていることを確認してください。 このチュートリアルでは、Azure SQL Database の名前を **AdventureWorksAzure** としていますが、任意の名前を指定することもできます。
+
 > [!IMPORTANT]
 > SSIS を使用する場合、現在 DMA ではソース SSISDB の移行はサポートされていませんが、Azure SQL Database によってホストされている移行先 SSISDB に SSIS プロジェクト/パッケージを再デプロイすることはできます。 SSIS パッケージの移行の詳細については、記事「[SQL Server Integration Services パッケージを Azure に移行する](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages)」を参照してください。
 
@@ -208,7 +212,7 @@ Azure Database Migration Service を使用して、最短のダウンタイム�
 
 3. 移行を検索し、**Microsoft.DataMigration** の右側にある **[登録]** を選択します。
 
-    ![リソース プロバイダーの登録](media/tutorial-sql-server-to-azure-sql-online/portal-register-resource-provider.png)    
+    ![リソース プロバイダーの登録](media/tutorial-sql-server-to-azure-sql-online/portal-register-resource-provider.png)
 
 ## <a name="create-an-instance"></a>インスタンスを作成する
 
@@ -224,11 +228,11 @@ Azure Database Migration Service を使用して、最短のダウンタイム�
 
 4. Azure Database Migration Service のインスタンスを作成する場所を選択します。 
 
-5. 既存の仮想ネットワーク (VNET) を選択するか、新しい VNET を作成します。
+5. 既存の VNet を選択するか、新しいものを作成します。
 
-    この VNET が Azure Database Migration Service に、ソース SQL Server とターゲット Azure SQL データベース インスタンスへのアクセスを提供します。
+    この VNet が Azure Database Migration Service に、ソース SQL Server とターゲット Azure SQL データベース インスタンスへのアクセスを提供します。
 
-    Azure portal で VNET を作成する方法の詳細については、[Azure portal を使用した仮想ネットワークの作成](https://aka.ms/DMSVnet)に関する記事を参照してください。
+    Azure portal で VNet を作成する方法の詳細については、「[Azure portal を使用した仮想ネットワークの作成](https://aka.ms/DMSVnet)」を参照してください。
 
 6. 価格レベルを選択します。
 

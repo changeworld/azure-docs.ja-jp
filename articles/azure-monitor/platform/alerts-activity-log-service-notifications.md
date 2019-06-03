@@ -7,12 +7,12 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 06/09/2018
 ms.author: shtabriz
-ms.openlocfilehash: 6b617ff99b9183c6b5008292dd3e5d11f2e69da9
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 3b3c967cd43745a4ae87fefc578282f5427a5f79
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55092232"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65405693"
 ---
 # <a name="create-activity-log-alerts-on-service-notifications"></a>サービス通知のアクティビティ ログ アラートを作成する
 ## <a name="overview"></a>概要
@@ -36,6 +36,10 @@ Azure でサービス正常性通知を Azure サブスクリプションに送�
 アクション グループの詳細については、[アクション グループの作成および管理](../../azure-monitor/platform/action-groups.md)に関するページを参照してください。
 
 Azure Resource Manager テンプレートを使用したサービス正常性通知アラートの構成方法の詳細については、[Resource Manager テンプレート](alerts-activity-log.md)に関するページを参照してください。
+
+### <a name="watch-a-video-on-setting-up-your-first-azure-service-health-alert"></a>初めての Azure Service Health アラートの設定に関するビデオを見る
+
+>[!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2OaXt]
 
 ## <a name="alert-and-new-action-group-using-azure-portal"></a>Azure portal を使用するアラートと新しいアクション グループ
 1. [ポータル](https://portal.azure.com)で、**[サービス正常性]** を選択します。
@@ -195,6 +199,8 @@ Azure Resource Manager テンプレートを使用したサービス正常性通
 * 無効または有効にしてそのアラートの通知受信を一時的に停止または再開する。
 
 ## <a name="next-steps"></a>次の手順
+- [Azure Service Health アラートの設定に関するベスト プラクティス](https://www.microsoft.com/en-us/videoplayer/embed/RE2OtUa)を学習します。
+- [Azure Service Health のモバイル プッシュ通知を設定](https://www.microsoft.com/en-us/videoplayer/embed/RE2OtUw)する方法について学習します。
 - [既存の問題管理システム用の webhook 通知を構成する](../../service-health/service-health-alert-webhook-guide.md)方法について学習します。
 - [サービス正常性の通知](../../azure-monitor/platform/service-notifications.md)について学習します。
 - [通知のレート制限](../../azure-monitor/platform/alerts-rate-limiting.md)について学習します。

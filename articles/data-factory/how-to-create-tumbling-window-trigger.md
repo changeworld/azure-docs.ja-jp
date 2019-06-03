@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 12/14/2018
 ms.author: shlo
 ms.openlocfilehash: 6fbdee71ab1123c258a5191a78e38f51eb41cbab
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57433231"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66152920"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>タンブリング ウィンドウでパイプラインを実行するトリガーの作成
 この記事では、タンブリング ウィンドウ トリガーを作成、起動、および監視する手順について説明します。 トリガーとサポートされる種類の全般的な情報については、[パイプラインの実行とトリガー](concepts-pipeline-execution-triggers.md)に関する記事をご覧ください。
@@ -74,7 +74,7 @@ ms.locfileid: "57433231"
 
 次の表に、タンブリング ウィンドウ トリガーの繰り返しとスケジュール設定に関連する主な JSON 要素の概要を示します。
 
-| JSON 要素 | 説明 | type | 使用できる値 | 必須 |
+| JSON 要素 | 説明 | Type | 使用できる値 | 必須 |
 |:--- |:--- |:--- |:--- |:--- |
 | **type** | トリガーの種類。 種類は固定値の "TumblingWindowTrigger" です。 | String | "TumblingWindowTrigger" | はい |
 | **runtimeState** | トリガー実行時の現在の状態。<br/>**メモ**:この要素は \<readOnly> です。 | String | "Started"、"Stopped"、"Disabled" | はい |

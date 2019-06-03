@@ -1,25 +1,18 @@
 ---
-title: オファーの発行 | Microsoft Docs
+title: プランの発行 | Azure Marketplace
 description: 指定したオファーを発行するための API。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: reference
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: cb1293a771a137f4df7e36a2b412f68b384f16ef
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.author: pabutler
+ms.openlocfilehash: 117a4e5e238e754524ff813ce25ebc1105e2153c
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48808544"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64934971"
 ---
 <a name="publish-an-offer"></a>プランの発行
 ================
@@ -31,18 +24,18 @@ ms.locfileid: "48808544"
 <a name="uri-parameters"></a>URI パラメーター
 --------------
 
-|  **名前**      |    **説明**                               |  **データの種類** |
+|  **Name**      |    **説明**                               |  **データの種類** |
 |  ------------- |  ------------------------------------            |   -----------  |
 |  publisherId   | パブリッシャー ID。たとえば、`contoso`      |   String       |
 |  offerId       | オファー ID                                 |   String       |
-|  api-version   | API の最新バージョン                        |   日付         |
+|  api-version   | API の最新バージョン                        |   Date         |
 |  |  |
 
 
 <a name="header"></a>ヘッダー
 ------
 
-|  **名前**        |    **値**          |
+|  **Name**        |    **値**          |
 |  --------        |    ---------          |
 |  Content-Type    | `application/json`    |
 |  Authorization   |  `Bearer YOUR_TOKEN`  |
@@ -65,7 +58,7 @@ ms.locfileid: "48808544"
 
 ### <a name="request-body-properties"></a>要求本文のプロパティ
 
-|  **名前**               |   **説明**                                                                                 |
+|  **Name**               |   **説明**                                                                                 |
 |  ---------------------  | ------------------------------------------------------------------------------------------------- |
 |  notification-emails    | 発行操作の進捗状況を通知するメール アドレスの、コンマ区切りの一覧です。 |
 |  |  |
@@ -78,7 +71,7 @@ ms.locfileid: "48808544"
 
 ### <a name="response-header"></a>応答ヘッダー
 
-|  **名前**             |    **値**                                                                 |
+|  **Name**             |    **値**                                                                 |
 |  -------------------- | ---------------------------------------------------------------------------- |
 | Operation-Location    | 操作の現在の状態を確認するための、クエリ可能な URL。    |
 |  |  |

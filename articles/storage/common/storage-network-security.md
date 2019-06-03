@@ -9,12 +9,12 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 0fa252fa2cdab7bb3790153f2d118fea13739852
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 56a25c95d9bc01078b3eff3729a8a693ee3cf510
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65153507"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65520255"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Azure Storage ファイアウォールおよび仮想ネットワークを構成する
 
@@ -350,14 +350,14 @@ IP ネットワーク ルールでオンプレミスのネットワークから�
 
 |Service|リソース プロバイダー名|目的|
 |:------|:---------------------|:------|
-|Azure Backup|Microsoft.Backup|IAAS 仮想マシンの管理対象外のディスクのバックアップとリストアを実行します。 (マネージド ディスクの場合は必須ではありません)。 [詳細情報](/azure/backup/backup-introduction-to-azure-backup)。|
+|Azure Backup|Microsoft.RecoveryServices|IAAS 仮想マシンの管理対象外のディスクのバックアップとリストアを実行します。 (マネージド ディスクの場合は必須ではありません)。 [詳細情報](/azure/backup/backup-introduction-to-azure-backup)。|
 |Azure Data Box|Microsoft.DataBox|Data Box を使用して Azure にデータをインポートできるようにします。 [詳細情報](/azure/databox/data-box-overview)。|
 |Azure DevTest Labs|Microsoft.DevTestLab|カスタム イメージの作成とアーティファクトのインストール [詳細情報](/azure/devtest-lab/devtest-lab-overview)。|
 |Azure Event Grid|Microsoft.EventGrid|Blob Storage のイベント発行を有効にし、ストレージ キューへの発行を Event Grid に許可します。 [Blob Storage イベント](/azure/event-grid/event-sources)と[キューへの発行](/azure/event-grid/event-handlers)について確認してください。|
 |Azure Event Hubs|Microsoft.EventHub|Event Hubs Capture を使用したアーカイブ データのキャプチャ [詳細情報](/azure/event-hubs/event-hubs-capture-overview)|
 |Azure HDInsight|Microsoft.HDInsight|新しい HDInsight クラスターのための既定のファイル システムの初期コンテンツをプロビジョニングします。 [詳細情報](https://azure.microsoft.com/blog/enhance-hdinsight-security-with-service-endpoints/)。|
 |Azure Monitor|Microsoft.Insights|セキュリティで保護されたストレージ アカウントに監視データを書き込めるようにします。[詳細情報](/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security)。|
-|Azure のネットワーク|Microsoft.Networking|ネットワーク トラフィック ログの保存および分析 [詳細情報](/azure/network-watcher/network-watcher-packet-capture-overview)。|
+|Azure のネットワーク|Microsoft.Network|ネットワーク トラフィック ログの保存および分析 [詳細情報](/azure/network-watcher/network-watcher-packet-capture-overview)。|
 |Azure Site Recovery|Microsoft.SiteRecovery |Azure IaaS 仮想マシンのレプリケーションを有効にすることで、ディザスター リカバリーを構成します。 これは、ファイアウォールが有効なキャッシュ ストレージ アカウントまたはソース ストレージ アカウントまたはターゲット ストレージ アカウントを使用している場合に必要です。  [詳細情報](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication)。|
 |Azure SQL Data Warehouse|Microsoft.Sql|PolyBase を使用した特定の SQL データベース インスタンスからのインポートおよびエクスポート シナリオを許可します。 [詳細情報](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview)。|
 

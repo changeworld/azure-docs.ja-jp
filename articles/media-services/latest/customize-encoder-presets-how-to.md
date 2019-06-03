@@ -10,14 +10,14 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: article
 ms.custom: seodec18
-ms.date: 03/11/2019
+ms.date: 05/03/2019
 ms.author: juliako
-ms.openlocfilehash: ed2ae50aa9d7a26ed6e0569264ee981f7be35525
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 2167a74dc81bdbb2562211cf5c0195a755941d9d
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58754554"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65148331"
 ---
 # <a name="how-to-encode-with-a-custom-transform---net"></a>カスタム変換を使用してエンコードする方法 - .NET
 
@@ -32,7 +32,7 @@ Azure Media Services を使用してエンコードする場合、[ファイル�
 
 ## <a name="prerequisites"></a>前提条件 
 
-[Media Services アカウントを作成する](create-account-cli-how-to.md) <br/>リソース グループ名と Media Services アカウント名を覚えておいてください。 
+[Media Services アカウントを作成する](create-account-cli-how-to.md)
 
 ## <a name="download-the-sample"></a>サンプルのダウンロード
 

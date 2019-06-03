@@ -71,7 +71,7 @@
     - name: Python のサンプル
       href: sql-api-python-samples.md
     - name: PowerShell
-      href: powershell-samples.md
+      href: powershell-samples-sql.md
     - name: Azure CLI
       href: cli-samples.md
     - name: Azure Resource Manager
@@ -163,7 +163,7 @@
         - name: Azure Functions をトリガーする
           displayName: change feed
           href: change-feed-functions.md
-    - name: Apache Spark による分析
+    - name: Apache Spark による組み込みの分析
       href: spark-api-introduction.md
     - name: サーバー側プログラミング
       items:
@@ -210,12 +210,16 @@
         - name: ロールベースのアクセス制御
           displayName: rbac
           href: role-based-access-control.md
+        - name: セキュリティ属性
+          href: cosmos-db-security-attributes.md
     - name: エンタープライズ対応
       items:
         - name: オンラインのバックアップとオンデマンドの復元
           href: online-backup-and-restore.md
         - name: コンプライアンス
           href: compliance.md
+    - name: リソース制限
+      href: concepts-limits.md
 - name: Cassandra、MongoDB、およびその他の API
   expanded: true
   items:
@@ -275,6 +279,8 @@
                   href: cassandra-spark-table-copy-ops.md
             - name: Resource Manager テンプレートを使用して管理する
               href: manage-cassandra-with-resource-manager.md
+            - name: PowerShell を使用して管理する
+              href: powershell-samples-cassandra.md
     - name: MongoDB API
       items:
         - name: はじめに
@@ -354,6 +360,8 @@
               displayName: custom commands
             - name: Resource Manager テンプレートを使用して管理する
               href: manage-mongodb-with-resource-manager.md
+            - name: PowerShell を使用して管理する
+              href: powershell-samples-mongodb.md
     - name: Gremlin API
       displayName: 'graph, graph database'
       items:
@@ -392,6 +400,8 @@
               maintainContext: true
             - name: Resource Manager テンプレートを使用して管理する
               href: manage-gremlin-with-resource-manager.md
+            - name: PowerShell を使用して管理する
+              href: powershell-samples-gremlin.md
     - name: テーブル API
       items:
         - name: はじめに
@@ -444,6 +454,8 @@
               href: table-storage-design-guide.md
             - name: Resource Manager テンプレートを使用して管理する
               href: manage-table-with-resource-manager.md
+            - name: PowerShell を使用して管理する
+              href: powershell-samples-table.md
         - name: リファレンス
           items:
             - name: .NET
@@ -512,11 +524,15 @@
           href: data-explorer.md
         - name: インデックス作成ポリシーの管理
           href: how-to-manage-indexing-policy.md
+        - name: 一意のキーの定義
+          href: how-to-define-unique-keys.md
         - name: SQL サブクエリの例
           displayName: 'subquery, exists'
           href: how-to-sql-subquery.md
     - name: 変更フィード
       items:
+        - name: Azure Cosmos DB トリガーのログ
+          href: how-to-configure-cosmos-db-trigger-logs.md
         - name: 複数の Azure Cosmos DB トリガー
           href: how-to-create-multiple-cosmos-db-triggers.md
         - name: Azure Cosmos DB トリガーのトラブルシューティング

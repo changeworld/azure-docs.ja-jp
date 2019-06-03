@@ -5,18 +5,18 @@ services: billing
 author: dhirajgandhi
 manager: dhgandhi
 ms.author: banders
-ms.date: 03/12/2018
+ms.date: 03/12/2019
 ms.service: billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: ecbdf182fe2da7413e6d27ef5775dbaa7ad60806
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 6bf61e2afd96e3923938ac4f815d34ae08f7c618
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59270185"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64694219"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>Azure アカウントにパートナー ID をリンクする
 
@@ -57,29 +57,29 @@ ms.locfileid: "59270185"
 1. [AzureRM.ManagementPartner](https://www.powershellgallery.com/packages/AzureRM.ManagementPartner) PowerShell モジュールをインストールします。
 
 2. ユーザー アカウントまたはサービス プリンシパルで顧客のテナントにサインインします。 詳細については、[PowerShell を使用したサインイン](https://docs.microsoft.com/powershell/azure/authenticate-azureps)に関するページを参照してください。
- 
+
    ```azurepowershell-interactive
-    C:\> Connect-AzAccount -TenantId XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX 
+    C:\> Connect-AzAccount -TenantId XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
    ```
 
 3. 新しいパートナー ID にリンクします。 パートナー ID は、貴社の組織の [Microsoft Partner Network](https://partner.microsoft.com/) ID です。
 
     ```azurepowershell-interactive
-    C:\> new-AzureRmManagementPartner -PartnerId 12345 
+    C:\> new-AzManagementPartner -PartnerId 12345
     ```
 
 #### <a name="get-the-linked-partner-id"></a>リンク済みのパートナー ID を取得する
 ```azurepowershell-interactive
-C:\> get-AzureRmManagementPartner 
+C:\> get-AzManagementPartner
 ```
 
 #### <a name="update-the-linked-partner-id"></a>リンク済みのパートナー ID を更新する
 ```azurepowershell-interactive
-C:\> Update-AzureRmManagementPartner -PartnerId 12345 
+C:\> Update-AzManagementPartner -PartnerId 12345
 ```
 #### <a name="delete-the-linked-partner-id"></a>リンク済みのパートナー ID を削除する
 ```azurepowershell-interactive
-C:\> remove-AzureRmManagementPartner -PartnerId 12345 
+C:\> remove-AzManagementPartner -PartnerId 12345
 ```
 
 ### <a name="use-the-azure-cli-to-link-to-a-new-partner-id"></a>Azure CLI を使用して新しいパートナー ID にリンクする
@@ -87,13 +87,13 @@ C:\> remove-AzureRmManagementPartner -PartnerId 12345
 
     ```azurecli-interactive
     C:\ az extension add --name managementpartner
-    ``` 
+    ```
 
 2. ユーザー アカウントまたはサービス プリンシパルで顧客のテナントにサインインします。 詳細については、[Azure CLI を使用したサインイン](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest)に関するページを参照してください。
 
     ```azurecli-interactive
     C:\ az login --tenant <tenant>
-    ``` 
+    ```
 
 3. 新しいパートナー ID にリンクします。 パートナー ID は、貴社の組織の [Microsoft Partner Network](https://partner.microsoft.com/) ID です。
 
@@ -104,17 +104,17 @@ C:\> remove-AzureRmManagementPartner -PartnerId 12345
 #### <a name="get-the-linked-partner-id"></a>リンク済みのパートナー ID を取得する
 ```azurecli-interactive
 C:\ az managementpartner show
-``` 
+```
 
 #### <a name="update-the-linked-partner-id"></a>リンク済みのパートナー ID を更新する
 ```azurecli-interactive
 C:\ az managementpartner update --partner-id 12345
-``` 
+```
 
 #### <a name="delete-the-linked-partner-id"></a>リンク済みのパートナー ID を削除する
 ```azurecli-interactive
 C:\ az managementpartner delete --partner-id 12345
-``` 
+```
 
 ## <a name="next-steps"></a>次の手順
 
@@ -136,7 +136,7 @@ C:\ az managementpartner delete --partner-id 12345
 
 **他のパートナーまたは顧客がパートナー ID へのリンクを編集または削除できますか。**
 
-リンクはユーザー アカウント レベルで関連付けられます。 パートナー ID へのリンクは、貴社のみが編集または削除できます。 顧客と他のパートナーは、パートナー ID へのリンクを変更できません。 
+リンクはユーザー アカウント レベルで関連付けられます。 パートナー ID へのリンクは、貴社のみが編集または削除できます。 顧客と他のパートナーは、パートナー ID へのリンクを変更できません。
 
 
 **会社に複数の MPN ID がある場合は、どれを使用すべきですか。**
@@ -158,4 +158,3 @@ C:\ az managementpartner delete --partner-id 12345
 **パートナー ID のリンクは、Azure Stack で動作しますか。**
 
 はい、Azure Stack に対してパートナー ID をリンクできます。
-

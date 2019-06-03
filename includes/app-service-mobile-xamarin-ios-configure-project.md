@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 08/23/2018
 ms.author: crdun
 ms.openlocfilehash: a69df0cc9ea14a2c9fa172c77663afb1d6861f9b
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50133753"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66140139"
 ---
 #### <a name="configure-the-ios-project-in-xamarin-studio"></a>Xamarin Studio での iOS プロジェクトの構成
 1. Xamarin.Studio で **Info.plist** を開き、新しい App ID で前に作成した Bundle ID で **[Bundle Identifier (バンドル識別子)]** を更新します。

@@ -4,14 +4,14 @@ description: Azure Cosmos DB が Active Directory 統合 (RBAC) を使用して�
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/06/2019
+ms.date: 05/23/2019
 ms.author: mjbrown
-ms.openlocfilehash: e43341e59e807fdc20033d909beadb9d582149b5
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 971d2ec96906a3309963495dd1af5d293a71f265
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65080641"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66243511"
 ---
 # <a name="role-based-access-control-in-azure-cosmos-db"></a>Azure Cosmos DB のロールベースのアクセス制御
 

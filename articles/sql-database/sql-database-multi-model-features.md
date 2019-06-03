@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/17/2018
-ms.openlocfilehash: 4351017cc1848e29cca038f82fd96548ae3492e0
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 84efdb0297a2dc69497baee5fb746fb51d02b1b7
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58892468"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64939510"
 ---
 # <a name="multi-model-capabilities-of-azure-sql-database"></a>Azure SQL Database のマルチモデル機能
 
@@ -90,7 +90,7 @@ JSON テキストがある場合、組み込み関数 [JSON_VALUE](https://msdn.
 
 ## <a name="spatial-features"></a>空間機能
 
-空間データは、幾何学的オブジェクトの物理的な場所と形状に関する情報を表します。 これらのオブジェクトは、ポイントの場所や、国、道路、湖などのより複雑なオブジェクトである可能性があります。
+空間データは、幾何学的オブジェクトの物理的な場所と形状に関する情報を表します。 これらのオブジェクトは、ポイントの場所や、国/地域、道路、湖などのより複雑なオブジェクトである可能性があります。
 
 Azure SQL Database では、geometry データ型と geography データ型の 2 つの空間データ型がサポートされています。
 - geometry 型では、ユークリッド (平面) 座標系でデータを表します。

@@ -36,6 +36,8 @@
           items:
             - name: 安全性のガイドラインを読む
               href: data-box-safety.md
+            - name: 追跡とログ記録
+              href: data-box-logs.md
             - name: 要件を確認する
               items:
                 - name: Data Box の場合
@@ -119,6 +121,12 @@
           items:
             - name: Data Box Heavy とは
               href: data-box-heavy-overview.md
+        - name: 概念
+          items:
+            - name: 要件を確認する
+              href: data-box-heavy-system-requirements.md
+            - name: 制限を理解する
+              href: data-box-heavy-limits.md
     - name: リソース
       items:
         - name: Data Box 製品

@@ -5,21 +5,21 @@ services: asc-for-iot
 ms.service: ascforiot
 documentationcenter: na
 author: mlottner
-manager: barbkess
+manager: rkarlin
 editor: ''
 ms.assetid: 2cf6a49b-5d35-491f-abc3-63ec24eb4bc2
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/18/2019
+ms.date: 04/29/2019
 ms.author: mlottner
-ms.openlocfilehash: 49decb2d67c8ff16f9912fea8e8ece1a3bd9feb5
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 7efe32039f926ea9b5be3c24fa967dede72cd081
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58863034"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "65192512"
 ---
 # <a name="introducing-azure-security-center-for-iot"></a>Azure Security Center for IoT の概要
 
@@ -33,7 +33,7 @@ ms.locfileid: "58863034"
 
 ## <a name="protect-iot-and-hybrid-cloud-workloads-against-evolving-cyber-attacks"></a>進化するサイバー攻撃から IoT およびハイブリッド クラウド ワークロードを保護する
 
-モノのインターネットにより、私たちの世界は急速に変化しています。 コネクテッド デバイスやバックエンド システムから分析情報を得ることができ、こうした情報を、組織が経営や事業の実績をこれまでにないレベルに引き上げるのに役立つ、強力なアプリケーションやサービスに作り替えることができます。 ただし、何十億もの新しいデバイスがインターネットに接続され、私たちの日常生活やビジネスに統合されているため、セキュリティ運用チームは、これらの新しい攻撃面をカバーできるよう、セキュリティ戦略を迅速に進化させる必要があります。 他のシステムと同様に、IoT ソリューションをセキュリティで保護するには、実装の各段階での保護が必要です。 
+モノのインターネットにより、私たちの世界は急速に変化しています。 接続されたデバイスやバックエンド システムから分析情報を得ることができ、こうした情報を、組織が経営や事業の実績をこれまでにないレベルに引き上げるのに役立つ、強力なアプリケーションやサービスに作り替えることができます。 ただし、何十億もの新しいデバイスがインターネットに接続され、私たちの日常生活やビジネスに統合されているため、セキュリティ運用チームは、これらの新しい攻撃面をカバーできるよう、セキュリティ戦略を迅速に進化させる必要があります。 他のシステムと同様に、IoT ソリューションをセキュリティで保護するには、実装の各段階での保護が必要です。 
 
 Azure Security Center (ASC) for IoT は、エッジ、オンプレミス、Azure、その他のクラウド上で実行されているワークロードにまたがる統一された可視性と制御、アダプティブな脅威の防止、およびインテリジェントな脅威の検出と対応を提供することによってハイブリッド ワークロード保護を簡素化します。 
 

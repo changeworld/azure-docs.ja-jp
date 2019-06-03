@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 04/12/2019
 ms.author: helohr
-ms.openlocfilehash: 93725fc9d77552d779378d0c14294a5bbb11c926
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 1e53f76f564c0970ac1f291d2125807441500de6
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65146140"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65523311"
 ---
 # <a name="tutorial-create-service-principals-and-role-assignments-with-powershell"></a>チュートリアル:PowerShell を使用してサービス プリンシパルとロールの割り当てを作成する
 
@@ -41,7 +41,6 @@ ms.locfileid: "65146140"
 2. 次のコマンドレットを実行します。値は、実際のセッションに合わせて置き換え、引用符で囲んでください。
 
     ```powershell
-    $myTenantGroupName = "<my-tenant-group-name>"
     $myTenantName = "<my-tenant-name>"
     ```
 
@@ -68,8 +67,7 @@ $svcPrincipalCreds = New-AzureADApplicationPasswordCredential -ObjectId $svcPrin
 
 ```powershell
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
-Set-RdsContext -TenantGroupName $myTenantGroupName
-New-RdsRoleAssignment -RoleDefinitionName "RDS Owner" -ApplicationId $svcPrincipal.AppId -TenantGroupName $myTenantGroupName -TenantName $myTenantName
+New-RdsRoleAssignment -RoleDefinitionName "RDS Owner" -ApplicationId $svcPrincipal.AppId -TenantName $myTenantName
 ```
 
 ## <a name="sign-in-with-the-service-principal"></a>サービス プリンシパルでサインインする
@@ -109,7 +107,7 @@ PowerShell セッションを終了する前に、自分の資格情報を確認
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、サービス プリンシパルを作成し、それを使って Windows Virtual Desktop にサインインする方法を説明しました。 Windows Virtual Desktop にサインインする方法について詳しくは、引き続き Windows Virtual Desktop への接続方法に関するページを参照してください。
+サービス プリンシパルを作成して Windows Virtual Desktop テナント内のロールに割り当てたら、そのテナントを使用してホスト プールを作成できます。 ホスト プールについて詳しく確認するために、Windows Virtual Desktop でホスト プールを作成するためのチュートリアルに進んでください。
 
-- [Windows 10 または Windows 7 から接続する](connect-windows-7-and-10.md)
-- [Web ブラウザーから接続する](connect-web.md)
+ > [!div class="nextstepaction"]
+ > [Windows Virtual Desktop のホスト プールのチュートリアル](./create-host-pools-azure-marketplace.md)

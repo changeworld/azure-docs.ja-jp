@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 12/01/2018
 ms.author: dech
-ms.openlocfilehash: 1589c938e635ccff02f94a176b7fc886dbccb779
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 51494acaa393493e567e0fcbb359756bdab21503
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57455770"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65860903"
 ---
 # <a name="quickstart-build-an-aspnet-web-app-using-azure-cosmos-db-sql-api-account"></a>クイック スタート:Azure Cosmos DB SQL API アカウントを使用して ASP.NET Web アプリをビルドする
 
@@ -37,7 +37,7 @@ Azure Cosmos DB は、Microsoft のグローバルに分散された高可用性
 
 ## <a name="prerequisites"></a>前提条件
 
-まだ Visual Studio 2017 をインストールしていない場合は、**無料**の [Visual Studio 2017 Community エディション](https://www.visualstudio.com/downloads/)をダウンロードして使用できます。 Visual Studio のセットアップ中に、必ず **[Azure の開発]** ワークロードを有効にしてください。
+まだ Visual Studio 2019 をインストールしていない場合は、**無料**の [Visual Studio 2019 Community エディション](https://www.visualstudio.com/downloads/)をダウンロードして使用できます。 Visual Studio のセットアップ中に、必ず **[Azure の開発]** ワークロードを有効にしてください。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
 [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]  
@@ -120,7 +120,7 @@ Azure Cosmos DB は、Microsoft のグローバルに分散された高可用性
 
     ![Azure Portal の [キー] ブレードでアクセス キーを表示およびコピーする](./media/create-sql-api-dotnet/keys.png)
 
-2. Visual Studio 2017 で、**web.config** ファイルを開きます。 
+2. Visual Studio で、**web.config** ファイルを開きます。 
 
 3. ポータルから (コピー ボタンを使用して) URI 値をコピーし、web.config 内の ``endpoint`` キーの値に設定します。 
 
@@ -138,16 +138,16 @@ Azure Cosmos DB は、Microsoft のグローバルに分散された高可用性
     
 ## <a name="run-the-web-app"></a>Web アプリの実行
 
-1. **ソリューション エクスプローラー**で、Visual Studio ソリューションの下にある新しいコンソール アプリケーション プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。
+1. **ソリューション エクスプローラー**で、Visual Studio ソリューションの下にある新しいコンソール アプリケーション プロジェクトを右クリックし、 **[NuGet パッケージの管理]** をクリックします。
     
     ![プロジェクトの右クリック メニューのスクリーンショット](./media/create-sql-api-dotnet/manage-nuget-package.png)
 1. **[NuGet]** タブの **[参照]** をクリックし、検索ボックスに「**Microsoft.Azure.Cosmos**」と入力します。
-1. 結果の中から **Microsoft.Azure.Cosmos** を探し、**[インストール]** をクリックします。
+1. 結果の中から **Microsoft.Azure.Cosmos** を探し、 **[インストール]** をクリックします。
    Azure Cosmos DB SQL API クライアント ライブラリのパッケージ ID は [Microsoft Azure Cosmos DB クライアント ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) です。
 
    ![Azure Cosmos DB クライアント SDK を見つける NuGet メニューのスクリーンショット](./media/sql-api-get-started/dotnet-tutorial-visual-studio-manage-nuget-2.png)
 
-    ソリューションの変更の確認に関するメッセージが表示されたら、**[OK]** をクリックします。 ライセンスの同意に関するメッセージが表示されたら、**[同意する]** をクリックします。
+    ソリューションの変更の確認に関するメッセージが表示されたら、 **[OK]** をクリックします。 ライセンスの同意に関するメッセージが表示されたら、 **[同意する]** をクリックします。
 
 1. Ctrl + F5 キーを押してアプリケーションを実行します。 ブラウザーにアプリが表示されます。 
 

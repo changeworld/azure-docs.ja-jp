@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 05/07/2019
 ms.author: juliako
-ms.openlocfilehash: 3517a9c0aabf9e8ec029405f14461626d32335a7
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 8c786f46308848c6b9182453510744942a8eb9e8
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55992277"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65472428"
 ---
 # <a name="create-filters-with-media-services-net-sdk"></a>Media Services .NET SDK を使用してフィルターを作成する
 
@@ -76,6 +76,40 @@ client.AccountFilters.CreateOrUpdate(config.ResourceGroup, config.AccountName, "
 AssetFilter assetFilterParams = new AssetFilter(tracks: includedTracks);
 client.AssetFilters.CreateOrUpdate(config.ResourceGroup, config.AccountName, encodedOutputAsset.Name, "assetFilterName1", assetFilterParams);
 ```
+
+## <a name="associate-filters-with-streaming-locator"></a>フィルターをストリーミング ロケーターに関連付ける
+
+資産またはアカウント フィルターの一覧を指定できます。これはストリーミング ロケーターに適用されます。 [ダイナミック パッケージャー (ストリーミング エンドポイント)](dynamic-packaging-overview.md) は、このフィルターの一覧を、クライアントが URL で指定するフィルターと共に適用します。 この組み合わせでは、[動的マニフェスト](filters-dynamic-manifest-overview.md)が生成されます。これは、URL のフィルターとストリーミング ロケーターで指定したフィルターに基づきます。 フィルターを適用したいものの URL でフィルター名を公開したくない場合は、この機能を使用することをお勧めします。
+
+次の C# コードは、ストリーミング ロケーターを作成し、`StreamingLocator.Filters` を指定する方法を示します。 これは、フィルター名の `IList<string>` を受け取るオプションのプロパティです。
+
+```csharp
+IList<string> filters = new List<string>();
+filters.Add("filterName");
+
+StreamingLocator locator = await client.StreamingLocators.CreateAsync(
+    resourceGroup,
+    accountName,
+    locatorName,
+    new StreamingLocator
+    {
+        AssetName = assetName,
+        StreamingPolicyName = PredefinedStreamingPolicy.ClearStreamingOnly,
+        Filters = filters
+    });
+```
+      
+## <a name="stream-using-filters"></a>フィルターを使用するストリーム
+
+フィルターを定義すると、クライアントからストリーミング URL で使用できるようになります。 フィルターは、アダプティブ ビットレート ストリーミング プロトコル(Apple HTTP Live Streaming (HLS)、MPEG DASH、Smooth Streaming) に適用できます。
+
+次の表に、フィルターを含んだ URL の例をいくつか示します。
+
+|Protocol|例|
+|---|---|
+|HLS|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=m3u8-aapl,filter=myAccountFilter)`|
+|MPEG DASH|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=mpd-time-csf,filter=myAssetFilter)`|
+|スムーズ ストリーミング|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(filter=myAssetFilter)`|
 
 ## <a name="next-steps"></a>次の手順
 

@@ -1,10 +1,10 @@
 ---
-title: Web API にアクセスするようにアプリケーションを構成する (プレビュー) | Azure
+title: Web API にアクセスするようにアプリケーションを構成する - Microsoft ID プラットフォーム
 description: リダイレクト URI、資格情報、または Web API にアクセスするためのアクセス許可を含めるように、Microsoft ID プラットフォームに登録されたアプリケーションを構成する方法について説明します。
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/25/2018
-ms.author: celested
+ms.date: 05/08/2019
+ms.author: ryanwi
 ms.custom: aaddev
-ms.reviewer: lenalepa, sureshja
+ms.reviewer: aragra, lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 93e88cedfd098f450e8faeea894f7fdfc796cf17
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 3b434e5b0c4524af642eb1255597cd3e7674571c
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59999588"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65545815"
 ---
-# <a name="quickstart-configure-a-client-application-to-access-web-apis-preview"></a>クイック スタート:Web API にアクセスするようにクライアント アプリケーションを構成する (プレビュー)
+# <a name="quickstart-configure-a-client-application-to-access-web-apis"></a>クイック スタート:Web API にアクセスするためのクライアント アプリケーションの構成
 
 Web/confidential クライアント アプリケーションが認証を必要とする認可付与フローに参加 (し、アクセス トークンを取得) できるようにするには、セキュリティで保護された資格情報を確立する必要があります。 Azure portal でサポートされている既定の認証方法は、クライアント ID と秘密鍵の組み合わせです。
 
@@ -49,7 +49,6 @@ Web/confidential クライアント アプリケーションが認証を必要�
 * サポートされている[アクセス許可と同意](v2-permissions-and-consent.md)について学習する。他のユーザーまたはアプリケーションによって使用されるアプリケーションを構築する場合は、これを理解しておくことが重要です。
 * アプリケーションが登録されているテナントを持つ。
   * アプリを登録していない場合は、[Microsoft ID プラットフォームを使用してアプリケーションを登録する方法について学習](quickstart-register-app.md)します。
-* Azure portal でアプリを登録するためのプレビュー エクスペリエンスをオプトインする。 このクイック スタートの手順は新しい UI に対応しており、プレビュー エクスペリエンスをオプトインした場合にのみ機能します。
 
 ## <a name="sign-in-to-the-azure-portal-and-select-the-app"></a>Azure portal にサインインしてアプリを選択する
 
@@ -57,7 +56,7 @@ Web/confidential クライアント アプリケーションが認証を必要�
 
 1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
 1. ご利用のアカウントで複数のテナントにアクセスできる場合は、右上隅でアカウントを選択し、ポータルのセッションを目的の Azure AD テナントに設定します。
-1. 左側のナビゲーション ウィンドウで、**[Azure Active Directory]** サービスを選択し、**[アプリの登録 (プレビュー)]** を選択します。
+1. 左側のナビゲーション ウィンドウで、**[Azure Active Directory]** サービスを選択し、**[アプリの登録]** を選択します。
 1. 構成するアプリケーションを探して選択します。 アプリを選択すると、アプリケーションの **[概要]** またはメイン登録ページが表示されます。
 1. Web API にアクセスするようにアプリケーションを構成するには、以下の手順を実行します。 
     * [リダイレクト URI をアプリケーションに追加する](#add-redirect-uris-to-your-application)

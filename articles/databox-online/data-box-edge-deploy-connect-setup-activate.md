@@ -1,6 +1,6 @@
 ---
-title: Azure Portal で Azure Data Box Edge デバイスを接続、構成、およびアクティブ化する | Microsoft Docs
-description: Data Box Edge をデプロイする 3 番目のチュートリアルでは、ご利用の物理デバイスを接続、設定、およびアクティブ化する方法について説明します。
+title: 'チュートリアル: Azure Portal で Azure Data Box Edge デバイスを接続、構成、アクティブ化する | Microsoft Docs'
+description: Data Box Edge をデプロイするチュートリアルでは、お使いの物理デバイスを接続、設定、およびアクティブ化する方法について説明します。
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Data Box Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: b97334ae60715f021cce387f9d73b5ea69eea7fc
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 3e951e44aeaa4ca8d3d06bae80a80bcb2eb1dd52
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59998109"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64924557"
 ---
 # <a name="tutorial-connect-set-up-and-activate-azure-data-box-edge"></a>チュートリアル:Azure Data Box Edge を接続、設定、およびアクティブ化する 
 
@@ -65,7 +65,7 @@ Data Box Edge デバイスを構成および設定する前に、次のことを
 
 ## <a name="set-up-and-activate-the-physical-device"></a>物理デバイスの設定とアクティブ化
  
-ダッシュボードには、物理デバイスを構成して Data Box Edge サービスに登録するために必要なさまざまな設定が表示されます。 **デバイス名**、**ネットワーク設定**、**Web プロキシの設定**、**時刻の設定**はオプションです。 必須の設定は、**[クラウド設定]** のみです。
+ダッシュボードには、物理デバイスを構成して Data Box Edge サービスに登録するために必要なさまざまな設定が表示されます。 **デバイス名**、**ネットワーク設定**、**Web プロキシの設定**、**時刻の設定**はオプションです。 必須の設定は、 **[クラウド設定]** のみです。
    
 ![ローカル Web UI の [ダッシュボード] ページ](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-1.png)
 
@@ -96,11 +96,11 @@ Data Box Edge デバイスを構成および設定する前に、次のことを
    
    a. **[Web プロキシ URL]**  ボックスに、`http://host-IP address or FQDN:Port number` という形式の URL を入力します。 HTTPS URL はサポートされていません。
 
-   b. **[認証]** で、**[なし]** または **[NTLM]** を選択します。
+   b. **[認証]** で、 **[なし]** または **[NTLM]** を選択します。
 
    c. 認証を使用している場合は、ユーザー名とパスワードを入力します。
 
-   d. 構成された Web プロキシ設定を検証して適用するには、**[Apply settings] (設定を適用)** を選択します。
+   d. 構成された Web プロキシ設定を検証して適用するには、 **[Apply settings] (設定を適用)** を選択します。
 
 4. (省略可能) 左側のウィンドウで **[時刻の設定]** を選択し、タイム ゾーンとデバイスのプライマリおよびセカンダリ NTP サーバーを構成します。  
     デバイスは時刻を同期してクラウド サービス プロバイダーに対して認証できるようにする必要があるため、NTP サーバーが必要になります。
@@ -113,13 +113,13 @@ Data Box Edge デバイスを構成および設定する前に、次のことを
     2. **[プライマリ NTP サーバー]** ボックスで、デバイスのプライマリ サーバーを入力するか、または time.windows.com の既定値をそのまま使用します。  
         ネットワークでデータセンターからインターネットへの NTP トラフィックの流れが許可されていることを確認してください。
 
-    3. オプションで、**[セカンダリ NTP サーバー]** ボックスにデバイスのセカンダリ サーバーを入力します。
+    3. オプションで、 **[セカンダリ NTP サーバー]** ボックスにデバイスのセカンダリ サーバーを入力します。
 
-    4. 構成された時刻の設定を検証して適用するには、**[Apply settings] (設定を適用)** を選択します。
+    4. 構成された時刻の設定を検証して適用するには、 **[Apply settings] (設定を適用)** を選択します。
 
         ![ローカル Web UI の [時刻の設定] ページ](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-5.png)
 
-5. (省略可能) 左側のウィンドウで、**[ストレージの設定]** を選択して、デバイス上のストレージ回復性を構成します。 現在、この機能はプレビュー段階にあります。 既定では、デバイス上のストレージは回復性が高くないため、デバイスでデータ ディスクに障害が発生するとデータ損失が発生します。 [回復性がある] オプションを有効にすると、デバイス上のストレージは再構成され、デバイスは 1 台のデータ ディスクの障害にデータ損失を発生させずに耐えることができます。 ストレージを回復性があるとして構成すると、使用可能なデバイス容量が削減されます。
+5. (省略可能) 左側のウィンドウで、 **[ストレージの設定]** を選択して、デバイス上のストレージ回復性を構成します。 現在、この機能はプレビュー段階にあります。 既定では、デバイス上のストレージは回復性が高くないため、デバイスでデータ ディスクに障害が発生するとデータ損失が発生します。 [回復性がある] オプションを有効にすると、デバイス上のストレージは再構成され、デバイスは 1 台のデータ ディスクの障害にデータ損失を発生させずに耐えることができます。 ストレージを回復性があるとして構成すると、使用可能なデバイス容量が削減されます。
 
     > [!IMPORTANT] 
     > 回復性は、デバイスをアクティブ化する前にのみ構成できます。 

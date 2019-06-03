@@ -1,25 +1,18 @@
 ---
-title: Power BI アプリ オファーを作成する - Azure Marketplace | Microsoft Docs
-description: Microsoft AppSource Marketplace 用に Power BI アプリ オファーを作成する方法。
+title: Power BI アプリ オファーを作成する | Azure Marketplace
+description: Microsoft AppSource Marketplace 用に Power BI アプリ プランを作成する方法。
 services: Azure, AppSource, Marketplace, Cloud Partner Portal, Power BI
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.author: pbutlerm
-ms.openlocfilehash: 6a4f7daa337618278c3652fad3053c20557a9e28
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.author: pabutler
+ms.openlocfilehash: 702be34a5be69c050b809713a5742c2189892a27
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56414690"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64943332"
 ---
 # <a name="create-a-power-bi-app-offer"></a>Power BI アプリ オファーを作成する
 
@@ -29,14 +22,14 @@ ms.locfileid: "56414690"
 
 |   資産グループ      | 説明                                                                         |
 | ----------------   | ----------------                                                                    |
-| オファーの設定     | オファーのプライマリ ID と名前。                                      |
+| プラン設定     | オファーのプライマリ ID と名前。                                      |
 | 技術情報     | クライアントの Power BI ワークスペースにアプリをインストールするために使用するインストーラーの URL。 この URL を生成する方法の詳細については、[Power BI アプリに関するドキュメント](https://go.microsoft.com/fwlink/?linkid=2028636)を参照してください。 |
 | ネットショップの詳細 | マーケティング、法律、およびリード管理の資産が含まれます。 マーケティング資産には、プランの説明およびロゴが含まれます。 法的資産には、プライバシー ポリシー、使用条件、およびその他の法的文書が含まれます。 リード管理ポリシーにより、AppSource ユーザー ポータルからリードを処理する方法を指定できます。 |
 | 連絡先           | サポート連絡先およびポリシー情報が含まれます                                     |
 
 ## <a name="new-offer-form"></a>[新しいプラン] フォーム
 
-Cloud パートナー ポータルにサインインしてから、左側のウィンドウの **[新しいプラン]** を選択します。 次に、[新しいプラン] フォームを表示し、新しいアプリ プランに資産を定義するプロセスを開始するために、**[Power BI アプリ]** を選択します。
+Cloud パートナー ポータルにサインインしてから、左側のウィンドウの **[新しいプラン]** を選択します。 次に、[新しいプラン] フォームを表示し、新しいアプリ プランに資産を定義するプロセスを開始するために、 **[Power BI アプリ]** を選択します。
 
 ![Power BI プランのメニュー項目](./media/new-offer-menu.png)
 

@@ -12,12 +12,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6771cf093f62ef7823e57ced8223e4cc6c0dc57e
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.openlocfilehash: 27309c08fe4419197faa17dcceb3645b00387e93
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59563436"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65227924"
 ---
 # <a name="what-is-the-location-condition-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件付きアクセスの場所の条件の概要 
 
@@ -32,7 +32,7 @@ Azure AD を使用すると、パブリック インターネットに接続で�
 - ユーザーが社内ネットワークから離れているときにサービスにアクセスする場合に、多要素認証を必須にする。
 - ユーザーが特定の国や地域からサービスにアクセスする場合にアクセスをブロックする
 
-場所とは、名前付きの場所または多要素認証の信頼済み IP を表すネットワークの場所のラベルです。
+場所は、ネットワークの場所のラベルであり、名前付きの場所または多要素認証の信頼できる IP を表します。
 
 ## <a name="named-locations"></a>名前付きの場所
 
@@ -50,16 +50,13 @@ Azure AD を使用すると、パブリック インターネットに接続で�
 - **IP 範囲** - CIDR 形式の 1 つ以上の IPv4 アドレス範囲。 IPv6 アドレス範囲の指定はサポートされていません。
 
    > [!NOTE]
-   > IPv6 アドレス範囲は、現在、名前付きの場所に含めることはできません。つまり、IPv6 範囲は、条件付きアクセス ポリシーから除外できません。
+   > IPv6 アドレス範囲は、現在、名前付きの場所に含められません。 これは、IPv6 範囲を条件付きアクセス ポリシーから除外できないことを意味します。
 
 - **信頼できる場所としてマークする** - 信頼できる場所を示すために名前付きの場所に設定できるフラグ。 通常、信頼できる場所は、IT 部門が管理するネットワーク領域です。 条件付きアクセスに加え、信頼できる名前付きの場所は、Azure Identity Protection および Azure AD セキュリティ レポートで[誤検出](../reports-monitoring/concept-risk-events.md#impossible-travel-to-atypical-locations-1)を減らす場合にも使用されます。
 - **国/地域** - このオプションを使用すると、1 つ以上の国または地域を選択して名前付きの場所を定義できます。
-- **不明な領域を含める** - 一部の IP アドレスは特定の国にマップされません。 このオプションを使用すると、このような IP アドレスを名前付きの場所に含めるかどうかを選択できます。 名前付きの場所を使用するポリシーを不明な場所に適用する場合は、この設定を使用します。
+- **不明な領域を含める** - IP アドレスによっては、特定の国またはリージョンにマップされないことがあります。 このオプションを使用すると、このような IP アドレスを名前付きの場所に含めるかどうかを選択できます。 名前付きの場所を使用するポリシーを不明な場所に適用する場合は、この設定を使用します。
 
-構成できる名前付きの場所の数は、Azure AD 内の関連するオブジェクトのサイズによって制約されます。 次の制限事項に基づいて場所を構成できます。
-
-- 1 つの名前付きの場所で、最大 1,200 の IP 範囲。
-- 最大 90 の名前付きの場所で、それぞれ 1 つ割り当てられる IP 範囲。
+構成できる名前付きの場所の数は、Azure AD 内の関連するオブジェクトのサイズによって制約されます。 組織は、それぞれ最大 12000 の IP 範囲で構成された名前付きの場所を最大 90 構成できます。
 
 条件付きアクセス ポリシーは、IPv4 と IPv6 のトラフィックに適用されます。 現在、名前付きの場所では、IPv6 範囲を構成することはできません。 この制限により、次の状況が発生します。
 
@@ -70,9 +67,9 @@ Azure AD を使用すると、パブリック インターネットに接続で�
 
 ## <a name="trusted-ips"></a>信頼できる IP
 
-[多要素認証サービス設定](https://account.activedirectory.windowsazure.com/usermanagement/mfasettings.aspx)で組織のローカル イントラネットを表す IP アドレス範囲を構成することもできます。 この機能を使用すると、最大 50 の IP アドレス範囲を設定できます。 IP アドレス範囲は CIDR 形式です。 詳細については、[信頼できる IP](../authentication/howto-mfa-mfasettings.md#trusted-ips) を参照してください。  
+[多要素認証サービス設定](https://account.activedirectory.windowsazure.com/usermanagement/mfasettings.aspx)で組織のローカル イントラネットを表す IP アドレス範囲を構成することもできます。 この機能を使用すると、最大 50 の IP アドレス範囲を設定できます。 IP アドレス範囲は CIDR 形式です。 詳細については、「[信頼できる IP](../authentication/howto-mfa-mfasettings.md#trusted-ips)」を参照してください。  
 
-信頼できる IP が設定されている場合は、場所の条件の場所一覧に **MFA の信頼できる IP** と表示されます。
+信頼できる IP を構成していると、その IP が場所の条件の場所の一覧の中で **[MFA の信頼できる IP]** として表示されます。
 
 ### <a name="skipping-multi-factor-authentication"></a>多要素認証をスキップする
 

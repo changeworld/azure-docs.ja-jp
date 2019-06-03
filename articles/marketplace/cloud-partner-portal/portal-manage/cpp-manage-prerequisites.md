@@ -1,25 +1,18 @@
 ---
-title: Cloud パートナー ポータルでアカウントを管理するための前提条件 - Azure Marketplace | Microsoft Docs
+title: Cloud パートナー ポータルでアカウントを管理するための前提条件 | Azure Marketplace
 description: Cloud パートナー ポータルで Azure Marketplace アカウントを管理するための前提条件。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 04/01/2019
-ms.author: pbutlerm
-ms.openlocfilehash: c2733cd7f2460babaffdf049c5839389f61b31e9
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: pabutler
+ms.openlocfilehash: 8c32043d9bf3ca68563ae01d415bdc0e1f6993f7
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59794220"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66258143"
 ---
 # <a name="prerequisites-for-managing-accounts-on-the-cloud-partner-portal"></a>Cloud パートナー ポータルでアカウントを管理するための前提条件 
 
@@ -30,12 +23,13 @@ ms.locfileid: "59794220"
 
 アカウントを作成する前に、[Microsoft サービス規約](https://www.microsoft.com/servicesagreement)と [Microsoft 利用規約](https://www.microsoft.com/legal/intellectualproperty/copyright)に記載されているお客様の権利と責任を入念に見直してください。  
 
-お客様のアカウント名は、慎重に選択してください。  それはお客様の組織を表すことになるため、著作権で保護されている言葉や問題のある単語を含めることはできません。  たとえば、Microsoft では、"Azure" や "Microsoft" などの著作権で保護された用語をアカウント名として使用することを禁止しています。  詳細については、「[Azure Marketplace Publisher Guide (Azure Marketplace パブリッシャー ガイド)](../../guidelines.md)」をご覧ください。
+お客様のアカウント名は、慎重に選択してください。  それはお客様の組織を表すことになるため、著作権で保護されている言葉や問題のある単語を含めることはできません。  たとえば、Microsoft では、"Azure" や "Microsoft" などの著作権で保護された用語をアカウント名として使用することを禁止しています。  詳細については、「[Azure Marketplace Publisher Guide (Azure Marketplace パブリッシャー ガイド)](https://docs.microsoft.com/azure/marketplace/guidelines)」をご覧ください。
 
 
 ## <a name="registration-steps"></a>登録手順
 
-次の表は、Microsoft クラウドのパブリッシャーとして完全に登録するための手順を示しています。  詳細については、「[クラウド マーケットプレース パブリッシャーになる](../../become-publisher.md)」を参照してください。 
+次の表は、Microsoft クラウドのパブリッシャーとして完全に登録するための手順を示しています。  詳細については、「[クラウド マーケットプレース パブリッシャーになる](https://docs.microsoft.com/azure/marketplace/become-publisher
+)」を参照してください。 
 
 
 |                   手順                   |  作成される登録またはリソース                     |

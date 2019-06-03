@@ -1,4 +1,16 @@
-
+---
+author: tamram
+ms.service: storage
+ms.topic: include
+ms.date: 11/25/2018
+ms.author: tamram
+ms.openlocfilehash: ede5e2587f1f4d99193e621965b68f75fbad27f4
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66149177"
+---
 これで、Azure Blob Storage の基本を学習できました。さらに複雑なストレージ タスクを実行するには、次のリンク先を参照してください。
 
 * 利用可能な API の完全な詳細については、[.NET 用 Azure Storage クライアント ライブラリ](https://go.microsoft.com/fwlink/?LinkID=390731) の Blob service のリファレンス ドキュメントを参照してください。

@@ -4,16 +4,16 @@ description: C++/NDK で Azure Spatial Anchors を使用してアンカーを作
 author: ramonarguelles
 manager: vicenterivera
 services: azure-spatial-anchors
-ms.author: ramonarguelles
+ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: how-to
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 7de83b14617245eb2c046eb7cd2f5f26c509517c
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 7ed948bc0bbb109f2fef247beefb55a9c38fb677
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59999571"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237390"
 ---
 # <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors-in-cndk"></a>C++/NDK で Azure Spatial Anchors を使用してアンカーを作成して配置する方法
 
@@ -168,7 +168,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
     }
     ArHitResult* ar_hit = nullptr;
     ArHitResult_create(ar_session_, &ar_hit);
-    // The hitTest method sorts the resulting list by distance from the camera, increasing
+    // The hitTest method sorts the resulting list by increasing distance from the camera
     // The first hit result will usually be the most relevant when responding to user input
     ArHitResultList_getItem(ar_session_, hit_result_list, 0, ar_hit);
     if (ArHitResult_acquireNewAnchor(ar_session_, ar_hit, &localAnchor) != AR_SUCCESS) return;

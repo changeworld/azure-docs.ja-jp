@@ -1,25 +1,18 @@
 ---
-title: Azure Marketplace 向けの VHD からの VM のデプロイ | Microsoft Docs
+title: Azure Marketplace 向けの VHD からの VM のデプロイ
 description: Azure にデプロイされた VHD からの VM を登録する方法について説明します。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 11/30/2018
-ms.author: pbutlerm
-ms.openlocfilehash: f37ab1b9eef5be4aff6e5f8aecebc3688592f040
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: pabutler
+ms.openlocfilehash: a393620f28d45ec494c4e899f01e7e9a92b3ceba
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59046684"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64938301"
 ---
 # <a name="deploy-a-vm-from-your-vhds"></a>VHD からの VM のデプロイ
 
@@ -52,10 +45,10 @@ Azure PowerShell と Azure CLI をまだインストールしていない場合�
 
 使用する VM がデプロイされたら、[VM イメージを認定](./cpp-certify-vm.md)する準備が整います。
 
-1. **[新規]** をクリックして、**[テンプレートのデプロイ]** を検索し、**[エディターで独自のテンプレートを作成する]** を選択します。  <br/>
+1. **[新規]** をクリックして、 **[テンプレートのデプロイ]** を検索し、 **[エディターで独自のテンプレートを作成する]** を選択します。  <br/>
    ![Azure portal で VHD デプロイ テンプレートを作成する](./media/publishvm_021.png)
 
-1. この [JSON テンプレート](./cpp-deploy-json-template.md)をコピーしてエディターに貼り付け、**[保存]** をクリックします。 <br/>
+1. この [JSON テンプレート](./cpp-deploy-json-template.md)をコピーしてエディターに貼り付け、 **[保存]** をクリックします。 <br/>
    ![Azure portal で VHD デプロイ テンプレートを保存する](./media/publishvm_022.png)
 
 1. 表示されている**カスタム デプロイ**のプロパティ ページのパラメーター値を指定します。
@@ -80,7 +73,7 @@ Azure PowerShell と Azure CLI をまだインストールしていない場合�
    | VHD の URL                     | OS ディスクの VHD の URL を完了する                                                     |
    |  |  |
             
-1. これらの値を指定した後、**[購入]** をクリックします。 
+1. これらの値を指定した後、 **[購入]** をクリックします。 
 
 Azure はデプロイを開始します。これにより、指定のストレージ アカウント パスに、指定されたアンマネージド VHD を含む新しい VM が作成されます。  ポータルの左側にある **[Virtual Machines]** をクリックして Azure portal で進捗状況を追跡できます。  VM が作成されると、状態は `Starting` から `Running` に変わります。 
 

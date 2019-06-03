@@ -10,17 +10,17 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: dc208f3231882a0726733c897e70557c657cddf3
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 6e627de5b22a67051961e70bab56b2d931129281
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024527"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244798"
 ---
 # <a name="how-to-work-with-search-results-in-azure-search"></a>Azure Search での検索結果の操作方法
 この記事では、検索結果ページの標準的な要素である合計数、ドキュメント取得、並べ替え順序、およびナビゲーションなどを実装する方法のガイダンスを提供します。 データまたは情報を検索結果に表示するためのページ関連オプションは、Azure Search サービスに送信される [検索ドキュメント](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)の要求によって指定します。 
 
-REST API では、要求には GET コマンド、パス、要求内容をサービスに伝えるクエリ パラメーター、および応答の作成方法が含まれます。 .NET SDK では、同等の API は[DocumentSearchResult クラス](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.documentsearchresult?view=azure-dotnet)です。
+REST API では、要求には GET コマンド、パス、要求内容をサービスに伝えるクエリ パラメーター、および応答の作成方法が含まれます。 .NET SDK では、同等の API は[DocumentSearchResult クラス](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.documentsearchresult-1)です。
 
 複数のコード サンプルに Web フロントエンド インターフェイスが含まれており、次でも見つけることができます: [ニューヨーク市のジョブ デモ アプリ](https://azjobsdemo.azurewebsites.net/)および [CognitiveSearchFrontEnd](https://github.com/LuisCabrer/CognitiveSearchFrontEnd)。
 

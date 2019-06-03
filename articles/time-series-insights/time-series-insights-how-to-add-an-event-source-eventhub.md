@@ -4,19 +4,19 @@ description: この記事では、Azure Event Hubs に接続されたイベン�
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 05/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: f2b307f662c0c9b94edc6bb8eb3ca299f5ad4620
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 8040368f4cbd6d264070aa3db0a8e6b07a866480
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64702631"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66239020"
 ---
 # <a name="add-an-event-hub-event-source-to-your-time-series-insights-environment"></a>Time Series Insights 環境にイベント ハブ イベント ソースを追加する
 
@@ -27,9 +27,9 @@ ms.locfileid: "64702631"
 
 ## <a name="prerequisites"></a>前提条件
 
-- Time Series Insights 環境を作成します。 詳細については、[Azure Time Series Insights 環境の作成](./time-series-insights-update-create-environment.md)に関するページをご覧ください。
-- イベント ハブを作成します。 Event Hubs の詳細については、[Azure Portal を使用して Event Hubs 名前空間とイベント ハブを作成する](../event-hubs/event-hubs-create.md)方法に関するページを参照してください。
-- イベント ハブには、アクティブなメッセージ イベントが送信される必要があります。 詳細については、「[.NET Framework を使用して Azure Event Hubs にイベントを送信する](../event-hubs/event-hubs-dotnet-framework-getstarted-send.md)」をご覧ください。
+- [Azure Time Series Insights 環境の作成](./time-series-insights-update-create-environment.md)に関する記事の説明に従って、Time Series Insights 環境を作成します。
+- イベント ハブを作成します。 [Azure portal を使用した Event Hubs 名前空間およびイベント ハブの作成](../event-hubs/event-hubs-create.md)に関する記事を参照してください。
+- イベント ハブには、アクティブなメッセージ イベントが送信される必要があります。 [.NET Framework を使用して Azure Event Hubs にイベントを送信する](../event-hubs/event-hubs-dotnet-framework-getstarted-send.md)方法を参照します。
 - Time Series Insights 環境で使用する専用コンシューマー グループをイベント ハブで作成します。 各 Time Series Insights イベント ソースには、他のコンシューマーと共有されない専用のコンシューマー グループが設定されている必要があります。 複数のリーダーが同じコンシューマー グループのイベントを消費すると、すべてのリーダーにエラーが発生する可能性があります。 イベント ハブごとに 20 個のコンシューマー グループという制限があります。 詳細については、[Event Hubs のプログラミング ガイド](../event-hubs/event-hubs-programming-guide.md)に関するページをご覧ください。
 
 ### <a name="add-a-consumer-group-to-your-event-hub"></a>イベント ハブにコンシューマー グループを追加する
@@ -40,11 +40,11 @@ ms.locfileid: "64702631"
 
 1. Azure portal で、イベント ハブを見つけて開きます。
 
-1. **[エンティティ]** で **[コンシューマー グループ]** を選択し、**[コンシューマー グループ]** を選択します。
+1. **[エンティティ]** で **[コンシューマー グループ]** を選択し、 **[コンシューマー グループ]** を選択します。
 
-   ![イベント ハブ - コンシューマー グループの追加](media/time-series-insights-how-to-add-an-event-source-eventhub/5-event-hub-consumer-group.png)
+   [![イベント ハブ - コンシューマー グループの追加](media/time-series-insights-how-to-add-an-event-source-eventhub/5-event-hub-consumer-group.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/5-event-hub-consumer-group.png#lightbox)
 
-1. **[コンシューマー グループ]** ページで、**[名前]** に新しい一意の値を入力します。  Time Series Insights 環境で新しいイベント ソースを作成するとき、この同じ名前を使用します。
+1. **[コンシューマー グループ]** ページで、 **[名前]** に新しい一意の値を入力します。  Time Series Insights 環境で新しいイベント ソースを作成するとき、この同じ名前を使用します。
 
 1. **作成** を選択します。
 
@@ -54,23 +54,23 @@ ms.locfileid: "64702631"
 
 1. 既存の Time Series Insights 環境を見つけます。 左のメニューで **[すべてのリソース]** を選択し、自分の Time Series Insights 環境を選択します。
 
-1. **[環境トポロジ]** で **[イベント ソース]** を選択し、**[追加]** を選択します。
+1. **[環境トポロジ]** で **[イベント ソース]** を選択し、 **[追加]** を選択します。
 
-   ![[イベント ソース] で [追加] ボタンを選択します](media/time-series-insights-how-to-add-an-event-source-eventhub/1-event-sources.png)
+   [![[イベント ソース] で [追加] ボタンを選択](media/time-series-insights-how-to-add-an-event-source-eventhub/1-event-sources.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/1-event-sources.png#lightbox)
 
 1. **[イベント ソース名]** に値を入力します。この値はこの Time Series Insights 環境に一意であり、たとえば、**event-stream** とします。
 
 1. **[ソース]** で **[イベント ハブ]** を選択します。
 
 1. **[インポート オプション]** に適切な値を選択します。
-   - サブスクリプションのいずれかに既にイベント ハブが存在する場合、**[利用可能なサブスクリプションからのイベント ハブを使用する]** を選択します。 このオプションが最も簡単な方法となります。
-   - イベント ハブがサブスクリプションの外部であるか、高度なオプションを選択する場合、**[イベント ハブ設定を手動で行う]** を選択します。
+   - サブスクリプションのいずれかに既にイベント ハブが存在する場合、 **[利用可能なサブスクリプションからのイベント ハブを使用する]** を選択します。 このオプションが最も簡単な方法となります。
+   - イベント ハブがサブスクリプションの外部であるか、高度なオプションを選択する場合、 **[イベント ハブ設定を手動で行う]** を選択します。
 
-   ![[新しいイベント ソース] ウィンドウで、最初の 3 つのパラメーターの値を入力します](media/time-series-insights-how-to-add-an-event-source-eventhub/2-import-option.png)
+   [![[新しいイベント ソース] ウィンドウで、最初の 3 つのパラメーターの値を入力](media/time-series-insights-how-to-add-an-event-source-eventhub/2-import-option.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/2-import-option.png#lightbox)
 
 1. **[利用可能なサブスクリプションからのイベント ハブを使用する]** オプションに必要なプロパティについて次の表で説明します。
 
-   ![サブスクリプションとイベント ハブの詳細](media/time-series-insights-how-to-add-an-event-source-eventhub/3-new-event-source.png)
+   [![サブスクリプションとイベント ハブの詳細](media/time-series-insights-how-to-add-an-event-source-eventhub/3-new-event-source.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/3-new-event-source.png#lightbox)
 
    | プロパティ | 説明 |
    | --- | --- |
@@ -101,7 +101,7 @@ ms.locfileid: "64702631"
 
 1. **作成** を選択します。
 
-   ![[作成] を選択します](media/time-series-insights-how-to-add-an-event-source-eventhub/4-create-button.png)
+   [![[作成] を選択](media/time-series-insights-how-to-add-an-event-source-eventhub/4-create-button.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/4-create-button.png#lightbox)
 
    イベント ソースの作成後、Time Series Insights は自動的に環境へのデータのストリーミングを開始します。
 

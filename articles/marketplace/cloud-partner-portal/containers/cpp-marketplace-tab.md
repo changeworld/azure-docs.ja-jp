@@ -1,25 +1,18 @@
 ---
-title: Azure コンテナー イメージ用のマーケットプレースの設定 | Microsoft Docs
+title: Azure Containers イメージの Marketplace 設定 | Azure Marketplace
 description: Azure コンテナーのマーケットプレースの設定を構成します。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: dan-wesley
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
-ms.date: 11/01/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 220084dd0a3c61205a2cf53c29cf49291000efdb
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.date: 04/24/2019
+ms.author: pabutler
+ms.openlocfilehash: f2d735662fcd177f64d1ebc71a25b7d7629db3ce
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50980226"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64942656"
 ---
 # <a name="container-marketplace-tab"></a>コンテナーの [Marketplace] タブ
 
@@ -31,16 +24,18 @@ ms.locfileid: "50980226"
 
 ![マーケットプレースの情報](./media/containers-marketplace-tab.png)
 
-次の表では、これらのフィールドの目的および内容について説明しています。
+次の表では、これらのフィールドの目的および内容について説明しています。 必須フィールドはアスタリスク (*) で示されます。
 
-|  **フィールド**                |     **説明**                                                          |
+|    フィールド                  |       説明                                                            |
 |  ---------                |     ---------------                                                          |
-| **タイトル**                 | プランのタイトル。 マーケットプレースで目立つように表示されます。  最大文字数は 50 文字です。 |
-| **まとめ**               | プランの短い要約。 最大長は 100 文字です。 |
-| **Long Summary (長い要約)**          | プランのより長い要約 (**[要約]** と同じでもかまいません)。  最大長は 256 文字です。 |
-| **説明**           | プランの説明。  最大長は 3,000 文字で、単純な HTML 書式がサポートされています。
+| **Title (タイトル)\***                 | プランのタイトル。 マーケットプレースで目立つように表示されます。  最大文字数は 50 文字です。 |
+| **Summary (要約)\***               | プランの短い要約。 最大長は 100 文字です。 |
+| **Long Summary (長い要約)\***          | プランのより長い要約 ( **[要約]** と同じでもかまいません)。  最大長は 256 文字です。 |
+| **説明\***           | プランの説明。  最大長は 3,000 文字で、単純な HTML 書式がサポートされています。
 | **Marketing Identifier (マーケティング識別子)**  | このプランに関連付ける一意の URL。通常、組織およびソリューションの名前が含まれます。 最大文字数は 50 文字です。   |
-| **Preview Subscription Ids (プレビュー サブスクリプション ID)** | 1 から 100 個のプレビューアーのサブスクリプション識別子を追加します。 ホワイトリストに登録されたこれらのサブスクリプションは、プランの発行後、運用が開始される前にプランにアクセスできます。 |
+| **Preview Subscription Ids (プレビュー サブスクリプション ID)\*** | 1 から 100 個のプレビューアーのサブスクリプション識別子を追加します。 ホワイトリストに登録されたこれらのサブスクリプションは、プランの発行後、運用が開始される前にプランにアクセスできます。 |
+|  |  |
+
 
 ## <a name="next-steps"></a>次の手順
 

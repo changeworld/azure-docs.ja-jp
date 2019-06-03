@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2018
 ms.author: cynthn
-ms.openlocfilehash: a5e891d334bc15e0b03facb1f1f5ed8a511cda55
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: b015b52e3fc806834f12e98c30b6b4e53cb6d659
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58443888"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64726255"
 ---
 # <a name="create-a-windows-vm-from-a-specialized-disk-by-using-powershell"></a>PowerShell を使用して特殊化されたディスクから Windows VM を作成する
 
@@ -37,7 +37,7 @@ Azure Portal を使用して、[特殊化された VHD から新しい VM を作
 
 この記事では、マネージド ディスクの使用方法を説明します。 従来のデプロイメントがストレージ アカウントを使用する必要がある場合、[ストレージ アカウントで特殊化された VHD から VM を作成する](sa-create-vm-specialized.md)に関するページを参照してください。
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="option-1-use-an-existing-disk"></a>オプション 1:既存のディスクの使用
 
@@ -354,7 +354,7 @@ RequestId IsSuccessStatusCode StatusCode ReasonPhrase
 ```
 
 ### <a name="verify-that-the-vm-was-created"></a>VM 作成の確認
-新しく作成された VM は、[Azure portal](https://portal.azure.com) の **[参照]** > **[仮想マシン]**、または次の PowerShell コマンドで確認できます。
+新しく作成された VM は、[Azure portal](https://portal.azure.com) の **[参照]**  >  **[仮想マシン]** 、または次の PowerShell コマンドで確認できます。
 
 ```powershell
 $vmList = Get-AzVM -ResourceGroupName $destinationResourceGroup

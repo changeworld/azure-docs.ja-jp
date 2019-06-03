@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/07/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 91db42a003bdbb7614faba2122c30826b62ee20f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: df4acf72a1a6ea134e1192512fda1d8cf1e92f0a
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64698657"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65767988"
 ---
 # <a name="add-adfs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用して SAML ID プロバイダーとして ADFS を追加する
 
@@ -35,7 +35,7 @@ ms.locfileid: "64698657"
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
 2. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 上部メニューで **[ディレクトリとサブスクリプション] フィルター**を選択し、ご利用のテナントが含まれるディレクトリを選択します。
 3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、**[Azure AD B2C]** を検索して選択します。
-4. [概要] ページで、**[Identity Experience Framework - プレビュー]** を選択します。
+4. [概要] ページで、**[Identity Experience Framework]** を選択します。
 5. **[ポリシー キー]** を選択し、**[追加]** を選択します。
 6. **オプション**については、`Upload`を選択します。
 7. ポリシー キーの**名前**を入力します。 たとえば、「 `SamlCert` 」のように入力します。 プレフィックス `B2C_1A_` がキーの名前に自動的に追加されます。

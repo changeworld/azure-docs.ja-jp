@@ -3,18 +3,18 @@ title: Azure Data Factory でサポートされるファイル形式 | Microsoft
 description: このトピックでは、Azure Data Factory 内のファイルベースのコネクタでサポートされている圧縮コードやファイル形式について説明します。
 author: linda33wj
 manager: craigg
-ms.reviewer: douglasl
+ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 04/29/2019
 ms.author: jingwang
-ms.openlocfilehash: d7e2ecd9c9c27140fff4d483e01eaaca632e929a
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.openlocfilehash: 6af5c8cdad00802052f08be844f77d36420da3c9
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60150034"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65142367"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Azure Data Factory でサポートされるファイル形式と圧縮コーデック
 
@@ -29,9 +29,12 @@ ms.locfileid: "60150034"
 * [Avro 形式](#avro-format)
 
 > [!TIP]
-> コピー アクティビティがソース データをシンクにマッピングする方法を「[コピー アクティビティでのスキーマ マッピング](copy-activity-schema-and-type-mapping.md)」で説明します。ここには、メタデータがファイル形式の設定に基づいて決定される仕組みと、[データセット `structure`](concepts-datasets-linked-services.md#dataset-structure) セクションを指定するときのヒントも含まれています。
+> コピー アクティビティがソース データをシンクにマッピングする方法を「[コピー アクティビティでのスキーマ マッピング](copy-activity-schema-and-type-mapping.md)」で説明します。ここには、メタデータがファイル形式の設定に基づいて決定される仕組みと、[データセット `structure`](concepts-datasets-linked-services.md#dataset-structure-or-schema) セクションを指定するときのヒントも含まれています。
 
 ## <a name="text-format"></a>テキスト形式
+
+>[!NOTE]
+>Data Factory に新しい区切りテキスト形式のデータセットが導入されました。詳しくは、[区切りテキスト形式](format-delimited-text.md)に関する記事を参照してください。 ファイル ベースのデータ ストア データセットの次の構成は、後方互換性のためにまだサポートされています。 今後は新しいモデルを使用することをお勧めします。
 
 テキスト ファイルからの読み取りまたはテキスト ファイルへの書き込みを行うには、データセットの `format` セクション で `type` プロパティを **TextFormat** に設定します。 `format` セクションに**オプションの**プロパティを指定することもできます。 構成方法については、「[TextFormat の例](#textformat-example)」セクションを参照してください。
 
@@ -97,7 +100,7 @@ JSON ファイルを解析するか、JSON 形式でデータを書き込む場�
 | nestingSeparator |入れ子レベルの分割に使用される文字。 既定値は "." (ドット) です。 |いいえ  |
 
 >[!NOTE]
->配列内のデータを複数の行にクロス適用する場合 (ケース 1 -> 「[JsonFormat の例](#jsonformat-example)」のサンプル 2)、選択できるのは `jsonNodeReference` プロパティを使用した 1 つの配列の展開のみです。 
+>配列内のデータを複数の行にクロス適用する場合 (ケース 1 -> 「[JsonFormat の例](#jsonformat-example)」のサンプル 2)、選択できるのは `jsonNodeReference` プロパティを使用した 1 つの配列の展開のみです。
 
 ### <a name="json-file-patterns"></a>JSON ファイルのパターン
 
@@ -196,7 +199,7 @@ JSON ファイルを解析するか、JSON 形式でデータを書き込む場�
 
 **サンプル 1: オブジェクトと配列からデータを抽出する**
 
-このサンプルでは、1 つのルート JSON オブジェクトが表形式の結果の 1 つのレコードにマップされることを想定しています。 次の内容が含まれる JSON ファイルをお持ちで、  
+このサンプルでは、1 つのルート JSON オブジェクトが表形式の結果の 1 つのレコードにマップされることを想定しています。 次の内容が含まれる JSON ファイルをお持ちで、
 
 ```json
 {
@@ -408,6 +411,9 @@ SQL Database 内に次のテーブルが含まれているとします。
 
 ## <a name="parquet-format"></a>Parquet 形式
 
+>[!NOTE]
+>Data Factory に新しい区切りテキスト形式のデータセットが導入されました。詳しくは、[区切りテキスト形式](format-parquet.md)に関する記事を参照してください。 ファイル ベースのデータ ストア データセットの次の構成は、後方互換性のためにまだサポートされています。 今後は新しいモデルを使用することをお勧めします。
+
 Parquet ファイルを解析するか、Parquet 形式でデータを書き込む場合は、`format` `type` プロパティを **ParquetFormat** に設定します。 typeProperties セクション内の Format セクションにプロパティを指定する必要はありません。 例:
 
 ```json
@@ -426,13 +432,13 @@ Parquet ファイルを解析するか、Parquet 形式でデータを書き込�
 > [!IMPORTANT]
 > セルフホステッド統合ランタイム を利用するコピー (たとえば、オンプレミスとクラウド データ ストア間) では、Parquet ファイルを**そのまま**コピーしない場合、IR マシン上に **64 ビット JRE 8 (Java Runtime Environment) または OpenJDK** をインストールする必要があります。 詳細については、次の段落を参照してください。
 
-Parquet ファイルのシリアル化/逆シリアル化を使用してセルフホステッド IR 上で実行されるコピーでは、ADF は最初に JRE のレジストリ *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* を調べ、見つからない場合は次に OpenJDK のシステム変数 *`JAVA_HOME`* を調べることで、Java ランタイムを見つけます。 
+Parquet ファイルのシリアル化/逆シリアル化を使用してセルフホステッド IR 上で実行されるコピーでは、ADF は最初に JRE のレジストリ *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* を調べ、見つからない場合は次に OpenJDK のシステム変数 *`JAVA_HOME`* を調べることで、Java ランタイムを見つけます。
 
 - **JRE を使用する場合**:64 ビット IR には 64 ビット JRE が必要です。 [こちら](https://go.microsoft.com/fwlink/?LinkId=808605)から入手できます。
 - **OpenJDK を使用する場合**: IR バージョン 3.13 以降でサポートされています。 jvm.dll を他のすべての必要な OpenJDK のアセンブリと共にセルフホステッド IR マシンにパッケージ化し、それに応じてシステム環境変数 JAVA_HOME を設定します。
 
 >[!TIP]
->セルフホステッド統合ランタイムを使用して、 Parquet 形式をコピー元またはコピー先にしてデータをコピーしたときに、[An error occurred when invoking java, message: **java.lang.OutOfMemoryError:Java heap space** (java の呼び出し中にエラーが発生しました。メッセージ: java.lang.OutOfMemoryError:Java heap space)] というエラーが発生する場合は、まず、セルフホステッド IR のホストであるマシン内に環境変数 `_JAVA_OPTIONS` を追加してください。次に、JVM の最小/最大ヒープ サイズを調整し、コピーを行えるようにしてから、パイプラインを再実行してください。 
+>セルフホステッド統合ランタイムを使用して、 Parquet 形式をコピー元またはコピー先にしてデータをコピーしたときに、[An error occurred when invoking java, message: **java.lang.OutOfMemoryError:Java heap space** (java の呼び出し中にエラーが発生しました。メッセージ: java.lang.OutOfMemoryError:Java heap space)] というエラーが発生する場合は、まず、セルフホステッド IR のホストであるマシン内に環境変数 `_JAVA_OPTIONS` を追加してください。次に、JVM の最小/最大ヒープ サイズを調整し、コピーを行えるようにしてから、パイプラインを再実行してください。
 
 ![セルフホステッド IR 上での JVM ヒープ サイズの設定](./media/supported-file-formats-and-compression-codecs/set-jvm-heap-size-on-selfhosted-ir.png)
 
@@ -483,7 +489,7 @@ ORC ファイルを解析するか、ORC 形式でデータを書き込む場合
 > [!IMPORTANT]
 > セルフホステッド統合ランタイム を利用するコピー (たとえば、オンプレミスとクラウド データ ストア間) では、Parquet ファイルを**そのまま**コピーしない場合、IR マシン上に **64 ビット JRE 8 (Java Runtime Environment) または OpenJDK** をインストールする必要があります。 詳細については、次の段落を参照してください。
 
-ORC ファイルのシリアル化/逆シリアル化を使用してセルフホステッド IR 上で実行されるコピーでは、ADF は最初に JRE のレジストリ *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* を調べ、見つからない場合は次に OpenJDK のシステム変数 *`JAVA_HOME`* を調べることで、Java ランタイムを見つけます。 
+ORC ファイルのシリアル化/逆シリアル化を使用してセルフホステッド IR 上で実行されるコピーでは、ADF は最初に JRE のレジストリ *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* を調べ、見つからない場合は次に OpenJDK のシステム変数 *`JAVA_HOME`* を調べることで、Java ランタイムを見つけます。
 
 - **JRE を使用する場合**:64 ビット IR には 64 ビット JRE が必要です。 [こちら](https://go.microsoft.com/fwlink/?LinkId=808605)から入手できます。
 - **OpenJDK を使用する場合**: IR バージョン 3.13 以降でサポートされています。 jvm.dll を他のすべての必要な OpenJDK のアセンブリと共にセルフホステッド IR マシンにパッケージ化し、それに応じてシステム環境変数 JAVA_HOME を設定します。
@@ -538,7 +544,7 @@ Azure Data Factory は、コピー中のデータの圧縮/圧縮解除をサポ
 * FTP サーバーから .zip ファイルを読み取り、圧縮解除して中にあるファイルを取得し、それらのファイルを Azure Data Lake Store に格納します。 `compression` `type` プロパティを使用して、FTP 入力データセットを ZipDeflate として定義します。
 * Azure BLOB から GZIP 圧縮データを読み取って展開し、BZIP2 で圧縮して、生成されたデータを Azure BLOB に書き込みます。 Azure BLOB 入力データセットは `compression` `type` を GZIP に設定して定義し、Azure BLOB 出力データセットは `compression` `type` を BZIP2 に設定して定義します。
 
-データセットの圧縮を指定するには、次の例のように、データセットの JSON で **compression** プロパティを使用します。   
+データセットの圧縮を指定するには、次の例のように、データセットの JSON で **compression** プロパティを使用します。
 
 ```json
 {
@@ -579,11 +585,12 @@ Azure Data Factory は、コピー中のデータの圧縮/圧縮解除をサポ
 
 ## <a name="unsupported-file-types-and-compression-formats"></a>サポートされていないファイル形式と圧縮形式
 
-Azure Data Factory の拡張機能を使用して、サポートされていないファイルに変換することができます。 Azure Function、および Azure Batch を使用することによるカスタム タスクという 2つのオプションがあります。
+Azure Data Factory の拡張機能を使用して、サポートされていないファイルに変換することができます。
+Azure Function、および Azure Batch を使用することによるカスタム タスクという 2つのオプションがあります。
 
 Azure Function を使用して [tar ファイルの内容を抽出する](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV2/UntarAzureFilesWithAzureFunction)サンプルをご覧いただけます。 詳細については、「[Azure Functions アクティビティ](https://docs.microsoft.com/azure/data-factory/control-flow-azure-function-activity)」をご覧ください。
 
-また、カスタム dotnet アクティビティを使用してこの機能性を構築することもできます。 詳細については、[ここ](https://docs.microsoft.com/en-us/azure/data-factory/transform-data-using-dotnet-custom-activity)を参照してください。
+また、カスタム dotnet アクティビティを使用してこの機能性を構築することもできます。 詳細については、[ここ](https://docs.microsoft.com/azure/data-factory/transform-data-using-dotnet-custom-activity)を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

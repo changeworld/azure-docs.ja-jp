@@ -3,8 +3,8 @@ title: Azure Network Watcher とオープン ソース ツールでネットワ�
 description: このページでは、Network Watcher のパケット キャプチャ機能と CapAnalysis を使用して、VM の送受信トラフィックのパターンを視覚化する方法について説明しています。
 services: network-watcher
 documentationcenter: na
-author: jimdial
-manager: timlt
+author: KumudD
+manager: twooley
 editor: ''
 ms.assetid: 936d881b-49f9-4798-8e45-d7185ec9fe89
 ms.service: network-watcher
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: jdial
-ms.openlocfilehash: 7b1e1383e8e244a7cdb30be1e08514a6a4dd7b14
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.author: kumud
+ms.openlocfilehash: 3a0ae782d3fe97752ca8b9e786c3c2672f554277
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36302235"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64936023"
 ---
 # <a name="visualize-network-traffic-patterns-to-and-from-your-vms-using-open-source-tools"></a>VM の送受信ネットワーク トラフィックのパターンをオープン ソース ツールで視覚化する
 
@@ -49,7 +49,7 @@ Network Watcher で取得したパケット キャプチャ データは、[URL 
 
 CapAnalysis へのリンクを指定するときは必ず、ストレージ BLOB の URL に SAS トークンを付加してください。  ストレージ アカウントから Shared Access Signature に移動して、付与するアクセス許可を指定し、[SAS の生成] ボタンをクリックしてトークンを作成します。 SAS トークンを、パケット キャプチャ データの格納先となるストレージ BLOB の URL に付加することができます。
 
-結果の URL は、次のようになります。http://storageaccount.blob.core.windows.net/container/location?addSASkeyhere
+結果の URL は、次のようになります。 http://storageaccount.blob.core.windows.net/container/location?addSASkeyhere
 
 
 ### <a name="analyzing-packet-captures"></a>パケット キャプチャ データの分析
@@ -76,7 +76,7 @@ CapAnalysis には、パケット キャプチャ データを視覚化するた
 
 1. Geomap
 
-    このウィンドウには、ネットワーク トラフィックのマップ ビューが、送信元となった国からのトラフィック量に応じて色分けされて表示されます。 ハイライトされた国を選択すると、トラフィック フローについてのさらに詳しい統計情報 (その国の IP に対して送信されたデータとその国の IP から受信したデータの比率など) が表示されます。
+    このウィンドウには、ネットワーク トラフィックのマップ ビューが、送信元となった国/地域からのトラフィック量に応じて色分けされて表示されます。 ハイライトされた国/地域を選択すると、トラフィック フローについてのさらに詳しい統計情報 (その国/地域の IP に対して送信されたデータとその国/地域の IP から受信したデータの比率など) が表示されます。
 
     ![Geomap][8]
 
@@ -96,8 +96,8 @@ Network Watcher のパケット キャプチャ機能を使用すると、ネッ
 
 NSG フロー ログについて詳しくは、[ネットワーク セキュリティ グループのフロー ログ](network-watcher-nsg-flow-logging-overview.md)に関するページをご覧ください。
 
-「[ネットワーク セキュリティ グループのフロー ログを Power BI で視覚化する](network-watcher-visualize-nsg-flow-logs-power-bi.md)
-<!--Image references-->」にアクセスすると、Power BI で NSG フロー ログを視覚化する方法について確認できます
+[Power BI による NSG フロー ログの視覚化](network-watcher-visualize-nsg-flow-logs-power-bi.md)に関するページから、Power BI で NSG フロー ログを視覚化する方法について確認する
+<!--Image references-->
 
 [1]: ./media/network-watcher-using-open-source-tools/figure1.png
 [2]: ./media/network-watcher-using-open-source-tools/figure2.png

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 3dbf0aea50f382a0b325bf068a200cde42098733
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 337f2a31d60d54b47c692b06b5d63c28c0964061
+ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59547597"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64876216"
 ---
 # <a name="using-azure-cdn-with-cors"></a>CORS を利用した Azure CDN の使用
 ## <a name="what-is-cors"></a>CORS とは
@@ -30,13 +30,13 @@ CORS 要求には、"*簡単な要求*" と "*複雑な要求*" の 2 種類が�
 
 ### <a name="for-simple-requests"></a>単純な要求の場合:
 
-1. ブラウザーが、追加 **Origin** HTTP 要求ヘッダーを含む CORS 要求を送信します。 このヘッダーの値は、親ページを提供したオリジンで、"*プロトコル*"、"*ドメイン*"、および "*ポート*" の組み合わせとして定義されます。  https://www.contoso.com のページが fabrikam.com オリジン内のユーザーのデータにアクセスしようとすると、fabrikam.com に次の要求ヘッダーが送信されます。
+1. ブラウザーが、追加 **Origin** HTTP 要求ヘッダーを含む CORS 要求を送信します。 このヘッダーの値は、親ページを提供したオリジンで、"*プロトコル*"、"*ドメイン*"、および "*ポート*" の組み合わせとして定義されます。  https\://www.contoso.com からのページが fabrikam.com オリジンのユーザーのデータにアクセスしようとすると、次の要求ヘッダーが fabrikam.com に送信されます。
 
-   `Origin: https:\//www.contoso.com`
+   `Origin: https://www.contoso.com`
 
 2. サーバーからは次のいずれかの応答が返される場合があります。
 
-   * 許可されるオリジン サイトを示す、応答の **Access-Control-Allow-Origin** ヘッダー。 例: 
+   * 許可されるオリジン サイトを示す、応答の **Access-Control-Allow-Origin** ヘッダー。 例:
 
      `Access-Control-Allow-Origin: https://www.contoso.com`
 

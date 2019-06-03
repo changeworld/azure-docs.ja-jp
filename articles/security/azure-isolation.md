@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: f5d1c66cb049ab9ec52db619d55a4bb3e485e4b2
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: b8142551d9c20c18d83c256b3f07a0deb291577c
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56109845"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66147651"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Azure Public Cloud での分離
 ##  <a name="introduction"></a>はじめに
@@ -137,6 +137,7 @@ Azure Compute では、特定のハードウェアの種類に分離される、
 * Standard_G5
 * Standard_DS15_v2
 * Standard_D15_v2
+* Standard_F72s_v2
 
 利用可能な分離されたサイズごとの詳細については、[こちら](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory)を参照してください。
 
@@ -251,7 +252,7 @@ Azure では、データを保護するために次の種類の暗号化が提�
 
 Windows 向けの Disk Encryption ソリューションのベースは [Microsoft BitLocker ドライブ暗号化](https://technet.microsoft.com/library/cc732774.aspx)であり、Linux 向けソリューションは [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) がベースになっています。
 
-このソリューションでは、Microsoft Azure で有効になっている場合、IaaS VM の以下のシナリオがサポートされます。
+このソリューションでは、Microsoft Azure で有効にした場合、IaaS VM の以下のシナリオがサポートされます。
 -   Azure Key Vault との統合
 
 -   Standard レベルの VM: A、D、DS、G、GS などの IaaS VM シリーズ

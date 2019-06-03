@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/30/2019
 ms.author: aljo,suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 183f27d752b99c04a711d8141db512c77b9848f9
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 1487c9e3e57a2fe4dcdcab04aa81cd81315decfd
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58664881"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66302281"
 ---
 # <a name="quickstart-deploy-linux-containers-to-service-fabric"></a>クイック スタート:Service Fabric への Linux コンテナーのデプロイ
 
@@ -100,7 +100,7 @@ Service Fabric には、クラスターとそのアプリケーションを管�
 
 このクイック スタートでは、Service Fabric CLI と Service Fabric Explorer (Web ベースのツール) を使用します。 Service Fabric Explorer を使用するには、証明書の PFX ファイルをブラウザーにインポートする必要があります。 既定では、PFX ファイルにパスワードはありません。
 
-Mozilla Firefox は、Ubuntu 16.04 の既定のブラウザーです。 証明書を Firefox にインポートするには、ブラウザーの右上隅にあるメニュー ボタンをクリックし、**[オプション]** をクリックします。 **環境設定**ページで、検索ボックスを使用して "証明書" を検索します。 **[証明書を表示]** をクリックし、**[あなたの証明書]** タブを選択します。次に、**[インポート]** をクリックし、プロンプトに従って証明書をインポートします。
+Mozilla Firefox は、Ubuntu 16.04 の既定のブラウザーです。 証明書を Firefox にインポートするには、ブラウザーの右上隅にあるメニュー ボタンをクリックし、 **[オプション]** をクリックします。 **環境設定**ページで、検索ボックスを使用して "証明書" を検索します。 **[証明書を表示]** をクリックし、 **[あなたの証明書]** タブを選択します。次に、 **[インポート]** をクリックし、プロンプトに従って証明書をインポートします。
 
    ![Firefox での証明書のインストール](./media/service-fabric-quickstart-containers-linux/install-cert-firefox.png)
 
@@ -154,13 +154,13 @@ Service Fabric サービスは、その負荷に対応するように、クラ�
 Web フロントエンド サービスをスケールするには、次の手順に従います。
 
 1. クラスターで Service Fabric Explorer を開きます (例: `https://containertestcluster.eastus.cloudapp.azure.com:19080`)。
-2. ツリー ビューで **fabric:/Voting/azurevotefront** ノードの横にある省略記号 (3 つの点) をクリックし、**[Scale Service]\(サービスのスケーリング\)** を選択します。
+2. ツリー ビューで **fabric:/Voting/azurevotefront** ノードの横にある省略記号 (3 つの点) をクリックし、 **[Scale Service]\(サービスのスケーリング\)** を選択します。
 
     ![Service Fabric Explorer スケーリング サービスの開始][containersquickstartscale]
 
     これで Web フロントエンド サービスのインスタンス数をスケールできる状態になりました。
 
-3. この数値を **2** に変更し、**[Scale Service]\(サービスのスケール\)** をクリックします。
+3. この数値を **2** に変更し、 **[Scale Service]\(サービスのスケール\)** をクリックします。
 4. ツリー ビューの **fabric:/Voting/azurevotefront** ノードをクリックし、パーティション ノード (GUID で表されます) を展開します。
 
     ![Service Fabric Explorer スケーリング サービスの完了][containersquickstartscaledone]
@@ -179,7 +179,7 @@ Web フロントエンド サービスをスケールするには、次の手順
 
 クラスターと、そのクラスターによって使用されるすべてのリソースを削除するための最も簡単な方法は、リソース グループを削除することです。
 
-Azure にログインして、クラスターを削除するサブスクリプション ID を選択します。 サブスクリプション ID は、Azure portal にログインして確認できます。 リソース グループとクラスター リソースすべてを削除するには、[az group delete コマンド](/cli/azure/group?view=azure-cli-latest)を使用します。
+Azure にサインインして、クラスターを削除するサブスクリプション ID を選択します。 サブスクリプション ID は、Azure portal にログインして確認できます。 リソース グループとクラスター リソースすべてを削除するには、[az group delete コマンド](/cli/azure/group?view=azure-cli-latest)を使用します。
 
 ```azurecli
 az login

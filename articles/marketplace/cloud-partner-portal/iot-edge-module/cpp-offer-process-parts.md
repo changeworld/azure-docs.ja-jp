@@ -1,25 +1,18 @@
 ---
-title: Azure IoT Edge モジュール オファー発行の概要 | Microsoft Docs
+title: Azure IoT Edge モジュール オファー発行の概要 | Azure Marketplace
 description: Azure Marketplace に IoT Edge モジュール オファーを発行するプロセスの概要です。
 services: Azure, Marketplace, Cloud Partner Portal
-documentationcenter: ''
 author: dan-wesley
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 5b4d4471d9c77b5d13dfd5f8c2e9394b1c2d2a87
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.author: pabutler
+ms.openlocfilehash: 319031ec99d449ea5866bb5234cc617145954173
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242555"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64942611"
 ---
 # <a name="iot-edge-module-offer-publishing-overview"></a>IoT Edge モジュール オファー発行の概要
 

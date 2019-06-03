@@ -1,5 +1,5 @@
 ---
-title: 複数の Azure AD と単一の AD FS とのフェデレーション | Microsoft Docs
+title: 複数の Azure AD と単一の AD FS とのフェデレーション - Azure
 description: このドキュメントでは、複数の Azure AD と単一の AD FS とを認証連携させる方法について説明します。
 keywords: フェデレーション, ADFS, AD FS, 複数のテナント, 単一の AD FS, 1 つの ADFS, マルチテナント フェデレーション, マルチ フォレスト ADFS, AAD Connect, 認証連携, クロステナント フェデレーション
 services: active-directory
@@ -17,12 +17,12 @@ ms.date: 07/17/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 620255896e02319675928396c3d6e5e0d9865c0c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 9122e3a7af2230dc0f68e72b28891d488b01a80a
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56181730"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65137828"
 ---
 # <a name="federate-multiple-instances-of-azure-ad-with-single-instance-of-ad-fs"></a>複数の Azure AD インスタンスと単一の AD FS インスタンスとのフェデレーション
 

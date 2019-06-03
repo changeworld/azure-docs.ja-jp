@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 03/04/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: c1ad38b6dbf4914d3126f2c9166813c286762079
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 629a51673822a93ad15324239057adc111c36630
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60009618"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357379"
 ---
 # <a name="quickstart-extract-handwritten-text-using-the-rest-api-and-c-in-computer-vision"></a>クイック スタート:Computer Vision で REST API と C# を使用して手書きテキストを抽出する
 
@@ -38,9 +38,9 @@ Visual Studio でサンプルを作成するには、次の手順を実行しま
 
 1. Visual C# コンソール アプリ テンプレートを使用して、Visual Studio で新しい Visual Studio ソリューションを作成します。
 1. Newtonsoft.Json NuGet パッケージをインストールします。
-    1. メニューの **[ツール]** で **[NuGet パッケージ マネージャー]** を選択し、**[ソリューションの NuGet パッケージの管理]** を選択します。
-    1. **[参照]** タブをクリックし、**[検索]** ボックスに「Newtonsoft.Json」と入力します。
-    1. **[Newtonsoft.Json]** が表示されたら選択し、対象のプロジェクト名の横のチェック ボックスをオンにして、**[インストール]** をクリックします。
+    1. メニューの **[ツール]** で **[NuGet パッケージ マネージャー]** を選択し、 **[ソリューションの NuGet パッケージの管理]** を選択します。
+    1. **[参照]** タブをクリックし、 **[検索]** ボックスに「Newtonsoft.Json」と入力します。
+    1. **[Newtonsoft.Json]** が表示されたら選択し、対象のプロジェクト名の横のチェック ボックスをオンにして、 **[インストール]** をクリックします。
 1. `Program.cs` のコードを次のコードに置き換えて、必要に応じてコードに次の変更を加えます。
     1. `subscriptionKey` 値を、サブスクリプション キーに置き換えます。
     1. 必要に応じて、サブスクリプション キーを取得した Azure リージョンの[バッチ読み取り](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb)メソッドのエンドポイント URL で `uriBase` 値を置き換えます。
@@ -111,11 +111,8 @@ namespace CSHttpClientSample
                 client.DefaultRequestHeaders.Add(
                     "Ocp-Apim-Subscription-Key", subscriptionKey);
 
-                // Request parameter.
-                string requestParameters = "mode=Handwritten";
-
                 // Assemble the URI for the REST API method.
-                string uri = uriBase + "?" + requestParameters;
+                string uri = uriBase;
 
                 HttpResponseMessage response;
 

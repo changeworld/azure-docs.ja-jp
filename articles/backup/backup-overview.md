@@ -1,20 +1,19 @@
 ---
 title: Azure Backup とは
-description: Azure Backup サービスの概要のほか、お客様の事業継続とディザスター リカバリー (BCDR) 戦略の一環としてそれをデプロイする方法について説明します。
-services: backup
+description: Azure Backup サービスの概要を紹介し、このサービスがお客様の事業継続とディザスター リカバリー (BCDR) 戦略にどのように寄与するかについて説明します。
 author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: overview
-ms.date: 04/05/2019
+ms.date: 04/24/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 5408f920a16860972dca6450d5e51152048bbf82
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: bd90d315fd5590a8bd862a1a3397cf8c254fccc8
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59361809"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64714286"
 ---
 # <a name="what-is-azure-backup"></a>Azure Backup とは
 
@@ -31,11 +30,7 @@ Azure Backup には、以下のような主な利点があります。
 - **無制限のデータ転送が可能**: Azure Backup では、転送する受信データまたは送信データの量に制限がなく、転送されるデータに料金はかかりません。
     - 送信データとは、復元操作中に Recovery Services コンテナーから転送されるデータを指します。
     - Azure Import/Export サービスを使用してオフライン初期バックアップを実行し、大量のデータをインポートした場合は、受信データに対してコストがかかります。  [詳細情報](backup-azure-backup-import-export.md)。
-- **データの安全性の確保**: 
-    - オンプレミスでは、転送中のデータは、オンプレミスのマシン上で AES256 を使用して暗号化されます。 送信されるデータは、ストレージとバックアップの間で HTTPS によって保護されます。 バックアップとユーザー マシンの間で送信されるデータは、iSCSI プロトコルによってセキュリティで保護されます。 iSCSI チャネルの保護には、セキュリティで保護されたトンネリングが使用されます。
-    - オンプレミスから Azure へのバックアップでは、Azure 上のデータは、ユーザーがバックアップを設定するときに指定したパスフレーズを使用して暗号化されて保存されます。 この暗号化パスフレーズまたはキーは、転送されたり Azure に保存されたりすることはありません。 データを復元する必要がある場合、暗号化パスフレーズ (キー) を持っているのはご本人のみです。
-    - Azure VM の場合、データは Storage Service Encryption (SSE) を使用して暗号化されて保存されます。 Backup では、データを保存する前に自動的に暗号化します。 Azure Storage では、取得前にデータを暗号化解除します。
-    - Backup では、Azure Disk Encryption (ADE) を使用して暗号化された Azure VM もサポートされます。 [詳細情報](backup-azure-vms-introduction.md#encryption-of-azure-vm-backups)。
+- **データの安全性の確保**: Azure Backup には、転送中のデータと保存データを保護するためのソリューションがあります。
 - **アプリ整合性のあるバックアップの取得**: アプリケーション整合性バックアップは、バックアップ コピーを復元するために必要なすべてのデータが復旧ポイントにあることを意味します。 Azure Backup は、アプリケーション整合性バックアップを提供することで、追加の修正なしでデータを復元できるようにします。 アプリケーション整合性データの復元により復元時間が短縮され、迅速に実行状態に戻ることができます。
 - **短期および長期のデータの保持**:短期および長期のデータ保持のために、Recovery Services コンテナーを使用することができます。 Azure では、Recovery Services コンテナーにデータを保持する時間に制限はありません。 任意の期間、データを保持することができます。 Azure Backup では、保護されているインスタンスごとの復旧ポイントが 9,999 個に制限されます。 この制限がバックアップのニーズに与える影響について[詳しくはこちらをご覧ください](backup-introduction-to-azure-backup.md#backup-and-retention)。
 - **ストレージ管理の自動化** - ハイブリッド環境では、多くの場合、異種混在のストレージが必要です。つまり、ストレージの一部はオンプレミスに、一部はクラウドに存在していなければなりません。 Azure Backup では、オンプレミスのストレージ デバイスを使用するためのコストはありません。 Azure Backup では、バックアップ ストレージが自動的に割り当てられて管理され、従量制課金モデルが使用されているので、使用したストレージについてのみ料金が発生します。 価格に関して詳しくは、[こちら](https://azure.microsoft.com/pricing/details/backup)をご覧ください。
@@ -114,6 +109,12 @@ Azure Backup では、オンプレミス マシンと Azure VM の両方をバ�
 **オンプレミスで実行されているアプリをバックアップしたい** | アプリ対応バックアップの場合、マシンは DPM または MABS によって保護されている必要があります。
 **Azure VM のバックアップと復旧をきめ細かく柔軟に設定したい** | バックアップ スケジューリングのための追加の柔軟性と、ファイル、フォルダー、ボリューム、アプリ、およびシステム状態を保護および復元するための完全な柔軟性を利用するには、Azure で実行されている MABS/DPM を使用して Azure VM を保護します。
 
+## <a name="how-does-azure-backup-work-with-encryption"></a>Azure Backup における暗号化の処理
+
+**暗号化** | **オンプレミスでのバックアップ** | **Azure VM のバックアップ** | **Azure VM 上の SQL のバックアップ**
+--- | --- | --- | ---
+保存時の暗号化<br/> (永続化/格納データの暗号化) | ユーザー指定のパスフレーズを使用してデータが暗号化される | Azure [Storage Service Encryption (SSE)](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) を使用して、コンテナー内の格納データが暗号化されます。<br/><br/> Backup では、データを保存する前に自動的に暗号化します。 Azure Storage では、取得前にデータを暗号化解除します。 SSE にカスタマー マネージド キーを使用することは、現在サポートされません。<br/><br/> バックアップできるのは、OS ディスクとデータ ディスクの暗号化に [Azure Disk Encryption (ADE)](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-overview) を使用する VM です。 Azure Backup では、BEK のみで暗号化された VM、および BEK と [KEK](https://blogs.msdn.microsoft.com/cclayton/2017/01/03/creating-a-key-encrypting-key-kek/) の両方で暗号化された VM がサポートされます。 [制限事項](backup-azure-vms-encryption.md#encryption-support)を確認してください。 | Azure Backup では、[TDE](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption?view=sql-server-2017) が有効になったサーバーまたは SQL Server データベースのバックアップがサポートされます。 キーが Azure によって管理される TDE と、キーがユーザーによって管理される (BYOK) TDE がサポートされます。<br/><br/> Backup によるバックアップ プロセスの過程で SQL 暗号化は実行されません。
+転送中の暗号化<br/> (別の場所に移動中のデータの暗号化) | データは AES256 を使用して暗号化され、HTTPS で Azure 内のコンテナーに送信されます。 | Azure 内で、Azure Storage とコンテナーとの間でやり取りされるデータは HTTPS によって保護されます。 このデータは、Azure バックボーン ネットワークにとどまります。<br/><br/> ファイルの回復については、コンテナーと Azure VM との間で転送されるデータが iSCSI によって保護されます。 iSCSI チャネルは、安全なトンネリングによって保護されます。 | Azure 内で、Azure Storage とコンテナーとの間でやり取りされるデータは HTTPS によって保護されます。<br/><br/> SQL は、ファイルの回復の対象外となります。
 
 ## <a name="next-steps"></a>次の手順
 

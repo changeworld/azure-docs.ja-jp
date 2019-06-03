@@ -1,25 +1,18 @@
 ---
-title: Dynamics 365 for Customer Engagement アプリケーション プランの発行 | Microsoft Docs
+title: Dynamics 365 for Customer Engagement アプリケーション オファーを発行する | Azure Marketplace
 description: Dynamics 365 for Customer Engagement アプリケーション プランを AppSource Marketplace で発行するためのプロセスおよび手順について説明します。
 services: Azure, AppSource, Marketplace, Cloud Partner Portal, Dynamics 365 for Customer Engagement
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/28/2018
-ms.author: pbutlerm
-ms.openlocfilehash: eeb0fa84e8cd5ac6a499e02edd5879c5bbdd8ead
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.author: pabutler
+ms.openlocfilehash: 65df08d5fa2b7e4e7f6654f520f9caacc696f7c3
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54082034"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64942308"
 ---
 # <a name="publish-a-dynamics-365-for-customer-engagement-offer"></a>Dynamics 365 for Customer Engagement プランを発行する
 
@@ -41,7 +34,7 @@ ms.locfileid: "54082034"
 | 前提条件の検証         | 15 分   | プラン情報とプラン設定が有効化されます。                        |
 | 認定                  | 1 週間 | オファーが Azure 認定チームによって分析されます。 ウイルス、マルウェア、安全性のコンプライアンス、およびセキュリティの問題についてオファーがスキャンされます。 適格性の条件がすべて満たされていることを確認するため、オファーがチェックされます。 詳細については、「[前提条件](./cpp-prerequisites.md)」を参照してください。 問題が見つかった場合、フィードバックが提供されます。 |
 | 梱包 | 1 時間  | プランの技術資産が顧客の使用のためにパッケージ化され、リード システムが構成され設定されます。 |
-|  発行元のサインアウト             |  -        | オファーが稼働状態になる前に、最終的な発行元のレビューと確認が行われます。 (プラン情報の手順で) 選択されたサブスクリプション内にプランをデプロイして、すべての要件を満たしていることを確認できます。  プランが次の手順に進めるように、**[Go Live]\(ライブにする\)** を選択します。 |
+|  発行元のサインアウト             |  -        | オファーが稼働状態になる前に、最終的な発行元のレビューと確認が行われます。 (プラン情報の手順で) 選択されたサブスクリプション内にプランをデプロイして、すべての要件を満たしていることを確認できます。  プランが次の手順に進めるように、 **[Go Live]\(ライブにする\)** を選択します。 |
 | 梱包                 | 1 時間 | マーケットプレースの実稼働システムとリージョンに、完成したオファーがレプリケートされます。 | 
 | ライブ                           | 4 日 |プランが、必要なリージョンにリリース、レプリケートされて、一般公開されます。 |
 |  |  |  |

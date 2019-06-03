@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/20/2018
-ms.author: abshamsft
-ms.openlocfilehash: 0c4b8d1646ba851acc6a0e2d9a3b920634098846
-ms.sourcegitcommit: e89b9a75e3710559a9d2c705801c306c4e3de16c
+ms.author: absha
+ms.openlocfilehash: 5b1c0212205575f1d40f320fb959d98e55d87fb9
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59571173"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65963593"
 ---
 # <a name="service-connectivity-monitor"></a>サービス接続モニター
 
@@ -59,11 +59,12 @@ netsh advfirewall firewall add rule name="NPMDICMPV6TimeExceeded" protocol="icmp
 サービス エンドポイントへのネットワーク接続を監視するためのテストを作成します。
 
 1. **[サービス接続モニター]** タブを選択します。
-2. **[テストの追加]** を選び、テストの名前と説明を入力します。 
+2. **[テストの追加]** を選び、テストの名前と説明を入力します。 ワークスペースごとに最大で 450 のテストを作成できます。 
 3. テストの種類を選択します。<br>
 
     * HTTP/S 要求に応答するサービス (outlook.office365.com、bing.com など) への接続を監視するには、**[Web]** を選びます。<br>
     * TCP 要求に応答し、HTTP/S 要求には応答しないサービス (SQL サーバー、FTP サーバー、SSH ポートなど) への接続を監視するには、**[ネットワーク]** を選びます。 
+    * 例: BLOB ストレージ アカウントに対する Web テストを作成するには、**[Web]** を選択し、対象として「*yourstorageaccount*.blob.core.windows.net」と入力します。 同様に、[こちらのリンク](https://docs.microsoft.com/azure/storage/common/storage-account-overview#storage-account-endpoints)を使用して、他のテーブル ストレージ、キュー ストレージ、および Azure Files に対するテストを作成できます。
 4. ネットワーク待機時間、パケット損失、トポロジ検出などのネットワーク測定を実行したくない場合は、**[ネットワークの測定を実行します]** チェック ボックスをオフにします。 この機能のメリットを最大限に得るには、オンにままにしておきます。 
 5. **[ターゲット]** に、ネットワーク接続を監視する URL/FQDN/IP アドレスを入力します。
 6. **[ポート番号]** に、ターゲット サービスのポート番号を入力します。 
@@ -127,6 +128,16 @@ Network Performance Monitor のダッシュボード ビューに移動します
 
 * アプリケーションの実行速度が遅い場合は、アプリケーション パフォーマンスの低下がネットワークに起因するものなのか、それともアプリケーション プロバイダー側の問題によるものなのかを確認します。
 
+## <a name="gcc-office-urls-for-us-government-customers"></a>米国政府機関のお客様向け GCC Office URL
+米国政府機関バージニア リージョンでは、組み込みの NPM は DOD URL のみです。 GCC URL をご利用のお客様は、カスタム テストを作成して各 URL を個別に追加する必要があります。
+
+| フィールド | GCC |
+|:---   |:--- |
+| Office 365 ポータルと共有 | portal.apps.mil |
+| Office 365 の認証と ID | * login.microsoftonline.us <br> * api.login.microsoftonline.com <br> * clientconfig.microsoftonline-p.net <br> * login.microsoftonline.com <br> * login.microsoftonline-p.com <br> * login.windows.net <br> * loginex.microsoftonline.com <br> * login-us.microsoftonline.com <br> * nexus.microsoftonline-p.com <br> * mscrl.microsoft.com <br> * secure.aadcdn.microsoftonline-p.com |
+| Office Online | * adminwebservice.gov.us.microsoftonline.com <br>  * adminwebservice-s1-bn1a.microsoftonline.com <br> * adminwebservice-s1-dm2a.microsoftonline.com <br> * becws.gov.us.microsoftonline.com <br> * provisioningapi.gov.us.microsoftonline.com <br> * officehome.msocdn.us <br> * prod.msocdn.us <br> * portal.office365.us <br> * webshell.suite.office365.us <br> * www .office365.us <br> * activation.sls.microsoft.com <br> * crl.microsoft.com <br> * go.microsoft.com <br> * insertmedia.bing.office.net <br> * ocsa.officeapps.live.com <br> * ocsredir.officeapps.live.com <br> * ocws.officeapps.live.com <br> * office15client.microsoft.com <br>* officecdn.microsoft.com <br> * officecdn.microsoft.com.edgesuite.net <br> * officepreviewredir.microsoft.com <br> * officeredir.microsoft.com <br> * ols.officeapps.live.com  <br> * r.office.microsoft.com <br> * cdn.odc.officeapps.live.com <br> * odc.officeapps.live.com <br> * officeclient.microsoft.com |
+| Exchange Online | * outlook.office365.us <br> * attachments.office365-net.us <br> * autodiscover-s.office365.us <br> * manage.office365.us <br> * scc.office365.us |
+| MS Teams | gov.teams.microsoft.us | 
 
 ## <a name="next-steps"></a>次の手順
 詳細なネットワーク パフォーマンスのデータ レコードを表示するために、[ログを検索](../../azure-monitor/log-query/log-query-overview.md)します。

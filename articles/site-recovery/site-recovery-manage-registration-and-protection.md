@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajani-janaki-ram
-ms.openlocfilehash: c22acb1ae82e5c1e781598e8545c7f1625cc1c09
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1b4cd5bb020e73dc9045eb164ce49931f818f72d
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58122792"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65415476"
 ---
 # <a name="remove-servers-and-disable-protection"></a>サーバーの削除と保護の無効化
 
@@ -150,6 +150,12 @@ Hyper-V サイトには、VMM で管理されていない Hyper-V ホストが�
 
 > [!NOTE]
 > どちらのオプションでもモビリティ サービスは保護されたサービスからアンインストールされないため、手動でアンインストールする必要があります。 同じ構成サーバーを使用して再度サーバーを保護する場合は、モビリティ サーバーのアンインストールを省略できます。
+
+## <a name="disable-protection-for-a-azure-vm-azure-to-azure"></a>Azure VM の保護の無効化 (Azure から Azure)
+
+-  **[保護されているアイテム]**  >  **[レプリケートされたアイテム]** で、マシンを右クリックして **[レプリケーションの無効化]** をクリックします。
+> [!NOTE]
+> モビリティ サービスは保護されたサービスからアンインストールされないため、手動でアンインストールする必要があります。 再度サーバーを保護する場合は、モビリティ サービスのアンインストールを省略できます。
 
 ## <a name="disable-protection-for-a-hyper-v-virtual-machine-hyper-v-to-azure"></a>Hyper-V 仮想マシンの保護の無効化 (Hyper-V から Azure)
 

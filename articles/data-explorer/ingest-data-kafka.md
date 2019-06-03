@@ -6,13 +6,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
-ms.date: 11/19/2018
-ms.openlocfilehash: 180053aa2146d8ab80df832044ac3ee4d45970da
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 05/17/2019
+ms.openlocfilehash: f36acb7237438848a53fdf91c291c4f67233af5d
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59047111"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65901026"
 ---
 # <a name="quickstart-ingest-data-from-kafka-into-azure-data-explorer"></a>クイック スタート:Kafka から Azure Data Explorer にデータを取り込む
  
@@ -22,11 +22,11 @@ Azure Data Explorer は、ログと利用統計情報データのための高速
  
 * Azure サブスクリプションをお持ちでない場合は、開始する前に[無料の Azure アカウント](https://azure.microsoft.com/free/)を作成してください。 
  
-* [テスト用のクラスターとデータベース](create-cluster-database-portal.md)
+* [テスト用のクラスターとデータベース](create-cluster-database-portal.md)。
  
-* データを生成して Kafka に送信する[サンプル アプリ](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/kafka)
+* データを生成して Kafka に送信する[サンプル アプリ](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/kafka)。
 
-* サンプル アプリを実行する [Visual studio 2017 Version 15.3.2 以降](https://www.visualstudio.com/vs/)
+* サンプル アプリを実行するための [Visual Studio 2019](https://visualstudio.microsoft.com/vs/)。
  
 ## <a name="kafka-connector-setup"></a>Kafka コネクタのセットアップ
 
@@ -87,11 +87,11 @@ kusto.sink.flush_size=1000
  
 Kafka からのデータの送信先となるテーブルを ADX に作成します。 「**前提条件**」でプロビジョニングしたクラスターとデータベースにテーブルを作成します。
  
-1. Azure portal でクラスターに移動し、**[クエリ]** を選択します。
+1. Azure portal でクラスターに移動し、 **[クエリ]** を選択します。
  
     ![アプリケーションの [クエリ] リンク](media/ingest-data-event-hub/query-explorer-link.png)
  
-1. 次のコマンドをウィンドウにコピーし、**[実行]** を選択します。
+1. 次のコマンドをウィンドウにコピーし、 **[実行]** を選択します。
  
     ```Kusto
     .create table TestTable (TimeStamp: datetime, Name: string, Metric: int, Source:string)
@@ -99,7 +99,7 @@ Kafka からのデータの送信先となるテーブルを ADX に作成しま
  
     ![クエリの作成の実行](media/ingest-data-event-hub/run-create-query.png)
  
-1. 次のコマンドをウィンドウにコピーし、**[実行]** を選択します。
+1. 次のコマンドをウィンドウにコピーし、 **[実行]** を選択します。
  
     ```Kusto
     .create table TestTable ingestion json mapping 'TestMapping' '[{"column":"TimeStamp","path":"$.timeStamp","datatype":"datetime"},{"column":"Name","path":"$.name","datatype":"string"},{"column":"Metric","path":"$.metric","datatype":"int"},{"column":"Source","path":"$.source","datatype":"string"}]'

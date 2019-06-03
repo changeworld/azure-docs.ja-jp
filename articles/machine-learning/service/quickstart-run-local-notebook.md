@@ -10,18 +10,18 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 03/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3afea20fe02eafbf14b5162eef3a198d27140b9e
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 53e495a3c2d82738e1008ead84a4124e44435c9a
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59549137"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65864376"
 ---
 # <a name="quickstart-use-your-own-notebook-server-to-get-started-with-azure-machine-learning"></a>クイック スタート:独自のノートブック サーバーを使用して Azure Machine Learning の利用を開始する
 
-独自のノートブック サーバーを使用して、[Azure Machine Learning service ワークスペース](concept-azure-machine-learning-architecture.md)に値を記録するコードを実行します。 ワークスペースは、Machine Learning で機械学習モデルの実験、トレーニング、およびデプロイを行うために使用する、クラウドでの基礎ブロックとなります。
+独自の Python 環境と Jupyter Notebook Server を使用して、Azure Machine Learning service の利用を開始します。  SDK のインストールなしのクイック スタートについては、次を参照してください:「[クイック スタート: クラウドベースのノートブック サーバーを使用して Azure Machine Learning の利用を開始する](quickstart-run-cloud-notebook.md)」を参照してください。
 
-このクイック スタートでは、独自の Python 環境と Jupyter Notebook サーバーを使用します。 SDK のインストールなしのクイック スタートについては、次を参照してください:「[クイック スタート: クラウドベースのノートブック サーバーを使用して Azure Machine Learning の利用を開始する](quickstart-run-cloud-notebook.md)」 
+このクイック スタートでは、[Azure Machine Learning service ワークスペース](concept-azure-machine-learning-architecture.md)を使用して機械学習の実験を追跡する方法を示しています。 値のログをワークスペースに記録する Python コードを実行します。
 
 このクイック スタートの動画バージョンをご覧ください。
 
@@ -33,7 +33,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 * Azure Machine Learning SDK がインストールされた Python 3.6 ノートブック サーバー
 * Azure Machine Learning service ワークスペース
-* ワークスペース構成ファイル (**.azureml/config.json**)。
+* ワークスペース構成ファイル ( **.azureml/config.json**)。
 
 「[Create an Azure Machine Learning service workspace (Azure Machine Learning サービスのワークスペースを作成する)](setup-create-workspace.md#portal)」の前提条件をすべて入手してください。
 

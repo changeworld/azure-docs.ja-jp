@@ -15,12 +15,12 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 146fdc3ca2af708a96e6b9a604493eb63c2e6530
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 66ff1cb57bb3317adc7ab6208ebf5029361b7c54
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58916378"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235150"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Azure AD Connect 同期を使用したパスワード ハッシュ同期の実装
 この記事では、オンプレミスの Active Directory インスタンスから、クラウドベースの Azure Active Directory (Azure AD) インスタンスへの、ユーザー パスワードの同期に必要な情報を提供します。
@@ -64,7 +64,7 @@ Active Directory ドメイン サービスは、実際のユーザー パスワ�
 >元の MD4 ハッシュは Azure AD に送信されません。 代わりに、元の MD4 ハッシュの SHA256 ハッシュが送信されます。 その結果、Azure AD に格納されているハッシュを取得しても、このハッシュをオンプレミスの Pass-the-Hash 攻撃で使用することはできません。
 
 ### <a name="how-password-hash-synchronization-works-with-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services とのパスワード ハッシュ同期のしくみ
-パスワード ハッシュ同期機能を使用して、オンプレミス パスワードを [Azure Active Directory Domain Services](../../active-directory-domain-services/active-directory-ds-overview.md) に同期することもできます。 このシナリオでは、Azure Active Directory Domain Services インスタンスは、オンプレミスの Active Directory インスタンスで使用できるすべての方法を使用して、クラウドでユーザーを認証します。 このシナリオのエクスペリエンスは、オンプレミス環境で Active Directory 移行ツール (ADMT) を使用する場合に似ています。
+パスワード ハッシュ同期機能を使用して、オンプレミス パスワードを [Azure Active Directory Domain Services](../../active-directory-domain-services/overview.md) に同期することもできます。 このシナリオでは、Azure Active Directory Domain Services インスタンスは、オンプレミスの Active Directory インスタンスで使用できるすべての方法を使用して、クラウドでユーザーを認証します。 このシナリオのエクスペリエンスは、オンプレミス環境で Active Directory 移行ツール (ADMT) を使用する場合に似ています。
 
 ### <a name="security-considerations"></a>セキュリティに関する考慮事項
 パスワードを同期するとき、ユーザーのプレーンテキスト形式のパスワードは、パスワード ハッシュ同期機能にも、Azure AD や関連するどのサービスにも公開されません。

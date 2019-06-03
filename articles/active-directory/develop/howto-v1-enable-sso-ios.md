@@ -2,26 +2,26 @@
 title: iOS で ADAL を使用してクロス アプリ SSO を有効にする方法 | Microsoft Docs
 description: ADAL SDK の機能を使用して、複数のアプリケーションでシングル サインオンを有効にする方法。
 services: active-directory
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 ms.assetid: d042d6da-7503-4e20-bb55-06917de01fcd
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: ios
 ms.devlang: objective-c
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/24/2018
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e79b73123b33a012c062a89fb9748fa101fabcea
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 19b010091ebd909745b272fca704bb87adf7924b
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57448681"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65962628"
 ---
 # <a name="how-to-enable-cross-app-sso-on-ios-using-adal"></a>方法:iOS で ADAL を使用してクロスアプリ SSO を有効にする
 
@@ -44,7 +44,7 @@ Microsoft の ID プラットフォームと SDK により、独自のアプリ�
 
 この方法では、次の操作方法がわかっていることを前提としています。
 
-* Azure AD の以前のポータルを使用してアプリをプロビジョニングする方法。 詳細については、「[Azure AD v1.0 エンドポイントを使用したアプリの登録](quickstart-v1-add-azure-ad-app.md)」を参照してください。
+* Azure AD の以前のポータルを使用してアプリをプロビジョニングする方法。 詳細については、[アプリの登録](quickstart-register-app.md)に関するページを参照してください
 * アプリケーションを [Azure AD iOS SDK](https://github.com/AzureAD/azure-activedirectory-library-for-objc) と統合する方法。
 
 ## <a name="single-sign-on-concepts"></a>シングルサインオンの概念

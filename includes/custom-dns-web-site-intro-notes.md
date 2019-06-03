@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: cephalin
 ms.openlocfilehash: 4ab12a4ccb3aa4acecabd076c774558f904297a1
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51572339"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66136229"
 ---
 この記事は Azure App Service (Web Apps、API Apps、Mobile Apps、Logic Apps) について記載しています。Cloud Services については、「[Azure クラウド サービスのカスタム ドメイン名の構成](../articles/cloud-services/cloud-services-custom-domain-name.md)」を参照してください。
 

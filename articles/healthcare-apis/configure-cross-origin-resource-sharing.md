@@ -1,38 +1,37 @@
 ---
-title: Azure API for FHIR のクロスオリジン リソース共有の構成
-description: この記事では、Azure API for FHIR でのクロスオリジン リソース共有 (CORS) の構成方法について説明します。
+title: Azure API for FHIR でのクロスオリジン リソース共有の構成
+description: この記事では、Azure API for FHIR でのクロスオリジン リソース共有の構成方法について説明します
 author: matjazl
 ms.author: matjazl
 ms.date: 3/11/2019
 ms.topic: reference
 ms.service: healthcare-apis
-ms.openlocfilehash: 4976ce5b8f0216e1a0978c7ad2225bf94e6af3cb
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: c6bb39508055926323dad3dd6b50f9d60fdecdab
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58408478"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233711"
 ---
-# <a name="configure-cross-origin-resource-sharing"></a>クロスオリジン リソース共有の構成
+# <a name="configure-cross-origin-resource-sharing-in-the-azure-api-for-fhir"></a>Azure API for FHIR でのクロスオリジン リソース共有の構成
 
-Azure API for FHIR は[クロス オリジン リソース共有 (CORS)](https://wikipedia.org/wiki/Cross-Origin_Resource_Sharing) をサポートしており、あるドメインのアプリケーション (オリジン) に別のドメインからアクセスできる (ドメイン間要求) ように、設定を構成することができます。
+FHIR (高速ヘルスケア相互運用性リソース) 向け Azure API では、[クロスオリジン リソース共有 (CORS)](https://wikipedia.org/wiki/Cross-Origin_Resource_Sharing) をサポートしています。 CORS を使用すると、あるドメイン (オリジン) のアプリケーションが異なるドメインのリソースにアクセスできる ("ドメイン間要求" と呼ばれます) ように、設定を構成することができます。
 
-CORS は、ほとんどの場合、別のドメインへの RESTful API 呼び出しを呼び出す必要のあるシングル ページ アプリで使用されます。
+CORS は、別のドメインへの RESTful API 呼び出しを行う必要のあるシングルページ アプリでよく使用されます。
 
-Azure API for FHIR で CORS 設定を構成するには、CORS 設定に移動します。 
+Azure API for FHIR で CORS 設定を構成するには、次の設定を指定します。
 
-ここでは次の設定を指定できます。
+- **[配信元] (Access-Control-Allow-Origin)**。 Azure API for FHIR へのクロスオリジン要求が許可されるドメインの一覧。 各ドメイン (オリジン) は別々の行に入力する必要があります。 アスタリスク (*) を入力すると任意のドメインからの呼び出しを許可できますが、これにはセキュリティ上のリスクがあるためお勧めしません。
 
-**[オリジン] (Access-Control-Allow-Origin):** Azure API for FHIR へのクロスオリジン要求が許可されているドメインの一覧。 各ドメイン (オリジン) は別々の行に入力する必要があります。 '*' を入力すると、ドメインからの呼び出しを許可することができます (これはセキュリティ上のリスクを示すため、推奨されません)。
+- **[ヘッダー] (Access-Control-Allow-Headers)**。 オリジン要求に含められるヘッダーの一覧。 すべてのヘッダーを許可するには、アスタリスク (*) を入力します。
 
-**[ヘッダー] (Access-Control-Allow-Headers):** オリジン要求に含められるヘッダーの一覧を指定できます。 '*' に設定すると、すべてのヘッダーを許可することができます。 
+- **[方法] (Access-Control-Allow-Methods)**。 API 呼び出しで許可されるメソッド (PUT、GET、POST など)。 すべてのメソッドを選択するには、**[すべて選択]** を選択します。
 
-**[メソッド] \(Access-Control-Allow-Methods):** API 呼び出しで許可されている許可されたメソッド (PUT、GET、POST、...) を選択できます。 すべてのメソッドに対して **[すべて選択]** を選択することもできます。
+- **[最長有効期間] (Access-Control-Max-Age)**。 Access-Control-Allow-Headers および Access-Control-Allow-Methods に対するプリフライト要求の結果をキャッシュするための値 (秒数)。
 
-**[最長有効期間] \(Access-Control-Max-Age):****Access-Control-Allow-Methods** および **Access-Control-Allow-Headers** に対するプリフライト要求の結果をキャッシュするための値 (秒数)。 
+- **[Allow Credentials]\(資格情報の許可\) (Access-Control-Allow-Credentials)**。 CORS 要求には、[クロスサイト リクエスト フォージェリ (CSRF)](https://en.wikipedia.org/wiki/Cross-site_request_forgery) 攻撃を防ぐために、通常 Cookie は含まれていません。 この設定を選択した場合、Cookie などの資格情報を要求に含めることができます。 [配信元] に既にアスタリスク (*) を設定している場合は、この設定を構成できません。
 
-**[Allow Credentials](資格情報の許可) (Access-Control-Allow-Credentials):** CORS 要求には、[クロスサイト リクエスト フォージェリ (CSRF)](https://en.wikipedia.org/wiki/Cross-site_request_forgery) 攻撃を防ぐために、通常 Cookie は含まれていません。 選択した場合、Cookie などの資格情報を使用して要求が行われるか、要求に資格情報が含められます。 [オリジン] を '*' に設定した場合、この設定はできません
+![クロスオリジン リソース共有 (CORS) の設定](media/cors/cors.png)
 
-![](media/cors/cors.png)
-
-別のドメインの [オリジン] に異なる設定を指定することはできません。 すべての設定 (ヘッダー、メソッド、最長有効期間、および資格情報の許可) は、[オリジン] の設定に指定されたすべてのオリジンに適用されます。
+>[!NOTE]
+>別のドメインのオリジンに異なる設定を指定することはできません。 すべての設定 (**[ヘッダー]**、**[方法]**、**[最長有効期間]**、および **[Allow credentials]\(資格情報の許可\)**) が、[配信元] 設定に指定されたすべてのオリジンに適用されます。

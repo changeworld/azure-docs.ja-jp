@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 1418a9815e155a0c491fc65b16307fa2755bd964
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 57ec4990447070d1889f7476b89abb742296c056
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59008904"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65597527"
 ---
 # <a name="tutorial-implement-a-device-firmware-update-process"></a>チュートリアル:デバイス ファームウェアの更新プロセスを実装する
 
@@ -41,7 +41,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイック スタートで実行する 2 つのサンプル アプリケーションは、Node.js を使って書かれています。 開発用コンピューター上に Node.js v4.x.x 以降が必要です。
+このクイック スタートで実行する 2 つのサンプル アプリケーションは、Node.js を使って書かれています。 開発用コンピューター上に Node.js v10.x.x 以降が必要です。
 
 複数のプラットフォームに対応する Node.js を [nodejs.org](https://nodejs.org) からダウンロードできます。
 
@@ -195,7 +195,7 @@ IoT Hub デバイス ID レジストリの待ち時間のため、バックエ�
 
 次のチュートリアルを実行する場合は、リソース グループと IoT ハブをそのままにしておき、後で再利用します。
 
-IoT ハブが必要でなくなった場合は、ポータルを使用して IoT ハブとリソース グループを削除します。 これを行うには、IoT ハブを含む **tutorial-iot-hub-rg** リソース グループを選択し、**[削除]** をクリックします。
+IoT ハブが必要でなくなった場合は、ポータルを使用して IoT ハブとリソース グループを削除します。 これを行うには、IoT ハブを含む **tutorial-iot-hub-rg** リソース グループを選択し、 **[削除]** をクリックします。
 
 または、次の CLI を使用します。
 

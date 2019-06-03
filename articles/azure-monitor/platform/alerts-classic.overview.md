@@ -5,14 +5,14 @@ author: rboucher
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 12/29/2018
+ms.date: 05/19/2018
 ms.author: robb
-ms.openlocfilehash: 0d91e12de075ee6efebe39fd5ab582d4998046f9
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 96183e22f0aeafc681a782e7d3d8bd29a6ec9617
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59788652"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65914713"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>Microsoft Azure のクラシック アラートの概要
 
@@ -24,7 +24,7 @@ ms.locfileid: "59788652"
 
 ## <a name="old-and-new-alerting-capabilities"></a>新旧のアラート機能
 
-Azure Monitor、Application Insights、Log Analytics、Service Health のアラート機能は以前は別々でした。 Azure では、ユーザー インターフェイスとさまざまなアラート方法が時間と共に統合され、改善されました。 この統合は現在も継続中です。 アラート
+Azure Monitor、Application Insights、Log Analytics、Service Health のアラート機能は以前は別々でした。 Azure では、ユーザー インターフェイスとさまざまなアラート方法が時間と共に統合され、改善されました。 この統合は現在も継続中です。
 
 クラシック アラートは、Azure Portal のクラシック アラート ユーザー画面でのみ参照できます。 この画面は、アラート画面の **[クラシック アラートの表示]** ボタンで表示できます。 
 

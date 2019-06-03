@@ -7,14 +7,14 @@ author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
 ms.topic: conceptual
-ms.date: 04/01/2019
+ms.date: 04/26/2019
 ms.author: mbullwin
-ms.openlocfilehash: 25f620cb36c2bfb548ecf08c33dc04b37118a256
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: ec5b3572cbf74bad9b82eb93a45d7a4664023b95
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59489624"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65408233"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Azure App Service のパフォーマンスの監視
 
@@ -40,6 +40,10 @@ Azure App Services がホストするアプリケーションについてアプ�
 > エージェント ベースの監視と手動の SDK ベースのインストルメンテーションの両方が検出された場合は、手動のインストルメンテーション設定のみが受け付けられます。 これは、重複したデータが送信されないようにするためです。 このチェックアウトの詳細については、以下の「[トラブルシューティング](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#troubleshooting)」セクションを参照してください。
 
 ## <a name="enable-agent-based-monitoring-net"></a>.NET のエージェントベースの監視を有効にする
+
+> [!NOTE]
+> APPINSIGHTS_JAVASCRIPT_ENABLED と urlCompression の組み合わせはサポートされていません。 詳細については、[トラブルシューティングのセクション](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#troubleshooting)の説明を参照してください。
+
 
 1. アプリ サービスの Azure コントロール パネルで **[Application Insights]** を選択します。
 
@@ -99,7 +103,7 @@ ASP.NET の場合、クライアント側の監視はオプトインです。 �
 * **[設定]**、****[アプリケーション設定]**** の順に選択します
    * [アプリケーション設定] で、新しい**アプリ設定名**と**値**を追加します。
 
-     名前: `APPINSIGHTS_JAVASCRIPT_ENABLED`
+     [Name] \(名前): `APPINSIGHTS_JAVASCRIPT_ENABLED`
 
      値: `true`
 
@@ -118,7 +122,7 @@ ASP.NET の場合、クライアント側の監視はオプトインです。 �
 * **[設定]** > **[アプリケーション設定]** の順に選択します。
    * [アプリケーション設定] で、新しい**アプリ設定名**と**値**を追加します。
 
-     name:  `APPINSIGHTS_JAVASCRIPT_ENABLED`
+     名前: `APPINSIGHTS_JAVASCRIPT_ENABLED`
 
      値: `false`
 
@@ -270,7 +274,7 @@ Application Insights の設定をすべて既定の設定にして Azure Resourc
             "type": "string"
         }
     },
-    "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0"
 }
 ```
@@ -299,7 +303,7 @@ $app = Set-AzWebApp -AppSettings $newAppSettings -ResourceGroupName $app.Resourc
 
 バージョン 2.8.9 からのアップグレードは自動的に実行され、追加の操作は必要ありません。 新しい監視ビットは、バックグラウンドでターゲット アプリ サービスに配信され、アプリケーションの再起動時に取得されます。
 
-実行している拡張機能のバージョンを確認するには、以下にアクセスします `http://yoursitename.scm.azurewebsites.net/ApplicationInsights`
+実行している拡張機能のバージョンを確認するには、`http://yoursitename.scm.azurewebsites.net/ApplicationInsights` にアクセスします
 
 ![URL パス http://yoursitename.scm.azurewebsites.net/ApplicationInsights のスクリーンショット](./media/azure-web-apps/extension-version.png)
 
@@ -326,17 +330,17 @@ $app = Set-AzWebApp -AppSettings $newAppSettings -ResourceGroupName $app.Resourc
 1. `ApplicationInsightsAgent` を介してアプリケーションが監視されていることを確認します。
     * `ApplicationInsightsAgent_EXTENSION_VERSION` アプリ設定が "2 以下" の値に設定されていることを確認します。
 2. 監視対象のアプリケーションが要件を満たしていることを確認します。
-    * 以下を参照します。 `https://yoursitename.scm.azurewebsites.net/ApplicationInsights`
+    * `https://yoursitename.scm.azurewebsites.net/ApplicationInsights` に移動します
 
     ![https://yoursitename.scm.azurewebsites/applicationinsights 結果ページのスクリーンショット](./media/azure-web-apps/app-insights-sdk-status.png)
 
-    * `Application Insights Extension Status` が以下であることを確認します。 `Pre-Installed Site Extension, version 2.8.12.1527, is running.`
+    * `Application Insights Extension Status` が `Pre-Installed Site Extension, version 2.8.12.1527, is running.` であることを確認します
         * 実行中ではない場合は、[Application Insights の監視を有効にする手順](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#enable-application-insights)を実行します。
 
-    * 状態ソースが存在し、以下のようになっていることを確認します。 `Status source D:\home\LogFiles\ApplicationInsights\status\status_RD0003FF0317B6_4248_1.json`
+    * 状態ソースが存在し、以下のようになっていることを確認します。`Status source D:\home\LogFiles\ApplicationInsights\status\status_RD0003FF0317B6_4248_1.json`
         * 似た値が存在しない場合は、アプリケーションが現在実行されていないか、サポートされていないことを意味します。 アプリケーションが実行されていることを確認するには、手動でアプリケーションの URL/アプリケーション エンドポイントにアクセスしてみてください。これで、ランタイム情報を使用できるようになります。
 
-    * `IKeyExists` が以下であることを確認します。 `true`
+    * `IKeyExists` が `true` であることを確認します
         * false の場合は、お客様の ikey guid を指定した 'APPINSIGHTS_INSTRUMENTATIONKEY' をアプリケーション設定に追加します。
 
     * `AppAlreadyInstrumented`、`AppContainsDiagnosticSourceAssembly`、および `AppContainsAspNetTelemetryCorrelationAssembly` のエントリがないことを確認します。
@@ -346,12 +350,21 @@ $app = Set-AzWebApp -AppSettings $newAppSettings -ResourceGroupName $app.Resourc
 
 |問題の値|説明|解決策
 |---- |----|---|
-| `AppAlreadyInstrumented:true` | この値は、SDK の一部の側面が既にアプリケーションに存在することが拡張機能で検出され、拡張機能が停止されることを示します。 これは、以下への参照が原因の可能性があります。`System.Diagnostics.DiagnosticSource`、`Microsoft.AspNet.TelemetryCorrelation`、または `Microsoft.ApplicationInsights`  | これらの参照を削除します。 これらの参照の一部は、特定の Visual Studio テンプレートによって既定で追加されており、以前のバージョンの Visual Studio で `Microsoft.ApplicationInsights` への参照が追加されている可能性があります。
+| `AppAlreadyInstrumented:true` | この値は、SDK の一部の側面が既にアプリケーションに存在することが拡張機能で検出され、拡張機能が停止されることを示します。 これは、`System.Diagnostics.DiagnosticSource`、`Microsoft.AspNet.TelemetryCorrelation`、または `Microsoft.ApplicationInsights` への参照が原因である可能性があります  | これらの参照を削除します。 これらの参照の一部は、特定の Visual Studio テンプレートによって既定で追加されており、以前のバージョンの Visual Studio で `Microsoft.ApplicationInsights` への参照が追加されている可能性があります。
 |`AppAlreadyInstrumented:true` | アプリケーションが .NET Core 2.1 または 2.2 をターゲットにしており、[Microsoft.AspNetCore.All](https://www.nuget.org/packages/Microsoft.AspNetCore.All) メタパッケージを参照している場合は、Application Insights に取り込まれ、拡張機能は停止されます。 | .NET Core 2.1、2.2 をご利用のお客様は、代わりに Microsoft.AspNetCore.App メタパッケージを使用することを[お勧めします](https://github.com/aspnet/Announcements/issues/287)。|
 |`AppAlreadyInstrumented:true` | この値は、以前のデプロイのアプリ フォルダーに上記の dll が存在する場合でも発生する可能性があります。 | アプリ フォルダーを消去し、これらの dll が削除されたことを確認してください。|
 |`AppContainsAspNetTelemetryCorrelationAssembly: true` | この値は、アプリケーション内の `Microsoft.AspNet.TelemetryCorrelation` への参照が拡張機能で検出され、拡張機能が停止されることを示します。 | 参照を削除します。
 |`AppContainsDiagnosticSourceAssembly**:true`|この値は、アプリケーション内の `System.Diagnostics.DiagnosticSource` への参照が拡張機能で検出され、拡張機能が停止されることを示します。| 参照を削除します。
 |`IKeyExists:false`|この値は、インストルメンテーション キーが AppSetting `APPINSIGHTS_INSTRUMENTATIONKEY` に存在しないことを示します。 考えられる原因:値が誤って削除された、自動化スクリプトで値を設定し忘れたなどの原因が考えられます。 | 設定が App Service アプリケーション設定に存在することを確認します。
+
+### <a name="appinsightsjavascriptenabled-and-urlcompression-is-not-supported"></a>APPINSIGHTS_JAVASCRIPT_ENABLED と urlCompression はサポートされていません
+
+APPINSIGHTS_JAVASCRIPT_ENABLED=true を使用する場合 (この場合、コンテンツがエンコードされます)、次のようなエラーが発生する可能性があります。 
+
+- 500 URL 書き換えエラー
+- 500.53 URL 書き換えモジュール エラー。HTTP 応答のコンテンツがエンコード ('gzip') されている場合、アウトバウンド書き換えルールを適用することはできませんというメッセージを伴います。 
+
+これは、APPINSIGHTS_JAVASCRIPT_ENABLED アプリケーション設定が true に設定されており、同時に content-encoding が存在することが原因です。 このシナリオはまだサポートされていません。 回避策は、アプリケーション設定から APPINSIGHTS_JAVASCRIPT_ENABLED を削除することです。 残念ながら、これは、クライアント/ブラウザー側の JavaScript インストルメンテーションがまだ必要な場合、Web ペーでは手動の SDK 参照が必要であることを意味します。 JavaScript SDK での手動のインストルメンテーションに関する[手順](https://github.com/Microsoft/ApplicationInsights-JS#snippet-setup-ignore-if-using-npm-setup)に従ってください。
 
 Application Insights エージェント/拡張機能の最新情報については、[リリース ノート](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/app-insights-web-app-extensions-releasenotes.md)のページを参照してください。
 

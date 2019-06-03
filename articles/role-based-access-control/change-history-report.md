@@ -15,12 +15,12 @@ ms.date: 02/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b808654baded5bbe721866441a8d1115eff7bcaa
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 842d3146bf1927871e29eb750cde09e9029b7c12
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59997905"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242098"
 ---
 # <a name="view-activity-logs-for-rbac-changes-to-azure-resources"></a>Azure リソースに対する RBAC の変更のアクティビティ ログを表示する
 
@@ -121,9 +121,9 @@ az monitor activity-log list --resource-provider "Microsoft.Authorization" --sta
 
 1. [Log Analytics ワークスペースを作成します](../azure-monitor/learn/quick-create-workspace.md)。
 
-1. ワークスペースの [Activity Log Analytics ソリューションを構成します](../azure-monitor/platform/collect-activity-logs.md#configuration)。
+1. ワークスペースの [Activity Log Analytics ソリューションを構成します](../azure-monitor/platform/activity-log-collect.md#activity-logs-analytics-monitoring-solution)。
 
-1. [アクティビティ ログを表示します](../azure-monitor/platform/collect-activity-logs.md#using-the-solution)。 Activity Log Analytics ソリューションの [概要] ページに簡単に移動するには、**[Log Analytics]** オプションをクリックします。
+1. [アクティビティ ログを表示します](../azure-monitor/platform/activity-log-collect.md#activity-logs-analytics-monitoring-solution)。 Activity Log Analytics ソリューションの [概要] ページに簡単に移動するには、 **[Log Analytics]** オプションをクリックします。
 
    ![ポータルの Azure Monitor ログのオプション](./media/change-history-report/azure-log-analytics-option.png)
 

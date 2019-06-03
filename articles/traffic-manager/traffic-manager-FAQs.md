@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: kumud
-ms.openlocfilehash: 6086c182763885b62f28ab093be2a7f3f8282b8a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b89e9a48ce20c7c00bd3282623919b8066e34b25
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59788429"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64717061"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Traffic Manager についてよく寄せられる質問 (FAQ)
 
@@ -320,7 +320,7 @@ Azure Monitor を使用すると、エンドポイントの正常性を追跡し
 Traffic Manager は、次のように証明書の検証を提供できません。
 
 * サーバー側証明書は検証されません。
-* SNI サーバー側証明書はサポートされていません。
+* SNI サーバー側証明書は検証されません。
 * クライアント証明書はサポートされていません。
 
 ### <a name="do-i-use-an-ip-address-or-a-dns-name-when-adding-an-endpoint"></a>エンドポイントを追加する際には、IP アドレスと DNS 名のどちらを使用しますか。

@@ -1,3 +1,16 @@
+---
+author: erikre
+ms.service: multiple
+ms.topic: include
+ms.date: 11/25/2018
+ms.author: erikre
+ms.openlocfilehash: 96c4da8465a87fee4c00bfc6177515c94910704a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66121375"
+---
 Azure ユーザーは 1 か月あたり 25,000 通の電子メールを無料で利用できます。 毎月 25,000 通の無料電子メールにより、高度なレポートおよび分析と [すべての API][all APIs] (Web、SMTP、イベント、解析など) を利用できるようになります。 SendGrid の提供するその他のサービスについては、[SendGrid のソリューション][SendGrid Solutions]に関するページにアクセスしてください。
 
 ### <a name="to-sign-up-for-a-sendgrid-account"></a>SendGrid アカウントにサインアップするには
@@ -33,7 +46,7 @@ Azure ユーザーは 1 か月あたり 25,000 通の電子メールを無料で
 
     サブスクリプション プランを変更するか、SendGrid 連絡先設定を表示するには、SendGrid サービスの名前をクリックし、SendGrid Marketplace ダッシュボードを開きます。
 
-    ![設定][settings]
+    ![settings][settings]
 
     SendGrid を使用して電子メールを送信するには、API キーを指定する必要があります。
 

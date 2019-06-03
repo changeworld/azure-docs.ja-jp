@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 04/21/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 40e7ebcddb5cc215e071f1a34dfa8f3f4ea95141
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: e13bcb7d4eeded691669277b64aba9048f3bbefa
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64684562"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65150413"
 ---
 # <a name="content-protection-with-dynamic-encryption"></a>動的暗号化によるコンテンツ保護
 
@@ -206,7 +206,7 @@ streamingPolicy.EnvelopEncryption.customKeyAcquisitionUrlTemplate = "https://myk
 
 `_NOT_SPECIFIED_IN_URL`で終わるエラーが発生した場合は、URL に暗号化形式を指定したことを確認してください。 たとえば、「 `…/manifest(format=m3u8-cmaf,encryption=cbcs-aapl)` 」のように入力します。 「[ストリーミング プロトコルと暗号化の種類](#streaming-protocols-and-encryption-types)」を参照してください。
 
-## <a name="provide-feedback"></a>フィードバックの提供
+## <a name="ask-questions-give-feedback-get-updates"></a>質問、フィードバックの提供、最新情報の入手
 
 「[Azure Media Services community (Azure Media Services コミュニティ)](media-services-community.md)」を参照して、さまざまな質問の方法、フィードバックする方法、Media Services に関する最新情報の入手方法を確認してください。
 

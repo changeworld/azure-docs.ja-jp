@@ -7,12 +7,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 03/04/2019
 ms.author: zhshang
-ms.openlocfilehash: df1b2cdd265b9cf48801174d1f0cd9936eae5f8b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 75d9977546c2a085765310a5654897f739a271ae
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59264997"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595397"
 ---
 # <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-c"></a>クイック スタート:C\# を使用した Azure Functions と SignalR Service によるチャット ルームの作成
 
@@ -20,7 +20,7 @@ Azure SignalR Service を使用すると、アプリケーションにリアル�
 
 ## <a name="prerequisites"></a>前提条件
 
-まだ Visual Studio 2017 をインストールしていない場合は、**無料**の [Visual Studio 2017 Community エディション](https://www.visualstudio.com/downloads/)をダウンロードして使用できます。 Visual Studio のセットアップ中に、必ず **[Azure の開発]** を有効にしてください。
+まだ Visual Studio 2019 をインストールしていない場合は、**無料**の [Visual Studio 2019 Community エディション](https://www.visualstudio.com/downloads/)をダウンロードして使用できます。 Visual Studio のセットアップ中に、必ず **[Azure の開発]** を有効にしてください。
 
 [Azure Functions Core Tools (v2)](https://github.com/Azure/azure-functions-core-tools#installing)、[.NET Core SDK](https://dotnet.microsoft.com/download)、お好みのコード エディターを使用して、このチュートリアルをコマンド ライン (macOS、Windows、または Linux) で実行することもできます。
 
@@ -57,7 +57,7 @@ Azure アカウントで Azure Portal (<https://portal.azure.com/>) にサイン
 
 1. Azure 関数アプリをローカルで起動するには、次のオプションのいずれかを使用します。
 
-    - **Visual Studio**:*[デバッグ]* メニューの *[デバッグの開始]* を選択してアプリケーションを実行します。
+    - **Visual Studio**: *[デバッグ]* メニューの *[デバッグの開始]* を選択してアプリケーションを実行します。
 
         ![アプリケーションのデバッグ](media/signalr-quickstart-azure-functions-csharp/signalr-quickstart-debug-vs.png)
 

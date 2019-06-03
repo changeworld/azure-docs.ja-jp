@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: nitinme
 ms.openlocfilehash: f96c3a693ce8fc099374c998b35ce2fa90f4bb3f
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56753737"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66124714"
 ---
 Bing の応答には、Bing が提供するサムネイル イメージへの URL を含むものがあります。 サムネイル イメージはサイズ変更とトリミングが可能です。 
 

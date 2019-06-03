@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: magoedte
 ms.openlocfilehash: 0578b50952c12d4587f7a4751bc831d3134c64e7
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540773"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66129451"
 ---
 # <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Log Analytics ワークスペースを管理する
 
@@ -34,8 +34,8 @@ ms.locfileid: "58540773"
 * Linux および Windows コンピューターからのパフォーマンス カウンターの収集
 * Linux コンピューターの syslog からのイベントの収集 
 * Windows イベント ログからのイベントの収集
-* Azure 仮想マシンへの Log Analytics エージェントの追加
-* Azure 診断を使用して収集されたデータを Log Analytics でインデックスするための構成
+* Azure 仮想マシンへのログ分析エージェントの追加
+* Azure Diagnostics を使用して収集されたデータをログ分析でインデックスするための構成
 
 この記事では、テンプレートで実行できる構成の一部を示すテンプレート サンプルを紹介しています。
 

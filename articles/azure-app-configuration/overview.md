@@ -13,22 +13,22 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: a76eab5d51dd73fb6b38ebebaa8421e789274f84
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 985845197f8a1ece76fe0a620f05194109f51bd6
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59994794"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65408677"
 ---
 # <a name="what-is-azure-app-configuration"></a>Azure App Configuration とは 
 
-Azure App Configuration は、アプリケーション設定を一元的に管理するためのサービスを提供します。 近年のプログラム、特にクラウドで実行されるプログラムは、その性質上、分散されたコンポーネントが多数存在するのが一般的です。 これらのコンポーネント全体に構成設定を分散させることは、トラブルシューティングすることの難しいエラーがアプリケーションのデプロイ中に発生する原因となります。 App Configuration を使用すると、アプリケーションのすべての設定を 1 か所に格納して、そのアクセスをセキュリティで保護することができます。
+Azure App Configuration は、アプリケーション設定と機能フラグを一元的に管理するためのサービスを提供します。 近年のプログラム、特にクラウドで実行されるプログラムは、その性質上、分散されたコンポーネントが多数存在するのが一般的です。 これらのコンポーネント全体に構成設定を分散させることは、トラブルシューティングすることの難しいエラーがアプリケーションのデプロイ中に発生する原因となります。 App Configuration を使用すると、アプリケーションのすべての設定を 1 か所に格納して、そのアクセスをセキュリティで保護することができます。
 
-App Configuration は、プレビュー期間中、無料で使用できます。 試用する場合は、プレビューに[登録](https://aka.ms/azconfig/register)します。
+現在、App Configuration はパブリック プレビュー段階にあります。 プレビュー期間中は無料で使用できます。 サインアップは [Azure portal](https://portal.azure.com) で行うことができます。
 
 ## <a name="why-use-app-configuration"></a>App Configuration を使用する理由
 
-クラウドベースのアプリケーションは、複数リージョンにわたる複数の仮想マシンまたはコンテナーで実行され、複数の外部サービスを使用することが少なくありません。 そのような分散アプリケーションを堅牢でスケーラブルに作成することは、難しいことです。 
+クラウドベースのアプリケーションは、複数リージョンにわたる複数の仮想マシンまたはコンテナーで実行され、複数の外部サービスを使用することが少なくありません。 そのような分散アプリケーションを堅牢でスケーラブルに作成することは、難しいことです。
 
 アプリケーション構築の増大する複雑さに取り組む開発者には、さまざまなプログラミング手法が役立ちます。 たとえば、"12 ファクター アプリ" では、クラウド アプリケーションで使用される多くの実証済みのアーキテクチャ パターンとベスト プラクティスが示されています。 このガイドの主な推奨事項の 1 つは、コードから構成を切り離すことです。 この場合、アプリケーションの構成設定をその実行可能ファイルとは別の場所に置いておき、その実行環境または外部ソースから読み取るということです。
 
@@ -44,6 +44,7 @@ App Configuration には次の利点があります。
 * 柔軟性に優れたキーによる表現とマッピング
 * ラベルを使用したタグ付け
 * 特定時点の設定の再生
+* 専用の UI で機能フラグを管理
 * 独自に定義したディメンションでの 2 つの構成群の比較
 * Azure のマネージド ID で強化されたセキュリティ
 * 完全なデータ暗号化 (保存データと転送中のデータ)
@@ -51,9 +52,9 @@ App Configuration には次の利点があります。
 
 App Configuration は、アプリケーションのシークレットを格納するために使用される [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) を補完します。 App Configuration を使用すると、以下のシナリオを簡単に実装できます。
 
-* さまざまな環境や地域に対応する階層型の構成データの集中管理および配布
-* アプリケーションを再デプロイまたは再起動する必要がない、動的な構成の変更
-* 機能の管理
+* さまざまな環境や地域に対応した階層型構成データの管理と配布を一元化する
+* アプリケーションを再デプロイまたは再起動することなく、アプリケーション設定を動的に変更する
+* 機能の可用性をリアルタイムで制御する
 
 ## <a name="use-app-configuration"></a>App Configuration の使用
 
@@ -68,5 +69,9 @@ App Configuration は、アプリケーションのシークレットを格納�
 
 ## <a name="next-steps"></a>次の手順
 
-> [!div class="nextstepaction"]
-> [ASP.NET Core Web アプリの作成](./quickstart-aspnet-core-app.md)  
+* [ASP.NET Core のクイック スタート](./quickstart-aspnet-core-app.md)
+* [.NET Core のクイック スタート](./quickstart-dotnet-core-app.md)
+* [.NET Framework のクイック スタート](./quickstart-dotnet-app.md)
+* [Azure 関数のクイック スタート](./quickstart-azure-function-csharp.md)
+* [Java Spring のクイック スタート](./quickstart-java-spring-app.md)
+* [ASP.NET Core の機能フラグのクイック スタート](./quickstart-feature-flag-aspnet-core.md)

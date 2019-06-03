@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 3e33eef430db627a82bb82e8c22ddc861d08982b
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: e0d201baec253abee9ad8a998dd36968927a25a6
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59546272"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357599"
 ---
 # <a name="find-routes-for-different-modes-of-travel-using-azure-maps"></a>Azure Maps を使用してさまざまな移動モードのルートを検索します
 
@@ -216,7 +216,7 @@ ms.locfileid: "59546272"
     var routeURL = new atlas.service.RouteURL(pipeline);
     ```
 
-   サブスクリプション キーを使用して Azure Maps に対する HTTP 要求を認証するために、`SubscriptionKeyCredential` によって `SubscriptionKeyCredentialPolicy` が作成されます。 `atlas.service.MapsURL.newPipeline()` は、`SubscriptionKeyCredential` ポリシーを取り込んで、[パイプライン](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-iot-typescript-latest) インスタンスを作成します。 `routeURL` は、Azure Maps の [Route](https://docs.microsoft.com/rest/api/maps/route) 操作の URL を表します。
+   サブスクリプション キーを使用して Azure Maps に対する HTTP 要求を認証するために、`SubscriptionKeyCredential` によって `SubscriptionKeyCredentialPolicy` が作成されます。 `atlas.service.MapsURL.newPipeline()` は、`SubscriptionKeyCredential` ポリシーを取り込んで、[パイプライン](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-maps-typescript-latest) インスタンスを作成します。 `routeURL` は、Azure Maps の [Route](https://docs.microsoft.com/rest/api/maps/route) 操作の URL を表します。
 
 2. 資格情報と URL を設定した後、USHazmatClass2 クラスの積み荷を運ぶトラックの基点から終点までのルートを構築し、その結果を表示するための次の JavaScript コードを追加します。
 
@@ -245,7 +245,7 @@ ms.locfileid: "59546272"
     });
     ```
 
-    上記のコード スニペットでは、[getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.models.routedirectionsrequestbody?view=azure-iot-typescript-latest) メソッドを介して Azure Maps ルーティング サービスにクエリを行います。 応答から `geojson.getFeatures()` メソッドを使用して抽出される GeoJSON フィーチャー コレクションから、ルートの線が抽出されます。 その後、ルートの線がデータ ソースに追加されます。 さらに、データ ソース内の他の行の前に確実にレンダリングされるように、インデックス 0 が追加されます。 トラックのルート計算は、えてして乗用車のルート計算よりも時間がかかるものであり、トラックのルートの線が乗用車のルートよりも遅れてデータ ソースに追加された場合、その上にレンダリングされてしまうためです。 トラックのルートの線には、2 つのプロパティを追加します。ストローク カラー (繊細な青色) とストロークの幅 (9 ピクセル) です。
+    上記のコード スニペットでは、[getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.models.routedirectionsrequestbody?view=azure-maps-typescript-latest) メソッドを介して Azure Maps ルーティング サービスにクエリを行います。 応答から `geojson.getFeatures()` メソッドを使用して抽出される GeoJSON フィーチャー コレクションから、ルートの線が抽出されます。 その後、ルートの線がデータ ソースに追加されます。 さらに、データ ソース内の他の行の前に確実にレンダリングされるように、インデックス 0 が追加されます。 トラックのルート計算は、えてして乗用車のルート計算よりも時間がかかるものであり、トラックのルートの線が乗用車のルートよりも遅れてデータ ソースに追加された場合、その上にレンダリングされてしまうためです。 トラックのルートの線には、2 つのプロパティを追加します。ストローク カラー (繊細な青色) とストロークの幅 (9 ピクセル) です。
 
 3. 次の JavaScript コードを追加して、乗用車のルートを構築し、結果を表示します。
 
@@ -265,7 +265,7 @@ ms.locfileid: "59546272"
     });
     ```
 
-    上記のコード スニペットでは、[getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.models.routedirectionsrequestbody?view=azure-iot-typescript-latest) メソッドを介して Azure Maps ルーティング サービスにクエリを行います。 応答から `geojson.getFeatures()` メソッドを使用して抽出される GeoJSON フィーチャー コレクションから、ルートの線が抽出されます。 その後、ルートの線がデータ ソースに追加されます。 乗用車のルートの線には、2 つのプロパティを追加します。ストローク カラー (紫色) とストロークの幅 (5 ピクセル) です。  
+    上記のコード スニペットでは、[getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.models.routedirectionsrequestbody?view=azure-maps-typescript-latest) メソッドを介して Azure Maps ルーティング サービスにクエリを行います。 応答から `geojson.getFeatures()` メソッドを使用して抽出される GeoJSON フィーチャー コレクションから、ルートの線が抽出されます。 その後、ルートの線がデータ ソースに追加されます。 乗用車のルートの線には、2 つのプロパティを追加します。ストローク カラー (紫色) とストロークの幅 (5 ピクセル) です。  
 
 4. **MapTruckRoute.html** ファイルを保存し、ブラウザーを更新して結果を表示します。 Maps の API と正常に接続されると、次のようなマップが表示されます。
 

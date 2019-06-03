@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2018
 ms.author: rogarana
-ms.openlocfilehash: 21505da414b29f2ae9eeea7f9fcad9db2e57c4fe
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 3c45c8587e3ca19b32ccd8dc66575333622b3cf1
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64702823"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65796579"
 ---
 # <a name="convert-a-windows-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Windows 仮想マシンを非管理対象ディスクからマネージド ディスクに変換します
 
@@ -99,7 +99,6 @@ ms.locfileid: "64702823"
 変換中にエラーが発生する場合、または以前の変換の問題のために VM がエラー状態になっている場合は、`ConvertTo-AzVMManagedDisk` コマンドレットをもう一度実行します。 通常再試行するだけで状況が好転します。
 変換前に、すべての VM の拡張機能が "プロビジョニング成功" 状態にあることを確認してください。そのようになっていないとエラー コード 409 で変換に失敗します。
 
-
 ## <a name="convert-using-the-azure-portal"></a>Azure portal を使用して変換する
 
 Azure portal を使用して、アンマネージド ディスクをマネージド ディスクに変換することもできます。
@@ -108,7 +107,7 @@ Azure portal を使用して、アンマネージド ディスクをマネージ
 2. ポータルで VM の一覧から VM を選択します。
 3. VM のブレードで、メニューから **[ディスク]** を選択します。
 4. **[ディスク]** ブレードの上部で、**[編集]** を選択します。
-5. VM が可用性セット内にある場合は、可用性セットを先に変換する必要があることを示す警告が **[マネージド ディスクへの移行]** ブレードに表示されます。 警告には、可用性セットを変換するためにクリックできるリンクが含まれています。 可用性セットが変換された後、または VM が可用性セットに含まれていない場合は、**[移行]** をクリックして、ディスクをマネージド ディスクに移行するプロセスを開始します。 
+5. VM が可用性セット内にある場合は、可用性セットを先に変換する必要があることを示す警告が **[マネージド ディスクへの移行]** ブレードに表示されます。 警告には、可用性セットを変換するためにクリックできるリンクが含まれています。 可用性セットが変換された後、または VM が可用性セットに含まれていない場合は、**[移行]** をクリックして、ディスクをマネージド ディスクに移行するプロセスを開始します。
 
 VM が停止し、移行の完了後に再起動します。
 

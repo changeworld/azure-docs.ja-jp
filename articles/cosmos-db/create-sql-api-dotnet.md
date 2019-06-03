@@ -7,13 +7,13 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 04/05/2019
-ms.openlocfilehash: e1b5ade470e3041fc15a8f71db76a4004a33f765
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.date: 05/20/2019
+ms.openlocfilehash: 432ddf6e0fea0d6de3c24dc853502dca303ce693
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65142679"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65954560"
 ---
 # <a name="quickstart-build-a-net-web-app-using-sql-api-account-in-azure-cosmos-db"></a>クイック スタート:Azure Cosmos DB の SQL API アカウントを使用して .NET Web アプリをビルドする
 
@@ -35,8 +35,8 @@ Azure Cosmos DB、Microsoft のグローバルに配布されるマルチモデ�
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure 開発ワークフローがインストールされている Visual Studio 2017
-- **無料**の [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/) をダウンロードして使用できます。 Visual Studio のセットアップ中に、必ず **[Azure の開発]** を有効にしてください。 
+[Azure の開発] ワークフローがインストールされた Visual Studio 2019
+- **無料の** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/) をダウンロードして使用できます。 Visual Studio のセットアップ中に、必ず **[Azure の開発]** を有効にしてください。 
 
 Azure サブスクリプションまたは Azure Cosmos DB の無料試用版アカウント
 - [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
@@ -62,9 +62,9 @@ Azure portal のデータ エクスプローラーを使用してデータベー
     
     |設定|推奨値|説明
     |---|---|---|
-    |**データベース ID**|ToDoList|新しいデータベースの名前として *ToDoList* を入力します。 データベース名は 1 文字以上 255 文字以内にする必要があります。`/, \\, #, ?` は使えず、末尾にスペースを入れることもできません。|
-    |**コレクション ID**|項目|新しいコレクションの名前として*項目*を入力します。 コレクション ID には、データベース名と同じ文字要件があります。|
-    |**パーティション キー**| /category| この記事で説明するサンプルでは、*/category* をパーティション キーとして使用します。|
+    |**[データベース ID]**|ToDoList|新しいデータベースの名前として *ToDoList* を入力します。 データベース名は 1 文字以上 255 文字以内にする必要があります。`/, \\, #, ?` は使えず、末尾にスペースを入れることもできません。|
+    |**[コレクション ID]**|項目|新しいコレクションの名前として*項目*を入力します。 コレクション ID には、データベース名と同じ文字要件があります。|
+    |**パーティション キー**| /category| この記事で説明するサンプルでは、 */category* をパーティション キーとして使用します。|
     |**スループット**|400|スループットを 400 要求ユニット/秒 (RU/秒) のままにします。 待ち時間を短縮する場合、後でスループットをスケールアップできます。| 
     
     この例では、**一意のキー**を追加しません。 一意のキーを使用すると、パーティション キーごとに 1 つまたは複数の値の一意性を確保して、データベースにデータ整合性のレイヤーを追加できます。 詳細については、[Azure Cosmos DB における一意のキー](unique-keys.md)に関するページをご覧ください。
@@ -78,7 +78,7 @@ Azure portal のデータ エクスプローラーを使用してデータベー
 
 データ エクスプローラーを使用して、ご自分の新しいデータベースにデータを追加します。
 
-1. **データ エクスプローラー**の **[コレクション]** ウィンドウに新しいデータベースが表示されます。 **[ToDoList]** データベースを展開し、**[項目]** コレクションを展開して、**[ドキュメント]** を選択し、**[新しいドキュメント]** を選択します。 
+1. **データ エクスプローラー**の **[コレクション]** ウィンドウに新しいデータベースが表示されます。 **[ToDoList]** データベースを展開し、 **[項目]** コレクションを展開して、 **[ドキュメント]** を選択し、 **[新しいドキュメント]** を選択します。 
    
    ![Azure Portal のデータ エクスプローラーで新しいドキュメントを作成する](./media/create-sql-api-dotnet/azure-cosmosdb-new-document.png)
    
@@ -159,13 +159,13 @@ Azure portal のデータ エクスプローラーを使用してデータベー
 
 ### <a name="run-the-web-app"></a>Web アプリの実行
 
-1. Visual Studio の**ソリューション エクスプローラー**で **todo** プロジェクトを右クリックし、**[NuGet パッケージの管理]** を選択します。 
+1. Visual Studio の**ソリューション エクスプローラー**で **todo** プロジェクトを右クリックし、 **[NuGet パッケージの管理]** を選択します。 
 
 1. NuGet の **[参照]** ボックスに「*DocumentDB*」と入力します。
 
 1. 結果から、**Microsoft.Azure.DocumentDB** ライブラリをインストールします (まだインストールしていない場合)。 これにより、[Microsoft.Azure.DocumentDB](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/) パッケージとすべての依存関係がインストールされます。
    
-   NuGet パッケージ マネージャーに、いくつかのパッケージがソリューションに不足していることを示すメッセージが表示された場合は、**[復元]** を選択して、内部ソースからそれらのパッケージをインストールします。 
+   NuGet パッケージ マネージャーに、いくつかのパッケージがソリューションに不足していることを示すメッセージが表示された場合は、 **[復元]** を選択して、内部ソースからそれらのパッケージをインストールします。 
 
 1. **Ctrl**+**F5** キーを押して、ご使用のブラウザーでアプリを実行します。 
 

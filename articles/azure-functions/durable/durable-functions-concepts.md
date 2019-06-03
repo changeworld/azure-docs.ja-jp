@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: azfuncdf
-ms.openlocfilehash: aa9563266f6b43e3bc2f21fbc0b340c86c5895ae
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.openlocfilehash: 95ec6a863f951a8c26abd865041c68df333a4e38
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59608733"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65071334"
 ---
 # <a name="durable-functions-patterns-and-technical-concepts-azure-functions"></a>Durable Functions のパターンと技術概念 (Azure Functions)
 
@@ -219,9 +219,6 @@ module.exports = async function (context, req) {
 };
 ```
 
-> [!WARNING]
-> JavaScript でローカルに開発する場合、`DurableOrchestrationClient` でメソッドを使用するには、環境変数 `WEBSITE_HOSTNAME` を `localhost:<port>` (例: `localhost:7071`) に設定する必要があります。 この要件の詳細については、[GitHub の問題 28](https://github.com/Azure/azure-functions-durable-js/issues/28) に関するトピックをご覧ください。
-
 .NET における [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) `starter`パラメーターは、Durable Functions 拡張機能の一部である `orchestrationClient` 出力バインドからの値です。 JavaScript では、`df.getClient(context)` を呼び出すことによって、このオブジェクトが返されます。 これらのオブジェクトには、新しいまたは既存のオーケストレーター関数インスタンスの開始、インスタンスへのイベントの送信、インスタンスの停止、およびインタンスに対するクエリの送信を行うためのメソッドがあります。
 
 上記の例では、HTTP によってトリガーされる関数が、受信 URL から `functionName` 値を受け取り、その値を [StartNewAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_StartNewAsync_) に渡します。 次に [CreateCheckStatusResponse](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_CreateCheckStatusResponse_System_Net_Http_HttpRequestMessage_System_String_) バインド API が、`Location` ヘッダーとインスタンスの追加情報を含む応答を返します。 この情報を後で使用して、開始されたインスタンスの状態を調べたり、インスタンスを終了したりできます。
@@ -377,6 +374,63 @@ module.exports = async function (context) {
 };
 ```
 
+## <a name="pattern-6-aggregator-preview"></a>パターン #6:アグリゲーター (プレビュー)
+
+6 番目のパターンは、ある期間のイベント データを 1 つのアドレス可能な*エンティティ* に集計することに関連しています。 このパターンでは、集計されるデータは、複数のソースから取得されるか、バッチで配信されるか、または長期間にわたって分散される可能性があります。 アグリゲーターがイベント データの到着時にイベント データに対してアクションを行ったり、外部クライアントが集計されたデータをクエリする必要が生じたりする場合があります。
+
+![アグリゲーターの図](./media/durable-functions-concepts/aggregator.png)
+
+このパターンを通常のステートレス関数で実装しようとする際に注意が必要な点は、同時実行制御が大きな課題となることです。 複数のスレッドが同時に同じデータを変更することに注意する必要があるだけでなく、アグリゲーターが一度に 1 つの VM 上でのみ実行されるようにすることも注意する必要があります。
+
+[Durable Entity 関数](durable-functions-preview.md#entity-functions)を使用すれば、このパターンを 1 つの関数として簡単に実装できます。
+
+```csharp
+public static async Task Counter(
+    [EntityTrigger(EntityClassName = "Counter")] IDurableEntityContext ctx)
+{
+    int currentValue = ctx.GetState<int>();
+    int operand = ctx.GetInput<int>();
+
+    switch (ctx.OperationName)
+    {
+        case "add":
+            currentValue += operand;
+            break;
+        case "subtract":
+            currentValue -= operand;
+            break;
+        case "reset":
+            await SendResetNotificationAsync();
+            currentValue = 0;
+            break;
+    }
+
+    ctx.SetState(currentValue);
+}
+```
+
+クライアントは、`orchestrationClient` バインディングを使用して、エンティティ関数の*操作* をエンキューすることができます (「シグナル通知」とも呼ばれる)。
+
+```csharp
+[FunctionName("EventHubTriggerCSharp")]
+public static async Task Run(
+    [EventHubTrigger("device-sensor-events")] EventData eventData,
+    [OrchestrationClient] IDurableOrchestrationClient entityClient)
+{
+    var metricType = (string)eventData.Properties["metric"];
+    var delta = BitConverter.ToInt32(eventData.Body, eventData.Body.Offset);
+
+    // The "Counter/{metricType}" entity is created on-demand.
+    var entityId = new EntityId("Counter", metricType);
+    await entityClient.SignalEntityAsync(entityId, "add", delta);
+}
+```
+
+同様に、クライアントは、`orchestrationClient` バインディングのメソッドを使用して、エンティティ関数の状態をクエリできます。
+
+> [!NOTE]
+> エンティティ関数は、現在 [Durable Functions 2.0 プレビュー](durable-functions-preview.md)でのみ使用できます。
+
 ## <a name="the-technology"></a>テクノロジ
 
 Durable Functions 拡張機能の背後には、永続的なタスクのオーケストレーションを構築するために使用される GitHub のオープン ソース ライブラリである [Durable Task Framework](https://github.com/Azure/durabletask) があり、この拡張機能はその上に構築されています。 Azure Functions が Azure WebJobs のサーバーレスな進化形であるのと同じように、Durable Functions は Durable Task Framework のサーバーレスな進化形です。 Microsoft や他の組織は、ミッション クリティカルなプロセスを自動化するために、Durable Task Framework を広範囲にわたって使用しています。 サーバーレスな Azure Functions 環境には自然に適合します。
@@ -423,7 +477,7 @@ Storage BLOB は、主にオーケストレーション インスタンスの複
 
 ![Azure Storage Explorer のスクリーンショット](./media/durable-functions-concepts/storage-explorer.png)
 
-> [!WARNING]
+> [!NOTE]
 > テーブル ストレージで実行履歴を確認できるのは簡単で便利ですが、このテーブルには依存関係を作成しないでください。 このテーブルは、Durable Functions 拡張機能の発展に伴って変更される可能性があります。
 
 ## <a name="known-issues"></a>既知の問題

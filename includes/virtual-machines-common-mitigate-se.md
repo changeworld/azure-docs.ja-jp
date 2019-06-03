@@ -5,17 +5,17 @@ services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 08/14/2018
+ms.date: 05/14/2019
 ms.author: cynthn;kareni
 ms.custom: include file
-ms.openlocfilehash: 4c5b4c5eacd4be751004af551e3753a61873c7a7
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: be8c3d3be4410d15ba132a24a417e7a7b0418352
+ms.sourcegitcommit: 3675daec6c6efa3f2d2bf65279e36ca06ecefb41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59551645"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65620272"
 ---
-**ドキュメントの最終更新日**:2018 年 8 月 14 日午前 10:00 (PST)。
+**ドキュメントの最終更新日**:2019 年 5 月 14 日 10:00 AM PST。
 
 投機的実行のサイドチャネル攻撃として知られる[新たな CPU 脆弱性クラス](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180002)を開示したところ、よりわかりやすい説明を求めて、お客様からさまざまな質問が寄せられています。  
 
@@ -28,11 +28,17 @@ Azure にさまざまな角度から組み込まれているセキュリティ�
 > [!NOTE] 
 > このドキュメントが初めて公開されて以来、この脆弱性クラスについて同様の記事がいくつか開示されてきました。 Microsoft は今後もお客様の保護とガイダンスの提供に積極的に投資していく予定です。 引き続き解決策を公開していくために、このページは随時更新されます。 
 > 
-> 2018 年 8 月 14 日には、投機的実行に関する新たなサイドチャネルの脆弱性が業界により開示されました。この脆弱性は [L1 Terminal Fault](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180018) (L1TF) と呼ばれ、複数の CVE ([CVE-2018-3615、CVE-2018-3620、CVE-2018-3646](https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-00161.html)) が割り当てられています。 この脆弱性が影響を及ぼすのは Intel® Core® プロセッサと Intel® Xeon® プロセッサです。 Microsoft のクラウド サービスには、顧客間の分離性を高める軽減策が導入されています。 L1TF や以前の脆弱性 ([Spectre Variant 2 CVE-2017-5715 および Meltdown Variant 3 CVE-2017-5754](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution)) から保護するための詳しいガイダンスについては、以降の情報をご覧ください。
->  
-
-
-
+> 2019 年 5 月 14 日、[Intel](https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-00233.html) は Microarchitectural Data Sampling (MDS) と呼ばれる、新たな投機的実行サイド チャネルの脆弱性を公開しました。MDS については、Microsoft のセキュリティ ガイダンス [ADV190013](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV190013) を参照してください。これには、複数の CVE が割り当てられています。 
+> - CVE-2018-11091 - Microarchitectural Data Sampling Uncacheable Memory (MDSUM)
+> - CVE-2018-12126 - Microarchitectural Store Buffer Data Sampling (MSBDS) 
+> - CVE-2018-12127 - Microarchitectural Load Port Data Sampling (MLPDS)
+> - CVE-2018-12130 - Microarchitectural Fill Buffer Data Sampling (MFBDS)
+>
+> この脆弱性が影響を及ぼすのは Intel® Core® プロセッサと Intel® Xeon® プロセッサです。  Microsoft Azure はオペレーティング システムの更新プログラムをリリースしており、この脆弱性からお客様を保護するために、Intel から公開された新しいマイクロコードをすべてのフリートでデプロイしています。   Azure は Intel と緊密に連携し、プラットフォーム上での正式なリリース前に新しいマイクロコードのテストと検証を行っています。 
+>
+> **VM 内で信頼されていないコードを実行しているお客様**は、すべての投機的実行サイド チャネルの脆弱性に関する追加のガイダンス (Microsoft アドバイザリ ADV [180002](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180002)、[180018](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/adv180018)、および [190013](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV190013)) を参照し、この脆弱性から保護するための対策を講じる必要があります。
+>
+> それ以外のお客様は、多層防御の観点から脆弱性を評価し、選択した構成のセキュリティとパフォーマンスに関する関連事項を考慮する必要があります。
 
 
 
@@ -64,56 +70,115 @@ Azure 上で実行するアプリケーションを他の Azure ユーザーか�
 
 ## <a name="enabling-additional-security"></a>追加のセキュリティの有効化 
 
-VM 内または Cloud Services 内で追加的なセキュリティ機能を有効にすることができます。
+信頼されていないコードを実行している場合は、VM 内またはクラウド サービス内で追加的なセキュリティ機能を有効にすることができます。 VM 内またはクラウド サービス内でセキュリティ機能を有効にするために、オペレーティング システムが最新の状態になっていることも並行して確認してください
 
 ### <a name="windows"></a> Windows 
 
 そうした追加的なセキュリティ機能を有効にするためには、対象のオペレーティング システムが最新の状態にあることが必要です。 投機的実行のサイドチャネルに関しては、さまざまな軽減策が既定で有効になっていますが、ここで説明する追加的な機能は手動で有効にする必要があり、またパフォーマンスに影響を及ぼすことがあります。 
 
-**手順 1.**:[Azure サポートに連絡](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical)して、ご利用の Virtual Machines に最新のファームウェア (マイクロコード) を公開してもらいます。 
 
-**手順 2**:Kernel Virtual Address Shadowing (KVAS) と Branch Target Injection (BTI) OS サポートを有効にします。 [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) の指示に従い、`Session Manager` のレジストリ キーで保護を有効にします。 再起動が必要となります。 
+**手順 1:VM 上でハイパースレッディングを無効にする** - ハイパースレッド化された VM 上で信頼されていないコードを実行しているお客様は、ハイパースレッディングを無効にするか、ハイパースレッド化されていない VM サイズに移す必要があります。 VM でハイパースレッディングが有効になっているかどうかを確認するには、VM 内で Windows コマンド ラインを使用して以下のスクリプトを参照してください。
 
-**手順 3**:[入れ子式の仮想化](https://docs.microsoft.com/azure/virtual-machines/windows/nested-virtualization)でデプロイする場合 (D3 と E3 のみ):これらの手順は、Hyper-V ホストとして使用している VM 内で適用されます。 
+対話型インターフェイスを起動するには、`wmic` と入力します。 次に、以下を入力して、VM 上の物理および論理プロセッサの量を表示します。
 
-1. [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) の指示に従い、`MinVmVersionForCpuBasedMitigations` のレジストリ キーで保護を有効にします。  
- 
-1. [こちら](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-scheduler-types)の手順に従って、ハイパーバイザーのスケジューラの種類を **[コア]** に設定します。 
+```console
+CPU Get NumberOfCores,NumberOfLogicalProcessors /Format:List
+```
 
-**手順 4**:[KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) の手順に従い、[SpeculationControl](https://aka.ms/SpeculationControlPS) PowerShell モジュールを使って、保護が有効になっていることを確認します。 
+論理プロセッサの数が物理プロセッサ (コア) よりも多い場合は、ハイパースレッディングが有効になっています。  ハイパースレッド化された VM を実行している場合は、[Azure サポートに問い合わせて](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical)、ハイパースレッディングを無効にしてください。  ハイパースレッディングが無効になると、**VM の完全な再起動が必要になります**。 
+
+
+**手順 2**:手順 1 と並行して [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) の手順に従い、[SpeculationControl](https://aka.ms/SpeculationControlPS) PowerShell モジュールを使って、保護が有効になっていることを確認します。
 
 > [!NOTE]
 > このモジュールをダウンロード済みであっても、インストールするのは最新バージョンであることが必要です。
 >
 
-すべての VM で次のように表示される必要があります。
+
+PowerShell スクリプトの出力には、この脆弱性からの保護が有効になっていることを確認するための以下の値が含まれている必要があります。
 
 ```
-branch target injection mitigation is enabled: True
-
-kernel VA shadow is enabled: True  
-
-L1TFWindowsSupportEnabled: True
+Windows OS support for branch target injection mitigation is enabled: True
+Windows OS support for kernel VA shadow is enabled: True
+Windows OS support for speculative store bypass disable is enabled system-wide: False
+Windows OS support for L1 terminal fault mitigation is enabled: True
+Windows OS support for MDS mitigation is enabled: True
 ```
+
+出力に `MDS mitigation is enabled: False` と示されている場合、使用可能な軽減策のオプションについて [Azure サポートに問い合わせてください](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical)。
+
+
+
+**手順 3**:カーネル仮想アドレス シャドウ処理 (KVAS) とブランチ ターゲット インジェクション (BTI) の OS サポートを有効にするには、[KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) の指示に従い、`Session Manager` のレジストリ キーを使用して保護を有効にします。 再起動が必要となります。
+
+
+**手順 4**:[入れ子式の仮想化](https://docs.microsoft.com/azure/virtual-machines/windows/nested-virtualization)でデプロイする場合 (D3 と E3 のみ):これらの手順は、Hyper-V ホストとして使用している VM 内で適用されます。
+
+1.  [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) の指示に従い、`MinVmVersionForCpuBasedMitigations` のレジストリ キーを使用して保護を有効にします。
+2.  [こちら](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-scheduler-types)の手順に従って、ハイパーバイザーのスケジューラの種類を `Core` に設定します。
 
 
 ### <a name="linux"></a>Linux
 
 <a name="linux"></a>追加的なセキュリティ機能一式を内部で有効にするためには、対象のオペレーティング システムが完全に最新の状態にあることが必要です。 一部の軽減策については、既定で有効になります。 次のセクションで説明している内容は、既定でオフになっている機能や、ハードウェア サポート (マイクロコード) に依存している機能が対象となります。 これらの機能を有効にすると、パフォーマンスに影響が生じることがあります。 詳しい手順については、オペレーティング システムの提供元のドキュメントを参照してください。
- 
-**手順 1.**:[Azure サポートに連絡](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical)して、ご利用の Virtual Machines に最新のファームウェア (マイクロコード) を公開してもらいます。
- 
-**手順 2**:CVE-2017-5715 (Spectre Variant 2) を軽減するために、オペレーティング システムの提供元のドキュメントに従って、Branch Target Injection (BTI) OS サポートを有効にします。 
- 
-**手順 3**:CVE-2017-5754 (Meltdown Variant 3) を軽減するために、オペレーティング システムの提供元のドキュメントに従って、Kernel Page Table Isolation (KPTI) を有効にします。 
- 
-詳しい情報については、オペレーティング システムの提供元から入手してください。  
- 
-- [Redhat およびCentOS](https://access.redhat.com/security/vulnerabilities/speculativeexecution) 
-- [Suse](https://www.suse.com/support/kb/doc/?id=7022512) 
-- [Ubuntu](https://wiki.ubuntu.com/SecurityTeam/KnowledgeBase/SpectreAndMeltdown) 
 
+
+**手順 1:VM 上でハイパースレッディングを無効にする** - ハイパースレッド化された VM 上で信頼されていないコードを実行しているお客様は、ハイパースレッディングを無効にするか、ハイパースレッド化されていない VM に移す必要があります。  ハイパースレッド化された VM を実行しているかどうかを確認するには、Linux VM で `lspcu` コマンドを実行します。 
+
+`Thread(s) per core = 2` の場合、ハイパースレッディングが有効になっています。 
+
+`Thread(s) per core = 1` の場合、ハイパースレッディングが無効になっています。 
+
+ 
+ハイパースレッディングが有効になっている VM の出力例: 
+
+```console
+CPU Architecture:      x86_64
+CPU op-mode(s):        32-bit, 64-bit
+Byte Order:            Little Endian
+CPU(s):                8
+On-line CPU(s) list:   0,2,4,6
+Off-line CPU(s) list:  1,3,5,7
+Thread(s) per core:    2
+Core(s) per socket:    4
+Socket(s):             1
+NUMA node(s):          1
+
+```
+
+ハイパースレッド化された VM を実行している場合は、[Azure サポートに問い合わせて](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical)、ハイパースレッディングを無効にしてください。  注:ハイパースレッディングが無効になると、**VM の完全な再起動が必要になります**。
+
+
+**手順 2**:以下のいずれかの投機的実行サイド チャネルの脆弱性を軽減する場合は、お使いのオペレーティング システム プロバイダーのドキュメントを参照してください。   
+ 
+- [Redhat およびCentOS](https://access.redhat.com/security/vulnerabilities) 
+- [SUSE](https://www.suse.com/support/kb/?doctype%5B%5D=DT_SUSESDB_PSDB_1_1&startIndex=1&maxIndex=0) 
+- [Ubuntu](https://wiki.ubuntu.com/SecurityTeam/KnowledgeBase/) 
 
 ## <a name="next-steps"></a>次の手順
 
-詳しくは、[CPU の脆弱性からの Azure 顧客の保護](https://azure.microsoft.com/blog/securing-azure-customers-from-cpu-vulnerability/)に関する記事を参照してください。
+この記事では、多くの最新のプロセッサに影響を与える、以下の投機的実行サイド チャネル攻撃のガイダンスを提供しています。
+
+[Spectre Meltdown](https://portal.msrc.microsoft.com/security-guidance/advisory/ADV180002):
+- CVE-2017-5715 - ブランチ ターゲット インジェクション (BTI)  
+- CVE-2017-5754 - カーネル ページ テーブル アイソレーション (KPTI)
+- CVE-2018-3639 - 投機的ストア バイパス (KPTI) 
+ 
+[L1 ターミナル フォールト (L1TF)](https://portal.msrc.microsoft.com/security-guidance/advisory/ADV180018):
+- CVE-2018-3615 - Intel ソフトウェア ガード エクステンションズ (Intel SGX)
+- CVE-2018-3620 - オペレーティング システム (OS) およびシステム管理モード (SMM)
+- CVE-2018-3646 - Virtual Machine Manager (VMM) への影響
+
+[Microarchitectural Data Sampling](https://portal.msrc.microsoft.com/security-guidance/advisory/ADV190013): 
+- CVE-2018-11091 - Microarchitectural Data Sampling Uncacheable Memory (MDSUM)
+- CVE-2018-12126 - Microarchitectural Store Buffer Data Sampling (MSBDS)
+- CVE-2018-12127 - Microarchitectural Load Port Data Sampling (MLPDS)
+- CVE-2018-12130 - Microarchitectural Fill Buffer Data Sampling (MFBDS)
+
+
+
+
+
+
+
+

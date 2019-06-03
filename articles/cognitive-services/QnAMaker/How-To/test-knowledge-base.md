@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 12/17/2018
+ms.date: 05/08/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: ea2381287729579e10d457912c4147f59716bcc4
-ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
+ms.openlocfilehash: 2c596b49d5587b07fe75cefde72e897478dc3dc8
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64875707"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65472086"
 ---
 # <a name="test-your-knowledge-base-interactively-in-qna-maker"></a>QnA Maker のナレッジ ベースを対話形式でテストする
 
@@ -24,14 +24,10 @@ QnA Maker のナレッジ ベースをテストすることは、回答の正確
 
 ## <a name="test-answer-matching"></a>回答の適合性をテストする
 
-1.  **[My knowledge bases]\(マイ ナレッジ ベース\)** ページで目的のナレッジ ベースの名前を選択して、ナレッジ ベースにアクセスします。
-2.  スライド式の [テスト] パネルにアクセスするために、アプリケーションの上部パネルにある **[テスト]** を選択します。
-
-    ![テスト パネルにアクセスする](../media/qnamaker-how-to-test-kb/access-test.png)
-
-3.  テキスト ボックスにクエリを入力して Enter キーを押します。
-
-4.  ナレッジ ベースから、最も適合した回答が応答として返されます。
+1. **[My knowledge bases]\(マイ ナレッジ ベース\)** ページで目的のナレッジ ベースの名前を選択して、ナレッジ ベースにアクセスします。
+1. スライド式の [テスト] パネルにアクセスするために、アプリケーションの上部パネルにある **[テスト]** を選択します。
+1. テキスト ボックスにクエリを入力して Enter キーを押します。
+1. ナレッジ ベースから、最も適合した回答が応答として返されます。
 
 ## <a name="clear-test-panel"></a>テスト パネルのクリア
 
@@ -65,14 +61,20 @@ QnA Maker のナレッジ ベースをテストすることは、回答の正確
 
 ## <a name="add-a-new-answer"></a>新しい回答の追加
 
-一致した既存の回答に誤りがあった場合や、ナレッジ ベースに回答が存在しない (適切な一致が KB に見つからない) 場合は、新しい回答を追加することができます。 現在の質問のテキスト ボックスに新しい回答を入力し、Enter キーを押して追加します。 
+一致した既存の回答に誤りがあった場合や、ナレッジ ベースに回答が存在しない (適切な一致が KB に見つからない) 場合は、新しい回答を追加することができます。 
 
-その回答を保持するには、**[Save and Train]\(保存してトレーニング\)** を選択してください。 これでナレッジ ベースには、質問とその回答のペアが新たに追加されたことになります。
+回答一覧の一番下で、テキスト ボックスに新しい回答を入力し、Enter を押すと追加できます。 
 
-![新しい質問とその回答のペアを追加する](../media/qnamaker-how-to-test-kb/add-answer.png)
+その回答を保持するには、**[Save and Train]\(保存してトレーニング\)** を選択してください。 これでナレッジ ベースには、質問とその回答のペアが新たに追加されたことになります。 
 
 > [!NOTE]
 > ナレッジ ベースに対するすべての編集は、**[Save and Train]\(保存してトレーニング\)** ボタンを押したときにのみ保存されます。
+
+## <a name="test-the-published-knowledge-base"></a>公開ナレッジ ベースをテストする
+
+ナレッジ ベースの公開バージョンをテスト ウィンドウでテストできます。 KB を公開したら、**[Published KB]\(公開済み KB\)** ボックスを選択し、公開済み KB から結果を取得するためのクエリを送信します。
+
+![公開済み KB のテスト](../media/qnamaker-how-to-test-kb/test-against-published-kb.png)
 
 ## <a name="next-steps"></a>次の手順
 

@@ -1,27 +1,20 @@
 ---
-title: Azure と Dynamics 365 のコンサルティング サービス オファー - オファーの作成 | Microsoft Docs
-description: Cloud パートナー ポータルで Azure または Dynamics 365 コンサルティング サービス オファーを作成するためのガイド。
+title: コンサルティング オファーを作成する | Azure Marketplace
+description: Azure Marketplace の Cloud パートナー ポータルで Azure または Dynamics 365 コンサルティング サービスのオファーを作成します。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: qianw211
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/30/2018
-ms.author: pbutlerm
-ms.openlocfilehash: f130f20643ba80bf706b8b5ba8f4b7eab0acaa59
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.author: pabutler
+ms.openlocfilehash: 09b9dce8e30ed3ba5ad0bac58929cd2c6d71793c
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54231446"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64942830"
 ---
-# <a name="create-an-offer"></a>オファーの作成
+# <a name="create-a-consulting-offer"></a>コンサルティング オファーを作成する
 
 この記事では、コンサルティング サービス オファーを作成して発行する方法について説明します。
 
@@ -32,8 +25,8 @@ ms.locfileid: "54231446"
 ## <a name="create-a-new-offer"></a>新しいオファーを作成する
 
 新しいオファーを作成するには、次の手順に従います。
-1. Cloud パートナー ポータルのメイン メニューで、**[新しいプラン]** を選択します。
-1. **[New offer]\(新しいオファー\)** メニューで、**[Consulting service]\(コンサルティング サービス\)** を選択します。
+1. Cloud パートナー ポータルのメイン メニューで、 **[新しいプラン]** を選択します。
+1. **[New offer]\(新しいオファー\)** メニューで、 **[Consulting service]\(コンサルティング サービス\)** を選択します。
 
     ![新しいコンサルティング サービス オファーを作成する](media/cppselectnewconsultingoffer.png)
 

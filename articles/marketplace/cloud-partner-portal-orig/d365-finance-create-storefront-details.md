@@ -1,25 +1,18 @@
 ---
-title: ネットショップの詳細フォームに記入する方法 | Microsoft Docs
+title: ネットショップの詳細フォームに記入する方法
 description: 新しい Dynamics 365 Business Central アプリ用のネットショップの詳細フォームの値について説明します。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/17/2018
-ms.author: pbutlerm
-ms.openlocfilehash: f69a7f9ca94c0a83098300f01e9413b342bd4ae8
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.author: pabutler
+ms.openlocfilehash: a22a2ebe870280ddcdf18c037141b92894742400
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389376"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64935025"
 ---
 <a name="how-to-fill-out-the-storefront-details-form"></a>ネットショップの詳細フォームに記入する方法
 ===========================================
@@ -57,9 +50,9 @@ AppSource 上でアプリが対応する試用版の種類を選択します。
 
 ### <a name="supported-countriesregions"></a>サポートされている国/地域
 
-このフィールドには、オファーの試用版が利用できる国/地域を指定します。 Microsoft Dynamics 365 Business Central が既に利用できるかプレビュー中の国のみを選択できます。 最新の一覧については、「[Countries and Translations Supported](https://docs.microsoft.com/dynamics-nav/compliance/apptest-countries-and-translations)」(サポートされている国と翻訳) をご覧ください。
+このフィールドには、オファーの試用版が利用できる国/地域を指定します。 Microsoft Dynamics 365 Business Central が既に使用可能であるかまたはプレビュー中である国/地域のみを選択できます。 現在の一覧については、＠＠「[国/地域と翻訳サポート](https://docs.microsoft.com/dynamics-nav/compliance/apptest-countries-and-translations)」を参照してください。
 
-![サポートされている国と翻訳を選択する](./media/d365-financials/image008.png)
+![国/地域およびサポートされている変換の選択](./media/d365-financials/image008.png)
 
 
 ### <a name="supported-languages"></a>サポートされている言語
@@ -80,15 +73,15 @@ AppSource でステージングされたオファーを表示するために使�
 
 ### <a name="offer-logo-png-format-48x48"></a>オファーのロゴ (png 形式、48 x 48)
 
-このロゴは、AppSource で検索が完了したときに、アプリまたはアプリの結果の概要に表示されます。 *png 形式のみを使用できます。*  解像度 48 x 48 ピクセルの png イメージをアップロードします。
+このロゴは、AppSource で検索が完了したときに、アプリまたはアプリの結果の概要に表示されます。 *png 形式のみを使用できます。*  解像度 48 x 48\* ピクセルの png イメージをアップロードします。
 
 ### <a name="offer-logo-png-format-216x216"></a>オファーのロゴ (png 形式、216 x 216)
 
-AppSource でアプリの詳細ページに表示されます。 *png 形式のみを使用できます。* 解像度 216 x 216 ピクセルの png イメージをアップロードします。
+AppSource でアプリの詳細ページに表示されます。 *png 形式のみを使用できます。* 解像度 216 x 216\* ピクセルの png イメージをアップロードします。
 
 ### <a name="video"></a>ビデオ
 
-少なくとも 1 つのビデオをアップロードすることをお勧めします (ただし、必須ではありません)。 ビデオは最大で 4 つまで許可されます。 アップロードするビデオごとに、ビデオと関連付けるビデオ名、URL (YouTube または Vimeo のみ)、およびサムネイルを入力する必要があります。 サムネイルは png 形式で、1280 x 720 ピクセルである必要があります。 新しいビデオを追加するには、プラス記号をクリックします。下のスクリーンショットをご覧ください。 ビデオのサムネイルが AppSource に表示されます。
+少なくとも 1 つのビデオをアップロードすることをお勧めします (ただし、必須ではありません)。 ビデオは最大で 4 つまで許可されます。 アップロードするビデオごとに、ビデオと関連付けるビデオ名、URL (YouTube または Vimeo のみ)、およびサムネイルを入力する必要があります。 サムネイルは png 形式で、1280 x 720\* ピクセルである必要があります。 新しいビデオを追加するには、プラス記号をクリックします。下のスクリーンショットをご覧ください。 ビデオのサムネイルが AppSource に表示されます。
 
 ![ビデオのアップロード](./media/d365-financials/image009.png)
 
@@ -119,7 +112,7 @@ AppSource でアプリの詳細ページに表示されます。 *png 形式の�
 
 ### <a name="lead-destination"></a>リードの宛先
 
-リードを保存する CRM システムを選択します。 次のうちいずれかの CRM システムをお持ちの場合、\"[Azure テーブル]\" を選択してください。Salesforce、Marketo、Microsoft Dynamics CRM。 ここで選択する CRM システムに、AppSource でアプリを試すエンド ユーザー (リード) の詳細が記述されます。 選択する CRM システムに応じて下記の該当する URL をクリックして、続く一連のフィールドに入力するための情報を参照してください。
+リードを保存する CRM システムを選択します。 次のいずれかの CRM システムをお持ちの場合、ここで \"[Azure テーブル]\" を選択してください(Salesforce、Marketo、Microsoft Dynamics CRM)。 ここで選択する CRM システムに、AppSource でアプリを試すエンド ユーザー (リード) の詳細が記述されます。 選択する CRM システムに応じて下記の該当する URL をクリックして、続く一連のフィールドに入力するための情報を参照してください。
 
 -   [Azure テーブル](./cloud-partner-portal-lead-management-instructions-azure-table.md)
 -   [Marketo](./cloud-partner-portal-lead-management-instructions-marketo.md)

@@ -5,15 +5,15 @@ author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 05/06/2019
+ms.date: 05/23/2019
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: 1d874b9c8f14b1489ab5e5b8bbdddaff0669165e
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 70de178df86a4b202298eda63b0f59cb7bc96281
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65145197"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237836"
 ---
 # <a name="sql-language-reference-for-azure-cosmos-db"></a>Azure Cosmos DB 用の SQL 言語リファレンス 
 
@@ -1307,7 +1307,7 @@ RADIANS (<numeric_expression>)
 SELECT RADIANS(-45.01) AS r1, RADIANS(-181.01) AS r2, RADIANS(0) AS r3, RADIANS(0.1472738) AS r4, RADIANS(197.1099392) AS r5  
 ```  
   
- 結果セットは次のようになります。  
+  結果セットは次のようになります。  
   
 ```  
 [{  
@@ -1338,6 +1338,17 @@ ROUND(<numeric_expression>)
   
   数値式を返します。  
   
+  **解説**
+  
+  実行される丸め操作では、中点はゼロから離れる方向に丸められます。 入力が 2 つの整数のちょうど真ん中になる数値式の場合、結果はゼロより遠い側で最も近い整数値になります。  
+  
+  |<numeric_expression>|丸めの結果|
+  |-|-|
+  |-6.5000|-7|
+  |-0.5|-1|
+  |0.5|1|
+  |6.5000|7||
+  
   **例**  
   
   次の例では、最も近い整数に次の正と負の数値を丸めます。  
@@ -1346,7 +1357,7 @@ ROUND(<numeric_expression>)
 SELECT ROUND(2.4) AS r1, ROUND(2.6) AS r2, ROUND(2.5) AS r3, ROUND(-2.4) AS r4, ROUND(-2.6) AS r5  
 ```  
   
- 結果セットは次のようになります。  
+  結果セットは次のようになります。  
   
 ```  
 [{r1: 2, r2: 3, r3: 3, r4: -2, r5: -3}]  

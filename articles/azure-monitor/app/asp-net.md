@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 03/14/2019
+ms.date: 05/08/2019
 ms.author: mbullwin
-ms.openlocfilehash: 719cbe1ec8962b320aa2850053d44cdef7f56a8c
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 925ae2dd7b564eece4842cf25cc32b68d9e5c0b6
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58437818"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65472042"
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>ASP.NET Web サイトに Application Insights を設定する
 
@@ -29,7 +29,7 @@ ms.locfileid: "58437818"
 ASP.NET Web サイトに Application Insights を追加するうえで必要なことは次のとおりです。
 
 - 次のワークロードを使って、[Windows 用の Visual Studio 2017](https://www.visualstudio.com/downloads/) をインストールします。
-    - ASP.NET および Web の開発
+    - ASP.NET と Web 開発 (オプションのコンポーネントをオフにしないでください)
     - Azure の開発
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。

@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 03/13/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: fd5c47bb3c7bc3dfc9c0e140531ff832e7e6ef56
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6510099f9fb145951cbce1ea168b36dba5f76e07
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58011038"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65540913"
 ---
 # <a name="what-is-role-based-access-control-rbac-for-azure-resources"></a>Azure リソースのロールベースのアクセス制御 (RBAC) の概要
 
@@ -138,4 +138,4 @@ Azure では、複数のレベル ([管理グループ](../governance/management
 - [クイック スタート:Azure portal を使用して Azure リソースに対するユーザーのアクセス権を表示する](check-access.md)
 - [RBAC と Azure portal を使用して Azure リソースへのアクセスを管理する](role-assignments-portal.md)
 - [Azure での各種ロールについて](rbac-and-directory-admin-roles.md)
-- [エンタープライズ クラウドの導入: Azure でのリソース アクセス管理](/azure/architecture/cloud-adoption/getting-started/azure-resource-access)
+- [エンタープライズ クラウドの導入: Azure でのリソース アクセス管理](/azure/architecture/cloud-adoption/governance/resource-consistency/azure-resource-access)

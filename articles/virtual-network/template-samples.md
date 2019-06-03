@@ -3,8 +3,8 @@ title: 仮想ネットワーク用の Azure Resource Manager テンプレート 
 description: Azure Virtual Network のデプロイに使用できるさまざまな Azure Resource Manager テンプレートについて説明します。
 services: virtual-network
 documentationcenter: virtual-network
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 tags: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: sample
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
-ms.date: 04/13/2018
-ms.author: jdial
-ms.openlocfilehash: a16feffea6ac64423398b995499f0e6a60182636
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.date: 04/22/2019
+ms.author: kumud
+ms.openlocfilehash: c4d0c65cfae0bb323978f4143b0058071562ddb6
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54039590"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64682500"
 ---
 # <a name="azure-resource-manager-template-samples-for-virtual-network"></a>仮想ネットワーク用の Azure Resource Manager テンプレート サンプル
 
@@ -36,3 +36,4 @@ ms.locfileid: "54039590"
 |[Azure Storage の仮想ネットワーク サービス エンドポイントの作成](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vnet-2subnets-service-endpoints-storage-integration)|それぞれネットワーク インターフェイスを 1 つ含んだ 2 つのサブネットから成る新しい仮想ネットワークを作成します。 いずれか 1 つのサブネットについて、Azure Storage へのサービス エンドポイントを有効にし、そのサブネットに新しいストレージ アカウントを結び付けます。|
 |[2 つの仮想ネットワークの接続](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vnet-to-vnet-peering)| 2 つの仮想ネットワークを作成し、両者の間に仮想ネットワーク ピアリングを作成します。|
 |[複数の IP アドレスを持つ仮想マシンの作成](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-multiple-ipconfig)| 複数の IP アドレスを持つ Windows VM または Linux VM の作成|
+|[IPv4 と IPv6 のデュアル スタック仮想ネットワークの構成](https://github.com/Azure/azure-quickstart-templates/tree/master/ipv6-in-vnet)|2 つの VM と IPv4 および IPv6 のパブリック IP アドレスを使用した Azure Basic Load Balancer によるデュアル スタック (IPv4+IPv6) の仮想ネットワークを展開します。 |

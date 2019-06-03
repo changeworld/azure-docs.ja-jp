@@ -3,7 +3,7 @@ title: Azure AD の参加と Azure Active Directory Domain Services の比較 | 
 description: Azure AD の参加と Azure AD Domain Services を見極める
 services: active-directory-ds
 documentationcenter: ''
-author: eringreenlee
+author: MikeStephens-MS
 manager: daveba
 editor: curtand
 ms.assetid: 31a71d36-58c1-4839-b958-80da0c6a77eb
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/26/2017
-ms.author: ergreenl
-ms.openlocfilehash: d4f50ea89f2623d387fb77acb09e609def547468
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.date: 05/20/2019
+ms.author: mstephen
+ms.openlocfilehash: eaa8cb54a46b1ff3c2c0f7c40c824f6ddcca16b9
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55178938"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66234964"
 ---
 # <a name="choose-between-azure-active-directory-join-and-azure-active-directory-domain-services"></a>Azure Active Directory の参加と Azure Active Directory Domain Services 間で選定する
 この記事では、Azure Active Directory (AD) の参加と Azure AD Domain Services の違いを説明し、お使いのユースケースに基づく選定を支援します。
@@ -66,14 +66,14 @@ Azure AD Domain Services では、Azure の仮想ネットワーク内の管理�
 
 ## <a name="next-steps"></a>次の手順
 ### <a name="learn-more-about-azure-ad-domain-services"></a>Azure AD Domain Services の詳細
-* [Azure AD Domain Services の概要](active-directory-ds-overview.md)
+* [Azure AD Domain Services の概要](overview.md)
 * [機能](active-directory-ds-features.md)
-* [デプロイメント シナリオ](active-directory-ds-scenarios.md)
-* [Azure AD Domain Services がユースケースに適しているかを調べる方法](active-directory-ds-comparison.md)
-* [Azure AD Domain Services を Azure AD ディレクトリと同期させる方法について](active-directory-ds-synchronization.md)
+* [デプロイメント シナリオ](scenarios.md)
+* [Azure AD Domain Services がユースケースに適しているかを調べる方法](comparison.md)
+* [Azure AD Domain Services を Azure AD ディレクトリと同期させる方法について](synchronization.md)
 
 ### <a name="learn-more-about-azure-ad-join"></a>Azure AD の参加に関する詳細情報
 * [Azure Active Directory のデバイス管理の概要](../active-directory/device-management-introduction.md)
 
 ### <a name="get-started-with-azure-ad-domain-services"></a>Azure AD ドメイン サービスの使用開始
-* [Azure Portal を使用して Azure AD Domain Services を有効にする](active-directory-ds-getting-started.md)
+* [Azure Portal を使用して Azure AD Domain Services を有効にする](create-instance.md)

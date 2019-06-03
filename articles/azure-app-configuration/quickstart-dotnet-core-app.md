@@ -14,12 +14,12 @@ ms.tgt_pltfrm: .NET Core
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 34eafe8a13d126ebdbb08084d8820646ca43534a
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 0bf4aff8e0bae3e84e6383ec560dbfe67e30b994
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59998092"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65408719"
 ---
 # <a name="quickstart-create-a-net-core-app-with-app-configuration"></a>クイック スタート:App Configuration を使用して .NET Core アプリを作成する
 
@@ -39,7 +39,7 @@ Azure App Configuration は、Azure 内にあるマネージド構成サービ�
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. **[キー/値のエクスプローラー]** > **[+ 作成]** の順に選択して、次のキーと値のペアを追加します。
+6. **[Configuration Explorer]\(構成エクスプローラー)\** > **[+ 作成]** の順に選択して、次のキーと値のペアを追加します。
 
     | キー | 値 |
     |---|---|
@@ -61,13 +61,13 @@ Azure App Configuration は、Azure 内にあるマネージド構成サービ�
 
 1. 次のコマンドを実行して、`Microsoft.Extensions.Configuration.AzureAppConfiguration` NuGet パッケージへの参照を追加します。
 
-        dotnet add package Microsoft.Extensions.Configuration.AzureAppConfiguration --version 1.0.0-preview-007830001
+        dotnet add package Microsoft.Extensions.Configuration.AzureAppConfiguration --version 1.0.0-preview-008520001
 
 2. 次のコマンドを実行して、プロジェクトのパッケージを復元します。
 
         dotnet restore
 
-3. *Program.cs* を開き、App Configuration .NET Core 構成プロバイダーへの参照を追加します。
+3. *Program.cs* を開き、.NET Core App Configuration プロバイダーへの参照を追加します。
 
     ```csharp
     using Microsoft.Extensions.Configuration;

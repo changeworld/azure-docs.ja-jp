@@ -9,11 +9,11 @@ ms.date: 01/11/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 9c59b98fb615266c193f997c01c83922c18d4408
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56890997"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66147905"
 ---
 *キャッシュのウォームアップ*  
 ReadOnly ホスト キャッシュを使用するディスクでは、ディスクの制限を超えた高 IOPS を実現できます。 ホスト キャッシュからこの最大の読み取りパフォーマンスを得るには、まず、このディスクのキャッシュをウォームアップする必要があります。 これにより、ベンチマーク ツールが CacheReads ボリュームで促進する読み取り IO が、直接ディスクにヒットするのではなく、実際にキャッシュにヒットするようになります。 キャッシュ ヒットにより、キャッシュが有効化された 1 つのディスクから追加の IOPS が得られます。
@@ -68,7 +68,7 @@ IO 要求サイズ、% 読み取り/書き込み、% ランダム/順次の各�
    | RandomReads\_1 MB |1 MB |100 |100 |
 1. 次のパラメーターを使用して、キャッシュ ディスクの初期化の Iometer テストを実行します。 ターゲット ボリュームに 3 つのワーカー スレッドを使用し、キューの深さとして 128 を使用します。 [Test Setup]\(テストの設定\) タブでテストの [Run time]\(実行時間\) を 2 時間に設定します。
 
-   | シナリオ | ターゲット ボリューム | Name | duration |
+   | シナリオ | ターゲット ボリューム | Name | Duration |
    | --- | --- | --- | --- |
    | キャッシュ ディスクの初期化 |CacheReads |RandomWrites\_1 MB |2 時間 |
 1. 次のパラメーターを使用して、キャッシュ ディスクのウォームアップの Iometer テストを実行します。 ターゲット ボリュームに 3 つのワーカー スレッドを使用し、キューの深さとして 128 を使用します。 [Test Setup]\(テストの設定\) タブでテストの [Run time]\(実行時間\) を 2 時間に設定します。

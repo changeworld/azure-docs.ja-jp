@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/14/2019
+ms.date: 05/21/2019
 ms.topic: quickstart
 ms.service: cost-management
 manager: vitavor
 ms.custom: secdec18
-ms.openlocfilehash: ad8ab0466ed902a2852fe83293fc270cfcaab208
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9999518b81d264cb1e46f3c03ec65379d35aa603
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57997662"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242438"
 ---
 # <a name="activate-azure-subscriptions-and-accounts-with-cloudyn"></a>Cloudyn で Azure サブスクリプションとアカウントをアクティブ化する
 
@@ -37,7 +37,7 @@ CloudynCollector アプリケーションを割り当てるには、Azure サブ
 ### <a name="check-azure-active-directory-permissions"></a>Azure Active Directory のアクセス許可を確認する
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. Azure Portal で、**[Azure Active Directory]** を選びます。
+2. Azure Portal で、 **[Azure Active Directory]** を選びます。
 3. Azure Active Directory で **[ユーザー設定]** を選択します。
 4. **[アプリの登録]** オプションを確認します。
     - **[はい]** に設定されている場合は、管理者以外のユーザーでも AD アプリを登録できます。 この設定は、Azure AD テナント内のすべてのユーザーがアプリを登録できることを意味します。  
@@ -51,8 +51,8 @@ CloudynCollector アプリケーションを割り当てるには、Azure サブ
 
 ### <a name="add-a-new-account-subscription"></a>新しいアカウント (サブスクリプション) を追加する
 
-1. Cloudyn ポータルで、右上にある歯車アイコンをクリックし、**[クラウド アカウント]** を選択します。
-2. **[Add new account]\(新しいアカウントの追加\)** をクリックし、**[Add new account]\(新しいアカウントの追加\)** ボックスを表示します。 必要な情報を入力します。  
+1. Cloudyn ポータルで、右上にある歯車アイコンをクリックし、 **[クラウド アカウント]** を選択します。
+2. **[Add new account]\(新しいアカウントの追加\)** をクリックし、 **[Add new account]\(新しいアカウントの追加\)** ボックスを表示します。 必要な情報を入力します。  
     ![[新しいアカウントを追加] ボックスに必要な情報を入力](./media/activate-subs-accounts/add-new-account.png)
 
 ### <a name="update-a-subscription"></a>サブスクリプションを更新する
@@ -61,16 +61,16 @@ CloudynCollector アプリケーションを割り当てるには、Azure サブ
     ![[サブスクリプションの再検出] ボックスで自分のテナント ID を選択](./media/activate-subs-accounts/existing-sub.png)
 2. 必要に応じて、テナント ID を入力します。 テナント ID がわからない場合は、次の手順を使って調べます。
     1. [Azure Portal](https://portal.azure.com) にサインインします。
-    2. Azure Portal で、**[Azure Active Directory]** を選びます。
+    2. Azure Portal で、 **[Azure Active Directory]** を選びます。
     3. テナント ID を取得するには、Azure AD テナントの **[プロパティ]** を選択します。
     4. [ディレクトリ ID] の GUID をコピーします。 この値がテナント ID です。
-    詳しくは、「[テナント ID を取得する](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-id)」をご覧ください。
+    詳しくは、「[テナント ID を取得する](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)」をご覧ください。
 3. 必要に応じて、レート ID を選びます。 レート ID がわからない場合は、次の手順を使って調べます。
-    1. Azure Portal の右上にあるユーザー情報をクリックし、**[明細の表示]** をクリックします。
+    1. Azure Portal の右上にあるユーザー情報をクリックし、 **[明細の表示]** をクリックします。
     2. **[請求先アカウント]** で **[サブスクリプション]** をクリックします。
     3. **[個人用サブスクリプション]** で、サブスクリプションを選びます。
     4. **[プラン ID]** の下にレート ID が表示されます。 サブスクリプションのオファー ID をコピーします。
-4. [新しいアカウントの追加] (または [サブスクリプションの編集]) ボックスで、**[保存]** (または **[次へ]**) をクリックします。 Azure Portal にリダイレクトされます。
+4. [新しいアカウントの追加] (または [サブスクリプションの編集]) ボックスで、 **[保存]** (または **[次へ]** ) をクリックします。 Azure Portal にリダイレクトされます。
 5. ポータルにサインインします。 **[許可]** をクリックして、Cloudyn Collector の Azure アカウントへのアクセスを承認します。
 
     [Cloudyn Accounts] (Cloudyn アカウント) 管理ページにリダイレクトされ、サブスクリプションが**アクティブな**アカウント状態に更新されます。 Resource Manager の列の下に緑のチェックマーク記号が表示されます。
@@ -99,7 +99,7 @@ Cloudyn ポータルを始めて使用する際、Enterprise Agreement または
 Azure Enterprise Agreement API キーを生成して Cloudyn を設定する前に、次の手順に従って Azure Billing API を有効にする必要があります。
 
 - [企業ユーザー向けの Reporting API の概要](../billing/billing-enterprise-api.md)
-- 「**Enabling data access to the API (API へのデータ アクセスを有効にする)**」の「[Microsoft Azure Enterprise Portal Reporting API](https://ea.azure.com/helpdocs/reportingAPI)」
+- 「**Enabling data access to the API (API へのデータ アクセスを有効にする)** 」の「[Microsoft Azure Enterprise Portal Reporting API](https://ea.azure.com/helpdocs/reportingAPI)」
 
 また、部門管理者、アカウント所有者、およびエンタープライズ管理者に、Billing API による "_請求を確認する_" アクセス許可を付与する必要がある場合もあります。
 

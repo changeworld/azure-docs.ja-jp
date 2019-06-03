@@ -10,16 +10,16 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: 8eab941f9589e84d7193cc32f91d080d7cda7c08
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 8fd0ccff9875086f46ca001660b0ee954d3e539b
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55864759"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64869951"
 ---
 # <a name="sending-search-requests-to-the-bing-entity-search-api"></a>Bing Entity Search API への検索要求の送信
 
-Bing Entity Search API は、Bing に検索クエリを送信して、エンティティと場所を含む検索結果を取得します。 場所の結果には、レストラン、ホテルやその他の地元企業が含まれます。 場所の場合、クエリではローカル ビジネスの名前を指定したり、一覧 (たとえば、近くのレストラン) を尋ねたりできます。 エンティティの結果には、人、場所、または物が含まれます。 このコンテキストでの場所とは、観光名所、州、国などです。 
+Bing Entity Search API は、Bing に検索クエリを送信して、エンティティと場所を含む検索結果を取得します。 場所の結果には、レストラン、ホテルやその他の地元企業が含まれます。 場所の場合、クエリではローカル ビジネスの名前を指定したり、一覧 (たとえば、近くのレストラン) を尋ねたりできます。 エンティティの結果には、人、場所、または物が含まれます。 このコンテキストでの場所とは、観光名所、州、国/地域などです。 
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-entity-search-signup-requirements.md)]
 

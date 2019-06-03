@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/22/2019
 ms.author: jeedes
 ms.openlocfilehash: 2dea1dcd2f6ecef580d65a95d1227380901213eb
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59565506"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65866426"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sugar-crm"></a>チュートリアル:Azure Active Directory と Sugar CRM の統合
 

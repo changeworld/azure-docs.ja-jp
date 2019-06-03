@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 08/21/2018
+ms.date: 05/23/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 36b0a2f18cf2917251a87405456980811af1bc3d
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 157ccd284c25cb5c7275aa942823ade2a40795cc
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242194"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66239850"
 ---
 # <a name="secure-azure-cosmos-keys-using-azure-key-vault"></a>Azure Key Vault を使用して Azure Cosmos キーをセキュリティ保護する 
 
@@ -35,18 +35,18 @@ Azure Cosmos DB アクセス キーを Key Vault に格納して読み取るた�
 3. **[キー コンテナーの作成]** セクションで、次の情報を入力します。  
    * **[名前]:** Key Vault の一意の名前を指定します。  
    * **[サブスクリプション]:** 使用するサブスクリプションを選択します。  
-   * **[リソース グループ]** で、**[新規作成]** を選択し、リソース グループ名を入力します。  
+   * **[リソース グループ]** で、 **[新規作成]** を選択し、リソース グループ名を入力します。  
    * [場所] プルダウン メニューで、場所を選択します。  
    * 他のオプションは既定値のままにしておきます。  
-4. 上記の情報を指定したら、**[作成]** を選択します。  
+4. 上記の情報を指定したら、 **[作成]** を選択します。  
 
 ## <a name="add-azure-cosmos-db-access-keys-to-the-key-vault"></a>Azure Cosmos DB アクセス キーの Key Vault への追加
-1. 前の手順で作成した Key Vault に移動し、**[シークレット]** タブを開きます。  
+1. 前の手順で作成した Key Vault に移動し、 **[シークレット]** タブを開きます。  
 2. **[+Generate/Import]\(+ 生成/インポート\)** を選択します。 
 
    * **[アップロード オプション]** として **[手動]** を選択します。
    * シークレットの **[名前]** を指定します。
-   * Cosmos DB アカウントの接続文字列を **[値]** フィールドに指定します。 次に、**[作成]** を選択します。
+   * Cosmos DB アカウントの接続文字列を **[値]** フィールドに指定します。 次に、 **[作成]** を選択します。
 
    ![シークレットの作成](./media/access-secrets-from-keyvault/create-a-secret.png)
 
@@ -63,7 +63,7 @@ Azure Cosmos DB アクセス キーを Key Vault に格納して読み取るた�
    `var secret = await keyVaultClient.GetSecretAsync("<Your Key Vault’s secret identifier>")`
 
 3. ファイルを**保存**し、ソリューションを**ビルド**します。  
-4. 次は、Azure にアプリケーションをデプロイします。 プロジェクトを右クリックし、**[発行]** を選択します。 新しいアプリ サービス プロファイルを作成し (アプリの名前は WebAppKeyVault1 とします)、**[発行]** を選択します。   
+4. 次は、Azure にアプリケーションをデプロイします。 プロジェクトを右クリックし、 **[発行]** を選択します。 新しいアプリ サービス プロファイルを作成し (アプリの名前は WebAppKeyVault1 とします)、 **[発行]** を選択します。   
 
 5. アプリケーションがデプロイされたら、 Azure Portal で、デプロイした Web アプリケーションに移動し、そのアプリケーションの **[マネージド サービス ID]** をオンにします。  
 
@@ -79,7 +79,7 @@ Azure Cosmos DB アクセス キーを Key Vault に格納して読み取るた�
 
 1. Azure Portal に移動し、前のセクションで作成した **Key Vault** を開きます。  
 
-2. **[アクセス ポリシー]** を開き、**[+ 新規追加]** を選択し、デプロイした Web アプリケーションを探して、アクセス許可を選択して **[OK]** を選択します。  
+2. **[アクセス ポリシー]** を開き、 **[+ 新規追加]** を選択し、デプロイした Web アプリケーションを探して、アクセス許可を選択して **[OK]** を選択します。  
 
    ![アクセス ポリシーの追加](./media/access-secrets-from-keyvault/add-access-policy.png)
 

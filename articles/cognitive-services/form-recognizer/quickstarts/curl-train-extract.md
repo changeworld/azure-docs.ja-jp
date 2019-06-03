@@ -9,35 +9,51 @@ ms.subservice: form-recognizer
 ms.topic: quickstart
 ms.date: 04/15/2019
 ms.author: pafarley
-ms.openlocfilehash: 36f98a8dea2a732a7f8504b160da895637366fc8
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: bd68e2803b3b538011cfa37378890f2cc7b22223
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65471903"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65906995"
 ---
-# <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-using-rest-api-with-curl"></a>クイック スタート:cURL で REST API を使用して Form Recognizer モデルをトレーニングし、フォーム データを抽出する
+# <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-curl"></a>クイック スタート:cURL で REST API を使用して Form Recognizer モデルをトレーニングし、フォーム データを抽出する
 
-このクイックスタートでは、cURL で Form Recognizer の REST API を使用してトレーニングし、フォームをスコア付けしてキーと値のペアおよびテーブルを抽出します。
+このクイックスタートでは、cURL で Azure Form Recognizer の REST API を使用してトレーニングし、フォームをスコア付けしてキーと値のペアおよびテーブルを抽出します。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 ## <a name="prerequisites"></a>前提条件
+このクイック スタートを完了するには、以下が必要です。
+- アクセスが制限された Form Recognizer プレビューへのアクセス。 プレビューへのアクセスを取得するには、[Form Recognizer アクセス要求](https://aka.ms/FormRecognizerRequestAccess)フォームに記入して送信します。
+- インストールされた [cURL](https://curl.haxx.se/windows/)。
+- 同じ種類の少なくとも 5 つのフォームのセット。 このクイックスタートでは、[サンプル データセット](https://go.microsoft.com/fwlink/?linkid=2090451)を使用できます。
 
-* アクセスが制限された Form Recognizer プレビューへのアクセスを取得する必要があります。 プレビューへのアクセスを取得するには、[Cognitive Services Form Recognizer アクセス要求](https://aka.ms/FormRecognizerRequestAccess)フォームに記入して送信します。 
-* [cURL](https://curl.haxx.se/windows/) が必要です。
-* Form Recognizer のサブスクリプション キーが必要です。 [Cognitive Services アカウントを作成する](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)手順に従って Form Recognizer にサブスクライブし、キーを取得します。
-* 最小セットとして、同じ種類の 5 つのフォームが必要です。 このクイックスタートでは、[サンプル データセット](https://go.microsoft.com/fwlink/?linkid=2090451)を使用できます。
+## <a name="create-a-form-recognizer-resource"></a>Form Recognizer リソースを作成する
+
+Form Recognizer を使用するためのアクセスが認められている場合、複数のリンクおよびリソースを含むウェルカム メールを受信します。 そのメッセージ内の "Azure portal" リンクを使用して、Azure portal を開き、Form Recognizer リソースを作成します。 **[作成]** ウィンドウには以下の情報が表示されます。
+
+|    |    |
+|--|--|
+| **Name** | リソースのわかりやすい名前。 わかりやすい名前 (*MyNameFaceAPIAccount* など) を使用することをお勧めします。 |
+| **サブスクリプション** | アクセスが許可されている Azure サブスクリプションを選択します。 |
+| **場所** | Cognitive Services インスタンスの場所。 別の場所を選択すると待機時間が生じる可能性がありますが、リソースのランタイムの可用性には影響しません。 |
+| **[価格レベル]** | リソースのコストは、選択した価格レベルと使用量に依存します。 詳細については、「[API の価格の詳細](https://azure.microsoft.com/pricing/details/cognitive-services/)」をご覧ください。
+| **リソース グループ** | リソースを含む [Azure リソース グループ](https://docs.microsoft.com/azure/architecture/cloud-adoption/governance/resource-consistency/azure-resource-access#what-is-an-azure-resource-group)。 新しいグループを作成することも、既存のグループに追加することもできます。 |
+
+> [!IMPORTANT]
+> 通常、Azure portal で Cognitive Service リソースを作成するときに、マルチ サービスのサブスクリプション キー (複数の Cognitive Services で使用) または 単一サービスのサブスクリプション キー (特定の Cognitive Services でのみ使用) を作成するオプションがあります。 ただし、Form Recognizer はプレビュー リリースなので、複数のサービス サブスクリプションに含まれず、ウェルカム メールに記載されているリンクを使用しない限り、単一サービスのサブスクリプションを作成できません。
+
+Form Recognizer リソースがデプロイが完了すると、ポータルの **[すべてのリソース]** の一覧からこれを検索して選択します。 続いて、 **[キー]** タブを選択してサブスクリプション キーを表示します。 どちらのキーも、リソースへのアクセス権をアプリに与えます。 **KEY 1** の値をコピーします。 これは、次のセクションで使用します。
 
 ## <a name="train-a-form-recognizer-model"></a>Form Recognizer モデルをトレーニングする
 
-まず、トレーニング データのセットが必要です。 Azure Blob のデータまたはローカルのトレーニング データを使用できます。 主な入力データと同じ種類/構造のサンプル フォーム (PDF ドキュメントやイメージ) が少なくとも 5 つ必要です。 あるいは、フォームのファイル名に "empty" という単語を含む、単一の空のフォームを使用することもできます。
+まず、トレーニング データのセットが必要です。 Azure Blob のデータまたはローカルのトレーニング データを使用できます。 主な入力データと同じ種類/構造のサンプル フォーム (PDF ドキュメントやイメージ) が少なくとも 5 つ必要です。 または、単一の空のフォームを使用することもできます。 フォームのファイル名には "empty" の語を含める必要があります。
 
-Azure Blob コンテナー内のドキュメントを使用して Form Recognizer モデルをトレーニングするには、次の cURL コマンドを実行して、**Train** API を呼び出します。 コマンドを実行する前に、次の変更を加えます。
+Azure Blob コンテナー内のドキュメントを使用して Form Recognizer モデルをトレーニングするには、次の cURL コマンドを実行して、**Train** API を呼び出します。 コマンドを実行する前に、次の変更を行います。
 
-* `<Endpoint>` を、Form Recognizer サブスクリプション キーから取得したエンドポイントで置き換えます。 これは、Form Recognizer リソースの概要タブにあります。
-* `<SAS URL>` を、トレーニング データのある Azure BLOB Storage コンテナー共有アクセス署名 (SAS) URL で置き換えます。  
-* `<subscription key>` は、実際のサブスクリプション キーで置き換えてください。
+1. `<Endpoint>` を、Form Recognizer サブスクリプション キーから取得したエンドポイントで置き換えます。 これは、Form Recognizer リソースの **[概要]** タブにあります。
+1. `<SAS URL>` を、トレーニング データの場所の Azure BLOB Storage コンテナー共有アクセス署名 (SAS) URL で置き換えます。  
+1. `<subscription key>` を、前の手順からコピーしたサブスクリプション キーに置き換えます。
 
 ```bash
 curl -X POST "https://<Endpoint>/formrecognizer/v1.0-preview/custom/train" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>" --data-ascii "{ \"source\": \""<SAS URL>"\"}"
@@ -84,17 +100,18 @@ curl -X POST "https://<Endpoint>/formrecognizer/v1.0-preview/custom/train" -H "C
 }
 ```
 
-以降のステップで必要になるため、`"modelId"` の値を書き留めておきます。
+`"modelId"` 値をメモします。 これは、以降の手順で必要になります。
   
 ## <a name="extract-key-value-pairs-and-tables-from-forms"></a>フォームからキーと値のペアとテーブルを抽出する
 
-次に、ドキュメントを分析して、そこからキーと値のペアとテーブルを抽出します。 次の cURL コマンドを実行して **Model - Analyze** API を呼び出します。 コマンドを実行する前に、次の変更を加えます。
+次に、ドキュメントを分析して、そこからキーと値のペアとテーブルを抽出します。 次の cURL コマンドを実行して **Model - Analyze** API を呼び出します。 コマンドを実行する前に、次の変更を行います。
 
-* `<Endpoint>` を、Form Recognizer サブスクリプション キーから取得したエンドポイントで置き換えます。 これは、Form Recognizer リソースの **[概要]** タブにあります。
-* `<modelID>` を、前のモデル トレーニングのステップで受信したモデル ID で置き換えます。
-* `<path to your form>` を、フォームへのファイル パスで置き換えます。
-* `<subscription key>` は、実際のサブスクリプション キーで置き換えてください。
-* `<file type>` をファイルの種類で置き換えます。サポートされる種類は、pdf、image/jpeg、image/png です。
+1. `<Endpoint>` を、Form Recognizer サブスクリプション キーから取得したエンドポイントで置き換えます。 これは、Form Recognizer リソースの **[概要]** タブにあります。
+1. `<modelID>` を、前のセクションで受信したモデル ID で置き換えます。
+1. `<path to your form>` を、フォームへのファイル パスで置き換えます。
+1. `<file type>` を、ファイルの種類で置き換えます。 サポートされている種類は pdf、image/jpeg、image/png です。
+1. `<subscription key>` は、実際のサブスクリプション キーで置き換えてください。
+
 
 ```bash
 curl -X POST "https://<Endpoint>/formrecognizer/v1.0-preview/custom/models/<modelID>/analyze" -H "Content-Type: multipart/form-data" -F "form=@\"<path to your form>\";type=application/<file type>" -H "Ocp-Apim-Subscription-Key: <subscription key>"
@@ -102,7 +119,7 @@ curl -X POST "https://<Endpoint>/formrecognizer/v1.0-preview/custom/models/<mode
 
 ### <a name="examine-the-response"></a>結果の確認
 
-正常な応答が JSON で返され、フォームから抽出されたキーと値のペアとテーブルが示されます。
+成功応答が JSON で返されます。 フォームから抽出されたキーと値のペアおよびテーブルを表します。
 
 ```bash
 {
@@ -427,7 +444,7 @@ curl -X POST "https://<Endpoint>/formrecognizer/v1.0-preview/custom/models/<mode
 
 ## <a name="next-steps"></a>次の手順
 
-このガイドでは、cURL で Form Recognizer REST API を使用してモデルをトレーニングし、サンプル ケースで実行しました。 次に、Form Recognizer API の詳細を把握するためにリファレンス ドキュメントを参照します。
+このクイックスタートでは、cURL で Form Recognizer REST API を使用してモデルをトレーニングし、サンプル シナリオで実行しました。 次に、Form Recognizer API の詳細を把握するためにリファレンス ドキュメントを参照します。
 
 > [!div class="nextstepaction"]
 > [REST API リファレンス ドキュメント](https://aka.ms/form-recognizer/api)

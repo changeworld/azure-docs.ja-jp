@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 05/01/2019
-ms.openlocfilehash: 3f1ab5c2cb30dd4067c07833529e6a6a0c71e286
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.date: 05/08/2019
+ms.openlocfilehash: 1ee4d546ce823f48a597331276813b42d91e01e4
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65136656"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65415976"
 ---
 # <a name="tutorial-migrate-rds-postgresql-to-azure-database-for-postgresql-online-using-dms"></a>チュートリアル:DMS を使用して RDS PostgreSQL を Azure Database for PostgreSQL にオンラインで移行する
 
@@ -50,10 +50,10 @@ Azure Database Migration Service を使用して、RDS PostgreSQL インスタ�
     また、RDS PostgreSQL のバージョンが、Azure Database for PostgreSQL のバージョンと一致する必要があります。 たとえば、RDS PostgreSQL 9.5.11.5 は Azure Database for PostgreSQL 9.5.11 にのみ移行でき、バージョン 9.6.7 には移行できません。
 
     > [!NOTE]
-    > PostgreSQL バージョン 10 の場合、現時点でバージョン 10.3 から Azure Database for PostgreSQL への移行をサポートしているのは DMS のみです。 近日中に PostgreSQL の新しいバージョンがサポートされる予定です。
+    > PostgreSQL バージョン 10 の場合、現時点でバージョン 10.3 から Azure Database for PostgreSQL への移行をサポートしているのは DMS のみです。
 
 * [Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal) のインスタンスを作成します。 pgAdmin を使用して PostgreSQL サーバーに接続する方法の詳細については、ドキュメントのこの[セクション](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal#connect-to-the-postgresql-server-using-pgadmin)を参照してください。
-* Azure Resource Manager デプロイ モデルを使用して、Azure Database Migration Service 用の Azure 仮想ネットワーク (VNet) を作成します。これで、[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) または [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) を使用したオンプレミスのソース サーバーとのサイト間接続を確立します。
+* Azure Resource Manager デプロイ モデルを使用して、Azure Database Migration Service 用の Azure 仮想ネットワーク (VNet) を作成します。これで、[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) または [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) を使用したオンプレミスのソース サーバーとのサイト間接続を確立します。 VNet の作成方法の詳細については、[Virtual Network のドキュメント](https://docs.microsoft.com/azure/virtual-network/)、特に詳細な手順を提供するクイックスタートの記事を参照してください。
 * VNet ネットワーク セキュリティ グループの規則によって、Azure Database Migration Service への次のインバウンド通信ポートがブロックされないことを確認します:443、53、9354、445、12000。 Azure VNet NSG トラフィックのフィルター処理の詳細については、[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルター処理](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)に関する記事を参照してください。
 * [データベース エンジン アクセスのために Windows ファイアウォール](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)を構成します。
 * Azure Database Migration Service がソース PostgreSQL サーバーにアクセスできるように Windows ファイアウォールを開きます。既定では TCP ポート 5432 が使用されています。
@@ -74,13 +74,13 @@ Azure Database Migration Service を使用して、RDS PostgreSQL インスタ�
 1. ソース データベースからスキーマを抽出し、テーブル スキーマ、インデックス、ストアド プロシージャなどのすべてのデータベース オブジェクトの移行を完了するためにターゲット データベースに適用します。
 
     スキーマのみを移行する最も簡単な方法は、-s オプションを指定した pg_dump を使用することです。 詳細については、Postgres pg_dump チュートリアルの[例](https://www.postgresql.org/docs/9.6/app-pgdump.html#PG-DUMP-EXAMPLES)をご覧ください。
-    
+
     ```
     pg_dump -o -h hostname -U db_username -d db_name -s > your_schema.sql
     ```
-    
+
     たとえば、**dvdrental** データベースのスキーマ ファイルをダンプするには、次のコマンドを使用します。
-    
+
     ```
     pg_dump -o -h localhost -U postgres -d dvdrental -s  > dvdrentalSchema.sql
     ```
@@ -108,8 +108,8 @@ Azure Database Migration Service を使用して、RDS PostgreSQL インスタ�
     SET group_concat_max_len = 8192;
         SELECT SchemaName, GROUP_CONCAT(DropQuery SEPARATOR ';\n') as DropQuery, GROUP_CONCAT(AddQuery SEPARATOR ';\n') as AddQuery
         FROM
-        (SELECT 
-        KCU.REFERENCED_TABLE_SCHEMA as SchemaName,    
+        (SELECT
+        KCU.REFERENCED_TABLE_SCHEMA as SchemaName,
         KCU.TABLE_NAME,
         KCU.COLUMN_NAME,
         CONCAT('ALTER TABLE ', KCU.TABLE_NAME, ' DROP FOREIGN KEY ', KCU.CONSTRAINT_NAME) AS DropQuery,
@@ -121,7 +121,7 @@ Azure Database Migration Service を使用して、RDS PostgreSQL インスタ�
       AND KCU.REFERENCED_TABLE_SCHEMA = 'sakila') Queries
       GROUP BY SchemaName;
     ```
-        
+
 5. クエリ結果内の外部キー削除 (2 列目) を実行して、外部キーを削除します。
 
 6. データにトリガー (insert または update トリガー) が含まれている場合は、ソースからデータをレプリケートする前にターゲットでデータの整合性が適用されます。 移行時は*ターゲットの*すべてのテーブル内のトリガーを無効にし、移行の完了後にトリガーを有効にすることをお勧めします。
@@ -252,7 +252,7 @@ Azure Database Migration Service を使用して、RDS PostgreSQL インスタ�
 1. データベースの移行を完了する準備ができたら、**[一括で開始]** を選択します。
 
     ![一括で開始](media/tutorial-rds-postgresql-server-azure-db-for-postgresql-online/dms-inventory-start-cutover.png)
- 
+
 2. ソース データベースに対するすべての受信トランザクションを必ず停止してください。**[保留中の変更]** カウンターが **0** を示すまで待ってください。
 3. **[確認]** を選択し、**[適用]** を選択します。
 4. データベースの移行状態に **[完了]** が表示されたら、アプリケーションを新しいターゲット Azure Database for PostgreSQL データベースに接続します。
@@ -261,6 +261,6 @@ PostgreSQL のオンプレミス インスタンスの Azure Database for Postgr
 
 ## <a name="next-steps"></a>次の手順
 
-- Azure Database Migration Service の詳細については、「[Azure Database Migration Service とは](https://docs.microsoft.com/azure/dms/dms-overview)」を参照してください。
-- Azure Database for PostgreSQL の詳細については、「[Azure Database for PostgreSQL とは](https://docs.microsoft.com/azure/postgresql/overview)」を参照してください。
-- その他の質問については、[Ask Azure Database Migrations](mailto:AskAzureDatabaseMigrations@service.microsoft.com) エイリアスにメールを送信してください。
+* Azure Database Migration Service の詳細については、「[Azure Database Migration Service とは](https://docs.microsoft.com/azure/dms/dms-overview)」を参照してください。
+* Azure Database for PostgreSQL の詳細については、「[Azure Database for PostgreSQL とは](https://docs.microsoft.com/azure/postgresql/overview)」を参照してください。
+* その他の質問については、[Ask Azure Database Migrations](mailto:AskAzureDatabaseMigrations@service.microsoft.com) エイリアスにメールを送信してください。

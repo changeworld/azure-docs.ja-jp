@@ -9,12 +9,12 @@ ms.date: 09/05/2017
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: d776c67aad9f42184d8cf9ba0a437fbcf9d2c46c
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 8b091ecce98a626f18fe6547445d898b6710e1a5
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65154244"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510545"
 ---
 # <a name="azure-storage-metrics-in-azure-monitor"></a>Azure Monitor の Azure Storage メトリック
 
@@ -396,7 +396,7 @@ Azure Storage では、Azure Monitor の次のメトリック ディメンショ
 | **BlobType** | BLOB メトリックの BLOB の種類のみ。 サポートされる値は、**BlockBlob**、**PageBlob**、**Azure Data Lake Storage** です。 BlockBlob には Append Blob が含まれます。 |
 | **BlobTier** | Azure Storage からはさまざまなアクセス層が提供され、最もコスト効果の高い方法で BLOB オブジェクト データを格納できます。 詳細については、[Azure Storage の BLOB 層](../blobs/storage-blob-storage-tiers.md)に関する記事を参照してください。 サポートされる値は次のとおりです。 <br/> <li>**Hot**:ホット層</li> <li>**Cool**:クール層</li> <li>**アーカイブ**: アーカイブ層</li> <li>**Premium**:ブロック BLOB 用 Premium 層</li> <li>**P4/P6/P10/P15/P20/P30/P40/P50/P60**:Premium ページ BLOB 用の層の種類</li> <li>**Standard**:Standard ページ BLOB 用の層の種類</li> <li>**Untiered**:汎用 v1 ストレージ アカウントの層の種類</li> |
 | **GeoType** | プライマリ クラスターまたはセカンダリ クラスターからのトランザクション。 使用できる値には、**Primary** と **Secondary** が含まれています。 セカンダリ テナントからオブジェクトを読み取るときに、読み取りアクセス geo 冗長ストレージ (RA-GRS) に適用されます。 |
-| **ResponseType** | トランザクション応答の種類。 次の値をご利用いただけます。 <br/><br/> <li>**ServerOtherError**:記述されていない、その他すべてのサーバー側エラー </li> <li>**ServerBusyError**:HTTP 503 ステータス コードを返した認証済み要求。 </li> <li>**ServerTimeoutError**:HTTP 500 ステータス コードを返した、タイムアウトした認証済み要求。 タイムアウトは、サーバー エラーが原因で発生しました。 </li> <li>**AuthorizationError**:データの不正アクセスまたは承認エラーが原因で失敗した認証済み要求。 </li> <li>**NetworkError**:ネットワーク エラーが原因で失敗した認証済み要求。 クライアントがタイムアウト期限が切れる前に途中で接続を終了したときによく発生します。 </li> <li>**ClientThrottlingError**:クライアント側の調整エラー。 </li> <li>**ClientTimeoutError**:HTTP 500 ステータス コードを返した、タイムアウトした認証済み要求。 クライアントのネットワーク タイムアウトまたは要求タイムアウトが、ストレージ サービスで予期される値よりも低く設定されている場合、これは予期されるタイムアウトです。 それ以外の場合は、ServerTimeoutError としてレポートされます。 </li> <li>**ClientOtherError**:記述されていない、その他すべてのクライアント側エラー。 </li> <li>**成功**:成功した要求</li> |
+| **ResponseType** | トランザクション応答の種類。 次の値をご利用いただけます。 <br/><br/> <li>**ServerOtherError**:記述されていない、その他すべてのサーバー側エラー </li> <li>**ServerBusyError**:HTTP 503 ステータス コードを返した認証済み要求。 </li> <li>**ServerTimeoutError**:HTTP 500 ステータス コードを返した、タイムアウトした認証済み要求。 タイムアウトは、サーバー エラーが原因で発生しました。 </li> <li>**AuthorizationError**:データの不正アクセスまたは承認エラーが原因で失敗した認証済み要求。 </li> <li>**NetworkError**:ネットワーク エラーが原因で失敗した認証済み要求。 クライアントがタイムアウト期限が切れる前に途中で接続を終了したときによく発生します。 </li> <li>**ClientThrottlingError**:クライアント側の調整エラー。 </li> <li>**ClientTimeoutError**:HTTP 500 ステータス コードを返した、タイムアウトした認証済み要求。 クライアントのネットワーク タイムアウトまたは要求タイムアウトが、ストレージ サービスで予期される値よりも低く設定されている場合、これは予期されるタイムアウトです。 それ以外の場合は、ServerTimeoutError としてレポートされます。 </li> <li>**ClientOtherError**:記述されていない、その他すべてのクライアント側エラー。 </li> <li>**成功**:成功した要求</li> <li> **SuccessWithThrottling**: 最初に試みたときは SMB クライアントが調整されたが再試行後に成功したときの、成功した要求。</li> |
 | **ApiName** | 操作の名前。 例:  <br/> <li>**CreateContainer**</li> <li>**DeleteBlob**</li> <li>**GetBlob**</li> すべての操作名については、こちらの[ドキュメント](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)を参照してください。 |
 | **認証** | トランザクションで使用される認証の種類。 次の値をご利用いただけます。 <br/> <li>**AccountKey**:トランザクションは、ストレージ アカウント キーを使って認証されます。</li> <li>**SAS**:トランザクションは、Shared Access Signature を使って認証されます。</li> <li>**OAuth**:トランザクションは、OAuth アクセス トークンを使って認証されます。</li> <li>**Anonymous**:トランザクションは匿名で要求されます。 プリフライト要求は含まれません。</li> <li>**AnonymousPreflight**:トランザクションは、プリフライト要求です。</li> |
 

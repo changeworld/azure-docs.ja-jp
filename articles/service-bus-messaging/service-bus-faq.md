@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 41a5f08be833d1235146d6e748580751af2c9d73
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 8461764a3f1f682ffb97420a4efdf2803f518872
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59046089"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64707141"
 ---
 # <a name="service-bus-faq"></a>Service Bus に関する FAQ
 
@@ -41,6 +41,48 @@ ms.locfileid: "59046089"
 パーティション分割されたエンティティを使用する場合、順序が保証されません。 あるパーティションが使用できなくなった場合は、他のパーティションからメッセージの送受信を行うことができます。
 
  パーティション分割されたエンティティは [Premium SKU](service-bus-premium-messaging.md) ではサポートされなくなりました。 
+
+### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>ファイアウォールで開く必要があるのはどのポートですか？ 
+Azure Service Bus でメッセージを送受信する次のプロトコルを使用できます。
+
+- Advanced Message Queuing Protocol (AMQP)
+- Service Bus メッセージング プロトコル (SBMP)
+- HTTP
+
+これらのプロトコルを使用して Azure Event Hubs と通信するために開く必要がある送信ポートについては、次の表を参照してください。 
+
+| Protocol | Port | 詳細 | 
+| -------- | ----- | ------- | 
+| AMQP | 5671 と 5672 | 「[AMQP プロトコル ガイド](service-bus-amqp-protocol-guide.md)」を参照してください。 | 
+| SBMP | 9350 から 9354 | 「[Connectivity mode](/dotnet/api/microsoft.servicebus.connectivitymode?view=azure-dotnet)」 (接続モード) を参照してください。 |
+| HTTP、HTTPS | 80、443 | 
+
+### <a name="what-ip-addresses-do-i-need-to-whitelist"></a>どのような IP アドレスをホワイト リストに登録する必要がありますか。
+接続のホワイト リストに適切な IP アドレスを検索するには、次の手順に従います。
+
+1. コマンド プロンプトで、次のコマンドを実行します。 
+
+    ```
+    nslookup <YourNamespaceName>.servicebus.windows.net
+    ```
+2. `Non-authoritative answer`で返された IP アドレスをメモします。 この IP アドレスは静的です。 時間内で唯一変更するポイントは、別のクラスターに名前空間を復元するかどうかです。
+
+名前空間のゾーン冗長性を使用する場合は、いくつかの追加手順を実行する必要があります。 
+
+1. 最初に、名前空間で nslookup を実行します。
+
+    ```
+    nslookup <yournamespace>.servicebus.windows.net
+    ```
+2. 「**non-authoritative answer**」 (権限のない応答) セクションに、次のいずれかの形式で書き留めます。 
+
+    ```
+    <name>-s1.servicebus.windows.net
+    <name>-s2.servicebus.windows.net
+    <name>-s3.servicebus.windows.net
+    ```
+3. サフィックスが s1、s2、および s3 であるそれぞれについて nslookup コマンドを実行し、 3 つの可用性ゾーンで実行されているすべての 3 つのインスタンスの IP アドレスを取得します。 
+
 
 ## <a name="best-practices"></a>ベスト プラクティス
 ### <a name="what-are-some-azure-service-bus-best-practices"></a>Azure Service Bus のベスト プラクティスを教えてください。

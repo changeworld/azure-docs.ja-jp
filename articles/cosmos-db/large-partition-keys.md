@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: mjbrown
-ms.openlocfilehash: ee1568274792621b8ed9f25d211c40440a82208c
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 46df484303237722f4eb66099748f2fcef8240b4
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 05/06/2019
-ms.locfileid: "65157935"
+ms.locfileid: "65205831"
 ---
 # <a name="create-containers-with-large-partition-key"></a>大きいパーティション キーを持つコンテナーを作成する
 
@@ -43,6 +43,17 @@ database,
 Azure portal を使って新しいコンテナーを作成するときに、大きいパーティション キーを作成するには、**[My partition key is larger than 100-bytes]\(100 バイトを超えるパーティション キー\)** オプションをオンにします。 既定では、すべての新しいコンテナーで大きいパーティション キーの使用が選択されます。 大きいパーティション キーを使う必要がない場合、または 1.18 より前の SDK バージョンでアプリケーションを実行する場合は、チェック ボックスをオフにします。
 
 ![Azure portal を使って大きいパーティション キーを作成する](./media/large-partition-keys/large-partition-key-with-portal.png)
+
+
+## <a name="supported-sdk-versions"></a>サポートされている SDK バージョン
+
+大きいパーティション キーは、次の最小バージョンの SDK でサポートされています。
+
+|SDK の種類  | 最小バージョン   |
+|---------|---------|
+|.NET     |    1.18     |
+|Java Sync     |   2.4.0      |
+|Java Async   |  2.5.0        |
  
 ## <a name="next-steps"></a>次の手順
 

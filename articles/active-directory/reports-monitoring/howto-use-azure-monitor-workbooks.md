@@ -1,6 +1,6 @@
 ---
 title: Azure Active Directory レポートに Azure Monitor ブックを使用する | Microsoft Docs
-description: Azure Active Directory レポートに Azure Monitor ブックを使用する方法を学習する
+description: Azure Active Directory レポートに Azure Monitor ブックを使用する方法について説明します。
 services: active-directory
 author: MarkusVi
 manager: daveba
@@ -14,62 +14,61 @@ ms.subservice: report-monitor
 ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 2c9b3d0ef110fea0629af345a71d0d7b7cce7313
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 6ae14ec152975717af5d55780bcc39aa87c4b01a
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60013010"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65406592"
 ---
-# <a name="how-to-use-azure-monitor-workbooks-for-azure-active-directory-reports"></a>方法:Azure Active Directory レポートに Azure Monitor ブックを使用する
+# <a name="how-to-use-azure-monitor-workbooks-for-azure-active-directory-reports"></a>Azure Active Directory レポートに Azure Monitor ブックを使用する方法
 
 以下を行いたいですか?
 
 - ユーザーのサインイン エクスペリエンスに与える[条件付きアクセス ポリシー](../conditional-access/overview.md)の影響を理解したい。
 
-- サインイン エラーのトラブルシューティングを行って、問題をすばやく解決するだけでなく、組織のサインインの正常性をより理解したい。
+- サインイン エラーのトラブルシューティングを行って、組織のサインインの正常性をより理解し、問題をすばやく解決したい。
 
-- レガシ認証を使用して環境にアクセスしているユーザーを知りたい。 [レガシ認証をブロック](../conditional-access/block-legacy-authentication.md)することで、テナントの保護を向上させることができます。
+- レガシ認証を使用して環境にサインインしているユーザーを知りたい。 [レガシ認証をブロック](../conditional-access/block-legacy-authentication.md)することで、テナントの保護を向上させることができます。
 
-
-[Azure Monitor ブック](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks)は、テキスト、Analytics クエリ、Azure メトリック、パラメーターを組み合わせて内容豊富な対話型レポートを作成します。 Azure Active Directory は、上記の質問に対する回答を見つけるのに役立つ、監視のためのブックを提供します。
+こうした疑問の解決を支援するために、Active Directory には、監視のためのブックが用意されています。 [Azure Monitor ブック](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks)は、テキスト、分析クエリ、メトリック、パラメーターを組み合わせて内容豊富な対話型レポートを作成します。 
 
 この記事の内容は次のとおりです。
 
-- [Azure Monitor ブックを使用した対話型レポートの作成](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks)方法に精通していることを前提としています。
+- [Monitor ブックを使用した対話型レポートの作成](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks)方法に精通していることを前提としています。
 
-- 上記の質問に回答するための監視について Azure Monitor ブックを使用する方法を説明します。
+- Monitor ブックを使用して、条件付きアクセス ポリシーの影響を把握したり、サインイン エラーをトラブルシューティングしたり、レガシ認証を識別したりする方法について説明します。
  
 
 
 ## <a name="prerequisites"></a>前提条件
 
-この機能を使用するには、次が必要です。
+Monitor ブックを使用するためには、次のものが必要となります。
 
-- プレミアム (P1/P2) ライセンスがある Azure Active Directory テナント。 Premium ライセンスの取得方法については、[こちら](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-get-started-premium)をご覧ください。
+- プレミアム (P1 または P2) ライセンスがある Active Directory テナント。 Premium ライセンスの取得方法については、[こちら](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-get-started-premium)をご覧ください。
 
 - [Log Analytics ワークスペース。](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)
 
-## <a name="access-workbooks"></a>ブックにアクセスする 
+## <a name="workbook-access"></a>ブックへのアクセス 
 
 ブックにアクセスするには:
 
-1. [Azure portal](https://portal.azure.com) にサインインします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
 
-2. 左側のナビゲーション バーで、**[Azure Active Directory]** をクリックします。
+2. 左側のナビゲーション ウィンドウで **[Azure Active Directory]** を選択します。
 
-3. **[監視]** セクションで、**[洞察]** をクリックします。 
+3. **[監視]** セクションで **[Insights]** を選択します。 
 
-    ![洞察](./media/howto-use-azure-monitor-workbooks/41.png)
+    ![[Insights] を選択する](./media/howto-use-azure-monitor-workbooks/41.png)
 
-4. レポートまたはテンプレートをクリックするか、ツールバーで **[オープン]** をクリックします。 
+4. レポートまたはテンプレートを選択するか、ツール バーで **[Open]\(開く\)** を選択します。 
 
-    ![[ギャラリー]](./media/howto-use-azure-monitor-workbooks/42.png)
+    ![[Open]\(開く\) を選択する](./media/howto-use-azure-monitor-workbooks/42.png)
 
 
 ## <a name="sign-in-analysis"></a>サインインの分析
 
-サインインの分析ブックにアクセスするには、**[使用状況]** セクションで **[サインイン]** をクリックします。 
+サインインの分析ブックにアクセスするには、**[使用状況]** セクションで **[サインイン]** を選択します。 
 
 このブックには次のサインインの傾向が示されます。
 
@@ -81,7 +80,7 @@ ms.locfileid: "60013010"
 
 - 失敗
 
-各傾向は次でフィルター処理できます。
+それぞれの傾向を、次のカテゴリでフィルター処理することができます。
 
 - 時間範囲
 
@@ -89,24 +88,24 @@ ms.locfileid: "60013010"
 
 - ユーザー
 
-![[ギャラリー]](./media/howto-use-azure-monitor-workbooks/43.png)
+![サインインの分析](./media/howto-use-azure-monitor-workbooks/43.png)
 
 
-傾向ごとに次による内訳が得られます。
+次のカテゴリ別の内訳が傾向ごとに得られます。
 
 - Location
 
-    ![[ギャラリー]](./media/howto-use-azure-monitor-workbooks/45.png)
+    ![場所ごとのサインイン](./media/howto-use-azure-monitor-workbooks/45.png)
 
 - Device
 
-    ![[ギャラリー]](./media/howto-use-azure-monitor-workbooks/46.png)
+    ![デバイスごとのサインイン](./media/howto-use-azure-monitor-workbooks/46.png)
 
 
 ## <a name="sign-ins-using-legacy-authentication"></a>レガシ認証を使用したサインイン 
 
 
-[レガシ認証](../conditional-access/block-legacy-authentication.md)ブックを使用してサインインにアクセスするには、**[使用状況]** セクションで **[レガシ認証を使用したサインイン]** をクリックします。 
+[レガシ認証](../conditional-access/block-legacy-authentication.md)を使用したサインインのブックにアクセスするには、**[使用状況]** セクションで **[レガシ認証を使用したサインイン]** を選択します。 
 
 このブックには次のサインインの傾向が示されます。
 
@@ -115,7 +114,7 @@ ms.locfileid: "60013010"
 - Success
 
 
-各傾向は次でフィルター処理できます。
+それぞれの傾向を、次のカテゴリでフィルター処理することができます。
 
 - 時間範囲
 
@@ -123,25 +122,23 @@ ms.locfileid: "60013010"
 
 - ユーザー
 
-- プロトコル 
+- プロトコル
 
-![[ギャラリー]](./media/howto-use-azure-monitor-workbooks/47.png)
+![レガシ認証ごとのサインイン](./media/howto-use-azure-monitor-workbooks/47.png)
 
 
 傾向ごとにアプリとプロトコル別の内訳が得られます。
 
-![[ギャラリー]](./media/howto-use-azure-monitor-workbooks/48.png)
+![アプリとプロトコル別のレガシ認証サインイン](./media/howto-use-azure-monitor-workbooks/48.png)
 
 
 
 ## <a name="sign-ins-by-conditional-access"></a>条件付きアクセスでのサインイン 
 
 
-[条件付きアクセス ポリシー](../conditional-access/overview.md) ブックによるサインインにアクセスするには、**[条件付きアクセス]** セクションで **[条件付きアクセスでのサインイン]** をクリックします。 
+[条件付きアクセス ポリシー](../conditional-access/overview.md)でのサインインのブックにアクセスするには、**[条件付きアクセス]** セクションで **[条件付きアクセスでのサインイン]** を選択します。 
 
-このブックには、無効化されたサインインの傾向が示されます。
-
-各傾向は次でフィルター処理できます。
+このブックには、無効化されたサインインの傾向が示されます。それぞれの傾向を、次のカテゴリでフィルター処理することができます。
 
 - 時間範囲
 
@@ -149,7 +146,7 @@ ms.locfileid: "60013010"
 
 - ユーザー
 
-![[ギャラリー]](./media/howto-use-azure-monitor-workbooks/49.png)
+![条件付きアクセスを使用したサインイン](./media/howto-use-azure-monitor-workbooks/49.png)
 
 
 無効化されたサインインに対し、条件付きアクセスの状態別の内訳が得られます。
@@ -165,7 +162,7 @@ ms.locfileid: "60013010"
 
 ## <a name="sign-ins-by-grant-controls"></a>許可コントロールによるサインイン
 
-[許可コントロール](../conditional-access/controls.md) ブックによるサインインにアクセスするには、**[条件付きアクセス]** セクションで **[許可コントロール別のサインイン]** をクリックします。 
+[許可コントロール](../conditional-access/controls.md)別サインインのブックにアクセスするには、**[条件付きアクセス]** セクションで **[許可コントロール別のサインイン]** を選択します。 
 
 このブックには次の無効化されたサインインの傾向が示されます。
 
@@ -178,7 +175,7 @@ ms.locfileid: "60013010"
 - その他
 
 
-各傾向は次でフィルター処理できます。
+それぞれの傾向を、次のカテゴリでフィルター処理することができます。
 
 - 時間範囲
 
@@ -186,12 +183,12 @@ ms.locfileid: "60013010"
 
 - ユーザー
 
-![[ギャラリー]](./media/howto-use-azure-monitor-workbooks/50.png)
+![許可コントロールによるサインイン](./media/howto-use-azure-monitor-workbooks/50.png)
 
 
 傾向ごとにアプリとプロトコル別の内訳が得られます。
 
-![[ギャラリー]](./media/howto-use-azure-monitor-workbooks/51.png)
+![最近のサインインの内訳](./media/howto-use-azure-monitor-workbooks/51.png)
 
 
 
@@ -205,7 +202,7 @@ ms.locfileid: "60013010"
 - レガシ認証 
 
 
-データの条件付きアクセスによるサインインにアクセスするには、**[トラブルシューティング]** セクションで **[レガシ認証を使用したサインイン]** をクリックします。 
+データの条件付きアクセスによるサインインにアクセスするには、**[トラブルシューティング]** セクションで **[レガシ認証を使用したサインイン]** を選択します。 
 
 このブックには次のサインインの傾向が示されます。
 
@@ -218,7 +215,7 @@ ms.locfileid: "60013010"
 - 失敗
 
 
-各傾向は次でフィルター処理できます。
+それぞれの傾向を、次のカテゴリでフィルター処理することができます。
 
 - 時間範囲
 
@@ -226,18 +223,18 @@ ms.locfileid: "60013010"
 
 - ユーザー
 
-![[ギャラリー]](./media/howto-use-azure-monitor-workbooks/52.png)
+![サインインのトラブルシューティング](./media/howto-use-azure-monitor-workbooks/52.png)
 
 
-サインインをトラブルシューティングするため、次による内訳を取得します。
+サインインのトラブルシューティングを支援するために、Azure Monitor には、次のカテゴリごとの内訳が表示されます。
 
 - 主なエラー
 
-    ![[ギャラリー]](./media/howto-use-azure-monitor-workbooks/53.png)
+    ![エラーの概要](./media/howto-use-azure-monitor-workbooks/53.png)
 
 - ユーザー アクションを待機しているサインイン
 
-    ![[ギャラリー]](./media/howto-use-azure-monitor-workbooks/54.png)
+    ![ユーザー アクションを待機しているサインインの概要](./media/howto-use-azure-monitor-workbooks/54.png)
 
 
 
@@ -246,4 +243,4 @@ ms.locfileid: "60013010"
 
 ## <a name="next-steps"></a>次の手順
 
-* [Azure Monitor ブックを使用した対話型レポートの作成](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks)
+[Monitor ブックを使用した対話型レポートの作成](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks)

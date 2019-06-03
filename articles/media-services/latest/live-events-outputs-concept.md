@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 04/21/2019
 ms.author: juliako
-ms.openlocfilehash: a36ca880387ee1a3c5f749dbd6b9d7dcb9e6d79d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 87620cb0c7aafb78b2c8fe610f42ad092313d305
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64708981"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65153479"
 ---
 # <a name="live-events-and-live-outputs"></a>ライブ イベントとライブ出力
 
@@ -144,7 +144,7 @@ Media Services によるライブ エンコードを使用する場合は、オ�
 
 詳細については、「[クラウド DVR の使用](live-event-cloud-dvr.md)」を参照してください。
 
-## <a name="provide-feedback"></a>フィードバックの提供
+## <a name="ask-questions-give-feedback-get-updates"></a>質問、フィードバックの提供、最新情報の入手
 
 「[Azure Media Services community (Azure Media Services コミュニティ)](media-services-community.md)」を参照して、さまざまな質問の方法、フィードバックする方法、Media Services に関する最新情報の入手方法を確認してください。
 

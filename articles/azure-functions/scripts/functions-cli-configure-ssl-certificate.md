@@ -12,12 +12,12 @@ ms.topic: sample
 ms.date: 07/03/2013
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 84cc4e92419e683f8d2c29883b26148fdef23356
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ee655dc39fbe7d0e3eb5cb41b091aea24d8dbea3
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60325733"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66131284"
 ---
 # <a name="bind-a-custom-ssl-certificate-to-a-function-app"></a>カスタム SSL 証明書を Function App にバインドする
 
@@ -27,7 +27,7 @@ ms.locfileid: "60325733"
 * アップロードしてバインドする SSL 証明書の有効な .PFX ファイルとパスワード。
 * Web アプリの既定のドメイン名を指し示す A レコードがカスタム ドメインに構成済みであること。 詳細については、[Azure App Service にカスタム ドメインをマップする方法](https://aka.ms/appservicecustomdns)に関するページを参照してください。
 
-SSL 証明書をバインドするには、Function App を従量課金プランではなく、App Service プランで作成する必要があります。
+SSL 証明書をバインドするには、関数アプリを従量課金プランではなく、Premium プランまたは App Service プランで作成する必要があります。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 

@@ -12,12 +12,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: d146027ea3a21ab8df3750014c02893bc2f50dd6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: cfa9d6a1a287281bec91facf04c73506db81f84a
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58097731"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64711559"
 ---
 # <a name="customize-setup-for-the-azure-ssis-integration-runtime"></a>Azure-SSIS 統合ランタイムの設定のカスタマイズ
 
@@ -66,27 +66,27 @@ Azure SSIS IR をカスタマイズするには、以下のものが必要です
 
 1. [Azure Storage Explorer](https://storageexplorer.com/)をダウンロードし、インストールして、起動します。
 
-   1. **[(Local and Attached)]\((ローカルおよび接続済み)\)** で、**[ストレージ アカウント]** を右クリックし、**[Connect to Azure storage]\(Azure Storage へ接続\)** を選択します。
+   1. **[(Local and Attached)]\((ローカルおよび接続済み)\)** で、 **[ストレージ アカウント]** を右クリックし、 **[Connect to Azure storage]\(Azure Storage へ接続\)** を選択します。
 
       ![Azure Storage へ接続](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image1.png)
 
-   1. **[Use a storage account name and key]\(ストレージ アカウント名とキーを使用\)** を選択して、**[次へ]** を選択します。
+   1. **[Use a storage account name and key]\(ストレージ アカウント名とキーを使用\)** を選択して、 **[次へ]** を選択します。
 
       ![ストレージ アカウントの名前とキーを使用する](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image2.png)
 
-   1. お使いの Azure Storage アカウント名とキーを入力し、**[次へ]** を選択してから **[接続]** を選択します。
+   1. お使いの Azure Storage アカウント名とキーを入力し、 **[次へ]** を選択してから **[接続]** を選択します。
 
       ![ストレージ アカウントの名前とキーを提供する](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image3.png)
 
-   1. 接続された Azure Storage アカウントで、**[BLOB コンテナー]** を右クリックし、**[BLOB コンテナーの作成]** を選択して、新しいコンテナーに名前を付けます。
+   1. 接続された Azure Storage アカウントで、 **[BLOB コンテナー]** を右クリックし、 **[BLOB コンテナーの作成]** を選択して、新しいコンテナーに名前を付けます。
 
       ![BLOB コンテナーを作成する](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image4.png)
 
-   1. 新しいコンテナーを選択し、カスタム セットアップ スクリプトとその関連ファイルをアップロードします。 任意のフォルダーではなく、必ずコンテナーの最上位に `main.cmd` をアップロードしてください。 後で Azure-SSIS IR にダウンロードする時間を短縮できるように、コンテナーには必要なカスタム セットアップ ファイルのみが含まれていることを確認してください。
+   1. 新しいコンテナーを選択し、カスタム セットアップ スクリプトとその関連ファイルをアップロードします。 任意のフォルダーではなく、必ずコンテナーの最上位に `main.cmd` をアップロードしてください。 後で Azure-SSIS IR にダウンロードする時間を短縮できるように、コンテナーには必要なカスタム セットアップ ファイルのみが含まれていることを確認してください。 カスタム セットアップの最大期間は現在 45 分でタイムアウトとなります。これには、コンテナーからすべてのファイルをダウンロードし、Azure SSIS IR のインストールにかかる時間が含まれます。 長い期間が必要な場合は、サポート チケットを発行してください。
 
       ![BLOB コンテナーにファイルをアップロードする](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image5.png)
 
-   1. コンテナーを右クリックして、**[Get Shared Access Signature]\(Shared Access Signature の取得\)** を選択します。
+   1. コンテナーを右クリックして、 **[Get Shared Access Signature]\(Shared Access Signature の取得\)** を選択します。
 
       ![コンテナーの Shared Access Signature を取得する](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image6.png)
 
@@ -101,11 +101,11 @@ Azure SSIS IR をカスタマイズするには、以下のものが必要です
 
       ![Shared Access Signature をコピーして保存する](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image8.png)
 
-   1. Data Factory UI を使用して AZURE-SSIS IR をプロビジョニングまたは再構成する場合、Azure-SSIS IR を起動する前に、**[詳細設定]** パネルの適切なフィールドにコンテナーの SAS URI を入力します。
+   1. Data Factory UI を使用して AZURE-SSIS IR をプロビジョニングまたは再構成する場合、Azure-SSIS IR を起動する前に、 **[詳細設定]** パネルの適切なフィールドにコンテナーの SAS URI を入力します。
 
       ![Shared Access Signature を入力する](media/tutorial-create-azure-ssis-runtime-portal/advanced-settings.png)
 
-      PowerShell を使って Azure SSIS IR をプロビジョニングまたは再構成する場合、Azure SSIS IR を起動する前に、コンテナーの SAS URI を新しい `SetupScriptContainerSasUri` パラメーターの値として設定して `Set-AzDataFactoryV2IntegrationRuntime` コマンドレットを実行します。 例: 
+      PowerShell を使って Azure SSIS IR をプロビジョニングまたは再構成する場合、Azure SSIS IR を起動する前に、コンテナーの SAS URI を新しい `SetupScriptContainerSasUri` パラメーターの値として設定して `Set-AzDataFactoryV2IntegrationRuntime` コマンドレットを実行します。 例:
 
       ```powershell
       Set-AzDataFactoryV2IntegrationRuntime -DataFactoryName $MyDataFactoryName `
@@ -122,11 +122,11 @@ Azure SSIS IR をカスタマイズするには、以下のものが必要です
 
 1. 他のカスタム セットアップの例を確認するには、Azure Storage Explorer を使ってパブリック プレビュー コンテナーに接続します。
 
-   a.  **[(Local and Attached)]\((ローカルおよび接続済み)\)** で、**[ストレージ アカウント]** を右クリックし、**[Connect to Azure storage]\(Azure Storage へ接続\)** を選択し、**[Use a connection string or a shared access signature URI]\(接続文字列または Shared Access Signature URI を使用する\)** を選択して、**[次へ]** を選択します。
+   a.  **[(Local and Attached)]\((ローカルおよび接続済み)\)** で、 **[ストレージ アカウント]** を右クリックし、 **[Connect to Azure storage]\(Azure Storage へ接続\)** を選択し、 **[Use a connection string or a shared access signature URI]\(接続文字列または Shared Access Signature URI を使用する\)** を選択して、 **[次へ]** を選択します。
 
       ![Shared Access Signature を使って Azure Storage に接続する](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image9.png)
 
-   b.  **[Use a SAS URI]\(SAS URI を使用する\)** を選択し、パブリック プレビュー コンテナーに対して以下の SAS URI を入力します。 **[次へ]** を選択して、**[接続]** を選択します。
+   b.  **[Use a SAS URI]\(SAS URI を使用する\)** を選択し、パブリック プレビュー コンテナーに対して以下の SAS URI を入力します。 **[次へ]** を選択して、 **[接続]** を選択します。
 
       `https://ssisazurefileshare.blob.core.windows.net/publicpreview?sp=rl&st=2018-04-08T14%3A10%3A00Z&se=2020-04-10T14%3A10%3A00Z&sv=2017-04-17&sig=mFxBSnaYoIlMmWfxu9iMlgKIvydn85moOnOch6%2F%2BheE%3D&sr=c`
 

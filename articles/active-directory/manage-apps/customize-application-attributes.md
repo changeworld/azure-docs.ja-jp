@@ -3,8 +3,8 @@ title: Azure AD 属性マッピングのカスタマイズ | Microsoft Docs
 description: Azure Active Directory における SaaS アプリの属性マッピングとは何かと、この属性マッピングをビジネス ニーズに合わせて変更する方法について説明します。
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.author: celested
+ms.author: mimart
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a2965fecd3aca17d6c4df7e49ad466377de9762
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: bc3aea059b6ac4244ea440d26717562e83fdbd09
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59267210"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65824906"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Azure Active Directory の SaaS アプリケーションに対するユーザー プロビジョニング属性マッピングのカスタマイズ
-Microsoft Azure AD では、Salesforce、Google Apps、およびその他のサードパーティの SaaS アプリケーションへのユーザー プロビジョニングのサポートを提供します。 サード パーティの SaaS アプリケーションでユーザー プロビジョニングを有効にした場合、Azure portal では属性マッピングによってその属性値を管理します。
+Microsoft Azure AD では、Salesforce、G Suite、およびその他のサードパーティの SaaS アプリケーションへのユーザー プロビジョニングのサポートを提供します。 サード パーティの SaaS アプリケーションでユーザー プロビジョニングを有効にした場合、Azure portal では属性マッピングによってその属性値を管理します。
 
 Azure AD ユーザー オブジェクトと各 SaaS アプリのユーザー オブジェクトの間には、構成済みの一連の属性と属性マッピングが存在します。 アプリによっては、ユーザーに加えてグループなど他の種類のオブジェクトを管理するものもあります。
 
@@ -84,7 +84,7 @@ Azure AD ユーザー オブジェクトと各 SaaS アプリのユーザー オ
 
 ## <a name="editing-group-attribute-mappings"></a>グループ属性マッピングの編集
 
-ServiceNow、Box、Google Apps などいくつかのアプリケーションでは、グループ オブジェクトとユーザー オブジェクトをプロビジョニングする機能がサポートされています。 グループ オブジェクトには、グループ メンバーと共に表示名や電子メール別名などのグループ プロパティを含めることができます。
+ServiceNow、Box、G Suite などいくつかのアプリケーションでは、グループ オブジェクトとユーザー オブジェクトをプロビジョニングする機能がサポートされています。 グループ オブジェクトには、グループ メンバーと共に表示名や電子メール別名などのグループ プロパティを含めることができます。
 
 ![ServiceNow](./media/customize-application-attributes/24.png)
 
@@ -149,6 +149,8 @@ ServiceNow、Box、Google Apps などいくつかのアプリケーションで�
 * 属性マッピングの更新は、同期サイクルのパフォーマンスに影響を与えます。 属性マッピングの構成を更新するには、すべての管理オブジェクトを再評価する必要があります。 
 
 * 推奨されるベスト プラクティスとして、属性マッピングに対する連続的な変更の回数は最小限に抑えてください。
+
+* 写真を同期する形式は指定できないので、プロビジョニングする写真属性のアプリへの追加は、現在サポートされていません。 [ユーザーの声](https://feedback.azure.com/forums/169401-azure-active-directory)に関するページで機能の要求をお送りください
 
 
 ## <a name="next-steps"></a>次の手順

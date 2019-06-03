@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 3c008e77116a9b42a2ea137069529c5e241adddd
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56213099"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66160071"
 ---
 [仮想マシン スケール セット](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)と [Azure Monitor の自動スケール機能](../articles/azure-monitor/platform/autoscale-overview.md)を使うと、[仮想マシン (VM)](../articles/virtual-machines/windows/overview.md) を簡単に[自動スケール](../articles/azure-monitor/platform/autoscale-best-practices.md)できます。 自動スケールを適用するには、VM がスケール セットのメンバーになっている必要があります。 この記事では、垂直方向、水平方向を問わず自動または手動で VM をスケールする方法について理解を深めることができるよう、各種の情報を紹介します。
 

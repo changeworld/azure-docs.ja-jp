@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 02/02/2019
 ms.author: mbullwin
-ms.openlocfilehash: 4c3ecdd01106cc8d305764206bc75535fa4dac3a
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: d75544a30a441b5178a1e9dd368f1ce41cd4d321
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268602"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64574265"
 ---
 # <a name="analytics-in-application-insights"></a>Application Insights の Analytics
 Analytics は、[Application Insights](app-insights-overview.md) の強力な検索およびクエリのツールです。 Analytics は Web ツールであるため、セットアップは不要です。
@@ -38,7 +38,7 @@ Application Insights Analytics から Log Analytics ワークスペース内の�
 
 ## <a name="query-data-in-analytics"></a>Analytics でのデータ クエリ
 一般的なクエリではテーブル名を最初に記述し、その後に一連の "*演算子*" を `|` で区切って続けます。
-例として、直近の 3 時間のうちにアプリが受信したさまざまな国からの要求の回数を確認してみます。
+例として、直近の 3 時間のうちにアプリが受信したさまざまな国や地域からの要求の回数を確認してみます。
 ```AIQL
 requests
 | where timestamp > ago(3h)

@@ -10,11 +10,11 @@ ms.date: 8/15/2018
 ms.topic: article
 ms.custom: bfmigrate
 ms.openlocfilehash: bfa076f33ce3b2e7315a07717bba5768b89511c2
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59495286"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66155791"
 ---
 # <a name="migrate-database-resources-to-global-azure"></a>データベース リソースをグローバル Azure に移行する
 

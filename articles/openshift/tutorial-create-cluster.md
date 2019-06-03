@@ -2,18 +2,18 @@
 title: チュートリアル - Azure Red Hat OpenShift クラスターを作成する |Microsoft Docs
 description: Azure CLI を使用して Microsoft Azure Red Hat OpenShift クラスターを作成する方法を学習します
 services: container-service
-author: TylerMSFT
-ms.author: twhitney
+author: jimzim
+ms.author: jzim
 manager: jeconnoc
 ms.topic: tutorial
 ms.service: openshift
-ms.date: 05/06/2019
-ms.openlocfilehash: 5bc71a2d0f29fed163fb5c93ebd27df7f66a1325
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.date: 05/14/2019
+ms.openlocfilehash: 651236c25ed912ebd7399d351677a67e3826278c
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65079477"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66306197"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-cluster"></a>チュートリアル:Azure Red Hat OpenShift クラスターを作成する
 
@@ -32,13 +32,19 @@ ms.locfileid: "65079477"
 
 ## <a name="prerequisites"></a>前提条件
 
+> [!IMPORTANT]
+> このチュートリアルには、Azure CLI のバージョン 2.0.65 以降が必要です。
+>    
+> Azure Red Hat OpenShift を使用する前に、「[Azure Red Hat OpenShift 開発環境の設定](howto-setup-environment.md#purchase-azure-red-hat-openshift-application-nodes-reserved-instances)」の説明に従って、Azure Red Hat OpenShift の予約アプリケーション ノードを 4 個以上購入する必要があります。
+
 このチュートリアルを開始する前に
 
 次を含む[開発環境を設定](howto-setup-environment.md)していることを確認してください。
-- 最新の CLI のインストール
-- テナントの作成
-- Azure アプリケーション オブジェクトの作成
-- クラスターで実行されているアプリにサインインするために使用する Active Directory ユーザーの作成
+- 最新の CLI (バージョン 2.0.65 以上) のインストール
+- テナントの作成 (未作成の場合)
+- Azure アプリケーション オブジェクトの作成 (未作成の場合)
+- セキュリティ グループの作成
+- クラスターにサインインするための Active Directory ユーザーの作成
 
 ## <a name="step-1-sign-in-to-azure"></a>手順 1:Azure へのサインイン
 
@@ -52,36 +58,34 @@ az login
 
 ## <a name="step-2-create-an-azure-red-hat-openshift-cluster"></a>手順 2:Azure Red Hat OpenShift クラスターを作成する
 
-Bash コマンド ウィンドウで、次の変数を設定します。
+Bash コマンド ウィンドウで、以下の変数を設定します。
 
 > [!IMPORTANT]
-> クラスターの名前はすべて小文字にする必要があります。そうしないと、クラスターの作成は失敗します。
+> 一意のクラスター名をすべて小文字で設定してください。そうしないと、クラスターの作成は失敗します。
 
 ```bash
 CLUSTER_NAME=<cluster name in lowercase>
 ```
 
- 「[Create a new app registration](howto-aad-app-configuration.md#create-a-new-app-registration)」(新しいアプリ登録の作成) の手順 6 で選択したのと同じクラスター名を使用します。
+クラスターを作成する場所を選択します。 Azure 上の OpenShift がサポートされる Azure リージョンの一覧については、[サポートされるリージョン](supported-resources.md#azure-regions)を参照してください。 (例: `LOCATION=eastus`)。
 
 ```bash
 LOCATION=<location>
 ```
 
-クラスターを作成する場所を選択します。 Azure 上の OpenShift がサポートされる Azure リージョンの一覧については、[サポートされるリージョン](supported-resources.md#azure-regions)を参照してください。 (例: `LOCATION=eastus`)。
-
-`FQDN` をクラスターの完全修飾名に設定します。 この名前は、クラスター名、場所、末尾に付加された `.cloudapp.azure.com` で構成されます。 これは、「[Create a new app registration](howto-aad-app-configuration.md#create-a-new-app-registration)」(新しいアプリ登録の作成) の手順 6 で作成したサインオン URL と同じです。 例:   
-
-```bash
-FQDN=$CLUSTER_NAME.$LOCATION.cloudapp.azure.com
-```
-
-`APPID` を、「[Create a new app registration](howto-aad-app-configuration.md#create-a-new-app-registration)」(新しいアプリ登録の作成) の手順 9 で保存した値に設定します。  
+`APPID` を、「[Create an Azure AD app registration (Azure AD アプリ登録を作成する)](howto-aad-app-configuration.md#create-an-azure-ad-app-registration)」の手順 5 で保存した値に設定します。  
 
 ```bash
 APPID=<app ID value>
 ```
 
-`SECRET` を、「[Create a client secret](howto-aad-app-configuration.md#create-a-client-secret)」(クライアント シークレットの作成) の手順 6 で保存した値に設定します。  
+"GROUPID" を、「[Create an Azure AD security group (Azure AD セキュリティ グループを作成する)](howto-aad-app-configuration.md#create-an-azure-ad-security-group)」の手順 10 で保存した値に設定します。
+
+```bash
+GROUPID=<group ID value>
+```
+
+`SECRET` を、「[Create a client secret (クライアント シークレットを作成する)](howto-aad-app-configuration.md#create-a-client-secret)」の手順 8 で保存した値に設定します。  
 
 ```bash
 SECRET=<secret value>
@@ -93,7 +97,7 @@ SECRET=<secret value>
 TENANT=<tenant ID>
 ```
 
-クラスターのリソース グループを作成します。 上記の変数を定義するのに使用した Bash シェルの次のコマンドを実行します。
+クラスターのリソース グループを作成します。 上記の変数を定義するのに使用したのと同じ Bash シェルで、次のコマンドを実行します。
 
 ```bash
 az group create --name $CLUSTER_NAME --location $LOCATION
@@ -101,7 +105,7 @@ az group create --name $CLUSTER_NAME --location $LOCATION
 
 ### <a name="optional-connect-the-clusters-virtual-network-to-an-existing-virtual-network"></a>省略可能:クラスターの仮想ネットワークを既存の仮想ネットワークに接続する
 
-作成したクラスターの仮想ネットワーク (VNET) を既存の VNET に接続する必要がない場合は、この手順をスキップします。
+作成したクラスターの仮想ネットワーク (VNET) をピアリングによって既存の VNET に接続する必要がない場合は、この手順をスキップします。
 
 最初に、既存の VNET の識別子を取得します。 この識別子は、`/subscriptions/{subscription id}/resourceGroups/{resource group of VNET}/providers/Microsoft.Network/virtualNetworks/{VNET name}` の形式になります。
 
@@ -117,45 +121,71 @@ VNET_ID=$(az network vnet show -n {VNET name} -g {VNET resource group} --query i
 
 ### <a name="create-the-cluster"></a>クラスターを作成する
 
-これで、クラスターを作成する準備ができました。
+これで、クラスターを作成する準備ができました。 以下では、指定された Azure AD テナントにクラスターを作成し、Azure AD アプリ オブジェクト、セキュリティ プリンシパルとして使用するシークレット、クラスターへの管理者アクセスを備えたメンバーを含むセキュリティ グループを指定します。
 
- クラスターの仮想ネットワークを既存の仮想ネットワークに接続していない場合は、次の例の末尾の `--vnet-peer-id $VNET_ID` パラメーターを省略します。
+クラスターと仮想ネットワークの間でピアリングを実行**しない**場合は、次のコマンドを使用します。
 
 ```bash
-az openshift create --resource-group $CLUSTER_NAME --name $CLUSTER_NAME -l $LOCATION --fqdn $FQDN --aad-client-app-id $APPID --aad-client-app-secret $SECRET --aad-tenant-id $TENANT --vnet-peer-id $VNET_ID
+az openshift create --resource-group $CLUSTER_NAME --name $CLUSTER_NAME -l $LOCATION --aad-client-app-id $APPID --aad-client-app-secret $SECRET --aad-tenant-id $TENANT --customer-admin-group-id $GROUPID
 ```
 
-数分後に `az openshift create` は正常に完了し、クラスターの詳細を含む JSON 応答を返します。
+クラスターと仮想ネットワークの間でピアリングを実行**する**場合は、`--vnet-peer` フラグを追加する次のコマンドを使用します。
+ 
+```bash
+az openshift create --resource-group $CLUSTER_NAME --name $CLUSTER_NAME -l $LOCATION --aad-client-app-id $APPID --aad-client-app-secret $SECRET --aad-tenant-id $TENANT --customer-admin-group-id $GROUPID --vnet-peer $VNET_ID
+```
 
 > [!NOTE]
-> ホスト名が使用できないというエラーが発生する場合は、クラスター名が一意でない可能性があります。 元のアプリ登録を削除し、別のクラスター名を使用して「Create a new app registration」(新しいアプリ登録の作成) (howto-aad-app-configuration.md#create-a-new-app-registration) の手順をもう一度行ってみてください (新しいユーザーは既に作成済みなので、その最後の作成手順を省略します)。
+> ホスト名が使用できないというエラーが発生する場合は、クラスター名が一意でない可能性があります。 元のアプリ登録を削除し、別のクラスター名を使用して「Create a new app registration (新しいアプリ登録を作成する)」 (howto-aad-app-configuration.md#create-a-new-app-registration) の手順をもう一度行ってみてください。新しいユーザーとセキュリティ グループの作成手順は省略します。
 
-## <a name="step-3-sign-in-to-the-openshift-console"></a>手順 3:OpenShift コンソールにサインインする
+数分後、`az openshift create` が完了します。
 
-これで、新しいクラスターの OpenShift コンソールにサインインする準備ができました。 [OpenShift Web コンソール](https://docs.openshift.com/dedicated/architecture/infrastructure_components/web_console.html)により、OpenShift プロジェクトのコンテンツの視覚化、参照、管理ができます。
+### <a name="get-the-sign-in-url-for-your-cluster"></a>クラスターのサインイン URL を取得する
 
-テスト用に作成した[新しい Azure AD ユーザー](howto-aad-app-configuration.md#create-a-new-active-directory-user)としてサインインします。 そのためには、Azure portal にサインインするために、通常使用する ID がキャッシュされていない、新しいブラウザー インスタンスが必要です。
+次のコマンドを実行して、クラスターにサインインするための URL を取得します。
+
+```bash
+az openshift show -n $CLUSTER_NAME -g $CLUSTER_NAME
+```
+
+出力で `publicHostName` (例: `"publicHostname": "openshift.xxxxxxxxxxxxxxxxxxxx.eastus.azmosa.io"`) を探します。
+
+クラスターのサインイン URL は、`https://` の後にこの `publicHostName` の値を続けたものです。  (例: `https://openshift.xxxxxxxxxxxxxxxxxxxx.eastus.azmosa.io`)。  次の手順で、この URI をアプリ登録リダイレクト URI の一部として使用します。
+
+## <a name="step-3-update-your-app-registration-redirect-uri"></a>手順 3:アプリ登録リダイレクト URI を更新する
+
+これでクラスターのサインイン URL を用意できたので、アプリ登録リダイレクト URI を設定します。
+
+1. [[アプリの登録] ブレード](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)を開きます。
+2. アプリ登録オブジェクトをクリックします。
+3. **[リダイレクト URI を追加する]** をクリックします。
+4. **[種類]** が **[Web]** であることを確認し、`https://<public host name>/oauth2callback/Azure%20AD` のパターンを使用して **[リダイレクト URI]** を設定します。 次に例を示します。`https://openshift.xxxxxxxxxxxxxxxxxxxx.eastus.azmosa.io/oauth2callback/Azure%20AD`
+5. **[保存]**
+
+## <a name="step-4-sign-in-to-the-openshift-console"></a>手順 4:OpenShift コンソールにサインインする
+
+これで、新しいクラスターの OpenShift コンソールにサインインする準備ができました。 [OpenShift Web コンソール](https://docs.openshift.com/aro/architecture/infrastructure_components/web_console.html)により、OpenShift プロジェクトのコンテンツの視覚化、参照、管理ができます。
+
+Azure portal へのサインインに通常使用する ID がキャッシュされていない、新しいブラウザー インスタンスが必要です。
 
 1. *シークレット* ウィンドウ (Chrome) または *InPrivate* ウィンドウ (Microsoft Edge) を開きます。
-2. 「[Create a new app registration](howto-aad-app-configuration.md#create-a-new-app-registration)」(新しいアプリ登録の作成) の手順 6 で作成したサインオン URL に移動します。 たとえば、 https://constoso.eastus.cloudapp.azure.com のように指定します。
+2. 上で取得したサインオン URL (例: `https://openshift.xxxxxxxxxxxxxxxxxxxx.eastus.azmosa.io`) に移動します。
 
-> [!NOTE]
-> OpenShift コンソールでは、自己署名証明書が使用されます。
-> お使いのブラウザーでメッセージが表示されたら、警告を回避し、"信頼されていない" 証明書をそのまま使用します。
+「[Create a new Azure Active Directory user (新しい Azure Active Directory ユーザーを作成する)](howto-aad-app-configuration.md#create-a-new-azure-active-directory-user)」の手順 3 で作成したユーザー名を使用してサインインします。
 
-「[Create a new Active Directory user](howto-aad-app-configuration.md#create-a-new-active-directory-user)」(新しい Active Directory ユーザーの作成) で作成したユーザーとパスワードを使用してサインインします。**[要求されているアクセス許可]** ダイアログが表示されたら、**[組織の代理として同意する]** を選択し、**[承諾]** を選択します。
+**[要求されているアクセス許可]** ダイアログが表示されます。 **[組織の代理として同意する]** 、 **[同意する]** の順にクリックします。
 
 これで、クラスター コンソールにログインしました。
 
-[OpenShift クラスター コンソールのスクリーンショット](./media/aro-console.png)
+![OpenShift クラスター コンソールのスクリーンショット](./media/aro-console.png)
 
- [OpenShift コンソールを使用](https://docs.openshift.com/dedicated/getting_started/developers_console.html)してイメージを作成およびビルドする方法の詳細については、[Red Hat OpenShift](https://docs.openshift.com/dedicated/welcome/index.html) ドキュメントを参照してください。
+ [OpenShift コンソールを使用](https://docs.openshift.com/aro/getting_started/developers_console.html)してイメージを作成およびビルドする方法の詳細については、[Red Hat OpenShift](https://docs.openshift.com/aro/welcome/index.html) ドキュメントを参照してください。
 
-## <a name="step-4-install-the-openshift-cli"></a>手順 4:OpenShift CLI をインストールする
+## <a name="step-5-install-the-openshift-cli"></a>手順 5:OpenShift CLI をインストールする
 
-[OpenShift CLI](https://docs.openshift.com/dedicated/cli_reference/get_started_cli.html) (*OC ツール*) では、OpenShift クラスターのさまざまなコンポーネントと対話するためのアプリケーションおよび低レベルのユーティリティを管理するコマンドを提供します。
+[OpenShift CLI](https://docs.openshift.com/aro/cli_reference/get_started_cli.html) (*OC ツール*) では、OpenShift クラスターのさまざまなコンポーネントと対話するためのアプリケーションおよび低レベルのユーティリティを管理するコマンドを提供します。
 
-OpenShift コンソールで、右上隅のサインイン名の横にある疑問符をクリックし、**[コマンド ライン ツール]** を選択します。  **[最新リリース]** のリンク先に移動し、Linux、MacOS、または Windows 用にサポートされている oc CLI をダウンロードしてインストールします。
+OpenShift コンソールで、右上隅のサインイン名の横にある疑問符をクリックし、 **[コマンド ライン ツール]** を選択します。  **[最新リリース]** のリンク先に移動し、Linux、MacOS、または Windows 用にサポートされている oc CLI をダウンロードしてインストールします。
 
 > [!NOTE]
 > 右上隅の疑問符アイコンが表示されない場合は、左上のドロップダウン リストで *[サービス カタログ]* または *[Application Console]\(アプリケーション コンソール\)* を選択します。

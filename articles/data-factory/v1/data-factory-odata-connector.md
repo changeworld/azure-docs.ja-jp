@@ -46,7 +46,7 @@ OData ストアから、サポートされている任意のシンク データ 
 
 パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 手順については、「[チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」を参照してください。データのコピー ウィザードを使用してパイプラインを作成する簡単なチュートリアルです。
 
-また、次のツールを使用してパイプラインを作成することもできます。**Azure portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、**.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。
+また、次のツールを使用してパイプラインを作成することもできます。**Azure portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、 **.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。
 
 ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。
 
@@ -66,7 +66,7 @@ OData ストアから、サポートされている任意のシンク データ 
 | type |type プロパティは、次のように設定する必要があります:**OData** |はい |
 | url |OData サービスの URL です。 |はい |
 | authenticationType |OData ソースへの接続に使用される認証の種類です。 <br/><br/> クラウド OData の場合、有効な値は、匿名、基本、または OAuth です (Azure Data Factory で現在サポートされているのは Azure Active Directory ベースの OAuth のみです)。 <br/><br/> オンプレミスの OData では、Anonymous、Basic、Windows のいずれかの値になります。 |はい |
-| ユーザー名 |基本認証を使用している場合は、ユーザー名を指定します。 |はい (基本認証を使用している場合のみ) |
+| username |基本認証を使用している場合は、ユーザー名を指定します。 |はい (基本認証を使用している場合のみ) |
 | password |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 |はい (基本認証を使用している場合のみ) |
 | authorizedCredential |OAuth を使用している場合は、Data Factory コピー ウィザードまたはエディターの **[承認]** ボタンをクリックして資格情報を入力すると、このプロパティの値が自動生成されます。 |はい (OAuth 認証を使用している場合のみ) |
 | gatewayName |Data Factory サービスが、オンプレミスの OData サービスへの接続に使用するゲートウェイの名前。 オンプレミスの OData ソースからデータをコピーする場合にのみ指定します。 |いいえ  |

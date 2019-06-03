@@ -1,5 +1,5 @@
 ---
-title: クイック スタート - Azure Spatial Anchors を使用する Android Unity アプリを作成する | Microsoft Docs
+title: クイック スタート - Azure Spatial Anchors を使用して Unity Android アプリを作成する | Microsoft Docs
 description: このクイック スタートでは、Spatial Anchors を使用する Android アプリを Unity でビルドする方法について説明します。
 author: craigktreasure
 manager: aliemami
@@ -8,16 +8,16 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: bce71db594d2bbd869dcc5a1ff5cb494a7a6f1c2
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 001042a5499b492db151853172e999cf7a3c5f88
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59994940"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64687805"
 ---
-# <a name="quickstart-create-an-android-unity-app-with-azure-spatial-anchors"></a>クイック スタート:Azure Spatial Anchors を使用する Android Unity アプリを作成する
+# <a name="quickstart-create-a-unity-android-app-with-azure-spatial-anchors"></a>クイック スタート:Azure Spatial Anchors を使用して Unity Android アプリを作成する
 
-このクリック スタートでは、[Azure Spatial Anchors](../overview.md) を使用する Android Unity アプリを作成する方法について説明します。 Azure Spatial Anchors は、クロスプラットフォーム対応の開発者向けサービスです。このサービスを使用すると、時間が経過した後でも複数のデバイス間で位置情報を保持するオブジェクトを使用して複合現実エクスペリエンスを作成できます。 完了すると、Unity でビルドされた、空間アンカーを保存して呼び戻すことができる ARCore Android アプリが作成されます。
+このクイック スタートでは、[Azure Spatial Anchors](../overview.md) を使用して Unity Android アプリを作成する方法について説明します。 Azure Spatial Anchors は、クロスプラットフォーム対応の開発者向けサービスです。このサービスを使用すると、時間が経過した後でも複数のデバイス間で位置情報を保持するオブジェクトを使用して複合現実エクスペリエンスを作成できます。 完了すると、Unity でビルドされた、空間アンカーを保存して呼び戻すことができる ARCore Android アプリが作成されます。
 
 学習内容は次のとおりです。
 
@@ -55,7 +55,7 @@ ms.locfileid: "59994940"
 
 [!INCLUDE [Configure Unity Scene](../../../includes/spatial-anchors-unity-configure-scene.md)]
 
-**[File]\(ファイル\)** -> **[Save]\(保存\)** の順に選択してシーンを保存します。
+**[File]\(ファイル\)**  ->  **[Save]\(保存\)** の順に選択してシーンを保存します。
 
 ## <a name="export-the-android-studio-project"></a>Android Studio プロジェクトをエクスポートする
 
@@ -66,7 +66,7 @@ ms.locfileid: "59994940"
 アプリの指示に従って、アンカーを配置し、呼び戻します。
 
 > [!NOTE]
-> アプリを実行したとき、背景としてカメラが表示されない場合は (たとえば、代わりに空白、青、または他のテクスチャが表示される場合)、Unity に資産を再インポートすることが必要な場合があります。 アプリを停止します。 Unity の上部のメニューで、**[Assets]\(資産\) -> [Reimport all]\(すべて再インポート\)** を選択します。 その後、アプリをもう一度実行します。
+> アプリを実行したとき、背景としてカメラが表示されない場合は (たとえば、代わりに空白、青、または他のテクスチャが表示される場合)、Unity に資産を再インポートすることが必要な場合があります。 アプリを停止します。 Unity の上部のメニューで、 **[Assets]\(資産\) -> [Reimport all]\(すべて再インポート\)** を選択します。 その後、アプリをもう一度実行します。
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 

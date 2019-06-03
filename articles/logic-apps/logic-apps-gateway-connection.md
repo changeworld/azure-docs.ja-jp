@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 10/01/2018
-ms.openlocfilehash: 2b9e1c153c3fa9b17145eb6c3c8f3ed02e3bf40f
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 0580fe09c2cb6569724a9b4365233a3142645a47
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54064068"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65546277"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Azure Logic Apps からオンプレミスのデータ ソースに接続する
 
@@ -36,7 +36,7 @@ ms.locfileid: "54064068"
 
 * ゲートウェイのインストールは、まだ Azure のゲートウェイ リソースに関連付けられていません。 ゲートウェイのインストールは、1 つのゲートウェイ リソースのみにリンクすることができます。これを行うには、ゲートウェイ リソースを作成したときにゲートウェイ インストールを選択します。 このリンクにより、他のリソースはこのゲートウェイ インストールを使用できなくなります。
 
-* Azure portal にサインインしてゲートウェイ リソースを作成するときは、以前に[オンプレミス データ ゲートウェイのインストール](../logic-apps/logic-apps-gateway-install.md#requirements)に使用したものと同じサインイン アカウントと、データ ゲートウェイのインストールに使用したものと同じ [Azure サブスクリプション](https://docs.microsoft.com/azure/architecture/cloud-adoption-guide/adoption-intro/subscription-explainer)を必ず使用してください。 Azure サブスクリプションがない場合は、<a href="https://azure.microsoft.com/free/" target="_blank">無料の Azure アカウントにサインアップ</a>してください。
+* Azure portal にサインインしてゲートウェイ リソースを作成するときは、以前に[オンプレミス データ ゲートウェイのインストール](../logic-apps/logic-apps-gateway-install.md#requirements)に使用したものと同じサインイン アカウントと、データ ゲートウェイのインストールに使用したものと同じ [Azure サブスクリプション](https://docs.microsoft.com/azure/architecture/cloud-adoption/governance/resource-consistency/azure-resource-access)を必ず使用してください。 Azure サブスクリプションがない場合は、<a href="https://azure.microsoft.com/free/" target="_blank">無料の Azure アカウントにサインアップ</a>してください。
 
 * Azure portal でゲートウェイ リソースを作成し、保守するには、[Windows サービス アカウント](../logic-apps/logic-apps-gateway-install.md#windows-service-account)に**共同作成者**以上のアクセス許可が必要です。 オンプレミス データ ゲートウェイは、Windows サービスとして実行され、Windows サービスのログイン資格情報として `NT SERVICE\PBIEgwService` を使用するように設定されています。 
 
@@ -65,9 +65,9 @@ ms.locfileid: "54064068"
 
    | プロパティ | 説明 | 
    |----------|-------------|
-   | **名前** | ゲートウェイ リソースの名前 | 
+   | **Name** | ゲートウェイ リソースの名前 | 
    | **サブスクリプション** | Azure サブスクリプションの名前。このサブスクリプションは、ロジック アプリと同じサブスクリプションである必要があります。 既定のサブスクリプションは、サインインするために使用した Azure アカウントに基づきます。 | 
-   | **[リソース グループ]** | 関連するリソースを整理するための [Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)の名前 | 
+   | **リソース グループ** | 関連するリソースを整理するための [Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)の名前 | 
    | **場所** | Azure では、この場所は、[ゲートウェイのインストール](../logic-apps/logic-apps-gateway-install.md)中にゲートウェイ クラウド サービス向けに選択したリージョンと同じリージョンに限定されます。 <p>**メモ**:このゲートウェイ リソースの場所がゲートウェイ クラウド サービスの場所に一致していることを確認してください。 一致していないと、ゲートウェイのインストールは、次の手順で選択するインストール済みのゲートウェイの一覧に表示されない可能性があります。 ゲートウェイ リソースとロジック アプリでは、異なるリージョンを使用できます。 | 
    | **インストール名** | ゲートウェイのインストールが既に選択されていない場合は、前にインストールしたゲートウェイを選択します。 | 
    | | | 

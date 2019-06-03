@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.service: azure-blockchain
 ms.reviewer: jackyhsu
 manager: femila
-ms.openlocfilehash: d3ad4cdfe33948c04c278ed3dfef7aa6fda637ab
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 0b5e39e9cf2fc3ffe91db6587bc1ed1bab079e93
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65027498"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65777337"
 ---
 # <a name="tutorial-send-transactions-using-azure-blockchain-service"></a>チュートリアル:Azure Blockchain Service を使用してトランザクションを送信する
 
@@ -47,7 +47,7 @@ ms.locfileid: "65027498"
 既定では、トランザクション ノードは 1 つあります。 ここではさらに 2 つ追加します。 ノードの 1 つは、プライベート トランザクションに参加します。 もう 1 つは、プライベート トランザクションには含まれません。
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-1. 自分の Azure Blockchain メンバーに移動して、**[Transaction nodes]\(トランザクション ノード\) > [追加]** を選択します。
+1. 自分の Azure Blockchain メンバーに移動して、 **[Transaction nodes]\(トランザクション ノード\) > [追加]** を選択します。
 1. `alpha` という名前の新しいトランザクション ノードの設定を完了します。
 
     ![トランザクション ノードを作成する](./media/send-transaction/create-node.png)
@@ -86,7 +86,7 @@ ms.locfileid: "65027498"
 
 Web3 を使って既定のトランザクション ノードに接続し、アカウントを作成します。 Web3 の接続文字列は、Azure portal から取得できます。
 
-1. Azure portal で既定のトランザクション ノードに移動し、**[Transaction nodes]\(トランザクション ノード\) > [Sample code]\(サンプル コード\) > [Web3]** の順に選択します。
+1. Azure portal で既定のトランザクション ノードに移動し、 **[Transaction nodes]\(トランザクション ノード\) > [Sample code]\(サンプル コード\) > [Web3]** の順に選択します。
 1. **[HTTPS (Access key 1)]\(HTTPS (アクセス キー 1)\)** から JavaScript をコピーします ![Web3 サンプル コード](./media/send-transaction/web3-code.png)
 
 1. 既定のトランザクション ノードの Web3 JavaScript コードを、Truffle の対話型開発コンソールに貼り付けます。 そのコードでは、Azure Blockchain Service のトランザクション ノードに接続される Web3 オブジェクトが作成されます。
@@ -127,14 +127,14 @@ Truffle プロジェクトを構成するには、Azure portal からいくつ�
 
 ### <a name="transaction-node-endpoint-addresses"></a>トランザクション ノードのエンドポイント アドレス
 
-1. Azure portal で各トランザクション ノードに移動し、**[Transaction nodes]\(トランザクション ノード\) > [Connection strings]\(接続文字列\)** の順に選択します。
-1. 各トランザクション ノードの **HTTPS (アクセス キー 1) からエンドポイント URL をコピーします。 エンドポイント アドレスは、チュートリアルの後半でスマート コントラクトの構成ファイルに必要になります。
+1. Azure portal で各トランザクション ノードに移動し、 **[Transaction nodes]\(トランザクション ノード\) > [Connection strings]\(接続文字列\)** の順に選択します。
+1. 各トランザクション ノードの **HTTPS (アクセス キー 1)** からエンドポイント URL をコピーします。 エンドポイント アドレスは、チュートリアルの後半でスマート コントラクトの構成ファイルに必要になります。
 
     ![トランザクションのエンドポイント アドレス](./media/send-transaction/endpoint.png)
 
 ### <a name="edit-configuration-file"></a>構成ファイルを編集する
 
-1. Visual Studio Code を起動し、**[ファイル] > [フォルダーを開く]** メニューを使用して、Truffle プロジェクト ディレクトリのフォルダーを開きます。
+1. Visual Studio Code を起動し、 **[ファイル] > [フォルダーを開く]** メニューを使用して、Truffle プロジェクト ディレクトリのフォルダーを開きます。
 1. Truffle 構成ファイル `truffle-config.js` を開きます。
 1. ファイルの内容を、次の構成情報に置き換えます。 エンドポイント アドレスとアカウント情報を含む変数を追加します。 山かっこのセクションは、前のセクションで収集した値に置き換えます。
 
@@ -471,7 +471,7 @@ Finished!
 リソース グループを削除するには:
 
 1. Azure Portal で、左側のナビゲーション ウィンドウの **[リソース グループ]** に移動し、削除するリソース グループを選択します。
-1. **[リソース グループの削除]** を選択します。 リソース グループ名を入力して削除を確認し、**[削除]** を選択します。
+1. **[リソース グループの削除]** を選択します。 リソース グループ名を入力して削除を確認し、 **[削除]** を選択します。
 
 ## <a name="next-steps"></a>次の手順
 

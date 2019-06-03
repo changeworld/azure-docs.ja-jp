@@ -1,5 +1,5 @@
 ---
-title: 'デシジョン フォレスト回帰: モジュール リファレンス'
+title: デシジョン フォレスト回帰:モジュール リファレンス
 titleSuffix: Azure Machine Learning service
 description: Azure Machine Learning service でデシジョン フォレスト回帰モジュールを使用し、デシジョン ツリーの集団に基づく回帰モデルを作成する方法について説明します。
 services: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 67016582149824c8deb83b54102190a57bd19383
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: d372adf75d46fdedb7a6f2b17e47822475d1f155
+ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65027725"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65442365"
 ---
 # <a name="decision-forest-regression-module"></a>デシジョン フォレスト回帰モジュール
 
@@ -39,7 +39,7 @@ ms.locfileid: "65027725"
 
 この回帰モデルは、複数のデシジョン ツリーの集団から成ります。 回帰デシジョン フォレストに含まれる各ツリーからは、予測としてガウス分布が出力されます。 ツリーの集団に対して集計 (アグリゲーション) を行うことによって、モデルに含まれる全ツリーの分布の組み合わせに最も近いガウス分布を見つけ出します。
 
-このアルゴリズムの理論に基づくフレームワークとその実装の詳細については、次の記事を参照してください: [Decision Forests: A Unified Framework for Classification, Regression, Density Estimation, Manifold Learning and Semi-Supervised Learning (デシジョン フォレスト: 分類、回帰、密度推定、多様体学習、半教師あり学習のための統合フレームワーク)](https://www.microsoft.com/en-us/research/publication/decision-forests-a-unified-framework-for-classification-regression-density-estimation-manifold-learning-and-semi-supervised-learning/?from=http%3A%2F%2Fresearch.microsoft.com%2Fapps%2Fpubs%2Fdefault.aspx%3Fid%3D158806#)
+このアルゴリズムの理論に基づくフレームワークとその実装の詳細については、次の記事を参照してください: [Decision Forests: A Unified Framework for Classification, Regression, Density Estimation, Manifold Learning and Semi-Supervised Learning (デシジョン フォレスト: 分類、回帰、密度推定、多様体学習、半教師あり学習のための統一フレームワーク)](https://www.microsoft.com/en-us/research/publication/decision-forests-a-unified-framework-for-classification-regression-density-estimation-manifold-learning-and-semi-supervised-learning/?from=http%3A%2F%2Fresearch.microsoft.com%2Fapps%2Fpubs%2Fdefault.aspx%3Fid%3D158806#)
 
 ## <a name="how-to-configure-decision-forest-regression-model"></a>デシジョン フォレスト回帰モデルを構成する方法
 
@@ -53,7 +53,7 @@ ms.locfileid: "65027725"
 
     - **[レプリケート]**: レプリケーションでは、各ツリーがまったく同じ入力データでトレーニングされます。 それぞれのツリー ノードでどの分割述語が使用されるかの決定はランダムなままであり、ツリーは多様になります。
 
-         **[レプリケート]** オプションを使用したトレーニング プロセスの詳細については、次の書籍を参照してください: [『Decision Forests for Computer Vision and Medical Image Analysis』(Criminisi および J. Shotton 共著、Springer 2013)](http://research.microsoft.com/projects/decisionforests/)。
+         **[レプリケート]** オプションを使用したトレーニング プロセスの詳細については、次の書籍を参照してください: [『Decision Forests for Computer Vision and Medical Image Analysis』(Criminisi および J. Shotton 共著、Springer 2013)](https://research.microsoft.com/projects/decisionforests/)。
 
 3. **[Create trainer mode]\(トレーナー モードの作成\)** オプションを設定して、モデルのトレーニング方法を指定します。
 

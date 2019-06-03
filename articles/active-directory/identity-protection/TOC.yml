@@ -46,6 +46,8 @@
           href: security-overview.md
         - name: 危険なユーザーとサインインの調査
           href: howto-investigate-risky-users-signins.md
+        - name: リスク イベントに関するフィードバックの提供
+          href: howto-provide-risk-event-feedback.md
         - name: リスク ポリシーの構成
           href: howto-configure-risk-policies.md
         - name: 検出精度の向上

@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 38dd4d13aa45b69fc846ef9b6b2e1b56f56de573
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: f851fd2857650dd00e365abf71ec5f0199db6d57
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59544757"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64711573"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Azure Automation での Runbook の実行
 
@@ -78,6 +78,9 @@ else
 ### <a name="time-dependant-scripts"></a>時間依存のスクリプト
 
 Runbook の作成時に慎重に検討してください。 前述のように、Runbook は堅牢で、Runbook の再起動または失敗を引き起こす可能性のある一時的なエラーを処理できる方法で作成する必要があります。 Runbook は、失敗した場合には再試行されます。 Runbook が、通常は時間の制約内で実行される場合、実行時間を調べるロジックを Runbook 内に実装し、起動、シャットダウン、スケールアウトなどの操作が特定時間中にのみ実行されるようにする必要があります。
+
+> [!NOTE]
+> Azure のサンド ボックス プロセス上のローカル時刻は UTC 時刻に設定されます。 Runbook で日付と時刻を計算するには、これを考慮する必要があります。
 
 ### <a name="tracking-progress"></a>進行状況の追跡
 
@@ -196,7 +199,7 @@ Azure サンドボックスで実行される Runbook ジョブには、デバ�
 
 ## <a name="job-statuses"></a>ジョブの状態
 
-次の表には、ジョブが取り得るさまざまな状態を説明します。 PowerShell には、終了するエラーと終了しないエラーという、2 種類のエラーがあります。 終了するエラーは、発生した場合に Runbook の状態を **[失敗]** に設定します。 終了しないエラーの場合、エラー発生後もスクリプトを継続できます。 終了しないエラーの例では、実在しないパスで `Get-ChildItem` コマンドレットを使用しています。 PowerShell では、パスが存在しないことを確認して、エラーをスローし、次のフォルダーへと処理を継続します。 このエラーでは、Runbook の状態を **[失敗]** に設定せず、**[完了]** とマークすることが可能です。 終了しないエラー時に Runbook を強制的に停止するには、コマンドレットで `-ErrorAction Stop` を使用できます。
+次の表には、ジョブが取り得るさまざまな状態を説明します。 PowerShell には、終了するエラーと終了しないエラーという、2 種類のエラーがあります。 終了するエラーは、発生した場合に Runbook の状態を **[失敗]** に設定します。 終了しないエラーの場合、エラー発生後もスクリプトを継続できます。 終了しないエラーの例では、実在しないパスで `Get-ChildItem` コマンドレットを使用しています。 PowerShell では、パスが存在しないことを確認して、エラーをスローし、次のフォルダーへと処理を継続します。 このエラーでは、Runbook の状態を **[失敗]** に設定せず、 **[完了]** とマークすることが可能です。 終了しないエラー時に Runbook を強制的に停止するには、コマンドレットで `-ErrorAction Stop` を使用できます。
 
 | Status | 説明 |
 |:--- |:--- |
@@ -229,11 +232,11 @@ Azure サンドボックスで実行される Runbook ジョブには、デバ�
 
 ![Automation アカウントの [ジョブ] ページ](./media/automation-runbook-execution/automation-account-jobs-status-blade.png)
 
-ジョブのリストをフィルター処理するには、**[ジョブのフィルター]** を選択します。特定の Runbook、ジョブの状態でフィルターしたり、検索対象の時刻の範囲をドロップダウン リストから選択したりできます。
+ジョブのリストをフィルター処理するには、 **[ジョブのフィルター]** を選択します。特定の Runbook、ジョブの状態でフィルターしたり、検索対象の時刻の範囲をドロップダウン リストから選択したりできます。
 
 ![[フィルター] の [ジョブの状態]](./media/automation-runbook-execution/automation-account-jobs-filter.png)
 
-また、特定の Runbook について、ジョブ概要の詳細情報を表示することもできます。それには、Automation アカウントで **[Runbook]** ページからその Runbook を選択し、**[ジョブ]** タイルを選択します。 この操作で **[ジョブ]** ページが表示され、そのページでジョブ レコードをクリックすると、そのジョブの詳細と出力を表示できます。
+また、特定の Runbook について、ジョブ概要の詳細情報を表示することもできます。それには、Automation アカウントで **[Runbook]** ページからその Runbook を選択し、 **[ジョブ]** タイルを選択します。 この操作で **[ジョブ]** ページが表示され、そのページでジョブ レコードをクリックすると、そのジョブの詳細と出力を表示できます。
 
 ![Automation アカウントの [ジョブ] ページ](./media/automation-runbook-execution/automation-runbook-job-summary-blade.png)
 
@@ -243,9 +246,9 @@ Azure サンドボックスで実行される Runbook ジョブには、デバ�
 
 次の手順を使用して Runbook のジョブを表示します。
 
-1. Azure Portal で、**[Automation]** を選択し、次に Automation アカウントの名前を選択します。
-2. ハブから **[Runbook]** を選択し、**[Runbook]** ページで、一覧から 1 つの Runbook を選択します。
-3. 選択した Runbook のページで、**[ジョブ]** タイルをクリックします。
+1. Azure Portal で、 **[Automation]** を選択し、次に Automation アカウントの名前を選択します。
+2. ハブから **[Runbook]** を選択し、 **[Runbook]** ページで、一覧から 1 つの Runbook を選択します。
+3. 選択した Runbook のページで、 **[ジョブ]** タイルをクリックします。
 4. 一覧のジョブのいずれかをクリックすると、Runbook のジョブの詳細ページに、そのジョブの詳細と出力を表示できます。
 
 ## <a name="retrieving-job-status-using-powershell"></a>PowerShell を使用したジョブの状態の取得

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.reviewer: vitalyg
 ms.author: cithomas
-ms.openlocfilehash: b35b0c66c29805d9cd7ecd00ffaad4fc1cfe253b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c11eeb84fe4ed1ded93cb8de7ff54b756fd36749
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59046583"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65779902"
 ---
 # <a name="sampling-in-application-insights"></a>Application Insights におけるサンプリング
 
@@ -174,11 +174,9 @@ public void ConfigureServices(IServiceCollection services)
 > このメソッドを使用して、サンプリングを構成する場合、AddApplicationInsightsTelemetry() で aiOptions.EnableAdaptiveSampling = false; 設定を使用してください。
 
 ```csharp
-public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+public void Configure(IApplicationBuilder app, IHostingEnvironment env, TelemetryConfiguration configuration)
 {
-    var configuration = app.ApplicationServices.GetService<TelemetryConfiguration>();
-
-    var builder = configuration .TelemetryProcessorChainBuilder;
+    var builder = configuration.TelemetryProcessorChainBuilder;
     // version 2.5.0-beta2 and above should use the following line instead of above. (https://github.com/Microsoft/ApplicationInsights-aspnetcore/blob/develop/CHANGELOG.md#version-250-beta2)
     // var builder = configuration.DefaultTelemetrySink.TelemetryProcessorChainBuilder;
 

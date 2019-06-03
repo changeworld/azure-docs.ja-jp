@@ -1,0 +1,93 @@
+---
+title: Azure Database for PostgreSQL – Hyperscale (Citus) (プレビュー) での分散データ
+description: サーバー グループに分散されたテーブルおよびシャード。
+author: jonels-msft
+ms.author: jonels
+ms.service: postgresql
+ms.subservice: hyperscale-citus
+ms.topic: conceptual
+ms.date: 05/06/2019
+ms.openlocfilehash: 9020ee690d93a1b477471fac4a482a909fca5935
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65080427"
+---
+# <a name="distributed-data-in-azure-database-for-postgresql--hyperscale-citus-preview"></a>Azure Database for PostgreSQL – Hyperscale (Citus) (プレビュー) での分散データ
+
+この記事では、Hyperscale (Citus) での 3 つのテーブル型について説明します。
+分散テーブルがシャードとして格納される方法と、シャードがノード上に配置される方法を示します。
+
+## <a name="table-types"></a>テーブル型
+
+ハイパースケール サーバー グループには 3 つのテーブル型があり、それぞれ別々の目的に使用されます。
+
+### <a name="type-1-distributed-tables"></a>型 1: 分散テーブル
+
+最もよく使用される最初の型が*分散*テーブルです。 SQL ステートメントには通常のテーブルのように見えますが、ワーカー ノードにわたり水平方向に*パーティション分割*されます。 この意味は、テーブルの行が異なるノードの、*シャード*と呼ばれるフラグメント テーブルに格納されるということです。
+
+ハイパースケールは、クラスター全体の SQL ステートメントだけでなく DDL ステートメントも実行するので、分散テーブルのスキーマを変更すると、ワーカーにわたってテーブルのシャードすべてを更新するようにカスケーティングします。
+
+#### <a name="distribution-column"></a>ディストリビューション列
+
+ハイパースケールでは、アルゴリズムのシャーディングを使用して行をシャードに割り当てます。 割り当ては、*ディストリビューション列*と呼ばれるテーブル列の値に基づいて決定論的に行われます。 クラスター管理者は、テーブルを配布するときに、この列を指定する必要があります。
+パフォーマンスおよび機能には、適切な選択を行うことが重要です。
+
+### <a name="type-2-reference-tables"></a>型 2: 参照テーブル
+
+参照テーブルは、コンテンツ全体が単一のシャードに集中される一種の分散テーブルです。 シャードはすべてのワーカーに複製されるので、いずれかのワーカーに対するクエリは、参照情報にローカルでアクセスでき、別のノードから行を要求するネットワーク オーバーヘッドは生じません。 行ごとに個別のシャードを区別する必要がないため、参照テーブルには、ディストリビューション列はありません。
+
+参照テーブルは通常小さく、任意のワーカー ノードで実行しているクエリに関連したデータの格納に使用されます。 たとえば、注文ステータスや製品カテゴリなどの列挙値があります。
+
+### <a name="type-3-local-tables"></a>型 3: ローカル テーブル
+
+ハイパースケールを使用する場合、接続するコーディネーター ノードは通常の PostgreSQL データベースです。 コーディネーター上に通常のテーブルを作成し、それらをシャードしないように選択できます。
+
+ローカル テーブルの適切な候補は、結合クエリに参加していない小規模の管理用テーブルになります。 たとえば、アプリケーション ログインと認証のユーザー テーブルです。
+
+## <a name="shards"></a>シャード
+
+前のセクションでは、分散テーブルがワーカー ノード上にシャードとしてどのように格納されるかについて説明しました。 このセクションでは技術的な詳細について説明します。
+
+コーディネーター上の `pg_dist_shard` メタデータ テーブルには、システム内の分散テーブルの各シャードの行が含まれます。 行は、ハッシュ領域 (shardminvalue、shardmaxvalue) 内の整数の範囲でシャード ID に一致します。
+
+```sql
+SELECT * from pg_dist_shard;
+ logicalrelid  | shardid | shardstorage | shardminvalue | shardmaxvalue 
+---------------+---------+--------------+---------------+---------------
+ github_events |  102026 | t            | 268435456     | 402653183
+ github_events |  102027 | t            | 402653184     | 536870911
+ github_events |  102028 | t            | 536870912     | 671088639
+ github_events |  102029 | t            | 671088640     | 805306367
+ (4 rows)
+```
+
+コーディネーター ノードがどのシャードが `github_events` の行を保持するかを判断しようとした場合、行のディストリビューション列の値をハッシュし、どのシャードの範囲にハッシュされた値が含まれるかを調べます。\' (ハッシュ関数のイメージが disjoint 結合になるように範囲は定義されます)。
+
+### <a name="shard-placements"></a>シャードの配置
+
+シャード 102027 が問題の行に関連付けられているとします。 いずれかのワーカーにおいて、`github_events_102027` と呼ばれるテーブルで行は読み取られたり書き込まれます。 どのワーカーでしょうか。 これは、完全にメタデータ テーブルによって決定され、ワーカーへのシャードのマッピングはシャードの*配置*と呼ばれます。
+
+コーディネーター ノードは、`github_events_102027` のような特定のテーブルを参照するフラグメントにクエリを再書き込みし、これらのフラグメントを適切なワーカー上で実行します。 次に、背後でシャード ID 102027 を保持しているノードを見つける、シーンの背後で実行するクエリの例を示します。
+
+```sql
+SELECT
+    shardid,
+    node.nodename,
+    node.nodeport
+FROM pg_dist_placement placement
+JOIN pg_dist_node node
+  ON placement.groupid = node.groupid
+ AND node.noderole = 'primary'::noderole
+WHERE shardid = 102027;
+```
+
+    ┌─────────┬───────────┬──────────┐
+    │ shardid │ nodename  │ nodeport │
+    ├─────────┼───────────┼──────────┤
+    │  102027 │ localhost │     5433 │
+    └─────────┴───────────┴──────────┘
+
+## <a name="next-steps"></a>次の手順
+- 分散テーブルについては、[ディストリビューション列の選択](concepts-hyperscale-choose-distribution-column.md)に関するページを参照してください

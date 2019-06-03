@@ -11,18 +11,18 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: c43d3738b23037432ecdfe3aa872950f6a7b863e
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 3395283e6228d7203b2e835961914e2f167fa451
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55860594"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65522393"
 ---
 # <a name="alter-utterance-data-before-or-during-prediction"></a>予測前または予測中に発話データに変更を加える
 LUIS では、予測前または予測中に発話を操作する方法が用意されています。 これらには、スペルの修正や、事前構築済み datetimeV2 でのタイム ゾーンの問題の修正が含まれます。 
 
 ## <a name="correct-spelling-errors-in-utterance"></a>発話内のスペル ミスの修正
-LUIS では、[Bing Spell Check API V7](https://azure.microsoft.com/services/cognitive-services/spell-check/) を使用して、発話内のスペル ミスを修正します。 LUIS には、このサービスに関連付けられているキーが必要です。 キーを作成し、[エンドポイント](https://aka.ms/luis-endpoint-apis)にクエリ文字列パラメーターとして追加します。 
+LUIS では、[Bing Spell Check API V7](https://azure.microsoft.com/services/cognitive-services/spell-check/) を使用して、発話内のスペル ミスを修正します。 LUIS には、このサービスに関連付けられているキーが必要です。 キーを作成し、[エンドポイント](https://go.microsoft.com/fwlink/?linkid=2092356)にクエリ文字列パラメーターとして追加します。 
 
 スペル ミスは、**[Test]\(テスト\)** パネルで、[キーを入力する](luis-interactive-test.md#view-bing-spell-check-corrections-in-test-panel)ことで修正することもできます。 キーは、[Test]\(テスト\) パネルのブラウザーで、セッション変数として保持されます。 スペルを修正する各ブラウザー セッションで、[Test]\(テスト\) パネルにキーを追加します。 
 
@@ -56,14 +56,14 @@ LUIS で使用される Bing スペル チェック API は、スペル チェ�
 LUIS アプリで事前構築済み datetimeV2 エンティティを使用している場合、予測の応答で datetime 値が返されることがあります。 要求のタイム ゾーンを使用して、返すべき正しい datetime が決定されます。 要求元がボットであったり、LUIS の前段階の集約化された他のアプリケーションであったりする場合は、LUIS で使用するタイム ゾーンを修正します。 
 
 ### <a name="endpoint-querystring-parameter"></a>エンドポイントのクエリ文字列パラメーター
-タイム ゾーンは、`timezoneOffset` パラメーターを使用してユーザーのタイム ゾーンを[エンドポイント](https://aka.ms/luis-endpoint-apis)に追加することで修正します。 時刻を変更するためは、`timezoneOffset` の値は正または負の数値 (分単位) である必要があります。  
+タイム ゾーンは、`timezoneOffset` パラメーターを使用してユーザーのタイム ゾーンを[エンドポイント](https://go.microsoft.com/fwlink/?linkid=2092356)に追加することで修正します。 時刻を変更するためは、`timezoneOffset` の値は正または負の数値 (分単位) である必要があります。  
 
 |Param|値|
 |--|--|
 |`timezoneOffset`|正または負の数値 (分単位)|
 
 ### <a name="daylight-savings-example"></a>夏時間の例
-返される事前構築済み datetimeV2 を夏時間用に調整する必要がある場合は、[エンドポイント](https://aka.ms/luis-endpoint-apis) クエリで、正負の値 (分単位) を含む `timezoneOffset` クエリ文字列パラメーターを使用する必要があります。
+返される事前構築済み datetimeV2 を夏時間用に調整する必要がある場合は、[エンドポイント](https://go.microsoft.com/fwlink/?linkid=2092356) クエリで、正負の値 (分単位) を含む `timezoneOffset` クエリ文字列パラメーターを使用する必要があります。
 
 60 分を追加する場合は、次の手順を実行します。 
 

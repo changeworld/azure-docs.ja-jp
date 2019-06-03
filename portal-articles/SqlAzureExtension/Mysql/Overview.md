@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 05/10/2017
 ms.author: sewatson
 ms.openlocfilehash: 2ff389f52da0db4e394e8f6a6c37955a5f0c3861
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60475754"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "64691375"
 ---
 # <a name="azure-database-for-mysql-documentation"></a>Azure Database for MySQL のドキュメント
 

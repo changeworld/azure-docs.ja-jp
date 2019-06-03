@@ -1,7 +1,6 @@
 ---
 title: Python コンポーネントを使用した Apache Storm - Azure HDInsight
 description: Python コンポーネントを使用する Apache Storm トポロジを作成する方法について説明します。
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 keywords: apache storm python
@@ -10,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/30/2018
 ms.author: hrasheed
-ms.openlocfilehash: 87d13f8b0df4d9a357218b34035993663dfda8b3
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: a5cbd54dd07143688b676c063133bb1a73bed01a
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53634594"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64694387"
 ---
 # <a name="develop-apache-storm-topologies-using-python-on-hdinsight"></a>HDInsight での Python を使用した Apache Storm トポロジの開発
 
@@ -148,5 +147,4 @@ storm jar WordCount-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux -l -R /topology.
 
 HDInsight で Phthon を使用する他の方法については、次のドキュメントを参照してください。
 
-* [HDInsight 用 Python ストリーミング プログラムの開発](../hadoop/apache-hadoop-streaming-python.md)
 * [Apache Hive と Apache Pig で Python ユーザー定義関数 (UDF) を使用する](../hadoop/python-udf-hdinsight.md)

@@ -5,25 +5,25 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 08/09/2018
+ms.date: 04/26/2019
 ms.author: iainfou
-ms.openlocfilehash: db92526bd02ba55be5df7ce6999e3099e72b8fa5
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 026c0eefc0c4fe31e72ecad91a4a7b558f367487
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60013016"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65192124"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service"></a>Azure Active Directory と Azure Kubernetes Service を統合する
 
 Azure Kubernetes Service (AKS) は、ユーザー認証に Azure Active Directory (AD) を使うように構成することができます。 この構成では、Azure Active Directory 認証トークンを使って AKS クラスターにサインインできます。 さらに、クラスター管理者は、ユーザー ID またはディレクトリ グループのメンバーシップを基にして Kubernetes のロールベースのアクセス制御 (RBAC) を構成できます。
 
-この記事では、AKS および Azure AD の前提条件をデプロイする方法、Azure AD 対応クラスターをデプロイする方法、および AKS クラスターで基本的な RBAC ロールを作成する方法について説明します。
+この記事では、Azure portal を使用して、AKS および Azure AD の前提条件をデプロイする方法、Azure AD 対応クラスターをデプロイする方法、および AKS クラスターで基本的な RBAC ロールを作成する方法について説明します。 [これらの手順は、Azure CLI を使用して行う][azure-ad-cli]こともできます。
 
 次の制限事項が適用されます。
 
 - Azure AD は、RBAC が有効なクラスターを新しく作成するときにのみ有効にできます。 既存の AKS クラスターで Azure AD を有効にすることはできません。
-- 別のディレクトリからフェデレーション ログインを使用している場合など、Azure AD の "*ゲスト*" ユーザーはサポートされていません。
+- 別のディレクトリからフェデレーション サインインを使用している場合など、Azure AD の "*ゲスト*" ユーザーはサポートされていません。
 
 ## <a name="authentication-details"></a>認証の詳細
 
@@ -31,90 +31,99 @@ Azure AD 認証は、OpenID Connect によって AKS クラスターに提供さ
 
 Kubernetes クラスターの内部からは、webhook トークン認証を使って認証トークンが確認されます。 webhook トークン認証は、AKS クラスターの一部として構成および管理されます。 Webhook トークン認証の詳細については、[Webhook 認証のドキュメント][kubernetes-webhook]を参照してください。
 
+AKS クラスターに対して Azure AD 認証を提供するため、2 つの Azure AD アプリケーションが作成されます。 1 つのアプリケーションは、ユーザー認証を提供するサーバー コンポーネントです。 もう 1 つのアプリケーションは、CLI によってユーザーに認証が要求されるときに使用されるクライアント コンポーネントです。 このクライアント アプリケーションでは、クライアントによって提供された資格情報の実際の認証には、サーバー アプリケーションが使われます。
+
 > [!NOTE]
-> AKS 認証用に Azure AD を構成すると、2 つの Azure AD アプリケーションが構成されます。 この操作は、Azure テナント管理者が行う必要があります。
+> AKS 認証用に Azure AD を構成すると、2 つの Azure AD アプリケーションが構成されます。 Azure テナント管理者は、各アプリケーションのアクセス許可を委任する手順を完了する必要があります。
 
 ## <a name="create-server-application"></a>サーバー アプリケーションを作成する
 
-最初の Azure AD アプリケーションは、ユーザーの Azure AD グループ メンバーシップを取得するために使われます。
+最初の Azure AD アプリケーションは、ユーザーの Azure AD グループ メンバーシップを取得するために使われます。 Azure portal でこのアプリケーションを作成します。
 
-1. **[Azure Active Directory]** > **[アプリの登録]** > **[新しいアプリケーションの登録]** を選択します。
+1. **[Azure Active Directory]** > **[アプリの登録]** > **[新規登録]** の順に選択します
 
-   アプリケーションの名前を指定し、アプリケーションの種類として **[Web アプリ/API]** を選び、**[サインオン URL]** に URI 形式の値を入力します。 完了したら **[作成]** を選択します。
+    * アプリケーションに名前を付けます (*AKSAzureADServer* など)。
+    * **[サポートされているアカウントの種類]** で、*[この組織のディレクトリ内のアカウントのみ]* を選択します。
+    * **[リダイレクト URI]** の種類で *[Web]* を選択し、*https://aksazureadserver* のような形式の URI 値を入力します。
+    * 終わったら **[登録]** を選択します。
 
-   ![Azure AD の登録を作成する](media/aad-integration/app-registration.png)
+1. **[マニフェスト]** を選び、`groupMembershipClaims` の値を `"All"` に編集します。
 
-2. **[マニフェスト]** を選び、`groupMembershipClaims` の値を `"All"` に編集します。
+    ![グループ メンバーシップを全部に更新する](media/aad-integration/edit-manifest.png)
 
-   更新が終わったら保存します。
+    更新が終わったら**保存**します。
 
-   ![グループ メンバーシップを全部に更新する](media/aad-integration/edit-manifest.png)
+1. Azure AD アプリケーションの左側のナビゲーションで、**[証明書とシークレット]** を選択します。
 
-3. Azure AD アプリケーションに戻り、**[設定]** > **[キー]** を選びます。
+    * **[+ 新しいクライアント シークレット]** を選択します。
+    * キーの説明を追加します (例: "*AKS Azure AD サーバー*")。 有効期限を選択し、**[追加]** を選択します。
+    * キーの値を書き留めておきます。 この最初のときにしか表示されません。 Azure AD が有効な AKS クラスターをデプロイするときに、`Server application secret` としてこの値を参照します。
 
-   キーの説明を追加し、有効期限を選んで、**[保存]** を選びます。 キーの値を書き留めておきます。 Azure AD が有効な AKS クラスターを展開するときに、`Server application secret` としてこの値を参照します。
+1. Azure AD アプリケーションの左側のナビゲーションで、**[API のアクセス許可]** を選択し、**[+ アクセス許可の追加]** を選択します。
 
-   ![アプリケーションの秘密キーを取得する](media/aad-integration/application-key.png)
+    * **[Microsoft API]** で、*[Microsoft Graph]* を選択します。
+    * **[委任されたアクセス許可]** を選択し、**[ディレクトリ] > [Directory.Read.All (ディレクトリ データの読み取り)]** の横にチェック マークを付けます。
+        * **[ユーザー] > [User.Read (サインインとユーザー プロファイルの読み取り)]** に対する既定の委任されたアクセス許可が存在しない場合は、このアクセス許可にチェック マークを付けます。
+    * **[アプリケーションの許可]** を選択し、**[ディレクトリ] > [Directory.Read.All (ディレクトリ データの読み取り)]** の横にチェック マークを付けます。
 
-4. Azure AD アプリケーションに戻り、**[設定]** > **[必要なアクセス許可]** > **[追加]** > **[API を選択します]** > **[Microsoft Graph]** > **[選択]** の順に選びます。
+        ![Graph のアクセス許可を設定する](media/aad-integration/graph-permissions.png)
 
-   ![Graph API を選択する](media/aad-integration/graph-api.png)
+    * **[アクセス許可の追加]** を選択して、更新を保存します。
 
-5. **[アプリケーションのアクセス許可]** で、**[ディレクトリ データの読み取り]** をオンにします。
+    * **[同意する]** セクションで、**[管理者の同意を与えます]** を選択します。 現在のアカウントがテナント管理者ではない場合は、このボタンはグレーになり使用できません。
 
-   ![アプリケーションの Graph のアクセス許可を設定する](media/aad-integration/read-directory.png)
+        アクセス許可が正常に付与されると、ポータルに次の通知が表示されます。
 
-6. **[委任されたアクセス許可]** で、**[サインインとユーザー プロファイルの読み取り]** と **[ディレクトリ データの読み取り]** をオンにします。 終わったら保存します。
+        ![アクセス許可が正常に付与されたことを示す通知](media/aad-integration/permissions-granted.png)
 
-   ![アプリケーションの Graph のアクセス許可を設定する](media/aad-integration/delegated-permissions.png)
+1. Azure AD アプリケーションの左側のナビゲーションで、**[API の公開]** を選択し、**[+ Scope の追加]** を選択します。
+    
+    * *[スコープ名]*、*[管理者の同意の表示名]*、*[管理者の同意の説明]* を設定します (*AKSAzureADServer* など)。
+    * **[状態]** が *[有効]* に設定されていることを確認します。
 
-   **[完了]** を選択します。
+        ![他のサービスで使用するために API としてサーバー アプリを公開する](media/aad-integration/expose-api.png)
 
-7. API のリストから *[Microsoft Graph]* を選択してから、**[アクセス許可の付与]** を選択します。 現在のアカウントがテナント管理者ではない場合、このステップは失敗します。
+    * **[スコープの追加]** を選択します。
 
-   ![アプリケーションの Graph のアクセス許可を設定する](media/aad-integration/grant-permissions.png)
-
-   アクセス許可が正常に付与されると、ポータルに次の通知が表示されます。
-
-   ![アクセス許可が正常に付与されたことを示す通知](media/aad-integration/permissions-granted.png)
-
-8. アプリケーションに戻り、**[アプリケーション ID]** を書き留めます。 Azure AD が有効な AKS クラスターを展開するときに、`Server application ID` としてこの値を参照します。
+1. アプリケーションの **[概要]** ページに戻り、**[アプリケーション (クライアント) ID]** を書き留めます。 Azure AD が有効な AKS クラスターをデプロイするときに、`Server application ID` としてこの値を参照します。
 
    ![アプリケーション ID を取得する](media/aad-integration/application-id.png)
 
 ## <a name="create-client-application"></a>クライアント アプリケーションを作成する
 
-もう 1 つの Azure AD アプリケーションは、Kubernetes CLI (kubectl) でログインするときに使われます。
+もう 1 つの Azure AD アプリケーションは、Kubernetes CLI (`kubectl`) でログインするときに使われます。
 
-1. **[Azure Active Directory]** > **[アプリの登録]** > **[新しいアプリケーションの登録]** を選択します。
+1. **[Azure Active Directory]** > **[アプリの登録]** > **[新規登録]** の順に選択します
 
-   アプリケーションの名前を指定し、アプリケーションの種類として **[ネイティブ]** を選び、**[リダイレクト URI]** に URI 形式の値を入力します。 完了したら **[作成]** を選択します。
+    * アプリケーションに名前を付けます (*AKSAzureADClient* など)。
+    * **[サポートされているアカウントの種類]** で、*[この組織のディレクトリ内のアカウントのみ]* を選択します。
+    * **[リダイレクト URI]** の種類で *[Web]* を選択し、*https://aksazureadclient* のような形式の URI 値を入力します。
+    * 終わったら **[登録]** を選択します。
 
-   ![AAD の登録を作成する](media/aad-integration/app-registration-client.png)
+1. Azure AD アプリケーションの左側のナビゲーションで、**[API のアクセス許可]** を選択し、**[+ アクセス許可の追加]** を選択します。
 
-2. Azure AD アプリケーションから **[設定]** > **[必要なアクセス許可]** > **[追加]** > **[API を選択します]** の順に選び、このドキュメントの前のステップで作成したサーバー アプリケーションの名前を検索します。
+    * **[自分の API]** を選択した後、前のステップで作成した Azure AD サーバー アプリケーションを選択します (*AKSAzureADServer* など)。
+    * **[委任されたアクセス許可]** を選択した後、自分の Azure AD サーバー アプリにチェック マークを付けます。
 
-   ![アプリケーションのアクセス許可を構成する](media/aad-integration/select-api.png)
+        ![アプリケーションのアクセス許可を構成する](media/aad-integration/select-api.png)
 
-3. アプリケーションの横にチェック マークを付けて、**[選択]** をクリックします。
+    * **[アクセス許可の追加]** を選択します.
 
-   ![AKS AAD サーバー アプリケーション エンドポイントを選択する](media/aad-integration/select-server-app.png)
+    * **[同意する]** セクションで、**[管理者の同意を与えます]** を選択します。 現在のアカウントがテナント管理者ではない場合は、このボタンはグレーになり使用できません。
 
-   **[完了]** を選択します
+        アクセス許可が正常に付与されると、ポータルに次の通知が表示されます。
 
-4. 一覧からサーバー API を選択し、**[アクセス許可の付与]** を選択します。
+        ![アクセス許可が正常に付与されたことを示す通知](media/aad-integration/permissions-granted.png)
 
-   ![アクセス許可を付与する](media/aad-integration/grant-permissions-client.png)
-
-5. AD アプリケーションに戻り、**[アプリケーション ID]** を書き留めます。 Azure AD が有効な AKS クラスターを展開するときに、`Client application ID` としてこの値を参照します。
+1. Azure AD アプリケーションの左側のナビゲーションで、**[アプリケーション ID ]** を書き留めます。 Azure AD が有効な AKS クラスターを展開するときに、`Client application ID` としてこの値を参照します。
 
    ![アプリケーション ID を取得する](media/aad-integration/application-id-client.png)
 
 ## <a name="get-tenant-id"></a>テナント ID を取得する
 
-最後に、Azure テナントの ID を取得します。 この値は、AKS クラスターを展開するときにも使われます。
+最後に、Azure テナントの ID を取得します。 AKS クラスターを作成するときにこの値を使います。
 
-Azure portal から、**[Azure Active Directory]** > **[プロパティ]** の順に選び、**[ディレクトリ ID]** を書き留めます。 Azure AD が有効な AKS クラスターを展開するときに、`Tenant ID` としてこの値を参照します。
+Azure portal から、**[Azure Active Directory]** > **[プロパティ]** の順に選び、**[ディレクトリ ID]** を書き留めます。 Azure AD が有効な AKS クラスターを作成するときに、`Tenant ID` としてこの値を参照します。
 
 ![Azure テナント ID を取得する](media/aad-integration/tenant-id.png)
 
@@ -126,7 +135,7 @@ AKS クラスターのリソース グループを作成するには、[az group
 az group create --name myResourceGroup --location eastus
 ```
 
-[az aks create][az-aks-create] コマンドを使って、クラスターを展開します。 以下のサンプル コマンドの値を、Azure AD アプリケーションを作成するときに収集した値に置き換えます。
+[az aks create][az-aks-create] コマンドを使って、クラスターを展開します。 以下のサンプル コマンドで、サーバー アプリ ID とシークレット、クライアント アプリ ID、テナント ID の値を、Azure AD アプリケーションを作成するときに収集した値に置き換えます。
 
 ```azurecli
 az aks create \
@@ -138,6 +147,8 @@ az aks create \
   --aad-client-app-id 8aaf8bd5-1bdd-4822-99ad-02bfaa63eea7 \
   --aad-tenant-id 72f988bf-0000-0000-0000-2d7cd011db47
 ```
+
+AKS クラスターの作成には数分かかります。
 
 ## <a name="create-rbac-binding"></a>RBAC のバインドを作成する
 
@@ -215,7 +226,7 @@ RBAC を使って Kubernetes クラスターをセキュリティで保護する
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-いずれかの kubectl コマンドを実行すると、Azure による認証を求められます。 画面の指示に従います。
+`kubectl` コマンドの実行後、Azure での認証を求められます。 次の例に示すように、画面の指示に従ってプロセスを完了します。
 
 ```console
 $ kubectl get nodes
@@ -223,16 +234,17 @@ $ kubectl get nodes
 To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code BUJHWDGNL to authenticate.
 
 NAME                       STATUS    ROLES     AGE       VERSION
-aks-nodepool1-79590246-0   Ready     agent     1h        v1.9.9
-aks-nodepool1-79590246-1   Ready     agent     1h        v1.9.9
-aks-nodepool1-79590246-2   Ready     agent     1h        v1.9.9
+aks-nodepool1-79590246-0   Ready     agent     1h        v1.13.5
+aks-nodepool1-79590246-1   Ready     agent     1h        v1.13.5
+aks-nodepool1-79590246-2   Ready     agent     1h        v1.13.5
 ```
 
 完了すると、認証トークンがキャッシュされます。 トークンの有効期限が切れたとき、または Kubernetes の構成ファイルが再作成されたときにのみ、サインインを再び求められます。
 
 正常にサインインした後に承認エラー メッセージが表示される場合は、以下に該当するかどうかをチェックしてください。
-1. サインインしようとしているユーザーが、その Azure AD インスタンスで Guest ではない (これに該当することが多いのは、異なるディレクトリからのフェデレーション ログインを使用している場合です)。
+1. サインインしようとしているユーザーが、その Azure AD インスタンスで Guest ではない (このシナリオに該当することが多いのは、異なるディレクトリからのフェデレーション アカウントを使っている場合です)。
 2. ユーザーが 200 を超えるグループのメンバーにはなっていない。
+3. サーバーのアプリケーション登録で定義したシークレットが、--aad-server-app-secret を使って構成されている値と一致しない
 
 ```console
 error: You must be logged in to the server (Unauthorized)
@@ -259,3 +271,4 @@ ID とリソース コントロールに関するベスト プラクティスに
 [rbac-authorization]: concepts-identity.md#role-based-access-controls-rbac
 [operator-best-practices-identity]: operator-best-practices-identity.md
 [azure-ad-rbac]: azure-ad-rbac.md
+[azure-ad-cli]: azure-ad-integration-cli.md

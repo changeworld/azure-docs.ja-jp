@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/27/2019
-ms.author: monhaber
-ms.openlocfilehash: ea738535ae9326109a7c3fdd0b5d0c4f4691fdf0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: v-mohabe
+ms.openlocfilehash: b18267b1443b257a575bf2e1199b9f8fa8c419fc
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57878632"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65966821"
 ---
 # <a name="protect-app-service-with-azure-security-center"></a>Azure Security Center で App Service を保護する
 この記事は、Azure Security Center を使用し、App Service 上で実行されているアプリケーションを監視し、保護する際に役立ちます。

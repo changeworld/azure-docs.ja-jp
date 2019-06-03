@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 02/26/2019
+ms.date: 05/22/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: fe15cafceea8128735f7241fa5e4187d4d9c47a9
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: ce6c5f3059041d8dbb097470cf4a415e73d9156b
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56960056"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237249"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>QnA Maker ナレッジ ベースの制限と境界
 QnA Maker における制限の包括的な一覧です。
@@ -51,19 +51,19 @@ QnA Maker における制限の包括的な一覧です。
 * メタデータ値でサポートされる文字: : と | を除くすべての文字 
 * ファイル名の長さ: 200
 * サポートされるファイル形式: ".tsv"、".pdf"、".txt"、".docx"、".xlsx"
-* 代替の質問の最大数: 100
+* 代替の質問の最大数: 300
 * 質問と回答のペアの最大数: 選択した [Azure Search レベル](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity#document-limits)によって異なります。 質問と回答のペアは、Azure Search インデックスのドキュメントにマップされます。 
 
 ## <a name="create-knowledge-base-call-limits"></a>ナレッジ ベースの作成の呼び出しの制限
-これらは、ナレッジ ベース作成操作 (つまり、*[KB を作成する]* のクリック、または CreateKnowledgeBase API の呼び出し) ごとの制限を表します。
-* 回答ごとの代替の質問の最大数: 100
+これらは、ナレッジ ベース作成操作 (つまり、 *[KB を作成する]* のクリック、または CreateKnowledgeBase API の呼び出し) ごとの制限を表します。
+* 回答ごとの代替の質問の最大数: 300
 * URL の最大数: 10
 * ファイルの最大数: 10
 
 ## <a name="update-knowledge-base-call-limits"></a>ナレッジ ベースの更新の呼び出しの制限
-これらは、更新操作 (つまり、*[Save and train]\(保存してトレーニング\)* のクリック、または UpdateKnowledgeBase API の呼び出し) ごとの制限を表します。
+これらは、更新操作 (つまり、 *[Save and train]\(保存してトレーニング\)* のクリック、または UpdateKnowledgeBase API の呼び出し) ごとの制限を表します。
 * 各ソース名の長さ: 300
-* 追加または削除される代替の質問の最大数: 100
+* 追加または削除される代替の質問の最大数: 300
 * 追加または削除されるメタデータ フィールドの最大数: 10
 * 更新可能な URL の最大数: 5
 

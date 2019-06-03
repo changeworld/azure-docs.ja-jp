@@ -16,11 +16,11 @@ ms.date: 11/20/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e5b9e42da3ae4510c217cb29c211557e28a30074
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58443965"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66236179"
 ---
 # <a name="use-a-linux-vm-system-assigned-managed-identity-to-access-azure-resource-manager"></a>Linux VM のシステム割り当てマネージド ID を使用して Azure Resource Manager にアクセスする
 
@@ -44,9 +44,9 @@ Azure リソースのマネージド ID を使用すると、Azure AD 認証を�
 2. 先ほど作成した特定の**リソース グループ**を選択します。
 3. 左側のパネルの **[アクセス制御 (IAM)]** に移動します。
 4. VM 用に新しいロールの割り当てを**追加**します。 **[閲覧者]** として **[ロール]** を選択します。
-5. 次のドロップダウンで、**[アクセスの割り当て先]** として **[仮想マシン]** リソースを選択します。
-6. 次に、**[サブスクリプション]** ドロップダウンに適切なサブスクリプションが表示されていることを確認します。 **[リソース グループ]** で **[すべてのリソース グループ]** を選択します。
-7. 最後に、**[選択]** の一覧で、使用する Linux 仮想マシンを選択し、**[保存]** をクリックします。
+5. 次のドロップダウンで、 **[アクセスの割り当て先]** として **[仮想マシン]** リソースを選択します。
+6. 次に、 **[サブスクリプション]** ドロップダウンに適切なサブスクリプションが表示されていることを確認します。 **[リソース グループ]** で **[すべてのリソース グループ]** を選択します。
+7. 最後に、 **[選択]** の一覧で、使用する Linux 仮想マシンを選択し、 **[保存]** をクリックします。
 
     ![イメージ テキスト](media/msi-tutorial-linux-vm-access-arm/msi-permission-linux.png)
 
@@ -54,7 +54,7 @@ Azure リソースのマネージド ID を使用すると、Azure AD 認証を�
 
 これらの手順を完了するには、SSH クライアントが必要です。 Windows を使用している場合は、[Windows Subsystem for Linux](https://msdn.microsoft.com/commandline/wsl/about) で SSH クライアントを使用することができます。 SSH クライアント キーの構成について支援が必要な場合は、「[Azure 上の Windows で SSH キーを使用する方法](../../virtual-machines/linux/ssh-from-windows.md)」または「[Azure に Linux VM 用の SSH 公開キーと秘密キーのペアを作成して使用する方法](../../virtual-machines/linux/mac-create-ssh-keys.md)」をご覧ください。
 
-1. ポータルで Linux VM に移動し、**[概要]** の **[接続]** をクリックします。  
+1. ポータルで Linux VM に移動し、 **[概要]** の **[接続]** をクリックします。  
 2. 任意の SSH クライアントを使用して、VM に**接続**します。 
 3. ターミナル ウィンドウで、`curl` を使用して、Azure リソース エンドポイントのローカル マネージド ID に、Azure Resource Manager のアクセス トークンを取得するよう要求します。  
  

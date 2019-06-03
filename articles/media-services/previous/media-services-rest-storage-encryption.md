@@ -14,14 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: a26388de85ff6293985fe23adac8ca4d04d0de61
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 30ac6a94142c9b9d987fb3fd32b3483cc6dc130c
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59525791"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64867591"
 ---
 # <a name="encrypting-your-content-with-storage-encryption"></a>ストレージ暗号化によるコンテンツの暗号化 
+
+> [!NOTE]
+> このチュートリアルを完了するには、Azure アカウントが必要です。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。   > Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
+>   
 
 AES 256 ビット暗号化を使用してコンテンツをローカルに暗号化し、それを Azure Storage にアップロードすることをお勧めします。そうすることで、コンテンツが保存時に暗号化された状態で格納されます。
 

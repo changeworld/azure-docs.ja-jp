@@ -3,8 +3,8 @@ title: Application Proxy | Microsoft Docsのための、制限付き委任構成
 description: Application Proxy のための、制限付き委任構成のトラブルシューティング Kerberos
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/24/2018
-ms.author: celested
+ms.date: 04/23/2019
+ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b83b08c442a7f10d6b29122fe7959bedf8f3cff0
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 0cfaea53156b78fad024046bb6f55229f8ad6536
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56177531"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236265"
 ---
 # <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>Application Proxy のための、制限付き委任構成のトラブルシューティング Kerberos
 
@@ -91,7 +91,7 @@ Azure AD アプリケーション プロキシは、各種のインフラスト�
 
    ![KCD の正しくない構成によるエラー](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic3.png)
 
-また、イベント ログ内に見られる、該当するエントリが、イベント 13019 またはイベント 12027 として記録されます。 **Microsoft** &gt; **AadApplicationProxy** &gt; **Connector** &gt; **Admin** の**アプリケーションおよびサービスログ** &gt; 内に、コネクタのイベントログを見つけます。
+また、イベント ログ内に見られる、該当するエントリが、イベント 13019 またはイベント 12027 として記録されます。 **Microsoft**&gt;**AadApplicationProxy**&gt;**Connector**&gt;**Admin** の**アプリケーションおよびサービスログ**&gt; 内に、コネクタのイベントログを見つけます。
 
    ![イベント 13019 (アプリケーション プロキシのイベント ログ)](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic4.png)
 
@@ -177,9 +177,9 @@ Azure AD アプリケーション プロキシは、各種のインフラスト�
 
 ## <a name="other-scenarios"></a>その他のシナリオ
 
-- Azure アプリケーション プロキシは、Kerberos チケットを要求したうえで、その要求をアプリケーションに送信します。 Tableau Server など一部のサード パーティ製アプリケーションには、認証するためのこのメソッドが気に入らないです。 これらのアプリケーションは、より従来のネゴシエーションを実行することが予想されます。 最初の要求は、匿名です。401 を介して、サポートするタイプの認証で応答することを、アプリケーションに許可します。
+- Azure アプリケーション プロキシは、Kerberos チケットを要求したうえで、その要求をアプリケーションに送信します。 一部のサードパーティ製アプリケーションは、この認証方法を受け付けません。 これらのアプリケーションは、より従来のネゴシエーションを実行することが予想されます。 最初の要求は、匿名です。401 を介して、サポートするタイプの認証で応答することを、アプリケーションに許可します。
 
 - ダブルホップ認証。アプリケーションが階層化されてバックエンドとフロントエンドがあり、どちらも認証を必要とするようなシナリオでこの認証が使用されます (SQL Reporting Services など)。 マルチホップ シナリオを構成するには、サポートの記事を参照してください。 [Kerberos 制約付き委任は、プロトコルの切り替えと複数ホップのシナリオを要求することがある](https://support.microsoft.com/help/2005838/kerberos-constrained-delegation-may-require-protocol-transition-in-mul)の記事です。
 
 ## <a name="next-steps"></a>次の手順
-[管理されたドメインで OU を作成する](../../active-directory-domain-services/active-directory-ds-enable-kcd.md)。
+[管理されたドメインで OU を作成する](../../active-directory-domain-services/deploy-kcd.md)。

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 42430c847149f7eda2f0dbed1cff006a92f372ee
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 318df03c7c4447d051dfa396098462c0f8bbf423
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57845190"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65410433"
 ---
 # <a name="provision-a-deep-learning-virtual-machine-on-azure"></a>Azure でディープ ラーニング 仮想マシンをプロビジョニングする 
 
@@ -35,7 +35,8 @@ DLVM には、Microsoft Cognitive Toolkit、TensorFlow、Keras、Caffe2、Chaine
 )に一覧表示されている仮想マシンに移動します。
 2. 下部にある **[作成]** ボタンを選択して、ウィザードを起動します。![create-dlvm](./media/dlvm-provision-wizard.PNG)
 3. DLVM を作成するために使用されるウィザードでは、この図の右側に列挙されている **4 つのステップ**それぞれで**入力**が必要です。 以下は、これらの各ステップを構成するために必要な入力項目です。
-   
+
+   <a name="basics"></a>   
    1. **基本**
       
       1. **名前**: 作成するデータ サイエンス サーバーの名前です。
@@ -46,13 +47,14 @@ DLVM には、Microsoft Cognitive Toolkit、TensorFlow、Keras、Caffe2、Chaine
       5. **リソース グループ**: 新しいリソース グループを作成するか、サブスクリプション内にある**空**の既存の Azure リソース グループを使用することができます。
       6. **場所**: 最適なデータ センターを選択します。 通常は、ネットワーク アクセスを最速にするために、データの大部分があるか、物理的に最も近いデータ センターを選びます。 
       
-> [!NOTE]
-> DLVM は、すべての NC および ND シリーズ GPU VM インスタンスをサポートしています。 DLVM をプロビジョニングするときには、GPU がある Azure 内の場所の 1 つを選択する必要があります。 選択できる場所については、[リージョン別の Azure 製品](https://azure.microsoft.com/regions/services/)に関するページを確認して、**[コンピューティング]** で **NC シリーズ**、**NCv2 シリーズ**、**NCv3 シリーズ**、または **ND シリーズ**を探してください。 
+      > [!NOTE]
+      > DLVM は、すべての NC および ND シリーズ GPU VM インスタンスをサポートしています。 DLVM をプロビジョニングするときには、GPU がある Azure 内の場所の 1 つを選択する必要があります。 選択できる場所については、[リージョン別の Azure 製品](https://azure.microsoft.com/regions/services/)に関するページを確認して、**[コンピューティング]** で **NC シリーズ**、**NCv2 シリーズ**、**NCv3 シリーズ**、または **ND シリーズ**を探してください。 
 
-1. **設定**:機能要件とコスト制約を満たしている、いずれかの NC シリーズ (NC、NCv2、NCv3) または ND シリーズの GPU 仮想マシン サイズを選択します。 VM のストレージ アカウントを作成します。  ![dlvm-settings](./media/dlvm-provision-step-2.PNG)
+   1. **設定**:機能要件とコスト制約を満たしている、いずれかの NC シリーズ (NC、NCv2、NCv3) または ND シリーズの GPU 仮想マシン サイズを選択します。 VM のストレージ アカウントを作成します。  ![dlvm-settings](./media/dlvm-provision-step-2.PNG)
    
-1. **概要**:入力したすべての情報が正しいことを確認します。
-1. **[購入]**:プロビジョニングを開始するには、**[購入]** をクリックします。 取引条件へのリンクが用意されています。 **[サイズ]** ステップで選択したサーバー サイズのコンピューティングを超える追加の課金が VM によって発生することはありません。 
+   1. **概要**:入力したすべての情報が正しいことを確認します。
+
+   1. **[購入]**:プロビジョニングを開始するには、**[購入]** をクリックします。 取引条件へのリンクが用意されています。 **[サイズ]** ステップで選択したサーバー サイズのコンピューティングを超える追加の課金が VM によって発生することはありません。 
 
 > [!NOTE]
 > プロビジョニングには、10 ～ 20 分くらいかかります。 プロビジョニングの状態は、Azure ポータルに表示されます。
@@ -66,7 +68,7 @@ VM を作成した後は、前述の **[基本]** セクションで作成した
 
 ### <a name="linux-edition"></a>Linux エディション
 
-VM を作成したら、SSH を使用してサインインできます。 テキスト シェル インターフェイスで、手順 3. の **[基本]** セクションで作成したアカウントの資格情報を使用します。 Windows クライアントでは、[Putty](https://www.putty.org) などの SSH クライアント ツールをダウンロードできます。 グラフィカル デスクトップ (X Windows System) を使用する場合は、Putty で X11 転送を使用するか、X2Go クライアントをインストールすることができます。
+VM を作成したら、SSH を使用してサインインできます。 手順 3 の「[**基本**](#basics)」セクションで作成したアカウントの資格情報をテキスト シェル インターフェイスに使用します。 Azure VM への SSH 接続の詳細については、「[リモート デスクトップをインストールして Azure の Linux VM に接続するように構成する](/azure/virtual-machines/linux/use-remote-desktop)」を参照してください。 Windows クライアントでは、[Putty](https://www.putty.org) などの SSH クライアント ツールをダウンロードできます。 グラフィカル デスクトップ (X Windows System) を使用する場合は、Putty で X11 転送を使用するか、X2Go クライアントをインストールすることができます。 
 
 > [!NOTE]
 > テストでは、パフォーマンスは、X11 転送よりも、X2Go クライアントの方が優れていました。 グラフィカル デスクトップ インターフェイスでは、X2Go クライアントを使用することをお勧めします。

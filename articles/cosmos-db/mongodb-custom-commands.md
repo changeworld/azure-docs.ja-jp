@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: sngun
-ms.openlocfilehash: aef77f121f20d867c8ec5e764d8c9639c961713d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 94b1048befc8716caf5f7f51adb1f95d047d4077
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58876890"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925651"
 ---
 # <a name="use-mongodb-extension-commands-to-manage-data-stored-in-azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB の MongoDB 用 API に格納されているデータを管理するために MongoDB 拡張コマンドを使用する 
 
@@ -162,7 +162,7 @@ db.runCommand({customAction: "GetDatabase"});
 
 |**フィールド**|**Type** |**説明** |
 |---------|---------|---------|
-| customAction    | string | カスタム コマンドの名前。 "CreateDatabase" にする必要があります     |
+| customAction    | string | カスタム コマンドの名前。 必ず "CreateCollection" にします     |
 | collection      | string | コレクションの名前                                   |
 | offerThroughput | int    | データベースに設定するプロビジョニング済みスループット。 これは、省略可能なパラメーターです |
 | shardKey        | string | シャード コレクションを作成するシャード キー パス。 これは、省略可能なパラメーターです |

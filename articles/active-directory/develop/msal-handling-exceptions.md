@@ -4,7 +4,7 @@ description: MSAL アプリケーションでエラーと例外、条件付き�
 services: active-directory
 documentationcenter: dev-center-name
 author: rwike77
-manager: celested
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -16,12 +16,12 @@ ms.date: 04/10/2019
 ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 43c98181c926410bea2acf64bf1ed4d588c12616
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: f1972a870ac15e1ca8dde963eef6cf7f1caf3039
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65138968"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65544184"
 ---
 # <a name="handling-exceptions-and-errors-using-msal"></a>MSAL を使用して例外とエラーを処理する
 Microsoft Authentication Library (MSAL) での例外は、エンド ユーザーに表示するためのものではなく、アプリ開発者がトラブルシューティングに使うことが意図されています。 例外のメッセージはローカライズされていません。

@@ -12,12 +12,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 02/24/2019
 ms.author: glenga
-ms.openlocfilehash: 37d00abbbf726dc1b92bdcc5f39b16301de9b93d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 635e72a8e8a70b8885afea282511fbfaf24d2f94
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64697836"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65957341"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions の JavaScript 開発者向けガイド
 
@@ -204,7 +204,9 @@ module.exports = function(ctx) {
 context.bindings
 ```
 
-すべての入力データと出力データを含む名前付きオブジェクトを返します。 たとえば、function.json で次のようなバインド定義を使用すると、`context.bindings.myInput` からキューの内容にアクセスし、`context.bindings.myOutput` を使用して出力をキューに割り当てることができます。
+バインド データの読み取りまたは割り当てに使用される名前付きオブジェクトを返します。 入力およびトリガー バインド データには、`context.bindings` のプロパティを読み取ることでアクセスできます。 出力バインド データは、`context.bindings` にデータを追加することで割り当てることができます。
+
+たとえば、function.json で次のようなバインド定義を使用すると、`context.bindings.myInput` からキューの内容にアクセスし、`context.bindings.myOutput` を使用して出力をキューに割り当てることができます。
 
 ```json
 {
@@ -290,7 +292,7 @@ host.json ファイルでは、[ログに対するトレース レベルのし�
 
 ## <a name="writing-trace-output-to-the-console"></a>トレース出力をコンソールに書き込む 
 
-関数で、`context.log` メソッドを使用してトレース出力をコンソールに書き込みます。 Functions v2.x では、`console.log` を使用するトレース出力は Function App レベルでキャプチャされます。 つまり、`console.log` からの出力は特定の関数呼び出しに関連付けられておらず、そのため特定の関数のログには表示されません。 ただし、Application Insights に伝達されます。 Functions v1.x では、`console.log` を使用してコンソールに書き込むことはできません。
+関数で、`context.log` メソッドを使用してトレース出力をコンソールに書き込みます。 Functions v2.x では、`console.log` を使用するトレース出力は Function App レベルでキャプチャされます。 つまり、`console.log` からの出力は特定の関数呼び出しに関連付けられておらず、特定の関数のログには表示されません。 ただし、Application Insights に伝達されます。 Functions v1.x では、`console.log` を使用してコンソールに書き込むことはできません。
 
 `context.log()` を呼び出すと、既定のトレース レベルである、_情報_ トレース レベルでコンソールにメッセージが書き込まれます。 次のコードは、情報トレース レベルでコンソールに書き込みます。
 
@@ -502,7 +504,7 @@ FunctionApp
  | - myNodeFunction
  | | - function.json
  | - lib
- | | - nodeFunction.js
+ | | - sayHello.js
  | - node_modules
  | | - ... packages ...
  | - package.json
@@ -512,7 +514,7 @@ FunctionApp
 
 ```json
 {
-  "scriptFile": "../lib/nodeFunction.js",
+  "scriptFile": "../lib/sayHello.js",
   "bindings": [
     ...
   ]
@@ -542,7 +544,7 @@ class MyObj {
         this.foo = 1;
     };
 
-    function logFoo(context) { 
+    logFoo(context) { 
         context.log("Foo is " + this.foo); 
         context.done(); 
     }

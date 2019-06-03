@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/20/2019
 ms.author: srrengar
-ms.openlocfilehash: ba4d25c749a1c1b99559ce4033fe90d671701d66
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: c8f7198b59a0fe7ed6775736f8b97f5b5a262640
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59046480"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66306854"
 ---
 # <a name="set-up-azure-monitor-logs-for-a-cluster"></a>クラスターに Azure Monitor ログを設定する
 
@@ -110,7 +110,7 @@ $Location = "<Resource group location>"
 $WorkspaceName = "<Log Analytics workspace name>"
 $solution = "ServiceFabric"
 
-# Log in to Azure and access the correct subscription
+# Sign in to Azure and access the correct subscription
 Connect-AzAccount
 Select-AzSubscription -SubscriptionId $SubID 
 
@@ -132,5 +132,5 @@ PowerShell を使って、他のソリューションを追加したり、Log An
 
 ## <a name="next-steps"></a>次の手順
 * お使いのノードに [Log Analytics エージェントをデプロイ](service-fabric-diagnostics-oms-agent.md)してパフォーマンス カウンターを収集し、Docker の統計とコンテナーのログを収集する
-* Azure Monitor ログの一部として提供されている[ログ検索とクエリ](../log-analytics/log-analytics-log-searches.md)機能の詳細を確認します
+* Azure Monitor ログの一部として提供されている[ログ検索とクエリ](../log-analytics/log-analytics-log-searches.md)機能に詳しくなる
 * [Azure Monitor ログのビュー デザイナーを使用してカスタム ビューを作成する](../azure-monitor/platform/view-designer.md)

@@ -7,12 +7,12 @@ ms.date: 12/06/2018
 ms.topic: overview
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 0e66327a04d1390061580d82716b44b25139bf67
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 2dd31ab29479fade21d27b8e2c23952f905f530a
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59259458"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65979156"
 ---
 # <a name="overview-of-the-azure-policy-service"></a>Azure Policy サービスの概要
 
@@ -28,7 +28,7 @@ Azure Policy は、ポリシーの作成、割り当て、管理に使用する 
 
 ## <a name="how-is-it-different-from-rbac"></a>RBAC との違いは何か。
 
-Policy とロールベースのアクセス制御 (RBAC) には、いくつかの主要な違いがあります。 RBAC は、さまざまなスコープでのユーザーの操作に焦点を当てています。 リソース グループの共同作成者ロールに追加されると、そのリソース グループを変更できるようになります。 ポリシーは、既存のリソースについて、デプロイ中のプロパティに焦点を当てます。 ポリシーでは、リソースの種類や場所などのプロパティが制御されます。 RBAC とは異なり、ポリシーは既定で許可し、明示的に否認するシステムです。
+Azure Policy とロールベースのアクセス制御 (RBAC) には、いくつかの主要な違いがあります。 RBAC は、さまざまなスコープでのユーザーの操作に焦点を当てています。 リソース グループの共同作成者ロールに追加されると、そのリソース グループを変更できるようになります。 Azure Policy は、既存のリソースについて、デプロイ中のプロパティに焦点を当てます。 Azure Policy では、リソースの種類や場所などのプロパティが制御されます。 RBAC とは異なり、Azure Policy は既定で許可し、明示的に否認するシステムです。
 
 ### <a name="rbac-permissions-in-azure-policy"></a>Azure Policy における RBAC アクセス許可
 
@@ -37,7 +37,7 @@ Azure Policy は、次の 2 つのリソース プロバイダーにおいて、
 - [Microsoft.Authorization](../../role-based-access-control/resource-provider-operations.md#microsoftauthorization)
 - [Microsoft.PolicyInsights](../../role-based-access-control/resource-provider-operations.md#microsoftpolicyinsights)
 
-Azure Policy のリソースに対するアクセス許可は、さまざまな組み込みロールによって与えられます。 **リソース ポリシーの共同作成者 (プレビュー)** ロールには Policy のほとんどの操作が含まれます。 **所有者**は完全な権限を持っています。 **共同作成者**と**閲覧者** はどちらも、すべての読み取り Policy 操作を使用できますが、**共同作成者**は修復処理をトリガーすることもできます。
+Azure Policy のリソースに対するアクセス許可は、さまざまな組み込みロールによって与えられます。 **リソース ポリシーの共同作成者 (プレビュー)** ロールには、Azure Policy のほとんどの操作が含まれます。 **所有者**は完全な権限を持っています。 **共同作成者**と**閲覧者** はどちらも、すべての読み取り Azure Policy 操作を使用できますが、**共同作成者**は修復処理をトリガーすることもできます。
 
 いずれの組み込みロールにも必要なアクセス許可がない場合は、[カスタム ロール](../../role-based-access-control/custom-roles.md)を作成してください。
 
@@ -68,7 +68,7 @@ Azure Policy には、既定で使うことができる組み込みポリシー�
 
 たとえば、サブスクリプション スコープで、ネットワーク リソースの作成を禁止するポリシーを割り当てることができます。 ネットワーク インフラストラクチャを対象としたリソース グループを、そのサブスクリプション内で除外できます。 その後、このネットワーク リソース グループへのアクセスは、信頼できるユーザーに許可し、そのユーザーがネットワーク リソースを作成できるようにします。
 
-別の例として、リソースの種類のホワイトリスト ポリシーを管理グループ レベルで割り当てたいとしましょう。 そのうえで、より制限の緩やかな (より多くのリソースの種類を許可する) ポリシーを子の管理グループまたはサブスクリプションに直接割り当てます。 しかし、この例はうまくいきません。ポリシーは、明示的拒否のシステムであるためです。 代わりに、管理グループ レベルのポリシーの割り当てから、子の管理グループまたはサブスクリプションを除外する必要があります。 そのうえで、より制限の緩やかなポリシーを子の管理グループまたはサブスクリプション レベルで割り当てます。 いずれかのポリシーでリソースが拒否される場合、拒否ポリシーに変更を加えることが、そのリソースを許可する唯一の方法となります。
+別の例として、リソースの種類の許可リスト ポリシーを管理グループ レベルで割り当てたいとしましょう。 そのうえで、より制限の緩やかな (より多くのリソースの種類を許可する) ポリシーを子の管理グループまたはサブスクリプションに直接割り当てます。 しかし、この例はうまくいきません。ポリシーは、明示的拒否のシステムであるためです。 代わりに、管理グループ レベルのポリシーの割り当てから、子の管理グループまたはサブスクリプションを除外する必要があります。 そのうえで、より制限の緩やかなポリシーを子の管理グループまたはサブスクリプション レベルで割り当てます。 いずれかのポリシーでリソースが拒否される場合、拒否ポリシーに変更を加えることが、そのリソースを許可する唯一の方法となります。
 
 ポータルを使用したポリシー定義と割り当ての設定の詳細については、「[ポリシーの割り当てを作成し、Azure 環境内の非対応リソースを特定する](assign-policy-portal.md)」を参照してください。 [PowerShell](assign-policy-powershell.md)と[Azure CLI](assign-policy-azurecli.md) の場合の手順も利用することができます。
 
@@ -115,7 +115,7 @@ Azure Policy には、既定で使うことができる組み込みポリシー�
 
 イニシアチブ定義で値のオプションを作成すると、イニシアチブの割り当てで別の値を入力することは、リストの一部ではないためできません。
 
-## <a name="maximum-count-of-policy-objects"></a>ポリシー オブジェクトの最大数
+## <a name="maximum-count-of-azure-policy-objects"></a>Azure Policy オブジェクトの最大数
 
 [!INCLUDE [policy-limits](../../../includes/azure-policy-limits.md)]
 
@@ -144,8 +144,8 @@ Azure Policy には、既定で使うことができる組み込みポリシー�
 
 これで、Azure Policy の概要といくつかの主要な概念に関する説明は終了です。推奨される次の手順は以下のとおりです。
 
-- [ポータルを使用してポリシー定義を割り当てる](assign-policy-portal.md)
-- [Azure CLI を使用してポリシー定義を割り当てる](assign-policy-azurecli.md)
-- [PowerShell を使用してポリシー定義を割り当てる](assign-policy-powershell.md)
+- [ポータルを使用してポリシー定義を割り当てます](assign-policy-portal.md)。
+- [Azure CLI を使用してポリシー定義を割り当てます](assign-policy-azurecli.md)。
+- [PowerShell を使用してポリシー定義を割り当てます](assign-policy-powershell.md)。
 - 「[Azure 管理グループのリソースを整理する](..//management-groups/overview.md)」で、管理グループとは何かを確認します。
-- チャンネル 9 の「[Govern your Azure environment through Azure Policy](https://channel9.msdn.com/events/Build/2018/THR2030)」(Azure Policy による Azure 環境の管理) を視聴する
+- チャンネル 9 の「[Govern your Azure environment through Azure Policy](https://channel9.msdn.com/events/Build/2018/THR2030)」(Azure Policy による Azure 環境の管理) を視聴します。

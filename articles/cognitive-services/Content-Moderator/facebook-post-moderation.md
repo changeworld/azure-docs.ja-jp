@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: tutorial
 ms.date: 01/18/2019
 ms.author: pafarley
-ms.openlocfilehash: 662eca2a727f3112f169ab8d669bf18c81700275
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5d31285ca305ba7fefdf31b4a97e3183f58b3e3b
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57871030"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233811"
 ---
 # <a name="tutorial-moderate-facebook-posts-and-commands-with-azure-content-moderator"></a>チュートリアル:Azure Content Moderator で Facebook の投稿とコマンドをモデレートする
 
@@ -28,11 +28,14 @@ ms.locfileid: "57871030"
 > * Content Moderator と Facebook からの HTTP イベントをリッスンする Azure Functions を作成します。
 > * Facebook アプリケーションを使用して Facebook のページを Content Moderator にリンクします。
 
-Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 この図では、このシナリオの各コンポーネントが示されています。
 
 !["FBListener" を介して Facebook から情報を受信し、"CMListener" を介して情報を送信する、Content Moderator の図](images/tutorial-facebook-moderation.png)
+
+> [!IMPORTANT]
+> 2018 年に、Facebook は Facebook アプリのより厳密な審査を実装しました。 お客様のアプリが Facebook のレビュー チームによってレビューおよび承認されていない場合は、このチュートリアルの手順を完了できません。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -59,68 +62,71 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 ## <a name="create-azure-functions"></a>Azure Functions を作成する
 
-[Azure Portal](https://portal.azure.com/) にサインインして、次の手順のようにします。
+[Azure portal](https://portal.azure.com/) にサインインして、次の手順を実行します。
 
 1. [[Azure Functions]](https://docs.microsoft.com/azure/azure-functions/functions-create-function-app-portal) ページの表示に従って Azure Function アプリを作成します。
-2. 新しく作成した Function アプリに移動します。
-3. アプリ内で **[プラットフォーム機能]** タブに移動し、**[アプリケーションの設定]** を選択します。 次のページの **[アプリケーションの設定]** セクションで、一覧の一番下までスクロールし、**[Add new setting]\(新しい設定の追加\)** をクリックします。 次のキー/値ペアを追加します
+1. 新しく作成した Function アプリに移動します。
+1. アプリ内で **[プラットフォーム機能]** タブに移動し、**[構成]** を選択します。 次のページの **[アプリケーション設定]** セクションで、**[新しいアプリケーション設定]** を選択し、次のキー/値ペアを追加します。
     
     | アプリ設定の名前 | value   | 
     | -------------------- |-------------|
     | cm:TeamId   | Content Moderator のチーム ID  | 
-    | cm:SubscriptionKey | Content Moderator のサブスクリプション キー - [資格情報](review-tool-user-guide/credentials.md)に関するページを参照してください | 
-    | cm:Region | Content Moderator のリージョン名 (スペースなし)。 前の注を参照してください。 |
+    | cm:SubscriptionKey | Content Moderator のサブスクリプション キー - [資格情報](review-tool-user-guide/credentials.md)に関するページを参照してください |
+    | cm:Region | Content Moderator のリージョン名 (スペースなし)。 |
     | cm:ImageWorkflow | 画像に対して実行するワークフローの名前 |
     | cm:TextWorkflow | テキストに対して実行するワークフローの名前 |
-    | cm:CallbackEndpoint | このガイドで後で作成する CMListener Function アプリの URL |
-    | fb:VerificationToken | シークレット トークン。Facebook のフィード イベントにサブスクライブするためにも使用されます |
-    | fb:PageAccessToken | Facebook のグラフ API アクセス トークンは無期限なので、代理で投稿の非表示/削除関数を実行させることができます。 |
+    | cm:CallbackEndpoint | このガイドで後で作成する CMListener 関数アプリの URL |
+    | fb:VerificationToken | お客様が作成するシークレット トークン。Facebook のフィード イベントにサブスクライブするために使用されます |
+    | fb:PageAccessToken | Facebook のグラフ API アクセス トークンは無期限なので、代理で投稿の非表示/削除関数を実行させることができます。 これは、後の手順で取得します。 |
 
     ページ上部にある **[保存]** ボタンをクリックします。
 
-1. 左側のウィンドウの **[+]** ボタンを使用して、[新しい関数] ウィンドウを表示します。
+1. **[プラットフォーム機能]** タブに戻ります。左側のウィンドウの **[+]** ボタンを使用して、**[新しい関数]** ウィンドウを表示します。 作成する関数は、Facebook からイベントを受け取ることになります。
 
     ![[関数の追加] ボタンが強調表示されている Azure Functions ウィンドウ。](images/new-function.png)
-
-    次に、ページの上部にある **[+ 新しい関数]** をクリックします。 この関数は Facebook からイベントを受け取ります。 次の手順でこの関数を作成します。
 
     1. **[Http trigger]\(Http トリガー\)** というタイルをクリックします。
     1. 「**FBListener**」という名前を入力します。 **[Authorization Level]\(承認レベル\)** フィールドは **[Function]\(関数\)** に設定する必要があります。
     1. **Create** をクリックしてください。
     1. **run.csx** の内容を **FbListener/run.csx** の内容で置き換えます
 
-    [!code-csharp[FBListener: csx file](~/samples-fbPageModeration/FbListener/run.csx?range=1-160)]
+    [!code-csharp[FBListener: csx file](~/samples-fbPageModeration/FbListener/run.csx?range=1-154)]
 
 1. **CMListener** という名前の新しい **Http トリガー**関数を作成します。 この関数は Content Moderator からイベントを受け取ります。 **run.csx** の内容を **CMListener/run.csx** の内容で置き換えます
 
-    [!code-csharp[FBListener: csx file](~/samples-fbPageModeration/CmListener/run.csx?range=1-106)]
+    [!code-csharp[FBListener: csx file](~/samples-fbPageModeration/CmListener/run.csx?range=1-110)]
 
 ---
 
 ## <a name="configure-the-facebook-page-and-app"></a>Facebook ページとアプリを構成する
+
 1. Facebook アプリを作成します。
 
     ![Facebook 開発者ページ](images/facebook-developer-app.png)
 
     1. [Facebook 開発者向けサイト](https://developers.facebook.com/)に移動します。
-    2. **[My Apps]\(マイ アプリ\)** をクリックします。
-    3. 新しいアプリを追加します。
+    1. **[My Apps]\(マイ アプリ\)** をクリックします。
+    1. 新しいアプリを追加します。
     1. 適当な名前を付けます
     1. **[Webhooks] > [設定]** を選択します
     1. ドロップダウン メニューで **[ページ]** を選択し、**[Subscribe to this object]\(このオブジェクトをサブスクライブする\)** を選択します
     1. [Callback URL]\(コールバック URL\) に **FBListener Url** を入力し、**[Function App Settings]\(Function アプリの設定\)** で構成した**トークンを確認**します。
     1. サブスクライブが完了したら、フィードまで下にスクロールして、**[Subscribe]\(サブスクライブ\)** を選択します。
+    1. **フィード**行の **[テスト]** ボタンをクリックして、テスト メッセージを FBListener Azure 関数に送信してから、**[Send to My Server]\(マイ サーバーに送信\)** ボタンをクリックします。 FBListener で受信される要求が表示されます。
 
-2. Facebook ページを作成します。
+1. Facebook ページを作成します。
+
+    > [!IMPORTANT]
+    > 2018 年に、Facebook は Facebook アプリのより厳密な審査を実装しました。 お客様のアプリが Facebook のレビュー チームによってレビューおよび承認されていない場合は、セクション 2、3、4 を実行できません。
 
     1. [Facebook](https://www.facebook.com/bookmarks/pages) に移動し、**新しい Facebook ページ**を作成します。
-    2. Facebook アプリがこのページにアクセスできるようにするには、次の手順を実行します。
+    1. Facebook アプリがこのページにアクセスできるようにするには、次の手順を実行します。
         1. [Graph API Explorer](https://developers.facebook.com/tools/explorer/) に移動します。
-        2. **[Application]\(アプリケーション\)** を選択します。
-        3. **[Page Access Token]\(ページ アクセス トークン\)** を選択し、**Get** 要求を送信します。
-        4. 応答の **[Page ID]\(ページ ID\)** をクリックします。
-        5. URL に **/subscribed_apps** を付加し、**Get** (空の応答) 要求を送信します。
-        6. **Post** 要求を送信します。 **success: true** という応答を受け取ります。
+        1. **[Application]\(アプリケーション\)** を選択します。
+        1. **[Page Access Token]\(ページ アクセス トークン\)** を選択し、**Get** 要求を送信します。
+        1. 応答の **[Page ID]\(ページ ID\)** をクリックします。
+        1. URL に **/subscribed_apps** を付加し、**Get** (空の応答) 要求を送信します。
+        1. **Post** 要求を送信します。 **success: true** という応答を受け取ります。
 
 3. 無期限の Graph API アクセス トークンを作成します。
 

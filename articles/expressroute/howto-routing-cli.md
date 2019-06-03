@@ -5,15 +5,15 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 10/23/2018
+ms.date: 04/24/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: a2bb8f5d27f1829f891a0638642093df1fa35b81
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3f27e10c47b84b6f037c0d9422e9fba40e0315f7
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58088453"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64717040"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-using-cli"></a>CLI を使用した ExpressRoute 回線のピアリングの作成と変更
 
@@ -109,7 +109,7 @@ ExpressRoute 回線用に 1 つ、2 つ、または 3 つすべてのピアリ�
    * アドバタイズするプレフィックス:BGP セッションを介してアドバタイズする予定のすべてのプレフィックスのリストを指定する必要があります。 パブリック IP アドレス プレフィックスのみが受け入れられます。 一連のプレフィックスを送信する場合は、コンマ区切りのリストを送信できます。 これらのプレフィックスは、RIR/IRR に登録する必要があります。
    * **省略可能 -** 顧客 ASN:ピアリング AS 番号に登録されていないプレフィックスをアドバタイズする場合は、そのプレフィックスが登録されている AS 数を指定できます。
    * ルーティング レジストリ名:AS 番号とプレフィックスを登録する RIR/IRR を指定することができます。
-   * **省略可能 -** 使うものを 1 つ選ぶ場合は、MD5 ハッシュ。
+   * **省略可能 -** MD5 を使用する場合には、パスワードを準備します。
 
    次の例を実行して、回線用に Microsoft ピアリングを構成します。
 
@@ -323,6 +323,10 @@ az network express-route peering delete -g ExpressRouteResourceGroup --circuit-n
 
 このセクションでは、ExpressRoute 回線用の Azure パブリック ピアリング構成を作成、取得、更新、および削除します。
 
+> [!Note]
+> Azure パブリック ピアリングは、新しい回線では非推奨です。 詳細については、「[ExpressRoute peering](expressroute-circuit-peerings.md)」を参照してください。
+>
+
 ### <a name="to-create-azure-public-peering"></a>Azure パブリック ピアリングを作成するには
 
 1. 最新バージョンの Azure CLI をインストールします。 最新バージョンの Azure コマンド ライン インターフェイス (CLI) を使用する必要があります。* 構成を開始する前に、[前提条件](expressroute-prerequisites.md)と[ワークフロー](expressroute-workflows.md)を確認してください。
@@ -381,7 +385,7 @@ az network express-route peering delete -g ExpressRouteResourceGroup --circuit-n
    * セカンダリ リンク用の /30 サブネット。 これは有効なパブリック IPv4 プレフィックスである必要があります。
    * このピアリングを確立するための有効な VLAN ID。 回線の他のピアリングが同じ VLAN ID を使用しないようにしてください。
    * ピアリングの AS 番号。 2 バイトと 4 バイトの AS 番号の両方を使用することができます。
-   * **省略可能 -** 使うものを 1 つ選ぶ場合は、MD5 ハッシュ。
+   * **省略可能 -** MD5 を使用する場合には、パスワードを準備します。
 
    次の例を実行して、回線用に Azure パブリック ピアリングを構成します。
 

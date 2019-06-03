@@ -3,8 +3,8 @@ title: Azure Monitor の Azure Networking Analytics ソリューション | Micr
 description: Azure Monitor の Azure Networking Analytics ソリューションを使用すると、Azure ネットワーク セキュリティ グループのログと Azure Application Gateway のログをレビューできます。
 services: log-analytics
 documentationcenter: ''
-author: richrundmsft
-manager: ewinner
+author: bwren
+manager: carmonm
 editor: ''
 ms.assetid: 66a3b8a1-6c55-4533-9538-cad60c18f28b
 ms.service: log-analytics
@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/21/2018
-ms.author: richrund
-ms.openlocfilehash: 0a5d886558e72ef24b03a49750ed75cf7130bf08
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.author: bwren
+ms.openlocfilehash: 244df90a9db2a2b0d5f6ca6e1874bce94fc7f5bf
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59006394"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65506410"
 ---
 # <a name="azure-networking-monitoring-solutions-in-azure-monitor"></a>Azure Monitor の Azure ネットワーク監視ソリューション
 
@@ -209,7 +209,7 @@ Set-AzDiagnosticSetting -ResourceId $nsg.ResourceId  -WorkspaceId $workspaceId -
 + ストレージ アカウントを使用する必要がなく、ログは Azure Monitor に直接書き込まれます。
 + ログが生成されてから Azure Monitor で使用できるまでの待機時間が短縮されます。
 + 構成手順が簡素化されます。
-+ すべての種類の Azure 診断の共通形式です。
++ すべての種類の Azure Diagnostics の共通形式です。
 
 最新のソリューションを使用するには、次の操作を行います。
 
@@ -228,7 +228,7 @@ Set-AzDiagnosticSetting -ResourceId $nsg.ResourceId  -WorkspaceId $workspaceId -
    + 名前に \_s、\_d、または \_g のサフィックスがあるフィールドについては、最初の文字を小文字に変更します。
    + 名前に \_o のサフィックスがあるフィールドについては、入れ子になったフィールド名に基づき、データは個別のフィールドに分割されます。
 4. *Azure Networking Analytics (非推奨)* ソリューションを削除します。
-   + PowerShell を使用している場合は、以下を使用します。 `Set-AzureOperationalInsightsIntelligencePack -ResourceGroupName <resource group that the workspace is in> -WorkspaceName <name of the log analytics workspace> -IntelligencePackName "AzureNetwork" -Enabled $false`
+   + PowerShell を使用している場合は、次のコードを使用します。`Set-AzureOperationalInsightsIntelligencePack -ResourceGroupName <resource group that the workspace is in> -WorkspaceName <name of the log analytics workspace> -IntelligencePackName "AzureNetwork" -Enabled $false`
 
 変更前に収集されたデータは、新しいソリューションには表示されません。 元の型とフィールド名を使用して、このデータのクエリを続行できます。
 

@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 05/11/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: c9e62cf3dfc259d7064be9fd6b80cad0140336eb
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 1c1317726cf29f23e4729c67a5a5794fa459220b
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59549271"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65410862"
 ---
 # <a name="quickstart-create-a-sql-server-2017-windows-virtual-machine-in-the-azure-portal"></a>クイック スタート:Azure ポータルで SQL Server 2017 Windows 仮想マシンを作成する
 
@@ -44,7 +44,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. Azure Portal で、**[リソースの作成]** を選択します。 
 
-1. 検索フィールドに「`SQL Server 2017 Developer on Windows Server 2016`」と入力し、Enter キーを押します。
+1. 検索フィールドに「`SQL Server 2017 Developer on Windows Server 2016`」と入力し、Enter キーを押します。 Windows Server 2016 のオプションで SQL Server 2017 を展開します。 
 
 1. **Free SQL Server License: SQL Server 2017 Developer on Windows Server 2016** イメージを選択します。 このチュートリアルで Developer エディションを使用するのは、このエディションが SQL Server の完全版であり、開発テストを無料で実行できるためです。 ユーザーは VM を実行するコストに対してのみ課金されます。 料金に関する考慮事項については、「[SQL Server Azure VM の料金ガイダンス](virtual-machines-windows-sql-server-pricing-guidance.md)」を参照してください。
 

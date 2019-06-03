@@ -6,18 +6,22 @@ author: sachdevaswati
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
-ms.date: 03/19/2019
+ms.date: 04/23/2019
 ms.author: sachdevaswati
-ms.openlocfilehash: 8d6323c73e5313a29b7b0df09ebdd24a190879f5
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 649e50634d901ab48f1cb36c39d7331401c0cc51
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59791895"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64700170"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Azure VM バックアップ上で実行されている SQL Server データベースに関する FAQ
 
 この記事では、Azure 仮想マシン (VM) 上で実行され、[Azure Backup](backup-overview.md) サービスを使用する SQL Server データベースのバックアップに関する一般的な質問にお答えします。
+
+## <a name="can-i-use-azure-backup-for-iaas-vm-as-well-as-sql-server-on-the-same-machine"></a>IaaS VM の Azure バックアップと SQL Server を同じマシン上で使用できますか？
+はい、同じ VM上で VM のバックアップと SQL のバックアップを共存させることができます。 この場合はログを切り詰めないようにするため、VM 上でコピーのみの完全バックアップを内部でトリガーします。
+
 
 ## <a name="does-the-solution-retry-or-auto-heal-the-backups"></a>このソリューションではバックアップは再試行または自動回復されますか?
 
@@ -33,7 +37,7 @@ ms.locfileid: "59791895"
 機能としての自動回復は、すべてのユーザーに対して既定で有効になります。ただし、これを無効にすることを選択した場合は、次のことを実行してください。
 
   * SQL Server インスタンスで、*C:\Program Files\Azure Workload Backup\bin* フォルダーで **ExtensionSettingsOverrides.json** ファイルを作成または編集します。
-  *   **ExtensionSettingsOverrides.json** で、 *{"EnableAutoHealer": false}* を設定します。
+  *  **ExtensionSettingsOverrides.json** で、 *{"EnableAutoHealer": false}* を設定します。
   * 変更を保存し、ファイルを閉じます。
   * SQL Server インスタンスで、**タスク マネージャー**を開き、**AzureWLBackupCoordinatorSvc** サービスを再起動します。  
 
@@ -45,7 +49,8 @@ ms.locfileid: "59791895"
   `{"DefaultBackupTasksThreshold": 5}`
 
 3. 変更を保存し、ファイルを閉じます。
-4. SQL Server インスタンスで、**タスク マネージャー**を開きます。 **AzureWLBackupCoordinatorSvc** サービスを再起動します。
+4. SQL Server インスタンスで、**タスク マネージャー**を開きます。 **AzureWLBackupCoordinatorSvc** サービスを再起動します。<br/> <br/>
+ このメソッドにより、バックアップ アプリケーションで多くのリソースを消費している場合、SQL Server の[Resource Governor](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor?view=sql-server-2017)は、受信するアプリケーション要求で使用できる CPU、物理 IO、およびメモリの量をより汎用的なやり方で制限できます。
 
 > [!NOTE]
 > UX では、引き続き先に進みいつでも、いくつでもバックアップをスケジュールできますが、それらは上の例に従った値 (たとえば、5) のスライディング ウィンドウで処理されます。
@@ -74,7 +79,7 @@ Azure Backup Recovery Services コンテナーは、そのコンテナーと同�
 このデータベースの保護を停止するための正しい方法は、このデータベースに対して**データを削除**した  **[バックアップの停止]** を実行することです。  
 
 ## <a name="if-i-do-stop-backup-operation-of-an-autoprotected-database-what-will-be-its-behavior"></a>自動保護されたデータベースのバックアップ操作の停止を実行した場合、その動作はどうなりますか?
-**データを保持したバックアップの停止**を実行した場合、将来のバックアップは実行されず、既存の復旧ポイントはそのまま残ります。 そのデータベースは引き続き保護されていると見なされ、**[バックアップ項目]** に表示されます。
+**データを保持したバックアップの停止**を実行した場合、将来のバックアップは実行されず、既存の復旧ポイントはそのまま残ります。 そのデータベースは引き続き保護されていると見なされ、 **[バックアップ項目]** に表示されます。
 
 **データを削除したバックアップの停止**を実行した場合、将来のバックアップは実行されず、既存の復旧ポイントも削除されます。 そのデータベースは保護されていないと見なされ、[バックアップの構成] 内のインスタンスに表示されます。 ただし、手動で選択したり、自動保護したりできる他の保護されていないデータベースとは異なり、このデータベースは灰色表示され、選択できません。 このデータベースを再保護するための唯一の方法は、そのインスタンスに対する自動保護を無効にすることです。 これでこのデータベースを選択できるようになり、それに対する保護を構成するか、またはそのインスタンスに対する自動保護を再び有効にします。
 
@@ -84,7 +89,7 @@ Azure Backup Recovery Services コンテナーは、そのコンテナーと同�
 名前が変更されているデータベースを選択し、それに対する保護を構成できます。 そのインスタンスに対して自動保護が有効になっている場合は、名前が変更されたデータベースが自動的に検出されて保護されます。
 
 ##  <a name="why-cant-i-see-an-added-database-for-an-autoprotected-instance"></a>自動保護されたインスタンスの追加されたデータベースが表示されないのはなぜですか?
-[自動保護されたインスタンスに追加した](backup-sql-server-database-azure-vms.md#enable-auto-protection)データベースは、保護された項目にすぐには表示されない可能性があります。 これは、検出が通常は 8 時間ごとに実行されるためです。 ただし、次の図に示すように、**[DB の再検出]** を選択することによって検出を手動で実行した場合は、新しいデータベースを直ちに検出して保護できます。
+[自動保護されたインスタンスに追加した](backup-sql-server-database-azure-vms.md#enable-auto-protection)データベースは、保護された項目にすぐには表示されない可能性があります。 これは、検出が通常は 8 時間ごとに実行されるためです。 ただし、次の図に示すように、 **[DB の再検出]** を選択することによって検出を手動で実行した場合は、新しいデータベースを直ちに検出して保護できます。
 
   ![新しく追加されたデータベースを手動で検出する](./media/backup-azure-sql-database/view-newly-added-database.png)
 

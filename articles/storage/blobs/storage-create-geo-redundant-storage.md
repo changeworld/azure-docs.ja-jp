@@ -10,12 +10,12 @@ ms.author: tamram
 ms.reviewer: artek
 ms.custom: mvc
 ms.subservice: blobs
-ms.openlocfilehash: b884eab6d2d5a2c768991aa82f5a33d2792abd97
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 24869981595cd68eb833f7b176e17a2683127945
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65508128"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65787924"
 ---
 # <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>チュートリアル:Blob Storage を使用して高可用性アプリケーションを作成する
 
@@ -74,7 +74,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. Azure Portal の左上隅にある **[リソースの作成]** ボタンを選択します。
 2. **[新規]** ページから **[ストレージ]** を選択します。
 3. **[おすすめ]** の下にある **[ストレージ アカウント - Blob、File、Table、Queue]** を選択します。
-4. 下図のように、ストレージ アカウント フォームに次の情報を入力し、**[作成]** を選択します。
+4. 下図のように、ストレージ アカウント フォームに次の情報を入力し、 **[作成]** を選択します。
 
    | Setting       | 推奨値 | Description |
    | ------------ | ------------------ | ------------------------------------------------- |
@@ -83,7 +83,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    | **アカウントの種類** | StorageV2 | アカウントの種類の詳細については、「[ストレージ アカウントの種類](../common/storage-introduction.md#types-of-storage-accounts)」を参照してください |
    | **パフォーマンス** | Standard | このサンプル シナリオでは、標準で十分です。 |
    | **レプリケーション**| 読み取りアクセス geo 冗長ストレージ (RA-GRS) | サンプルが動作するには、この設定が必要です。 |
-   |**サブスクリプション** | 該当するサブスクリプション |サブスクリプションの詳細については、[サブスクリプション](https://account.windowsazure.com/Subscriptions)に関するページを参照してください。 |
+   |**サブスクリプション** | 該当するサブスクリプション |サブスクリプションの詳細については、[サブスクリプション](https://account.azure.com/Subscriptions)に関するページを参照してください。 |
    |**ResourceGroup** | myResourceGroup |有効なリソース グループ名については、[名前付け規則と制限](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。 |
    |**場所** | 米国東部 | 場所を選択します。 |
 
@@ -192,7 +192,7 @@ AZURE_STORAGE_ACCOUNT_NAME=<replace with your storage account name>
 AZURE_STORAGE_ACCOUNT_ACCESS_KEY=<replace with your storage account access key>
 ```
 
-この情報は、Azure portal で目的のストレージ アカウントに移動し、**[設定]** セクションの **[アクセス キー]** を選択すると確認できます。
+この情報は、Azure portal で目的のストレージ アカウントに移動し、 **[設定]** セクションの **[アクセス キー]** を選択すると確認できます。
 
 また、必要な依存関係をインストールする必要があります。 そのためには、コマンド プロンプトを開いてサンプル フォルダーに移動し、「`npm install`」と入力します。
 
@@ -208,7 +208,7 @@ Visual Studio で **F5** キーを押すか **[スタート]** を選択して�
 
 ![コンソール アプリの実行](media/storage-create-geo-redundant-storage/figure3.png)
 
-このサンプル コードで、`Program.cs` ファイルの `RunCircuitBreakerAsync` タスクは、[DownloadToFileAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.cloudblob.downloadtofileasync?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_CloudBlob_DownloadToFileAsync_System_String_System_IO_FileMode_Microsoft_WindowsAzure_Storage_AccessCondition_Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_) メソッドを使用してストレージ アカウントからイメージをダウンロードするために使用されます。 そのダウンロードの前に、[OperationContext](/dotnet/api/microsoft.azure.cosmos.table.operationcontext?view=azure-dotnet) が定義されています。 操作コンテキストにイベント ハンドラーが定義され、ダウンロードが正常に完了したとき、またはダウンロードが失敗して再試行する場合に呼び出されます。
+このサンプル コードで、`Program.cs` ファイルの `RunCircuitBreakerAsync` タスクは、[DownloadToFileAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.downloadtofileasync) メソッドを使用してストレージ アカウントからイメージをダウンロードするために使用されます。 そのダウンロードの前に、[OperationContext](/dotnet/api/microsoft.azure.cosmos.table.operationcontext) が定義されています。 操作コンテキストにイベント ハンドラーが定義され、ダウンロードが正常に完了したとき、またはダウンロードが失敗して再試行する場合に呼び出されます。
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
@@ -229,7 +229,7 @@ Visual Studio で **F5** キーを押すか **[スタート]** を選択して�
 1. シェルを開き、複製したディレクトリ内の **storage-blobs-java-v10-quickstart** を参照します。
 2. 「 `mvn compile exec:java` 」を入力します。
 
-このサンプルでは、既定のディレクトリにテスト ファイルが作成されます。Windows ユーザーの場合、このディレクトリは **AppData\Local\Temp** です。このサンプルでは、次に、ユーザーが入力できる次のコマンド オプションが表示されます。
+このサンプルでは、既定のディレクトリにテスト ファイルが作成されます。 Windows ユーザーの場合、このディレクトリは **AppData\Local\Temp** です。このサンプルでは、次に、ユーザーが入力できる次のコマンド オプションが表示されます。
 
 - BLOB の PUT 操作を実行するには、「**P**」と入力します。これにより、一時ファイルがストレージ アカウントにアップロードされます。
 - BLOB の一覧表示操作を実行するには、「**L**」と入力します。これにより、現在コンテナー内にある BLOB が一覧表示されます。
@@ -301,7 +301,7 @@ Deleted container newcontainer1550799840726
 
 ### <a name="retry-event-handler"></a>イベント ハンドラーを再試行する
 
-`OperationContextRetrying` イベント ハンドラーは、イメージのダウンロードが失敗し、再試行するように設定されたときに呼び出されます。 アプリケーションに定義されている最大試行回数に達すると、要求の [LocationMode](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.locationmode?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_LocationMode) は `SecondaryOnly` に変わります。 この設定で、アプリケーションはセカンダリ エンドポイントからイメージをダウンロードを試行するように強制されます。 この構成では、プライマリ エンドポイントは永続的に再試行されないので、イメージの要求にかかる時間が短縮されます。
+`OperationContextRetrying` イベント ハンドラーは、イメージのダウンロードが失敗し、再試行するように設定されたときに呼び出されます。 アプリケーションに定義されている最大試行回数に達すると、要求の [LocationMode](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.locationmode) は `SecondaryOnly` に変わります。 この設定で、アプリケーションはセカンダリ エンドポイントからイメージをダウンロードを試行するように強制されます。 この構成では、プライマリ エンドポイントは永続的に再試行されないので、イメージの要求にかかる時間が短縮されます。
 
 ```csharp
 private static void OperationContextRetrying(object sender, RequestEventArgs e)
@@ -329,7 +329,7 @@ private static void OperationContextRetrying(object sender, RequestEventArgs e)
 
 ### <a name="request-completed-event-handler"></a>要求が完了したイベント ハンドラー
 
-`OperationContextRequestCompleted` イベント ハンドラーは、イメージのダウンロードが成功したときに呼び出されます。 アプリケーションがセカンダリ エンドポイントを使用している場合、アプリケーションはセカンダリ エンドポイントを最大 20 回継続して使用します。 20 回の後、アプリケーションは [LocationMode](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.locationmode?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_LocationMode) を `PrimaryThenSecondary` に戻し、プライマリ エンドポイントを再試行します。 要求が成功した場合、アプリケーションはプライマリ エンドポイントからの読み取りを継続します。
+`OperationContextRequestCompleted` イベント ハンドラーは、イメージのダウンロードが成功したときに呼び出されます。 アプリケーションがセカンダリ エンドポイントを使用している場合、アプリケーションはセカンダリ エンドポイントを最大 20 回継続して使用します。 20 回の後、アプリケーションは [LocationMode](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.locationmode) を `PrimaryThenSecondary` に戻し、プライマリ エンドポイントを再試行します。 要求が成功した場合、アプリケーションはプライマリ エンドポイントからの読み取りを継続します。
 
 ```csharp
 private static void OperationContextRequestCompleted(object sender, RequestEventArgs e)

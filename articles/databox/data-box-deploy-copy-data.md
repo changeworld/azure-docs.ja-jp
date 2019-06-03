@@ -1,19 +1,19 @@
 ---
-title: Microsoft Azure Data Box に SMB 経由でデータをコピーする | Microsoft Docs
+title: Azure Data Box に SMB 経由でデータをコピーするチュートリアル | Microsoft Docs
 description: Azure Data Box に SMB 経由でデータをコピーする方法について説明します。
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 01/28/2019
+ms.date: 05/14/2019
 ms.author: alkohli
-ms.openlocfilehash: 3474d4ee8751bcd472aa109e9e541d639344276d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 83eabca3b2ec1903e25b02083b1a2d5b49745396
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58118086"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65800460"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-via-smb"></a>チュートリアル:Azure Data Box に SMB 経由でデータをコピーする
 
@@ -41,8 +41,8 @@ ms.locfileid: "58118086"
 
 選択したストレージ アカウントに基づいて、Data Box では最大で次のものが作成されます。
 - GPv1 および GPv2 に対して関連付けられているストレージ アカウントごとに 3 つの共有。
-- Premium ストレージに対して 1 つの共有。 
-- BLOB ストレージ アカウントに対して 1 つの共有。 
+- Premium ストレージに対して 1 つの共有。
+- BLOB ストレージ アカウントに対して 1 つの共有。
 
 ブロック BLOB とページ BLOB の共有では、第 1 レベルのエンティティはコンテナーであり、第 2 レベルのエンティティは BLOB です。 Azure Files の共有では、第 1 レベルのエンティティは共有であり、第 2 レベルのエンティティはファイルです。
 
@@ -81,7 +81,7 @@ Windows Server ホスト コンピューターを使用している場合は、�
     The command completed successfully.
     ```
 
-4. Windows キーを押しながら R キーを押します。**[ファイル名指定して実行]** ウィンドウで、「`\\<device IP address>`」と入力します。 **[OK]** をクリックして、エクスプローラーを開きます。
+4. Windows キーを押しながら R キーを押します。 **[ファイル名指定して実行]** ウィンドウで、「`\\<device IP address>`」と入力します。 **[OK]** をクリックして、エクスプローラーを開きます。
     
     ![エクスプローラーで共有に接続する 2](media/data-box-deploy-copy-data/connect-shares-file-explorer1.png)
 
@@ -91,7 +91,7 @@ Windows Server ホスト コンピューターを使用している場合は、�
 
     **常にコピーしようとするファイル用のフォルダーを共有下に作成してから、ファイルをそのフォルダーにコピーします**。 ブロック BLOB およびページ BLOB の共有の下に作成したフォルダーは、データが BLOB としてアップロードされるコンテナーになります。 ストレージ アカウント内の *root* フォルダーに直接ファイルをコピーすることはできません。
     
-Linux クライアントを使用している場合は、次のコマンドを使用して、SMB 共有をマウントします。 以下の "vers" パラメーターは、Linux ホストがサポートしている SMB のバージョンです。 次のコマンドで、適切なバージョンを指定します。 Data Box でサポートされている SMB のバージョンについては、「[Linux クライアントでサポートされるファイル システム](https://docs.microsoft.com/en-us/azure/databox/data-box-system-requirements#supported-file-systems-for-linux-clients)」を参照してください 
+Linux クライアントを使用している場合は、次のコマンドを使用して、SMB 共有をマウントします。 以下の "vers" パラメーターは、Linux ホストがサポートしている SMB のバージョンです。 次のコマンドで、適切なバージョンを指定します。 Data Box でサポートされている SMB のバージョンについては、「[Linux クライアントでサポートされるファイル システム](https://docs.microsoft.com/azure/databox/data-box-system-requirements#supported-file-systems-for-linux-clients)」を参照してください 
 
     `sudo mount -t nfs -o vers=2.1 10.126.76.172:/devicemanagertest1_BlockBlob /home/databoxubuntuhost/databox`
     
@@ -132,7 +132,7 @@ SMB 共有に接続した後、データのコピーを開始します。 Roboco
 |/z    | 再起動モードでファイルをコピーします。環境が不安定な場合はこれを使用します。 このオプションでは、追加ログによりスループットが低下します。      |
 | /zb     | 再起動モードを使用します。 アクセスが拒否された場合、このオプションはバックアップ モードを使用します。 このオプションでは、チェックポイント処理のためにスループットが低下します。         |
 |/efsraw     | すべての暗号化されたファイルを EFS raw モードでコピーします。 暗号化されたファイルでのみ使用します。         |
-|log+:<LogFile>| 既存のログ ファイルに出力を追加します。|    
+|log+:\<LogFile>| 既存のログ ファイルに出力を追加します。|    
  
 次のサンプルは、Data Box にファイルをコピーする robocopy コマンドの出力を示しています。
     
@@ -202,7 +202,7 @@ SMB 共有に接続した後、データのコピーを開始します。 Roboco
 
 Robocopy コマンドについて詳しくは、「[Robocopy and a few examples](https://social.technet.microsoft.com/wiki/contents/articles/1073.robocopy-and-a-few-examples.aspx)」(Robocopy といくつかの例) をご覧ください。
 
-コピー先フォルダーを開いて、コピー済みのファイルを表示し、確認します。 コピー処理中にエラーが発生した場合は、トラブルシューティングのためにエラー ファイルをダウンロードします。
+コピー先フォルダーを開いて、コピー済みのファイルを表示し、確認します。 コピー処理中にエラーが発生した場合は、トラブルシューティングのためにエラー ファイルをダウンロードします。 詳細については、「[View error logs during data copy to Data Box (Data Box へのデータのコピー中のエラー ログを表示する)](data-box-logs.md#view-error-log-during-data-copy-to-data-box)」を参照してください。 データのコピー中のエラーの詳細な一覧については、[Data Box の問題のトラブルシューティング](data-box-troubleshoot.md)に関するページを参照してください。
 
 データの整合性を保証するため、データがコピーされるときにインラインでチェックサムが計算されます。 コピーが完了したら、デバイスで使用済み領域と空き領域を確認します。
     

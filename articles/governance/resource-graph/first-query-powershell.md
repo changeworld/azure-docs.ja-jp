@@ -8,14 +8,14 @@ ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: a94fe86cd9c2a6e775be1ec4b3d14798e4cac693
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 17003864c7bcc5f8be6acf17d40ce2039f031313
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59795869"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65823241"
 ---
-# <a name="run-your-first-resource-graph-query-using-azure-powershell"></a>Azure PowerShell を使用して最初の Resource Graph クエリを実行します
+# <a name="quickstart-run-your-first-resource-graph-query-using-azure-powershell"></a>クイック スタート:Azure PowerShell を使用して最初の Resource Graph クエリを実行します
 
 Azure Resource Graph を使用する最初の手順では、Azure PowerShell のモジュールがインストールされていることを確認します。 このクイック スタートでは、Azure PowerShell のインストールにモジュールを追加するプロセスについて説明します。
 
@@ -90,7 +90,7 @@ Azure PowerShell モジュールが選択した環境に追加されたので、
 
 最終的なクエリを複数回実行したとき、環境内で何も変更がないと仮定すると、返される結果は一貫性があり、想定どおりになります。つまり、結果は**名前**プロパティで並べ替えられますが、上位 5 件に制限されます。
 
-## <a name="cleanup"></a>クリーンアップ
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
 Resource Graph モジュールを Azure PowerShell 環境から削除する場合は、次のコマンドを使用して行うことができます。
 

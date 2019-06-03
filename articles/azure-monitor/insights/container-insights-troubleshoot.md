@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/27/2018
 ms.author: magoedte
-ms.openlocfilehash: db4b468c03d93b073067083f4fae1ec86c70dde8
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 5f9fc128af4e89788e648fcfc238da300ff91724
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58577051"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65068764"
 ---
 # <a name="troubleshooting-azure-monitor-for-containers"></a>コンテナー用 Azure Monitor のトラブルシューティング
 
@@ -112,8 +112,8 @@ ms.locfileid: "58577051"
 | エラー メッセージ  | Action |  
 | ---- | --- |  
 | エラー メッセージ: `No data for selected filters`  | 新しく作成したクラスターの監視データ フローの確立に時間がかかる場合があります。 クラスターのデータが表示されるまで、少なくとも 10 ～ 15 分お待ちください。 |   
-| エラー メッセージ: `Error retrieving data` | Azure Kubenetes Service クラスターが正常性とパフォーマンスの監視用に設定される間に、クラスターと Azure Log Analytics ワークスペースの間に接続が確立されます。 Log Analytics ワークスペースは、クラスターのすべての監視データを格納するために使用されます。 Log Analytics ワークスペースが削除されるか失われると、このエラーが発生する可能性があります。 [アクセスの管理](../../azure-monitor/platform/manage-access.md?toc=/azure/azure-monitor/toc.json#view-workspace-details)に関する記事を参照して、ワークスペースが使用可能かどうかを確認してください。 ワークスペースがない場合は、コンテナー用 Azure Monitor にクラスターを再オンボードする必要があります。 再オンボードするには、クラスターに対する監視を[無効](container-insights-optout.md)にしてから、コンテナーの Azure Monitor を再び[有効](container-insights-onboard.md?toc=%2fazure%2fmonitoring%2ftoc.json#enable-monitoring-for-a-new-cluster)にする必要があります。 |  
-| az aks cli でコンテナーの Azure Monitor を追加した後の `Error retrieving data` | `az aks cli` を使用してオンボードすると、コンテナーの Azure Monitor が正しくオンボードされない可能性があります。 ソリューションがオンボードされているかどうかを確認します。 そのためには、Log Analytics ワークスペースに移動し、左側のウィンドウで **[ソリューション]** を選択して、ソリューションが使用可能かどうかを確認します。 この問題を解決するには、[コンテナー用の Azure Monitor をデプロイする方法](container-insights-onboard.md?toc=%2fazure%2fmonitoring%2ftoc.json)に関する記事の手順に従ってソリューションを再デプロイする必要があります |  
+| エラー メッセージ: `Error retrieving data` | Azure Kubenetes Service クラスターが正常性とパフォーマンスの監視用に設定される間に、クラスターと Azure Log Analytics ワークスペースの間に接続が確立されます。 Log Analytics ワークスペースは、クラスターのすべての監視データを格納するために使用されます。 Log Analytics ワークスペースが削除されるか失われると、このエラーが発生する可能性があります。 [アクセスの管理](../platform/manage-access.md#view-workspace-details)に関する記事を参照して、ワークスペースが使用可能かどうかを確認してください。 ワークスペースがない場合は、コンテナー用 Azure Monitor でクラスターの監視を再有効化する必要があります。 再有効化するには、クラスターに対する監視を[無効](container-insights-optout.md)にしてから、コンテナーの Azure Monitor を再び[有効](container-insights-enable-new-cluster.md)にする必要があります。 |  
+| az aks cli でコンテナーの Azure Monitor を追加した後の `Error retrieving data` | `az aks cli` を使用して監視を有効にすると、コンテナーの Azure Monitor が正しくオンボードされない可能性があります。 ソリューションがオンボードされているかどうかを確認します。 そのためには、Log Analytics ワークスペースに移動し、左側のウィンドウで **[ソリューション]** を選択して、ソリューションが使用可能かどうかを確認します。 この問題を解決するには、[コンテナー用の Azure Monitor をデプロイする方法](container-insights-onboard.md)に関する記事の手順に従ってソリューションを再デプロイする必要があります |  
 
 問題の診断を助けるために提供されているトラブルシューティング スクリプトを、[こちら](https://github.com/Microsoft/OMS-docker/tree/ci_feature_prod/Troubleshoot#troubleshooting-script)で利用できます。  
 

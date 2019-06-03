@@ -1,25 +1,18 @@
 ---
-title: Azure キー コンテナーのデプロイ テンプレート | Microsoft Docs
+title: Azure Key Vault のデプロイ テンプレート | Azure Marketplace
 description: 新しい Azure キー コンテナー インスタンスをデプロイするために必要な Azure Resource Manager テンプレートの一覧を示します。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 11/29/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 01aedadfed1ce24b8b6ae75a9163dfe0629ac7c0
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.author: pabutler
+ms.openlocfilehash: 053a9f8ddfcc523532597d9e73aa095bf9110d72
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53196153"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64938618"
 ---
 # <a name="key-vault-deployment-template"></a>キー コンテナー デプロイ テンプレート
 

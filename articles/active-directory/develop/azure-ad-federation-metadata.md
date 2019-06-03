@@ -3,8 +3,8 @@ title: Azure AD フェデレーション メタデータ |Microsoft Docs
 description: この記事では、Azure Active Directory が Azure Active Directory トークンを受け入れるサービスに対して発行するフェデレーション メタデータ ドキュメントについて説明します。
 services: active-directory
 documentationcenter: .net
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.assetid: c2d5f80b-aa74-452c-955b-d8eb3ed62652
 ms.service: active-directory
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/07/2017
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: hirsin, dastrock
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fcabf51b3a368841f7f135a32c4824eb3db571ee
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 32f105c0d4f8807b53d400a1c198edd504c0aef3
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57864934"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65544499"
 ---
 # <a name="federation-metadata"></a>フェデレーション メタデータ
 Azure Active Directory (Azure AD) は、Azure AD が発行するセキュリティ トークンを受け入れるように構成されているサービスのフェデレーション メタデータ ドキュメントを発行します。 フェデレーション メタデータ ドキュメントの形式は、「[Web Services Federation Language (WS-Federation) Version 1.2](https://docs.oasis-open.org/wsfed/federation/v1.2/os/ws-federation-1.2-spec-os.html)」で説明されています。これは、[OASIS SAML (Security Assertion Markup Language) v2.0 のメタデータ](https://docs.oasis-open.org/security/saml/v2.0/saml-metadata-2.0-os.pdf)の拡張です。

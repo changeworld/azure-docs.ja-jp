@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 11/8/2018
 ms.author: tomfitz
 ms.openlocfilehash: c80625fb36709f66319b4966e210785864f30d09
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56270455"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66128697"
 ---
 # <a name="array-and-object-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートの配列とオブジェクトの関数
 
@@ -56,7 +56,7 @@ Resource Manager には、配列とオブジェクトを操作する関数がい
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | type | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | convertToArray |はい |整数、文字列、配列、オブジェクト |配列に変換する値。 |
 
@@ -107,7 +107,7 @@ Resource Manager には、配列とオブジェクトを操作する関数がい
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| Name | type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | intOutput | Array | [1] |
 | stringOutput | Array | ["efgh"] |
@@ -134,7 +134,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | type | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |整数、文字列、配列、オブジェクト |null かどうかがテストされる最初の値。 |
 | 残りの引数 |いいえ  |整数、文字列、配列、オブジェクト |null かどうかがテストされる残りの値。 |
@@ -193,7 +193,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| Name | type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | stringOutput | String | default |
 | intOutput | int | 1 |
@@ -222,7 +222,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | type | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |配列または文字列 |連結する最初の配列または文字列。 |
 | 残りの引数 |いいえ  |配列または文字列 |順次連結する残りの配列または文字列。 |
@@ -271,7 +271,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| Name | type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | return | Array | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
 
@@ -311,7 +311,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| Name | type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | concatOutput | String | prefix-5yj4yjf5mbg72 |
 
@@ -336,7 +336,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | type | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | container |はい |配列、オブジェクト、文字列 |検索対象の値を含む値。 |
 | itemToFind |はい |文字列または整数 |検索対象の値。 |
@@ -400,7 +400,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| Name | type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | stringTrue | ブール値 | True |
 | stringFalse | Bool | False |
@@ -430,7 +430,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | type | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |文字列、整数、配列、オブジェクト |配列の最初の値。 |
 | 残りの引数 |いいえ  |文字列、整数、配列、オブジェクト |配列の残りの値。 |
@@ -482,7 +482,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| Name | type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | stringArray | Array | ["a", "b", "c"] |
 | intArray | Array | [1, 2, 3] |
@@ -511,7 +511,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | type | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | itemToTest |はい |配列、オブジェクト、文字列 |空かどうかを確認する値。 |
 
@@ -562,7 +562,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| Name | type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | arrayEmpty | Bool | True |
 | objectEmpty | Bool | True |
@@ -589,7 +589,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | type | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |配列または文字列 |最初の要素または文字を取得する値。 |
 
@@ -628,7 +628,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| Name | type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | arrayOutput | String | one |
 | stringOutput | String | O |
@@ -654,7 +654,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | type | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |配列またはオブジェクト |共通の要素の検索に使用する 1 番目の値。 |
 | arg2 |はい |配列またはオブジェクト |共通の要素の検索に使用する 2 番目の値。 |
@@ -707,7 +707,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| Name | type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | objectOutput | Object | {"one": "a", "three": "c"} |
 | arrayOutput | Array | ["two", "three"] |
@@ -731,9 +731,9 @@ JSON オブジェクトを返します。
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | type | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
-| arg1 |はい |文字列 |JSON に変換する値。 |
+| arg1 |はい |string |JSON に変換する値。 |
 
 
 ### <a name="return-value"></a>戻り値
@@ -779,7 +779,7 @@ JSON オブジェクトにパラメーター値または変数を含める必要
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| Name | type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | jsonOutput | Object | {"a": "b"} |
 | nullOutput | Boolean | True |
@@ -806,7 +806,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | type | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |配列または文字列 |最後の要素または文字を取得する値。 |
 
@@ -845,7 +845,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| Name | type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | arrayOutput | String | three |
 | stringOutput | String | e |
@@ -871,7 +871,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | type | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |配列または文字列 |要素の数を取得するために使用する配列、または文字の数を取得するために使用する文字列。 |
 
@@ -917,7 +917,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| Name | type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | arrayLength | int | 3 |
 | stringLength | int | 13 |
@@ -954,7 +954,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | type | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |整数の配列、または整数のコンマ区切りリスト |最大値を取得するコレクション。 |
 
@@ -992,7 +992,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| Name | type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | arrayOutput | int | 5 |
 | intOutput | int | 5 |
@@ -1018,7 +1018,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | type | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |整数の配列、または整数のコンマ区切りリスト |最小値を取得するコレクション。 |
 
@@ -1056,7 +1056,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| Name | type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | arrayOutput | int | 0 |
 | intOutput | int | 0 |
@@ -1082,7 +1082,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | type | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | startingInteger |はい |int |配列の最初の整数です。 |
 | numberofElements |はい |int |配列内の整数の数。 |
@@ -1121,7 +1121,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| Name | type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | rangeOutput | Array | [5, 6, 7] |
 
@@ -1146,7 +1146,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | type | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | originalValue |はい |配列または文字列 |スキップ対象の配列または文字列。 |
 | numberToSkip |はい |int |スキップする要素または文字の数。 この値が 0 以下である場合は、値内のすべての要素または文字が返されます。 配列または文字列の長さを超える場合は、空の配列または文字列が返されます。 |
@@ -1201,7 +1201,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| Name | type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | arrayOutput | Array | ["three"] |
 | stringOutput | String | two three |
@@ -1227,7 +1227,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | type | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | originalValue |はい |配列または文字列 |要素の取得元となる配列または文字列。 |
 | numberToTake |はい |int |取得する要素または文字の数。 この値が 0 以下である場合、空の配列または文字列が返されます。 指定された配列または文字列の長さを超える場合は、その配列または文字列のすべての要素が返されます。 |
@@ -1282,7 +1282,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| Name | type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | arrayOutput | Array | ["one", "two"] |
 | stringOutput | String | on |
@@ -1308,7 +1308,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | type | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |配列またはオブジェクト |要素の結合に使用される 1 番目の値。 |
 | arg2 |はい |配列またはオブジェクト |要素の結合に使用される 2 番目の値。 |
@@ -1361,7 +1361,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| Name | type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | objectOutput | Object | {"one": "a", "two": "b", "three": "c2", "four": "d", "five": "e"} |
 | arrayOutput | Array | ["one", "two", "three", "four"] |

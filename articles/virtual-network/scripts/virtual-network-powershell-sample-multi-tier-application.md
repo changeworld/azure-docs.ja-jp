@@ -3,8 +3,8 @@ title: Azure PowerShell スクリプト サンプル - 多層アプリケーシ�
 description: Azure PowerShell スクリプト サンプル - 多層アプリケーション用の仮想ネットワークの作成。
 services: virtual-network
 documentationcenter: virtual-network
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 tags: ''
 ms.assetid: ''
@@ -14,13 +14,13 @@ ms.topic: sample
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 12/13/2018
-ms.author: jdial
-ms.openlocfilehash: efd496f2f69f243b958f4e780b9f3455d2ffece3
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.author: kumud
+ms.openlocfilehash: 2fad78db4fdc92f3dc9c0f320c36d12dea554a61
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56648696"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64725390"
 ---
 # <a name="create-a-network-for-multi-tier-applications-script-sample"></a>多層アプリケーション用のネットワークの作成のスクリプト サンプル
 
@@ -34,7 +34,8 @@ Azure [Cloud Shell](https://shell.azure.com/powershell) から、またはロー
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-<!-- gitHub issue https://github.com/MicrosoftDocs/azure-docs/issues/17748 --> 仮想ネットワークを作成すると (具体的には、-Subnet オプションを指定して New-AzVirtualNetwork コマンドレットを使用した場合)、サブネット ID が割り当てられます。 New-AzVirtualNetwork を呼び出す前に New-AzVirtualNetworkSubnetConfig コマンドレットを使用してサブネットを構成した場合は、New-AzVirtualNetwork を呼び出すまでサブネット ID は表示されません。
+<!-- gitHub issue https://github.com/MicrosoftDocs/azure-docs/issues/17748 -->
+仮想ネットワークを作成すると (具体的には、-Subnet オプションを指定して New-AzVirtualNetwork コマンドレットを使用した場合)、サブネット ID が割り当てられます。 New-AzVirtualNetwork を呼び出す前に New-AzVirtualNetworkSubnetConfig コマンドレットを使用してサブネットを構成した場合は、New-AzVirtualNetwork を呼び出すまでサブネット ID は表示されません。
 
 [!code-azurepowershell-interactive[main](../../../powershell_scripts/virtual-network/virtual-network-multi-tier-application/virtual-network-multi-tier-application.ps1  "Virtual network for multi-tier application")]
 

@@ -8,13 +8,13 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: reference
-ms.date: 06/22/2018
-ms.openlocfilehash: bd588eeec8b560411e3fb4b6f84ec8a4a45f08d2
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.date: 05/06/2019
+ms.openlocfilehash: 503bd6cfee1c19d2342ec9f535b3945178ab3ea0
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59617921"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65136596"
 ---
 # <a name="reference-for-trigger-and-action-types-in-workflow-definition-language-for-azure-logic-apps"></a>Azure Logic Apps におけるワークフロー定義言語のトリガーとアクションの種類のリファレンス
 
@@ -804,6 +804,8 @@ Azure Logic Apps には、さまざまなアクションの種類があります
 
   * 要求に応答するための [**Response**](#response-action)
 
+  * JavaScript コード スニペットを実行するための [**JavaScript コードの実行**](#run-javascript-code)
+
   * Azure 関数を呼び出すための [**Function**](#function-action)
 
   * [**Join**](#join-action)、[**Compose**](#compose-action)、[**Table**](#table-action)、[**Select**](#select-action) などのデータ操作アクションと、さまざまな入力からデータを作成または変換するその他のアクション
@@ -821,6 +823,7 @@ Azure Logic Apps には、さまざまなアクションの種類があります
 | アクションの種類 | 説明 | 
 |-------------|-------------| 
 | [**作成**](#compose-action) | さまざまな種類を持つ可能性がある複数の入力から、単一の出力を作成します。 | 
+| [**JavaScript コードの実行**](#run-javascript-code) | 特定の条件に適合する JavaScript コード スニペットを実行します。 コードの要件と詳細については、「[Add and run code snippets with inline code](../logic-apps/logic-apps-add-run-inline-code.md)」(インライン コードを使用してコード スニペットを追加および実行する) を参照してください。 |
 | [**Function**](#function-action) | Azure 関数を呼び出します。 | 
 | [**HTTP**](#http-action) | HTTP エンドポイントを呼び出します。 | 
 | [**Join**](#join-action) | 配列内のすべての項目から 1 個の文字列を作成します。それらの項目は指定した区切り文字を使って区切ります。 | 
@@ -1047,6 +1050,81 @@ HTTP 要求を [Microsoft マネージド API](../connectors/apis-list.md) に�
 このアクションで作成される出力は次のようになります。
 
 `"abcdefg1234"`
+
+<a name="run-javascript-code"></a>
+
+### <a name="execute-javascript-code-action"></a>JavaScript コードの実行アクション
+
+このアクションは、JavaScript コード スニペットを実行し、後続のアクションが参照できる `Result` トークンを使用して結果を返します。
+
+```json
+"Execute_JavaScript_Code": {
+   "type": "JavaScriptCode",
+   "inputs": {
+      "code": "<JavaScript-code-snippet>",
+      "explicitDependencies": {
+         "actions": [ <previous-actions> ],
+         "includeTrigger": true
+      }
+   },
+   "runAfter": {}
+}
+```
+
+*必須*
+
+| 値 | Type | 説明 |
+|-------|------|-------------|
+| <*JavaScript-code-snippet*> | 多様 | 実行する JavaScript コード。 コードの要件と詳細については、「[Add and run code snippets with inline code](../logic-apps/logic-apps-add-run-inline-code.md)」(インライン コードを使用してコード スニペットを追加および実行する) を参照してください。 <p>コード スニペットは、`code` 属性で、読み取り専用の `workflowContext` オブジェクトを入力として使用できます。 このオブジェクトには、トリガーおよびワークフロー内の前のアクションからの結果へのアクセスをコードに提供するサブプロパティがあります。 `workflowContext` オブジェクトの詳細については、「[Reference trigger and action results in your code](../logic-apps/logic-apps-add-run-inline-code.md#workflowcontext)」(コード内でトリガーとアクションの結果を参照する) を参照してください。 |
+||||
+
+*場合により必須*
+
+`explicitDependencies` 属性は、トリガー、前のアクション、またはその両方からの結果を依存関係としてコード スニペットに明示的に含めることを指定します。 依存関係の追加の詳細については、[インライン コードへのパラメーターの追加](../logic-apps/logic-apps-add-run-inline-code.md#add-parameters)に関する記事を参照してください。 
+
+`includeTrigger` 属性には、`true` または `false` を指定できます。
+
+| 値 | Type | 説明 |
+|-------|------|-------------|
+| <*previous-actions*> | 文字列配列 | 指定したアクション名の配列。 ワークフロー定義に示されるアクション名を使用し、アクション名ではスペース (" ") ではなくアンダースコア (_) を使用します。 |
+||||
+
+*例 1*
+
+このアクションは、ロジック アプリの名前を取得して、結果として "Hello world from <logic-app-name>" というテキストを返すコードを実行します。 この例では、コードは読み取り専用の `workflowContext` オブジェクトを介して `workflowContext.workflow.name` プロパティにアクセスすることで、ワークフローの名前を参照します。 `workflowContext` オブジェクトの使用方法の詳細については、「[Reference trigger and action results in your code](../logic-apps/logic-apps-add-run-inline-code.md#workflowcontext)」(コード内でトリガーとアクションの結果を参照する) を参照してください。
+
+```json
+"Execute_JavaScript_Code": {
+   "type": "JavaScriptCode",
+   "inputs": {
+      "code": "var text = \"Hello world from \" + workflowContext.workflow.name;\r\n\r\nreturn text;"
+   },
+   "runAfter": {}
+}
+```
+
+*例 2*
+
+このアクションは、Office 365 Outlook アカウントに新しい電子メールが届くとトリガーされるロジック アプリでコードを実行します。 このロジック アプリでは、受信した電子メールの内容と承認要求を転送する、承認メールの送信アクションも使用します。 
+
+このコードは、トリガーの `Body` プロパティから電子メール アドレスを抽出し、それらの電子メール アドレスと承認アクションの `SelectedOption` プロパティ値を返します。 このアクションは、承認メールの送信アクションを依存関係として `explicitDependencies` > `actions` 属性に明示的に含めます。
+
+```json
+"Execute_JavaScript_Code": {
+   "type": "JavaScriptCode",
+   "inputs": {
+      "code": "var re = /(([^<>()\\[\\]\\\\.,;:\\s@\"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@\"]+)*)|(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))/g;\r\n\r\nvar email = workflowContext.trigger.outputs.body.Body;\r\n\r\nvar reply = workflowContext.actions.Send_approval_email_.outputs.body.SelectedOption;\r\n\r\nreturn email.match(re) + \" - \" + reply;\r\n;",
+      "explicitDependencies": {
+         "actions": [
+            "Send_approval_email_"
+         ]
+      }
+   },
+   "runAfter": {}
+}
+```
+
+
 
 <a name="function-action"></a>
 
@@ -2301,6 +2379,7 @@ Webhook ベースのトリガーとアクションでは、エンドポイント
 | `runtimeConfiguration.concurrency.runs` | 整数 | 同時に、または並行して実行できるワークフロー インスタンスの数に対する[*既定の制限*](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)を変更します。 この値を使用して、バックエンド システムが受信する要求の数を制限できます。 <p>`runs` プロパティを `1` に設定すると、`operationOptions` プロパティを `SingleInstance` に設定したのと同じように機能します。 いずれか一方のプロパティを設定できます。両方を設定することはできません。 <p>既定の制限を変更するには、「[トリガーのコンカレンシーを変更する](#change-trigger-concurrency)」または「[インスタンスを順次トリガーする](#sequential-trigger)」を参照してください。 | すべてのトリガー | 
 | `runtimeConfiguration.concurrency.maximumWaitingRuns` | 整数 | ワークフローが最大数の同時実行インスタンスを既に実行しているときに実行を待機できるワークフロー インスタンスの数に対する[*既定の制限*](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)を変更します。 `concurrency.runs` プロパティでコンカレンシーの制限を変更できます。 <p>既定の制限を変更するには、「[実行待機の制限を変更する](#change-waiting-runs)」を参照してください。 | すべてのトリガー | 
 | `runtimeConfiguration.concurrency.repetitions` | 整数 | 同時に (並行して) 実行できる "for each" ループ繰り返し回数に対する[*既定の制限*](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)を変更します。 <p>`repetitions` プロパティを `1` に設定すると、`operationOptions` プロパティを `SingleInstance` に設定したのと同じように機能します。 いずれか一方のプロパティを設定できます。両方を設定することはできません。 <p>既定の制限を変更するには、「["for each" のコンカレンシーを変更する](#change-for-each-concurrency)」、または「["for each" ループを順次実行する](#sequential-for-each)」を参照してください。 | アクション: <p>[Foreach](#foreach-action) | 
+| `runtimeConfiguration.paginationPolicy.minimumItemCount` | 整数 | 改ページ位置の自動修正をサポートし、これが有効になっている特定のアクションの場合、この値により、取得する結果の*最小*数を指定します。 <p>改ページ位置の自動修正を有効にするには、[改ページ位置の自動修正によるデータ、アイテム、または結果の一括取得](../logic-apps/logic-apps-exceed-default-page-size-with-pagination.md)に関する記事を参照してください | アクション:多様 |
 ||||| 
 
 <a name="operation-options"></a>

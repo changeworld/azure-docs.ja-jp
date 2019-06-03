@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 3c078f7246140ee966f1d202d2248758dde49059
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c922556417ac92cc3667927fc8f846ace960a14a
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57888470"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64935881"
 ---
 # <a name="security-frame-authorization--mitigations"></a>セキュリティ フレーム:承認 | 対応策 
 | 製品/サービス | 記事 |
@@ -280,7 +280,7 @@ WHERE userID=:id < - session var
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | StorageType - テーブル |
 | **参照**              | [SAS を使用して Azure ストレージ アカウントのオブジェクトへのアクセスを委任する方法](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_data-plane-security) |
-| **手順** | ビジネス シナリオによっては、さまざまな関係者に対応した機密データ  (さまざまな国に関連する機密データなど) を、Azure テーブル ストレージに格納しなければならないことがあります。 このような場合は、パーティションと行キー範囲を指定することで SAS 署名を構成し、ユーザーが、国固有のデータにアクセスできるようにします。| 
+| **手順** | ビジネス シナリオによっては、さまざまな関係者に対応した機密データ (さまざまな国/地域に関連する機密データなど) を、Azure テーブル ストレージに格納しなければならないことがあります。 このような場合は、パーティションと行キー範囲を指定することで SAS 署名を構成し、ユーザーが、国/地域固有のデータにアクセスできるようにします。| 
 
 ## <a id="rbac-azure-manager"></a>Azure Resource Manager を使用して、Azure ストレージ アカウントに対するロールベースのアクセス制御 (RBAC) を有効にする
 

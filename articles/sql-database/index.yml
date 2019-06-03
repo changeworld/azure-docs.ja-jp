@@ -6,7 +6,7 @@ metadata:
   title: Azure SQL Database のドキュメント - チュートリアル、API リファレンス
   meta.description: Learn how to use Azure SQL databases.
   services: sql-database
-  author: CarlRabeler
+  author: stevestein
   manager: craigg
   ms.service: sql-database
   ms.subservice: service
@@ -14,7 +14,7 @@ metadata:
   ms.devlang: null
   ms.topic: overview
   ms.date: 03/04/2019
-  ms.author: carlrab
+  ms.author: sstein
 abstract:
   description: Azure SQL Database は、Microsoft SQL Server データベース エンジンの安定した最新バージョンに基づく、汎用のサービスとしてのリレーショナル データベース (DBaaS) です。 SQL Database はパフォーマンス、信頼性、セキュリティの面で優れたクラウド データベースであり、好きなプログラミング言語でデータ主導のアプリケーションと Web サイトを構築することができます。その際、インフラストラクチャの管理は不要です。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、SQL Database の使用方法を確認してください。
   aside:

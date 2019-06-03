@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/17/2019
 ms.author: wesmc
-ms.openlocfilehash: 7a2cb110d5be74e23e8e782fc02873786e8813e9
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.openlocfilehash: 2f86b74299b5d47a87ed0b8e89a992f0f91a84be
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60149718"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64924627"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>IoT DevKit AZ3166 を Azure IoT Hub に接続する
 
@@ -79,7 +79,9 @@ DevKit をコンピューターに接続するには、次の手順を実行し�
     ```azurecli-interactive
     az iot hub device-identity create --hub-name YourIoTHubName --device-id MyNodeDevice
     ```
-
+   > [!NOTE]
+   > `device-identity` の実行中にエラーが発生した場合、詳細を得るには [Azure IOT Extension for Azure CLI](https://github.com/Azure/azure-iot-cli-extension/blob/dev/README.md) インストールします。
+  
 1. Azure Cloud Shell で次のコマンドを実行して、登録したデバイスの "_デバイス接続文字列_" を取得します。
 
    **YourIoTHubName**: このプレースホルダーは、実際の IoT ハブに対して選んだ名前に置き換えてください。
@@ -159,7 +161,7 @@ DevKit は、IoT ハブ上のデバイス固有のエンドポイントに接続
 
 5. Arduino 設定で VS Code を構成します。
 
-    Visual Studio Code で、**[ファイル] > [優先設定] > [設定]** の順にクリックします。 次に、**[...]** をクリックし、**settings.json を開きます**。
+    Visual Studio Code で、 **[ファイル] > [優先設定] > [設定]** の順にクリックします。 次に、 **[...]** をクリックし、**settings.json を開きます**。
     ![Azure IoT Tools のインストール](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/user-settings-arduino.png)
     
     プラットフォームに応じて、次の行を追加して Arduino を構成します。 
@@ -217,7 +219,7 @@ IoT DevKit には豊富なサンプルのギャラリーが含まれており、
 
 1. IoT DevKit がお使いのコンピューターに接続されて**いない**ことを確認します。 まず VS Code を起動し、DevKit をコンピューターに接続します。
 
-1. `F1` をクリックしてコマンド パレットを開き、**[Azure IoT Device Workbench:Open Examples...]\(Azure IoT Device Workbench: 例を開く...\)** を入力して選択します。次に、**[IoT DevKit]** をボードとして選択します。
+1. `F1` をクリックしてコマンド パレットを開き、 **[Azure IoT Device Workbench:Open Examples...]\(Azure IoT Device Workbench: 例を開く...\)** を入力して選択します。次に、 **[IoT DevKit]** をボードとして選択します。
 
 1. [IoT Workbench Examples]\(IoT Workbench の例\) ページで **[Get Started]\(はじめに\)** を探して **[Open Sample]\(サンプルを開く\)** をクリックします。 次に、サンプル コードをダウンロードするための既定のパスを選択します。
     ![サンプルを開く](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/open-sample.png)
@@ -226,7 +228,7 @@ IoT DevKit には豊富なサンプルのギャラリーが含まれており、
 
 Azure portal から Azure IoT Hub とデバイスをプロビジョニングする代わりに、開発環境を離れることなく VS Code 内でそれを行うことができます。
 
-1. 新しく開いたプロジェクト ウィンドウで、`F1` をクリックしてコマンド パレットを開き、**[Azure IoT Device Workbench:Azure サービスのプロビジョニング...]** を入力して選択します。ステップ バイ ステップ ガイドに従って、Azure IoT Hub のプロビジョニングと IoT Hub デバイスの作成を完了します。
+1. 新しく開いたプロジェクト ウィンドウで、`F1` をクリックしてコマンド パレットを開き、 **[Azure IoT Device Workbench:Azure サービスのプロビジョニング...]** を入力して選択します。ステップ バイ ステップ ガイドに従って、Azure IoT Hub のプロビジョニングと IoT Hub デバイスの作成を完了します。
     ![プロビジョニング コマンド](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/provision.png)
 
     > [!NOTE]
@@ -260,7 +262,7 @@ Azure portal から Azure IoT Hub とデバイスをプロビジョニングす�
 1. 右下のステータス バーで、選択したボードとして **MXCHIP AZ3166** が表示されていること、またシリアル ポートと **STMicroelectronics** が使用されていることを確認します。
     ![ボードと COM を選択](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/select-com.png)
 
-1. `F1` をクリックしてコマンド パレットを開き、**[Azure IoT Device Workbench:Configure Device Settings...]\(Azure IoT Workbench: デバイス設定の構成)** を入力して選択した後、**[Config Device Connection String]\(デバイス接続文字列の構成) > [Select IoT Hub Device Connection String]\(IoT Hub デバイス接続文字列の選択)** の順に選択します。
+1. `F1` をクリックしてコマンド パレットを開き、 **[Azure IoT Device Workbench:Configure Device Settings...]\(Azure IoT Workbench: デバイス設定の構成)** を入力して選択した後、 **[Config Device Connection String]\(デバイス接続文字列の構成) > [Select IoT Hub Device Connection String]\(IoT Hub デバイス接続文字列の選択)** の順に選択します。
 
 1. DevKit で**ボタン A** を押しながら、**リセット** ボタンを押して離した後、**ボタン A** を離します。DevKit が構成モードに移行し、接続文字列が保存されます。
     ![接続文字列](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/connection-string.png)
@@ -296,10 +298,10 @@ IoT Hub の device-to-cloud (D2C) メッセージは、[Azure IoT Tools](https:/
 1. **[共有アクセス ポリシー]** ウィンドウで、**iothubowner ポリシー**をクリックし、IoT Hub の接続文字列を書き留めます。
     ![Azure IoT Hub 接続文字列](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/azure-portal-conn-string.png)
 
-1. VS Code で、`F1` をクリックし、**[Azure IoT Hub:IoT Hub 接続文字列を設定する]** を入力して選択します。 その中に接続文字列をコピーします。
+1. VS Code で、`F1` をクリックし、 **[Azure IoT Hub:IoT Hub 接続文字列を設定する]** を入力して選択します。 その中に接続文字列をコピーします。
     ![Azure IoT Hub 接続文字列の設定](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/set-iothub-connection-string.png)
 
-1. 右側の **[AZURE IOT HUB DEVICES]\(Azure IoT Hub デバイス)** ウィンドウを展開し、作成したデバイス名を右クリックして、**[Start Monitoring D2C Message]\(D2C メッセージの監視の開始)** を選択します。
+1. 右側の **[AZURE IOT HUB DEVICES]\(Azure IoT Hub デバイス)** ウィンドウを展開し、作成したデバイス名を右クリックして、 **[Start Monitoring D2C Message]\(D2C メッセージの監視の開始)** を選択します。
     ![D2C メッセージの監視](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/monitor-d2c.png)
 
 1. **[出力]** ウィンドウで、IoT Hub への受信 D2C メッセージを確認できます。

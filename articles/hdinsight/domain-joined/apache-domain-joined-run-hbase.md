@@ -1,20 +1,19 @@
 ---
 title: Enterprise セキュリティ パッケージを使用して HDInsight に Apache HBase ポリシーを構成する - Azure
 description: Enterprise セキュリティ パッケージを使用して Azure HDInsight に HBase 用の Apache Ranger ポリシーを構成する方法について説明します。
-services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.topic: tutorial
 ms.date: 02/01/2019
-ms.openlocfilehash: 1421b142fbca83d2de46f52f8390d0c25f22780c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d1f2a2b24e6f1856d021911e6f2e9c107bd38b72
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58117287"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64926092"
 ---
-# <a name="tutorial-configure-apache-hbase-policies-in-hdinsight-with-enterprise-security-package-preview"></a>チュートリアル:Enterprise セキュリティ パッケージを使用して HDInsight に Apache HBase ポリシーを構成する (プレビュー)
+# <a name="tutorial-configure-apache-hbase-policies-in-hdinsight-with-enterprise-security-package"></a>チュートリアル:Enterprise セキュリティ パッケージを使用して HDInsight に Apache HBase ポリシーを構成する
 
 Enterprise セキュリティ パッケージ (ESP) の Apache HBase クラスター用の Apache Ranger ポリシーを構成する方法について説明します。 ESP クラスターは、ユーザーがドメイン資格情報で認証できるドメインに接続されます。 このチュートリアルでは、HBase テーブル内の異なる列ファミリへのアクセスを制限する 2 つの Ranger ポリシーを作成します。
 

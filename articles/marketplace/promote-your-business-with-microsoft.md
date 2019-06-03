@@ -1,27 +1,22 @@
 ---
-title: Microsoft を利用したビジネスのプロモーション | Azure
+title: Microsoft を利用したビジネスのプロモーション | Azure Marketplace
 description: アプリおよびサービス パブリッシャー向けの Azure Marketplace および AppSource を利用したビジネスのプロモーション
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-documentationcenter: ''
 author: jm-aditi-ms
 manager: pabutler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 06/04/2018
 ms.author: ellacroi
-ms.openlocfilehash: 3bd2361547a8210ae287eabaa67b60e8ba1f26e3
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: f21c5f94c595fe3718a0a59a80deff8f1c53b9fc
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56738149"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64937643"
 ---
-# <a name="promote-your-business-with-microsoft"></a>Microsoft を利用したビジネスのプロモーション  
+# <a name="promote-your-business-with-microsoft"></a>Microsoft を利用したビジネスのプロモーション 
+
 Microsoft には、パートナー (利用者) をサポートし、マーケットプレイスのネットショップでのアプリまたはオファーの販売を簡単にするという目標があります。 マーケットプレイスでプログラムおよびリソースを一覧表示して、マーケットプレイス上でそれらにアクセスします。 
 
 Microsoft Partner Network (MPN) にまだサインアップしていない場合は、MPN にサインアップしてから進めてください。  

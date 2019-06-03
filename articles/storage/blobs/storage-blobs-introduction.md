@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 01/03/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 093f749ac29dc2bd341712d87b404de769d0b7bc
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 498dd3be75cb27263c811d9db541b2e040599156
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55865575"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65788020"
 ---
 # <a name="introduction-to-azure-blob-storage"></a>Azure Blob Storage の概要
 
@@ -65,7 +65,7 @@ Azure Storage では、3 種類の BLOB がサポートされています。
 既存のデータを Blob Storage に移行するためのソリューションは多数存在します。
 
 - **AzCopy** は Windows と Linux 用の使いやすいコマンド ライン ツールであり、Blob Storage 間、コンテナー間、またはストレージ アカウント間でデータをコピーします。 AzCopy の詳細については、「[AzCopy v10 (プレビュー) を使用してデータを転送する](../common/storage-use-azcopy-v10.md)」をご覧ください。 
-- **Azure Storage Data Movement Library** は、Azure Storage サービス間でデータを移動するための .NET ライブラリです。 AzCopy ユーティリティは、Data Movement Library を使用して構築されています。 詳細については、Data Movement Library の[参照ドキュメント](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.datamovement)をご覧ください。 
+- **Azure Storage Data Movement Library** は、Azure Storage サービス間でデータを移動するための .NET ライブラリです。 AzCopy ユーティリティは、Data Movement Library を使用して構築されています。 詳細については、Data Movement Library の[参照ドキュメント](/dotnet/api/microsoft.azure.storage.datamovement)をご覧ください。 
 - **Azure Data Factory** では、Azure リソースを認証するためのアカウント キー、Shared Access Signature、サービス プリンシパル、またはマネージド ID を使用した Blob Storage 間のデータのコピーをサポートしています。 詳しくは、「[Azure Data Factory を使用した Azure Blob Storage との間でのデータのコピー](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」をご覧ください。 
 - **blobfuse** は Azure Blob Storage 用の仮想ファイル システム ドライバーです。 Linux ファイル システムでは、blobfuse を使用して、お客様のストレージ アカウント内の既存のブロック BLOB データにアクセスできます。 詳しくは、「[blobfuse を使用して Blob Storage をファイル システムとしてマウントする方法](storage-how-to-mount-container-linux.md)」をご覧ください。
 - **Azure Data Box Disk** は、大規模なデータセットやネットワーク上の制約によって有線でのデータのアップロードが非現実的になったときに、オンプレミスのデータを Blob Storage に転送するサービスです。 [Azure Data Box Disk](../../databox/data-box-disk-overview.md) を使用すると、Microsoft から SSD (Solid State Disk) を取り寄せることができます。 必要なデータは、それらのディスクにコピーし、Microsoft に送り返すことで、BLOB ストレージにアップロードすることができます。

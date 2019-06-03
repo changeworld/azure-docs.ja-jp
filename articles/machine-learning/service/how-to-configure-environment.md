@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 02/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: c8c0291997c1ce301083f7d5c19b5067a85cfd0f
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 4d588374c0195e7da373766f93f6829ac2160269
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024977"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65471598"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Azure Machine Learning のための開発環境を構成する
 
@@ -396,5 +396,5 @@ Azure Notebooks を使い始めるには、[Azure portal](https://portal.azure.c
 
 - MNIST データセットを使用して Azure Machine Learning 上で[モデルをトレーニングする](tutorial-train-models-with-aml.md)
 - [Azure Machine Learning SDK for Python](https://aka.ms/aml-sdk) リファレンスを表示する
-- [Azure Machine Learning Data Prep SDK](https://aka.ms/data-prep-sdk) について確認する
+- [Azure Machine Learning 用のデータ準備パッケージ](https://aka.ms/data-prep-sdk)について学習する
 - 

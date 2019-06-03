@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.openlocfilehash: 84446090da2feaee3005b4ef90ace77b468a3f1a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b0a647fe3499590c0307b89d45d662ecf7e53392
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59792592"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65827778"
 ---
 # <a name="create-an-iot-hub-using-azure-resource-manager-template-net"></a>Azure Resource Manager テンプレートを使用した IoT ハブの作成 (.NET)
 
@@ -29,7 +29,7 @@ Azure リソース マネージャーを使って、Azure IoT ハブをプログ
 
 このチュートリアルを完了するには、以下が必要です。
 
-* Visual Studio 2015 または Visual Studio 2017。
+* 見ることができます。
 * アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 <br/>アカウントがない場合は、[無料アカウント][lnk-free-trial]を数分で作成することができます。
 * Azure Resource Manager テンプレート ファイルを保存できる [Azure Storage アカウント][lnk-storage-account]。
 * [Azure PowerShell 1.0][lnk-powershell-install] 以降。

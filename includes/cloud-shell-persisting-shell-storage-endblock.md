@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: cynthn
 ms.openlocfilehash: c2ed33aea77b5478e8d17f6bd0213ef3e778b806
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51572347"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66125199"
 ---
 ## <a name="transfer-local-files-to-cloud-shell"></a>Cloud Shell にローカル ファイルを転送する
 `clouddrive` ディレクトリは、Azure Portal ストレージ ブレードと同期します。 このブレードを使用して、ファイル共有との間でローカル ファイルを移動できます。 Cloud Shell 内からファイルを更新すると、ブレードを更新するときにファイル ストレージ GUI に反映されます。
@@ -21,7 +21,7 @@ ms.locfileid: "51572347"
 2. 対象のファイルを選択します。
 3. **[ダウンロード]** ボタンを選択します。
 
-### <a name="upload-files"></a>ファイルのアップロード
+### <a name="upload-files"></a>ファイルをアップロードする
 
 ![更新されるローカル ファイル](../articles/cloud-shell/media/persisting-shell-storage/upload.png)
 1. マウントされているファイル共有に移動します。

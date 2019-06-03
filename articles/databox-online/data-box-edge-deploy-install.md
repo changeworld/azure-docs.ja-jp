@@ -1,5 +1,5 @@
 ---
-title: Azure Data Box Edge 物理デバイスのインストールに関するチュートリアル | Microsoft Docs
+title: 'チュートリアル: インストールする - Azure Data Box Edge の物理デバイスの開梱、ラックへの取り付け、ケーブル接続 | Microsoft Docs'
 description: Azure Data Box Edge をインストールするための 2 番目のチュートリアルでは、物理デバイスの開梱、ラックへの取り付け、ケーブル接続を行います。
 services: databox
 author: alkohli
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/20/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to install Data Box Edge in datacenter so I can use it to transfer data to Azure.
-ms.openlocfilehash: 46192d32e70e371325abeafd4da26fa29e491b13
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 7062e9d829242a62dfa4f661c21ce6c56b0db69c
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59278481"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64924538"
 ---
 # <a name="tutorial-install-azure-data-box-edge"></a>チュートリアル:Azure Data Box Edge を取り付ける
 
@@ -145,7 +145,8 @@ ms.locfileid: "59278481"
 
 ### <a name="engage-and-release-the-slam-latch"></a>スラム ラッチの掛け外し
 
-注:スラム ラッチが付いていないシステムについては、3 番目の手順で説明したように、システムをねじで固定してください。
+> [!NOTE]
+> スラム ラッチが付いていないシステムについては、3 番目の手順で説明したように、システムをねじで固定してください。
 
 1. システムを前面から見て、スラム ラッチの位置を確認します。スラム ラッチは、システムの左右にあります。
 2. ラッチは、システムをラックに押し入れると自動で掛かり、ラッチを持って引き上げると外れます。

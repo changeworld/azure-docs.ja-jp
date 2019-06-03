@@ -9,14 +9,14 @@ ms.topic: overview
 ms.reviewer: jmartens
 author: j-martens
 ms.author: jmartens
-ms.date: 01/09/2019
+ms.date: 05/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: 61c5d60f0c2fab3786aa6adfa194c0716e621ea3
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 18b5f3877538d26e55bf0550a995ca0c50699de5
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65023645"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65914137"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench の変更点
 
@@ -40,7 +40,7 @@ Azure Machine Learning service の最終リリースには、次の機能が含�
 + 新しい、より包括的な Python <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a>。
 + 機械学習のための拡張された新しい [Azure CLI 拡張機能](reference-azure-machine-learning-cli.md)。
 
-[アーキテクチャ](concept-azure-machine-learning-architecture.md)は、使いやすいように再設計されました。 複数の Azure リソースやアカウントは不要で、必要なものは [Azure Machine Learning サービス ワークスペース](concept-azure-machine-learning-architecture.md#workspace)だけです。 ワークスペースは、[Azure portal]((setup-create-workspace.md#portal) ですばやく作成することができます。 ワークスペースを使用することで、複数のユーザーが、トレーニングやデプロイのコンピューティング先、モデルの実験、Docker イメージ、デプロイされたモデルなどを格納できます。
+[アーキテクチャ](concept-azure-machine-learning-architecture.md)は、使いやすいように再設計されました。 複数の Azure リソースやアカウントは不要で、必要なものは [Azure Machine Learning サービス ワークスペース](concept-workspace.md)だけです。 ワークスペースは、[Azure portal]((setup-create-workspace.md#portal) ですばやく作成することができます。 ワークスペースを使用することで、複数のユーザーが、トレーニングやデプロイのコンピューティング先、モデルの実験、Docker イメージ、デプロイされたモデルなどを格納できます。
 
 現在のリリースには新しい強化された CLI と SDK クライアントがありますが、デスクトップ ワークベンチ アプリケーション自体は廃止されました。 実験は、[Azure portal のワークスペース ダッシュボード](how-to-track-experiments.md#view-the-experiment-in-the-azure-portal)で管理できます。 ダッシュボードを使用して、実験履歴の取得、ワークスペースに接続されているコンピューティング ターゲットの管理、モデルと Docker イメージの管理、さらには Web サービスのデプロイも行います。
 
@@ -68,7 +68,7 @@ Machine Learning Workbench、Azure Machine Learning 実験、Machine Learning �
 
 もう Machine Learning Workbench がないため、既存のデータ準備ファイルは最新のリリースに移植されません。 ただし、引き続き任意のサイズのデータ セットをモデリング用に準備できます。   
 
-あらゆるサイズのデータセットについて、[Azure Machine Learning Data Prep SDK](https://aka.ms/data-prep-sdk) を使用し、Python コードを記述することにより、モデリングの前にデータをすばやく準備することができます。 
+任意のサイズのデータセットを用意し、[Azure Machine Learning 用のデータ準備パッケージ](https://aka.ms/data-prep-sdk)を使用し、Python コードを記述してモデリングの前にデータを簡単に準備できます。 
 
 Azure Machine Learning Data Prep SDK の使い方について詳しくは、[こちらのチュートリアル](tutorial-data-prep.md)をご覧ください。
 

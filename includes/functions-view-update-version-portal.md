@@ -9,11 +9,11 @@ ms.date: 11/26/2018
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: d06bda1826964b019edb156375885c7f389ca6ec
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52500029"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66131262"
 ---
 関数アプリで現在使用されているランタイム バージョンを表示して更新するには、次の手順に従います。
 

@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 03/01/2019
+ms.date: 04/30/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: ebe45bf8f562b5be9ae2afda9d5940296396f155
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 914513bc19cc81da29efef12d50a6485233d169f
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59787634"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236575"
 ---
 # <a name="backup-and-restore-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse でのバックアップと復元
 
@@ -83,7 +83,7 @@ Azure の課金には、ストレージの明細項目とディザスター リ�
 
 地理冗長ストレージを使用している場合は、個別のストレージ料金がかかります。 geo 冗長ストレージは、標準の読み取りアクセスの地理冗長ストレージ (RA-GRS) の料金で課金されます。
 
-SQL Data Warehouse の価格の詳細については、「[SQL Data Warehouse の価格](https://azure.microsoft.com/pricing/details/sql-data-warehouse/)」と、リージョンをまたいで復元するときの[送信料金](https://azure.microsoft.com/pricing/details/bandwidth/)をご覧ください。
+SQL Data Warehouse の価格の詳細については、「[SQL Data Warehouse の価格]」を参照してください。 複数のリージョンにまたがる復元の場合、データのエグレスには課金されません。
 
 ## <a name="restoring-from-restore-points"></a>復元ポイントからの復元
 

@@ -16,12 +16,12 @@ ms.workload: web
 ms.date: 03/20/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: becec6881ccc5c061a0f0e93e697852645f9388f
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: ac503c4408432da4e2c0c9281ee5cdd6e5d9e984
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56115965"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65198597"
 ---
 # <a name="monitor-a-web-appwith-web-server-logs"></a>Web サーバー ログによる Web アプリの監視
 
@@ -53,7 +53,7 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 | [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | App Service プランを作成します。 |
 | [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) | Web アプリを作成します。 |
 | [Set-AzWebApp](/powershell/module/az.websites/set-azwebapp) | Web アプリの構成を変更します。 |
-| [Get-AzWebAppMetrics](/powershell/module/az.websites/get-azwebappmetrics) | Web アプリのメトリックを取得します。 |
+| [Get-AzWebAppMetric](/powershell/module/az.websites/get-azwebappmetric) | Web アプリのメトリックを取得します。 |
 
 ## <a name="next-steps"></a>次の手順
 

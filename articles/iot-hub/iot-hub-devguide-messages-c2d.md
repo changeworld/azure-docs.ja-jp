@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.openlocfilehash: c8424743f30ec1bbf8d8096f6630c7451bc910c8
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: b0c1b877a9468ce9c3b851bce62cb87c64c04260
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57010244"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65472733"
 ---
 # <a name="send-cloud-to-device-messages-from-iot-hub"></a>cloud-to-device メッセージを IoT Hub から送信する
 
@@ -71,10 +71,11 @@ IoT Hub サービスは、デバイスにメッセージを送信するときに
 
 ## <a name="message-feedback"></a>メッセージのフィードバック
 
-C2D メッセージを送信するときに、サービスは、そのメッセージの最終状態に関するメッセージごとのフィードバックの配信を要求できます。
+C2D メッセージを送信するときに、サービスは、そのメッセージの最終状態に関するメッセージごとのフィードバックの配信を要求できます。 次の値のいずれかに送信されている C2D メッセージに `iothub-ack` アプリケーション プロパティを設定することで、これが行われます。
 
-| Ack プロパティ | 動作 |
+| Ack プロパティ値 | 動作 |
 | ------------ | -------- |
+| "**なし**"     | IoT Hub によりフィードバック メッセージは生成されません (既定の動作)。 |
 | **positive** | C2D メッセージの状態が**完了**に達した場合に、IoT Hub によりフィードバック メッセージが生成されます。 |
 | **negative** | C2D メッセージの状態が **[配信不能]** に達した場合に、IoT Hub によりフィードバック メッセージが生成されます。 |
 | **full**     | IoT Hub は、どちらの場合にも、フィードバック メッセージを生成します。 |

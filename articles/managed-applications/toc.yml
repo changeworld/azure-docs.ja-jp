@@ -45,6 +45,8 @@
           href: publish-portal.md
         - name: Key Vault のシークレットを使用する
           href: key-vault-access.md
+        - name: マネージド ID を使用したデプロイ
+          href: publish-managed-identity.md
     - name: コンシューマー
       items:
         - name: マネージド アプリケーションの監視

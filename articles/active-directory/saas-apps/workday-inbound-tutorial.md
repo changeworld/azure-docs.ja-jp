@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 01/19/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d34bd9d7f80f72b3c6c0821ad48e6be1fd260be9
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 267b6afd7cd3131dcd138dfb631335f58cec833a
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59524635"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65407926"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>チュートリアル:Workday を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -368,7 +368,7 @@ Active Directory ドメインへのユーザー プロビジョニングを構�
 
 .NET 4.7.1 以降をデプロイしたら、**[ここのオンプレミス プロビジョニング エージェント](https://go.microsoft.com/fwlink/?linkid=847801)** をダウンロードして、以下に示す手順に従ってエージェントの構成を完了できます。
 
-1. 新しいエージェントをインストールする Windows Server にログインします。
+1. 新しいエージェントをインストールする Windows Server にサインインします。
 2. プロビジョニング エージェントのインストーラーを起動し、条件に同意して **[インストール]** ボタンをクリックします。
 
    ![インストール画面](./media/workday-inbound-tutorial/pa_install_screen_1.png "インストール画面")
@@ -816,7 +816,7 @@ Azure AD をハイブリッド モード (クラウドとオンプレミスの�
 
 #### <a name="how-do-i-know-the-version-of-my-provisioning-agent"></a>プロビジョニング エージェントのバージョンを確認する方法を教えてください。
 
-* プロビジョニング エージェントがインストールされている Windows サーバーにログインします。
+* プロビジョニング エージェントがインストールされている Windows サーバーにサインインします。
 * **[コントロール パネル]** -> **[プログラムのアンインストールまたは変更]** メニューに移動します
 * エントリ **Microsoft Azure AD Connect プロビジョニング エージェント**に対応するバージョンを探します
 
@@ -867,7 +867,7 @@ Azure AD をハイブリッド モード (クラウドとオンプレミスの�
 #### <a name="how-do-i-de-register-the-domain-associated-with-my-provisioning-agent"></a>プロビジョニング エージェントに関連付けられているドメインの登録を解除するにはどうすればよいですか。
 
 * Azure portal から、Azure AD テナントの "*テナント ID*" を取得します。
-* プロビジョニング エージェントを実行している Windows サーバーにログインします。
+* プロビジョニング エージェントを実行している Windows サーバーにサインインします。
 * Windows 管理者として PowerShell を開きます。
 * 登録スクリプトを含むディレクトリに移動し、\[tenant ID\] パラメーターをお客様のテナント ID の値に置き換えて、次のコマンドを実行します。
 
@@ -878,7 +878,7 @@ Azure AD をハイブリッド モード (クラウドとオンプレミスの�
   ```
 
 * 表示されるエージェントの一覧から *resourceName* がお客様の AD ドメイン名と同じリソースから "id" フィールドの値をコピーします。
-* このコマンドに id を貼り付けて Powershell で実行します。
+* このコマンドに ID 値を貼り付けて、PowerShell でコマンドを実行します。
 
   ```powershell
   Remove-PublishedResource -ResourceId "[resource ID]" -TenantId "[tenant ID]"
@@ -889,7 +889,7 @@ Azure AD をハイブリッド モード (クラウドとオンプレミスの�
 
 #### <a name="how-do-i-uninstall-the-provisioning-agent"></a>プロビジョニング エージェントをアンインストールするにはどうすればよいですか。
 
-* プロビジョニング エージェントがインストールされている Windows サーバーにログインします。
+* プロビジョニング エージェントがインストールされている Windows サーバーにサインインします。
 * **[コントロール パネル]** -> **[プログラムのアンインストールまたは変更]** メニューに移動します
 * 次のプログラムをアンインストールします。
   * Microsoft Azure AD Connect プロビジョニング エージェント
@@ -946,9 +946,9 @@ Workday から AD 方向の更新操作のみを実行するには、[更新] �
 
 #### <a name="how-do-i-format-display-names-in-ad-based-on-the-users-departmentcountrycity-attributes-and-handle-regional-variances"></a>ユーザーの部署/国/市区町村の属性に基づいて AD の表示名の書式を設定し、地域の差異を処理するにはどうすればよいですか。
 
-ユーザーの部署と国に関する情報も提供されるように AD で *displayName* 属性を構成することが一般的な要件です。 たとえば、John Smith が米国のマーケティング部署に勤務している場合、彼の *displayName* を *Smith, John (Marketing-US)* と表示することができます。
+ユーザーの部署と国/地域に関する情報も提供されるように AD で *displayName* 属性を構成することが一般的な要件です。 たとえば、John Smith が米国のマーケティング部署に勤務している場合、彼の *displayName* を *Smith, John (Marketing-US)* と表示することができます。
 
-会社、部署、市区町村、国などの属性を含むように *CN* または *displayName* を構成するためのこのような要件を処理する方法は次のとおりです。
+会社、部署、市区町村、国/地域などの属性を含むように *CN* または *displayName* を構成するためのこのような要件を処理する方法は次のとおりです。
 
 * 各 Workday 属性は、基になる XPATH API 式を使用して取得されます。これは、**[属性マッピング] -> [Advanced Section]\(詳細セクション\) -> [Edit attribute list for Workday]\(Workday の属性リストの編集\)** で構成できます。 Workday の *PreferredFirstName*、*PreferredLastName*、*Company*、および *SupervisoryOrganization* 属性の既定の XPATH API 式は次のとおりです。
 
@@ -976,7 +976,7 @@ Workday から AD 方向の更新操作のみを実行するには、[更新] �
 
   上の API 式がお客様の Workday テナント構成で有効であることをお客様の Workday チームに確認してください。 必要に応じて、「[Workday のユーザー属性リストをカスタマイズする](#customizing-the-list-of-workday-user-attributes)」セクションの説明に従って編集できます。
 
-* 正しい属性マッピング式を構築するには、どの Workday 属性が "正式に" ユーザーの姓、名、国、部署を表すかを特定します。 たとえば、属性がそれぞれ *PreferredFirstName*、*PreferredLastName*、*CountryReferenceTwoLetter*、*SupervisoryOrganization* であるとします。 これを使用して、*Smith, John (Marketing-US)* のような表示名を取得するには、次のように AD の *displayName* 属性の式を構築します。
+* 正しい属性マッピング式を構築するには、どの Workday 属性が "正式に" ユーザーの姓、名、国/地域、部署を表すかを特定します。 たとえば、属性がそれぞれ *PreferredFirstName*、*PreferredLastName*、*CountryReferenceTwoLetter*、*SupervisoryOrganization* であるとします。 これを使用して、*Smith, John (Marketing-US)* のような表示名を取得するには、次のように AD の *displayName* 属性の式を構築します。
 
     ```
      Append(Join(", ",[PreferredLastName],[PreferredFirstName]), Join(""," (",[SupervisoryOrganization],"-",[CountryReferenceTwoLetter],")"))
@@ -1038,7 +1038,7 @@ SelectUniqueValue(
 
 ### <a name="setting-up-windows-event-viewer-for-agent-troubleshooting"></a>エージェントのトラブルシューティングのための Windows イベント ビューアーの設定
 
-* プロビジョニング エージェントがデプロイされている Windows Server マシンにログインします。
+* プロビジョニング エージェントがデプロイされている Windows Server マシンにサインインします。
 * **Windows Server イベント ビューアー** デスクトップ アプリを開きます。
 * **[Windows ログ] > [アプリケーション]** の順に選択します。
 * **[現在のログをフィルター]** オプションを使用して、ソース **AAD.Connect.ProvisioningAgent** 以下に記録されているすべてのイベントを表示し、次のようにフィルター "-5" を指定してイベント ID "5" のイベントを除外します。
@@ -1236,7 +1236,7 @@ Azure AD プロビジョニング サービスは、このリスト (Workday 属
 
     ```xml
     <?xml version="1.0" encoding="UTF-8"?>
-    <env:Envelope xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="https://www.w3.org/2001/XMLSchema">
+    <env:Envelope xmlns:env="https://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="https://www.w3.org/2001/XMLSchema">
       <env:Body>
         <wd:Get_Workers_Request xmlns:wd="urn:com.workday/bsvc" wd:version="v21.1">
           <wd:Request_References wd:Skip_Non_Existing_Instances="true">

@@ -12,12 +12,12 @@ ms.author: moslake
 ms.reviewer: jrasnick, carlrab
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: 043ceb6c46155ed169c080d08f37688b47e3e4b9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 96d55da713b8591b20f95ba36f332a340999181e
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57881165"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242752"
 ---
 # <a name="manage-file-space-for-single-and-pooled-databases-in-azure-sql-database"></a>Azure SQL Database で単一データベースおよびプールされたデータベースのファイル領域を管理する
 
@@ -217,6 +217,9 @@ ORDER BY end_time DESC
 
 ## <a name="reclaim-unused-allocated-space"></a>未使用の割り当て済み領域を再利用する
 
+> [!NOTE]
+> このコマンドは、実行中のデータベース パフォーマンスに影響を及ぼす可能性があります。また、可能であれば、使用率が低い期間中に実行してください。
+
 ### <a name="dbcc-shrink"></a>DBCC の圧縮
 
 未使用の割り当て済み領域を再利用するためのデータベースが特定されると、各データベースのデータ ファイルを圧縮するように次のコマンドのデータベース名を変更します。
@@ -253,6 +256,6 @@ ALTER DATABASE [db1] SET AUTO_SHRINK ON
   - [Azure SQL Database の単一データベースに対する仮想コアベースの購入モデルの制限](sql-database-vcore-resource-limits-single-databases.md)
   - [DTU ベースの購入モデルを使用した単一データベースに対するリソース制限](sql-database-dtu-resource-limits-single-databases.md)
   - [Azure SQL Database のエラスティック プールに対する仮想コアベースの購入モデルの制限](sql-database-vcore-resource-limits-elastic-pools.md)
-  - [DTU ベースの購入モデルを使用したエラスティック プールに対するリソース制限](sql-database-dtu-resource-limits-elastic-pools.md)
+  - [DTU ベースの購入モデルを使用したエラスティック プールのリソース制限](sql-database-dtu-resource-limits-elastic-pools.md)
 - `SHRINKDATABASE` コマンドの詳細については、[SHRINKDATABASE](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql) を参照してください。 
 - インデックスの断片化と再構築の詳細については、「[インデックスの再構成と再構築](https://docs.microsoft.com/sql/relational-databases/indexes/reorganize-and-rebuild-indexes)」を参照してください。

@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 12/17/2018
 ms.author: mimart
 author: msmimart
-manager: daveba
+manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d61f233b2eb901bcf1e6b5b4ff147893f918e8f
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 94b35f0530dacfadb799f1d44d7a9eb666def6c9
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58293313"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65892005"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Google を B2B ゲスト ユーザーの ID プロバイダーとして追加する
 
@@ -68,7 +68,7 @@ Google Gmail ユーザーに招待を送信すると、そのゲスト ユーザ
 
    ![[Authorized redirect URIs] セクションを示すスクリーンショット](media/google-federation/google-create-oauth-client-id.png)
 
-9. **作成**を選択します。 クライアント ID とクライアント シークレットをコピーします。これらは、Azure AD ポータルで ID プロバイダーを追加する際に使用します。
+9. **作成** を選択します。 クライアント ID とクライアント シークレットをコピーします。これらは、Azure AD ポータルで ID プロバイダーを追加する際に使用します。
 
    ![OAuth クライアント ID とクライアント シークレットを示すスクリーンショット](media/google-federation/google-auth-client-id-secret.png)
 

@@ -17,12 +17,12 @@ ms.date: 11/21/2018
 ms.author: joflore
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8b59471cd8af02513186fa4437a2249b056cc324
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 12d603ddbba9e36d562c8dcd6e3844af28c91255
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58518935"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64918835"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>方法:Azure AD Join の実装を計画する
 
@@ -135,7 +135,11 @@ Azure AD 参加:
 
 ### <a name="management-platform"></a>管理プラットフォーム
 
-Azure AD 参加済みデバイスのデバイス管理は、Intune などの MDM プラットフォームと MDM CSP に基づきます。 Windows 10 には、互換性のあるすべての MDM ソリューションで動作する組み込みの MDM エージェントがあります。
+Azure AD 参加済みデバイスのデバイス管理は、Intune、MDM CSP などの MDM プラットフォームに基づいています。 Windows 10 には、互換性のあるすべての MDM ソリューションで動作する組み込みの MDM エージェントがあります。
+
+> [!NOTE]
+> グループ ポリシーは、オンプレミスの Active Directory に接続されていないため、Azure AD 参加済みデバイスではサポートされません。 Azure AD 参加済みデバイスの管理は MDM からのみ可能
+
 
 Azure AD 参加済みデバイスの管理には 2 つのアプローチがあります。
 
@@ -143,7 +147,6 @@ Azure AD 参加済みデバイスの管理には 2 つのアプローチがあ�
 
 - **共同管理** - デバイスは、MDM プロバイダーと SCCM によって管理されます。 このアプローチでは、SCCM エージェントは、MDM によって管理されるデバイスにインストールされて、特定の側面を管理します。
 
-Azure AD 参加済みデバイスはオンプレミスの Active Directory に接続されないので、グループ ポリシーはサポートされません。
 
 
 グループ ポリシーを使用している場合は、[MDM 移行分析ツール (MMAT)](https://github.com/WindowsDeviceManagement/MMAT) を使用して MDM ポリシーのパリティを評価します。 
@@ -194,7 +197,7 @@ AD FS を使用する場合は、「[AD FS によるシングル サインオン
 
 デバイスがドメイン コントローラーへのアクセス権を持つ場合、ユーザーは Azure AD 参加済みデバイスから SSO を取得します。 
 
-**推奨事項:**[Azure AD アプリのプロキシ](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy)をデプロイして、これらのアプリケーションへのアクセスをセキュリティで保護できるようにします。
+**推奨事項:** [Azure AD アプリのプロキシ](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy)をデプロイして、これらのアプリケーションへのアクセスをセキュリティで保護できるようにします。
 
 
 ### <a name="on-premises-network-shares"></a>オンプレミスのネットワーク共有
@@ -237,11 +240,11 @@ Azure AD 参加済みデバイスにリモート デスクトップ接続を行�
  
 ||セルフサービス セットアップ|Windows Autopilot|一括登録|
 |---|---|---|---|
-|セットアップにユーザーの操作が必要|はい|はい|いいえ |
-|IT 部門の作業が必要|いいえ |可能 |はい|
+|セットアップにユーザーの操作が必要|はい|はい|いいえ|
+|IT 部門の作業が必要|いいえ|可能|はい|
 |適用可能なフロー|OOBE と設定|OOBE のみ|OOBE のみ|
-|プライマリ ユーザーに対するローカル管理者権限|既定では、はい|構成可能|いいえ |
-|デバイス OEM のサポートが必要|いいえ |はい|いいえ |
+|プライマリ ユーザーに対するローカル管理者権限|既定では、はい|構成可能|いいえ|
+|デバイス OEM のサポートが必要|いいえ|はい|いいえ|
 |サポートされているバージョン|1511+|1709+|1703+|
  
 上記の表を確認し、どのアプローチを採用するかについて次の考慮事項を検討して、1 つまたは複数のデプロイ アプローチを選択します。  
@@ -265,7 +268,7 @@ Azure AD 参加済みデバイスにリモート デスクトップ接続を行�
 
 ## <a name="configure-your-device-settings"></a>デバイス設定を構成する
 
-Azure portal では、組織内の Azure AD 参加済みデバイスのデプロイを制御することができます。 関連設定を構成するには、**[Azure Active Directory]** ページで `Devices > Device settings` を選択します。
+Azure portal では、組織内の Azure AD 参加済みデバイスのデプロイを制御することができます。 関連設定を構成するには、 **[Azure Active Directory]** ページで `Devices > Device settings` を選択します。
 
 ### <a name="users-may-join-devices-to-azure-ad"></a>ユーザーはデバイスを Azure AD に参加させることができます
 
@@ -282,7 +285,7 @@ Azure portal では、組織内の Azure AD 参加済みデバイスのデプロ
 
 ### <a name="require-multi-factor-auth-to-join-devices"></a>デバイスを参加させるには多要素認証が必要
 
-デバイスを Azure AD に参加させるときにユーザーに MFA の実行を要求する場合は、**[はい]** を選択します。 ユーザーが MFA を使用して Azure AD にデバイスを参加させる場合は、デバイス自体が第 2 要素になります。
+デバイスを Azure AD に参加させるときにユーザーに MFA の実行を要求する場合は、 **[はい]** を選択します。 ユーザーが MFA を使用して Azure AD にデバイスを参加させる場合は、デバイス自体が第 2 要素になります。
 
 ![デバイスを参加させるには多要素認証が必要](./media/azureadjoin-plan/03.png)
 

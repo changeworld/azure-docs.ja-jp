@@ -3,8 +3,8 @@ title: Microsoft ID プラットフォームの暗黙的フローを使用して
 description: シングルページ アプリのための暗黙的フローの Microsoft ID プラットフォーム実装を使用した Web アプリケーションの構築。
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.assetid: 3605931f-dc24-4910-bb50-5375defec6a8
 ms.service: active-directory
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/12/2019
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d517828b30629cd9dfba5459b1d90913d8bc4f77
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 6f73756373a145375aa2b3d0bcb1c8fa0ede5cdb
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59698454"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65823481"
 ---
 # <a name="microsoft-identity-platform-and-implicit-grant-flow"></a>Microsoft ID プラットフォームと暗黙的な許可のフロー
 
@@ -243,4 +243,4 @@ https://login.microsoftonline.com/{tenant}/oauth2/v2.0/logout?post_logout_redire
 
 ## <a name="next-steps"></a>次の手順
 
-* [MSAL JS のサンプル](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Samples)を見直して、コーディング作業を開始します。
+* [MSAL JS のサンプル](sample-v2-code.md#single-page-applications-spa)を見直して、コーディング作業を開始します。

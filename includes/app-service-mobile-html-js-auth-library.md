@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 08/23/2018
 ms.author: crdun
 ms.openlocfilehash: 5fe9fe8ced675f68161f0df9f2665b47f9d47ac5
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55905203"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66140895"
 ---
 ### <a name="server-auth"></a>方法: プロバイダーでの認証 (サーバー フロー)
 Mobile Apps によってアプリの認証プロセスを管理するには、アプリを ID プロバイダーに登録する必要があります。 その後、Azure App Service 内で、プロバイダーから提供されたアプリケーション ID とシークレットを構成する必要があります。

@@ -1,7 +1,7 @@
 ---
 title: アーキテクチャと主要な概念
 titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning service を構成するアーキテクチャ、用語、概念、ワークフローについて説明します。
+description: Azure Machine Learning service を構成するアーキテクチャ、用語、概念、およびワークフローについて説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 04/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: b06e3ff50eba4763403450a807aa90ef6335f1a9
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: cb716e0d9f97d3ea2e9584a9fc3d7a6f57da9179
+ms.sourcegitcommit: 1d257ad14ab837dd13145a6908bc0ed7af7f50a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025233"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65502096"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Azure Machine Learning service のしくみ:アーキテクチャと概念
 
@@ -32,9 +32,7 @@ Azure Machine Learning service のアーキテクチャ、概念、ワークフ�
 1. 構成したコンピューティング ターゲットに **スクリプトを送信** して、その環境で実行します。 トレーニング中、このスクリプトは、**データストア**の読み取りと書き込みを行うことができます。 そして実行の記録は、**ワークスペース**に**実行**として保存され、**実験**の下でグループ化されます。
 1. 現在と過去の実行から **実験をクエリ** してログに記録されたメトリックを取得します。 メトリックで目的の結果が示されない場合は、手順 1 に戻ってスクリプトを繰り返します。
 1. 満足できる実行が見つかった場合は、永続化されたモデルを**モデル レジストリ**に登録します。
-1. スコアリング スクリプトを開発します。
-1. **イメージを作成**し、それを**イメージ レジストリ**に登録します。
-1. Azure に **Web サービス** として **イメージをデプロイ** します。
+1. モデルを使用するスコアリング スクリプトを開発し、**Web サービス**として Azure に、または **IoT Edge デバイス**に**モデルをデプロイ**します。
 
 
 > [!NOTE]
@@ -46,7 +44,7 @@ Azure Machine Learning service のアーキテクチャ、概念、ワークフ�
 
 ワークスペースでは、モデルのトレーニングに使用できるコンピューティング先のリストが保持されています。 また、スクリプトのログ、メトリック、出力、スナップショットなど、トレーニング実行の履歴も保持されています。 この情報を使用して、最適なモデルを生成するトレーニング実行を判断します。
 
-モデルはワークスペースに登録します。 登録されたモデルとスコアリング スクリプトを使用して、イメージを作成します。 その後、イメージを REST ベースの HTTP エンドポイントとして Azure Container Instances、Azure Kubernetes Service、またはフィールド プログラマブル ゲート アレイ (FPGA) にデプロイすることができます。 また、モジュールとして Azure IoT Edge デバイスにデプロイすることもできます。
+モデルはワークスペースに登録します。 登録済みモデルとスコアリング スクリプトを使用して、モデルを Azure Container Instances、Azure Kubernetes Service、または Field-Programmable Gate Array (FPGA) に REST ベースの HTTP エンドポイントとしてデプロイします。 また、モジュールとして Azure IoT Edge デバイスにデプロイすることもできます。 内部的には、デプロイ済みのイメージをホストするために docker イメージが作成されます。 必要に応じて、独自のイメージを指定することができます。
 
 複数のワークスペースを作成でき、各ワークスペースを複数のユーザーで共有できます。 ワークスペースを共有する場合は、ユーザーを次のロールに割り当てることで、ワークスペースへのアクセスを制御できます。
 
@@ -94,7 +92,7 @@ Azure Machine Learning service はフレームワークに依存しません。 
 
 モデルを登録するときに、追加のメタデータ タグを指定し、モデルを検索するときにそのタグを使用することができます。
 
-イメージによって使用されているモデルを削除することはできません。
+アクティブなデプロイで使用されているモデルを削除することはできません。
 
 モデルの登録例については、[Azure Machine Learning での画像分類モデルのトレーニング](tutorial-train-models-with-aml.md)に関するページを参照してください。
 
@@ -208,11 +206,11 @@ Azure Machine Learning service は基本イメージを提供し、それが既�
 
 ## <a name="deployment"></a>Deployment
 
-デプロイとは、クラウドでホストできる Web サービスへの、または統合されたデバイスのデプロイのための IoT モジュールへの、イメージのインスタンス化です。
+デプロイは、クラウドでホストできる Web サービスまたは統合デバイスのデプロイ用 IoT モジュールへのモデルのインスタンス化です。
 
 ### <a name="web-service"></a>Web サービス
 
-デプロイされた Web サービスでは、Azure Container Instances、Azure Kubernetes Service、または FPGA を使用できます。 モデル、スクリプト、および関連付けられたファイルがカプセル化されているイメージからサービスを作成します。 イメージには、Web サービスに送信されるスコアリング要求を受け取る、負荷分散された HTTP エンドポイントがあります。
+デプロイされた Web サービスでは、Azure Container Instances、Azure Kubernetes Service、または FPGA を使用できます。 モデル、スクリプト、および関連ファイルからサービスを作成します。 これらはイメージにカプセル化されており、Web サービスにランタイム環境を提供します。 イメージには、Web サービスに送信されるスコアリング要求を受け取る、負荷分散された HTTP エンドポイントがあります。
 
 Azure には Application Insights のテレメトリやモデルのテレメトリを収集する機能があり、それを有効にすると、Web サービスのデプロイを監視するのに役立ちます。 利用統計情報にアクセスできるのは機能を有効にしたユーザーだけであり、情報はそのユーザーの Application Insights インスタンスとストレージ アカウント インスタンスに格納されます。
 

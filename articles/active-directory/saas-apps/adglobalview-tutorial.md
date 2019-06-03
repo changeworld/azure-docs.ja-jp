@@ -16,11 +16,11 @@ ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d0bb43f1dad775594e3c3229bc5d69528f055144
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57877549"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65864363"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adp-globalview"></a>チュートリアル:Azure Active Directory と ADP Globalview の統合
 

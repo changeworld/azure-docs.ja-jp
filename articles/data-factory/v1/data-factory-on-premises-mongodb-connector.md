@@ -49,7 +49,7 @@ Azure Data Factory サービスをオンプレミスの MongoDB データベー�
 
 パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 手順については、「[チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」を参照してください。データのコピー ウィザードを使用してパイプラインを作成する簡単なチュートリアルです。
 
-また、次のツールを使用してパイプラインを作成することもできます。**Azure portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、**.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。
+また、次のツールを使用してパイプラインを作成することもできます。**Azure portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、 **.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。
 
 ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。
 
@@ -66,15 +66,15 @@ Azure Data Factory サービスをオンプレミスの MongoDB データベー�
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| type |type プロパティは、次のように設定する必要があります:**OnPremisesMongoDb** |はい |
-| server |MongoDB サーバーの IP アドレスまたはホスト名。 |はい |
+| type |type プロパティは、次のように設定する必要があります:**OnPremisesMongoDb** |[はい] |
+| server |MongoDB サーバーの IP アドレスまたはホスト名。 |[はい] |
 | port |MongoDB サーバーがクライアント接続のリッスンに使用する TCP ポート。 |省略可能、既定値: 27017 |
-| authenticationType |Basic または Anonymous。 |はい |
+| authenticationType |Basic または Anonymous。 |[はい] |
 | username |MongoDB にアクセスするためのユーザー アカウント。 |はい (基本認証が使用される場合)。 |
 | password |ユーザーのパスワード。 |はい (基本認証が使用される場合)。 |
 | authSource |認証のために資格情報を確認する際に使用する MongoDB データベースの名前。 |省略可能 (基本認証が使用される場合)。 既定では、管理者アカウントと、databaseName プロパティで指定されたデータベースが使用されます。 |
-| databaseName |アクセスする MongoDB データベースの名前。 |はい |
-| gatewayName |データ ストアにアクセスするゲートウェイの名前。 |はい |
+| databaseName |アクセスする MongoDB データベースの名前。 |[はい] |
+| gatewayName |データ ストアにアクセスするゲートウェイの名前。 |[はい] |
 | encryptedCredential |ゲートウェイによって暗号化された資格情報。 |省略可能 |
 
 ## <a name="dataset-properties"></a>データセットのプロパティ
@@ -84,7 +84,7 @@ Azure Data Factory サービスをオンプレミスの MongoDB データベー�
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| collectionName |MongoDB データベースのコレクション名前。 |はい |
+| collectionName |MongoDB データベースのコレクション名前。 |[はい] |
 
 ## <a name="copy-activity-properties"></a>コピー アクティビティのプロパティ
 アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、「[パイプラインの作成](data-factory-create-pipelines.md)」という記事を参照してください。 名前、説明、入力テーブル、出力テーブル、ポリシーなどのプロパティは、あらゆる種類のアクティビティで使用できます。
@@ -151,7 +151,7 @@ Azure Data Factory サービスをオンプレミスの MongoDB データベー�
 }
 ```
 
-**MongoDB の入力データセット:**"external": true の設定により、このテーブルが Data Factory の外部にあり、Data Factory のアクティビティによって生成されたものではないことが Data Factory サービスに通知されます。
+**MongoDB の入力データセット:** "external": true の設定により、このテーブルが Data Factory の外部にあり、Data Factory のアクティビティによって生成されたものではないことが Data Factory サービスに通知されます。
 
 ```json
 {
@@ -297,7 +297,7 @@ MongoDB にデータを移動する場合、MongoDB 型から .NET 型に対す�
 | --- | --- |
 | Binary |Byte[] |
 | Boolean |Boolean |
-| Date |Datetime |
+| Date |DateTime |
 | NumberDouble |Double |
 | NumberInt |Int32 |
 | NumberLong |Int64 |
@@ -317,7 +317,7 @@ Azure Data Factory では、ビルトインの ODBC ドライバーを使用し�
 * 実テーブルと同じデータ (複合型列を除く) を含む **ベース テーブル**。 ベース テーブルには、それが表す実テーブルと同じ名前が使用されます。
 * 複合型列ごとの**仮想テーブル**。入れ子になったデータが展開されます。 仮想テーブルの名前は、実テーブルの名前、区切り文字の "_"、配列またはオブジェクトの名前を使用して付けられます。
 
-仮想テーブルは、非正規化データへのドライバーのアクセスを有効にして、実テーブルのデータを参照します。  詳細については、次の「例」を参照してください。 仮想テーブルのクエリや結合によって、MongoDB の配列の内容にアクセスできます。
+仮想テーブルは、非正規化データへのドライバーのアクセスを有効にして、実テーブルのデータを参照します。 詳細については、次の「例」を参照してください。 仮想テーブルのクエリや結合によって、MongoDB の配列の内容にアクセスできます。
 
 [コピー ウィザード](data-factory-data-movement-activities.md#create-a-pipeline-with-copy-activity) を使用して、仮想テーブルを含む MongoDB データベースのテーブルの一覧を直感的に表示し、内部データをプレビューすることができます。 また、コピー ウィザードでクエリを構築して検証し、結果を確認することもできます。
 
@@ -338,7 +338,7 @@ Azure Data Factory では、ビルトインの ODBC ドライバーを使用し�
 
 次のテーブルは、例における元の配列を表す仮想テーブルを示しています。 これらのテーブルには、以下が含まれます。
 
-* 元の配列の行に対応する元のプライマリ キー列への参照 (_Id 列を使用) 
+* 元の配列の行に対応する元のプライマリ キー列への参照 (_Id 列を使用)
 * 元の配列内のデータの位置の指定
 * 配列内の各要素の展開されたデータ
 

@@ -2,26 +2,23 @@
 title: Azure Application Gateway で HTTP ヘッダーを書き換える
 description: この記事では、Azure PowerShell を使用して、Azure Application Gateway を作成し、HTTP ヘッダーを書き換える方法に関する情報を提供します
 services: application-gateway
-author: abshamsft
+author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 12/20/2018
+ms.date: 4/30/2019
 ms.author: absha
-ms.openlocfilehash: 4747d824dcf531ed883d476a0daad182ea081c39
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: ba74bb8970949a15425a66f7cd4475749fd183df
+ms.sourcegitcommit: ed66a704d8e2990df8aa160921b9b69d65c1d887
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57314451"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64947090"
 ---
-# <a name="tutorial-create-an-application-gateway-and-rewrite-http-headers"></a>チュートリアル:アプリケーション ゲートウェイを作成して HTTP ヘッダーを書き換える
+# <a name="create-an-application-gateway-and-rewrite-http-headers"></a>アプリケーション ゲートウェイを作成して HTTP ヘッダーを書き換える
 
 [自動スケールおよびゾーン冗長アプリケーション ゲートウェイの SKU](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant) を新規作成するときには、Azure PowerShell を使用して、[HTTP 要求および応答ヘッダーを書き換えるルール](rewrite-http-headers.md)を構成できます
 
-> [!IMPORTANT] 
-> 自動スケールおよびゾーン冗長アプリケーション ゲートウェイの SKU は、現在、パブリック プレビュー段階です。 このプレビュー版はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」をご覧ください。 
-
-このチュートリアルでは、以下の内容を学習します。
+この記事では、次のことについて説明します。
 
 > [!div class="checklist"]
 >
@@ -37,7 +34,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルでは、Azure PowerShell をローカルで実行する必要があります。 Az モジュール バージョン 1.0.0 以降がインストールされている必要があります。 バージョンを確認するには、`Import-Module Az`、`Get-Module Az` の順に実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-az-ps)に関するページを参照してください。 PowerShell のバージョンを確認した後、`Login-AzAccount` を実行して Azure との接続を作成します。
+この記事では、Azure PowerShell をローカルで実行する必要があります。 Az モジュール バージョン 1.0.0 以降がインストールされている必要があります。 バージョンを確認するには、`Import-Module Az`、`Get-Module Az` の順に実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-az-ps)に関するページを参照してください。 PowerShell のバージョンを確認した後、`Login-AzAccount` を実行して Azure との接続を作成します。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
@@ -178,5 +175,4 @@ Get-AzPublicIPAddress -ResourceGroupName $rg -Name AppGwVIP
 
 ## <a name="next-steps"></a>次の手順
 
-> [!div class="nextstepaction"]
-> [URL パスベースのルーティング規則のあるアプリケーション ゲートウェイを作成する](./tutorial-url-route-powershell.md)
+- [URL パスベースのルーティング規則のあるアプリケーション ゲートウェイを作成する](./tutorial-url-route-powershell.md)

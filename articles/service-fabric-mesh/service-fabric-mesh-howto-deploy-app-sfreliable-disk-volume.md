@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 12/03/2018
 ms.author: asnegi
 ms.custom: mvc, devcenter
-ms.openlocfilehash: b5e4ad30a65b25140cfb2c80dd15d8cd28fb827b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9f760e7e693334475fb61ba9e5d44df019e78604
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57850855"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66147490"
 ---
 # <a name="mount-highly-available-service-fabric-reliable-disk-based-volume-in-a-service-fabric-mesh-application"></a>Service Fabric Mesh アプリケーションで高可用な Service Fabric Reliable Disk ベースのボリュームをマウントする 
 コンテナー アプリで状態を保持する一般的な方法は、Azure File Storage などのリモート ストレージ、または Azure Cosmos DB などのデータベースを使用することです。 これにより、リモート ストアに対する読み取りおよび書き込みのネットワーク待機時間が大幅に増えます。
@@ -73,7 +73,7 @@ az group deployment show --name counter.sfreliablevolume.linux --resource-group 
 
 アプリケーションが正常にデプロイされたら、アプリのゲートウェイ リソースの ipAddress を取得します。 前述のセクションで確認したゲートウェイ名を使用します。
 ```azurecli-interactive
-az mesh gateway show --resource-group myResourceGroup --gateway-name counterGateway
+az mesh gateway show --resource-group myResourceGroup --name counterGateway
 ```
 
 出力には、サービス エンドポイントのパブリック IP アドレスであるプロパティ `ipAddress` があります。 ブラウザーからそれを開きます。 Web ページには、毎秒更新されるカウンター値が表示されます。

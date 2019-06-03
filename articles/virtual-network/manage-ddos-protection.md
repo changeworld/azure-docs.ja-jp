@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/06/2018
 ms.author: kumud
-ms.openlocfilehash: 6b1d62f4cedb7add843a5ddae24125019130d58f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: a053beb121e1b3c0db020094c29a9a1e0117da87
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64728353"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65203522"
 ---
 # <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>Azure Portal を使用した Azure DDoS Protection Standard の管理
 
@@ -33,7 +33,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="create-a-ddos-protection-plan"></a>DDoS Protection プランを作成する
 
-DDoS Protection プランでは、サブスクリプションの境界を越えて、DDoS Protection Standard が有効になった仮想ネットワークのセットを定義します。 組織で 1 つの DDoS Protection プランを構成し、複数のサブスクリプションから同じプランに仮想ネットワークをリンクできます。 DDoS Protection プラン自体は、プランの作成時に選択したサブスクリプションにも関連付けられます。 プランが関連付けられているサブスクリプションでは、プランに対する月額料金が請求されるほか、保護されているパブリック IP アドレスの数が 100 を超える場合は超過料金が請求されます。 DDoS 価格について詳しくは、[価格の詳細](https://azure.microsoft.com/pricing/details/ddos-protection/)に関するページをご覧ください。
+DDoS Protection プランでは、サブスクリプションの境界を越えて、DDoS Protection Standard が有効になった仮想ネットワークのセットを定義します。 組織で 1 つの DDoS Protection プランを構成し、複数のサブスクリプションから同じプランに仮想ネットワークをリンクできます。 DDoS Protection プラン自体は、プランの作成時に選択したサブスクリプションにも関連付けられます。 DDoS Protection プランは、複数のリージョンおよびサブスクリプション間で動作します。 たとえば、米国東部リージョンでプランを作成し、自分のテナントのサブスクリプション #1 にリンクすることができます。 同じプランを、自分のテナントを越えて、異なるリージョンの他のサブスクリプションの仮想ネットワークにリンクできます。 プランが関連付けられているサブスクリプションでは、プランに対する月額料金が請求されるほか、保護されているパブリック IP アドレスの数が 100 を超える場合は超過料金が請求されます。 DDoS 価格について詳しくは、[価格の詳細](https://azure.microsoft.com/pricing/details/ddos-protection/)に関するページをご覧ください。
 
 ほとんどの組織では、複数のプランを作成する必要はありません。 プランをサブスクリプション間で移行することはできません。 プランが関連付けられているサブスクリプションを変更する必要がある場合は、[既存のプランを削除](#work-with-ddos-protection-plans)し、新しいプランを作成する必要があります。
 
@@ -127,6 +127,7 @@ DDoS 攻撃をシミュレートしてアラートを検証するには、「[DD
 4. テレメトリが必要なパブリック IP アドレスを含む**サブスクリプション**と**リソース グループ**を選択します。
 5. **[リソースの種類]** に **[パブリック IP アドレス]** を選択し、テレメトリが必要な特定のパブリック IP アドレスを選択します。
 6. 一連の **[利用可能なメトリック]** が画面の左側に表示されます。 これらのメトリックは、選択すると、概要画面の **Azure Monitor のメトリック グラフ**に表示されます。
+7. **集計**の種類として **[最大]** を選択します
 
 メトリック名は、異なるパケットの種類と、バイト数かパケット数かを表します。各メトリックでのタグ名の基本的な構成は、次のようになっています。
 
@@ -138,7 +139,7 @@ DDoS 攻撃をシミュレートしてテレメトリを検証するには、「
 
 ## <a name="view-ddos-mitigation-policies"></a>DDoS 軽減ポリシーを表示する
 
-DDoS Protection Standard は、DDoS が有効になっている仮想ネットワーク内で、保護されたリソースのパブリック IP アドレスごとに、3 つの自動調整された軽減ポリシー (TCP SYN、TCP、UDP) を適用します。 次の図に示すように、**[Inbound TCP packets to trigger DDoS mitigation]\(DDoS 軽減をトリガーする受信 TCP パケット数\)** と **[Inbound UDP packets to trigger DDoS mitigation]\(DDoS 軽減をトリガーする受信 UDP パケット数\)** のメトリックを選択してポリシーのしきい値を表示することができます。
+DDoS Protection Standard は、DDoS が有効になっている仮想ネットワーク内で、保護されたリソースのパブリック IP アドレスごとに、3 つの自動調整された軽減ポリシー (TCP SYN、TCP、UDP) を適用します。 次の図に示すように、**[Inbound TCP packets to trigger DDoS mitigation]\(DDoS 軽減をトリガーする受信 TCP パケット数\)** と **[Inbound UDP packets to trigger DDoS mitigation]\(DDoS 軽減をトリガーする受信 UDP パケット数\)** のメトリックを選択し、**集計**の種類を [最大] にして、ポリシーのしきい値を表示することができます。
 
 ![軽減ポリシーを表示する](./media/manage-ddos-protection/view-mitigation-policies.png)
 

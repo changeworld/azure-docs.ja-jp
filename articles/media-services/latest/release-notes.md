@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 04/04/2019
+ms.date: 05/01/2019
 ms.author: juliako
-ms.openlocfilehash: de5432c4e04fb0cfaf0517426fe9ee9da2a57b37
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 8f50188480b963d13460c79175ea6972d3e68f6a
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59266989"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65153076"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 リリース ノート
 
@@ -33,6 +33,20 @@ ms.locfileid: "59266989"
 > 現時点では、Azure portal を使用して v3 リソースを管理することはできません。 [REST API](https://aka.ms/ams-v3-rest-sdk)、CLI、またはサポートされている SDK のいずれかを使用します。
 
 詳細については、「[Media Services v2 から v3 への移行のガイダンス](migrate-from-v2-to-v3.md#known-issues)」を参照してください。
+
+## <a name="may-2019"></a>2019 年 5 月
+
+### <a name="performance-improvements"></a>パフォーマンスの向上
+
+* 処理でサポートされているファイルの最大サイズが更新されました。 [クォータと制限](limits-quotas-constraints.md)に関する記事を参照してください。
+* [エンコードの速度の向上](media-reserved-units-cli-how-to.md#choosing-between-different-reserved-unit-types)。
+
+## <a name="april-2019"></a>2019 年 4 月
+
+### <a name="new-presets"></a>新しいプリセット
+
+* [FaceDetectorPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#facedetectorpreset) が組み込みのアナライザー プリセットに追加されました。
+* [ContentAwareEncodingExperimental](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset) が組み込みのエンコーダー プリセットに追加されました。 詳細については、[コンテンツに対応したエンコード](cae-experimental.md)に関する記事を参照してください。 
 
 ## <a name="march-2019"></a>2019 年 3 月
 
@@ -85,31 +99,31 @@ CLI 2.0 モジュールが、[Azure Media Services v3 GA](https://docs.microsoft
 
 #### <a name="asset-commands"></a>アセット コマンド
 
-- ```--storage-account```  および ```--container``` 引数が追加されました。
+- ```--storage-account``` および ```--container``` 引数が追加されました。
 - ```az ams asset get-sas-url``` コマンドに有効期限 (現在 + 23 時間) とアクセス許可 (読み取り) の既定値が追加されました。
 
 #### <a name="job-commands"></a>ジョブ コマンド
 
-- ```--correlation-data```  および ```--label``` 引数が追加されました。
-- ```--output-asset-names```  が ```--output-assets``` に変更されました。 "assetName=label" 形式の、スペース区切りのアセットのリストを受け入れるようになりました。 "assetName=" のようなラベルのないアセットを送信できます。
+- ```--correlation-data``` および ```--label``` 引数が追加されました
+- ```--output-asset-names``` が ```--output-assets``` に変更されました。 "assetName=label" 形式の、スペース区切りのアセットのリストを受け入れるようになりました。 "assetName=" のようなラベルのないアセットを送信できます。
 
 #### <a name="streaming-locator-commands"></a>ストリーミング ロケーター コマンド
 
-- ```az ams streaming locator```  ベース コマンドが ```az ams streaming-locator``` に置き換えられました。
-- ```--streaming-locator-id```  および ```--alternative-media-id support``` 引数が追加されました。
-- ```--content-keys argument```  引数が更新されました。
-- ```--content-policy-name```  が ```--content-key-policy-name``` に変更されました。
+- ```az ams streaming locator``` ベース コマンドが ```az ams streaming-locator``` に置き換えられました。
+- ```--streaming-locator-id``` および ```--alternative-media-id support``` 引数が追加されました。
+- ```--content-keys argument``` 引数が更新されました。
+- ```--content-policy-name``` が ```--content-key-policy-name``` に変更されました。
 
 #### <a name="streaming-policy-commands"></a>ストリーミング ポリシー コマンド
 
-- ```az ams streaming policy```  ベース コマンドが ```az ams streaming-policy``` に置き換えられました。
+- ```az ams streaming policy``` ベース コマンドが ```az ams streaming-policy``` に置き換えられました。
 - ```az ams streaming-policy create``` での暗号化パラメーターのサポートが追加されました。
 
 #### <a name="transform-commands"></a>変換コマンド
 
-- ```--preset-names```  引数が ```--preset``` に置き換えられました。 現在同時に設定できるのは、1 つの出力/プリセットのみです (さらに追加するには ```az ams transform output add``` を実行する必要があります)。 また、カスタムの JSON にパスを渡すことで、カスタム StandardEncoderPreset を設定することもできます。
-- ```az ams transform output remove```  は、削除する出力インデックスを渡すことで実行できます。
-- ```--relative-priority, --on-error, --audio-language and --insights-to-extract```  引数が、```az ams transform create``` および ```az ams transform output add``` コマンドに追加されました。
+- ```--preset-names``` 引数が ```--preset``` に置き換えられました。 現在同時に設定できるのは、1 つの出力/プリセットのみです (さらに追加するには ```az ams transform output add``` を実行する必要があります)。 また、カスタムの JSON にパスを渡すことで、カスタム StandardEncoderPreset を設定することもできます。
+- ```az ams transform output remove``` は、削除する出力インデックスを渡すことで実行できます。
+- ```--relative-priority, --on-error, --audio-language and --insights-to-extract``` 引数が、```az ams transform create``` および ```az ams transform output add``` コマンドに追加されました。
 
 ## <a name="october-2018---ga"></a>2018 年 10 月 - GA
 
@@ -200,6 +214,10 @@ Media Services v3 CLI または API を使用して 9 月 28 日から 10 月 12
 ### <a name="known-issues"></a>既知の問題
 
 * ジョブを送信するときに、Azure Blob storage 内にあるファイルへの HTTPS URL、SAS の URL またはパスを使用して、ソース ビデオを取り込むように指定できます。 現時点では、AMS v3 には、HTTPS URL 経由でチャンク転送エンコード処理がサポートされていません。
+
+## <a name="ask-questions-give-feedback-get-updates"></a>質問、フィードバックの送信、最新情報の入手
+
+「[Azure Media Services community (Azure Media Services コミュニティ)](media-services-community.md)」を参照して、さまざまな質問の方法、フィードバックする方法、Media Services に関する最新情報の入手方法を確認してください。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -8,15 +8,15 @@ author: barbkess
 manager: daveba
 ms.service: active-directory
 ms.topic: landing-page
-ms.date: 04/18/2019
+ms.date: 05/17/2019
 ms.author: barbkess
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f067d2d83c97d22dee26050d31e08e47252310ee
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 974e987631aa3e87f4e8ff069c691750e34e1731
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64682985"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66306998"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -156,7 +156,7 @@ ms.locfileid: "64682985"
                                                         <h3><a href="manage-apps/index.yml">アプリケーション管理</a></h3>
                                                         <p>
                                                             <a href="manage-apps/what-is-single-sign-on.md">シングル サインオン (SSO) とは</a><br>
-                                                            <a href="manage-apps/configure-single-sign-on-portal.md">シングル サインオンの構成</a><br>
+                                                            <a href="manage-apps/user-provisioning.md">自動ユーザー プロビジョニング</a><br>
                                                             <a href="manage-apps/application-proxy.md">オンプレミス アプリ用のアプリケーション プロキシ</a><br>
                                                             <a href="manage-apps/index.yml"><i>さらに表示する &gt;</i></a>
                                                         </p>

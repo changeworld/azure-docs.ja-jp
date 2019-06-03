@@ -1,25 +1,18 @@
 ---
-title: Dynamics 365 for Customer Engagement の技術資産を作成する - Azure Marketplace | Microsoft Docs
+title: Dynamics 365 for Customer Engagement の技術資産を作成する | Azure Marketplace
 description: Dynamics 365 for Customer Engagement アプリケーション オファー用の技術資産を作成します。
 services: Dynamics 365 for Customer Engagement, Azure, Marketplace, Cloud Partner Portal, AppSource
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 12/29/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 50c4fd512206cdf17ebb555acb88de2a3f74c2bd
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.author: pabutler
+ms.openlocfilehash: eff175264677d6b8ffb885229b5e68b306424335
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54082157"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64943107"
 ---
 # <a name="create-technical-assets-for-azure-application-offer"></a>Azure アプリケーション オファー用の技術資産を作成する
 

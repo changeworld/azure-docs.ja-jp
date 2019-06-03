@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 04/15/2019
+ms.date: 05/14/2019
 ms.topic: tutorial
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: d9f736b0b976ac6ec0da45a672d2e992405625cd
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: 92a37133d84833c43fff5b1a6c31e003ef53f7de
+ms.sourcegitcommit: 3675daec6c6efa3f2d2bf65279e36ca06ecefb41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59578800"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65619757"
 ---
 # <a name="tutorial-create-a-blockchain-application-in-azure-blockchain-workbench"></a>チュートリアル:Azure Blockchain Workbench でブロックチェーン アプリケーションを作成する
 
@@ -271,7 +271,7 @@ contract HelloBlockchain {
 
 ### <a name="constructor"></a>Constructor
 
-コンストラクターでは、ワークフローの新しいスマート コントラクト インスタンスの入力パラメーターを定義します。 コンストラクターは、コントラクトと同じ名前の関数として宣言します。 コンストラクターの必要なパラメーターは、構成ファイルでコンストラクター パラメーターとして定義します。 パラメーターの数、順序、型は両方のファイルで一致する必要があります。
+コンストラクターでは、ワークフローの新しいスマート コントラクト インスタンスの入力パラメーターを定義します。 コンストラクターの必要なパラメーターは、構成ファイルでコンストラクター パラメーターとして定義します。 パラメーターの数、順序、型は両方のファイルで一致する必要があります。
 
 コンストラクター関数では、コントラクトを作成する前に実行するビジネス ロジックを記述します。 たとえば、状態変数を開始値で初期化します。
 

@@ -15,18 +15,18 @@ ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 0c267b2fbe639d08396d8773e077483b41b9747e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: bac43ef17116dcb2d6a6bb3dd7c1617d91a010d9
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58886371"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65864816"
 ---
 # <a name="quickstart-create-an-aspnet-web-app"></a>クイック スタート: ASP.NET Web アプリを作成する 
 
 ## <a name="introduction"></a>はじめに
 
-このクイック スタートでは、Visual Studio 2017 を使用して ASP.NET Web アプリケーションを作成し Azure App Service にデプロイする方法を説明します。 このサンプル アプリケーションは、Azure Cache for Redis に接続して、キャッシュにデータを格納し、キャッシュからデータを取得します。 このクイック スタートを完了すると、Azure Redis Cache との間で読み書きを行う、Azure でホストされる Web アプリが完成します。
+このクイック スタートでは、Visual Studio 2019 を使用して ASP.NET Web アプリケーションを作成し Azure App Service にデプロイする方法を説明します。 このサンプル アプリケーションは、Azure Cache for Redis に接続して、キャッシュにデータを格納し、キャッシュからデータを取得します。 このクイック スタートを完了すると、Azure Redis Cache との間で読み書きを行う、Azure でホストされる Web アプリが完成します。
 
 ![簡単なテストが完了した Azure](./media/cache-web-app-howto/cache-simple-test-complete-azure.png)
 
@@ -34,19 +34,19 @@ ms.locfileid: "58886371"
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイック スタートを完了するには、次の環境で [Visual Studio 2017](https://www.visualstudio.com/downloads/) をインストールする必要があります。
+このクイック スタートを完了するには、次の環境で [Visual Studio 2019](https://www.visualstudio.com/downloads/) をインストールする必要があります。
 * ASP.NET および Web の開発
 * Azure の開発
 
 ## <a name="create-the-visual-studio-project"></a>Visual Studio プロジェクトの作成
 
-1. Visual Studio を開き、**[ファイル]** >**[新規]** > **[プロジェクト]** の順に選択します。
+1. Visual Studio を開き、 **[ファイル]**  > **[新規]**  >  **[プロジェクト]** の順に選択します。
 
 2. **[新しいプロジェクト]** ダイアログで、次の操作を行います。
 
     ![Create project](./media/cache-web-app-howto/cache-create-project.png)
 
-    a. **[テンプレート]** の一覧で、**[Visual C#]** ノードを展開します。
+    a. **[テンプレート]** の一覧で、 **[Visual C#]** ノードを展開します。
 
     b. **[クラウド]** を選択します
 
@@ -60,7 +60,7 @@ ms.locfileid: "58886371"
    
 3. プロジェクトの種類として、 **[MVC]** を選択します。
 
-4. **[認証]** の設定で **[認証なし]** が指定されていることを確認します。 Visual Studio のバージョンによっては、既定の **[認証]** が別の設定になっている場合があります。 これを変更するには、**[認証の変更]**、**[認証なし]** の順に選択します。
+4. **[認証]** の設定で **[認証なし]** が指定されていることを確認します。 Visual Studio のバージョンによっては、既定の **[認証]** が別の設定になっている場合があります。 これを変更するには、 **[認証の変更]** 、 **[認証なし]** の順に選択します。
 
 5. **[OK]** を選択してプロジェクトを作成します。
 
@@ -122,7 +122,7 @@ ms.locfileid: "58886371"
 
 ### <a name="to-configure-the-application-to-use-stackexchangeredis"></a>StackExchange.Redis を使用するようにアプリケーションを構成するには
 
-1. Visual Studio 用の [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis) NuGet パッケージを使うようにアプリを構成するには、**[ツール] > [NuGet パッケージ マネージャー] > [パッケージ マネージャー コンソール]** の順に選択します。
+1. Visual Studio 用の [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis) NuGet パッケージを使うようにアプリを構成するには、 **[ツール] > [NuGet パッケージ マネージャー] > [パッケージ マネージャー コンソール]** の順に選択します。
 
 2. [`Package Manager Console`] ウィンドウで、次のコマンドを実行します。
 
@@ -187,7 +187,7 @@ ms.locfileid: "58886371"
         }
     ```
 
-4. **ソリューション エクスプローラー**で、**[ビュー]** > **[共有]** フォルダーを順に展開します。 次に *_Layout.cshtml ファイル*を開きます。
+4. **ソリューション エクスプローラー**で、 **[ビュー]**  >  **[共有]** フォルダーを順に展開します。 次に *_Layout.cshtml ファイル*を開きます。
 
     置換前のコード:
     
@@ -203,9 +203,9 @@ ms.locfileid: "58886371"
 
 ### <a name="to-add-a-new-rediscache-view"></a>新しい RedisCache ビューを追加するには
 
-1. **ソリューション エクスプローラー**で、**[Views]** フォルダーを展開し、**[Home]** フォルダーを右クリックします。 **[追加]** > **[ビュー...]** を選択します。
+1. **ソリューション エクスプローラー**で、 **[Views]** フォルダーを展開し、 **[Home]** フォルダーを右クリックします。 **[追加]**  >  **[ビュー...]** を選択します。
 
-2. **[ビューの追加]** ダイアログで、ビューの名前に「**RedisCache**」と入力します。 その後、**[追加]** を選択します。
+2. **[ビューの追加]** ダイアログで、ビューの名前に「**RedisCache**」と入力します。 その後、 **[追加]** を選択します。
 
 3. *RedisCache.cshtml* ファイルのコードを次のコードに置き換えます。
 
@@ -250,7 +250,7 @@ ms.locfileid: "58886371"
 既定では、プロジェクトはテストとデバッグのためにアプリを [IIS Express](https://docs.microsoft.com/iis/extensions/introduction-to-iis-express/iis-express-overview) にローカルにホストするように構成されます。
 
 ### <a name="to-run-the-app-locally"></a>アプリをローカルで実行するには
-1. Visual Studio で **[デバッグ]** > **[デバッグの開始]** の順に選択してアプリをビルドし、テストとデバッグのためにアプリをローカルで起動します。
+1. Visual Studio で **[デバッグ]**  >  **[デバッグの開始]** の順に選択してアプリをビルドし、テストとデバッグのためにアプリをローカルで起動します。
 
 2. ブラウザーで、ナビゲーション バーの **[Azure Cache for Redis Test]** を選択します。
 
@@ -268,7 +268,7 @@ ms.locfileid: "58886371"
 
     ![発行](./media/cache-web-app-howto/cache-publish-app.png)
 
-2. **[Microsoft Azure App Service]**、**[新規作成]**、**[発行]** の順に選択します。
+2. **[Microsoft Azure App Service]** 、 **[新規作成]** 、 **[発行]** の順に選択します。
 
     ![App Service に発行する](./media/cache-web-app-howto/cache-publish-to-app-service.png)
 
@@ -283,7 +283,7 @@ ms.locfileid: "58886371"
 
     ![[App Service] ダイアログ ボックス](./media/cache-web-app-howto/cache-create-app-service-dialog.png)
 
-4. App Service のホスティング設定を構成したら、**[作成]** を選択します。
+4. App Service のホスティング設定を構成したら、 **[作成]** を選択します。
 
 5. Visual Studio の **[出力]** ウィンドウを監視して、発行の状態を確認します。 アプリが発行されると、アプリの URL がログに記録されます。
 
@@ -324,11 +324,11 @@ ms.locfileid: "58886371"
 
 1. [Azure portal](https://portal.azure.com) にサインインし、 **[リソース グループ]** を選択します。
 
-2. **[名前でフィルター]** ボックスにリソース グループの名前を入力します。 この記事の手順では、*TestResources* という名前のリソース グループを使用しました。 リソース グループの結果一覧で、**[...]** を選択し、**[リソース グループの削除]** を選択します。
+2. **[名前でフィルター]** ボックスにリソース グループの名前を入力します。 この記事の手順では、*TestResources* という名前のリソース グループを使用しました。 リソース グループの結果一覧で、 **[...]** を選択し、 **[リソース グループの削除]** を選択します。
 
     ![削除](./media/cache-web-app-howto/cache-delete-resource-group.png)
 
-リソース グループの削除の確認を求めるメッセージが表示されます。 確認のためにリソース グループの名前を入力し、**[削除]** を選択します。
+リソース グループの削除の確認を求めるメッセージが表示されます。 確認のためにリソース グループの名前を入力し、 **[削除]** を選択します。
 
 しばらくすると、リソース グループとそのリソースのすべてが削除されます。
 

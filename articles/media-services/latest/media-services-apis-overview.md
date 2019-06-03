@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/21/2019
+ms.date: 05/02/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: a336f7faae24517aa4e29c991886107c6a82d2b5
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 4c5b30ab075bbca22b6a58ccf65e55d332820937
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64692553"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65406547"
 ---
 # <a name="developing-with-media-services-v3-apis"></a>Media Services v3 API を使用した開発
 
@@ -25,7 +25,11 @@ ms.locfileid: "64692553"
 
 ## <a name="accessing-the-azure-media-services-api"></a>Azure Media Services API へのアクセス
 
-Azure Media Services リソースにアクセスするには、Azure Active Directory (AD) のサービス プリンシパル認証を使うことができます。
+Media Services リソースと Media Services API へのアクセスが承認されるには、まず認証を受ける必要があります。 Media Services では、[Azure Active Directory (Azure AD) ベース](../../active-directory/fundamentals/active-directory-whatis.md)の認証がサポートされています。 2 つの一般的な認証オプションがあります。
+ 
+* **サービス プリンシパル認証**: サービスの認証に使用されます (例: Web アプリ、関数アプリ、ロジック アプリ、API、マイクロ サービス)。 この認証方法がよく使用されるアプリケーションは、デーモン サービス、中間層サービス、またはスケジュールされたジョブを実行するアプリです。 たとえば、Web アプリケーションの場合、サービス プリンシパルで Media Services に接続する中間層が常にあるはずです。
+* **ユーザー認証**: Azure Media Services リソースを操作するアプリを使用しているユーザーを認証するために使用されます。 ユーザーは最初に、対話型アプリケーションからユーザー資格情報の入力を求められます。 例として、承認済みユーザーがエンコード ジョブまたはライブ ストリーミングを監視するために使用する管理コンソール アプリがあります。
+
 Media Services API では、REST API 要求を行うユーザーまたはアプリケーションは、Media Services アカウント リソースへのアクセス権を持ち、**共同作成者**または**所有者**のロールを使用することが必要です。 **閲覧者**ロールで API にアクセスすることはできますが、使用できる操作は **Get** または **List**  だけです。 詳細については、「[Media Services アカウント用のロールベースのアクセス制御](rbac-overview.md)」を参照してください。
 
 サービス プリンシパルを作成する代わりに、Azure リソースに対するマネージド ID を使い、Azure Resource Manager で Media Services API にアクセスすることを検討してください。 Azure リソースに対するマネージド ID の詳細については、「[Azure リソースのマネージド ID とは](../../active-directory/managed-identities-azure-resources/overview.md)」を参照してください。
@@ -52,6 +56,16 @@ Azure AD アプリケーションを作成するためのアクセス許可を�
 2. Azure AD アクセス トークンが中間層アプリに送信されます。
 4. 中間層アプリが、Azure AD トークンを使用して要求を Azure Media REST API に送信します。
 5. Media Services からデータが中間層アプリに返されます。
+
+### <a name="samples"></a>サンプル
+
+Azure AD サービス プリンシパルを使った接続方法を示す次のサンプルを参照してください。
+
+* [REST を使用して接続する](media-rest-apis-with-postman.md)  
+* [Java を使用して接続する](configure-connect-java-howto.md)
+* [.NET を使用して接続する](configure-connect-dotnet-howto.md)
+* [Node.js を使用して接続する](configure-connect-nodejs-howto.md)
+* [Python を使用して接続する](configure-connect-python-howto.md)
 
 ## <a name="naming-conventions"></a>名前付け規則
 
@@ -88,7 +102,7 @@ Media Services には、次のような長期操作があります。
 
 [Azure Media Services エンティティのフィルター処理、順序付け、ページング](entities-overview.md)に関するページを参照してください。
 
-## <a name="provide-feedback"></a>フィードバックの提供
+## <a name="ask-questions-give-feedback-get-updates"></a>質問、フィードバックの提供、最新情報の入手
 
 「[Azure Media Services community (Azure Media Services コミュニティ)](media-services-community.md)」を参照して、さまざまな質問の方法、フィードバックする方法、Media Services に関する最新情報の入手方法を確認してください。
 

@@ -1,5 +1,5 @@
 ---
-title: Edge を使用してデータを変換する | Microsoft Docs
+title: 'チュートリアル: Azure Data Box Edge のコンピューティングを使用してデータのフィルター処理、分析を行う| Microsoft Docs'
 description: Edge でコンピューティング ロールを構成し、Azure への送信前にそれをデータの変換に使用する方法を説明します。
 services: databox
 author: alkohli
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Data Box Edge so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 31911c124aeafecb8ee37d14e58d3a0bdc0d4955
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 7b3d725eb05c811d3fdd44516c1bde9a8dfbaaac
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58400738"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64924325"
 ---
 # <a name="tutorial-transform-data-with-azure-data-box-edge"></a>チュートリアル:Azure Data Box Edge を使用してデータを変換する
 
@@ -46,7 +46,7 @@ Data Box Edge でコンピューティングを構成するために、IoT Hub �
 
     ![コンピューティングの開始](./media/data-box-edge-deploy-configure-compute/configure-compute-1.png)
 
-2. **[Edge コンピューティングの構成]** タイルで、**[コンピューティングの構成]** を選択します。
+2. **[Edge コンピューティングの構成]** タイルで、 **[コンピューティングの構成]** を選択します。
 3. **[Edge コンピューティングの構成]** ブレードで、次を入力します。
 
    
@@ -57,7 +57,7 @@ Data Box Edge でコンピューティングを構成するために、IoT Hub �
 
     ![コンピューティングの開始](./media/data-box-edge-deploy-configure-compute/configure-compute-2.png)
 
-4. **作成**を選択します。 IoT Hub リソースの作成には数分かかります。 IoT Hub リソースが作成された後、**[コンピューティングの構成]** タイルが更新され、コンピューティングの構成が表示されます。 Edge コンピューティング ロールが構成されたことを確認するには、**[コンピューティングの構成]** タイルの **[View Compute]\(コンピューティングの表示\)** を選択します。
+4. **作成** を選択します。 IoT Hub リソースの作成には数分かかります。 IoT Hub リソースが作成された後、 **[コンピューティングの構成]** タイルが更新され、コンピューティングの構成が表示されます。 Edge コンピューティング ロールが構成されたことを確認するには、 **[コンピューティングの構成]** タイルの **[View Compute]\(コンピューティングの表示\)** を選択します。
     
     ![コンピューティングの開始](./media/data-box-edge-deploy-configure-compute/configure-compute-3.png)
 
@@ -70,11 +70,11 @@ Data Box Edge でコンピューティングを構成するために、IoT Hub �
 
 1. 次の手順を実行して、Edge 共有をデバイスに追加します。
 
-    1. 自分の Data Box Edge リソースで、**[Edge コンピューティング]、[開始]** の順に移動します。
-    2. **[共有の追加]** タイルで、**[追加]** を選択します。
+    1. 自分の Data Box Edge リソースで、 **[Edge コンピューティング]、[開始]** の順に移動します。
+    2. **[共有の追加]** タイルで、 **[追加]** を選択します。
     3. **[共有の追加]** ブレードで、共有名を指定して共有の種類を選択します。
-    4. Edge 共有をマウントするには、**[Edge コンピューティングで共有を使用する]** チェック ボックスをオンにします。
-    5. **[ストレージ アカウント]**、**[ストレージ サービス]**、既存のユーザーを選択して、**[作成]** を選択します。
+    4. Edge 共有をマウントするには、 **[Edge コンピューティングで共有を使用する]** チェック ボックスをオンにします。
+    5. **[ストレージ アカウント]** 、 **[ストレージ サービス]** 、既存のユーザーを選択して、 **[作成]** を選択します。
 
         ![Edge 共有の追加](./media/data-box-edge-deploy-configure-compute/add-edge-share-1.png) 
 
@@ -86,7 +86,7 @@ Data Box Edge でコンピューティングを構成するために、IoT Hub �
 
     Edge 共有が作成されると、作成の成功に関する通知が表示されます。 共有の一覧は更新されているかもしれませんが、共有の作成が完了するまで待つ必要があります。
 
-2. 前の手順の内容をすべて繰り返し、**[Edge ローカル共有として構成]** のチェック ボックスをオンにして、Edge デバイスに Edge ローカル共有を追加します。 ローカル共有内のデータはデバイスに残ります。
+2. 前の手順の内容をすべて繰り返し、 **[Edge ローカル共有として構成]** のチェック ボックスをオンにして、Edge デバイスに Edge ローカル共有を追加します。 ローカル共有内のデータはデバイスに残ります。
 
     ![Edge ローカル共有の追加](./media/data-box-edge-deploy-configure-compute/add-edge-share-2.png)
 
@@ -129,7 +129,7 @@ Data Box Edge でコンピューティングを構成するために、IoT Hub �
 
 モジュールが実行中であることを確認するには、以下を実行します。
 
-1. **[モジュールの追加]** タイルを選択します。 これにより、**[モジュール]** ブレードが開きます。 モジュールの一覧で、自分がデプロイしたモジュールを特定します。 自分が追加したモジュールのランタイムの状態は、*[実行中]* になっているはずです。
+1. **[モジュールの追加]** タイルを選択します。 これにより、 **[モジュール]** ブレードが開きます。 モジュールの一覧で、自分がデプロイしたモジュールを特定します。 自分が追加したモジュールのランタイムの状態は、 *[実行中]* になっているはずです。
 
     ![データ変換を検証する](./media/data-box-edge-deploy-configure-compute/verify-data-1.png)
  

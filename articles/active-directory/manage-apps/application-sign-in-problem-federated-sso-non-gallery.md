@@ -3,8 +3,8 @@ title: フェデレーション シングル サインオン用に構成され�
 description: Azure AD での SAML ベースのフェデレーション シングル サインオン用に構成されたアプリケーションにサインインするときに発生する可能性のある特定の問題のためのガイダンス
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2017
-ms.author: celested
+ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7cb0139227012be610977df3240f74a03f53be7e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 38decf98707231c21427f7a22dd4d12adb41852b
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58009063"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65825440"
 ---
 # <a name="problems-signing-in-to-a-non-gallery-application-configured-for-federated-single-sign-on"></a>フェデレーション シングル サインオン用に構成されたギャラリー以外のアプリケーションへのサインインに関する問題
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e9ee0d6fab96c84eee8a520d01d97faddab49f2
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 8b0844030d069fba40bfd2fdf55252d8b9e3b1c2
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58904187"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235125"
 ---
 # <a name="azure-active-directory-feature-deployment-guide"></a>Azure Active Directory 機能のデプロイ ガイド
 
@@ -41,7 +41,7 @@ ms.locfileid: "58904187"
 
 このフェーズでは、通常のユーザー アカウントをインポートまたは作成する前に、管理者がベースラインのセキュリティ機能を有効にして、より安全で使いやすい基盤を Azure AD 内に作成します。 この基盤フェーズにより、ユーザーが最初からより安全な状態にあること、およびエンドユーザーに紹介される新しい概念は一度に 1 つだけにする必要があることを確実にします。
 
-| タスク | 詳細 | 必要とされるライセンス |
+| タスク | Detail | 必要とされるライセンス |
 | ---- | ------ | ---------------- |
 | [複数のグローバル管理者を指定する](../users-groups-roles/directory-emergency-access.md) | 緊急事態があった場合に使用するため、クラウド専用の永続的なグローバル管理者アカウントを少なくとも 2 つ割り当てます。 これらのアカウントは日常は使用されないもので、長く複雑なパスワードにする必要があります。 | Azure AD Free |
 | [可能な場合は非グローバル管理者ロールを使用する](../users-groups-roles/directory-assign-admin-roles.md) | 管理者には、アクセスする必要がある領域だけに必要なアクセスのみを付与します。 すべての管理者がグローバル管理者である必要はありません。 | Azure AD Free |
@@ -62,10 +62,10 @@ ms.locfileid: "58904187"
 
 次に、フェーズ 1 で構築した基盤への追加を行います。ユーザーのインポート、同期の有効化、ゲスト アクセスの計画、追加機能のサポートのための準備を行います。
 
-| タスク | 詳細 | 必要とされるライセンス |
+| タスク | Detail | 必要とされるライセンス |
 | ---- | ------ | ---------------- |
 | [Azure AD Connect のインストール](../connect/active-directory-aadconnect-select-installation.md) | 既存のオンプレミス ディレクトリのユーザーをクラウドに同期する準備をします。 | Azure AD Free |
-| [パスワード ハッシュ同期の実装](../connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md) | パスワード ハッシュを同期し、パスワード変更のレプリケート、不正なパスワードの検出と修正、漏洩した資格情報の報告を行えるようにします。 | Azure AD Premium P1 |
+| [パスワード ハッシュ同期の実装](../connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md) | パスワード ハッシュを同期し、パスワード変更のレプリケート、不正なパスワードの検出と修正、漏洩した資格情報の報告を行えるようにします。 | Azure AD Free |
 | [パスワード ライトバックの実装](../authentication/howto-sspr-writeback.md) | クラウドでのパスワードの変更を、オンプレミスの Windows Server Active Directory 環境に書き戻すことを許可します。 | Azure AD Premium P1 |
 | [Azure AD Connect Health の実装](../connect-health/active-directory-aadconnect-health.md) | Azure AD Connect サーバー、AD FS サーバー、およびドメイン コント ローラーについて、正常性に関する重要な統計情報の監視を有効にします。 | Azure AD Premium P1 |
 | [Azure Active Directory のグループ メンバーシップでユーザーにライセンスを割り当てる](../users-groups-roles/licensing-groups-assign.md) | ユーザーごとの設定ではなく、グループ別に機能を有効または無効にするライセンス グループを作成することで、時間と労力を節約します。 | |
@@ -77,7 +77,7 @@ ms.locfileid: "58904187"
 
 以前のフェーズを基にした構築を続行するので、移行と Azure AD との統合の候補となるアプリケーションを特定し、それらのアプリケーションのセットアップを完了します。
 
-| タスク | 詳細 | 必要とされるライセンス |
+| タスク | Detail | 必要とされるライセンス |
 | ---- | ------ | ---------------- |
 | アプリケーションを特定する | オンプレミス アプリケーション、クラウドの SaaS アプリケーション、その他の基幹業務アプリケーションなど、組織で使用中のアプリケーションを特定します。 これらのアプリケーションの Azure AD での管理が、可能であるか、する必要があるかを判断します。 | ライセンス不要 |
 | [ギャラリーのサポートされている SaaS アプリケーションを統合する](../manage-apps/add-application-portal.md) | Azure AD には、あらかじめ統合された何千ものアプリケーションが含まれるギャラリーがあります。 組織で使用しているアプリケーションの一部は、おそらく、Azure portal から直接アクセスできるギャラリーにあります。 | Azure AD Free |
@@ -87,7 +87,7 @@ ms.locfileid: "58904187"
 
 フェーズ 4 では、管理者が、管理用の最低限の特権を適用し、最初のアクセス レビューを完了し、一般的なユーザー ライフ サイクルのタスクの自動化を有効にします。
 
-| タスク | 詳細 | 必要とされるライセンス |
+| タスク | Detail | 必要とされるライセンス |
 | ---- | ------ | ---------------- |
 | [Privileged Identity Management の使用を強制する](../privileged-identity-management/pim-security-wizard.md) | 通常の日常ユーザー アカウントから管理者ロールを削除します。 管理ユーザーにそのロールの使用を認めるのは、多要素認証チェックの成功後、業務上妥当である理由の提示後、指定された承認者からの要求後とします。 | Azure AD Premium P2 |
 | [PIM で Azure AD ディレクトリ ロールのアクセス レビューを完了する](../privileged-identity-management/pim-how-to-start-security-review.md) | セキュリティおよびリーダーシップ チームと協力して、組織のポリシーに基づいて管理アクセスをレビューするアクセス レビュー ポリシーを作成します。 | Azure AD Premium P2 |

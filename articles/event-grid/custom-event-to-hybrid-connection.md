@@ -9,12 +9,12 @@ ms.date: 02/02/2019
 ms.topic: tutorial
 ms.service: event-grid
 ms.custom: seodec18
-ms.openlocfilehash: 2a050f8bc5d2437c7cdbadcf3296c2ef6d4659dc
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 270059537fc8d06648c86088b22aef5b78ff00ec
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55728641"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65606300"
 ---
 # <a name="tutorial-route-custom-events-to-azure-relay-hybrid-connections-with-azure-cli-and-event-grid"></a>チュートリアル: Azure CLI および Azure Event Grid を利用した Azure Relay Hybrid Connections へのカスタム イベントの転送
 
@@ -80,7 +80,7 @@ az eventgrid event-subscription create \
 
 ハイブリッド接続からイベントを取得できるアプリケーションが必要です。 [C# 用の Microsoft Azure Event Grid Hybrid Connection Consumer サンプル](https://github.com/Azure-Samples/event-grid-dotnet-hybridconnection-destination)は、その操作を実行します。 前提条件の手順は既に完了しています。
 
-1. Visual Studio 2017 Version 15.5 以降を使っていることを確認します。
+1. Visual Studio 2019 以降を使用していることを確認してください。
 
 1. ローカル コンピューターにリポジトリを複製します。
 

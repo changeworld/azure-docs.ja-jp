@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
 ms.openlocfilehash: 5e58429b6a3e2f7c7c39c13dc65af48b064f9771
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57553934"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66238289"
 ---
 | レベル | 無料 | Basic | Standard |
 | --- | --- | --- | --- |

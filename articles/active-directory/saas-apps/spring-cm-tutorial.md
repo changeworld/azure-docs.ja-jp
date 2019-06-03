@@ -17,11 +17,11 @@ ms.date: 04-08-2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 04ddc09d3d2475afe9be90cf1d5585697b9c36cf
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59565582"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65866823"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-springcm"></a>チュートリアル: Azure Active Directory と SpringCM の統合
 
@@ -62,7 +62,7 @@ Azure AD への SpringCM の統合を構成するには、ギャラリーから�
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** ボタンをクリックします。
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 

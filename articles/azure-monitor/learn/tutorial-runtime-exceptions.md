@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 267e790cec3c915330f8f72053458527ee7bfead
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 19455998ca13b9abf48bb1cb3856e38b5c47ef52
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58095570"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595596"
 ---
 # <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>Azure Application Insights でランタイムの例外を見つけて診断する
 
@@ -34,7 +34,7 @@ Azure Application Insights は、お使いのアプリケーションからテ�
 
 このチュートリアルを完了するには、以下が必要です。
 
-- 次のワークロードを使って、[Visual Studio 2017](https://www.visualstudio.com/downloads/) をインストールします。
+- 次のワークロードを使って、[Visual Studio 2019](https://www.visualstudio.com/downloads/) をインストールします。
     - ASP.NET および Web の開発
     - Azure の開発
 - [Visual Studio Snapshot Debugger](https://aka.ms/snapshotdebugger) をダウンロードしてインストールします。
@@ -50,7 +50,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログイ
 Application Insights は、お使いのアプリケーションのエラーを収集し、さまざまな操作全体のエラー頻度を表示して、影響が最も高いエラーに専念できるようにします。  その後、これらのエラーの詳細を掘り下げて、根本原因を特定できます。   
 
 1. **Application Insights** を選んでから、ご利用のサブスクリプションを選びます。  
-2. **[失敗]** パネルを開くには、**[調査]** メニューの下にある **[失敗]** を選ぶか、**[失敗した要求]** グラフをクリックします。
+2. **[失敗]** パネルを開くには、 **[調査]** メニューの下にある **[失敗]** を選ぶか、 **[失敗した要求]** グラフをクリックします。
 
     ![失敗した要求](media/tutorial-runtime-exceptions/failed-requests.png)
 
@@ -75,9 +75,9 @@ Application Insights は、お使いのアプリケーションのエラーを�
     ![例外の詳細](media/tutorial-runtime-exceptions/failed-requests-exception.png)
 
 ## <a name="identify-failing-code"></a>欠陥コードを特定する
-Snapshot Debugger は、お使いのアプリケーションで最も一般的な例外のスナップショットを収集し、運用環境におけるその根本原因の診断をサポートします。  ポータルで [Debug Snapshots (デバッグ スナップショット)] を表示して、コール スタックを表示し、各呼び出しスタック フレームで変数を確認できます。 その後、スナップショットをダウンロードして Visual Studio 2017 で開くことで、ソース コードをデバッグできます。
+Snapshot Debugger は、お使いのアプリケーションで最も一般的な例外のスナップショットを収集し、運用環境におけるその根本原因の診断をサポートします。  ポータルで [Debug Snapshots (デバッグ スナップショット)] を表示して、コール スタックを表示し、各呼び出しスタック フレームで変数を確認できます。 その後、スナップショットをダウンロードして Visual Studio 2019 で開くことで、ソース コードをデバッグできます。
 
-1. 例外のプロパティで、**[デバッグ スナップショットを開く]** をクリックします。
+1. 例外のプロパティで、 **[デバッグ スナップショットを開く]** をクリックします。
 2. 要求のコール スタックで **[スナップショットのデバッグ]** パネルが開きます。  いずれかの方法をクリックして、要求時のすべてのローカル変数の値を表示します。  この例では、1 番目の方法から順に、値を持たないローカル変数が確認できます。
 
     ![スナップショットをデバッグする](media/tutorial-runtime-exceptions/debug-snapshot-01.png)
@@ -86,7 +86,7 @@ Snapshot Debugger は、お使いのアプリケーションで最も一般的�
 
     ![スナップショットをデバッグする](media/tutorial-runtime-exceptions/debug-snapshot-02.png)
 
-4. このオプションを Visual Studio にダウンロードして、修正する必要がある実際のコードをそこで見つけることができます。 これを行うには、**[スナップショットのダウンロード]** をクリックします。
+4. このオプションを Visual Studio にダウンロードして、修正する必要がある実際のコードをそこで見つけることができます。 これを行うには、 **[スナップショットのダウンロード]** をクリックします。
 5. スナップショットは、Visual Studio に読み込まれます。
 6. これで、例外の原因となったコード行を素早く特定するデバッグ セッションを Visual Studio Enterprise で実行できます。
 

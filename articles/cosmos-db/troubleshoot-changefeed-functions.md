@@ -3,16 +3,16 @@ title: Azure Functions で Azure Cosmos DB トリガーを使用するときの�
 description: Azure Functions で Azure Cosmos DB トリガーを使用するときの一般的な問題、回避策、診断手順です
 author: ealsur
 ms.service: cosmos-db
-ms.date: 04/16/2019
+ms.date: 05/23/2019
 ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 40d9aba4ff8fd78f6369729ddc16238e65bfc169
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 66eff6ee603ced03a8f4d75d4569752e0b11a6e7
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60010892"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242531"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-trigger-in-azure-functions"></a>Azure Functions で Azure Cosmos DB トリガーを使用するときの問題の診断とトラブルシューティングを行う
 
@@ -27,17 +27,19 @@ Azure Cosmos DB トリガーとバインドは、基になる Azure Functions Ru
 
 この記事では、明示的に指定されていない限り、ランタイムに言及するときは常に Azure Functions V2 のことです。
 
-## <a name="consuming-the-cosmos-db-sdk-separately-from-the-trigger-and-bindings"></a>トリガーおよびバインドとは別に Cosmos DB SDK を使用する
+## <a name="consume-the-azure-cosmos-db-sdk-independently"></a>Azure Cosmos DB SDK を個別に使用する
 
 拡張機能パッケージの重要な機能は、Azure Cosmos DB のトリガーとバインドのサポートを提供することです。 また、[Azure Cosmos DB .NET SDK](sql-api-sdk-dotnet-core.md) も含まれており、トリガーやバインドを使わずにプログラムで Azure Cosmos DB とやり取りする場合に便利です。
 
-Azure Cosmos DB SDK を使う場合は、別の NuGet パッケージの参照をプロジェクトに追加しないでください。 代わりに、**Azure Functions の拡張機能パッケージによって SDK の参照が解決されるようにします**。
+Azure Cosmos DB SDK を使う場合は、別の NuGet パッケージの参照をプロジェクトに追加しないでください。 代わりに、**Azure Functions の拡張機能パッケージによって SDK の参照が解決されるようにします**。 トリガーおよびバインドとは別に Azure Cosmos DB SDK を使用する
 
 さらに、[Azure Cosmos DB SDK クライアント](./sql-api-sdk-dotnet-core.md)の独自のインスタンスを手動で作成する場合は、[シングルトン パターン アプローチを使用](../azure-functions/manage-connections.md#documentclient-code-example-c)して、クライアントのインスタンスを 1 つだけ使用するパターンに従う必要があります。 このプロセスにより、操作でのソケットの問題の可能性を回避できます。
 
-## <a name="common-known-scenarios-and-workarounds"></a>既知の一般的なシナリオと回避策
+## <a name="common-scenarios-and-workarounds"></a>一般的なシナリオと回避策
 
-### <a name="azure-function-fails-with-error-message-either-the-source-collection-collection-name-in-database-database-name-or-the-lease-collection-collection2-name-in-database-database2-name-does-not-exist-both-collections-must-exist-before-the-listener-starts-to-automatically-create-the-lease-collection-set-createleasecollectionifnotexists-to-true"></a>Azure Function が次のエラー メッセージで失敗する: "Either the source collection 'collection-name' (in database 'database-name') or the lease collection 'collection2-name' (in database 'database2-name') does not exist. Both collections must exist before the listener starts. To automatically create the lease collection, set 'CreateLeaseCollectionIfNotExists' to 'true'" (ソース コレクション 'コレクション名' (データベース 'データベース名' 内) またはリース コレクション 'コレクション名 2' (データベース 'データベース名 2' 内) が存在しません。リスナーが開始する前に、両方のコレクションが存在している必要があります。リース コレクションを自動的に作成するには、'CreateLeaseCollectionIfNotExists' を 'true' に設定します)
+### <a name="azure-function-fails-with-error-message-collection-doesnt-exist"></a>コレクションが存在しないというエラー メッセージで Azure 関数が失敗する
+
+Azure Function が次のエラー メッセージで失敗する: "Either the source collection 'collection-name' (in database 'database-name') or the lease collection 'collection2-name' (in database 'database2-name') does not exist. Both collections must exist before the listener starts. To automatically create the lease collection, set 'CreateLeaseCollectionIfNotExists' to 'true'" (ソース コレクション 'コレクション名' (データベース 'データベース名' 内) またはリース コレクション 'コレクション名 2' (データベース 'データベース名 2' 内) が存在しません。リスナーが開始する前に、両方のコレクションが存在している必要があります。リース コレクションを自動的に作成するには、'CreateLeaseCollectionIfNotExists' を 'true' に設定します)
 
 これは、トリガーが機能するために必要な Azure Cosmos コンテナーのいずれか一方または両方が存在しないか、または Azure 関数でアクセスできないことを意味します。 構成に基づき、**トリガーが探している Azure Cosmos データベースとコンテナーがエラー自体で示されます**。
 
@@ -78,7 +80,8 @@ Azure 関数では、多くの場合、受け取った変更の処理が行わ�
 
 このシナリオでの最善の対応策は、コードに `try/catch blocks` を追加し、変更を処理している可能性があるループ内で、項目の特定のサブセットに対する障害を検出して、それらを適切に処理することです (さらに分析するために別のストレージに送信するか、再試行します)。 
 
-> **既定の Azure Cosmos DB トリガーでは、コードの実行中にハンドルされない例外が発生した場合、変更のバッチの再試行は行われません**。 つまり、宛先に変更が到達しなかった理由は、それらを処理していないためです。
+> [!NOTE]
+> 既定の Azure Cosmos DB トリガーでは、コードの実行中にハンドルされない例外が発生した場合、変更のバッチの再試行は行われません。 つまり、宛先に変更が到達しなかった理由は、それらを処理していないためです。
 
 一部の変更がトリガーによってまったく受信されない場合、最もよくあるシナリオは、**別の Azure 関数が実行されている**ことです。 **まったく同じ構成** (監視対象コンテナーとリース コンテナーが同じ) を持つ別の Azure 関数が、Azure にデプロイされているか、または開発者のコンピューター上でローカルに実行されていて、この Azure 関数により、自分の Azure 関数で処理されるはずの変更のサブセットが盗まれている可能性があります。
 

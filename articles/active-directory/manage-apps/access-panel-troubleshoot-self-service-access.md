@@ -3,8 +3,8 @@ title: アプリケーションのセルフ サービス アクセス使用に�
 description: アプリケーションのセルフ サービス アクセスに関連する問題をトラブルシューティングします。
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
-ms.author: celested
+ms.author: mimart
 ms.reviewer: japere,asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd3ae06c42452d425f041543715336827048ccb2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a981dfb1d72c21eccf2ad7119ea219114ed15aed
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58076447"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65784275"
 ---
 # <a name="problem-using-self-service-application-access"></a>アプリケーションのセルフ サービス アクセス使用に関する問題点
 

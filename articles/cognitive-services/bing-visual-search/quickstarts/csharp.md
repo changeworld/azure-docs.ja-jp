@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 3/28/2019
+ms.date: 04/26/2019
 ms.author: scottwhi
-ms.openlocfilehash: d2f5e87bd6c6780e8504abe1753e90eca5db763a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b1518af9c37ffe0b8175e741b363d79941e3caaf
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58880408"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65905710"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-c"></a>クイック スタート:Bing Visual Search REST API と C# を使用して画像に関する分析情報を取得する
 
@@ -23,7 +23,7 @@ ms.locfileid: "58880408"
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Visual Studio 2017](https://www.visualstudio.com/downloads/) の任意のエディション。
+* [Visual Studio 2019](https://www.visualstudio.com/downloads/) のいずれかのエディション。
 * NuGet パッケージとして入手できる [Json.NET フレームワーク](https://www.newtonsoft.com/json)。
 * Linux/macOS を使用している場合、このアプリケーションは [Mono](https://www.mono-project.com/) を使用して実行できます。
 

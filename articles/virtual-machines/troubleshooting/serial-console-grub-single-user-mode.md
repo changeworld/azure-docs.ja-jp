@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 08/14/2018
+ms.date: 05/08/2019
 ms.author: alsin
-ms.openlocfilehash: ca2523a1101a21740a318a304f9bec491d4de2f9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 89cbf220c9ae32c7f63da4941ced1bdbfa1e5293
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58106238"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65835035"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>シリアル コンソール を使用して GRUB とシングル ユーザー モードにアクセスする
 GRUB とは GRand Unified Bootloader です。これは、VM を起動したときにおそらく最初に表示されるものです。 オペレーティング システムが起動する前に表示されるため、SSH からはアクセスできません。 GRUB からは、特にシングル ユーザー モードで起動するようにブート構成を変更することができます。

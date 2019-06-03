@@ -46,8 +46,6 @@
       href: video-indexer-view-edit.md
     - name: エディターを使用したプロジェクトの作成
       href: use-editor-create-project.md
-    - name: 既存のビデオからのビデオの分析情報の作成
-      href: video-indexer-create-new.md
     - name: アプリケーションへのウィジェットの埋め込み
       href: video-indexer-embed-widgets.md
     - name: コンテンツ モデルのカスタマイズ

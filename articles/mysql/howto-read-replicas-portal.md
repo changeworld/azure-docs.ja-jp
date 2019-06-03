@@ -5,17 +5,20 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 02/26/2019
-ms.openlocfilehash: 52f192a179c02e63c394401cce82b51fbe96e92d
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.date: 04/29/2019
+ms.openlocfilehash: b422718a1eaec483acdc2c8ab37442b9aea78aaa
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "61425018"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510781"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-portal"></a>Azure Portal を使用した Azure Database for MySQL の読み取りレプリカを作成し、管理する方法
 
-このアーティクルでは、 Azure Portal を使用して Azure Database for MySQL のマスターと同じ Azure リージョン内で読み取りレプリカを作成し、管理する方法を学びます。 現在、この機能はパブリック プレビュー段階にあります。
+この記事では、Azure portal を使用して Azure Database for MySQL サービスの読み取りレプリカを作成および管理する方法を学習します。
+
+> [!IMPORTANT]
+> マスター サーバーと同じ Azure リージョン内、または選択した他の任意の Azure リージョン内に読み取りレプリカを作成できます。 リージョン間レプリケーションは、現在パブリック プレビュー段階です。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -38,9 +41,15 @@ ms.locfileid: "61425018"
 
    ![Azure Database for MySQL - レプリケーション](./media/howto-read-replica-portal/add-replica.png)
 
-5. レプリカ サーバーの名前を入力し、**[OK]** をクリックしてレプリカの作成を確定します。
+5. レプリカ サーバーの名前を入力します。
 
-   ![Azure Database for MySQL - レプリカの作成](./media/howto-read-replica-portal/create-replica.png)
+    ![Azure Database for MySQL - レプリカ名](./media/howto-read-replica-portal/replica-name.png)
+
+6. レプリカ サーバーの場所を選択します。 任意の Azure リージョンにレプリカを作成できます。 既定の場所は、マスター サーバーと同じです
+
+    ![Azure Database for MySQL - レプリカの場所](./media/howto-read-replica-portal/replica-location.png)
+
+7. **[OK]** を選択して、レプリカの作成を確認します。
 
 > [!NOTE]
 > マスターと同じサーバー構成で、読み取りレプリカが作成されます。 作成された後、レプリカ サーバーの構成を変更できます。 レプリカをマスターと維持できるようにするために、レプリカ サーバーの構成をマスターと同じかそれ以上の値にしておくようお勧めします。
@@ -115,7 +124,7 @@ Azure Portal からマスターとレプリカ サーバー間のレプリケー
 
 2. サイドバーの **[監視]** セクションで、**[メトリック]** を選択します。
 
-3. 利用可能なメトリックのドロップダウンリストから、 **秒単位のレプリケーションのラグ** を選択します。 
+3. 利用可能なメトリックのドロップダウンリストから、 **秒単位のレプリケーションのラグ** を選択します。
 
    ![レプリケーションのラグを選択します](./media/howto-read-replica-portal/monitor-select-replication-lag.png)
 

@@ -53,6 +53,8 @@
       href: functions-create-serverless-api.md
     - name: OpenAPI 定義の作成
       href: functions-openapi-definition.md
+    - name: 仮想ネットワークへの接続
+      href: functions-create-vnet.md
     - name: Event Grid でのイメージのサイズ変更
       href: ../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2fazure%2fazure-functions%2ftoc.json
     - name: サーバーレス Web アプリの作成
@@ -118,8 +120,8 @@
       href: functions-networking-options.md
     - name: IP アドレス
       href: ip-addresses.md
-    - name: オンプレミスの関数
-      href: functions-runtime-overview.md
+    - name: Kubernetes での Functions
+      href: functions-kubernetes-keda.md
 - name: ハウツー ガイド
   items:
     - name: 開発
@@ -142,6 +144,8 @@
           href: create-function-app-linux-app-service-plan.md
         - name: ローカルの PowerShell 関数をデバッグする
           href: functions-debug-powershell-local.md
+        - name: 依存関係の挿入
+          href: functions-dotnet-dependency-injection.md
         - name: 接続の管理
           href: manage-connections.md
         - name: エラー処理
@@ -173,6 +177,7 @@
       items:
         - name: 関数アプリの管理
           href: functions-how-to-use-azure-function-app-settings.md
+          displayName: 'app setting, application setting'
         - name: ランタイム バージョンの設定
           href: set-runtime-version.md
         - name: 手動による拡張機能の登録
@@ -210,7 +215,7 @@
         - name: SQL Database への接続
           href: functions-scenario-database-table-cleanup.md
         - name: 仮想ネットワークへの接続
-          href: functions-create-vnet.md
+          href: functions-create-vnet-old.md
         - name: Open API 2.0 定義の作成
           href: functions-api-definition-getting-started.md
         - name: PowerApps および Microsoft Flow にエクスポートする
@@ -294,6 +299,8 @@
       href: 'https://azure.microsoft.com/pricing/details/functions/'
     - name: 料金計算ツール
       href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: クォータの情報
+      href: 'functions-scale.md#service-limits'
     - name: リージョン別の提供状況
       href: 'https://azure.microsoft.com/regions/services/'
     - name: ビデオ

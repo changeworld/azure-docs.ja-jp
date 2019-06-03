@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: shared-capabilities
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/01/2019
+ms.date: 05/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: fc26c0357dcb071c4c75e8684fe47144a04177e4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 0ac34f1d1e7fc2a967c7608f31f3b943f9380d01
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58807344"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65786204"
 ---
 # <a name="variable-assets-in-azure-automation"></a>Azure Automation での変数アセット
 
@@ -135,45 +135,6 @@ for ($i = 1; $i -le $NumberOfIterations; $i++) {
     Write-Output "$i`: $SampleMessage"
 }
 Set-AzureRmAutomationVariable -ResourceGroupName "ResourceGroup01" –AutomationAccountName "MyAutomationAccount" –Name NumberOfRunnings –Value ($NumberOfRunnings += 1)
-```
-
-#### <a name="setting-and-retrieving-a-complex-object-in-a-variable"></a>変数での複雑なオブジェクトの設定および取得
-
-次のサンプル コードは、テキスト形式の Runbook で複合値で変数を更新する方法を示しています。 このサンプルでは、Azure 仮想マシンは **Get-AzureVM** で取得され、既存の Automation 変数に保存されます。  [変数の型](#variable-types)で説明したように、これは PSCustomObject として格納されます。
-
-```powershell
-$vm = Get-AzureVM -ServiceName "MyVM" -Name "MyVM"
-Set-AutomationVariable -Name "MyComplexVariable" -Value $vm
-```
-
-次のコードでは、この値は変数から取得され、仮想マシンを起動するために使用されます。
-
-```powershell
-$vmObject = Get-AutomationVariable -Name "MyComplexVariable"
-if ($vmObject.PowerState -eq 'Stopped') {
-    Start-AzureVM -ServiceName $vmObject.ServiceName -Name $vmObject.Name
-}
-```
-
-#### <a name="setting-and-retrieving-a-collection-in-a-variable"></a>変数でのコレクションの設定および取得
-
-次のサンプル コードは、テキスト形式の Runbook で複合値のコレクションで変数を使用する方法を示しています。 このサンプルでは、複数の Azure 仮想マシンは **Get-AzureVM** で取得され、既存の Automation 変数に保存されます。 [変数の型](#variable-types)で説明したように、これは PSCustomObject のコレクションとして格納されます。
-
-```powershell
-$vms = Get-AzureVM | Where -FilterScript {$_.Name -match "my"}
-Set-AutomationVariable -Name 'MyComplexVariable' -Value $vms
-```
-
-次のコードでは、このコレクションは変数から取得され、各仮想マシンを起動するために使用されます。
-
-```powershell
-$vmValues = Get-AutomationVariable -Name "MyComplexVariable"
-ForEach ($vmValue in $vmValues)
-{
-    if ($vmValue.PowerState -eq 'Stopped') {
-        Start-AzureVM -ServiceName $vmValue.ServiceName -Name $vmValue.Name
-    }
-}
 ```
 
 #### <a name="setting-and-retrieving-a-variable-in-python2"></a>Python2 の変数の設定および取得

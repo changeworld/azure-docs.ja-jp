@@ -6,14 +6,14 @@ author: vhorne
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 3/20/2019
+ms.date: 4/30/2019
 ms.author: victorh
-ms.openlocfilehash: 3c8a2fe9f4486fe4d33754b58f4e7ebec1b3252d
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 72eaa18d570e85274efbea80f12e9a7301eecbfa
+ms.sourcegitcommit: ed66a704d8e2990df8aa160921b9b69d65c1d887
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59682953"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64947083"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Application Gateway に関してよく寄せられる質問
 
@@ -119,7 +119,7 @@ Traffic Manager を使用すると、異なるデータ センターにある複
 
 ### <a name="does-application-gateway-support-autoscaling"></a>Application Gateway は自動スケーリングをサポートしていますか?
 
-はい、Application Gateway v2 SKU では、自動スケールをサポートします。 詳細については、「[自動スケールとゾーン冗長 Application Gateway (パブリック プレビュー)](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant)」を参照してください。
+はい、Application Gateway v2 SKU では、自動スケールをサポートします。 詳しくは、「[自動スケーリングとゾーン冗長 Application Gateway](application-gateway-autoscaling-zone-redundant.md)」を参照してください。
 
 ### <a name="does-manual-scale-up-or-scale-down-cause-downtime"></a>手動でのスケールアップまたはスケールダウンによってダウンタイムが発生することはありますか?
 
@@ -267,7 +267,7 @@ Application Gateway は、認証証明書を 10 件までサポートしてい�
 
 ### <a name="does-application-gateway-natively-integrate-with-azure-key-vault"></a>Application Gateway は Azure Key Vault とネイティブに統合されていますか?
 
-いいえ。
+はい、Application Gateway v2 SKU では、Key Vault をサポートします。 詳細については、「[Key Vault 証明書での SSL 終了](key-vault-certs.md)」を参照してください。
 
 ### <a name="how-do-i-configure-https-listeners-for-com-and-net-sites"></a>.com と .net のサイトの HTTPS リスナーはどのように構成するのでしょうか? 
 

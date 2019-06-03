@@ -1,6 +1,6 @@
 ---
 title: Azure Data Box Edge の制限 | Microsoft Docs
-description: Microsoft Azure Data Box Edge のシステム制限と推奨サイズについて説明します。
+description: Azure Data Box Edge のシステム制限および推奨サイズについて説明します。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: alkohli
-ms.openlocfilehash: a687398032adffe5e787ef1469abe0b2627a38fe
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: b454b563cdb870ca8f07a45b796dc6b1e272502d
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403546"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64924593"
 ---
 # <a name="azure-data-box-edge-limits"></a>Azure Data Box Edge の制限
 

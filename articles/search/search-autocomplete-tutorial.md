@@ -10,14 +10,14 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: mcarter
 ms.custom: seodec2018
-ms.openlocfilehash: f5cb8d2fee706600251039d80232d9fc7f60d5fb
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 9385ed5127b8cc1aaf84c887b652fd8970883ba6
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025152"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65524022"
 ---
-# <a name="example-add-suggestions-or-autocomplete-to-your-azure-search-application"></a>例:お使いの Azure Search アプリケーションに検索候補またはオートコンプリートを追加する
+# <a name="add-suggestions-or-autocomplete-to-your-azure-search-application"></a>Azure Search アプリケーションに提案やオートコンプリートを追加する
 
 この記事では、[検索候補](https://docs.microsoft.com/rest/api/searchservice/suggestions)および[オートコンプリート](https://docs.microsoft.com/rest/api/searchservice/autocomplete)を使用して、search-as-you-type (入力と並行して検索) の動作をサポートするパワフルな検索ボックスを作成します。
 
@@ -164,7 +164,7 @@ Controllers ディレクトリ内の **HomeController.cs** ファイルを開き
 
 最初に気付くのは、クラスの上部にある `InitSearch` と呼ばれるメソッドです。 これは、Azure Search サービスに対する認証済み HTTP インデックス クライアントを作成します。 詳細については、「[.NET アプリケーションから Azure Search を使用する方法](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk)」をご覧ください。
 
-行 41 の Suggest 関数に注目してください。 これは、[DocumentsOperationsExtensions.Suggest メソッド](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.suggest?view=azure-dotnet-preview)に基づいています。
+行 41 の Suggest 関数に注目してください。 これは、[DocumentsOperationsExtensions.Suggest メソッド](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.suggest?view=azure-dotnet)に基づいています。
 
 ```csharp
 public ActionResult Suggest(bool highlights, bool fuzzy, string term)
@@ -198,7 +198,7 @@ public ActionResult Suggest(bool highlights, bool fuzzy, string term)
 
 Suggest 関数は、ヒットの強調表示が返されるかどうか、および入力された検索用語に加えてあいまい一致も使用するかどうかを決定する 2 つのパラメーターを使用します。 このメソッドは、検索候補 API に渡される [SuggestParameters](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.suggestparameters?view=azure-dotnet) オブジェクトを作成します。 結果は、クライアントに表示できるように JSON に変換されます。
 
-行 69 の Autocomplete 関数に注目してください。 これは、[DocumentsOperationsExtensions.Autocomplete メソッド](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.autocomplete?view=azure-dotnet-preview)に基づいています。
+行 69 の Autocomplete 関数に注目してください。 これは、[DocumentsOperationsExtensions.Autocomplete メソッド](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.autocomplete?view=azure-dotnet)に基づいています。
 
 ```csharp
 public ActionResult AutoComplete(string term)

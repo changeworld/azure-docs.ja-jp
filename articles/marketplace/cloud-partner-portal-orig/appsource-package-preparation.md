@@ -1,25 +1,19 @@
 ---
-title: AppSource パッケージの準備 | Microsoft Docs
+title: AppSource パッケージの準備 | Azure Marketplace
 description: AppSource パッケージを準備しビルドする方法の説明。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: pbutlerm
 manager: Ricardo.Villalobos
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: cc06ddf2fce93bef27e7aaee85b47179608e192b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: pabutler
+ms.openlocfilehash: ff822e87bfec5daa161172c0d47975eb06cc2808
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57837033"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64935641"
 ---
 # <a name="appsource-package-preparation"></a>AppSource パッケージの準備
 
@@ -117,7 +111,7 @@ input.xml のコード例を次に示します。 下の表の定義を参照し
 |SolutionAnchorName |ソリューション アセットの表示名と説明に使用される Package Deployer におけるソリューション zip ファイルの名前。|
 | StartDate| これは、ソリューション パッケージが利用可能になる日付です。 形式は、MM/DD/YYYY です|
 |EndDate|これは、ソリューション パッケージが利用できなくなる日付です。 形式は、MM/DD/YYYY です |
-|SupportedCountries |これは、このパッケージが表示される国のコンマ区切りのリストです。 現在のすべての国番号の一覧については、オンライン サービスにお問い合わせください。 この記事の作成時点では、一覧は次のとおりでした。AE、AL、AM、AO、AR、AT、AU、AZ、BA、BB、BD、BE、BG、BH、BM、BN、BO、BR、BY、CA、CH、CI、CL、CM、CO、CR、CV、CW、CY、CZ、DE、DK、DO、DZ、EC、EE、EG、ES、FI、FR、GB、GE、GH、GR、GT、HK、HN、HR、HU、ID、IE、IL、IN、IQ、IS、IT、JM、JO、JP、KE、KG、KN、KR、KW、KY、KZ、LB、LK、LT、LU、LV、LY、MA、MC、MD、ME、MK、MN、MO、MT、MU、MX、MY、NG、NI、NL、NO、NZ、OM、PA、PE、PH、PK、PL、PR、PS、PT、PY、QA、RO、RS、RU、RW、SA、SE、SG、SI、SK、SN、SV、TH、TM、TN、TR、TT、TW、UA、US、UY、UZ、VE、VI、VN、ZA、ZW |
+|SupportedCountries |これは、このパッケージを参照する必要がある国/地域のコンマ区切りの一覧です。 現在のすべての国番号の一覧については、オンライン サービスにお問い合わせください。 この記事の作成時点では、一覧は次のとおりでした。AE、AL、AM、AO、AR、AT、AU、AZ、BA、BB、BD、BE、BG、BH、BM、BN、BO、BR、BY、CA、CH、CI、CL、CM、CO、CR、CV、CW、CY、CZ、DE、DK、DO、DZ、EC、EE、EG、ES、FI、FR、GB、GE、GH、GR、GT、HK、HN、HR、HU、ID、IE、IL、IN、IQ、IS、IT、JM、JO、JP、KE、KG、KN、KR、KW、KY、KZ、LB、LK、LT、LU、LV、LY、MA、MC、MD、ME、MK、MN、MO、MT、MU、MX、MY、NG、NI、NL、NO、NZ、OM、PA、PE、PH、PK、PL、PR、PS、PT、PY、QA、RO、RS、RU、RW、SA、SE、SG、SI、SK、SN、SV、TH、TM、TN、TR、TT、TW、UA、US、UY、UZ、VE、VI、VN、ZA、ZW |
 |LearnMoreLink | このパッケージの詳細情報ページの URL。 |
 |Locales|優先ソリューション UX でサポートする UX 言語ごとの、このノードの 1 つのインスタンス。 このノードには、各言語のロケール、ロゴ、および用語について説明する子ノードが含まれます|
 |Locales:PackageLocale.Code|このノードの言語の LCID。 例:英語 (米国) は 1033|

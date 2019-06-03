@@ -4,7 +4,7 @@ description: Azure AD に登録されたアプリへのアクセスを選択し�
 services: active-directory
 documentationcenter: ''
 author: kalyankrishna1
-manager: mtillman
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -17,12 +17,12 @@ ms.author: kkrishna
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 17b76a25b3c5c2c3ce4dc4217389706a4b24d837
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e07d9f0fa6ec6b4abc7ce96279b7b02faae298fa
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56210291"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65540192"
 ---
 # <a name="how-to-restrict-your-app-to-a-set-of-users"></a>方法:ご利用のアプリを特定のユーザー セットに制限する
 

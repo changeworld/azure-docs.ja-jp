@@ -83,7 +83,7 @@
           displayName: roles
         - name: 自由形式のデータを抽出する
           href: luis-tutorial-pattern-any.md
-    - name: ボットを使用する
+    - name: V4 Bot Framework を使用する
       items:
         - name: 'C# の場合'
           href: luis-csharp-tutorial-bf-v4.md
@@ -198,7 +198,7 @@
           href: luis-tutorial-bing-spellcheck.md
         - name: Speech Service との統合
           href: luis-tutorial-speech-to-intent.md
-        - name: ボットとの統合
+        - name: V3 Bot Framework を使用する
           items:
             - name: Web アプリ ボットとの統合
               items:
@@ -279,6 +279,8 @@
       displayName: 'failover, fail-over, fail over, Europe, EU, Australia, business continuity, bcdr'
     - name: 境界
       href: luis-boundaries.md
+    - name: アプリケーションの設定
+      href: luis-reference-application-settings.md
     - name: 事前構築済みのエンティティのリファレンス
       items:
         - name: カルチャごとのエンティティ
@@ -318,15 +320,15 @@
       href: luis-reference-prebuilt-domains.md
       displayName: 'Calendar, Communication,Email,HomeAutomation,Note,Places, RestaurantReservation,ToDo,Utilities,Weather,Web'
     - name: Azure CLI
-      href: 'https://aka.ms/az-cli-cognitiveservices'
+      href: 'https://go.microsoft.com/fwlink/?linkid=2092156'
     - name: Azure RM PowerShell
-      href: 'https://aka.ms/azure-powershell-cognitiveservices'
+      href: 'https://go.microsoft.com/fwlink/?linkid=2092157'
     - name: REST API
       items:
         - name: V2 REST API の作成
-          href: 'https://aka.ms/luis-authoring-apis'
+          href: 'https://go.microsoft.com/fwlink/?linkid=2092087'
         - name: エンドポイント V2 REST API
-          href: 'https://aka.ms/luis-endpoint-apis'
+          href: 'https://go.microsoft.com/fwlink/?linkid=2092356'
         - name: HTTP コード
           displayName: '400, 401, 403, 409, 410, 414, 429'
           href: luis-reference-response-codes.md
@@ -398,13 +400,15 @@
       href: 'https://github.com/Microsoft/Cognitive-Samples-IntelligentKiosk'
 - name: リソース
   items:
+    - name: 新機能
+      href: whats-new.md
     - name: リージョン別の提供状況
-      href: 'https://azure.microsoft.com/global-infrastructure/services/'
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: 言語とリージョンのサポート
       href: luis-language-support.md
       displayName: 'phrase list recommendations, multi-language, translator, locale, language, English, Chinese, Dutch, French, Germain, Italian, Japanese, Korean, Portuguese, Spanish, Turkish, Keigo, informal Japanese, subculture, dictation, speech, Bing Spell Check, foreign words, Hybrid languages, Tokenization, space, special character, compound words, tokens'
     - name: Azure のロードマップ
-      href: 'https://aka.ms/luis-roadmap'
+      href: 'https://go.microsoft.com/fwlink/?linkid=2092089'
     - name: 用語集
       href: luis-glossary.md
     - name: トラブルシューティング
@@ -412,10 +416,12 @@
       displayName: 'FAQ, import'
     - name: 料金と制限
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/'
+    - name: コンプライアンス
+      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: スタック オーバーフロー
       href: 'https://stackoverflow.com/questions/tagged/LUIS'
     - name: UserVoice
-      href: 'https://aka.ms/luis-uservoice-forum'
+      href: 'https://go.microsoft.com/fwlink/?linkid=2092090'
     - name: Search
       href: 'https://docs.microsoft.com/search/index?search=LUIS'
     - name: ブログ

@@ -8,12 +8,12 @@ ms.date: 03/01/2019
 ms.author: normesta
 ms.topic: article
 ms.component: data-lake-storage-gen2
-ms.openlocfilehash: d0908e9edce8efb7a378ee04b6076b61cae2d2bf
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 1eac7ecce88dc817b9bd7bd5330d10b019cc7dd2
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59998296"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64939252"
 ---
 # <a name="use-azure-data-box-to-migrate-data-from-an-on-premises-hdfs-store-to-azure-storage"></a>Azure Data Box を使用してオンプレミス HDFS ストアから Azure Storage にデータを移行する
 
@@ -53,7 +53,7 @@ Data Box デバイスを使用することにより、Hadoop クラスターの�
 以下の手順に従って、Blob/オブジェクト ストレージの REST API を介して Data Box にデータをコピーします。 REST API インターフェイスでは、Data Box はクラスターに HDFS ストアとして表示されます。 
 
 
-1. REST を介してデータをコピーする前に、Data Box 上で REST インターフェイスに接続するためにセキュリティおよび接続プリミティブを識別します。 Data Box のローカル Web UI にサインインして、**[接続とコピー]** ページに移動します。 Data Box の Azure Storage アカウントに対して、**[アクセスの設定]** の下で **[REST (プレビュー)]** を探して選択します。
+1. REST を介してデータをコピーする前に、Data Box 上で REST インターフェイスに接続するためにセキュリティおよび接続プリミティブを識別します。 Data Box のローカル Web UI にサインインして、 **[接続とコピー]** ページに移動します。 Data Box の Azure Storage アカウントに対して、 **[アクセスの設定]** の下で **[REST (プレビュー)]** を探して選択します。
 
     ![[接続とコピー] ページ](media/data-lake-storage-migrate-on-premises-HDFS-cluster/data-box-connect-rest.png)
 
@@ -70,14 +70,32 @@ Data Box デバイスを使用することにより、Hadoop クラスターの�
     ```
     DNS を他のメカニズムを使用している場合は、Data Box エンドポイントを解決できることを確認する必要があります。
     
-3. `hadoop-azure` および `microsoft-windowsazure-storage-sdk` jar ファイルをポイントするように、シェル変数 `azjars` を設定します。 これらのファイルは、Hadoop インストール ディレクトリの下にあります (コマンド `ls -l $<hadoop_install_dir>/share/hadoop/tools/lib/ | grep azure` を使用することにより、これらのファイルが存在しているか確認できます。ここで、`<hadoop_install_dir>` は Hadoop をインストールしたディレクトリです)。完全パスを使用してください。 
+4. `hadoop-azure` および `microsoft-windowsazure-storage-sdk` jar ファイルをポイントするように、シェル変数 `azjars` を設定します。 これらのファイルは、Hadoop インストール ディレクトリの下にあります (コマンド `ls -l $<hadoop_install_dir>/share/hadoop/tools/lib/ | grep azure` を使用することにより、これらのファイルが存在しているか確認できます。ここで、`<hadoop_install_dir>` は Hadoop をインストールしたディレクトリです)。完全パスを使用してください。 
     
     ```
     # azjars=$hadoop_install_dir/share/hadoop/tools/lib/hadoop-azure-2.6.0-cdh5.14.0.jar
     # azjars=$azjars,$hadoop_install_dir/share/hadoop/tools/lib/microsoft-windowsazure-storage-sdk-0.6.0.jar
     ```
 
-4. Hadoop HDFS から Data Box Blob ストレージへデータをコピーします。
+5. データのコピーに使用するストレージ コンテナーを作成します。 このコマンドの一部として宛先フォルダーも指定する必要があります。 これはこの時点ではダミーの宛先フォルダーでかまいません。
+
+    ```
+    # hadoop fs -libjars $azjars \
+    -D fs.AbstractFileSystem.wasb.Impl=org.apache.hadoop.fs.azure.Wasb \
+    -D fs.azure.account.key.[blob_service_endpoint]=[account_key] \
+    -mkdir -p  wasb://[container_name]@[blob_service_endpoint]/[destination_folder]
+    ```
+
+6. リスト コマンドを実行してコンテナーとフォルダーが作成されたことを確認します。
+
+    ```
+    # hadoop fs -libjars $azjars \
+    -D fs.AbstractFileSystem.wasb.Impl=org.apache.hadoop.fs.azure.Wasb \
+    -D fs.azure.account.key.[blob_service_endpoint]=[account_key] \
+    -ls -R  wasb://[container_name]@[blob_service_endpoint]/
+    ```
+
+7. Data Box Blob ストレージ内の先ほど作成したコンテナーに、Hadoop HDFS からデータをコピーします。 コピー先のフォルダーが見つからない場合、コマンドにより自動的に作成されます。
 
     ```
     # hadoop distcp \

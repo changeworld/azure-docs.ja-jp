@@ -5,15 +5,15 @@ services: virtual-machines
 author: axayjo
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 09/20/2018
+ms.date: 04/25/2019
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: 0eb47c8ec470ef05f3c6ae37bdc75e5bb1043eb0
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 1476830313296615591a69a2cadd04bcc56b22bc
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55736207"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66158698"
 ---
 共有イメージ ギャラリー、イメージ定義、およびイメージ バージョンで任意の操作を実行しているときに問題が発生した場合は、デバッグ モードでエラー コマンドを再実行します。 CLI では **-debug** スイッチ、PowerShell では **-Debug** スイッチを渡すことで、デバッグ モードがアクティブ化されます。 エラーの場所を特定したら、このドキュメントに従ってエラーをトラブルシューティングします。
 
@@ -62,20 +62,7 @@ ms.locfileid: "55736207"
 
 ソース マネージド イメージのプロビジョニングの状態が **[成功]** になっていることを確認します。
 
-"*ソース リージョンがまだサポートされていない。*"
-
-以下の表を使用して、対象のソース リージョンがサポートされているかを確認してください。
-<br>
-
-| ギャラリーの作成場所 ("ソース リージョン")   | バージョンのレプリケート先 ("ターゲット リージョン") |
-|----------------------------------------|-------------------------------------------|
-| 米国中西部                        | すべての Azure Public Cloud リージョン            |
-| 米国中南部                       |                                           |
-| 米国東部 2                              |                                           |
-| 東南アジア                         |                                           |
-| 西ヨーロッパ                            |                                           |
-
-<br>
+*ターゲット リージョンの一覧にソース リージョンが含まれていない。*
 
 ターゲット リージョンの一覧には、イメージ バージョンのソース リージョンが含まれている必要があります。 Azure でイメージ バージョンのレプリケート先とするターゲット リージョンの一覧に、ソース リージョンが含まれていることを確認してください。
 
@@ -101,7 +88,7 @@ VM または仮想マシン スケール セットの作成を試行している
 
 ## <a name="unable-to-share-resources"></a>リソースを共有できない
 
-サブスクリプション全体での共有イメージ ギャラリー、イメージ定義、およびイメージ バージョンのリソースの共有が、[ロール ベース アクセス制御](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles) (RBAC) を使用して有効化されています。 
+サブスクリプション全体での共有イメージ ギャラリー、イメージ定義、およびイメージ バージョンのリソースの共有が、[ロールベースのアクセス制御](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles) (RBAC) を使用して有効化されています。 
 
 ## <a name="replication-is-slow"></a>レプリケーションが遅い
 

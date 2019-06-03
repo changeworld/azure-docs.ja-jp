@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: e9378f8d2b31bfed4c464951c427b1e9d00b7893
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: b073a270fabb8657be19b79601fa90f1b9a0351b
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64699369"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "66015223"
 ---
 # <a name="tutorial-add-a-real-device-to-your-azure-iot-central-application"></a>チュートリアル:Azure IoT Central アプリケーションに実デバイスを追加する
 
@@ -54,11 +54,11 @@ ms.locfileid: "64699369"
 
    **デバイス エクスプローラー**に、**Connected Air Conditioner** デバイス テンプレートとシミュレートされたデバイスが表示されます。 デバイス テンプレートを作成すると、IoT Central によってシミュレートされたデバイスが自動的に作成されます。
 
-2. コネクテッド空調機の実デバイスの接続を開始するには、**+** を選択してから **[Real]\(実デバイス\)** を選択します。
+2. コネクテッド空調機の実デバイスの接続を開始するには、 **+** を選択してから **[Real]\(実デバイス\)** を選択します。
 
    ![コネクテッド空調機の新しい実デバイスの追加の開始](media/tutorial-add-device/newreal.png)
 
-3. デバイス ID (小文字のみ) を入力するか、推奨デバイス ID を使います。 新しいデバイスの名前を入力して、**[作成]** を選択することもできます。
+3. デバイス ID (小文字のみ) を入力するか、推奨デバイス ID を使います。 新しいデバイスの名前を入力して、 **[作成]** を選択することもできます。
 
    ![デバイス名の変更](media/tutorial-add-device/rename.png)
 
@@ -66,7 +66,7 @@ ms.locfileid: "64699369"
 
 実デバイスは、**Connected Air Conditioner** デバイス テンプレートから作成されます。 **[設定]** を使用して、デバイスを構成し、デバイスに関する情報を記録するプロパティ値を設定できます。
 
-1. **[設定]** ページで、**[Set Temperature]** 設定の状態が**更新なし**になっていることに注目してください。 実デバイスがアプリケーションに接続し、設定に従って動作していることを確認するまで、この状態のままになります。
+1. **[設定]** ページで、 **[Set Temperature]** 設定の状態が**更新なし**になっていることに注目してください。 実デバイスがアプリケーションに接続し、設定に従って動作していることを確認するまで、この状態のままになります。
 
     ![同期状態が表示されている [設定]](media/tutorial-add-device/settingssyncing.png)
 
@@ -74,7 +74,7 @@ ms.locfileid: "64699369"
 
     ![実デバイスのプロパティ](media/tutorial-add-device/setproperties1.png)
 
-3. 実デバイスの **[Measurements]\(測定\)**、**[ルール]**、**[ダッシュボード]** の各ページを確認できます。
+3. 実デバイスの **[Measurements]\(測定\)** 、 **[ルール]** 、 **[ダッシュボード]** の各ページを確認できます。
 
 ## <a name="generate-connection-string"></a>接続文字列の生成
 
@@ -98,11 +98,11 @@ ms.locfileid: "64699369"
 
 1. アプリケーションにおけるデバイス インスタンスの接続文字列は、IoT Central によって提供されたデバイス情報から生成されます。
 
-   コネクテッド空調機の実デバイスの [デバイス] 画面で、**[接続]** を選択します。
+   コネクテッド空調機の実デバイスの [デバイス] 画面で、 **[接続]** を選択します。
 
    ![接続情報の表示リンクが表示されている [デバイス] ページ](media/tutorial-add-device/connectionlink.png)
 
-1. [デバイス接続] ページで、**[スコープ ID]**、**[デバイス ID]**、**[主キー]** の値をメモします。 これらの値は、次の手順で使用します。
+1. [デバイス接続] ページで、 **[スコープ ID]** 、 **[デバイス ID]** 、 **[主キー]** の値をメモします。 これらの値は、次の手順で使用します。
 
    ![接続の詳細](media/tutorial-add-device/device-connect.png)
 
@@ -326,7 +326,7 @@ Azure IoT Central アプリケーションに接続するようにクライア�
 
    ![設定の同期](media/tutorial-add-device/settingsynced.png)
 
-1. **[設定]** ページで、デバイスの温度を **95** に設定し、**[Update device]\(デバイスの更新\)** を選択します。 サンプル アプリケーションがこの変更を受け取り、処理します。
+1. **[設定]** ページで、デバイスの温度を **95** に設定し、 **[Update device]\(デバイスの更新\)** を選択します。 サンプル アプリケーションがこの変更を受け取り、処理します。
 
    ![設定の受信と処理](media/tutorial-add-device/receivesetting.png)
 

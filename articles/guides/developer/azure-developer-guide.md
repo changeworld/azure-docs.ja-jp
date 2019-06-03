@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: glenga
-ms.openlocfilehash: dc44cfbd24bd04caeede03dcbcfc60da06f61135
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 99e043adeac9a43432fb1eba85527b561c477354
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60011625"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64570556"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Azure 開発者向けファースト ステップ ガイド
 
@@ -96,7 +96,7 @@ Service Fabric は、Open Web Interface for .NET (OWIN) と ASP.NET Core を使�
 
 > **使用する場合:** マイクロサービス アーキテクチャを使用するアプリケーションを作成する場合、または既存のアプリケーションを書き換える場合は、Service Fabric がお勧めです。 基になるインフラストラクチャをより細かく制御する場合、または直接アクセスする場合は、Service Fabric を使用します。
 > 
-> **概要:**[最初の Azure Service Fabric アプリケーションを作成します](../../service-fabric/service-fabric-create-your-first-application-in-visual-studio.md)。
+> **概要:** [最初の Azure Service Fabric アプリケーションを作成します](../../service-fabric/service-fabric-create-your-first-application-in-visual-studio.md)。
 
 ### <a name="enhance-your-applications-with-azure-services"></a>Azure サービスでアプリケーションを強化する
 
@@ -158,7 +158,7 @@ Azure には、アプリケーションでコンテナーを使用する方法�
 
 アプリケーションの使用者を把握することだけでなく、リソースへの不正アクセスを防止することも重要です。 Azure には、アプリ クライアントを認証する方法がいくつか用意されています。
 
-- **Azure Active Directory (Azure AD)**:Microsoft のマルチテナントでクラウドベースの ID およびアクセス管理サービスです。 Azure AD と統合することで、シングル サインオン (SSO) 機能をアプリケーションに追加できます。 ディレクトリのプロパティには、Azure AD Graph API から直接、または Microsoft Graph API からアクセスできます。 OAuth 2.0 認証フレームワークと Open ID Connect の場合、ネイティブ HTTP/REST エンドポイントとマルチプラットフォーム Azure AD Authentication ライブラリを使用して、Azure AD のサポートと統合できます。
+- **Azure Active Directory (Azure AD)** :Microsoft のマルチテナントでクラウドベースの ID およびアクセス管理サービスです。 Azure AD と統合することで、シングル サインオン (SSO) 機能をアプリケーションに追加できます。 ディレクトリのプロパティには、Azure AD Graph API から直接、または Microsoft Graph API からアクセスできます。 OAuth 2.0 認証フレームワークと Open ID Connect の場合、ネイティブ HTTP/REST エンドポイントとマルチプラットフォーム Azure AD Authentication ライブラリを使用して、Azure AD のサポートと統合できます。
 
   > **使用する場合**:SSO エクスペリエンスを提供する場合、Graph ベースのデータを使用する場合、またはドメインベースのユーザーを認証する場合。
   > 
@@ -188,7 +188,7 @@ Azure でアプリケーションを起動し、実行する場合、パフォ�
 
 VM をプロビジョニングするか、継続的インテグレーションによって Web アプリを発行するかにかかわらず、Azure は人気のある DevOps ツールの多くと統合できます。 Jenkins、GitHub、Puppet、Chef、TeamCity、Ansible、Azure DevOps などのツールがサポートされているため、既に所有しているツールを利用し、経験を最大限に活用することができます。
 
-> **今すぐ試す:**[DevOps 統合のいくつかを試しましょう](https://azure.microsoft.com/try/devops/)。
+> **今すぐ試す:** [DevOps 統合のいくつかを試しましょう](https://azure.microsoft.com/try/devops/)。
 > 
 > **作業開始**:App Service アプリの DevOps オプションの詳細については、「[Azure App Service への継続的なデプロイ](../../app-service/deploy-continuous-deployment.md)」を参照してください。
 
@@ -199,7 +199,7 @@ Azure は、世界中のさまざまな地域で一般的に利用できるグ�
 
 ### <a name="choose-the-best-region-for-your-application-and-data"></a>アプリケーションとデータに最適なリージョンを選択する
 
-Azure を使用する利点の 1 つは、世界中のさまざまなデータセンターにアプリケーションをデプロイできるということです。 選択したリージョンによっては、アプリケーションのパフォーマンスが変わることがあります。 たとえば、大部分の顧客に近いリージョンを選択すると、ネットワーク要求における待機時間が少なくなります。 特定の国でアプリを配信するための法的要件を満たせるリージョンを選択することもあります。 アプリケーションをホストしているデータセンターと同じデータセンター、またはできるだけ近いデータセンターにアプリケーションのデータを格納することが、常にベスト プラクティスです。
+Azure を使用する利点の 1 つは、世界中のさまざまなデータセンターにアプリケーションをデプロイできるということです。 選択したリージョンによっては、アプリケーションのパフォーマンスが変わることがあります。 たとえば、大部分の顧客に近いリージョンを選択すると、ネットワーク要求における待機時間が少なくなります。 特定の国や地域でアプリを配信するための法的要件を満たせるリージョンを選択することもあります。 アプリケーションをホストしているデータセンターと同じデータセンター、またはできるだけ近いデータセンターにアプリケーションのデータを格納することが、常にベスト プラクティスです。
 
 ### <a name="multi-region-apps"></a>マルチリージョン アプリ
 
@@ -281,7 +281,7 @@ Azure Resource Explorer は、サブスクリプションで作成済みのリ�
 
 Azure リソースへのアクセス権を許可する場合、そのタスクの実行に必要最小限の特権をユーザーに付与することが常にベスト プラクティスです。
 
-- **ロールベースのアクセス制御 (RBAC)**:Azure では、指定したスコープ (サブスクリプション、リソース グループ、または個々のリソース) でユーザー アカウント (プリンシパル) にアクセス権を付与することができます。 RBAC を使用すると、リソースのセットをリソース グループにデプロイし、特定のユーザーまたはグループにアクセス許可を付与できます。 また、対象のリソース グループに属するリソースにのみアクセスを制限することもできます。 仮想マシンや仮想ネットワークなど、1 つのリソースにアクセス権を付与することもできます。 アクセス権を付与するには、ロールをユーザー、グループ、またはサービス プリンシパルに割り当てます。 定義済みのロールが多数ありますが、独自のカスタム ロールを定義することもできます。 詳細については、「[ロールベースのアクセス制御 (RBAC) とは](../../role-based-access-control/overview.md)」を参照してください。
+- **ロールベースのアクセス制御 (RBAC)** :Azure では、指定したスコープ (サブスクリプション、リソース グループ、または個々のリソース) でユーザー アカウント (プリンシパル) にアクセス権を付与することができます。 RBAC を使用すると、リソースのセットをリソース グループにデプロイし、特定のユーザーまたはグループにアクセス許可を付与できます。 また、対象のリソース グループに属するリソースにのみアクセスを制限することもできます。 仮想マシンや仮想ネットワークなど、1 つのリソースにアクセス権を付与することもできます。 アクセス権を付与するには、ロールをユーザー、グループ、またはサービス プリンシパルに割り当てます。 定義済みのロールが多数ありますが、独自のカスタム ロールを定義することもできます。 詳細については、「[ロールベースのアクセス制御 (RBAC) とは](../../role-based-access-control/overview.md)」を参照してください。
 
   > **使用する場合**:ユーザーやグループに対する詳細なアクセス管理が必要な場合、またはユーザーをサブスクリプションの所有者にする必要がある場合に使用します。
   > 

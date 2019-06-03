@@ -3,27 +3,26 @@ title: Microsoft ID プラットフォームの ID トークン リファレン�
 description: Azure AD v1.0 および Microsoft ID プラットフォーム (v2.0) のエンドポイントによって生成される id_token の使用方法について説明します。
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
-editor: ''
+author: rwike77
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/13/2019
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms:custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b5c296f14fd9fdc3a7555412555ea1a851f9a7b8
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.openlocfilehash: 25408b2120a9ac9f38e7959ef8e9dbbb34df7c2b
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59563831"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65962573"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft ID プラットフォームの ID トークン
 
@@ -71,7 +70,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjFMVE16YWtpaGlSbGFfOHoyQkVKVlhlV01x
 |`aud` |  文字列、アプリケーション ID/URI | トークンの受信者を示します。 `id_tokens`では、対象の受信者は Azure portal でアプリに割り当てられたアプリのアプリケーション ID です。 アプリでは、この値を検証し、値が一致しない場合はトークンを拒否する必要があります。 |
 |`iss` |  文字列、STS URI | トークンを作成して返したセキュリティ トークン サービス (STS)、およびユーザーが認証された Azure AD テナントを示します。 トークンが v2.0 エンドポイントによって発行された場合、URI の末尾は `/v2.0` になります。  ユーザーが Microsoft アカウントを持つコンシューマー ユーザーであることを示す GUID は `9188040d-6c67-4c5b-b112-36a304b66dad` です。 要求の GUID 部分を使用して、アプリにサインインできるテナントのセットを制限します (該当する場合)。 |
 |`iat` |  int、UNIX タイムスタンプ | "Issued At" は、このトークンの認証がいつ行われたのかを示します。  |
-|`idp`|文字列 (通常は STS URI) | トークンのサブジェクトを認証した ID プロバイダーを記録します。 この値は、発行者とテナントが異なるユーザー アカウント (たとえばゲスト) の場合を除いて、発行者クレームの値と同じです。 要求が存在しない場合は、代わりに `iss` の値を使用できることを意味します。  個人用アカウントが組織のコンテキストで使用されている場合 (たとえば、個人用アカウントが Azure AD テナントに招待された場合)、`idp` 要求は 'live.com' または Microsoft アカウント テナント `9188040d-6c67-4c5b-b112-36a304b66dad` を含む STS URI である可能性があります。 |
+|`idp`|文字列 (通常は STS URI) | トークンのサブジェクトを認証した ID プロバイダーを記録します。 この値は、発行者とテナントが異なるユーザー アカウント (たとえばゲスト) の場合を除いて、発行者クレームの値と同じです。 クレームが存在しない場合は、代わりに `iss` の値を使用できることを示しています。  個人用アカウントが組織のコンテキストで使用されている場合 (たとえば、個人用アカウントが Azure AD テナントに招待された場合)、`idp` 要求は 'live.com' または Microsoft アカウント テナント `9188040d-6c67-4c5b-b112-36a304b66dad` を含む STS URI である可能性があります。 |
 |`nbf` |  int、UNIX タイムスタンプ | "nbf" (指定時刻よりも後) 要求では、指定した時刻よりも後に JWT の処理を受け入れることができるようになります。|
 |`exp` |  int、UNIX タイムスタンプ | "exp" (有効期限) 要求は、JWT の処理を受け入れることができなくなる時刻を指定します。  この時刻よりも前でも、リソースによってトークンが拒否される可能性があることに注意してください。たとえば、認証での変更が必要な場合や、トークンの取り消しが検出された場合です。 |
 | `c_hash`| String |コード ハッシュは、ID トークンが OAuth 2.0 認証コードと共に発行される場合にのみ、ID トークンに含まれます。 これを使用して、認証コードの信頼性を検証できます。 この検証の実行の詳細については、[OpenID Connect の仕様](https://openid.net/specs/openid-connect-core-1_0.html) を参照してください。 |
@@ -85,7 +84,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjFMVE16YWtpaGlSbGFfOHoyQkVKVlhlV01x
 |`roles`| 文字列の配列 | ログインしているユーザーに割り当てられた一連のロール。 |
 |`rh` | 不透明な文字列 |Azure がトークンの再検証に使用する内部の要求。 無視してください。 |
 |`sub` | 文字列、GUID | トークンが情報をアサートするプリンシパルです (アプリのユーザーなど)。 この値は変更不可で、再割り当ても再利用もできません。 サブジェクトはペアワイズ識別子で、特定のアプリケーション ID に一意です。 1 人のユーザーが 2 つの異なるクライアント ID を使用して 2 つの異なるアプリにサインインすると、そのアプリは、サブジェクト要求に対して 2 つの異なる値を受け取ることになります。 この動作が求められているかどうかは、アーキテクチャやプライバシーの要件によって異なります。 |
-|`tid` | 文字列、GUID | ユーザーが属している Azure AD テナントを表す GUID です。 職場または学校アカウントの場合、GUID はユーザーが属している組織の不変のテナント ID です。 個人アカウントでは、この値は `9188040d-6c67-4c5b-b112-36a304b66dad` です。 この要求を受け取るには、 `profile` スコープが必要です。 |
+|`tid` | 文字列、GUID | ユーザーが属している Azure AD テナントを表す GUID です。 職場または学校アカウントの場合、GUID はユーザーが属している組織の不変のテナント ID です。 個人アカウントでは、この値は `9188040d-6c67-4c5b-b112-36a304b66dad` です。 この要求を受け取るには `profile` スコープが必要です。 |
 |`unique_name` | String | トークンのサブジェクトを識別する、人が判読できる値を提供します。 この値は、テナント内で一意であることが保証されているわけではなく、表示目的でのみ使用する必要があります。 v1.0 `id_tokens` のみで発行されます。 |
 |`uti` | 非透過的な文字列 | Azure がトークンの再検証に使用する内部の要求。 無視してください。 |
 |`ver` | 文字列、1.0 または 2.0 | id_token のバージョンを示します。 |

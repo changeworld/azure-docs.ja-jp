@@ -3,19 +3,19 @@ title: Azure Active Directory B2C でカスタム ポリシーを使用して SS
 description: Azure Active Directory B2C でカスタム ポリシーを使用して SSO とトークンのカスタマイズを管理する方法を説明します。
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/09/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: c0f5be7fd77ae195b66f8a8fb052ab8573d48171
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 2033d37a4a847380003fb95243138082df804bbf
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55856361"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64703380"
 ---
 # <a name="manage-sso-and-token-customization-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用して SSO とトークンのカスタマイズを管理する
 
@@ -23,7 +23,11 @@ ms.locfileid: "55856361"
 
 ## <a name="token-lifetimes-and-claims-configuration"></a>トークンの有効期間と要求の構成
 
-トークンの有効期間の設定を変更するには、対象となるポリシーの証明書利用者ファイルに [ClaimsProviders](claimsproviders.md) 要素を追加します。  **ClaimsProviders** 要素は、[TrustFrameworkPolicy](trustframeworkpolicy.md) 要素の子です。 内部にトークンの有効期間に影響を与える情報を指定する必要があります。 XML は、この例のようになります。
+トークンの有効期間の設定を変更するには、対象となるポリシーの証明書利用者ファイルに [ClaimsProviders](claimsproviders.md) 要素を追加します。  **ClaimsProviders** 要素は、[TrustFrameworkPolicy](trustframeworkpolicy.md) 要素の子です。 
+
+証明書利用者ファイルのBasePolicy 要素と RelyingParty 要素間に ClaimsProviders 要素を挿入します。
+
+内部にトークンの有効期間に影響を与える情報を指定する必要があります。 XML は、この例のようになります。
 
 ```XML
 <ClaimsProviders>
@@ -97,6 +101,6 @@ ms.locfileid: "55856361"
 
 以下の値は前の例で構成されています。
 
-- **シングル サインオン (SSO)**: シングル サインオンは、**SingleSignOn** で構成します。 指定できる値は、`Tenant`、`Application`、`Policy`、`Suppressed` です。 
-- **Web アプリのセッションの有効期間 (分)**: Web アプリのセッションの有効期間は、**SessionExpiryInSeconds** 要素で設定します。 既定値は 86,400 秒 (1,440 分) です。
+- **シングル サインオン (SSO)** : シングル サインオンは、**SingleSignOn** で構成します。 指定できる値は、`Tenant`、`Application`、`Policy`、`Suppressed` です。 
+- **Web アプリのセッションの有効期間 (分)** : Web アプリのセッションの有効期間は、**SessionExpiryInSeconds** 要素で設定します。 既定値は 86,400 秒 (1,440 分) です。
 - **Web アプリのセッション タイムアウト**: Web アプリのセッション タイムアウトは、**SessionExpiryType** 要素で設定します。 指定できる値は、`Absolute` および `Rolling` です。

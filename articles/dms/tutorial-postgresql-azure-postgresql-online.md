@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 05/01/2019
-ms.openlocfilehash: 67212986e0478a03ac2ef1b5f30488cc1c7f869d
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.date: 05/08/2019
+ms.openlocfilehash: d7bd2555753df4c12404844c86be8f0339d88e23
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65137427"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65415699"
 ---
 # <a name="tutorial-migrate-postgresql-to-azure-database-for-postgresql-online-using-dms"></a>チュートリアル:DMS を使用して PostgreSQL をオンラインで Azure Database for PostgreSQ に移行する
 
@@ -24,7 +24,6 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
 
 このチュートリアルでは、以下の内容を学習します。
 > [!div class="checklist"]
-
 > * pg_dump ユーティリティを使用してサンプル スキーマを移行する。
 > * Azure Database Migration Service のインスタンスを作成する。
 > * Azure Database Migration Service を使用して移行プロジェクトを作成する。
@@ -46,10 +45,10 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
     また、オンプレミスの PostgreSQL のバージョンが、Azure Database for PostgreSQL のバージョンと一致する必要があります。 たとえば、PostgreSQL 9.5.11.5 は Azure Database for PostgreSQL 9.5.11 にのみ移行でき、 バージョン 9.6.7 には移行できません。
 
     > [!NOTE]
-    > PostgreSQL バージョン 10 では、現在、バージョン 10.3 から Azure Database for PostgreSQL への移行をサポートしているのは DMS のみです。 近日中に PostgreSQL の新しいバージョンをサポートする予定です。
+    > PostgreSQL バージョン 10 では、現在、バージョン 10.3 から Azure Database for PostgreSQL への移行をサポートしているのは DMS のみです。
 
 * [Azure Database for PostgreSQL のインスタンスを作成します](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal)。  
-* Azure Resource Manager デプロイ モデルを使用して、Azure Database Migration Service 用の Azure 仮想ネットワーク (VNet) を作成します。これで、[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) または [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) を使用したオンプレミスのソース サーバーへのサイト間接続が提供されます。
+* Azure Resource Manager デプロイ モデルを使用して、Azure Database Migration Service 用の Azure 仮想ネットワーク (VNet) を作成します。これで、[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) または [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) を使用したオンプレミスのソース サーバーへのサイト間接続が提供されます。 VNet の作成方法の詳細については、[Virtual Network のドキュメント](https://docs.microsoft.com/azure/virtual-network/)、特に詳細な手順を提供するクイックスタートの記事を参照してください。
 
     > [!NOTE]
     > VNet のセットアップ中、Microsoft へのネットワーク ピアリングに ExpressRoute を使用する場合は、サービスのプロビジョニング先となるサブネットに、次のサービス [エンドポイント](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)を追加してください。
@@ -65,6 +64,7 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
 * ソース データベースの前でファイアウォール アプライアンスを使用する場合は、Azure Database Migration Service が移行のためにソース データベースにアクセスできるように、ファイアウォール規則を追加することが必要な場合があります。
 * Azure Database for PostgreSQL のサーバーレベルの[ファイアウォール規則](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)を作成して、Azure Database Migration Service がターゲット データベースにアクセスできるようにします。 Azure Database Migration Service に使用される VNet のサブネット範囲を指定します。
 * CLI を呼び出すには、次の 2 つの方法があります。
+
     * Azure Portal の右上隅にある [Cloud Shell] ボタンを選択します。
 
        ![Azure Portal の [Cloud Shell] ボタン](media/tutorial-postgresql-to-azure-postgresql-online/cloud-shell-button.png)
@@ -210,6 +210,7 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
    ```
 
    たとえば、次の設定でサービスを作成するには、下記のコマンドを実行します。
+
    * 場所:米国東部 2
    * サブスクリプション:97181df2-909d-420b-ab93-1bff15acb6b7
    * リソース グループ名:PostgresDemo

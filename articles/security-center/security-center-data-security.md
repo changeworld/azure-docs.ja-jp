@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 7a327c963f32d6bf5b0cf7751557c61327fd26e9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: cd91b83bc808d811fc50293fbf1726d609ad5b46
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57902792"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65234073"
 ---
 # <a name="azure-security-center-data-security"></a>Azure Security Center のデータ セキュリティ
 Azure Security Center では、脅威に対する防御と検出、対応を支援するために、構成情報、メタデータ、イベント ログ、クラッシュ ダンプ ファイルなど、セキュリティに関連するさまざまなデータを収集、処理しています。 Microsoft ではコーディングからサービスの運用まで、厳密なコンプライアンスとセキュリティのガイドラインに準拠しています。
@@ -46,12 +46,18 @@ Azure Security Center は、セキュリティ状態の可視化、脆弱性の�
 
 **ワークスペース**:ワークスペースは次の geo に指定され、Azure 仮想マシンから収集されたデータ (クラッシュ ダンプや一部の種類のアラートのデータを含む) は最も近いワークスペースに格納されます。
 
-| VM Geo                        | ワークスペース Geo |
-|-------------------------------|---------------|
-| 米国、ブラジル、カナダ | 米国 |
-| ヨーロッパ、イギリス        | ヨーロッパ        |
-| アジア太平洋、日本、インド    | アジア太平洋  |
-| オーストラリア                     | オーストラリア     |
+| VM Geo                              | ワークスペース Geo |
+|-------------------------------------|---------------|
+| 米国、ブラジル、南アフリカ | 米国 |
+| カナダ                              | カナダ        |
+| ヨーロッパ (英国を除く)   | ヨーロッパ        |
+| イギリス                      | イギリス |
+| アジア (インド、日本、韓国、中国を除く)   | アジア太平洋  |
+| 韓国                              | アジア太平洋  |
+| インド                               | インド         |
+| 日本                               | 日本         |
+| 中国                               | 中国         |
+| オーストラリア                           | オーストラリア     |
 
 
 VM ディスクのスナップショットは、VM ディスクと同じストレージ アカウントに格納されます。

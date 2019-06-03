@@ -27,7 +27,7 @@ Azure の課金内容を確認するには、詳細な毎日の使用状況フ�
 
 この記事は、Enterprise Agreement (EA) をお持ちの Azure カスタマーには適用されません。 EA カスタマーの場合、「[Understand your bill for Azure customers with an Enterprise Agreement](billing-understand-your-bill-ea.md)」 (Enterprise Agreement をお持ちの Azure カスタマーに対する請求について) を参照してください。
 
-この記事は、この記事は、Microsoft 顧客契約をされている Azure カスタマーには適用されません。 Microsoft 顧客契約の課金アカウントをお持ちであれば、「[Understand the Azure charges on your Microsoft Customer Agreement invoice (Microsoft 顧客契約の請求書での Azure 料金を理解する)](billing-mca-understand-your-bill.md)」を参照してください。
+この記事は、Microsoft 顧客契約をされている Azure カスタマーには適用されません。 Microsoft 顧客契約の課金アカウントをお持ちであれば、「[Understand the Azure charges on your Microsoft Customer Agreement invoice (Microsoft 顧客契約の請求書での Azure 料金を理解する)](billing-mca-understand-your-bill.md)」を参照してください。
 
 請求サイクル、価格、使用量など、Azure Cloud Solution Provider (Azure CSP) プログラムで請求がどのように行われるかの説明については、「[Azure CSP の請求の概要](/azure/cloud-solution-provider/billing/azure-csp-billing-overview/)」を参照してください。
 
@@ -58,15 +58,15 @@ Azure の課金内容を確認するには、詳細な毎日の使用状況フ�
 
 ![請求書の使用料金](./media/billing-understand-your-bill/1.png)
 
-使用状況の詳細の CSV の **[明細書]** セクションに同じ料金が表示されます。 "*[消費量]*" と "*[料金]*" は請求書と一致します。
+使用状況の詳細の CSV の **[明細書]** セクションに同じ料金が表示されます。 " *[消費量]* " と " *[料金]* " は請求書と一致します。
 
 ![CSV の使用料金](./media/billing-understand-your-bill/2.png)
 
-この料金の日々の明細を確認するには、CSV の **[毎日の使用状況]** セクションに移動します。 *[測定カテゴリ]* の下でフィルターを適用し、*Scheduler* を探します。 メーターが使用された日数と消費量を確認できます。 "*[リソース]*" と "*[リソース グループ]*" の情報も、比較用に一覧表示されます。 "*[消費量]*" の合計値が請求書に表示される値になります。
+この料金の日々の明細を確認するには、CSV の **[毎日の使用状況]** セクションに移動します。 *[測定カテゴリ]* の下でフィルターを適用し、*Scheduler* を探します。 メーターが使用された日数と消費量を確認できます。 " *[リソース]* " と " *[リソース グループ]* " の情報も、比較用に一覧表示されます。 " *[消費量]* " の合計値が請求書に表示される値になります。
 
 ![CSV の [毎日の使用状況] セクション](./media/billing-understand-your-bill/3.png)
 
-1 日あたりのコストを取得するには、**[明細書]** セクションの "*[消費量]*" を "*[レート]*" で乗算します。
+1 日あたりのコストを取得するには、 **[明細書]** セクションの " *[消費量]* " を " *[レート]* " で乗算します。
 
 詳細については、次を参照してください。
 
@@ -78,7 +78,7 @@ Azure の課金内容を確認するには、詳細な毎日の使用状況フ�
 Azure ポータルで料金を確認することもできます。 請求の使用状況と料金の概要を取得するには、コスト管理グラフを表示します。
 
 1. Azure portal で [[サブスクリプション]](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) に移動します。
-1. 自分のサブスクリプションを選択し、**[コスト分析]** を選択します。
+1. 自分のサブスクリプションを選択し、 **[コスト分析]** を選択します。
 1. **[期間]** でフィルター処理します
 1. 引き続き先の例を見ると、Azure Scheduler サービスの使用に対する請求を確認できます。
 

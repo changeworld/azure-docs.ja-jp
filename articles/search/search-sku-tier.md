@@ -7,15 +7,15 @@ manager: cgronlun
 tags: azure-portal
 ms.service: search
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 05/08/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 3e813b8a1709675d0d870d64df83428ab82e25b3
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 5b9e0dfb88c979618ce4cc5ed56e372cb0f65608
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024290"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65472715"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Azure Search の価格レベルの選択
 
@@ -89,7 +89,7 @@ Azure Search には、3 種類の費用負担方法があり、固定要素と�
 
 ### <a name="3-ai-enriched-indexing-using-cognitive-services"></a>手順 3.Cognitive Services を使用する AI で強化されたインデックス作成
 
-[Cognitive Services による AI インデックス作成](cognitive-search-concept-intro.md)の場合、従量課金制の処理には、課金対象の Cognitive Services リソースを S0 価格レベルでアタッチすることを検討する必要があります。 Cognitive Services のアタッチには、"固定コスト" が関連付けられていません。 課金の対象となるのは、必要な処理の分だけです。
+[Cognitive Services を使用する AI インデックス付け](cognitive-search-concept-intro.md)の場合は、従量課金制の処理について、有料の Cognitive Services リソースを Azure Search と同じリージョンの S0 価格レベルにアタッチするように計画することをお勧めします。 Cognitive Services のアタッチには、"固定コスト" が関連付けられていません。 課金の対象となるのは、必要な処理の分だけです。
 
 ドキュメントの解読時の画像抽出は、Azure Search の課金対象であり、ドキュメントから抽出された画像数に基づいて課金されます。 現在、テキストの抽出は無料です。 
 

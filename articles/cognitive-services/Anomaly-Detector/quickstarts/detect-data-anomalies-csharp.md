@@ -33,7 +33,7 @@ ms.locfileid: "64922533"
 - [Newtonsoft.Json](https://www.newtonsoft.com/json)
     - Visual Studio に Newtonsoft.Json を NuGet パッケージとしてインストールするには、次の手順に従います。
         1. **Solution Manager** を右クリックします
-        2.  **[NuGet パッケージの管理]**
+        2. **[NuGet パッケージの管理]**
         3. `Newtonsoft.Json` を探して、パッケージをインストールします
 - Linux/macOS を使用している場合、このアプリケーションは [Mono](https://www.mono-project.com/) を使用して実行できます。
 

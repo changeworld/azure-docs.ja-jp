@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 3/17/2019
+ms.date: 4/23/2019
 ms.author: b-juche
-ms.openlocfilehash: 3c59fb6abe9c26e6886706dae360ff40787e8faa
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 53b2742cf92f3a3df346ba3557c718b8d7a11a4e
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59549186"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64719439"
 ---
 # <a name="create-a-volume-for-azure-netapp-files"></a>Azure NetApp Files のボリュームを作成する
 
@@ -44,7 +44,7 @@ ms.locfileid: "59549186"
     * **ボリューム名**      
         作成するボリュームの名前を指定します。   
 
-        名前はリソース グループ内で一意である必要があります。 3 文字以上になるようにしてください。  任意の英数字を使用できます。
+        ボリューム名は、各容量プール内で一意である必要があります。 3 文字以上になるようにしてください。 任意の英数字を使用できます。
 
     * **容量プール**  
         ボリュームを作成する容量プールを指定します。
@@ -63,7 +63,7 @@ ms.locfileid: "59549186"
         ボリュームで使用するサブネットを指定します。  
         指定するサブネットは Azure NetApp Files に委任されている必要があります。 
         
-        サブネットを委任していない場合は、[Create a Volume]\(ボリュームの作成) ページで **[新規作成]** をクリックできます。 次に、[サブネットの作成] ページでサブネットの情報を指定し、**[Microsoft.NetApp/volumes]** を選択してサブネットを Azure NetApp Files に委任します。 各 VNet で、1 つのサブネットだけを Azure NetApp Files に委任できます。   
+        サブネットを委任していない場合は、[Create a Volume]\(ボリュームの作成) ページで **[新規作成]** をクリックできます。 次に、[サブネットの作成] ページでサブネットの情報を指定し、 **[Microsoft.NetApp/volumes]** を選択してサブネットを Azure NetApp Files に委任します。 各 VNet で、1 つのサブネットだけを Azure NetApp Files に委任できます。   
  
         ![ボリュームを作成する](../media/azure-netapp-files/azure-netapp-files-new-volume.png)
     
@@ -72,7 +72,9 @@ ms.locfileid: "59549186"
 4. **[プロトコル]** をクリックし、ボリュームのプロトコルの種類として **[NFS]** を選択します。   
     * 新しいボリュームのエクスポート パスを作成する際に使用する**ファイル パス**を指定します。 ボリュームのマウントとアクセスには、このエクスポート パスが使用されます。
 
-        ファイル パス名には、文字、数字、ハイフン ("-") のみを含めることができます。 長さは 16 文字から 40 文字でなければなりません。  
+        ファイル パス名には、文字、数字、ハイフン ("-") のみを含めることができます。 長さは 16 文字から 40 文字でなければなりません。 
+
+        ファイルのパスは、各サブスクリプションと各リージョン内で一意である必要があります。 
 
     * 任意で、[NFS ボリュームのエクスポート ポリシーを構成します](azure-netapp-files-configure-export-policy.md)。
 
@@ -90,7 +92,34 @@ Azure NetApp Files は SMBv3 ボリュームをサポートしています。 SM
 
 ### <a name="create-an-active-directory-connection"></a>Active Directory 接続を作成する
 
-1. NetApp アカウントで **[Active Directory 接続]** をクリックし、**[参加]** をクリックします。  
+1. 次の要件が満たされていることを確認します。 
+
+    * 使用する管理者アカウントは、指定する組織単位 (OU) パスにマシン アカウントを作成できる必要があります。
+    * 適切なポートは、該当する Windows Active Directory (AD) のサーバーで開く必要があります。  
+        必要なポートは次のとおりです。 
+
+        |     Service           |     Port     |     Protocol     |
+        |-----------------------|--------------|------------------|
+        |    AD Web サービス    |    9389      |    TCP           |
+        |    DNS                |    53        |    TCP           |
+        |    DNS                |    53        |    UDP           |
+        |    ICMPv4             |    該当なし       |    エコー応答    |
+        |    Kerberos           |    464       |    TCP           |
+        |    Kerberos           |    464       |    UDP           |
+        |    Kerberos           |    88        |    TCP           |
+        |    Kerberos           |    88        |    UDP           |
+        |    LDAP               |    389       |    TCP           |
+        |    LDAP               |    389       |    UDP           |
+        |    LDAP               |    3268      |    TCP           |
+        |    NetBIOS 名       |    138       |    UDP           |
+        |    SAM/LSA            |    445       |    TCP           |
+        |    SAM/LSA            |    445       |    UDP           |
+        |    セキュリティで保護された LDAP        |    636       |    TCP           |
+        |    セキュリティで保護された LDAP        |    3269      |    TCP           |
+        |    w32time            |    123       |    UDP           |
+
+
+1. NetApp アカウントで **[Active Directory 接続]** をクリックし、 **[参加]** をクリックします。  
 
     ![Active Directory 接続](../media/azure-netapp-files/azure-netapp-files-active-directory-connections.png)
 
@@ -134,12 +163,7 @@ Azure NetApp Files は SMBv3 ボリュームをサポートしています。 SM
     * **ボリューム名**      
         作成するボリュームの名前を指定します。   
 
-        名前はリソース グループ内で一意である必要があります。 3 文字以上になるようにしてください。  任意の英数字を使用できます。
-
-    * **[ファイル パス]**  
-        新しいボリュームのエクスポート パスを作成する際に使用するファイル パスを指定します。 ボリュームのマウントとアクセスには、このエクスポート パスが使用されます。   
-     
-        ファイル パス名には、文字、数字、ハイフン ("-") のみを含めることができます。 長さは 16 文字から 40 文字でなければなりません。  
+        ボリューム名は、各容量プール内で一意である必要があります。 3 文字以上になるようにしてください。 任意の英数字を使用できます。
 
     * **容量プール**  
         ボリュームを作成する容量プールを指定します。
@@ -158,7 +182,7 @@ Azure NetApp Files は SMBv3 ボリュームをサポートしています。 SM
         ボリュームで使用するサブネットを指定します。  
         指定するサブネットは Azure NetApp Files に委任されている必要があります。 
         
-        サブネットを委任していない場合は、[Create a Volume]\(ボリュームの作成) ページで **[新規作成]** をクリックできます。 次に、[サブネットの作成] ページでサブネットの情報を指定し、**[Microsoft.NetApp/volumes]** を選択してサブネットを Azure NetApp Files に委任します。 各 VNet で、1 つのサブネットだけを Azure NetApp Files に委任できます。   
+        サブネットを委任していない場合は、[Create a Volume]\(ボリュームの作成) ページで **[新規作成]** をクリックできます。 次に、[サブネットの作成] ページでサブネットの情報を指定し、 **[Microsoft.NetApp/volumes]** を選択してサブネットを Azure NetApp Files に委任します。 各 VNet で、1 つのサブネットだけを Azure NetApp Files に委任できます。   
  
         ![ボリュームを作成する](../media/azure-netapp-files/azure-netapp-files-new-volume.png)
     

@@ -3,19 +3,19 @@ title: クイック スタート:Bing Spell Check SDK for C# を使用してス�
 titlesuffix: Azure Cognitive Services
 description: Bing Spell Check REST API を使用してスペルと文法をチェックしてみましょう。
 services: cognitive-services
-author: mikedodaro
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 02/20/2019
-ms.author: v-gedod
-ms.openlocfilehash: 3487656f72f315aa15ce003a8dfd279c45d1f992
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: aahi
+ms.openlocfilehash: adbb60c7ddbc72b8b7e5cb31c6909117ce3a10cb
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58105745"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65798359"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-sdk-for-c"></a>クイック スタート:Bing Spell Check SDK for C# を使用してスペルをチェックする
 
@@ -23,10 +23,10 @@ ms.locfileid: "58105745"
 
 ## <a name="application-dependencies"></a>アプリケーションの依存関係
 
-* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) の任意のエディション。
+* [Visual Studio 2017 またはそれ以降](https://visualstudio.microsoft.com/downloads/)の任意のエディション。
 * Bing Spell Check [NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.SpellCheck)
 
-Bing Spell Check SDK をプロジェクトに追加するには、Visual Studio のソリューション エクスプローラーから [`Manage NuGet Packages`] をクリックします。 `Microsoft.Azure.CognitiveServices.Language.SpellCheck` パッケージを追加します。 このパッケージをインストールすると、次の依存関係もインストールされます。
+Bing Spell Check SDK をプロジェクトに追加するには、Visual Studio の**ソリューション エクスプローラー**から **[NuGet パッケージの管理]** をクリックします。 `Microsoft.Azure.CognitiveServices.Language.SpellCheck` パッケージを追加します。 このパッケージをインストールすると、次の依存関係もインストールされます。
 
 * Microsoft.Rest.ClientRuntime
 * Microsoft.Rest.ClientRuntime.Azure

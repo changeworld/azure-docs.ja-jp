@@ -9,11 +9,11 @@ ms.custom: mvc
 ms.topic: sample
 ms.date: 04/05/2018
 ms.openlocfilehash: 65958eb1e2d7cc4492e0437b24db77f00ebc7eba
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55728335"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "66154528"
 ---
 # <a name="monitor-and-scale-a-single-postgresql-server-using-azure-cli"></a>Azure CLI での単一の PostgreSQL サーバーの監視とスケーリング
 このサンプル CLI スクリプトは、単一の Azure Database for PostgreSQL サーバーのメトリックを照会したうえで、異なるパフォーマンス レベルにスケーリングするものです。 

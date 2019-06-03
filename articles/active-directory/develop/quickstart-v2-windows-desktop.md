@@ -17,16 +17,14 @@ ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2d263014638329c454149af8ca922c1c5c6393a5
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: aa400d678fb1e0793ea1a0cfd53bdfb715a5bc77
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65413833"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65785017"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>クイック スタート:Windows デスクトップ アプリからトークンを取得し、Microsoft Graph API を呼び出す
-
-[!INCLUDE [active-directory-develop-applies-v2-msal](../../../includes/active-directory-develop-applies-v2-msal.md)]
 
 このクイック スタートでは、個人や仕事、学校のアカウントへのサインイン、アクセス トークンの取得、Microsoft Graph API の呼び出しを実行できる Windows デスクトップ .NET (WPF) アプリケーションの作成方法を学びます。
 
@@ -41,7 +39,7 @@ ms.locfileid: "65413833"
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>選択肢 1: アプリを登録して自動構成を行った後、コード サンプルをダウンロードする
 >
 > 1. 新しい [Azure portal の [アプリの登録]](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/WinDesktopQuickstartPage/sourceType/docs) に移動します。
-> 1. アプリケーションの名前を入力し、**[登録]** を選択します。
+> 1. アプリケーションの名前を入力し、 **[登録]** を選択します。
 > 1. 画面の指示に従ってダウンロードし、1 回クリックするだけで、新しいアプリケーションが自動的に構成されます。
 >
 > ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>オプション 2:アプリケーションを登録し、アプリケーションとコード サンプルを手動で構成する
@@ -54,11 +52,11 @@ ms.locfileid: "65413833"
 > 1. 開発者用の Microsoft ID プラットフォームの [[アプリの登録]](https://aka.ms/MobileAppReg) ページに移動します。
 > 1. **[新規登録]** を選択します。
 >      - **[名前]** セクションに、アプリのユーザーに表示されるわかりやすいアプリケーション名を入力します (例: `Win-App-calling-MsGraph`)。
->      - **[サポートされているアカウントの種類]** セクションで、**[Accounts in any organizational directory and personal Microsoft accounts (for example, Skype, Xbox, Outlook.com)]\(任意の組織のディレクトリ内のアカウントと個人用の Microsoft アカウント (例: Skype、Xbox、Outlook.com)\)** を選択します。
+>      - **[サポートされているアカウントの種類]** セクションで、 **[Accounts in any organizational directory and personal Microsoft accounts (for example, Skype, Xbox, Outlook.com)]\(任意の組織のディレクトリ内のアカウントと個人用の Microsoft アカウント (例: Skype、Xbox、Outlook.com)\)** を選択します。
 >      - **[登録]** を選択して、アプリケーションを作成します。
 > 1. アプリのページの一覧から **[認証]** を選択します。
-> 1. **[デスクトップとデバイス]** セクションを展開します   (**[デスクトップとデバイス]** セクションが表示されない場合は、最初に上部のバナーをクリックしてプレビューの認証エクスペリエンスを表示します)。
-> 1. **[リダイレクト URI]** セクションで、**[URI の追加]** を選択します。  「**urn:ietf:wg:oauth:2.0:oob**」と入力します。
+> 1. **[デスクトップとデバイス]** セクションを展開します   ( **[デスクトップとデバイス]** セクションが表示されない場合は、最初に上部のバナーをクリックしてプレビューの認証エクスペリエンスを表示します)。
+> 1. **[リダイレクト URI]** セクションで、 **[URI の追加]** を選択します。  「**urn:ietf:wg:oauth:2.0:oob**」と入力します。
 > 1. **[保存]** を選択します。
 
 > [!div class="sxs-lookup" renderon="portal"]
@@ -72,7 +70,7 @@ ms.locfileid: "65413833"
 
 #### <a name="step-2-download-your-visual-studio-project"></a>手順 2:Visual Studio プロジェクトのダウンロード
 
-[Visual Studio プロジェクトのダウンロード](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2/archive/msal3x.zip)
+[Visual Studio プロジェクトのダウンロード](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2/archive/msal3x.zip)  ([GitHub でプロジェクトを表示](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2/))
 
 #### <a name="step-3-configure-your-visual-studio-project"></a>手順 3:Visual Studio プロジェクトの構成
 
@@ -94,7 +92,7 @@ ms.locfileid: "65413833"
 >   - アプリケーションで**任意の組織のディレクトリ内のアカウントと個人用の Microsoft アカウント**をサポートする場合は、この値を `common` に置き換えます
 >
 > > [!TIP]
-> > **[アプリケーション (クライアント) ID]**、**[ディレクトリ (テナント) ID]**、**[サポートされているアカウントの種類]** の値を見つけるには、Azure portal でアプリの **[概要]** ページに移動します。
+> > **[アプリケーション (クライアント) ID]** 、 **[ディレクトリ (テナント) ID]** 、 **[サポートされているアカウントの種類]** の値を見つけるには、Azure portal でアプリの **[概要]** ページに移動します。
 
 ## <a name="more-information"></a>詳細情報
 

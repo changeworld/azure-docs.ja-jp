@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 04/01/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 8eccc79969ce1a474fe0b22f2c250f8e31281550
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 443d6ca86f8ac40bd2df186fd189a333cb7b7425
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58893131"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65416013"
 ---
 # <a name="what-is-azure-analysis-services"></a>Azure Analysis Services とは
 
@@ -200,7 +200,7 @@ Azure のセキュリティについて詳しくは、[Microsoft セキュリテ
 
 無料の [SQL Server Data Tools (SSDT) for Visual Studio](/sql/ssdt/download-sql-server-data-tools-ssdt) を使用して、モデルを開発してデプロイします。 SSDT には、スピーディに開発を行うための Analysis Services プロジェクト テンプレートが用意されています。 現在、SSDT には、互換性レベル 1400 の表形式モデルに対応した最新の Get Data のデータ ソース クエリとマッシュアップ機能が含まれています。 Power BI Desktop と Excel 2016 の Get Data に慣れていれば、高度にカスタマイズされたデータ ソース クエリの作成が非常に簡単であることは既にわかっています。 
 
-Visual Studio 2017 を使用している場合、インストール可能な無料の VSIX パッケージとして Microsoft Analysis Services プロジェクトが提供されます。 [Marketplace からダウンロード](https://marketplace.visualstudio.com/items?itemName=ProBITools.MicrosoftAnalysisServicesModelingProjects)できます。
+Visual Studio 2017 以降を使用している場合、インストール可能な無料の VSIX パッケージとして Microsoft Analysis Services プロジェクトが提供されます。 [Marketplace からダウンロード](https://marketplace.visualstudio.com/items?itemName=ProBITools.MicrosoftAnalysisServicesModelingProjects)できます。
 
 ### <a name="sql-server-management-studio"></a>SQL Server Management Studio
 

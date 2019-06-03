@@ -1,25 +1,18 @@
 ---
-title: Azure IoT Edge モジュールの技術アセットを作成する | Microsoft Docs
+title: Azure IoT Edge モジュールの技術アセットを作成する | Azure Marketplace
 description: IoT Edge モジュールの技術アセットを作成します。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: dan-wesley
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 10/18/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 2ed4826eb47ab2fb13d312860475f9ec9b323bf7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: pabutler
+ms.openlocfilehash: 9f40e2272388e6f467b8c3d0b01a6639bf652e80
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57884156"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64942364"
 ---
 # <a name="prepare-your-iot-edge-module-technical-assets"></a>IoT Edge モジュールの技術アセットの準備
 

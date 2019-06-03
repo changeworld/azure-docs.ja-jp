@@ -9,18 +9,18 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 01/17/2019
+ms.date: 05/29/2019
 ms.author: diberry
-ms.openlocfilehash: e2a8bed2b07934bf178ea338e074ec8e239ee646
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 13ce1706a2184075155b2bbc4dca5753be391ceb
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55874840"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357118"
 ---
 # <a name="quickstart-change-model-using-nodejs"></a>クイック スタート: Node.js を使ってモデルを変更する
 
-[!INCLUDE [Quickstart introduction for change model](../../../includes/cognitive-services-luis-qs-endpoint-intro-para.md)]
+[!INCLUDE [Quickstart prerequisites for changing model](../../../includes/cognitive-services-luis-qs-change-model-intro-para.md)]
 
 ## <a name="prerequisites"></a>前提条件
 

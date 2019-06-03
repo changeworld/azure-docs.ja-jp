@@ -9,11 +9,11 @@ ms.date: 02/20/2019
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: d1cf75d8e678bc5bd3e3036930eea42526194df1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58125007"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66171308"
 ---
 ## <a name="create-a-queue-in-the-azure-portal"></a>Azure portal でキューを作成する
 1. **[Service Bus 名前空間]** ページで、左側のナビゲーション メニューの **[キュー]** を選択します。

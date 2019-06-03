@@ -8,12 +8,12 @@ ms.author: jejiang
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 1/17/2019
-ms.openlocfilehash: 882a071731837b0f7d03ac374a7c831a20a3927e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: d7d6bf45a8cdf22fbff0d3fda8175e8007a612d9
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64714495"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65789289"
 ---
 # <a name="set-up-the-pyspark-interactive-environment-for-visual-studio-code"></a>Visual Studio Code 用の PySpark 対話型環境を設定する
 
@@ -70,4 +70,4 @@ ms.locfileid: "64714495"
 * [Jupyter Notebook で外部のパッケージを使用する](spark/apache-spark-jupyter-notebook-use-external-packages.md)
 * [Jupyter をコンピューターにインストールして HDInsight Spark クラスターに接続する](spark/apache-spark-jupyter-notebook-install-locally.md)
 * [Azure HDInsight の Microsoft Power BI で Apache Hive データを視覚化する](hadoop/apache-hadoop-connect-hive-power-bi.md)
-* [Azure HDInsight で Apache Zeppelin を使用して Apache Hive クエリを実行する](hdinsight-connect-hive-zeppelin.md)
+* [Azure HDInsight で Apache Zeppelin を使用して Apache Hive クエリを実行する](./interactive-query/hdinsight-connect-hive-zeppelin.md)

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 12/18/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: ad93df6d628c91cddcf8e0a51c6ea11991e7b024
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: c43375afe7965475e84793ddcd54a38a2e9bd3cd
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59684125"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "65073718"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Azure Kubernetes Service (AKS) クラスターをデプロイする
 
@@ -31,7 +31,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 ## <a name="create-an-aks-cluster"></a>AKS クラスターの作成
 
-Azure portal の左上隅で、**[+ リソースの作成]** > **[Kubernetes Service]** の順に選択します。
+Azure portal の左上隅で、 **[+ リソースの作成]**  >  **[Kubernetes Service]** の順に選択します。
 
 AKS クラスターを作成するには、次の手順を実行します。
 
@@ -39,7 +39,7 @@ AKS クラスターを作成するには、次の手順を実行します。
    - *プロジェクトの詳細*:サブスクリプションを選択し、Azure リソース グループ (たとえば、*myResourceGroup*) を選択または作成します。 **Kubernetes クラスター名** (たとえば、*myAKSCluster*) を入力します。
    - *クラスターの詳細*:AKS クラスターのリージョン、Kubernetes バージョン、および DNS 名プレフィックスを選択します。
    - *規模の設定*:AKS ノードの VM サイズを選択します。 AKS クラスターがデプロイされた後に、VM サイズを変更することは**できません**。
-       - クラスターにデプロイするノードの数を選択します。 このクイック スタートでは、**[ノード数]** を *1* に設定します。 ノード数は、クラスターをデプロイした後に調整**できます**。
+       - クラスターにデプロイするノードの数を選択します。 このクイック スタートでは、 **[ノード数]** を *1* に設定します。 ノード数は、クラスターをデプロイした後に調整**できます**。
     
      ![AKS クラスターの作成 - 基本情報を入力する](media/kubernetes-walkthrough-portal/create-cluster-basics.png)
 
@@ -49,7 +49,7 @@ AKS クラスターを作成するには、次の手順を実行します。
    - 新しいサービス プリンシパルを作成するか、既存のものを使用するように "*構成*" します。 既存の SPN を使用する場合は、SPN クライアント ID とシークレットを指定する必要があります。
    - Kubernetes のロールベースのアクセス制御 (RBAC) のオプションを有効にします。 これらのコントロールを使用すると、AKS クラスターにデプロイされた Kubernetes リソースへのアクセスをより詳細に制御できます。
 
-     既定では、"*基本*" ネットワークが使用され、コンテナーに対する Azure Monitor が有効になります。 準備ができたら、**[確認および作成]**、**[作成]** の順に選択します。
+     既定では、"*基本*" ネットワークが使用され、コンテナーに対する Azure Monitor が有効になります。 準備ができたら、 **[確認および作成]** 、 **[作成]** の順に選択します。
 
 AKS クラスターを作成して、使用準備が完了するのには数分かかります。 完了したら、AKS クラスター リソース グループ (たとえば、*myResourceGroup*) を参照し、AKS リソース (たとえば、*myAKSCluster*) を選択します。 次のスクリーンショットの例のように、AKS クラスターのダッシュボードが表示されます。
 
@@ -224,9 +224,9 @@ Azure Vote アプリが動作していることを確認するには、Web ブ�
 
 Azure Portal にこのデータが入力されるまで、数分かかる場合があります。 Azure Vote ポッドの現在の状態、稼働時間、およびリソース使用率を確認するには、Azure portal の AKS リソース (たとえば、*myAKSCluster*) に戻ります。 その後、次のようにして、正常性状態にアクセスすることができます。
 
-1. 左側の **[監視]** の下で、**[Insights]** を選択します
+1. 左側の **[監視]** の下で、 **[Insights]** を選択します
 1. 上部の **[+ フィルターの追加]** を選択します
-1. プロパティとして "*名前空間*" を選択し、*\<All but kube-system (kube-system 以外のすべて)\>* を選択します
+1. プロパティとして "*名前空間*" を選択し、 *\<All but kube-system (kube-system 以外のすべて)\>* を選択します
 1. **コンテナー**の表示を選択します。
 
 次の例に示されているように、*azure-vote-back* コンテナーと *azure-vote-front* コンテナーが表示されます。

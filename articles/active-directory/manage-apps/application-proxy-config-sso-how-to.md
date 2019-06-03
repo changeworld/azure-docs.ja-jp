@@ -3,8 +3,8 @@ title: アプリケーション プロキシ アプリケーションに対す�
 description: アプリケーション プロキシ アプリケーションに対するシングル サインオンを迅速に構成する方法
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/12/2019
-ms.author: celested
+ms.author: mimart
 ms.reviewer: japere, asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5f9c4f2c618851b596cd8f2dfa1fd45820a05049
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: f26b28b34a569673b397fa4700c5332c3550500f
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57791683"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65825865"
 ---
 # <a name="how-to-configure-single-sign-on-to-an-application-proxy-application"></a>アプリケーション プロキシ アプリケーションに対するシングル サインオンを構成する方法
 

@@ -3,8 +3,8 @@ title: ディープ リンクを使用したアプリケーションへのサイ
 description: Azure AD を使用したディープ リンク URL からのアプリケーションへのアクセスに関する問題をトラブルシューティングする方法
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2017
-ms.author: celested
+ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7ad6eeba09c81de33b92722992c6762a4b4327c
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 44825f32a13db0a221252c042dc9f23ec43a9c8f
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58649341"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65825427"
 ---
 # <a name="problems-signing-in-to-an-application-using-a-deeplink"></a>ディープ リンクを使用したアプリケーションへのサインインに関する問題
 

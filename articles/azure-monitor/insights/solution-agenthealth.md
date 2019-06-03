@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/19/2017
 ms.author: magoedte
-ms.openlocfilehash: f431613d9fa1020f523e03c90cbe31f4d42ccf42
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.openlocfilehash: 568ff99364923c43b7199bed1dacd32cf0d18ab9
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59426224"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64571154"
 ---
 #  <a name="agent-health-solution-in-azure-monitor"></a>Azure Monitor での Agent Health ソリューション
 Azure において Agent Health ソリューションを使用すると、Azure Monitor の Log Analytics ワークスペースに対して、または Azure Monitor に接続された System Center Operations Manager 管理グループに対して直接報告を行うすべてのエージェントの中で、応答していないエージェントと運用データを送信しているエージェントを把握するのに役立ちます。  また、デプロイされているエージェントの数や地理的な分布を追跡できるほか、Azure を初めとする各種クラウド環境やオンプレミスにデプロイされているエージェントの分布を把握するためのその他のクエリを実行することができます。    
@@ -53,7 +53,7 @@ System Center Operations Manager 管理グループが Log Analytics ワーク�
 ## <a name="using-the-solution"></a>ソリューションの使用
 Log Analytics ワークスペースに Agent Health ソリューションを追加すると、ダッシュボードに **[Agent Health]** タイルが追加されます。 このタイルには、エージェントの総数と直近 24 時間応答していないエージェントの数が表示されます。<br><br> ![ダッシュボードの Agent Health ソリューション タイル](./media/solution-agenthealth/agenthealth-solution-tile-homepage.png)
 
-**[Agent Health]** タイルをクリックすると、**[Agent Health]** ダッシュボードが開きます。  ダッシュボードには、次の表に示した列が存在します。 それぞれの列には、特定の時間の範囲について、その列の基準に該当するイベント数の上位 10 件が表示されます。 ログ検索を実行してイベント全件を取得するには、各列の右下にある **[すべて表示]** を選択するか、列ヘッダーをクリックします。
+**[Agent Health]** タイルをクリックすると、 **[Agent Health]** ダッシュボードが開きます。  ダッシュボードには、次の表に示した列が存在します。 それぞれの列には、特定の時間の範囲について、その列の基準に該当するイベント数の上位 10 件が表示されます。 ログ検索を実行してイベント全件を取得するには、各列の右下にある **[すべて表示]** を選択するか、列ヘッダーをクリックします。
 
 | 列 | 説明 |
 |--------|-------------|
@@ -63,7 +63,7 @@ Log Analytics ワークスペースに Agent Health ソリューションを追�
 | Distribution by Agent Version (エージェントのバージョンごとの分布) | 対象の環境にインストールされている各種エージェント バージョンの区分と各バージョンの数。|
 | Distribution by Agent Category (エージェントのカテゴリごとの分布) | ハートビート イベントを送信するエージェントの各カテゴリの区分 (ダイレクト エージェント、OpsMgr エージェント、または OpsMgr 管理サーバー)。|
 | 管理グループごとの分布 | 対象の環境に存在する各種 Operations Manager 管理グループの区分。|
-| エージェントの地理的な位置 | エージェントが存在する国の区分と、それぞれの国でインストールされているエージェントの総数。|
+| エージェントの地理的な位置 | エージェントが存在する国や地域の区分と、それぞれの国や地域でインストールされているエージェントの総数。|
 | Count of Gateways Installed (インストールされたゲートウェイの数) | Log Analytics ゲートウェイがインストールされているサーバーの数とその一覧。|
 
 ![Agent Health ソリューション ダッシュボードの例](./media/solution-agenthealth/agenthealth-solution-dashboard.png)  

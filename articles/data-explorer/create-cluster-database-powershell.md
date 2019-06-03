@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 03/25/2019
-ms.openlocfilehash: 553564be494b4175cba937b583d49ad84a8d0e66
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 28785bb99dcdb767a64ae977e8326b80130fb135
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59526522"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66240189"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-powershell"></a>PowerShell を使用して Azure Data Explorer クラスターとデータベースを作成する
 
@@ -76,7 +76,7 @@ Azure Cloud Shell でコマンドを実行している場合、次の手順は�
 1. クラスターが正常に作成されたかどうかを確認するには、次のコマンドを実行します。
 
     ```azurepowershell-interactive
-    Get-AzKustoCluster -Name mykustocluster --ResourceGroupName testrg
+    Get-AzKustoCluster -Name mykustocluster -ResourceGroupName testrg
     ```
 
 結果に値が `Succeeded` の `provisioningState` が含まれている場合、クラスターは正常に作成されています。
@@ -100,7 +100,7 @@ Azure Cloud Shell でコマンドを実行している場合、次の手順は�
 1. 次のコマンドを実行して、作成したデータベースを確認します。
 
     ```azurepowershell-interactive
-    Get-AzKustoDatabase -ClusterName mykustocluster --ResourceGroupName testrg -Name mykustodatabase
+    Get-AzKustoDatabase -ClusterName mykustocluster -ResourceGroupName testrg -Name mykustodatabase
     ```
 
 クラスターとデータベースが作成されました。

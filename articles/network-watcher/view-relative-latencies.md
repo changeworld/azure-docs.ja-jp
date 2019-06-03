@@ -3,8 +3,8 @@ title: 特定の場所から Azure リージョンへの相対待機時間を確
 description: 特定の場所から Azure リージョンへのインターネット プロバイダー全体の相対的な待機時間を確認する方法について説明します。
 services: network-watcher
 documentationcenter: ''
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -14,14 +14,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/14/2017
-ms.author: jdial
+ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 895e29d9855372e418ad5ebf2a3949dc01ddb8de
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b4a50657442422786f49c931aa6c2610d49846b1
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59792420"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64939875"
 ---
 # <a name="view-relative-latency-to-azure-regions-from-specific-locations"></a>特定の場所から Azure リージョンへの相対待機時間を確認する
 
@@ -60,7 +60,7 @@ Get-AzNetworkWatcherReachabilityReport `
 ```
 
 > [!NOTE]
-> 前のコマンドで指定したリージョンは、ネットワーク ウォッチャーを取得したときに指定したリージョンと同じである必要はありません。 前のコマンドで必要な指定は、既存のネットワーク ウォッチャーのみです。 ネットワーク ウォッチャーはどのリージョンにも設置できます。 `-Country` と `-State` には、有効な値を指定する必要があります。 値は大文字と小文字が区別されます。 限られた数の国、州、および市区町村のデータを使用できます。 「[使用できる国、州、市区町村、プロバイダーを表示する](#view-available)」のコマンドを実行して、前のコマンドで使用できる国、州、市区町村の一覧を表示します。 
+> 前のコマンドで指定したリージョンは、ネットワーク ウォッチャーを取得したときに指定したリージョンと同じである必要はありません。 前のコマンドで必要な指定は、既存のネットワーク ウォッチャーのみです。 ネットワーク ウォッチャーはどのリージョンにも設置できます。 `-Country` と `-State` には、有効な値を指定する必要があります。 値は大文字と小文字が区別されます。 限られた数の国/リージョン、州、および市区町村のデータを使用できます。 「[使用できる国/リージョン、州、市区町村、プロバイダーを表示する](#view-available)」のコマンドを実行して、前のコマンドで使用できる国/リージョン、州、市区町村の一覧を表示します。 
 
 > [!WARNING]
 > `-StartTime` と `-EndTime` には、過去 30 日以内の日付を指定する必要があります。 それより前の日付を指定すると、データが返されません。
@@ -125,15 +125,15 @@ Get-AzNetworkWatcherReachabilityReport `
 > [!NOTE]
 > 単一の場所を指定する場合とは異なり、場所を指定しない場合や、複数の場所 ("米国西部 2"、"米国西部" など) を指定する場合は、コマンドの実行時にインターネット サービス プロバイダーを指定する必要があります。 
 
-## <a name="view-available"></a>使用できる国、州、市区町村、プロバイダーを表示する
+## <a name="view-available"></a>使用できる国/リージョン、州、市区町村、プロバイダーを表示する
 
-特定のインターネット サービス プロバイダー、国、州、および市区町村のデータを使用できます。 データを表示できるすべてのインターネット サービス プロバイダー、国、州、および市区町村の一覧を表示するには、次のコマンドを入力します。
+特定のインターネット サービス プロバイダー、国/リージョン、州、および市区町村のデータを使用できます。 データを表示できるすべてのインターネット サービス プロバイダー、国/リージョン、州、および市区町村の一覧を表示するには、次のコマンドを入力します。
 
 ```powershell
 Get-AzNetworkWatcherReachabilityProvidersList -NetworkWatcherName NetworkWatcher_eastus -ResourceGroupName NetworkWatcherRG
 ```
 
-前のコマンドで返された国、州、および市区町村のデータのみを使用できます。 前のコマンドでは、既存のネットワーク ウォッチャーを指定する必要があります。 この例では、*NetworkWatcherRG* というリソース グループの *NetworkWatcher_eastus* ネットワーク ウォッチャーを指定していますが、任意の既存のネットワーク ウォッチャーを指定できます。 既存のネットワーク ウォッチャーがない場合は、「[ネットワーク ウォッチャーを作成する](#create-a-network-watcher)」のタスクを実行して作成します。 
+前のコマンドで返された国/リージョン、州、および市区町村のデータのみを使用できます。 前のコマンドでは、既存のネットワーク ウォッチャーを指定する必要があります。 この例では、*NetworkWatcherRG* というリソース グループの *NetworkWatcher_eastus* ネットワーク ウォッチャーを指定していますが、任意の既存のネットワーク ウォッチャーを指定できます。 既存のネットワーク ウォッチャーがない場合は、「[ネットワーク ウォッチャーを作成する](#create-a-network-watcher)」のタスクを実行して作成します。 
 
 前のコマンドを実行した後は、必要に応じて、**Country**、**State**、**City** の有効な値を指定して返される出力をフィルター処理できます。  たとえば、米国ワシントン州シアトルで使用できるインターネット サービス プロバイダーの一覧を表示するには、次のコマンドを入力します。
 

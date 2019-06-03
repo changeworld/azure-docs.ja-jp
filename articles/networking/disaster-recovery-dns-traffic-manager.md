@@ -4,7 +4,7 @@ description: Azure DNS と Traffic Manager を使用したディザスター リ
 services: dns
 documentationcenter: na
 author: KumudD
-manager: jeconnoc
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/08/2018
 ms.author: kumud
-ms.openlocfilehash: ec252c1f45e5c27f17b725f6ab68cc94f67897c4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a560cc526e73f3ce7e851f2a545f9b16fa53b423
+ms.sourcegitcommit: 1d257ad14ab837dd13145a6908bc0ed7af7f50a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58120739"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65501685"
 ---
 # <a name="disaster-recovery-using-azure-dns-and-traffic-manager"></a>Azure DNS と Traffic Manager を使用したディザスター リカバリー
 
@@ -140,7 +140,8 @@ Azure Traffic Manager によるフェールオーバーを構成するための�
 ### <a name="step-1-create-a-new-azure-traffic-manager-profile"></a>手順 1:新しい Azure Traffic Manager プロファイルの作成
 contoso123 という名前で新しい Azure Traffic Manager プロファイルを作成し、ルーティング方法については優先順位を選択します。 関連付けを行う既存のリソース グループがある場合は既存のリソース グループを選択でき、それ以外の場合は新しいリソース グループを作成します。
 
-![Traffic Manager プロファイルの作成](./media/disaster-recovery-dns-traffic-manager/create-traffic-manager-profile.png)
+![Traffic Manager プロファイルを作成する](./media/disaster-recovery-dns-traffic-manager/create-traffic-manager-profile.png)
+
 *図 - Traffic Manager プロファイルの作成*
 
 ### <a name="step-2-create-endpoints-within-the-traffic-manager-profile"></a>手順 2:Traffic Manager プロファイル内のエンドポイントの作成

@@ -8,12 +8,12 @@ ms.reviewer: omidm
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: f81aa1e493014f192dc11ca698e9793075ac26ce
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 0b37137dfe99cba1f21b7072506fae44dea9dd7c
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64725618"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66240434"
 ---
 # <a name="use-enterprise-security-package-in-hdinsight"></a>HDInsight で Enterprise セキュリティ パッケージを使用する
 
@@ -21,7 +21,7 @@ ms.locfileid: "64725618"
 
 多くの企業では、IT チームがクラスターを管理し、複数のアプリケーション チームがクラスターを共有するモデルに移行しています。 これらの大規模企業は、Azure HDInsight での各クラスターへのマルチユーザー アクセスが必要です。
 
-HDInsight は、管理されている方法で、一般的な ID プロバイダーである Active Directory に依存します。 HDInsight を [Azure Active Directory Domain Services (Azure AD DS)](../../active-directory-domain-services/active-directory-ds-overview.md) と統合することによって、ドメイン資格情報を使用してクラスターにアクセスできます。 
+HDInsight は、管理されている方法で、一般的な ID プロバイダーである Active Directory に依存します。 HDInsight を [Azure Active Directory Domain Services (Azure AD DS)](../../active-directory-domain-services/overview.md) と統合することによって、ドメイン資格情報を使用してクラスターにアクセスできます。 
 
 HDInsight での仮想マシン (VM) は、指定されたドメインに参加しているドメインです。 そのため、HDInsight 上で実行されているすべてのサービス (Apache Ambari、Apache Hive サーバー、Apache Ranger、Apache Spark Thrift サーバーなど) は、認証済みユーザーに対してシームレスに動作します。 さらに、管理者は、Apache Ranger を使用して強力な承認ポリシーを作成し、クラスター内のリソースに対するロールベースのアクセス制御を行うことができます。
 
@@ -45,7 +45,7 @@ HDInsight での仮想マシン (VM) は、指定されたドメインに参加�
 現在、HDInsight では、クラスターの Kerberos 認証に使用するメイン ドメイン コントローラーとして、Azure AD DS だけがサポートされています。 ただし、設定によって HDInsight アクセスに対する Azure AD DS が有効にされることになる場合に限り、その他の複雑な Active Directory 設定が可能です。
 
 ### <a name="azure-active-directory-domain-services"></a>Azure Active Directory Domain Services
-[Azure AD DS](../../active-directory-domain-services/active-directory-ds-overview.md) では、Windows Server Active Directory と完全に互換性のあるマネージド ドメインを提供します。 Microsoft は、高可用性 (HA) 設定のドメインの管理、修正プログラムの適用、監視を行います。 ドメイン コントローラーの管理について心配することなく、クラスターをデプロイすることができます。 
+[Azure AD DS](../../active-directory-domain-services/overview.md) では、Windows Server Active Directory と完全に互換性のあるマネージド ドメインを提供します。 Microsoft は、高可用性 (HA) 設定のドメインの管理、修正プログラムの適用、監視を行います。 ドメイン コントローラーの管理について心配することなく、クラスターをデプロイすることができます。 
 
 ユーザー、グループ、パスワードは、Azure AD から同期されます。 Azure AD インスタンスから Azure AD DS への一方向の同期により、同じ会社の資格情報を使用して、ユーザーがクラスターにサインインできます。 
 
@@ -66,7 +66,7 @@ Azure AD と Azure AD DS を使用せずに、IaaS VM 単独でオンプレミ�
 1. Azure AD PowerShell モジュールをインストールします。
 
    ```
-   Install-Module AzureAD
+   Install-Module AzureADPreview
    ```
 
 2. グローバル管理者 (テナント管理者) の資格情報を使用して `Connect-AzureAD` を入力します。

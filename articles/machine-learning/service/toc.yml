@@ -6,6 +6,9 @@
     - name: Azure Machine Learning サービスの概要
       displayName: AML services overview
       href: overview-what-is-azure-ml.md
+    - name: サービスのしくみ
+      displayName: architecture concepts definitions
+      href: concept-azure-machine-learning-architecture.md
 - name: セットアップ
   items:
     - name: ワークスペースの作成
@@ -61,25 +64,31 @@
     - name: ビジュアル インターフェイスの実験
       items:
         - name: 価格を予測する
-          displayName: 'Sample 1, training, regression'
+          displayName: 'Basic Sample, training, regression, sample 1'
           href: ui-sample-regression-predict-automobile-price-basic.md
         - name: 価格を予測する (詳細設定)
-          displayName: 'Sample 2, training, regression'
+          displayName: 'Advanced Sample, training, regression, sample 2'
           href: ui-sample-regression-predict-automobile-price-compare-algorithms.md
         - name: 信用リスクの予測
-          displayName: 'Sample 3, training, classification'
+          displayName: 'Basic Sample, training, classification, sample 3'
           href: ui-sample-classification-predict-credit-risk-basic.md
         - name: 信用リスクを予測する (詳細設定)
-          displayName: 'Sample 4, training, classification'
+          displayName: 'Advanced Sample, training, classification, sample 4'
           href: ui-sample-classification-predict-credit-risk-cost-sensitive.md
         - name: 顧客離れを予測する
-          displayName: 'Sample 5, training, CRM, classification'
+          displayName: 'Basic Sample, training, classification, sample 5'
           href: ui-sample-classification-predict-churn.md
+    - name: Azure Open Datasets
+      href: 'https://docs.microsoft.com/azure/open-datasets/samples'
+      maintainContext: true
 - name: 概念
   items:
-    - name: サービスのしくみ
-      displayName: architecture concepts definitions
-      href: concept-azure-machine-learning-architecture.md
+    - name: ワークスペース
+      displayName: concept definitions architecture
+      href: concept-workspace.md
+    - name: ビジュアル インターフェイス
+      displayName: concept
+      href: ui-concept-visual-interface.md
     - name: 自動化された機械学習
       displayName: 'automl, auto ml'
       href: concept-automated-ml.md
@@ -124,6 +133,9 @@
         - name: ログの有効化
           displayName: 'troubleshoot, log, files, tracing'
           href: how-to-enable-logging.md
+        - name: 入力および出力ディレクトリを設定する
+          displayName: 'large data, write, experiment files, size limit'
+          href: how-to-save-write-experiment-files.md
         - name: VS Code 拡張機能を使用する
           displayName: 'Visual Studio Code, VSCode, tools, ai, vs'
           href: how-to-vscode-tools.md
@@ -132,6 +144,18 @@
         - name: データセットを追加および登録する
           displayName: 'data, dataset'
           href: how-to-create-register-datasets.md
+        - name: データを調査する
+          displayName: 'data, eda, exploratory, analysis, etl, dataset, summary statistics, profile, explore, data preparation, dataprep'
+          href: how-to-explore-prepare-data.md
+        - name: データ定義をバージョン管理する
+          displayName: 'data, etl, dataset, data preparation, dataprep, version'
+          href: how-to-manage-dataset-definitions.md
+        - name: データのスナップショットを作成する
+          displayName: 'snapshots, profile, summary statistics, data copy'
+          href: how-to-create-dataset-snapshots.md
+        - name: データストアからデータを取得する
+          displayName: blob get fileshare access storage
+          href: how-to-access-data.md
         - name: azureml.dataprep で準備する
           items:
             - name: データを読み込む
@@ -143,18 +167,6 @@
             - name: データを書き込む
               displayName: 'data, etl, data prep, dataprep'
               href: how-to-write-data.md
-        - name: データセット (プレビュー) で準備する
-          displayName: 'data, etl, dataset, summary statistics, profile, explore, data preparation, dataprep'
-          href: how-to-explore-prepare-data.md
-        - name: データ定義をバージョン管理する
-          displayName: 'data, etl, dataset, data preparation, dataprep, version'
-          href: how-to-manage-dataset-definitions.md
-        - name: データのスナップショットを作成する
-          displayName: 'snapshots, profile, summary statistics, data copy'
-          href: how-to-create-dataset-snapshots.md
-        - name: データストアからデータを取得する
-          displayName: blob get fileshare access storage
-          href: how-to-access-data.md
     - name: モデルをトレーニングする
       items:
         - name: トレーニング環境をセットアップする
@@ -164,7 +176,7 @@
           href: how-to-train-ml-models.md
         - name: PyTorch の使用
           href: how-to-train-pytorch.md
-        - name: TensorFlow と Keras の使用
+        - name: Tensorflow の使用
           href: how-to-train-tensorflow.md
         - name: ハイパーパラメーターを調整する
           displayName: parameter
@@ -226,7 +238,7 @@
           href: how-to-create-your-first-pipeline.md
         - name: Azure Pipelines を使用した ML ワークフローの CI/CD
           displayName: 'continuous, integration, delivery'
-          href: /azure/devops/pipelines/targets/azure-machine-learning?view=azure-devop
+          href: /azure/devops/pipelines/targets/azure-machine-learning
           mainContext: true
     - name: リソース クォータを管理する
       displayName: limits

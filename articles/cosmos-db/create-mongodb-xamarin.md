@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 06/20/2018
 ms.author: masoucou
-ms.openlocfilehash: c7a80ae704d13934a5d51bc5538bc28693b49e5b
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: a0612ea06c71b2a93e6fb76f5d82516cfbad8657
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56588094"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65860339"
 ---
 # <a name="quickstart-build-a-xamarinforms-app-with-net-sdk-and-azure-cosmos-dbs-api-for-mongodb"></a>クイック スタート: .NET SDK と Azure Cosmos DB の MongoDB 用 API を使用して Xamarin.Forms アプリを構築する
 
@@ -34,7 +34,7 @@ Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモ
 
 サンプルを実行するには、[Visual Studio](https://www.visualstudio.com/downloads/) または [Visual Studio for Mac](https://visualstudio.microsoft.com/vs/mac/) と、有効な Azure CosmosDB アカウントが必要です。
 
-まだ Visual Studio を持っていない場合は、[Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/) をダウンロードし、セットアップで **[.NET によるモバイル開発]** のワークロードをインストールしてください。
+まだ Visual Studio を持っていない場合は、[Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/) をダウンロードし、セットアップで **[.NET によるモバイル開発]** のワークロードをインストールしてください。
 
 Mac で作業したい場合は、[Visual Studio for Mac](https://visualstudio.microsoft.com/vs/mac/) をダウンロードして、セットアップを実行します。
 
@@ -154,7 +154,7 @@ git を使いたくない場合は、[プロジェクトを ZIP ファイルと�
 
 ここで Azure Portal に戻り、接続文字列情報を取得し、アプリにコピーします。
 
-1. [Azure Portal](https://portal.azure.com/) で、Azure Cosmos DB アカウントの左のナビゲーションから、**[接続文字列]** をクリックし、**[読み取り/書き込みキー]** をクリックします。 次の手順では、画面の右側にあるコピー ボタンを使って、プライマリ接続文字列をコピーします。
+1. [Azure Portal](https://portal.azure.com/) で、Azure Cosmos DB アカウントの左のナビゲーションから、 **[接続文字列]** をクリックし、 **[読み取り/書き込みキー]** をクリックします。 次の手順では、画面の右側にあるコピー ボタンを使って、プライマリ接続文字列をコピーします。
 
 2. **TaskList.Core** プロジェクトの **Helpers** ディレクトリにある **APIKeys.cs** ファイルを開きます。
 
@@ -164,14 +164,14 @@ git を使いたくない場合は、[プロジェクトを ZIP ファイルと�
 
 ## <a name="run-the-app"></a>アプリの実行
 
-### <a name="visual-studio-2017"></a>Visual Studio 2017
+### <a name="visual-studio-2019"></a>Visual Studio 2019
 
-1. Visual Studio の**ソリューション エクスプローラー**で各プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。
+1. Visual Studio の**ソリューション エクスプローラー**で各プロジェクトを右クリックし、 **[NuGet パッケージの管理]** をクリックします。
 2. **[Restore all NuGet packages]\(すべての NuGet パッケージの復元\)** をクリックします。
-3. **TaskList.Android** を右クリックして、**[スタートアップ プロジェクトとして設定]** を選択します。
+3. **TaskList.Android** を右クリックして、 **[スタートアップ プロジェクトとして設定]** を選択します。
 4. F5 キーを押してアプリケーションのデバッグを開始します。
 5. iOS で実行する場合は、まず、コンピューターを Mac に接続します (方法については、こちらの[説明](https://docs.microsoft.com/xamarin/ios/get-started/installation/windows/introduction-to-xamarin-ios-for-visual-studio)をご覧ください)。
-6. **TaskList.iOS** プロジェクトを右クリックして、**[スタートアップ プロジェクトとして設定]** を選択します。
+6. **TaskList.iOS** プロジェクトを右クリックして、 **[スタートアップ プロジェクトとして設定]** を選択します。
 7. F5 キーを押してアプリケーションのデバッグを開始します。
 
 ### <a name="visual-studio-for-mac"></a>Visual Studio for Mac

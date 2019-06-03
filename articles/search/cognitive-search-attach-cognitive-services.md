@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 05/08/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: bad64f439d45581f8f4b55ea1ac849db1e27cb76
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: b979609374afbd11bde0e15ce540e8930315482f
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024581"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65472479"
 ---
 # <a name="attach-a-cognitive-services-resource-with-a-skillset-in-azure-search"></a>Azure Search で Cognitive Services リソースをスキルセットにアタッチする 
 
@@ -60,7 +60,7 @@ Cognitive Services APIs を呼び出すスキルに対してのみ課金され�
 
    ![Cognitive Services リソースの作成](./media/cognitive-search-attach-cognitive-services/cog-services-create.png "Cognitive Services リソースの作成")
 
-1. [場所] では、Azure Search と同じリージョンを選択し、リージョン間の送信帯域幅に課金されないようにします。
+1. [場所] では Azure Search と同じリージョンを選択します。 これはパフォーマンス上の理由から必要ですが、リージョン間の送信帯域幅料金もかかりません。
 
 1. [価格レベル] では、**[S0]** を選択し、Cognitive Services の機能のオールインワン コレクション (Azure Search で使用される事前定義済みスキルをサポートする Vision および Language の機能を含む) を取得します。 
 

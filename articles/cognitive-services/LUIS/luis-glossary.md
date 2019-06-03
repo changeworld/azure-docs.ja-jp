@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: ced83b83c2d64ba5c4816f378c66dae9f4210391
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 3fc14b821064719f39eb877aa2253f8084496a66
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55874483"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65523493"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>一般的な用語や概念に関する Language Understanding の用語集
 Language Understanding (LUIS) 用語集では、LUIS API サービスの使用中に目にする可能性のある用語について説明します。
@@ -26,7 +26,7 @@ Language Understanding (LUIS) 用語集では、LUIS API サービスの使用�
 
 ## <a name="authoring"></a>オーサリング
 
-[LUIS](luis-reference-regions.md) Web サイトまたは[オーサリング API](https://aka.ms/luis-authoring-api) のいずれかを使用して、[LUIS アプリ](#luis-app)を作成、管理、およびデプロイする機能です。
+[LUIS](luis-reference-regions.md) Web サイトまたは[オーサリング API](https://go.microsoft.com/fwlink/?linkid=2092087) のいずれかを使用して、[LUIS アプリ](#luis-app)を作成、管理、およびデプロイする機能です。
 
 ## <a name="authoring-key"></a>オーサリング キー
 
@@ -74,7 +74,7 @@ LUIS のコンテキストでは、**ドメイン**はナレッジの一領域�
 
 ## <a name="endpoint"></a>エンドポイント
 
-[LUIS エンドポイント](https://aka.ms/luis-endpoint-apis) URL は、[LUIS アプリ](#luis-app)が作成および公開された後に、LUIS クエリを送信する場所です。 エンドポイント URL には、公開されたアプリとアプリ ID のリージョンが含まれています。 エンドポイントは、お使いのアプリの **[[Keys and endpoints]\(キーとエンドポイント\)](luis-how-to-azure-subscription.md)** ページにあります。また、[Get App Info](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c37) API からエンドポイント URL を取得することもできます。
+[LUIS エンドポイント](https://go.microsoft.com/fwlink/?linkid=2092356) URL は、[LUIS アプリ](#luis-app)が作成および公開された後に、LUIS クエリを送信する場所です。 エンドポイント URL には、公開されたアプリとアプリ ID のリージョンが含まれています。 エンドポイントは、お使いのアプリの **[[Keys and endpoints]\(キーとエンドポイント\)](luis-how-to-azure-subscription.md)** ページにあります。また、[Get App Info](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c37) API からエンドポイント URL を取得することもできます。
 
 たとえば、エンドポイントは次のようになります。
 

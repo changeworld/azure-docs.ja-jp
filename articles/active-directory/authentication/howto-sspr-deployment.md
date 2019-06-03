@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/17/2018
+ms.date: 05/06/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cb9333845a78204ea1c6e56e17b3b6f9e5513c9c
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 9c254ef3a71e95b33df2a779c728d47fff3c3759
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58370687"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190357"
 ---
 # <a name="how-to-successfully-roll-out-self-service-password-reset"></a>セルフサービスによるパスワードのリセットを適切にロールアウトする方法
 
@@ -32,6 +32,10 @@ Azure Active Directory (Azure AD) のセルフサービスによるパスワー�
    * 登録とリセットのための URL を提供しましたか。
       * 登録: https://aka.ms/ssprsetup
       * リセット: https://aka.ms/sspr
+
+   > [!WARNING]
+   > [Active Directory ユーザーとコンピューター] や [Active Directory 管理センター] などのオンプレミスの Active Directory 管理ツールでの [ユーザーは次回ログオン時にパスワードの変更が必要] チェックボックスの使用はサポートされていません。 オンプレミスでパスワードを変更するとき、このオプションは確認されません。 
+
 1. ユーザーを教育します。
    * このドキュメントの以下のセクションでは、通信のサンプル、パスワード ポータル、登録の強制、認証データの設定について説明します。
    * Azure Active Directory の製品グループは、組織がビジネス ケースを作成し、セルフサービスのパスワード リセットのデプロイを計画できるように、このサイトのドキュメントと並行して使用できる[ステップバイステップのデプロイ プラン](https://aka.ms/SSPRDeploymentPlan)を作成しました。

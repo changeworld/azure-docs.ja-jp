@@ -9,28 +9,33 @@ manager: cshankar
 ms.reviewer: anshan
 ms.workload: big-data
 ms.topic: overview
-ms.date: 12/05/2018
+ms.date: 04/26/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7f8731f48b96ccbe0e77970af1ccefa1d7a7155f
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: a742e9f235812cdbdafdcb0a39581e0779fcd040
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57438773"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64572916"
 ---
-# <a name="azure-time-series-insights-preview-overview"></a>Azure Time Series Insights プレビューの概要
+# <a name="the-azure-time-series-insights-preview"></a>Azure Time Series Insights プレビュー
 
-Azure Time Series Insights プレビューは、エンド ツー エンドのサービスとしてのプラットフォームのオファリングです。 豊富なコンテキスト情報を付加され、時系列に合わせて最適化された IoT スケールのデータの、取り込み、格納、クエリに使用されます。 Time Series Insights は、アドホックなデータ探索と運用分析に最適です。 Time Series Insights は、産業用 IoT 展開の広範なニーズを満たす、個別に拡張可能なカスタマイズされたサービス オファリングです。
+Azure Time Series Insights プレビューは、エンド ツー エンドのサービスとしてのプラットフォームのオファリングです。 豊富なコンテキスト情報を付加され、時系列に合わせて最適化された IoT スケールのデータの収集、処理、格納、分析、クエリに使用されます。 Time Series Insights は、アドホックなデータ探索と運用分析に最適です。 Time Series Insights は、産業用 IoT 展開の広範なニーズを満たす、個別に拡張可能なカスタマイズされたサービス オファリングです。
+
+> [!TIP]
+> 一般提供段階の機能については、[Azure Time Series Insights GA の概要](time-series-insights-overview.md)に関するページを参照してください。
 
 ## <a name="video"></a>ビデオ
 
-このビデオでは、クラウドベースの IoT 分析プラットフォームである Azure Time Series Insights プレビューの概要について説明します。
+### <a name="learn-more-about-the-azure-time-series-insights-preview-br"></a>Azure Time Series Insight プレビューの詳細を確認してください。 </br>
 
 > [!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Azure-Time-Series-Insights-e2e-solution-for-industrial-IoT-analytics/player]
 
 ## <a name="define-iot-data"></a>IoT データを定義する
 
-IoT データとは、アセットが集約された組織で利用できる "産業用" のデータです。 IoT データは、ノイズの多い測定を記録するアセットから送信されるため、極めて構造化されていないことがよくあります。 このような測定としては、温度、モーション、湿度などがあります。 このようなデータ ストリームでは、大きなギャップ、破損したメッセージ、誤った読み取りといった特徴がよく見られます。 このようなストリームからのデータは、分析を行う前に、クリーンアップする必要があります。 IoT データは、CRM や ERP といったファースト パーティ ソースからの追加データ入力がある場合にのみ意味を持つことがよくあります。 天気や場所など、サード パーティのデータ ソースから入力されることもあります。
+IoT データとは、アセットが集約された組織で利用できる産業用のデータです。 IoT データは、ノイズの多い測定を記録するアセットから送信されるため、極めて構造化されていないことがよくあります。 このような測定としては、温度、モーション、湿度などがあります。 このようなデータ ストリームでは、大きなギャップ、破損したメッセージ、誤った読み取りといった特徴がよく見られます。 このようなストリームからのデータは、分析を行う前に、クリーンアップする必要があります。
+
+IoT データは、CRM や ERP といったファースト パーティ ソースからの追加データ入力がある場合にのみ意味を持つことがよくあります。 天気や場所など、サード パーティのデータ ソースから入力されることもあります。
 
 結果として、データの一部だけが、運用や業務の目的に利用されます。 このようなデータが、業務レポートおよび業務分析に対して、一貫性と包括性を備えた現時点での正しい情報を提供します。 収集された IoT データをアクションにつながる分析情報に変換するには、以下のことが必要です。
 
@@ -46,8 +51,8 @@ IoT の一般的なデータ フローを次の図に示します。
 
 現在の IoT の状況は多様です。 お客様は、製造、自動車、エネルギー、公益、スマート ビルディング、コンサルティングなどの業界に広がっています。 シナリオには、データの形式がわからないアドホックなデータ探索が含まれます。 また、運用効率を高めるためにスキーマ化された (明示的にモデル化された) データの運用分析を行うシナリオも含まれます。 通常、これらのシナリオは共存しており、さまざまなユース ケースをサポートしています。 産業用 IoT 企業とそのデジタル革命を成功させる鍵となるプラットフォーム機能には次のようなものがあります。
 
-- ウォームとコールド両方の多層ストレージ。 
-- 何十年分もの時系列データを格納する機能。 
+- ウォームとコールド両方の多層ストレージ。
+- 何十年分もの時系列データを格納する機能。
 - アセット ベースの運用インテリジェンスのためにクエリを明示的にモデル化したり最適化したりする機能。
 
 Time Series Insights は、IoT データ探索と運用分析情報のための、包括的なエンド ツー エンドのサービスとしてのプラットフォーム オファリングです。 Time Series Insights は IoT 規模のタイム シリーズ データを分析するための、完全に管理されたクラウド サービスを提供しています。

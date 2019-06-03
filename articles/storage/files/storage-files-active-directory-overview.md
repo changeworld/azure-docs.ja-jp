@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 09/19/2018
 ms.author: rogarana
-ms.openlocfilehash: 7010425ba8acff4ed223e2a402d7a927a91c06b6
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: ad8ddf7e9e324bbcc48f15c95870a24fe7476828
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64687139"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237759"
 ---
 # <a name="overview-of-azure-active-directory-authentication-over-smb-for-azure-files-preview"></a>SMB を使用した Azure Files の Azure Active Directory 認証の概要 (プレビュー)
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -26,7 +26,7 @@ SMB を使用した Azure Files の Azure AD 認証に関連するいくつか�
     Azure Active Directory (Azure AD) は、マイクロソフトが提供する、マルチテナントに対応したクラウドベースのディレクトリおよび ID の管理サービスです。 Azure AD には、主要なディレクトリ サービス、アプリケーション アクセスの管理、ID 保護の機能が一つのソリューションとして統合されています。 詳細については、「[Azure Active Directory とは](../../active-directory/fundamentals/active-directory-whatis.md)」を参照してください。
 
 -   **Azure AD Domain Services**  
-    Azure AD Domain Services では、マネージド ドメイン サービス (ドメイン参加、グループ ポリシー、LDAP、Kerberos/NTLM 認証) を提供します。 これらのサービスは、Windows Server Active Directory と完全に互換性があります。 詳細については、「 [Azure Active Directory (AD) のドメイン サービス](../../active-directory-domain-services/active-directory-ds-overview.md)」を参照してください。
+    Azure AD Domain Services では、マネージド ドメイン サービス (ドメイン参加、グループ ポリシー、LDAP、Kerberos/NTLM 認証) を提供します。 これらのサービスは、Windows Server Active Directory と完全に互換性があります。 詳細については、「 [Azure Active Directory (AD) のドメイン サービス](../../active-directory-domain-services/overview.md)」を参照してください。
 
 -   **Azure のロールベースのアクセス制御 (RBAC)**  
     Azure のロールベースのアクセス制御 (RBAC) では、Azure のアクセス権の詳細な管理を実現します。 RBAC を使用して業務遂行に必要な最小限の権限をユーザーに付与することで、リソースへのアクセスを管理できます。 RBAC の詳細については、「[Azure のロールベースのアクセス制御 (RBAC) とは](../../role-based-access-control/overview.md)」を参照してください。
@@ -61,7 +61,7 @@ VM 上で実行されているアプリケーションに関連付けられて�
 ### <a name="enable-azure-ad-authentication-over-smb"></a>SMB 経由の Azure AD 認証を有効にする
 2018 年 9 月 24 日より後に作成された、Azure Files の新規および既存のストレージ アカウントでは、SMB 経由の Azure AD 認証を有効にできます。 
 
-SMB 経由の Azure AD 認証を有効にする場合は、ストレージ アカウントが関連付けられているプライマリ Azure AD テナントのために、Azure AD Domain Services がデプロイされていることを事前に確認します。 Azure AD Domain Services の設定がまだ完了していない場合は、「[Azure portal を使用して Azure Active Directory Domain Services を有効にする](../../active-directory-domain-services/active-directory-ds-getting-started.md)」に記載の手順に従ってください。
+SMB 経由の Azure AD 認証を有効にする場合は、ストレージ アカウントが関連付けられているプライマリ Azure AD テナントのために、Azure AD Domain Services がデプロイされていることを事前に確認します。 Azure AD Domain Services の設定がまだ完了していない場合は、「[Azure portal を使用して Azure Active Directory Domain Services を有効にする](../../active-directory-domain-services/create-instance.md)」に記載の手順に従ってください。
 
 Azure AD Domain Services のデプロイは、通常 10～15 分要します。 Azure AD Domain Services のデプロイが完了後、SMB 経由で Azure Files の Azure AD 認証を有効にできます。 詳細については、「[SMB 経由で Azure files の Azure Active Directory 認証を有効にする認証 (プレビュー)](storage-files-active-directory-enable.md)」を参照してください。 
 

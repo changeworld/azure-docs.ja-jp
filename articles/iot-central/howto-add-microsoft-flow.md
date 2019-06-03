@@ -4,16 +4,16 @@ description: Microsoft Flow 内で IoT Central コネクタを使用して、ワ
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 03/26/2019
+ms.date: 04/25/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: hegate
-ms.openlocfilehash: 2c4ee6a2feb737bcafc64b1c8503c03757a53364
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: c0a03b70c6e5e4742e03d4892b2b5f97c908ab9c
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58497739"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65467979"
 ---
 # <a name="build-workflows-with-the-iot-central-connector-in-microsoft-flow"></a>Microsoft Flow 内で IoT Central コネクタを使用してワークフローを作成する
 
@@ -43,7 +43,7 @@ IoT Central をモバイル通知や Microsoft Teams などの他のサービス
 
 1. アクセスが可能で、この IoT Central 規則に付属しているワークフローのリストが表示されます。 **[テンプレートを探す]** または **[新規] > [テンプレートから作成]** をクリックすると、使用可能ないずれかのテンプレートを選択できます。 
 
-    ![使用可能な Microsoft Flow テンプレート](media/howto-add-microsoft-flow/flowtemplates.png)
+    ![使用可能な Microsoft Flow テンプレート](media/howto-add-microsoft-flow/flowtemplates1.png)
 
 1. 選択したテンプレートのコネクタにサインインするように求められます。 コネクタにサインインすると、ワークフローを構築するデザイナーが表示されます。 ワークフローには、[アプリケーション] と [規則] が既に入力されている IoT Central トリガーが含まれています。
 
@@ -52,7 +52,7 @@ IoT Central をモバイル通知や Microsoft Teams などの他のサービス
     > [!NOTE]
     > [動的なコンテンツ] ウィンドウ内の **[See more]** \(もっと見る\) のテキストを選択し、規則をトリガーした測定値とプロパティ値を取得します。
 
-    ![動的なウィンドウを開いて Flow でアクションを編集します](./media/howto-add-microsoft-flow/flowdynamicpane.png)
+    ![動的なウィンドウを開いて Flow でアクションを編集します](./media/howto-add-microsoft-flow/flowdynamicpane1.png)
 
 1. アクションの編集が完了したら、**[保存]** を選択します。 ワークフローの概要ページが表示されます。 ここで、実行履歴を表示して、他の同僚と共有できます。
 
@@ -79,7 +79,7 @@ Microsoft Flow から直接 IoT Central コネクタを使用してワークフ�
 
 1. [デバイス名] フィールドを選択します。 [動的なコンテンツ] ウィンドウで、**[デバイス名]** を選択します。 この値は、ユーザーがモバイル アプリで入力した入力値から渡され、IoT Central 内の新しいデバイスの名前になります。 この例では、必須フィールドは [デバイス名] のみで、赤のアスタリスクで示されています。 別のデバイス テンプレートでは、複数の必須フィールドを持つものもあり、これらのフィールドをすべて入力しないと、新しいデバイスを作成できません。
 
-    ![Flow の [create device action]\(デバイス アクションの作成\) 動的ウィンドウ](./media/howto-add-microsoft-flow/flowcreatedevice.png)
+    ![Flow の [create device action]\(デバイス アクションの作成\) 動的ウィンドウ](./media/howto-add-microsoft-flow/flowcreatedevice1.png)
 
 1. (省略可能) 新しいデバイスの作成に適していると思われるその他のフィールドに入力します。
 
@@ -101,13 +101,16 @@ Microsoft Flow から直接 IoT Central コネクタを使用してワークフ�
 
 1. 新しいアクションを追加します。 **[Azure IoT Central - Update a device]\(Azure IoT Central - デバイスの更新\)** アクションを検索します。
 
-1. ドロップダウンからアプリケーションを選択します。 ここで、更新する既存のデバイスの ID が必要になります。 **Device Explorer** から IoT Central のデバイスの ID を取得できます。
+1. ドロップダウンからアプリケーションを選択します。 ここで、更新する既存のデバイスの ID が必要になります。 
 
-    ![IoT Central の Device Explorer のデバイス ID](./media/howto-add-microsoft-flow/iotcdeviceid.png)
+    > [!NOTE] 
+    > 更新するデバイスのデバイス詳細ページにある **URL から見つかる ID を使用する必要があります**。 デバイス エクスプローラーのデバイス一覧から見つかるデバイス ID は、Microsoft Flow で使用する正しい ID ではありません。
+
+    ![URL からの IoT Central ID](./media/howto-add-microsoft-flow/iotcdeviceidurl.png)
 
 1. デバイス名を更新できます。 デバイスのプロパティと設定を更新するには、更新するデバイスのデバイス テンプレートを **[Device Template]\(デバイス テンプレート\)** ドロップダウンで選択する必要があります。 アクション タイルが展開し、更新可能なすべてのプロパティと設定が表示されます。
 
-    ![Flow のデバイス更新ワークフロー](./media/howto-add-microsoft-flow/flowupdatedevice.png)
+    ![Flow のデバイス更新ワークフロー](./media/howto-add-microsoft-flow/flowupdatedevice1.png)
 
 1. 更新するプロパティと設定をそれぞれ選択します。 [動的なコンテンツ] ウィンドウで、対応する入力をトリガーから選択します。 この例では、[場所] の値が伝達され、デバイスの [場所] プロパティが更新されます。
 
@@ -117,19 +120,32 @@ Microsoft Flow から直接 IoT Central コネクタを使用してワークフ�
 
 ## <a name="get-device-information-in-a-workflow"></a>ワークフロー内でデバイス情報を取得する
 
-**[Azure IoT Central - Get a device]\(Azure IoT Central - デバイスの取得\)** アクションを使用して、デバイス ID でデバイス情報を取得できます。 デバイス名、デバイス テンプレート名、プロパティ値、ワークフローの後続アクションに渡す設定値などの情報を取得できます。 デバイスから Microsoft Teams に顧客名のプロパティ値とともに渡されるワークフローの例を示します。
+**[Azure IoT Central - Get a device]\(Azure IoT Central - デバイスの取得\)** アクションを使用し、その ID でデバイス情報を取得できます。 
+> [!NOTE] 
+> 更新するデバイスのデバイス詳細ページにある **URL から見つかる ID を使用する必要があります**。 デバイス エクスプローラーのデバイス一覧から見つかるデバイス ID は、Microsoft Flow で使用する正しい ID ではありません。
 
-   ![Flow のデバイス取得ワークフロー](./media/howto-add-microsoft-flow/flowgetdevice.png)
+デバイス名、デバイス テンプレート名、プロパティ値、ワークフローの後続アクションに渡す設定値などの情報を取得できます。 デバイスから Microsoft Teams に顧客名のプロパティ値とともに渡されるワークフローの例を示します。
+
+   ![Flow のデバイス取得ワークフロー](./media/howto-add-microsoft-flow/flowgetdevice1.png)
 
 
 ## <a name="run-a-command-on-a-device-in-a-workflow"></a>ワークフローのデバイスでコマンドを実行する
-**Azure IoT Central - Run a command\(Azure IoT Central - コマンドの実行\)** アクションを使用して、デバイス ID で指定されたデバイスでコマンドを実行することができます。 このアクションを通して、実行するコマンドを選択し、コマンドのパラメーターで渡すことができます。 Microsoft Flow モバイル アプリ内のボタンからデバイスの再起動コマンドを実行するワークフローの例を次に示します。
+**Azure IoT Central - Run a command\(Azure IoT Central - コマンドの実行\)** アクションを使用し、その ID で指定されたデバイスでコマンドを実行することができます。 
 
-   ![Flow のデバイス取得ワークフロー](./media/howto-add-microsoft-flow/flowrunacommand.png)
+> [!NOTE] 
+> 更新するデバイスのデバイス詳細ページにある **URL から見つかる ID を使用する必要があります**。 デバイス エクスプローラーのデバイス一覧から見つかるデバイス ID は、Microsoft Flow で使用する正しい ID ではありません。
+    
+このアクションを通して、実行するコマンドを選択し、コマンドのパラメーターで渡すことができます。 Microsoft Flow モバイル アプリ内のボタンからデバイスの再起動コマンドを実行するワークフローの例を次に示します。
+
+   ![Flow のデバイス取得ワークフロー](./media/howto-add-microsoft-flow/flowrunacommand1.png)
 
 ## <a name="delete-a-device-in-a-workflow"></a>ワークフロー内のデバイスを削除する
 
-**[Azure IoT Central - Delete a device]\(Azure IoT Central - デバイスの削除\)** アクションを使用して、デバイス ID でデバイスを削除できます。 Microsoft Flow モバイル アプリ内のボタンを押してデバイスを削除するワークフローの例を次に示します。
+**[Azure IoT Central - Delete a device]\(Azure IoT Central - デバイスの削除\)** アクションを使用して、その ID でデバイスを削除できます。 
+> [!NOTE] 
+> 更新するデバイスのデバイス詳細ページにある **URL から見つかる ID を使用する必要があります**。 デバイス エクスプローラーのデバイス一覧から見つかるデバイス ID は、Microsoft Flow で使用する正しい ID ではありません。
+
+Microsoft Flow モバイル アプリ内のボタンを押してデバイスを削除するワークフローの例を次に示します。
 
    ![Flow の[デバイスの削除] ワークフロー](./media/howto-add-microsoft-flow/flowdeletedevice.png)
 

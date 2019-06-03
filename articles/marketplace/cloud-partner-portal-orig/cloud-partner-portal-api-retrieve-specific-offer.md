@@ -1,25 +1,18 @@
 ---
-title: 特定のプラン API を取得する | Microsoft Docs
+title: 特定のプランの取得 API | Azure Marketplace
 description: API によって、発行元の名前空間内で指定のプランが取得されます。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: reference
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 9484cf0f549db94be8f1ac2363addca952a3cff3
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.author: pabutler
+ms.openlocfilehash: bb6bbd457ff372ad46091f49cf4ae7e4b34b3d83
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48808269"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64935435"
 ---
 <a name="retrieve-a-specific-offer"></a>特定のプランを取得する
 =========================
@@ -45,20 +38,20 @@ ms.locfileid: "48808269"
 --------------
 
 
-| **名前**    | **説明**                                                                          | **データの種類** |
+| **Name**    | **説明**                                                                          | **データの種類** |
 |-------------|------------------------------------------------------------------------------------------|---------------|
 | publisherId | 発行元の ID。 たとえば、Contoso です。                                                        | String        |
 | offerId     | プランを一意に識別する GUID。                                                 | String        |
 | version     | 取得されるプランのバージョン。 既定では、最新版のプランが取得されます。 | 整数       |
 | slotId      | プランが取得されるスロット。次のいずれかになります。      <br/>  - `Draft` (既定) の場合、現在ドラフトの状態にあるプランが取得されます。  <br/>  -  `Preview` の場合、現在プレビューの状態にあるプランが取得されます。     <br/>  -  `Production` の場合、現在運用の状態にあるプランが取得されます。          |      enum |
-| api-version | API の最新バージョン                                                                    | 日付          |
+| api-version | API の最新バージョン                                                                    | Date          |
 |  |  |  |
 
 
 <a name="header"></a>ヘッダー
 ------
 
-|  **名前**          |   **値**            |
+|  **Name**          |   **値**            |
 |  ---------------   |  --------------        |
 |  Content-Type      | `application/json`     |
 |  Authorization     | `Bearer YOUR_TOKEN`    |
@@ -175,14 +168,14 @@ ms.locfileid: "48808269"
 
 ### <a name="response-body-properties"></a>応答本文のプロパティ
 
-|  **名前**       |   **説明**                                                                                                               |
+|  **Name**       |   **説明**                                                                                                               |
 |  -------------  |   -----------------------------------------------------------------------------------------------------                         |
-|  offerTypeId    | プランの種類を識別します                                                                                                    |
+|  offerTypeId    | オファーの種類を示します                                                                                                    |
 |  publisherId    | 発行元の一意の識別子。                                                                                              |
-|  status         | プランの状態。 使用可能な値の一覧については、下の「[オファーの状態](#offer-status)」を参照してください。                                  |
-|  ID             | プランを一意に識別する GUID                                                                                         |
-|  version        | プランの現在のバージョン。 バージョン プロパティはクライアントでは変更できません。 発行のたびにインクリメントされます。    |
-|  定義     | ワークロードの実際の定義                                                                                               |
+|  status         | オファーの状態。 使用可能な値の一覧については、下の「[オファーの状態](#offer-status)」を参照してください。                                  |
+|  Id             | プランを一意に識別する GUID                                                                                         |
+|  version        | オファーの現在のバージョン。 バージョン プロパティはクライアントでは変更できません。 発行のたびにインクリメントされます。    |
+|  definition     | ワークロードの実際の定義                                                                                               |
 |  changedTime    | プランが最後に修正されたときの UTC 日時                                                                                   |
 |  |  |
 
@@ -191,7 +184,7 @@ ms.locfileid: "48808269"
 
 | **コード**  | **説明**                                                                                                                 |
 |  ------   | ------------------------------------------------------------------------------------------------------------------------------- |
-|  200      | `OK` - 要求が正常に処理され、発行元のすべてのプランがクライアントに返されました。               |
+|  200      | `OK` - 要求が正常に処理され、発行元のすべてのオファーがクライアントに返されました。               |
 |  400      | `Bad/Malformed request` - エラーの応答本文にさらに情報が含まれている場合があります。                                                 |
 |  403      | `Forbidden` - クライアントは、指定の名前空間にアクセスできません。                                                        |
 |  404      | `Not found` - 指定のエンティティが存在しません。 クライアントでは、発行元 ID、プラン ID、バージョン (指定されている場合) の確認が求められます。      |
@@ -200,7 +193,7 @@ ms.locfileid: "48808269"
 
 ### <a name="offer-status"></a>オファーの状態
 
-|  **名前**                   |   **説明**                             |
+|  **Name**                   |   **説明**                             |
 | --------------------------- |  -------------------------------------------- |
 |  NeverPublished             | オファーは発行されていません。               |
 |  NotStarted                 | 新しいオファーですが、開始されていません。              |

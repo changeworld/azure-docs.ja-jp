@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: vincesm
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26178066b2f5353cba99c5965bb2f3055556784c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: fb05ee4d6e05cb8b56756a761a519e5903b78bbd
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57894276"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65507091"
 ---
 # <a name="what-are-the-default-user-permissions-in-azure-active-directory"></a>Azure Active Directory の既定のユーザー アクセス許可とは
 Azure Active Directory (Azure AD) では、すべてのユーザーに既定のアクセス許可のセットが付与されます。 ユーザーのアクセスは、ユーザーの種類、ユーザーの[ロールの割り当て](active-directory-users-assign-role-azure-portal.md)、および個々のオブジェクトの所有権で構成されます。 この記事では、これらの既定のアクセス許可について説明し、メンバーとゲスト ユーザーの既定値を比較します。 既定のユーザー アクセス許可は、Azure AD のユーザー設定のみで変更できます。
@@ -40,7 +40,7 @@ Azure Active Directory (Azure AD) では、すべてのユーザーに既定の�
 デバイス | デバイスのすべてのプロパティを読み取る<br>所有するデバイスのすべてのプロパティを管理する<br> | アクセス許可なし<br>所有するデバイスを削除する<br>
 Directory | 会社のすべての情報を読み取る<br>すべてのドメインを読み取る<br>すべてのパートナー契約を読み取る | 表示名と検証済みドメインを読み取る
 ロールとスコープ | すべての管理者ロールとメンバーシップを読み取る<br>管理単位のすべてのプロパティとメンバーシップを読み取る | アクセス許可なし 
-サブスクリプション | すべてのサブスクリプションを読み取る<br>サービス プラン メンバーを有効にする | アクセス許可なし
+Subscriptions | すべてのサブスクリプションを読み取る<br>サービス プラン メンバーを有効にする | アクセス許可なし
 ポリシー | ポリシーのすべてのプロパティを読み取る<br>所有するポリシーのすべてのプロパティを管理する | アクセス許可なし
 
 ## <a name="to-restrict-the-default-permissions-for-member-users"></a>メンバー ユーザーの既定のアクセス許可を制限するには
@@ -49,6 +49,8 @@ Directory | 会社のすべての情報を読み取る<br>すべてのドメイ�
 
 アクセス許可 | 設定の説明
 ---------- | ------------
+ユーザーはアプリケーションを登録できる | このオプションを [いいえ] に設定すると、ユーザーはアプリケーション登録を作成できません。 この場合、特定のユーザーをアプリケーション開発者ロールに追加することで、そのユーザーにこの機能を付与できます。
+ユーザーが LinkedIn で職場または学校アカウントに接続できるようにする | このオプションを [いいえ] に設定すると、ユーザーは、自身の LinkedIn アカウントで職場または学校のアカウントに接続できなくなります。  詳細については、「[LinkedIn アカウント接続のデータ共有と同意](https://docs.microsoft.com/azure/active-directory/users-groups-roles/linkedin-user-consent)」を参照してください。
 セキュリティ グループを作成できる | このオプションを [いいえ] に設定すると、ユーザーはセキュリティ グループを作成できません。 その場合でも、全体管理者とユーザー管理者はセキュリティ グループを作成できます。 方法については、「[グループの設定を構成するための Azure Active Directory コマンドレット](../users-groups-roles/groups-settings-cmdlets.md)」をご覧ください。
 Office 365 グループを作成できる | このオプションを [いいえ] に設定すると、ユーザーは Office 365 グループを作成できません。 このオプションを [一部] に設定すると、選ばれたユーザーのセットは Office 365 グループを作成できます。 その場合でも、全体管理者とユーザー管理者は Office 365 グループを作成できます。 方法については、「[グループの設定を構成するための Azure Active Directory コマンドレット](../users-groups-roles/groups-settings-cmdlets.md)」をご覧ください。
 Azure AD 管理ポータルへのアクセスを制限する | このオプションを [いいえ] に設定すると、ユーザーは Azure Active Directory にアクセスできません。

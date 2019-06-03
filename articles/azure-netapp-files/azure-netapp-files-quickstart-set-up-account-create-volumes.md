@@ -1,6 +1,6 @@
 ---
-title: Azure NetApp Files を設定し、ボリュームを作成する | Microsoft Docs
-description: 簡単に Azure NetApp Files を設定し、ボリュームを作成する方法について説明します。
+title: クイック スタート - Azure NetApp Files を設定し、NFS ボリュームを作成する | Microsoft Docs
+description: クイック スタート - 簡単に Azure NetApp Files を設定し、ボリュームを作成する方法について説明します。
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -12,28 +12,38 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 2/20/2019
+ms.date: 4/16/2019
 ms.author: b-juche
-ms.openlocfilehash: 634f23cf3161fff09f21c79fd8300cb269dcc5b7
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 4ea511bec75557bc6f7d37b1724b4b0db65ba9cc
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59546582"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66299416"
 ---
-# <a name="set-up-azure-netapp-files-and-create-a-volume"></a>Azure NetApp Files の設定とボリュームの作成 
+# <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>クイック スタート:Azure NetApp Files を設定し、NFS ボリュームを作成する 
 
 この記事では、簡単に Azure NetApp Files を設定し、ボリュームを作成する方法について説明します。 
 
+このクイック スタートでは、次の項目を設定します。
+
+- Azure NetApp Files と NetApp リソース プロバイダーの登録
+- NetApp アカウント
+- 容量プール
+- Azure NetApp Files の NFS ボリューム
+
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+
 ## <a name="before-you-begin"></a>開始する前に 
 
-パブリック プレビュー プログラムに参加していて、Microsoft.NetApp リソース プロバイダーにアクセスするためのホワイトリストに登録されている必要があります。 パブリック プレビュー プログラムへの参加の詳細については、[Azure NetApp Files パブリック プレビューのサインアップ ページ](https://aka.ms/nfspublicpreview)をご覧ください。 
+> [!IMPORTANT] 
+> Azure NetApp Files サービスへのアクセスを許可されている必要があります。  サービスへのアクセスを要求するには、[Azure NetApp Files 順番待ちリスト送信ページ](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR8cq17Xv9yVBtRCSlcD_gdVUNUpUWEpLNERIM1NOVzA5MzczQ0dQR1ZTSS4u)を参照してください。  次の手順に進む前に、Azure NetApp Files チームから正式な確認メールが届くのを待つ必要があります。 
 
 ## <a name="register-for-azure-netapp-files-and-netapp-resource-provider"></a>Azure NetApp Files と NetApp リソース プロバイダーに登録する
 
 1. Azure portal で、右上隅にある Azure Cloud Shell アイコンをクリックします。
 
-      ![Azure Cloud Shell アイコン](../media/azure-netapp-files/azure-netapp-files-azure-cloud-shell.png)
+    ![Azure Cloud Shell アイコン](../media/azure-netapp-files/azure-netapp-files-azure-cloud-shell-window.png)
 
 2. Azure NetApp Files に対してホワイトリスト登録されているサブスクリプションを指定します。
     
@@ -47,7 +57,7 @@ ms.locfileid: "59546582"
 
 ## <a name="create-a-netapp-account"></a>NetApp アカウントを作成する
 
-1. Azure portal の [検索] ボックスに「**Azure NetApp Files**」と入力し、表示された一覧から **[Azure NetApp Files (プレビュー)]** を選択します。
+1. Azure portal の [検索] ボックスに「**Azure NetApp Files**」と入力し、表示された一覧から **[Azure NetApp Files]** を選択します。
 
       ![Azure NetApp Files を選択する](../media/azure-netapp-files/azure-netapp-files-select-azure-netapp-files.png)
 
@@ -73,7 +83,7 @@ ms.locfileid: "59546582"
 
     ![NetApp アカウントを選択する](../media/azure-netapp-files/azure-netapp-files-select-netapp-account.png)  
 
-2. 自分の NetApp アカウントの Azure NetApp Files 管理ブレードで、**[容量プール]** をクリックします。
+2. 自分の NetApp アカウントの Azure NetApp Files 管理ブレードで、 **[容量プール]** をクリックします。
 
     ![[容量プール] をクリックする](../media/azure-netapp-files/azure-netapp-files-click-capacity-pools.png)  
 
@@ -88,9 +98,9 @@ ms.locfileid: "59546582"
 
 5. Click **OK**.
 
-## <a name="create-a-volume-for-azure-netapp-files"></a>Azure NetApp Files のボリュームを作成する
+## <a name="create-an-nfs-volume-for-azure-netapp-files"></a>Azure NetApp Files の NFS ボリュームを作成する
 
-1. 自分の NetApp アカウントの Azure NetApp Files 管理ブレードで、**[ボリューム]** をクリックします。
+1. 自分の NetApp アカウントの Azure NetApp Files 管理ブレードで、 **[ボリューム]** をクリックします。
 
     ![[ボリューム] をクリックする](../media/azure-netapp-files/azure-netapp-files-click-volumes.png)  
 
@@ -100,7 +110,6 @@ ms.locfileid: "59546582"
 
 3. [ボリュームの作成] ウィンドウで、ボリュームの情報を指定します。 
    1. ボリューム名として「**myvol1**」と入力します。 
-   2. ボリュームのエクスポート パスを作成する際に使用するファイル パスとして「**myfilepath1**」と入力します。
    3. 容量プールを選択します (**mypool1**)。
    4. クォータの既定値を使用します。 
    5. 仮想ネットワークで **[新規作成]** をクリックし、新しい Azure 仮想ネットワーク (Vnet) を作成します。  次の情報を入力します。
@@ -116,16 +125,46 @@ ms.locfileid: "59546582"
 
       ![仮想ネットワーク ウィンドウを作成する](../media/azure-netapp-files/azure-netapp-files-create-virtual-network-window.png)  
 
-4. **[Review + create]\(レビュー + 作成\)** をクリックします。
+4. **[プロトコル]** をクリックし、ボリュームのプロトコルの種類として **[NFS]** を選択します。   
+
+    ボリュームのエクスポート パスを作成する際に使用するファイル パスとして「**myfilepath1**」と入力します。 
+
+    ![クイック スタートの NFS プロトコルを指定する](../media/azure-netapp-files/azure-netapp-files-quickstart-protocol-nfs.png)
+
+5. **[Review + create]\(レビュー + 作成\)** をクリックします。
 
     ![[確認と作成] ウィンドウ](../media/azure-netapp-files/azure-netapp-files-review-and-create-window.png)  
 
-5. ボリュームの情報を確認し、**[作成]** をクリックします。  
+5. ボリュームの情報を確認し、 **[作成]** をクリックします。  
     作成されたボリュームが [ボリューム] ブレードに表示されます。
 
     ![ボリュームが作成されました](../media/azure-netapp-files/azure-netapp-files-create-volume-created.png)  
 
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
+
+手順が終了していて必要な場合、リソース グループを削除することができます。 リソース グループの削除操作は、元に戻すことができません。  
+
+> [!IMPORTANT]
+> リソース グループ内のすべてのリソースが完全に削除され、元に戻すことはできません。 
+
+1. Azure portal の [検索] ボックスに「**Azure NetApp Files**」と入力し、表示された一覧から **[Azure NetApp Files]** を選択します。
+
+2. サブスクリプションの一覧で、削除するリソース グループ (myRG1) をクリックします。 
+
+    ![リソース グループに移動する](../media/azure-netapp-files/azure-netapp-files-azure-navigate-to-resource-groups.png)
+
+
+3. [リソース グループ] ページで、 **[リソース グループの削除]** をクリックします。
+
+    ![Delete resource group](../media/azure-netapp-files/azure-netapp-files-azure-delete-resource-group.png) 
+
+    ウィンドウが開き、リソース グループと共に削除されるリソースに関する警告が表示されます。
+
+4. リソース グループの名前 (myRG1) を入力して、リソース グループとその中のすべてのリソースを完全に削除することを確認してから、 **[削除]** をクリックします。
+
+    ![Delete resource group](../media/azure-netapp-files/azure-netapp-files-azure-confirm-resource-group-deletion.png ) 
+
 ## <a name="next-steps"></a>次の手順  
 
-* [Azure NetApp Files のストレージ階層を理解する](azure-netapp-files-understand-storage-hierarchy.md)
-* [Azure NetApp Files を使用してボリュームを管理する](azure-netapp-files-manage-volumes.md) 
+> [!div class="nextstepaction"]
+> [Azure NetApp Files を使用してボリュームを管理する](azure-netapp-files-manage-volumes.md)  

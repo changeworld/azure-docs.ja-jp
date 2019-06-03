@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 93f4f74d435cc14130668da102d1246c5fad5872
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57553823"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66238184"
 ---
 | 制限の種類 | 制限 | 説明 |
 | --- | --- | --- |

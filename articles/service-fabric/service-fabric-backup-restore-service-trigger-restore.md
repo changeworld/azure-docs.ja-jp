@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: aagup
-ms.openlocfilehash: a82004fdd6bbb4eda0842670f210f846f9446384
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: e4ada412547360f97e869d3312b65d869fa3df48
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58667176"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65413731"
 ---
 # <a name="restoring-backup-in-azure-service-fabric"></a>Azure Service Fabric でのバックアップの復元
 
@@ -37,6 +37,20 @@ Azure Service Fabric では、Reliable Stateful サービスおよび Reliable A
 - 復元をトリガーするには、_Fault Analysis Service (FAS)_ がクラスターで有効になっている必要があります。
 - "_バックアップ復元サービス (BRS)_" がバックアップを作成しました。
 - 復元は、パーティションでのみトリガーできます。
+- 構成の呼び出しを行うため、Microsoft.ServiceFabric.Powershell.Http モジュール [プレビュー] をインストールします。
+
+```powershell
+    Install-Module -Name Microsoft.ServiceFabric.Powershell.Http -AllowPrerelease
+```
+
+- Microsoft.ServiceFabric.Powershell.Http モジュールを使用して、任意の構成要求を行う前に、`Connect-SFCluster` コマンドを使用してクラスターが接続されていることを確認します。
+
+```powershell
+
+    Connect-SFCluster -ConnectionEndpoint 'https://mysfcluster.southcentralus.cloudapp.azure.com:19080'   -X509Credential -FindType FindByThumbprint -FindValue '1b7ebe2174649c45474a4819dafae956712c31d3' -StoreLocation 'CurrentUser' -StoreName 'My' -ServerCertThumbprint '1b7ebe2174649c45474a4819dafae956712c31d3'  
+
+```
+
 
 ## <a name="triggered-restore"></a>トリガーされた復元
 
@@ -50,6 +64,15 @@ Azure Service Fabric では、Reliable Stateful サービスおよび Reliable A
 Service Fabric クラスター全体が失われた場合は、Reliable Stateful サービスと Reliable Actors のパーティションのデータを復元できます。 目的のバックアップは、[バックアップ ストレージ詳細での GetBackupAPI](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getbackupsfrombackuplocation) を使用するときに一覧から選択できます。 アプリケーション、サービス、またはパーティションのバックアップを列挙できます。
 
 次の例では、失われたクラスターが 「[Reliable Stateful サービスと Reliable Actors の定期バックアップの有効化](service-fabric-backuprestoreservice-quickstart-azurecluster.md#enabling-periodic-backup-for-reliable-stateful-service-and-reliable-actors)」で言及されている同じクラスターであるとします。 この場合、`SampleApp` は、バックアップ ポリシーを有効にしてデプロイされ、バックアップは Azure Storage に対して構成されます。
+
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>Microsoft.ServiceFabric.Powershell.Http モジュールを使用した PowerShell
+
+```powershell
+Get-SFBackupsFromBackupLocation -Application -ApplicationName 'fabric:/SampleApp' -AzureBlobStore -ConnectionString 'DefaultEndpointsProtocol=https;AccountName=<account-name>;AccountKey=<account-key>;EndpointSuffix=core.windows.net' -ContainerName 'backup-container'
+
+```
+
+#### <a name="rest-call-using-powershell"></a>PowerShell を使用した Rest の呼び出し
 
 REST API を使用して `SampleApp` アプリケーション内のすべてのパーティションに対して作成されたバックアップバックアップの一覧を返す PowerShell スクリプトを実行します。 この API は、使用可能なバックアップを一覧するためにバックアップ ストレージ情報を必要とします。
 
@@ -142,12 +165,30 @@ FailureError            :
 
 "_名前付きパーティション分割_" では、名前の値を比較して、代替クラスターの対象パーティションが識別されます。
 
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>Microsoft.ServiceFabric.Powershell.Http モジュールを使用した PowerShell
+
+```powershell
+
+Restore-SFPartition  -PartitionId '1c42c47f-439e-4e09-98b9-88b8f60800c6' -BackupId 'b0035075-b327-41a5-a58f-3ea94b68faa4' -BackupLocation 'SampleApp\MyStatefulService\974bd92a-b395-4631-8a7f-53bd4ae9cf22\2018-04-06 21.10.27.zip' -AzureBlobStore -ConnectionString 'DefaultEndpointsProtocol=https;AccountName=<account-name>;AccountKey=<account-key>;EndpointSuffix=core.windows.net' -ContainerName 'backup-container'
+
+```
+
+#### <a name="rest-call-using-powershell"></a>PowerShell を使用した Rest の呼び出し
+
 次の[復元 API](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-restorepartition) を使用することにより、バックアップ クラスター パーティションに対して復元を要求します。
 
 ```powershell
+
+$StorageInfo = @{
+    ConnectionString = 'DefaultEndpointsProtocol=https;AccountName=<account-name>;AccountKey=<account-key>;EndpointSuffix=core.windows.net'
+    ContainerName = 'backup-container'
+    StorageKind = 'AzureBlobStore'
+}
+
 $RestorePartitionReference = @{
     BackupId = 'b0035075-b327-41a5-a58f-3ea94b68faa4'
     BackupLocation = 'SampleApp\MyStatefulService\974bd92a-b395-4631-8a7f-53bd4ae9cf22\2018-04-06 21.10.27.zip'
+    BackupStorage  = $StorageInfo
 }
 
 $body = (ConvertTo-Json $RestorePartitionReference) 
@@ -184,6 +225,16 @@ FailureError            :
 
 復元 API には、_BackupId_ と _BackupLocation_ の詳細を提供します。 クラスターでバックアップが有効になっているので、Service Fabric の "_バックアップ復元サービス (BRS)_" では、関連付けられているバックアップ ポリシーから適切なストレージの場所が識別されます。
 
+
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>Microsoft.ServiceFabric.Powershell.Http モジュールを使用した PowerShell
+
+```powershell
+Restore-SFPartition  -PartitionId '974bd92a-b395-4631-8a7f-53bd4ae9cf22' -BackupId 'b0035075-b327-41a5-a58f-3ea94b68faa4' -BackupLocation 'SampleApp\MyStatefulService\974bd92a-b395-4631-8a7f-53bd4ae9cf22\2018-04-06 21.10.27.zip'
+
+```
+
+#### <a name="rest-call-using-powershell"></a>PowerShell を使用した Rest の呼び出し
+
 ```powershell
 $RestorePartitionReference = @{
     BackupId = 'b0035075-b327-41a5-a58f-3ea94b68faa4',
@@ -201,6 +252,14 @@ TrackRestoreProgress を使用して復元の進行状況を追跡できます�
 ## <a name="track-restore-progress"></a>復元の進行状況を追跡する
 
 Reliable Stateful サービスまたは Reliable Actors のパーティションで受け付けられる復元要求は、一度に 1 つだけです。 パーティションは、現在の復元要求が完了した後にのみ別の要求を受け入れます。 パーティションが異なれば、同時に複数の復元要求をトリガーできます。
+
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>Microsoft.ServiceFabric.Powershell.Http モジュールを使用した PowerShell
+
+```powershell
+    Get-SFPartitionRestoreProgress -PartitionId '974bd92a-b395-4631-8a7f-53bd4ae9cf22'
+```
+
+#### <a name="rest-call-using-powershell"></a>PowerShell を使用した Rest の呼び出し
 
 ```powershell
 $url = "https://mysfcluster-backup.southcentralus.cloudapp.azure.com:19080/Partitions/974bd92a-b395-4631-8a7f-53bd4ae9cf22/$/GetRestoreProgress?api-version=6.4"
