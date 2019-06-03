@@ -1,20 +1,18 @@
 ---
-title: クラウド ソリューション プロバイダー | Azure
+title: クラウド ソリューション プロバイダー | Azure Marketplace
 description: 発行元は、Microsoft CSP パートナー チャネルを通して各自のオファーを販売できるようになりました
 services: Azure, Marketplace, Compute, Storage, Networking
-documentationcenter: ''
 author: qianw211
-manager: Patrick.Butler
 ms.service: marketplace
 ms.topic: article
 ms.date: 02/27/2019
 ms.author: ellacroi
-ms.openlocfilehash: 516cb10fe368334d8fe30d998857d0688dcae972
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: d39ebf993498cea3ede11e07c5e71628287b81ac
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57220740"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64938542"
 ---
 # <a name="cloud-solution-providers"></a>クラウド ソリューション プロバイダー
 
@@ -29,9 +27,9 @@ ms.locfileid: "57220740"
 | **オファリング タイプ**    | **BYOL**  |  **Free** | **PAYG**   |
 | :---------------- | :---------|:----------|:-----------|
 | VM  | はい | はい | はい |
-| コンテナー | 該当なし | はい | 該当なし |
+| Containers | 該当なし | はい | 該当なし |
 | ソリューション テンプレート | 該当なし | はい | 該当なし |
-| マネージド アプリケーション | 該当なし | はい | はい |
+| Managed Applications | 該当なし | はい | はい |
 | IT ソリューション SaaS (サイト単位の価格) | 該当なし | はい | はい |
 |   |   |   |
 

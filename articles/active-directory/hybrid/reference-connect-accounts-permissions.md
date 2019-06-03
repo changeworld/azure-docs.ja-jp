@@ -13,22 +13,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 01/24/2019
+ms.date: 04/29/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d145407331ed652f21510483b51a4617bf28e2fa
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 466b1aadb84bc92981b9adf1b1affa69f5f2ec25
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56879120"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919166"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect:アカウントとアクセス許可
 
 ## <a name="accounts-used-for-azure-ad-connect"></a>Azure AD Connect に使用されるアカウント
 
-![](media/reference-connect-accounts-permissions/account5.png)
+![アカウントの概要](media/reference-connect-accounts-permissions/account5.png)
 
 Azure AD Connect では、オンプレミス (Windows Server Active Directory) から Azure Active Directory に情報を同期させるために 3 つのアカウントが使用されます。  それらのアカウントを次に示します。
 
@@ -46,7 +46,7 @@ Azure AD Connect を実行するためのこれら 3 つのアカウントに加
 
 - **Azure AD 全体管理者アカウント**:  Azure AD コネクタ アカウントを作成したり、Azure AD を構成したりする目的で使用します。
 
-- **SQL SA アカウント (任意)**:     通常版の SQL Server を使用して ADSync データベースを作成する目的で使用します。  この SQL Server は、Azure AD Connect のインストール環境に対してローカルでもリモートでもかまいません。  このアカウントは、エンタープライズ管理者と同じアカウントにすることもできます。  現在では、SQL 管理者が帯域外でデータベースのプロビジョニングを実行し、データベース所有者権限を持つ Azure AD Connect 管理者がインストールできるようになっています。  詳細については、「[Install Azure AD Connect using SQL delegated administrator permissions (SQL によって委任された管理者の権限を使用した Azure AD Connect のインストール)](how-to-connect-install-sql-delegation.md)」を参照してください。
+- **SQL SA アカウント (任意)** :     通常版の SQL Server を使用して ADSync データベースを作成する目的で使用します。  この SQL Server は、Azure AD Connect のインストール環境に対してローカルでもリモートでもかまいません。  このアカウントは、エンタープライズ管理者と同じアカウントにすることもできます。  現在では、SQL 管理者が帯域外でデータベースのプロビジョニングを実行し、データベース所有者権限を持つ Azure AD Connect 管理者がインストールできるようになっています。  詳細については、「[Install Azure AD Connect using SQL delegated administrator permissions (SQL によって委任された管理者の権限を使用した Azure AD Connect のインストール)](how-to-connect-install-sql-delegation.md)」を参照してください。
 
 ## <a name="installing-azure-ad-connect"></a>Azure AD Connect のインストール
 Azure AD Connect インストール ウィザードには次の 2 つの別の設定からアクセスできます。
@@ -111,10 +111,10 @@ AD DS コネクタ アカウントは、Windows Server AD の読み取りと書�
 | 同期サービスのインストール、サービス アカウントのオプション |AD またはローカル ユーザー アカウントの資格情報 |ユーザー。アクセス許可は、インストール ウィザードにより付与されます。 |管理者がアカウントを指定している場合は、このアカウントは、同期サービスのサービス アカウントとして使用します。 |
 | Azure への接続 |Azure AD ディレクトリの資格情報 |Azure AD でのグローバル管理者ロール |<li>Azure AD ディレクトリの同期を有効にします。</li>  <li>Azure AD で進行中の同期操作に使用する Azure AD コネクタ アカウントを作成します。</li> |
 | ディレクトリの接続 |Azure AD に接続する各フォレストのオンプレミス Active Directory の資格情報 |アクセス許可はどの機能を有効にするかによって異なります。詳細については、「AD DS コネクタ アカウントの作成」を参照してください。 |このアカウントは、同期中にディレクトリ情報を読み取るまたは書き込むために使用されます。 |
-| AD FS サーバー |ウィザードを実行しているユーザーのログオン資格情報では接続できない場合に、リスト内の各サーバーについてウィザードが資格情報を収集します。 |ドメイン管理者 |AD FS サーバー ロールをインストールして構成します。 |
-| Web アプリケーション プロキシ サーバー |ウィザードを実行しているユーザーのログオン資格情報では接続できない場合に、リスト内の各サーバーについてウィザードが資格情報を収集します。 |ターゲット コンピューターのローカル管理者 |WAP サーバー ロールをインストールして構成します。 |
+| AD FS サーバー |一覧の各サーバーに対して、ウィザードを実行しているユーザーのサインイン資格情報が不十分で接続できない場合に、ウィザードは資格情報を収集します。 |ドメイン管理者 |AD FS サーバー ロールをインストールして構成します。 |
+| Web アプリケーション プロキシ サーバー |一覧の各サーバーに対して、ウィザードを実行しているユーザーのサインイン資格情報が不十分で接続できない場合に、ウィザードは資格情報を収集します。 |ターゲット コンピューターのローカル管理者 |WAP サーバー ロールをインストールして構成します。 |
 | プロキシ信頼資格情報 |フェデレーション サービスの信頼資格情報 (FS からの信頼証明書の登録にプロキシが使用する資格情報) |ドメイン アカウント (AD FS サーバーのローカル管理者) |FS-WAP 信頼証明書の初回登録 |
-| AD FS サービス アカウントのページ、[ドメイン ユーザー アカウントの使用オプション] |AD ユーザー アカウントの資格情報 |ドメイン ユーザー |資格情報を指定した AD ユーザー アカウントは、AD FS サービスのログオン アカウントとして使用します。 |
+| AD FS サービス アカウントのページ、[ドメイン ユーザー アカウントの使用オプション] |AD ユーザー アカウントの資格情報 |ドメイン ユーザー |資格情報が提供されている Azure AD ユーザー アカウントは、AD FS サービスのサインイン アカウントとして使用されます。 |
 
 ### <a name="create-the-ad-ds-connector-account"></a>AD DS コネクタ アカウントの作成
 
@@ -206,7 +206,7 @@ VSA は、同期エンジンと SQL が同じサーバー上にあるシナリ�
 #### <a name="group-managed-service-account"></a>グループの管理されたサービス アカウント
 リモートの SQL サーバーを使う場合は、**グループの管理されたサービス アカウント**を使うことをお勧めします。 グループの管理されたサービス アカウント用の Active Directory を準備する方法について詳しくは、「[グループの管理されたサービス アカウントの概要](https://technet.microsoft.com/library/hh831782.aspx)」をご覧ください。
 
-このオプションを使用するには、[[必須コンポーネントのインストール]](how-to-connect-install-custom.md#install-required-components) ページで **[既存のサービス アカウントを使用する]** を選択し、**[管理されたサービス アカウント]** を選択します。  
+このオプションを使用するには、[[必須コンポーネントのインストール]](how-to-connect-install-custom.md#install-required-components) ページで **[既存のサービス アカウントを使用する]** を選択し、 **[管理されたサービス アカウント]** を選択します。  
 ![VSA](./media/reference-connect-accounts-permissions/serviceaccount.png)  
 [スタンドアロンの管理されたサービス アカウント](https://technet.microsoft.com/library/dd548356.aspx)を使用することもできます。 ただし、これらはローカル コンピューターでのみ使うことができ、既定の仮想サービス アカウントでこれらを使うことにメリットはありません。
 
@@ -239,6 +239,11 @@ Azure AD のアカウントは、同期サービスで使用するために作�
 Azure AD での同期サービスのアカウント数の上限は 20 です。 Azure AD で既存の Azure AD サービス アカウントの一覧を取得するには、次の Azure AD PowerShell コマンドレットを実行します。`Get-AzureADDirectoryRole | where {$_.DisplayName -eq "Directory Synchronization Accounts"} | Get-AzureADDirectoryRoleMember`
 
 使用されていない Azure AD サービス アカウントを削除するには、次の Azure AD PowerShell コマンドレットを実行します。`Remove-AzureADUser -ObjectId <ObjectId-of-the-account-you-wish-to-remove>`
+
+>[!NOTE]
+>上記の PowerShell コマンドを使用する前に、[Graph モジュール用の Azure Active Directory PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0#installing-the-azure-ad-module) をインストールし、Azure AD のインスタンスを [Connect-AzureAD](https://docs.microsoft.com/powershell/module/azuread/connect-azuread?view=azureadps-2.0) を使用して接続する必要があります。
+
+Azure AD コネクタ アカウントのパスワードの管理またはリセット方法の詳細については、「[Azure AD Connect アカウントの管理](how-to-connect-azureadaccount.md)」を参照してください。
 
 ## <a name="related-documentation"></a>関連ドキュメント
 「[オンプレミス ID と Azure Active Directory の統合](whatis-hybrid-identity.md)」をまだお読みでない方のために、次の表に関連トピックへのリンクを示します。

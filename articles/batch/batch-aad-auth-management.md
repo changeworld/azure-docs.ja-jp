@@ -1,6 +1,6 @@
 ---
 title: Azure Active Directory を使用して Batch 管理ソリューションを認証する | Microsoft Docs
-description: Azure Resource Manager でビルドしたアプリケーションと Batch リソース プロバイダーを使用して Azure AD で認証します。
+description: Azure Resource Manager と Batch リソース プロバイダーでビルドされたアプリケーションは、Azure AD で認証します。
 services: batch
 documentationcenter: .net
 author: laurenhughes
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/27/2017
 ms.author: lahugh
-ms.openlocfilehash: 22cab5f22eccabf9176d777b1e3a3356cbf37c4f
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 0f6db6d9c86e6da047c45ae7b1c43cf5f55c7e2b
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57534244"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64922848"
 ---
 # <a name="authenticate-batch-management-solutions-with-active-directory"></a>Batch 管理ソリューションの認証に Active Directory を使用する
 
@@ -36,7 +36,7 @@ Batch Management .NET ライブラリと AccountManagement サンプルの使用
 
 Azure [Active Directory Authentication Library][aad_adal] (ADAL) は、アプリケーション内で使用するためのプログラム インターフェイスを Azure AD に提供します。 アプリケーションから ADAL を呼び出すには、Azure AD テナントにアプリケーションを登録する必要があります。 アプリケーションを登録する場合は、アプリケーションに関する情報 (Azure AD テナント内でのアプリケーション名など) を Azure AD で指定します。 これで、Azure AD から、実行時にアプリケーションを Azure AD と関連付ける際に使用するアプリケーション ID が提供されます。 アプリケーション ID の詳細については、「[Azure Active Directory のアプリケーション オブジェクトとサービス プリンシパル オブジェクト](../active-directory/develop/app-objects-and-service-principals.md)」を参照してください。
 
-AccountManagement サンプル アプリケーションを登録するには、「[Azure Active Directory とアプリケーションの統合][aad_integrate]」の「[アプリケーションの追加](../active-directory/develop/quickstart-v1-add-azure-ad-app.md)」の手順に従います。 アプリケーションの種類として、**[ネイティブ クライアント アプリケーション]** を指定します。 **リダイレクト URI** の業界標準 OAuth 2.0 に準拠した URI は `urn:ietf:wg:oauth:2.0:oob` です。 しかし、**リダイレクト URI** には、任意の有効な URI (`http://myaccountmanagementsample`など) を指定することができます。実際のエンドポイントである必要はありません。
+AccountManagement サンプル アプリケーションを登録するには、「[Azure Active Directory とアプリケーションの統合][aad_integrate]」の「[アプリケーションの追加](../active-directory/develop/quickstart-register-app.md)」の手順に従います。 アプリケーションの種類として、 **[ネイティブ クライアント アプリケーション]** を指定します。 **リダイレクト URI** の業界標準 OAuth 2.0 に準拠した URI は `urn:ietf:wg:oauth:2.0:oob` です。 しかし、**リダイレクト URI** には、任意の有効な URI (`http://myaccountmanagementsample`など) を指定することができます。実際のエンドポイントである必要はありません。
 
 ![](./media/batch-aad-auth-management/app-registration-management-plane.png)
 
@@ -44,21 +44,21 @@ AccountManagement サンプル アプリケーションを登録するには、�
 
 ![](./media/batch-aad-auth-management/app-registration-client-id.png)
 
-## <a name="grant-the-azure-resource-manager-api-access-to-your-application"></a>アプリケーションに Azure Resource Manager APIへ のアクセスを許可する　
+## <a name="grant-the-azure-resource-manager-api-access-to-your-application"></a>アプリケーションに Azure Resource Manager APIへ のアクセスを許可する
 
 次に、Azure Resource Manager API へのアクセスをアプリケーションに委任する必要があります。 Resource Manager API の Azure AD 識別子は、**Windows Azure Service Management API** です。
 
 Azure Portal で次の手順に従います。
 
-1. Azure Portal の左側のナビゲーション ウィンドウで、**[すべてのサービス]** を選択し、**[アプリの登録]** をクリックして、**[追加]** をクリックします。
+1. Azure Portal の左側のナビゲーション ウィンドウで、 **[すべてのサービス]** を選択し、 **[アプリの登録]** をクリックして、 **[追加]** をクリックします。
 2. アプリケーション登録の一覧で、アプリケーションの名前を検索します。
 
     ![アプリケーションの名前を検索する](./media/batch-aad-auth-management/search-app-registration.png)
 
-3. **[設定]** ブレードを表示します。 **[API アクセス]** セクションで、**[必要なアクセス許可]** を選択します。
+3. **[設定]** ブレードを表示します。 **[API アクセス]** セクションで、 **[必要なアクセス許可]** を選択します。
 4. **[追加]** をクリックして、新しい必要なアクセス許可を追加します。 
 5. ステップ 1 で、「**Windows Azure Service Management API**」と入力し、結果の一覧からその API を選択して **[選択]** ボタンをクリックします。
-6. ステップ 2 で、**[Access Azure classic deployment model as organization users]\(組織のユーザーとして Azure クラシック デプロイ モデルにアクセスする\)** の横のチェック ボックスをオンにして、**[選択]** ボタンをクリックします。
+6. ステップ 2 で、 **[Access Azure classic deployment model as organization users]\(組織のユーザーとして Azure クラシック デプロイ モデルにアクセスする\)** の横のチェック ボックスをオンにして、 **[選択]** ボタンをクリックします。
 7. **[完了]** ボタンをクリックします。
 
 **[必要なアクセス許可]** ブレードに、ADAL および Resource Manager API へのアプリケーションのアクセスが許可されたことが表示されます。 アプリを Azure AD に最初に登録する際に、既定で ADAL へのアクセス許可が付与されます。

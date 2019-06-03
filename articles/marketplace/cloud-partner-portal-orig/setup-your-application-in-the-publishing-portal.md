@@ -1,25 +1,19 @@
 ---
-title: 発行ポータルでのアプリケーションのセットアップ | Microsoft Docs
+title: 発行ポータルでのアプリケーションのセットアップ
 description: クラウド発行ポータルでお客様のアプリケーションを設定する方法について説明します。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: pbutlerm
 manager: Ricardo.Villalobos
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 8ac0fbb1c62e4162e1c4ad040365a16d055e4552
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.author: pabutler
+ms.openlocfilehash: 6da80bd3b5fe487a44400f4f3c21e8fa49da75d4
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58310019"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64943539"
 ---
 # <a name="setup-your-application-in-the-publishing-portal"></a>発行ポータルでのアプリケーションのセットアップ
 
@@ -88,7 +82,7 @@ Dynamics 365 for Customer Engagement オファーを作成するための、主�
 
 ### <a name="crm-package-availability"></a>CRM パッケージの利用可能性
 
-このセクションでは、パッケージが使用可能になる CRM のリージョンを選択します。 どのリージョンがどの国にサービスを提供しているかについては、次のリンクを参照してください: [https://o365datacentermap.azurewebsites.net/](https://o365datacentermap.azurewebsites.net/)
+このセクションでは、パッケージが使用可能になる CRM のリージョンを選択します。 どの CRM リージョンがどの国/地域にサービスを提供しているかについては、次のリンクを参照してください: [https://o365datacentermap.azurewebsites.net/](https://o365datacentermap.azurewebsites.net/)
 
 注:ドイツの "ソブリンおよび US Gov クラウド" ソブリンへのデプロイには、認定の際に特別なアクセス許可と検証が必要です。
 
