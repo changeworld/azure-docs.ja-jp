@@ -49,11 +49,11 @@ LUIS では、[オーサリング](#programmatic-key)と[エンドポイント](
 
 Azure リソースの作成プロセスが完了したら、アプリに[キーを割り当て](luis-how-to-azure-subscription.md)ます。 
 
-    * エンドポイント キーによって、キーの作成時に指定した使用計画に基づいて、エンドポイントのクォータに到達できます。 価格情報については、「[Cognitive Services の価格](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/?v=17.23h)」を参照してください。
+* エンドポイント キーによって、キーの作成時に指定した使用計画に基づいて、エンドポイントのクォータに到達できます。 価格情報については、「[Cognitive Services の価格](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/?v=17.23h)」を参照してください。
 
-    * エンドポイント キーは、ご使用のすべての LUIS アプリまたは特定の LUIS アプリで使用できます。 
+* エンドポイント キーは、ご使用のすべての LUIS アプリまたは特定の LUIS アプリで使用できます。 
 
-    * LUIS アプリの作成には、エンドポイント キーを使用しないでください。 
+* LUIS アプリの作成には、エンドポイント キーを使用しないでください。 
 
 ## <a name="use-endpoint-key-in-query"></a>クエリでエンドポイント キーを使用する
 LUIS エンドポイントでは、2 つのスタイルでクエリを使用します。その両方でエンドポイント キーを使用しますが、場所が異なります。
