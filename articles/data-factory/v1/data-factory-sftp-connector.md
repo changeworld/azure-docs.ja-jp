@@ -66,7 +66,7 @@ Data Factory が現在サポートしているのは、SFTP サーバーから�
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| ユーザー名 | SFTP サーバーにアクセスできるユーザー。 |はい |
+| username | SFTP サーバーにアクセスできるユーザー。 |はい |
 | password | ユーザー (username) のパスワード。 | はい |
 
 #### <a name="example-basic-authentication"></a>例:基本認証
@@ -116,7 +116,7 @@ SSH 公開キー認証を使用するには、`authenticationType` を `SshPubli
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| ユーザー名 |SFTP サーバーにアクセスできるユーザー |はい |
+| username |SFTP サーバーにアクセスできるユーザー |はい |
 | privateKeyPath | ゲートウェイがアクセスできる秘密キー ファイルへの絶対パスを指定します。 | `privateKeyPath` または `privateKeyContent` を指定します。 <br><br> オンプレミスの SFTP サーバーからデータをコピーする場合にのみ適用します。 |
 | privateKeyContent | 秘密キーのコンテンツのシリアル化された文字列。 コピー ウィザードでは、秘密キー ファイルを読み取り、秘密キーのコンテンツを自動的に抽出できます。 その他のツール/SDK を使用している場合は、代わりに privateKeyPath プロパティを使用します。 | `privateKeyPath` または `privateKeyContent` を指定します。 |
 | passPhrase | キー ファイルがパス フレーズで保護されている場合は、パス フレーズ/パスワードを指定して、秘密キーを復号化します。 | はい (秘密キー ファイルがパス フレーズで保護されている場合)。 |
