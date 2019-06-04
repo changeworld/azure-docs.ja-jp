@@ -15,7 +15,7 @@
         - name: プライベート クラウド環境の構成
           href: quickstart-create-private-cloud.md
         - name: プライベート クラウドでの VMware VM の作成
-          href: 'https://docs.azure.cloudsimple.com/quickstart-create-private-cloud-vmware-virtual-machine/'
+          href: quickstart-create-private-cloud-vmware-virtual-machine.md
         - name: Azure での VMware VM の使用
           href: quickstart-create-vmware-virtual-machine.md
     - name: 概念

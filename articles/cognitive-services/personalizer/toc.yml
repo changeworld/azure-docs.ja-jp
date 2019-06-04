@@ -27,6 +27,9 @@
         - name: '特徴: アクションとコンテキスト'
           href: concepts-features.md
           displayName: 'action, context, feature, namespace, JSON, best practice, set'
+        - name: アクティブ ラーニング
+          href: concept-active-learning.md
+          displayName: 'active, inactive'
         - name: 報酬
           href: concept-rewards.md
           displayName: 'reward, wait time, default reward'
@@ -44,7 +47,7 @@
   items:
     - name: Personalizer の作成と構成
       href: how-to-settings.md
-      displayName: 'azure, portal, settings, evaluation, offline, policy'
+      displayName: 'azure, portal, settings, evaluation, offline, policy, export, model'
     - name: 分析
       items:
         - name: オフライン評価

@@ -48,6 +48,8 @@
           href: data-lake-analytics-diagnostic-logs.md
         - name: クォータ制限を調整する
           href: data-lake-analytics-quota-limits.md
+        - name: ディザスター リカバリーの計画
+          href: data-lake-analytics-disaster-recovery.md
     - name: U-SQL プログラムの開発
       items:
         - name: U-SQL 言語

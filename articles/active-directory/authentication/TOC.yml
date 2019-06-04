@@ -43,8 +43,6 @@
       items:
         - name: MFA のしくみ
           href: concept-mfa-howitworks.md
-        - name: 適切なバージョン
-          href: concept-mfa-whichversion.md
         - name: ユーザーのライセンス
           href: concept-mfa-licensing.md
         - name: 認証プロバイダーの管理

@@ -5,6 +5,8 @@
   items:
     - name: Language Understanding とは
       href: what-is-luis.md
+    - name: 新機能
+      href: whats-new.md
 - name: クイック スタート
   items:
     - name: 事前構築済みのドメイン アプリの構築
@@ -197,8 +199,9 @@
         - name: Bing Spell Check v7 との統合
           href: luis-tutorial-bing-spellcheck.md
         - name: Speech Service との統合
-          href: luis-tutorial-speech-to-intent.md
-        - name: V3 Bot Framework を使用する
+          maintainContext: true
+          href: ../speech-service/how-to-recognize-intents-from-speech-csharp.md?toc=/azure/cognitive-services/luis/toc.json&bc=/azure/cognitive-services/luis/breadcrumb/toc.json
+        - name: ボットとの統合
           items:
             - name: Web アプリ ボットとの統合
               items:
@@ -400,8 +403,6 @@
       href: 'https://github.com/Microsoft/Cognitive-Samples-IntelligentKiosk'
 - name: リソース
   items:
-    - name: 新機能
-      href: whats-new.md
     - name: リージョン別の提供状況
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: 言語とリージョンのサポート

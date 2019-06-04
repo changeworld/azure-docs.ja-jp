@@ -20,14 +20,6 @@
       href: concepts-dependency-visualization.md
 - name: ハウツー ガイド
   items:
-    - name: 移行のベスト プラクティス
-      items:
-        - name: 移行後のセキュリティと管理のベスト プラクティス
-          href: migrate-best-practices-security-management.md
-        - name: 移行後のネットワーキングのベスト プラクティス
-          href: migrate-best-practices-networking.md
-        - name: 移行後のコストとサイズ変更のベスト プラクティス
-          href: migrate-best-practices-costs.md
     - name: '移行の例: Contoso シリーズ'
       href: contoso-migration-overview.md
     - name: 大規模な環境の検出と評価
