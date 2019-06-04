@@ -177,7 +177,7 @@ Azure AD では、**ポリシー** オブジェクトは、組織の個々のア
 | unique_name |
 | upn |
 | user_setting_sync_url |
-| ユーザー名 |
+| username |
 | uti |
 | ver |
 | verified_primary_email |
