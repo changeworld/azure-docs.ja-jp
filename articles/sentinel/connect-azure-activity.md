@@ -32,7 +32,7 @@ ms.locfileid: "65204354"
 
 ## <a name="prerequisites"></a>前提条件
 
-- グローバル理者またはセキュリティ管理者のアクセス許可を持つユーザー
+- グローバル管理者またはセキュリティ管理者のアクセス許可を持つユーザー
 
 
 ## <a name="connect-to-azure-activity-log"></a>Azure アクティビティ ログに接続する
