@@ -70,7 +70,7 @@ Azure Active Directory (Azure AD) B2C では、次のオプションがサポー
 
 | キー | 値 |
 | --- | ----- |
-| ユーザー名 | leadiocl@outlook.com |
+| username | leadiocl@outlook.com |
 | password | Passxword1 |
 | grant_type | password |
 | scope | openid \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> offline_access |
