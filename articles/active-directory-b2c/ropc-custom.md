@@ -269,7 +269,7 @@ ROPC フローでは次のオプションがサポートされています。
 
 | キー | 値 |
 | --- | ----- |
-| ユーザー名 | `user-account` |
+| username | `user-account` |
 | password | `password1` |
 | grant_type | password |
 | scope | openid `application-id` offline_access |
