@@ -37,7 +37,7 @@ ms.locfileid: "65203573"
 
 ## <a name="prerequisites"></a>前提条件
 
-[Azure Notification Hubs と Firebase Cloud Messaging を使用して Android デバイスにプッシュ通知を送信する](notification-hubs-android-push-notification-google-fcm-get-started.md)」を完了してください。
+「[チュートリアル: Azure Notification Hubs と Firebase Cloud Messaging を使用して Android デバイスにプッシュ通知を送信する](notification-hubs-android-push-notification-google-fcm-get-started.md)」を完了してください。
 
 [!INCLUDE [notification-hubs-aspnet-backend-notifyusers](../../includes/notification-hubs-aspnet-backend-notifyusers.md)]
 
@@ -320,7 +320,7 @@ ms.locfileid: "65203573"
     Button sendPush = (Button) findViewById(R.id.sendbutton);
     sendPush.setEnabled(false);
     ```
-9. その後、**[サインイン]** ボタン クリック イベントとプッシュ通知の送信を処理する次のメソッドを追加します。
+9. その後、 **[サインイン]** ボタン クリック イベントとプッシュ通知の送信を処理する次のメソッドを追加します。
 
     ```java
     public void login(View view) throws UnsupportedEncodingException {
@@ -476,7 +476,7 @@ ms.locfileid: "65203573"
 
 1. デバイスまたは Android Studio を使用したエミュレーターでアプリケーションを実行します。
 2. Android アプリケーションで、ユーザー名とパスワードを入力します。 どちらも同じ文字列値にする必要があり、空白や特殊文字が含まれることはありません。
-3. Android アプリケーションで、 **[サインイン]** をクリックします。 「**Signed in and registered (サインインおよび登録済み)**」というトースト メッセージが表示されるまで待機します。 これは、**[Send Notification] (通知の送信)** ボタンを有効にします。
+3. Android アプリケーションで、 **[サインイン]** をクリックします。 「**Signed in and registered (サインインおよび登録済み)** 」というトースト メッセージが表示されるまで待機します。 これは、 **[Send Notification] (通知の送信)** ボタンを有効にします。
 
     ![][A2]
 4. トグル ボタンをクリックして、アプリを実行し、ユーザーを登録したすべてのプラットフォームを有効にします。
