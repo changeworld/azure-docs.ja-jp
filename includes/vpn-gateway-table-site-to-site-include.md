@@ -20,6 +20,6 @@ ms.locfileid: "66170525"
 | リソース マネージャー |[チュートリアル](../articles/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)<br>[チュートリアル+](../articles/vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md) |[チュートリアル](../articles/vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md) | [チュートリアル](../articles/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md) |
 | クラシック |[チュートリアル**](../articles/vpn-gateway/vpn-gateway-howto-site-to-site-classic-portal.md) |[チュートリアル+](../articles/vpn-gateway/vpn-gateway-multi-site.md) | サポートされていません |
 
-" ** " は、PowerShell が必要な手順がこの方法に含まれていることを示します。
+"**" は、PowerShell を必要とする手順を含む方法を示します。
 
-"+" は、この記事がマルチサイト接続向けに書かれていることを示します。
+"+" は、マルチサイト接続向けの記事を示します。

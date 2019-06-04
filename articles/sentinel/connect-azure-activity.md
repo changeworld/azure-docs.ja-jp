@@ -37,7 +37,7 @@ ms.locfileid: "65204354"
 
 ## <a name="connect-to-azure-activity-log"></a>Azure アクティビティ ログに接続する
 
-1. Azure Sentinel で **[Data connectors]\(データ コネクタ\)** を選択し、**[Azure アクティビティ ログ]** タイルをクリックします。
+1. Azure Sentinel で **[Data connectors]\(データ コネクタ\)** を選択し、 **[Azure アクティビティ ログ]** タイルをクリックします。
 
 2. [Azure アクティビティ ログ] ウィンドウで、Azure Sentinel にストリーミングするサブスクリプションを選択します。 
 

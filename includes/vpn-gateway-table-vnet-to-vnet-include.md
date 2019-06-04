@@ -22,4 +22,4 @@ ms.locfileid: "66170577"
 | 異なるデプロイメント モデル間の接続 |[チュートリアル*](../articles/vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md) |[チュートリアル](../articles/vpn-gateway/vpn-gateway-connect-different-deployment-models-powershell.md) | サポートされていません |
 
 "+" は、このデプロイ方法が同じサブスクリプションの VNet でのみ利用できることを示します。<br>
-" * " は、このデプロイ方法では PowerShell も必要であることを示します。
+" * " は、PowerShell が必要なデプロイ方法を示します。
