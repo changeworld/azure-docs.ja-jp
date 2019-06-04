@@ -115,7 +115,7 @@
               href: image-factory-save-distribute-custom-images.md
             - name: アイテム保持ポリシーを設定してクリーンアップ スクリプトを実行する
               href: image-factory-set-retention-policy-cleanup.md
-        - name: エンタープライズ内の DevTest Labs
+        - name: 企業内での DevTest Labs
           items:
             - name: エンタープライズ規模の DevTest Labs
               href: devtest-lab-guidance-prescriptive-adoption.md
@@ -205,6 +205,8 @@
               href: devtest-lab-announcements.md
             - name: ラボへのサポート情報の追加
               href: devtest-lab-internal-support-message.md
+            - name: Azure DevTest Labs での共有イメージ ギャラリーの構成
+              href: configure-shared-image-gallery.md
         - name: カスタム イメージまたは式の選択
           href: devtest-lab-comparing-vm-base-image-types.md
         - name: カスタム イメージの管理

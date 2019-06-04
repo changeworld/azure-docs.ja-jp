@@ -18,6 +18,9 @@
       href: quickstart-load-balancer-standard-public-cli.md
     - name: Standard Load Balancer を作成する - Azure PowerShell
       href: quickstart-create-standard-load-balancer-powershell.md
+    - name: Standard Load Balancer を作成する - Azure Resource Manager テンプレート
+      displayName: ARM
+      href: quickstart-load-balancer-standard-public-template.md
 - name: チュートリアル
   items:
     - name: VM へのインターネット トラフィックの負荷分散を行う

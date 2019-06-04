@@ -275,6 +275,8 @@
           href: storage-blob-event-overview.md
         - name: ページ BLOB の機能
           href: storage-blob-pageblob-overview.md
+        - name: 静的な Web サイト
+          href: storage-blob-static-website.md
     - name: 方法
       items:
         - name: ストレージ アカウントの作成と管理
@@ -353,7 +355,7 @@
         - name: プロパティおよびメタデータを設定および取得する
           href: storage-properties-metadata.md
         - name: 静的 Web サイトのホスト
-          href: storage-blob-static-website.md
+          href: storage-blob-static-website-how-to.md
         - name: HTTPS 経由でアクセスするために Azure CDN をカスタム ドメインにマッピングする
           href: storage-https-custom-domain-cdn.md
         - name: カスタム ドメインを構成する

@@ -22,6 +22,8 @@
   items:
     - name: オンプレミスのリソースへの SSO
       href: azuread-join-sso.md
+    - name: プライマリ更新トークン
+      href: concept-primary-refresh-token.md
     - name: Azure マネージド ワークステーション
       href: concept-azure-managed-workstation.md
 - name: ハウツー ガイド
@@ -35,7 +37,7 @@
       href: azureadjoin-plan.md
     - name: ハイブリッド Azure AD 参加の実装を計画する
       href: hybrid-azuread-join-plan.md
-    - name: デバイスのハイブリッド Azure AD 参加を制御する
+    - name: ハイブリッド Azure AD 参加の検証を制御する
       href: hybrid-azuread-join-control.md
     - name: Azure AD 参加済みデバイスにローカル管理者を割り当てる
       href: assign-local-admin.md

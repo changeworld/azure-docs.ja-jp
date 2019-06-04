@@ -229,8 +229,6 @@
                   href: msal-js-initializing-client-applications.md
             - name: エラーと例外を処理する
               href: msal-handling-exceptions.md
-            - name: MSAL アプリケーションのテスト
-              href: msal-testing.md
             - name: ログの記録
               href: msal-logging.md
             - name: シングル サインオン (JS)
@@ -366,6 +364,12 @@
                   href: msal-net-user-gets-consent-for-multiple-resources.md
                 - name: 独自の HttpClient の指定
                   href: msal-net-provide-httpclient.md
+            - name: MSAL.js
+              items:
+                - name: ページのリロードを回避する
+                  href: msal-js-avoid-page-reloads.md
+                - name: 認証要求内でカスタムの状態を渡す
+                  href: msal-js-pass-custom-state-authentication-request.md
         - name: Visual Studio を使用する
           items:
             - name: Active Directory 接続済みサービスの使用
