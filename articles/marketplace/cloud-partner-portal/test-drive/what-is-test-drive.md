@@ -1,25 +1,19 @@
 ---
-title: 体験版とは | Microsoft Docs
+title: 体験版とは | Azure Marketplace
 description: Marketplace 体験版機能の説明
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: pbutlerm
 manager: Ricardo.Villalobos
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 0bdff77a4be6a28e2799d4f481492d2c7ba6bda0
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.author: pabutler
+ms.openlocfilehash: 5b23a5e93dcbb9c13243240bda760a16d108d731
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57457427"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64938455"
 ---
 <a name="what-is-test-drive"></a>体験版とは
 ===================
@@ -53,8 +47,8 @@ ms.locfileid: "57457427"
 
 アプリケーションがどれだけ複雑であるかにかかわらず、Microsoft 体験版によって顧客は製品を実際に使ってみることができます。 現在、使用している製品、シナリオ、マーケットプレースの種類に基づいて、3 つの異なる種類の体験版を提供しています。
 
-- **[Azure Resource Manager](./azure-resource-manager-test-drive.md)**: Azure Resource Manager 体験版は、発行元によって構築されるソリューションを構成しているすべての Azure リソースが含まれたデプロイ テンプレートです。 このシナリオに適合する製品は、Azure リソースのみを使用する製品です。
-- **[ロジック アプリ](./logic-app-test-drive.md)**: ロジック アプリ体験版は、あらゆる複雑なソリューション アーキテクチャに対応するように意図されたデプロイ テンプレートです。 すべての Dynamics アプリケーションやカスタム製品には、この種類の体験版を使用する必要があります。
+- **[Azure Resource Manager](./azure-resource-manager-test-drive.md)** : Azure Resource Manager 体験版は、発行元によって構築されるソリューションを構成しているすべての Azure リソースが含まれたデプロイ テンプレートです。 このシナリオに適合する製品は、Azure リソースのみを使用する製品です。
+- **[ロジック アプリ](./logic-app-test-drive.md)** : ロジック アプリ体験版は、あらゆる複雑なソリューション アーキテクチャに対応するように意図されたデプロイ テンプレートです。 すべての Dynamics アプリケーションやカスタム製品には、この種類の体験版を使用する必要があります。
 - **Power BI**: Power BI 体験版は、単なる、カスタム ビルドされたダッシュボードへの埋め込みリンクです。 インタラクティブな Power BI の視覚化のデモンストレーションだけを行う製品には、この種類の体験版を使用する必要があります。
     ここで必要なことは、埋め込み Power BI の URL をアップロードすることだけです。
 

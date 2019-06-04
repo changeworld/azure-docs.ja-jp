@@ -1,25 +1,18 @@
 ---
-title: Azure Containers イメージ オファーを発行する | Microsoft Docs
+title: Azure Containers イメージ オファーを発行する | Azure Marketplace
 description: Azure コンテナー オファーを発行する方法。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: dan-wesley
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/01/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 7533d1a133c9c474bc39f0f64c5f1a8183ab30f8
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.author: pabutler
+ms.openlocfilehash: 9433673e464beb2df74eb4f49851e960d2e7f99c
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50980218"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64942666"
 ---
 # <a name="publish-container-offer"></a>コンテナー オファーを発行する
 
@@ -39,7 +32,7 @@ ms.locfileid: "50980218"
 | 前提条件の検証         | 15 分   | プラン情報とプラン設定が有効化されます。                        |
 | 認定                  | 1 週間 | オファーが Azure 認定チームによって分析されます。 ウイルス、マルウェア、安全性のコンプライアンス、およびセキュリティの問題についてオファーがスキャンされます。 適格性の条件がすべて満たされていることを確認するため、オファーがチェックされます。 詳細については、[前提条件](./cpp-prerequisites.md)と[技術資産の準備](./cpp-create-technical-assets.md)に関するページを参照してください。 問題が見つかった場合はフィードバックが提供されます。 |
 | 梱包 | 1 時間  | プランの技術資産が顧客の使用のためにパッケージ化され、リード システムが構成され設定されます。 |
-|  発行元のサインオフ             |  -        | オファーが稼働状態になる前に、最終的な発行元のレビューと確認が行われます。 (プラン情報の手順で) 選択されたサブスクリプション内にプランをデプロイして、すべての要件を満たしていることを確認できます。  プランが次の手順に進めるように、**[Go Live]\(ライブにする\)** を選択します。 |
+|  発行元のサインオフ             |  -        | オファーが稼働状態になる前に、最終的な発行元のレビューと確認が行われます。 (プラン情報の手順で) 選択されたサブスクリプション内にプランをデプロイして、すべての要件を満たしていることを確認できます。  プランが次の手順に進めるように、 **[Go Live]\(ライブにする\)** を選択します。 |
 | 梱包                 | 1 時間 | マーケットプレースの実稼働システムとリージョンに、完成したオファーがレプリケートされます。 | 
 | ライブ                           | 4 日 |プランが、必要なリージョンにリリース、レプリケートされて、一般公開されます。 |
 

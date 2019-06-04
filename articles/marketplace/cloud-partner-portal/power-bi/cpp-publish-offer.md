@@ -1,29 +1,22 @@
 ---
-title: Power BI アプリ オファーを発行する - Azure Marketplace | Microsoft Docs
+title: Power BI アプリ オファーを発行する | Azure Marketplace
 description: Microsoft AppSource マーケットプレースに Power BI アプリ オファーを発行します。
 services: Azure, AppSource, Marketplace, Cloud Partner Portal, Power BI
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.author: pbutlerm
-ms.openlocfilehash: 0e82041dab1932ed7c129b598740b2441aa59315
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.author: pabutler
+ms.openlocfilehash: aae23feaf1cc5887de061414af985ef16070546b
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56822754"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64943192"
 ---
 # <a name="publish-a-power-bi-app-offer"></a>Power BI アプリ オファーを発行する
 
-Cloud パートナー ポータルでオファーを定義し、関連する技術資産を作成した後の最後のステップでは、オファーを発行するために送信します。 このプロセスを開始するには、**[新しいオファー]** ウィンドウの左側のウィンドウで、**[発行]** を選択します。 詳しくは、「[Azure Marketplace および AppSource のオファーを発行する](../manage-offers/cpp-publish-offer.md)」をご覧ください。
+Cloud パートナー ポータルでオファーを定義し、関連する技術資産を作成した後の最後のステップでは、オファーを発行するために送信します。 このプロセスを開始するには、 **[新しいオファー]** ウィンドウの左側のウィンドウで、 **[発行]** を選択します。 詳しくは、「[Azure Marketplace および AppSource のオファーを発行する](../manage-offers/cpp-publish-offer.md)」をご覧ください。
 
 
 ## <a name="publishing-steps"></a>発行手順
@@ -40,7 +33,7 @@ Cloud パートナー ポータルでオファーを定義し、関連する技�
 | 認定                | 1 ～ 7 日間   | Power BI の認定チームがオファーを分析します。 チームで、提供されたインストール URL を使用してアプリをインストールすることにより、Power BI アプリで手動検証テストを実行します。 アプリ認定プロセスの一環として、主な検証が行われます (このドキュメントでのちほど説明します)。         |
 | 梱包                    | 1 時間以内  | このオファーの技術資産が、顧客用にパッケージ化されます。                        |
 | リード生成の登録 | 1 時間以内  | リード システムを構成して展開します。                                      |
-| 発行元のサインオフ            | \-         | オファーが稼働状態になる前に、最終的なレビューと確認を行います。 また、オファリングのプレビューへのリンクも表示されます。 プレビューの表示方法に満足したら、**[状態]** タブで **[起動]** を選択します。これにより、AppSource へのアプリの掲載要求がオンボード チームに送信されます。    |
+| 発行元のサインオフ            | \-         | オファーが稼働状態になる前に、最終的なレビューと確認を行います。 また、オファリングのプレビューへのリンクも表示されます。 プレビューの表示方法に満足したら、 **[状態]** タブで **[起動]** を選択します。これにより、AppSource へのアプリの掲載要求がオンボード チームに送信されます。    |
 | ライブ                         | \< 3 時間 | オファーは AppSource 上のリストに公開され ("ライブ")、顧客は Power BI のサブスクリプションでアプリを表示して展開できるようになりました。 確認の電子メールも届きます。 **[すべてのオファー]** の右側の列で、すべてのオファーの状態を確認できます。 **[状態]** タブをクリックすると、オファーの発行フローの状態を詳しく確認できます。 |
 |   |   |
 

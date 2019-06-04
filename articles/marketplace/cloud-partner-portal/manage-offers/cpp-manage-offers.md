@@ -1,25 +1,18 @@
 ---
-title: Azure Marketplace と AppSource Marketplace のオファーを管理する | Microsoft Docs
+title: Azure Marketplace と AppSource Marketplace のオファーを管理する | Azure Marketplace
 description: Azure Marketplace と AppSource Marketplace のオファーの管理
 services: Azure, AppSource, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/09/2019
-ms.author: pbutlerm
-ms.openlocfilehash: fa5280fd834d6defaf2816167a73bf72dc3d0a1c
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.author: pabutler
+ms.openlocfilehash: 8a03ce94971d704aa38c1be5d7cfbb3c24bd2f82
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54355353"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64943354"
 ---
 # <a name="manage-azure-and-appsource-marketplace-offers"></a>Azure Marketplace と AppSource Marketplace のオファーを管理する
 

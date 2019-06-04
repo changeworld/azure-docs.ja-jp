@@ -1,25 +1,18 @@
 ---
-title: Azure を通じた SaaS の販売 - API | Microsoft Docs
+title: Azure API を通じた SaaS の販売 | Azure Marketplace
 description: Marketplace API を通じて SaaS オファーを作成する方法について説明します。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: reference
 ms.date: 09/17/2018
-ms.author: pbutlerm
-ms.openlocfilehash: d6ab18d68d6508a18f0b36ab5a39e15fa7c0555a
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.author: pabutler
+ms.openlocfilehash: a76fb2989320c64ad85b0f41f17798e2d9c743e1
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58311664"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64941945"
 ---
 # <a name="saas-sell-through-azure---apis"></a>Azure を通じた SaaS の販売 - API
 
@@ -55,22 +48,22 @@ Azure portal を使用して新しいアプリケーションを登録するに�
 
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
 2. ご利用のアカウントで複数の Azure AD テナントにアクセスできる場合は、右上隅でアカウントをクリックし、ポータルのセッションを目的のテナントに設定します。
-3. 左側のナビゲーション ウィンドウで、**[Azure Active Directory]** サービスをクリックし、**[アプリの登録]**、**[新しいアプリケーションの登録]** の順にクリックします。
+3. 左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** サービスをクリックし、 **[アプリの登録]** 、 **[新しいアプリケーションの登録]** の順にクリックします。
 
    ![SaaS AD のアプリ登録](./media/saas-offer-app-registration.png)
 
 4. 作成\' ページで、アプリケーションの登録情報を入力します。
-   - **[名前]**:わかりやすいアプリケーション名を入力します
+   - **[名前]** :わかりやすいアプリケーション名を入力します
    - **アプリケーションの種類**: 
-     - デバイスのローカルにインストールされている[クライアント アプリケーション](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#client-application)については、**[ネイティブ]** を選択します。 OAuth の public [ネイティブ クライアント](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#native-client)の場合には、この設定を使用します。
-     - セキュリティで保護されたサーバーにインストールされている[クライアント アプリケーション](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#client-application)と[リソース/API アプリケーション](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#resource-server)については、**[Web アプリ/API]** を選択します。 OAuth のコンフィデンシャル [Web クライアント](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#web-client)と、パブリック [ユーザーエージェントベース クライアント](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#user-agent-based-client)の場合には、この設定を使用します。
+     - デバイスのローカルにインストールされている[クライアント アプリケーション](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#client-application)については、 **[ネイティブ]** を選択します。 OAuth の public [ネイティブ クライアント](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#native-client)の場合には、この設定を使用します。
+     - セキュリティで保護されたサーバーにインストールされている[クライアント アプリケーション](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#client-application)と[リソース/API アプリケーション](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#resource-server)については、 **[Web アプリ/API]** を選択します。 OAuth のコンフィデンシャル [Web クライアント](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#web-client)と、パブリック [ユーザーエージェントベース クライアント](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#user-agent-based-client)の場合には、この設定を使用します。
      同じアプリケーションでクライアントとリソース/API を両方とも公開することもできます。
    - **サインオン URL**:Web アプリまたは API アプリケーションの場合は、アプリのベース URL を指定します。 ローカル コンピューターで実行されている Web アプリの URL であれば、たとえば **http:\//localhost:31544** のようになります。 ユーザーはこの URL を使用して、Web クライアント アプリケーションにサインインすることになります。
    - **リダイレクト URI**:ネイティブ アプリケーションの場合は、トークン応答を返すために Azure AD に使用される URI を指定します。 **http:\//MyFirstAADAppなど、ご自分のアプリケーションに固有の値を入力してください。**
 
      ![SaaS AD アプリの登録](./media/saas-offer-app-registration-2.png) Web アプリケーションまたはネイティブ アプリケーションの具体的な例については、[Azure AD 開発者向けガイド](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)に関する記事の開始セクションで利用できるクイック スタート ガイド付きセットアップを確認してください。
 
-5. 完了したら、**[作成]** をクリックします。 Azure AD によってアプリケーションに一意の ID が割り当てられ、アプリケーションのメイン登録ページが表示されます。 アプリケーションが Web アプリケーションとネイティブ アプリケーションのどちらであるかに応じて、アプリケーションに機能を追加するためのさまざまなオプションが表示されます。
+5. 完了したら、 **[作成]** をクリックします。 Azure AD によってアプリケーションに一意の ID が割り当てられ、アプリケーションのメイン登録ページが表示されます。 アプリケーションが Web アプリケーションとネイティブ アプリケーションのどちらであるかに応じて、アプリケーションに機能を追加するためのさまざまなオプションが表示されます。
 
    **注:** 既定では、新しく登録されたアプリケーションは、同じテナントのユーザーのみがサインインできる構成になります。
 
@@ -87,7 +80,7 @@ HTTP メソッド
 
 *要求 URL*
 
-**https://login.microsoftonline.com/*{tenantId}*/oauth2/token**
+**https://login.microsoftonline.com/ *{tenantId}* /oauth2/token**
 
 *URI パラメーター*
 
@@ -168,8 +161,8 @@ Azure Marketplace API のエンドポイントは、`https://marketplaceapi.micr
 
 | **ヘッダー キー**     | **必須** | **説明**                                                                                                                                                                                                                  |
 |--------------------|--------------|-----------------------------------------------------------|
-| x-ms-requestid     | いいえ            | クライアントからの要求を追跡するための一意の文字列値 (GUID を推奨)。 この値を指定しないと、値が生成され、応答ヘッダーに指定されます。  |
-| x-ms-correlationid | いいえ            | クライアントでの操作に対する一意の文字列値。 これによって、クライアント操作からのすべてのイベントがサーバー側のイベントに関連付けられます。 この値を指定しないと、値が生成され、応答ヘッダーに指定されます。 |
+| x-ms-requestid     | いいえ           | クライアントからの要求を追跡するための一意の文字列値 (GUID を推奨)。 この値を指定しないと、値が生成され、応答ヘッダーに指定されます。  |
+| x-ms-correlationid | いいえ           | クライアントでの操作に対する一意の文字列値。 これによって、クライアント操作からのすべてのイベントがサーバー側のイベントに関連付けられます。 この値を指定しないと、値が生成され、応答ヘッダーに指定されます。 |
 | Content-type       | はい          | `application/json`                                        |
 | authorization      | はい          | JSON Web トークン (JWT) ベアラー トークン。                    |
 | x-ms-marketplace-token| はい| ユーザーが Azure から SaaS ISV の Web サイトにリダイレクトされるときの、URL のトークン クエリ パラメーター。 **注:** このトークンは 1 時間のみ有効です。 また、ブラウザーからのトークン値は、使用前に URL によってデコードされます。|
@@ -215,7 +208,7 @@ Azure Marketplace API のエンドポイントは、`https://marketplaceapi.micr
 | x-ms-requestid     | はい          | クライアントから受け取った要求 ID。                                                                   |
 | x-ms-correlationid | はい          | クライアントから渡される場合は、関連付け ID。そうでない場合は、この値はサーバー関連付け ID。                   |
 | x-ms-activityid    | はい          | サービスからの要求を追跡するための一意の文字列値。 これは、任意の調整に使用されます。 |
-| Retry-After        | いいえ            | この値は、429 応答に対してのみ設定されます。                                                                   |
+| Retry-After        | いいえ           | この値は、429 応答に対してのみ設定されます。                                                                   |
 |  |  |  |
 
 
@@ -225,7 +218,7 @@ Azure Marketplace API のエンドポイントは、`https://marketplaceapi.micr
 
 **PUT**
 
-**https://marketplaceapi.microsoft.com/api/saas/subscriptions/*{subscriptionId}*?api-version=2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/subscriptions/ *{subscriptionId}* ?api-version=2017-04-15**
 
 | **パラメーター名**  | **説明**                                       |
 |---------------------|-------------------------------------------------------|
@@ -237,12 +230,12 @@ Azure Marketplace API のエンドポイントは、`https://marketplaceapi.micr
 
 |  **ヘッダー キー**        | **必須** |  **説明**                                                  |
 | ------------------     | ------------ | --------------------------------------------------------------------------------------- |
-| x-ms-requestid         |   いいえ          | クライアントからの要求を追跡するための一意の文字列値 (GUID を推奨)。 これを指定しないと、値が生成され、応答ヘッダーに指定されます。 |
-| x-ms-correlationid     |   いいえ          | クライアントでの操作に対する一意の文字列値。 この値は、クライアント操作からのすべてのイベントをサーバー側のイベントに関連付けるためのものです。 これを指定しないと、値が生成され、応答ヘッダーに指定されます。 |
-| If-Match/If-None-Match |   いいえ          |   強力な検証ツールの ETag 値。                                                          |
+| x-ms-requestid         |   いいえ         | クライアントからの要求を追跡するための一意の文字列値 (GUID を推奨)。 これを指定しないと、値が生成され、応答ヘッダーに指定されます。 |
+| x-ms-correlationid     |   いいえ         | クライアントでの操作に対する一意の文字列値。 この値は、クライアント操作からのすべてのイベントをサーバー側のイベントに関連付けるためのものです。 これを指定しないと、値が生成され、応答ヘッダーに指定されます。 |
+| If-Match/If-None-Match |   いいえ         |   強力な検証ツールの ETag 値。                                                          |
 | content-type           |   はい        |    `application/json`                                                                   |
 |  authorization         |   はい        |    JSON Web トークン (JWT) ベアラー トークン。                                               |
-| x-ms-marketplace-session-mode| いいえ  | SaaS オファーへのサブスクライブ中にドライ ラン モードを有効にするフラグ。 設定すると、サブスクリプションは課金されません。 これは、ISV テスト シナリオで役に立ちます。 **"dryrun"** に設定してください|
+| x-ms-marketplace-session-mode| いいえ | SaaS オファーへのサブスクライブ中にドライ ラン モードを有効にするフラグ。 設定すると、サブスクリプションは課金されません。 これは、ISV テスト シナリオで役に立ちます。 **"dryrun"** に設定してください|
 |  |  |  |
 
 *本文*
@@ -290,7 +283,7 @@ Azure Marketplace API のエンドポイントは、`https://marketplaceapi.micr
 
 **PATCH**
 
-**https://marketplaceapi.microsoft.com/api/saas/subscriptions/*{subscriptionId}*?api-version=2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/subscriptions/ *{subscriptionId}* ?api-version=2017-04-15**
 
 | **パラメーター名**  | **説明**                                       |
 |---------------------|-------------------------------------------------------|
@@ -302,9 +295,9 @@ Azure Marketplace API のエンドポイントは、`https://marketplaceapi.micr
 
 | **ヘッダー キー**          | **必須** | **説明**                                                                                                                                                                                                                  |
 |-------------------------|--------------|---------------------------------------------------------------------------------------------------------------------|
-| x-ms-requestid          | いいえ            | クライアントからの要求を追跡するための一意の文字列値。 GUID をお勧めします。 これを指定しないと、値が生成され、応答ヘッダーに指定されます。   |
-| x-ms-correlationid      | いいえ            | クライアントでの操作に対する一意の文字列値。 この値は、クライアント操作からのすべてのイベントをサーバー側のイベントに関連付けるためのものです。 これを指定しないと、値が生成され、応答ヘッダーに指定されます。 |
-| If-Match /If-None-Match | いいえ            | 強力な検証ツールの ETag 値。                              |
+| x-ms-requestid          | いいえ           | クライアントからの要求を追跡するための一意の文字列値。 GUID をお勧めします。 これを指定しないと、値が生成され、応答ヘッダーに指定されます。   |
+| x-ms-correlationid      | いいえ           | クライアントでの操作に対する一意の文字列値。 この値は、クライアント操作からのすべてのイベントをサーバー側のイベントに関連付けるためのものです。 これを指定しないと、値が生成され、応答ヘッダーに指定されます。 |
+| If-Match /If-None-Match | いいえ           | 強力な検証ツールの ETag 値。                              |
 | content-type            | はい          | `application/json`                                        |
 | authorization           | はい          | JSON Web トークン (JWT) ベアラー トークン。                    |
 |  |  |  |
@@ -354,7 +347,7 @@ Azure Marketplace API のエンドポイントは、`https://marketplaceapi.micr
 
 **DELETE**
 
-**https://marketplaceapi.microsoft.com/api/saas/subscriptions/*{subscriptionId}*?api-version=2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/subscriptions/ *{subscriptionId}* ?api-version=2017-04-15**
 
 | **パラメーター名**  | **説明**                                       |
 |---------------------|-------------------------------------------------------|
@@ -366,8 +359,8 @@ Azure Marketplace API のエンドポイントは、`https://marketplaceapi.micr
 
 | **ヘッダー キー**     | **必須** | **説明**                                                                                                                                                                                                                  |
 |--------------------|--------------| ----------------------------------------------------------|
-| x-ms-requestid     | いいえ            | クライアントからの要求を追跡するための一意の文字列値。 GUID をお勧めします。 この値を指定しないと、値が生成され、応答ヘッダーに指定されます。                                                           |
-| x-ms-correlationid | いいえ            | クライアントでの操作に対する一意の文字列値。 この値は、クライアント操作からのすべてのイベントをサーバー側のイベントに関連付けるためのものです。 これを指定しないと、値が生成され、応答ヘッダーに指定されます。 |
+| x-ms-requestid     | いいえ           | クライアントからの要求を追跡するための一意の文字列値。 GUID をお勧めします。 この値を指定しないと、値が生成され、応答ヘッダーに指定されます。                                                           |
+| x-ms-correlationid | いいえ           | クライアントでの操作に対する一意の文字列値。 この値は、クライアント操作からのすべてのイベントをサーバー側のイベントに関連付けるためのものです。 これを指定しないと、値が生成され、応答ヘッダーに指定されます。 |
 | authorization      | はい          | JSON Web トークン (JWT) ベアラー トークン。                    |
 |  |  |  |
 
@@ -404,7 +397,7 @@ Azure Marketplace API のエンドポイントは、`https://marketplaceapi.micr
 
 **GET**
 
-**https://marketplaceapi.microsoft.com/api/saas/operations/*{operationId}*?api-version=2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/operations/ *{operationId}* ?api-version=2017-04-15**
 
 | **パラメーター名**  | **説明**                                       |
 |---------------------|-------------------------------------------------------|
@@ -416,8 +409,8 @@ Azure Marketplace API のエンドポイントは、`https://marketplaceapi.micr
 
 | **ヘッダー キー**     | **必須** | **説明**                                                                                                                                                                                                                  |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------------------------|
-| x-ms-requestid     | いいえ            | クライアントからの要求を追跡するための一意の文字列値。 GUID をお勧めします。 この値を指定しないと、値が生成され、応答ヘッダーに指定されます。   |
-| x-ms-correlationid | いいえ            | クライアントでの操作に対する一意の文字列値。 この値は、クライアント操作からのすべてのイベントをサーバー側のイベントに関連付けるためのものです。 この値を指定しないと、値が生成され、応答ヘッダーに指定されます。  |
+| x-ms-requestid     | いいえ           | クライアントからの要求を追跡するための一意の文字列値。 GUID をお勧めします。 この値を指定しないと、値が生成され、応答ヘッダーに指定されます。   |
+| x-ms-correlationid | いいえ           | クライアントでの操作に対する一意の文字列値。 この値は、クライアント操作からのすべてのイベントをサーバー側のイベントに関連付けるためのものです。 この値を指定しないと、値が生成され、応答ヘッダーに指定されます。  |
 | authorization      | はい          | JSON Web トークン (JWT) ベアラー トークン。                    |
 |  |  |  | 
 
@@ -472,7 +465,7 @@ Azure Marketplace API のエンドポイントは、`https://marketplaceapi.micr
 
 **GET**
 
-**https://marketplaceapi.microsoft.com/api/saas/subscriptions/*{subscriptionId}*?api-version=2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/subscriptions/ *{subscriptionId}* ?api-version=2017-04-15**
 
 | **パラメーター名**  | **説明**                                       |
 |---------------------|-------------------------------------------------------|
@@ -484,8 +477,8 @@ Azure Marketplace API のエンドポイントは、`https://marketplaceapi.micr
 
 | **ヘッダー キー**     | **必須** | **説明**                                                                                           |
 |--------------------|--------------|-----------------------------------------------------------------------------------------------------------|
-| x-ms-requestid     | いいえ            | クライアントからの要求を追跡するための一意の文字列値 (GUID を推奨)。 この値を指定しないと、値が生成され、応答ヘッダーに指定されます。                                                           |
-| x-ms-correlationid | いいえ            | クライアントでの操作に対する一意の文字列値。 この値は、クライアント操作からのすべてのイベントをサーバー側のイベントに関連付けるためのものです。 この値を指定しないと、値が生成され、応答ヘッダーに指定されます。 |
+| x-ms-requestid     | いいえ           | クライアントからの要求を追跡するための一意の文字列値 (GUID を推奨)。 この値を指定しないと、値が生成され、応答ヘッダーに指定されます。                                                           |
+| x-ms-correlationid | いいえ           | クライアントでの操作に対する一意の文字列値。 この値は、クライアント操作からのすべてのイベントをサーバー側のイベントに関連付けるためのものです。 この値を指定しないと、値が生成され、応答ヘッダーに指定されます。 |
 | authorization      | はい          | JSON Web トークン (JWT) ベアラー トークン。                                                                    |
 |  |  |  |
 
@@ -533,7 +526,7 @@ Azure Marketplace API のエンドポイントは、`https://marketplaceapi.micr
 | x-ms-requestid     | はい          | クライアントから受け取った要求 ID。                                                                   |
 | x-ms-correlationid | はい          | クライアントから渡される場合は、関連付け ID。そうでない場合は、これはサーバー関連付け ID。                   |
 | x-ms-activityid    | はい          | サービスからの要求を追跡するための一意の文字列値。 これは、任意の調整に使用されます。 |
-| Retry-After        | いいえ            | クライアントが状態を確認できる間隔。                                                       |
+| Retry-After        | いいえ           | クライアントが状態を確認できる間隔。                                                       |
 | eTag               | はい          | 操作状態を取得するリソースへのリンク。                                                        |
 |  |  |  |
 
@@ -556,8 +549,8 @@ Azure Marketplace API のエンドポイントは、`https://marketplaceapi.micr
 
 | **ヘッダー キー**     | **必須** | **説明**                                           |
 |--------------------|--------------|-----------------------------------------------------------|
-| x-ms-requestid     | いいえ            | クライアントからの要求を追跡するための一意の文字列値。 GUID をお勧めします。 この値を指定しないと、値が生成され、応答ヘッダーに指定されます。             |
-| x-ms-correlationid | いいえ            | クライアントでの操作に対する一意の文字列値。 この値は、クライアント操作からのすべてのイベントをサーバー側のイベントに関連付けるためのものです。 この値を指定しないと、値が生成され、応答ヘッダーに指定されます。 |
+| x-ms-requestid     | いいえ           | クライアントからの要求を追跡するための一意の文字列値。 GUID をお勧めします。 この値を指定しないと、値が生成され、応答ヘッダーに指定されます。             |
+| x-ms-correlationid | いいえ           | クライアントでの操作に対する一意の文字列値。 この値は、クライアント操作からのすべてのイベントをサーバー側のイベントに関連付けるためのものです。 この値を指定しないと、値が生成され、応答ヘッダーに指定されます。 |
 | authorization      | はい          | JSON Web トークン (JWT) ベアラー トークン。                    |
 |  |  |  |
 
@@ -605,7 +598,7 @@ Azure Marketplace API のエンドポイントは、`https://marketplaceapi.micr
 | x-ms-requestid     | はい          | クライアントから受け取った要求 ID。                                                                   |
 | x-ms-correlationid | はい          | クライアントから渡される場合は、関連付け ID。そうでない場合は、これはサーバー関連付け ID。                   |
 | x-ms-activityid    | はい          | サービスからの要求を追跡するための一意の文字列値。 これは、任意の調整に使用されます。 |
-| Retry-After        | いいえ            | クライアントが状態を確認できる間隔。                                                       |
+| Retry-After        | いいえ           | クライアントが状態を確認できる間隔。                                                       |
 |  |  |  |
 
 ### <a name="saas-webhook"></a>SaaS Webhook

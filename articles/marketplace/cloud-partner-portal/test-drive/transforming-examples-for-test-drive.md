@@ -1,25 +1,19 @@
 ---
-title: 体験版の変換の例 | Microsoft Docs
+title: 体験版の変換の例 | Azure Marketplace
 description: 体験版の実装方法の例の一覧。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: pbutlerm
 manager: Ricardo.Villalobos
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 7e8263595a484500b86a8491d1408f02b4286181
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.author: pabutler
+ms.openlocfilehash: 727028611c52a8d03026e5d3fa67b2e0ee7e2053
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57457727"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64938473"
 ---
 <a name="transforming-examples-for-test-drive"></a>体験版の変換の例
 ====================================

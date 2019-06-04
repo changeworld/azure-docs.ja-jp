@@ -77,10 +77,10 @@ Data Management Gateway で PostgreSQL Databases に接続するには、Data Ma
 | type |type プロパティは、次のように設定する必要があります:**OnPremisesPostgreSql** |はい |
 | server |PostgreSQL サーバーの名前です。 |はい |
 | database |PostgreSQL データベースの名前です。 |はい |
-| schema |データベース内のスキーマの名前です。 スキーマ名は、大文字と小文字が区別されます。 |いいえ  |
+| schema |データベース内のスキーマの名前です。 スキーマ名は、大文字と小文字が区別されます。 |いいえ |
 | authenticationType |PostgreSQL データベースへの接続に使用される認証の種類です。 次のいずれかの値になります。Anonymous、Basic、および Windows。 |はい |
-| username |Basic または Windows 認証を使用している場合は、ユーザー名を指定します。 |いいえ  |
-| password |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 |いいえ  |
+| username |Basic または Windows 認証を使用している場合は、ユーザー名を指定します。 |いいえ |
+| password |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 |いいえ |
 | gatewayName |Data Factory サービスが、オンプレミスの PostgreSQL データベースへの接続に使用するゲートウェイの名前です。 |はい |
 
 ## <a name="dataset-properties"></a>データセットのプロパティ
@@ -311,7 +311,7 @@ PostgreSQL にデータを移動する場合、PostgreSQL 型から .NET 型に�
 | bigserial |serial8 |Int64 |
 | bit [(n)] | |Byte[], String |
 | bit varying [ (n) ] |varbit |Byte[], String |
-| boolean |bool |Boolean |
+| Boolean |bool |Boolean |
 | box | |Byte[], String |
 | bytea | |Byte[], String |
 | character [(n)] |char [(n)] |String |

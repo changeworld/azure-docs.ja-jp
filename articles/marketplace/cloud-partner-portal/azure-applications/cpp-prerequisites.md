@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: pabutler
-ms.openlocfilehash: 296f843f9d09b57e12e867700f456126eca128b3
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 64039234a3863332ca19b915fb59a5271625d695
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64942877"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66258182"
 ---
 # <a name="azure-application-prerequisites"></a>Azure アプリケーションの前提条件
 
@@ -38,7 +38,8 @@ ms.locfileid: "64942877"
 
 ビジネス要件には、次の手続き、契約、法律に関する義務が含まれます。
 
-* 登録済みのクラウド マーケットプレース パブリッシャーである必要があります。 登録していない場合は、「[クラウド マーケットプレース パブリッシャーになる](../../become-publisher.md)」の手順に従ってください。
+* 登録済みのクラウド マーケットプレース パブリッシャーである必要があります。 登録していない場合は、「[クラウド マーケットプレース パブリッシャーになる](https://docs.microsoft.com/azure/marketplace/become-publisher
+)」の手順に従ってください。
 
 >[!NOTE]
 >Microsoft デベロッパー センター登録アカウントと同じアカウントを使用して、Cloud パートナー ポータルにサインインする必要があります。 複数の Azure Marketplace サービスに対して 1 つの Microsoft アカウントを使用してください。 このアカウントは、個々のサービスまたはオファーに固有のものにしないでください。

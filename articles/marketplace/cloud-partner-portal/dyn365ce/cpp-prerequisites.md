@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: pabutler
-ms.openlocfilehash: 0b14180c894977d822aa30ea5f46a2e21e247dc1
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: dd2e68c820a8c9e503a3539fd50bf3fba68e3949
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64942330"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66257521"
 ---
 # <a name="dynamics-365-for-customer-engagement-prerequisites"></a>Dynamics 365 for Customer Engagement の前提条件
 
@@ -40,7 +40,7 @@ Dynamics 365 for Customer Engagement アプリケーションでは「[Microsoft
 
 ビジネス要件には、次の手続き、契約、法律に関する義務が含まれます。
 
-* パートナーは、[Microsoft Partner Network (MPN)](https://partners.microsoft.com/PartnerProgram/simplifiedenrollment.aspx) に登録するか、登録済みのクラウド マーケットプレース パブリッシャーである必要があります。 登録していない場合は、「[クラウド マーケットプレース パブリッシャーになる](../../become-publisher.md)」の手順に従ってください。  (3 番目のステップでは、代わりに [AppSource パートナー申請フォーム](https://appsource.microsoft.com/partners/signup)を使用します)。 
+* パートナーは、[Microsoft Partner Network (MPN)](https://partners.microsoft.com/PartnerProgram/simplifiedenrollment.aspx) に登録するか、登録済みのクラウド マーケットプレース パブリッシャーである必要があります。 登録していない場合は、「[クラウド マーケットプレース パブリッシャーになる](https://docs.microsoft.com/azure/marketplace/become-publisher)」の手順に従ってください。  (3 番目のステップでは、代わりに [AppSource パートナー申請フォーム](https://appsource.microsoft.com/partners/signup)を使用します)。 
 
     >[!NOTE]
     >Microsoft デベロッパー センター登録アカウントと同じアカウントを使用して、Cloud パートナー ポータルにサインインする必要があります。 複数の Azure Marketplace サービスに対して 1 つの Microsoft アカウントを使用してください。 このアカウントは、個々のサービスまたはオファーに固有のものにしないでください。

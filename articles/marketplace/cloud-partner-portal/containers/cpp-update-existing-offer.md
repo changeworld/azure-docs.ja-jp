@@ -1,25 +1,18 @@
 ---
-title: 既存の Azure Containers オファーを更新する | Microsoft Docs
+title: 既存の Azure Containers オファーを更新する | Azure Marketplace
 description: Azure Marketplace で既存のコンテナー オファーを更新する方法。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: dan-wesley
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 11/01/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 2b568717b6656fb9ae15e9a6dbd27441689c4372
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.author: pabutler
+ms.openlocfilehash: 0e0db961dec69880eff6ef640e9210af6fcbc978
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50980237"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64942594"
 ---
 # <a name="update-an-existing-container-offer"></a>既存のコンテナー オファーを更新する
 
@@ -64,7 +57,7 @@ ms.locfileid: "50980237"
 
 1. [Cloud パートナー ポータル](https://cloudpartner.azure.com/)にサインインします。
 2. **[すべてのプラン]** から、更新するプランを見つけます。
-3. **[SKU]** タブで、**[Add new SKU (新しい SKU の追加)]** を選択し、ポップアップ ウィンドウに **[SKU ID]** を指定します。
+3. **[SKU]** タブで、 **[Add new SKU (新しい SKU の追加)]** を選択し、ポップアップ ウィンドウに **[SKU ID]** を指定します。
 4. [コンテナー オファーを発行する](./cpp-publish-offer.md)ことに関するページで説明している手順を使用して、コンテナーを再パブリッシュします。
 5. **[発行]** を選択し、新しい SKU を発行するワークフローを開始します。
 
@@ -73,13 +66,13 @@ ms.locfileid: "50980237"
 次の手順に従って、プランに関連付けられている Marketplace メタデータを更新します。 (例: 会社名、ロゴなど)
 
 1. [Cloud パートナー ポータル](https://cloudpartner.azure.com/)にサインインします。
-2. **[All offers](すべてのオファー)** で、更新するオファーを見つけます。
+2. **[すべてのオファー]** で、更新するオファーを見つけます。
 3. **[Marketplace]** タブに移動します。[コンテナー オファーを発行する](./cpp-publish-offer.md)ことに関するオファーの記事の指示に従って、メタデータの変更を行います。
 4. **[発行]** を選択し、変更を発行するワークフローを開始します。
 
 ## <a name="compare-feature"></a>機能の比較
 
-発行されているオファーに変更を加える場合、**[比較]** 機能を使用して、加えた変更を監査することができます。
+発行されているオファーに変更を加える場合、 **[比較]** 機能を使用して、加えた変更を監査することができます。
 
 ### <a name="to-use-the-compare-feature"></a>比較機能を使用する方法:
 
