@@ -1597,7 +1597,7 @@ Amazon Redshift のリンクされたサービスを定義するには、リン�
 | server |Amazon Redshift サーバーの IP アドレスまたはホスト名。 |はい |
 | port |Amazon Redshift サーバーがクライアント接続のリッスンに使用する TCP ポートの数。 |いいえ、既定値: 5439 |
 | database |Amazon Redshift データベースの名前。 |はい |
-| ユーザー名 |データベースへのアクセスを持つユーザーの名前。 |はい |
+| username |データベースへのアクセスを持つユーザーの名前。 |はい |
 | password |ユーザー アカウントのパスワード。 |はい |
 
 #### <a name="example"></a>例
@@ -1710,7 +1710,7 @@ IBM DB2 のリンクされたサービスを定義するには、リンクされ
 | database |DB2 データベースの名前です。 |はい |
 | schema |データベース内のスキーマの名前です。 スキーマ名は、大文字と小文字が区別されます。 |いいえ  |
 | authenticationType |DB2 データベースへの接続に使用される認証の種類です。 次のいずれかの値になります。Anonymous、Basic、および Windows。 |はい |
-| ユーザー名 |Basic または Windows 認証を使用している場合は、ユーザー名を指定します。 |いいえ  |
+| username |Basic または Windows 認証を使用している場合は、ユーザー名を指定します。 |いいえ  |
 | password |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 |いいえ  |
 | gatewayName |Data Factory サービスが、オンプレミスの DB2 データベースへの接続に使用するゲートウェイの名前です。 |はい |
 
@@ -1826,7 +1826,7 @@ MySQL のリンクされたサービスを定義するには、リンクされ�
 | database |MySQL データベースの名前です。 |はい |
 | schema |データベース内のスキーマの名前です。 |いいえ  |
 | authenticationType |MySQL データベースへの接続に使用される認証の種類です。 次のいずれかの値になります。`Basic` |はい |
-| ユーザー名 |MySQL データベースに接続するユーザー名を指定します。 |はい |
+| username |MySQL データベースに接続するユーザー名を指定します。 |はい |
 | password |指定したユーザー アカウントのパスワードを指定します。 |はい |
 | gatewayName |Data Factory サービスが、オンプレミスの MySQL データベースへの接続に使用するゲートウェイの名前です。 |はい |
 
@@ -2117,7 +2117,7 @@ PostgreSQL のリンクされたサービスを定義するには、リンクさ
 | database |PostgreSQL データベースの名前です。 |はい |
 | schema |データベース内のスキーマの名前です。 スキーマ名は、大文字と小文字が区別されます。 |いいえ  |
 | authenticationType |PostgreSQL データベースへの接続に使用される認証の種類です。 次のいずれかの値になります。Anonymous、Basic、および Windows。 |はい |
-| ユーザー名 |Basic または Windows 認証を使用している場合は、ユーザー名を指定します。 |いいえ  |
+| username |Basic または Windows 認証を使用している場合は、ユーザー名を指定します。 |いいえ  |
 | password |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 |いいえ  |
 | gatewayName |Data Factory サービスが、オンプレミスの PostgreSQL データベースへの接続に使用するゲートウェイの名前です。 |はい |
 
@@ -2675,7 +2675,7 @@ Sybase のリンクされたサービスを定義するには、リンクされ�
 | database |Sybase データベースの名前です。 |はい |
 | schema |データベース内のスキーマの名前です。 |いいえ  |
 | authenticationType |Sybase データベースへの接続に使用される認証の種類です。 次のいずれかの値になります。Anonymous、Basic、および Windows。 |はい |
-| ユーザー名 |Basic または Windows 認証を使用している場合は、ユーザー名を指定します。 |いいえ  |
+| username |Basic または Windows 認証を使用している場合は、ユーザー名を指定します。 |いいえ  |
 | password |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 |いいえ  |
 | gatewayName |Data Factory サービスが、オンプレミスの Sybase データベースへの接続に使用するゲートウェイの名前です。 |はい |
 
@@ -2793,7 +2793,7 @@ Teradata のリンクされたサービスを定義するには、リンクさ�
 | --- | --- | --- |
 | server |Teradata のサーバーの名前です。 |はい |
 | authenticationType |Teradata データベースへの接続に使用される認証の種類です。 次のいずれかの値になります。Anonymous、Basic、および Windows。 |はい |
-| ユーザー名 |Basic または Windows 認証を使用している場合は、ユーザー名を指定します。 |いいえ  |
+| username |Basic または Windows 認証を使用している場合は、ユーザー名を指定します。 |いいえ  |
 | password |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 |いいえ  |
 | gatewayName |Data Factory サービスが、オンプレミスの Teradata データベースへの接続に使用するゲートウェイの名前です。 |はい |
 
@@ -2908,7 +2908,7 @@ Cassandra のリンクされたサービスを定義するには、リンクさ�
 | host |Cassandra サーバーの 1 つまたは複数の IP アドレスかホスト名。<br/><br/>IP アドレスまたはホスト名のコンマ区切りのリストを指定して、すべてのサーバーに同時に接続します。 |はい |
 | port |Cassandra サーバーがクライアント接続のリッスンに使用する TCP ポート。 |いいえ、既定値: 9042 |
 | authenticationType |Basic、または匿名 |はい |
-| ユーザー名 |ユーザー アカウントのユーザー名を指定します。 |はい (authenticationType が Basic に設定されている場合)。 |
+| username |ユーザー アカウントのユーザー名を指定します。 |はい (authenticationType が Basic に設定されている場合)。 |
 | password |ユーザー アカウントのパスワードを指定します。 |はい (authenticationType が Basic に設定されている場合)。 |
 | gatewayName |オンプレミスの Cassandra データベースへの接続に使用されるゲートウェイの名前。 |はい |
 | encryptedCredential |ゲートウェイによって暗号化された資格情報。 |いいえ  |
@@ -3035,7 +3035,7 @@ MongoDB のリンクされたサービスを定義するには、リンクされ
 | server |MongoDB サーバーの IP アドレスまたはホスト名。 |はい |
 | port |MongoDB サーバーがクライアント接続のリッスンに使用する TCP ポート。 |省略可能、既定値: 27017 |
 | authenticationType |Basic または Anonymous。 |はい |
-| ユーザー名 |MongoDB にアクセスするためのユーザー アカウント。 |はい (基本認証が使用される場合)。 |
+| username |MongoDB にアクセスするためのユーザー アカウント。 |はい (基本認証が使用される場合)。 |
 | password |ユーザーのパスワード。 |はい (基本認証が使用される場合)。 |
 | authSource |認証のために資格情報を確認する際に使用する MongoDB データベースの名前。 |省略可能 (基本認証が使用される場合)。 既定では、管理者アカウントと、databaseName プロパティで指定されたデータベースが使用されます。 |
 | databaseName |アクセスする MongoDB データベースの名前。 |はい |
@@ -3554,7 +3554,7 @@ FTP のリンクされたサービスを定義するには、リンクされた�
 | --- | --- | --- | --- |
 | host |FTP サーバーの名前または IP アドレス |はい |&nbsp; |
 | authenticationType |認証の種類を指定します |はい |Basic、Anonymous |
-| ユーザー名 |FTP サーバーへのアクセスを持つユーザー |いいえ  |&nbsp; |
+| username |FTP サーバーへのアクセスを持つユーザー |いいえ  |&nbsp; |
 | password |ユーザーのパスワード (ユーザー名) |いいえ  |&nbsp; |
 | encryptedCredential |FTP サーバーにアクセスするための暗号化された資格情報 |いいえ  |&nbsp; |
 | gatewayName |オンプレミスの FTP サーバーに接続するための Data Management Gateway の名前 |いいえ  |&nbsp; |
@@ -3880,7 +3880,7 @@ SFTP のリンクされたサービスを定義するには、リンクされた
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| ユーザー名 | SFTP サーバーにアクセスできるユーザー。 |はい |
+| username | SFTP サーバーにアクセスできるユーザー。 |はい |
 | password | ユーザー (username) のパスワード。 | はい |
 
 ```json
@@ -3929,7 +3929,7 @@ SFTP のリンクされたサービスを定義するには、リンクされた
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| ユーザー名 |SFTP サーバーにアクセスできるユーザー |はい |
+| username |SFTP サーバーにアクセスできるユーザー |はい |
 | privateKeyPath | ゲートウェイがアクセスできる秘密キー ファイルへの絶対パスを指定します。 | `privateKeyPath` または `privateKeyContent` を指定します。 <br><br> オンプレミスの SFTP サーバーからデータをコピーする場合にのみ適用します。 |
 | privateKeyContent | 秘密キーのコンテンツのシリアル化された文字列。 コピー ウィザードでは、秘密キー ファイルを読み取り、秘密キーのコンテンツを自動的に抽出できます。 その他のツール/SDK を使用している場合は、代わりに privateKeyPath プロパティを使用します。 | `privateKeyPath` または `privateKeyContent` を指定します。 |
 | passPhrase | キー ファイルがパス フレーズで保護されている場合は、パス フレーズ/パスワードを指定して、秘密キーを復号化します。 | はい (秘密キー ファイルがパス フレーズで保護されている場合)。 |
@@ -4084,7 +4084,7 @@ HTTP のリンクされたサービスを定義するには、リンクされた
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| ユーザー名 | HTTP エンドポイントにアクセスするためのユーザー名。 | はい |
+| username | HTTP エンドポイントにアクセスするためのユーザー名。 | はい |
 | password | ユーザー (username) のパスワード。 | はい |
 
 ```json
@@ -4273,7 +4273,7 @@ OData のリンクされたサービスを定義するには、リンクされ�
 | --- | --- | --- |
 | url |OData サービスの URL です。 |はい |
 | authenticationType |OData ソースへの接続に使用される認証の種類です。 <br/><br/> クラウド OData の場合、有効な値は、匿名、基本、または OAuth です (Azure Data Factory で現在サポートされているのは Azure Active Directory ベースの OAuth のみです)。 <br/><br/> オンプレミスの OData では、Anonymous、Basic、Windows のいずれかの値になります。 |はい |
-| ユーザー名 |基本認証を使用している場合は、ユーザー名を指定します。 |はい (基本認証を使用している場合のみ) |
+| username |基本認証を使用している場合は、ユーザー名を指定します。 |はい (基本認証を使用している場合のみ) |
 | password |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 |はい (基本認証を使用している場合のみ) |
 | authorizedCredential |OAuth を使用している場合は、Data Factory コピー ウィザードまたはエディターの **[承認]** ボタンをクリックして資格情報を入力すると、このプロパティの値が自動生成されます。 |はい (OAuth 認証を使用している場合のみ) |
 | gatewayName |Data Factory サービスが、オンプレミスの OData サービスへの接続に使用するゲートウェイの名前。 オンプレミスの OData ソースからデータをコピーする場合にのみ指定します。 |いいえ  |
@@ -4444,7 +4444,7 @@ ODBC のリンクされたサービスを定義するには、リンクされた
 | connectionString |接続文字列の非アクセス資格情報部分と省略可能な暗号化された資格情報。 次のセクションの例を参照してください。 |はい |
 | credential |ドライバー固有のプロパティ値の形式で指定された接続文字列のアクセス資格情報の部分。 例: `“Uid=<user ID>;Pwd=<password>;RefreshToken=<secret refresh token>;”.` |いいえ  |
 | authenticationType |ODBC データ ストアへの接続に使用される認証の種類です。 次のいずれかの値になります。Anonymous および Basic。 |はい |
-| ユーザー名 |基本認証を使用している場合は、ユーザー名を指定します。 |いいえ  |
+| username |基本認証を使用している場合は、ユーザー名を指定します。 |いいえ  |
 | password |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 |いいえ  |
 | gatewayName |Data Factory サービスが、ODBC データ ストアへの接続に使用するゲートウェイの名前。 |はい |
 
@@ -4596,7 +4596,7 @@ Salesforce のリンクされたサービスを定義するには、リンクさ
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | environmentUrl | Salesforce インスタンスの URL を指定します。 <br><br> - 既定では "https:\//login.salesforce.com" です。 <br> - サンドボックスからデータをコピーするには、"https://test.salesforce.com" を指定します。 <br> - カスタム ドメインからデータをコピーするには、たとえば "https://[ドメイン].my.salesforce.com" を指定します。 |いいえ  |
-| ユーザー名 |ユーザー アカウントのユーザー名を指定します。 |はい |
+| username |ユーザー アカウントのユーザー名を指定します。 |はい |
 | password |ユーザー アカウントのパスワードを指定します。 |はい |
 | securityToken |ユーザー アカウントのセキュリティ トークンを指定します。 セキュリティ トークンのリセット/取得方法については、 [セキュリティ トークンの取得](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) に関する記事をご覧ください。 セキュリティ トークンの概要については、「[Security and the API (セキュリティと API)](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm)」をご覧ください。 |はい |
 
@@ -4878,7 +4878,7 @@ Azure HDInsight の「リンクされたサービス」を作成し、独自の 
 | --- | --- | --- |
 | type |type プロパティは **HDInsight**に設定されます。 |はい |
 | clusterUri |HDInsight クラスターの URI です。 |はい |
-| ユーザー名 |既存の HDInsight クラスターに接続するために使用されるユーザーの名前を指定します。 |はい |
+| username |既存の HDInsight クラスターに接続するために使用されるユーザーの名前を指定します。 |はい |
 | password |ユーザー アカウントのパスワードを指定します。 |はい |
 | linkedServiceName | HDInsight クラスターで使われる Azure Blob Storage を参照する Azure Storage のリンクされたサービスの名前です。 <p>現在は、Azure Data Lake Store のリンクされたサービスをこのプロパティに指定することはできません。 HDInsight クラスターが Data Lake Store にアクセスできる場合、Hive/Pig スクリプトから Azure Data Lake Store 内のデータにアクセスできます。 </p>  |はい |
 
