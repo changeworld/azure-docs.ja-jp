@@ -13,16 +13,18 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 1/24/2019
-ms.openlocfilehash: 8308190e0e68365343fb50ca33f9bea75c3e4e66
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 3865bb10346c4a55adbf94a7df225eacf2c11252
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59544485"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65519127"
 ---
 # <a name="incrementally-copy-new-and-changed-files-based-on-lastmodifieddate-by-using-the-copy-data-tool"></a>データのコピー ツールを使用し LastModifiedDate に基づいて新しいファイルおよび変更されたファイルを増分コピーする
 
 このチュートリアルでは、Azure portal を使用してデータ ファクトリを作成します。 次に、データのコピー ツールを使用して、**LastModifiedDate** を基に新しいファイルと変更されたファイルのみを Azure Blob Storage から Azure Blob Storage に増分的にコピーするパイプラインを作成します。
+
+これにより、ADF はソース ストアのすべてのファイルをスキャンし、LastModifiedDate に基づいてファイル フィルターを適用して、前回以降の新しいファイルと更新されたファイルのみをターゲット ストアにコピーします。  ADF に大量のファイルをスキャンさせるが、ターゲットにコピーするのは少数のファイルだけの場合でも、ファイルのスキャンに時間がかかることは変わらないため、この場合も長時間の実行が見込まれることに注意してください。   
 
 > [!NOTE]
 > Azure Data Factory を初めて使用する場合は、「[Azure Data Factory の概要](introduction.md)」を参照してください。
@@ -49,11 +51,11 @@ ms.locfileid: "59544485"
 
 ## <a name="create-a-data-factory"></a>Data Factory を作成する。
 
-1. 左側のメニューで、**[リソースの作成]** > **[データ + 分析]** > **[Data Factory]** の順に選択します。 
+1. 左側のメニューで、 **[リソースの作成]**  >  **[データ + 分析]**  >  **[Data Factory]** の順に選択します。 
    
    ![[新規] ウィンドウでの [Data Factory] の選択](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
 
-2. **[新しいデータ ファクトリ]** ページで、**[名前]** に「**ADFTutorialDataFactory**」と入力します。 
+2. **[新しいデータ ファクトリ]** ページで、 **[名前]** に「**ADFTutorialDataFactory**」と入力します。 
       
      ![新しいデータ ファクトリ](./media/tutorial-copy-data-tool/new-azure-data-factory.png)
  
@@ -61,7 +63,7 @@ ms.locfileid: "59544485"
    
    ![[新しいデータ ファクトリ] のエラー メッセージ](./media/tutorial-copy-data-tool/name-not-available-error.png)
 
-   データ ファクトリの名前の値に関するエラー メッセージが表示された場合は、別の名前を入力してください。 たとえば、_**yourname**_**ADFTutorialDataFactory** という名前を使用します。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関する記事をご覧ください。
+   データ ファクトリの名前の値に関するエラー メッセージが表示された場合は、別の名前を入力してください。 たとえば、 _**yourname**_ **ADFTutorialDataFactory** という名前を使用します。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関する記事をご覧ください。
 3. 新しいデータ ファクトリの作成先となる Azure **サブスクリプション**を選択します。 
 4. **[リソース グループ]** で、次の手順のいずれかを行います。
      
@@ -71,21 +73,21 @@ ms.locfileid: "59544485"
          
     リソース グループの詳細については、[リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/resource-group-overview.md)に関するページを参照してください。
 
-5. **[バージョン]** で、**[V2]** を選択します。
+5. **[バージョン]** で、 **[V2]** を選択します。
 6. **[場所]** で、データ ファクトリの場所を選択します。 サポートされている場所のみがドロップダウン リストに表示されます。 データ ファクトリで使用されるデータ ストア (Azure Storage、SQL Database など) やコンピューティング (Azure HDInsight など) は、他の場所やリージョンに存在していてもかまいません。
 7. **[ダッシュボードにピン留めする]** をオンにします。 
 8. **作成** を選択します。
 9. ダッシュボードの **[Deploying Data Factory]\(データ ファクトリをデプロイしています\)** タイルで、処理の状態を確認します。
 
     ![[Deploying Data Factory]\(データ ファクトリをデプロイしています\) タイル](media/tutorial-copy-data-tool/deploying-data-factory.png)
-10. 作成が完了すると、**[Data Factory]** ホーム ページが表示されます。
+10. 作成が完了すると、 **[Data Factory]** ホーム ページが表示されます。
    
     ![データ ファクトリのホーム ページ](./media/tutorial-copy-data-tool/data-factory-home-page.png)
-11. 別のタブで Azure Data Factory ユーザー インターフェイス (UI) を開くには、**[Author & Monitor]\(作成と監視\)** タイルを選択します。 
+11. 別のタブで Azure Data Factory ユーザー インターフェイス (UI) を開くには、 **[Author & Monitor]\(作成と監視\)** タイルを選択します。 
 
 ## <a name="use-the-copy-data-tool-to-create-a-pipeline"></a>データのコピー ツールを使用してパイプラインを作成する
 
-1. **[Let's get started]\(始めましょう\)** ページで、**[データのコピー]** タイルを選択してデータのコピー ツールを開きます。 
+1. **[Let's get started]\(始めましょう\)** ページで、 **[データのコピー]** タイルを選択してデータのコピー ツールを開きます。 
 
    ![データのコピー ツールのタイル](./media/tutorial-copy-data-tool/copy-data-tool-tile.png)
    
@@ -93,9 +95,9 @@ ms.locfileid: "59544485"
 
     a. **[タスク名]** に「**DeltaCopyFromBlobPipeline**」と入力します。
 
-    b. **[Task cadence** **or Task schedule]\(タスクの周期またはスケジュール\)** で、**[Run regularly on schedule]\(スケジュールに従って定期的に実行する\)** を選択します。
+    b. **[Task cadence** **or Task schedule]\(タスクの周期またはスケジュール\)** で、 **[Run regularly on schedule]\(スケジュールに従って定期的に実行する\)** を選択します。
 
-    c. **[Trigger type]\(トリガーの種類\)** で、**[Tumbling Window]\(タンブリング ウィンドウ\)** を選択します。
+    c. **[Trigger type]\(トリガーの種類\)** で、 **[Tumbling Window]\(タンブリング ウィンドウ\)** を選択します。
     
     d. **[Recurrence]\(繰り返し\)** で、**15 分**と指定します。 
     
@@ -111,39 +113,39 @@ ms.locfileid: "59544485"
     
     ![[ソース データ ストア] ページ](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/source-data-store-page.png)
 
-    b. ギャラリーから **[Azure Blob Storage]** を選択し、**[続行]** を選択します。
+    b. ギャラリーから **[Azure Blob Storage]** を選択し、 **[続行]** を選択します。
     
     ![[ソース データ ストア] ページ](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/source-data-store-page-select-blob.png)
 
-    c. **[New Linked Service]\(新しいリンクされたサービス\)** ページで、**[ストレージ アカウント名]** ボックスの一覧からストレージ アカウントを選択し、**[完了]** をクリックします。
+    c. **[New Linked Service]\(新しいリンクされたサービス\)** ページで、 **[ストレージ アカウント名]** ボックスの一覧からストレージ アカウントを選択し、 **[完了]** をクリックします。
     
     ![[ソース データ ストア] ページ](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/source-data-store-page-linkedservice.png)
     
-    d. 新しく作成したリンクされたサービスを選択して、**[次へ]** を選択します。 
+    d. 新しく作成したリンクされたサービスを選択して、 **[次へ]** を選択します。 
     
    ![[ソース データ ストア] ページ](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/source-data-store-page-select-linkedservice.png)
 
 4. **[Choose the input file or folder]\(入力ファイルまたはフォルダーの選択\)** ページで、次の手順を実行します。
     
-    a. **source** フォルダーを参照して選択し、**[選択]** を選択します。
+    a. **source** フォルダーを参照して選択し、 **[選択]** を選択します。
     
     ![[Choose the input file or folder]\(入力ファイルまたはフォルダーの選択\)](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/choose-input-file-folder.png)
     
-    b. **[File loading behavior]\(ファイル読み込み動作\)** で、**[Incremental load: LastModifiedDate]\(増分読み込み: LastModifiedDate\)** を選択します。
+    b. **[File loading behavior]\(ファイル読み込み動作\)** で、 **[Incremental load: LastModifiedDate]\(増分読み込み: LastModifiedDate\)** を選択します。
     
     ![[Choose the input file or folder]\(入力ファイルまたはフォルダーの選択\)](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/choose-loading-behavior.png)
     
-    c. **[Binary copy]\(バイナリ コピー\)** をオンにして、**[次へ]** を選択します。
+    c. **[Binary copy]\(バイナリ コピー\)** をオンにして、 **[次へ]** を選択します。
     
      ![[Choose the input file or folder]\(入力ファイルまたはフォルダーの選択\)](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/check-binary-copy.png)
      
-5. **[Destination data store]\(コピー先データ ストア\)** ページで **[AzureBlobStorage]** を選択します。 これは、コピー元データ ストアと同じストレージ アカウントです。 次に、**[次へ]** を選択します。
+5. **[Destination data store]\(コピー先データ ストア\)** ページで **[AzureBlobStorage]** を選択します。 これは、コピー元データ ストアと同じストレージ アカウントです。 次に、 **[次へ]** を選択します。
 
     ![[Destination data store]\(コピー先データ ストア\) ページ](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/destination-data-store-page-select-linkedservice.png)
     
 6. **[Choose the output file or folder]\(出力ファイルまたはフォルダーの選択\)** ページで、次の手順を実行します。
     
-    a. **destination** フォルダーを参照して選択し、**[選択]** をクリックします。
+    a. **destination** フォルダーを参照して選択し、 **[選択]** をクリックします。
     
     ![出力ファイルまたはフォルダーの選択](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/choose-output-file-folder.png)
     
@@ -155,7 +157,7 @@ ms.locfileid: "59544485"
 
     ![[設定] ページ](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/settings-page.png)
     
-8. **[Summary]\(概要\)** ページで設定を確認し、**[次へ]** を選択します。
+8. **[Summary]\(概要\)** ページで設定を確認し、 **[次へ]** を選択します。
 
     ![概要ページ](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/summary-page.png)
     
@@ -163,11 +165,11 @@ ms.locfileid: "59544485"
 
     ![[Deployment]\(デプロイ\) ページ](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/deployment-page.png)
     
-10. 左側の **[監視]** タブが自動的に選択されたことがわかります。 **[アクション]** 列には、アクティビティの実行の詳細を表示するリンクとパイプラインを再実行するリンクが表示されます。 **[更新]** を選択して一覧を更新し、**[Actions]\(アクション\)** 列で **[View Activity Runs]\(アクティビティの実行の表示\)** リンクを選択します。 
+10. 左側の **[監視]** タブが自動的に選択されたことがわかります。 **[アクション]** 列には、アクティビティの実行の詳細を表示するリンクとパイプラインを再実行するリンクが表示されます。 **[更新]** を選択して一覧を更新し、 **[Actions]\(アクション\)** 列で **[View Activity Runs]\(アクティビティの実行の表示\)** リンクを選択します。 
 
     ![一覧を更新し、[View Activity Runs]\(アクティビティの実行の表示\) を選択します](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs1.png)
 
-11. パイプラインにはアクティビティ (コピー アクティビティ) が 1 つしかないため、エントリが 1 つだけ表示されます。 コピー操作の詳細を確認するために、**[アクション]** 列にある **[詳細]** リンク (眼鏡アイコン) を選択します。 
+11. パイプラインにはアクティビティ (コピー アクティビティ) が 1 つしかないため、エントリが 1 つだけ表示されます。 コピー操作の詳細を確認するために、 **[アクション]** 列にある **[詳細]** リンク (眼鏡アイコン) を選択します。 
 
     ![パイプラインにコピー アクティビティがあります](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs2.png)
     
@@ -179,7 +181,7 @@ ms.locfileid: "59544485"
 
     ![File1.txt を作成して source コンテナーにアップロードします](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs3-1.png)
     
-13. **[Pipeline Runs]\(パイプライン実行\)** ビューに戻るために、**[All Pipelines Runs]\(すべてのパイプライン実行\)** を選択し、同じパイプラインが再び自動的にトリガーされるまで待ちます。  
+13. **[Pipeline Runs]\(パイプライン実行\)** ビューに戻るために、 **[All Pipelines Runs]\(すべてのパイプライン実行\)** を選択し、同じパイプラインが再び自動的にトリガーされるまで待ちます。  
 
     ![[All Pipelines Runs]\(すべてのパイプライン実行\) を選択します](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs4.png)
 

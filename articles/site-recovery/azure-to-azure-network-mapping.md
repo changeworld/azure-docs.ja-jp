@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
-ms.openlocfilehash: d08715b1b3e0db4dfcf31bb4c020ab44ed3916e1
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: b25806044dd74092a5404ad7ef24ddd386dffbc3
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59549047"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65521750"
 ---
 # <a name="set-up-network-mapping-and-ip-addressing-for-vnets"></a>VNet のネットワーク マッピングと IP アドレス指定を設定する
 
@@ -26,7 +26,7 @@ ms.locfileid: "59549047"
 
 次のようにネットワークをマップします。
 
-1. **[Site Recovery インフラストラクチャ]** で、**[+ネットワーク マッピング]** をクリックします。
+1. **[Site Recovery インフラストラクチャ]** で、 **[+ネットワーク マッピング]** をクリックします。
 
     ![ ネットワーク マッピングを作成します](./media/site-recovery-network-mapping-azure-to-azure/network-mapping1.png)
 
@@ -58,7 +58,7 @@ Azure VM のディザスター リカバリーを構成する前にネットワ�
 
 - ソース VM サブネットと同じ名前のサブネットをターゲット ネットワークで利用できる場合は、そのサブネットがターゲット VM に対して設定されます。
 - ターゲット ネットワークに同じ名前のサブネットが存在しない場合は、アルファベット順で最初のサブネットがターゲット サブネットとして設定されます。
-- VM の **[コンピューティングとネットワーク]** の設定でこれを変更できます。
+- ターゲット サブネットは、VM の **[コンピューティングとネットワーク]** の設定で変更できます。
 
     ![[コンピューティングとネットワーク] の [コンピューティングのプロパティ] ウィンドウ](./media/site-recovery-network-mapping-azure-to-azure/modify-subnet.png)
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: cbasoglu
-ms.openlocfilehash: a1bd8ba36f208936ce52b3a46a72516da89a0e9a
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: d844b171ff99dc97e5d1107bcb745f9e8d5b3e9d
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65507871"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65519826"
 ---
 # <a name="scenario-availability"></a>シナリオの利用可否
 
@@ -34,8 +34,9 @@ Speech service SDK には、さまざまなプログラミング言語と環境�
   - Java/Windows および Linux および Android (Speech Devices SDK)
   - ウェイク ワード (Keyword Spotter/KWS) の機能は任意の種類のマイクでも動作する可能性がありますが、公式の KWS サポートは、現時点では Azure Kinect DK ハードウェアまたは Speech Devices SDK 内のマイク アレイに限定されています。
 - **音声優先仮想アシスタント**
-  - C#/UWP
-  - Java/Windows
+  - C++/Windows、Linux、および macOS
+  - C#/Windows
+  - Java/Windows、Linux、macOS、および Android (Speech Devices SDK)
 - **会話の文字起こし**
   - C++/Windows および Linux
   - C# (Framework および .NET Core)/Windows および UWP および Linux

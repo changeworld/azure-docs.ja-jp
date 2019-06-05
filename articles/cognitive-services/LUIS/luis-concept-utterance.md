@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/02/2019
+ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 2fd3416824189007bfdbe55d30907d9cb56f87ca
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: fdf5508475d868ccb8c271daaac7449d3c940301
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59792540"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "65073153"
 ---
 # <a name="understand-what-good-utterances-are-for-your-luis-app"></a>LUIS アプリに対して良い発話を理解する
 
@@ -74,13 +74,47 @@ LUIS は、LUIS モデルの作成者によって慎重に選択された発話�
 
 少数の発話で開始し、[エンドポイント発話を確認](luis-how-to-review-endpoint-utterances.md)して意図の予測とエンティティの抽出が正しいことを確認することをお勧めします。
 
-## <a name="punctuation-marks"></a>句読点
+## <a name="utterance-normalization"></a>発話の正規化
 
-LUIS は、既定では句読点を無視しません。句読点が重要視されるクライアント アプリケーションもあるためです。 どちらの形式でも同じ相対スコアが返されるように、発話の例では必ず、句読点があるケースとないケースの両方を使用してください。 ご利用のクライアント アプリケーションで句読点に特別な意味がない場合は、パターンを使用して[句読点を無視](#ignoring-words-and-punctuation)することを検討してください。 
+発話の正規化とは、トレーニングおよび予測中に句読点や分音記号の影響を無視する処理のことです。
 
-## <a name="ignoring-words-and-punctuation"></a>単語と句読点を無視する
+## <a name="utterance-normalization-for-diacritics-and-punctuation"></a>分音記号および句読点に対する発話の正規化
 
-発話の例にある特定の単語や句読点を無視する場合、[パターン](luis-concept-patterns.md#pattern-syntax)と _ignore_ 構文を使用します。 
+発話の正規化は、アプリの JSON ファイル内の設定であるため、アプリの作成時またはインポート時に定義します。 既定では、発話の正規化の設定は、オフになっています。 
+
+分音記号とは、テキスト内のマークや記号のことです。例を次に示します。 
+
+```
+İ ı Ş Ğ ş ğ ö ü
+```
+
+アプリで正規化をオンにすると、分音記号または句読点を使用するすべての発話について、 **[テスト]** ウィンドウ、バッチ テスト、およびエンドポイント クエリのスコアが変化します。
+
+LUIS JSON アプリ ファイルに対して、分音記号または句読点の発話の正規化をオンにするには、`settings` パラメーターを使用します。
+
+```JSON
+"settings": [
+    {"name": "NormalizePunctuation", "value": "true"},
+    {"name": "NormalizeDiacritics", "value": "true"}
+] 
+```
+
+**句読点**を正規化すると、モデルがトレーニングされる前、およびエンドポイント クエリが予測される前に、発話から句読点が削除されます。 
+
+**分音記号**を正規化すると、発話内の分音記号を持つ文字が通常の文字に置き換えられます。 たとえば、`Je parle français` は `Je parle francais` になります。 
+
+正規化を行うと、発話または予測応答の例に句読点や分音記号が表示されなくなるわけではありません。トレーニングおよび予測中に句読点や分音記号が無視されるだけです。
+
+
+### <a name="punctuation-marks"></a>句読点
+
+既定では、句読点を正規化しない場合、LUIS で句読点は無視されません。これは、クライアント アプリケーションによっては、句読点が重要視されるものがあるためです。 どちらの形式でも同じ相対スコアが返されるように、発話の例では必ず、句読点があるケースとないケースの両方を使用してください。 
+
+クライアント アプリケーションで句読点が特別な意味を持たない場合は、句読点を正規化して[句読点を無視](#utterance-normalization)することを検討してください。 
+
+### <a name="ignoring-words-and-punctuation"></a>単語と句読点を無視する
+
+パターン内の特定の語や句読点を無視する場合は、[パターン](luis-concept-patterns.md#pattern-syntax)使用時に大かっこ `[]` の _ignore_ 構文を指定します。 
 
 ## <a name="training-utterances"></a>発話のトレーニング
 

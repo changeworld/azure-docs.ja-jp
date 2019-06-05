@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 03/04/2019
+ms.date: 05/09/2019
 ms.author: mbullwin
-ms.openlocfilehash: c6a5ec8685de53d7a611328025d5da8e5ce698a3
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 38723a5dd306c2a4b594d95e5cc660d117966bc4
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65204882"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65518837"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Application Insights でのデータの収集、保持、保存
 
@@ -86,6 +86,9 @@ Web ページの場合、ブラウザーのデバッグ ウィンドウを開き
 生データ ポイント (つまり、Analytics でクエリを実行したり Search で調べることができる項目) は、最大 90 日間保持されます。 それ以上長くデータを保持する必要がある場合は、 [連続エクスポート](../../azure-monitor/app/export-telemetry.md) を使用してストレージ アカウントにコピーすることができます。
 
 集計されたデータ (つまり、メトリックス エクスプローラーに表示されるカウント、平均、その他の統計データ) は、1 分の詳細度であれば 90 日の期間にわたって保持されます。
+
+> [!NOTE]
+> Application Insights の変数保持は、現在プレビュー段階です。 [こちら](https://feedback.azure.com/forums/357324-application-insights/suggestions/17454031)をご覧ください。 
 
 [デバッグ スナップショット](../../azure-monitor/app/snapshot-debugger.md)は 15 日間格納されます。 この保持ポリシーは、アプリケーションごとに設定されます。 この値を増やす必要がある場合は、Azure portal でサポート ケースを開くことによって増加を要求できます。
 
@@ -231,7 +234,7 @@ openssl s_client -connect bing.com:443 -tls1_2
 ただし、アプリケーションでそのような機能を実装することはできます。 すべての SDK には、テレメトリの収集を無効にする API 設定が含まれています。 
 
 ## <a name="data-sent-by-application-insights"></a>Application Insights によって送信されるデータ
-SDK はプラットフォームごとに異なり、インストールできるコンポーネントは複数あります  ([Application Insights の概要][start]に関するページをご覧ください)。各コンポーネントは、それぞれ異なるデータを送信します。
+SDK はプラットフォームごとに異なり、インストールできるコンポーネントは複数あります ([Application Insights の概要][start]に関するページをご覧ください)。各コンポーネントは、それぞれ異なるデータを送信します。
 
 #### <a name="classes-of-data-sent-in-different-scenarios"></a>さまざまなシナリオで送信されるデータのクラス
 
@@ -240,12 +243,12 @@ SDK はプラットフォームごとに異なり、インストールできる�
 | [Application Insights SDK を .NET Web プロジェクトに追加する][greenbrown] |ServerContext<br/>Inferred<br/>Perf counters<br/>Requests<br/>**Exceptions**<br/>Session<br/>users |
 | [Status Monitor を IIS にインストールする][redfield] |依存関係<br/>ServerContext<br/>Inferred<br/>Perf counters |
 | [Application Insights SDK を Java Web アプリに追加する][java] |ServerContext<br/>Inferred<br/>Request<br/>Session<br/>users |
-| [JavaScript SDK を Web ページに追加する][client] |ClientContext  <br/>Inferred<br/>ページ<br/>ClientPerf<br/>Ajax |
+| [JavaScript SDK を Web ページに追加する][client] |ClientContext <br/>Inferred<br/>ページ<br/>ClientPerf<br/>Ajax |
 | [既定のプロパティを定義する][apiproperties] |**Properties** (すべての標準イベントおよびカスタム イベント) |
 | [TrackMetric を呼び出す][api] |数値<br/>**プロパティ** |
 | [Track* を呼び出す][api] |イベント名<br/>**プロパティ** |
 | [TrackException を呼び出す][api] |**Exceptions**<br/>Stack dump<br/>**プロパティ** |
-| SDK はデータを収集できません。 例:  <br/> - パフォーマンス カウンターにアクセスできない<br/> - テレメトリ初期化子で例外が発生した |SDK diagnostics |
+| SDK はデータを収集できません。 例: <br/> - パフォーマンス カウンターにアクセスできない<br/> - テレメトリ初期化子で例外が発生した |SDK diagnostics |
 
 [他のプラットフォームの SDK][platforms] については、該当するドキュメントを参照してください。
 
@@ -255,7 +258,7 @@ SDK はプラットフォームごとに異なり、インストールできる�
 | --- | --- |
 | **Properties** |**コードによって決まる任意のデータ** |
 | DeviceContext |Id、IP、ロケール、デバイス モデル、ネットワーク、ネットワークの種類、OEM の名前、画面解像度、ロール インスタンス、ロール名、デバイスの種類 |
-| ClientContext  |OS、ロケール、言語、ネットワーク、ウィンドウの解像度 |
+| ClientContext |OS、ロケール、言語、ネットワーク、ウィンドウの解像度 |
 | Session |セッション ID |
 | ServerContext |コンピューター名、ロケール、OS、デバイス、ユーザー セッション、ユーザー コンテキスト、操作 |
 | Inferred |IP アドレス、タイムスタンプ、OS、ブラウザーからの geo ロケーション |
