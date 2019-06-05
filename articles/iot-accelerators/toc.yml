@@ -147,16 +147,12 @@
       items:
         - name: OPC Twin アーキテクチャ
           href: overview-opc-twin-architecture.md
-        - name: コネクテッド ファクトリのアーキテクチャ
-          href: iot-accelerators-connected-factory-sample-walkthrough.md
     - name: ハウツー ガイド
       items:
         - name: 接続済みファクトリ
           items:
             - name: ダッシュボードの使用
               href: iot-accelerators-connected-factory-dashboard.md
-            - name: ゲートウェイの選択
-              href: iot-accelerators-connected-factory-gateway-deployment.md
             - name: OPC Publisher の利用
               href: 'https://github.com/Azure/iot-edge-opc-publisher/blob/master/README.md'
             - name: ソリューション アクセラレータの構成

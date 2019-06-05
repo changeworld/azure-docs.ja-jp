@@ -55,11 +55,11 @@
     - name: チュートリアル
       items:
         - name: リソース プロバイダーを有効にする
-          href: 'https://docs.azure.cloudsimple.com/enable-cloudsimple-service/'
+          href: enable-cloudsimple-service.md
         - name: CloudSimple サービスを作成する
-          href: 'https://docs.azure.cloudsimple.com/create-cloudsimple-service/'
+          href: create-cloudsimple-service.md
         - name: CloudSimple ポータルにアクセスする
-          href: 'https://docs.azure.cloudsimple.com/access-cloudsimple-portal/'
+          href: access-cloudsimple-portal.md
         - name: ノードを管理する
           items:
             - name: ノードを購入する
