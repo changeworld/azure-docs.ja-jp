@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 03/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 53e495a3c2d82738e1008ead84a4124e44435c9a
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: c814f4bb0cc24350e45400d141c97d1b2eb4998d
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65864376"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237796"
 ---
 # <a name="quickstart-use-your-own-notebook-server-to-get-started-with-azure-machine-learning"></a>クイック スタート:独自のノートブック サーバーを使用して Azure Machine Learning の利用を開始する
 
@@ -35,12 +35,27 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 * Azure Machine Learning service ワークスペース
 * ワークスペース構成ファイル ( **.azureml/config.json**)。
 
-「[Create an Azure Machine Learning service workspace (Azure Machine Learning サービスのワークスペースを作成する)](setup-create-workspace.md#portal)」の前提条件をすべて入手してください。
+「[Create an Azure Machine Learning service workspace (Azure Machine Learning サービスのワークスペースを作成する)](setup-create-workspace.md#sdk)」の前提条件をすべて入手してください。
+
 
 
 ## <a name="use-the-workspace"></a>ワークスペースの使用
 
-ワークスペース構成ファイルと同じディレクトリでノートブックを起動するか、スクリプトを作成します。 SDK の基本的な API を使用した次のコードを実行して、実験の実行を追跡します。
+ワークスペース構成ファイルと同じディレクトリ ( **.azureml/config.json**) でノートブックを起動するか、スクリプトを作成します。
+
+### <a name="attach-to-workspace"></a>ワークスペースにアタッチする
+
+このコードでは、ワークスペースにアタッチする構成ファイルから情報を読み取ります。
+
+```
+from azureml.core import Workspace
+
+ws = Workspace.from_config()
+```
+
+### <a name="log-values"></a>ログ値
+
+SDK の基本的な API を使用した次のコードを実行して、実験の実行を追跡します。
 
 1. ワークスペースで実験を作成します。
 1. 1 つの値を実験にログ記録します。

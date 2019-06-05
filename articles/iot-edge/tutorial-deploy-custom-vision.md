@@ -9,12 +9,12 @@ ms.date: 11/01/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 194ebcc1f1779c927503e09e9c42a96afddb12c9
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: a0530739428e18d01209f94345ae53dfb743d80b
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64575812"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66239681"
 ---
 # <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>チュートリアル: Custom Vision Service を使用してエッジで画像の分類を実行する
 
@@ -437,7 +437,7 @@ Visual Studio Code 用の IoT Edge 拡張機能では、各 IoT Edge ソリュ�
    iotedge logs cameraCapture
    ```
 
-Visual Studio Code では、IoT Edge デバイスの名前を右クリックして、 **[Start monitoring D2C message]\(D2C メッセージの監視を開始する\)** を選択します。 
+Visual Studio Code で、IoT Edge デバイスの名前を右クリックし、 **[Start Monitoring Built-in Event Endpoint]\(組み込みイベント エンドポイントの監視を開始する\)** を選択します。 
 
 cameraCapture モジュールからのメッセージとして送信される、Custom Vision モジュールの結果には、画像がドクニンジンまたは桜のものである確率が含まれます。 画像はドクニンジンであるため、確率は 1.0 と表示されるはずです。 
 

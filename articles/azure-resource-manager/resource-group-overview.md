@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/05/2019
+ms.date: 05/24/2019
 ms.author: tomfitz
-ms.openlocfilehash: 0ad1d12a4a2ca3a293546f2bac85210bb9152269
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b6d84a07de408cedb0e21181c70e5c1481ac62bc
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59269300"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66225913"
 ---
 # <a name="azure-resource-manager-overview"></a>Azure Resource Manager の概要
 
@@ -91,7 +91,7 @@ Resource Manager テンプレートの作成に関する推奨事項について
 
 各リソース プロバイダーは、これらのリソースを操作するための一連のリソースと操作を提供します。 たとえば、キーとシークレットを格納するためには、 **Microsoft.KeyVault** リソース プロバイダーを使用します。 このリソース プロバイダーには、キー コンテナーを作成するための **vaults** という名前のリソースの種類が用意されています。
 
-リソースの種類を表す名前は、**{resource-provider}/{resource-type}** のような形式になります。 キー コンテナーのリソースの種類は **Microsoft.KeyVault/vaults** です。
+リソースの種類を表す名前は、 **{resource-provider}/{resource-type}** のような形式になります。 キー コンテナーのリソースの種類は **Microsoft.KeyVault/vaults** です。
 
 リソースのデプロイを始める前に、利用可能なリソース プロバイダーを把握する必要があります。 リソース プロバイダーとリソースの名前がわかれば、Azure にデプロイするリソースの定義に役立ちます。 また、各リソースの種類の有効な場所と API のバージョンを把握しておく必要があります。 詳細については、「[リソース プロバイダーと種類](resource-manager-supported-services.md)」を参照してください。
 
@@ -174,7 +174,21 @@ Resource Manager では、セットアップ時に含まれていなかった特
 
 Azure に複雑なサービスをデプロイするときには、サービスを複数のリージョンにデプロイし、次のステップに進む前に正常性チェックする必要がある場合があります。 サービスの段階的なロールアウトをうまく調整するには、[Azure Deployment Manager](deployment-manager-overview.md) を使用します。 サービスのロールアウトを段階的に行えば、すべてのリージョンにサービスがデプロイされる前に潜在的な問題を見つけることができます。 これらの用心が必要でない場合は、前のセクションのデプロイ操作が、より適した選択肢となります。
 
-Deployment Manager は現在、プライベート プレビュー段階にあります。
+現在、Deployment Manager はパブリック プレビュー段階にあります。
+
+## <a name="resiliency-of-azure-resource-manager"></a>Azure Resource Manager の回復性
+
+Azure Resource Manager サービスは、回復性と継続的な可用性を実現するよう設計されています。 REST API での Resource Manager とコントロール プレーン操作 (management.azure.com に送信される要求) は、次のように動作します。
+
+* リージョン間に分散されます。 一部のサービスはリージョン固有です。
+
+* 複数の可用性ゾーンを含む場所では、可用性ゾーン (リージョン) 間で分散されます。
+
+* 単一の論理データ センターに依存しません。
+
+* メンテナンスのために休止することはありません。
+
+この回復性は、Resource Manager 経由で要求を受信するサービスに適用されます。 たとえば、Key Vault はこの回復性からメリットを得られます。
 
 [!INCLUDE [arm-tutorials-quickstarts](../../includes/resource-manager-tutorials-quickstarts.md)]
 

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-ms.date: 05/22/2019
+ms.date: 05/23/2019
 ms.author: alkohli
-ms.openlocfilehash: 2b021975983858386cd7c847ba11a26f4feb9562
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 18c6175ede1e8459d3a9ca60f7890cc43d75e5ba
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66150455"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236292"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: よく寄せられる質問
 
@@ -184,7 +184,7 @@ A. デバイスが到着時に破損していたり、改ざんの兆候があ�
 A. Data Box サービスでは、Microsoft が Azure データセンターとの間の配送を扱います。 自身の運送業者を使用する場合は、Azure インポート/エクスポート サービスを使用できます。 詳細については、「[Azure インポート/エクスポート サービスの概要](../storage/common/storage-import-export-service.md)」を参照してください。
 
 ### <a name="q-will-my-data-box-devices-cross-country-borders-during-shipping"></a>Q. Data Box デバイスは配送中に国境を越えますか?
-A. すべての Data Box デバイスは配送先と同じ国内から出荷され、国境を越えることはありません。 欧州連合 (EU) 域内の注文は唯一の例外であり、EU のどの国にも、また EU のどの国からもデバイスを配送できます。
+A. すべての Data Box デバイスは配送先と同じ国内から出荷され、国境を越えることはありません。 欧州連合 (EU) 域内の注文は唯一の例外であり、EU のどの国にも、また EU のどの国からもデバイスを配送できます。 これは、Data Box デバイスと Data Box Heavy デバイスの両方に適用されます。
 
 ### <a name="q-e-ink-display-is-not-showing-the-return-shipment-label-what-should-i-do"></a>Q. E インク表示が返品ラベルを示していません。 どうすればよいですか。
 A. E インク表示が返品ラベルを示していない場合は、次の手順を実行します。
