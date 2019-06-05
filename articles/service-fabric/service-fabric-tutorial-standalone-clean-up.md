@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 05/11/2018
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 28cc2bf4794620641fb6af46bd4017d74f87e955
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 67334a0e8ae3e6dcca86830cd088e6e446331aee
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58666998"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66306708"
 ---
 # <a name="tutorial-clean-up-your-standalone-cluster"></a>チュートリアル:スタンドアロン クラスターのクリーンアップ
 
@@ -60,10 +60,10 @@ The cluster is successfully removed.
 
 ## <a name="clean-up-aws-resources"></a>AWS リソースのクリーンアップ
 
-* AWS アカウントにログインします。
+* AWS アカウントにサインインします。
 * EC2 コンソールに移動します。
 * このチュートリアルの第 1 部で作成した 3 つのノードを選択します。
-* **[操作]** > **[インスタンスの状態]** > **[終了]** をクリックします。
+* **[操作]**  >  **[インスタンスの状態]**  >  **[終了]** をクリックします。
 
 ## <a name="next-steps"></a>次の手順
 

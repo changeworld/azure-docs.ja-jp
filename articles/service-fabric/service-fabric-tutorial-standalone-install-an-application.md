@@ -1,6 +1,6 @@
 ---
 title: スタンドアロン Service Fabric クラスターにアプリケーションをインストールするチュートリアル - Azure Service Fabric | Microsoft Docs
-description: このチュートリアルでは、スタンドアロン Service Fabric クラスターにアプリケーションをインストールする方法について説明します。
+description: このチュートリアルでは、スタンドアロンの Service Fabric クラスターにアプリケーションをインストールする方法について説明します。
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 05/11/2018
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 17bb5f5d8fe7ee407caf0ea5c34dc5380dbd79b0
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 5bc326bbc16ef93d484425f26b6f8226150c77c6
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670313"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66302422"
 ---
 # <a name="tutorial-deploy-an-application-on-your-service-fabric-standalone-cluster"></a>チュートリアル:Service Fabric スタンドアロン クラスターにアプリケーションをデプロイする
 
@@ -38,7 +38,7 @@ Service Fabric で採用されている "すべての OS、すべてのクラウ
 
 このチュートリアルを開始する前に
 
-* [Visual Studio 2017 をインストール](https://www.visualstudio.com/)し、**Azure 開発**ワークロードと **ASP.NET および Web 開発**ワークロードをインストールします。
+* [Visual Studio 2019 をインストール](https://www.visualstudio.com/)し、**Azure 開発**ワークロードと **ASP.NET および Web 開発**ワークロードをインストールします。
 * [Service Fabric SDK をインストール](service-fabric-get-started.md)します。
 
 ## <a name="download-the-voting-sample-application"></a>投票サンプル アプリケーションをダウンロードする
@@ -55,11 +55,11 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
 1. Visual Studio を開きます
 
-2. **[ファイル]** > **[開く]** を選択します。
+2. **[ファイル]**  >  **[開く]** を選択します。
 
 3. Git リポジトリの複製先フォルダーに移動し、Voting.sln を選択します。
 
-4. ソリューション エクスプローラーで `Voting` アプリケーション プロジェクトを右クリックし、**[発行]** を選択します。
+4. ソリューション エクスプローラーで `Voting` アプリケーション プロジェクトを右クリックし、 **[発行]** を選択します。
 
 5. **[接続のエンドポイント]** のドロップダウンを選択し、クラスター内のいずれかのノードのパブリック DNS 名を入力します。  たとえば、`ec2-34-215-183-77.us-west-2.compute.amazonaws.com:19000` のように指定します。
 

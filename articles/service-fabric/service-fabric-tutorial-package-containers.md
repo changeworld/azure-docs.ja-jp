@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 01/31/2019
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 0dbd0445f4167485172a2b98cec3bb2b2a47ac20
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: a54ec7349317fdd8621fecec57cb06ad98f4660b
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58668417"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66306750"
 ---
 # <a name="tutorial-package-and-deploy-containers-as-a-service-fabric-application-using-yeoman"></a>チュートリアル:Yeoman を使用して Service Fabric アプリケーションとしてコンテナーをパッケージ化およびデプロイする
 
@@ -111,7 +111,7 @@ Yeoman を使用して作成したアプリケーションに別のコンテナ�
    create TestContainer/azurevotebackPkg/code/Dummy.txt
 ```
 
-このチュートリアルの後の手順で、**TestContainer** ディレクトリを使用します。 たとえば、*./TestContainer/TestContainer* です。 このディレクトリの内容は、次のようになります。
+このチュートリアルの後の手順で、**TestContainer** ディレクトリを使用します。 たとえば、 *./TestContainer/TestContainer* です。 このディレクトリの内容は、次のようになります。
 
 ```bash
 $ ls
@@ -122,7 +122,7 @@ ApplicationManifest.xml azurevotefrontPkg azurevotebackPkg
 
 Service Fabric が Azure Container Registry からコンテナー イメージをプルするには、**ApplicationManifest.xml** に資格情報を入力する必要があります。
 
-ACR インスタンスへログインします。 **az acr login** コマンドを使用して、操作を完了します。 コンテナー レジストリの作成時に割り当てられた一意名を入力します。
+ACR インスタンスにサインインします。 **az acr login** コマンドを使用して、操作を完了します。 コンテナー レジストリの作成時に割り当てられた一意名を入力します。
 
 ```bash
 az acr login --name <acrName>

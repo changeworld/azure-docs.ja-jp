@@ -14,16 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/12/2018
 ms.author: kumud
-ms.openlocfilehash: 44094a38fff17908fd5ea851209130f89a49c988
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 23093cd8bcb5793b9e5b9abc835f64233e666ce1
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64707028"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241743"
 ---
 # <a name="what-is-azure-virtual-network"></a>Azure Virtual Network とは
 
-Azure Virtual Network では、Azure Virtual Machines (VM) などのさまざまな種類の Azure リソースが、他の Azure リソース、インターネット、およびオンプレミスのネットワークと安全に通信することができます。 仮想ネットワークは 1 つのリージョン内に制限されますが、仮想ネットワーク ピアリングを使用すれば、異なるリージョンの複数の仮想ネットワークを相互に接続することができます。
+Azure Virtual Network では、Azure Virtual Machines (VM) などのさまざまな種類の Azure リソースが、他の Azure リソース、インターネット、およびオンプレミスのネットワークと安全に通信することができます。 仮想ネットワークは、1 つの Azure リージョン内に制限されます。 Azure "[リージョン](https://azure.microsoft.com/global-infrastructure/regions/)" は、待ち時間で定義された境界内でデプロイされ、待ち時間の短い専用リージョン ネットワークを介して接続された一連のデータセンターです。 
+
+仮想ネットワークはサブネットで構成されています。 サブネットとは、仮想ネットワーク内の IP アドレスの範囲です。 仮想ネットワークと同様に、サブネットは 1 つの Azure リージョン内に制限されます。 
+
+仮想ネットワーク ピアリングを使用すると、異なるリージョンの複数の仮想ネットワークを相互に接続することができます。
 
 Azure Virtual Network では、次に示す重要な機能が提供されます。
 
@@ -52,7 +56,7 @@ Azure Virtual Network では、次に示す重要な機能が提供されます�
 
 オンプレミスのコンピューターおよびネットワークを仮想ネットワークに接続するには、次のオプションを組み合わせて使用します。
 
-- **ポイント対サイト仮想プライベート ネットワーク (VPN)**:仮想ネットワークとネットワーク内の 1 台のコンピューターの間で確立されます。 仮想ネットワークとの接続を確立する各コンピューターで、接続を構成する必要があります。 この接続の種類は、既存のネットワークへの変更をほとんどまたはまったく必要としないため、Azure を使い始めたばかりのユーザーまたは開発者に適しています。 コンピューターと仮想ネットワーク間の通信は、インターネット上の暗号化されたトンネルを通じて送信されます。 詳細については、[ポイント対サイト VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#P2S) に関するページを参照してください。
+- **ポイント対サイト仮想プライベート ネットワーク (VPN)** :仮想ネットワークとネットワーク内の 1 台のコンピューターの間で確立されます。 仮想ネットワークとの接続を確立する各コンピューターで、接続を構成する必要があります。 この接続の種類は、既存のネットワークへの変更をほとんどまたはまったく必要としないため、Azure を使い始めたばかりのユーザーまたは開発者に適しています。 コンピューターと仮想ネットワーク間の通信は、インターネット上の暗号化されたトンネルを通じて送信されます。 詳細については、[ポイント対サイト VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#P2S) に関するページを参照してください。
 - **サイト間 VPN**:オンプレミス VPN デバイスと仮想ネットワークにデプロイされた Azure VPN ゲートウェイの間で確立されます。 この接続の種類を使用すると、承認した任意のオンプレミス リソースが仮想ネットワークにアクセスできます。 オンプレミス VPN デバイスと Azure VPN ゲートウェイ間の通信は、インターネット上の暗号化されたトンネルを通じて送信されます。 詳細については、[サイト間 VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#s2smulti) に関するページを参照してください。
 - **Azure ExpressRoute**:ExpressRoute のパートナーを介して、ネットワークと Azure の間で確立されます。 この接続はプライベート接続です。 トラフィックはインターネットを経由しません。 詳細については、[ExpressRoute](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#ExpressRoute) に関するページを参照してください。
 

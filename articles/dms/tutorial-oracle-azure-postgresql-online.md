@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 05/08/2019
-ms.openlocfilehash: b73249a9f72e4616f6d36e16f110913278f04590
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.date: 05/24/2019
+ms.openlocfilehash: 0b3af3d29e6e938f0301d751a79170c7c1964b45
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65415601"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66243792"
 ---
 # <a name="tutorial-migrate-oracle-to-azure-database-for-postgresql-online-using-dms-preview"></a>チュートリアル:DMS を使用して Oracle を Azure Database for PostgreSQL にオンラインで移行する (プレビュー)
 
@@ -24,6 +24,7 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
 
 このチュートリアルでは、以下の内容を学習します。
 > [!div class="checklist"]
+>
 > * ora2pg ツールを使用して移行作業を評価する。
 > * ora2pg ツールを使用して、サンプル スキーマを移行する。
 > * Azure Database Migration Service のインスタンスを作成する。
@@ -50,17 +51,17 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
 * ora2pg をダウンロードして [Windows](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Steps%20to%20Install%20ora2pg%20on%20Windows.pdf) または [Linux](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Steps%20to%20Install%20ora2pg%20on%20Linux.pdf) のいずれかにインストールします。
 * [Azure Database for PostgreSQL のインスタンスを作成します](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal)。
 * この[ドキュメント](https://docs.microsoft.com/azure/postgresql/tutorial-design-database-using-azure-portal)の指示に従ってインスタンスに接続しデータベースを作成します。
-* Azure Resource Manager デプロイ モデルを使用して、Azure Database Migration Service 用の Azure 仮想ネットワーク (VNet) を作成します。これで、[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) または [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) を使用したオンプレミスのソース サーバーとのサイト間接続を確立します。 VNet の作成方法の詳細については、[Virtual Network のドキュメント](https://docs.microsoft.com/azure/virtual-network/)、特に詳細な手順を提供するクイックスタートの記事を参照してください。
+* Azure Resource Manager デプロイ モデルを使用して、Azure Database Migration Service 用の Azure 仮想ネットワーク (VNet) を作成します。これで、[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) または [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) を使用したオンプレミスのソース サーバーへのサイト間接続が提供されます。 VNet の作成方法の詳細については、[Virtual Network のドキュメント](https://docs.microsoft.com/azure/virtual-network/)、特に詳細な手順を提供するクイックスタートの記事を参照してください。
 
   > [!NOTE]
-  > VNet のセットアップ中、Microsoft へのネットワーク ピアリングに ExpressRoute を使用した場合、サービスのプロビジョニング先となるサブネットに、次のサービス [エンドポイント](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)を追加してください。
+  > VNet のセットアップ中、Microsoft へのネットワーク ピアリングに ExpressRoute を使用する場合は、サービスのプロビジョニング先となるサブネットに、次のサービス [エンドポイント](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)を追加してください。
   > * ターゲット データベース エンドポイント (SQL エンドポイント、Cosmos DB エンドポイントなど)
   > * ストレージ エンドポイント
   > * サービス バス エンドポイント
   >
   > Azure Database Migration Service にはインターネット接続がないため、この構成が必要となります。
 
-* VNet のネットワーク セキュリティ グループ (NSG) の規則によって、Azure Database Migration Service への以下のインバウンド通信ポートがブロックされないことを確認します: 443、53、9354、445、12000。 Azure VNet NSG トラフィックのフィルター処理の詳細については、[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルタリング](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm)に関する記事を参照してください。
+* VNet のネットワーク セキュリティ グループ (NSG) の規則によって、Azure Database Migration Service への以下のインバウンド通信ポートがブロックされないことを確認します: 443、53、9354、445、12000。 Azure VNet NSG トラフィックのフィルター処理の詳細については、[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルター処理](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm)に関する記事を参照してください。
 * [データベース エンジン アクセスのために Windows ファイアウォール](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)を構成します。
 * Azure Database Migration Service がソースの Oracle Server にアクセスできるように Windows ファイアウォールを開きます。既定では TCP ポート 1521 が使用されます。
 * ソース データベースの前でファイアウォール アプライアンスを使用する場合は、Azure Database Migration Service が移行のためにソース データベースにアクセスできるように、ファイアウォール規則を追加することが必要な場合があります。
@@ -204,7 +205,7 @@ ora2pg を実行して、.sql ファイル内の各データベース オブジ�
 psql -f [FILENAME] -h [AzurePostgreConnection] -p 5432 -U [AzurePostgreUser] -d database 
 ```
 
-例: 
+例:
 
 ```
 psql -f %namespace%\schema\sequences\sequence.sql -h server1-server.postgres.database.azure.com -p 5432 -U username@server1-server -d database
@@ -278,11 +279,11 @@ schema.table.column の文字形式が Oracle と Azure Database for PostgreSQL 
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>Microsoft.DataMigration リソース プロバイダーを登録する
 
-1. Azure portal にサインインし、**[すべてのサービス]** を選択し、**[サブスクリプション]** を選択します。
+1. Azure portal にサインインし、 **[すべてのサービス]** を選択し、 **[サブスクリプション]** を選択します。
 
    ![ポータルのサブスクリプションの表示](media/tutorial-oracle-azure-postgresql-online/portal-select-subscriptions.png)
 
-2. Azure Database Migration Service のインスタンスを作成するサブスクリプションを選択して、**[リソース プロバイダー]** を選択します。
+2. Azure Database Migration Service のインスタンスを作成するサブスクリプションを選択して、 **[リソース プロバイダー]** を選択します。
 
     ![リソース プロバイダーの表示](media/tutorial-oracle-azure-postgresql-online/portal-select-resource-provider.png)
 
@@ -296,7 +297,7 @@ schema.table.column の文字形式が Oracle と Azure Database for PostgreSQL 
 
     ![Azure Marketplace](media/tutorial-oracle-azure-postgresql-online/portal-marketplace.png)
 
-2. **[Azure Database Migration Service]** 画面で、**[作成]** を選択します。
+2. **[Azure Database Migration Service]** 画面で、 **[作成]** を選択します。
 
     ![Azure Database Migration Service インスタンスを作成する](media/tutorial-oracle-azure-postgresql-online/dms-create2.png)
   
@@ -320,7 +321,7 @@ schema.table.column の文字形式が Oracle と Azure Database for PostgreSQL 
 
 サービスが作成されたら、Azure portal 内でそのサービスを探して開き、新しい移行プロジェクトを作成します。
 
-1. Azure ポータルで、**[All services]\(すべてのサービス\)** を選択し、Azure Database Migration Service を検索して、**Azure Database Migration Service** を選択します。
+1. Azure ポータルで、 **[All services]\(すべてのサービス\)** を選択し、Azure Database Migration Service を検索して、**Azure Database Migration Service** を選択します。
 
     ![Azure Database Migration Service のすべてのインスタンスを検索する](media/tutorial-oracle-azure-postgresql-online/dms-search.png)
 
@@ -329,15 +330,15 @@ schema.table.column の文字形式が Oracle と Azure Database for PostgreSQL 
     ![Azure Database Migration Service のインスタンスを検索する](media/tutorial-oracle-azure-postgresql-online/dms-instance-search.png)
 
 3. **[+ 新しい移行プロジェクト]** を選択します。
-4. **[新しい移行プロジェクト]** 画面で、プロジェクトの名前を指定し、**[ソース サーバーの種類を選択する]** テキスト ボックスで **Oracle** を選択した後、**[ターゲット サーバーの種類]** テキスト ボックスで **Azure Database for PostgreSQL** を選択します。
-5. **[アクティビティの種類を選択します]** セクションで、**[オンライン データの移行]** を選択します。
+4. **[新しい移行プロジェクト]** 画面で、プロジェクトの名前を指定し、 **[ソース サーバーの種類を選択する]** テキスト ボックスで **Oracle** を選択した後、 **[ターゲット サーバーの種類]** テキスト ボックスで **Azure Database for PostgreSQL** を選択します。
+5. **[アクティビティの種類を選択します]** セクションで、 **[オンライン データの移行]** を選択します。
 
    ![Database Migration Service プロジェクトを作成する](media/tutorial-oracle-azure-postgresql-online/dms-create-project5.png)
 
    > [!NOTE]
-   > または、**[プロジェクトのみを作成します]** を選択して移行プロジェクトを作成しておき、移行は後で実行することもできます。
+   > または、 **[プロジェクトのみを作成します]** を選択して移行プロジェクトを作成しておき、移行は後で実行することもできます。
 
-6. **[保存]** を選択します。Azure Database Migration Service を使用して正常にオンライン移行を実行するための要件を確認した後、**[アクティビティの作成と実行]** を選択します。
+6. **[保存]** を選択します。Azure Database Migration Service を使用して正常にオンライン移行を実行するための要件を確認した後、 **[アクティビティの作成と実行]** を選択します。
 
 ## <a name="specify-source-details"></a>ソース詳細を指定する
 
@@ -347,7 +348,7 @@ schema.table.column の文字形式が Oracle と Azure Database for PostgreSQL 
 
 ## <a name="upload-oracle-oci-driver"></a>Oracle OCI ドライバーをアップロードする
 
-1. **[保存]** を選択し、**[OCI ドライバーのインストール]** 画面でご自分の Oracle アカウントにサインインして、ドライバーの **instantclient-basiclite-windows.x64-12.2.0.1.0.zip** (37,128,586 Byte(s)) (SHA1 Checksum:865082268) を[ここ](https://www.oracle.com/technetwork/topics/winx64soft-089540.html#ic_winx64_inst)からダウンロードします。
+1. **[保存]** を選択し、 **[OCI ドライバーのインストール]** 画面でご自分の Oracle アカウントにサインインして、ドライバーの **instantclient-basiclite-windows.x64-12.2.0.1.0.zip** (37,128,586 Byte(s)) (SHA1 Checksum:865082268) を[ここ](https://www.oracle.com/technetwork/topics/winx64soft-089540.html#ic_winx64_inst)からダウンロードします。
 2. ドライバーを共有フォルダーにダウンロードします。
 
    このフォルダーが、最低限の読み取り専用アクセスで指定したユーザー名に共有されていることを確認します。 Azure Database Migration Service は指定したユーザー名を偽装してこの共有にアクセスして読み取り、OCI ドライバーを Azure にアップロードします。
@@ -358,17 +359,17 @@ schema.table.column の文字形式が Oracle と Azure Database for PostgreSQL 
 
 ## <a name="specify-target-details"></a>ターゲット詳細を指定する
 
-1. **[保存]** を選択し、**[ターゲットの詳細]** 画面でターゲット Azure Database for PostgreSQL の接続の詳細を指定します。これは、**HR** スキーマがデプロイされた Azure Database for PostgreSQL の事前プロビジョニング済みのインスタンスです。
+1. **[保存]** を選択し、 **[ターゲットの詳細]** 画面でターゲット Azure Database for PostgreSQL の接続の詳細を指定します。これは、**HR** スキーマがデプロイされた Azure Database for PostgreSQL の事前プロビジョニング済みのインスタンスです。
 
     ![[ターゲットの詳細] 画面](media/tutorial-oracle-azure-postgresql-online/dms-add-target-details1.png)
 
-2. **[保存]** を選択し、**[ターゲット データベースへマッピング]** 画面で、移行用のソース データベースとターゲット データベースをマップします。
+2. **[保存]** を選択し、 **[ターゲット データベースへマッピング]** 画面で、移行用のソース データベースとターゲット データベースをマップします。
 
     ターゲット データベースにソース データベースと同じデータベース名が含まれている場合、Azure Database Migration Service では、既定でターゲット データベースが選択されます。
 
     ![ターゲット データベースにマップする](media/tutorial-oracle-azure-postgresql-online/dms-map-target-details.png)
 
-3. **[保存]** を選択し、**[移行の概要]** 画面で、**[アクティビティ名]** テキスト ボックスに移行アクティビティの名前を指定します。概要を見直して、ソースとターゲットの詳細が先ほど指定した内容と一致していることを確認します。
+3. **[保存]** を選択し、 **[移行の概要]** 画面で、 **[アクティビティ名]** テキスト ボックスに移行アクティビティの名前を指定します。概要を見直して、ソースとターゲットの詳細が先ほど指定した内容と一致していることを確認します。
 
     ![移行の概要](media/tutorial-oracle-azure-postgresql-online/dms-migration-summary.png)
 
@@ -396,13 +397,13 @@ schema.table.column の文字形式が Oracle と Azure Database for PostgreSQL 
 
 初回の全体の読み込みが完了すると、データベースは **[一括準備完了]** とマークされます。
 
-1. データベースの移行を完了する準備ができたら、**[一括で開始]** を選択します。
+1. データベースの移行を完了する準備ができたら、 **[一括で開始]** を選択します。
 
-2. ソース データベースに対するすべての受信トランザクションを必ず停止してください。**[保留中の変更]** カウンターが **0** を示すまで待ってください。
+2. ソース データベースに対するすべての受信トランザクションを必ず停止してください。 **[保留中の変更]** カウンターが **0** を示すまで待ってください。
 
    ![一括で開始](media/tutorial-oracle-azure-postgresql-online/dms-start-cutover.png)
 
-3. **[確認]** を選択したら、**[適用]** を選択します。
+3. **[確認]** を選択したら、 **[適用]** を選択します。
 4. データベースの移行状態に **[完了]** が表示されたら、アプリケーションを新しいターゲット Azure Database for PostgreSQL インスタンスに接続します。
 
  > [!NOTE]

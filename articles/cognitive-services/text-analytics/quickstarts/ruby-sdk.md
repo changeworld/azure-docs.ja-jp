@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 05/08/2019
 ms.author: tasharm
-ms.openlocfilehash: 7def77c0b1cf99fcc2cee77a28782dddaf2ac45d
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 688887826fa803b616ca737bc8558aa17ed80e37
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65992928"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66297766"
 ---
 # <a name="quickstart-call-the-text-analytics-service-using-the-ruby-sdk"></a>クイック スタート:Ruby SDK を使用して Text Analytics サービスを呼び出す
 
@@ -28,18 +28,12 @@ API の技術ドキュメントについては、[API の定義](//go.microsoft.
 
 ## <a name="prerequisites"></a>前提条件
 
+* [Ruby 2.5.5 以降](https://www.ruby-lang.org/)
+* Text Analytics [SDK for Ruby](https://rubygems.org/gems/azure_cognitiveservices_textanalytics)
+ 
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
 また、サインアップ時に生成される[エンドポイントとアクセス キー](../How-tos/text-analytics-how-to-access-key.md)が必要です。 
-
-お使いのシステム アーキテクチャに基づいた Ruby 2.5.5 バージョンを[ここ](https://rubyinstaller.org/downloads/)からダウンロードしてインストールします。
-
-> [!Tip]
->  Ruby で直接、[REST API エンドポイント](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9)を呼び出すことができますが、`Microsoft.Azure.CognitiveServices.TextAnalytics` SDK を使用すれば、JSON をシリアル化および逆シリアル化せずに、サービスを簡単に呼び出すことができます。
->
-> 便利なリンク:
-> - [Ruby gem ページ](https://rubygems.org/gems/azure_cognitiveservices_textanalytics)
-> - [GitHub の SDK コード](https://github.com/Azure/azure-sdk-for-ruby/tree/master/data/azure_cognitiveservices_textanalytics/lib/v2.1/generated/azure_cognitiveservices_textanalytics)
 
 <a name="RubyProject"></a>
 

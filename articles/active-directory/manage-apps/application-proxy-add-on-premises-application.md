@@ -12,12 +12,12 @@ ms.date: 05/21/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ae8b9709e7294e8cb7819afe3ec9f6eb5a06427
-ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
+ms.openlocfilehash: 7110d7004ae9be58bb150674d516692049507608
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66015422"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66299079"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>チュートリアル:Azure Active Directory のアプリケーション プロキシを使用してリモート アクセスするためのオンプレミス アプリケーションを追加する
 
@@ -51,9 +51,9 @@ Azure Active Directory (Azure AD) のアプリケーション プロキシ サ�
 
 2. コネクタ サーバーと Web アプリケーション サーバーは、同じ Active Directory ドメインに属しているか、または信頼する側のドメインの範囲である必要があります。 統合 Windows 認証 (IWA) および Kerberos 制約付き委任 (KCD) でのシングル サインオン (SSO) を使用するには、サーバーを同じドメインまたは信頼する側のドメインに配置する必要があります。 コネクタ サーバーと Web アプリケーション サーバーが別の Active Directory ドメイン内にある場合は、シングル サインオン用にリソースベースの委任を使用する必要があります。 詳しくは、「[KCD for single sign-on with Application Proxy](application-proxy-configure-single-sign-on-with-kcd.md)」 (アプリケーション プロキシを使用したシングル サインオンのための KCD) をご覧ください。
 
-#### <a name="software-requirements"></a>ソフトウェア要件
+#### <a name="tls-requirements"></a>TLS の要件
 
-アプリケーション プロキシ コネクタをインストールするには、Windows コネクタ サーバーで TLS 1.2 が有効になっている必要があります。 1.5.612.0 以下のバージョンを使用した既存のコネクタは、今後さらなる通知があるまで、以前のバージョンの TLS で引き続き使用できます。 
+アプリケーション プロキシ コネクタをインストールするには、Windows コネクタ サーバーで TLS 1.2 が有効になっている必要があります。
 
 TLS 1.2 を有効にするには、次の手順に従います。
 
@@ -67,6 +67,9 @@ TLS 1.2 を有効にするには、次の手順に従います。
     ```
 
 2. サーバーを再起動します。
+
+>[!Important] 
+> お客様にクラス最高の暗号化を提供するために、TLS 1.2 プロトコルへのアクセスのみに制限するように、Application Proxy サービスを更新しています。 お客様の準備状況に基づいて、TLS 1.2 プロトコルのみを使用しているお客様に変更が徐々にロールアウトされ、この変更による影響は生じません。 TLS 1.0 および 1.1 の廃止は 2019 年 8 月 31 日に完了し、お客様にはこの変更に備えるための事前通知を送信します。 この変更に備えるために、すべてのクライアントとサーバーおよびブラウザーとサーバーの組み合わせが、TLS 1.2 を使用して Application Proxy サービスへの接続を維持するように更新されていることを確認してください。 これらには、Application Proxy を通じて公開されたアプリケーションにアクセスするためにユーザーが使用しているクライアントも含まれます。 便利な参考資料とリソースについては、「[Office 365 での TLS 1.2 に対する準備](https://support.microsoft.com/help/4057306/preparing-for-tls-1-2-in-office-365)」を参照してください。
 
 ## <a name="prepare-your-on-premises-environment"></a>オンプレミスの環境を準備する
 

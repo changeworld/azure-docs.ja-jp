@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 03/25/2019
-ms.openlocfilehash: 3959eb789102cd3d54fc7bab32e585b3c09d897b
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 7870322746d8cb647547e5c85036579611ac3292
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65792148"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66303304"
 ---
 # <a name="quickstart-use-net-and-c-in-visual-studio-to-connect-to-and-query-an-azure-sql-database"></a>クイック スタート:Visual Studio で .NET と C# を使用して Azure SQL データベースに接続してクエリを実行する
 
@@ -43,7 +43,7 @@ ms.locfileid: "65792148"
   > [!IMPORTANT]
   > この記事のスクリプトは、Adventure Works データベースを使用するように記述されています。 マネージド インスタンスの場合は、Adventure Works データベースをインスタンス データベースにインポートするか、Wide World Importers データベースを使用するようにこの記事のスクリプトを修正する必要があります。
 
-- [Visual Studio 2017](https://www.visualstudio.com/downloads/) Community、Professional、または Enterprise エディション。
+- [Visual Studio 2019](https://www.visualstudio.com/downloads/) Community、Professional、または Enterprise エディション。
 
 ## <a name="get-sql-server-connection-information"></a>SQL サーバーの接続情報を取得する
 
@@ -57,23 +57,23 @@ Azure SQL データベースに接続するために必要な接続情報を取�
 
 ## <a name="create-code-to-query-the-sql-database"></a>SQL データベースに対してクエリを実行するコードを作成する
 
-1. Visual Studio で、**[ファイル]** > **[新規]** > **[プロジェクト]** の順に選択します。 
+1. Visual Studio で、 **[ファイル]**  >  **[新規]**  >  **[プロジェクト]** の順に選択します。 
    
-1. **[新しいプロジェクト]** ダイアログで、**[Visual C#]**、**[コンソール アプリ (.NET Framework)]** の順に選択します。
+1. **[新しいプロジェクト]** ダイアログで、 **[Visual C#]** 、 **[コンソール アプリ (.NET Framework)]** の順に選択します。
    
-1. プロジェクトの名前に「*sqltest*」と入力して、**[OK]** を選択します。 新しいプロジェクトが作成されます。 
+1. プロジェクトの名前に「*sqltest*」と入力して、 **[OK]** を選択します。 新しいプロジェクトが作成されます。 
    
-1. **[プロジェクト]** > **[NuGet パッケージの管理]** の順に選択します。 
+1. **[プロジェクト]**  >  **[NuGet パッケージの管理]** の順に選択します。 
    
 1. **[NuGet パッケージ マネージャー]** で **[参照]** タブを選択し、**System.Data.SqlClient** を検索して選択します。
    
 1. **[System.Data.SqlClient]** ページで **[インストール]** を選択します。 
-   - プロンプトが表示されたら、**[OK]** を選択してインストールを続行します。 
+   - プロンプトが表示されたら、 **[OK]** を選択してインストールを続行します。 
    - **[ライセンスへの同意]** ウィンドウが表示された場合は **[同意する]** を選択します。
    
-1. インストールが完了すると、**[NuGet パッケージ マネージャー]** を閉じることができます。 
+1. インストールが完了すると、 **[NuGet パッケージ マネージャー]** を閉じることができます。 
    
-1. コード エディターで **Program.cs** の内容を次のコードに置き換えます。 `<server>`、`<username>`、`<password>`、`<database>` の値に置き換えます。
+1. コード エディターで **Program.cs** の内容を次のコードに置き換えます。 `<server>`、`<username>`、`<password>`、`<database>` は実際の値に置き換えます。
    
    >[!IMPORTANT]
    >この例のコードでは、サンプル データ AdventureWorksLT を使用します。これは、データベースの作成時にソースとして選択できます。 データベースに別のデータがある場合は、SELECT クエリで独自のデータベースからのテーブルを使用します。 
@@ -134,7 +134,7 @@ Azure SQL データベースに接続するために必要な接続情報を取�
 
 ## <a name="run-the-code"></a>コードの実行
 
-1. アプリを実行するには、**[デバッグ]** > **[デバッグの開始]** の順に選択するか、ツールバーの **[開始]** を選択するか、**F5** キーを押します。
+1. アプリを実行するには、 **[デバッグ]**  >  **[デバッグの開始]** の順に選択するか、ツールバーの **[開始]** を選択するか、**F5** キーを押します。
 1. データベースの上位 20 のカテゴリ/製品行が返されていることを確認し、アプリ ウィンドウを閉じます。
 
 ## <a name="next-steps"></a>次の手順

@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 04/19/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 28ba4397ca5a5fd3c281555238fc7eec8a82943d
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: b0e48a0db63eded9e9c4921d33b03af39656ce0d
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65413670"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66299259"
 ---
 # <a name="tutorial-use-feature-flags-in-a-net-core-app"></a>チュートリアル:.NET Core アプリ内で機能フラグを使用する
 
@@ -27,7 +27,7 @@ ms.locfileid: "65413670"
 
 「[ASP.NET Core アプリに機能フラグを追加する ](./quickstart-feature-flag-aspnet-core.md)」クイック スタートでは、ASP.NET Core アプリケーションに機能フラグを追加する複数の方法が示されています。 このチュートリアルでは、これらの詳細について説明します。 完全なリファレンスについては、[ASP.NET Core の機能管理に関するドキュメント](https://go.microsoft.com/fwlink/?linkid=2091410)をご覧ください。
 
-このチュートリアルでは、以下の内容を学習します。
+このチュートリアルで学習する内容は次のとおりです。
 
 > [!div class="checklist"]
 > * アプリケーションの主要部分に機能フラグを追加して、機能の可用性を制御します。
@@ -66,7 +66,7 @@ public class Startup
 }
 ```
 
-機能フラグでフィルターを使用する場合は、追加のライブラリを含めて、それを登録する必要があります。 次の例は、**"PercentageFilter"** という組み込みの機能フィルターを使用する方法を示しています。
+機能フラグでフィルターを使用する場合は、追加のライブラリを含めて、それを登録する必要があります。 次の例は、 **"PercentageFilter"** という組み込みの機能フィルターを使用する方法を示しています。
 
 ```csharp
 using Microsoft.FeatureManagement;
@@ -262,6 +262,6 @@ app.UseForFeature(featureName, appBuilder => {
 
 このチュートリアルでは、`Microsoft.FeatureManagement` ライブラリを使用して ASP.NET Core アプリケーションに機能フラグを実装する方法を説明しました。 ASP.NET Core と App Configuration での機能管理サポートの詳細については、次のリソースをご覧ください。
 
-* [ASP.NET Core の機能フラグのサンプル コード]()
-* [Microsoft.FeatureManagement のドキュメント]()
+* [ASP.NET Core の機能フラグのサンプル コード](/azure/azure-app-configuration/quickstart-feature-flag-aspnet-core)
+* [Microsoft.FeatureManagement のドキュメント](https://docs.microsoft.com/dotnet/api/microsoft.featuremanagement)
 * [機能フラグを管理する](./manage-feature-flags.md)

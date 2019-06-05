@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/25/2019
 ms.author: kumud
-ms.openlocfilehash: a947b5983f4a7d58878fc15785cfbcbcbba7f226
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 698714990b9b34567d918d3b8c536bc3e39d66b8
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66156196"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66257692"
 ---
 # <a name="quickstart-create-a-load-balancer-to-load-balance-vms-using-azure-cli"></a>クイック スタート:Azure CLI を使用して VM の負荷を分散するロード バランサーを作成する
 
@@ -146,7 +146,7 @@ CLI をローカルにインストールして使用する場合、このチュ�
 ```
 ### <a name="create-nics"></a>NIC の作成
 
-[az network nic create](/cli/azure/network/nic#az-network-nic-create) を使用して 3 つのネットワーク インターフェイスを作成し、それらをパブリック IP アドレスとネットワーク セキュリティ グループに関連付けます。 
+[az network nic create](/cli/azure/network/nic#az-network-nic-create) を使用して 2 つのネットワーク インターフェイスを作成し、それらをパブリック IP アドレスとネットワーク セキュリティ グループに関連付けます。 
 
 ```azurecli-interactive
 for i in `seq 1 2`; do
@@ -164,7 +164,7 @@ done
 
 ## <a name="create-backend-servers"></a>バックエンド サーバーの作成
 
-この例では、ロード バランサーのバックエンド サーバーとして使用する 3 つの仮想マシンを作成します。 ロード バランサーが正常に作成されたことを確認するには、仮想マシンに NGINX もインストールします。
+この例では、ロード バランサーのバックエンド サーバーとして使用する 2 つの仮想マシンを作成します。 ロード バランサーが正常に作成されたことを確認するには、仮想マシンに NGINX もインストールします。
 
 ### <a name="create-an-availability-set"></a>可用性セットを作成する
 

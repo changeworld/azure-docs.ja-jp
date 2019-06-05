@@ -6,20 +6,20 @@ author: hrasheed-msft
 ms.reviewer: jasonh
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
-ms.date: 11/06/2018
+ms.date: 05/24/2019
 ms.author: hrasheed
-ms.openlocfilehash: 87efac96aa0120bfcc804f7a2a49a5ac3da1036b
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: ed6a8f83d2ef31513aeadbc6741dd77c30c30070
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64719073"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66252880"
 ---
 # <a name="tutorial-build-an-apache-spark-machine-learning-application-in-hdinsight"></a>チュートリアル:HDInsight で Apache Spark 機械学習アプリケーションを作成する 
 
 このチュートリアルでは、[Jupyter Notebook](https://jupyter.org/) を使用して、Azure HDInsight 用の [Apache Spark](https://spark.apache.org/) 機械学習アプリケーションを作成する方法について説明します。 
 
-[MLlib](https://spark.apache.org/docs/1.1.0/mllib-guide.html) は、分類、回帰、クラスタリング、協調フィルタリング、次元縮小、基になっている最適化プリミティブなど、一般的な学習アルゴリズムとユーティリティで構成された Spark のスケーラブル Machine Learning ライブラリです。
+[MLlib](https://spark.apache.org/docs/latest/ml-guide.html) は、分類、回帰、クラスタリング、協調フィルタリング、次元縮小、基になっている最適化プリミティブなど、一般的な学習アルゴリズムとユーティリティで構成された Spark のスケーラブル Machine Learning ライブラリです。
 
 このチュートリアルでは、以下の内容を学習します。
 > [!div class="checklist"]
@@ -27,15 +27,15 @@ ms.locfileid: "64719073"
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
-## <a name="prerequisites"></a>前提条件:
+## <a name="prerequisites"></a>前提条件
 
-次の項目が必要です。
+* HDInsight での Apache Spark クラスター。 [Apache Spark クラスターの作成](./apache-spark-jupyter-spark-sql-use-portal.md)に関するページを参照してください。
 
-* 「[Azure HDInsight での Apache Spark クラスターの作成](apache-spark-jupyter-spark-sql.md)」を完了します。
+* HDInsight の Spark での Jupyter Notebook の使用方法を熟知していること。 詳細については、[HDInsight の Apache Spark を使用したデータの読み込みとクエリの実行](./apache-spark-load-data-run-query.md)に関するページを参照してください。
 
 ## <a name="understand-the-data-set"></a>データ セットを理解する
 
-このアプリケーションでは、すべてのクラスターにおいて既定で利用可能なサンプル HVAC.csv データを使用します。 このファイルは、**\HdiSamples\HdiSamples\SensorSampleData\hvac** にあります。 データは、HVAC (Heating, Ventilating, Air Conditioning: 冷暖房空調設備) システムがインストールされているいくつかのビルの目標温度と実際の温度を示します。 **[System]** 列はシステム ID を表し、**[SystemAge]** 列は HVAC システムがビルに設置されてからの年数を表します。 データを使用して、システム ID とシステム使用年数から得られる目標温度を基にしてビルが暑すぎるか寒すぎるかを予測できます。
+このアプリケーションでは、すべてのクラスターにおいて既定で利用可能なサンプル HVAC.csv データを使用します。 ファイルは `\HdiSamples\HdiSamples\SensorSampleData\hvac` にあります。 データは、HVAC (Heating, Ventilating, Air Conditioning: 冷暖房空調設備) システムがインストールされているいくつかのビルの目標温度と実際の温度を示します。 **[System]** 列はシステム ID を表し、 **[SystemAge]** 列は HVAC システムがビルに設置されてからの年数を表します。 データを使用して、システム ID とシステム使用年数から得られる目標温度を基にしてビルが暑すぎるか寒すぎるかを予測できます。
 
 ![Spark Machine Learning サンプルで使用されるデータのスナップショット](./media/apache-spark-ipython-notebook-machine-learning/spark-machine-learning-understand-data.png "Spark Machine Learning サンプルで使用されるデータのスナップショット")
 
@@ -60,6 +60,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     from pyspark.mllib.regression import LabeledPoint
     from numpy import array
     ```
+
 3. データ (hvac.csv) を読み込み、解析し、それを使用してモデルをトレーニングします。 
 
     ```PySpark
@@ -96,7 +97,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     pipeline = Pipeline(stages=[tokenizer, hashingTF, lr])
     ```
 
-    パイプラインとそのしくみの詳細については、<a href="https://spark.apache.org/docs/latest/ml-guide.html#how-it-works" target="_blank">Apache Spark 機械学習パイプライン</a>に関するページを参照してください。
+    パイプラインとそのしくみの詳細については、[Apache Spark 機械学習パイプライン](https://spark.apache.org/docs/latest/ml-pipeline.html)に関するページを参照してください。
 
 5. パイプラインをトレーニング ドキュメントに適合させます。
    
@@ -187,12 +188,7 @@ HDInsight の Apache Spark クラスターには、Anaconda ライブラリが�
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、以下の内容を学習しました。
-
-* Apache Spark 機械学習アプリケーションを開発する
-
-次のチュートリアルに進み、Spark ジョブに IntelliJ IDEA を使用する方法を学習してください。 
+このチュートリアルでは、Jupyter Notebook を使用して、Azure HDInsight 用の Apache Spark 機械学習アプリケーションを作成する方法について説明しました。 次のチュートリアルに進み、Spark ジョブに IntelliJ IDEA を使用する方法を学習してください。 
 
 > [!div class="nextstepaction"]
 > [IntelliJ を使用した Scala Maven アプリケーションの作成](./apache-spark-create-standalone-application.md)
-

@@ -10,12 +10,12 @@ ms.date: 03/24/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 82da44409c4500ff097805efec33cec8cf6bbedd
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 6ec429bc7c1598e947b798c30e7992e3d357d00c
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64575621"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66303827"
 ---
 # <a name="tutorial-develop-and-deploy-a-python-iot-edge-module-for-linux-devices"></a>チュートリアル:Linux デバイス用の Python IoT Edge モジュールを開発およびデプロイする
 
@@ -40,7 +40,7 @@ Azure IoT Edge モジュールを使用して、ビジネス ロジックを実�
 
 次の表を使用し、Python モジュールを開発して Linux にデプロイする際のオプションをご確認ください。 
 
-| Python | Visual Studio Code | Visual Studio 2017 | 
+| Python | Visual Studio Code | Visual Studio 2017/2019 | 
 | - | ------------------ | ------------------ |
 | **Linux AMD64** | ![Linux AMD64 の Python モジュールに VS Code を使用する](./media/tutorial-c-module/green-check.png) |  |
 | **Linux ARM32** | ![Linux ARM32 の Python モジュールに VS Code を使用する](./media/tutorial-c-module/green-check.png) |  |
@@ -224,7 +224,7 @@ Python パッケージ **cookiecutter** を使用して、ソリューション�
 
 ## <a name="deploy-modules-to-device"></a>モジュールをデバイスにデプロイする
 
-IoT Edge デバイスにモジュール プロジェクトをデプロイするには、Visual Studio Code エクスプローラーと Azure IoT Tools 拡張機能を使用します。 シナリオ用の配置マニフェストである **deployment.json** ファイルは、既に config フォルダーに用意されています。 ここで行う必要があるのは、デプロイを受け取るデバイスの選択だけです。
+IoT Edge デバイスにモジュール プロジェクトをデプロイするには、Visual Studio Code エクスプローラーと Azure IoT Tools 拡張機能を使用します。 シナリオ用の配置マニフェストである **deployment.json** ファイルは、config フォルダーに既に用意されています。 ここで行う必要があるのは、デプロイを受け取るデバイスの選択だけです。
 
 IoT Edge デバイスが稼働していることを確認します。
 
@@ -242,7 +242,7 @@ IoT Edge デバイスに配置マニフェストを適用すると、デバイ�
 
 IoT Edge デバイスのステータスは、Visual Studio Code エクスプローラーの **[Azure IoT Hub Devices]\(Azure IoT Hub デバイス\)** セクションを使用して確認できます。 デバイスの詳細を展開すると、デプロイされて実行中のモジュールが一覧表示されます。
 
-1. Visual Studio Code エクスプローラーで、自分の IoT Edge デバイスの名前を右クリックして、 **[Start Monitoring D2C Messages]\(D2C メッセージの監視を開始する\)** を選択します。
+1. Visual Studio Code エクスプローラーで、IoT Edge デバイスの名前を右クリックし、 **[Start Monitoring Built-in Event Endpoint]\(組み込みイベント エンドポイントの監視を開始する\)** を選択します。
 
 2. 自分の IoT ハブに到着するメッセージを表示します。 IoT Edge デバイスは、新しいデプロイを受け取ってすべてのモジュールを開始する必要があるため、メッセージの到着にはしばらく時間がかかる場合があります。 次に、PythonModule コードに加えられた変更により、マシンの温度が 25 度に達するまで待機してから、メッセージが送信されます。 また、その温度しきい値に達したすべてのメッセージにメッセージ型 **Alert** も追加されます。 
 
@@ -260,7 +260,7 @@ IoT Edge デバイスのステータスは、Visual Studio Code エクスプロ�
 
 5. モジュール ツイン編集ウィンドウ内の任意の場所を右クリックして、 **[Update module twin]\(モジュール ツインの更新\)** を選択します。 
 
-5. 到着する device-to-cloud メッセージを監視します。 新しいしきい値の温度に達するまで、メッセージは停止するはずです。 
+6. 到着する device-to-cloud メッセージを監視します。 新しいしきい値の温度に達するまで、メッセージは停止するはずです。 
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ 
 
@@ -269,7 +269,6 @@ IoT Edge デバイスのステータスは、Visual Studio Code エクスプロ�
 それ以外の場合は、課金されないようにするために、ローカル構成と、この記事で使用した Azure リソースを削除してもかまいません。 
 
 [!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
-
 
 ## <a name="next-steps"></a>次の手順
 

@@ -10,12 +10,12 @@ ms.author: tamram
 ms.reviewer: artek
 ms.custom: mvc
 ms.subservice: blobs
-ms.openlocfilehash: 24869981595cd68eb833f7b176e17a2683127945
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: cbf6409efa2fbb56500c6919edc6c741c4a2c45a
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65787924"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66306756"
 ---
 # <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>チュートリアル:Blob Storage を使用して高可用性アプリケーションを作成する
 
@@ -40,7 +40,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
-* 次のワークロードを使って、[Visual Studio 2017](https://www.visualstudio.com/downloads/) をインストールします。
+* 次のワークロードを使って、[Visual Studio 2019](https://www.visualstudio.com/downloads/) をインストールします。
   - **Azure 開発**
 
   ![Azure 開発 ([Web & Cloud]\(Web とクラウド\) 以下)](media/storage-create-geo-redundant-storage/workloads.png)
@@ -82,6 +82,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    | **デプロイ モデル** | リソース マネージャー  | Resource Manager には最新の機能が含まれています。|
    | **アカウントの種類** | StorageV2 | アカウントの種類の詳細については、「[ストレージ アカウントの種類](../common/storage-introduction.md#types-of-storage-accounts)」を参照してください |
    | **パフォーマンス** | Standard | このサンプル シナリオでは、標準で十分です。 |
+   | **レプリケーション**| 読み取りアクセス geo 冗長ストレージ (RA-GRS) | サンプルが動作するには、この設定が必要です。 |
+   |**サブスクリプション** | 該当するサブスクリプション |サブスクリプションの詳細については、[サブスクリプション](https://account.windowsazure.com/Subscriptions)に関するページを参照してください。 |
    | **レプリケーション**| 読み取りアクセス geo 冗長ストレージ (RA-GRS) | サンプルが動作するには、この設定が必要です。 |
    |**サブスクリプション** | 該当するサブスクリプション |サブスクリプションの詳細については、[サブスクリプション](https://account.azure.com/Subscriptions)に関するページを参照してください。 |
    |**ResourceGroup** | myResourceGroup |有効なリソース グループ名については、[名前付け規則と制限](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。 |
@@ -194,7 +196,7 @@ AZURE_STORAGE_ACCOUNT_ACCESS_KEY=<replace with your storage account access key>
 
 この情報は、Azure portal で目的のストレージ アカウントに移動し、 **[設定]** セクションの **[アクセス キー]** を選択すると確認できます。
 
-また、必要な依存関係をインストールする必要があります。 そのためには、コマンド プロンプトを開いてサンプル フォルダーに移動し、「`npm install`」と入力します。
+必要な依存関係をインストールします。 そのためには、コマンド プロンプトを開いてサンプル フォルダーに移動し、「`npm install`」と入力します。
 
 ---
 
@@ -231,11 +233,11 @@ Visual Studio で **F5** キーを押すか **[スタート]** を選択して�
 
 このサンプルでは、既定のディレクトリにテスト ファイルが作成されます。 Windows ユーザーの場合、このディレクトリは **AppData\Local\Temp** です。このサンプルでは、次に、ユーザーが入力できる次のコマンド オプションが表示されます。
 
-- BLOB の PUT 操作を実行するには、「**P**」と入力します。これにより、一時ファイルがストレージ アカウントにアップロードされます。
-- BLOB の一覧表示操作を実行するには、「**L**」と入力します。これにより、現在コンテナー内にある BLOB が一覧表示されます。
-- BLOB の取得操作を実行するには、「**G**」と入力します。これにより、ストレージ アカウントからローカル コンピューターにファイルがダウンロードされます。
-- BLOB の削除操作を実行するには、「**D**」と入力します。これにより、ストレージ アカウントから BLOB が削除されます。
-- サンプルを閉じるには、「**E**」と入力します。これにより、サンプルによって作成されたすべてのリソースも削除されます。
+- BLOB の PUT 操作を実行するには、「**P**」と入力します。このコマンドにより、一時ファイルがストレージ アカウントにアップロードされます。
+- BLOB の一覧表示操作を実行するには、「**L**」と入力します。このコマンドにより、現在コンテナー内にある BLOB が一覧表示されます。
+- BLOB の取得操作を実行するには、「**G**」と入力します。このコマンドにより、ストレージ アカウントからローカル コンピューターにファイルがダウンロードされます。
+- BLOB の削除操作を実行するには、「**D**」と入力します。このコマンドにより、ストレージ アカウントから BLOB が削除されます。
+- サンプルを閉じるには、「**E**」と入力します。このコマンドにより、サンプルによって作成されたすべてのリソースも削除されます。
 
 この例は、アプリケーションを Windows 上で実行した場合の出力を示しています。
 

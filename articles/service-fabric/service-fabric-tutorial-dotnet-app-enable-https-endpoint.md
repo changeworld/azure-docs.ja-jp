@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/17/2019
 ms.author: aljo
 ms.custom: mvc
-ms.openlocfilehash: a8f4e89adec0a6be001f3e6d6df1a252677c5916
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 48dd09bf70e99adc250027df872266bea39a786b
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66158131"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66302402"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>チュートリアル:Kestrel を使用して ASP.NET Core Web API フロントエンド サービスに HTTPS エンドポイントを追加する
 
@@ -52,7 +52,7 @@ ms.locfileid: "66158131"
 このチュートリアルを開始する前に
 
 * Azure サブスクリプションを持っていない場合は[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成する
-* [Visual Studio 2017](https://www.visualstudio.com/) バージョン 15.5 以降をインストールし、**Azure 開発**ワークロードと **ASP.NET および Web 開発**ワークロードをインストールします。
+* [Visual Studio 2019 のバージョン 15.5 以降](https://www.visualstudio.com/)をインストールし、**Azure 開発**ワークロードと **ASP.NET および Web 開発**ワークロードをインストールします。
 * [Service Fabric SDK をインストール](service-fabric-get-started.md)します。
 
 ## <a name="obtain-a-certificate-or-create-a-self-signed-development-certificate"></a>証明書を取得する、または開発用の自己署名証明書を作成する
@@ -185,7 +185,7 @@ private X509Certificate2 GetCertificateFromStore()
 
 ## <a name="give-network-service-access-to-the-certificates-private-key"></a>証明書の秘密キーへのアクセス権を "ネットワーク サービス" に与える
 
-前の手順で、証明書を開発用コンピューターの `Cert:\LocalMachine\My` ストアにインポートしました。  これに加えて、サービスを実行しているアカウント (既定では "ネットワーク サービス") に証明書の秘密キーへのアクセス権を明示的に与える必要があります。 この操作は (certlm.msc ツールを使用して) 手動で行うことができますが、サービス マニフェストの **SetupEntryPoint** に[スタートアップ スクリプトを構成](service-fabric-run-script-at-service-startup.md)して自動的に PowerShell スクリプトを実行することをお勧めします。
+前の手順で、証明書を開発用コンピューターの `Cert:\LocalMachine\My` ストアにインポートしました。  ここで、サービスを実行しているアカウント (既定では "ネットワーク サービス") に証明書の秘密キーへのアクセス権を明示的に与える必要があります。 この手順は (certlm.msc ツールを使用して) 手動で行うことができますが、サービス マニフェストの **SetupEntryPoint** に[スタートアップ スクリプトを構成](service-fabric-run-script-at-service-startup.md)して自動的に PowerShell スクリプトを実行することをお勧めします。
 
 ### <a name="configure-the-service-setup-entry-point"></a>サービス セットアップ エントリ ポイントを構成する
 
@@ -230,7 +230,7 @@ private X509Certificate2 GetCertificateFromStore()
 
 ### <a name="add-the-batch-and-powershell-setup-scripts"></a>バッチ スクリプトと PowerShell セットアップ スクリプトを追加する
 
-**SetupEntryPoint** ポイントから PowerShell を実行するには、PowerShell ファイルを指し示すバッチ ファイルで PowerShell.exe を実行します。 最初に、バッチ ファイルをサービス プロジェクトに追加します。  ソリューション エクスプローラーで、**[VotingWeb]** を右クリックし、**[追加]**->**[新しい項目]** の順に選択し、"Setup.bat" という名前の新しいファイルを追加します。  *Setup.bat* ファイルを編集して、次のコマンドを追加します。
+**SetupEntryPoint** ポイントから PowerShell を実行するには、PowerShell ファイルを指し示すバッチ ファイルで PowerShell.exe を実行します。 最初に、バッチ ファイルをサービス プロジェクトに追加します。  ソリューション エクスプローラーで、 **[VotingWeb]** を右クリックし、 **[追加]** -> **[新しい項目]** の順に選択し、"Setup.bat" という名前の新しいファイルを追加します。  *Setup.bat* ファイルを編集して、次のコマンドを追加します。
 
 ```bat
 powershell.exe -ExecutionPolicy Bypass -Command ".\SetCertAccess.ps1"
@@ -240,7 +240,7 @@ powershell.exe -ExecutionPolicy Bypass -Command ".\SetCertAccess.ps1"
 
 ![ファイルのプロパティを設定する][image1]
 
-ソリューション エクスプローラーで、**[VotingWeb]** を右クリックし、**[追加]**->**[新しい項目]** の順に選択し、"SetCertAccess.ps1" という名前の新しいファイルを追加します。  *SetCertAccess.ps1* ファイルを編集して、次のスクリプトを追加します。
+ソリューション エクスプローラーで、 **[VotingWeb]** を右クリックし、 **[追加]** -> **[新しい項目]** の順に選択し、"SetCertAccess.ps1" という名前の新しいファイルを追加します。  *SetCertAccess.ps1* ファイルを編集して、次のスクリプトを追加します。
 
 ```powershell
 $subject="mytestcert"
@@ -354,11 +354,11 @@ if ($cert -eq $null)
 
 アプリケーションを Azure にデプロイする前に、すべてのリモート クラスター ノードの `Cert:\LocalMachine\My` ストアに証明書をインストールします。  サービスは、クラスターの別のノードに移動することができます。  フロントエンド Web サービスがクラスター ノードで開始されると、スタートアップ スクリプトによって証明書が参照され、アクセス許可が構成されます。
 
-最初に、証明書を PFX ファイルにエクスポートします。 certlm.msc アプリケーションを開き、**[個人]**>**[証明書]** の順に移動します。  *[mytestcert]* 証明書を右クリックし、**[すべてのタスク]**>**[エクスポート]** の順に選択します。
+最初に、証明書を PFX ファイルにエクスポートします。 certlm.msc アプリケーションを開き、 **[個人]** > **[証明書]** の順に移動します。  *[mytestcert]* 証明書を右クリックし、 **[すべてのタスク]** > **[エクスポート]** の順に選択します。
 
 ![証明書をエクスポートします。][image4]
 
-エクスポート ウィザードで、**[はい、秘密キーをエクスポートします]** を選択し、Personal Information Exchange (PFX) 形式を選択します。  ファイルを *C:\Users\sfuser\votingappcert.pfx* にエクスポートします。
+エクスポート ウィザードで、 **[はい、秘密キーをエクスポートします]** を選択し、Personal Information Exchange (PFX) 形式を選択します。  ファイルを *C:\Users\sfuser\votingappcert.pfx* にエクスポートします。
 
 次に、[Add-AzServiceFabricApplicationCertificate](/powershell/module/az.servicefabric/Add-azServiceFabricApplicationCertificate) コマンドレットを使用して、リモート クラスターに証明書をインストールします。
 
@@ -429,7 +429,7 @@ $slb | Set-AzLoadBalancer
 
 ## <a name="deploy-the-application-to-azure"></a>Azure にアプリケーションを展開する
 
-すべてのファイルを保存します。"デバッグ" から "リリース" に切り替えた後、F6 キーを押してリビルドします。  ソリューション エクスプローラーで、**[Voting]** を右クリックし、**[発行]** を選択します。 [クラスターへのアプリケーションのデプロイ](service-fabric-tutorial-deploy-app-to-party-cluster.md)に関するページで作成したクラスターの接続エンドポイントを選択するか、別のクラスターを選択します。  **[発行]** をクリックして、リモート クラスターにアプリケーションを発行します。
+すべてのファイルを保存します。"デバッグ" から "リリース" に切り替えた後、F6 キーを押してリビルドします。  ソリューション エクスプローラーで、 **[Voting]** を右クリックし、 **[発行]** を選択します。 [クラスターへのアプリケーションのデプロイ](service-fabric-tutorial-deploy-app-to-party-cluster.md)に関するページで作成したクラスターの接続エンドポイントを選択するか、別のクラスターを選択します。  **[発行]** をクリックして、リモート クラスターにアプリケーションを発行します。
 
 アプリケーションがデプロイされたら、Web ブラウザーを開き、[https://mycluster.region.cloudapp.azure.com:443](https://mycluster.region.cloudapp.azure.com:443) に移動します (クラスターの接続エンドポイントで URL を更新します)。 自己署名証明書を使用している場合、この Web サイトのセキュリティが PC によって信頼されていないことを示す警告が表示されます。  Web ページに進みます。
 
