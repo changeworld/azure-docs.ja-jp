@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: acd100ccc3aafc2de1f2c7970ff9437c92156b17
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: ea65120a2a735477d048b9012e160e0cdafe8835
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65861530"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66253066"
 ---
 # <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>チュートリアル: ログイン画面からの Azure AD パスワード リセット
 
@@ -29,7 +29,7 @@ ms.locfileid: "65861530"
 
 ## <a name="prerequisites"></a>前提条件
 
-* Windows 10 バージョン April 2018 Update 以降を実行している必要があります。また、次のいずれかのデバイスを使用する必要があります。
+* Windows 10 バージョン April 2018 Update (v1803) 以降を実行している必要があります。また、次のいずれかのデバイスを使用する必要があります。
    * [Azure AD 参加済み](../device-management-azure-portal.md)または
    * [Hybrid Azure AD 参加済み](../device-management-hybrid-azuread-joined-devices-setup.md)、さらにドメイン コントローラーへのネットワーク接続。
 * Azure AD のパスワード リセットのセルフサービスを有効にする必要があります。
@@ -58,9 +58,9 @@ ms.locfileid: "65861530"
       * **OMA-URI**: `./Vendor/MSFT/Policy/Config/Authentication/AllowAadPasswordReset` に設定します。
       * **データ型**: **整数**に設定します。
       * **値**: **1** に設定します。
-      *  **[OK]**
-   *  **[OK]**
-4.  **[作成]**
+      * **[OK]**
+   * **[OK]**
+4. **[作成]**
 
 ### <a name="assign-a-device-configuration-policy-in-intune"></a>Intune でデバイス構成ポリシーを割り当てる
 
@@ -71,7 +71,7 @@ ms.locfileid: "65861530"
 3. グループの名前を入力し、 **[メンバーシップの種類]** で **[割り当て済み]** を選択します。
    * **[メンバー]** で、ポリシーの適用先となる Azure AD 参加済みの Windows 10 デバイスを選択します。
    * **[選択]** をクリックします。
-4.  **[作成]**
+4. **[作成]**
 
 グループの作成の詳細については、「[Azure Active Directory のグループによるリソースへのアクセス管理](../fundamentals/active-directory-manage-groups.md)」の記事を参照してください。
 
@@ -122,7 +122,7 @@ Hyper-V を使用してこの機能をテストすると、"パスワードの�
 
 * リモート デスクトップからのパスワードのリセットは現在サポートされていません。
 
-1809 より前のバージョンの Windows 10 のポリシーで Ctrl + Alt + Del が求められる場合、"**パスワードのリセット**" は機能しません。
+v1809 より前のバージョンの Windows 10 のポリシーで Ctrl + Alt + Del が求められる場合、**パスワードのリセット**は機能しません。
 
 ロック画面の通知がオフになっている場合、"**パスワードのリセット**" は機能しません。
 
