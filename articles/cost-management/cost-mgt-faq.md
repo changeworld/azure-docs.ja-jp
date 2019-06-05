@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/14/2019
+ms.date: 05/21/2019
 ms.topic: troubleshooting
 ms.service: cost-management
 manager: benshy
 ms.custom: seodec18
-ms.openlocfilehash: 0516c954bd23d5a2e339c5df447a923528e09d93
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 02a03adb128c140343032075ec334cbd6d88729b
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58011798"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66002024"
 ---
 # <a name="frequently-asked-questions-for-cloudyn"></a>Cloudyn に関してよく寄せられる質問
 
@@ -42,7 +42,7 @@ Cloudyn を有効にできるのは、Azure サービス管理者だけです。
 Azure Enterprise Agreement API キーを生成して Cloudyn を設定する前に、次の手順に従って Azure Billing API を有効にする必要があります。
 
 - [企業ユーザー向けの Reporting API の概要](../billing/billing-enterprise-api.md)
-- 「**Enabling data access to the API (API へのデータ アクセスを有効にする)**」の「[Microsoft Azure Enterprise Portal Reporting API](https://ea.azure.com/helpdocs/reportingAPI)」
+- 「**Enabling data access to the API (API へのデータ アクセスを有効にする)** 」の「[Microsoft Azure Enterprise Portal Reporting API](https://ea.azure.com/helpdocs/reportingAPI)」
 
 
 また、部門管理者、アカウント所有者、およびエンタープライズ管理者に、Billing API による "_請求を確認する_" アクセス許可を付与する必要がある場合もあります。
@@ -74,9 +74,9 @@ Azure Enterprise Agreement API キーを生成して Cloudyn を設定する前�
 
 最初に、ユーザー アカウントが*initiallySuspended*する原因となる最も一般的なシナリオを見てみましょうです。
 
-> Admin1 は、Microsoft Cloud ソリューション プロバイダーまたはエンタープライズ契約ユーザーの可能性があります。 彼の組織では、Cloudyn の使用を開始する準備が整いました。  彼は、Microsoft Azure portal で登録し、Cloudyn ポータルにサインインします。 彼は、Cloudyn サービスを登録し、Cloudyn ポータルにサインインする人として、"*プライマリ管理者*" になります。 Admin1 はユーザーアカウントを作成しません。 ただし、Cloudyn ポータルを使用すると、Azure アカウントを作成およびエンティティ階層を設定できます。 Admin1 は、テナント管理者である Admin2 に Cloudyn で登録し、Cloudyn ポータルにサインインするよう通知します。
-> 
-> Admin2 は Azure portal を使用して登録します。 しかし、 Cloudyn ポータルにサインインしようとした時、彼はアカウントの**中断**を示すエラーを受け取ります。 プライマリ管理者の Admin1 に、アカウントの中断が通知されます。 Admin1 は、Admin2 のアカウントをアクティブにし、適したエンティティへの *管理エンティティへのアクセス*を付与して、ユーザーの管理アクセス権とユーザー アカウントをアクティブにするアクセスを許可する必要があります。
+> Admin1 は、Microsoft Cloud ソリューション プロバイダーまたはエンタープライズ契約ユーザーです。 所属の組織では、Cloudyn の使用を開始する準備が整っています。  彼は、Microsoft Azure portal で登録し、Cloudyn ポータルにサインインします。 Admin1 は、Cloudyn サービスを登録し、Cloudyn ポータルにサインインするユーザーである "*プライマリ管理者*" になります。 Admin1 はユーザーアカウントを作成しません。 ただし、Cloudyn ポータルを使用して、Azure アカウントの作成とエンティティ階層の設定を実行できます。 Admin1 は、Cloudyn への登録と Cloudyn ポータルへのサインインが必要であることを、テナント管理者である Admin2 に通知します。
+>
+> Admin2 は Azure portal を使用して登録します。 しかし、Cloudyn ポータルにサインインしようとすると、アカウントが**中断**されていることを示すエラーが表示されます。 プライマリ管理者の Admin1 に、アカウントの中断が通知されます。 Admin1 は、Admin2 のアカウントをアクティブにし、適したエンティティへの *管理エンティティへのアクセス*を付与して、ユーザーの管理アクセス権とユーザー アカウントをアクティブにするアクセスを許可する必要があります。
 
 
 ユーザーのアクセスの許可を要求するアラートを受け取った場合、そのユーザーのアカウントをアクティブにする必要があります。
@@ -84,7 +84,7 @@ Azure Enterprise Agreement API キーを生成して Cloudyn を設定する前�
 ユーザー アカウントをアクティブにするには:
 
 1. Cloudyn の設定に使用した Azure の管理ユーザーのアカウントを使用して Cloudyn にサインインします。 または、管理者アクセスが付与されたユーザー アカウントでサインインします。
-2. 右上にある歯車記号を選択し、**[ユーザー管理]** を選択します。
+2. 右上にある歯車記号を選択し、 **[ユーザー管理]** を選択します。
 3. ユーザーを検索し、鉛筆記号を選択してユーザーを編集します。
 4. **[ユーザーの状態]** で、状態を **[中断]** から **[アクティブ]** に変更します。
 
@@ -112,7 +112,7 @@ Cloudyn にお使いの Azure の資格情報が追加されるまで、アカ�
 
 CSP の場合:
 
-エンティティに CSP のアカウントをさらに追加するには、新しいエンティティを作成するときに、**[エンタープライズ]** の代わりに **[MSP Access]\(MSP アクセス\)** を選択します。 Enterprise Agreement として登録されているアカウントに CSP の資格情報を追加するには、Cloudyn のサポート担当者がそのアカウントの設定を変更する必要がある場合があります。 有料の Azure サブスクライバーの場合は、Azure Portal で新しいサポート要求を作成できます。 **[ヘルプとサポート]** を選択し、**[新しいサポート要求]** を選択します。
+エンティティに CSP のアカウントをさらに追加するには、新しいエンティティを作成するときに、 **[エンタープライズ]** の代わりに **[MSP Access]\(MSP アクセス\)** を選択します。 Enterprise Agreement として登録されているアカウントに CSP の資格情報を追加するには、Cloudyn のサポート担当者がそのアカウントの設定を変更する必要がある場合があります。 有料の Azure サブスクライバーの場合は、Azure Portal で新しいサポート要求を作成できます。 **[ヘルプとサポート]** を選択し、 **[新しいサポート要求]** を選択します。
 
 ## <a name="currency-symbols-in-cloudyn-reports"></a>Cloudyn レポートの通貨記号
 

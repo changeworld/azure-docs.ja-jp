@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.reviewer: sgilley
 ms.author: sgilley
 author: sdgilley
-ms.date: 04/19/2019
-ms.openlocfilehash: cc6c93420e939e90e12b989def491199fd2c6b15
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.date: 05/21/2019
+ms.openlocfilehash: c6c32265e6fc2fc2bb0d6b00d89862e200731a2a
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60007000"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "66016460"
 ---
 # <a name="create-an-azure-machine-learning-service-workspace"></a>Azure Machine Learning service ワークスペースを作成する
 
-Azure Machine Learning service を使用するには、[**Azure Machine Learning service ワークスペース**](concept-azure-machine-learning-architecture.md#workspace)が必要です。  このワークスペースはサービスの最上位リソースであり、作成するすべての成果物を扱うための中心的な場所となります。 
+Azure Machine Learning service を使用するには、[**Azure Machine Learning service ワークスペース**](concept-workspace.md)が必要です。  このワークスペースはサービスの最上位リソースであり、作成するすべての成果物を扱うための中心的な場所となります。 
 
 この記事では、次のいずれかの方法でワークスペースを作成する方法について説明します。 
 * [Azure portal](#portal) インターフェイス
@@ -33,7 +33,7 @@ Azure Machine Learning service を使用するには、[**Azure Machine Learning
 
 ワークスペースを作成すると、次の Azure リソースが自動的に追加されます (リージョンで利用できる場合)。
  
-- [Azure Container Registry](https://azure.microsoft.com/services/container-registry/)
+- [Azure Container Registry](https://azure.microsoft.com/services/container-registry/):コストを最小限に抑えるために、ACR は、デプロイ イメージが作成されるまで**遅延読み込み**されます。
 - [Azure Storage](https://azure.microsoft.com/services/storage/)
 - [Azure Application Insights](https://azure.microsoft.com/services/application-insights/) 
 - [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)
@@ -73,7 +73,7 @@ SDK をインストールする前に、分離された Python 環境を作成�
 
 ### <a name="create-an-isolated-python-environment"></a>分離された Python 環境の作成
 
-1. コマンド ライン ウィンドウを開いて、*myenv* という名前の新しい conda 環境を作成し、Python 3.6.5 をインストールします。 Azure Machine Learning SDK は Python 3.5.2 以降で動作します。ただし、自動化された機械学習コンポーネントは、Python 3.7 で完全には機能しません。  コンポーネントとパッケージがダウンロードされて環境が作成されるまでに数分かかります。
+1. Anaconda Prompt を開いて、*myenv* という名前の新しい conda 環境を作成し、Python 3.6.5 をインストールします。 Azure Machine Learning SDK は Python 3.5.2 以降で動作します。ただし、自動化された機械学習コンポーネントは、Python 3.7 で完全には機能しません。  コンポーネントとパッケージがダウンロードされて環境が作成されるまでに数分かかります。 
 
     ```shell
     conda create -n myenv python=3.6.5
@@ -179,7 +179,7 @@ Python SDK を使用して Jupyter Notebook にワークスペースを作成し
 ```
 
 > [!TIP]
-> 他のディレクトリにある Python スクリプトや Jupyter Notebooks でワークスペースを使用するには、このファイルをそのディレクトリにコピーします。 ファイルは、同じディレクトリ内、*.azureml* という名前のサブディレクトリ内、親ディレクトリ内に置くことができます。
+> 他のディレクトリにある Python スクリプトや Jupyter Notebooks でワークスペースを使用するには、このファイルをそのディレクトリにコピーします。 ファイルは、同じディレクトリ内、 *.azureml* という名前のサブディレクトリ内、親ディレクトリ内に置くことができます。
 
 ## <a name="resource-manager-template"></a>Resource Manager テンプレート
 

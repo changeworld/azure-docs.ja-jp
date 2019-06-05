@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc2c125df2e3455b0e90919dbca92fe497a4b1b7
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 50452dc5a0c2074c452878c890643f7b21591689
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58884348"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65977303"
 ---
 # <a name="eliminate-bad-passwords-in-your-organization"></a>組織内の不適切なパスワードを排除する
 
@@ -75,7 +75,7 @@ Microsoft は常にサイバー犯罪者の一歩先を行く対策を講じて�
 
 部分文字列の照合は、正規化されたパスワードに対して、ユーザーの氏名とテナント名を確認するために使用されます (テナント名の照合は、Active Directory ドメイン コントローラー上でパスワードを検証する場合は行われないことに注意してください)。
 
-例: John Doe というユーザーが、自分のパスワードを "J0hn123fb" にリセットしようとしているとします。 正規化後、このパスワードは “john123fb” になります。 部分文字列の照合により、このパスワードにはユーザーの名前 "John" が含まれることがわかります。 "J0hn123fb" が厳密にはどちらの禁止パスワード リストにも含まれていないとしても、部分文字列ではパスワード内に "John" が見つかりました。 そのため、このパスワードは拒否されます。
+例: Pol というユーザーが、自分のパスワードを "P0l123fb" にリセットしようとしているとします。 正規化後、このパスワードは "pol123fb" になります。 部分文字列の照合により、このパスワードにはユーザーの名前 "Pol" が含まれることがわかります。 "P0l123fb" は厳密にはどちらの禁止パスワード リストにも含まれていませんが、部分文字列の照合ではパスワード内に "Pol" が見つかりました。 そのため、このパスワードは拒否されます。
 
 #### <a name="score-calculation"></a>スコアの計算
 

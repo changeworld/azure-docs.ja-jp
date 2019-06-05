@@ -13,20 +13,20 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: juliako
-ms.openlocfilehash: 3a562f98635d581aa320fdbd59d05a0382f09606
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: bfe4bbae7953479f9b5b5ce9653fb3b8d4b2d092
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65465544"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66002382"
 ---
-# <a name="define-account-filters-and-asset-filters"></a>アカウント フィルターとアセット フィルターの定義  
+# <a name="filters"></a>フィルター
 
 コンテンツを顧客に配信する (イベントのライブ ストリーミングまたはビデオ オン デマンド) 際に、既定の資産のマニフェスト ファイルに記述された内容だけではクライアントのニーズに柔軟に対応できない場合があります。 Azure Media Services では、アカウント フィルターと、コンテンツの資産フィルターを定義することができます。 
 
 フィルターは、次のような操作を顧客に許可するサーバー側のルールです。 
 
-- ビデオ全体を再生するのではなく、ビデオの 1 つのセクションのみを再生する。 例: 
+- ビデオ全体を再生するのではなく、ビデオの 1 つのセクションのみを再生する。 例:
   - マニフェストを減らして、ライブ イベントのサブクリップのみを表示する場合 (「サブクリップ フィルター処理」)、または
   - ビデオの開始をトリミングする場合 (「ビデオのトリミング」)
 - コンテンツの再生に使用するデバイスでサポートされている演奏や言語のトラックのみを指定して配信する ("演奏フィルタ―処理")。 
@@ -36,7 +36,7 @@ Media Services には、定義済みのフィルターに基づいた[動的マ�
 
 次の表に、フィルターを含んだ URL の例をいくつか示します。
 
-|Protocol|例|
+|プロトコル|例|
 |---|---|
 |HLS|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=m3u8-aapl,filter=myAccountFilter)`<br/>HLS v3 の場合は、`format=m3u8-aapl-v3` を使用します。|
 |MPEG DASH|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=mpd-time-csf,filter=myAssetFilter)`|
@@ -55,7 +55,7 @@ Media Services には、定義済みのフィルターに基づいた[動的マ�
 
 フィルターは、次のプロパティを使用して記述します。 
 
-|Name|説明|
+|名前|説明|
 |---|---|
 |firstQuality|フィルターの最高品質ビットレートです。|
 |presentationTimeRange|プレゼンテーション時間の範囲です。 このプロパティは、マニフェストの開始/終了ポイント、プレゼンテーション ウィンドウの長さ、ライブ開始位置をフィルタリングする目的で使用します。 <br/>詳細については、「[PresentationTimeRange](#presentationtimerange)」を参照してください。|
@@ -65,7 +65,7 @@ Media Services には、定義済みのフィルターに基づいた[動的マ�
 
 このプロパティは、**アセット フィルター**で使用します。 このプロパティを**アカウント フィルター**で設定することはお勧めできません。
 
-|Name|説明|
+|名前|説明|
 |---|---|
 |**endTimestamp**|ビデオ オン デマンド (VOD) が対象となります。<br/>ライブ ストリーミング プレゼンテーションでは、ダイアログを表示せずに無視され、プレゼンテーションが終了してストリームが VoD になったときに適用されます。<br/>これは long 値であり、プレゼンテーションの絶対的な終了点を表します。最も近い次の GOP 開始に丸められます。 単位はタイムスケールであるため、3 分の場合、endTimestamp は 1800000000 となります。<br/>プレイリスト (マニフェスト) に含まれるフラグメントをトリミングするには、startTimestamp と endTimestamp を使用します。<br/>たとえば、既定のタイムスケールを使用する startTimestamp=40000000 と endTimestamp=100000000 では、VoD プレゼンテーションの 4 秒から 10 秒までのフラグメントを含むプレイリストが生成されます。 その境界をフラグメントがまたいだ場合、フラグメント全体がマニフェストに含められます。|
 |**forceEndTimestamp**|ライブ ストリーミングのみに適用されます。<br/>endTimestamp プロパティが存在する必要があるかどうかを示します。 true の場合、endTimestamp を指定する必要があります。そうしないと、不適切な要求コードが返されます。<br/>使用できる値: false、true。|
@@ -80,7 +80,7 @@ Media Services には、定義済みのフィルターに基づいた[動的マ�
 
 フィルター トラック プロパティ条件は、トラックの種類、値 (以下の表で説明します)、演算 (Equal、NotEqual) を記述したものです。 
 
-|Name|説明|
+|名前|説明|
 |---|---|
 |**Bitrate**|フィルタリングにトラックのビットレートを使用します。<br/><br/>推奨される値は、bps (1 秒あたりのビット数) で表したビットレートの範囲です。 たとえば、「0-2427000」と指定します。<br/><br/>注: 特定のビットレート値、たとえば 250000 (bps) を使用することもできますが、厳密なビットレートはアセットごとに変動するので、この方法はお勧めしません。|
 |**FourCC**|フィルタリングにトラックの FourCC 値を使用します。<br/><br/>この値は、[RFC 6381](https://tools.ietf.org/html/rfc6381) で規定されたコーデック形式の最初の要素です。 現在は、次のコーデックがサポートされています。 <br/>ビデオ: "avc1"、"hev1"、"hvc1"<br/>オーディオ: "mp4a"、"ec-3"<br/><br/>アセットのトラックの FourCC 値を調べるには、マニフェスト ファイルを取得して調査します。|
@@ -88,11 +88,9 @@ Media Services には、定義済みのフィルターに基づいた[動的マ�
 |**Name**|フィルタリングにトラックの名前を使用します。|
 |**Type**|フィルタリングにトラックの種類を使用します。<br/><br/>"video"、"audio"、"text" のいずれかの値を指定できます。|
 
-## <a name="associate-filters-with-streaming-locator"></a>フィルターをストリーミング ロケーターに関連付ける
+### <a name="example"></a>例
 
-資産またはアカウント フィルターの一覧を指定できます。これはストリーミング ロケーターに適用されます。 [ダイナミック パッケージャー](dynamic-packaging-overview.md)は、このフィルターの一覧を、クライアントが URL で指定するフィルターとともに適用します。 この組み合わせでは、[動的マニフェスト](filters-dynamic-manifest-overview.md)が生成されます。これは、URL のフィルターとストリーミング ロケーターで指定したフィルターに基づきます。 フィルターを適用したいものの URL でフィルター名を公開したくない場合は、この機能を使用することをお勧めします。
-
-## <a name="definition-example"></a>定義の例
+次の例では、ライブ ストリーミングのフィルターを定義します。 
 
 ```json
 {
@@ -146,6 +144,15 @@ Media Services には、定義済みのフィルターに基づいた[動的マ�
   }
 }
 ```
+
+## <a name="associate-filters-with-streaming-locator"></a>フィルターをストリーミング ロケーターに関連付ける
+
+[資産またはアカウント フィルター](filters-concept.md)の一覧を指定できます。これは[ストリーミング ロケーター](https://docs.microsoft.com/rest/api/media/streaminglocators/create#request-body)に適用されます。 [ダイナミック パッケージャー](dynamic-packaging-overview.md)では、クライアントで URL に指定されるフィルターと共にこのフィルターの一覧が適用されます。 この組み合わせによって、URL 内のフィルターとストリーミング ロケーターに指定されたフィルターに基づく[動的マニフェスト](filters-dynamic-manifest-overview.md)が生成されます。 フィルターを適用したいものの URL でフィルター名を公開したくない場合は、この機能を使用することをお勧めします。
+
+次の例を参照してください。
+
+* [フィルターをストリーミング ロケーターに関連付ける - .NET](filters-dynamic-manifest-dotnet-howto.md#associate-filters-with-streaming-locator)
+* [フィルターをストリーミング ロケーターに関連付ける - CLI](filters-dynamic-manifest-cli-howto.md#associate-filters-with-streaming-locator)
 
 ## <a name="next-steps"></a>次の手順
 

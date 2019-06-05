@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 5/7/2019
+ms.date: 5/22/2019
 ms.author: victorh
-ms.openlocfilehash: dfb5b8b69b2ca9bea118603406f4747036d2641c
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 8e17c5e34ec3e2397c3054b1d0e0d97dbf410db2
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510829"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65986867"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway"></a>自動スケーリングとゾーン冗長 Application Gateway 
 
@@ -26,8 +26,8 @@ Application Gateway と Web アプリケーション ファイアウォール (W
   ゾーン冗長性は、Azure ゾーンが使用可能な場所でのみ使用できます。 他のリージョンでは、その他のすべての機能がサポートされます。 詳しくは、「[Azure の Availability Zones の概要](../availability-zones/az-overview.md#services-support-by-region)」をご覧ください。
 - **静的 VIP**: Application Gateway v2 SKU では、静的 VIP の種類だけがサポートされます。 これにより、アプリケーション ゲートウェイに関連付けられた VIP は、デプロイのライフサイクルの間は、再起動後であっても変化しません。
 - **ヘッダーの書き換え**: Application Gateway では、HTTP 要求と応答のヘッダーを v2 SKU で追加、削除、更新することができます。 詳しくは、「[Application Gateway で HTTP ヘッダーを書き換える](rewrite-http-headers.md)」をご覧ください
-- **Key Vault の統合 (プレビュー)**: Application Gateway v2 では、HTTPS が有効なリスナーにアタッチされているサーバー証明書用の Key Vault との統合 (パブリック プレビュー段階) がサポートされます。 詳細については、「[Key Vault 証明書での SSL 終了](key-vault-certs.md)」を参照してください。
-- **Azure Kubernetes Service のイングレス コントローラー (プレビュー)**: Application Gateway v2 のイングレス コントローラーを使うと、AKS クラスターと呼ばれる Azure Kubernetes Service (AKS) に対するイングレスとして Azure Application Gateway を使用できます。 詳しくは、[ドキュメントのページ](https://azure.github.io/application-gateway-kubernetes-ingress/)をご覧ください。
+- **Key Vault の統合 (プレビュー)** : Application Gateway v2 では、HTTPS が有効なリスナーにアタッチされているサーバー証明書用の Key Vault との統合 (パブリック プレビュー段階) がサポートされます。 詳細については、「[Key Vault 証明書での SSL 終了](key-vault-certs.md)」を参照してください。
+- **Azure Kubernetes Service のイングレス コントローラー (プレビュー)** : Application Gateway v2 のイングレス コントローラーを使うと、AKS クラスターと呼ばれる Azure Kubernetes Service (AKS) に対するイングレスとして Azure Application Gateway を使用できます。 詳しくは、[ドキュメントのページ](https://azure.github.io/application-gateway-kubernetes-ingress/)をご覧ください。
 - **パフォーマンスの向上**: v2 SKU では、Standard/WAF SKU と比較して、SSL オフロードのパフォーマンスが最大で 5 倍になります。
 - **デプロイと更新の時間の短縮**: v2 SKU では、Standard/WAF SKU と比較して、デプロイと更新の時間が短縮されます。 これには、WAF の構成の変更も含まれます。
 
@@ -62,7 +62,7 @@ v2 SKU では、価格モデルは従量課金方式であり、インスタン�
 | Standard_v2                                       |    0.20             | 0.0080                          |
 | WAF_v2                                            |    0.36             | 0.0144                          |
 
-[価格のページ](https://azure.microsoft.com/pricing/details/application-gateway/)は、2019 年 5 月 14 日にリージョンの価格を反映するように更新されます。 請求は、2019 年 6 月 1 日に開始する予定です。
+価格情報の詳細については、[価格](https://azure.microsoft.com/pricing/details/application-gateway/)に関するページを参照してください。 課金は、2019 年 7 月 1 日に開始される予定です。
 
 **例 1**
 
@@ -92,8 +92,6 @@ v2 SKU では、価格モデルは従量課金方式であり、インスタン�
 容量ユニットの価格 = 744 (時間) * 最大 (コンピューティング ユニット最大 (1 秒間の接続数に対する 25/50、80/10 WAF RPS)、スループットに対する 8.88/2.22 容量ユニット) * $0.0144 = 744 * 8 * 0.0144 = $85.71
 
 合計価格 =$267.84 + $85.71 = $353.55
-
-[価格のページ](https://azure.microsoft.com/pricing/details/application-gateway/)は、2019 年 5 月 14 日にリージョンの価格を反映するように更新されます。 請求は、2019 年 6 月 1 日に開始する予定です。
 
 ## <a name="scaling-application-gateway-and-waf-v2"></a>Application Gateway と WAF v2 のスケーリング
 
@@ -138,7 +136,7 @@ Application Gateway と WAF は、2 つのモードでスケーリングする�
 |Application Gateway サブネット上のユーザー定義ルート (UDR)|サポートされていません|
 |受信ポート範囲の NSG| - Standard_v2 SKU では 65200 ～ 65535<br>- Standard SKU では 65503 ～ 65534<br>詳細については、[FAQ](application-gateway-faq.md#are-network-security-groups-supported-on-the-application-gateway-subnet) をご覧ください。|
 |Azure Diagnostics でのパフォーマンス ログ|サポートされていません。<br>Azure メトリックを使用する必要があります。|
-|課金|請求は、2019 年 6 月 1 日に開始する予定です。|
+|課金|課金は、2019 年 7 月 1 日に開始される予定です。|
 |FIPS モード|現在はサポートされていません。|
 |ILB のみモード|現在これはサポートされていません。 パブリック モードと ILB モードがまとめてサポートされます。|
 |Netwatcher 統合|サポートされていません。|

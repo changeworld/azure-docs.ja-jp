@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 0783251eaeef188c49c5b3aa61b5ecaec48127b7
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 91dd1ebc457bfeed5c9e8d0d62ecc23740ca5d8d
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65506705"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65979547"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy の定義の構造
 
@@ -25,9 +25,9 @@ Azure Policy で使用されるスキーマについては、[https://schema.man
 ポリシー定義を作成するには、JSON を使用します。 ポリシー定義には、以下のものに対する要素が含まれています。
 
 - モード
-- parameters
+- パラメーター
 - 表示名
-- description
+- 説明
 - ポリシー規則
   - 論理評価
   - 効果
@@ -70,7 +70,7 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
 
 [!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
 
-## <a name="mode"></a>Mode
+## <a name="mode"></a>モード
 
 **mode** では、ポリシーに対して評価されるリソースの種類を決定します。 サポートされているモードは次のとおりです。
 
@@ -81,7 +81,7 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
 
 タグまたは場所を適用するポリシーを作成する場合は、`indexed` を使用してください。 これは必須ではありませんが、それによって、タグまたは場所をサポートしていないリソースが、コンプライアンス結果に非準拠として表示されることを回避できます。 例外は**リソース グループ**です。 リソース グループに対して場所またはタグを適用するポリシーでは、**mode** を `all` に設定し、明確に `Microsoft.Resources/subscriptions/resourceGroups` 型をターゲットにする必要があります。 例については、[リソース グループのタグを適用する](../samples/enforce-tag-rg.md)ことに関する記事を参照してください。 タグをサポートするリソースの一覧については、「[Azure リソースでのタグのサポート](../../../azure-resource-manager/tag-support.md)」を参照してください。
 
-## <a name="parameters"></a>parameters
+## <a name="parameters"></a>パラメーター
 
 パラメーターによって、ポリシー定義の数を減らし、ポリシーの管理を単純化できます。 1 つのフォームにあるフィールドのようなパラメーター `name`、`address``city``state` を考えてみてください。 これらのパラメーターは常に同じままですが、その値はフォームの個々の入力に基づいて変わります。
 パラメーターは、ポリシーの作成時と同じように機能します。 ポリシー定義にパラメーターを含めることで、別の値を使用してさまざまなシナリオについてポリシーを再利用できます。
@@ -100,7 +100,8 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
   - `displayName`:ポータル内に表示されるパラメーターのフレンドリ名。
   - `strongType`:(省略可能) ポータル経由でポリシー定義を割り当てるときに使用されます。 コンテキスト対応の一覧を提供します。 詳しくは、[strongType](#strongtype) に関するページをご覧ください。
   - `assignPermissions`:(省略可能) ポリシーの割り当て中に Azure portal にロールの割り当てを作成させるには、_true_ に設定します。 このプロパティは、割り当てスコープ外でアクセス許可を割り当てたい場合に便利です。 ロールの割り当ては、ポリシーのロール定義ごと (またはイニシアチブのすべてのポリシーのロール定義ごとに) 1 つあります。 パラメーター値は、有効なリソースまたはスコープである必要があります。
-- `defaultValue`:(省略可能) 値が指定されていない場合、割り当ての中でパラメーターの値を設定します。 割り当てられている既存のポリシー定義を更新するときは、必須です。
+- `defaultValue`:(省略可能) 値が指定されていない場合、割り当ての中でパラメーターの値を設定します。
+  割り当てられている既存のポリシー定義を更新するときは、必須です。
 - `allowedValues`:(省略可能) 割り当て中にパラメーターが許可する値の配列を指定します。
 
 たとえば、リソースをデプロイできる場所を制限するためのポリシー定義を定めることができます。 そのポリシー定義のパラメーターは、**allowedLocations** にすることができます。 このパラメーターは、許可される値を制限するために、ポリシー定義の割り当てごとに使用されます。 **strongType** の使用によって、ポータル経由で割り当てを完了したときに、拡張されたエクスペリエンスが提供されます。
@@ -264,12 +265,11 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
 - `tags['''<tagName>''']`
   - この角かっこ構文では、2 個のアポストロフィでエスケープすることにより、アポストロフィが含まれるタグ名がサポートされます。
   - **'\<tagName\>'** は、条件を検証するタグの名前です。
-  - 例: `tags['''My.Apostrophe.Tag''']` (**'\<tagName\>'** がタグの名前)。
+  - 例: `tags['''My.Apostrophe.Tag''']` ( **'\<tagName\>'** がタグの名前)。
 - プロパティのエイリアス: 一覧については、「[エイリアス](#aliases)」を参照してください。
 
 > [!NOTE]
-> `tags.<tagName>`、`tags[tagName]`、および`tags[tag.with.dots]` は、タグ フィールドを宣言する方法としてまだ受け付けられます。
-> ただし、推奨される式は上に示したものです。
+> `tags.<tagName>`、`tags[tagName]`、および`tags[tag.with.dots]` は、タグ フィールドを宣言する方法としてまだ受け付けられます。 ただし、推奨される式は上に示したものです。
 
 #### <a name="use-tags-with-parameters"></a>パラメーターを含むタグを使用する
 
@@ -498,14 +498,14 @@ Azure Policy では、次の種類の効果をサポートしています。
 
 ### <a name="understanding-the--alias"></a>[*] エイリアスについて
 
-利用できるいくつかのエイリアスには、'normal' という名前で表示されるバージョンと、それに **[\*]** が添付された別のバージョンがあります。 例: 
+利用できるいくつかのエイリアスには、'normal' という名前で表示されるバージョンと、それに **[\*]** が添付された別のバージョンがあります。 例:
 
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules`
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]`
 
 "通常" のエイリアスでは、フィールドは 1 つの値として表されます。 このフィールドは完全一致の比較シナリオ用で、値のセット全体を正確に定義する必要があります。それ以上でもそれ以下でもありません。
 
-配列内の各要素の値および各要素の特定のプロパティの比較は、**[\*]** エイリアスで可能です。 このアプローチでは、"全くない"、"1 つ以上が" または "すべてが" のシナリオで、要素のプロパティを比較できます。 例では、**ipRules[\*]** を使用して、すべての _action_ が _Deny_ であるかどうかが検証されますが、存在している規則の数または IP _value_ は検証されません。 このサンプル規則では、**ipRules[\*].value** が **10.0.4.1** であるすべての一致がチェックされ、1 つ以上の一致が検索されない場合のみ、**effectType** が適用されます。
+配列内の各要素の値および各要素の特定のプロパティの比較は、 **[\*]** エイリアスで可能です。 このアプローチでは、"全くない"、"1 つ以上が" または "すべてが" のシナリオで、要素のプロパティを比較できます。 例では、**ipRules[\*]** を使用して、すべての _action_ が _Deny_ であるかどうかが検証されますが、存在している規則の数または IP _value_ は検証されません。 このサンプル規則では、**ipRules[\*].value** が **10.0.4.1** であるすべての一致がチェックされ、1 つ以上の一致が検索されない場合のみ、**effectType** が適用されます。
 
 ```json
 "policyRule": {

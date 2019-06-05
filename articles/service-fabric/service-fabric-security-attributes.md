@@ -9,16 +9,16 @@ ms.service: service-fabric
 ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: mbaldwin
-ms.openlocfilehash: f6db40a35c289fa0870ac4c9e5e55b773c84f4f4
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 7c1718298c3f7c3fea28fa0b18569085f071696f
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59679229"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66003053"
 ---
-# <a name="common-security-attributes-for-azure-service-fabric"></a>Azure Service Fabric の一般的なセキュリティ属性
+# <a name="security-attributes-for-azure-service-fabric"></a>Azure Service Fabric のセキュリティ属性
 
-セキュリティは、Azure サービスのすべての要素に統合されています。 この記事では、Azure Service Fabric に組み込まれている共通のセキュリティ属性について説明します。 
+この記事では、Azure Service Fabric に組み込まれているセキュリティ属性について説明します。 
 
 [!INCLUDE [Security Attributes Header](../../includes/security-attributes-header.md)]
 
@@ -38,8 +38,8 @@ ms.locfileid: "59679229"
 |---|---|--|
 | サービス エンドポイントのサポート| はい |  |
 | VNet インジェクションのサポート| はい |  |
-| ネットワークの分離 / ファイアウォールのサポート| はい | ネットワーク セキュリティ グループ (NSG) の使用。 |
-| 強制トンネリングのサポート | はい | Azure ネットワークでは、強制トンネリングを提供します。 |
+| ネットワークの分離とファイアウォールのサポート| はい | ネットワーク セキュリティ グループ (NSG) の使用。 |
+| 強制トンネリングのサポート| はい | Azure ネットワークでは、強制トンネリングを提供します。 |
 
 ## <a name="detection"></a>検出
 
@@ -47,23 +47,23 @@ ms.locfileid: "59679229"
 |---|---|--|
 | Azure 監視サポート (Log analytics や App Insights など)| はい | Azure 監視サポートとサード パーティ サポートの使用。 |
 
-## <a name="iam-support"></a>IAM サポート
+## <a name="identity-and-access-management"></a>ID 管理とアクセス管理
 
 | セキュリティ属性 | はい/いいえ | メモ|
 |---|---|--|
-| アクセス管理 - 認証| はい | 認証は Azure Active Directory を介して行われます。 |
-| アクセス管理 - 承認| はい | SFRP 経由の呼び出しのための ID およびアクセス管理 (IAM)。 クラスター エンド ポイントは、ユーザーと管理者という 2 つのロールで直接呼び出すことができます。ユーザーは API をいずれかのロールにマッピングできます。 |
+| 認証| はい | 認証は Azure Active Directory を介して行われます。 |
+| 承認| はい | SFRP 経由の呼び出しのための ID およびアクセス管理 (IAM)。 クラスター エンド ポイントは、ユーザーと管理者という 2 つのロールで直接呼び出すことができます。ユーザーは API をいずれかのロールにマッピングできます。 |
 
 
 ## <a name="audit-trail"></a>監査証跡
 
 | セキュリティ属性 | はい/いいえ | メモ|
 |---|---|--|
-| コントロール/管理プレーンのログ記録と監査| はい | コントロール プレーン操作はすべて、監査と承認のプロセスを経由して実行されます。 |
+| コントロールと管理プレーンのログ記録と監査| はい | コントロール プレーン操作はすべて、監査と承認のプロセスを経由して実行されます。 |
 | データ プレーンのログ記録と監査| 該当なし | ユーザーはクラスターを所有します。  |
 
 ## <a name="configuration-management"></a>構成管理
 
 | セキュリティ属性 | はい/いいえ | メモ|
 |---|---|--|
-| 構成管理のサポート (構成のバージョン管理など)| はい | サービス構成は Azure Deploy によってバージョン管理され、デプロイされます。 コード (アプリケーションとランタイム) は Azure Build によってバージョン管理されます。
+| 構成管理のサポート (構成のバージョン管理など)| はい | |

@@ -2,22 +2,22 @@
 title: Azure AD で既存のオンプレミス プロキシ サーバーと連携する| Microsoft Docs
 description: 既存のオンプレミス プロキシ サーバーと連携する方法について説明します。
 services: active-directory
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/12/2018
-ms.author: celested
+ms.date: 05/21/2019
+ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0b4cb1f6cc3da5230f510f57a56c7297341f82f3
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6cc0b3a9a02c023678691921100443436cdf0011
+ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56175576"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66015467"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>既存のオンプレミス プロキシ サーバーと連携する
 
@@ -112,7 +112,7 @@ ms.locfileid: "56175576"
 | mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | Azure では、これらの URL を使用して証明書が検証されます |
 | login.windows.net<br>login.microsoftonline.com | コネクタでは、登録プロセスの間にこれらの URL が使用されます。 |
 
-ファイアウォールまたはプロキシで DNS ホワイトリスト登録が許可されている場合は、\*.msappproxy.net と \*.servicebus.windows.net への接続をホワイトリストに登録できます。 そうでない場合は、[Azure データセンターの IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)へのアクセスを許可する必要があります。 これらの IP 範囲は毎週更新されます。
+ファイアウォールまたはプロキシで DNS 許可リストを構成できる場合は、\*.msappproxy.net と \*.servicebus.windows.net への接続を許可できます。 そうでない場合は、[Azure データセンターの IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)へのアクセスを許可する必要があります。 これらの IP 範囲は毎週更新されます。
 
 
 FQDN による接続を許可することはできず、代わりに IP 範囲を指定する必要がある場合は、これらのオプションを使用します。
@@ -165,7 +165,7 @@ FQDN による接続を許可することはできず、代わりに IP 範囲�
 
 アプリケーション プロキシ コネクタがプロキシ サーバーをバイパスしてアプリケーション プロキシ サービスに直接接続するよう構成している場合は、ネットワーク キャプチャを調べて、TCP 接続が失敗していないかを確認します。 
 
-Message Analyzer のフィルターを使用すると、これらの試みを識別できます。 フィルターのボックスに `property.TCPSynRetransmit` と入力し、**[Apply]\(適用\)** を選択します。 
+Message Analyzer のフィルターを使用すると、これらの試みを識別できます。 フィルターのボックスに `property.TCPSynRetransmit` と入力し、 **[Apply]\(適用\)** を選択します。 
 
 SYN パケットは、TCP 接続を確立するために最初に送信されるパケットです。 このパケットにより応答が返されない場合は、SYN パケットの送信が再試行されます。 前述のフィルターを使用すると、再送信されたすべての SYN パケットが表示されます。 次に、これらの SYN パケットがコネクタ関連のトラフィックに対応するかどうかを調べます。
 

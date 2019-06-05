@@ -4,7 +4,7 @@ description: Azure Search で使用される完全な Lucene 構文のリファ�
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 04/25/2019
+ms.date: 05/13/2019
 author: brjohnstmsft
 ms.author: brjohnst
 ms.manager: cgronlun
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: b37961f96aca95c0aeaec511411a309d40e990f5
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 26935b53d8f852289513a5a7b5d31e3befe3e3b2
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024236"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66002245"
 ---
 # <a name="lucene-query-syntax-in-azure-search"></a>Azure Search での Lucence クエリ構文
 特殊なクエリ形式 (ワイルドカード、あいまい検索、近接検索、正規表現などその他多数) に対し、高度な [Lucene Query Parser](https://lucene.apache.org/core/4_10_2/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) 構文に基づいて Azure Search に対するクエリを作成できます。 Lucene Query Parser 構文の多くは、[Azure Search でそのまま実装](search-lucene-query-architecture.md)されています。ただし、*範囲検索*は例外で、これは Azure Search では `$filter` 式を介して構築されます。 
@@ -79,7 +79,7 @@ POST /indexes/hotels/docs/search?api-version=2019-05-06
  特殊文字を検索テキストの一部として使用するには、エスケープする必要があります。 特殊文字の前に円記号 (\\) 付けることでエスケープできます。 エスケープが必要な特殊文字としては、以下の文字があります。  
 `+ - && || ! ( ) { } [ ] ^ " ~ * ? : \ /`  
 
- たとえば、ワイルドカード文字をエスケープするには、\\* を使用します。
+ たとえば、ワイルドカード文字をエスケープするには、\\\* を使用します。
 
 ### <a name="encoding-unsafe-and-reserved-characters-in-urls"></a>URL での安全でない文字および予約文字のエンコード
 
@@ -121,16 +121,19 @@ NOT 演算子は、感嘆符またはマイナス記号です。 たとえば、
 ##  <a name="bkmk_searchscoreforwildcardandregexqueries"></a> ワイルドカード クエリと正規表現クエリのスコアリング
  Azure Search は、テキスト クエリで、頻度に基づいたスコアリング ([TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)) を使用します。 ただし、用語のスコープが広くなる可能性があるワイルドカード クエリと正規表現クエリでは、出現頻度が低い用語の一致に対する優先度付けに偏りが発生するのを避けるために、頻度の係数は無視されます。 すべての一致は、ワイルドカード検索と正規表現検索で同等に扱われます。
 
-##  <a name="bkmk_fields"></a> フィールド スコープ クエリ  
- `fieldname:searchterm` 構造を指定して、フィールド クエリ操作を定義できます。フィールドは 1 つの単語であり、検索用語も 1 つの単語または語句です。ブール演算子を利用することもあります。 たとえば、次のようになります。  
+##  <a name="bkmk_fields"></a> フィールド検索  
+`fieldName:searchExpression` 構文を使用して、フィールド検索操作を定義できます。検索式は、単一の単語、単一の語句、またはかっこで囲まれた複雑な式が可能であり、必要に応じてブール演算子も使用できます たとえば、次のようになります。  
 
 - genre:jazz NOT history  
 
 - artists:("Miles Davis" "John Coltrane")
 
-  複数の文字列を 1 つのエンティティとして評価する場合は、必ず両方の文字列を引用符で囲んでください。この場合は、`artists` フィールドで 2 人の異なるアーティストを検索します。  
+複数の文字列を 1 つのエンティティとして評価する場合は、必ず両方の文字列を引用符で囲んでください。この場合は、`artists` フィールドで 2 人の異なるアーティストを検索します。  
 
-  `fieldname:searchterm` に指定されるフィールドは、`searchable` フィールドでなければなりません。  フィールド定義におけるインデックス属性の利用方法の詳細については、「[インデックスの作成](https://docs.microsoft.com/rest/api/searchservice/create-index)」を参照してください。  
+`fieldName:searchExpression` に指定されるフィールドは、`searchable` フィールドでなければなりません。  フィールド定義におけるインデックス属性の利用方法の詳細については、「[インデックスの作成](https://docs.microsoft.com/rest/api/searchservice/create-index)」を参照してください。  
+
+> [!NOTE]
+> 各フィールド検索式にはフィールド名が明示的に指定されるため、フィールド検索式を使用する際は `searchFields` パラメーターを使用する必要はありません。 ただし、いくつかの部分で特定のフィールドをスコープにし、他の部分は複数のフィールドに適用できるクエリを実行する場合は、`searchFields` パラメーターを引き続き使用できます。 たとえば、クエリ `search=genre:jazz NOT history&searchFields=description` は、`genre` フィールドの `jazz` のみと一致し、`description` フィールドの `NOT history` と一致します。 `fieldName:searchExpression` に指定されたフィールド名は常に `searchFields` パラメーターに優先するため、この例では `searchFields` パラメーターに `genre` を含める必要はありません。
 
 ##  <a name="bkmk_fuzzy"></a> あいまい検索  
  あいまい検索では、似たような構造の言い回しの一致が検索されます。 [Lucene ドキュメント](https://lucene.apache.org/core/4_10_2/queryparser/org/apache/lucene/queryparser/classic/package-summary.html)によると、あいまい検索は [Damerau-Levenshtein Distance](https://en.wikipedia.org/wiki/Damerau%E2%80%93Levenshtein_distance) を基盤としています。 あいまい検索では、距離の条件を満たす最大 50 個の用語まで用語を展開できます。 

@@ -5,22 +5,18 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 1/15/2019
+ms.date: 5/21/2019
 ms.author: cherylmc
-ms.openlocfilehash: d1e57e623e3e95f3d71e895c49c928f00aa0ad46
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: fdfabf328ddfa6b5e4b578be5a1b329cb3219a18
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59274674"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65989103"
 ---
-# <a name="configure-openvpn-clients-for-azure-vpn-gateway-preview"></a>Azure VPN Gateway 用に OpenVPN クライアントを構成する (プレビュー)
+# <a name="configure-openvpn-clients-for-azure-vpn-gateway"></a>Azure VPN Gateway 用に OpenVPN クライアントを構成する
 
 この記事では、**OpenVPN ® プロトコル** クライアントの構成方法について説明します。
-
-> [!IMPORTANT]
-> このパブリック プレビュー版はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することは避けてください。 特定の機能はサポート対象ではなく、機能が制限されることがあるか、Azure の場所によっては利用できない場合があります。 詳しくは、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」をご覧ください。
->
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -134,10 +130,10 @@ VPN ゲートウェイ用に OpenVPN を構成する手順を完了している�
 16. **[VPN の追加]** ウィンドウで **[追加]** をクリックします。
   
     ![ファイルからインポート](./media/vpn-gateway-howto-openvpn-clients/importfromfile.png)
-17. 接続するには、**[ネットワーク設定]** ページで VPN を**オン**にするか、システム トレイのネットワーク アイコンを選択します。
+17. 接続するには、 **[ネットワーク設定]** ページで VPN を**オン**にするか、システム トレイのネットワーク アイコンを選択します。
 
 ## <a name="next-steps"></a>次の手順
 
-VPN クライアントが別の vnet (実稼働環境) のリソースにアクセスできるようにするには、[VNet 間](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)の記事に記載されている手順に従って VNet 間の接続を設定します。 ゲートウェイと接続で BGP を有効にします。そうしないと、トラフィックは流れません。
+VPN クライアントが別の VNet のリソースにアクセスできるようにするには、[VNet 間](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)に関する記事に記載されている手順に従って、VNet 間接続を設定します。 ゲートウェイと接続で BGP を有効にします。そうしないと、トラフィックは流れません。
 
 **"OpenVPN" は OpenVPN Inc. の商標です。**

@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 9be062ec42f054832225c17a65b06e47dbcbe990
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.openlocfilehash: 243a388ee59a1a550f80882b0af61e1f1db008ca
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59607281"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65977435"
 ---
 # <a name="monitor-scenario-in-durable-functions---weather-watcher-sample"></a>Durable Functions のモニター シナリオ - 天気ウォッチャーのサンプル
 
@@ -89,7 +89,8 @@ API キーを入手したら、次の**アプリ設定**を関数アプリに追
 
 ## <a name="strongly-typed-data-transfer-net-only"></a>厳密に型指定されたデータ転送 (.NET のみ)
 
-オーケストレーターにはデータの複数の部分が必要であるため、C# および C# スクリプトにおける厳密に型指定されたデータ転送には[共有 POCO オブジェクト](../functions-reference-csharp.md#reusing-csx-code)が使われます。[!code-csharp[Main](~/samples-durable-functions/samples/csx/shared/MonitorRequest.csx)]
+オーケストレーターにはデータの複数の部分が必要であるため、C# および C# スクリプトにおける厳密に型指定されたデータ転送には[共有 POCO オブジェクト](../functions-reference-csharp.md#reusing-csx-code)が使われます。  
+[!code-csharp[Main](~/samples-durable-functions/samples/csx/shared/MonitorRequest.csx)]
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/shared/Location.csx)]
 

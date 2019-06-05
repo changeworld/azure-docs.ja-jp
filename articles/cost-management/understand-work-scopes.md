@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/13/2019
+ms.date: 05/20/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 4e7956e8873b552fcd73c51a51f51d99f21af324
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 717c0f110ebbeee53e2c9b9207350385288d57c3
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58002943"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65991380"
 ---
 # <a name="understand-and-work-with-scopes"></a>スコープを理解して使用する
 
@@ -60,14 +60,14 @@ Cost Management の各スコープでは、次の組み込みロールがサポ�
 - [**所有者**](../role-based-access-control/built-in-roles.md#owner) – コストを表示し、コストの構成を含めたすべてを管理することができます。
 - [**共同作成者**](../role-based-access-control/built-in-roles.md#contributor) – コストを表示し、コストの構成を含めたすべてを管理できますが、アクセスの制御はできません。
 - [**閲覧者**](../role-based-access-control/built-in-roles.md#reader) – コストのデータと構成を含めたすべてを表示できますが、変更を加えることはできません。
-- [**Cost Management 共同作成者**](../role-based-access-control/built-in-roles.md#cost-management-contributor) – コストを表示し、コストの構成を管理することができます。
-- [**Cost Management 閲覧者**](../role-based-access-control/built-in-roles.md#cost-management-reader) – コストのデータと構成を表示することができます。
+- [**Cost Management 共同作成者**](../role-based-access-control/built-in-roles.md#cost-management-contributor) – コストの表示、コストの構成の管理、および推奨事項の表示を実行できます。
+- [**Cost Management 閲覧者**](../role-based-access-control/built-in-roles.md#cost-management-reader) – コスト データの表示、コストの構成、および推奨事項の表示を実行できます。
 
 Cost Management 共同作成者は、最低限の特権を持つ推奨ロールです。 予算を作成および管理し、コストをより効果的に監視してレポートできるようにエクスポートすることができます。 Cost Management 共同作成者は、エンド ツー エンドのコスト管理シナリオをサポートする追加のロールが必要になることがあります。 次のシナリオで考えてみましょう。
 
 - **予算を超過したときに対応する** – Cost Management 共同作成者は、予算超過に自動的に対応するために、アクション グループを作成および管理するアクセス権も必要です。 予算のしきい値を超えたときに使用するアクション グループを含むリソース グループに対して、[監視の共同作成者](../role-based-access-control/built-in-roles.md#monitoring-contributor)を付与することを検討してください。 特定のアクションを自動化するには、使用する特定のサービス (Automation や Azure Functions など) の追加のロールが必要です。
 - **コスト データのエクスポートをスケジュールする** – Cost Management 共同作成者は、ストレージ アカウントにデータをコピーするエクスポートをスケジュールするために、ストレージ アカウントを管理するアクセス権も必要です。 コスト データのエクスポート先となるストレージ アカウントを含むリソース グループに対して、[ストレージ アカウントの共同作成者](../role-based-access-control/built-in-roles.md#storage-account-contributor)を付与することを検討してください。
-- **コスト削減の推奨事項を表示する** – Cost Management の閲覧者と共同作成者は、既定では推奨事項へのアクセス権がありません。 推奨事項にアクセスするには、個々のリソースに対する読み取りアクセス権が必要です。 [閲覧者](../role-based-access-control/built-in-roles.md#reader)または[サービス固有のロール](../role-based-access-control/built-in-roles.md#built-in-role-descriptions)を付与することを検討してください。
+- **コスト削減の推奨事項を表示する** – Cost Management 閲覧者と Cost Management 共同作成者は、コストの推奨事項を*表示する*ためのアクセス権を既定で所有しています。 ただし、コストの推奨事項に従って操作するためのアクセスでは、個々のリソースに対するアクセス権が必要です。 コストの推奨事項に従って操作したい場合は、[サービス固有のロール](../role-based-access-control/built-in-roles.md#built-in-role-descriptions)の付与を検討してください。
 
 ## <a name="enterprise-agreement-scopes"></a>Enterprise Agreement のスコープ
 
@@ -90,9 +90,9 @@ EA の課金スコープでは、次のロールがサポートされます。
 
 - **エンタープライズ管理者** – 課金アカウントの設定とアクセスを管理し、すべてのコストを表示し、コストの構成を管理することができます。 たとえば、予算やエクスポートなどです。 この EA 課金スコープは、[Cost Management 共同作成者の Azure RBAC ロール](../role-based-access-control/built-in-roles.md#cost-management-contributor)と同じ機能を持ちます。
 - **エンタープライズ読み取り専用ユーザー** – 課金アカウントの設定、コスト データ、およびコストの構成を表示することができます。 たとえば、予算やエクスポートなどです。 この EA 課金スコープは、[Cost Management 閲覧者の Azure RBAC ロール](../role-based-access-control/built-in-roles.md#cost-management-reader)と同じ機能を持ちます。
-- **部門管理者** – 部門の設定 (コスト センターなど) を管理し、すべてのコストにアクセスして表示し、コストの構成を管理することができます。 たとえば、予算やエクスポートなどです。  部門管理者と読み取り専用ユーザーがコストを表示できるように、**[DA ビューの請求額]** の課金アカウント設定を有効にする必要があります。 **[DA ビューの請求額]** が無効になっている場合、部門のユーザーは、たとえアカウントやサブスクリプションの所有者であっても、いずれのレベルでもコストを表示することはできません。
+- **部門管理者** – 部門の設定 (コスト センターなど) を管理し、すべてのコストにアクセスして表示し、コストの構成を管理することができます。 たとえば、予算やエクスポートなどです。  部門管理者と読み取り専用ユーザーがコストを表示できるように、 **[DA ビューの請求額]** の課金アカウント設定を有効にする必要があります。 **[DA ビューの請求額]** が無効になっている場合、部門のユーザーは、たとえアカウントやサブスクリプションの所有者であっても、いずれのレベルでもコストを表示することはできません。
 - **部門の読み取り専用ユーザー** – 部門の設定、コスト データ、およびコストの構成を表示することができます。 たとえば、予算やエクスポートなどです。 **[DA ビューの請求額]** が無効になっている場合、部門のユーザーは、たとえアカウントやサブスクリプションの所有者であっても、いずれのレベルでもコストを表示することはできません。
-- **アカウント所有者** – 登録アカウントの設定 (コスト センターなど) を管理し、すべてのコストを表示し、登録アカウントのコストの構成 (予算やエクスポートなど) を管理することができます。 アカウント所有者と RBAC ユーザーがコストを表示できるように、**[AO ビューの請求額]** の課金アカウント設定を有効にする必要があります。
+- **アカウント所有者** – 登録アカウントの設定 (コスト センターなど) を管理し、すべてのコストを表示し、登録アカウントのコストの構成 (予算やエクスポートなど) を管理することができます。 アカウント所有者と RBAC ユーザーがコストを表示できるように、 **[AO ビューの請求額]** の課金アカウント設定を有効にする必要があります。
 
 EA の課金アカウントのユーザーは、請求書に直接アクセスすることができません。 外部のボリューム ライセンス システムから請求書を入手できます。
 

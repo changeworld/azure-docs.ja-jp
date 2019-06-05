@@ -8,12 +8,12 @@ ms.service: load-balancer
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: mbaldwin
-ms.openlocfilehash: df1ffa07c9b813ee3da4952bbcc394f43c69b7ac
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 6c495456a5a3295abe5460ff6b5586e41fab2d95
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65204236"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66001033"
 ---
 # <a name="security-attributes-for-azure-sql-database"></a>Azure SQL Database のセキュリティ属性
 
@@ -39,8 +39,8 @@ Azure SQL Database には、[単一データベース](sql-database-single-index
 |---|---|--|
 | サービス エンドポイントのサポート| はい | [単一データベース](sql-database-single-index.yml)のみに適用。 |
 | VNet インジェクションのサポート| はい | [マネージド インスタンス](sql-database-managed-instance.md)のみに適用。 |
-| ネットワークの分離/ファイアウォールのサポート| はい | データベース レベルとサーバー レベル両方でのファイアウォール、[マネージド インスタンス](sql-database-managed-instance.md)のみに対するネットワーク分離 |
-| 強制トンネリングのサポート | はい | [Azure ExpressRoute](../expressroute/index.yml) VPN による[マネージド インスタンス](sql-database-managed-instance.md) |
+| ネットワークの分離とファイアウォールのサポート| はい | データベース レベルとサーバー レベル両方でのファイアウォール、[マネージド インスタンス](sql-database-managed-instance.md)のみに対するネットワーク分離 |
+| 強制トンネリングのサポート| はい | [Azure ExpressRoute](../expressroute/index.yml) VPN による[マネージド インスタンス](sql-database-managed-instance.md) |
 
 ## <a name="detection"></a>検出
 
@@ -52,22 +52,22 @@ Azure SQL Database には、[単一データベース](sql-database-single-index
 
 | セキュリティ属性 | はい/いいえ | メモ|
 |---|---|--|
-| アクセス管理 - 認証| はい | Azure Active Directory。 |
-| アクセス管理 - 承認| はい |  |
+| 認証| はい | Azure Active Directory。 |
+| 承認| はい |  |
 
 
 ## <a name="audit-trail"></a>監査証跡
 
 | セキュリティ属性 | はい/いいえ | メモ|
 |---|---|--|
-| コントロール/管理プレーンのログ記録と監査| はい | 一部のイベントについてのみ、はい。 |
+| コントロールと管理プレーンのログ記録と監査| はい | 一部のイベントについてのみ、はい。 |
 | データ プレーンのログ記録と監査 | はい | [SQL 監査](sql-database-auditing.md)により。 |
 
 ## <a name="configuration-management"></a>構成管理
 
 | セキュリティ属性 | はい/いいえ | メモ|
 |---|---|--|
-| 構成管理のサポート (構成のバージョン管理など)| いいえ   | | 
+| 構成管理のサポート (構成のバージョン管理など)| いいえ  | | 
 
 ## <a name="additional-security-attributes-for-sql-database"></a>SQL Database の追加セキュリティ属性
 

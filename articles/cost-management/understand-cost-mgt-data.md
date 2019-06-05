@@ -5,27 +5,29 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/11/2019
+ms.date: 05/20/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 5c8f70ff76da458fcc1433226a51012fb7ccd18e
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: f4c296aeefacc9516303ad75dd8b7d67325e38ee
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59544638"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65969060"
 ---
 # <a name="understand-cost-management-data"></a>Cost Management のデータを理解する
 
 この記事では、Azure Cost Management に含まれるデータについて詳しく説明します。 また、データが処理、収集、表示、およびクローズされる頻度についても説明します。 お客様は、Azure の使用量に対して毎月課金されます。 ただし、請求月の最終日は、ご利用の Azure サブスクリプションの種類に応じて異なります。 Cost Management が使用状況データを受信する頻度は、さまざまな要因に基づいて決まります。 このような要因には、データの処理にかかる時間や、Azure サービスから請求システムに使用状況が送信される頻度などがあります。
 
+Cost Management には、すべての使用量と購入の他に、Enterprise Agreement (EA) アカウント向けの予約とサード パーティ製品が含まれています。 Microsoft 顧客契約 (MCA) アカウントと従量課金制サブスクリプションには、Azure サービスと Marketplace サービスの使用量のみが含まれます。 サポート コストとその他のコストは含まれません。 コストは請求書が生成されるまで推定され、クレジットは考慮されません。
+
 ## <a name="supported-microsoft-offers"></a>サポート対象の Microsoft プラン
 
 Azure Cost Management で現在サポートされている [Microsoft Azure のプラン](https://azure.microsoft.com/support/legal/offer-details/)を次に示します。  Azure プランとは、ご利用の Azure サブスクリプションの種類です。
 
-| Category  | **プラン名** | **クォータ ID** | **プラン番号** |
+| カテゴリ  | **プラン名** | **クォータ ID** | **プラン番号** |
 | --- | --- | --- | --- |
 | **Azure Germany** | [Azure Germany 従量課金制](https://azure.microsoft.com/offers/ms-azr-de-0003p)      | PayAsYouGo_2014-09-01 | MS-AZR-DE-0003P |
 | **Azure Government** | Azure Government Enterprise                                                         | EnterpriseAgreement_2014-09-01 | MS-AZR-USGOV-0017P |
@@ -49,7 +51,7 @@ Azure Cost Management で現在サポートされている [Microsoft Azure の�
 
 サポート対象外のプランを次の表に示します。
 
-| Category  | **プラン名** | **クォータ ID** | **プラン番号** |
+| カテゴリ  | **プラン名** | **クォータ ID** | **プラン番号** |
 | --- | --- | --- | --- |
 | **クラウド ソリューション プロバイダー (CSP)** | Microsoft Azure                                    | CSP_2015-05-01 | MS-AZR-0145P |
 | **クラウド ソリューション プロバイダー (CSP)** | Azure Government CSP                               | CSP_2015-05-01 | MS-AZR-USGOV-0145P |
@@ -86,6 +88,7 @@ Cost Management に含まれるデータと含まれないデータを次の表�
 |   | クレジット - 詳細については、[請求書の用語の説明](../billing/billing-understand-your-invoice.md)に関する記事を参照してください。 |
 
 <sup>1</sup> Azure サービスの使用状況は、予約および交渉済みの価格に基づきます。
+
 <sup>2</sup> Marketplace サービスの使用状況は、現時点では従量課金制、MSDN、Visual Studio オファーではご利用いただけません。
 
 **Metadata**

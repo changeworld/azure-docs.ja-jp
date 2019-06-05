@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: reference
 ms.author: larryfr
 author: Blackmist
-ms.date: 05/06/2019
+ms.date: 05/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: 186ecf055cdf7b10690fdb4cbc574778a841b85a
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 3acaf86123f2cab871bc2f99cc873a73015875e2
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65464804"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65989843"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Azure Machine Learning service のリリース ノート
 
@@ -24,6 +24,30 @@ ms.locfileid: "65464804"
 + Azure Machine Learning の[**Data Prep SDK**](https://aka.ms/data-prep-sdk)
 
 バグおよび対処法については、[既知の問題のリスト](resource-known-issues.md)を参照してください。
+
+## <a name="2019-05-14"></a>2019-05-14
+
+### <a name="azure-machine-learning-sdk-for-python-v1039"></a>Azure Machine Learning SDK for Python v1.0.39
++ **変更点**
+  + 実行構成の auto_prepare_environment オプションは非推奨になり、自動準備が既定になります。
+
+## <a name="2019-05-08"></a>2019-05-08
+
+### <a name="azure-machine-learning-data-prep-sdk-v113"></a>Azure Machine Learning Data Prep SDK v1.1.3
+
++ **新機能**
+  + PostgresSQL データベースから読み取るためのサポートが追加されました。read_postgresql を呼び出すか、データストアを使用します。
+    + ハウツー ガイドの例を参照してください。
+      + [データ インジェスト ノートブック](https://aka.ms/aml-data-prep-ingestion-nb)
+      + [データストア ノートブック](https://aka.ms/aml-data-prep-datastore-nb)
+
++ **バグの修正と機能強化**
+  + 列の型変換の問題が修正されました。
+  + ブール値または数値の列がブール値の列に正しく変換されるようになりました。
+  + 日付列に日付型を設定しようとしたときに失敗することはなくなりました。
+  + JoinType 型と付属のドキュメントが改善されました。 2 つのデータフローを結合するときに、次の結合型のいずれかを指定できるようになりました。
+    + NONE、MATCH、INNER、UNMATCHLEFT、LEFTANTI、LEFTOUTER、UNMATCHRIGHT、RIGHTANTI、RIGHTOUTER、FULLANTI、FULL
+  + より多くの日付の形式を認識するようにデータ型の推論が改善されました。
 
 ## <a name="2019-05-06"></a>2019-05-06
 

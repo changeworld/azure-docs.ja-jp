@@ -17,23 +17,16 @@ ms.date: 01/29/2019
 ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 304e23ec76a2f79d0ab3852efe2a483cf86c51b8
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 9d9b0c80522a988447b2753953c0c51b058fdd43
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58520702"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "66015206"
 ---
 # <a name="what-is-azure-active-directory-identity-protection"></a>Azure Active Directory Identity Protection とは
 
-Azure Active Directory Identity Protection は Azure AD Premium P2 エディションの機能です。この機能を使用すると、以下を行うことができます。
-
-- 組織の ID に影響する潜在的な脆弱性を検出する
-
-- 組織の ID に関連する検出された疑わしいアクションに対する自動応答を構成する  
-
-- 疑わしいインシデントを調査し、適切なアクションを実行して解決する   
-
+Azure Active Directory Identity Protection を使用して、組織は、ユーザー ID に関連して検出された疑わしいアクションに対する自動応答を構成できます。
 
 ## <a name="get-started"></a>作業開始
 
@@ -51,47 +44,38 @@ Microsoft は 10 年以上にわたってクラウド ベースの ID を保護�
 
 Azure Active Directory Identity Protection は単なる監視とレポート作成のツールではありません。 指定したリスク レベルに達したときに、検出された問題が自動的に対処されるようにリスク ベースのポリシーを構成することで、組織の ID を保護できます。 こうしたポリシーと、Azure Active Directory および [Enterprise Mobility + Security](https://docs.microsoft.com/enterprise-mobility-security/) (EMS) によって提供される他の条件付きアクセス コントロールにより、パスワードのリセットや多要素認証の適用などのアダプティブ修復アクションを自動的にブロックまたは開始できます。
 
-
-#### <a name="identity-protection-capabilities"></a>Identity Protection の機能
+### <a name="identity-protection-capabilities"></a>Identity Protection の機能
 
 **脆弱性とリスクの高いアカウントの検出:**  
 
-* 脆弱性を目立たせることにより全体的なセキュリティ対策を向上させるためのカスタム推奨事項を提供します
-* サイン インのリスク レベルを計算します
-* ユーザーのリスク レベルを計算します
-
+- 脆弱性を目立たせることにより全体的なセキュリティ対策を向上させるためのカスタム推奨事項を提供します
+- サイン インのリスク レベルを計算します
+- ユーザーのリスク レベルを計算します
 
 **リスク イベントの調査:**
 
-* リスク イベントの通知を送信します
-* 関連情報とコンテキスト情報を使用してリスク イベントを調査します
-* 調査を追跡するための基本的なワークフローを提供します
-* パスワード リセットなどの修復アクションへの簡単なアクセスを提供します
+- リスク イベントの通知を送信します
+- 関連情報とコンテキスト情報を使用してリスク イベントを調査します
+- 調査を追跡するための基本的なワークフローを提供します
+- パスワード リセットなどの修復アクションへの簡単なアクセスを提供します
 
 **リスクに基づく条件付きアクセス ポリシー:**
 
-* サインインのブロックまたは多要素認証チャレンジの要求によりリスクの高いサインインを抑制するポリシー
-* リスクの高いユーザー アカウントをブロックまたはセキュリティ保護するためのポリシー
-* 多要素認証用に登録するようユーザーに要求するポリシー
-
-
+- サインインのブロックまたは多要素認証チャレンジの要求によりリスクの高いサインインを抑制するポリシー
+- リスクの高いユーザー アカウントをブロックまたはセキュリティ保護するためのポリシー
+- 多要素認証用に登録するようユーザーに要求するポリシー
 
 ## <a name="identity-protection-roles"></a>Identity Protection のロール
 
 Identity Protection 実装の管理アクティビティの負荷を分散するため、いくつかのロールを割り当てることができます。 Azure AD Identity Protection は、3 つのディレクトリ ロールをサポートします。
 
-| Role                         | できること                          | できないこと
-| :--                          | ---                                |  ---   |
-| 全体管理者         | Identity Protection へのフル アクセス、Identity Protection の配布準備| |
-| セキュリティ管理者       | Identity Protection へのフル アクセス | Identity Protection の配布準備、ユーザーのパスワードのリセット |
-| セキュリティ閲覧者              | Identity Protection への読み取り専用アクセス | Identity Protection の配布準備、ユーザーの修復、ポリシーの構成、パスワードのリセット |
-
-
-
+| ロール | できること | できないこと |
+| :-- | --- | --- |
+| 全体管理者 | Identity Protection へのフル アクセス、Identity Protection の配布準備| |
+| セキュリティ管理者 | Identity Protection へのフル アクセス | Identity Protection の配布準備、ユーザーのパスワードのリセット |
+| セキュリティ閲覧者 | Identity Protection への読み取り専用アクセス | Identity Protection の配布準備、ユーザーの修復、ポリシーの構成、パスワードのリセット |
 
 詳細については、「[Azure Active Directory での管理者ロールの割り当て](../users-groups-roles/directory-assign-admin-roles.md)」を参照してください。
-
-
 
 ## <a name="detection"></a>検出
 
@@ -104,7 +88,6 @@ Azure Active Directory Identity Protection は、構成を分析し、ユーザ�
 Azure Active Directory は、アダプティブ機械学習アルゴリズムとヒューリスティックを使用して、ユーザーの ID に関連する疑わしいアクションを検出します。 疑わしいアクションが検出されると、アクションごとにレコードが作成されます。 こうしたレコードは、リスク イベントとも呼ばれます。  
 詳細については、「[Azure Active Directory risk events (Azure Active Directory リスク イベント)](../active-directory-identity-protection-risk-events.md)」を参照してください。
 
-
 ## <a name="investigation"></a>調査
 
 Identity Protection を使用するときは、通常、Identity Protection ダッシュボードから開始します。
@@ -113,29 +96,26 @@ Identity Protection を使用するときは、通常、Identity Protection ダ�
 
 ダッシュボードからは次のものにアクセスできます。
 
-* **リスクのフラグ付きユーザー**、**リスク イベント**、**脆弱性**などのレポート
-* **セキュリティ ポリシー**、**通知**、**多要素認証の登録**の構成などの設定
+- **リスクのフラグ付きユーザー**、**リスク イベント**、**脆弱性**などのレポート
+- **セキュリティ ポリシー**、**通知**、**多要素認証の登録**の構成などの設定
 
 通常、これが調査の起点になります。調査は、修復または軽減の手順が必要であるかどうかを決定し、ID が侵害を受けているかどうか、およびどのように侵害されたかを理解し、侵害された ID がどのように使用されたかを理解するために、アクティビティ、ログ、およびリスク イベントに関連するその他の関連情報を確認するプロセスです。
 
 調査アクティビティを、Azure Active Directory Protection が電子メールごとに送信する [通知](notifications.md) と関連付けることができます。
-
-
 
 ## <a name="policies"></a>ポリシー
 
 応答の自動化の実装に、Azure Active Directory Identity Protection では、次の 3 つのポリシーを用意しています。
 
 - [Multi-Factor Authentication 登録ポリシー](howto-mfa-policy.md)
-
 - [ユーザー リスク ポリシー](howto-user-risk-policy.md)
-
 - [サインインのリスク ポリシー](howto-sign-in-risk-policy.md)
 
+## <a name="license-requirements"></a>ライセンスの要件
+
+[!INCLUDE [Active Directory P2 license](../../../includes/active-directory-p2-license.md)]
 
 ## <a name="next-steps"></a>次の手順
 
 - [Channel 9:Azure AD and Identity Show: Identity Protection Preview](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview) (Channel 9: Azure AD および Identity ショー: Identity Protection プレビュー)
-
 - [Azure Active Directory Identity Protection の有効化](enable.md)
-

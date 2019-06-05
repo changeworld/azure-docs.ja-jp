@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 04/25/2019
+ms.date: 05/16/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: ce23b891decd20db239e653702533ac7af21b980
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 5d964ebd40ac1bd8817bc93d5e4f78096f221be2
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65073336"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65977759"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Azure リソースの組み込みロール
 
@@ -56,12 +56,14 @@ ms.locfileid: "65073336"
 | [Avere オペレーター](#avere-operator) | クラスターを管理するために Avere vFXT クラスターによって使用されます |
 | [Azure Kubernetes Service クラスター管理者ロール](#azure-kubernetes-service-cluster-admin-role) | クラスター管理者の資格情報アクションを一覧表示します。 |
 | [Azure Kubernetes Service クラスター ユーザー ロール](#azure-kubernetes-service-cluster-user-role) | クラスター ユーザーの資格情報アクションを一覧表示します。 |
+| [Azure Maps データ閲覧者 (プレビュー)](#azure-maps-data-reader-preview) | Azure Maps アカウントからマップ関連データを読み取るためのアクセス権を付与します。 |
 | [Azure Stack Registration Owner](#azure-stack-registration-owner) | Azure Stack の登録を管理できます。 |
 | [Backup Contributor](#backup-contributor) | バックアップ サービスを管理できますが、資格情報コンテナーの作成や他のユーザーに対するアクセス権の付与を行うことはできません |
 | [Backup Operator](#backup-operator) | バックアップ サービスを管理できます (バックアップの削除、資格情報コンテナーの作成、他のユーザーに対するアクセス権の付与を除く) |
 | [Backup Reader](#backup-reader) | バックアップ サービスを表示できますが、変更を行うことはできません |
 | [Billing Reader](#billing-reader) | 課金データへの読み取りアクセスを許可します |
 | [BizTalk Contributor](#biztalk-contributor) | BizTalk Services を管理できます。ただし、それらへのアクセスは含まれません。 |
+| [ブロックチェーン メンバー ノードへのアクセス (プレビュー)](#blockchain-member-node-access-preview) | ブロックチェーン メンバー ノードにアクセスできるようにします |
 | [CDN Endpoint Contributor](#cdn-endpoint-contributor) | CDN エンドポイントを管理できますが、アクセス権を他のユーザーに付与することはできません。 |
 | [CDN Endpoint Reader](#cdn-endpoint-reader) | CDN エンドポイントを表示できますが、変更はできません。 |
 | [CDN Profile Contributor](#cdn-profile-contributor) | CDN プロファイルとそのエンドポイントを管理できますが、アクセス権を他のユーザーに付与することはできません。 |
@@ -86,6 +88,7 @@ ms.locfileid: "65073336"
 | [DevTest Labs User](#devtest-labs-user) | Azure DevTest Labs で仮想マシンの接続、起動、再起動、シャットダウンができます。 |
 | [DNS Zone Contributor](#dns-zone-contributor) | Azure DNS の DNS ゾーンとレコード セットを管理できますが、それにアクセスできるユーザーを制御することはできません。 |
 | [DocumentDB Account Contributor](#documentdb-account-contributor) | Azure Cosmos DB アカウントを管理できます。 Azure Cosmos DB は以前は DocumentDB と呼ばれていました。 |
+| [Event Hubs データ所有者](#event-hubs-data-owner) | Azure Event Hubs リソースへのフル アクセスを許可します | 
 | [EventGrid EventSubscription 共同作成者](#eventgrid-eventsubscription-contributor) | EventGrid のイベント サブスクリプション操作を管理できます。 |
 | [EventGrid EventSubscription 閲覧者](#eventgrid-eventsubscription-reader) | EventGrid のイベント サブスクリプションを読み取ることができます。 |
 | [HDInsight クラスター オペレーター](#hdinsight-cluster-operator) | HDInsight クラスター構成の読み取りと変更を実行できます。 |
@@ -116,6 +119,7 @@ ms.locfileid: "65073336"
 | [Security Admin](#security-admin) | Security Center のみ: セキュリティ ポリシーの表示、セキュリティ状態の表示、セキュリティ ポリシーの編集、アラートと推奨事項の表示、アラートと推奨事項の却下を行うことができます |
 | [セキュリティ マネージャー (レガシ)](#security-manager-legacy) | これは、レガシ ロールです。 代わりにセキュリティ管理者をご使用ください。 |
 | [Security Reader](#security-reader) | Security Center のみ: 推奨事項とアラート、セキュリティ ポリシー、セキュリティの状態を表示することはできますが、変更することはできません |
+| [Service Bus データ所有者](#service-bus-data-owner) | Azure Service Bus リソースへのフル アクセスを許可します |
 | [Site Recovery Contributor](#site-recovery-contributor) | 資格情報コンテナーの作成とロールの割り当てを除く、Site Recovery サービスを管理できます |
 | [Site Recovery Operator](#site-recovery-operator) | フェールオーバーとフェールバックを実行できますが、その他の Site Recovery 管理操作は実行しません |
 | [Site Recovery Reader](#site-recovery-reader) | Site Recovery の状態を表示できますが、その他の管理操作は実行できません |
@@ -574,6 +578,21 @@ ms.locfileid: "65073336"
 > | **NotDataActions** |  |
 > | "*なし*" |  |
 
+## <a name="azure-maps-data-reader-preview"></a>Azure Maps データ閲覧者 (プレビュー)
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **説明** | Azure Maps アカウントからマップ関連データを読み取るためのアクセス権を付与します。 |
+> | **Id** | 423170ca-a8f6-4b0f-8487-9e4eb8f49bfa |
+> | **アクション** |  |
+> | "*なし*" |  |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | Microsoft.Maps/accounts/data/read | Maps アカウントにデータ読み取りアクセスを許可します。 |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
+
 ## <a name="azure-stack-registration-owner"></a>Azure Stack Registration Owner
 > [!div class="mx-tableFixed"]
 > | | |
@@ -812,6 +831,21 @@ ms.locfileid: "65073336"
 > | "*なし*" |  |
 > | **DataActions** |  |
 > | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
+
+## <a name="blockchain-member-node-access-preview"></a>ブロックチェーン メンバー ノードへのアクセス (プレビュー)
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **説明** | ブロックチェーン メンバー ノードにアクセスできるようにします |
+> | **Id** | 31a002a1-acaf-453e-8a5b-297c9ca1ea24 |
+> | **アクション** |  |
+> | Microsoft.Blockchain/blockchainMembers/transactionNodes/read | 既存のブロックチェーン メンバーのトランザクション ノードを取得または一覧表示します。 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | Microsoft.Blockchain/blockchainMembers/transactionNodes/connect/action | ブロックチェーン メンバーのトランザクション ノードに接続します。 |
 > | **NotDataActions** |  |
 > | "*なし*" |  |
 
@@ -1139,6 +1173,8 @@ ms.locfileid: "65073336"
 > | Microsoft.Resources/subscriptions/read | サブスクリプションの一覧を取得します。 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Advisor/configurations/read | 構成の取得 |
+> | Microsoft.Advisor/recommendations/read | 推奨事項を読み取ります。 |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
@@ -1159,6 +1195,8 @@ ms.locfileid: "65073336"
 > | Microsoft.Resources/subscriptions/read | サブスクリプションの一覧を取得します。 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Advisor/configurations/read | 構成の取得 |
+> | Microsoft.Advisor/recommendations/read | 推奨事項を読み取ります。 |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
@@ -1198,6 +1236,7 @@ ms.locfileid: "65073336"
 > | Microsoft.Databox/jobs/listsecrets/action |  |
 > | Microsoft.Databox/jobs/listcredentials/action | 注文に関連する暗号化されていない資格情報を一覧表示します。 |
 > | Microsoft.Databox/locations/availableSkus/action | このメソッドは、使用可能な SKU の一覧を返します。 |
+> | Microsoft.Databox/locations/validateAddress/action | 配送先住所を検証し、存在する場合には別の住所を指定します。 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 指定されたスコープのすべてのリソースの利用状況を取得します。 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
 > | **NotActions** |  |
@@ -1299,6 +1338,7 @@ ms.locfileid: "65073336"
 > | Microsoft.DevTestLab/*/read | ラボのプロパティの読み取り |
 > | Microsoft.DevTestLab/labs/claimAnyVm/action | ラボ内のランダムに要求可能な仮想マシンを要求します。 |
 > | Microsoft.DevTestLab/labs/createEnvironment/action | ラボで仮想マシンを作成します。 |
+> | Microsoft.DevTestLab/labs/ensureCurrentUserProfile/action | 現在のユーザーがラボで有効なプロファイルを持っていることを確認します。 |
 > | Microsoft.DevTestLab/labs/formulas/delete | 数式を削除します。 |
 > | Microsoft.DevTestLab/labs/formulas/read | 数式を読み取ります。 |
 > | Microsoft.DevTestLab/labs/formulas/write | 数式を追加または変更します。 |
@@ -1369,6 +1409,22 @@ ms.locfileid: "65073336"
 > | **NotDataActions** |  |
 > | "*なし*" |  |
 
+## <a name="event-hubs-data-owner"></a>Event Hubs データ所有者
+
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **説明** | Azure Event Hubs リソースへのフル アクセスを許可します。 |
+> | **Id** | f526a384-b230-433a-b45c-95f59c4a2dec |
+> | **アクション** |  |
+> | Microsoft.EventHubs/* | Event Hubs 名前空間のデータへのフル管理アクセスを許可します |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | Microsoft.EventHubs/* | Event Hubs 名前空間へのフル データ アクセスを許可します |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
+
 ## <a name="eventgrid-eventsubscription-contributor"></a>EventGrid EventSubscription 共同作成者
 > [!div class="mx-tableFixed"]
 > | | |
@@ -1426,6 +1482,7 @@ ms.locfileid: "65073336"
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Resources/deployments/operations/read | デプロイ操作を取得または一覧表示します。 |
 > | Microsoft.Insights/alertRules/* | Insights アラート ルールの作成と管理 |
+> | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
 > | **NotActions** |  |
 > | "*なし*" |  |
@@ -2019,6 +2076,22 @@ ms.locfileid: "65073336"
 > | **NotDataActions** |  |
 > | "*なし*" |  |
 
+## <a name="service-bus-data-owner"></a>Service Bus データ所有者
+
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **説明** | Azure Service Bus リソースへのフル アクセスを許可します。 |
+> | **Id** | 090c5cfd-751d-490a-894a-3ce6f1109419 |
+> | **アクション** |  |
+> | Microsoft.ServiceBus/* | Service Bus 名前空間のデータへのフル管理アクセスを許可します |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | Microsoft.ServiceBus/* | Service Bus 名前空間へのフル データ アクセスを許可します |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
+
 ## <a name="site-recovery-contributor"></a>Site Recovery Contributor
 > [!div class="mx-tableFixed"]
 > | | |
@@ -2482,7 +2555,7 @@ ms.locfileid: "65073336"
 > | **説明** | Azure Storage Blob コンテナーとデータに対するフル アクセス (POSIX アクセスの制御の割り当てを含む) を提供します。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-rest-operations)」をご覧ください。 |
 > | **Id** | b7e6dc6d-f1e8-4753-8033-0f276bb0955b |
 > | **アクション** |  |
-> | Microsoft.Storage/storageAccounts/blobServices/containers/* | コンテナーのフル アクセス許可。  |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/* | コンテナーのフル アクセス許可。 |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |

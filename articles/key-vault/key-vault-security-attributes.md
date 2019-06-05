@@ -2,23 +2,22 @@
 title: Azure Key Vault の一般的なセキュリティ属性
 description: Azure Key Vault を評価するための一般的なセキュリティ属性のチェックリスト
 services: key-vault
-documentationcenter: ''
 author: msmbaldwin
 manager: barbkess
 ms.service: key-vault
 ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: mbaldwin
-ms.openlocfilehash: fa36a3c1eb6bda109c7985fa7cade496d2ccf9f4
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 1c2265ff5f4c444121bf70c35145703f1b9fe981
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59677801"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66000193"
 ---
-# <a name="common-security-attributes-for-azure-key-vault"></a>Azure Key Vault の一般的なセキュリティ属性
+# <a name="security-attributes-for-azure-key-vault"></a>Azure Key Vault のセキュリティ属性
 
-セキュリティは、Azure サービスのすべての要素に統合されています。 この記事では、Azure Key Vault に組み込まれている一般的なセキュリティ属性について説明します。 
+この記事では、Azure Key Vault に組み込まれているセキュリティ属性について説明します。 
 
 [!INCLUDE [Security Attributes Header](../../includes/security-attributes-header.md)]
 
@@ -36,10 +35,10 @@ ms.locfileid: "59677801"
 
 | セキュリティ属性 | はい/いいえ | メモ |
 |---|---|--|
-| サービス エンドポイントのサポート| はい | Virtual Network (VNet) サービス エンドポイントを使用します。 |
-| VNet インジェクションのサポート| いいえ  |  |
-| ネットワークの分離/ファイアウォールのサポート| はい | Vnet ファイアウォール ルールを使用します。 |
-| 強制トンネリングのサポート | いいえ  |  |
+| サービス エンドポイントのサポート| はい | Virtual Network (VNet) サービス エンドポイントを使用。 |
+| VNet インジェクションのサポート| いいえ |  |
+| ネットワークの分離とファイアウォールのサポート| はい | VNet ファイアウォール規則を使用。 |
+| 強制トンネリングのサポート| いいえ |  |
 
 ## <a name="detection"></a>検出
 
@@ -47,12 +46,12 @@ ms.locfileid: "59677801"
 |---|---|--|
 | Azure 監視サポート (Log analytics や App Insights など)| はい | Log Analytics を使用します。 |
 
-## <a name="iam-support"></a>IAM サポート
+## <a name="identity-and-access-management"></a>ID 管理とアクセス管理
 
 | セキュリティ属性 | はい/いいえ | メモ|
 |---|---|--|
-| アクセス管理 - 認証| はい | 認証は Azure Active Directory を介して行われます。 |
-| アクセス管理 - 承認| はい | Key Vault アクセス ポリシーを使用します。 |
+| 認証| はい | 認証は Azure Active Directory を介して行われます。 |
+| 承認| はい | Key Vault アクセス ポリシーを使用します。 |
 
 
 ## <a name="audit-trail"></a>監査証跡

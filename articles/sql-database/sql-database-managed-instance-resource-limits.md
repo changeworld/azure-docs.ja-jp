@@ -11,13 +11,13 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp
 manager: craigg
-ms.date: 02/27/2019
-ms.openlocfilehash: e2068283414ef2fabb44e9876f6727cc0fe3530b
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.date: 05/22/2019
+ms.openlocfilehash: e091ec29c810fce7a39ad5aa5cc8f0ddae711752
+ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65233507"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66016402"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Azure SQL Database Managed Instance のリソース制限の概要
 
@@ -56,8 +56,8 @@ Managed Instance には、General Purpose と Business Critical の 2 つのサ�
 | インスタンスごとの最大データベース数 | 100 | 100 |
 | インスタンスごとの最大データベース ファイル数 | 最大 280 | データベースあたり 32,767 ファイル |
 | データ/ログの IOPS (概算) | ファイルあたり 500 ～ 7,500<br/>\*[ファイル サイズによって異なる](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes)| 11 K - 110 K (1,375/仮想コア) |
-| ログ スループット | インスタンスあたり 22 MB/秒 | 仮想コアあたり 3 MB/秒<br/>インスタンスあたり最大 48 MB/秒|
-| データ スループット (概算) | ファイルあたり 100 ～ 250 MB/秒<br/>\*[ファイル サイズによって異なる](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | 仮想コアあたり 24 ～ 48 MB/秒 |
+| ログ スループット | 仮想コアあたり 3 MB/秒<br/>インスタンスあたり最大 22 MB/秒 | 仮想コアあたり 4 MB/秒<br/>インスタンスあたり最大 48 MB/秒|
+| データ スループット (概算) | ファイルあたり 100 ～ 250 MB/秒<br/>\*[ファイル サイズによって異なる](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | |
 | IO 待機時間 (概算) | 5 ～ 10 ms | 1 ～ 2 ms |
 | 最大 tempDB サイズ | 192 ～ 1,920 GB (仮想コアあたり 24 GB) | 制約なし - 最大インスタンス ストレージ サイズにより制限される |
 
@@ -135,13 +135,13 @@ Managed Instance は現在、次の種類のサブスクリプションのみで
 現在のリージョンでより多くの Managed Instance が必要な場合、Azure portal を使用してクォータを拡張するためのサポート要求を送信できます。
 より大きなクォータを取得するプロセスを開始するには、次の手順を実行します。
 
-1. **[ヘルプとサポート]** を開き、**[新しいサポート要求]** をクリックします。
+1. **[ヘルプとサポート]** を開き、 **[新しいサポート要求]** をクリックします。
 
    ![ヘルプとサポート](media/sql-database-managed-instance-resource-limits/help-and-support.png)
 2. 新しいサポート要求の [基本] タブで、次の手順を実行します。
-   - **[問題の種類]** で、**[サービスとサブスクリプションの制限 (クォータ)]** を選択します。
+   - **[問題の種類]** で、 **[サービスとサブスクリプションの制限 (クォータ)]** を選択します。
    - **[サブスクリプション]** で、ご使用のサブスクリプションを選択します。
-   - **[クォータの種類]** で、**[SQL Database Managed Instance]** を選択します。
+   - **[クォータの種類]** で、 **[SQL Database Managed Instance]** を選択します。
    - **[サポート プラン]** で、お使いのサポート プランを選択します。
 
      ![[問題の種類] クォータ](media/sql-database-managed-instance-resource-limits/issue-type-quota.png)

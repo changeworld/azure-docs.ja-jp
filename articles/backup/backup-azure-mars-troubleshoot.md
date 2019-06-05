@@ -6,24 +6,44 @@ author: saurabhsensharma
 manager: shivamg
 ms.service: backup
 ms.topic: conceptual
-ms.date: 02/18/2019
+ms.date: 05/21/2019
 ms.author: saurse
-ms.openlocfilehash: e36e0813b7a50c659a2c3ae61350381e83a1823f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 122f0884469a4901b02a1c86dd5ec98ef4fb24b0
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64686194"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66000249"
 ---
 # <a name="troubleshoot-microsoft-azure-recovery-services-mars-agent"></a>Microsoft Azure Recovery Services (MARS) エージェントをトラブルシューティングする
 
 以下に、構成、登録、バックアップ、および復元中に発生する可能性があるエラーの解決方法を示します。
 
+## <a name="basic-troubleshooting"></a>基本的なトラブルシューティング
+
+Microsoft Azure Recovery Services (MARS) のトラブルシューティングを開始する前に、以下の検証を実行することをお勧めします。
+
+- [Microsoft Azure Recovery Services (MARS) エージェントが最新であることを確認する](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)
+- [MARS エージェントと Azure の間にネットワーク接続が存在することを確認する](https://aka.ms/AB-A4dp50)
+- Microsoft Azure Recovery Services が (サービス コンソールで) 実行されていることを確認します。 必要に応じて、再起動して操作をやり直します
+- [スクラッチ フォルダーの場所に 5 から 10% の空きボリューム領域があることを確認する](https://aka.ms/AB-AA4dwtt)
+- [別のプロセスまたはウイルス対策ソフトウェアによって Azure Backup が妨げられているかどうかを確認する](https://aka.ms/AB-AA4dwtk)
+- [スケジュールされたバックアップが失敗したが、手動バックアップは機能する](https://aka.ms/ScheduledBackupFailManualWorks)
+- OS に最新の更新プログラムが適用されていることを確認する
+- [サポートされていない属性を持つサポートされていないドライブとファイルはバックアップから除外されることを確認する](backup-support-matrix-mars-agent.md#supported-drives-or-volumes-for-backup)
+- 保護されているシステム上の**システム クロック**が適切なタイム ゾーンに構成されていることを確認します <br>
+- [サーバーに .Net Framework バージョン 4.5.2 以降がインストールされていることを確認します](https://www.microsoft.com/download/details.aspx?id=30653)<br>
+- コンテナーに**サーバーを再登録**する場合は、次のことを行います。 <br>
+  - エージェントがサーバーからアンインストールされていることと、ポータルから削除されていることを確認します <br>
+  - 最初にサーバーの登録に使用したのと同じパスフレーズを使用します <br>
+- オフライン バックアップの場合は、ソース コンピューターとコピー用コンピューターの両方に Azure PowerShell バージョン 3.7.0 がインストールされていることを確認します
+- [Azure 仮想マシン (VM) 上で Backup エージェントが実行されている場合の考慮事項](https://aka.ms/AB-AA4dwtr)
+
 ## <a name="invalid-vault-credentials-provided"></a>無効なコンテナーの資格情報が指定されました
 
 | エラーの詳細 | 考えられる原因 | 推奨アクション |
 | ---     | ---     | ---    |
-| **Error** </br> *無効なコンテナーの資格情報が指定されました。ファイルが破損しているか、最新の資格情報が回復サービスと関連付けられていません。(ID: 34513)* | <ul><li> コンテナーの資格情報が有効ではありません (つまり、登録の時刻より 48 時間以上前にダウンロードされました)。<li>MARS エージェントが Windows の Temp ディレクトリにファイルをダウンロードできません。 <li>コンテナーの資格情報がネットワークの場所にあります。 <li>TLS 1.0 が無効です<li> 構成されたプロキシ サーバーが接続をブロックしています。 <br> |  <ul><li>新しいコンテナー資格情報をダウンロードします (**注**: 既に複数のコンテナー資格情報ファイルをダウンロードされている場合は、48 時間以内にダウンロードされた最新のファイルのみが有効になります)。 <li>**IE** > **[設定]** > **[インターネット オプション]** > **[セキュリティ]** > **[インターネット]** を起動します。 次に、**[レベルのカスタマイズ]** を選択し、ファイル ダウンロード セクションが表示されるまでスクロールします。 その後、**[有効化]** を選択します。<li>IE の[信頼済みサイト](https://docs.microsoft.com/azure/backup/backup-configure-vault#verify-internet-access)へのサイトの追加が必要な場合もあります。<li>プロキシ サーバーを使用するように設定を変更します。 その後、プロキシ サーバーの詳細を指定します。 <li> 日付と時刻をコンピューターと一致させます。<li>ファイルのダウンロードが許可されていないことを示すエラーが発生する場合は、C:/Windows/Temp ディレクトリ内に多数のファイルが存在している可能性があります。<li>C:/Windows/Temp に移動し、拡張子が .tmp のファイルが 60,000 または 65,000 個より多くあるかどうかを確認します。 ある場合は、それらのファイルを削除します。<li>.NET Framework 4.6.2 がインストールされていることを確認します。 <li>PCI のコンプライアンスのために TLS 1.0 を無効にしてある場合は、こちらの[トラブルシューティング ページ](https://support.microsoft.com/help/4022913)をご覧ください。 <li>サーバーにウイルス対策ソフトウェアがインストールされている場合は、次のファイルをウイルス対策スキャンから除外します。 <ul><li>CBengine.exe<li>CSC.exe (.NET Framework に関連するもの)。 CSC.exe は、サーバーにインストールされているすべての .NET のバージョンに対して存在します。 影響を受けるサーバー上の .NET Framework の各バージョンに関連付けられている CSC.exe ファイルを除外してください。 <li>スクラッチ フォルダーまたはキャッシュの場所。 <br>*スクラッチ フォルダーまたはキャッシュの場所のパスの既定の場所は、C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch です*。<br><li>bin フォルダー C:\Program Files\Microsoft Azure Recovery Services Agent\Bin
+| **Error** </br> *無効なコンテナーの資格情報が指定されました。ファイルが破損しているか、最新の資格情報が回復サービスと関連付けられていません。(ID: 34513)* | <ul><li> コンテナーの資格情報が有効ではありません (つまり、登録の時刻より 48 時間以上前にダウンロードされました)。<li>MARS エージェントが Windows の Temp ディレクトリにファイルをダウンロードできません。 <li>コンテナーの資格情報がネットワークの場所にあります。 <li>TLS 1.0 が無効です<li> 構成されたプロキシ サーバーが接続をブロックしています。 <br> |  <ul><li>新しいコンテナー資格情報をダウンロードします (**注**: 既に複数のコンテナー資格情報ファイルをダウンロードされている場合は、48 時間以内にダウンロードされた最新のファイルのみが有効になります)。 <li>**IE** >  **[設定]**  >  **[インターネット オプション]**  >  **[セキュリティ]**  >  **[インターネット]** を起動します。 次に、 **[レベルのカスタマイズ]** を選択し、ファイル ダウンロード セクションが表示されるまでスクロールします。 その後、 **[有効化]** を選択します。<li>IE の[信頼済みサイト](https://docs.microsoft.com/azure/backup/backup-configure-vault#verify-internet-access)へのサイトの追加が必要な場合もあります。<li>プロキシ サーバーを使用するように設定を変更します。 その後、プロキシ サーバーの詳細を指定します。 <li> 日付と時刻をコンピューターと一致させます。<li>ファイルのダウンロードが許可されていないことを示すエラーが発生する場合は、C:/Windows/Temp ディレクトリ内に多数のファイルが存在している可能性があります。<li>C:/Windows/Temp に移動し、拡張子が .tmp のファイルが 60,000 または 65,000 個より多くあるかどうかを確認します。 ある場合は、それらのファイルを削除します。<li>.NET Framework 4.6.2 がインストールされていることを確認します。 <li>PCI のコンプライアンスのために TLS 1.0 を無効にしてある場合は、こちらの[トラブルシューティング ページ](https://support.microsoft.com/help/4022913)をご覧ください。 <li>サーバーにウイルス対策ソフトウェアがインストールされている場合は、次のファイルをウイルス対策スキャンから除外します。 <ul><li>CBengine.exe<li>CSC.exe (.NET Framework に関連するもの)。 CSC.exe は、サーバーにインストールされているすべての .NET のバージョンに対して存在します。 影響を受けるサーバー上の .NET Framework の各バージョンに関連付けられている CSC.exe ファイルを除外してください。 <li>スクラッチ フォルダーまたはキャッシュの場所。 <br>*スクラッチ フォルダーまたはキャッシュの場所のパスの既定の場所は、C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch です*。<br><li>bin フォルダー C:\Program Files\Microsoft Azure Recovery Services Agent\Bin
 
 ## <a name="unable-to-download-vault-credential-file"></a>コンテナーの資格情報ファイルをダウンロードできない
 
@@ -35,7 +55,7 @@ ms.locfileid: "64686194"
 
 | エラーの詳細 | 考えられる原因 | 推奨アクション |
 | ---     | ---     | ---    |
-| **Error** <br /><ol><li>*Microsoft Azure Recovery Services Agent は Microsoft Azure Backup に接続できませんでした。(ID: 100050) ネットワーク設定を調べて、インターネットに接続できることを確認してください*<li>*(407) プロキシの認証が必要です* |プロキシが接続をブロックしています。 |  <ul><li>**IE** > **[設定]** > **[インターネット オプション]** > **[セキュリティ]** > **[インターネット]** を起動します。 次に、**[レベルのカスタマイズ]** を選択し、ファイル ダウンロード セクションが表示されるまでスクロールします。 **[有効化]** を選択します。<li>IE の[信頼済みサイト](https://docs.microsoft.com/azure/backup/backup-try-azure-backup-in-10-mins)へのサイトの追加が必要な場合もあります。<li>プロキシ サーバーを使用するように設定を変更します。 その後、プロキシ サーバーの詳細を指定します。 <li>サーバーにウイルス対策ソフトウェアがインストールされている場合は、次のファイルをウイルス対策スキャンから除外します。 <ul><li>CBEngine.exe (dpmra.exe ではありません)。<li>CSC.exe (.NET Framework に関連するもの)。 CSC.exe は、サーバーにインストールされているすべての .NET のバージョンに対して存在します。 影響を受けるサーバー上の .NET Framework のすべてのバージョンに関連付けられている CSC.exe ファイルを除外してください。 <li>スクラッチ フォルダーまたはキャッシュの場所。 <br>*スクラッチ フォルダーまたはキャッシュの場所のパスの既定の場所は、C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch です*。<li>bin フォルダー C:\Program Files\Microsoft Azure Recovery Services Agent\Bin
+| **Error** <br /><ol><li>*Microsoft Azure Recovery Services Agent は Microsoft Azure Backup に接続できませんでした。(ID: 100050) ネットワーク設定を調べて、インターネットに接続できることを確認してください*<li>*(407) プロキシの認証が必要です* |プロキシが接続をブロックしています。 |  <ul><li>**IE** >  **[設定]**  >  **[インターネット オプション]**  >  **[セキュリティ]**  >  **[インターネット]** を起動します。 次に、 **[レベルのカスタマイズ]** を選択し、ファイル ダウンロード セクションが表示されるまでスクロールします。 **[有効化]** を選択します。<li>IE の[信頼済みサイト](https://docs.microsoft.com/azure/backup/backup-try-azure-backup-in-10-mins)へのサイトの追加が必要な場合もあります。<li>プロキシ サーバーを使用するように設定を変更します。 その後、プロキシ サーバーの詳細を指定します。 <li>サーバーにウイルス対策ソフトウェアがインストールされている場合は、次のファイルをウイルス対策スキャンから除外します。 <ul><li>CBEngine.exe (dpmra.exe ではありません)。<li>CSC.exe (.NET Framework に関連するもの)。 CSC.exe は、サーバーにインストールされているすべての .NET のバージョンに対して存在します。 影響を受けるサーバー上の .NET Framework のすべてのバージョンに関連付けられている CSC.exe ファイルを除外してください。 <li>スクラッチ フォルダーまたはキャッシュの場所。 <br>*スクラッチ フォルダーまたはキャッシュの場所のパスの既定の場所は、C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch です*。<li>bin フォルダー C:\Program Files\Microsoft Azure Recovery Services Agent\Bin
 
 
 ## <a name="failed-to-set-the-encryption-key-for-secure-backups"></a>セキュリティで保護されたバックアップ用に暗号化キーを設定できませんでした
@@ -61,7 +81,7 @@ ms.locfileid: "64686194"
 手動によるバックアップが問題なく動作しているのに、スケジュールされたバックアップが自動的にトリガーされないときは、以下の操作を試してください。
 
 - Windows Server のバックアップ スケジュールが、Azure のファイルとフォルダーのバックアップ スケジュールと競合していないことを確認します。
-- **[コントロール パネル]** > **[管理ツール]** > **[タスク スケジューラ]** の順に移動します。 **[Microsoft]** を展開し、**[オンライン バックアップ]** を選択します。 **[Microsoft-OnlineBackup]\(Microsoft オンライン バックアップ\)** をダブルクリックし、**[トリガー]** タブに移動します。状態が **[有効]** に設定されていることを確認します。 そうでない場合は、**[編集]** を選択し、**[有効]** チェック ボックスをオンにして、**[OK]** をクリックします。 **[全般]** タブで **[セキュリティ オプション]** に移動し、タスク実行のために選択したユーザー アカウントが **SYSTEM**、またはサーバー上の**ローカル管理者のグループ**であることを確認します。
+- **[コントロール パネル]**  >  **[管理ツール]**  >  **[タスク スケジューラ]** の順に移動します。 **[Microsoft]** を展開し、 **[オンライン バックアップ]** を選択します。 **[Microsoft-OnlineBackup]\(Microsoft オンライン バックアップ\)** をダブルクリックし、 **[トリガー]** タブに移動します。状態が **[有効]** に設定されていることを確認します。 そうでない場合は、 **[編集]** を選択し、 **[有効]** チェック ボックスをオンにして、 **[OK]** をクリックします。 **[全般]** タブで **[セキュリティ オプション]** に移動し、タスク実行のために選択したユーザー アカウントが **SYSTEM**、またはサーバー上の**ローカル管理者のグループ**であることを確認します。
 
 - PowerShell 3.0 以降がサーバーにインストールされているかどうかを確認します。 PowerShell のバージョンを確認するために次のコマンドを実行し、"*メジャー*" バージョン番号が 3 以上であることを確認します。
 
@@ -87,19 +107,19 @@ Azure Backup が、数分たっても回復ボリュームに正常にマウン�
 
 1.  進行中のマウント プロセスが数分間実行されている場合は取り消します。
 
-2.  Backup エージェントが最新バージョンであるかどうかを確認します。 バージョンを調べるには、MARS コンソールの **[アクション]** ウィンドウで、**[About Microsoft Azure Recovery Services Agent]\(Microsoft Azure Recovery Services エージェントについて\)** を選択します。 **バージョン**番号が、[この記事](https://go.microsoft.com/fwlink/?linkid=229525)に記載されているバージョン以上であることを確認します。 最新バージョンは、[こちら](https://go.microsoft.com/fwLink/?LinkID=288905)からダウンロードできます。
+2.  Backup エージェントが最新バージョンであるかどうかを確認します。 バージョンを調べるには、MARS コンソールの **[アクション]** ウィンドウで、 **[About Microsoft Azure Recovery Services Agent]\(Microsoft Azure Recovery Services エージェントについて\)** を選択します。 **バージョン**番号が、[この記事](https://go.microsoft.com/fwlink/?linkid=229525)に記載されているバージョン以上であることを確認します。 最新バージョンは、[こちら](https://go.microsoft.com/fwLink/?LinkID=288905)からダウンロードできます。
 
-3.  **[デバイス マネージャー]** > **[ストレージ コントローラー]** の順に移動し、**Microsoft iSCSI イニシエーター**を探します。 見つかった場合は、手順 7. に進みます。
+3.  **[デバイス マネージャー]**  >  **[ストレージ コントローラー]** の順に移動し、**Microsoft iSCSI イニシエーター**を探します。 見つかった場合は、手順 7. に進みます。
 
-4.  Microsoft iSCSI イニシエーター サービスが見つからない場合は、**[デバイス マネージャー]** > **[記憶域コントローラー]** の下に、**[不明なデバイス]** という名前の、ハードウェア ID が **ROOT\ISCSIPRT** のエントリを探します。
+4.  Microsoft iSCSI イニシエーター サービスが見つからない場合は、 **[デバイス マネージャー]**  >  **[記憶域コントローラー]** の下に、 **[不明なデバイス]** という名前の、ハードウェア ID が **ROOT\ISCSIPRT** のエントリを探します。
 
-5.  **[不明なデバイス]** を右クリックし、**[ドライバー ソフトウェアの更新]** を選択します。
+5.  **[不明なデバイス]** を右クリックし、 **[ドライバー ソフトウェアの更新]** を選択します。
 
-6.  **[自動的に更新されたドライバ ソフトウェアを検索します]** を選択して、ドライバーを更新します。 更新が完了すると、下に示すように、**[不明なデバイス]** が **[Microsoft iSCSI イニシエーター]** に変わります。
+6.  **[自動的に更新されたドライバ ソフトウェアを検索します]** を選択して、ドライバーを更新します。 更新が完了すると、下に示すように、 **[不明なデバイス]** が **[Microsoft iSCSI イニシエーター]** に変わります。
 
     ![[記憶域コントローラー] が強調表示されている Azure Backup デバイス マネージャーのスクリーンショット](./media/backup-azure-restore-windows-server/UnknowniSCSIDevice.png)
 
-7.  **[タスク マネージャー]** > **[サービス (ローカル)]** > **[Microsoft iSCSI イニシエーター サービス]** に移動します。
+7.  **[タスク マネージャー]**  >  **[サービス (ローカル)]**  >  **[Microsoft iSCSI イニシエーター サービス]** に移動します。
 
     ![[サービス (ローカル)] が強調表示されている Azure Backup タスク マネージャーのスクリーンショット](./media/backup-azure-restore-windows-server/MicrosoftInitiatorServiceRunning.png)
 

@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: cephalin
-ms.openlocfilehash: ed6a50ee68d39e6e0d01b405eb02edd6d4c93613
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 637feb855c7816dfb26229c5a65a069260a58cd3
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65407583"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66003089"
 ---
 # <a name="configure-a-linux-php-app-for-azure-app-service"></a>Azure App Service 向けの Linux PHP アプリを構成する
 
@@ -61,7 +61,7 @@ npm install kuduscript -g
 kuduscript --php --scriptType bash --suppressPrompt
 ```
 
-リポジトリのルートには、*composer.phar* 以外に、*.deployment* と *deploy.sh* の 2 つの新しいファイルがあります。これらのファイルは、App Service の Windows および Linux 構成の両方に対して機能します。
+リポジトリのルートには、*composer.phar* 以外に、 *.deployment* と *deploy.sh* の 2 つの新しいファイルがあります。これらのファイルは、App Service の Windows および Linux 構成の両方に対して機能します。
 
 *deploy.sh* を開いて、`Deployment` セクションを見つけます。 セクション全体を次のコードに置き換えます。
 
@@ -105,7 +105,7 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 
 ## <a name="access-environment-variables"></a>環境変数へのアクセス
 
-App Service では、アプリ コードの外部で[アプリ設定を指定](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#app-settings)できます。 その後、標準の [getenv()](https://secure.php.net/manual/function.getenv.php) パターンを使用して、それらにアクセスできます。 たとえば、`DB_HOST` というアプリ設定にアクセスするには、次のコードを使用します。
+App Service では、アプリ コードの外部で[アプリ設定を指定](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)できます。 その後、標準の [getenv()](https://secure.php.net/manual/function.getenv.php) パターンを使用して、それらにアクセスできます。 たとえば、`DB_HOST` というアプリ設定にアクセスするには、次のコードを使用します。
 
 ```php
 getenv("DB_HOST")
@@ -147,11 +147,11 @@ PHP のインストールを変更する必要がある場合は、以下の手�
 > PHP のバージョンと現在の *php.ini* 構成を確認する最善の方法は、アプリで [phpinfo()](https://php.net/manual/function.phpinfo.php) を呼び出すことです。
 >
 
-### <a name="customize-non-phpinisystem-directives"></a>非 PHP_INI_SYSTEM ディレクティブをカスタマイズする
+### <a name="Customize-non-PHP_INI_SYSTEM directives">非 PHP_INI_SYSTEM ディレクティブをカスタマイズする</a>
 
-PHP_INI_USER、PHP_INI_PERDIR、および PHP_INI_ALL ディレクティブ ([php.ini ディレクティブ](https://www.php.net/manual/ini.list.php)を参照) をカスタマイズするには、*.htaccess* ファイルをアプリのルート ディレクトリに追加します。
+PHP_INI_USER、PHP_INI_PERDIR、および PHP_INI_ALL ディレクティブ ([php.ini ディレクティブ](https://www.php.net/manual/ini.list.php)を参照) をカスタマイズするには、 *.htaccess* ファイルをアプリのルート ディレクトリに追加します。
 
-*.htaccess* ファイルで、`php_value <directive-name> <value>` 構文を使用してディレクティブを追加します。 例: 
+*.htaccess* ファイルで、`php_value <directive-name> <value>` 構文を使用してディレクティブを追加します。 例:
 
 ```
 php_value upload_max_filesize 1000M
@@ -169,7 +169,7 @@ php_value upload_max_filesize 10M
 
 ### <a name="customize-phpinisystem-directives"></a>PHP_INI_SYSTEM ディレクティブをカスタマイズする
 
-PHP_INI_SYSTEM ディレクティブをカスタマイズするには ([php.ini ディレクティブ](https://www.php.net/manual/ini.list.php)を参照)、*.htaccess* アプローチは使用できません。 App Service は、`PHP_INI_SCAN_DIR` アプリ設定を使用して、別のメカニズムを提供します。
+PHP_INI_SYSTEM ディレクティブをカスタマイズするには ([php.ini ディレクティブ](https://www.php.net/manual/ini.list.php)を参照)、 *.htaccess* アプローチは使用できません。 App Service は、`PHP_INI_SCAN_DIR` アプリ設定を使用して、別のメカニズムを提供します。
 
 最初に、[Cloud Shell](https://shell.azure.com) で次のコマンドを実行して、`PHP_INI_SCAN_DIR` というアプリ設定を追加します。
 
@@ -184,7 +184,7 @@ Linux コンテナーを含む Web SSH セッションに移動します (`https
 `/home/site` に `ini` というディレクトリを作成し、続いてカスタマイズするディレクティブを使用した *.ini* ファイル (たとえば、*settings.ini*) を `/home/site/ini` ディレクトリに作成します。 *php.ini* ファイルで使用するものと同じ構文を使用します。 
 
 > [!TIP]
-> App Service でのビルトイン Linux コンテナーで、*/home* は永続化された共有ストレージとして使用されます。 
+> App Service でのビルトイン Linux コンテナーで、 */home* は永続化された共有ストレージとして使用されます。 
 >
 
 たとえば、[expose_php](https://php.net/manual/ini.core.php#ini.expose-php) の値を変更するには、次のコマンドを実行します。
@@ -233,11 +233,11 @@ zend_extension=/home/site/wwwroot/bin/xdebug.so
 動作中の PHP アプリが App Service で異なる動作をしたり、エラーが発生した場合は、次のことを試してください。
 
 - [ログ ストリームにアクセス](#access-diagnostic-logs)します。
-- 実稼働モードでローカルにアプリをテストします。 App Service では、実稼働モードで Node.js アプリが実行されるので、プロジェクトがローカルで実稼働モードで予想どおりに動作することを確認する必要があります。 例: 
+- 実稼働モードでローカルにアプリをテストします。 App Service では、実稼働モードで Node.js アプリが実行されるので、プロジェクトがローカルで実稼働モードで予想どおりに動作することを確認する必要があります。 例:
     - *composer.json* に応じて、実稼働モードに別々のパッケージ (`require` と `require-dev`) がインストールされる場合があります。
     - 特定の Web フレームワークでは、実稼働モードで静的ファイルを別にデプロイすることがあります。
     - 特定の Web フレームワークでは、実稼働モードで実行しているときにカスタム スタートアップ スクリプトを使用することがあります。
-- デバッグ モードで Azure App Service でアプリを実行します。 たとえば、[Laravel](https://meanjs.org/) で、[`APP_DEBUG` アプリ設定を `true` に指定](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)することにより、実稼働環境でのデバッグ メッセージを出力するようにアプリを構成できます。
+- デバッグ モードで Azure App Service でアプリを実行します。 たとえば、[Laravel](https://meanjs.org/) で、[`APP_DEBUG` アプリ設定を `true` に指定](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)することにより、実稼働環境でのデバッグ メッセージを出力するようにアプリを構成できます。
 
 ### <a name="robots933456"></a>robots933456
 

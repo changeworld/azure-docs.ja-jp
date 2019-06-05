@@ -11,27 +11,30 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 12/17/2018
+ms.date: 05/22/2019
 ms.author: juliako
-ms.openlocfilehash: 32b9664d12d6fe3a44329665c730dbc8709430f2
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 69399513291a47f7109003e825052314f447125a
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53650843"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66002324"
 ---
 # <a name="creating-filters-with-media-services-rest-api"></a>Media Services REST API を使用したフィルターの作成
 
-コンテンツ (ストリーミング ライブ イベントまたはビデオ オン デマンド) を顧客に配信する場合、クライアントは既定値のアセット マニフェスト ファイルに記載されているものよりも高い柔軟性を必要とする場合があります。 Azure Media Services では、アカウント フィルターと、コンテンツの資産フィルターを定義することができます。 詳細については、「 [フィルターと動的マニフェスト](filters-dynamic-manifest-overview.md)」を参照してください。
+コンテンツ (ストリーミング ライブ イベントまたはビデオ オン デマンド) を顧客に配信する場合、クライアントは既定値のアセット マニフェスト ファイルに記載されているものよりも高い柔軟性を必要とする場合があります。 Azure Media Services では、アカウント フィルターと、コンテンツの資産フィルターを定義することができます。 詳細については、「[フィルター](filters-concept.md)」と「[動的マニフェスト](filters-dynamic-manifest-overview.md)」を参照してください。
 
 このトピックでは、ビデオ オン デマンド アセットにフィルターを定義し、REST API を使用して[アカウント フィルター](https://docs.microsoft.com/rest/api/media/accountfilters)と[アセット フィルター](https://docs.microsoft.com/rest/api/media/assetfilters)を作成する方法を示しています。 
+
+> [!NOTE]
+> [presentationTimeRange](filters-concept.md#presentationtimerange) を必ず確認してください。
 
 ## <a name="prerequisites"></a>前提条件 
 
 このトピックで説明する手順を完了するには以下を行う必要があります。
 
 - [フィルターと動的マニフェスト](filters-dynamic-manifest-overview.md)を確認します。
-- [Azure Media Services REST API 呼び出し用の Postman を構成する](media-rest-apis-with-postman.md)
+- [Azure Media Services REST API を呼び出すように Postman を構成します](media-rest-apis-with-postman.md)。
 
     [Azure AD トークンの取得](media-rest-apis-with-postman.md#get-azure-ad-token)に関するトピックの最後の手順を必ず実行してください。 
 
@@ -96,7 +99,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 ## <a name="create-asset-filters"></a>資産フィルターの作成  
 
-ダウンロードした "Media Services v3" Postman コレクションで、**[アセット]**->**[アセット フィルターの作成または更新]** を選択します。
+ダウンロードした "Media Services v3" Postman コレクションで、 **[アセット]** -> **[アセット フィルターの作成または更新]** を選択します。
 
 **PUT** の HTTP 要求メソッドは、以下のようになります。
 
