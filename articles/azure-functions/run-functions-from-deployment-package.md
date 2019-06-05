@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: glenga
-ms.openlocfilehash: 57126c87879da9f99d224457433bbbd5f95ef021
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 88e5f1ac7834caa32302a3817e1779d0d733a7b3
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58336730"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65787542"
 ---
 # <a name="run-your-azure-functions-from-a-package-file"></a>Azure Functions をパッケージ ファイルから実行する
 
@@ -64,6 +64,13 @@ Azure Blob torage でホストされている .zip ファイルから実行す�
 ## <a name="adding-the-websiterunfrompackage-setting"></a>WEBSITE_RUN_FROM_PACKAGE 設定の追加
 
 [!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
+
+## <a name="troubleshooting"></a>トラブルシューティング
+
+- パッケージから実行すると `wwwroot` が読み取り専用になるので、このディレクトリにファイルを書き込むときにエラーを受け取ります。
+- tar および gzip 形式はサポートされていません。
+- この機能はローカル キャッシュでは構成されません。
+- コールドスタートのパフォーマンスを向上するには、ローカルの Zip オプション (`WEBSITE_RUN_FROM_PACKAGE` = 1) を使用します。
 
 ## <a name="next-steps"></a>次の手順
 

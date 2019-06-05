@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: 1e689d7ce65fda43e5657383ed44890c90c095cd
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: af801600eebed7c0d4ff01dd1edf01fa595840eb
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025691"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65785765"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Custom Speech 用のテスト データを準備する
 
@@ -27,15 +27,15 @@ Microsoft 音声認識の精度をテストしているか、または独自の�
 
 | データ型 | テストの使用 | Quantity | トレーニングに使用 | Quantity |
 |-----------|-----------------|----------|-------------------|----------|
-| [オーディオ](#audio-data-for-testing) | はい<br>目視検査に使用 | 5 つ以上のオーディオ ファイル | いいえ  | 該当なし |
+| [オーディオ](#audio-data-for-testing) | はい<br>目視検査に使用 | 5 つ以上のオーディオ ファイル | いいえ | 該当なし |
 | [オーディオ + 人間というラベルが付いたトランスクリプト](#audio--human-labeled-transcript-data-for-testingtraining) | はい<br>精度を評価するために使用 | 0.5 - 5 時間のオーディオ | はい | 1 - 1,000 時間のオーディオ |
-| [関連するテキスト](##related-text-data-for-training) | いいえ  | 該当なし | はい | 1 - 200 MB の関連テキスト |
+| [関連するテキスト](##related-text-data-for-training) | いいえ | 該当なし | はい | 1 - 200 MB の関連テキスト |
 
 ファイルは種類別にデータセットにグループ化し、ZIP ファイルとしてアップロードする必要があります。 各データセットには、1 つのデータの種類のみを含めることができます。
 
 ## <a name="upload-data"></a>データのアップロード
 
-データをアップロードする準備ができたら、**[データのアップロード]** をクリックしてウィザードを起動し、最初のデータセットを作成します。 データのアップロードが許可される前に、データセットにより音声データ型を選択するように求められます。
+データをアップロードする準備ができたら、 **[データのアップロード]** をクリックしてウィザードを起動し、最初のデータセットを作成します。 データのアップロードが許可される前に、データセットにより音声データ型を選択するように求められます。
 
 ![Speech ポータルからオーディオを選択する](./media/custom-speech/custom-speech-select-audio.png)
 
@@ -85,7 +85,7 @@ Microsoft 音声認識の精度をテストしているか、または独自の�
 
 単語の削除や置換のような問題に対処するには、認識を向上させるために大量のデータが必要です。 一般に、約 10 から 1,000 時間分のオーディオについて単語単位の文字起こしを提供することをお勧めします。 すべての WAV ファイルの文字起こしは、1 つのプレーン テキスト ファイルに格納されている必要があります。 文字起こしファイルの各行には、いずれかのオーディオ ファイルの名前に続けて、対応する文字起こしが含まれている必要があります。 ファイル名と文字起こしは、タブ (\t) で区切る必要があります。
 
-  例: 
+  例:
 ```
   speech01.wav  speech recognition is awesome
   speech02.wav  the quick brown fox jumped all over the place
@@ -142,7 +142,7 @@ Microsoft 音声認識の精度をテストしているか、または独自の�
 |--------------|--------------------------|
 | three c p o | 3CPO |  
 | c n t k | CNTK |
-| i triple e | IEE |
+| i triple e | IEEE |
 
 音声フォームは、スペル アウトされた表示フォームの音声シーケンスです。これは文字、単語、音節、または 3 つすべての組み合わせで構成できます。
 

@@ -11,12 +11,12 @@ ms.date: 02/26/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a29a00c34d4c60e6ba2b4fd6b0b413873301af5c
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 48b81d508711f35a75efe1c93fe0a5556c5bb960
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56888374"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65784457"
 ---
 # <a name="what-is-azure-ad-connect"></a>Azure AD Connect とは
 
@@ -62,6 +62,11 @@ Azure AD Connect Health for AD FS では、Windows Server 2008 R2、Windows Serv
 |デプロイおよび管理が容易|[迅速なエージェント インストール](how-to-connect-health-agent-install.md#installing-the-azure-ad-connect-health-agent-for-ad-fs)</br>最新版へのエージェントの自動アップグレード</br>ポータル内で数分以内に使用可能なデータ|
 豊富な[使用状況メトリック](how-to-connect-health-adfs.md#usage-analytics-for-ad-fs)|上位のアプリケーション使用状況</br>ネットワークの場所と TCP 接続</br>サーバーごとのトークン要求|
 |優れたユーザー エクスペリエンス|Azure Portal からのダッシュボード方式</br>[電子メール経由のアラート](how-to-connect-health-adfs.md#alerts-for-ad-fs)|
+
+
+## <a name="license-requirements-for-using-azure-ad-connect"></a>Azure AD Connect を使用するためのライセンス要件
+
+[!INCLUDE [active-directory-free-license.md](../../../includes/active-directory-free-license.md)]
 
 
 

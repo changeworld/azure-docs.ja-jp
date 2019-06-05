@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 5bd977826f489ca8452432babe6126b8553450fb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2f0b01601dfb28b2b6b8ee8ca53398ec3dccb803
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58137710"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65787281"
 ---
 # <a name="http-apis-in-durable-functions-azure-functions"></a>Durable Functions (Azure Functions) での HTTP API
 
@@ -146,22 +146,22 @@ GET /runtime/webhooks/durabletask/instances/{instanceId}
 
 返される可能性がある状態コード値は、いくつかあります。
 
-* **HTTP 200 (OK)**:指定されたインスタンスが完了状態。
-* **HTTP 202 (Accepted)**:指定されたインスタンスが処理中。
-* **HTTP 400 (Bad Request)**:指定されたインスタンスが失敗したか終了した。
-* **HTTP 404 (Not Found)**:指定されたインスタンスが存在しないか実行開始されていない。
-* **HTTP 500 (Internal Server Error)**:指定されたインスタンスがハンドルされない例外で失敗した。
+* **HTTP 200 (OK)** :指定されたインスタンスが完了状態。
+* **HTTP 202 (Accepted)** :指定されたインスタンスが処理中。
+* **HTTP 400 (Bad Request)** :指定されたインスタンスが失敗したか終了した。
+* **HTTP 404 (Not Found)** :指定されたインスタンスが存在しないか実行開始されていない。
+* **HTTP 500 (Internal Server Error)** :指定されたインスタンスがハンドルされない例外で失敗した。
 
 **HTTP 200** と **HTTP 202** の場合の応答ペイロードは、次のフィールドを持つ JSON オブジェクトです。
 
 | フィールド                 | データ型 | 説明 |
 |-----------------------|-----------|-------------|
-| **`runtimeStatus`**   | 文字列    | インスタンスの実行時状態。 値には、*Running*、*Pending*、*Failed*、*Canceled*、*Terminated*、*Completed* があります。 |
+| **`runtimeStatus`**   | string    | インスタンスの実行時状態。 値には、*Running*、*Pending*、*Failed*、*Canceled*、*Terminated*、*Completed* があります。 |
 | **`input`**           | JSON      | インスタンスを初期化するために使用される JSON データ。 このフィールドは、`showInput` クエリ文字列パラメーターが `false`に設定されている場合は、`null` です。|
 | **`customStatus`**    | JSON      | カスタム オーケストレーションの状態に使用された JSON データ。 セットされていない場合、このフィールドは`null`です。 |
 | **`output`**          | JSON      | インスタンスの JSON の出力。 インスタンスが完了状態でない場合、このフィールドは `null` です。 |
-| **`createdTime`**     | 文字列    | インスタンスが作成された時刻。 ISO 8601 の拡張された表記を使用します。 |
-| **`lastUpdatedTime`** | 文字列    | インスタンスが最後に保持されていた時刻。 ISO 8601 の拡張された表記を使用します。 |
+| **`createdTime`**     | string    | インスタンスが作成された時刻。 ISO 8601 の拡張された表記を使用します。 |
+| **`lastUpdatedTime`** | string    | インスタンスが最後に保持されていた時刻。 ISO 8601 の拡張された表記を使用します。 |
 | **`historyEvents`**   | JSON      | オーケストレーションの実行履歴を含む JSON 配列。 このフィールドは、`showHistory` クエリ文字列パラメーターが `true`に設定されていない限り、`null` です。 |
 
 オーケストレーションの実行履歴とアクティビティの出力を含む応答ペイロードの例を次に示します (読みやすい形式になっています)。
@@ -366,8 +366,8 @@ DELETE /runtime/webhooks/durabletask/instances/{instanceId}
 
 以下の HTTP 状態コード値が返される可能性があります。
 
-* **HTTP 200 (OK)**:インスタンス履歴は正常に消去されました。
-* **HTTP 404 (Not Found)**:指定されたインスタンスは存在しません。
+* **HTTP 200 (OK)** :インスタンス履歴は正常に消去されました。
+* **HTTP 404 (Not Found)** :指定されたインスタンスは存在しません。
 
 **HTTP 200** の場合の応答ペイロードは、次のフィールドを持つ JSON オブジェクトです。
 
@@ -417,11 +417,9 @@ DELETE /runtime/webhooks/durabletask/instances
 
 | フィールド                 | パラメーターのタイプ  | 説明 |
 |-----------------------|-----------------|-------------|
-| **`createdTimeFrom`** | クエリ文字列    | 省略可能なパラメーター。 指定した場合、消去されるインスタンスの一覧が特定の ISO8601 タイムスタンプの時刻以降に作成されたインスタンスにフィルター処理されます。|
+| **`createdTimeFrom`** | クエリ文字列    | 消去されるインスタンスの一覧が特定の ISO8601 タイムスタンプの時刻以降に作成されたインスタンスにフィルター処理されます。|
 | **`createdTimeTo`**   | クエリ文字列    | 省略可能なパラメーター。 指定した場合、消去されるインスタンスの一覧が特定の ISO8601 タイムスタンプの時刻以前に作成されたインスタンスにフィルター処理されます。|
 | **`runtimeStatus`**   | クエリ文字列    | 省略可能なパラメーター。 指定した場合、消去されるインスタンスの一覧がランタイム状態に基づいてフィルター処理されます。 考えられるランタイム状態の値の一覧を参照するには、[インスタンスのクエリの実行](durable-functions-instance-management.md)に関するトピックをご覧ください。 |
-
-パラメーターを指定しない場合、タスク ハブ内のすべてのインスタンスが消去されます。
 
 > [!NOTE]
 > この操作は、インスタンスや履歴のテーブルに多数の行がある場合、Azure Storage の I/O の観点から非常にコスト効率が悪くなることがあります。 これらのテーブルの詳細については、「[Durable Functions のパフォーマンスとスケーリング (Azure Functions)](durable-functions-perf-and-scale.md#instances-table)」のドキュメントを参照してください。
@@ -430,8 +428,8 @@ DELETE /runtime/webhooks/durabletask/instances
 
 以下の HTTP 状態コード値が返される可能性があります。
 
-* **HTTP 200 (OK)**:インスタンス履歴は正常に消去されました。
-* **HTTP 404 (Not Found)**:フィルター式に一致するインスタンスが見つかりませんでした。
+* **HTTP 200 (OK)** :インスタンス履歴は正常に消去されました。
+* **HTTP 404 (Not Found)** :フィルター式に一致するインスタンスが見つかりませんでした。
 
 **HTTP 200** の場合の応答ペイロードは、次のフィールドを持つ JSON オブジェクトです。
 
@@ -483,10 +481,10 @@ POST /runtime/webhooks/durabletask/instances/{instanceId}/raiseEvent/{eventName}
 
 返される可能性がある状態コード値は、いくつかあります。
 
-* **HTTP 202 (Accepted)**:発生したイベントが受け入れられて処理された。
-* **HTTP 400 (Bad request)**:要求内容が `application/json` タイプまたは有効な JSON でなかった。
-* **HTTP 404 (Not Found)**:指定されたインスタンスが見つからなかった。
-* **HTTP 410 (Gone)**:指定されたインスタンスが完了または失敗し、発生したイベントを処理できない。
+* **HTTP 202 (Accepted)** :発生したイベントが受け入れられて処理された。
+* **HTTP 400 (Bad request)** :要求内容が `application/json` タイプまたは有効な JSON でなかった。
+* **HTTP 404 (Not Found)** :指定されたインスタンスが見つからなかった。
+* **HTTP 410 (Gone)** :指定されたインスタンスが完了または失敗し、発生したイベントを処理できない。
 
 **operation** という名前のイベントを待機するインスタンスに JSON 文字列 `"incr"` を送信する要求の例を次に示します。
 
@@ -537,9 +535,9 @@ POST /runtime/webhooks/durabletask/instances/{instanceId}/terminate
 
 返される可能性がある状態コード値は、いくつかあります。
 
-* **HTTP 202 (Accepted)**:終了要求が受け入れられて処理された。
-* **HTTP 404 (Not Found)**:指定されたインスタンスが見つからなかった。
-* **HTTP 410 (Gone)**:指定されたインスタンスが完了したか失敗した。
+* **HTTP 202 (Accepted)** :終了要求が受け入れられて処理された。
+* **HTTP 404 (Not Found)** :指定されたインスタンスが見つからなかった。
+* **HTTP 410 (Gone)** :指定されたインスタンスが完了したか失敗した。
 
 実行中のインスタンスを終了させ、**バグ**の理由を示す要求の例を次に示します。
 
@@ -586,9 +584,9 @@ POST /runtime/webhooks/durabletask/instances/{instanceId}/rewind
 
 返される可能性がある状態コード値は、いくつかあります。
 
-* **HTTP 202 (Accepted)**:巻き戻し要求が受け入れられて処理された。
-* **HTTP 404 (Not Found)**:指定されたインスタンスが見つからなかった。
-* **HTTP 410 (Gone)**:指定されたインスタンスが完了したか終了した。
+* **HTTP 202 (Accepted)** :巻き戻し要求が受け入れられて処理された。
+* **HTTP 404 (Not Found)** :指定されたインスタンスが見つからなかった。
+* **HTTP 410 (Gone)** :指定されたインスタンスが完了したか終了した。
 
 失敗したインスタンスを rewind し、**修正**の理由を指定する要求の例を次に示します。
 

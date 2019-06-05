@@ -16,12 +16,12 @@ ms.date: 04/24/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6120637bdf52db4b6863fb87feb1d52c78ca088
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 2dca71023cbed34ef3661ca980cf1eac4ca620c1
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65508113"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65784292"
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Azure AD Connect 同期: Azure Active Directory に同期される属性
 このトピックでは、Azure AD Connect Sync によって同期される属性の一覧を示します。  
@@ -256,7 +256,7 @@ ms.locfileid: "65508113"
 | userPrincipalName |X | | |UPN は、ユーザーのログイン ID です。 多くの場合、[mail] 値と同じです。 |
 | wWWHomePage |X |X | | |
 
-## <a name="lync-online-subsequently-known-as-skype-for-business"></a>Lync Online (後続製品: Skype for Business)
+## <a name="teams-and-skype-for-business-online"></a>Teams と Skype for Business Online
 | 属性名 | User | Contact | Group | Comment (コメント) |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |アカウントが有効な場合に定義します。 |

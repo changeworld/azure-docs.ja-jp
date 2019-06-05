@@ -4,16 +4,16 @@ description: Update Management の問題をトラブルシューティングす�
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/05/2019
+ms.date: 05/07/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 22e3ea1c90946902fc2a16d947ff2884e5e0a44b
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: f286877c6a9e787c06a8a846efaf94668c04fc4e
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59274588"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65787703"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Update Management の問題をトラブルシューティングする
 
@@ -45,7 +45,7 @@ The components for the 'Update Management' solution have been enabled, and now t
 1. 「[ネットワークの計画](../automation-hybrid-runbook-worker.md#network-planning)」で、Update Management を動作させるために許可する必要があるアドレスとポートを確認してください。
 2. 複製されたイメージを使用する場合:
    1. Log Analytics ワークスペースで、スコープ構成 `MicrosoftDefaultScopeConfig-Updates` の保存された検索条件から VM を削除します (表示された場合)。 保存された検索条件は、ワークスペース内の **[全般]** にあります。
-   2. ラン `Remove-Item -Path "HKLM:\software\microsoft\hybridrunbookworker" -Recurse -Force`
+   2. `Remove-Item -Path "HKLM:\software\microsoft\hybridrunbookworker" -Recurse -Force` を実行します。
    3. `Restart-Service HealthService` を実行して `HealthService` を再起動します。 これにより、キーが再作成され、新しい UUID が生成されます。
    4. これが機能しない場合は、そのイメージを先に sysprep した後、MMA エージェントをインストールします。
 
@@ -160,7 +160,39 @@ Hybrid Runbook Worker が自己署名証明書を生成できませんでした�
 
 フォルダー **C:\ProgramData\Microsoft\Crypto\RSA** への読み取りアクセスがシステム アカウントにあることを確認してから、再試行します。
 
-### <a name="hresult"></a>シナリオ: マシンが未評価として表示され、HResult 例外が表示される
+### <a name="failed-to-start"></a>シナリオ:更新プログラムの展開で "起動できませんでした" とマシンに表示される
+
+#### <a name="issue"></a>問題
+
+マシンの状態がマシンを "**起動できませんでした**" です。 マシンの特定の詳細情報を表示すると、次のエラーが表示されます。
+
+```error
+Failed to start the runbook. Check the parameters passed. RunbookName Patch-MicrosoftOMSComputer. Exception You have requested to create a runbook job on a hybrid worker group that does not exist.
+```
+
+#### <a name="cause"></a>原因
+
+このエラーは、次のいずれかの理由で発生する可能性があります。
+
+* そのマシンはもう存在しません。
+* マシンの電源が切れていて到達できません。
+* マシンにネットワーク接続の問題があり、マシン上のハイブリッド worker にアクセスできません。
+* SourceComputerId を変更する Microsoft Monitoring Agent に更新がありました
+* Automation アカウントで 2,000 の同時ジョブ制限に達した場合、更新の実行が制限された可能性があります。 各展開は 1 つのジョブと見なされ、更新プログラムの展開内の各マシンは 1 つのジョブとカウントされます。 Automation アカウントで現在実行されている他のオートメーション ジョブや更新プログラムの展開は、すべて同時ジョブ制限の対象になります。
+
+#### <a name="resolution"></a>解決策
+
+該当する場合は、更新プログラムの展開に[動的グループ](../automation-update-management.md#using-dynamic-groups)を使用します。
+
+* マシンがまだ存在し、到達可能であることを確認します。 存在しない場合は、展開を編集してそのマシンを削除します。
+* Update Management に必要なポートとアドレスの一覧については、[ネットワーク計画](../automation-update-management.md#ports)のセクションを参照し、使用しているマシンがこれらの要件を満たしていることを確認します。
+* Log Analytics で次のクエリを実行して、環境内で `SourceComputerId` が変更されたマシンを見つけます。 `Computer` 値は同じで `SourceComputerId` 値が異なるコンピューターを探します。 影響を受けるマシンを見つけたら、それらのマシンをターゲットとする更新プログラムの展開を編集し、`SourceComputerId` が正しい値を反映するようにマシンの削除と再追加を行う必要があります。
+
+   ```loganalytics
+   Heartbeat | where TimeGenerated > ago(30d) | distinct SourceComputerId, Computer, ComputerIP
+   ```
+
+### <a name="hresult"></a>シナリオ:マシンが未評価として表示され、HResult 例外が表示される
 
 #### <a name="issue"></a>問題
 
@@ -177,7 +209,9 @@ Hybrid Runbook Worker が自己署名証明書を生成できませんでした�
 |例外  |解決策または対策  |
 |---------|---------|
 |`Exception from HRESULT: 0x……C`     | [Windows Update エラー コード一覧](https://support.microsoft.com/help/938205/windows-update-error-code-list)で該当するエラー コードを検索して、例外の原因の詳細を確認します。        |
-|`0x8024402C` or `0x8024401C`     | これらのエラーはネットワーク接続の問題です。 お使いのマシンが Update Management に適切にネットワーク接続されていることを確認します。 必要なポートとアドレスの一覧については、[ネットワーク計画](../automation-update-management.md#ports)に関するセクションをご覧ください。        |
+|`0x8024402C`</br>`0x8024401C`</br>`0x8024402F`      | これらのエラーはネットワーク接続の問題です。 お使いのマシンが Update Management に適切にネットワーク接続されていることを確認します。 必要なポートとアドレスの一覧については、[ネットワーク計画](../automation-update-management.md#ports)に関するセクションをご覧ください。        |
+|`0x8024001E`| サービスまたはシステムがシャットダウン中のため、更新操作が完了しませんでした。|
+|`0x8024002E`| Windows Update サービスが無効です。|
 |`0x8024402C`     | WSUS サーバーを使用している場合は、レジストリ キー `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate` の下の `WUServer` と `WUStatusServer` のレジストリ値に正しい WSUS サーバーが含まれていることを確認します。        |
 |`The service cannot be started, either because it is disabled or because it has no enabled devices associated with it. (Exception from HRESULT: 0x80070422)`     | Windows Update サービス (wuauserv) が実行されており、無効になっていないことを確認します。        |
 |その他の一般的な例外     | 考えられる解決策をインターネットで検索し、最寄りの IT サポートと連携してください。         |

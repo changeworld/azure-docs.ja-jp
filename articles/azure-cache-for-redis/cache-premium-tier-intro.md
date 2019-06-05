@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: yegu
-ms.openlocfilehash: 6757a038a945bf153cb62662bee8c715c87baf19
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 6960c21091e0bc01c198e713c0c276984566ac41
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237742"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65786075"
 ---
 # <a name="introduction-to-the-azure-cache-for-redis-premium-tier"></a>Azure Cache for Redis Premium レベルの概要
 Azure Cache for Redis は、データへの超高速アクセスを提供することで、拡張性や応答性の高いアプリケーションの作成を可能にする分散マネージド キャッシュです。 
@@ -63,9 +63,9 @@ Export では、Azure Cache for Redis に格納されたデータを、Redis と
 Premium レベルでは、キャッシュの 1 つ以上のノードをオンデマンドで再起動できます。 これにより、障害発生時のアプリケーションの回復性をテストすることができます。 次のノードを再起動できます。
 
 * キャッシュのマスター ノード
-* キャッシュのスレーブ ノード
-* キャッシュのマスター ノードとスレーブ ノードの両方
-* クラスタリングを備えた Premium キャッシュを使用している場合は、マスター ノード、スレーブ ノード、またはその両方を、キャッシュの個々のシャードに対して再起動できます
+* キャッシュのセカンダリ ノード
+* キャッシュのプライマリ ノードとセカンダリ ノードの両方
+* クラスタリングを備えたプレミアム キャッシュを使用している場合は、キャッシュ内の個々のシャードに対してプライマリ ノード、セカンダリ ノード、または両方のノードを再起動できます。
 
 詳細については、「[再起動](cache-administration.md#reboot)」および「[再起動に関する FAQ](cache-administration.md#reboot-faq)」を参照してください。
 

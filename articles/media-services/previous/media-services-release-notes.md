@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 427ba2b386810749810397afed8ef3f62dcf9217
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: c519cf88f40928bbd556b0accfa30d9f8c5c0f11
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65506640"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65991911"
 ---
 # <a name="azure-media-services-release-notes"></a>Azure Media Services リリース ノート
 
@@ -44,6 +44,10 @@ ms.locfileid: "65506640"
 
 ## <a name="a-idrestversionhistoryrest-api-version-history"></a><a id="rest_version_history"/>REST API バージョン履歴
 Media Services REST API バージョン履歴の詳細については、[Azure Media Services REST API リファレンス]をご覧ください。
+
+## <a name="march-2019"></a>2019 年 3 月
+
+Azure Media Services の Media Hyperlapse プレビュー機能は廃止されました。
 
 ## <a name="december-2018"></a>2018 年 12 月
 
@@ -405,7 +409,7 @@ Media Services .NET SDK が 3.0.0.5 にバージョン アップしました。 
 バージョン 3.0.0.3 では次の点が変更されました。
 
 * バージョン 3.0.3.0 を使用するように Azure Storage の依存関係がアップグレードされました。
-* 3.0.*.*  リリースの下位互換性の問題が修正されました。
+* 3.0. *.* リリースの下位互換性の問題が修正されました。
 
 ## <a id="december_changes_13"></a>2013 年 12 月のリリース
 ### <a name="dec_13_donnet_changes"></a>Media Services .NET SDK 3.0.0.0

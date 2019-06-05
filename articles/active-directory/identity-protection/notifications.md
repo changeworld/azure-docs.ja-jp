@@ -18,12 +18,12 @@ ms.date: 12/07/2017
 ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 482b69752cc889ff99c3d9082d3bc20a7caa6d76
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 0065ec03695ee977133ae2ec43aafba7d5bfff78
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58522181"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65784341"
 ---
 # <a name="azure-active-directory-identity-protection-notifications"></a>Azure Active Directory Identity Protection の通知
 
@@ -37,7 +37,9 @@ Azure AD Identity Protection では、ユーザーのリスクとリスク イ�
 
 ## <a name="users-at-risk-detected-email"></a>危険な状態のユーザーが検出された電子メール
 
-危険な状態のアカウントが検出されると、Azure AD Identity Protection は **[Users at risk detected]\(危険な状態のユーザーが検出されました\)** という件名のアラート メールを生成します。 このメールには、**[リスクのフラグ付きユーザー](../reports-monitoring/concept-user-at-risk.md)** レポートへのリンクが含まれます。 ベスト プラクティスとして、危険な状態のユーザーをすぐに調べる必要があります。
+危険な状態のアカウントが検出されると、Azure AD Identity Protection は **[Users at risk detected]\(危険な状態のユーザーが検出されました\)** という件名のアラート メールを生成します。 このメールには、 **[リスクのフラグ付きユーザー](../reports-monitoring/concept-user-at-risk.md)** レポートへのリンクが含まれます。 ベスト プラクティスとして、危険な状態のユーザーをすぐに調べる必要があります。
+
+このアラートを構成すると、アラートを生成するユーザー リスク レベルを指定できます。 指定したユーザーのリスク レベルに達すると、メールが生成されます。ただし、このユーザー リスク レベルに移行した後のユーザーについては、リスクが検出されたユーザーの新しいメール アラートは受信しません。 たとえば、中ユーザー リスクの場合に警告するようにポリシーを設定していて、ユーザー John が中リスクに移行した場合、John についてリスクが検出されたユーザーのメールを受信します。 ただし、その後に John が高リスクに移行した場合、または追加のリスク イベントが発生した場合は、リスクが検出されたユーザーの 2 つ目のアラートは送信されません。
 
 ![危険な状態のユーザーが検出された電子メール](./media/notifications/01.png)
 
@@ -46,11 +48,11 @@ Azure AD Identity Protection では、ユーザーのリスクとリスク イ�
 
 管理者は以下を設定することができます。
 
-- **このメールの生成をトリガーするリスク レベル** - 既定では、リスク レベルは "高" リスクに設定されます。
+- **このメールの生成をトリガーするユーザー リスク レベル** - 既定では、リスク レベルは "高" リスクに設定されます。
 - **このメールの受信者** - 既定では、受信者にはすべてのグローバル管理者が含まれます。 グローバル管理者は、受信者として他のグローバル管理者、セキュリティ管理者、セキュリティ閲覧者を追加することもできます。  
 
 
-関連するダイアログを開くには、**[Identity Protection]** ページの **[設定]** セクションの **[アラート]** をクリックします。
+関連するダイアログを開くには、 **[Identity Protection]** ページの **[設定]** セクションの **[アラート]** をクリックします。
 
 ![危険な状態のユーザーが検出された電子メール](./media/notifications/05.png)
 
@@ -76,7 +78,7 @@ Azure AD Identity Protection では、ユーザーのリスクとリスク イ�
 
 ![ユーザーのリスク](./media/notifications/62.png "User risks")
 
-関連するダイアログを開くには、**[Identity Protection]** ページの **[設定]** セクションの **[週間ダイジェスト]** をクリックします。
+関連するダイアログを開くには、 **[Identity Protection]** ページの **[設定]** セクションの **[週間ダイジェスト]** をクリックします。
 
 ![危険な状態のユーザーが検出された電子メール](./media/notifications/04.png)
 

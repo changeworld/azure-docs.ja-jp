@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 03/04/2019
+ms.date: 04/25/2019
 ms.author: iainfou
-ms.openlocfilehash: dc2e2f010de3dfe265cddbbaa6c050d081bd05dc
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: eeb9f5fa91252bbc3c3038ab88bd2d7e802f263f
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57778554"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65786392"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのサービス プリンシパル
 
@@ -23,6 +23,8 @@ Azure API で操作するために、AKS クラスターには [Azure Active Dir
 ## <a name="before-you-begin"></a>開始する前に
 
 Azure AD サービス プリンシパルを作成するには、アプリケーションを Azure AD テナントに登録し、そのアプリケーションをサブスクリプション内のロールに割り当てるためのアクセス許可が必要です。 必要なアクセス許可がない場合は、必要なアクセス許可を割り当てるよう Azure AD またはサブスクリプションの管理者に依頼するか、AKS クラスターで使用するサービス プリンシパルを事前に作成する必要が生じることがあります。
+
+別の Azure AD テナントのサービス プリンシパルを使用している場合は、クラスターのデプロイ時に使用できるアクセス許可について追加の考慮事項があります。 ディレクトリ情報の読み取りと書き込みを行うために適切なアクセス許可がない可能性があります。 詳細については、「[Azure Active Directory の既定のユーザー アクセス許可とは][azure-ad-permissions]」を参照してください。
 
 また、Azure CLI バージョン 2.0.59 以降がインストールされ、構成されている必要もあります。 バージョンを確認するには、 `az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「 [Azure CLI のインストール][install-azure-cli]」を参照してください。
 
@@ -68,7 +70,7 @@ az aks create \
     --client-secret <password>
 ```
 
-Azure portal を使用して AKS クラスターをデプロイする場合は、**[Create Kubernetes cluster]\(Kubernetes クラスターの作成)** ダイアログ ボックスの *[Authentication]\(認証)* ページで、**[Configure service principal]\(サービス プリンシパルの構成)** を選択します。 **[既存のものを使用]** を選択し、以下の値を指定します。
+Azure portal を使用して AKS クラスターをデプロイする場合は、 **[Create Kubernetes cluster]\(Kubernetes クラスターの作成)** ダイアログ ボックスの *[Authentication]\(認証)* ページで、 **[Configure service principal]\(サービス プリンシパルの構成)** を選択します。 **[既存のものを使用]** を選択し、以下の値を指定します。
 
 - **[Service principal client ID]\(サービス プリンシパルのクライアント ID)** は、実際の *appId* です
 - **[Service principal client secret]\(サービス プリンシパルのクライアント シークレット)** は、*password* の値です
@@ -85,7 +87,7 @@ AKS クラスターのサービス プリンシパルは、他のリソースへ
 az role assignment create --assignee <appId> --scope <resourceScope> --role Contributor
 ```
 
-リソースの `--scope` には、*/subscriptions/\<guid\>/resourceGroups/myResourceGroup* や */subscriptions/\<guid\>/resourceGroups/myResourceGroupVnet/providers/Microsoft.Network/virtualNetworks/myVnet* など、完全なリソース ID を指定する必要があります。
+リソースの `--scope` には、 */subscriptions/\<guid\>/resourceGroups/myResourceGroup* や */subscriptions/\<guid\>/resourceGroups/myResourceGroupVnet/providers/Microsoft.Network/virtualNetworks/myVnet* など、完全なリソース ID を指定する必要があります。
 
 以降の各セクションでは、一般的に必要となる委任について詳しく取り上げます。
 
@@ -124,9 +126,9 @@ AKS と Azure AD サービス プリンシパルを使用する場合は、以�
 
 - Kubernetes のサービス プリンシパルは、クラスター構成の一部です。 ただし、クラスターのデプロイに ID を使用しないでください。
 - 既定では、このサービス プリンシパル資格情報は 1 年間有効です。 [サービス プリンシパルの資格情報はいつでも更新または回転][update-credentials]できます。
-- すべてのサービス プリンシパルは、Azure AD アプリケーションに関連付けられています。 Kubernetes クラスターのサービス プリンシパルは、有効な任意の Azure AD アプリケーション名 (たとえば *https://www.contoso.org/example*) に関連付けることができます。 アプリケーションの URL は、実際のエンドポイントである必要はありません。
+- すべてのサービス プリンシパルは、Azure AD アプリケーションに関連付けられています。 Kubernetes クラスターのサービス プリンシパルは、有効な任意の Azure AD アプリケーション名 (たとえば *https://www.contoso.org/example* ) に関連付けることができます。 アプリケーションの URL は、実際のエンドポイントである必要はありません。
 - サービス プリンシパルの**クライアント ID** を指定するときには、`appId` の値を使用します。
-- Kubernetes クラスター内のマスター VM とノード VM では、サービス プリンシパルの資格情報が `/etc/kubernetes/azure.json` ファイルに格納されます
+- Kubernetes クラスター内のエージェント ノード VM では、サービス プリンシパルの資格情報が `/etc/kubernetes/azure.json` ファイルに格納されます
 - [az aks create][az-aks-create] コマンドを使用してサービス プリンシパルを自動的に生成すると、サービス プリンシパルの資格情報は、コマンドの実行に使用されたコンピューター上の `~/.azure/aksServicePrincipal.json` ファイルに書き込まれます。
 - [az aks create][az-aks-create] によって作成された AKS クラスターを削除しても、自動的に作成されたサービス プリンシパルは削除されません。
     - サービス プリンシパルを削除するには、まずクラスターの *servicePrincipalProfile.clientId* を照会し、[az ad app delete][az-ad-app-delete] で削除します。 次のリソース グループとクラスターの名前は、実際の値に置き換えてください。
@@ -158,3 +160,4 @@ Azure Active Directory サービス プリンシパルの詳細については�
 [az-role-assignment-create]: /cli/azure/role/assignment#az-role-assignment-create
 [aks-to-acr]: ../container-registry/container-registry-auth-aks.md?toc=%2fazure%2faks%2ftoc.json#grant-aks-access-to-acr
 [update-credentials]: update-credentials.md
+[azure-ad-permissions]: ../active-directory/fundamentals/users-default-permissions.md

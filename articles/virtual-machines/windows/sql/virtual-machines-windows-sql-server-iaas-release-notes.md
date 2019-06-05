@@ -13,41 +13,46 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 2/13/2019
-ms.openlocfilehash: 23e072369aa8ac6ca6ada5ec185df1a8d7e03c5b
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: f929369030b6f0a634eb2c84e33eee24af8cb6a2
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59282544"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65787510"
 ---
 # <a name="sql-server-on-azure-virtual-machine-release-notes"></a>Azure 仮想マシンの SQL Server リリース ノート
 
 Azure では、SQL Server のイメージを組み込んだ仮想マシンをデプロイできます。 この記事は、[Azure 仮想マシン上の SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/) の最新リリースで導入された新機能と機能強化をまとめたものです。 この記事では、今回のリリースとは直接関連しないものの、同じタイム フレームで公開された注目すべきコンテンツの更新についても一覧表示しています。 他の Azure サービスの機能強化については、「[サービスの更新情報](https://azure.microsoft.com/updates)」を参照してください
 
-## <a name="march-2019"></a>2019 年 3 月
+## <a name="april-2019"></a>2019 年 4 月
 
 ### <a name="service-improvements"></a>サービスの機能強化
 
 | サービスの機能強化 | 詳細 |
 | --- | --- |
-| **カスタム イメージのサポートの可否** | OS と SQL イメージをカスタマイズするために、[SQL IaaS 拡張機能](virtual-machines-windows-sql-server-agent-extension.md#installation)をインストールできるようになりました。これにより、機能が制限された[柔軟なライセンス](virtual-machines-windows-sql-ahb.md)が提供されます。 SQL リソース プロバイダーでカスタム イメージを登録するときに、'AHUB' としてライセンスの種類を指定します。それ以外の場合は、登録は失敗します。  | 
-| **名前付きインスタンスのサポートの可否** | 既定のインスタンスが適切にアンインストールされている場合、名前付きインスタンスで [SQL IaaS 拡張機能](virtual-machines-windows-sql-server-agent-extension.md#installation)を使用できるようになりました。 | 
-| **ポータルの機能強化** | SQL Server VM をデプロイするための Azure portal エクスペリエンスは、より使いやすくなるように改良されています。 詳細については、SQL Server VM のデプロイに関する簡単な[クイック スタート](quickstart-sql-vm-create-portal.md)と、より包括的な[ハウツー](virtual-machines-windows-portal-sql-server-provision.md) ガイドを参照してください。 |
+| **SQL Server 2008/2008R2 のサポート延長** | "*そのまま*" Azure VM に移行することで、SQL Server 2008 および SQL Server 2008 R2 の[サポートを延長](virtual-machines-windows-sql-server-2008-eos-extend-support.md)します。 | 
 | &nbsp; | &nbsp; |
 
 ### <a name="documentation-improvements"></a>ドキュメントの改善
 
 なし
 
+## <a name="march-2019"></a>2019 年 3 月
+
+| サービスの機能強化 | 詳細 |
+| --- | --- |
+| **カスタム イメージのサポートの可否** | OS と SQL イメージをカスタマイズするために、[SQL IaaS 拡張機能](virtual-machines-windows-sql-server-agent-extension.md#installation)をインストールできるようになりました。これにより、機能が制限された[柔軟なライセンス](virtual-machines-windows-sql-ahb.md)が提供されます。 SQL リソース プロバイダーでカスタム イメージを登録するときに、'AHUB' としてライセンスの種類を指定します。それ以外の場合は、登録は失敗します。  | 
+| **名前付きインスタンスのサポートの可否** | 既定のインスタンスが適切にアンインストールされている場合、名前付きインスタンスで [SQL IaaS 拡張機能](virtual-machines-windows-sql-server-agent-extension.md#installation)を使用できるようになりました。 | 
+| **ポータルの機能強化** | SQL Server VM をデプロイするための Azure portal エクスペリエンスは、より使いやすくなるように改良されています。 詳細については、SQL Server VM のデプロイに関する簡単な[クイック スタート](quickstart-sql-vm-create-portal.md)と、より包括的な[ハウツー](virtual-machines-windows-portal-sql-server-provision.md) ガイドを参照してください。|
+| &nbsp; | &nbsp; |
+
 
 ## <a name="february-2019"></a>2019 年 2 月
-
-### <a name="service-improvements"></a>サービスの機能強化
 
 | サービスの機能強化 | 詳細 |
 | --- | --- |
 | **ポータルの改善** | [Azure portal](virtual-machines-windows-sql-ahb.md#with-the-azure-portal-1) を使用して、SQL Server VM のライセンス モデルを従量課金制からライセンス持ち込みに変更できるようになりました。|
-|**Azure SQL VM の CLI を使用した可用性グループのデプロイの簡略化** | 可用性グループを Azure の SQL Server VM に展開することは、以前より簡単になりました。 [Azure SQL VM の CLI](/cli/azure/sql/vm?view=azure-cli-2018-03-01-hybrid) を使用して、WSFC、ILB、AG リスナーをすべてコマンドラインから、記録的な速さで作成できます。 詳細については、「[Use Azure SQL VM CLI to configure Always On availability group for SQL Server on an Azure VM (Azure SQL VM CLI を使用して Azure VM 上で SQL Server のための Always On 可用性グループを構成する)](virtual-machines-windows-sql-availability-group-cli.md)」を参照してください。 | 
+|**Azure SQL VM の CLI を使用した可用性グループ展開の簡略化** | 可用性グループを Azure の SQL Server VM に展開することは、以前より簡単になりました。 [Azure SQL VM の CLI](/cli/azure/sql/vm?view=azure-cli-2018-03-01-hybrid) を使用して、WSFC、ILB、AG リスナーをすべてコマンドラインから、記録的な速さで作成できます。 詳細については、「[Use Azure SQL VM CLI to configure Always On availability group for SQL Server on an Azure VM (Azure SQL VM CLI を使用して Azure VM 上で SQL Server のための Always On 可用性グループを構成する)](virtual-machines-windows-sql-availability-group-cli.md)」を参照してください。 | 
 | &nbsp; | &nbsp; |
 
 
@@ -77,7 +82,7 @@ Azure では、SQL Server のイメージを組み込んだ仮想マシンをデ
 * [Windows VM における SQL Server の概要](virtual-machines-windows-sql-server-iaas-overview.md)
 * [SQL Server Windows VM のプロビジョニング](virtual-machines-windows-portal-sql-server-provision.md)
 * [Azure VM の SQL Server へのデータベースの移行](virtual-machines-windows-migrate-sql.md)
-* [Azure Virtual Machines における SQL Server の高可用性と障害復旧](virtual-machines-windows-sql-high-availability-dr.md)
+* [Azure 仮想マシンにおける SQL Server の高可用性と障害復旧](virtual-machines-windows-sql-high-availability-dr.md)
 * [Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](virtual-machines-windows-sql-performance.md)
 * [Azure Virtual Machines における SQL Server のアプリケーション パターンと開発計画](virtual-machines-windows-sql-server-app-patterns-dev-strategies.md)
 
