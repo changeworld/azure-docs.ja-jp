@@ -10,16 +10,16 @@ ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
 ms.date: 01/08/2019
-ms.openlocfilehash: a83661a63f784f62bf46ce75b8b4f47c57c87b19
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 48c59ddc1e203030bd967911d536930cb94761d3
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57840445"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66356190"
 ---
-# <a name="securely-run-experiments-and-inferencing-inside-an-azure-virtual-network"></a>Azure の仮想ネットワーク内での実験と推論の安全な実行
+# <a name="securely-run-experiments-and-inference-inside-an-azure-virtual-network"></a>Azure の仮想ネットワーク内で実験と推論を安全に実行する
 
-この記事では、仮想ネットワーク内で実験と推論を実行する方法について説明します。 仮想ネットワークは、パブリック インターネットから Azure リソースを分離するセキュリティ境界として機能します。 また、Azure の仮想ネットワークをオンプレミス ネットワークに結合することもできます。 これにより、モデルのトレーニングと、推論用にデプロイしたモデルへのアクセスを、安全に行うことができます。
+この記事では、仮想ネットワーク内で実験と推論を実行する方法について説明します。 仮想ネットワークは、パブリック インターネットから Azure リソースを分離するセキュリティ境界として機能します。 また、Azure の仮想ネットワークをオンプレミス ネットワークに結合することもできます。 これにより、モデルのトレーニングと、推論用にデプロイしたモデルへのアクセスを、安全に行うことができます。 推論、つまりモデル スコアリングとは、通常は運用環境のデータに基づいて、デプロイしたモデルを使用して予測を行うフェーズです。
 
 Azure Machine Learning service は、コンピューティング リソースのために他の Azure サービスに依存します。 コンピューティング リソース (コンピューティング ターゲット) は、モデルのトレーニングとデプロイに使用されます。 これらのコンピューティング ターゲットは、仮想ネットワーク内に作成することができます。 たとえば、Microsoft Data Science Virtual Machine を使用して、モデルをトレーニングしてから、そのモデルを Azure Kubernetes Service (AKS) にデプロイすることができます。 仮想ネットワークの詳細については、[Azure Virtual Network の概要](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)に関するページをご覧ください。
 
@@ -34,9 +34,40 @@ Azure Machine Learning service は、コンピューティング リソースの
 
 ## <a name="storage-account-for-your-workspace"></a>ワークスペースのストレージ アカウント
 
-Azure Machine Learning service のワークスペースを作成する場合は、Azure ストレージ アカウントが必要です。 このストレージ アカウントではファイアウォール ルールを有効にしないでください。 Azure Machine Learning service では、ストレージ アカウントへの無制限のアクセスが必要です。
+> [!IMPORTANT]
+> 実験を行っている間だけ、Azure Machine Learning service ワークスペースにアタッチされているストレージ アカウントを仮想ネットワークの背後に置くことができます。 推論では、ストレージ アカウントへの無制限のアクセスが必要です。 これらの設定を変更済みかどうかわからない場合は、「[Azure Storage ファイアウォールおよび仮想ネットワークを構成する](https://docs.microsoft.com/azure/storage/common/storage-network-security)」の「__既定のネットワーク アクセス ルールの変更__」をご覧ください。 推論時、つまりモデルのスコア付け時に、すべてのネットワークからのアクセスを許可する手順を使用します。
 
-これらの設定を変更済みかどうかわからない場合は、「[Azure Storage ファイアウォールおよび仮想ネットワークを構成する](https://docs.microsoft.com/azure/storage/common/storage-network-security)」の「__既定のネットワーク アクセス ルールの変更__」をご覧ください。 その手順を使用して、すべてのネットワークからのアクセスを許可してください。
+仮想ネットワークの背後で、Azure Machine Learning 実験機能を Azure Storage で使用するには、次の手順に従います。
+
+1. 仮想ネットワークの背後で実験のコンピューティング (例: Machine Learning コンピューティング) を作成するか、実験のコンピューティングをワークスペース (例: HDInsight クラスターまたは仮想マシン) にアタッチします。 詳細については、このドキュメントの「[Machine Learning コンピューティングを使用する](#use-machine-learning-compute)」と「[仮想マシンまたは HDInsight クラスターを使用する](#use-a-virtual-machine-or-hdinsight-cluster)」セクションを参照してください。
+2. ワークスペースにアタッチされているストレージに移動します。 ![Azure Machine Learning service のワークスペースにアタッチされている Azure Storage を示す Azure portal の画像](./media/how-to-enable-virtual-network/workspace-storage.png)
+3. Azure Storage ページで、 __[ファイアウォールと仮想ネットワーク]__ を選択します。 ![Azure Storage ページの [ファイアウォールと仮想ネットワーク] セクションが表示されている Azure portal の画像](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks.png)
+4. __[ファイアウォールと仮想ネットワーク]__ ページで、次のエントリを選択します。
+    - __[選択されたネットワーク]__ を選択します。
+    - __[仮想ネットワーク]__ の下で、 __[既存の仮想ネットワークを追加]__ を選択して、実験のコンピューティングが存在する仮想ネットワークを追加します (手順 1 を参照)。
+    - __[信頼された Microsoft サービスによるこのストレージ アカウントに対するアクセスを許可します]__ を選択します。
+![Azure Storage の下に [ファイアウォールと仮想ネットワーク] ページが表示されている Azure portal の画像](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png) 
+
+5. 実験を実行している間に、実験コードで、BLOB ストレージを使用するように実行構成を変更します。
+    ```python
+    run_config.source_directory_data_store = "workspaceblobstore"
+    ```
+    
+## <a name="key-vault-for-your-workspace"></a>ワークスペースのキー コンテナー
+Azure Machine Learning service では、さまざまな種類の資格情報を格納するために、ワークスペースに関連付けられた Key Vault インスタンスが使用されます。
+* 関連付けられたストレージ アカウントの接続文字列
+* Azure コンテナー リポジトリ インスタンスへのパスワード
+* データ ストアへの接続文字列。 
+
+仮想ネットワークの背後で、Azure Machine Learning 実験機能を Key Vault で使用するには、次の手順に従います。
+1. ワークスペースに関連付けられている Key Vault に移動します。 ![Azure Machine Learning service のワークスペースに関連付けられている Key Vault を示す Azure portal の画像](./media/how-to-enable-virtual-network/workspace-key-vault.png)
+2. Key Vault ページで、 __[ファイアウォールと仮想ネットワーク]__ セクションを選択します。 ![Key Vault ページの [ファイアウォールと仮想ネットワーク] セクションが表示されている Azure portal の画像](./media/how-to-enable-virtual-network/key-vault-firewalls-and-virtual-networks.png)
+3. __[ファイアウォールと仮想ネットワーク]__ ページで、次のエントリを選択します。
+    - __[選択されたネットワーク]__ を選択します。
+    - __[仮想ネットワーク]__ の下で、 __[既存の仮想ネットワークを追加]__ を選択して、実験のコンピューティング能力が存在する仮想ネットワークを追加します。
+    - __[Allow trusted Microsoft services to bypass this firewall]\(信頼された Microsoft サービスがこのファイアウォールをバイパスすることを許可する\)__ を選択します。
+![Key Vault の下に [ファイアウォールと仮想ネットワーク] ページが表示されている Azure portal の画像](./media/how-to-enable-virtual-network/key-vault-firewalls-and-virtual-networks-page.png) 
+
 
 ## <a name="use-machine-learning-compute"></a>Machine Learning コンピューティングを使用する
 
@@ -70,19 +101,47 @@ Machine Learning コンピューティングは、現在、Azure Batch サービ
 
     ![BatchNodeManagement サービス タグを使用したインバウンド規則を示した Azure Portal のイメージ](./media/how-to-enable-virtual-network/batchnodemanagement-service-tag.png)
  
-- (オプション) リモート アクセスを許可するための、ポート 22のインバウンド TCP トラフィック。 これはパブリック IP の SSH を使用して接続する場合にのみ必要です。
+- (オプション) リモート アクセスを許可するための、ポート 22のインバウンド TCP トラフィック。 このポートはパブリック IP の SSH を使用して接続する場合にのみ必要です。
  
 - 仮想ネットワークに向かう全ポートのアウトバウンド トラフィック。
 
-- インターネットに向かう全ポートのアウトバウンド トラフィック。
+- インターネットに向かう全ポートのアウトバウンド トラフィック。 
 
 Batch によって構成された NSG のインバウンド規則またはアウトバウンド規則を変更したり追加したりする際は注意が必要です。 NSG によってコンピューティング ノードとの通信が NSG によって拒否された場合は、Machine Learning コンピューティング サービスによってコンピューティング ノードの状態が使用不可に設定されます。
 
-サブネット レベルの NSG を自分で指定する必要はありません。これは、Batch によってその独自の NSG が構成されるためです。 ただし、指定したサブネットに NSG やファイアウォールが関連付けられている場合は、前述のようにインバウンドとアウトバウンドのセキュリティ規則を構成します。 次のスクリーンショットは、規則の構成が Azure portal にどのように表示されるかを示しています。
+サブネット レベルの NSG を自分で指定する必要はありません。これは、Batch によってその独自の NSG が構成されるためです。 ただし、指定したサブネットに NSG やファイアウォールが関連付けられている場合は、前述のようにインバウンドとアウトバウンドのセキュリティ規則を構成します。 
+
+次のスクリーンショットは、NSG 規則の構成が Azure portal にどのように表示されるかを示しています。
 
 ![Machine Learning コンピューティングのインバウンド NSG 規則のスクリーンショット](./media/how-to-enable-virtual-network/amlcompute-virtual-network-inbound.png)
 
 ![Machine Learning コンピューティングのアウトバウンド NSG 規則のスクリーンショット](./media/how-to-enable-virtual-network/experimentation-virtual-network-outbound.png)
+
+### <a id="limiting-outbound-from-vnet"></a> 仮想ネットワークからの送信接続を制限する
+
+既定のアウトバウンド規則を使用せず、仮想ネットワークの発信アクセスを制限する場合は、次の手順に従います。
+
+- NSG 規則を使用して、送信インターネット接続を拒否する 
+
+- Azure Storage (__Storage.Region_Name__ (例: Storage.EastUS) の__サービス タグ__を使用)、 Azure Container Registry (__AzureContainerRegistry.Region_Name__ (例: AzureContainerRegistry.EastUS) の__サービス タグ__を使用)、 および Azure Machine Learning service (__AzureMachineLearning__ の__サービス タグ__を使用) への送信トラフィックを制限する
+
+次のスクリーンショットは、NSG 規則の構成が Azure portal にどのように表示されるかを示しています。
+
+![Machine Learning コンピューティングのアウトバウンド NSG 規則のスクリーンショット](./media/how-to-enable-virtual-network/limited-outbound-nsg-exp.png)
+
+### <a name="user-defined-routes-for-forced-tunneling"></a>強制トンネリングのユーザー定義ルート
+
+Azure Machine Learning コンピューティングで強制トンネリングを使用している場合は、[ユーザー定義ルート (UDR)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview) をコンピューティング リソースを含むサブネットに追加する必要があります。
+
+* 自分のリソースが存在するリージョンで Azure Batch サービスによって使用される IP アドレスごとのユーザー定義ルート。 これらの UDR により、バッチ サービスが、タスクをスケジュールする目的でプールのコンピューティング ノードと通信できるようになります。 Batch サービスの IP アドレスの一覧を取得するには、Azure サポートにお問い合わせください。
+
+* Azure Storage への送信トラフィック (具体的には、`<account>.table.core.windows.net`、`<account>.queue.core.windows.net`、`<account>.blob.core.windows.net` 形式の URL) が、オンプレミス ネットワーク アプライアンスによってブロックされないこと。
+
+ユーザー定義ルートを追加するときに、関連する各 Batch の IP アドレス プレフィックスのルートを定義し、 __[次ホップの種類]__ を __[インターネット]__ に設定します。 次の図に、Azure portal でのこの UDR の例を示します。
+
+![アドレス プレフィックスのユーザー定義ルートの例](./media/how-to-enable-virtual-network/user-defined-route.png)
+
+詳細については、「[仮想ネットワーク内に Azure Batch プールを作成する](../../batch/batch-virtual-network.md#user-defined-routes-for-forced-tunneling)」を参照してください。
 
 ### <a name="create-machine-learning-compute-in-a-virtual-network"></a>仮想ネットワークに Machine Learning コンピューティングを作成する
 
@@ -90,15 +149,15 @@ Azure portal を使用して Machine Learning コンピューティング クラ
 
 1. [Azure portal](https://portal.azure.com) で、Azure Machine Learning service のワークスペースを選択します。
 
-1. __[アプリケーション]__ セクションで、__[コンピューティング]__ を選択します。 次に、__[コンピューティングの追加]__ を選択します。 
+1. __[アプリケーション]__ セクションで、 __[コンピューティング]__ を選択します。 次に、 __[コンピューティングの追加]__ を選択します。 
 
     ![Azure Machine Learning service にコンピューティングを追加する方法](./media/how-to-enable-virtual-network/add-compute.png)
 
 1. このコンピューティング リソースで仮想ネットワークを使用するように構成するには、以下のオプションを使用します。
 
-    - __ネットワーク構成__:__[Advanced] \(詳細設定)__ を選択します。
+    - __ネットワーク構成__: __[Advanced] \(詳細設定)__ を選択します。
 
-    - __[リソース グループ]__:仮想ネットワークが含まれているリソース グループを選択します。
+    - __[リソース グループ]__ :仮想ネットワークが含まれているリソース グループを選択します。
 
     - __仮想ネットワーク__:サブネットが含まれている仮想ネットワークを選択します。
 
@@ -158,23 +217,25 @@ except ComputeTargetException:
 
 1. Azure Machine Learning service で VM またはクラスターの SSH ポートと通信できるようにするには、NSG 用のソース エントリを構成する必要があります。 SSH ポートは、通常はポート 22 です。 このソースからのトラフィックを許可するには、次の情報を使用します。
 
-    * __ソース__:__[Service Tag]\(サービス タグ\)__ を選択します。
+    * __ソース__: __[Service Tag]\(サービス タグ\)__ を選択します。
 
-    * __[ソース サービス タグ]__: __[AzureMachineLearning]__ を選択します。
+    * __[ソース サービス タグ]__ : __[AzureMachineLearning]__ を選択します。
 
-    * __[ソース ポート範囲]__:__[*]__ を選びます。
+    * __[ソース ポート範囲]__ : __[*]__ を選びます。
 
-    * __[接続先]__:__[すべて]__ を選択します。
+    * __[接続先]__ : __[すべて]__ を選択します。
 
-    * __[宛先ポート範囲]__: __[22]__ を選択します。
+    * __[宛先ポート範囲]__ : __[22]__ を選択します。
 
-    * __プロトコル__:__[すべて]__ を選択します。
+    * __プロトコル__: __[すべて]__ を選択します。
 
-    * __アクション__:__[許可]__ を選択します。
+    * __アクション__: __[許可]__ を選択します。
 
    ![仮想ネットワーク内の VM または HDInsight クラスターで実験を行うためのインバウンド規則のスクリーンショット](./media/how-to-enable-virtual-network/experimentation-virtual-network-inbound.png)
 
     NSG に対しては既定のアウトバウンド規則のままにします。 詳細については、「[セキュリティ グループ](https://docs.microsoft.com/azure/virtual-network/security-overview#default-security-rules)」の既定のセキュリティ規則をご覧ください。
+
+    既定のアウトバウンド規則を使用せず、仮想ネットワークの発信アクセスを制限する場合は、「[仮想ネットワークからの送信接続を制限する](#limiting-outbound-from-vnet)」を参照してください。
     
 1. VM または HDInsight クラスターをお客様の Azure Machine Learning service のワークスペースにアタッチします。 詳細については、「[モデル トレーニング用のコンピューティング ターゲットを設定する](how-to-set-up-training-targets.md)」をご覧ください。
 
@@ -183,23 +244,28 @@ except ComputeTargetException:
 > [!IMPORTANT]
 > 手順を進める前に、前提条件を確認して、クラスターの IP のアドレス指定を計画してください。 詳細については、[Azure Kubernetes Service での高度なネットワークの構成](https://docs.microsoft.com/azure/aks/configure-advanced-networking)に関するページをご覧ください。
 > 
+>
 > NSG に対しては既定のアウトバウンド規則のままにします。 詳細については、「[セキュリティ グループ](https://docs.microsoft.com/azure/virtual-network/security-overview#default-security-rules)」の既定のセキュリティ規則をご覧ください。
 >
 > Azure Kubernetes Service と Azure の仮想ネットワークは同じリージョンに存在する必要があります。
 
 仮想ネットワークの Azure Kubernetes Service をワークスペースに追加するには、Azure portal で次の手順に従います。
 
+1. 仮想ネットワークを制御する NSG グループに、__AzureMachineLearning__ の__サービス タグ__を使用して Azure Machine Learning service に対して有効になっている受信規則があることを確認します。
+
+    ![Azure Machine Learning service にコンピューティングを追加する方法](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-aml.png)     
+ 
 1. [Azure portal](https://portal.azure.com) で、Azure Machine Learning service のワークスペースを選択します。
 
-1. __[アプリケーション]__ セクションで、__[コンピューティング]__ を選択します。 次に、__[コンピューティングの追加]__ を選択します。 
+1. __[アプリケーション]__ セクションで、 __[コンピューティング]__ を選択します。 次に、 __[コンピューティングの追加]__ を選択します。 
 
     ![Azure Machine Learning service にコンピューティングを追加する方法](./media/how-to-enable-virtual-network/add-compute.png)
 
 1. このコンピューティング リソースで仮想ネットワークを使用するように構成するには、以下のオプションを使用します。
 
-    - __ネットワーク構成__:__[Advanced] \(詳細設定)__ を選択します。
+    - __ネットワーク構成__: __[Advanced] \(詳細設定)__ を選択します。
 
-    - __[リソース グループ]__:仮想ネットワークが含まれているリソース グループを選択します。
+    - __[リソース グループ]__ :仮想ネットワークが含まれているリソース グループを選択します。
 
     - __仮想ネットワーク__:サブネットが含まれている仮想ネットワークを選択します。
 
@@ -212,6 +278,10 @@ except ComputeTargetException:
     - __Docker ブリッジのアドレス__:Docker ブリッジのアドレスを選択します。 この IP アドレスは Docker ブリッジに割り当てられます。 サブネット IP 範囲または Kubernetes サービスのアドレス範囲内にすることはできません。 例: 172.17.0.1/16。
 
    ![Azure Machine Learning service:Machine Learning コンピューティングの仮想ネットワークの設定](./media/how-to-enable-virtual-network/aks-virtual-network-screen.png)
+
+1. 仮想ネットワークを制御する NSG グループに、仮想ネットワークの外部から呼び出すことができるように、スコア付けエンドポイントに対して有効になっている受信規則があることを確認します。
+
+    ![Azure Machine Learning service にコンピューティングを追加する方法](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-scoring.png)
 
     > [!TIP]
     > 仮想ネットワークに既に AKS クラスターがある場合は、ワークスペースにアタッチすることができます。 詳細については、[AKS へのデプロイ方法](how-to-deploy-to-aks.md)に関するページをご覧ください。
@@ -236,7 +306,7 @@ aks_target = ComputeTarget.create(workspace = ws,
                                   provisioning_configuration = config)
 ```
 
-作成プロセスが完了すると、仮想ネットワークの背後にある AKS クラスターで推論を行うことができます。 詳細については、[AKS へのデプロイ方法](how-to-deploy-to-aks.md)に関するページをご覧ください。
+作成プロセスが完了すると、仮想ネットワークの背後にある AKS クラスターで推論/スコア付けを行うことができます。 詳細については、[AKS へのデプロイ方法](how-to-deploy-to-aks.md)に関するページをご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 

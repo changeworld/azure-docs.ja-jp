@@ -1,11 +1,8 @@
 ---
 title: Azure アカウントのプロファイル情報を変更する | Microsoft Docs
-description: Azure アカウントのプロファイルを変更する方法を説明し、一般的な質問 (Azure アカウント センターで国を変更できない理由など) に回答します
-services: ''
-documentationcenter: ''
+description: Azure 管理アカウントのプロファイルおよび連絡先のメール アドレスを変更にする方法について説明します。
 author: genlin
 manager: alherz
-editor: ''
 tags: billing
 ms.assetid: 9d4ef5d9-11fc-4684-ace6-467f4ce26ba8
 ms.service: billing
@@ -13,50 +10,91 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/11/2018
+ms.date: 04/29/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ecf39623c70441e4b726221b4e92e2492370a9bc
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f61396d8fb0f02fe77f5ee35560f45a0c4698a10
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57846754"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65850761"
 ---
-# <a name="change-your-azure-account-profile-information-such-as-contact-email-address-and-phone-number"></a>Azure アカウントのプロファイル情報 (連絡先メール アドレス、住所、電話番号など) を変更する
+# <a name="change-the-profile-information-for-your-azure-account"></a>Azure アカウントのプロファイル情報を変更する
 
-マイクロソフトは、アカウント管理者のプロファイル内の電子メール アドレスを使用して、お客様にサブスクリプションに関する重要な請求に関する更新情報をお知らせしています。 このため、定期的にチェックする連絡先の電子メール アドレスを指定することをお勧めします。
+Microsoft では、Azure アカウントに関する請求、サービス、レコメンデーション関連の重要な通知を送信するために、アカウント管理者のプロファイルのメール アドレスを使います。 定期的にチェックするメール アドレスを指定することをお勧めします。 アカウント管理者は、プロファイルを更新して、アカウントの住所と電話番号を変更することもできます。
 
-## <a name="how-to-change-your-profile-information"></a>プロファイル情報の変更方法
+Microsoft では、サービス関連の通知とアカウントのレコメンデーションを送信するために、アカウント管理者ではないユーザーのプロファイルのメール アドレスを使います。 請求に関するすべての通知は、アカウント管理者に送信されます。 お客様は、自分のプロファイルを更新して住所と電話番号を変更することもできますが、それによってアカウントの住所または電話番号が変わることはありません。
+
+## <a name="change-your-profile-information"></a>プロファイルの情報を変更する
 
 1. [Azure アカウント センター](https://account.azure.com/Profile)にサインインします。
-1. **[詳細の編集]** ボタンを選択し、**[プロファイル]** 情報を更新します。
+1. **[詳細の編集]** ボタンを選択し、 **[プロファイル]** 情報を更新します。
 
-   ![[プロファイル]](./media/billing-how-to-change-azure-account-profile/profile.png)
+   ![Azure のプロファイル情報の例](./media/billing-how-to-change-azure-account-profile/profile.png)
 
-## <a name="frequently-asked-questions"></a>よく寄せられる質問
+### <a name="send-notifications-to-an-additional-email-address"></a>追加のメール アドレスに通知を送信する
 
-### <a name="can-notifications-be-sent-to-a-different-email-address-other-than-the-account-administrator-email-address-associated-with-my-account"></a>通知は、マイ アカウントに関連付けられたアカウント管理者のメール アドレス以外のメール アドレスに送信できますか。
+サービスの通知およびアカウントのレコメンデーションを、アカウントに関連付けられているアカウント管理者のメール アドレス以外のメール アドレスに送信させることができます。 アカウント管理者のメール アドレスには、請求関連の更新など、アカウント内のすべてのサブスクリプションに関する重要な通知が送信されます。
 
-はい。 アカウントのメール アドレスを使用すれば、アカウント内のすべてのサブスクリプションに関する重要な通知を取得できます。 このため、アカウント管理者が定期的にチェックするメール アドレスを連絡先のメール アドレスとして指定することをお勧めします。
+### <a name="change-the-account-administrators-email-address-in-your-profile"></a>プロファイルでアカウント管理者のメール アドレスを変更する
 
-### <a name="can-i-change-the-account-administrator-email-address-in-my-profile"></a>プロファイルのアカウント管理者の電子メール アドレスを変更することはできますか?
+アカウント管理者は Azure アカウントを設定する人で、またアカウント内のすべてのサブスクリプションに関する重要な電子メール通知を受信します。 このため、アカウント管理者が定期的にチェックする電子メール アドレスを連絡先のメール アドレスとして指定することをお勧めします。
 
-はい。 アカウント管理者は Azure アカウントを設定する人で、またアカウント内のすべてのサブスクリプションに関する重要な電子メール通知を受信します。 このため、アカウント管理者が定期的にチェックする電子メール アドレスを連絡先のメール アドレスとして指定することをお勧めします。
+### <a name="update-your-sign-in-email-address"></a>サインイン用のメール アドレスを更新する
 
-### <a name="does-updating-my-profile-email-also-update-my-login-email-address"></a>プロファイルの電子メールを更新すると、ログインの電子メール アドレスも更新されますか?
+プロファイルのメール アドレスを更新しても、サインイン用のメール アドレスは更新されません。 サインイン用のメール アドレスを変更するには、アカウントの所有権を譲渡する必要があります。
 
-いいえ。 プロファイルの電子メールを更新しても、ログインの電子メール アドレスは更新されません。 ログインの電子メール アドレスを変更するには、アカウントの所有権を譲渡する必要があります。
-
-### <a name="does-updating-my-profile-address-also-update-my-credit-card-billing-address"></a>プロファイルの住所を更新すると、クレジット カードの請求先の住所も更新されますか?
+### <a name="update-the-billing-address-for-your-credit-card"></a>クレジット カードの請求先住所を更新する
 
 請求情報を更新する方法については、「[Azure サブスクリプションの支払いに使用するクレジット カードを変更する方法](billing-how-to-change-credit-card.md)」をご覧ください。
 
-### <a name="why-cant-i-update-the-country"></a>国を更新できません。なぜですか?
+### <a name="update-your-countryregion"></a>国/地域を更新する
 
-技術上の制約により、既存のアカウントの国を変更することはできません。 ただし、目的の国でアカウントを作成し、Azure サポートに連絡して、サービスをそのアカウントに移行することができます。
+技術的な制約のため、既存のアカウントの国/地域を変更することはできません。 ただし、目的の国/地域でアカウントを作成し、Azure サポートに連絡して、サービスをそのアカウントに移行することができます。
+
+## <a name="service-and-marketing-emails"></a>サービスおよびマーケティングのメール
+
+[Azure portal](https://portal.azure.com) では、90 日ごとにメール アドレスの確認または更新を求められます。 Microsoft は、次の Azure アカウント関連情報のメールを、プロファイルのメール アドレスに送信します。
+
+- サービスの通知
+- セキュリティのアラート
+- 請求の目的
+- サポート
+- マーケティングの通信
+- Azure の使用状況に基づくベスト プラクティスのレコメンデーション
+
+アカウントに関する通信を受け取るメール アドレスを入力します。 メール アドレスを入力することにより、Microsoft からの通信の受信にオプトインします。
+
+![連絡先情報更新のプロンプトの例](./media/billing-how-to-change-azure-account-profile/update-contact-information.png)
+
+### <a name="change-your-contact-email-address"></a>連絡先のメール アドレスを変更する
+
+次のいずれかの方法を使って、連絡先のメール アドレスを変更できます。
+
+* [Azure アカウント センター](https://account.azure.com/Profile)にサインインします。 **[詳細の編集]** を選択し、プロファイルのメール アドレスを更新します。 プロファイルのメール アドレスを更新しても、サインイン用のメール アドレスは更新されません。
+
+* Azure portal の [[連絡先情報]](https://portal.azure.com/#blade/HubsExtension/ContactInfoBlade) 領域に移動して、メール アドレスを入力します。 指定したアドレスで、サービスとマーケティングの通信を受け取ります。 Azure アカウント センターのプロファイルのメール アドレスが、一致するように自動的に更新されます。 プロファイルのメール アドレスを更新しても、サインイン用のメール アドレスは更新されません。
+
+* [Azure portal](https://portal.azure.com/#blade/HubsExtension/ContactInfoBlade) で、自分のイニシャルの付いたアイコンまたは画像を選択します。 次に、コンテキスト メニュー **[...]** を選択します。次に、メニューから **[My Contact Information]\(自分の連絡先情報\)** を選択し、メール アドレスを入力します。 指定したアドレスで、サービスとマーケティングの通信を受け取ります。 Azure アカウント センターのプロファイルのメール アドレスが、一致するように自動的に更新されます。 プロファイルのメール アドレスを更新しても、サインイン用のメール アドレスは更新されません。
+
+![Azure でのメール アドレスの更新の例](./media/billing-how-to-change-azure-account-profile/azure-contact-information.png)
+
+### <a name="opt-out-of-marketing-emails"></a>マーケティング メールをオプトアウトする
+
+マーケティング メールの受信からオプトアウトするには:
+
+1. [要求フォーム](https://account.microsoft.com/profile/permissions-link-request)に移動し、自分のプロファイルのメール アドレスを使って要求を送信します。 個人設定を更新するためのリンクをメールで受け取ります。
+2. そのリンクを選択して、 **[Manage communication permissions]\(通信のアクセス許可の管理\)** ページを開きます。 このページには、メール アドレスがオプトインされているマーケティング通信の種類が表示されます。 オプトアウトするトピックをオフにして、 **[保存]** を選択します。
+
+
+![通信のアクセス許可を管理するためのページの例](./media/billing-how-to-change-azure-account-profile/manage-communication-permissions.png)
+
+マーケティング通信をオプトアウトしても、アカウントに基づくサービスの通知はまだ受け取ります。
 
 ## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
 
 ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://go.microsoft.com/fwlink/?linkid=2083458)してください。
 
+## <a name="next-steps"></a>次の手順
+- [請求先アカウントを表示する](billing-view-all-accounts.md)
