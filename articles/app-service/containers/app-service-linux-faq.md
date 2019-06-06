@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: yili
 ms.custom: seodec18
-ms.openlocfilehash: e3b6eed6f70eb2803ef4fa4e6b5d32fb0a4d843a
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: dbf63ff47b11c2e75966b4a4b91fb1b00b40d216
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59525128"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65594279"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Azure App Service on Linux の FAQ
 
@@ -39,13 +39,15 @@ App Service on Linux のリリースでは、機能の追加とプラットフ�
 
 **ランタイム スタックを構成する場合、[スタートアップ ファイル] セクションではどのような値が有効ですか。**
 
-| スタック     | 必要な値                                                                |
-|-----------|-------------------------------------------------------------------------------|
-| Java SE   | ご自分の `.jar` アプリケーションを起動するコマンド                                    |
-| Tomcat    | アプリの構成を実行するスクリプトの場所          |
-| Node.js   | PM2 構成ファイルまたは独自のスクリプト ファイル                                |
-| .NET Core | `dotnet <myapp>.dll` としてコンパイルされた DLL 名                                 |
-| Ruby      | ご自分のアプリの初期化に使用する Ruby スクリプト                     |
+| スタック           | 必要な値                                                                         |
+|-----------------|----------------------------------------------------------------------------------------|
+| Java SE         | ご自分の JAR アプリを起動するコマンド (例: `java -jar my-app.jar --server.port=80`) |
+| Tomcat、Wildfly | 必要なすべての構成を実行するスクリプトの場所 (例: `/home/site/deployments/tools/startup_script.sh`)          |
+| Node.js         | PM2 構成ファイルまたは独自のスクリプト ファイル                                |
+| .NET Core       | `dotnet <myapp>.dll` としてコンパイルされた DLL 名                                 |
+| Ruby            | ご自分のアプリの初期化に使用する Ruby スクリプト                     |
+
+これらのコマンドまたはスクリプトは、組み込みの Docker コンテナーが開始されてから、アプリケーション コードが開始されるまでの間に実行されます。
 
 ## <a name="management"></a>管理
 
@@ -136,7 +138,7 @@ const io = require('socket.io')(server,{
 
 **カスタム コンテナー イメージで複数のポートを公開できますか。**
 
-複数のポートの公開は現在サポートされていません。
+複数のポートの公開はサポートされていません。
 
 **自分が所有するストレージを持ち込むことはできますか?**
 
@@ -154,11 +156,11 @@ SCM サイトは別のコンテナーで実行されています。 アプリ �
 
 いいえ、共有フロントエンドでの HTTPS の終了はプラットフォームが処理します。
 
-## <a name="multi-container-with-docker-compose-and-kubernetes"></a>Docker Compose と Kubernetes を使用した複数コンテナー
+## <a name="multi-container-with-docker-compose"></a>Docker Compose を使用した複数コンテナー
 
 **複数コンテナーで使用するように、Azure Container Registry (ACR) を構成する方法を教えてください。**
 
-複数コンテナーで ACR を使用するには、**すべてのコンテナー イメージ**を同じ ACR レジストリ サーバーでホストする必要があります。 コンテナーを同じレジストリ サーバーに配置したら、アプリケーション設定を作成し、Docker Compose または Kubernetes の構成ファイルに ACR のイメージ名を含めて更新する必要があります。
+複数コンテナーで ACR を使用するには、**すべてのコンテナー イメージ**を同じ ACR レジストリ サーバーでホストする必要があります。 コンテナーを同じレジストリ サーバーに配置したら、アプリケーション設定を作成し、Docker Compose の構成ファイルに ACR のイメージ名を含めて更新する必要があります。
 
 次のアプリケーション設定を作成します。
 

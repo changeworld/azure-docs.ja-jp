@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 10/06/2017
-ms.openlocfilehash: 1f357ed60e9d9f020d5a80ac9349eb65577521e7
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 1a42b590fc83b89cd9f90998f835fc58f84ea960
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59796792"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65597409"
 ---
 # <a name="schedule-and-broadcast-jobs-node"></a>ジョブのスケジュールとブロードキャスト (Node)
 
@@ -50,7 +50,7 @@ Azure IoT Hub は、数百万台のデバイスをスケジュールおよび更
 
 このチュートリアルを完了するには、以下が必要です。
 
-* Node.js バージョン 4.0.x 以降。「[Prepare your development environment (開発環境を準備する)](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md)」では、このチュートリアルのために Node.js を Windows または Linux にインストールする方法が説明されています。
+* Node.js バージョン 10.0.x 以降。「[Prepare your development environment (開発環境を準備する)](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md)」では、このチュートリアルのために Node.js を Windows または Linux にインストールする方法が説明されています。
 
 * アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 (アカウントがない場合は、[無料アカウント](https://azure.microsoft.com/pricing/free-trial/) を数分で作成できます)。
 

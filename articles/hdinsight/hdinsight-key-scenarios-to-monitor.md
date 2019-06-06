@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: arindamc
-ms.openlocfilehash: 22484885663a4f9a908ae988882b87612129251a
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 9a6a63748ef36bbbceb00bc815616f2cb12692a7
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64693215"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65799786"
 ---
 # <a name="monitor-cluster-performance"></a>クラスター パフォーマンスの監視
 
@@ -25,12 +25,12 @@ HDInsight クラスターの正常性とパフォーマンスを監視するこ�
 
 Hadoop クラスターでは、クラスターの負荷がすべてのノードに均等に分散している場合に、最適なパフォーマンスが発揮されます。 これにより、個々のノードの RAM、CPU、またはディスク リソースによって制限されることなく、実行するタスクの処理が可能になります。
 
-クラスターのノードとその負荷の概要を把握するには、[Ambari Web UI](hdinsight-hadoop-manage-ambari.md) にサインインし、**[Hosts]** タブを選択します。ホストの一覧が完全修飾ドメイン名で表示されます。 各ホストの動作状態は、色付きの正常性インジケーターで示されます。
+クラスターのノードとその負荷の概要を把握するには、[Ambari Web UI](hdinsight-hadoop-manage-ambari.md) にサインインし、 **[Hosts]** タブを選択します。ホストの一覧が完全修飾ドメイン名で表示されます。 各ホストの動作状態は、色付きの正常性インジケーターで示されます。
 
 | 色 | 説明 |
 | --- | --- |
 | 赤 | ホスト上の少なくとも 1 つのマスター コンポーネントがダウンしています。 カーソルを移動すると、ツールヒントに影響を受けるコンポーネントの一覧が表示されます。 |
-| オレンジ | ホスト上の少なくとも 1 つのスレーブ コンポーネントがダウンしています。 カーソルを移動すると、ツールヒントに影響を受けるコンポーネントの一覧が表示されます。 |
+| オレンジ | ホスト上の少なくとも 1 つのセカンダリ コンポーネントがダウンしています。 カーソルを移動すると、ツールヒントに影響を受けるコンポーネントの一覧が表示されます。 |
 | 黄 | Ambari Server がホストからハートビートを受け取らない時間が 3 分を超えています。 |
 | 緑 | 通常の実行状態です。 |
 

@@ -3,25 +3,25 @@ title: ポータルでの Azure アプリ ID の作成 | Microsoft Docs
 description: Azure Resource Manager でロール ベースのアクセス制御と共に使用してリソースへのアクセスを管理できる、新しい Azure Active Directory のアプリケーションとサービス プリンシパルを作成する方法について説明します。
 services: active-directory
 documentationcenter: na
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/08/2019
-ms.author: celested
+ms.date: 05/14/2019
+ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9affec9ccc1b87f36d6f30aff4795d85532be8c1
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.openlocfilehash: d0208d25e4583672ad2110d959f8e255affbf3e0
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59565922"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65764869"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>方法:リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する
 
@@ -44,7 +44,7 @@ ms.locfileid: "59565922"
 
    ![アプリを追加する](./media/howto-create-service-principal-portal/select-add-app.png)
 
-1. アプリケーションの名前と URL を指定します。 作成するアプリケーションの種類として、**[Web アプリ/API]** を選択します。 [ネイティブ アプリケーション](../manage-apps/application-proxy-configure-native-client-application.md)の資格情報を作成することはできません。 そのタイプを自動化されたアプリケーションに使用することはできません。 値を設定したら、**[作成]** をクリックします。
+1. アプリケーションの名前と URL を指定します。 作成するアプリケーションの種類として、 **[Web アプリ/API]** を選択します。 [ネイティブ アプリケーション](../manage-apps/application-proxy-configure-native-client-application.md)の資格情報を作成することはできません。 そのタイプを自動化されたアプリケーションに使用することはできません。 値を設定したら、 **[作成]** をクリックします。
 
    ![アプリケーションに名前を付ける](./media/howto-create-service-principal-portal/create-app.png)
 
@@ -56,7 +56,7 @@ Azure AD アプリケーションとサービス プリンシパルが作成さ�
 
 スコープは、サブスクリプション、リソース グループ、またはリソースのレベルで設定できます。 アクセス許可は、スコープの下位レベルに継承されます。 たとえば、アプリケーションをリソース グループの閲覧者ロールに追加すると、アプリケーションではリソース グループとそれに含まれているすべてのリソースを読み取ることができます。
 
-1. アプリケーションを割り当てるスコープのレベルに移動します。 たとえば、サブスクリプション スコープでロールを割り当てるには、**[すべてのサービス]** および **[サブスクリプション]** を選択します。
+1. アプリケーションを割り当てるスコープのレベルに移動します。 たとえば、サブスクリプション スコープでロールを割り当てるには、 **[すべてのサービス]** および **[サブスクリプション]** を選択します。
 
    ![サブスクリプションを選択します。](./media/howto-create-service-principal-portal/select-subscription.png)
 
@@ -71,7 +71,7 @@ Azure AD アプリケーションとサービス プリンシパルが作成さ�
 
    ![[ロール割り当ての追加]を選択する](./media/howto-create-service-principal-portal/select-add.png)
 
-1. アプリケーションに割り当てるロールを選択します。 アプリケーションがインスタンスの**再起動**、**開始**、**停止**などのアクションを実行できるようにするには、**[共同作成者]** ロールを選択します。 既定では、Azure AD アプリケーションは、使用可能なオプションに表示されません。 アプリケーションを見つけるには、名前を検索し、その名前を選択します。
+1. アプリケーションに割り当てるロールを選択します。 アプリケーションがインスタンスの**再起動**、**開始**、**停止**などのアクションを実行できるようにするには、 **[共同作成者]** ロールを選択します。 既定では、Azure AD アプリケーションは、使用可能なオプションに表示されません。 アプリケーションを見つけるには、名前を検索し、その名前を選択します。
 
    ![Select role](./media/howto-create-service-principal-portal/select-role.png)
 
@@ -106,18 +106,18 @@ Azure AD アプリケーションとサービス プリンシパルが作成さ�
 
    ![クライアント ID](./media/howto-create-service-principal-portal/copy-app-id.png)
 
-1. **[設定]** を選択します。
+1. **[証明書とシークレット]** を選択します。
 
-   ![[設定] の選択](./media/howto-create-service-principal-portal/select-settings.png)
+   ![[設定] の選択](./media/howto-create-service-principal-portal/select-certs-secrets.png)
 
-1. **[キー]** を選択します。
-1. キーの説明を入力し、キーの期間を指定します。 操作が完了したら、**[保存]** をクリックします。
+1. **[クライアント シークレット] -> [新しいクライアント シークレット]** を選択します。
+1. シークレットの説明と期間を指定します。 完了したら、 **[追加]** をクリックします。
 
-   ![キーを保存する](./media/howto-create-service-principal-portal/save-key.png)
+   ![シークレットの保存](./media/howto-create-service-principal-portal/save-secret.png)
 
-   キーを保存すると、キーの値が表示されます。 キーは後で取得できないため、この値をコピーしておきます。 キー値は、アプリケーションとしてサインインする際にアプリケーション ID と共に入力します。 アプリケーションが取得できる場所にキー値を保存します。
+   クライアント シークレットを保存すると、クライアント シークレットの値が表示されます。 キーは後で取得できないため、この値をコピーしておきます。 キー値は、アプリケーションとしてサインインする際にアプリケーション ID と共に入力します。 アプリケーションが取得できる場所にキー値を保存します。
 
-   ![保存されたキー](./media/howto-create-service-principal-portal/copy-key.png)
+   ![シークレットのコピー](./media/howto-create-service-principal-portal/copy-secret.png)
 
 ## <a name="required-permissions"></a>必要なアクセス許可
 
@@ -146,15 +146,15 @@ Azure サブスクリプションで、AD アプリをロールに割り当て�
 
 サブスクリプションのアクセス許可を確認するには、次の手順に従います。
 
-1. 右上隅にあるアカウントを選択し、**[アクセス許可]** を選択します。
+1. 右上隅にあるアカウントを選択し、 **[...] -> [アクセス許可]** を選択します。
 
    ![ユーザーのアクセス許可を選択する](./media/howto-create-service-principal-portal/select-my-permissions.png)
 
-1. ドロップダウン リストから、サービス プリンシパルを作成するサブスクリプションを選択します。 次に、**[Click here to view complete access details for this subscription] (このサブスクリプションの完全なアクセスの詳細を表示するにはここをクリック)** を選択します。
+1. ドロップダウン リストから、サービス プリンシパルを作成するサブスクリプションを選択します。 次に、 **[Click here to view complete access details for this subscription] (このサブスクリプションの完全なアクセスの詳細を表示するにはここをクリック)** を選択します。
 
    ![ユーザーを見つける](./media/howto-create-service-principal-portal/view-details.png)
 
-1. 割り当て済みのロールを表示し、AD アプリをロールに割り当てるための適切なアクセス許可があるかどうかを確認します。 ない場合は、サブスクリプション管理者に連絡して、ユーザー アクセス管理者ロールに追加してもらいます。 次の図では、ユーザーは所有者ロールに割り当てられているので、このユーザーには適切なアクセス許可があります。
+1. **[ロールの割り当て]** を選択して割り当て済みのロールを表示し、AD アプリをロールに割り当てるための適切なアクセス許可があるかどうかを確認します。 ない場合は、サブスクリプション管理者に連絡して、ユーザー アクセス管理者ロールに追加してもらいます。 次の図では、ユーザーは所有者ロールに割り当てられているので、このユーザーには適切なアクセス許可があります。
 
    ![アクセス許可を表示する](./media/howto-create-service-principal-portal/view-user-role.png)
 

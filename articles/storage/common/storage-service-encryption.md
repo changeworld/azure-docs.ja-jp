@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 04/30/2019
+ms.date: 05/15/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 6eb7de7810ce23aed4031cca9f038da7149a6f9c
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 1e95adbd1a564fb34d3f0506ac1cc25bc5a63c62
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65153085"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65790048"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>保存データに対する Azure Storage 暗号化
 
@@ -51,6 +51,9 @@ Azure Storage でカスタマー マネージド キーを使う方法につい�
 - [Azure portal から Azure Storage 暗号化用にカスタマー マネージド キーを構成する](storage-encryption-keys-portal.md)
 - [PowerShell から Azure Storage 暗号化用にカスタマー マネージド キーを構成する](storage-encryption-keys-powershell.md)
 - [Azure CLI から Azure Storage 暗号化でカスタマー マネージド キーを使用する](storage-encryption-keys-cli.md)
+
+> [!IMPORTANT]
+> カスタマー マネージド キーは、Azure Active Directory (Azure AD) の 1 つの機能である Azure リソース用マネージド ID に依存します。 Azure AD ディレクトリから別のディレクトリにサブスクリプションを転送するとき、マネージド ID が更新されず、カスタマー マネージド キーが機能しなくなる可能性があります。 詳細については、「[Azure リソース用マネージド ID に関する FAQ と既知の問題](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories)」の中の「**Azure AD ディレクトリ間のサブスクリプションの転送**」を参照してください。  
 
 > [!NOTE]  
 > [Azure マネージド ディスク](../../virtual-machines/windows/managed-disks-overview.md)に対しては、カスタマー マネージド キーはサポートされていません。

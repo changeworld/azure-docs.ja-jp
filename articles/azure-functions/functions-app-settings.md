@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/22/2018
 ms.author: glenga
-ms.openlocfilehash: d78fb546e954c4ae12e5836d9a7bef7ed5003090
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 02becd787fcc5f82efff7ef21feaf336fba3a26f
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65511072"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65967592"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions のアプリケーション設定のリファレンス
 
@@ -122,7 +122,7 @@ Azure portal での編集が有効になっているかどうかを決定しま�
 
 ## <a name="functionsworkerruntime"></a>FUNCTIONS\_WORKER\_RUNTIME
 
-ワーカー ランタイムが関数アプリに読み込む言語。  これは、アプリケーションで使用されている言語に対応します (たとえば、"dotnet")。 関数の言語が混在する場合、関数ごとに対応するワーカー ランタイム値を設定して、関数を複数のアプリに公開する必要があります。  有効な値は、`dotnet` (C#/F#)、`node` (JavaScript/TypeScript)、`java` (Java)、および `python` (Python) です。
+ワーカー ランタイムが関数アプリに読み込む言語。  これは、アプリケーションで使用されている言語に対応します (たとえば、"dotnet")。 関数の言語が混在する場合、関数ごとに対応するワーカー ランタイム値を設定して、関数を複数のアプリに公開する必要があります。  有効な値は、`dotnet` (C#/F#)、`node` (JavaScript/TypeScript)、`java` (Java)、`powershell` (PowerShell)、`python` (Python) です。
 
 |キー|値の例|
 |---|------------|

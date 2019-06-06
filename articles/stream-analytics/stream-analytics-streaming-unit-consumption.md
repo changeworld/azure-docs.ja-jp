@@ -8,13 +8,13 @@ manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 04/12/2018
-ms.openlocfilehash: 5f85f0a6b1869571a8db29586e5fe113e0f47433
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.date: 05/17/2019
+ms.openlocfilehash: 60cddf15ee8a93aa01a72fdc124fa27e68184e04
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54304841"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65916041"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>ストリーミング ユニットの理解と調整
 
@@ -29,7 +29,7 @@ SU 使用率 (%) メトリックはワークロードのメモリ消費量を表
 
 2. リソースの一覧で、スケールする Stream Analytics ジョブを見つけて開きます。 
 
-3. ジョブ ページの **[構成]** 見出しで、**[スケーリング]** を選択します。 
+3. ジョブ ページの **[構成]** 見出しで、 **[スケーリング]** を選択します。 
 
     ![Azure Portal での Stream Analytics ジョブの構成][img.stream.analytics.preview.portal.settings.scale]
     
@@ -51,7 +51,7 @@ Azure Portal を使用して、ジョブのスループットを追跡できま�
 適切な SU 数の選択の詳細については、次のページを参照してください:[スループット向上のための Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
 
 > [!Note]
-> 特定のジョブに必要な SU 数の選択は、入力のパーティション構成と、ジョブに定義されたクエリによって異なります。 1 つのジョブについて、クォータまでの SU 数を選択できます。 既定では、各 Azure サブスクリプションには、特定のリージョン内のすべての分析ジョブを対象に最大 200 個という SU のクォータが設定されています。 このクォータを超えてサブスクリプションの SU 数を増やす場合は、[Microsoft サポート](https://support.microsoft.com)までご連絡ください。 ジョブごとの SU 数の有効な値は 1、3、6 であり、6 ずつ増加します。
+> 特定のジョブに必要な SU 数の選択は、入力のパーティション構成と、ジョブに定義されたクエリによって異なります。 1 つのジョブについて、クォータまでの SU 数を選択できます。 既定では、各 Azure サブスクリプションには、特定のリージョン内のすべての分析ジョブを対象に最大 500 個という SU のクォータが設定されています。 このクォータを超えてサブスクリプションの SU 数を増やす場合は、[Microsoft サポート](https://support.microsoft.com)までご連絡ください。 ジョブごとの SU 数の有効な値は 1、3、6 であり、6 ずつ増加します。
 
 ## <a name="factors-that-increase-su-utilization"></a>SU の使用率を上げる要因 
 

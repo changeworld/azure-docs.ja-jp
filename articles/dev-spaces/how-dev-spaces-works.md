@@ -10,12 +10,12 @@ ms.date: 03/04/2019
 ms.topic: conceptual
 description: Azure Dev Spaces の使用を開始するためのプロセスおよび azds.yaml 構成ファイルでのそれらの構成方法について説明します
 keywords: azds.yaml, Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
-ms.openlocfilehash: 494dd3774ec47598a95c6e20de6283abc2e4ff94
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: f7cf5ae875fa0fb87322052df036d35e8e5e89a4
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59544925"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65605418"
 ---
 # <a name="how-azure-dev-spaces-works-and-is-configured"></a>Azure Dev Spaces のしくみと構成方法
 
@@ -29,7 +29,7 @@ Azure Dev Spaces では、AKS で Kubernetes アプリケーションをデプ�
 
 * [Java (CLI と Visual Studio Code を使用)](quickstart-java.md)
 * [.NET Core (CLI と Visual Studio Code を使用)](quickstart-netcore.md)
-* [.NET Core (Visual Studio 2017 を使用)](quickstart-netcore-visualstudio.md)
+* [.NET Core (Visual Studio を使用)](quickstart-netcore-visualstudio.md)
 * [Node.js (CLI と Visual Studio Code を使用)](quickstart-nodejs.md)
 
 ## <a name="how-azure-dev-spaces-works"></a>Azure Dev Spaces のしくみ
@@ -66,7 +66,7 @@ Azure Dev Spaces では 2 つの異なるコンポーネント (コントロー�
 コマンド ラインから `azds` コマンドの一部としてクライアント側ツールを使用することができます。 クライアント側ツールを以下のものと共に使用することもできます。
 
 * [Azure Dev Spaces 拡張機能](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds)を使用する Visual Studio Code。
-* Visual Studio 2017 および [Visual Studio Tools for Kubernetes](https://aka.ms/get-vsk8stools)。
+* Visual Studio および [Visual Studio Tools for Kubernetes](https://aka.ms/get-vsk8stools)。
 
 Azure Dev Spaces の設定と使用の基本的なフローは次のとおりです。
 1. Azure Dev Spaces 用に AKS クラスターを準備する
@@ -139,7 +139,7 @@ azds prep --public
 
 ソース コードを含むディレクトリから `prep` コマンドを実行する "*必要があります*"。 正しいディレクトリから `prep` コマンドを実行すると、クライアント側ツールで言語を識別し、アプリケーションのコンテナー化に適した Dockerfile を作成できます。 Java プロジェクト用の *pom.xml* ファイルを含むディレクトリから `prep` コマンドを実行することもできます。
 
-ソース コードが含まれないディレクトリから `prep` コマンドを実行すると、クライアント側ツールでは Dockerfile が生成されません。 また、次のようなエラーが表示されます。"*Dockerfile could not be generated due to unsupported language\(サポートされていない言語が原因で Dockerfile を生成できませんでした\)*"。 このエラーは、クライアント側ツールでプロジェクト タイプが認識されない場合にも発生します。
+ソース コードが含まれないディレクトリから `prep` コマンドを実行すると、クライアント側ツールでは Dockerfile が生成されません。 また、次のようなエラーが表示されます。"*Dockerfile could not be generated due to unsupported language\(サポートされていない言語が原因で Dockerfile を生成できませんでした\)* "。 このエラーは、クライアント側ツールでプロジェクト タイプが認識されない場合にも発生します。
 
 `prep` コマンドの実行時には、`--public` フラグを指定することができます。 このフラグは、インターネットにアクセス可能なエンドポイントをこのサービス用に作成するようコントローラーに指示します。 このフラグを指定しない場合は、クラスター内から、またはクライアント側ツールで作成された localhost トンネルを使用してサービスにアクセスする必要があります。 生成された Helm チャートを更新することで、`prep` コマンドの実行後にこの動作を有効または無効にすることができます。
 
@@ -331,17 +331,17 @@ install:
 
 Helm チャートのインストール時には、Helm チャート内の値をオーバーライドする方法が Azure Dev Spaces から提供されます。 Helm チャートの既定値は `charts/APP_NAME/values.yaml` に含まれています。
 
-*install.values* プロパティを使用すると、Helm チャートで置き換える値を定義する 1 つ以上のファイルを表示できます。 たとえば、開発スペースでアプリケーションを実行する場合にホスト名またはデータベース構成が必要な場合は、このオーバーライド機能を使用できます。 また、*?* を ファイル名の末尾に追加して、オプションとして設定することもできます。
+*install.values* プロパティを使用すると、Helm チャートで置き換える値を定義する 1 つ以上のファイルを表示できます。 たとえば、開発スペースでアプリケーションを実行する場合にホスト名またはデータベース構成が必要な場合は、このオーバーライド機能を使用できます。 また、 *?* を ファイル名の末尾に追加して、オプションとして設定することもできます。
 
 *install.set* プロパティを使用すると、Helm チャートで置き換える 1 つ以上の値を構成できます。 *install.set* で構成された値によって、*install.values* に表示されているファイルで構成された値がオーバーライドされます。 *install.set* に属するプロパティは、Helm チャート内の値に依存し、生成される Helm チャートによって異なる場合があります。
 
 上記の例では、*install.set.replicaCount* プロパティは、開発スペースで実行するアプリケーションのインスタンス数をコントローラーに通知します。 シナリオによっては、この値を増やすことができますが、これはアプリケーションのポッドへのデバッガーのアタッチに影響を及ぼします。 詳細については、[トラブルシューティングの記事](troubleshooting.md)を参照してください。
 
-生成される Helm チャートでは、コンテナー イメージが *{{ .Values.image.repository }}:{{ .Values.image.tag }}* に設定されます。 `azds.yaml` ファイルでは、*install.set.image.tag* プロパティが既定で *$(tag)* として定義されます。これは、*{{ .Values.image.tag }}* の値として使用されます。 この方法で *install.set.image.tag* プロパティを設定すると、Azure Dev Spaces の実行時に独自の方法でアプリケーションのコンテナー イメージにタグ付けできます。 この特定のケースでは、イメージに *<value from image.repository>:$(tag)* というタグが付けられます。 Dev Spaces が AKS クラスター内のコンテナーを認識して特定できるようにするには、*$(tag)* 変数を *install.set.image.tag* の値として使用する必要があります。
+生成される Helm チャートでは、コンテナー イメージが *{{ .Values.image.repository }}:{{ .Values.image.tag }}* に設定されます。 `azds.yaml` ファイルでは、*install.set.image.tag* プロパティが既定で *$(tag)* として定義されます。これは、 *{{ .Values.image.tag }}* の値として使用されます。 この方法で *install.set.image.tag* プロパティを設定すると、Azure Dev Spaces の実行時に独自の方法でアプリケーションのコンテナー イメージにタグ付けできます。 この特定のケースでは、イメージは *\<image.repository の値>:$(tag)* としてタグ付けされます。 Dev Spaces が AKS クラスター内のコンテナーを認識して特定できるようにするには、 *$(tag)* 変数を *install.set.image.tag* の値として使用する必要があります。
 
-上記の例では、`azds.yaml` によって *install.set.ingress.hosts* が定義されます。 *install.set.ingress.hosts* プロパティでは、パブリック エンドポイントのホスト名の形式が定義されます。 また、このプロパティでは *$(spacePrefix)*、*$(rootSpacePrefix)*、および *$(hostSuffix)* を使用します。これらはコントローラーから提供される値です。 
+上記の例では、`azds.yaml` によって *install.set.ingress.hosts* が定義されます。 *install.set.ingress.hosts* プロパティでは、パブリック エンドポイントのホスト名の形式が定義されます。 また、このプロパティでは *$(spacePrefix)* 、 *$(rootSpacePrefix)* 、および *$(hostSuffix)* を使用します。これらはコントローラーから提供される値です。 
 
-*$(spacePrefix)* は子開発スペースの名前であり、*SPACENAME.s* という形式になります。 *$(RootSpacePrefix)* は親スペースの名前です。 たとえば、*azureuser* が *default* の子スペースである場合、*$(rootSpacePrefix)* の値は *default*、*$(spacePrefix)* の値は *azureuser.s* になります。 スペースが子スペースでない場合、*$(spacePrefix)* は空白になります。 たとえば、*default* スペースに親スペースがない場合、*$(rootSpacePrefix)* の値は *default*、*$(spacePrefix)* の値は空白になります。 *$(hostSuffix)* は、AKS クラスターで実行する Azure Dev Spaces イングレス コントローラーを指す DNS サフィックスです。 この DNS サフィックスは、Azure Dev Spaces コントローラーが AKS クラスターに追加されたときに作成されたワイルドカードの DNS エントリ (たとえば、*\*.RANDOM_VALUE.eus.azds.io*) に対応しています。
+*$(spacePrefix)* は子開発スペースの名前であり、*SPACENAME.s* という形式になります。 *$(RootSpacePrefix)* は親スペースの名前です。 たとえば、*azureuser* が *default* の子スペースである場合、 *$(rootSpacePrefix)* の値は *default*、 *$(spacePrefix)* の値は *azureuser.s* になります。 スペースが子スペースでない場合、 *$(spacePrefix)* は空白になります。 たとえば、*default* スペースに親スペースがない場合、 *$(rootSpacePrefix)* の値は *default*、 *$(spacePrefix)* の値は空白になります。 *$(hostSuffix)* は、AKS クラスターで実行する Azure Dev Spaces イングレス コントローラーを指す DNS サフィックスです。 この DNS サフィックスは、Azure Dev Spaces コントローラーが AKS クラスターに追加されたときに作成されたワイルドカードの DNS エントリ (たとえば、 *\*.RANDOM_VALUE.eus.azds.io*) に対応しています。
 
 上記の `azds.yaml` ファイルでは、アプリケーションのホスト名を変更するように *install.set.ingress.hosts* を更新することも可能でした。 たとえば、アプリケーションのホスト名を *$(spacePrefix)$(rootSpacePrefix)webfrontend$(hostSuffix)* から *$(spacePrefix)$(rootSpacePrefix)web$(hostSuffix)* に簡略化する場合などです。
 
@@ -404,11 +404,11 @@ ingress:
 
 ## <a name="debug-your-code"></a>コードをデバッグする
 
-Java、.NET、および Node.js アプリケーションの場合、Visual Studio Code または Visual Studio 2017 を使用して、実行中のアプリケーションを開発スペースで直接デバッグできます。 Visual Studio Code と Visual Studio 2017 には、開発スペースに接続してアプリケーションを起動し、デバッガーをアタッチするためのツールが用意されています。 `azds prep` の実行後、Visual Studio Code または Visual Studio 2017 でプロジェクトを開くことができます。 Visual Studio Code または Visual Studio 2017 では、`azds prep` の実行とは別の接続用の独自の構成ファイルが生成されます。 Visual Studio Code または Visual Studio 2017 内から、ブレークポイントを設定し、開発スペースに対してアプリケーションを起動できます。
+Java、.NET、および Node.js アプリケーションの場合、Visual Studio Code または Visual Studio を使用して、実行中のアプリケーションを開発スペースで直接デバッグできます。 Visual Studio Code と Visual Studio には、開発スペースに接続してアプリケーションを起動し、デバッガーをアタッチするためのツールが用意されています。 `azds prep` の実行後、Visual Studio Code または Visual Studio でプロジェクトを開くことができます。 Visual Studio Code または Visual Studio では、`azds prep` の実行とは別の接続用の独自の構成ファイルが生成されます。 Visual Studio Code または Visual Studio 内から、ブレークポイントを設定し、開発スペースに対してアプリケーションを起動できます。
 
 ![コードのデバッグ](media/get-started-node/debug-configuration-nodejs2.png)
 
-Visual Studio Code または Visual Studio 2017 を使用してデバッグ用にアプリケーションを起動すると、`azds up` の実行と同じ方法で起動および開発スペースへの接続が処理されます。 また、Visual Studio Code および Visual Studio 2017 のクライアント側ツールには、デバッグ用の特定の情報を含む追加のパラメーターが用意されています。 このパラメーターには、デバッガー イメージの名前、デバッガー イメージ内のデバッガーの場所、およびアプリケーションのコンテナー内でのデバッガー フォルダーのマウント先が含まれています。 
+Visual Studio Code または Visual Studio を使用してデバッグ用にアプリケーションを起動すると、`azds up` の実行と同じ方法で起動および開発スペースへの接続が処理されます。 また、Visual Studio Code および Visual Studio のクライアント側ツールには、デバッグ用の特定の情報を含む追加のパラメーターが用意されています。 このパラメーターには、デバッガー イメージの名前、デバッガー イメージ内のデバッガーの場所、およびアプリケーションのコンテナー内でのデバッガー フォルダーのマウント先が含まれています。 
 
 デバッガー イメージは、クライアント側ツールによって自動的に指定されます。 `azds prep` の実行時に Dockerfile と Helm チャートの生成に使用したのと同じ方法が使用されます。 アプリケーションのイメージにマウントされたデバッガーは `azds exec` を使用して実行されます。
 
@@ -420,7 +420,7 @@ Visual Studio Code または Visual Studio 2017 を使用してデバッグ用�
 
 また、派生の開発スペースでは、その独自のアプリケーションと親から共有されるアプリケーションの間で要求がインテリジェントにルーティングされます。 ルーティングの際は、派生の開発スペースでアプリケーションに対する要求のルーティングが試行され、親開発スペースから共有アプリケーションにフォールバックされます。 アプリケーションが親スペースにない場合は、親の親であるスペース内の共有アプリケーションにルーティングがフォールバックします。
 
-例: 
+例:
 * 開発スペース *default* にアプリケーション *serviceA* および *serviceB* があります。
 * 開発スペース *azureuser* は *default* から派生したものです。
 * *serviceA* の更新バージョンは *azureuser* にデプロイされます。
@@ -433,12 +433,12 @@ Azure Dev Spaces の使用を開始するには、以下のクイック スタ�
 
 * [Java (CLI と Visual Studio Code を使用)](quickstart-java.md)
 * [.NET Core (CLI と Visual Studio Code を使用)](quickstart-netcore.md)
-* [.NET Core (Visual Studio 2017 を使用)](quickstart-netcore-visualstudio.md)
+* [.NET Core (Visual Studio を使用)](quickstart-netcore-visualstudio.md)
 * [Node.js (CLI と Visual Studio Code を使用)](quickstart-nodejs.md)
 
 チーム開発を開始するには、以下のハウツー記事を参照してください。
 
 * [チーム開発 - Java (CLI と Visual Studio Code を使用)](team-development-java.md)
 * [チーム開発 - .NET Core (CLI と Visual Studio Code を使用)](team-development-netcore.md)
-* [チーム開発 - .NET Core (Visual Studio 2017 を使用)](team-development-netcore-visualstudio.md)
+* [チーム開発 - .NET Core (Visual Studio を使用)](team-development-netcore-visualstudio.md)
 * [チーム開発 - Node.js (CLI と Visual Studio Code を使用)](team-development-nodejs.md)

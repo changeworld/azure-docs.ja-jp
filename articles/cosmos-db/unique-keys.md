@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 3c5e8a2c85898175772dc353258e77fc8e0a74f2
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c3524f27cc14050647c457fdb5e87b2b83dbdfc0
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59799118"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595867"
 ---
 # <a name="unique-key-constraints-in-azure-cosmos-db"></a>Azure Cosmos DB の一意キー制約
 
@@ -55,4 +55,5 @@ ms.locfileid: "59799118"
 
 ## <a name="next-steps"></a>次の手順
 
-* [論理パーティション](partition-data.md)の詳細を確認する。
+* [論理パーティション](partition-data.md)の詳細を確認する
+* コンテナーの作成時に[一意キーを定義する方法](how-to-define-unique-keys.md)を確認する

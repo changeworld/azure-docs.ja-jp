@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database Managed Instance のタイム ゾーン | Microsoft Docs"
+title: Azure SQL Database Managed Instance のタイム ゾーン | Microsoft Docs
 description: Azure SQL Database Managed Instance のタイム ゾーンの詳細について説明します
 services: sql-database
 ms.service: sql-database
@@ -10,19 +10,19 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: ''
 manager: craigg
-ms.date: 04/10/2019
-ms.openlocfilehash: 23314e97051da95ab164baeab6e9d089f486351a
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.date: 05/22/2019
+ms.openlocfilehash: 8499d99ab82fa89062d74c7dc5db5d7dd11e770c
+ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59489692"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66016393"
 ---
-# <a name="time-zone-in-azure-sql-database-managed-instance-preview"></a>Azure SQL Database Managed Instance のタイム ゾーン (プレビュー)
+# <a name="time-zones-in-azure-sql-database-managed-instance"></a>Azure SQL Database Managed Instance のタイム ゾーン
 
-クラウド ソリューションのデータ層では協定世界時 (UTC) を使用することが推奨プラクティスですが、Azure SQL Database Managed Instance では、特定のタイム ゾーンの暗黙的コンテキストにおいて、日付と時刻の値を格納し、日付と時刻関数を呼び出す既存のアプリケーションのニーズを満たすために、タイム ゾーンを選べるようになっています。
+クラウド ソリューションのデータ層では、協定世界時 (UTC) タイム ゾーンを使用することをお勧めします。 また、Azure SQL Database Managed Instance では、特定のタイム ゾーンの暗黙的コンテキストにおいて、日付と時刻の値を格納し、日付と時刻関数を呼び出す既存のアプリケーションのニーズを満たすために、タイム ゾーンを選ぶこともできます。
 
-[GETDATE()](https://docs.microsoft.com/sql/t-sql/functions/getdate-transact-sql) などの T-SQL 関数や CLR コードでは、タイム ゾーンの設定をインスタンス レベルで確認します。 SQL エージェント ジョブも、インスタンスのタイム ゾーンに応じたスケジュールに従います。
+[GETDATE()](https://docs.microsoft.com/sql/t-sql/functions/getdate-transact-sql) などの T-SQL 関数や CLR コードでは、タイム ゾーンの設定をインスタンス レベルで確認します。 SQL Server エージェント ジョブも、インスタンスのタイム ゾーンに応じたスケジュールに従います。
 
   >[!NOTE]
   > Managed Instance は、タイムゾーン設定をサポートする唯一の Azure SQL Database のデプロイ オプションです。 他のデプロイ オプションは、常に UTC に従います。
@@ -30,20 +30,20 @@ UTC 以外のタイム ゾーンの日付と時刻情報を解釈する必要が
 
 ## <a name="supported-time-zones"></a>サポートされているタイム ゾーン
 
-サポートされている一連のタイム ゾーンは、マネージド インスタンスの基になるオペレーティング システムから継承されます。また、新しいタイム ゾーン定義を取得して既存のものに変更を反映させるために、定期的に更新されています。
+サポートされている一連のタイム ゾーンは、マネージド インスタンスの基になるオペレーティング システムから継承されます。 また、新しいタイム ゾーン定義を取得して既存のものに変更を反映させるために、定期的に更新されています。 
 
 サポートされているタイム ゾーンの名前を記載したリストは、[sys.time_zone_info](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-time-zone-info-transact-sql) システム ビューを介して公開されています。
 
-## <a name="setting-time-zone"></a>タイム ゾーンの設定
+## <a name="set-a-time-zone"></a>タイム ゾーンを設定する
 
-マネージド インスタンスのタイム ゾーンを作成できるのは、インスタンスの作成時のみです。 既定のタイム ゾーンは、協定世界時 (UTC) です。
+マネージド インスタンスのタイム ゾーンを作成できるのは、インスタンスの作成時のみです。 既定のタイム ゾーンは UTC です。
 
   >[!NOTE]
   > 既存のマネージド インスタンスのタイム ゾーンは変更できません。
 
-### <a name="setting-the-time-zone-through-azure-portal"></a>Azure portal を使用してタイム ゾーンを設定する
+### <a name="set-the-time-zone-through-the-azure-portal"></a>Azure portal を使用してタイム ゾーンを設定する
 
-新しいインスタンスのパラメーターを入力するときに、サポートされているタイム ゾーンの一覧からタイム ゾーンを選択します。
+新しいインスタンスのパラメーターを入力するときに、サポートされているタイム ゾーンの一覧からタイム ゾーンを選択します。 
   
 ![インスタンスの作成時にタイム ゾーンを設定する](media/sql-database-managed-instance-timezone/01-setting_timezone-during-instance-creation.png)
 
@@ -66,36 +66,35 @@ UTC 以外のタイム ゾーンの日付と時刻情報を解釈する必要が
 
 ```
 
-この記事の最後に、timezoneId プロパティでサポートされている値の一覧を示しています。
+この記事の最後に、timezoneId プロパティでサポートされている値の一覧があります。
 
 タイム ゾーンが指定されていない場合は、UTC に設定されます。
 
-## <a name="checking-the-time-zone-of-instance"></a>インスタンスのタイム ゾーンを確認する
+## <a name="check-the-time-zone-of-an-instance"></a>インスタンスのタイム ゾーンを確認する
 
-[CURRENT_TIMEZONE](https://docs.microsoft.com/sql/t-sql/functions/current-timezone-transact-sql) 関数は、インスタンスのタイム ゾーンの表示名を返します。
+[CURRENT_TIMEZONE](https://docs.microsoft.com/sql/t-sql/functions/current-timezone-transact-sql) 関数では、インスタンスのタイム ゾーンの表示名が返されます。
 
 ## <a name="cross-feature-considerations"></a>機能をまたいだ考慮事項
 
 ### <a name="restore-and-import"></a>復元とインポート
 
-別のタイム ゾーンが設定されたインスタンスやサーバーからマネージド インスタンスに、バックアップ ファイルの復元やデータのインポートを行うことができます。 ただし、別のタイム ゾーンが設定された 2 つの SQL Server インスタンス間でデータを転送するときと同じように、この作業は必ず慎重に行い、アプリケーションの動作とクエリやレポートの結果を分析するようにしてください。
+別のタイム ゾーンが設定されたインスタンスやサーバーからマネージド インスタンスに、バックアップ ファイルを復元したり、データをインポートしたりできます。 この作業は慎重に行ってください。 アプリケーションの動作とクエリやレポートの結果は、別のタイム ゾーンが設定された 2 つの SQL Server インスタンス間でデータを転送するときと同じように分析してください。
 
 ### <a name="point-in-time-restore"></a>ポイントインタイム リストア
 
-ポイントインタイム リストアを実行するとき、復元する時刻は UTC として解釈されます。これは、夏時間とそれに伴う潜在的な変更によるあいまいさを回避するためです。
+ポイントインタイム リストアを実行するとき、復元する時刻は UTC 時間として解釈されます。 これは、夏時間とそれに伴う潜在的な変更によるあいまいさを回避するためです。
 
 ### <a name="auto-failover-groups"></a>自動フェールオーバー グループ
 
-フェールオーバー グループのプライマリとセカンダリ インスタンスのすべてに同じタイム ゾーンを使用することは強制されていませんが、強く推奨されます。
-  >[!IMPORTANT]
-  > 読み取りスケールのみに使用される geo セカンダリ インスタンスで別のタイム ゾーンを持つことが有効なシナリオもありますが、セカンダリ インスタンスに手動または自動でフェールオーバーするとき、元のタイム ゾーンが保持される点に注意してください。
+フェールオーバー グループのプライマリ インスタンスとセカンダリ インスタンスのすべてに同じタイム ゾーンを使用することは強制されていませんが、強くお勧めします。
+
+  >[!WARNING]
+  > フェールオーバー グループのプライマリ インスタンスとセカンダリ インスタンスのすべてに同じタイム ゾーンを使用することを強くお勧めします。 一部のまれなシナリオのために、プライマリ インスタンスとセカンダリ インスタンスのすべてに同じタイム ゾーンを使用することは強制されていません。 手動または自動でフェールオーバーするとき、セカンダリ インスタンスでは元のタイム ゾーンが保持されるのを理解しておくことが重要です。
 
 ## <a name="limitations"></a>制限事項
 
 - 既存のマネージド インスタンスのタイム ゾーンは変更できません。
-- SQL エージェントのジョブから起動される外部プロセスでは、インスタンスのタイム ゾーンは確認されません。
-- Managed Instance のネイティブ [New-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlinstance) PowerShell コマンドレットでは、まだタイム ゾーン パラメーターを渡すことができません。 代わりに、PowerShell ラッパーを [Resource Manager テンプレート](https://aka.ms/sql-mi-create-arm-posh)と使用します。
-- CLI コマンド [az sql mi create](https://docs.microsoft.com/cli/azure/sql/mi?view=azure-cli-latest#az-sql-mi-create) では、まだタイム ゾーン パラメーターがサポートされていません。
+- SQL Server エージェントのジョブから起動される外部プロセスでは、インスタンスのタイム ゾーンは確認されません。
 
 ## <a name="list-of-supported-time-zones"></a>サポートされているタイム ゾーンの一覧
 
@@ -240,7 +239,7 @@ UTC 以外のタイム ゾーンの日付と時刻情報を解釈する必要が
 | サモア標準時 | (UTC+13:00) サモア |
 | ライン諸島標準時 | (UTC+14:00) クリスマス島 |
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>関連項目 
 
 - [CURRENT_TIMEZONE (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/functions/current-timezone-transact-sql)
 - [AT TIME ZONE (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/queries/at-time-zone-transact-sql)

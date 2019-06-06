@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 09898ac7dd4a6f3ee9cf0ea26ded607a8673b9f6
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 06b3a5110bfdea2a2067979c806701011dc16f3d
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59526862"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65987691"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>Linux での Azure Files に関する問題のトラブルシューティング
 
@@ -123,7 +123,7 @@ Linux SMB クライアントが暗号化をサポートしていない場合は�
 
 ### <a name="solution-for-cause-1"></a>原因 1 の解決策
 
-Azure ファイル共有が置かれたストレージ アカウントを参照して、**[アクセス制御 (IAM)]** をクリックし、ユーザー アカウントにストレージ アカウントへのアクセス権があることを確認します。 詳しくは、「[ロールベースのアクセス制御 (RBAC) を使用してストレージ アカウントをセキュリティで保護する方法](https://docs.microsoft.com/azure/storage/common/storage-security-guide#how-to-secure-your-storage-account-with-role-based-access-control-rbac)」をご覧ください。
+Azure ファイル共有が置かれたストレージ アカウントを参照して、 **[アクセス制御 (IAM)]** をクリックし、ユーザー アカウントにストレージ アカウントへのアクセス権があることを確認します。 詳しくは、「[ロールベースのアクセス制御 (RBAC) を使用してストレージ アカウントをセキュリティで保護する方法](https://docs.microsoft.com/azure/storage/common/storage-security-guide#how-to-secure-your-storage-account-with-role-based-access-control-rbac)」をご覧ください。
 
 ### <a name="cause-2-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>原因 2:ストレージ アカウントに対して仮想ネットワークまたはファイアウォール ルールが有効になっている
 
@@ -144,15 +144,17 @@ Azure ファイル共有が置かれたストレージ アカウントを参照�
 
 **cache=none** であれば、キャッシュが無効になっています。 既定のマウント コマンドを使用して共有を再マウントするか、マウント コマンドに明示的に **cache=strict** オプションを追加して、既定のキャッシュまたは "strict" キャッシュ モードを有効にします。
 
-一部のシナリオでは、**serverino** マウント オプションが原因となり、**ls** コマンドによってすべてのディレクトリ エントリに対して stat が実行されることがあります。 この動作のために、大きなディレクトリを一覧表示するときのパフォーマンスが低下します。 **/etc/fstab** エントリで、マウント オプションを確認できます。
+一部のシナリオでは、**serverino** マウント オプションが原因となり、**ls** コマンドによってすべてのディレクトリ エントリに対して stat が実行されることがあります。 この動作のために、大規模なディレクトリを一覧表示するときのパフォーマンスが低下します。 **/etc/fstab** エントリで、マウント オプションを確認できます。
 
 `//azureuser.file.core.windows.net/cifs /cifs cifs vers=2.1,serverino,username=xxx,password=xxx,dir_mode=0777,file_mode=0777`
 
 **sudo mount | grep cifs** コマンドを実行し、その出力を調べることによって、正しいオプションが使用されているかどうかを確認することもできます。 以下に、出力の例を示します。
 
-`//azureuser.file.core.windows.net/cifs on /cifs type cifs (rw,relatime,vers=2.1,sec=ntlmssp,cache=strict,username=xxx,domain=X,uid=0,noforceuid,gid=0,noforcegid,addr=192.168.10.1,file_mode=0777, dir_mode=0777,persistenthandles,nounix,serverino,mapposix,rsize=1048576,wsize=1048576,actimeo=1)`
+```
+//azureuser.file.core.windows.net/cifs on /cifs type cifs (rw,relatime,vers=2.1,sec=ntlmssp,cache=strict,username=xxx,domain=X,uid=0,noforceuid,gid=0,noforcegid,addr=192.168.10.1,file_mode=0777, dir_mode=0777,persistenthandles,nounix,serverino,mapposix,rsize=1048576,wsize=1048576,actimeo=1)
+```
 
-**cache=strict** または **serverino** オプションが存在しない場合は、[ドキュメント](../storage-how-to-use-files-linux.md)のマウント コマンドを実行して、Azure Files をマウント解除してから再マウントします。 その後、**/etc/fstab** エントリに正しいオプションが指定されていることを再確認します。
+**cache=strict** または **serverino** オプションが存在しない場合は、[ドキュメント](../storage-how-to-use-files-linux.md)のマウント コマンドを実行して、Azure Files をマウント解除してから再マウントします。 その後、 **/etc/fstab** エントリに正しいオプションが指定されていることを再確認します。
 
 <a id="timestampslost"></a>
 ## <a name="time-stamps-were-lost-in-copying-files-from-windows-to-linux"></a>Windows から Linux にファイルをコピーすると、タイム スタンプが失われる
@@ -245,6 +247,8 @@ sudo mount -t cifs //<storage-account-name>.file.core.windows.net/<share-name> <
 ```
 
 そのようにすると、[wiki](https://wiki.samba.org/index.php/UNIX_Extensions#Storing_symlinks_on_Windows_servers) で提案されているようにシンボリック リンクを作成することができます。
+
+[!INCLUDE [storage-files-condition-headers](../../../includes/storage-files-condition-headers.md)]
 
 ## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください。
 

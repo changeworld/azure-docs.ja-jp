@@ -7,16 +7,16 @@ ms.service: storage
 ms.topic: article
 ms.date: 04/03/2019
 ms.author: tamram
-ms.openlocfilehash: 86bb7e736754cbc6a93bba5fff5d8d1877b1e3b4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: e8a85319a12f04a11e3914716d9ff84cdb6de8d8
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58916582"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65787873"
 ---
 # <a name="set-and-retrieve-properties-and-metadata"></a>プロパティおよびメタデータを設定および取得する
 
-Azure Storage のオブジェクトは、含まれるデータのほかにもシステムのプロパティとユーザー定義のメタデータをサポートします。 この記事では、[.NET 用 Azure Storage クライアント ライブラリ](https://www.nuget.org/packages/WindowsAzure.Storage/)でのシステムのプロパティとユーザー定義のメタデータの管理について説明します。
+Azure Storage のオブジェクトは、含まれるデータのほかにもシステムのプロパティとユーザー定義のメタデータをサポートします。 この記事では、[.NET 用 Azure Storage クライアント ライブラリ](/dotnet/api/overview/azure/storage/client)でのシステムのプロパティとユーザー定義のメタデータの管理について説明します。
 
 * **システムのプロパティ**: システムのプロパティは、各ストレージ リソースに存在します。 このようなプロパティには、読み取りまたは設定可能なものもありますが、読み取り専用のものもあります。 実際には、システムのプロパティの一部は、特定の標準 HTTP ヘッダーに対応しています。 Azure Storage クライアント ライブラリでは、これらのプロパティが保持されます。
 
@@ -27,7 +27,7 @@ Azure Storage のオブジェクトは、含まれるデータのほかにもシ
 > [!IMPORTANT]
 > 生成されていないストレージ リソースのプロパティまたはメタデータの値がある場合、コードが **FetchAttributes** または **FetchAttributesAsync** メソッドを呼び出すことを確認します。
 >
-> メタデータ名/値ペアは有効な HTTP ヘッダーです。HTTP ヘッダーに適用されるすべての制約に準拠する必要があります。 メタデータ名は有効な HTTP ヘッダー名でなければならず、ASCII 文字のみを含むことができます。また、大文字と小文字が区別されないものとして扱う必要があります。 非 ASCII 文字を含むメタデータ値は、Base64 エンコードまたは URL エンコードである必要があります。
+> メタデータ名/値ペアは有効な HTTP ヘッダーです。HTTP ヘッダーに適用されるすべての制約に準拠する必要があります。 メタデータ名は有効な HTTP ヘッダー名および有効な C# 識別子でなければならず、ASCII 文字のみを含むことができます。また、大文字と小文字が区別されないものとして扱う必要があります。 非 ASCII 文字を含むメタデータ値は、Base64 エンコードまたは URL エンコードである必要があります。
 
 ## <a name="setting-and-retrieving-properties"></a>プロパティの設定と取得
 プロパティ値を取得するには、BLOB またはコンテナーで **FetchAttributesAsync** メソッドを呼び出してプロパティを設定した後、値を読み取ります。
@@ -99,5 +99,8 @@ public static async Task ListContainerMetadataAsync(CloudBlobContainer container
 ```
 
 ## <a name="next-steps"></a>次の手順
-* [.NET 用 Azure Storage クライアント ライブラリ リファレンス](/dotnet/api/?term=Microsoft.WindowsAzure.Storage)
-* [.NET 用 Azure Storage クライアント ライブラリ NuGet パッケージ](https://www.nuget.org/packages/WindowsAzure.Storage/)
+* [.NET 用 Azure Storage クライアント ライブラリ リファレンス](/dotnet/api/?term=Microsoft.Azure.Storage)
+* [.NET 用 Azure Blob Storage クライアント ライブラリ パッケージ](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/)
+* [.NET 用 Azure Queue storage クライアント ライブラリ パッケージ](https://www.nuget.org/packages/Microsoft.Azure.Storage.Queue/)
+* [.NET 用 Azure File Storage クライアント ライブラリ パッケージ](https://www.nuget.org/packages/Microsoft.Azure.Storage.File/)
+

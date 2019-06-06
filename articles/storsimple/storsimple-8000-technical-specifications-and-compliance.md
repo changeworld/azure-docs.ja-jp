@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
-ms.openlocfilehash: 855ea6c34082b859bb5b5b6e69b3e3f2fa54eb4a
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 33becd46747f957cce67fb7b2ace170a9aa402ff
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39056465"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65606921"
 ---
 # <a name="technical-specifications-and-compliance-for-the-storsimple-device"></a>StorSimple デバイスの技術的仕様とコンプライアンス
 
@@ -37,11 +37,11 @@ EBOD エンクロージャは 580 W PCM を使用し、主エンクロージャ�
 | --- | --- | --- |
 | 最大出力電力 |580 W |764 |
 | 頻度 |50/60 Hz |50/60 Hz |
-| 選択電圧範囲 |オート レンジ: 90 ～ 264 V AC、47/63 Hz |オート レンジ: 90 ～ 264 V AC、47/63 Hz |
+| 選択電圧範囲 |オート レンジ: 90 - 264 V AC、47/63 Hz |オート レンジ: 90 - 264 V AC、47/63 Hz |
 | 最大突入電流 |20 A |20 A |
 | 力率補正 |>95% の公称入力電圧 |>95% の公称入力電圧 |
 | 高調波 |EN61000-3-2 に準拠 |EN61000-3-2 に準拠 |
-| 出力 |5V スタンバイ電圧 \@ 2.0 A |5V スタンバイ電圧 \@ 2.7 A |
+| Output |5V スタンバイ電圧 \@ 2.0 A |5V スタンバイ電圧 \@ 2.7 A |
 | +5V \@ 42 A |+5V \@ 40 A | |
 | +12V \@ 38 A |+12V \@ 38 A | |
 | ホット プラグ可能 |はい |はい |
@@ -149,8 +149,8 @@ Microsoft Azure StorSimple デバイスは次の国際標準に準拠してい�
 
 Microsoft Azure StorSimple デバイスは次の安全性規格を満たしています。
 
-* システム製品タイプ承認: UL、cUL、CE
-* 安全性コンプライアンス: UL 60950、IEC 60950、EN 60950
+* システム製品タイプ承認:UL、cUL、CE
+* 安全性コンプライアンス:UL 60950、IEC 60950、EN 60950
 
 ## <a name="emc-compliance"></a>EMC コンプライアンス
 
@@ -160,8 +160,8 @@ Microsoft Azure StorSimple デバイスは次の EMC 規格を満たしていま
 
 デバイスは、伝導および放射される排出量レベルについて EMC に準拠しています。
 
-* 伝導性排出物規制レベル:CFR 47 Part 15B Class A、EN55022 Class A、CISPR Class A
-* 放射性排出物規制レベル:CFR 47 Part 15B Class A、EN55022 Class A、CISPR Class A
+* 伝導性排出物規制レベル:CFR 47 Part 15B Class A EN55022 Class A CISPR Class A
+* 放射性排出物規制レベル:CFR 47 Part 15B Class A EN55022 Class A CISPR Class A
 
 ### <a name="harmonics-and-flicker"></a>高調波と明滅
 
@@ -173,7 +173,7 @@ Microsoft Azure StorSimple デバイスは次の EMC 規格を満たしていま
 
 ## <a name="ac-power-cord-compliance"></a>AC 電源コード対応
 
-プラグおよび電源コード アセンブリ全体は、デバイスを使用する国の適切な標準を満たす必要があり、その国で許容される安全性の認定を受けている必要があります。 次の表では、米国およびヨーロッパの標準を示します。
+プラグおよび電源コード アセンブリ全体は、デバイスを使用する国または地域の適切な標準を満たす必要があり、その国または地域で許容される安全性の認定を受けている必要があります。 次の表では、米国およびヨーロッパの標準を示します。
 
 ### <a name="ac-power-cords---usa-must-be-nrtl-listed"></a>AC 電源コード - 米国 (NRTL にリストされている必要があります)
 

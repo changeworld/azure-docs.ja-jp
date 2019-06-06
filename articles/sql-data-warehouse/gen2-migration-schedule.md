@@ -10,19 +10,19 @@ ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
 ms.service: sql-data-warehouse
 ms.topic: article
 ms.date: 04/03/2019
-ms.openlocfilehash: a5d93a77652f540fde44b33963b13df04b45ecee
-ms.sourcegitcommit: 60606c5e9a20b2906f6b6e3a3ddbcb6c826962d6
+ms.openlocfilehash: 999c75d07ef7e24d4d75587b6b42a4ab1b2192cf
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2019
-ms.locfileid: "64987941"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65596116"
 ---
 # <a name="upgrade-your-data-warehouse-to-gen2"></a>Gen2 へのデータ ウェアハウスのアップグレード
 
 Microsoft では、データ ウェアハウス運営するための初期段階の費用を下げるお手伝いをします。  要求水準の高いクエリの処理が可能な下位のコンピューティング レベルが、Azure SQL Data Warehouse で利用できるようになりました。 「[Lower compute tier support for Gen2](https://azure.microsoft.com/blog/azure-sql-data-warehouse-gen2-now-supports-lower-compute-tiers/)」の告知の全文をお読みください。 この新しいオファリングは、下記の表に記載されたリージョンで利用することができます。 サポート対象のリージョンでは、次のいずれかの方法で、既存の Gen1 データ ウェアハウスを Gen2 にアップグレードできます。
 
 - **自動アップグレード プロセス:** 自動アップグレードは、リージョンでサービスが使用できるようになってもすぐには開始されません。  特定のリージョンで自動アップグレードが開始されると、選択したメンテナンス スケジュール中に個々の DW アップグレードが実行されます。
-- [**Gen2 へのセルフアップグレード:**](#self-upgrade-to-gen2)Gen2 へのセルフアップグレードを実行することで、アップグレードのタイミングを制御することができます。 お住まいのリージョンがまだサポート対象でない場合は、サポートされているリージョンで復元ポイントから直接 Gen2 インスタンスに復元することができます。
+- [**Gen2 へのセルフアップグレード:** ](#self-upgrade-to-gen2)Gen2 へのセルフアップグレードを実行することで、アップグレードのタイミングを制御することができます。 お住まいのリージョンがまだサポート対象でない場合は、サポートされているリージョンで復元ポイントから直接 Gen2 インスタンスに復元することができます。
 
 ## <a name="automated-schedule-and-region-availability-table"></a>自動スケジュールと利用可能なリージョンの表
 
@@ -39,9 +39,9 @@ Microsoft では、データ ウェアハウス運営するための初期段階
 | カナダ東部 |\* |\* |
 | 米国中部 |使用可能 |2019 年 6 月 1 日 |
 | 中国 (東部) |\* |\* |
-| 中国東部 2 |\* |\* |
+| 中国東部 2 |\* |Gen2 のみ |
 | 中国 (北部) |\* |\* |
-| 中国北部 2 |\* |\* |
+| 中国北部 2 |使用可能 |Gen2 のみ |
 | 東アジア |使用可能 |2019 年 6 月 1 日 |
 | 米国東部 |使用可能 |2019 年 6 月 1 日 |
 | 米国東部 2 |使用可能 |2019 年 6 月 1 日 |

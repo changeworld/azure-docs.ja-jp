@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 03/28/2018
+ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 6cd0c72f94c020f9243a1a95faa799f1f798f36c
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 0ad006ca966cfcc2c817ae4e8bfd3dc2d477259e
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65199204"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66145907"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Azure IaaS VM ディスクと Premium マネージド ディスクおよびアンマネージド ディスクについてよく寄せられる質問
 
@@ -365,7 +365,7 @@ Azure Backup と Azure Site Recovery サービスでサポートされている�
 
 **どのリージョンで、8 TiB、16 TiB、および 32 TiB のサイズのマネージド ディスクがサポートされていますか?**
 
-8 TiB、16 TiB、および 32 TiB のディスク SKU は、グローバル Azure のすべてのリージョンでサポートされています。 Microsoft Azure Government と Azure China 21Vianet に対するサポートはまだ利用できません。
+グローバル Azure、Microsoft Azure Government、Azure China 21Vianet のすべてのリージョンで、8 TiB、16 TiB、32 TiB ディスク SKU がサポートされています。
 
 **すべてのディスク サイズについてホスト キャッシュを有効にするサポートはしていますか?**
 

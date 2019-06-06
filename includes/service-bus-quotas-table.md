@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/13/2018
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 7add8c10fd3224b9c287ea4cc672191157f56a09
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f48ad6ca74e6ce10148d66549fea16bc74015b2a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58124393"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66171214"
 ---
 次の表に、Azure Service Bus メッセージングに固有のクォータ情報を示します。 Service Bus の価格と他のクォータについては、「[Service Bus の価格](https://azure.microsoft.com/pricing/details/service-bus/)」をご覧ください。
 
@@ -32,7 +32,7 @@ ms.locfileid: "58124393"
 | メッセージ [セッション ID](/dotnet/api/microsoft.azure.servicebus.message.sessionid) の最大サイズ | エンティティ |- | 128 |
 | キュー、トピック、またはサブスクリプション エンティティのメッセージ サイズ |エンティティ |これらのクォータを超える受信メッセージは拒否され、呼び出し元コードが例外を受け取ります。 |メッセージの最大サイズ:[Standard レベル](../articles/service-bus-messaging/service-bus-premium-messaging.md)では 256 KB、[Premium レベル](../articles/service-bus-messaging/service-bus-premium-messaging.md)では 1 MB。 <br /><br />システムのオーバーヘッドのため、この制限はこれらの値よりも小さくなります。<br /><br />ヘッダーの最大サイズ:64 KB。<br /><br />プロパティ バッグ内のヘッダー プロパティの最大数: **バイト/int.MaxValue**。<br /><br />プロパティ バッグ内のプロパティの最大サイズ:明示的な制限はありません。 ヘッダーの最大サイズによって制限されます。 |
 | キュー、トピック、またはサブスクリプション エンティティのメッセージ プロパティ サイズ |エンティティ | **SerializationException** 例外が生成されます。 |各プロパティの最大メッセージ プロパティ サイズは 32,000 です。 すべてのプロパティの合計サイズが 64,000 を超えることはできません。 この制限は、[BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) のヘッダー全体に適用されます。このヘッダーには、ユーザー プロパティとシステム プロパティ ([SequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sequencenumber)、[Label](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.label)、[MessageId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.messageid) など) の両方が含まれます。 |
-| トピックごとのサブスクリプション数 |エンティティ |以後、そのトピックに対するサブスクリプションの新規作成要求は拒否されます。 その結果、ポータルで構成されている場合は、エラー メッセージが表示されます。 管理 API から呼び出された場合は、呼び出し元のコードが例外を受け取ります。 |Standard レベル: 各サブスクリプションは、名前空間あたり 1,000 エンティティ (キュー、トピック、サブスクリプション) のクォータにカウントされます。 <br/> <br/> Premium レベル: 2,000。 |
+| トピックごとのサブスクリプション数 |エンティティ |以後、そのトピックに対するサブスクリプションの新規作成要求は拒否されます。 その結果、ポータルで構成されている場合は、エラー メッセージが表示されます。 管理 API から呼び出された場合は、呼び出し元のコードが例外を受け取ります。 |Standard レベルと Premium レベル:各サブスクリプションは、名前空間あたり 1,000 エンティティ (キュー、トピック、サブスクリプション) のクォータにカウントされます。 |
 | トピックごとの SQL フィルターの数 |エンティティ |そのトピックに追加のフィルターを作成するための後続の要求は拒否され、呼び出し元コードが例外を受け取ります。 |2,000 |
 | トピックごとの関連付けフィルターの数 |エンティティ |そのトピックに追加のフィルターを作成するための後続の要求は拒否され、呼び出し元コードが例外を受け取ります。 |100,000 |
 | SQL フィルターまたはアクションのサイズ |名前空間 |追加のフィルターを作成するための後続の要求は拒否され、呼び出し元コードが例外を受け取ります。 |フィルター条件文字列の最大長:1,024 (1 K)。<br /><br />規則アクション文字列の最大長:1,024 (1 K)。<br /><br />規則アクションごとの式の最大数:32. |

@@ -5,18 +5,18 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 02/20/2019
+ms.date: 05/20/2019
 ms.author: mialdrid
 ms.custom: seodec18
-ms.openlocfilehash: d9c607114d6c6c56c25303a88dcc11f4ab804eb4
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 18615cf737eedcd188fd59d2aa98482210b9333a
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57404350"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65991586"
 ---
-# <a name="about-virtual-network-gateways-for-expressroute"></a>ExpressRoute 用の仮想ネットワーク ゲートウェイについて
-仮想ネットワーク ゲートウェイは、Azure 仮想ネットワークとオンプレミスの場所の間でネットワーク トラフィックの送信に使用されます。 仮想ネットワーク ゲートウェイは、ExpressRoute トラフィックまたは VPN トラフィックに使用できます。 この記事では、ExpressRoute 用の仮想ネットワーク ゲートウェイに注目し、SKU、SKU の推定パフォーマンス、およびゲートウェイの種類に関する情報が含まれています。
+# <a name="expressroute-virtual-network-gateway-and-fastpath"></a>ExpressRoute 仮想ネットワーク ゲートウェイと FastPath
+お使いの Azure 仮想ネットワークとオンプレミス ネットワークを ExpressRoute 経由で接続するには、最初に仮想ネットワーク ゲートウェイを作成する必要があります。 仮想ネットワーク ゲートウェイには 2 つの目的があります。1 つはネットワーク間で IP ルートを交換すること、もう 1 つはネットワーク トラフィックをルーティングすることです。 この記事では、ゲートウェイの種類、ゲートウェイ SKU、および SKU の推定パフォーマンスについて説明します。 また、パフォーマンスを向上させるために、お使いのオンプレミス ネットワークからのネットワーク トラフィックが仮想ネットワーク ゲートウェイをバイパスできるようにする機能、ExpressRoute [FastPath](#fastpath) についても説明します。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -59,6 +59,15 @@ Azure Availability Zones に、ExpressRoute ゲートウェイをデプロイす
 
 新しいゲートウェイ SKU では、ニーズに最も適したその他のデプロイ オプションもサポートされます。 新しいゲートウェイ SKU を使用して仮想ネットワーク ゲートウェイを作成する場合、特定のゾーン内にゲートウェイをデプロイするオプションもあります。 これは、ゾーン ゲートウェイと呼ばれます。 ゾーン ゲートウェイをデプロイすると、すべてのゲートウェイ インスタンスが同じ可用性ゾーンにデプロイされます。
 
+## <a name="fastpath"></a>FastPath
+ExpressRoute 仮想ネットワーク ゲートウェイの目的は、ネットワーク ルートを交換し、ネットワーク トラフィックをルーティングすることです。 FastPath の目的は、お使いのオンプレミス ネットワークと仮想ネットワークの間のデータ パスのパフォーマンスを向上させることです。 FastPath が有効になっていると、ゲートウェイはバイパスされ、ネットワーク トラフィックが仮想ネットワーク内の仮想マシンに直接送信されます。 
+
+FastPath は [ExpressRoute Direct](expressroute-erdirect-about.md) でのみ使用できます。 つまり、この機能は、ExpressRoute Direct ポートで作成された ExpressRoute 回線に[お使いの仮想ネットワークを接続](expressroute-howto-linkvnet-arm.md)する場合にのみ有効にできます。 FastPath を使うときも、仮想ネットワーク ゲートウェイとオンプレミス ネットワークの間でルートを交換する場合は、仮想ネットワーク ゲートウェイを作成する必要があります。 仮想ネットワーク ゲートウェイは、Ultra Performance または ErGw3AZ のいずれかである必要があります。
+
+FastPath では、次の機能はサポートされていません。
+* ゲートウェイ サブネットの UDR: お使いの仮想ネットワークのゲートウェイ サブネットに UDR を適用した場合、ご自身のオンプレミス ネットワークからのネットワーク トラフィックは、引き続き仮想ネットワーク ゲートウェイに送信されます。
+* VNet ピアリング: 他の仮想ネットワークが、ExpressRoute に接続されているものとピアリングされている場合、ご自身のオンプレミス ネットワークから他の仮想ネットワーク (いわゆる "スポーク" VNet) へのネットワーク トラフィックは、引き続き仮想ネットワーク ゲートウェイに送信されます。 回避策として、すべての仮想ネットワークを ExpressRoute 回線に直接接続します。
+
 ## <a name="resources"></a>REST API および PowerShell コマンドレット
 仮想ネットワーク ゲートウェイの構成に対して REST API および PowerShell コマンドレットを使用する場合のテクニカル リソースおよび特定構文の要件については、次のページを参照してください。
 
@@ -73,3 +82,5 @@ Azure Availability Zones に、ExpressRoute ゲートウェイをデプロイす
 ExpressRoute ゲートウェイの作成の詳細については、[ExpressRoute 用の仮想ネットワーク ゲートウェイの作成](expressroute-howto-add-gateway-resource-manager.md)に関するページを参照してください。
 
 ゾーン冗長ゲートウェイの構成について詳しくは、[ゾーン冗長仮想ネットワーク ゲートウェイの作成](../../articles/vpn-gateway/create-zone-redundant-vnet-gateway.md)に関する記事をご覧ください。
+
+FastPath を有効にする方法の詳細については、[ExpressRoute への仮想ネットワークの接続](expressroute-howto-linkvnet-arm.md)に関するページをご覧ください。 

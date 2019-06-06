@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 02/13/2019
+ms.date: 05/21/2019
 ms.author: cherylmc
-ms.openlocfilehash: f3c02e80016e43bdd83218851de5ceb72be7f268
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 822cbc7401de90d63f9079561ced0dfbb911fa2c
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58096284"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65989434"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-native-azure-certificate-authentication-powershell"></a>ネイティブ Azure 証明書認証を使用した VNet へのポイント対サイト接続の構成:PowerShell
 
@@ -131,8 +131,8 @@ Azure サブスクリプションを持っていることを確認します。 A
 VNet の仮想ネットワーク ゲートウェイを構成、作成します。
 
 * -GatewayType は **Vpn**、-VpnType は **RouteBased** にする必要があります。
-* -VpnClientProtocol は、有効にするトンネルの種類を指定する際に使用します。 トンネルのオプションは、**SSTP** と **IKEv2** の 2 つがあります。 どちらか一方を有効にすることも、両方を有効にすることもできます。 両方を有効にする場合は、両方の名前をコンマで区切って指定します。 Android と Linux の strongSwan クライアントおよび iOS と OSX のネイティブ IKEv2 VPN クライアントでは、接続に IKEv2 トンネルのみを使用します。 Windows クライアントでは最初に IKEv2 を試し、接続できなかった場合に SSTP を使用します。
-* 仮想ネットワーク ゲートウェイ "Basic" SKU では、IKEv2 と RADIUS 認証はサポートされません。 Mac クライアントを仮想ネットワークに接続する予定がある場合は、Basic SKU を使用しないでください。
+* -VpnClientProtocol は、有効にするトンネルの種類を指定する際に使用します。 トンネルのオプションには、**OpenVPN、SSTP**、**IKEv2** があります。 いずれか 1 つを有効にすることも、サポートされるすべての組み合わせを有効にすることもできます。 複数の種類を有効にする場合は、名前をコンマで区切って指定します。 OpenVPN と SSTP は一緒に有効にすることができません。 Android と Linux の strongSwan クライアントおよび iOS と OSX のネイティブ IKEv2 VPN クライアントでは、接続に IKEv2 トンネルのみを使用します。 Windows クライアントでは最初に IKEv2 を試し、接続できなかった場合に SSTP を使用します。 OpenVPN クライアントを使用して、OpenVPN トンネルの種類に接続することができます。
+* 仮想ネットワーク ゲートウェイ 'Basic' SKU では、IKEv2、OpenVPN、RADIUS 認証はサポートされません。 Mac クライアントを仮想ネットワークに接続する予定がある場合は、Basic SKU を使用しないでください。
 * 選択する[ゲートウェイ SKU](vpn-gateway-about-vpn-gateway-settings.md) によっては、VPN ゲートウェイで処理が完了するまでに最大で 45 分かかる場合があります。 この例では、IKEv2 を使用します。
 
 ```azurepowershell-interactive
@@ -212,7 +212,7 @@ VPN クライアント構成ファイルには、P2S 接続を使って VNet に
 >
 
 1. VNet に接続するには、クライアント コンピューターで [VPN 接続] に移動し、作成した VPN 接続を見つけます。 仮想ネットワークと同じ名前が付いています。 **[接続]** をクリックします。 証明書を使用することを示すポップアップ メッセージが表示される場合があります。 **[続行]** をクリックして、昇格された特権を使用します。 
-2. **接続**の状態ページで、**[接続]** をクリックして接続を開始します。 **[証明書の選択]** 画面が表示された場合は、表示されているクライアント証明書が接続に使用する証明書であることを確認します。 そうでない場合は、ドロップダウン矢印を使用して適切な証明書を選択し、 **[OK]** をクリックします。
+2. **接続**の状態ページで、 **[接続]** をクリックして接続を開始します。 **[証明書の選択]** 画面が表示された場合は、表示されているクライアント証明書が接続に使用する証明書であることを確認します。 そうでない場合は、ドロップダウン矢印を使用して適切な証明書を選択し、 **[OK]** をクリックします。
 
    ![Azure への VPN クライアントの接続](./media/vpn-gateway-howto-point-to-site-rm-ps/clientconnect.png)
 3. 接続が確立されました。
@@ -225,7 +225,7 @@ VPN クライアント構成ファイルには、P2S 接続を使って VNet に
 
 ### <a name="to-connect-from-a-mac-vpn-client"></a>Mac の VPN クライアントから接続するには
 
-[ネットワーク] ダイアログ ボックスで使用するクライアント プロファイルを探し、**[接続]** をクリックします。
+[ネットワーク] ダイアログ ボックスで使用するクライアント プロファイルを探し、 **[接続]** をクリックします。
 手順の詳細については、[Mac (OS X) のインストール](https://docs.microsoft.com/azure/vpn-gateway/point-to-site-vpn-client-configuration-azure-cert#installmac)に関するセクションを参照してください。 接続に問題がある場合は、仮想ネットワーク ゲートウェイが Basic SKU を使用していないことを確認します。 Basic SKU は Mac クライアントではサポートされていません。
 
   ![Mac の接続](./media/vpn-gateway-howto-point-to-site-rm-ps/applyconnect.png)

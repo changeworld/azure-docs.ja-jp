@@ -157,6 +157,10 @@
           href: howto-server-parameters.md
         - name: Azure CLI
           href: howto-configure-server-parameters-using-cli.md
+    - name: ストレージの自動拡張
+      items:
+        - name: Azure ポータル
+          href: howto-auto-grow-storage-portal.md
     - name: サーバー ログへのアクセス
       items:
         - name: Azure ポータル

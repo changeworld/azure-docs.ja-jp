@@ -8,17 +8,17 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: reference
-ms.date: 04/30/2018
-ms.openlocfilehash: d80ffa862546f56e93a338a7a1db031e2cb55990
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.date: 05/13/2019
+ms.openlocfilehash: 3b0ad33ea6348f24079b3c88f972437244c0bc93
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59616803"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65596764"
 ---
 # <a name="schema-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Azure Logic Apps のワークフロー定義言語のスキーマ参照
 
-[Azure Logic Apps](../logic-apps/logic-apps-overview.md) でロジック アプリを作成するとき、ロジック アプリには基になるワークフロー定義があり、ロジック アプリで実行される実際のロジックが記述されています。 そのワークフロー定義は、[JSON](https://www.json.org/) を使って作成し、ワークフロー定義言語スキーマによって検証される構造に従います。 このリファレンスでは、この構造に関する概要と、ワークフロー定義の要素がスキーマによってどのように定義されるかを説明します。
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md) でロジック アプリを作成するとき、ロジック アプリには基になるワークフロー定義があり、ロジック アプリで実行される実際のロジックが記述されています。 そのワークフロー定義は、[JSON](https://www.json.org/) を使って作成し、ワークフロー定義言語スキーマによって検証される構造に従います。 このリファレンスでは、この構造に関する概要と、ワークフロー定義で属性がスキーマによってどのように定義されるかを説明します。
 
 ## <a name="workflow-definition-structure"></a>ワークフロー定義の構造
 
@@ -29,24 +29,63 @@ ms.locfileid: "59616803"
 ```json
 "definition": {
   "$schema": "<workflow-definition-language-schema-version>",
-  "contentVersion": "<workflow-definition-version-number>",
-  "parameters": { "<workflow-parameter-definitions>" },
-  "triggers": { "<workflow-trigger-definitions>" },
   "actions": { "<workflow-action-definitions>" },
-  "outputs": { "<workflow-output-definitions>" }
+  "contentVersion": "<workflow-definition-version-number>",
+  "outputs": { "<workflow-output-definitions>" },
+  "parameters": { "<workflow-parameter-definitions>" },
+  "staticResults": { "<static-results-definitions>" },
+  "triggers": { "<workflow-trigger-definitions>" }
 }
 ```
 
-| 要素 | 必須 | 説明 |
-|---------|----------|-------------|
-| definition | はい | ワークフロー定義の開始要素 |
-| $schema | ワークフロー定義を外部参照する場合のみ | ワークフロー定義言語のバージョンが記述されている JSON スキーマ ファイルの場所。次の場所にあります。 <p>`https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json`</p> |
-| contentVersion | いいえ  | ワークフロー定義のバージョン番号。既定値は "1.0.0.0" です。 ワークフローを展開するときに正しい定義であることを識別して確認できるように、使用する値を指定します。 |
-| parameters | いいえ  | ワークフローにデータを渡す 1 つ以上のパラメーターの定義 <p><p>パラメーターの最大個数:50 |
-| トリガー | いいえ  | ワークフローをインスタンス化する 1 つまたは複数のトリガーの定義。 複数のトリガーを定義できます。ワークフロー定義言語しか利用できず、Logic Apps デザイナーを使って視覚的に作成することはできません。 <p><p>トリガーの最大個数:10 |
-| actions | いいえ  | ワークフローの実行時に実行する 1 つまたは複数のアクションの定義 <p><p>アクションの最大個数:250 |
-| outputs | いいえ  | ワークフローの実行から返される出力の定義 <p><p>出力の最大個数:10 |
+| Attribute | 必須 | 説明 |
+|-----------|----------|-------------|
+| `definition` | はい | ワークフロー定義の開始要素 |
+| `$schema` | ワークフロー定義を外部参照する場合のみ | ワークフロー定義言語のバージョンが記述されている JSON スキーマ ファイルの場所。次の場所にあります。 <p>`https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json`</p> |
+| `actions` | いいえ | ワークフローの実行時に実行される 1 つまたは複数のアクションの定義。 詳細については、「[トリガーとアクション](#triggers-actions)」を参照してください。 <p><p>アクションの最大個数:250 |
+| `contentVersion` | いいえ | ワークフロー定義のバージョン番号。既定値は "1.0.0.0" です。 ワークフローを展開するときに正しい定義であることを識別して確認できるように、使用する値を指定します。 |
+| `outputs` | いいえ | ワークフローの実行から返される出力の定義。 詳細については、「[出力](#outputs)」を参照してください。 <p><p>出力の最大個数:10 |
+| `parameters` | いいえ | ワークフローにデータを渡す 1 つ以上のパラメーターの定義。 詳細については、「[パラメーター](#parameters)」を参照してください。 <p><p>パラメーターの最大個数:50 |
+| `staticResults` | いいえ | 静的な結果がこれらのアクションで有効になっている場合に、アクションによってモック出力として返される 1 つまたは複数の静的な結果の定義。 各アクションの定義で、`runtimeConfiguration.staticResult.name` 属性は `staticResults` 内部の対応する定義を参照します。 詳細については、「[静的な結果](#static-results)」を参照してください。 |
+| `triggers` | いいえ | ワークフローをインスタンス化する 1 つまたは複数のトリガーの定義。 複数のトリガーを定義できます。ワークフロー定義言語しか利用できず、Logic Apps デザイナーを使って視覚的に作成することはできません。 詳細については、「[トリガーとアクション](#triggers-actions)」を参照してください。 <p><p>トリガーの最大個数:10 |
 ||||
+
+<a name="triggers-actions"></a>
+
+## <a name="triggers-and-actions"></a>トリガーとアクション
+
+ワークフロー定義の `triggers` および `actions` セクションでは、ワークフローの実行中に発生する呼び出しを定義します。 これらのセクションの構文と詳細については、「[ワークフローのトリガーとアクション](../logic-apps/logic-apps-workflow-actions-triggers.md)」をご覧ください。
+
+<a name="outputs"></a>
+
+## <a name="outputs"></a>出力
+
+`outputs` セクションでは、実行完了時にワークフローが返すことのできるデータを定義します。 たとえば、各実行から特定の状態または値を追跡するには、ワークフローの出力がそのデータを返すように指定します。
+
+> [!NOTE]
+> サービスの REST API からの受信要求に応答するときは、`outputs` を使わないでください。 代わりに、`Response` アクションの種類を使います。 詳しくは、「[ワークフローのトリガーとアクション](../logic-apps/logic-apps-workflow-actions-triggers.md)」をご覧ください。
+
+出力の定義の一般的な構造を次に示します。
+
+```json
+"outputs": {
+  "<key-name>": {
+    "type": "<key-type>",
+    "value": "<key-value>"
+  }
+}
+```
+
+| Attribute | 必須 | Type | 説明 |
+|-----------|----------|------|-------------|
+| <*key-name*> | はい | String | 出力戻り値のキーの名前 |
+| <*key-type*> | はい | int、float、string、securestring、bool、array、JSON オブジェクト | 出力戻り値の型 |
+| <*key-value*> | はい | <*key-type*> と同じ | 出力の戻り値 |
+|||||
+
+ワークフローの実行からの出力を取得するには、Azure portal でロジック アプリの実行履歴と詳細を確認するか、または [Workflow REST API](https://docs.microsoft.com/rest/api/logic/workflows) を使います。 Power BI などの外部システムに出力を渡してダッシュボードを作成することもできます。
+
+<a name="parameters"></a>
 
 ## <a name="parameters"></a>parameters
 
@@ -69,44 +108,94 @@ ms.locfileid: "59616803"
 },
 ```
 
-| 要素 | 必須 | Type | 説明 |
-|---------|----------|------|-------------|
-| Type | はい | int、float、string、securestring、bool、array、JSON オブジェクト、secureobject <p><p>**メモ**:すべてのパスワード、キー、およびシークレットで、`securestring` 型と `secureobject` 型を使用します。`GET` 操作では、これらの型は返されません。 パラメーターのセキュリティ保護の詳細については、[ロジック アプリのセキュリティ保護](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters)に関するページを参照してください | パラメーターの型 |
-| defaultValue | はい | `type` と同じ | ワークフローのインスタンス化時に値が指定されていない場合の、既定のパラメーター値 |
-| allowedValues | いいえ  | `type` と同じ | パラメーターが受け取ることのできる値の配列 |
-| metadata | いいえ  | JSON オブジェクト | 他のパラメーターの詳細。たとえば、ロジック アプリやフローの名前や読み取り可能な説明、または Visual Studio や他のツールによって使われる設計時のデータ |
+| Attribute | 必須 | Type | 説明 |
+|-----------|----------|------|-------------|
+| <*parameter-type*> | はい | int、float、string、securestring、bool、array、JSON オブジェクト、secureobject <p><p>**メモ**:すべてのパスワード、キー、およびシークレットで、`securestring` 型と `secureobject` 型を使用します。`GET` 操作では、これらの型は返されません。 パラメーターのセキュリティ保護の詳細については、[ロジック アプリのセキュリティ保護](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters)に関するページを参照してください | パラメーターの型 |
+| <*default-parameter-values*> | はい | `type` と同じ | ワークフローのインスタンス化時に値が指定されていない場合の、既定のパラメーター値 |
+| <*array-with-permitted-parameter-values*> | いいえ | Array | パラメーターが受け取ることのできる値の配列 |
+| `metadata` | いいえ | JSON オブジェクト | 他のパラメーターの詳細。たとえば、ロジック アプリやフローの名前や読み取り可能な説明、または Visual Studio や他のツールによって使われる設計時のデータ |
 ||||
 
-## <a name="triggers-and-actions"></a>トリガーとアクション
+<a name="static-results"></a>
 
-ワークフロー定義の `triggers` および `actions` セクションでは、ワークフローの実行中に発生する呼び出しを定義します。 これらのセクションの構文と詳細については、「[ワークフローのトリガーとアクション](../logic-apps/logic-apps-workflow-actions-triggers.md)」をご覧ください。
+## <a name="static-results"></a>静的な結果
 
-## <a name="outputs"></a>出力
-
-`outputs` セクションでは、実行完了時にワークフローが返すことのできるデータを定義します。 たとえば、各実行から特定の状態または値を追跡するには、ワークフローの出力がそのデータを返すように指定します。
-
-> [!NOTE]
-> サービスの REST API からの受信要求に応答するときは、`outputs` を使わないでください。 代わりに、`Response` アクションの種類を使います。 詳しくは、「[ワークフローのトリガーとアクション](../logic-apps/logic-apps-workflow-actions-triggers.md)」をご覧ください。
-
-出力の定義の一般的な構造を次に示します。
+`staticResults` 属性では、アクションの静的な結果の設定が有効になっている場合に、アクションが返すアクションのモック `outputs` および `status` を定義します。 アクションの定義で、`runtimeConfiguration.staticResult.name` 属性は `staticResults` 内部の静的な結果の定義の名前を参照します。 [静的な結果を設定してモック データでロジック アプリをテストする](../logic-apps/test-logic-apps-mock-data-static-results.md)方法をご確認ください。
 
 ```json
-"outputs": {
-  "<key-name>": {
-    "type": "<key-type>",
-    "value": "<key-value>"
-  }
+"definition": {
+   "$schema": "<...>",
+   "actions": { "<...>" },
+   "contentVersion": "<...>",
+   "outputs": { "<...>" },
+   "parameters": { "<...>" },
+   "staticResults": {
+      "<static-result-definition-name>": {
+         "outputs": {
+            <output-attributes-and-values-returned>,
+            "headers": { <header-values> },
+            "statusCode": "<status-code-returned>"
+         },
+         "status": "<action-status>"
+      }
+   },
+   "triggers": { "<...>" }
 }
 ```
 
-| 要素 | 必須 | Type | 説明 |
-|---------|----------|------|-------------|
-| <*key-name*> | はい | String | 出力戻り値のキーの名前 |
-| type | はい | int、float、string、securestring、bool、array、JSON オブジェクト | 出力戻り値の型 |
-| value | はい | `type` と同じ | 出力の戻り値 |
+| Attribute | 必須 | Type | 説明 |
+|-----------|----------|------|-------------|
+| <*static-result-definition-name*> | はい | String | アクションの定義が `runtimeConfiguration.staticResult` オブジェクトを介して参照できる、静的な結果の定義の名前。 詳細については、「[ランタイム構成の設定](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-config-options)」を参照してください。 <p>任意の一意の名前を使用できます。 既定では、この一意の名前に数値が追加されます。この数値は必要に応じてインクリメントされます。 |
+| <*output-attributes-and-values-returned*> | はい | 多様 | これらの属性の要件は、さまざまな条件によって異なります。 たとえば、`status` が `Succeeded` の場合、`outputs` 属性には、アクションによってモック出力として返される属性と値が含まれます。 `status` が `Failed` の場合は、`outputs` 属性には `errors` 属性が含まれます。これは、エラー情報が格納された、1 つ以上のエラー `message` オブジェクトの配列です。 |
+| <*header-values*> | いいえ | JSON | アクションによって返されるヘッダー値 |
+| <*status-code-returned*> | はい | String | アクションによって返される状態コード |
+| <*action-status*> | はい | String | アクションの状態 (例: `Succeeded` または `Failed`) |
 |||||
 
-ワークフローの実行からの出力を取得するには、Azure portal でロジック アプリの実行履歴と詳細を確認するか、または [Workflow REST API](https://docs.microsoft.com/rest/api/logic/workflows) を使います。 Power BI などの外部システムに出力を渡してダッシュボードを作成することもできます。
+たとえば、この HTTP アクション定義では、`runtimeConfiguration.staticResult.name` 属性は、アクションのモック出力が定義されている `staticResults` 属性内部の `HTTP0` を参照します。 `runtimeConfiguration.staticResult.staticResultOptions` 属性は、静的な結果の設定が HTTP アクションで `Enabled` であることを指定します。
+
+```json
+"actions": {
+   "HTTP": {
+      "inputs": {
+         "method": "GET",
+         "uri": "https://www.microsoft.com"
+      },
+      "runAfter": {},
+      "runtimeConfiguration": {
+         "staticResult": {
+            "name": "HTTP0",
+            "staticResultOptions": "Enabled"
+         }
+      },
+      "type": "Http"
+   }
+},
+```
+
+HTTP アクションは `staticResults` 内部の `HTTP0` 定義の出力を返します。 この例の状態コードのモック出力は `OK` です。 ヘッダー値のモック出力は `"Content-Type": "application/JSON"` です。 アクションの状態のモック出力は `Succeeded` です。
+
+```json
+"definition": {
+   "$schema": "<...>",
+   "actions": { "<...>" },
+   "contentVersion": "<...>",
+   "outputs": { "<...>" },
+   "parameters": { "<...>" },
+   "staticResults": {
+      "HTTP0": {
+         "outputs": {
+            "headers": {
+               "Content-Type": "application/JSON"
+            },
+            "statusCode": "OK"
+         },
+         "status": "Succeeded"
+      }
+   },
+   "triggers": { "<...>" }
+},
+```
 
 <a name="expressions"></a>
 
@@ -205,7 +294,7 @@ Logic Apps デザイナーで視覚的に作業しているときは、式ビル
 
 | Operator | タスク |
 |----------|------|
-| ' | 入力として、または式や関数の中で文字列リテラルを使うには、単一引用符で文字列のみをラップします (例: `'<myString>'`)。 二重引用符を ("") を使用しないでください。式全体を囲む JSON の書式設定と競合します。 例:  <p>**正しい**: length('Hello') </br>**正しくない**: length("Hello") <p>配列または数値を渡すとき、句読点をラップする必要はありません。 例:  <p>**正しい**: length([1, 2, 3]) </br>**正しくない**: length("[1, 2, 3]") |
+| ' | 入力として、または式や関数の中で文字列リテラルを使うには、単一引用符で文字列のみをラップします (例: `'<myString>'`)。 二重引用符を ("") を使用しないでください。式全体を囲む JSON の書式設定と競合します。 例: <p>**正しい**: length('Hello') </br>**正しくない**: length("Hello") <p>配列または数値を渡すとき、句読点をラップする必要はありません。 例: <p>**正しい**: length([1, 2, 3]) </br>**正しくない**: length("[1, 2, 3]") |
 | [] | 配列内の特定の位置 (インデックス) にある値を参照するには、角かっこを使います。 たとえば、配列内の 2 番目の項目を取得するには次のようにします。 <p>`myArray[1]` |
 | 。 | オブジェクト内のプロパティを参照するには、ドット演算子を使用します。 たとえば、`customer` JSON オブジェクトの `name` プロパティを取得するには、次のようにします。 <p>`"@parameters('customer').name"` |
 | ? | 実行時エラーを発生させずにオブジェクト内の null プロパティを参照するには、疑問符演算子を使います。 たとえば、次の式を使うと、トリガーからの null 出力を処理できます。 <p>`@coalesce(trigger().outputs?.body?.<someProperty>, '<property-default-value>')` |

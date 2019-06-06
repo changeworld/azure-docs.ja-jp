@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 1cf5bbdad555c50c418851904f36a578522843b2
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50164894"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66159638"
 ---
 #### <a name="to-create-public-endpoints-on-the-cloud-appliance"></a>クラウド アプライアンス上にパブリック エンドポイントを作成するには
 
@@ -37,7 +37,7 @@ ms.locfileid: "50164894"
 
         3. **[ソース]** を **[任意]** に設定します。
 
-        4. **[サービス]** で **[WinRM]** を選択します。 **[プロトコル]** は自動的に **[TCP]** に設定され、**[ポート範囲]** は "**5986**" に設定されます。
+        4. **[サービス]** で **[WinRM]** を選択します。 **[プロトコル]** は自動的に **[TCP]** に設定され、 **[ポート範囲]** は "**5986**" に設定されます。
 
         5. **[OK]** をクリックして規則を作成します。
 

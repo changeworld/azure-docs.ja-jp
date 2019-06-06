@@ -1,4 +1,17 @@
-## <a name="AdditionalServices"></a>方法: その他の Twilio サービスを使用する
+---
+author: devinrader
+ms.service: multiple
+ms.topic: include
+ms.date: 11/25/2018
+ms.author: MicrosoftHelp@twilio.com
+ms.openlocfilehash: 8acb75f1cac83595da88a4a5ffa33102136266f2
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66171822"
+---
+## <a name="AdditionalServices"></a>方法:その他の Twilio サービスを使用する
 ここに示す例以外にも、Twilio が提供する Web ベースの API を使用して、Azure アプリケーションからその他の Twilio 機能を利用することができます。 詳細については、[Twilio API に関するドキュメント][twilio_api_documentation]を参照してください。
 
 ## <a name="NextSteps"></a>次のステップ

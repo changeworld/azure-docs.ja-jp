@@ -2,21 +2,21 @@
 title: 統計の作成と更新 - Azure SQL Data Warehouse | Microsoft Docs
 description: Azure SQL Data Warehouse 内のテーブルに関するクエリ用に最適化された統計の作成と更新の推奨事項と例を示します。
 services: sql-data-warehouse
-author: ckarst
+author: XiaoyuL-Preview
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: implement
+ms.subservice: development
 ms.date: 05/09/2018
-ms.author: kevin
-ms.reviewer: jrasnick
+ms.author: xiaoyul
+ms.reviewer: igorstan
 ms.custom: seoapril2019
-ms.openlocfilehash: 62007624bdf2b5f1b9c387bcc51d58c020860913
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: c5043d99dd130bc7dc7b35eaa5ecadf11d7644db
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59279773"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65851539"
 ---
 # <a name="table-statistics-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse でのテーブルの統計
 
@@ -50,7 +50,7 @@ SET AUTO_CREATE_STATISTICS ON
 - INSERT-SELECT
 - CTAS
 - UPDATE
-- 削除
+- DELETE
 - EXPLAIN
 
 > [!NOTE]
@@ -71,7 +71,7 @@ table_name は、表示する統計が格納されているテーブルの名前
 
 ## <a name="updating-statistics"></a>統計の更新
 
-ベスト プラクティスの 1 つが、新しい日付が追加されるたびに日付列の統計を更新することです。 新しい行がデータ ウェアハウスに読み込まれるたびに、新しい読み込みの日付またはトランザクションの日付が追加されます。 これらによってデータの分布が変わり、統計が古くなります。 一方、顧客テーブルの国列の統計は更新する必要がないと考えられます。一般的に値の分布は変わらないためです。 顧客間で分布が一定であると仮定すると、テーブル バリエーションに新しい行を追加しても、データの分布が変わることはありません。 ただし、データ ウェアハウスに 1 つの国しか含まれておらず、新しい国のデータを取り込んで複数の国のデータが格納されるようになった場合は、国列の統計を更新する必要があります。
+ベスト プラクティスの 1 つが、新しい日付が追加されるたびに日付列の統計を更新することです。 新しい行がデータ ウェアハウスに読み込まれるたびに、新しい読み込みの日付またはトランザクションの日付が追加されます。 これらによってデータの分布が変わり、統計が古くなります。 一方、顧客テーブルの国または地域の列の統計は更新する必要がないと考えられます。一般的に値の分布は変わらないためです。 顧客間で分布が一定であると仮定すると、テーブル バリエーションに新しい行を追加しても、データの分布が変わることはありません。 ただし、データ ウェアハウスに 1 つの国または地域しか含まれておらず、新しい国または地域のデータを取り込んで複数の国または地域のデータが格納されるようになった場合は、国または地域の列の統計を更新する必要があります。
 
 統計更新のレコメンデーションは次の通りです｡
 
@@ -148,7 +148,7 @@ WHERE
 CREATE STATISTICS [statistics_name] ON [schema_name].[table_name]([column_name]);
 ```
 
-例: 
+例:
 
 ```sql
 CREATE STATISTICS col1_stats ON dbo.table1 (col1);
@@ -164,7 +164,7 @@ CREATE STATISTICS col1_stats ON dbo.table1 (col1);
 CREATE STATISTICS [statistics_name] ON [schema_name].[table_name]([column_name]) WITH FULLSCAN;
 ```
 
-例: 
+例:
 
 ```sql
 CREATE STATISTICS col1_stats ON dbo.table1 (col1) WITH FULLSCAN;
@@ -367,7 +367,7 @@ EXEC [dbo].[prc_sqldw_create_stats] 3, 20;
 UPDATE STATISTICS [schema_name].[table_name]([stat_name]);
 ```
 
-例: 
+例:
 
 ```sql
 UPDATE STATISTICS [dbo].[table1] ([stats_col1]);
@@ -383,7 +383,7 @@ UPDATE STATISTICS [dbo].[table1] ([stats_col1]);
 UPDATE STATISTICS [schema_name].[table_name];
 ```
 
-例: 
+例:
 
 ```sql
 UPDATE STATISTICS dbo.table1;
@@ -483,7 +483,7 @@ DBCC SHOW_STATISTICS() は、統計オブジェクト内に保持されている
 DBCC SHOW_STATISTICS([<schema_name>.<table_name>],<stats_name>)
 ```
 
-例: 
+例:
 
 ```sql
 DBCC SHOW_STATISTICS (dbo.table1, stats_col1);
@@ -497,7 +497,7 @@ DBCC SHOW_STATISTICS (dbo.table1, stats_col1);
 DBCC SHOW_STATISTICS([<schema_name>.<table_name>],<stats_name>) WITH stat_header, histogram, density_vector
 ```
 
-例: 
+例:
 
 ```sql
 DBCC SHOW_STATISTICS (dbo.table1, stats_col1) WITH histogram, density_vector
@@ -509,7 +509,7 @@ SQL Server に比べ、SQL Data Warehouse では、DBCC SHOW_STATISTICS() がよ
 
 - ドキュメントに記載されていない機能はサポートされていません。
 - Stats_stream は使用できません。
-- 統計データの特定のサブセットの結果を結合することはできません  たとえば、STAT_HEADER JOIN DENSITY_VECTOR。
+- 統計データの特定のサブセットの結果を結合することはできません たとえば、STAT_HEADER JOIN DENSITY_VECTOR。
 - メッセージを抑制するために、NO_INFOMSGS を設定することはできません。
 - 統計名を囲む角かっこは使用できません。
 - 列名を使用して、統計オブジェクトを識別することはできません。

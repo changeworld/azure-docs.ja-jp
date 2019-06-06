@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2017
-ms.author: mmccrory
-ms.openlocfilehash: 7028417c95aa6969793c00d0bb270c96e56164fb
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.author: memccror
+ms.openlocfilehash: 976bb43fd3e6d6fdb19c733affd4afa2e49e482c
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30314784"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65967690"
 ---
 # <a name="what-to-do-in-the-event-of-an-azure-service-disruption-that-impacts-azure-cloud-services"></a>Azure Cloud Services に影響を与える Azure サービスの中断が発生した場合の対処方法
 Microsoft では、必要なときにサービスがいつでも使用できるように取り組んでいますが、 やむを得ない事情により、計画されていないサービス中断が発生することがあります。
@@ -36,14 +36,14 @@ Azure には、可用性の高いアプリケーションをサポートする�
 >
 
 
-## <a name="option-1-use-a-backup-deployment-through-azure-traffic-manager"></a>オプション 1: Azure Traffic Manager を介してバックアップ デプロイを使用する
+## <a name="option-1-use-a-backup-deployment-through-azure-traffic-manager"></a>オプション 1:Azure Traffic Manager を介してバックアップ デプロイを使用する
 最も堅牢なディザスター リカバリー ソリューションでは、アプリケーションの複数のデプロイを異なるリージョンで維持し、[Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) を使用して、それらの間のトラフィックを転送します。 Azure Traffic Manager は複数の[ルーティング メソッド](../traffic-manager/traffic-manager-routing-methods.md)を備えているため、プライマリ/バックアップ モデルを使用してデプロイを管理するか、それらの間のトラフィックを分割するかどうかを選択できます。
 
 ![Balancing Azure Cloud Services across regions with Azure Traffic Manager](./media/cloud-services-disaster-recovery-guidance/using-azure-traffic-manager.png)
 
 リージョンの損失に迅速に対応するには、Traffic Manager の[エンドポイント監視](../traffic-manager/traffic-manager-monitoring.md)を構成することが重要です。
 
-## <a name="option-2-deploy-your-application-to-a-new-region"></a>オプション 2: 新しいリージョンにアプリケーションをデプロイする
+## <a name="option-2-deploy-your-application-to-a-new-region"></a>オプション 2:新しいリージョンにアプリケーションをデプロイする
 前のオプションの説明に従って、複数のアクティブなデプロイを維持するには、追加の継続的なコストが必要です。 復旧時間目標 (RTO) に十分な柔軟性があり、元のコードまたはコンパイル済みの Cloud Services パッケージがある場合は、アプリケーションの新しいインスタンスを別のリージョンに作成して、新しいデプロイを指すように DNS レコードを更新することができます。
 
 クラウド サービス アプリケーションを作成してデプロイする方法の詳細については、「[クラウド サービスを作成してデプロイする方法](cloud-services-how-to-create-deploy-portal.md)」を参照してください。
@@ -51,7 +51,7 @@ Azure には、可用性の高いアプリケーションをサポートする�
 アプリケーションのデータ ソースによっては、アプリケーションのデータ ソースの復旧手順を確認することが必要になる場合があります。
 
 * Azure Storage データ ソースの場合は、 [Azure Storage のレプリケーション](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) に関するセクションを参照して、アプリケーション用に選択したレプリケーション モデルに応じて使用できるオプションについて確認してください。
-* SQL Database ソースの場合は、「[概要: SQL Database を使用したクラウド ビジネス継続性とデータベース ディザスター リカバリー](../sql-database/sql-database-business-continuity.md)」を参照して、アプリケーション用に選択したレプリケーション モデルに応じて使用できるオプションについて確認してください。
+* SQL Database ソースの場合は、[概要:SQL Database を使用したクラウド ビジネス継続性とデータベース ディザスター リカバリー](../sql-database/sql-database-business-continuity.md)に関する記事をご覧になり、アプリケーション用に選択したレプリケーション モデルに応じて使用できるオプションについてご確認ください。
 
 
 ## <a name="option-3-wait-for-recovery"></a>オプション 3: 復旧を待つ

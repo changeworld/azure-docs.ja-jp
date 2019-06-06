@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: apimpm
-ms.openlocfilehash: 90b2dfdbec0d6dc81a05b845832fda92fe36d98c
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: b8bd6e7c77faa54a8ebf0842cf140ef8aa73e953
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403093"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65834541"
 ---
 # <a name="api-management-policy-expressions"></a>API Management ポリシー式
 この記事で説明するポリシー式の構文は C# 7 です。 それぞれの式は、暗黙的に指定された[コンテキスト](api-management-policy-expressions.md#ContextVariables)変数と、許可されている .NET Framework の型の[サブセット](api-management-policy-expressions.md#CLRTypes)にアクセスできます。
@@ -242,7 +242,8 @@ ms.locfileid: "58403093"
 |byte[] Encrypt(input: this byte[], alg:System.Security.Cryptography.SymmetricAlgorithm, key:byte[], iv:byte[])|input - 暗号化対象のプレーンテキスト<br /><br />alg - 暗号化アルゴリズム<br /><br />key - 暗号化キー<br /><br />iv - 初期化ベクター<br /><br />暗号化されたプレーンテキストを返します。|
 |byte[] Decrypt(input: this byte[], alg: string, key:byte[], iv:byte[])|input - 暗号化解除対象の暗号化テキスト<br /><br />alg - 対称暗号化アルゴリズムの名前<br /><br />key - 暗号化キー<br /><br />iv - 初期化ベクター<br /><br />プレーンテキストを返します。|
 |byte[] Decrypt(input: this byte[], alg:System.Security.Cryptography.SymmetricAlgorithm)|input - 暗号化解除対象の暗号化テキスト<br /><br />alg - 暗号化アルゴリズム<br /><br />プレーンテキストを返します。|
-|byte[] Decrypt(input: this byte[], alg:System.Security.Cryptography.SymmetricAlgorithm, key:byte[], iv:byte[])|input - input - 暗号化解除対象の暗号化テキスト<br /><br />alg - 暗号化アルゴリズム<br /><br />key - 暗号化キー<br /><br />iv - 初期化ベクター<br /><br />プレーンテキストを返します。|
+|byte[] Decrypt(input: this byte[], alg:System.Security.Cryptography.SymmetricAlgorithm, key:byte[], iv:byte[])|input - 暗号化解除対象の暗号化テキスト<br /><br />alg - 暗号化アルゴリズム<br /><br />key - 暗号化キー<br /><br />iv - 初期化ベクター<br /><br />プレーンテキストを返します。|
+|bool VerifyNoRevocation(input: this System.Security.Cryptography.X509Certificates.X509Certificate2)|証明書の失効状態を確認しないで、X.509 チェーン検証を実行します。<br /><br />input - 証明書オブジェクト<br /><br />検証に成功したら `true`、検証に失敗したら `false` を返します。|
 
 
 ## <a name="next-steps"></a>次の手順

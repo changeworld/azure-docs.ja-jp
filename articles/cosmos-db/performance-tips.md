@@ -4,14 +4,14 @@ description: Azure Cosmos DB データベースのパフォーマンスを向上
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 01/24/2018
+ms.date: 05/20/2019
 ms.author: sngun
-ms.openlocfilehash: 81adf643541b5a4486694026acec49129ef8e5a6
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: feab3ee1a21a52e8b18d59e67e8410fcbeb4ff5e
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60000625"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65953789"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Azure Cosmos DB と .NET のパフォーマンスに関するヒント
 
@@ -57,7 +57,7 @@ Azure Cosmos DB は、高速で柔軟性に優れた分散データベースで�
 
      ```csharp
      var serviceEndpoint = new Uri("https://contoso.documents.net");
-     var authKey = new "your authKey from the Azure portal";
+     var authKey = "your authKey from the Azure portal";
      DocumentClient client = new DocumentClient(serviceEndpoint, authKey,
      new ConnectionPolicy
      {
@@ -141,7 +141,7 @@ Azure Cosmos DB は、高速で柔軟性に優れた分散データベースで�
 
     該当するすべての結果を取得するために必要なネットワーク ラウンド トリップの回数を減らすために、[x-ms-max-item-count](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) 要求ヘッダーを使用して、ページ サイズを最大 1,000 まで増やすことができます。 ごく少数の結果のみを表示する必要がある場合は (ユーザー インターフェイスやアプリケーション API が一度に 10 件しか結果を返さない場合など)、読み取りとクエリに使用されるスループットを減らすために、ページ サイズを 10 に減らすこともできます。
 
-    また、使用可能な Azure Cosmos DB SDK を使用してページ サイズを設定することもできます。  例: 
+    また、使用可能な Azure Cosmos DB SDK を使用してページ サイズを設定することもできます。  例:
 
         IQueryable<dynamic> authorResults = client.CreateDocumentQuery(documentCollection.SelfLink, "SELECT p.Author FROM Pages p WHERE p.Title = 'About Seattle'", new FeedOptions { MaxItemCount = 1000 });
 10. **スレッド/タスクの数を増やす**
@@ -154,17 +154,17 @@ Azure Cosmos DB は、高速で柔軟性に優れた分散データベースで�
 
     - 実行可能なアプリケーションの場合、これは **[ビルド]** タブの **[プロジェクトのプロパティ]** ウィンドウで **[32 ビットを優先]** オプションをオフにすることで実行できます。
 
-    - VSTest ベースのテスト プロジェクトの場合、**Visual Studio テスト** メニュー オプションから **[テスト]**->**[テストの設定]**->**[Default Processor Architecture as X64 (X64 としての既定のプロセッサ アーキテクチャ)]** の順に選択することで実行できます。
+    - VSTest ベースのテスト プロジェクトの場合、**Visual Studio テスト** メニュー オプションから **[テスト]** -> **[テストの設定]** -> **[Default Processor Architecture as X64 (X64 としての既定のプロセッサ アーキテクチャ)]** の順に選択することで実行できます。
 
-    - ローカルでデプロイされた ASP.NET Web アプリケーションの場合、**[ツール]**->**[オプション]**->**[プロジェクトおよびソリューション]**->**[Web プロジェクト]** の順に選択して、**[Web サイトおよびプロジェクト用 IIS Express の 64 ビット バージョンを使用する]** をチェックすることで実行できます。
+    - ローカルでデプロイされた ASP.NET Web アプリケーションの場合、 **[ツール]** -> **[オプション]** -> **[プロジェクトおよびソリューション]** -> **[Web プロジェクト]** の順に選択して、 **[Web サイトおよびプロジェクト用 IIS Express の 64 ビット バージョンを使用する]** をチェックすることで実行できます。
 
-    - Azure にデプロイされた ASP.NET Web アプリケーションの場合、Azure Portal の **[アプリケーションの設定]** で、**[Platform as 64-bit (64 ビットとしてのプラットフォーム)]** を選択することで実行できます。
+    - Azure にデプロイされた ASP.NET Web アプリケーションの場合、Azure Portal の **[アプリケーションの設定]** で、 **[Platform as 64-bit (64 ビットとしてのプラットフォーム)]** を選択することで実行できます。
 
 ## <a name="indexing-policy"></a>インデックス作成ポリシー
  
 1. **インデックス作成から未使用のパスを除外して書き込みを高速化する**
 
-    Cosmos DB のインデックス作成ポリシーでは、パスのインデックス作成 (IndexingPolicy.IncludedPaths および IndexingPolicy.ExcludedPaths) を使用して、インデックス作成に含める/除外するドキュメント パスを指定できます。 インデックス作成コストはインデックス付きの一意のパスの数に直接関係するため、パスのインデックス作成を使用すると、クエリ パターンが事前にわかっているシナリオで書き込みパフォーマンスが向上し、インデックス ストレージを削減できます。  たとえば、次のコードは、ワイルドカード "*" を使用してドキュメントのセクション全体 (別名 サブツリーとも呼ばれます) をインデックス作成から除外する方法を示しています。
+    Cosmos DB のインデックス作成ポリシーでは、パスのインデックス作成 (IndexingPolicy.IncludedPaths および IndexingPolicy.ExcludedPaths) を使用して、インデックス作成に含める/除外するドキュメント パスを指定できます。 インデックス作成コストはインデックス付きの一意のパスの数に直接関係するため、パスのインデックス作成を使用すると、クエリ パターンが事前にわかっているシナリオで書き込みパフォーマンスが向上し、インデックス ストレージを削減できます。  たとえば、次のコードは、ワイルドカード "*" を使用して、ドキュメントのセクション全体 (サブツリー) をインデックス作成から除外する方法を示しています。
 
     ```csharp
     var collection = new DocumentCollection { Id = "excludedPathCollection" };

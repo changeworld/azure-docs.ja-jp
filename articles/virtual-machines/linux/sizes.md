@@ -15,21 +15,21 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/14/2018
 ms.author: jonbeck
-ms.openlocfilehash: 75333332c118e85bbe1ceb31b206360ce5ed3897
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: c87a192051e34bebf6c1b137c0e96f755a0bb492
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55819214"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65873249"
 ---
 # <a name="sizes-for-linux-virtual-machines-in-azure"></a>Azure の Linux 仮想マシンのサイズ
 この記事では、Linux アプリとワークロードの実行に使用できる Azure 仮想マシンに利用可能なサイズとオプションについて説明します。 また、これらのリソースの使用を計画するときに注意する必要のあるデプロイの考慮事項も示します。 この記事は、 [Windows 仮想マシン](../windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)にも利用できます。
 
 
-| type                     | サイズ           |    説明       |
+| Type                     | サイズ           |    説明       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [汎用](sizes-general.md)          | B、Dsv3、Dv3、DSv2、Dv2、Av2、DC  | バランスのとれた CPU 対メモリ比。 テストと開発、小～中規模のデータベース、および低～中程度のトラフィックの Web サーバーに最適です。 |
-| [コンピューティングの最適化](sizes-compute.md)        | Fsv2、Fs、F             | 高い CPU 対メモリ比。 トラフィックが中程度の Web サーバー、ネットワーク アプライアンス、バッチ処理、アプリケーション サーバーに適しています。        |
+| [コンピューティングの最適化](sizes-compute.md)        | Fsv2           | 高い CPU 対メモリ比。 トラフィックが中程度の Web サーバー、ネットワーク アプライアンス、バッチ処理、アプリケーション サーバーに適しています。        |
 | [メモリの最適化](sizes-memory.md)         | Esv3、Ev3、M、GS、G、DSv2、Dv2  | 高いメモリ対 CPU 比。 リレーショナル データベース サーバー、中～大規模のキャッシュ、およびメモリ内分析に適しています。                 |
 | [ストレージの最適化](sizes-storage.md)        | Lsv2、Ls                | ビッグ データ、SQL、NoSQL データベース、データ ウェアハウス、および大規模なトランザクション データベースに最適な、高いディスク スループットと IO。  |
 | [GPU](sizes-gpu.md)            | NV、NVv2、NC、NCv2、NCv3、ND、NDv2 (プレビュー)            | 負荷の高いグラフィックスのレンダリングやビデオ編集、ディープ ラーニングを使用したモデル トレーニングと推論 (ND) に特化した仮想マシン。 1 つまたは複数の GPU で利用できます。       |

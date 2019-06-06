@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: 84821a24ceb8624a1a7033c43c44548fe5eff315
-ms.sourcegitcommit: abeefca6cd5ca01c3e0b281832212aceff08bf3e
+ms.openlocfilehash: 88de601caf984d2511229cd68190554086c3da38
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "64993134"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65779556"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure Instance Metadata Service
 
@@ -110,7 +110,7 @@ API | 既定のデータ形式 | その他の形式
 /scheduledevents | json | なし
 /attested | json | なし
 
-既定以外の応答形式にアクセスするには、要求のクエリ文字列パラメーターとして要求の形式を指定します。 例: 
+既定以外の応答形式にアクセスするには、要求のクエリ文字列パラメーターとして要求の形式を指定します。 例:
 
 ```bash
 curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017-08-01&format=text"
@@ -348,10 +348,10 @@ instance | 「[インスタンス API](#instance-api)」を参照してくださ
 scheduledevents | [スケジュールされたイベント](scheduled-events.md)に関する記事を参照してください。 | 2017-08-01
 
 #### <a name="instance-api"></a>インスタンス API
-##### <a name="the-following-compute-categories-are-available-through-the-instance-api"></a>次の計算カテゴリは、インスタンス API を介して使用できます。
+##### <a name="the-following-compute-categories-are-available-through-the-instance-api"></a>次のコンピューティング カテゴリは、インスタンス API を通じて使用できます。
 
 > [!NOTE]
-> 次のカテゴリは、メタデータ エンドポイント経由で、インスタンス/計算を介してアクセスされます。
+> 次のカテゴリは、メタデータ エンドポイントを通じて、インスタンス/コンピューティングを介してアクセスされます。
 
 データ | Description | 導入されたバージョン
 -----|-------------|-----------------------
@@ -359,10 +359,10 @@ azEnvironment | VM が実行されている Azure 環境 | 2018 年 10 月 1 日
 customData | 「[カスタム データ](#custom-data)」を参照してください | 2019-02-01
 location | VM を実行中の Azure リージョン | 2017-04-02
 name | VM の名前 | 2017-04-02
-offer | VM イメージのプラン情報。 この値は、Azure イメージ ギャラリーからデプロイされるイメージにのみ存在します。 | 2017-04-02
+offer | VM イメージのオファーの情報。Azure イメージ ギャラリーからデプロイされるイメージについてのみ存在します。 | 2017-04-02
 osType | Linux または Windows | 2017-04-02
 placementGroupId | お使いの仮想マシン スケール セットの[配置グループ](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) | 2017-08-01
-プラン | VM の Azure Marketplace イメージの[プラン](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan)には、名前、製品、および発行元が含まれています | 2018-04-02
+プラン | Azure Marketplace イメージの場合、[プラン](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan)には VM の名前、製品、発行元が含まれています | 2018-04-02
 platformUpdateDomain |  VM を実行中の[更新ドメイン](manage-availability.md) | 2017-04-02
 platformFaultDomain | VM を実行中の[障害ドメイン](manage-availability.md) | 2017-04-02
 provider | VM のプロバイダー | 2018 年 10 月 1 日
@@ -688,9 +688,17 @@ route add 169.254.169.254/32 10.0.1.10 metric 1 -p
 ```
 
 ### <a name="custom-data"></a>カスタム データ
-Instance Metadata Service により、VM からそのカスタム データへのアクセスが可能になります。 バイナリ データは、64 KB 未満にする必要があり、Base64 でエンコードされた形式で VM に提供されます。 カスタム データを使用する VM の作成方法の詳細については、「[Deploy a Virtual Machine with CustomData (カスタム データを使用する仮想マシンのデプロイ)](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-customdata)」を参照してください。
+Instance Metadata Service により、VM からそのカスタム データへのアクセスが可能になります。 バイナリ データは、64 KB 未満にする必要があり、Base64 でエンコードされた形式で VM に提供されます。
+
+REST API、PowerShell コマンドレット、Azure コマンド ライン インターフェイス (CLI)、ARM テンプレートを使用して、Azure カスタム データを VM に挿入できます。
+
+Azure コマンド ライン インターフェイスの例については、「[Custom Data and Cloud-Init on Microsoft Azure (Microsoft Azure でのカスタム データと Cloud-Init)](https://azure.microsoft.com/blog/custom-data-and-cloud-init-on-windows-azure/)」を参照してください。
+
+ARM テンプレートの例については、「[Deploy a Virtual Machine with CustomData (CustomData を使用した仮想マシンのデプロイ)](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-customdata)」を参照してください。
 
 カスタム データは、VM 内で実行されているすべてのプロセスで使用できます。 顧客がカスタム データに機密情報を挿入しないようにすることをお勧めします。
+
+現時点では、VM のブートストラップ中は必ずカスタム データを利用できます。 ディスクの追加や VM のサイズ変更などによって VM が更新された場合、Instance Metadata Service からカスタム データが提供されなくなります。 現在、Instance Metadata Service から持続的にカスタム データを提供する機能を開発中です。
 
 #### <a name="retrieving-custom-data-in-virtual-machine"></a>仮想マシン内のカスタム データの取得
 Instance Metadata Service では、Base64 のエンコード形式で、カスタム データを VM に提供しています。 次の例は、Base64 でエンコードされた文字列をデコードしています。

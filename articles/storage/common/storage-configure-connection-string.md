@@ -9,12 +9,12 @@ ms.date: 04/12/2017
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 7029f07b494630cc1ebe4a2dbfb297e73d85ec5e
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: ef01cf194ea7a0afea033d2888df946208073e41
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65153187"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65874114"
 ---
 # <a name="configure-azure-storage-connection-strings"></a>Azure Storage の接続文字列を構成する
 
@@ -35,7 +35,7 @@ ms.locfileid: "65153187"
 
 構成ファイル内に接続文字列を保存すると、接続文字列を簡単に更新してストレージ エミュレーターとクラウドの Azure Storage アカウントを切り替えることができます。 必要な作業は、対象となる環境に合わせて接続文字列を編集するだけです。
 
-[Microsoft Azure Configuration Manager](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/) を使用すると、アプリケーションの実行場所に関係なく、実行時に接続文字列にアクセスできます。
+[Microsoft Azure Configuration Manager](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/) を使用すると、アプリケーションの実行場所に関係なく、実行時に接続文字列にアクセスできます。
 
 ## <a name="create-a-connection-string-for-the-storage-emulator"></a>ストレージ エミュレーターへの接続文字列を作成する
 [!INCLUDE [storage-emulator-connection-string-include](../../../includes/storage-emulator-connection-string-include.md)]
@@ -107,7 +107,7 @@ AccountKey=<account-key>
 >
 
 ### <a name="create-a-connection-string-with-an-endpoint-suffix"></a>エンドポイント サフィックスを含む接続文字列を作成する
-Azure China、Azure Government など、別のエンドポイント サフィックスを持つリージョンまたはインスタンスのストレージ サービスの接続文字列を作成するには、次の接続文字列の形式を使用します。 HTTPS (推奨) または HTTP のどちらでストレージ アカウントに接続するかを示し、`myAccountName` をストレージ アカウントの名前、`myAccountKey` をアカウント アクセス キー、`mySuffix` を URI サフィックスに置き換えます。
+Azure China 21Vianet、Azure Government など、別のエンドポイント サフィックスを持つリージョンまたはインスタンスのストレージ サービスの接続文字列を作成するには、次の接続文字列の形式を使用します。 HTTPS (推奨) または HTTP のどちらでストレージ アカウントに接続するかを示し、`myAccountName` をストレージ アカウントの名前、`myAccountKey` をアカウント アクセス キー、`mySuffix` を URI サフィックスに置き換えます。
 
 ```
 DefaultEndpointsProtocol=[http|https];
@@ -116,7 +116,7 @@ AccountKey=myAccountKey;
 EndpointSuffix=mySuffix;
 ```
 
-Azure China のストレージ サービスの接続文字列の例を次に示します。
+Azure China 21Vianet のストレージ サービスの接続文字列の例を次に示します。
 
 ```
 DefaultEndpointsProtocol=https;

@@ -5,18 +5,18 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 03/05/2019
+ms.date: 05/20/2019
 ms.author: iainfou
-ms.openlocfilehash: d421fad5f574b0d10b24453aca01adf574f493e8
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: a85c39fbfbf629e6ba9e668d55dd905c1ce0800c
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65407705"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956356"
 ---
 # <a name="connect-with-ssh-to-azure-kubernetes-service-aks-cluster-nodes-for-maintenance-or-troubleshooting"></a>メンテナンスまたはトラブルシューティングのために SSH を使用して Azure Kubernetes Service (AKS) クラスター ノードに接続する
 
-Azure Kubernetes Service (AKS) クラスターのライフサイクル全体を通して、AKS ノードへのアクセスが必要になる場合があります。 メンテナンス、ログ収集、その他のトラブルシューティング操作のための接続です。 AKS ノードは Linux VM なので、SSH を使用してアクセスできます。 セキュリティのため、AKS ノードはインターネットに公開されていません。
+Azure Kubernetes Service (AKS) クラスターのライフサイクル全体を通して、AKS ノードへのアクセスが必要になる場合があります。 メンテナンス、ログ収集、その他のトラブルシューティング操作のための接続です。 Windows Server ノードを含め (現在 AKS ではプレビュー段階)、AKS ノードには SSH を使用してアクセスできます。 [リモート デスクトップ プロトコル (RDP) 接続を使用して、Windows Server ノードに接続][aks-windows-rdp]することもできます。 セキュリティのため、AKS ノードはインターネットに公開されていません。
 
 この記事では、プライベート IP アドレスを使用して、AKS ノードとの SSH 接続を作成する方法を示します。
 
@@ -24,13 +24,16 @@ Azure Kubernetes Service (AKS) クラスターのライフサイクル全体を�
 
 この記事は、AKS クラスターがすでに存在していることを前提としています。 AKS クラスターが必要な場合は、[Azure CLI を使用して][ aks-quickstart-cli]または[Azure portal を使用して][aks-quickstart-portal] AKS のクイック スタートを参照してください。
 
-また、Azure CLI バージョン 2.0.59 以降がインストールされ、構成されている必要もあります。 バージョンを確認するには、 `az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「 [Azure CLI のインストール][install-azure-cli]」を参照してください。
+また、Azure CLI バージョン 2.0.64 以降がインストールされ、構成されている必要もあります。 バージョンを確認するには、 `az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「 [Azure CLI のインストール][install-azure-cli]」を参照してください。
 
 ## <a name="add-your-public-ssh-key"></a>SSH 公開キーを追加する
 
-既定では、AKS クラスターを作成するときに SSH キーが生成されます。 AKS クラスターを作成するときに独自の SSH キーを指定しなかった場合は、AKS ノードに SSH の公開キーを追加します。
+既定では、SSH キーが取得または生成され、AKS クラスターを作成するときにノードに追加されます。 AKS クラスターを作成したときに使用したものとは異なる SSH キーを指定する必要がある場合は、お使いの SSH 公開キーを Linux AKS ノードに追加します。 必要に応じて、[macOS または Linux][ssh-nix]、あるいは [Windows][ssh-windows] を使用して、SSH キーを作成できます。 PuTTY を使用してキーの組を作成する場合、そのキーの組は、既定の PuTTy 秘密キー形式 (.ppk ファイル) ではなく、OpenSSH 形式で保存します。
 
-AKS ノードに SSH キーを追加するには、次の手順のようにします。
+> [!NOTE]
+> 現時点では、SSH キーは Azure CLI を使用して Linux ノードにのみ追加できます。 Windows Server ノードを使用する場合は、AKS クラスターを作成したときに指定した SSH キーを使用して、[AKS ノード アドレスを取得する方法](#get-the-aks-node-address)の手順に進みます。 または、[リモート デスクトップ プロトコル (RDP) 接続を使用して、Windows Server ノードに接続][aks-windows-rdp]します。
+
+SSH キーを Linux AKS ノードに追加するには、次の手順を実行します。
 
 1. [az aks show][az-aks-show] を使用して、AKS クラスター リソースに対するリソース グループ名を取得します。 独自のコア リソース グループと AKS クラスター名を指定します。
 
@@ -64,7 +67,12 @@ AKS ノードに SSH キーを追加するには、次の手順のようにし�
 
 ## <a name="get-the-aks-node-address"></a>AKS ノード アドレスを取得する
 
-AKS ノードは、インターネットにパブリックに公開されていません。 AKS ノードに SSH 接続するには、プライベート IP アドレスを使用します。 次の手順では、AKS クラスターでヘルパー ポッドを作成して、ノードのこのプライベート IP アドレスに SSH 接続できるようにします。
+AKS ノードは、インターネットにパブリックに公開されていません。 AKS ノードに SSH 接続するには、プライベート IP アドレスを使用します。 次の手順では、AKS クラスターでヘルパー ポッドを作成して、ノードのこのプライベート IP アドレスに SSH 接続できるようにします。 AKS ノードのプライベート IP アドレスを取得する手順は、実行する AKS クラスターの種類によって異なります。
+
+* ほとんどの AKS クラスターについて、[通常の AKS クラスターの IP アドレスを取得](#regular-aks-clusters)する手順に従います。
+* 複数のノード プール、Windows Server コンテナーのサポートなど、仮想マシン スケール セットが使用されている AKS のプレビュー機能を使用する場合は、[仮想マシン スケール セットに基づく AKS クラスターの手順に従います](#virtual-machine-scale-set-based-aks-clusters)。
+
+### <a name="regular-aks-clusters"></a>通常の AKS クラスター
 
 [az vm list-ip-addresses][az-vm-list-ip-addresses] コマンドを使用して、AKS クラスター ノードのプライベート IP アドレスを表示します。 前の [az aks show][az-aks-show] のステップで取得した独自の AKS クラスター リソース グループ名を指定します。
 
@@ -80,6 +88,26 @@ VirtualMachine            PrivateIPAddresses
 aks-nodepool1-79590246-0  10.240.0.4
 ```
 
+### <a name="virtual-machine-scale-set-based-aks-clusters"></a>仮想マシン スケール セットに基づく AKS クラスター
+
+[kubectl get コマンド][kubectl-get]を使用して、ノードの内部 IP アドレスの一覧を表示します。
+
+```console
+kubectl get nodes -o wide
+```
+
+次の出力例は、Windows Server ノードなど、クラスター内のすべてのノードの内部 IP アドレスを示しています。
+
+```console
+$ kubectl get nodes -o wide
+
+NAME                                STATUS   ROLES   AGE   VERSION   INTERNAL-IP   EXTERNAL-IP   OS-IMAGE                    KERNEL-VERSION      CONTAINER-RUNTIME
+aks-nodepool1-42485177-vmss000000   Ready    agent   18h   v1.12.7   10.240.0.4    <none>        Ubuntu 16.04.6 LTS          4.15.0-1040-azure   docker://3.0.4
+aksnpwin000000                      Ready    agent   13h   v1.12.7   10.240.0.67   <none>        Windows Server Datacenter   10.0.17763.437
+```
+
+トラブルシューティングを行うノードの内部 IP アドレスを記録します。 このアドレスは、後の手順で使用します。
+
 ## <a name="create-the-ssh-connection"></a>SSH 接続を作成する
 
 AKS ノードへの SSH 接続を作成するには、AKS クラスターでヘルパー ポッドを実行します。 このヘルパー ポッドでは、クラスターへの SSH アクセスが提供され、続いて追加の SSH ノード アクセスが提供されます。 このヘルパー ポッドを作成して使用するには、次の手順のようにします。
@@ -89,6 +117,11 @@ AKS ノードへの SSH 接続を作成するには、AKS クラスターでヘ�
     ```console
     kubectl run -it --rm aks-ssh --image=debian
     ```
+
+    > [!TIP]
+    > Windows Server ノードを使用する場合は (現在 AKS ではプレビュー段階)、次にようにノード セレクターをコマンドに追加して、Linux ノードで Debian コンテナーのスケジュールを設定します。
+    >
+    > `kubectl run -it --rm aks-ssh --image=debian --overrides='{"apiVersion":"apps/v1","spec":{"template":{"spec":{"nodeSelector":{"beta.kubernetes.io/os":"linux"}}}}}'`
 
 1. 基本の Debian イメージには、SSH コンポーネントは含まれません。 ターミナル セッションがコンテナーに接続された後、次のように `apt-get` を使用して SSH クライアントをインストールします。
 
@@ -107,7 +140,7 @@ AKS ノードへの SSH 接続を作成するには、AKS クラスターでヘ�
 
 1. この記事の最初のステップで、SSH 公開キーを AKS ノードに追加しました。 ここでは、SSH の秘密キーをポッドにコピーします。 この秘密キーは、AKS ノードへの SSH を作成するために使用されます。
 
-    前のステップで取得した独自の *aks-ssh* ポッド名を指定します。 必要に応じて、*~/.ssh/id_rsa* をお使いの SSH 秘密キーの場所に変更します。
+    前のステップで取得した独自の *aks-ssh* ポッド名を指定します。 必要に応じて、 *~/.ssh/id_rsa* をお使いの SSH 秘密キーの場所に変更します。
 
     ```console
     kubectl cp ~/.ssh/id_rsa aks-ssh-554b746bcf-kbwvf:/id_rsa
@@ -163,3 +196,6 @@ AKS ノードへの SSH 接続を作成するには、AKS クラスターでヘ�
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 [install-azure-cli]: /cli/azure/install-azure-cli
+[aks-windows-rdp]: rdp.md
+[ssh-nix]: ../virtual-machines/linux/mac-create-ssh-keys.md
+[ssh-windows]: ../virtual-machines/linux/ssh-from-windows.md

@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 07/06/2018
+ms.date: 05/16/2019
 ms.author: jonbeck
-ms.openlocfilehash: a38fb8047415479710a8528c0bf55b1ccb3e178c
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 3201183bbd012340575ee2c117b4b2083ceea711
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37900587"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65832138"
 ---
 # <a name="memory-optimized-virtual-machine-sizes"></a>メモリ最適化済み仮想マシンのサイズ
 
@@ -29,6 +29,7 @@ ms.locfileid: "37900587"
 [!INCLUDE [virtual-machines-common-sizes-memory](../../../includes/virtual-machines-common-sizes-memory.md)]
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../../includes/virtual-machines-common-sizes-table-defs.md)]
+
 
 ## <a name="other-sizes"></a>その他のサイズ
 - [汎用](sizes-general.md)
@@ -39,4 +40,7 @@ ms.locfileid: "37900587"
 - [旧世代](sizes-previous-gen.md)
 
 ## <a name="next-steps"></a>次の手順
-[Azure コンピューティング ユニット (ACU)](acu.md) を確認することで、Azure SKU 全体の処理性能を比較できます。
+
+* [Azure コンピューティング ユニット (ACU)](acu.md) を確認することで、Azure SKU 全体の処理性能を比較できます。
+
+* [Azure CLI を使用して Linux VM の作成と管理を行う](tutorial-manage-vm.md)方法を学習します

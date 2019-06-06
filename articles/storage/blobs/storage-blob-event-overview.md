@@ -9,18 +9,18 @@ ms.date: 01/30/2018
 ms.topic: article
 ms.service: storage
 ms.subservice: blobs
-ms.openlocfilehash: b03d7d98fe43eacab63f45ccacd7d8dea9598c8e
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 146b33c1a52838279f000a7f793902e2f35dbfaa
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65142165"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65826501"
 ---
 # <a name="reacting-to-blob-storage-events"></a>Blob Storage イベントへの対応
 
 Azure Storage イベントをアプリケーションで使うと、最新のサーバーレスなアーキテクチャを使って BLOB の作成と削除に対応できます。 複雑なコードや、高価で非効率的なポーリング サービスは必要ありません。  イベントは、[Azure Event Grid](https://azure.microsoft.com/services/event-grid/) を通して、[Azure Functions](https://azure.microsoft.com/services/functions/)、[Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/)、またはユーザー独自のカスタム HTTP リスナーにプッシュされ、料金は使ったものだけで済みます。
 
-Blob Storage イベントは Event Grid Service に確実に送信されます。Event Grid Service では豊富な再試行ポリシーおよび配信不能メッセージ配信を使用してご利用のアプリケーションに信頼性の高い配信サービスが提供されます。
+Blob Storage イベントは Event Grid Service に確実に送信されます。Event Grid Service では豊富な再試行ポリシーおよび配信不能メッセージ配信を使用してご利用のアプリケーションに信頼性の高い配信サービスが提供されます。 詳細については、「[Event Grid のメッセージの配信と再試行](https://docs.microsoft.com/azure/event-grid/delivery-and-retry)」を参照してください。
 
 Blob Storage イベントの一般的なシナリオとしては、画像やビデオの処理、検索インデックスの作成、ファイル指向のワークフローなどがあります。  非同期のファイル アップロードは、イベントに最適です。  変更の頻度が低くても、即時の応答性が必要なシナリオでは、イベント ベースのアーキテクチャは特に効果的です。
 

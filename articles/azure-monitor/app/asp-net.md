@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: mbullwin
-ms.openlocfilehash: 925ae2dd7b564eece4842cf25cc32b68d9e5c0b6
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: c69e925913d4dcb3a8bec34cbf25dac184ea65c5
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65472042"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595555"
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>ASP.NET Web サイトに Application Insights を設定する
 
@@ -28,7 +28,7 @@ ms.locfileid: "65472042"
 ## <a name="prerequisites"></a>前提条件
 ASP.NET Web サイトに Application Insights を追加するうえで必要なことは次のとおりです。
 
-- 次のワークロードを使って、[Windows 用の Visual Studio 2017](https://www.visualstudio.com/downloads/) をインストールします。
+- 次のワークロードを使って、[Windows 用の Visual Studio 2019](https://www.visualstudio.com/downloads/) をインストールします。
     - ASP.NET と Web 開発 (オプションのコンポーネントをオフにしないでください)
     - Azure の開発
 
@@ -37,13 +37,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ## <a name="ide"></a>手順 1: Application Insights SDK を追加する
 
 > [!IMPORTANT]
-> このサンプルのスクリーンショットは、Visual Studio 2017 バージョン 15.9.9 に基づきます。 Application Insights に追加する経験は、Visual Studio 2017 のバージョンや ASP.NET テンプレート タイプによって異なります。 旧バージョンでは、「Application Insights の構成」といった代替テキストがない場合があります。
+> このサンプルのスクリーンショットは、Visual Studio 2017 バージョン 15.9.9 以降に基づきます。 Application Insights に追加する経験は、Visual Studio のバージョンや ASP.NET テンプレート タイプによって異なります。 旧バージョンでは、「Application Insights の構成」といった代替テキストがない場合があります。
 
-ソリューション エクスプローラーで Web アプリ名を右クリックし、**[追加]** > **[Application Insights Telemetry]** を選択します。
+ソリューション エクスプローラーで Web アプリ名を右クリックし、 **[追加]**  >  **[Application Insights Telemetry]** を選択します。
 
 ![[Application Insights の構成] が強調表示された、ソリューション エクスプローラーのスクリーンショット](./media/asp-net/add-telemetry-new.png)
 
-(Application Insights SDK のバージョンに応じて、最新の SDK リリースへのアップグレードを促すメッセージが表示されることがあります。 メッセージが表示されたら、**[SDK の更新]** を選択します。)
+(Application Insights SDK のバージョンに応じて、最新の SDK リリースへのアップグレードを促すメッセージが表示されることがあります。 メッセージが表示されたら、 **[SDK の更新]** を選択します。)
 
 ![スクリーンショット: Microsoft Application Insights SDK の新しいバージョンがあります。 [SDK の更新] が強調表示されています](./media/asp-net/0002-update-sdk.png)
 
@@ -53,7 +53,7 @@ Application Insights の構成画面:
 
 ![[アプリを Application Insights に登録します] ページのスクリーンショット](./media/asp-net/00004-start-free.png)
 
-データを格納するリソース グループまたは場所を設定するには、**[設定の構成]** をクリックします。 リソース グループは、データへのアクセスの制御に使用されます。 たとえば、同じシステムの一部を構成する複数のアプリがある場合、そのアプリに関する Application Insights のデータを同じリソース グループ内に配置することができます。
+データを格納するリソース グループまたは場所を設定するには、 **[設定の構成]** をクリックします。 リソース グループは、データへのアクセスの制御に使用されます。 たとえば、同じシステムの一部を構成する複数のアプリがある場合、そのアプリに関する Application Insights のデータを同じリソース グループ内に配置することができます。
 
  **[登録]** を選択します。
 
@@ -75,7 +75,7 @@ Visual Studio または Application Insights Web ポータルで、テレメト�
 
 ### <a name="see-your-telemetry-in-visual-studio"></a>Visual Studio でのテレメトリの表示
 
-Visual Studio で Application Insights のデータを表示するには、  **[ソリューション エクスプローラー]** > **[接続済みサービス]** の順に選択してから **[Application Insights]** を右クリックし、続いて **[ライブ テレメトリの検索]** をクリックします。
+Visual Studio で Application Insights のデータを表示するには、  **[ソリューション エクスプローラー]**  >  **[接続済みサービス]** の順に選択してから **[Application Insights]** を右クリックし、続いて **[ライブ テレメトリの検索]** をクリックします。
 
 Visual Studio の [Application Insights の検索] ウィンドウに、アプリのサーバー側で生成されたテレメトリについて、アプリケーションのデータが表示されます。 フィルターを試したり、任意のイベントをクリックして詳細を表示したりしてみましょう。
 
@@ -91,7 +91,7 @@ Visual Studio の [Application Insights の検索] ウィンドウに、アプ�
 
 Application Insights Web ポータルでもテレメトリを確認できます (SDK のみをインストールする場合を除く)。 ポータルには、Visual Studio より多くのグラフ、分析ツール、クロスコンポーネント ビューが用意されています。 ポータルには、アラートも用意されています。
 
-Application Insights リソースを開きます。 [Azure Portal](https://portal.azure.com/) にサインインするか、**ソリューション エクスプローラー** > **[接続済みサービス]** > **[Application Insights]** を右クリック > **[Application Insights ポータルを開く]** の順に選択すると、そこに表示されます。
+Application Insights リソースを開きます。 [Azure Portal](https://portal.azure.com/) にサインインするか、**ソリューション エクスプローラー** >  **[接続済みサービス]** > **[Application Insights]** を右クリック >  **[Application Insights ポータルを開く]** の順に選択すると、そこに表示されます。
 
 ポータルを開くと、アプリのテレメトリが表示されます。
 
@@ -121,7 +121,7 @@ Application Insights ポータルにはテレメトリが蓄積されており�
 
 
 ## <a name="upgrade-to-future-sdk-versions"></a>新しいバージョンの SDK にアップグレードする
-[SDK の新しいリリース](https://github.com/Microsoft/ApplicationInsights-dotnet-server/releases)にアップグレードするには、**NuGet パッケージ マネージャー**を開き、インストールされているパッケージに対してフィルターを実行します。 **[Microsoft.ApplicationInsights.Web]**、**[アップグレード]** の順に選択します。
+[SDK の新しいリリース](https://github.com/Microsoft/ApplicationInsights-dotnet-server/releases)にアップグレードするには、**NuGet パッケージ マネージャー**を開き、インストールされているパッケージに対してフィルターを実行します。 **[Microsoft.ApplicationInsights.Web]** 、 **[アップグレード]** の順に選択します。
 
 ApplicationInsights.config をカスタマイズしている場合は、アップグレードする前にコピーを保存しておきます。 その後、新しいバージョンに変更をマージします。
 

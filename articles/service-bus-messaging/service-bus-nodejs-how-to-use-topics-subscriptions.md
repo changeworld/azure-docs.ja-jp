@@ -14,18 +14,23 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: aschhab
-ms.openlocfilehash: d3f71382a3f2b15ec0f9764b9913a95c0d32b21d
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.openlocfilehash: 3b805a80330dd44ac4a65db88950393d3d4d60b7
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59608879"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65992092"
 ---
-# <a name="how-to-use-service-bus-topics-and-subscriptions-with-nodejs"></a>Node.js で Service Bus のトピックとサブスクリプションを使用する方法
+# <a name="how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azure-sb-package"></a>Service Bus のトピックとサブスクリプションを Node.js および azure-sb パッケージで使用する方法
+> [!div class="op_multi_selector" title1="Programming language" title2="Node.js pacakge"]
+> - [(Node.js | azure-sb)](service-bus-nodejs-how-to-use-topics-subscriptions.md)
+> - [(Node.js | @azure/service-bus)](service-bus-nodejs-how-to-use-topics-subscriptions-new-package.md)
 
-[!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
+このチュートリアルでは、[azure-sb](https://www.npmjs.com/package/azure-sb) パッケージを使用して Service Bus トピックにメッセージを送り、Service Bus サブスクリプションからメッセージを受け取る Node.js アプリケーションの作成方法を学習します。 サンプルは JavaScript で記述され、Node.js [Azure モジュール](https://www.npmjs.com/package/azure)を使用し、その内部で `azure-sb` パッケージが使用されます。
 
-このガイドでは、Node.js アプリケーションから Service Bus のトピックとサブスクリプションを使用する方法について説明します。 紹介するシナリオは次のとおりです。
+[azure-sb](https://www.npmjs.com/package/azure-sb) パッケージは [Service Bus REST ランタイム API](/rest/api/servicebus/service-bus-runtime-rest) を使用します。 より高速な [AMQP 1.0 プロトコル](service-bus-amqp-overview.md)を使用する新しい [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) パッケージを使用すると、高速なエクスペリエンスが得られます。 新しいパッケージの詳細については、「[How to use Service Bus topics and subscriptions with Node.js and @azure/service-bus package (Node.js および azure/service-bus パッケージで Service Bus トピックとサブスクリプションを使用する方法)](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-nodejs-how-to-use-topics-subscriptions-new-package)」を参照してください。または、[azure](https://www.npmjs.com/package/azure) パッケージの使用方法についてさらに読み進めてください。
+
+ここでは、次のようなシナリオを扱います。
 
 - キュー、トピック、およびサブスクリプションを作成する 
 - サブスクリプション フィルターを作成する 
@@ -36,8 +41,8 @@ ms.locfileid: "59608879"
 トピックとサブスクリプションの詳細については、「[次のステップ](#next-steps)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
-1. Azure サブスクリプション。 このチュートリアルを完了するには、Azure アカウントが必要です。 [Visual Studio または MSDN のサブスクライバー特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)を有効にするか、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)にサインアップしてください。
-2. 従うべき手順を「[クイック スタート:Azure portal を使用して Service Bus トピックとそのサブスクリプションを作成する](service-bus-quickstart-topics-subscriptions-portal.md)」で確認して、Service Bus の**名前空間**を作成し、**接続文字列**を取得します。
+- Azure サブスクリプション。 このチュートリアルを完了するには、Azure アカウントが必要です。 [Visual Studio または MSDN のサブスクライバー特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)を有効にするか、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)にサインアップしてください。
+- 「[Quickstart:Azure portal を使用して Service Bus トピックとそのサブスクリプションを作成する](service-bus-quickstart-topics-subscriptions-portal.md)」で確認して、Service Bus の**名前空間**を作成し、**接続文字列**を取得します。
 
     > [!NOTE]
     > このクイック スタートでは、**Node.js** を使用して **トピック**と、そのトピックへの**サブスクリプション**を作成します。 
@@ -329,6 +334,9 @@ serviceBusService.deleteSubscription('MyTopic', 'HighMessages', function (error)
     }
 });
 ```
+
+> [!NOTE]
+> Service Bus リソースは、[Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/) で管理できます。 Service Bus Explorer を使用すると、ユーザーは Service Bus 名前空間に接続し、簡単な方法でメッセージング エンティティを管理できます。 このツールには、インポート/エクスポート機能や、トピック、キュー、サブスクリプション、リレー サービス、通知ハブ、イベント ハブをテストする機能などの高度な機能が用意されています。 
 
 ## <a name="next-steps"></a>次の手順
 これで、サービス バス トピックの基本を学習できました。さらに詳細な情報が必要な場合は、次のリンク先をご覧ください。

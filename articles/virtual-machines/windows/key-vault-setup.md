@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2017
 ms.author: kasing
-ms.openlocfilehash: a8c29f015b6b3652361a886585cb4ccc3f3b7293
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: e9d2b518af50aaec43bc7075e51829e80cdeddf5
+ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58519954"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66016144"
 ---
 # <a name="set-up-key-vault-for-virtual-machines-in-azure-resource-manager"></a>Azure Resource Manager の仮想マシンの Key Vault を設定する
 
@@ -50,7 +50,11 @@ PowerShell を使用して Key Vault を作成するには、「[PowerShell を�
 
 CLI の場合、デプロイ ポリシーを割り当てる前に、Key Vault を作成する必要があります。 この処理には、次のコマンドを使用できます。
 
-    az keyvault set-policy ContosoKeyVault –enabled-for-deployment true
+    az keyvault create --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --location "EastAsia"
+    
+さらに、テンプレートのデプロイで使用するために Key Vault を有効にするには、次のコマンドを実行します。
+
+    az keyvault update --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --enabled-for-deployment "true"
 
 ## <a name="use-templates-to-set-up-key-vault"></a>テンプレートを使用して Key Vault を設定する
 テンプレートを使用する場合、Key Vault リソースの `enabledForDeployment` プロパティを `true` に設定する必要があります。

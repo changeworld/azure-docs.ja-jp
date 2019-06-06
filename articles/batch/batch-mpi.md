@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ''
 ms.date: 03/13/2019
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7fe75dabe098cf98f0c3c04d592a32d6a44cebf8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7a4184fa361ba863cdaf916ef4853eda8b6e8188
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57905020"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595946"
 ---
 # <a name="use-multi-instance-tasks-to-run-message-passing-interface-mpi-applications-in-batch"></a>Batch でのマルチインスタンス タスクを使用した Message Passing Interface (MPI) アプリケーションの実行
 
@@ -281,7 +281,7 @@ GitHub の [MultiInstanceTasks][github_mpi] コード サンプルでは、マ�
 
 ### <a name="execution"></a>Execution
 1. GitHub から [azure-batch-samples][github_samples_zip] をダウンロードします。
-2. Visual Studio 2017 で MultiInstanceTasks **ソリューション**を開きます。 `MultiInstanceTasks.sln` ソリューション ファイルの保存先は次のとおりです。
+2. Visual Studio 2019 で MultiInstanceTasks **ソリューション**を開きます。 `MultiInstanceTasks.sln` ソリューション ファイルの保存先は次のとおりです。
 
     `azure-batch-samples\CSharp\ArticleProjects\MultiInstanceTasks\`
 3. **Microsoft.Azure.Batch.Samples.Common** プロジェクトの `AccountSettings.settings` に、Batch と Storage のアカウント資格情報を入力します。

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 094c8d45f7f6099b169e25c89dbfc4a7d6522dfc
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: b03197fb0d4d97756e5a3fe88de78c11a816b5ec
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510937"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65951273"
 ---
 # <a name="introduction-to-azure-storage"></a>Azure Storage の概要
 
@@ -158,7 +158,7 @@ Azure Storage のリソースは、HTTP/HTTPS 要求が可能な任意の言語�
 
 ### <a name="azure-storage-data-movement-api-and-library-references"></a>Azure Storage データ移動 API およびライブラリのリファレンス
 * [Storage Import/Export Service REST API](https://docs.microsoft.com/rest/api/storageimportexport/)
-* [.NET 用 Storage Data Movement クライアント ライブラリ](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.datamovement)
+* [.NET 用 Storage Data Movement クライアント ライブラリ](/dotnet/api/microsoft.azure.storage.datamovement)
 
 ### <a name="tools-and-utilities"></a>ツールとユーティリティ
 * [ストレージ用 Azure PowerShell コマンドレット](https://docs.microsoft.com/powershell/module/az.storage)

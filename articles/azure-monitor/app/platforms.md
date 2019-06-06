@@ -10,15 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 09/01/2016
+ms.date: 05/16/2019
 ms.reviewer: olegan
 ms.author: mbullwin
-ms.openlocfilehash: 5a7fbeafe74926c7d89ac76dc2964756b3582d61
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 4a0dbe736b9727491f77b392c199400003abf8be
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56671150"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65779884"
 ---
 # <a name="developer-analytics-languages-platforms-and-integrations"></a>開発者分析: 言語、プラットフォーム、統合
 以下は、これまでに把握している [Application Insights](../../azure-monitor/app/app-insights-overview.md) の実装です (サード パーティによるものも含む)。
@@ -45,7 +45,7 @@ ms.locfileid: "56671150"
 * [Angular](https://github.com/MarkPieszak/angular-application-insights)
 * [Azure App Service](../../azure-monitor/app/azure-web-apps.md)
 * [Azure Cloud Services](../../azure-monitor/app/cloudservices.md)&#151; Web ロールと worker ロールの両方を含む
-* [Azure Functions](https://github.com/christopheranderson/azure-functions-app-insights-sample)
+* [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-monitoring)
 * [Docker](../../azure-monitor/app/docker.md)
 * [Glimpse](https://azure.microsoft.com/blog/glimpse-application-insights/)
 * [iOS](../../azure-monitor/learn/mobile-center-quickstart.md) (App Center)
@@ -62,6 +62,7 @@ ms.locfileid: "56671150"
 * [その他](#projects)
 
 ## <a name="logging-frameworks"></a>ログ記録フレームワーク
+* [ILogger](https://docs.microsoft.com/azure/azure-monitor/app/ilogger)
 * [Log4Net、NLog、または System.Diagnostics.Trace](../../azure-monitor/app/asp-net-trace-logs.md)
 * [Java、Log4J、または Logback](../../azure-monitor/app/java-trace-logs.md)
 * [セマンティック ログ (SLAB)](https://github.com/fidmor89/SLAB_AppInsights) - [セマンティック ログ アプリケーション ブロック](https://msdn.microsoft.com/library/dn440729.aspx)と統合

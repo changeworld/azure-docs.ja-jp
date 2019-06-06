@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: javascript
 ms.topic: conceptual
 ms.date: 06/16/2017
-ms.openlocfilehash: baefd05b562d688b662bf988c7b36a0e9cd154b3
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: e2c3c3988193242cd0afe0135b019c7e6f73b59c
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59798863"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65596724"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-node"></a>IoT Hub を使用したクラウドからデバイスへのメッセージの送信 (Node)
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
@@ -44,7 +44,7 @@ cloud-to-device メッセージの詳細については、[IoT Hub 開発者ガ�
 
 このチュートリアルを完了するには、以下が必要です。
 
-* Node.js バージョン 4.0.x 以降。
+* Node.js バージョン 10.0.x 以降。
 * アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 (アカウントがない場合は、[無料アカウント](https://azure.microsoft.com/pricing/free-trial) を数分で作成できます)。
 
 ## <a name="receive-messages-in-the-simulated-device-app"></a>シミュレートされたデバイス アプリでメッセージを受信する

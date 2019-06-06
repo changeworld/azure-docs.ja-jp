@@ -6,14 +6,14 @@ author: cherylmc
 tags: azure-resource-manager
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 10/24/2018
+ms.date: 5/21/2019
 ms.author: cherylmc
-ms.openlocfilehash: fa406ac2f1e0b89a1161660a49f2a4cb6f6d6c32
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6b66a9cf28faccf5ba22bc016297f1d53febe533
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58117321"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66157309"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-native-azure-certificate-authentication-azure-portal"></a>ネイティブ Azure 証明書認証を使用した VNet へのポイント対サイト接続の構成:Azure ポータル
 
@@ -48,7 +48,7 @@ ms.locfileid: "58117321"
 * **ゲートウェイの種類:** VPN
 * **VPN の種類:** ルート ベース
 * **パブリック IP アドレス名:** VNet1GWpip
-* **[接続の種類]**: ポイント対サイト
+* **[接続の種類]** : ポイント対サイト
 * **クライアント アドレス プール:** 172.16.201.0/24<br>このポイント対サイト接続を利用して VNet に接続する VPN クライアントは、クライアント アドレス プールから IP アドレスを受け取ります。
 
 ## <a name="createvnet"></a>1.仮想ネットワークの作成
@@ -98,7 +98,7 @@ ms.locfileid: "58117321"
 2. **[今すぐ構成]** をクリックして構成ページを開きます。
 
    ![今すぐ構成](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/configurenow.png)
-3. **ポイント対サイト**の構成ページの **[アドレス プール]** ボックスに、使用するプライベート IP アドレス範囲を追加します。 VPN クライアントには、指定した範囲から動的に IP アドレスが割り当てられます。 設定を確認して保存するには、**[保存]** をクリックします。
+3. **ポイント対サイト**の構成ページの **[アドレス プール]** ボックスに、使用するプライベート IP アドレス範囲を追加します。 VPN クライアントには、指定した範囲から動的に IP アドレスが割り当てられます。 設定を確認して保存するには、 **[保存]** をクリックします。
 
    ![クライアント アドレス プール](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/addresspool.png)
 
@@ -108,7 +108,7 @@ ms.locfileid: "58117321"
 
 ## <a name="tunneltype"></a>7.トンネルの種類の構成
 
-トンネルの種類を選択することができます。 トンネルのオプションは、SSTP と IKEv2 の 2 つがあります。 Android と Linux の strongSwan クライアントおよび iOS と OSX のネイティブ IKEv2 VPN クライアントでは、接続に IKEv2 トンネルのみを使用します。 Windows クライアントでは最初に IKEv2 を試し、接続できなかった場合に SSTP を使用します。 どちらか一方を有効にすることも、両方を有効にすることもできます。 実際のソリューションに必要なチェック ボックスをオンにしてください。
+トンネルの種類を選択することができます。 トンネルのオプションには、OpenVPN、SSTP、IKEv2 があります。 Android と Linux の strongSwan クライアントおよび iOS と OSX のネイティブ IKEv2 VPN クライアントでは、接続に IKEv2 トンネルのみを使用します。 Windows クライアントでは最初に IKEv2 を試し、接続できなかった場合に SSTP を使用します。 OpenVPN クライアントを使用して、OpenVPN トンネルの種類に接続することができます。
 
 ![トンネルの種類](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/tunneltype.png)
 
@@ -122,12 +122,12 @@ ms.locfileid: "58117321"
 
 その後は、最大で合計 20 個まで、信頼されたルート証明書を追加でアップロードできます。 公開証明書データがアップロードされたら、Azure でそれを使用し、信頼されたルート証明書から生成されたクライアント証明書がインストールされているクライアントを認証できます。 ルート証明書の公開キー情報を Azure にアップロードします。
 
-1. 証明書は、**[ルート証明書]** セクションの **[ポイント対サイトの構成]** ページで追加します。
+1. 証明書は、 **[ルート証明書]** セクションの **[ポイント対サイトの構成]** ページで追加します。
 2. ルート証明書を Base 64 でエンコードされた X.509 (.cer) ファイルとしてエクスポートしたことを確認してください。 証明書をテキスト エディターで開くことができるように、この形式でエクスポートする必要があります。
 3. 証明書をメモ帳などのテキスト エディターで開きます。 証明書データをコピーするときはに、必ず、テキストを復帰や改行のない 1 つの連続した行としてコピーしてください。 復帰や改行を確認するには、テキスト エディターのビューを "記号を表示する/すべての文字を表示する" ように変更することが必要になる場合があります。 次のセクションのみを 1 つの連続した行としてコピーします。
 
    ![証明書データ](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/notepadroot.png)
-4. **[公開証明書データ]** フィールドに証明書データを貼り付けます。 証明書に**名前**を付けて、**[保存]** をクリックします。 最大 20 個の信頼されたルート証明書を追加できます。
+4. **[公開証明書データ]** フィールドに証明書データを貼り付けます。 証明書に**名前**を付けて、 **[保存]** をクリックします。 最大 20 個の信頼されたルート証明書を追加できます。
 
    ![証明書のアップロード](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/uploaded.png)
 5. ページの上部にある **[保存]** をクリックして構成設定をすべて保存します。
@@ -157,7 +157,7 @@ VPN クライアント構成ファイルには、P2S 接続を使って VNet に
 
 1. VNet に接続するには、クライアント コンピューターで [VPN 接続] に移動し、作成した VPN 接続を見つけます。 仮想ネットワークと同じ名前が付いています。 **[接続]** をクリックします。 証明書を使用することを示すポップアップ メッセージが表示される場合があります。 **[続行]** をクリックして、昇格された特権を使用します。
 
-2. **接続**の状態ページで、**[接続]** をクリックして接続を開始します。 **[証明書の選択]** 画面が表示された場合は、表示されているクライアント証明書が接続に使用する証明書であることを確認します。 そうでない場合は、ドロップダウン矢印を使用して適切な証明書を選択し、 **[OK]** をクリックします。
+2. **接続**の状態ページで、 **[接続]** をクリックして接続を開始します。 **[証明書の選択]** 画面が表示された場合は、表示されているクライアント証明書が接続に使用する証明書であることを確認します。 そうでない場合は、ドロップダウン矢印を使用して適切な証明書を選択し、 **[OK]** をクリックします。
 
    ![Azure への VPN クライアントの接続](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/clientconnect.png)
 3. 接続が確立されました。
@@ -170,7 +170,7 @@ VPN クライアント構成ファイルには、P2S 接続を使って VNet に
 
 ### <a name="to-connect-from-a-mac-vpn-client"></a>Mac の VPN クライアントから接続するには
 
-[ネットワーク] ダイアログ ボックスで使用するクライアント プロファイルを探し、[VpnSettings.xml](point-to-site-vpn-client-configuration-azure-cert.md#installmac) の設定を指定して、**[接続]** をクリックします。
+[ネットワーク] ダイアログ ボックスで使用するクライアント プロファイルを探し、[VpnSettings.xml](point-to-site-vpn-client-configuration-azure-cert.md#installmac) の設定を指定して、 **[接続]** をクリックします。
 
 手順の詳細については、[Mac (OS X) のインストール](https://docs.microsoft.com/azure/vpn-gateway/point-to-site-vpn-client-configuration-azure-cert#installmac)に関するセクションを参照してください。 接続に問題がある場合は、仮想ネットワーク ゲートウェイが Basic SKU を使用していないことを確認します。 Basic SKU は Mac クライアントではサポートされていません。
 

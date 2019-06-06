@@ -3,16 +3,16 @@ title: コンプライアンス違反の原因の特定
 description: リソースのコンプライアンス違反には多くの理由が考えられます。 コンプライアンス違反の原因を確認する方法について説明します。
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 03/30/2019
+ms.date: 04/26/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 0af3fd8596bf558f9d5cc97c95be773aa40954cc
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 6e3e01ca9bd459aa6c6aca8dfaacb98b1267fada
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59995011"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65979344"
 ---
 # <a name="determine-causes-of-non-compliance"></a>コンプライアンス違反の原因の特定
 
@@ -35,11 +35,11 @@ Azure リソースにポリシー ルールへのコンプライアンス違反�
 
 コンプライアンスの詳細を表示するには、次の手順に従います。
 
-1. Azure portal 上で **[すべてのサービス]** をクリックし、**[ポリシー]** を検索して選択し、Azure Policy サービスを起動します。
+1. Azure portal 上で **[すべてのサービス]** をクリックし、 **[ポリシー]** を検索して選択し、Azure Policy サービスを起動します。
 
-1. **[概要]** ページまたは **[コンプライアンス]** ページで、**[コンプライアンスの状態]** が _[非対応]_ になっているポリシーを選択します。
+1. **[概要]** ページまたは **[コンプライアンス]** ページで、 **[コンプライアンスの状態]** が _[非対応]_ になっているポリシーを選択します。
 
-1. **[Policy compliance]** (ポリシー コンプライアンス) ページの **[リソースのコンプライアンス]** タブで、**[コンプライアンスの状態]** が _[非対応]_ になっているリソースを右クリックするか、リソースの省略記号を選択します。 次に、**[ポリシー準拠状況の詳細]** を選択します。
+1. **[Policy compliance]** (ポリシー コンプライアンス) ページの **[リソースのコンプライアンス]** タブで、 **[コンプライアンスの状態]** が _[非対応]_ になっているリソースを右クリックするか、リソースの省略記号を選択します。 次に、 **[ポリシー準拠状況の詳細]** を選択します。
 
    ![[ポリシー準拠状況の詳細] オプション](../media/determine-non-compliance/view-compliance-details.png)
 
@@ -105,11 +105,109 @@ Azure リソースにポリシー ルールへのコンプライアンス違反�
 |現在の値は、ターゲット値と一致してはなりません (大文字/小文字を区別しない)。 |notMatchInsensitively、または matchInsensitively **ではない** |
 |ポリシー定義の効果の詳細と一致する関連リソースがありません。 |**then.details.type** で定義されている種類のリソース、およびポリシー ルールの **if** 部分に定義されているリソースに関連したリソースが存在しません。 |
 
-## <a name="change-history-preview"></a>変更履歴 (プレビュー)
+## <a name="compliance-details-for-guest-configuration"></a>ゲスト構成のコンプライアンスの詳細
+
+"_ゲスト構成_" カテゴリの "_監査_" ポリシーについては、VM 内で評価された設定が複数存在する可能性があり、設定ごとの詳細を表示する必要があります。 たとえば、インストールされているアプリケーションの一覧を監査していて、割り当ての状態が "_非準拠_" の場合は、具体的にどのアプリケーションがないかを把握する必要があります。
+
+また、VM に直接アクセスしてサインインできない可能性があるのに、その VM が "_非準拠_" である理由をレポートしなければなりません。 たとえば、VM が適切なドメインに参加していることを監査し、現在のドメイン メンバーシップをレポートの詳細に含める場合があります。
+
+### <a name="azure-portal"></a>Azure ポータル
+
+1. Azure portal 上で **[すべてのサービス]** をクリックし、 **[ポリシー]** を検索して選択し、Azure Policy サービスを起動します。
+
+1. **[概要]** ページまたは **[コンプライアンス]** ページで、"_非準拠_" のゲスト構成ポリシー定義が含まれる任意のイニシアチブのポリシー割り当てを選択します。
+
+1. イニシアチブで "_非準拠_" の "_監査_" ポリシーを選択します。
+
+   ![監査定義の詳細を表示する](../media/determine-non-compliance/guestconfig-audit-compliance.png)
+
+1. **[リソース コンプライアンス]** タブで、次の情報が提供されます。
+
+   - **名前**: ゲスト構成の割り当ての名前。
+   - **親リソース**: 選択したゲスト構成の割り当てに対して "_非準拠_" 状態の仮想マシン。
+   - **リソースの種類**: _guestConfigurationAssignments_ フル ネーム。
+   - **最終評価日時**: ターゲット仮想マシンの状態に関する情報が、ゲスト構成サービスから Azure Policy に最後に通知された日時。
+
+   ![コンプライアンスの詳細を表示する](../media/determine-non-compliance/guestconfig-assignment-view.png)
+
+1. **[名前]** 列でゲスト構成の割り当て名を選択し、 **[リソース コンプライアンス]** ページを開きます。
+
+1. ページ上部にある **[リソースの表示]** を選択し、 **[ゲスト割り当て]** ページを開きます。
+
+**[ゲスト割り当て]** ページには、利用可能なコンプライアンスの詳細すべてが表示されます。 ビューの行はそれぞれ、仮想マシン内で実行された評価を表します。 **[理由]** 列には、ゲストの割り当てが "_非準拠_" である理由が示されています。 たとえば、VM をドメインに参加させる必要があることを監査する場合、 **[理由]** 列には、現在のドメイン メンバーシップが含まれるテキストが表示されます。
+
+![コンプライアンスの詳細を表示する](../media/determine-non-compliance/guestconfig-compliance-details.png)
+
+### <a name="azure-powershell"></a>Azure PowerShell
+
+Azure PowerShell からコンプライアンスの詳細を表示することもできます。 最初に、ゲスト構成モジュールがインストールされていることを確認します。
+
+```azurepowershell-interactive
+Install-Module Az.GuestConfiguration
+```
+
+次のコマンドを使用して、VM のゲストの割り当てすべての現在の状態を表示できます。
+
+```azurepowershell-interactive
+Get-AzVMGuestPolicyReport -ResourceGroupName <resourcegroupname> -VMName <vmname>
+```
+
+```output
+PolicyDisplayName                                                         ComplianceReasons
+-----------------                                                         -----------------
+Audit that an application is installed inside Windows VMs                 {[InstalledApplication]bwhitelistedapp}
+Audit that an application is not installed inside Windows VMs.            {[InstalledApplication]NotInstalledApplica...
+```
+
+VM が "_非準拠_" である理由が説明されている "_理由_" 語句のみを表示するために、Reason 子プロパティのみを返します。
+
+```azurepowershell-interactive
+Get-AzVMGuestPolicyReport -ResourceGroupName <resourcegroupname> -VMName <vmname> | % ComplianceReasons | % Reasons | % Reason
+```
+
+```output
+The following applications are not installed: '<name>'.
+```
+
+仮想マシンが適用されているゲスト割り当てのコンプライアンス履歴を出力することもできます。 このコマンドの出力には、VM の各レポートの詳細が含まれています。
+
+> [!NOTE]
+> 出力によって大量のデータが返される場合があります。 出力は変数に格納することをお勧めします。
+
+```azurepowershell-interactive
+$guestHistory = Get-AzVMGuestPolicyStatusHistory -ResourceGroupName <resourcegroupname> -VMName <vmname>
+$guestHistory
+```
+
+```output
+PolicyDisplayName                                                         ComplianceStatus ComplianceReasons StartTime              EndTime                VMName LatestRepor
+                                                                                                                                                                  tId
+-----------------                                                         ---------------- ----------------- ---------              -------                ------ -----------
+[Preview]: Audit that an application is installed inside Windows VMs      NonCompliant                       02/10/2019 12:00:38 PM 02/10/2019 12:00:41 PM VM01  ../17fg0...
+<truncated>
+```
+
+このビューを簡略化するには、**ShowChanged** パラメーターを使用します。 このコマンドの出力には、コンプライアンス状態の変更追跡レポートのみが含まれます。
+
+```azurepowershell-interactive
+$guestHistory = Get-AzVMGuestPolicyStatusHistory -ResourceGroupName <resourcegroupname> -VMName <vmname> -ShowChanged
+$guestHistory
+```
+
+```output
+PolicyDisplayName                                                         ComplianceStatus ComplianceReasons StartTime              EndTime                VMName LatestRepor
+                                                                                                                                                                  tId
+-----------------                                                         ---------------- ----------------- ---------              -------                ------ -----------
+Audit that an application is installed inside Windows VMs                 NonCompliant                       02/10/2019 10:00:38 PM 02/10/2019 10:00:41 PM VM01  ../12ab0...
+Audit that an application is installed inside Windows VMs.                Compliant                          02/09/2019 11:00:38 AM 02/09/2019 11:00:39 AM VM01  ../e3665...
+Audit that an application is installed inside Windows VMs                 NonCompliant                       02/09/2019 09:00:20 AM 02/09/2019 09:00:23 AM VM01  ../15ze1...
+```
+
+## <a name="a-namechange-historychange-history-preview"></a><a name="change-history"/>変更履歴 (プレビュー)
 
 新しい**パブリック プレビュー**の一環として、[完全モードの削除](../../../azure-resource-manager/complete-mode-deletion.md)をサポートするすべての Azure リソースについて、過去 14 日間の変更履歴が使用可能です。 変更履歴では、変更が検出された日時についての詳細と、各変更の "_差分表示_" が提供されます。 変更の検出は、Resource Manager のプロパティが追加、削除、変更されるとトリガーされます。
 
-1. Azure portal 上で **[すべてのサービス]** をクリックし、**[ポリシー]** を検索して選択し、Azure Policy サービスを起動します。
+1. Azure portal 上で **[すべてのサービス]** をクリックし、 **[ポリシー]** を検索して選択し、Azure Policy サービスを起動します。
 
 1. **[概要]** ページまたは **[コンプライアンス]** ページで、任意の **[コンプライアンスの状態]** のポリシーを選択します。
 
@@ -117,11 +215,11 @@ Azure リソースにポリシー ルールへのコンプライアンス違反�
 
 1. **[リソース コンプライアンス]** ページで **[Change History (preview)]\(変更履歴 (プレビュー)\)** タブを選択します。 検出された変更がある場合は、その一覧が表示されます。
 
-   ![[リソース コンプライアンス] ページの [Policy Change History]\(ポリシーの変更履歴\) タブ](../media/determine-non-compliance/change-history-tab.png)
+   ![[リソース コンプライアンス] ページの Azure Policy の [変更履歴] タブ](../media/determine-non-compliance/change-history-tab.png)
 
 1. 検出された変更のいずれかを選択します。 **[変更履歴]** ページに、リソースの_差分表示_が示されます。
 
-   ![[変更履歴] ページでのポリシーの変更履歴の差分表示](../media/determine-non-compliance/change-history-visual-diff.png)
+   ![[変更履歴] ページの Azure Policy 変更履歴の差分表示](../media/determine-non-compliance/change-history-visual-diff.png)
 
 "_差分表示_" は、リソースの変更を識別するのに役立ちます。 検出された変更が、リソースの現在のコンプライアンス対応状態に関連していない場合があります。
 
@@ -129,10 +227,10 @@ Azure リソースにポリシー ルールへのコンプライアンス違反�
 
 ## <a name="next-steps"></a>次の手順
 
-- [Azure Policy のサンプル](../samples/index.md)を確認する
-- [ポリシー定義の構造](../concepts/definition-structure.md)を確認する
-- [ポリシーの効果について](../concepts/effects.md)確認する
-- [プログラムによってポリシーを作成する](programmatically-create.md)方法を理解する
-- [コンプライアンス データを取得する](getting-compliance-data.md)ための方法を学びます。
-- [準拠していないリソースを修復する](remediate-resources.md)方法を確認する
+- [Azure Policy のサンプル](../samples/index.md)を確認します。
+- 「[Azure Policy の定義の構造](../concepts/definition-structure.md)」を確認します。
+- 「[Policy の効果について](../concepts/effects.md)」を確認します。
+- [プログラムによってポリシーを作成する](programmatically-create.md)方法を理解します。
+- [コンプライアンス データを取得する](getting-compliance-data.md)方法を学習します。
+- [準拠していないリソースを修復する](remediate-resources.md)方法を学習します。
 - 「[Azure 管理グループのリソースを整理する](../../management-groups/overview.md)」で、管理グループとは何かを確認します。

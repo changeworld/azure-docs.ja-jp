@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: e23297d8cd6cab5abeedc1a12fa1a37c93e94283
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 8b3447b8094eb95bd2f61baed7371bf718fdf730
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64943616"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65606913"
 ---
 <a name="seller-insights-definitions"></a>Seller Insights 定義
 =======================
@@ -37,7 +37,7 @@ ms.locfileid: "64943616"
 | **顧客の市区町村**  | 顧客が指定した市区町村名。 これは、顧客の Azure サブスクリプションの市区町村とは異なる場合があります。  |
 | **顧客のコミュニケーション言語**        | 通信で顧客が優先的に使用する言語。                                  |
 | **顧客の会社名**                  | 顧客が指定した会社名。 これは、顧客の Azure サブスクリプションの市区町村とは異なる場合があります。                                  |
-| **顧客の国**                       | 顧客が指定した国名。  これは、顧客の Azure サブスクリプションの国とは異なる場合があります。                               |
+| **顧客の国**                       | 顧客が指定した国や地域の名前。  これは、顧客の Azure サブスクリプションの国や地域とは異なる場合があります。                               |
 | **顧客の通貨 (CC)**                 | 価格と課金について顧客が優先的に使用する通貨。                            |
 | **顧客のメール**                         | 顧客が指定したメール アドレス。  これは、顧客の Azure サブスクリプションのメール アドレスとは異なる場合があります。                   |
 | **顧客の名**                              | 顧客が指定した名。  これは、顧客の Azure サブスクリプションで指定されている名前とは異なる場合があります。                    |

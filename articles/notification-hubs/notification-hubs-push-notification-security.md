@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: bd9df12cbe941b868c769daccd02c1d81b39f7bd
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 22494984ca45cde7255fb5e1a30548c859bfad68
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54465362"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65826518"
 ---
 # <a name="security-model-of-azure-notification-hubs"></a>Azure Notification Hubs のセキュリティ モデル
 
@@ -50,3 +50,6 @@ Listen アクセス権を持つキーを使用するとクライアント アプ
 | 管理  | Notification Hubs に対する CRUD (PNS 資格情報およびセキュリティ キーの更新を含む) およびタグに基づく登録の読み取りを行います |Notification Hubs を作成/更新/読み取り/削除する<br><br>タグで登録を読み取る |
 
 Notification Hubs は、Microsoft Azure Access Control トークンによって許可された要求、および Notification Hubs に直接構成された共有キーを使用して生成された署名トークンによって許可された要求を受け付けます。
+
+複数の名前空間に通知を送信することはできません。 名前空間は通知ハブの論理コンテナーであり、通知の送信に関係しません。
+名前空間レベルのアクセス ポリシー (資格情報) を名前空間レベルの操作で使用できます。これには、通知ハブの一覧表示、通知ハブの作成または削除などが含まれます。通知を送信できるのは、ハブレベルのアクセス ポリシーを使用する場合のみです。

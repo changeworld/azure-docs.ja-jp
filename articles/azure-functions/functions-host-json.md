@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: glenga
-ms.openlocfilehash: e24c5b2be1df41d84fa4461250f51cb009f77529
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: ddd3b0889eedd55f809dbb57b2ef41a2ae3f9c94
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331219"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65521391"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x"></a>Azure Functions 2.x の host.json のリファレンス  
 
@@ -35,7 +35,6 @@ host.json の一部の設定は、[local.settings.json](functions-run-local.md#l
 ## <a name="sample-hostjson-file"></a>サンプル host.json ファイル
 
 次のサンプル *host.json* ファイルには、すべての使用できるオプションが指定されています。
-
 
 ```json
 {
@@ -82,7 +81,10 @@ host.json の一部の設定は、[local.settings.json](functions-run-local.md#l
       "lockAcquisitionTimeout": "00:01:00",
       "lockAcquisitionPollingInterval": "00:00:03"
     },
-    "watchDirectories": [ "Shared", "Test" ]
+    "watchDirectories": [ "Shared", "Test" ],
+    "managedDependency": {
+        "enabled": true
+    }
 }
 ```
 
@@ -194,6 +196,9 @@ Application Insights など、関数アプリのログの動作を制御しま�
       "Function.MyFunction": "Information",
       "default": "None"
     },
+    "console": {
+        ...
+    },
     "applicationInsights": {
         ...
     }
@@ -274,6 +279,18 @@ v2 ランタイムを対象とする関数アプリでは、バージョン文�
 ```json
 {
     "watchDirectories": [ "Shared" ]
+}
+```
+
+## <a name="manageddependency"></a>managedDependency
+
+マネージド依存関係は、現在 PowerShell ベースの関数でのみサポートされているプレビュー機能です。 この機能を使用すると、サービスによって依存関係を自動的に管理できます。 enabled プロパティが true に設定されている場合、[requirements.psd1](functions-reference-powershell.md#dependency-management) ファイルが処理されます。 いずれかのマイナー バージョンがリリースされると、依存関係が更新されます。
+
+```json
+{
+    "managedDependency": {
+        "enabled": true
+    }
 }
 ```
 

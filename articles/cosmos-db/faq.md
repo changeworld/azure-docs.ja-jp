@@ -4,27 +4,17 @@ description: グローバル分散型のマルチモデル データベース �
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 05/20/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 8e8b3e647d6ef91d69a7b81ca6fdf36fc9d0f9c8
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 4935e06389266f049b8f7f79ca6fb9380f33c864
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59523955"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65954149"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Azure Cosmos DB のさまざまな API についてよく寄せられる質問
-
-### <a name="what-happened-to-the-documentdb-api"></a>DocumentDB API はどうなりましたか?
-
-Azure Cosmos DB の DocumentDB API または SQL (DocumentDB) API は、Azure Cosmos DB SQL API という名称に変更されています。 DocumentDB API を使って構築された既存のアプリは、一切変更せずに引き続き実行することができます。 その機能は一切変更されていません。
-
-DocumentDB API アカウントを既に持っていた場合は、そのアカウントが SQL API アカウントになります。課金の変更はありません。
-
-### <a name="what-happened-to-azure-documentdb-as-a-service"></a>Azure DocumentDB サービスはどうなりましたか?
-
-Azure DocumentDB サービスは Azure Cosmos DB サービスの一部となり、SQL API という形になりました。 Azure DocumentDB に対して構築されたアプリケーションは、何も変更せずに Azure Cosmos DB SQL API に対して実行できます。 Cosmos DB では、[Cassandra](cassandra-introduction.md)、[MongoDB](mongodb-introduction.md)、[Gremlin](graph-introduction.md)、[Azure Table Storage](table-introduction.md) といったワイヤ プロトコルもサービスで直接実装されています。 これにより、よく使用される NoSQL API 用のクライアント ドライバー (およびツール) で Cosmos データベースを直接参照することができます。
 
 ### <a name="what-are-the-typical-use-cases-for-azure-cosmos-db"></a>Azure Cosmos DB の一般的なユース ケースを教えてください。
 
@@ -34,7 +24,7 @@ Azure Cosmos DB は、自動スケール、予測可能なパフォーマンス�
 
 [要求ユニット](request-units.md) (RU) とは、Azure Cosmos DB におけるスループットの単位です。 1 RU のスループットは、1 KB のドキュメントを取得するスループットに相当します。 Azure Cosmos DB におけるすべての操作 (読み取り、書き込み、SQL クエリ、ストアド プロシージャの実行など) には、操作を完了するために必要なスループットに基づいて明確な RU 値が設定されています。 CPU、IO、メモリや、これらがアプリケーションのスループットに及ぼす影響について考えるのではなく、RU という 1 つの単位を基にして考えることができます。
 
-各 Azure Cosmos DB コンテナーは、1 秒あたりのスループットを表す RU を単位として、プロビジョニング スループットを使用して構成できます。 あらゆる規模のアプリケーションで、個々の要求のベンチマークを実行して RU 値を測定し、すべての要求の要求ユニットの合計に対処できるようにコンテナーをプロビジョニングできます。 アプリケーションのニーズの進化に合わせて、コンテナーのスループットをスケールアップまたはスケールダウンすることもできます。 要求ユニットの詳細とコンテナーのニーズを判断する方法については、[スループット計算ツール](https://www.documentdb.com/capacityplanner)をお試しください。
+各 Azure Cosmos コンテナーは、1 秒あたりのスループットを表す RU を単位として、プロビジョニング スループットを使用して構成できます。 あらゆる規模のアプリケーションで、個々の要求のベンチマークを実行して RU 値を測定し、すべての要求の要求ユニットの合計に対処できるようにコンテナーをプロビジョニングできます。 アプリケーションのニーズの進化に合わせて、コンテナーのスループットをスケールアップまたはスケールダウンすることもできます。 要求ユニットの詳細とコンテナーのニーズを判断する方法については、[スループット計算ツール](https://www.documentdb.com/capacityplanner)をお試しください。
 
 ### <a name="how-does-azure-cosmos-db-support-various-data-models-such-as-keyvalue-columnar-document-and-graph"></a>Azure Cosmos DB は、キー/値、多桁式、ドキュメント、グラフなどのさまざまなデータ モデルをどのようにサポートしていますか?
 
@@ -91,8 +81,9 @@ Try Azure Cosmos DB サブスクリプションは、Azure Portal で、ユー�
 
 Try Azure Cosmos DB サブスクリプションには、次の条件が適用されます。
 
-* SQL、Gremlin API、Table アカウントのサブスクリプションあたり 1 つのコンテナー。
-* MongoDB アカウントのサブスクリプションあたり最大 3 つのコレクション。
+* SQL、Gremlin API、Table アカウントのサブスクリプションあたり 1 つの[プロビジョニング スループットのコンテナー](./set-throughput.md#set-throughput-on-a-container)。
+* MongoDB アカウントのサブスクリプションあたり最大 3 つの[プロビジョニング スループットのコレクション](./set-throughput.md#set-throughput-on-a-container)。
+* サブスクリプションあたり 1 つの[プロビジョニング スループットのデータベース](./set-throughput.md#set-throughput-on-a-database)。 プロビジョニング スループットのデータベースには、任意の数のコンテナーを含めることができます。
 * 10 GB のストレージ容量。
 * グローバルなレプリケーションは、米国中部、北ヨーロッパ、東南アジアという [Azure リージョン](https://azure.microsoft.com/regions/)で利用可能です
 * コンテナー レベルでプロビジョニングされている場合、最大 5 K RU/s のスループット。
@@ -222,7 +213,7 @@ Azure Cosmos DB では、厳密なセキュリティ要件と基準が適用さ�
 
 詳細については、[Azure Cosmos DB の MongoDB 用 API で Cosmo データベースに接続する](connect-mongodb-account.md)方法に関するページを参照してください。
 
-Azure Cosmos DB の MongoDB 用 API を使用するとき、対処しなければならないエラー コードは他にもありますか。
+### <a name="are-there-additional-error-codes-that-i-need-to-deal-with-while-using-azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB の MongoDB 用 API を使用するとき、対処しなければならないエラー コードは他にもありますか。
 
 Azure Cosmos DB の MongoDB 用 API には、一般的な MongoDB エラー コードのほかに、次のような独自のエラー コードがあります。
 
@@ -419,7 +410,7 @@ Table API は、Azure Cosmos DB のグローバルに分散されたプラット
 
 はい。インデックス定義を提供することでインデックス作成ポリシーを変更できます。 設定を適切にエンコードし、エスケープする必要があります。
 
-.NET SDK がない場合、インデックス作成ポリシーを設定できる唯一の方法は次のとおりです。ポータルの**データ エクスプローラー**で、変更する特定のテーブルに移動し、**[Scale & Settings]\(スケールと設定\)** > [インデックス作成ポリシー] で必要な変更を行って、**[保存]** を選びます。
+.NET SDK がない場合、インデックス作成ポリシーを設定できる唯一の方法は次のとおりです。ポータルの**データ エクスプローラー**で、変更する特定のテーブルに移動し、 **[Scale & Settings]\(スケールと設定\)** > [インデックス作成ポリシー] で必要な変更を行って、 **[保存]** を選びます。
 
 .NET SDK からは、app.config ファイルで送信できます。
 
@@ -462,7 +453,7 @@ Table API は Azure Table Storage と同じクエリ機能を提供します。 
 次のいずれかの条件に該当する場合は、TableThroughput を変更してください。
 
 * データの抽出、変換、読み込み (ETL) を実行している。または、短時間に大量のデータをアップロードする必要がある。
-* バックエンドでコンテナーまたはコンテナーのセットのスループットを増やす必要がある  (たとえば、使用されたスループットがプロビジョニング スループットを超えており、調整が行われている)。 詳細については、「[Azure Cosmos DB コンテナーのスループットの設定](set-throughput.md)」を参照してください。
+* バックエンドでコンテナーまたはコンテナーのセットのスループットを増やす必要がある (たとえば、使用されたスループットがプロビジョニング スループットを超えており、調整が行われている)。 詳細については、「[Azure Cosmos DB コンテナーのスループットの設定](set-throughput.md)」を参照してください。
 
 ### <a name="can-i-scale-up-or-scale-down-the-throughput-of-my-table-api-table"></a>Table API のテーブルのスループットはスケールアップまたはスケールダウンできますか?
 
@@ -530,7 +521,7 @@ Azure Cosmos DB では、[水平方向のパーティション分割](partition-
 
 ### <a name="how-can-i-protect-against-injection-attacks-using-gremlin-drivers"></a>Gremlin ドライバーを利用したインジェクション攻撃はどのように防ぎますか。
 
-ネイティブ Tinkerpop Gremlin ドライバーのほとんどでは、クエリ実行にパラメーター ディクショナリを提供できます。 この方法のサンプルは、[Gremlin.Net](https://tinkerpop.apache.org/docs/3.2.7/reference/#gremlin-DotNet) と [Gremlin-Javascript](https://github.com/Azure-Samples/azure-cosmos-db-graph-nodejs-getting-started/blob/master/app.js) にあります。
+ネイティブ Apache Tinkerpop Gremlin ドライバーのほとんどでは、クエリ実行にパラメーター ディクショナリを提供できます。 この方法のサンプルは、[Gremlin.Net](https://tinkerpop.apache.org/docs/3.2.7/reference/#gremlin-DotNet) と [Gremlin-Javascript](https://github.com/Azure-Samples/azure-cosmos-db-graph-nodejs-getting-started/blob/master/app.js) にあります。
 
 ### <a name="why-am-i-getting-the-gremlin-query-compilation-error-unable-to-find-any-method-error"></a>"Gremlin Query Compilation Error: Unable to find any method" (Gremlin クエリ コンパイル エラー:メソッドが見つかりません) エラーが表示されるのはなぜですか。
 
@@ -676,7 +667,7 @@ simpleStatement.SetOutgoingPayload(outgoingPayload);
 ### <a name="what-happens-when-throughput-is-used-up"></a>スループットを使い切った場合はどうなりますか?
 
 Azure Cosmos DB では、操作に上限を設定してパフォーマンスと待機時間を保証します。 この保証は、エンジンがテナントの操作にガバナンスを適用できる場合に可能になります。 これはスループットの設定に基づいて可能になります。スループットを設定すると、プラットフォームでこの容量が予約され、操作が正常に完了することが保証されるので、保証されたスループットと待機時間が確保されます。
-この容量を超えると、容量を使い切ったことを示すオーバーロードのエラー メッセージ 
+この容量を超えると、容量を使い切ったことを示すオーバーロードのエラー メッセージ
 "0x1001 Overloaded: the request cannot be processed because "Request Rate is large" "\(0x1001 オーバーロード: "要求レートが大きい" ため要求を処理できませんでした\) を受け取ります。 この段階で、この問題の原因となる操作とそのボリュームを確認することが重要です。 ポータルのメトリックを使用すると、プロビジョニングした容量を超えた容量の使用について理解できることがあります。 次に、基になるすべてのパーティションでほぼ均等に容量が使用されていることを確認する必要があります。 ほとんどのスループットが 1 つのパーティションに使用されている場合、ワークロードは均等ではありません。
 
 複数のパーティション全体、または集計して、時間単位、日単位、7 日間単位で使用されたスループットを示すメトリックを使用できます。 詳細については、「[Azure Cosmos DB のメトリックを使用した監視とデバッグ](use-metrics.md)」を参照してください。
@@ -755,7 +746,7 @@ CQLv3 を使用する Apache Cassandra SDK のクライアント ドライバー
 
 いいえ。プレビューでは、stable ローダーはサポートされていません。
 
-### <a name="can-an-on-premises-cassandra-cluster-be-paired-with-azure-cosmos-dbs-apache-cassandra-api"></a>オンプレミスの Cassandra クラスターを Azure Cosmos DB の Apache Cassandra API とペアにできますか?
+### <a name="can-an-on-premises-apache-cassandra-cluster-be-paired-with-azure-cosmos-dbs-cassandra-api"></a>オンプレミスの Apache Cassandra クラスターを Azure Cosmos DB の Cassandra API とペアにできますか?
 
 現在、Azure Cosmos DB では、操作のオーバーヘッドがないクラウド環境に合わせてエクスペリエンスが最適化されています。 ペアリングが必要な場合は、シナリオの説明を添えて [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) まで電子メールでお問い合わせください。
 

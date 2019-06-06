@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 07fb655af25fe590effcb885e7b366346724b50a
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 85087ce5a4fa3dd733f47a35bc18d76f1f4bc652
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56232894"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65606690"
 ---
 # <a name="bing-web-search-api-response-structure-and-answer-types"></a>Bing Web Search API の応答の構造と答えの種類  
 
@@ -220,9 +220,9 @@ news 回答と newsarticle について詳しくは、[News Search API](../bing-
 
 ユーザーが数式または単位変換クエリを入力した場合、応答には [Computation](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#computation) 回答が格納されます。 `computation` 回答には、正規化された式とその結果が格納されます。
 
-単位変換クエリとは、ある単位を別の単位に変換するクエリをいいます。 たとえば、"*How many feet in 10 meters? (10 メートルは何フィート?)*" や "*How many tablespoons in a 1/4 cup? (1/4 カップは大さじ何杯?)*" といったクエリが考えられます。
+単位変換クエリとは、ある単位を別の単位に変換するクエリをいいます。 たとえば、"*How many feet in 10 meters? (10 メートルは何フィート?)* " や "*How many tablespoons in a 1/4 cup? (1/4 カップは大さじ何杯?)* " といったクエリが考えられます。
 
-次に示したのは、"*How many feet in 10 meters? (10 メートルは何フィート?)*" に対する `computation` 回答です。
+次に示したのは、"*How many feet in 10 meters? (10 メートルは何フィート?)* " に対する `computation` 回答です。
 
 ```json
 "computation": {
@@ -298,7 +298,7 @@ Encoded query: 8^2%2B11^2-2*8*11*cos%2837%29
 |!|階乗|
 |。|Decimal|
 |()|優先順位のグループ化|
-|[]|関数|
+|[]|Function|
 
 数式には、次の定数を含めることができます。
 
@@ -326,11 +326,11 @@ Encoded query: 8^2%2B11^2-2*8*11*cos%2837%29
 
 ## <a name="timezone-answer"></a>timeZone 回答
 
-ユーザーが時刻または日付のクエリを入力した場合、応答には [TimeZone](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#timezone) 回答が格納されます。 この回答は、暗黙的なクエリと明示的なクエリをサポートします。 "*What time is it? (何時?)*" など暗黙的なクエリは、ユーザーの位置情報に基づくローカル時刻を返します。 "*What time is it in Seattle? (シアトルでは何時?)*" など明示的なクエリは、ワシントン州シアトルのローカル時刻を返します。
+ユーザーが時刻または日付のクエリを入力した場合、応答には [TimeZone](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#timezone) 回答が格納されます。 この回答は、暗黙的なクエリと明示的なクエリをサポートします。 "*What time is it? (何時?)* " など暗黙的なクエリは、ユーザーの位置情報に基づくローカル時刻を返します。 "*What time is it in Seattle? (シアトルでは何時?)* " など明示的なクエリは、ワシントン州シアトルのローカル時刻を返します。
 
 `timeZone` 回答からは、場所の名前、指定された場所における現在の UTC 日時、UTC オフセットが得られます。 その場所の境界が複数のタイム ゾーンにまたがっている場合、回答には、その境界内のすべてのタイム ゾーンにおける現在の UTC 日時が格納されます。 たとえばフロリダ州は 2 つのタイム ゾーンにまたがっているため、回答には、両方のタイム ゾーンのローカル日時が格納されます。  
 
-クエリで州または国の時刻を要求した場合、Bing は、その場所の地理的境界内に含まれる主要都市を判断し、それを `primaryCityTime` フィールドに格納して返します。 その境界が複数のタイム ゾーンにまたがっている場合、残りのタイム ゾーンは `otherCityTimes` フィールドで返されます。
+クエリで州または国/地域の時刻を要求した場合、Bing は、その場所の地理的境界内に含まれる主要都市を判断し、それを `primaryCityTime` フィールドに格納して返します。 その境界が複数のタイム ゾーンにまたがっている場合、残りのタイム ゾーンは `otherCityTimes` フィールドで返されます。
 
 次に示したのは、`timeZone` 回答を返すクエリの例です。
 

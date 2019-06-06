@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/07/2019
-ms.openlocfilehash: 8492f736e64366802b3601f9b5fc8bd1d9b6ea79
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 7415e13a445a73af197362c6cfbd3a865a2fea02
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59273075"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65604052"
 ---
 # <a name="time-series-analysis-in-azure-data-explorer"></a>Azure データ エクスプローラーの時系列分析
 
@@ -34,7 +34,7 @@ demo_make_series1 | take 10
 
 |   |   |   |   |   |
 | --- | --- | --- | --- | --- |
-|   | TimeStamp | BrowserVer | OsVer | Country |
+|   | TimeStamp | BrowserVer | OsVer | 国/リージョン |
 |   | 2016-08-25 09:12:35.4020000 | Chrome 51.0 | Windows 7 | イギリス |
 |   | 2016-08-25 09:12:41.1120000 | Chrome 52.0 | Windows 10 |   |
 |   | 2016-08-25 09:12:46.2300000 | Chrome 52.0 | Windows 7 | イギリス |
@@ -72,7 +72,7 @@ demo_make_series1
 このセクションでは、一般的な時系列処理関数を実行します。
 時系列が作成された後は、ADX が、増加を続ける関数の一覧をサポートして、それらの処理と分析を行います。これについては[時系列のドキュメント](/azure/kusto/query/machine-learning-and-tsa)を参照してください。 時系列の処理と分析用の、いくつかの代表的な関数について説明します。
 
-### <a name="filtering"></a>フィルター処理
+### <a name="filtering"></a>Filtering
 
 フィルター処理は信号処理の一般的な方法であり、時系列処理タスク (ノイズの多い信号の円滑化や変化検出など) で有効です。
 - 次の 2 つの一般的なフィルター処理関数があります。
@@ -260,3 +260,8 @@ demo_many_series1
 2 分以内に、ADX は約 20,000 の時系列を分析し、読み取り数が突然低下した 2 つの異常な時系列を検出しました。
 
 これらの高度な機能と ADX の高速なパフォーマンスを組み合わせることで、時系列分析のためのユニークで強力なソリューションが提供されます。
+
+## <a name="next-steps"></a>次の手順
+
+* Azure Data Explorer での[時系列の異常検出と予測](/azure/data-explorer/anomaly-detection)について学習します。
+* Azure Data Explorer の[機械学習機能](/azure/data-explorer/machine-learning-clustering)について学習します。

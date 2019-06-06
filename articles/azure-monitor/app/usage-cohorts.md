@@ -13,12 +13,12 @@ ms.date: 04/10/2018
 ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: a575161be0a339973f9c59cc13c2320b38939d04
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 263316028e7b35a1a515322dddc4ee867011dcac
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58108527"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65604105"
 ---
 # <a name="application-insights-cohorts"></a>Application Insights コーホート
 
@@ -50,7 +50,7 @@ ms.locfileid: "58108527"
     * **期間**: 月の定義です。
     * **UsedAtLeastCustom**: 関心度が高いとしてカウントするために、ユーザーが期間内に何かを使用する必要がある回数。
 
-4. **UsedAtLeastCustom** を **5 日以上**に変更し、**[期間]** を既定値の 28 日のままとします。
+4. **UsedAtLeastCustom** を **5 日以上**に変更し、 **[期間]** を既定値の 28 日のままとします。
 
     ![関心度の高いユーザー](./media/usage-cohorts/003.png)
 
@@ -65,7 +65,7 @@ ms.locfileid: "58108527"
 
 ### <a name="what-can-you-do-by-using-this-cohort"></a>このコーホートを使用して行えること
 
-ユーザー ツールを開きます。 **[表示]** ドロップダウン ボックスから、**[Users who belong to]\(属するユーザー)** で作成したコーホートを選択します。
+ユーザー ツールを開きます。 **[表示]** ドロップダウン ボックスから、 **[Users who belong to]\(属するユーザー)** で作成したコーホートを選択します。
 
 これで、ユーザー ツールはフィルター処理され、ユーザーに関するこのコーホートだけが表示されます。
 
@@ -100,7 +100,7 @@ ms.locfileid: "58108527"
 
 ![コーホート ツールの使い方を順を追って示すアニメーション画像](./media/usage-cohorts/cohorts0001.gif)
 
-1. コーホート ツールを開き、**[テンプレート ギャラリー]** タブを選択して、**[Blank Users cohort]\(空のユーザーのコーホート)** を選択します。
+1. コーホート ツールを開き、 **[テンプレート ギャラリー]** タブを選択して、 **[Blank Users cohort]\(空のユーザーのコーホート)** を選択します。
 
     ![空のユーザーのコーホート](./media/usage-cohorts/001.png)
 
@@ -123,13 +123,13 @@ ms.locfileid: "58108527"
     | where client_CountryOrRegion == "United Kingdom"
     ```
 
-3. **[クエリの実行]** を選択します。 ユーザー ID がテーブルに表示されない場合は、アプリケーションのユーザーがいる国に変更します。
+3. **[クエリの実行]** を選択します。 ユーザー ID がテーブルに表示されない場合は、アプリケーションのユーザーがいる国や地域に変更します。
 
 4. コーホートを保存して名前を付けます。
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
-_特定の国からのユーザーのコーホートを定義しました。ユーザー ツールでこのコーホートを、その国に対してフィルターを設定しただけの場合と比較すると、異なる結果が表示されます。なぜですか?_
+_特定の国や地域からのユーザーのコーホートを定義しました。ユーザー ツールでこのコーホートを、その国や地域に対してフィルターを設定しただけの場合と比較すると、異なる結果が表示されます。なぜですか?_
 
 コーホートとフィルターは異なります。 英国からのユーザーのコーホートが存在し (前の例のように定義された)、その結果を “Country or region = United Kingdom” というフィルターを設定した場合と比較するとします。
 

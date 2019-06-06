@@ -9,11 +9,11 @@ ms.date: 09/15/2018
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 06e6e491fa1e9a047527efb78149855b125771ef
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49960266"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66111408"
 ---
 # <a name="back-up-azure-unmanaged-vm-disks-with-incremental-snapshots"></a>増分スナップショットを使用した Azure 非管理 VM ディスクのバックアップ
 ## <a name="overview"></a>概要
@@ -58,7 +58,7 @@ Incremental Snapshot Copy を使用すると、以下の差分をストレージ
 * BLOB が 2016 年 1 月 1 日以降に作成されている。
 * 2 つのスナップショット間で [PutPage](https://docs.microsoft.com/rest/api/storageservices/Put-Page) または [Copy Blob](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob) により BLOB が上書きされていない。
 
-**注**: この機能は、Premium と Standard の Azure ページ BLOB に対して利用できます。
+**メモ**:この機能は、Premium と Standard の Azure ページ BLOB に対して利用できます。
 
 スナップショットを使用した独自のバックアップ方法を利用している場合、スナップショットを 2 つのストレージ アカウント間でコピーすると、ひどく時間がかかるうえに記憶域が大量に消費されます。 バックアップ ページ BLOB には、連続するスナップショットの差分だけを書き込むことができます。そうすれば、バックアップ ストレージ アカウントにスナップショット全体をコピーする必要はありません。 そうすることでコピーにかかる時間とバックアップで消費される記憶域を大幅に減らすことができます。
 

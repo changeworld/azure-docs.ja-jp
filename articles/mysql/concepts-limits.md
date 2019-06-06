@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 12/6/2018
-ms.openlocfilehash: 55106f855d1f2cab82b751b306a3a289bd740e9e
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 9088e9ad98633b46dc3a7f0ee9002a0dd9fc5a55
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895348"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65551891"
 ---
 # <a name="limitations-in-azure-database-for-mysql"></a>Azure Database for MySQL の制限事項
 以降のセクションでは、容量、ストレージ エンジンのサポート、権限のサポート、データ操作ステートメントのサポート、およびデータベース サービスの機能に関する制限事項について説明します。 MySQL データベース エンジンに適用できる[一般的な制限事項](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html)も確認してください。
@@ -55,7 +55,7 @@ ms.locfileid: "55895348"
 ### <a name="unsupported"></a>サポートされていません
 - DBA ロール:多くのサーバー パラメーターおよび設定によって、誤ってサーバー パフォーマンスを低下させたり、DBMS の ACID プロパティを負数にしてしまったりする恐れがあります。 そのため、製品レベルのサービス整合性と SLA を維持するために、このサービスでは、DBA ロールを公開していません。 新しいデータベース インスタンスの作成時に構成される既定のユーザー アカウントによって、ユーザーは管理データベース インスタンスでほとんどの DDL および DML ステートメントを実行できます。 
 - SUPER 権限:同様に、[SUPER 権限](https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html#priv_super)も制限されています。
-- DEFINER:作成するには SUPER 権限が必要であり、制限されています。 バックアップを使用してデータをインポートする場合、mysqldump の実行時に `CREATE DEFINER` コマンドを手動で、または `--skip-definer` コマンドを使用して削除します。
+- DEFINER: 作成するには SUPER 権限が必要であり、制限されています。 バックアップを使用してデータをインポートする場合、mysqldump の実行時に `CREATE DEFINER` コマンドを手動で、または `--skip-definer` コマンドを使用して削除します。
 
 ## <a name="data-manipulation-statement-support"></a>データ操作ステートメントのサポート
 
@@ -80,6 +80,9 @@ ms.locfileid: "55895348"
 
 ### <a name="vnet-service-endpoints"></a>VNet サービス エンドポイント
 - VNet サービス エンドポイントは、汎用サーバーとメモリ最適化サーバーでのみサポートされています。
+
+### <a name="storage-size"></a>ストレージ サイズ
+- 価格レベルごとのストレージ サイズの上限については、[価格レベル](concepts-pricing-tiers.md)を参照してください。
 
 ## <a name="current-known-issues"></a>現時点での既知の問題
 - MySQL サーバー インスタンスでは、接続が確立された後に不正確なサーバー バージョンが表示されます。 正確なサーバー インスタンス エンジンのバージョンを取得するには、`select version();` コマンドを使用します。

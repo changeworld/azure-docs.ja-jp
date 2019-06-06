@@ -7,15 +7,15 @@ tags: Lucene query analyzer syntax
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 05/13/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 108dd80aa90772eb01fe3c7f0176ddd37e27acaa
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 467c323a0b669e70e12f801fd8fdd6df119e793d
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024449"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595900"
 ---
 # <a name="query-examples-using-full-lucene-search-syntax-advanced-queries-in-azure-search"></a>"完全な" Lucene 検索構文を使用するクエリの例 (Azure Search での高度なクエリ)
 
@@ -59,7 +59,7 @@ URL は、次の要素から構成されます。
 
 ## <a name="send-your-first-query"></a>初めてクエリを送信する
 
-確認手順として、次の要求を GET に貼り付け、**[送信]** をクリックします。 結果は冗長な JSON ドキュメントとして返されます。 ドキュメント全体が返され、すべてのフィールドとすべての値を確認することができます。
+確認手順として、次の要求を GET に貼り付け、 **[送信]** をクリックします。 結果は冗長な JSON ドキュメントとして返されます。 ドキュメント全体が返され、すべてのフィールドとすべての値を確認することができます。
 
 次の URL を検証手順として REST クライアントに貼り付けて、ドキュメントの構造を表示します。
 
@@ -81,11 +81,11 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 
 この記事のすべての例で、**queryType=full** 検索パラメーターを指定します。そうすることで、Lucene Query Parser によって完全な構文が処理されるように指示します。 
 
-## <a name="example-1-field-scoped-query"></a>例 1:フィールド スコープ クエリ
+## <a name="example-1-query-scoped-to-a-list-of-fields"></a>例 1:フィールドの一覧を対象とするクエリ
 
-この最初の例は Lucene 固有ではありませんが、最初の基本的なクエリの概念である包含を紹介するために利用します。 この例では、クエリの実行とその応答の範囲をいくつかの特定のフィールドに制限しています。 ツールが Postman または Search エクスプローラーの場合、読みやすい JSON 応答を構成する方法を理解することが重要です。 
+この最初の例は Lucene 固有ではありませんが、最初の基本的なクエリの概念であるフィールド スコープを紹介するために利用します。 この例では、クエリ全体とその応答の範囲をいくつかの特定のフィールドに制限しています。 ツールが Postman または Search エクスプローラーの場合、読みやすい JSON 応答を構成する方法を理解することが重要です。 
 
-簡潔にするため、このクエリでは *business_title* フィールドのみを対象として、肩書きのみが返されるよう指定しています。 構文は、クエリの実行を business_title フィールドのみに制限する **searchFields** と、応答に含まれるフィールドを指定する **select** です。
+簡潔にするため、このクエリでは *business_title* フィールドのみを対象として、肩書きのみが返されるよう指定しています。 **searchFields** パラメーターでクエリの実行を business_title フィールドのみに制限し、**select** で応答に含まれるフィールドを指定します。
 
 ### <a name="partial-query-string"></a>部分クエリ文字列
 
@@ -99,6 +99,11 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 search=*&searchFields=business_title, posting_type&$select=business_title, posting_type
 ```
 
+コンマの後ろのスペースは省略可能です。
+
+> [!Tip]
+> ご自身のアプリケーション コードから REST API を使用している場合は、`$select` や `searchFields` などのパラメーターを URL エンコードすることを忘れないでください。
+
 ### <a name="full-url"></a>完全な URL
 
 ```http
@@ -109,41 +114,44 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 
   ![Postman の応答のサンプル](media/search-query-lucene-examples/postman-sample-results.png)
 
-応答の検索スコアに気付いたかもしれません。 検索がフルテキスト検索でなかった、または適用された基準がないという理由でランクがない場合は、1 の均一のスコアが発生します。 条件なしの null 検索では、任意の順序で行が返されます。 実際の基準を含めると、検索スコアは意味のある値に変化します。
+応答の検索スコアに気付いたかもしれません。 検索がフルテキスト検索でなかった、または適用された基準がないという理由でランクがない場合は、1 の均一のスコアが発生します。 条件なしの null 検索では、任意の順序で行が返されます。 実際の検索基準を含めると、検索スコアは意味のある値に変化します。
 
-## <a name="example-2-intra-field-filtering"></a>例 2:フィールド内フィルタリング
+## <a name="example-2-fielded-search"></a>例 2:フィールド検索
 
-完全な Lucene 構文では、フィールド内の式をサポートしています。 この例は、junior ではなく、senior という表現を含む肩書きを検索します。
+完全な Lucene 構文では、個々の検索式の範囲を特定のフィールドに制限することができます。 この例は、junior ではなく、senior という表現を含む肩書きを検索します。
 
 ### <a name="partial-query-string"></a>部分クエリ文字列
 
 ```http
-searchFields=business_title&$select=business_title&search=business_title:senior+NOT+junior
+$select=business_title&search=business_title:(senior NOT junior)
 ```
 
 次のクエリは、複数のフィールドを持つ同じクエリです。
 
 ```http
-searchFields=business_title, posting_type&$select=business_title, posting_type&search=business_title:senior+NOT+junior AND posting_type:external
+$select=business_title, posting_type&search=business_title:(senior NOT junior) AND posting_type:external
 ```
 
 ### <a name="full-url"></a>完全な URL
 
 ```GET
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:senior+NOT+junior
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&queryType=full&$count=true&$select=business_title&search=business_title:(senior NOT junior)
 ```
 
   ![Postman の応答のサンプル](media/search-query-lucene-examples/intrafieldfilter.png)
 
-**fieldname:searchterm** 構造を指定することで、フィールド クエリ操作を定義できます。フィールドは 1 つの単語であり、検索用語も 1 つの単語または語句です。ブール演算子を利用することもあります。 たとえば、次のようになります。
+**fieldName:searchExpression** 構文を使用して、フィールド検索操作を定義できます。検索式は、単一の単語、単一の語句、またはかっこで囲まれた複雑な式が可能であり、必要に応じてブール演算子も使用できます。 たとえば、次のようになります。
 
-* business_title:(senior NOT junior)
-* state:("New York" AND "New Jersey")
-* business_title:(senior NOT junior) AND posting_type:external
+- `business_title:(senior NOT junior)`
+- `state:("New York" OR "New Jersey")`
+- `business_title:(senior NOT junior) AND posting_type:external`
 
-複数の文字列を 1 つのエンティティとして評価するのであれば、複数の文字列を引用符で囲ってください。この例では、場所フィールドで 2 つの異なる都市を検索しています。 また、NOT や AND のように、演算子は大文字表記になります。
+複数の文字列を 1 つのエンティティとして評価するのであれば、複数の文字列を引用符で囲ってください。この例では、`state` フィールドで 2 つの異なる場所を検索しています。 また、NOT や AND のように、演算子は大文字表記になります。
 
-**fieldname:searchterm** に指定されたフィールドは検索可能フィールドである必要があります。 フィールド定義におけるインデックス属性の利用方法に関する詳細については、「 [Create Index (Azure Search Service REST API) (インデックスの作成 (Azure Search サービス REST API))](https://docs.microsoft.com/rest/api/searchservice/create-index) 」を参照してください。
+**fieldName:searchExpression** に指定されたフィールドは検索可能フィールドである必要があります。 フィールド定義におけるインデックス属性の利用方法に関する詳細については、「 [Create Index (Azure Search Service REST API) (インデックスの作成 (Azure Search サービス REST API))](https://docs.microsoft.com/rest/api/searchservice/create-index) 」を参照してください。
+
+> [!NOTE]
+> 上記の例では、クエリの各部分に明示的に指定されたフィールド名があるため、`searchFields` パラメーターを使用する必要がありませんでした。 ただし、いくつかの部分で特定のフィールドをスコープにし、他の部分は複数のフィールドに適用できるクエリを実行する場合は、`searchFields` パラメーターを引き続き使用できます。 たとえば、クエリ `search=business_title:(senior NOT junior) AND external&searchFields=posting_type` は、`business_title` フィールドの `senior NOT junior` のみと一致し、`posting_type` フィールドの "external" と一致します。 **fieldName:searchExpression** に指定されたフィールド名は常に `searchFields` パラメーターに優先するため、この例では `searchFields` パラメーターに `business_title` を含める必要はありません。
 
 ## <a name="example-3-fuzzy-search"></a>例 3:あいまい検索
 
@@ -228,7 +236,7 @@ musicstoreindex の例の **genre** など、特定のフィールドの一致�
 係数レベルを設定するときにブースト係数を大きくするほど、その用語の関連性が他の検索用語に比べて大きくなります。 既定のブースト係数は 1 です。 ブースト係数は整数にする必要がありますが、1 に満たない (0.2 など) 数字にすることができます。
 
 
-## <a name="example-6-regex"></a>例 6: Regex 
+## <a name="example-6-regex"></a>例 6: Regex
 
 正規表現検索では、スラッシュ "/" の間のコンテンツに基づいて一致が検索されます。[RegExp](https://lucene.apache.org/core/4_10_2/core/org/apache/lucene/util/automaton/RegExp.html) クラスに詳細があります。
 

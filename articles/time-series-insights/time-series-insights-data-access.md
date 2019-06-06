@@ -11,18 +11,18 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 05/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: adb30cc3af50b71cdc03e41d847bd4d824cffea6
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 6853637ba23e17f3a7ca5420bdd84425c81a67be
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236393"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65791019"
 ---
 # <a name="grant-data-access-to-an-environment"></a>環境へのデータ アクセスの許可
 
 この記事では、Azure Time Series Insights プレビューの 2 つのタイプのアクセス ポリシーについて説明します。
 
-## <a name="sign-in-to-tsi"></a>TSI へのサインイン
+## <a name="sign-in-to-time-series-insights"></a>Time Series Insights へのサインイン
 
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
 1. Time Series Insights 環境を検索します。 **[検索ボックス]** に「`Time Series`」と入力します。 検索結果の **[Time Series Environment]\(Time Series 環境\)** を選択します。
@@ -32,7 +32,7 @@ ms.locfileid: "65236393"
 
 次の手順に従って、ユーザー プリンシパルにデータ アクセスを許可します。
 
-1. **[データ アクセス ポリシー]** を選択し、**[+ 追加]** をクリックします。
+1. **[データ アクセス ポリシー]** を選択し、 **[+ 追加]** をクリックします。
 
     [![Data-access-one](media/data-access/data-access-one.png)](media/data-access/data-access-one.png#lightbox)
 
@@ -64,7 +64,7 @@ ms.locfileid: "65236393"
 
 別のテナントから Azure AD ユーザーに Time Series Insights 環境へのゲスト アクセスを付与するには、以下の手順を実行します。
 
-1. **[データ アクセス ポリシー]** を選択し、**[+ 招待]** をクリックします。
+1. **[データ アクセス ポリシー]** を選択し、 **[+ 招待]** をクリックします。
 
     [![Data-access-six](media/data-access/data-access-six.png)](media/data-access/data-access-six.png#lightbox)
 

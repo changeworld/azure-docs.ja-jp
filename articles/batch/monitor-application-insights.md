@@ -11,12 +11,12 @@ ms.topic: article
 ms.workload: na
 ms.date: 04/05/2018
 ms.author: lahugh
-ms.openlocfilehash: 42ea8398fa1a8b1fbc42108d1165dc17da2c34d7
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: c527b0b10a2b9a351b242d0858fdbe64687970a7
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55473464"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595288"
 ---
 # <a name="monitor-and-debug-an-azure-batch-net-application-with-application-insights"></a>Application Insights による Azure Batch .NET アプリケーションの監視とデバッグ
 
@@ -31,7 +31,7 @@ ms.locfileid: "55473464"
 >
 
 ## <a name="prerequisites"></a>前提条件
-* [Visual Studio 2017](https://www.visualstudio.com/vs)
+* [Visual Studio 2017 以降](https://www.visualstudio.com/vs)
 
 * [Batch アカウントおよびリンクされたストレージ アカウント](batch-account-create-portal.md)
 
@@ -265,13 +265,13 @@ for (int i = 1; i <= topNWordsConfiguration.NumberOfTasks; i++)
 
 ### <a name="view-live-stream-data"></a>ライブ ストリーム データの表示
 
-Application Insights リソースのトレース ログを表示するには、**[ライブ ストリーム]** をクリックします。 次のスクリーンショットは、コンピューティング ノードあたりの CPU 使用率など、プール内のコンピューティング ノードから取得したライブ データを表示する方法を示しています。
+Application Insights リソースのトレース ログを表示するには、 **[ライブ ストリーム]** をクリックします。 次のスクリーンショットは、コンピューティング ノードあたりの CPU 使用率など、プール内のコンピューティング ノードから取得したライブ データを表示する方法を示しています。
 
 ![ライブ ストリーム コンピューティング ノード データ](./media/monitor-application-insights/applicationinsightslivestream.png)
 
 ### <a name="view-trace-logs"></a>トレース ログの表示
 
-Application Insights リソースのトレース ログを表示するには、**[検索]** をクリックします。 このビューには、トレース、イベント、例外など、Application Insights によってキャプチャされた診断データの一覧が表示されます。 
+Application Insights リソースのトレース ログを表示するには、 **[検索]** をクリックします。 このビューには、トレース、イベント、例外など、Application Insights によってキャプチャされた診断データの一覧が表示されます。 
 
 次のスクリーンショットは、タスクの 1 つのトレースがどのようにログに記録され、その後デバッグを目的としたクエリがどのように実行されるかを示しています。
 
@@ -288,13 +288,13 @@ Application Insights リソースのトレース ログを表示するには、*
 カスタム メトリックも、ポータルの重要なツールです。 たとえば、各コンピューティング ノードが処理する必須テキスト ファイルのダウンロードに要した平均時間を表示できます。
 
 サンプル グラフを作成するには:
-1. Application Insights リソースで、**[メトリックス エクスプローラー]** > **[グラフの追加]** をクリックします。
+1. Application Insights リソースで、 **[メトリックス エクスプローラー]**  >  **[グラフの追加]** をクリックします。
 2. 追加されたグラフで **[編集]** をクリックします。
 2. グラフの詳細を次のように更新します。
    * **[グラフの種類]** を **[グリッド]** に設定します。
    * **[集計]** を **[平均]** に設定します。
    * **[グループ化]** を **[NodeId]** に設定します。
-   * **[メトリック]** で、**[カスタム]** > **[Blob download in seconds]\(秒単位の BLOB ダウンロード\)** を選択します。
+   * **[メトリック]** で、 **[カスタム]**  >  **[Blob download in seconds]\(秒単位の BLOB ダウンロード\)** を選択します。
    * **[カラー パレット]** の表示を任意に調整します。 
 
 ![ノードあたりの BLOB ダウンロード時間](./media/monitor-application-insights/blobdownloadtime.png)

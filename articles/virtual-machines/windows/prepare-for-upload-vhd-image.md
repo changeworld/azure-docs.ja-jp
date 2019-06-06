@@ -13,17 +13,18 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 12/13/2018
+ms.date: 05/11/2019
 ms.author: genli
-ms.openlocfilehash: 0988902e0a2154f2935a01ddcfb6a460be693df3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5ae0e7855db6bec9f48d2b9511f0d0626d883111
+ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58093805"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65561352"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Azure にアップロードする Windows VHD または VHDX を準備する
-Windows 仮想マシン (VM) をオンプレミスから Microsoft Azure にアップロードする前に、仮想ハード ディスク (VHD または VHDX) を準備する必要があります。 Azure では、VHD ファイル形式で容量固定ディスクの**第 1 世代の VM のみ**がサポートされています。 VHD のサイズの上限は、1,023 GB です。 第 1 世代の VM は、VHDX ファイル システムから VHD ファイル システムに、また容量可変ディスクから容量固定ディスクに変換できます。 ただし、VM の世代を変更することはできません。 詳細については、[Hyper-V で第 1 世代と第 2 世代のどちらの VM を作成する必要があるか](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)に関するページを参照してください。
+
+Windows 仮想マシン (VM) をオンプレミスから Microsoft Azure にアップロードする前に、仮想ハード ディスク (VHD または VHDX) を準備する必要があります。 Azure では、VHD ファイル形式で容量固定ディスクの第 1 世代および第 2 世代 VM の両方がサポートされています。 VHD のサイズの上限は、1,023 GB です。 第 1 世代の VM は、VHDX ファイル システムから VHD ファイル システムに、また容量可変ディスクから容量固定ディスクに変換できます。 ただし、VM の世代を変更することはできません。 詳細については、「[Should I create a generation 1 or 2 VM in Hyper-V (Hyper-V で第 1 世代と第 2 世代のどちらの VM を作成する必要があるか)](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)」および「[Generation 2 VMs on Azure (Azure での第 2 世代 VM)](generation-2.md)」を参照してください。
 
 Azure VM のサポート ポリシーの詳細については、[Microsoft Azure VM のマイクロソフト サーバー ソフトウェアのサポート](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)に関するページを参照してください。
 
@@ -36,11 +37,11 @@ Azure VM のサポート ポリシーの詳細については、[Microsoft Azure
 ディスクを変換した後は、変換したディスクを使用する VM を作成します。 VM を起動してサインインし、VM アップロードの準備を完了します。
 
 ### <a name="convert-disk-using-hyper-v-manager"></a>Hyper-V マネージャーを使用したディスクの変換
-1. Hyper-V マネージャーを開いて、左側のローカル コンピューターを選択します。 コンピューター リストの上にあるメニューで、**[アクション]**、 > **[ディスクの編集]** の順にクリックします。
+1. Hyper-V マネージャーを開いて、左側のローカル コンピューターを選択します。 コンピューター リストの上にあるメニューで、 **[アクション]** 、 >  **[ディスクの編集]** の順にクリックします。
 2. **[仮想ハード ディスクの場所]** 画面で、お使いの仮想ディスクを見つけて選択します。
-3. **[操作の選択]** 画面で、**[変換]** を選択し、**[次へ]** をクリックします。
-4. VHDX から変換する必要がある場合は、**[VHD]** を選択し、**[次へ]** をクリックします。
-5. 容量可変ディスクから変換する必要がある場合は、**[容量固定]** を選択し、**[次へ]** をクリックします。
+3. **[操作の選択]** 画面で、 **[変換]** を選択し、 **[次へ]** をクリックします。
+4. VHDX から変換する必要がある場合は、 **[VHD]** を選択し、 **[次へ]** をクリックします。
+5. 容量可変ディスクから変換する必要がある場合は、 **[容量固定]** を選択し、 **[次へ]** をクリックします。
 6. 新しい VHD ファイルの保存先となるパスを見つけて選択します。
 7. **[完了]** をクリックします。
 
@@ -48,7 +49,7 @@ Azure VM のサポート ポリシーの詳細については、[Microsoft Azure
 >この記事のコマンドは、管理者特権の PowerShell セッションで実行する必要があります。
 
 ### <a name="convert-disk-by-using-powershell"></a>PowerShell を使用したディスクの変換
-仮想ディスクは、Windows PowerShell で [Convert-VHD](https://technet.microsoft.com/library/hh848454.aspx) コマンドを使用して変換できます。 PowerShell の起動時に、**[管理者として実行]** を選択します。 
+仮想ディスクは、Windows PowerShell で [Convert-VHD](https://technet.microsoft.com/library/hh848454.aspx) コマンドを使用して変換できます。 PowerShell の起動時に、 **[管理者として実行]** を選択します。 
 
 次の例では、VHDX から VHD に、および容量可変ディスクから容量固定ディスクに変換するコマンドを示します。
 
@@ -399,7 +400,7 @@ Windows ベースのコンピューターにインストールされているロ
 1. Windows VM にサインインします。
 2. 管理者として**コマンド プロンプト**を実行します。 
 3. ディレクトリを **%windir%\system32\sysprep** に変更し、**sysprep.exe** を実行します。
-3. **[システム準備ツール]** ダイアログ ボックスで **[システムの OOBE (Out-of-Box Experience) に入る]** を選択し、**[一般化する]** チェック ボックスがオンになっていることを確認します。
+3. **[システム準備ツール]** ダイアログ ボックスで **[システムの OOBE (Out-of-Box Experience) に入る]** を選択し、 **[一般化する]** チェック ボックスがオンになっていることを確認します。
 
     ![システム準備ツール](media/prepare-for-upload-vhd-image/syspre.png)
 4. **[シャットダウン オプション]** の **[シャットダウン]** を選択します。
@@ -409,7 +410,7 @@ Windows ベースのコンピューターにインストールされているロ
 
 
 >[!NOTE]
-> custom unattend.xml はサポートされていません。 additionalUnattendContent プロパティはサポートされていますが、Azure プロビジョニング エージェントが使用する unattend.xml に [microsoft-windows-shell-setup](https://docs.microsoft.com/windows-hardware/customize/desktop/unattend/microsoft-windows-shell-setup) オプションを追加するためのサポートは限られています。 例:   FirstLogonCommands と LogonCommands を追加するには、[additionalUnattendContent](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.compute.models.additionalunattendcontent?view=azure-dotnet) を使用できます。 「[additionalUnattendContent FirstLogonCommands example (additionalUnattendContent FirstLogonCommands の例)](https://github.com/Azure/azure-quickstart-templates/issues/1407)」も参照してください。
+> custom unattend.xml はサポートされていません。 additionalUnattendContent プロパティはサポートされていますが、Azure プロビジョニング エージェントが使用する unattend.xml に [microsoft-windows-shell-setup](https://docs.microsoft.com/windows-hardware/customize/desktop/unattend/microsoft-windows-shell-setup) オプションを追加するためのサポートは限られています。 例:  FirstLogonCommands と LogonCommands を追加するには、[additionalUnattendContent](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.compute.models.additionalunattendcontent?view=azure-dotnet) を使用できます。 「[additionalUnattendContent FirstLogonCommands example (additionalUnattendContent FirstLogonCommands の例)](https://github.com/Azure/azure-quickstart-templates/issues/1407)」も参照してください。
 
 
 ## <a name="complete-recommended-configurations"></a>推奨される構成を完了する

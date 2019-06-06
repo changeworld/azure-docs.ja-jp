@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: 82b568d5a6abae1f061166afc1c80ef639df036c
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 245e5ca6e2d7d1f48951d63ba6539180a35f1358
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57250759"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65604146"
 ---
 # <a name="view-the-tax-documents-for-your-microsoft-customer-agreement"></a>Microsoft 顧客契約に関する税務書類を表示する
 
@@ -36,7 +36,7 @@ ms.locfileid: "57250759"
 3. **[請求書]** を選択します。
 4. 請求書グリッドで、ダウンロードする税務書類に対応する請求書の行を見つけます。
 5. 行の末尾にある省略記号 (`...`) をクリックします。
-6. **[税務書類]** を選択します。 請求プロファイルの国によっては、請求書ごとに 1 つ以上の税務書類が表示されることがあります。
+6. **[税務書類]** を選択します。 請求プロファイルの国や地域によっては、各請求書に複数の税務署類が表示される場合があります。
 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Microsoft 顧客契約にアクセスできるかどうかを確認する
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]

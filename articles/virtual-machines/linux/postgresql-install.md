@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: cynthn
-ms.openlocfilehash: 76f1ddeebb173bf19b15753d12e4374e6365bf8f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5fe5e819c4f1079b6eb1fa8bb19d337ecfed600d
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57998993"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65955152"
 ---
 # <a name="install-and-configure-postgresql-on-azure"></a>Azure での PostgreSQL のインストールと構成
 PostgreSQL は、Oracle や DB2 に似た高機能のオープン ソース データベースです。 PostgreSQL には、完全な ACID 準拠、信頼性の高いトランザクション処理、複数バージョンのコンカレンシー制御など、エンタープライズ対応の機能が含まれます。 また、ANSI SQL や SQL/MED などの標準をサポートします (Oracle、MySQL、MongoDB、その他多くの外部データ ラッパーを含みます). 12 を超える手続き型言語、GIN および GIST のインデックス、空間データ、および JSON またはキーと値に基づくアプリケーションに対する NoSQL に似た複数の機能などのサポートにより、高度な拡張を行えます。
@@ -232,7 +232,7 @@ Postgres データベースを作成します。
 ![image](./media/postgresql-install/no8.png)
 
 ### <a name="update-data-in-a-table"></a>テーブルのデータの更新
-テーブル内のデータを更新するには、次のコマンドを使用します。 この例では、Sandy が参加を確定したため、RSVP を "N" から "Y" に変更します。
+テーブル内のデータを更新するには、次のコマンドを使用します。 この場合、Sandy が参加を確定したため、RSVP を "N" から "Y" に変更します。
 
      UPDATE potluck set confirmed = 'Y' WHERE name = 'Sandy';
 

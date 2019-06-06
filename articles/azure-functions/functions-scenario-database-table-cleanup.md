@@ -11,16 +11,16 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/28/2018
 ms.author: glenga
-ms.openlocfilehash: 4ec2e9b931e6405aca5b4237bc044647af3b8bb3
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 19a5fe4c087d477ff15d2237a36d1c4ecaa0e070
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53608581"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65908120"
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>Azure Functions を使用して Azure SQL Database に接続する
 
-この記事では、Azure Functions を使用して Azure SQL データベース インスタンスに接続するスケジュール済みジョブを作成する方法を示します。 この関数コードは、データベース内のテーブル内の行をクリーンアップします。 この新しい C# 関数は、Visual Studio 2017 の定義済みタイマー トリガー テンプレートに基づいて作成されます。 このシナリオを実現するには、別途データベースの接続文字列を関数アプリのアプリ設定として設定する作業が必要となります。 このシナリオではデータベースに対する一括操作を使用しています。 
+この記事では、Azure Functions を使用して Azure SQL データベース インスタンスに接続するスケジュール済みジョブを作成する方法を示します。 この関数コードは、データベース内のテーブル内の行をクリーンアップします。 この新しい C# 関数は、Visual Studio 2019 の定義済みタイマー トリガー テンプレートに基づいて作成されます。 このシナリオを実現するには、別途データベースの接続文字列を関数アプリのアプリ設定として設定する作業が必要となります。 このシナリオではデータベースに対する一括操作を使用しています。 
 
 C# 関数を初めて使用する場合は、[Azure Functions C# 開発者向けリファレンス](functions-dotnet-class-library.md)をお読みください。
 
@@ -38,7 +38,7 @@ C# 関数を初めて使用する場合は、[Azure Functions C# 開発者向け
 
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
 
-1. 左側のメニューから **[SQL データベース]** を選択し、**[SQL データベース]** ページで目的のデータベースをクリックします。
+1. 左側のメニューから **[SQL データベース]** を選択し、 **[SQL データベース]** ページで目的のデータベースをクリックします。
 
 1. **[Settings]** \(設定) の下の **[接続文字列]** を選択し、完全な **ADO.NET** の接続文字列をコピーします。
 
@@ -50,7 +50,7 @@ Function App は、Azure での関数の実行をホストします。 セキュ
 
 以前アプリを Azure に発行している必要があります。 まだ行っていない場合は、[[Publish your function app to Azure]](functions-develop-vs.md#publish-to-azure)\(関数アプリを Azure に発行) します。
 
-1. ソリューション エクスプ ローラーで関数アプリ プロジェクトを右クリックし、**[Publish]** \(発行)  > **[Manage application settings...]** \(アプリケーション設定の管理...) を選択します。**[設定の追加]** を選択し、**[新しいアプリ設定名]** で型 `sqldb_connection` を選択して **[OK]** を選択します。
+1. ソリューション エクスプ ローラーで関数アプリ プロジェクトを右クリックし、 **[Publish]** \(発行)  >  **[Manage application settings...]** \(アプリケーション設定の管理...) を選択します。 **[設定の追加]** を選択し、 **[新しいアプリ設定名]** で型 `sqldb_connection` を選択して **[OK]** を選択します。
 
     ![関数アプリのアプリケーション設定。](./media/functions-scenario-database-table-cleanup/functions-app-service-add-setting.png)
 
@@ -64,15 +64,15 @@ Function App は、Azure での関数の実行をホストします。 セキュ
 
 SqlClient ライブラリを含む NuGet パッケージを追加する必要があります。 SQL データベースへの接続には、このデータ アクセス ライブラリが必要です。
 
-1. Visual Studio 2017 で、ローカル関数アプリ プロジェクトを開きます。
+1. Visual Studio 2019 で、ローカル関数アプリ プロジェクトを開きます。
 
-1. ソリューション エクスプローラーで関数アプリ プロジェクトを右クリックし、**[NuGet パッケージの管理]** を選択します。
+1. ソリューション エクスプローラーで関数アプリ プロジェクトを右クリックし、 **[NuGet パッケージの管理]** を選択します。
 
 1. **[参照]** タブで ```System.Data.SqlClient``` を探し、見つかったらそれを選択します。
 
-1. **[System.Data.SqlClient]** ページでバージョン `4.5.1` を選択し、**[インストール]** をクリックします。
+1. **[System.Data.SqlClient]** ページでバージョン `4.5.1` を選択し、 **[インストール]** をクリックします。
 
-1. インストールが完了したら変更を確認し、**[OK]** をクリックして **[プレビュー]** ウィンドウを閉じます。
+1. インストールが完了したら変更を確認し、 **[OK]** をクリックして **[プレビュー]** ウィンドウを閉じます。
 
 1. **[ライセンスへの同意]** ウィンドウが表示された場合は **[同意する]** をクリックします。
 
@@ -80,11 +80,11 @@ SqlClient ライブラリを含む NuGet パッケージを追加する必要が
 
 ## <a name="add-a-timer-triggered-function"></a>タイマーでトリガーされる関数を追加する
 
-1. ソリューション エクスプローラーで関数アプリ プロジェクトを右クリックし、**[Add]** \(追加) > **[新しい Azure 関数]** を選択します。
+1. ソリューション エクスプローラーで関数アプリ プロジェクトを右クリックし、 **[Add]** \(追加) >  **[新しい Azure 関数]** を選択します。
 
-1. **Azure Functions** テンプレートを選択し、新しい項目に `DatabaseCleanup.cs` などの名前を付けて、**[Add]** \(追加) を選択します。
+1. **Azure Functions** テンプレートを選択し、新しい項目に `DatabaseCleanup.cs` などの名前を付けて、 **[Add]** \(追加) を選択します。
 
-1. **[新しい Azure 関数]** ダイアログ ボックスで、**[タイマー トリガー]**、**[OK]** を選択します。 このダイアログで、タイマー トリガー関数のコード ファイルが作成されます。
+1. **[新しい Azure 関数]** ダイアログ ボックスで、 **[タイマー トリガー]** 、 **[OK]** を選択します。 このダイアログで、タイマー トリガー関数のコード ファイルが作成されます。
 
 1. 新しいコード ファイルを開き、次の using ステートメントをファイルの先頭に追加します。
 

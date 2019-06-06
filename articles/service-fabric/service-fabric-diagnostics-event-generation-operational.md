@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/25/2019
 ms.author: srrengar
-ms.openlocfilehash: 7a4cccf774d89229810c1668f38e4e2ef99fa79d
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: cde0464985f756132c60453c4e79ffefd4a1dd2c
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58663946"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65788592"
 ---
 # <a name="list-of-service-fabric-events"></a>Service Fabric イベントの一覧 
 
@@ -40,7 +40,7 @@ Service Fabric は、クラスター イベントのプライマリ セットを
 
 クラスターのアップグレードについて詳しくは、[こちら](service-fabric-cluster-upgrade-windows-server.md)をご覧ください。
 
-| EventId | 名前 | Category | 説明 |ソース (タスク) | Level | 
+| EventId | Name | Category | 説明 |ソース (タスク) | Level | 
 | --- | --- | --- | --- | --- | --- | 
 | 29627 | ClusterUpgradeStarted | アップグレード | クラスターのアップグレードが開始されました | CM | 情報 |
 | 29628 | ClusterUpgradeCompleted | アップグレード | クラスターのアップグレードが完了しました | CM | 情報 | 
@@ -52,7 +52,7 @@ Service Fabric は、クラスター イベントのプライマリ セットを
 
 **ノード ライフサイクル イベント** 
 
-| EventId | 名前 | Category | 説明 |ソース (タスク) | Level |
+| EventId | Name | Category | 説明 |ソース (タスク) | Level |
 | --- | --- | ---| --- | --- | --- | 
 | 18602 | NodeDeactivateCompleted | StateTransition | ノードの非アクティブ化が完了しました | FM | 情報 | 
 | 18603 | NodeUp | StateTransition | クラスターでノードが起動したことが検出されました | FM | 情報 | 
@@ -69,7 +69,7 @@ Service Fabric は、クラスター イベントのプライマリ セットを
 
 **アプリケーション ライフサイクル イベント**
 
-| EventId | 名前 | Category | 説明 |ソース (タスク) | Level | 
+| EventId | Name | Category | 説明 |ソース (タスク) | Level | 
 | --- | --- | --- | --- | --- | --- | 
 | 29620 | ApplicationCreated | LifeCycle | 新しいアプリケーションが作成されました | CM | 情報 | 
 | 29625 | ApplicationDeleted | LifeCycle | 既存のアプリケーションが削除されました | CM | 情報 | 
@@ -79,7 +79,7 @@ Service Fabric は、クラスター イベントのプライマリ セットを
 
 アプリケーションのアップグレードについて詳しくは、[こちら](service-fabric-application-upgrade.md)をご覧ください。
 
-| EventId | 名前 | Category | 説明 |ソース (タスク) | Level | 
+| EventId | Name | Category | 説明 |ソース (タスク) | Level | 
 | --- | --- | ---| --- | --- | --- | 
 | 29621 | ApplicationUpgradeStarted | アップグレード | アプリケーションのアップグレードが開始されました | CM | 情報 | 
 | 29622 | ApplicationUpgradeCompleted | アップグレード | アプリケーションのアップグレードが完了しました | CM | 情報 | 
@@ -91,7 +91,7 @@ Service Fabric は、クラスター イベントのプライマリ セットを
 
 **サービス ライフサイクル イベント**
 
-| EventId | 名前 | Category | 説明 |ソース (タスク) | Level | 
+| EventId | Name | Category | 説明 |ソース (タスク) | Level | 
 | --- | --- | ---| --- | --- | --- |
 | 18657 | ServiceCreated | LifeCycle | 新しいサービスが作成されました | FM | 情報 | 
 | 18658 | ServiceDeleted | LifeCycle | 既存のサービスが削除されました | FM | 情報 | 
@@ -100,15 +100,49 @@ Service Fabric は、クラスター イベントのプライマリ セットを
 
 **パーティション移動イベント**
 
-| EventId | 名前 | Category | 説明 |ソース (タスク) | Level | 
+| EventId | Name | Category | 説明 |ソース (タスク) | Level | 
 | --- | --- | ---| --- | --- | --- |
 | 18940 | PartitionReconfigured | LifeCycle | パーティションの再構成が完了しました | RA | 情報 | 
+
+## <a name="replica-events"></a>レプリカ イベント
+
+**レプリカのライフサイクル イベント**
+
+| EventId | Name | Category | 説明 |ソース (タスク) | Level |
+| --- | --- | ---| --- | --- | --- |
+| 61701 | ReliableDictionaryOpened | LifeCycle | リライアブル ディクショナリが開きました | DistributedDictionary | 情報 |
+| 61702 | ReliableDictionaryClosed | LifeCycle | リライアブル ディクショナリが終了しました | DistributedDictionary | 情報 |
+| 61703 | ReliableDictionaryCheckpointRecovered | LifeCycle | リライアブル ディクショナリがそのチェックポイントを回復しました | DistributedDictionary | 情報 |
+| 61704 | ReliableDictionaryCheckpointFilesSent | LifeCycle | レプリカがリライアブル ディクショナリのチェックポイント ファイルを送信しました | DistributedDictionary | 情報 |
+| 61705 | ReliableDictionaryCheckpointFilesReceived | LifeCycle | レプリカがリライアブル ディクショナリのチェックポイント ファイルを受信しました | DistributedDictionary | 情報 |
+| 61963 | ReliableQueueOpened | LifeCycle | リライアブル キューが開きました | DistributedQueue | 情報 |
+| 61964 | ReliableQueueClosed | LifeCycle | リライアブル キューが終了しました | DistributedQueue | 情報 |
+| 61965 | ReliableQueueCheckpointRecovered | LifeCycle | リライアブル キューがそのチェックポイントを回復しました | DistributedQueue | 情報 |
+| 61966 | ReliableQueueCheckpointFilesSent | LifeCycle | レプリカがリライアブル キューのチェックポイント ファイルを送信しました | DistributedQueue | 情報 |
+| 63647 | ReliableQueueCheckpointFilesReceived | LifeCycle | レプリカがリライアブル キューのチェックポイント ファイルを受信しました | DistributedQueue | 情報 |
+| 63648 | ReliableConcurrentQueueOpened | LifeCycle | 同時実行のリライアブル キューが開きました | ReliableConcurrentQueue | 情報 |
+| 63649 | ReliableConcurrentQueueClosed | LifeCycle | 同時実行のリライアブル キューが終了しました | ReliableConcurrentQueue | 情報 |
+| 63650 | ReliableConcurrentQueueCheckpointRecovered | LifeCycle | 同時実行のリライアブル キューがそのチェックポイントを回復しました | ReliableConcurrentQueue | 情報 |
+| 61687 | TStoreError | 失敗 | リライアブル コレクションで予期しないエラーが発生しました | TStore | Error |
+| 63831 | PrimaryFullCopyInitiated | LifeCycle | プライマリ レプリカが完全なコピーを開始しました | TReplicator | 情報 |
+| 63832 | PrimaryPartialCopyInitiated | LifeCycle | プライマリ レプリカが部分的コピーを開始しました | TReplicator | 情報 |
+| 16831 | BuildIdleReplicaStarted | LifeCycle | プライマリ レプリカがアイドル状態のレプリカのビルドを開始しました | レプリケーション | 情報 |
+| 16832 | BuildIdleReplicaCompleted | LifeCycle | プライマリ レプリカがアイドル状態のレプリカのビルドを完了しました | レプリケーション | 情報 |
+| 16833 | BuildIdleReplicaFailed | LifeCycle | プライマリ レプリカがアイドル状態のレプリカのビルドに失敗しました | レプリケーション | 警告 |
+| 16834 | PrimaryReplicationQueueFull | Health | プライマリ レプリカのレプリケーション キューがいっぱいです | レプリケーション | 警告 |
+| 16835 | PrimaryReplicationQueueWarning | Health | プライマリ レプリカのレプリケーション キューがほぼいっぱいです | レプリケーション | 警告 |
+| 16836 | PrimaryReplicationQueueWarningMitigated | Health | プライマリ レプリカのレプリケーション キューは問題ありません | レプリケーション | 情報 |
+| 16837 | SecondaryReplicationQueueFull | Health | セカンダリ レプリカのレプリケーション キューがいっぱいです | レプリケーション | 警告 |
+| 16838 | SecondaryReplicationQueueWarning | Health | セカンダリ レプリカのレプリケーション キューがほぼいっぱいです | レプリケーション | 警告 |
+| 16839 | SecondaryReplicationQueueWarningMitigated | Health | セカンダリ レプリカのレプリケーション キューは問題ありません | レプリケーション | 情報 |
+| 16840 | PrimaryFaultedSlowSecondary | Health | プライマリ レプリカが、低速のセカンダリ レプリカでエラーが発生しました | レプリケーション | 警告 |
+| 16841 | ReplicatorFaulted | Health | レプリカでエラーが発生しました | レプリケーション | 警告 |
 
 ## <a name="container-events"></a>コンテナー イベント
 
 **コンテナー ライフサイクル イベント** 
 
-| EventId | 名前 | 説明 |ソース (タスク) | Level | バージョン |
+| EventId | Name | 説明 |ソース (タスク) | Level | バージョン |
 | --- | --- | ---| --- | --- | --- |
 | 23074 | ContainerActivated | コンテナーが起動しました | Hosting | 情報 | 1 |
 | 23075 | ContainerDeactivated | コンテナーが停止しました | Hosting | 情報 | 1 |
@@ -124,21 +158,21 @@ Service Fabric は、クラスター イベントのプライマリ セットを
 
 **クラスター正常性レポート イベント**
 
-| EventId | 名前 | 説明 |ソース (タスク) | Level | バージョン |
+| EventId | Name | 説明 |ソース (タスク) | Level | バージョン |
 | --- | --- | --- | --- | --- | --- |
 | 54428 | ClusterNewHealthReport | クラスターの新しい正常性レポートが使用可能です | HM | 情報 | 1 |
 | 54437 | ClusterHealthReportExpired | クラスターの既存の正常性レポートの有効期限が切れました | HM | 情報 | 1 |
 
 **ノード正常性レポート イベント**
 
-| EventId | 名前 | 説明 |ソース (タスク) | Level | バージョン |
+| EventId | Name | 説明 |ソース (タスク) | Level | バージョン |
 | --- | --- | ---| --- | --- | --- |
 | 54423 | NodeNewHealthReport | ノードの新しい正常性レポートが使用可能です | HM | 情報 | 1 |
 | 54432 | NodeHealthReportExpired | ノードの既存の正常性レポートの有効期限が切れました | HM | 情報 | 1 |
 
 **アプリケーション正常性レポート イベント**
 
-| EventId | 名前 | 説明 |ソース (タスク) | Level | バージョン |
+| EventId | Name | 説明 |ソース (タスク) | Level | バージョン |
 | --- | --- | ---| --- | --- | --- |
 | 54425 | ApplicationNewHealthReport | アプリケーションの新しい正常性レポートが作成されました。 これは展開解除されたアプリケーションのレポートです。 | HM | 情報 | 1 |
 | 54426 | DeployedApplicationNewHealthReport | 展開済みアプリケーションの新しい正常性レポートが作成されました | HM | 情報 | 1 |
@@ -149,21 +183,21 @@ Service Fabric は、クラスター イベントのプライマリ セットを
 
 **サービス正常性レポート イベント**
 
-| EventId | 名前 | 説明 |ソース (タスク) | Level | バージョン |
+| EventId | Name | 説明 |ソース (タスク) | Level | バージョン |
 | --- | --- | ---| --- | --- | --- |
 | 54424 | ServiceNewHealthReport | サービスの新しい正常性レポートが作成されました | HM | 情報 | 1 |
 | 54433 | ServiceHealthReportExpired | サービスの既存の正常性レポートの有効期限が切れました | HM | 情報 | 1 |
 
 **パーティション正常性レポート イベント**
 
-| EventId | 名前 | 説明 |ソース (タスク) | Level | バージョン |
+| EventId | Name | 説明 |ソース (タスク) | Level | バージョン |
 | --- | --- | ---| --- | --- | --- |
 | 54422 | PartitionNewHealthReport | パーティションの新しい正常性レポートが作成されました | HM | 情報 | 1 |
 | 54431 | PartitionHealthReportExpired | パーティションの既存の正常性レポートの有効期限が切れました | HM | 情報 | 1 |
 
 **レプリカ正常性レポート イベント**
 
-| EventId | 名前 | 説明 |ソース (タスク) | Level | バージョン |
+| EventId | Name | 説明 |ソース (タスク) | Level | バージョン |
 | --- | --- | ---| --- | --- | --- |
 | 54429 | StatefulReplicaNewHealthReport | ステートフル レプリカの正常性レポートが作成されました | HM | 情報 | 1 |
 | 54430 | StatelessInstanceNewHealthReport | ステートレス インスタンスの新しい正常性レポートが作成されました | HM | 情報 | 1 |
@@ -174,28 +208,28 @@ Service Fabric は、クラスター イベントのプライマリ セットを
 
 **カオス セッション イベント**
 
-| EventId | 名前 | 説明 |ソース (タスク) | Level | バージョン |
+| EventId | Name | 説明 |ソース (タスク) | Level | バージョン |
 | --- | --- | ---| --- | --- | --- |
 | 50021 | ChaosStarted | カオス テスト セッションが開始されました | Testability | 情報 | 1 |
 | 50023 | ChaosStopped | カオス テスト セッションが中止されました | Testability | 情報 | 1 |
 
 **Chaos ノード イベント**
 
-| EventId | 名前 | 説明 |ソース (タスク) | Level | バージョン |
+| EventId | Name | 説明 |ソース (タスク) | Level | バージョン |
 | --- | --- | ---| --- | --- | --- |
 | 50033 | ChaosNodeRestartScheduled | カオス テスト セッションの一環として、ノードの再起動がスケジュールされました | Testability | 情報 | 1 |
 | 50087 | ChaosNodeRestartCompleted | カオス テスト セッションの一環として、ノードの再起動が完了しました | Testability | 情報 | 1 |
 
 **Chaos アプリケーション イベント**
 
-| EventId | 名前 | 説明 |ソース (タスク) | Level | バージョン |
+| EventId | Name | 説明 |ソース (タスク) | Level | バージョン |
 | --- | --- | ---| --- | --- | --- |
 | 50053 | ChaosCodePackageRestartScheduled | カオス テスト セッション中に、コード パッケージの再起動がスケジュールされました | Testability | 情報 | 1 |
 | 50101 | ChaosCodePackageRestartCompleted | カオス テスト セッション中に、コード パッケージの再起動が完了しました | Testability | 情報 | 1 |
 
 **Chaos パーティション イベント**
 
-| EventId | 名前 | 説明 |ソース (タスク) | Level | バージョン |
+| EventId | Name | 説明 |ソース (タスク) | Level | バージョン |
 | --- | --- | ---| --- | --- | --- |
 | 50069 | ChaosPartitionPrimaryMoveScheduled | カオス テスト セッションの一環として、プライマリ パーティションの移動がスケジュールされました | Testability | 情報 | 1 |
 | 50077 | ChaosPartitionSecondaryMoveScheduled | カオス テスト セッションの一環として、セカンダリ パーティションの移動がスケジュールされました | Testability | 情報 | 1 |
@@ -203,7 +237,7 @@ Service Fabric は、クラスター イベントのプライマリ セットを
 
 **Chaos レプリカ イベント**
 
-| EventId | 名前 | 説明 |ソース (タスク) | Level | バージョン |
+| EventId | Name | 説明 |ソース (タスク) | Level | バージョン |
 | --- | --- | ---| --- | --- | --- |
 | 50047 | ChaosReplicaRestartScheduled | カオス テスト セッションの一環として、レプリカの再起動がスケジュールされました | Testability | 情報 | 1 |
 | 50051 | ChaosReplicaRemovalScheduled | カオス テスト セッションの一環として、レプリカの削除がスケジュールされました | Testability | 情報 | 1 |
@@ -213,7 +247,7 @@ Service Fabric は、クラスター イベントのプライマリ セットを
 
 **相関イベント**
 
-| EventId | 名前 | 説明 |ソース (タスク) | Level | バージョン |
+| EventId | Name | 説明 |ソース (タスク) | Level | バージョン |
 | --- | --- | ---| --- | --- | --- |
 | 65011 | CorrelationOperational | 相関関係が検出されました | Testability | 情報 | 1 |
 
@@ -221,7 +255,7 @@ Service Fabric は、クラスター イベントのプライマリ セットを
 
 バージョン 6.2 より前の Service Fabric で提供されるイベントの包括的な一覧を次に示します。
 
-| EventId | 名前 | ソース (タスク) | Level |
+| EventId | Name | ソース (タスク) | Level |
 | --- | --- | --- | --- |
 | 25620 | NodeOpening | FabricNode | 情報 |
 | 25621 | NodeOpenedSuccess | FabricNode | 情報 |

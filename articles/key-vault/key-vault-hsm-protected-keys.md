@@ -2,29 +2,25 @@
 title: Azure Key Vault の HSM保護キーを生成し、転送する方法 - Azure Key Vault | Microsoft Docs
 description: この記事は Azure Key Vault と共に使用する独自の HSM 保護キーを計画、生成、転送する際に役立ちます。 これは、BYOK (Bring Your Own Key) とも呼ばれます。
 services: key-vault
-documentationcenter: ''
 author: barclayn
 manager: barbkess
 tags: azure-resource-manager
-ms.assetid: 51abafa1-812b-460f-a129-d714fdc391da
 ms.service: key-vault
-ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: barclayn
-ms.openlocfilehash: 70a33b0ec55705c6fb00671cc801415cd7459558
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 1ae94718aa41c58f4d5e397942492ad8ed643ae3
+ms.sourcegitcommit: 9e8dfa1169a55c3c8af93a6c5f4e0dace4de48b2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59522730"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65556199"
 ---
 # <a name="how-to-generate-and-transfer-hsm-protected-keys-for-azure-key-vault"></a>Azure Key Vault の HSM 保護キーを生成し、転送する方法
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Azure Key Vault の使用時にさらに安心感を高める場合、ハードウェア セキュリティ モジュール (HSM) でキーをインポートしたり、生成したりできます。キーは HSM の境界内から出ることはありません。 このシナリオは、多くの場合、*Bring Your Own Key* または BYOK と呼ばれています。 HSM は、FIPS 140-2 レベル 2 で検証済みです。 Azure Key Vault は HSM の Thales nShield ファミリを使用してキーを保護します。
+Azure Key Vault の使用時にさらに安心感を高める場合、ハードウェア セキュリティ モジュール (HSM) でキーをインポートしたり、生成したりできます。キーは HSM の境界内から出ることはありません。 このシナリオは、多くの場合、*Bring Your Own Key* または BYOK と呼ばれています。 HSM は、FIPS 140-2 レベル 2 で検証済みです。 Azure Key Vault は HSM の nCipher nShield ファミリを使用してキーを保護します。
 
 このトピックの情報は Azure Key Vault と共に使用する独自の HSM 保護キーを計画、生成、転送する際に役立ちます。
 
@@ -38,16 +34,16 @@ HSM 保護キーを生成し、インターネットで転送する方法:
 
 * 攻撃を減らすオフライン ワークステーションからキーを生成します。
 * キーは Key Exchange Key (KEK) で暗号化されます。Azure Key Vault HSM に転送されるまで暗号化が維持されます。 暗号化されたキーだけが元のワークステーションを離れます。
-* ツールセットにより、キーを Azure Key Vault セキュリティ ワールドにバインディングするテナント キーのプロパティが設定されます。 そのため、Azure Key Vault HSM がキーを受け取り、復号化すると、これらの HSM のみでそれを使用できます。 キーはエクスポートできません。 このバインディングは Thales HSM により適用されます。
-* キーの暗号化に使用される Key Exchange Key (KEK) は Azure Key Vault HSM 内で生成され、エクスポートできません。 HSM により、HSM の外部では平文の KEK がありません。 また、ツールセットには、KEK はエクスポート不可であり、Thales で作成された本物の HSM 内で生成されたことを示す Thales からの証明が含まれます。
-* ツールセットには、Azure Key Vault セキュリティ ワールドも Thales で作成された本物の HSM 内で生成されたことを示す Thales からの証明が含まれます。 これにより、Microsoft が本物のハードウェアを使用していることが証明されます。
+* ツールセットにより、キーを Azure Key Vault セキュリティ ワールドにバインディングするテナント キーのプロパティが設定されます。 そのため、Azure Key Vault HSM がキーを受け取り、復号化すると、これらの HSM のみでそれを使用できます。 キーはエクスポートできません。 このバインディングは nCipher HSM により強制されます。
+* キーの暗号化に使用される Key Exchange Key (KEK) は Azure Key Vault HSM 内で生成され、エクスポートできません。 HSM により、HSM の外部では平文の KEK がありません。 また、ツールセットには、KEK はエクスポート不可であり、nCipher で作成された本物の HSM 内で生成されたことを示す nCipher からの構成証明が含まれます。
+* ツールセットには、Azure Key Vault セキュリティ ワールドも nCipher で作成された本物の HSM 内で生成されたことを示す nCipher からの証明が含まれます。 これにより、Microsoft が本物のハードウェアを使用していることが証明されます。
 * Microsoft では、リージョンごとに個別の KEK と個別のセキュリティ ワールドを使用します。 この分離により、キーを暗号化したリージョンのデータ センターでのみ、そのキーを使用できるようにします。 たとえば、欧州のお客様からのキーは北米やアジアのデータ センターでは使用できません。
 
-## <a name="more-information-about-thales-hsms-and-microsoft-services"></a>Thales HSM と Microsoft のサービスの詳細
+## <a name="more-information-about-ncipher-hsms-and-microsoft-services"></a>nCipher HSM と Microsoft のサービスの詳細
 
-Thales e-Security は、金融サービス、ハイテク、製造、政府、テクノロジ セクターにデータ暗号化とサイバー セキュリティのソリューションを提供することで世界をリードする企業です。 企業と政府の情報を 40 年間保護してきた実績を持つ Thales ソリューションは、エネルギー/航空宇宙産業の大企業 5 社のうち 4 社で採用されています。 このソリューションは、22 の NATO 加盟国でも利用されており世界中の支払処理の 80% 以上を保護しています。
+nCipher Security は、金融サービス、ハイテク、製造、政府、およびテクノロジの各セクターに、データ暗号化とサイバー セキュリティのソリューションを提供することで世界をリードする企業です。 企業と政府の情報を 40 年間保護してきた実績を持つ nCipher Security の暗号化ソリューションは、エネルギー/航空宇宙産業のトップ企業 5 社のうち 4 社で採用されています。 このソリューションは、22 の NATO 加盟国/地域でも利用されており、世界中の支払処理の 80% 以上を保護しています。
 
-Microsoft は Thales と連携し、HSM の最新技術を強化しています。 この改良により、キーの管理を放棄することなく、ホステッド サービスの一般的な長所を得ることができます。 具体的には、この改良により、Microsoft があなたの代わりに HSM を管理できます。 クラウド サービスとしては、Azure Key Vault は短期間でスケールアップされ、組織の利用率急増に対応します。 同時に、キーは Microsoft の HSM 内で保護されます。あなたがキーを生成し、それを Microsoft の HSM に転送するため、キーが存続する間、あなたがそれを管理します。
+Microsoft は nCipher Security と連携し、HSM の最新技術を強化しています。 この改良により、キーの管理を放棄することなく、ホステッド サービスの一般的な長所を得ることができます。 具体的には、この改良により、Microsoft があなたの代わりに HSM を管理できます。 クラウド サービスとしては、Azure Key Vault は短期間でスケールアップされ、組織の利用率急増に対応します。 同時に、キーは Microsoft の HSM 内で保護されます。あなたがキーを生成し、それを Microsoft の HSM に転送するため、キーが存続する間、あなたがそれを管理します。
 
 ## <a name="implementing-bring-your-own-key-byok-for-azure-key-vault"></a>Azure Key Vault の Bring Your Own Key (BYOK) の実装
 
@@ -61,8 +57,8 @@ Azure Key Vault の Bring Your Own Key (BYOK) の前提条件の一覧につい�
 | --- | --- |
 | Azure のサブスクリプション |Azure Key Vault を作成するには、Azure サブスクリプションが必要です: [無料試用版にサインアップ](https://azure.microsoft.com/pricing/free-trial/) |
 | HSM で保護されたキーをサポートする Azure Key Vault Premium サービス レベル |Azure Key Vault のサービス層と機能に関する詳細については、 [Azure Key Vault 価格](https://azure.microsoft.com/pricing/details/key-vault/) Web サイトを参照してください。 |
-| Thales HSM、スマート カード、サポート ソフトウェア |Thales ハードウェア セキュリティ モジュールにアクセスできることと Thales HSM の基本操作知識が必要です。 互換性のあるモデルの一覧については、あるいは所有していない場合に HSM を購入する方法については、「 [Thales ハードウェア セキュリティ モジュール](https://www.thales-esecurity.com/msrms/buy) 」を参照してください。 |
-| 次のハードウェアとソフトウェア:<ol><li>Windows 7 以降のオペレーティング システムと、バージョン 11.50 以降の Thales nShield ソフトウェアを搭載したオフラインの x64 ワークステーション。<br/><br/>ワークステーションで Windows 7 を実行する場合は、まず [Microsoft .NET Framework 4.5 をインストール](https://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe)する必要があります。</li><li>インターネットに接続している、Windows 7 以降および [Azure PowerShell](/powershell/azure/overview?view=azps-1.2.0) **1.1.0 以降**の Windows オペレーティング システムがインストールされたワークステーション。</li><li>USB ドライブまたは 16 MB 以上の空き領域を持つその他のポータブル ストレージ デバイス。</li></ol> |セキュリティ上の理由から、最初のワークステーションをネットワークに接続しないことをお勧めします。 ただし、プログラムを使用して強制的に接続が切断されることはありません。<br/><br/>次の手順では、このワークステーションを "未接続ワークステーション" と呼んでいます。</p></blockquote><br/>さらに、テナント キーが実稼動ネットワークにある場合は、別の 2 台目のワークステーションを使用してツールセットをダウンロードし、テナント キーをアップロードすることを勧めします。 ただし、テスト目的で1 台目のワークステーションとして同じワークステーションを使用できます。<br/><br/>次の手順では、この 2 台目のワークステーションを "インターネット接続ワークステーション" と呼んでいます。</p></blockquote><br/> |
+| nCipher nShield HSM、スマート カード、サポート ソフトウェア |nCipher ハードウェア セキュリティ モジュールにアクセスできることと nCipher nShield HSM の基本操作知識が必要です。 互換性のあるモデルの一覧については、あるいは所有していない場合に HSM を購入する方法については、[nCipher nShield ハードウェア セキュリティ モジュール](https://www.ncipher.com/products/key-management/cloud-microsoft-azure/how-to-buy)に関するページを参照してください。 |
+| 次のハードウェアとソフトウェア:<ol><li>Windows 7 以降のオペレーティング システムと、バージョン 11.50 以降の nCipher nShield ソフトウェアを搭載したオフラインの x64 ワークステーション。<br/><br/>ワークステーションで Windows 7 を実行する場合は、まず [Microsoft .NET Framework 4.5 をインストール](https://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe)する必要があります。</li><li>インターネットに接続している、Windows 7 以降および [Azure PowerShell](/powershell/azure/overview?view=azps-1.2.0) **1.1.0 以降**の Windows オペレーティング システムがインストールされたワークステーション。</li><li>USB ドライブまたは 16 MB 以上の空き領域を持つその他のポータブル ストレージ デバイス。</li></ol> |セキュリティ上の理由から、最初のワークステーションをネットワークに接続しないことをお勧めします。 ただし、プログラムを使用して強制的に接続が切断されることはありません。<br/><br/>次の手順では、このワークステーションを "未接続ワークステーション" と呼んでいます。</p></blockquote><br/>さらに、テナント キーが実稼動ネットワークにある場合は、別の 2 台目のワークステーションを使用してツールセットをダウンロードし、テナント キーをアップロードすることを勧めします。 ただし、テスト目的で1 台目のワークステーションとして同じワークステーションを使用できます。<br/><br/>次の手順では、この 2 台目のワークステーションを "インターネット接続ワークステーション" と呼んでいます。</p></blockquote><br/> |
 
 ## <a name="generate-and-transfer-your-key-to-azure-key-vault-hsm"></a>キーを生成し、Azure Key Vault HSM に転送する
 
@@ -166,7 +162,7 @@ KeyVault-BYOK-Tools-Australia.zip
 CD0FB7365053DEF8C35116D7C92D203C64A3D3EE2452A025223EEB166901C40A
 
 - - -
-[**Azure Government:**](https://azure.microsoft.com/features/gov/)
+[**Azure Government:** ](https://azure.microsoft.com/features/gov/)
 
 KeyVault-BYOK-Tools-USGovCloud.zip
 
@@ -224,8 +220,8 @@ KeyVault-BYOK-Tools-UnitedKingdom.zip
 
 ツールセットの内容は次のとおりです。
 
-* Key Exchange Key (KEK) パッケージ。この名前は「**BYOK-KEK-pkg-**」から始まります。
-* セキュリティ ワールド パッケージ。この名前は「**BYOK-SecurityWorld-pkg-**」から始まります。
+* Key Exchange Key (KEK) パッケージ。この名前は「**BYOK-KEK-pkg-** 」から始まります。
+* セキュリティ ワールド パッケージ。この名前は「**BYOK-SecurityWorld-pkg-** 」から始まります。
 * **verifykeypackage.py** という名前の Python スクリプト。
 * 「 **KeyTransferRemote.exe** 」という名前のコマンドライン実行可能ファイルと関連 DLL。
 * 「**vcredist_x64.exe**」という名前の Visual C++ 再配布可能パッケージ。
@@ -236,17 +232,17 @@ USB ドライブまたはその他のポータブル ストレージにパッケ
 
 この 2 つ目の手順では、ネットワーク (インターネットまたは内部ネットワーク) に接続されていないワークステーションで次の手順を実行します。
 
-### <a name="step-21-prepare-the-disconnected-workstation-with-thales-hsm"></a>手順 2.1:Thales HSM で未接続ワークステーションを準備する
+### <a name="step-21-prepare-the-disconnected-workstation-with-ncipher-nshield-hsm"></a>手順 2.1:nCipher nShield HSM で未接続ワークステーションを準備する
 
-Windows コンピューターに nCipher (Thales) サポート コンピューターをインストールし、そのコンピューターに Thales HSM をアタッチします。
+Windows コンピューターに nCipher サポート ソフトウェアをインストールし、そのコンピューターに nCipher nShield HSM をアタッチします。
 
-Thales ツールがパスにあることを確認します (**%nfast_home%\bin**)。 たとえば、次を入力します。
+nCipher ツールがパスにあることを確認します ( **%nfast_home%\bin**)。 たとえば、次を入力します。
 
   ```cmd
   set PATH=%PATH%;"%nfast_home%\bin"
   ```
 
-詳細については、Thales HSM に付属のユーザー ガイドを参照してください。
+詳細については、nShield HSM に付属のユーザー ガイドを参照してください。
 
 ### <a name="step-22-install-the-byok-toolset-on-the-disconnected-workstation"></a>手順 2.2:未接続ワークステーションに BYOK ツールセットをインストールする
 
@@ -262,11 +258,11 @@ USB ドライブまたはその他のポータブル ストレージから BYOK 
 
 ### <a name="step-31-change-the-hsm-mode-to-i"></a>手順 3.1: HSM モードを "I" に変更する
 
-Thales nShield Edge を使用している場合、モードを変更するには、次の手順を実行します。1. モード ボタンを使用して、必要なモードを強調表示します。 2. 数秒以内に、[クリア] ボタンを数秒押したままにします。 モードが変更されると、新しいモードの LED の点滅が止まり、点灯したままになります。 ステータス LED は、数秒間、不規則に点滅することがあります。その後、デバイスの準備が完了すると定期的に点滅します。 それ以外の場合、デバイスは現在のモードのままになり、適切なモード LED が点灯します。
+nCipher nShield Edge を使用している場合、モードを変更するには、次の手順を実行します。1. モード ボタンを使用して、必要なモードを強調表示します。 2. 数秒以内に、[クリア] ボタンを数秒押したままにします。 モードが変更されると、新しいモードの LED の点滅が止まり、点灯したままになります。 ステータス LED は、数秒間、不規則に点滅することがあります。その後、デバイスの準備が完了すると定期的に点滅します。 それ以外の場合、デバイスは現在のモードのままになり、適切なモード LED が点灯します。
 
 ### <a name="step-32-create-a-security-world"></a>手順 3.2: セキュリティ ワールドを作成する
 
-コマンド プロンプトを起動し、Thales new-world プログラムを実行します。
+コマンド プロンプトを起動し、nCipher new-world プログラムを実行します。
 
    ```cmd
     new-world.exe --initialize --cipher-suite=DLf3072s256mRijndael --module=1 --acs-quorum=2/3
@@ -283,14 +279,14 @@ Thales nShield Edge を使用している場合、モードを変更するには
 
 ### <a name="step-33-change-the-hsm-mode-to-o"></a>手順 3.3: HSM モードを "O" に変更する
 
-Thales nShield Edge を使用している場合、モードを変更するには、次の手順を実行します。1. モード ボタンを使用して、必要なモードを強調表示します。 2. 数秒以内に、[クリア] ボタンを数秒押したままにします。 モードが変更されると、新しいモードの LED の点滅が止まり、点灯したままになります。 ステータス LED は、数秒間、不規則に点滅することがあります。その後、デバイスの準備が完了すると定期的に点滅します。 それ以外の場合、デバイスは現在のモードのままになり、適切なモード LED が点灯します。
+nCipher nShield Edge を使用している場合、モードを変更するには、次の手順を実行します。1. モード ボタンを使用して、必要なモードを強調表示します。 2. 数秒以内に、[クリア] ボタンを数秒押したままにします。 モードが変更されると、新しいモードの LED の点滅が止まり、点灯したままになります。 ステータス LED は、数秒間、不規則に点滅することがあります。その後、デバイスの準備が完了すると定期的に点滅します。 それ以外の場合、デバイスは現在のモードのままになり、適切なモード LED が点灯します。
 
 ### <a name="step-34-validate-the-downloaded-package"></a>手順 3.4: ダウンロードしたパッケージを検証する
 
 この手順は省略可能ですが、次を検証できるので推奨されます。
 
-* ツールセットに含まれる Key Exchange Key が本物の Thales HSM から生成されていること。
-* ツールセットに含まれているセキュリティ ワールドのハッシュが本物の Thales HSM から生成されていること。
+* ツールセットに含まれる Key Exchange Key が本物の nCipher nShield HSM から生成されていること。
+* ツールセットに含まれているセキュリティ ワールドのハッシュが本物の nCipher nShield HSM から生成されていること。
 * Key Exchange Key がエクスポート不可であること。
 
 > [!NOTE]
@@ -350,18 +346,18 @@ Thales nShield Edge を使用している場合、モードを変更するには
          "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-UK-1 -w BYOK-SecurityWorld-pkg-UK-1
 
      > [!TIP]
-     > Thales ソフトウェアの %NFAST_HOME%\python\bin に Python が含まれています。
+     > nCipher nShield ソフトウェアには、%NFAST_HOME%\python\bin に Python が含まれています
      >
      >
 2. 次の表示を確認します。これは検証の成功を示します: **Result: SUCCESS**
 
-このスクリプトは Thales ルート キーまで署名者のチェーンを検証します。 このルート キーのハッシュがスクリプトに埋め込まれており、その値は **59178a47 de508c3f 291277ee 184f46c4 f1d9c639**になります。 [Thales Web サイト](http://www.thalesesec.com/)にアクセスすると、この値を個別に確認できます。
+このスクリプトは nShield ルート キーまで署名者のチェーンを検証します。 このルート キーのハッシュがスクリプトに埋め込まれており、その値は **59178a47 de508c3f 291277ee 184f46c4 f1d9c639**になります。 [nCipher Web サイト](https://www.ncipher.com/products/key-management/cloud-microsoft-azure/validation)にアクセスすると、この値を個別に確認することもできます。
 
 これで新しいキーを作成する準備が整いました。
 
 ### <a name="step-35-create-a-new-key"></a>手順 3.5: 新しいキーを作成する
 
-Thales **generatekey** プログラムを利用してキーを生成します。
+nCipher nShield **generatekey** プログラムを利用してキーを生成します。
 
 次のコマンドを実行してキーを生成します。
 
@@ -371,14 +367,14 @@ Thales **generatekey** プログラムを利用してキーを生成します。
 
 * *protect* パラメーターの値は、コマンドに示したように **module**に設定する必要があります。 module に設定すると、モジュールで保護されたキーが作成されます。 BYOK ツールセットは、OCS で保護されたキーをサポートしていません。
 * **ident** と **plainname** の *contosokey* の値を文字列値に置換します。 管理費を最小限に抑え、エラーを犯す可能性を減らすために、両方に同じ値を使用することをお勧めします。 **Ident** 値には数字、ダッシュ、小文字のみを使用できます。
-* pubexp はこの例では空白のまま (既定) ですが、特定の値を指定できます。 詳細については、Thales の文書を参照してください。
+* pubexp はこの例では空白のまま (既定) ですが、特定の値を指定できます。 詳細については、[nCipher のドキュメント](https://www.ncipher.com/resources/solution-briefs/protect-sensitive-data-rest-and-use-across-premises-and-azure-based)を参照してください。
 
-このコマンドにより %NFAST_KMDATA%\local フォルダーにトークン化されたキーのファイルが作成されます。この名前は "**key_simple_**" で始まり、コマンドで指定した **ident** が続きます。 (例: **key_simple_contosokey**)。 このファイルには暗号化されたキーが含まれます。
+このコマンドにより %NFAST_KMDATA%\local フォルダーにトークン化されたキーのファイルが作成されます。この名前は "**key_simple_** " で始まり、コマンドで指定した **ident** が続きます。 (例: **key_simple_contosokey**)。 このファイルには暗号化されたキーが含まれます。
 
 安全な場所でこのトークン化されたキーのファイルをバックアップします。
 
 > [!IMPORTANT]
-> 後で Azure Key Vault にキーを転送すると、Microsoft はこのキーをあなたの元にエクスポートできません。そのため、キーとセキュリティ ワールドを安全にバックアップすることが極めて重要です。 キーのバックアップ方法と最良事例については Thales にお問い合わせください。
+> 後で Azure Key Vault にキーを転送すると、Microsoft はこのキーをあなたの元にエクスポートできません。そのため、キーとセキュリティ ワールドを安全にバックアップすることが極めて重要です。 キーのバックアップ方法のガイダンスとベスト プラクティスについては、[nCipher](https://www.ncipher.com/about-us/contact-us) にお問い合わせください。
 >
 
 
@@ -447,7 +443,7 @@ Thales **generatekey** プログラムを利用してキーを生成します。
 
 コマンドが完了すると、**Result: SUCCESS** と表示され、アクセス許可が制限されたキーのコピーが "key_xferacId_\<contosokey>" という名前のファイルに表示されます。
 
-Thales ユーティリティを使用すると、次のコマンドで ACL を確認できます。
+nCipher nShield ユーティリティを使用すると、次のコマンドで ACL を確認できます。
 
 * aclprint.py:
 

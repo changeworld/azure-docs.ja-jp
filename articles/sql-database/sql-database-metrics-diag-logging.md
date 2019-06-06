@@ -12,12 +12,12 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: fe53dd4419c06d376a1cc46db0d2621ccbc06f23
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 089f5335a65151c9c576346995f0bee34b5d10b4
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59548642"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65791960"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL Database のメトリックと診断のロギング
 
@@ -64,15 +64,15 @@ SQL データベースでメトリックおよび診断ログを有効にしま�
 
 | データベースの監視テレメトリ | 単一データベースとプールされたデータベースのサポート | インスタンス データベースのサポート |
 | :------------------- | ----- | ----- |
-| [すべてのメトリック](#all-metrics):DTU/CPU の割合、DTU/CPU の上限、物理データ読み取りの割合、ログ書き込みの割合、ファイアウォール接続による成功/失敗/ブロック、セッションの割合、ワーカーの割合、ストレージ、ストレージの割合、XTP ストレージの割合が含まれます。 | はい | いいえ  |
+| [基本メトリック](#basic-metrics):DTU/CPU の割合、DTU/CPU の上限、物理データ読み取りの割合、ログ書き込みの割合、ファイアウォール接続による成功/失敗/ブロック、セッションの割合、ワーカーの割合、ストレージ、ストレージの割合、XTP ストレージの割合が含まれます。 | はい | いいえ |
 | [QueryStoreRuntimeStatistics](#query-store-runtime-statistics):CPU 使用率、クエリ実行時間統計など、クエリのランタイム統計に関する情報が含まれます。 | はい | はい |
 | [QueryStoreWaitStatistics](#query-store-wait-statistics):CPU、LOG、LOCKING など、クエリ待機統計 (クエリが待機していたもの) に関する情報が含まれます。 | はい | はい |
 | [エラー](#errors-dataset):データベースには SQL エラーに関する情報が含まれます。 | はい | はい |
-| [DatabaseWaitStatistics](#database-wait-statistics-dataset):データベースが各種の待機に費やした時間に関する情報が含まれます。 | はい | いいえ  |
-| [Timeouts](#time-outs-dataset):データベースにはタイムアウトに関する情報が含まれます。 | はい | いいえ  |
-| [Blocks](#blockings-dataset):データベースにはブロック イベントに関する情報が含まれます。 | はい | いいえ  |
-| [Deadlocks](#deadlocks-dataset): データベースにはデッドロック イベントに関する情報が含まれます。 | はい | いいえ  |
-| [AutomaticTuning](#automatic-tuning-dataset): データベースの自動チューニングの推奨事項に関する情報が含まれます。 | はい | いいえ  |
+| [DatabaseWaitStatistics](#database-wait-statistics-dataset):データベースが各種の待機に費やした時間に関する情報が含まれます。 | はい | いいえ |
+| [Timeouts](#time-outs-dataset):データベースにはタイムアウトに関する情報が含まれます。 | はい | いいえ |
+| [Blocks](#blockings-dataset):データベースにはブロック イベントに関する情報が含まれます。 | はい | いいえ |
+| [Deadlocks](#deadlocks-dataset): データベースにはデッドロック イベントに関する情報が含まれます。 | はい | いいえ |
+| [AutomaticTuning](#automatic-tuning-dataset): データベースの自動チューニングの推奨事項に関する情報が含まれます。 | はい | いいえ |
 | [SQLInsights](#intelligent-insights-dataset):データベースのパフォーマンスに対する Intelligent Insights が含まれます。 詳細については、[Intelligent Insights](sql-database-intelligent-insights.md) に関するページを参照してください。 | はい | はい |
 
 > [!IMPORTANT]
@@ -93,7 +93,7 @@ Azure portal で単一データベース、プールされたデータベース�
 
 | Resource | 監視テレメトリ |
 | :------------------- | ------------------- |
-| **エラスティック プール** | [すべてのメトリック](sql-database-metrics-diag-logging.md#all-metrics)には、eDTU/CPU の割合、eDTU/CPU の制限、物理データ読み取りの割合、ログ書き込みの割合、セッションの割合、ワーカーの割合、ストレージ、ストレージの割合、ストレージの制限、および XTP ストレージの割合が含まれています。 |
+| **エラスティック プール** | [基本メトリック](sql-database-metrics-diag-logging.md#basic-metrics)には、eDTU/CPU の割合、eDTU/CPU の制限、物理データ読み取りの割合、ログ書き込みの割合、セッションの割合、ワーカーの割合、ストレージ、ストレージの割合、ストレージの制限、XTP ストレージの割合が含まれています。 |
 
 エラスティック プールおよびエラスティック プール内のデータベースに対する診断テレメトリのストリーミングを構成するには、以下の**両方**を個別に構成する必要があります。
 
@@ -111,9 +111,9 @@ Azure portal で単一データベース、プールされたデータベース�
    ![エラスティック プールに対して診断を有効にする](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-elasticpool-enable.png)
 
 1. 独自の参照の設定名を入力します。
-1. 診断データのストリーミング先のリソースを **[ストレージ アカウントへのアーカイブ]**、**[イベント ハブへのストリーム]**、または **[Log Analytics への送信]** から選択します。
-1. Log Analytics の場合は、**[構成]** を選択し、**[+ 新しいワークスペースの作成]** を選択することによって新しいワークスペースを作成するか、または既存のワークスペースを選択します。
-1. エラスティック プールの診断テレメトリ **[AllMetrics]** のチェックボックスをオンにします。
+1. 診断データのストリーミング先のリソースを **[ストレージ アカウントへのアーカイブ]** 、 **[イベント ハブへのストリーム]** 、または **[Log Analytics への送信]** から選択します。
+1. Log Analytics の場合は、 **[構成]** を選択し、 **[+ 新しいワークスペースの作成]** を選択することによって新しいワークスペースを作成するか、または既存のワークスペースを選択します。
+1. エラスティック プールの診断テレメトリ**基本**メトリック。
    ![エラスティック プールに対して診断を構成する](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-elasticpool-selection.png)
 1. **[保存]** を選択します。
 1. さらに、次のセクションで説明されている手順に従って、監視対象のエラスティック プール内の各データベースに対して診断テレメトリのストリーミングを構成します。
@@ -131,13 +131,13 @@ Azure portal で単一データベース、プールされたデータベース�
 1. **[診断設定]** を選択します。
 1. 以前の設定が存在しない場合は **[診断を有効にする]** を選択します。または、以前の設定を編集するには **[設定の編集]** を選択します。
    - 診断テレメトリをストリーミングするため並列接続を最大 3 つ作成できます。
-   - 複数のリソースへの診断データの並列ストリーミングを構成するには、**[+Add diagnostic setting] (+ 診断設定の追加)** を選択します。
+   - 複数のリソースへの診断データの並列ストリーミングを構成するには、 **[+Add diagnostic setting] (+ 診断設定の追加)** を選択します。
 
    ![単一データベース、プールされたデータベース、またはインスタンス データベースに対して診断を有効にする](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-sql-enable.png)
 1. 独自の参照の設定名を入力します。
-1. 診断データのストリーミング先のリソースを **[ストレージ アカウントへのアーカイブ]**、**[イベント ハブへのストリーム]**、または **[Log Analytics への送信]** から選択します。
-1. 標準的なイベント ベースの監視エクスペリエンスを得るには、データベース診断ログ テレメトリ **[SQLInsights]**、**[AutomaticTuning]**、**[QueryStoreRuntimeStatistics]**、**[QueryStoreWaitStatistics]**、**[Errors]**、**[DatabaseWaitStatistics]**、**[Timeouts]**、**[Blocks]**、および **[Deadlocks]** のチェックボックスをオンにします。
-1. 1 分ベースの高度な監視エクスペリエンスを得るには、**[AllMetrics]** のチェックボックスをオンにします。
+1. 診断データのストリーミング先のリソースを **[ストレージ アカウントへのアーカイブ]** 、 **[イベント ハブへのストリーム]** 、または **[Log Analytics への送信]** から選択します。
+1. 標準的なイベント ベースの監視エクスペリエンスを得るには、データベース診断ログ テレメトリ **[SQLInsights]** 、 **[AutomaticTuning]** 、 **[QueryStoreRuntimeStatistics]** 、 **[QueryStoreWaitStatistics]** 、 **[Errors]** 、 **[DatabaseWaitStatistics]** 、 **[Timeouts]** 、 **[Blocks]** 、および **[Deadlocks]** のチェックボックスをオンにします。
+1. 分ごとの高度な監視エクスペリエンスを得るには、 **[基本]** メトリックのチェックボックスをオンにします。
    ![単一データベース、プールされたデータベースまたはインスタンス データベースに対して診断を構成する](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-sql-selection.png)
 1. **[保存]** を選択します。
 1. 監視するデータベースごとにこれらの手順を繰り返します。
@@ -173,8 +173,8 @@ Azure portal で単一データベース、プールされたデータベース�
    ![マネージド インスタンスに対して診断を有効にする](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-mi-enable.png)
 
 1. 独自の参照の設定名を入力します。
-1. 診断データのストリーミング先のリソースを **[ストレージ アカウントへのアーカイブ]**、**[イベント ハブへのストリーム]**、または **[Log Analytics への送信]** から選択します。
-1. Log Analytics の場合は、**[構成]** を選択し、**[+ 新しいワークスペースの作成]** を選択することによって新しいワークスペースを作成するか、または既存のワークスペースを使用します。
+1. 診断データのストリーミング先のリソースを **[ストレージ アカウントへのアーカイブ]** 、 **[イベント ハブへのストリーム]** 、または **[Log Analytics への送信]** から選択します。
+1. Log Analytics の場合は、 **[構成]** を選択し、 **[+ 新しいワークスペースの作成]** を選択することによって新しいワークスペースを作成するか、または既存のワークスペースを使用します。
 1. インスタンスの診断テレメトリ **[ResourceUsageStats]** のチェックボックスをオンにします。
    ![マネージド インスタンスに対して診断を構成する](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-mi-selection.png)
 1. **[保存]** を選択します。
@@ -193,13 +193,13 @@ Azure portal で単一データベース、プールされたデータベース�
 1. **[診断設定]** を選択します。
 1. 以前の設定が存在しない場合は **[診断を有効にする]** を選択します。または、以前の設定を編集するには **[設定の編集]** を選択します。
    - 診断テレメトリをストリーミングするため並列接続を最大 3 つ作成できます。
-   - 複数のリソースへの診断データの並列ストリーミングを構成するには、**[+Add diagnostic setting] (+ 診断設定の追加)** を選択します。
+   - 複数のリソースへの診断データの並列ストリーミングを構成するには、 **[+Add diagnostic setting] (+ 診断設定の追加)** を選択します。
 
    ![インスタンス データベースに対して診断を有効にする](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-mi-enable.png)
 
 1. 独自の参照の設定名を入力します。
-1. 診断データのストリーミング先のリソースを **[ストレージ アカウントへのアーカイブ]**、**[イベント ハブへのストリーム]**、または **[Log Analytics への送信]** から選択します。
-1. データベース診断テレメトリ **[SQLInsights]**、**[QueryStoreRuntimeStatistics]**、**[QueryStoreWaitStatistics]**、および **[Errors]** のチェックボックスをオンにします。
+1. 診断データのストリーミング先のリソースを **[ストレージ アカウントへのアーカイブ]** 、 **[イベント ハブへのストリーム]** 、または **[Log Analytics への送信]** から選択します。
+1. データベース診断テレメトリ **[SQLInsights]** 、 **[QueryStoreRuntimeStatistics]** 、 **[QueryStoreWaitStatistics]** 、および **[Errors]** のチェックボックスをオンにします。
    ![インスタンス データベースに対して診断を構成する](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-mi-selection.png)
 1. **[保存]** を選択します。
 1. 監視するインスタンス データベースごとにこれらの手順を繰り返します。
@@ -336,11 +336,11 @@ Azure SQL Analytics を使用すると、SQL Database フリートを監視で�
 
    ![ポータルで Azure SQL Analytics を構成する](./media/sql-database-metrics-diag-logging/sql-analytics-configuration-blade.png)
 
-4. **[OK]** を選択して確認し、**[作成]** を選択します。
+4. **[OK]** を選択して確認し、 **[作成]** を選択します。
 
 ### <a name="configure-databases-to-record-metrics-and-diagnostics-logs"></a>メトリックと診断ログを記録するようデータベースを構成する
 
-データベースでメトリックを記録する場所を構成する最も簡単な方法は、Azure portal を使用することです。 前述のように、Microsoft Azure portal で Microsoft Azure SQL Database リソースに移動し、**[診断設定]** を選択します。
+データベースでメトリックを記録する場所を構成する最も簡単な方法は、Azure portal を使用することです。 前述のように、Microsoft Azure portal で Microsoft Azure SQL Database リソースに移動し、 **[診断設定]** を選択します。
 
 エラスティック プールまたはマネージド インスタンスを使用している場合、ワークスペースに診断テレメトリをストリーミングできるようにするには、これらのリソースで診断設定を構成する必要もあります。
 
@@ -385,7 +385,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 insights-{metrics|logs}-{category name}/resourceId=/{resource Id}/y={four-digit numeric year}/m={two-digit numeric month}/d={two-digit numeric day}/h={two-digit 24-hour clock hour}/m=00/PT1H.json
 ```
 
-たとえば、すべてのメトリックの BLOB 名は次のようになります。
+たとえば、基本メトリックの BLOB 名は次のようになります。
 
 ```powershell
 insights-metrics-minute/resourceId=/SUBSCRIPTIONS/s1id1234-5679-0123-4567-890123456789/RESOURCEGROUPS/TESTRESOURCEGROUP/PROVIDERS/MICROSOFT.SQL/ servers/Server1/databases/database1/y=2016/m=08/d=22/h=18/m=00/PT1H.json
@@ -411,23 +411,26 @@ Azure SQL Analytics を使用している場合は、Azure SQL Analytics のナ�
 
 以下では、Azure SQL Database、エラスティック プール、マネージド インスタンスで使用可能な監視テレメトリについて説明します。 SQL Analytics 内の収集された監視テレメトリは、[Azure Monitor ログ クエリ](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries) 言語を使用した独自のカスタム分析とアプリケーション開発に利用できます。
 
-## <a name="all-metrics"></a>すべてのメトリック
+## <a name="basic-metrics"></a>基本メトリック
 
-リソースごとのすべてのメトリックの詳細については、次の表を参照してください。
+リソースごとの基本メトリックの詳細については、次の表を参照してください。
 
-### <a name="all-metrics-for-elastic-pools"></a>エラスティック プールのすべてのメトリック
+> [!NOTE]
+> 基本メトリック オプションは、以前は「すべてのメトリック」という名称でした。 単に名称が変更されただけで、監視対象メトリックには変更がありません。 このように変更された理由は、将来、他のメトリック カテゴリを導入する予定があるためです。
+
+### <a name="basic-metrics-for-elastic-pools"></a>エラスティック プールの基本メトリック
 
 |**リソース**|**メトリック**|
 |---|---|
 |エラスティック プール|eDTU の割合、使用中の eDTU、eDTU の上限、CPU の割合、物理データ読み取りの割合、ログ書き込みの割合、セッションの割合、ワーカーの割合、ストレージ、ストレージの割合、ストレージの上限、XTP ストレージの割合 |
 
-### <a name="all-metrics-for-azure-sql-databases"></a>Azure SQL Database のすべてのメトリック
+### <a name="basic-metrics-for-azure-sql-databases"></a>Azure SQL データベースの基本メトリック
 
 |**リソース**|**メトリック**|
 |---|---|
 |Azure SQL データベース|DTU の割合、使用中の DTU、DTU の上限、CPU の割合、物理データ読み取りの割合、ログ書き込みの割合、ファイアウォール接続による成功/失敗/ブロック、セッションの割合、ワーカーの割合、ストレージ、ストレージの割合、XTP ストレージの割合、デッドロック |
 
-## <a name="all-logs"></a>すべてのログ
+## <a name="basic-logs"></a>基本ログ
 
 すべてのログで利用可能なテレメトリの詳細は、以下の表に記載されています。 特定のデータベースのフレーバー (Azure SQL の単一、プールされたデータベース、またはインスタンス データベース) でどのログがサポートされているかを理解するには、[サポートされている診断ログ](#supported-diagnostic-logging-for-azure-sql-databases-and-instance-databases)に関するセクションを参照してください。
 

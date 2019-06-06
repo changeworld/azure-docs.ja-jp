@@ -8,12 +8,12 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 08/25/2017
 ms.author: elioda
-ms.openlocfilehash: f93abac563d47f6505f42d29e882698ef31174bf
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 20b804f3d15543d0cf415d00dc81a6f55a348260
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59795887"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65597420"
 ---
 # <a name="get-started-with-device-twins-node"></a>デバイス ツインの使用 (Node)
 
@@ -31,7 +31,7 @@ ms.locfileid: "59795887"
 
 このチュートリアルを完了するには、以下が必要です。
 
-* Node.js バージョン 4.0.x 以降。
+* Node.js バージョン 10.0.x 以降。
 
 * アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 (アカウントがない場合は、[無料アカウント](https://azure.microsoft.com/pricing/free-trial/) を数分で作成できます)。
 
@@ -63,7 +63,7 @@ ms.locfileid: "59795887"
 
 3. テキスト エディターを使用して、**addtagsandqueryapp** フォルダーに新しい **AddTagsAndQuery.js** ファイルを作成します。
 
-4. **AddTagsAndQuery.js** ファイルに次のコードを追加し、**{iot hub connection string}** プレースホルダーを、ハブの作成時にコピーした IoT Hub 接続文字列で置き換えます。
+4. **AddTagsAndQuery.js** ファイルに次のコードを追加し、 **{iot hub connection string}** プレースホルダーを、ハブの作成時にコピーした IoT Hub 接続文字列で置き換えます。
 
    ``` javascript
         'use strict';
@@ -158,7 +158,7 @@ ms.locfileid: "59795887"
 
 3. テキスト エディターを使用して、**reportconnectivity** フォルダーに新しい**ReportConnectivity.js** ファイルを作成します。
 
-4. **ReportConnectivity.js** ファイルに次のコードを追加し、**{device connection string}** プレースホルダーを、**myDeviceId** のデバイス IDの作成時にコピーしたデバイス接続文字列で置き換えます。
+4. **ReportConnectivity.js** ファイルに次のコードを追加し、 **{device connection string}** プレースホルダーを、**myDeviceId** のデバイス IDの作成時にコピーしたデバイス接続文字列で置き換えます。
 
     ```
         'use strict';

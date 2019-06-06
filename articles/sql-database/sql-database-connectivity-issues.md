@@ -13,12 +13,12 @@ ms.author: ninarn
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 11/14/2018
-ms.openlocfilehash: 7d07b0a098aad472b1b4f0b9810e5b63ac3c48a2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 56b4e948f4e1aab20de95a16f45ab790c7e591bb
+ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58007467"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66019816"
 ---
 # <a name="working-with-sql-database-connection-issues-and-transient-errors"></a>SQL Database の接続に関する問題と一時的なエラーに対応する
 
@@ -134,7 +134,7 @@ ADO.NET を使用するクライアントのブロック期間については、
 [接続文字列](https://msdn.microsoft.com/library/System.Data.SqlClient.SqlConnection.connectionstring.aspx) を **SqlConnection** オブジェクト用に作成するときは、次のパラメーター間で値を調整します。
 
 - **ConnectRetryCount**:&nbsp;&nbsp;既定値は 1 です。 範囲は 0 ～ 255 です。
-- **ConnectRetryInterval**:&nbsp;&nbsp;既定値は 1 秒です。 範囲は 1 ～ 60 です。
+- **ConnectRetryInterval**:&nbsp;&nbsp;既定値は 10 秒です。 範囲は 1 ～ 60 です。
 - **Connection Timeout**:&nbsp;&nbsp;既定値は 15 秒です。 範囲は 0 ～ 2147483647 です。
 
 具体的には、選択した値で次の等式が成り立つ必要があります。Connection Timeout = ConnectRetryCount * ConnectionRetryInterval
@@ -181,14 +181,14 @@ IP アドレスの構成を怠った場合、必要な IP アドレスを示し�
 詳細については、[SQL Database のファイアウォール設定の構成](sql-database-configure-firewall-settings.md)に関するページを参照してください。
 <a id="c-connection-ports" name="c-connection-ports"></a>
 
-### <a name="connection-ports"></a>接続:ポート
+### <a name="connection-ports"></a>接続:Port
 
 通常、必要な設定は、クライアント プログラムのホストとなるコンピューターのポート 1433 の送信方向を開放するだけです。
 
 たとえば、クライアント プログラムが Windows コンピューターでホストされている場合、そのホストの Windows ファイアウォールを使用してポート 1433 を開放することができます。
 
 1. [コントロール パネル] を開きます。
-2. **[すべてのコントロール パネル項目]** > **[Windows ファイアウォール]** > **[詳細設定]** > **[送信の規則]** > **[アクション]** > **[新しい規則]** の順に選択します。
+2. **[すべてのコントロール パネル項目]**  >  **[Windows ファイアウォール]**  >  **[詳細設定]**  >  **[送信の規則]**  >  **[アクション]**  >  **[新しい規則]** の順に選択します。
 
 クライアント プログラムが Azure の仮想マシン (VM) でホストされている場合は、[ADO.NET 4.5 用の 1433 以外のポートと SQL Database](sql-database-develop-direct-route-ports-adonet-v12.md) に関するページを参照してください。
 

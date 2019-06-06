@@ -8,13 +8,13 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: reference
-ms.date: 05/06/2019
-ms.openlocfilehash: 503bd6cfee1c19d2342ec9f535b3945178ab3ea0
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.date: 05/13/2019
+ms.openlocfilehash: aa5d3a0555875571276fdf4046ad0e4dd1e69bbd
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65136596"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65596952"
 ---
 # <a name="reference-for-trigger-and-action-types-in-workflow-definition-language-for-azure-logic-apps"></a>Azure Logic Apps におけるワークフロー定義言語のトリガーとアクションの種類のリファレンス
 
@@ -341,8 +341,8 @@ ms.locfileid: "65136596"
 | Response | 必須 | 説明 | 
 |----------|----------|-------------| 
 | 状態コード | はい | 状態コード "200 OK" によって実行が開始されます。 その他のすべての状態コードでは実行は開始されません。 | 
-| Retry-after ヘッダー | いいえ  | ロジック アプリがエンドポイントを再度ポーリングするまでの秒数 | 
-| Location ヘッダー | いいえ  | 次のポーリング間隔で呼び出す URL です。 指定されていない場合は、元の URL が使われます。 | 
+| Retry-after ヘッダー | いいえ | ロジック アプリがエンドポイントを再度ポーリングするまでの秒数 | 
+| Location ヘッダー | いいえ | 次のポーリング間隔で呼び出す URL です。 指定されていない場合は、元の URL が使われます。 | 
 |||| 
 
 *さまざまな要求の動作の例*
@@ -2380,6 +2380,7 @@ Webhook ベースのトリガーとアクションでは、エンドポイント
 | `runtimeConfiguration.concurrency.maximumWaitingRuns` | 整数 | ワークフローが最大数の同時実行インスタンスを既に実行しているときに実行を待機できるワークフロー インスタンスの数に対する[*既定の制限*](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)を変更します。 `concurrency.runs` プロパティでコンカレンシーの制限を変更できます。 <p>既定の制限を変更するには、「[実行待機の制限を変更する](#change-waiting-runs)」を参照してください。 | すべてのトリガー | 
 | `runtimeConfiguration.concurrency.repetitions` | 整数 | 同時に (並行して) 実行できる "for each" ループ繰り返し回数に対する[*既定の制限*](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)を変更します。 <p>`repetitions` プロパティを `1` に設定すると、`operationOptions` プロパティを `SingleInstance` に設定したのと同じように機能します。 いずれか一方のプロパティを設定できます。両方を設定することはできません。 <p>既定の制限を変更するには、「["for each" のコンカレンシーを変更する](#change-for-each-concurrency)」、または「["for each" ループを順次実行する](#sequential-for-each)」を参照してください。 | アクション: <p>[Foreach](#foreach-action) | 
 | `runtimeConfiguration.paginationPolicy.minimumItemCount` | 整数 | 改ページ位置の自動修正をサポートし、これが有効になっている特定のアクションの場合、この値により、取得する結果の*最小*数を指定します。 <p>改ページ位置の自動修正を有効にするには、[改ページ位置の自動修正によるデータ、アイテム、または結果の一括取得](../logic-apps/logic-apps-exceed-default-page-size-with-pagination.md)に関する記事を参照してください | アクション:多様 |
+| `runtimeConfiguration.staticResult` | JSON オブジェクト | [静的結果](../logic-apps/test-logic-apps-mock-data-static-results.md)をサポートし、その設定が有効になっているアクションの場合、`staticResult` オブジェクトには以下の属性があります。 <p>- `name`。現在のアクションの静的結果の定義名を参照します。この名前は、ロジック アプリ ワークフローの `definition` 属性の `staticResults` 属性内に表示されます。 詳細については、[静的結果 - ワークフロー定義言語のスキーマ参照](../logic-apps/logic-apps-workflow-definition-language.md#static-results)に関するページを参照してください。 <p> - `staticResultOptions`。現在のアクションに対して静的結果が `Enabled` であるかどうかを指定します。 <p>静的結果を有効にするには、「[静的な結果を設定してモック データでロジック アプリをテストする](../logic-apps/test-logic-apps-mock-data-static-results.md)」を参照してください。 | アクション:多様 |
 ||||| 
 
 <a name="operation-options"></a>
@@ -2430,9 +2431,9 @@ Webhook ベースのトリガーとアクションでは、エンドポイント
 
 #### <a name="edit-in-logic-apps-designer"></a>Logic Apps デザイナーで編集する
 
-1. トリガーの右上隅の省略記号 (...) ボタンを選択し、**[設定]** を選択します。
+1. トリガーの右上隅の省略記号 (...) ボタンを選択し、 **[設定]** を選択します。
 
-2. **[コンカレンシー制御]** で、**[Limit]\(限度\)** を **[オン]** に設定します。 
+2. **[コンカレンシー制御]** で、 **[Limit]\(限度\)** を **[オン]** に設定します。 
 
 3. **[並列処理の次数]** スライダーをドラッグして必要な値に設定します。 ロジック アプリを順番に実行するには、スライダーの値を **1** にドラッグします。
 
@@ -2467,9 +2468,9 @@ Webhook ベースのトリガーとアクションでは、エンドポイント
 
 #### <a name="edit-in-logic-apps-designer"></a>Logic Apps デザイナーで編集する
 
-1. **For each** アクションの右上隅で省略記号 (...) ボタンを選択し、**[設定]** を選択します。
+1. **For each** アクションの右上隅で省略記号 (...) ボタンを選択し、 **[設定]** を選択します。
 
-2. **[コンカレンシー制御]** で、**[コンカレンシー制御]** を **[オン]** に設定します。 
+2. **[コンカレンシー制御]** で、 **[コンカレンシー制御]** を **[オン]** に設定します。 
 
 3. **[並列処理の次数]** スライダーをドラッグして必要な値に設定します。 ロジック アプリを順番に実行するには、スライダーの値を **1** にドラッグします。
 
@@ -2545,9 +2546,9 @@ Webhook ベースのトリガーとアクションでは、エンドポイント
 
 #### <a name="edit-in-logic-apps-designer"></a>Logic Apps デザイナーで編集する
 
-1. トリガーの右上隅の省略記号 (...) ボタンを選択し、**[設定]** を選択します。
+1. トリガーの右上隅の省略記号 (...) ボタンを選択し、 **[設定]** を選択します。
 
-2. **[コンカレンシー制御]** で、**[Limit]\(限度\)** を **[オン]** に設定します。 
+2. **[コンカレンシー制御]** で、 **[Limit]\(限度\)** を **[オン]** に設定します。 
 
 3. **[並列処理の次数]** スライダーをドラッグして数値 `1` に設定します。 
 
@@ -2596,9 +2597,9 @@ Webhook ベースのトリガーとアクションでは、エンドポイント
 
 #### <a name="edit-in-logic-apps-designer"></a>Logic Apps デザイナーで編集する
 
-1. **For each** アクションの右上隅の省略記号 (...) ボタンを選択し、**[設定]** を選択します。
+1. **For each** アクションの右上隅の省略記号 (...) ボタンを選択し、 **[設定]** を選択します。
 
-2. **[コンカレンシー制御]** で、**[コンカレンシー制御]** を **[オン]** に設定します。 
+2. **[コンカレンシー制御]** で、 **[コンカレンシー制御]** を **[オン]** に設定します。 
 
 3. **[並列処理の次数]** スライダーをドラッグして数値 `1` に設定します。 
 
@@ -2733,7 +2734,7 @@ Azure Active Directory を使用する[証明書ベース認証](../active-direc
 | プロパティ | 必須 | 値 | 説明 |
 |----------|----------|-------|-------------|
 | **type** | はい | `ActiveDirectoryOAuth` | 使用する認証の種類 (Azure AD OAuth の場合は "ActiveDirectoryOAuth") |
-| **authority** | いいえ  | <*URL-for-authority-token-issuer*> | 認証トークンを提供する機関の URL |
+| **authority** | いいえ | <*URL-for-authority-token-issuer*> | 認証トークンを提供する機関の URL |
 | **tenant** | はい | <*tenant-ID*> | Azure AD テナントのテナント ID |
 | **audience** | はい | <*resource-to-authorize*> | 承認で使用するリソース (`https://management.core.windows.net/` など) |
 | **clientId** | はい | <*client-ID*> | 承認を要求しているアプリのクライアント ID |

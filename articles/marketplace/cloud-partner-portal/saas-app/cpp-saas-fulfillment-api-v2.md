@@ -1,30 +1,22 @@
 ---
-title: SaaS Fulfillment API V2 - Azure Marketplace | Microsoft Docs
-description: 関連付けられているフルフィルメント V2 API を使用して Azure Marketplace で SaaS オファーを作成する方法について説明します。
+title: SaaS Fulfillment API V2 | Azure Marketplace
+description: 関連付けられている Fulfillment V2 API を使用して AppSource と Azure Marketplace で SaaS オファーを作成する方法について説明します。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 03/28/2019
-ms.author: pbutlerm
-ms.openlocfilehash: 437009079c1bebe3694aaa26f945bd726b3c9fb9
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.author: pabutler
+ms.openlocfilehash: 4efd9556e255709204654cf0acbf1b08fa2c1fc0
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59010574"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65872150"
 ---
 # <a name="saas-fulfillment-apis-version-2"></a>SaaS Fulfillment API バージョン 2 
 
-この記事では、独立系ソフトウェア ベンダー (ISV) が Azure Marketplace と SaaS アプリケーションを統合できるようにする API について説明します。 この API により、ISV アプリケーションは、すべての商取引が有効になっているチャネル (直接、パートナー主導 (再販業者)、フィールド主導) に参加できるようになります。  この API は、Azure Marketplace で取引可能な SaaS オファーを一覧表示するための要件になります。
-
+この記事では、独立系ソフトウェア ベンダー (ISV) が SaaS アプリケーションを AppSource と Azure Marketplace で販売できるようにする API について説明します。 この API は、AppSource と Azure Marketplace で取引可能な SaaS オファーの要件になります。
 
 ## <a name="managing-the-saas-subscription-lifecycle"></a>SaaS サブスクリプション ライフサイクルの管理
 
@@ -39,7 +31,7 @@ Microsoft SaaS サービスでは、SaaS サブスクリプション購入のラ
 
 #### <a name="provisioning"></a>プロビジョニング
 
-顧客は購入を開始すると、ISV は、URL パラメーターを使用して顧客のインタラクティブな Web ページ上でこの情報を認証コードで受け取ります。 プロビジョニングする必要のあるものの詳細について、認証コードを検証および交換できます。  SaaS サービスはプロビジョニングを終了すると、フルフィルメントが完了し、顧客に課金できることを伝えるために、アクティブ化呼び出しを送信します。  次の図は、プロビジョニング シナリオのための API 呼び出しのシーケンスを示します。  
+顧客が購入を開始すると、ISV は、URL パラメーターを使用して顧客のインタラクティブな Web ページ上でこの情報を認証コードとして受け取ります。 たとえば、`https://contoso.com/signup?token=..` です。ここで、パートナー センターのランディング ページの URL プロバイダーは `https://contoso.com/signup` です。 Resolve API を呼び出すことによって、この認証コードを検証し、プロビジョニングする必要がある内容の詳細情報と交換することができます。  SaaS サービスはプロビジョニングを終了すると、フルフィルメントが完了し、顧客に課金できることを伝えるために、アクティブ化呼び出しを送信します。  次の図は、プロビジョニング シナリオのための API 呼び出しのシーケンスを示します。  
 
 ![SaaS サービスのプロビジョニングの API 呼び出し。](./media/saas-post-provisioning-api-v2-calls.png)
 
@@ -87,15 +79,73 @@ Microsoft SaaS サービスでは、SaaS サブスクリプション購入のラ
 |     ----------------     |     ----------                         |
 | `subscriptionId`         | SaaS リソースの GUID 識別子  |
 | `name`                   | お客様がこのリソースに付けたフレンドリ名 |
-| `publisherId`            | 発行元ごとに自動的に生成される一意の文字列識別子 (たとえば "conotosocorporation") |
-| `offerId`                | オファーごとに自動的に生成される一意の文字列識別子 (たとえば "contosooffer1")  |
-| `planId`                 | プラン/sku ごとに自動的に生成される一意の文字列識別子 (たとえば "contosobasicplan") |
+| `publisherId`            | 各発行元を表す一意の文字列識別子 (例: "contoso") |
+| `offerId`                | 各オファーを表す一意の文字列識別子 (例: "offer1")  |
+| `planId`                 | 各プラン/SKU を表す一意の文字列識別子 (例: "silver") |
 | `operationId`            | 特定の操作の GUID 識別子  |
-|  `action`                | ソースに対して実行されているアクション。`subscribe`、`unsubscribe`、`suspend`、`reinstate`、または `changePlan`  |
+|  `action`                | リソースに対して実行されているアクション (`subscribe`、`unsubscribe`、`suspend`、`reinstate`、`changePlan`、`changeQuantity`、または `transfer`)  |
 |   |   |
 
 グローバルに一意な識別子 ([GUID](https://en.wikipedia.org/wiki/Universally_unique_identifier)) は、通常、自動的に生成される 128 ビット (32 桁の 16 進数) の数値です。 
 
+#### <a name="resolve-a-subscription"></a>サブスクリプションを解除する 
+
+解決エンドポイントにより、発行元はマーケットプレース トークンを永続的なリソース ID に解決できます。 リソース ID は、SAAS サブスクリプションの一意の識別子です。  ユーザーが ISV の Web サイトにリダイレクトされると、URL に、クエリ パラメーターのトークンが含まれます。 ISV は、このトークンを使用し、それを解決するための要求を行うことが期待されます。 応答には、リソースの一意の SAAS サブスクリプション ID、名前、オファーID、およびプランが含まれます。 このトークンは、1 時間だけ有効です。 
+
+**Post:<br>`https://marketplaceapi.microsoft.com/api/saas/subscriptions/resolve?api-version=<ApiVersion>`**
+
+*クエリ パラメーター:*
+
+|                    |                   |
+|  ---------------   |  ---------------  |
+|  ApiVersion        |  この要求で使用する操作のバージョン  |
+
+*要求ヘッダー:*
+ 
+|                    |                   |
+|  ---------------   |  ---------------  |
+|  Content-Type      | `application/json` |
+|  x-ms-requestid    |  クライアントからの要求を追跡するための一意の文字列値 (GUID を推奨)。 この値を指定しないと、値が生成され、応答ヘッダーに指定されます。 |
+|  x-ms-correlationid |  クライアントでの操作に対する一意の文字列値。 このパラメーターによって、クライアント操作からのすべてのイベントがサーバー側のイベントに関連付けられます。 この値を指定しないと、値が生成され、応答ヘッダーに指定されます。  |
+|  authorization     |  [JSON Web トークン (JWT) ベアラー トークンを取得します](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app) |
+|  x-ms-marketplace-token  |  ユーザーが Azure から SaaS ISV の Web サイトにリダイレクトされるときの、URL のトークン クエリ パラメーター (例: `https://contoso.com/signup?token=..`)。 *注:* ブラウザーからのトークン値は、使用前に URL によってデコードされます。  |
+
+*応答コード:*
+
+コード:200<br>
+不透明なトークンを SaaS サブスクリプションに解決します。<br>
+
+```json
+Response body:
+{
+    "subscriptionId": "<guid>",  
+    "subscriptionName": "Contoso Cloud Solution",
+    "offerId": "offer1",
+    "planId": "silver",
+    "quantity": "20" 
+}
+```
+
+コード:404<br>
+見つかりません
+
+コード:400<br>
+無効な要求です。 x-ms-marketplace-token が見つからないか、形式が正しくないか、または期限切れです。
+
+コード:403<br>
+権限がありません。 認証トークンが提供されていないか、無効であるか、または現在の発行元に属していない購入に要求がアクセスしようとしています。
+
+コード:500<br>
+内部サーバー エラー
+
+```json
+{
+    "error": {
+      "code": "UnexpectedError",
+      "message": "An unexpected error has occurred."
+    }
+}
+```
 
 ### <a name="subscription-api"></a>サブスクリプション API
 
@@ -106,7 +156,7 @@ Microsoft SaaS サービスでは、SaaS サブスクリプション購入のラ
 
 パブリッシャーのすべての SaaS サブスクリプションを一覧表示します。
 
-**Get: <br>`https://marketplaceapi.microsoft.com/api/saas/subscriptions?api-version=<ApiVersion>`**
+**Get:<br>`https://marketplaceapi.microsoft.com/api/saas/subscriptions?api-version=<ApiVersion>`**
 
 *クエリ パラメーター:*
 
@@ -121,12 +171,12 @@ Microsoft SaaS サービスでは、SaaS サブスクリプション購入のラ
 | Content-Type       |  `application/json`  |
 | x-ms-requestid     |  クライアントからの要求を追跡するための一意の文字列値 (GUID を推奨)。 この値を指定しないと、値が生成され、応答ヘッダーに指定されます。 |
 | x-ms-correlationid |  クライアントでの操作に対する一意の文字列値。 このパラメーターによって、クライアント操作からのすべてのイベントがサーバー側のイベントに関連付けられます。 この値を指定しないと、値が生成され、応答ヘッダーに指定されます。  |
-| authorization      |  JSON Web トークン (JWT) ベアラー トークン。  |
+| authorization      |  [JSON Web トークン (JWT) ベアラー トークンを取得します。](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)  |
 
 *応答コード:*
 
-コード:200<br>
-authN トークンに基づいて、すべてのパブリッシャーのオファーに対するパブリッシャーおよび対応するサブスクリプションを取得します。<br> 応答ペイロード:<br>
+コード:200 <br/>
+認証トークンに基づき、発行元と、発行元のすべてのオファーについて対応するサブスクリプションを取得します。<br> 応答ペイロード:<br>
 
 ```json
 {
@@ -135,7 +185,7 @@ authN トークンに基づいて、すべてのパブリッシャーのオフ�
           "id": "<guid>",
           "name": "Contoso Cloud Solution",
           "publisherId": "contoso",
-          "offerId": "cont-cld-tier2",
+          "offerId": "offer1",
           "planId": "silver",
           "quantity": "10",
           "beneficiary": { // Tenant for which SaaS subscription is purchased.
@@ -157,9 +207,8 @@ authN トークンに基づいて、すべてのパブリッシャーのオフ�
 
 継続トークンは、取得するプランの追加の "ページ" がある場合にのみ存在します。 
 
-
 コード:403 <br>
-権限がありません。 認証トークンが提供されていないか、無効であるか、または現在のユーザーに属していない購入に要求がアクセスしようとしています。 
+権限がありません。 認証トークンが提供されていないか、無効であるか、または現在の発行元に属していない購入に要求がアクセスしようとしています。 
 
 コード:500 内部サーバー エラー
 
@@ -176,7 +225,7 @@ authN トークンに基づいて、すべてのパブリッシャーのオフ�
 
 指定された SaaS サブスクリプションを取得します。 この呼び出しを使用して、ライセンス情報およびプラン情報を取得します。
 
-**Get: <br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId?api-version=<ApiVersion>`**
+**Get:<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId?api-version=<ApiVersion>`**
 
 *クエリ パラメーター:*
 
@@ -192,7 +241,7 @@ authN トークンに基づいて、すべてのパブリッシャーのオフ�
 |  Content-Type      |  `application/json`  |
 |  x-ms-requestid    |  クライアントからの要求を追跡するための一意の文字列値 (GUID を推奨)。 この値を指定しないと、値が生成され、応答ヘッダーに指定されます。 |
 |  x-ms-correlationid |  クライアントでの操作に対する一意の文字列値。 このパラメーターによって、クライアント操作からのすべてのイベントがサーバー側のイベントに関連付けられます。 この値を指定しないと、値が生成され、応答ヘッダーに指定されます。  |
-|  authorization     |  JSON Web トークン (JWT) ベアラー トークン  |
+|  authorization     |  [JSON Web トークン (JWT) ベアラー トークンを取得します。](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)  |
 
 *応答コード:*
 
@@ -205,9 +254,9 @@ Response Body:
         "id":"",
         "name":"Contoso Cloud Solution",
         "publisherId": "contoso",
-        "offerId": "cont-cld-tier2",
+        "offerId": "offer1",
         "planId": "silver",
-        "quantity": "10"",
+        "quantity": "10",
           "beneficiary": { // Tenant for which SaaS subscription is purchased.
               "tenantId": "<guid>"
           },
@@ -224,7 +273,7 @@ Response Body:
 見つかりません<br> 
 
 コード:403<br>
-権限がありません。 認証トークンが提供されていないか、無効であるか、または現在のユーザーに属していない購入に要求がアクセスしようとしています。
+権限がありません。 認証トークンが提供されていないか、無効であるか、または現在の発行元に属していない購入に要求がアクセスしようとしています。
 
 コード:500<br>
 内部サーバー エラー<br>
@@ -239,9 +288,9 @@ Response Body:
 
 #### <a name="list-available-plans"></a>利用可能なプランを一覧表示する
 
-この呼び出しを使用して、現在のユーザーのすると、現在のユーザーのプライベート/パブリック オファーがあるかどうかを調べます。
+この呼び出しを使用して、現在の発行元のプライベート/パブリック オファーがあるかどうかを調べます。
 
-**Get: <br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/listAvailablePlans?api-version=<ApiVersion>`**
+**Get:<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/listAvailablePlans?api-version=<ApiVersion>`**
 
 *クエリ パラメーター:*
 
@@ -256,7 +305,7 @@ Response Body:
 |   Content-Type     |  `application/json` |
 |   x-ms-requestid   |   クライアントからの要求を追跡するための一意の文字列値 (GUID を推奨)。 この値を指定しないと、値が生成され、応答ヘッダーに指定されます。 |
 |  x-ms-correlationid  | クライアントでの操作に対する一意の文字列値。 このパラメーターによって、クライアント操作からのすべてのイベントがサーバー側のイベントに関連付けられます。 この値を指定しないと、値が生成され、応答ヘッダーに指定されます。 |
-|  authorization     |  JSON Web トークン (JWT) ベアラー トークン |
+|  authorization     |  [JSON Web トークン (JWT) ベアラー トークンを取得します。](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app) |
 
 *応答コード:*
 
@@ -279,7 +328,7 @@ Response Body:
 見つかりません<br> 
 
 コード:403<br>
-権限がありません。 認証トークンが提供されていないか、無効であるか、または現在のユーザーに属していない購入に要求がアクセスしようとしています。 <br> 
+権限がありません。 認証トークンが提供されていないか、無効であるか、または現在の発行元に属していない購入に要求がアクセスしようとしています。 <br> 
 
 コード:500<br>
 内部サーバー エラー<br>
@@ -292,69 +341,9 @@ Response Body:
     } 
 ```
 
-#### <a name="resolve-a-subscription"></a>サブスクリプションを解除する 
-
-解決エンドポイントにより、ユーザーはマーケットプレース トークンを永続的なリソース ID に解決できます。 リソース ID は、SAAS サブスクリプションの一意の識別子です。  ユーザーが ISV の Web サイトにリダイレクトされると、URL に、クエリ パラメーターのトークンが含まれます。 ISV は、このトークンを使用し、それを解決するための要求を行うことが期待されます。 応答には、リソースの一意の SAAS サブスクリプション ID、名前、オファーID、およびプランが含まれます。 このトークンは、1 時間だけ有効です。 
-
-**Post: <br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/resolve?api-version=<ApiVersion>`**
-
-*クエリ パラメーター:*
-
-|                    |                   |
-|  ---------------   |  ---------------  |
-|  ApiVersion        |  この要求で使用する操作のバージョン  |
-
-*要求ヘッダー:*
- 
-|                    |                   |
-|  ---------------   |  ---------------  |
-|  Content-Type      | `application/json` |
-|  x-ms-requestid    |  クライアントからの要求を追跡するための一意の文字列値 (GUID を推奨)。 この値を指定しないと、値が生成され、応答ヘッダーに指定されます。 |
-|  x-ms-correlationid |  クライアントでの操作に対する一意の文字列値。 このパラメーターによって、クライアント操作からのすべてのイベントがサーバー側のイベントに関連付けられます。 この値を指定しないと、値が生成され、応答ヘッダーに指定されます。  |
-|  authorization     |  JSON Web トークン (JWT) ベアラー トークン  |
-|  x-ms-marketplace-token  |  ユーザーが Azure から SaaS ISV の Web サイトにリダイレクトされるときの、URL のトークン クエリ パラメーター。 *注:* ブラウザーからのトークン値は、使用前に URL によってデコードされます。 |
-
-*応答コード:*
-
-コード:200<br>
-不透明なトークンを SaaS サブスクリプションに解決します。<br>
-
-```json
-Response body:
-{
-    "subscriptionId": "<guid>",  
-    "subscriptionName": "Contoso Cloud Solution",
-    "offerId": "cont-cld-tier2",
-    "planId": "silver",
-    "quantity": "20",
-    "operationId": "<guid>"  
-}
-```
-
-コード:404<br>
-見つかりません
-
-コード:400<br>
-無効な要求 - 検証エラー
-
-コード:403<br>
-権限がありません。 認証トークンが提供されていないか、無効であるか、または現在のユーザーに属していない購入に要求がアクセスしようとしています。
-
-コード:500<br>
-内部サーバー エラー
-
-```json
-{
-    "error": {
-      "code": "UnexpectedError",
-      "message": "An unexpected error has occurred."
-    }
-}
-```
-
 #### <a name="activate-a-subscription"></a>サブスクリプションをアクティブ化する
 
-**Post: <br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/activate?api-version=<ApiVersion>`**
+**Post:<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/activate?api-version=<ApiVersion>`**
 
 *クエリ パラメーター:*
 
@@ -370,7 +359,7 @@ Response body:
 |  Content-Type      | `application/json`  |
 |  x-ms-requestid    | クライアントからの要求を追跡するための一意の文字列値 (GUID を推奨)。 この値を指定しないと、値が生成され、応答ヘッダーに指定されます。  |
 |  x-ms-correlationid  | クライアントでの操作に対する一意の文字列値。 この文字列によって、クライアント操作からのすべてのイベントがサーバー側のイベントに関連付けられます。 この値を指定しないと、値が生成され、応答ヘッダーに指定されます。  |
-|  authorization     |  JSON Web トークン (JWT) ベアラー トークン |
+|  authorization     |  [JSON Web トークン (JWT) ベアラー トークンを取得します。](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app) |
 
 *要求:*
 
@@ -383,7 +372,7 @@ Response body:
 
 *応答コード:*
 
-コード:202<br>
+コード:200<br>
 サブスクリプションをアクティブ化します。<br>
 
 コード:404<br>
@@ -393,7 +382,7 @@ Response body:
 無効な要求 - 検証エラー
 
 コード:403<br>
-権限がありません。 認証トークンが提供されていないか、無効であるか、または現在のユーザーに属していない購入に要求がアクセスしようとしています。
+権限がありません。 認証トークンが提供されていないか、無効であるか、または現在の発行元に属していない購入に要求がアクセスしようとしています。
 
 コード:500<br>
 内部サーバー エラー
@@ -407,9 +396,9 @@ Response body:
 }
 ```
 
-#### <a name="update-a-subscription"></a>サブスクリプションを更新する
+#### <a name="change-the-plan-on-the-subscription"></a>サブスクリプションのプランを変更する
 
-指定された値でサブスクリプション プランを更新または変更します。
+サブスクリプションのプランを更新します。
 
 **Patch:<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>?api-version=<ApiVersion>`**
 
@@ -427,15 +416,14 @@ Response body:
 |  Content-Type      | `application/json` |
 |  x-ms-requestid    |   クライアントからの要求を追跡するための一意の文字列値 (GUID を推奨)。 この値を指定しないと、値が生成され、応答ヘッダーに指定されます。  |
 |  x-ms-correlationid  |  クライアントでの操作に対する一意の文字列値。 このパラメーターによって、クライアント操作からのすべてのイベントがサーバー側のイベントに関連付けられます。 この値を指定しないと、値が生成され、応答ヘッダーに指定されます。    |
-| authorization      |  JSON Web トークン (JWT) ベアラー トークン。  |
+| authorization      |  [JSON Web トークン (JWT) ベアラー トークンを取得します。](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)  |
 
 *要求ペイロード:*
 
 ```json
 Request Body:
 {
-    "planId": "gold",
-    "quantity": ""
+    "planId": "gold"
 }
 ```
 
@@ -448,7 +436,7 @@ Request Body:
 *応答コード:*
 
 コード:202<br>
-ISV は、プランの変更、または数量の変更を開始します。 <br>
+プランを変更する要求は受理されました。 ISV は、成功/失敗を判断するために Operation-Location をポーリングする必要があります。 <br>
 
 コード:404<br>
 見つかりません
@@ -460,7 +448,73 @@ ISV は、プランの変更、または数量の変更を開始します。 <br
 >一度にパッチを適用できるのはプランまたは数量だけであり、両方には適用できません。 **[更新]** によるサブスクリプションの編集は、`allowedCustomerOperations` にありません。
 
 コード:403<br>
-権限がありません。 認証トークンが提供されていないか、無効であるか、または現在のユーザーに属していない購入に要求がアクセスしようとしています。
+権限がありません。 認証トークンが提供されていないか、無効であるか、または現在の発行元に属していない購入に要求がアクセスしようとしています。
+
+コード:500<br>
+内部サーバー エラー
+
+```json
+{
+    "error": {
+      "code": "UnexpectedError",
+      "message": "An unexpected error has occurred."
+    }
+}
+```
+
+#### <a name="change-the-quantity-on-the-subscription"></a>サブスクリプションの数量を変更する
+
+サブスクリプションの数量を更新します。
+
+**Patch:<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>?api-version=<ApiVersion>`**
+
+*クエリ パラメーター:*
+
+|                    |                   |
+|  ---------------   |  ---------------  |
+|  ApiVersion        |  この要求で使用する操作のバージョン。  |
+| subscriptionId     | Resolve API を使用してトークンを解決した後に取得される SaaS サブスクリプションの一意の ID。  |
+
+*要求ヘッダー:*
+
+|                    |                   |
+|  ---------------   |  ---------------  |
+|  Content-Type      | `application/json` |
+|  x-ms-requestid    |   クライアントからの要求を追跡するための一意の文字列値 (GUID を推奨)。 この値を指定しないと、値が生成され、応答ヘッダーに指定されます。  |
+|  x-ms-correlationid  |  クライアントでの操作に対する一意の文字列値。 このパラメーターによって、クライアント操作からのすべてのイベントがサーバー側のイベントに関連付けられます。 この値を指定しないと、値が生成され、応答ヘッダーに指定されます。    |
+| authorization      |  [JSON Web トークン (JWT) ベアラー トークンを取得します。](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)  |
+
+*要求ペイロード:*
+
+```json
+Request Body:
+{
+    "quantity": 5
+}
+```
+
+*要求ヘッダー:*
+
+|                    |                   |
+|  ---------------   |  ---------------  |
+| Operation-Location | 操作状態を取得するリソースへのリンク。   |
+
+*応答コード:*
+
+コード:202<br>
+受理されました。 数量を変更する要求は受理されました。 ISV は、成功/失敗を判断するために Operation-Location をポーリングする必要があります。 <br>
+
+コード:404<br>
+見つかりません
+
+コード:400<br>
+無効な要求 - 検証エラー。
+
+>[!Note]
+>一度にパッチを適用できるのはプランまたは数量だけであり、両方には適用できません。 **[更新]** によるサブスクリプションの編集は、`allowedCustomerOperations` にありません。
+
+コード:403<br>
+権限がありません。 認証トークンが提供されていないか、無効であるか、または現在の発行元に属していない購入に要求がアクセスしようとしています。
 
 コード:500<br>
 内部サーバー エラー
@@ -478,7 +532,7 @@ ISV は、プランの変更、または数量の変更を開始します。 <br
 
 指定したサブスクリプションを登録解除し削除します。
 
-**削除:<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId> ?api-version=<ApiVersion>`**
+**Delete:<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId> ?api-version=<ApiVersion>`**
 
 *クエリ パラメーター:*
 
@@ -494,11 +548,11 @@ ISV は、プランの変更、または数量の変更を開始します。 <br
 |   Content-Type     |  `application/json` |
 |  x-ms-requestid    |   クライアントからの要求を追跡するための一意の文字列値 (GUID を推奨)。 この値を指定しないと、値が生成され、応答ヘッダーに指定されます。   |
 |  x-ms-correlationid  |  クライアントでの操作に対する一意の文字列値。 このパラメーターによって、クライアント操作からのすべてのイベントがサーバー側のイベントに関連付けられます。 この値を指定しないと、値が生成され、応答ヘッダーに指定されます。   |
-|  authorization     |  JSON Web トークン (JWT) ベアラー トークン。   |
+|  authorization     |  [JSON Web トークン (JWT) ベアラー トークンを取得します。](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)  |
 
 *応答コード:*
 
-コード:200<br>
+コード:202<br>
 ISV は、SaaS サブスクリプションでの登録解除を示す呼び出しを開始しました。<br>
 
 コード:404<br>
@@ -508,7 +562,7 @@ ISV は、SaaS サブスクリプションでの登録解除を示す呼び出�
 `allowedCustomerOperations` ではなく **[削除]** でサブスクリプションを削除します。
 
 コード:403<br>
-権限がありません。 認証トークンが提供されていないか、無効であるか、または現在のユーザーに属していない購入に要求がアクセスしようとしています。
+権限がありません。 認証トークンが提供されていないか、無効であるか、または現在の発行元に属していない購入に要求がアクセスしようとしています。
 
 コード:500<br>
 内部サーバー エラー
@@ -527,10 +581,134 @@ ISV は、SaaS サブスクリプションでの登録解除を示す呼び出�
 
 操作 API は、次のパッチおよび取得操作をサポートします。
 
+#### <a name="list-outstanding-operations"></a>未処理の操作を一覧表示する 
 
-#### <a name="update-a-subscription"></a>サブスクリプションを更新する
+現在の発行元の未処理の操作を一覧表示します。 
 
-指定された値でサブスクリプションを更新します。
+**Get:<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations?api-version=<ApiVersion>`**
+
+*クエリ パラメーター:*
+
+|             |        |
+|  ---------------   |  ---------------  |
+|    ApiVersion                |   この要求で使用する操作のバージョン。                |
+| subscriptionId     | Resolve API を使用してトークンを解決した後に取得される SaaS サブスクリプションの一意の ID。  |
+
+*要求ヘッダー:*
+ 
+|                    |                   |
+|  ---------------   |  ---------------  |
+|   Content-Type     |  `application/json` |
+|  x-ms-requestid    |  クライアントからの要求を追跡するための一意の文字列値 (GUID を推奨)。 この値を指定しないと、値が生成され、応答ヘッダーに指定されます。  |
+|  x-ms-correlationid |  クライアントでの操作に対する一意の文字列値。 このパラメーターによって、クライアント操作からのすべてのイベントがサーバー側のイベントに関連付けられます。 この値を指定しないと、値が生成され、応答ヘッダーに指定されます。  |
+|  authorization     |  [JSON Web トークン (JWT) ベアラー トークンを取得します。](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)  |
+
+*応答コード:*
+
+コード:200<br> サブスクリプションでの保留中の操作の一覧を取得します。<br>
+応答ペイロード:
+
+```json
+[{
+    "id": "<guid>",  
+    "activityId": "<guid>",
+    "subscriptionId": "<guid>",
+    "offerId": "offer1",
+    "publisherId": "contoso",  
+    "planId": "silver",
+    "quantity": "20",
+    "action": "Convert",
+    "timeStamp": "2018-12-01T00:00:00",  
+    "status": "NotStarted"  
+}]
+```
+
+コード:404<br>
+見つかりません
+
+コード:400<br>
+無効な要求 - 検証エラー
+
+コード:403<br>
+権限がありません。 認証トークンが提供されていないか、無効であるか、または現在の発行元に属していない購入に要求がアクセスしようとしています。
+
+コード:500<br>
+内部サーバー エラー
+
+```json
+{
+    "error": {
+      "code": "UnexpectedError",
+      "message": "An unexpected error has occurred."
+    }
+}
+
+```
+
+#### <a name="get-operation-status"></a>操作状態を取得する
+
+発行元が、指定によってトリガーされた非同期操作 (サブスクライブ、サブスクライブの解除、プランの変更、数量の変更) の状態を追跡できるようにします。
+
+**Get:<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=<ApiVersion>`**
+
+*クエリ パラメーター:*
+
+|                    |                   |
+|  ---------------   |  ---------------  |
+|  ApiVersion        |  この要求で使用する操作のバージョン。  |
+
+*要求ヘッダー:*
+
+|                    |                   |
+|  ---------------   |  ---------------  |
+|  Content-Type      |  `application/json`   |
+|  x-ms-requestid    |   クライアントからの要求を追跡するための一意の文字列値 (GUID を推奨)。 この値を指定しないと、値が生成され、応答ヘッダーに指定されます。  |
+|  x-ms-correlationid |  クライアントでの操作に対する一意の文字列値。 このパラメーターによって、クライアント操作からのすべてのイベントがサーバー側のイベントに関連付けられます。 この値を指定しないと、値が生成され、応答ヘッダーに指定されます。  |
+|  authorization     |[JSON Web トークン (JWT) ベアラー トークンを取得します。](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)  |
+
+*応答コード:* コード:200<br> 指定した保留中のすべての SaaS 操作を取得します<br>
+応答ペイロード:
+
+```json
+Response body:
+{
+    "id  ": "<guid>",
+    "activityId": "<guid>",
+    "subscriptionId":"<guid>",
+    "offerId": "offer1",
+    "publisherId": "contoso",  
+    "planId": "silver",
+    "quantity": "20",
+    "action": "Convert",
+    "timeStamp": "2018-12-01T00:00:00",
+    "status": "NotStarted"
+}
+
+```
+
+コード:404<br>
+見つかりません
+
+コード:400<br>
+無効な要求 - 検証エラー
+
+コード:403<br>
+権限がありません。 認証トークンが提供されていないか、無効であるか、または現在の発行元に属していない購入に要求がアクセスしようとしています。
+ 
+コード:500<br> 内部サーバー エラー
+
+```json
+{
+    "error": {
+      "code": "UnexpectedError",
+      "message": "An unexpected error has occurred."
+    }
+}
+
+```
+#### <a name="update-the-status-of-an-operation"></a>操作の状態を更新する
+
+操作の状態を更新し、提供された値を使用して成功/失敗を示します。
 
 **Patch:<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=<ApiVersion>`**
 
@@ -549,16 +727,17 @@ ISV は、SaaS サブスクリプションでの登録解除を示す呼び出�
 |   Content-Type     | `application/json`   |
 |   x-ms-requestid   |   クライアントからの要求を追跡するための一意の文字列値 (GUID を推奨)。 この値を指定しないと、値が生成され、応答ヘッダーに指定されます。 |
 |  x-ms-correlationid |  クライアントでの操作に対する一意の文字列値。 このパラメーターによって、クライアント操作からのすべてのイベントがサーバー側のイベントに関連付けられます。 この値を指定しないと、値が生成され、応答ヘッダーに指定されます。 |
-|  authorization     |  JSON Web トークン (JWT) ベアラー トークン。  |
+|  authorization     |  [JSON Web トークン (JWT) ベアラー トークンを取得します。](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)  |
 
 *要求ペイロード:*
 
 ```json
 {
-    "planId": "cont-cld-tier2",
+    "planId": "offer1",
     "quantity": "44",
     "status": "Success"    // Allowed Values: Success/Failure. Indicates the status of the operation.
 }
+
 ```
 
 *応答コード:*
@@ -572,137 +751,11 @@ ISV は、SaaS サブスクリプションでの登録解除を示す呼び出�
 無効な要求 - 検証エラー
 
 コード:403<br>
-権限がありません。 認証トークンが提供されていないか、無効であるか、または現在のユーザーに属していない購入に要求がアクセスしようとしています。
+権限がありません。 認証トークンが提供されていないか、無効であるか、または現在の発行元に属していない購入に要求がアクセスしようとしています。
 
 コード:409<br>
 競合しています。 たとえば、より新しいトランザクションが既に履行されています
 
-コード:500<br> 内部サーバー エラー
-
-```json
-{
-    "error": {
-      "code": "UnexpectedError",
-      "message": "An unexpected error has occurred."
-    }
-}
-
-```
-
-#### <a name="list-outstanding-operations"></a>未処理の操作を一覧表示する 
-
-現在のユーザーの未処理の操作を一覧表示します。 
-
-**Get: <br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations?api-version=<ApiVersion>`**
-
-*クエリ パラメーター:*
-
-|             |        |
-|  ---------------   |  ---------------  |
-|    ApiVersion                |   この要求で使用する操作のバージョン。                |
-| subscriptionId     | Resolve API を使用してトークンを解決した後に取得される SaaS サブスクリプションの一意の ID。  |
-
-*要求ヘッダー:*
- 
-|                    |                   |
-|  ---------------   |  ---------------  |
-|   Content-Type     |  `application/json` |
-|  x-ms-requestid    |  クライアントからの要求を追跡するための一意の文字列値 (GUID を推奨)。 この値を指定しないと、値が生成され、応答ヘッダーに指定されます。  |
-|  x-ms-correlationid |  クライアントでの操作に対する一意の文字列値。 このパラメーターによって、クライアント操作からのすべてのイベントがサーバー側のイベントに関連付けられます。 この値を指定しないと、値が生成され、応答ヘッダーに指定されます。  |
-|  authorization     |  JSON Web トークン (JWT) ベアラー トークン。  |
-
-*応答コード:*
-
-コード:200<br> サブスクリプションでの保留中の操作の一覧を取得します。<br>
-応答ペイロード:
-
-```json
-[{
-    "id": "<guid>",  
-    "activityId": "<guid>",
-    "subscriptionId": "<guid>",
-    "offerId": "cont-cld-tier2",
-    "publisherId": "contoso",  
-    "planId": "silver",
-    "quantity": "20",
-    "action": "Convert",
-    "timeStamp": "2018-12-01T00:00:00",  
-    "status": "NotStarted"  
-}]
-```
-
-コード:404<br>
-見つかりません
-
-コード:400<br>
-無効な要求 - 検証エラー
-
-コード:403<br>
-権限がありません。 認証トークンが提供されていないか、無効であるか、または現在のユーザーに属していない購入に要求がアクセスしようとしています。
-
-コード:500<br>
-内部サーバー エラー
-
-```json
-{
-    "error": {
-      "code": "UnexpectedError",
-      "message": "An unexpected error has occurred."
-    }
-}
-
-```
-
-#### <a name="get-operation-status"></a>操作状態を取得する
-
-ユーザーが、指定したトリガーによる非同期操作 (プランのサブスクライブ、サブスクライブ解除、変更) の状態を追跡できるようにします。
-
-**Get: <br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=<ApiVersion>`**
-
-*クエリ パラメーター:*
-
-|                    |                   |
-|  ---------------   |  ---------------  |
-|  ApiVersion        |  この要求で使用する操作のバージョン。  |
-
-*要求ヘッダー:*
-
-|                    |                   |
-|  ---------------   |  ---------------  |
-|  Content-Type      |  `application/json`   |
-|  x-ms-requestid    |   クライアントからの要求を追跡するための一意の文字列値 (GUID を推奨)。 この値を指定しないと、値が生成され、応答ヘッダーに指定されます。  |
-|  x-ms-correlationid |  クライアントでの操作に対する一意の文字列値。 このパラメーターによって、クライアント操作からのすべてのイベントがサーバー側のイベントに関連付けられます。 この値を指定しないと、値が生成され、応答ヘッダーに指定されます。  |
-|  authorization     | JSON Web トークン (JWT) ベアラー トークン。  |
-
-*応答コード:* コード:200<br> 指定した保留中のすべての SaaS 操作を取得します<br>
-応答ペイロード:
-
-```json
-Response body:
-{
-    "id  ": "<guid>",
-    "activityId": "<guid>",
-    "subscriptionId":"<guid>",
-    "offerId": "cont-cld-tier2",
-    "publisherId": "contoso",  
-    "planId": "silver",
-    "quantity": "20",
-    "action": "Convert",
-    "timeStamp": "2018-12-01T00:00:00",
-    "status": "NotStarted"
-}
-
-```
-
-コード:404<br>
-見つかりません
-
-コード:400<br>
-無効な要求 - 検証エラー
-
-コード:403<br>
-権限がありません。 認証トークンが提供されていないか、無効であるか、または現在のユーザーに属していない購入に要求がアクセスしようとしています。
- 
 コード:500<br> 内部サーバー エラー
 
 ```json
@@ -724,25 +777,36 @@ Response body:
     "operationId": "<guid>",
     "activityId": "<guid>",
     "subscriptionId":"<guid>",
-    "offerId": "cont-cld-tier2",
+    "offerId": "offer1",
     "publisherId": "contoso",
     "planId": "silver",
     "quantity": "20"  ,
-    "action": "Activate",   // Activate/Delete/Suspend/Reinstate/Change[new]  
+    "action": "Subscribe",
     "timeStamp": "2018-12-01T00:00:00"
 }
-
 ```
+
+ここで、アクションは次のいずれかです。 
+- `Subscribe` (リソースがアクティブ化されたとき)
+- `Unsubscribe` (リソースが削除されたとき)
+- `ChangePlan` (プランの変更操作が完了したとき)
+- `ChangeQuantity` (数量の変更操作が完了したとき)
+- `Suspend` (リソースが中断されたとき)
+- `Reinstate` (リソースが中断後に再開されたとき)
 
 
 ## <a name="mock-api"></a>モック API
 
 開発、特にプロジェクトのプロトタイプ作成およびテストの開始に役立てるためにモック API を使用できます。 
 
-ホスト エンドポイント:`https://marketplaceapi.microsoft.com/api` API バージョン:`2018-09-15` 認証を必要としないサンプル URI: `https://marketplaceapi.microsoft.com/api/saas/subscriptions?api-version=2018-09-15`
+ホスト エンドポイント: `https://marketplaceapi.microsoft.com/api` <br/>
+API バージョン: `2018-09-15` <br/>
+認証は不要です <br/>
+サンプル URI: `https://marketplaceapi.microsoft.com/api/saas/subscriptions?api-version=2018-09-15` <br/>
 
-この記事の API 呼び出しはどれも、モック ホスト エンドポイントに対して行えます。 応答としてモック データを取り戻すことができます。
+API エンドポイント パスはモック API と実際の API で同じですが、API バージョンは異なります。 モックのバージョンは 2018-09-15 で、運用バージョンは 2018-08-31 です。 
 
+この記事の API 呼び出しはどれも、モック ホスト エンドポイントに対して行えます。 応答としてモック データを取り戻すことができます。 一般に、応答としてモック データを取得できます。 モック API に対するサブスクリプションの更新メソッドの呼び出しには、常に 500 が返されます。 
 
 ## <a name="next-steps"></a>次の手順
 

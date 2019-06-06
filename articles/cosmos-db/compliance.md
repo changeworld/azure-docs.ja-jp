@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: c8a74df19c012613807d39fb3ee529173e82d5ba
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bbfc31e5eab2c2beb232a9ec2e0d5e11e4107be5
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58093264"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65606272"
 ---
 # <a name="compliance-in-azure-cosmos-db"></a>Azure Cosmos DB のコンプライアンス 
 
@@ -28,7 +28,7 @@ Azure Cosmos DB は、すべての Azure リージョンで利用できます。
 
 * **米国国防総省 (DoD) 向け Azure Government** は、米国内の 2 つのリージョンで米国国防総省が利用できます。
 
-規制の対象となる業界や世界中の市場におけるお客様各自の遵守義務を満たすことを支援するために、Azure では、その幅の広さ (認証の総数) と深さ (評価対象である顧客向けサービスの数) の両方に関して、業界最大のコンプライアンス ポートフォリオを保持しています。  Azure のコンプライアンス認証は、4 つのセグメント (グローバルに適用可能、米国政府、業界に固有、および地域/国に固有) にグループ化されています。  コンプライアンス認証は、独立したサードパーティの監査企業による正式な認証、証明、検証、承認、および評価の他に、Microsoft による契約の修正、自己評価、顧客向けのガイダンス ドキュメントを含むさまざまな種類の保証に基づいています。
+規制の対象となる業界や世界中の市場におけるお客様各自の遵守義務を満たすことを支援するために、Azure では、その幅の広さ (認証の総数) と深さ (評価対象である顧客向けサービスの数) の両方に関して、業界最大のコンプライアンス ポートフォリオを保持しています。  Azure のコンプライアンス認証は、4 つのセグメント (グローバルに適用可能、米国政府、業界に固有、および国や地域に固有) にグループ化されています。  コンプライアンス認証は、独立したサードパーティの監査企業による正式な認証、証明、検証、承認、および評価の他に、Microsoft による契約の修正、自己評価、顧客向けのガイダンス ドキュメントを含むさまざまな種類の保証に基づいています。
 
 ## <a name="azure-cosmos-db-certifications"></a>Azure Cosmos DB の認証  
 

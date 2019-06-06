@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: v-erkell
-ms.openlocfilehash: 69921300163bd9a326f3baedd3182da887ad02c4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 47a4b38d39c52992b51284776ec34cb9491020e7
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59264456"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595418"
 ---
 # <a name="avere-vfxt-for-azure-faq"></a>Avere vFXT for Azure の FAQ
 
@@ -204,7 +204,7 @@ Avere vFXT 環境は、ネットワーク ゲートウェイまたは VPN 経由
 
 一般的に、必要に応じて自分の仮想ネットワークで追加のセキュリティを構成できます。ただし、一部の制限がクラスターの操作に干渉することがあります。
 
-たとえば、仮想ネットワークからのアウトバウンドのインターネット アクセスを制限すると、AzureConnectors と AzureCloud へのアクセスを明示的に許可するルールも追加しない限り、クラスターに問題が発生します。 この状況に関する説明は [GitHub の補足ドキュメント](https://github.com/Azure/Avere/tree/master/src/vfxt/internet_access.md)にあります。
+たとえば、仮想ネットワークからのアウトバウンドのインターネット アクセスを制限すると、AzureCloud へのアクセスを明示的に許可するルールも追加しない限り、クラスターに問題が発生します。 この状況に関する説明は [GitHub の補足ドキュメント](https://github.com/Azure/Avere/tree/master/src/vfxt/internet_access.md)にあります。
 
 セキュリティのカスタマイズでヘルプが必要な場合、「[お使いのシステムでサポートを受ける](avere-vfxt-open-ticket.md#open-a-support-ticket-for-your-avere-vfxt)」に記載されているサポートにお問い合わせください。
 

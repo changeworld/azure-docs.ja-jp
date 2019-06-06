@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: magoedte
-ms.openlocfilehash: aa1bb62e762925dcb5a0ee37b71602094e768137
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c7c0d2e3fb818f74a65502674188c523d23729e8
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58905700"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65606745"
 ---
 # <a name="application-insights-connector-management-solution-deprecated"></a>Application Insights Connector 管理ソリューション (非推奨)
 
@@ -51,10 +51,10 @@ Application Insights Connector ソリューションを使用すると、[Applic
 
 | 接続先ソース | サポートされています | 説明 |
 | --- | --- | --- |
-| [Windows エージェント](../../azure-monitor/platform/agent-windows.md) | いいえ  | ソリューションでは、Windows エージェントの情報は収集しません。 |
-| [Linux エージェント](../../azure-monitor/learn/quick-collect-linux-computer.md) | いいえ  | ソリューションでは、Linux エージェントの情報は収集しません。 |
-| [SCOM 管理グループ](../../azure-monitor/platform/om-agents.md) | いいえ  | ソリューションでは、接続された SCOM 管理グループ内のエージェントの情報は収集しません。 |
-| [Azure Storage アカウント](collect-azure-metrics-logs.md) | いいえ  | ソリューションでは、Azure Storage の情報は収集しません。 |
+| [Windows エージェント](../../azure-monitor/platform/agent-windows.md) | いいえ | ソリューションでは、Windows エージェントの情報は収集しません。 |
+| [Linux エージェント](../../azure-monitor/learn/quick-collect-linux-computer.md) | いいえ | ソリューションでは、Linux エージェントの情報は収集しません。 |
+| [SCOM 管理グループ](../../azure-monitor/platform/om-agents.md) | いいえ | ソリューションでは、接続された SCOM 管理グループ内のエージェントの情報は収集しません。 |
+| [Azure Storage アカウント](collect-azure-metrics-logs.md) | いいえ | ソリューションでは、Azure Storage の情報は収集しません。 |
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -66,7 +66,7 @@ Application Insights Connector ソリューションを使用すると、[Applic
 
 1. Azure Web Apps Analytics ソリューションを有効にします。[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AppInsights?tab=Overview) から有効にするか、[ソリューション ギャラリーからの Log Analytics ソリューションの追加](../../azure-monitor/insights/solutions.md)に関するページで説明されているプロセスを使用して有効にしてください。
 2. [Azure ポータル](https://portal.azure.com)にアクセスします。 **[すべてのサービス]** を選択して、Application Insights を開きます。 次に、"Application Insights" を検索します。 
-3. **[サブスクリプション]** で、Application Insights リソースを所有するサブスクリプションを選択し、**[名前]** で、1 つまたは複数のアプリケーションを選択します。
+3. **[サブスクリプション]** で、Application Insights リソースを所有するサブスクリプションを選択し、 **[名前]** で、1 つまたは複数のアプリケーションを選択します。
 4. **[Save]** をクリックします。
 
 約 30 分でデータが使用可能となり、次の図のように、[Application Insights] タイルがデータで更新されます。
@@ -128,7 +128,7 @@ Application Insights Connector ソリューションを使用すると、[Applic
 
 ![Application Insights の [例外] ブレード](./media/app-insights-connector/exceptions-blade-drill-search.png)
 
-**Application Insights Connector** ダッシュボードで何かをクリックしているかどうかに関係なく、**[検索]** ページでは、Application Insights データを返すすべてのクエリで Application Insights パースペクティブが表示されます。 たとえば、Application Insights データを表示する場合、**&#42;** クエリでも、次の図のように、パースペクティブ タブが表示されます。
+**Application Insights Connector** ダッシュボードで何かをクリックしているかどうかに関係なく、 **[検索]** ページでは、Application Insights データを返すすべてのクエリで Application Insights パースペクティブが表示されます。 たとえば、Application Insights データを表示する場合、 **&#42;** クエリでも、次の図のように、パースペクティブ タブが表示されます。
 
 ![Application Insights](./media/app-insights-connector/app-insights-search.png)
 
@@ -142,7 +142,7 @@ Application Insights Connector ソリューションを使用すると、[Applic
 
 [Application Insights Connector] ブレードは、"*Azure portal を使用しているときに*"、選択した Application Insights アプリにピボットできるように設計されています。 このソリューションを高度な監視プラットフォームとして使用して、アプリのトラブルシューティングを行うことができます。 接続されているアプリケーションのいずれかで潜在的な問題があることを確認したら、Log Analytics 検索で問題をドリルダウンするか、Application Insights アプリに直接ピボットすることができます。
 
-ピボットするには、各行の最後に表示される省略記号 (**…**) をクリックし、**[Application Insights で開く]** を選択します。
+ピボットするには、各行の最後に表示される省略記号 ( **…** ) をクリックし、 **[Application Insights で開く]** を選択します。
 
 >[!NOTE]
 >**[Application Insights で開く]** は Azure ポータルでは使用できません。
@@ -151,7 +151,7 @@ Application Insights Connector ソリューションを使用すると、[Applic
 
 ### <a name="sample-corrected-data"></a>サンプリング補正データ
 
-Application Insights では、"*[サンプリング補正](../../azure-monitor/app/sampling.md)*" によって、テレメトリのトラフィックを削減しています。 Application Insights アプリでサンプリングを有効にすると、Application Insights と Log Analytics の両方に格納されるエントリの数が減少します。 データの整合性は **Application Insights Connector** ページとパースペクティブで保持されますが、カスタム クエリでは、サンプリング データを手動で補正する必要があります。
+Application Insights では、" *[サンプリング補正](../../azure-monitor/app/sampling.md)* " によって、テレメトリのトラフィックを削減しています。 Application Insights アプリでサンプリングを有効にすると、Application Insights と Log Analytics の両方に格納されるエントリの数が減少します。 データの整合性は **Application Insights Connector** ページとパースペクティブで保持されますが、カスタム クエリでは、サンプリング データを手動で補正する必要があります。
 
 ログ検索クエリでのサンプリング補正の例を次に示します。
 
@@ -192,7 +192,7 @@ ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by Telemetry
 | DeviceType | クライアント デバイス |
 | ScreenResolution |   |
 | Continent | 要求元の大陸 |
-| Country | 要求元の国 |
+| Country | 要求元の国や地域 |
 | Province | 要求元の都道府県またはロケール |
 | City | 要求元の市町村 |
 | isSynthetic | 要求がユーザーによって作成されたか、自動化された方法で作成されたかを示します。 True = ユーザーが生成、false = 自動化された方法 |
@@ -311,7 +311,7 @@ $Headers = @{
 $Connections = Invoke-RestMethod -Method "GET" -Uri "https://management.azure.com$($LAWorkspace.ResourceId)/dataSources/?%24filter=kind%20eq%20'ApplicationInsights'&api-version=2015-11-01-preview" -Headers $Headers
 $ConnectionsJson = $Connections | ConvertTo-Json
 ```
-このスクリプトでは、Azure Active Directory に対する認証のためにベアラー認証トークンが必要です。 このトークンを取得する方法の 1 つでは、[REST API のドキュメント サイト](https://docs.microsoft.com/rest/api/loganalytics/datasources/createorupdate)の記事を使用します。 **[試してみる]** をクリックして、お使いの Azure サブスクリプションにログインします。 次の図のように、**[Request Preview]\(要求プレビュー\)** からベアラー トークンをコピーできます。
+このスクリプトでは、Azure Active Directory に対する認証のためにベアラー認証トークンが必要です。 このトークンを取得する方法の 1 つでは、[REST API のドキュメント サイト](https://docs.microsoft.com/rest/api/loganalytics/datasources/createorupdate)の記事を使用します。 **[試してみる]** をクリックして、お使いの Azure サブスクリプションにログインします。 次の図のように、 **[Request Preview]\(要求プレビュー\)** からベアラー トークンをコピーできます。
 
 
 ![ベアラー トークン](media/app-insights-connector/bearer-token.png)

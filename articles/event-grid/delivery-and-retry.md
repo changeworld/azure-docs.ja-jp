@@ -5,14 +5,14 @@ services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 01/01/2019
+ms.date: 05/15/2019
 ms.author: spelluru
-ms.openlocfilehash: 6dfa84eff8dcc104ae6f9c16262f3b1c697df6c1
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: b4bfdd3e9cdf99314dc55907ba163adc6cd39423
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56991208"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65952886"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Event Grid によるメッセージの配信と再試行
 
@@ -24,16 +24,18 @@ Event Grid は、持続性のある配信を提供します。 各サブスク�
 
 ## <a name="retry-schedule-and-duration"></a>再試行のスケジュールと期間
 
-Event Grid は、イベント配信に対して指数バックオフ再試行ポリシーを使用します。 エンドポイントが応答しないか、またはエラー コードを返す場合、Event Grid では次善策として、次のスケジュールで配信を再試行します。
+Event Grid は、メッセージの配信後、応答を 30 秒間待機します。 30 秒経過しても、エンドポイントが応答していない場合は、メッセージは再試行のためにキューに入れられます。 Event Grid は、イベント配信に対して指数バックオフ再試行ポリシーを使用します。 Event Grid ではベスト エフォート方式で次のスケジュールに従って配信を再試行します。
 
-1. 10 秒
-1. 30 秒
-1. 1 分
-1. 5 分
-1. 10 分
-1. 30 分
-1. 1 時間
-1. 最大24 時間で、1時間ごと
+- 10 秒
+- 30 秒
+- 1 分
+- 5 分
+- 10 分
+- 30 分
+- 1 時間
+- 最大24 時間で、1時間ごと
+
+エンドポイントが 3 分以内に応答した場合、Event Grid はベスト エフォート方式でイベントを再試行キューから削除しようとしますが、それでも重複が受信される可能性があります。
 
 Event Grid では、すべての再試行の手順に小規模なランダム化を追加します。また、エンドポイントが一貫して正常ではない、長期間ダウンしている、または圧迫されていることがわかっている場合は、状況に応じて、特定の再試行をスキップできます。
 

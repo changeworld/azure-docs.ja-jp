@@ -2,41 +2,36 @@
 title: 別のアカウントに Azure サブスクリプションの所有権を譲渡する | Microsoft Docs
 description: Azure サブスクリプションを別のユーザーに譲渡する方法と、そのプロセスに関してよく寄せられる質問 (FAQ) について説明します
 keywords: Azure サブスクリプションの譲渡,譲渡、Azure サブスクリプション,Azure サブスクリプションを別のアカウントに移動する,Azure サブスクリプション所有者の変更,譲渡、Azure サブスクリプションを別のアカウントに
-services: ''
-documentationcenter: ''
-author: genlin
-manager: adpick
-editor: ''
+author: bandersmsft
+manager: amberb
 tags: billing,top-support-issue
-ms.assetid: c8ecdc1e-c9c5-468c-a024-94ae41e64702
 ms.service: billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/16/2019
+ms.date: 05/16/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d9af3b1b9c267bc09b370717913722a6c53ad5a1
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: b3f070cafa026679eb9322ac7ba2eafe4c7e233d
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59678821"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65826760"
 ---
 # <a name="transfer-ownership-of-an-azure-subscription-to-another-account"></a>Azure サブスクリプションの所有権を別のアカウントに譲渡する
 
 アカウント センターでサブスクリプションを別のユーザーに転送し、アカウント管理者を変更してサブスクリプションの課金所有権を譲渡します。 サブスクリプションの別のオファーへの変更については、「[別のオファーへの Azure サブスクリプションの切り替え](billing-how-to-switch-azure-offer.md)」で詳細を参照してください。
 
 > [!IMPORTANT]
-> 
+>
 > 新しい Azure AD テナントにサブスクリプションを譲渡すると、[ロールベースのアクセス制御 (RBAC)](../role-based-access-control/overview.md) のすべてのロールの割り当てがソース テナントから完全に削除されます。ターゲット テナントには移行されません。 また、Azure リソースのマネージド ID を手動で再作成する必要もあります。 詳細については、[マネージド ID に関する FAQ と既知の問題](../active-directory/managed-identities-azure-resources/known-issues.md)に関するページを参照してください。
 
 ## <a name="transfer-ownership-of-an-azure-subscription"></a>Azure サブスクリプションの所有権を譲渡する
 
 > [!VIDEO https://channel9.msdn.com/Series/Microsoft-Azure-Tutorials/Transfer-an-Azure-subscription/player]
->
->
+
 
 1. アカウント管理者として [Azure アカウント センター](https://account.windowsazure.com/Subscriptions)にサインインします。サブスクリプションのアカウント管理者を確認する方法については、[よく寄せられる質問](#faq)をご覧ください。
 
@@ -51,7 +46,7 @@ ms.locfileid: "59678821"
 1. 譲渡先を指定します。
 
    > [!IMPORTANT]
-   > 
+   >
    > 新しい Azure AD テナントにサブスクリプションを譲渡すると、[ロールベースのアクセス制御 (RBAC)](../role-based-access-control/overview.md) のすべてのロールの割り当てがソース テナントから完全に削除されます。ターゲット テナントには移行されません。 また、Azure リソースのマネージド ID を手動で再作成する必要もあります。 詳細については、[マネージド ID に関する FAQ と既知の問題](../active-directory/managed-identities-azure-resources/known-issues.md)に関するページを参照してください。
 
    ![Transfer Subscription dialog box](./media/billing-subscription-transfer/image2.PNG)
@@ -68,22 +63,22 @@ ms.locfileid: "59678821"
 
 <a id="EA"></a>
 
-## <a name="transfer-subscription-ownership-for-enterprise-agreement-ea-customers"></a>エンタープライズ契約 (EA) のお客様の、サブスクリプションの所有権の譲渡
+## <a name="transfer-subscription-ownership-for-ea-customers"></a>EA のお客様のサブスクリプション所有権の譲渡
 
 エンタープライズ管理者は、加入契約内でのサブスクリプションの所有権を譲渡できます。 作業を開始するには、EA ポータルの「[アカウントの所有権の譲渡](https://ea.azure.com/helpdocs/changeAccountOwnerForASubscription)」を参照してください。
 
-## <a name="next-steps-after-accepting-ownership-of-a-subscription"></a>サブスクリプションの所有権を受け取った後の次のステップ
+## <a name="next-steps-after-accepting-ownership"></a>所有権を受け取った後の次の手順
 
 1. これで、アカウント管理者になりました。サービス管理者、共同管理者、その他の RBAC ロールを見直して更新します。 詳細については、「[Azure サブスクリプション管理者を追加または変更する](billing-add-change-azure-subscription-administrator.md)」と「[RBAC と Azure portal を使用してアクセスを管理する](../role-based-access-control/role-assignments-portal.md)」を参照してください。
 1. このサブスクリプションのサービスに関連付けられている以下の資格情報を更新します。
    1. サブスクリプションのリソースに対する管理者権限をユーザーに付与する管理証明書。 詳細については、「 [Azure の管理証明書の作成とアップロード](../cloud-services/cloud-services-certs-create.md)
    1. Storage などのサービス用のアクセス キー。 詳細については、「[Azure ストレージ アカウントについて](../storage/common/storage-create-storage-account.md)」を参照してください。
-   1. Azure Virtual Machines などのサービス用のリモート アクセス資格情報。 
+   1. Azure Virtual Machines などのサービス用のリモート アクセス資格情報。
 1. パートナーがいる場合は、このサブスクリプションのパートナー ID を更新することを検討します。 パートナー ID は、[Azure Portal](https://portal.azure.com) で更新できます。
 
 <a id="supported"></a>
 
-## <a name="whats-supported"></a>サポート対象:
+## <a name="supported-offers"></a>サポートされるオファー
 
 以下の表に示したオファーまたはサブスクリプションの種類では、セルフ サービス サブスクリプションの譲渡を使用できます。 現在、無料試用版または [Azure イン オープン プラン (AIO)](https://azure.microsoft.com/offers/ms-azr-0111p/) のサブスクリプションを譲渡することはできません。 対処法ついては、「[新しいリソース グループまたはサブスクリプションへのリソースの移動](../azure-resource-manager/resource-group-move-resources.md)」を参照してください。 [スポンサー プラン](https://azure.microsoft.com/offers/ms-azr-0036p/)、サポート プランなどの他のサブスクリプションを譲渡するには、[サポートにお問い合わせください](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
 
@@ -110,7 +105,7 @@ ms.locfileid: "59678821"
 アカウント管理者は、Azure サブスクリプションのサインアップまたは購入を行ったユーザーです。 [アカウント センター](https://account.azure.com/Subscriptions)にアクセスし、サブスクリプションの作成、サブスクリプションの取り消し、サブスクリプションの課金の変更、サービス管理者の変更などのさまざまな管理タスクを実行する権限を持ちます。 サブスクリプションのアカウント管理者が不明な場合は、次の手順で確認します。
 
 1. [Azure Portal の [サブスクリプション] ページ](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)にアクセスします。
-1. 確認するサブスクリプションを選択し、**[設定]** を調べます。
+1. 確認するサブスクリプションを選択し、 **[設定]** を調べます。
 1. **[プロパティ]** を選択します。 サブスクリプションのアカウント管理者が、 **[アカウント管理者]** ボックスに表示されます。
 
 ### <a name="does-everything-transfer-including-resource-groups-vms-disks-and-other-running-services"></a>あらゆるものが譲渡されるのでしょうか。 リソース グループ、VM、ディスク、他の実行中のサービスは含まれますか?
@@ -119,7 +114,12 @@ VM、ディスク、Web サイトなどのすべてのリソースが、新し�
 
 ### <a id="no-button"></a>[サブスクリプションの譲渡] ボタンが表示されないのはなぜですか。
 
-残念ながら、セルフ サービスのサブスクリプションの譲渡は、お使いのオファーまたはその国では使用できません。 サブスクリプションを譲渡するには、[サポートにお問い合わせください](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
+残念ながら、セルフ サービスのサブスクリプションの譲渡は、お使いのオファーでは使用できません。 サポートされているオファーの一覧については、この記事の「[サポートされるオファー](#supported-offers)」セクションをご覧ください。
+
+### <a name="can-i-transfer-ownership-to-an-account-in-another-country"></a>別の国のアカウントに所有権を譲渡できますか。
+
+残念ながら、Azure では国外への譲渡は許可されていません。 サブスクリプションを国外に譲渡するには、[サポートにお問い合わせください](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
+
 
 ### <a name="does-a-subscription-transfer-result-in-any-service-downtime"></a>サブスクリプションの譲渡により、サービスのダウンタイムは発生しますか。
 
@@ -140,7 +140,7 @@ Azure サブスクリプションは、アカウント管理者が属するデ�
 譲渡先でリソースへのアクセスを制限する必要がある場合、サービスに関連付けられているすべてのシークレットの更新を検討する必要があります。 ほとんどのリソースは、次の手順を使って更新できます。
 
   1. [Azure ポータル](https://portal.azure.com)にアクセスします。
-  2. ハブ メニューで、**[すべてのリソース]** を選択します。
+  2. ハブ メニューで、 **[すべてのリソース]** を選択します。
   3. リソースを選択します。
   4. リソースのブレードで **[設定]** をクリックします。 ここで、既存のシークレットを表示して更新できます。
 
@@ -156,9 +156,9 @@ Azure サブスクリプションは、アカウント管理者が属するデ�
 
 プランはそのままにしておく必要があります。 オファーの変更については、「[別のオファーへの Azure サブスクリプションの切り替え](billing-how-to-switch-azure-offer.md)」を参照してください。
 
-### <a name="can-i-transfer-a-subscription-to-a-user-account-in-another-country"></a>他の国のユーザー アカウントにサブスクリプションを譲渡できますか。
+### <a name="can-i-transfer-a-subscription-to-a-user-account-in-another-countryregion"></a>別の国や地域のユーザー アカウントにサブスクリプションを譲渡できますか?
 
-いいえ。他の国のユーザー アカウントにサブスクリプションを譲渡することはできません。 譲渡先のユーザー アカウントは、同じ国に属している必要があります。
+いいえ。別の国や地域のユーザー アカウントにサブスクリプションを譲渡することはできません。 譲渡先のユーザー アカウントは、同じ国や地域に属している必要があります。
 
 ### <a name="can-the-recipient-use-a-different-payment-method"></a>譲渡先で別の支払い方法を使用できますか。
 
@@ -175,3 +175,7 @@ Azure サブスクリプションは、アカウント管理者が属するデ�
 ## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
 
 ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://go.microsoft.com/fwlink/?linkid=2083458)してください。
+
+## <a name="next-steps"></a>次の手順
+
+- サービス管理者、共同管理者、その他の RBAC ロールを見直して更新します。 詳細については、「[Azure サブスクリプション管理者を追加または変更する](billing-add-change-azure-subscription-administrator.md)」と「[RBAC と Azure portal を使用してアクセスを管理する](../role-based-access-control/role-assignments-portal.md)」を参照してください。

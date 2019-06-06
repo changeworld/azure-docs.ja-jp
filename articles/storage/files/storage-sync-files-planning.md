@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 2/7/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: f29625ed8ddd6eabf8b75380d84d7a7b64396d7a
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 7cbb934b87440d23e65fce53d7da40c5ffbd3150
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64696519"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65597083"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Azure File Sync のデプロイの計画
 Azure File Sync を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま Azure Files で組織のファイル共有を一元化できます。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -178,9 +178,9 @@ Windows Server フェールオーバー クラスタリングは、Azure ファ�
 ### <a name="distributed-file-system-dfs"></a>分散ファイル システム (DFS)
 Azure File Sync は、DFS 名前空間 (DFS-N) および DFS レプリケーション (DFS-R) との相互運用をサポートします。
 
-**DFS 名前空間 (DFS-N)**:Azure File Sync は DFS-N サーバーで完全にサポートされます。 1 つまたは複数の DFS-N メンバーに Azure File Sync をインストールして、サーバー エンドポイントとクラウド エンドポイントの間でデータを同期できます。 詳しくは、「[DFS 名前空間の概要](https://docs.microsoft.com/windows-server/storage/dfs-namespaces/dfs-overview)」をご覧ください。
+**DFS 名前空間 (DFS-N)** :Azure File Sync は DFS-N サーバーで完全にサポートされます。 1 つまたは複数の DFS-N メンバーに Azure File Sync をインストールして、サーバー エンドポイントとクラウド エンドポイントの間でデータを同期できます。 詳しくは、「[DFS 名前空間の概要](https://docs.microsoft.com/windows-server/storage/dfs-namespaces/dfs-overview)」をご覧ください。
  
-**DFS レプリケーション (DFS-R)**:DFS-R と Azure File Sync はどちらもレプリケーション ソリューションなので、ほとんどの場合は、DFS-R を Azure File Sync に置き換えることをお勧めします。ただし、DFS-R と Azure File Sync を併用するのが望ましいシナリオがいくつかあります。
+**DFS レプリケーション (DFS-R)** :DFS-R と Azure File Sync はどちらもレプリケーション ソリューションなので、ほとんどの場合は、DFS-R を Azure File Sync に置き換えることをお勧めします。ただし、DFS-R と Azure File Sync を併用するのが望ましいシナリオがいくつかあります。
 
 - DFS-R のデプロイから Azure File Sync のデプロイに移行しているとき。 詳しくは、「[DFS レプリケーション (DFS-R) のデプロイを Azure File Sync に移行する](storage-sync-files-deployment-guide.md#migrate-a-dfs-replication-dfs-r-deployment-to-azure-file-sync)」をご覧ください。
 - ファイル データのコピーが必要なオンプレミスのサーバーの中に、インターネットに直接接続することができないものが含まれる場合。
@@ -256,10 +256,18 @@ Azure File Sync は、次のリージョンでのみ利用できます。
 | 東南アジア | シンガポール |
 | 英国南部 | ロンドン |
 | 英国西部 | カーディフ |
+| US Gov アリゾナ (プレビュー) | アリゾナ |
+| US Gov テキサス (プレビュー) | テキサス |
+| US Gov バージニア (プレビュー) | バージニア州 |
 | 西ヨーロッパ | オランダ |
+| 米国中西部 | ワイオミング |
 | 米国西部 | カリフォルニア |
+| 米国西部 2 | ワシントン |
 
 Azure File Sync は、ストレージ同期サービスと同じリージョンの Azure ファイル共有との同期のみをサポートしています。
+
+> [!Note]  
+> Azure File Sync は現在、政府機関リージョンのプライベート プレビューでのみ利用可能です。 プレビュー プログラムの登録手順については、[リリース ノート](https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#agent-version-5020)を参照してください。
 
 ### <a name="azure-disaster-recovery"></a>Azure ディザスター リカバリー
 Azure リージョンの損失を防ぐため、Azure File Sync には [geo 冗長ストレージの冗長性](../common/storage-redundancy-grs.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) (GRS) オプションが統合されています。 GRS ストレージは、プライマリ リージョンのストレージ (通常、操作している) と、ペアのセカンダリ リージョンとの間でブロックの非同期レプリケーションを使用することで機能します。 Azure リージョンが一時的または永続的にオフラインになる障害が発生した場合、Microsoft はペアのリージョンにストレージをフェールオーバーします。 
@@ -271,8 +279,9 @@ geo 冗長ストレージと Azure File Sync との間のフェールオーバ�
 
 | プライマリ リージョン      | ペアのリージョン      |
 |---------------------|--------------------|
-| オーストラリア東部      | オーストラリア南東部 |
+| オーストラリア東部      | オーストラリア南東部|
 | オーストラリア南東部 | オーストラリア東部     |
+| ブラジル南部        | 米国中南部   |
 | カナダ中部      | カナダ東部        |
 | カナダ東部         | カナダ中部     |
 | インド中部       | インド南部        |
@@ -280,16 +289,24 @@ geo 冗長ストレージと Azure File Sync との間のフェールオーバ�
 | 東アジア           | 東南アジア     |
 | 米国東部             | 米国西部            |
 | 米国東部 2           | 米国中部         |
+| 東日本          | 西日本         |
+| 西日本          | 東日本         |
 | 韓国中部       | 韓国南部        |
 | 韓国南部         | 韓国中部      |
 | 北ヨーロッパ        | 西ヨーロッパ        |
 | 米国中北部    | 米国中南部   |
+| 米国中南部    | 米国中北部   |
 | インド南部         | インド中部      |
 | 東南アジア      | 東アジア          |
 | 英国南部            | 英国西部            |
 | 英国西部             | 英国南部           |
+| 米国政府アリゾナ      | 米国政府テキサス       |
+| US Gov アイオワ         | 米国政府バージニア州    |
+| US Gov バージニア      | 米国政府テキサス       |
 | 西ヨーロッパ         | 北ヨーロッパ       |
+| 米国中西部     | 米国西部 2          |
 | 米国西部             | 米国東部            |
+| 米国西部 2           | 米国中西部    |
 
 ## <a name="azure-file-sync-agent-update-policy"></a>Azure ファイル同期エージェントの更新ポリシー
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]

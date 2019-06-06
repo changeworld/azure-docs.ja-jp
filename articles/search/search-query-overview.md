@@ -7,14 +7,14 @@ ms.author: heidist
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 05/13/2019
 ms.custom: seodec2018
-ms.openlocfilehash: 7ed675e4c6988cf4c1340613323440de55a36843
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 95f5dde12ad9e34a0a04c988a816538ac30e01e6
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024461"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595982"
 ---
 # <a name="how-to-compose-a-query-in-azure-search"></a>Azure Search でクエリを構成する方法
 
@@ -55,7 +55,7 @@ Azure Search では、クエリにラウンドトリップ処理すべてが指�
 
 + **`searchFields`** は省略可能です。クエリ実行を特定のフィールドに限定するために使用されます。
 
-応答も、クエリに指定するパラメーターによって形成されます。 この例では、結果セットは **`select`** ステートメントに指定されたフィールドで構成されます。 このクエリでは上位 10 件しか返されませんが、**`count`** によって、一致したドキュメントの全体数がわかります。 このクエリでは、行は daysOnMarket に基づいて並べられます。
+応答も、クエリに指定するパラメーターによって形成されます。 この例では、結果セットは **`select`** ステートメントに指定されたフィールドで構成されます。 このクエリでは上位 10 件しか返されませんが、 **`count`** によって、一致したドキュメントの全体数がわかります。 このクエリでは、行は daysOnMarket に基づいて並べられます。
 
 Azure Search では、クエリ実行の対象となるのは常に、要求に含まれている API キーを使用して認証された 1 つのインデックスです。 REST では、両方が要求ヘッダーに指定されます。
 
@@ -84,7 +84,7 @@ Azure Search ではインデックスの設計とクエリの設計は密接に�
 
 クエリ要求の必須要素には、次のコンポーネントが含まれます。
 
-+ サービス エンドポイントとインデックス ドキュメントのコレクション。固定コンポーネントとユーザー定義コンポーネントを含む URL として指定されます。**`https://<your-service-name>.search.windows.net/indexes/<your-index-name>/docs`**
++ サービス エンドポイントとインデックス ドキュメントのコレクション。固定コンポーネントとユーザー定義コンポーネントを含む URL として指定されます。 **`https://<your-service-name>.search.windows.net/indexes/<your-index-name>/docs`**
 + **`api-version`** (REST のみ) は必須です。常に複数の API バージョンが使用できるためです。 
 + **`api-key`** (クエリまたは管理者の api-key) が、サービスへの要求を認証します。
 + **`queryType`** (simple または full)。組み込まれている既定の単純構文を使用する場合は省略できます。
@@ -122,7 +122,7 @@ Azure Search では幅広いクエリの種類がサポートされます。
 | フィルター検索 | [OData フィルター式](query-odata-filter-orderby-syntax.md)といずれかのパーサー | フィルター クエリは、インデックスのすべての "*フィルター処理可能*" フィールドでブール式を評価します。 検索クエリと異なり、フィルター クエリはフィールドの内容を厳密に照合します。たとえば、文字列フィールドでは大文字と小文字が区別されます。 もう 1 つの違いは、フィルター クエリは OData 構文で表されることです。 <br/>[フィルター式の例](search-query-simple-examples.md#example-3-filter-queries) |
 | 地理空間検索 | フィールドの [Edm.GeographyPoint 型](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)、フィルター式、いずれかのパーサー | Edm.GeographyPoint 型のフィールドに格納された座標が、"近くを探す" つまりマップに基づいた検索コントロールで使用されます。 <br/>[地理空間検索の例](search-query-simple-examples.md#example-5-geo-search)|
 | 範囲検索 | フィルター式と単純なパーサー | Azure Search では範囲クエリは filter パラメーターを使用して作成されます。 <br/>[範囲フィルターの例](search-query-simple-examples.md#example-4-range-filters) | 
-| [フィールド内フィルタリング](query-lucene-syntax.md#bkmk_fields) | search パラメーターと完全なパーサー | 1 つのフィールドを対象とする複合クエリ式を作成します。 <br/>[フィールド内フィルタリングの例](search-query-lucene-examples.md#example-2-intra-field-filtering) |
+| [フィールド検索](query-lucene-syntax.md#bkmk_fields) | search パラメーターと完全なパーサー | 1 つのフィールドを対象とする複合クエリ式を作成します。 <br/>[フィールド検索の例](search-query-lucene-examples.md#example-2-fielded-search) |
 | [あいまい検索](query-lucene-syntax.md#bkmk_fuzzy) | search パラメーターと完全なパーサー | 構造やスペリングが似ている語句を照合します。 <br/>[あいまい検索の例](search-query-lucene-examples.md#example-3-fuzzy-search) |
 | [近接検索](query-lucene-syntax.md#bkmk_proximity) | search パラメーターと完全なパーサー | ドキュメント内で近くにある語句を検索します。 <br/>[近接検索の例](search-query-lucene-examples.md#example-4-proximity-search) |
 | [用語ブースト](query-lucene-syntax.md#bkmk_termboost) | search パラメーターと完全なパーサー | ブーストされた語を含むドキュメントの順位を、含まないドキュメントよりも引き上げます。 <br/>[用語ブーストの例](search-query-lucene-examples.md#example-5-term-boosting) |
@@ -156,11 +156,11 @@ Azure Search では、検索結果のページングを簡単に実装できま�
 ### <a name="ordering-results"></a>結果の並べ替え
 検索クエリに対する結果を受け取る際、Azure Search から指定のフィールドの値に基づいて並べ替えられた結果が返されるようにすることができます。 既定では、Azure Search では、 [TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)から派生する各ドキュメントの検索スコアのランクに基づいて検索結果を並べ替えます。
 
-検索スコア以外の値に基づいて並べ替えられた結果が Azure Search から返されるようにするには、**`orderby`** 検索パラメーターを使います。 フィールド名を含める **`orderby`** パラメーターの値と、地理空間値の [**`geo.distance()` 関数**](query-odata-filter-orderby-syntax.md)の呼び出しを指定できます。 結果を昇順で要求する場合は各式の後に `asc` を指定し、降順で要求する場合は **`desc`** を指定します。 既定のランクは昇順です。
+検索スコア以外の値に基づいて並べ替えられた結果が Azure Search から返されるようにするには、 **`orderby`** 検索パラメーターを使います。 フィールド名を含める **`orderby`** パラメーターの値と、地理空間値の [ **`geo.distance()` 関数**](query-odata-filter-orderby-syntax.md)の呼び出しを指定できます。 結果を昇順で要求する場合は各式の後に `asc` を指定し、降順で要求する場合は **`desc`** を指定します。 既定のランクは昇順です。
 
 
 ### <a name="hit-highlighting"></a>検索結果の強調表示
-Azure Search では、検索クエリに一致する検索結果の特定の部分を正確に強調表示できます。これは、**`highlight`**、**`highlightPreTag`**、**`highlightPostTag`** の各パラメーターを使用して簡単に行えます。 一致するテキストを強調表示する*検索可能*フィールドを指定できるほか、Azure Search から返される一致テキストの先頭と末尾に追加する文字列タグを正確に指定することもできます。
+Azure Search では、検索クエリに一致する検索結果の特定の部分を正確に強調表示できます。これは、 **`highlight`** 、 **`highlightPreTag`** 、 **`highlightPostTag`** の各パラメーターを使用して簡単に行えます。 一致するテキストを強調表示する*検索可能*フィールドを指定できるほか、Azure Search から返される一致テキストの先頭と末尾に追加する文字列タグを正確に指定することもできます。
 
 ## <a name="see-also"></a>関連項目
 

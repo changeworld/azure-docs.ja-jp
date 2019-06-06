@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: hrasheed
-ms.openlocfilehash: 003aeadba1f4683af40f390d40dd3bbe32e02a83
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 528d2fd5b26e06478078711405bd5b9ca51feeda
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64721925"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65859996"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Azure Portal を使用して HDInsight の Apache Hadoop クラスターを管理する
 
@@ -30,11 +30,11 @@ ms.locfileid: "64721925"
 
 ## <a name="showClusters"></a>クラスターの一覧と表示
 **[HDInsight クラスター]** ページに既存のクラスターの一覧が表示されます。  ポータルから:
-1. 左側のメニューから、**[すべてのサービス]** を選択します。
+1. 左側のメニューから、 **[すべてのサービス]** を選択します。
 2. **[ANALYTICS]** の **[HDInsight クラスター]** を選択します。
 
 ## <a name="homePage"></a> クラスター ホーム ページ 
-[**[HDInsight クラスター]**](#showClusters) ページから、ご自身のクラスター名を選択します。  これにより、次の図のような **[概要]** ビューが開きます。
+[ **[HDInsight クラスター]** ](#showClusters) ページから、ご自身のクラスター名を選択します。  これにより、次の図のような **[概要]** ビューが開きます。
 
 ![Azure Portal HDInsight クラスター 基本情報](./media/hdinsight-administer-use-portal-linux/hdinsight-essentials2.png)
 
@@ -94,7 +94,7 @@ ms.locfileid: "64721925"
 
 ## <a name="properties"></a> クラスターのプロパティ
 
-[クラスター ホーム ページ](#homePage)の **[設定]** で、**[プロパティ]** を選択します。
+[クラスター ホーム ページ](#homePage)の **[設定]** で、 **[プロパティ]** を選択します。
 
 |Item | 説明 |
 |---|---|
@@ -104,7 +104,7 @@ ms.locfileid: "64721925"
 |Status|次のいずれか:Aborted、Accepted、ClusterStorageProvisioned、AzureVMConfiguration、HDInsightConfiguration、Operational、Running、Error、Deleting、Deleted、Timedout、DeleteQueued、DeleteTimedout、DeleteError、PatchQueued、CertRolloverQueued、ResizeQueued、ClusterCustomization。|
 |リージョン|Azure の場所。 サポートされている Azure の場所の一覧については、「**HDInsight の価格**」の [[リージョン]](https://azure.microsoft.com/pricing/details/hdinsight/) ボックスの一覧をご覧ください。|
 |作成日|クラスターがデプロイされた日付。|
-|オペレーティング システム|**[Windows]** または **[Linux]**。|
+|オペレーティング システム|**[Windows]** または **[Linux]** 。|
 |Type|Hadoop、HBase、Storm、Spark。|
 |バージョン|「[HDInsight で使用可能な Hadoop コンポーネントとバージョンとは](hdinsight-component-versioning.md)」をご覧ください。|
 |サブスクリプション|サブスクリプションの名前。|
@@ -145,7 +145,7 @@ HDInsight クラスターを別の Azure リソース グループまたは別�
 
 [クラスター ホーム ページ](#homePage)から:
 
-1. **[設定]** で、**[クラスター サイズ]** を選択します。
+1. **[設定]** で、 **[クラスター サイズ]** を選択します。
 2. 数値テキスト ボックスで **[worker ノードの数]** を入力します。 クラスター ノードの数の制限は Azure サブスクリプションによって異なります。 制限値を上げるには、課金サポートにお問い合わせください。  コスト情報にはノード数の変更が反映されます。
 3. **[保存]** を選択します。
 
@@ -204,7 +204,7 @@ Hadoop ジョブの大半は、たまにしか実行されないバッチ ジョ
 
 * Azure Data Factory を使用する。 オンデマンドの HDInsight がリンクされたサービスを作成する詳細については、[Azure Data Factory を使用して HDInsight でオンデマンドの Linux ベースの Apache Hadoop クラスターを作成する](hdinsight-hadoop-create-linux-clusters-adf.md)に関するページを参照してください。
 * Azure PowerShell を使用する。  「 [HDInsight での Hive を使用したフライト遅延データの分析](hdinsight-analyze-flight-delay-data-linux.md)」をご覧ください。
-* Azure クラシック CLI を使用する。 [Azure クラシック CLI を使用した HDInsight クラスターの管理](hdinsight-administer-use-command-line.md)に関するページをご覧ください。
+* Azure CLI を使用する。 「[Azure CLI を使用した Azure HDInsight クラスターの管理](hdinsight-administer-use-command-line.md)」を参照してください。
 * HDInsight .NET SDK を使用する。 [Apache Hadoop ジョブを送信する](hadoop/submit-apache-hadoop-jobs-programmatically.md)に関するページをご覧ください。
 
 価格情報については、「 [HDInsight の価格](https://azure.microsoft.com/pricing/details/hdinsight/)」をご覧ください。 ポータルからクラスターを削除する方法については、「[クラスターの削除](#delete-clusters)
@@ -260,8 +260,8 @@ HDInsight クラスターは、2 つのユーザー アカウントを持つこ�
     ```
 
 2. HTTP または HTTPS アドレスを使用して、HDInsight からアクセスできるストレージの場所にファイルをアップロードします。 たとえば、OneDrive や Azure Blob ストレージなどの公開ファイル ストアです。 URI (HTTP または HTTPS アドレス) をファイルに保存します。この URI は、次の手順で必要になります。
-3. [クラスター ホーム ページ](#homePage)の **[設定]** で、**[スクリプト アクション]** を選択します。
-4. **[スクリプト アクション]** ブレードの上部で、**[新規で送信]** を選択します。 
+3. [クラスター ホーム ページ](#homePage)の **[設定]** で、 **[スクリプト アクション]** を選択します。
+4. **[スクリプト アクション]** ブレードの上部で、 **[新規で送信]** を選択します。 
 5. **[スクリプト アクションの送信]** ブレードで、次の情報を入力します。
 
    | フィールド | 値 |
@@ -284,7 +284,7 @@ HDInsight クラスターには、以下の HTTP Web サービスがあります
 * Oozie
 * Templeton
 
-既定では、これらのサービスへのアクセス許可が付与されます。 [Azure クラシック CLI](hdinsight-administer-use-command-line.md#enabledisable-http-access-for-a-cluster) と [Azure PowerShell](hdinsight-administer-use-powershell.md#grantrevoke-access) を使用して、アクセス許可を取り消すかまたは付与することができます。
+既定では、これらのサービスへのアクセス許可が付与されます。 [Azure PowerShell](hdinsight-administer-use-powershell.md#grantrevoke-access) を使用して、アクセス許可を取り消すか付与することができます。
 
 ## <a name="find-the-subscription-id"></a>サブスクリプション ID の検索
 各クラスターは、Azure サブスクリプションに関連付けられています。  Azure サブスクリプション ID は[クラスター ホーム ページ](#homePage)から表示されます。
@@ -316,7 +316,7 @@ HDInsight クラスター ブレードの **[使用状況]** セクションに�
 この記事では、基本的な管理機能をいくつか説明しました。 詳細については、次の記事を参照してください。
 
 * [Azure PowerShell を使用した HDInsight の管理](hdinsight-administer-use-powershell.md)
-* [Azure クラシック CLI を使用した HDInsight の管理](hdinsight-administer-use-command-line.md)
+* [Azure CLI を使用した HDInsight の管理](hdinsight-administer-use-command-line.md)
 * [HDInsight クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)
 * [Apache Ambari Web UI の使用に関する詳細](hdinsight-hadoop-manage-ambari.md)
 * [Apache Ambari REST API の使用に関する詳細](hdinsight-hadoop-manage-ambari-rest-api.md)

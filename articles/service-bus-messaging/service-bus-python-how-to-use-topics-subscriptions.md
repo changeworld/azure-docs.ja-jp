@@ -14,12 +14,12 @@ ms.devlang: python
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: aschhab
-ms.openlocfilehash: 102fe85916194648501be3d2cb39d8bcda9e9f5c
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.openlocfilehash: 47cd0621a601e3f1ef53572bc7bb8bc1c7ea76ab
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59607077"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65991990"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-python"></a>Python で Service Bus のトピックとサブスクリプションを使用する方法
 
@@ -34,7 +34,7 @@ ms.locfileid: "59607077"
 - トピックとサブスクリプションを削除する
 
 ## <a name="prerequisites"></a>前提条件
-1. Azure サブスクリプション。 このチュートリアルを完了するには、Azure アカウントが必要です。 [Visual Studio または MSDN サブスクライバーの特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)を有効にするか、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)にサインアップしてください。
+1. Azure サブスクリプション。 このチュートリアルを完了するには、Azure アカウントが必要です。 [Visual Studio または MSDN のサブスクライバー特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)を有効にするか、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)にサインアップしてください。
 2. 「[Quickstart:Use the Azure portal to create a Service Bus topic and subscriptions to the topic](service-bus-quickstart-topics-subscriptions-portal.md)」(クイック スタート: Azure portal を使用して Service Bus トピックとその中に含まれるサブスクリプションを作成する) の手順に従って、Service Bus の**名前空間**を作成し、**接続文字列**を取得します。
 
     > [!NOTE]
@@ -189,6 +189,9 @@ bus_service.delete_topic('mytopic')
 ```python
 bus_service.delete_subscription('mytopic', 'HighMessages')
 ```
+
+> [!NOTE]
+> Service Bus リソースは、[Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/) で管理できます。 Service Bus Explorer を使用すると、ユーザーは Service Bus 名前空間に接続し、簡単な方法でメッセージング エンティティを管理できます。 このツールには、インポート/エクスポート機能や、トピック、キュー、サブスクリプション、リレー サービス、通知ハブ、イベント ハブをテストする機能などの高度な機能が用意されています。 
 
 ## <a name="next-steps"></a>次の手順
 

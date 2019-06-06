@@ -9,15 +9,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/09/2018
+ms.date: 05/13/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: dd7e29f8f37572565e505aade97b964254b6d72c
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: d93d9999c407e64658b88025feda48d33e1a5ad1
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65466551"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595789"
 ---
 # <a name="enable-safe-deployment-practices-with-azure-deployment-manager-public-preview"></a>Azure Deployment Manager で安全なデプロイを実施できるようにする (パブリック プレビュー)
 
@@ -38,15 +38,11 @@ Deployment Manager を使用するには、次の 4 つのファイルを作成�
 
 Azure Deployment Manager REST API のリファレンスについては、[こちら](https://docs.microsoft.com/rest/api/deploymentmanager/)でご覧いただけます。
 
-## <a name="supported-locations"></a>サポートされる場所
-
-プレビューの場合、Deployment Manager リソースは、米国中部と米国東部 2 でサポートされます。 この記事で説明するサービス ユニット、成果物ソース、ロールアウトなどのリソースをトポロジおよびロールアウト テンプレートで定義する場合、これらのリージョンのいずれかを場所に指定する必要があります。 ただし、仮想マシン、ストレージ アカウント、Web アプリなどのサービスを作成するためにデプロイするリソースは、そのすべての[標準の場所](https://azure.microsoft.com/global-infrastructure/services/?products=all)でサポートされます。  
-
 ## <a name="identity-and-access"></a>ID とアクセス
 
 Deployment Manager では、[ユーザー割り当てマネージド ID](../active-directory/managed-identities-azure-resources/overview.md) がデプロイ操作を実行します。 デプロイの開始前にこの ID を作成します。 この ID には、サービスをデプロイしているサブスクリプションへのアクセス権と、デプロイを完了するための十分な特権が与えられている必要があります。 ロールを介して認められるアクションの詳細については、「[Azure リソースの組み込みロール](../role-based-access-control/built-in-roles.md)」を参照してください。
 
-ID は、Deployment Manager のサポートされている場所のいずれかに置かれている必要があります。また、ロールアウトと同じ場所に置かれている必要もあります。
+ID は、ロールアウトと同じ場所に存在する必要があります。
 
 ## <a name="topology-template"></a>トポロジ テンプレート
 
@@ -221,7 +217,9 @@ ID は、Deployment Manager のサポートされている場所のいずれか�
 
 duration プロパティは、[ISO 8601 標準](https://en.wikipedia.org/wiki/ISO_8601#Durations)を使用します。 前述の例では、1 分間の待機を指定します。
 
-正常性チェック手順の詳細については、「[]()」と「[]()」を参照してください。詳細については、[手順テンプレート リファレンス](/azure/templates/Microsoft.DeploymentManager/steps)を参照してください。
+正常性チェックの手順の詳細については、「[Azure Deployment Manager に正常性統合ロールアウトを導入する](./deployment-manager-health-check.md)」と「[Tutorial:Use health check in Azure Deployment Manager](./deployment-manager-tutorial-health-check.md)」 (チュートリアル: Azure Deployment Manager で正常性チェックを使用する) を参照してください。
+
+詳細については、[steps テンプレート リファレンス](/azure/templates/Microsoft.DeploymentManager/steps)を参照してください。
 
 ### <a name="rollouts"></a>ロールアウト
 

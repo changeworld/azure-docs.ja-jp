@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/24/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 14e8eb7c73a1e2cf5047410d3571008c1cd1e1ca
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: b952763378de562f35c2e1ecaf49c56f0145c559
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51289276"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66166304"
 ---
 # <a name="security-for-internet-of-things-iot-from-the-ground-up"></a>モノのインターネット (IoT) の徹底的なセキュリティ
 
@@ -33,7 +33,7 @@ ms.locfileid: "51289276"
 
 ## <a name="secure-infrastructure-from-the-ground-up"></a>最初からインフラストラクチャをセキュリティで保護する
 
-[Microsoft Cloud](https://azure.microsoft.com) インフラストラクチャは、127 か国で 10 億人を超えるお客様をサポートしています。 エンタープライズ ソフトウェアの構築と世界最大規模のオンライン サービスの実行に関する Microsoft の数十年にわたる 経験を生かし、Microsoft Cloud は、より高いレベルの強化されたセキュリティ、プライバシー、コンプライアンス、およびほとんどのお客様が自分で実行できる脅威緩和プラクティスを提供します。
+[Microsoft Cloud](https://azure.microsoft.com) インフラストラクチャは、127 の国と地域で 10 億人を超えるお客様をサポートしています。 エンタープライズ ソフトウェアの構築と世界最大規模のオンライン サービスの実行に関する Microsoft の数十年にわたる 経験を生かし、Microsoft Cloud は、より高いレベルの強化されたセキュリティ、プライバシー、コンプライアンス、およびほとんどのお客様が自分で実行できる脅威緩和プラクティスを提供します。
 
 [Security Development Lifecycle (SDL)](https://www.microsoft.com/sdl/) では、ソフトウェア ライフサイクル全体にセキュリティ要件を組み込む必須の全社的な開発プロセスが提供されます。 運用アクティビティが同じレベルのセキュリティ プラクティスに従うように、SDL では Microsoft の Operational Security Assurance (OSA) プロセスにおいて規定されている厳格なセキュリティ ガイドラインを使用します。 さらに、Microsoft では、順守義務を満たしていることを継続的に検証するためにサード パーティの監査法人と連携して、Microsoft Digital Crimes Unit、Microsoft Security Response Center、および Microsoft Malware Protection Center を含む、優れたセンターを作成して広範なセキュリティ活動に取り組みます。
 
@@ -103,14 +103,14 @@ IoT インフラストラクチャで使用されるすべてのキーはクラ�
 
 各ソリューション アクセラレータでは、Azure のサービスのインスタンスを作成します：
 
-* [**Azure IoT Hub**](https://azure.microsoft.com/services/iot-hub/): クラウドをデバイスに接続するゲートウェイ。 ハブごとに数百万の接続にスケーリングでき、ソリューションのセキュリティ保護に役立つデバイスごとの認証サポートにより膨大な量のデータを処理できます。
+* [**Azure IoT Hub**](https://azure.microsoft.com/services/iot-hub/):クラウドをデバイスに接続するゲートウェイ。 ハブごとに数百万の接続にスケーリングでき、ソリューションのセキュリティ保護に役立つデバイスごとの認証サポートにより膨大な量のデータを処理できます。
 
-* [**Azure Cosmos DB**](https://azure.microsoft.com/services/cosmos-db/): 属性、構成、セキュリティ プロパティなど、プロビジョニングするデバイスのメタデータを管理する半構造化データ用に完全にインデックス付けされたスケーラブル データベース サービス。 Azure Cosmos DB では、高パフォーマンスで高スループットの処理、スキーマに依存しないデータのインデックス付けと豊富な SQL クエリ インターフェイスが提供されます。
+* [**Azure Cosmos DB**](https://azure.microsoft.com/services/cosmos-db/):属性、構成、セキュリティ プロパティなど、プロビジョニングするデバイスのメタデータを管理する半構造化データ用に完全にインデックス付けされたスケーラブル データベース サービス。 Azure Cosmos DB では、高パフォーマンスで高スループットの処理、スキーマに依存しないデータのインデックス付けと豊富な SQL クエリ インターフェイスが提供されます。
 
-* [**Azure Stream Analytics**](https://azure.microsoft.com/services/stream-analytics/): クラウドにおけるリアルタイム ストリーム処理。これにより、デバイス、センサー、インフラストラクチャ、アプリケーションからのリアルタイムの洞察を得られるようにする低コストの分析ソリューションを迅速に開発してデプロイすることができます。 この完全に管理されたサービスからのデータは、高スループット、低待機時間、および回復性を維持した状態で任意のボリュームにスケーリングできます。
+* [**Azure Stream Analytics**](https://azure.microsoft.com/services/stream-analytics/):クラウドにおけるリアルタイム ストリーム処理。これにより、デバイス、センサー、インフラストラクチャ、アプリケーションからリアルタイムの分析情報を得られるようにする低コストの分析ソリューションを迅速に開発してデプロイすることができます。 この完全に管理されたサービスからのデータは、高スループット、低待機時間、および回復性を維持した状態で任意のボリュームにスケーリングできます。
 
-* [**Azure App Services**](https://azure.microsoft.com/services/app-service/): データがクラウドとオンプレミスのどちらにあっても接続できる強力な Web アプリとモバイル アプリをビルドするためのクラウド プラットフォーム。 iOS、Android、Windows 用の魅力的なモバイル アプリをビルドします。 多数のクラウド ベース サービスとエンタープライズ アプリケーションへのすぐに利用可能な接続により、使用しているサービスとしてのソフトウェア (SaaS) およびエンタープライズ アプリケーションと統合します。 お気に入りの言語や IDE (.NET、Node.js、PHP、Python、または Java) でコードを作成し、Web アプリと API をこれまで以上に迅速にビルドできます。
+* [**Azure App Services**](https://azure.microsoft.com/services/app-service/):データがクラウドとオンプレミスのどちらにあっても接続できる強力な Web アプリとモバイル アプリをビルドするためのクラウド プラットフォームです。 iOS、Android、Windows 用の魅力的なモバイル アプリをビルドします。 多数のクラウド ベース サービスとエンタープライズ アプリケーションへのすぐに利用可能な接続により、使用しているサービスとしてのソフトウェア (SaaS) およびエンタープライズ アプリケーションと統合します。 お気に入りの言語や IDE (.NET、Node.js、PHP、Python、または Java) でコードを作成し、Web アプリと API をこれまで以上に迅速にビルドできます。
 
-* [**Logic Apps**](https://azure.microsoft.com/services/app-service/logic/): Azure App Service の Logic Apps 機能は、既存の基幹業務システムに IoT ソリューションを統合し、ワークフロー プロセスを自動化するのに役立ちます。 開発者は Logic Apps を使用することで、トリガーで開始され、一連の手順 (つまり、ビジネス プロセスに統合するために強力なコネクタを使用するルールとアクション) を実行するワークフローを設計できます。 Logic Apps では、SaaS、クラウド ベース、およびオンプレミス アプリケーションの広範なエコシステムにすぐに接続できます。
+* [**Logic Apps**](https://azure.microsoft.com/services/app-service/logic/):Azure App Service の Logic Apps 機能は、既存の基幹業務システムに IoT ソリューションを統合し、ワークフロー プロセスを自動化するのに役立ちます。 開発者は Logic Apps を使用することで、トリガーで開始され、一連の手順 (つまり、ビジネス プロセスに統合するために強力なコネクタを使用するルールとアクション) を実行するワークフローを設計できます。 Logic Apps では、SaaS、クラウド ベース、およびオンプレミス アプリケーションの広範なエコシステムにすぐに接続できます。
 
-* [**Azure Blob Storage**](https://azure.microsoft.com/services/storage/): デバイスからクラウドに送信されるデータに対応する信頼性と経済性に優れたクラウド ストレージ。
+* [**Azure Blob Storage**](https://azure.microsoft.com/services/storage/):デバイスからクラウドに送信されるデータに対応する信頼性と経済性に優れたクラウド ストレージ。

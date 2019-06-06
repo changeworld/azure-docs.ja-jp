@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 6eaace7589488a9466e78597e0091c84dabb5155
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: a64c58d23543279a3a32d2d7b612b43dee8741eb
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64685286"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65768006"
 ---
 #  <a name="add-claims-and-customize-user-input-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C のカスタム ポリシーを使用した要求の追加とユーザー入力のカスタマイズ - | Microsoft Docs
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-この記事では、新しいユーザー指定のエントリ (要求) を Azure Active Directory (Azure AD) B2C のサインアップ ユーザー体験に追加します。  エントリをドロップダウン リストとして構成し、必要に応じて定義します。
+この記事では、新しいユーザー指定のエントリ (要求) を Azure Active Directory (Azure AD) B2C のサインアップ ユーザー体験に追加します。  このエントリをドロップダウン リストとして構成し、これが必須かどうかを定義します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -29,7 +29,7 @@ ms.locfileid: "64685286"
 
 ## <a name="add-claims"></a>要求の追加
 
-ユーザーからの初期データの収集は、サインアップまたはサインイン ユーザー体験を使用して実現されます。 追加の要求は、後でプロファイル編集のユーザー体験を使用して収集できます。 Azure AD B2C は、いつでもユーザーから情報を対話的に直接収集します。Identity Experience Framework は、その selfasserted プロバイダーを使用します。
+ユーザーからの初期データの収集は、サインアップまたはサインイン ユーザー体験を使用して実現されます。 追加の要求は、後でプロファイル編集のユーザー体験を使用して収集できます。 Azure AD B2C は、いつでもユーザーから情報を対話的に直接収集します。Identity Experience Framework は、そのセルフアサート プロバイダーを使用します。
 
 
 ### <a name="define-the-claim"></a>要求の定義
@@ -262,10 +262,10 @@ ms.locfileid: "64685286"
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. お使いの Azure AD テナントを含むディレクトリを使用していることを確認してください。確認のために、トップ メニューにある **[ディレクトリとサブスクリプション フィルター]** をクリックして、お使いの Azure AD テナントを含むディレクトリを選択します。
-3. Azure portal の左上隅にある **[すべてのサービス]** を選択し、**[アプリの登録]** を検索して選択します。
+3. Azure portal の左上隅にある **[すべてのサービス]** を選択し、 **[アプリの登録]** を検索して選択します。
 4. **[Identity Experience Framework (プレビュー)]** を選択します。
 5. **[カスタム ポリシーのアップロード]** を選択し、変更した 2 つのポリシー ファイルをアップロードします。
-2. アップロードしたサインアップまたはサインイン ポリシーを選択し、**[今すぐ実行]** ボタンをクリックします。
+2. アップロードしたサインアップまたはサインイン ポリシーを選択し、 **[今すぐ実行]** ボタンをクリックします。
 3. メール アドレスを使用してサインアップできることを確認します。
 
 サインアップ画面は、次のようになります。

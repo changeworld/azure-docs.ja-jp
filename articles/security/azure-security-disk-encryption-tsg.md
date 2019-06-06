@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3c6c552a6605278d8ab31264f5d180206e0badac
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 35d494702673d59290a0073c55135138f533b8bf
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59490043"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956693"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Azure Disk Encryption トラブルシューティング ガイド
 
@@ -52,7 +52,7 @@ uname -a
 
 ## <a name="update-the-azure-virtual-machine-agent-and-extension-versions"></a>Azure 仮想マシン エージェントおよび拡張機能のバージョンを更新する
 
-Azure 仮想マシン エージェントのサポートされていないバージョンを使用した仮想マシン イメージでは、Azure Disk Encryption 操作が失敗する場合があります。 詳細については、「[Minimum version support for virtual machine agents in Azure (Azure での仮想マシン エージェントの最小バージョンのサポート)](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)」を参照してください。  
+Azure 仮想マシン エージェントのサポートされていないバージョンを使用した仮想マシン イメージでは、Azure Disk Encryption 操作が失敗する場合があります。 2.2.38 より前のエージェント バージョンを使用した Linux イメージは、暗号化を有効にする前に更新する必要があります。 詳細については、「[VM で Azure Linux エージェントを更新する方法](../virtual-machines/extensions/update-linux-agent.md)」および「[Azure の仮想マシンのエージェントの最小バージョンのサポート](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)」を参照してください。
 
 Microsoft.Azure.Security.AzureDiskEncryption または Microsoft.Azure.Security.AzureDiskEncryptionForLinux ゲスト エージェント拡張機能の適切なバージョンも必要です。 Azure 仮想マシン エージェントの前提条件が満たされ、サポートされているバージョンの仮想マシン エージェントが使用されている場合は、拡張機能のバージョンがプラットフォームによって自動的に管理および更新されます。
 
@@ -64,7 +64,7 @@ Microsoft.OSTCExtensions.AzureDiskEncryptionForLinux 拡張機能は非推奨に
 
 Linux OS ディスクの暗号化シーケンスは、OS ドライブを一時的にマウント解除します。 その後、OS ディスク全体のブロック単位の暗号化を実行した後、OS ディスクを暗号化された状態で再マウントします。 Windows の Azure Disk Encryption とは異なり、Linux のディスク暗号化では、暗号化が行われている間、VM を同時に使用することはできません。 暗号化を完了するために必要な時間は、VM のパフォーマンス特性によって大幅に異なる可能性があります。 これらの特性には、ディスクのサイズとストレージ アカウントのストレージが Standard であるか Premium (SSD) であるかが含まれます。
 
-暗号化の状態を確認するには、[Get-AzVmDiskEncryptionStatus](/powershell/module/az.compute/get-azvmdiskencryptionstatus) コマンドから返される **ProgressMessage** フィールドをポーリングします。 OS ドライブが暗号化されている間、VM はメンテナンス状態に入り、進行中のプロセスの中断を防ぐため SSH を無効にします。 暗号化が進行している時間の大半は、**EncryptionInProgress** メッセージによって状況がレポートされます。 数時間後、**VMRestartPending** メッセージによって VM を再起動するように求められます。 例: 
+暗号化の状態を確認するには、[Get-AzVmDiskEncryptionStatus](/powershell/module/az.compute/get-azvmdiskencryptionstatus) コマンドから返される **ProgressMessage** フィールドをポーリングします。 OS ドライブが暗号化されている間、VM はメンテナンス状態に入り、進行中のプロセスの中断を防ぐため SSH を無効にします。 暗号化が進行している時間の大半は、**EncryptionInProgress** メッセージによって状況がレポートされます。 数時間後、**VMRestartPending** メッセージによって VM を再起動するように求められます。 例:
 
 
 ```azurepowershell
@@ -130,7 +130,7 @@ Windows Server 2016 Server Core では既定で、bdehdcfg コンポーネント
 
 1. DiskPart を使用してボリュームを確認した後、次に進みます。  
 
-例: 
+例:
 
 ```
 DISKPART> list vol
@@ -150,11 +150,13 @@ If the expected encryption state does not match what is being reported in the po
 
 VM 内で非暗号化されたディスクが、ポータルで暗号化済みと表示される場合があります。  この状況は、高レベルの Azure Disk Encryption 管理コマンドを使用するのではなく、低レベルのコマンドを使用して VM 内から直接ディスクを非暗号化した場合に発生する可能性があります。  高レベルのコマンドでは、VM 内からディスクが非暗号化されるだけでなく、VM の外部で、重要なプラットフォーム レベルの暗号化の設定と VM に関連する拡張機能の設定が更新されます。  これらの設定が整合していないと、プラットフォームは暗号化の状態を報告できず、VM を適切にプロビジョニングすることもできません。   
 
-Azure Disk Encryption を正しく無効にするには、暗号化が有効な既知の正常な状態から、Powershell コマンド [Disable-AzVMDiskEncryption](/powershell/module/az.compute/disable-azvmdiskencryption) と [Remove-AzVMDiskEncryptionExtension](/powershell/module/az.compute/remove-azvmdiskencryptionextension) を使用するか、CLI コマンド [az vm encryption disable](/cli/azure/vm/encryption) を使用します。 
+PowerShell で Azure Disk Encryption を無効にするには、最初に [Disable-AzVMDiskEncryption](/powershell/module/az.compute/disable-azvmdiskencryption)、次に [Remove-AzVMDiskEncryptionExtension](/powershell/module/az.compute/remove-azvmdiskencryptionextension) を使用します。 暗号化を無効にする前に Remove-AzVMDiskEncryptionExtension を実行すると、失敗します。
+
+CLI で Azure Disk Encryption を無効にするには、[az vm encryption disable](/cli/azure/vm/encryption) を使用します。 
 
 ## <a name="next-steps"></a>次の手順
 
 このドキュメントでは、Azure Disk Encryption で発生する一般的な問題の詳細と、それらの問題のトラブルシューティング方法について説明しました。 このサービスと機能の詳細については、次の記事を参照してください。
 
-- [Azure Security Center で Disk Encryption を適用する](../security-center/security-center-apply-disk-encryption.md)
+- [Azure Security Center でディスクの暗号化を適用する](../security-center/security-center-apply-disk-encryption.md)
 - [保存時の Azure データの暗号化](azure-security-encryption-atrest.md)

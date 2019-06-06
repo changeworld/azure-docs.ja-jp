@@ -8,18 +8,18 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: b8451a1195ab64d3cd7afda074d786a3209ce785
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 904b9b8ba98be5e14b1d769a0e1d8c2d6084e24d
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58793970"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65951173"
 ---
 # <a name="microsoft-azure-storage-performance-and-scalability-checklist"></a>Microsoft Azure Storage のパフォーマンスとスケーラビリティに対するチェック リスト
 ## <a name="overview"></a>概要
 Microsoft Azure Storage サービスのリリース以来、Microsoft はこれらのサービスを使用して優れたパフォーマンスを達成するための実証済みプラクティスを数多く開発してきました。この記事では、特に重要なプラクティスを選んでチェック リスト形式の一覧にまとめています。 この記事は、アプリケーション開発者が Azure Storage で実証済みプラクティスを使用しているかどうかを確認し、適用の検討が望ましい他の実証済みプラクティスを特定するための資料です。 実行可能なパフォーマンスとスケーラビリティの最適化を網羅するものではなく、影響が小さいプラクティスや適用範囲の狭いプラクティスは除外しています。 設計時に予測できる範囲で、早い段階からアプリケーションの動作に留意しておくことは、パフォーマンスの問題につながる設計を避けるために有用です。  
 
-Azure Storage を使用するアプリケーション開発者は、この記事をじっくり読み、自分のアプリケーションが下のリストの実証済みプラクティスに従っていることを確認してください。  
+Azure Storage を使用するアプリケーション開発者は、この記事をじっくり読み、自分のアプリケーションが下のリストの実証済みプラクティスに従っていることをご確認ください。  
 
 ## <a name="checklist"></a>チェック リスト
 この記事では、実証済みのプラクティスを次のグループにまとめてあります。 実証済みのプラクティスは、以下のサービスを対象とします。  

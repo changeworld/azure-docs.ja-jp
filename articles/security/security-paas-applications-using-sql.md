@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/28/2018
 ms.author: terrylan
-ms.openlocfilehash: 22db43413b5c752decf6785a75dff22ff4a68039
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 057ec69db300c3ec95cbc63bd5056a78c24d5660
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56109370"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65601667"
 ---
 # <a name="best-practices-for-securing-paas-databases-in-azure"></a>Azure で PaaS データベースを保護するベスト プラクティス
 
@@ -78,7 +78,7 @@ Azure SQL は TDE のキーに関連する問題を管理します。 TDE につ
 
 Azure SQL では [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) を通じて列を暗号化できます。 これにより、許可されているアプリケーションのみが重要な列にアクセスできます。 このような暗号化を使用することで、暗号化された列に対する SQL クエリを等値ベースの値に制限します。
 
-アプリケーション レベルの暗号化は、選択したデータにも使用する必要があります。 データ主権の問題は、適切な国に保管されているキーを使用してデータを暗号化することにより緩和されることがあります。 これにより、偶発的なデータ転送が問題を引き起こすことが防止されます。その理由は、強力なアルゴリズム (AES 256 など) が使用されていると仮定した場合、キーがなければデータの暗号化を解除することは不可能なためです。
+アプリケーション レベルの暗号化は、選択したデータにも使用する必要があります。 データ主権の問題は、適切な国または地域に保管されているキーを使用してデータを暗号化することにより緩和されることがあります。 これにより、偶発的なデータ転送が問題を引き起こすことが防止されます。その理由は、強力なアルゴリズム (AES 256 など) が使用されていると仮定した場合、キーがなければデータの暗号化を解除することは不可能なためです。
 
 セキュリティで保護されたシステムの設計、機密資産の暗号化、データベース サーバーに対するファイアウォールの構築などの、データベースを保護する追加の対策を講じることができます。
 

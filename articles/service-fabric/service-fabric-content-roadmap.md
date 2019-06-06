@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/08/2017
 ms.author: atsenthi
-ms.openlocfilehash: dfe08152f986ccac3dabe7b3bb21e7653ee812a4
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: a95baeb60ddff38e2aa1e36e7728c012d9d44930
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60011182"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65540716"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Service Fabric に興味をお持ちでしょうか。
 Azure Service Fabric は、拡張性と信頼性に優れたマイクロサービスのパッケージ化とデプロイ、管理を簡単に行うことができる分散システム プラットフォームです。  ただし、Service Fabric は対象領域が広く、習得する必要のあることが多くあります。  この記事では、主要な概念、プログラミング モデル、アプリケーション ライフ サイクル、テスト、クラスター、正常性の監視など、Service Fabric の概念について説明します。 Service Fabric の紹介やこれを使用したマイクロサービスの作成方法については、「[概要](service-fabric-overview.md)」および「[マイクロサービスとは何か](service-fabric-overview-microservices.md)」をご覧ください。 この記事には、包括的な内容の一覧が含まれていませんが、Service Fabric の各領域の概要とファースト ステップ ガイドの記事へのリンクを掲載しています。 
@@ -30,7 +30,7 @@ Azure Service Fabric は、拡張性と信頼性に優れたマイクロサー�
 ### <a name="design-time-application-type-service-type-application-package-and-manifest-service-package-and-manifest"></a>設計時: アプリケーションの種類、サービスの種類、アプリケーションのパッケージとマニフェスト、サービス パッケージとマニフェスト
 アプリケーションの種類は、一連のサービスの種類に割り当てられる名前/バージョンです。 これは、アプリケーション パッケージ ディレクトリに埋め込まれているファイル *ApplicationManifest.xml* に定義されています。 アプリケーション パッケージは、Service Fabric クラスターのイメージ ストアにコピーされます。 このアプリケーションの種類に基づいて名前付きアプリケーションを作成できます。作成したアプリケーションはクラスター内で実行します。 
 
-サービスの種類は、サービスのコード パッケージとデータ パッケージ、構成パッケージに割り当てられる名前/バージョンです。 これは、サービス パッケージ ディレクトリに埋め込まれているファイル ServiceManifest.xml に定義されています。 サービス パッケージ ディレクトリは、アプリケーション パッケージのファイル *ApplicationManifest.xml* から参照されます。 クラスターには、名前付きアプリケーションを作成した後、そのアプリケーションの種類を構成するいずれかのサービスの種類から名前付きサービスを作成することができます。 サービスの種類は、その *ServiceManifest.xml* ファイルに記述します。 このサービスの種類は、実行時に読み込まれる実行可能コードのサービス構成設定と、サービスによって消費される静的データで構成されます。
+サービスの種類は、サービスのコード パッケージとデータ パッケージ、構成パッケージに割り当てられる名前/バージョンです。 これは、サービス パッケージ ディレクトリに埋め込まれているファイル ServiceManifest.xml に定義されています。 サービス パッケージ ディレクトリは、アプリケーション パッケージのファイル *ApplicationManifest.xml* から参照されます。 クラスターには、名前付きアプリケーションを作成した後、そのアプリケーションの種類を構成するいずれかのサービスの種類から名前付きサービスを作成することができます。 サービスの種類は、その *ServiceManifest.xml* ファイルに記述します。 このサービスの種類は、実行時に読み込まれる実行可能コードおよびサービス構成設定と、サービスによって消費される静的データで構成されます。
 
 ![Service Fabric アプリケーションの種類とサービスの種類][cluster-imagestore-apptypes]
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 2893960c3351b1f8a5caf0c69ca961851528007d
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 26055727e308f8c05aece31746434d7e9a0a5abd
+ms.sourcegitcommit: 9e8dfa1169a55c3c8af93a6c5f4e0dace4de48b2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510835"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65555957"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure File Sync のトラブルシューティング
 Azure File Sync を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま Azure Files で組織のファイル共有を一元化できます。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -22,7 +22,7 @@ Azure File Sync を使用すると、オンプレミスのファイル サーバ
 
 1. [Azure Storage フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata)。
 2. [Azure Files UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files)。
-3. Microsoft サポート。 新しいサポート要求を作成するには、Azure Portal の **[ヘルプ]** タブで、**[ヘルプとサポート]** ボタンを選択し、**[新しいサポート要求]** を選択します。
+3. Microsoft サポート。 新しいサポート要求を作成するには、Azure Portal の **[ヘルプ]** タブで、 **[ヘルプとサポート]** ボタンを選択し、 **[新しいサポート要求]** を選択します。
 
 ## <a name="im-having-an-issue-with-azure-file-sync-on-my-server-sync-cloud-tiering-etc-should-i-remove-and-recreate-my-server-endpoint"></a>サーバーで Azure File Sync に関する問題 (同期、クラウド階層化など)が発生しています。 サーバー エンドポイントを削除して再作成する必要がありますか。
 [!INCLUDE [storage-sync-files-remove-server-endpoint](../../../includes/storage-sync-files-remove-server-endpoint.md)]
@@ -77,8 +77,8 @@ Reset-StorageSyncServer
 > 現在クラウド エンドポイントによって使用されている Azure ファイル共有上のメタデータを削除すると、Azure File Sync の操作は失敗します。 
 
 1. Azure ポータルで、Azure ファイル共有に移動します。  
-2. Azure ファイル共有を右クリックし、**[メタデータの編集]** を選択します。
-3. **[SyncService]** を右クリックし、**[削除]** を選択します。
+2. Azure ファイル共有を右クリックし、 **[メタデータの編集]** を選択します。
+3. **[SyncService]** を右クリックし、 **[削除]** を選択します。
 
 <a id="cloud-endpoint-authfailed"></a>**クラウド エンドポイントの作成が "AuthorizationFailed" というエラーで失敗する**  
 この問題は、ユーザー アカウントがクラウド エンドポイントを作成するための十分な権限を持っていない場合に発生します。 
@@ -94,11 +94,11 @@ Reset-StorageSyncServer
 * User Access Administrator
 
 現在のユーザー アカウントのロールに必要なアクセス許可が付与されているかどうかを確認するには:  
-1. Azure portal で、**[リソース グループ]** を選択します。
-2. ストレージ アカウントのあるリソース グループを選択し、**[アクセス制御 (IAM)]** を選択します。
+1. Azure portal で、 **[リソース グループ]** を選択します。
+2. ストレージ アカウントのあるリソース グループを選択し、 **[アクセス制御 (IAM)]** を選択します。
 3. **[ロールの割り当て]** タブを選択します。
 4. ユーザー アカウントに割り当てる **[ロール]** (所有者や共同作成者など) を選択します。
-5. **[リソース プロバイダー]** 一覧で、**[Microsoft 承認]** を選択します。 
+5. **[リソース プロバイダー]** 一覧で、 **[Microsoft 承認]** を選択します。 
     * **[ロールの割り当て]** のアクセス許可が **[読み取り]** と **[書き込み]** になっている必要があります。
     * **[ロール定義]** のアクセス許可が **[読み取り]** と **[書き込み]** になっている必要があります。
 
@@ -108,7 +108,7 @@ Reset-StorageSyncServer
 <a id="server-endpoint-deletejobexpired"></a>**サーバー エンドポイントの削除が "MgmtServerJobExpired" というエラーで失敗する**                
 この問題は、サーバーがオフラインの場合、またはネットワークに接続できない場合に発生します。 サーバーを使用できなくなったら、ポータルでサーバーの登録を解除します。これで、サーバー エンドポイントが削除されます。 サーバー エンドポイントを削除するには、[Azure File Sync 使用したサーバーの登録解除](storage-sync-files-server-registration.md#unregister-the-server-with-storage-sync-service)に関するセクションで説明されている手順を実行します。
 
-<a id="server-endpoint-provisioningfailed"></a>**[サーバー エンドポイントのプロパティ] ページが開かない、またはクラウドの階層化ポリシーを更新できない**  
+<a id="server-endpoint-provisioningfailed"></a> **[サーバー エンドポイントのプロパティ] ページが開かない、またはクラウドの階層化ポリシーを更新できない**  
 この問題は、サーバー エンドポイントでの管理操作が失敗する場合に発生することがあります。 Azure Portal で [サーバー エンドポイントのプロパティ] ページが開かない場合は、サーバーから PowerShell コマンドでサーバー エンドポイント を更新すると、この問題が解決する場合があります。 
 
 ```powershell
@@ -275,7 +275,7 @@ Azure ファイル共有内で直接変更を加えた場合、Azure File Sync �
 | **HRESULT** | 0x800704c7 |
 | **HRESULT (10 進値)** | -2147023673 | 
 | **エラー文字列** | ERROR_CANCELLED |
-| **修復が必要か** | いいえ  |
+| **修復が必要か** | いいえ |
 
 同期セッションは、サーバーの再起動や更新、VSS スナップショットなど、さまざまな理由によって失敗することがあります。このエラーはフォローアップが必要なように見えますが、数時間にわたって続かない限り無視してかまいません。
 
@@ -297,9 +297,20 @@ Azure ファイル共有内で直接変更を加えた場合、Azure File Sync �
 | **HRESULT** | 0x80c8004c |
 | **HRESULT (10 進値)** | -2134376372 |
 | **エラー文字列** | ECS_E_USER_REQUEST_THROTTLED |
-| **修復が必要か** | いいえ  |
+| **修復が必要か** | いいえ |
 
 必要なアクションはありません。サーバーは再試行します。 数時間を超えてこのエラーが続く場合は、サポート要求を作成してください。
+
+<a id="-2134364043"></a>**復元後に変更検出が完了するまでは同期がブロックされます**  
+
+| | |
+|-|-|
+| **HRESULT** | 0x80c83075 |
+| **HRESULT (10 進値)** | -2134364043 |
+| **エラー文字列** | ECS_E_SYNC_BLOCKED_ON_CHANGE_DETECTION_POST_RESTORE |
+| **修復が必要か** | いいえ |
+
+操作は必要ありません。 Azure Backup を使用してファイルまたはファイル共有 (クラウド エンドポイント) が復元されるとき、Azure ファイル共有に対する変更検出が完了するまでは同期がブロックされます。 復元が完了すると変更検出がただちに実行され、その期間はファイル共有内のファイル数に基づきます。
 
 <a id="-2134364065"></a>**Sync が、クラウド エンドポイントで指定された Azure ファイル共有にアクセスできません。**  
 
@@ -432,7 +443,7 @@ Azure ファイル共有が削除されている場合は、新しいファイ�
 | **HRESULT** | 0x80c80219 |
 | **HRESULT (10 進値)** | -2134375911 |
 | **エラー文字列** | ECS_E_SYNC_METADATA_WRITE_LOCK_TIMEOUT |
-| **修復が必要か** | いいえ  |
+| **修復が必要か** | いいえ |
 
 このエラーは通常、自動的に解決されます。これは次のような場合に発生する可能性があります。
 
@@ -527,7 +538,7 @@ Azure ファイル共有が削除されている場合は、新しいファイ�
 | **HRESULT** | 0x80c8300f |
 | **HRESULT (10 進値)** | -2134364145 |
 | **エラー文字列** | ECS_E_REPLICA_NOT_READY |
-| **修復が必要か** | いいえ  |
+| **修復が必要か** | いいえ |
 
 このエラーは、Azure ファイル共有上で直接変更が行われ、変更の検出が進行中であることが原因で発生します。 変更の検出が完了すると、同期が開始されます。
 
@@ -586,7 +597,7 @@ Azure ファイル共有が削除されている場合は、新しいファイ�
 | **HRESULT** | 0x80c8004b |
 | **HRESULT (10 進値)** | -2134376373 |
 | **エラー文字列** | ECS_E_SERVICE_UNAVAILABLE |
-| **修復が必要か** | いいえ  |
+| **修復が必要か** | いいえ |
 
 このエラーは、Azure File Sync サービスを使用できないことが原因で発生します。 このエラーは、Azure File Sync サービスが再度使用可能になると自動的に解決します。
 
@@ -597,7 +608,7 @@ Azure ファイル共有が削除されている場合は、新しいファイ�
 | **HRESULT** | 0x80c8020e |
 | **HRESULT (10 進値)** | -2134375922 |
 | **エラー文字列** | ECS_E_SYNC_METADATA_WRITE_LEASE_LOST |
-| **修復が必要か** | いいえ  |
+| **修復が必要か** | いいえ |
 
 このエラーは、同期データベースに関する内部的な問題が原因で発生します。 このエラーは、Azure File Sync が同期を再試行すると自動的に解決されます。 このエラーが長期間にわたって続く場合は、サポート要求を作成してください。問題解決のために Microsoft からご連絡を差し上げます。
 
@@ -688,7 +699,7 @@ if ($storageAccount -eq $null) {
 <a id="troubleshoot-network-rules"></a>**ストレージ アカウントにネットワーク ルールが含まれていないことを確認します。**  
 # <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
 1. ストレージ アカウントにサインインし、ストレージ アカウントの左側にある **[Firewalls and virtual networks]\(ファイアウォールと仮想ネットワーク\)** を選択します。
-2. ストレージ アカウント内で、**[Allow access from all networks]\(すべてのネットワークからのアクセスを許可する\)** オプション ボタンがオンになっている必要があります。
+2. ストレージ アカウント内で、 **[Allow access from all networks]\(すべてのネットワークからのアクセスを許可する\)** オプション ボタンがオンになっている必要があります。
     ![ストレージ アカウントのファイアウォールとネットワーク ルールが無効になっていることを示すスクリーンショット](media/storage-sync-files-troubleshoot/file-share-inaccessible-2.png)
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
@@ -724,15 +735,15 @@ if ($fileShare -eq $null) {
 # <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
 1. 左側の目次で **[アクセス制御 (IAM)]** をクリックします。
 1. **[ロールの割り当て]** タブをクリックして、ストレージ アカウントにアクセスできるユーザーとアプリケーション (*サービス プリンシパル*) を一覧表示します。
-1. 一覧に、**[Hybrid File Sync Service]\(ハイブリッド ファイル同期サービス\)** が **[Reader and Data Access]\(閲覧者とデータ アクセス\)** ロールで表示されていることを確認します。 
+1. 一覧に、 **[Hybrid File Sync Service]\(ハイブリッド ファイル同期サービス\)** が **[Reader and Data Access]\(閲覧者とデータ アクセス\)** ロールで表示されていることを確認します。 
 
     ![ストレージ アカウントのアクセス制御タブに表示された [Hybrid File Sync Service]\(ハイブリッド ファイル同期サービス\) サービス プリンシパルのスクリーンショット](media/storage-sync-files-troubleshoot/file-share-inaccessible-3.png)
 
     **[Hybrid File Sync Service]\(ハイブリッド ファイル同期サービス\)** が一覧に表示されない場合は、次の手順を実行します。
 
     - **[追加]** をクリックします。
-    - **[ロール]** フィールドで、**[閲覧者とデータ アクセス]** を選択します。
-    - **[選択]** フィールドに「**Hybrid File Sync Service**」と入力してロールを選択し、**[保存]** をクリックします。
+    - **[ロール]** フィールドで、 **[閲覧者とデータ アクセス]** を選択します。
+    - **[選択]** フィールドに「**Hybrid File Sync Service**」と入力してロールを選択し、 **[保存]** をクリックします。
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 ```powershell    
@@ -862,7 +873,7 @@ New-FsrmFileScreen -Path "E:\AFSdataset" -Description "Filter unsupported charac
 
 3. Azure File Sync のカーネル モード トレース レベルには、(より詳細なトレースの作成を指定しない限り) **1** を入力し、Enter キーを押します。
 4. Azure File Sync のユーザー モード トレース レベルには、(より詳細なトレースの作成を指定しない限り) **1** を入力し、Enter キーを押します。
-5. 問題を再現します。 操作が終了したら、**[D]** を入力します。
+5. 問題を再現します。 操作が終了したら、 **[D]** を入力します。
 6. ログファイルとトレース ファイルを含む .zip ファイルが、指定した出力ディレクトリに保存されます。
 
 ## <a name="see-also"></a>関連項目

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: caeef04a27cec7bbeda5dd96335d9b7bd1a8eca0
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: d5cfe91cfcc124ef3073cfb6bbeda683505ff8e1
+ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60007459"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65561377"
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>システム正常性レポートを使用したトラブルシューティング
 Azure Service Fabric コンポーネントは、追加の設定なしで、クラスター内のすべてのエンティティについてのシステム正常性レポートを提供します。 [正常性ストア](service-fabric-health-introduction.md#health-store) は、システム レポートに基づいてエンティティを作成および削除します。 さらに、エンティティの相互作用をキャプチャする階層で、それらを編成します。
@@ -36,7 +36,7 @@ Azure Service Fabric コンポーネントは、追加の設定なしで、ク�
 > 
 > 
 
-システム コンポーネント レポートはソース別に識別され、"**System.**" プレフィックスで 始まります。 ウォッチドッグのソースに同じプレフィックスを使用することはできません (無効なパラメーターを持つレポートが拒否されるため)。
+システム コンポーネント レポートはソース別に識別され、"**System.** " プレフィックスで 始まります。 ウォッチドッグのソースに同じプレフィックスを使用することはできません (無効なパラメーターを持つレポートが拒否されるため)。
 
 いくつかのシステム レポートを確認して、何がレポートのトリガーになっているかを理解し、レポートに表示された問題を修正する方法を学習しましょう。
 
@@ -632,25 +632,25 @@ HealthEvents          :
 
 - **IStatefulServiceReplica.Close** および **IStatefulServiceReplica.Abort**: 最も一般的なケースは、`RunAsync` に渡されたキャンセル トークンを考慮しないサービスです。 または、`ICommunicationListener.CloseAsync` あるいはオーバーライドされた `OnCloseAsync` がスタックしている場合にも生じます。
 
-- **IStatefulServiceReplica.ChangeRole(S)** および **IStatefulServiceReplica.ChangeRole(N)**: 最も一般的なケースは、`RunAsync` に渡されたキャンセル トークンを考慮しないサービスです。
+- **IStatefulServiceReplica.ChangeRole(S)** および **IStatefulServiceReplica.ChangeRole(N)** : 最も一般的なケースは、`RunAsync` に渡されたキャンセル トークンを考慮しないサービスです。 このシナリオでは、レプリカを再起動することをお勧めします。
 
-- **IStatefulServiceReplica.ChangeRole(P)**: 最も一般的なケースは、`RunAsync` からタスクが戻されないサービスです。
+- **IStatefulServiceReplica.ChangeRole(P)** : 最も一般的なケースは、`RunAsync` からタスクが戻されないサービスです。
 
-**IReplicator** インターフェイス上の他の API 呼び出しもスタックする可能性があります。 例: 
+**IReplicator** インターフェイス上の他の API 呼び出しもスタックする可能性があります。 例:
 
 - **IReplicator.CatchupReplicaSet**: この警告は、次の 2 つのいずれかを示します。 1 つは、十分な数の実行中のレプリカがないことです。 これに該当するかを確認するには、パーティションのレプリカのレプリカ状態を調べるか、スタック再構成の System.FM 正常性レポートを調べます。 もう 1 つは、レプリカが操作を認識できないことです。 PowerShell コマンドレット `Get-ServiceFabricDeployedReplicaDetail` を使用すると、すべてのレプリカの進行状況を判断できます。 問題があるレプリカの `LastAppliedReplicationSequenceNumber` 値は、プライマリの `CommittedSequenceNumber` 値の後ろにあります。
 
-- **IReplicator.BuildReplica(\<リモート ReplicaId>)**:この警告は、ビルド プロセスに問題があることを示します。 詳細については、[レプリカのライフサイクル](service-fabric-concepts-replica-lifecycle.md)に関する記事をご覧ください。 レプリカ アドレスが正しく構成されていないことが原因の可能性があります。 詳細については、「[ステートフル Reliable Services の構成](service-fabric-reliable-services-configuration.md)」および「[サービス マニフェストにリソースを指定する](service-fabric-service-manifest-resources.md)」をご覧ください。 リモート ノードに問題があることもあります。
+- **IReplicator.BuildReplica(\<リモート ReplicaId>)** :この警告は、ビルド プロセスに問題があることを示します。 詳細については、[レプリカのライフサイクル](service-fabric-concepts-replica-lifecycle.md)に関する記事をご覧ください。 レプリカ アドレスが正しく構成されていないことが原因の可能性があります。 詳細については、「[ステートフル Reliable Services の構成](service-fabric-reliable-services-configuration.md)」および「[サービス マニフェストにリソースを指定する](service-fabric-service-manifest-resources.md)」をご覧ください。 リモート ノードに問題があることもあります。
 
 ### <a name="replicator-system-health-reports"></a>レプリケーター システム正常性レポート
-**レプリケーション キュー満杯:**
+**レプリケーション キュー満杯:** 
 **System.Replicator** は、レプリケーション キューが満杯の場合、警告を報告します。 プライマリでレプリケーション キューが満杯になる原因は、通常、1 つまたは複数のセカンダリ レプリカで、処理の確認に時間がかかることです。 セカンダリでこの状態が発生する原因は、通常、サービスでの操作の適用に時間がかかることです。 キューが満杯でなくなると、警告はクリアされます。
 
 * **SourceId**: System.Replicator
 * **プロパティ**: レプリカのロールに応じて **PrimaryReplicationQueueStatus** または **SecondaryReplicationQueueStatus**。
 * **次のステップ**: レポートがプライマリにある場合は、クラスター内のノード間の接続を確認します。 すべての接続が正常な場合は、1 つ以上のセカンダリが低速で、操作を適用するためのディスクの待ち時間が長い可能性があります。 レポートがセカンダリにある場合は、まずノードのディスク使用量とパフォーマンスを確認します。 次に、低速のノードからプライマリへの発信接続を確認します。
 
-**RemoteReplicatorConnectionStatus:**
+**RemoteReplicatorConnectionStatus:** 
 プライマリ レプリカの **System.Replicator** は、セカンダリ (リモート) レプリケーターへの接続が正常でない場合に警告を表示します。 レポートのメッセージにリモート レプリケーターのアドレスが表示されるため、間違った構成が渡されたかどうかや、レプリケーター間にネットワークの問題があるかどうかを簡単に確認できます。
 
 * **SourceId**: System.Replicator
@@ -674,7 +674,7 @@ HealthEvents          :
 名前付け操作に予想以上の時間がかかると、操作を実行するネーム サービス パーティションのプライマリ レプリカに関する警告のレポートでフラグが設定されます。 操作が正常に完了すると、警告はクリアされます。 操作がエラーで終了した場合は、正常性レポートにエラーの詳細が含まれます。
 
 * **SourceId**: System.NamingService
-* **プロパティ**: プレフィックス "**Duration_**" で始まり、時間がかかっている操作とその操作が適用されている Service Fabric の名前を示します。 たとえば、**fabric:/MyApp/MyService** という名前のサービスの作成に時間がかかる場合、プロパティは **Duration_AOCreateService.fabric:/MyApp/MyService** になります。 "AO" は、この名前と操作の名前付けパーティションの役割を指します。
+* **プロパティ**: プレフィックス "**Duration_** " で始まり、時間がかかっている操作とその操作が適用されている Service Fabric の名前を示します。 たとえば、**fabric:/MyApp/MyService** という名前のサービスの作成に時間がかかる場合、プロパティは **Duration_AOCreateService.fabric:/MyApp/MyService** になります。 "AO" は、この名前と操作の名前付けパーティションの役割を指します。
 * **次のステップ**: 名前付け操作に失敗した原因を確認します。 各操作の根本原因は異なる場合があります。 たとえば、削除サービスがスタックしている可能性があります。 サービス コード内のユーザー バグによってアプリケーション ホストがノードでクラッシュしたままになっていることが原因で、サービスがスタックすることがあります。
 
 サービスの作成操作の例を次に示します。 この操作には、構成された期間よりも長い時間がかかりました。 "AO" は再試行し、作業を "NO" に送信します。 "NO" は、タイムアウトにより最後の操作を完了しました。 この場合、同じレプリカが "AO" と "NO" の両方のロールでプライマリになります。

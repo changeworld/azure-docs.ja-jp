@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: fb0482be1670a96befdd69a5356c9e21476d9f9f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 85a4aca0c4b80eaab1f43bcbec33dc9cf37aa655
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55458144"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65950100"
 ---
 # <a name="tasks-for-a-group-manager-on-a-data-science-team-project"></a>データ サイエンス チーム プロジェクトのグループ マネージャーのタスク
 
@@ -71,7 +71,7 @@ Azure DevOps Services は、次のリポジトリをホストします。
 
 ![1](./media/group-manager-tasks/login.PNG)
 
-Microsoft アカウントがない場合は、**[Sign up now]\(今すぐサインアップ\)** をクリックして Microsoft アカウントを作成した後に、このアカウントを使用してサインインします。
+Microsoft アカウントがない場合は、 **[Sign up now]\(今すぐサインアップ\)** をクリックして Microsoft アカウントを作成した後に、このアカウントを使用してサインインします。
 
 組織で Visual Studio または MSDN サブスクリプションを利用している場合は、緑色の囲み罫線内の **[職場または学校アカウントでサインインする]** をクリックし、このサブスクリプションに関連付けられている資格情報を使用してサインインします。
 
@@ -86,15 +86,15 @@ Microsoft アカウントがない場合は、**[Sign up now]\(今すぐサイ�
 **[Create your account]\(アカウントの作成)** ウィザードで、作成する Azure DevOps Services に関する情報として次の値を入力します。
 
 - **サーバー URL**:*mysamplegroup* を、独自の*サーバー名*に置き換えます。 サーバーの URL は、*https://\<servername\>.visualstudio.com* になります。
-- **コードの管理に次を使用:****_[Git]_** を選択します。
-- **プロジェクト名:**「*GroupCommon*」と入力します。
-- **以下を使用して作業を整理します:***[アジャイル]* を選択します。
-- **プロジェクトをホストする地域:** 地理的な場所を選択します。 この例では、*[米国中南部]* を選択しています。
+- **コードの管理に次を使用:** ** _[Git]_ **を選択します。
+- **プロジェクト名:** 「*GroupCommon*」と入力します。
+- **以下を使用して作業を整理します:** *[アジャイル]* を選択します。
+- **プロジェクトをホストする地域:** 地理的な場所を選択します。 この例では、 *[米国中南部]* を選択しています。
 
 ![4](./media/group-manager-tasks/fill-in-account-information.png)
 
 > [!NOTE] 
-> **[新しいアカウントの作成]** をクリックした後に次のポップアップ ウィンドウが表示された場合は、**[詳細の変更]** をクリックして、すべての項目のフィールドを表示する必要があります。
+> **[新しいアカウントの作成]** をクリックした後に次のポップアップ ウィンドウが表示された場合は、 **[詳細の変更]** をクリックして、すべての項目のフィールドを表示する必要があります。
 
 ![5](./media/group-manager-tasks/create-account-2.png)
 
@@ -115,7 +115,7 @@ Azure DevOps Services の下に **GroupUtilities** (R2) リポジトリを作成
 
   ![7](./media/group-manager-tasks/create-grouputilities-repo-1.png)
 
-- **[種類]** に *[Git]* を選択し、**[名前]** に「*GroupUtilities*」と入力して、**[作成]** をクリックします。
+- **[種類]** に *[Git]* を選択し、 **[名前]** に「*GroupUtilities*」と入力して、 **[作成]** をクリックします。
 
   ![8](./media/group-manager-tasks/create-grouputilities-repo-2.png)
 
@@ -141,16 +141,16 @@ Azure DevOps グループ サーバーのリポジトリの設定は、次の 2 
 
   ![10](./media/group-manager-tasks/rename-groupcommon-repo-3.png)
 
-- **GroupCommon** のGit リポジトリ ページで、左上隅の **[GroupCommon]** (次の図では赤い囲み罫線で強調されている) をクリックして、**[リポジトリの管理]** (次の図では緑色の囲み罫線で強調されている) を選択します。 この手順により、**コントロール パネル**が開きます。
+- **GroupCommon** のGit リポジトリ ページで、左上隅の **[GroupCommon]** (次の図では赤い囲み罫線で強調されている) をクリックして、 **[リポジトリの管理]** (次の図では緑色の囲み罫線で強調されている) を選択します。 この手順により、**コントロール パネル**が開きます。
 - プロジェクトの **[バージョン管理]** タブを選択します。
 
   ![11](./media/group-manager-tasks/rename-groupcommon-repo-4.png)
 
-- 左側のパネルで、**GroupCommon** リポジトリの右側の **[...]** をクリックし、**[リポジトリの名前変更]** を選択します。
+- 左側のパネルで、**GroupCommon** リポジトリの右側の **[...]** をクリックし、 **[リポジトリの名前変更]** を選択します。
 
   ![12](./media/group-manager-tasks/rename-groupcommon-repo-5.png)
 
-- ポップ アップ表示された **[Rename the GroupCommon repository]\(GroupCommon リポジトリの名前変更\)** ウィザードで、**[リポジトリ名]** ボックスに「*GroupProjectTemplate*」と入力してから **[名前の変更]** をクリックします。
+- ポップ アップ表示された **[Rename the GroupCommon repository]\(GroupCommon リポジトリの名前変更\)** ウィザードで、 **[リポジトリ名]** ボックスに「*GroupProjectTemplate*」と入力してから **[名前の変更]** をクリックします。
 
   ![13](./media/group-manager-tasks/rename-groupcommon-repo-6.png)
 
@@ -308,7 +308,7 @@ GitRepos\GroupCommon\GroupProjectTemplate ディレクトリから次のコマ�
 
 ## <a name="6-add-group-members-to-the-group-server"></a>6.グループ メンバーをグループ サーバーに追加する
 
-グループの Azure DevOps Services のホームページから、右上隅のユーザー名の横にある**歯車アイコン**をクリックし、**[セキュリティ]** タブを選択します。ここでは、メンバーをグループに追加してさまざまなアクセス許可を適用できます。
+グループの Azure DevOps Services のホームページから、右上隅のユーザー名の横にある**歯車アイコン**をクリックし、 **[セキュリティ]** タブを選択します。ここでは、メンバーをグループに追加してさまざまなアクセス許可を適用できます。
 
 ![24](./media/group-manager-tasks/add_member_to_group.PNG)
 

@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 05/08/2019
+ms.date: 05/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 88ded03f636155e4b1a738f388e696a09736cd3b
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: b3f4e1ddc041691ba68e14660ec5fa4cc39ddec1
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65470762"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65518175"
 ---
 # <a name="client-libraries-for-connecting-to-azure-analysis-services"></a>Azure Analysis Services に接続するためのクライアント ライブラリ
 
@@ -34,8 +34,8 @@ Analysis Services 管理オブジェクト (AMO) と ADOMD クライアント �
 
 |Package  | 製品バージョン  | 
 |---------|---------|
-|[AMO](https://www.nuget.org/packages/Microsoft.AnalysisServices.retail.amd64/)    |    15.17.1     |
-|[ADOMD](https://www.nuget.org/packages/Microsoft.AnalysisServices.AdomdClient.retail.amd64/)     |   15.17.1      |
+|[AMO](https://www.nuget.org/packages/Microsoft.AnalysisServices.retail.amd64/)    |    16.1.0     |
+|[ADOMD](https://www.nuget.org/packages/Microsoft.AnalysisServices.AdomdClient.retail.amd64/)     |   16.1.0      |
 
 NuGet パッケージ アセンブリの AssemblyVersion は、セマンティック バージョニングであるMAJOR.MINOR.PATCH に従います。 NuGet 参照では、(MSI のインストールの結果として得られる) GAC 内に別のバージョンがある場合でも、必要なバージョンが読み込まれます。 PATCH は、リリースごとにインクリメントされます。 AMO と ADOMD のバージョンは常に同期されます。
 
@@ -75,7 +75,7 @@ Power BI Desktop や Excel などの Microsoft クライアント アプリケ�
   
 1.  `C:\Program Files\Microsoft Analysis Services\AS OLEDB\` にアクセスします。 複数のフォルダーがある場合は、番号の大きい方を選択します。
   
-2.  **[msolap.dll]** > **[プロパティ]** > **[詳細]** の順にクリック (最初は右クリック) します。 ファイル名が msolap140.dll である場合は、最新のバージョンよりも古いバージョンであるため、アップグレードする必要があります。
+2.  **[msolap.dll]**  >  **[プロパティ]**  >  **[詳細]** の順にクリック (最初は右クリック) します。 ファイル名が msolap140.dll である場合は、最新のバージョンよりも古いバージョンであるため、アップグレードする必要があります。
     
     ![クライアント ライブラリの詳細](media/analysis-services-data-providers/aas-msolap-details.png)
     
@@ -83,12 +83,12 @@ Power BI Desktop や Excel などの Microsoft クライアント アプリケ�
 ### <a name="amo"></a>AMO
 
 1. `C:\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.AnalysisServices\` にアクセスします。 複数のフォルダーがある場合は、番号の大きい方を選択します。
-2. **[Microsoft.AnalysisServices]** > **[プロパティ]** > **[詳細]** の順にクリック (最初は右クリック) します。  
+2. **[Microsoft.AnalysisServices]**  >  **[プロパティ]**  >  **[詳細]** の順にクリック (最初は右クリック) します。  
 
 ### <a name="adomd"></a>ADOMD
 
 1. `C:\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.AnalysisServices.AdomdClient\` にアクセスします。 複数のフォルダーがある場合は、番号の大きい方を選択します。
-2. **[Microsoft.AnalysisServices.AdomdClient]** > **[プロパティ]** > **[詳細]** の順にクリック (最初は右クリック) します。  
+2. **[Microsoft.AnalysisServices.AdomdClient]**  >  **[プロパティ]**  >  **[詳細]** の順にクリック (最初は右クリック) します。  
 
 
 ## <a name="next-steps"></a>次の手順

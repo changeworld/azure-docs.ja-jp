@@ -12,12 +12,12 @@ ms.author: bonova
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 09/25/2018
-ms.openlocfilehash: 49491c5283ba16c5379c1115fae597bd7fd6ea19
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: fbb2458e73330a09124c00cebe3eb7bcaba5408d
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567130"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65951506"
 ---
 # <a name="getting-started-with-temporal-tables-in-azure-sql-database"></a>Azure SQL Database のテンポラル テーブルの概要
 
@@ -109,7 +109,7 @@ WITH (DROP_EXISTING = ON);
 ## <a name="step-2-run-your-workload-regularly"></a>手順 2:ワークロードを定期的に実行する
 テンポラル テーブルの大きな利点は、変更を追跡するために、既存の Web サイトになんら変更や調整を加える必要がないことです。 テンポラル テーブルは一度作成すれば、その後はユーザーに意識させることなく、データに変更が行われるたびに、以前の行バージョンを保存します。 
 
-このシナリオで変更の自動追跡を利用するために、ユーザーが Web サイト セッションを終了するたびに、 **PagesVisited** 列を更新してみましょう。
+このシナリオで変更の自動追跡を利用するために、ユーザーが Web サイト セッションを終了するたびに、**PagesVisited** 列を更新してみましょう。
 
 ```
 UPDATE WebsiteUserInfo  SET [PagesVisited] = 5 

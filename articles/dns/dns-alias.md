@@ -5,14 +5,14 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: article
-ms.date: 3/21/2019
+ms.date: 5/13/2019
 ms.author: victorh
-ms.openlocfilehash: 87ca7cae8e9170c8c437d0961cb1acb2e0dd0eb1
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 847ad271dac4afc8c8baa2faa8702b3a3ab6cefa
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58337648"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65596710"
 ---
 # <a name="azure-dns-alias-records-overview"></a>Azure DNS エイリアス レコードの概要
 
@@ -25,7 +25,7 @@ Azure DNS ゾーンでは、エイリアス レコード セットとして、�
 - CNAME
 
 > [!NOTE]
-> A または AAAA レコードの種類に対してエイリアス レコードを使用して [Azure Traffic Manager プロファイル](../traffic-manager/quickstart-create-traffic-manager-profile.md)をポイントする場合は、Traffic Manager プロファイルにあるのが[外部エンドポイント](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints)だけであることを確認する必要があります。 Traffic Manager の外部エンドポイントには、IPv4 または IPv6 アドレスを指定する必要があります。 できる限り、静的 IP アドレスを使用します。
+> A または AAAA レコードの種類に対してエイリアス レコードを使用して [Azure Traffic Manager プロファイル](../traffic-manager/quickstart-create-traffic-manager-profile.md)をポイントする場合は、Traffic Manager プロファイルにあるのが[外部エンドポイント](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints)だけであることを確認する必要があります。 Traffic Manager の外部エンドポイントには、IPv4 または IPv6 アドレスを指定する必要があります。 エンドポイントで完全修飾ドメイン名 (FQDN) を使用することはできません。 できる限り、静的 IP アドレスを使用します。
 
 ## <a name="capabilities"></a>機能
 

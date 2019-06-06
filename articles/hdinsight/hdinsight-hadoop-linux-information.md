@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.openlocfilehash: 2a7af59495966c76a47ea84311ab073eb594f82e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: c52574485a62b081224a36ca5deb0fdae114f9bc
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64707560"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65859656"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Linux での HDInsight の使用方法
 
@@ -55,7 +55,7 @@ HDInsight は、[ドメイン参加済み](./domain-joined/apache-domain-joined-
 
 ## <a name="remote-access-to-services"></a>サービスへのリモート アクセス
 
-* **Ambari (web)** - https://CLUSTERNAME.azurehdinsight.net
+* **Ambari (web)**  - https://CLUSTERNAME.azurehdinsight.net
 
     クラスター管理者のユーザー名とパスワードを使用して認証した後、Ambari にサインインします。
 
@@ -66,14 +66,14 @@ HDInsight は、[ドメイン参加済み](./domain-joined/apache-domain-joined-
     >
     > Ambari Web UI の全機能を使用するには、SSH トンネルを使用して、クラスター ヘッド ノードに対する Web トラフィックがプロキシ経由になるようにします。 「[SSH トンネリングを使用して Apache Ambari Web UI、ResourceManager、JobHistory、NameNode、Oozie、およびその他の Web UI にアクセスする](hdinsight-linux-ambari-ssh-tunnel.md)」を参照してください
 
-* **Ambari (REST)** - https://CLUSTERNAME.azurehdinsight.net/ambari
+* **Ambari (REST)**  - https://CLUSTERNAME.azurehdinsight.net/ambari
 
     > [!NOTE]  
     > クラスター管理者のユーザー名とパスワードを使用して認証します。
     >
     > 認証はプレーンテキストです。接続をセキュリティで確実に保護するために、常に HTTPS を使用してください。
 
-* **WebHCat (Templeton)** - https://CLUSTERNAME.azurehdinsight.net/templeton
+* **WebHCat (Templeton)**  - https://CLUSTERNAME.azurehdinsight.net/templeton
 
     > [!NOTE]  
     > クラスター管理者のユーザー名とパスワードを使用して認証します。
@@ -251,7 +251,7 @@ __Azure Data Lake Storage__ を使用している場合は、次のリンクを�
 HDInsight クラスターのスケーリングに関する具体的な情報については、以下を参照してください。
 
 * [Azure portal を使用して HDInsight の Apache Hadoop クラスターを管理する](hdinsight-administer-use-portal-linux.md#scale-clusters)
-* [Azure PowerShell を使用して HDInsight の Apache Hadoop クラスターを管理する](hdinsight-administer-use-command-line.md#scale-clusters)
+* [Azure CLI を使用して HDInsight の Apache Hadoop クラスターを管理する](hdinsight-administer-use-command-line.md#scale-clusters)
 
 ## <a name="how-do-i-install-hue-or-other-hadoop-component"></a>Hue (またはその他の Hadoop コンポーネント) のインストール方法
 

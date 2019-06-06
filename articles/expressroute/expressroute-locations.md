@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/08/2019
+ms.date: 05/20/2019
 ms.author: pareshmu
-ms.openlocfilehash: 63d6d1419b0a70a0bcf3532a13d6f7491b792593
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 00748f0a245dd0c63d59b32113077b5b10915d3d
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65467702"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65977973"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute パートナーとピアリングの場所
 
@@ -50,7 +50,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **インド** | 2 |インド西部、インド中部、インド南部 |チェンナイ、チェンナイ 2、ムンバイ、ムンバイ 2 |
 | **日本** | 2 |西日本、東日本 |大阪、東京 |
 | **韓国** | 2 |韓国中部、韓国南部 |釜山、ソウル|
-| **アラブ首長国連邦** | 3 | アラブ首長国連邦中部、アラブ首長国連邦北部 | ドバイ |
+| **アラブ首長国連邦** | 3 | アラブ首長国連邦中部、アラブ首長国連邦北部 | ドバイ、ドバイ 2 |
 | **南アフリカ** | 3 |南アフリカ西部、南アフリカ北部 |ケープタウン、ヨハネスブルグ |
 | **南アメリカ** | 3 |ブラジル南部 |サンパウロ |
 
@@ -93,8 +93,9 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **[Comcast](https://business.comcast.com/landingpage/microsoft-azure)** |サポートされています |サポートされています |シカゴ、シリコン バレー、ワシントン DC |
 | **[CoreSite](https://www.coresite.com/solutions/cloud-services/public-cloud-providers/microsoft-azure-expressroute)** |サポートされています |サポートされています |シカゴ、デンバー、ロサンゼルス、ニューヨーク、シリコン バレー、シリコン バレー 2、ワシントン DC、ワシントン DC2 |
 | **[DE-CIX](https://www.de-cix.net/en/de-cix-service-world/directcloud/find-a-cloud-service/detail/microsoft-azure)** | サポートされています |サポートされています |アムステルダム 2、フランクフルト|
+| **du datamena** |サポートされています |サポートされています | ドバイ 2 |
 | **eir** |サポートされています |サポートされています |ダブリン|
-| **Epsilon Global Communications** |サポートされています |サポートされています |シンガポール、シンガポール 2 |
+| **[Epsilon Global Communications](https://www.epsilontel.com/solutions/direct-cloud-connect)** |サポートされています |サポートされています |シンガポール、シンガポール 2 |
 | **[Equinix](https://www.equinix.com/partners/microsoft-azure/)** |サポートされています |サポートされています |アムステルダム、アトランタ、シカゴ、ダラス、ダブリン、香港特別行政区、ロンドン、ロンドン 2、ロサンゼルス、メルボルン、マイアミ、ニューヨーク、大阪、パリ、サンパウロ、シアトル、シリコン バレー、シンガポール、シドニー、東京、トロント、ワシントン DC |
 | **Etisalat UAE** |サポートされています |サポートされています |ドバイ|
 | **[euNetworks](https://eunetworks.com/services/solutions/cloud-connect/microsoft-azure-expressroute/)** |サポートされています |サポートされています |アムステルダム、ダブリン、ロンドン |
@@ -134,7 +135,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **[Tata Communications](https://www.tatacommunications.com/lp/izo/azure/azure_index.html)** |サポートされています |サポートされています |アムステルダム、チェンナイ、香港特別行政区、ロンドン、ムンバイ、サンパウロ、シリコン バレー、シンガポール、ワシントン DC |
 | **Telecity Group** |サポートされています |サポートされています |アムステルダム |
 | **[Telefonica](https://www.business-solutions.telefonica.com/es/enterprise/solutions/efficient-infrastructure/managed-voice-data-connectivity/)** |サポートされています |サポートされています |アムステルダム、サンパウロ |
-| **[Telehouse - KDDI](https://www.telehouse.net/solutions/cloud-services/cloud-link)** |サポートされています |サポートされています |ロンドン |
+| **[Telehouse - KDDI](https://www.telehouse.net/solutions/cloud-services/cloud-link)**  |サポートされています |サポートされています |ロンドン |
 | **Telenor** |サポートされています |サポートされています |アムステルダム、ロンドン |
 | **[Telia Carrier](https://teliacarrier.com/our-services/connectivity/cloud-connect.html?title=Cloud%20Connect)** | サポートされています | サポートされています |アムステルダム、シカゴ、ダラス、ロンドン、パリ、ワシントン DC |
 | **Telmex Uninet**| サポートされています | サポートされています | ダラス |

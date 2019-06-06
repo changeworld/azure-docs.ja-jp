@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 1ea645ee53f91a62bd49fb1da0d44e2962708b88
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: fdfd7794961b0254526b124525c6e978d13b0114
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54856963"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65800276"
 ---
 # <a name="message-expiration-time-to-live"></a>メッセージの有効期限 (Time to Live)
 
@@ -35,6 +35,11 @@ ms.locfileid: "54856963"
 ## <a name="entity-level-expiration"></a>エンティティ レベルの有効期限
 
 キューまたはトピックに送信されたすべてのメッセージには、[defaultMessageTimeToLive](/azure/templates/microsoft.servicebus/namespaces/queues) プロパティでエンティティ レベルに設定された既定の有効期限が適用され、これは、作成中にポータルで設定し後で調整することもできます。 既定の有効期限は、[TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) が明示的に設定されていないエンティティに送信されるすべてのメッセージに使用されます。 既定の有効期限は、**TimeToLive** 値の上限としても機能します。 **TimeToLive** 有効期限が既定値より長いメッセージは、エンキューされる前に **defaultMessageTimeToLive** の値に自動的に調整されます。
+
+> [!NOTE]
+> 特に指定されていない場合、ブローカー メッセージの既定の [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) 値は [TimeSpan.Max](https://docs.microsoft.com/dotnet/api/system.timespan.maxvalue) です。
+>
+> メッセージング エンティティ (キューおよびトピック) の既定の有効期限も、Service Bus の Standard レベルと Premium レベルでは [TimeSpan.Max](https://docs.microsoft.com/dotnet/api/system.timespan.maxvalue) です。  Basic レベルでは、既定の有効期間は 14 日間です。
 
 有効期限が切れたメッセージは、[EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enabledeadletteringonmessageexpiration#Microsoft_ServiceBus_Messaging_QueueDescription_EnableDeadLetteringOnMessageExpiration) プロパティを設定するか、またはポータルでそれぞれのボックスにチェックを付けることで、[配信不能キュー](service-bus-dead-letter-queues.md)に移動することもできます。 オプションを無効のままにすると、期限切れのメッセージは削除されます。 配信不能キューに移動された期限切れのメッセージは、ユーザー プロパティ セクションにブローカーが保存する [DeadletterReason](service-bus-dead-letter-queues.md#moving-messages-to-the-dlq) プロパティを評価することで、他の配信不能キューと区別できます。この場合、値は [TTLExpiredException](service-bus-dead-letter-queues.md#moving-messages-to-the-dlq) になります。
 
@@ -69,7 +74,7 @@ Service Bus のキュー、トピック、およびサブスクリプション�
     - 送信なし  
     - トピックに対する更新なし  
     - スケジュール設定されたメッセージなし 
-- サブスクリプション
+- Subscriptions
     - 受信なし  
     - サブスクリプションに対する更新なし  
     - サブスクリプションに新しいルールは追加されない  

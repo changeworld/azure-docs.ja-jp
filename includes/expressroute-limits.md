@@ -8,16 +8,13 @@ ms.topic: include
 ms.date: 06/12/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: ee987448f9f6d95e6f97317bec2f696e734cba20
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: c025c431d826d3a2951a9eb5c09308695e172887
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58632761"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66170710"
 ---
-#### <a name="expressroute-limits"></a>ExpressRoute の制限
-各サブスクリプションの Azure ExpressRoute リソースには、次の制限が適用されます。
-
 | Resource | 既定/上限 |
 | --- | --- |
 | サブスクリプションあたりの ExpressRoute 回線数 |10 |
@@ -27,6 +24,7 @@ ms.locfileid: "58632761"
 | ExpressRoute 接続に使用する VNet アドレス空間からの Azure プライベート ピアリング用の最大ルート数 |200 | 
 | ExpressRoute Standard の Microsoft Azure ピアリング用の最大ルート数 |200 |
 | ExpressRoute Premium アドオンの Microsoft Azure ピアリング用の最大ルート数 |200 |
+| 同じピアリング場所で同じ仮想ネットワークにリンクされる ExpressRoute 回線の最大数 |4 |
 | さまざまなピアリング場所で同じ仮想ネットワークにリンクされる ExpressRoute の最大数 |4 |
 | ExpressRoute 回線あたりで許可される仮想ネットワークのリンク数 |次の表を参照してください。 |
 
@@ -41,4 +39,7 @@ ms.locfileid: "58632761"
 | 2 Gbps |10 |60 |
 | 5 Gbps |10 |75 |
 | 10 Gbps |10 |100 |
+| 40 Gbps* |10 |100 |
+| 100 Gbps* |10 |100 |
 
+*ExpressRoute Direct のみ

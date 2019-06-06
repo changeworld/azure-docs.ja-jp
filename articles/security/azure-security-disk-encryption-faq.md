@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 04/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3de444d509684f0b4227abe91ec3c967f2bf8f03
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 6fd9ce1947b8207aced44204fc2989622a1998f2
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64926276"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65761920"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>IaaS VM のための Azure Disk Encryption に関してよくあるご質問
 
@@ -59,12 +59,7 @@ Azure での動作が保証されていない Linux サーバー ディストリ
 | CentOS | 7.4 | OS とデータ ディスク |
 | CentOS | 7.3 | OS とデータ ディスク |
 | CentOS | 7.2n | OS とデータ ディスク |
-| CentOS | 6.8 | OS とデータ ディスク |
-| CentOS | 7.1 | データ ディスク |
-| CentOS | 7.0 | データ ディスク |
-| CentOS | 6.7 | データ ディスク |
-| CentOS | 6.6 | データ ディスク |
-| CentOS | 6.5 | データ ディスク |
+| CentOS | 6.8 | データ ディスク |
 | openSUSE | 42.3 | データ ディスク |
 | SLES | 12-SP4 | データ ディスク |
 | SLES | 12-SP3 | データ ディスク |
@@ -158,7 +153,7 @@ Windows では、ADE は BitLocker AES256 暗号化方法を使用します (Win
 いいえ、Azure Disk Encryption を使用して既に暗号化されているデータ ドライブのデータは消去されません。 EncryptFormatAll で、OS ドライブが再暗号化されなかったのと同様に、既に暗号化されているデータ ドライブは再暗号化されません。 詳細については、「[EncryptFormatAll 条件](azure-security-disk-encryption-linux.md#bkmk_EFACriteria)」を参照してください。        
 
 ## <a name="is-xfs-filesystem-supported"></a>XFS ファイルシステムはサポートされていますか。
-XFS ボリュームは、EncryptFormalAll を使用したデータ ディスクの暗号化でのみサポートされています。 ボリュームが再フォーマットされ、そのボリューム上の以前のデータがすべて消去されます。 詳細については、「[EncryptFormatAll 条件](azure-security-disk-encryption-linux.md#bkmk_EFACriteria)」を参照してください。
+XFS ボリュームは、EncryptFormatAll を使用したデータ ディスクの暗号化でのみサポートされています。 ボリュームが再フォーマットされ、そのボリューム上の以前のデータがすべて消去されます。 詳細については、「[EncryptFormatAll 条件](azure-security-disk-encryption-linux.md#bkmk_EFACriteria)」を参照してください。
 
 ## <a name="can-i-backup-and-restore-an-encrypted-vm"></a>暗号化された VM をバックアップおよび復元することはできますか。 
 

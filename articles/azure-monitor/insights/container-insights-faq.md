@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 04/17/2019
 ms.author: magoedte
-ms.openlocfilehash: 70712b68cc26a461f702850dbf6064b65b4ff130
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: afa332b40884a79b5114b3b8093cd27108c39984
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59999724"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65780002"
 ---
 # <a name="azure-monitor-for-containers-frequently-asked-questions"></a>コンテナーの Azure Monitor についてよく寄せられる質問
 
@@ -71,11 +71,17 @@ LogEntry : ({“Hello": "This example has multiple lines:","Docker/Moby": "will 
 
 ## <a name="how-do-i-resolve-azure-ad-errors-when-i-enable-live-logs"></a>ライブ ログを有効にしたときの Azure AD のエラーを解決するにはどうすればよいですか 
 
-次のエラーがに表示される場合があります。**要求で指定されている応答 URL が、アプリケーションに関して構成されている応答 URL と一致しません ('<application ID\>'**)。 解決方法については、「[コンテナー用 Azure Monitor でコンテナー ログをリアルタイムで表示する方法](container-insights-live-logs.md#configure-aks-with-azure-active-directory)」をご覧ください。 
+次のエラーがに表示される場合があります。**要求で指定されている応答 URL が、アプリケーションに関して構成されている応答 URL と一致しません ('<application ID\>'** )。 解決方法については、「[コンテナー用 Azure Monitor でコンテナー ログをリアルタイムで表示する方法](container-insights-live-logs.md#configure-aks-with-azure-active-directory)」をご覧ください。 
 
 ## <a name="why-cant-i-upgrade-cluster-after-onboarding"></a>オンボード後にクラスターをアップグレードできないのはなぜですか
 
 AKS クラスターに対して Azure Monitor for containers を有効にした後、クラスターがデータを送信していた Log Analytics ワークスペースを削除する場合、クラスターをアップグレードしようとすると失敗します。 これを回避するには、監視を無効にしてから、サブスクリプション内の別の有効なワークスペースを参照して、監視を再度有効にする必要があります。 クラスターのアップグレードをもう一度実行しようとすると、正常に処理され、完了するはずです。  
+
+## <a name="which-ports-and-domains-do-i-need-to-openwhitelist-for-the-agent"></a>エージェントに対して、どのポートとドメインを開くまたはホワイトリスト登録する必要がありますか
+- *.ods.opinsights.azure.com   443
+- *.oms.opinsights.azure.com   443
+- *.blob.core.windows.net      443
+- dc.services.visualstudio.com 443
 
 ## <a name="next-steps"></a>次の手順
 

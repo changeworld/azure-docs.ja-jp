@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 77c2cd9e0eac6717d91a73a6fc033dcaa2390444
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 976545f588895421e7c2be7e18b844d7994bc1ff
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65145041"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65779990"
 ---
 # <a name="status-monitor-v2"></a>Status Monitor v2
 
@@ -61,6 +61,11 @@ https://www.powershellgallery.com/packages/Az.ApplicationMonitor
 - 有効化が成功したことをどうやって確認すればよいですか?
 
    有効化が成功したことを確認するコマンドレットはありません。 [Live Metrics](https://docs.microsoft.com/azure/azure-monitor/app/live-stream) を使用して、アプリケーションがテレメトリを送信していることを確認することをお勧めします。
+
+   [Analytics](../log-query/get-started-portal.md) を使用して、現在テレメトリを送信しているすべてのクラウド ロールを一覧表示することもできます。
+   ```Kusto
+   union * | summarize count() by cloud_RoleName, cloud_RoleInstance
+   ```
 
 ## <a name="next-steps"></a>次の手順
 

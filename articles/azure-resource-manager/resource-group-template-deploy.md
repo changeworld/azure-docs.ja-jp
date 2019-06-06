@@ -1,23 +1,17 @@
 ---
 title: PowerShell とテンプレートを使用してリソースをデプロイする | Microsoft Docs
 description: Azure Resource Manager と Azure PowerShell を使用してリソースを Azure にデプロイします。 リソースは Resource Manager テンプレートで定義されます。
-services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
-ms.assetid: 55903f35-6c16-4c6d-bf52-dbf365605c3f
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 03/28/2019
+ms.date: 05/14/2019
 ms.author: tomfitz
-ms.openlocfilehash: 2ef5cc702bd5035c958a8feb9b6f5051781cd3cc
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 5203519b1553de54d4e3cd1fafe6fb3d1c18ebd6
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58649796"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65779953"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-powershell"></a>Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ
 
@@ -99,15 +93,15 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
   -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
 ```
 
-シェルにコードを貼り付けて、シェル内を右クリックし、**[貼り付け]** を選択します。
+シェルにコードを貼り付けて、シェル内を右クリックし、 **[貼り付け]** を選択します。
 
 ## <a name="redeploy-when-deployment-fails"></a>デプロイに失敗したときに再デプロイする
 
-この機能は、"*エラー時のロールバック*" とも呼ばれます。 デプロイに失敗した場合、デプロイ履歴から以前に成功したデプロイを自動的に再デプロイすることができます。 再デプロイを指定するには、デプロイ コマンド内で `-RollbackToLastDeployment` または `-RollBackDeploymentName` パラメーターのいずれかを使用します。 この機能は、インフラストラクチャのデプロイに対して既知の正常な状態を取得してあり、それに戻したい場合に便利です。 いくつかの注意事項と制限があります。
+この機能は、"*エラー時のロールバック*" とも呼ばれます。 デプロイに失敗した場合、デプロイ履歴から以前に成功したデプロイを自動的に再デプロイすることができます。 再デプロイを指定するには、デプロイ コマンド内で `-RollbackToLastDeployment` または `-RollBackDeploymentName` パラメーターのいずれかを使用します。 この機能は、インフラストラクチャのデプロイに関して既知の正常な状態があって、その状態に戻したい場合に便利です。 いくつかの注意事項と制限があります。
 
 - 再デプロイは、以前に実行されたときとまったく同じパラメーターで実行されます。 パラメーターを変更することはできません。
 - 以前のデプロイは、[完全モード](./deployment-modes.md#complete-mode)を使用して実行されます。 以前のデプロイに含まれていなかったリソースはすべて削除され、すべてのリソースの構成は以前の状態に設定されます。 [デプロイ モード](./deployment-modes.md)を完全に理解しておいてください。
-- 再デプロイではリソースのみが影響を受け、データの変更への影響はありません。
+- 再デプロイではリソースのみが影響を受け、データの変更には影響ありません。
 - この機能は、リソース グループのデプロイにおいてのみサポートされ、サブスクリプション レベルのデプロイではサポートされません。 サブスクリプション レベル デプロイについて詳しくは、「[サブスクリプション レベルでリソース グループとリソースを作成する](./deploy-to-subscription.md)」をご覧ください。
 
 このオプションを使用するには、ご自身のデプロイを履歴で特定できるように、デプロイの名前は一意でなければなりません。 一意の名前が付いていないと、失敗した現在のデプロイによって、履歴にある以前の成功したデプロイが上書きされる可能性があります。 このオプションは、ルート レベルのデプロイでのみ使用できます。 入れ子になったテンプレートのデプロイを再デプロイに使用することはできません。
@@ -159,6 +153,18 @@ New-AzResourceGroupDeployment -ResourceGroupName testgroup `
 ```
 
 ファイルからのパラメーター値の取得は、構成値を指定する必要がある場合に便利です。 たとえば、[Linux 仮想マシン用の cloud-init の値](../virtual-machines/linux/using-cloud-init.md)を指定できます。
+
+オブジェクトの配列を渡す必要がある場合、PowerShell でハッシュ テーブルを作成し、そのテーブルを配列に追加します。 デプロイの際に、その配列をパラメーターとして渡します。
+
+```powershell
+$hash1 = @{ Name = "firstSubnet"; AddressPrefix = "10.0.0.0/24"}
+$hash2 = @{ Name = "secondSubnet"; AddressPrefix = "10.0.1.0/24"}
+$subnetArray = $hash1, $hash2
+New-AzResourceGroupDeployment -ResourceGroupName testgroup `
+  -TemplateFile c:\MyTemplates\demotemplate.json `
+  -exampleArray $subnetArray
+```
+
 
 ### <a name="parameter-files"></a>パラメーター ファイル
 

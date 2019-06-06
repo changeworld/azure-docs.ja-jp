@@ -1,6 +1,6 @@
 ---
 title: Azure Instance Metadata Service | Microsoft Docs
-description: Windows VM のコンピューティング、ネットワーク、および今後のメンテナンス イベントに関する情報を取得するための RESTful インターフェイスです。
+description: Windows VM のコンピューティング、ネットワーク、今後のメンテナンス イベントに関する情報を取得するための RESTful インターフェイスです。
 services: virtual-machines-windows
 documentationcenter: ''
 author: KumariSupriya
@@ -15,17 +15,17 @@ ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: f892ded46f7124237fd80fbe1e3f5e866c12f0d5
-ms.sourcegitcommit: abeefca6cd5ca01c3e0b281832212aceff08bf3e
+ms.openlocfilehash: 160d494eea4bd597725a4e7c21ad9b763502bee6
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "64993076"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65792092"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure Instance Metadata Service
 
 Azure Instance Metadata Service は、実行中の仮想マシン インスタンスに関する情報を提供します。これらの情報を使用して仮想マシンの管理と構成を行うことができます。
-SKU、ネットワークの構成、今後のメンテナンス イベントなどの情報が含まれます。 使用できる情報の種類の詳細については、「[メタデータ API](#metadata-apis)」を参照してください。
+SKU、ネットワークの構成、今後のメンテナンス イベントなどの情報が含まれます。 使用できる情報の種類について詳しくは、「[メタデータ API](#metadata-apis)」をご覧ください。
 
 Azure Instance Metadata Service は、[Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/) を使用して作成されたすべての IaaS VM にアクセスできる REST エンドポイントです。
 このエンドポイントは、VM からのみアクセスすることができる、よく知られているルーティング不可能な IP アドレス (`169.254.169.254`) で使用できます。
@@ -110,7 +110,7 @@ API | 既定のデータ形式 | その他の形式
 /scheduledevents | json | なし
 /attested | json | なし
 
-既定以外の応答形式にアクセスするには、要求のクエリ文字列パラメーターとして要求の形式を指定します。 例: 
+既定以外の応答形式にアクセスするには、要求のクエリ文字列パラメーターとして要求の形式を指定します。 例:
 
 ```bash
 curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017-08-01&format=text"
@@ -338,13 +338,13 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/meta
 
 ## <a name="metadata-apis"></a>メタデータ API
 
-#### <a name="the-following-apis-are-available-through-the-metadata-endpoint"></a>次の API は、メタデータ エンドポイントを通じて使用できます。
+#### <a name="the-following-apis-are-available-through-the-metadata-endpoint"></a>次の API は、メタデータ エンドポイントを介して使用できます。
 
 データ | Description | 導入されたバージョン
 -----|-------------|-----------------------
 attested | 「[構成証明済みデータ](#attested-data)」をご覧ください | 2018 年 10 月 1 日
 identity | Azure リソースのマネージド ID。 「[アクセス トークンの取得](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)」を参照してください | 2018-02-01
-instance | 「[インスタンス API](#instance-api)」を参照してください。 | 2017-04-02
+instance | 「[インスタンス API](#instance-api)」を参照してください | 2017-04-02
 scheduledevents | [スケジュールされたイベント](scheduled-events.md)に関する記事を参照してください。 | 2017-08-01
 
 #### <a name="instance-api"></a>インスタンス API
@@ -356,13 +356,13 @@ scheduledevents | [スケジュールされたイベント](scheduled-events.md)
 データ | Description | 導入されたバージョン
 -----|-------------|-----------------------
 azEnvironment | VM が実行されている Azure 環境 | 2018 年 10 月 1 日
-customData | 「[カスタム データ](#custom-data)」を参照してください。 | 2019-02-01
+customData | 「[カスタム データ](#custom-data)」を参照してください | 2019-02-01
 location | VM を実行中の Azure リージョン | 2017-04-02
 name | VM の名前 | 2017-04-02
-offer | VM イメージのプラン情報。 この値は、Azure イメージ ギャラリーからデプロイされるイメージにのみ存在します。 | 2017-04-02
+offer | VM イメージの情報。Azure イメージ ギャラリーからデプロイされるイメージについてのみ情報が存在します。 | 2017-04-02
 osType | Linux または Windows | 2017-04-02
 placementGroupId | お使いの仮想マシン スケール セットの[配置グループ](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) | 2017-08-01
-プラン | VM の Azure Marketplace イメージの[プラン](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan)には、名前、製品、および発行元が含まれています | 2018-04-02
+プラン | Azure Marketplace イメージの場合、[プラン](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan)には VM の名前、製品、発行元が含まれています | 2018-04-02
 platformUpdateDomain |  VM を実行中の[更新ドメイン](manage-availability.md) | 2017-04-02
 platformFaultDomain | VM を実行中の[障害ドメイン](manage-availability.md) | 2017-04-02
 provider | VM のプロバイダー | 2018 年 10 月 1 日
@@ -378,10 +378,10 @@ vmScaleSetName | お使いの仮想マシン スケール セットの[仮想マ
 vmSize | [VM サイズ](sizes.md) | 2017-04-02
 ゾーン | 仮想マシンの[可用性ゾーン](../../availability-zones/az-overview.md) | 2017-12-01
 
-##### <a name="the-following-network-categories-are-available-through-the-instance-api"></a>次のネットワーク カテゴリは、インスタンス API を通じて使用できます。
+##### <a name="the-following-network-categories-are-available-through-the-instance-api"></a>次のネットワーク カテゴリは、インスタンス API を介して使用できます。
 
 > [!NOTE]
-> 次のカテゴリは、メタデータ エンドポイントを通じて、インスタンス/ネットワーク/インターフェイスを介してアクセスされます。
+> 次のカテゴリは、メタデータ エンドポイント経由で、インスタンス/ネットワーク/インターフェイスを介してアクセスされます。
 
 データ | Description | 導入されたバージョン
 -----|-------------|-----------------------
@@ -688,12 +688,20 @@ route add 169.254.169.254/32 10.0.1.10 metric 1 -p
 ```
 
 ### <a name="custom-data"></a>カスタム データ
-Instance Metadata Service により、VM からそのカスタム データへのアクセスが可能になります。 バイナリ データは、64 KB 未満にする必要があります。また、バイナリ データは、Base64 でエンコードされた形式で VM に提供されます。 カスタム データを使用する VM の作成方法の詳細については、「[Deploy a Virtual Machine with CustomData (カスタム データを使用する仮想マシンのデプロイ)](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-customdata)」を参照してください。
+Instance Metadata Service により、VM からそのカスタム データへのアクセスが可能になります。 バイナリ データは、64 KB 未満にする必要があり、Base64 でエンコードされた形式で VM に提供されます。
+
+REST API、PowerShell コマンドレット、Azure コマンド ライン インターフェイス (CLI)、ARM テンプレートを使用して、Azure カスタム データを VM に挿入できます。
+
+Azure コマンド ライン インターフェイスの例については、「[Custom Data and Cloud-Init on Microsoft Azure (Microsoft Azure でのカスタム データと Cloud-Init)](https://azure.microsoft.com/blog/custom-data-and-cloud-init-on-windows-azure/)」を参照してください。
+
+ARM テンプレートの例については、「[Deploy a Virtual Machine with CustomData (CustomData を使用した仮想マシンのデプロイ)](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-customdata)」を参照してください。
 
 カスタム データは、VM 内で実行されているすべてのプロセスで使用できます。 顧客がカスタム データに機密情報を挿入しないようにすることをお勧めします。
 
+現時点では、VM のブートストラップ中にカスタム データが必ず使用可能になります。 ディスクの追加や VM サイズ変更など、VM が更新された場合、Instance Metadata Service はカスタム データを提供しません。 Instance Metadata Service を介して持続的にカスタム データを提供する機能が現在、開発段階にあります。
+
 #### <a name="retrieving-custom-data-in-virtual-machine"></a>仮想マシン内のカスタム データの取得
-Instance Metadata Service によって VM に提供されるカスタム データは、Base64 でエンコードされています。 次の例は、Base64 でエンコードされた文字列をデコードするものです。
+Instance Metadata Service では、Base64 のエンコード形式で、カスタム データを VM に提供しています。 次の例は、Base64 でエンコードされた文字列をデコードしています。
 
 > [!NOTE]
 > この例のカスタム データは、"My custom data." という ASCII 文字列として解釈されます。

@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 06/28/2017
-ms.openlocfilehash: 7ad2c9dd89843a36a786eeefee8403d32027e11c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: f60236163cd88822c384bd356a1770d616639174
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59274520"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65596628"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub"></a>IoT Hub を使用してデバイスからクラウドにファイルをアップロードする
 
@@ -26,7 +26,7 @@ ms.locfileid: "59274520"
 - 
 - IoT Hub ファイル アップロード通知を使用して、アプリのバックエンドでのファイルの処理を開始する。
 
-「[Azure IoT Hub の使用](quickstart-send-telemetry-node.md)」チュートリアルでは、IoT Hub のデバイスからクラウドへの基本的なメッセージング機能が説明されています。 ただし、一部のシナリオでは、デバイスから送信されるデータを、IoT Hub が受け取る、クラウドからデバイスへの比較的小さなメッセージにマッピングすることは簡単ではありません。 例: 
+「[Azure IoT Hub の使用](quickstart-send-telemetry-node.md)」チュートリアルでは、IoT Hub のデバイスからクラウドへの基本的なメッセージング機能が説明されています。 ただし、一部のシナリオでは、デバイスから送信されるデータを、IoT Hub が受け取る、クラウドからデバイスへの比較的小さなメッセージにマッピングすることは簡単ではありません。 例:
 
 *  イメージを含む大きなファイル
 *  ビデオ
@@ -46,7 +46,7 @@ ms.locfileid: "59274520"
 
 このチュートリアルを完了するには、以下が必要です。
 
-* Node.js バージョン 4.0.x 以降。
+* Node.js バージョン 10.0.x 以降。
 
 * アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 (アカウントがない場合は、[無料アカウント](https://azure.microsoft.com/pricing/free-trial/) を数分で作成することができます)。
 

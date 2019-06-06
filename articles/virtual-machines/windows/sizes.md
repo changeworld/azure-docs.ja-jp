@@ -15,22 +15,22 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 11/14/2018
 ms.author: jonbeck
-ms.openlocfilehash: 45fc4655d8afd2127c2f3057eb8a42ee80be4021
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b9a81fb451164aa58ca4ba943ed000c14d9f87cc
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58009825"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65873582"
 ---
 # <a name="sizes-for-windows-virtual-machines-in-azure"></a>Azure の Windows 仮想マシンのサイズ
 
 この記事では、Windows アプリとワークロードの実行に使用できる Azure 仮想マシンに利用可能なサイズとオプションについて説明します。 また、これらのリソースの使用を計画するときに注意する必要のあるデプロイの考慮事項も示します。  この記事は、 [Linux 仮想マシン](../linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) にも利用できます。
 
 
-| type                     | サイズ           |    説明       |
+| Type                     | サイズ           |    説明       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [汎用](sizes-general.md)          | B、Dsv3、Dv3、DSv2、Dv2、Av2、DC | バランスのとれた CPU 対メモリ比。 テストと開発、小～中規模のデータベース、および低～中程度のトラフィックの Web サーバーに最適です。 |
-| [コンピューティングの最適化](sizes-compute.md)        | Fsv2、Fs、F             | 高い CPU 対メモリ比。 トラフィックが中程度の Web サーバー、ネットワーク アプライアンス、バッチ処理、アプリケーション サーバーに適しています。        |
+| [コンピューティングの最適化](sizes-compute.md)        | Fsv2          | 高い CPU 対メモリ比。 トラフィックが中程度の Web サーバー、ネットワーク アプライアンス、バッチ処理、アプリケーション サーバーに適しています。        |
 | [メモリの最適化](../virtual-machines-windows-sizes-memory.md)         | Esv3、Ev3、M、GS、G、DSv2、Dv2  | 高いメモリ対 CPU 比。 リレーショナル データベース サーバー、中～大規模のキャッシュ、およびメモリ内分析に適しています。                 |
 | [ストレージの最適化](../virtual-machines-windows-sizes-storage.md)        | Lsv2、Ls                | ビッグ データ、SQL、NoSQL データベース、データ ウェアハウス、および大規模なトランザクション データベースに最適な、高いディスク スループットと IO。  |
 | [GPU](sizes-gpu.md)            | NV、NVv2、NC、NCv2、NCv3、ND、NDv2 (プレビュー)            | 負荷の高いグラフィックスのレンダリングやビデオ編集、ディープ ラーニングを使用したモデル トレーニングと推論 (ND) に特化した仮想マシン。 1 つまたは複数の GPU で利用できます。       |

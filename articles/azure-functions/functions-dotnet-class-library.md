@@ -11,12 +11,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 09/12/2018
 ms.author: glenga
-ms.openlocfilehash: 71ba1266c3a6a1f063f1af4ab37a5f29752c62f0
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 2a6d670ba9f2f496cc94d2790eb6f66d46305746
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58896161"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65872799"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Azure Functions C# developer reference (Azure Functions C# 開発者向けリファレンス)
 
@@ -29,16 +29,16 @@ Azure Functions では、C# および C# スクリプト プログラミング�
 この記事では、既に次の記事に目を通していることを前提とします。
 
 * [Azure Functions の開発者向けガイド](functions-reference.md)
-* [Azure Functions 向けの Visual Studio 2017 Tools](functions-develop-vs.md)
+* [Azure Functions 向けの Visual Studio 2019 Tools](functions-develop-vs.md)
 
 ## <a name="functions-class-library-project"></a>関数クラス ライブラリ プロジェクト
 
 Visual Studio では、**Azure Functions** プロジェクト テンプレートは、次のファイルを含む C# クラス ライブラリ プロジェクトを作成します。
 
 * [host.json](functions-host-json.md) - ローカルまたは Azure 内で実行される場合に、プロジェクト内のすべての関数に影響を及ぼす構成設定を格納します。
-* [local.settings.json](functions-run-local.md#local-settings-file) - ローカルで実行される場合に使用されるアプリ設定および接続文字列を格納します。 このファイルにはシークレットが含まれていて、Azure の関数アプリには公開されません。 代わりに、[関数アプリにアプリ設定を追加](functions-develop-vs.md#function-app-settings)する必要があります。
+* [local.settings.json](functions-run-local.md#local-settings-file) - ローカルで実行される場合に使用されるアプリ設定および接続文字列を格納します。 このファイルにはシークレットが含まれていて、Azure の関数アプリには公開されません。 代わりに、[関数アプリにアプリ設定を追加](functions-develop-vs.md#function-app-settings)します。
 
-プロジェクトをビルドするときに、次のようなフォルダー構造がビルドの出力ディレクトリに作成されます。
+プロジェクトをビルドするときに、次の例のようなフォルダー構造がビルドの出力ディレクトリに作成されます。
 
 ```
 <framework.version>
@@ -50,7 +50,7 @@ Visual Studio では、**Azure Functions** プロジェクト テンプレート
  | - host.json
 ```
 
-このディレクトリは、Azure 上で関数アプリにデプロイされるディレクトリです。 Functions ランタイムの[バージョン 2.x](functions-versions.md) に必要なバインディング拡張機能は、[NuGet パッケージとしてプロジェクトに追加](./functions-bindings-register.md#c-class-library-with-visual-studio-2017)されます。
+このディレクトリは、Azure 上で関数アプリにデプロイされるディレクトリです。 Functions ランタイムの[バージョン 2.x](functions-versions.md) に必要なバインディング拡張機能は、[NuGet パッケージとしてプロジェクトに追加](./functions-bindings-register.md#c-class-library-with-visual-studio-2019)されます。
 
 > [!IMPORTANT]
 > ビルド処理では、関数ごとに *function.json* ファイルが作成されます。 この *function.json* ファイルに対しては、直接編集は行われません。 このファイルを編集して、バインド構成を変更したり、関数を無効にしたりすることはできません。 関数を無効にする方法については、[関数を無効にする方法](disable-function.md#functions-2x---c-class-libraries)に関するページをご覧ください。
@@ -72,7 +72,7 @@ public static class SimpleExample
 } 
 ```
 
-`FunctionName` 属性は、関数のエントリ ポイントとしてメソッドをマークします。 名前はプロジェクト内で一意であり、文字で始まり、英数字、`_`、および `-` のみが含まれ、127 文字以下にする必要があります。 プロジェクト テンプレートでは、多くの場合、`Run` という名前のメソッドが作成されますが、有効な C# メソッド名であればメソッド名として使用できます。
+`FunctionName` 属性は、関数のエントリ ポイントとしてメソッドをマークします。 名前はプロジェクト内で一意であり、文字で始まり、英数字、`_`、`-` のみが含まれ、127 文字以下にする必要があります。 プロジェクト テンプレートでは、多くの場合、`Run` という名前のメソッドが作成されますが、有効な C# メソッド名であればメソッド名として使用できます。
 
 トリガー属性は、トリガーの種類を指定し、メソッド パラメーターに入力データをバインドします。 例の関数は 1 つのクエリ メッセージによってトリガーされ、そのクエリ メッセージは `myQueueItem` パラメーターでメソッドに渡されます。
 
@@ -373,7 +373,7 @@ public static class IBinderExample
 
 ### <a name="multiple-attribute-example"></a>複数属性の例
 
-前の例では、関数アプリのメイン ストレージ アカウント接続文字列 (`AzureWebJobsStorage`) のアプリ設定を取得します。 ストレージ アカウントに使用するカスタム アプリ設定を指定するには、[StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) を追加し、属性の配列を `BindAsync<T>()` に渡します。 `IBinder`ではなく、`Binder` パラメーターを使用します。  例: 
+前の例では、関数アプリのメイン ストレージ アカウント接続文字列 (`AzureWebJobsStorage`) のアプリ設定を取得します。 ストレージ アカウントに使用するカスタム アプリ設定を指定するには、[StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) を追加し、属性の配列を `BindAsync<T>()` に渡します。 `IBinder`ではなく、`Binder` パラメーターを使用します。  例:
 
 ```cs
 public static class IBinderExampleMultipleAttributes

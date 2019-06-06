@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/08/2019
 ms.author: sujayt
-ms.openlocfilehash: c7c91a2cf9a25d0a5a4aeed6621e89f9c7cc18f0
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 3c87e159022b6dcf13daf2a2659c88c0529a8f48
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59269624"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65796426"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-issues"></a>Azure 間の VM レプリケーションに関する問題のトラブルシューティング
 
@@ -221,11 +221,21 @@ VM に接続された新しいディスクを初期化する必要がありま�
 
 問題が解決しない場合は、サポートにお問い合わせください。
 
+## <a name="one-or-more-disks-are-available-for-protectionerror-code-153039"></a>1 つ以上のディスクで保護が使用可能です (エラー コード 153039)
+- **考えられる原因** </br>
+  - 保護の後に、1 つまたは複数のディスクが最近仮想マシンに追加された。 
+  - 仮想マシンの保護の後に、1 つまたは複数のディスクが初期化された。
 
-## <a name="unable-to-see-the-azure-vm-for-selection-in-enable-replication"></a>"レプリケーションの有効化" で選択する Azure VM を表示できない
+### <a name="fix-the-problem"></a>問題の解決
+これらのディスクを保護するか、警告を無視して、VM のレプリケーション状態をもう一度正常にします。</br>
+1. ディスクを保護するには、 [レプリケートされたアイテム] > [VM] > [ディスク] に移動し、保護されていないディスクで [レプリケーションの有効化] をクリックします。
+ ![add_disks](./media/azure-to-azure-troubleshoot-errors/add-disk.png)
+2. 警告を無視するには、 [レプリケートされたアイテム] > [VM] に移動し、概要セクションで [アラートを無視] をクリックします。
+![dismiss_warning](./media/azure-to-azure-troubleshoot-errors/dismiss-warning.png)
+## <a name="unable-to-see-the-azure-vm-or-resource-group--for-selection-in-enable-replication"></a>"レプリケーションの有効化" で、選択する Azure VM またはリソース グループが表示されない
 
  **原因 1:リソース グループとソース仮想マシンが別々の場所にある** <br>
-Azure Site Recovery では現在、ソース リージョンのリソース グループと仮想マシンが同じ場所にあることが必須となっています。 そうでない場合、保護されている間に仮想マシンを見つけることができません。
+Azure Site Recovery では現在、ソース リージョンのリソース グループと仮想マシンが同じ場所にあることが必須となっています。 そうでない場合、保護されている間に仮想マシンを見つけることができません。 この問題の回避策として、Recovery Services コンテナーではなく、VM からレプリケーションを有効にできます。 ソース VM > [プロパティ] > [ディザスター リカバリー] に移動し、レプリケーションを有効にします。
 
 **原因 2:このリソース グループが、選択されたサブスクリプションの一部でない** <br>
 特定のサブスクリプションの一部ではない場合、保護されたときにリソース グループを見つけられない可能性があります。 リソース グループが、使用されているサブスクリプションに属していることを確認します。
@@ -242,7 +252,7 @@ Azure Site Recovery では現在、ソース リージョンのリソース グ�
 >
 >以下のスクリプトを使用する前に、""AzureRM.Resources"" モジュールを必ず更新するようにしてください。
 
-[古い ASR 構成を削除するスクリプト](https://gallery.technet.microsoft.com/Azure-Recovery-ASR-script-3a93f412)を使用して、Azure VM で古い Site Recovery 構成を削除できます。 古い構成を削除すると、VM が表示されます。
+[古い ASR 構成を削除するスクリプト](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1)を使用して、Azure VM で古い Site Recovery 構成を削除できます。 古い構成を削除すると、VM が表示されます。
 
 ## <a name="unable-to-select-virtual-machine-for-protection"></a>保護対象の仮想マシンを選択できない
  **原因 1:仮想マシンの何らかの拡張機能のインストールが失敗したかまたは応答しない状態にある** <br>
@@ -257,7 +267,7 @@ VM でレプリケーションを有効にするには、プロビジョニン�
 2.  **[サブスクリプション]** 一覧を展開して、自分のサブスクリプションを選択します。
 3.  **[ResourceGroups]** 一覧を展開して、VM のリソース グループを選択します。
 4.  **[リソース]** 一覧を展開して、お使いの仮想マシンを選択します。
-5.  右側にあるインスタンス ビューで、**[provisioningState]** フィールドを確認します。
+5.  右側にあるインスタンス ビューで、 **[provisioningState]** フィールドを確認します。
 
 ### <a name="fix-the-problem"></a>問題の解決
 
@@ -301,7 +311,7 @@ VM でレプリケーションを有効にするには、プロビジョニン�
 ## <a name="enable-protection-failed-as-device-name-mentioned-in-the-grub-configuration-instead-of-uuid-error-code-151126"></a>GRUB 構成で UUID ではなくデバイス名が指定されているため、保護を有効にできなかった (エラー コード 151126)
 
 **考えられる原因:** </br>
-GRUB 構成ファイル ("/boot/grub/menu.lst"、"/boot/grub/grub.cfg"、"/boot/grub2/grub.cfg"、または "/etc/default/grub") で、**root** パラメーターと **resume** パラメーターの値として、UUID でなく、実際のデバイス名が含まれている可能性があります。 デバイス名は VM のリブートによって変更される可能性があり、フェールオーバー時に VM が同じ名前で起動されないことで問題が発生するため、Site Recovery では UUID を使用する必要があります。 例:  </br>
+GRUB 構成ファイル ("/boot/grub/menu.lst"、"/boot/grub/grub.cfg"、"/boot/grub2/grub.cfg"、または "/etc/default/grub") で、**root** パラメーターと **resume** パラメーターの値として、UUID でなく、実際のデバイス名が含まれている可能性があります。 デバイス名は VM のリブートによって変更される可能性があり、フェールオーバー時に VM が同じ名前で起動されないことで問題が発生するため、Site Recovery では UUID を使用する必要があります。 例: </br>
 
 
 - GRUB ファイル **/boot/grub2/grub.cfg** の次の行。 <br>
@@ -317,7 +327,7 @@ GRUB 構成ファイル ("/boot/grub/menu.lst"、"/boot/grub/grub.cfg"、"/boot/
 デバイス名を対応する UUID に置き換える必要があります。<br>
 
 
-1. "blkid \<デバイス名>" コマンドを実行して、デバイスの UUID を検出します。 例: <br>
+1. "blkid \<デバイス名>" コマンドを実行して、デバイスの UUID を検出します。 例:<br>
    ```
    blkid /dev/sda1
    ```<br>

@@ -11,13 +11,13 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto, carlrab, emlisa
 manager: craigg
-ms.date: 04/11/2019
-ms.openlocfilehash: cb4ff203a69e04aeaff6d446d6ce3719f4158305
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.date: 05/14/2019
+ms.openlocfilehash: 7916e9493a5d572f844bca23a1dd7806e5fbe572
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60001084"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65790158"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Azure SQL Database のセキュリティ機能の概要
 
@@ -29,15 +29,15 @@ ms.locfileid: "60001084"
 
 Microsoft Azure SQL Database では、クラウドおよびエンタープライズ アプリケーション用のリレーショナル データベース サービスを提供します。 顧客データを保護できるように、IP アドレスまたは Azure 仮想ネットワーク トラフィック元に基づいてアクセス権が明示的に付与されるまで、ファイアウォールによってデータベース サーバーへのネットワーク アクセスが遮断されます。
 
-### <a name="ip-firewall-rules"></a>IP ファイアウォールの規則
+### <a name="ip-firewall-rules"></a>IP ファイアウォール規則
 
 IP ファイアウォール規則では、各要求の送信元 IP アドレスに基づいてデータベースへのアクセス権を付与します。 詳細については、[Azure SQL Database および SQL Data Warehouse ファイアウォール規則の概要](sql-database-firewall-configure.md)に関するページを参照してください。
 
 ### <a name="virtual-network-firewall-rules"></a>仮想ネットワーク ファイアウォールの規則
 
-[仮想ネットワーク サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)は、Azure バックボーンで仮想ネットワークの接続を拡張し、トラフィックの発信元である仮想ネットワーク サブネットを Azure SQL Database が識別できるようにします。 Azure SQL Database にトラフィックが到達できるようにするには、SQL の[サービス タグ](../virtual-network/security-overview.md)を使用して、ネットワーク セキュリティ グループを介したアウトバウンド トラフィックを許可します。
+[仮想ネットワーク サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)では、Azure バックボーン経由で仮想ネットワーク接続を拡張し、Azure SQL Database でトラフィック元の仮想ネットワーク サブネットを識別できるようにします。 Azure SQL Database にトラフィックが到達できるようにするには、SQL の[サービス タグ](../virtual-network/security-overview.md)を使用して、ネットワーク セキュリティ グループを介したアウトバウンド トラフィックを許可します。
 
-[仮想ネットワークの規則](sql-database-vnet-service-endpoint-rule-overview.md)を使用すると、Azure SQL Database は、仮想ネットワーク内の選択されたサブネットから送信される通信のみを受け入れることができます。
+[仮想ネットワーク規則](sql-database-vnet-service-endpoint-rule-overview.md)を使用すると、Azure SQL Database は、仮想ネットワーク内の選択されたサブネットから送信される通信のみを受け入れることができます。
 
 > [!NOTE]
 > ファイアウォール規則でのアクセスの制御は、**マネージド インスタンス**には適用され*ません*。 必要なネットワーク構成について詳しくは、「[マネージド インスタンスへの接続](sql-database-managed-instance-connect-app.md)」を参照してください
@@ -66,19 +66,17 @@ IP ファイアウォール規則では、各要求の送信元 IP アドレス�
 > [!IMPORTANT]
 > Azure 内でのデータベースとサーバーの管理は、ポータル ユーザー アカウントのロール割り当てによって制御されます。 この記事の詳細については、「[Azure Portal でのロール ベースのアクセス制御](../role-based-access-control/overview.md)」を参照してください。 ファイアウォール規則でのアクセスの制御は、**マネージド インスタンス**には適用され*ません*。 必要なネットワーク構成について詳しくは、[マネージド インスタンスへの接続](sql-database-managed-instance-connect-app.md)に関する次の記事をご覧ください。
 
-承認は、Azure SQL Database 内のユーザーに割り当てられるアクセス許可を指し、ユーザーが実行できる操作を決定するものです。 アクセス許可は、データベース レベルのアクセス許可を定義する[データベース ロール](/sql/relational-databases/security/authentication-access/database-level-roles)にユーザー アカウントを追加するか、ユーザーに特定の[オブジェクト レベルのアクセス許可](/sql/relational-databases/security/permissions-database-engine)を付与することで、制御されます。 詳細については、[ログインとユーザー](sql-database-manage-logins.md)に関するページを参照してください
+## <a name="authorization"></a>Authorization
 
-ベスト プラクティスとして、職務に必要な最小限の特権を持つロールにユーザーを追加します。 サーバー管理者アカウントは、広範なアクセス許可を持つ db_owner ロールのメンバーであり、ユーザーには慎重に付与する必要があります。 Azure SQL Database でアプリケーションを使用する場合は、アクセス許可が制限されている[アプリケーション ロール](/sql/relational-databases/security/authentication-access/application-roles)を使用します。 これにより、データベースに接続しているアプリケーションに、そのアプリケーションで必要な最小限の特権が付与されます。
+承認は、Azure SQL Database 内のユーザーに割り当てられるアクセス許可を指し、ユーザーが実行できる操作を決定するものです。 アクセス許可を制御するには、[データベース ロール](/sql/relational-databases/security/authentication-access/database-level-roles)にユーザー アカウントを追加してデータベース レベルのアクセス許可をこれらのロールに割り当てるか、特定の[オブジェクト レベルのアクセス許可](/sql/relational-databases/security/permissions-database-engine)をユーザーに付与することができます。 詳細については、[ログインとユーザー](sql-database-manage-logins.md)に関するページを参照してください
+
+ベスト プラクティスとして、必要なときにカスタム ロールを作成することをお勧めします。 職務に必要な最小限の特権を持つロールにユーザーを追加してください。 ユーザーにアクセス許可を直接割り当てないでください。 サーバー管理者アカウントは、広範なアクセス許可を持つ組み込み db_owner ロールのメンバーです。管理業務を行うごく少数のユーザーにのみ、これを付与してください。 Azure SQL Database アプリケーションでは、呼び出されるモジュールの実行コンテキストを指定するために [EXECUTE AS](/sql/t-sql/statements/execute-as-clause-transact-sql) を使用するか、限定的なアクセス許可を持つ[アプリケーション ロール](/sql/relational-databases/security/authentication-access/application-roles)を使用します。 こうすると、データベースに接続するアプリケーションに、そのアプリケーションで必要な最小限の特権が確実に付与されます。 また、このようなベスト プラクティスに従うことで、職務の分離も促進されます。
 
 ### <a name="row-level-security"></a>行レベルのセキュリティ
 
-行レベルのセキュリティを使用して、クエリを実行しているユーザーの特性 (グループのメンバーシップや実行コンテキストなど) に基づいて、データベース テーブル内の行へのアクセスを制御できます。 詳細については、「[行レベルのセキュリティ](/sql/relational-databases/security/row-level-security)」を参照してください。
+行レベルのセキュリティを使用して、クエリを実行しているユーザーの特性 (グループのメンバーシップや実行コンテキストなど) に基づいて、データベース テーブル内の行へのアクセスを制御できます。 また、行レベル セキュリティを使用して、ラベルに基づくカスタム セキュリティ概念を実装することもできます。 詳細については、「[行レベルのセキュリティ](/sql/relational-databases/security/row-level-security)」を参照してください。
 
 ![azure-database-rls.png](media/sql-database-security-overview/azure-database-rls.png)
-
-  この認証方法では、ユーザー名とパスワードを使用します。 
-
-Azure SQL Database でのアクセス許可の概要については、[ログインとユーザー](sql-database-manage-logins.md#permissions)に関するページを参照してください
 
 ## <a name="threat-protection"></a>脅威の防止
 
@@ -102,7 +100,7 @@ SQL Database では、[トランスポート層セキュリティ](https://suppo
 
 SQL Server では、すべての接続に対して常に暗号化 (SSL/TLS) が適用されます。 これにより、接続文字列での **Encrypt** または **TrustServerCertificate** の設定に関係なく、すべてのデータがクライアントとサーバー間の "移動中" に暗号化されることが保証されます。
 
-ベスト プラクティスとして、アプリケーションの接続文字列に、暗号化接続を指定し、サーバー証明書を信頼_**しない**_ ことをお勧めします。 これにより、アプリケーションはサーバー証明書を強制的に検証するため、アプリケーションの man in the middle 攻撃に対する脆弱性を防ぎます。
+ベスト プラクティスとして、アプリケーションの接続文字列に、暗号化接続を指定し、サーバー証明書を信頼 _**しない**_ ことをお勧めします。 これにより、アプリケーションはサーバー証明書を強制的に検証するため、アプリケーションの man in the middle 攻撃に対する脆弱性を防ぎます。
 
 たとえば ADO.NET ドライバーを使用する場合、これは **Encrypt=True** と **TrustServerCertificate=False** によって実現します。Azure portal から接続文字列を取得する場合は、正しい設定になっています。
 
@@ -127,17 +125,11 @@ Azure では、新しく作成されたすべての SQL データベースが既
 
 [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) は、特定のデータベース列に格納された機微なデータ (クレジット カード番号、国民識別番号、_知る必要性_ に基づくデータなど) がアクセスされないようにすることを目的とした機能です。 これには、データベース管理者や、管理タスクを実行するためにデータベースへのアクセスを許可されているものの、暗号化された列の特定のデータには業務上、アクセスする必要がない他の特権ユーザーが含まれます。 データは常に暗号化されます。つまり、暗号化されたデータは、暗号化キーにアクセスできるクライアント アプリケーションによって処理される場合にのみ、暗号化解除されます。  暗号化キーは SQL に公開されることはなく、[Windows 証明書ストア](sql-database-always-encrypted.md)または [Azure Key Vault](sql-database-always-encrypted-azure-key-vault.md) に格納できます。
 
-### <a name="masking"></a>マスク
+### <a name="dynamic-data-masking"></a>動的データ マスク
 
 ![azure-database-ddm.png](media/sql-database-security-overview/azure-database-ddm.png)
 
-#### <a name="dynamic-data-masking"></a>動的データ マスク
-
 SQL Database 動的データ マスクは、特権のないユーザーに対してデリケートなデータをマスクし、データの公開を制限します。 動的データ マスクは、Azure SQL Database 内で機密の可能性があるデータを自動的に検出し、アプリケーション層への影響を最小限に抑えながらそれらのフィールドをマスクするための具体的な推奨事項を提示します。 指定されたデータベース フィールドに対するクエリの結果セットに含まれる機密データを難読化しますが、データベース内のデータは変更しません。 詳細については、「[SQL Database の動的データ マスク](sql-database-dynamic-data-masking-get-started.md)」を参照してください。
-
-#### <a name="static-data-masking"></a>静的データ マスク
-
-[静的データ マスク](/sql/relational-databases/security/static-data-masking)は、[SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) 18.0 プレビュー 5 以降で使用できるクライアント側のツールです。  静的データ マスクでは、ユーザーは、選択された列のデータが完全にマスクされているデータベースのコピーを作成できます。 利用可能なマスク機能には、NULL マスク、単一値マスク、シャッフルおよびグループ シャッフル マスク、文字列合成マスクが含まれます。 データベースのマスクされたコピーでは、組織は、マスクされたコピーを共有することで、運用環境とテスト環境を分離できます。 機微なデータは十分に保護され、他のすべてのデータベース特性が保持されています。 データベースへのサード パーティ アクセスが必要な場合は、データベースのマスクをお勧めします。
 
 ## <a name="security-management"></a>セキュリティ管理
 

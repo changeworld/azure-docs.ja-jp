@@ -5,19 +5,21 @@ services: virtual-machines
 author: jonbeck7
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 07/06/2018
+ms.date: 05/16/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 7984172c2b66f2b09e31c646b111e4b9d04fce2b
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 0b0e03b163d4de7a441bb7d2714be23b58c95028
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59551616"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66170371"
 ---
 メモリ最適化済み VM のサイズは、リレーショナル データベース サーバー、中規模から大規模のキャッシュ、インメモリ分析に適した、メモリと CPU の高い比率を提供します。 この記事では、このグループ内の各サイズのストレージのスループットとネットワーク帯域幅に加え、vCPU、データ ディスク、NIC の数に関する情報を提供します。 
 
-* M シリーズは、クラウドの VM で最大の vCPU 数 (最大 128 個の vCPU) と最大のメモリ (最大 3.8 TiB) を提供します。  非常に大規模なデータベースや他のアプリケーションに最適であり、多数の vCPU と大量のメモリによるメリットを活用することができます。
+* Mv2 シリーズは、クラウドの VM で最大の vCPU 数 (最大 208 個の vCPU) と最大のメモリ (最大 5.7 TiB) を提供します。 非常に大規模なデータベースや他のアプリケーションに最適であり、多数の vCPU と大量のメモリによるメリットを活用することができます。
+ 
+* M シリーズは、多数の vCPU (最大 128 個の vCPU) と大量のメモリ (最大 3.8 TiB) を提供します。 このシリーズも非常に大規模なデータベースや他のアプリケーションに最適であり、多数の vCPU と大量のメモリによるメリットを活用できます。
 
 * Dv2 シリーズ、G シリーズ、および対応する DSv2/GS は、より高速の vCPU やより高パフォーマンスの一時ストレージが必要なアプリケーション、またはメモリ要求がより高いアプリケーションに最適です。 多数のエンタープライズ レベルのアプリケーションに、強力な組み合わせで対処します。
 
@@ -33,7 +35,7 @@ ACU: 160 から 190 <sup>1</sup>
 
 Premium Storage: サポートされています
 
-Premium Storage Caching: サポートされています
+Premium Storage キャッシュ:サポートされています
 
 ESv3 シリーズのインスタンスは、2.3 GHz Intel XEON® E5-2673 v4 (Broadwell) プロセッサをベースとしており、Intel Turbo Boost Technology 2.0 の使用により 3.5 GHz まで高速化でき、Premium Storage を使用します。 Ev3 シリーズのインスタンスは、メモリへの負荷が高いエンタープライズ アプリケーションに最適です。
 
@@ -63,7 +65,7 @@ ACU: 160 から 190 <sup>1</sup>
 
 Premium Storage: サポートされていません
 
-Premium Storage Caching: サポートされていません
+Premium Storage キャッシュ:サポートされていません
 
 Ev3 シリーズのインスタンスは、2.3 GHz Intel XEON® E5-2673 v4 (Broadwell) プロセッサをベースとしており、Intel Turbo Boost Technology 2.0 の使用により 3.5 GHz まで高速化できます。 Ev3 シリーズのインスタンスは、メモリへの負荷が高いエンタープライズ アプリケーションに最適です。
 
@@ -88,13 +90,73 @@ Ev3 シリーズのインスタンスは、2.3 GHz Intel XEON® E5-2673 v4 (Broa
 <sup>3</sup> インスタンスは、単一の顧客専用のハードウェアに分離されます。
 
 
+## <a name="mv2-series"></a>Mv2 シリーズ
+
+Premium Storage: サポートされています
+
+Premium Storage キャッシュ:サポートされています
+
+書き込みアクセラレータ:[サポートされています](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator)
+
+Mv2 シリーズは、直接マッピングを使用した、高スループットで低待機時間のローカル NVMe ストレージを特長としています。このストレージは、全コア ベース周波数 2.5 GHz、最大ターボ周波数 3.8 GHz を備えたハイパースレッド Intel® Xeon® Platinum 8180 M 2.5 GHz (Skylake) プロセッサで実行されています。 すべての Mv2 シリーズ仮想マシンで、標準またはプレミアムの永続ディスクを使用できます。 Mv2 シリーズ インスタンスはメモリ最適化済み VM サイズで、非常に優れたコンピューティング性能によって大規模なメモリ内データベースとワークロードをサポートし、リレーショナル データベース サーバー、大規模キャッシュ、インメモリ分析に適した高いメモリ対 CPU 比率を提供します。 
+
+|Size | vCPU | メモリ: GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | キャッシュが有効な場合の一時ストレージの最大スループット: IOPS/MBps (キャッシュ サイズは GiB 単位) | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) |
+|-----------------|------|-------------|----------------|----------------|-----------------------------------------------------------------------|-------------------------------------------|------------------------------|
+| Standard_M208ms_v2<sup>1、2</sup> | 208 | 5700 | 4096 | 64 | 80,000 / 800 (7,040) | 40,000 / 1000 | 8/1,6000 |
+| Standard_M208s_v2<sup>1、2</sup> | 208 | 2850 | 4096 | 64 | 80,000 / 800 (7,040) | 40,000 / 1000 | 8/1,6000 |
+
+Mv2 シリーズの VM は Intel® ハイパー スレッディング テクノロジを利用しています  
+
+<sup>1</sup> これらの大規模 VM には、サポートされている ゲスト OS (Windows Server 2016、Windows Server 2019、SLES 12 SP4、SLES 15 ) のいずれかが必要です。
+
+<sup>2</sup> Mv2-シリーズは第 2 世代のみです。 Linux を使用している場合は、次のセクションで、SUSE Linux イメージを見つけて選択する方法をご確認ください。
+
+#### <a name="find-a-suse-image"></a>SUSE イメージを見つける
+
+Azure portal で適切な SUSE Linux イメージを選択するには: 
+
+1. Azure portal で **[リソースの作成]** を選択します 
+1. "SUSE SAP" を検索します 
+1. SLES for SAP の第 2 世代のイメージは、従量課金制またはサブスクリプション持ち込み (BYOS) のいずれかで使用できます。 検索結果で、必要なイメージ カテゴリを展開します。
+
+    * SUSE Linux Enterprise Server (SLES) for SAP
+    * SUSE Linux Enterprise Server (SLES) for SAP (BYOS)
+    
+1. Mv2 シリーズ対応 SUSE イメージには、名前の先頭に `GEN2:` が付きます。 次の SUSE イメージは Mv2 シリーズ VM で使用できます。
+
+    * GEN2:SUSE Linux Enterprise Server (SLES) 12 SP4 for SAP Applications
+    * GEN2:SUSE Linux Enterprise Server (SLES) 15 for SAP Applications
+    * GEN2:SUSE Linux Enterprise Server (SLES) 12 SP4 for SAP Applications (BYOS)
+    * GEN2:SUSE Linux Enterprise Server (SLES) 15 for SAP Applications (BYOS)
+
+#### <a name="select-a-suse-image-via-azure-cli"></a>Azure CLI を使用して SUSE イメージを選択する
+
+現在使用できる Mv2 シリーズ VM 用 SLES for SAP SLES for SAP イメージの一覧を表示するには、次の [`az vm image list`](https://docs.microsoft.com/cli/azure/vm/image?view=azure-cli-latest#az-vm-image-list) コマンドを使用します。
+
+```azurecli
+az vm image list --output table --publisher SUSE --sku gen2 --all
+```
+
+このコマンドにより、Mv2 シリーズ VM 用 SUSE から現在使用できる第 2 世代 VM が出力されます。 
+
+出力例:
+
+```
+Offer          Publisher  Sku          Urn                                        Version
+-------------  ---------  -----------  -----------------------------------------  ----------
+SLES-SAP       SUSE       gen2-12-sp4  SUSE:SLES-SAP:gen2-12-sp4:2019.05.13       2019.05.13
+SLES-SAP       SUSE       gen2-15      SUSE:SLES-SAP:gen2-15:2019.05.13           2019.05.13
+SLES-SAP-BYOS  SUSE       gen2-12-sp4  SUSE:SLES-SAP-BYOS:gen2-12-sp4:2019.05.13  2019.05.13
+SLES-SAP-BYOS  SUSE       gen2-15      SUSE:SLES-SAP-BYOS:gen2-15:2019.05.13      2019.05.13
+```
+
 ## <a name="m-series"></a>M シリーズ 
 
 ACU: 160 から 180 <sup>1</sup>
 
 Premium Storage: サポートされています
 
-Premium Storage Caching: サポートされています
+Premium Storage キャッシュ:サポートされています
 
 書き込みアクセラレータ:[サポートされています](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator)
 
@@ -132,7 +194,7 @@ ACU: 180 から 240 <sup>1</sup>
 
 Premium Storage: サポートされています
 
-Premium Storage Caching: サポートされています
+Premium Storage キャッシュ:サポートされています
 
 | Size | vCPU | メモリ: GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | キャッシュが有効な場合の一時ストレージの最大スループット: IOPS/MBps (キャッシュ サイズは GiB 単位) | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) |
 |---|---|---|---|---|---|---|---|
@@ -156,7 +218,7 @@ ACU: 180 から 240
 
 Premium Storage: サポートされていません
 
-Premium Storage Caching: サポートされていません
+Premium Storage キャッシュ:サポートされていません
 
 | Size         | vCPU | メモリ: GiB | 一時ストレージ (SSD) GiB | 一時ストレージの最大スループット: IOPS/読み取り MBps/書き込み MBps | 最大データ ディスク数/スループット: IOPS | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) |
 |--------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
@@ -175,7 +237,7 @@ ACU: 210 から 250 <sup>1</sup>
 
 Premium Storage: サポートされています
 
-Premium Storage Caching: サポートされています
+Premium Storage キャッシュ:サポートされています
 
 | Size | vCPU | メモリ: GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | キャッシュが有効な場合の一時ストレージの最大スループット: IOPS/MBps (キャッシュ サイズは GiB 単位) | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -198,7 +260,7 @@ ACU: 210 から 250
 
 Premium Storage: サポートされていません
 
-Premium Storage Caching: サポートされていません
+Premium Storage キャッシュ:サポートされていません
 
 | Size              | vCPU | メモリ: GiB | 一時ストレージ (SSD) GiB | 一時ストレージの最大スループット: IOPS/読み取り MBps/書き込み MBps | 最大データ ディスク数/スループット: IOPS | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) |
 |-------------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|

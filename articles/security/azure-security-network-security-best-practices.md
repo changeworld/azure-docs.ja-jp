@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/05/2019
 ms.author: TomSh
-ms.openlocfilehash: 78402d3e388f08eae6652859a71c93ff408a5b0d
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: f36658d57fb514ff279c39e9cb1644cf56341ec4
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65152984"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65761824"
 ---
 # <a name="azure-best-practices-for-network-security"></a>Azure のネットワーク セキュリティのベスト プラクティス
 この記事では、お使いのネットワーク セキュリティを強化するための Azure のベスト プラクティスについて説明します。 このベスト プラクティスは、Azure のネットワークに関して Microsoft が蓄積してきたノウハウと、ユーザーの皆様の経験に基づいています。
@@ -127,9 +127,9 @@ Azure ネットワーク セキュリティ アプライアンスを使用する
 ## <a name="avoid-exposure-to-the-internet-with-dedicated-wan-links"></a>専用 WAN リンクを使用してインターネットへの露出を避ける
 多くの組織で、ハイブリッド IT ルートが選ばれています。 ハイブリッド IT では、企業の情報資産の一部が Azure 上に存在し、それ以外がオンプレミスに残されています。 多くの場合、サービスのコンポーネントの一部が Azure で実行され、他のコンポーネントはオンプレミスに残されます。
 
-ハイブリッド IT シナリオでは、通常、なんらかの種類のクロスプレミス接続が使用されます。 クロスプレミス接続を使用することで、企業ではそのオンプレミス ネットワークを Azure 仮想ネットワークに接続できます。 以下の 2 つのクロスプレミス接続ソリューションを利用できます。
+ハイブリッド IT シナリオでは、通常、なんらかの種類のクロスプレミス接続が使用されます。 クロスプレミス接続を使用することで、企業ではそのオンプレミス ネットワークを Azure Virtual Network に接続できます。 以下の 2 つのクロスプレミス接続ソリューションを利用できます。
 
-* [サイト対サイト VPN](../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)。 信頼性の高い確立されたテクノロジですが、接続はインターネット経由で行われます。 帯域幅は、最大約 200 Mbps に制限されています。 サイト対サイト VPN は、一部のシナリオで推奨される選択肢です。
+* [サイト対サイト VPN](../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)。 信頼性の高い確立されたテクノロジですが、接続はインターネット経由で行われます。 帯域幅は、最大約 1.25 Gbps に制限されています。 サイト対サイト VPN は、一部のシナリオで推奨される選択肢です。
 * **Azure ExpressRoute**。 クロスプレミス接続では [ExpressRoute](../expressroute/expressroute-introduction.md) を使用することをお勧めします。 ExpressRoute を利用すると、接続プロバイダーが提供するプライベート接続を介して、オンプレミスのネットワークを Microsoft クラウドに拡張できます。 ExpressRoute では、Azure、Office 365、Dynamics 365 などの Microsoft クラウド サービスへの接続を確立できます。 ExpressRoute は、オンプレミスの場所または Microsoft Exchange ホスティング プロバイダーとの間の専用 WAN リンクです。 これは電気通信事業者が提供する接続であるため、データはインターネットを経由せずに送信されます。したがって、インターネット通信の潜在的なリスクにさらされることはありません。
 
 ExpressRoute 接続の場所は、ファイアウォールの容量、スケーラビリティ、信頼性、およびネットワーク トラフィックの可視性に影響する可能性があります。 既存の (オンプレミス) ネットワークのどこで ExpressRoute を終了するかを識別する必要があります。 次のようにすることができます。

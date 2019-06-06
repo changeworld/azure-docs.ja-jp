@@ -13,12 +13,12 @@ ms.date: 01/08/2019
 ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: 8efab173f464b67c0c88c87ee28ea7fa19980501
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: a1ff700bece2d64451294e72ebdf3c771ee644f8
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54154999"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65604198"
 ---
 # <a name="impact-analysis-with-application-insights"></a>Application Insights による影響分析
 
@@ -46,7 +46,7 @@ ms.locfileid: "54154999"
 ![影響ツール](./media/usage-impact/0002-dropdown.png)
 
 1. **[For the page view]\(ページ ビューについて\)** ドロップダウンからページ ビューを選択します。
-2. **[次を分析]** ドロップダウンを既定の選択である **[期間]** のままにします (このコンテキストでは、**[期間]** は**ページの読み込み時間**のエイリアスです)。
+2. **[次を分析]** ドロップダウンを既定の選択である **[期間]** のままにします (このコンテキストでは、 **[期間]** は**ページの読み込み時間**のエイリアスです)。
 3. **[次の使用への影響]** ドロップダウンで、カスタム イベントを選択します。 このイベントは、手順 1. で選択したページ ビューの UI 要素に対応する必要があります。
 
 ![結果のスクリーンショット](./media/usage-impact/0003-results.png)
@@ -63,7 +63,7 @@ ms.locfileid: "54154999"
 2. **[次を分析]** ドロップダウンで [国またはリージョン] を選択します
 3. **[次の使用への影響]** ドロップダウンでは、手順 1. で選択したページ ビューの UI 要素に対応するカスタム イベントを選択します。
 
-この場合の結果は、最初の例のような連続する x 軸のモデルに適合しません。 その代わり、セグメント化されたファネルに似た視覚化が表示されます。 **[Usage]\(使用\)** で並べ替えて、国に基づいたカスタム イベントへのコンバージョンのバリエーションを表示します。
+この場合の結果は、最初の例のような連続する x 軸のモデルに適合しません。 その代わり、セグメント化されたファネルに似た視覚化が表示されます。 **[Usage]\(使用\)** で並べ替えて、国や地域に基づいたカスタム イベントへのコンバージョンのバリエーションを表示します。
 
 
 ## <a name="how-does-the-impact-tool-calculate-these-conversion-rates"></a>影響ツールによってこれらのコンバージョン率が計算される方法

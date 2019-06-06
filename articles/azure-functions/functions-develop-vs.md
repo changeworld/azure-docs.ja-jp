@@ -1,6 +1,6 @@
 ---
 title: Visual Studio を使用する Azure Functions の開発 | Microsoft Docs
-description: Azure Functions Tools for Visual Studio 2017 を使用して、Azure Functions を開発およびテストする方法を説明します。
+description: Azure Functions Tools for Visual Studio 2019 を使用して、Azure Functions を開発およびテストする方法を説明します。
 services: functions
 documentationcenter: .net
 author: ggailey777
@@ -10,16 +10,16 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 10/08/2018
 ms.author: glenga
-ms.openlocfilehash: 4e67e91e93ef3a2e2acf88a87b97eaab56ca6479
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 4366f09ccc9a3b2335e0aa84b7fb7398825cb87e
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59793761"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65864529"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Visual Studio を使用する Azure Functions の開発  
 
-Azure Functions Tools for Visual Studio 2017 は Visual Studio の拡張機能です。C# 関数の開発、テスト、および Azure へのデプロイを可能にします。 Azure Functions を初めて使用する場合は、詳細について、「[Azure Functions の概要](functions-overview.md)」を参照してください。
+Azure Functions Tools for Visual Studio 2019 は Visual Studio の拡張機能です。C# 関数の開発、テスト、Azure へのデプロイを可能にします。 Azure Functions を初めて使用する場合は、詳細について、「[Azure Functions の概要](functions-overview.md)」を参照してください。
 
 Azure Functions Tools には、次のような利点があります。 
 
@@ -29,16 +29,16 @@ Azure Functions Tools には、次のような利点があります。
 * コンパイル済み C# 関数を開発およびデプロイできます。 コンパイル済み関数では、C# スクリプト ベースの関数より優れたコールド スタート パフォーマンスが得られます。 
 * Visual Studio 開発のすべての利点を得ながら、C# で関数をコーディングできます。 
 
-この記事では、Visual Studio 2017 用の Azure Functions Tools を使用して C# 関数を開発し、それを Azure に発行する方法に関する詳細情報を提供します。 この記事を読む前に、[Visual Studio 用の関数クイック スタート](functions-create-your-first-function-visual-studio.md)に関するページを完了する 必要があります。 
+この記事では、Azure Functions Tools for Visual Studio 2019 を使用して C# 関数を開発し、それを Azure に発行する方法に関する詳細情報を提供します。 この記事を読む前に、[Visual Studio 用の関数クイック スタート](functions-create-your-first-function-visual-studio.md)に関するページを完了する 必要があります。 
 
 > [!IMPORTANT]
 > 同じ関数アプリにローカル開発とポータル開発を混在させないでください。 ローカル プロジェクトから関数アプリに発行すると、ポータルで開発した関数がデプロイ プロセスによって上書きされます。
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure Functions Tools は、[Visual Studio 2017 バージョン 15.5](https://www.visualstudio.com/vs/) 以降の Azure 開発ワークロードに含まれています。 Visual Studio 2017 のインストールには、必ず **Azure 開発**ワークロードを含めてください。
+Azure Functions Tools は、[Visual Studio 2017 ](https://www.visualstudio.com/vs/) 以降のバージョンの Azure 開発ワークロードに含まれています。 Visual Studio 2019 のインストールには、必ず **Azure 開発**ワークロードを含めてください。
 
-![Visual Studio 2017 と Azure 開発ワークロードのインストール](./media/functions-create-your-first-function-visual-studio/functions-vs-workloads.png)
+![Visual Studio 2019 と Azure 開発ワークロードのインストール](./media/functions-create-your-first-function-visual-studio/functions-vs-workloads.png)
 
 Visual Studio が最新であり、Azure Functions ツールの[最新バージョン](#check-your-tools-version)を使用していることを確認します。
 
@@ -52,7 +52,7 @@ Visual Studio が最新であり、Azure Functions ツールの[最新バージ�
 
 ### <a name="check-your-tools-version"></a>ツールのバージョンを確認する
 
-1. **[ツール]** メニューの **[拡張機能と更新プログラム]** を選択します。 **[インストール済み]** > **[ツール]** メニューを展開し、**[Azure Functions と Web ジョブ ツール]** を選択します。
+1. **[ツール]** メニューの **[拡張機能と更新プログラム]** を選択します。 **[インストール済み]**  >  **[ツール]** メニューを展開し、 **[Azure Functions と Web ジョブ ツール]** を選択します。
 
     ![Functions ツールのバージョンを確認する](./media/functions-develop-vs/functions-vstools-check-functions-tools.png)
 
@@ -62,15 +62,15 @@ Visual Studio が最新であり、Azure Functions ツールの[最新バージ�
 
 ### <a name="update-your-tools"></a>ツールを更新する
 
-1. **[拡張機能と更新プログラム]** ダイアログで、**[更新プログラム]** > **[Visual Studio Marketplace]** を展開し、**[Azure Functions と Web ジョブ ツール]**、**[更新]** の順に選択します。
+1. **[拡張機能と更新プログラム]** ダイアログで、 **[更新プログラム]**  >  **[Visual Studio Marketplace]** を展開し、 **[Azure Functions と Web ジョブ ツール]** 、 **[更新]** の順に選択します。
 
     ![Functions ツールのバージョンを更新する](./media/functions-develop-vs/functions-vstools-update-functions-tools.png)   
 
 2. ツールの更新プログラムをダウンロードしたら、Visual Studio を終了し、VSIX インストーラーを使用してツールの更新プログラムを起動します。
 
-3. インストーラーで **[OK]** を選択して開始し、**[変更]** を選択してツールを更新します。 
+3. インストーラーで **[OK]** を選択して開始し、 **[変更]** を選択してツールを更新します。 
 
-4. 更新が完了したら、**[閉じる]** を選択して Visual Studio を再起動します。
+4. 更新が完了したら、 **[閉じる]** を選択して Visual Studio を再起動します。
 
 ## <a name="create-an-azure-functions-project"></a>Azure Functions プロジェクトを作成する
 
@@ -93,7 +93,7 @@ Functions ランタイムでは内部的に Azure Storage アカウントを使�
 
 ストレージ アカウントの接続文字列を設定するには、次のようにします。
 
-1. Visual Studio で **Cloud Explorer** を開き、**[ストレージ アカウント]** > **[Your Storage Account]\(ストレージ アカウント\)** を展開し、**[プロパティ]** を選択し、**[プライマリ接続文字列]** 値をコピーします。
+1. Visual Studio で **Cloud Explorer** を開き、 **[ストレージ アカウント]**  >  **[Your Storage Account]\(ストレージ アカウント\)** を展開し、 **[プロパティ]** を選択し、 **[プライマリ接続文字列]** 値をコピーします。
 
 2. プロジェクトで、local.settings.json ファイルを開き、コピーした接続文字列に **AzureWebJobsStorage** キーの値を設定します。
 
@@ -103,9 +103,9 @@ Functions ランタイムでは内部的に Azure Storage アカウントを使�
 
 コンパイル済みの関数では、関数で使用されるバインディングはコードで属性を適用することで定義されます。 Azure Functions Tools を使用して提供されているテンプレートから関数を作成する場合は、これらの属性が適用されます。 
 
-1. **ソリューション エクスプローラー**で、プロジェクト ノードを右クリックし、**[追加]** > **[新しいアイテム]** の順に選択します。 **[Azure 関数]** を選択し、クラスの **[名前]** を入力して **[追加]** をクリックします。
+1. **ソリューション エクスプローラー**で、プロジェクト ノードを右クリックし、 **[追加]**  >  **[新しいアイテム]** の順に選択します。 **[Azure 関数]** を選択し、クラスの **[名前]** を入力して **[追加]** をクリックします。
 
-2. トリガーを選択し、バインドのプロパティを設定して、**[作成]** をクリックします。 次の例は、Queue Storage によってトリガーされる関数を作成する場合の設定を示しています。 
+2. トリガーを選択し、バインドのプロパティを設定して、 **[作成]** をクリックします。 次の例は、Queue Storage によってトリガーされる関数を作成する場合の設定を示しています。 
 
     ![キューによってトリガーされる関数の作成](./media/functions-develop-vs/functions-vstools-create-queuetrigger.png)
 
@@ -197,7 +197,7 @@ Azure の関数アプリに必要な設定をアップロードする最も簡�
 
 ![](./media/functions-develop-vs/functions-vstools-app-settings2.png)
 
-**[ローカル]** は local.settings.json ファイル内の設定値を表し、**[リモート]** は Azure での関数アプリにおける現在の設定です。  新しいアプリ設定を作成するには、**[設定の追加]** を選択します。 **[ローカルから値を挿入する]** リンクを使用して、設定値を **[リモート]** フィールドにコピーします。 **[OK]** を選択すると、保留中の変更がローカル設定ファイルと関数アプリに書き込まれます。
+**[ローカル]** は local.settings.json ファイル内の設定値を表し、 **[リモート]** は Azure での関数アプリにおける現在の設定です。  新しいアプリ設定を作成するには、 **[設定の追加]** を選択します。 **[ローカルから値を挿入する]** リンクを使用して、設定値を **[リモート]** フィールドにコピーします。 **[OK]** を選択すると、保留中の変更がローカル設定ファイルと関数アプリに書き込まれます。
 
 以下のいずれかの方法を使用して、アプリケーション設定を管理することもできます。
 

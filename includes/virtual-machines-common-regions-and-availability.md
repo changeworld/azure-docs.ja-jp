@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: zarhoads
 ms.custom: include file
-ms.openlocfilehash: fb296236fb73823690175b12f4e07c05b60cdbcf
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 7f33312d0a5fbe383d438408d471dd9ae09d0332
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56334034"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66156239"
 ---
 # <a name="regions-and-availability-for-virtual-machines-in-azure"></a>Azure の仮想マシンのリージョンと可用性について
 Azure は、世界中の複数のデータセンターで動作しています。 これらのデータセンターは、地理的なリージョンにグループ化されていて、アプリケーションの作成場所を選択するときの柔軟性を与えています。 Azure で仮想マシン (VM) がどこで、どのように運用されているかを理解するのは重要なことです。また、パフォーマンス、可用性、冗長性を最大化するためのオプションとしてどのようなものがあるかを知っておくことにも、大きな意義があります。 この記事では、可用性と冗長性に関する Azure の各種機能の概要を紹介します。
@@ -72,8 +72,8 @@ Azure のリージョンと Geo を理解することは、使用可能なスト
 
 | レプリケーションの方法 | LRS | ZRS | GRS | RA-GRS |
 |:--- |:--- |:--- |:--- |:--- |
-| 複数施設にわたってのデータのレプリケート |いいえ  |可能  |はい |はい |
-| 1 次拠点と 2 次拠点からデータの読み取りが可能 |いいえ  |いいえ  |いいえ  |はい |
+| 複数施設にわたってのデータのレプリケート |いいえ |可能 |はい |はい |
+| 1 次拠点と 2 次拠点からデータの読み取りが可能 |いいえ |いいえ |いいえ |はい |
 | 個別のノードで保持されるデータ コピーの数 |3 |3 |6 |6 |
 
 詳細については、 [Azure ストレージのレプリケーション オプションのページ](../articles/storage/common/storage-redundancy.md)を参照してください。 マネージド ディスクの詳細については、「[Azure Managed Disks の概要](../articles/virtual-machines/windows/managed-disks-overview.md)」をご覧ください。
@@ -95,6 +95,8 @@ Azure のリージョンと Geo を理解することは、使用可能なスト
 可用性セットはデータセンター内の VM の論理グループで、これによって Azure は、冗長性と可用性を提供するためにアプリケーションが構築された方法を理解することができます。 高可用性アプリケーションを提供し、[99.95% Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) に適合するために、1 つの可用性セット内に 2 つ以上の VM を作成することをお勧めします。 可用性セット自体にはコストはかかりません。料金は、作成した各 VM インスタンスに対してのみ発生します。 1 つの VM が [Azure Premium SSD](../articles/virtual-machines/windows/disks-types.md#premium-ssd) を使用している場合、Azure SLA は計画外メンテナンス イベントに適用されます。
 
 可用性セットは、ハードウェアの障害から保護する障害ドメイン (FD) と、更新の安全な適用を可能にする更新ドメイン (UD) という 2 つの追加グループで構成されています。 [Linux VM](../articles/virtual-machines/linux/manage-availability.md) または [Windows VM](../articles/virtual-machines/windows/manage-availability.md) の可用性を管理する方法については、詳細をお読みください。
+
+障害ドメインの高可用性コンストラクトを使用しない複数のコンピューティング リソースを割り当てるとき、アンチアフィニティの可能性が高くなりますが、このアンチアフィニティは保証されていません。
 
 ### <a name="fault-domains"></a>障害ドメイン
 障害ドメインは、オンプレミスのデータ センター内のラックのように、共通の電源やネットワーク スイッチを共有する基盤となるハードウェアの論理グループです。 可用性セット内に作成した VM は、Azure プラットフォームにより自動で複数の障害ドメインに分散して配布されます。 これにより、物理ハードウェアの障害、ネットワークの停止、または停電が発生した場合の影響を抑えることが可能になります。

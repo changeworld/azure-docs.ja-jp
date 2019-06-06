@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 11/14/2018
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 96f1cb60dbb7cf08224e8566852cf47fe5f0fa1c
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: d4e16ca40e8026861d492f950396d6aa39d4c445
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65203558"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65791556"
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net"></a>.NET 用の Batch ファイル規則ライブラリを使用した Azure Storage へのジョブおよびタスクのデータの保持
 
@@ -59,7 +59,7 @@ Azure Batch にはタスク出力を保持する方法が複数用意されて�
 
 1. Azure Portal の Batch アカウントに移動します。
 1. **[設定]** で **[ストレージ アカウント]** を選択します。
-1. まだ Storage アカウントを Batch アカウントに関連付けていない場合は、**[Storage Account (None)]\(ストレージ アカウント (なし)\)** をクリックします。
+1. まだ Storage アカウントを Batch アカウントに関連付けていない場合は、 **[Storage Account (None)]\(ストレージ アカウント (なし)\)** をクリックします。
 1. サブスクリプションの一覧から Storage アカウントを選択します。 最適なパフォーマンスを得るには、タスクを実行している Batch アカウントと同じリージョンにある Azure Storage アカウントを使用します。
 
 ## <a name="persist-output-data"></a>出力データの保持
@@ -200,7 +200,7 @@ Azure Portal では、[Batch ファイル規則の標準](https://github.com/Azu
 1. Azure ストレージ アカウントを Batch アカウントにリンクします。
 1. 出力を保持する際は、ストレージ コンテナーとファイルの事前定義された名前付け規則に準拠します。 これらの規則の定義は、ファイル規則ライブラリの [README][github_file_conventions_readme] に記載されています。 出力の保持に [Azure Batch ファイル規則][nuget_package]ライブラリを使用した場合、ファイルはファイル規則の標準に従って保持されます。
 
-Azure Portal でタスク出力ファイルとログを表示するには、目的の出力を行ったタスクに移動し、**[保存された出力ファイル]** または **[保存されたログ]** をクリックします。 次の図は、IDが "007" のタスクの **保存された出力ファイル** を示しています。
+Azure Portal でタスク出力ファイルとログを表示するには、目的の出力を行ったタスクに移動し、 **[保存された出力ファイル]** または **[保存されたログ]** をクリックします。 次の図は、IDが "007" のタスクの **保存された出力ファイル** を示しています。
 
 ![Task outputs blade in the Azure portal][2]
 
@@ -208,7 +208,7 @@ Azure Portal でタスク出力ファイルとログを表示するには、目�
 
 [PersistOutputs][github_persistoutputs] サンプル プロジェクトは、GitHub にある [Azure Batch コード サンプル][github_samples]の 1 つです。 この Visual Studio ソリューションは、Azure Batch ファイル規則ライブラリを使用して永続的なストレージでタスク出力を保持する方法を示しています。 サンプルを実行するには、次の手順に従います。
 
-1. **Visual Studio 2017** でプロジェクトを開きます。
+1. **Visual Studio 2019** でプロジェクトを開きます。
 2. Microsoft.Azure.Batch.Samples.Common プロジェクトの **AccountSettings.settings** に、Batch と Storage の**アカウント資格情報**を追加します。
 3. **ビルド** します (ただし実行はしないでください)。 NuGet パッケージの復元を求められた場合は、復元します。
 4. Azure ポータルを使用して、 [アプリケーション パッケージ](batch-application-packages.md) を **PersistOutputsTask**としてアップロードします。 `PersistOutputsTask.exe` とそれに依存するアセンブリを .zip パッケージに含め、アプリケーション ID を "PersistOutputsTask"、アプリケーション パッケージのバージョンを "1.0" に設定します。

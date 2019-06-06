@@ -15,13 +15,22 @@ ms.workload: big-compute
 ms.date: 05/22/2017
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 000495ab84990f15885c254b472be7863c75da58
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: bd5c16d755ef9b71f36b3d499838b12e6099ba6d
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58877518"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595381"
 ---
+> [!NOTE] 
+> この記事で説明するユーザー アカウントは、セキュリティ上の理由により、Remote Desktop Protocol (RDP) や Secure Shell (SSH) で使用されているユーザー アカウントとは異なります。 
+>
+> SSH を使用して Linux 仮想マシンの構成を実行しているノードに接続するには「[リモート デスクトップを使用した Azure の Linux VM への接続](../virtual-machines/virtual-machines-linux-use-remote-desktop.md)に関するページをご覧ください。 RDP を使用して Windows を実行しているノードに接続するには、[Windows Server VM への接続](../virtual-machines/windows/connect-logon.md)に関するページをご覧ください。<br /><br />
+> RDP を使用してクラウド サービスの構成を実行しているノードに接続するには、「[Azure Cloud Services のロールでのリモート デスクトップ接続の有効化](../cloud-services/cloud-services-role-enable-remote-desktop-new-portal.md)」をご覧ください。
+>
+>
+
+
 # <a name="run-tasks-under-user-accounts-in-batch"></a>Batch のユーザー アカウントでタスクを実行する
 
 Azure Batch のタスクは、常にユーザー アカウントのもとで実行されます。 既定では、管理者権限のない標準ユーザー アカウントでタスクが実行されます。 通常は、既定のユーザー アカウントの設定で十分です。 ただし、タスクを実行するために、特別にユーザー アカウントを構成したほうが良い場合もあります。 この記事では、ユーザー アカウントの種類、および自分の用途に合わせてユーザー アカウントを構成する方法について説明します。
@@ -36,14 +45,6 @@ Azure Batch には、タスクを実行するためのユーザー アカウン�
 
 > [!IMPORTANT] 
 > Batch サービス バージョン 2017-01-01.4.0 では互換性を損ねる変更が行われ、このバージョンを呼び出すにはコードを更新する必要があります。 Batch の古いバージョンからコードを移行する場合、**runElevated** プロパティは REST API または Batch クライアント ライブラリではサポートされなくなることに注意してください。 昇格レベルの指定には、タスクの新しい **userIdentity** プロパティを使用してください。 クライアント ライブラリのいずれかをご使用の場合は、「[コードを最新の Batch クライアント ライブラリに更新する](#update-your-code-to-the-latest-batch-client-library)」のセクションから、Batch コードの更新に関する簡単なガイドラインをご覧ください。
->
->
-
-> [!NOTE] 
-> この記事で説明したユーザー アカウントでは、セキュリティ上の理由により、Remote Desktop Protocol (RDP) や Secure Shell (SSH) はサポートされません。 
->
-> SSH を使用して Linux 仮想マシンの構成を実行しているノードに接続するには「[リモート デスクトップを使用した Azure の Linux VM への接続](../virtual-machines/virtual-machines-linux-use-remote-desktop.md)に関するページをご覧ください。 RDP を使用して Windows を実行しているノードに接続するには、[Windows Server VM への接続](../virtual-machines/windows/connect-logon.md)に関するページをご覧ください。<br /><br />
-> RDP を使用してクラウド サービスの構成を実行しているノードに接続するには、「[Azure Cloud Services のロールでのリモート デスクトップ接続の有効化](../cloud-services/cloud-services-role-enable-remote-desktop-new-portal.md)」をご覧ください。
 >
 >
 

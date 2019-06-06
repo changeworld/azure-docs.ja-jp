@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/09/2018
 ms.author: magoedte
-ms.openlocfilehash: 961ce4427c509142077c95a6569ad2c444ec0a52
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 53457a044f5c69af7bf68561f24732e8f02219d8
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205958"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65603243"
 ---
 # <a name="create-a-data-pipeline-with-the-data-collector-api"></a>データ コレクター API によるデータ パイプラインの作成
 
@@ -27,7 +27,7 @@ ms.locfileid: "65205958"
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="example-problem"></a>問題の例
-以降この記事では、Application Insights のページ ビュー データを詳しく見ていきます。 ここではあるシナリオを想定しています。Application Insights SDK により既定で収集された地理的情報を、世界各国の人口が格納されているカスタム データに関連付けるというものです。マーケティングの予算をどこに一番多く費やすべきかを見極めるのがその目的です。 
+以降この記事では、Application Insights のページ ビュー データを詳しく見ていきます。 ここではあるシナリオを想定しています。Application Insights SDK により既定で収集された地理的情報を、世界各国/地域の人口が格納されているカスタム データに関連付けるというものです。マーケティングの予算をどこに一番多く費やすべきかを見極めるのがその目的です。 
 
 そこで、[UN World Population Prospects](https://esa.un.org/unpd/wpp/) などのパブリック データ ソースを使用します。 このデータのスキーマは次のとおり単純です。
 
@@ -129,7 +129,7 @@ Logic Apps を使えば JSON データは簡単に取り込むことができ、
     ```
 
 4. 関数を保存します。
-5. 関数をテストして、そのコードが正しく動作することを確認します。 右側のウィンドウで **[テスト]** タブに切り替えて、次のようにテストを構成します。 **[要求本文]** ボックスに、サンプル データが格納されている BLOB へのリンクを配置します。 **[実行]** をクリックすると、**[出力]** ボックスに JSON 出力が表示されます。
+5. 関数をテストして、そのコードが正しく動作することを確認します。 右側のウィンドウで **[テスト]** タブに切り替えて、次のようにテストを構成します。 **[要求本文]** ボックスに、サンプル データが格納されている BLOB へのリンクを配置します。 **[実行]** をクリックすると、 **[出力]** ボックスに JSON 出力が表示されます。
 
     ![Function App のテスト コード](./media/create-pipeline-datacollector-api/functions-test-01.png)
 

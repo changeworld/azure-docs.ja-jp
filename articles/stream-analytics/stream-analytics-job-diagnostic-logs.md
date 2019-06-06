@@ -7,14 +7,13 @@ ms.author: jeanb
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 01/19/2019
-ms.custom: seodec18
-ms.openlocfilehash: cc62a6b9f03bdd6dc8671a6cf96113a2234fc092
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.date: 05/15/2019
+ms.openlocfilehash: e784cfd2956479327cff9c97a09dd0ada6a154c2
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57247156"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65826573"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-diagnostics-logs"></a>診断ログを使用した Azure Stream Analytics のトラブルシューティング
 
@@ -37,7 +36,7 @@ Stream Analytics には 2 種類のログがあります。
 
 アクティビティ ログは既定で有効になっていて、Stream Analytics ジョブで実行される操作の高度な分析情報が得られます。 ジョブに影響を与える問題の根本原因を見つけるには、アクティビティ ログに含まれている情報が役立ちます。 Stream Analytics でアクティビティ ジョブを使用するためには、次の手順を実行します。
 
-1. Azure portal にサインインし、**[概要]** で **[アクティビティ ログ]** を選択します。
+1. Azure portal にサインインし、 **[概要]** で **[アクティビティ ログ]** を選択します。
 
    ![Stream Analytics アクティビティ ログ](./media/stream-analytics-job-diagnostic-logs/stream-analytics-menu.png)
 
@@ -59,15 +58,15 @@ Stream Analytics には 2 種類のログがあります。
 
 診断ログを有効にして Azure Monitor ログに送信することを、強くお勧めします。 既定では、診断ログは**オフ**になっています。 診断ログを有効にするには、次の手順を実行します。
 
-1.  Azure portal にサインインして、Stream Analytics ジョブに移動します。 **[監視]** の下の **[診断ログ]** を選択します。 次に、**[診断を有効にする]** を選択します。
+1.  Azure portal にサインインして、Stream Analytics ジョブに移動します。 **[監視]** の下の **[診断ログ]** を選択します。 次に、 **[診断を有効にする]** を選択します。
 
     ![ブレードを使った診断ログへの移動](./media/stream-analytics-job-diagnostic-logs/diagnostic-logs-monitoring.png)  
 
-2.  **[診断設定]** で **[名前]** を作成し、**[Log Analytics への送信]** の横にあるチェック ボックスをオンにします。 次に、既存の **Log Analytics ワークスペース**を追加するか、新規作成します。 **[ログ]** で **[実行]** と **[作成]**、および **[メトリック]** で **[AllMetrics]** のチェック ボックスをオンにします。 **[Save]** をクリックします。
+2.  **[診断設定]** で **[名前]** を作成し、 **[Log Analytics への送信]** の横にあるチェック ボックスをオンにします。 次に、既存の **Log Analytics ワークスペース**を追加するか、新規作成します。 **[ログ]** で **[実行]** と **[作成]** 、および **[メトリック]** で **[AllMetrics]** のチェック ボックスをオンにします。 **[Save]** をクリックします。
 
     ![診断ログの設定](./media/stream-analytics-job-diagnostic-logs/diagnostic-settings.png)
 
-3. Stream Analytics ジョブが開始すると、診断ログが Log Analytics ワークスペースにルーティングされます。 Log Analytics ワークスペースに移動して、**[全般]** セクションで **[ログ]** を選択します。
+3. Stream Analytics ジョブが開始すると、診断ログが Log Analytics ワークスペースにルーティングされます。 Log Analytics ワークスペースに移動して、 **[全般]** セクションで **[ログ]** を選択します。
 
    ![[全般] セクションの Azure Monitor ログ](./media/stream-analytics-job-diagnostic-logs/log-analytics-logs.png)
 
@@ -75,7 +74,7 @@ Stream Analytics には 2 種類のログがあります。
 
    ![診断のクエリと結果](./media/stream-analytics-job-diagnostic-logs/diagnostic-logs-query.png)
 
-5. 適切なログを検索するクエリがある場合は、**[保存]** を選択して保存し、名前とカテゴリを入力します。 その後、**[新しいアラート ルール]** を選択することでアラートを作成できます。 次に、アラートの条件を指定します。 **[条件]** を選択し、このカスタム ログ検索を評価するしきい値と頻度を入力します。  
+5. 適切なログを検索するクエリがある場合は、 **[保存]** を選択して保存し、名前とカテゴリを入力します。 その後、 **[新しいアラート ルール]** を選択することでアラートを作成できます。 次に、アラートの条件を指定します。 **[条件]** を選択し、このカスタム ログ検索を評価するしきい値と頻度を入力します。  
 
    ![診断ログ検索クエリ](./media/stream-analytics-job-diagnostic-logs/search-query.png)
 
@@ -83,7 +82,7 @@ Stream Analytics には 2 種類のログがあります。
 
 ## <a name="diagnostics-log-categories"></a>診断ログのカテゴリ
 
-現時点では、取得する診断ログのカテゴリは次の 2 つです。
+Azure Stream Analytics では、次の 2 つのカテゴリの診断ログをキャプチャします。
 
 * **作成**:ジョブ作成操作 (ジョブの作成、入出力の追加と削除、クエリの追加と更新、ジョブの開始と停止など) に関連するログ イベントを取得します。
 
@@ -110,7 +109,7 @@ properties | ログ エントリ固有の詳細。JSON 文字列としてシリ�
 
 ### <a name="execution-log-properties-schema"></a>実行ログ プロパティのスキーマ
 
-実行ログには、Stream Analytics ジョブの実行中に発生したイベントに関する情報が含まれます。 イベントの種類に応じてプロパティのスキーマが異なります。 現在使用されている実行ログの種類を次に示します。
+実行ログには、Stream Analytics ジョブの実行中に発生したイベントに関する情報が含まれます。 プロパティのスキーマは、イベントがデータ エラーまたは汎用イベントのどちらであるかによって異なります。
 
 ### <a name="data-errors"></a>データ エラー
 
@@ -120,14 +119,18 @@ Name | 説明
 ------- | -------
 ソース | エラーが発生したジョブ入出力の名前。
 Message | エラーに関連付けられているメッセージ。
-type | エラーの種類。 たとえば、**DataConversionError**、**CsvParserError**、または **ServiceBusPropertyColumnMissingError**。
+Type | エラーの種類。 たとえば、**DataConversionError**、**CsvParserError**、または **ServiceBusPropertyColumnMissingError**。
 データ | エラーの原因を正確に特定するうえで役に立つデータが含まれています。 サイズに応じて切り捨てられます。
 
 データ エラーのスキーマは、**operationName** 値に応じて次のようになります。
-* **シリアル化イベント**。 シリアル化イベントはイベント読み取り操作中に発生します。 これらは、次のいずれかの理由で入力データがクエリ スキーマを満たしていない場合に発生します。
-    * "*イベントの (逆) シリアル化中の種類の不一致*":エラーを引き起こしたフィールドが特定されます。
-    * "*イベントを読み取ることができない。無効なシリアル化*":エラーが発生した入力データの場所に関する情報が一覧で表示されます。 ここには、BLOB 入力の BLOB 名、オフセット、データのサンプルが含まれます。
-* **送信イベント**。 送信イベントは書き込み操作中に発生します。 エラーを引き起こしたストリーミング イベントが特定されます。
+
+* **シリアル化イベント**はイベント読み取り操作中に発生します。 これらは、次のいずれかの理由で入力データがクエリ スキーマを満たしていない場合に発生します。
+
+   * "*イベントの (逆) シリアル化中の種類の不一致*":エラーを引き起こしたフィールドが特定されます。
+
+   * "*イベントを読み取ることができない。無効なシリアル化*":エラーが発生した入力データの場所に関する情報が一覧で表示されます。 ここには、BLOB 入力の BLOB 名、オフセット、データのサンプルが含まれます。
+
+* **送信イベント**は書き込み操作中に発生します。 エラーを引き起こしたストリーミング イベントが特定されます。
 
 ### <a name="generic-events"></a>汎用イベント
 
@@ -137,7 +140,7 @@ Name | 説明
 -------- | --------
 Error | (省略可能) エラー情報。 使用できる場合は通常、例外情報です。
 Message| ログ メッセージ。
-type | メッセージの種類。 エラーの内部カテゴリにマップされます。 たとえば、**JobValidationError** または **BlobOutputAdapterInitializationFailure**。
+Type | メッセージの種類。 エラーの内部カテゴリにマップされます。 たとえば、**JobValidationError** または **BlobOutputAdapterInitializationFailure**。
 関連付け ID | ジョブの実行を一意に識別する [GUID](https://en.wikipedia.org/wiki/Universally_unique_identifier)。 ジョブが開始されてから停止するまでに生成された実行ログ エントリすべてに、同じ**関連付け ID** の値が付けられます。
 
 ## <a name="next-steps"></a>次の手順

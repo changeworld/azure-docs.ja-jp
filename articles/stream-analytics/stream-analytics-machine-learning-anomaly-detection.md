@@ -1,5 +1,5 @@
 ---
-title: Azure Stream Analytics での異常検出 (プレビュー)
+title: Azure Stream Analytics での異常検出
 description: この記事では、Azure Stream Analytics と Azure Machine Learning を併用して異常を検出する方法を説明します。
 services: stream-analytics
 author: mamccrea
@@ -7,14 +7,13 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 02/13/2019
-ms.custom: seodec18
-ms.openlocfilehash: 9ea9cc116a13aac2dca9edf8ba86c933310b5198
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.date: 06/03/2019
+ms.openlocfilehash: fdf98a0c0c40010bb55955b54dc7b04db8e199f5
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56269639"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66493259"
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Azure Stream Analytics での異常検出
 
@@ -103,6 +102,12 @@ INTO output
 FROM AnomalyDetectionStep
 
 ```
+
+## <a name="anomaly-detection-using-machine-learning-in-azure-stream-analytics"></a>Azure Stream Analytics で機械学習を使用した異常検出
+
+次の動画では、Azure Stream Analytics の機械学習機能を使ってリアルタイムで異常を検出する方法を示します。 
+
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Anomaly-detection-using-machine-learning-in-Azure-Stream-Analytics/player]
 
 ## <a name="next-steps"></a>次の手順
 

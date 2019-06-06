@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: bwren
-ms.openlocfilehash: 402cd4723791c0bc33db22c8857d1b785862f596
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 5843ee11a615a2780e9fea2d89f7b18fb45706d8
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59797844"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65604361"
 ---
 # <a name="collect-iis-logs-in-azure-monitor"></a>Azure Monitor での IIS ログを収集する
 インターネット インフォメーション サービス (IIS) は、Azure Monitor が収集して[ログ データ](data-platform.md)として格納できるログ ファイル内にユーザー アクティビティを格納します。
@@ -30,7 +30,7 @@ Azure Monitor は IIS によって作成されたログ ファイルからエン
 
 Azure Monitor は W3C 形式で格納された IIS ログ ファイルのみをサポートし、カスタム フィールドや IIS 詳細ログはサポートしていません。 ログは NCSA または IIS のネイティブ形式では収集されません。
 
-Azure Monitor での IIS ログは、[[詳細設定] メニュー](agent-data-sources.md#configuring-data-sources)から構成します。  必要な構成は、 **[Collect W3C format IIS log files]**(W3C 形式の IIS ログ ファイルを収集する) を選択することのみです。
+Azure Monitor での IIS ログは、[[詳細設定] メニュー](agent-data-sources.md#configuring-data-sources)から構成します。  必要な構成は、 **[Collect W3C format IIS log files]** (W3C 形式の IIS ログ ファイルを収集する) を選択することのみです。
 
 
 ## <a name="data-collection"></a>データ収集
@@ -51,7 +51,7 @@ IIS ログ レコードの型は **W3CIISLog** になり、次の表に示すプ
 | csUriStem |要求のターゲット (Web ページなど) |
 | csUriQuery |クライアントが実行を試行していたクエリ (存在する場合) |
 | ManagementGroupName |Operations Manager エージェントの管理グループの名前。  その他のエージェントの場合、これは AOI-\<workspace ID\> です。 |
-| RemoteIPCountry |クライアントの IP アドレスの国。 |
+| RemoteIPCountry |クライアントの IP アドレスの国や地域。 |
 | RemoteIPLatitude |クライアントの IP アドレスの緯度。 |
 | RemoteIPLongitude |クライアントの IP アドレスの経度。 |
 | scStatus |HTTP 状態コード。 |

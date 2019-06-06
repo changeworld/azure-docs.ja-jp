@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 09/17/2018
+ms.date: 05/21/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 7c6d8fbe54d89fc587c8841b8983d7fdcba29b7d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: cc3307a4f32d77b9b8d259ac846c4db1c1ae4a99
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59787982"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66002513"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Windows Hybrid Runbook Worker をデプロイする
 
@@ -60,11 +60,13 @@ Windows ハイブリッド worker ロールのインストールと構成を自�
    * *SubscriptionID* (必須):Automation アカウントが存在する Azure サブスクリプション ID。
    * *WorkspaceName* (省略可能):Log Analytics ワークスペース名。 Log Analytics ワークスペースがない場合は、スクリプトがこれを作成して構成します。
 
-     > [!NOTE]
-     > 現在、Azure Monitor ログとの統合がサポートされている Automation リージョンは、**オーストラリア南東部**、**米国東部 2**、**東南アジア**、および **西ヨーロッパ** だけです。 Automation アカウントがこれらのいずれかのリージョンに存在しない場合、スクリプトは Log Analytics ワークスペースを作成しますが、それらをリンクできないことをユーザーに警告します。
+   > [!NOTE]
+   > ソリューションを有効にすると、Log Analytics ワークスペースと Automation アカウントをリンクするために特定のリージョンのみがサポートされます。
+   >
+   > サポートされているマッピング ペアの一覧については、[Automation アカウントと Log Analytics ワークスペースのリージョン マッピング](how-to/region-mappings.md)に関する記事をご覧ください。
 
 2. コンピューターの**スタート**画面から、管理者モードで **Windows PowerShell** を開きます。
-3. PowerShell コマンドライン シェルから、ダウンロードしたスクリプトがあるフォルダーを参照します。 パラメーター *-AutomationAccountName*、*-AAResourceGroupName*、*-OMSResourceGroupName*、*-HybridGroupName*、*-SubscriptionId*、および *-WorkspaceName* の値を変更します。 その後、スクリプトを実行します。
+3. PowerShell コマンドライン シェルから、ダウンロードしたスクリプトがあるフォルダーを参照します。 パラメーター *-AutomationAccountName*、 *-AAResourceGroupName*、 *-OMSResourceGroupName*、 *-HybridGroupName*、 *-SubscriptionId*、および *-WorkspaceName* の値を変更します。 その後、スクリプトを実行します。
 
      > [!NOTE]
      > スクリプトの実行後、Azure での認証が求められます。 サブスクリプション管理ロールのメンバーかつサブスクリプションの共同管理者であるアカウントを使用してサインインする*必要があります*。
@@ -77,7 +79,7 @@ Windows ハイブリッド worker ロールのインストールと構成を自�
 
 4. NuGet のインストールに同意するように求められ、Azure 資格情報で認証するように求められます。
 
-5. スクリプトが完了すると、**[ハイブリッド Worker グループ]** ページに、新しいグループとメンバーの数が表示されます。 既存のグループの場合は、メンバーの数が増分されます。 **[ハイブリッド worker グループ]** ページ上にあるリストからグループを選択し、**[ハイブリッド worker]** タイルを選択できます。 **[ハイブリッド worker]** ページで、グループの各メンバーが一覧表示されます。
+5. スクリプトが完了すると、 **[ハイブリッド Worker グループ]** ページに、新しいグループとメンバーの数が表示されます。 既存のグループの場合は、メンバーの数が増分されます。 **[ハイブリッド worker グループ]** ページ上にあるリストからグループを選択し、 **[ハイブリッド worker]** タイルを選択できます。 **[ハイブリッド worker]** ページで、グループの各メンバーが一覧表示されます。
 
 ### <a name="manual-deployment"></a>手動デプロイ
 
@@ -91,9 +93,13 @@ Log Analytics ワークスペースがまだない場合は、[ワークスペ�
 
 #### <a name="2-add-the-automation-solution-to-the-log-analytics-workspace"></a>2.Log Analytics ワークスペースに Automation ソリューションを追加する
 
-ソリューションにより、Azure Monitor ログに機能が追加されます。 Automation ソリューションは、Hybrid Runbook Worker のサポートなど、Azure Automation 用の機能を追加します。 ソリューションをワークスペースに追加すると、次の手順でインストールする worker コンポーネントがエージェント コンピューターに自動的にプッシュされます。
+Automation Azure Monitor ログ ソリューションは、Hybrid Runbook Worker のサポートなど、Azure Automation 用の機能を追加します。 ソリューションをワークスペースに追加すると、次の手順でインストールする worker コンポーネントがエージェント コンピューターに自動的にプッシュされます。
 
-Log Analytics ワークスペースに **Automation** ソリューションを追加するには、[ソリューション ギャラリーを使用したソリューションの追加](../log-analytics/log-analytics-add-solutions.md)に関するページの手順に従います。
+ワークスペースに **Automation** Azure Monitor ログ ソリューションを追加するには、次の PowerShell を実行します。
+
+```powershell-interactive
+Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName <logAnalyticsResourceGroup> -WorkspaceName <LogAnalyticsWorkspaceName> -IntelligencePackName "AzureAutomation" -Enabled $true
+```
 
 #### <a name="3-install-the-microsoft-monitoring-agent"></a>手順 3.Microsoft Monitoring Agent をインストールする
 
@@ -125,8 +131,8 @@ Add-HybridRunbookWorker –GroupName <String> -EndPoint <Url> -Token <String>
 ![[キーの管理] ページ](media/automation-hybrid-runbook-worker/elements-panel-keys.png)
 
 * **GroupName** は、Hybrid Runbook Worker グループの名前です。 Automation アカウントにこのグループが既に存在する場合は、現在のコンピューターがそれに追加されます。 このグループが存在しない場合は、追加されます。
-* **EndPoint** は、**[キーの管理]** ページの **[URL]** エントリです。
-* **Token** は、**[キーの管理]** ページの **[プライマリ アクセス キー]** です。
+* **EndPoint** は、 **[キーの管理]** ページの **[URL]** エントリです。
+* **Token** は、 **[キーの管理]** ページの **[プライマリ アクセス キー]** です。
 
 インストールに関する詳細な情報を受け取るには、**Add-HybridRunbookWorker** で **-Verbose** スイッチを使用します。
 

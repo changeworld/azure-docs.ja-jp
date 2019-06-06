@@ -6,14 +6,14 @@ author: sogup
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
-ms.date: 03/22/2019
+ms.date: 05/21/2019
 ms.author: sogup
-ms.openlocfilehash: 9f233af316bd6022b93a7208bf3fae37e913e6af
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 9d4d1db808446cb010e6551bdcec514fc550d802
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58885266"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65966324"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>よく寄せられる質問 - Azure VM のバックアップ
 
@@ -24,25 +24,25 @@ ms.locfileid: "58885266"
 
 ### <a name="which-vm-images-can-be-enabled-for-backup-when-i-create-them"></a>作成時にバックアップの対象として有効にできるのは、どの VM イメージですか。
 VM を作成するとき、[サポートされているオペレーティング システム](backup-support-matrix-iaas.md#supported-backup-actions)を実行している VM に対してバックアップを有効にできます。
- 
-### <a name="is-the-backup-cost-included-in-the-vm-cost"></a>バックアップのコストは VM のコストに含まれますか。 
+
+### <a name="is-the-backup-cost-included-in-the-vm-cost"></a>バックアップのコストは VM のコストに含まれますか。
 
 いいえ。 バックアップのコストは VM のコストとは別です。 [Azure Backup の価格については、こちらを参照してください](https://azure.microsoft.com/pricing/details/backup/)。
- 
-### <a name="which-permissions-are-required-to-enable-backup-for-a-vm"></a>VM のバックアップを有効にするにはどのアクセス許可が必要ですか。 
 
-VM の共同作成者の場合は、VM でバックアップを有効にできます。 カスタム ロールを使用している場合、VM でバックアップを有効にするには、次のアクセス許可が必要です。 
+### <a name="which-permissions-are-required-to-enable-backup-for-a-vm"></a>VM のバックアップを有効にするにはどのアクセス許可が必要ですか。
 
-- Microsoft.RecoveryServices/Vaults/write 
-- Microsoft.RecoveryServices/Vaults/read 
-- Microsoft.RecoveryServices/locations/* 
-- Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/*/read 
-- Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/read 
-- Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/write 
-- Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/write 
-- Microsoft.RecoveryServices/Vaults/backupPolicies/read 
-- Microsoft.RecoveryServices/Vaults/backupPolicies/write 
- 
+VM の共同作成者の場合は、VM でバックアップを有効にできます。 カスタム ロールを使用している場合、VM でバックアップを有効にするには、次のアクセス許可が必要です。
+
+- Microsoft.RecoveryServices/Vaults/write
+- Microsoft.RecoveryServices/Vaults/read
+- Microsoft.RecoveryServices/locations/*
+- Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/*/read
+- Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/read
+- Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/write
+- Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/write
+- Microsoft.RecoveryServices/Vaults/backupPolicies/read
+- Microsoft.RecoveryServices/Vaults/backupPolicies/write
+
 Recovery Services コンテナーと VM が異なるリソース グループに属している場合は、Recovery Services コンテナーのリソース グループへの書き込みアクセス許可があることを確認してください。  
 
 
@@ -140,3 +140,6 @@ VM のバックアップは、変更されたポリシーまたは新しいポ�
 3. バックアップを同じコンテナーまたは新しいコンテナーで再度有効にします。
 
 VM は、移動操作の前に作成された使用可能な復元ポイントから復元できます。
+
+### <a name="is-there-a-limit-on-number-of-vms-that-can-beassociated-with-a-same-backup-policy"></a>同じバックアップ ポリシーに関連付けることができる VM 数の上限はありますか。
+はい。ポータルから同じバックアップ ポリシーに関連付けることができる VM は最大 100 個です。 VM が 100 個を上回る場合、同じスケジュールまたは異なるスケジュールで複数のバックアップ ポリシーを作成することをお勧めします。

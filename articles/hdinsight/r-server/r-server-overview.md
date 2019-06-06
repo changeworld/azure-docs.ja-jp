@@ -7,18 +7,15 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 06/27/2018
-ms.openlocfilehash: 56a11a17de3c66a3d45edb71c72be20ce1a1c89e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 05/29/2019
+ms.openlocfilehash: 6fecd2278ddad4de3a2cff9035d60083101e873e
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64683749"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393836"
 ---
-# <a name="introduction-to-ml-services-and-open-source-r-capabilities-on-hdinsight"></a>HDInsight での ML Services とオープン ソース R の機能の概要
-
-> [!NOTE]  
-> 2017 年 9 月、Microsoft R Server は **Microsoft Machine Learning Server** または ML Server という新しい名前でリリースされました。 そのため、HDInsight 上の Microsoft R Server クラスターは、HDInsight 上の **Machine Learning Services** または **ML Services** クラスターと呼ばれるようになっています。 R Server の名前の変更について詳しくは、「[Microsoft R Server is now Microsoft Machine Learning Server](https://docs.microsoft.com/machine-learning-server/rebranding-microsoft-r-server#get-support-for-r-server)」(Microsoft R Server は Microsoft Machine Learning Server になった) をご覧ください。
+# <a name="what-is-ml-services-in-azure-hdinsight"></a>Azure HDInsight での ML Services とは
 
 Azure で HDInsight クラスターを作成するときのデプロイ オプションとして Microsoft Machine Learning Server を選択できるようになりました。 このオプションを提供するクラスターの種類は、**ML Services** と呼ばれます。 この機能により、データ サイエンティスト、統計学者、R プログラマは、HDInsight でのスケーラブルで分散型の分析手法にオンデマンドでアクセスできるようになります。
 

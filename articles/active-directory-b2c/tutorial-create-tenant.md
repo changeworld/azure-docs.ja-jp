@@ -2,20 +2,20 @@
 title: チュートリアル - Azure Active Directory B2C テナントを作成する | Microsoft Docs
 description: Azure portal を使用して Azure Active Directory B2C テナントを作成し、アプリケーションの登録の準備をする方法について説明します。
 services: B2C
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/11/2019
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 12ce37579a6f93ba600c39416c7566ac673e9560
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 0f6c93880be2fe322d0d4583af538f43cf7f76f6
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64723330"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66512179"
 ---
 # <a name="tutorial-create-an-azure-active-directory-b2c-tenant"></a>チュートリアル:Azure Active Directory B2C テナントの作成
 
@@ -40,14 +40,14 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 3. Azure portal の左上にある **[リソースの作成]** を選択します。
 4. **Active Directory B2C** を検索して選択し、**作成**をクリックします。
-5. **[新しい Azure AD B2C テナントを作成する]** を選択し、テナント名に使用されている組織名と初期のドメイン名を入力して､国 (後で変更不可) を選択して、**[作成]** をクリックします。
+5. **[新しい Azure AD B2C テナントを作成する]** を選択し、テナント名に使用されている組織名と初期のドメイン名を入力して､国や地域 (後で変更不可) を選択して、 **[作成]** をクリックします。
 
     ![テナントの作成](./media/tutorial-create-tenant/create-tenant.png)
 
     この例では、テナント名は contoso0926Tenant.onmicrosoft.com です
 
-6. **[新しい B2C テナントを作成または既存のテナントへのリンク]** ページで **[既存の Azure AD B2C テナントを Azure サブスクリプションにリンクする]** を選択し、作成したテナントを選択してから、**[新規作成]** をクリックします。
-7. テナントを含むリソース グループの名前を入力し、場所を選択してから、**[作成]** をクリックします。
+6. **[新しい B2C テナントを作成または既存のテナントへのリンク]** ページで **[既存の Azure AD B2C テナントを Azure サブスクリプションにリンクする]** を選択し、作成したテナントを選択してから、 **[新規作成]** をクリックします。
+7. テナントを含むリソース グループの名前を入力し、場所を選択してから、 **[作成]** をクリックします。
 8. 新しいテナントを使い始めるには､上部メニューの **[Directory and subscription filter]\(ディレクトリとサブスクリプション フィルター\)** をクリックし、自分の Azure AD B2C テナントを含むディレクトリを選択することによって､自分の Azure AD B2C テナントを含む適切なディレクトリを使用していることを確認します｡
 
     ![テナント ディレクトリに切り替える](./media/tutorial-create-tenant/switch-directories.png)

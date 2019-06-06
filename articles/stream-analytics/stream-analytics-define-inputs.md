@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 2a366a9030104c885adb1a4f773de04cdc439044
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 420705ef6b2e38d147b7033d2fb3ad57bbc216ac
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55694637"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66159283"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>Stream Analytics に入力としてデータをストリーム配信する
 
@@ -132,6 +132,8 @@ CSV 形式の入力については、データ セットのフィールドを定
 > Stream Analytics では、既存の BLOB ファイルにコンテンツを追加できません。 Stream Analytics は各ファイルを 1 回だけ表示します。ジョブがデータを読み取った後にファイルで発生した変更は処理されません。 ベスト プラクティスとして、すべての BLOB ファイルのデータを一度にアップロードし、追加の新しいイベントを、別の新しい BLOB ファイルに追加することをお勧めします。
 > 
 
+一度に非常に多数の BLOB をアップロードすると、まれなケースですが、Stream Analytics がいくつかの BLOB の読み取りをスキップすることがあります。 2 秒以上間をあけて BLOB を BLOB ストレージにアップロードすることをお勧めします。 このオプションが実行可能でない場合は、Event Hubs を使用して大量のイベントをストリーミングできます。 
+
 ### <a name="configure-blob-storage-as-a-stream-input"></a>ストリーム入力として Blob Storage を構成する 
 
 次の表に、Blob Storage をストリーム入力として構成する場合に使用する、Azure Portal の **[新しい入力]** ページにある各プロパティの説明を示しています。
@@ -142,7 +144,7 @@ CSV 形式の入力については、データ セットのフィールドを定
 | **サブスクリプション** | IoT Hub リソースが存在するサブスクリプションを選択します。 | 
 | **ストレージ アカウント** | BLOB ファイルが配置されるストレージ アカウントの名前。 |
 | **ストレージ アカウント キー** | ストレージ アカウントに関連付けられている秘密キー。 Blob Storage の設定を手動で入力するオプションを選択しない限り、このオプションは自動的に事前設定されます。 |
-| **コンテナー** | BLOB 入力のコンテナーです。 コンテナーにより、Microsoft Azure Blob service に格納される BLOB が論理的にグループ化されます。 BLOB を Azure Blob Storage サービスにアップロードするとき、その BLOB のコンテナーを指定する必要があります。 コンテナーには、**[既存のものを使用]** を選択できるほか、**[新規作成]** を選択して新しいコンテナーを作成することもできます。|
+| **コンテナー** | BLOB 入力のコンテナーです。 コンテナーにより、Microsoft Azure Blob service に格納される BLOB が論理的にグループ化されます。 BLOB を Azure Blob Storage サービスにアップロードするとき、その BLOB のコンテナーを指定する必要があります。 コンテナーには、 **[既存のものを使用]** を選択できるほか、 **[新規作成]** を選択して新しいコンテナーを作成することもできます。|
 | **パス パターン** (省略可能) | 指定されたコンテナー内に BLOB を配置するために使用されるファイル パス。 このパス内に、3 つの変数 (`{date}`、`{time}`、`{partition}`) の 1 つ以上のインスタンスを指定できます。<br/><br/>例 1: `cluster1/logs/{date}/{time}/{partition}`<br/><br/>例 2: `cluster1/logs/{date}`<br/><br/>`*` 文字はパス プレフィックスの許容値ではありません。 許容値は、有効な <a HREF="https://msdn.microsoft.com/library/azure/dd135715.aspx">Azure BLOB 文字</a>のみです。 コンテナー名またはファイル名を含めないでください。 |
 | **日付形式** (省略可能) | パスで日付変数を使用する場合は、ファイルを編成する日付形式です。 例: `YYYY/MM/DD` |
 | **時刻形式** (省略可能) |  パスで時刻変数を使用する場合は、ファイルを編成する時刻形式です。 現在唯一サポートされている値は `HH` (時) です。 |

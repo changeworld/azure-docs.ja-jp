@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: brjohnst
-ms.openlocfilehash: 21374e20a2ba2c9134ed12e4b1072ff5c320c75e
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: d72901653e995e811a1d3e89cef8a5f77a9ea8bd
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149776"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65523805"
 ---
 # <a name="api-versions-in-azure-search"></a>Azure Search の API バージョン
 Azure Search は、機能の更新を定期的にロールアウトします。 このような更新が発生すると、下位互換性を維持するために、API の新しいバージョンが必要になる場合があります (毎回とは限りません)。 新しいバージョンが発行されると、お客様は検索サービスの更新内容をコードに統合するタイミングと方法を管理することができます。
@@ -33,7 +33,7 @@ Azure Search とのすべてのプログラミング インターフェイスの
 | インターフェイス | 最新のメジャー バージョン | Status |
 | --- | --- | --- |
 | [.NET SDK](https://aka.ms/search-sdk) |9.0 |一般公開、2019 年 5 月にリリース済み |
-| [.NET SDK のプレビュー](https://aka.ms/search-sdk-preview) |8.0.0 プレビュー |プレビュー、2019 年 4 月にリリース済み |
+| [.NET SDK のプレビュー](https://aka.ms/search-sdk-preview) |8.0-preview |プレビュー、2019 年 4 月にリリース済み |
 | [サービス REST API](https://docs.microsoft.com/rest/api/searchservice/) |2019-05-06 |一般公開 |
 | [サービス REST API 2019-05-06 プレビュー](search-api-preview.md) |2019-05-06 プレビュー |プレビュー |
 | [.NET 管理 SDK](https://aka.ms/search-mgmt-sdk) |3.0 |一般公開 |

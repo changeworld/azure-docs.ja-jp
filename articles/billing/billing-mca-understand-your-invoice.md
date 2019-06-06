@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/19/2019
 ms.author: banders
-ms.openlocfilehash: ee6317f61f95b19effd64308b88f53c027582b63
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: aee51793c66ae57f740300797b8fdc1799e685cd
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58883011"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65604039"
 ---
 # <a name="understand-terms-on-your-microsoft-customer-agreement-invoice"></a>Microsoft 顧客契約の請求書の用語を理解する
 
@@ -63,7 +63,7 @@ You are invoiced on a monthly basis. You can find out which day of the month you
 | 謝辞 |払い戻しで受け取ったクレジット |
 | 適用された Azure クレジット | 請求期間ごとに Azure の料金に自動的に適用される Azure クレジット |
 | 小計 |課税前の金額 |
-| 税 |支払う税金のタイプと額。課金プロファイルの国によって異なります。 税金を支払う必要がない場合、請求書に税は表示されません。 |
+| 税 |支払う税金のタイプと額。課金プロファイルの国や地域によって異なります。 税金を支払う必要がない場合、請求書に税は表示されません。 |
 | 推定合計節約額 |有効な割引によって節約される推定の合計金額。 該当する場合は、請求書セクションごとの詳細の購入品目の下に、有効な割引率が表示されます。 |
 
 ### <a name="invoice-sections"></a>請求書セクション
@@ -88,7 +88,7 @@ You are invoiced on a monthly basis. You can find out which day of the month you
 | 数量 | 請求期間中に購入または使用された数量 |
 | 料金/クレジット | クレジットまたは返金が適用された後の料金の正味金額 |
 | Azure クレジット | 料金/クレジットに適用される Azure クレジットの金額|
-| 課税率 | 国によって異なる課税率 |
+| 課税率 | 国や地域によって異なる課税率 |
 | 税額 | 課税率に基づいて購入に適用される税金の額 |
 | 合計 | 購入の合計支払金額 |
 

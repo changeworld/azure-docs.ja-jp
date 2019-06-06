@@ -1,8 +1,8 @@
-- name: デバイス管理のドキュメント
+- name: デバイス ID のドキュメント
   href: index.yml
 - name: 概要
   items:
-    - name: Azure AD のデバイス管理とは
+    - name: デバイス ID とは
       href: overview.md
     - name: Enterprise State Roaming とは
       href: enterprise-state-roaming-overview.md
@@ -29,7 +29,7 @@
 - name: ハウツー ガイド
   expanded: true
   items:
-    - name: Azure portal を使用してデバイスを管理する
+    - name: デバイス ID を管理する
       href: device-management-azure-portal.md
     - name: 古いデバイスを管理する
       href: manage-stale-devices.md

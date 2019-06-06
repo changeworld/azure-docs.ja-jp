@@ -5,14 +5,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 03/11/2019
+ms.date: 05/14/2019
 ms.author: yushwang
-ms.openlocfilehash: d0060d81ae44bd54ab193eb77e3117b7afbfbf73
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 23dc017b6ffcca8761966a10bd5cb45b32c7a602
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59281051"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65786696"
 ---
 # <a name="vpn-gateway-faq"></a>VPN Gateway に関する FAQ
 
@@ -190,7 +190,7 @@ Windows Server 2012 ルーティングとリモート アクセス (RRAS) サー
 
 ### <a name="does-azure-generate-the-same-ipsecike-pre-shared-key-for-all-my-vpn-connections-for-the-same-virtual-network"></a>Azure では、同一仮想ネットワークのすべての VPN 接続に対して同一の IPsec/IKE 事前共有キーが生成されるのですか。
 
-いいえ、既定では、Azure は異なる VPN 接続に対してそれぞれ異なる事前共有キーを生成します。 ただし、Set VPN Gateway Key REST API または PowerShell コマンドレットを使用すると、お好みのキー値を設定することができます。 キーは、1 ～ 128 文字の長さの英数字の文字列である必要があります。
+いいえ、既定では、Azure は異なる VPN 接続に対してそれぞれ異なる事前共有キーを生成します。 ただし、Set VPN Gateway Key REST API または PowerShell コマンドレットを使用すると、お好みのキー値を設定することができます。 キーは印刷可能な ASCII 文字でなければなりません。
 
 ### <a name="do-i-get-more-bandwidth-with-more-site-to-site-vpns-than-for-a-single-virtual-network"></a>1 つの仮想ネットワークのよりも多くのサイト間 VPN を確立した方がより広い帯域幅を得られるのでしょうか。
 

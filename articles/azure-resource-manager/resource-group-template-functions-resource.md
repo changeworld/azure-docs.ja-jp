@@ -1,23 +1,17 @@
 ---
 title: Azure Resource Manager テンプレートの関数 - リソース | Microsoft Docs
 description: Azure Resource Manager テンプレートで、リソースに関する値を取得するために使用する関数について説明します。
-services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
-ms.assetid: ''
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 04/09/2019
+ms.date: 05/21/2019
 ms.author: tomfitz
-ms.openlocfilehash: 4d5e6d20cb93c339d75c12ca1c0f56eaa5cc8cdd
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: dcad4b988f37d46a0b843fbf905e18011bc4e313
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59490760"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65990759"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートのリソース関数
 
@@ -47,7 +41,7 @@ ms.locfileid: "59490760"
 |:--- |:--- |:--- |:--- |
 | resourceName または resourceIdentifier |はい |string |リソースの一意識別子です。 |
 | apiVersion |はい |string |リソースのランタイム状態の API バージョン。 通常、**yyyy-mm-dd** の形式。 |
-| functionValues |いいえ  |object | 関数の値を持つオブジェクト。 このオブジェクトは、ストレージ アカウントの **listAccountSas** など、パラメーター値を持つオブジェクトの受信をサポートする関数に対してのみ指定します。 関数値を渡す例をこの記事で紹介します。 | 
+| functionValues |いいえ |object | 関数の値を持つオブジェクト。 このオブジェクトは、ストレージ アカウントの **listAccountSas** など、パラメーター値を持つオブジェクトの受信をサポートする関数に対してのみ指定します。 関数値を渡す例をこの記事で紹介します。 | 
 
 ### <a name="implementations"></a>実装
 
@@ -175,7 +169,7 @@ list* の使用例を次の表にまとめています。
 
 リソース名または [resourceId 関数](#resourceid)を使用して、リソースを指定します。 参照されているリソースをデプロイするのと同じテンプレートでリスト関数を使うときは、リソース名を使ってください。
 
-**list** 関数を条件付きでデプロイされるリソースで使用した場合、この関数はリソースがデプロイされていなくても評価されます。 **list** 関数で存在しないリソースを参照した場合、エラーが返されます。 リソースが存在する場合にのみこの関数が評価されるようにするには、**if** 関数を使用します。 if と list を条件付きでデプロイされるリソースで使用するサンプル テンプレートについては、[if 関数](resource-group-template-functions-logical.md#if)に関する説明を参照してください。
+**list** 関数を条件付きでデプロイされるリソースで使用した場合、この関数はリソースがデプロイされていなくても評価されます。 **list** 関数で存在しないリソースを参照した場合、エラーが返されます。 リソースのデプロイ中にのみこの関数が評価されるようにするには、**if** 関数を使用します。 if と list を条件付きでデプロイされるリソースで使用するサンプル テンプレートについては、[if 関数](resource-group-template-functions-logical.md#if)に関する説明を参照してください。
 
 ### <a name="example"></a>例
 
@@ -257,7 +251,7 @@ SAS トークンを取得するには、有効期限のオブジェクトを渡�
 | パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | providerNamespace |はい |string |プロバイダーの名前空間 |
-| resourceType |いいえ  |string |指定した名前空間内にあるリソースの種類。 |
+| resourceType |いいえ |string |指定した名前空間内にあるリソースの種類。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -332,8 +326,8 @@ SAS トークンを取得するには、有効期限のオブジェクトを渡�
 | パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | resourceName または resourceIdentifier |はい |string |名前またはリソースの一意の識別子。 |
-| apiVersion |いいえ  |string |指定したリソースの API バージョンです。 同じテンプレート内でリソースがプロビジョニングされない場合に、このパラメーターを追加します。 通常、**yyyy-mm-dd** の形式。 |
-| 'Full' |いいえ  |string |完全なリソース オブジェクトを返すかどうかを指定する値。 `'Full'` を指定しない場合、リソースのプロパティ オブジェクトのみが返されます。 完全なオブジェクトには、リソース ID や場所などの値が含まれます。 |
+| apiVersion |いいえ |string |指定したリソースの API バージョンです。 同じテンプレート内でリソースがプロビジョニングされない場合に、このパラメーターを追加します。 通常、**yyyy-mm-dd** の形式。 |
+| 'Full' |いいえ |string |完全なリソース オブジェクトを返すかどうかを指定する値。 `'Full'` を指定しない場合、リソースのプロパティ オブジェクトのみが返されます。 完全なオブジェクトには、リソース ID や場所などの値が含まれます。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -343,11 +337,11 @@ SAS トークンを取得するには、有効期限のオブジェクトを渡�
 
 reference 関数は、以前にデプロイされたリソースまたは現在のテンプレートにデプロイされたリソースのいずれかのランタイム状態を取得します。 この記事では、両方のシナリオの例を示します。 現在のテンプレート内のリソースを参照する場合は、パラメーターとしてリソース名のみを指定します。 以前にデプロイされたリソースを参照する場合は、リソースのリソース ID と API バージョンを指定します。 リソースに有効な API バージョンは、[テンプレート リファレンス](/azure/templates/)で確認することができます。
 
-reference 関数は、リソース定義のプロパティと、テンプレートまたはデプロイの出力セクションでのみ使用できます。
+reference 関数は、リソース定義のプロパティと、テンプレートまたはデプロイの出力セクションでのみ使用できます。 [プロパティの反復処理](resource-group-create-multiple.md#property-iteration)で使用する場合には、式がリソース プロパティに割り当てられるため、`input` に対して reference 関数を使用できます。 これを `count` と一緒に使用することはできません。カウントは、reference 関数が解決される前に決定される必要があるためです。
 
 参照されているリソースを同じテンプレート内でプロビジョニングし、(リソース ID ではなく) 名前でリソースを参照する場合は、reference 関数を使用することにより、あるリソースが他のリソースに依存することを暗黙的に宣言します。 dependsOn プロパティを一緒に使用する必要はありません。 参照先のリソースがデプロイを完了するまで、関数は評価されません。
 
-**reference** 関数を条件付きでデプロイされるリソースで使用した場合、この関数はリソースがデプロイされていなくても評価されます。  **reference** 関数で存在しないリソースを参照した場合、エラーが返されます。 リソースが存在する場合にのみこの関数が評価されるようにするには、**if** 関数を使用します。 if と reference を条件付きでデプロイされるリソースで使用するサンプル テンプレートについては、[if 関数](resource-group-template-functions-logical.md#if)に関する説明を参照してください。
+**reference** 関数を条件付きでデプロイされるリソースで使用した場合、この関数はリソースがデプロイされていなくても評価されます。  **reference** 関数で存在しないリソースを参照した場合、エラーが返されます。 リソースのデプロイ中にのみこの関数が評価されるようにするには、**if** 関数を使用します。 条件付きでデプロイされるリソースで if と reference を使用するサンプル テンプレートについては、[if 関数](resource-group-template-functions-logical.md#if)に関する説明を参照してください。
 
 ある種類のリソースによって返されるプロパティの名前と値を確認するには、outputs セクションでオブジェクトを返すテンプレートを作成します。 その種類のリソースが既にある場合、このテンプレートは新しいリソースはデプロイせずにオブジェクトを返します。 
 
@@ -594,11 +588,11 @@ resourceGroup 関数の一般的な用途では、リソース グループと�
 
 | パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
-| subscriptionId |いいえ  |文字列 (GUID 形式) |既定値は、現在のサブスクリプションです。 別のサブスクリプション内のリソースを取得する必要がある場合は、この値を指定します。 |
-| resourceGroupName |いいえ  |string |既定値は、現在のリソース グループです。 別のリソース グループ内のリソースを取得する必要がある場合は、この値を指定します。 |
+| subscriptionId |いいえ |文字列 (GUID 形式) |既定値は、現在のサブスクリプションです。 別のサブスクリプション内のリソースを取得する必要がある場合は、この値を指定します。 |
+| resourceGroupName |いいえ |string |既定値は、現在のリソース グループです。 別のリソース グループ内のリソースを取得する必要がある場合は、この値を指定します。 |
 | resourceType |はい |string |リソース プロバイダーの名前空間を含むリソースの種類。 |
 | resourceName1 |はい |string |リソースの名前。 |
-| resourceName2 |いいえ  |string |リソースが入れ子になっている場合、次のリソース名セグメント。 |
+| resourceName2 |いいえ |string |リソースが入れ子になっている場合、次のリソース名セグメント。 |
 
 ### <a name="return-value"></a>戻り値
 

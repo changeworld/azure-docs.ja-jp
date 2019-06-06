@@ -8,14 +8,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 03/21/2019
+ms.date: 05/13/2019
 ms.author: diberry
-ms.openlocfilehash: 3e54e8dcb6efa9251262c651730376a0d04edcf9
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: f80e6a765cc165033a548ba6a5ee7bead0de872e
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65144963"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65594081"
 ---
 # <a name="use-active-learning-to-improve-your-knowledge-base"></a>アクティブ ラーニングを使用してナレッジ ベースを改善する
 
@@ -60,9 +60,9 @@ QnA Maker ポータルで質問が提案されたら、それらの提案をレ�
 
 アクティブ ラーニングは、既定では無効になっています。 これを有効にして、提案された質問を表示します。 
 
-1. **[発行]** を選択してナレッジ ベースを発行します。 アクティブ ラーニング クエリは、GenerateAnswer API 予測エンドポイントからのみ収集されます。 Qna Maker ポータルの [テスト] ウィンドウへのクエリは、アクティブ ラーニングには影響しません。
+1. **[発行]** を選択してナレッジ ベースを発行します。 アクティブ ラーニング クエリは、GenerateAnswer API 予測エンドポイントからのみ収集されます。 QnA Maker ポータルの [テスト] ウィンドウへのクエリは、アクティブ ラーニングには影響しません。
 
-1. アクティブ ラーニングを有効にするには、自分の**名前**をクリックし、QnA Maker ポータルの右上隅にある [**[Service Settings]\(サービス設定\)**](https://www.qnamaker.ai/UserSettings) に移動します。  
+1. アクティブ ラーニングを有効にするには、自分の**名前**をクリックし、QnA Maker ポータルの右上隅にある [ **[Service Settings]\(サービス設定\)** ](https://www.qnamaker.ai/UserSettings) に移動します。  
 
     ![[Service settings]\(サービス設定\) ページで、アクティブ ラーニングの提案された代わりの質問を有効にします。 右上のメニューで自分のユーザー名を選択し、[Service Settings]\(サービス設定\) を選択します。](../media/improve-knowledge-base/Endpoint-Keys.png)
 
@@ -71,11 +71,11 @@ QnA Maker ポータルで質問が提案されたら、それらの提案をレ�
 
     [![[Service settings]\(サービス設定\) ページで、アクティブ ラーニング機能をオンに切り替えます。機能を切り替えられないときは、サービスをアップグレードしなければならない場合があります。](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png)](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png#lightbox)
 
-    **[Active Learning] (アクティブ ラーニング)** が有効になると、ユーザーが送信した質問に基づいて、ナレッジから定期的に新しい質問が提案されます。 設定を再度切り替えると、**[Active Learning] (アクティブ ラーニング)** を無効にできます。
+    **[Active Learning] (アクティブ ラーニング)** が有効になると、ユーザーが送信した質問に基づいて、ナレッジから定期的に新しい質問が提案されます。 設定を再度切り替えると、 **[Active Learning] (アクティブ ラーニング)** を無効にできます。
 
 ## <a name="add-active-learning-suggestion-to-knowledge-base"></a>アクティブ ラーニングの提案をナレッジ ベースに追加する
 
-1. 提案された質問を表示するには、ナレッジ ベースの **[Edit]\(編集\)** ページで、**[View Options]\(オプションの表示\)**、**[Show active learning suggestions]\(アクティブ ラーニングの提案を表示\)** の順に選択します。 
+1. 提案された質問を表示するには、ナレッジ ベースの **[Edit]\(編集\)** ページで、 **[View Options]\(オプションの表示\)** 、 **[Show active learning suggestions]\(アクティブ ラーニングの提案を表示\)** の順に選択します。 
 
     [![アクティブ ラーニングの新しい代わりの質問を表示するためには、ポータルの[Edit]\(編集\) セクションで [Show Suggestions]\(提案の表示\) を選択します。](../media/improve-knowledge-base/show-suggestions-button.png)](../media/improve-knowledge-base/show-suggestions-button.png#lightbox)
 
