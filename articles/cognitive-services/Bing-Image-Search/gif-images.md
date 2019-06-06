@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 04/24/2018
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 4b396c3b99c143f20caa774ee3c4c6ee25f96150
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 0a2040424aa70f30831e214ce0b05d21414ff45c
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65777118"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389406"
 ---
 # <a name="search-for-gif-images"></a>GIF 画像を検索する 
 
@@ -26,7 +26,7 @@ Bing Image Search API では、最も関連性の高い .gif 画像を探し、W
 ```
 https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=interesting&imageType=AnimatedGif&mkt=en-us
 ```
-[q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#query) パラメーターによって検索語句が指定されます。  上記のクエリでは、[imageType](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#imagetype) フィルター パラメーターによって `animatedGif` も指定されます。
+[q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query) パラメーターによって検索語句が指定されます。  上記のクエリでは、[imageType](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagetype) フィルター パラメーターによって `animatedGif` も指定されます。
 
 結果の例を見るには、次の URL で bing.com を検索してください。
 ```
@@ -35,14 +35,14 @@ https://www.bing.com/images/search?q=interesting&qft=%20filterui%3Aphoto-animate
 ```
 ## <a name="query-parameters"></a>クエリ パラメーター
 
-クエリのパラメーターとオプションに関する詳細については、[Image Search API リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#query-parameters) ページをご覧ください。 サンプルは、「[Java を利用したアニメーション gif のサンプル検索](#gifExample)」という見出しの下にあります。
+クエリのパラメーターとオプションに関する詳細については、[Image Search API リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query-parameters) ページをご覧ください。 サンプルは、「[Java を利用したアニメーション gif のサンプル検索](#gifExample)」という見出しの下にあります。
 
 ## <a name="tips-and-suggestions"></a>ヒントと検索候補
 
-- [maxFileSize](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#maxfilesize) パラメーターと [minFileSize](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#minfilesize) パラメーターを指定できます。 Microsoft では、インデックスの gif の多くが 2 MB 以下です。maxFileSize を 2000000 に設定することをお勧めします。  また、モバイル通信シナリオなど、帯域幅が問題となる場合でデータ サイズの制御に役立ちます。
+- [maxFileSize](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#maxfilesize) パラメーターと [minFileSize](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#minfilesize) パラメーターを指定できます。 Microsoft では、インデックスの gif の多くが 2 MB 以下です。maxFileSize を 2000000 に設定することをお勧めします。  また、モバイル通信シナリオなど、帯域幅が問題となる場合でデータ サイズの制御に役立ちます。
 - ソース URL を読み込む前にサムネイルを読み込むと、パフォーマンスの改善が体感されます。  
 - 最初の実行や待ち受けページでユーザー クエリがまだない場合、Microsoft の注目の gif 検索をお試しください。[注目の画像 API](trending-images.md) がお役に立ちます。
-- [safeSearch](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#safesearch) パラメーターには 3 つの設定があります。  `strict` オプションで成人向けコンテンツがブロックされます。
+- [safeSearch](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#safesearch) パラメーターには 3 つの設定があります。  `strict` オプションで成人向けコンテンツがブロックされます。
 - サポートされている言語と場所の完全一覧が必要な場合、[mkt](supported-countries-markets.md) をご覧ください。
 - *AnimatedGifHttps* は、https アドレスを出典とするアニメーション gif 画像のみを返します。 安全のため、アプリケーションの多くは、外部 Web リンクに接続するとき、https 経由を要求します。 たとえば、Apple App Store は Web サービスに接続するとき、転送中のユーザー データを暗号化する HTTPS を要求します。
 
@@ -55,7 +55,7 @@ https://www.bing.com/images/search?q=interesting&qft=%20filterui%3Aphoto-animate
 https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=interesting&imageType=AnimatedGif&mkt=en-us
 
 ```
-次の例に示すように、この URL クエリは [Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#headers) ヘッダーを要求します。
+次の例に示すように、この URL クエリは [Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#headers) ヘッダーを要求します。
 
 次の Java サンプルは要求をビルドし、送信します。
 

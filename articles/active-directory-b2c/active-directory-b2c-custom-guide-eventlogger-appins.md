@@ -2,20 +2,20 @@
 title: Azure Active Directory B2C から Application Insights のイベントを使用してユーザーの動作を追跡する | Microsoft Docs
 description: カスタム ポリシーを使用して、Azure AD B2C ユーザー体験から Application Insights のイベント ログを有効にする方法について説明します (プレビュー)。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/12/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8284be21db01ed7bd3215f7a67c8bfb40e0d73de
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 0c2f9a2a3d431e2948c7d50541b576b23c3ece6a
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64705159"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66507534"
 ---
 # <a name="track-user-behavior-in-azure-active-directory-b2c-using-application-insights"></a>Application Insights を使用した Azure Active Directory B2C でのユーザー動作の追跡
 
@@ -46,13 +46,13 @@ Application Insights と Azure AD B2C を併用している場合、唯一の要
 
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
 2. お使いのサブスクリプションを含むディレクトリを使用していることを確認してください。確認のために、トップ メニューにある **[ディレクトリとサブスクリプション フィルター]** をクリックして、お使いのサブスクリプションを含むディレクトリを選択します。 このテナントは自社の Azure AD B2C テナントではありません。
-3. Azure portal の左上隅にある **[リソースの作成]** を選択し、**[Application Insights]** を検索して選択します。
+3. Azure portal の左上隅にある **[リソースの作成]** を選択し、 **[Application Insights]** を検索して選択します。
 4. **Create** をクリックしてください。
 5. リソースの **[名前]** を入力します。
 6. **[アプリケーションの種類]** で **[ASP.NET Web アプリケーション]** を選択します。
 7. **[リソース グループ]** で、既存のグループを選択するか、新しいグループの名前を入力します。
 8. **Create** をクリックしてください。
-4. Application Insights リソースを作成したら、そのリソースを開き、**[要点]** を展開して、インストルメンテーション キーをコピーします。
+4. Application Insights リソースを作成したら、そのリソースを開き、 **[要点]** を展開して、インストルメンテーション キーをコピーします。
 
 ![Application Insights の概要とインストルメンテーション キー](./media/active-directory-b2c-custom-guide-eventlogger-appins/app-insights.png)
 
@@ -223,8 +223,8 @@ Application Insights と Azure AD B2C を併用している場合、唯一の要
 *TrustFrameworkExtensions.xml* ファイルを保存し、アップロードします。 次に、アプリケーションから証明書利用者ポリシーを呼び出すか、Azure portal で **[今すぐ実行]** を使用します。 数秒で、Application Insights でイベントを使用できるようになります。
 
 1. Azure Active Directory テナントで **Application Insights** リソースを開きます。
-2. **[使用状況]** > **[イベント]** を選択します。
-3. **[期間]** を **[過去 1 時間]** に、**[By]\(単位\)** を **[3 minutes]\(3 分\)** に設定します。  状況によっては、**[更新]** を選択して結果を表示する必要があります。
+2. **[使用状況]**  >  **[イベント]** を選択します。
+3. **[期間]** を **[過去 1 時間]** に、 **[By]\(単位\)** を **[3 minutes]\(3 分\)** に設定します。  状況によっては、 **[更新]** を選択して結果を表示する必要があります。
 
 ![Application Insights USAGE-Events Blase](./media/active-directory-b2c-custom-guide-eventlogger-appins/app-ins-graphic.png)
 

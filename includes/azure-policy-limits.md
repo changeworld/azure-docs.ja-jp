@@ -5,15 +5,15 @@ services: azure-policy
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 09/18/2018
+ms.date: 05/30/2019
 ms.author: dacoulte
 ms.custom: include file
-ms.openlocfilehash: 57cec39bde460c6079091490acf541761c61e003
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 7907504401f4b47aafe6032ea895d9647e6c303c
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66119295"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66420773"
 ---
 Azure Policy では、オブジェクトの種類ごとに最大数があります。 _Scope_ というエントリは、サブスクリプションまたは[管理グループ](../articles/governance/management-groups/overview.md)のいずれかを意味します。
 
@@ -26,5 +26,5 @@ Azure Policy では、オブジェクトの種類ごとに最大数がありま�
 | ポリシー定義 | parameters | 20 |
 | イニシアチブ定義 | ポリシー | 100 |
 | イニシアチブ定義 | parameters | 100 |
-| ポリシーとイニシアティブの割り当て | 除外 (notScopes) | 250 |
+| ポリシーとイニシアティブの割り当て | 除外 (notScopes) | 400 |
 | ポリシー規則 | 入れ子になった条件 | 512 |

@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/18/2018
+ms.date: 06/04/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: elisol, lenalepa
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8cc9d0a951ac6f7ed18ad6558ae9edb2d1f9c8f4
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 84069fb80ac751cbde53b0febdac451b54cd2b29
+ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65544638"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66688755"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>アプリケーションを Azure AD に追加する方法と理由
 
@@ -32,9 +32,9 @@ Azure AD には、2 つの表現のアプリケーションがあります。
 * [サービス プリンシパル](app-objects-and-service-principals.md#service-principal-object) - アプリケーションのインスタンスと考えることができます。 一般的に、サービス プリンシパルはアプリケーション オブジェクトを参照し、1 つのアプリケーション オブジェクトは複数のディレクトリの複数のプリンシパルによって参照されます。
 
 ## <a name="what-are-application-objects-and-where-do-they-come-from"></a>アプリケーション オブジェクトの概要とその由来
-[アプリケーション オブジェクト](app-objects-and-service-principals.md#application-object)は、Azure portal の [[アプリの登録]](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ApplicationsListBlade) エクスペリエンスで管理できます。 アプリケーション オブジェクトは、Azure AD に対してアプリケーションについて記述します。アプリケーション オブジェクトはアプリケーションの定義と考えることができます。これにより、サービスは設定に基づいてアプリケーションにトークンを発行する方法を知ることができます。 他のディレクトリ内のサービス プリンシパルをサポートするマルチテナント アプリケーションであっても、アプリケーション オブジェクトはそのホーム ディレクトリにのみ存在します。 アプリケーション オブジェクトには、以下のいずれかが含まれる可能性があります (ここに記載されていない他の情報もあります)。
+[アプリケーション オブジェクト](app-objects-and-service-principals.md#application-object)は、Azure portal の [[アプリの登録]](https://aka.ms/appregistrations) エクスペリエンスで管理できます。 アプリケーション オブジェクトは、Azure AD に対してアプリケーションについて記述します。アプリケーション オブジェクトはアプリケーションの定義と考えることができます。これにより、サービスは設定に基づいてアプリケーションにトークンを発行する方法を知ることができます。 他のディレクトリ内のサービス プリンシパルをサポートするマルチテナント アプリケーションであっても、アプリケーション オブジェクトはそのホーム ディレクトリにのみ存在します。 アプリケーション オブジェクトには、以下のいずれかが含まれる可能性があります (ここに記載されていない他の情報もあります)。
 * 名前、ロゴ、発行元
-* 応答 URL
+* リダイレクト URI
 * シークレット (アプリケーションの認証に使用される対称キーまたは非対称キー)
 * API の依存関係 (OAuth)
 * 発行済みの API/リソース/スコープ (OAuth)
@@ -74,7 +74,7 @@ Azure AD には、2 つの表現のアプリケーションがあります。
   * Office 365 にサブスクライブするか、または試用を開始すると、Office 365 に関連するすべての機能を提供するために使用されるさまざまなサービスを表す 1 つまたは複数のサービス プリンシパルがディレクトリに作成されます。
   * SharePoint などの一部の Office 365 サービスは、ワークフローを含むコンポーネント間で安全に通信できるように、実行中にサービス プリンシパルを作成します。
 * 管理者がアプリ ギャラリーからアプリケーションを追加するとき (これによって基になるアプリケーション オブジェクトも作成されます)
-* [Azure AD アプリケーション プロキシ](https://msdn.microsoft.com/library/azure/dn768219.aspx)を使用するアプリケーションを追加する
+* [Azure AD アプリケーション プロキシ](/azure/active-directory/manage-apps/application-proxy)を使用するアプリケーションを追加する
 * シングル サインオンのために、SAML またはパスワードのシングル サインオン (SSO) を使用してアプリを接続する
 * Azure AD Graph API または PowerShell でプログラムを使用する
 
@@ -89,7 +89,7 @@ Azure AD には、2 つの表現のアプリケーションがあります。
 
 Azure AD と統合するアプリケーションのパブリッシャー/ベンダーには、発行ディレクトリが必要です (右側の "Some SaaS Directory")。
 
-自分自身を追加するアプリケーション (この図では "**App (yours)**" と示されている) には、次のアプリケーションが含まれます。
+自分自身を追加するアプリケーション (この図では "**App (yours)** " と示されている) には、次のアプリケーションが含まれます。
 
 * ユーザーが開発したアプリ (Azure AD と統合)
 * シングル サインオン用に接続したアプリ
@@ -101,8 +101,8 @@ Azure AD と統合するアプリケーションのパブリッシャー/ベン�
   * 要求変換ルール
   * 属性マッピング (ユーザーのプロビジョニング)
 * サービス プリンシパル オブジェクトおよびアプリケーション オブジェクトの詳細については、Azure AD Graph REST API のリファレンス ドキュメントを参照してください。
-  * [Application](https://msdn.microsoft.com/library/azure/ad/graph/api/entity-and-complex-type-reference#application-entity)
-  * [サービス プリンシパル](https://msdn.microsoft.com/library/azure/ad/graph/api/entity-and-complex-type-reference#serviceprincipal-entity)
+  * [Application](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#application-entity)
+  * [サービス プリンシパル](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#serviceprincipal-entity)
 
 ## <a name="why-do-applications-integrate-with-azure-ad"></a>アプリケーションを Azure AD と統合する理由
 アプリケーションは、次のような Azure AD が提供するサービスを利用するために Azure AD に追加されます。

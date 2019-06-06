@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 2400f80c67527027aee3a98baaa869c5c66d46ee
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 93c65429ef7581f4a7d2e268034e4056d6f000c8
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64573641"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393133"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Stream Analytics での参照に参照データを使用する
 参照データ (別名、ルックアップテーブル) は、静的または本来はあまり変更されない有限のデータ セットであり、参照の実行やデータ ストリームとの相互の関連付けに使用されます。 たとえば、IoT のシナリオでは、センサーに関する (変化が頻繁ではない) メタデータを参照データに格納し、リアルタイムの IoT データ ストリームと結合することができます。 Azure Stream Analytics は、参照データをメモリに読み込んで、待機時間の短いストリーム処理を実現します。 Azure Stream Analytics ジョブで参照データを使用するには、一般にクエリで[参照データの結合](https://msdn.microsoft.com/library/azure/dn949258.aspx)を使用します。 
@@ -72,7 +72,7 @@ Azure Stream Analytics は、更新された参照データ BLOB を、1 分間�
 3. 参照データの BLOB の並び替えは、BLOB の "最終変更" 時刻では行われ**ません**。{date} および {time} の置換文字を使用して BLOB 名に指定されている時刻と日付によってのみ行われます。
 3. 多数の BLOB を列挙する必要がないように、今後処理を行う予定がない非常に古い BLOB は削除することを検討してください。 ASA では、再起動のような一部のシナリオで少量の再処理が必要になる可能性がある点に注意してください。
 
-## <a name="azure-sql-database-preview"></a>Azure SQL Database (プレビュー)
+## <a name="azure-sql-database"></a>Azure SQL Database
 
 Azure SQL Database の参照データは、Stream Analytics ジョブによって取得され、処理のためにスナップショットとしてメモリに格納されます。 参照データのスナップショットも、構成設定で指定したストレージ アカウントのコンテナーに格納されます。 ジョブを開始すると、コンテナーは自動作成されます。 ジョブが停止するか失敗状態になると、自動作成されたコンテナーはジョブの再開時に削除されます。  
 

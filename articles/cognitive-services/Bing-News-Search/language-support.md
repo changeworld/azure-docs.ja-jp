@@ -10,12 +10,12 @@ ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 1/10/2019
 ms.author: aahi
-ms.openlocfilehash: e8a7f6d20ed36c4b3e900602fb52e31dceefae88
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: d15058126f43fff328acfc563ffd081164a69a90
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65799327"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66384978"
 ---
 # <a name="language-and-region-support-for-the-bing-news-search-api"></a>Bing News Search API の言語と地域のサポート
 
@@ -162,4 +162,4 @@ Bing News Search API では多数の国/地域がサポートされ、その多�
 |米国|US|
 
 ## <a name="next-steps"></a>次の手順
-Bing News Search エンドポイントについて詳しくは、[News Search API v7 リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference)をご覧ください。
+Bing News Search エンドポイントについて詳しくは、[News Search API v7 リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference)をご覧ください。

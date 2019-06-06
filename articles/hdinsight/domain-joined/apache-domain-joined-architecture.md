@@ -7,13 +7,13 @@ ms.author: hrasheed
 ms.reviewer: omidm
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 0b37137dfe99cba1f21b7072506fae44dea9dd7c
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.date: 05/29/2019
+ms.openlocfilehash: 168a73ced039b9bced9a6aae6a138468b345b19d
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66240434"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66391683"
 ---
 # <a name="use-enterprise-security-package-in-hdinsight"></a>HDInsight で Enterprise セキュリティ パッケージを使用する
 

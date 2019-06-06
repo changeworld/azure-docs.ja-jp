@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: iainfou
-ms.openlocfilehash: 1cc91f55d3895f06176875cb9ae620685dc09a26
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: ea39bceaa6b58e84def9635436d902002e33cd14
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53605553"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66514509"
 ---
 # <a name="best-practices-for-container-image-management-and-security-in-azure-kubernetes-service-aks"></a>Azure Kubernetes サービス (AKS) でのコンテナー イメージの管理とセキュリティに関するベスト プラクティス
 
@@ -22,7 +22,6 @@ Azure Kubernetes Service (AKS) でアプリケーションを開発および実�
 
 > [!div class="checklist"]
 > * イメージの脆弱性をスキャンして修復する
-> * デジタル署名済みのコンテナー イメージを提供する信頼できるレジストリを使用する
 > * 基本イメージが更新されたら、コンテナー イメージを自動的にトリガーおよび再デプロイする
 
 [クラスター セキュリティ][best-practices-cluster-security]および[ポッド セキュリティ][best-practices-pod-security]に関するベスト プラクティスも参照できます。
@@ -36,16 +35,6 @@ Azure Kubernetes Service (AKS) でアプリケーションを開発および実�
 ![コンテナー イメージをスキャンして修正し、検証し、デプロイする](media/operator-best-practices-container-security/scan-container-images-simplified.png)
 
 実際の例では、継続的統合と継続的デプロイ (CI/CD) パイプラインを使用して、イメージのスキャン、検証、およびデプロイを自動化することができます。 Azure Container Registry には、これらの脆弱性スキャン機能が含まれます。
-
-## <a name="use-a-trusted-registry"></a>信頼できるレジストリを使用する
-
-**ベスト プラクティス ガイダンス** - ポッドおよびデプロイで使用できるイメージ レジストリを制限します。 使用可能なイメージを検証および制御する場所である、信頼できるレジストリのみを許可します。
-
-セキュリティ強化のために、アプリケーション コードにデジタル署名できるのと同様に、コンテナー イメージにもデジタル署名できます。 その後、AKS に対して、署名済みのイメージのみをデプロイすることを許可します。 このプロセスでは、脆弱性チェックに合格しただけでなく、デジタル署名済みの信頼できるイメージのみをプルするように、AKS を制限することで、セキュリティがさらに強化されます。 また、コンテナー イメージが改ざんされたり、まったく同じ名前のイメージに置き換わったりしていないことを確認します。
-
-デジタル署名済みのコンテナー イメージを提供する信頼できるレジストリは、環境内に複雑さをもたらすものの、特定のポリシーや規制コンプライアンスで必要となる場合があります。 Azure Container Registry では、信頼できるレジストリおよび署名済みのイメージの使用をサポートしています。
-
-デジタル署名済みのイメージの詳細については、「[Azure Container Registry におけるコンテンツの信頼][acr-content-trust]」を参照してください。
 
 ## <a name="automatically-build-new-images-on-base-image-update"></a>基本イメージの更新時に新しいイメージを自動的にビルドする
 
@@ -62,7 +51,6 @@ Azure Kubernetes Service (AKS) でアプリケーションを開発および実�
 この記事では、コンテナーをセキュリティで保護する方法について説明しました。 これらの領域のいくつかを実装する場合は、次の記事を参照してください。
 
 * [Automate image builds on base image update with Azure Container Registry タスク (Azure Container Registry タスクを使用して基本イメージの更新時のコンテナー イメージ ビルドを自動化する)][acr-base-image-update]
-* [Azure Container Registry におけるコンテンツの信頼][acr-content-trust]
 
 <!-- EXTERNAL LINKS -->
 [azure-pipelines]: /azure/devops/pipelines/?view=vsts
@@ -72,5 +60,4 @@ Azure Kubernetes Service (AKS) でアプリケーションを開発および実�
 <!-- INTERNAL LINKS -->
 [best-practices-cluster-security]: operator-best-practices-cluster-security.md
 [best-practices-pod-security]: developer-best-practices-pod-security.md
-[acr-content-trust]: ../container-registry/container-registry-content-trust.md
 [acr-base-image-update]: ../container-registry/container-registry-tutorial-base-image-update.md

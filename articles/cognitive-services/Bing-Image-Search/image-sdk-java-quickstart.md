@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 02/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: dd2bf11781a6dd013f033fc535b068d449dd04d4
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 991eae9a83325118caaea5c7e3fdb64c6caa1f16
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56238132"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66386611"
 ---
 # <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-for-java"></a>クイック スタート:Bing Image Search SDK for Java を使用してイメージを検索する
 
@@ -106,4 +106,4 @@ else {
 * [無料の Cognitive Services アクセス キーを取得する](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)
 * [Azure Cognitive Services SDK の Java サンプル](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)
 * [Azure Cognitive Services のドキュメント](https://docs.microsoft.com/azure/cognitive-services)
-* [Bing Image Search API リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)
+* [Bing Image Search API リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)

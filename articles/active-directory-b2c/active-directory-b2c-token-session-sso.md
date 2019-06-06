@@ -2,20 +2,20 @@
 title: セッションおよびシングル サインオンの構成 - Azure Active Directory B2C | Microsoft Docs
 description: Azure Active Directory B2C でのセッションおよびシングル サインオンの構成。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/16/2019
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: daff37ca803a7eebdc07a78d6d02f5cee36de2f5
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 472e494d445ae4a22c988076994649543ec1f7f8
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64703816"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66508114"
 ---
 # <a name="session-and-single-sign-on-configuration-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でのセッションおよびシングル サインオンの構成
 
@@ -32,7 +32,7 @@ Azure AD B2C がサポートしている [OpenID Connect 認証プロトコル](
     - 既定値 = 1,440 分。
     - 最小値 (この値を含む) = 15 分。
     - 最大値 (この値を含む) = 1,440 分。
-- **[Web アプリのセッション タイムアウト]** - このスイッチが **[絶対]** に設定されている場合は、**[Web アプリのセッションの有効期間 (分)]** によって指定されている期間が経過すると、ユーザーは強制的に再び認証を求められます。 このスイッチを **[ローリング]** (既定値) に設定すると、ユーザーが Web アプリケーションでアクティブな状態を継続している限り、そのユーザーのサインインは継続されます。
+- **[Web アプリのセッション タイムアウト]** - このスイッチが **[絶対]** に設定されている場合は、 **[Web アプリのセッションの有効期間 (分)]** によって指定されている期間が経過すると、ユーザーは強制的に再び認証を求められます。 このスイッチを **[ローリング]** (既定値) に設定すると、ユーザーが Web アプリケーションでアクティブな状態を継続している限り、そのユーザーのサインインは継続されます。
 
 次のユースケースは、これらのプロパティを使用して有効になります。
 

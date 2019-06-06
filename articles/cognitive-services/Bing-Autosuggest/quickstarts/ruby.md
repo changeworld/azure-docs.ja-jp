@@ -10,12 +10,12 @@ ms.subservice: bing-autosuggest
 ms.topic: quickstart
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: c7ba0fd34c789735cd92c25a728aec346dc88fcc
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: 56ad71d9a746f61e724c1f3b5c5c6be0a3318452
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57009746"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66390368"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-ruby"></a>クイック スタート:Bing Autosuggest REST API と Ruby で検索クエリの候補を表示する
 
@@ -38,7 +38,7 @@ ms.locfileid: "57009746"
     require 'json'
     ```
 
-2. API ホストとパス、[市場コード](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference#market-codes)、検索クエリの一部に対応する変数を作成します。
+2. API ホストとパス、[市場コード](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes)、検索クエリの一部に対応する変数を作成します。
 
     ```ruby
     subscriptionKey = 'enter your key here'
@@ -154,4 +154,4 @@ ms.locfileid: "57009746"
 ## <a name="see-also"></a>関連項目
 
 - [Bing Autosuggest とは](../get-suggested-search-terms.md)
-- [Bing Autosuggest API v7 リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference)
+- [Bing Autosuggest API v7 リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)

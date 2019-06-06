@@ -1,20 +1,20 @@
 ---
-title: Azure Cosmos DB は:SQL API の非同期 Java のサンプル
+title: Azure Cosmos DB:SQL API の非同期 Java のサンプル
 description: CRUD 操作など、Azure Cosmos DB SQL API を使う一般的なタスクについては、GitHub の非同期 Java のサンプルを参照してください。
 author: SnehaGunda
 ms.service: cosmos-db
 ms.devlang: java
 ms.topic: sample
-ms.date: 06/18/2018
+ms.date: 12/03/2018
 ms.author: sngun
-ms.openlocfilehash: 34551dcc64e6add2baa1ec94067037c98de67abe
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 46858affe44d488a9ade1693713072fded18afed
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58917942"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475798"
 ---
-# <a name="azure-cosmos-db-async-java-examples-for-the-sql-api"></a>Azure Cosmos DB は:SQL API の非同期 Java のサンプル
+# <a name="azure-cosmos-db-async-java-examples-for-the-sql-api"></a>Azure Cosmos DB:SQL API の非同期 Java のサンプル
 
 > [!div class="op_single_selector"]
 > * [.NET のサンプル](sql-api-dotnet-samples.md)

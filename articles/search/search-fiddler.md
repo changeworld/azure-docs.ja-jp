@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 05/16/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: bd3b9fe80a57a6a0dd824d92ae14a863ced240b2
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: eaf594286e5ffc101ad2d24e808fcb806998d053
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65793539"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66471560"
 ---
 # <a name="quickstart-explore-azure-search-rest-apis-using-postman"></a>クイック スタート:Postman を使用して Azure Search REST API シリーズを調べる
 > [!div class="op_single_selector"]
@@ -73,13 +73,13 @@ Postman で、次のスクリーンショットのように要求を作成しま
 
 Azure Search では、通常、データを読み込む前にインデックスを作成します。 このタスクには、[インデックスの作成 REST API](https://docs.microsoft.com/rest/api/searchservice/create-index) が使用されます。 
 
-URL を拡張して、`hotel` インデックス名を含めます。
+URL を拡張して、`hotels` インデックス名を含めます。
 
 Postman でこれを行うには:
 
 1. 動詞を **PUT** に変更します。
 
-2. URL `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotel?api-version=2019-05-06` をコピーします。
+2. URL `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels?api-version=2019-05-06` をコピーします。
 
 3. 要求の本文にインデックス定義 (下に示します) を指定します。
 
@@ -257,7 +257,7 @@ API バージョンの構文が異なる点に注目してください。 この
 
 ### <a name="1---create-an-index"></a>1 - インデックスの作成
 
-動詞を **PUT** に変更します。 この URL の変更されたバージョンをコピーします。`https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotel?api-version=2019-05-06` 前述のインデックス定義を要求本文にコピーします。 実際のページは次のスクリーンショットのようになります。 右上にある **[Execute]\(実行\)** をクリックして、完成した要求を送信します。
+動詞を **PUT** に変更します。 この URL の変更されたバージョンをコピーします。`https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels?api-version=2019-05-06` 前述のインデックス定義を要求本文にコピーします。 実際のページは次のスクリーンショットのようになります。 右上にある **[Execute]\(実行\)** をクリックして、完成した要求を送信します。
 
 ![Fiddler の要求本文][7]
 

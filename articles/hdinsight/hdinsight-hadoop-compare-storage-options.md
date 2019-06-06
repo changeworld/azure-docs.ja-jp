@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/08/2019
-ms.openlocfilehash: 2724451d44a793023f7b69196b186f68f6fc6a26
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 320b8f948d08e46c43085e174dfbe838f44bac79
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64720473"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479161"
 ---
 # <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>Azure HDInsight クラスターで使用するストレージ オプションを比較する
 
@@ -137,7 +137,7 @@ HDInsight では、それぞれのコンピューティング ノードにロー
 
 HDInsight を介して、Azure Storage 内のデータにアクセスすることもできます。 構文は次のとおりです。
 
-    wasb[s]://<containername>@<accountname>.blob.core.windows.net/<path>
+    wasb://<containername>@<accountname>.blob.core.windows.net/<path>
 
 HDInsight クラスターで Azure Storage アカウントを使用するときには、次の原則を考慮してください。
 

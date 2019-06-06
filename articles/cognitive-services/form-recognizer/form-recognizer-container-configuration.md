@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: form-recognizer
 ms.topic: overview
-ms.date: 05/15/2019
+ms.date: 05/31/2019
 ms.author: pafarley
-ms.openlocfilehash: 17cf1d88701370c4f81eab4f0d2df33ee2e94af5
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 28acc2d1eafacb9e53fac3e3cce092738401f838
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65796413"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475387"
 ---
 # <a name="configure-form-recognizer-containers"></a>Form Recognizer コンテナーの構成
 
@@ -90,7 +90,7 @@ Form Recognizer コンテナーには、入力と出力マウントが必要で�
 * **行連結文字**: 以降のセクションの Docker コマンドには、行連結文字としてバック スラッシュ (`\`) が使用されています。 お客様のホスト オペレーティング システムの要件に応じて、置換または削除してください。
 * **引数の順序**: Docker コンテナーについて高度な知識がある場合を除き、引数の順序は変更しないでください。
 
-{_<引数名>_} はお客様独自の値に置き換えてください。
+{ _<引数名>_ } はお客様独自の値に置き換えてください。
 
 | プレースホルダー | 値 |
 |-------------|-------|
@@ -111,10 +111,10 @@ Form Recognizer コンテナーには、入力と出力マウントが必要で�
 
 ```Docker
 docker run --rm -it -p 5000:5000 --memory 8g --cpus 2 \
-containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer \
-Eula=accept \
 --mount type=bind,source=c:\input,target=/input  \
 --mount type=bind,source=c:\output,target=/output \
+containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer \
+Eula=accept \
 Billing={BILLING_ENDPOINT_URI} \
 ApiKey={BILLING_KEY} \
 FormRecognizer:ComputerVisionApiKey={COMPUTER_VISION_API_KEY} \
@@ -125,10 +125,10 @@ FormRecognizer:ComputerVisionEndpointUri={COMPUTER_VISION_ENDPOINT_URI}
 
 ```Docker
 docker run --rm -it -p 5000:5000 --memory 8g --cpus 2 \
-containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer \
-Eula=accept \
 --mount type=bind,source=c:\input,target=/input  \
 --mount type=bind,source=c:\output,target=/output \
+containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer \
+Eula=accept \
 Billing={BILLING_ENDPOINT_URI} \
 ApiKey={BILLING_KEY} \
 FormRecognizer:ComputerVisionApiKey={COMPUTER_VISION_API_KEY} \

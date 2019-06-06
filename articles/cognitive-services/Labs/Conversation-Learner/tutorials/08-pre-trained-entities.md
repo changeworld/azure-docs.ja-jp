@@ -3,19 +3,19 @@ title: Conversation Learner モデルに事前トレーニング済みエンテ�
 titleSuffix: Azure
 description: Conversation Learner モデルに事前トレーニング済みエンティティを追加する方法について説明します。
 services: cognitive-services
-author: v-jaswel
+author: nitinme
 manager: nolachar
 ms.service: cognitive-services
 ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: v-jaswel
-ms.openlocfilehash: dade442cb04f79ef75e65d6eb29128b105e72b40
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.author: nitinme
+ms.openlocfilehash: fb70983c2f9fd20368bb8c6803c9568b27141af7
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59565412"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389269"
 ---
 # <a name="how-to-add-pre-trained-entities"></a>事前トレーニング済みエンティティを追加する方法
 このチュートリアルでは、Conversation Learner モデルに事前トレーニング済みエンティティを追加する方法を説明します。
@@ -45,14 +45,14 @@ Web UI のホーム ページから始めます。
 
 ### <a name="entity-creation"></a>エンティティの作成
 
-1. 左側のパネルで **[エンティティ]** を選択し、**[新しいエンティティ]** を選択します。
+1. 左側のパネルで **[エンティティ]** を選択し、 **[新しいエンティティ]** を選択します。
 2. **[エンティティ型]** で **[Pre-Trained/datetimeV2]\(事前トレーニング済み/datetimeV2\)** を選択します。
-3. エンティティの 1 つまたは複数の値の蓄積を有効にするには、**[複数値]** をオンにします。 [Pre-Trained Entities]\(事前トレーニング済みエンティティ\) を負の値にすることができない点に注意してください。
+3. エンティティの 1 つまたは複数の値の蓄積を有効にするには、 **[複数値]** をオンにします。 [Pre-Trained Entities]\(事前トレーニング済みエンティティ\) を負の値にすることができない点に注意してください。
 4. **作成** を選択します。
 
 ![](../media/T08_entity_create.png)
 
-1. 左側のパネルで **[アクション]** を選択し、**[新しいアクション]** を選択します。
+1. 左側のパネルで **[アクション]** を選択し、 **[新しいアクション]** を選択します。
 2. **[Bot's response]\(ボットの応答\)** に「**The date is $builtin-datetimev2**」(日付は $builtin-datetimev2 です) と入力します
 3. **作成** を選択します。
 
@@ -60,8 +60,8 @@ Web UI のホーム ページから始めます。
 
 ### <a name="create-the-second-action"></a>2 つ目のアクションを作成する
 
-1. 左側のパネルで **[アクション]** を選択し、**[新しいアクション]** を選択します。
-2. **[Bot's response]\(ボットの応答\)** に「**What's the date?**」(日付を教えて) と入力します。事前トレーニング済みエンティティは、すべての発話に対して既定で認識されるため、**必須エンティティ**にすることはできません。
+1. 左側のパネルで **[アクション]** を選択し、 **[新しいアクション]** を選択します。
+2. **[Bot's response]\(ボットの応答\)** に「**What's the date?** 」(日付を教えて) と入力します。事前トレーニング済みエンティティは、すべての発話に対して既定で認識されるため、**必須エンティティ**にすることはできません。
 3. **[Disqualifying Entities]\(不適格エンティティ\)** に「**builtin-datetimev2**」と入力します。
 4. **作成** を選択します。
 
@@ -69,7 +69,7 @@ Web UI のホーム ページから始めます。
 
 ### <a name="train-the-model"></a>モデルをトレーニングする
 
-1. 左側のパネルで、**[Train Dialogs]\(トレーニング会話\)** を選択し、**[New Train Dialog]\(新しいトレーニング会話\)** を選択します。
+1. 左側のパネルで、 **[Train Dialogs]\(トレーニング会話\)** を選択し、 **[New Train Dialog]\(新しいトレーニング会話\)** を選択します。
 2. 左側のチャット パネルでユーザーの発話に「**hello**」(こんにちは) と入力します。
 3. **[Score Action]\(アクションのスコア付け\)** を選択します。
 4. [アクション] リストから **[What's the date?]\(日付を教えて\)** を選択します。

@@ -2,20 +2,20 @@
 title: Azure Active Directory B2C のカスタム ポリシーでのセルフ アサート技術プロファイルの定義 |Microsoft Docs
 description: Azure Active Directory B2C のカスタム ポリシーでは、セルフ アサート技術プロファイルを定義します。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 41305cc5825344a61ff15ddb5deb629cd0f1c679
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 3c728660f1a77c02f1e4b5fdeb467a7dbba4e36a
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64691026"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66512652"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C のカスタム ポリシーでセルフ アサート技術プロファイルを定義します。
 
@@ -129,14 +129,14 @@ ms.locfileid: "64691026"
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| setting.showContinueButton | いいえ  | [続行する] ボタンが表示されます。 指定できる値は `true` (既定値) または `false` です。 |
-| setting.showCancelButton | いいえ  | [キャンセル] ボタンが表示されます。 指定できる値は `true` (既定値) または `false` です。 |
-| setting.operatingMode | いいえ  | サインイン ページのために、このプロパティは、入力検証とエラー メッセージなど [ユーザー名] フィールドの動作を制御します。 期待される値は`Username`または`Email`です。 |
+| setting.showContinueButton | いいえ | [続行する] ボタンが表示されます。 指定できる値は `true` (既定値) または `false` です。 |
+| setting.showCancelButton | いいえ | [キャンセル] ボタンが表示されます。 指定できる値は `true` (既定値) または `false` です。 |
+| setting.operatingMode | いいえ | サインイン ページのために、このプロパティは、入力検証とエラー メッセージなど [ユーザー名] フィールドの動作を制御します。 期待される値は`Username`または`Email`です。 |
 | ContentDefinitionReferenceId | はい | [コンテンツ定義](contentdefinitions.md)の識別子は、この技術プロファイルに関連付けられています。 |
-| EnforceEmailVerification | いいえ  | サインアップまたはプロファイルの編集のために、電子メールの検証を強制します。 指定できる値は `true`(既定値) または`false`です。 | 
-| setting.showSignupLink | いいえ  | サインアップ ボタンが表示されます。 指定できる値は `true`(既定値) または`false`です。 |
-| setting.retryLimit | いいえ  | ユーザーが検証技術プロファイルに対してチェックされたデータを提供しようとする回数を制御します。 たとえば、ユーザーは既に存在するアカウントでサインアップしようとし、制限に達するまで試行し続けます。
-| SignUpTarget | いいえ  | サインアップ対象交換識別子。 ユーザーがサインアップ ボタンをクリックすると、Azure AD B2C は、指定された交換識別子を実行します。 |
+| EnforceEmailVerification | いいえ | サインアップまたはプロファイルの編集のために、電子メールの検証を強制します。 指定できる値は `true`(既定値) または`false`です。 | 
+| setting.showSignupLink | いいえ | サインアップ ボタンが表示されます。 指定できる値は `true`(既定値) または`false`です。 |
+| setting.retryLimit | いいえ | ユーザーが検証技術プロファイルに対してチェックされたデータを提供しようとする回数を制御します。 たとえば、ユーザーは既に存在するアカウントでサインアップしようとし、制限に達するまで試行し続けます。
+| SignUpTarget | いいえ | サインアップ対象交換識別子。 ユーザーがサインアップ ボタンをクリックすると、Azure AD B2C は、指定された交換識別子を実行します。 |
 
 ## <a name="cryptographic-keys"></a>暗号化キー
 

@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: overview
 ms.date: 01/31/2019
 ms.author: scottwhi
-ms.openlocfilehash: f56893f830720c57c66eb4c17bb2771efbb73f6f
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 2f6be01a3aee4e156b7af184fa2537455fc73f3f
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "62124640"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66386534"
 ---
 # <a name="what-is-the-bing-video-search-api"></a>Bing Video Search API とは
 
@@ -50,6 +50,6 @@ API を呼び出す準備ができたら、[Cognitive Services API アカウン�
 
 ## <a name="see-also"></a>関連項目
 
-* [Bing Video Search API v7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference) リファレンス ページには、検索結果を要求する際に使用するエンドポイント、ヘッダー、クエリ パラメーターの一覧が記載されています。
+* [Bing Video Search API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference) リファレンス ページには、検索結果を要求する際に使用するエンドポイント、ヘッダー、クエリ パラメーターの一覧が記載されています。
 
 * [Bing の利用と表示の要件](./useanddisplayrequirements.md)に関するトピックでは、Bing Search API を使用して得られるコンテンツと情報の許可される使用方法が指定されています。

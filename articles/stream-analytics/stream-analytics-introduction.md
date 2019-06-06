@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc
 ms.date: 05/16/2019
-ms.openlocfilehash: ded2011111262eb45818ea149949989eef885f24
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: f607c1e79262efdbec79677fa7f16863b7a9d160
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65789585"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393981"
 ---
 # <a name="what-is-azure-stream-analytics"></a>Azure Stream Analytics とは
 
@@ -49,7 +49,7 @@ Azure Stream Analytics は、あらゆるジョブの規模に対応するスケ
 
 ## <a name="ease-of-getting-started"></a>簡単に始められる
 
-Azure Stream Analytics は、簡単に始めることができます。 何回かクリックして複数のソースやシンクに接続するだけで、エンド ツー エンドのパイプラインが作成されます。 Stream Analytics は、ストリーミング データ インジェストのためには [Azure Event Hubs](/azure/event-hubs/) や [Azure IoT Hub](/azure/iot-hub/) に、履歴データの取り込みのためには [Azure Blob Storage](/azure/storage/storage-introduction) に接続できます。 また、ストリーミング データに結合して参照操作を実行するために使用できる Azure Blob Storage または [SQL Database](stream-analytics-use-reference-data.md#azure-sql-database-preview) からの静的な、またはゆっくり変化する参照データをジョブ入力に含めることもできます。
+Azure Stream Analytics は、簡単に始めることができます。 何回かクリックして複数のソースやシンクに接続するだけで、エンド ツー エンドのパイプラインが作成されます。 Stream Analytics は、ストリーミング データ インジェストのためには [Azure Event Hubs](/azure/event-hubs/) や [Azure IoT Hub](/azure/iot-hub/) に、履歴データの取り込みのためには [Azure Blob Storage](/azure/storage/storage-introduction) に接続できます。 また、ストリーミング データに結合して参照操作を実行するために使用できる Azure Blob Storage または [SQL Database](stream-analytics-use-reference-data.md#azure-sql-database) からの静的な、またはゆっくり変化する参照データをジョブ入力に含めることもできます。
 
 Stream Analytics は、[Azure Blob Storage](/azure/storage/storage-introduction)、[Azure SQL Database](/azure/sql-database/)、[Azure Data Lake Store](/azure/data-lake-store/)、[Azure Cosmos DB](/azure/cosmos-db/introduction) などのさまざまなストレージ システムにジョブ出力をルーティングできます。 Azure HDInsight を使用して格納済みの出力に対してバッチ分析を実行したり、消費のための Event Hubs やリアルタイムの視覚化のための [Power BI](https://docs.microsoft.com/power-bi/) などの別のサービスに出力を送信したりできます。
 

@@ -10,12 +10,12 @@ ms.subservice: bing-autosuggest
 ms.topic: quickstart
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: b8f7fbe386400babac033de0efbaaabbe8832397
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: a8782951baccd63d3087ef0628a8fca31b9a4bc1
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57010091"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66390404"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-nodejs"></a>クイック スタート:Bing Autosuggest REST API と Node.js によって検索クエリの候補を表示する
 
@@ -37,7 +37,7 @@ ms.locfileid: "57010091"
     let https = require ('https');
     ```
 
-2. API エンドポイントのホストとパスの変数、サブスクリプション キー、[市場コード](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference#market-codes)、および検索用語に対応する変数を作成します。
+2. API エンドポイントのホストとパスの変数、サブスクリプション キー、[市場コード](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes)、および検索用語に対応する変数を作成します。
 
     ```javascript
     // Replace the subscriptionKey string value with your valid subscription key.
@@ -191,4 +191,4 @@ ms.locfileid: "57010091"
 > [単一ページの Web アプリの作成](../tutorials/autosuggest.md)
 
 - [Bing Autosuggest とは](../get-suggested-search-terms.md)
-- [Bing Autosuggest API v7 リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference)
+- [Bing Autosuggest API v7 リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)

@@ -2,20 +2,20 @@
 title: Azure Active Directory B2C のカスタム ポリシーを使って Microsoft アカウント (MSA) を ID プロバイダーとして追加する | Microsoft Docs
 description: OpenID Connect (OIDC) プロトコルを使って Microsoft を ID プロバイダーとして使用する例。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/20/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 983b90af4aafe158bf32290b1e4a2092acc47b17
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: d4b1f65daf271de88ce7167da6866e1890602fd4
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64706480"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66510337"
 ---
 # <a name="set-up-sign-in-with-a-microsoft-account-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用して Microsoft アカウントでのサインインを設定する
 
@@ -34,7 +34,7 @@ Azure AD B2C で Microsoft アカウントを ID プロバイダーとして使�
 
 1. Microsoft アカウントの資格情報で [Microsoft アプリケーション登録ポータル](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)にサインインします。
 2. 右上隅から **[Add an app (アプリの追加)]** を選択します。
-3. **[アプリケーション名]** を入力し、**[作成]** をクリックします。 
+3. **[アプリケーション名]** を入力し、 **[作成]** をクリックします。 
 4. **[新しいパスワードを生成する]** を選択し、ID プロバイダーを構成するときに使用するパスワードをコピーします。 [アプリケーション ID] もコピーします。 
 5. **[リダイレクト URI]** に「`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`」と入力します。 `your-tenant-name` をテナントの名前に置き換えます。
 6. **[保存]** を選択します。
@@ -45,9 +45,9 @@ Azure AD B2C で Microsoft アカウントを ID プロバイダーとして使�
 
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
 2. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 上部メニューで **[ディレクトリとサブスクリプション] フィルター**を選択し、ご利用のテナントが含まれるディレクトリを選択します。
-3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、**[Azure AD B2C]** を検索して選択します。
-4. [概要] ページで、**[Identity Experience Framework - プレビュー]** を選択します。
-5. **[ポリシー キー]** を選択し、**[追加]** を選択します。
+3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
+4. [概要] ページで、 **[Identity Experience Framework - プレビュー]** を選択します。
+5. **[ポリシー キー]** を選択し、 **[追加]** を選択します。
 6. **オプション**については、`Manual`を選択します。
 7. ポリシー キーの**名前**を入力します。 たとえば、「 `MSASecret` 」のように入力します。 プレフィックス `B2C_1A_` がキーの名前に自動的に追加されます。
 8. **[シークレット]** に、以前に記録したパスワードを入力します。
@@ -111,7 +111,7 @@ Azure AD B2C で Microsoft アカウントを ID プロバイダーとして使�
 
 ここまでで、Azure AD B2C が Microsoft アカウントと通信する方法を認識できるようにポリシーを構成しました。 ポリシーの拡張ファイルをアップロードして、現時点で問題がないことを確認してみます。
 
-1. Azure AD B2C テナントの **[カスタム ポリシー]** ページで、**[ポリシーのアップロード]** を選択します。
+1. Azure AD B2C テナントの **[カスタム ポリシー]** ページで、 **[ポリシーのアップロード]** を選択します。
 2. **[ポリシーが存在する場合は上書きする]** を有効にし、*TrustFrameworkExtensions.xml* ファイルを参照して選択します。
 3. **[アップロード]** をクリックします。
 
@@ -157,10 +157,10 @@ Azure AD B2C との通信は、テナントで作成したアプリケーショ�
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 上部メニューで **[ディレクトリとサブスクリプション] フィルター**を選択し、ご利用のテナントが含まれるディレクトリを選択します。
-3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、**[Azure AD B2C]** を検索して選択します。
-4. **[アプリケーション]** を選択し、**[追加]** を選択します。
+3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
+4. **[アプリケーション]** を選択し、 **[追加]** を選択します。
 5. アプリケーションの名前を入力します (*testapp1* など)。
-6. **[Web アプリ / Web API]** には `Yes` を選択し、**[応答 URL]** に `https://jwt.ms` を入力します。
+6. **[Web アプリ / Web API]** には `Yes` を選択し、 **[応答 URL]** に `https://jwt.ms` を入力します。
 7. **Create** をクリックしてください。
 
 ## <a name="update-and-test-the-relying-party-file"></a>証明書利用者ファイルを更新し、テストする
@@ -172,4 +172,4 @@ Azure AD B2C との通信は、テナントで作成したアプリケーショ�
 3. **PublicPolicyUri** の値をポリシーの URI に更新します。 たとえば、`http://contoso.com/B2C_1A_signup_signin_msa` にします。
 4. **DefaultUserJourney** 内の **ReferenceId** 属性の値を、作成した新しいユーザー体験の ID (SignUpSignInMSA) に一致するように更新します。
 5. 変更を保存し、ファイルをアップロードし、一覧から新しいポリシーを選択します。
-6. 作成した Azure AD B2C アプリケーションが **[アプリケーションの選択]** フィールドで選択されていることを確認し、**[今すぐ実行]** をクリックしてテストします。
+6. 作成した Azure AD B2C アプリケーションが **[アプリケーションの選択]** フィールドで選択されていることを確認し、 **[今すぐ実行]** をクリックしてテストします。

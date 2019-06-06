@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 03/12/2019
 ms.author: aahi
-ms.openlocfilehash: 211f33d5b217714b26dc39ad63f9d1427950589a
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: e0e595f6bbc1ed241aefe48eb766c04a790a102e
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65595767"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66384588"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-c"></a>クイック スタート:C# を使用して Bing Entity Search REST API に検索要求を送信する
 
@@ -178,4 +178,4 @@ ms.locfileid: "65595767"
 > [シングルページ Web アプリの作成](../tutorial-bing-entities-search-single-page-app.md)
 
 * [Bing Entity Search API とは](../overview.md )
-* [Bing Entity Search API リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference)
+* [Bing Entity Search API リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)

@@ -12,12 +12,12 @@ ms.author: ninarn
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 04/23/2019
-ms.openlocfilehash: 18dde6b028365cc04343b6d2f461cdb8c1a2bede
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 3a0f3154142dc02a9ab48bc288c543b02fef46ea
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65074329"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389075"
 ---
 # <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Azure SQL Database で単一データベースを作成する
 
@@ -42,35 +42,35 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 Adventure Works LT サンプル データを含む単一データベースを作成するには:
 
 1. Azure Portal の左上隅にある **[リソースの作成]** を選択します。
-2. **[データベース]** を選択してから、**[SQL Database]** を選択し、**[SQL データベースの作成]** ページを開きます。
+2. **[データベース]** を選択してから、 **[SQL Database]** を選択し、 **[SQL データベースの作成]** ページを開きます。
 
    ![単一データベースの作成](./media/sql-database-get-started-portal/create-database-1.png)
 
 3. **[基本]** タブの **[プロジェクトの詳細]** セクションで、次の値を入力または選択します。
 
    - **サブスクリプション**:表示されていない場合は、ドロップ ダウンして適切なサブスクリプションを選択します。
-   - **[リソース グループ]**:**[新規作成]** を選択し、「`myResourceGroup`」と入力して、**[OK]** を選択します。
+   - **[リソース グループ]** : **[新規作成]** を選択し、「`myResourceGroup`」と入力して、 **[OK]** を選択します。
 
      ![新しい SQL データベース - 基本タブ](media/sql-database-get-started-portal/new-sql-database-basics.png)
 
 4. **[データベースの詳細]** セクションで、次の値を入力または選択します。
 
    - **データベース名**: 「 `mySampleDatabase` 」を入力します。
-   - **サーバー**: **[新規作成]** を選択して次の値を入力し、**[選択]** を選択します。
+   - **サーバー**: **[新規作成]** を選択して次の値を入力し、 **[選択]** を選択します。
        - **サーバー名**: 一意性を確保するためにいくつかの数字とともに「`mysqlserver`」と入力します。
        - **サーバー管理者ログイン**:「 `azureuser`」と入力します。
        - **Password**:パスワードの要件を満たす複雑なパスワードを入力します。
-       - **[場所]**:ドロップダウンから場所 (`West US 2` など) を選択します。
+       - **[場所]** :ドロップダウンから場所 (`West US 2` など) を選択します。
 
          ![新しいサーバー](media/sql-database-get-started-portal/new-server.png)
 
       > [!IMPORTANT]
-      > 忘れずにサーバー管理者のログインとパスワードを記録して、このクイック スタートと他のクイック スタートのためにサーバーとデータベースにログインできるようにします。 ログインまたはパスワードを忘れた場合は、**[SQL サーバー]** ページでログイン名を取得するかパスワードをリセットします。 **[SQL サーバー]** ページを開くには、データベースの作成後にデータベースの **[概要]** ページでサーバー名を選択します。
+      > 忘れずにサーバー管理者のログインとパスワードを記録して、このクイック スタートと他のクイック スタートのためにサーバーとデータベースにログインできるようにします。 ログインまたはパスワードを忘れた場合は、 **[SQL サーバー]** ページでログイン名を取得するかパスワードをリセットします。 **[SQL サーバー]** ページを開くには、データベースの作成後にデータベースの **[概要]** ページでサーバー名を選択します。
 
         ![SQL データベースの詳細](media/sql-database-get-started-portal/sql-db-basic-db-details.png)
 
-   - **[SQL エラスティック プールを使用しますか?]**:**[いいえ]** オプションを選択します。
-   - **[コンピューティングとストレージ]**:**[データベースの構成]** を選択し、このクイックスタートでは **[仮想コアベースの購入オプション]** を選択します。
+   - **[SQL エラスティック プールを使用しますか?]** : **[いいえ]** オプションを選択します。
+   - **[コンピューティングとストレージ]** : **[データベースの構成]** を選択し、このクイックスタートでは **[仮想コアベースの購入オプション]** を選択します。
 
      ![仮想コアベースの購入オプション](media/sql-database-get-started-portal/create-database-vcore.png)
 
@@ -78,8 +78,8 @@ Adventure Works LT サンプル データを含む単一データベースを作
 
      ![サーバーレス コンピューティング レベル](media/sql-database-get-started-portal/create-database-serverless.png)
 
-   - **[最大 vCores]**、**[最小 vCores]**、**[自動一時停止の遅延]**、および **[データの最大サイズ]** の設定を確認します。 必要に応じて、これらを変更します。
-   - プレビューの使用条件に同意し、**[OK]** をクリックします。
+   - **[最大 vCores]** 、 **[最小 vCores]** 、 **[自動一時停止の遅延]** 、および **[データの最大サイズ]** の設定を確認します。 必要に応じて、これらを変更します。
+   - プレビューの使用条件に同意し、 **[OK]** をクリックします。
    - **[適用]** を選択します。
 
 5. **[追加設定]** タブを選択します。 
@@ -91,7 +91,7 @@ Adventure Works LT サンプル データを含む単一データベースを作
    > このクイック スタートとこのデータを使用する他の Azure SQL Database クイック スタートを簡単に実行できるように、必ず **Sample (AdventureWorksLT)** を選択します。
 
 7. 残りの値は既定値のままにして、フォームの下部にある **[確認および作成]** を選択します。
-8. 最終設定を確認し、**[作成]** を選択します。
+8. 最終設定を確認し、 **[作成]** を選択します。
 
 9. **[SQL Database]** フォームで **[作成]** を選択して、リソース グループ、サーバー、データベースをデプロイし、プロビジョニングします。
 
@@ -103,7 +103,7 @@ Adventure Works LT サンプル データを含む単一データベースを作
 
    ![クエリ エディターにサインインする](./media/sql-database-get-started-portal/query-editor-login.png)
 
-2. ログイン情報を入力し、**[OK]** を選択します。
+2. ログイン情報を入力し、 **[OK]** を選択します。
 3. **[クエリ エディター]** ウィンドウに次のクエリを入力します。
 
    ```sql
@@ -113,7 +113,7 @@ Adventure Works LT サンプル データを含む単一データベースを作
    ON pc.productcategoryid = p.productcategoryid;
    ```
 
-4. **[実行]** を選択し、**[結果]** ウィンドウでクエリの結果を確認します。
+4. **[実行]** を選択し、 **[結果]** ウィンドウでクエリの結果を確認します。
 
    ![クエリ エディターの結果](./media/sql-database-get-started-portal/query-editor-results.png)
 
@@ -125,9 +125,9 @@ Adventure Works LT サンプル データを含む単一データベースを作
 
 これらのリソースの使用が終了したら、次のように削除できます。
 
-1. Azure portal の左側のメニューで、**[リソース グループ]**、**[myResourceGroup]** の順に選択します。
+1. Azure portal の左側のメニューで、 **[リソース グループ]** 、 **[myResourceGroup]** の順に選択します。
 2. リソース グループ ページで **[リソース グループの削除]** を選択します。
-3. フィールドに「*myResourceGroup*」と入力してから、**[削除]** を選択します。
+3. フィールドに「*myResourceGroup*」と入力してから、 **[削除]** を選択します。
 
 ## <a name="next-steps"></a>次の手順
 
@@ -137,4 +137,4 @@ Adventure Works LT サンプル データを含む単一データベースを作
   - [Azure Data Studio を使用して接続およびクエリを実行する](https://docs.microsoft.com/sql/azure-data-studio/quickstart-sql-database?toc=/azure/sql-database/toc.json)
 - Azure CLI を使用して、プロビジョニング済みコンピューティング レベルで単一データベースを作成するには、[Azure CLI のサンプル](sql-database-cli-samples.md)に関するページを参照してください。
 - Azure PowerShell を使用して、プロビジョニング済みコンピューティング レベルで単一データベースを作成するには、[Azure PowerShell のサンプル](sql-database-powershell-samples.md)に関するページを参照してください。
-- Azure PowerShell を使用して、サーバーレス コンピューティング レベルで単一データベースを作成するには、[PowerShell を使用したサーバーレス データベースの作成](sql-database-serverless.md#create-new-database-using-powershell)に関するページを参照してください。
+- Azure PowerShell を使用して、サーバーレス コンピューティング レベルで単一データベースを作成するには、[PowerShell を使用したサーバーレス データベースの作成](sql-database-serverless.md#create-new-serverless-database-using-powershell)に関するページを参照してください。

@@ -2,20 +2,20 @@
 title: Azure SQL Data Warehouse のチート シート | Microsoft Docs
 description: Azure SQL Data Warehouse ソリューションをすばやく構築するためのリンクとベスト プラクティスが見つかります。
 services: sql-data-warehouse
-author: happynicolle
+author: mlee3gsd
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: overview
 ms.subservice: design
 ms.date: 04/17/2018
-ms.author: nicw
+ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: ad205fbbd17b291bf45e0c0b057ee81b80c0730b
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 38d353541b233f3cd9466e8dcf6c2b84083bd859
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65762807"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66515783"
 ---
 # <a name="cheat-sheet-for-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse のチート シート
 このチート シートは、Azure SQL Data Warehouse ソリューションを構築する場合に役立つヒントとベスト プラクティスを提供します。 開始する前に、SQL Data Warehouse とは何か、および SQL Data Warehouse でないものは何かを説明する「[Azure SQL Data Warehouse Workload Patterns and Anti-Patterns](https://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-workload-patterns-and-anti-patterns)」(Azure SQL Data Warehouse ワークロード パターンとアンチ パターン) を読んで、各手順の詳細を参照してください。
@@ -61,8 +61,8 @@ ms.locfileid: "65762807"
 * 共通ハッシュ キーが同じデータ形式であることを確認します。
 * 分散には varchar 形式を使わないようにします。
 * 頻繁に結合操作が行われるファクト テーブルに対する共通ハッシュ キーを持つディメンション テーブルは、ハッシュが分散される可能性があります。
-* データの偏りを分析するには、*[sys.dm_pdw_nodes_db_partition_stats]* を使います。
-* クエリの背後で行われているデータ移動を分析し、ブロードキャストおよびシャッフル操作にかかる時間を監視するには、*[sys.dm_pdw_request_steps]* を使います。 これはディストリビューション方法の検討に役立ちます。
+* データの偏りを分析するには、 *[sys.dm_pdw_nodes_db_partition_stats]* を使います。
+* クエリの背後で行われているデータ移動を分析し、ブロードキャストおよびシャッフル操作にかかる時間を監視するには、 *[sys.dm_pdw_request_steps]* を使います。 これはディストリビューション方法の検討に役立ちます。
 
 詳しくは、[レプリケート テーブル]および[分散テーブル]に関するページをご覧ください。
 

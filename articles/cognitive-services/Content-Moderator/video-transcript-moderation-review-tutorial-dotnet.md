@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: tutorial
 ms.date: 03/11/2019
 ms.author: pafarley
-ms.openlocfilehash: fc49081c765834a0ed0e5199923606ced7daa081
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 4a28e9f1f911e274f9a53275afa577024405b336
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58522079"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66474685"
 ---
 # <a name="tutorial-video-and-transcript-moderation"></a>チュートリアル:ビデオとトランスクリプトのモデレーション
 
@@ -44,15 +44,15 @@ ms.locfileid: "58522079"
 
 `App.config` ファイルを編集して、Active Directory テナントの名前、サービス エンドポイント、およびサブスクリプション キー (`#####` で示されます) を追加します。 次の情報が必要です。
 
-    |キー|説明|
-    |-|-|
-    |`AzureMediaServiceRestApiEndpoint`|Azure Media Services (AMS) API のエンドポイント|
-    |`ClientSecret`|Azure Media Services のサブスクリプション キー|
-    |`ClientId`|Azure Media Services のクライアント ID|
-    |`AzureAdTenantName`|組織を表す Active Directory テナント名|
-    |`ContentModeratorReviewApiSubscriptionKey`|Content Moderator レビュー API のサブスクリプション キー|
-    |`ContentModeratorApiEndpoint`|Content Moderator API のエンドポイント|
-    |`ContentModeratorTeamId`|Content Moderator のチーム ID|
+|キー|説明|
+|-|-|
+|`AzureMediaServiceRestApiEndpoint`|Azure Media Services (AMS) API のエンドポイント|
+|`ClientSecret`|Azure Media Services のサブスクリプション キー|
+|`ClientId`|Azure Media Services のクライアント ID|
+|`AzureAdTenantName`|組織を表す Active Directory テナント名|
+|`ContentModeratorReviewApiSubscriptionKey`|Content Moderator レビュー API のサブスクリプション キー|
+|`ContentModeratorApiEndpoint`|Content Moderator API のエンドポイント|
+|`ContentModeratorTeamId`|Content Moderator のチーム ID|
 
 ## <a name="examine-the-main-code"></a>メイン コードを確認する
 
@@ -60,7 +60,7 @@ ms.locfileid: "58522079"
 
 ### <a name="methods-of-program-class"></a>Program クラスのメソッド
 
-|方法|説明|
+|Method|説明|
 |-|-|
 |`Main`|コマンド ラインを解析し、ユーザー入力を収集し、処理を開始します。|
 |`ProcessVideo`|圧縮、アップロード、モデレーションを行って、ビデオ レビューを作成します。|

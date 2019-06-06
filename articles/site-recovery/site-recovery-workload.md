@@ -5,14 +5,14 @@ author: rayne-wiselman
 ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
-ms.date: 12/31/2018
+ms.date: 05/30/2019
 ms.author: raynew
-ms.openlocfilehash: 3ad3438f02ead9063a683a39d4ac5823274d55f7
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 8f4e78f7e16f775a852b4c8172d1fa9fd70ec341
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54155172"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66417835"
 ---
 # <a name="what-workloads-can-you-protect-with-azure-site-recovery"></a>Azure Site Recovery で保護できるワークロード
 
@@ -103,9 +103,9 @@ Azure Site Recovery は、次のような点で Dynamics AX ERP ソリューシ�
 
 | **RDS** |**Azure VM を Azure にレプリケートする** | **Hyper-V VM をセカンダリ サイトにレプリケート** | **Hyper-V VM を Azure にレプリケート** | **VMware VM をセカンダリ サイトにレプリケート** | **VMware VM を Azure にレプリケート** | **物理サーバーをセカンダリ サイトにレプリケート** | **物理サーバーを Azure にレプリケート** |
 |---| --- | --- | --- | --- | --- | --- | --- |
-| **プールされた仮想デスクトップ (管理対象外)** |いいえ |はい |いいえ  |はい |いいえ  |はい |いいえ  |
-| **プールされた仮想デスクトップ (管理対象、UPD なし)** |いいえ |はい |いいえ  |はい |いいえ  |はい |いいえ  |
-| **リモート アプリケーションとデスクトップ セッション (UPD なし)** |[はい]|はい |はい |はい |はい |はい |[はい] |
+| **プールされた仮想デスクトップ (管理対象外)** |いいえ|はい |いいえ |はい |いいえ |はい |いいえ |
+| **プールされた仮想デスクトップ (管理対象、UPD なし)** |いいえ|はい |いいえ |はい |いいえ |はい |いいえ |
+| **リモート アプリケーションとデスクトップ セッション (UPD なし)** |はい|はい |はい |はい |はい |はい |はい |
 
 [Azure Site Recovery を使用して RDS のディザスター リカバリーを設定します](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-disaster-recovery-with-azure)。
 

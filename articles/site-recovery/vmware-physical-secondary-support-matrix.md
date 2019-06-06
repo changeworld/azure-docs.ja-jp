@@ -6,14 +6,14 @@ manager: carmonm
 ms.service: site-recovery
 services: site-recovery
 ms.topic: article
-ms.date: 04/08/2019
+ms.date: 05/30/2019
 ms.author: raynew
-ms.openlocfilehash: b316d6a8293d9f23eb89e8b6fffedac316759df4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 742f1359d928aa05a8b8d36bde2ccf022db93b79
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59360145"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66418258"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>VMware VM および物理サーバーのセカンダリ サイトへのディザスター リカバリーのサポート マトリックス
 
@@ -60,10 +60,10 @@ Linux | Red Hat Enterprise Linux 6.7、6.8、6.9、7.1、7.2 <br/><br/> Centos 6
 ホスト - NIC チーミング | はい 
 ホスト - VLAN | はい 
 ホスト - IPv4 | はい 
-ホスト - IPv6 | いいえ  
-ゲスト VM - NIC チーミング | いいえ 
+ホスト - IPv6 | いいえ 
+ゲスト VM - NIC チーミング | いいえ
 ゲスト VM - IPv4 | はい
-ゲスト VM - IPv6 | いいえ 
+ゲスト VM - IPv6 | いいえ
 Guest VM - Windows/Linux - 静的 IP アドレス | はい
 ゲスト VM - マルチ NIC | はい
 
@@ -87,14 +87,14 @@ VMDK | はい
 VHD/VHDX | 該当なし 
 第 2 世代 VM | 該当なし 
 共有クラスター ディスク | はい 
-暗号化されたディスク | いいえ  
+暗号化されたディスク | いいえ 
 UEFI| はい 
-NFS | いいえ  
-SMB 3.0 | いいえ  
+NFS | いいえ 
+SMB 3.0 | いいえ 
 RDM | はい 
 1 TB より大きいディスク | はい 
 ストライピングされたディスクのボリューム > 1 TB<br/><br/> LVM | はい 
-記憶域 | いいえ  
+記憶域 | いいえ 
 ディスクのホット アド/削除 | はい 
 ディスクの除外 | はい 
 マルチパス (MPIO) | 該当なし 
@@ -103,8 +103,8 @@ RDM | はい
 
 **アクション** | **サポートされています** 
 --- | --- 
-リソース グループ間 (サブスクリプション内またはサブスクリプション間) での資格情報コンテナーの移動 | いいえ  
-リソース グループ間 (サブスクリプション内またはサブスクリプション間) でのストレージ、ネットワーク、Azure VM の移動 | いいえ  
+リソース グループ間 (サブスクリプション内またはサブスクリプション間) での資格情報コンテナーの移動 | いいえ 
+リソース グループ間 (サブスクリプション内またはサブスクリプション間) でのストレージ、ネットワーク、Azure VM の移動 | いいえ 
 
 ## <a name="mobility-service-and-updates"></a>モビリティ サービスと更新プログラム
 

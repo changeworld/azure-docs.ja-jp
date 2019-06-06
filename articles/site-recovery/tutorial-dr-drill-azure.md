@@ -6,15 +6,15 @@ manager: carmonm
 ms.service: site-recovery
 services: site-recovery
 ms.topic: tutorial
-ms.date: 04/08/2019
+ms.date: 05/30/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: b93fb92c9170f3e0fb7bd6ee754dde5df729e299
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 4ed66e3a0237eced852c806e78a8af6bdf8d8579
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59358175"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66417830"
 ---
 # <a name="run-a-disaster-recovery-drill-to-azure"></a>Azure へのディザスター リカバリー訓練を実行する
 
@@ -46,7 +46,7 @@ ms.locfileid: "59358175"
 
 テスト フェールオーバーを実行する前に、VM のプロパティを調べ、[Hyper-V VM](hyper-v-azure-support-matrix.md#replicated-vms) または [VMware VM](vmware-physical-azure-support-matrix.md#replicated-machines) が Azure の要件に準拠していることを確認します。
 
-1. **[保護された項目]** で、**[レプリケートされたアイテム]** をクリックし、VM をクリックします。
+1. **[保護された項目]** で、 **[レプリケートされたアイテム]** をクリックし、VM をクリックします。
 2. **[レプリケートされたアイテム]** ウィンドウには、VM 情報、正常性状態、および最新の使用可能な復旧ポイントの概要が表示されます。 **[プロパティ]** をクリックすると、詳細が表示されます。
 3. **[コンピューティングとネットワーク]** で、Azure 名、リソース グループ、ターゲット サイズ、可用性セット、およびマネージド ディスクの設定を変更できます。
 4. ネットワーク設定 (フェールオーバー後に Azure VM が配置されるネットワークやサブネット、割り当てられる IP アドレスなど) を表示および変更できます。
@@ -58,7 +58,7 @@ ms.locfileid: "59358175"
 
 - テスト ネットワークでは、運用ネットワークと同じ数のサブネットが必要です。 サブネットは、同じ名前を持つ必要があります。
 - テスト ネットワークでは、同じ IP アドレス範囲を使用する必要があります。
-- テスト ネットワークの DNS を、**[Compute and Network] \(コンピューティングとネットワーク)** 設定で DNS VM に指定した IP アドレスで更新します。 詳細については、[Active Directory 用のテスト フェールオーバーの考慮事項](site-recovery-active-directory.md#test-failover-considerations)を参照してください。
+- テスト ネットワークの DNS を、 **[Compute and Network] \(コンピューティングとネットワーク)** 設定で DNS VM に指定した IP アドレスで更新します。 詳細については、[Active Directory 用のテスト フェールオーバーの考慮事項](site-recovery-active-directory.md#test-failover-considerations)を参照してください。
 
 ## <a name="run-a-test-failover-for-a-single-vm"></a>1 台の VM のテスト フェールオーバーを実行する
 
@@ -70,10 +70,10 @@ ms.locfileid: "59358175"
 
 次のようにテスト フェールオーバーを実行します。
 
-1. **[設定]** > **[レプリケートされたアイテム]** で、VM をクリックし、**[+ テスト フェールオーバー]** をクリックします。
+1. **[設定]**  >  **[レプリケートされたアイテム]** で、VM をクリックし、 **[+ テスト フェールオーバー]** をクリックします。
 2. このチュートリアルでは **[最後に処理があった時点]** 復旧ポイントを選択します。 この場合、VM が、利用可能な最新のポイントインタイムにフェールオーバーされます。 タイム スタンプが表示されます。 このオプションを使用すると、データの処理に時間がかからないため、RTO (目標復旧時間) が低くなります。
 3. **[テスト フェールオーバー]** で、フェールオーバー後に Azure VM が接続するターゲット Azure ネットワークを選択します。
-4. **[OK]** をクリックすると、フェールオーバーが開始されます。 VM をクリックしてそのプロパティを開くことで、進行状況を追跡できます。 または、コンテナー名の **[テスト フェールオーバー]** ジョブをクリックし、**[設定]** > **[ジョブ]** >
+4. **[OK]** をクリックすると、フェールオーバーが開始されます。 VM をクリックしてそのプロパティを開くことで、進行状況を追跡できます。 または、コンテナー名の **[テスト フェールオーバー]** ジョブをクリックし、 **[設定]**  >  **[ジョブ]**  >
     **[Site Recovery ジョブ]** をクリックできます。
 5. フェールオーバーの完了後、レプリカの Azure VM は、Azure Portal の **[仮想マシン]** に表示されます。 VM が適切なサイズであること、適切なネットワークに接続されていること、および実行されていることを確認します。
 6. これで、Azure 内のレプリケートされた VM に接続できるはずです。

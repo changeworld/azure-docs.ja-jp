@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 05/23/2019
 ms.author: thweiss
-ms.openlocfilehash: 179b67306803437ccad085cccfb1b5fd40888261
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 05fd369cfebba03c814507f82755fa6cb6a89400
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66240857"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66386796"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB でインデックス作成ポリシーを管理する
 
@@ -167,7 +167,7 @@ JSON 形式で示されたインデックス作成ポリシーの例をいくつ
 ### <a name="opt-out-policy-to-selectively-exclude-some-property-paths"></a>一部のプロパティ パスを選択的に除外するオプトアウト ポリシー
 ```
     {
-        "indexingPolicy": "consistent",
+        "indexingMode": "consistent",
         "includedPaths": [
             {
                 "path": "/*",
@@ -201,7 +201,7 @@ JSON 形式で示されたインデックス作成ポリシーの例をいくつ
 ### <a name="opt-in-policy-to-selectively-include-some-property-paths"></a>一部のプロパティ パスを選択的に包含するオプトイン ポリシー
 ```
     {
-        "indexingPolicy": "consistent",
+        "indexingMode": "consistent",
         "includedPaths": [
             {
                 "path": "/path/to/included/property/?",
@@ -235,7 +235,7 @@ JSON 形式で示されたインデックス作成ポリシーの例をいくつ
 ### <a name="using-a-spatial-index-on-a-specific-property-path-only"></a>特定のプロパティ パスに対してのみ空間インデックスを使用する
 ```
     {
-        "indexingPolicy": "consistent",
+        "indexingMode": "consistent",
         "includedPaths": [
             {
                 "path": "/*",
@@ -280,7 +280,7 @@ JSON 形式で示されたインデックス作成ポリシーの例をいくつ
 ### <a name="no-indexing"></a>インデックス作成なし
 ```
     {
-        "indexingPolicy": "none"
+        "indexingMode": "none"
     }
 ```
 

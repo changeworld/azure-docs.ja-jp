@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 04/20/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 96f580532d9ea45dd767e32c2451243e83af66ea
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: e70b65d7432489cea647bb8b34007915212d4c5e
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58480806"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475833"
 ---
 # <a name="inbound-and-outbound-ip-addresses-in-azure-app-service"></a>Azure App Service における受信 IP アドレスと送信 IP アドレス
 
@@ -37,7 +37,7 @@ ms.locfileid: "58480806"
 
 ## <a name="get-static-inbound-ip"></a>静的な受信 IP を取得する
 
-専用の静的な IP アドレスをアプリで使用したい場合があります。 静的な受信 IP アドレスを取得するには、[IP ベースの SSL バインド](app-service-web-tutorial-custom-ssl.md#bind-your-ssl-certificate)を構成する必要があります。 アプリをセキュリティで保護するための SSL 機能を実質的に必要としない場合は、このバインドのために自己署名証明書をアップロードすることもできます。 IP ベースの SSL バインドでは、証明書は IP アドレス自体にバインドされるため、App Service は、静的な IP アドレスをプロビジョニングすることで、これを実現できます。 
+専用の静的な IP アドレスをアプリで使用したい場合があります。 静的な受信 IP アドレスを取得するには、[IP ベースの SSL バインド](app-service-web-tutorial-custom-ssl.md#secure-a-custom-domain)を構成する必要があります。 アプリをセキュリティで保護するための SSL 機能を実質的に必要としない場合は、このバインドのために自己署名証明書をアップロードすることもできます。 IP ベースの SSL バインドでは、証明書は IP アドレス自体にバインドされるため、App Service は、静的な IP アドレスをプロビジョニングすることで、これを実現できます。 
 
 ## <a name="when-outbound-ips-change"></a>送信 IP はいつ変更されるか
 

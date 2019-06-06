@@ -10,12 +10,12 @@ ms.subservice: bing-autosuggest
 ms.topic: overview
 ms.date: 02/20/2019
 ms.author: scottwhi
-ms.openlocfilehash: 669eaaf0eaf28c696a7ca368c02f5816054e5d10
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: 24f35d795b34e7d9c214a23c040791841b4a711b
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57010108"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66382573"
 ---
 # <a name="what-is-bing-autosuggest"></a>Bing Autosuggest とは
 
@@ -47,7 +47,7 @@ Bing Autosuggest API からの検索語の候補を含んだドロップダウ�
 
 実際に要求を送信してみるには、[最初のクエリを実行する](quickstarts/csharp.md)に関するページを参照してください。
 
-[Bing Autosuggest API v7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference) リファレンスを活用してください。 このリファレンスには、クエリ用語候補を要求する際に使用するエンドポイント、ヘッダー、クエリ パラメーターの一覧と、応答オブジェクトの定義が記載されています。
+[Bing Autosuggest API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference) リファレンスを活用してください。 このリファレンスには、クエリ用語候補を要求する際に使用するエンドポイント、ヘッダー、クエリ パラメーターの一覧と、応答オブジェクトの定義が記載されています。
 
 [Bing Web Search API](../bing-web-search/search-the-web.md) を使用して Web を検索する方法について説明します。
 

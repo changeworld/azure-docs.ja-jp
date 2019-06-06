@@ -11,19 +11,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/13/2017
+ms.date: 05/28/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: a9a6c7c47a6ea81f682f453a85ee6f8e214a09a7
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: e9c34d3cfd5ce9bb3a8f9a9072f2843331065100
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59678090"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66496517"
 ---
 # <a name="use-an-app-service-environment"></a>App Service Environment の使用 #
-
-## <a name="overview"></a>概要 ##
 
 Azure App Service Environment は、ユーザーの Azure 仮想ネットワーク内のサブネットに Azure App Service をデプロイしたものです。 構成は次のとおりです。
 
@@ -50,7 +48,7 @@ ASE をご利用でない場合は、[App Service Environment の作成][MakeExt
 
 ASE 内にアプリを作成するには:
 
-1. **[リソースの作成]** > **[Web + モバイル]** > **[Web アプリ]** を選択します。
+1. **[リソースの作成]**  >  **[Web + モバイル]**  >  **[Web アプリ]** を選択します。
 
 2. アプリの名前を入力します。 ASE 内で既に App Service プランが選択されている場合、アプリのドメイン名に、ASE のドメイン名が反映されます。
 
@@ -58,12 +56,9 @@ ASE 内にアプリを作成するには:
 
 1. サブスクリプションを選択します。
 
-1. 新しいリソース グループの名前を指定するか、**[既存のものを使用]** を選択して、ボックスの一覧からいずれかを選択します。
+1. 新しいリソース グループの名前を指定するか、 **[既存のものを使用]** を選択して、ボックスの一覧からいずれかを選択します。
 
 1. OS を選択します。 
-
-    * ASE での Linux アプリのホストは新しいプレビュー機能です。そのため、実稼働ワークロードが現在実行されている ASE に Linux アプリを追加しないようお勧めします。 
-    * ASE に Linux アプリを追加することは、ASE もプレビュー モードになることを意味します。 
 
 1. ASE で既存の App Service プランを選択するか、次の手順で新しく作成します。
 
@@ -71,8 +66,8 @@ ASE 内にアプリを作成するには:
 
     b. App Service プランの名前を入力します。
 
-    c. **[場所]** ボックスの一覧から該当する ASE を選択します。 ASE での Linux アプリのホスティングが有効なのは、現時点で、**米国西部、米国東部、西ヨーロッパ、北ヨーロッパ、オーストラリア東部、東南アジア**の 6 つのリージョンのみです。 
-
+    c. **[場所]** ボックスの一覧から該当する ASE を選択します。 
+    
     d. **[分離]** 価格レベルを選択します。 **[選択]** を選択します。
 
     e. **[OK]** を選択します。
@@ -139,7 +134,7 @@ ILB ASE では、デプロイ時にドメインを決定します。 ILB ASE の
 
 既定では、インターネットベースの CI システム (GitHub、Azure DevOps など) は ILB ASE では動作しません。発行エンドポイントにインターネットでアクセスすることができないためです。 Azure devops でこの問題を回避するには、セルフホステッド リリース エージェントを内部ネットワーク内にインストールして、ILB にアクセスできるようにします。 プル モデルを使用した CI システム (Dropbox など) を使用することもできます。
 
-ILB ASE 内のアプリには、その ILB ASE の作成時に使用されたドメインが、発行エンドポイントとして使用されます。 これはアプリの発行プロファイルのほか、アプリのポータル ブレード (**[概要]** > **[要点]**、**[プロパティ]** など) で確認することができます。 
+ILB ASE 内のアプリには、その ILB ASE の作成時に使用されたドメインが、発行エンドポイントとして使用されます。 これはアプリの発行プロファイルのほか、アプリのポータル ブレード ( **[概要]**  >  **[要点]** 、 **[プロパティ]** など) で確認することができます。 
 
 ## <a name="pricing"></a>価格 ##
 

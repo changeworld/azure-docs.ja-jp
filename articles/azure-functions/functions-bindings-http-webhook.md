@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: a1d66cf4506e3b8f58572576db908812f4e2be07
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: fb219316afa798dfda777c4d0d406d5b8cabf7f9
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59490412"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66472369"
 ---
 # <a name="azure-functions-http-triggers-and-bindings"></a>Azure Functions のトリガーとバインド
 
@@ -332,9 +332,9 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 ### <a name="trigger---java-examples"></a>トリガー - Java の例
 
 * [クエリ文字列からのパラメーターの読み取り](#read-parameter-from-the-query-string-java)
-* [POST 要求からの本文の読み取り](#read-body-from-a-post-request-java)
+* [Post 要求からの本文の読み取り](#read-body-from-a-post-request-java)
 * [ルートからのパラメーターの読み取り](#read-parameter-from-a-route-java)
-* [POST 要求からの POJO 本文の読み取り](#read-pojo-body-from-a-post-request-java)
+* [Post 要求からの POJO 本文の読み取り](#read-pojo-body-from-a-post-request-java)
 
 次の例は、*function.json* ファイルの HTTP トリガー バインドと、そのバインドを使用する個別の [Java 関数](functions-reference-java.md)を示しています。 
 
@@ -563,9 +563,9 @@ public static Task<IActionResult> Run(
 | **direction** | 該当なし| 必須 - `in` に設定する必要があります。 |
 | **name** | 該当なし| 必須 - 要求または要求本文の関数コードで使用される変数名。 |
 | <a name="http-auth"></a>**authLevel** |  **AuthLevel** |関数を呼び出すために、要求にどのキーが存在する必要があるかを決定します。 承認レベルは、次のいずれかの値になります。 <ul><li><code>anonymous</code>&mdash;API キーは必要ありません。</li><li><code>function</code>&mdash;関数固有の API キーが必要です。 何も指定されなかった場合は、これが既定値になります。</li><li><code>admin</code>&mdash;マスター キーが必要です。</li></ul> 詳しくは、[承認キー](#authorization-keys)に関するセクションをご覧ください。 |
-| **メソッド** |**メソッド** | 関数が応答する HTTP メソッドの配列。 指定しない場合、関数はすべての HTTP メソッドに応答します。 「[HTTP エンドポイントのカスタマイズ](#customize-the-http-endpoint)」をご覧ください。 |
-| **ルート** | **ルート** | 関数がどの要求 URL に応答するかを制御するルート テンプレートを定義します。 何も指定しなかった場合の既定値は `<functionname>` です。 詳しくは、「[HTTP エンドポイントのカスタマイズ](#customize-the-http-endpoint)」をご覧ください。 |
-| **webHookType** | **WebHookType** | _バージョン 1.x ランタイムでのみサポートされます。_<br/><br/>指定したプロバイダーの [webhook](https://en.wikipedia.org/wiki/Webhook) レシーバーとして機能する HTTP トリガーを構成します。 このプロパティを設定する場合は、`methods` プロパティを設定しないでください。 webhook の種類は、次のいずれかの値になります。<ul><li><code>genericJson</code>&mdash;特定のプロバイダー用のロジックを持たない汎用 webhook エンドポイントです。 この設定では、要求が、HTTP POST を使用していてコンテンツの種類が `application/json` であるものだけに制限されます。</li><li><code>github</code>&mdash;関数は [GitHub webhook](https://developer.github.com/webhooks/) に対応します。 GitHub webhook に対して _authLevel_ プロパティを使用しないでください。 詳しくは、この記事で後述する「GitHub webhook」セクションをご覧ください。</li><li><code>slack</code>&mdash;関数は [Slack webhook](https://api.slack.com/outgoing-webhooks) に対応します。 Slack webhook に対して _authLevel_ プロパティを使用しないでください。 詳しくは、この記事で後述する「Slack webhook」セクションをご覧ください。</li></ul>|
+| **methods** |**メソッド** | 関数が応答する HTTP メソッドの配列。 指定しない場合、関数はすべての HTTP メソッドに応答します。 「[HTTP エンドポイントのカスタマイズ](#customize-the-http-endpoint)」をご覧ください。 |
+| **route** | **Route** | 関数がどの要求 URL に応答するかを制御するルート テンプレートを定義します。 何も指定しなかった場合の既定値は `<functionname>` です。 詳しくは、「[HTTP エンドポイントのカスタマイズ](#customize-the-http-endpoint)」をご覧ください。 |
+| **webHookType** | **WebHookType** | _バージョン 1.x ランタイムでのみサポートされます。_<br/><br/>指定したプロバイダーの [webhook](https://en.wikipedia.org/wiki/Webhook) レシーバーとして機能する HTTP トリガーを構成します。 このプロパティを設定する場合は、`methods` プロパティを設定しないでください。 webhook の種類は、次のいずれかの値になります。<ul><li><code>genericJson</code>&mdash;特定のプロバイダー用のロジックを持たない汎用 webhook エンドポイントです。 この設定では、要求が、HTTP POST を使用していてコンテンツの種類が `application/json` であるものだけに制限されます。</li><li><code>github</code>&mdash;関数は [GitHub webhook](https://developer.github.com/webhooks/) に応答します。 GitHub webhook に対して _authLevel_ プロパティを使用しないでください。 詳しくは、この記事で後述する「GitHub webhook」セクションをご覧ください。</li><li><code>slack</code>&mdash;関数は [Slack webhook](https://api.slack.com/outgoing-webhooks) に応答します。 Slack webhook に対して _authLevel_ プロパティを使用しないでください。 詳しくは、この記事で後述する「Slack webhook」セクションをご覧ください。</li></ul>|
 
 ## <a name="trigger---usage"></a>トリガー - 使用方法
 
@@ -666,7 +666,7 @@ module.exports = function (context, req) {
 
 また、この情報はバインディング データから参照することもできます。 この機能は、Functions 2.x ランタイムのみで使用可能です。 また、現在のところ .NET 言語でのみ使用可能です。
 
-.NET 言語では、この情報は [ClaimsPrincipal](https://docs.microsoft.com/dotnet/api/system.security.claims.claimsprincipal?view=netstandard-2.0) として使用可能です。 ClaimsPrincipal は、次の例に示すように、要求コンテキストの一部として使用可能です。
+.NET 言語では、この情報は [ClaimsPrincipal](https://docs.microsoft.com/dotnet/api/system.security.claims.claimsprincipal) として使用可能です。 ClaimsPrincipal は、次の例に示すように、要求コンテキストの一部として使用可能です。
 
 ```csharp
 using System.Net;

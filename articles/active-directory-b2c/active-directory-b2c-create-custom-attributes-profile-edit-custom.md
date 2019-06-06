@@ -2,20 +2,20 @@
 title: Azure Active Directory B2C でカスタム ポリシーに独自の属性を追加する | Microsoft Docs
 description: 拡張プロパティおよびカスタム属性を使用し、ユーザー インターフェイスにそれらを含めるチュートリアル。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/04/2017
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 9f81f60c7153368ae12f80bb7bb6781c3e295cb8
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: ab7231c214060d17927e2509bee1687e2c9c87a3
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64689231"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66507577"
 ---
 # <a name="azure-active-directory-b2c-use-custom-attributes-in-a-custom-profile-edit-policy"></a>Azure Active Directory B2C:カスタム プロファイル編集ポリシーでカスタム属性を使用する
 
@@ -49,7 +49,7 @@ Azure AD B2C では、各ユーザー アカウントで保存される属性セ
 ## <a name="create-a-new-application-to-store-the-extension-properties"></a>拡張プロパティを格納するための新しいアプリケーションを作成する
 
 1. ブラウズ セッションを開いて [Azure Portal](https://portal.azure.com) に移動します。 構成する B2C ディレクトリの管理者資格情報を使用してサインインします。
-2. 左側のナビゲーション メニューで、**[Azure Active Directory]** を選択します。 **[その他のサービス]** をクリックしないと表示されない場合があります。
+2. 左側のナビゲーション メニューで、 **[Azure Active Directory]** を選択します。 **[その他のサービス]** をクリックしないと表示されない場合があります。
 3. **[アプリの登録]** を選択します。 **[新しいアプリケーションの登録]** を選択します。
 4. 次のエントリを指定します。
     * Web アプリケーションの名前: **WebApp-GraphAPI-DirectoryExtensions**。
@@ -57,9 +57,9 @@ Azure AD B2C では、各ユーザー アカウントで保存される属性セ
     * サインオン URL: **https://{tenantName}.onmicrosoft.com/WebApp-GraphAPI-DirectoryExtensions**。
 5. **作成** を選択します。
 6. 新しく作成された Web アプリケーションを選択します。
-7. **［設定］** > **［必要なアクセス許可］** の順に選択します。
+7. **［設定］**  >  **［必要なアクセス許可］** の順に選択します。
 8. API **Windows Azure Active Directory** を選択します。
-9. [アプリケーションのアクセス許可] の **[ディレクトリ データの読み取りと書き込み]** チェック ボックスをオンにします。 次に、**[保存]** を選択します。
+9. [アプリケーションのアクセス許可] の **[ディレクトリ データの読み取りと書き込み]** チェック ボックスをオンにします。 次に、 **[保存]** を選択します。
 10. **[アクセス許可の付与]** を選択し、確認のために **[はい]** をクリックします。
 11. 次の識別子をクリップボードにコピーして保存します。
     * **アプリケーション ID**。 例: `103ee0e6-f92d-4183-b576-8c3739027780`.
@@ -233,7 +233,7 @@ Azure AD B2C では、各ユーザー アカウントで保存される属性セ
 
 ## <a name="test-the-custom-policy"></a>カスタム ポリシーをテストする
 
-1. [Azure AD B2C] ブレードを開き、**[Identity Experience Framework]** > **[カスタム ポリシー]** の順に移動します。
+1. [Azure AD B2C] ブレードを開き、 **[Identity Experience Framework]**  >  **[カスタム ポリシー]** の順に移動します。
 1. アップロードしたカスタム ポリシーを選択します。 **[今すぐ実行]** を選択します。
 1. メール アドレスを使用してサインアップします。
 
@@ -268,7 +268,7 @@ Azure AD B2C では、各ユーザー アカウントで保存される属性セ
 
 2. 組み込みポリシーとカスタム ポリシー間で同じ拡張属性を使用します。 ポータルのエクスペリエンスを使用して拡張属性 (カスタム属性とも呼ばれます) を追加すると、これらの属性が、すべての B2C テナントに存在する **b2c-extensions-app** を使用して登録されます。 カスタム ポリシーで拡張属性を使用するには、次の手順を行います。
 
-   a. portal.azure.com の B2C テナント内で、**[Azure Active Directory]** に移動し、**[アプリの登録]** を選択します。  
+   a. portal.azure.com の B2C テナント内で、 **[Azure Active Directory]** に移動し、 **[アプリの登録]** を選択します。  
    b. 自分の **b2c-extensions-app** を検索して選択します。  
    c. **Essentials** で、**アプリケーション ID** と**オブジェクト ID** を入力します。  
    d. これらを、以下のように **AAD-Common** TechnicalProfile メタデータに含めます。  

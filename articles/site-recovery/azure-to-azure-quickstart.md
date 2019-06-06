@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: quickstart
-ms.date: 03/12/2019
+ms.date: 05/30/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 23aeeb8cd14ec2d0654525af42b48f59a6f7564f
-ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
+ms.openlocfilehash: 46376091649a2c2b1498fd13e8775fb161de32c1
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65520321"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399540"
 ---
 # <a name="set-up-disaster-recovery-to-a-secondary-azure-region-for-an-azure-vm"></a>Azure VM のセカンダリ Azure リージョンへのディザスター リカバリーの設定        
 
@@ -34,8 +34,8 @@ Azure Portal (https://portal.azure.com) にログインします。
 ## <a name="enable-replication-for-the-azure-vm"></a>Azure VM のレプリケーションの有効化
 
 1. Azure Portal で **[仮想マシン]** をクリックし、レプリケートする VM を選択します。
-2. **[操作]** で、**[ディザスター リカバリー]** をクリックします。
-3. **[Configure disaster recovery]\(ディザスター リカバリーを構成する\)** > **[ターゲット リージョン]** で、レプリケート先のターゲット リージョンを選択します。
+2. **[操作]** で、 **[ディザスター リカバリー]** をクリックします。
+3. **[Configure disaster recovery]\(ディザスター リカバリーを構成する\)**  >  **[ターゲット リージョン]** で、レプリケート先のターゲット リージョンを選択します。
 4. このクイック スタートでは、その他は既定の設定をそのまま使用します。
 5. **[レプリケーションを有効にする]** をクリックします。 これにより VM レプリケーションを有効にするジョブが開始されます。
 
@@ -45,7 +45,7 @@ Azure Portal (https://portal.azure.com) にログインします。
 
 レプリケーション ジョブの完了後、レプリケーションの状態を確認し、レプリケーションの設定を変更して、デプロイをテストできます。
 
-1. **[操作]** で、**[ディザスター リカバリー]** をクリックします。
+1. **[操作]** で、 **[ディザスター リカバリー]** をクリックします。
 2. レプリケーションの正常性、作成された復旧ポイント、およびマップ上のソース リージョンとターゲット リージョンを確認できます。
 
    ![レプリケーションの状態](media/azure-to-azure-quickstart/replication-status.png)
@@ -60,7 +60,7 @@ Azure Portal (https://portal.azure.com) にログインします。
 次の手順でレプリケーションを停止します
 
 1. VM を選択します。
-2. **[ディザスター リカバリー]** で、**[レプリケーションを無効にする]** をクリックします。
+2. **[ディザスター リカバリー]** で、 **[レプリケーションを無効にする]** をクリックします。
 
    ![レプリケーションを無効にする](media/azure-to-azure-quickstart/disable2-replication.png)
 

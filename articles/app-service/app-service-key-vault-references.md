@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 11/20/2018
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: f086850ecc2f15c41ab89db34b16d6d2e4a229cb
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 9b7bc043c748000f03a98a28f856299527015388
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956227"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66397826"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions-preview"></a>App Service と Azure Functions の Key Vault 参照を使用する (プレビュー)
 
@@ -37,7 +37,7 @@ Key Vault からシークレットを読み取るには、Key Vault を作成し
    > [!NOTE] 
    > Key Vault 参照では現在のところ、システム割り当てのマネージド ID のみをサポートしています。 ユーザー割り当て ID は使用できません。
 
-1. 先に作成したアプリケーション ID に対して、[Key Vault でアクセス ポリシー](../key-vault/key-vault-secure-your-key-vault.md#key-vault-access-policies)を作成します。 このポリシーで "Get" シークレット アクセス許可を有効にします。 "承認されているアプリケーション" または `appliationId` 設定を構成しないでください。これは、マネージド ID との互換性がないためです。
+1. 先に作成したアプリケーション ID に対して、[Key Vault でアクセス ポリシー](../key-vault/key-vault-secure-your-key-vault.md#key-vault-access-policies)を作成します。 このポリシーで "Get" シークレット アクセス許可を有効にします。 "承認されているアプリケーション" または `applicationId` 設定を構成しないでください。これは、マネージド ID との互換性がないためです。
 
 ## <a name="reference-syntax"></a>参照構文
 

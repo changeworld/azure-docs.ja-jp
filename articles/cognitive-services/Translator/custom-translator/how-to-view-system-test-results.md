@@ -7,14 +7,14 @@ manager: christw
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
-ms.author: v-rada
+ms.author: v-pawal
 ms.topic: conceptual
-ms.openlocfilehash: ccd31a0e8b91bc95ac364fe5bc0ec0ecdfaa4618
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 675ae10e304bd22c441740a87e8033136ff63ebd
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58438616"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389309"
 ---
 # <a name="view-system-test-results"></a>システムのテスト結果の表示
 
@@ -86,14 +86,14 @@ ms.locfileid: "58438616"
 
 デプロイの設定を更新するには:
 
-1.  プロジェクトを選択し、**[モデル]** タブに移動します。
+1.  プロジェクトを選択し、 **[モデル]** タブに移動します。
 
-2. 正常にデプロイされたモデルには、**[更新]** ボタンが表示されます。
+2. 正常にデプロイされたモデルには、 **[更新]** ボタンが表示されます。
 
     ![モデルをデプロイする](media/how-to/how-to-update-undeploy-model.png)
 
 3.  **[Update]\(更新\)** を選択します。
-4.  モデルをデプロイまたはデプロイ解除するリージョンの **[Deployed]\(デプロイ対象\)** または **[Undeployed]\(デプロイ解除対象\)** を選択して、**[Save]\(保存\)** をクリックします。
+4.  モデルをデプロイまたはデプロイ解除するリージョンの **[Deployed]\(デプロイ対象\)** または **[Undeployed]\(デプロイ解除対象\)** を選択して、 **[Save]\(保存\)** をクリックします。
 
     ![モデルをデプロイする](media/how-to/how-to-undeploy-model.png)
 

@@ -11,12 +11,12 @@ ms.subservice: bing-web-search
 ms.topic: quickstart
 ms.date: 03/17/2019
 ms.author: scottwhi
-ms.openlocfilehash: e4076b042642df3cd232ff52769d790da5a1bcc4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7f165ca6f2fa0fed550d454277081958cd276633
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58163805"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66390657"
 ---
 # <a name="your-first-bing-search-query"></a>初めての Bing 検索クエリ
 
@@ -32,18 +32,18 @@ https://api.cognitive.microsoft.com/bing/v7.0/search
 
 すべての要求をサーバーから送信することをお勧めします。 クライアント アプリケーションの一部としてキーを配布すると、悪意のあるサードパーティがアクセスする可能性が高くなります。 また、サーバーから呼び出しを行うと、API の将来のバージョンでアップグレードする場所が 1 つで済みます。  
 
-要求では、ユーザーの検索語句が含まれている [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#query) クエリ パラメーターを指定する必要があります。 必須ではありませんが、要求では [mkt](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#mkt) クエリ パラメーターも指定するべきです。このパラメーターは、結果取得元の市場を示します。 `responseFilter` や `textDecorations` などの省略可能なクエリ パラメーターのリストについては、[クエリ パラメーター](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#query-parameters)に関するセクションを参照してください。 すべてのクエリ パラメーターの値は、URL でエンコードする必要があります。  
+要求では、ユーザーの検索語句が含まれている [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#query) クエリ パラメーターを指定する必要があります。 必須ではありませんが、要求では [mkt](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#mkt) クエリ パラメーターも指定するべきです。このパラメーターは、結果取得元の市場を示します。 `responseFilter` や `textDecorations` などの省略可能なクエリ パラメーターのリストについては、[クエリ パラメーター](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#query-parameters)に関するセクションを参照してください。 すべてのクエリ パラメーターの値は、URL でエンコードする必要があります。  
 
-要求では、[Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#subscriptionkey) ヘッダーを指定する必要があります。 省略可能ですが、次のヘッダーも指定することをお勧めします。  
+要求では、[Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#subscriptionkey) ヘッダーを指定する必要があります。 省略可能ですが、次のヘッダーも指定することをお勧めします。  
 
--   [User-Agent](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#useragent)  
--   [X-MSEdge-ClientID](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#clientid)  
--   [X-Search-ClientIP](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#clientip)  
--   [X-Search-Location](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#location)  
+-   [User-Agent](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#useragent)  
+-   [X-MSEdge-ClientID](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#clientid)  
+-   [X-Search-ClientIP](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#clientip)  
+-   [X-Search-Location](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#location)  
 
 クライアント IP と場所のヘッダーは、場所に対応したコンテンツを返すために重要です。 たとえば、ユーザーのクエリが*セーリング+レッスン*の場合、おそらく現在地の近くにあるレッスンに興味があります。 ユーザーの現在地の近くで利用できるレッスンを結果に含めるには、場所ヘッダーと、必要に応じてクライアント IP ヘッダーを含める必要があります。 クエリの用語が明示的に場所を示している場合はあまり重要ではありません (たとえば、セーリング+レッスン+フロリダ+キー)。
 
-すべての要求ヘッダーと応答ヘッダーのリストについては、「[Headers](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#headers)」(ヘッダー) を参照してください。
+すべての要求ヘッダーと応答ヘッダーのリストについては、「[Headers](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#headers)」(ヘッダー) を参照してください。
 
 ## <a name="the-request"></a>要求
 

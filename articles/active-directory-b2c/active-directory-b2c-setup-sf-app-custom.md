@@ -2,20 +2,20 @@
 title: Azure Active Directory B2C でカスタム ポリシーを使用して Salesforce SAML プロバイダーでのサインインを設定する | Microsoft Docs
 description: Azure Active Directory B2C でカスタム ポリシーを使用して Salesforce SAML プロバイダーでのサインインを設定します。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/21/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 9dd730a7adc94c08a197049468b21e1b7eb6f737
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: e565822c006191615dbc10b980da24dcd9ed787a
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64723885"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66508298"
 ---
 # <a name="set-up-sign-in-with-a-salesforce-saml-provider-by-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用して Salesforce SAML プロバイダーでのサインインを設定する
 
@@ -32,16 +32,16 @@ ms.locfileid: "64723885"
 ### <a name="set-up-salesforce-as-an-identity-provider"></a>ID プロバイダーとしての Salesforce のセットアップ
 
 1. [Salesforce にサインインします](https://login.salesforce.com/)。 
-2. 左側のメニューで、**[設定]** の下の **[ID]** を展開し、**[ID プロバイダー]** を選択します。
+2. 左側のメニューで、 **[設定]** の下の **[ID]** を展開し、 **[ID プロバイダー]** を選択します。
 3. **[Enable Identity Provider]\(ID プロバイダーを有効にする\)** を選択します。
 4. **[Select the certificate] \(証明書の選択)** の下から、Azure AD B2C と通信するときに Salesforce で使用する証明書を選択します。 既定の証明書を使用できます。 
 5. **[Save]** をクリックします。 
 
 ### <a name="create-a-connected-app-in-salesforce"></a>Salesforce での接続されたアプリの作成
 
-1. **[Identity Provider]\(ID プロバイダー\)** ページで、**[Service Providers are now created via Connected Apps.]\(接続されたアプリでサービス プロバイダーが作成されました。ここをクリックしてください。\)** をクリックします。
+1. **[Identity Provider]\(ID プロバイダー\)** ページで、 **[Service Providers are now created via Connected Apps.]\(接続されたアプリでサービス プロバイダーが作成されました。ここをクリックしてください。\)** をクリックします。
 2. **[基本情報]** に、接続されたアプリの必須の値を入力します。
-3. **[Web App Settings]\(Web アプリの設定\)** で、**[Enable SAML]\(SAML を有効にする\)** ボックスをオンにします。
+3. **[Web App Settings]\(Web アプリの設定\)** で、 **[Enable SAML]\(SAML を有効にする\)** ボックスをオンにします。
 4. **[エンティティ ID]** フィールドに、次の URL を入力します。 `your-tenant` の値を、Azure AD B2C テナントの名前に置き換えます。
 
       ```
@@ -53,7 +53,7 @@ ms.locfileid: "64723885"
       ```
       https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/B2C_1A_TrustFrameworkBase/samlp/sso/assertionconsumer
       ```
-7. リストの下までスクロールし、**[保存]** をクリックします。
+7. リストの下までスクロールし、 **[保存]** をクリックします。
 
 ### <a name="get-the-metadata-url"></a>メタデータ URL の取得
 
@@ -62,8 +62,8 @@ ms.locfileid: "64723885"
 
 ### <a name="set-up-salesforce-users-to-federate"></a>フェデレーションのための Salesforce ユーザーの設定
 
-1. 接続されたアプリの **[Manage]\(管理\)** ページで、**[Manage Profiles]\(プロファイルの管理\)** をクリックします。
-2. Azure AD B2C とフェデレーションするプロファイル (またはユーザーのグループ) を選択します。 システム管理者は、Salesforce アカウントを使用してフェデレーションを行うことができるように、**[システム管理者]** のチェック ボックスをオンにします。
+1. 接続されたアプリの **[Manage]\(管理\)** ページで、 **[Manage Profiles]\(プロファイルの管理\)** をクリックします。
+2. Azure AD B2C とフェデレーションするプロファイル (またはユーザーのグループ) を選択します。 システム管理者は、Salesforce アカウントを使用してフェデレーションを行うことができるように、 **[システム管理者]** のチェック ボックスをオンにします。
 
 ## <a name="generate-a-signing-certificate"></a>署名証明書を生成する
 
@@ -89,9 +89,9 @@ Export-PfxCertificate -Cert $Cert -FilePath .\B2CSigningCert.pfx -Password $pwd
 
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
 2. お使いの Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。確認のために、トップ メニューにある **[ディレクトリとサブスクリプション フィルター]** をクリックして、お使いのテナントを含むディレクトリを選択します。
-3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、**[Azure AD B2C]** を検索して選択します。
-4. [概要] ページで、**[Identity Experience Framework - プレビュー]** を選択します。
-5. **[ポリシー キー]** を選択し、**[追加]** を選択します。
+3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
+4. [概要] ページで、 **[Identity Experience Framework - プレビュー]** を選択します。
+5. **[ポリシー キー]** を選択し、 **[追加]** を選択します。
 6. **オプション**については、`Upload`を選択します。
 7. ポリシーの**名前**を入力します。 たとえば、SAMLSigningCert などです。 プレフィックス `B2C_1A_` がキーの名前に自動的に追加されます。
 8. 作成した B2CSigningCert.pfx 証明書を参照して選択します。 
@@ -154,7 +154,7 @@ Salesforce アカウントをクレーム プロバイダーとして定義す�
 
 ここまでで、Azure AD B2C が Salesforce アカウントと通信する方法を認識できるようにポリシーを構成しました。 ポリシーの拡張ファイルをアップロードして、現時点で問題がないことを確認してみます。
 
-1. Azure AD B2C テナントの **[カスタム ポリシー]** ページで、**[ポリシーのアップロード]** を選択します。
+1. Azure AD B2C テナントの **[カスタム ポリシー]** ページで、 **[ポリシーのアップロード]** を選択します。
 2. **[ポリシーが存在する場合は上書きする]** を有効にし、*TrustFrameworkExtensions.xml* ファイルを参照して選択します。
 3. **[アップロード]** をクリックします。
 
@@ -200,10 +200,10 @@ Azure AD B2C との通信は、テナントで作成したアプリケーショ�
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. お使いの Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。確認のために、トップ メニューにある **[ディレクトリとサブスクリプション フィルター]** をクリックして、お使いのテナントを含むディレクトリを選択します。
-3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、**[Azure AD B2C]** を検索して選択します。
-4. **[アプリケーション]** を選択し、**[追加]** を選択します。
+3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
+4. **[アプリケーション]** を選択し、 **[追加]** を選択します。
 5. アプリケーションの名前を入力します (*testapp1* など)。
-6. **[Web アプリ / Web API]** には `Yes` を選択し、**[応答 URL]** に `https://jwt.ms` を入力します。
+6. **[Web アプリ / Web API]** には `Yes` を選択し、 **[応答 URL]** に `https://jwt.ms` を入力します。
 7. **Create** をクリックしてください。
 
 ## <a name="update-and-test-the-relying-party-file"></a>証明書利用者ファイルを更新し、テストする
@@ -215,4 +215,4 @@ Azure AD B2C との通信は、テナントで作成したアプリケーショ�
 3. **PublicPolicyUri** の値をポリシーの URI に更新します。 たとえば、`http://contoso.com/B2C_1A_signup_signin_salesforce` にします。
 4. **DefaultUserJourney** の **ReferenceId** 属性の値を、作成した新しいユーザー体験の ID (SignUpSignInSalesforce) と一致するように更新します。
 5. 変更を保存し、ファイルをアップロードし、一覧から新しいポリシーを選択します。
-6. 作成した Azure AD B2C アプリケーションが **[アプリケーションの選択]** フィールドで選択されていることを確認し、**[今すぐ実行]** をクリックしてテストします。
+6. 作成した Azure AD B2C アプリケーションが **[アプリケーションの選択]** フィールドで選択されていることを確認し、 **[今すぐ実行]** をクリックしてテストします。

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 0256396cd228898f3852772b113e6064a0656746
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 4d385f1e8c883453b4153ca4c9119d3be0a608bb
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65238105"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66495555"
 ---
 # <a name="customize-the-azure-iot-central-ui"></a>Azure IoT Central の UI をカスタマイズする 
 
@@ -29,7 +29,7 @@ IoT Central では、アプリケーションの UI をカスタマイズでき�
 
 ## <a name="create-theme"></a>テーマの作成
 
-カスタム テーマを作成するには、**[管理]** セクションの **[アプリケーションのカスタマイズ]** ページに移動します。
+カスタム テーマを作成するには、 **[管理]** セクションの **[アプリケーションのカスタマイズ]** ページに移動します。
 
 ![IoT Central のテーマ](./media/howto-customize-ui/themes.png)
 
@@ -54,13 +54,13 @@ IoT Central では、アプリケーションの UI をカスタマイズでき�
 
 ### <a name="changes-for-operators"></a>オペレーターのための変更
 
-管理者がカスタム テーマを作成すると、アプリケーションのオペレーターと他のユーザーは、**[設定]** でテーマを選択できなくなります。
+管理者がカスタム テーマを作成すると、アプリケーションのオペレーターと他のユーザーは、 **[設定]** でテーマを選択できなくなります。
 
 ## <a name="replace-help-links"></a>ヘルプ リンクの置き換え
 
 オペレーターや他のユーザーにカスタム ヘルプ情報を提供するには、アプリケーションの **[ヘルプ]** メニューのリンクを変更します。
 
-ヘルプのリンクを変更するには、**[管理]** セクションの **[ヘルプのカスタマイズ]** ページに移動します。
+ヘルプのリンクを変更するには、 **[管理]** セクションの **[ヘルプのカスタマイズ]** ページに移動します。
 
 ![IoT Central のヘルプのリンクをカスタマイズする](./media/howto-customize-ui/help-links.png)
 
@@ -75,6 +75,5 @@ IoT Central では、アプリケーションの UI をカスタマイズでき�
 
 ここでは、IoT Central アプリケーションの UI をカスタマイズする方法について説明しました。推奨される次の手順は以下のとおりです。
 
-> [!div class="nextstepaction"]
-> [アプリケーションを管理する](./howto-administer.md)
-> [アプリケーション ダッシュボードを構成する](./howto-configure-homepage.md)
+- [アプリケーションを管理する](./howto-administer.md)
+- [アプリケーション ダッシュボードを構成する](./howto-configure-homepage.md)

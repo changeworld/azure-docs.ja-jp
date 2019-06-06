@@ -11,12 +11,12 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: b29e4a52565247080e8be3124bd2a43575ecbf63
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 5afd9e1c0ae829bb5703c34fa40c8e57fa1e18c3
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57341717"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66390074"
 ---
 # <a name="throttling-requests-to-the-bing-web-search-api"></a>Bing Web Search API に対する要求の調整
 
@@ -24,4 +24,4 @@ ms.locfileid: "57341717"
 
 ## <a name="next-steps"></a>次の手順
 
-* [Bing Web Search API リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference)
+* [Bing Web Search API リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference)

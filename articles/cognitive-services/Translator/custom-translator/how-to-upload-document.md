@@ -7,14 +7,14 @@ manager: christw
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
-ms.author: v-rada
+ms.author: v-pawal
 ms.topic: conceptual
-ms.openlocfilehash: 7df7dd44716e98c74282bd0f0700ec7881ef31ef
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 1fa786bee960f71e4109041d935757a0d1edd75e
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57766950"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66386929"
 ---
 # <a name="upload-a-document"></a>ドキュメントのアップロード
 

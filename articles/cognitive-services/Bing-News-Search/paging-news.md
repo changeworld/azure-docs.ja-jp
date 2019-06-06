@@ -10,16 +10,16 @@ ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: scottwhi
-ms.openlocfilehash: 1d344f388b03acb3a81fcfde0e214eb7d82dc9b9
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 1eab92dcc9c1890e82f9999e26e54378a3687c6d
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55885074"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66390493"
 ---
 # <a name="how-to-page-through-news-search-results"></a>ニュース検索結果をページングする方法
 
-News Search API を呼び出すと、クエリに関連する結果のリストが Bing から返されます。 利用可能な結果の推定総数を取得するには、回答オブジェクトの [totalEstimatedMatches](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#news-totalmatches) フィールドにアクセスします。  
+News Search API を呼び出すと、クエリに関連する結果のリストが Bing から返されます。 利用可能な結果の推定総数を取得するには、回答オブジェクトの [totalEstimatedMatches](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#news-totalmatches) フィールドにアクセスします。  
   
 次の例は、ニュース回答に含まれる `totalEstimatedMatches` フィールドを示しています。  
 
@@ -32,7 +32,7 @@ News Search API を呼び出すと、クエリに関連する結果のリスト�
 }  
 ```  
   
-利用可能な記事をページングするには、[count](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#count) および [offset](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#offset) クエリ パラメーターを使用します。  
+利用可能な記事をページングするには、[count](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#count) および [offset](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#offset) クエリ パラメーターを使用します。  
  
 
 |パラメーター  |説明  |

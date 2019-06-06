@@ -11,12 +11,12 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: scottwhi
-ms.openlocfilehash: 26c38c34543683a3fc450d3a0ae932d8bd30dc98
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8d8fd03d9c3d912788e9893377bbab3efac86f8a
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56199495"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66383833"
 ---
 # <a name="filtering-the-answers-that-the-search-response-includes"></a>検索応答に含まれる回答をフィルタリングする  
 
@@ -44,9 +44,9 @@ Web のクエリを実行すると、Bing はその検索で見つけたすべ�
     }
 }    
 ```
-[responseFilter](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#responsefilter) クエリ パラメーターを使用して、受け取るコンテンツの種類 (イメージ、ビデオ、ニュースなど) をフィルター処理できます。 指定された回答に関連するコンテンツを Bing が見つけると、それが返されます。 応答フィルターは、コンマ区切りの回答の一覧です。 
+[responseFilter](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#responsefilter) クエリ パラメーターを使用して、受け取るコンテンツの種類 (イメージ、ビデオ、ニュースなど) をフィルター処理できます。 指定された回答に関連するコンテンツを Bing が見つけると、それが返されます。 応答フィルターは、コンマ区切りの回答の一覧です。 
 
-`responseFilter` 値の先頭に `-` 文字を追加すると、イメージなど、特定の種類のコンテンツを応答から除外できます。 コンマ (`,`) を使用して、除外する種類を区切ることができます。 例: 
+`responseFilter` 値の先頭に `-` 文字を追加すると、イメージなど、特定の種類のコンテンツを応答から除外できます。 コンマ (`,`) を使用して、除外する種類を区切ることができます。 例:
 
 ```
 &responseFilter=-images,-videos
@@ -92,7 +92,7 @@ Host: api.cognitive.microsoft.com
 
 前の応答では、Bing はビデオやニュースの結果を返しませんでしたが、ビデオやニュースのコンテンツが存在しないということではありません。 単に、それらがページに含まれていなかったことを意味します。 ただし、[ページを移動して](./paging-webpages.md)他の結果を表示すれば、後続のページには含まれている可能性があります。 また、直接 [Video Search API](../bing-video-search/search-the-web.md) や [News Search API](../bing-news-search/search-the-web.md) のエンドポイントを呼び出すと、結果が応答に含まれる可能性があります。
 
-単一の API から結果を取得するために `responseFilter` を使うことはお勧めできません。 単一の Bing API からコンテンツを取得する場合は、その API を直接呼び出します。 たとえば、イメージのみを受信するには、Image Search API のエンドポイントである `https://api.cognitive.microsoft.com/bing/v7.0/images/search`、またはその他の[イメージ](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#endpoints) エンドポイントのいずれかに要求を送信します。 単一の API を呼び出すことが重要なのは、パフォーマンスが向上するためだけでなく、コンテンツに固有の API の方がより詳細な結果を提供するためです。 たとえば、Web Search API では使用できないフィルターを使用して結果をフィルタリングすることができます。  
+単一の API から結果を取得するために `responseFilter` を使うことはお勧めできません。 単一の Bing API からコンテンツを取得する場合は、その API を直接呼び出します。 たとえば、イメージのみを受信するには、Image Search API のエンドポイントである `https://api.cognitive.microsoft.com/bing/v7.0/images/search`、またはその他の[イメージ](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#endpoints) エンドポイントのいずれかに要求を送信します。 単一の API を呼び出すことが重要なのは、パフォーマンスが向上するためだけでなく、コンテンツに固有の API の方がより詳細な結果を提供するためです。 たとえば、Web Search API では使用できないフィルターを使用して結果をフィルタリングすることができます。  
 
 特定のドメインから検索結果を得るには、クエリ文字列に `site:` クエリ演算子を含めます。  
 
@@ -101,7 +101,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/search?q=sailing+dinghies+site:con
 ```
 
 > [!NOTE]
-> クエリによっては、`site:` クエリ演算子を使用した場合、[safeSearch](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#safesearch) 設定にかかわらず、成人向けのコンテンツが応答に含まれることがあります。 `site:` の使用は、そのサイト上のコンテンツを承知していて、なおかつ成人向けのコンテンツが含まれていても問題がないシナリオに限定してください。
+> クエリによっては、`site:` クエリ演算子を使用した場合、[safeSearch](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#safesearch) 設定にかかわらず、成人向けのコンテンツが応答に含まれることがあります。 `site:` の使用は、そのサイト上のコンテンツを承知していて、なおかつ成人向けのコンテンツが含まれていても問題がないシナリオに限定してください。
 
 ## <a name="limiting-the-number-of-answers-in-the-response"></a>応答の回答数を制限する
 
@@ -121,7 +121,7 @@ Bing は、ランキングに基づいて応答に回答を含めます。 た�
 }
 ```
 
-Bing が返す回答数を上位 2 つの回答 (Web ページと画像) に制限するには、[answerCount](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#answercount) クエリ パラメーターを 2 に設定します。
+Bing が返す回答数を上位 2 つの回答 (Web ページと画像) に制限するには、[answerCount](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#answercount) クエリ パラメーターを 2 に設定します。
 
 ```  
 GET https://api.cognitive.microsoft.com/bing/v7.0/search?q=sailing+dinghies&answerCount=2&mkt=en-us HTTP/1.1  
@@ -162,7 +162,7 @@ Host: api.cognitive.microsoft.com
 
 ## <a name="promoting-answers-that-are-not-ranked"></a>ランク付けされない回答を昇格する
 
-クエリに対して Bing から返される上位ランクの回答が Web ページ、画像、ビデオ、および relatedSearches である場合、応答にはこれらの回答が含まれます。 [answerCount](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#answercount) を 2 に設定した場合、Bing はランク付けされた上位の 2 つの回答である Web ページと画像を返します。 Bing の応答に画像とビデオを含めたい場合は、[promote](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#promote) クエリ パラメーターを指定し、画像とビデオを設定します。
+クエリに対して Bing から返される上位ランクの回答が Web ページ、画像、ビデオ、および relatedSearches である場合、応答にはこれらの回答が含まれます。 [answerCount](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#answercount) を 2 に設定した場合、Bing はランク付けされた上位の 2 つの回答である Web ページと画像を返します。 Bing の応答に画像とビデオを含めたい場合は、[promote](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#promote) クエリ パラメーターを指定し、画像とビデオを設定します。
 
 ```  
 GET https://api.cognitive.microsoft.com/bing/v7.0/search?q=sailing+dinghies&answerCount=2&promote=images%2Cvideos&mkt=en-us HTTP/1.1  

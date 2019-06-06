@@ -2,20 +2,20 @@
 title: Azure Active Directory B2C の使用状況レポート API のサンプルと定義 | Microsoft Docs
 description: Azure AD B2C テナントのユーザー、認証、多要素認証に関するレポートの取得についてのガイドとサンプル。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 08/04/2017
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: eb8c41f657d8901535ba284c147f4ca3aa86198d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: fe7dd90bdec816ee433310a803d85c57f4892f8c
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64703622"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66508716"
 ---
 # <a name="accessing-usage-reports-in-azure-ad-b2c-via-the-reporting-api"></a>Reporting API による Azure AD B2C の使用状況レポートへのアクセス
 
@@ -97,7 +97,7 @@ if ($oauth.access_token -ne $null) {
 
 
 ## <a name="usage-report-definitions"></a>使用状況レポートの定義
-* **tenantUserCount**: 過去 30 日間の 1 日ごとに、ID プロバイダーのタイプ別にまとめたテナント内のユーザー数  (オプションで、`TimeStamp` フィルターは指定した日付から現在の日付までのユーザー数を提供します)。 レポートには次の情報があります。
+* **tenantUserCount**: 過去 30 日間の 1 日ごとに、ID プロバイダーのタイプ別にまとめたテナント内のユーザー数 (オプションで、`TimeStamp` フィルターは指定した日付から現在の日付までのユーザー数を提供します)。 レポートには次の情報があります。
   * **TotalUserCount**: すべてのユーザー オブジェクトの数。
   * **OtherUserCount**: Azure Active Directory ユーザーの数 (Azure AD B2C のユーザーではありません)。
   * **LocalUserCount**: Azure AD B2C テナントに対してローカルの資格情報を使用して作成された Azure AD B2C ユーザー アカウントの数。

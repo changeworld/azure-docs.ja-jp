@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 03/18/2019
+ms.date: 05/30/2019
 ms.author: raynew
-ms.openlocfilehash: 96873b5fdefc74893929f8150230118a162f195b
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 25cf3914274e73e0789aa87e9288649d1b0cb1eb
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540722"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399572"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Azure から Azure へのディザスター リカバリー アーキテクチャ
 

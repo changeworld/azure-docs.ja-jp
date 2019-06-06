@@ -10,12 +10,12 @@ ms.subservice: bing-autosuggest
 ms.topic: quickstart
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: 55c1a2a56743b53d6d5932665be0c45e1ac9b9b3
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 4cd77c1e71287ea2cec2a4098e5ef7f713350f9f
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65596037"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66388632"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-c"></a>クイック スタート:Bing Autosuggest REST API と C# で検索クエリの候補を表示する
 
@@ -40,7 +40,7 @@ ms.locfileid: "65596037"
     using System.Text;
     ```
 
-2. 新しいクラスで、API ホストとパス、[市場コード](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference#market-codes)、および検索クエリの一部に対応する変数を作成します。
+2. 新しいクラスで、API ホストとパス、[市場コード](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes)、および検索クエリの一部に対応する変数を作成します。
 
     ```csharp
     static string host = "https://api.cognitive.microsoft.com";
@@ -166,4 +166,4 @@ ms.locfileid: "65596037"
 ## <a name="see-also"></a>関連項目
 
 - [Bing Autosuggest とは](../get-suggested-search-terms.md)
-- [Bing Autosuggest API v7 リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference)
+- [Bing Autosuggest API v7 リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)

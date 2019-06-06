@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: b35fa32776fa449bf4f46479345a94e63fe28e68
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 43f01b39ed01e94fe21283997b5981e7fa49bde5
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58109578"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66384519"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-python"></a>クイック スタート:Python を使用して Bing Entity Search REST API に検索要求を送信する
 
@@ -144,4 +144,4 @@ ms.locfileid: "58109578"
 > [シングルページ Web アプリの作成](../tutorial-bing-entities-search-single-page-app.md)
 
 * [Bing Entity Search API とは](../search-the-web.md)
-* [Bing Entity Search API リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference)
+* [Bing Entity Search API リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)

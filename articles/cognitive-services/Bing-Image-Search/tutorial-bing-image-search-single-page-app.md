@@ -10,12 +10,12 @@ ms.subservice: bing-image-search
 ms.topic: tutorial
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: 353641c514c9171e211221b84b13c5f09a413a48
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 10bcbb4c1957735b0ddad6c97325c32be19ddcdb
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57341224"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66383395"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-image-search-api"></a>チュートリアル:Bing Image Search API を使用して単一ページのアプリを作成する
 
@@ -116,7 +116,7 @@ bingSearchOptions(this), getSubscriptionKey())">
 
 ![[Bing Image Search のフォーム]](media/cognitive-services-bing-images-api/image-search-spa-form.png)
 
-Bing Image Search API には、検索結果を絞り込み、フィルター処理するための[フィルター クエリ パラメーター](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#filter-query-parameters)がいくつか用意されています。 このアプリケーションの HTML フォームは、次のパラメーター オプションを使用して表示します。
+Bing Image Search API には、検索結果を絞り込み、フィルター処理するための[フィルター クエリ パラメーター](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#filter-query-parameters)がいくつか用意されています。 このアプリケーションの HTML フォームは、次のパラメーター オプションを使用して表示します。
 
 |              |                                                                                                                                                                                    |
 |--------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -320,7 +320,7 @@ Bing Image Search API から、ユーザーの検索エクスペリエンスを�
 |--------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `pivotSuggestions` | 元の検索の軸語を別のものに置き換えるクエリです。 たとえば、"赤い花" を検索した場合、"赤" が軸語で、"黄色い花" が候補になる可能性があります。 |
 | `queryExpansions`  | 複数の条件を追加することで、元の検索を絞り込むクエリです。 たとえば、"Microsoft Surface" を検索した場合、クエリが "Microsoft Surface Pro" に拡張される場合があります。                                   |
-| `relatedSearches`  | 元の検索を入力した他のユーザーが他に入力したことのあるクエリです。 たとえば、"レーニア山" を検索した場合、関連する検索は "セント  ヘレンズ山" となる場合があります。                       |
+| `relatedSearches`  | 元の検索を入力した他のユーザーが他に入力したことのあるクエリです。 たとえば、"レーニア山" を検索した場合、関連する検索は "セント ヘレンズ山" となる場合があります。                       |
 | `similarTerms`     | 元の検索と似た意味を持つクエリです。 たとえば、"子猫" を検索すると、似た用語として "かわいい" が挙げられる場合があります。                                                                   |
 
 このアプリケーションでは `relatedItems` の提案のみがレンダリングされ、結果のリンクがページのサイドバーに配置されます。

@@ -10,12 +10,12 @@ ms.subservice: bing-autosuggest
 ms.topic: quickstart
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: 64b6ed680ba0812322d5796debc5edada19bc926
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f41e81d948bfa482a016e3770a705344f9c26b0c
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58118835"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66390428"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-java"></a>クイック スタート:Bing Autosuggest REST API と Java で検索クエリの候補を表示する
 
@@ -44,7 +44,7 @@ ms.locfileid: "58118835"
     import com.google.gson.JsonParser;
     ```
 
-2. サブスクリプション キー、API のホストとパス、該当する[市場コード](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference#market-codes)、検索クエリに使用する変数を作成します。
+2. サブスクリプション キー、API のホストとパス、該当する[市場コード](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes)、検索クエリに使用する変数を作成します。
     
     ```java
     static String subscriptionKey = "enter key here";
@@ -207,4 +207,4 @@ public static String prettify(String json_text) {
 > [単一ページの Web アプリの作成](../tutorials/autosuggest.md)
 
 - [Bing Autosuggest とは](../get-suggested-search-terms.md)
-- [Bing Autosuggest API v7 リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference)
+- [Bing Autosuggest API v7 リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)

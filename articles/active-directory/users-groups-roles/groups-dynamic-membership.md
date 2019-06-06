@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cdc315bd82a5d69e2f3e52d1614e0e5ba7407936
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: 5a0e0508babdd9ae703e38d58b079ab5fa16f68c
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66254819"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66397873"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Azure Active Directory の動的グループ メンバーシップ ルール
 
@@ -371,4 +371,4 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber -eq "123"
 * [新しいグループの作成とメンバーの追加](../fundamentals/active-directory-groups-create-azure-portal.md)
 * [グループの設定の管理](../fundamentals/active-directory-groups-settings-azure-portal.md)
 * [グループのメンバーシップの管理](../fundamentals/active-directory-groups-membership-azure-portal.md)
-* [グループ内のユーザーの動的ルールの管理](groups-dynamic-membership.md)
+* [グループ内のユーザーの動的ルールの管理](groups-create-rule.md)

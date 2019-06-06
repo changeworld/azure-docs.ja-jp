@@ -3,19 +3,19 @@ title: 'Conversation Learner のデモ モデル: パスワードのリセット
 titleSuffix: Azure
 description: Conversation Learner のデモ モデルを作成する方法について説明します。
 services: cognitive-services
-author: v-jaswel
+author: nitinme
 manager: nolachar
 ms.service: cognitive-services
 ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: v-jaswel
-ms.openlocfilehash: 6436193dadb5933074fdce861a31672a0f4849de
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.author: nitinme
+ms.openlocfilehash: 15aa3a8346087908cf77f1f68db916cc2c184448
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55227337"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389873"
 ---
 # <a name="demo-password-reset"></a>デモ:パスワード リセット
 このチュートリアルでは、Conversation Learner を利用したパスワードのリセットに役立つ簡単なテクニカル サポート ボットを紹介します。 ボットのモデルでは、ドメイン外クラスを含め、簡単ではない会話の流れとマルチ ターン シーケンスを学習することができます。 コードまたはエンティティを使用しないでタスクを実行できます。

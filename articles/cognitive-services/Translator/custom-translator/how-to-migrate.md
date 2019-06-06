@@ -7,14 +7,14 @@ manager: christw
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
-ms.author: v-rada
+ms.author: v-pawal
 ms.topic: conceptual
-ms.openlocfilehash: 73fc0d26612d32f2614899c62f680ff9e85d1609
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 901b5312d216c241331b90a6b61d263437ab5c70
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59698401"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389303"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>Microsoft Translator Hub ワークスペースとプロジェクトを移行する
 
@@ -134,9 +134,9 @@ Hub からワークスペース/プロジェクトの移行を要求すると、
 |:-----|:----:|:----:|
 |カスタマイズ機能の状態   | 一般公開  | 一般公開 |
 | Text API バージョン  | V2    | V3  |
-| SMT のカスタマイズ | はい   | いいえ  |
-| NMT のカスタマイズ | いいえ     | はい |
-| 新しい統合 Speech Services のカスタマイズ | いいえ     | はい |
+| SMT のカスタマイズ | はい   | いいえ |
+| NMT のカスタマイズ | いいえ    | はい |
+| 新しい統合 Speech Services のカスタマイズ | いいえ    | はい |
 | トレースなし | はい | はい |
 
 ## <a name="new-languages"></a>新しい言語

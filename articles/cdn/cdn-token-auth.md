@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 11/17/2017
 ms.author: mezha
-ms.openlocfilehash: 640c65b1f6995a6c5fb7a3a1fcfeb580aecf5c43
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: b55685bc9cfdc8c31e6658050be94cbe49062f89
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64869420"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66472157"
 ---
 # <a name="securing-azure-cdn-assets-with-token-authentication"></a>トークン認証による Azure CDN 資産の保護
 
@@ -173,17 +173,17 @@ ms.locfileid: "64869420"
 3. **[HTTP Large]\(HTTP ラージ\)** で **[ルール エンジン]** を選択します。 ルール エンジンを使用して、機能を適用するパスを定義したり、トークン認証機能や、追加のトークン認証関連機能を有効にしたりします。 詳細については、[ルール エンジンのリファレンス](cdn-rules-engine-reference.md)を参照してください。
 
    1. 既存のルールを選択するか、新しいルールを作成して、トークン認証を適用する資産またはパスを定義します。 
-   2. ルールでトークン認証を有効にするには、 **[機能]** リストから **[[Token Auth]\(トークン認証\)](cdn-rules-engine-reference-features.md#token-auth)** を選択し、 **[有効]** を選択します。 ルールを更新する場合は **[更新]** を、ルールを作成する場合は **[追加]** を選択します。
+   2. ルールでトークン認証を有効にするには、 **[機能]** リストから **[[Token Auth]\(トークン認証\)](cdn-verizon-premium-rules-engine-reference-features.md#token-auth)** を選択し、 **[有効]** を選択します。 ルールを更新する場合は **[更新]** を、ルールを作成する場合は **[追加]** を選択します。
         
       ![CDN ルール エンジンのトークン認証を有効にする例](./media/cdn-token-auth/cdn-rules-engine-enable2.png)
 
 4. ルール エンジンで、追加のトークン認証関連機能を有効にすることもできます。 次の機能のいずれかを有効にするには、 **[機能]** リストからその機能を選択し、 **[有効]** を選択します。
     
-   - **[トークン認証拒否コード](cdn-rules-engine-reference-features.md#token-auth-denial-code)** :要求が拒否されたときにユーザーに返される応答の種類を決定します。 トークン ベースの認証ページの **[Custom Denial Handling]\(カスタム拒否の処理\)** セクションで設定された応答コードは、ここで設定されたルールでオーバーライドされます。
+   - **[トークン認証拒否コード](cdn-verizon-premium-rules-engine-reference-features.md#token-auth-denial-code)** :要求が拒否されたときにユーザーに返される応答の種類を決定します。 トークン ベースの認証ページの **[Custom Denial Handling]\(カスタム拒否の処理\)** セクションで設定された応答コードは、ここで設定されたルールでオーバーライドされます。
 
-   - **[トークン認証の URL 大文字と小文字の無視](cdn-rules-engine-reference-features.md#token-auth-ignore-url-case)** :トークンの検証に使用される URL で大文字と小文字が区別されるかどうかを決定します。
+   - **[トークン認証の URL 大文字と小文字の無視](cdn-verizon-premium-rules-engine-reference-features.md#token-auth-ignore-url-case)** :トークンの検証に使用される URL で大文字と小文字が区別されるかどうかを決定します。
 
-   - **[トークン認証パラメーター](cdn-rules-engine-reference-features.md#token-auth-parameter)** :要求された URL に表示されるトークン認証クエリ文字列パラメーターの名前を変更します。 
+   - **[トークン認証パラメーター](cdn-verizon-premium-rules-engine-reference-features.md#token-auth-parameter)** :要求された URL に表示されるトークン認証クエリ文字列パラメーターの名前を変更します。 
         
      ![CDN ルール エンジンのトークン認証設定の例](./media/cdn-token-auth/cdn-rules-engine2.png)
 

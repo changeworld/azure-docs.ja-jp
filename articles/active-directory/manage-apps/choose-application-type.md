@@ -15,19 +15,19 @@ ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f6e1a1c614bfa126d58cf9343f945d16fd1c2733
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 30a4bfa2cf7a39a28db0575a6851f5b7b481524c
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65781009"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66388182"
 ---
 # <a name="choosing-the-application-type-when-adding-an-application-in-azure-active-directory"></a>Azure Active Directory でアプリケーションを追加するときにアプリケーションの種類を選択する
 Azure Active Directory (Azure AD) に追加できる 4 種類のアプリケーションについて説明します。 Azure Active Directory でアプリケーションを追加すると、4 種類のアプリケーションのいずれかを選択するように求められます。 
 
 ## <a name="what-are-the-types-of-applications"></a>アプリケーションの種類とは
 
-Azure AD は、4 つの主要なアプリケーションの種類をサポートしています。これらのアプリケーションは、**[エンタープライズ アプリケーション]** の **[追加]** 機能を使用して追加できます。 チェックの内容は次のとおりです
+Azure AD は、4 つの主要なアプリケーションの種類をサポートしています。これらのアプリケーションは、 **[エンタープライズ アプリケーション]** の **[追加]** 機能を使用して追加できます。 チェックの内容は次のとおりです
 
 -   **Azure AD ギャラリー アプリケーション**– Azure AD でのシングル サインオンのために事前に統合されているアプリケーション。
 
@@ -80,7 +80,7 @@ Azure AD アプリケーションに対してサポートされている**シン
   >
   >
 
-- **ヘッダーベースのサインオン** - シングル サインオンを実行する、HTTP ヘッダーベースの認証をサポートする PingAccess を使用しているアプリケーションがある場合は、[[ヘッダーベースのサインオン]](https://docs.microsoft.com/azure/active-directory/application-proxy-ping-access#what-is-pingaccess-for-azure-ad) シングル サインオン モードを選びます 
+- **ヘッダーベースのサインオン** - シングル サインオンを実行する、HTTP ヘッダーベースの認証をサポートする PingAccess を使用しているアプリケーションがある場合は、[[ヘッダーベースのサインオン]](application-proxy-configure-single-sign-on-with-ping-access.md) シングル サインオン モードを選びます 
 
   >[!NOTE]
   >このオプションは、アプリケーションに対してアプリケーション プロキシと PingAccess が構成されている場合にのみ使用可能です。
@@ -116,13 +116,13 @@ Azure AD アプリケーションに対してサポートされている**シン
 
 2. 左側のメイン ナビゲーション メニューの上部にある **[すべてのサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
 
-3. フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
+3. フィルター検索ボックスに「**Azure Active Directory**」と入力し、 **[Azure Active Directory]** 項目を選択します。
 
 4. Azure Active Directory の左側のナビゲーション メニューから **[エンタープライズ アプリケーション]** をクリックします。
 
 5. **[すべてのアプリケーション]** をクリックして、すべてのアプリケーションの一覧を表示します。
 
-   * ここに表示したいアプリケーションが表示されない場合は、**[All Applications List (すべてのアプリケーション リスト)]** の上部にある **[フィルター]** コントロールを使用して、**[表示]** オプションを **[すべてのアプリケーション]** に設定します。
+   * ここに表示したいアプリケーションが表示されない場合は、 **[All Applications List (すべてのアプリケーション リスト)]** の上部にある **[フィルター]** コントロールを使用して、 **[表示]** オプションを **[すべてのアプリケーション]** に設定します。
 
 6. シングル サインオンを構成するアプリケーションを選択します。
 
@@ -156,13 +156,13 @@ Azure AD アプリケーションに対してサポートされている**シン
 
 2. 左側のメイン ナビゲーション メニューの上部にある **[すべてのサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
 
-3. フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
+3. フィルター検索ボックスに「**Azure Active Directory**」と入力し、 **[Azure Active Directory]** 項目を選択します。
 
 4. Azure Active Directory の左側のナビゲーション メニューから **[エンタープライズ アプリケーション]** をクリックします。
 
 5. **[すべてのアプリケーション]** をクリックして、すべてのアプリケーションの一覧を表示します。
 
-   * ここに表示したいアプリケーションが表示されない場合は、**[すべてのアプリケーション リスト]** の上部にある **[フィルター]** コントロールを使用して、**[表示]** オプションを **[すべてのアプリケーション]** に設定します。
+   * ここに表示したいアプリケーションが表示されない場合は、 **[すべてのアプリケーション リスト]** の上部にある **[フィルター]** コントロールを使用して、 **[表示]** オプションを **[すべてのアプリケーション]** に設定します。
 
 6. プロビジョニングを構成するアプリケーションを選択します。
 

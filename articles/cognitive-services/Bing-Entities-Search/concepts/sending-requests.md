@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: 8fd0ccff9875086f46ca001660b0ee954d3e539b
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: b8879bcbd807f3a74938a09da0abb57a1e0eeb4d
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64869951"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66388837"
 ---
 # <a name="sending-search-requests-to-the-bing-entity-search-api"></a>Bing Entity Search API への検索要求の送信
 
@@ -37,18 +37,18 @@ https://api.cognitive.microsoft.com/bing/v7.0/entities
 
 ## <a name="specifying-query-parameters-and-headers"></a>クエリ パラメーターとヘッダーの指定
 
-要求では、ユーザーの検索用語が含まれている [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#query) クエリ パラメーターを指定する必要があります。 要求では [mkt](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#mkt) クエリ パラメーターも指定する必要があります。このパラメーターは、結果取得元の市場を示します。 省略可能なクエリ パラメーターの一覧については、「[Query Parameters](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#query-parameters)」(クエリ パラメーター) をご覧ください。 すべてのクエリ パラメーターを URL エンコードします。  
+要求では、ユーザーの検索用語が含まれている [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#query) クエリ パラメーターを指定する必要があります。 要求では [mkt](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#mkt) クエリ パラメーターも指定する必要があります。このパラメーターは、結果取得元の市場を示します。 省略可能なクエリ パラメーターの一覧については、「[Query Parameters](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#query-parameters)」(クエリ パラメーター) をご覧ください。 すべてのクエリ パラメーターを URL エンコードします。  
   
-要求では、[Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#subscriptionkey) ヘッダーを指定する必要があります。 省略可能ですが、次のヘッダーも指定することをお勧めします。  
+要求では、[Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#subscriptionkey) ヘッダーを指定する必要があります。 省略可能ですが、次のヘッダーも指定することをお勧めします。  
   
--   [User-Agent](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#useragent)  
--   [X-MSEdge-ClientID](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#clientid)  
--   [X-MSEdge-ClientIP](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#clientip)  
--   [X-Search-Location](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#location)  
+-   [User-Agent](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#useragent)  
+-   [X-MSEdge-ClientID](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#clientid)  
+-   [X-MSEdge-ClientIP](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#clientip)  
+-   [X-Search-Location](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#location)  
 
 クライアント IP と場所のヘッダーは、場所に対応したコンテンツを返すために重要です。  
 
-すべての要求ヘッダーと応答ヘッダーの一覧については、「[Headers (ヘッダー)](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#headers)」を参照してください。
+すべての要求ヘッダーと応答ヘッダーの一覧については、「[Headers (ヘッダー)](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#headers)」を参照してください。
 
 ## <a name="the-request"></a>要求
 
@@ -68,7 +68,7 @@ Host: api.cognitive.microsoft.com
 
 ## <a name="the-response"></a>応答
 
-前述の要求への応答は次のようになります。 例では、Bing に固有の応答ヘッダーも示されています。 応答オブジェクトについては、「[SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#searchresponse)」をご覧ください。
+前述の要求への応答は次のようになります。 例では、Bing に固有の応答ヘッダーも示されています。 応答オブジェクトについては、「[SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#searchresponse)」をご覧ください。
 
 ```json
 BingAPIs-TraceId: 76DD2C2549B94F9FB55B4BD6FEB6AC

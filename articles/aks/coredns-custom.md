@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 03/15/2019
 ms.author: jnoller
-ms.openlocfilehash: 9c67902f8a6c10552ea60fed145afc24f82b01a1
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 9f3a62c5782724f14f10b5875fc8db31dbffe67c
+ms.sourcegitcommit: 18a0d58358ec860c87961a45d10403079113164d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65594295"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66693392"
 ---
 # <a name="customize-coredns-with-azure-kubernetes-service"></a>Azure Kubernetes Service で CoreDNS をカスタマイズする
 
@@ -27,7 +27,7 @@ AKS はマネージド サービスであるため、CoreDNS のメイン構成 
 
 ## <a name="before-you-begin"></a>開始する前に
 
-この記事は、AKS クラスターがすでに存在していることを前提としています。 AKS クラスターが必要な場合は、[Azure CLI を使用して][aks-quickstart-cli] または [Azure portal を使用して][aks-quickstart-portal] AKS のクイック スタートを参照してください。
+この記事は、AKS クラスターがすでに存在していることを前提としています。 AKS クラスターが必要な場合は、[Azure CLI を使用して][ aks-quickstart-cli]または[Azure portal を使用して][aks-quickstart-portal] AKS のクイック スタートを参照してください。
 
 ## <a name="what-is-supportedunsupported"></a>サポート対象/サポート対象外
 
@@ -192,5 +192,7 @@ data:
 [kubectl delete]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#delete
 [coredns hosts]: https://coredns.io/plugins/hosts/
 
-<!-- LINKS - external -->
+<!-- LINKS - internal -->
 [concepts-network]: concepts-network.md
+[aks-quickstart-cli]: kubernetes-walkthrough.md
+[aks-quickstart-portal]: kubernetes-walkthrough-portal.md

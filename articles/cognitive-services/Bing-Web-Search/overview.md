@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 03/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: b6e546130efd52312fca62ab4e6a22626778a19e
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 65e28b557a3708c155bf80f21a784374c4497783
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "60648146"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66383034"
 ---
 # <a name="what-is-the-bing-web-search-api"></a>Bing Web Search API とは
 
@@ -50,5 +50,5 @@ Bing Web Search API は、HTTP 要求を作成して JSON 応答を解析でき�
 
 * Bing Web Search API を初めて呼び出す場合は、[Python のクイック スタート](quickstarts/python.md)を参照してください。  
 * [シングルページ Web アプリの作成](tutorial-bing-web-search-single-page-app.md)。
-* [Web Search API v7 リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference)のドキュメントを参照してください。  
+* [Web Search API v7 リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference)のドキュメントを参照してください。  
 * Bing Web Search の[使用と表示に関する要件](UseAndDisplayRequirements.md)の詳細を参照してください。  

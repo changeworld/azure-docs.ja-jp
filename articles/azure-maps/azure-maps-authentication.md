@@ -4,17 +4,17 @@ description: Azure Maps サービスを使用するための認証
 author: walsehgal
 ms.author: v-musehg
 ms.date: 02/12/2019
-ms.topic: tutorial
+ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: timlt
+manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 9dfe4024607e106565984d6d49de94d793bf7a8f
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: 22aba19e16e4349a5b495b307c9906f7ded5a636
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57010414"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393668"
 ---
 # <a name="authentication-with-azure-maps"></a>Azure Maps による認証
 

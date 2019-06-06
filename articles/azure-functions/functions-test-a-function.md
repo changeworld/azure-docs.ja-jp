@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: cshoe
-ms.openlocfilehash: 9a078579fff355d7ddb996316af2a2136fb62335
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: 7489f42719223dbd7f9cc2908f666dca53fe7c04
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65473327"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66496386"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Azure Functions のコードをテストするための戦略
 
@@ -55,7 +55,7 @@ ms.locfileid: "65473327"
 
 `ListLogger` クラスは、`ILogger` インターフェイスを実装するためのもので、テスト中に評価するメッセージの内部リストに保持されます。
 
-*Functions.Test* アプリケーションを**右クリック**し、**[追加] > [クラス]** の順に選択し、**NullScope.cs** という名前を付けて、次のコードを入力します。
+*Functions.Test* アプリケーションを**右クリック**し、 **[追加] > [クラス]** の順に選択し、**NullScope.cs** という名前を付けて、次のコードを入力します。
 
 ```csharp
 using System;
@@ -73,7 +73,7 @@ namespace Functions.Tests
 }
 ```
 
-次に、*Functions.Test* アプリケーションを**右クリック**し、**[追加] > [クラス]** の順に選択し、**ListLogger.cs** という名前を付けて、次のコードを入力します。
+次に、*Functions.Test* アプリケーションを**右クリック**し、 **[追加] > [クラス]** の順に選択し、**ListLogger.cs** という名前を付けて、次のコードを入力します。
 
 ```csharp
 using Microsoft.Extensions.Logging;
@@ -119,7 +119,7 @@ namespace Functions.Tests
 
 `Logs` コレクションは `List<string>` のインスタンスであり、コンストラクターで初期化されます。
 
-次に、*Functions.Test* アプリケーションを**右クリック**し、**[追加] > [クラス]** の順に選択し、**LoggerTypes.cs** という名前を付けて、次のコードを入力します。
+次に、*Functions.Test* アプリケーションを**右クリック**し、 **[追加] > [クラス]** の順に選択し、**LoggerTypes.cs** という名前を付けて、次のコードを入力します。
 
 ```csharp
 namespace Functions.Tests
@@ -133,7 +133,7 @@ namespace Functions.Tests
 ```
 この列挙型は、テストで使用されるロガーの種類を指定します。 
 
-次に、*Functions.Test* アプリケーションを**右クリック**し、**[追加] > [クラス]** の順に選択し、**TestFactory.cs** という名前を付けて、次のコードを入力します。
+次に、*Functions.Test* アプリケーションを**右クリック**し、 **[追加] > [クラス]** の順に選択し、**TestFactory.cs** という名前を付けて、次のコードを入力します。
 
 ```csharp
 using Microsoft.AspNetCore.Http;
@@ -204,7 +204,7 @@ namespace Functions.Tests
 
 - **CreateLogger**:このメソッドは、ロガーの種類に応じて、テストに使用されるロガー クラスを返します。 `ListLogger` は、テストで評価に使用できるログ記録されたメッセージを追跡します。
 
-次に、*Functions.Test* アプリケーションを**右クリック**し、**[追加] > [クラス]** の順に選択し、**FunctionsTests.cs** という名前を付けて、次のコードを入力します。
+次に、*Functions.Test* アプリケーションを**右クリック**し、 **[追加] > [クラス]** の順に選択し、**FunctionsTests.cs** という名前を付けて、次のコードを入力します。
 
 ```csharp
 using Microsoft.AspNetCore.Mvc;
@@ -257,13 +257,13 @@ namespace Functions.Tests
 
 ### <a name="run-tests"></a>テストの実行
 
-テストを実行するには、**テスト エクスプローラー**に移動し、**[すべて実行]** の順にクリックします。
+テストを実行するには、**テスト エクスプローラー**に移動し、 **[すべて実行]** の順にクリックします。
 
 ![Visual Studio で C# を使って Azure Functions をテストする](./media/functions-test-a-function/azure-functions-test-visual-studio-xunit.png)
 
 ### <a name="debug-tests"></a>テストのデバッグ
 
-テストをデバッグするには、テストにブレークポイントを設定し、**テスト エクスプローラー**に移動して、**[実行] > [前回の実行をデバッグする]** の順にクリックします。
+テストをデバッグするには、テストにブレークポイントを設定し、**テスト エクスプローラー**に移動して、 **[実行] > [前回の実行をデバッグする]** の順にクリックします。
 
 ## <a name="javascript-in-vs-code"></a>VS Code での JavaScript
 
@@ -312,7 +312,7 @@ module.exports = {
 ```
 このモジュールは、偽のタイマー インスタンスである `IsPastDue` プロパティを実装します。
 
-次に、VS Code の Functions 拡張機能を使用して、[JavaScript HTTP 関数を新規作成](https://code.visualstudio.com/tutorials/functions-extension/getting-started)して *HttpTrigger* という名前を付けます。 関数を作成した後、**index.test.js** という名前の同じフォルダーに新しいファイルを追加し、次のコードを追加します。
+次に、VS Code の Functions 拡張機能を使用して、[JavaScript HTTP 関数を新規作成](https://docs.microsoft.com/azure/azure-functions/tutorial-javascript-vscode-get-started)して *HttpTrigger* という名前を付けます。 関数を作成した後、**index.test.js** という名前の同じフォルダーに新しいファイルを追加し、次のコードを追加します。
 
 ```javascript
 const httpFunction = require('./index');

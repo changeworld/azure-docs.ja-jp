@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Spring
 ms.workload: tbd
 ms.date: 01/08/2019
 ms.author: yidon
-ms.openlocfilehash: 9137262ffc7c172e6a99920a7abb31459a8703fe
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: a91c61edd773b5742b092f5d72a5a22f1d90e63b
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65408578"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393550"
 ---
 # <a name="quickstart-create-a-java-spring-app-with-app-configuration"></a>クイック スタート:App Configuration を使用して Java Spring アプリを作成する
 
@@ -29,7 +29,7 @@ Azure App Configuration は、Azure 内にあるマネージド構成サービ�
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイック スタートを実行するには、サポートされている [Java Development Kit (JDK)](https://aka.ms/azure-jdks) のバージョン 8 と [Apache Maven](https://maven.apache.org/) のバージョン 3.0 以降をインストールします。
+このクイック スタートを実行するには、サポートされている [Java Development Kit (JDK)](https://docs.microsoft.com/java/azure/jdk) のバージョン 8 と [Apache Maven](https://maven.apache.org/) のバージョン 3.0 以降をインストールします。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -37,7 +37,7 @@ Azure App Configuration は、Azure 内にあるマネージド構成サービ�
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. **[Configuration Explorer]\(構成エクスプローラー)\** > **[+ 作成]** の順に選択して、次のキーと値のペアを追加します。
+6. **[Configuration Explorer]\(構成エクスプローラー)\**  >  **[+ 作成]** の順に選択して、次のキーと値のペアを追加します。
 
     | キー | 値 |
     |---|---|
@@ -58,7 +58,7 @@ Azure App Configuration は、Azure 内にあるマネージド構成サービ�
    * アプリケーションの**グループ (Group)** と**成果物 (Artifact)** の名前を指定します。
    * **Web** 依存関係を追加します。
 
-3. 前の各オプションを指定してから、**[プロジェクトの生成]** を選択します。 メッセージが表示されたら、ローカル コンピューター上のパスにプロジェクトをダウンロードします。
+3. 前の各オプションを指定してから、 **[プロジェクトの生成]** を選択します。 メッセージが表示されたら、ローカル コンピューター上のパスにプロジェクトをダウンロードします。
 
 ## <a name="connect-to-an-app-configuration-store"></a>アプリ構成ストアに接続する
 

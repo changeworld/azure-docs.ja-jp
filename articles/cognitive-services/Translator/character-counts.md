@@ -3,19 +3,19 @@ title: 文字数カウント - Translator Text API
 titlesuffix: Azure Cognitive Services
 description: Translator Text API の文字数のカウント方法。
 services: cognitive-services
-author: v-pawal
+author: rajdeep-in
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 02/01/2019
-ms.author: v-jansko
-ms.openlocfilehash: c88eb56288d3a7cf46ce84430a53c12a4ee31c7a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 06/04/2019
+ms.author: v-pawal
+ms.openlocfilehash: eccd0c47c1bfc071f43a6329406cd14f704d019e
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58917415"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66514282"
 ---
 # <a name="how-the-translator-text-api-counts-characters"></a>Translator Text API の文字数のカウント方法
 
@@ -35,7 +35,7 @@ Translator Text API は、入力テキストのすべての Unicode コード �
 
 中国語や日本語の漢字などの表意文字に基づくスクリプトの場合、Translator Text API では Unicode コード ポイントの数 (表意文字につき 1 文字) が引き続きカウントされます。 例外:Unicode サロゲートは 2 文字としてカウントされます。
 
-要求、単語、バイト、または文章の数は、文字数とは関係ありません。 
+要求、単語、バイト、または文章の数は、文字数とは関係ありません。
 
 Detect メソッドと BreakSentence メソッドへの呼び出しは、文字消費においてカウントされません。 ただし、Detect メソッドと BreakSentence メソッドへの呼び出しは、カウントされる他の関数の使用に対して妥当な割合となっていることが求められます。 Detect または BreakSentence の呼び出しの数が、他のカウントされるメソッドの 100 倍を超えた場合に、Microsoft は Detect メソッドと BreakSentence メソッドの使用を制限する権利を留保します。
 

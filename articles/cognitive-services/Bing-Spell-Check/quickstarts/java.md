@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 04/11/2019
 ms.author: aahi
-ms.openlocfilehash: a139d0558565114725c6198f64e139e5a5019c75
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.openlocfilehash: 0d6ea62f1d2c1e15dff13aa45c4923717dd9c2c4
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59616697"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66390176"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-java"></a>クイック スタート:Bing Spell Check REST API と Java を使用してスペルをチェックする
 
@@ -135,12 +135,12 @@ ms.locfileid: "59616697"
 
 コマンド ラインを使用している場合は、次のコマンドを使用して、アプリケーションをビルド、実行します。
 
-**ビルド:** 
+**ビルド:**
 ```bash
 javac -classpath .;gson-2.2.2.jar\* <CLASS_NAME>.java
 ```
 
-**実行:** 
+**実行:**
 ```bash
 java -cp .;gson-2.2.2.jar\* <CLASS_NAME>
 ```
@@ -193,4 +193,4 @@ java -cp .;gson-2.2.2.jar\* <CLASS_NAME>
 > [単一ページの Web アプリの作成](../tutorials/spellcheck.md)
 
 - [Bing Spell Check API とは](../overview.md)
-- [Bing Spell Check API v7 リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference)
+- [Bing Spell Check API v7 リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)

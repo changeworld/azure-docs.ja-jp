@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: ff098ebd23d2ce5a8c9c39f154375be1dae6a262
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 3977991386dbcd07e92f21d1ac541f486b4f7f0a
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65408918"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393646"
 ---
 # <a name="integrate-with-azure-managed-identities"></a>Azure マネージド ID と統合する
 
@@ -49,23 +49,23 @@ Azure App Configuration とその .NET Core、.NET、Java Spring のクライア
 
 ポータルでマネージド ID を設定するには、最初に通常の方法でアプリケーションを作成した後、機能を有効にします。
 
-1. 通常どおりに [Azure portal](https://aka.ms/azconfig/portal) でアプリを作成します。 ポータルでそのアプリに移動します。
+1. 通常どおりに [Azure portal](https://portal.azure.com) でアプリを作成します。 ポータルでそのアプリに移動します。
 
-2. 左側のウィンドウで **[設定]** グループまで下へスクロールして、**[ID]** を選択します。
+2. 左側のウィンドウで **[設定]** グループまで下へスクロールして、 **[ID]** を選択します。
 
-3. **[システム割り当て済み]** タブで、**[状態]** を **[オン]** に切り替えて、**[保存]** を選択します。
+3. **[システム割り当て済み]** タブで、 **[状態]** を **[オン]** に切り替えて、 **[保存]** を選択します。
 
     ![App Service でのマネージド ID の設定](./media/set-managed-identity-app-service.png)
 
 ## <a name="grant-access-to-app-configuration"></a>App Configuration へのアクセスの許可
 
-1. [Azure portal](https://aka.ms/azconfig/portal) で **[すべてのリソース]** を選択し、クイック スタートで作成したアプリ構成ストアを選択します。
+1. [Azure portal](https://portal.azure.com) で **[すべてのリソース]** を選択し、クイック スタートで作成したアプリ構成ストアを選択します。
 
 2. **[アクセス制御 (IAM)]** を選択します。
 
-3. **[アクセスの確認]** タブで、**[ロールの割り当てを追加する]** カード UI の **[追加]** を選択します。
+3. **[アクセスの確認]** タブで、 **[ロールの割り当てを追加する]** カード UI の **[追加]** を選択します。
 
-4. **[役割]** で **[共同作成者]** を選択します。 **[アクセスの割り当て先]** で、**[システム割り当てマネージド ID]** の **[App Service]** を選択します。
+4. **[役割]** で **[共同作成者]** を選択します。 **[アクセスの割り当て先]** で、 **[システム割り当てマネージド ID]** の **[App Service]** を選択します。
 
 5. **[サブスクリプション]** で自分の Azure サブスクリプションを選択します。 アプリの App Service リソースを選択します。
 

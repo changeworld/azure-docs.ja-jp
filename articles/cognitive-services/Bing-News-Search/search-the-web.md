@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 01/10/2019
 ms.author: scottwhi
 ms.custom: seodec2018
-ms.openlocfilehash: a28445199c47c666fb2323a70317f81f3302c765
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: e02f81ef6bdf8bf4dc39b70cb7a2d9330660d1d6
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55877101"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66390305"
 ---
 # <a name="what-is-the-bing-news-search-api"></a>Bing News Search API とは
 
@@ -54,6 +54,6 @@ Bing News Search API は RESTful Web サービスです。HTTP 要求を作成�
 
 ## <a name="see-also"></a>関連項目
 
-* [Bing News Search API v7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference) のリファレンス セクションには、画像ベースの検索結果を要求するために使用できるエンドポイント、ヘッダー、API 応答、およびクエリ パラメーターに関する定義と情報が含まれています。
+* [Bing News Search API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference) のリファレンス セクションには、画像ベースの検索結果を要求するために使用できるエンドポイント、ヘッダー、API 応答、およびクエリ パラメーターに関する定義と情報が含まれています。
 
 * [Bing の利用と表示の要件](./useanddisplayrequirements.md)に関するトピックでは、Bing Search API を使用して得られるコンテンツと情報の許可される使用方法が指定されています。

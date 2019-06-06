@@ -2,20 +2,20 @@
 title: Azure サブスクリプションをリンクする方法 - Azure Active Directory B2C | Microsoft Docs
 description: Azure AD B2C テナントの Azure サブスクリプションへの課金を有効にするためのステップ バイ ステップ ガイドです。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/24/2019
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8f9e3e63942c8fac5fc24ca26969b71e6ef4257f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: d2440b638a9c8eb27505b747d26917de8032e6cd
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64706822"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66510138"
 ---
 # <a name="link-an-azure-subscription-to-an-azure-active-directory-b2c-tenant"></a>Azure サブスクリプションを Azure Active Directory B2C テナントにリンクする
 
@@ -53,9 +53,9 @@ Azure サブスクリプションを表示する Azure AD テナントに移動�
 
 ![結果リストで選択された Azure AD B2C](../../includes/media/active-directory-b2c-create-tenant/find-azure-ad-b2c-result.png)
 
-Azure AD B2C の詳細が表示されます。 新しい Azure Active Directory B2C テナントの構成を開始するには、**[作成]** をクリックします。
+Azure AD B2C の詳細が表示されます。 新しい Azure Active Directory B2C テナントの構成を開始するには、 **[作成]** をクリックします。
 
-リソースの作成画面で、**[既存の Azure AD B2C テナントを Azure サブスクリプションにリンクする]** を選択します。
+リソースの作成画面で、 **[既存の Azure AD B2C テナントを Azure サブスクリプションにリンクする]** を選択します。
 
 ## <a name="create-an-azure-ad-b2c-resource-within-the-azure-subscription"></a>Azure サブスクリプション内に Azure AD B2C リソースを作成する
 

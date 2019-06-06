@@ -10,12 +10,12 @@ ms.subservice: bing-autosuggest
 ms.topic: quickstart
 ms.date: 02/20/2019
 ms.author: scottwhi
-ms.openlocfilehash: 597ef48fd7499a9d33b214b182d6dd1354756cdf
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: abcce52e126e01d25434a90260a220c9aa337f5b
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57011584"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66382705"
 ---
 # <a name="sending-requests-to-the-bing-autosuggest-api"></a>Bing Autosuggest API への要求の送信
 
@@ -33,7 +33,7 @@ Bing API を使用してクエリ候補を取得するには、次のエンド�
 GET https://api.cognitive.microsoft.com/bing/v7.0/Suggestions 
 ```
 
-ヘッダー、パラメーター、市場コード、応答オブジェクト、エラーなどについて詳しくは、[Bing Autosuggest API v7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference) のリファレンスをご覧ください。
+ヘッダー、パラメーター、市場コード、応答オブジェクト、エラーなどについて詳しくは、[Bing Autosuggest API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference) のリファレンスをご覧ください。
 
 **Bing** API では、種類に応じた結果を返す検索アクションがサポートされます。 すべての検索エンドポイントは、結果を JSON 応答オブジェクトとして返します。
 すべてのエンドポイントは、特定の言語や場所を経度、緯度、検索半径によって返すクエリをサポートします。
@@ -168,5 +168,5 @@ BingAPIs-Market: en-US
 ## <a name="next-steps"></a>次の手順
 
 - [Bing Autosuggest とは](../get-suggested-search-terms.md)
-- [Bing Autosuggest API v7 リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference)
+- [Bing Autosuggest API v7 リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)
 - [Bing Autosuggest API から検索語句の候補を取得する](get-suggestions.md)

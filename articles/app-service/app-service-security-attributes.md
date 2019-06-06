@@ -9,12 +9,12 @@ ms.service: app-service
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 1d7ab8008e8fbdb5f851f158d14f62bdea803f11
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: e38e1479c1e094f691e8f22f0a48f9342cae5cf3
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66001696"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475083"
 ---
 # <a name="security-attributes-for-azure-app-service"></a>Azure App Service のセキュリティ属性
 
@@ -51,8 +51,8 @@ ms.locfileid: "66001696"
 
 | セキュリティ属性 | はい/いいえ | メモ|
 |---|---|--|
-| 認証| はい | ユーザーは、[Azure Active Directory (Azure AD)](../active-directory/index.md) および他の OAuth と互換性のある ID プロバイダーと自動的に統合されるアプリケーションを App Service 上でビルドできます (「[Azure App Service での認証および認可](overview-authentication-authorization.md)」を参照してください)。 App Service 資産へのアクセス管理では、Azure AD で認証されたプリンシパルと Azure Resource Manager の RBAC ロールの組み合わせによって、すべてのアクセスが制御されます。 |
-| 承認| はい | App Service 資産へのアクセス管理では、Azure AD で認証されたプリンシパルと Azure Resource Manager の RBAC ロールの組み合わせによって、すべてのアクセスが制御されます。  |
+| Authentication| はい | ユーザーは、[Azure Active Directory (Azure AD)](../active-directory/index.yml) および他の OAuth と互換性のある ID プロバイダーと自動的に統合されるアプリケーションを App Service 上でビルドできます (「[Azure App Service での認証および認可](overview-authentication-authorization.md)」を参照してください)。 App Service 資産へのアクセス管理では、Azure AD で認証されたプリンシパルと Azure Resource Manager の RBAC ロールの組み合わせによって、すべてのアクセスが制御されます。 |
+| Authorization| はい | App Service 資産へのアクセス管理では、Azure AD で認証されたプリンシパルと Azure Resource Manager の RBAC ロールの組み合わせによって、すべてのアクセスが制御されます。  |
 
 
 ## <a name="audit-trail"></a>監査証跡

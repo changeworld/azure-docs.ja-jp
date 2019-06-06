@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 03/21/2019
 ms.author: areddish
-ms.openlocfilehash: cc66630f57af32e18916e0662a400b38f27000a9
-ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
+ms.openlocfilehash: 6f4b13e5fb2dc8ed595999bfc8a2abe4db15dcbb
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58472601"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393903"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-net-sdk"></a>クイック スタート:Custom Vision .NET SDK を使用して物体検出プロジェクトを作成する
 
@@ -109,7 +109,7 @@ Console.WriteLine("Making a prediction:");
 var imageFile = Path.Combine("Images", "test", "test_image.jpg");
 using (var stream = File.OpenRead(imageFile))
 {
-        var result = endpoint.DetectImage(project.Id, publishedModelName, File.OpenRead(imageFile));
+        var result = endpoint.DetectImage(project.Id, publishedModelName, stream);
 
         // Loop over each prediction and write out the results
         foreach (var c in result.Predictions)
