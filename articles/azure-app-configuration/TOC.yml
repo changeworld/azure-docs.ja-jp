@@ -47,6 +47,8 @@
       href: concept-point-time-snapshot.md
     - name: 機能の管理
       href: concept-feature-management.md
+    - name: イベント処理
+      href: concept-app-configuration-event.md
     - name: 高可用性
       items:
         - name: 回復性とディザスター リカバリー
@@ -57,6 +59,8 @@
       href: howto-integrate-azure-managed-service-identity.md
     - name: 構成データのインポートまたはエクスポート
       href: howto-import-export-data.md
+    - name: カスタム エンドポイントへのイベントのルーティング
+      href: howto-app-configuration-event.md
     - name: ベスト プラクティス
       href: howto-best-practices.md
 - name: リファレンス

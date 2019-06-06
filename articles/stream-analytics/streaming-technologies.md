@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/15/2019
-ms.openlocfilehash: 7ef8715f23d21a23dc3f37b192314b922847d3e1
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 85d6ed80da93f90e6dc0feaee7081ee3f36f1bf9
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65804789"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242701"
 ---
 # <a name="choose-a-real-time-analytics-and-streaming-processing-technology-on-azure"></a>Azure でリアルタイム分析とストリーミング処理技術を選択する
 
@@ -25,7 +25,7 @@ Azure Stream Analytics は、Azure でのストリーム分析に推奨される
 * データ視覚化のためのダッシュボード
 * 一時的および空間的なパターンまたは異常からのリアルタイム [アラート](stream-analytics-set-up-alerts.md)
 * Extract Transform Load (ETL)
-* [イベント ソーシング パターン](/azure/architecture/patterns/event-sourcing.md)
+* [イベント ソーシング パターン](/azure/architecture/patterns/event-sourcing)
 * [IoT Edge](stream-analytics-edge.md)
 
 アプリケーションに Azure Stream Analytics ジョブを追加することが、既に知っている言語を使用し、Azure でストリーミング分析を実行する最も簡単な方法です。 Azure Stream Analytics はジョブ サービスです。そのため、クラスターの管理に時間を費やす必要がありません。また、ジョブ レベルの 99.9% SLA により、ダウンタイムを心配する必要がありません。 課金もジョブ レベルで行われることで、スタートアップ コストが低くなりますが (1 ストリーミング ユニット)、スケーラブルです (最大 192 ストリーミング ユニット)。 クラスターを実行し、保守管理するより、少ない Stream Analytics ジョブを実行するほうがコスト効果がずっと高くなります。

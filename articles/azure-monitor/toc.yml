@@ -95,10 +95,6 @@
           href: platform/alerts-overview.md
         - name: クラシック アラート
           href: platform/alerts-classic.overview.md
-        - name: スマート グループ
-          href: platform/alerts-smartgroups-overview.md
-        - name: 自動スケール
-          href: platform/autoscale-overview.md
         - name: メトリック アラート
           href: platform/alerts-metric-overview.md
         - name: ログ アラート
@@ -109,6 +105,10 @@
           href: platform/alerts-common-schema.md
         - name: アクション ルール
           href: platform/alerts-action-rules.md
+        - name: スマート グループ
+          href: platform/alerts-smartgroups-overview.md
+        - name: 自動スケール
+          href: platform/autoscale-overview.md
         - name: 変更の分析
           href: app/change-analysis.md
     - name: データの視覚化

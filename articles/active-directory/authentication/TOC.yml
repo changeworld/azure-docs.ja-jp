@@ -142,10 +142,6 @@
               href: active-directory-certificate-based-authentication-android.md
             - name: iOS デバイスでの CBA
               href: active-directory-certificate-based-authentication-ios.md
-    - name: 開発
-      items:
-        - name: MFA をカスタム アプリに組み込む
-          href: howto-mfa-sdk.md
     - name: レポート
       items:
         - name: SSPR レポート

@@ -90,6 +90,8 @@
               href: concepts-data-access-and-security-threat-protection.md
             - name: 仮想ネットワーク
               href: concepts-data-access-and-security-vnet.md
+            - name: 接続のアーキテクチャ
+              href: concepts-connectivity-architecture.md
         - name: ビジネス継続性
           items:
             - name: 概要
