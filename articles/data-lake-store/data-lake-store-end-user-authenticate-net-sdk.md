@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: c80e9953a24504c4ad324ce077b741e60a52b1fb
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 215b839c21c2590c08ac2f4250086eaf97914ce1
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65908021"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66243721"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-net-sdk"></a>Azure Data Lake Storage Gen1 での .NET SDK を使用したエンドユーザー認証
 > [!div class="op_single_selector"]
@@ -74,7 +74,7 @@ ms.locfileid: "65908021"
 ## <a name="end-user-authentication"></a>エンドユーザー認証
 このスニペットを .NET クライアント アプリケーションに追加します。 プレースホルダーの値を、Azure AD のネイティブ アプリケーション (前提条件として一覧表示) から取得した値で置き換えます。 このスニペットを使用すると、Data Lake Storage Gen1 でアプリケーションを**対話的**に認証できます。つまり、Azure 資格情報を入力するように求められます。
 
-使いやすくするために、次のスニペットでは、クライアント ID とリダイレクト URI について、すべての Azure サブスクリプションで有効な既定値を使用しています。 次のスニペットでは、入力する必要があるのはテナント ID の値のみです。 テナント ID は、「[テナント ID を取得する](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-id)」で説明されている指示に従って取得できます。
+使いやすくするために、次のスニペットでは、クライアント ID とリダイレクト URI について、すべての Azure サブスクリプションで有効な既定値を使用しています。 次のスニペットでは、入力する必要があるのはテナント ID の値のみです。 テナント ID は、「[テナント ID を取得する](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)」で説明されている指示に従って取得できます。
     
 - Main() 関数を次のコードに置き換えます。
 

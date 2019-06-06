@@ -8,14 +8,14 @@ tags: billing
 ms.assetid: 60d848f9-ff26-496e-a5ec-ccf92ad7d125
 ms.service: billing
 ms.topic: article
-ms.date: 05/17/2019
+ms.date: 05/30/2019
 ms.author: byvinyal
-ms.openlocfilehash: 3f01e15e4ac39127263c8c68590b6c50be04847d
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 88c40021ff2e974ba16b3b3506ee54b45de90fda
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "66023226"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66427597"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure サブスクリプションとサービスの制限、クォータ、制約
 このドキュメントでは、最も一般的な Microsoft Azure の制限を一覧表示しています。これはクォータと呼ばれることもあります。 現時点では、すべての Azure サービスをカバーするものではありません。 今後、より多くのサービスをカバーするように一覧を拡大し、更新していく予定です。
@@ -155,8 +155,6 @@ Resource Manager API の読み取りと書き込みの制限については、�
 
 ### <a name="azure-machine-learning-service-limits"></a>Azure Machine Learning サービスの制限
 Azure Machine Learning コンピューティング クォータの最新の値については、[Azure Machine Learning クォータ ページ](../articles/machine-learning/service/how-to-manage-quotas.md)をご覧ください。
-
-[!INCLUDE [how-to-manage-quotas](../articles/machine-learning/service/how-to-manage-quotas.md)]
 
 ### <a name="networking-limits"></a>ネットワークの制限
 [!INCLUDE [azure-virtual-network-limits](../includes/azure-virtual-network-limits.md)]

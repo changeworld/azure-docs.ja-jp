@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: e1b0e49dcc69a7458c22b859df1a4721342f0728
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: b5dc885611c6654c1dc1d236e41ed75ef2717cc1
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64730147"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65605703"
 ---
 # <a name="perform-network-intrusion-detection-with-network-watcher-and-open-source-tools"></a>Network Watcher とオープン ソース ツールを使用したネットワーク不正侵入検出の実行
 
@@ -245,7 +245,7 @@ Logstash のインストール方法の詳細については、[公式ドキュ�
 
 1. [ダッシュボード ファイル](https://aka.ms/networkwatchersuricatadashboard)、[視覚化ファイル](https://aka.ms/networkwatchersuricatavisualization)、[保存された検索ファイル](https://aka.ms/networkwatchersuricatasavedsearch)をダウンロードします。
 
-1. Kibana の **[Management (管理)]** タブの下で **[Saved Objects (保存されたオブジェクト)]** に移動して、3 つのファイルすべてをインポートします。 これで、**[Dashboard (ダッシュボード)]** タブからサンプル ダッシュボードを開いて読み込むことができます。
+1. Kibana の **[Management (管理)]** タブの下で **[Saved Objects (保存されたオブジェクト)]** に移動して、3 つのファイルすべてをインポートします。 これで、 **[Dashboard (ダッシュボード)]** タブからサンプル ダッシュボードを開いて読み込むことができます。
 
 関心のあるメトリックに合わせて独自の視覚化とダッシュボードを作成することもできます。 Kibana の視覚化を作成する方法の詳細については、Kibana の[公式ドキュメント](https://www.elastic.co/guide/en/kibana/current/visualize.html)を参照してください。
 
@@ -255,7 +255,7 @@ Logstash のインストール方法の詳細については、[公式ドキュ�
 
 サンプル ダッシュボードでは、Suricata アラート ログを複数の方法で視覚化できます。
 
-1. GeoIP によるアラート – (IP で特定された) 地理的な場所に基づいて、発信元の国別でアラートの分布を示すマップ。
+1. GeoIP によるアラート – (IP で特定された) 地理的な場所に基づいて、発信元の国または地域別でアラートの分布を示すマップ
 
     ![GeoIP][3]
 

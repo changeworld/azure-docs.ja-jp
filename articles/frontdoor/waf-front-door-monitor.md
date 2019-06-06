@@ -8,22 +8,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/08/2019
+ms.date: 05/31/2019
 ms.author: tyao;kumud
-ms.openlocfilehash: 5368ed8d1e60a646366065e2cf617fb2f3735b53
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: e4ba6cca679ce4910ea941d9578939721514b2ec
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59782889"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66478973"
 ---
 # <a name="azure-web-application-firewall-monitoring-and-logging"></a>Azure Web アプリケーション ファイアウォールの監視とログ記録 
 
 Azure Web アプリケーション ファイアウォール (WAF) の監視とログ記録は、Azure Monitor および Azure Monitor ログのログ記録およびそれらとの統合を通じて提供されます。
-
-> [!IMPORTANT]
-> Front Door 用の WAF の監視とログ記録の機能は、現在パブリック プレビューの段階です。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 ## <a name="azure-monitor"></a>Azure Monitor
 

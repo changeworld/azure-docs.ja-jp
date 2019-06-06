@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 4/08/2019
+ms.date: 05/30/2019
 ms.author: raynew
-ms.openlocfilehash: 74ccc76ff139cae21e3583b0fea11596f5fd6b62
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: f2d64e0a081ff483be84053c442f48e7d145ca50
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65413923"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66396497"
 ---
 # <a name="azure-site-recovery-frequently-asked-questions-faq"></a>Azure Site Recovery: よく寄せられる質問 (FAQ)
 この記事では、Azure Site Recovery に関してよく寄せられる質問をまとめています。</br>
@@ -86,7 +86,7 @@ Site Recovery を使用している間は、[料金計算ツール](https://aka.
 はい。Site Recovery では、保護されたインスタンスは最初の 31 日間無料ですが、Azure Storage、ストレージ トランザクション、およびデータ転送については料金が発生する場合があります。 また、復旧された仮想マシンも、Azure のコンピューティングの料金が発生する場合があります。
 
 
-### <a name="is-there-a-cost-associated-to-perform-disaster-recovery-drillstest-failover"></a>ディザスター リカバリー ドリル/テスト フェールオーバーの実行に関連するコストはありますか? 
+### <a name="is-there-a-cost-associated-to-perform-disaster-recovery-drillstest-failover"></a>ディザスター リカバリー ドリル/テスト フェールオーバーの実行に関連するコストはありますか?
 
 DR ドリルに対しては、別個のコストはかかりません。 テスト フェールオーバー後に VM が作成されると、以降はコンピューティングの料金がかかります。
 
@@ -124,15 +124,15 @@ Site Recovery を使用すると、サポートされている VM または物�
 はい。 ブランチ オフィスでのレプリケーションとフェールオーバーを調整するために Site Recovery を使用すると、1 か所ですべてのブランチ オフィスのワークロードの統一されたオーケストレーションとビューが得られます。 ブランチ オフィスに出向くことなく、フェールオーバーを容易に実行し、本社からすべてのブランチのディザスター リカバリーを管理できます。
 
 
-### <a name="is-disaster-recovery-supported-for-azure-vms"></a>Azure VM でディザスター リカバリーはサポートされますか? 
+### <a name="is-disaster-recovery-supported-for-azure-vms"></a>Azure VM でディザスター リカバリーはサポートされますか?
 
 はい、Site Recovery では Azure リージョン間での Azure VM のディザスター リカバリーがサポートされます。 Azure VM のディザスター リカバリーに関する[一般的な質問を確認します](azure-to-azure-common-questions.md)。
 
-### <a name="is-disaster-recovery-supported-for-vmware-vms"></a>VMware VM でディザスター リカバリーはサポートされますか? 
+### <a name="is-disaster-recovery-supported-for-vmware-vms"></a>VMware VM でディザスター リカバリーはサポートされますか?
 
 Site Recovery では、オンプレミスの VMware VM のディザスター リカバリーをサポートします。 VMware VM のディザスター リカバリーに関する[一般的な質問を確認します](vmware-azure-common-questions.md)。
 
-### <a name="is-disaster-recovery-supported-for-hyper-v-vms"></a>Hyper-V VM でディザスター リカバリーはサポートされますか? 
+### <a name="is-disaster-recovery-supported-for-hyper-v-vms"></a>Hyper-V VM でディザスター リカバリーはサポートされますか?
 はい、Site Recovery では、オンプレミスの Hyper-V VM のディザスター リカバリーをサポートします。 Hyper-V VM のディザスター リカバリーに関する[一般的な質問を確認します](hyper-v-azure-common-questions.md)。
 
 ## <a name="is-disaster-recovery-supported-for-physical-servers"></a>物理サーバーでディザスター リカバリーはサポートされますか?
@@ -234,10 +234,10 @@ Azure は復元するように設計されています。 Site Recovery は、Az
 
 ## <a name="componentprovider-upgrade"></a>コンポーネント/プロバイダーのアップグレード
 
-### <a name="where-can-i-find-the-release-notesupdate-rollups-of-site-recovery-upgrades"></a>Site Recovery のリリース ノートや更新プログラムのロールアップはどこで入手できますか? 
+### <a name="where-can-i-find-the-release-notesupdate-rollups-of-site-recovery-upgrades"></a>Site Recovery のリリース ノートや更新プログラムのロールアップはどこで入手できますか?
 
 新しい更新プログラムに関する[詳細](site-recovery-whats-new.md)を確認し、[ロールアップ情報を取得](service-updates-how-to.md)します。
 
 ## <a name="next-steps"></a>次の手順
-*  [Azure Site Recovery の概要](site-recovery-overview.md)
+* [Azure Site Recovery の概要](site-recovery-overview.md)
 

@@ -28,11 +28,11 @@ ms.locfileid: "65800388"
 ![複数のコンテナー](media/common/multi-container.png)
 
 ### <a name="download-sample-code-for-mywebapi"></a>*mywebapi* のサンプル コードをダウンロードする
-時間を節約するために、GitHub リポジトリからサンプル コードをダウンロードしましょう。 https://github.com/Azure/dev-spaces に移動し、**[Clone or download]** をクリックして GitHub リポジトリをダウンロードします。 このセクションのコードは、`samples/java/getting-started/mywebapi` にあります。
+時間を節約するために、GitHub リポジトリからサンプル コードをダウンロードしましょう。 [https://github.com/Azure/dev-spaces](https://github.com/Azure/dev-spaces) に移動し、 **[Clone or download]** をクリックして GitHub リポジトリをダウンロードします。 このセクションのコードは、`samples/java/getting-started/mywebapi` にあります。
 
 ### <a name="run-mywebapi"></a>*mywebapi* を実行する
 1. "*別の VS Code ウィンドウ*" で、`mywebapi` フォルダーを開きます。
-1. (**[表示 | コマンド パレット]** メニューを使用して) **コマンド パレット**を開き、オート コンプリートを使用して次のコマンドを入力および選択します: `Azure Dev Spaces: Prepare configuration files for Azure Dev Spaces`。
+1. ( **[表示 | コマンド パレット]** メニューを使用して) **コマンド パレット**を開き、オート コンプリートを使用して次のコマンドを入力および選択します: `Azure Dev Spaces: Prepare configuration files for Azure Dev Spaces`。
 1. F5 キーを押し、サービスがビルドされ、展開されるまで待ちます。 準備ができると、次のようなメッセージがデバッグ コンソールに表示されます。
 
     ```cmd

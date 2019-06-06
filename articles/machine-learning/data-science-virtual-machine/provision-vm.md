@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2019
 ms.author: gokuma
-ms.openlocfilehash: 03bf0833bdc1bda24b9d435dafe329e9a3c8e4b2
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 64642da88850e9a0a17173bc50ae9e750cab55a2
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65596505"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235100"
 ---
 # <a name="provision-a-windows-data-science-virtual-machine-on-azure"></a>Azure での Windows Data Science Virtual Machine のプロビジョニング
 
@@ -106,7 +106,7 @@ DSVM インスタンスを作成するには:
 
 VM を作成してプロビジョニングした後は、前述の **[基本]** セクションで作成した管理者アカウントの資格情報を使って、リモート デスクトップを使用できます。 VM にインストールされて構成されたツールを使い始めることができます。 多くのツールには、スタート メニューのタイルとデスクトップ アイコンからアクセスできます。
 
-また、Data Science VM を Azure Notebooks に接続して、VM で Jupyter Notebook を実行し、無料のサービス レベルの制限をバイパスすることもできます。 詳細については、[Notebooks プロジェクトの管理と構成 - コンピューティング レベル](/azure/notebooks/configure-manage-azure-notebooks-projects.md#compute-tier)に関するページを参照してください。
+また、Data Science VM を Azure Notebooks に接続して、VM で Jupyter Notebook を実行し、無料のサービス レベルの制限をバイパスすることもできます。 詳細については、[Notebooks プロジェクトの管理と構成 - コンピューティング レベル](/azure/notebooks/configure-manage-azure-notebooks-projects#compute-tier)に関するページを参照してください。
 
 ## <a name="tools-installed-on-the-microsoft-data-science-virtual-machine"></a>Microsoft データ サイエンス仮想マシンにインストールされているツール
 

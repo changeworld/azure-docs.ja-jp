@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/10/2019
 ms.author: magoedte
-ms.openlocfilehash: 38979aa5cbb7eff0a949dfb77d6a29b2cdb5c67b
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 23ce57add0d55ba5901e2f5fcf82b3279d349cdc
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65602079"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66472576"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms-preview"></a>Azure Monitor for VMs (プレビュー) からログを照会する方法
 VM 用 Azure Monitor は、パフォーマンスと接続のメトリック、コンピューターとプロセスのインベントリ データ、および正常性状態の情報を収集し、Azure Monitor 内の Log Analytics ワークスペースにこれらを転送します。  このデータは、Azure Monitor で[クエリ](../../azure-monitor/log-query/log-query-overview.md)用に使用できます。 このデータは、移行計画、容量の分析、探索、必要に応じたパフォーマンスのトラブルシューティングといったシナリオに適用できます。
@@ -124,13 +124,6 @@ VM 用 Azure Monitor は、パフォーマンスと接続のメトリック、�
 
 ### <a name="ports"></a>Port 
 受信トラフィックを積極的に受け入れるマシン、または潜在的にトラフィックを受け入れることができても報告期間中はアイドルであるマシン上のポートは、VMBoundPort テーブルに書き込まれます。  
-
->[!NOTE]
->Azure Monitor for VMs では、次のリージョンの Log Analytics ワークスペースでのポート データの収集と記録をサポートしていません。  
->- 米国東部  
->- 西ヨーロッパ
->
-> このデータの収集は、Azure Monitor for VMs の他の[サポートされているリージョン](vminsights-enable-overview.md#log-analytics)では有効になっています。 
 
 VMBoundPort のすべてのレコードは、以下のフィールドで識別されます。 
 

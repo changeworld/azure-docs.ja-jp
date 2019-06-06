@@ -2,20 +2,20 @@
 title: クイック スタート - Azure Active Directory B2C を使用したシングルページ アプリのサインインの設定 | Microsoft Docs
 description: Azure Active Directory B2C を使用してアカウント サインインを提供するサンプル シングルページ アプリケーションを実行します。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: quickstart
 ms.date: 10/24/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 2e5f16fa42e86442f6600e375df343f3b6369986
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: dff1716e8886d1ef72f4d2ad4fbca4bcab86a348
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190382"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66509790"
 ---
 # <a name="quickstart-set-up-sign-in-for-a-single-page-app-using-azure-active-directory-b2c"></a>クイック スタート:Azure Active Directory B2C を使用したシングルページ アプリのサインインの設定
 
@@ -26,7 +26,7 @@ Azure Active Directory (Azure AD) B2C は、アプリケーション、ビジネ
 ## <a name="prerequisites"></a>前提条件
 
 - **[ASP.NET および Web の開発]** ワークロードを含む [Visual Studio 2019](https://www.visualstudio.com/downloads/)。
--  [Node.js](https://nodejs.org/en/download/)
+- [Node.js](https://nodejs.org/en/download/)
 - Facebook、Google、Microsoft、または Twitter のソーシャル アカウント。
 - [ZIP ファイルをダウンロード](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp/archive/master.zip)するか、GitHub からサンプル Web アプリを複製します。
 

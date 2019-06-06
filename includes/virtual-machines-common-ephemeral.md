@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/02/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 47407df90a83501b8739a428789e20cddc59e83d
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 3e9885466d422a0428311ed3013e2ab34341cd25
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66145917"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66391255"
 ---
 エフェメラル OS ディスクは、ローカルの仮想マシン (VM) ストレージで作成され、リモートの Azure Storage に保持されません。 エフェメラル OS ディスクは、ステートレス ワークロードで適切に動作します。この場合、アプリケーションでは個々の VM 障害が許容されますが、大規模なデプロイにかかる時間、または個々の VM インスタンスの再イメージ化にかかる時間が、より重要となります。 また、クラシック デプロイ モデルを使用してデプロイされたアプリケーションを、Resource Manager デプロイ モデルに移動することも適切です。 エフェメラル OS ディスクでは、OS ディスクへの読み取り/書き込み待機時間が短縮され、VM の再イメージ化が高速化されます。 さらに、エフェメラル OS ディスクは無料で、OS ディスクのストレージ コストはかかりません。 
  
@@ -35,41 +35,9 @@ ms.locfileid: "66145917"
 | リージョンのサポート              | すべてのリージョン                                                                                  | すべてのリージョン                              |
 | データの永続化            | 書き込まれた OS ディスク データは Azure Storage に格納                                  | OS ディスクに書き込まれたデータは、ローカル VM ストレージに格納され、Azure Storage に保持されない |
 | 停止と割り当て解除      | VM とスケール セット インスタンスの停止と割り当て解除、またその状態からの再起動が可能 | VM とスケール セット インスタンスの停止と割り当て解除は不可                                  |
-| 特殊化された OS ディスクのサポート | はい                                                                                          | いいえ                                                                                  |
+| 特殊化された OS ディスクのサポート | はい                                                                                          | いいえ                                                                                 |
 | OS ディスクのサイズ変更              | VM 作成中、VM の停止と割り当て解除後に変更可能                                | VM 作成中のみ変更可能                                                  |
 | VM サイズ変更時の動作   | OS ディスク データを維持                                                                    | OS ディスクのデータの削除後に OS を再プロビジョニング                                      |
-
-## <a name="register-for-the-preview"></a>プレビューに登録する
-
-
-最新バージョンの Azure CLI または Azure PowerShell を使用して、エフェメラル OS ディスクのプレビューに自己登録します。
-
-### <a name="powershell"></a>PowerShell
-
-```azurepowershell-interactive
-Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
-Register-AzProviderFeature –FeatureName LocalDiffDiskPreview -ProviderNamespace Microsoft.Compute
-```
-
-プレビューへの登録が済んでいるかどうかを確認するには、次のコマンドを使用します。
-
-```azurepowershell-interactive
-Get-AzProviderFeature –FeatureName LocalDiffDiskPreview -ProviderNamespace Microsoft.Compute
-```
-
-### <a name="cli"></a>CLI
-
-```azurecli-interactive
-az provider register --namespace Microsoft.Compute
-az feature register --namespace Microsoft.Compute --name LocalDiffDiskPreview
-```
-
-プレビューへの登録が済んでいるかどうかを確認するには、次のコマンドを使用します。
- 
-```azurecli-interactive
-az provider show --namespace Microsoft.Compute
-```
-
 
 ## <a name="scale-set-deployment"></a>スケール セットのデプロイ  
 エフェメラル OS ディスクを使用するスケール セットを作成するプロセスでは、テンプレートで `diffDiskSettings` プロパティをリソースの種類 `Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile` に追加します。 また、エフェメラル OS ディスクに対してキャッシュ ポリシーを `ReadOnly` に設定する必要があります。 

@@ -2,20 +2,20 @@
 title: カスタム ポリシーでユーザー体験の UI をカスタマイズする | Microsoft Docs
 description: Azure Active Directory B2C のカスタム ポリシーについて説明します。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/25/2017
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1cd3fa11df9bd9c87b84985f7acad6ba0a5e8838
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 7053f5b0211878d2f0b9d810fc3f4c0b9361e6f7
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64695774"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66509605"
 ---
 # <a name="customize-the-ui-of-a-user-journey-with-custom-policies"></a>カスタム ポリシーでユーザー体験の UI をカスタマイズする
 
@@ -82,15 +82,15 @@ Azure AD B2C では、さまざまなページでのユーザー エクスペリ
 
 1. ブラウズ セッションを開いて [Azure Portal](https://portal.azure.com) に移動します。
 2. 管理者の資格情報でサインインします。
-3. **[リソースの作成]** > **[ストレージ]** > **[ストレージ アカウント]** の順にクリックします。  **[ストレージ アカウントの作成]** ウィンドウが開きます。
+3. **[リソースの作成]**  >  **[ストレージ]**  >  **[ストレージ アカウント]** の順にクリックします。  **[ストレージ アカウントの作成]** ウィンドウが開きます。
 4. **[名前]** に、*contoso369b2c* などのストレージ アカウントの名前を指定します。 この値は後で *storageAccountName* として参照されます。
 5. 価格レベル、リソース グループ、サブスクリプションとして適切な項目を選択します。 **[スタート画面にピン留めする]** がオンになっていることを確認します。 **Create** をクリックしてください。
 6. スタート画面に戻り、作成したストレージ アカウントをクリックします。
-7. **[サービス]** セクションで、**[BLOB]** をクリックします。 **[Blob service] ウィンドウ**が開きます。
+7. **[サービス]** セクションで、 **[BLOB]** をクリックします。 **[Blob service] ウィンドウ**が開きます。
 8. **[+ Container]** (+ コンテナー) をクリックします。
 9. **[名前]** に、*b2c* などのコンテナーの名前を指定します。 この値は後で *containerName* として参照されます。
 9. **[アクセスの種類]** として **[BLOB]** を選択します。 **Create** をクリックしてください。
-10. 作成したコンテナーは、**[Blob service] ウィンドウ**に一覧表示されます。
+10. 作成したコンテナーは、 **[Blob service] ウィンドウ**に一覧表示されます。
 11. **[BLOB]** ウィンドウを閉じます。
 12. **[ストレージ アカウント] ウィンドウ**で、**キー** アイコンをクリックします。 **[アクセス キー] ウィンドウ**が開きます。  
 13. **key1** の値を書き留めます。 この値は後で *key1* として参照されます。
@@ -106,10 +106,10 @@ Azure AD B2C では、さまざまなページでのユーザー エクスペリ
 
 1.  エクスプローラーを使用して、前のセクションで作成した *UI-Customization-Pack* フォルダーの下にある *B2C-AzureBlobStorage-Client-master* フォルダーに移動します。
 2.  *B2CAzureStorageClient.exe* ファイルを実行します。 このプログラムは、指定されたディレクトリ内のすべてのファイルをストレージ アカウントにアップロードし、そのファイルに対する CORS アクセスを有効にします。
-3.  メッセージが表示されたら、次のとおり指定します。a.   ストレージ アカウントの名前である *storageAccountName* (*contoso369b2c* など)。
+3.  メッセージが表示されたら、次のとおり指定します。a.  ストレージ アカウントの名前である *storageAccountName* (*contoso369b2c* など)。
     b.  Azure BLOB ストレージのプライマリ アクセス キーである *key1* (*contoso369b2c* など)。
     c.  ストレージの BLOB ストレージ コンテナーの名前である *containerName* (*b2c* など)。
-    d.  *Starter-Pack* サンプル ファイルのパス (*..\B2CTemplates\wingtiptoys* など)。
+    d.  *Starter-Pack* サンプル ファイルのパス ( *..\B2CTemplates\wingtiptoys* など)。
 
 上記の手順を実行した場合、架空の企業である **wingtiptoys** 用の *UI-Customization-Pack* の HTML5 および CSS ファイルは、ストレージ アカウントを指すようになります。  関連するコンテナーのウィンドウを Azure Portal で開くことで、コンテンツが正常にアップロードされていることを確認できます。 別の方法として、ブラウザーでページにアクセスしてみることでも、コンテンツが正常にアップロードされていることを確認できます。 詳細については、[Azure Active Directory B2C で ページのユーザー インターフェイス (UI) カスタマイズ機能を試すために使用するヘルパー ツール](active-directory-b2c-reference-ui-customization-helper-tool.md)に関するページを参照してください。
 
@@ -120,12 +120,12 @@ Azure AD B2C でコンテンツの読み込みに使用するエンドポイン�
 コンテンツをホストしているストレージで CORS が有効になっていることを確認するために、次の手順に進みます。
 
 1. ブラウズ セッションを開き、*unified.html* ページに移動します。その際、そのページのストレージ アカウント内での場所を指す完全な URL である `https://<storageAccountName>.blob.core.windows.net/<containerName>/unified.html` を使用します。 たとえば、「 https://contoso369b2c.blob.core.windows.net/b2c/unified.html 」のように入力します。
-2.  https://test-cors.org に移動します。このサイトでは、使用しているページで CORS が有効になっていることを確認できます。  
+2. https://test-cors.org に移動します。このサイトでは、使用しているページで CORS が有効になっていることを確認できます。  
    <!--
    ![test-cors.org](../../media/active-directory-b2c-customize-ui-of-a-user-journey/test-cors.png)
    -->
 
-3. **[リモート URL]** に、unified.html のコンテンツの完全な URL を入力し、**[要求の送信]** をクリックします。
+3. **[リモート URL]** に、unified.html のコンテンツの完全な URL を入力し、 **[要求の送信]** をクリックします。
 4. **[結果]** セクションの出力に *XHR status: 200* が含まれていることを確認します。これは、CORS が有効になっていることを示します。
    <!--
    ![CORS enabled](../../media/active-directory-b2c-customize-ui-of-a-user-journey/cors-enabled.png)

@@ -1,0 +1,238 @@
+---
+title: Azure Monitor for VMs の有効化 (プレビュー) の概要 | Microsoft Docs
+description: この記事では、Azure Monitor for VMs をデプロイおよび構成する方法と、必要なシステム要件について説明します。
+services: azure-monitor
+documentationcenter: ''
+author: mgoedtel
+manager: carmonm
+editor: ''
+ms.assetid: ''
+ms.service: azure-monitor
+ms.topic: conceptual
+ms.tgt_pltfrm: na
+ms.workload: infrastructure-services
+ms.date: 05/22/2019
+ms.author: magoedte
+ms.openlocfilehash: 76d18b6a942ed9b8c6871b0ff7cbc1c83917ada4
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66130461"
+---
+# <a name="enable-azure-monitor-for-vms-preview-overview"></a>Azure Monitor for VMs の有効化 (プレビュー) の概要
+
+この記事では、Azure Monitor for VMs の設定オプションの概要について説明します。これらのオプションにより正常性、パフォーマンスを監視し、Azure 仮想マシンと仮想マシン スケール セット、オンプレミス VM、および他のクラウド環境でホストされている VM 上のアプリケーションの依存関係を検出できます。  
+
+Azure Monitor for VMs を有効にするには、次のいずれかの方法を使用します。
+
+* VM または仮想マシン スケール セットから直接 **Insights (プレビュー)** を選択して、単一の Azure 仮想マシンまたは仮想マシン スケール セットを有効にします。
+* Azure Policy を使用して、複数の Azure VM および仮想マシン スケール セットを有効にします。 この方法を使用すると、既存 VM と新規 VM、およびスケール セットの必要な依存関係がインストールされ、適切に構成されます。 準拠していない VM とスケール セットが報告されるので、それらを有効にするかどうか、およびそれらを修復する方法を決めることができます。
+* PowerShell を使用して、指定したサブスクリプションまたはリソース グループ全体の複数の Azure VM または仮想マシン スケール セットを有効にします。
+* 企業ネットワークまたは他のクラウド環境でホストされている仮想マシンまたは物理コンピューターの監視を有効にします。
+
+## <a name="prerequisites"></a>前提条件
+
+始める前に、次のセクションの情報を理解しておいてださい。
+
+### <a name="log-analytics"></a>Log Analytics
+
+Azure Monitor for VMs は、次のリージョンで Log Analytics ワークスペースをサポートします。
+
+- 米国中西部
+- 米国東部
+- カナダ中部<sup>1</sup>
+- 英国南部<sup>1</sup>
+- 西ヨーロッパ
+- 東南アジア<sup>1</sup>
+
+<sup>1</sup> このリージョンでは、Azure Monitor for VMs の正常性の機能はサポートされていません。
+
+>[!NOTE]
+>Azure 仮想マシンは、任意のリージョンからデプロイできます。Log Analytics ワークスペースのサポートされるリージョンに制限されることはありません。
+>
+
+ワークスペースがない場合は、次のいずれかの方法で作成できます。
+* [Azure CLI](../../azure-monitor/learn/quick-create-workspace-cli.md)
+* [PowerShell](../../azure-monitor/learn/quick-create-workspace-posh.md)
+* [Azure ポータル](../../azure-monitor/learn/quick-create-workspace.md)
+* [Azure Resource Manager](../../azure-monitor/platform/template-workspace-configuration.md)
+
+Azure portal で単一の Azure VM または仮想マシン スケール セットに対する監視を有効にする場合は、このプロセスの間にワークスペースを作成できます。
+
+Azure Policy、Azure PowerShell、または Azure Resource Manager テンプレートを使用した大規模なシナリオの場合は、最初にご自身の Log Analytics ワークスペースを次のように構成する必要があります。
+
+* ServiceMap および InfrastructureInsights ソリューションをインストールします。 このインストールを完了するには、提供された Azure Resource Manager テンプレートまたは **[はじめに]** タブにある **[ワークスペースの構成]** オプションを使用します。
+* パフォーマンス カウンターを収集するように Log Analytics ワークスペースを構成します。
+
+大規模シナリオ用ワークスペースを構成するには、次のいずれかの方法を使用します。
+
+* [Azure PowerShell](vminsights-enable-at-scale-powershell.md#set-up-a-log-analytics-workspace)
+* Azure Monitor for VMs の[ポリシー対象範囲](vminsights-enable-at-scale-policy.md#manage-policy-coverage-feature-overview)ページの **[ワークスペースの構成]** オプション
+
+### <a name="supported-operating-systems"></a>サポートされているオペレーティング システム
+
+次の表は、VM 用 Azure Monitor でサポートされている Windows および Linux オペレーティング システムの一覧を示しています。 メジャーおよびマイナーの Linux OS リリースとサポートされているカーネルのバージョンの詳細な一覧は、このセクションの後の方で示されます。
+
+|OS バージョン |パフォーマンス |マップ |Health |
+|-----------|------------|-----|-------|
+|Windows Server 2019 | X | X | X |
+|Windows Server 2016 1803 | X | X | X |
+|Windows Server 2016 | X | X | X |
+|Windows Server 2012 R2 | X | X | X |
+|Windows Server 2012 | X | X | |
+|Windows Server 2008 R2 | X | X| |
+|Red Hat Enterprise Linux (RHEL) 6、7| X | X| X |
+|Ubuntu 14.04、16.04、18.04 | X | X | X |
+|CentOS Linux 6、7 | X | X | X |
+|SUSE Linux Enterprise Server (SLES) 11、12 | X | X | X |
+|Debian 8、9.4 | X<sup>1</sup> | | X |
+
+<sup>1</sup> Azure Monitor for VMs のパフォーマンス機能は、Azure Monitor からのみ使用できます。 Azure VM の左側のウィンドウから直接アクセスしたときには使用できません。
+
+>[!NOTE]
+>次の情報は、Linux オペレーティング システムのサポートに適用されます。
+> - 既定と SMP Linux のカーネル リリースのみがサポートされています。
+> - Physical Address Extension (PAE) や Xen などの非標準のカーネル リリースは、どの Linux ディストリビューションでもサポートされていません。 たとえば、リリースの文字列が *2.6.16.21-0.8-xen* であるシステムはサポートされていません。
+> - カスタム カーネル (標準カーネルの再コンパイルを含む) はサポートされていません。
+> - CentOSPlus カーネルはサポートされています。
+
+#### <a name="red-hat-linux-7"></a>Red Hat Linux 7
+
+| OS バージョン | カーネル バージョン |
+|:--|:--|
+| 7.4 | 3.10.0-693 |
+| 7.5 | 3.10.0-862 |
+| 7.6 | 3.10.0-957 |
+
+#### <a name="red-hat-linux-6"></a>Red Hat Linux 6
+
+| OS バージョン | カーネル バージョン |
+|:--|:--|
+| 6.9 | 2.6.32-696 |
+| 6.10 | 2.6.32-754 |
+
+### <a name="centosplus"></a>CentOSPlus
+| OS バージョン | カーネル バージョン |
+|:--|:--|
+| 6.9 | 2.6.32-696.18.7<br>2.6.32-696.30.1 |
+| 6.10 | 2.6.32-696.30.1<br>2.6.32-754.3.5 |
+
+#### <a name="ubuntu-server"></a>Ubuntu Server
+
+| OS バージョン | カーネル バージョン |
+|:--|:--|
+| Ubuntu 18.04 | カーネル 4.15.* |
+| Ubuntu 16.04.3 | カーネル 4.15.* |
+| 16.04 | 4.4.\*<br>4.8.\*<br>4.10.\*<br>4.11.\*<br>4.13.\* |
+| 14.04 | 3.13.\*<br>4.4.\* |
+
+#### <a name="suse-linux-11-enterprise-server"></a>SUSE Linux 11 Enterprise Server
+
+| OS バージョン | カーネル バージョン
+|:--|:--|
+|11 SP4 | 3.0.* |
+
+#### <a name="suse-linux-12-enterprise-server"></a>SUSE Linux 12 Enterprise Server
+
+| OS バージョン | カーネル バージョン
+|:--|:--|
+|12 SP2 | 4.4.* |
+|12 SP3 | 4.4.* |
+
+### <a name="the-microsoft-dependency-agent"></a>Microsoft Dependency Agent
+
+Azure Monitor for VMs のマップ機能では、Microsoft Dependency Agent からデータが取得されます。 Dependency Agent は、Log Analytics への接続に関して Log Analytics エージェントに依存しています。 したがって、お使いのシステムに Log Analytics エージェントをインストールし、Dependency Agent を使用して構成する必要があります。
+
+単一の Azure VM に対して Azure Monitor for VMs を有効にするか、または大規模なデプロイ方法を使用するかにかかわらず、Azure VM Dependency Agent 拡張機能を使用し、エクスペリエンスの一部としてエージェントをインストールする必要があります。
+
+ハイブリッド環境での Dependency Agent はのダウンロードとインストールは、手動で行うか、Azure 以外でホストされている仮想マシンを対象とした自動デプロイ方法を使用して行います。
+
+次の表では、ハイブリッド環境でマップ機能がサポートしている接続先ソースについて説明します。
+
+| 接続先ソース | サポートされています | 説明 |
+|:--|:--|:--|
+| Windows エージェント | はい | [Windows の Log Analytics エージェント](../../azure-monitor/platform/log-analytics-agent.md)に加えて、Windows エージェントには Microsoft Dependency Agent が必要です。 オペレーティング システムのバージョンの完全な一覧については、「[サポートされているオペレーティング システム](#supported-operating-systems)」をご覧ください。 |
+| Linux エージェント | はい | [Linux の Log Analytics エージェント](../../azure-monitor/platform/log-analytics-agent.md)に加えて、Linux エージェントには Microsoft Dependency Agent が必要です。 オペレーティング システムのバージョンの完全な一覧については、「[サポートされているオペレーティング システム](#supported-operating-systems)」をご覧ください。 |
+| System Center Operations Manager 管理グループ | いいえ | |
+
+Dependency Agent は、次の場所からダウンロードできます。
+
+| ファイル | OS | バージョン | SHA-256 |
+|:--|:--|:--|:--|
+| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.8.1 | 622C99924385CBF539988D759BCFDC9146BB157E7D577C997CDD2674E27E08DD |
+| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.8.1 | 3037934A5D3FB7911D5840A9744AE9F980F87F620A7F7B407F05E276FE7AE4A8 |
+
+## <a name="role-based-access-control"></a>ロールベースのアクセス制御
+
+Azure Monitor for VMs の機能を有効にしてアクセスするには、次のアクセス ロールが割り当てられている必要があります。
+
+- これを有効にするには、"*Log Analytics 共同作成者*" ロールが必要です。
+
+- パフォーマンス、正常性、マップのデータを表示するには、Azure VM に対する "*監視閲覧者*" ロールが必要です。 Azure Monitor for VMs 用に Log Analytics ワークスペースを構成する必要があります。
+
+Log Analytics ワークスペースへのアクセスを制御する方法の詳細については、「[ワークスペースを管理する](../../azure-monitor/platform/manage-access.md)」を参照してください。
+
+## <a name="how-to-enable-azure-monitor-for-vms-preview"></a>Azure Monitor for VMs を有効にする方法 (プレビュー)
+
+以下の表で説明されている方法のいずれかを使用して、Azure Monitor for VMs を有効にします。
+
+| デプロイの状態 | Method | 説明 |
+|------------------|--------|-------------|
+| 単一の Azure VM または仮想マシン スケール セット | [VM から直接](vminsights-enable-single-vm.md) | 単一の Azure 仮想マシンを有効にするには、VM または仮想マシン スケール セットから直接 **Insights (プレビュー)** を選択します。 |
+| 複数の Azure VM または仮想マシン スケール セット | [Azure Policy](vminsights-enable-at-scale-policy.md) | Azure Policy と使用可能なポリシー定義を使用すると、複数の Azure VM を有効にできます。 |
+| 複数の Azure VM または仮想マシン スケール セット | [Azure PowerShell または Azure Resource Manager テンプレート](vminsights-enable-at-scale-powershell.md) | Azure PowerShell または Azure Resource Manager テンプレートを使用すると、指定したサブスクリプションまたはリソース グループにまたがる複数の Azure VM または仮想マシン スケール セットを有効にできます。 |
+| ハイブリッド クラウド | [ハイブリッド環境対応にする](vminsights-enable-hybrid-cloud.md) | ご自身のデータ センターやその他のクラウド環境でホストされている仮想マシンまたは物理コンピューターにデプロイできます。 |
+
+## <a name="performance-counters-enabled"></a>パフォーマンス カウンターの有効化
+
+Azure Monitor for VMs では、使用されているパフォーマンス カウンターが収集されるように Log Analytics ワークスペースが構成されます。 次の表に、60 秒ごとに収集されるオブジェクトとカウンターを示します。
+
+### <a name="windows-performance-counters"></a>Windows パフォーマンス カウンター
+
+|オブジェクト名 |カウンター名 |
+|------------|-------------|
+|LogicalDisk |% Free Space |
+|LogicalDisk |Avg.Disk sec/Read |
+|LogicalDisk |Avg.Disk sec/Transfer |
+|LogicalDisk |Avg.Disk sec/Write |
+|LogicalDisk |Disk Bytes/sec |
+|LogicalDisk |Disk Read Bytes/sec |
+|LogicalDisk |Disk Reads/sec |
+|LogicalDisk |Disk Transfers/sec |
+|LogicalDisk |Disk Write Bytes/sec |
+|LogicalDisk |Disk Writes/sec |
+|LogicalDisk |Free Megabytes |
+|メモリ |Available MBytes |
+|ネットワーク アダプター |Bytes Received/sec |
+|ネットワーク アダプター |Bytes Sent/sec |
+|プロセッサ |% Processor Time |
+
+### <a name="linux-performance-counters"></a>Linux パフォーマンス カウンター
+
+|オブジェクト名 |カウンター名 |
+|------------|-------------|
+|論理ディスク |% Used Space |
+|論理ディスク |Disk Read Bytes/sec |
+|論理ディスク |Disk Reads/sec |
+|論理ディスク |Disk Transfers/sec |
+|論理ディスク |Disk Write Bytes/sec |
+|論理ディスク |Disk Writes/sec |
+|論理ディスク |Free Megabytes |
+|論理ディスク |Logical Disk Bytes/sec |
+|メモリ |Available MBytes Memory |
+|ネットワーク |Total Bytes Received |
+|ネットワーク |Total Bytes Transmitted |
+|プロセッサ |% Processor Time |
+
+## <a name="diagnostic-and-usage-data"></a>診断と使用状況データ
+
+Microsoft は、お客様による Azure Monitor サービスの使用を通して、使用状況とパフォーマンス データを自動的に収集します。 Microsoft はこのデータを使用して、提供するサービスの品質、セキュリティ、整合性の向上に努めています。 正確で効果的なトラブルシューティング機能を提供するために、マップ機能からのデータにはソフトウェアの構成に関する情報が含まれています。たとえば、オペレーティング システムとバージョン、IP アドレス、DNS 名、ワークステーション名などです。 名前や住所などの連絡先情報は収集されません。
+
+データの収集と使用の詳細については、「[Microsoft オンライン サービスのプライバシーに関する声明](https://go.microsoft.com/fwlink/?LinkId=512132)」を参照してください。
+
+[!INCLUDE [GDPR-related guidance](../../../includes/gdpr-dsr-and-stp-note.md)]
+
+## <a name="next-steps"></a>次の手順
+
+仮想マシンの監視が有効になったので、Azure Monitor for VMs での分析にこの情報を使用できます。 正常性機能の使用方法については、[Azure Monitor for VMs の正常性の表示](vminsights-health.md)に関する記事をご覧ください。 検出されたアプリケーションの依存関係を表示するには、[Azure Monitor for VMs のマップの表示](vminsights-maps.md)に関する記事をご覧くださいい。

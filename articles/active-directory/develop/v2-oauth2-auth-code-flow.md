@@ -13,23 +13,23 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/12/2019
+ms.date: 06/04/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d3ab6f53fdb11b0b8d643868d0692667c8672f9
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: c5c45071406c420546a90a71751045fea926804f
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545173"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66513520"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft ID プラットフォームと OAuth 2.0 認証コード フロー
 
 [!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
-デバイスにインストールされているアプリに、Web API など、保護されているリソースにアクセスする権利を与えるために OAuth 2.0 認証コード付与を利用できます。 Microsoft ID プラットフォームによる OAuth 2.0 の実装を使用すると、サインインおよび API アクセスをモバイル アプリやデスクトップ アプリに追加できます。 このガイドでは、[Azure オープンソース認証ライブラリ](active-directory-authentication-libraries.md)を利用せず、HTTP メッセージを送受信する方法について説明します。本ガイドは言語非依存です。
+デバイスにインストールされているアプリに、Web API など、保護されているリソースにアクセスする権利を与えるために OAuth 2.0 認証コード付与を利用できます。 Microsoft ID プラットフォームによる OAuth 2.0 の実装を使用すると、サインインおよび API アクセスをモバイル アプリやデスクトップ アプリに追加できます。 このガイドでは、[Azure オープンソース認証ライブラリ](reference-v2-libraries.md)を利用せず、HTTP メッセージを送受信する方法について説明します。本ガイドは言語非依存です。
 
 > [!NOTE]
 > Microsoft ID プラットフォーム エンドポイントでは、Azure Active Directory のすべてのシナリオや機能がサポートされているわけではありません。 Microsoft ID プラットフォーム エンドポイントを使用すべきかどうかを判定するには、[Microsoft ID プラットフォームの制限](active-directory-v2-limitations.md)に関するページを参照してください。
@@ -181,8 +181,8 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `token_type`    | トークン タイプ値を指定します。 Azure AD でサポートされるのは Bearer タイプのみです。 |
 | `expires_in`    | アクセス トークンの有効期間 (秒)。 |
 | `scope`         | access_token が有効である範囲。 |
-| `refresh_token` | OAuth 2.0 更新トークン。 現在のアクセス トークンの有効期限が切れた後、アプリはこのトークンを使用して、追加のアクセス トークンを取得します。 Refresh_token は有効期間が長く、リソースへのアクセスを長時間保持するときに利用できます。 アクセス トークンの更新の詳細については、[後述のセクション](#refresh-the-access-token)を参照してください。 <br> **注:**`offline_access` スコープが要求された場合のみ提供されます。 |
-| `id_token`      | JSON Web トークン (JWT)。 アプリは、このトークンのセグメントをデコードすることによって、サインインしたユーザーに関する情報を要求することができます。 この値をキャッシュして表示することはできますが、承認やセキュリティ境界の用途でこの値に依存することは避けてください。 id_token の詳細については、[`id_token reference`](id-tokens.md)を参照してください。 <br> **注:**`openid` スコープが要求された場合のみ提供されます。 |
+| `refresh_token` | OAuth 2.0 更新トークン。 現在のアクセス トークンの有効期限が切れた後、アプリはこのトークンを使用して、追加のアクセス トークンを取得します。 Refresh_token は有効期間が長く、リソースへのアクセスを長時間保持するときに利用できます。 アクセス トークンの更新の詳細については、[後述のセクション](#refresh-the-access-token)を参照してください。 <br> **注:** `offline_access` スコープが要求された場合のみ提供されます。 |
+| `id_token`      | JSON Web トークン (JWT)。 アプリは、このトークンのセグメントをデコードすることによって、サインインしたユーザーに関する情報を要求することができます。 この値をキャッシュして表示することはできますが、承認やセキュリティ境界の用途でこの値に依存することは避けてください。 id_token の詳細については、[`id_token reference`](id-tokens.md)を参照してください。 <br> **注:** `openid` スコープが要求された場合のみ提供されます。 |
 
 ### <a name="error-response"></a>エラー応答
 
@@ -228,7 +228,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 `access_token` を無事取得したら、そのトークンを `Authorization` ヘッダーに追加することによって、Web API への要求に使用することができます。
 
 > [!TIP]
->  ヘッダーを置き換えてください)。 (最初に `Authorization` ヘッダーを置き換えてください)。[![Postman で実行](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
+> ヘッダーを置き換えてください)。 (最初に `Authorization` ヘッダーを置き換えてください)。[![Postman で実行](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
 ```
 GET /v1.0/me/messages
@@ -291,8 +291,8 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `token_type`    | トークン タイプ値を指定します。 Azure AD でサポートされるのは Bearer タイプのみです。 |
 | `expires_in`    | アクセス トークンの有効期間 (秒)。   |
 | `scope`         | access_token が有効である範囲。    |
-| `refresh_token` | 新しい OAuth 2.0 更新トークン。 できるだけ長い時間、更新トークンを有効な状態に維持するためには、この新しく取得した更新トークンで古い更新トークンを置き換える必要があります。 <br> **注:**`offline_access` スコープが要求された場合のみ提供されます。|
-| `id_token`      | 無署名の JSON Web トークン (JWT)。 アプリは、このトークンのセグメントをデコードすることによって、サインインしたユーザーに関する情報を要求することができます。 この値をキャッシュして表示することはできますが、承認やセキュリティ境界の用途でこの値に依存することは避けてください。 id_token の詳細については、[`id_token reference`](id-tokens.md)を参照してください。 <br> **注:**`openid` スコープが要求された場合のみ提供されます。 |
+| `refresh_token` | 新しい OAuth 2.0 更新トークン。 できるだけ長い時間、更新トークンを有効な状態に維持するためには、この新しく取得した更新トークンで古い更新トークンを置き換える必要があります。 <br> **注:** `offline_access` スコープが要求された場合のみ提供されます。|
+| `id_token`      | 無署名の JSON Web トークン (JWT)。 アプリは、このトークンのセグメントをデコードすることによって、サインインしたユーザーに関する情報を要求することができます。 この値をキャッシュして表示することはできますが、承認やセキュリティ境界の用途でこの値に依存することは避けてください。 id_token の詳細については、[`id_token reference`](id-tokens.md)を参照してください。 <br> **注:** `openid` スコープが要求された場合のみ提供されます。 |
 
 #### <a name="error-response"></a>エラー応答
 

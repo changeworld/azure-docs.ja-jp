@@ -4,7 +4,7 @@ description: イベント ハブを構成し、サンプル アプリケーシ�
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 48524020940149f6c67f4859f23c03eea140454b
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: ae59e8115ca2d1ba69c8a3a099216eb3d98e2658
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65991490"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237689"
 ---
 # <a name="send-events-to-a-time-series-insights-environment-by-using-an-event-hub"></a>イベント ハブを使用して Time Series Insights 環境にイベントを送信する
 

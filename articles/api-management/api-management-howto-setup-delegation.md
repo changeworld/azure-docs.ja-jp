@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 4db99f23019b34e7361e3ead4096939b9499320d
-ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
+ms.openlocfilehash: 2fad585e1d37694e37c219be210f9521dbbda3a0
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65518087"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241645"
 ---
 # <a name="how-to-delegate-user-registration-and-product-subscription"></a>ユーザーの登録と成果物のサブスクリプションを委任する方法
 
@@ -184,9 +184,9 @@ var signature = digest.toString('base64');
 
 [Delegating developer sign in and sign up]: #delegate-signin-up
 [Delegating product subscription]: #delegate-product-subscription
-[シングル サインオン (SSO) トークンを要求]: https://docs.microsoft.com/rest/api/apimanagement/User/GenerateSsoUrl
-[ユーザーを作成]: https://docs.microsoft.com/rest/api/apimanagement/user/createorupdate
-[サブスクリプションのための REST API の呼び出し]: https://docs.microsoft.com/rest/api/apimanagement/subscription/createorupdate
+[シングル サインオン (SSO) トークンを要求]: https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/User/GenerateSsoUrl
+[ユーザーを作成]: https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/user/createorupdate
+[サブスクリプションのための REST API の呼び出し]: https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/subscription/createorupdate
 [Next steps]: #next-steps
 [コードの例を次に示します]: #delegate-example-code
 

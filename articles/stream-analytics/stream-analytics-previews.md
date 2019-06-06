@@ -7,13 +7,13 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 05/07/2019
-ms.openlocfilehash: f3838bf6b9f7daa24c0cdb5b0c5a08d41d164530
-ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
+ms.date: 05/29/2019
+ms.openlocfilehash: e63937cedf44b1642e091a4744d898a26422be10
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65561130"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393686"
 ---
 # <a name="azure-stream-analytics-preview-features"></a>Azure Stream Analytics のプレビュー機能
 
@@ -30,10 +30,6 @@ Visual Studio Code で Azure Stream Analytics のジョブを作成できます�
 ### <a name="anomaly-detection"></a>異常検出
 
 Azure Stream Analytics では、"*スパイク*" と "*ディップ*" の検出、および双方向、ゆっくりした増加、ゆっくりした減少の傾向の検出のサポートを備えた、新しい機械学習モデルが導入されています。 詳細については、「[Azure Stream Analytics での異常検出](stream-analytics-machine-learning-anomaly-detection.md)」を参照してください。
-
-### <a name="sql-database-reference-data"></a>SQL Database 参照データ
-
-Azure Stream Analytics では、参照データ入力のソースとして Azure SQL Database がサポートされています。 Stream Analytics ツールを使用して、Azure portal および Visual Studio で Stream Analytics ジョブに対する参照データとして SQL Database を使用できます。 詳細については、[SQL Database からの参照データの Azure Stream Analytics ジョブでの使用](sql-reference-data.md)に関するページを参照してください。
 
 ### <a name="integration-with-azure-machine-learning"></a>Azure Machine Learning との統合
 

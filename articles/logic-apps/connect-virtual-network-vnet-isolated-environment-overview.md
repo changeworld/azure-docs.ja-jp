@@ -9,16 +9,18 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 05/06/2019
-ms.openlocfilehash: 0206fd2b2ea0a7cfaf79aaf19052e0174645780b
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 1ef8c8eec3865f2a6e363e7da1dbda9504b81c05
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65143155"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65546429"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>統合サービス環境 (ISE) を使用して、Azure Logic Apps から Azure Virtual Network リソースにアクセスする
 
-場合によって、ご利用のロジック アプリと統合アカウントで、仮想マシン (VM) や [Azure 仮想ネットワーク](../virtual-network/virtual-networks-overview.md)内の他のシステムまたはサービスのようなセキュリティで保護されたリソースにアクセスする必要があります。 このアクセスを設定するため、自分のロジック アプリと統合アカウントを実行するための ["*統合サービス環境*" (ISE) を作成する](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)ことができます。 ISE を作成すると、Azure は Logic Apps サービスの分離したプライベート インスタンスを Azure 仮想ネットワークにデプロイします。 このプライベート インスタンスは、ストレージなどの専用のリソースを使用し、パブリックで "グローバル" な Logic Apps サービスとは別に実行されます。 分離したプライベート インスタンスとパブリック グローバル インスタンスを分けることで、他の Azure テナントが自分のアプリのパフォーマンスに与える可能性がある影響 (["うるさい隣人" エフェクト](https://en.wikipedia.org/wiki/Cloud_computing_issues#Performance_interference_and_noisy_neighbors)とも呼ばれる) を減らすことができます。
+場合によっては、ご利用のロジック アプリと統合アカウントで、[Azure 仮想ネットワーク](../virtual-network/virtual-networks-overview.md)内の仮想マシン (VM) や他のシステムまたはサービスなど、セキュリティで保護されたリソースにアクセスする必要が生じます。 このアクセスを設定するために、["*統合サービス環境*" (ISE) を作成して](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)、そこで自分のロジック アプリを実行したり統合アカウントを作成したりすることができます。
+
+ISE を作成すると、Azure は Logic Apps サービスの分離したプライベート インスタンスを Azure 仮想ネットワークにデプロイします。 このプライベート インスタンスは、ストレージなどの専用のリソースを使用し、パブリックで "グローバル" な Logic Apps サービスとは別に実行されます。 分離したプライベート インスタンスとパブリック グローバル インスタンスを分けることで、他の Azure テナントが自分のアプリのパフォーマンスに与える可能性がある影響 (["うるさい隣人" エフェクト](https://en.wikipedia.org/wiki/Cloud_computing_issues#Performance_interference_and_noisy_neighbors)とも呼ばれる) を減らすことができます。
 
 ISE の作成後は、ロジック アプリや統合アカウントを作成するときに、以下のように ISE をロジック アプリまたは統合アカウントの場所として選択することができます。
 
@@ -26,15 +28,14 @@ ISE の作成後は、ロジック アプリや統合アカウントを作成す
 
 これで、ロジック アプリは、以下のいずれかの項目を使用して、仮想ネットワーク内のシステム、または仮想ネットワークに接続されているシステムに直接アクセスできるようになりました。
 
-* そのシステムの ISE バージョンのコネクタ。例えば、SQL Server
-* 組み込みトリガーまたは組み込みアクション。例えば、HTTP トリガーまたは HTTP アクション
+* **ISE** とラベル付けされた、そのシステム (例: SQL Server) のコネクタ
+* **Core** とラベル付けされた組み込みトリガーまたは組み込みアクション (例: HTTP トリガーまたは HTTP アクション)
 * カスタム コネクタ
 
 この概要では、ISE によってロジック アプリと統合アカウントに Azure 仮想ネットワークへの直接アクセスが提供される方法を詳しく説明し、ISE とグローバルな Logic Apps サービスとの違いを比較します。
-仮想ネットワークに接続されていない、または ISE バージョン コネクタがないオンプレミス システムの場合は、[オンプレミスのデータ ゲートウェイをセットアップして使用する](../logic-apps/logic-apps-gateway-install.md)ことにより、これらのシステムに接続できます。
 
-> [!IMPORTANT]
-> ご利用の ISE で実行されるロジック アプリ、組み込みアクション、コネクタは、使用量ベースの料金プランではなく、異なる料金プランを使用します。 詳細については、「[Logic Apps の価格](../logic-apps/logic-apps-pricing.md)」をご覧ください。
+> [!NOTE]
+> ISE 内で実行されるロジック アプリ、組み込みトリガー、組み込みアクション、およびコネクターでは、使用量ベースの価格プランとは異なる価格プランが使用されます。 詳細については、「[Logic Apps の価格](../logic-apps/logic-apps-pricing.md)」をご覧ください。
 
 <a name="difference"></a>
 
@@ -42,7 +43,7 @@ ISE の作成後は、ロジック アプリや統合アカウントを作成す
 
 Azure で統合サービス環境 (ISE) を作成するときは、ISE を "*挿入*" する Azure 仮想ネットワークを選択することができます。 それにより、Azure は、Logic Apps サービスのプライベート インスタンスを仮想ネットワークに挿入、またはデプロイします。 このアクションにより、専用リソースでロジック アプリを作成して実行できる分離環境が作成されます。 ロジック アプリを作成するときにアプリの場所として ISE を選択すると、ロジック アプリは仮想ネットワークとそのネットワーク内のリソースに直接アクセスできるようになります。
 
-ISE のロジック アプリはグローバルな Logic Apps サービスとユーザー操作が同じで、同様の機能を提供しています。 グローバルな Logic Apps サービスで同じ組み込みアクションとコネクタを使用できるだけでなく、ISE 固有のコネクタも使用できます。 たとえば、次のような標準コネクタは ISE で実行されるバージョンを提供しています。
+ISE のロジック アプリはグローバルな Logic Apps サービスとユーザー操作が同じで、同様の機能を提供しています。 グローバルな Logic Apps サービスで同じ組み込みトリガー、組み込みアクション、コネクタを使用できるだけでなく、ISE 固有のコネクタも使用できます。 たとえば、次のような標準コネクタでは ISE で動作するバージョンが提供されています。
 
 * Azure Blob Storage、Azure File Storage、Azure Table Storage
 * Azure キュー、Azure Service Bus、Azure Event Hubs、IBM MQ
@@ -52,15 +53,29 @@ ISE のロジック アプリはグローバルな Logic Apps サービスとユ
 
 ISE と ISE 以外のコネクタには、トリガーとアクションが実行される場所に違いがあります。
 
-* ISE では、組み込みトリガーと HTTP などのアクションは常に、ロジック アプリと同じ ISE 内で動作します。
+* ISE では、HTTP などの組み込みトリガーおよび組み込みアクションは、常にロジック アプリと同じ ISE 内で実行され、**Core** のラベルが表示されます。
 
-* 2 つのバージョンを提供するコネクタの場合、1 つのバージョンは ISE で実行され、もう一方のバージョンはグローバルな Logic Apps サービスで実行されます。  
+  !["Core" 組み込みトリガーと組み込みアクションを選択する](./media/connect-virtual-network-vnet-isolated-environment-overview/select-core-built-in-actions-triggers.png)
 
-  **ISE** ラベルがあるコネクタは、常にご利用のロジック アプリと同じ ISE で実行されます。 **ISE** ラベルがないコネクタはグローバルな Logic Apps サービスで実行されます。
+* ISE 内で実行されるコネクタには、グローバルな Logic Apps サービスで使用可能な、パブリックにホストされるバージョンがあります。 2 つのバージョンが提供されているコネクタの場合、**ISE** のラベルがあるコネクタは、常に、ご利用のロジック アプリと同じ ISE で動作します。 **ISE** ラベルがないコネクタはグローバルな Logic Apps サービスで実行されます。
 
   ![ISE のコネクタを選択する](./media/connect-virtual-network-vnet-isolated-environment-overview/select-ise-connectors.png)
 
-* ISE 内で実行されるコネクタは、もグローバルな Logic Apps サービスでも使用できます。
+### <a name="access-to-on-premises-data-sources"></a>オンプレミス データ ソースにアクセスする
+
+Azure 仮想ネットワークに接続されているオンプレミス システムの場合は、ロジック アプリからそのシステムに直接アクセスできるように、次の項目のいずれかを使用してそのネットワークに ISE を挿入します。
+
+* そのシステム (例: SQL Server) の ISE バージョンのコネクタ
+  
+* HTTP アクション
+  
+* カスタム コネクタ
+
+  * オンプレミス データ ゲートウェイを必要とするカスタム コネクタを ISE の外部で作成した場合は、ISE 内のロジック アプリでもそれらのコネクタを使用できます。
+  
+  * ISE 内で作成されたカスタム コネクタは、オンプレミス データ ゲートウェイでは動作しません。 ただし、これらのコネクタでは、ISE をホストしている仮想ネットワークに接続されているオンプレミス データ ソースに直接アクセスできます。 そのため、ISE 内のロジック アプリでは、ほとんどの場合、それらのリソースと通信するときにデータ ゲートウェイは不要です。
+
+仮想ネットワークに接続されていない、または ISE バージョンのコネクタがないオンプレミス システムの場合は、ロジック アプリからこれらのシステムに接続する前に、まず[オンプレミスのデータ ゲートウェイを設定する](../logic-apps/logic-apps-gateway-install.md)必要があります。
 
 <a name="create-integration-account-environment"></a>
 

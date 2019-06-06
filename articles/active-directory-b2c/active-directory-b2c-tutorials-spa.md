@@ -2,20 +2,20 @@
 title: チュートリアル - シングルページ アプリケーションで認証を有効にする - Azure Active Directory B2C | Microsoft Docs
 description: シングルページ アプリケーション (JavaScript) で Azure Active Directory B2C を使用してユーザー ログインを提供する方法に関するチュートリアル。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
-ms.author: davidmu
+ms.author: marsma
 ms.date: 02/04/2019
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 3773efdbe47c045dccf74ace3e1b53936c9400fe
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 6e4be3a14a6cfba6b32bea8a77975e3e34ea012d
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190299"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66507806"
 ---
 # <a name="tutorial-enable-authentication-in-a-single-page-application-using-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C を使用してシングルページ アプリケーションで認証を有効にする
 
@@ -35,7 +35,7 @@ ms.locfileid: "65190299"
 * [ユーザー フローを作成](tutorial-create-user-flows.md)してアプリケーションでのユーザー エクスペリエンスを有効にする。 
 * **[ASP.NET および Web の開発]** ワークロードと共に [Visual Studio 2019](https://www.visualstudio.com/downloads/) をインストールする。
 * [.NET Core 2.0.0 SDK](https://www.microsoft.com/net/core) 以降をインストールします
-*  [Node.js](https://nodejs.org/en/download/)
+* [Node.js](https://nodejs.org/en/download/)
 
 ## <a name="update-the-application"></a>アプリケーションの更新
 
@@ -43,12 +43,12 @@ ms.locfileid: "65190299"
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. お使いの Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。確認のために、トップ メニューにある **[ディレクトリとサブスクリプション フィルター]** をクリックして、お使いのテナントを含むディレクトリを選択します。
-3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、**[Azure AD B2C]** を検索して選択します。
+3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
 4. **[アプリケーション]** を選択し、*webapp1* アプリケーションを選択します。
 5. **[応答 URL]** に「`http://localhost:6420`」を追加します。
 6. **[保存]** を選択します。
 7. プロパティ ページで、アプリケーション ID を記録しておきます。これは、Web アプリケーションを構成するときに使用します。
-8. **[キー]**、**[キーの生成]**、**[保存]** の順に選択します。 Web アプリケーションの構成時に使用するキーを書き留めておきます。
+8. **[キー]** 、 **[キーの生成]** 、 **[保存]** の順に選択します。 Web アプリケーションの構成時に使用するキーを書き留めておきます。
 
 ## <a name="configure-the-sample"></a>サンプルの構成
 
@@ -101,7 +101,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-
 ### <a name="sign-up-using-an-email-address"></a>メール アドレスを使用してサインアップする
 
 1. **[Login]\(ログイン\)** をクリックし、アプリケーションのユーザーとしてサインアップします。 これにより、前のステップで定義した **B2C_1_signupsignin1** ユーザー フローが使用されます。
-2. Azure AD B2C によって、サインアップ リンクを含むサインイン ページが表示されます。 まだアカウントを持っていないため、**[今すぐサインアップ]** リンクをクリックします。 
+2. Azure AD B2C によって、サインアップ リンクを含むサインイン ページが表示されます。 まだアカウントを持っていないため、 **[今すぐサインアップ]** リンクをクリックします。 
 3. サインアップ ワークフローによって、メール アドレスを使用してユーザーの ID を収集および確認するためのページが表示されます。 また、サインアップ ワークフローでは、ユーザー フローで定義されているユーザーのパスワードと要求された属性も収集されます。
 
     有効なメール アドレスを使用し、確認コードを使用して検証します。 パスワードを設定します。 要求された属性の値を入力します。 
