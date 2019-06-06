@@ -3,19 +3,19 @@ title: 言語サポート - Translator Text API
 titleSuffix: Azure Cognitive Services
 description: Microsoft Translator Text API でサポートされる自然言語の一覧。
 services: cognitive-services
-author: v-pawal
+author: rajdeep-in
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 02/21/2019
-ms.author: v-jansko
-ms.openlocfilehash: 8de9d7e6aac052ca24f1eef5f99c3146029bddbb
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 06/04/2019
+ms.author: v-pawal
+ms.openlocfilehash: 924324b11f49a50bfb5f00e117b33c0cc572e3bb
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64690145"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66514980"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>Translator Text API の言語と地域のサポート
 
@@ -35,7 +35,7 @@ Translator Text API では、テキスト対テキストの翻訳について、
 * ニューラルが既定: ニューラルが既定の翻訳システムです。 Microsoft Translator Hub 用の統計システムにアクセスするには、パラメーター `category=smt` を使用します。
 * ニューラルのみ: 利用できるのはニューラル翻訳のみです。
 
-**V3 Translator API** V3 Translator API は既定でニューラルとなっており、ニューラル システムが存在しない場合にのみ統計システムを利用できます。 
+**V3 Translator API** V3 Translator API は既定でニューラルとなっており、ニューラル システムが存在しない場合にのみ統計システムを利用できます。
 
 > [!NOTE]
 > 現在、ニューラル言語のサブセットはカスタム翻訳ツールで利用することができ、Mcrosoft では、段階的に内容を追加しています。 [カスタム翻訳ツールで現在利用できる言語をご確認ください](#customization)。
@@ -213,6 +213,7 @@ Languages メソッドを使用して、Translator Text API v3.0 でサポート
 | ボスニア語 (ラテン)      | `bs`          |
 | ブルガリア語      | `bg`          |
 | 中国語 (簡体字)      | `zh-Hans`          |
+|中国語 (繁体字)|   `zh-Hant`   |
 | クロアチア語      | `hr`          |
 | チェコ語      | `cs`          |
 | デンマーク語      | `da`          |

@@ -2,20 +2,20 @@
 title: Azure Active Directory B2C を使用して Twitter アカウントでのサインアップおよびサインインを設定する | Microsoft Docs
 description: Azure Active Directory B2C を使用するアプリケーションで Twitter アカウントを持つ顧客にサインアップとサインインを提供します。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/30/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a07f138461759ff0871df0c677ef36e0fb36ae34
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 706807039ac7c13cd88bc8ac99acf0d7ece3b384
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64703968"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66508158"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-twitter-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して Twitter アカウントでのサインアップおよびサインインを設定する
 
@@ -28,17 +28,17 @@ Azure AD B2C で ID プロバイダーとして Twitter を使用するには、
 3. **アプリ名**と**アプリケーションの説明**を入力します。
 4. **Web サイトの URL** で、`https://your-tenant.b2clogin.com`を入力します。 `your-tenant` をテナントの名前に置き換えます。 たとえば、「 https://contosob2c.b2clogin.com 」のように入力します。
 5. **[Callback URL]** に「`https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/your-user-flow-Id/oauth1/authresp`」と入力します。 `your-tenant` を自分のテナント名に置き換え、`your-user-flow-Id` を自分のユーザー フローの識別子に置き換えます。 たとえば、「 `b2c_1A_signup_signin_twitter` 」のように入力します。 テナントが Azure AD B2C に大文字で定義されている場合でも、テナント名を入力するときに、すべての小文字を使用する必要があります。
-6. ページ下部の使用条件を確認して同意し、**[作成]** を選択します。
-7. **[アプリの詳細]** ページで、**[編集 > 詳細の編集]** を選択して、**[Twitter でサインインを有効にする]** のチェック ボックスにチェックを入れ、**[保存]** を選択します。
+6. ページ下部の使用条件を確認して同意し、 **[作成]** を選択します。
+7. **[アプリの詳細]** ページで、 **[編集 > 詳細の編集]** を選択して、 **[Twitter でサインインを有効にする]** のチェック ボックスにチェックを入れ、 **[保存]** を選択します。
 8. **[キーとトークン]** を選択し、後で使用される **[コンシューマー API キー]** と **[コンシューマー API のシークレット キー]** の値を記録します。
 
 ## <a name="configure-twitter-as-an-identity-provider-in-your-tenant"></a>テナントで ID プロバイダーとして Twitter を構成する
 
 1. Azure AD B2C テナントの全体管理者として [Azure Portal](https://portal.azure.com/) にサインインします。
 2. お使いの Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。確認のために、トップ メニューにある **[ディレクトリとサブスクリプション フィルター]** をクリックして、お使いのテナントを含むディレクトリを選択します。
-3. Azure Portal の左上隅の **[すべてのサービス]** を選択し、**[Azure AD B2C]** を検索して選択します。
-4. **[ID プロバイダー]**、**[追加]** の順に選択します。
+3. Azure Portal の左上隅の **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。
+4. **[ID プロバイダー]** 、 **[追加]** の順に選択します。
 5. **[名前]** を入力します。 たとえば、「*Twitter*」と入力します。
-6. **[ID プロバイダーの種類]**、**[Twitter]** の順に選択し、**[OK]** をクリックします。
-7. **[この ID プロバイダーをセットアップする]** を選択し、**[クライアント ID]** のAPI キーと **[クライアント シークレット]** のAPI シークレット キーを入力します。
-8. **[OK]** をクリックし、**[作成]** をクリックして Twitter の構成を保存します。
+6. **[ID プロバイダーの種類]** 、 **[Twitter]** の順に選択し、 **[OK]** をクリックします。
+7. **[この ID プロバイダーをセットアップする]** を選択し、 **[クライアント ID]** のAPI キーと **[クライアント シークレット]** のAPI シークレット キーを入力します。
+8. **[OK]** をクリックし、 **[作成]** をクリックして Twitter の構成を保存します。

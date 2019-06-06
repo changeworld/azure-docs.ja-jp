@@ -2,20 +2,20 @@
 title: Azure Active Directory B2C での言語のカスタマイズ | Microsoft Docs
 description: 言語のエクスペリエンスのカスタマイズについて説明します。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/30/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 3c319349d721a390562faac0fc6f90a7b471db0f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 48633b195df997f0e9a8f06bd4f5c553ca620e98
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64703431"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66509394"
 ---
 # <a name="language-customization-in-azure-active-directory-b2c"></a>Azure Active Directory B2C での言語のカスタマイズ
 
@@ -38,7 +38,7 @@ Azure Active Directory B2C (Azure AD B2C) の言語のカスタマイズを使�
 言語のカスタマイズの一般公開前に作成されたポリシーについては、最初に、この機能を有効にする必要があります。 一般公開後に作成されたポリシーとユーザー フローでは、言語のカスタマイズは既定で有効になっています。 
 
 ユーザー フローで言語のカスタマイズを有効にした後は、`ui_locales` パラメーターを追加することにより、ユーザー フローの言語を制御できます。
-1. Azure AD B2C テナントで、**[ユーザー フロー]** を選択します。
+1. Azure AD B2C テナントで、 **[ユーザー フロー]** を選択します。
 2. 翻訳を有効にするユーザー フローをクリックします。
 3. **[言語]** を選択します。  
 4. **[言語のカスタマイズを有効化]** を選びます。
@@ -47,7 +47,7 @@ Azure Active Directory B2C (Azure AD B2C) の言語のカスタマイズを使�
 `ui_locales` パラメーターが指定されていないブラウザーで要求された場合に、ユーザー フローで言語セットが翻訳されるように、言語セットを有効にします。
 1. 前の手順で、ユーザー フローの言語のカスタマイズを有効にしていることを確認します。
 2. ユーザー フローの **[言語]** ページで、サポートする言語を選択します。
-3. プロパティ ウィンドウで、**[有効]** を **[はい]** に変更します。  
+3. プロパティ ウィンドウで、 **[有効]** を **[はい]** に変更します。  
 4. プロパティ ウィンドウの上部にある **[保存]** を選びます。
 
 >[!NOTE]
@@ -59,7 +59,7 @@ Azure Active Directory B2C (Azure AD B2C) の言語のカスタマイズを使�
 1. 前の手順で、ユーザー フローの言語のカスタマイズを有効にしていることを確認します。
 2. ユーザー フローの **[言語]** ページで、カスタマイズする言語を選択します。
 3. **[Page-level-resources files]\(ページ レベル リソース ファイル\)** で、編集するページを選択します。
-4. **[既定値のダウンロード]** (この言語を前に編集した場合は **[オーバーライドのダウンロード]**) を選びます。
+4. **[既定値のダウンロード]** (この言語を前に編集した場合は **[オーバーライドのダウンロード]** ) を選びます。
 
 上記の手順により、文字列の編集を開始する際に使用できる JSON ファイルを入手できます。
 
@@ -151,8 +151,8 @@ https://wingtiptoysb2c.blob.core.windows.net/fr/wingtip/unified.html
 
 現在 Microsoft が翻訳を提供していない言語を追加することもできます。 ユーザー フロー内のすべての文字列に対して翻訳を提供する必要があります。  言語およびロケールのコードは、ISO 639-1 標準にものに限られます。 
 
-1. Azure AD B2C テナントで、**[ユーザー フロー]** を選択します。
-2. カスタム言語を追加するユーザー フローをクリックし、**[言語]** をクリックします。
+1. Azure AD B2C テナントで、 **[ユーザー フロー]** を選択します。
+2. カスタム言語を追加するユーザー フローをクリックし、 **[言語]** をクリックします。
 3. ページの上部から **[カスタム言語の追加]** を選択します。
 4. 表示されたコンテキスト ウィンドウで、有効なロケール コードを入力して、翻訳を提供する言語を指定します。
 5. ページごとに英語の一連のオーバーライドをダウンロードし、翻訳作業を行うことができます。

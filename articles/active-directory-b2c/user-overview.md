@@ -2,20 +2,20 @@
 title: Azure Active Directory B2C のユーザー アカウントの概要 | Microsoft Docs
 description: Azure Active Directory B2C のユーザー アカウントについて説明します。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/30/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 7e9e046ef4fcba81d5a8c330180a6e0831a7dcdd
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 42a38b47f9e49652b5fe80aa5bbd0047dc7d1e74
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64718054"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66511964"
 ---
 # <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>Azure Active Directory B2C のユーザー アカウントの概要
 
@@ -67,7 +67,7 @@ Azure Active Directory (Azure AD) B2C では、さまざまな種類のアカウ
 
 外部ユーザーをゲスト ユーザーとしてテナントに招待できます。 ゲスト ユーザーを Azure AD B2C テナントに招待する一般的なシナリオは、管理責任を共有することです。 ゲスト アカウントの使用例は、「[Azure Active Directory B2B コラボレーション ユーザーのプロパティ](../active-directory/b2b/user-properties.md)」を参照してください。
 
-ゲスト ユーザーをテナントに招待するときは、受信者の電子メール アドレスと、招待であることを説明するメッセージを指定します。 ユーザーは招待リンクによって同意ページに移動します。そのページで、**[作業開始]** ボタンを選択し、アクセス許可を受け取ったことを確認します。 受信トレイが電子メール アドレスにアタッチされていない場合、ユーザーは、招待資格情報を使用して Microsoft ページに移動することで、同意ページに移動できます。 その後、ユーザーは、電子メール内のリンクのクリックと同じ方法で招待を受け入れます。 (例: `https://myapps.microsoft.com/B2CTENANTNAME`)。
+ゲスト ユーザーをテナントに招待するときは、受信者の電子メール アドレスと、招待であることを説明するメッセージを指定します。 ユーザーは招待リンクによって同意ページに移動します。そのページで、 **[作業開始]** ボタンを選択し、アクセス許可を受け取ったことを確認します。 受信トレイが電子メール アドレスにアタッチされていない場合、ユーザーは、招待資格情報を使用して Microsoft ページに移動することで、同意ページに移動できます。 その後、ユーザーは、電子メール内のリンクのクリックと同じ方法で招待を受け入れます。 (例: `https://myapps.microsoft.com/B2CTENANTNAME`)。
 
 ゲスト ユーザーは、[Microsoft Graph API](https://docs.microsoft.com/graph/api/invitation-post?view=graph-rest-beta) を使用して招待することもできます。
 

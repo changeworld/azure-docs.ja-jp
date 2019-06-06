@@ -2,20 +2,20 @@
 title: Azure Active Directory B2C カスタム ポリシーでの技術プロファイルについて | Microsoft Docs
 description: Azure Active Directory B2C 内のカスタム ポリシーで技術プロファイルがどのように使用されるかについて説明します。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8865da2f39f574656fe7f018eb1f1900b913391c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 80b8969ba657506705db2b1a3bbc5b389d0a992c
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64710892"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66512451"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>Azure Active Directory B2C カスタム ポリシーでの技術プロファイルについて
 
@@ -49,7 +49,7 @@ ms.locfileid: "64710892"
  
 1. **InputClaimsTransformation** - すべての入力[要求変換](claimstransformations.md)の入力要求が要求バッグからピックアップされます。実行後、出力要求は要求バッグに戻されます。 入力要求変換の出力要求は、後続の入力要求変換の入力要求になる場合があります。
 2. **InputClaims** - 要求は要求バッグからピックアップされ、技術プロファイルに使用されます。 たとえば、[セルフアサート技術プロファイル](self-asserted-technical-profile.md)では、入力要求を使用して、ユーザーが提供する出力要求を事前作成します。 REST API 技術プロファイルでは、入力要求を使用し、入力パラメーターを REST API エンドポイントに送信します。 Azure Active Directory では、アカウントの読み取り、更新、削除を行うために、一意識別子として入力要求を使用します。
-3. **技術プロファイルの実行** - 技術プロファイルでは、その要求を構成されたパーティと交換します。 例: 
+3. **技術プロファイルの実行** - 技術プロファイルでは、その要求を構成されたパーティと交換します。 例:
     - ユーザーを ID プロバイダーにリダイレクトして、サインインを完了します。 サインインが成功したら、ユーザーが返され、技術プロファイルの実行が続行されます。
     - InputClaims としてパラメーターを送信し、OutputClaims として情報を戻しながら、REST API を呼び出します。
     - ユーザー アカウントを作成または更新します。

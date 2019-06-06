@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 02/21/2019
+ms.date: 06/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 58821492c6972eeef622f8dc8a777f8da70acdf1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 353d5950372fe9a1255bf2b17dea4f8148d3ee6e
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57895925"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66514783"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-transliterate-text-using-java"></a>クイック スタート:Java と Translator Text API を使用してテキストの表記を変換する
 

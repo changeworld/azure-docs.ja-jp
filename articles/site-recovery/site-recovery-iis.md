@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: aa42371692cd5d0dc96835db5b66fe0877b90665
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 66b9342f1a67c4c9d35fda447a297cc64d048c1e
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54320499"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66480299"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-iis-based-web-application"></a>多層 IIS ベース Web アプリケーションのディザスター リカバリーの設定
 
@@ -62,14 +62,14 @@ ARR、IIS サーバー、アプリケーション サーバー、および SQL S
 --- | --- | ---
 Hyper-V | はい | はい
 VMware | はい | はい
-物理サーバー | いいえ  | はい
+物理サーバー | いいえ | はい
 Azure|NA|はい
 
 ## <a name="replicate-virtual-machines"></a>仮想マシンのレプリケート
 
 すべての IIS Web ファーム仮想マシンを Azure にレプリケートするには、「[Site Recovery での Azure へのフェールオーバーをテストする](site-recovery-test-failover-to-azure.md)」のガイダンスに従います。
 
-静的 IP アドレスを使用している場合は、仮想マシンに割り当てる IP アドレスを指定できます。 IP アドレスを設定するには、**[コンピューティングとネットワーク] の設定** > **[ターゲット IP]** に移動します。
+静的 IP アドレスを使用している場合は、仮想マシンに割り当てる IP アドレスを指定できます。 IP アドレスを設定するには、 **[コンピューティングとネットワーク] の設定** >  **[ターゲット IP]** に移動します。
 
 ![Site Recovery の [コンピューティングとネットワーク] ウィンドウでターゲット IP を設定する方法を示したスクリーン ショット](./media/site-recovery-active-directory/dns-target-ip.png)
 
@@ -109,7 +109,7 @@ DNS が動的 DNS 更新用に構成されている場合、仮想マシンは�
         </connectionStrings>
         </configuration>
 
-Web 層の接続文字列を更新するには、復旧計画のグループ 3 の後に、[IIS 接続更新スクリプト](https://aka.ms/asr-update-webtier-script-classic)を追加します。
+Web 層の接続文字列を更新するには、復旧計画のグループ 3 の後に、[IIS 接続更新スクリプト](https://gallery.technet.microsoft.com/Update-IIS-connection-2579aadc)を追加します。
 
 #### <a name="site-bindings-for-the-application"></a>アプリケーションのサイト バインド
 すべてのサイトは、バインド情報で構成されます。 バインド情報には、バインドの種類、IIS サーバーがサイトに対する要求をリッスンする IP アドレス、ポート番号、およびサイトのホスト名が含まれます。 フェールオーバーの際、バインドに関連付けられている IP アドレスに変更がある場合には、これらのバインドの更新が必要になることがあります。
@@ -145,7 +145,7 @@ SSL 証明書は、次のコンポーネントに対して発行できます。
 3. **[テスト フェールオーバー]** を選択します。
 4. テスト フェールオーバー プロセスを開始するには、復旧ポイントと Azure 仮想ネットワークを選択します。
 5. セカンダリ環境が立ち上がったら、検証を行うことができます。
-6. 検証が完了したら、テスト フェールオーバー環境をクリーニングするために、**[検証が完了しました]** をクリックします。
+6. 検証が完了したら、テスト フェールオーバー環境をクリーニングするために、 **[検証が完了しました]** をクリックします。
 
 詳しくは、「[Site Recovery での Azure へのフェールオーバーをテストする](site-recovery-test-failover-to-azure.md)」をご覧ください。
 

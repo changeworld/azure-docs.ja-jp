@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 02/21/2019
+ms.date: 06/04/2019
 ms.author: erhopf
-ms.openlocfilehash: db2d9fcf3dbb168061805906dae6ecc3a03e3301
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a76e2c386e9c82b70a7945b4670d60caf9856036
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57884406"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66515116"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-transliterate-text-with-nodejs"></a>クイック スタート:Node.js で Translator Text API を使用してテキストの表記を変換する
 
@@ -32,7 +32,7 @@ ms.locfileid: "57884406"
 
 ## <a name="create-a-project-and-import-required-modules"></a>プロジェクトの作成と必要なモジュールのインポート
 
-任意の IDE またはエディターを使用して新しいプロジェクトを作成するか、`translate-text.js` という名前のファイルが含まれる新しいフォルダーをデスクトップに作成します。 次に、このコード スニペットをプロジェクト/ファイルにコピーします。
+任意の IDE またはエディターを使用して新しいプロジェクトを作成するか、`translate-text.js` という名前のファイルが含まれる新しいフォルダーをデスクトップ上に作成します。 次に、このコード スニペットをプロジェクト/ファイル内にコピーします。
 
 ```javascript
 const request = require('request');

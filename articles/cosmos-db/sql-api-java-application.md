@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: tutorial
-ms.date: 08/22/2017
+ms.date: 12/22/2018
 ms.author: ramkris
-ms.openlocfilehash: e276980235494f7f808510889bda91761cb76544
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: dfb4e40aeed797a55a7b2cabad32d33920547c06
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65794602"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479499"
 ---
 # <a name="build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>Azure Cosmos DB および SQL API を使用した Java Web アプリケーションの作成
 
@@ -62,22 +62,22 @@ ms.locfileid: "65794602"
 ## <a id="CreateJSP"></a>手順 2:Java JSP アプリケーションを作成する
 JSP アプリケーションを作成するには:
 
-1. 最初に、Java プロジェクトを作成します。 Eclipse を起動し、**[File]**、**[New]**、**[Dynamic Web Project]** の順にクリックします。 使用可能なプロジェクトとして **[Dynamic Web Project]** が表示されない場合は、**[File]**、**[New]**、**[Project]**、の順にクリックし、**[Web]** を展開します。さらに、**[Dynamic Web Project]** をクリックし、**[Next]** をクリックします。
+1. 最初に、Java プロジェクトを作成します。 Eclipse を起動し、 **[File]** 、 **[New]** 、 **[Dynamic Web Project]** の順にクリックします。 使用可能なプロジェクトとして **[Dynamic Web Project]** が表示されない場合は、 **[File]** 、 **[New]** 、 **[Project]** 、の順にクリックし、 **[Web]** を展開します。さらに、 **[Dynamic Web Project]** をクリックし、 **[Next]** をクリックします。
    
     ![JSP Java アプリケーション開発](./media/sql-api-java-application/image10.png)
-2. **[Project name]** ボックスに、プロジェクト名を入力します。必要に応じて、**[Target Runtime]** ボックスの一覧で値 (たとえば、Apache Tomcat v7.0) を選択し、**[Finish]** をクリックします。 ターゲット ランタイムを選択すると、Eclipse でプロジェクトをローカルに実行できます。
-3. Eclipse の Project Explorer ビューで、プロジェクトを展開します。 **WebContent** を右クリックし、**[新規]**、**[JSP ファイル]** の順にクリックします。
-4. **[New JSP File]** ダイアログ ボックスで、ファイルに **index.jsp** という名前を付けます。 次の図に示すように、親フォルダーは **WebContent** のままにしておきます。**[Next]** をクリックします。
+2. **[Project name]** ボックスに、プロジェクト名を入力します。必要に応じて、 **[Target Runtime]** ボックスの一覧で値 (たとえば、Apache Tomcat v7.0) を選択し、 **[Finish]** をクリックします。 ターゲット ランタイムを選択すると、Eclipse でプロジェクトをローカルに実行できます。
+3. Eclipse の Project Explorer ビューで、プロジェクトを展開します。 **WebContent** を右クリックし、 **[新規]** 、 **[JSP ファイル]** の順にクリックします。
+4. **[New JSP File]** ダイアログ ボックスで、ファイルに **index.jsp** という名前を付けます。 次の図に示すように、親フォルダーは **WebContent** のままにしておきます。 **[Next]** をクリックします。
    
     ![新しい JSP ファイルの作成 - Java Web アプリケーションのチュートリアル](./media/sql-api-java-application/image11.png)
-5. **[Select JSP Template]** ダイアログ ボックスで、このチュートリアルのために **[New JSP File (html)]** を選択し、**[Finish]** をクリックします。
+5. **[Select JSP Template]** ダイアログ ボックスで、このチュートリアルのために **[New JSP File (html)]** を選択し、 **[Finish]** をクリックします。
 6. index.jsp ファイルが Eclipse で開いたら、**Hello World!** を表示するためのテキストを追加します。 既存の `<body>` 要素に追加します。 更新した `<body>` の内容は次のようになります。
    
         <body>
             <% out.println("Hello World!"); %>
         </body>
 7. index.jsp ファイルを保存します。
-8. 手順 2. でターゲットのランタイムを設定している場合、**[Project]** をクリックし、次に **[Run]** をクリックして、JSP アプリケーションをローカルで実行できます。
+8. 手順 2. でターゲットのランタイムを設定している場合、 **[Project]** をクリックし、次に **[Run]** をクリックして、JSP アプリケーションをローカルで実行できます。
    
     ![Hello World – Java アプリケーションのチュートリアル](./media/sql-api-java-application/image12.png)
 
@@ -86,10 +86,10 @@ SQL Java SDK とその依存関係をインストールするには、[Apache Ma
 
 そのためには、次の手順に従ってプロジェクトを maven プロジェクトに変換する必要があります。
 
-1. Project Explorer でプロジェクトを右クリックして、**[Configure]**、**[Convert to Maven Project]** の順にクリックします。
-2. **[Create new POM]** ウィンドウで、既定値を受け入れ、**[Finish]** をクリックします。
+1. Project Explorer でプロジェクトを右クリックして、 **[Configure]** 、 **[Convert to Maven Project]** の順にクリックします。
+2. **[Create new POM]** ウィンドウで、既定値を受け入れ、 **[Finish]** をクリックします。
 3. **Project Explorer**で、pom.xml ファイルを開きます。
-4. **[Dependencies]** タブの **[Dependencies]** ウィンドウで、**[Add]** をクリックします。
+4. **[Dependencies]** タブの **[Dependencies]** ウィンドウで、 **[Add]** をクリックします。
 5. **[Select Dependency]** ウィンドウで、次の操作を行います。
    
    * **[Group Id]\(グループ ID\)** ボックスに、「com.microsoft.azure」と入力します。
@@ -718,7 +718,7 @@ SQL Java SDK とその依存関係をインストールするには、[Apache Ma
 ## <a id="Deploy"></a>手順 6:Azure Web Sites に Java アプリケーションをデプロイする
 Azure Web Sites での Java アプリケーションのデプロイは簡単です。アプリケーションを WAR ファイルとしてエクスポートし、ソース管理 (例: Git) または FTP を使用してアップロードするだけです。
 
-1. アプリケーションを WAR ファイルとしてエクスポートするには、**Project Explorer** でプロジェクトを右クリックし、**[Export]\(エクスポート\)**、**[WAR File]\(WAR ファイル\)** の順にクリックします。
+1. アプリケーションを WAR ファイルとしてエクスポートするには、**Project Explorer** でプロジェクトを右クリックし、 **[Export]\(エクスポート\)** 、 **[WAR File]\(WAR ファイル\)** の順にクリックします。
 2. **[WAR Export]** ウィンドウで、次の操作を行います。
    
    * [Web project] ボックスに、「azure-documentdb-java-sample」と入力します。
@@ -734,24 +734,24 @@ Azure Web Sites での Java アプリケーションのデプロイは簡単で�
 
 1. [Project Lombok](https://projectlombok.org/)をインストールします。 Lombok は、プロジェクトのコンストラクター、getter、setter の生成に使用します。 lombok.jar ファイルをダウンロードしたら、ファイルをダブルクリックしてコマンド ラインからインストールします。
 2. Eclipse が開いている場合は、いったん終了してから再起動して Lombok を読み込みます。
-3. Eclipse で、**[File]** メニューの **[Import]** をクリックします。
-4. **[Import]** ウィンドウで、**[Git]**、**[Projects from Git]**、**[Next]** の順にクリックします。
+3. Eclipse で、 **[File]** メニューの **[Import]** をクリックします。
+4. **[Import]** ウィンドウで、 **[Git]** 、 **[Projects from Git]** 、 **[Next]** の順にクリックします。
 5. **[Select Repository Source]** 画面で、 **[Clone URI]** をクリックします。
-6. **[Source Git Repository]** 画面で、**[URI]** ボックスに「 https://github.com/Azure-Samples/documentdb-java-todo-app.git」と入力し、**[Next]** をクリックします。
-7. **[Branch Selection]** 画面で、**[master]** が選択されていることを確認し、**[Next]** をクリックします。
-8. **[Local Destination]** 画面で、**[Browse]** をクリックしてリポジトリをコピーするフォルダーを選択し、**[Next]** をクリックします。
-9. **[Select a wizard to use for importing projects]** 画面で、**[Import existing projects]** が選択されていることを確認し、**[Next]** をクリックします。
-10. **[Import Projects]** 画面で、**DocumentDB** プロジェクトを選択解除し、**[Finish]** をクリックします。 DocumentDB プロジェクトには、依存関係として追加される Azure Cosmos DB Java SDK が含まれています。
+6. **[Source Git Repository]** 画面で、 **[URI]** ボックスに「 https://github.com/Azure-Samples/documentdb-java-todo-app.git」と入力し、 **[Next]** をクリックします。
+7. **[Branch Selection]** 画面で、 **[master]** が選択されていることを確認し、 **[Next]** をクリックします。
+8. **[Local Destination]** 画面で、 **[Browse]** をクリックしてリポジトリをコピーするフォルダーを選択し、 **[Next]** をクリックします。
+9. **[Select a wizard to use for importing projects]** 画面で、 **[Import existing projects]** が選択されていることを確認し、 **[Next]** をクリックします。
+10. **[Import Projects]** 画面で、**DocumentDB** プロジェクトを選択解除し、 **[Finish]** をクリックします。 DocumentDB プロジェクトには、依存関係として追加される Azure Cosmos DB Java SDK が含まれています。
 11. **Project Explorer** で、azure-documentdb-java-sample\src\com.microsoft.azure.documentdb.sample.dao\DocumentClientFactory.java を表示し、[HOST] 値と [MASTER_KEY] 値を Azure Cosmos DB アカウントの URI とプライマリ キーで置き換え、ファイルを保存します。 詳細については、「[手順 1:Azure Cosmos DB データベース アカウントを作成する](#CreateDB)」を参照してください。
-12. **Project Explorer** で、**azure-documentdb-java-sample** を右クリックし、**[Build Path]**、**[Configure Build Path]** の順にクリックします。
-13. **[Java Build Path]** 画面の右ウィンドウで **[Libraries]** タブを選択し、**[Add External JARs]** をクリックします。 lombok.jar ファイルの場所を参照し、**[Open]**、**[OK]** の順にクリックします。
+12. **Project Explorer** で、**azure-documentdb-java-sample** を右クリックし、 **[Build Path]** 、 **[Configure Build Path]** の順にクリックします。
+13. **[Java Build Path]** 画面の右ウィンドウで **[Libraries]** タブを選択し、 **[Add External JARs]** をクリックします。 lombok.jar ファイルの場所を参照し、 **[Open]** 、 **[OK]** の順にクリックします。
 14. 手順 12. の手順を使用してもう一度 **[Properties]** ウィンドウを開き、左ウィンドウの **[Targeted Runtimes]** をクリックします。
-15. **[Targeted Runtimes]** 画面で、**[New]** をクリックします。**[Apache Tomcat v7.0]** を選択し、**[OK]** をクリックします。
+15. **[Targeted Runtimes]** 画面で、 **[New]** をクリックします。 **[Apache Tomcat v7.0]** を選択し、 **[OK]** をクリックします。
 16. 手順 12. の手順を使用してもう一度 **[Properties]** ウィンドウを開き、左ウィンドウの **[Project Facets]** をクリックします。
-17. **[Project Facets]** 画面で、**[Dynamic Web Module]** と **[Java]** を選択し、**[OK]** をクリックします。
-18. 画面の下部の **[Servers]** タブで、**[Tomcat v7.0 Server at localhost]** を右クリックし、**[Add and Remove]** をクリックします。
-19. **[Add and Remove]** ウィンドウで、**[azure-documentdb-java-sample]** を **[Configured]** ボックスに移動し、**[Finish]** をクリックします。
-20. **[Servers]\(サーバー\)** タブで、**[Tomcat v7.0 Server at localhost]\(ローカルホストの Tomcat v7.0 サーバー\)** を右クリックし、**[Restart]\(再起動\)** をクリックします。
+17. **[Project Facets]** 画面で、 **[Dynamic Web Module]** と **[Java]** を選択し、 **[OK]** をクリックします。
+18. 画面の下部の **[Servers]** タブで、 **[Tomcat v7.0 Server at localhost]** を右クリックし、 **[Add and Remove]** をクリックします。
+19. **[Add and Remove]** ウィンドウで、 **[azure-documentdb-java-sample]** を **[Configured]** ボックスに移動し、 **[Finish]** をクリックします。
+20. **[Servers]\(サーバー\)** タブで、 **[Tomcat v7.0 Server at localhost]\(ローカルホストの Tomcat v7.0 サーバー\)** を右クリックし、 **[Restart]\(再起動\)** をクリックします。
 21. ブラウザーで `http://localhost:8080/azure-documentdb-java-sample/` に移動し、タスク一覧への追加を開始します。 既定のポート値を変更している場合は、8080 に代えて、使用している値を指定してください。
 22. プロジェクトを Azure Web サイトにデプロイする方法については、「[手順 6: Azure Web Sites にアプリケーションをデプロイする](#Deploy)」を参照してください。
 

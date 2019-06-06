@@ -2,20 +2,20 @@
 title: クイック スタート - Azure Active Directory B2C を使用して ASP.NET アプリケーションへのサインインを設定する | Microsoft Docs
 description: Azure Active Directory B2C を使用してアカウント サインインを提供するサンプル ASP.NET Web アプリを実行します。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/30/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1d2fbe4dbbd7f5549d6c98f8183df58fa3f34e9d
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 0e38a431970613f34ee3af0fdb0eb55c5ad344bb
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190456"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66509735"
 ---
 # <a name="quickstart-set-up-sign-in-for-an-aspnet-application-using-azure-active-directory-b2c"></a>クイック スタート:Azure Active Directory B2C を使用して ASP.NET アプリケーションへのサインインを設定する
 
@@ -41,7 +41,7 @@ Azure Active Directory (Azure AD) B2C は、アプリケーション、ビジネ
 ## <a name="run-the-application-in-visual-studio"></a>Visual Studio でアプリケーションを実行する
 
 1. サンプル アプリケーションのプロジェクト フォルダーにある **B2C-WebAPI-DotNet.sln** ソリューションを Visual Studio で開きます。
-2. このクイック スタートでは、**TaskWebApp** プロジェクトと **TaskService** プロジェクトの両方を同時に実行します。 ソリューション エクスプローラーで **B2C-WebAPI-DotNet** ソリューションを右クリックし、**[スタートアップ プロジェクトの設定]** を選択します。 
+2. このクイック スタートでは、**TaskWebApp** プロジェクトと **TaskService** プロジェクトの両方を同時に実行します。 ソリューション エクスプローラーで **B2C-WebAPI-DotNet** ソリューションを右クリックし、 **[スタートアップ プロジェクトの設定]** を選択します。 
 3. **[マルチ スタートアップ プロジェクト]** を選択し、両方のプロジェクトの **[アクション]** を **[開始]** に変更します。 
 4. Click **OK**.
 5. **F5** キーを押して両方のアプリケーションをデバッグします。 各アプリケーションは、それぞれ別のブラウザー タブで開かれます。
@@ -69,17 +69,17 @@ Azure Active Directory (Azure AD) B2C は、アプリケーション、ビジネ
 
 Azure Active Directory B2C には、ユーザーが自分のプロファイルを更新することができる機能があります。 このサンプル Web アプリのワークフローには、Azure AD B2C の編集プロファイル ユーザー フローが使用されます。 
 
-1. アプリケーションのメニュー バーでプロファイル名をクリックし、**[Edit Profile]\(プロファイルの編集\)** を選択して、作成したプロファイルを編集します。
+1. アプリケーションのメニュー バーでプロファイル名をクリックし、 **[Edit Profile]\(プロファイルの編集\)** を選択して、作成したプロファイルを編集します。
 
     ![プロファイルを編集する](media/active-directory-b2c-quickstarts-web-app/edit-profile-web.png)
 
-2. **表示名**や**都市**を変更し、**[Continue]\(続行\)** をクリックして、プロファイルを更新します。 
+2. **表示名**や**都市**を変更し、 **[Continue]\(続行\)** をクリックして、プロファイルを更新します。 
 
     変更内容が、Web アプリケーションのホーム ページの右上の領域に表示されます。
 
 ## <a name="access-a-protected-api-resource"></a>保護された API リソースにアクセスする
 
-1. To-Do リスト項目を入力および変更するには、**[To-Do List]\(To-Do リスト\)** をクリックします。 
+1. To-Do リスト項目を入力および変更するには、 **[To-Do List]\(To-Do リスト\)** をクリックします。 
 
 2. **[New Item]\(新しい項目\)** テキスト ボックスにテキストを入力します。 **[Add]\(追加\)** をクリックして、To-do リスト項目を追加する、Azure AD B2C で保護された Web API を呼び出します。
 

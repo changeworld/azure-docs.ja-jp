@@ -2,20 +2,20 @@
 title: Azure Active Directory B2C を使用して QQ アカウントでのサインアップおよびサインインを設定する | Microsoft Docs
 description: Azure Active Directory B2C を使用するアプリケーションで QQ アカウントを持つ顧客にサインアップとサインインを提供します。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/11/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 6eba804fc96a91d17644c903e1462c31c0fc9149
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 7744d99bb97d11b7702c8ee388cf27bc0cc087cc
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64704160"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66508340"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-qq-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して QQ アカウントでのサインアップおよびサインインを設定する
 
@@ -42,7 +42,7 @@ Azure Active Directory (Azure AD) B2C で ID プロバイダーとして QQ ア�
 5. **[创建应用 (アプリの作成)]** を選択し、必要な情報を入力します。
 7. **[授权回调域 (コールバック URL)]** に、「`https://your-tenant-name.b2clogin.com/your-tenant-name}.onmicrosoft.com/oauth2/authresp`」と入力します。 たとえば、`tenant_name` が contoso の場合は、URL を `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp` に設定します。
 8. **[创建应用 (アプリの作成)]** を選択します。
-9. 確認ページで、**[应用管理 (アプリの管理)]** を選択してアプリの管理ページに戻ります。
+9. 確認ページで、 **[应用管理 (アプリの管理)]** を選択してアプリの管理ページに戻ります。
 10. 作成したアプリの横の **[查看 (表示)]** を選択します。
 11. **[修改 (編集)]** を選択します。
 12. **アプリ ID** と**アプリ キー**をコピーします。 ID プロバイダーをテナントに追加するには、これらの両方の値が必要です。
@@ -51,10 +51,10 @@ Azure Active Directory (Azure AD) B2C で ID プロバイダーとして QQ ア�
 
 1. Azure AD B2C テナントの全体管理者として [Azure Portal](https://portal.azure.com/) にサインインします。
 2. お使いの Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。確認のために、トップ メニューにある **[ディレクトリとサブスクリプション フィルター]** をクリックして、お使いのテナントを含むディレクトリを選択します。
-3. Azure Portal の左上隅の **[すべてのサービス]** を選択し、**[Azure AD B2C]** を検索して選択します。
-4. **[ID プロバイダー]**、**[追加]** の順に選択します。
+3. Azure Portal の左上隅の **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。
+4. **[ID プロバイダー]** 、 **[追加]** の順に選択します。
 5. **[名前]** を入力します。 たとえば、「*QQ*」と入力します。
-6. **[ID プロバイダーの種類]** を選択し、**[QQ (Preview)]**(QQ (プレビュー)) を選択して、**[OK]** をクリックします。
-7. **[この ID プロバイダーをセットアップします]** を選択し、**[クライアント ID]** として前に記録したアプリ ID を入力し、前に作成した QQ アプリケーションの **[クライアント シークレット]** として記録したアプリ キーを入力します。
-8. **[OK]** をクリックし、**[作成]** をクリックして QQ の構成を保存します。
+6. **[ID プロバイダーの種類]** を選択し、 **[QQ (Preview)]** (QQ (プレビュー)) を選択して、 **[OK]** をクリックします。
+7. **[この ID プロバイダーをセットアップします]** を選択し、 **[クライアント ID]** として前に記録したアプリ ID を入力し、前に作成した QQ アプリケーションの **[クライアント シークレット]** として記録したアプリ キーを入力します。
+8. **[OK]** をクリックし、 **[作成]** をクリックして QQ の構成を保存します。
 

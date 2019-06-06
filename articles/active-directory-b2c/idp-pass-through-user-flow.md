@@ -2,20 +2,20 @@
 title: ユーザー フローを通じてアクセス トークンをご自身のアプリケーションに渡す - Azure Active Directory B2C | Microsoft Docs
 description: Azure Active Directory B2C のユーザー フローを通じて、OAuth2.0 ID プロバイダーのアクセス トークンを要求として渡す方法について学習します。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/16/2019
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 0270ef3ff74a219442a6800b67055deda7a0583f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: db4b799aa31a4132609b0dd158b65070fb2474b7
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64705342"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66510965"
 ---
 # <a name="pass-an-access-token-through-a-user-flow-to-your-application-in-azure-active-directory-b2c"></a>Azure Active Directory B2C のユーザー フローを通じてアクセス トークンをご自身のアプリケーションに渡す
 
@@ -35,7 +35,7 @@ Azure AD B2C は現在、[Facebook](active-directory-b2c-setup-fb-app.md) や [G
 
 1. Azure AD B2C テナントの全体管理者として [Azure Portal](https://portal.azure.com/) にサインインします。
 2. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 上部メニューで **[ディレクトリとサブスクリプション] フィルター**を選択し、ご利用のテナントが含まれるディレクトリを選択します。
-3. Azure Portal の左上隅の **[すべてのサービス]** を選択し、**[Azure AD B2C]** を検索して選択します。
+3. Azure Portal の左上隅の **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。
 4. **[ユーザー フロー (ポリシー)]** を選択し、ご自身のユーザー フローを選択します。 たとえば、**B2C_1_signupsignin1** などです。
 5. **[アプリケーション クレーム]** を選択します。
 6. **[ID プロバイダーのアクセス トークン]** 要求を有効にします。
@@ -48,8 +48,8 @@ Azure AD B2C は現在、[Facebook](active-directory-b2c-setup-fb-app.md) や [G
 
 Azure AD B2C でアプリケーションをテスト中に、Azure AD B2C トークンを `https://jwt.ms` に返して、その中の要求を見直すと便利なことがあります。
 
-1. ユーザー フローの [概要] ページで、**[ユーザー フローを実行します]** を選択します。
-2. **[アプリケーション]** には、前に登録したアプリケーションを選択します。 以下の例でトークンを表示するには、**[応答 URL]** に `https://jwt.ms` が表示される必要があります。
+1. ユーザー フローの [概要] ページで、 **[ユーザー フローを実行します]** を選択します。
+2. **[アプリケーション]** には、前に登録したアプリケーションを選択します。 以下の例でトークンを表示するには、 **[応答 URL]** に `https://jwt.ms` が表示される必要があります。
 3. **[ユーザー フローを実行します]** をクリックし、その後ご自身のアカウントの資格情報でサインインします。 ID プロバイダーのアクセス トークンは **idp_access_token** 要求に表示されます。
 
     次の例のようなコードが表示されます。

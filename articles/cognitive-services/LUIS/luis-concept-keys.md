@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: diberry
-ms.openlocfilehash: 1f5aab607c5046df0dee4db5caf36b0b7de53c4d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: feb4622be14b51cfa72c33cda6c2477f799758c6
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57998751"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66473580"
 ---
 # <a name="authoring-and-query-prediction-endpoint-keys-in-luis"></a>LUIS のオーサリング キーとクエリ予測エンドポイント キー
 LUIS では、[オーサリング](#programmatic-key)と[エンドポイント](#endpoint-key)の 2 つのキーを使用します。 オーサリング キーは、LUIS アカウントの作成時に自動的に作成されます。 LUIS アプリを公開する準備ができたら、[エンドポイント キーを作成](luis-how-to-azure-subscription.md)して LUIS アプリに[割り当て](luis-how-to-azure-subscription.md)、これを[エンドポイント クエリで使用](#use-endpoint-key-in-query)する必要があります。 
@@ -71,7 +71,7 @@ LUIS API では、ヘッダー `Ocp-Apim-Subscription-Key` を使用します。
 オーサリング API のエンドポイント キーを渡すことはできません。 それを行うと、401 エラー (サブスクリプション キーが無効なため、アクセスが拒否されました) を受信します。 
 
 ## <a name="key-limits"></a>キーの制限
-[キーの制限](luis-boundaries.md#key-limits)と [Azure リージョン](luis-reference-regions.md)に関するページを参照してください。 オーサリング キーは無料で、作成に使用します。 LUIS エンドポイント キーには Free レベルがありますが、ユーザーが作成し、**[発行]** ページで LUIS アプリに関連付ける必要があります。 作成には使用できず、エンドポイント クエリにのみ使用できます。
+[キーの制限](luis-boundaries.md#key-limits)と [Azure リージョン](luis-reference-regions.md)に関するページを参照してください。 オーサリング キーは無料で、作成に使用します。 LUIS エンドポイント キーには Free レベルがありますが、ユーザーが作成し、 **[発行]** ページで LUIS アプリに関連付ける必要があります。 作成には使用できず、エンドポイント クエリにのみ使用できます。
 
 公開リージョンは、オーサリング リージョンとは異なります。 アプリの作成は必ず、必要な公開リージョンに対応するオーサリング リージョンで行ってください。
 

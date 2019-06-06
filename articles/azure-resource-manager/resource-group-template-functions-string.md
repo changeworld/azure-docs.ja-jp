@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/08/2019
 ms.author: tomfitz
-ms.openlocfilehash: bf9faa34c1f0923761ce583c22ba4084d7bd42a8
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 82b9403a3d5a5b6938f5b95bbfce888d1e70e451
+ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59278787"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66431217"
 ---
 # <a name="string-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートの文字列関数
 
@@ -263,7 +263,7 @@ base64 形式を文字列に変換します。
 | パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |文字列または配列 |連結の最初の値。 |
-| 残りの引数 |いいえ  |string |連結する順の追加の値。 |
+| 残りの引数 |いいえ |string |連結する順の追加の値。 |
 
 ### <a name="return-value"></a>戻り値
 連結された値の文字列または配列。
@@ -725,7 +725,7 @@ base64 形式を文字列に変換します。
 |:--- |:--- |:--- |:--- |
 | formatString | はい | string | 複合の書式設定文字列。 |
 | arg1 | はい | 文字列、整数、またはブール値 | 書式設定された文字列に含める値。 |
-| 残りの引数 | いいえ  | 文字列、整数、またはブール値 | 書式設定された文字列に含める追加の値。 |
+| 残りの引数 | いいえ | 文字列、整数、またはブール値 | 書式設定された文字列に含める追加の値。 |
 
 ### <a name="remarks"></a>解説
 
@@ -781,7 +781,7 @@ base64 形式を文字列に変換します。
 | パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | baseString |はい |string |GUID を作成するためにハッシュ関数で使用される値。 |
-| 必要に応じて追加のパラメーター |いいえ  |string |文字列をいくつでも追加して、一意性のレベルを指定する値を作成できます。 |
+| 必要に応じて追加のパラメーター |いいえ |string |文字列をいくつでも追加して、一意性のレベルを指定する値を作成できます。 |
 
 ### <a name="remarks"></a>解説
 
@@ -1183,7 +1183,7 @@ newGuid 関数は、パラメーターを受け取らない点が [guid](#guid) 
 |:--- |:--- |:--- |:--- |
 | valueToPad |はい |文字列または整数 |右揃えにする値。 |
 | totalLength |はい |int |返される文字列の文字合計数。 |
-| paddingCharacter |いいえ  |1 文字 |左余白の長さに到達するまで使用する文字。 既定値は空白です。 |
+| paddingCharacter |いいえ |1 文字 |左余白の長さに到達するまで使用する文字。 既定値は空白です。 |
 
 元の文字列が、埋め込まれる文字数よりも長い場合は、文字が追加されません。
 
@@ -1259,7 +1259,7 @@ newGuid 関数は、パラメーターを受け取らない点が [guid](#guid) 
             "type": "string",
             "value": "[replace(parameters('testString'),'-', '')]"
         },
-        "secodeOutput": {
+        "secondOutput": {
             "type": "string",
             "value": "[replace(parameters('testString'),'1234', 'xxxx')]"
         }
@@ -1272,7 +1272,7 @@ newGuid 関数は、パラメーターを受け取らない点が [guid](#guid) 
 | Name | Type | 値 |
 | ---- | ---- | ----- |
 | firstOutput | String | 1231231234 |
-| secodeOutput | String | 123-123-xxxx |
+| secondOutput | String | 123-123-xxxx |
 
 ## <a name="skip"></a>skip
 
@@ -1549,8 +1549,8 @@ newGuid 関数は、パラメーターを受け取らない点が [guid](#guid) 
 | パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | stringToParse |はい |string |部分文字列の抽出元となる文字列。 |
-| startIndex |いいえ  |int |部分文字列の 0 から始まる開始文字位置。 |
-| length |いいえ  |int |部分文字列の文字数。 文字列内の場所を参照する必要があります。 0 以上である必要があります。 |
+| startIndex |いいえ |int |部分文字列の 0 から始まる開始文字位置。 |
+| length |いいえ |int |部分文字列の文字数。 文字列内の場所を参照する必要があります。 0 以上である必要があります。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -1826,7 +1826,7 @@ newGuid 関数は、パラメーターを受け取らない点が [guid](#guid) 
 | パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | baseString |はい |string |一意の文字列を作成するためにハッシュ関数で使用される値。 |
-| 必要に応じて追加のパラメーター |いいえ  |string |文字列をいくつでも追加して、一意性のレベルを指定する値を作成できます。 |
+| 必要に応じて追加のパラメーター |いいえ |string |文字列をいくつでも追加して、一意性のレベルを指定する値を作成できます。 |
 
 ### <a name="remarks"></a>解説
 
@@ -2077,7 +2077,7 @@ URI エンコードされた値のデコード済み文字列。
 
 | パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
-| format |いいえ  |string |文字列に変換する URI エンコードされた値。 [標準書式指定文字列](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式指定文字列](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)を使用します。 |
+| format |いいえ |string |文字列に変換する URI エンコードされた値。 [標準書式指定文字列](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式指定文字列](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)を使用します。 |
 
 ### <a name="remarks"></a>解説
 

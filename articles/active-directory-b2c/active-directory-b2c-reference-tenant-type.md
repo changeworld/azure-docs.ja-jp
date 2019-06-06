@@ -2,20 +2,20 @@
 title: Azure Active Directory B2C で利用可能なリージョンとデータの保存場所 | Microsoft Docs
 description: Azure Active Directory B2C テナントの種類に関するトピック。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/10/2017
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8c5d39244c835de7d46c074e62dae32d4ace0f67
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 30f13a3b85e68babcaef62b9200a296105b3ce83
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64719775"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66509000"
 ---
 # <a name="azure-active-directory-b2c-region-availability--data-residency"></a>Azure Active Directory B2C:利用可能なリージョンとデータの保存場所
 利用可能なリージョンとデータの保存場所は、まったく異なる 2 つの概念です。また、Azure AD B2C とそれ以外の Azure サービスとでは、利用可能なリージョンとデータの保存場所との関係が異なります。 この記事では、2 つの概念の違いについて説明するとともに、Azure AD B2C とそれ以外の Azure サービスに対するそれらの概念の意味合いを比較します。
@@ -52,7 +52,7 @@ Azure AD B2C では、ユーザー データが米国またはヨーロッパに
 > アフガニスタン、アルゼンチン、オーストラリア、ブラジル、チリ、コロンビア、エクアドル、香港特別行政区、インド、インドネシア、イラク、日本、韓国、マレーシア、ニュージーランド、パラグアイ、ペルー、フィリピン、シンガポール、スリランカ、台湾、タイ、ウルグアイ、ベネズエラ
 
 ## <a name="preview-tenant"></a>プレビュー テナント
-Azure AD B2C のプレビュー期間中に B2C テナントを作成した場合は、通常、**[Tenant type (テナントの種類)]** が **[Preview tenant (プレビュー テナント)]** になります。 その場合は、開発とテストの目的のみにテナントを使用する必要があります。運用アプリ用には使用しないでください。
+Azure AD B2C のプレビュー期間中に B2C テナントを作成した場合は、通常、 **[Tenant type (テナントの種類)]** が **[Preview tenant (プレビュー テナント)]** になります。 その場合は、開発とテストの目的のみにテナントを使用する必要があります。運用アプリ用には使用しないでください。
 
 > [!IMPORTANT]
 > プレビュー B2C テナントから運用スケール B2C テナントへの移行パスはありません。 プレビュー B2C テナントを削除し、同じドメイン名で運用スケール B2C テナントを再作成する場合に、既知の問題があることに注意してください。 運用スケール B2C テナントは異なるドメイン名で作成する必要があります。

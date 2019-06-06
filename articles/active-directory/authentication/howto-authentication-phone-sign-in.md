@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: librown
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47e8541b82a1cd38f07684508a96b9789df20e92
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: bb10378d890c2b7156b6764321e177a22ffc538a
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58370391"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66472759"
 ---
 # <a name="password-less-phone-sign-in-with-the-microsoft-authenticator-app-public-preview"></a>Microsoft Authenticator アプリを使用したパスワードなしの電話によるサインイン (パブリック プレビュー)
 
@@ -88,6 +88,6 @@ Microsoft Authenticator アプリを使用すると、パスワードを使用�
 
 ## <a name="next-steps"></a>次の手順
 
-[デバイス登録の詳細](../devices/overview.md#getting-devices-under-the-control-of-azure-ad)
+[デバイス登録の詳細](../devices/overview.md#getting-devices-in-azure-ad)
 
 [Azure Multi-Factor Authentication の詳細](../authentication/howto-mfa-getstarted.md)

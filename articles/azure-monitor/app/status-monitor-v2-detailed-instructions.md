@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 6eca2b47c2362f34415db8b4f335f3089babc58b
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: 9525d18b51954f32fd819a2efdefca61b39bc185
+ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66255874"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66688488"
 ---
 # <a name="status-monitor-v2-detailed-instructions"></a>Status Monitor v2 の詳細な手順
 
@@ -180,7 +180,7 @@ SerializationVersion           1.1.0.1
 - コマンド: 
 
     ```
-    $pathToNupkg = "C:\az.applicationmonitor.0.2.1-alpha.nupkg"
+    $pathToNupkg = "C:\az.applicationmonitor.0.3.0-alpha.nupkg"
     $pathToZip = ([io.path]::ChangeExtension($pathToNupkg, "zip"))
     $pathToNupkg | rename-item -newname $pathToZip
     $pathInstalledModule = "$Env:ProgramFiles\WindowsPowerShell\Modules\az.applicationmonitor"

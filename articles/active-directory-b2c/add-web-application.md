@@ -2,20 +2,20 @@
 title: Web アプリケーションを追加する - Azure Active Directory B2C | Microsoft Docs
 description: Active Directory B2C テナントに Web アプリケーションを追加する方法について説明します。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
-ms.author: davidmu
+ms.author: marsma
 ms.date: 04/16/2019
 ms.custom: mvc
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: ede3fd0dd1d0351e691a9f160260c029d01c8f8a
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: a1d098550c6fb733e088f8ad211d29f48f55d2d6
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64704024"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66511701"
 ---
 # <a name="add-a-web-api-application-to-your-azure-active-directory-b2c-tenant"></a>Azure Active Directory B2C テナントに Web API アプリケーションを追加する
 
@@ -23,10 +23,10 @@ ms.locfileid: "64704024"
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 上部メニューで **[ディレクトリとサブスクリプション] フィルター**を選択し、ご利用のテナントが含まれるディレクトリを選択します。
-3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、**[Azure AD B2C]** を検索して選択します。
-4. **[アプリケーション]** を選択し、**[追加]** を選択します。
+3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
+4. **[アプリケーション]** を選択し、 **[追加]** を選択します。
 5. アプリケーションの名前を入力します。 たとえば、*webapi1* とします。
-6. **[Include web app/ web API]\(Web アプリ/Web API を含める\)** と **[暗黙的フローを許可する]** には、**[はい]** を選択します。
+6. **[Include web app/ web API]\(Web アプリ/Web API を含める\)** と **[暗黙的フローを許可する]** には、 **[はい]** を選択します。
 7. **[応答 URL]** には、ご使用のアプリケーションが要求したすべてのトークンを Azure AD B2C が返すエンドポイントを入力します。 運用環境のアプリケーションでは、応答 URL を `https://localhost:44332` などの値に設定することになるでしょう。 テスト目的の場合は、応答 URL を `https://jwt.ms` に設定します。
 8. **[アプリケーション ID URI]** には、ご使用の Web API で使用される ID を入力します。 ドメインを含んだ完全な識別子 URI が自動的に生成されます。 たとえば、「 `https://contosotenant.onmicrosoft.com/api` 」のように入力します。
 9. **Create** をクリックしてください。
@@ -49,7 +49,7 @@ ms.locfileid: "64704024"
 保護された Web API をアプリケーションから呼び出すには、その API へのアクセス許可をアプリケーションに付与する必要があります。 たとえば「[チュートリアル: Azure Active Directory B2C にアプリケーションを登録する](tutorial-register-applications.md)」では、Azure AD B2C に *webapp1* という Web アプリケーションが作成されます。 このアプリケーションを使用して、Web API を呼び出すことができます。
 
 1. **[アプリケーション]** を選択し、自分の Web アプリケーションを選択します。
-2. **[API アクセス]** を選択し、**[追加]** を選択します。
+2. **[API アクセス]** を選択し、 **[追加]** を選択します。
 3. **[API の選択]** ドロップダウンで、*webapi1* を選択します。
 4. **[スコープの選択]** ドロップダウンで、前に定義した **Read** スコープと **Write** スコープを選択します。
 5. Click **OK**.

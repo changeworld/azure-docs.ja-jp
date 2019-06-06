@@ -2,20 +2,20 @@
 title: Azure Active Directory B2C のスターター パックのカスタム ポリシーについて | Microsoft Docs
 description: Azure Active Directory B2C のカスタム ポリシーに関するトピック。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/25/2017
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: d128875611c8f7a6c0b65ef46d8f127e3b79efee
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: b52f1a4cb6837dd779dcf4edac140bb13e06eacb
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64703481"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66509559"
 ---
 # <a name="understanding-the-custom-policies-of-the-azure-ad-b2c-custom-policy-starter-pack"></a>Azure AD B2C カスタム ポリシー スターター パックのカスタム ポリシーについて
 

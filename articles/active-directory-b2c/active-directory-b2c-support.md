@@ -2,20 +2,20 @@
 title: Azure Active Directory B2C のサポート | Microsoft Docs
 description: Azure Active Directory B2C のサポート要求を提出する方法。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/06/2016
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 4311f7001e2cd5a05b3a383925dc759acb8b8a05
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 698526cfcb598901032bc00015a8e6faeddba9c6
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64680865"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66508281"
 ---
 # <a name="azure-active-directory-b2c-file-support-requests"></a>Azure Active Directory B2C:ファイル サポート要求
 Azure Portal で Azure Active Directory (Azure AD) B2C のサポート要求を提出するには、次の手順に従います。
@@ -31,7 +31,7 @@ Azure Portal で Azure Active Directory (Azure AD) B2C のサポート要求を�
 4. **[新しいサポート要求]** をクリックします。
    
     ![Support - New](./media/active-directory-b2c-support/support-new.png)
-5. **[基本]** ブレードで、以下の説明に従ってから、**[次へ]** をクリックします。
+5. **[基本]** ブレードで、以下の説明に従ってから、 **[次へ]** をクリックします。
    
    * **[問題の種類]** は **[技術]** です。
    * 適切な **サブスクリプション**を選択します。
@@ -39,7 +39,7 @@ Azure Portal で Azure Active Directory (Azure AD) B2C のサポート要求を�
    * 適切な **サポート プラン**を選択します。 サポート プランがない場合は、 [ここ](https://azure.microsoft.com/support/plans/)からサインアップできます。
      
      ![Support - Basics](./media/active-directory-b2c-support/support-basics.png)
-6. **[問題]** ブレードで、以下の説明に従ってから、**[次へ]** をクリックします。
+6. **[問題]** ブレードで、以下の説明に従ってから、 **[次へ]** をクリックします。
    
    * 適切な **重要度** レベルを選択します。
    * **[問題の種類]** は **[B2C]** です。

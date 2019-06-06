@@ -2,20 +2,20 @@
 title: REST API 要求交換を Azure Active Directory B2C ユーザー体験に統合する | Microsoft Docs
 description: REST API 要求交換をユーザー入力の検証として Azure AD B2C ユーザー体験に統合します。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/30/2017
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e44bb1ed6a7a090b4b1213ca14be2b42642475e4
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: b3b896b2c423f2f9155ddb7803e59e719bd027cf
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64717296"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66510718"
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-of-user-input"></a>REST API 要求交換をユーザー入力の検証として Azure AD B2C ユーザー体験に統合する
 
@@ -58,15 +58,15 @@ Azure AD B2C を使用すると、自分の RESTful サービスを呼び出す�
 
 ## <a name="step-1-create-an-aspnet-web-api"></a>手順 1:ASP.NET Web API を作成する
 
-1. Visual Studio で、**[ファイル]** > **[新規作成]** > **[プロジェクト]** の順に選択して、プロジェクトを作成します。
+1. Visual Studio で、 **[ファイル]**  >  **[新規作成]**  >  **[プロジェクト]** の順に選択して、プロジェクトを作成します。
 
-2. **[新しいプロジェクト]** ウィンドウで、**[Visual C#]** > **[Web]** > **[ASP.NET Web アプリケーション (.NET Framework)]** の順に選択します。
+2. **[新しいプロジェクト]** ウィンドウで、 **[Visual C#]**  >  **[Web]**  >  **[ASP.NET Web アプリケーション (.NET Framework)]** の順に選択します。
 
-3. **[名前]** ボックスに、アプリケーションの名前 (*Contoso.AADB2C.API* など) を入力して、**[OK]** を選択します。
+3. **[名前]** ボックスに、アプリケーションの名前 (*Contoso.AADB2C.API* など) を入力して、 **[OK]** を選択します。
 
     ![新しい Visual Studio プロジェクトの作成](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-create-project.png)
 
-4. **[新しい ASP.NET Web アプリケーション]** ウィンドウで、**[Web API]** または **[Azure API App]** テンプレートを選択します。
+4. **[新しい ASP.NET Web アプリケーション]** ウィンドウで、 **[Web API]** または **[Azure API App]** テンプレートを選択します。
 
     ![Web API テンプレートの選択](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-select-web-api.png)
 
@@ -81,8 +81,8 @@ Azure AD B2C を使用すると、自分の RESTful サービスを呼び出す�
 
 次の手順を実行して、入力要求を表すモデルを作成します。
 
-1. ソリューション エクスプローラーが開いていない場合は、**[表示]** > **[ソリューション エクスプローラー]** を選択します。
-2. ソリューション エクスプローラーで、**Models** フォルダーを右クリックし、**[追加]**、**[クラス]** の順に選択します。
+1. ソリューション エクスプローラーが開いていない場合は、 **[表示]**  >  **[ソリューション エクスプローラー]** を選択します。
+2. ソリューション エクスプローラーで、**Models** フォルダーを右クリックし、 **[追加]** 、 **[クラス]** の順に選択します。
 
     ![Add model](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-add-model.png)
 
@@ -136,15 +136,15 @@ Azure AD B2C を使用すると、自分の RESTful サービスを呼び出す�
 ### <a name="step-22-add-a-controller"></a>手順 2.2:コントローラーを追加する
 Web API では、_コントローラー_ は、HTTP 要求を処理するオブジェクトです。 コントローラーは、出力要求を返すか、名前が有効でない場合は HTTP 競合のエラー メッセージをスローします。
 
-1. ソリューション エクスプローラーで、**Controllers** フォルダーを右クリックし、**[追加]**、**[コントローラー]** の順に選択します。
+1. ソリューション エクスプローラーで、**Controllers** フォルダーを右クリックし、 **[追加]** 、 **[コントローラー]** の順に選択します。
 
     ![新しいコントロールの追加](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-add-controller-1.png)
 
-2. **[スキャフォールディングを追加]** ウィンドウで **[Web API コントローラー - 空]** を選択し、**[追加]** を選択します。
+2. **[スキャフォールディングを追加]** ウィンドウで **[Web API コントローラー - 空]** を選択し、 **[追加]** を選択します。
 
     ![[Web API 2 コントローラー - 空] の選択](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-add-controller-2.png)
 
-3. **[コントローラーの追加]** ウィンドウで、コントローラーに **IdentityController** という名前を付けて、**[追加]** を選択します。
+3. **[コントローラーの追加]** ウィンドウで、コントローラーに **IdentityController** という名前を付けて、 **[追加]** を選択します。
 
     ![コントローラーの名前の入力](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-add-controller-3.png)
 
@@ -204,11 +204,11 @@ Web API では、_コントローラー_ は、HTTP 要求を処理するオブ�
     ```
 
 ## <a name="step-3-publish-the-project-to-azure"></a>手順 3:Azure にプロジェクトを発行する
-1. ソリューション エクスプローラーで **Contoso.AADB2C.API** プロジェクトを右クリックしてから、**[発行]** を選択します。
+1. ソリューション エクスプローラーで **Contoso.AADB2C.API** プロジェクトを右クリックしてから、 **[発行]** を選択します。
 
     ![Microsoft Azure App Service への発行](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-publish-to-azure-1.png)
 
-2. **[発行]** ウィンドウで、**[Microsoft Azure App Service]** を選択し、**[発行]** を選択します。
+2. **[発行]** ウィンドウで、 **[Microsoft Azure App Service]** を選択し、 **[発行]** を選択します。
 
     ![新しい Microsoft Azure App Service の作成](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-publish-to-azure-2.png)
 
@@ -221,7 +221,7 @@ Web API では、_コントローラー_ は、HTTP 要求を処理するオブ�
 
     ![App Service プロパティの入力](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-publish-to-azure-3.png)
 
-4. Azure リソースの作成を開始するには、**[作成]** を選択します。  
+4. Azure リソースの作成を開始するには、 **[作成]** を選択します。  
     ASP.NET Web アプリが作成されると、ウィザードはそれを Azure に発行してから、既定のブラウザーでアプリを起動します。
 
 6. Web アプリの URL をコピーします。
@@ -248,13 +248,13 @@ Web API では、_コントローラー_ は、HTTP 要求を処理するオブ�
 
 XML スニペットには、次の 2 つの技術プロファイルを持つクレーム プロバイダー ノードが含まれています。
 
-* **TechnicalProfile Id="REST-API-SignUp"**:RESTful サービスを定義します。
+* **TechnicalProfile Id="REST-API-SignUp"** :RESTful サービスを定義します。
   * `Proprietary` は、RESTful ベースのプロバイダーのプロトコルとして記述されています。
   * `InputClaims` は、Azure AD B2C から REST サービスに送信される要求を定義します。
 
     この例では、要求 `givenName` のコンテンツは `firstName` として REST サービスに送信され、要求 `surname` のコンテンツは `lastName` として REST サービスに送信され、`email` はそのまま送信されます。 `OutputClaims` 要素は、RESTful サービスから Azure AD B2C に戻る間に取得する要求を定義します。
 
-* **TechnicalProfile Id="LocalAccountSignUpWithLogonEmail"**:検証技術プロファイルを、(基本ポリシーで定義されている) 既存の技術プロファイルに追加します。 サインアップ中、検証技術プロファイルは、上記の技術プロファイルを呼び出します。 RESTful サービスで HTTP エラー 409 (競合エラー) が返された場合、そのエラー メッセージがユーザーに表示されます。
+* **TechnicalProfile Id="LocalAccountSignUpWithLogonEmail"** :検証技術プロファイルを、(基本ポリシーで定義されている) 既存の技術プロファイルに追加します。 サインアップ中、検証技術プロファイルは、上記の技術プロファイルを呼び出します。 RESTful サービスで HTTP エラー 409 (競合エラー) が返された場合、そのエラー メッセージがユーザーに表示されます。
 
 `<ClaimsProviders>` ノードを見つけて、次の XML スニペットを `<ClaimsProviders>` ノードの下に追加します。
 
@@ -325,7 +325,7 @@ XML スニペットには、次の 2 つの技術プロファイルを持つク�
 
 ## <a name="step-7-upload-the-policy-to-your-tenant"></a>手順 7:ポリシーをテナントにアップロードする
 
-1. [Azure Portal](https://portal.azure.com) で、[Azure AD B2C テナントのコンテキスト](active-directory-b2c-navigate-to-b2c-context.md)に切り替えてから、**[Azure AD B2C]** を開きます。
+1. [Azure Portal](https://portal.azure.com) で、[Azure AD B2C テナントのコンテキスト](active-directory-b2c-navigate-to-b2c-context.md)に切り替えてから、 **[Azure AD B2C]** を開きます。
 
 2. **[Identity Experience Framework]** を選択します。
 
@@ -340,12 +340,12 @@ XML スニペットには、次の 2 つの技術プロファイルを持つク�
 7. SignUpOrSignIn.xml ファイルを使用して前の手順を繰り返します。
 
 ## <a name="step-8-test-the-custom-policy-by-using-run-now"></a>ステップ 8:[今すぐ実行] を使用してカスタム ポリシーをテストする
-1. **[Azure AD B2C の設定]** を選択してから、**[Identity Experience Framework]** に移動します。
+1. **[Azure AD B2C の設定]** を選択してから、 **[Identity Experience Framework]** に移動します。
 
     > [!NOTE]
     > **[今すぐ実行]** を使用するには、テナントに少なくとも 1 つのアプリケーションが事前登録されている必要があります。 アプリケーションを登録する方法については、 Azure AD B2C の[概要](active-directory-b2c-get-started.md)に関する記事または[アプリケーションの登録](active-directory-b2c-app-registration.md)に関する記事を参照してください。
 
-2. アップロードした証明書利用者 (RP) カスタム ポリシーである **B2C_1A_signup_signin** を開いてから、**[今すぐ実行]** を選択します。
+2. アップロードした証明書利用者 (RP) カスタム ポリシーである **B2C_1A_signup_signin** を開いてから、 **[今すぐ実行]** を選択します。
 
     ![[B2C_1A_signup_signin] ウィンドウ](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-run.png)
 

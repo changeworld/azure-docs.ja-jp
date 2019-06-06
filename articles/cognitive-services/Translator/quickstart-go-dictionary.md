@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 02/21/2019
+ms.date: 06/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 356c414d6e3823f927cbb201aeb0a0186e421b5e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 56e67389c59cda70ebcc7705e279b84fcf11cf9d
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58175535"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66514138"
 ---
 # <a name="quickstart-look-up-words-with-bilingual-dictionary-using-go"></a>クイック スタート:Go を使用して 2 か国語辞書で単語を検索する
 
@@ -227,7 +227,7 @@ go run alt-translations.go
 
 ## <a name="next-steps"></a>次の手順
 
-GitHub の [Azure SDK for Go](https://github.com/Azure/azure-sdk-for-go) から Cognitive Services API の Go コードの例を詳しく見てみましょう。
+GitHub の [Azure SDK for Go](https://github.com/Azure/azure-sdk-for-go) から Cognitive Services APIs の Go コードの例を詳しく見てみましょう。
 
 > [!div class="nextstepaction"]
 > [GitHub で Go のコード例を詳しく見てみる](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices)

@@ -2,20 +2,20 @@
 title: Azure Active Directory B2C でカスタム ポリシーを使用してアプリケーションのユーザー インターフェイスをカスタマイズする | Microsoft Docs
 description: Azure Active Directory B2C でカスタム ポリシーを使用してユーザー インターフェイスをカスタマイズする方法について説明します。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/18/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 5dc60c1fbdbd04653160db4d7794f8887305859d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: c3c97e786e2147f043a63b90b886e01eb5944cb4
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64696881"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66507670"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用してアプリケーションのユーザー インターフェイスをカスタマイズする
 
@@ -37,7 +37,7 @@ ms.locfileid: "64696881"
 
 タイトルに製品のブランド名を使用した HTML コンテンツを作成します。
 
-1. 次の HTML スニペットをコピーします。 これは、*\<body\>* タグ内に *\<div id="api"\>\</div\>* という空の要素が配置されている適切な形式の HTML5 です。 この要素は、Azure AD B2C コンテンツが挿入される場所を示します。
+1. 次の HTML スニペットをコピーします。 これは、 *\<body\>* タグ内に *\<div id="api"\>\</div\>* という空の要素が配置されている適切な形式の HTML5 です。 この要素は、Azure AD B2C コンテンツが挿入される場所を示します。
 
    ```html
    <!DOCTYPE html>
@@ -61,7 +61,7 @@ ms.locfileid: "64696881"
 この HTML コンテンツを Blob Storage にホストするには、次の手順を実行します。
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. **ハブ** メニューで、**[新規]** > **[ストレージ]** > **[ストレージ アカウント]** の順にクリックします。
+2. **ハブ** メニューで、 **[新規]**  >  **[ストレージ]**  >  **[ストレージ アカウント]** の順にクリックします。
 3. ストレージ アカウント用に一意の**名前**を入力します。
 4. **[デプロイ モデル]** は **[リソース マネージャー]** のまま残してかまいません。
 5. **[Account Kind]** (アカウントの種類) を **[Blob Storage]** に変更します。
@@ -81,7 +81,7 @@ Blob Storage 内にパブリック コンテナーを作成するには、次の
 
 1. **[概要]** タブをクリックします。
 2. **[コンテナー]** をクリックします。
-3. **[名前]** に「**$root**」と入力します。
+3. **[名前]** に「 **$root**」と入力します。
 4. **[Access type]** (アクセスの種類) を **[Blob]** に設定します。
 5. **$root** をクリックして、新しいコンテナーを開きます。
 6. **[アップロード]** をクリックします。
@@ -145,16 +145,16 @@ UI のカスタマイズを構成するには、**ContentDefinition** とその�
 ## <a name="upload-your-updated-custom-policy"></a>更新したカスタム ポリシーをアップロードします。
 
 1. お使いの Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。確認のために、トップ メニューにある **[ディレクトリとサブスクリプション フィルター]** をクリックして、お使いのテナントを含むディレクトリを選択します。
-3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、**[Azure AD B2C]** を検索して選択します。
+3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
 4. **[Identity Experience Framework]** を選択します。
-2. **[All Policies]**(すべてのポリシー) をクリックします。
+2. **[All Policies]** (すべてのポリシー) をクリックします。
 3. **[ポリシーのアップロード]** をクリックします。
 4. 前に変更した拡張ファイルをアップロードします。
 
 ## <a name="test-the-custom-policy-by-using-run-now"></a>**[今すぐ実行]** を使用したカスタム ポリシーのテスト
 
-1. **[Azure AD B2C]** ブレードで、**[すべてのポリシー]** に移動します。
-2. アップロードしたカスタム ポリシーを選択し、**[Run now]**(今すぐ実行) ボタンをクリックします。
+1. **[Azure AD B2C]** ブレードで、 **[すべてのポリシー]** に移動します。
+2. アップロードしたカスタム ポリシーを選択し、 **[Run now]** (今すぐ実行) ボタンをクリックします。
 3. メール アドレスを使用してサインアップできることを確認します。
 
 ## <a name="reference"></a>リファレンス

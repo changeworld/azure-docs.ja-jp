@@ -2,20 +2,20 @@
 title: Azure Active Directory B2C を使用して Weibo アカウントでのサインアップおよびサインインを設定する | Microsoft Docs
 description: Azure Active Directory B2C を使用するアプリケーションで Weibo アカウントを持つ顧客にサインアップとサインインを提供します。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/11/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 9701d1583a19be46c4c72a82d9f376a8db0c625c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 808d4bc8521917b89a7265be6dfab60757baf910
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64704256"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66508048"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-weibo-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して Weibo アカウントでのサインアップおよびサインインを設定する
 
@@ -52,9 +52,9 @@ Azure Active Directory (Azure AD) B2C で ID プロバイダーとして Weibo �
 
 1. Azure AD B2C テナントの全体管理者として [Azure Portal](https://portal.azure.com/) にサインインします。
 2. お使いの Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。確認のために、トップ メニューにある **[ディレクトリとサブスクリプション フィルター]** をクリックして、お使いのテナントを含むディレクトリを選択します。
-3. Azure Portal の左上隅の **[すべてのサービス]** を選択し、**[Azure AD B2C]** を検索して選択します。
-4. **[ID プロバイダー]**、**[追加]** の順に選択します。
+3. Azure Portal の左上隅の **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。
+4. **[ID プロバイダー]** 、 **[追加]** の順に選択します。
 5. **[名前]** を入力します。 たとえば、「*Weibo*」と入力します。
-6. **[ID プロバイダーの種類]** を選択し、**[Weibo (Preview)]**(Weibo (プレビュー)) を選択して、**[OK]** をクリックします。
-7. **[この ID プロバイダーをセットアップします]** を選択し、**[クライアント ID]** として前に記録したアプリ キーを入力し、前に作成した Weibo アプリケーションの **[クライアント シークレット]** として記録したアプリ シークレットを入力します。
-8. **[OK]** をクリックし、**[作成]** をクリックして Weibo の構成を保存します。
+6. **[ID プロバイダーの種類]** を選択し、 **[Weibo (Preview)]** (Weibo (プレビュー)) を選択して、 **[OK]** をクリックします。
+7. **[この ID プロバイダーをセットアップします]** を選択し、 **[クライアント ID]** として前に記録したアプリ キーを入力し、前に作成した Weibo アプリケーションの **[クライアント シークレット]** として記録したアプリ シークレットを入力します。
+8. **[OK]** をクリックし、 **[作成]** をクリックして Weibo の構成を保存します。

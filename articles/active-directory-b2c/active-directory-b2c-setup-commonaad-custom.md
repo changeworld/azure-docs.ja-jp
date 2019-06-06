@@ -2,20 +2,20 @@
 title: Azure Active Directory B2C のカスタム ポリシーを使用してマルチテナント Azure AD ID プロバイダーのサインインを設定する | Microsoft Docs
 description: カスタム ポリシーを使用してマルチテナントの Azure AD ID プロバイダーを追加する - Azure Active Directory B2C。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/20/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: d0c849619f2f39ebab533d7e1d7feee7c8822306
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 72d01d6927ee421d01a831244acf65c44a084354
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64688253"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66508666"
 ---
 # <a name="set-up-sign-in-for-multi-tenant-azure-active-directory-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C のカスタム ポリシーを使用してマルチテナント Azure Active Directory を設定する
 
@@ -36,7 +36,7 @@ ms.locfileid: "64688253"
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. お使いの Azure AD テナント (contoso.com) を含むディレクトリを使用していることを確認してください。確認のために、トップ メニューにある **[ディレクトリとサブスクリプション フィルター]** をクリックして、お使いのテナントを含むディレクトリを選択します。
-3. Azure portal の左上隅にある **[すべてのサービス]** を選択し、**[アプリの登録]** を検索して選択します。
+3. Azure portal の左上隅にある **[すべてのサービス]** を選択し、 **[アプリの登録]** を検索して選択します。
 4. **[新しいアプリケーションの登録]** を選択します。
 5. アプリケーションの名前を入力します。 たとえば、「 `Azure AD B2C App` 」のように入力します。
 6. **[アプリケーションの種類]** には `Web app / API` を選択します。
@@ -47,18 +47,18 @@ ms.locfileid: "64688253"
     ```
     
 8. **Create** をクリックしてください。 後で使用するために **[アプリケーション ID]** をコピーします。
-9. アプリケーションを選択し、**[設定]** を選択します。
-10. **[キー]** を選択し、キーの説明を入力し、期間を選択し、**[保存]** をクリックします。 キーの値が表示されたら、後で使用するためにコピーします。
-11. **[設定]** で **[プロパティ]** を選択し、**[マルチテナント]** を `Yes` に設定し、**[保存]** をクリックします。
+9. アプリケーションを選択し、 **[設定]** を選択します。
+10. **[キー]** を選択し、キーの説明を入力し、期間を選択し、 **[保存]** をクリックします。 キーの値が表示されたら、後で使用するためにコピーします。
+11. **[設定]** で **[プロパティ]** を選択し、 **[マルチテナント]** を `Yes` に設定し、 **[保存]** をクリックします。
 
 ## <a name="create-a-policy-key"></a>ポリシー キーを作成する
 
 作成したアプリケーション キーを Azure AD B2C テナントに格納する必要があります。
 
 1. お使いの Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。確認のために、トップ メニューにある **[ディレクトリとサブスクリプション フィルター]** をクリックして、お使いのテナントを含むディレクトリを選択します。
-2. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、**[Azure AD B2C]** を検索して選択します。
-3. [概要] ページで、**[Identity Experience Framework - プレビュー]** を選択します。
-4. **[ポリシー キー]** を選択し、**[追加]** を選択します。
+2. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
+3. [概要] ページで、 **[Identity Experience Framework - プレビュー]** を選択します。
+4. **[ポリシー キー]** を選択し、 **[追加]** を選択します。
 5. **オプション**については、`Manual`を選択します。
 6. ポリシー キーの**名前**を入力します。 たとえば、「 `ContosoAppSecret` 」のように入力します。  プレフィックス `B2C_1A_` がキーの名前に自動的に追加されます。
 7. **[シークレット]** に、記録しておいたアプリケーション キーを入力します。
@@ -143,7 +143,7 @@ ms.locfileid: "64688253"
 
 ここまでで、Azure AD B2C が Azure AD ディレクトリと通信する方法を認識するようにポリシーを設定しました。 ポリシーの拡張ファイルをアップロードして、現時点で問題がないことを確認してみます。
 
-1. Azure AD B2C テナントの **[カスタム ポリシー]** ページで、**[ポリシーのアップロード]** を選択します。
+1. Azure AD B2C テナントの **[カスタム ポリシー]** ページで、 **[ポリシーのアップロード]** を選択します。
 2. **[ポリシーが存在する場合は上書きする]** を有効にし、*TrustFrameworkExtensions.xml* ファイルを参照して選択します。
 3. **[アップロード]** をクリックします。
 
@@ -189,10 +189,10 @@ Azure AD B2C との通信は、テナントで作成したアプリケーショ�
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. お使いの Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。確認のために、トップ メニューにある **[ディレクトリとサブスクリプション フィルター]** をクリックして、お使いのテナントを含むディレクトリを選択します。
-3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、**[Azure AD B2C]** を検索して選択します。
-4. **[アプリケーション]** を選択し、**[追加]** を選択します。
+3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
+4. **[アプリケーション]** を選択し、 **[追加]** を選択します。
 5. アプリケーションの名前を入力します (*testapp1* など)。
-6. **[Web アプリ / Web API]** には `Yes` を選択し、**[応答 URL]** に `https://jwt.ms` を入力します。
+6. **[Web アプリ / Web API]** には `Yes` を選択し、 **[応答 URL]** に `https://jwt.ms` を入力します。
 7. **Create** をクリックしてください。
 
 ## <a name="update-and-test-the-relying-party-file"></a>証明書利用者ファイルを更新し、テストする
@@ -204,4 +204,4 @@ Azure AD B2C との通信は、テナントで作成したアプリケーショ�
 3. **PublicPolicyUri** の値をポリシーの URI に更新します。 たとえば、`http://contoso.com/B2C_1A_signup_signin_contoso` にします。
 4. **DefaultUserJourney** の **ReferenceId** 属性の値を、作成した新しいユーザー体験の ID (SignUpSignContoso) と一致するように変更します。
 5. 変更を保存し、ファイルをアップロードし、一覧から新しいポリシーを選択します。
-6. 作成した Azure AD B2C アプリケーションが **[アプリケーションの選択]** フィールドで選択されていることを確認し、**[今すぐ実行]** をクリックしてテストします。
+6. 作成した Azure AD B2C アプリケーションが **[アプリケーションの選択]** フィールドで選択されていることを確認し、 **[今すぐ実行]** をクリックしてテストします。

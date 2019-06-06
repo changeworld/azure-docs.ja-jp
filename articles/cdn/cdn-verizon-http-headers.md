@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: magattus
-ms.openlocfilehash: 7ce845fb272cea1d621e8ccc18203e3a071e8c29
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b9f7a5332c8529753f2e22efd6af3d04cb3f44b6
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57992017"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479752"
 ---
 # <a name="verizon-specific-http-headers-for-azure-cdn-rules-engine"></a>Azure CDN ルール エンジンの Verizon 固有 HTTP ヘッダー
 
 **Verizon の Azure CDN Premium** 製品では、HTTP 要求が配信元サーバーに送信されるとき、ポイント オブジェクト プレゼンス (POP) サーバーは、POP へのクライアント要求内に 1 つ以上の予約済みヘッダー (またはプロキシの特殊ヘッダー) を追加できます。 これらのヘッダーは、受信された標準の転送ヘッダーに追加されます。 標準の要求ヘッダーについては、[要求フィールド](https://en.wikipedia.org/wiki/List_of_HTTP_header_fields#Request_fields)に関するページを参照してください。
 
-これらのいずれかの予約済みヘッダーが配信元サーバーへの Azure CDN (Content Delivery Network) POP 要求内に追加されないようにする場合は、ルール エンジン内に[プロキシの特殊ヘッダー機能](cdn-rules-engine-reference-features.md#proxy-special-headers)に関するルールを作成する必要があります。 このルールでは、削除するヘッダーをヘッダー フィールド内の既定のヘッダーのリストから除外します。 [キャッシュ応答ヘッダーのデバッグ機能](cdn-rules-engine-reference-features.md#debug-cache-response-headers)を有効にしている場合は、必要な `X-EC-Debug` ヘッダーを追加するようにしてください。 
+これらのいずれかの予約済みヘッダーが配信元サーバーへの Azure CDN (Content Delivery Network) POP 要求内に追加されないようにする場合は、ルール エンジン内に[プロキシの特殊ヘッダー機能](cdn-verizon-premium-rules-engine-reference-features.md#proxy-special-headers)に関するルールを作成する必要があります。 このルールでは、削除するヘッダーをヘッダー フィールド内の既定のヘッダーのリストから除外します。 [キャッシュ応答ヘッダーのデバッグ機能](cdn-verizon-premium-rules-engine-reference-features.md#debug-cache-response-headers)を有効にしている場合は、必要な `X-EC-Debug` ヘッダーを追加するようにしてください。 
 
 たとえば、`Via`ヘッダーを削除するには、ルールのヘッダー フィールドに*X-Forwarded-For、X-Forwarded-Proto、X-Host、X-Midgress、X-Gateway-List、X-EC-Name、Host* のヘッダーのリストを含める必要があります。 
 
@@ -42,7 +42,7 @@ X-Host | 要求のホスト名を示します。 | cdn.mydomain.com
 X-Midgress | 要求が追加の CDN サーバー経由でプロキシ処理されたかどうかを示します。 たとえば、POP サーバーから配信元シールド サーバーへ、または POP サーバーから ADN ゲートウェイ サーバーへです。 <br />このヘッダーは、midgress トラフィックが転送される場合にのみ要求に追加されます。 この場合、要求が追加の CDN サーバー経由でプロキシ処理されたことを示すために、ヘッダーは 1 に設定されます。| 1
 [Host](#host-request-header) | 要求されたコンテンツが見つかる可能性のあるホストとポートを識別します。 | marketing.mydomain.com:80
 [X-Gateway-List](#x-gateway-list-request-header) | ADN:顧客配信元に割り当てられた ADN ゲートウェイ サーバーのフェールオーバー リストを識別します。 <br />Origin shield:顧客配信元に割り当てられた配信元シールド サーバーのセットを示します。 | `icn1,hhp1,hnd1`
-X-EC-_&lt;name&gt;_ | *X-EC* で始まる要求ヘッダー (X-EC-Tag や [X-EC-Debug](cdn-http-debug-headers.md) など) が、CDN で使用されるために予約されます。| waf-production
+X-EC- _&lt;name&gt;_ | *X-EC* で始まる要求ヘッダー (X-EC-Tag や [X-EC-Debug](cdn-http-debug-headers.md) など) が、CDN で使用されるために予約されます。| waf-production
 
 ## <a name="via-request-header"></a>Via 要求ヘッダー
 `Via` 要求ヘッダーが POP サーバーを識別するための形式は、次の構文で指定されます。

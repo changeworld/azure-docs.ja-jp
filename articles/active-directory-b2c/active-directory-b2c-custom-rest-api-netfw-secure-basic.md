@@ -2,20 +2,20 @@
 title: Azure Active Directory B2C の HTTP 基本認証を使用して RESTful サービスをセキュリティ保護する | Microsoft Docs
 description: HTTP 基本認証を使用して Azure AD B2C でのカスタム REST API 要求交換をセキュリティで保護する。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/25/2017
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: db5642abfca03f97ed258d287f5279cad0a32015
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: e07a3fee2cc6c588dee608a68415b554e6fc77f3
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64694659"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66507587"
 ---
 # <a name="secure-your-restful-services-by-using-http-basic-authentication"></a>HTTP 基本認証を使用して RESTful サービスをセキュリティで保護する
 
@@ -70,7 +70,7 @@ PM> Install-Package Microsoft.Owin.Host.SystemWeb
 
 `ClientAuthMiddleware.cs` クラスを *[App_Start]* フォルダーの下に追加します。 そのためには、次の手順を実行します。
 
-1. *[App_Start]* フォルダー右クリックし、**[追加]** を選択し、次に **[クラス]** を選択します。
+1. *[App_Start]* フォルダー右クリックし、 **[追加]** を選択し、次に **[クラス]** を選択します。
 
    ![App_Start フォルダーに ClientAuthMiddleware.cs クラスを追加する](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-secure-basic-OWIN-startup-auth1.png)
 
@@ -193,7 +193,7 @@ PM> Install-Package Microsoft.Owin.Host.SystemWeb
 ### <a name="step-14-add-an-owin-startup-class"></a>手順 1.4: OWIN Startup クラスを追加する
 
 `Startup.cs` という名前の OWIN Startup クラスを API に追加します。 そのためには、次の手順を実行します。
-1. プロジェクトを右クリックし、**[追加]** > **[新しい項目]** の順に選択して、**OWIN** を検索します。
+1. プロジェクトを右クリックし、 **[追加]**  >  **[新しい項目]** の順に選択して、**OWIN** を検索します。
 
    ![OWIN Startup クラスを追加する](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-secure-basic-OWIN-startup.png)
 
@@ -224,7 +224,7 @@ Controllers\IdentityController.cs を開き、`[Authorize]` タグをコント�
 
 ## <a name="step-2-publish-to-azure"></a>手順 2:Azure に発行する
 
-プロジェクトを発行するには、ソリューション エクスプローラーで **Contoso.AADB2C.API** プロジェクトを右クリックし、**[発行]** を選択します。
+プロジェクトを発行するには、ソリューション エクスプローラーで **Contoso.AADB2C.API** プロジェクトを右クリックし、 **[発行]** を選択します。
 
 ## <a name="step-3-add-the-restful-services-app-id-and-app-secret-to-azure-ad-b2c"></a>手順 3:RESTful サービス アプリのアプリ ID とアプリ シークレットを Azure AD B2C に追加する
 
@@ -232,7 +232,7 @@ RESTful サービスがクライアント ID (ユーザー名) とシークレ�
 
 ### <a name="step-31-add-a-restful-services-client-id"></a>手順 3.1: RESTful サービスのクライアント ID を追加する
 
-1. Azure AD B2C テナントで、**[B2C Settings]\(B2C 設定\)** > **[Identity Experience Framework]** の順に選択します。
+1. Azure AD B2C テナントで、 **[B2C Settings]\(B2C 設定\)**  >  **[Identity Experience Framework]** の順に選択します。
 
 
 2. **[ポリシー キー]** を選択して、テナント内で使用できるキーを表示します。
@@ -254,7 +254,7 @@ RESTful サービスがクライアント ID (ユーザー名) とシークレ�
 
 ### <a name="step-32-add-a-restful-services-client-secret"></a>手順 3.2: RESTful サービスのクライアント シークレットを追加する
 
-1. Azure AD B2C テナントで、**[B2C Settings]\(B2C 設定\)** > **[Identity Experience Framework]** の順に選択します。
+1. Azure AD B2C テナントで、 **[B2C Settings]\(B2C 設定\)**  >  **[Identity Experience Framework]** の順に選択します。
 
 2. **[ポリシー キー]** を選択して、テナント内で利用できるキーを表示します。
 
@@ -302,7 +302,7 @@ RESTful サービスがクライアント ID (ユーザー名) とシークレ�
 
 ## <a name="step-5-upload-the-policy-to-your-tenant"></a>手順 5:ポリシーをテナントにアップロードする
 
-1. [Azure Portal](https://portal.azure.com) で、[Azure AD B2C テナントのコンテキスト](active-directory-b2c-navigate-to-b2c-context.md)に切り替えてから、**[Azure AD B2C]** を開きます。
+1. [Azure Portal](https://portal.azure.com) で、[Azure AD B2C テナントのコンテキスト](active-directory-b2c-navigate-to-b2c-context.md)に切り替えてから、 **[Azure AD B2C]** を開きます。
 
 2. **[Identity Experience Framework]** を選択します。
 
@@ -316,12 +316,12 @@ RESTful サービスがクライアント ID (ユーザー名) とシークレ�
 
 ## <a name="step-6-test-the-custom-policy-by-using-run-now"></a>手順 6:[今すぐ実行] を使用してカスタム ポリシーをテストする
 
-1. **[Azure AD B2C の設定]** を開き、**[Identity Experience Framework]** を選択します。
+1. **[Azure AD B2C の設定]** を開き、 **[Identity Experience Framework]** を選択します。
 
     >[!NOTE]
     >[今すぐ実行] を使用するには、テナントに少なくとも 1 つのアプリケーションが事前登録されている必要があります。 アプリケーションを登録する方法については、 Azure AD B2C の[概要](active-directory-b2c-get-started.md)に関する記事または[アプリケーションの登録](active-directory-b2c-app-registration.md)に関する記事を参照してください。
 
-2. アップロードした証明書利用者 (RP) カスタム ポリシーである **B2C_1A_signup_signin** を開いてから、**[今すぐ実行]** を選択します。
+2. アップロードした証明書利用者 (RP) カスタム ポリシーである **B2C_1A_signup_signin** を開いてから、 **[今すぐ実行]** を選択します。
 
 3. **[名]** ボックスに「**Test**」と入力して、プロセスをテストします。  
     ウィンドウの上部に Azure AD B2C によってエラー メッセージが表示されます。

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/24/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 374fd700f3ac99c00b922f4fca330fee9acfd704
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 0e592c03da222e5265ed53aab8ef73f3b477f33a
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65955749"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475868"
 ---
 # <a name="security-in-azure-app-service"></a>Azure App Service のセキュリティ
 
@@ -113,7 +113,6 @@ App Service の認証および承認は、Azure Active Directory、Microsoft ア
 
 **Isolated** 価格レベルを除くすべての価格レベルでは、App Service の共有ネットワーク インフラストラクチャ上でアプリが実行されます。 たとえば、パブリック IP アドレスとフロントエンド ロード バランサーは他のテナントと共有されます。 **Isolated** 価格レベルでは、専用の [App Service 環境](environment/intro.md)内でアプリを実行することで完全なネットワークの分離を実現しています。 App Service 環境は、[Azure Virtual Network](/azure/virtual-network/) の独自のインスタンスで実行されます。 以下を実行できます。 
 
-- [ネットワーク セキュリティ グループ](../virtual-network/virtual-networks-dmz-nsg.md)を使用してネットワーク アクセスを制限する。 
 - 専用のフロント エンドを使用し、専用のパブリック エンドポイントを介してアプリを提供する。
 - 内部ロードバランサー (ILB) を使用して内部アプリケーションを提供する。これによって、Azure Virtual Network 内からのアクセスのみが許可されます。 ILB にはプライベート サブネットの IP アドレスがあり、アプリはインターネットから完全に分離されます。
 - [Web アプリケーション ファイアウォール (WAF) の背後で ILB を使用する](environment/integrate-with-application-gateway.md)。 WAF は、DDoS 保護、URI フィルター処理、SQL のインジェクション防止など、一般公開されているアプリケーションにエンタープライズレベルの保護を提供します。

@@ -2,20 +2,20 @@
 title: Azure Active Directory B2C のカスタム ポリシーを通じてアクセス トークンをご自身のアプリケーションに渡す | Microsoft Docs
 description: Azure Active Directory B2C のご自身のアプリケーションへのカスタム ポリシーを通じて、OAuth2.0 ID プロバイダーのアクセス トークンを要求として渡す方法について学習します。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: d752af1860d76e59df045907c11d16b4e1d20b0c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: d9420398c012b8da18e3b035cb845db6ce8c942d
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64702948"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66511061"
 ---
 # <a name="pass-an-access-token-through-a-custom-policy-to-your-application-in-azure-active-directory-b2c"></a>Azure Active Directory B2C のカスタム ポリシーを通じてアクセス トークンをご自身のアプリケーションに渡す
 
@@ -87,9 +87,9 @@ Azure AD B2C でアプリケーションをテスト中に、Azure AD B2C トー
 
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
 2. お使いの Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。確認のために、トップ メニューにある **[ディレクトリとサブスクリプション フィルター]** をクリックして、お使いのテナントを含むディレクトリを選択します。
-3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、**[Azure AD B2C]** を検索して選択します。
+3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
 4. **[Identity Experience Framework]** を選択します。
-5. [カスタム ポリシー] ページで、**[ポリシーのアップロード]** をクリックします。
+5. [カスタム ポリシー] ページで、 **[ポリシーのアップロード]** をクリックします。
 6. **[ポリシーが存在する場合は上書きする]** を選択し、*TrustframeworkExtensions.xml* ファイルを検索して選択します。
 7. **[アップロード]** をクリックします。
 8. その証明書利用者ファイル (*SignUpOrSignIn.xml* など) で、手順 5 から 7 を繰り返します。
@@ -97,7 +97,7 @@ Azure AD B2C でアプリケーションをテスト中に、Azure AD B2C トー
 ### <a name="run-the-policy"></a>ポリシーを実行する
 
 1. 変更したポリシーを開きます。 たとえば、*B2C_1A_signup_signin* などです。
-2. **[アプリケーション]** には、前に登録したアプリケーションを選択します。 以下の例でトークンを表示するには、**[応答 URL]** に `https://jwt.ms` が表示される必要があります。
+2. **[アプリケーション]** には、前に登録したアプリケーションを選択します。 以下の例でトークンを表示するには、 **[応答 URL]** に `https://jwt.ms` が表示される必要があります。
 3. **[今すぐ実行]** をクリックします。
 
     次の例のようなコードが表示されます。

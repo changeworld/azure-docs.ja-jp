@@ -2,20 +2,20 @@
 title: Azure Active Directory B2C のカスタム ポリシーで Azure Active Directory 技術プロファイルを定義する | Microsoft Docs
 description: Azure Active Directory B2C のカスタム ポリシーで Azure Active Directory 技術プロファイルを定義します。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 433307791201e3799b3bc9e54aec765d9fbeb4af
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 8b8bbe540d9e296b0f6a0c11a62d3b861e0115d3
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64718709"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66507447"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで Azure Active Directory 検証技術プロファイルを定義します。
 
@@ -255,12 +255,12 @@ Azure Active Directory (Azure AD) B2C は、Azure Active Directory ユーザー�
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | Operation | はい | 実行する操作。 指定できる値: `Read`、`Write`、`DeleteClaims`、または `DeleteClaimsPrincipal`。 | 
-| RaiseErrorIfClaimsPrincipalDoesNotExist | いいえ  | ユーザー オブジェクトがディレクトリに存在しない場合、エラーを発生させます。 指定できる値: `true` または `false`。 | 
-| UserMessageIfClaimsPrincipalDoesNotExist | いいえ  | エラーが発生する場合 (RaiseErrorIfClaimsPrincipalDoesNotExist 属性の説明を参照)、ユーザー オブジェクトが存在しない場合にユーザーに表示するメッセージを指定します。 値を[ローカライズ](localization.md)することができます。| 
-| RaiseErrorIfClaimsPrincipalAlreadyExists | いいえ  | ユーザー オブジェクトが既に存在する場合、エラーを発生させます。 指定できる値: `true` または `false`。| 
-| UserMessageIfClaimsPrincipalAlreadyExists | いいえ  | エラーが発生する場合 (RaiseErrorIfClaimsPrincipalAlreadyExists 属性の説明を参照)、ユーザー オブジェクトが既に存在する場合にユーザーに表示するメッセージを指定します。 値を[ローカライズ](localization.md)することができます。| 
-| ApplicationObjectId | いいえ  | 拡張属性のアプリケーション オブジェクト識別子。 値:アプリケーションの ObjectId。 詳細については、「[カスタム プロファイル編集ポリシーのカスタム属性を使用](active-directory-b2c-create-custom-attributes-profile-edit-custom.md)」を参照してください。 | 
-| ClientId | いいえ  | サード パーティとしてテナントにアクセスするためのクライアント識別子。 詳細については、「[カスタム プロファイル編集ポリシーのカスタム属性を使用](active-directory-b2c-create-custom-attributes-profile-edit-custom.md)」を参照してください。 | 
+| RaiseErrorIfClaimsPrincipalDoesNotExist | いいえ | ユーザー オブジェクトがディレクトリに存在しない場合、エラーを発生させます。 指定できる値: `true` または `false`。 | 
+| UserMessageIfClaimsPrincipalDoesNotExist | いいえ | エラーが発生する場合 (RaiseErrorIfClaimsPrincipalDoesNotExist 属性の説明を参照)、ユーザー オブジェクトが存在しない場合にユーザーに表示するメッセージを指定します。 値を[ローカライズ](localization.md)することができます。| 
+| RaiseErrorIfClaimsPrincipalAlreadyExists | いいえ | ユーザー オブジェクトが既に存在する場合、エラーを発生させます。 指定できる値: `true` または `false`。| 
+| UserMessageIfClaimsPrincipalAlreadyExists | いいえ | エラーが発生する場合 (RaiseErrorIfClaimsPrincipalAlreadyExists 属性の説明を参照)、ユーザー オブジェクトが既に存在する場合にユーザーに表示するメッセージを指定します。 値を[ローカライズ](localization.md)することができます。| 
+| ApplicationObjectId | いいえ | 拡張属性のアプリケーション オブジェクト識別子。 値:アプリケーションの ObjectId。 詳細については、「[カスタム プロファイル編集ポリシーのカスタム属性を使用](active-directory-b2c-create-custom-attributes-profile-edit-custom.md)」を参照してください。 | 
+| ClientId | いいえ | サード パーティとしてテナントにアクセスするためのクライアント識別子。 詳細については、「[カスタム プロファイル編集ポリシーのカスタム属性を使用](active-directory-b2c-create-custom-attributes-profile-edit-custom.md)」を参照してください。 | 
 
 
 

@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 01/08/2018
+ms.date: 01/08/2019
 ms.author: lbosq
-ms.openlocfilehash: b81cedc9376b33b27f3a742fbe5d7410535fa727
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 923d39a87340ffd26b6cc34d412edfbb97c13bbf
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56587805"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66480508"
 ---
 # <a name="quickstart-build-a-nodejs-application-by-using-azure-cosmos-db-gremlin-api-account"></a>クイック スタート:Azure Cosmos DB Gremlin API アカウントを使用して Node.js アプリケーションをビルドする
 
@@ -144,7 +144,7 @@ GitHub から Gremlin API アプリの複製を作成し、接続文字列を設
 
     ![Azure Portal の [キー] ブレードでアクセス キーを表示およびコピーする](./media/create-graph-nodejs/gremlin-uri.png)
 
-   **[Gremlin URI]** の値が空である場合は、ポータルの **[キー]** ページで値を生成できます。 そのためには、**[URI]** の値を使用し、 https:// を削除し、documents を gremlin.cosmosdb に変更してください。 2017 年 12 月 20 日より前に作成したグラフ アカウントの場合は、documents を graphs に変更します。 
+   **[Gremlin URI]** の値が空である場合は、ポータルの **[キー]** ページで値を生成できます。 そのためには、 **[URI]** の値を使用し、 https:// を削除し、documents を gremlin.cosmosdb に変更してください。 2017 年 12 月 20 日より前に作成したグラフ アカウントの場合は、documents を graphs に変更します。 
 
    Gremlin エンドポイントは、`mygraphdb.gremlin.cosmosdb.azure.com` のように、プロトコル/ポート番号が付いていないホスト名のみにする必要があります (`https://mygraphdb.gremlin.cosmosdb.azure.com` や `mygraphdb.gremlin.cosmosdb.azure.com:433` は不可)。
 
@@ -182,9 +182,9 @@ module.exports = config;
 
 ここで、Azure Portal のデータ エクスプローラーに戻り、新しいグラフ データの表示、クエリ実行、変更、使用を行うことができます。
 
-データ エクスプローラーで新しいデータベースが **[グラフ]** ウィンドウに表示されます。 データベース、コンテナーの順に展開し、**[グラフ]** を選択します。
+データ エクスプローラーで新しいデータベースが **[グラフ]** ウィンドウに表示されます。 データベース、コンテナーの順に展開し、 **[グラフ]** を選択します。
 
-**[フィルターの適用]** を選択すると、サンプル アプリで生成されたデータが、**[グラフ]** タブ内にある隣のウィンドウに表示されます。
+**[フィルターの適用]** を選択すると、サンプル アプリで生成されたデータが、 **[グラフ]** タブ内にある隣のウィンドウに表示されます。
 
 試しに `g.V()` に「`.has('firstName', 'Thomas')`」と入力して、フィルターをテストします。 値の大文字と小文字が区別されることに注意してください。
 

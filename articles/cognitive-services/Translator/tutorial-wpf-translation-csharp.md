@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: tutorial
-ms.date: 02/13/2019
+ms.date: 06/04/2019
 ms.author: erhopf
-ms.openlocfilehash: f7f8e86f17b0fdb715afc96dba80db0746440cef
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2deaa0ed8b21d5e091fe5d3b3e6986eaf2340281
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58078127"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66514721"
 ---
 # <a name="tutorial-create-a-translation-app-with-wpf"></a>チュートリアル:WPF を使って翻訳アプリを作成する
 
 このチュートリアルでは、単一サブスクリプション キーを使ってテキスト翻訳、言語検出、スペル チェックに Azure Cognitive Service API を利用する [Windows Presentation Foundation (WPF)](https://docs.microsoft.com/visualstudio/designers/getting-started-with-wpf?view=vs-2017) アプリを作成します。 具体的には、アプリから Translator Text と [Bing Spell Check](https://azure.microsoft.com/services/cognitive-services/spell-check/) の API を呼び出します。
 
-WPF とは デスクトップ クライアント アプリを作成する UI フレームワークです。 WPF 開発プラットフォームでは、アプリ モデル、リソース、コントロール、グラフィックス、レイアウト、データ バインディング、ドキュメント、セキュリティなど、広範なアプリ開発機能がサポートされています。 .NET Framework のサブセットなので、以前に ASP.NET または Windows フォームを使って .NET Framework でアプリを作成したことがある場合、そのプログラミングの経験を活かすことができます。 WPF では、Extensible Application Markup Language (XAML) を使って、アプリ プログラミングの宣言型モデルを提供します。これについては、後のセクションで確認します。
+WPF とは デスクトップ クライアント アプリを作成する UI フレームワークです。 WPF 開発プラットフォームでは、アプリ モデル、リソース、コントロール、グラフィックス、レイアウト、データ バインディング、ドキュメント、セキュリティなど、広範なアプリ開発機能がサポートされています。 .NET Framework のサブセットなので、以前に .NET Framework と ASP.NET または Windows フォームを使ってアプリを作成したことがある場合、そのプログラミングの経験を活かすことができます。 WPF では、Extensible Application Markup Language (XAML) を使って、アプリ プログラミングの宣言型モデルを提供します。これについては、後のセクションで確認します。
 
 このチュートリアルで学習する内容は次のとおりです。
 
@@ -59,10 +59,10 @@ WPF とは デスクトップ クライアント アプリを作成する UI フ
 
 最初に実行する必要があるのは、Visual Studio で自分のプロジェクトを設定することです。
 
-1. Visual Studio を開きます。 次に、**[ファイル] > [新規] > [プロジェクト]** の順に選択します。
+1. Visual Studio を開きます。 次に、 **[ファイル] > [新規] > [プロジェクト]** の順に選択します。
 2. 左側のパネルで **[Visual C#]** を見つけて選択します。 次に、中央のパネルで **[WPF アプリ (.NET Framework)]** を選択します。
    ![Visual Studio で WPF アプリを作成する](media/create-wpf-project-visual-studio.png)
-3. プロジェクトに名前を付け、フレームワークのバージョンを **.NET Framework 4.5.2 以降**に設定し、**[OK]** をクリックします。
+3. プロジェクトに名前を付け、フレームワークのバージョンを **.NET Framework 4.5.2 以降**に設定し、 **[OK]** をクリックします。
 4. プロジェクトが作成されます。 2 つのタブに `MainWindow.xaml` と `MainWindow.xaml.cs` が開いていることに注目してください。 このチュートリアルでは、これら 2 つのファイルにコードを追加していきます。 前者はアプリのユーザー インターフェイス用、後者は Translator Text と Bing Spell Check の呼び出し用です。
    ![環境を確認する](media/blank-wpf-project.png)
 
@@ -76,13 +76,13 @@ WPF とは デスクトップ クライアント アプリを作成する UI フ
 
 オブジェクトのシリアル化と逆シリアル化を行うためのアセンブリ、および HTTP 要求と応答を管理するためのアセンブリをプロジェクトに追加します。
 
-1. Visual Studio のソリューション エクスプローラー (右側のパネル) で自分のプロジェクトを見つけます。 自分のプロジェクトを右クリックし、**[追加] > [参照]** の順に選択して、**[参照マネージャー]** を開きます。
+1. Visual Studio のソリューション エクスプローラー (右側のパネル) で自分のプロジェクトを見つけます。 自分のプロジェクトを右クリックし、 **[追加] > [参照]** の順に選択して、 **[参照マネージャー]** を開きます。
    ![アセンブリ参照を追加する](media/add-assemblies-sample.png)
 2. [アセンブリ] タブには、参照に使用できるすべての .NET Framework アセンブリが表示されます。 画面の右上にある検索バーを使用して、以下の参照を検索し、プロジェクトに追加します。
-   * [System.Runtime.Serialization](https://docs.microsoft.com/dotnet/api/system.runtime.serialization?view=netframework-4.7.2)
-   * [System.Web](https://docs.microsoft.com/dotnet/api/system.web?view=netframework-4.7.2)
-   * [System.Web.Extensions](https://docs.microsoft.com/dotnet/api/system.web?view=netframework-4.7.2)
-3. これらの参照をプロジェクトに追加したら、**[OK]** をクリックして、**[参照マネージャー]** を閉じることができます。
+   * [System.Runtime.Serialization](https://docs.microsoft.com/dotnet/api/system.runtime.serialization)
+   * [System.Web](https://docs.microsoft.com/dotnet/api/system.web)
+   * [System.Web.Extensions](https://docs.microsoft.com/dotnet/api/system.web)
+3. これらの参照をプロジェクトに追加したら、 **[OK]** をクリックして、 **[参照マネージャー]** を閉じることができます。
 
 > [!NOTE]
 > アセンブリ参照の詳細については、「[方法:参照マネージャーを使用して参照を追加または削除する](https://docs.microsoft.com/visualstudio/ide/how-to-add-or-remove-references-by-using-the-reference-manager?view=vs-2017)」を参照してください。
@@ -95,7 +95,7 @@ WPF とは デスクトップ クライアント アプリを作成する UI フ
 2. **[参照]** タブを見つけて選択します。
 3. 検索バーに「[NewtonSoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/)」と入力します。
    ![NewtonSoft.Json を見つけてインストールする](media/add-nuget-packages.png)
-4. パッケージを選択し、**[インストール]** をクリックします。
+4. パッケージを選択し、 **[インストール]** をクリックします。
 5. インストールが完了したら、タブを閉じます。
 
 ## <a name="create-a-wpf-form-using-xaml"></a>XAML を使用して WPF フォームを作成する
@@ -244,7 +244,7 @@ WPF とは デスクトップ クライアント アプリを作成する UI フ
 
 このコード ブロックでは、翻訳可能な言語に関する情報を含む 2 つのメンバー変数を宣言しました。
 
-| 変数 | type | 説明 |
+| 変数 | Type | 説明 |
 |----------|------|-------------|
 |`languageCodes` | 文字列の配列 |言語コードをキャッシュします。 この Translator サービスは、英語には `en` というように短いコードを使用して言語を識別します。 |
 |`languageCodesAndTitles` | 並べ替え済みディクショナリ | ユーザー インターフェイス内の「わかりやすい」名前を API で使用される短いコードにマッピングします。 大文字と小文字を区別せずアルファベット順の並べ替えを保持します。 |
@@ -318,11 +318,11 @@ Translator Text API では、現在、60 を超える言語がサポートされ
 
 `GetLanguagesForTranslate()` メソッドにより、HTTP GET 要求が作成されます。要求の範囲を翻訳がサポートされている言語に制限するために、`scope=translation` クエリ文字列パラメーターが使用されています。 サポートされている言語は英語で返されるため、`en` の値を持つ `Accept-Language` ヘッダーが追加されます。
 
-JSON 応答が解析され、ディクショナリに変換されます。 次に、言語コードが `languageCodes` メンバー変数に追加されます。 言語コードとわかりやすい言語名を含んだキーと値のペアがループ処理され、`languageCodesAndTitles` メンバー変数に追加されます  フォームのドロップダウン メニューには、わかりやすい名前が表示されますが、翻訳を要求するにはコードが必要です。
+JSON 応答が解析され、ディクショナリに変換されます。 次に、言語コードが `languageCodes` メンバー変数に追加されます。 言語コードとわかりやすい言語名を含んだキーと値のペアがループ処理され、`languageCodesAndTitles` メンバー変数に追加されます フォームのドロップダウン メニューには、わかりやすい名前が表示されますが、翻訳を要求するにはコードが必要です。
 
 ## <a name="populate-language-drop-down-menus"></a>言語ドロップダウン メニューを設定する
 
-このユーザー インターフェイスは XAML を使用して定義されているので、`InitializeComponent()` を呼び出す以外は設定するために行う必要のあることはあまりありません。 行う必要のある 1 つの作業は、**[Translate from]** および **[Translate to]** のドロップダウン メニューにわかりやすい言語名を追加するというもので、これは `PopulateLanguageMenus()` によって行われます。
+このユーザー インターフェイスは XAML を使用して定義されているので、`InitializeComponent()` を呼び出す以外は設定するために行う必要のあることはあまりありません。 行う必要のある 1 つの作業は、 **[Translate from]** および **[Translate to]** のドロップダウン メニューにわかりやすい言語名を追加するというもので、これは `PopulateLanguageMenus()` によって行われます。
 
 1. Visual Studio で、`MainWindow.xaml.cs` のタブを開きます。
 2. 次のコードをプロジェクト内の `GetLanguagesForTranslate()` メソッドの下に追加します。
