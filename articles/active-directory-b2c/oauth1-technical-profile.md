@@ -2,20 +2,20 @@
 title: Azure Active Directory B2C 内のカスタム ポリシーで OAuth1 技術プロファイルを定義する |Microsoft Docs
 description: Azure Active Directory B2C 内のカスタム ポリシーで OAuth1 技術プロファイルを定義します。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 7b3d579e9d4ceb92ee961778ba6083292461c144
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 993fc8b2e318b59775f61de391ac75fa765485f0
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64699826"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66513112"
 ---
 # <a name="define-an-oauth1-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで OAuth1 技術プロファイルを定義する
 
@@ -70,12 +70,12 @@ Azure Active Directory (Azure AD) B2C では、[OAuth 1.0 プロトコル](https
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | client_id | はい | ID プロバイダーのアプリケーション識別子。 |
-| ProviderName | いいえ  | ID プロバイダーの名前。 |
+| ProviderName | いいえ | ID プロバイダーの名前。 |
 | request_token_endpoint | はい | RFC 5849 に準拠した要求トークン エンドポイントの URL。 |
 | authorization_endpoint | はい | RFC 5849 に準拠した承認エンドポイントの URL。 |
 | access_token_endpoint | はい | RFC 5849 に準拠したトークン エンドポイントの URL。 |
-| ClaimsEndpoint | いいえ  | ユーザー情報エンドポイントの URL。 | 
-| ClaimsResponseFormat | いいえ  | 要求応答の形式。|
+| ClaimsEndpoint | いいえ | ユーザー情報エンドポイントの URL。 | 
+| ClaimsResponseFormat | いいえ | 要求応答の形式。|
 
 ## <a name="cryptographic-keys"></a>暗号化キー
 

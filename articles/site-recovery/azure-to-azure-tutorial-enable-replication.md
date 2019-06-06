@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 04/16/2019
+ms.date: 05/30/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 588fe452473ddc2434d92f90afbf8a0e1bc8c275
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 5602298ffe60ad15d3daf52587c50357c310200c
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65795764"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66480112"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms"></a>Azure VM のディザスター リカバリーを設定する
 
@@ -35,7 +35,7 @@ ms.locfileid: "65795764"
 
 このチュートリアルを完了するには、以下が必要です。
 
-- [シナリオのアーキテクチャとコンポーネント](concepts-azure-to-azure-architecture.md)を理解している。
+- [シナリオのアーキテクチャとコンポーネント](concepts-azure-to-azure-architecture.md)を確認する。
 - 開始する前に、[サポート要件](site-recovery-support-matrix-azure-to-azure.md)を確認する。
 
 ## <a name="create-a-recovery-services-vault"></a>Recovery Services コンテナーを作成する

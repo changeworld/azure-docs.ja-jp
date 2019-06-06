@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 02/07/2019
+ms.date: 06/04/2019
 ms.author: erhopf
-ms.openlocfilehash: aa9c59485882ea52a30471a76f2ee7377b847b8c
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: e5e57757fbd80ca8e90b9997440050a751914a8a
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65602820"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66514948"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-get-a-list-of-supported-languages-using-c"></a>クイック スタート:Translator Text API と C# を使用してサポートされている言語の一覧を取得する
 

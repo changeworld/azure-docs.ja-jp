@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 02/21/2019
+ms.date: 06/04/2019
 ms.author: erhopf
-ms.openlocfilehash: bb4c6f431be8194cc82cba67d6fa5d454f506c30
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 298d0a2b97df482bb1942146df81d3241b9a6cf2
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65602832"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66514917"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-detect-text-language-using-go"></a>クイック スタート: Translator Text API と Go を使用してテキストの言語を検出する
 
