@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: tutorial
 ms.date: 3/11/2019
 ms.author: victorh
-ms.openlocfilehash: d2cb0ef904935d1736c23aeaf23030da99e41a71
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 9d7a277db7550c1850ec0c9d555553064ab19f7c
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58665952"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66730269"
 ---
 # <a name="tutorial-create-dns-records-in-a-custom-domain-for-a-web-app"></a>チュートリアル:カスタム ドメインにおける Web アプリの DNS レコードの作成 
 
@@ -41,7 +41,7 @@ Azure の Web アプリ用に A レコードを作成する場合、Web アプ�
 
 Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
-[!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -63,7 +63,7 @@ A レコードは、名前をその IP アドレスに対応付けるために�
 
 ### <a name="get-the-ipv4-address"></a>IPv4 アドレスの取得
 
-Azure portal の App Services ページの左側のナビゲーションで、**[カスタム ドメイン]** を選択します。 
+Azure portal の App Services ページの左側のナビゲーションで、 **[カスタム ドメイン]** を選択します。 
 
 ![[カスタム ドメイン] メニュー](../app-service/./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
@@ -175,7 +175,7 @@ set-AzWebApp `
 > [!NOTE]
 > 必ず、`http://` プレフィックスを含めます。そうしないと、ブラウザーが URL の予測を試みることがあります。
 
-両方の URL で同じページが表示されます。 例: 
+両方の URL で同じページが表示されます。 例:
 
 ![Contoso アプリ サービス](media/dns-web-sites-custom-domain/contoso-app-svc.png)
 
