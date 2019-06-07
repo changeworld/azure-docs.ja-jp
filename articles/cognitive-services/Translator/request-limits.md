@@ -10,36 +10,47 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: 97b0b6256b7aaf7b42565fe9453fb87a0c414569
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 91cc002f373318e5124fc21f76edbfd000d17238
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57861572"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65796903"
 ---
 # <a name="request-limits-for-translator-text"></a>Translator Text に対する要求の制限
 
 この記事では、Translator Text API に対する調整の制限を示します。 サービスには、翻訳、音訳、文の長さの検出、言語の検出、および代替の翻訳が含まれます。
 
-## <a name="character-limits-per-request"></a>要求あたりの文字制限
+## <a name="character-and-array-limits-per-request"></a>要求あたりの文字および配列制限
 
-各要求は 5,000 文字に制限されています。 要求の数ではなく、文字単位で課金されます。 より短い要求を送信し、常にいくつかの要求を未処理にすることをお勧めします。
+各翻訳要求は 5,000 文字に制限されています。 要求の数ではなく、文字単位で課金されます。 送信する要求を短くすることをお勧めします。
 
-Translator Text API に対する未処理の要求の数に制限はありません。
+次の表には、Translator Text API の各操作に関する配列要素および文字の制限が一覧表示されています。
+
+| Operation | 配列要素の最大サイズ |   配列要素の最大数 |  最大要求サイズ (文字数) |
+|:----|:----|:----|:----|
+| Translate | 5,000 | 100   | 5,000 |
+| Transliterate | 5,000 | 10    | 5,000 |
+| Detect | 10,000 | 100 |   50,000 |
+| BreakSentence | 10,000    | 100 | 50,000 |
+| 辞書検索| 100 |  10  | 1,000 |
+| 辞書の例 | テキストに 100 と翻訳に 100 (合計 200)| 10|   2,000 |
 
 ## <a name="character-limits-per-hour"></a>時間あたりの文字制限
 
-時間あたりの文字制限は、Translator Text のサブスクリプション レベルに基づきます。 これらの制限に達するか、またはをそれを超えた場合、クォータ不足の応答を受け取る可能性があります。
+時間あたりの文字制限は、Translator Text のサブスクリプション レベルに基づきます。 時間あたりのクォータは、時間全体で均等に使用する必要があります。 これらの制限に到達または超過した場合、または短期間にクォータの大きすぎる一部を送信した場合、クォータ不足の応答を受け取る可能性があります。 
 
 | レベル | 文字数制限 |
 |------|-----------------|
 | F0 | 200 万文字/時間 |
 | S1 | 4,000 万文字/時間 |
-| S2 | 4,000 万文字/時間 |
-| S3 | 12,000 万文字/時間 |
-| S4 | 20,000 万文字/時間 |
+| S2 / C2 | 4,000 万文字/時間 |
+| S3 / C3 | 12,000 万文字/時間 |
+| S4 / C4 | 20,000 万文字/時間 |
 
-これらの制限は、Microsoft の一般的なシステムに適用されます。 Microsoft の Translator Hub を使用するカスタム翻訳システムは、1 秒あたり 1,800 文字に制限されます。
+[マルチ サービス サブスクリプション](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication)の制限は S1 レベルと同じです。
+
+これらの制限は、Microsoft の標準翻訳モデルに制限されます。 Custom Translator を使用するカスタム翻訳ツールは、1 秒あたり 1,800 文字に制限されます。
 
 ## <a name="latency"></a>Latency
 

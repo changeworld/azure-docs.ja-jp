@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 02/28/2019
+ms.date: 05/17/2019
 ms.author: iainfou
-ms.openlocfilehash: faac0f02d1a1b8927fa0c651f44f8b120a583d9a
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 7b983535f862a452c900d0a0a12ae0d79b56f92f
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65230152"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65850530"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Services (AKS) における Kubernetes の中心概念
 
@@ -70,9 +70,9 @@ AKS は、専用の API サーバー、スケジューラなど、単一のテ�
 
 ノードの Azure VM サイズには、CPU 数、メモリ量、利用可能なストレージのサイズと種類 (高パフォーマンスの SSD や正規の HDD など) を定義します。 大容量の CPU およびメモリ、または高パフォーマンスのストレージを必要とするアプリケーションの需要を想定している場合は、それに沿ったノード サイズを計画してください。 また、需要に合わせて、AKS クラスター内のノード数をスケールアップすることも可能です。
 
-AKS では、クラスター内のノードに対する VM イメージは現在、Ubuntu Linux に基づいています。 AKS クラスターを作成するか、またはノード数をスケールアップすると、Azure プラットフォームが、要求された数の VM を作成して構成します。 手動の構成を実行する必要はありません。
+AKS では、クラスター内のノードに対する VM イメージは現在、Ubuntu Linux または Windows Server 2019 に基づいています。 AKS クラスターを作成するか、またはノード数をスケールアップすると、Azure プラットフォームが、要求された数の VM を作成して構成します。 手動の構成を実行する必要はありません。
 
-別のホスト OS、コンテナー ランタイムを使用する必要がある場合や、クラスター パッケージを組み入れる必要がある場合、[aks-engine][aks-engine] を使用して独自の Kubernetes クラスターをデプロイできます。 アップストリームの `aks-engine` リリースでは構成オプションに注目し、AKS クラスターで公式にサポートされる前にそれらを提供しています。 たとえば、Moby 以外のWindows コンテナーまたはコンテナー ランタイムの使用を検討している場合、`aks-engine` を使用して、現在のニーズに合った Kubernetes クラスターを構成してデプロイできます。
+別のホスト OS、コンテナー ランタイムを使用する必要がある場合や、クラスター パッケージを組み入れる必要がある場合、[aks-engine][aks-engine] を使用して独自の Kubernetes クラスターをデプロイできます。 アップストリームの `aks-engine` リリースでは構成オプションに注目し、AKS クラスターで公式にサポートされる前にそれらを提供しています。 たとえば、Moby 以外のコンテナー ランタイムの使用を検討している場合、`aks-engine` を使用して、現在のニーズに合った Kubernetes クラスターを構成してデプロイできます。
 
 ### <a name="resource-reservations"></a>リソース予約
 
@@ -83,15 +83,15 @@ Kubernetes のコア コンポーネントは、各ノード (*kubelet*、*kube-
 
 これらの予約があるため、アプリケーションに使用可能な CPU とメモリの量は、ノード自体に含まれる量よりも小さく見える場合があります。 実行するアプリケーションの数によってリソースの制約が生じる場合は、これらの予約によって、Kubernetes のコア コンポーネントに使用可能な CPU とメモリが確保されます。 リソースの予約を変更することはできません。
 
-例: 
+例:
 
 - **Standard DS2 v2** ノード サイズには、2 つの vCPU と 7 GiB のメモリが含まれます
     - 7 GiB メモリの 20% = 1.4 GiB
-    - ノードで使用できるメモリの合計は、*(7 - 1.4) = 5.6 GiB* になります
+    - ノードで使用できるメモリの合計は、 *(7 - 1.4) = 5.6 GiB* になります
     
 - **Standard E4s v3** ノード サイズには、4 つの vCPU と 32 GiB のメモリが含まれます
     - 32 GiB メモリの 20% = 6.4 GiB (ただし、AKS で予約されるのは最大で 4 GiB のみ)
-    - ノードで使用できるメモリの合計は、*(32 - 4) = 28 GiB* になります
+    - ノードで使用できるメモリの合計は、 *(32 - 4) = 28 GiB* になります
     
 基盤のノード OS にも、自身のコア機能を果たすために一定の CPU とメモリ リソースが必要になります。
 
@@ -104,6 +104,27 @@ Kubernetes のコア コンポーネントは、各ノード (*kubelet*、*kube-
 AKS クラスターをスケーリングまたはアップグレードするとき、既定のノード プールに対してアクションが実行されます。 特定のノード プールに対して、スケーリングまたはアップグレードのいずれを選択することもできます。 アップグレード操作では、すべてのノードが正常にアップグレードされるまで、実行中のコンテナーはノード プ―ル内の他のノード上にスケジュールされます。
 
 AKS での複数のノード プールの使用方法の詳細については、[AKS でのクラスターの複数のノード プールの作成と管理][use-multiple-node-pools]に関する記事をご覧ください。
+
+### <a name="node-selectors"></a>ノードのセレクター
+
+複数のノード プールを含む AKS クラスターでは、特定のリソースに使用するノード プールを、Kubernetes スケジューラに指示することができます。 たとえば、イングレス コントローラーは、Windows Server ノードで実行しないでください (現在、AKS でプレビュー中)。 ノード セレクターでは、ノード OS などのさまざまなパラメーターを定義でき、ポッドがスケジュールされる場所を制御できます。
+
+次の基本的な例は、ノード セレクター *"beta.kubernetes.io/os": linux* を使用して Linux ノード上の NGINX インスタンスをスケジュールします。
+
+```yaml
+kind: Pod
+apiVersion: v1
+metadata:
+  name: nginx
+spec:
+  containers:
+    - name: myfrontend
+      image: nginx:1.15.12
+  nodeSelector:
+    "beta.kubernetes.io/os": linux
+```
+
+ポッドがスケジュールされる場所を制御する方法の詳細については、「[Azure Kubernetes Service (AKS) での高度なスケジューラ機能に関するベスト プラクティス][operator-best-practices-advanced-scheduler]」を参照してください。
 
 ## <a name="pods"></a>ポッド
 
@@ -248,3 +269,4 @@ AKS クラスターを作成すると、次の名前空間が利用可能にな�
 [operator-best-practices-cluster-security]: operator-best-practices-cluster-security.md
 [operator-best-practices-scheduler]: operator-best-practices-scheduler.md
 [use-multiple-node-pools]: use-multiple-node-pools.md
+[operator-best-practices-advanced-scheduler]: operator-best-practices-advanced-scheduler.md

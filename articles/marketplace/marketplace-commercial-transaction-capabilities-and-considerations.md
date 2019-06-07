@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: yijenj
-ms.openlocfilehash: bf0c6a5234846499d7b8a49f427dba7af36edc15
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: bd8cdbec42ea7df34ceee3ab82a1c6cac60ab59e
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64937971"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65849714"
 ---
 # <a name="azure-marketplace-commercial-transaction-capabilities-and-considerations"></a>Azure Marketplace ‎商用トランザクションの機能と考慮事項
 
@@ -137,11 +137,14 @@ Marketplace を通じて処理される注文は、顧客の Azure インフラ�
 |*顧客は Microsoft から請求されます*    |  *1 か月あたり $100.00 (注: 公開元は、ライセンス料金の中で、発生したパススルー インフラストラクチャ コストを考慮する必要があります)*  |
 
 * このシナリオでは、Microsoft はソフトウェア ライセンスに $100.00 を課金し、公開元に $80.00 を支払います。
+* Marketplace サービス手数料減額の対象となっているパートナーは、2019 年 5 月から 2020 年 6 月まで、SaaS オファーに対するトランザクション料金の減額が表示されます。 このシナリオでは、Microsoft はソフトウェア ライセンスに $100.00 を課金し、公開元に $90.00 を支払います。
 
 |Microsoft からの請求額  | 1 か月あたり $100.00  |
 |---------|---------|
-|Microsoft は、ライセンス コストの 80% をパブリッシャーに支払います    |   1 か月あたり $80.00     |
-|Microsoft は、ライセンス コストの 20% を受け取ります   |  1 か月あたり $20.00       |
+|Microsoft は、ライセンス コストの 80% をパブリッシャーに支払います <br> \* Microsoft は、すべての対象となる SaaS アプリのライセンス コストの 90% を支払います   |   1 か月あたり $80.00 <br> \* 1 か月あたり $90.00    |
+|Microsoft は、ライセンス コストの 20% を受け取ります <br> \* Microsoft は、すべての対象となる SaaS アプリのライセンス コストの 10% を受け取ります。  |  1 か月あたり $20.00 <br> \* $10.00     |
+
+* **Marketplace サービス料金の減額:** 自身の Commercial Marketplace で公開する特定の SaaS 製品の場合、Microsoft は、Marketplace サービス料金を 20% から 10% に減額します (Microsoft 発行元契約の説明に従う)。  製品が対象となるには、少なくとも 1 つの製品を、IP 共同販売準備完了または IP 共同販売優先のどちらかとして、マイクロソフトが指定する必要があります。 その月の Marketplace サービス料金の減額を受け取るには、そのカレンダー月の月末までに少なくとも 5 営業日適格性を満たす必要があります。 Marketplace サービス料金の減額は、VM、マネージド アプリ、または Commercial Marketplace から入手できる他の製品には適用されません。  Marketplace サービス料金の減額は、対象となるオファーと、2019 年 5 月 1日から 2020 年 6 月 30日までにマイクロソフトが収集したライセンス料金に利用できます。  その後は、Marketplace サービス料金は通常の金額に戻ります。
 
 ### <a name="customer-invoicing-payment-billing-and-collections"></a>顧客の請求、支払い、課金、回収
 
