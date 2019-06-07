@@ -32,7 +32,7 @@ ms.locfileid: "64942954"
 1. 次の情報を収集します。
     - パブリッシャー名または ID
     - オファーの種類 (Azure アプリ)、オファー名、SKU ID
-    - プルリクエストリンク。次に例を示します。`https://solutiontemplates.visualstudio.com/marketplacesolutions/_git/contoso/pullrequest/<number>`  この URL は、通知メッセージまたは 401 応答ページのアドレスから取得できます。
+    - プル要求リンク。次に例を示します。`https://solutiontemplates.visualstudio.com/marketplacesolutions/_git/contoso/pullrequest/<number>`  この URL は、通知メッセージまたは 401 応答ページのアドレスから取得できます。
     - アクセスを付与する発行元組織の個人のメール アドレス。  この一覧には、Cloud パートナー ポータルでパブリッシャーとして登録するときに指定した所有者アドレスを含める必要があります。
 2. サポート インシデントを作成する  Cloud パートナー ポータルのタイトル バーで **[ヘルプ]** ボタンを選択し、メニューから **[サポート]** を選択します。  既定の Web ブラウザーが起動し、Microsoft の新しいサポート インシデント ページに移動します  (場合によっては、最初にサインインする必要があります)。
 3. **[問題の種類]** に **[Marketplace Onboarding]\(マーケットプレースのオンボード\)** 、 **[カテゴリ]** に **[Access problem]\(アクセスの問題\)** を指定し、 **[Start request]\(要求の開始\)** を選択します。
