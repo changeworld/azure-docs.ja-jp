@@ -56,7 +56,7 @@ sections:
         className: cardsD
         items:
           - title: Time Series Insights GA API
-            html: <p><a href="rest/api/time-series-insights/ga">データ アクセス</a></p> <p><a href="/rest/api/time-series-insights/ga-query-api">クエリ API</a></p> <p><a href="/rest/api/time-series-insights/ga-query-syntax">クエリ構文</a></p>
+            html: <p><a href="/rest/api/time-series-insights/ga">データ アクセス</a></p> <p><a href="/rest/api/time-series-insights/ga-query-api">クエリ API</a></p> <p><a href="/rest/api/time-series-insights/ga-query-syntax">クエリ構文</a></p>
           - title: Time Series Insights プレビュー API
             html: <p><a href="/rest/api/time-series-insights/preview-query">クエリ API</a></p> <p><a href="/rest/api/time-series-insights/preview-model">モデル API</a></p> <p><a href="/rest/api/time-series-insights/preview-env">環境 API</a></p> <p><a href="/rest/api/time-series-insights/preview-tsx">Time Series 式 API</a></p>
           - title: クライアント SDK
