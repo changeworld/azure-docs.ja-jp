@@ -3,25 +3,25 @@ title: Azure Active Directory アプリケーション プロキシ (プレビ�
 description: SAML 認証でセキュリティ保護されているアプリケーション プロキシを使用して公開されているオンプレミスのアプリケーションにシングル サインオンを提供する方法を説明します。
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/12/2019
-ms.author: celested
+ms.date: 05/20/2019
+ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e103604af7aba2a0ef2e3d0e02a721ae4740c40
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 5524576ef21830ae13526dad2d8ac8a1d0864cf1
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59493777"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956875"
 ---
 # <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy-preview"></a>アプリケーション プロキシ (プレビュー) を使用したオンプレミスのアプリケーションに対する SAML シングル サインオン
 
@@ -45,13 +45,14 @@ SAML 認証でセキュリティ保護されているオンプレミスのアプ
 
 ## <a name="set-up-saml-sso"></a>SAML SSO を設定する
 
-1. Azure portal で、**[Azure Active Directory] > [エンタープライズ アプリケーション]** の順に選択し、一覧からアプリケーションを選択します。
-1. アプリの **[概要]** ページで、**[シングル サインオン]** を選択します。
-1. シングル サインオンの方法として、**[SAML]** を選択します。
-1. **[SAML でシングル サインオンをセットアップします]** ページで、**[基本的な SAML 構成]** のデータを編集し、「[基本的な SAML 構成を入力する](configure-single-sign-on-non-gallery-applications.md#saml-based-single-sign-on)」の手順に従って、アプリケーションに対して SAML に基づく認証を構成します。
+1. Azure portal で、 **[Azure Active Directory] > [エンタープライズ アプリケーション]** の順に選択し、一覧からアプリケーションを選択します。
+1. アプリの **[概要]** ページで、 **[シングル サインオン]** を選択します。
+1. シングル サインオンの方法として、 **[SAML]** を選択します。
+1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** のデータを編集し、「[基本的な SAML 構成を入力する](configure-single-sign-on-non-gallery-applications.md#saml-based-single-sign-on)」の手順に従って、アプリケーションに対して SAML に基づく認証を構成します。
 
-   * **応答 URL** が、Application Proxy を介して発行したオンプレミス アプリケーションの**外部 URL** と一致するか、その下のパスであることを確認します。 SAML 構成のために別の**応答 URL** を必要とするアプリケーションの場合は、これをリストの **1 つ目**の URL として追加し、**外部 URL** を追加の URL として 1 つ目の後に維持します。
-   * アプリケーションで認証トークンを受け取るために使用する適切な**応答 URL** または Assertion Consumer Service URL も指定されていることを確認します。
+   * **応答 URL** が、Application Proxy を介して発行したオンプレミス アプリケーションの**外部 URL** と一致するか、その下のパスであることを確認します。 
+   * アプリケーションで SAML 構成に別の**応答 URL** が必要な場合は、これを一覧の**追加の** URL として追加し、その横にあるチェックボックスをオンにして、IDP によって開始された SAML 応答を送信するプライマリ**応答 URL** として指定します。
+   * SP によって開始されたフローの場合、アプリケーションで認証トークンを受け取るために使用する適切な**応答 URL** または Assertion Consumer Service URL も指定されていることを確認します。
 
      ![基本的な SAML 構成データを入力する](./media/application-proxy-configure-single-sign-on-on-premises-apps/basic-saml-configuration.png)
 

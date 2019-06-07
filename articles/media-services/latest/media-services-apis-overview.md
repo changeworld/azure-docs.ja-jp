@@ -12,14 +12,16 @@ ms.topic: article
 ms.date: 05/02/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 4c5b30ab075bbca22b6a58ccf65e55d332820937
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: ca4e343ea4774bbe4ff992ad671575b150b3c045
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65406547"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65890968"
 ---
-# <a name="developing-with-media-services-v3-apis"></a>Media Services v3 API を使用した開発
+# <a name="developing-with-media-services-v3-apis"></a>Media Services v3 API シリーズを使用した開発
+
+開発者は、Media Services の [REST API](https://aka.ms/ams-v3-rest-ref) または REST API と対話できるクライアント ライブラリを使って、カスタム メディア ワークフローを簡単に作成、管理、メンテナンスできます。 [Media Services v3](https://aka.ms/ams-v3-rest-sdk) API は、OpenAPI 仕様 (旧称 Swagger) に基づいています。
 
 この記事では、Media Services v3 を使用して開発を行う際にエンティティと API に適用される規則について説明します。
 
@@ -98,6 +100,32 @@ Media Services には、次のような長期操作があります。
 * StreamingEndpoint の停止
 * StreamingEndpoint のスケーリング
 
+
+## <a name="sdks"></a>SDK
+
+> [!NOTE]
+> Azure Media Services v3 SDK は、スレッドセーフである保証はありません。 マルチスレッドのアプリケーションを開発するときは、独自のスレッド同期ロジックを追加してクライアントを保護するか、スレッドごとに新しい AzureMediaServicesClient オブジェクトを使用する必要があります。 .NET の HttpClient インスタンスなど、コード内の任意のオブジェクトによってクライアントにもたらされるマルチスレッドの問題にも注意を払う必要があります。
+
+|SDK|リファレンス|
+|---|---|
+|[.NET SDK](https://aka.ms/ams-v3-dotnet-sdk)|[.NET リファレンス](https://aka.ms/ams-v3-dotnet-ref)|
+|[Java SDK](https://aka.ms/ams-v3-java-sdk)|[Java リファレンス](https://aka.ms/ams-v3-java-ref)|
+|[Python SDK](https://aka.ms/ams-v3-python-sdk)|[Python リファレンス](https://aka.ms/ams-v3-python-ref)|
+|[Node.js SDK](https://aka.ms/ams-v3-nodejs-sdk) |[Node.js リファレンス](https://aka.ms/ams-v3-nodejs-ref)| 
+|[Go SDK](https://aka.ms/ams-v3-go-sdk) |[Go リファレンス](https://aka.ms/ams-v3-go-ref)|
+|[Ruby SDK](https://aka.ms/ams-v3-ruby-sdk)||
+
+### <a name="see-also"></a>関連項目
+
+- [メディア サービス イベントを含む EventGrid .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.EventGrid/)
+- [Media Services イベントの定義](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/eventgrid/data-plane/Microsoft.Media/stable/2018-01-01/MediaServices.json)
+
+## <a name="azure-media-services-explorer"></a>Azure Media Services Explorer
+
+[Azure Media Services Explorer](https://github.com/Azure/Azure-Media-Services-Explorer) (AMSE) は、Media Services について学習したい Windows ユーザーが使用できるツールです。 AMSE は、Media Services で VOD およびライブ コンテンツをアップロード、ダウンロード、エンコード、ストリーミングする Winforms/C# アプリケーションです。 AMSE ツールは、コードを記述しないで Media Services をテストしたいクライアント用です。 AMSE コードは、Media Services による開発を希望するお客様用のリソースとして提供されています。
+
+AMSE はオープン ソース プロジェクトであり、サポートはコミュニティによって提供されます (問題は https://github.com/Azure/Azure-Media-Services-Explorer/issues) に報告できます)。 このプロジェクトでは、[Microsoft オープン ソースの倫理規定](https://opensource.microsoft.com/codeofconduct/)を採用しています。 詳しくは、「[Code of Conduct FAQ (倫理規定についてよくある質問)](https://opensource.microsoft.com/codeofconduct/faq/)」を参照するか、opencode@microsoft.com 宛てに質問またはコメントをお送りください。
+
 ## <a name="filtering-ordering-paging-of-media-services-entities"></a>Media Services エンティティのフィルター処理、順序付け、ページング
 
 [Azure Media Services エンティティのフィルター処理、順序付け、ページング](entities-overview.md)に関するページを参照してください。
@@ -106,6 +134,13 @@ Media Services には、次のような長期操作があります。
 
 「[Azure Media Services community (Azure Media Services コミュニティ)](media-services-community.md)」を参照して、さまざまな質問の方法、フィードバックする方法、Media Services に関する最新情報の入手方法を確認してください。
 
+## <a name="see-also"></a>関連項目
+
+[Azure CLI](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)
+
 ## <a name="next-steps"></a>次の手順
 
-[SDK/ツールを使用して Media Services v3 API での開発を始める](developers-guide.md)
+* [Java を使用して Media Services に接続する](configure-connect-java-howto.md)
+* [.NET を使用して Media Services に接続する](configure-connect-dotnet-howto.md)
+* [Node.js を使用して Media Services に接続する](configure-connect-nodejs-howto.md)
+* [Python を使用して Media Services に接続する](configure-connect-python-howto.md)

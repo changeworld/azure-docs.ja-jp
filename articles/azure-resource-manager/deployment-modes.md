@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/08/2019
+ms.date: 05/14/2019
 ms.author: tomfitz
-ms.openlocfilehash: d2de802b2170feb6130cdce8007e16cc37561f5e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b4d3a9c5e985949d813b638806f60bc86f5a163a
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59791286"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65789265"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Azure Resource Manager のデプロイ モード
 
@@ -46,7 +46,9 @@ ms.locfileid: "59791286"
 
 ## <a name="incremental-mode"></a>増分モード
 
-増分モードでは、Resource Manager はリソース グループに存在するが、テンプレートに指定されていないリソースを**変更せず、そのまま残します**。 リソースを増分モードで再デプロイする場合は、更新するものだけでなく、リソースのすべてのプロパティ値を指定してください。 特定のプロパティを指定しなかった場合、Resource Manager は更新によってそれらの値を上書きするものと解釈します。
+増分モードでは、Resource Manager はリソース グループに存在するが、テンプレートに指定されていないリソースを**変更せず、そのまま残します**。
+
+ただし、既存のリソースを増分モードで再デプロイした場合の結果は異なります。 更新対象だけでなく、リソースのすべてのプロパティを指定します。 一般的な誤解は、指定されていないプロパティは変更されないままであると考えることです。 特定のプロパティを指定しなかった場合、Resource Manager は更新によってそれらの値を上書きするものと解釈します。
 
 ## <a name="example-result"></a>結果の例
 

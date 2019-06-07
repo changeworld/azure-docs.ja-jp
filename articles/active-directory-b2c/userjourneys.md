@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: e09435b09811ef31057f4dc257fc55fa72909d83
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: f5e56d4953eecdb488d5dadd4497b1c42b932f35
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64714909"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65812579"
 ---
 # <a name="userjourneys"></a>UserJourneys
 
@@ -65,8 +65,8 @@ ms.locfileid: "64714909"
 | --------- | -------- | ----------- |
 | `Order` | はい | オーケストレーション手順の順序。 | 
 | `Type` | はい | オーケストレーション手順の種類。 指定できる値 <ul><li>**ClaimsProviderSelection** -オーケストレーション手順が、様々な要求プロバイダーをユーザーに選択肢として表示することを示します。</li><li>**CombinedSignInAndSignUp** - オーケストレーション手順がサインインとローカル アカウントのサインアップ ページを結合ソーシャル プロバイダーに提示することを示します。</li><li>**ClaimsExchange** - オーケストレーション手順が要求プロバイダーと要求を交換することを示します。</li><li>**SendClaims** - オーケストレーション手順が証明書利用者に対して、要求発行者によって発行されたトークンを使用して要求を送信することを示します。</li></ul> | 
-| ContentDefinitionReferenceId | いいえ  | このオーケストレーション手順に関連付けられた[コンテンツ定義](contentdefinitions.md)の識別子。 通常、コンテンツ定義参照識別子は、セルフアサート技術プロファイルで定義されます。 ただし、Azure AD B2C が技術プロファイルなしで何かを表示することが必要となる場合もあります。 2 つの例を挙げます。オーケストレーション手順の種類が `ClaimsProviderSelection` または `CombinedSignInAndSignUp` である場合です。 Azure AD B2C は技術プロファイルなしで ID プロバイダー選定を表示する必要があります。 | 
-| CpimIssuerTechnicalProfileReferenceId | いいえ  | オーケストレーション手順の種類は `SendClaims` です。 このプロパティは、証明書利用者のトークンを発行する要求プロバイダーの技術プロファイル識別子を定義します。  省略すると、証明書利用者のトークンは作成されません。 |
+| ContentDefinitionReferenceId | いいえ | このオーケストレーション手順に関連付けられた[コンテンツ定義](contentdefinitions.md)の識別子。 通常、コンテンツ定義参照識別子は、セルフアサート技術プロファイルで定義されます。 ただし、Azure AD B2C が技術プロファイルなしで何かを表示することが必要となる場合もあります。 2 つの例があります。オーケストレーション手順の種類が `ClaimsProviderSelection` または `CombinedSignInAndSignUp` の場合、Azure AD B2C は技術的なプロファイルを持たずに ID プロバイダーの選択を表示する必要があります。 | 
+| CpimIssuerTechnicalProfileReferenceId | いいえ | オーケストレーション手順の種類は `SendClaims` です。 このプロパティは、証明書利用者のトークンを発行する要求プロバイダーの技術プロファイル識別子を定義します。  省略すると、証明書利用者のトークンは作成されません。 |
 
 
 **OrchestrationStep** 要素には、次の要素を含めることができます。
@@ -172,8 +172,8 @@ Preconditions では複数の前提条件を確認できます。 次の例で�
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| TargetClaimsExchangeId | いいえ  | 要求プロバイダー選定の次のオーケストレーション手順で実行される、要求交換の識別子。 この属性、または ValidationClaimsExchangeId 属性を指定する必要がありますが、両方を指定することはできません。 | 
-| ValidationClaimsExchangeId | いいえ  | 要求プロバイダー選定を検証するために現在のオーケストレーション手順で実行される、要求交換の識別子。 この属性、または TargetClaimsExchangeId 属性を指定する必要がありますが、両方を指定することはできません。 |
+| TargetClaimsExchangeId | いいえ | 要求プロバイダー選定の次のオーケストレーション手順で実行される、要求交換の識別子。 この属性、または ValidationClaimsExchangeId 属性を指定する必要がありますが、両方を指定することはできません。 | 
+| ValidationClaimsExchangeId | いいえ | 要求プロバイダー選定を検証するために現在のオーケストレーション手順で実行される、要求交換の識別子。 この属性、または TargetClaimsExchangeId 属性を指定する必要がありますが、両方を指定することはできません。 |
 
 ### <a name="claimsproviderselection-example"></a>ClaimsProviderSelection の例
 

@@ -9,14 +9,32 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: anroth
-ms.openlocfilehash: 2b0d8b8a86c3105b1bda7fb0d72cbcb72ed82995
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 4b4e449b9260debbe90523141cacc4ed76219490
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59785727"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65787949"
 ---
 # <a name="custom-vision-service-release-notes"></a>Custom Vision Service リリース ノート
+
+## <a name="may-2-2019-and-may-10-2019"></a>2019 年 5 月 2 日と 2019 年 5 月 10 日
+
+- バグ修正とバックエンドの機能強化
+
+## <a name="may-23-2019"></a>2019 年 5 月 23 日
+
+- Azure サブスクリプションに関連するポータル UX のエクスペリエンスを向上し、Azure ディレクトリを簡単に選択できるようにしました。
+
+## <a name="april-18-2019"></a>2019 年 4 月 18 日 
+
+- Vision AI Dev Kit 用のオブジェクトの検出のエクスポートを追加しました。
+- プロジェクト検索などの UI の調整。
+
+## <a name="april-3-2019"></a>2019 年 4 月 3 日
+
+- イメージごとの境界ボックス数の制限が 200 に増えました。 
+- TensorFlow にエクスポートされたモデルの大幅なパフォーマンスの更新を含むバグ修正。 
 
 ## <a name="march-26-2019"></a>2019 年 3 月 26 日
 

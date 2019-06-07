@@ -3,8 +3,8 @@ title: Azure AD アプリケーション プロキシでのカスタム ドメ�
 description: Azure AD アプリケーション プロキシでカスタム ドメインを管理して、ユーザーがアクセスする場所に関係なくアプリの URL が同じになるようにします。
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/31/2018
-ms.author: celested
+ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59663346fce415d73609f09345048ff321f1a234
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: 4cc742a6b1a7f3fc78e8639206e06c2937f00c30
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58359834"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956919"
 ---
 # <a name="working-with-custom-domains-in-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシでのカスタム ドメインの使用
 
@@ -48,7 +48,7 @@ Azure Active Directory アプリケーション プロキシ経由でアプリ�
 以上の 3 つの要件が用意されているとき、次の手順でカスタム ドメインを設定します。
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. **[Azure Active Directory]** > **[エンタープライズ アプリケーション]** > **[すべてのアプリケーション]** の順に移動し、管理するアプリを選択します。
+2. **[Azure Active Directory]**  >  **[エンタープライズ アプリケーション]**  >  **[すべてのアプリケーション]** の順に移動し、管理するアプリを選択します。
 3. **[アプリケーション プロキシ]** を選択します。 
 4. 外部 URL フィールドで、ドロップダウン リストを利用し、カスタム ドメインを選択します。 一覧にドメインが表示されない場合、そのドメインはまだ検証されていません。 
 5. **[保存]** を選びます。
@@ -71,7 +71,9 @@ Azure Active Directory アプリケーション プロキシ経由でアプリ�
 ### <a name="certificate-format"></a>証明書形式
 証明書の署名方法に制約はありません。 楕円曲線暗号 (ECC)、サブジェクトの別名 (SAN)、その他の一般的な証明書の種類にすべて対応しています。 
 
-ワイルドカード証明書は、そのワイルドカードが目的の外部 URL と一致する場合に限って使用できます。 
+ワイルドカード証明書は、そのワイルドカードが目的の外部 URL と一致する場合に限って使用できます。
+
+セキュリティ上の理由から、ご自身の公開キー基盤 (PKI) によって発行された証明書を使用することはできません。
 
 ### <a name="changing-the-domain"></a>ドメインを変更する
 検証済みのドメインはすべて、アプリケーションの外部 URL ドロップダウン リストに表示されます。 ドメインを変更するには、アプリケーションのそのフィールドだけを更新します。 必要なドメインが一覧にない場合、[検証済みのドメインとしてそれを追加](../fundamentals/add-custom-domain.md)します。 証明書が関連付けられていないドメインを選択する場合、手順 5. ～ 7. を行い、証明書を追加します。 次に、新しい外部 URL からリダイレクトするように DNS レコードを更新します。 

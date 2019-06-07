@@ -2,18 +2,17 @@
 title: オペレーターのベスト プラクティス - Azure Kubernetes Service (AKS) でのクラスターのセキュリティ
 description: Azure Kubernetes Service (AKS) でクラスターのセキュリティとアップグレードを管理する方法に関するクラスター オペレーターのベスト プラクティスについて説明します
 services: container-service
-author: rockboyfor
+author: iainfoulds
 ms.service: container-service
 ms.topic: conceptual
-origin.date: 12/06/2018
-ms.date: 05/13/2019
-ms.author: v-yeche
-ms.openlocfilehash: 0f24f7378ceb9266acf8988835b77cef80bd6f13
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.date: 12/06/2018
+ms.author: iainfou
+ms.openlocfilehash: a468c2f3b1b3034c817ac19988420b68e18deb83
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65192192"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65849845"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのクラスターのセキュリティとアップグレードに関するベスト プラクティス
 
@@ -51,7 +50,7 @@ Azure AD 統合と RBAC の詳細については、[AKS の認証と承認のベ
 
 ユーザーまたはグループに必要最小限の特権を付与する場合と同様に、コンテナーも必要なアクションとプロセスのみに制限するようにします。 攻撃のリスクを最小限に抑えるには、上位の特権やルート アクセスが必要なアプリケーションやコンテナーを構成しないでください。 たとえば、ポッドのマニフェストには `allowPrivilegeEscalation: false` を設定します。 このような "*ポッドのセキュリティ コンテキスト*" は Kubernetes に組み込まれているので、実行するユーザーやグループ、公開する Linux 機能など、追加のアクセス許可を定義できます。 その他のベスト プラクティスについては、[リソースへのポッドのアクセスをセキュリティで保護する方法][pod-security-contexts]に関する記事を参照してください。
 
-コンテナー アクションをより細かく制御するには、*AppArmor* や *seccomp* など、組み込みの Linux セキュリティ機能を使用することもできます。 このような機能はノード レベルで定義されてから、ポッド マニフェストを介して実装されます。
+コンテナー アクションをより細かく制御するには、*AppArmor* や *seccomp* など、組み込みの Linux セキュリティ機能を使用することもできます。 このような機能はノード レベルで定義されてから、ポッド マニフェストを介して実装されます。 組み込みの Linux セキュリティ機能は、Linux ノードとポッドに対してのみ使用できます。
 
 > [!NOTE]
 > AKS などでは、Kubernetes 環境は、悪意のあるマルチテナント使用に対しては完全に安全ではありません。 *AppArmor*、*seccomp*、*Pod Security Policy* などの他のセキュリティ機能やノードに対するきめの細かいロールベースのアクセス制御 (RBAC) によって、悪用しにくくします。 ただし、悪意のあるマルチテナント ワークロードの実行に対して真のセキュリティを実現するために信頼できる唯一のセキュリティ レベルはハイパーバイザーです。 Kubernetes 用のセキュリティ ドメインは、個々のノードではなく、クラスター全体になります。 この種の悪意のあるマルチテナント ワークロードでは、物理的に分離されたクラスターを使用する必要があります。
@@ -68,7 +67,7 @@ AppArmor の動作を確認するために、次の例ではファイルへの�
 #include <tunables/global>
 profile k8s-apparmor-example-deny-write flags=(attach_disconnected) {
   #include <abstractions/base>
-
+  
   file,
   # Deny all file writes.
   deny /** w,
@@ -120,7 +119,7 @@ AppArmor の詳細については、[Kubernetes の AppArmor プロファイル]
 
 AppArmor は任意の Linux アプリケーションで機能しますが、[seccomp (*sec*ure *comp*uting)][seccomp] はプロセス レベルで機能します。 seccomp は Linux カーネル セキュリティ モジュールでもあり、AKS ノードで使用される Docker ランタイムでネイティブにサポートされています。 seccomp では、コンテナーが実行できるプロセス呼び出しは制限されています。 許可または拒否するアクションを定義するフィルターを作成してから、ポッド YAML マニフェスト内の注釈を使用して seccomp フィルターに関連付けます。 これは、実行に必要な最小限のアクセス許可のみをコンテナーに付与するというベスト プラクティスと合っています。
 
-seccomp の動作を確認するには、ファイルに対するアクセス許可の変更を防止するフィルターを作成します。 [SSH][aks-ssh] で AKS ノードに接続し、*/var/lib/kubelet/seccomp/prevent-chmod* という名前の seccomp フィルターを作成し、次の内容を貼り付けます。
+seccomp の動作を確認するには、ファイルに対するアクセス許可の変更を防止するフィルターを作成します。 [SSH][aks-ssh] で AKS ノードに接続し、 */var/lib/kubelet/seccomp/prevent-chmod* という名前の seccomp フィルターを作成し、次の内容を貼り付けます。
 
 ```
 {
@@ -182,25 +181,25 @@ AKS では、Kubernetes の 4 つのマイナー バージョンがサポート�
 
 実際のクラスターに使用できるバージョンを確認するには、次の例に示すように [az aks get-upgrades][az-aks-get-upgrades] コマンドを使用します。
 
-```azurecli
+```azurecli-interactive
 az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster
 ```
 
 次に、[az aks upgrade][az-aks-upgrade] コマンドを使用して AKS クラスターをアップグレードすることができます。 このアップグレード プロセスでは、ノードの遮断と解放を一度に 1 つずつ安全に実行し、残りのノード上のポッドをスケジュールに設定してから、最新の OS および Kubernetes バージョンを実行している新しいノードを展開します。
 
-```azurecli
+```azurecli-interactive
 az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version 1.11.8
 ```
 
 AKS のアップグレードの詳細については、[AKS でサポートされる Kubernetes のバージョン][aks-supported-versions]と [AKS クラスターのアップグレード][aks-upgrade]に関する記事を参照してください。
 
-## <a name="process-node-updates-and-reboots-using-kured"></a>kured を使用してノードの更新と再起動を処理する
+## <a name="process-linux-node-updates-and-reboots-using-kured"></a>kured を使用して Linux ノードの更新と再起動を処理する
 
-**ベスト プラクティス ガイダンス** - AKS では、各 worker ノードへのセキュリティ パッチのダウンロードとインストールが自動的に行われますが、必要な場合に再起動が自動的に実行されることはありません。 `kured` を使用して保留中の再起動を確認してから、ノードの遮断と解放を安全に実行し、ノードを再起動し、更新プログラムを適用して、OS に関してできる限りセキュリティで保護されるようにします。
+**ベスト プラクティス ガイダンス** - AKS では、各 Linux ノードへのセキュリティ パッチのダウンロードとインストールが自動的に行われますが、必要な場合に再起動が自動的に実行されることはありません。 `kured` を使用して保留中の再起動を確認してから、ノードの遮断と解放を安全に実行し、ノードを再起動し、更新プログラムを適用して、OS に関してできる限りセキュリティで保護されるようにします。 Windows Server ノード (現在 AKS でプレビュー段階) では、ポッドを安全に切断およびドレインし、更新されたノードをデプロイするために、AKS のアップグレード操作を定期的に実行します。
 
-AKS ノードでは、毎晩、ディストリビューション更新チャネルを介してセキュリティ修正プログラムを入手できます。 この動作は、ノードが AKS クラスターに展開されるときに自動的に構成されます。 中断や実行中のワークロードへの潜在的な影響を最小限に抑えるために、セキュリティ修正プログラムまたはカーネルの更新プログラムに必要な場合でも、ノードは自動的に再起動されません。
+AKS の Linux ノードでは、毎晩、ディストリビューション更新チャネルを介してセキュリティ修正プログラムを入手できます。 この動作は、ノードが AKS クラスターに展開されるときに自動的に構成されます。 中断や実行中のワークロードへの潜在的な影響を最小限に抑えるために、セキュリティ修正プログラムまたはカーネルの更新プログラムに必要な場合でも、ノードは自動的に再起動されません。
 
-Weaveworks による [kured (KUbernetes REboot Daemon)][kured] プロジェクトでは、保留中のノードの再起動が監視されます。 再起動が必要な更新プログラムがノードに適用されると、そのノードの遮断と解放が安全に実行され、クラスター内の他のノード上のポッドの移動とスケジュール設定が行われます。 ノードが再起動されると、そのノードはクラスターに追加され、Kubernetes によってそのノード上でのポッドのスケジュール設定が再開されます。 中断を最小限に抑えるために、`kured` では一度に 1 つのノードのみを再起動できます。
+Weaveworks による [kured (KUbernetes REboot Daemon)][kured] プロジェクトでは、保留中のノードの再起動が監視されます。 再起動が必要な更新プログラムが Linux ノードに適用されると、そのノードの遮断と解放が安全に実行され、クラスター内の他のノード上のポッドの移動とスケジュール設定が行われます。 ノードが再起動されると、そのノードはクラスターに追加され、Kubernetes によってそのノード上でのポッドのスケジュール設定が再開されます。 中断を最小限に抑えるために、`kured` では一度に 1 つのノードのみを再起動できます。
 
 ![kured を使用した AKS ノードの再起動プロセス](media/operator-best-practices-cluster-security/node-reboot-process.png)
 
@@ -225,8 +224,8 @@ Weaveworks による [kured (KUbernetes REboot Daemon)][kured] プロジェク�
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 
 <!-- INTERNAL LINKS -->
-[az-aks-get-upgrades]: https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-get-upgrades
-[az-aks-upgrade]: https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-upgrade
+[az-aks-get-upgrades]: /cli/azure/aks#az-aks-get-upgrades
+[az-aks-upgrade]: /cli/azure/aks#az-aks-upgrade
 [aks-supported-versions]: supported-kubernetes-versions.md
 [aks-upgrade]: upgrade-cluster.md
 [aks-best-practices-identity]: concepts-identity.md

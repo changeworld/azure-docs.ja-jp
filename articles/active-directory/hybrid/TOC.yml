@@ -18,6 +18,10 @@
       href: tutorial-phs-backup.md
 - name: 概念
   items:
+    - name: ハイブリッド ID
+      items:
+        - name: オンプレミスのワークロードのクラウド管理
+          href: cloud-governed-management-for-on-premises.md
     - name: Azure AD Connect と Connect Health
       items:
         - name: Azure AD Connect と Connect Health とは

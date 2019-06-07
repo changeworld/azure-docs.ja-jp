@@ -13,32 +13,32 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: a9e902a13071abefff71dc4db089380979c8d459
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 6f743f7ea7fda368fc5895646145f553f3fb50fb
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65198615"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65864860"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>イベント ドリブンのバックグラウンド処理で Azure WebJobs SDK の使用を開始する
 
-この記事では、Visual Studio 2017 を使用し、Azure WebJobs SDK プロジェクトを作成し、それをローカルで実行し、[Azure App Service](overview.md) にデプロイする方法について説明します。 作成したプロジェクトは .NET Core コンソール アプリになります。このアプリでは、バージョン 3.x の WebJobs SDK が使用されます。 .NET Framework を使用するバージョン 2.x に興味がある場合、「[Visual Studio を使用して Web ジョブを開発してデプロイする - Azure App Service](webjobs-dotnet-deploy-vs.md)」を参照してください。
+この記事では、Visual Studio 2019 を使用し、Azure WebJobs SDK プロジェクトを作成し、それをローカルで実行し、[Azure App Service](overview.md) にデプロイする方法について説明します。 作成したプロジェクトは .NET Core コンソール アプリになります。このアプリでは、バージョン 3.x の WebJobs SDK が使用されます。 .NET Framework を使用するバージョン 2.x に興味がある場合、「[Visual Studio を使用して Web ジョブを開発してデプロイする - Azure App Service](webjobs-dotnet-deploy-vs.md)」を参照してください。
 
 WebJobs SDK の使用方法については、「[イベント ドリブンのバックグラウンド処理に Azure WebJobs SDK を使用する方法](webjobs-sdk-how-to.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-* **Azure 開発**ワークロードと共に [Visual Studio 2017 をインストール](/visualstudio/install/)します。 Visual Studio は既にあるものの、必要なワークロードがない場合は、**[ツール] > [Get Tools and Features]\(ツールと機能の取得\)** を選択してワークロードを追加してください。
+* **Azure 開発**ワークロードと共に [Visual Studio 2019 をインストール](/visualstudio/install/)します。 Visual Studio は既にあるものの、必要なワークロードがない場合は、 **[ツール] > [Get Tools and Features]\(ツールと機能の取得\)** を選択してワークロードを追加してください。
 
 * WebJobs SDK プロジェクトを Azure に発行するには、[Azure アカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)が必要です。
 
 ## <a name="create-a-project"></a>プロジェクトの作成
 
-1. Visual Studio で、**[ファイル] > [新規作成] > [プロジェクト]** を選択します。
+1. Visual Studio で、 **[新しいプロジェクトの作成]** を選択します。
 
-2. **[.NET Core]、[コンソール アプリ (.NET Core)]** の順に選択します。
+2. **[コンソール アプリ (.NET Core)]** を選択します。
 
-3. プロジェクトに *WebJobsSDKSample* という名前を付け、**[OK]** を選択します。
+3. プロジェクトに *WebJobsSDKSample* という名前を付け、 **[作成]** を選択します。
 
    ![[新しいプロジェクト] ダイアログ](./media/webjobs-sdk-get-started/new-project.png)
 
@@ -173,7 +173,7 @@ ASP.NET Core では、ホストの構成は [`HostBuilder`](/dotnet/api/microsof
 
 ## <a name="create-a-function"></a>関数を作成する
 
-1. プロジェクトを右クリックし、**[追加]** > 、**[新しいアイテム]** の順に選択し、**[クラス]** を選択し、新しい C# クラス ファイルに *Functions.cs* という名前を付け、**[追加]** を選択します。
+1. プロジェクトを右クリックし、 **[追加]**  > 、 **[新しいアイテム]** の順に選択し、 **[クラス]** を選択し、新しい C# クラス ファイルに *Functions.cs* という名前を付け、 **[追加]** を選択します。
 
 1. Functions.cs で、生成されたテンプレートを次のコードに置き換えます。
 
@@ -201,11 +201,11 @@ ASP.NET Core では、ホストの構成は [`HostBuilder`](/dotnet/api/microsof
 
 ローカルで実行する Azure ストレージ エミュレーターには、WebJobs SDK に必要な機能がすべてあるわけではありません。 そのため、ここでは、Azure にストレージ アカウントを作成し、それを使用するようにプロジェクトを構成します。 ストレージ アカウントが既にある場合、手順 6 までスキップします。
 
-1. Visual Studio で**サーバー エクスプローラー**を開き、Azure にサインインします。 **[Azure]** ノードを右クリックし、**[Microsoft Azure サブスクリプションへの接続]** を選択します。
+1. Visual Studio で**サーバー エクスプローラー**を開き、Azure にサインインします。 **[Azure]** ノードを右クリックし、 **[Microsoft Azure サブスクリプションへの接続]** を選択します。
 
    ![Azure へのサインイン](./media/webjobs-sdk-get-started/sign-in.png)
 
-1. **サーバー エクスプローラー**の **Azure** ノードで **[Storage]** を右クリックし、**[ストレージ アカウントの作成]** をクリックします。
+1. **サーバー エクスプローラー**の **Azure** ノードで **[Storage]** を右クリックし、 **[ストレージ アカウントの作成]** をクリックします。
 
    ![[ストレージ アカウントの作成] メニュー](./media/webjobs-sdk-get-started/create-storage-account-menu.png)
 
@@ -217,7 +217,7 @@ ASP.NET Core では、ホストの構成は [`HostBuilder`](/dotnet/api/microsof
 
    ![ストレージ アカウントの作成](./media/webjobs-sdk-get-started/create-storage-account.png)
 
-1. **サーバー エクスプローラー**の **[Storage]** ノードで、新しいストレージ アカウントを選択します。 **[プロパティ]** ウィンドウで、**[接続文字列]** 値フィールドの右側にある省略記号 (**...**) を選択します。
+1. **サーバー エクスプローラー**の **[Storage]** ノードで、新しいストレージ アカウントを選択します。 **[プロパティ]** ウィンドウで、 **[接続文字列]** 値フィールドの右側にある省略記号 ( **...** ) を選択します。
 
    ![接続文字列の省略記号](./media/webjobs-sdk-get-started/conn-string-ellipsis.png)
 
@@ -229,7 +229,7 @@ ASP.NET Core では、ホストの構成は [`HostBuilder`](/dotnet/api/microsof
 
 WebJobs SDK では、Azure のアプリケーション設定内でストレージの接続文字列が検索されます。 ローカル環境で実行すると、ローカル構成ファイルまたは環境変数内でこの値が検索されます。
 
-1. プロジェクトを右クリックし、**[追加]** > 、**[新しいアイテム]** の順に選択し、**[JavaScript JSON 構成ファイル]** を選択し、新しいファイルに *appsettings.json* という名前を付け、**[追加]** を選択します。 
+1. プロジェクトを右クリックし、 **[追加]**  > 、 **[新しいアイテム]** の順に選択し、 **[JavaScript JSON 構成ファイル]** を選択し、新しいファイルに *appsettings.json* という名前を付け、 **[追加]** を選択します。 
 
 1. 新しいファイルで、次の例のように `AzureWebJobsStorage` フィールドを追加します。
 
@@ -241,7 +241,7 @@ WebJobs SDK では、Azure のアプリケーション設定内でストレー�
 
 1. *{storage connection string}* を先ほどコピーした接続文字列で置き換えます。
 
-1. ソリューション エクスプローラーで *appsettings.json* ファイルを選択し、**[プロパティ]** ウィンドウで **[出力ディレクトリにコピー]** を **[新しい場合はコピーする]** に設定します。
+1. ソリューション エクスプローラーで *appsettings.json* ファイルを選択し、 **[プロパティ]** ウィンドウで **[出力ディレクトリにコピー]** を **[新しい場合はコピーする]** に設定します。
 
 後で、Azure App Service のアプリに同じ接続文字列のアプリ設定を追加します。
 
@@ -269,21 +269,21 @@ WebJobs SDK では、Azure のアプリケーション設定内でストレー�
 
 1. コンソール ウィンドウを閉じます。
 
-1. Visual Studio の**サーバー エクスプローラー**で、新しいストレージ アカウントのノードを展開し、**[キュー]** を右クリックします。
+1. Visual Studio の**サーバー エクスプローラー**で、新しいストレージ アカウントのノードを展開し、 **[キュー]** を右クリックします。
 
 1. **[キューの作成]** を選択します。
 
-1. キューの名前として「*キュー*」と入力し、**[OK]** を選択します。
+1. キューの名前として「*キュー*」と入力し、 **[OK]** を選択します。
 
    ![キューの作成](./media/webjobs-sdk-get-started/create-queue.png)
 
-1. 新しいキューのノードを右クリックし、**[キューの表示]** を選択します。
+1. 新しいキューのノードを右クリックし、 **[キューの表示]** を選択します。
 
 1. **メッセージの追加**アイコンを選択します。
 
    ![キューの作成](./media/webjobs-sdk-get-started/create-queue-message.png)
 
-1. **[メッセージの追加]** ダイアログで、「*Hello World!*」を  **[メッセージ テキスト]** として入力し、**[OK]** を選択します。 これでキューにメッセージが入りました。
+1. **[メッセージの追加]** ダイアログで、「*Hello World!* 」を **[メッセージ テキスト]** として入力し、 **[OK]** を選択します。 これでキューにメッセージが入りました。
 
    ![キューの作成](./media/webjobs-sdk-get-started/hello-world-text.png)
 
@@ -330,7 +330,7 @@ WebJobs SDK では、Azure のアプリケーション設定内でストレー�
 
 ### <a name="configure-app-settings"></a>アプリケーションの設定の構成 
 
-1. Visual Studio の**サーバー エクスプローラー**で、**[Azure]** の下の **[App Service]** ノードを展開します。
+1. Visual Studio の**サーバー エクスプローラー**で、 **[Azure]** の下の **[App Service]** ノードを展開します。
 
 1. App Service アプリがあるリソース グループを展開し、App Service アプリを右クリックします。
 
@@ -342,7 +342,7 @@ WebJobs SDK では、Azure のアプリケーション設定内でストレー�
    |---------|---------|------|
    |AzureWebJobsStorage | {先ほどコピーした Storage 接続文字列}|カスタム|
 
-1. **[アプリケーション設定]** ボックスに Application Insights インストルメンテーション キーがない場合は、先ほどコピーしたキーを追加します  (App Service アプリを作成する方法によっては、インストルメンテーション キーが既にある場合があります)。
+1. **[アプリケーション設定]** ボックスに Application Insights インストルメンテーション キーがない場合は、先ほどコピーしたキーを追加します (App Service アプリを作成する方法によっては、インストルメンテーション キーが既にある場合があります)。
 
    |Name  |値  |
    |---------|---------|
@@ -417,7 +417,7 @@ WebJobs SDK では、Azure のアプリケーション設定内でストレー�
 
 ここでは、もう一度ローカル環境で実行して、ログ データが Application Insights とコンソールに記録されることを確認します。
 
-1. 「*Hello App Insights!*」をメッセージ テキストとして入力すること以外は[前](#trigger-the-function-in-azure)に行ったのと同じ方法で、Visual Studio の**サーバー エクスプローラー**を使用してキュー メッセージを 作成します。
+1. 「*Hello App Insights!* 」をメッセージ テキストとして入力すること以外は[前](#trigger-the-function-in-azure)に行ったのと同じ方法で、Visual Studio の**サーバー エクスプローラー**を使用してキュー メッセージを 作成します。
 
 1. プロジェクトを実行します。
 
@@ -431,7 +431,7 @@ WebJobs SDK では、Azure のアプリケーション設定内でストレー�
 
    ![[検索] の選択](./media/webjobs-sdk-get-started/select-search.png)
 
-1. "*Hello App Insights!*" メッセージが表示されない場合は、 **[更新]** を数分ごとに定期的に選択します  (Application Insights クライアントが処理するログをフラッシュするのに少し時間がかかるので、ログはすぐには表示されません)。
+1. "*Hello App Insights!* " メッセージが表示されない場合は、 **[更新]** を数分ごとに定期的に選択します (Application Insights クライアントが処理するログをフラッシュするのに少し時間がかかるので、ログはすぐには表示されません)。
 
    ![Application Insights のログ](./media/webjobs-sdk-get-started/logs-in-ai.png)
 
@@ -460,9 +460,9 @@ WebJobs SDK では、Azure のアプリケーション設定内でストレー�
 
 1. **[検索]** を選択します。
 
-1. "*Hello Azure!*" メッセージが表示されない場合は、 **[更新]** を数分ごとに定期的に選択します 
+1. "*Hello Azure!* " メッセージが表示されない場合は、 **[更新]** を数分ごとに定期的に選択します
 
-   Web ジョブで実行されている関数からのログを確認します。これには、前のセクションで入力した "*Hello Azure!*"  テキストが含まれます。
+   Web ジョブで実行されている関数からのログを確認します。これには、前のセクションで入力した "*Hello Azure!* " テキストが含まれます。
 
 ## <a name="add-an-input-binding"></a>入力バインディングの追加
 
@@ -490,11 +490,11 @@ WebJobs SDK では、Azure のアプリケーション設定内でストレー�
 
 1. ストレージ アカウントで BLOB コンテナーを作成します。
 
-   a. Visual Studio の**サーバー エクスプローラー**で、ストレージ アカウントのノードを展開し、**[BLOB]** を右クリックして **[BLOB コンテナーの作成]** を選択します。
+   a. Visual Studio の**サーバー エクスプローラー**で、ストレージ アカウントのノードを展開し、 **[BLOB]** を右クリックして **[BLOB コンテナーの作成]** を選択します。
 
-   b. **[BLOB コンテナーの作成]** ダイアログで、コンテナー名として「*container*」を入力し、**[OK]** をクリックします。
+   b. **[BLOB コンテナーの作成]** ダイアログで、コンテナー名として「*container*」を入力し、 **[OK]** をクリックします。
 
-1. BLOB コンテナーに *Program.cs* ファイルをアップロードします  (このファイルは、ここでは例として使用しています。任意のテキスト ファイルをアップロードし、そのファイルの名前でキュー メッセージを作成できます)。
+1. BLOB コンテナーに *Program.cs* ファイルをアップロードします (このファイルは、ここでは例として使用しています。任意のテキスト ファイルをアップロードし、そのファイルの名前でキュー メッセージを作成できます)。
 
    a. **サーバー エクスプローラー**で、作成したコンテナーのノードをダブルクリックします。
 
@@ -502,7 +502,7 @@ WebJobs SDK では、Azure のアプリケーション設定内でストレー�
 
    ![BLOB のアップロード ボタン](./media/webjobs-sdk-get-started/blob-upload-button.png)
 
-   c. *Program.cs* を検索して選択し、**[OK]** を選択します。
+   c. *Program.cs* を検索して選択し、 **[OK]** を選択します。
 
 1. *Program.cs* をメッセージのテキストとして、以前に作成したキューにキュー メッセージを作成します。
 
@@ -548,9 +548,9 @@ WebJobs SDK では、Azure のアプリケーション設定内でストレー�
 
 ## <a name="republish-the-updates-to-azure"></a>Azure に更新プログラムを再発行する
 
-1. **ソリューション エクスプローラー**で、プロジェクトを右クリックし、**[発行]** を選択します。
+1. **ソリューション エクスプローラー**で、プロジェクトを右クリックし、 **[発行]** を選択します。
 
-1. **[発行]** ダイアログ ボックスで、現在のプロファイルが選択されていることを確認し、**[発行]** を選択します。 発行の結果は **[出力]** ウィンドウに詳しく表示されます。
+1. **[発行]** ダイアログ ボックスで、現在のプロファイルが選択されていることを確認し、 **[発行]** を選択します。 発行の結果は **[出力]** ウィンドウに詳しく表示されます。
  
 1. ファイルを再び BLOB コンテナーにアップロードし、アップロードしたファイルの名前になっているキューにメッセージを追加することで Azure で関数を検証します。 キューからメッセージが削除されたことと、BLOB コンテナーにファイルのコピーが作成されたことを確認できます。 
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 04/16/2019
+ms.date: 05/10/2019
 ms.author: tulasim
-ms.openlocfilehash: c18ededc428b215720f8a6a6857a2eabd93bff8b
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 2454e07e4fc4600f846acc7afbcc19cc0b677450
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59683604"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65792234"
 ---
 # <a name="get-a-knowledge-answer-with-the-generateanswer-api-and-metadata"></a>GenerateAnswer API およびメタデータを使ってナレッジの回答を取得する
 
@@ -43,7 +43,7 @@ QnA エンティティにはそれぞれ一意の永続 ID があります。 ID
 
 ## <a name="publish-to-get-generateanswer-endpoint"></a>公開して GenerateAnswer エンドポイントを取得する 
 
-ナレッジ ベースを公開したら、[QnA Maker ポータル](https://www.qnamaker.ai)から、または [API](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff) を使用して、GenerateAnswer エンドポイントの詳細を取得することができます。
+ナレッジ ベースを公開したら、[QnA Maker ポータル](https://www.qnamaker.ai)から、または [API](https://go.microsoft.com/fwlink/?linkid=2092179) を使用して、GenerateAnswer エンドポイントの詳細を取得することができます。
 
 エンドポイントの詳細を取得するには、次のようにします。
 1. [https://www.qnamaker.ai](https://www.qnamaker.ai) にサインインします。
@@ -71,7 +71,7 @@ https://{QnA-Maker-endpoint}/knowledgebases/{knowledge-base-ID}/generateAnswer
 |--|--|--|--|
 |URL ルート パラメーター|ナレッジ ベース ID|string|ナレッジ ベースの GUID。|
 |URL ルート パラメーター|QnAMaker エンドポイントのホスト|string|Azure サブスクリプションにデプロイされているエンドポイントのホスト名。 これは、ナレッジ ベースを公開した後に、[設定] ページで利用できます。 |
-|ヘッダー|Content-Type|string|API に送信される本文のメディアの種類。 既定値: `` |
+|ヘッダー|Content-Type|string|API に送信される本文のメディアの種類。 既定値: ``|
 |ヘッダー|Authorization|string|エンドポイント キー (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)。|
 |Post 本文|JSON オブジェクト|JSON|設定が付与されている質問|
 
@@ -83,6 +83,7 @@ JSON の本文には、次のようないくつかの設定があります。
 |`question`|必須|string|ナレッジ ベースに送信されるユーザーの質問。|
 |`top`|省略可能|integer|出力を含めるランク付けされた結果の数。 既定値は 1 です。|
 |`userId`|省略可能|string|ユーザーを識別する一意の ID。 この ID はチャット ログに記録されます。|
+|`scoreThreshold`|省略可能|integer|このしきい値を超える信頼度スコアを持つ回答のみが返されます。 既定値は 0 です。|
 |`isTest`|省略可能|ブール値|true に設定した場合、公開されたインデックスではなく、`testkb` 検索インデックスから結果が返されます。|
 |`strictFilters`|省略可能|string|指定した場合、指定されたメタデータを含む回答のみを返すように QnA Maker に指示します。 応答にメタデータ フィルターを適用しないよう指定するには、`none` を使用します。 |
 
@@ -93,6 +94,7 @@ JSON 本文の例は、次のようになります。
     "question": "qna maker and luis",
     "top": 6,
     "isTest": true,
+    "scoreThreshold": 20,
     "strictFilters": [
     {
         "name": "category",
@@ -146,7 +148,7 @@ JSON 本文の例は、次のようになります。
 
 ## <a name="using-metadata-allows-you-to-filter-answers-by-custom-metadata-tags"></a>メタデータを使用してカスタム メタデータ タグによる回答のフィルター処理を行う
 
-メタデータを追加すると、これらのメタデータ タグによって回答をフィルター処理できます。 次の FAQ データがあるとします。 メタデータ アイコンをクリックして、メタデータをナレッジ ベースに追加します。
+メタデータを追加すると、これらのメタデータ タグによって回答をフィルター処理できます。 **[表示のオプション]** メニューからメタデータ列を追加します。 メタデータ **+** アイコンをクリックしてメタデータ ペアを追加して、メタデータをナレッジ ベースに追加します。 このペアは、1 つのキーと 1 つの値で構成されます。
 
 ![メタデータの追加](../media/qnamaker-how-to-metadata-usage/add-metadata.png)
 

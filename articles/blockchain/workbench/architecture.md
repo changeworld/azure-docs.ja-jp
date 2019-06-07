@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 05/09/2019
+ms.date: 05/20/2019
 ms.topic: article
 ms.service: azure-blockchain
-ms.reviewer: zeyadr
+ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: 8dc8304e97ff66356a8874a146231f0042e5f509
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 989c5c1cd9474999400177293d896b96c79c32b7
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510140"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65955238"
 ---
 # <a name="azure-blockchain-workbench-architecture"></a>Azure Blockchain Workbench アーキテクチャ
 

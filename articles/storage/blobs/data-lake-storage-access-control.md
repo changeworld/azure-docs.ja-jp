@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 0b8139f11f937ddae30e25f4153e35287289a4d1
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 5ad7ef714147616fe55a9b978d501b974323e251
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65233947"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65949581"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 のアクセス制御
 
@@ -49,7 +49,7 @@ SAS トークンには、トークンの一部として許可されるアクセ�
 
 ## <a name="access-control-lists-on-files-and-directories"></a>ファイルとディレクトリのアクセス制御リスト
 
-セキュリティ プリンシパルをファイルおよびディレクトリに対するアクセス レベルと関連付けることができます。 これらの関連付けは、"*アクセス制御リスト (ACL)*" でキャプチャされます。 ストレージ アカウント内の各ファイルおよびディレクトリは、アクセス制御リストを持っています。
+セキュリティ プリンシパルをファイルおよびディレクトリに対するアクセス レベルと関連付けることができます。 これらの関連付けは、"*アクセス制御リスト (ACL)* " でキャプチャされます。 ストレージ アカウント内の各ファイルおよびディレクトリは、アクセス制御リストを持っています。
 
 ストレージ アカウント レベルでセキュリティ プリンシパルにロールを割り当てた場合、アクセス制御リストを使って、そのセキュリティ プリンシパルに、特定のファイルおよびディレクトリに対する昇格されたアクセス権を付与することができます。
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: ea2d1dbcf991ce858f07905bc1bb41809f9bcdd8
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 5285490ca1a27494cbcd3ea3d6527b78c7d38c8c
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56882741"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65833430"
 ---
 # <a name="develop-your-own-iot-edge-modules"></a>独自の IoT Edge モジュールを開発する
 
@@ -67,7 +67,7 @@ ModuleClient インスタンスを作成し、デバイスで実行されてい�
 
 [IoT Edge のための開発およびテスト環境の準備](development-environment.md)
 
-[Visual Studio 2017 を使用して IoT Edge 用の C# モジュールを開発する](how-to-visual-studio-develop-csharp-module.md)
+[Visual Studio を使用して IoT Edge 用の C# モジュールを開発する](how-to-visual-studio-develop-module.md)
 
 [Visual Studio Code を使用して IoT Edge 用のモジュールを開発する](how-to-vs-code-develop-module.md)
 

@@ -137,6 +137,10 @@
               href: /rest/api/time-series-insights/preview-env
             - name: Time Series の式と構文
               href: /rest/api/time-series-insights/preview-tsx
+    - name: クライアント SDK
+      items:
+        - name: JavaScript クライアント SDK
+          href: 'https://github.com/microsoft/tsiclient/blob/master/docs/API.md'
 - name: 関連項目
   items:
     - name: 解決方法

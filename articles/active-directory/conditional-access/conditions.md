@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/14/2018
+ms.date: 05/17/2019
 ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f95fd85b5a0fd9e905b93b9b90f18f963dbf1690
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 2caedeb5cd4d0f920ffa49b33b0dca8bea9938cb
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58518237"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65861540"
 ---
-# <a name="what-are-conditions-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件付きアクセスの条件の概要 
+# <a name="what-are-conditions-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件付きアクセスの条件の概要
 
-[Azure Active Directory (Azure AD) の条件付きアクセス](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)を使用して、お客様のクラウド アプリにユーザーがどのようにアクセスするかを制御できます。 条件付きアクセス ポリシーでは、ポリシーをトリガーする理由 ("～が発生した場合") に対する応答 ("～を実行する") を定義します。 
+[Azure Active Directory (Azure AD) の条件付きアクセス](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)を使用して、お客様のクラウド アプリにユーザーがどのようにアクセスするかを制御できます。 条件付きアクセス ポリシーでは、ポリシーをトリガーする理由 ("～が発生した場合") に対する応答 ("～を実行する") を定義します。
 
 ![理由と応答](./media/conditions/10.png)
 
@@ -37,13 +37,13 @@ ms.locfileid: "58518237"
 ![条件付きアクセス ポリシー](./media/conditions/61.png)
 
 
-条件付きアクセス ポリシーで構成していない条件は適用されません。 一部の条件は、条件付きアクセス ポリシーを環境に適用するために[必須](best-practices.md)です。 
+条件付きアクセス ポリシーで構成していない条件は適用されません。 一部の条件は、条件付きアクセス ポリシーを環境に適用するために[必須](best-practices.md)です。
 
 この記事では、条件の概要と、条件付きアクセス ポリシーでの使用方法について説明します。 
 
 ## <a name="users-and-groups"></a>ユーザーとグループ
 
-ユーザーとグループの条件は、条件付きアクセス ポリシーに必須です。 ポリシーでは、**[すべてのユーザー]** を選択するか、特定のユーザーとグループを選択することができます。
+ユーザーとグループの条件は、条件付きアクセス ポリシーに必須です。 ポリシーでは、 **[すべてのユーザー]** を選択するか、特定のユーザーとグループを選択することができます。
 
 ![ユーザーとグループ](./media/conditions/111.png)
 
@@ -57,29 +57,23 @@ ms.locfileid: "58518237"
 
 * **[ユーザーとグループ]** は、特定セットのユーザーをターゲットとしています。 たとえば、人事部アプリがクラウド アプリとして選択されている場合は、人事部のすべてのメンバーを含むグループを選択できます。 Azure AD 内の任意の種類のグループを指定できます。これには、動的なグループや、割り当て済みのセキュリティ グループおよび配布グループが含まれます。
 
-ポリシーから特定のユーザーまたはグループを除外することもできます。 一般的なユース ケースとして、サービス アカウントに対してポリシーで多要素認証 (MFA) を強制的に適用する例が挙げられます。 
+ポリシーから特定のユーザーまたはグループを除外することもできます。 一般的なユース ケースとして、サービス アカウントに対してポリシーで多要素認証 (MFA) を強制的に適用する例が挙げられます。
 
-新しいポリシーをデプロイする際は、特定のユーザーのセットをターゲットにすると役立ちます。 新しいポリシーでは、初期のユーザー セットのみをターゲットにして、ポリシーの動作を検証することをお勧めします。 
+新しいポリシーをデプロイする際は、特定のユーザーのセットをターゲットにすると役立ちます。 新しいポリシーでは、初期のユーザー セットのみをターゲットにして、ポリシーの動作を検証することをお勧めします。
 
+## <a name="cloud-apps-and-actions"></a>クラウド アプリとアクション
 
+クラウド アプリは、Azure AD アプリケーション プロキシで保護されている Web サイト、サービス、またはエンドポイントです。 サポートされているクラウド アプリの詳細については、[クラウド アプリの割り当て](technical-reference.md#cloud-apps-assignments)に関する記事を参照してください。 **クラウド アプリまたはアクション**の条件は、条件付きアクセス ポリシーに必須です。 ポリシーでは、 **[すべてのクラウド アプリ]** を選択するか、 **[アプリを選択]** を使用してアプリを指定することができます。
 
-## <a name="cloud-apps"></a>クラウド アプリ 
+組織は、次から選択できます。
 
-クラウド アプリは Web サイトまたは Web サービスです。 Azure AD アプリケーション プロキシによって保護されている Web サイトもクラウド アプリです。 サポートされているクラウド アプリの詳細については、[クラウド アプリの割り当て](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#cloud-apps-assignments)に関する記事を参照してください。 
+* **[すべてのクラウド アプリ]** 。組織全体に適用するベースライン ポリシーを適用する場合。 この選択は、いずれかのクラウド アプリでサインイン リスクが検出されたときに多要素認証を要求するポリシーに使用します。 [すべてのクラウド アプリ] に適用されるポリシーは、すべての Web サイトおよびサービスへのアクセスに適用されます。 この設定は、[アプリを選択] 一覧に表示されるクラウド アプリに限定されません。
+* 特定のサービスをお客様のポリシーの対象にするには、 **[アプリを選択]** を選択します。 たとえば、SharePoint Online にアクセスするには準拠デバイスを使用するようユーザーに要求できます。 このポリシーは、他のサービスが SharePoint コンテンツにアクセスする際にも適用されます。 たとえば、Microsoft Teams などです。
 
-**クラウド アプリ**の条件は、条件付きアクセス ポリシーに必須です。 ポリシーでは、**[すべてのクラウド アプリ]** を選択するか、特定のクラウド アプリを選択することができます。
+> [!NOTE]
+> ポリシーから特定のアプリを除外できます。 ただし、アクセスするサービスに適用されるポリシーがあれば、これらのアプリも影響を受けます。
 
-![クラウド アプリを含める](./media/conditions/03.png)
-
-選択肢:
-
-- ベースライン ポリシーを組織全体に適用するには、**[すべてのクラウド アプリ]** を選択します。 いずれかのクラウド アプリへのサインインにリスクが検出されたときに多要素認証を要求するポリシーの場合に、この設定を選択します。 **[すべてのクラウド アプリ]** に適用されるポリシーは、すべての Web サイトおよびサービスへのアクセスに適用されます。 この設定は、**[アプリを選択]** リストに表示されるクラウド アプリに限定されません。 
-
-- 特定のサービスをお客様のポリシーの対象にするには、**[アプリを選択]** を選択します。 たとえば、SharePoint Online にアクセスするには[準拠デバイス](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online)を使用するようユーザーに要求できます。 このポリシーは、他のサービスが SharePoint コンテンツにアクセスする際にも適用されます。 たとえば、Microsoft Teams などです。 
-
-ポリシーから特定のアプリを除外できます。 ただし、アクセスするサービスに適用されるポリシーがあれば、これらのアプリも影響を受けます。 
-
-
+**ユーザー アクション**とは、ユーザーが実行できるタスクです。 現在サポートされている唯一のアクションは、**セキュリティに関する情報の登録 (プレビュー)** です。これにより、統合された登録が有効になったユーザーが自分のセキュリティに関する情報を登録しようとすると、条件付きアクセス ポリシーが適用されます。 詳細情報については、[統合されたセキュリティ情報の登録の有効化 (プレビュー)](../authentication/howto-registration-mfa-sspr-combined.md) に関する記事を参照してください。
 
 ## <a name="sign-in-risk"></a>サインイン リスク
 
@@ -119,7 +113,7 @@ ms.locfileid: "58518237"
 
 この条件は、追加のセッション セキュリティを提供するために、アンマネージド デバイスにのみポリシーを適用する必要がある場合に便利です。 たとえば、アンマネージド デバイスの場合にのみ、Microsoft Cloud App Security のセッション制御を実施します。 
 
-## <a name="locations"></a>場所
+## <a name="locations"></a>Locations
 
 場所を使用すると、接続が試行された場所に基づいて条件を定義できます。 
 

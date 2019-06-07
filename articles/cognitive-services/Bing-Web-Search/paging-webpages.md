@@ -9,14 +9,14 @@ ms.assetid: 26CA595B-0866-43E8-93A2-F2B5E09D1F3B
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: conceptual
-ms.date: 08/20/2018
+ms.date: 05/15/2019
 ms.author: aahi
-ms.openlocfilehash: 68b99e7f0763f46c705a1ff2ba3a0e90216429c2
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: fa02c0913329ec740e3066b05b2e44a36ad379ce
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878597"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65797804"
 ---
 # <a name="how-to-page-through-results-from-the-bing-web-search-api"></a>Bing Web Search API から結果をページングする方法
 
@@ -24,7 +24,7 @@ Web Search API を呼び出すと、結果のリストが Bing から返され�
 
 次の例は、Web 回答に含まれる `totalEstimatedMatches` フィールドを示しています。  
 
-```
+```json
 {
     "_type" : "SearchResponse",
     "webPages" : {
@@ -65,3 +65,7 @@ Web Search API は、Web ページを含み、画像、動画、ニュースを�
 
 > [!NOTE]
 > `TotalEstimatedAnswers` フィールドは、現在のクエリで取得できる検索結果の合計数の見積もりです。  `count` パラメーターと `offset` パラメーターを設定すると、`TotalEstimatedAnswers` の数が変わる場合があります。 
+
+## <a name="next-steps"></a>次の手順
+
+* [Bing Web Search API とは](overview.md)

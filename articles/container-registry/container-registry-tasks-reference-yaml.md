@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: danlep
-ms.openlocfilehash: d50d5bc91fbb86e5c0c3d2acc3b55c7d02c71723
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: bdf88657c11bdb5ab5bcde97c155780328065c7e
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65192264"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65954476"
 ---
 # <a name="acr-tasks-reference-yaml"></a>ACR タスクの参照:YAML
 
@@ -81,7 +81,7 @@ az configure --defaults acr=myregistry
 
 | プロパティ | Type | 省略可能 | 説明 | オーバーライドのサポート | Default value |
 | -------- | ---- | -------- | ----------- | ------------------ | ------------- |
-| `version` | string | はい | ACR タスク サービスによって解析される `acr-task.yaml` ファイルのバージョン。 ACR タスクは、下位互換性の維持に努めていますが、この値により ACR タスクが定義されたバージョン内で互換性を維持することが可能になります。 指定しない場合は、既定値の最新バージョンになります。 | いいえ  | なし |
+| `version` | string | はい | ACR タスク サービスによって解析される `acr-task.yaml` ファイルのバージョン。 ACR タスクは、下位互換性の維持に努めていますが、この値により ACR タスクが定義されたバージョン内で互換性を維持することが可能になります。 指定しない場合は、既定値の最新バージョンになります。 | いいえ | なし |
 | `stepTimeout` | int (秒) | はい | ステップが実行できる最大秒数。 プロパティがタスクで指定されている場合は、すべてのステップの既定の `timeout` プロパティが設定されます。 `timeout` プロパティがステップで指定されている場合は、タスクによって提供されたプロパティがオーバーライドされます。 | はい | 600 (10 分) |
 | `workingDirectory` | string | はい | 実行時のコンテナーの作業ディレクトリ。 プロパティがタスクで指定されている場合は、すべてのステップの既定の `workingDirectory` プロパティが設定されます。 ステップで指定されている場合は、タスクによって提供されたプロパティがオーバーライドされます。 | はい | `$HOME` |
 | `env` | [string, string, ...] | はい |  タスクの環境変数を定義する `key=value` 形式での文字列の配列。 プロパティがタスクで指定されている場合は、すべてのステップの既定の `env` プロパティが設定されます。 ステップに指定した場合は、タスクから継承されたすべての環境変数がオーバーライドされます。 | なし |
@@ -94,8 +94,8 @@ az configure --defaults acr=myregistry
 
 | プロパティ | Type | 省略可能 | 説明 | Default value |
 | -------- | ---- | -------- | ----------- | ------- |
-| `id` | string | いいえ  | シークレットの識別子。 | なし |
-| `akv` | string | はい | Azure Key Vault (AKV) のシークレット URL。 | なし |
+| `id` | string | いいえ | シークレットの識別子。 | なし |
+| `keyvault` | string | はい | Azure Key Vault のシークレット URL。 | なし |
 | `clientID` | string | はい | Azure リソース用のユーザー割り当てのマネージド ID のクライアント ID。 | なし |
 
 ### <a name="network"></a>ネットワーク
@@ -104,7 +104,7 @@ az configure --defaults acr=myregistry
 
 | プロパティ | Type | 省略可能 | 説明 | Default value |
 | -------- | ---- | -------- | ----------- | ------- | 
-| `name` | string | いいえ  | ネットワークの名前。 | なし |
+| `name` | string | いいえ | ネットワークの名前。 | なし |
 | `driver` | string | はい | ネットワークを管理するドライバー。 | なし |
 | `ipv6` | bool | はい | IPv6 ネットワークが有効になっているかどうか。 | `false` |
 | `skipCreation` | bool | はい | ネットワークの作成をスキップするかどうか。 | `false` |
@@ -139,7 +139,7 @@ steps:
 | --------- | ----------- | :-------: |
 | `-t` &#124; `--image` | ビルドされたイメージの完全修飾 `image:tag` を定義します。<br /><br />イメージは機能テストなどの内部タスクの検証に使用することができるため、すべてのイメージでレジストリへの `push` が必要なわけではありません。 ただし、タスクの実行内でイメージをインスタンス化するには、イメージに参照する名前が必要です。<br /><br />`az acr build` とは異なり、ACR タスクの実行では、既定のプッシュ動作は提供されません。 ACR タスクでは、既定のシナリオは、イメージをビルド、検証してからプッシュできることを前提としています。 必要に応じてビルドされたイメージをプッシュする方法については、「[push](#push)」を参照してください。 | はい |
 | `-f` &#124; `--file` | `docker build` に渡される Dockerfile を指定します。 指定しない場合、コンテキストのルートにある既定の Dockerfile が想定されます。 Dockerfile を指定するには、コンテキストのルートへの相対ファイル名を渡します。 | はい |
-| `context` | `docker build` に渡されるルート ディレクトリ。 各タスクのルート ディレクトリは、共有の [workingDirectory](#task-step-properties) に設定され、関連付けられた Git の複製されたディレクトリのルートが含まれます。 | いいえ  |
+| `context` | `docker build` に渡されるルート ディレクトリ。 各タスクのルート ディレクトリは、共有の [workingDirectory](#task-step-properties) に設定され、関連付けられた Git の複製されたディレクトリのルートが含まれます。 | いいえ |
 
 ### <a name="properties-build"></a>プロパティ: build
 

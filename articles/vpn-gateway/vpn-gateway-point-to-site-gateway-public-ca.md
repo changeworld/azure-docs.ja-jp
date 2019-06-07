@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 03/12/2019
+ms.date: 05/16/2019
 ms.author: cherylmc
-ms.openlocfilehash: 29f2aeee53e07adfeafb8017c489c0b830f24b36
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 1d45e1a5e4053ead4330967c5e250c0797c19fe7
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59521596"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65827467"
 ---
 # <a name="transition-to-a-public-ca-gateway-certificate-for-p2s"></a>P2S 用公開 CA ゲートウェイ証明書への移行
 
@@ -29,17 +29,7 @@ Azure VPN Gateway では、P2S 接続用のゲートウェイに対して Azure 
 古いゲートウェイのみが、この変更の影響を受けます。 お使いのゲートウェイ証明書を移行する必要がある場合は、Azure portal 内で通信またはトーストを受信します。 この記事の手順を使用して、お使いのゲートウェイが影響を受けるかどうかを判断するためのチェックをすることが可能です。
 
 > [!IMPORTANT]
-> 移行は、2019 年 3 月 12 日 18 時 00 分 (UTC) から開始するようにスケジュールされています。 別の時間枠が好ましい場合は、サポート ケースを作成できます。 少なくとも 24 時間前までに、要求を行って最終処理を完了してください。  次のいずれかの時間枠を要求できます。
->
-> * 2 月 25 日 06:00 UTC
-> * 2 月 25 日 18:00 UTC
-> * 3 月 1 日 06:00 UTC
-> * 3 月 1 日 18:00 UTC
->
-> **残りのすべてのゲートウェイでは、2019年 3 月 12 日 18時 00 分 (UTC) に移行を開始します**。
->
-> ゲートウェイの移行プロセスが完了すると、お客様にメールが送られます。
-> 
+> パブリック CA 証明書への移行は、2019 年 5 月 12 日に完了しました。 **このドキュメントは 2019 年 5 月 31 日に削除されます。**
 
 ## <a name="1-verify-your-certificate"></a>1.証明書を確認する
 

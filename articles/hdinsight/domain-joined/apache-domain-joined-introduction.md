@@ -8,14 +8,14 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/19/2019
-ms.openlocfilehash: deff2aa3cd475a3ed37adc4408a133ed1fd0757e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 8142caf867ffe811726677fb1dcbadc7d1458251
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64716662"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65793564"
 ---
-# <a name="an-introduction-to-apache-hadoop-security-with-enterprise-security-package"></a>Enterprise セキュリティ パッケージを使用する Apache Hadoop セキュリティの概要
+# <a name="what-is-enterprise-security-package-in-azure-hdinsight"></a>Azure HDInsight での Enterprise セキュリティ パッケージとは
 
 これまでに、Azure HDInsight では、単一ユーザーのローカル管理者のみをサポートしていました。これは、小規模なアプリケーション チームや部門に適していました。 Apache Hadoop ベースのワークロードがエンタープライズ部門に普及するに伴い、Active Directory ベースの認証、マルチユーザーのサポート、ロールベースのアクセス制御などのエンタープライズ レベルの機能の必要性がますます重要になっています。 
 

@@ -2,22 +2,22 @@
 title: オンプレミス アプリへのリモート アクセス - Azure Active Directory アプリケーション プロキシ | Microsoft Docs
 description: Azure Active Directory アプリケーション プロキシは、オンプレミス Web アプリケーションへのセキュリティ保護されたリモート アクセスを提供します。 Azure AD にシングル サインオンした後、ユーザーは、外部の URL または内部のアプリケーション ポータルから、クラウド アプリケーションとオンプレミス アプリケーションの両方にアクセスできます。 たとえば、アプリケーション プロキシでは、リモート デスクトップ、SharePoint、Teams、Tableau、Qlik、および基幹業務 (LOB) アプリケーションへのリモート アクセスとシングル サインオンを提供できます。
 services: active-directory
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/09/2019
-ms.author: celested
+ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e490ed9d104fc039a79083a94ddaebdeba766d2a
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: c2ecc458183006872d5a4c6712cdf00a97993dbc
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65506656"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65825535"
 ---
 # <a name="remote-access-to-on-premises-applications-through-azure-active-directorys-application-proxy"></a>Azure Active Directory アプリケーション プロキシからのオンプレミス アプリケーションへのリモート アクセス 
 
@@ -44,7 +44,7 @@ Azure AD アプリケーション プロキシの特徴:
 
 アプリケーション プロキシは、シングル サインオンをサポートします。 サポートされている方法の詳細については、「[シングル サインオンの方法の選択](what-is-single-sign-on.md#choosing-a-single-sign-on-method)」を参照してください。
 
-外部のリモート ユーザーに対して内部リソースへのアクセス権を付与するには、アプリケーション プロキシをお勧めします。 アプリケーション プロキシは、VPN またはリバース プロキシが必要な場合に代わりに使用できます。 企業ネットワーク上の内部ユーザー用ではありません。  内部ユーザーがアプリケーション プロキシを不必要に使用すると、予期せず、望ましくないパフォーマンスの問題が発生する可能性があります。
+リモート ユーザーに対して内部リソースへのアクセス権を付与するには、アプリケーション プロキシをお勧めします。 アプリケーション プロキシは、VPN またはリバース プロキシが必要な場合に代わりに使用できます。 企業ネットワーク上の内部ユーザー用ではありません。  これらのユーザーがアプリケーション プロキシを不必要に使用すると、予期せず、望ましくないパフォーマンスの問題が発生する可能性があります。
 
 ## <a name="how-application-proxy-works"></a>アプリケーション プロキシの動作
 

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 618453ec9857254fe14608df8091bb79bd3815b7
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 70d1f54aed5e83801b1d1e249d7a412dd6d9a49a
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65509986"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65964028"
 ---
 # <a name="application-map-triage-distributed-applications"></a>アプリケーション マップ:分散アプリケーションのトリアージ
 
@@ -68,7 +68,7 @@ ms.locfileid: "65509986"
 
 ### <a name="go-to-details"></a>詳細の表示
 
-呼び出し履歴レベルまでのビューを提供できるエンドツーエンドのトランザクション エクスペリエンスの詳細を表示するには、**[詳細に移動]** を選択します。
+呼び出し履歴レベルまでのビューを提供できるエンドツーエンドのトランザクション エクスペリエンスの詳細を表示するには、 **[詳細に移動]** を選択します。
 
 ![[go-to-details] (詳細の表示) ボタンのスクリーンショット](media/app-map/go-to-details.png)
 
@@ -94,7 +94,9 @@ ms.locfileid: "65509986"
 
 アプリケーション マップでは、**クラウド ロール名**プロパティを使用して、マップ上のコンポーネントが識別されます。 Application Insights SDK では、コンポーネントで生成されたテレメトリにクラウド ロール名プロパティが自動的に追加されます。 たとえば、SDK では、Web サイト名またはサービス ロール名がクラウド ロール名プロパティに追加されます。 ただし、既定値をオーバーライドする必要のある場合があります。 クラウド ロール名をオーバーライドし、アプリケーション マップ上に表示される内容を変更するには、次のようにします。
 
-### <a name="net"></a>.NET
+### <a name="netnet-core"></a>.NET/.NET Core
+
+**以下のようにカスタム TelemetryInitializer を作成します。**
 
 ```csharp
 using Microsoft.ApplicationInsights.Channel;
@@ -110,16 +112,16 @@ namespace CustomInitializer.Telemetry
             {
                 //set custom role name here
                 telemetry.Context.Cloud.RoleName = "Custom RoleName";
-                telemetry.Context.Cloud.RoleInstance = "Custom RoleInstance"
+                telemetry.Context.Cloud.RoleInstance = "Custom RoleInstance";
             }
         }
     }
 }
 ```
 
-**初期化子を読み込む**
+**アクティブな TelemetryConfiguration に初期化子を読み込む**
 
-ApplicationInsights.config で:
+ApplicationInsights.config:
 
 ```xml
     <ApplicationInsights>
@@ -131,7 +133,10 @@ ApplicationInsights.config で:
     </ApplicationInsights>
 ```
 
-もう 1 つの方法は、Global.aspx.cs などのコード内で初期化子をインスタンス化することです。
+> [!NOTE]
+> `ApplicationInsights.config` を使用して初期化子を追加することは、ASP.NET Core アプリケーションでは無効です。
+
+ASP.NET Web アプリのもう 1 つの方法は、Global.aspx.cs などのコード内で初期化子をインスタンス化することです。
 
 ```csharp
  using Microsoft.ApplicationInsights.Extensibility;
@@ -141,6 +146,17 @@ ApplicationInsights.config で:
     {
         // ...
         TelemetryConfiguration.Active.TelemetryInitializers.Add(new MyTelemetryInitializer());
+    }
+```
+
+[ASP.NET Core](asp-net-core.md#adding-telemetryinitializers) アプリケーションの場合、新しい `TelemetryInitializer` を追加するには、次に示すように Dependency Injection コンテナーに追加します。 これは `Startup.cs` クラスの `ConfigureServices` メソッドで行われます。
+
+```csharp
+ using Microsoft.ApplicationInsights.Extensibility;
+ using CustomInitializer.Telemetry;
+ public void ConfigureServices(IServiceCollection services)
+    {
+        services.AddSingleton<ITelemetryInitializer, MyCustomTelemetryInitializer>();
     }
 ```
 

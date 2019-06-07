@@ -7,19 +7,19 @@ ms.subservice: single-database
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: CarlRabeler
-ms.author: carlrab
+author: stevestein
+ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/22/2019
-ms.openlocfilehash: 7dcbf2733ff23b0454208dbc789599cd372278ec
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 15aedaa7eedad4940945e9b1e7eff0e1780da796
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65507840"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65790396"
 ---
-# <a name="azure-sql-database-vcore-based-purchasing-model-limits-for-a-single-database"></a>Azure SQL Database の単一データベースに対する仮想コアベースの購入モデルの制限
+# <a name="resource-limits-for-single-databases-using-the-vcore-based-purchasing-model"></a>仮想コアベースの購入モデルを使用した単一データベースに対するリソース制限
 
 この記事では、仮想コアベースの購入モデルを使用した、Azure SQL Database の単一データベースに対する詳細なリソース制限について説明します。
 
@@ -129,7 +129,7 @@ SQL Database サーバー上の 1 つのデータベースに対する DTU ベ�
 
 ### <a name="serverless-compute-tier"></a>サーバーレス コンピューティング レベル
 
-[サーバーレス コンピューティング レベル](sql-database-serverless.md)はパブリック プレビュー段階にあり、仮想コア購入モデルを使用する単一のデータベースのみを対象としています。
+[サーバーレス コンピューティング レベル](sql-database-serverless.md)はプレビュー段階にあり、仮想コア購入モデルを使用する単一のデータベースのみを対象としています。
 
 #### <a name="generation-5-compute-platform"></a>第 5 世代コンピューティング プラットフォーム
 

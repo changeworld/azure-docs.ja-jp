@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/15/2019
+ms.date: 05/17/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 84df04a6d3fbd634524d3819657860c6a3448d65
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 7317b634ee4c8886ce5c99bb2b3395d7d1f646d5
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59698744"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65913860"
 ---
 # <a name="manage-pre-and-post-scripts"></a>事前および事後スクリプトを管理する
 
@@ -26,15 +26,13 @@ Runbook が事前または事後スクリプトとして使用されるように
 
 ## <a name="using-a-prepost-script"></a>事前および事後スクリプトの使用
 
-更新プログラムの展開で事前または事後スクリプトを使用するには、更新プログラムの展開の作成から始めます。 **[Pre-scripts + Post Scripts]\(事前スクリプト + 事後スクリプト\)** を選択します。 この操作で、**[Select Pre-scripts + Post-scripts] (事前スクリプト + 事後スクリプトの選択)** ページが開きます。  
+更新プログラムの展開で事前または事後スクリプトを使用するには、更新プログラムの展開の作成から始めます。 **[Pre-scripts + Post Scripts]\(事前スクリプト + 事後スクリプト\)** を選択します。 この操作で、 **[Select Pre-scripts + Post-scripts] (事前スクリプト + 事後スクリプトの選択)** ページが開きます。  
 
 ![スクリプトを選択する](./media/pre-post-scripts/select-scripts.png)
 
-使用するスクリプトを選択します。この例では、**UpdateManagement-TurnOnVms** Runbook を使用しました。 Runbook を選択すると、**[Configure Script] (スクリプトの構成)** ページが開きます。パラメーターの値を指定し、**[Pre-Script] (事前スクリプト)** を選択します。 完了したら、**[OK]** をクリックします。
+使用するスクリプトを選択します。この例では、**UpdateManagement-TurnOnVms** Runbook を使用しました。 Runbook を選択すると、 **[スクリプトの構成]** ページが開くので、 **[事前スクリプト]** を選択します。 完了したら、 **[OK]** をクリックします。
 
-![スクリプトを構成する](./media/pre-post-scripts/configure-script.png)
-
-**UpdateManagement-TurnOffVms** スクリプトについて、このプロセスを繰り返します。 ただし、**[スクリプトの種類]** を選択するときに、**[Post-Script] (事後スクリプト)** を選択します。
+**UpdateManagement-TurnOffVms** スクリプトについて、このプロセスを繰り返します。 ただし、 **[スクリプトの種類]** を選択するときに、 **[Post-Script] (事後スクリプト)** を選択します。
 
 **[Selected items] (選択された項目)** セクションに、選択した両方のスクリプトが表示されるようになります。1 つは事前スクリプトであり、もう一方は事後スクリプトです。
 
@@ -42,7 +40,7 @@ Runbook が事前または事後スクリプトとして使用されるように
 
 更新プログラムの展開の構成を完了します。
 
-更新プログラムの展開が完了したら、**[Update deployments] (更新プログラムの展開)** に移動して結果を表示できます。 見てわかるように、事前スクリプトと事後スクリプトの状態が表示されます。
+更新プログラムの展開が完了したら、 **[Update deployments] (更新プログラムの展開)** に移動して結果を表示できます。 見てわかるように、事前スクリプトと事後スクリプトの状態が表示されます。
 
 ![更新プログラムの結果](./media/pre-post-scripts/update-results.png)
 
@@ -138,7 +136,7 @@ foreach($summary in $finalStatus)
 
 ## <a name="samples"></a>サンプル
 
-事前および事後スクリプトのサンプルは [Script Center Gallery](https://gallery.technet.microsoft.com/scriptcenter/site/search?f%5B0%5D.Type=RootCategory&f%5B0%5D.Value=WindowsAzure&f%5B0%5D.Text=Windows%20Azure&f%5B1%5D.Type=SubCategory&f%5B1%5D.Value=WindowsAzure_automation&f%5B1%5D.Text=Automation&f%5B2%5D.Type=SearchText&f%5B2%5D.Value=update%20management&f%5B3%5D.Type=Tag&f%5B3%5D.Value=Patching&f%5B3%5D.Text=Patching&f%5B4%5D.Type=ProgrammingLanguage&f%5B4%5D.Value=PowerShell&f%5B4%5D.Text=PowerShell) にあります。または、Azure Portal 経由でインポートされます。 ポータル経由でインポートするには、Automation アカウントで、**[プロセス オートメーション]** の **[Runbook ギャラリー]** を選択します。 フィルターに **[更新管理]** を使用します。
+事前および事後スクリプトのサンプルは [Script Center Gallery](https://gallery.technet.microsoft.com/scriptcenter/site/search?f%5B0%5D.Type=RootCategory&f%5B0%5D.Value=WindowsAzure&f%5B0%5D.Text=Windows%20Azure&f%5B1%5D.Type=SubCategory&f%5B1%5D.Value=WindowsAzure_automation&f%5B1%5D.Text=Automation&f%5B2%5D.Type=SearchText&f%5B2%5D.Value=update%20management&f%5B3%5D.Type=Tag&f%5B3%5D.Value=Patching&f%5B3%5D.Text=Patching&f%5B4%5D.Type=ProgrammingLanguage&f%5B4%5D.Value=PowerShell&f%5B4%5D.Text=PowerShell) にあります。または、Azure Portal 経由でインポートされます。 ポータル経由でインポートするには、Automation アカウントで、 **[プロセス オートメーション]** の **[Runbook ギャラリー]** を選択します。 フィルターに **[更新管理]** を使用します。
 
 ![ギャラリーの一覧](./media/pre-post-scripts/runbook-gallery.png)
 
@@ -151,7 +149,7 @@ foreach($summary in $finalStatus)
 * 更新管理 - スクリプトを実行コマンドで実行する
 
 > [!IMPORTANT]
-> Runbook をインポートした後、使用できるようにするには、それらを**発行する**必要があります。 それを行うには、Automation アカウントで Runbook を見つけ、**[編集]** を選択して **[発行]** をクリックします。
+> Runbook をインポートした後、使用できるようにするには、それらを**発行する**必要があります。 それを行うには、Automation アカウントで Runbook を見つけ、 **[編集]** を選択して **[発行]** をクリックします。
 
 これらのサンプルはすべて、次の例で定義されている基本的なテンプレートに基づいています。 このテンプレートを使用すると、事前および事後スクリプトで使用する独自の Runbook を作成できます。 Azure に対して認証したり、`SoftwareUpdateConfigurationRunContext` パラメーターを処理したりするために必要なロジックが含まれています。
 

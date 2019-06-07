@@ -4,14 +4,14 @@ description: Azure Cosmos DB の SQL 構文、データベースの概念、お�
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/06/2019
+ms.date: 05/20/2019
 ms.author: mjbrown
-ms.openlocfilehash: a5cc6bfca67f3d90467fa2339bc991c1f0bbeadf
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: bbca0239053b8f3164055a07b376abc597b0348f
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148944"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65954137"
 ---
 # <a name="sql-query-examples-for-azure-cosmos-db"></a>Azure Cosmos DB の SQL クエリの例
 
@@ -139,7 +139,7 @@ Azure Cosmos DB の SQL クエリ言語の重要な側面について理解す�
     }]
 ```
 
-次のクエリでは、`id` が `WakefieldFamily` と一致する家族の子供の名が、住んでいる都市の順にすべて返されます。
+次のクエリでは、`id` が `WakefieldFamily` と一致する家族の子どもの名がすべて都市順に返されます。
 
 ```sql
     SELECT c.givenName
@@ -867,6 +867,13 @@ SQL API の重要な機能は、配列とオブジェクトの作成です。 �
         ]
       }
     ]
+```
+
+次の SQL クエリは、サブクエリ内で配列を使用するもう 1 つの例です。 このクエリは、配列内の子供の個別の名前をすべて取得します。
+
+```sql
+SELECT f.id, ARRAY(SELECT DISTINCT VALUE c.givenName FROM c IN f.children) as ChildNames
+FROM f
 ```
 
 
@@ -1979,7 +1986,7 @@ Cosmos DB クエリ プロバイダーは、LINQ クエリから Cosmos DB SQL �
 
 - 定数値。クエリ評価時のプリミティブ データ型の定数値を含みます。
   
-- プロパティ/配列インデックス式。オブジェクトまたは配列要素のプロパティを参照します。 例: 
+- プロパティ/配列インデックス式。オブジェクトまたは配列要素のプロパティを参照します。 例:
   
   ```
     family.Id;

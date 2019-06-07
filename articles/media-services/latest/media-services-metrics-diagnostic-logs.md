@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/05/2019
 ms.author: juliako
-ms.openlocfilehash: 23c87ae92a0f22b4a1a31c054df730af2efc07d1
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: bbf43ecb07947fad8cc1ee064d2038e4a21d4444
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59785087"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65964771"
 ---
 # <a name="monitor-media-services-metrics-and-diagnostic-logs"></a>Media Services のメトリックと診断ログの監視
 
-[Azure Monitor](../../azure-monitor/overview.md) により、アプリケーションの実行状況を理解する上で役立つメトリックと診断ログを監視できます。 Azure Monitor が収集したすべてのデータは、2 つの基本的な型であるメトリックとログのどちらかに該当します。 Media Services の診断ログを監視し、収集されたメトリックおよびログのアラートと通知を作成できます。 [メトリックス エクスプローラー](../../azure-monitor/platform/metrics-getting-started.md)を使用して、メトリック データを視覚化し、分析できます。 ログを [Azure Storage](https://azure.microsoft.com/services/storage/) に送信し、それらを [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) にストリーミング配信し、[Log Analytics](https://azure.microsoft.com/services/log-analytics/) にエクスポートできます。またはサード パーティのサービスを使用できます。
+[Azure Monitor](../../azure-monitor/overview.md) により、アプリケーションの実行状況を理解する上で役立つメトリックと診断ログを監視できます。 Azure Monitor で収集されたすべてのデータは、2 つの基本的な型であるメトリックとログのどちらかに該当します。 Media Services の診断ログを監視し、収集されたメトリックおよびログのアラートと通知を作成できます。 [メトリックス エクスプローラー](../../azure-monitor/platform/metrics-getting-started.md)を使用して、メトリック データを視覚化し、分析できます。 ログを [Azure Storage](https://azure.microsoft.com/services/storage/) に送信し、それらを [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) にストリーミング配信し、[Log Analytics](https://azure.microsoft.com/services/log-analytics/) にエクスポートできます。またはサード パーティのサービスを使用できます。
 
 概要については、[Azure Monitor メトリック](../../azure-monitor/platform/data-platform.md)および [Azure Monitor 診断ログ](../../azure-monitor/platform/diagnostic-logs-overview.md)に関する記事をご覧ください。
 
@@ -34,11 +34,11 @@ ms.locfileid: "59785087"
 
 現在、次の Media Services では、[ストリーミング エンドポイント](https://docs.microsoft.com/rest/api/media/streamingendpoints) メトリックが Azure によって生成されます。
 
-|Name|説明|
-|---|---|
-|Requests|ストリーミング エンドポイントによって処理された要求の合計数に関する詳細情報を提供します。|
-|エグレス|エグレス バイト数の合計。 ストリーミング エンドポイントによってストリーミングされるバイト数など。|
-|成功したエンド ツー エンドの待機時間| 成功した要求のエンド ツー エンドの待機時間について情報を提供します。|
+|メトリック|Display name|説明|
+|---|---|---|
+|Requests|Requests|ストリーミング エンドポイントによって処理された要求の合計数に関する詳細情報を提供します。|
+|エグレス|エグレス|エグレス バイト数の合計。 ストリーミング エンドポイントによってストリーミングされるバイト数など。|
+|SuccessE2ELatency|成功したエンド ツー エンドの待機時間| 成功した要求のエンド ツー エンドの待機時間について情報を提供します。|
 
 たとえば、CLI を使用した "Egress" メトリックを取得するには、次の `az monitor metrics` CLI コマンドを実行します。
 
@@ -76,7 +76,7 @@ az monitor diagnostic-settings create --name <diagnostic name> \
     }]'
 ```
 
-例: 
+例:
 
 ```cli
 az monitor diagnostic-settings create --name amsv3diagnostic \

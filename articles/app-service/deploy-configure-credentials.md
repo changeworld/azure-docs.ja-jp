@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 03/10/2019
 ms.author: cephalin;byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: df874ab77c88f05b048b1f9d10873943b7bebf36
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b054e56afdec65ac000b0dc18a0c1a3fd845b4c3
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57884389"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65955980"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Azure App Service のデプロイ資格情報の構成
 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) では、[ローカル Git デプロイ](deploy-local-git.md)と [FTP/S デプロイ](deploy-ftp.md)デプロイ用の 2 種類の資格情報をサポートしています。 これらの資格情報は Azure Active Directory の資格情報とは異なります。
@@ -33,11 +33,11 @@ ms.locfileid: "57884389"
 
 ユーザー レベルの資格情報を構成するには:
 
-1. [Azure portal](https://portal.azure.com) の左側のメニューで、**[App Services]** > **[&lt;任意のアプリ>]** > **[デプロイ センター]** > **[デプロイ資格情報]** をクリックします。
+1. [Azure portal](https://portal.azure.com) の左側のメニューで、 **[App Services]**  >  **[&lt;任意のアプリ>]**  >  **[デプロイ センター]**  >  **[デプロイ資格情報]** をクリックします。
 
     ポータルで、[デプロイ資格情報] ページにアクセスするには、少なくとも 1 つのアプリが必要です。 ただし、[Azure CLI](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az-webapp-deployment-user-set) を使用する場合、ユーザー レベルの資格情報は既存のアプリなしで構成できます。
 
-2. **[ユーザーの資格情報]** をクリックし、ユーザー名とパスワードを構成してから、**[資格情報の保存]** をクリックします。
+2. **[ユーザーの資格情報]** をクリックし、ユーザー名とパスワードを構成してから、 **[資格情報の保存]** をクリックします。
 
     ![](./media/app-service-deployment-credentials/deployment_credentials_configure.png)
 
@@ -63,9 +63,9 @@ ms.locfileid: "57884389"
 ## <a name="appscope"></a>アプリ レベルの資格情報の設定とリセット
 アプリ レベルの資格情報を取得するには:
 
-1. [Azure portal](https://portal.azure.com) の左側のメニューで、**[App Services]** > **[&lt;任意のアプリ>]** > **[デプロイ センター]** > **[デプロイ資格情報]** をクリックします。
+1. [Azure portal](https://portal.azure.com) の左側のメニューで、 **[App Services]**  >  **[&lt;任意のアプリ>]**  >  **[デプロイ センター]**  >  **[デプロイ資格情報]** をクリックします。
 
-2. **[アプリの資格情報]** をクリックし、**[コピー]** リンクをクリックして、ユーザー名またはパスワードをコピーします。
+2. **[アプリの資格情報]** をクリックし、 **[コピー]** リンクをクリックして、ユーザー名またはパスワードをコピーします。
 
     ![](./media/app-service-deployment-credentials/deployment_credentials_app_level.png)
 

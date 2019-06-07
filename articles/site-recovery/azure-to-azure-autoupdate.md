@@ -6,14 +6,14 @@ author: rajani-janaki-ram
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 05/20/2019
 ms.author: rajanaki
-ms.openlocfilehash: 67eb01ad596393c9095d72670e61b8c09776c588
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 1d36145b2a38c0f1106b4468eab226996e270ae1
+ms.sourcegitcommit: d73c46af1465c7fd879b5a97ddc45c38ec3f5c0d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59792930"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65922076"
 ---
 # <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Azure から Azure へのレプリケーションに使用されるモビリティ サービスの自動更新
 
@@ -31,9 +31,10 @@ Site Recovery を使用して更新を管理する場合、コンテナーと同
 Runbook の既定のスケジュールは、レプリケートされる VM の地域のタイム ゾーンで毎日午前 12 時に繰り返し実行されます。 Runbook のスケジュールは、Automation アカウントを介して変更することもできます。
 
 > [!NOTE]
+> 更新プログラム ロールアップ 35 以降では、更新に使用するために既存の Automation アカウントを選択できます。 この更新より前は、既定で Site Recovery によってこのアカウントが作成されました。 このオプションは、VM に対してレプリケーションを有効にするときに使用できます。 この設定を変更すると、同じコンテナーで保護されていすべての Azure VM に適用されます。
+ 
 > 自動更新を有効にしても、Azure VM を再起動する必要はないため、実行中のレプリケーションに影響しません。
 
-> [!NOTE]
 > Automation アカウントのジョブ料金は、1 か月のジョブ実行時間の分数に基づいて請求されます。 既定で、500 分が Automation アカウントの無料ユニットとして含まれています。 ジョブの実行に必要なのは毎日数秒から約 1 分ですので、無料ユニットでカバーできます。
 
 | 含まれる無料ユニット (毎月) | 料金 |
@@ -52,8 +53,8 @@ Site Recovery による更新の管理は、次の方法で行えます。
 
 ### <a name="toggle-the-extension-update-settings-inside-the-vault"></a>コンテナー内の拡張機能の更新設定の切り替え
 
-1. コンテナー内で、**[管理]**  > **[Site Recovery インフラストラクチャ]** の順に移動します。
-2. **[For Azure Virtual Machines (Azure 仮想マシン用)]** > **[拡張機能の更新の設定]** で、**[Site Recovery に管理を許可]** トグルをオンにします。 手動で管理する場合は、これをオフにします。 
+1. コンテナー内で、 **[管理]**  >  **[Site Recovery インフラストラクチャ]** の順に移動します。
+2. **[For Azure Virtual Machines (Azure 仮想マシン用)]**  >  **[拡張機能の更新の設定]** で、 **[Site Recovery に管理を許可]** トグルをオンにします。 手動で管理する場合は、これをオフにします。 
 3. **[保存]** を選択します。
 
 ![拡張機能の更新の設定](./media/azure-to-azure-autoupdate/vault-toggle.png)
@@ -63,7 +64,7 @@ Site Recovery による更新の管理は、次の方法で行えます。
 
 
 > [!Note]
-> どちらのオプションでも、更新の管理に使用される Automation アカウントが通知されます。 コンテナーでこの機能を初めて使用する場合は、新しい Automation アカウントが作成されます。 それ以降は、同じコンテナー内でレプリケーションを有効にすると、以前に作成されたアカウントが使用されます。
+> どちらのオプションでも、更新の管理に使用される Automation アカウントが通知されます。 コンテナーでこの機能を初めて使用する場合は、既定で新しい Automation アカウントが作成されます。 あるいは、この設定をカスタマイズして、既存の Automation アカウントを選択できます。 それ以降は、同じコンテナー内でレプリケーションを有効にすると、以前に作成されたアカウントが使用されます。
 
 カスタムの Automation アカウントを使用する場合は、次のスクリプトを使用します。
 
@@ -508,7 +509,7 @@ Write-Tracing -Level Succeeded -Message ("Modify cloud pairing completed.") -Dis
 
      ![[レプリケートされたアイテム] ウィンドウ](./media/vmware-azure-install-mobility-service/replicated-item-notif.png)
 2. この通知を選択して、VM の選択ページを開きます。
-3. アップグレードする VM を選択してから、**[OK]** を選択します。 選択した VM ごとに、モビリティ サービスの更新が開始されます。
+3. アップグレードする VM を選択してから、 **[OK]** を選択します。 選択した VM ごとに、モビリティ サービスの更新が開始されます。
 
      ![[レプリケートされたアイテム] VM リスト](./media/vmware-azure-install-mobility-service/update-okpng.png)
 
@@ -523,7 +524,7 @@ Write-Tracing -Level Succeeded -Message ("Modify cloud pairing completed.") -Dis
 
    **推奨される操作:** サインインしたアカウントが共同作成者に割り当てられていることを確認してから、再試行します。 アクセス許可の割り当ての詳細については、「[リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#required-permissions)」の「必要なアクセス許可」セクションを参照してください。
  
-   自動更新を有効にした後に発生する問題の大半を修正するには、**[修復]** を選択します。 [修復] ボタンが使用できない場合は、拡張機能の更新設定ウィンドウに表示されているエラー メッセージを確認してください。
+   自動更新を有効にした後に発生する問題の大半を修正するには、 **[修復]** を選択します。 [修復] ボタンが使用できない場合は、拡張機能の更新設定ウィンドウに表示されているエラー メッセージを確認してください。
 
    ![拡張機能の更新設定に表示される Site Recovery サービスの [修復] ボタン](./media/azure-to-azure-autoupdate/repair.png)
 
@@ -534,3 +535,14 @@ Write-Tracing -Level Succeeded -Message ("Modify cloud pairing completed.") -Dis
 - **エラー**: 実行アカウントが見つかりません。 Azure Active Directory アプリケーション、サービス プリンシパル、ロール、Automation 証明書資産、Automation 接続資産のいずれかが削除されたか、作成されていません。または、証明書と接続の拇印が一致しません。 
 
     **推奨される操作:** 実行アカウントを削除してから[再作成](https://docs.microsoft.com/azure/automation/automation-create-runas-account)します。
+
+-  **エラー**: Automation アカウントで使用されている Azure 実行証明書の有効期限がまもなく切れます。 
+
+    実行アカウント用に作成された自己署名証明書は、作成日から 1 年後に有効期限が切れます。 期限切れになる前に、いつでも書き換えることができます。 メール通知にサインアップしている場合は、あなたの側でのアクションが必要なときにもメールを受信します。 このエラーは、有効期限日の 2 か月前に表示され、証明書の有効期限が切れた場合は重大なエラーに変わります。 証明書の期限が切れると、それを更新するまで自動更新は機能しません。
+
+   **推奨される操作:** この問題を解決するには、[修復] をクリックし、次に [証明書の更新] をクリックします。
+    
+   ![証明書の更新](media/azure-to-azure-autoupdate/automation-account-renew-runas-certificate.PNG)
+
+> [!NOTE]
+> 証明書を更新したら、現在の状態が更新されるようにページを最新の情報に更新してください。

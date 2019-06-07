@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 01/30/2019
 ms.author: maquaran
-ms.openlocfilehash: a878ab1937b06f06a27b18f793fc1bfa190969ed
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 56ec4d867abd5f2767c64b0800eeb017c0fb9923
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58090340"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65792998"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET Change Feed Processor SDK:ダウンロードおよびリリース ノート
 > [!div class="op_single_selector"]
@@ -40,6 +40,11 @@ ms.locfileid: "58090340"
 ## <a name="release-notes"></a>リリース ノート
 
 ### <a name="v2-builds"></a>v2 のビルド
+
+### <a name="a-name227227"></a><a name="2.2.7"/>2.2.7
+* ネットワークの問題などにより、すべてのリースの取得にリースの有効期限の間隔よりも長くかかるシナリオの負荷分散戦略を向上しました。
+  * このシナリオでは、負荷分散アルゴリズムによって、リースが誤って期限切れと見なされ、アクティブな所有者からリースが奪われていました。 その結果、不必要に多くのリースの再調整がトリガーされる可能性があります。
+  * 競合の再試行を回避すると同時に、所有者が変わっていない期限切れのリースを取得し、期限切れのリースの取得を次回の負荷分散のイテレーションを延期することで、この問題は修正されました。
 
 ### <a name="a-name226226"></a><a name="2.2.6"/>2.2.6
 * オブザーバーの例外の処理が改善されました。
@@ -161,8 +166,9 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 <br/>
 
-| Version | リリース日 | 提供終了日 |
+| バージョン | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [2.2.7](#2.2.7) |2019 年 5 月 14 日 |--- |
 | [2.2.6](#2.2.6) |2019 年 1 月 29 日 |--- |
 | [2.2.5](#2.2.5) |2018 年 12 月 13 日 |--- |
 | [2.2.4](#2.2.4) |2018 年 11 月 29 日 |--- |

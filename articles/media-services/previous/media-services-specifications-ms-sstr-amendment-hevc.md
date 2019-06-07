@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: johndeu;
-ms.openlocfilehash: b26252ddda7997bebd730bb4c1007f76b3e645a4
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: b9756920d25891dbe6b71fa24c06ed8f0c8eabb0
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58294707"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65963255"
 ---
 # <a name="smooth-streaming-protocol-ms-sstr-amendment-for-hevc"></a>HEVC のための Smooth Streaming Protocol (MS-SSTR) の変更 
 
@@ -44,7 +44,7 @@ HTTP 経由での MPEG-4 ([[MPEG4-RA])](https://go.microsoft.com/fwlink/?LinkId=
 > 
 >   **CENC**: Common Encryption、[ISO/IEC 23001-7] Second Edition で定義。
 > 
->   **デコード時間:** クライアントでサンプルをデコードするのに要する時間。[[ISO/IEC https://go.microsoft.com/fwlink/?LinkId=18369514496-12] で定義。](https://go.microsoft.com/fwlink/?LinkId=183695)
+>   **デコード時間:** [[ISO/IEC 14496-12:2008]](https://go.microsoft.com/fwlink/?LinkId=183695) で定義されている、クライアント上でサンプルのデコードにかかる時間。
 
 **フラグメント:** 1 つまたは複数の**サンプル**を構成する**メディア**の個別にダウンロード可能な単位。
 
@@ -52,11 +52,11 @@ HTTP 経由での MPEG-4 ([[MPEG4-RA])](https://go.microsoft.com/fwlink/?LinkId=
 > 
 >   **マニフェスト**: クライアントが**メディア**を要求することを許可する、**プレゼンテーション**に関するメタデータ。 **メディア:** **プレゼンテーション**を再生するためにクライアントによって使用されるオーディオ、ビデオ、およびテキストの圧縮データ。 **メディア フォーマット:** オーディオまたはビデオを圧縮された**サンプル**として表すために適切に定義されたフォーマット。
 > 
->   **プレゼンテーション** 1 つのムービーを再生するために必要なすべての**ストリーム**と関連メタデータのセット。 **要求:** [[RFC2616]](https://go.microsoft.com/fwlink/?LinkId=90372) で定義されている、クライアントからサーバーに送信される HTTP メッセージ。 **応答:** [[RFC2616]](https://go.microsoft.com/fwlink/?LinkId=90372) で定義されている、サーバーからクライアントに送信される HTTP メッセージ。
+>   **プレゼンテーション** 1 つのムービーを再生するために必要なすべての**ストリーム**と関連メタデータのセット。 **要求:** [[RFC2616]](https://go.microsoft.com/fwlink/?LinkId=90372) に定義されている、クライアントからサーバーに送信される HTTP メッセージ **応答:** [[RFC2616]](https://go.microsoft.com/fwlink/?LinkId=90372) で定義されている、サーバーからクライアントに送信される HTTP メッセージ
 > 
 >   **サンプル:** **メディア**が格納および処理される最小の基本単位 (フレームなど)。
 > 
->   **MAY、SHOULD、MUST、SHOULD NOT、MUST NOT:** これらの用語 (すべて大文字) は、[[RFC2119]](https://go.microsoft.com/fwlink/?LinkId=90317) に記載されているとおりに使用されています。 省略可能なビヘイビアーのすべてのステートメントでは、MAY、SHOULD、または SHOULD NOT のいずれかを使用します。
+>   **MAY、SHOULD、MUST、SHOULD NOT、MUST NOT:** これらの用語 (すべて大文字) は、[[RFC2119]](https://go.microsoft.com/fwlink/?LinkId=90317) の説明に従って使用されます。省略可能な動作のすべてのステートメントには MAY、SHOULD、または SHOULD NOT が使用されます。
 
 ## <a name="12-references"></a>1.2 References (参照)
 

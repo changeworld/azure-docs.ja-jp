@@ -11,12 +11,12 @@ author: tedway
 ms.reviewer: jmartens
 ms.date: 04/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 648dc462477570a692eff588c558a18a3121e4e7
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 1a690ea350ea98589e9134cd6f401c6ac3c58083
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025252"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65851023"
 ---
 # <a name="what-are-field-programmable-gate-arrays-fpga"></a>Field Programmable Gate Array (FPGA) とは
 
@@ -39,7 +39,7 @@ FPGA には、プログラミング可能なロジック ブロックの配列�
 
 Azure の FPGA は、リアルタイムの AI 計算を高速化するためにデータ サイエンティストや開発者が使用する、Intel の FPGA デバイスをベースにしています。 この FPGA 対応のアーキテクチャでは、パフォーマンス、柔軟性、スケールが提供され、Azure で使用できます。
 
-FPGA によって、リアルタイムの推論要求に関して短い待機時間を達成できるようになります。 非同期の要求 (バッチ処理) は必要ありません。 バッチ処理では、処理の必要なデータが多くなるため待機時間は長くなる場合があります。 ニューラル処理ユニットの実装にバッチ処理は必要ないので、待機時間は CPU および GPU プロセッサと比較して何倍も短くなる場合があります。
+FPGA によって、リアルタイムの推論 (つまりモデルのスコアリング) 要求に対して短い待機時間を達成できるようになります。 非同期の要求 (バッチ処理) は必要ありません。 バッチ処理では、処理の必要なデータが多くなるため待機時間は長くなる場合があります。 ニューラル処理ユニットの実装にバッチ処理は必要ないので、待機時間は CPU および GPU プロセッサと比較して何倍も短くなる場合があります。
 
 ### <a name="reconfigurable-power"></a>再構成可能な能力
 さまざまな種類の機械学習モデルに向けて FPGA を再構成できます。 この柔軟性により、最適な数値精度と使用されているメモリ モデルに基づいて、容易にアプリケーションを高速化できるようになっています。 FPGA は再構成可能なため、急速に変化する AI アルゴリズムの要件に遅れることなく対応できます。

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 10/11/2018
 ms.author: iainfou
-ms.openlocfilehash: 61968265670c53ebc4187c983996caa8c94a4cde
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 6516b11bf5d4d4c4e5406a3e6e0cce3189796d33
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65508014"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956399"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Azure Kubernetes サービス (AKS) で Azure CNI ネットワークを構成する
 
@@ -41,6 +41,7 @@ Azure CNI ネットワークを使用して構成されたクラスターには�
 > 必要な IP アドレス数では、アップグレードとスケーリング操作も考慮する必要があります。 固定数のノードのみをサポートするよう、IP アドレスを範囲設定した場合、ご使用のクラスターをアップグレードしたり、スケーリングすることはできません。
 >
 > - ご使用の AKS クラスターを**アップグレード**する場合、新しいノードはそのクラスターにデプロイされます。 サービスやワークロードは新しいノードで実行され、古いノードはクラスターから削除されます。 このローリング アップグレードの手順では、IP アドレスが最低で追加で 1 ブロック利用可能になっている必要があります。 その場合、ノードのカウントは `n + 1` になります。
+>   - Windows Server ノード プール (現在は AKS でプレビュー段階) を使用する場合、この考慮事項は特に重要です。 AKS の Windows Server ノードでは、Windows の更新プログラムを自動的に適用するのではなく、ノード プール上でアップグレードを実行します。 このアップグレードでは、最新の Window Server 2019 ベース ノード イメージとセキュリティ パッチを使用して新しいノードをデプロイします。 Windows Server ノード プールのアップグレードの詳細については、[AKS でのノード プールのアップグレード][nodepool-upgrade]に関するページを参照してください。
 >
 > - AKS クラスターを**スケーリングする**場合、新しいノードはそのクラスターにデプロイされます。 サービスとワークロードは新しいノードで実行開始されます。 クラスターでサポートするノードやポッド数をどのようにスケーリングするかを考慮して、使用する IP アドレスの範囲を考慮する必要があります。 アップグレード操作用に、ノードを追加で 1 つ含める必要もあります。 その場合、ノードのカウントは `n + number-of-additional-scaled-nodes-you-anticipate + 1` になります。
 
@@ -58,17 +59,17 @@ AKS クラスターの IP アドレス計画は、仮想ネットワーク、ノ
 
 ## <a name="maximum-pods-per-node"></a>ノードごとの最大ポッド数
 
-AKS クラスターのノードごとの最大ポッド数は 110 です。 ノードごとの "*既定*" の最大ポッド数は、*kubenet* ネットワークと *Azure CNI* ネットワークで、またクラスターのデプロイ方法によって異なります。
+AKS クラスターのノードごとの最大ポッド数は 250 です。 ノードごとの "*既定*" の最大ポッド数は、*kubenet* ネットワークと *Azure CNI* ネットワークで、またクラスターのデプロイ方法によって異なります。
 
 | デプロイ方法 | kubenet の既定値 | Azure CNI の既定値 | デプロイ時に構成可能 |
 | -- | :--: | :--: | -- |
 | Azure CLI | 110 | 30 | はい (最大 250) |
 | Resource Manager テンプレート | 110 | 30 | はい (最大 250) |
-| ポータル | 110 | 30 | いいえ  |
+| ポータル | 110 | 30 | いいえ |
 
 ### <a name="configure-maximum---new-clusters"></a>最大値の構成 - 新しいクラスター
 
-ノードごとの最大ポッド数を構成できるのは*クラスターのデプロイ時のみ*です。 Azure CLI または Resource Manager テンプレートを使用してデプロイする場合、次の `maxPods` ガイドライン内で必要に応じてノードあたりの最大ポッド値を設定できます。
+ノードごとの最大ポッド数を構成できるのは*クラスターのデプロイ時のみ*です。 Azure CLI または Resource Manager テンプレートを使用してデプロイする場合、ノードごとの最大ポッド数の値を最大 250 に設定できます。
 
 | ネットワーク | 最小値 | 最大値 |
 | -- | :--: | :--: |
@@ -76,8 +77,7 @@ AKS クラスターのノードごとの最大ポッド数は 110 です。 ノ�
 | Kubenet | 30 | 110 |
 
 > [!NOTE]
-> 上記の表の最小値は、AKS サービスによって厳密に強制されます。
-示されている最小値より小さい maxPods 値を設定することはできません。そうすると、クラスターが起動できなくなることがあります。
+> 上記の表の最小値は、AKS サービスによって厳密に強制されます。 示されている最小値より小さい maxPods 値を設定することはできません。そうすると、クラスターが起動できなくなることがあります。
 
 * **Azure CLI**:[az aks create][az-aks-create] コマンドを使用して、クラスターをデプロイするときに `--max-pods` 引数を指定します。 最大値は 250 です。
 * **Resource Manager テンプレート**:Resource Manager テンプレートを使用してクラスターをデプロイするときに、[ManagedClusterAgentPoolProfile] オブジェクトに `maxPods` プロパティを指定します。 最大値は 250 です。
@@ -91,9 +91,9 @@ AKS クラスターのノードごとの最大ポッド数は 110 です。 ノ�
 
 AKS クラスターを作成するときに、Azure CNI ネットワーク用に以下のパラメーターを構成できます。
 
-**仮想ネットワーク**:Kubernetes クラスターをデプロイする仮想ネットワーク。 クラスターに新しい仮想ネットワークを作成する場合は、*[新規作成]* を選択し、*[仮想ネットワークの作成]* セクションの手順に従います。 Azure 仮想ネットワークの制限とクォータについては、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits)」を参照してください。
+**仮想ネットワーク**:Kubernetes クラスターをデプロイする仮想ネットワーク。 クラスターに新しい仮想ネットワークを作成する場合は、 *[新規作成]* を選択し、 *[仮想ネットワークの作成]* セクションの手順に従います。 Azure 仮想ネットワークの制限とクォータについては、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits)」を参照してください。
 
-**サブネット**:クラスターをデプロイする仮想ネットワーク内のサブネット。 クラスターの仮想ネットワークに新しいサブネットを作成する場合は、*[新規作成]* を選択し、*[サブネットの作成]* セクションの手順に従います。 ハイブリッド接続する場合、ご使用の環境のその他の仮想ネットワークのアドレス範囲と重複しないようにする必要があります。
+**サブネット**:クラスターをデプロイする仮想ネットワーク内のサブネット。 クラスターの仮想ネットワークに新しいサブネットを作成する場合は、 *[新規作成]* を選択し、 *[サブネットの作成]* セクションの手順に従います。 ハイブリッド接続する場合、ご使用の環境のその他の仮想ネットワークのアドレス範囲と重複しないようにする必要があります。
 
 **Kubernetes サービスのアドレス範囲**:これは、Kubernetes によってクラスターの内部[サービス][services]に割り当てられる仮想 IP のセットです。 次の要件を満たす任意のプライベート アドレス範囲を使用できます。
 
@@ -114,7 +114,7 @@ Azure CLI を使って AKS クラスターを作成するときも、Azure CNI �
 
 最初に、AKS クラスターを参加させる既存のサブネットのサブネット リソース ID を取得します。
 
-```console
+```azurecli-interactive
 $ az network vnet subnet list \
     --resource-group myVnet \
     --vnet-name myVnet \
@@ -125,7 +125,7 @@ $ az network vnet subnet list \
 
 [az aks create][az-aks-create] コマンドに `--network-plugin azure` 引数を指定して実行し、高度なネットワークでクラスターを作成します。 前の手順で収集したサブネット ID で、`--vnet-subnet-id` の値を更新します。
 
-```azurecli
+```azurecli-interactive
 az aks create \
     --resource-group myResourceGroup \
     --name myAKSCluster \
@@ -133,7 +133,8 @@ az aks create \
     --vnet-subnet-id <subnet-id> \
     --docker-bridge-address 172.17.0.1/16 \
     --dns-service-ip 10.2.0.10 \
-    --service-cidr 10.2.0.0/24
+    --service-cidr 10.2.0.0/24 \
+    --generate-ssh-keys
 ```
 
 ## <a name="configure-networking---portal"></a>ネットワークを構成する - ポータル
@@ -211,3 +212,4 @@ AKS Engine で作成された Kubernetes クラスターは、[kubenet][kubenet]
 [aks-http-app-routing]: http-application-routing.md
 [aks-ingress-internal]: ingress-internal-ip.md
 [network-policy]: use-network-policies.md
+[nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57d3e955059724756eb7102c1b9fbbf55ed203ab
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 08794a7605ffbd3cd5d4b021b783f32afb190727
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58370450"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65861571"
 ---
 # <a name="how-to-enable-password-reset-from-windows-7-8-and-81"></a>方法:Windows 7、8、8.1 からパスワードのリセットを有効にする
 
@@ -60,6 +60,8 @@ Windows 10 マシンとは異なり、Windows 7、8、および 8.1 マシンに
 ![パスワードをリセットするための追加のセキュリティ情報が必要です](media/howto-sspr-windows-7-8/windows-7-sspr-need-security-info.png)
 
 Microsoft Authenticator アプリを使用した通知とコードでのパスワードのリセットは、この初期リリースでは機能しません。 ユーザーには、ポリシーの要件を満たす代替の方法が登録されている必要があります。
+
+お使いのマシンで複数のサード パーティの資格情報プロバイダーが有効な場合、ログオン画面に複数のユーザー プロファイルが表示されます。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 

@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: article
-ms.date: 05/06/2019
+ms.date: 05/20/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand global transit network architecture as it relates to Virtual WAN.
-ms.openlocfilehash: 8cda617ca60a17fceaaa818480ff9bbaef46c3fd
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: 114d11f98c6181a03f5ce52527b5e2efea468c42
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65414065"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65965972"
 ---
 # <a name="global-transit-network-architecture-and-virtual-wan"></a>グローバル トランジット ネットワーク アーキテクチャと Virtual WAN
 
@@ -48,7 +48,7 @@ Azure Virtual WAN のアーキテクチャでは、Azure リージョンがハ�
 
 ## <a name="crossregion"></a>リージョン間の接続
 
-大きな企業では、通常、クラウドのフットプリントは物理的なフットプリントに従います。 ほとんどの企業では、物理的なサイトやユーザーに最も近いリージョンからクラウドにアクセスします。 グローバル ネットワーク アーキテクチャの重要な原則の 1 つは、ネットワーク エンティティとエンドポイントの間のリージョン間接続を有効にすることです。 クラウドのフットプリントは、複数のリージョンにまたがることができます。 つまり、あるリージョンのクラウドに接続されているブランチからのトラフィックは、異なるリージョンにある別のブランチまたは VNet に到達できます。
+大きな企業では、通常、クラウドのフットプリントは物理的なフットプリントに従います。 ほとんどの企業では、物理的なサイトやユーザーに最も近いリージョンからクラウドにアクセスします。 グローバル ネットワーク アーキテクチャの重要な原則の 1 つは、ネットワーク エンティティとエンドポイントの間のリージョン間接続を有効にすることです。 クラウドのフットプリントは、複数のリージョンにまたがることができます。 つまり、あるリージョンのクラウドに接続されているブランチからのトラフィックは、現在プレビュー段階のハブ間接続を使用して、異なるリージョンにある別のブランチまたは VNet に到達できます。
 
 ## <a name="any"></a>Any-to-Any 接続
 
@@ -89,7 +89,7 @@ Azure Virtual WAN では、次のグローバル トランジット接続パス�
 
 ### <a name="vnetvnet"></a>VNet ピアリングを用いた VNet と VNet
 
-複数の VNet に実装されている多層アプリケーションをサポートするために VNet を相互接続するには、VNet ピアリングを使います。 Azure Virtual WAN 経由のVNet 対 VNet のトランジットのシナリオは、現在はサポートされていませんが、Azure のロードマップ上にはあります。 VNet を相互に接続する必要がある場合に推奨されるソリューションは、VNet ピアリングを介して VNet を接続することです。 VNet ピアリングの詳細については、[VNet ピアリングの概要](../virtual-network/virtual-network-peering-overview.md)に関するページを参照してください。
+複数の VNet に実装されている多層アプリケーションをサポートするために VNet を相互接続するには、VNet ピアリングを使います。 Azure Virtual WAN 経由のVNet 対 VNet のトランジットのシナリオは、現在はサポートされていませんが、Azure のロードマップ上にはあります。 VNet を相互に接続する必要がある場合に推奨されるソリューションは、VNet ピアリングを介して VNet を接続することです。 Virtual WAN によって自動的にゲートウェイ トランジットが有効になるので、[ゲートウェイ トランジット](../virtual-network/virtual-network-peering-overview.md#gateways-and-on-premises-connectivity) (VNet ピアリングのコンテキストの) は Virtual WAN には必要ありません。
 
 ### <a name="globalreach"></a>ExpressRoute Global Reach
 

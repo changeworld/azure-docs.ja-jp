@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 04/12/2019
 ms.author: helohr
-ms.openlocfilehash: 9696f3c32f8b903257e337191a5ce32645bfd198
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: d99f20efcebc3c9d97c5e2228e8b55bfd3f432b5
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65142445"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65834025"
 ---
 # <a name="connect-from-a-web-browser"></a>Web ブラウザーから接続する
 
@@ -38,6 +38,6 @@ Web クライアントでは、時間のかかるインストール プロセス
 ブラウザーで、[Windows Virtual Desktop Web クライアント](https://rdweb.wvd.microsoft.com/webclient)に移動し、ユーザー アカウントを使用してサインインします。
 
 >[!NOTE]
->Windows Virtual Desktop に使用するものとは異なる Azure AD アカウントを使用して既にサインインしている場合は、サインアウトするか、プライベート ブラウザー ウィンドウを使用する必要があります。
+>Windows Virtual Desktop に使用するアカウントとは別の Azure Active Directory アカウントで既にサインインしている場合は、サインアウトするか、プライベート ブラウザー ウィンドウを使用する必要があります。
 
-サインインすると、リソースの一覧が表示されます。 リソースを起動するには、**[すべてのリソース]** タブで通常のアプリと同様にそのリソースを選択します。
+サインインすると、リソースの一覧が表示されます。 リソースを起動するには、 **[すべてのリソース]** タブで通常のアプリと同様にそのリソースを選択します。

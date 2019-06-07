@@ -3,19 +3,19 @@ title: 言語サポート - Bing Custom Search API
 titleSuffix: Azure Cognitive Services
 description: Bing Custom Search API でサポートされる言語と地域の一覧。
 services: cognitive-services
-author: mikedodaro
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 09/25/2018
-ms.author: v-gedod
-ms.openlocfilehash: e395fc96c560c6c6c1671e472840ba0f2a316d98
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.author: aahi
+ms.openlocfilehash: 56870a63f42c10b48cc2d8f0ae2995862be46d8f
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60006779"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65790241"
 ---
 # <a name="language-and-region-support-for-the-bing-custom-search-api"></a>Bing Custom Search API の言語と地域のサポート
 
@@ -27,7 +27,7 @@ Bing Custom Search API では 30 を超える国/地域がサポートされ、�
 
 `Accept-Language` ヘッダーと `setLang` クエリ パラメーターは相互に排他的なので、両方指定することはできません。 詳細については、「[Accept-language](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference#acceptlanguage)」を参照してください。
 
-## <a name="countries"></a>国
+## <a name="countriesregions"></a>国/リージョン
 
 |国/リージョン|コード|
 |-------|----|

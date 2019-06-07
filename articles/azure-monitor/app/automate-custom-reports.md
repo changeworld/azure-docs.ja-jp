@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 06/25/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 37de2de18656f0f8ba85495b3fd72315e0bd885b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f57d80adc7c77f2d874d13a68214cd638a2ac2a0
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58113080"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65957296"
 ---
 # <a name="automate-custom-reports-with-azure-application-insights-data"></a>Azure Application Insights データを利用したカスタム レポートの自動化
 
@@ -78,15 +78,15 @@ availabilityResults
 
 ## <a name="application-insights-scheduled-digest-report"></a>Application Insights スケジュールされたダイジェスト レポート
 
-1. Azure Portal から、**[リソースの作成]** > **[コンピューティング]** > **[Function App]** の順に選択します。
+1. Azure Portal から、 **[リソースの作成]**  >  **[コンピューティング]**  >  **[Function App]** の順に選択します。
 
    ![Azure リソース Function App を作成する画面のスクリーンショット](./media/automate-custom-reports/function-app-01.png)
 
-2. アプリに関する適切な情報を入力し、_[作成]_ を選択します。 ([Application Insights] は、新しい Function App を Application Insights で監視する必要がある場合にのみ、_[オン]_ にします)
+2. アプリに関する適切な情報を入力し、 _[作成]_ を選択します。 ([Application Insights] は、新しい Function App を Application Insights で監視する必要がある場合にのみ、 _[オン]_ にします)
 
    ![Azure リソース Function App の設定を作成する画面のスクリーンショット](./media/automate-custom-reports/function-app-02.png)
 
-3. 新しい Function App のデプロイが完了したら、**[リソースに移動]** を選択します。
+3. 新しい Function App のデプロイが完了したら、 **[リソースに移動]** を選択します。
 
 4. **[新しい関数]** を選択します。
 
@@ -94,13 +94,16 @@ availabilityResults
 
 5. **_Application Insights スケジュールされたダイジェスト テンプレート_** を選択します。
 
+     > [!NOTE]
+     > 既定では、関数アプリはランタイム バージョン 2.x で作成されます。 Application Insights のスケジュール済みダイジェスト テンプレートを使用するには、[Azure Functions ランタイム バージョン 1.x をターゲットにする](https://docs.microsoft.com/azure/azure-functions/set-runtime-version)必要があります。
+
    ![新しい関数の Application Insights テンプレートのスクリーン ショット](./media/automate-custom-reports/function-app-04.png)
 
-6. レポートの適切な受信者の電子メール アドレスを入力し、**[作成]** を選択します。
+6. レポートの適切な受信者の電子メール アドレスを入力し、 **[作成]** を選択します。
 
    ![関数の設定のスクリーンショット](./media/automate-custom-reports/function-app-05.png)
 
-7. 作成した **Function App** > **[プラットフォーム機能]** > **[アプリケーション設定]** を選択します。
+7. 作成した **Function App** >  **[プラットフォーム機能]**  >  **[アプリケーション設定]** を選択します。
 
     ![Azure 関数のアプリケーション設定のスクリーンショット](./media/automate-custom-reports/function-app-07.png)
 
@@ -108,7 +111,7 @@ availabilityResults
 
      ![関数の統合インターフェイスのスクリーンショット](./media/automate-custom-reports/function-app-08.png)
     
-    (AI_ の値は、レポート対象となる Application Insights リソースの [API アクセス] で確認できます。 Application Insights API キーがない場合は、**[API キーの作成]** を使って作成できます。)
+    (AI_ の値は、レポート対象となる Application Insights リソースの [API アクセス] で確認できます。 Application Insights API キーがない場合は、 **[API キーの作成]** を使って作成できます。)
     
    * AI_APP_ID = アプリケーション ID
    * AI_APP_KEY = API キー
@@ -137,7 +140,7 @@ availabilityResults
 
 以下の手順は、SendGrid アカウントをまだ構成していない場合にのみ行います。
 
-1. Azure Portalから **[Create a resource]\(リソースの作成\)** を選択し、**[SendGrid Email Delivery]\(SendGrid 電子メール配信\)** を検索して **[作成]** をクリックし、SendGrid 固有の作成指示を入力します。 
+1. Azure Portalから **[Create a resource]\(リソースの作成\)** を選択し、 **[SendGrid Email Delivery]\(SendGrid 電子メール配信\)** を検索して **[作成]** をクリックし、SendGrid 固有の作成指示を入力します。 
 
      ![SendGrid リソースを作成する画面のスクリーンショット](./media/automate-custom-reports/function-app-13.png)
 
@@ -145,11 +148,11 @@ availabilityResults
 
      ![API キーを設定する画面のスクリーンショット](./media/automate-custom-reports/function-app-14.png)
 
-3. これにより、SendGrid のサイトが起動します。 **[設定]** > **[API キー]** を選択します。
+3. これにより、SendGrid のサイトが起動します。 **[設定]**  >  **[API キー]** を選択します。
 
      ![API キー アプリを作成して表示する画面のスクリーンショット](./media/automate-custom-reports/function-app-15.png)
 
-4. API キーを作成し、**[Create & View]\(作成して表示\)** を選択します (SendGrid のドキュメントでアクセス制限に関する説明を参照し、API キーに対してどのレベルのアクセス許可が適切かを確認してください。 ここでは、あくまでも例としてフル アクセスを選択しています。)
+4. API キーを作成し、 **[Create & View]\(作成して表示\)** を選択します (SendGrid のドキュメントでアクセス制限に関する説明を参照し、API キーに対してどのレベルのアクセス許可が適切かを確認してください。 ここでは、あくまでも例としてフル アクセスを選択しています。)
 
    ![フル アクセスのスクリーンショット](./media/automate-custom-reports/function-app-16.png)
 

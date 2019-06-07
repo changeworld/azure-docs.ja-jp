@@ -17,12 +17,12 @@ ms.topic: article
 ms.date: 10/25/2018
 ms.author: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7e665f3124296392c8138f4f2bd3632b56e53de
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 88e825ebc08b4bfbd65f81b7b2480ead9be314b5
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65230932"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65954950"
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>Azure Active Directory の Enterprise State Roaming を有効にする
 Enterprise State Roaming は、Azure AD Premium または Enterprise Mobility + Security (EMS) ライセンスを所有しているすべての組織が利用できます。 Azure AD サブスクリプションの取得方法の詳細について、[Azure AD の製品ページ](https://azure.microsoft.com/services/active-directory)を参照してください。
@@ -42,7 +42,7 @@ Enterprise State Roaming を有効にすると、組織には、Azure Informatio
 Windows 10 デバイスで Enterprise State Roaming サービスを使用するには、そのデバイスを Azure AD の ID で認証する必要があります。 デバイスが Azure AD に参加している場合、そのユーザーの主要なサインイン ID は Azure AD の ID です。追加の構成は必要ありません。 デバイスがオンプレミスの Active Directory を使用している場合、IT 管理者は [ハイブリッド Azure Active Directory 参加済みデバイスを構成する](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-manual-steps)必要があります。 
 
 ## <a name="data-storage"></a>データ ストレージ
-Enterprise State Roaming のデータは、Azure Active Directory のインスタンスに設定されている国/リージョンの値と最も適合する 1 つ以上の [Azure リージョン](https://azure.microsoft.com/regions/)でホストされます。 Enterprise State Roaming データは、北米、EMEA、および APAC という主な 3 つの地域リージョンに基づいてパーティション分割されます。 テナントの Enterprise State Roaming データは、地域リージョンでローカルに配置されますが、リージョン間ではレプリケートされません。  例: 
+Enterprise State Roaming のデータは、Azure Active Directory のインスタンスに設定されている国/リージョンの値と最も適合する 1 つ以上の [Azure リージョン](https://azure.microsoft.com/regions/)でホストされます。 Enterprise State Roaming データは、北米、EMEA、および APAC という主な 3 つの地域リージョンに基づいてパーティション分割されます。 テナントの Enterprise State Roaming データは、地域リージョンでローカルに配置されますが、リージョン間ではレプリケートされません。  例:
 
 国/リージョンの値 | データがホストされる場所
 ---------------------|-------------------------
@@ -60,9 +60,9 @@ APAC の国/地域 (オーストラリア、ニュージーランドなど) | �
 
 1. **[Azure Active Directory]** &gt; **[ユーザー]** &gt; **[すべてのユーザー]** の順に選択します。
 
-1. ユーザーを選択し、**[デバイス]** を選択します。
+1. ユーザーを選択し、 **[デバイス]** を選択します。
 
-1. **[表示]** で、**[Devices syncing settings and app data]\(設定やアプリ データを同期しているデバイス)** を選択して、同期状態を表示します。
+1. **[表示]** で、 **[Devices syncing settings and app data]\(設定やアプリ データを同期しているデバイス)** を選択して、同期状態を表示します。
   
    ![デバイス同期データ設定のイメージ](./media/enterprise-state-roaming-enable/sync-status.png)
   
@@ -81,7 +81,7 @@ Enterprise State Roaming を使用して Microsoft クラウドと同期され�
 * **要求による削除**:Azure AD 管理者の方は、特定のユーザーのデータまたは設定データを手動で削除する必要がある場合、[Azure サポート](https://azure.microsoft.com/support/)にチケットを提出してください。 
 
 ### <a name="stale-data-deletion"></a>古いデータの削除
-1 年間 ("リテンション期間") にわたってアクセスされていないデータは古いデータと見なされ、Microsoft クラウドから削除される場合があります。 リテンション期間は変更されることがありますが、90 日未満になることはありません。 Windows またはアプリケーションの特定の設定のまとまりや、ユーザーの全設定が古いデータと見なされることもあります。 例: 
+1 年間 ("リテンション期間") にわたってアクセスされていないデータは古いデータと見なされ、Microsoft クラウドから削除される場合があります。 リテンション期間は変更されることがありますが、90 日未満になることはありません。 Windows またはアプリケーションの特定の設定のまとまりや、ユーザーの全設定が古いデータと見なされることもあります。 例:
 
 * 特定の設定全体にデバイスからのアクセスがない場合 (アプリケーションがデバイスから削除された場合や、特定のユーザーの全デバイスで "テーマ" などの設定グループが無効にされた場合など)、リテンション期間の経過後その設定全体が古いと見なされ、削除される可能性があります。 
 * ユーザーがそのすべてのデバイスで設定の同期をオフにした場合、いずれの設定データもアクセスされなくなり、リテンション期間の経過後にそのユーザーのすべての設定データが古いと見なされ、削除される可能性があります。 

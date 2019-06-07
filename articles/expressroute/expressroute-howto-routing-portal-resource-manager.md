@@ -1,23 +1,23 @@
 ---
 title: 回線のピアリングを構成する - ExpressRoute:Azure | Microsoft Docs
-description: この記事では、ExpressRoute 回線のプライベート、パブリックおよび Microsoft ピアリングを作成し、プロビジョニングする手順について説明します。 この記事では、回線のピアリングの状態確認、更新、または削除の方法も示します。
+description: この記事では、ExpressRoute のプライベートおよび Microsoft ピアリングを作成してプロビジョニングする手順を説明します。 この記事では、回線のピアリングの状態確認、更新、または削除の方法も示します。
 services: expressroute
-author: cherylmc
+author: mialdrid
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 01/29/2019
-ms.author: cherylmc
+ms.date: 05/20/2019
+ms.author: mialdrid
 ms.custom: seodec18
-ms.openlocfilehash: 6d1ce56ef66d224b89f49a00c2883ebbf22a5745
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: f6061710fb15d4183bd42a82c4bd269a69fc9be2
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58622027"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65964446"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit"></a>ExpressRoute 回線のピアリングの作成と変更を行う
 
-この記事では、Azure Portal を使って、Resource Manager デプロイ モデルで ExpressRoute 回線のルーティング構成を作成し、管理します。 また、ExpressRoute 回線の状態確認、ピアリングの更新、または削除およびプロビジョニング解除を行うこともできます。 別の方法を使用して回線を操作する場合は、次の一覧から記事を選択してください。
+この記事は、Azure portal を使用して、Azure Resource Manager (ARM) ExpressRoute 回線のルーティング構成を作成して管理するときに役立ちます。 また、ExpressRoute 回線の状態確認、ピアリングの更新、または削除およびプロビジョニング解除を行うこともできます。 別の方法を使用して回線を操作する場合は、次の一覧から記事を選択してください。
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](expressroute-howto-routing-portal-resource-manager.md)
@@ -29,12 +29,12 @@ ms.locfileid: "58622027"
 > * [PowerShell (クラシック)](expressroute-howto-routing-classic.md)
 > 
 
-ExpressRoute 回線用に 1 つ、2 つ、または 3 つすべてのピアリング (Azure プライベート、Azure パブリックおよび Microsoft) を構成することができます。 ピアリングは任意の順序で構成することができます。 ただし、各ピアリングの構成は必ず一度に 1 つずつ完了するようにしてください。 ルーティング ドメインとピアリングの詳細については、[回線とピアリングについて](expressroute-circuit-peerings.md)の記事を参照してください。
+ExpressRoute 回線に Azure プライベートおよび Microsoft ピアリングを構成できます (Azure パブリック ピアリングは新しい回線では非推奨です)。 ピアリングは任意の順序で構成することができます。 ただし、各ピアリングの構成は必ず一度に 1 つずつ完了するようにしてください。 ルーティング ドメインとピアリングの詳細については、[回線とピアリングについて](expressroute-circuit-peerings.md)の記事を参照してください。
 
 ## <a name="configuration-prerequisites"></a>構成の前提条件
 
 * 構成を開始する前に必ず、[前提条件](expressroute-prerequisites.md)ページ、[ルーティングの要件](expressroute-routing.md)ページおよび[ワークフロー](expressroute-workflows.md) ページを確認してください。
-* アクティブな ExpressRoute 回線が必要です。 手順に従って、[ExpressRoute 回線を作成](expressroute-howto-circuit-portal-resource-manager.md)し、接続プロバイダー経由で回線を有効にしてから続行してください。 以下のセクションのコマンドレットを実行するには、ExpressRoute 回線を、プロビジョニングおよび有効化されている状態にする必要があります。
+* アクティブな ExpressRoute 回線が必要です。 手順に従って、[ExpressRoute 回線を作成](expressroute-howto-circuit-portal-resource-manager.md)し、接続プロバイダー経由で回線を有効にしてから続行してください。 ピアリングを構成するためには、ExpressRoute 回線がプロビジョニングされて有効な状態になっている必要があります。 
 * 共有キー/MD5 ハッシュを使用する場合は、必ずトンネルの両側でこれを使用し、英数字の文字数を最大 25 文字に制限してください。 特殊文字はサポートされていません。 
 
 次の手順は、サービス プロバイダーが提供するレイヤー 2 接続サービスで作成された回線にのみ適用されます。 サービス プロバイダーが提供する管理対象レイヤー 3 サービス (MPLS など、通常は IP VPN) を使う場合、接続プロバイダーがユーザーに代わってルーティングを構成して管理します。 
@@ -55,7 +55,7 @@ ExpressRoute 回線用に 1 つ、2 つ、または 3 つすべてのピアリ�
 
 ### <a name="to-create-microsoft-peering"></a>Microsoft ピアリングを作成するには
 
-1. ExpressRoute 回線を構成します。 続行する前に、接続プロバイダーが回線を完全にプロビジョニングしていることを確認します。 接続プロバイダーが管理対象レイヤー 3 サービスを提供する場合は、Microsoft ピアリングを有効にするように接続プロバイダーに依頼できます。 その場合は、次のセクションにリストされている手順に従う必要はありません。 ただし、接続プロバイダーがルーティングを管理しない場合は、回線を作成した後、次の手順を使用して、構成を続行します。
+1. ExpressRoute 回線を構成します。 続行する前に、接続プロバイダーが回線を完全にプロビジョニングしていることを確認します。 接続プロバイダーが管理対象レイヤー 3 サービスを提供する場合は、Microsoft ピアリングを有効にするように接続プロバイダーに依頼できます。 その場合は、次のセクションにリストされている手順に従う必要はありません。 ただし、お使いの接続プロバイダーがお客様に代わってルーティングを管理しない場合は、回線を作成した後、次の手順を続行してください。
 
    ![Microsoft ピアリングを一覧表示する](./media/expressroute-howto-routing-portal-resource-manager/listprovisioned.png)
 2. 回路の Microsoft ピアリングを構成する 続行する前に、次の情報を確認してください。
@@ -91,7 +91,7 @@ ExpressRoute 回線用に 1 つ、2 つ、または 3 つすべてのピアリ�
 
 ### <a name="getmsft"></a>Microsoft ピアリングの詳細を表示するには
 
-ピアリングを選択して、Azure パブリック ピアリングのプロパティを表示することができます。
+Microsoft ピアリングを選択して、そのピアリングのプロパティを表示することができます。
 
 ![](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft3.png)
 
@@ -113,7 +113,7 @@ ExpressRoute 回線用に 1 つ、2 つ、または 3 つすべてのピアリ�
 
 ### <a name="to-create-azure-private-peering"></a>Azure プライベート ピアリングを作成するには
 
-1. ExpressRoute 回線を構成します。 続行する前に、接続プロバイダーが回線を完全にプロビジョニングしていることを確認します。 接続プロバイダーが管理対象レイヤー 3 サービスを提供する場合は、Azure プライベート ピアリングを有効にするように接続プロバイダーに依頼できます。 その場合は、次のセクションにリストされている手順に従う必要はありません。 ただし、接続プロバイダーがルーティングを管理しない場合は、回線を作成した後、次の手順を使用して、構成を続行します。
+1. ExpressRoute 回線を構成します。 続行する前に、接続プロバイダーが回線を完全にプロビジョニングしていることを確認します。 接続プロバイダーが管理対象レイヤー 3 サービスを提供する場合は、Azure プライベート ピアリングを有効にするように接続プロバイダーに依頼できます。 その場合は、次のセクションにリストされている手順に従う必要はありません。 ただし、お使いの接続プロバイダーがお客様に代わってルーティングを管理しない場合は、回線を作成した後、次の手順を続行してください。
 
    ![list](./media/expressroute-howto-routing-portal-resource-manager/listprovisioned.png)
 2. 回線用に Azure プライベート ピアリングを構成します。 次の手順に進む前に、以下のものがそろっていることを確認します。
@@ -159,6 +159,10 @@ ExpressRoute 回線用に 1 つ、2 つ、または 3 つすべてのピアリ�
 ## <a name="public"></a>Azure パブリック ピアリング
 
 このセクションでは、ExpressRoute 回線用の Azure パブリック ピアリング構成を作成、取得、更新、および削除します。
+
+> [!Note]
+> Azure パブリック ピアリングは、新しい回線では非推奨です。 詳細については、[ExpressRoute のピアリング](expressroute-circuit-peerings.md)に関する記事を参照してください。
+>
 
 ### <a name="to-create-azure-public-peering"></a>Azure パブリック ピアリングを作成するには
 

@@ -9,12 +9,12 @@ ms.date: 10/24/2018
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 9fd594fb264ff0467cc315f59927cd157068d522
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 3d4c40e172352fc2d92ea5523cad2aebe5468e1e
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65146195"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65961428"
 ---
 # <a name="zone-redundant-storage-zrs-highly-available-azure-storage-applications"></a>ゾーン冗長ストレージ (ZRS):高可用 Azure Storage アプリケーション
 [!INCLUDE [storage-common-redundancy-ZRS](../../../includes/storage-common-redundancy-zrs.md)]
@@ -32,10 +32,10 @@ ZRS は、次のリージョンで一般公開されています。
 - フランス中部
 - 東日本
 - 英国南部
+- 米国中部
 - 米国東部
 - 米国東部 2
 - 米国西部 2
-- 米国中部
 
 Microsoft は、今後も ZRS が有効な Azure リージョンを増やす予定です。 新しいリージョンの情報については、[Azure サービスの更新情報](https://azure.microsoft.com/updates/)に関するページを定期的に参照してください。
 
@@ -75,17 +75,18 @@ ZRS に移行するとき、主に 2 つの選択肢があります。
 - 同じリージョン内のデータのみ移行できます。 ソース アカウントとは異なるリージョンにある ZRS アカウントにデータを移行する場合は、手動の移行を実行する必要があります。
 - Standard ストレージ アカウントの種類のみがライブ マイグレーションをサポートします。 Premium ストレージ アカウントは手動で移行する必要があります。
 - ZRS から LRS、GRS、RA-GRS にライブ マイグレーションすることはできません。 新しいストレージ アカウントか既存のストレージ アカウントにデータを手動で移動する必要があります。
+- マネージド ディスクは LRS にのみ使用できます。ZRS に移行することはできません。 可用性セットとの統合については、[Azure マネージド ディスクの概要](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#integration-with-availability-sets)に関する記事を参照してください。 Standard SSD Managed Disks のスナップショットとイメージを、Standard HDD ストレージに保存できます。また、[LRS オプションと ZRS オプションから選択](https://azure.microsoft.com/pricing/details/managed-disks/)できます。 
 
 ライブ マイグレーションは [Azure サポート ポータル](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)から要求できます。 ポータルから、ZRS に変換するストレージ アカウントを選択します。
 1. **[新しいサポート要求]** を選択します
-2. アカウント情報に基づき **[基本]** に入力します。 **[サービス]** セクションで、**[Storage Account Management]\(ストレージ アカウントの管理)** と ZRS に変換するリソースを選択します。 
+2. アカウント情報に基づき **[基本]** に入力します。 **[サービス]** セクションで、 **[Storage Account Management]\(ストレージ アカウントの管理)** と ZRS に変換するリソースを選択します。 
 3. **[次へ]** を選択します。 
 4. **[Problem]\(問題)** セクションで以下の値を指定します。 
-    - **[重大度]**:既定値をそのまま使用します。
-    - **[問題の種類]**:**[データ移行]** を選択します。
-    - **[カテゴリ]**:**[Migrate to ZRS within a region]\(リージョン内の ZRS への移行\)** を選択します。
-    - **[タイトル]**:**ZRS アカウント移行**などのわかりやすいタイトルを入力します。
-    - **[詳細]**:**[詳細]** ボックスには、たとえば、\_\_ リージョンで [LRS、GRS] から ZRS に移行するなどの詳細情報を入力します。 
+    - **[重大度]** :既定値をそのまま使用します。
+    - **[問題の種類]** : **[データ移行]** を選択します。
+    - **[カテゴリ]** : **[Migrate to ZRS within a region]\(リージョン内の ZRS への移行\)** を選択します。
+    - **[タイトル]** :**ZRS アカウント移行**などのわかりやすいタイトルを入力します。
+    - **[詳細]** : **[詳細]** ボックスには、たとえば、\_\_ リージョンで [LRS、GRS] から ZRS に移行するなどの詳細情報を入力します。 
 5. **[次へ]** を選択します。
 6. **[連絡先情報]** ブレードの連絡先情報が正しいことを確認します。
 7. **作成** を選択します。

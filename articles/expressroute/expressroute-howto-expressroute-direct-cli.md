@@ -5,15 +5,15 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 2/25/2019
+ms.date: 05/20/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: c4998712d77771a5600c06183a76254548289372
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ebfe3db43de87e67ad05ed8cb9f5812b5ded04e0
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58080084"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65965914"
 ---
 # <a name="configure-expressroute-direct-by-using-the-azure-cli"></a>Azure CLI の使用による ExpressRoute Direct の構成
 
@@ -280,8 +280,9 @@ Azure ExpressRoute Direct を使用すると、世界中に戦略的に分散さ
 
 ExpressRoute Direct では、ここで説明するシナリオをサポートするためだけの回線帯域幅を追加で使用できます。 帯域幅は、40 Gbps および 100 Gbps です。
 
-Standard または Premium のいずれかの回線を作成できます。 Standard 回線は、サービス料金に含まれます。 Premium 回線の料金は、選択した帯域幅によって異なります。 作成できる回線は、従量制課金の回線のみです。 ExpressRoute Direct では、無制限の回線はサポートされません。
+**SkuTier** には Local、Standard、または Premium を使用できます。
 
+ExpressRoute Direct では無制限がサポートされていないため、**SkuFamily** には MeteredData のみを使用できます。
 ExpressRoute Direct リソース上に回線を作成します。
 
   ```azurecli

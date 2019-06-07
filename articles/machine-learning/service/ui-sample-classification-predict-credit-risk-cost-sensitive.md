@@ -1,7 +1,7 @@
 ---
 title: 分類:信用リスクを予測する (費用重視)
 titleSuffix: Azure Machine Learning service
-description: このビジュアル インターフェイス サンプルの実験では、カスタマイズされた Python スクリプトを使用して、費用重視の二項分類を実行する方法を示します。 与信取引申請書で提供された情報に基づいて、信用リスクを予測します。
+description: この記事では、ビジュアル インターフェイスを使用して、複雑な機械学習実験を構築する方法について説明します。 カスタムの Python スクリプトを実装し、複数のモデルを比較して最適なオプションを選択する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,26 +9,25 @@ ms.topic: article
 author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
-ms.date: 05/02/2019
-ms.openlocfilehash: 433c258f86705f66e0163100407be7996d68bc6b
-ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
+ms.date: 05/10/2019
+ms.openlocfilehash: d714756c19b94eafc40cc0dbeffbc07704e8f94e
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65440959"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65787808"
 ---
 # <a name="sample-4---classification-predict-credit-risk-cost-sensitive"></a>サンプル 4 - 分類:信用リスクを予測する (費用重視)
 
-このビジュアル インターフェイス サンプルの実験では、カスタマイズされた Python スクリプトを使用して、費用重視の二項分類を実行する方法を示します。 肯定的サンプルを誤って分類した場合のコストは、否定的サンプルを誤って分類した場合のコストの 5 倍です。
+この記事では、ビジュアル インターフェイスを使用して、複雑な機械学習実験を構築する方法について説明します。 Python スクリプトを使用してカスタム ロジックを実装し、複数のモデルを比較して最適なオプションを選択する方法について説明します。
 
-このサンプルでは、与信取引申請書で提供された情報に基づき、誤分類のコストを考慮に入れて、信用リスクを予測します。
+このサンプルでは、分類器をトレーニングして、クレジット履歴、年齢、クレジット カードの枚数などのクレジット アプリケーション情報を使用して信用リスクを予測します。 ただし、この記事の概念を適用して、独自の機械学習の問題に取り組むことができます。
 
-この実験では、この問題を解決するモデルを生成するため、次の 2 つの異なるアプローチを比較します。
+機械学習を始めたばかりの場合は、まず[基本的な分類器のサンプル](ui-sample-classification-predict-credit-risk-basic.md)の記事を参照してください。
 
-- 元のデータセットを使ってトレーニングする。
-- レプリケートされたデータセットを使ってトレーニングする。
+この実験の完成したグラフを次に示します。
 
-どちらのアプローチでも、レプリケーションでテスト データセットを使用してモデルを評価し、結果がコスト関数と一致していることを確認します。 両方のアプローチで 2 つの分類子、**Two-Class Support Vector Machine (2 クラス サポート ベクター マシン)** と **Two-Class Boosted Decision Tree (2 クラス ブースト デシジョン ツリー)** をテストします。
+[![実験のグラフ](media/ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png)](media/ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -38,15 +37,18 @@ ms.locfileid: "65440959"
 
     ![実験を開く](media/ui-sample-classification-predict-credit-risk-cost-sensitive/open-sample4.png)
 
-## <a name="related-sample"></a>関連サンプル
-
-誤分類のコストを調整せずに、この実験と同じ問題を解決するための基本的な実験については、「[Sample 3 - Classification:Credit Risk Prediction (Basic)](ui-sample-classification-predict-churn.md)」(サンプル 3 - 分類:信用リスクを予測する (基本)) を参照してください。
-
 ## <a name="data"></a>データ
 
 UC Irvine リポジトリから German Credit Card のデータセットを使用します。 このデータセットには、20 個のフィーチャーと 1 個のラベルを含む 1,000 個のサンプルが含まれています。 サンプルはそれぞれ人を表します。 20 個のフィーチャーには、数値とカテゴリのフィーチャーが含まれています。 データセットの詳細については、[UCI Web サイト](https://archive.ics.uci.edu/ml/datasets/Statlog+%28German+Credit+Data%29)を参照してください。 最後の列は信用リスクを表すラベルで、使用できるのは次の 2 つの値だけです: 高信用リスク = 2、および低信用リスク = 1。
 
 ## <a name="experiment-summary"></a>実験の概要
+
+この実験では、この問題を解決するモデルを生成するため、次の 2 つの異なるアプローチを比較します。
+
+- 元のデータセットを使ってトレーニングする。
+- レプリケートされたデータセットを使ってトレーニングする。
+
+どちらのアプローチでも、レプリケーションでテスト データセットを使用してモデルを評価し、結果がコスト関数と一致していることを確認します。 両方のアプローチで 2 つの分類子、**Two-Class Support Vector Machine (2 クラス サポート ベクター マシン)** と **Two-Class Boosted Decision Tree (2 クラス ブースト デシジョン ツリー)** をテストします。
 
 低リスクのサンプルを高リスクとして誤って分類した場合のコストは 1 で、高リスクのサンプルを低リスクとして誤って分類した場合のコストは 5 です。 この誤分類コストを考慮するため、**Execute Python Script (Python スクリプトの実行)** モジュールを使用します。
 
@@ -58,7 +60,7 @@ UC Irvine リポジトリから German Credit Card のデータセットを使�
 
 まず、**Metadata Editor (メタデータ エディター)** モジュールを使用して列名を追加し、既定の列名を UCI サイト上のデータセットの説明で取得したものよりわかりやすい名前に置き換えます。 **Metadata Editor (メタデータ エディター)** の **[New column]\(新しい列\)** 名のフィールドに、新しい列名をコンマ区切り値として指定します。
 
-次に、リスク予測モデルを開発するために使用するトレーニングとテストのセットを生成します。 **Split Data (データの分割)** モジュールを使用して、元のデータセットを同じサイズのトレーニングとテストのセットに分割します。 等しいサイズのセットを作成するため、**[Fraction of rows in the first output dataset]\(最初の出力データセットにおける列の割合\)** を 0.5 に設定します。
+次に、リスク予測モデルを開発するために使用するトレーニングとテストのセットを生成します。 **Split Data (データの分割)** モジュールを使用して、元のデータセットを同じサイズのトレーニングとテストのセットに分割します。 等しいサイズのセットを作成するため、 **[Fraction of rows in the first output dataset]\(最初の出力データセットにおける列の割合\)** を 0.5 に設定します。
 
 ### <a name="generate-the-new-dataset"></a>新しいデータセットを生成する
 
@@ -71,7 +73,7 @@ UC Irvine リポジトリから German Credit Card のデータセットを使�
 
 高リスクのデータをレプリケートするには、この Python コードを **Execute Python Script (Python スクリプトの実行)** モジュールに挿入します。
 
-```
+```Python
 import pandas as pd
 
 def azureml_main(dataframe1 = None, dataframe2 = None):
@@ -104,12 +106,11 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
 
 1. **Two-Class Support Vector Machine (2 クラス サポート ベクター マシン)** と **Two-Class Boosted Decision Tree (2 クラス ブースト デシジョン ツリー)** を使用して学習アルゴリズムを初期化します。
 1. **Train Model (モデルのトレーニング)** を使用して、データにアルゴリズムを適用し、実際のモデルを作成します。
-3. **Score Model (モデルのスコア付け)** を使用して、テスト サンプルを使用してスコアを生成しまうす。
+1. **Score Model (モデルのスコア付け)** を使用して、テスト サンプルを使用してスコアを生成しまうす。
 
 次の図は、この実験の一部を示したもので、ここでは 2 つの異なる SVM モデルをトレーニングするために元のトレーニング セットとレプリケートされたトレーニング セットが使用されています。 **Train Model (モデルのトレーニング)** はトレーニング セットに接続され、**Score Model (モデルのスコア付け)** はテスト セットに接続されています。
 
 ![実験グラフ](media/ui-sample-classification-predict-credit-risk-cost-sensitive/score-part.png)
-
 
 実験の評価ステージでは、これらの 4 つのモデルの精度をそれぞれ計算します。 この実験のために、**Evaluate Model (モデルの評価)** を使用して同じ誤分類のコストを持つサンプルを比較します。
 
@@ -121,7 +122,7 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
 
 **Evaluate Model (モデルの評価)** モジュールは、さまざまなメトリックを含む単一の行を持つテーブルを生成します。 精度の結果の 1 つのセットを作成するには、最初に **[Add Rows]\(行の追加\)** を使用して結果を 1 つのテーブルに結合します。 次に、**Execute Python Script (Python スクリプトの実行)** モジュールで次の Python スクリプトを使用して、結果のテーブル内の各行に対してモデル名とトレーニング アプローチを追加します。
 
-```
+```Python
 import pandas as pd
 
 def azureml_main(dataframe1 = None, dataframe2 = None):
@@ -138,7 +139,6 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
     result = pd.concat([new_cols, dataframe1], axis=1)
     return result,
 ```
-
 
 ## <a name="results"></a>結果
 

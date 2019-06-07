@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/01/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 9d7fd41657394e006957392f37ec1a258b33c8c6
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: beee76bdc443b3a66b4500b83d228075b84eed1e
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65413881"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65864761"
 ---
 # <a name="deployment-faqs-for-web-apps-in-azure"></a>Azure の Web Apps のデプロイに関するよくあるご質問
 
@@ -38,9 +38,9 @@ Web アプリのコードを発行する方法はいくつかあります。
 
 詳細については、[App Service へのアプリのデプロイ](deploy-local-git.md)に関するページをご覧ください。
 
-## <a name="i-see-an-error-message-when-i-try-to-deploy-from-visual-studio-how-do-i-resolve-this"></a>Visual Studio からデプロイしようとするとエラー メッセージが表示されます。 解決するにはどうすればよいですか?
+## <a name="i-see-an-error-message-when-i-try-to-deploy-from-visual-studio-how-do-i-resolve-this-error"></a>Visual Studio からデプロイしようとするとエラー メッセージが表示されます。 このエラーを解決するにはどうすればよいですか?
 
-次のメッセージが表示される場合、古いバージョンの SDK を使用している可能性があります。"リソース グループ '<リソース グループ名>' のリソース '<リソース名>' の配置の際にエラーが発生しました: MissingRegistrationForLocation: サブスクリプションが場所 '米国中部' のリソースの種類 'コンポーネント' に登録されていません。 この場所にアクセスできるようにするには、このプロバイダーに再登録してください。」 
+次のメッセージが表示される場合、古いバージョンの SDK を使用している可能性があります。"リソース グループ '<リソース グループ名>' のリソース '<リソース名>' の配置の際にエラーが発生しました: MissingRegistrationForLocation: サブスクリプションが場所 '米国中部' のリソースの種類 'コンポーネント' に登録されていません。 この場所にアクセスできるようにするには、このプロバイダーに再登録してください。" 
 
 このエラーを解決するには、[最新の SDK](https://azure.microsoft.com/downloads/) にアップグレードしてください。 このメッセージが表示され、かつ最新の SDK を使用している場合は、サポート リクエストを送信してください。
 
@@ -69,7 +69,7 @@ App Service アプリのファイル構造については、[Azure でのファ�
 
 GitHub や Bitbucket からの継続的デプロイに関する問題の調査については、「[Investigating continuous deployment (継続的デプロイの調査)](https://github.com/projectkudu/kudu/wiki/Investigating-continuous-deployment)」をご覧ください。
 
-## <a name="i-cant-ftp-to-my-site-and-publish-my-code-how-do-i-resolve-this"></a>自分のサイトに FTP できず、コードを発行できません。 解決するにはどうすればよいですか?
+## <a name="i-cant-ftp-to-my-site-and-publish-my-code-how-do-i-resolve-this-issue"></a>自分のサイトに FTP できず、コードを発行できません。 この問題を解決するにはどうすればよいですか?
 
 FTP の問題を解決するには、次のことを行います。
 
@@ -80,7 +80,7 @@ FTP の問題を解決するには、次のことを行います。
 
 ## <a name="how-do-i-publish-my-code-to-app-service"></a>App Service にコードを発行するにはどうすればよいですか。
 
-Azure クイック スタートは、お好きなデプロイ スタックと方法を使用してアプリをデプロイできるように設計されています。 クイック スタートを使うには、Azure portal で App Service に移動し、**[展開]** の **[クイック スタート]** を選択します。
+Azure クイック スタートは、お好きなデプロイ スタックと方法を使用してアプリをデプロイできるように設計されています。 クイック スタートを使うには、Azure portal で App Service に移動し、 **[展開]** の **[クイック スタート]** を選択します。
 
 ## <a name="why-does-my-app-sometimes-restart-after-deployment-to-app-service"></a>App Service へのデプロイ後にアプリが再起動することがありますが、これはなぜですか。
 

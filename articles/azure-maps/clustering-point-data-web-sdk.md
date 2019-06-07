@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: d4dc6f0c8fd2dff74a1997c9dca5a31abc70c03a
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 6dbd4461e7b8382ec3c4075b9688de59678f98f5
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58580896"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65957317"
 ---
 # <a name="clustering-point-data"></a>ポイント データのクラスタリング
 
@@ -33,7 +33,7 @@ var datasource = new atlas.source.DataSource(null, {
     //The radius in pixels to cluster points together.
     clusterRadius: 45,
 
-    //The maximium zoom level in which clustering occurs.
+    //The maximum zoom level in which clustering occurs.
     //If you zoom in more than this, all points are rendered as symbols.
     clusterMaxZoom: 15 
 });
@@ -44,11 +44,11 @@ var datasource = new atlas.source.DataSource(null, {
 
 `DataSource` クラスには、クラスタリングに関連する以下のメソッドもあります。
 
-| 方法 | 戻り値の型 | 説明 |
+| Method | 戻り値の型 | 説明 |
 |--------|-------------|-------------|
-| getClusterChildren(clusterId: number) | Promise&lt;Feature&lt;Geometry, any&gt; \| Shape&gt; | 次のズーム レベルで指定されたクラスターの子を取得します。 これらの子はシェイプとサブクラスターの組み合わせの場合があります。 サブクラスターは ClusteredProperties と一致するプロパティを持つフィーチャーになります。 |
+| getClusterChildren(clusterId: number) | Promise&lt;Array&lt;Feature&lt;Geometry, any&gt; \| Shape&gt;&gt; | 次のズーム レベルで指定されたクラスターの子を取得します。 これらの子はシェイプとサブクラスターの組み合わせの場合があります。 サブクラスターは ClusteredProperties と一致するプロパティを持つフィーチャーになります。 |
 | getClusterExpansionZoom(clusterId: number) | Promise&lt;number&gt; | クラスターが拡大し始めるか、または分解するズーム レベルを計算します。 |
-| getClusterLeaves(clusterId: number, limit: number, offset: number) | Promise&lt;Feature&lt;Geometry, any&gt; \| Shape&gt; | クラスター内のすべてのポイントを取得します。 ポイントのサブセットを返すには `limit` を設定し、ポイントをページ送りするには `offset` を使用します。 |
+| getClusterLeaves(clusterId: number, limit: number, offset: number) | Promise&lt;Array&lt;Feature&lt;Geometry, any&gt; \| Shape&gt;&gt; | クラスター内のすべてのポイントを取得します。 ポイントのサブセットを返すには `limit` を設定し、ポイントをページ送りするには `offset` を使用します。 |
 
 ## <a name="display-clusters-using-a-bubble-layer"></a>バブル レイヤーを使用してクラスターを表示する
 
@@ -87,9 +87,9 @@ Azure Maps による<a href='https://codepen.io/azuremaps/pen/VRJrgO/'>クラス
 | プロパティ名 | Type | 説明 |
 |---------------|------|-------------|
 | cluster | ブール値 | フィーチャーがクラスターを表すかどうかを示します。 |
-| cluster_id | 文字列 | DataSource の `getClusterExpansionZoom`、`getClusterChildren`、および `getClusterLeaves` メソッドで使用できるクラスターの一意な ID。 |
+| cluster_id | string | DataSource の `getClusterExpansionZoom`、`getClusterChildren`、および `getClusterLeaves` メソッドで使用できるクラスターの一意な ID。 |
 | point_count | number | クラスターに含まれているポイントの数。 |
-| point_count_abbreviated | 文字列 | point_count の値が長い場合にその値を省略形にした文字列。 (たとえば、4,000 が 4K になります) |
+| point_count_abbreviated | string | `point_count` の値が長い場合にその値を省略形にした文字列。 (たとえば、4,000 が 4K になります) |
 
 この例では、クラスター ポイントをレンダリングするバブル レイヤーを受け取り、クリック イベントを追加します。このイベントは、トリガーされると、クラスターが分解する次のズーム レベルを計算してそのレベルにマップをズームします。このとき、`DataSource` クラスの `getClusterExpansionZoom` メソッドと、クリックされたクラスター化データ ポイントの `cluster_id` プロパティが使用されます。 
 

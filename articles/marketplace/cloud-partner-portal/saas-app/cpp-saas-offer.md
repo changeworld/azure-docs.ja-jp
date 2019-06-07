@@ -1,31 +1,28 @@
 ---
-title: Azure SaaS アプリケーション プラン | Microsoft Docs
+title: Azure SaaS アプリケーション オファー | Azure Marketplace
 description: Azure Marketplace で Azure SaaS アプリケーション オファーを発行するプロセスの概要です。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: dan-wesley
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 05/16/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 9d8b425ff73672ce8989e235c4a2c130c763716c
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 08baf908d47cdc6a9bc1e97f88eb5ff509d6790e
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57213553"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65835046"
 ---
 # <a name="azure-saas-application-offer"></a>Azure SaaS アプリケーション プラン
 
 このセクションは、<a href="https://azuremarketplace.microsoft.com">Azure Marketplace</a> にサービスとしてのソフトウェア (SaaS) アプリケーション オファーを発行する方法を説明します。
 
-ご利用の Azure サブスクリプションでソリューションがデプロイされるとき、およびデザインしたインターフェイスを通じてお客様がログオンし、アプリケーションのテストを管理するときに、SaaS アプリケーションを使います。 <a href="https://azure.microsoft.com/services/active-directory">Azure Active Directory (AAD)</a> は、既存の評価環境を活用するために使用されます。
+> [!IMPORTANT] 
+> SaaS オファー機能は、[Microsoft パートナー センター](https://partner.microsoft.com/dashboard/directory)に移行中です。  すべての新規の発行元は、新しい SaaS オファーの作成と既存のオファーの管理にパートナー センターを使用する必要があります。  現時点で SaaS オファーを提供している発行元については、Cloud パートナー ポータルからパートナー センターへのバッチ移行を進めています。  Cloud パートナー ポータルには、特定の既存のオファーが移行済みになった時点を示すステータス メッセージが表示されます。
+
+
+ご利用の Azure サブスクリプションでソリューションがデプロイされるとき、およびデザインしたインターフェイスを通じてお客様がサインインし、アプリケーションのテストを管理するときに、SaaS アプリケーションを使います。 <a href="https://azure.microsoft.com/services/active-directory">Azure Active Directory (AAD)</a> は、既存の評価環境を活用するために使用されます。
 
 ## <a name="benefits"></a>メリット
 

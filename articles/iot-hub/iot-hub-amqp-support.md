@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/30/2019
 ms.author: rezas
-ms.openlocfilehash: 703e2c842fb42bad8aa112d84c516a29c2327378
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: f39f184bdc09677e347a2691351309dd6483f467
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65473435"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65965395"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-amqp-protocol"></a>AMQP プロトコルを使用した IoT Hub との通信
 
@@ -127,11 +127,76 @@ for msg in batch:
 * フィードバックの本文のキー `originalMessageId` には、サービスによって送信された元の C2D メッセージの ID が含まれます。 これはフィードバックを C2D メッセージに関連付けるために使用できます。
 
 ### <a name="receive-telemetry-messages-service-client"></a>テレメトリのメッセージの受信 (サービス クライアント)
+既定では、IoT Hub は取り込まれたデバイス テレメトリ メッセージを組み込みの Event Hubs 内に格納します。 サービス クライアントは AMQP プロトコルを使用して、格納されたイベントを受信できます。
+
+そのため、サービス クライアントは最初に IoT Hub エンドポイントに接続し、組み込みの Event Hubs へのリダイレクト アドレスを受け取る必要があります。 その後、サービス クライアントは提供されたアドレスを使用して、組み込みの Event Hub に接続します。
+
+各手順で、クライアントは次の情報を提示する必要があります。
+* 有効なサービス資格情報 (サービス SAS トークン)。
+* メッセージの取得元となるコンシューマー グループ パーティションへの適切な形式のパス。 指定のコンシューマー グループおよびパーティション ID について、パスは次の形式になります: `/messages/events/ConsumerGroups/<consumer_group>/Partitions/<partition_id>` (既定のコンシューマー グループは `$Default`)。
+* パーティション内の出発点を指定する省略可能なフィルタリング述語 (これはシーケンス番号、オフセット、またはエンキューされたタイムスタンプの形式で指定できます)。
+
+以下のコード スニペットでは、[Python の uAMQP ライブラリ](https://github.com/Azure/azure-uamqp-python)を使用して、上記のステップを示しています。
+
+```python
+import json
+import uamqp
+import urllib
+import time
+
+# Use generate_sas_token implementation available here: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security#security-token-structure
+from helper import generate_sas_token
+
+iot_hub_name = '<iot-hub-name>'
+hostname = '{iot_hub_name}.azure-devices.net'.format(iot_hub_name=iot_hub_name)
+policy_name = 'service'
+access_key = '<primary-or-secondary-key>'
+operation = '/messages/events/ConsumerGroups/{consumer_group}/Partitions/{p_id}'.format(consumer_group='$Default', p_id=0)
+
+username = '{policy_name}@sas.root.{iot_hub_name}'.format(policy_name=policy_name, iot_hub_name=iot_hub_name)
+sas_token = generate_sas_token(hostname, access_key, policy_name)
+uri = 'amqps://{}:{}@{}{}'.format(urllib.quote_plus(username), urllib.quote_plus(sas_token), hostname, operation)
+
+# Optional filtering predicates can be specified using endpiont_filter
+# Valid predicates include:
+# - amqp.annotation.x-opt-sequence-number
+# - amqp.annotation.x-opt-offset
+# - amqp.annotation.x-opt-enqueued-time
+# Set endpoint_filter variable to None if no filter is needed
+endpoint_filter = b'amqp.annotation.x-opt-sequence-number > 2995'
+
+# Helper function to set the filtering predicate on the source URI
+def set_endpoint_filter(uri, endpoint_filter=''):
+  source_uri = uamqp.address.Source(uri)
+  source_uri.set_filter(endpoint_filter)
+  return source_uri
+
+receive_client = uamqp.ReceiveClient(set_endpoint_filter(uri, endpoint_filter), debug=True)
+try:
+  batch = receive_client.receive_message_batch(max_batch_size=5)
+except uamqp.errors.LinkRedirect as redirect:
+  # Once a redirect error is received, close the original client and recreate a new one to the re-directed address
+  receive_client.close()
+
+  sas_auth = uamqp.authentication.SASTokenAuth.from_shared_access_key(redirect.address, policy_name, access_key)
+  receive_client = uamqp.ReceiveClient(set_endpoint_filter(redirect.address, endpoint_filter), auth=sas_auth, debug=True)
+
+# Start receiving messages in batches
+batch = receive_client.receive_message_batch(max_batch_size=5)
+for msg in batch:
+  print('*** received a message ***')
+  print(''.join(msg.get_data()))
+  print('\t: ' + str(msg.annotations['x-opt-sequence-number']))
+  print('\t: ' + str(msg.annotations['x-opt-offset']))
+  print('\t: ' + str(msg.annotations['x-opt-enqueued-time']))
+```
+
+指定のデバイス ID に対して、IoT Hub はデバイス ID のハッシュを使用して、そのメッセージを格納するパーティションを判断します。 上記のコード スニペットは、そのような単一のパーティションからイベントを受け取ることを示しています。 ただし、一般的なアプリケーションは多くの場合、すべてのイベント ハブ パーティションに格納されているイベントを取得する必要があることに注意してください。
 
 
 ### <a name="additional-notes"></a>その他のメモ
 * AMQP 接続は、ネットワーク障害、または (コード内で生成された) 認証トークンの有効期限のために、中断される可能性があります。 サービス クライアントでは、これらの状況に対処し、必要に応じて、接続とリンクを再確立する必要があります。 認証トークンの有効期限の場合、接続を解除しないように、クライアントによって先を見越して、有効期限の前にトークンを更新することもできます。
-* 場合によっては、クライアントは正常にリンクのリダイレクトを処理できる必要があります。 これを行う方法については、AMQP クライアントのドキュメントを参照してください。
+* 場合によっては、クライアントは正常にリンクのリダイレクトを処理できる必要があります。 この操作を処理する方法については、AMQP クライアントのドキュメントを参照してください。
 
 ### <a name="receive-cloud-to-device-messages-device-and-module-client"></a>cloud-to-device メッセージを受信する (デバイスとモジュールのクライアント)
 デバイス側で使用される AMQP のリンクは次のとおりです。

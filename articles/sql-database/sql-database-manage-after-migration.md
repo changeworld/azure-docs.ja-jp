@@ -12,12 +12,12 @@ ms.author: josack
 ms.reviewer: sstein
 manager: craigg
 ms.date: 02/13/2019
-ms.openlocfilehash: a83bc6518409add8a0732e5a0b17ab46c36564af
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: e13907e96bba338648bddcc102e3b4f51887d0ea
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59358424"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65949905"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>クラウドの新しい DBA – Azure SQL Database での単一データベースとプールされたデータベースの管理
 
@@ -111,7 +111,7 @@ SQL Database では [2 種類の認証方法](sql-database-control-access.md#aut
 
 ファイアウォールは、SDL Database サーバーへのアクセスを特定のエンティティだけに許可することで、外部エンティティからサーバーへのアクセスを防ぎます。 既定では、他の Azure サービスからの接続を除き、SDL Database サーバー内の接続とデータベースはすべて拒否されます。 ファイアウォール ルールでは、ファイアウォールを通過できるコンピューターの IP アドレスを設定することで、特定のエンティティ (たとえば、開発者コンピューター) にのみサーバーへのアクセスを開くことができます。 また、SDL Database サーバーへのアクセスを許可する IP の範囲を指定することもできます。 たとえば、ファイアウォール設定ページで範囲を指定することにより、組織内の開発者コンピューターの IP アドレスを一度に追加できます。
 
-サーバー レベルまたはデータベース レベルで、ファイアウォール ルールを作成できます。 サーバー レベルの IP ファイアウォール規則は、Azure portal または SSMS で作成できます。 サーバー レベルとデータベース レベルでファイアウォール ルールを設定する方法について詳しくは、[SQL Database での IP ファイアウォール ルールの作成](sql-database-security-tutorial.md#create-firewall-rules)に関するページをご覧ください。
+サーバー レベルまたはデータベース レベルで、ファイアウォール ルールを作成できます。 サーバー レベルの IP ファイアウォール規則は、Azure portal または SSMS で作成できます。 サーバー レベルとデータベース レベルでファイアウォール ルールを設定する方法について詳しくは、[SQL Database での IP ファイアウォール規則の作成](sql-database-security-tutorial.md#create-firewall-rules)に関するページをご覧ください。
 
 #### <a name="service-endpoints"></a>サービス エンドポイント
 
@@ -127,7 +127,7 @@ SQL Database では [2 種類の認証方法](sql-database-control-access.md#aut
 
 ### <a name="what-port-do-i-connect-to-sql-database-on"></a>SQL Database への接続はどのポートで行われますか
 
-ポート 1433 です。 SQL Database の通信はこのポートで行われます。 企業ネットワーク内から接続するには、組織のファイアウォール設定に送信ルールを追加する必要があります。 ガイドラインとして、Azure 境界の外部にはポート 1433 を公開しないでください。 [Azure RemoteApp](https://www.microsoft.com/cloud-platform/azure-remoteapp-client-apps) を使って、Azure で SSMS を実行できます。 この場合、ポート 1433 に対する発信接続を開く必要はありません。IP は静的であるため、DB を開放できるのは RemoteApp に対してのみであり、多要素認証 (MFA) がサポートされます。
+ポート 1433 です。 SQL Database の通信はこのポートで行われます。 企業ネットワーク内から接続するには、組織のファイアウォール設定に送信ルールを追加する必要があります。 ガイドラインとして、Azure 境界の外部にはポート 1433 を公開しないでください。
 
 ### <a name="how-can-i-monitor-and-regulate-activity-on-my-server-and-database-in-sql-database"></a>サーバーおよび SQL Database のデータベースでのアクティビティを監視および規制するにはどうすればよいですか
 
@@ -152,7 +152,7 @@ SQL Database では、既定により、記憶域サブシステムのデータ 
 |**特性**|**常に暗号化**|**透過的なデータ暗号化**|
 |---|---|---|
 |**暗号化の範囲**|End-to-end|保存データ|
-|**データベース サーバーは機微なデータにアクセスできる**|いいえ |はい (暗号化は保存データに対するものであるため)|
+|**データベース サーバーは機微なデータにアクセスできる**|いいえ|はい (暗号化は保存データに対するものであるため)|
 |**許可される T-SQL の操作**|等値比較|T-SQL のすべての公開されている部分を使用できます|
 |**機能を使うために必要なアプリの変更**|最小限|極めて最小限|
 |**暗号化の細分性**|列レベル|データベース レベル|

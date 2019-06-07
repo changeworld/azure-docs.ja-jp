@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
-ms.openlocfilehash: 248c7977752eaec86121a0dd197e5bff2621ead5
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 00161f8158ad73591687764528258e1081f81ce2
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59500279"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65914304"
 ---
 # <a name="how-to-provision-legacy-devices-using-symmetric-keys"></a>対称キーを使用してレガシ デバイスをプロビジョニングする方法
 
@@ -43,7 +43,7 @@ ms.locfileid: "59500279"
 ## <a name="prerequisites"></a>前提条件
 
 * [Azure portal での IoT Hub Device Provisioning Service の設定](./quick-setup-auto-provision.md)に関するクイック スタートが完了していること。
-* ["C++ によるデスクトップ開発"](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) ワークロードを有効にした Visual Studio 2015 または [Visual Studio 2017](https://www.visualstudio.com/vs/)。
+* ["C++ によるデスクトップ開発"](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) ワークロードが有効になった [Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 以降。
 * [Git](https://git-scm.com/download/) の最新バージョンがインストールされている。
 
 
@@ -104,21 +104,21 @@ ms.locfileid: "59500279"
 
 2. **[登録を管理します]** タブを選択し、ページの上部にある **[登録グループの追加]** ボタンをクリックします。 
 
-3. **[登録グループの追加]** で、次の情報を入力して、**[保存]** ボタンをクリックします。
+3. **[登録グループの追加]** で、次の情報を入力して、 **[保存]** ボタンをクリックします。
 
-   - **[グループ名]**: 「**mylegacydevices**」と入力します。
+   - **[グループ名]** : 「**mylegacydevices**」と入力します。
 
-   - **[構成証明の種類]**: **[対称キー]** を選択します。
+   - **[構成証明の種類]** : **[対称キー]** を選択します。
 
-   - **[キーの自動生成]**: このボックスをオンにします。
+   - **[キーの自動生成]** : このボックスをオンにします。
 
-   - **[デバイスをハブに割り当てる方法を選択してください]**: 特定のハブを割り当てることができるように、**[静的構成]** を選択します。
+   - **[デバイスをハブに割り当てる方法を選択してください]** : 特定のハブを割り当てることができるように、 **[静的構成]** を選択します。
 
-   - **[このグループを割り当てることができる IoT ハブを選択してください]**: お使いのハブのいずれかを選択します。
+   - **[このグループを割り当てることができる IoT ハブを選択してください]** : お使いのハブのいずれかを選択します。
 
      ![対称キー構成証明に登録グループを追加する](./media/how-to-legacy-device-symm-key/symm-key-enrollment-group.png)
 
-4. 登録を保存したら、**主キー**と**セカンダリ キー**が生成され、登録エントリに追加されます。 対称キーの登録グループが、*[登録グループ]* タブの *[グループ名]* 列に **mylegacydevices** として対表示されます。 
+4. 登録を保存したら、**主キー**と**セカンダリ キー**が生成され、登録エントリに追加されます。 対称キーの登録グループが、 *[登録グループ]* タブの *[グループ名]* 列に **mylegacydevices** として対表示されます。 
 
     登録を開き、生成された**主キー**の値をコピーします。 このキーは、マスター グループ キーです。
 
@@ -198,7 +198,7 @@ Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
 
 このサンプル コードでは、Device Provisioning Services のインスタンスにプロビジョニング要求を送信するデバイスのブート シーケンスがシミュレートされます。 ブート シーケンスにより、デバイスが認識され、登録グループで構成した IoT ハブに割り当てられます。
 
-1. Azure portal で、Device Provisioning Service の **[概要]** タブをクリックし、**[_ID スコープ_]** の値を書き留めます。
+1. Azure portal で、Device Provisioning Service の **[概要]** タブをクリックし、 **[_ID スコープ_]** の値を書き留めます。
 
     ![ポータルのブレードから Device Provisioning サービスのエンドポイント情報を抽出](./media/quick-create-simulated-device-x509/extract-dps-endpoints.png) 
 
@@ -241,9 +241,9 @@ Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
    
     ファイルを保存します。
 
-7. **prov\_dev\_client\_sample** プロジェクトを右クリックし、**[スタートアップ プロジェクトに設定]** を選択します。 
+7. **prov\_dev\_client\_sample** プロジェクトを右クリックし、 **[スタートアップ プロジェクトに設定]** を選択します。 
 
-8. Visual Studio のメニューで **[デバッグ]** > **[デバッグなしで開始]** の順に選択して、ソリューションを実行します。 プロジェクトをリビルドするよう求められたら、**[はい]** をクリックして、プロジェクトをリビルドしてから実行します。
+8. Visual Studio のメニューで **[デバッグ]**  >  **[デバッグなしで開始]** の順に選択して、ソリューションを実行します。 プロジェクトをリビルドするよう求められたら、 **[はい]** をクリックして、プロジェクトをリビルドしてから実行します。
 
     次の出力は、シミュレートされたデバイスが正常に起動し、IoT ハブに割り当てられるプロビジョニング サービス インスタンスに接続する例です。
 
@@ -262,7 +262,7 @@ Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
     Press enter key to exit:
     ```
 
-9. ポータルで、シミュレートされたデバイスが割り当てられた IoT ハブに移動し、**[IoT デバイス]** タブをクリックします。シミュレートされたデバイスがハブに正常にプロビジョニングされると、そのデバイス ID は、**有効**な*状態*で **[IoT デバイス]** ブレードに表示されます。 必要に応じて、一番上の **[更新]** ボタンをクリックします。 
+9. ポータルで、シミュレートされたデバイスが割り当てられた IoT ハブに移動し、 **[IoT デバイス]** タブをクリックします。シミュレートされたデバイスがハブに正常にプロビジョニングされると、そのデバイス ID は、**有効**な*状態*で **[IoT デバイス]** ブレードに表示されます。 必要に応じて、一番上の **[更新]** ボタンをクリックします。 
 
     ![IoT ハブに登録されたデバイス](./media/how-to-legacy-device-symm-key/hub-registration.png) 
 

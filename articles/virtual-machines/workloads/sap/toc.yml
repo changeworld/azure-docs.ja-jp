@@ -86,6 +86,8 @@
       href: cal-s4h.md
     - name: Azure における SAP HANA インフラストラクチャの構成と運用
       href: hana-vm-operations.md
+    - name: SAP HANA Azure 仮想マシンのストレージ構成
+      href: hana-vm-operations-storage.md
     - name: Azure Virtual Machines での SAP HANA の可用性
       items:
         - name: SAP HANA on Azure の可用性の概要

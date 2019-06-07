@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 4a5bed67252c3b87233c8d2e677e3c620adb8a17
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b59e4d574264f82a5875edad65e99bfb57150197
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58918809"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65796877"
 ---
 # <a name="translator-text-api-v30"></a>Translator Text API v3.0
 
@@ -161,7 +161,7 @@ Authorization: Bearer <Base64-access_token>
 | 405000| 要求リソースに対してこの要求メソッドを使用することはできません｡|
 | 408001| 要求されたカスタムの翻訳システムはまだ使用できません。 少し待ってからもう一度お試しください。|
 | 415000| Content-Type Content-type ヘッダーが見つからないか無効です。|
-| 429000､429001､429002| クライアントから送信されている要求が多すぎるため､サーバーによって要求が拒否されました｡ スロットリングを回避するため､要求の頻度を減らしてください｡|
+| 429000､429001､429002| クライアントが要求の制限を超えたため、サーバーは要求を拒否しました。|
 | 500000| 予期しないエラーが発生しました。 エラーが解決しない場合は、エラーの発生日時と応答ヘッダーの要求識別子 X-RequestID、要求ヘッダーのクライアント識別子 X-ClientTraceID を添えてその旨をご報告ください。|
 | 503000| サービスが一時的に利用できません。 もう一度試してください。 エラーが解決しない場合は、エラーの発生日時と応答ヘッダーの要求識別子 X-RequestID、要求ヘッダーのクライアント識別子 X-ClientTraceID を添えてその旨をご報告ください。|
 

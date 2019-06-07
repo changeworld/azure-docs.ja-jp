@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/16/2019
 ms.author: iainfou
-ms.openlocfilehash: 86b9609d5141798be40f53aab8b18897484bbef8
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.openlocfilehash: d80ad5abecc968a9fe3c82d62ddd8577856a3c54
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60149148"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65835195"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli"></a>Azure CLI を使用して Azure Active Directory と Azure Kubernetes Service を統合する
 
@@ -20,10 +20,11 @@ Azure Kubernetes Service (AKS) は、ユーザー認証に Azure Active Director
 
 この記事では、必要な Azure AD コンポーネントを作成してから、Azure AD 対応クラスターをデプロイして AKS クラスターで基本的な RBAC ロールを作成する方法について説明します。 [これらの手順は、Azure portal を使用して完了][azure-ad-portal]することもできます。
 
+この記事で使用されているサンプル スクリプトの完成版については、[Azure CLI のサンプルの AKS と Azure AD の統合][complete-script]に関するページを参照してください。
+
 次の制限事項が適用されます。
 
 - Azure AD は、RBAC が有効なクラスターを新しく作成するときにのみ有効にできます。 既存の AKS クラスターで Azure AD を有効にすることはできません。
-- 別のディレクトリからフェデレーション サインインを使用する場合など、Azure AD では*ゲスト* ユーザーはサポートされていません。
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -78,7 +79,6 @@ Azure AD には、次のアクションを実行するためのアクセス許�
 
 * ディレクトリ データの読み取り
 * サインインとユーザー プロファイルの読み取り
-* ディレクトリ データの読み取り
 
 [az ad app permission add][az-ad-app-permission-add] コマンドを使用してこれらのアクセス許可を割り当てます。
 
@@ -236,8 +236,9 @@ Web ブラウザーを使用して正常にサインインした後に、次の�
 error: You must be logged in to the server (Unauthorized)
 ```
 
-* サインインしているユーザーが、その Azure AD インスタンスで*ゲスト*ではない (これに該当することが多いのは、異なるディレクトリからのフェデレーション ログインを使用している場合です)。
+* ユーザー アカウントが同じ Azure AD テナント内にあるかどうかに応じて、適切なオブジェクト ID または UPN を定義した。
 * ユーザーが 200 を超えるグループのメンバーにはなっていない。
+* サーバーのアプリケーション登録に定義されているシークレットが、`--aad-server-app-secret` を使用して構成された値と一致する
 
 ## <a name="next-steps"></a>次の手順
 
@@ -245,9 +246,9 @@ error: You must be logged in to the server (Unauthorized)
 
 Azure AD ユーザーとグループを使用してクラスター リソースへのアクセスを制御するには、「[Control access to cluster resources using role-based access control and Azure AD identities in AKS][azure-ad-rbac]」 (AKS でロールベースのアクセス制御と Azure AD の ID を使用してクラスター リソースへのアクセス制御する) を参照してください。
 
-Kubernetes クラスターをセキュリティで保護する方法の詳細については、「[Azure Kubernetes Service (AKS) でのアクセスと ID オプション][rbac-authorization]」を参照してください。
+Kubernetes クラスターをセキュリティで保護する方法の詳細については、「[Azure Kubernetes Service (AKS) でのアクセスと ID オプション][rbac-authorization]」のページを参照してください。
 
-ID とリソース コントロールに関するベスト プラクティスについては、「[Azure Kubernetes Service (AKS) の認証と認可のベスト プラクティス][operator-best-practices-identity]」を参照してください。
+ID とリソース コントロールに関するベスト プラクティスについては、[Azure Kubernetes Service (AKS) の認証と認可のベスト プラクティス][operator-best-practices-identity]に関する記事を参照してください。
 
 <!-- LINKS - external -->
 [kubernetes-webhook]:https://kubernetes.io/docs/reference/access-authn-authz/authentication/#webhook-token-authentication

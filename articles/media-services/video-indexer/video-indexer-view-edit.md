@@ -6,15 +6,16 @@ services: media-services
 author: Juliako
 manager: femila
 ms.service: media-services
+ms.subservice: video-indexer
 ms.topic: article
-ms.date: 04/02/2019
+ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: 8c1e50064491032d78e467496f0c53300dd6acd1
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 24a723bd32cb40807da1757b3fffb925d4ba1fef
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58892791"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65799175"
 ---
 # <a name="view-and-edit-video-indexer-insights"></a>Video Indexer の分析情報の表示と編集
 
@@ -36,7 +37,7 @@ ms.locfileid: "58892791"
 
 ## <a name="next-steps"></a>次の手順
 
-[他のビデオに基づいて独自の Video Indexer 分析情報を作成する方法を学習します](video-indexer-create-new.md)。
+[ビデオの詳細な分析情報を使用する](use-editor-create-project.md)
 
 ## <a name="see-also"></a>関連項目
 

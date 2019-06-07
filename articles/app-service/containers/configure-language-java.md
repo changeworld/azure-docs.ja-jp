@@ -1,7 +1,7 @@
 ---
 title: Linux Java アプリを構成する - Azure App Service | Microsoft Docs
 description: Azure App Service on Linux で実行される Java アプリを構成するについて説明します。
-keywords: Azure App Service, Web アプリ, Linux, OSS, Java
+keywords: Azure App Service, Web アプリ, Linux, OSS, Java, java ee, jee, javaee
 services: app-service
 author: rloutlaw
 manager: angerobe
@@ -13,18 +13,29 @@ ms.topic: article
 ms.date: 03/28/2019
 ms.author: routlaw
 ms.custom: seodec18
-ms.openlocfilehash: b659c076974b0659c645c9b6460e458dfac8974a
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: fe2a877597740c0ecd8a3f1a0aa2206a901b52f0
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59551049"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66138253"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>Azure App Service 向けの Linux Java アプリを構成する
 
 Azure App Service on Linux を使用すると、Java 開発者は、完全に管理された Linux ベースのサービス上で Tomcat または Java Standard Edition (SE) パッケージ化 Web アプリケーションを迅速にビルド、デプロイ、およびスケーリングすることができます。 アプリケーションは、コマンドラインから Maven プラグインを使用して、または IntelliJ、Eclipse、Visual Studio Code などのエディターでデプロイします。
 
 このガイドでは、App Service のビルトイン Linux コンテナーを使用する Java 開発者のために、主要な概念と手順を示します。 Azure App Service を使用したことがない場合は、まず、[Java クイック スタート](quickstart-java.md)と [PostgreSQL を使った Java のチュートリアル](tutorial-java-enterprise-postgresql-app.md)に従ってください。
+
+## <a name="deploying-your-app"></a>アプリのデプロイ
+
+[Azure App Service に Maven プラグイン](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme)を使用して、.jar ファイルと .war ファイルの両方をデプロイできます。 一般的な IDE を使用したデプロイは、[Azure Toolkit for IntelliJ](/java/azure/intellij/azure-toolkit-for-intellij) または [Azure Toolkit for Eclipse](/java/azure/eclipse/azure-toolkit-for-eclipse) でもサポートされています。
+
+それ以外の場合、デプロイの方法はアーカイブの種類によって異なります。
+
+- .war ファイルを Tomcat にデプロイするには、`/api/wardeploy/` エンドポイントを使用してアーカイブ ファイルを POST します。 この API の詳細については、[このドキュメント](https://docs.microsoft.com/azure/app-service/deploy-zip#deploy-war-file)を参照してください。
+- Java SE イメージ上に .jar ファイルをデプロイするには、Kudu サイトの `/api/zipdeploy/` エンドポイントを使用します。 この API の詳細については、[このドキュメント](https://docs.microsoft.com/azure/app-service/deploy-zip#rest)を参照してください。
+
+FTP を使用して .war や .jar をデプロイしないでください。 FTP ツールは、スタートアップ スクリプト、依存関係、またはその他のランタイム ファイルをアップロードするために設計されています。 これは、Web アプリをデプロイするための最適な選択肢ではありません。
 
 ## <a name="logging-and-debugging-apps"></a>アプリのログ記録とデバッグ
 
@@ -42,44 +53,50 @@ Azure App Service on Linux を使用すると、Java 開発者は、完全に管
 
 ### <a name="app-logging"></a>アプリのログ記録
 
-Azure portal または [Azure CLI](/cli/azure/webapp/log#az-webapp-log-config) を使用して[アプリケーションのログ記録](../troubleshoot-diagnostic-logs.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#enablediag)を有効にし、アプリケーションの標準コンソール出力および標準コンソール エラー ストリームをローカル ファイル システムまたは Azure BLOB ストレージに書き込むよう App Service を構成します。 App Service のローカル ファイル システム インスタンスへのログ記録は、構成されてから 12 時間後に無効になります。 リテンション期間を長くする必要がある場合は、BLOB ストレージ コンテナーに出力を書き込むようアプリケーションを構成します。
+Azure portal または [Azure CLI](/cli/azure/webapp/log#az-webapp-log-config) を使用して[アプリケーションのログ記録](../troubleshoot-diagnostic-logs.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#enablediag)を有効にし、アプリケーションの標準コンソール出力および標準コンソール エラー ストリームをローカル ファイル システムまたは Azure BLOB ストレージに書き込むよう App Service を構成します。 App Service のローカル ファイル システム インスタンスへのログ記録は、構成されてから 12 時間後に無効になります。 リテンション期間を長くする必要がある場合は、BLOB ストレージ コンテナーに出力を書き込むようアプリケーションを構成します。 Java と Tomcat のアプリ ログは `/home/LogFiles/Application/` ディレクトリにあります。
 
 アプリケーションで [Logback](https://logback.qos.ch/) または [Log4j](https://logging.apache.org/log4j) をトレースに使用している場合は、「[Application Insights を使用した Java トレース ログの探索](/azure/application-insights/app-insights-java-trace-logs)」にあるログ記録フレームワークの構成手順に従って、これらのトレースを確認のために Azure Application Insights に転送することができます。
+
+### <a name="troubleshooting-tools"></a>トラブルシューティング ツール
+
+組み込みの Java イメージは [Alpine Linux](https://alpine-linux.readthedocs.io/en/latest/getting_started.html) オペレーティング システムに基づいています。 `apk` パッケージ マネージャーを使用し、トラブルシューティングのツールやコマンドをインストールします。
 
 ## <a name="customization-and-tuning"></a>カスタマイズとチューニング
 
 Azure App Service for Linux では、Azure portal および CLI を使用したチューニングとカスタマイズが追加設定なしでサポートされています。 Java 以外の特定の Web アプリの構成については、次の記事を確認してください。
 
-- [App Service の設定の構成](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
+- [アプリケーションの設定の構成](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)
 - [カスタム ドメインの設定](../app-service-web-tutorial-custom-domain.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
 - [SSL の有効化](../app-service-web-tutorial-custom-ssl.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
 - [CDN の追加](../../cdn/cdn-add-to-web-app.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
+- [Kudu サイトを構成する](https://github.com/projectkudu/kudu/wiki/Configurable-settings#linux-on-app-service-settings)
 
 ### <a name="set-java-runtime-options"></a>Java ランタイム オプションを設定する
 
-Tomcat と Java SE の両方の環境で、割り当てられたメモリまたはその他の JVM ランタイムのオプションを設定するには、次に示すように[アプリケーション設定](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#app-settings)で JAVA_OPTS を設定します。 App Service Linux では、開始時にこの設定が環境変数として Java ランタイムに渡されます。
+Tomcat と Java SE の両方の環境で、割り当てられたメモリまたはその他の JVM ランタイムのオプションを設定するには、[アプリ設定](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)を作成して `JAVA_OPTS` と名付け、オプションを指定します。 App Service Linux では、開始時にこの設定が環境変数として Java ランタイムに渡されます。
 
-Azure portal の Web アプリ用の **[アプリケーション設定]** で、`$JAVA_OPTS -Xms512m -Xmx1204m` などの追加の設定を含む、`JAVA_OPTS` という名前の新しいアプリ設定を作成します。
+Azure portal の Web アプリ用の **[アプリケーション設定]** で、`-Xms512m -Xmx1204m` などの追加の設定を含む、`JAVA_OPTS` という名前の新しいアプリ設定を作成します。
 
-Azure App Service Linux Maven プラグインからアプリ設定を構成するには、Azure プラグイン セクションで設定/値のタグを追加します。 次の例では、特定の最小および最大の Java ヒープ サイズを設定します。
+Maven プラグインからアプリ設定を構成するには、Azure プラグイン セクションで設定/値のタグを追加します。 次の例では、特定の最小および最大の Java ヒープ サイズを設定します。
 
 ```xml
 <appSettings>
     <property>
         <name>JAVA_OPTS</name>
-        <value>$JAVA_OPTS -Xms512m -Xmx1204m</value>
+        <value>-Xms512m -Xmx1204m</value>
     </property>
 </appSettings>
 ```
 
 App Service プランで 1 つのデプロイ スロットを使用して 1 つのアプリケーションを実行している開発者は、次のオプションを使用できます。
 
-- B1 と S1 のインスタンス: -Xms1024m -Xmx1024m
-- B2 と S2 のインスタンス: -Xms3072m -Xmx3072m
-- B3 と S3 のインスタンス: -Xms6144m -Xmx6144m
-
+- B1 および S1 インスタンス: `-Xms1024m -Xmx1024m`
+- B2 および S2 インスタンス: `-Xms3072m -Xmx3072m`
+- B3 および S3 インスタンス: `-Xms6144m -Xmx6144m`
 
 アプリケーション ヒープ設定をチューニングする際には、App Service プランの詳細を確認し、複数のアプリケーションおよびデプロイ スロットのニーズを考慮して、メモリの最適な割り当てを特定する必要があります。
+
+JAR アプリケーションをデプロイする場合、組み込みのイメージによりアプリが正しく識別されるよう、名前を `app.jar` にしてください。 (Maven プラグインでは、名前がこのように自動的に変更されます。)JAR の名前を `app.jar` に変更しない場合、JAR を実行するコマンドが含まれるシェル スクリプトをアップロードできます。 その後、ポータルの構成セクションで [[スタートアップ ファイル]](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-faq#startup-file) テキストボックスにこのスクリプトの完全なパスを貼り付けます。
 
 ### <a name="turn-on-web-sockets"></a>Web ソケットを有効にする
 
@@ -100,7 +117,7 @@ az webapp start --name <app-name> --resource-group <resource-group-name>
 
 ### <a name="set-default-character-encoding"></a>既定の文字エンコーディングを設定する
 
-Azure portal の Web アプリ用の **[アプリケーション設定]** で、値 `$JAVA_OPTS -Dfile.encoding=UTF-8` を含む、`JAVA_OPTS` という名前の新しいアプリ設定を作成します。
+Azure portal の Web アプリ用の **[アプリケーション設定]** で、値 `-Dfile.encoding=UTF-8` を含む、`JAVA_OPTS` という名前の新しいアプリ設定を作成します。
 
 または、App Service Maven プラグインを使用してアプリ設定を構成できます。 プラグイン構成で、設定名および値のタグを追加します。
 
@@ -108,10 +125,14 @@ Azure portal の Web アプリ用の **[アプリケーション設定]** で、
 <appSettings>
     <property>
         <name>JAVA_OPTS</name>
-        <value>$JAVA_OPTS -Dfile.encoding=UTF-8</value>
+        <value>-Dfile.encoding=UTF-8</value>
     </property>
 </appSettings>
 ```
+
+### <a name="adjust-startup-timeout"></a>スタートアップ タイムアウトの調整
+
+Java アプリケーションが特に大きい場合、スタートアップの時間制限を増やす必要があります。 これを行うには、アプリケーション設定を作成し、`WEBSITES_CONTAINER_START_TIME_LIMIT` と App Service がタイムアウトするまでの時間を秒数で設定します。最大値は `1800` 秒です。
 
 ## <a name="secure-applications"></a>セキュリティで保護されたアプリケーション
 
@@ -123,11 +144,19 @@ App Service for Linux で実行される Java アプリケーションは、他�
 
 複数のサインイン プロバイダーを有効にする必要がある場合は、[App Service 認証のカスタマイズ](../app-service-authentication-how-to.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)に関する記事の手順に従います。
 
- Spring Boot 開発者は、[Azure Active Directory Spring Boot スターター](/java/azure/spring-framework/configure-spring-boot-starter-java-app-with-azure-active-directory?view=azure-java-stable)を使用して、使い慣れた Spring Security の注釈と API を使用してアプリケーションをセキュリティで保護することができます。
+ Spring Boot 開発者は、[Azure Active Directory Spring Boot スターター](/java/azure/spring-framework/configure-spring-boot-starter-java-app-with-azure-active-directory?view=azure-java-stable)を使用して、使い慣れた Spring Security の注釈と API を使用してアプリケーションをセキュリティで保護することができます。 `application.properties` ファイルで最大ヘッダー サイズを大きくしてください。 `16384` の値をお勧めします。
 
 ### <a name="configure-tlsssl"></a>TLS/SSL を構成する
 
 [既存のカスタム SSL 証明書のバインド](../app-service-web-tutorial-custom-ssl.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)に関する記事の手順に従って、既存の SSL 証明書をアップロードし、アプリケーションのドメイン名にバインドします。 既定では、アプリケーションで引き続き HTTP 接続が許可されます。チュートリアルの特定の手順に従って、SSL と TLS を適用します。
+
+### <a name="use-keyvault-references"></a>KeyVault 参照を使用する
+
+[Azure Key Vault](../../key-vault/key-vault-overview.md) では、アクセス ポリシーと監査履歴を使用した一元的なシークレット管理を提供しています。 シークレット (パスワードや接続文字列など) を KeyVault に格納し、環境変数を使用してアプリケーション内でこれらのシークレットにアクセスすることができます。
+
+最初に、[Key Vault へのアクセス権をアプリに付与](../app-service-key-vault-references.md#granting-your-app-access-to-key-vault)したり、[アプリケーション設定で自分のシークレットに対する KeyVault 参照を設定](../app-service-key-vault-references.md#reference-syntax)したりするための手順に従います。 App Service のターミナルにリモートでアクセスしている間に環境変数を出力することで、シークレットへの参照が解決されることを確認できます。
+
+Spring または Tomcat 構成ファイルにこれらのシークレットを挿入するには、環境変数の挿入構文 (`${MY_ENV_VAR}`) を使用します。 Spring の構成ファイルについては、[外部化された構成](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html)に関するこちらのドキュメントを参照してください。
 
 ## <a name="configure-apm-platforms"></a>APM プラットフォームを構成する
 
@@ -160,13 +189,29 @@ App Service for Linux で実行される Java アプリケーションは、他�
     - **Java SE** を使用している場合、`JAVA_OPTS` の名前および `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>` の値を持ち、`<app-name>` の App Service 名を持つ環境変数を作成します。
     - **Tomcat** を使用している場合、`CATALINA_OPTS` の名前および `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>` の値を持ち、`<app-name>` の App Service 名を持つ環境変数を作成します。
     - **WildFly** を使用している場合は、Java エージェントのインストールおよび JBoss 構成に関するガイダンスについて、[こちら](https://docs.appdynamics.com/display/PRO45/JBoss+and+Wildfly+Startup+Settings)の AppDynamics のドキュメントを参照してください。
+    
+## <a name="configure-jar-applications"></a>JAR アプリケーションの構成
 
-## <a name="configure-tomcat"></a>Tomcat を構成する
+### <a name="starting-jar-apps"></a>JAR アプリの開始
 
-### <a name="connect-to-data-sources"></a>データ ソースへの接続
+既定では、App Service は JAR アプリケーションの名前が `app.jar` になることを予期しています。 この名前の場合、自動的に実行されます。 Maven ユーザーの場合、`<finalName>app</finalName>` を該当の `pom.xml` の `<build>` セクションに含めることで JAR 名を設定できます。 `archiveFileName` プロパティを設定することによって、[Gradle で同じことを行うことができます](https://docs.gradle.org/current/dsl/org.gradle.api.tasks.bundling.Jar.html#org.gradle.api.tasks.bundling.Jar:archiveFileName)。
 
->[!NOTE]
-> アプリケーションで Spring Boot または Spring Framework を使用している場合は、Spring データ JPA のデータベース接続情報を環境変数として設定できます [アプリケーションのプロパティ ファイル内]。 その後、Azure portal または CLI で、[アプリ設定](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#app-settings)を使用してアプリケーションに対してこれらの値を定義することができます。
+JAR に別の名前を使用する場合、JAR ファイルを実行する[スタートアップ コマンド](app-service-linux-faq.md#built-in-images)を指定する必要もあります。 たとえば、「 `java -jar my-jar-app.jar` 」のように入力します。 スタートアップ コマンドの値は、ポータルの [構成] > [全般設定] の下、または `STARTUP_COMMAND` という名前のアプリケーション設定を使用して設定できます。
+
+### <a name="server-port"></a>サーバー ポート
+
+App Service Linux では着信要求がポート 80 にルーティングされるため、アプリケーションもポート 80 でリッスンする必要があります。 これはアプリケーションの構成 (Spring の `application.properties` ファイルなど)、またはスタートアップ コマンド (たとえば、`java -jar spring-app.jar --server.port=80`) で行うことができます。 一般的な Java フレームワークについては、次のドキュメントを参照してください。
+
+- [Spring Boot](https://docs.spring.io/spring-boot/docs/current/reference/html/howto-properties-and-configuration.html#howto-use-short-command-line-arguments)
+- [SparkJava](http://sparkjava.com/documentation#embedded-web-server)
+- [Micronaut](https://docs.micronaut.io/latest/guide/index.html#runningSpecificPort)
+- [Play Framework](https://www.playframework.com/documentation/2.6.x/ConfiguringHttps#Configuring-HTTPS)
+- [Vertx](https://vertx.io/docs/vertx-core/java/#_start_the_server_listening)
+- [Quarkus](https://quarkus.io/guides/application-configuration-guide)
+
+## <a name="data-sources"></a>データ ソース
+
+### <a name="tomcat"></a>Tomcat
 
 これらの説明は、すべてのデータベース接続に適用されます。 プレースホルダーを、選択したデータベースのドライバーのクラス名と JAR ファイルに置き換える必要があります。 一般的なデータベースのクラス名とドライバーのダウンロードを含む表を次に示します。
 
@@ -187,7 +232,7 @@ Java Database Connectivity (JDBC) または Java Persistence API (JPA) を使用
 </appSettings>
 ```
 
-または、Azure Portal の [アプリケーションの設定] ブレードで環境変数を設定します。
+または、Azure portal の **[構成]**  >  **[アプリケーション設定]** ページで環境変数を設定します。
 
 次に、データ ソースを Tomcat サーブレットで実行されている 1 つのアプリケーション、またはすべてのアプリケーションのどちらに対して使用可能にする必要があるかを判定します。
 
@@ -278,7 +323,28 @@ Java Database Connectivity (JDBC) または Java Persistence API (JPA) を使用
 
 2. サーバー レベルのデータ ソースを作成した場合は、App Service Linux アプリケーションを再起動します。 Tomcat が `CATALINA_HOME` を `/home/tomcat/conf` にリセットし、更新された構成を使用します。
 
-## <a name="configure-wildfly-server"></a>WildFly サーバーを構成する
+### <a name="spring-boot"></a>Spring Boot
+
+Spring Boot アプリケーション内のデータ ソースに接続するには、接続文字列を作成し、それらを `application.properties` ファイルに挿入することをお勧めします。
+
+1. App Service ページの [構成] セクションに文字列の名前を設定し、JDBC 接続文字列を値フィールドに貼り付けて、タイプを [カスタム] に設定します。 必要に応じて、この接続文字列をスロット設定として設定することができます。
+
+    この接続文字列は、`CUSTOMCONNSTR_<your-string-name>` という名前の環境変数としてアプリケーションにアクセスできます。 たとえば、先ほど作成した接続文字列の名前は `CUSTOMCONNSTR_exampledb` になります。
+
+2. `application.properties` ファイルで、環境変数名を使用してこの接続文字列を参照します。 たとえば、例では次を使用します。
+
+    ```yml
+    app.datasource.url=${CUSTOMCONNSTR_exampledb}
+    ```
+
+このトピックの詳細については、[データ アクセス](https://docs.spring.io/spring-boot/docs/current/reference/html/howto-data-access.html)と[外部化された構成](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html)に関する Spring Boot の資料を参照してください。
+
+## <a name="configure-java-ee-wildfly"></a>Java EE (WildFly) の構成
+
+> [!NOTE]
+> App Service Linux 上の Java Enterprise エディションは現在プレビュー段階です。 このスタックを運用環境向けの作業に使用することは**お勧めできません**。 Java SE と Tomcat のスタックについての情報。
+
+Azure App Service on Linux を使用すると、Java 開発者は、完全に管理された Linux ベースのサービス上で Java Enterprise (Java EE) アプリケーションをビルド、デプロイ、およびスケーリングすることができます。  基になる Java Enterprise ランタイム環境は、オープン ソース [Wildfly](https://wildfly.org/) アプリケーション サーバーです。
 
 [App Service によるスケーリング](#scale-with-app-service)
 [アプリケーション サーバー構成のカスタマイズ](#customize-application-server-configuration)
@@ -314,7 +380,7 @@ App Service インスタンスの `/home/site/deployments/tools` にスタート
 
 Azure portal の **[Startup Script]\(スタートアップ スクリプト\)** フィールドに、スタートアップ シェル スクリプトの場所 (`/home/site/deployments/tools/your-startup-script.sh` など) を設定します。
 
-スクリプトで使用する環境変数を渡すために、アプリケーション構成で[アプリ設定](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#app-settings)を指定します。 アプリケーション設定では、バージョン コントロールされていないアプリケーションを構成するために必要な接続文字列と他のシークレットを保持します。
+スクリプトで使用する環境変数を渡すために、アプリケーション構成で[アプリ設定](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)を指定します。 アプリケーション設定では、バージョン コントロールされていないアプリケーションを構成するために必要な接続文字列と他のシークレットを保持します。
 
 ### <a name="modules-and-dependencies"></a>モジュールと依存関係
 
@@ -332,10 +398,10 @@ JBoss CLI を使用して、Wildfly クラスパスにモジュールとそれ�
 モジュールのファイルと内容を用意したら、次の手順に従って、Wildfly アプリケーション サーバーにモジュールを追加します。
 
 1. ファイルを App Service インスタンスの `/home/site/deployments/tools` に FTP で送信します。 FTP 資格情報の取得の手順については、このドキュメントを参照してください。
-2. Azure portal の [アプリケーション設定] ブレードで、[Startup Script]\(スタートアップ スクリプト\) フィールドにスタートアップ シェル スクリプトの場所 (例: `/home/site/deployments/tools/your-startup-script.sh`) を設定します。
+2. Azure portal の **[構成]**  >  **[全般設定]** ページで、[Startup Script]\(スタートアップ スクリプト\) フィールドにスタートアップ シェル スクリプトの場所 (例: `/home/site/deployments/tools/your-startup-script.sh`) を設定します。
 3. portal の **[概要]** セクションの **[再起動]** ボタンを押すか、または Azure CLI を使用して、App Service インスタンスを再起動します。
 
-### <a name="data-sources"></a>データ ソース
+### <a name="configure-data-source-connections"></a>データ ソース接続の構成
 
 データ ソース接続用に Wildfly を構成するには、先述のモジュールのインストールと依存関係のセクションで説明した同じ手順に従います。 任意の Azure データベース サービスについても同じ手順に従うことができます。
 
@@ -411,3 +477,4 @@ Azure でサポートされている Java Development Kit (JDK) は、[Azul Syst
 [Java 開発者向けの Azure](/java/azure/) センターにアクセスして、Azure クイック スタート、チュートリアル、および Java リファレンス ドキュメントを入手してください。
 
 Java 開発に限られない、App Service for Linux の使用に関する一般的な質問については、[App Service Linux の FAQ](app-service-linux-faq.md) で回答されています。
+

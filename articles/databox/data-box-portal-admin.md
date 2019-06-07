@@ -1,23 +1,23 @@
 ---
-title: Azure Data Box ポータル管理ガイド | Microsoft Docs
+title: Azure portal を使用して Azure Data Box を管理する | Microsoft Docs
 description: Azure portal を使用して Azure Data Box を管理する方法について説明します。
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
-ms.topic: overview
+ms.topic: article
 ms.date: 04/15/2019
 ms.author: alkohli
-ms.openlocfilehash: 483e1e0f6a472132446b20a161d012e69d83c4ac
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.openlocfilehash: 31909e1f13d211aa87f13547218a6967d8e195ac
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59607111"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65950505"
 ---
-# <a name="use-the-azure-portal-to-administer-your-data-box"></a>Azure portal を使用して Data Box を管理する
+# <a name="use-the-azure-portal-to-administer-your-azure-data-box"></a>Azure portal を使用して Azure Data Box を管理する
 
-この記事では、Data Box で実行できる一部の複雑なワークフローと管理タスクについて説明します。 Data Box の管理は、Azure portal またはローカル Web UI から行うことができます。 
+この記事では、Azure Data Box で実行できる一部の複雑なワークフローと管理タスクについて説明します。 Data Box の管理は、Azure portal またはローカル Web UI から行うことができます。
 
 この記事では、Azure portal を使用して実行できるタスクについて説明します。 Azure portal を使用して、注文を管理したり、Data Box を管理したり、完了まで注文の状態を追跡したりします。
 
@@ -48,7 +48,7 @@ ms.locfileid: "59607111"
 
     ![注文の複製 1](media/data-box-portal-admin/clone-order1.png)
 
-2.  注文の詳細はすべてそのままの状態で維持されます。 複製された注文は、元の名前の最後に "*-Clone*" を追加した名前になります。 プライバシー情報を確認済みであることへの同意として、チェック ボックスをオンにします。 **Create** をクリックしてください。
+2.  注文の詳細はすべてそのままの状態で維持されます。 複製された注文は、元の名前の最後に " *-Clone*" を追加した名前になります。 プライバシー情報を確認済みであることへの同意として、チェック ボックスをオンにします。 **Create** をクリックしてください。
 
 複製は数分で作成され、ポータルに新しい注文が反映されます。
 
@@ -61,7 +61,7 @@ ms.locfileid: "59607111"
 
 1. **[すべてのリソース]** に移動します。 目的の注文を検索します。
 
-2. 削除する注文をクリックし、**[概要]** に移動します。 コマンド バーの **[削除]** をクリックします。
+2. 削除する注文をクリックし、 **[概要]** に移動します。 コマンド バーの **[削除]** をクリックします。
 
     ![Data Box 注文の削除 1](media/data-box-portal-admin/delete-order1.png)
 
@@ -116,7 +116,7 @@ Data Box の注文が完了すると、デバイス ディスク上のデータ�
 
 注文履歴をダウンロードするには、次の手順を実行します。
 
-1. Data Box の注文で、**[概要]** に移動します。 注文が完了していることを確認します。 注文が完了し、デバイスのクリーンアップが完了している場合は、**[注文の詳細]** に移動します。 **[注文履歴のダウンロード]** オプションが使用可能になっています。
+1. Data Box の注文で、 **[概要]** に移動します。 注文が完了していることを確認します。 注文が完了し、デバイスのクリーンアップが完了している場合は、 **[注文の詳細]** に移動します。 **[注文履歴のダウンロード]** オプションが使用可能になっています。
 
     ![注文履歴のダウンロード](media/data-box-portal-admin/download-order-history-1.png)
 

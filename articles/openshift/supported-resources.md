@@ -7,13 +7,13 @@ ms.author: twhitney
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 05/06/2019
-ms.openlocfilehash: 22cc195b7808ad4a9111aafcf883a68c51f3709f
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.date: 05/15/2019
+ms.openlocfilehash: 5182a5e325bd7883af1a7d102d3e02b277a5089e
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65080265"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65788693"
 ---
 # <a name="azure-red-hat-openshift-resources"></a>Azure Red Hat OpenShift のリソース
 
@@ -21,17 +21,7 @@ ms.locfileid: "65080265"
 
 ## <a name="azure-regions"></a>Azure Azure リージョン
 
-世界中の次の Azure リージョンに、Azure Red Hat OpenShift クラスターをデプロイできます。
-
-|リージョン|CLI コード|
-|-|-|
-|AU オーストラリア東部|`australiaeast`|
-|CA カナダ中部|`canadacentral`|
-|CA カナダ東部|`canadaeast`|
-|US 米国東部|`eastus`|
-|US 米国西部|`westus`|
-|EU 西ヨーロッパ|`westeurope`|
-|EU 北ヨーロッパ|`northeurope`|
+Azure Red Hat OpenShift クラスターをデプロイできる最新のリージョン一覧については、[リージョン別の使用できる製品](https://azure.microsoft.com/global-infrastructure/services/?products=openshift&regions=all)に関する記事を参照してください。
 
 ## <a name="virtual-machine-sizes"></a>仮想マシン サイズ
 

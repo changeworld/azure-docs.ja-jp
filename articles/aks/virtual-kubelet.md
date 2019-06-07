@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/14/2018
 ms.author: iainfou
-ms.openlocfilehash: a6a2fb246e407d6ea240ff40f4d2fa2b1b780931
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: f7a0269ff22987648d134cb7f4fba8e28e29fd8b
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54054014"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956280"
 ---
 # <a name="use-virtual-kubelet-with-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での Virtual Kubelet の使用
 
@@ -26,13 +26,35 @@ Azure Container Instances に Virtual Kubelet プロバイダーを使用する�
 >
 > Virtual Kubelet は実験的なオープン ソース プロジェクトなので、その点を考慮して使用する必要があります。 Virtual Kubelet に関する投稿、問題の提起、詳細情報については、[Virtual Kubelet GitHub プロジェクト][vk-github]に関するページを参照してください。
 
-## <a name="prerequisite"></a>前提条件
+## <a name="before-you-begin"></a>開始する前に
 
 このドキュメントでは、AKS クラスターがあることを前提としています。 AKS クラスターが必要な場合は、[Azure Kubernetes Service (AKS) のクイック スタート][aks-quick-start]に関するページを参照してください。
 
 また、Azure CLI バージョン **2.0.33** 以降がインストールされている必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
 
 Virtual Kubelet をインストールするには、[Helm](https://docs.helm.sh/using_helm/#installing-helm) も必要です。
+
+### <a name="register-container-instances-feature-provider"></a>Container Instances 機能プロバイダーを登録する
+
+以前に Azure コンテナー インスタンス (ACI) サービスを使用していない場合は、ご使用のサブスクリプションでサービス プロバイダーを登録します。 ACI プロバイダーの状態は、次の例で示すように [az provider list][az-provider-list] コマンドを使用して確認できます。
+
+```azurecli-interactive
+az provider list --query "[?contains(namespace,'Microsoft.ContainerInstance')]" -o table
+```
+
+*Microsoft.ContainerInstance* プロバイダーは、次の出力の例で示すように *Registered* としてレポートします。
+
+```
+Namespace                    RegistrationState
+---------------------------  -------------------
+Microsoft.ContainerInstance  Registered
+```
+
+プロバイダーが *NotRegistered* として示される場合は、次の例で示すように [az provider register][az-provider-register] を使用してプロバイダーを登録します。
+
+```azurecli-interactive
+az provider register --namespace Microsoft.ContainerInstance
+```
 
 ### <a name="for-rbac-enabled-clusters"></a>RBAC 対応クラスターの場合
 
@@ -90,13 +112,13 @@ az aks install-connector --resource-group myAKSCluster --name myAKSCluster --con
 | `--connector-name` | ACI コネクタの名前。| はい |
 | `--name` `-n` | マネージド クラスターの名前。 | はい |
 | `--resource-group` `-g` | リソース グループの名前。 | はい |
-| `--os-type` | コンテナー インスタンスのオペレーティング システムのタイプ。 使用できる値は以下の通りです。両方、Linux、Windows。 既定値はLinux。 | いいえ  |
-| `--aci-resource-group` | ACI コンテナー グループを作成するリソース グループ。 | いいえ  |
-| `--location` `-l` | ACI コンテナー グループを作成する場所。 | いいえ  |
-| `--service-principal` | Azure API に対する認証に使用されるサービス プリンシパル。 | いいえ  |
-| `--client-secret` | サービス プリンシパルに関連付けられているシークレット。 | いいえ  |
-| `--chart-url` | ACI Connector をインストールする Helm チャートの URL。 | いいえ  |
-| `--image-tag` | Virtual Kubelet コンテナー イメージのイメージ タグ。 | いいえ  |
+| `--os-type` | コンテナー インスタンスのオペレーティング システムのタイプ。 使用できる値は以下の通りです。両方、Linux、Windows。 既定値はLinux。 | いいえ |
+| `--aci-resource-group` | ACI コンテナー グループを作成するリソース グループ。 | いいえ |
+| `--location` `-l` | ACI コンテナー グループを作成する場所。 | いいえ |
+| `--service-principal` | Azure API に対する認証に使用されるサービス プリンシパル。 | いいえ |
+| `--client-secret` | サービス プリンシパルに関連付けられているシークレット。 | いいえ |
+| `--chart-url` | ACI Connector をインストールする Helm チャートの URL。 | いいえ |
+| `--image-tag` | Virtual Kubelet コンテナー イメージのイメージ タグ。 | いいえ |
 
 ## <a name="validate-virtual-kubelet"></a>Virtual Kubelet を検証する
 

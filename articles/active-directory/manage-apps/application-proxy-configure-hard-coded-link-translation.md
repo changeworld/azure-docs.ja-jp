@@ -3,8 +3,8 @@ title: リンクと URL の Azure AD アプリ プロキシの変換 | Microsoft
 description: Azure AD アプリケーション プロキシ コネクタの基本について説明します。
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/04/2018
-ms.author: celested
+ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2949559542759cadf90d329bc50b352998b3eb7e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b0899a127566c4d06de7d42443a956c2660a7a6d
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59262552"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956895"
 ---
 # <a name="redirect-hardcoded-links-for-apps-published-with-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシで公開されているアプリのハードコードされたリンクをリダイレクトする
 
@@ -59,13 +59,14 @@ MyApps ブラウザー拡張機能を使用すると、アプリケーション 
 
 この機能を使用するには、ユーザーが拡張機能をダウンロードしてログインしている必要があります。 管理者またはユーザーに必要なその他の構成はありません。 
 
- 
+このオプションの構成方法などの詳細については、[MyApps Browser 拡張機能](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access#download-and-install-the-my-apps-secure-sign-in-extension)のドキュメントを参照してください。
 
 ### <a name="option-3-link-translation-setting"></a>オプション 3: リンク変換設定 
 
-リンク変換が有効になっている場合、アプリケーション プロキシ サービスが HTML と CSS を通じて公開されている内部リンクを検索し、それらを変換して、ユーザーの操作が中断されないようにします。 
+リンク変換が有効になっている場合、アプリケーション プロキシ サービスが HTML と CSS を通じて公開されている内部リンクを検索し、それらを変換して、ユーザーの操作が中断されないようにします。 より高パフォーマンスなエクスペリエンスをユーザーに提供するため、MyApps Browser 拡張機能の使用はリンク変換設定よりも優先されます。
 
-
+> [!NOTE]
+> オプション 2 または 3 を使用している場合は、一度に 1 つのみを有効にするようにします。
 
 ## <a name="how-link-translation-works"></a>リンク変換の仕組み
 
@@ -133,7 +134,7 @@ MyApps ブラウザー拡張機能を使用すると、アプリケーション 
 リンク変換の使用開始は、ボタンをクリックするのと同じくらい簡単です。
 
 1. [Azure Portal](https://portal.azure.com) に管理者としてサインインします。
-2. **[Azure Active Directory]** > **[エンタープライズ アプリケーション]** > **[すべてのアプリケーション]** に移動し、管理するアプリを選び、**[アプリケーション プロキシ]** を選択します。
+2. **[Azure Active Directory]**  >  **[エンタープライズ アプリケーション]**  >  **[すべてのアプリケーション]** に移動し、管理するアプリを選び、 **[アプリケーション プロキシ]** を選択します。
 3. **[Translate URLs in application body]\(アプリケーション本文の URL を変換する\)** を **[はい]** にします。
 
    ![[はい] を選択してアプリケーション本文の URL を変換する](./media/application-proxy-configure-hard-coded-link-translation/select_yes.png)

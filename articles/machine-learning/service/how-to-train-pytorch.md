@@ -11,12 +11,12 @@ author: mx-iao
 ms.reviewer: sgilley
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 02463ba47a48f5e86055b9ecb4e0edbdf9608769
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 11819730e05e425066e1f060769e14d5290f877d
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024567"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65851976"
 ---
 # <a name="train-pytorch-models-with-azure-machine-learning-service"></a>Azure Machine Learning service を使用して PyTorch モデルをトレーニングする
 
@@ -105,7 +105,7 @@ run = exp.submit(pt_est)
 
 ## <a name="export-to-onnx"></a>ONNX にエクスポートする
 
-[ONNX Runtime](concept-onnx.md) での推論を最適化するために、トレーニングされた PyTorch モデルを ONNX 形式に変換することができます。 例については、[チュートリアル](https://github.com/onnx/tutorials/blob/master/tutorials/PytorchOnnxExport.ipynb)を参照してください。
+[ONNX Runtime](concept-onnx.md) での推論を最適化するために、トレーニングされた PyTorch モデルを ONNX 形式に変換します。 推論、つまりモデル スコアリングとは、通常は運用環境のデータに基づいて、デプロイしたモデルを使用して予測を行うフェーズです。 例については、[チュートリアル](https://github.com/onnx/tutorials/blob/master/tutorials/PytorchOnnxExport.ipynb)を参照してください。
 
 ## <a name="examples"></a>例
 

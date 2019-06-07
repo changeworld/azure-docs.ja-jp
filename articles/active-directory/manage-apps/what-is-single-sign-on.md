@@ -2,22 +2,22 @@
 title: アプリケーションへのシングル サインオン - Azure Active Directory | Microsoft Docs
 description: Azure Active Directory (Azure AD) でアプリケーションを構成するときに、シングル サインオンの方法を選択する方法について説明します。 ユーザーがすべてのアプリケーションのパスワードを覚えておく必要がないようにシングル サインオンを使用し、アカウント管理の管理を簡素化します。
 services: active-directory
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/12/2019
-ms.author: celested
+ms.date: 05/15/2019
+ms.author: mimart
 ms.reviewer: arvindh, japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75aa0f4755fe3d124094ace3c3e6b8e6ea3b65e0
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.openlocfilehash: 51b3066a529183d7a8a13e4673d7879136aa0d7a
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59618177"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65824162"
 ---
 # <a name="single-sign-on-to-applications-in-azure-active-directory"></a>Azure Active Directory でのアプリケーションへのシングル サインオン
 
@@ -45,7 +45,7 @@ ms.locfileid: "59618177"
 | [OpenID Connect と OAuth](#openid-connect-and-oauth) | クラウドのみ | 新しいアプリケーションを開発するときは、OpenID Connect と OAuth を使用します。 このプロトコルによってアプリケーションの構成が簡略化されます。また、簡単に使用できる SDK が用意されており、お客様のアプリケーションで MS Graph を使用できるようになります。
 | [SAML](#saml-sso) | クラウドとオンプレミス | OpenID Connect または OAuth を使用しない既存のアプリケーションには、可能な限り SAML を選択してください。 SAML は、SAML プロトコルのいずれかを使用して認証するアプリケーションの場合に機能します。|
 | [パスワード ベース](#password-based-sso) | クラウドとオンプレミス | アプリケーションがユーザー名とパスワードを使用して認証する場合にはパスワードベースを選択します。 パスワードベースのシングル サインオンでは、セキュリティで保護されたアプリケーションのパスワードの保存と、Web ブラウザーの拡張機能またはモバイル アプリを使用した再生が可能になります。 この方法では、アプリケーションによって提供される既存のサインイン プロセスが使用されますが、管理者がパスワードを管理できるようになります。 |
-| [リンク](#linked-sso) | クラウドとオンプレミス | アプリケーションが別の ID プロバイダー サービスでのシングル サインオンの用に構成されている場合は、リンクされたシングル サインオンを選択します。 このオプションは、アプリケーションにシングル サインオンを追加するものではありません。 ただし、アプリケーションには、Active Directory フェデレーション サービス (AD FS) などの別のサービスを使って既にシングル サインオンが実装されている場合があります。|
+| [リンク](#linked-sign-on) | クラウドとオンプレミス | アプリケーションが別の ID プロバイダー サービスでのシングル サインオンの用に構成されている場合は、リンクされたサインオンを選択します。 このオプションは、アプリケーションにシングル サインオンを追加するものではありません。 ただし、アプリケーションには、Active Directory フェデレーション サービス (AD FS) などの別のサービスを使って既にシングル サインオンが実装されている場合があります。|
 | [Disabled](#disabled-sso) | クラウドとオンプレミス | シングル サインオンのためにアプリを構成する準備ができていない場合は、無効化のシングル サインオンを選択します。 ユーザーは、そのアプリケーションを起動するたびにユーザー名とパスワードを入力する必要があります。|
 | [統合 Windows 認証 (IWA)](#integrated-windows-authentication-iwa-sso) | オンプレミスのみ | [統合 Windows 認証 (IWA)](/aspnet/web-api/overview/security/integrated-windows-authentication) を使用するアプリケーションまたは要求に対応するアプリケーションには、IWA シングル サインオンを選択します。 IWA の場合、アプリケーション プロキシ コネクタは、アプリケーションに対して Kerberos 制約付き委任 (KCD) を使用し、ユーザーを認証します。 | 
 | [ヘッダーベース](#header-based-sso) | オンプレミスのみ | アプリケーションが認証のためにヘッダーを使用する場合は、ヘッダー ベースのシングル サインオンを使用します。 ヘッダーベースのシングル サインオンには、Azure AD 用の PingAccess が必要です。 アプリケーション プロキシは、Azure AD を使用してユーザーを認証してから、コネクタ サービス経由でトラフィックを渡します。  | 
@@ -122,12 +122,12 @@ Azure AD 管理者が資格情報を管理する場合:
 - 管理者は、この場合も、アプリケーションの新しい資格情報を設定できます。
 
 
-## <a name="linked-sso"></a>リンクされた SSO
+## <a name="linked-sign-on"></a>リンクされたサインオン
 Azure AD は、リンクされたサインオンによって、既に別のサービスでのシングル サインオンのために構成されているシングル サインオンをアプリケーションに提供できます。 リンクされたアプリケーションは、Office 365 ポータルまたは Azure AD の MyApps ポータルで、エンドユーザーに表示できます。 たとえばユーザーは、Active Directory フェデレーション サービス 2.0 (AD FS) でシングル サインオン用に構成されているアプリケーションを、Office 365 ポータルから起動できます。 Office 365 ポータルまたは Azure AD の MyApps ポータルから起動される、リンクされたアプリケーションについても、追加のレポートが用意されています。 
 
-### <a name="linked-sso-for-application-migration"></a>アプリケーション移行の場合のリンクされた SSO
+### <a name="linked-sign-on-for-application-migration"></a>アプリケーション移行の場合のリンクされたサインオン
 
-リンクされた SSO では、一定期間にわたってアプリケーションを移行するときに、一貫したユーザー エクスペリエンスを提供できます。 アプリケーションを Azure Active Directory に移行する場合は、リンクされたシングル サインオンを使用して、移行する予定のすべてのアプリケーションへのリンクをすばやく発行できます。  ユーザーはすべてのリンクを、[MyApps ポータル](../user-help/active-directory-saas-access-panel-introduction.md)または [Office 365 アプリケーション起動プログラム](https://support.office.com/article/meet-the-office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a)で見つけられます。 アクセスしているのが、リンクされているアプリケーションであるか、移行されたアプリケーションであるか、ユーザーには分かりません。  
+リンクされたサインオンでは、一定期間にわたってアプリケーションを移行するときに、一貫したユーザー エクスペリエンスを提供できます。 アプリケーションを Azure Active Directory に移行する場合は、リンクされたサインオンを使用して、移行する予定のすべてのアプリケーションへのリンクをすばやく発行できます。  ユーザーはすべてのリンクを、[MyApps ポータル](../user-help/active-directory-saas-access-panel-introduction.md)または [Office 365 アプリケーション起動プログラム](https://support.office.com/article/meet-the-office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a)で見つけられます。 アクセスしているのが、リンクされているアプリケーションであるか、移行されたアプリケーションであるか、ユーザーには分かりません。  
 
 リンクされているアプリケーションでいったんユーザーが認証されたら、エンドユーザーにシングル サインオン アクセスが提供される前に、アカウント レコードを作成する必要があります。 このアカウント レコードのプロビジョニングは、自動的に実行することも、管理者が手動で実行することもできます。
 

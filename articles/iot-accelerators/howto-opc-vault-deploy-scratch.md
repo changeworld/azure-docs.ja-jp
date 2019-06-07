@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: dedba42d7e4b8d603d97522cf0173f41efd20b3a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 990b13d362b796f5e71f1bd41eb35fce9720fff4
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59496898"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65835160"
 ---
 # <a name="deploy-opc-vault-from-scratch"></a>OPC Vault をゼロからデプロイする
 
@@ -45,7 +45,7 @@ OPC Vault は、OPC UA サーバーとクライアント アプリケーショ�
 
 Visual Studio では、IDE の外部で何も構成しなくても、コマンド プロンプトを使用せずにすばやくアプリケーションを開くことができます。
 
-Visual Studio 2017 を使用した手順:
+Visual Studio を使用してアプリケーションを実行してデバッグするには:
 
 1. `iot-opc-gds-service.sln` ファイルを使用しているソリューションを開きます。
 

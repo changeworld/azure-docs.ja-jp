@@ -9,12 +9,12 @@ ms.date: 09/18/2018
 ms.service: application-insights
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 22e58f31e2f891eb09c3d42a01763c68cdcd11a8
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: ae9db483e15197e6cdaaaa5981410630184cc6ca
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55696185"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65957244"
 ---
 # <a name="collect-distributed-traces-from-python-preview"></a>Python から分散トレースを収集する (プレビュー)
 
@@ -28,7 +28,7 @@ Application Insights は、[OpenCensus](https://opencensus.io) と Microsoft の
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
-## <a name="sign-in-to-the-azure-portal"></a>Azure ポータルにサインインします。
+## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインします
 
 [Azure Portal](https://portal.azure.com/) にサインインします。
 
@@ -36,7 +36,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 まず、インストルメンテーション キー (ikey) を生成する Application Insights リソースを作成する必要があります。 ikey を使用して、OpenCensus でインストルメント化されたアプリケーションから Application Insights に分散トレースを送信するようにローカル フォワーダーを構成します。   
 
-1. **[リソースの作成]** > **[開発者ツール]** > **[Application Insights]** の順に選択します。
+1. **[リソースの作成]**  >  **[開発者ツール]**  >  **[Application Insights]** の順に選択します。
 
    ![Application Insights リソースの追加](./media/opencensus-python/0001-create-resource.png)
 
@@ -53,7 +53,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="configure-local-forwarder"></a>ローカル フォワーダーを構成する
 
-1. **[概要]** > **[Essentials]** を選択し、アプリケーションの**インストルメンテーション キー**をコピーします。
+1. **[概要]**  >  **[Essentials]** を選択し、アプリケーションの**インストルメンテーション キー**をコピーします。
 
    ![インストルメンテーション キーのスクリーンショット](./media/opencensus-python/0003-instrumentation-key.png)
 
@@ -78,10 +78,12 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="opencensus-python-package"></a>OpenCensus Python パッケージ
 
-1. コマンド ラインから pip または pipenv を使用して Python 用 Open Census パッケージをインストールします。
+1. コマンド ラインから pip または pipenv を使用して Python およびエクスポーター用 Open Census パッケージをインストールします。
 
-    ```python
+    ```console
     python -m pip install opencensus
+    python -m pip install opencensus-ext-ocagent
+
     # pip env install opencensus
     ```
 
@@ -92,20 +94,20 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     ```python
     from opencensus.trace.tracer import Tracer
-    
+
     def main():
         while True:
             valuePrompt()
-    
+
     def valuePrompt():
         tracer = Tracer()
         with tracer.span(name="test") as span:
             line = input("Enter a value: ")
             print(line)
-    
+
     if __name__ == "__main__":
         main()
-    
+
     ```
 
 3. このコードを実行すると、値を入力するように繰り返し求められます。 入力ごとに値はシェルに出力され、**SpanData** の対応する部分が OpenCensus Python Module によって生成されます。 OpenCensus プロジェクトでは、[_複数範囲のツリーとしてトレース_](https://opencensus.io/core-concepts/tracing/)が定義されます。
@@ -127,32 +129,33 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     ```python
     from opencensus.trace.tracer import Tracer
     from opencensus.trace import config_integration
-    from opencensus.trace.exporters.ocagent import trace_exporter
+    from opencensus.ext.ocagent.trace_exporter import TraceExporter
     from opencensus.trace import tracer as tracer_module
-    
+
     import os
-    
-    def main():        
+
+    def main():
         while True:
             valuePrompt()
-    
+
     def valuePrompt():
-        export_LocalForwarder = trace_exporter.TraceExporter(
+        export_LocalForwarder = TraceExporter(
         service_name=os.getenv('SERVICE_NAME', 'python-service'),
         endpoint=os.getenv('OCAGENT_TRACE_EXPORTER_ENDPOINT'))
-        
+
         tracer = Tracer(exporter=export_LocalForwarder)
         with tracer.span(name="test") as span:
             line = input("Enter a value: ")
             print(line)
-    
+
     if __name__ == "__main__":
         main()
+
     ```
 
 5. 上記のモジュールを保存して実行しようとすると、`grpc` に対して `ModuleNotFoundError` を受け取る可能性があります。 この場合は、以下を実行して [grpcio package](https://pypi.org/project/grpcio/) をインストールします。
 
-    ```
+    ```console
     python -m pip install grpcio
     ```
 
@@ -174,7 +177,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    ![パフォーマンス データが表示されたライブ メトリック ストリームのスクリーンショット](./media/opencensus-python/0006-stream.png)
 
-3. **[概要]** ページに戻り、**[アプリケーション マップ]** を選択して、アプリケーション コンポーネント間の依存関係と呼び出しのタイミングを視覚的に表したレイアウトを表示します。
+3. **[概要]** ページに戻り、 **[アプリケーション マップ]** を選択して、アプリケーション コンポーネント間の依存関係と呼び出しのタイミングを視覚的に表したレイアウトを表示します。
 
     ![基本的なアプリケーション マップのスクリーンショット](./media/opencensus-python/0007-application-map.png)
 

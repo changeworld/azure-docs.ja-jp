@@ -6,14 +6,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/16/2018
+ms.date: 05/14/2019
 ms.author: hrasheed
-ms.openlocfilehash: 3a2e81234702e1fcff0349a14a4bc2852d257ad6
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 7480dafe435e555bfba81ebd9242bb5724c0bf3f
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64686168"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65861593"
 ---
 # <a name="run-apache-hive-queries-using-the-data-lake-tools-for-visual-studio"></a>Data Lake Tools for Visual Studio を使用して Apache Hive クエリを実行する
 
@@ -21,35 +21,78 @@ Data Lake Tools for Visual Studio を使って Apache Hive のクエリを実行
 
 ## <a id="prereq"></a>前提条件
 
-* Azure HDInsight (HDInsight 上の Apache Hadoop) クラスター
-
-  > [!IMPORTANT]  
-  > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](../hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
+* HDInsight の Apache Hadoop クラスター。 [Linux での HDInsight の概要](./apache-hadoop-linux-tutorial-get-started.md)に関するページを参照してください。
 
 * 下記のいずれかのバージョンの Visual Studio
 
+    * Visual Studio 2015、2017 (任意のエディション)
     * Visual Studio 2013 Community/Professional/Premium/Ultimate の Update 4
-
-    * Visual Studio 2015 (任意のエディション)
-
-    * Visual Studio 2017 (任意のエディション)
 
 * HDInsight Tools for Visual Studio または Azure Data Lake Tools for Visual Studio ツールのインストールおよび構成については、 [HDInsight Hadoop Tools for Visual Studio の使用開始](apache-hadoop-visual-studio-tools-get-started.md) に関するページをご覧ください。
 
 ## <a id="run"></a>Visual Studio を使用して Apache Hive クエリを実行する
 
-1. **Visual Studio** を開き、**[新規]** > 、**[プロジェクト]** > 、**[Azure Data Lake]** > 、**[Hive]** > 、**[Hive アプリケーション]** の順に選択します。 プロジェクトの名前を指定します。
+Hive クエリを作成して実行するためのオプションは 2 つあります。
 
-2. このプロジェクトで作成した **Script.hql** ファイルを開き、次の HiveQL ステートメントを貼り付けます。
+* アドホック クエリを作成する
+* Hive アプリケーションを作成する
 
-   ```hiveql
-   set hive.execution.engine=tez;
-   DROP TABLE log4jLogs;
-   CREATE EXTERNAL TABLE log4jLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string)
-   ROW FORMAT DELIMITED FIELDS TERMINATED BY ' '
-   STORED AS TEXTFILE LOCATION '/example/data/';
-   SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs WHERE t4 = '[ERROR]' AND  INPUT__FILE__NAME LIKE '%.log' GROUP BY t4;
-   ```
+### <a name="ad-hoc"></a>アドホック
+
+アドホック クエリは **[バッチ]** または **[対話型]** モードで実行できます。
+
+1. **Visual Studio** を開きます。
+
+2. **サーバー エクスプローラー**から **[Azure]**  >  **[HDInsight]** に移動します。
+
+3. **[HDInsight]** を展開し、クエリを実行するクラスターを右クリックして、 **[Hive クエリの作成]** を選択します。
+
+4. 次の Hive クエリを入力します。
+
+    ```hql
+    SELECT * FROM hivesampletable;
+    ```
+
+5. **[Execute (実行)]** を選択します。 実行モードは既定で **[対話型]** であることに注意してください。
+
+    ![Interactive Hive クエリ実行のスクリーンショット](./media/apache-hadoop-use-hive-visual-studio/vs-execute-hive-query.png)
+
+6. 同じクエリを **[バッチ]** モードで実行するには、ドロップダウン リストを **[対話型]** から **[バッチ]** に切り替えます。 実行ボタンが **[実行]** から **[送信]** に変わることに注意してください。
+
+    ![Hive クエリの送信のスクリーンショット](./media/apache-hadoop-use-hive-visual-studio/vs-batch-query.png)
+
+    Hive エディターは IntelliSense をサポートしています。 Data Lake Tools for Visual Studio では、Hive スクリプトの編集時にリモート メタデータの読み込みをサポートします。 たとえば、`SELECT * FROM` と入力すると、IntelliSense によってテーブル名の候補が一覧表示されます。 テーブル名を指定すると、Intellisense によって列名が一覧表示されます。 このツールは、Hive の DML ステートメント、サブクエリ、および組み込みの UDF の大半をサポートします。 IntelliSense は、HDInsight のツール バーで選択されているクラスターのメタデータのみを推奨します。
+
+    ![HDInsight Visual Studio Tools での IntelliSense の例 1 のスクリーンショット](./media/apache-hadoop-use-hive-visual-studio/vs-intellisense-table-name.png "U-SQL IntelliSense")
+   
+    ![HDInsight Visual Studio Tools での IntelliSense の例 2 のスクリーンショット](./media/apache-hadoop-use-hive-visual-studio/vs-intellisense-column-name.png "U-SQL IntelliSense")
+
+7. **[送信]** または **[Submit (Advanced)]\(送信 (詳細設定)\)** を選択します。
+
+   [Submit (Advanced)]\(送信 (詳細設定)\) オプションを選択した場合は、スクリプトの **[ジョブ名]** 、 **[引数]** 、 **[追加の構成]** 、 **[状態ディレクトリ]** を構成します。
+
+    ![HDInsight Hadoop の Hive クエリのスクリーンショット](./media/apache-hadoop-use-hive-visual-studio/hdinsight.visual.studio.tools.submit.jobs.advanced.png "クエリの送信")
+
+### <a name="hive-application"></a>Hive アプリケーション
+
+1. **Visual Studio** を開きます。
+
+2. メニュー バーから、 **[ファイル]**  >  **[新規作成]**  >  **[プロジェクト]** に移動します。
+
+3. **[新規プロジェクト]** ウィンドウから、 **[テンプレート]**  >  **[Azure Data Lake]**  >  **[HIVE (HDInsight)]**  >  **[Hive アプリケーション]** に移動します。 
+
+4. このプロジェクトの名前を入力して、 **[OK]** を選択します。
+
+5. このプロジェクトで作成した **Script.hql** ファイルを開き、次の HiveQL ステートメントを貼り付けます。
+
+    ```hiveql
+    set hive.execution.engine=tez;
+    DROP TABLE log4jLogs;
+    CREATE EXTERNAL TABLE log4jLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string)
+    ROW FORMAT DELIMITED FIELDS TERMINATED BY ' '
+    STORED AS TEXTFILE LOCATION '/example/data/';
+    SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs WHERE t4 = '[ERROR]' AND  INPUT__FILE__NAME LIKE '%.log' GROUP BY t4;
+    ```
 
     これらのステートメントは次のアクションを実行します。
 
@@ -70,40 +113,44 @@ Data Lake Tools for Visual Studio を使って Apache Hive のクエリを実行
 
    * `INPUT__FILE__NAME LIKE '%.log'`: .log で終わるファイルのデータだけを返す必要があることを Hive に伝えます。 この句により、データを含む sample.log ファイルに検索が制限されます。
 
-3. ツール バーで、このクエリに使用する **HDInsight クラスター**を選択します。 **[送信]** を選択して、ステートメントを Hive ジョブとして実行します。
+6. ツール バーで、このクエリに使用する **HDInsight クラスター**を選択します。 **[送信]** を選択して、ステートメントを Hive ジョブとして実行します。
 
    ![[送信] バー](./media/apache-hadoop-use-hive-visual-studio/toolbar.png)
 
-4. **[Hive ジョブの概要]** に実行しているジョブに関する情報が表示されます。 **[更新]** リンクを使用して、**[ジョブのステータス]** が **[完了]** に変更されるまで、ジョブの情報を更新します。
+7. **[Hive ジョブの概要]** に実行しているジョブに関する情報が表示されます。 **[更新]** リンクを使用して、 **[ジョブのステータス]** が **[完了]** に変更されるまで、ジョブの情報を更新します。
 
    ![完了したジョブが表示されたジョブの概要](./media/apache-hadoop-use-hive-visual-studio/jobsummary.png)
 
-5. **[ジョブ出力]** リンクを使用して、このジョブの出力を表示します。 このクエリによって返された値である `[ERROR] 3` が表示されます。
+8. **[ジョブ出力]** リンクを使用して、このジョブの出力を表示します。 このクエリによって返された値である `[ERROR] 3` が表示されます。
 
-6. プロジェクトを作成せずに Hive クエリを実行することもできます。 **サーバー エクスプローラー**を使用して **[Azure]** > **[HDInsight]** の順に展開し、HDInsight サーバーを右クリックして、**[Hive クエリを記述]** を選択します。
+### <a name="additional-example"></a>その他の例
 
-7. 表示された **temp.hql** ドキュメントに次の HiveQL ステートメントを追加します。
+この例は、前の手順で作成された `log4jLogs` テーブルに依存しています。
 
-   ```hiveql
-   set hive.execution.engine=tez;
-   CREATE TABLE IF NOT EXISTS errorLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string) STORED AS ORC;
-   INSERT OVERWRITE TABLE errorLogs SELECT t1, t2, t3, t4, t5, t6, t7 FROM log4jLogs WHERE t4 = '[ERROR]' AND INPUT__FILE__NAME LIKE '%.log';
-   ```
+1. **サーバー エクスプローラー**から、クラスターを右クリックして **[Hive クエリの作成]** を選択します。
+
+2. 次の Hive クエリを入力します。
+
+    ```hql
+    set hive.execution.engine=tez;
+    CREATE TABLE IF NOT EXISTS errorLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string) STORED AS ORC;
+    INSERT OVERWRITE TABLE errorLogs SELECT t1, t2, t3, t4, t5, t6, t7 FROM log4jLogs WHERE t4 = '[ERROR]' AND INPUT__FILE__NAME LIKE '%.log';
+    ```
 
     これらのステートメントは次のアクションを実行します。
 
-   * `CREATE TABLE IF NOT EXISTS`:テーブルがまだ存在しない場合に、テーブルを作成します。 `EXTERNAL` キーワードが使用されていないため、このステートメントでは内部テーブルが作成されます。 内部テーブルは Hive データ ウェアハウスに格納され、Hive によって管理されます。
+    * `CREATE TABLE IF NOT EXISTS`:テーブルがまだ存在しない場合に、テーブルを作成します。 `EXTERNAL` キーワードが使用されていないため、このステートメントでは内部テーブルが作成されます。 内部テーブルは Hive データ ウェアハウスに格納され、Hive によって管理されます。
+    
+    > [!NOTE]  
+    > `EXTERNAL` テーブルとは異なり、内部テーブルを削除すると、基になるデータも削除されます。
 
-     > [!NOTE]  
-     > `EXTERNAL` テーブルとは異なり、内部テーブルを削除すると、基になるデータも削除されます。
+    * `STORED AS ORC`:Optimized Row Columnar (ORC) 形式でデータを格納します。 ORC は、Hive データを格納するための高度に最適化された効率的な形式です。
+    
+    * `INSERT OVERWRITE ... SELECT`:`[ERROR]` を含む `log4jLogs` テーブルの列を選択し、データを `errorLogs` テーブルに挿入します。
 
-   * `STORED AS ORC`:Optimized Row Columnar (ORC) 形式でデータを格納します。 ORC は、Hive データを格納するための高度に最適化された効率的な形式です。
+3. **[バッチ]** モードでクエリを実行します。
 
-   * `INSERT OVERWRITE ... SELECT`:`[ERROR]` を含む `log4jLogs` テーブルの列を選択し、データを `errorLogs` テーブルに挿入します。
-
-8. ツール バーで **[送信]** を選択し、ジョブを実行します。 **[ジョブ ステータス]** で、ジョブが正常に完了したことを確認します。
-
-9. ジョブによってテーブルが作成されたことを確認するには、**サーバー エクスプローラー**で、**[Azure]** > **[HDInsight]** > 対象の HDInsight クラスター > **[Hive データベース]** > **[既定]** の順に展開します。 **errorLogs** テーブルと **log4jLogs** テーブルが表示されます。
+4. ジョブによってテーブルが作成されたことを確認するには、**サーバー エクスプローラー**で、 **[Azure]**  >  **[HDInsight]** > 対象の HDInsight クラスター > **[Hive データベース]**  >  **[既定]** の順に展開します。 **errorLogs** テーブルと **log4jLogs** テーブルが表示されます。
 
 ## <a id="nextsteps"></a>次のステップ
 
@@ -122,31 +169,3 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 Visual Studio の HDInsight ツールに関する詳細情報:
 
 * [Visual Studio の HDInsight ツールの概要](apache-hadoop-visual-studio-tools-get-started.md)
-
-[azure-purchase-options]: https://azure.microsoft.com/pricing/purchase-options/
-[azure-member-offers]: https://azure.microsoft.com/pricing/member-offers/
-[azure-free-trial]: https://azure.microsoft.com/pricing/free-trial/
-
-[apache-tez]: https://tez.apache.org
-[apache-hive]: https://hive.apache.org/
-[apache-log4j]: https://en.wikipedia.org/wiki/Log4j
-[hive-on-tez-wiki]: https://cwiki.apache.org/confluence/display/Hive/Hive+on+Tez
-[import-to-excel]: https://azure.microsoft.com/documentation/articles/hdinsight-connect-excel-power-query/
-
-
-[hdinsight-use-oozie]: hdinsight-use-oozie-linux-mac.md
-
-
-
-[hdinsight-storage]: hdinsight-hadoop-use-blob-storage.md
-
-[hdinsight-provision]: hdinsight-hadoop-provision-linux-clusters.md
-[hdinsight-submit-jobs]:submit-apache-hadoop-jobs-programmatically.md
-[hdinsight-upload-data]: hdinsight-upload-data.md
-[hdinsight-get-started]:apache-hadoop-linux-tutorial-get-started.md
-
-[powershell-here-strings]: https://technet.microsoft.com/library/ee692792.aspx
-
-[image-hdi-hive-powershell]: ./media/hdinsight-use-hive/HDI.HIVE.PowerShell.png
-[img-hdi-hive-powershell-output]: ./media/hdinsight-use-hive/HDI.Hive.PowerShell.Output.png
-[image-hdi-hive-architecture]: ./media/hdinsight-use-hive/HDI.Hive.Architecture.png

@@ -3,17 +3,17 @@ title: リモート監視ソリューションをローカルにデプロイす�
 description: この攻略ガイドでは、リモート監視ソリューション アクセラレータをテストおよび開発のために Visual Studio Code を使用してローカル コンピューターにデプロイする方法を示します。
 author: avneet723
 manager: hegate
-ms.author: avneet723
+ms.author: avneets
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 946f815cecea4cc172fac35c0b260d795317e6e1
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: bfe28f3ff994d518cb744233e88a6f04b5771a83
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58316220"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65967516"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---visual-studio-code"></a>リモート監視ソリューション アクセラレータをローカルでデプロイする - Visual Studio Code
 
@@ -59,12 +59,12 @@ dotnet build -c Release
 
 ### <a name="deploy-all-other-microservices-on-local-machine"></a>ローカル コンピューター上のその他すべてのマイクロサービスをデプロイする
 
-次の手順では、Visual Studio 2017 のリモート監視マイクロサービスを実行する方法を示します。
+次の手順では、Visual Studio Code のリモート監視マイクロサービスを実行する方法を示します。
 
 1. Visual Studio Code を起動します。
 1. VS Code でローカル コピーから **azure-iot-pcs-remote-monitoring-dotnet** モジュールを開きます。
 1. scripts\local\launch\idesettings\vscode から **launch.json** ファイルと **tasks.json** ファイルをコピーします。\. 新しいフォルダー **azure-iot-pcs-remote-monitoring-dotnet\.vscode** を作成して、そこにファイルを貼り付けます。
-1. VS Code で [デバッグ] パネルを開き、**[Run all microservices]\(すべてのマイクロサービスを実行\)** 構成を実行します。 この構成は、デバイス シミュレーション マイクロサービスを Docker で実行し、他のマイクロサービスをデバッガーで実行します。
+1. VS Code で [デバッグ] パネルを開き、 **[Run all microservices]\(すべてのマイクロサービスを実行\)** 構成を実行します。 この構成は、デバイス シミュレーション マイクロサービスを Docker で実行し、他のマイクロサービスをデバッガーで実行します。
 
 たとえば**デバッグ コンソール**では、**Auth** サービスの出力が次のように表示されます。
 

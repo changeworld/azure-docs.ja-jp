@@ -6,15 +6,16 @@ services: media-services
 author: Juliako
 manager: femila
 ms.service: media-services
+ms.subservice: video-indexer
 ms.topic: article
-ms.date: 03/05/2019
+ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: e6dead0f08f50b32dd963832824d9166ff2467c0
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: e92086ca18887b9b2c2362e97d855c33834b83bb
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58893454"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65799210"
 ---
 # <a name="upload-and-index-your-videos"></a>ビデオのアップロードとインデックス作成  
 
@@ -32,7 +33,7 @@ Video Indexer API でビデオをアップロードする場合、次のアッ�
 
 - URL に基づいてビデオをアップロードする場合 (推奨)、エンドポイントは TLS 1.2 (またはそれ以降) を使用してセキュリティで保護する必要があります。
 - URL オプションでのアップロード サイズは、30 GB に制限されます
-- ほとんどのブラウザーでは、URL の長さは 2,000 文字に制限されています
+- 要求 URL の長さは 2,048 文字に制限されています
 - バイト配列オプションでのアップロード サイズは、2 GB に制限されます
 - バイト配列オプションでは 30 分後にタイムアウトします
 - `videoURL` パラメーターに指定する URL はエンコードする必要があります

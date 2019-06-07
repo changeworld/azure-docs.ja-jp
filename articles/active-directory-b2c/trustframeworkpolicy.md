@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 30cb6e49782b97d28b0d999f585d630477e8572f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 1a3382e560287502ae8afccae556bc5f56245904
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64684144"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65812943"
 ---
 # <a name="trustframeworkpolicy"></a>TrustFrameworkPolicy
 
@@ -41,12 +41,12 @@ ms.locfileid: "64684144"
 | Attribute | 必須 | 説明 |
 |---------- | -------- | ----------- |
 | PolicySchemaVersion | はい | ポリシーを実行するために使用されるスキーマ バージョン。 値は `0.3.0.0` である必要があります |
-| TenantObjectId | いいえ  | Azure Active Directory (Azure AD) B2C テナントの一意のオブジェクト識別子。 |
+| TenantObjectId | いいえ | Azure Active Directory (Azure AD) B2C テナントの一意のオブジェクト識別子。 |
 | TenantId | はい | このポリシーが属するテナントの一意の識別子。 |
 | PolicyId | はい | ポリシーの一意識別子。 この識別子には、プレフィックスとして *B2C_1A_* を付ける必要があります。 |
 | PublicPolicyUri | はい | ポリシーの URI。テナント ID とポリシー ID の組み合わせです。 |
-| DeploymentMode | いいえ  | 指定できる値: `Production`、`Debugging`、または `Development`。 `Production` は既定値です。 このプロパティを使用して、ポリシーをデバッグします。 詳細については、「[ログの収集](active-directory-b2c-troubleshoot-custom.md)」を参照してください。 |
-| UserJourneyRecorderEndpoint | いいえ  | **DeploymentMode** が `Development` に設定されているときに使用されるエンドポイント。 値は `urn:journeyrecorder:applicationinsights` である必要があります 詳細については、「[ログの収集](active-directory-b2c-troubleshoot-custom.md)」を参照してください。 |
+| DeploymentMode | いいえ | 指定できる値: `Production`、`Debugging`、または `Development`。 `Production` は既定値です。 このプロパティを使用して、ポリシーをデバッグします。 詳細については、「[ログの収集](active-directory-b2c-troubleshoot-custom.md)」を参照してください。 |
+| UserJourneyRecorderEndpoint | いいえ | **DeploymentMode** が `Development` に設定されているときに使用されるエンドポイント。 値は `urn:journeyrecorder:applicationinsights` である必要があります 詳細については、「[ログの収集](active-directory-b2c-troubleshoot-custom.md)」を参照してください。 |
 
 
 次の例は、**TrustFrameworkPolicy** 要素を指定する方法を示しています。
@@ -138,7 +138,7 @@ B2C_1A_TrustFrameWorkBase または B2C_1A_TrustFrameworkExtensionPolicy:
 
 ユーザー体験は、ユーザーが体験する内容のビジネス ロジックを定義します。 各ユーザー体験は、認証と情報収集に関してひと続きのアクションを順番に実行する、一連のオーケストレーション ステップです。 
 
-[スターター パック](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom#download-starter-pack-and-modify-policies)の **SocialAndLocalAccounts** ポリシー ファイルには、SignUpOrSignIn、ProfileEdit、PasswordReset のユーザー体験が含まれています。 電子メール アドレスの変更、ソーシャル アカウントのリンクやリンク解除、パスワードの再設定など、別のシナリオでさらに多くのユーザー体験を追加することができます。 
+[スターター パック](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom#download-starter-pack-and-modify-policies)の **SocialAndLocalAccounts** ポリシー ファイルには、SignUpOrSignIn、ProfileEdit、PasswordReset のユーザー体験が含まれています。 メール アドレスの変更、ソーシャル アカウントのリンクとリンク解除など、別のシナリオでさらに多くのユーザー体験を追加することができます。 
 
 オーケストレーション ステップで、[技術プロファイル](technicalprofiles.md)を呼び出すことができます。 技術プロファイルは、さまざまな種類の利用者と通信するためのメカニズムが組み込まれたフレームワークを提供します。 たとえば、技術プロファイルでは、特に次のアクションを実行できます。
 
@@ -157,4 +157,3 @@ B2C_1A_TrustFrameWorkBase または B2C_1A_TrustFrameworkExtensionPolicy:
 - [ClaimsProviders](claimsproviders.md)
 - [UserJourneys](userjourneys.md)
 - [RelyingParty](relyingparty.md)
-

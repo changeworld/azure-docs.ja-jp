@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: mjbrown
-ms.openlocfilehash: 46df484303237722f4eb66099748f2fcef8240b4
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 97b6cc6f171c89f5a253b1104155768ef9324293
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205831"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65905213"
 ---
 # <a name="create-containers-with-large-partition-key"></a>大きいパーティション キーを持つコンテナーを作成する
 
@@ -40,7 +40,7 @@ database,
 
 ## <a name="create-a-large-partition-key-azure-portal"></a>大きいパーティション キーを作成する (Azure portal) 
 
-Azure portal を使って新しいコンテナーを作成するときに、大きいパーティション キーを作成するには、**[My partition key is larger than 100-bytes]\(100 バイトを超えるパーティション キー\)** オプションをオンにします。 既定では、すべての新しいコンテナーで大きいパーティション キーの使用が選択されます。 大きいパーティション キーを使う必要がない場合、または 1.18 より前の SDK バージョンでアプリケーションを実行する場合は、チェック ボックスをオフにします。
+Azure portal を使って新しいコンテナーを作成するときに、大きいパーティション キーを作成するには、 **[My partition key is larger than 100-bytes]\(100 バイトを超えるパーティション キー\)** オプションをオンにします。 既定では、すべての新しいコンテナーで大きいパーティション キーの使用が選択されます。 大きいパーティション キーを使う必要がない場合、または 1.18 より前の SDK バージョンでアプリケーションを実行する場合は、チェック ボックスをオフにします。
 
 ![Azure portal を使って大きいパーティション キーを作成する](./media/large-partition-keys/large-partition-key-with-portal.png)
 
@@ -54,6 +54,9 @@ Azure portal を使って新しいコンテナーを作成するときに、大�
 |.NET     |    1.18     |
 |Java Sync     |   2.4.0      |
 |Java Async   |  2.5.0        |
+| REST API | `x-ms-version` 要求ヘッダーを使用する `2017-05-03` より後のバージョン。|
+
+現在、Power BI と Azure Logic Apps 内に大きなパーティション キーがあるコンテナーは使用できません。 これらのアプリケーションから、大きなパーティション キーなしでコンテナーを使用できます。 
  
 ## <a name="next-steps"></a>次の手順
 

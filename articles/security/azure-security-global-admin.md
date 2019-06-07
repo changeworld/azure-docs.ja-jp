@@ -8,12 +8,12 @@ editor: TomSh
 ms.topic: article
 ms.date: 03/20/2018
 ms.author: barclayn
-ms.openlocfilehash: 2dcd7f42d86000dd3b642c10f6d3db0b0d0fcb03
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: fbc3bba3d95526277da3487cb8670c1f1a88a925
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56116339"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65951758"
 ---
 # <a name="enforce-multi-factor-authentication-mfa-for-subscription-administrators"></a>多要素認証 (MFA) をサブスクリプション管理者に適用する
 
@@ -22,7 +22,7 @@ ms.locfileid: "56116339"
 必要に応じて、Exchange 管理者やパスワード管理者などの特定の管理者ロールを IT スタッフのユーザー アカウントに割り当てて、日常的な管理を実行できます。
 さらに、管理者について [Azure Multi-factor Authentication (MFA)](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication) を有効にすると、ユーザーのサインインとトランザクションに 2 つ目のセキュリティ層が追加されます。 また、Azure MFA は不正に取得された資格情報によって組織データにアクセスされる危険を減らすためにも役立ちます。
 
-たとえば、ユーザーに Azure MFA を適用し、検証手段として電話またはテキスト メッセージを使用するように MFA を構成します。 ユーザーの資格情報が侵害された場合でも、攻撃者はユーザーの電話にアクセスできないので、リソースにアクセスすることはできません。 新しい ID 保護層を追加しない場合、資格情報盗用攻撃を受けやすくなり、データの侵害につながる可能性があります。
+例: ユーザーに Azure MFA を適用し、検証手段として電話またはテキスト メッセージを使用するように MFA を構成します。 ユーザーの資格情報が侵害された場合でも、攻撃者はユーザーの電話にアクセスできないので、リソースにアクセスすることはできません。 新しい ID 保護層を追加しない場合、資格情報盗用攻撃を受けやすくなり、データの侵害につながる可能性があります。
 
 認証全体をオンプレミスで管理する必要がある場合は、代わりに [Azure Multi-Factor Authentication Server](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-get-started-server) ("MFA オンプレミス" とも呼ばれます) を利用できます。 この手法を利用すると、オンプレミスに MFA サーバーを置いていても、多要素認証を適用することができます。
 

@@ -6,15 +6,16 @@ services: media-services
 author: Juliako
 manager: femila
 ms.service: media-services
+ms.subservice: video-indexer
 ms.topic: article
-ms.date: 03/12/2019
+ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: a182b9ec0fb945b4c2ffddd7a977df8ad9a8d250
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 2c72c7c493c0a887adab147054c725a2e1c0659f
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58895970"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65799136"
 ---
 # <a name="what-is-video-indexer"></a>Video Indexer とは
 
@@ -37,7 +38,7 @@ Azure Video Indexer は、Azure Media Analytics、Azure Search、Cognitive Servi
 
 ## <a name="audio-insights"></a>オーディオの分析情報
 
-- **自動言語検出**:主な音声言語を自動的に識別します。 英語、スペイン語、フランス語、ドイツ語、イタリア語、中国語 (簡体字)、日本語、ロシア語、ポルトガル語 (ブラジル) などの言語がサポートされています。 言語を検出できない場合、英語にフォールバックします。
+- **自動言語検出**:主な音声言語を自動的に識別します。 サポートされている言語には、英語、スペイン語、フランス語、ドイツ語、イタリア語、中国語 (簡体字)、日本語、ロシア語、およびポルトガル語 (ブラジル) が含まれます。言語が検出されない場合は英語にフォールバックします。
 - **音声の文字起こし**:12 の言語で音声をテキストに変換します。拡張機能を使用できます。 英語、スペイン語、フランス語、ドイツ語、イタリア語、中国語 (簡体字)、日本語、アラビア語、ロシア語、ポルトガル語 (ブラジル)、ヒンディー語、韓国語などの言語がサポートされています。
 - **字幕**:VTT、TML、SRT という 3 つの形式で字幕を作成します。
 - **2 チャネル処理**:自動検出、トランスクリプトの分離、1 つのタイムラインへの結合を行います。
@@ -47,7 +48,7 @@ Azure Video Indexer は、Azure Media Analytics、Azure Search、Cognitive Servi
 - **話者の統計情報**:話者の音声率の統計情報を提供します。
 - **テキストのコンテンツ モデレーション**:音声トランスクリプト内の明示的なテキストを検出します。
 - **音声効果**:拍手、発言、沈黙などの音声効果を識別します。
-- **感情の検出**:音声およびオーディオ キューに基づいて感情を識別します。この感情は、喜び、悲しみ、怒り、または恐怖の可能性があります。
+- **感情の検出**:音声 (話されている内容) と口調 (話し方) に基づいて感情を特定します。  この感情は、喜び、悲しみ、怒り、または恐怖の可能性があります。
 - **翻訳**:音声トランスクリプトの、54 の異なる言語への翻訳を作成します。
 
 ## <a name="audio-and-video-insights-multi-channels"></a>オーディオとビデオの分析情報 (マルチ チャンネル)

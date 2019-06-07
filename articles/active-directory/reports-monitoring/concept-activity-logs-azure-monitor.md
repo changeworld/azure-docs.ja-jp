@@ -17,12 +17,12 @@ ms.date: 04/22/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b924746c00a438ec4ac81dacc02905565adf30e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: cffef4028a684e27c0941c234df551d844f13420
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64682122"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65896868"
 ---
 # <a name="azure-ad-activity-logs-in-azure-monitor"></a>Azure Monitor の Azure AD アクティビティ ログ
 
@@ -41,7 +41,7 @@ Azure Active Directory (Azure AD) のアクティビティ ログを複数のエ
 
 この機能を使用して、Azure AD 監査ログとサインイン ログを Azure ストレージ アカウント、イベント ハブ、Azure Monitor ログ、またはカスタム ソリューションにルーティングすることができます。 
 
-* **[監査ログ]**:テナント内で実行されたすべてのタスクの履歴は、[監査ログ アクティビティ レポート](concept-audit-logs.md)で把握できます。
+* **[監査ログ]** :テナント内で実行されたすべてのタスクの履歴は、[監査ログ アクティビティ レポート](concept-audit-logs.md)で把握できます。
 * **サインイン ログ**:監査ログによって報告されたタスクをだれが実行したかは、[サインイン アクティビティ レポート](concept-sign-ins.md)で判断することができます。
 
 > [!NOTE]
@@ -107,6 +107,23 @@ Azure Active Directory (Azure AD) のアクティビティ ログを複数のエ
 | サインイン | 1,000 | 178 | 53,400 | 106.8&nbsp;MB | 418 | 3,611,520 | 11.06 ドル |  
 
 ### <a name="azure-monitor-logs-cost-considerations"></a>Azure Monitor ログのコストに関する考慮事項
+
+
+
+| ログのカテゴリ       | ユーザーの数 | 1 日あたりのイベント | 1 か月 (30 日) あたりのイベント | 1 か月あたりの推定コスト (USD) |
+| :--                | ---             | ---            | ---                        | --:                          |
+| 監査とサインイン | 100,000         | 16,500,000     | 495,000,000                |  $1093.00                       |
+| Audit              | 100,000         | 1,500,000      | 45,000,000                 |  $246.66                     |
+| サインイン           | 100,000         | 15,000,000     | 450,000,000                |  $847.28                     |
+
+
+
+
+
+
+
+
+
 
 Azure Monitor ログの管理に関連するコストをレビューするには、[Azure Monitor ログでデータ ボリュームと保有期間を制御してコストを管理する方法](https://docs.microsoft.com/azure/log-analytics/log-analytics-manage-cost-storage)に関する記事をご覧ください。
 

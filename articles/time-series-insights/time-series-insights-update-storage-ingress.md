@@ -8,14 +8,14 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 04/30/2019
+ms.date: 05/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 35d9e953ade337672fd57149e325b507f6ce115f
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: cebe22dddf9ef382c4eceb799e05cbaab30aedaa
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65405712"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65951109"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Azure Time Series Insights プレビューのデータ ストレージおよびイングレス
 
@@ -146,7 +146,7 @@ Time Series Insights は、Azure Storage アカウントで、各イベントの
 
 ### <a name="data-deletion"></a>データの削除
 
-Time Series Insights プレビューでは、BLOB 内に、BLOB に関するメタデータを保持しているため、BLOB を削除しないでください。
+BLOB は削除しないでください。 Time Series Insights プレビューは、データの記録の監査と保持に役立つだけでなく、各 BLOB 内には BLOB のメタデータも保持されます。
 
 ## <a name="time-series-insights-data-ingress"></a>Time Series Insights データ イングレス
 
@@ -177,7 +177,7 @@ Time Series Insights プレビューは、BLOB サイズの最適化戦略を使
 
 ### <a name="scale"></a>スケール
 
-Time Series Insights プレビューは、環境あたり最大 6 MB/秒 (Mbps) の初期イングレス スケールをサポートします。 拡張スケーリング サポートが進行中です。 それらの機能強化を反映するように、ドキュメントを更新する予定です。
+Time Series Insights プレビューは、環境あたり最大 1 MB/秒 (Mbps) の初期イングレス スケールをサポートします。 拡張スケーリング サポートが進行中です。 これらの機能強化を反映するように、ドキュメントを更新する予定です。
 
 ## <a name="next-steps"></a>次の手順
 

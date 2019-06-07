@@ -1,7 +1,11 @@
 - name: 概要
   items:
-    - name: Oracle VM に関する考慮事項
-      href: oracle-considerations.md
+    - name: Oracle ソリューションの概要
+      href: oracle-overview.md
+    - name: Azure VM 上のソリューション
+      href: oracle-vm-solutions.md
+    - name: OCI を使用したソリューション - プレビュー
+      href: oracle-oci-overview.md
 - name: クイック スタート
   items:
     - name: Oracle DB の作成
@@ -10,7 +14,7 @@
   items:
     - name: Oracle ASM の構成
       href: configure-oracle-asm.md
-    - name: Oracle DataGuard の構成
+    - name: Oracle Data Guard の構成
       href: configure-oracle-dataguard.md
     - name: Oracle GoldenGate の構成
       href: configure-oracle-golden-gate.md
@@ -20,7 +24,7 @@
       href: oracle-design.md
     - name: Oracle DB のバックアップ戦略
       href: oracle-backup-recovery.md
-    - name: Oracle のディザスター リカバリーのオプション
+    - name: Oracle のディザスター リカバリー オプション
       href: oracle-disaster-recovery.md
 - name: リソース
   items:

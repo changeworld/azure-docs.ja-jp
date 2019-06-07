@@ -7,24 +7,23 @@ ms.subservice: management
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: WenJason
-ms.author: v-jay
+author: danimir
+ms.author: danil
 ms.reviewer: douglas, carlrab, sstein
-manager: digimobile
-origin.date: 05/07/2019
-ms.date: 05/20/2019
-ms.openlocfilehash: 95d1681c9ff9981990d873a58a2d01833d690e0f
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+manager: craigg
+ms.date: 05/07/2019
+ms.openlocfilehash: 61f6c25031c4906e65c2f75a7679600741e8311a
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65412401"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65791372"
 ---
 # <a name="delete-subnet-after-deleting-azure-sql-database-managed-instance"></a>Azure SQL Database Managed Instance の削除後にサブネットを削除する
 
 この記事では、サブネットに存在する最後の Azure SQL Database Managed Instance を削除した後で、そのサブネットを手動で削除する方法についてのガイドラインを紹介します。
 
-削除したマネージド インスタンスが格納されていた[仮想クラスター](sql-database-managed-instance-connectivity-architecture.md#virtual-cluster-connectivity-architecture)は、インスタンスの削除から 12 時間維持されます。 仮想クラスターが維持されるのは、同じサブネットにマネージド インスタンスをすぐに作成できるようにするための意図的な設計です。 この期間中は、仮想クラスターに関連付けられたサブネットを削除できません。
+削除したマネージド インスタンスが格納されていた[仮想クラスター](sql-database-managed-instance-connectivity-architecture.md#virtual-cluster-connectivity-architecture)は、インスタンスの削除から 12 時間維持されます。 仮想クラスターが維持されるのは、同じサブネットにマネージド インスタンスをすぐに作成できるようにするための意図的な設計です。 空の仮想クラスターを維持することは無料です。 この期間中は、仮想クラスターに関連付けられたサブネットを削除できません。
 
 空の仮想クラスターによって使用されているサブネットは、仮想クラスターを手動で削除すれば、直ちに解放することができます。 Azure portal や仮想クラスター API を使用して、仮想クラスターを削除することはできません。
 

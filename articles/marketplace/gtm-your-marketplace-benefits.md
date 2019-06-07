@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 01/12/2019
 ms.author: ellacroi
-ms.openlocfilehash: 1f3ae120bbbb902188d893d5a04582a6e9547bdf
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 297a6f9058b220d1f2e3a0ca69d018858218b774
+ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64937961"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65909731"
 ---
 # <a name="your-marketplace-benefits"></a>Marketplace のベネフィット
 
@@ -34,11 +34,7 @@ ms.locfileid: "64937961"
 2. Microsoft Marketplace コンサルテーション:この[無料のコンサルテーション](https://support.microsoft.com/help/4010317/microsoft-marketplaces-consultation)を利用して、マーケットプレースでのアプリのアーキテクチャを計画します。
 3. Marketplace フォーラム:[Marketplace フォーラム](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222)で Microsoft の社員や他のマーケットプレース パートナーに直接質問します。
 4. テクニカル サポート:[Cloud パートナー ポータル](https://cloudpartner.azure.com/)の [ヘルプ] メニューを使用して、マーケットプレース関連のサポートの質問に対するヘルプ情報を入手します。 
-5. 開発テスト スポンサー プラン:以下の適格性を確認し、[登録フォーム](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR3omd2bW7etLoEoufw2-vMdUNUkxSjQ5V0hJOEtZSks3ME45TDJNTkVUTi4u)を使用してスポンサー プランの要求を送信します。
-    * 開発およびテストが、Azure Marketplace への公開を目的としたものであること。
-    * 資金は他の目的には使用できません。
-    * 割り当てられたサブスクリプションで最初のアクションが実行された日から 90 日間、$5,000 が供与されます。
-    * テスト対象のアプリは、出資の最終日から 30 日以内に Azure Marketplace で利用可能になる必要があります。たとえば、このような資金の使用が 12 月 1 日に開始された場合、アプリは 3 月 31 日までに提供される必要があります。
+5. AAD 統合および開発とテストのスポンサーシップ: 取引可能 (デプロイ可能かつ請求可能なオファー) として公開する場合に選択されます。 Go-To-Market 特典を始める方法については、次のセクションを参照してください。
 
 ## <a name="go-to-market-gtm-benefits-in-the-marketplace"></a>Marketplace での Go-to-market (GTM) ベネフィット
 
@@ -46,8 +42,8 @@ Azure Marketplace と AppSource 両方での新規掲載は、Microsoft GTM サ�
 
 | ネットショップ | 利用可能な追加の特典 |
 |:--- |:--- |
-| AppSource |  Microsoft Gold パートナー <br> 試用版アプリ |
-| Azure Marketplace | トランザクション プラン <br> 試用版のプラン |
+| AppSource |  Microsoft Gold パートナー <br> トランザクション オファー - Marketplace の報酬 <br> 試用版アプリ |
+| Azure Marketplace | トランザクション オファー - Marketplace の報酬 <br> 試用版のプラン |
 
 GTM サポートには、パートナーのビジネスをプロモーションするためのテンプレート、Web コンテンツ、トレーニング、ツールが含まれます。
 
@@ -56,21 +52,25 @@ GTM サポートには、パートナーのビジネスをプロモーション�
 1. Azure Marketplace または AppSource でオファーを公開します。
 2. オファーの**連絡先情報**部分でマーケティング連絡先を入力します。 これは、キャッチオール エイリアスではなく、専用のマーケティング リソースでなければなりません。 (つまり、"support\@"、"info\@"、"marketing\@" などは使用しないでください)
 
-ソリューションの状態 (つまり、"リスト"、"試用版"、または "トランザクション" プラン) に基づいて、セルフヘルプ リソースを含むメール、または専用の Engagement Manager のコンサルテーション呼び出しへの招待のいずれかを受け取ります。 呼び出しを開始するために何もする必要はありません。Marketplace Onboarding Team が、[Cloud パートナー ポータル](https://cloudpartner.azure.com/)で提供された情報に基づいてご連絡します。
+ソリューションの状態 (つまり、"リスト"、"試用版"、または "トランザクション" の Marketplace 報酬) に基づいて、セルフヘルプ リソースを含むメール、または専用の Engagement Manager のコンサルテーション呼び出しへの招待のいずれかを受け取ります。 呼び出しを開始するために何もする必要はありません。Marketplace Onboarding Team が、[Cloud パートナー ポータル](https://cloudpartner.azure.com/)で提供された情報に基づいてご連絡します。
 
-マーケットプレースでのオファリングの拡大に合わせて、使用可能なアクティビティの範囲が広がります。 すべての掲載に対して、基本レベルの最適化推奨とプロモーションが提供されます。  これらの掲載には、ソリューションの状態 (リスト、試用版、またはトランザクション)、選択されたマーケットプレース、および Microsoft Partner Competency アチーブメントに基づいて、追加のマーケティング ベネフィットを得る権利もあります。
+マーケットプレースでのオファリングの拡大に合わせて、使用可能なアクティビティの範囲が広がります。 すべての掲載に対して、基本レベルの最適化推奨とプロモーションが提供されます。  これらの掲載には、ソリューションの状態 ("リスト"、"試用版"、または "トランザクション" の Marketplace 報酬)、選択されたマーケットプレース、および Microsoft Partner Competency アチーブメントに基づいて、追加のマーケティング ベネフィットを得る権利もあります。
 
-次の表は、適格性の要件をまとめたものです。
+次の表は、リスト オファーと試用版オファーの適格要件をまとめたものです。
 
-![](./media/marketplace-publishers-guide/gtm-activities-table.png)
+![](./media/marketplace-publishers-guide/gtm-eligibility-requirements.png)
 
 \* Silver または Gold コンピテンシーが必要です。 <br>
 \*\* Gold コンピテンシーが必要です。 <br>
 \*\*\* Gold コンピテンシーと、パートナー登録リストへの共同販売準備完了の記載が必要です。 <br>
 ^ トランザクションのみで、Azure Marketplace に適用されます。
 
+## <a name="marketplace-rewards-for-transact-partners"></a>トランザクション パートナーに対する Marketplace 報酬
+
+Marketplace 報酬に対する特典の詳細な一覧については、[プログラムの概要のスライド](https://onedrive.live.com/view.aspx?resid=1900675C97CA6FE0!630&ithint=file%2cpptx&authkey=!APQ6LSnDenx2FKM)を参照してください。
+
 ## <a name="next-steps"></a>次の手順
 
-[Cloud パートナー ポータル](https://cloudpartner.azure.com/)にログインして、オファーを作成および構成する。
+[Cloud パートナー ポータル](https://cloudpartner.azure.com/)にサインインして、オファーを作成および構成する。
 
 ---

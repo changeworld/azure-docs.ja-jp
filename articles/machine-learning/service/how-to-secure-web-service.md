@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 04/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: 50e42172af6ca6b966f9f60d3e037f9ae3dc5cbe
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 527f16e34e0f21d435fbd166328235566687bc88
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65023779"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65852014"
 ---
 # <a name="use-ssl-to-secure-web-services-with-azure-machine-learning-service"></a>SSL を使用して Azure Machine Learning service による Web サービスをセキュリティで保護する
 
@@ -72,36 +72,10 @@ SSL 証明書 (デジタル証明書) を取得する方法はたくさんあり
 
 SSL が有効なサービスをデプロイ (または再デプロイ) するには、`ssl_enabled` パラメーターを `True` に設定します (該当する場合は必ず)。 `ssl_certificate` パラメーターを __証明書__ ファイルの値に設定し、`ssl_key` を __キー__ ファイルの値に設定します。
 
-+ **ビジュアル インターフェイス - デプロイ用にセキュアな Azure Kubernetes Service (AKS) を作成する** 
-    
-    ビジュアル インターフェイス向けにセキュアなデプロイ用のコンピューティングを作成する場合は、こちらを参照してください。 AKS クラスターをプロビジョニングするときには、SSL 関連のパラメーターの値を指定してから、新しい AKS を作成します。  次のコード スニペットを参照してください。
-    
-
-    > [!TIP]
-    >  Python SDK に慣れていない場合は、まず [Azure Machine Learning Python SDK の概要](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)を参照してください。
-
-
-    ```python
-    from azureml.core.compute import AksCompute, ComputeTarget
-
-    # Provide SSL-related parameters when provisioning the AKS cluster
-    prov_config = AksCompute.provisioning_configuration(ssl_cert_pem_file="cert.pem", ssl_key_pem_file="key.pem", ssl_cname="www.contoso.com")   
- 
-    aks_name = 'secure-aks'
-    # Create the cluster
-    aks_target = ComputeTarget.create(workspace = ws,
-                                        name = aks_name,
-                                        provisioning_configuration = prov_config)
-    
-    # Wait for the create process to complete
-    aks_target.wait_for_completion(show_output = True)
-    print(aks_target.provisioning_state)
-    print(aks_target.provisioning_errors)
-    ```
-    
-   
-
 + **Azure Kubernetes Service (AKS) および FPGA にデプロイする**
+
+  > [!NOTE]
+  > このセクションの情報は、ビジュアル インターフェイス用のセキュリティで保護された Web サービスをデプロイするときにも適用されます。 Python SDK に慣れていない場合は、[Azure Machine Learning Python SDK の概要](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)に関する記事を参照してください。
 
   AKS にデプロイする場合、新しい AKS クラスターを作成するか、既存のクラスターを接続することができます。 新しいクラスターを作成する場合は [AksCompute.provisionining_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#provisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none-) を使用し、既存のクラスターを接続する場合は [AksCompute.attach_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#attach-configuration-resource-group-none--cluster-name-none--resource-id-none-) を使用します。 どちらの場合も `enable_ssl` メソッドを持つ構成オブジェクトが返されます。
 
@@ -119,23 +93,26 @@ SSL が有効なサービスをデプロイ (または再デプロイ) するに
     ```python
     from azureml.core.compute import AksCompute
     # Config used to create a new AKS cluster and enable SSL
-    provisioning_config = AksCompute.provisioning_configuration().enable_ssl(leaf_domain_label = "myservice")
+    provisioning_config = AksCompute.provisioning_configuration()
+    provisioning_config.enable_ssl(leaf_domain_label = "myservice")
     # Config used to attach an existing AKS cluster to your workspace and enable SSL
     attach_config = AksCompute.attach_configuration(resource_group = resource_group,
-                                          cluster_name = cluster_name).enable_ssl(leaf_domain_label = "myservice")
+                                          cluster_name = cluster_name)
+    attach_config.enable_ssl(leaf_domain_label = "myservice")
     ```
 
-  * __購入した証明書__を使用する場合は、`ssl_cert_pem_file`、`ssl_key_pem_file`、および `ssl_cname` パラメーターを使用します。  次の例では、`.pem` ファイルで提供した SSL 証明書を使用する構成の作成方法を示します。
+  * __購入した証明書__を使用する場合は、`ssl_cert_pem_file`、`ssl_key_pem_file`、および `ssl_cname` パラメーターを使用します。 次の例では、`.pem` ファイルで提供した SSL 証明書を使用する構成の作成方法を示します。
 
     ```python
     from azureml.core.compute import AksCompute
     # Config used to create a new AKS cluster and enable SSL
-    provisioning_config = AksCompute.provisioning_configuration(ssl_cert_pem_file="cert.pem", ssl_key_pem_file="key.pem", ssl_cname="www.contoso.com")
-    provisioning_config = AksCompute.provisioning_configuration().enable_ssl(ssl_cert_pem_file="cert.pem",
+    provisioning_config = AksCompute.provisioning_configuration()
+    provisioning_config.enable_ssl(ssl_cert_pem_file="cert.pem",
                                         ssl_key_pem_file="key.pem", ssl_cname="www.contoso.com")
     # Config used to attach an existing AKS cluster to your workspace and enable SSL
     attach_config = AksCompute.attach_configuration(resource_group = resource_group,
-                                         cluster_name = cluster_name).enable_ssl(ssl_cert_pem_file="cert.pem",
+                                         cluster_name = cluster_name)
+    attach_config.enable_ssl(ssl_cert_pem_file="cert.pem",
                                         ssl_key_pem_file="key.pem", ssl_cname="www.contoso.com")
     ```
 
@@ -177,5 +154,5 @@ SSL が有効なサービスをデプロイ (または再デプロイ) するに
 ## <a name="next-steps"></a>次の手順
 以下の項目について説明します。
 + [Web サービスとしてデプロイされた機械学習モデルを使用する](how-to-consume-web-service.md)
-+ [Azure Virtual Network 内での実験と推論の安全な実行](how-to-enable-virtual-network.md)
++ [Azure Virtual Network 内で実験と推論を安全に実行する](how-to-enable-virtual-network.md)
 

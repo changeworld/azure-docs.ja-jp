@@ -11,7 +11,7 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 04/23/2019
+  ms.date: 06/03/2019
   ms.author: anshan
 abstract:
   description: Azure Time Series Insights へようこそ。 Azure Time Series Insights は、運用分析の改善に役立つ強力なデータ探索およびテレメトリ ツールを提供します。 このドキュメントでは、本サービス、その多くの機能を使用して作業を開始する方法、クライアント SDK、強力な Time Series Insights API シリーズについて説明します。 2 つのバージョンについて情報が提供されます。既に一般提供されているもの (Time Series Insights GA) と、プレビュー段階の主要なサービス更新 (Time Series Insights プレビュー) です。
@@ -46,9 +46,9 @@ sections:
         className: cardsD
         items:
           - title: Azure Time Series Insights GA
-            html: <p><a href="/azure/time-series-insights/tutorial-create-populate-tsi-environment">環境の作成</a></p> <p><a href="/azure/time-series-insights/tutorial-create-tsi-sample-spa">単一ページの Web アプリの作成</a></p> <p><a href="/azure/time-series-insights/tutorial-explore-js-client-lib">JavaScript クライアント ライブラリの探索</a></p>
+            html: <p><a href="/azure/time-series-insights/tutorial-create-populate-tsi-environment">Azure Time Series Insights 環境の作成</a></p> <p><a href="/azure/time-series-insights/tutorial-create-tsi-sample-spa">単一ページの Web アプリの作成</a></p> <p><a href="/azure/time-series-insights/tutorial-explore-js-client-lib">JavaScript クライアント ライブラリの探索</a></p>
           - title: Azure Time Series Insights プレビュー
-            html: <p><a href="/azure/time-series-insights/time-series-insights-update-create-environment">プレビュー チュートリアル</a></p>
+            html: <p><a href="/azure/time-series-insights/time-series-insights-update-create-environment">Azure Time Series Insights プレビューの環境を設定する</a></p>
   - title: リファレンス
     items:
       - type: list
@@ -56,6 +56,8 @@ sections:
         className: cardsD
         items:
           - title: Time Series Insights GA API
-            html: <p><a href="/rest/api/time-series-insights-management">リソース管理 API</a></p> <p><a href="/rest/api/time-series-insights/ga-query-api">クエリ API</a></p> <p><a href="/rest/api/time-series-insights/ga-query-syntax">クエリ構文</a></p>
+            html: <p><a href="rest/api/time-series-insights/ga">データ アクセス</a></p> <p><a href="/rest/api/time-series-insights/ga-query-api">クエリ API</a></p> <p><a href="/rest/api/time-series-insights/ga-query-syntax">クエリ構文</a></p>
           - title: Time Series Insights プレビュー API
             html: <p><a href="/rest/api/time-series-insights/preview-query">クエリ API</a></p> <p><a href="/rest/api/time-series-insights/preview-model">モデル API</a></p> <p><a href="/rest/api/time-series-insights/preview-env">環境 API</a></p> <p><a href="/rest/api/time-series-insights/preview-tsx">Time Series 式 API</a></p>
+          - title: クライアント SDK
+            html: '<p><a href="https://github.com/microsoft/tsiclient/blob/master/docs/API.md">JavaScript クライアント SDK</a></p>'

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 03/28/2019
+ms.date: 05/10/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 0f94a1fdc01825b5bf78644f84c72e6b031109c0
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: 2677c993b759988b0a9906b357bcd352b243b5a7
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58621976"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65792673"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>QnA Maker ナレッジ ベースのベスト プラクティス
 [ナレッジ ベース開発ライフサイクル](../Concepts/development-lifecycle-knowledge-base.md)では、ナレッジ ベースを始まりから終わりまで管理する方法を紹介しています。 以下のベスト プラクティスを利用してナレッジ ベースを改善し、アプリケーション/チャット ボットのエンド ユーザーにより良い情報を提供します。
@@ -39,18 +39,20 @@ QnA Maker サービスは継続的に、コンテンツから QnA を抽出す�
 最高の回答は単純な回答ですが、「はい」や「いいえ」のような単純すぎるものではありません。 回答を他のソースにリンクしたり、メディアとリンクを使用してリッチ エクスペリエンスを提供したりする必要がある場合は、[タグ付け](../how-to/metadata-generateanswer-usage.md)を使用して期待される回答の種類を識別した後、そのタグをクエリで送信して、正しい回答のバージョンを取得します。
 
 ## <a name="chit-chat"></a>おしゃべり
-少ない労力でボットをより話し上手で魅力的にするために、おしゃべりをボットに追加します。 ナレッジ ベースの作成時に、3 つの事前定義済みの性格に対応したおしゃべりデータ セットを簡単に追加し、いつでも性格を変更することができます。 [おしゃべりをナレッジ ベースに追加](../How-To/chit-chat-knowledge-base.md)する方法を学びます。 
+少ない労力でボットをより話し上手で魅力的にするために、おしゃべりをボットに追加します。 ナレッジ ベースの作成時に、事前定義済みの性格に対応したおしゃべりデータ セットを簡単に追加し、いつでも性格を変更することができます。 [おしゃべりをナレッジ ベースに追加](../How-To/chit-chat-knowledge-base.md)する方法を学びます。 
 
 ### <a name="choosing-a-personality"></a>性格の選択
-おしゃべりでは、3 つの事前定義済みの性格がサポートされています: 
+おしゃべりでは、次のいくつかの事前定義済みの性格がサポートされています。 
 
-|性格|
-|--|
-|プロフェッショナル|
-|フレンド|
-|コミック|
+|パーソナリティ |QnA Maker データセット ファイル |
+|---------|-----|
+|Professional |[qna_chitchat_professional.tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_professional.tsv) |
+|Friendly |[qna_chitchat_friendly.tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_friendly.tsv) |
+|Witty |[qna_chitchat_witty.tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_witty.tsv) |
+|Caring |[qna_chitchat_caring.tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_caring.tsv) |
+|Enthusiastic |[qna_chitchat_enthusiastic.tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_enthusiastic.tsv) |
 
-改まった応答からくだけた応答、非礼な応答まで可能です。 ボットに演じさせたい雰囲気に最も近い性格を選択する必要があります。 データ セットを表示し、ボットの基本として機能するデータ セットを選択した後、応答をカスタマイズすることができます。 
+改まった応答からくだけた応答、非礼な応答まで可能です。 ボットに演じさせたい雰囲気に最も近い性格を選択する必要があります。 [データセット](https://github.com/Microsoft/BotBuilder-PersonalityChat/tree/master/CSharp/Datasets)を表示し、ボットの基本として機能するデータセットを選択した後、応答をカスタマイズすることができます。 
 
 ### <a name="edit-bot-specific-questions"></a>ボット固有の質問の編集
 おしゃべりデータ セットの一部であり、一般的な回答が入力されているボット固有の質問がいくつかあります。 ボットの詳細を最も的確に反映するように、これらの回答を変更します。 
@@ -82,10 +84,10 @@ QnA Maker でサポートされている優先度付け機能を効果的に活�
 
 ### <a name="use-metadata-tags-to-filter-questions-and-answers"></a>メタデータ タグを使用して質問と回答をフィルター処理する
 
-[メタデータ](../How-To/edit-knowledge-base.md)を利用すれば、メタデータ タグに基づいてユーザーからの問い合わせの結果を絞り込むことができます。 ナレッジ ベースの回答は、問い合わせが同じであっても、メタデータ タグに基づいて異なる場合があります。 たとえば、*"where is parking located"* (駐車場はどこですか) という問いに対し、レストランの支店の場所が違えば、つまり、*Location: Seattle* (所在地: シアトル) のときと、*Location: Redmond* (所在地: レドモンド) のときで答えが変わります。
+[メタデータ](../How-To/edit-knowledge-base.md)を利用すれば、メタデータ タグに基づいてユーザーからの問い合わせの結果を絞り込むことができます。 ナレッジ ベースの回答は、問い合わせが同じであっても、メタデータ タグに基づいて異なる場合があります。 たとえば、 *"where is parking located"* (駐車場はどこですか) という問いに対し、レストランの支店の場所が違えば、つまり、*Location: Seattle* (所在地: シアトル) のときと、*Location: Redmond* (所在地: レドモンド) のときで答えが変わります。
 
 ### <a name="use-synonyms"></a>同義語を使用する
-英語では同義語をある程度サポートしていますが、さまざま言い方があるキーワードに同義語を追加するには、大文字と小文字が区別される[言葉の変更](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fd)機能を利用します。 同義語は QnA Maker サービスレベルで追加し、サービス内の全ナレッジ ベースで共有してください。
+英語では同義語をある程度サポートしていますが、さまざま言い方があるキーワードに同義語を追加するには、大文字と小文字が区別される[言葉の変更](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace)機能を利用します。 同義語は QnA Maker サービスレベルで追加し、サービス内の全ナレッジ ベースで共有してください。
 
 |元の語|シノニム|
 |--|--|
@@ -101,14 +103,14 @@ QnA Maker のランク付けアルゴリズムはユーザーからの問い合�
 |駐車*場所*はどこですか|
 |ATM の "*場所*" はどこですか|
 
-これら 2 つの QnA は非常によく似た語で表現されていますが、この類似性のために、「*`<x>` の場所はどこですか*」のように表現されるユーザーの問い合わせの多くが非常に近いスコアになる可能性があります。 代わりに、ナレッジ ベース内の多くの質問に存在するかもしれない「場所」のような語を避け、"*駐車場はどこですか*" や "*ATM はどこですか*" のような質問で違いを明確にしてください。 
+これら 2 つの QnA は非常によく似た語で表現されていますが、この類似性のために、「 *`<x>` の場所はどこですか*」のように表現されるユーザーの問い合わせの多くが非常に近いスコアになる可能性があります。 代わりに、ナレッジ ベース内の多くの質問に存在するかもしれない「場所」のような語を避け、"*駐車場はどこですか*" や "*ATM はどこですか*" のような質問で違いを明確にしてください。 
 
 ## <a name="collaborate"></a>協力
 QnA Maker では、ユーザーはナレッジ ベースに[協力](../How-to/collaborate-knowledge-base.md)できます。 ナレッジ ベースにアクセスするためには、Azure QnA Maker リソース グループへのアクセス権がユーザーに必要です。 ナレッジ ベースの編集と保守管理を外注する組織もありますが、その場合でも Azure リソースへのアクセスを保護できます。 この編集者/承認者モデルは、異なるサブスクリプションで同じ [QnA Maker サービス](../How-to/set-up-qnamaker-service-azure.md)を 2 つ設定し、その 1 つを編集/テスト サイクルに選択することで実現されます。 テストが終了したら、[インポート/エクスポート](../Tutorials/migrate-knowledge-base.md) プロセスを利用して、承認者の QnA Maker サービスにナレッジ ベース コンテンツを転送します。この承認者が最終的にナレッジ ベースを公開し、エンドポイントを更新します。
 
 ## <a name="active-learning"></a>アクティブ ラーニング
 
-[アクティブ ラーニング](../How-to/improve-knowledge-base.md)は、幅広い質と量のユーザー ベースのクエリがある場合に、代替の質問を提案するという最高の仕事をします。 クライアント アプリケーションのユーザー クエリが、検閲なしのアクティブ ラーニングのフィードバック ループに参加できるようにすることが重要です。 QnA Maker ポータルで質問が提案されたら、**[提案によるフィルター処理](../How-To/improve-knowledge-base.md#add-active-learning-suggestion-to-knowledge-base)** を行い、それらの提案をレビューして、承認または拒否する必要があります。 
+[アクティブ ラーニング](../How-to/improve-knowledge-base.md)は、幅広い質と量のユーザー ベースのクエリがある場合に、代替の質問を提案するという最高の仕事をします。 クライアント アプリケーションのユーザー クエリが、検閲なしのアクティブ ラーニングのフィードバック ループに参加できるようにすることが重要です。 QnA Maker ポータルで質問が提案されたら、 **[提案によるフィルター処理](../How-To/improve-knowledge-base.md#add-active-learning-suggestion-to-knowledge-base)** を行い、それらの提案をレビューして、承認または拒否する必要があります。 
 
 ## <a name="next-steps"></a>次の手順
 

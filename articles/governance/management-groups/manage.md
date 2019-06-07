@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.date: 04/04/2019
 ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: e47ce094cd690cba4ef398bc5d5d443f7ed647e9
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: b3798ec7578530e04ec9e00086fffaec9a58a7cd
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59272480"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65950291"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>管理グループを使用してリソースを管理する
 
@@ -31,7 +31,7 @@ ms.locfileid: "59272480"
 
 1. [Azure Portal](https://portal.azure.com) にログインします。
 
-1. **[すべてのサービス]** > **[管理グループ]** を選択します。
+1. **[すべてのサービス]**  >  **[管理グループ]** を選択します。
 
 1. 名前を変更する管理グループを選択します。
 
@@ -73,13 +73,13 @@ az account management-group update --name 'Contoso' --display-name 'Contoso Grou
 
    - 管理グループを別の管理グループに移動するには、[階層内での管理グループの移動](#move-management-groups-in-the-hierarchy)に関する記事をご覧ください。
 
-1. 管理グループに対する書き込みアクセス許可 ("所有者"、"共同作成者"、または "管理グループ共同作成者") が必要です。 どのアクセス許可があるかを確認するには、管理グループを選択し、**[IAM]** を選択します。 RBAC ロールについて詳しくは、[RBAC を使用したアクセスとアクセス許可の管理](../../role-based-access-control/overview.md)に関する記事をご覧ください。  
+1. 管理グループに対する書き込みアクセス許可 ("所有者"、"共同作成者"、または "管理グループ共同作成者") が必要です。 どのアクセス許可があるかを確認するには、管理グループを選択し、 **[IAM]** を選択します。 RBAC ロールについて詳しくは、[RBAC を使用したアクセスとアクセス許可の管理](../../role-based-access-control/overview.md)に関する記事をご覧ください。  
 
 ### <a name="delete-in-the-portal"></a>ポータルでの削除
 
 1. [Azure Portal](https://portal.azure.com) にログインします。
 
-1. **[すべてのサービス]** > **[管理グループ]** を選択します。
+1. **[すべてのサービス]**  >  **[管理グループ]** を選択します。
 
 1. 削除する管理グループを選択します。
 
@@ -122,7 +122,7 @@ az account management-group delete --name 'Contoso'
 
 1. [Azure Portal](https://portal.azure.com) にログインします。
 
-1. **[すべてのサービス]** > **[管理グループ]** を選択します。
+1. **[すべてのサービス]**  >  **[管理グループ]** を選択します。
 
 1. 管理グループ階層ページが読み込まれます。 このページで、アクセスできるすべての管理グループとサブスクリプションを調べることができます。 グループ名を選択すると、階層の下位レベルに移動します。 ナビゲーションは、ファイル エクスプローラーと同じように機能します。
 
@@ -144,7 +144,7 @@ Get-AzManagementGroup
 Get-AzManagementGroup -GroupName 'Contoso'
 ```
 
-特定の管理グループとその下の階層のすべてのレベルを返すには、**-Expand** パラメーターと **-Recurse** パラメーターを使用します。  
+特定の管理グループとその下の階層のすべてのレベルを返すには、 **-Expand** パラメーターと **-Recurse** パラメーターを使用します。  
 
 ```azurepowershell-interactive
 PS C:\> $response = Get-AzManagementGroup -GroupName TestGroupParent -Expand -Recurse
@@ -193,7 +193,7 @@ az account management-group list
 az account management-group show --name 'Contoso'
 ```
 
-特定の管理グループとその下の階層のすべてのレベルを返すには、**-Expand** パラメーターと **-Recurse** パラメーターを使用します。
+特定の管理グループとその下の階層のすべてのレベルを返すには、 **-Expand** パラメーターと **-Recurse** パラメーターを使用します。
 
 ```azurecli-interactive
 az account management-group show --name 'Contoso' -e -r
@@ -211,7 +211,7 @@ az account management-group show --name 'Contoso' -e -r
 
 *: ターゲットまたは既存の親管理グループがルート管理グループである場合を除きます。 すべての新しい管理グループとサブスクリプションは既定でルート管理グループに追加されるため、項目を移動するためにこのグループに対するアクセス許可は不要です。
 
-現在割り当てられているアクセス許可を Azure portal で確認するには、管理グループを選択し、**[IAM]** を選択します。 RBAC ロールについて詳しくは、[RBAC を使用したアクセスとアクセス許可の管理](../../role-based-access-control/overview.md)に関する記事をご覧ください。
+現在割り当てられているアクセス許可を Azure portal で確認するには、管理グループを選択し、 **[IAM]** を選択します。 RBAC ロールについて詳しくは、[RBAC を使用したアクセスとアクセス許可の管理](../../role-based-access-control/overview.md)に関する記事をご覧ください。
 
 ### <a name="move-subscriptions-in-the-portal"></a>ポータルでのサブスクリプションの移動
 
@@ -219,11 +219,11 @@ az account management-group show --name 'Contoso' -e -r
 
 1. [Azure Portal](https://portal.azure.com) にログインします。
 
-1. **[すべてのサービス]** > **[管理グループ]** を選択します。
+1. **[すべてのサービス]**  >  **[管理グループ]** を選択します。
 
 1. 親にする予定の管理グループを選択します。
 
-1. ページの上部で、**[サブスクリプションの追加]** を選択します。
+1. ページの上部で、 **[サブスクリプションの追加]** を選択します。
 
 1. 一覧で、正しい ID を持つサブスクリプションを選択します。
 
@@ -235,7 +235,7 @@ az account management-group show --name 'Contoso' -e -r
 
 1. [Azure Portal](https://portal.azure.com) にログインします。
 
-1. **[すべてのサービス]** > **[管理グループ]** を選択します。
+1. **[すべてのサービス]**  >  **[管理グループ]** を選択します。
 
 1. 現在親となっている管理グループを選択します。  
 
@@ -281,17 +281,17 @@ az account management-group subscription remove --name 'Contoso' --subscription 
 
 ## <a name="move-management-groups-in-the-hierarchy"></a>階層内での管理グループの移動  
 
-親管理グループを移動すると、そのグループの下の階層も一緒に移動します。
+親管理グループを移動すると、そのグループの下の階層も一緒に移動します。 管理グループを移動するために必要なアクセスについては、「[管理グループ アクセス](index.md#management-group-access)」を参照してください。
 
 ### <a name="move-management-groups-in-the-portal"></a>ポータルでの管理グループの移動
 
 1. [Azure Portal](https://portal.azure.com) にログインします。
 
-1. **[すべてのサービス]** > **[管理グループ]** を選択します。
+1. **[すべてのサービス]**  >  **[管理グループ]** を選択します。
 
 1. 親にする予定の管理グループを選択します。
 
-1. ページの上部で、**[管理グループの追加]** を選択します。
+1. ページの上部で、 **[管理グループの追加]** を選択します。
 
 1. 開いたメニューで、管理グループを新規作成するか、既存のものを使用するかを選択します。
 
@@ -325,7 +325,7 @@ az account management-group update --name 'Contoso' --parent ContosoIT
 
 ![管理グループが含まれているアクティビティ ログ](media/al-mg.png)
 
-Azure portal の外部で管理グループに対するクエリを使用する場合、管理グループのターゲット スコープは、**"/providers/Microsoft.Management/managementGroups/{yourMgID}"** のようになります。
+Azure portal の外部で管理グループに対するクエリを使用する場合、管理グループのターゲット スコープは、 **"/providers/Microsoft.Management/managementGroups/{yourMgID}"** のようになります。
 
 ## <a name="referencing-management-groups-from-other-resource-providers"></a>他のリソース プロバイダーからの管理グループの参照
 

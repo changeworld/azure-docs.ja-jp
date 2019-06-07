@@ -3,25 +3,25 @@ title: アプリケーション プロキシを使用したシングル サイ�
 description: Azure AD アプリケーション プロキシを使用してシングル サインオンを提供する方法について説明します。
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/24/2018
-ms.author: celested
+ms.date: 05/17/2019
+ms.author: mimart
 ms.reviewer: japere
 ms.custom: H1Hack27Feb2017, it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c2461240b398a2b23bb2b2aedc524277d6b9771
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 545906af882be6e53297bf7a9ff2cd12e86d55f0
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652520"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65859620"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>アプリケーション プロキシを使ったアプリへのシングル サインオンの Kerberos の制約付き委任
 
@@ -55,11 +55,12 @@ IWA アプリケーションでのシングル サインオンに着手する前
 Active Directory の構成は、アプリケーション プロキシ コネクタとアプリケーション サーバーが同じドメイン内にあるかどうかによって異なります。
 
 #### <a name="connector-and-application-server-in-the-same-domain"></a>同じドメインにあるコネクタとアプリケーション サーバー
-1. Active Directory で、**[ツール]** > **[ユーザーとコンピューター]** の順に移動します。
+1. Active Directory で、 **[ツール]**  >  **[ユーザーとコンピューター]** の順に移動します。
 2. コネクタを実行しているサーバーを選択します。
-3. 右クリックし、**[プロパティ]** > **[委任]** を選択します。
+3. 右クリックし、 **[プロパティ]**  >  **[委任]** を選択します。
 4. **[指定されたサービスへの委任でのみこのコンピューターを信頼する]** をクリックします。 
-5. **[このアカウントが委任された資格情報を提示できるサービス]** の下で、アプリケーション サーバーの SPN ID の値を追加します。 これで、アプリケーション プロキシ コネクタは、AD において、リストで定義されたアプリケーションに対してユーザーの代理となることができるようになります。
+5. **[任意の認証プロトコルを使う]** を選択します。
+6. **[このアカウントが委任された資格情報を提示できるサービス]** の下で、アプリケーション サーバーの SPN ID の値を追加します。 これで、アプリケーション プロキシ コネクタは、AD において、リストで定義されたアプリケーションに対してユーザーの代理となることができるようになります。
 
    ![Connector-SVR のプロパティ ウィンドウのスクリーン ショット](./media/application-proxy-configure-single-sign-on-with-kcd/Properties.jpg)
 

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 03/01/2019
 ms.author: iainfou
-ms.openlocfilehash: 735be71faecb9882b13f6f536d43715139d0f4db
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 334e56db97213206d9ab7ed5ef4d1d96ab9325d6
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65071977"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65956477"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 上で Azure ディスクを含む永続ボリュームを動的に作成して使用する
 
@@ -39,6 +39,8 @@ Kubernetes ボリュームの詳細については、[AKS でのアプリケー�
     * Standard ストレージでは、HDD が使用されており、高パフォーマンスでありながらコスト効率にも優れたストレージを提供します。 Standard ディスクは、コスト効率が重視される、開発およびテストのワークロードに最適です。
 * *managed-premium* ストレージ クラスは、プレミアムな Azure ディスクをプロビジョニングします。
     * Premium ディスクは、SSD ベースの高性能で待機時間の短いディスクによってサポートされています。 実稼働ワークロードを実行する VM に最適です。 クラスター内の AKS ノードでプレミアム ストレージを使用する場合は、*managed-premium* クラスを選択します。
+    
+これらの既定のストレージ クラスでは、作成後のボリューム サイズを更新できません。 この機能を有効にするには、*allowVolumeExpansion: true* 行を既定のストレージ クラスのいずれかに追加するか、独自のカスタム ストレージ クラスを作成します。 `kubectl edit sc` コマンドを使用して既存のストレージ クラスを編集できます。 ストレージ クラスと独自のストレージ クラスの作成の詳細については、[AKS のアプリケーションのストレージ オプション][storage-class-concepts]に関する記事を参照してください。
 
 事前作成されているストレージ クラスを確認するには、[kubectl get sc][kubectl-get] コマンドを使用します。 次の例は、AKS クラスター内で使用できる事前に作成されたストレージ クラスを示したものです。
 
@@ -86,7 +88,7 @@ persistentvolumeclaim/azure-managed-disk created
 
 ## <a name="use-the-persistent-volume"></a>永続ボリュームの使用
 
-永続ボリューム要求が作成され、ディスクが正常にプロビジョニングされると、ディスクへのアクセスを使ってポッドを作成できます。 次のマニフェストは、*azure-managed-disk* という名前の永続ボリューム要求を使って `/mnt/azure` パスに Azure ディスクをマウントする基本的な NGINX ポッドを作成します。
+永続ボリューム要求が作成され、ディスクが正常にプロビジョニングされると、ディスクへのアクセスを使ってポッドを作成できます。 次のマニフェストは、*azure-managed-disk* という名前の永続ボリューム要求を使って `/mnt/azure` パスに Azure ディスクをマウントする基本的な NGINX ポッドを作成します。 Windows Server コンテナー (AKS では現在プレビュー段階) の場合、 *'D:'* などの Windows パス規則を使用して、*mountPath* を指定します。
 
 `azure-pvc-disk.yaml` という名前のファイルを作成し、そこに次のマニフェストをコピーします。
 
@@ -194,7 +196,7 @@ az disk create --resource-group MC_myResourceGroup_myAKSCluster_eastus --name pv
 az disk show --resource-group MC_myResourceGroup_myAKSCluster_eastus --name pvcRestored --query id -o tsv
 ```
 
-`azure-restored.yaml` という名前のポッド マニフェストを作成し、前の手順で取得したディスクの URI を指定します。 次の例では、*/mnt/azure* にボリュームとしてマウントされた復元ディスクを使用して、基本的な NGINX Web サーバーを作成します。
+`azure-restored.yaml` という名前のポッド マニフェストを作成し、前の手順で取得したディスクの URI を指定します。 次の例では、 */mnt/azure* にボリュームとしてマウントされた復元ディスクを使用して、基本的な NGINX Web サーバーを作成します。
 
 ```yaml
 kind: Pod
@@ -279,3 +281,4 @@ Azure ディスクを使った Kubernetes 永続ボリュームについて、�
 [install-azure-cli]: /cli/azure/install-azure-cli
 [operator-best-practices-storage]: operator-best-practices-storage.md
 [concepts-storage]: concepts-storage.md
+[storage-class-concepts]: concepts-storage.md#storage-classes

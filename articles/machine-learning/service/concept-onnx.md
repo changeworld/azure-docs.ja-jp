@@ -11,18 +11,18 @@ ms.author: prasantp
 author: prasanthpul
 ms.date: 04/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: a8bc46011b00a0c63eddd2799ac1309b5754472e
-ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
+ms.openlocfilehash: f1eca5bdd81a384efe04f769ebd12be9d91fc78a
+ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65442422"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65849727"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-accelerate-ml-models"></a>ONNX と Azure Machine Learning:ML モデルの作成と能率化
 
-[Open Neural Network Exchange](https://onnx.ai) (ONNX) の使用が機械学習モデルの最適化にどのように寄与するかについて説明します。
+[Open Neural Network Exchange](https://onnx.ai) (ONNX) の使用が機械学習モデルの推論の最適化にどのように寄与するかについて説明します。 推論、つまりモデル スコアリングとは、通常は運用環境のデータに基づいて、デプロイしたモデルを使用して予測を行うフェーズです。 
 
-推論に使用される機械学習モデルを最適化するのは、ハードウェアの性能を最大限に活かせるようにモデルと推論ライブラリをチューニングする必要があるため、簡単ではありません。 さまざまな種類のプラットフォーム (クラウドやエッジ、CPU や GPU など) で最適なパフォーマンスを引き出そうとすると、問題はきわめて難しくなります。性能と特性がそれぞれ異なるためです。 多種多様なフレームワークのモデルがあって、それらをさまざまなプラットフォームで実行する必要がある場合、複雑さが増します。 異なるフレームワークとハードウェアの組み合わせをすべて最適化するのは、時間がかかりすぎます。 候補となるフレームワークで一度だけトレーニングを行えば、クラウドやエッジのどこででも実行できるソリューションが求められます。 その切り札となるのが ONNX です。
+推論に使用される機械学習モデルを最適化するのは、ハードウェアの性能を最大限に活かせるようにモデルと推論 (つまりモデルのスコアリング) ライブラリをチューニングする必要があるため、簡単ではありません。 さまざまな種類のプラットフォーム (クラウドやエッジ、CPU や GPU など) で最適なパフォーマンスを引き出そうとすると、問題はきわめて難しくなります。性能と特性がそれぞれ異なるためです。 多種多様なフレームワークのモデルがあって、それらをさまざまなプラットフォームで実行する必要がある場合、複雑さが増します。 異なるフレームワークとハードウェアの組み合わせをすべて最適化するのは、時間がかかりすぎます。 候補となるフレームワークで一度だけトレーニングを行えば、クラウドやエッジのどこででも実行できるソリューションが求められます。 その切り札となるのが ONNX です。
 
 ONNX は、機械学習モデルを表現するためのオープン スタンダードとして、Microsoft とパートナー コミュニティによって作成されました。 TensorFlow、PyTorch、SciKit-Learn、Keras、Chainer、MXNet、MATLAB など、[さまざまなフレームワーク](https://onnx.ai/supported-tools)のモデルを標準の ONNX 形式にエクスポートまたは変換することができます。 ONNX 形式になったモデルは、さまざまなプラットフォームやデバイスで実行することができます。
 

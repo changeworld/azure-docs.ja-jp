@@ -3,17 +3,17 @@ title: リモート監視ソリューションを (Visual Studio IDE 経由で) 
 description: この攻略ガイドでは、リモート監視ソリューション アクセラレータをテストおよび開発のために Visual Studio を使用してローカル コンピューターにデプロイする方法を示します。
 author: avneet723
 manager: hegate
-ms.author: avneet723
+ms.author: avneets
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: a5754fc2f7e0fc36a6708bfd4d2d1d3d6f016b27
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 1adf59feca7db4c5903b04c59e1bd23290c1855e
+ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65150969"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65967508"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---visual-studio"></a>リモート監視ソリューション アクセラレータをローカルでデプロイする - Visual Studio
 
@@ -60,11 +60,11 @@ ms.locfileid: "65150969"
 
 ### <a name="deploy-all-other-microservices-on-local-machine"></a>ローカル コンピューター上のその他すべてのマイクロサービスをデプロイする
 
-次の手順では、Visual Studio 2017 のリモート監視マイクロサービスを実行する方法を示します。
+次の手順では、Visual Studio のリモート監視マイクロサービスを実行する方法を示します。
 
-1. Visual Studio 2017 を起動します
+1. Visual Studio を起動します。
 1. リポジトリのローカル コピー内の **services** フォルダーで、**remote-monitoring.sln** ソリューションを開きます。
-1. **ソリューション エクスプローラー**でソリューションを右クリックして、**[プロパティ]** をクリックします。
+1. **ソリューション エクスプローラー**でソリューションを右クリックして、 **[プロパティ]** をクリックします。
 1. **[共通プロパティ] > [スタートアップ プロジェクト]** を選択します。
 1. **[マルチ スタートアップ プロジェクト]** を選択し、以下のプロジェクトで **[アクション]** を **[開始]** に設定します。
     * WebService (asa-manager\WebService)
@@ -85,7 +85,7 @@ Stream Analytics ジョブを開始するには、次の手順に従います。
 1. [Azure Portal](https://portal.azure.com) に移動します。
 1. ソリューション用に作成された**リソース グループ**に移動します。 このリソース グループの名前は、**start.cmd** スクリプトを実行したときにソリューション用に選択した名前です。
 1. リソースの一覧で **[Stream Analytics ジョブ]** をクリックします。
-1. Stream Analytics ジョブの **[概要]** ページで、**[開始]** ボタンをクリックします。 次に、**[開始]** をクリックしてジョブをすぐに開始します。
+1. Stream Analytics ジョブの **[概要]** ページで、 **[開始]** ボタンをクリックします。 次に、 **[開始]** をクリックしてジョブをすぐに開始します。
 
 ### <a name="run-the-web-ui"></a>Web UI を実行する
 
