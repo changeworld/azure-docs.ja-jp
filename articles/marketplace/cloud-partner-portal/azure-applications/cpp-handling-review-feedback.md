@@ -20,7 +20,7 @@ ms.locfileid: "64942954"
 
 ![発行手順と VSTS フィードバック](./media/pub-flow-vsts-access.png)
 
-通常、レビューの問題はプル要求 (PR) と呼ばれます。  各 PR は、問題に関する詳細を含むオンラインの [Azure DevOps](https://azure.microsoft.com/services/devops/) (旧称 Visual Studio Team Services (VSTS)) 項目にリンクされています。  次の図に、レビュー PR の参照の例を示します。  複雑な状況では、レビューおよびサポート チームからお客様にメールが送信されることもあります。 
+通常、レビューの問題はプルリクエスト (PR) と呼ばれます。  各 PR は、問題に関する詳細を含むオンラインの [Azure DevOps](https://azure.microsoft.com/services/devops/) (旧称 Visual Studio Team Services (VSTS)) 項目にリンクされています。  次の図に、レビュー PR の参照の例を示します。  複雑な状況では、レビューおよびサポート チームからお客様にメールが送信されることもあります。 
 
 ![レビューのフィードバックが表示される [状態] タブ](./media/status-tab-ms-review.png)
 
@@ -32,7 +32,7 @@ ms.locfileid: "64942954"
 1. 次の情報を収集します。
     - パブリッシャー名または ID
     - オファーの種類 (Azure アプリ)、オファー名、SKU ID
-    - プル要求リンク。次に例を示します。`https://solutiontemplates.visualstudio.com/marketplacesolutions/_git/contoso/pullrequest/<number>`  この URL は、通知メッセージまたは 401 応答ページのアドレスから取得できます。
+    - プルリクエストリンク。次に例を示します。`https://solutiontemplates.visualstudio.com/marketplacesolutions/_git/contoso/pullrequest/<number>`  この URL は、通知メッセージまたは 401 応答ページのアドレスから取得できます。
     - アクセスを付与する発行元組織の個人のメール アドレス。  この一覧には、Cloud パートナー ポータルでパブリッシャーとして登録するときに指定した所有者アドレスを含める必要があります。
 2. サポート インシデントを作成する  Cloud パートナー ポータルのタイトル バーで **[ヘルプ]** ボタンを選択し、メニューから **[サポート]** を選択します。  既定の Web ブラウザーが起動し、Microsoft の新しいサポート インシデント ページに移動します  (場合によっては、最初にサインインする必要があります)。
 3. **[問題の種類]** に **[Marketplace Onboarding]\(マーケットプレースのオンボード\)** 、 **[カテゴリ]** に **[Access problem]\(アクセスの問題\)** を指定し、 **[Start request]\(要求の開始\)** を選択します。
@@ -45,9 +45,9 @@ ms.locfileid: "64942954"
 インシデントの作成に成功すると、確認ページが表示されます。  後で参照できるように、このページ上の確認情報を保存します。  Microsoft サポート チームは、数営業日以内にお客様のアクセス要求に返信します。
 
 
-## <a name="reviewing-the-pull-request"></a>プル要求の確認 
+## <a name="reviewing-the-pull-request"></a>プルリクエストの確認 
 
-プル要求に記述されている問題を確認するには、次の手順を使用します。
+プルリクエストに記述されている問題を確認するには、次の手順を使用します。
 
 1. **[Publishing steps]\(発行手順\)** フォームの **[Microsoft review]\(Microsoft のレビュー\)** セクションで、PR リンクをクリックしてブラウザーを起動し、この PR の **[概要]** (ホーム) ページに移動します。  次の図は、Contoso のサンプル アプリ オファーの重大な問題のホーム ページの例を示しています。  このページには、Azure アプリで検出されたレビューの問題に関する有用な概要情報が含まれています。  
 
