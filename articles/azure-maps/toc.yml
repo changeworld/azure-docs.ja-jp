@@ -164,6 +164,8 @@
       items:
         - name: マップ コントロール
           href: 'https://docs.microsoft.com/javascript/api/azure-maps-javascript/'
+        - name: 描画ツール
+          href: 'https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/'
         - name: サービス モジュール
           href: 'https://docs.microsoft.com/javascript/api/azure-maps-rest/'
     - name: Resource Manager テンプレート

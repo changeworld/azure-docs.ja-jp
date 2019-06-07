@@ -39,6 +39,8 @@
           href: create-uidefinition-overview.md
         - name: ポータルのインターフェイスをテストする
           href: test-createuidefinition.md
+        - name: Just-In-Time アクセスを要求する
+          href: request-just-in-time-access.md
         - name: マネージド リソースの更新
           href: update-managed-resources.md
         - name: ポータルを使用したアプリケーション定義の発行
@@ -51,6 +53,8 @@
       items:
         - name: マネージド アプリケーションの監視
           href: monitor-managed-application-portal.md
+        - name: Just-In-Time アクセスを承認する
+          href: approve-just-in-time-access.md
 - name: リファレンス
   items:
     - name: Azure CLI

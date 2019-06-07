@@ -3,8 +3,8 @@ title: Azure Active Directory の Web API アプリ
 description: Web API アプリケーションについて、およびこの種のアプリのプロトコル フロー、登録、およびトークンの有効期限の基本について説明します。
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b477171be0f306431b0f7c5965ebede4f4680c22
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 484e6b4c5f0e064254c957b07b8ba15ef98f2634
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56201909"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65545209"
 ---
 # <a name="web-api"></a>Web API
 
@@ -69,7 +69,7 @@ Web アプリケーション対 Web API のシナリオのコード サンプル
 
 ## <a name="app-registration"></a>アプリの登録
 
-Azure AD v1.0 エンドポイントにアプリケーションを登録するには、「[Register an app with the Azure AD v1.0 endpoint](quickstart-v1-add-azure-ad-app.md)」(アプリを Azure AD v1.0 エンドポイントに登録する) を参照してください。
+Azure AD v1.0 エンドポイントにアプリケーションを登録するには、[アプリの登録](quickstart-register-app.md)に関するページをご覧ください。
 
 * シングル テナント: アプリケーション ID と委任ユーザー ID のどちらの場合も、Web アプリケーションと Web API を Azure AD の同じディレクトリに登録する必要があります。 Web アプリケーションによるリソースへのアクセスを制限するために使用する一連のアクセス許可を公開するように Web API を構成できます。 委任ユーザー ID を使用している場合、Web アプリケーションで Azure portal の **[他のアプリケーションに対するアクセス許可]** ドロップダウン メニューから目的のアクセス許可を選択する必要があります。 アプリケーション ID を使用している場合、この手順は不要です。
 * マルチテナント: まず、アプリケーションが機能するために必要なアクセス許可を示すように、Web アプリケーションを構成します。 必要なアクセス許可のこのリストは、アプリケーションを組織で使用できるように、発行先ディレクトリ内のユーザーまたは管理者がアプリケーションに同意するときにダイアログに表示されます。 組織内の任意のユーザーが同意できる、ユーザーレベルのアクセス許可だけを必要とするアプリケーションもあれば、 組織内のユーザーは同意できない、管理者レベルのアクセス許可を必要とするアプリケーションもあります。 このレベルのアクセスを必要とするアプリケーションに同意できるのはディレクトリ管理者だけです。 ユーザーまたは管理者が同意すると、Web アプリケーションと Web API の両方がディレクトリに登録されます。

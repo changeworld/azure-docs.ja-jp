@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 05/02/2019
+ms.date: 05/10/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: bef0c5d776e8ab6424b8604a49782088c45b0538
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: f15fa3b4972a2ac54d1d9bce916fdd42c2951d2f
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65027661"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65550880"
 ---
 # <a name="manage-consortium-members-in-azure-blockchain-service-using-powershell"></a>PowerShell を使用して Azure Blockchain Service のコンソーシアム メンバーを管理する
 
@@ -28,7 +28,7 @@ PowerShell を使用して、Azure Blockchain Service のブロックチェー�
 
 ## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell を起動する
 
-Azure Cloud Shell は無料のインタラクティブ シェルです。この記事の手順は、Azure Cloud Shell を使って実行することができます。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 
+Azure Cloud Shell は無料のインタラクティブ シェルです。この記事の手順は、Azure Cloud Shell を使って実行することができます。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。
 
 [https://shell.azure.com/powershell](https://shell.azure.com/powershell) に移動して、別のブラウザー タブで Cloud Shell を起動することもできます。 **[コピー]** を選択してコードのブロックをコピーし、Cloud Shell に貼り付けてから、Enter キーを押して実行します。
 
@@ -36,16 +36,26 @@ Azure Cloud Shell は無料のインタラクティブ シェルです。この�
 
 PowerShell ギャラリーから Microsoft.AzureBlockchainService.ConsortiumManagement.PS パッケージをインストールします。
 
-```powershell
+```powershell-interactive
 Install-Module -Name Microsoft.AzureBlockchainService.ConsortiumManagement.PS -Scope CurrentUser
 Import-Module Microsoft.AzureBlockchainService.ConsortiumManagement.PS
+```
+
+## <a name="set-information-preference"></a>情報の基本設定を設定する
+
+情報の基本設定変数を設定すると、コマンドレットを実行したときにより詳しい情報を取得できます。 既定では、 *$InformationPreference* は *SilentlyContinue* に設定されます。
+
+コマンドレットからのより詳しい情報のために、PowerShell では以下のように基本設定を設定します。
+
+```powershell-interactive
+$InformationPreference = 'Continue'
 ```
 
 ## <a name="establish-a-web3-connection"></a>Web3 の接続を確立する
 
 コンソーシアムのメンバーを管理するには、Azure Blockchain Service メンバー エンドポイントに対して Web3 の接続を確立する必要があります。 次のスクリプトを使用して、コンソーシアム管理コマンドレットを呼び出すときに使用できるグローバル変数を設定できます。
 
-```powershell
+```powershell-interactive
 $Connection = New-Web3Connection -RemoteRPCEndpoint '<Endpoint address>'
 $MemberAccount = Import-Web3Account -ManagedAccountAddress '<Member account address>' -ManagedAccountPassword '<Member account password>'
 $ContractConnection = Import-ConsortiumManagementContracts -RootContractAddress '<RootContract address>' -Web3Client $Connection
@@ -62,12 +72,12 @@ $ContractConnection = Import-ConsortiumManagementContracts -RootContractAddress 
 
     \<Member account\> と \<RootContract address\> は、ポータルの値に置き換えます。
 
-1. エンドポイント アドレスについては、**[Transaction nodes]\(トランザクション ノード\)** を選択して、トランザクション ノードを選択します。
+1. エンドポイント アドレスについては、 **[トランザクション ノード]** を選択して、 **[既定]** のトランザクション ノードを選択します。 既定のトランザクション ノードは、ブロックチェーン メンバーと同じ名前になっています。
 1. **[接続文字列]** を選択します。
 
     ![Connection strings](./media/manage-consortium-powershell/connection-strings.png)
 
-    \<Endpoint address\> は、**[HTTPS (Access key 1)]\(HTTPS (アクセス キー 1)\)** または **[HTTPS (Access key 2)]\(HTTPS (アクセス キー 2)\)** の値に置き換えます。
+    \<Endpoint address\> は、 **[HTTPS (Access key 1)]\(HTTPS (アクセス キー 1)\)** または **[HTTPS (Access key 2)]\(HTTPS (アクセス キー 2)\)** の値に置き換えます。
 
 ## <a name="network-and-smart-contract-management"></a>ネットワークとスマート コントラクトの管理
 
@@ -77,9 +87,7 @@ $ContractConnection = Import-ConsortiumManagementContracts -RootContractAddress 
 
 コンソーシアム管理スマート コントラクトに接続します。このコントラクトは、コンソーシアム内のメンバーの管理と適用に使用されます。
 
-```powershell
-Import-ConsortiumManagementContracts -RootContractAddress <String> -Web3Client <IClient>
-```
+`Import-ConsortiumManagementContracts -RootContractAddress <String> -Web3Client <IClient>`
 
 | パラメーター | 説明 | 必須 |
 |-----------|-------------|:--------:|
@@ -88,7 +96,7 @@ Import-ConsortiumManagementContracts -RootContractAddress <String> -Web3Client <
 
 **例**
 
-```powershell
+```powershell-interactive
 Import-ConsortiumManagementContracts -RootContractAddress '<RootContract address>'  -Web3Client $Connection
 ```
 
@@ -96,9 +104,7 @@ Import-ConsortiumManagementContracts -RootContractAddress '<RootContract address
 
 リモート ノード管理アカウントの情報を保持するオブジェクトを作成するには、このコマンドレットを使用します。
 
-```powershell
-Import-Web3Account -ManagedAccountAddress <String> -ManagedAccountPassword <String>
-```
+`Import-Web3Account -ManagedAccountAddress <String> -ManagedAccountPassword <String>`
 
 | パラメーター | 説明 | 必須 |
 |-----------|-------------|:--------:|
@@ -107,7 +113,7 @@ Import-Web3Account -ManagedAccountAddress <String> -ManagedAccountPassword <Stri
 
 **例**
 
-```powershell
+```powershell-interactive
 Import-Web3Account -ManagedAccountAddress '<Member account address>'  -ManagedAccountPassword '<Member account password>'
 ```
 
@@ -115,18 +121,15 @@ Import-Web3Account -ManagedAccountAddress '<Member account address>'  -ManagedAc
 
 トランザクション ノードの RPC エンドポイントへの接続を確立します。
 
-```powershell
-New-Web3Connection [-RemoteRPCEndpoint <String>]
-```
+`New-Web3Connection [-RemoteRPCEndpoint <String>]`
 
 | パラメーター | 説明 | 必須 |
 |-----------|-------------|:--------:|
 | RemoteRPCEndpoint | ブロックチェーン メンバーのエンドポイント アドレス | はい |
 
-
 **例**
 
-```powershell
+```powershell-interactive
 New-Web3Connection -RemoteRPCEndpoint '<Endpoint address>'
 ```
 
@@ -138,19 +141,17 @@ New-Web3Connection -RemoteRPCEndpoint '<Endpoint address>'
 
 メンバーの詳細を取得したり、コンソーシアムのメンバーの一覧を表示したりします。
 
-```powershell
-Get-BlockchainMember [[-Name] <String>] -Members <IContract> -Web3Client <IClient>
-```
+`Get-BlockchainMember [[-Name] <String>] -Members <IContract> -Web3Client <IClient>`
 
 | パラメーター | 説明 | 必須 |
 |-----------|-------------|:--------:|
-| Name | 詳細を取得する Azure Blockchain Service メンバーの名前。 メンバーの名前を指定すると、メンバーの詳細が返されます。 名前を省略すると、すべてのコンソーシアム メンバーの一覧が返されます。 | いいえ  |
+| Name | 詳細を取得する Azure Blockchain Service メンバーの名前。 メンバーの名前を指定すると、メンバーの詳細が返されます。 名前を省略すると、すべてのコンソーシアム メンバーの一覧が返されます。 | いいえ |
 | Members | Import-ConsortiumManagementContracts で取得したメンバー オブジェクト | はい |
 | Web3Client | New-Web3Connection から取得した Web3Client オブジェクト | はい |
 
 **例**
 
-```powershell
+```powershell-interactive
 $ContractConnection | Get-BlockchainMember -Name <Member Name>
 ```
 
@@ -169,9 +170,7 @@ Role           : ADMIN
 
 ブロックチェーン メンバーを削除します。
 
-```powershell
-Remove-BlockchainMember -Name <String> -Members <IContract> -Web3Account <IAccount> -Web3Client <IClient>
-```
+`Remove-BlockchainMember -Name <String> -Members <IContract> -Web3Account <IAccount> -Web3Client <IClient>`
 
 | パラメーター | 説明 | 必須 |
 |-----------|-------------|:--------:|
@@ -182,7 +181,7 @@ Remove-BlockchainMember -Name <String> -Members <IContract> -Web3Account <IAccou
 
 **例**
 
-```powershell
+```powershell-interactive
 $ContractConnection | Remove-BlockchainMember -Name <Member Name> -Web3Account $MemberAccount
 ```
 
@@ -192,23 +191,21 @@ $ContractConnection | Remove-BlockchainMember -Name <Member Name> -Web3Account $
 
 コンソーシアム管理者は、すべてのメンバーの **DisplayName** と **Role** を設定できます。 ユーザー ロールを持つコンソーシアム メンバーは、自分のメンバーの表示名のみを変更できます。
 
-```powershell
-Set-BlockchainMember -Name <String> [-DisplayName <String>] [-AccountAddress <String>] [-Role <String>]
- -Members <IContract> -Web3Account <IAccount> -Web3Client <IClient>
-```
+`Set-BlockchainMember -Name <String> [-DisplayName <String>] [-AccountAddress <String>] [-Role <String>]
+ -Members <IContract> -Web3Account <IAccount> -Web3Client <IClient>`
 
 | パラメーター | 説明 | 必須 |
 |-----------|-------------|:--------:|
 | Name | ブロックチェーン メンバーの名前 | はい |
-| DisplayName | 新しい表示名 | いいえ  |
-| AccountAddress | アカウント アドレス | いいえ  |
+| DisplayName | 新しい表示名 | いいえ |
+| AccountAddress | アカウント アドレス | いいえ |
 | Members | Import-ConsortiumManagementContracts で取得したメンバー オブジェクト | はい |
 | Web3Account | Import-Web3Account で取得した Web3Account オブジェクト | はい |
 | Web3Client |  New-Web3Connection から取得した Web3Client オブジェクト| はい |
 
 **例**
 
-```powershell
+```powershell-interactive
 $ContractConnection | Set-BlockchainMember -Name <Member Name> -DisplayName <Display name> -Web3Account $MemberAccount
 ```
 
@@ -220,10 +217,8 @@ $ContractConnection | Set-BlockchainMember -Name <Member Name> -DisplayName <Dis
 
 コンソーシアムに新しいメンバーを招待します。
 
-```powershell
-New-BlockchainMemberInvitation -SubscriptionId <String> -Role <String> -Members <IContract>
- -Web3Account <IAccount> -Web3Client <IClient>
-```
+`New-BlockchainMemberInvitation -SubscriptionId <String> -Role <String> -Members <IContract>
+ -Web3Account <IAccount> -Web3Client <IClient>`
 
 | パラメーター | 説明 | 必須 |
 |-----------|-------------|:--------:|
@@ -235,7 +230,7 @@ New-BlockchainMemberInvitation -SubscriptionId <String> -Role <String> -Members 
 
 **例**
 
-```powershell
+```powershell-interactive
 $ContractConnection | New-BlockchainMemberInvitation -SubscriptionId <Azure Subscription ID> -Role USER -Web3Account $MemberAccount
 ```
 
@@ -243,19 +238,17 @@ $ContractConnection | New-BlockchainMemberInvitation -SubscriptionId <Azure Subs
 
 コンソーシアム メンバーの招待の状態を取得または一覧表示します。
 
-```powershell
-Get-BlockchainMemberInvitation [[-SubscriptionId] <String>] -Members <IContract> -Web3Client <IClient>
-```
+`Get-BlockchainMemberInvitation [[-SubscriptionId] <String>] -Members <IContract> -Web3Client <IClient>`
 
 | パラメーター | 説明 | 必須 |
 |-----------|-------------|:--------:|
-| SubscriptionId | 招待されたメンバーの Azure サブスクリプション ID。 SubscriptionID を指定した場合は、サブスクリプション ID の招待の詳細が返されます。 SubscriptionID を省略すると、すべてのメンバーの招待の一覧が返されます。 | いいえ  |
+| SubscriptionId | 招待されたメンバーの Azure サブスクリプション ID。 SubscriptionID を指定した場合は、サブスクリプション ID の招待の詳細が返されます。 SubscriptionID を省略すると、すべてのメンバーの招待の一覧が返されます。 | いいえ |
 | Members | Import-ConsortiumManagementContracts で取得したメンバー オブジェクト | はい |
 | Web3Client | New-Web3Connection から取得した Web3Client オブジェクト | はい |
 
 **例**
 
-```powershell
+```powershell-interactive
 $ContractConnection | Get-BlockchainMemberInvitation – SubscriptionId <Azure subscription ID>
 ```
 
@@ -271,10 +264,8 @@ SubscriptionId                       Role CorrelationId
 
 コンソーシアム メンバーの招待を取り消します。
 
-```powershell
-Remove-BlockchainMemberInvitation -SubscriptionId <String> -Members <IContract> -Web3Account <IAccount>
- -Web3Client <IClient>
-```
+`Remove-BlockchainMemberInvitation -SubscriptionId <String> -Members <IContract> -Web3Account <IAccount>
+ -Web3Client <IClient>`
 
 | パラメーター | 説明 | 必須 |
 |-----------|-------------|:--------:|
@@ -285,7 +276,7 @@ Remove-BlockchainMemberInvitation -SubscriptionId <String> -Members <IContract> 
 
 **例**
 
-```powershell
+```powershell-interactive
 $ContractConnection | Remove-BlockchainMemberInvitation -SubscriptionId <Subscription ID> -Web3Account $MemberAccount
 ```
 
@@ -293,10 +284,8 @@ $ContractConnection | Remove-BlockchainMemberInvitation -SubscriptionId <Subscri
 
 既存の招待に対して**ロール**を設定します。 招待を変更できるのはコンソーシアム管理者のみです。
 
-```powershell
-Set-BlockchainMemberInvitation -SubscriptionId <String> -Role <String> -Members <IContract>
- -Web3Account <IAccount> -Web3Client <IClient>
-```
+`Set-BlockchainMemberInvitation -SubscriptionId <String> -Role <String> -Members <IContract>
+ -Web3Account <IAccount> -Web3Client <IClient>`
 
 | パラメーター | 説明 | 必須 |
 |-----------|-------------|:--------:|
@@ -308,7 +297,7 @@ Set-BlockchainMemberInvitation -SubscriptionId <String> -Role <String> -Members 
 
 **例**
 
-```powershell
+```powershell-interactive
 $ContractConnection | Set-BlockchainMemberInvitation -SubscriptionId <Azure subscription ID> -Role USER -Web3Account $MemberAccount
 ```
 

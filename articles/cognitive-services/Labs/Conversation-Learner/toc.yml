@@ -34,6 +34,8 @@
       href: tutorials/08-pre-trained-entities.md
     - name: エンティティ リゾルバー
       href: tutorials/09-entity-resolvers.md
+    - name: 列挙型のエンティティ
+      href: tutorials/tutorial-enum-set-entity.md
     - name: 代替入力
       href: tutorials/10-alternative-inputs.md
     - name: ダイアログを記録する

@@ -70,6 +70,8 @@
           href: waf-front-door-create-portal.md
         - name: WAF ポリシーの構成 - Azure PowerShell
           href: waf-front-door-custom-rules-powershell.md
+        - name: ボット保護の構成
+          href: waf-front-door-policy-configure-bot-protection.md
         - name: カスタム応答コードの構成
           href: waf-front-door-configure-custom-response-code.md
         - name: IP 制限の構成

@@ -43,7 +43,7 @@
       items:
         - name: Azure Functions を使用したデータのフィルター処理
           href: tutorial-deploy-function.md
-        - name: ASA を使用した平均値の検索
+        - name: Azure Stream Analytics を使用して平均値を見つける
           href: tutorial-deploy-stream-analytics.md
         - name: Azure Machine Learning service を使用したデータへのスコア付け
           href: tutorial-deploy-machine-learning.md

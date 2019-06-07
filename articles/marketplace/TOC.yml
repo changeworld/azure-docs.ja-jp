@@ -470,8 +470,12 @@
           href: ./partner-center-portal/manage-account.md
         - name: 会社の職場アカウントを検索または作成する
           href: ./partner-center-portal/company-work-accounts.md
+        - name: CPP からパートナー センターへのアカウントの移行
+          href: ./partner-center-portal/account-migration-from-cpp-to-pc.md
     - name: 新しいオファーを作成する
       items:
+        - name: オファー作成のチェックリスト
+          href: ./partner-center-portal/offer-creation-checklist.md
         - name: SaaS オファーを作成する
           href: ./partner-center-portal/create-new-saas-offer.md
         - name: SaaS Fulfillment API

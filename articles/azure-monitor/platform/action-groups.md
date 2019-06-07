@@ -5,15 +5,15 @@ author: dkamstra
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 4/12/2019
+ms.date: 5/10/2019
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 3d06024b7fa4356d4ad0e8b52c45c2ead62ef784
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: fba5119feb1ff7a0170a573371e479caa5fc33eb
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59549663"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65544469"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Azure Portal でのアクション グループの作成および管理
 ## <a name="overview"></a>概要 ##
@@ -26,16 +26,16 @@ ms.locfileid: "59549663"
 各アクションは次のプロパティで構成されます。
 
 * **名前**: アクション グループ内の一意識別子。  
-* **アクションの種類**: 実行されるアクション。 たとえば、音声通話、SMS、電子メールの送信やさまざまな種類の自動化されたアクションのトリガーなどです。 この記事の後半の種類を参照してください。 
-* **[詳細]**:"*アクションの種類*" によって異なる対応する詳細。 
+* **アクションの種類**: 実行されるアクション。 たとえば、音声通話、SMS、電子メールの送信やさまざまな種類の自動化されたアクションのトリガーなどです。 この記事の後半の種類を参照してください。
+* **[詳細]** :"*アクションの種類*" によって異なる対応する詳細。
 
 Azure Resource Manager テンプレートを使用したアクション グループの構成に関する詳細については、「[アクション グループの Resource Manager テンプレート](../../azure-monitor/platform/action-groups-create-resource-manager-template.md)」を参照してください。
 
 ## <a name="create-an-action-group-by-using-the-azure-portal"></a>Azure Portal を使用したアクション グループの作成 ##
-1. [ポータル](https://portal.azure.com)で、**[モニター]** を選択します。 **[モニター]** ウィンドウでは、すべての監視設定とデータが 1 つのビューにまとめられています。
+1. [ポータル](https://portal.azure.com)で、 **[モニター]** を選択します。 **[モニター]** ウィンドウでは、すべての監視設定とデータが 1 つのビューにまとめられています。
 
     ![[モニター] サービス](./media/action-groups/home-monitor.png)
-1. **[アラート]**、**[アクション グループの管理]** の順に選択します。
+1. **[アラート]** 、 **[アクション グループの管理]** の順に選択します。
 
     ![[アクション グループの管理] ボタン](./media/action-groups/manage-action-groups.png)
 1. **[アクション グループの追加]** を選択し、フィールドに入力します。
@@ -51,16 +51,16 @@ Azure Resource Manager テンプレートを使用したアクション グル�
 
 1. アクションの一覧を定義します。 アクションごとに次の内容を指定します。
 
-    a. **[名前]**: このアクションの一意識別子を入力します。
+    a. **[名前]** : このアクションの一意識別子を入力します。
 
-    b. **[アクションの種類]**: 電子メール/SMS/プッシュ/音声、ロジック アプリ、Webhook、ITSM、または Automation Runbook を選択します。
+    b. **[アクションの種類]** : 電子メール/SMS/プッシュ/音声、ロジック アプリ、Webhook、ITSM、または Automation Runbook を選択します。
 
-    c. **[詳細]**: アクションの種類に基づいて、電話番号、メール アドレス、Webhook の URI、Azure アプリ、ITSM 接続、または Automation Runbook を入力します。 ITSM アクションの場合は、さらに ITSM ツールで必要な **[作業項目]** および他のフィールドを指定します。
+    c. **[詳細]** : アクションの種類に基づいて、電話番号、メール アドレス、Webhook の URI、Azure アプリ、ITSM 接続、または Automation Runbook を入力します。 ITSM アクションの場合は、さらに ITSM ツールで必要な **[作業項目]** および他のフィールドを指定します。
 
 1. **[OK]** を選択して、アクション グループを作成します。
 
 ## <a name="manage-your-action-groups"></a>アクション グループの管理 ##
-アクション グループを作成すると、**[モニター]** ウィンドウの **[アクション グループ]** セクションに表示されます。 次の操作を行うために管理するアクション グループを選択します。
+アクション グループを作成すると、 **[モニター]** ウィンドウの **[アクション グループ]** セクションに表示されます。 次の操作を行うために管理するアクション グループを選択します。
 
 * アクションの追加、編集、または削除。
 * アクション グループの削除。
@@ -69,7 +69,7 @@ Azure Resource Manager テンプレートを使用したアクション グル�
 > [!NOTE]
 > 次の各項目の数値の制限については、[監視のためのサブスクリプション サービスの制限](https://docs.microsoft.com/azure/azure-subscription-service-limits#monitor-limits)に関するセクションを参照してください。  
 
-**Azure アプリのプッシュ** - アクション グループには、限られた数の Azure アプリのアクションを持つことができます。 現時点では Azure アプリのアクションは ServiceHealth アラートのみをサポートします。 その他のアラートの種類は無視されます。 [サービスの正常性通知が投稿されるたびにアラートを設定](../../azure-monitor/platform/alerts-activity-log-service-notifications.md)する方法を見る。
+**Azure アプリのプッシュ** - アクション グループには、限られた数の Azure アプリのアクションを保持できます。
 
 **電子メール** - 電子メールは、次の電子メール アドレスから送信されます。 電子メールのフィルタリングが適切に構成されていることを確認してください
 - azure-noreply@microsoft.com
@@ -78,7 +78,7 @@ Azure Resource Manager テンプレートを使用したアクション グル�
 
 アクション グループには、電子メールに関する限られた数のアクションを持つことができます。 [レート制限情報](./../../azure-monitor/platform/alerts-rate-limiting.md)の記事を見る
 
-**ITSM** -アクション グループには、限られた数の ITSM アクションを持つことができます。 ITSM アクションには ITSM 接続が必要です。 [ITSM 接続](../../azure-monitor/platform/itsmc-overview.md)の作成方法を確認してください。
+**ITSM** -アクション グループには、限られた数の ITSM アクションを保持できます。 ITSM アクションには ITSM 接続が必要です。 [ITSM 接続](../../azure-monitor/platform/itsmc-overview.md)の作成方法を確認してください。
 
 **ロジック アプリ** - アクション グループには、限られた数のロジック アプリのアクションを持つことができます。
 
@@ -101,19 +101,17 @@ Azure Resource Manager テンプレートを使用したアクション グル�
  - 13.106.38.148
  - 13.106.57.196
  - 52.244.68.117
+ - 52.244.65.137
  - 51.4.138.199
  - 51.5.148.86
  - 51.5.149.19
 
 これらの IP アドレスへの変更に関する更新情報を受け取るには、アクション グループ サービスに関する情報の通知を監視するサービス正常性アラートを構成することをお勧めします。
 
-
 ## <a name="next-steps"></a>次の手順 ##
-
 * 詳細については、「[SMS アラート動作](../../azure-monitor/platform/alerts-sms-behavior.md)」を参照してください。  
 * [アクティビティ ログ アラートに対する webhook スキーマについて理解](../../azure-monitor/platform/activity-log-alerts-webhook.md)します。  
 * [ITSM コネクタ](../../azure-monitor/platform/itsmc-overview.md)について学習します。
 * アラートの[レート制限](../../azure-monitor/platform/alerts-rate-limiting.md)について学習します。
 * [アクティビティ ログ アラートの概要](../../azure-monitor/platform/alerts-overview.md)を把握し、アラートを受信する方法について学習します。  
 * [サービスの正常性通知が投稿されるたびにアラートを設定](../../azure-monitor/platform/alerts-activity-log-service-notifications.md)する方法について学習します。
-

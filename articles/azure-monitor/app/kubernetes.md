@@ -1,6 +1,6 @@
 ---
-title: Azure Monitor - Kubernetes でホストされたアプリのゼロ インストルメンテーション アプリケーション監視 | Microsoft Docs
-description: Kubernetes でホストされたアプリのゼロ インストルメンテーション アプリケーション監視は、Istio と呼ばれるサービス メッシュ テクノロジを利用することにより、Kubernetes クラスターで実行されているポッドとの間で送受信される要求に関する Application Insights テレメトリを収集できるようにする監視ソリューションです。
+title: Application Insights を使用して Azure Kubernetes Service (AKS) またはその他の Kubernetes でホストされたアプリケーション - Azure Monitor | Microsoft Docs
+description: Azure Monitor では、Kubernetes クラスター上でサービス メッシュ技術である Istio を利用して、Kubernetes でホストされているアプリケーションに対してアプリケーションの監視を提供しています。 これにより、クラスター内で実行されるポッドでの受信および送信要求に関する Application Insights テレメトリを収集できます。
 services: application-insights
 author: tokaplan
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: application-insights
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: alkaplan
-ms.openlocfilehash: 42b81ec0fa01841791a5b2651d1c1189db5e27ff
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: c94d589875195207ec6f71c35ad077cac281fda5
+ms.sourcegitcommit: 9e8dfa1169a55c3c8af93a6c5f4e0dace4de48b2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65408205"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65555834"
 ---
-# <a name="zero-instrumentation-application-monitoring-for-kubernetes-hosted-apps"></a>Kubernetes でホストされたアプリのゼロ インストルメンテーション アプリケーション監視
+# <a name="zero-instrumentation-application-monitoring-for-kubernetes-hosted-applications"></a>Kubernetes でホストされるアプリケーションに対するゼロ インストルメンテーション アプリケーション監視
 
 > [!IMPORTANT]
 > 現在この機能はパブリック プレビュー版です。
@@ -78,7 +78,7 @@ kubectl label namespace <my-app-namespace> istio-injection=enabled
 3. *application-insights-istio-mixer-adapter-deployment.yaml* を編集します
     - *ISTIO_MIXER_PLUGIN_AI_INSTRUMENTATIONKEY* 環境変数の値を編集し、テレメトリを含むように、Azure portal での Application Insights リソースのインストルメンテーション キーを追加します。
     - 必要な場合は、*ISTIO_MIXER_PLUGIN_WATCHLIST_NAMESPACES* 環境変数の値を編集し、監視を有効にする名前空間のコンマ区切りのリストを追加します。 すべての名前空間を監視する場合は空白のままにします。
-4. 以下を実行して、*src/kubernetes/* の下にある "*すべての*" YAML ファイルを適用します (まだ、*/src/kubernetes/* の内部にいる必要があります)。
+4. 以下を実行して、*src/kubernetes/* の下にある "*すべての*" YAML ファイルを適用します (まだ、 */src/kubernetes/* の内部にいる必要があります)。
 
    ```console
    kubectl apply -f .

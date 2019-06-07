@@ -1,5 +1,5 @@
 ---
-title: Azure Key Vault でユーザーが管理するキーを保存時の暗号化に使用する - Azure Search
+title: Azure Key Vault (プレビュー) で保存時の暗号化に顧客が管理するキーを使用する - Azure Search
 description: Azure Key Vault 内で作成して管理するキーを使用して、Azure Search 内でインデックスとシノニム マップによるサーバー側暗号化を補完します。
 author: NatiNimni
 manager: jlembicz
@@ -9,14 +9,19 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.custom: ''
-ms.openlocfilehash: 987b56a9571fd50f605dbe6fb4112ef857021530
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 9d2cd2a2f4b3143d58d0ef03d67de094ea03303e
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65027763"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65523093"
 ---
 # <a name="azure-search-encryption-using-customer-managed-keys-in-azure-key-vault"></a>Azure Key Vault でユーザーが管理するキーを Azure Search 暗号化に使用する
+
+> [!Note]
+> 顧客が管理するキーを使った暗号化はプレビュー段階にあり、運用環境での使用は意図していません。 [REST API バージョン 2019-05-06-Preview](search-api-preview.md) でこの機能を提供します。 .NET SDK バージョン 8.0-preview を使用することもできます。
+>
+> この機能は、無料のサービスには使用できません。 2019-01-01 以降に作成された課金対象の検索サービスを使用する必要があります。 現時点では、ポータルはサポートされていません。
 
 既定では、Azure Search では[サービス管理キー](https://docs.microsoft.com/azure/security/azure-security-encryption-atrest#data-encryption-models)を使用してユーザー コンテンツを保存時に暗号化します。 Azure Key Vault 内で作成して管理するキーを使用すると、既定の暗号化を追加の暗号化レイヤーで補完することができます。 この記事では、その手順について説明します。
 
@@ -26,20 +31,17 @@ ms.locfileid: "65027763"
 
 別のキー コンテナーからの異なるキーを使用することができます。 これは、1 つの検索サービスが (それぞれ異なる、ユーザーが管理するキーを使用して) 暗号化された複数のインデックス/シノニム マップを、ユーザーが管理するキーを使用して暗号化されていないインデックス/シノニム マップと共にホストできることを意味します。 
 
->[!Note]
-> **機能の使用の可否**:ユーザーが管理するキーを使用した暗号化は、無料のサービスでは使用できないプレビュー機能です。 有料のサービスの場合、最新のプレビュー api-version (api-version=2019-05-06-Preview) を使用すると、2019 年 1 月 1 日以降に作成された検索サービスでのみ使用することができます。 現時点では、この機能のポータル サポートはありません。
-
 ## <a name="prerequisites"></a>前提条件
 
 この例では、次のサービスを使用します。 
 
-[Azure Search サービスを作成](search-create-service-portal.md)するか、現在のサブスクリプションから[既存のサービスを見つけます](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 このチュートリアル用には、無料のサービスを使用できます。
++ [Azure Search サービスを作成](search-create-service-portal.md)するか、現在のサブスクリプションから[既存のサービスを見つけます](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 このチュートリアル用には、無料のサービスを使用できます。
 
-[Azure Key Vault リソースを作成](https://docs.microsoft.com/azure/key-vault/quick-create-portal#create-a-vault)するか、サブスクリプションから既存のコンテナーを見つけます。
++ [Azure Key Vault リソースを作成](https://docs.microsoft.com/azure/key-vault/quick-create-portal#create-a-vault)するか、サブスクリプションから既存のコンテナーを見つけます。
 
-[Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) または [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) を構成タスクに使用します。
++ [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) または [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) を構成タスクに使用します。
 
-プレビュー REST API の呼び出しには、[Postman](search-fiddler.md)、[Azure PowerShell](search-create-index-rest-api.md)、および [Azure Search SDK](https://aka.ms/search-sdk-preview) を使用できます。 現時点では、ユーザーが管理する暗号化のポータル サポートまたは .NET SDK サポートはありません。
++ プレビュー REST API の呼び出しには、[Postman](search-fiddler.md)、[Azure PowerShell](search-create-index-rest-api.md)、および [Azure Search SDK](https://aka.ms/search-sdk-preview) を使用できます。 現時点では、ユーザーが管理する暗号化のポータル サポートまたは .NET SDK サポートはありません。
 
 ## <a name="1---enable-key-recovery"></a>1 - キーの回復の有効化
 
@@ -68,9 +70,9 @@ az keyvault update -n <vault_name> -g <resource_group> --enable-soft-delete --en
 
 1. [Azure portal にサインイン](https://portal.azure.com)して、キー コンテナー ダッシュボードに移動します。
 
-1. 左側のナビゲーション ウィンドウで **[キー]** 設定を選択し、**[+ 生成/インポート]** をクリックします。
+1. 左側のナビゲーション ウィンドウで **[キー]** 設定を選択し、 **[+ 生成/インポート]** をクリックします。
 
-1. **[キーの作成]** ウィンドウで、**[オプション]** 一覧から、キーの作成に使用する方法を選択します。 新しいキーを**生成**したり、既存のキーを**アップロード**したり、キーのバックアップを選択して**バックアップを復元**したりできます。
+1. **[キーの作成]** ウィンドウで、 **[オプション]** 一覧から、キーの作成に使用する方法を選択します。 新しいキーを**生成**したり、既存のキーを**アップロード**したり、キーのバックアップを選択して**バックアップを復元**したりできます。
 
 1. キーの **[名前]** を入力し、必要に応じてその他のキー プロパティを選択します。
 
@@ -92,7 +94,7 @@ Azure Search では、ID を割り当てるための 2 つの方法 (マネー�
 
 1. マネージド ID を作成するには、[Azure portal にサインイン](https://portal.azure.com)して検索サービスのダッシュボードを開きます。 
 
-1. 左側のナビゲーション ウィンドウにある **[ID]** をクリックして、その状態を **[オン]** に変更し、**[保存]** をクリックします。
+1. 左側のナビゲーション ウィンドウにある **[ID]** をクリックして、その状態を **[オン]** に変更し、 **[保存]** をクリックします。
 
 ![マネージド ID の有効化](./media/search-enable-msi/enable-identity-portal.png "マネージド ID の有効化")
 
@@ -104,7 +106,7 @@ Azure Search では、ID を割り当てるための 2 つの方法 (マネー�
 
 1. [Azure portal にサインイン](https://portal.azure.com)して、キー コンテナーの概要ページを開きます。 
 
-1. 左側のナビゲーション ウィンドウで **[アクセス ポリシー]** 設定を選択し、**[+ 新規追加]** をクリックします。
+1. 左側のナビゲーション ウィンドウで **[アクセス ポリシー]** 設定を選択し、 **[+ 新規追加]** をクリックします。
 
    ![新しいキー コンテナー アクセス ポリシーの追加](./media/search-manage-encryption-keys/add-new-key-vault-access-policy.png "新しいキー コンテナー アクセス ポリシーの追加")
 
@@ -112,7 +114,7 @@ Azure Search では、ID を割り当てるための 2 つの方法 (マネー�
 
    ![キー コンテナー アクセス ポリシーのプリンシパルの選択](./media/search-manage-encryption-keys/select-key-vault-access-policy-principal.png "キー コンテナー アクセス ポリシーのプリンシパルの選択")
 
-1. **[キーのアクセス許可]** をクリックし、*[取得]*、*[キーの折り返しを解除]*、および *[キーを折り返す]* を選択します。 *[Azure Data Lake Storage または Azure Storage]* テンプレートを使用すると、必要なアクセス許可をすぐに選択できます。
+1. **[キーのアクセス許可]** をクリックし、 *[取得]* 、 *[キーの折り返しを解除]* 、および *[キーを折り返す]* を選択します。 *[Azure Data Lake Storage または Azure Storage]* テンプレートを使用すると、必要なアクセス許可をすぐに選択できます。
 
    Azure Search には次の[アクセス許可](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-operations)を付与する必要があります。
 
@@ -122,7 +124,7 @@ Azure Search では、ID を割り当てるための 2 つの方法 (マネー�
 
    ![キー コンテナー アクセス ポリシーのキーのアクセス許可の選択](./media/search-manage-encryption-keys/select-key-vault-access-policy-key-permissions.png "キー コンテナー アクセス ポリシーのキーのアクセス許可の選択")
 
-1. **[OK]**、**[保存]** の順にクリックしてアクセス ポリシーの変更を保存します。
+1. **[OK]** 、 **[保存]** の順にクリックしてアクセス ポリシーの変更を保存します。
 
 > [!Important]
 > Azure Search 内の暗号化されたコンテンツは、特定の**バージョン**の特定の Azure Key Vault キーを使用するように構成されます。 キーまたはバージョンを変更する場合は、以前のキー/バージョンを削除する**前**に、新しいキー/バージョンを使用するようにインデックスまたはシノニム マップを更新する必要があります。 そうしないと、インデックスまたはシノニム マップが使用できない状態になり、キー アクセスが失われた場合にコンテンツを暗号化解除できません。   

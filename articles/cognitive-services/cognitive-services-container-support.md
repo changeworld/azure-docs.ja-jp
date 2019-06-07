@@ -8,14 +8,14 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 05/16/2019
+ms.date: 05/28/2019
 ms.author: diberry
-ms.openlocfilehash: 43e35e8074922f45493bc635455d1d176078ce51
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.openlocfilehash: 3d09ee542b98e1c365aceaf86b051d706c7882d4
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65833527"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66304278"
 ---
 # <a name="container-support-in-azure-cognitive-services"></a>Azure Cognitive Services でのコンテナーのサポート
 
@@ -103,16 +103,7 @@ Docker やコンテナーの基礎に関する入門情報については、「[
 
 個々のコンテナーには、サーバーやメモリ割り当ての要件など、独自の要件もある場合があります。
 
-## <a name="developer-samples"></a>開発者向けサンプル
-
-開発者向けサンプルは、[GitHub リポジトリ](https://github.com/Azure-Samples/cognitive-services-containers-samples)から入手できます。
-
-## <a name="view-webinar"></a>ウェビナーの閲覧 
-
-[ウェビナー](https://info.microsoft.com/AP-AZUREPLAT-WBNR-FY19-03Mar-20-Seamlesslyintegrateapplicationsdataandprocesses-MCW0012283_02OnDemandRegistration-ForminBody.html)に参加して、以下について学習します。
-
-* Docker を使用して任意のマシンに Cognitive Services をデプロイする方法
-* Cognitive Services を AKS にデプロイする方法
+[!INCLUDE [Discoverability of more container information](../../includes/cognitive-services-containers-discoverability.md)]
 
 ## <a name="next-steps"></a>次の手順
 

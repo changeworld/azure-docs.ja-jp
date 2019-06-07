@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/19/2019
-ms.openlocfilehash: 8142caf867ffe811726677fb1dcbadc7d1458251
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 0582fa8b26bee05e4d2948037cc39a71ed656fce
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65793564"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66243951"
 ---
 # <a name="what-is-enterprise-security-package-in-azure-hdinsight"></a>Azure HDInsight での Enterprise セキュリティ パッケージとは
 
@@ -36,7 +36,7 @@ HDInsight の境界セキュリティは、仮想ネットワークと Azure VPN
 境界セキュリティのもう 1 つの層は、VPN Gateway サービスを使用して実現されます。 ゲートウェイは、HDInsight クラスターへのすべての受信要求に対する防御の最前線として機能します。 ゲートウェイでは要求を受け取り、検証して、クラスター内の他のノードに渡す要求のみを許可します。 この方法では、ゲートウェイは境界セキュリティをクラスター内の他のノードとデータ ノードに提供します。
 
 ## <a name="authentication"></a>Authentication
-エンタープライズ管理者は、ESP を使用する HDInsight クラスターを[仮想ネットワーク](https://azure.microsoft.com/services/virtual-network/)に作成できます。 HDInsight クラスターのノードはすべて、企業が管理するドメインに参加することになります。 これは、[Azure Active Directory Domain Services](../../active-directory-domain-services/active-directory-ds-overview.md) を使用して実現されます。 
+エンタープライズ管理者は、ESP を使用する HDInsight クラスターを[仮想ネットワーク](https://azure.microsoft.com/services/virtual-network/)に作成できます。 HDInsight クラスターのノードはすべて、企業が管理するドメインに参加することになります。 これは、[Azure Active Directory Domain Services](../../active-directory-domain-services/overview.md) を使用して実現されます。 
 
 この設定により、企業の従業員は、ドメイン資格情報を使用してクラスター ノードにサインインできます。 また、ドメイン資格情報を使用して、クラスターと対話する他の承認済みエンドポイント (Apache Ambari Views、ODBC、JDBC、PowerShell、REST API など) で認証することもできます。 管理者は、これらのエンドポイントを使用してクラスターを操作するユーザーの数の制限を完全に制御できます。
 

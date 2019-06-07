@@ -13,6 +13,9 @@
       href: quick-backup-vm-powershell.md
     - name: VM のバックアップ - CLI
       href: quick-backup-vm-cli.md
+    - name: VM のバックアップ - Resource Manager テンプレート
+      displayName: ARM
+      href: quick-backup-vm-template.md
 - name: チュートリアル
   items:
     - name: Azure VM の大規模なバックアップ
@@ -249,6 +252,8 @@
           href: troubleshoot-azure-files.md
         - name: SQL Server
           href: backup-sql-server-azure-troubleshoot.md
+        - name: システム状態
+          href: backup-azure-system-state-troubleshoot.md
     - name: Azure Backup ワークロードの監視
       items:
         - name: Azure ポータルの使用

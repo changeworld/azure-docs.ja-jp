@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 05/01/2019
 ms.author: juliako
-ms.openlocfilehash: e64b18cef44a5fa6d63137f57fcada27adcd0299
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: da8d1000ebe2695dbc95d475027722962a3305d9
+ms.sourcegitcommit: 9e8dfa1169a55c3c8af93a6c5f4e0dace4de48b2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205477"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65555887"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Media Services v2 から v3 への移行のガイダンス
 
@@ -29,14 +29,14 @@ ms.locfileid: "65205477"
 [従来の Media Services v2 API](../previous/media-services-overview.md) 上に動画サービスを今日開発した場合、v3 API に移行する前に次のガイドラインと 考慮事項を確認してください。 v3 API には Media Services の開発者エクスペリエンスと機能を向上させる多くのメリットおよび新機能があります。 ただし、この記事の「[既知の問題](#known-issues)」セクションで示すように、API バージョン間の変更によるいくつかの制限事項もあります。 このページは、v3 API に対して Media Services チームが継続的な改善を行い、バージョン間の差異に対処するたびに更新されます。 
 
 > [!NOTE]
-> 現時点では、Azure portal を使用して v3 リソースを管理することはできません。 [REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref)、またはサポートされている [SDK](developers-guide.md) のいずれかを使用してください。
+> 現時点では、Azure portal を使用して v3 リソースを管理することはできません。 [REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref)、またはサポートされている [SDK](media-services-apis-overview.md#sdks) のいずれかを使用してください。
 
 ## <a name="benefits-of-media-services-v3"></a>Media Services v3 のメリット
   
 ### <a name="api-is-more-approachable"></a>API がわかりやすい
 
 *  v3 は、Azure Resource Manager 上に構築された管理と操作の両方の機能を公開する統一された API サーフェスに基づいています。 Azure Resource Manager テンプレートを使って、変換、ストリーミング エンドポイント、ライブ イベントなどを作成して展開できます。
-* [Open API (別称 Swagger) 仕様](https://aka.ms/ams-v3-rest-sdk)ドキュメント。
+* [OpenAPI の仕様 (以前は Swagger と呼ばれていた)](https://aka.ms/ams-v3-rest-sdk) に関するドキュメント。
     ファイル ベースのエンコードを含むすべてのサービス コンポーネントのスキーマを公開します。
 * [.NET](https://aka.ms/ams-v3-dotnet-ref)、.Net Core、[Node.js](https://aka.ms/ams-v3-nodejs-ref)、[Python](https://aka.ms/ams-v3-python-ref)、[Java](https://aka.ms/ams-v3-java-ref)、[Go](https://aka.ms/ams-v3-go-ref)、およびRuby で利用できる SDK。
 * 単純なスクリプト サポートのための [Azure CLI](https://aka.ms/ams-v3-cli-ref) 統合。

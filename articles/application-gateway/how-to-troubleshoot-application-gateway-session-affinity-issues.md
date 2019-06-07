@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/22/2019
 ms.author: absha
-ms.openlocfilehash: 90a57483fc7a530f214d34bf619a718b4c196e79
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 07165a497e75934a65719e48a9af7d8d6906ee7b
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59683156"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65538330"
 ---
 # <a name="troubleshoot-azure-application-gateway-session-affinity-issues"></a>Azure Application Gateway のセッション アフィニティに関する問題をトラブルシューティングする
 
@@ -39,7 +39,7 @@ Cookie ベースのセッション アフィニティの維持に関する問題
 
 1. [Azure Portal](https://portal.azure.com/) にログオンします。
 
-2. **左のナビゲーション** ウィンドウで、**[すべてのリソース]** をクリックします。 [すべてのリソース] ブレードでアプリケーション ゲートウェイ名をクリックします。 選択したサブスクリプションに既存のリソースが複数ある場合は、**[名前でフィルター]** ボックスにアプリケーション ゲートウェイ名を入力すると、 目的のアプリケーション ゲートウェイがすぐに見つかります。
+2. **左のナビゲーション** ウィンドウで、 **[すべてのリソース]** をクリックします。 [すべてのリソース] ブレードでアプリケーション ゲートウェイ名をクリックします。 選択したサブスクリプションに既存のリソースが複数ある場合は、 **[名前でフィルター]** ボックスにアプリケーション ゲートウェイ名を入力すると、 目的のアプリケーション ゲートウェイがすぐに見つかります。
 
 3. **[設定]** の下で **[HTTP 設定]** タブを選択します。
 
@@ -53,7 +53,7 @@ Cookie ベースのセッション アフィニティの維持に関する問題
 
 次の方法のいずれかを使用して、「**backendHttpSettingsCollection**」の下で「**CookieBasedAffinity**」の値が *[有効]* に設定されているかどうかも調べられます。
 
-- PowerShell で [Get-AzApplicationGatewayBackendHttpSettings](https://docs.microsoft.com/powershell/module/az.network/get-azapplicationgatewaybackendhttpsettings) を実行する
+- PowerShell で [Get-AzApplicationGatewayBackendHttpSetting](https://docs.microsoft.com/powershell/module/az.network/get-azapplicationgatewaybackendhttpsetting) を実行する
 - Azure Resource Manager テンプレートを使用して、JSON ファイルを調べる
 
 ```
@@ -79,10 +79,10 @@ Cookie ベースのアフィニティ設定を有効にしており、Internet E
 この問題を特定するには、次の手順に従います。
 
 1. Application Gateway の背後にあるアプリケーション (この例では Fiddle を使用しています) に接続している「クライアント」で、Web デバッガー トレースを行います。
-    **ヒント**: Fiddler を使用する方法がわからない場合は、下部にある **[I want to collect network traffic and analyze it using web debugger]**(ネットワーク トラフィックを収集し、Web デバッガーを使用して分析する) オプションをオンにします。
+    **ヒント**: Fiddler を使用する方法がわからない場合は、下部にある **[I want to collect network traffic and analyze it using web debugger]** (ネットワーク トラフィックを収集し、Web デバッガーを使用して分析する) オプションをオンにします。
 
 2. セッション ログを調べて分析し、クライアントから提供された Cookie に ARRAffinity 詳細があるかどうかを判断します。 Cookie セット内に「**ARRAffinity=** *ARRAffinityValue*」などの ARRAffinity 詳細が見つからない場合、クライアントが、Application Gateway によって提供される ARRA Cookie で応答していないことを意味します。
-    例: 
+    例:
 
     ![troubleshoot-session-affinity-issues-3](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-3.png)
 
@@ -112,7 +112,7 @@ Azure Portal を使用したログの有効化
 
    Application Gateway では、次の 3 つのログを使用できます。アクセス ログ、パフォーマンス ログ、ファイアウォール ログ
 
-2. データの収集を開始するには、**[診断を有効にする]** をクリックします。
+2. データの収集を開始するには、 **[診断を有効にする]** をクリックします。
 
    ![troubleshoot-session-affinity-issues-5](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-5.png)
 
@@ -120,7 +120,7 @@ Azure Portal を使用したログの有効化
 
    ![troubleshoot-session-affinity-issues-6](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-6.png)
 
-4. 設定を確認し、**[保存]** をクリックします。
+4. 設定を確認し、 **[保存]** をクリックします。
 
    ![troubleshoot-session-affinity-issues-7](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-7.png)
 
@@ -130,7 +130,7 @@ Azure Portal を使用したログの有効化
 
    ![troubleshoot-session-affinity-issues-8](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-8.png)
 
-2. 右側で、**[ログのカテゴリ]** の下のドロップダウン リストから「**ApplicationGatewayAccessLog**」を選択します。  
+2. 右側で、 **[ログのカテゴリ]** の下のドロップダウン リストから「**ApplicationGatewayAccessLog**」を選択します。  
 
    ![troubleshoot-session-affinity-issues-9](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-9.png)
 
@@ -173,15 +173,15 @@ Fiddler などの Web デバッグ ツールは、インターネットとテス
 
         ![troubleshoot-session-affinity-issues-13](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-13.png)
 
-4. ほとんどの場合、関心があるのは復号化された HTTPS トラフィックであるので、**[ツール]** > **[Fiddler オプション]** の順に選択し、**[Decrypt HTTPS traffic]**(HTTPS トラフィックの復号化) チェックボックスをオンにして、HTTPS 復号化を有効にすることができます。
+4. ほとんどの場合、関心があるのは復号化された HTTPS トラフィックであるので、 **[ツール]**  >  **[Fiddler オプション]** の順に選択し、 **[Decrypt HTTPS traffic]** (HTTPS トラフィックの復号化) チェックボックスをオンにして、HTTPS 復号化を有効にすることができます。
 
         ![troubleshoot-session-affinity-issues-14](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-14.png)
 
-5. 次のスクリーンショットに従って、**[X]**(アイコン) > **[すべて削除]** をクリックすることにより、問題を再現する前に、関連付けられていない以前のセッションを削除できます。 
+5. 次のスクリーンショットに従って、 **[X]** (アイコン) > **[すべて削除]** をクリックすることにより、問題を再現する前に、関連付けられていない以前のセッションを削除できます。 
 
         ![troubleshoot-session-affinity-issues-15](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-15.png)
 
-6. 問題を再現したら、**[ファイル]** > **[保存]** > **[すべてのセッション]** の順に選択することによりレビュー用のファイルを保存します。 
+6. 問題を再現したら、 **[ファイル]**  >  **[保存]**  >  **[すべてのセッション]** の順に選択することによりレビュー用のファイルを保存します。 
 
         ![troubleshoot-session-affinity-issues-16](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-16.png)
 

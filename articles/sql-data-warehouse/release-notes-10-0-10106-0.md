@@ -4,28 +4,45 @@ description: Azure SQL Data Warehouse のリリース ノート。
 services: sql-data-warehouse
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: manage
-ms.date: 04/10/2019
+ms.subservice: ''
+ms.date: 05/13/2019
 author: anumjs
 ms.author: anjangsh
 ms.reviewer: jrasnick
 manager: craigg
-ms.openlocfilehash: 4c5279d1ddf3153493ebc01dc010114ff7e6b5e7
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 215f7c9c65658ddbb10498bb59f3d326bf3a10f1
+ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64917243"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65988281"
 ---
 # <a name="azure-sql-data-warehouse-release-notes"></a>Azure SQL Data Warehouse リリース ノート
 
 この記事は、[Azure SQL Data Warehouse](sql-data-warehouse-overview-what-is.md) の最新リリースで導入された新機能と機能強化をまとめたものです。 この記事では、今回のリリースとは直接関連しないものの、同じタイム フレームで公開された注目すべきコンテンツの更新についても一覧表示しています。 他の Azure サービスの機能強化については、「[サービスの更新情報](https://azure.microsoft.com/updates)」を参照してください
 
+## <a name="check-your-azure-sql-data-warehouse-version"></a>Azure SQL Data Warehouse のバージョンを確認する
+
+新機能はすべてのリージョンにロールアウトされますので、機能の可用性については、ご使用のインスタンスにデプロイされているバージョン、および最新の Azure SQL DW のリリース ノートを確認してください。 お使いの Azure SQL DW のバージョンを確認するには、SQL Server Management Studio (SSMS) を介してデータ ウェアハウスに接続して `SELECT @@VERSION AS 'SQL Data Warehouse';` を実行すると、Azure SQL DW の現在のバージョンが返されます。
+
+出力例:![SQL Data Warehouse のバージョン](./media/release-notes/sql_data_warehouse_version.png)
+
+示された日付を使用して、お使いの Azure SQL DW に適用されているリリースを確認してください。
+
+## <a name="may-2019"></a>2019 年 5 月
+
+| サービスの機能強化 | 詳細 |
+| --- | --- |
+|**動的データ マスク (プレビュー)**|動的データ マスク (DDM) は、定義されたマスキング規則に基づいて、クエリ結果内で機密データを即座に難読化することにより、データ ウェアハウス内の機密データへの未承認アクセスを防止します。 詳細情報については、[SQL Database の動的データ マスク](/azure/sql-database/sql-database-dynamic-data-masking-get-started)に関する記事をご覧ください。|
+|**ワークロードの重要度が一般提供されました**|ワークロード管理の分類と重要度により、クエリの実行順序に影響を与えることができます。 ワークロード重要度の詳細については、ドキュメントの[分類](sql-data-warehouse-workload-classification.md)と[重要度](sql-data-warehouse-workload-importance.md)に関する概要記事を参照してください。 [CREATE WORKLOAD CLASSIFIER](/sql/t-sql/statements/create-workload-classifier-transact-sql?view=azure-sqldw-latest) のドキュメントも参照してください。<br/><br/>下の動画でワークロード重要度が実際に使われている様子をご覧ください。<br/> -[ワークロード管理の概念](https://www.youtube.com/embed/QcCRBAhoXpM)<br/> -[ワークロード管理のシナリオ](https://www.youtube.com/embed/_2rLMljOjw8)|
+|**追加の T-SQL サポート**|SQL Data Warehouse の T-SQL 言語セキュリティが拡張され、次のサポートが含まれるようになりました。 </br> - [TRIM](/sql/t-sql/functions/trim-transact-sql?view=azure-sqldw-latest)|
+|**JSON 関数**|ビジネス アナリストは、Azure Data Warehouse で次の新しい JSON 関数を使用することにより、使い慣れた T-SQL 言語を使用して、JSON データとして書式設定されたドキュメントのクエリおよび操作を行えるようになりました。</br> - [ISJSON](/sql/t-sql/functions/isjson-transact-sql?view=azure-sqldw-latest)</br> - [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?view=azure-sqldw-latest)</br> -  [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?view=azure-sqldw-latest)</br> -  [JSON_MODIFY](/sql/t-sql/functions/json-modify-transact-sql?view=azure-sqldw-latest)</br> - [OPENJSON](/sql/t-sql/functions/openjson-transact-sql?view=azure-sqldw-latest)|
+|**結果セットのキャッシュ機能 (プレビュー)**|結果セットのキャッシュ機能により、ビジネス分析で分析情報を得るまでにかかる時間を短縮し、ユーザーを報告しながら、即時のクエリ応答が可能になります。 詳細については、次を参照してください。</br> - [ALTER DATABASE (Transact-SQL)](/sql/t-sql/statements/alter-database-transact-sql?view=azure-sqldw-latest)</br> - [ALTER DATABASE SET オプション (Transact SQL)](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest)</br> - [SET RESULT SET CACHING (Transact-SQL)](/sql/t-sql/statements/set-result-set-caching-transact-sql?view=azure-sqldw-latest)</br> - [SET ステートメント (Transact-SQL)](/sql/t-sql/statements/set-statements-transact-sql)</br> - [sys.databases (Transact-SQL)](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql?view=azure-sqldw-latest)|
+
 ## <a name="march-2019"></a>2019 年 3 月
 
 | サービスの機能強化 | 詳細 |
 | --- | --- |
-|**ワークロード重要度を Gen2 プレビューとして利用できるようになりました**|ワークロード重要度を利用すれば、データ エンジニアは重要度で要求を分類できます。 重要度の高い要求にはリソースへの迅速なアクセスが与えられ、SLA に順守します。  ワークロード重要度を利用することで、リソースの比較的少ない共有環境で、ビジネス的な価値の高い仕事が SLA を順守できます。<br/><br/>ワークロード管理の分類および重要度のプレビューは、公開日が 2019 年 4 月 9 日以降のビルド用です。 この日付より前のビルドは、ワークロード管理テストへの使用をお控えください。 お使いのビルドがワークロード管理に対応しているかどうかを調べるには、SQL Data Warehouse インスタンスに接続された状態で「`select @@version`」を実行します。</br></br>ワークロード重要度の詳細については、ドキュメントの[分類](sql-data-warehouse-workload-classification.md)と[重要度](sql-data-warehouse-workload-importance.md)に関する概要記事を参照してください。 [CREATE WORKLOAD CLASSIFIER](/sql/t-sql/statements/create-workload-classifier-transact-sql?view=azure-sqldw-latest) のドキュメントも参照してください。<br/><br/>下の動画でワークロード重要度が実際に使われている様子をご覧ください。<br/>[Workload Management concepts](  https://www.youtube.com/embed/QcCRBAhoXpM) (ワークロード管理の概念)<br/>[Workload Management scenarios](https://www.youtube.com/embed/_2rLMljOjw8) (ワークロード管理のシナリオ)|
 |**データの検出と分類**|Azure SQL Data Warehouse のパブリック プレビューで、データの検出と分類を利用できるようになりました。 機密データや顧客のプライバシーを保護することは非常に重要です。 ビジネスおよび顧客のデータ資産が増大するにつれて、データの検出、分類、保護が管理不能になります。 Azure SQL Data Warehouse でネイティブに導入される "データの検出と分類" 機能を使用すると、データ保護がより管理しやすくなります。 この機能の全体的な利点は次のとおりです。<br/>&bull; &nbsp; データのプライバシー基準および規制のコンプライアンス要件を満たします。<br/>&bull; &nbsp; 機密性の高いデータを含むデータ ウェアハウスへのアクセスを制限し、セキュリティを強化します。<br/>&bull; &nbsp; 機密データへの異常なアクセスを監視し、アラートを出します。<br/>&bull; &nbsp; Azure portal の中央ダッシュボードで機密データを視覚化します。 </br></br>データの検出と分類は、脆弱性評価と脅威検出が含まれた Advanced Data Security の一部として、すべての Azure リージョンの Azure SQL Data Warehouse で利用できます。 データの検出と分類の詳細については、[ブログ記事](https://azure.microsoft.com/blog/announcing-public-preview-of-data-discovery-classification-for-microsoft-azure-sql-data-warehouse/)およびオンラインの[ドキュメント](/azure/sql-database/sql-database-data-discovery-and-classification)をご覧ください。|
 |**GROUP BY ROLLUP**|ROLLUP が Azure データ ウェアハウスの GROUP BY オプションでサポートされるようになりました。   GROUP BY ROLLUP によって列式の組み合わせごとにグループが作成されます。 GROUP BY ではまた、結果が小計と総計に "ロール アップ" されます。 GROUP BY 関数は、右から左に処理し、グループと集計が作成される列式の数を減らします。  列の順序は ROLLUP 出力に影響を与えます。結果セット内の行数に影響を与えることもあります。<br/><br/>GROUP BY ROLLUP の詳細については、「[GROUP BY (Transact-SQL)](/sql/t-sql/queries/select-group-by-transact-sql?view=azure-sqldw-latest)」をご覧ください。
 |**DWU の使用量と CPU ポータルのメトリックの精度向上**|SQL Data Warehouse によって、Azure portal のメトリックの精度が大幅に改善されます。  このリリースでは、CPU と DWU の使用量のメトリックの定義が修正され、コンピューティング ノード全体でワークロードが正しく反映されます。 この修正の前は、メトリック値は実際より少なく報告されていました。 Azure portal では、使用された DWU と CPU メトリックに増加が予想されます。 |

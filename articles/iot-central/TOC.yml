@@ -105,6 +105,8 @@
           href: howto-configure-homepage.md
         - name: アプリケーション UI のカスタマイズ
           href: howto-customize-ui.md
+        - name: アプリケーション テンプレートの使用
+          href: howto-use-app-templates.md
         - name: Azure portal からの管理
           href: howto-manage-iot-central-from-portal.md
         - name: Azure CLI からの管理
@@ -141,9 +143,9 @@
           href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
         - name: Time Series Insights
           href: /azure/time-series-insights
-    - name: Edge
+    - name: IoT Edge
       items:
-        - name: IoT Edge
+        - name: Azure IoT Edge
           href: /azure/iot-edge
         - name: IoT デバイス SDK
           href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'

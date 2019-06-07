@@ -1,0 +1,264 @@
+### YamlMime:Hub
+title: Azure Active Directory のドキュメント
+summary: Azure Active Directory (Azure AD) は、マルチテナントに対応したクラウドベースの ID およびアクセスの管理サービスです。
+brand: azure
+metadata:
+  title: Azure Active Directory のドキュメント - チュートリアル、API リファレンス
+  description: Azure Active Directory (Azure AD) は、Microsoft のマルチテナントに対応したクラウドベースのディレクトリおよび ID 管理サービスで、中核となるディレクトリ サービス、アプリケーションのアクセス管理機能、ID の保護機能が 1 つのソリューションに統合されています。
+  author: mtillman
+  manager: daveba
+  ms.service: active-directory
+  ms.topic: hub-page
+  ms.date: 04/25/2019
+  ms.author: mtillman
+  ms.collection: M365-identity-device-management
+highlightedContent:
+  items:
+  - title: Azure AD とは
+    itemType: overview
+    url: /azure/active-directory/fundamentals/active-directory-whatis
+  - title: Azure AD の新着情報
+    itemType: whats-new
+    url: /azure/active-directory/fundamentals/whats-new
+  - title: ユーザーにロールを割り当てる
+    itemType: how-to-guide
+    url: /azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal
+  - title: グループを作成してメンバーを追加する
+    itemType: how-to-guide
+    url: /azure/active-directory/fundamentals/add-users-azure-active-directory
+  - title: Azure AD デプロイ チェックリスト
+    itemType: concept
+    url: /azure/active-directory/fundamentals/active-directory-deployment-checklist-p2
+  - title: テナントにサブスクリプションを追加する
+    itemType: how-to-guide
+    url: /azure/active-directory/fundamentals/active-directory-how-subscriptions-associated-directory
+conceptualContent:
+  items:
+  - title: アプリケーション管理
+    links:
+    - url: /azure/active-directory/manage-apps/what-is-single-sign-on
+      itemType: concept
+      text: シングル サインオン (SSO) とは
+    - url: /azure/active-directory/manage-apps/user-provisioning
+      itemType: tutorial
+      text: 自動ユーザー プロビジョニング
+    - url: /azure/active-directory/manage-apps/application-proxy
+      itemType: concept
+      text: オンプレミス アプリ用のアプリケーション プロキシ
+    footerLink:
+      url: /azure/active-directory/manage-apps/index
+      text: 関連項目
+  - title: Authentication
+    links:
+    - url: /azure/active-directory/authentication/concept-mfa-howitworks
+      itemType: concept
+      text: '動作のしくみ: Azure MFA'
+    - url: /azure/active-directory/authentication/concept-sspr-howitworks
+      itemType: concept
+      text: Azure AD のセルフ サービスによるパスワードのリセット
+    - url: /azure/active-directory/authentication/concept-password-ban-bad
+      itemType: concept
+      text: Azure AD のパスワード保護
+    footerLink:
+      url: /azure/active-directory/authentication/index
+      text: 関連項目
+  - title: 企業間 (B2B)
+    links:
+    - url: /azure/active-directory/b2b/what-is-b2b
+      itemType: overview
+      text: Azure AD B2B とは
+    - url: /azure/active-directory/b2b/add-users-administrator
+      itemType: how-to-guide
+      text: ポータルでゲスト ユーザーを追加する
+    - url: /azure/active-directory/b2b/o365-external-user
+      itemType: concept
+      text: B2B と Office 365 の共有
+    footerLink:
+      url: /azure/active-directory/b2b/index
+      text: 関連項目
+  - title: 企業-消費者間 (B2C)
+    links:
+    - url: /azure/active-directory-b2c/active-directory-b2c-overview
+      itemType: overview
+      text: Azure AD B2C とは
+    - url: /azure/active-directory-b2c/tutorial-create-tenant
+      itemType: tutorial
+      text: Azure AD B2C テナントを作成する
+    - url: /azure/active-directory-b2c/active-directory-b2c-get-started-custom
+      itemType: how-to-guide
+      text: Azure AD B2C のカスタム ポリシー
+    footerLink:
+      url: /azure/active-directory-b2c/index
+      text: 関連項目
+  - title: 条件付きアクセス
+    links:
+    - url: /azure/active-directory/conditional-access/overview
+      itemType: overview
+      text: 条件付きアクセスとは
+    - url: /azure/active-directory/conditional-access/app-based-mfa
+      itemType: quickstart
+      text: 特定のアプリで MFA を必須にする
+    - url: /azure/active-directory/conditional-access/location-condition
+      itemType: concept
+      text: 場所に基づく条件
+    footerLink:
+      url: /azure/active-directory/conditional-access/index
+      text: 関連項目
+  - title: 開発者
+    links:
+    - url: /azure/active-directory/develop/about-microsoft-identity-platform
+      itemType: overview
+      text: Microsoft ID プラットフォームについて
+    - url: /azure/active-directory/develop/v2-oauth2-auth-code-flow
+      itemType: concept
+      text: OAuth 2.0 コード フロー付与
+    - url: /azure/active-directory/develop/quickstart-register-app
+      itemType: quickstart
+      text: Microsoft ID プラットフォームにアプリを登録する
+    footerLink:
+      url: /azure/active-directory/develop/index
+      text: 関連項目
+  - title: デバイス管理
+    links:
+    - url: /azure/active-directory/devices/overview
+      itemType: overview
+      text: デバイス管理とは
+    - url: /azure/active-directory/devices/hybrid-azuread-join-plan
+      itemType: how-to-guide
+      text: ハイブリッド Azure AD 参加を計画する
+    - url: /azure/active-directory/devices/azureadjoin-plan
+      itemType: how-to-guide
+      text: Azure AD 参加を計画する
+    footerLink:
+      url: /azure/active-directory/devices/index
+      text: 関連項目
+  - title: ドメイン サービス
+    links:
+    - url: /azure/active-directory-domain-services/active-directory-ds-overview
+      itemType: overview
+      text: Azure AD ドメイン サービスとは
+    - url: /azure/active-directory-domain-services/active-directory-ds-getting-started
+      itemType: quickstart
+      text: Azure AD Domain Services を有効にする
+    - url: /azure/active-directory-domain-services/active-directory-ds-admin-guide-administer-group-policy
+      itemType: how-to-guide
+      text: グループ ポリシーを管理する
+    footerLink:
+      url: /azure/active-directory-domain-services/index
+      text: 関連項目
+  - title: エンタープライズ ユーザー
+    links:
+    - url: /azure/active-directory/users-groups-roles/groups-create-rule
+      itemType: how-to-guide
+      text: 動的グループの作成
+    - url: /azure/active-directory/users-groups-roles/groups-settings-v2-cmdlets
+      itemType: how-to-guide
+      text: Azure AD グループ用の PowerShell
+    - url: /azure/active-directory/users-groups-roles/directory-service-limits-restrictions
+      itemType: reference
+      text: Azure AD サービスの制限と制約
+    footerLink:
+      url: /azure/active-directory/users-groups-roles/index
+      text: 関連項目
+  - title: ハイブリッド ID
+    links:
+    - url: /azure/active-directory/hybrid/whatis-hybrid-identity
+      itemType: overview
+      text: ハイブリッド ID とは
+    - url: /azure/active-directory/hybrid/how-to-connect-sso
+      itemType: how-to-guide
+      text: Azure AD Connect によるシングル サインオン
+    - url: /azure/active-directory/hybrid/how-to-connect-install-custom
+      itemType: how-to-guide
+      text: Azure AD Connect のカスタム インストール
+    footerLink:
+      url: /azure/active-directory/hybrid/index
+      text: 関連項目
+  - title: Identity Governance
+    links:
+    - url: /azure/active-directory/governance/create-access-review
+      itemType: how-to-guide
+      text: アクセス レビューの作成
+    - url: /azure/active-directory/governance/perform-access-review
+      itemType: how-to-guide
+      text: アクセス レビューを開始する
+    - url: /azure/active-directory/conditional-access/terms-of-use
+      itemType: how-to-guide
+      text: 利用規約が必須
+    footerLink:
+      url: /azure/active-directory/governance/index
+      text: 関連項目
+  - title: Identity Protection
+    links:
+    - url: /azure/active-directory/identity-protection/overview
+      itemType: overview
+      text: ID 保護とは
+    - url: /azure/active-directory/identity-protection/quickstart-sign-in-risk-policy
+      itemType: quickstart
+      text: セッションのリスクが検出されたときにアクセスをブロックする
+    - url: /azure/active-directory/identity-protection/howto-unblock-user
+      itemType: how-to-guide
+      text: ユーザーのブロックを解除する方法
+    footerLink:
+      url: /azure/active-directory/identity-protection/index
+      text: 関連項目
+  - title: Azure リソースのマネージド ID
+    links:
+    - url: /azure/active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-sql
+      itemType: tutorial
+      text: Windows VM を使用した Azure SQL へのアクセス
+    - url: /azure/active-directory/managed-identities-azure-resources/how-to-use-vm-token
+      itemType: how-to-guide
+      text: Azure VM を使用したトークンの取得
+    - url: /azure/active-directory/managed-identities-azure-resources/services-support-managed-identities
+      itemType: concept
+      text: マネージド ID をサポートするサービス
+    footerLink:
+      url: /azure/active-directory/managed-identities-azure-resources/index
+      text: 関連項目
+  - title: Privileged Identity Management (PIM)
+    links:
+    - url: /azure/active-directory/privileged-identity-management/pim-getting-started
+      itemType: how-to-guide
+      text: PIM の使用を開始する
+    - url: /azure/active-directory/privileged-identity-management/pim-how-to-activate-role
+      itemType: how-to-guide
+      text: 自分のディレクトリ ロールをアクティブ化する
+    - url: /azure/active-directory/privileged-identity-management/pim-how-to-add-role-to-user
+      itemType: how-to-guide
+      text: ディレクトリ ロールを割り当てる
+    footerLink:
+      url: /azure/active-directory/privileged-identity-management/index
+      text: 関連項目
+  - title: レポートと監視
+    links:
+    - url: /azure/active-directory/reports-monitoring/concept-audit-logs
+      itemType: concept
+      text: 監査ログ
+    - url: /azure/active-directory/reports-monitoring/concept-sign-ins
+      itemType: concept
+      text: サインイン ログ
+    - url: /azure/active-directory/reports-monitoring/reference-sign-ins-error-codes
+      itemType: reference
+      text: サインインのエラー コード リファレンス
+    footerLink:
+      url: /azure/active-directory/reports-monitoring/index
+      text: 関連項目
+additionalContent:
+  sections:
+  - items:
+    - title: Microsoft 365
+      summary: Azure AD を含む完全なソリューション、Microsoft 365 に関する情報をご覧いただけます。
+      url: https://docs.microsoft.com/microsoft-365/
+    - title: Azure AD PowerShell
+      summary: Azure AD PowerShell モジュールをインストールして使用する方法を確認してください。
+      url: https://docs.microsoft.com/powershell/module/azuread/
+    - title: Azure AD 用の Azure CLI コマンド
+      summary: CLI リファレンスで Azure AD コマンドを確認してください。
+      url: https://docs.microsoft.com/cli/azure/ad
+ms.openlocfilehash: 1a019b58d4c2f1e5569cc4e8dd9109e08f313d6c
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66481867"

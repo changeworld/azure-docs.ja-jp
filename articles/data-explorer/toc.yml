@@ -7,34 +7,10 @@
 - name: クイック スタート
   expanded: true
   items:
-    - name: クラスターとデータベースの作成
-      items:
-        - name: Azure ポータル
-          href: create-cluster-database-portal.md
-        - name: Azure CLI
-          href: create-cluster-database-cli.md
-        - name: PowerShell
-          href: create-cluster-database-powershell.md
-        - name: 'C#'
-          href: create-cluster-database-csharp.md
-        - name: Python
-          href: create-cluster-database-python.md
-    - name: データの取り込み
-      items:
-        - name: データのストリーミング - イベント ハブ
-          href: ingest-data-event-hub.md
-        - name: データのストリーミング - Event Grid
-          href: ingest-data-event-grid.md
-        - name: データのストリーム配信 - Kafka
-          href: ingest-data-kafka.md
-        - name: データのバッチ処理 - Python
-          href: python-ingest-data.md
-        - name: データのバッチ処理 - Node SDK
-          href: node-ingest-data.md
-        - name: データのバッチ処理 - .NET Standard SDK
-          href: net-standard-ingest-data.md
-        - name: データのバッチ処理 - Logstash
-          href: ingest-data-logstash.md
+    - name: クラスターとデータベースの作成 - Azure portal
+      href: create-cluster-database-portal.md
+    - name: サンプル データを取り込む
+      href: ingest-sample-data.md
     - name: データのクエリを実行する
       items:
         - name: Web UI
@@ -52,12 +28,38 @@
     - name: データ取り込みの概要
       displayName: 'pipelines, connectors, plugins, Python, .NET, Java, Node, REST'
       href: ingest-data-overview.md
+    - name: データ視覚化の概要
+      href: viz-overview.md
 - name: ハウツー ガイド
   items:
-    - name: 作業の開始
+    - name: クラスターとデータベースの作成
       items:
-        - name: サンプル データを取り込む
-          href: ingest-sample-data.md
+        - name: Azure CLI
+          href: create-cluster-database-cli.md
+        - name: PowerShell
+          href: create-cluster-database-powershell.md
+        - name: 'C#'
+          href: create-cluster-database-csharp.md
+        - name: Python
+          href: create-cluster-database-python.md
+    - name: データの取り込み
+      items:
+        - name: イベント ハブ
+          href: ingest-data-event-hub.md
+        - name: Event Grid
+          href: ingest-data-event-grid.md
+        - name: Kafka
+          href: ingest-data-kafka.md
+        - name: Python
+          href: python-ingest-data.md
+        - name: Node SDK
+          href: node-ingest-data.md
+        - name: .NET Standard SDK
+          href: net-standard-ingest-data.md
+        - name: Logstash
+          href: ingest-data-logstash.md
+        - name: Azure Data Factory を使用してデータをコピーする
+          href: data-factory-load-data.md
     - name: デプロイ
       items:
         - name: DevOps タスク
@@ -82,10 +84,14 @@
               href: power-bi-imported-query.md
             - name: SQL クエリ
               href: power-bi-sql-query.md
+        - name: ODBC コネクタ
+          href: connect-odbc.md
         - name: SiSense
           href: sisense.md
         - name: Grafana
           href: grafana.md
+        - name: Tableau
+          href: tableau.md
     - name: 管理
       items:
         - name: データベースのアクセス許可を管理する
@@ -104,7 +110,7 @@
       items:
         - name: メトリックを使用してクラスターの正常性を監視する
           href: using-metrics.md
-    - name: その他のツールを操作する
+    - name: 他のツールとの統合
       items:
         - name: Apache Spark コネクタ
           href: spark-connector.md
@@ -112,10 +118,6 @@
           href: connect-from-databricks.md
         - name: Jupyter Notebook と Kqlmagic でデータを分析する
           href: kqlmagic.md
-        - name: Azure Data Factory を使用してデータをコピーする
-          href: data-factory-load-data.md
-        - name: ODBC に接続する
-          href: connect-odbc.md
     - name: トラブルシューティング
       items:
         - name: クラスターを作成する

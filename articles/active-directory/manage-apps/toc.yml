@@ -74,7 +74,11 @@
         - name: SAML トークン暗号化 (プレビュー) の構成
           href: howto-saml-token-encryption.md
     - name: シングル サインオン
-      href: what-is-single-sign-on.md
+      items:
+        - name: シングル サインオンとは
+          href: what-is-single-sign-on.md
+        - name: シングル サインオンのデプロイの計画
+          href: plan-sso-deployment.md
     - name: エンドユーザーのポータル
       href: end-user-experiences.md
 - name: ハウツー ガイド
@@ -93,7 +97,9 @@
           href: application-proxy-configure-for-claims-aware-applications.md
         - name: コネクタの登録 - サイレント インストール
           href: application-proxy-register-connector-powershell.md
-        - name: ネイティブ クライアント アプリの構成
+        - name: モバイル アプリとデスクトップ アプリにオンプレミス API へのアクセスを付与する
+          href: application-proxy-secure-api-access.md
+        - name: モバイルとデスクトップのクライアント アプリの構成
           href: application-proxy-configure-native-client-application.md
         - name: カスタム ホーム ページの構成
           href: application-proxy-configure-custom-home-page.md

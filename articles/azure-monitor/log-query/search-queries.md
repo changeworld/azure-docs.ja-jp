@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/06/2018
 ms.author: bwren
-ms.openlocfilehash: 2df4cf994e118fef9048504daf40fabc1625c375
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: b5860243b6b605288aaf8d6dffe2260bc031a592
+ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56267685"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65560838"
 ---
 # <a name="search-queries-in-azure-monitor-logs"></a>Azure Monitor ログでの検索クエリ
 
@@ -64,7 +64,7 @@ search in (Event) Source:"error"
 ```
 
 > [!TIP]
-> `:` ではなく `==` を使用すると、大文字と小文字の区別を含め、*Source* 列の値が "error" と完全一致するレコードが結果に含まれます。 ':' を使用すると、*Source* の値が "error code 404" や "Error" などのレコードは含まれません。
+> `:` ではなく `==` を使用すると、大文字と小文字の区別を含め、*Source* 列の値が "error" と完全一致するレコードが結果に含まれます。 ':' を使用すると、*Source* の値が "error code 404" や "Error" などのレコードが含まれます。
 
 ## <a name="case-sensitivity"></a>大文字と小文字の区別
 既定で、用語の検索では大文字と小文字が区別されないため、"dns" を検索すると、"DNS"、"dns"、"Dns" などの結果が返されます。 大文字と小文字を区別して検索するには、`kind` オプションを使用します。

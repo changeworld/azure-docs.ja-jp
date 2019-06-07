@@ -6,14 +6,14 @@ manager: carmonm
 ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
-ms.date: 04/22/2019
+ms.date: 05/10/2019
 ms.author: raynew
-ms.openlocfilehash: dc455b5256f9c04e1e0af2c1ff3fea04af54d90b
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.openlocfilehash: 2d1999077f6315658dbfd69473ddf5561bd76e0b
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60149453"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65540583"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>VMware VM および物理サーバーの Azure へのディザスター リカバリーのサポート マトリックス
 
@@ -64,9 +64,9 @@ Site Recovery は、サポートされているマシンで実行されている
 --- | ---
 マシンの設定 | Azure にレプリケートするマシンは、[Azure の要件](#azure-vm-requirements)を満たしている必要があります。
 マシンのワークロード | Site Recovery は、サポートされているマシンで実行されている任意のワークロード (たとえば Active Directory、SQL サーバーなど) のレプリケーションをサポートします。 [詳細情報](https://aka.ms/asr_workload)。
-Windows オペレーティング システム | 64 ビット Windows Server 2016 (Server Core、サーバーおよびデスクトップ エクスペリエンス)、Windows Server 2012 R2、Windows Server 2012、Windows Server 2008 R2 SP1 以降。 </br></br>  [Windows Server 2008 SP2 以降 - 32 ビットおよび 64 ビット](migrate-tutorial-windows-server-2008.md) (移行のみ)。 </br></br> Windows 2016 の Nano Server はサポートされていません。
+Windows オペレーティング システム | Windows Server 2019 ([9.22 バージョン](service-updates-how-to.md#links-to-currently-supported-update-rollups))、64 ビット版 Windows Server 2016 (Server Core、Server with Desktop Experience)、Windows Server 2012 R2、Windows Server 2012、Windows Server 2008 R2 SP1 以降。 </br> [9.24 バージョン](https://support.microsoft.com/en-in/help/4503156)以降、64 ビット版 Windows 10、64 ビット版 Windows 8.1、64 ビット版 Windows 8、64 ビット版 Windows 7 (Windows 7 RTM はサポートされていません)</br>  [Windows Server 2008 SP2 以降 - 32 ビットおよび 64 ビット](migrate-tutorial-windows-server-2008.md) (移行のみ)。 </br></br> Windows 2016 の Nano Server はサポートされていません。
 Linux オペレーティング システムのアーキテクチャ | 64 ビット システムのみがサポートされています。 32 ビット システムはサポートされていません
-Linux オペレーティング システム | Red Hat Enterprise Linux:5.2 から 5.11<b>\*\*</b>、6.1 から 6.10<b>\*\*</b>、7.0 から 7.6 <br/><br/>CentOS:5.2 から 5.11<b>\*\*</b>、6.1 から 6.10<b>\*\*</b>、7.0 から 7.6 <br/><br/>Ubuntu 14.04 LTS サーバー [(サポートされるカーネルのバージョン)](#ubuntu-kernel-versions)<br/><br/>Ubuntu 16.04 LTS サーバー [(サポートされるカーネルのバージョン)](#ubuntu-kernel-versions)<br/><br/>Debian 7/Debian 8 [(サポートされるカーネルのバージョン)](#debian-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 12 SP1、SP2、SP3 [(サポートされるカーネルのバージョン)](#suse-linux-enterprise-server-12-supported-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 11 SP3<b>\*\*</b> または SUSE Linux Enterprise Server 11 SP4 * </br></br>Red Hat 互換カーネルまたは Unbreakable Enterprise カーネル リリース 3 (UEK3) を実行している Oracle Linux 6.4、6.5、6.6、6.7、6.8、6.9、6.10、7.0、7.1、7.2、7.3、7.4、7.5 <br/><br/></br>-レプリケートされたマシンの SUSE Linux Enterprise Server 11 SP3 から SP4 へのアップグレードはサポートされていません。 アップグレードするには、いったんレプリケーションを無効にし、アップグレードの後に再び有効にします。</br></br> - Azure での Linux およびオープン ソース テクノロジのサポートについて詳しくは、[こちら](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure)をご覧ください。 Site Recovery では、Azure で Linux サーバーを実行するためにフェールオーバーが調整されます。 ただし Linux ベンダーによっては、サポート終了前のディストリビューション バージョンしかサポート対象に含まれない場合もあります。<br/><br/> - Linux ディストリビューションでは、ディストリビューションのマイナー バージョン リリース/更新の一部である stock カーネルのみがサポートされます。<br/><br/> - 保護されているマシンの Linux ディストリビューションのメジャー バージョン間のアップグレードはサポートされていません。 アップグレードするには、いったんレプリケーションを無効にしてオペレーティング システムをアップグレードしてから、レプリケーションを再び有効にします。<br/><br/> - Azure でマシンが起動するには、Red Hat Enterprise Linux 5.2 から 5.11 または CentOS 5.2 から 5.11 を実行しているサーバーに [Linux Integration Services (LIS) コンポーネント](https://www.microsoft.com/download/details.aspx?id=55106)がインストールされている必要があります。
+Linux オペレーティング システム | Red Hat Enterprise Linux:5.2 から 5.11<b>\*\*</b>、6.1 から 6.10<b>\*\*</b>、7.0 から 7.6 <br/><br/>CentOS:5.2 から 5.11<b>\*\*</b>、6.1 から 6.10<b>\*\*</b>、7.0 から 7.6 <br/><br/>Ubuntu 14.04 LTS サーバー [(サポートされるカーネルのバージョン)](#ubuntu-kernel-versions)<br/><br/>Ubuntu 16.04 LTS サーバー [(サポートされるカーネルのバージョン)](#ubuntu-kernel-versions)<br/><br/>Debian 7/Debian 8 [(サポートされるカーネルのバージョン)](#debian-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 12 SP1、SP2、SP3、SP4 [(サポートされるカーネルのバージョン)](#suse-linux-enterprise-server-12-supported-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 11 SP3<b>\*\*</b> または SUSE Linux Enterprise Server 11 SP4 * </br></br>Red Hat と互換可能なカーネルまたは Unbreakable Enterprise カーネル リリース 3、4、5 (UEK3、UEK4、UEK5) を実行している Oracle Linux 6.4、6.5、6.6、6.7、6.8、6.9、6.10、7.0、7.1、7.2、7.3、7.4、7.5、7.6 <br/><br/></br>-レプリケートされたマシンの SUSE Linux Enterprise Server 11 SP3 から SP4 へのアップグレードはサポートされていません。 アップグレードするには、いったんレプリケーションを無効にし、アップグレードの後に再び有効にします。</br></br> - Azure での Linux およびオープン ソース テクノロジのサポートについて詳しくは、[こちら](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure)をご覧ください。 Site Recovery では、Azure で Linux サーバーを実行するためにフェールオーバーが調整されます。 ただし Linux ベンダーによっては、サポート終了前のディストリビューション バージョンしかサポート対象に含まれない場合もあります。<br/><br/> - Linux ディストリビューションでは、ディストリビューションのマイナー バージョン リリース/更新の一部である stock カーネルのみがサポートされます。<br/><br/> - 保護されているマシンの Linux ディストリビューションのメジャー バージョン間のアップグレードはサポートされていません。 アップグレードするには、いったんレプリケーションを無効にしてオペレーティング システムをアップグレードしてから、レプリケーションを再び有効にします。<br/><br/> - Azure でマシンが起動するには、Red Hat Enterprise Linux 5.2 から 5.11 または CentOS 5.2 から 5.11 を実行しているサーバーに [Linux Integration Services (LIS) コンポーネント](https://www.microsoft.com/download/details.aspx?id=55106)がインストールされている必要があります。
 
 
 ### <a name="ubuntu-kernel-versions"></a>Ubuntu カーネルのバージョン
@@ -117,8 +117,9 @@ HP CCISS ストレージ コントローラーを使用する物理サーバー 
 デバイス/マウント ポイントの名前付け規則 | デバイス名またはマウント ポイント名は、一意である必要があります。 大文字と小文字の区別なしで同じ名前を持つデバイス/マウント ポイントが複数存在しないことを確認します。 </br> 例:同じ仮想マシンの 2 つのデバイスに *device1* および *Device1* という名前を付けることは許可されません。
 ディレクトリ | [バージョン 9.20](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery) より前 <br/> 1./ (ルート)、/boot、/usr、/usr/local、/var、/etc の各ディレクトリ (個別のパーティション/ファイルシステムとしてセットアップされた場合) はすべて、ソース サーバーの同じ OS ディスク上に存在する必要があります。</br>2. /boot はディスク パーティション上にあり、LVM ボリュームではないことが必要です。<br/><br/> [バージョン 9.20](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery) 以降では、上記の制限は適用されません。 複数のディスクにまたがる LVM ボリュームでの /boot はサポートされていません。
 ブート ディレクトリ | 仮想マシン上の複数のブート ディスクは、サポートされていません <br/><br/> ブート ディスクのないマシンは保護できません
-
-空き領域要件 | /root パーティションで 2 GB <br/><br/> インストール フォルダー XFSv5 で 250 MB | メタデータ チェックサムなど、XFS ファイル システム上の XFSv5 機能は、モビリティ サービスのバージョン 9.10 以降でサポートされます。 xfs_info ユーティリティを使用して、パーティションの XFS スーパーブロックを確認します。 `ftype` が 1 に設定されている場合は、XFSv5 の機能が使用されます。
+空き領域要件| /rootパーティションで 2GB <br/><br/> インストール フォルダーで 250MB
+XFSv5 | メタデータ チェックサムなど、XFS ファイル システム上の XFSv5 機能は、モビリティ サービスのバージョン 9.10 以降でサポートされます。 xfs_info ユーティリティを使用して、パーティションの XFS スーパーブロックを確認します。 `ftype` が 1 に設定されている場合は、XFSv5 の機能が使用されます。
+BTRFS |9.22 バージョン以降では、次のシナリオを除いて BTRFS がサポートされます</br>保護を有効にした後に、BTRFS ファイル システムのサブボリュームが変更された場合、BTRFS はサポートされません。 </br>BTRFS ファイル システムが複数のディスクにまたがっている場合、BTRFS はサポートされません。</br>BTRFS ファイル システムにおいて RAID がサポートされる場合、BTRFS はサポートされません。
 
 ## <a name="vmdisk-management"></a>VM/ディスク管理
 
@@ -156,41 +157,42 @@ Azure の Traffic Manager | はい
 IPv4 | はい
 送信元 IP アドレスを保持する | はい
 Azure 仮想ネットワーク サービス エンドポイント<br/> | はい
-高速ネットワーク | いいえ 
+高速ネットワーク | いいえ
 
 ## <a name="storage"></a>Storage
 **コンポーネント** | **サポートされています**
 --- | ---
 ダイナミック ディスク | オペレーティング システム ディスクは、ベーシック ディスクである必要があります。 <br/><br/>データ ディスクは、ダイナミック ディスクにすることができます
-Docker ディスク構成 | いいえ 
+Docker ディスク構成 | いいえ
 ホスト NFS | VMware = はい<br/><br/> 物理サーバー = いいえ
 ホスト SAN (iSCSI/FC) | はい
 ホスト vSAN | VMware = はい<br/><br/> 物理サーバー = 該当なし
 ホスト マルチパス (MPIO) | はい - テスト環境: Microsoft DSM、EMC PowerPath 5.7 SP4、EMC PowerPath DSM for CLARiiON
 ホストの仮想ボリューム (VVols) | VMware = はい<br/><br/> 物理サーバー = 該当なし
 ゲスト/サーバー VMDK | はい
-ゲスト/サーバー共有クラスター ディスク | いいえ 
-ゲスト/サーバー暗号化ディスク | いいえ 
-ゲスト/サーバー NFS | いいえ 
-ゲスト/サーバー SMB 3.0 | いいえ 
+ゲスト/サーバー共有クラスター ディスク | いいえ
+ゲスト/サーバー暗号化ディスク | いいえ
+ゲスト/サーバー NFS | いいえ
+ゲスト/サーバー iSCSI | いいえ
+ゲスト/サーバー SMB 3.0 | いいえ
 ゲスト/サーバー RDM | はい<br/><br/> 物理サーバー = 該当なし
 ゲスト/サーバー ディスク > 1 TB | はい<br/><br/>最大 4,095 GB<br/><br/> ディスクは 1024 MB 以上である必要があります。
 4K 論理および 4K 物理セクター サイズのゲスト/サーバー ディスク | はい
 4K 論理および 512 バイト物理セクター サイズのゲスト/サーバー ディスク | はい
 ストライピングされたディスクのゲスト/サーバー ボリューム > 4 TB <br/><br/>論理ボリューム管理 (LVM)| はい
-ゲスト/サーバー - 記憶域スペース | いいえ 
-ゲスト/サーバー ディスクのホット アド/削除 | いいえ 
+ゲスト/サーバー - 記憶域スペース | いいえ
+ゲスト/サーバー ディスクのホット アド/削除 | いいえ
 ゲスト/サーバー - ディスクの除外 | はい
-ゲスト/サーバー マルチパス (MPIO) | いいえ 
+ゲスト/サーバー マルチパス (MPIO) | いいえ
 ゲスト/サーバー EFI/UEFI ブート | Windows Server 2012 以降を実行している VMware VM または物理サーバーを Azure に移行する場合にサポートされます。<br/><br/> VM は移行の場合にのみレプリケートできます。 オンプレミスへのフェールバックはサポートされていません。<br/><br/> サーバーには、OS ディスクに 4 個を超えるパーティションを持たせないでください。<br/><br/> バージョン 9.13 以降のモビリティ サービスが必要です。<br/><br/> NTFS のみがサポートされます。
 
 ## <a name="replication-channels"></a>レプリケーション チャネル
 
 |**レプリケーションの種類**   |**サポートされています**  |
 |---------|---------|
-|オフロード データ転送 (ODX)    |       いいえ   |
-|オフライン シード処理        |   いいえ       |
-| Azure Data Box | いいえ 
+|オフロード データ転送 (ODX)    |       いいえ  |
+|オフライン シード処理        |   いいえ      |
+| Azure Data Box | いいえ
 
 
 ## <a name="azure-storage"></a>Azure Storage
@@ -200,21 +202,21 @@ Docker ディスク構成 | いいえ
 ローカル冗長ストレージ | はい
 geo 冗長ストレージ | はい
 読み取りアクセス geo 冗長ストレージ | はい
-クール ストレージ | いいえ 
-ホット ストレージ| いいえ 
-ブロック blob | いいえ 
+クール ストレージ | いいえ
+ホット ストレージ| いいえ
+ブロック blob | いいえ
 保存時の暗号化 (Storage サービスの暗号化)| はい
 Premium Storage | はい
-インポート/エクスポート サービス | いいえ 
+インポート/エクスポート サービス | いいえ
 ターゲット ストレージ/キャッシュ ストレージ アカウント (レプリケーション データの保存に使用) で構成された仮想ネットワークの Azure Storage ファイアウォール | はい
-汎用目的 V2 ストレージ アカウント (ホット層とクール層の両方) | いいえ 
+汎用目的 V2 ストレージ アカウント (ホット層とクール層の両方) | いいえ
 
 ## <a name="azure-compute"></a>Azure コンピューティング
 
 **機能** | **サポートされています**
 --- | ---
 可用性セット | はい
-可用性ゾーン | いいえ 
+可用性ゾーン | いいえ
 ハブ | はい
 マネージド ディスク | はい
 
@@ -261,15 +263,15 @@ VM 上の全ディスクにおけるデータ変更頻度のピーク | 54 MB/�
 
 **アクション** | **サポートされています**
 --- | ---
-リソース グループ間の資格情報コンテナーの移動<br/><br/> サブスクリプション内およびサブスクリプション間 | いいえ 
-リソース グループ間でストレージ、ネットワーク、Azure VM を移動<br/><br/> サブスクリプション内およびサブスクリプション間 | いいえ 
+リソース グループ間の資格情報コンテナーの移動<br/><br/> サブスクリプション内およびサブスクリプション間 | いいえ
+リソース グループ間でストレージ、ネットワーク、Azure VM を移動<br/><br/> サブスクリプション内およびサブスクリプション間 | いいえ
 
 
 ## <a name="download-latest-azure-site-recovery-components"></a>Azure Site Recovery コンポーネントのダウンロード
 
 **Name** | **説明** | **最新バージョンのダウンロード手順**
 --- | --- | ---
-構成サーバー | オンプレミスの VMware サーバーと Azure の間の通信を調整します  <br/><br/> オンプレミスの VMware サーバーにインストールされます | 詳しくは、[新規インストール](vmware-azure-deploy-configuration-server.md)および[既存のコンポーネントから最新バージョンへのアップグレード](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)に関するガイダンスをご覧ください。
+構成サーバー | オンプレミスの VMware サーバーと Azure の間の通信を調整します <br/><br/> オンプレミスの VMware サーバーにインストールされます | 詳しくは、[新規インストール](vmware-azure-deploy-configuration-server.md)および[既存のコンポーネントから最新バージョンへのアップグレード](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)に関するガイダンスをご覧ください。
 プロセス サーバー|構成サーバーに既定でインストールされます。 レプリケーション データを受信し、そのデータをキャッシュ、圧縮、暗号化によって最適化して、Azure Storage に送信します。 デプロイの拡大に合わせて、増大するレプリケーション トラフィックの処理を実行する独立したプロセス サーバーを追加できます。| 詳しくは、[新規インストール](vmware-azure-set-up-process-server-scale.md)および[既存のコンポーネントから最新バージョンへのアップグレード](vmware-azure-manage-process-server.md#upgrade-a-process-server)に関するガイダンスをご覧ください。
 モビリティ サービス | オンプレミスの VMware サーバー/物理サーバーと Azure/セカンダリ サイトの間のレプリケーションを調整します<br/><br/> レプリケートする VMware VM または物理サーバーにインストールされます | 詳しくは、[新規インストール](vmware-azure-install-mobility-service.md)および[既存のコンポーネントから最新バージョンへのアップグレード](vmware-physical-manage-mobility-service.md#update-mobility-service-from-azure-portal)に関するガイダンスをご覧ください。
 

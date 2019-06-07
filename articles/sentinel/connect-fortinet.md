@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: 72306132f88f211180c99cd30845781667605204
-ms.sourcegitcommit: d73c46af1465c7fd879b5a97ddc45c38ec3f5c0d
+ms.openlocfilehash: 4418b11de4da7c69dd13ae74d94be90daadcb1f6
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65921885"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66390544"
 ---
 # <a name="connect-your-fortinet-appliance"></a>お使いの Fortinet アプライアンスを接続する 
 
@@ -133,7 +133,7 @@ Syslog のエージェントを介してお使いの Azure ワークスペース
 
 3. 送信するログが [RFC 5424](https://tools.ietf.org/html/rfc542) に準拠していることを確認します。
 
-4. Syslog エージェントを実行しているコンピューターで、コマンド `netstat -a -n:` を使用して、これらのポート 514、25226 が開いており、リッスンしていることを確認します。 このコマンドの詳しい使用方法については、[netstat(8) - Linux man ページ](https://linux.die.netman/8/netstat)を参照してください。 正しくリッスンしている場合、次のように表示されます。
+4. Syslog エージェントを実行しているコンピューターで、コマンド `netstat -a -n:` を使用して、これらのポート 514、25226 が開いており、リッスンしていることを確認します。 このコマンドの詳しい使用方法については、[netstat(8) - Linux man ページ](https://linux.die.net/man/8/netstat)を参照してください。 正しくリッスンしている場合、次のように表示されます。
 
    ![Azure Sentinel ポート](./media/connect-cef/ports.png) 
 

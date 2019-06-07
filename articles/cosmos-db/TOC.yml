@@ -600,6 +600,8 @@
       items:
         - name: パフォーマンスに関するヒント
           items:
+            - name: クエリ実行メトリックの取得
+              href: profile-sql-api-query.md
             - name: クエリ パフォーマンスの調整
               href: sql-api-query-metrics.md
             - name: .NET SDK のパフォーマンスに関するヒント

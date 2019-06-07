@@ -4,7 +4,7 @@ description: Azure Active Directory でエンタープライズ アプリケー�
 services: active-directory
 documentationcenter: ''
 author: jeevansd
-manager: mtillman
+manager: CelesteDG
 editor: ''
 ms.assetid: eb2b3741-3cde-45c8-b639-a636f3df3b74
 ms.service: active-directory
@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/21/2019
+ms.date: 04/22/2019
 ms.author: jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a354fdf8ea75d9446c2a5e5ee6a70489cf9dbfb5
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: 15165bce70a9bc2fbf3eb840ca8bce4fd5073280
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56990522"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65544634"
 ---
 # <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>方法:エンタープライズ アプリケーション用の SAML トークン内に発行されるロール要求を構成する
 
@@ -42,7 +42,7 @@ Azure Active Directory (Azure AD) を使用して、アプリを承認した後�
 
     ![Azure Active Directory のアイコン][1]
 
-2. **[エンタープライズ アプリケーション]** を選択します。 次に、**[すべてのアプリケーション]** を選択します。
+2. **[エンタープライズ アプリケーション]** を選択します。 次に、 **[すべてのアプリケーション]** を選択します。
 
     ![[エンタープライズ アプリケーション] ウィンドウ][2]
 
@@ -54,7 +54,7 @@ Azure Active Directory (Azure AD) を使用して、アプリを承認した後�
 
     ![結果リストのアプリケーション](./media/active-directory-enterprise-app-role-management/tutorial_app_addfromgallery.png)
 
-5. アプリケーションが追加されたら、**[プロパティ]** ページに移動し、オブジェクト ID をコピーします。
+5. アプリケーションが追加されたら、 **[プロパティ]** ページに移動し、オブジェクト ID をコピーします。
 
     ![[プロパティ] ページ](./media/active-directory-enterprise-app-role-management/tutorial_app_properties.png)
 
@@ -66,7 +66,7 @@ Azure Active Directory (Azure AD) を使用して、アプリを承認した後�
 
       ![[アクセス許可の変更] ボタン](./media/active-directory-enterprise-app-role-management/graph-explorer-new9.png)
 
-    c. 一覧から次のアクセス許可を選択し (まだ持っていない場合)、**[アクセス許可の変更]** を選択します。
+    c. 一覧から次のアクセス許可を選択し (まだ持っていない場合)、 **[アクセス許可の変更]** を選択します。
 
       ![アクセス許可の一覧と [アクセス許可の変更] ボタン](./media/active-directory-enterprise-app-role-management/graph-explorer-new10.png)
 
@@ -139,7 +139,7 @@ Azure Active Directory (Azure AD) を使用して、アプリを承認した後�
 
       ![Patch 操作と成功メッセージ](./media/active-directory-enterprise-app-role-management/graph-explorer-new11.png)
 
-7. より多くのロールでサービス プリンシパルを修正したら、対応するロールにユーザーを割り当てることができます。 ポータルに移動し、アプリケーションを参照することで、ユーザーを割り当てることができます。 **[ユーザーとグループ]** タブを選択します。このタブには、アプリに既に割り当てられているユーザーとグループがすべて表示されます。 新しいロールに新しいユーザーを追加できます。 また、既存のユーザーを選択し、**[編集]** を選択してロールを変更することもできます。
+7. より多くのロールでサービス プリンシパルを修正したら、対応するロールにユーザーを割り当てることができます。 ポータルに移動し、アプリケーションを参照することで、ユーザーを割り当てることができます。 **[ユーザーとグループ]** タブを選択します。このタブには、アプリに既に割り当てられているユーザーとグループがすべて表示されます。 新しいロールに新しいユーザーを追加できます。 また、既存のユーザーを選択し、 **[編集]** を選択してロールを変更することもできます。
 
     ![[ユーザーとグループ] タブ](./media/active-directory-enterprise-app-role-management/graph-explorer-new5.png)
 
@@ -152,7 +152,7 @@ Azure Active Directory (Azure AD) を使用して、アプリを承認した後�
 
 8. **[属性]** テーブルを更新して、ロール要求のカスタマイズされたマッピングを定義します。
 
-9. **[シングル サインオン]** ダイアログ ボックスの **[ユーザー属性と要求]** セクションで、図に示すように SAML トークン属性を構成し、次の手順を実行します。
+9. **[ユーザー属性]** ダイアログの **[ユーザー要求]** セクションで、以下の手順を実行して、以下の表のように SAML トークン属性を追加します。
 
     | 属性名 | 属性名 |
     | -------------- | ----------------|
@@ -161,11 +161,11 @@ Azure Active Directory (Azure AD) を使用して、アプリを承認した後�
     >[!NOTE]
     >ロール要求の値が null の場合、Azure AD はトークンでこの値を送信しません。これは、設計上の既定値です。
 
-    a. **[編集]** ボタンをクリックして、**[ユーザー属性]** ダイアログを開きます。
+    a. **[編集]** アイコンをクリックして、 **[ユーザー属性と要求]** ダイアログを開きます。
 
       ![[属性の追加] ボタン](./media/active-directory-enterprise-app-role-management/editattribute.png)
 
-    b. **[属性の追加]** を選択し、**[ユーザー要求の管理]** ウィンドウを開きます。
+    b. **[ユーザー要求の管理]** ダイアログで、 **[新しい要求の追加]** をクリックして、SAML トークン属性を追加します。
 
       ![[属性の追加] ボタン](./media/active-directory-enterprise-app-role-management/tutorial_attribute_04.png)
 
@@ -217,7 +217,7 @@ Azure Active Directory (Azure AD) を使用して、アプリを承認した後�
 
     c. 必要に応じて、ロールの説明、ロール値、またはロールの表示名を更新することで、ロールの値を更新します。
 
-    d. 必要なすべてのロールを更新したら、**[クエリの実行]** を選択します。
+    d. 必要なすべてのロールを更新したら、 **[クエリの実行]** を選択します。
 
 ## <a name="delete-an-existing-role"></a>既存のロールを削除する
 
@@ -260,7 +260,7 @@ Azure Active Directory (Azure AD) を使用して、アプリを承認した後�
     > [!NOTE]
     > msiam_access ユーザー ロールを持っていること、および ID が生成されたロールと一致していることを確認してください。
 
-7. ロールを無効にした後、そのロールのブロックを **appRoles** セクションから削除します。 メソッドを **PATCH** にしたまま、**[クエリの実行]** を選択します。
+7. ロールを無効にした後、そのロールのブロックを **appRoles** セクションから削除します。 メソッドを **PATCH** にしたまま、 **[クエリの実行]** を選択します。
 
 8. クエリを実行すると、ロールが削除されます。
 

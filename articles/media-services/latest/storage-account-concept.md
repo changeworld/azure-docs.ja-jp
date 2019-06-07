@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/28/2019
+ms.date: 05/11/2019
 ms.author: juliako
-ms.openlocfilehash: 96c3a3eb5e4c07ad9cad8ea5060a27c0c33eec5f
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: 9cbb995eb3310a2263185d6fd6dba20efce37f38
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58621300"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65550142"
 ---
 # <a name="cloud-upload-and-storage"></a>クラウドのアップロードとストレージ
 
@@ -51,6 +51,17 @@ Media Services v3 では、Storage API シリーズを使用してファイル�
 |[ストレージ クライアント側暗号化](https://docs.microsoft.com/azure/storage/common/storage-client-side-encryption)|Azure Storage によって提供されるクライアント側暗号化、お客様が Key Vault で管理するキー|サポートされていません|
 
 <sup>1</sup> Media Services v3 では、ストレージの暗号化 (AES-256 暗号化) は、Media Services v2 で資産を作成した場合の下位互換性のためにのみサポートされています。 つまり、v3 は、既存のストレージの暗号化済み資産では動作しますが、そのような資産を新規作成することはできません。
+
+## <a name="storage-account-errors"></a>ストレージ アカウント エラー
+
+Media Services アカウントの「切断」状態は、ストレージ アクセス キーの変更が原因で、そのアカウントが、アタッチされたストレージ アカウントのうちの 1 つ以上にアクセスできなくなったことを示します。 アカウント内の多くのタスクを実行するには、Media Services に最新のストレージ アクセス キーが必要です。
+
+アタッチされたストレージ アカウントに Media Services アカウントがアクセスできなくなる主なシナリオを次に示します。 
+
+|問題|解決策|
+|---|---|
+|Media Services アカウントまたはアタッチされたストレージ アカウントが別々のサブスクリプションに移行された。 |ストレージ アカウントまたは Media Services アカウントがすべて同じサブスクリプション内に含まれるように、アカウントを移行してください。 |
+|Media Services アカウントは、これがサポートされていたのが初期の Media Services アカウントであったため、別のサブスクリプションのアタッチされたストレージ アカウントを使用している。 初期の Media Services アカウントはすべて最新の Azure Resources Manager (ARM) ベースのアカウントに変換されたので、切断状態になります。 |ストレージ アカウントまたは Media Services アカウントがすべて同じサブスクリプション内に含まれるように、アカウントを移行してください。|
 
 ## <a name="next-steps"></a>次の手順
 

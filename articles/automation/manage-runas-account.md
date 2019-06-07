@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: shared-capabilities
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/26/2019
+ms.date: 05/21/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: af67109fb7f55f365cd71714a3eefab2336b636a
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 3afe27bf71d112b53c31ab696f71d4e1a0cf6b79
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58578613"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66002505"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>Azure Automation の実行アカウントを管理する
 
@@ -24,12 +24,12 @@ Azure Automation の実行アカウントは、Azure コマンドレットを使
 
 実行アカウントには、次の 2 種類があります。
 
-* **Azure 実行アカウント** - このアカウントは、Resource Manager デプロイ モデルのリソースを管理するために使用されます。
+* **Azure 実行アカウント** - このアカウントは、[Resource Manager デプロイ モデル](../azure-resource-manager/resource-manager-deployment-model.md)のリソースを管理するために使用されます。
   * 自己署名証明書を含む Azure AD アプリケーションを作成し、このアプリケーションの Azure AD におけるサービス プリンシパル アカウントを作成します。また、現在のサブスクリプションにおける、このアカウントの共同作成者ロールが割り当てられます。 この設定は所有者ロールや他の任意のロールに変更できます。 詳細については、「[Azure Automation におけるロールベースのアクセス制御](automation-role-based-access-control.md)」を参照してください。
   * 指定された Automation アカウントに *AzureRunAsCertificate* という名前の Automation 証明書資産を作成します。 この証明書資産には、Azure AD アプリケーションによって使用される証明書の秘密キーが格納されます。
   * 指定された Automation アカウントに *AzureRunAsConnection* という名前の Automation 接続資産を作成します。 この接続資産には、アプリケーション ID、テナント ID、サブスクリプション ID、証明書の拇印が格納されます。
 
-* **Azure クラシック実行アカウント** - このアカウントは、クラシック デプロイ モデルのリソースを管理するために使用されます。
+* **Azure クラシック実行アカウント** - このアカウントは、[クラシック デプロイ モデル](../azure-resource-manager/resource-manager-deployment-model.md)のリソースを管理するために使用されます。
   * サブスクリプションで管理証明書を作成します
   * 指定された Automation アカウントに *AzureClassicRunAsCertificate* という名前の Automation 証明書資産を作成します。 この証明書資産には、管理証明書によって使用される証明書の秘密キーが格納されます。
   * 指定された Automation アカウントに *AzureClassicRunAsConnection* という名前の Automation 接続資産を作成します。 この接続資産には、サブスクリプション名、サブスクリプション ID、証明書の資産名が格納されます。
@@ -38,22 +38,25 @@ Azure Automation の実行アカウントは、Azure コマンドレットを使
   > [!NOTE]
   > Azure Cloud Solution Provider (Azure CSP) サブスクリプションは、Azure Resource Manager モデルのみをサポートしているため、Azure Resource Manager サービス以外のサービスはこのプログラムでは利用できません。 CSP サブスクリプションを使用する場合、Azure クラシック実行アカウントは作成されません。 Azure 実行アカウントは引き続き作成されます。 CSP サブスクリプションの詳細については、[CSP サブスクリプションで利用可能なサービス](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services#comments)に関するページを参照してください。
 
+  > [!NOTE]
+  > 実行アカウントのサービス プリンシパルには、既定で、Azure Active Directory を読み取るためのアクセス許可はありません。 Azure Active Directory の読み取りまたは管理を行うためのアクセス許可を追加する場合は、 **[API のアクセス許可]** の下でサービス プリンシパルにそのアクセス許可を付与する必要があります。 詳細については、「[Web API にアクセスするためのアクセス許可を追加する](../active-directory/develop/quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis)」を参照してください。
+
 ## <a name="permissions"></a>実行アカウントを構成するためのアクセス許可
 
-実行アカウントを作成または更新するには、特定の特権およびアクセス許可が必要です。 グローバル管理者/共同管理者は、すべてのタスクを完了できます。 職務権限を分離している状況では、タスク、相当するコマンドレット、および必要なアクセス許可の一覧を次の表に示します。
+実行アカウントを作成または更新するには、特定の特権およびアクセス許可が必要です。 Azure Active Directory の全体管理者と、サブスクリプションの所有者は、すべてのタスクを完了することができます。 職務権限を分離している状況では、タスク、相当するコマンドレット、および必要なアクセス許可の一覧を次の表に示します。
 
 |タスク|コマンドレット  |最小限のアクセス許可  |アクセス許可を設定する場所|
 |---|---------|---------|---|
 |Azure AD アプリケーションを作成する|[New-AzureRmADApplication](/powershell/module/azurerm.resources/new-azurermadapplication)     | アプリケーション開発者ロール<sup>1</sup>        |[Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>[ホーム] > [Azure Active Directory] > [アプリの登録] |
 |資格情報をアプリケーションに追加します。|[New-AzureRmADAppCredential](/powershell/module/AzureRM.Resources/New-AzureRmADAppCredential)     | アプリケーション管理者または全体管理者<sup>1</sup>         |[Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>[ホーム] > [Azure Active Directory] > [アプリの登録]|
-|Azure AD サービス プリンシパルを作成および取得する|[New-AzureRMADServicePrincipal](/powershell/module/AzureRM.Resources/New-AzureRmADServicePrincipal)</br>[Get-AzureRmADServicePrincipal](/powershell/module/AzureRM.Resources/Get-AzureRmADServicePrincipal)     | アプリケーション管理者または全体管理者        |[Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>[ホーム] > [Azure Active Directory] > [アプリの登録]|
-|指定されたプリンシパルの RBAC ロールを割り当てるまたは取得する|[New-AzureRMRoleAssignment](/powershell/module/AzureRM.Resources/New-AzureRmRoleAssignment)</br>[Get-AzureRMRoleAssignment](/powershell/module/AzureRM.Resources/Get-AzureRmRoleAssignment)      | ユーザー アクセス管理者または所有者        | [サブスクリプション](../role-based-access-control/role-assignments-portal.md)</br>[ホーム] > [サブスクリプション] > [\<サブスクリプション名\>-アクセス制御 (IAM)]|
+|Azure AD サービス プリンシパルを作成および取得する|[New-AzureRMADServicePrincipal](/powershell/module/AzureRM.Resources/New-AzureRmADServicePrincipal)</br>[Get-AzureRmADServicePrincipal](/powershell/module/AzureRM.Resources/Get-AzureRmADServicePrincipal)     | アプリケーション管理者または全体管理者<sup>1</sup>        |[Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>[ホーム] > [Azure Active Directory] > [アプリの登録]|
+|指定されたプリンシパルの RBAC ロールを割り当てるまたは取得する|[New-AzureRMRoleAssignment](/powershell/module/AzureRM.Resources/New-AzureRmRoleAssignment)</br>[Get-AzureRMRoleAssignment](/powershell/module/AzureRM.Resources/Get-AzureRmRoleAssignment)      | 次のアクセス許可を持っている必要があります。</br></br><code>Microsoft.Authorization/Operations/read</br>Microsoft.Authorization/permissions/read</br>Microsoft.Authorization/roleDefinitions/read</br>Microsoft.Authorization/roleAssignments/write</br>Microsoft.Authorization/roleAssignments/read</br>Microsoft.Authorization/roleAssignments/delete</code></br></br>または、次でなければなりません。</br></br>ユーザー アクセス管理者または所有者        | [サブスクリプション](../role-based-access-control/role-assignments-portal.md)</br>[ホーム] > [サブスクリプション] > [\<サブスクリプション名\>-アクセス制御 (IAM)]|
 |Automation の証明書を作成または削除する|[New-AzureRmAutomationCertificate](/powershell/module/AzureRM.Automation/New-AzureRmAutomationCertificate)</br>[Remove-AzureRmAutomationCertificate](/powershell/module/AzureRM.Automation/Remove-AzureRmAutomationCertificate)     | リソース グループの共同作成者         |Automation アカウントのリソース グループ|
 |Automation の接続を作成または削除する|[New-AzureRmAutomationConnection](/powershell/module/AzureRM.Automation/New-AzureRmAutomationConnection)</br>[Remove-AzureRmAutomationConnection](/powershell/module/AzureRM.Automation/Remove-AzureRmAutomationConnection)|リソース グループの共同作成者 |Automation アカウントのリソース グループ|
 
-<sup>1</sup> **[ユーザー設定]** ページで Azure AD テナントの **[ユーザーはアプリケーションを登録できる]** オプションが **[はい]** に設定されている場合は、Azure AD テナントの管理者以外のユーザーが [AD アプリケーションを登録する](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)ことができます。 [アプリの登録] が **[いいえ]** に設定されている場合、この操作を行うユーザーは、Azure AD の全体管理者であることが必要です。
+<sup>1</sup> **[ユーザー設定]** ページで Azure AD テナントの **[ユーザーはアプリケーションを登録できる]** オプションが **[はい]** に設定されている場合は、Azure AD テナントの管理者以外のユーザーが [AD アプリケーションを登録する](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)ことができます。 [アプリの登録] 設定が **[いいえ]** に指定されている場合、この操作を行うユーザーは、Azure AD の**全体管理者**でなければなりません。
 
-サブスクリプションの Active Directory インスタンスのメンバーになっていない状態で、サブスクリプションの全体管理者/共同管理者ロールに追加された場合は、ゲストとして追加されます。 このような状況では、`You do not have permissions to create…` 警告が **[Add Automation Account]\(Automation アカウントの追加\)** ページに表示されます。 先に全体管理者/共同管理者ロールに追加されていたユーザーは、サブスクリプションの Active Directory インスタンスから削除した後、Active Directory の完全なユーザーとして再度追加できます。 このような状況を検証するには、Azure Portal の **[Azure Active Directory]** ウィンドウで、**[ユーザーとグループ]**、**[すべてのユーザー]**、特定のユーザー、**[プロファイル]** の順に選択します。 ユーザーのプロファイルの下部にある **[ユーザー タイプ]** 属性の値は、**[ゲスト]** と一致しないようにする必要があります。
+サブスクリプションの Active Directory インスタンスのメンバーになっていない状態で、サブスクリプションの**全体管理者**ロールに追加された場合は、ゲストとして追加されます。 このような状況では、`You do not have permissions to create…` 警告が **[Add Automation Account]\(Automation アカウントの追加\)** ページに表示されます。 最初に**全体管理者**ロールに追加されていたユーザーは、サブスクリプションの Active Directory インスタンスから削除してから再追加することで、Active Directory の完全なユーザーにすることができます。 このような状況を検証するには、Azure Portal の **[Azure Active Directory]** ウィンドウで、 **[ユーザーとグループ]** 、 **[すべてのユーザー]** 、特定のユーザー、 **[プロファイル]** の順に選択します。 ユーザーのプロファイルの下部にある **[ユーザー タイプ]** 属性の値は、 **[ゲスト]** と一致しないようにする必要があります。
 
 ## <a name="permissions-classic"></a>実行アカウントを構成するためのアクセス許可
 
@@ -64,10 +67,10 @@ Azure Automation の実行アカウントは、Azure コマンドレットを使
 このセクションでは、以下の手順に従って、Azure Portal で Azure Automation アカウントを更新します。 実行アカウントとクラシック実行アカウントをそれぞれ作成します。 クラシック リソースを管理する必要がない場合は、Azure 実行アカウントのみを作成できます。  
 
 1. サブスクリプション管理ロールのメンバーかつサブスクリプションの共同管理者であるアカウントを使用して、Azure Portal にサインインします。
-2. Azure Portal で、**[すべてのサービス]** をクリックします。 リソースの一覧で、「**Automation**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Automation アカウント]** を選択します。
+2. Azure Portal で、 **[すべてのサービス]** をクリックします。 リソースの一覧で、「**Automation**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Automation アカウント]** を選択します。
 3. **[Automation アカウント]** ページで、Automation アカウントの一覧からご使用の Automation アカウントを選択します。
-4. 左側のウィンドウの **[アカウント設定]** セクションで、**[実行アカウント]** を選択します。  
-5. 必要なアカウントに応じて、**[Azure 実行アカウント]** または **[Azure クラシック実行アカウント]** を選択します。 **[Azure 実行アカウントを追加する]** または **[Azure クラシック実行アカウントを追加する]** のどちらかを選択すると、ウィンドウが表示されます。概要情報を確認してから、**[作成]** をクリックして実行アカウントの作成を進めます。  
+4. 左側のウィンドウの **[アカウント設定]** セクションで、 **[実行アカウント]** を選択します。  
+5. 必要なアカウントに応じて、 **[Azure 実行アカウント]** または **[Azure クラシック実行アカウント]** を選択します。 **[Azure 実行アカウントを追加する]** または **[Azure クラシック実行アカウントを追加する]** のどちらかを選択すると、ウィンドウが表示されます。概要情報を確認してから、 **[作成]** をクリックして実行アカウントの作成を進めます。  
 6. Azure によって実行アカウントが作成されている間、メニューの **[通知]** で進行状況を追跡できます。 アカウントの作成中であることを示すバナーも表示されます。 このプロセスが完了するまでに数分かかることがあります。  
 
 ## <a name="create-run-as-account-using-powershell"></a>PowerShell を使用して実行アカウントを作成する
@@ -78,14 +81,14 @@ Azure Automation の実行アカウントは、Azure コマンドレットを使
 
 * Azure Resource Manager モジュール 3.4.1 以降がインストールされた Windows 10 または Windows Server 2016。 PowerShell スクリプトは以前のバージョンの Windows をサポートしていません。
 * Azure PowerShell 1.0 以降。 PowerShell 1.0 リリースについては、[Azure PowerShell のインストールと構成方法](/powershell/azureps-cmdlets-docs)に関するページを参照してください。
-* Automation アカウント。このアカウントは、*–AutomationAccountName* パラメーターと *-ApplicationDisplayName* パラメーターの値として参照されます。
+* Automation アカウント。このアカウントは、 *–AutomationAccountName* パラメーターと *-ApplicationDisplayName* パラメーターの値として参照されます。
 * [実行アカウントを構成するために必要なアクセス許可](#permissions)に記載されているものに相当するアクセス許可
 
 スクリプトの必須パラメーターである *SubscriptionID*、*ResourceGroup*、*AutomationAccountName* の値を取得するには、次の手順を実行します。
 
-1. Azure Portal で、**[すべてのサービス]** をクリックします。 リソースの一覧で、「**Automation**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Automation アカウント]** を選択します。
-1. [Automation アカウント] ページで自分の Automation アカウントを選択し、**[アカウント設定]** で **[プロパティ]** を選択します。  
-1. **[プロパティ]** ページの **[サブスクリプション ID]**、**[名前]**、および **[リソース グループ]** の値をメモします。
+1. Azure Portal で、 **[すべてのサービス]** をクリックします。 リソースの一覧で、「**Automation**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Automation アカウント]** を選択します。
+1. [Automation アカウント] ページで自分の Automation アカウントを選択し、 **[アカウント設定]** で **[プロパティ]** を選択します。  
+1. **[プロパティ]** ページの **[サブスクリプション ID]** 、 **[名前]** 、および **[リソース グループ]** の値をメモします。
 
    ![Automation アカウントの [プロパティ] ページ](media/manage-runas-account/automation-account-properties.png)
 
@@ -359,7 +362,7 @@ Azure Automation の実行アカウントは、Azure コマンドレットを使
 
 1. **実行アカウント**のプロパティ ページで、証明書を書き換える実行アカウントまたはクラシック実行アカウントを選択します。
 
-1. 選択したアカウントの **[プロパティ]** ウィンドウで、**[証明書の書き換え]** をクリックします。
+1. 選択したアカウントの **[プロパティ]** ウィンドウで、 **[証明書の書き換え]** をクリックします。
 
     ![実行アカウントの証明書を書き換える](media/manage-runas-account/automation-account-renew-runas-certificate.png)
 
@@ -369,11 +372,11 @@ Azure Automation の実行アカウントは、Azure コマンドレットを使
 
 Azure Automation でのリソースに対するオートメーションのターゲットを制御するため、実行アカウントには、既定でサブスクリプションの共同作成者権限が与えられます。 RunAs サービス プリンシパルが実行できることを制限する必要がある場合は、サブスクリプションに対する共同作成者ロールからアカウントを削除し、指定するリソース グループに共同作成者として追加します。
 
-Azure Portal で、**[サブスクリプション]** を選択し、Automation アカウントのサブスクリプションを選択します。 **[アクセス制御 (IAM)]** を選択した後、**[ロールの割り当て]** タブを選択します。自分の Automation アカウント用のサービス プリンシパルを検索します (それは \<AutomationAccountName\>_unique identifier のようになっています)。 アカウントを選択し、**[削除]** をクリックして、サブスクリプションから削除します。
+Azure Portal で、 **[サブスクリプション]** を選択し、Automation アカウントのサブスクリプションを選択します。 **[アクセス制御 (IAM)]** を選択した後、 **[ロールの割り当て]** タブを選択します。自分の Automation アカウント用のサービス プリンシパルを検索します (それは \<AutomationAccountName\>_unique identifier のようになっています)。 アカウントを選択し、 **[削除]** をクリックして、サブスクリプションから削除します。
 
 ![サブスクリプションの共同作成者](media/manage-runas-account/automation-account-remove-subscription.png)
 
-リソース グループにサービス プリンシパルを追加するには、Azure Portal でリソース グループを選択し、**[アクセス制御 (IAM)]** を選択します。 **[ロールの割り当ての追加]** を選択すると、**[ロールの割り当ての追加]** ページが開きます。 **[ロール]** で、**[共同作成者]** を選択します。 **[選択]** テキスト ボックスに、実行アカウント用のサービス プリンシパルの名前を入力した後、一覧から選択します。 **[保存]** をクリックして変更を保存します。 Azure Automation の実行サービス プリンシパルへのアクセスを付与するリソース グループに対して、これらの手順を実行します。
+リソース グループにサービス プリンシパルを追加するには、Azure Portal でリソース グループを選択し、 **[アクセス制御 (IAM)]** を選択します。 **[ロールの割り当ての追加]** を選択すると、 **[ロールの割り当ての追加]** ページが開きます。 **[ロール]** で、 **[共同作成者]** を選択します。 **[選択]** テキスト ボックスに、実行アカウント用のサービス プリンシパルの名前を入力した後、一覧から選択します。 **[保存]** をクリックして変更を保存します。 Azure Automation の実行サービス プリンシパルへのアクセスを付与するリソース グループに対して、これらの手順を実行します。
 
 ## <a name="misconfiguration"></a>誤った構成
 

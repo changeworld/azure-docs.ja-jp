@@ -9,12 +9,12 @@ ms.date: 04/21/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 4245c44ceaf907512187d7db4a9d6f087a855f70
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: f7525c3e125010bb4db9655bc214861e22dc8875
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65507884"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65787976"
 ---
 # <a name="authenticate-access-to-blobs-and-queues-with-azure-active-directory-and-managed-identities-for-azure-resources"></a>Azure Active Directory と Azure リソースのマネージド ID を使用して BLOB およびキューへのアクセスを認証する
 
@@ -48,12 +48,12 @@ RBAC ロールの割り当てに関する詳細については、次のいずれ
 
 App Authentication クライアント ライブラリは、自動的に認証を管理します。 このライブラリは、ローカルでの開発中に開発者の資格情報を使用して認証を行います。 ローカルでの開発中に開発者の資格情報を使用するという方法は、Azure AD 資格情報を作成したり、開発者間で資格情報を共有したりする必要がないため、セキュリティの面で有利です。 その後、ソリューションを Azure にデプロイすると、このライブラリは、自動的にアプリケーションの資格情報を使用するように切り替わります。
 
-Azure Storage アプリケーションで App Authentication ライブラリを使用するには、[Nuget](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) から最新のプレビュー パッケージと、[.NET 用の Azure Storage クライアント ライブラリ](https://www.nuget.org/packages/WindowsAzure.Storage/)の最新バージョンをインストールします。 次の **using** ステートメントをコードに追加します。
+Azure Storage アプリケーションで App Authentication ライブラリを使用するには、[Nuget](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) から最新のプレビュー パッケージと、[.NET 用の Azure Storage 共通クライアント ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)と [.NET 用の Azure Blob Storage クライアント ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/)の最新バージョンをインストールします。 次の **using** ステートメントをコードに追加します。
 
 ```csharp
 using Microsoft.Azure.Services.AppAuthentication;
-using Microsoft.WindowsAzure.Storage.Blob;
-using Microsoft.WindowsAzure.Storage.Auth;
+using Microsoft.Azure.Storage.Auth;
+using Microsoft.Azure.Storage.Blob;
 ```
 
 App Authentication ライブラリにより **AzureServiceTokenProvider** クラスが提供されます。 このクラスのインスタンスは、トークンを取得して有効期限が切れる前にトークンを更新するコールバックに渡すことができます。

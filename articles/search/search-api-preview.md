@@ -12,12 +12,12 @@ ms.workload: search
 ms.date: 05/02/2019
 ms.author: HeidiSteen
 ms.custom: seodec2018
-ms.openlocfilehash: 91c58507d8758a65772110afba71354deecd3b12
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 5374ff896613dd8f8563a2054be8a92103e63fbb
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024281"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65523915"
 ---
 # <a name="azure-search-service-rest-api-version-2019-05-06-preview"></a>Azure Search Service REST API バージョン 2019-05-06-Preview
 この記事では、まだ一般公開されていない実験的機能を提供する Azure Search Service REST API の `api-version=2019-05-06-Preview` バージョンについて説明します。
@@ -37,6 +37,8 @@ ms.locfileid: "65024281"
 以前のプレビューで発表された機能は、パブリック プレビューにもあります。 以前のプレビュー api-version で API を呼び出している場合は、引き続きそのバージョンを使用することも、想定される動作を変更することなく、`2019-05-06-Preview` に切り替えることもできます。
 
 + [moreLikeThis クエリ パラメーター](search-more-like-this.md)は、特定のドキュメントに関連するドキュメントを検索します。 この機能は、以前のプレビューからありました。 
+* [CSV BLOB のインデックス作成](search-howto-index-csv-blobs.md)では、テキスト BLOB ごとに 1 つのドキュメントではなく、行ごとに 1 つのドキュメントを作成します。
+* [Cosmos DB インデクサーでの MongoDB API のサポート](search-howto-index-cosmosdb.md)は、プレビュー段階です。
 
 
 ## <a name="how-to-call-a-preview-api"></a>プレビュー API を呼び出す方法

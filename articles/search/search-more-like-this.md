@@ -10,21 +10,23 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: brjohnst
 ms.custom: seodec2018
-ms.openlocfilehash: d18069335bb20f78a5bcda85eb6fcb2a5abe75f7
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 5723f1ab7258a9e0d672b5c0fd9fd0b9c4dc8721
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024673"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65522923"
 ---
-# <a name="morelikethis-in-azure-search-preview"></a>Azure Search の moreLikeThis (プレビュー)
+# <a name="morelikethis-in-azure-search"></a>Azure Search における moreLikeThis
+
+> [!Note]
+> moreLikeThis はプレビュー段階にあり、運用環境での使用は意図していません。 [REST API バージョン 2019-05-06-Preview](search-api-preview.md) でこの機能を提供します。 現時点で .NET SDK のサポートはありません。
 
 `moreLikeThis=[key]` は、ドキュメント キーで指定されたドキュメントに類似するドキュメントを検索する[ドキュメントの検索 API](https://docs.microsoft.com/rest/api/searchservice/search-documents) のクエリ パラメーターです。 `moreLikeThis` を指定して検索を要求すると、指定したドキュメントの内容を最も適切に説明する検索用語がドキュメントから抽出され、その用語を使用してクエリが生成されます。 生成されたクエリを使用して、検索要求が作成されます。 既定では、`searchFields` パラメーターを使用して指定した制限フィールドを除く、検索可能なすべてのフィールドの内容が考慮されます。 `moreLikeThis` パラメーターは、`search=[string]` 検索パラメーターと一緒に使用することはきません。
 
 既定では、最上位のすべての検索可能フィールドの内容が考慮されます。 代わりに特定のフィールドを指定する場合は、`searchFields` パラメーターを使用します。 
 
-> [!NOTE]
-> `moreLikeThis` プレビューは、[複合型](search-howto-complex-data-types.md)の検索可能サブフィールドでは機能しません。
+[複合型](search-howto-complex-data-types.md)では、検索可能なサブフィールド上で moreLikeThis を使用することはできません。
 
 ## <a name="examples"></a>例 
 
@@ -42,9 +44,6 @@ POST /indexes/hotels/docs/search?api-version=2019-05-06-Preview
     }
 ```
 
-## <a name="feature-availability"></a>使用可能な機能
-
-`moreLikeThis` パラメーターは、プレビューの REST API でのみ機能します (`api-version=2019-05-06-Preview`)。
 
 ## <a name="next-steps"></a>次の手順
 

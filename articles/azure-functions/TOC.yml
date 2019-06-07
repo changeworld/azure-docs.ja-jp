@@ -15,6 +15,16 @@
       href: functions-create-your-first-function-visual-studio.md
     - name: 関数の作成 - Visual Studio Code
       href: functions-create-first-function-vs-code.md
+    - name: 関数の作成 - Visual Studio Code での Node.js
+      items:
+        - name: 使用の開始
+          href: tutorial-javascript-vscode-get-started.md
+        - name: アプリケーションを作成する
+          href: tutorial-javascript-vscode-create-app.md
+        - name: ローカルでのアプリの実行とテスト
+          href: tutorial-javascript-vscode-run-app.md
+        - name: Web サイトのデプロイ
+          href: tutorial-javascript-vscode-deploy-app.md
     - name: 関数の作成 - Java/Maven
       href: functions-create-first-java-maven.md
     - name: 関数の作成 - Python
@@ -58,7 +68,7 @@
     - name: Event Grid でのイメージのサイズ変更
       href: ../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2fazure%2fazure-functions%2ftoc.json
     - name: サーバーレス Web アプリの作成
-      href: 'https://docs.microsoft.com/azure/functions/tutorial-static-website-serverless-api-with-database'
+      href: /learn/modules/automatic-update-of-a-webapp-using-azure-functions-and-signalr
     - name: カスタム Linux イメージの作成
       href: functions-create-function-linux-custom-image.md
     - name: IoT Edge デバイス上の Functions

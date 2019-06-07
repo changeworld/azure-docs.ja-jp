@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 05/06/2019
-ms.openlocfilehash: 595d1b84aab55a77f21a9840c5bae9ee996424be
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: e999e4d96dcb5a1042806c0905ce331dc0a4dc0b
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65415936"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65522852"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>自動フェールオーバー グループを使用して、複数のデータベースの透過的な調整されたフェールオーバーを有効にする
 
@@ -42,7 +42,7 @@ ms.locfileid: "65415936"
 
 - **フェールオーバー グループ (FOG)**
 
-  フェールオーバー グループは、プライマリ リージョンでの機能停止により、すべてまたは一部のプライマリ データベースが使用できなくなった場合に、1 つの単位として別のリージョンにフェールオーバーできる単一のマネージド インスタンス内の、または単一の SQL Database サーバーによって管理されるデータベースのグループです。 マネージド インスタンスに対して作成されたフェールオーバー グループには、インスタンスのすべてのユーザー データベースが含まれています。そのため、1 つのインスタンスで構成できるフェールオーバー グループは 1 つだけとなります。
+  フェールオーバー グループは、プライマリ リージョンでの機能停止により、すべてまたは一部のプライマリ データベースが使用できなくなった場合に、1 つの単位として別のリージョンにフェールオーバーできる単一のマネージド インスタンス内の、または単一の SQL Database サーバーによって管理されるデータベースのグループです。 マネージド インスタンスに対して作成された場合、フェールオーバー グループには、インスタンス内のすべてのユーザー データベースが含まれています。そのため、1 つのインスタンス上に構成できるフェールオーバー グループは 1 つだけです。
 
 - **SQL Database サーバー**
 

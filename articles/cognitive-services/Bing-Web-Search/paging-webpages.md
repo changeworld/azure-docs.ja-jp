@@ -11,16 +11,16 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: aahi
-ms.openlocfilehash: fa02c0913329ec740e3066b05b2e44a36ad379ce
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: a038dc2706c7cb128751630f8997851409886290
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65797804"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66384806"
 ---
 # <a name="how-to-page-through-results-from-the-bing-web-search-api"></a>Bing Web Search API から結果をページングする方法
 
-Web Search API を呼び出すと、結果のリストが Bing から返されます。 このリストは、クエリに関連する可能性がある結果の総数のサブセットです。 利用可能な結果の推定総数を取得するには、回答オブジェクトの [totalEstimatedMatches](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference) フィールドにアクセスします。  
+Web Search API を呼び出すと、結果のリストが Bing から返されます。 このリストは、クエリに関連する可能性がある結果の総数のサブセットです。 利用可能な結果の推定総数を取得するには、回答オブジェクトの [totalEstimatedMatches](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference) フィールドにアクセスします。  
 
 次の例は、Web 回答に含まれる `totalEstimatedMatches` フィールドを示しています。  
 
@@ -35,7 +35,7 @@ Web Search API を呼び出すと、結果のリストが Bing から返され�
 }  
 ```
 
-利用可能な Web ページをページングするには、[count](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#count) および [offset](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#offset) クエリ パラメーターを使用します。  
+利用可能な Web ページをページングするには、[count](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#count) および [offset](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#offset) クエリ パラメーターを使用します。  
 
 `count` パラメーターでは、応答で返される結果の数を指定します。 応答に要求できる結果の最大数は 50 です。 既定値は 10 です。 配信される実際の数は、要求した数よりも少ない可能性があります。
 
@@ -59,7 +59,7 @@ Ocp-Apim-Subscription-Key: 123456789ABCDE
 Host: api.cognitive.microsoft.com  
 ```
 
-Web Search API は、Web ページを含み、画像、動画、ニュースを含む可能性のある結果を返します。 検索結果をページングする場合、[WebAnswer](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#webanswer) 回答をページングし、画像やニュースなどの他の回答はページングしません。 たとえば、`count` を 50 に設定した場合、50 件の Web ページ結果が返されますが、応答には、他の回答の結果も含まれる場合があります。 たとえば、応答には、15 個の画像と 4 つのニュース記事が含まれる場合があります。 結果に最初のページのニュースが含まれ、2 ページのニュースが含まれない場合、またはその逆の場合もあります。   
+Web Search API は、Web ページを含み、画像、動画、ニュースを含む可能性のある結果を返します。 検索結果をページングする場合、[WebAnswer](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#webanswer) 回答をページングし、画像やニュースなどの他の回答はページングしません。 たとえば、`count` を 50 に設定した場合、50 件の Web ページ結果が返されますが、応答には、他の回答の結果も含まれる場合があります。 たとえば、応答には、15 個の画像と 4 つのニュース記事が含まれる場合があります。 結果に最初のページのニュースが含まれ、2 ページのニュースが含まれない場合、またはその逆の場合もあります。   
 
 `responseFilter` クエリ パラメーターを指定し、フィルターの一覧に Web ページを含めない場合は、`count` および `offset` パラメーターを使用しないでください。 
 

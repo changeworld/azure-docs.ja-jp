@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 04/03/2019
+ms.date: 05/11/2019
 ms.author: juliako
-ms.openlocfilehash: 3cd22b89852706ed129373fd24ca9a9d9a27d25b
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: fa09185e68c8d3a70562fe50c583ff872bf91e48
+ms.sourcegitcommit: 9e8dfa1169a55c3c8af93a6c5f4e0dace4de48b2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65153372"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65556219"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Azure Media Services v3 を使用したライブ ストリーミング
 
@@ -33,7 +33,7 @@ Azure Media Services では、Azure クラウドで顧客にライブ イベン�
 この記事では、Media Services を使用したライブ ストリーミングの概要とガイダンスを説明し、他の関連記事のリンクを提供します。
 
 > [!NOTE]
-> 現時点では、Azure portal を使用して v3 リソースを管理することはできません。 [REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref)、サポートされている [SDK](developers-guide.md) のいずれかを使用します。
+> 現時点では、Azure portal を使用して v3 リソースを管理することはできません。 [REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref)、サポートされている [SDK](media-services-apis-overview.md#sdks) のいずれかを使用します。
 
 ## <a name="dynamic-packaging"></a>ダイナミック パッケージ
 
@@ -67,9 +67,9 @@ Media Services によるライブ エンコードを使用する場合は、オ�
 
 Media Services v3 のライブ ストリーミング ワークフローを理解するには、まず次の概念を確認して理解する必要があります。 
 
-- [ストリーミング エンドポイント](streaming-endpoint-concept.md)
-- [ライブ イベントとライブ出力](live-events-outputs-concept.md)
-- [ストリーミング ロケーター](streaming-locators-concept.md)
+- [ストリーミング エンドポイント API](streaming-endpoint-concept.md)
+- [ライブ イベントとライブ出力の API](live-events-outputs-concept.md)
+- [ストリーミング ロケーター API](streaming-locators-concept.md)
 
 ### <a name="general-steps"></a>一般的な手順
 

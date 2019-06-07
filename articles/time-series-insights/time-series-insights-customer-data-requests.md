@@ -4,17 +4,17 @@ description: Azure Time Series Insights の顧客データ要求機能の概要�
 author: ashannon7
 ms.author: anshan
 manager: cshankar
-ms.date: 05/17/2018
+ms.date: 05/08/2019
 ms.topic: conceptual
 ms.service: time-series-insights
 services: time-series-insights
 ms.custom: seodec18
-ms.openlocfilehash: 30f6b1fd953f89170a18d56bf0353c643853074e
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 67aea6b3d535eeb0838da4ac6990c50e607617bf
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53558551"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65546385"
 ---
 # <a name="summary-of-customer-data-request-features"></a>顧客データ要求機能の概要
 
@@ -56,7 +56,7 @@ Time Series Insights は、Azure Portal のポリシー ブレードと統合さ
 
 **データの表示とエクスポート**
 
-Time Series Insights 内に格納されているデータを表示およびエクスポートするには、そのデータを検索する必要があります。 Time Series Insights エクスプローラーまたは Time Series Insights クエリ API を使用して、データを表示およびエクスポートできます。 Time Series Insights エクスプローラーを使用してデータを表示およびエクスポートするには、まず、対象のユーザー データを検索して見つけます。 検索後に、グラフを右クリックし、**[イベントの探索]** を選択します。 イベント グリッドが表示され、CSV および JSON としてデータをエクスポートするオプションが示されます。
+Time Series Insights 内に格納されているデータを表示およびエクスポートするには、そのデータを検索する必要があります。 Time Series Insights エクスプローラーまたは Time Series Insights クエリ API を使用して、データを表示およびエクスポートできます。 Time Series Insights エクスプローラーを使用してデータを表示およびエクスポートするには、まず、対象のユーザー データを検索して見つけます。 検索後に、グラフを右クリックし、 **[イベントの探索]** を選択します。 イベント グリッドが表示され、CSV および JSON としてデータをエクスポートするオプションが示されます。
 
 詳細については、「[Azure Time Series Insights エクスプローラー](time-series-insights-explorer.md)」を参照してください。
 
@@ -65,3 +65,11 @@ Time Series Insights 内に格納されているデータを表示およびエ�
 現時点では、Time Series Insights でデータの細かい削除はサポートされていません。 ただし、Time Series Insights では、リテンション ポリシーを構成することで、Time Series Insights 内に格納されている顧客データを削除することができます。 削除要件をサポートするために、Time Series Insights 環境全体のリテンション期間を任意の日数に調整することができます。
 
 詳細については、「[Time Series Insights のリテンション期間の構成](time-series-insights-how-to-configure-retention.md)」を参照してください。
+
+## <a name="next-steps"></a>次の手順
+
+* [TSI 環境へのデータ アクセスの許可](./time-series-insights-data-access.md)に関する詳細を確認してください。
+
+* [Azure Time Series Insights エクスプローラー](time-series-insights-explorer.md)について確認してください。
+
+* [Time Series Insights のリテンション期間の構成](time-series-insights-how-to-configure-retention.md)について確認してください。

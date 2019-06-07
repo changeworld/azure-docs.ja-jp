@@ -3,8 +3,8 @@ title: Azure Active Directory のネイティブ アプリ
 description: ネイティブ アプリとは何かと、この種のアプリのプロトコル フロー、登録、およびトークンの有効期限の基本について説明します。
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c15890a5693235e8f2554ba8d0fdefc161770f3
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: a6bf24124c4b072a64ef59500b2f723ff6abbb0e
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56165010"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65545839"
 ---
 # <a name="native-apps"></a>ネイティブ アプリ
 
@@ -52,7 +52,7 @@ AD 認証ライブラリを使用している場合は、ブラウザー ポッ�
 
 ## <a name="app-registration"></a>アプリの登録
 
-Azure AD v1.0 エンドポイントにアプリケーションを登録するには、「[Register an app with the Azure AD v1.0 endpoint](quickstart-v1-add-azure-ad-app.md)」(アプリを Azure AD v1.0 エンドポイントに登録する) を参照してください。
+Azure AD v1.0 エンドポイントにアプリケーションを登録するには、[アプリの登録](quickstart-register-app.md)に関するページをご覧ください。
 
 * シングル テナント - ネイティブ アプリケーションと Web API の両方を、Azure AD の同じディレクトリに登録する必要があります。 ネイティブ アプリケーションによるリソースへのアクセスを制限するために使用する一連のアクセス許可を公開するように Web API を構成できます。 その後、クライアント アプリケーションで、Azure Portal の [他のアプリケーションに対するアクセス許可] ドロップダウン メニューから目的のアクセス許可を選択します。
 * マルチテナント - ネイティブ アプリケーションは、これまで開発者または発行者のディレクトリにのみ登録されていました。 アプリケーションが機能するために必要なアクセス許可を示すようにネイティブ アプリケーションを構成します。 必要なアクセス許可のこのリストは、アプリケーションを組織で使用できるように、発行先ディレクトリ内のユーザーまたは管理者がアプリケーションに同意するときにダイアログに表示されます。 組織内の任意のユーザーが同意できる、ユーザーレベルのアクセス許可だけを必要とするアプリケーションもあれば、 組織内のユーザーは同意できない、管理者レベルのアクセス許可を必要とするアプリケーションもあります。 このレベルのアクセスを必要とするアプリケーションに同意できるのはディレクトリ管理者だけです。 ユーザーまたは管理者が同意すると、Web API だけがディレクトリに登録されます。 

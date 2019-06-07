@@ -3,19 +3,19 @@ title: Translator Text API の Languages メソッド
 titlesuffix: Azure Cognitive Services
 description: Translator Text API の Languages メソッドを使用します。
 services: cognitive-services
-author: v-pawal
+author: rajdeep-in
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
-ms.author: v-jansko
-ms.openlocfilehash: 6e0342d876db424454526637322d67d55c0432a8
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.author: v-pawal
+ms.openlocfilehash: 415093610bfbc314e569eeeb658508bdfb021d9c
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65797292"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389728"
 ---
 # <a name="translator-text-api-30-languages"></a>Translator Text API 3.0: Languages
 

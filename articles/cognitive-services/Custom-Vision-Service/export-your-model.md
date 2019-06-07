@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: anroth
-ms.openlocfilehash: 405b6ebd06091536749751a94362d8c4a6495dbc
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: 7bf8217f5076c0a95d4db6c1c7cbea7bc93b91f3
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351298"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65550542"
 ---
 # <a name="export-your-model-for-use-with-mobile-devices"></a>モバイル デバイスで使用するためにモデルをエクスポートする
 
@@ -40,7 +40,7 @@ Custom Vision Service は次のエクスポートに対応しています。
 
 既存の分類子のドメインは次の手順で変換します。
 
-1. [[Custom Vision]](https://customvision.ai) ページから、__[ホーム]__ アイコンを選択し、プロジェクトを一覧表示します。 [https://customvision.ai/projects](https://customvision.ai/projects) を使用してプロジェクトを表示することもできます。
+1. [[Custom Vision]](https://customvision.ai) ページから、 __[ホーム]__ アイコンを選択し、プロジェクトを一覧表示します。 [https://customvision.ai/projects](https://customvision.ai/projects) を使用してプロジェクトを表示することもできます。
 
     ![ホーム アイコンとプロジェクト一覧の画像](./media/export-your-model/projects-list.png)
 
@@ -52,27 +52,27 @@ Custom Vision Service は次のエクスポートに対応しています。
 
     ![ドメイン選択の画像](./media/export-your-model/domains.png)
 
-4. ページの上部から、__[Train]\(トレーニングする\)__ を選択し、新しいドメインを使用して再トレーニングします。
+4. ページの上部から、 __[Train]\(トレーニングする\)__ を選択し、新しいドメインを使用して再トレーニングします。
 
 ## <a name="export-your-model"></a>モデルをエクスポートする
 
 再トレーニング後にモデルをエクスポートするには、次の手順を使用します。
 
-1. **[パフォーマンス]** タブに移動し、__[エクスポート]__ を選択します。 
+1. **[パフォーマンス]** タブに移動し、 __[エクスポート]__ を選択します。 
 
     ![エクスポート アイコンの画像](./media/export-your-model/export.png)
 
     > [!TIP]
-    > __[エクスポート]__ エントリがない場合、選択されているイテレーションでコンパクト ドメインが使用されていません。 このページの __[イテレーション]__ セクションを利用し、コンパクト ドメインを使用しているイテレーションを選択し、__[エクスポート]__ を選択してください。
+    > __[エクスポート]__ エントリがない場合、選択されているイテレーションでコンパクト ドメインが使用されていません。 このページの __[イテレーション]__ セクションを利用し、コンパクト ドメインを使用しているイテレーションを選択し、 __[エクスポート]__ を選択してください。
 
-2. エクスポート形式を選択し、__[エクスポート]__ を選択してモデルをダウンロードします。
+2. エクスポート形式を選択し、 __[エクスポート]__ を選択してモデルをダウンロードします。
 
 ## <a name="next-steps"></a>次の手順
 
-エクスポートしたモデルをアプリケーションに統合します。 次のようなサンプル アプリケーションをご利用いただけます。
+以下のいずれかの記事またはサンプルを調べて、エクスポートしたモデルをアプリケーションに統合します。
 
-* [エクスポートした CoreML モデルを iOS アプリケーションで使用](https://go.microsoft.com/fwlink/?linkid=857726)し、Swift で画像をリアルタイム分類するためのサンプル
-* [エクスポートした CoreML モデルと Xamarin を使用](https://github.com/xamarin/ios-samples/tree/master/ios11/CoreMLAzureModel)し、画像をリアルタイム分類するためのサンプル iOS アプリケーション 
-* [エクスポートした Tensorflow モデルを Android アプリケーションで使用](https://github.com/Azure-Samples/cognitive-services-android-customvision-sample)し、Swift で画像をリアルタイム分類するためのサンプル 
-* [Windows で Tensorflow モデルを使用する](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-model-python)
-* [エクスポートした ONNX モデルを Windows Machine Learning で使用する](https://azure.microsoft.com/resources/samples/cognitive-services-onnx-customvision-sample/)ためのサンプル
+* [Python での TensorFlow モデルの使用](export-model-python.md)
+* [Windows Machine Learning での ONNX モデルの使用](custom-vision-onnx-windows-ml.md)
+* Swift によって画像をリアルタイム分類するために、[iOS アプリケーションでの CoreML モデル](https://go.microsoft.com/fwlink/?linkid=857726)のサンプルを確認してください。
+* Android 上で画像をリアルタイム分類するために、[Android アプリケーションでの Tensorflow モデル](https://github.com/Azure-Samples/cognitive-services-android-customvision-sample)のサンプルを確認してください。
+* Xamarin iOS アプリで画像をリアルタイム分類するために、[Xamarin を利用した CoreML モデル](https://github.com/xamarin/ios-samples/tree/master/ios11/CoreMLAzureModel)のサンプルを確認してください。
