@@ -1,7 +1,7 @@
 ---
 title: 分類:信用リスクの予測
 titleSuffix: Azure Machine Learning service
-description: このビジュアル インターフェイスのサンプル実験では、与信取引申請書で提供された情報に基づいて信用リスクを予測する二項分類の実行方法を示します。
+description: コードを 1 行も書くことなく、ビジュアル インターフェイスを使用して、機械学習の分類器を構築する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,17 +9,23 @@ ms.topic: article
 author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
-ms.date: 05/02/2019
-ms.openlocfilehash: 3d4ec3c71aaed6bddb012fb17ee5bb96da00cd76
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.date: 05/10/2019
+ms.openlocfilehash: f37c945758cfbd03889d79acf764e7f67022267a
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65027697"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65789397"
 ---
 # <a name="sample-3---classification-predict-credit-risk"></a>サンプル 3 - 分類:信用リスクの予測
 
-このビジュアル インターフェイスのサンプル実験では、与信取引申請書で提供された情報に基づいて信用リスクを予測する二項分類の実行方法を示します。 データ処理操作などの基本的分類の実行、トレーニング セットとテスト セットへのデータセットの分割、モデルのトレーニング、テスト データセットのスコア付け、および予測の評価を行う方法を示します。
+コードを 1 行も書くことなく、ビジュアル インターフェイスを使用して、機械学習の分類器を構築する方法について説明します。 このサンプルでは、**2 クラス ブースト デシジョン ツリー**をトレーニングして、クレジット履歴、年齢、クレジット カードの枚数などのクレジット アプリケーション情報に基づいて、信用リスク (高または低) を予測します。
+
+なぜなら、"どれにするか" という質問に答えようとしているからです。 これは分類問題と呼ばれます。 ただし、同じ基本的なプロセスを適用して、回帰、分類、クラスタリングなど、あらゆる種類の機械学習問題に対処することができます。
+
+この実験の完成したグラフを次に示します。
+
+![実験のグラフ](media/ui-sample-classification-predict-credit-risk-basic/overall-graph.png)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -40,21 +46,19 @@ UC Irvine リポジトリの German Credit Card のデータセットを使用�
 
 ## <a name="experiment-summary"></a>実験の概要
 
-
 次の手順に従って実験を作成します。
 
 1. German Credit Card UCI Data データセット モジュールを実験のキャンバスにドラッグします。
 1. 列ごとに意味のある名前を追加できるように、**メタデータの編集**モジュールを追加します。
 1. トレーニング セットとテスト セットを作成するために、**データの分割**モジュールを追加します。 [最初の出力データセットにおける列の割合] を 0.7 に設定します。 この設定は、データの 70% がモジュールの左側のポートに出力され、残りが右側のポートに出力されることを指定します。 左側のデータセットをトレーニングに使用し、右側のデータセットをテストに使用します。
 1. ブースト デシジョン ツリー分類器を初期化するために、**2 クラス ブースト デシジョン ツリー** モジュールを追加します。
-1. **モデルのトレーニング** モジュールを追加します。 前の手順の分類器を**モデルのトレーニング**の左側の入力ポートに接続します。. トレーニング セット (**データの分割**の左側の出力ポート) を**モデルのトレーニング**の右側の入力ポートに追加します。 **モデルのトレーニング**が分類器をトレーニングします。
+1. **モデルのトレーニング** モジュールを追加します。 前の手順の分類器を**モデルのトレーニング**の左側の入力ポートに接続します。 トレーニング セット (**データの分割**の左側の出力ポート) を**モデルのトレーニング**の右側の入力ポートに追加します。 **モデルのトレーニング**が分類器をトレーニングします。
 1. **モデルのスコア付け**モジュールを追加し、それに**モデルのトレーニング** モジュールを接続します。 次に、テスト セット (**データの分割**の右側のポート) を**モデルのスコア付け**に追加します。 **モデルのスコア付け**で予測が作成されます。 その出力ポートを選択すると、予測と正のクラス確率が表示されます。
-1. **モデルの評価**モジュールを追加し、スコア付けされたデータセットをその左側の入力ポートに接続します。 評価結果を表示するには、**モデルの評価**モジュールの出力ポートを選択して、**[視覚化]** を選択します。
-    
+1. **モデルの評価**モジュールを追加し、スコア付けされたデータセットをその左側の入力ポートに接続します。 評価結果を表示するには、**モデルの評価**モジュールの出力ポートを選択して、 **[視覚化]** を選択します。
+
 完全な実験グラフを次に示します。
 
 ![実験のグラフ](media/ui-sample-classification-predict-credit-risk-basic/overall-graph.png)
-
 
 ## <a name="results"></a>結果
 
@@ -70,7 +74,7 @@ UC Irvine リポジトリの German Credit Card のデータセットを使用�
 
 ビジュアル インターフェイスで利用できるその他のサンプルを確認します。
 
-- [サンプル 1 - 回帰:自動車の価格を予測する](ui-sample-regression-predict-automobile-price-basic.md)
-- [サンプル 2 - 回帰:自動車の価格予測のためのアルゴリズムを比較する](ui-sample-regression-predict-automobile-price-compare-algorithms.md)
+- [サンプル 1 - 回帰: 自動車の価格を予測する](ui-sample-regression-predict-automobile-price-basic.md)
+- [サンプル 2 - 回帰: 自動車の価格予測のためのアルゴリズムを比較する](ui-sample-regression-predict-automobile-price-compare-algorithms.md)
 - [サンプル 4 - 分類:信用リスクを予測する (費用重視)](ui-sample-classification-predict-credit-risk-cost-sensitive.md)
 - [サンプル 5 - 分類:顧客離れを予測する](ui-sample-classification-predict-churn.md)

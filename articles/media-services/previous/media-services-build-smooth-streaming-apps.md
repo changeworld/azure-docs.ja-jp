@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 910c593c9277efeaf72dadc52740b1c918381e19
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: b8c1513838fb848388946e18698a0410aa7a0332
+ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59524771"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65949627"
 ---
 # <a name="how-to-build-a-smooth-streaming-windows-store-application"></a>スムーズ ストリーミング用の Windows ストア アプリケーションを作成する方法  
 
@@ -63,7 +63,7 @@ Windows ストア アプリケーションの開発の詳細については、�
 ### <a name="to-create-a-windows-store-project"></a>Windows ストア プロジェクトを作成するには
 
 1. Visual Studio を実行します。バージョン 2012 から 2015 がサポートされます。
-1. **[ファイル]** メニューの **[新規作成]** をクリックし、**[プロジェクト]** をクリックします。
+1. **[ファイル]** メニューの **[新規作成]** をクリックし、 **[プロジェクト]** をクリックします。
 1. [新しいプロジェクト] ダイアログ ボックスで、次の値を入力または選択します。
 
     | Name | 値 |
@@ -79,7 +79,7 @@ Windows ストア アプリケーションの開発の詳細については、�
 
 ### <a name="to-add-a-reference-to-the-smooth-streaming-client-sdk"></a>スムーズ ストリーミング クライアント SDK への参照を追加するには
 
-1. ソリューション エクスプローラーで **[SSPlayer]** を右クリックし、**[参照の追加]** をクリックします。
+1. ソリューション エクスプローラーで **[SSPlayer]** を右クリックし、 **[参照の追加]** をクリックします。
 1. 次の値を入力または選択します。
 
     | Name | 値 |
@@ -149,7 +149,7 @@ MediaElement コントロールは、そのままではスムーズ ストリー
 
 ### <a name="to-modify-the-code-behind-file"></a>分離コード ファイルを変更するには
 
-1. ソリューション エクスプローラーで **MainPage.xaml** を右クリックし、**[コードの表示]** をクリックします。
+1. ソリューション エクスプローラーで **MainPage.xaml** を右クリックし、 **[コードの表示]** をクリックします。
 2. ファイルの先頭に次の using ステートメントを追加します。
    
         using Windows.Media;
@@ -218,7 +218,7 @@ MediaElement コントロールは、そのままではスムーズ ストリー
 3. **F6** キーを押して、プロジェクトをコンパイルします。 
 4. **F5** キーを押してアプリケーションを実行します。
 5. アプリケーションの先頭部分で、既定のスムーズ ストリーミング URL を使用するか、別の URL を入力します。 
-6. **[ソースの設定]** をクリックします。 **[自動的に再生する]** が既定で有効になっているため、メディアは自動的に再生されます。  **[再生]** ボタン、**[一時停止]** ボタン、および **[停止]** ボタンを使用して、メディアを制御できます。  垂直スライダーを使用して、音量を制御できます。  ただし、メディアの進行を制御するための水平スライダーは、まだ完全に実装できていません。 
+6. **[ソースの設定]** をクリックします。 **[自動的に再生する]** が既定で有効になっているため、メディアは自動的に再生されます。  **[再生]** ボタン、 **[一時停止]** ボタン、および **[停止]** ボタンを使用して、メディアを制御できます。  垂直スライダーを使用して、音量を制御できます。  ただし、メディアの進行を制御するための水平スライダーは、まだ完全に実装できていません。 
 
 これでレッスン 1 が完了しました。  このレッスンでは、MediaElement コントロールを使用して、スムーズ ストリーミング コンテンツを再生しました。  次のレッスンでは、スライダーを追加して、スムーズ ストリーミング コンテンツの進行を制御します。
 
@@ -241,7 +241,7 @@ MediaElement コントロールは、そのままではスムーズ ストリー
 
 ### <a name="to-register-the-smooth-streaming-byte-stream-handler-and-pass-the-propertyset"></a>スムーズ ストリーミング バイトストリーム ハンドラーを登録して propertyset を渡すには
 
-1. ソリューション エクスプローラーで **MainPage.xaml** を右クリックし、**[コードの表示]** をクリックします。
+1. ソリューション エクスプローラーで **MainPage.xaml** を右クリックし、 **[コードの表示]** をクリックします。
 2. ファイルの先頭に次の using ステートメントを追加します。
 
    ```csharp
@@ -286,7 +286,7 @@ MediaElement コントロールは、そのままではスムーズ ストリー
 
 ### <a name="to-add-the-adaptive-source-manager-level-event-handler"></a>アダプティブ ソース マネージャー レベルのイベント ハンドラーを追加するには
 
-1. ソリューション エクスプローラーで **MainPage.xaml** を右クリックし、**[コードの表示]** をクリックします。
+1. ソリューション エクスプローラーで **MainPage.xaml** を右クリックし、 **[コードの表示]** をクリックします。
 2. **MainPage** クラス内で、次のデータ メンバーを追加します。
 
    ```csharp
@@ -314,7 +314,7 @@ MediaElement コントロールは、そのままではスムーズ ストリー
 
 ### <a name="to-add-adaptive-source-level-event-handlers"></a>アダプティブ ソース レベルのイベント ハンドラーを追加するには
 
-1. ソリューション エクスプローラーで **MainPage.xaml** を右クリックし、**[コードの表示]** をクリックします。
+1. ソリューション エクスプローラーで **MainPage.xaml** を右クリックし、 **[コードの表示]** をクリックします。
 2. **MainPage** クラス内で、次のデータ メンバーを追加します。
 
    ```csharp
@@ -365,7 +365,7 @@ MediaElement コントロールは、そのままではスムーズ ストリー
 
 ### <a name="to-add-media-element-event-handlers"></a>MediaElement イベント ハンドラーを追加するには
 
-1. ソリューション エクスプローラーで **MainPage.xaml** を右クリックし、**[コードの表示]** をクリックします。
+1. ソリューション エクスプローラーで **MainPage.xaml** を右クリックし、 **[コードの表示]** をクリックします。
 2. **MainPage** クラスの末尾に、次のイベント ハンドラーを追加します。
 
    ```csharp
@@ -401,7 +401,7 @@ MediaElement コントロールは、そのままではスムーズ ストリー
 
 ### <a name="to-add-slider-bar-related-code"></a>スライダー バー関連コードを追加するには
 
-1. ソリューション エクスプローラーで **MainPage.xaml** を右クリックし、**[コードの表示]** をクリックします。
+1. ソリューション エクスプローラーで **MainPage.xaml** を右クリックし、 **[コードの表示]** をクリックします。
 2. ファイルの先頭に次の using ステートメントを追加します。
 
    ```csharp
@@ -507,7 +507,7 @@ MediaElement コントロールは、そのままではスムーズ ストリー
    ```
 
    > [!NOTE]
-   > CoreDispatcher は、非 UI スレッドから UI スレッドへの変更を行うために使用します。 開発者は、ディスパッチャー スレッドでボトルネックが発生した場合に備えて、更新する UI 要素によって提供されるディスパッチャーの使用を選択できます。  例: 
+   > CoreDispatcher は、非 UI スレッドから UI スレッドへの変更を行うために使用します。 開発者は、ディスパッチャー スレッドでボトルネックが発生した場合に備えて、更新する UI 要素によって提供されるディスパッチャーの使用を選択できます。  例:
 
    ```csharp
          await sliderProgress.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => { TimeSpan 
@@ -551,7 +551,7 @@ MediaElement コントロールは、そのままではスムーズ ストリー
 
 ### <a name="to-modify-the-xaml-file"></a>XAML ファイルを変更するには
 
-1. ソリューション エクスプローラーで **MainPage.xaml** を右クリックし、**[デザイナーの表示]** をクリックします。
+1. ソリューション エクスプローラーで **MainPage.xaml** を右クリックし、 **[デザイナーの表示]** をクリックします。
 2. &lt;Grid.RowDefinitions&gt; を探し、次のように各 RowDefinition を変更します。
 
    ```xml
@@ -594,7 +594,7 @@ MediaElement コントロールは、そのままではスムーズ ストリー
 
 ### <a name="to-modify-the-code-behind-file"></a>分離コード ファイルを変更するには
 
-1. ソリューション エクスプローラーで **MainPage.xaml** を右クリックし、**[コードの表示]** をクリックします。
+1. ソリューション エクスプローラーで **MainPage.xaml** を右クリックし、 **[コードの表示]** をクリックします。
 2. SSPlayer 名前空間内に、新しいクラスを追加します。
 
    ```csharp
@@ -829,7 +829,7 @@ MediaElement コントロールは、そのままではスムーズ ストリー
 
 ### <a name="to-modify-the-xaml-file"></a>XAML ファイルを変更するには
 
-1. ソリューション エクスプローラーで **MainPage.xaml** を右クリックし、**[デザイナーの表示]** をクリックします。
+1. ソリューション エクスプローラーで **MainPage.xaml** を右クリックし、 **[デザイナーの表示]** をクリックします。
 2. Name 属性が **gridStreamAndBitrateSelection** である &lt;Grid&gt; タグを探し、タグの末尾に次のコードを追加します。
    ```xml
          <StackPanel Name="spBitRateSelection" Grid.Row="1" Grid.Column="1">
@@ -851,7 +851,7 @@ MediaElement コントロールは、そのままではスムーズ ストリー
 
 ### <a name="to-modify-the-code-behind-file"></a>分離コード ファイルを変更するには
 
-1. ソリューション エクスプローラーで **MainPage.xaml** を右クリックし、**[コードの表示]** をクリックします。
+1. ソリューション エクスプローラーで **MainPage.xaml** を右クリックし、 **[コードの表示]** をクリックします。
 2. SSPlayer 名前空間内に、新しいクラスを追加します。
    ```csharp
         #region class Track
