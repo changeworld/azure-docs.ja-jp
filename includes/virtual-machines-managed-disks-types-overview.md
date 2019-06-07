@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/22/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 6eae536bd19a2c0e5707d8e0b379774b6eb2707a
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: d2daafa6bf5f9a28ad2b61a97e7a8bd2246ae18d
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58395700"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66147802"
 ---
 # <a name="what-disk-types-are-available-in-azure"></a>Azure で利用できるディスクの種類
 
@@ -44,6 +44,7 @@ Ultra SSD の主な機能は次のとおりです。
 - ディスク容量:Ultra SSD の容量の範囲は 4 GiB から最大 64 TiB です。
 - ディスク IOPS: Ultra SSD では、300 IOPS/GiB の IOPS 制限と、ディスクあたり最大 160 K の IOPS がサポートされます。 プロビジョニングした IOPS を達成するには、選択したディスクの IOPS が VM の IOPS 未満であることを確認してください。 最小ディスク IOPS は 100 IOPS です。
 - ディスク スループット: Ultra SSD では、1 つのディスクのスループットは、プロビジョニングされた IOPS ごとに 256 KiB/秒に制限され、ディスクあたり最大 2000 MBps に制限されます (MBps = 秒あたり 10^6 バイト)。 最小ディスク スループットは 1 MiB です。
+- Ultra SSD では、実行時に、ディスクをデタッチすることなく、仮想マシンから、ディスク パフォーマンス属性 (IOPS とスループット) を調整できます。 ディスクでディスク パフォーマンス サイズ変更操作を実行した場合、変更が実際に有効になるまでに最大で 1 時間かかることがあります。
 
 ### <a name="disk-size"></a>ディスク サイズ
 
@@ -58,6 +59,10 @@ Ultra SSD の主な機能は次のとおりです。
 |256     |76,800         |2,000         |
 |512     |80,000         |2,000         |
 |1,024 - 65,536 (この範囲内のサイズは 1 TiB ずつ増えます)     |160,000         |2,000         |
+
+### <a name="transactions"></a>トランザクション
+
+Ultra SSD では、スループットが 256 KiB 以下の I/O 操作は、それぞれ単一の I/O 操作とみなされます。 スループットが 256 KiB を超える I/O 操作は、サイズが 256 KiB の複数の I/O とみなされます。
 
 ### <a name="preview-scope-and-limitations"></a>プレビューの範囲と制限事項
 

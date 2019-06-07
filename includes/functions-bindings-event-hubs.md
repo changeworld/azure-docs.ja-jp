@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/05/2019
 ms.author: cshoe
-ms.openlocfilehash: 1957fa4310a22a162ee2a621d1e0349e253badb3
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 421e0db48f045c5cbce52a0641902e6d2a11276e
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57456569"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66132457"
 ---
 ## <a name="trigger"></a>トリガー
 
@@ -400,7 +400,7 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 
 Event Hubs トリガーには、いくつかの[メタデータ プロパティ](../articles/azure-functions/./functions-bindings-expressions-patterns.md)があります。 これらのプロパティは、他のバインドのバインド式の一部として、またはコードのパラメーターとして使用できます。 これらは [EventData](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventdata) クラスのプロパティです。
 
-|プロパティ|type|説明|
+|プロパティ|Type|説明|
 |--------|----|-----------|
 |`PartitionContext`|[PartitionContext](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.partitioncontext)|`PartitionContext` インスタンス。|
 |`EnqueuedTimeUtc`|`DateTime`|エンキューされた時刻 (UTC)。|
@@ -418,7 +418,7 @@ Event Hubs トリガーには、いくつかの[メタデータ プロパティ]
 
 [!INCLUDE [functions-host-json-event-hubs](../articles/azure-functions/../../includes/functions-host-json-event-hubs.md)]
 
-## <a name="output"></a>出力
+## <a name="output"></a>Output
 
 Event Hubs 出力バインドを使用して、イベント ストリームにイベントを書き込みます。 イベントを書き込むには、イベント ハブへの送信アクセス許可が必要です。
 
@@ -446,6 +446,26 @@ public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, ILog
 {
     log.LogInformation($"C# Timer trigger function executed at: {DateTime.Now}");
     return $"{DateTime.Now}";
+}
+```
+
+次の例では、`IAsyncCollector` インターフェイスを使用してメッセージのバッチを送信する方法を示します。 これは、1 つのイベント ハブから送信されるメッセージを処理し、その結果を別のイベント ハブに送信する場合の一般的なシナリオです。
+
+```csharp
+[FunctionName("EH2EH")]
+public static async Task Run(
+    [EventHubTrigger("source", Connection = "EventHubConnectionAppSetting")] EventData[] events,
+    [EventHub("dest", Connection = "EventHubConnectionAppSetting")]IAsyncCollector<string> outputEvents,
+    ILogger log)
+{
+    foreach (EventData eventData in events)
+    {
+        // do some processing:
+        var myProcessedEvent = DoSomething(eventData);
+
+        // then send the message
+        await outputEvents.AddAsync(JsonConvert.SerializeObject(myProcessedEvent));
+    }
 }
 ```
 

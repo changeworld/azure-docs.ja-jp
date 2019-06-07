@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 04/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: cb716e0d9f97d3ea2e9584a9fc3d7a6f57da9179
-ms.sourcegitcommit: 1d257ad14ab837dd13145a6908bc0ed7af7f50a2
+ms.openlocfilehash: 3167f60cca9997c9713efad0fbb8a51b20def76b
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65502096"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66151178"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Azure Machine Learning service のしくみ:アーキテクチャと概念
 
@@ -34,39 +34,23 @@ Azure Machine Learning service のアーキテクチャ、概念、ワークフ�
 1. 満足できる実行が見つかった場合は、永続化されたモデルを**モデル レジストリ**に登録します。
 1. モデルを使用するスコアリング スクリプトを開発し、**Web サービス**として Azure に、または **IoT Edge デバイス**に**モデルをデプロイ**します。
 
+次のいずれかを使用して、これらの手順を実行できます。
++ [Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
++ [Azure Machine Learning CLI](https://docs.microsoft.com/azure/machine-learning/service/reference-azure-machine-learning-cli)
++  [Azure Machine Learning service 用のビジュアル インターフェイス (プレビュー)](ui-concept-visual-interface.md)
 
 > [!NOTE]
 > この記事では、Azure Machine Learning service で使用される用語と概念を定義しますが、Azure プラットフォームに関する用語と概念は定義しません。 Azure プラットフォームの用語について詳しくは、[Microsoft Azure 用語集](https://docs.microsoft.com/azure/azure-glossary-cloud-terminology)に関するページを参照してください。
 
 ## <a name="workspace"></a>ワークスペース
 
-ワークスペースは、Azure Machine Learning service の最上位のリソースです。 Azure Machine Learning service を使用するときに作成する、すべての成果物を操作するための一元的な場所が提供されます。
-
-ワークスペースでは、モデルのトレーニングに使用できるコンピューティング先のリストが保持されています。 また、スクリプトのログ、メトリック、出力、スナップショットなど、トレーニング実行の履歴も保持されています。 この情報を使用して、最適なモデルを生成するトレーニング実行を判断します。
-
-モデルはワークスペースに登録します。 登録済みモデルとスコアリング スクリプトを使用して、モデルを Azure Container Instances、Azure Kubernetes Service、または Field-Programmable Gate Array (FPGA) に REST ベースの HTTP エンドポイントとしてデプロイします。 また、モジュールとして Azure IoT Edge デバイスにデプロイすることもできます。 内部的には、デプロイ済みのイメージをホストするために docker イメージが作成されます。 必要に応じて、独自のイメージを指定することができます。
-
-複数のワークスペースを作成でき、各ワークスペースを複数のユーザーで共有できます。 ワークスペースを共有する場合は、ユーザーを次のロールに割り当てることで、ワークスペースへのアクセスを制御できます。
-
-* Owner
-* Contributor
-* Reader
-
-これらのロールの詳細については、「[Azure Machine Learning ワークスペースへのアクセスの管理](how-to-assign-roles.md)」をご覧ください。
-
-新しいワークスペースを作成すると、ワークスペースによって使用される複数の Azure リソースが自動的に作成されます。
-
-* [Azure Container Registry](https://azure.microsoft.com/services/container-registry/):トレーニング中およびモデルのデプロイ時に使用する Docker コンテナーを登録します。
-* [Azure ストレージ アカウント](https://azure.microsoft.com/services/storage/):ワークスペースの既定のデータストアとして使用されます。
-* [Azure Application Insights](https://azure.microsoft.com/services/application-insights/):モデルに関する監視情報を格納します。
-* [Azure Key Vault](https://azure.microsoft.com/services/key-vault/):コンピューティング先で使用されるシークレット、およびワークスペースで必要な他の機密情報を格納します。
-
-> [!NOTE]
-> 新しいバージョンを作成するだけでなく、既存の Azure サービスを使用することもできます。
+[ワークスペース](concept-workspace.md)は、Azure Machine Learning service の最上位のリソースです。 Azure Machine Learning service を使用するときに作成する、すべての成果物を操作するための一元的な場所が提供されます。
 
 ワークスペースの分類を次の図に示します。
 
 [![ワークスペースの分類](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png)](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png#lightbox)
+
+ワークスペースの詳細については、「[Azure Machine Learning ワークスペースの管理](concept-workspace.md)」をご覧ください。
 
 ## <a name="experiment"></a>実験
 
@@ -170,6 +154,10 @@ Datasets の使用例については、[サンプル ノートブック](https:/
 
 モデルのトレーニングによって生成される実行を表示する例については、[クイック スタート: Azure Machine Learning service の利用の開始](quickstart-run-cloud-notebook.md)に関するページを参照してください。
 
+## <a name="github-tracking-and-integration"></a>GitHub の追跡と統合
+
+ソース ディレクトリがローカル Git リポジトリであるトレーニング実行を開始すると、リポジトリに関する情報が実行履歴に格納されます。 たとえば、リポジトリの現在のコミット ID が履歴の一部としてログに記録されます。 これは、推定器、ML パイプライン、またはスクリプトの実行を使用して送信した実行で機能します。 SDK または Machine Learning CLI から送信された実行でも機能します。
+
 ## <a name="snapshot"></a>スナップショット
 
 実行を送信するときに、Azure Machine Learning によって、スクリプトが含まれているディレクトリが zip ファイルとして圧縮され、コンピューティング先に送られます。 その後、zip ファイルが抽出され、そこでスクリプトが実行されます。 Azure Machine Learning では、zip ファイルもスナップショットとして実行レコード内に格納されます。 ワークスペースにアクセスできるすべてのユーザーは、実行レコードを参照し、スナップショットをダウンできます。
@@ -228,7 +216,7 @@ Azure IoT Edge ではモジュールが実行されるのを保証し、モジ�
 
 ## <a name="pipeline"></a>パイプライン
 
-機械学習パイプラインを使用し、機械学習フェーズをつなげるワークフローを作成して管理します。 たとえば、パイプラインにはデータ準備、モデル トレーニング、モデル デプロイ、推論の各フェーズが含まれることが考えられます。 それぞれのフェーズには、複数のステップを含めることができ、各ステップは、さまざまなコンピューティング先において無人実行することができます。
+機械学習パイプラインを使用し、機械学習フェーズをつなげるワークフローを作成して管理します。 たとえば、パイプラインには、データ準備、モデル トレーニング、モデル デプロイ、推論/スコアリングの各フェーズが含まれることが考えられます。 それぞれのフェーズには、複数のステップを含めることができ、各ステップは、さまざまなコンピューティング先において無人実行することができます。
 
 このサービスを使用した機械学習パイプラインの詳細については、[パイプラインと Azure Machine Learning](concept-ml-pipelines.md) に関するページを参照してください。
 

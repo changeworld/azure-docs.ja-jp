@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 67a195932ad1afc3c93a94dfcbda8ab8a47760b2
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 6ad6f9414df17f9edff7565752ef3845e0d3c88e
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59793946"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66116201"
 ---
 # <a name="understand-azure-policy-effects"></a>Azure Policy の効果について
 
@@ -24,13 +24,13 @@ Azure Policy 内の各ポリシー定義には単一の効果があります。 
 - Append
 - Audit
 - AuditIfNotExists
-- 拒否
+- Deny
 - DeployIfNotExists
 - Disabled
 
 ## <a name="order-of-evaluation"></a>評価の順序
 
-Policy によって最初に評価されるのは、Azure Resource Manager を使用したリソースの作成または更新の要求です。 Policy では、リソースに適用されるすべての割り当ての一覧が作成された後、各定義に対してリソースが評価されます。 Policy では、適切なリソース プロバイダーに要求が渡される前に、さまざまな効果が処理されます。 それによって、リソースが意図された Policy のガバナンス コントロールを満たさない場合に、リソース プロバイダーによって不要な処理が行われるのを防止します。
+Azure Resource Manager を通したリソースの作成または更新の要求は、まず Azure Policy によって評価されます。 Azure Policy では、リソースに適用されるすべての割り当ての一覧が作成された後、各定義に対してリソースが評価されます。 Azure Policy では、適切なリソース プロバイダーに要求が渡される前に、さまざまな効果が処理されます。 それによって、リソースが意図された Azure Policy のガバナンス コントロールを満たさない場合に、リソース プロバイダーによって不要な処理が行われるのを防止します。
 
 - **Disabled** は、ポリシー規則を評価する必要があるかどうかを判断するために、最初に確認されます。
 - 次に、**Append** が評価されます。 Append によって要求が変更される可能性があるため、Append で加えられた変更によって、Audit または Deny の効果がトリガーされるのが止められる場合があります。
@@ -49,7 +49,7 @@ Append は、作成中または更新中に要求されたリソースにフィ�
 
 ### <a name="append-evaluation"></a>Append の評価
 
-リソースを作成中または更新中に、リソース プロバイダーによって要求が処理される前に Append による評価が行われます。 Append では、ポリシー規則の **if** 条件が満たされた場合、リソースにフィールドが追加されます。 Append 効果によって元の要求の値が別の値でオーバーライドされる場合、Append は Deny 効果として機能し、要求は拒否されます。 新しい値を既存の配列に追加するには、**[\*]** バージョンの別名を使用します。
+リソースを作成中または更新中に、リソース プロバイダーによって要求が処理される前に Append による評価が行われます。 Append では、ポリシー規則の **if** 条件が満たされた場合、リソースにフィールドが追加されます。 Append 効果によって元の要求の値が別の値でオーバーライドされる場合、Append は Deny 効果として機能し、要求は拒否されます。 新しい値を既存の配列に追加するには、 **[\*]** バージョンの別名を使用します。
 
 Append 効果を使用するポリシー定義が評価サイクルの一部として実行される場合、既存のリソースに対する変更は行われません。 代わりに、**if** 条件を満たすリソースが非準拠とマークされます。
 
@@ -88,8 +88,7 @@ Append 効果には必須の **details** 配列が 1 つだけあります。 **
 }
 ```
 
-例 3:非 **[\*]**
-[別名](definition-structure.md#aliases)と配列 **value** を使用してストレージ アカウントに IP 規則を設定する単一の **field/value** のペア。 非 **[\*]** 別名が配列の場合、この効果により、**value** が配列全体として追加されます。 配列が既に存在する場合は、競合から拒否イベントが発生します。
+例 3:非 **[\*]** [別名](definition-structure.md#aliases)と配列 **value** を使用してストレージ アカウントに IP 規則を設定する単一の **field/value** のペア。 非 **[\*]** 別名が配列の場合、この効果により、**value** が配列全体として追加されます。 配列が既に存在する場合は、競合から拒否イベントが発生します。
 
 ```json
 "then": {
@@ -104,7 +103,7 @@ Append 効果には必須の **details** 配列が 1 つだけあります。 **
 }
 ```
 
-例 4:**[\*]** [別名](definition-structure.md#aliases)と配列 **value** を使用してストレージ アカウントに IP 規則を設定する単一の **field/value** のペア。 **[\*]** 別名を使用することで、この効果により、**value** が事前に存在している可能性のある配列に追加されます。 配列はまだが存在しない場合は作成されます。
+例 4: **[\*]** [別名](definition-structure.md#aliases)と配列 **value** を使用してストレージ アカウントに IP 規則を設定する単一の **field/value** のペア。 **[\*]** 別名を使用することで、この効果により、**value** が事前に存在している可能性のある配列に追加されます。 配列はまだが存在しない場合は作成されます。
 
 ```json
 "then": {
@@ -149,7 +148,7 @@ Deny 効果には、ポリシー定義の **then** 条件で使用するため�
 
 ### <a name="audit-evaluation"></a>Audit の評価
 
-Audit は、リソースの作成中または更新中に Policy によって確認される最後の効果です。 その後、リソースが Policy によってリソース プロバイダーに送信されます。 Audit は、リソース要求でも評価サイクルでも同じように動作します。 Policy によって `Microsoft.Authorization/policies/audit/action` 操作がアクティビティ ログに追加され、リソースが非準拠としてマークされます。
+Audit は、リソースの作成中または更新中に Azure Policy によって確認される最後の効果です。 その後、リソースが Azure Policy によってリソース プロバイダーに送信されます。 Audit は、リソース要求でも評価サイクルでも同じように動作します。 Azure Policy によって `Microsoft.Authorization/policies/audit/action` 操作がアクティビティ ログに追加され、リソースが非準拠としてマークされます。
 
 ### <a name="audit-properties"></a>Audit のプロパティ
 
@@ -171,7 +170,7 @@ AuditIfNotExists は **if** 条件に一致するリソースの監査を有効�
 
 ### <a name="auditifnotexists-evaluation"></a>AuditIfNotExists の評価
 
-AuditIfNotExists は、リソース プロバイダーでリソースの作成または更新要求が処理され、成功を示す状態コードが返された後で実行されます。 関連するリソースがない場合、または **ExistenceCondition** によって定義されたリソースが true と評価されない場合、監査が発生します。 Audit 効果と同じ方法で、Policy によって `Microsoft.Authorization/policies/audit/action` 操作がアクティビティ ログに追加されます。 トリガーされた場合、**if** 条件を満たしているリソースは、非準拠としてマークされているリソースです。
+AuditIfNotExists は、リソース プロバイダーでリソースの作成または更新要求が処理され、成功を示す状態コードが返された後で実行されます。 関連するリソースがない場合、または **ExistenceCondition** によって定義されたリソースが true と評価されない場合、監査が発生します。 Audit 効果と同じ方法で、Azure Policy によって `Microsoft.Authorization/policies/audit/action` 操作がアクティビティ ログに追加されます。 トリガーされた場合、**if** 条件を満たしているリソースは、非準拠としてマークされているリソースです。
 
 ### <a name="auditifnotexists-properties"></a>AuditIfNotExists のプロパティ
 
@@ -300,7 +299,7 @@ DeployIfNotExists 効果の **details** プロパティは、照合する関連�
         "type": "Microsoft.Sql/servers/databases/transparentDataEncryption",
         "name": "current",
         "roleDefinitionIds": [
-            "/subscription/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/{roleGUID}",
+            "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/{roleGUID}",
             "/providers/Microsoft.Authorization/roleDefinitions/{builtinroleGUID}"
         ],
         "existenceCondition": {
@@ -340,7 +339,7 @@ DeployIfNotExists 効果の **details** プロパティは、照合する関連�
 
 ## <a name="layering-policies"></a>階層化ポリシー
 
-リソースは複数の割り当ての影響を受ける可能性があります。 これらの割り当てのスコープは、同じ場合も異なっている場合もあります。 これらの各割り当てにもさまざまな効果が定義されている可能性があります。 各ポリシーの条件と効果は個別に評価されます。 例: 
+リソースは複数の割り当ての影響を受ける可能性があります。 これらの割り当てのスコープは、同じ場合も異なっている場合もあります。 これらの各割り当てにもさまざまな効果が定義されている可能性があります。 各ポリシーの条件と効果は個別に評価されます。 例:
 
 - ポリシー 1
   - リソースの場所を 'westus' に制限する
@@ -369,9 +368,9 @@ DeployIfNotExists 効果の **details** プロパティは、照合する関連�
 
 ## <a name="next-steps"></a>次の手順
 
-- [Azure Policy のサンプル](../samples/index.md)を確認する
-- [ポリシー定義の構造](definition-structure.md)を確認する
-- [プログラムによってポリシーを作成する](../how-to/programmatically-create.md)方法を理解する
-- [コンプライアンス データを取得する](../how-to/getting-compliance-data.md)ための方法を学びます。
-- [準拠していないリソースを修復する](../how-to/remediate-resources.md)方法を確認する
+- [Azure Policy のサンプル](../samples/index.md)を確認します。
+- 「[Azure Policy の定義の構造](definition-structure.md)」を確認します。
+- [プログラムによってポリシーを作成する](../how-to/programmatically-create.md)方法を理解します。
+- [コンプライアンス データを取得する](../how-to/getting-compliance-data.md)方法を学習します。
+- [準拠していないリソースを修復する](../how-to/remediate-resources.md)方法を学習します。
 - 「[Azure 管理グループのリソースを整理する](../../management-groups/overview.md)」で、管理グループとは何かを確認します。

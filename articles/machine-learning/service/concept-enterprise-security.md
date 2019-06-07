@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/10/2019
-ms.openlocfilehash: b950e7d38235d089c6236c76136d8ec2fc7a1f74
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 9762b8cadde86a2e64f8fa74a4e794bdf1109ec4
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57731332"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66151182"
 ---
 # <a name="enterprise-security-for-azure-machine-learning-service"></a>Machine Learning service のエンタープライズ セキュリティ
 
@@ -83,7 +83,7 @@ print(primary)
 
 マネージド ID の詳細については、「[Azure リソースのマネージド ID とは](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)」をご覧ください
 
-| リソース | アクセス許可 |
+| Resource | アクセス許可 |
 | ----- | ----- |
 | ワークスペース | Contributor | 
 | ストレージ アカウント | ストレージ BLOB データ共同作成者 | 
@@ -154,7 +154,7 @@ HDI HDInsight や VM などのコンピューティング先に対する SSH パ
 ユーザーは、サポートされている Azure Machine Learning service クライアント (CLI、Python SDK、Azure portal) のいずれかから Azure AD にログインし、適切な Azure Resource Manager トークンを要求します。  その後、ユーザーはワークスペースを作成するために Azure Resource Manager を呼び出します。  Azure Resource Manager は、Azure Machine Learning service のリソース プロバイダーと通信し、ワークスペースをプロビジョニングします。  ワークスペースの作成中に、その他のリソースが顧客のサブスクリプションに作成されます。
 * キー コンテナー (シークレット格納用)
 * Azure ストレージ アカウント (BLOB と FileShare を含む)
-* Azure Container Registry (推論と実験のための Docker イメージの格納用)
+* Azure Container Registry (推論/スコアリングと実験のための Docker イメージの格納用)
 * Application Insights (テレメトリ格納用)
 
 お客様は、必要に応じて、ワークスペースにアタッチされているその他のコンピューティング (Azure Kubernetes Service、VM など) もプロビジョニングできます。 
@@ -171,8 +171,8 @@ Azure Machine Learning service ワークスペースに関連付けられてい�
 次の図はトレーニングのワークフローを示したものです。
 * 上で保存したコード スナップショットのスナップショット ID を指定して、Azure Machine Learning service が呼び出されます
 * Azure Machine Learning service では実行 ID (オプション) と Azure Machine Learning service トークンが作成され、これは後で Machine Learning コンピューティング/VM などのコンピューティング先によって、Azure Machine Learning service にトークバックするために使用されます
-* マネージド コンピューティング (例:  Machine Learning コンピューティング) またはアンマネージド コンピューティング (例:  VM) を選択して、トレーニング ジョブを実行できます。 両方のシナリオのデータ フローについては下で説明します。
-* (VM/HDInsight/ローカル – Microsoft サブスクリプションの Key Vault 内の SSH 資格情報を使用してアクセスされる) Azure Machine Learning service はコンピューティング先で管理コードを実行し、次のことを行います。
+* マネージド コンピューティング (例: Machine Learning コンピューティング) またはアンマネージド コンピューティング (例: VM) を選択して、トレーニング ジョブを実行できます。 両方のシナリオのデータ フローについては下で説明します。
+* (VM/HDInsight – Microsoft サブスクリプションの Key Vault 内の SSH 資格情報を使用してアクセスされる) Azure Machine Learning service はコンピューティング先で管理コードを実行し、次のことを行います。
     1.  環境を準備します (注: Docker も VM/ローカルに対するオプションです。 Docker コンテナーで実験を実行する方法については、後の Machine Learning コンピューティングに対する手順を参照してください)
     2.  コードをダウンロードします
     3.  環境変数/構成を設定します
@@ -189,7 +189,7 @@ Azure Machine Learning service ワークスペースに関連付けられてい�
 ![ワークスペース作成のワークフローを示すスクリーンショット](./media/enterprise-readiness/training-and-metrics.png)
 
 ### <a name="creating-web-services"></a>Web サービスを作成する
-次の図では、モデルが Web サービスとしてデプロイされる推論ワークフローを示します。
+次の図は、推論のワークフローを示しています。 推論、つまりモデル スコアリングとは、最も一般的には運用環境のデータに基づいて、デプロイしたモデルを使用して予測を行うフェーズです。
 詳細は以下を参照してください。
 * ユーザーは、Azure ML SDK などのクライアントを使用して、モデルを登録します
 * ユーザーは、モデル、スコア ファイル、その他のモデルの依存関係を使用して、イメージを作成します

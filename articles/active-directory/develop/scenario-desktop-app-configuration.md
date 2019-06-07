@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/o7/2019
+ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c52f6fc66187d961dc93089a9f81f6de4d67fe41
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: bc0042d6392891e8282c563afea2212031a0f49a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65080243"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66121878"
 ---
 # <a name="desktop-app-that-calls-web-apis---code-configuration"></a>Web API を呼び出すデスクトップ アプリ - コードの構成
 
@@ -50,8 +50,8 @@ IPublicClientApplication app = PublicClientApplicationBuilder.Create(clientId)
 ```CSharp
 IPublicClientApplication app;
 app = PublicClientApplicationBuilder.Create(clientId)
-        .WithRedirectUri(PublicClientApplicationBuilder.DefaultInteractiveDesktopRedirectUri)
-         .Build();
+        .WithRedirectUri("https://login.microsoftonline.com/common/oauth2/nativeclient")
+        .Build();
 ```
 
 ### <a name="using-configuration-files"></a>構成ファイルの使用
@@ -61,7 +61,8 @@ app = PublicClientApplicationBuilder.Create(clientId)
 ```CSharp
 PublicClientApplicationOptions options = GetOptions(); // your own method
 IPublicClientApplication app = PublicClientApplicationBuilder.CreateWithApplicationOptions(options)
-    .Build();
+        .WithRedirectUri("https://login.microsoftonline.com/common/oauth2/nativeclient")
+        .Build();
 ```
 
 ### <a name="more-elaborated-configuration"></a>より詳細な構成
@@ -71,6 +72,7 @@ IPublicClientApplication app = PublicClientApplicationBuilder.CreateWithApplicat
 ```CSharp
 IPublicClientApplication app;
 app = PublicClientApplicationBuilder.Create(clientId)
+        .WithRedirectUri("https://login.microsoftonline.com/common/oauth2/nativeclient")
         .WithAadAuthority(AzureCloudInstance.AzureUsGovernment,
                          AadAuthorityAudience.AzureAdMultipleOrgs)
         .Build();
@@ -98,8 +100,8 @@ app = PublicClientApplicationBuilder.Create(clientId)
 
 MSAL.NET デスクトップ アプリケーションを構成する方法の詳細については、以下のとおりです。
 
-- `PublicClientApplicationBuilder` で使用可能なすべての修飾子の一覧については、リファレンス ドキュメント [PublicClientApplicationBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.appconfig.publicclientapplicationbuilder?view=azure-dotnet-preview#methods) を参照してください
-- `PublicClientApplicationOptions` に公開されているすべてのオプションの説明については、リファレンス ドキュメント内の [PublicClientApplicationOptions](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.appconfig.publicclientapplicationoptions?view=azure-dotnet-preview) を参照してください
+- `PublicClientApplicationBuilder` で使用可能なすべての修飾子の一覧については、リファレンス ドキュメント [PublicClientApplicationBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationbuilder#methods) を参照してください
+- `PublicClientApplicationOptions` に公開されているすべてのオプションの説明については、リファレンス ドキュメント内の [PublicClientApplicationOptions](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationoptions) を参照してください
 
 ## <a name="complete-example-with-configuration-options"></a>構成オプション付きの詳細な例
 
@@ -167,6 +169,7 @@ public class SampleConfiguration
 ```CSharp
 SampleConfiguration config = SampleConfiguration.ReadFromJsonFile("appsettings.json");
 var app = PublicClientApplicationBuilder.CreateWithApplicationOptions(config.PublicClientApplicationOptions)
+           .WithRedirectUri("https://login.microsoftonline.com/common/oauth2/nativeclient")
            .Build();
 ```
 

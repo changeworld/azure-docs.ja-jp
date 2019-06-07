@@ -5,15 +5,15 @@ services: virtual-machines-windows, virtual-machines-linux
 author: cynthn
 ms.service: multiple
 ms.topic: include
-ms.date: 04/11/2019
+ms.date: 05/16/2019
 ms.author: cynthn;azcspmt;jonbeck
 ms.custom: include file
-ms.openlocfilehash: d0802cfcf05874044b6e116ba194c16a79f9d309
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 40857879826963f9a82cb5864b6980305c522679
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59550140"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66145715"
 ---
 このセクションでは、仮想マシンのサイズの前の世代の情報を提供します。 これらのサイズも、使用できますが、より新しい世代が使用可能です。 
 
@@ -27,7 +27,7 @@ ACU: 210 から 250
 
 Premium Storage: サポートされていません
 
-Premium Storage Caching: サポートされていません
+Premium Storage キャッシュ:サポートされていません
 
 | Size         | vCPU | メモリ: GiB | 一時ストレージ (SSD) GiB | 一時ストレージの最大スループット: IOPS/読み取り MBps/書き込み MBps | 最大データ ディスク数/スループット: IOPS | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) |
 |--------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
@@ -45,7 +45,7 @@ ACU: 210 から 250
 
 Premium Storage: サポートされています
 
-Premium Storage Caching: サポートされています
+Premium Storage キャッシュ:サポートされています
 
 | Size | vCPU | メモリ: GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | キャッシュが有効な場合の一時ストレージの最大スループット: IOPS/MBps (キャッシュ サイズは GiB 単位) | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -69,7 +69,7 @@ ACU: 180 から 240
 
 Premium Storage: サポートされています
 
-Premium Storage Caching: サポートされていません
+Premium Storage キャッシュ:サポートされていません
  
 | Size          | vCPU | メモリ (GiB) | 一時ストレージ (GiB) | 最大データ ディスク数 | 一時ストレージの最大スループット (IOPS / MBps) | キャッシュ不使用時の最大ディスク スループット (IOPS / MBps) | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) | 
 |----------------|-----------|-------------|--------------------------|----------------|-------------------------------------------------------------|-------------------------------------------|------------------------------| 
@@ -81,6 +81,20 @@ Premium Storage Caching: サポートされていません
 Ls シリーズの VM で実現可能な最大ディスク スループットは、接続されたディスクの数、サイズ、ストライピングによって制限される場合があります。 詳細については、[高パフォーマンス用の設計](../articles/virtual-machines/windows/premium-storage-performance.md)に関する記事を参照してください。
 
 <sup>1</sup> インスタンスは、単一の顧客専用のハードウェアに分離されます。
+
+## <a name="nvv2-series-preview"></a>NVv2 シリーズ (プレビュー)
+
+**新しいサイズ (推奨)** :[NVv3 シリーズ (プレビュー)](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu#nvv2-series-preview)
+
+NVv2 シリーズの仮想マシンは、Intel Broadwell CPU を使用した [NVIDIA Tesla M60](http://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) GPU および NVIDIA GRID テクノロジを搭載しています。 これらの仮想マシンは、お客様がデータを視覚化したり、表示する結果をシミュレートしたり、CAD で作業したり、コンテンツをレンダリングおよびストリーミングしたりしたいと考える、GPU で高速化されたグラフィックス アプリケーションや仮想デスクトップを対象にしています。 さらに、これらの仮想マシンは、エンコーディングやレンダリングなどの単精度のワークロードを実行できます。 NVv2 仮想マシンは Premium Storage をサポートし、以前の NV シリーズと比較して 2 倍のシステム メモリ (RAM) を備えています。  
+
+NVv2 インスタンス内の各 GPU には GRID ライセンスが付属しています。 このライセンスでは柔軟性が確保され、NV インスタンスを仮想ワークステーションとして 1 人のユーザーに対して使用したり、仮想アプリケーションのシナリオで 25 人のユーザーが同時に VM に接続したりできます。
+
+| Size | vCPU | メモリ: GiB | 一時ストレージ (SSD) GiB | GPU | GPU メモリ: GiB | 最大データ ディスク数 | 最大 NIC 数 | 仮想ワークステーション | 仮想アプリケーション | 
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Standard_NV6s_v2 |6 |112 |320 | 1 | 8 | 12 | 4 | 1 | 25 |
+| Standard_NV12s_v2 |12 |224 |640 | 2 | 16 | 24 | 8 | 2 | 50 |
+| Standard_NV24s_v2 |24 |448 |1280 | 4 | 32 | 32 | 8 | 4 | 100 |
 
 ### <a name="standard-a0---a4-using-cli-and-powershell"></a>Standard A0 ～ A4 (CLI と PowerShell の使用)
 

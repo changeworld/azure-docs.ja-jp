@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/22/2019
 ms.author: makromer
-ms.openlocfilehash: e1d4ce355f34014d5099c4b46f4420d032363fce
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: b0a6c6feae11f8daeed54c5e763dbff3aa711652
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236678"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66153486"
 ---
 # <a name="execute-data-flow-activity-in-azure-data-factory"></a>Azure Data Factory でのデータ フローの実行アクティビティ
 データ フローの実行アクティビティを使用して、パイプライン デバッグ (サンドボックス) 実行とパイプライン トリガー実行で ADF データ フローを実行します。
@@ -64,6 +64,10 @@ ms.locfileid: "65236678"
 これは、データ フロー アクティビティの実行に使用する統合ランタイムを定義する必須フィールドです。 既定では、Data Factory は既定の自動解決 Azure 統合ランタイムを使用します。 ただし、データ フロー アクティビティを実行するための特定のリージョン、コンピューティングの種類、コア数、および TTL を定義する、独自の Azure 統合ランタイムを作成できます。
 
 データ フローの実行の既定の設定は、一般コンピューティングの 8 コアで、TTL は 60 分です。
+
+自分のデータ フロー アクティビティ用の Spark 実行環境を制御できます。 [Azure Integration Runtime](concepts-integration-runtime.md) には、実行エンジンを自分のデータ フロー コンピューティング要件と一致させるための、コンピューティングの種類 (汎用、メモリ最適化、およびコンピューティング最適化)、ワーカー コアの数、および Time-To-Live の設定があります。 また、TTL を設定することで、ジョブの実行ですぐに利用できるウォーム クラスターを管理できます。
+
+![Azure Integration Runtime](media/data-flow/ir-new.png "Azure Integration Runtime")
 
 ### <a name="staging-area"></a>ステージング領域
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/07/2019
 ms.author: banders
-ms.openlocfilehash: 8d85dd1c21f952261e838c01843e15dafcc0e931
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: b2452580eaecc0ab922f8e7db48676f70831a8ca
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65415781"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66126844"
 ---
 # <a name="get-enterprise-agreement-reservation-costs-and-usage"></a>Enterprise Agreement の予約のコストと使用状況を取得する
 
@@ -42,9 +42,9 @@ Enterprise Agreement のお客様は、Azure portal と REST API で予約のコ
 
 | データ | 実際のコストのデータ セット | 分散コストのデータ セット |
 | --- | --- | --- |
-| 予約購入 | このビューで使用できます。<br>  このデータを取得するには、ChargeType = &quot;Purchase&quot; でフィルター処理します。 <br> 料金がどの予約に対するものかを把握するには、ReservationID または ReservationName を参照します。  | このビューには適用されません。 <br> 購入コストが償却データでは提供されません。 |
+| 予約購入 | このビューで使用できます。<br><br>  このデータを取得するには、ChargeType = &quot;Purchase&quot; でフィルター処理します。 <br><br> 料金がどの予約に対するものかを把握するには、ReservationID または ReservationName を参照します。  | このビューには適用されません。 <br><br> 購入コストが償却データでは提供されません。 |
 | EffectivePrice | 値は、予約割引を受ける使用状況に対してはゼロです。 | 値は、予約割引がある使用状況に対する予約の 1 時間あたりの比例配分コストです。 |
-| 未使用の予約 (1 日の使用されなかった予約の時間数と、無駄になった金額を提供します) | このビューには適用されません。 | このビューで使用できます。<br> このデータを取得するには、ChargeType = &quot;UnusedReservation&quot; でフィルター処理します。<br>  使用率が低かった予約を把握するには、ReservationID または ReservationName を参照します。 これがその日の無駄になった予約の量です。  |
+| 未使用の予約 (1 日の使用されなかった予約の時間数と、無駄になった金額を提供します) | このビューには適用されません。 | このビューで使用できます。<br><br> このデータを取得するには、ChargeType = &quot;UnusedReservation&quot; でフィルター処理します。<br><br>  使用率が低かった予約を把握するには、ReservationID または ReservationName を参照します。 これがその日の無駄になった予約の量です。  |
 | UnitPrice (価格シートのリソースの価格) | 使用可能 | 使用可能 |
 
 Azure の使用状況データで使用できるその他の情報が変更されました。
@@ -67,7 +67,7 @@ Azure の使用状況データで使用できるその他の情報が変更さ�
 API への呼び出しの例を次に示します。
 
 ```
-https://consumption.azure.com/providers/Microsoft.Billing/billingAccounts/{enrollmentId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodId}/providers/Microsoft.Consumption/usagedetails?metric={metric}&amp;api-version=2019-04-01-preview&amp;$filter={filter}
+https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{enrollmentId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodId}/providers/Microsoft.Consumption/usagedetails?metric={metric}&amp;api-version=2019-04-01-preview&amp;$filter={filter}
 ```
 
 {billingPeriodId} と {enrollmentId} の詳細については、「[Usage Details – List](https://docs.microsoft.com/rest/api/consumption/usagedetails/list)」 (使用方法の詳細 – 一覧) の API 記事を参照してください。
@@ -77,12 +77,12 @@ https://consumption.azure.com/providers/Microsoft.Billing/billingAccounts/{enrol
 | **API データの種類** | API 呼び出しアクション |
 | --- | --- |
 | **すべての料金 (使用状況と購入)** | {metric} を ActualCost で置き換える |
-| **予約割引を取得する使用状況** | {metric} を ActualCost で置き換える<br>{filter} を properties/reservationId%20ne%20 で置き換える |
-| **予約割引を取得しなかった使用状況** | {metric} を ActualCost で置き換える<br>{filter} を properties/reservationId%20eq%20 で置き換える |
+| **予約割引を取得する使用状況** | {metric} を ActualCost で置き換える<br><br>{filter} を properties/reservationId%20ne%20 で置き換える |
+| **予約割引を取得しなかった使用状況** | {metric} を ActualCost で置き換える<br><br>{filter} を properties/reservationId%20eq%20 で置き換える |
 | **請求済み料金 (使用状況と購入)** | {metric} を AmortizedCost で置き換える |
-| **未使用の予約レポート** | {metric} を AmortizedCost で置き換える<br>{filter} を properties/ChargeType%20eq%20'UnusedReservation' で置き換える |
-| **予約購入** | {metric} を ActualCostReplace で置き換える {filter} を properties/properties/ChargeType%20eq%20'Purchase' で置き換える  |
-| **返金** | {metric} を ActualCost で置き換える<br>{filter} を properties/ChargeType%20eq%20'Refund' で置き換える |
+| **未使用の予約レポート** | {metric} を AmortizedCost で置き換える<br><br>{filter} を properties/ChargeType%20eq%20'UnusedReservation' で置き換える |
+| **予約購入** | {metric} を ActualCost で置き換える<br><br>{filter} を properties/ChargeType%20eq%20'Purchase' で置き換える  |
+| **返金** | {metric} を ActualCost で置き換える<br><br>{filter} を properties/ChargeType%20eq%20'Refund' で置き換える |
 
 ## <a name="download-the-usage-csv-file-with-new-data"></a>新しいデータを含む使用状況の CSV ファイルをダウンロードする
 
@@ -94,7 +94,7 @@ Azure portal で [[コストの管理と請求]](https://portal.azure.com/#blade
 2. **[使用量 + 請求金額]** をクリックします。
 3. **[Download]** をクリックします。  
 ![Azure portal で使用状況データの CSV ファイルをダウンロードする場所を示す例](./media/billing-understand-reserved-instance-usage-ea/portal-download-csv.png)
-4. **[Usage Details Version 2]** の下の **[使用量と請求金額をダウンロードする]** で、**[All Charges (usage and purchases)]\(すべての料金 (使用状況と購入)\)** を選択し、[ダウンロード] をクリックします。 **請求済み料金 (使用状況と購入)** を繰り返します。
+4. **[Usage Details Version 2]** の下の **[使用量と請求金額をダウンロードする]** で、 **[All Charges (usage and purchases)]\(すべての料金 (使用状況と購入)\)** を選択し、[ダウンロード] をクリックします。 **請求済み料金 (使用状況と購入)** を繰り返します。
 
 ダウンロードする CSV ファイルには、実際のコストと分散コストが含まれます。
 

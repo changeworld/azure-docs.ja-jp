@@ -11,22 +11,28 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 02/20/2019
+ms.date: 05/21/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3fe2013ff84dd0451fed7d108539606520cb9403
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 6b38422b22885ad96c6681abe58b897155809521
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58576311"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66113182"
 ---
 # <a name="review-access-for-yourself-to-groups-or-applications-in-azure-ad-access-reviews"></a>Azure AD アクセス レビューでグループまたはアプリケーションに対する自分のアクセスをレビューする
 
 企業で Azure AD アクセス レビューという機能を使用して、Azure AD およびその他の Microsoft Online Services 内のグループまたはアプリケーションへのアクセスを管理する方法が、Azure Active Directory (Azure AD) により簡素化されます。
 
 この記事では、グループまたはアプリケーションに対する自分のアクセスをレビューする方法を説明します。
+
+## <a name="prerequisites"></a>前提条件
+
+- Azure AD Premium P2
+
+詳細については、[ライセンスが必要なユーザー](access-reviews-overview.md#which-users-must-have-licenses)に関する記事をご覧ください。
 
 ## <a name="open-the-access-review"></a>アクセス レビューを開く
 
@@ -44,7 +50,7 @@ ms.locfileid: "58576311"
 
     ![MyApps ポータル](./media/review-your-access/myapps-access-panel.png)
 
-1. ページの右上隅にあるユーザー記号をクリックすると、ユーザーの名前と既定の組織が表示されます。 複数の組織が一覧表示されている場合は、アクセス レビューの依頼元の組織を選択してください。
+1. ページの右上隅にあるユーザー アイコンをクリックすると、ユーザーの名前と既定の組織が表示されます。 複数の組織が一覧表示されている場合は、アクセス レビューの依頼元の組織を選択してください。
 
 1. ページの右側にある **[アクセス レビュー]** タイルをクリックすると、保留中のアクセス レビューのリストが表示されます。
 
@@ -64,9 +70,9 @@ ms.locfileid: "58576311"
 
     ![アクセス レビューを実行する](./media/review-your-access/perform-access-review.png)
 
-1. **[はい]** をクリックしてアクセスを維持するか、**[いいえ]** をクリックしてアクセスを削除します。
+1. **[はい]** をクリックしてアクセスを維持するか、 **[いいえ]** をクリックしてアクセスを削除します。
 
-1. **[はい]** をクリックする場合は、**[理由]** ボックスに正当性を指定する必要がある場合があります。
+1. **[はい]** をクリックする場合は、 **[理由]** ボックスに正当性を指定する必要がある場合があります。
 
     ![アクセス レビューを実行する](./media/review-your-access/perform-access-review-submit.png)
 

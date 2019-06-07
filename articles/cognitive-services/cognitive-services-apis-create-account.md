@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: garye
-ms.openlocfilehash: 6950cba5ac958233e7ea77c8dc783ca86cc5a386
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 831f1d22c4da215bed3ed55b659332aa3b57472b
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58519903"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66145941"
 ---
 # <a name="quickstart-create-a-cognitive-services-account-in-the-azure-portal"></a>クイック スタート:Azure portal で Cognitive Services アカウントを作成する
 
@@ -36,7 +36,7 @@ ms.locfileid: "58519903"
 
 ### <a name="multi-service-subscription"></a>マルチサービスのサブスクリプション
 
-1. [Azure portal](https://portal.azure.com) にサインインし、**[+リソースの作成]** をクリックします。
+1. [Azure portal](https://portal.azure.com) にサインインし、 **[+リソースの作成]** をクリックします。
 
     ![Cognitive Services APIs の選択](media/cognitive-services-apis-create-account/azurePortalScreenMulti.png)
 
@@ -56,17 +56,17 @@ ms.locfileid: "58519903"
     | **サブスクリプション** | 使用できる Azure サブスクリプションのいずれかを選択します。 |
     | **場所** | Cognitive Services インスタンスの場所。 別の場所を選択すると待機時間が生じる可能性がありますが、リソースのランタイムの可用性には影響しません。 |
     | **[価格レベル]** | Cognitive Services アカウントのコストは、選択しているオプションと使用量によって異なります。 詳細については、「[API の価格の詳細](https://azure.microsoft.com/pricing/details/cognitive-services/)」をご覧ください。
-    | **リソース グループ** | Cognitive Services リソースを含む [Azure リソース グループ](https://docs.microsoft.com/azure/architecture/cloud-adoption/getting-started/azure-resource-access#what-is-an-azure-resource-group)。 新しいグループを作成することも、既存のグループに追加することもできます。 |
+    | **リソース グループ** | Cognitive Services リソースを含む [Azure リソース グループ](https://docs.microsoft.com/azure/architecture/cloud-adoption/governance/resource-consistency/azure-resource-access#what-is-an-azure-resource-group)。 新しいグループを作成することも、既存のグループに追加することもできます。 |
 
     ![リソース作成画面](media/cognitive-services-apis-create-account/resource_create_screen_multi.png)
 
 ### <a name="single-service-subscription"></a>単一サービスのサブスクリプション
 
-1. [Azure portal](https://portal.azure.com) にサインインし、**[+リソースの作成]** をクリックします。
+1. [Azure portal](https://portal.azure.com) にサインインし、 **[+リソースの作成]** をクリックします。
 
     ![Cognitive Services APIs の選択](media/cognitive-services-apis-create-account/azurePortalScreen.png)
 
-2. [Azure Marketplace] で **[AI + 機械学習]** を選択します。 関心があるサービスが見つからない場合は、**[すべて]** をクリックして、Cognitive Services API のカタログ全体を表示します。
+2. [Azure Marketplace] で **[AI + 機械学習]** を選択します。 関心があるサービスが見つからない場合は、 **[すべて]** をクリックして、Cognitive Services API のカタログ全体を表示します。
 
     ![Cognitive Services APIs の選択](media/cognitive-services-apis-create-account/azureMarketplace.png)
 
@@ -78,7 +78,7 @@ ms.locfileid: "58519903"
     | **サブスクリプション** | 使用できる Azure サブスクリプションのいずれかを選択します。 |
     | **場所** | Cognitive Services インスタンスの場所。 別の場所を選択すると待機時間が生じる可能性がありますが、リソースのランタイムの可用性には影響しません。 |
     | **[価格レベル]** | Cognitive Services アカウントのコストは、選択しているオプションと使用量によって異なります。 詳細については、「[API の価格の詳細](https://azure.microsoft.com/pricing/details/cognitive-services/)」をご覧ください。
-    | **リソース グループ** | Cognitive Services リソースを含む [Azure リソース グループ](https://docs.microsoft.com/azure/architecture/cloud-adoption/getting-started/azure-resource-access#what-is-an-azure-resource-group)。 新しいグループを作成することも、既存のグループに追加することもできます。 |
+    | **リソース グループ** | Cognitive Services リソースを含む [Azure リソース グループ](https://docs.microsoft.com/azure/architecture/cloud-adoption/governance/resource-consistency/azure-resource-access#what-is-an-azure-resource-group)。 新しいグループを作成することも、既存のグループに追加することもできます。 |
 
     ![リソース作成画面](media/cognitive-services-apis-create-account/resource_create_screen.png)
 
@@ -87,11 +87,13 @@ ms.locfileid: "58519903"
 > [!NOTE]
 > サブスクリプションの所有者は、リソース グループとサブスクリプション用の Cognitive Services アカウントの作成を無効にすることができます。これを行うには、[Azure ポリシー](https://docs.microsoft.com/azure/governance/policy/overview#policy-definition)を適用し、[許可されていないリソースの種類] ポリシー定義を割り当て、ターゲットのリソースの種類として **Microsoft.CognitiveServices/accounts** を指定します。
 
-リソースを作成した後、Azure ダッシュ ボードにピン留めした場合は、そこからアクセスできます。 それ以外の場合は、**[リソース グループ]** 内で検索できます。
+リソースを作成した後、Azure ダッシュ ボードにピン留めした場合は、そこからアクセスできます。 それ以外の場合は、 **[リソース グループ]** 内で検索できます。
 
-Cognitive Services リソースの中で、**[概要]** セクションのエンドポイント URL とキーを使用して、アプリケーションでの API の呼び出しを開始できます。
+Cognitive Services リソースの中で、 **[概要]** セクションのエンドポイント URL とキーを使用して、アプリケーションでの API の呼び出しを開始できます。
 
 ![リソース画面](media/cognitive-services-apis-create-account/resourceScreen.png)
+
+場所とキーをメモしておきます。 **[リソース管理]** の下の **[キー]** を選択することで、キーを取得できます。
 
 ## <a name="next-steps"></a>次の手順
 

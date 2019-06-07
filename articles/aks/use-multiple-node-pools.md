@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 03/29/2019
+ms.date: 05/17/2019
 ms.author: iainfou
-ms.openlocfilehash: 1c24bbb9433e4164d4b2f6ce1ac7bd726cc36356
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 4086b73313d563afaecad9b6a9289905d7085004
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65506904"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66142637"
 ---
 # <a name="preview---create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>プレビュー: Azure Kubernetes Service (AKS) のクラスターで複数のノード プールを作成および管理する
 
@@ -332,7 +332,7 @@ Events:
 
 この記事では、GPU ベースのノードを含む AKS クラスターを作成しました。 不要なコストを減らすには、*gpunodepool*、または AKS クラスター全体を削除してください。
 
-GPU ベースのノード プールを削除するには、次の例の通り、[az aks node pool delete][az-aks-nodepool-delete] コマンドを使用します。
+GPU ベースのノード プールを削除するには、次の例のように [az aks nodepool delete][az-aks-nodepool-delete] コマンドを使用します。
 
 ```azurecli-interactive
 az aks nodepool delete -g myResourceGroup --cluster-name myAKSCluster --name gpunodepool
@@ -348,8 +348,10 @@ az group delete --name myResourceGroup --yes --no-wait
 
 この記事では、AKS クラスターで複数のノード プールを作成および管理する方法を学習しました。 すべてのノード プールのポッドを制御する方法の詳細については、「[Azure Kubernetes Service (AKS) での高度なスケジューラ機能に関するベスト プラクティス][operator-best-practices-advanced-scheduler]」を参照してください。
 
+Windows Server コンテナー ノード プールを作成して使用するには、[AKS での Windows Server コンテナーの作成][aks-windows]に関する記事を参照してください。
+
 <!-- EXTERNAL LINKS -->
-[aks-github]: https://github.com/azure/aks/issues]
+[aks-github]: https://github.com/azure/aks/issues
 [kubernetes-drain]: https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [kubectl-taint]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#taint
@@ -376,3 +378,4 @@ az group delete --name myResourceGroup --yes --no-wait
 [install-azure-cli]: /cli/azure/install-azure-cli
 [supported-versions]: supported-kubernetes-versions.md
 [operator-best-practices-advanced-scheduler]: operator-best-practices-advanced-scheduler.md
+[aks-windows]: windows-container-cli.md

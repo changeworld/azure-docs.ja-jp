@@ -16,26 +16,25 @@ ms.date: 06/21/2018
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f8dee430b0ae1bf0c8cd7151272045467ce51c57
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 5efbc3b78800caa9d603e870b81705424c4d3fd6
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58575064"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66113223"
 ---
 # <a name="manage-user-access-with-azure-ad-access-reviews"></a>Azure AD のアクセス レビューでユーザー アクセスを管理する
 
 Azure Active Directory (Azure AD) を使用すると、ユーザーに適切なアクセス権を確実かつ容易に設定できます。 ユーザー自身または意思決定者に対し、アクセス レビューに参加してユーザーのアクセス権を再確認 (証明) するよう求めることができます。 レビュー担当者は、Azure AD からの提案に基づいて、各ユーザーの継続的なアクセスのニーズを評価できます。 アクセス レビューが完了したら、変更を加え、不要になったアクセス権をユーザーから削除できます。
 
 > [!NOTE]
-> すべての種類のユーザーのアクセス権を確認する必要はなく、ゲスト ユーザーのアクセス権のみを確認する場合は、[アクセス レビューによるゲスト ユーザー アクセスの管理](manage-guest-access-with-access-reviews.md)に関するページをご覧ください。 グローバル管理者などの管理者ロールのユーザーのメンバーシップを確認する場合は、[Azure AD Privileged Identity Management でアクセス レビューを開始する方法](../privileged-identity-management/pim-how-to-start-security-review.md)に関するページをご覧ください。 
->
->
+> すべての種類のユーザーのアクセス権を確認する必要はなく、ゲスト ユーザーのアクセス権のみを確認する場合は、[アクセス レビューによるゲスト ユーザー アクセスの管理](manage-guest-access-with-access-reviews.md)に関するページをご覧ください。 グローバル管理者などの管理者ロールのユーザーのメンバーシップを確認する場合は、[Azure AD Privileged Identity Management でアクセス レビューを開始する方法](../privileged-identity-management/pim-how-to-start-security-review.md)に関するページをご覧ください。
 
-## <a name="prerequisites"></a>前提条件 
+## <a name="prerequisites"></a>前提条件
 
+- Azure AD Premium P2
 
-アクセス レビューは、Microsoft Enterprise Mobility + Security E5 に含まれる Premium P2 エディションの Azure AD でご利用いただけます。 詳細については、「 [Azure Active Directory のエディション](../fundamentals/active-directory-whatis.md)」をご覧ください。 この機能 (レビューの作成、レビューへの入力、自分のアクセスの確認などを含む) を操作する各ユーザーにはライセンスが必要です。 
+詳細については、[ライセンスが必要なユーザー](access-reviews-overview.md#which-users-must-have-licenses)に関する記事をご覧ください。
 
 ## <a name="create-and-perform-an-access-review"></a>アクセス レビューの作成と実行
 

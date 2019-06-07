@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/27/2019
+ms.date: 05/22/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2fd7b05a5411c03e1324871fbff3c29061ce7b3d
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 8c0e5035331cbe4f54926f0ae60ae0c5c31f6a9a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65139241"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66119720"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>方法:Azure AD アプリに省略可能な要求を提供する
 
@@ -126,6 +126,9 @@ ms.locfileid: "65139241"
 
 アプリケーション マニフェストを変更して、アプリケーションの省略可能な要求を構成することができます (以下の例を参照してください)。 詳細については、[Azure AD アプリケーション マニフェストの概要に関する記事](reference-app-manifest.md)を参照してください。
 
+> [!IMPORTANT]
+> アクセス トークンは、クライアントではなく、**常に**リソースのマニフェストを使用して生成されます。  そのため、`...scope=https://graph.microsoft.com/user.read...` 要求では、リソースは Graph になります。  したがって、アクセス トークンは、クライアントのマニフェストではなく、Graph マニフェストを使用して作成されます。  アプリケーションのマニフェストを変更しても、Graph のトークンが変更されることはありません。  `accessToken` の変更が有効であることを確認するには、他のアプリではなく、自分のアプリケーションのトークンを要求します。  
+
 **スキーマ例:**
 
 ```json
@@ -217,7 +220,7 @@ SAML トークン内では、このような要求は `http://schemas.microsoft.
    - "DistributionList"
    - "DirectoryRole"
 
-   例: 
+   例:
 
    ```json
    "groupMembershipClaims": "SecurityGroup"
@@ -334,7 +337,7 @@ SAML および OIDC ID トークンでロール要求として netbiosDomain\sAM
 
     この例では、アプリケーションが受け取ることができる各種類のトークンに異なる省略可能な要求が追加されました。 ID トークンには、完全な形式 (`<upn>_<homedomain>#EXT#@<resourcedomain>`) のフェデレーション ユーザーの UPN が含まれるようになります。 他のクライアントがこのアプリケーションに要求するアクセス トークンには、auth_time 要求が含まれるようになります。 SAML トークンに skypeId ディレクトリ スキーマ拡張機能が含まれるようになります (この例では、このアプリのアプリ ID は ab603c56068041afb2f6832e2a17e237 です)。 SAML トークンは Skype ID を `extension_skypeId` として公開します。
 
-1. マニフェストの更新が完了したら、**[保存]** をクリックしてマニフェストを保存します。
+1. マニフェストの更新が完了したら、 **[保存]** をクリックしてマニフェストを保存します。
 
 ## <a name="next-steps"></a>次の手順
 

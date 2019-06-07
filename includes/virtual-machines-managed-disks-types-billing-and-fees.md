@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 01/22/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 3e303ce2b6f28500406bacf5b66d26f9c78ba46d
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 268467796e67caf2d20fedb44d83fd455a09b83e
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57783442"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66147825"
 ---
 **送信データ転送**: [送信データ転送](https://azure.microsoft.com/pricing/details/bandwidth/) (Azure データ センターから送信されるデータ) では、帯域幅の使用量に対して課金されます。
 
-**トランザクション**:Standard マネージド ディスクで実行されるトランザクションの数に対して課金されます。
+**トランザクション**:Standard マネージド ディスクで実行されるトランザクションの数に対して課金されます。 標準 SSD では、スループットが 256 KiB 以下の I/O 操作は、それぞれ単一の I/O 操作とみなされます。 スループットが 256 KiB を超える I/O 操作は、サイズが 256 KiB の複数の I/O とみなされます。 標準 HDD では、各 IO 操作は、I/O サイズに関係なく、単一のトランザクションとみなされます。
 
 トランザクション コストを含め、Managed Disks の価格の詳細については、「[Managed Disks の価格](https://azure.microsoft.com/pricing/details/managed-disks)」をご覧ください。
 

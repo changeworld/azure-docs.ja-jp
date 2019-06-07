@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 05/07/2019
+ms.date: 05/22/2019
 ms.author: diberry
-ms.openlocfilehash: 7c3b93db18cb8e2660118927da47ffe95abb900f
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 59308cdadb1eda9e73b373e72112b83d93629683
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65073003"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66124346"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>LUIS docker コンテナーのインストールと実行
  
@@ -36,7 +36,7 @@ LUIS コンテナーを実行するには、以下が必要です。
 |--|--|
 |Docker エンジン| [ホスト コンピューター](#the-host-computer)に Docker エンジンをインストールしておく必要があります。 Docker には、[macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/)、[Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上で Docker 環境の構成を行うパッケージが用意されています。 Docker やコンテナーの基礎に関する入門情報については、「[Docker overview](https://docs.docker.com/engine/docker-overview/)」(Docker の概要) を参照してください。<br><br> コンテナーが Azure に接続して課金データを送信できるように、Docker を構成する必要があります。 <br><br> **Windows では**、Linux コンテナーをサポートするように Docker を構成することも必要です。<br><br>|
 |Docker に関する知識 | レジストリ、リポジトリ、コンテナー、コンテナー イメージなど、Docker の概念の基本的な理解に加えて、基本的な `docker` コマンドの知識が必要です。| 
-|Azure `Cognitive Services` リソースおよび LUIS [パッケージ アプリ](luis-how-to-start-new-app.md#export-app-for-containers) ファイル |コンテナーを使用するためには、以下が必要です。<br><br>* _Cognitive Services_ Azure リソースおよび関連する課金キー (課金エンドポイント URI)。 どちらの値も、対象リソースの概要ページとキー ページで使用でき、コンテナーを開始するために必要です。 `luis/v2.0` ルーティングをエンドポイント URI に追加する必要があります。次の BILLING_ENDPOINT_URI の例を参照してください。 <br>* コンテナーへのマウント済み入力としてパッケージ化されたトレーニング済みまたは発行済みのアプリと、その関連アプリ ID。 パッケージ ファイルは、LUIS ポータルまたはオーサリング API から取得できます。 [オーサリング API](#authoring-apis-for-package-file) から LUIS パッケージ アプリを入手している場合は、"_オーサリング キー_" も必要になります。<br><br>これらの要件は、以下の変数にコマンドライン引数を渡すために使用されます。<br><br>**{AUTHORING_KEY}**: このキーは、パッケージ化されたアプリをクラウドの LUIS サービスから取得したり、クエリ ログをクラウドにアップロードしたりするために使用されます。 形式は `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` です。<br><br>**{APPLICATION_ID}**: この ID は、アプリを選択するために使用されます。 形式は `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` です。<br><br>**{ENDPOINT_KEY}**: このキーは、コンテナーを起動するために使用されます。 エンドポイント キーは 2 か所で確認できます。 1 つ目は Azure portal です (_Cognitive Services_ リソースのキーの一覧内)。 また、LUIS ポータルの [Keys and endpoints]\(キーとエンドポイント\) の設定ページでもエンドポイント キーを確認できます。 スターター キーは使用しないでください。<br><br>**{BILLING_ENDPOINT}**: (例: `https://westus.api.cognitive.microsoft.com/luis/v2.0`)。<br><br>[オーサリング キーとエンドポイント キー](luis-boundaries.md#key-limits)には、異なる目的があります。 これらは区別して使用してください。 |
+|Azure `Cognitive Services` リソースおよび LUIS [パッケージ アプリ](luis-how-to-start-new-app.md#export-app-for-containers) ファイル |コンテナーを使用するためには、以下が必要です。<br><br>* _Cognitive Services_ Azure リソースおよび関連する課金キー (課金エンドポイント URI)。 どちらの値も、対象リソースの概要ページとキー ページで使用でき、コンテナーを開始するために必要です。 `luis/v2.0` ルーティングをエンドポイント URI に追加する必要があります。次の BILLING_ENDPOINT_URI の例を参照してください。 <br>* コンテナーへのマウント済み入力としてパッケージ化されたトレーニング済みまたは発行済みのアプリと、その関連アプリ ID。 パッケージ ファイルは、LUIS ポータルまたはオーサリング API から取得できます。 [オーサリング API](#authoring-apis-for-package-file) から LUIS パッケージ アプリを入手している場合は、"_オーサリング キー_" も必要になります。<br><br>これらの要件は、以下の変数にコマンドライン引数を渡すために使用されます。<br><br>**{AUTHORING_KEY}** : このキーは、パッケージ化されたアプリをクラウドの LUIS サービスから取得したり、クエリ ログをクラウドにアップロードしたりするために使用されます。 形式は `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` です。<br><br>**{APPLICATION_ID}** : この ID は、アプリを選択するために使用されます。 形式は `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` です。<br><br>**{ENDPOINT_KEY}** : このキーは、コンテナーを起動するために使用されます。 エンドポイント キーは 2 か所で確認できます。 1 つ目は Azure portal です (_Cognitive Services_ リソースのキーの一覧内)。 また、LUIS ポータルの [Keys and endpoints]\(キーとエンドポイント\) の設定ページでもエンドポイント キーを確認できます。 スターター キーは使用しないでください。<br><br>**{BILLING_ENDPOINT}** : (例: `https://westus.api.cognitive.microsoft.com/luis/v2.0`)。<br><br>[オーサリング キーとエンドポイント キー](luis-boundaries.md#key-limits)には、異なる目的があります。 これらは区別して使用してください。 |
 
 ### <a name="authoring-apis-for-package-file"></a>パッケージ ファイルのオーサリング API
 
@@ -131,7 +131,7 @@ LUIS [ポータル](https://www.luis.ai)には、トレーニング済みアプ�
 
 ### <a name="export-published-apps-package-from-luis-portal"></a>LUIS ポータルから発行済みアプリのパッケージをエクスポートする
 
-発行済みアプリのパッケージは、**[マイ アプリ]** 一覧ページから入手できます。 
+発行済みアプリのパッケージは、 **[マイ アプリ]** 一覧ページから入手できます。 
 
 1. LUIS [ポータル](https://www.luis.ai)にサインオンします。
 1. 一覧でアプリ名の左側にあるチェック ボックスをオンにします。 
@@ -144,7 +144,7 @@ LUIS [ポータル](https://www.luis.ai)には、トレーニング済みアプ�
 
 ### <a name="export-trained-apps-package-from-luis-portal"></a>LUIS ポータルからトレーニング済みアプリのパッケージをエクスポートする
 
-トレーニング済みアプリのパッケージは、**[バージョン]** 一覧ページから入手できます。 
+トレーニング済みアプリのパッケージは、 **[バージョン]** 一覧ページから入手できます。 
 
 1. LUIS [ポータル](https://www.luis.ai)にサインオンします。
 1. 一覧でアプリを選択します。 
@@ -256,6 +256,10 @@ ApiKey={ENDPOINT_KEY}
 
 [!INCLUDE [Running multiple containers on the same host](../../../includes/cognitive-services-containers-run-multiple-same-host.md)]
 
+## <a name="endpoint-apis-supported-by-the-container"></a>コンテナーによってサポートされる エンドポイント API
+
+コンテナーでは、API の V2 バージョンと [V3 (プレビュー)](luis-migration-api-v3.md) バージョンの両方を利用できます。 
+
 ## <a name="query-the-containers-prediction-endpoint"></a>コンテナーの予測エンドポイントに対するクエリの実行
 
 コンテナーには、REST ベースのクエリ予測エンドポイント API が用意されています。 発行済み (ステージングまたは運用) アプリのエンドポイントには、トレーニング済みアプリのエンドポイントとは "_異なる_" ルートがあります。 
@@ -310,7 +314,7 @@ LUIS コンテナーの出力マウントが指定された場合、アプリの
 /output/luis/{INSTANCE_ID}/
 ```
  
-LUIS ポータルから、お客様のアプリを選択し、**[Import endpoint logs]\(エンドポイント ログのインポート\)** を選択して、それらのログをアップロードします。 
+LUIS ポータルから、お客様のアプリを選択し、 **[Import endpoint logs]\(エンドポイント ログのインポート\)** を選択して、それらのログをアップロードします。 
 
 ![アクティブ ラーニングに使用するコンテナーのログ ファイルをインポートする](./media/luis-container-how-to/upload-endpoint-log-files.png)
 

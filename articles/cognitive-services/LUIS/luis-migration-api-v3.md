@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 05/07/2019
+ms.date: 05/22/2019
 ms.author: diberry
-ms.openlocfilehash: 6412f0a2e295a19f741c70e7870a4d198ee03b71
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: b7b4e25c78ef08bdf9a7c2f3faf96725fc5f5fc8
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65233547"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66123886"
 ---
 # <a name="preview-migrate-to-api-version-3x--for-luis-apps"></a>更新:LUIS アプリの API バージョン 3.x への移行
 
@@ -343,6 +343,9 @@ V3 では、エンティティ メタデータを返す `verbose` フラグで�
 
 **V3 では**、エンティティは `startIndex` と `entityLength` でマークされます。
 
+## <a name="deprecation"></a>非推奨 
+
+V2 API は、V3 プレビューの後、少なくとも 9 か月間は非推奨になることはありません。 
 
 ## <a name="next-steps"></a>次の手順
 

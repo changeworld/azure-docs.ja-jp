@@ -3,15 +3,15 @@ author: yashesvi
 ms.author: banders
 ms.service: virtual-machines-windows
 ms.topic: include
-ms.date: 04/13/2019
-ms.openlocfilehash: d9b9aae8bea323e5aac74a2e317b82d4cb43568f
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.date: 05/14/2019
+ms.openlocfilehash: c7ff7ab0800449c2a3aa9d58bd036981caccaa1c
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60118688"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66156260"
 ---
-# <a name="prepay-for-virtual-machines-with-azure-reserved-vm-instances"></a>Azure Reserved VM Instances による仮想マシンの前払い
+# <a name="prepay-for-virtual-machines-with-azure-reserved-vm-instances-ri"></a>Azure Reserved VM Instances (RI) による仮想マシンの前払い
 
 Azure Reserved Virtual Machine (VM) Instances を使って、仮想マシンの料金を前払いして、コストを節約しましょう。 詳しくは、[Azure Reserved VM Instances のオファー](https://azure.microsoft.com/pricing/reserved-vm-instances/)に関するページをご覧ください。
 
@@ -66,7 +66,7 @@ Azure Reserved Virtual Machine (VM) Instances を使って、仮想マシンの�
 ## <a name="buy-a-reserved-vm-instance"></a>予約 VM インスタンスの購入
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. **[すべてのサービス]** > **[予約]** を選択します。
+2. **[すべてのサービス]**  >  **[予約]** を選択します。
 3. **[追加]** を選択して新しい予約を購入します。
 4. 必須フィールドに必要事項を入力します。 選択した属性と一致する VM インスタンスを実行することで、予約割引を受けることができます。 割引を受ける VM インスタンスの実際の数は、選択したスコープと数量によって変わります。
 
@@ -104,9 +104,9 @@ Azure Reserved Virtual Machine (VM) Instances を使って、仮想マシンの�
 
 ## <a name="cancellations-and-exchanges"></a>キャンセルと交換
 
-ご自身の予約をキャンセルする必要がある場合は、12% の中途解約料が発生する可能性があります。 払い戻し額は、購入価格または予約の現在の価格のいずれかの最低価格に基づいています。 払い戻し額の上限は年額 50,000 ドルです。 日割り計算によって算出された金額から 12% の中途解約料を差し引いた金額が払い戻されます。 キャンセルを要求するには、Azure portal で予約に移動し、**[返金]** を選択して、サポート要求を作成します。
+ご自身の予約をキャンセルする必要がある場合は、12% の中途解約料が発生する可能性があります。 払い戻し額は、購入価格または予約の現在の価格のいずれかの最低価格に基づいています。 払い戻し額の上限は年額 50,000 ドルです。 日割り計算によって算出された金額から 12% の中途解約料を差し引いた金額が払い戻されます。 キャンセルを要求するには、Azure portal で予約に移動し、 **[返金]** を選択して、サポート要求を作成します。
 
-ご自身の予約 VM インスタンスの予約を別のリージョン、VM サイズ グループ、または期間に変更する必要がある場合は、同等以上の価値がある別の予約に交換できます。 新しい予約期間の開始日は、元の予約からは引き継がれません。 1 年または 3 年の予約期間は、新しい予約を作成した時点から始まります。 交換を要求するには、Azure portal で予約に移動し、**[交換]** を選択して、サポート要求を作成します。
+ご自身の予約 VM インスタンスの予約を別のリージョン、VM サイズ グループ、または期間に変更する必要がある場合は、同等以上の価値がある別の予約に交換できます。 新しい予約期間の開始日は、元の予約からは引き継がれません。 1 年または 3 年の予約期間は、新しい予約を作成した時点から始まります。 交換を要求するには、Azure portal で予約に移動し、 **[交換]** を選択して、サポート要求を作成します。
 
 予約を交換または返金する方法の詳細については、[予約の交換と返金](../articles/billing/billing-azure-reservations-self-service-exchange-and-refund.md)に関するページを参照してください。
 

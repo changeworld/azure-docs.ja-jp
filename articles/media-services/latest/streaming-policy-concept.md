@@ -9,28 +9,40 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 02/03/2019
+ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: 10600d8f3ff4e08b8d90f28ec15d3cb0c56bcae0
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 510899e44e4ea4a90e21473ee6af546744c2be2a
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55746746"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66120236"
 ---
 # <a name="streaming-policies"></a>ストリーミング ポリシー
 
-Azure Media Services v3 では、[ストリーミング ポリシー](https://docs.microsoft.com/rest/api/media/streamingpolicies)を使用して、[ストリーミング ロケーター](streaming-locators-concept.md)のためのストリーミング プロトコルと暗号化オプションを定義できます。 定義済みのストリーミング ポリシーまたは作成済みのカスタム ポリシーのいずれかを使用できます。 現在利用できる定義済みのストリーミング ポリシーは次のとおりです。'Predefined_DownloadOnly'、'Predefined_ClearStreamingOnly'、'Predefined_DownloadAndClearStreaming'、'Predefined_ClearKey'、'Predefined_MultiDrmCencStreaming' および 'Predefined_MultiDrmStreaming'
+Azure Media Services v3 では、[ストリーミング ポリシー](https://docs.microsoft.com/rest/api/media/streamingpolicies)を使用して、[ストリーミング ロケーター](streaming-locators-concept.md)のためのストリーミング プロトコルと暗号化オプションを定義できます。 Media Services v3 には、試用または運用環境で直接使用できるように、いくつかの定義済みのストリーミングポリシーが用意されています。 
 
+現在利用できる定義済みのストリーミング ポリシー:<br/>'Predefined_DownloadOnly'、'Predefined_ClearStreamingOnly'、'Predefined_DownloadAndClearStreaming'、'Predefined_ClearKey'、'Predefined_MultiDrmCencStreaming' および 'Predefined_MultiDrmStreaming'
+
+特別な要件がある (例: 異なるプロトコルを指定したい、カスタム キー配信サービスを使用する必要がある、クリアなオーディオ トラックを使用する必要がある) 場合は、カスタム ストリーミング ポリシーを作成できます。 
+
+ 
 > [!IMPORTANT]
 > * Datetime 型の**ストリーミング ポリシー**のプロパティは、常に UTC 形式です。
-> * お使いの Media Service アカウント用にポリシーの限られたセットを設計し、同じオプションが必要な場合は常に、ストリーミング ロケーターに対して同じセットを再利用してください。 
+> * お使いの Media Service アカウント用にポリシーの限られたセットを設計し、同じオプションが必要な場合は常に、ストリーミング ロケーターに対して同じセットを再利用してください。 詳細については、「[クォータと制限](limits-quotas-constraints.md)」をご覧ください。
+
+## <a name="decision-tree"></a>デシジョン ツリー
+
+次のデシジョン ツリーを使用して、自分のシナリオに適した定義済みのストリーミング ポリシーを選択できます。
+
+画像をクリックすると、フル サイズで表示されます。  <br/>
+<a href="./media/streaming-policy/large.png" target="_blank"><img src="./media/streaming-policy/small.png"></a> 
 
 ## <a name="examples"></a>例
 
 ### <a name="not-encrypted"></a>暗号化なし
 
-平文 (暗号化されていない) でファイルをストリーミングする場合は、定義済みの平文のストリーミング ポリシーを 'Predefined_ClearStreamingOnly' に設定します (.NET では、PredefinedStreamingPolicy.ClearStreamingOnly を使用できます)。
+平文 (暗号化されていない) でファイルをストリーミングする場合は、定義済みの平文のストリーミング ポリシーを 'Predefined_ClearStreamingOnly' に設定します (.NET では、PredefinedStreamingPolicy.ClearStreamingOnly 列挙型を使用できます)。
 
 ```csharp
 StreamingLocator locator = await client.StreamingLocators.CreateAsync(

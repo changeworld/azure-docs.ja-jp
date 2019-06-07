@@ -11,14 +11,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: c49b9d5fdc0c17f16f1c80471a00dd53625dc6e8
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 3edc1c2bd328cd6e7b7991ff2b5438b8899a0ce7
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236954"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66160472"
 ---
-# <a name="set-up-compute-targets-for-model-training"></a>モデル トレーニング用のコンピューティング ターゲットを設定する
+# <a name="set-up-compute-targets-for-model-training"></a>モデル トレーニング用のコンピューティング ターゲットを設定する 
 
 Azure Machine Learning service では、さまざまなリソースまたは環境でモデルをトレーニングでき、それらを総称して[__コンピューティング先__](concept-azure-machine-learning-architecture.md#compute-target)と呼びます。 コンピューティング先は、ローカル マシンでも、Azure Machine Learning コンピューティング、Azure HDInsight、リモート仮想マシンなどのクラウド リソースでもかまいません。  [モデルをデプロイする場所と方法](how-to-deploy-and-where.md)に関するページで説明されているように、モデルのデプロイ用のコンピューティング先を作成することもできます。
 
@@ -38,7 +38,7 @@ Azure Machine Learning SDK、Azure portal、または Azure CLI を使用して�
 Azure Machine Learning service では、異なるコンピューティング先に対してさまざまなサポートが提供されています。 典型的なモデル開発ライフサイクルは、少量のデータを用いた開発と実験から始まります。 この段階では、ローカル環境を使用することをお勧めします。 たとえば、ローカル コンピューターやクラウドベースの VM などです。 より大規模なデータ セットにトレーニングをスケールアップする、または分散トレーニングを実行する段階で、Azure Machine Learning コンピューティングを使用して、実行を送信するたびに自動スケーリングするシングルノードまたはマルチノード クラスターを作成することをお勧めします。 独自のコンピューティング リソースを接続することもできますが、以下で説明するように、シナリオによってサポートが異なる場合があります:
 
 
-|トレーニング用のコンピューティング先| GPU アクセラレーション | 自動<br/> ハイパーパラメーター調整 | 自動</br> 機械学習 | Azure Machine Learning パイプライン |
+|トレーニング用のコンピューティング先| GPU アクセラレーション | 自動<br/> ハイパーパラメーター調整 | 自動<br/> 機械学習 | Azure Machine Learning パイプライン |
 |----|:----:|:----:|:----:|:----:|
 |[ローカル コンピューター](#local)| 可能性あり | &nbsp; | ✓ | &nbsp; |
 |[Azure Machine Learning コンピューティング](#amlcompute)| ✓ | ✓ | ✓ | ✓ |
@@ -418,6 +418,10 @@ Azure Machine Learning service 用の [CLI 拡張機能](reference-azure-machine
 
 * [Estimator での ML モデルのトレーニング](how-to-train-ml-models.md)に関する記事で示されているように、`Estimator` オブジェクトを使用して実験を送信します。 
 * [CLI 拡張機能を使用](reference-azure-machine-learning-cli.md#experiments)して実験を送信します。
+
+## <a name="github-tracking-and-integration"></a>GitHub の追跡と統合
+
+ソース ディレクトリがローカル Git リポジトリであるトレーニング実行を開始すると、リポジトリに関する情報が実行履歴に格納されます。 たとえば、リポジトリの現在のコミット ID が履歴の一部としてログに記録されます。
 
 ## <a name="notebook-examples"></a>ノートブックの例
 

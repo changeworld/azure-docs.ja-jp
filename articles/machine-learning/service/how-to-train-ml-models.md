@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.reviewer: sgilley
 ms.date: 04/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7b479556543c6a9dff88643fdc587dec3f832f39
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 98f7dc2e295c0c994db9a0189814b0ef2a19b758
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59548172"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66153612"
 ---
 # <a name="train-models-with-azure-machine-learning-using-estimator"></a>Azure Machine Learning で Estimator を使用してモデルをトレーニングする
 
@@ -26,7 +26,7 @@ Azure Machine Learning では、[RunConfiguration オブジェクト](how-to-set
 
 ## <a name="train-with-an-estimator"></a>Estimator でトレーニングする
 
-[ワークスペース](concept-azure-machine-learning-architecture.md#workspace)を作成し、[開発環境](how-to-configure-environment.md)を設定したら、Azure Machine Learning でのモデルのトレーニングは次の手順で構成されます。  
+[ワークスペース](concept-workspace.md)を作成し、[開発環境](how-to-configure-environment.md)を設定したら、Azure Machine Learning でのモデルのトレーニングは次の手順で構成されます。  
 1. [リモートのコンピューティング先](how-to-set-up-training-targets.md)を作成する (ローカル コンピューターをコンピューティング先として使用することもできる点に注意してください)
 2. [トレーニング データ](how-to-access-data.md)をデータストアにアップロードする (省略可能)
 3. [トレーニング スクリプト](tutorial-train-models-with-aml.md#create-a-training-script)を作成する
@@ -119,6 +119,10 @@ estimator = Estimator(source_directory='./my-keras-proj',
 run = experiment.submit(estimator)
 print(run.get_portal_url())
 ```
+
+## <a name="github-tracking-and-integration"></a>GitHub の追跡と統合
+
+ソース ディレクトリがローカル Git リポジトリであるトレーニング実行を開始すると、リポジトリに関する情報が実行履歴に格納されます。 たとえば、リポジトリの現在のコミット ID が履歴の一部としてログに記録されます。
 
 ## <a name="examples"></a>例
 Estimator パターンの基本がわかるノートブックについては、次のページを参照してください。

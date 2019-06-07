@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 05/08/2019
+ms.date: 05/22/2019
 ms.author: juliako
-ms.openlocfilehash: 24ee700e326ef61aa6a93aae725e85e7b4780edf
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 9a14399117971807c1d18f8eb5fab7d6e6cef2d5
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65465032"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66120347"
 ---
 # <a name="streaming-locators"></a>ストリーミング ロケーター
 
@@ -24,17 +24,19 @@ ms.locfileid: "65465032"
 
 **ストリーミング ロケーター** を作成するプロセスは発行と呼ばれます。 既定では、**ストリーミング ロケーター** は API 呼び出しを行うとすぐに有効になり、省略可能な開始時刻と終了時刻を構成しない限り、削除されるまで存続します。 
 
-**ストリーミング ロケーター**を作成するときに、[アセット](https://docs.microsoft.com/rest/api/media/assets)名と[ストリーミング ポリシー](https://docs.microsoft.com/rest/api/media/streamingpolicies)名を指定する必要があります。 定義済みのストリーミング ポリシーまたは作成済みのカスタム ポリシーのいずれかを使用できます。 現在利用できる定義済みのポリシーは次のとおりです。'Predefined_DownloadOnly'、'Predefined_ClearStreamingOnly'、'Predefined_DownloadAndClearStreaming'、'Predefined_ClearKey'、'Predefined_MultiDrmCencStreaming' および 'Predefined_MultiDrmStreaming' カスタム ストリーミング ポリシーの使用時には、お使いの Media Service アカウント用にこうしたポリシーの限られたセットを設計し、同じオプションとプロトコルが必要な場合は常に、ストリーミング ロケーターに対して同じセットを再利用してください。 
+**ストリーミング ロケーター**を作成するときに、**アセット**名と**ストリーミング ポリシー**名を指定する必要があります。 詳細については、次のトピックを参照してください。
 
-ストリームで暗号化オプションを指定する場合は、コンテンツ キーを Media Services の Key Delivery コンポーネント経由でエンド クライアントへ配信する方法を構成する[コンテンツ キー ポリシー](https://docs.microsoft.com/rest/api/media/contentkeypolicies)を作成します。 ストリーミング ロケーターを**コンテンツ キー ポリシー**とコンテンツ キーに関連付けます。 Media Services でキーを自動生成させることができます。 次の .NET の例では、Media Services v3:[EncodeHTTPAndPublishAESEncrypted](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/tree/master/NETCore/EncodeHTTPAndPublishAESEncrypted) でトークン制限を使用して AES 暗号化を構成する方法を示します。 **コンテンツ キー ポリシー**は更新が可能なため、キーのローテーションを行う必要がある場合には、ポリシーを更新することができます。 キー配信キャッシュでポリシーが更新されて、その更新されたポリシーが取得されるまでには、最大 15 分かかる場合があります。 ストリーミング ロケーターごとに新しいコンテンツ キー ポリシーを作成しないことをお勧めします。 同じオプションが必要な場合は常に、既存のポリシーを再利用するようにしてください。
+* [資産](assets-concept.md)
+* [ストリーミング ポリシー](streaming-policy-concept.md)
+* [コンテンツ キー ポリシー](content-key-policy-concept.md)
 
 > [!IMPORTANT]
 > * Datetime 型の**ストリーミング ロケーター**のプロパティは、常に UTC 形式です。
-> * お使いの Media Service アカウント用にポリシーの限られたセットを設計し、同じオプションが必要な場合は常に、ストリーミング ロケーターに対して同じセットを再利用してください。 
+> * お使いの Media Service アカウント用にポリシーの限られたセットを設計し、同じオプションが必要な場合は常に、ストリーミング ロケーターに対して同じセットを再利用してください。 詳細については、「[クォータと制限](limits-quotas-constraints.md)」をご覧ください。
 
 ## <a name="associate-filters-with-streaming-locators"></a>フィルターをストリーミング ロケーターに関連付ける
 
-[資産またはアカウント フィルター](filters-concept.md)の一覧を指定できます。これは[ストリーミング ロケーター](https://docs.microsoft.com/rest/api/media/streaminglocators/create#request-body)に適用されます。 [ダイナミック パッケージャー](dynamic-packaging-overview.md)は、このフィルターの一覧を、クライアントが URL で指定するフィルターとともに適用します。 この組み合わせでは、[動的マニフェスト](filters-dynamic-manifest-overview.md)が生成されます。これは、URL のフィルターとストリーミング ロケーターで指定したフィルターに基づきます。 フィルターを適用したいものの URL でフィルター名を公開したくない場合は、この機能を使用することをお勧めします。
+「[フィルターをストリーミング ロケーターに関連付ける](filters-concept.md#associate-filters-with-streaming-locator)」を参照してください。
 
 ## <a name="filter-order-page-streaming-locator-entities"></a>ストリーミング ロケーター エンティティのフィルター処理、順序付け、ページング
 
@@ -42,5 +44,4 @@ ms.locfileid: "65465032"
 
 ## <a name="next-steps"></a>次の手順
 
-* [チュートリアル:.NET を使用してビデオをアップロード、エンコード、ストリーム配信する](stream-files-tutorial-with-api.md)
-* [DRM 動的暗号化とライセンス配信サービスの使用](protect-with-drm.md)
+[チュートリアル:.NET を使用してビデオをアップロード、エンコード、ストリーム配信する](stream-files-tutorial-with-api.md)

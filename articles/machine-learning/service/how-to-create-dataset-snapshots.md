@@ -1,5 +1,5 @@
 ---
-title: スナップショットを使用して一定期間にわたるデータを比較、再現する
+title: データセットのスナップショットを使用してデータの比較と再現を行う
 titleSuffix: Azure Machine Learning service
 description: データセットのスナップショットを使用して、一定期間にわたるデータを比較したり再現性を確保したりする方法について説明します。
 services: machine-learning
@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: sihhu
 author: MayMSFT
-ms.date: 05/02/2019
-ms.openlocfilehash: 51d0dcfc543834e9a8725d11fa82b566a5132a6b
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.date: 05/23/2019
+ms.openlocfilehash: 525660be0f38c9458590e52cfcd575acb4cf5444
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65204987"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66162057"
 ---
 # <a name="compare-data-and-ensure-reproducibility-with-snapshots-preview"></a>スナップショット (プレビュー) を使用したデータの比較と再現性の確保
 
@@ -41,7 +41,7 @@ ms.locfileid: "65204987"
 
 ## <a name="create-dataset-snapshots"></a>データセットのスナップショットを作成する
 
-データセットのスナップショットを作成するには、Azure Machine Learning SDK の [`dataset.create_snapshot()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset(class)?#create-snapshot-snapshot-name--compute-target-none--create-data-snapshot-false--target-datastore-none-) を使用します。
+データセットのスナップショットを作成するには、Azure Machine Learning SDK の azureml-datasets パッケージ から [`dataset.create_snapshot()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset(class)?#create-snapshot-snapshot-name--compute-target-none--create-data-snapshot-false--target-datastore-none-) を使用します。
 
 既定では、最新の[データセット定義](how-to-manage-dataset-definitions.md)が適用されたデータのプロファイル (サマリー統計) がスナップショットに格納されます。 データの変換ステップが定義されている場合は、データセット定義にその記録が含まれます。 このしくみを利用して、データの準備作業を再現することができます。
 

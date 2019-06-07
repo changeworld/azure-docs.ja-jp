@@ -1,5 +1,5 @@
 ---
-title: データを探索して準備する (Dataset クラス)
+title: データを探索して変換する (Dataset クラス)
 titleSuffix: Azure Machine Learning service
 description: 概要統計情報を使ってデータを探索し、データの消去、変換、および特徴エンジニアリングを使用してデータを準備する
 services: machine-learning
@@ -10,20 +10,20 @@ ms.author: sihhu
 author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 05/02/19
-ms.openlocfilehash: f4e7fcbe403017a6d957a60a8e5664f2e6c5ba26
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.date: 05/23/2019
+ms.openlocfilehash: e692b0dc1089804b1d68b79c1a6f438f30554602
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65409834"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66146294"
 ---
 # <a name="explore-and-prepare-data-with-the-dataset-class-preview"></a>Dataset クラス (プレビュー) でデータを探索して準備する
 
-[Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) でデータを探索して準備する方法を学習します。 [Dataset](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py) クラス (プレビュー) では、サンプリング、概要統計情報およびインテリジェントな変換などの機能を提供することで、データを探索して準備することができます。 変換の手順は、拡張性の高い方法でさまざまなスキーマの複数の大きなファイルを処理する機能を使用して、[Dataset 定義](how-to-manage-dataset-definitions.md)に保存されます。
+[Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) の azureml-datasets パッケージを使用して、データを探索して準備する方法について説明します。 [Dataset](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py) クラス (プレビュー) では、サンプリング、概要統計情報およびインテリジェントな変換などの機能を提供することで、データを探索して準備することができます。 変換の手順は、拡張性の高い方法でさまざまなスキーマの複数の大きなファイルを処理する機能を使用して、[Dataset 定義](how-to-manage-dataset-definitions.md)に保存されます。
 
 > [!Important]
-> 一部の Dataset クラス (プレビュー) は、Data Prep SDK (GA) に依存しています。 変換関数を GA の [Data Prep SDK 関数](how-to-transform-data.md)で直接実行することはできますが、新しいソリューションを構築する場合は、この記事で説明されている Dataset パッケージ ラッパーをお勧めします。 Azure Machine Learning Datasets (プレビュー) ではデータを変換するだけでなく、[データのスナップショットを作成し](how-to-create-dataset-snapshots.md)、[バージョン管理されたデータセット定義](how-to-manage-dataset-definitions.md)を格納することもできます。 Datasets は、次のバージョンの Data Prep SDK であり、AI ソリューションでデータセットを管理するための拡張機能が提供されます。
+> 一部の Dataset クラス (プレビュー) は [azureml-dataprep](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py) パッケージ (GA) に依存しています。 変換関数を GA の [Data Prep 関数](how-to-transform-data.md)で直接実行することはできますが、新しいソリューションを構築する場合は、この記事で説明されている Dataset パッケージ ラッパーをお勧めします。 Azure Machine Learning Datasets (プレビュー) ではデータを変換するだけでなく、[データのスナップショットを作成し](how-to-create-dataset-snapshots.md)、[バージョン管理されたデータセット定義](how-to-manage-dataset-definitions.md)を格納することもできます。 Datasets は、次のバージョンの Data Prep SDK であり、AI ソリューションでデータセットを管理するための拡張機能が提供されます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -33,7 +33,7 @@ ms.locfileid: "65409834"
 
 * Azure Machine Learning ワークスペース。 「[Create an Azure Machine Learning service workspace](https://docs.microsoft.com/azure/machine-learning/service/setup-create-workspace)」(Azure Machine Learning service ワークスペースを作成する) を参照してください。
 
-* Azure Machine Learning SDK for Python (バージョン 1.0.21 以降)。 SDK の最新バージョンのインストールまたは最新バージョンへの更新を行うには、[SDK のインストールまたは更新](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)に関する記事を参照してください。
+* Azure Machine Learning SDK for Python (バージョン 1.0.21 以降)。azureml-datasets パッケージが含まれています。 SDK の最新バージョンのインストールまたは最新バージョンへの更新を行うには、[SDK のインストールまたは更新](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)に関する記事を参照してください。
 
 * Azure Machine Learning Data Prep SDK。 最新バージョンのインストールまたは更新については、[Data Prep SDK のインストールまたは更新](https://docs.microsoft.com/python/api/overview/azure/dataprep/intro?view=azure-dataprep-py#install)に関する記事を参照してください。
 
@@ -294,7 +294,7 @@ dataset.head(3)
 1|10516598|HZ258664|2016-04-15 17:00:00|082XX S MARSHFIELD AVE|...
 2|10519196|HZ261252|2016-04-15 10:00:00|104XX S SACRAMENTO AVE|...
 
-たとえば、日付と時刻の形式を '2016-04-04 10PM-12AM' に変換する必要があるとします。 [`derive_column_by_example()`](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#derive-column-by-example-source-columns--sourcecolumns--new-column-name--str--example-data--exampledata-----azureml-dataprep-api-dataflow-dataflow) 引数では、*(元の出力, 目的の出力)*.という形式で、`example_data` パラメーターの目的の出力の例を示します。
+たとえば、日付と時刻の形式を '2016-04-04 10PM-12AM' に変換する必要があるとします。 [`derive_column_by_example()`](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#derive-column-by-example-source-columns--sourcecolumns--new-column-name--str--example-data--exampledata-----azureml-dataprep-api-dataflow-dataflow) 引数では、 *(元の出力, 目的の出力)* .という形式で、`example_data` パラメーターの目的の出力の例を示します。
 
 次のコードでは、目的の出力の 2 つの例 ("2016-04-04 23:56:00", "2016-04-04 10PM-12AM") と ("2016-04-15 17:00:00", "2016-04-15 4PM-6PM") を示します。
 
