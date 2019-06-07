@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 02/21/2019
+ms.date: 06/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 91cc002f373318e5124fc21f76edbfd000d17238
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: c19e39918aa64730a35a27fcdadd70800f47f4fa
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65796903"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66514654"
 ---
 # <a name="request-limits-for-translator-text"></a>Translator Text に対する要求の制限
 
@@ -38,7 +38,7 @@ ms.locfileid: "65796903"
 
 ## <a name="character-limits-per-hour"></a>時間あたりの文字制限
 
-時間あたりの文字制限は、Translator Text のサブスクリプション レベルに基づきます。 時間あたりのクォータは、時間全体で均等に使用する必要があります。 これらの制限に到達または超過した場合、または短期間にクォータの大きすぎる一部を送信した場合、クォータ不足の応答を受け取る可能性があります。 
+時間あたりの文字制限は、Translator Text のサブスクリプション レベルに基づきます。 時間あたりのクォータは、時間全体で均等に使用する必要があります。 これらの制限に到達または超過した場合、または短期間にクォータの大きすぎる一部を送信した場合、クォータ不足の応答を受け取る可能性があります。
 
 | レベル | 文字数制限 |
 |------|-----------------|

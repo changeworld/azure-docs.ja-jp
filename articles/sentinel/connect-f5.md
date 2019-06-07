@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: ee864a264ae9012b64b7dab5cd19467d8d66791c
-ms.sourcegitcommit: d73c46af1465c7fd879b5a97ddc45c38ec3f5c0d
+ms.openlocfilehash: d018ce4164c50f5d21c8ab3e833bba7055ad9753
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65921894"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66385045"
 ---
 # <a name="connect-your-f5-appliance"></a>F5 アプライアンスを接続する
 
@@ -121,7 +121,7 @@ F5 の[アプリケーション セキュリティ イベント ログの構成]
 
 3. 送信するログが [RFC 5424](https://tools.ietf.org/html/rfc542) に準拠していることを確認します。
 
-4. Syslog エージェントを実行しているコンピューターで、コマンド `netstat -a -n:` を使用して、これらのポート 514、25226 が開いており、リッスンしていることを確認します。 このコマンドの詳しい使用方法については、[netstat(8) - Linux man ページ](https://linux.die.netman/8/netstat)を参照してください。 正しくリッスンしている場合、次のように表示されます。
+4. Syslog エージェントを実行しているコンピューターで、コマンド `netstat -a -n:` を使用して、これらのポート 514、25226 が開いており、リッスンしていることを確認します。 このコマンドの詳しい使用方法については、[netstat(8) - Linux man ページ](https://linux.die.net/man/8/netstat)を参照してください。 正しくリッスンしている場合、次のように表示されます。
 
    ![Azure Sentinel ポート](./media/connect-cef/ports.png) 
 
