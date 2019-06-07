@@ -19,16 +19,6 @@
       href: app-service-web-get-started-dotnet-framework.md
     - name: Node.js アプリの作成
       href: app-service-web-get-started-nodejs.md
-    - name: Visual Studio Code を使用した Node.js アプリの作成
-      items:
-        - name: 使用の開始
-          href: tutorial-javascript-vscode-get-started.md
-        - name: アプリケーションを作成する
-          href: tutorial-javascript-vscode-create-app.md
-        - name: Web サイトのデプロイ
-          href: tutorial-javascript-vscode-deploy-app.md
-        - name: ログの表示
-          href: tutorial-javascript-vscode-tail-logs.md
     - name: PHP アプリの作成
       href: app-service-web-get-started-php.md
     - name: Java アプリの作成

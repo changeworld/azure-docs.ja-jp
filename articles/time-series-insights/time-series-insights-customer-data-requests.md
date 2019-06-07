@@ -2,19 +2,19 @@
 title: Azure Time Series Insights の顧客データ要求機能 | Microsoft Docs
 description: Azure Time Series Insights の顧客データ要求機能の概要です。
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 manager: cshankar
 ms.date: 05/08/2019
 ms.topic: conceptual
 ms.service: time-series-insights
 services: time-series-insights
 ms.custom: seodec18
-ms.openlocfilehash: 67aea6b3d535eeb0838da4ac6990c50e607617bf
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: f99a54f5623100e057e0c02249f5886f46656a21
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65546385"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66355920"
 ---
 # <a name="summary-of-customer-data-request-features"></a>顧客データ要求機能の概要
 
@@ -36,7 +36,7 @@ Azure Time Series Insights は、個人データを Time Series Insights の管�
 
 ただし、Portal を使用して顧客データを削除する前に、Azure Portal 内で Time Series Insights 環境からユーザーのアクセス ポリシーを削除する必要があります。 詳細については、「[Azure Portal を使用して Time Series Insights 環境にデータ アクセスを許可する](time-series-insights-data-access.md)」を参照してください。
 
-REST API を使用して、アクセス ポリシーに対して削除操作を実行することもできます。 詳細については、「[Access Policies - Delete](https://docs.microsoft.com/rest/api/time-series-insights-management/accesspolicies/delete)」 (アクセス ポリシー - 削除) を参照してください。
+REST API を使用して、アクセス ポリシーに対して削除操作を実行することもできます。 詳細については、「[Access Policies - Delete](/rest/api/time-series-insights/management/accesspolicies/delete)」 (アクセス ポリシー - 削除) を参照してください。
 
 Time Series Insights は、Azure Portal のポリシー ブレードと統合されています。 Time Series Insights とポリシー ブレードの両方で、サービス内に格納されているユーザー データを表示、エクスポート、削除することができます。 Azure Portal のポリシー ブレード内で削除操作を実行すると、Time Series Insights 内のユーザー データが削除されます。 たとえば、ユーザーの個人クエリが保存されている場合、そのクエリは Time Series Insights エクスプローラーから完全に削除されます。 ユーザーの共有クエリが保存されている場合、クエリは保持されますが、ユーザー情報は完全に削除されます。 次のメモには、これらの作業の実行手順が含まれます。
 
@@ -48,7 +48,7 @@ Time Series Insights は、Azure Portal のポリシー ブレードと統合さ
 
 テナント管理者の場合、Azure Portal で Time Series Insights 環境内のデータ アクセス ポリシーを表示できます。 詳細については、「[Azure Portal を使用して Time Series Insights 環境にデータ アクセスを許可する](time-series-insights-data-access.md)」を参照してください。
 
-指定された REST API の "環境で一覧表示" 操作を使用して、アクセス ポリシーに対してエクスポート操作を実行することもできます。 詳細については、「[Access Policies - List By Environment](https://docs.microsoft.com/rest/api/time-series-insights-management/accesspolicies/listbyenvironment)」 (アクセス ポリシー - 環境で一覧表示) を参照してください。
+指定された REST API の "環境で一覧表示" 操作を使用して、アクセス ポリシーに対してエクスポート操作を実行することもできます。 詳細については、「[Access Policies - List By Environment](/rest/api/time-series-insights/management/accesspolicies/listbyenvironment)」 (アクセス ポリシー - 環境で一覧表示) を参照してください。
 
 ## <a name="to-delete-data-stored-within-time-series-insights"></a>Time Series Insights 内に格納されているデータを削除するには
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 6b144f126e097a8db9fbbf29e47162fd6a1c2fbe
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 7596670e794c090b04f81cf6b235a4bc54c1f3c4
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64916831"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65800099"
 ---
 # <a name="what-is-speech-to-text"></a>音声変換の概要
 
@@ -24,7 +24,7 @@ Azure Speech Services の音声変換 (音声テキスト変換とも呼ばれ�
 
 既定では、音声変換サービスでは、汎用言語モデルが使用されます。 このモデルは、Microsoft が所有するデータでトレーニングされて、クラウドにデプロイされています。 このモデルは、会話や口述のシナリオに最適です。 独自環境での認識と文字起こしに音声テキスト変換を使用している場合は、カスタムの音響、言語、発音モデルを作成してトレーニングし、周囲の雑音や業界固有の語彙に対応できます。 
 
-Speech SDK や REST API を使用することにより、マイクからの音声のキャプチャや、ストリームからの読み取り、ストレージからの音声ファイルへのアクセスを簡単行うことができます。 Speech SDK では、音声認識用として、WAV/PCM 16 ビット (16 kHz)、単一チャネル オーディオがサポートされています。 [音声変換 REST エンドポイント](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) や [バッチ文字起こしサービス](https://docs.microsoft.com/azure/cognitive-services/speech-service/batch-transcription#supported-formats)を使用したオーディオ形式もサポートされています。
+Speech SDK や REST API を使用することにより、マイクからの音声のキャプチャや、ストリームからの読み取り、ストレージからの音声ファイルへのアクセスを簡単行うことができます。 Speech SDK では、音声認識用として、WAV/PCM 16 ビット、16 kHz/8 kHz、単一チャネル オーディオがサポートされています。 [音声変換 REST エンドポイント](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) や [バッチ文字起こしサービス](https://docs.microsoft.com/azure/cognitive-services/speech-service/batch-transcription#supported-formats)を使用したオーディオ形式もサポートされています。
 
 ## <a name="core-features"></a>コア機能
 
@@ -33,13 +33,13 @@ Speech SDK および REST API を通じて使用可能な機能を以下に示�
 | ユース ケース | SDK | REST |
 |----------|-----|------|
 | 短い発話の文字起こし (15 秒未満)。 最終的な文字起こしの結果のみがサポートされます。 | はい | はい |
-| 長い発話とストリーミング音声の継続的な文字起こし (15 秒超)。 中間および最終の文字起こしの結果がサポートされます。 | はい | いいえ  |
+| 長い発話とストリーミング音声の継続的な文字起こし (15 秒超)。 中間および最終の文字起こしの結果がサポートされます。 | はい | いいえ |
 | [LUIS](https://docs.microsoft.com/azure/cognitive-services/luis/what-is-luis) の使用による認識結果からの意図の抽出。 | はい | いいえ\* |
-| 音声ファイルの非同期での一括文字起こし。 | いいえ  | はい\** |
-| 音声モデルの作成および管理。 | いいえ  | はい\** |
-| カスタム モデル デプロイの作成および管理。 | いいえ  | はい\** |
-| 正確性テストを作成し、ベースライン モデルとカスタム モデルの正確性を測定して比較する。 | いいえ  | はい\** |
-| サブスクリプションの管理。 | いいえ  | はい\** |
+| 音声ファイルの非同期での一括文字起こし。 | いいえ | はい\** |
+| 音声モデルの作成および管理。 | いいえ | はい\** |
+| カスタム モデル デプロイの作成および管理。 | いいえ | はい\** |
+| 正確性テストを作成し、ベースライン モデルとカスタム モデルの正確性を測定して比較する。 | いいえ | はい\** |
+| サブスクリプションの管理。 | いいえ | はい\** |
 
 \* *LUIS の意図とエンティティは、個別の LUIS サブスクリプションを使用して派生させることができます。このサブスクリプションでは、SDK で LUIS を自動的に呼び出し、エンティティおよび意図の結果を提供できます。REST API の場合は、LUIS を自分で呼び出すことで、LUIS サブスクリプションを使用して意図とエンティティを派生させることができます。*
 
@@ -51,9 +51,9 @@ Speech SDK および REST API を通じて使用可能な機能を以下に示�
 
 | クイック スタート | プラットフォーム | API リファレンス |
 |------------|----------|---------------|
-| [C#、.NET Core](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-csharp-dotnetcore-windows) |  Windows | [Browse](https://aka.ms/csspeech/csharpref) |
+| [C#、.NET Core](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-csharp-dotnetcore-windows) | Windows | [Browse](https://aka.ms/csspeech/csharpref) |
 | [C#、.NET Framework](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-csharp-dotnet-windows) | Windows | [Browse](https://aka.ms/csspeech/csharpref) |
-| [C#、UWP](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-csharp-uwp) |  Windows | [Browse](https://aka.ms/csspeech/csharpref) |
+| [C#、UWP](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-csharp-uwp) | Windows | [Browse](https://aka.ms/csspeech/csharpref) |
 | [C++](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-cpp-windows) | Windows | [Browse](https://aka.ms/csspeech/cppref)|
 | [C++](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-cpp-linux) | Linux | [Browse](https://aka.ms/csspeech/cppref) |
 | [Java](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-java-android) | Android | [Browse](https://aka.ms/csspeech/javaref) |

@@ -91,6 +91,8 @@
               href: howto-export-data-blob-storage.md
         - name: カスタム規則の作成
           href: howto-create-custom-rules.md
+        - name: カスタム分析を作成する
+          href: howto-create-custom-analytics.md
         - name: Power BI でのデータの視覚化
           href: howto-connect-powerbi.md
         - name: その他の IoT クラウドの接続

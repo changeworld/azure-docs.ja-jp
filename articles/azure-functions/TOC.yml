@@ -15,16 +15,6 @@
       href: functions-create-your-first-function-visual-studio.md
     - name: 関数の作成 - Visual Studio Code
       href: functions-create-first-function-vs-code.md
-    - name: 関数の作成 - Visual Studio Code での Node.js
-      items:
-        - name: 使用の開始
-          href: tutorial-javascript-vscode-get-started.md
-        - name: アプリケーションを作成する
-          href: tutorial-javascript-vscode-create-app.md
-        - name: ローカルでのアプリの実行とテスト
-          href: tutorial-javascript-vscode-run-app.md
-        - name: Web サイトのデプロイ
-          href: tutorial-javascript-vscode-deploy-app.md
     - name: 関数の作成 - Java/Maven
       href: functions-create-first-java-maven.md
     - name: 関数の作成 - Python

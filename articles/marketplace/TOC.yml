@@ -58,8 +58,6 @@
         - name: Marketplace のベネフィット
           href: ./gtm-your-marketplace-benefits.md
           items:
-            - name: Microsoft を利用したビジネスのプロモーション
-              href: ./gtm-promote-your-business.md
             - name: 推奨されるソリューション
               href: ./preferred-solutions.md
             - name: 統合されたソリューション

@@ -1,5 +1,5 @@
 ---
-title: 'Microsoft Genomics: 一般的な質問 - FAQ | Microsoft Docs'
+title: Microsoft Genomics:よく寄せられる質問 - FAQ | Microsoft Docs
 titleSuffix: Azure
 description: Microsoft Genomics についてよく寄せられる質問に回答します。
 services: genomics
@@ -9,26 +9,26 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: article
 ms.date: 12/07/2017
-ms.openlocfilehash: 56256a6c10ecb0d06dfd6194668b9c32c5540c0e
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 2bcbf9d145d9b8b5a3c42893235906d24516405c
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51683902"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65792630"
 ---
-# <a name="microsoft-genomics-common-questions"></a>Microsoft Genomics: よく寄せられる質問
+# <a name="microsoft-genomics-common-questions"></a>Microsoft Genomics:一般的な質問
 
 この記事には、Microsoft Genomics に関連するよく寄せられる質問が記載されています。 Microsoft Genomics サービスの詳細については、「[Microsoft Genomics とは](overview-what-is-genomics.md)」を参照してください。 トラブルシューティングの詳細については、「[Troubleshooting Guide](troubleshooting-guide-genomics.md)」(トラブルシューティング ガイド) を参照してください。 
 
 ## <a name="what-is-the-microsoft-genomics-service-gatk-4-promotion"></a>Microsoft Genomics サービス GATK 4 プロモーションとは何ですか?
-2018 カレンダー年の終わりまで、Microsoft Genomics サービスは、GATK4 での 20 WGS 実行を無料で提供しています。 このオファリングに参加するには、[こちら](https://aka.ms/msgatk4)でご登録ください。 
+2019 年 6 月 30 日まで、Microsoft Genomics サービスは、GATK4 での 20 WGS 実行を無料で提供しています。 このオファリングに参加するには、[こちら](https://aka.ms/msgatk4)でご登録ください。 
 
 ### <a name="what-are-the-common-issues-i-might-encounter-while-running-the-microsoft-genomics-service-gatk4-promotion"></a>Microsoft Genomics サービス GATK4 プロモーションの実行中に発生する可能性のある一般的な問題
 発生する可能性のある一般的なエラーと、推奨される解決方法の一覧を次に示します。
 
 | **メッセージ**                                                                                                                                                                                    | **原因**                                                                                                    | **解決策**                                                                                                                                                                                                       |
 |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `gatk4-promo` is not enabled for your account.\(お使いのアカウントでは `gatk4-promo` が有効になっていません。\) 詳細については、 https://docs.microsoft.com/azure/genomics/frequently-asked-questions-genomics を参照してください。                               | Microsoft Genomics サービスをアクティブ化しないで、GATK4 ワークフローを実行しようとしています。       | アカウントをアクティブにするには、[こちら](https://aka.ms/msgatk4)をご覧ください。 試用版の有効期限は 2018 カレンダー年の終わりに切れることにご注意ください。 この日付より後に、プロモーション実行用にアカウントをアクティブにすることはできません。 |
+| `gatk4-promo` is not enabled for your account.\(お使いのアカウントでは `gatk4-promo` が有効になっていません。\) 詳細については、 https://docs.microsoft.com/azure/genomics/frequently-asked-questions-genomics を参照してください。                               | Microsoft Genomics サービスをアクティブ化しないで、GATK4 ワークフローを実行しようとしています。       | アカウントをアクティブにするには、[こちら](https://aka.ms/msgatk4)をご覧ください。 試用期間は 2019 年 6 月 30 日に期限切れになることに注意してください。 この日付より後に、プロモーション実行用にアカウントをアクティブにすることはできません。 |
 | Thank you for trying `gatk4-promo`.Your trial period has ended.\(`gatk4-promo` をお試しいただきありがとうございます。試用期間は終了しました。\) For more information, https://docs.microsoft.com/azure/genomics/frequently-asked-questions-genomics\(詳しくは、 https://docs.microsoft.com/azure/genomics/frequently-asked-questions-genomics をご覧ください\)                  | GATK4 の試用版は、カレンダーの年の終わりに有効期限が切れましたが、`gatk4-promo` process_name を呼び出そうとしています。  | process_name パラメーターを `gatk4-promo` ではなく `gatk4` に切り替えます。 これは、公式の gatk4 バージョンであり、このパラメーターを使用する場合はワークフローに課金されます。                                         |
 | Thank you for trying `gatk4-promo` You have used all of your allocated runs.\(gatk4-promo をお試しいただきありがとうございます。割り当て済みの実行はすべて使用されました。\) 詳細については、 https://docs.microsoft.com/azure/genomics/frequently-asked-questions-genomics を参照してください。 | GATK4 の 20 プロモーションの実行をすべて正常に送信しました。                               | 新しい gatk4 の実行は、process_name 引数を `gatk4-promo` ではなく `gatk4` に設定して送信してください。 このパラメーターを使用すると、ワークフローに課金されます。                                                          |        
 
@@ -73,6 +73,7 @@ Azure Portal に移動して、Genomics アカウント ページを開きます
 ## <a name="what-genome-references-can-i-use"></a>どのようなゲノム リファレンスを使用できますか。
 
 次のリファレンスがサポートされています。
+
  |リファレンス              | `-pa/--process-args` の値 |
  |:-------------         |:-------------                 |
  |b37                    | `R=b37m1`                     |
@@ -84,15 +85,15 @@ Azure Portal に移動して、Genomics アカウント ページを開きます
 
 msgen は、次の形式の構成ファイルを認識します。
 * すべてのオプションが、値とキーをコロンで区切ったキー/値のペアで指定されている。
-空白は無視されます。
+  空白は無視されます。
 * `#` で始まる行は無視されます。
 * 長い形式のコマンド行引数は、先頭のダッシュを削除して単語間のダッシュをアンダースコアに置き換えることにより、キーに変換できます。 いくつかの変換の例を次に示します。
 
- |コマンドライン引数            | 構成ファイルの行 |
- |:-------------                   |:-------------                 |
- |`-u/--api-url-base https://url`  | *api_url_base:https://url*    |
- |`-k/--access-key KEY`            | *access_key:KEY*              |      
- |`-pa/--process-args R=B37m1`     | *process_args:R-b37m1*        |  
+  |コマンドライン引数            | 構成ファイルの行 |
+  |:-------------                   |:-------------                 |
+  |`-u/--api-url-base https://url`  | *api_url_base:https://url*    |
+  |`-k/--access-key KEY`            | *access_key:KEY*              |      
+  |`-pa/--process-args R=B37m1`     | *process_args:R-b37m1*        |  
 
 ## <a name="next-steps"></a>次の手順
 
