@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: 82aaa573c55748daf62b620cdd82561bae6af492
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.openlocfilehash: bc1804e547bb1a29fc0dc680b948f1bb31af8307
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58629351"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244930"
 ---
 # <a name="archive-azure-diagnostic-logs"></a>Azure 診断ログのアーカイブ
 
-この記事では、Azure Portal や PowerShell コマンドレット、CLI、REST API を使用し、ストレージ アカウントで [Azure 診断ログ](../../azure-monitor/platform/diagnostic-logs-overview.md)をアーカイブする方法について説明します。 この方法は、監査やスタティック分析、バックアップなどを目的に任意のリテンション期間ポリシーで診断ログを保存したい場合に活用できます。 設定を構成するユーザーが両方のサブスクリプションに対して適切な RBAC アクセスを持っている限り、ストレージ アカウントはログを出力するリソースと同じサブスクリプションに属している必要はありません。
+この記事では、Azure Portal や PowerShell コマンドレット、CLI、REST API を使用し、ストレージ アカウントで [Azure 診断ログ](diagnostic-logs-overview.md)をアーカイブする方法について説明します。 この方法は、監査やスタティック分析、バックアップなどを目的に任意のリテンション期間ポリシーで診断ログを保存したい場合に活用できます。 設定を構成するユーザーが両方のサブスクリプションに対して適切な RBAC アクセスを持っている限り、ストレージ アカウントはログを出力するリソースと同じサブスクリプションに属している必要はありません。
 
 > [!WARNING]
 > ストレージ アカウント内のログ データの形式は、2018 年 11 月 1 日より JSON Lines に変更されます。 [この記事では、この変更による影響と、新しい形式に対応するツールに更新する方法について説明します。](./../../azure-monitor/platform/diagnostic-logs-append-blobs.md) 
@@ -44,7 +44,7 @@ ms.locfileid: "58629351"
 
 ## <a name="archive-diagnostic-logs-using-the-portal"></a>ポータルを使用して診断ログをアーカイブする
 
-1. ポータルで、Azure Monitor に移動し、**[診断設定]** をクリックします。
+1. ポータルで、Azure Monitor に移動し、 **[診断設定]** をクリックします。
 
     ![Azure Monitor の [監視] セクション](media/archive-diagnostic-logs/diagnostic-settings-blade.png)
 
@@ -58,7 +58,7 @@ ms.locfileid: "58629351"
 
    ![診断設定の追加 - 既存の設定が存在する](media/archive-diagnostic-logs/diagnostic-settings-multiple.png)
 
-3. 設定に名前を付けて、**[ストレージ アカウントにエクスポート]** のチェック ボックスをオンにし、ストレージ アカウントを選択します。 必要に応じて **[リテンション期間 (日数)]** スライダーを使用し、ログを保持する日数を設定します。 リテンション期間を 0 にすると、ログが無期限に保存されます。
+3. 設定に名前を付けて、 **[ストレージ アカウントにエクスポート]** のチェック ボックスをオンにし、ストレージ アカウントを選択します。 必要に応じて **[リテンション期間 (日数)]** スライダーを使用し、ログを保持する日数を設定します。 リテンション期間を 0 にすると、ログが無期限に保存されます。
 
    ![診断設定の追加 - 既存の設定が存在する](media/archive-diagnostic-logs/diagnostic-settings-configure.png)
 
@@ -77,11 +77,11 @@ Set-AzDiagnosticSetting -ResourceId /subscriptions/s1id1234-5679-0123-4567-89012
 | プロパティ | 必須 | 説明 |
 | --- | --- | --- |
 | ResourceId |はい |診断設定の対象となるリソースの ID。 |
-| StorageAccountId |いいえ  |診断ログの保存先となるストレージ アカウントのリソース ID。 |
-| Categories |いいえ  |有効にするログ カテゴリのコンマ区切りのリスト。 |
+| StorageAccountId |いいえ |診断ログの保存先となるストレージ アカウントのリソース ID。 |
+| Categories |いいえ |有効にするログ カテゴリのコンマ区切りのリスト。 |
 | Enabled |はい |このリソースに対する診断が有効であるか無効であるかを示すブール値。 |
-| RetentionEnabled |いいえ  |このリソースに対するリテンション期間ポリシーが有効であるか無効であるかを示すブール値。 |
-| RetentionInDays |いいえ  |イベントを保持する日数。1 ～2,147,483,647 の範囲。 値が 0 の場合、ログは無期限に保存されます。 |
+| RetentionEnabled |いいえ |このリソースに対するリテンション期間ポリシーが有効であるか無効であるかを示すブール値。 |
+| RetentionInDays |いいえ |イベントを保持する日数。1 ～2,147,483,647 の範囲。 値が 0 の場合、ログは無期限に保存されます。 |
 
 ## <a name="archive-diagnostic-logs-via-the-azure-cli"></a>Azure CLI を使用して診断ログをアーカイブする
 

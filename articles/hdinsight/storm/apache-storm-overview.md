@@ -7,14 +7,14 @@ keywords: Apache Storm のユース ケース,Storm クラスター,Apache Storm
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 02/27/2018
+ms.date: 05/24/2019
 ms.author: hrasheed
-ms.openlocfilehash: 5688056bc0d371c780bce02254769792e9a95696
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 42aaa91906319133fd2864cd836447fcf3ca3a07
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64696109"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66257782"
 ---
 # <a name="what-is-apache-storm-on-azure-hdinsight"></a>Azure HDInsight での Apache Storm とは
 
@@ -26,7 +26,7 @@ ms.locfileid: "64696109"
 
 HDInsight における Storm の機能は次のとおりです。
 
-* __Storm 稼働時間に関する 99% のサービス レベル アグリーメント (SLA)__:詳細については、「[HDInsight の SLA](https://azure.microsoft.com/support/legal/sla/hdinsight/v1_0/)」を参照してください。
+* __Storm 稼働時間に関する 99% のサービス レベル アグリーメント (SLA)__ :詳細については、「[HDInsight の SLA](https://azure.microsoft.com/support/legal/sla/hdinsight/v1_0/)」を参照してください。
 
 * 作成中や作成後の Storm クラスターに対してスクリプトを実行することで、簡単にカスタマイズできます。 詳細については、[スクリプト アクションを使った HDInsight クラスターのカスタマイズ](../hdinsight-hadoop-customize-cluster-linux.md)に関する記事を参照してください。
 
@@ -47,7 +47,7 @@ HDInsight における Storm の機能は次のとおりです。
 
 リアルタイム分析ソリューションに Apache Storm を利用している企業の一覧については、[Apache Storm を使用している企業](https://storm.apache.org/documentation/Powered-By.html)に関するページを参照してください。
 
-Storm の使用を開始するには、[HDInsight 上の Apache Storm の使用開始][gettingstarted]に関するページを参照してください。
+Storm の使用を開始するには、[HDInsight での Apache Storm の使用開始](apache-storm-tutorial-get-started-linux.md)に関するページを参照してください。
 
 ## <a name="how-does-apache-storm-work"></a>Apache Storm のしくみ
 
@@ -177,10 +177,5 @@ Storm は、[Apache Log4j 2](https://logging.apache.org/log4j/2.x/) を使用し
 
 HDInsight 上の Apache Storm によるリアルタイム分析ソリューションの詳細を学習します。
 
-* [HDInsight での Apache Storm の使用][gettingstarted]
+* [HDInsight での Apache Storm の使用](apache-storm-tutorial-get-started-linux.md)
 * [HDInsight での Apache Storm のトポロジ例](apache-storm-example-topology.md)
-
-[stormtrident]: https://storm.apache.org/documentation/Trident-API-Overview.html
-[samoa]: https://yahooeng.tumblr.com/post/65453012905/introducing-samoa-an-open-source-platform-for-mining
-[apachetutorial]: https://storm.apache.org/documentation/Tutorial.html
-[gettingstarted]: apache-storm-tutorial-get-started-linux.md

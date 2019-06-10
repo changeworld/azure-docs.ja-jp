@@ -5,17 +5,17 @@ author: yanivlavi
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 11/29/2018
+ms.date: 04/26/2019
 ms.author: yalavi
 ms.reviewer: mbullwin
-ms.openlocfilehash: 3773a3e121c3b0162b83ea075601b7386228e4d5
-ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
+ms.openlocfilehash: 0d6c578186dab9622ce650f535e11d505efcecb3
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64876195"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "65067614"
 ---
-# <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor-public-preview"></a>Azure Monitor の動的しきい値を使用したメトリック アラート (パブリック プレビュー)
+# <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor"></a>Azure Monitor の動的しきい値を使用したメトリック アラート
 
 動的しきい値を使用したメトリック アラートでは、高度な機械学習 (ML) を活用して、メトリックの動きの履歴を学び、パターンや、サービスの問題の可能性を示す異常を識別します。 ユーザーが Azure Resource Manager API でアラート ルールを構成でき、完全に自動化された方法で、単純な UI と規模に応じた操作の両方がサポートされます。
 

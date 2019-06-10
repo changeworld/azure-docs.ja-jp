@@ -5,14 +5,14 @@ services: container-service
 author: zr-msft
 ms.service: container-service
 ms.topic: article
-ms.date: 03/06/2019
+ms.date: 05/23/2019
 ms.author: zarhoads
-ms.openlocfilehash: 2fcdb72fa2717659e78e6f767bdc73b0d7be0886
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.openlocfilehash: 63d06fbad4f50b2ef4bc85565a8d4281a99462a6
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59618109"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241420"
 ---
 # <a name="install-applications-with-helm-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での Helm を使用したアプリケーションのインストール
 
@@ -24,7 +24,10 @@ ms.locfileid: "59618109"
 
 この記事は、AKS クラスターがすでに存在していることを前提としています。 AKS クラスターが必要な場合は、[Azure CLI を使用して][ aks-quickstart-cli]または[Azure portal を使用して][aks-quickstart-portal] AKS のクイック スタートを参照してください。
 
-また、Helm CLI をインストールする必要があります。Helm CLI は、開発システムで実行されるクライアントで、Helm を使用してアプリケーションを起動、停止、管理することができます。 Azure Cloud Shell を使用している場合、Helm CLI は既にインストールされています。 お使いのローカル プラットフォームでのインストール手順については、「[Installing Helm (Helm のインストール)][helm-install]」をご覧ください。
+Helm CLI もインストールする必要があります。これは、開発システムで実行されるクライアントです。 Helm を使用してアプリケーションを起動、停止、管理することができます。 Azure Cloud Shell を使用している場合、Helm CLI は既にインストールされています。 お使いのローカル プラットフォームでのインストール手順については、「[Installing Helm (Helm のインストール)][helm-install]」をご覧ください。
+
+> [!IMPORTANT]
+> Helm は Linux ノードで実行するものです。 クラスター内に Windows Server ノードがある場合、Helm ポッドが確実に Linux ノードでのみ実行されるようにスケジュールする必要があります。 また、インストールする Helm チャートが確実に正しいノードで実行されるようにスケジュールする必要もあります。 この記事のコマンドでは、[node-selectors][k8s-node-selector] を使用し、ポッドが正しいノードにスケジュールされるが、一部の Helm チャートではノード セレクターが公開されないようにします。 [taints][taints] などの、他のオプションをクラスターで使用することを検討することもできます。
 
 ## <a name="create-a-service-account"></a>サービス アカウントの作成
 
@@ -70,7 +73,7 @@ RBAC 対応の Kubernetes クラスターを使用している場合、Tiller �
 基本的な Tiller を AKS にデプロイするには、[helm init][helm-init] コマンドを使用します。 ご利用のクラスターが RBAC に対応していない場合は、`--service-account` 引数と値を削除します。 Tiller と Helm 用に TLS または SSL を構成した場合、この基本的な初期化手順はスキップし、次の例に示されているように必要な `--tiller-tls-` を指定します。
 
 ```console
-helm init --service-account tiller
+helm init --service-account tiller --node-selectors "beta.kubernetes.io/os"="linux"
 ```
 
 Helm と Tiller 間に TLS または SSL を構成した場合、次の例に示されているように、`--tiller-tls-*` パラメーターと独自の証明書の名前を指定します。
@@ -82,7 +85,8 @@ helm init \
     --tiller-tls-key tiller.key.pem \
     --tiller-tls-verify \
     --tls-ca-cert ca.cert.pem \
-    --service-account tiller
+    --service-account tiller \
+      --node-selectors "beta.kubernetes.io/os"="linux"
 ```
 
 ## <a name="find-helm-charts"></a>Helm チャートの検索
@@ -141,78 +145,60 @@ Update Complete. ⎈ Happy Helming!⎈
 
 ## <a name="run-helm-charts"></a>Helm チャートの実行
 
-Helm を使用してチャートをインストールするには、[helm install][helm-install] コマンドを使用して、インストールするチャートの名前を指定します。 実際にその動作を確かめるために、Helm チャートを使用して基本的な Wordpress デプロイをインストールしてみましょう。 TLS/SSL を構成した場合は、`--tls` パラメーターを追加して Helm クライアント証明書を使用します。
+Helm を使用してチャートをインストールするには、[helm install][helm-install] コマンドを使用して、インストールするチャートの名前を指定します。 Helm チャートのインストールを実際に確かめるために、Helm チャートを使用して基本的な nginx デプロイをインストールしてみましょう。 TLS/SSL を構成した場合は、`--tls` パラメーターを追加して Helm クライアント証明書を使用します。
 
 ```console
-helm install stable/wordpress
+helm install stable/nginx-ingress --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux
 ```
 
 次の出力例の抜粋は、Helm チャートによって作成された Kubernetes リソースのデプロイ状態を示します。
 
 ```
-$ helm install stable/wordpress
+$ helm install stable/nginx-ingress --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux
 
-NAME:   wishful-mastiff
-LAST DEPLOYED: Wed Mar  6 19:11:38 2019
+NAME:   flailing-alpaca
+LAST DEPLOYED: Thu May 23 12:55:21 2019
 NAMESPACE: default
 STATUS: DEPLOYED
 
 RESOURCES:
-==> v1beta1/Deployment
-NAME                       DESIRED  CURRENT  UP-TO-DATE  AVAILABLE  AGE
-wishful-mastiff-wordpress  1        1        1           0          1s
-
-==> v1beta1/StatefulSet
-NAME                     DESIRED  CURRENT  AGE
-wishful-mastiff-mariadb  1        1        1s
+==> v1/ConfigMap
+NAME                                      DATA  AGE
+flailing-alpaca-nginx-ingress-controller  1     0s
 
 ==> v1/Pod(related)
-NAME                                        READY  STATUS   RESTARTS  AGE
-wishful-mastiff-wordpress-6f96f8fdf9-q84sz  0/1    Pending  0         1s
-wishful-mastiff-mariadb-0                   0/1    Pending  0         1s
-
-==> v1/Secret
-NAME                       TYPE    DATA  AGE
-wishful-mastiff-mariadb    Opaque  2     2s
-wishful-mastiff-wordpress  Opaque  2     2s
-
-==> v1/ConfigMap
-NAME                           DATA  AGE
-wishful-mastiff-mariadb        1     2s
-wishful-mastiff-mariadb-tests  1     2s
-
-==> v1/PersistentVolumeClaim
-NAME                       STATUS   VOLUME   CAPACITY  ACCESS MODES  STORAGECLASS  AGE
-wishful-mastiff-wordpress  Pending  default  2s
+NAME                                                            READY  STATUS             RESTARTS  AGE
+flailing-alpaca-nginx-ingress-controller-56666dfd9f-bq4cl       0/1    ContainerCreating  0         0s
+flailing-alpaca-nginx-ingress-default-backend-66bc89dc44-m87bp  0/1    ContainerCreating  0         0s
 
 ==> v1/Service
-NAME                       TYPE          CLUSTER-IP   EXTERNAL-IP  PORT(S)                     AGE
-wishful-mastiff-mariadb    ClusterIP     10.1.116.54  <none>       3306/TCP                    2s
-wishful-mastiff-wordpress  LoadBalancer  10.1.217.64  <pending>    80:31751/TCP,443:31264/TCP  2s
+NAME                                           TYPE          CLUSTER-IP  EXTERNAL-IP  PORT(S)                     AGE
+flailing-alpaca-nginx-ingress-controller       LoadBalancer  10.0.109.7  <pending>    80:31219/TCP,443:32421/TCP  0s
+flailing-alpaca-nginx-ingress-default-backend  ClusterIP     10.0.44.97  <none>       80/TCP                      0s
 ...
 ```
 
-Wordpress サービスの *EXTERNAL-IP* アドレスが設定され、Web ブラウザーでアクセスできるようになるまでに 1 分から 2 分かかります。
+nginx-ingress-controller サービスの *EXTERNAL-IP* アドレスが設定され、Web ブラウザーでアクセスできるようになるまでに 1 分から 2 分かかります。
 
 ## <a name="list-helm-releases"></a>Helm リリースの一覧表示
 
-クラスターにインストールされているリリースの一覧を表示するには、[helm list][helm-list] コマンドを使用します。 次の例は、前の手順でデプロイされた Wordpress リリースを示しています。 TLS/SSL を構成した場合は、`--tls` パラメーターを追加して Helm クライアント証明書を使用します。
+クラスターにインストールされているリリースの一覧を表示するには、[helm list][helm-list] コマンドを使用します。 次の例は、前の手順でデプロイされた nginx-ingress リリースを示しています。 TLS/SSL を構成した場合は、`--tls` パラメーターを追加して Helm クライアント証明書を使用します。
 
 ```console
 $ helm list
 
-NAME                REVISION    UPDATED                     STATUS      CHART            APP VERSION    NAMESPACE
-wishful-mastiff   1         Wed Mar  6 19:11:38 2019    DEPLOYED    wordpress-2.1.3  4.9.7          default
+NAME                REVISION    UPDATED                     STATUS      CHART                 APP VERSION   NAMESPACE
+flailing-alpaca   1         Thu May 23 12:55:21 2019    DEPLOYED    nginx-ingress-1.6.13    0.24.1      default
 ```
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-Helm グラフをデプロイすると、多数の Kubernetes リソースが作成されます。 これらのリソースには、ポッド、デプロイ、およびサービスが含まれます。 これらのリソースをクリーンアップするには、`helm delete` コマンドを使用し、上記の `helm list` コマンドで確認したリリース名を指定します。 次の例では、*wishful mastiff* という名前のリリースを削除しています。
+Helm グラフをデプロイすると、多数の Kubernetes リソースが作成されます。 これらのリソースには、ポッド、デプロイ、およびサービスが含まれます。 これらのリソースをクリーンアップするには、`helm delete` コマンドを使用し、上記の `helm list` コマンドで確認したリリース名を指定します。 次の例では、*flailing-alpaca* という名前のリリースが削除されます。
 
 ```console
-$ helm delete wishful-mastiff
+$ helm delete flailing-alpaca
 
-release "wishful-mastiff" deleted
+release "flailing-alpaca" deleted
 ```
 
 ## <a name="next-steps"></a>次の手順
@@ -239,3 +225,5 @@ Kubernetes アプリケーションのデプロイの管理について詳しく
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 [install-azure-cli]: /cli/azure/install-azure-cli
+[k8s-node-selector]: concepts-clusters-workloads.md#node-selectors
+[taints]: operator-best-practices-advanced-scheduler.md

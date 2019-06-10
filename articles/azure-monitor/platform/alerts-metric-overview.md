@@ -7,12 +7,12 @@ ms.date: 9/18/2018
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.subservice: alerts
-ms.openlocfilehash: 59973d9530bf1c3ab3e77290b25e50860f9de0ca
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 6138a9ff6bb6d34b09c49fa7b5dbb67cbf5eb1b6
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56342985"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244905"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Azure Monitor でのメトリック アラートの機能
 
@@ -29,7 +29,7 @@ Azure Monitor でメトリック アラートは、複数ディメンション�
 - ターゲット リソース (監視対象の Azure リソース): myVM
 - メトリック: Percentage CPU
 - 条件タイプ: 静的
-- 累計時間 (生のメトリックの値に対して実行される統計。 サポートされる累計時間は Min, Max, Avg, Total です): 平均
+- 累計時間 (生のメトリックの値に対して実行される統計。 サポートされている集計時間には Min、Max、Avg、Total、Count があります):平均
 - 期間 (メトリック値がチェックされるルック バック ウィンドウ): 直近 5 分間
 - 頻度 (メトリック アラートで条件が満たされているかどうかをチェックする頻度): 1 分
 - 演算子: より大きい
@@ -44,7 +44,7 @@ Azure Monitor でメトリック アラートは、複数ディメンション�
 - ターゲット リソース (監視対象の Azure リソース): myVM
 - メトリック: Percentage CPU
 - 条件タイプ: 動的
-- 累計時間 (生のメトリックの値に対して実行される統計。 サポートされる累計時間は Min, Max, Avg, Total です): 平均
+- 累計時間 (生のメトリックの値に対して実行される統計。 サポートされている集計時間には Min、Max、Avg、Total、Count があります):平均
 - 期間 (メトリック値がチェックされるルック バック ウィンドウ): 直近 5 分間
 - 頻度 (メトリック アラートで条件が満たされているかどうかをチェックする頻度): 1 分
 - 演算子: より大きい
@@ -148,16 +148,16 @@ Azure Monitor のメトリック アラートでは、1 つのルールによる
 | Microsoft.ApiManagement/service | はい |
 | Microsoft.Batch/batchAccounts| はい|
 |Microsoft.Cache/redis| はい |
-|Microsoft.ClassicCompute/virtualMachines | いいえ  |
-|Microsoft.ClassicCompute/domainNames/slots/roles | いいえ |
-|Microsoft.CognitiveServices/accounts | いいえ  |
+|Microsoft.ClassicCompute/virtualMachines | いいえ |
+|Microsoft.ClassicCompute/domainNames/slots/roles | いいえ|
+|Microsoft.CognitiveServices/accounts | いいえ |
 |Microsoft.Compute/virtualMachines | はい|
 |Microsoft.Compute/virtualMachineScaleSets| はい|
-|Microsoft.ClassicStorage/storageAccounts| いいえ  |
+|Microsoft.ClassicStorage/storageAccounts| いいえ |
 |Microsoft.DataFactory/datafactories | はい|
 |Microsoft.DBforMySQL/servers| はい|
 |Microsoft.DBforPostgreSQL/servers| はい|
-|Microsoft.Devices/IotHubs | いいえ |
+|Microsoft.Devices/IotHubs | いいえ|
 |Microsoft.DocumentDB/databaseAccounts| はい|
 |Microsoft.EventHub/namespaces | はい|
 |Microsoft.Logic/workflows | はい|
@@ -173,9 +173,9 @@ Azure Monitor のメトリック アラートでは、1 つのルールによる
 |Microsoft.TimeSeriesInsights/environments | はい|
 |Microsoft. Web/serverfarms | はい |
 |Microsoft. Web/sites (関数を除く) | はい|
-|Microsoft. Web/hostingEnvironments/multiRolePools | いいえ |
-|Microsoft. Web/hostingEnvironments/workerPools| いいえ  |
-|Microsoft.SQL/Servers | いいえ  |
+|Microsoft. Web/hostingEnvironments/multiRolePools | いいえ|
+|Microsoft. Web/hostingEnvironments/workerPools| いいえ |
+|Microsoft.SQL/Servers | いいえ |
 
 ## <a name="next-steps"></a>次の手順
 

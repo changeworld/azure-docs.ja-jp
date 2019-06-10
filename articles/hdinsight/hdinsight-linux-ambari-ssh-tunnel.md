@@ -6,14 +6,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 12/15/2018
+ms.date: 05/28/2019
 ms.author: hrasheed
-ms.openlocfilehash: 0361539cefbacb8fc0473a1f863cf2ae4638b444
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 943bf0f4bba014c31a11bb30bf8d3b6a7c11a343
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64682535"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66299370"
 ---
 # <a name="use-ssh-tunneling-to-access-apache-ambari-web-ui-jobhistory-namenode-apache-oozie-and-other-web-uis"></a>SSH トンネリングを使用して Apache Ambari Web UI、JobHistory、NameNode、Apache Oozie、およびその他の Web UI にアクセスする
 
@@ -42,7 +42,7 @@ Ambari のメニューのいくつかは、SSH トンネル経由でのみ機能
 
 ## <a name="prerequisites"></a>前提条件
 
-* SSH クライアント ほとんどのオペレーティング システムには、`ssh` コマンドによる SSH クライアントが用意されています。 詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
+* SSH クライアント 詳細については、[SSH を使用して HDInsight (Apache Hadoop) に接続する方法](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
 * SOCKS5 プロキシを使用するように構成できる Web ブラウザー。
 
@@ -56,9 +56,9 @@ Ambari のメニューのいくつかは、SSH トンネル経由でのみ機能
 
 ## <a name="usessh"></a>SSH コマンドを使用してトンネルを作成する
 
-次のように `ssh` コマンドを使用して、SSH トンネルを作成します。 **sshuser** を実際の HDInsight クラスターの SSH ユーザーに置き換えます。また、**sshuser** は、HDInsight クラスターの名前に置き換えます:
+次のように `ssh` コマンドを使用して、SSH トンネルを作成します。 `sshuser` は、実際の HDInsight クラスターの SSH ユーザーに置き換えます。また、`clustername` は、HDInsight クラスターの名前に置き換えます。
 
-```bash
+```cmd
 ssh -C2qTnNf -D 9876 sshuser@clustername-ssh.azurehdinsight.net
 ```
 
@@ -81,19 +81,20 @@ ssh -C2qTnNf -D 9876 sshuser@clustername-ssh.azurehdinsight.net
 
 ### <a name="create-or-load-a-session"></a>セッションの作成または読み込み
 
-1. PuTTY を開いて、左側のメニューで **[セッション]** が選択されていることを確認します。 セッションが既に保存されている場合は、**[保存されたセッション]** リストからセッション名を選択し、**[読み込み]** をクリックします。
+1. PuTTY を開いて、左側のメニューで **[セッション]** が選択されていることを確認します。 セッションが既に保存されている場合は、 **[保存されたセッション]** リストからセッション名を選択し、 **[読み込み]** を選択します。
 
 1. まだ保存されたセッションがない場合は、接続情報を入力します。
     * **[ホスト名] (または IP アドレス)** - HDInsight クラスターの SSH アドレス (**mycluster-ssh.azurehdinsight.net** など)。
     * **[ポート]** - 22
     * **[接続の種類]** - SSH
-1. **[保存]**
+
+1. **[保存]** を選びます。
 
     ![SSH セッションを作成する](./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-create-putty-session.png)
 
-2. ダイアログの左にある **[カテゴリ]** セクションで、**[接続]**、**[SSH]** の順に展開し、**[トンネル]** を選択します。
+1. ダイアログの左にある **[カテゴリ]** セクションで、 **[接続]** 、 **[SSH]** の順に展開し、 **[トンネル]** を選択します。
 
-3. **[SSH ポートの転送を管理するオプション]** フォームに次の情報を入力します。
+1. **[SSH ポートの転送を管理するオプション]** フォームに次の情報を入力します。
    
    * **[ソース ポート]** - 転送するクライアント上のポート (**9876** など)。
 
@@ -103,9 +104,9 @@ ssh -C2qTnNf -D 9876 sshuser@clustername-ssh.azurehdinsight.net
      
      ![トンネリング オプションの画像](./media/hdinsight-linux-ambari-ssh-tunnel/puttytunnel.png)
 
-4. **[追加]** をクリックして設定を追加し、**[開く]** をクリックして SSH 接続を開きます。
+1. **[追加]** を選択して設定を追加し、 **[開く]** をクリックして SSH 接続を開きます。
 
-5. プロンプトが表示されたら、サーバーにログインします。
+1. プロンプトが表示されたら、サーバーにサインインします。
 
 ## <a name="use-the-tunnel-from-your-browser"></a>ブラウザーからトンネルを使用する
 
@@ -125,10 +126,10 @@ ssh -C2qTnNf -D 9876 sshuser@clustername-ssh.azurehdinsight.net
 
 クラスターが確立したら、次の手順で、Ambari Web からサービス Web UI にアクセスできることを確認します。
 
-1. ブラウザーで、http\://headnodehost:8080 に移動します。 この `headnodehost` アドレスはトンネル経由でクラスターに送信され、Ambari が実行されているヘッド ノードに解決されます。 プロンプトが表示されたら、クラスターの管理者ユーザー名 (admin) とパスワードを入力します。 Ambari Web UI からもう一度入力を求められることがあります。 その場合は、情報を再入力します。
+1. ブラウザーで `http://headnodehost:8080` に移動します。 この `headnodehost` アドレスはトンネル経由でクラスターに送信され、Ambari が実行されているヘッド ノードに解決されます。 プロンプトが表示されたら、クラスターの管理者ユーザー名 (admin) とパスワードを入力します。 Ambari Web UI からもう一度入力を求められることがあります。 その場合は、情報を再入力します。
 
    > [!NOTE]  
-   > http\://headnodehost:8080 のアドレスを使用してクラスターに接続する場合は、トンネル経由で接続しています。 通信は、HTTPS ではなく SSH トンネルを使って保護されます。 HTTPS を使用してインターネット経由で接続するには、https\://clustername.azurehdinsight.net を使用します。ここで、**clustername** はクラスターの名前です。
+   > アドレス `http://headnodehost:8080` を使ってクラスターに接続するときは、トンネル経由で接続しています。 通信は、HTTPS ではなく SSH トンネルを使って保護されます。 HTTPS を使用してインターネット経由で接続するには、`https://clustername.azurehdinsight.net` を使用します。`clustername` はクラスターの名前です。
 
 2. Ambari Web UI でページの左側にある一覧から [HDFS] を選択します。
 
@@ -138,23 +139,20 @@ ssh -C2qTnNf -D 9876 sshuser@clustername-ssh.azurehdinsight.net
 
     ![QuickLinks メニューが展開された画像](./media/hdinsight-linux-ambari-ssh-tunnel/namenodedropdown.png)
 
-   > [!NOTE]  
-   > __[Quick Links]\(クイック リンク\)__ を選択すると、待機インジケーターが表示されることがあります。 この状態は、低速のインターネット接続を使っている場合に発生する可能性があります。 サーバーからデータが取得されるまで 1 ～ 2 分待ってから、改めて一覧を表示してみてください。
-   >
-   > **[Quick Links]\(クイック リンク\)** メニューの一部のエントリが、画面の右側で切れている場合があります。 その場合は、マウスを使ってメニューを拡大し、右矢印キーを使って画面を右にスクロールして、メニューの残りを表示します。
+    > [!NOTE]  
+    > __[Quick Links]\(クイック リンク\)__ を選択すると、待機インジケーターが表示されることがあります。 この状態は、低速のインターネット接続を使っている場合に発生する可能性があります。 サーバーからデータが取得されるまで 1 ～ 2 分待ってから、改めて一覧を表示してみてください。
+    >
+    > **[Quick Links]\(クイック リンク\)** メニューの一部のエントリが、画面の右側で切れている場合があります。 その場合は、マウスを使ってメニューを拡大し、右矢印キーを使って画面を右にスクロールして、メニューの残りを表示します。
 
 4. 次の図ようなページが表示されます。
 
     ![NameNode UI の画像](./media/hdinsight-linux-ambari-ssh-tunnel/namenode.png)
 
-   > [!NOTE]  
-   > このページの URL に注意してください。**http\://hn1-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:8088/cluster** のようになっています。 この URI は、ノードの内部の完全修飾ドメイン名 (FQDN) を使っているので、SSH トンネルを使うことによってのみアクセスできます。
+    > [!NOTE]  
+    > このページの URL に注意してください。`http://hn1-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:8088/cluster` に類似しています。 この URI は、ノードの内部の完全修飾ドメイン名 (FQDN) を使っているので、SSH トンネルを使うことによってのみアクセスできます。
 
 ## <a name="next-steps"></a>次の手順
 
 SSH トンネルを作成して使う方法を学習したので、Ambari を使う他の方法を以下のドキュメントで参照してください。
 
 * [Apache Ambari を使用した HDInsight クラスターの管理](hdinsight-hadoop-manage-ambari.md)
-
-SSH の使用方法の詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページをご覧ください。
-

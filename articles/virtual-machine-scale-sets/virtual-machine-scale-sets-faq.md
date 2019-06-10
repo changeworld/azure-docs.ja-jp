@@ -13,15 +13,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/25/2019
+ms.date: 05/24/2019
 ms.author: manayar
 ms.custom: na
-ms.openlocfilehash: b5af6c5007130d71f94e1fa748adc333a8d08a48
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 0674d8c98f4bf37bbf9417de60ff4c60910d802a
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64689317"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66258285"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure Virtual Machine Scale Sets の FAQ
 
@@ -621,11 +621,11 @@ Azure Portal で仮想マシン スケール セットの VM 数を変更する�
 
 ## <a name="patching-and-operations"></a>修正プログラムの適用と操作
 
-### <a name="how-do-i-create-a-scale-set-in-an-existing-resource-group"></a>既存のリソース グループでスケール セットを作成するにはどうすればよいですか。
+### <a name="can-i-create-a-scale-set-in-an-existing-resource-group"></a>既存のリソース グループにスケール セットを作成できますか。
 
-Azure Portal で既存のリソース グループにスケール セットを作成することはできませんが、Azure Resource Manager テンプレートからスケール セットを展開するときに、既存のリソース グループを指定できます。 Azure PowerShell または CLI を使用してスケール セットを作成するときに、既存のリソース グループを指定することもできます。
+はい。既存のリソース グループにスケール セットを作成できます。
 
-### <a name="can-we-move-a-scale-set-to-another-resource-group"></a>別のリソース グループにスケール セットを移動できますか。
+### <a name="can-i-move-a-scale-set-to-another-resource-group"></a>別のリソース グループにスケール セットを移動できますか。
 
 はい。スケール セット リソースは、新しいサブスクリプションまたはリソース グループに移動できます。
 

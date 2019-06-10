@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/13/2018
 ms.author: gwallace
 ms.custom: include file
-ms.openlocfilehash: b701183fa270b1aad9a622a21c5ce0795fc8057f
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 2823a33b25812a69ad463433bacd9710655c9176
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60012503"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66238685"
 ---
 #### <a name="process-automation"></a>プロセスの自動化
 
@@ -31,6 +31,7 @@ ms.locfileid: "60012503"
 | サンドボックスごとに許可されるネットワーク ソケットの最大数<sup>1</sup> |1,000 |Azure サンドボックスにのみ適用されます。|
 | Runbook ごとに許可される最長実行時間<sup>1</sup> |3 時間 |Azure サンドボックスにのみ適用されます。|
 | サブスクリプションでの Automation アカウントの最大数 |制限なし ||
+| Automation アカウントあたりのハイブリッド worker グループの最大数|4,000||
 |1 つの Hybrid Runbook Worker で実行できる同時実行ジョブの最大数|50 ||
 | Runbook ジョブの最大パラメーター サイズ   | 512 キロ ビット||
 | Runbook の最大パラメーター   | 50|パラメーターの 50 の上限に達したら、パラメーターに JSON または XML 文字列を渡し、Runbook を使用して解析することができます。|
@@ -52,3 +53,11 @@ ms.locfileid: "60012503"
 |Linux パッケージ|1,250||
 |サービス|250||
 |デーモン|250||
+
+#### <a name="update-management"></a>更新管理
+
+次の表には、更新管理の制限が示されています。
+
+| **リソース** | **制限**| **メモ** |
+|---|---|---|
+|更新プログラムの展開ごとのマシンの数|1,000||

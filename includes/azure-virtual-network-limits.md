@@ -5,17 +5,17 @@ services: networking
 author: anavinahar
 ms.service: networking
 ms.topic: include
-ms.date: 04/10/2019
+ms.date: 05/15/2019
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: ff6e08929d5ede86ba0632e7cfb38d81d21ca7ec
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: cb586be1a139b331c259a1197cc62e7ca4f25666
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59804471"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66238737"
 ---
-<a name="virtual-networking-limits-classic"></a>次の制限は、サブスクリプションごとにクラシック デプロイメント モデルを通じて管理されるネットワーク リソースのみに適用されます。 [サブスクリプションの上限に対する現在のリソース使用状況の確認](../articles/networking/check-usage-against-limits.md)に関するページを参照してください。
+<a name="virtual-networking-limits-classic"></a>次の制限は、サブスクリプションごとに**クラシック** デプロイ モデルを通じて管理されるネットワーク リソースのみに適用されます。 [サブスクリプションの上限に対する現在のリソース使用状況の確認](../articles/networking/check-usage-against-limits.md)に関するページを参照してください。
 
 | Resource | 既定の制限 | 上限 |
 | --- | --- | --- |
@@ -24,23 +24,23 @@ ms.locfileid: "59804471"
 | 仮想ネットワークあたりの DNS サーバー数 |20 |20 |
 | 仮想ネットワークごとのプライベート IP アドレス |4,096 |4,096 |
 | 仮想マシンまたはロール インスタンスの NIC ごとの同時 TCP または UDP フロー数 |2 つ以上の NIC で 500,000 (最大 1,000,000)。 |2 つ以上の NIC で 500,000 (最大 1,000,000)。 |
-| ネットワーク セキュリティ グループ (NSG) |100 |200 |
-| NSG あたりの NSG ルール数 |200 |1,000 |
-| ユーザー定義ルート テーブル |100 |200 |
-| ルート テーブルあたりのユーザー定義ルート |100 |400 |
-| パブリック IP アドレス (動的) |5 |サポートにお問い合せください。 |
-| 予約済みパブリック IP アドレス |20 |サポートにお問い合せください。 |
-| デプロイあたりのパブリック VIP |5 |サポートにお問い合せください。 |
+| ネットワーク セキュリティ グループ (NSG) |200 |200 |
+| NSG あたりの NSG ルール数 |1,000 |1,000 |
+| ユーザー定義ルート テーブル |200 |200 |
+| ルート テーブルあたりのユーザー定義ルート |400 |400 |
+| パブリック IP アドレス (動的) |5 |サポートにお問い合せください |
+| 予約済みパブリック IP アドレス |20 |サポートにお問い合せください |
+| デプロイあたりのパブリック VIP |5 |サポートにお問い合せください |
 | 展開あたりのプライベート VIP (内部負荷分散) |1 |1 |
 | エンドポイント アクセス制御リスト (ACL) |50 |50 |
 
 #### <a name="azure-resource-manager-virtual-networking-limits"></a>ネットワークの制限 - Azure Resource Manager
-次の制限は、サブスクリプションごとにリージョン単位で Azure Resource Manager デプロイメント モデルを通して管理されるネットワーク リソースにのみ適用されます。 [サブスクリプションの上限に対する現在のリソース使用状況の確認](../articles/networking/check-usage-against-limits.md)に関するページを参照してください。
+次の制限は、サブスクリプションごとにリージョン単位で **Azure Resource Manager** デプロイ モデルを通して管理されるネットワーク リソースにのみ適用されます。 [サブスクリプションの上限に対する現在のリソース使用状況の確認](../articles/networking/check-usage-against-limits.md)に関するページを参照してください。
 
 > [!NOTE]
 > 最近、すべての既定の制限がそれぞれの上限まで引き上げられました。 上限列が存在しない場合、記載されているリソースに調整可能な制限がないことを意味します。 過去にこれらの制限をサポートにより引き上げていて、次の表のように更新された制限が表示されない場合は、[オンライン カスタマー サポートに申請 (無料)](../articles/azure-resource-manager/resource-manager-quota-errors.md) できます
 
-| Resource | 既定の制限 | 
+| Resource | 既定/上限 | 
 | --- | --- |
 | 仮想ネットワーク |1,000 |
 | 仮想ネットワークあたりのサブネット数 |3,000 |
@@ -70,12 +70,12 @@ ms.locfileid: "59804471"
 | パブリック IP アドレス - 動的 | Basic で 1,000。 |サポートにお問い合せください。 |
 | パブリック IP アドレス - 静的 | Basic で 1,000。 |サポートにお問い合せください。 |
 | パブリック IP アドレス - 静的 | Standard で 200。|サポートにお問い合せください。 |
-| パブリック IP プレフィックスのサイズ (プレビュー) | /28 | /28 |
+| パブリック IP プレフィックス サイズ | /28 | サポートにお問い合せください。 |
 
 #### <a name="load-balancer"></a>Load Balancer の制限
 次の制限は、サブスクリプションごとにリージョン単位で Azure Resource Manager デプロイメント モデルを通して管理されるネットワーク リソースにのみ適用されます。 [サブスクリプションの上限に対する現在のリソース使用状況の確認](../articles/networking/check-usage-against-limits.md)に関するページを参照してください。
 
-| Resource | 既定の制限 |
+| Resource | 既定/上限 |
 | --- | --- |
 | ロード バランサー | 1,000 | 
 | リソースあたりのルール数、Basic | 250 |

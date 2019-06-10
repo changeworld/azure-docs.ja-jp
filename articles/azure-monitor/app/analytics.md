@@ -12,23 +12,20 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 02/02/2019
 ms.author: mbullwin
-ms.openlocfilehash: d75544a30a441b5178a1e9dd368f1ce41cd4d321
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: f5819194e7967b5921f34223cad299752460de30
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64574265"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66255638"
 ---
 # <a name="analytics-in-application-insights"></a>Application Insights の Analytics
 Analytics は、[Application Insights](app-insights-overview.md) の強力な検索およびクエリのツールです。 Analytics は Web ツールであるため、セットアップは不要です。
-Application Insights をお使いのアプリの一つで構成済みの場合、アプリの [[概要]](app-insights-dashboards.md) ブレードで Analytics を開いてアプリのデータを分析できます。
+Application Insights をご利用のアプリのいずれかで構成済みの場合、アプリの [概要] ブレードで Analytics を開いてアプリのデータを分析できます。
 
 ![portal.azure.com で Application Insights リソースを開き、[Analytics] をクリックします。](./media/analytics/001.png)
 
 無料のデモ環境である [Analytics プレイグラウンド](https://go.microsoft.com/fwlink/?linkid=859557)を使って、多くのサンプル データを利用することもできます。
-<br>
-<br>
-> [!VIDEO https://channel9.msdn.com/events/Connect/2016/123/player] 
 
 ## <a name="relation-to-azure-monitor-logs"></a>Azure Monitor ログとの関係
 Application Insights Analytics は、Azure Monitor ログなどの [Azure Data Explorer](/azure/data-explorer) に基づいていて、[Kusto クエリ言語](/azure/kusto/query)も使用します。 Azure Monitor ログと同じ[ログ分析ポータル](../log-query/get-started-portal.md)を使用しますが、そのデータは個別のパーティションに格納されます。

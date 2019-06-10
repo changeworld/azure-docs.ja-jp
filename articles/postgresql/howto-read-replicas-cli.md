@@ -5,20 +5,20 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 5/6/2019
-ms.openlocfilehash: 9730faf3191ef2e2bd0b6c3caddefa0492b33fc5
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.date: 05/28/2019
+ms.openlocfilehash: 9a6a1a744a8441d2f082d4d14a3aba8aa1cfc09e
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510250"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66306035"
 ---
 # <a name="create-and-manage-read-replicas-from-the-azure-cli"></a>Azure CLI から読み取りレプリカを作成および管理する
 
 この記事では、Azure CLI から Azure Database for PostgreSQL の読み取りレプリカを作成および管理する方法について説明します。 読み取りレプリカの詳細については、[概要](concepts-read-replicas.md)を参照してください。
 
-> [!NOTE]
-> Azure CLI では、マスター サーバーと異なるリージョンでのレプリカの作成がまだサポートされていません。 リージョン間レプリカを作成するには、[Azure portal](howto-read-replicas-portal.md) を使用します。
+> [!IMPORTANT]
+> マスター サーバーと同じ Azure リージョン内、または選択した他の任意の Azure リージョン内に読み取りレプリカを作成できます。 リージョン間レプリケーションは、現在パブリック プレビュー段階です。
 
 ## <a name="prerequisites"></a>前提条件
 - マスター サーバーになる [Azure Database for PostgreSQL サーバー](quickstart-create-server-up-azure-cli.md)。
@@ -55,8 +55,16 @@ CLI をローカルにインストールして使用する場合、この記事�
 | name | mydemoserver-replica | 作成する新しいレプリカ サーバーの名前。 |
 | source-server | mydemoserver | レプリケート元の既存のマスター サーバーの名前またはリソース ID。 |
 
+以下の CLI の例では、レプリカはマスターと同じリージョンに作成されます。
+
 ```azurecli-interactive
 az postgres server replica create --name mydemoserver-replica --source-server mydemoserver --resource-group myresourcegroup
+```
+
+リージョン間の読み取りレプリカを作成するには、`--location` パラメーターを使用します。 以下の CLI の例では、米国西部にレプリカを作成します。
+
+```azurecli-interactive
+az postgres server replica create --name mydemoserver-replica --source-server mydemoserver --resource-group myresourcegroup --location westus
 ```
 
 汎用またはメモリ最適化マスター サーバーで `azure.replication_support` パラメーターを **[REPLICA]** に設定しておらず、サーバーを再起動していないと、エラーが返されます。 レプリカを作成する前に、この 2 つの手順を済ませておいてください。

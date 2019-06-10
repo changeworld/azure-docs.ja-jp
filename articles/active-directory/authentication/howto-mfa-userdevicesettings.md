@@ -1,6 +1,6 @@
 ---
 title: 管理者によるユーザーとデバイスの管理 - Azure MFA - Azure Active Directory
-description: ここでは、追加のセキュリティ確認を強制するなど、ユーザー設定を変更する方法について説明します。
+description: 追加のセキュリティ確認を強制するなど、管理者がユーザー設定を変更する方法。
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c78d6d901c050f6d1df8b53b34f0088d3ad8b0f8
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 04d4848a00fd645bcf23342f27fe820ccf034a8b
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58368478"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66298840"
 ---
 # <a name="manage-user-settings-with-azure-multi-factor-authentication-in-the-cloud"></a>クラウドでの Azure Multi-factor Authentication によるユーザー設定の管理
 
@@ -33,14 +33,22 @@ ms.locfileid: "58368478"
 ### <a name="how-to-require-users-to-provide-contact-methods-again"></a>連絡方法をもう一度提供するようユーザーに要求する方法
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. 左側の **[Azure Active Directory]** > **[ユーザー]** > **[すべてのユーザー]** を選択します。
+2. 左側の **[Azure Active Directory]**  >  **[ユーザー]**  >  **[すべてのユーザー]** を選択します。
 3. 右側のツール バーで **[Multi-Factor Authentication]** を選択します。 多要素認証ページが開きます。
-4. ユーザーまたは管理するユーザーの横にあるチェック ボックスをオンにします。 クイック手順オプションの一覧が右側に表示されます。
+4. ユーザーまたは管理するユーザーの横にあるチェック ボックスをオンにします。 クイック ステップのオプションの一覧が右側に表示されます。
 5. **[Manage user settings]** (ユーザー設定の管理) を選択します。
 6. **[選択したユーザーについて連絡方法の再指定を必須にする]** チェック ボックスをオンにします。
    ![連絡方法をもう一度提供するようユーザーに要求する](./media/howto-mfa-userdevicesettings/reproofup.png)
 7. **[Save]** をクリックします。
 8. **[閉じる]** をクリックします。
+
+`StrongAuthenticationMethods` 属性を消去するガイドとして次を利用することで、組織は PowerShell でこれらの手順を完了できます。
+
+```PowerShell
+$Upn = "theuser@domain.com"
+$noMfaConfig = @()
+Set-MsolUser -UserPrincipalName $Upn -StrongAuthenticationMethods $noMfaConfig
+```
 
 ## <a name="delete-users-existing-app-passwords"></a>ユーザーの既存のアプリ パスワードを削除する
 
@@ -49,9 +57,9 @@ ms.locfileid: "58368478"
 ### <a name="how-to-delete-users-existing-app-passwords"></a>ユーザーの既存のアプリ パスワードを削除する方法
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. 左側の **[Azure Active Directory]** > **[ユーザー]** > **[すべてのユーザー]** を選択します。
+2. 左側の **[Azure Active Directory]**  >  **[ユーザー]**  >  **[すべてのユーザー]** を選択します。
 3. 右側のツール バーで **[Multi-Factor Authentication]** を選択します。 多要素認証ページが開きます。
-4. ユーザーまたは管理するユーザーの横にあるチェック ボックスをオンにします。 クイック手順オプションの一覧が右側に表示されます。
+4. ユーザーまたは管理するユーザーの横にあるチェック ボックスをオンにします。 クイック ステップのオプションの一覧が右側に表示されます。
 5. **[Manage user settings]** (ユーザー設定の管理) を選択します。
 6. **[選択したユーザーが生成したすべての既存のアプリ パスワードを削除する]** チェック ボックスをオンにします。
    ![すべての既存のアプリ パスワードを削除する](./media/howto-mfa-userdevicesettings/deleteapppasswords.png)
@@ -64,16 +72,16 @@ Azure Multi-Factor Authentication の構成可能な機能の 1 つに、デバ�
 
 ユーザーは通常使用しているデバイスで、構成可能な日数の間、2 段階認証を省略できます。 アカウントが侵害されたり、信頼済みデバイスを紛失したりした場合、信頼済みの状態を削除し、2 段階認証を再び要求できる必要があります。
 
-**[記憶されているすべてのデバイスに多要素認証を復元]** 設定は、ユーザーがデバイスを信頼済みとしてマークしているかどうかに関係なく、次回のサインイン時に 2 段階認証の実行を要求することを意味します。
+**[記憶されているすべてのデバイスで多要素認証を復元する]** を選択すると、デバイスを信頼できるとして設定している場合でも、次回サインインするとき、2 段階認証がユーザーに求められます。
 
 ### <a name="how-to-restore-mfa-on-all-suspended-devices-for-a-user"></a>ユーザーの除外されたデバイスすべてに MFA を復元する方法
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. 左側の **[Azure Active Directory]** > **[ユーザー]** > **[すべてのユーザー]** を選択します。
+2. 左側の **[Azure Active Directory]**  >  **[ユーザー]**  >  **[すべてのユーザー]** を選択します。
 3. 右側のツール バーで **[Multi-Factor Authentication]** を選択します。 多要素認証ページが開きます。
-4. ユーザーまたは管理するユーザーの横にあるチェック ボックスをオンにします。 クイック手順オプションの一覧が右側に表示されます。
+4. ユーザーまたは管理するユーザーの横にあるチェック ボックスをオンにします。 クイック ステップのオプションの一覧が右側に表示されます。
 5. **[Manage user settings]** (ユーザー設定の管理) を選択します。
-6. **[記憶されているすべてのデバイスに多要素認証を復元]**
+6. **[記憶されているすべてのデバイスに多要素認証を復元]** 
    ![[記憶されているすべてのデバイスに多要素認証を復元]](./media/howto-mfa-userdevicesettings/rememberdevices.png) ボックスにチェックマークを入れます。
 7. **[Save]** をクリックします。
 8. **[閉じる]** をクリックします。

@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: spelluru
-ms.openlocfilehash: b6abb0048dcc722241a2cd87354224b0fd7fa2f9
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: f6c00f4ada0590df91fce0c36281d0c0cac67b77
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56234188"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66257944"
 ---
 # <a name="event-sources-in-azure-event-grid"></a>Azure Event Grid のイベント ソース
 
@@ -74,7 +74,7 @@ Capture ファイル イベントに対応するために、Event Hubs のイベ
 
 ## <a name="iot-hub"></a>IoT Hub
 
-デバイスの作成、削除、接続、切断のイベントに対応するために、IoT Hub のイベントをサブスクライブします。
+デバイスの作成、削除、接続、切断、テレメトリのイベントに対応するために、IoT Hub のイベントをサブスクライブします。
 
 |タイトル  |説明  |
 |---------|---------|

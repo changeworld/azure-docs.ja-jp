@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: magoedte
-ms.openlocfilehash: a4e0432260cfb9ee11ed318305fb967d160de835
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 901544886e0a0c90c29e83fc71f7a7a25ffc6862
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66129689"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244881"
 ---
-# <a name="use-azure-blob-storage-for-iis-and-azure-table-storage-for-events-with-azure-monitor"></a>Azure Monitor で IIS 用に Azure Blob Storage を使用し、イベント用に Azure テーブル ストレージを使用する
+# <a name="collect-azure-diagnostic-logs-from-azure-storage"></a>Azure 診断ログを Azure Storage から収集する
 
 Azure Monitor は、テーブル ストレージに診断を書き込む次のサービスのログ、または Blob Storage に書き込まれた IIS ログを読み取ることができます。
 
@@ -61,7 +61,7 @@ Azure Monitor がこれらの Azure 診断ログを収集するには、ログ�
 
 1. 仮想マシンを作成する際に、VM エージェントをインストールします。 仮想マシンが既に存在する場合は、VM エージェントが既にインストールされていることを確認します。
 
-   * Azure Portal で仮想マシンに移動し、**[オプションの構成]**、**[診断]** の順に選択して、**[状態]** を **[オン]** に設定します。
+   * Azure Portal で仮想マシンに移動し、 **[オプションの構成]** 、 **[診断]** の順に選択して、 **[状態]** を **[オン]** に設定します。
 
      操作が完了すると、VM に Azure Diagnostics の拡張機能がインストールされ、実行されます。 この拡張機能により、診断データが収集されます。
 2. 既存の VM で監視を有効にし、イベント ログを構成します。 診断は VM レベルで有効にすることができます。 診断を有効にして、イベント ログを構成するには、次の手順を実行します。

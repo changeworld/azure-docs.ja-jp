@@ -5,15 +5,15 @@ services: virtual-machines
 author: msraiye
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 02/22/2019
+ms.date: 05/23/2019
 ms.author: raiye
 ms.custom: include file
-ms.openlocfilehash: 72d9ec52732a78e39f6481e2cb2d40f17f86f028
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 7b9b30f1598f7e50d25b15aaf2fda896ee9e5012
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66147415"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66248852"
 ---
 # <a name="enable-write-accelerator"></a>書き込みアクセラレータを有効にする
 
@@ -48,6 +48,7 @@ Azure ディスク/VHD で書き込みアクセラレータを使うときは、
 
 | VM の SKU | 書き込みアクセラレータ ディスクの数 | VM あたりの書き込みアクセラレータ ディスクの IOPS |
 | --- | --- | --- |
+| M208ms_v2、M208s_v2| 8 | 10000 |
 | M128ms、128s | 16 | 20000 |
 | M64ms、M64ls、M64s | 8 | 10000 |
 | M32ms、M32ls、M32ts、M32s | 4 | 5000 |
@@ -135,7 +136,7 @@ Update-AzVM -ResourceGroupName $rgname -VM $vm
 
 ### <a name="enabling-write-accelerator-on-an-existing-azure-disk-using-powershell"></a>PowerShell を使用して既存の Azure ディスクで書き込みアクセラレータを有効にする
 
-このスクリプトを使って、既存のディスクで書き込みアクセラレータを有効にすることができます。 `myVM`、`myWAVMs`、および `test-log001` を特定のデプロイに対して適切な値に置き換えます。 スクリプトでは、**$newstatus** の値を "$true" に設定して、既存のディスクに書き込みアクセラレータを追加します。 値 "$false" を使うと、特定のディスクの書き込みアクセラレータが無効になります。
+このスクリプトを使って、既存のディスクで書き込みアクセラレータを有効にすることができます。 `myVM`、`myWAVMs`、および `test-log001` を特定のデプロイに対して適切な値に置き換えます。 スクリプトでは、 **$newstatus** の値を "$true" に設定して、既存のディスクに書き込みアクセラレータを追加します。 値 "$false" を使うと、特定のディスクの書き込みアクセラレータが無効になります。
 
 ```powershell
 #Specify your VM Name

@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/21/2019
+ms.date: 05/28/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: e13bcb7d4eeded691669277b64aba9048f3bbefa
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: a390372587514e6ce5c9cb40df1d30cd400d9f41
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65150413"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66299206"
 ---
 # <a name="content-protection-with-dynamic-encryption"></a>動的暗号化によるコンテンツ保護
 
@@ -39,14 +39,13 @@ Azure Media Services を使用すると、メディアがコンピューター�
 
 1. Azure Media Services コード
   
-   [DRM](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs) サンプルで、Media Services v3 を使用してマルチ DRM システムを実装する方法と、Media Services のライセンス/キー配信サービスを使用する方法を示しています。 複数の暗号化の種類 (AES-128、PlayReady、Widevine、FairPlay) を使用して各アセットを暗号化することができます。 合理的な組み合わせについては、「[ストリーミング プロトコルと暗号化の種類](#streaming-protocols-and-encryption-types)」を参照してください。
+   [DRM](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs) サンプルからは、.NET を使用し、マルチ DRM システムと Media Services v3 を実装する方法がわかります。 また、Media Services ライセンス/キー配信サービスを使用する方法がわかります。 複数の暗号化の種類 (AES-128、PlayReady、Widevine、FairPlay) を使用して各アセットを暗号化することができます。 合理的な組み合わせについては、「[ストリーミング プロトコルと暗号化の種類](#streaming-protocols-and-encryption-types)」を参照してください。
   
    この例では、次のことを行っています。
 
-   1. [コンテンツ キー ポリシー](https://docs.microsoft.com/rest/api/media/contentkeypolicies)を作成して構成します。
+   1. [コンテンツ キー ポリシー](content-key-policy-concept.md)を作成して構成します。 DRM でコンテンツを暗号化する場合、**コンテンツ キー ポリシー**を作成する必要があります。 このポリシーは、クリアなストリーミングまたはダウンロードには必要ありません。 コンテンツ キー (資産へのアクセスをセキュリティで保護する) をエンド クライアントに届ける方法を構成するには、**コンテンツ キー ポリシー**を作成します。    
 
       * JWT の要求に基づいて承認チェックのロジックを指定する、ライセンス配信の承認を定義します。
-      * コンテンツ キーを指定して DRM 暗号化を構成します。
       * [PlayReady](playready-license-template-overview.md)、[Widevine](widevine-license-template-overview.md)、[FairPlay](fairplay-license-overview.md) のライセンスを構成します。 テンプレートを使用すると、使用する各 DRM の権利とアクセス許可を構成できます。
 
         ```
@@ -54,11 +53,11 @@ Azure Media Services を使用すると、メディアがコンピューター�
         ContentKeyPolicyWidevineConfiguration widevineConfig = ConfigureWidevineLicenseTempate();
         ContentKeyPolicyFairPlayConfiguration fairPlayConfig = ConfigureFairPlayPolicyOptions();
         ```
-   2. 暗号化された資産をストリーミングするように構成された[ストリーミング ロケーター](https://docs.microsoft.com/rest/api/media/streaminglocators)を作成します。 
+   2. 暗号化された資産をストリーミングするように構成された[ストリーミング ロケーター](streaming-locators-concept.md)を作成します。 
   
-      **ストリーミング ロケーター**には[ストリーミング ポリシー](https://docs.microsoft.com/rest/api/media/streamingpolicies)を関連付ける必要があります。 この例では、"Predefined_MultiDrmCencStreaming" ポリシーに StreamingLocator.StreamingPolicyName を設定します。 このポリシーは、2 つのコンテンツ キー (エンベロープおよび CENC) を生成してロケーターに設定する必要があることを示しています。 このため、エンベロープ、PlayReady および Widevine の暗号化が適用されます (キーは構成済みの DRM ライセンスに基づいて再生クライアントに配信されます)。 また、CBCS (FairPlay) でもストリームを暗号化する場合は、"Predefined_MultiDrmStreaming" を使用します。
-    
-      ビデオを暗号化したいため、以前に構成した**コンテンツ キー ポリシー**も**ストリーミング ロケーター**に関連付ける必要があります。 
+      **ストリーミング ロケーター**には[ストリーミング ポリシー](streaming-policy-concept.md)を関連付ける必要があります。 この例では、"Predefined_MultiDrmCencStreaming" ポリシーに StreamingLocator.StreamingPolicyName を設定します。 PlayReady と Widevine の暗号化が適用されます (キーは構成済みの DRM ライセンスに基づいて再生クライアントに配信されます)。 また、CBCS (FairPlay) でもストリームを暗号化する場合は、"Predefined_MultiDrmStreaming" を使用します。
+      
+      ストリーミング ロケーターは、定義された**コンテンツ キー ポリシー**にも関連付けられます。
     
    3. テスト トークンを作成します。
 
@@ -102,11 +101,11 @@ HLS プロトコルでは、次のコンテナー形式と暗号化スキーム�
 
 |コンテナー形式|暗号化スキーム|URL の例|
 |---|---|---|
-|All|AES|`https://amsv3account-usw22.streaming.media.azure.net/<id>/ignite.ism/manifest(format=m3u8-aapl,encryption=cbc)`|
-|MPG2-TS |CBCS (FairPlay) ||
-|CMAF (fmp4) |CBCS (FairPlay) |`https://amsv3account-usw22.streaming.media.azure.net/<id>/ignite.ism/manifest(format=m3u8-cmaf,encryption=cbcs-aapl)`|
-|MPG2-TS |CENC (PlayReady) ||
-|CMAF (fmp4) |CENC (PlayReady) ||
+|All|AES|`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=m3u8-aapl,encryption=cbc)`|
+|MPG2-TS |CBCS (FairPlay) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=m3u8-aapl,encryption=cbcs-aapl)`|
+|CMAF (fmp4) |CBCS (FairPlay) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=m3u8-cmaf,encryption=cbcs-aapl)`|
+|MPG2-TS |CENC (PlayReady) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=m3u8-aapl,encryption=cenc)`|
+|CMAF (fmp4) |CENC (PlayReady) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=m3u8-cmaf,encryption=cenc)`|
 
 HLS/CMAF + FairPlay (HEVC / H.265 を含む) は、次のデバイスでサポートされています。
 
@@ -120,9 +119,9 @@ MPEG-DASH プロトコルでは、次のコンテナー形式と暗号化スキ�
 
 |コンテナー形式|暗号化スキーム|URL の例
 |---|---|---|
-|All|AES|`https://amsv3account-usw22.streaming.media.azure.net/<id>/ignite.ism/manifest(format=mpd-time-csf,encryption=cbc)`|
-|CSF (fmp4) |CENC (Widevine + PlayReady) |`https://amsv3account-usw22.streaming.media.azure.net/<id>/ignite.ism/manifest(format=mpd-time-csf,encryption=cenc)`|
-|CMAF (fmp4)|CENC (Widevine + PlayReady)||
+|All|AES|`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=mpd-time-csf,encryption=cbc)`|
+|CSF (fmp4) |CENC (Widevine + PlayReady) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=mpd-time-csf,encryption=cenc)`|
+|CMAF (fmp4)|CENC (Widevine + PlayReady)|`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(format=mpd-time-cmaf,encryption=cenc)`|
 
 ### <a name="smooth-streaming"></a>スムーズ ストリーミング
 
@@ -130,8 +129,8 @@ MPEG-DASH プロトコルでは、次のコンテナー形式と暗号化スキ�
 
 |Protocol|コンテナー形式|暗号化スキーム|
 |---|---|---|
-|fMP4|AES||
-|fMP4 | CENC (PlayReady) |`https://amsv3account-usw22.streaming.media.azure.net/<id>/ignite.ism/manifest(encryption=cenc)`|
+|fMP4|AES|`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(encryption=cbc)`|
+|fMP4 | CENC (PlayReady) |`https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(encryption=cenc)`|
 
 ### <a name="browsers"></a>ブラウザー
 
@@ -168,7 +167,7 @@ Media Services は、承認されたクライアントに DRM (PlayReady、Widev
 * StreamingPolicyWidevineConfiguration.CustomLicenseAcquisitionUrlTemplate - 上記と同じですが、Widevine 専用です。 
 * StreamingPolicyFairPlayConfiguration.CustomLicenseAcquisitionUrlTemplate - 上記と同じですが、FairPlay 専用です。  
 
-例: 
+例:
 
 ```csharp
 streamingPolicy.EnvelopEncryption.customKeyAcquisitionUrlTemplate = "https://mykeyserver.hostname.com/envelopekey/{AlternativeMediaId}/{ContentKeyId}";
