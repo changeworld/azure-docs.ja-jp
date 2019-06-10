@@ -533,8 +533,8 @@
           href: how-to-sql-subquery.md
     - name: 変更フィード
       items:
-        - name: Azure Cosmos DB トリガーのログ
-          href: how-to-configure-cosmos-db-trigger-logs.md
+        - name: Azure Cosmos DB トリガーの接続ポリシー
+          href: how-to-configure-cosmos-db-trigger-connection-policy.md
         - name: 複数の Azure Cosmos DB トリガー
           href: how-to-create-multiple-cosmos-db-triggers.md
         - name: Azure Cosmos DB トリガーのトラブルシューティング

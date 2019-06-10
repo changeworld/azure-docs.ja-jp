@@ -163,24 +163,28 @@
       items:
         - name: インデクサーの概要
           href: search-indexer-overview.md
-        - name: Blob Storage インデクサー
-          href: search-howto-indexing-azure-blob-storage.md
-        - name: Table Storage インデクサー
+        - name: Azure Table Storage インデクサー
           href: search-howto-indexing-azure-tables.md
-        - name: SQL DB インデクサー
+        - name: Azure SQL DB インデクサー
           href: search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md
-        - name: Cosmos DB インデクサー
+        - name: Azure Cosmos DB インデクサー
           href: search-howto-index-cosmosdb.md
-        - name: 一対多の BLOB インデックス作成
-          href: search-howto-index-one-to-many-blobs.md
-        - name: CSV BLOB のインデックス作成
-          href: search-howto-index-csv-blobs.md
-        - name: JSON BLOB のインデックス作成
-          href: search-howto-index-json-blobs.md
+        - name: Azure Blob Storage インデクサー
+          items:
+            - name: BLOB インデクサーの設定
+              href: search-howto-indexing-azure-blob-storage.md
+            - name: 一対多の BLOB のインデックス作成
+              href: search-howto-index-one-to-many-blobs.md
+            - name: CSV BLOB のインデックス作成
+              href: search-howto-index-csv-blobs.md
+            - name: JSON BLOB のインデックス作成
+              href: search-howto-index-json-blobs.md
+        - name: インデクサーのスケジュール設定
+          href: search-howto-schedule-indexers.md
+        - name: フィールドのマッピング
+          href: search-indexer-field-mappings.md
         - name: SQL Server VM への接続
           href: search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md
-        - name: フィールド マッピング
-          href: search-indexer-field-mappings.md
         - name: 一般的な問題のトラブルシューティング
           href: search-indexer-troubleshooting.md
     - name: AI によるエンリッチ

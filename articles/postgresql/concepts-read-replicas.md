@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: ce99e03cbd767b5e25871397ea9ae9a301132ab6
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 13580289144d798a57e636f15ab5bce629ff3572
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510971"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242293"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL (単一サーバー) の読み取りレプリカ
 
@@ -40,10 +40,9 @@ BI ワークロードおよび分析ワークロードでレポート用のデ�
 
 レプリカ作成ワークフローを開始すると、空の Azure Database for PostgreSQL サーバーが作成されます。 新しいサーバーには、マスター サーバー上にあったデータが設定されます。 作成時間は、マスター上のデータ量と、最後の週次完全バックアップからの経過時間に依存します。 時間の範囲は、数分から数時間になる可能性があります。
 
-読み取りレプリカ機能では、PostgreSQL の (論理レプリケーションではなく) 物理レプリケーションが使用されます。 レプリケーション スロットを使用したストリーミング レプリケーションが、既定の動作モードです。 必要に応じて、遅れを取り戻すためにログ配布が使用されます。
+すべてのレプリカで、ストレージの[自動拡張](concepts-pricing-tiers.md#storage-auto-grow)が有効です。 自動拡張機能によって、レプリカにレプリケートされるデータをレプリカで保持し続けることができ、ストレージ不足エラーを原因とするレプリケーションの中断を防ぐことができます。
 
-> [!NOTE]
-> サーバーに記憶域のアラートを設定していない場合、設定することをお勧めします。 サーバーがレプリケーションに影響を与えるその容量の上限に近づくと、アラートによって通知されます。
+読み取りレプリカ機能では、PostgreSQL の (論理レプリケーションではなく) 物理レプリケーションが使用されます。 レプリケーション スロットを使用したストリーミング レプリケーションが、既定の動作モードです。 必要に応じて、遅れを取り戻すためにログ配布が使用されます。
 
 [Azure portal で読み取りレプリカを作成する](howto-read-replicas-portal.md)方法を確認してください。
 

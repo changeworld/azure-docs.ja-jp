@@ -86,24 +86,27 @@
     - name: ワークスペース
       displayName: concept definitions architecture
       href: concept-workspace.md
+    - name: コンピューティング ターゲット
+      displayName: concept definitions architecture
+      href: concept-compute-target.md
     - name: ビジュアル インターフェイス
       displayName: concept
       href: ui-concept-visual-interface.md
-    - name: 自動化された機械学習
+    - name: 自動化された ML
       displayName: 'automl, auto ml'
       href: concept-automated-ml.md
     - name: モデル管理 (MLOps)
       displayName: 'deploy, deployment, mlops, operationalize, operationalization'
       href: concept-model-management-and-deployment.md
+    - name: 再使用可能な ML パイプライン
+      href: concept-ml-pipelines.md
     - name: モデルの解釈可能性
       displayName: explainability
       href: machine-learning-interpretability-explainability.md
-    - name: FPGA による高速化
+    - name: FPGA の概要
       href: concept-accelerate-with-fpgas.md
-    - name: ONNX および ONNX Runtime による最適化
+    - name: ONNX と ONNX Runtime
       href: concept-onnx.md
-    - name: 機械学習パイプライン
-      href: concept-ml-pipelines.md
     - name: セキュリティ
       items:
         - name: エンタープライズ セキュリティの概要

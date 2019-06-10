@@ -3,20 +3,20 @@ title: .NET Azure Functions で依存関係の挿入を使用する
 description: .NET 関数にサービスを登録して使用するために、依存関係の挿入を使用する方法について学習します
 services: functions
 documentationcenter: na
-author: ggailey777
+author: craigshoemaker
 manager: jeconnoc
 keywords: Azure 関数、関数、サーバーレス アーキテクチャ
 ms.service: azure-functions
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/22/2019
-ms.author: jehollan
-ms.openlocfilehash: 2044718d2ec7a7acc58e1e7ba9ba04ec5caf16b3
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.author: jehollan, glenga, cshoe
+ms.openlocfilehash: 5aa3ebee251e51be19b2d260825226194b678159
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65408445"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242219"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>.NET Azure Functions で依存関係の挿入を使用する
 
@@ -24,13 +24,14 @@ Azure Functions では、依存関係の挿入 (DI) ソフトウェア デザイ
 
 Azure Functions は、ASP.NET Core の依存関係の挿入機能の上にビルドされます。  関数で使用する前に、[ASP.NET Core の依存関係の挿入](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection)のサービス、有効期間、デザイン パターンを理解する必要があります。
 
-## <a name="installing-dependency-injection-packages"></a>依存関係の挿入パッケージをインストールする
+## <a name="prerequisites"></a>前提条件
 
-依存関係の挿入機能を使用するには、それらの API を公開する NuGet パッケージを含める必要があります。
+依存関係の挿入を使用する前に、[Microsoft.Azure.Functions.Extensions](https://www.nuget.org/packages/Microsoft.Azure.Functions.Extensions/) NuGet パッケージをインストールする必要があります。 このパッケージは、パッケージ コンソールから次のコマンドを実行することでインストールできます。
 
 ```powershell
 Install-Package Microsoft.Azure.Functions.Extensions
 ```
+さらに、バージョン 1.0.28 以降の [Microsoft.NET.Sdk.Functions パッケージ](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions/)を使用している必要があります。
 
 ## <a name="registering-services"></a>サービスを登録する
 

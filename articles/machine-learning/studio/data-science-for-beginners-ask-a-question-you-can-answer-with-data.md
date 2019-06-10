@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: sdgilley
 ms.author: sgilley
 ms.date: 03/22/2019
-ms.openlocfilehash: 815aeb9ae6036f08fc87e41980a623e2be8414e5
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 7343692e8484e50a02963b4528889a35cc1fcaa6
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58371096"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66239072"
 ---
 # <a name="ask-a-question-you-can-answer-with-data"></a>データで回答できる質問をする
 ## <a name="video-3-data-science-for-beginners-series"></a>ビデオ 3: 初心者向けデータ サイエンス シリーズ
@@ -72,7 +72,7 @@ ms.locfileid: "58371096"
 
 "これはデータ ポイント A かデータ ポイント B か" という質問では、 何かのカテゴリ (または名前やラベル) を予測します。 この質問に回答するには、"*分類アルゴリズム*" を使用します。
 
-"どのくらいの量か"  または "どのくらいの数か" という質問では、 数量を予測します。 この質問に回答するには、"*回帰アルゴリズム*" を使用します。
+"どのくらいの量か" または "どのくらいの数か" という質問では、 数量を予測します。 この質問に回答するには、"*回帰アルゴリズム*" を使用します。
 
 これらの質問をどのように変換できるかを確認するには、"新聞のどの記事がこの読者にとって最も興味深いか" という質問に注目します。 これは、さまざまな可能性から 1 つの選択肢の予測を求める質問です。 つまり "A、B、C、D のどれか" は、分類アルゴリズムを使用します。
 

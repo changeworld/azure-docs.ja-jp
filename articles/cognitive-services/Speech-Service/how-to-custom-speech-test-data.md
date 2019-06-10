@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: af801600eebed7c0d4ff01dd1edf01fa595840eb
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: de2f1009c574d9768330d4e6a38a219ba1f81daa
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65785765"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237949"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Custom Speech 用のテスト データを準備する
 
@@ -66,8 +66,8 @@ Microsoft 音声認識の精度をテストしているか、または独自の�
 
 | アクティビティ | 説明 | sox コマンド |
 |----------|-------------|-------------|
-| オーディオ形式の確認 | このコマンドを使用して、オーディオ ファイルの形式を確認します。 | `soxi <filename>.wav` |
-| オーディオの形式の変換 | このコマンドを使用して、オーディオ ファイルを 16 ビット、48 KHz の 1 つのチャネルに変換します。 | `sox <filename>.wav -b 16 -3 signed-integer -c l -r 48k -t wav <filename>.wav` |
+| オーディオ形式の確認 | このコマンドを使用して、オーディオ ファイルの形式を確認します。 | `sox --i <filename>` |
+| オーディオの形式の変換 | このコマンドを使用して、オーディオ ファイルを 16 ビット、16 KHz の 1 つのチャネルに変換します。 | `sox <input> -b 16 -e signed-integer -c 1 -r 16k -t wav <output>.wav` |
 
 ## <a name="audio--human-labeled-transcript-data-for-testingtraining"></a>テスト/トレーニング用のオーディオ + 人間というラベルが付いた文字起こしデータ
 

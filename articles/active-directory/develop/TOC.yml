@@ -235,6 +235,8 @@
               href: msal-js-sso.md
             - name: プロンプトの動作 (JS)
               href: msal-js-prompt-behavior.md
+            - name: ADFS のサポート (.NET)
+              href: msal-net-adfs-support.md
             - name: Azure AD B2C との統合
               items:
                 - name: JavaScript

@@ -12,18 +12,18 @@ ms.author: joke
 ms.reviewer: sstein
 manager: craigg
 ms.date: 03/13/2019
-ms.openlocfilehash: f71fe4ff14e5a6f5fd6b91713970a097e4e56fb9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 627b29018afff2adb57b3b8b5c816bea9c421f68
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57844128"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236857"
 ---
 # <a name="migrate-to-the-new-elastic-database-jobs"></a>新しい Elastic Database ジョブへの移行
 
 [Elastic Database ジョブ](elastic-jobs-overview.md)のバージョンがアップグレードされました。
 
-カスタマー ホスト型の既存の [Elastic Database ジョブ](sql-database-elastic-jobs-overview.md)がある場合は、移行のコマンドレットとスクリプトを使用して最新バージョンに簡単に移行できます。
+カスタマー ホスト型の既存の Elastic Database ジョブがある場合は、移行のコマンドレットとスクリプトを使用して最新バージョンに簡単に移行できます。
 
 
 ## <a name="prerequisites"></a>前提条件
@@ -32,7 +32,7 @@ ms.locfileid: "57844128"
 
 ### <a name="install-the-latest-elastic-jobs-cmdlets"></a>最新のエラスティック ジョブ コマンドレットをインストールする
 
-Azure サブスクリプションをまだお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/)を作成してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 **Az.Sql** 1.1.1-preview モジュールをインストールして、エラスティック ジョブの最新のコマンドレットを入手してください。 管理アクセス権で次の PowerShell コマンドを実行します。
 
