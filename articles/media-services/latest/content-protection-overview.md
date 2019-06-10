@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 05/28/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: a390372587514e6ce5c9cb40df1d30cd400d9f41
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.openlocfilehash: 99aea38ec877074075eaec8cf9ab8da077901acf
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66299206"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393106"
 ---
 # <a name="content-protection-with-dynamic-encryption"></a>動的暗号化によるコンテンツ保護
 
@@ -43,7 +43,7 @@ Azure Media Services を使用すると、メディアがコンピューター�
   
    この例では、次のことを行っています。
 
-   1. [コンテンツ キー ポリシー](content-key-policy-concept.md)を作成して構成します。 DRM でコンテンツを暗号化する場合、**コンテンツ キー ポリシー**を作成する必要があります。 このポリシーは、クリアなストリーミングまたはダウンロードには必要ありません。 コンテンツ キー (資産へのアクセスをセキュリティで保護する) をエンド クライアントに届ける方法を構成するには、**コンテンツ キー ポリシー**を作成します。    
+   1. [コンテンツ キー ポリシー](content-key-policy-concept.md)を作成して構成します。 コンテンツ キー (資産へのアクセスをセキュリティで保護する) をエンド クライアントに届ける方法を構成するには、**コンテンツ キー ポリシー**を作成します。    
 
       * JWT の要求に基づいて承認チェックのロジックを指定する、ライセンス配信の承認を定義します。
       * [PlayReady](playready-license-template-overview.md)、[Widevine](widevine-license-template-overview.md)、[FairPlay](fairplay-license-overview.md) のライセンスを構成します。 テンプレートを使用すると、使用する各 DRM の権利とアクセス許可を構成できます。

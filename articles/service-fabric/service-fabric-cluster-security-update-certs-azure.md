@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/13/2018
 ms.author: aljo
-ms.openlocfilehash: 0038de621a02a2edf3198686e1f2fc88fb917d9c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f1998ec2fe82b9fd52547fbccb208542b22bc949
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66161832"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66306912"
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>Azure Service Fabric クラスターの証明書の追加と削除
 Service Fabric で X.509 証明書がどのように使用されるかを理解するために[クラスターのセキュリティに関するシナリオ](service-fabric-cluster-security.md)を読むことをお勧めします。 先に進む前に、クラスター証明書とは何であり、何の目的で使用されるかを理解しておく必要があります。
@@ -48,7 +48,7 @@ Azure Portal では、セカンダリのクラスター証明書を追加でき�
 
 ## <a name="add-a-secondary-certificate-using-resource-manager-powershell"></a>Resource Manager PowerShell を使用してセカンダリ証明書を追加する
 > [!TIP]
-> セカンダリ証明書を追加するには、[Add-AzServiceFabricClusterCertificate](/powershell/module/az.servicefabric/add-azservicefabricclustercertificate) コマンドレットを使用する方がより優れた簡単な方法です。 このセクションの残りの手順に従う必要はありません。  また、[Add-AzServiceFabricClusterCertificate](/powershell/module/az.servicefabric/add-azservicefabricclustercertificate) コマンドレットを使用するときは、クラスターの作成およびデプロイに当初使用したテンプレートは必要ありません。
+> [Add-AzServiceFabricClusterCertificate](/powershell/module/az.servicefabric/add-azservicefabricclustercertificate) を使用し、よりうまくより簡単に、セカンダリ証明書を追加できるようになりました。 このセクションの残りの手順に従う必要はありません。  また、[Add-AzServiceFabricClusterCertificate](/powershell/module/az.servicefabric/add-azservicefabricclustercertificate) コマンドレットを使用するときは、クラスターの作成およびデプロイに当初使用したテンプレートは必要ありません。
 
 以下の手順は、Resource Manager の動作方法を理解していること、Resource Manager テンプレートを使用して少なくとも 1 つの Service Fabric クラスターをデプロイしていること、クラスターをセットアップするために使用したテンプレートが手元にあることを前提としています。 また、JSON を使いこなせることを前提としています。
 
@@ -195,7 +195,7 @@ Resource Manager テンプレートのパラメーター ファイルを編集�
 ### <a name="deploy-the-template-to-azure"></a>テンプレートを Azure にデプロイする
 
 - これでテンプレートを Azure にデプロイする準備が整いました。 Azure PS のバージョン 1 以降のコマンド プロンプトを開きます。
-- Azure アカウントにログインし、特定の Azure サブスクリプションを選択します。 1 つ以上の Azure サブスクリプションにアクセスできるユーザーにとって、これは重要な手順です。
+- ご自分の Azure アカウントにサインインし、特定の Azure サブスクリプションを選択します。 1 つ以上の Azure サブスクリプションにアクセスできるユーザーにとって、これは重要な手順です。
 
 ```powershell
 Connect-AzAccount
@@ -242,7 +242,7 @@ Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\TrustedPe
 Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\My -FilePath c:\Mycertificates\chackdanTestCertificate9.pfx -Password (ConvertTo-SecureString -String abcd123 -AsPlainText -Force)
 
 ```
-ここでのクイック リファレンスは、セキュリティ保護されたクラスターに接続するための次のコマンドです:  
+ここでのクイック リファレンスは、セキュリティ保護されたクラスターに接続するための次のコマンドです: 
 
 ```powershell
 $ClusterName= "chackosecure5.westus.cloudapp.azure.com:19000"
@@ -256,7 +256,7 @@ Connect-serviceFabricCluster -ConnectionEndpoint $ClusterName -KeepAliveInterval
     -StoreLocation CurrentUser `
     -StoreName My
 ```
-ここでのクイック リファレンスは、クラスターの正常性を取得するための次のコマンドです: 
+ここでのクイック リファレンスは、クラスターの正常性を取得するための次のコマンドです:
 
 ```powershell
 Get-ServiceFabricClusterHealth 

@@ -15,12 +15,12 @@ ms.topic: reference
 ms.date: 03/20/2019
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f273104366b3e583bd98ebcc6d50387a3fb1d335
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 58de8de9a9fab67d743d4560ccda037d8f41301b
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64572814"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66299001"
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health: バージョンのリリース履歴
 Azure Active Directory チームは、Azure AD Connect Health を新機能で定期的に更新しています。 この記事では、リリースされたバージョンと機能の一覧を示します。  
@@ -30,6 +30,13 @@ Azure Active Directory チームは、Azure AD Connect Health を新機能で定
 >
 
 Azure AD Connect Health for Sync は、Azure AD Connect のインストールと統合されます。 詳細については、[Azure AD Connect のリリース履歴](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history)に関する記事をご覧ください。機能のフィードバックについては、[Connnect Health User Voice チャネル](https://feedback.azure.com/forums/169401-azure-active-directory/filters/new?category_id=165591)で投票してください
+
+
+## <a name="may-2019"></a>2019 年 5 月
+**エージェントの更新:** 
+* AD FS 用の Azure AD Connect Health エージェント (バージョン 3.1.51.0) 
+   1. 同じ client-request-id を共有する複数のサインインを区別するためのバグ修正。
+   2. 言語がローカライズされたサーバーで不適切なユーザー名/パスワードのエラーを解析するためのバグ修正。   
 
 ## <a name="april-2019"></a>2019 年 4 月
 **エージェントの更新:** 

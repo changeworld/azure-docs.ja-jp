@@ -70,7 +70,7 @@ WITH RESULT SETS((
 
 ### <a name="install-sqlmlutils"></a>**sqlmlutils** をインストールする
 
-1. https://github.com/Microsoft/sqlmlutils/tree/master/R/dist からローカル コンピューターに、最新の **sqlmlutils** zip ファイルをダウンロードします。 ファイルを解凍する必要はありません。
+1. [https://github.com/Microsoft/sqlmlutils/tree/master/R/dist](https://github.com/Microsoft/sqlmlutils/tree/master/R/dist) からローカル コンピューターに、最新の **sqlmlutils** zip ファイルをダウンロードします。 ファイルを解凍する必要はありません。
 
 1. **コマンド プロンプト**を開き、次のコマンドを実行して **RODBCext** と **sqlmlutils** をローカル コンピューターにインストールします。 完全パスを、ダウンロードした **sqlmlutils** zip ファイルに置き換えます (この例は、ファイルがドキュメント フォルダーにあることを前提としています)。
     

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 6/08/2018
 ms.author: v-jamebr
-ms.openlocfilehash: 5ae2ca352c6d3cbe02b659a97fe3147c1a31128f
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: df3156688f018aee4717271557220396827dd9e2
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58664575"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66306826"
 ---
 # <a name="create-service-fabric-container-running-apache-tomcat-server-on-linux"></a>Linux 上で Apache Tomcat を実行して Service Fabric コンテナーを作成する
 Apache Tomcat は、Java サーブレットと Java サーバー テクノロジの一般的なオープンソースの実装です。 この記事では、Apache Tomcat とシンプルな Web アプリケーションでコンテナーをビルドし、Linux を実行している Service Fabric クラスターにコンテナーをデプロイして、Web アプリケーションに接続する方法を示します。  
@@ -93,7 +93,7 @@ Apache Tomcat の詳細については、[Apache Tomcat のホームページ](h
 
    その他のパラメーターについては、[Docker の実行に関するドキュメント](https://docs.docker.com/engine/reference/commandline/run/)を参照してください。
 
-1. コンテナーをテストするには、ブラウザーを開いて、次の URL のいずれかを入力します。 各 URL のようこそ画面である "Hello World!"  のバリアントが表示されます。
+1. コンテナーをテストするには、ブラウザーを開いて、次の URL のいずれかを入力します。 各 URL のようこそ画面である "Hello World!" のバリアントが表示されます。
 
    - `http://localhost:8080/hello` 
    - `http://localhost:8080/hello/sayhello` 
@@ -111,9 +111,9 @@ Apache Tomcat の詳細については、[Apache Tomcat のホームページ](h
 ## <a name="push-the-tomcat-image-to-your-container-registry"></a>コンテナー レジストリに Tomcat イメージをプッシュする
 Tomcat イメージがデプロイ コンピューター上のコンテナーで実行されていることを確認して、コンテナー レジストリのリポジトリにプッシュします。 この記事では、Azure Container Registry を使用してイメージを保存しますが、手順の一部を変更して、選択した任意のコンテナー レジストリを使用することができます。 この記事では、レジストリ名は *myregistry* であると推定され、完全なレジストリ名は myregistry.azurecr.io になります。 ご自分のシナリオに合わせてこれらを適切に変更してください。 
 
-1. [レジストリの資格情報](../container-registry/container-registry-authentication.md)を使用してコンテナー レジストリにログインするには、`docker login` を実行します。
+1. `docker login` を実行し、ご自分の[レジストリの資格情報](../container-registry/container-registry-authentication.md)を使用してお使いのコンテナー レジストリにサインインします。
 
-   次の例では、Azure Active Directory [サービス プリンシパル](../active-directory/develop/app-objects-and-service-principals.md)の ID とパスワードを渡します。 たとえば、自動化シナリオのために、レジストリにサービス プリンシパルを割り当てることができます。 または、レジストリのユーザー名とパスワードを使ってログインすることもできます。
+   次の例では、Azure Active Directory [サービス プリンシパル](../active-directory/develop/app-objects-and-service-principals.md)の ID とパスワードを渡します。 たとえば、自動化シナリオのために、レジストリにサービス プリンシパルを割り当てることができます。 または、ご自分のレジストリのユーザー名とパスワードを使ってサインインすることもできます。
 
    ```bash
    docker login myregistry.azurecr.io -u xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p myPassword
@@ -162,7 +162,7 @@ Tomcat イメージをコンテナー レジストリにプッシュして、レ
    </Resources>
    ```
 
-11. アプリケーション マニフェスト (*ServiceFabricTomcat/ServiceFabricTomcat/ApplicationManifest.xml*) では、**ServiceManifestImport** タグの下に、次の XML を追加します。 **RepositoryCredentials** タグ内の **AccountName** と **Password** をご自分のコンテナー レジストリの名前とそこにログインするために必要なパスワードに置き換えます。
+11. アプリケーション マニフェスト (*ServiceFabricTomcat/ServiceFabricTomcat/ApplicationManifest.xml*) では、**ServiceManifestImport** タグの下に、次の XML を追加します。 **RepositoryCredentials** タグ内の **AccountName** と **Password** をご自分のコンテナー レジストリの名前とそこにサインインするために必要なパスワードに置き換えます。
 
    ```xml
    <Policies>
@@ -219,7 +219,7 @@ Tomcat イメージをコンテナー レジストリにプッシュして、レ
    ![Service Fabric Explorer](./media/service-fabric-get-started-tomcat/service-fabric-explorer.png)
 
 
-1. Tomcat サーバー上のアプリケーションにアクセスするには、ブラウザー ウィンドウを開いて、次の URL のいずれかを入力します。 ローカル クラスターにデプロイした場合、*PublicIPorFQDN* に *localhost* を使用します。 各 URL のようこそ画面である "Hello World!"  のバリアントが表示されます。
+1. Tomcat サーバー上のアプリケーションにアクセスするには、ブラウザー ウィンドウを開いて、次の URL のいずれかを入力します。 ローカル クラスターにデプロイした場合、*PublicIPorFQDN* に *localhost* を使用します。 各 URL のようこそ画面である "Hello World!" のバリアントが表示されます。
 
    * http://PublicIPorFQDN:8080/hello  
    * http://PublicIPorFQDN:8080/hello/sayhello

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/23/2019
 ms.author: zarhoads
-ms.openlocfilehash: 63d06fbad4f50b2ef4bc85565a8d4281a99462a6
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 76a5391cbe142851d9b1f60ea9346af2e7a35d6a
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66241420"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66392138"
 ---
 # <a name="install-applications-with-helm-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での Helm を使用したアプリケーションのインストール
 
@@ -86,7 +86,7 @@ helm init \
     --tiller-tls-verify \
     --tls-ca-cert ca.cert.pem \
     --service-account tiller \
-      --node-selectors "beta.kubernetes.io/os"="linux"
+    --node-selectors "beta.kubernetes.io/os"="linux"
 ```
 
 ## <a name="find-helm-charts"></a>Helm チャートの検索
@@ -148,7 +148,9 @@ Update Complete. ⎈ Happy Helming!⎈
 Helm を使用してチャートをインストールするには、[helm install][helm-install] コマンドを使用して、インストールするチャートの名前を指定します。 Helm チャートのインストールを実際に確かめるために、Helm チャートを使用して基本的な nginx デプロイをインストールしてみましょう。 TLS/SSL を構成した場合は、`--tls` パラメーターを追加して Helm クライアント証明書を使用します。
 
 ```console
-helm install stable/nginx-ingress --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux
+helm install stable/nginx-ingress \
+    --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux \
+    --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux
 ```
 
 次の出力例の抜粋は、Helm チャートによって作成された Kubernetes リソースのデプロイ状態を示します。

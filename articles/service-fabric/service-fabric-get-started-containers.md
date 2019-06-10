@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/25/2019
 ms.author: aljo
-ms.openlocfilehash: 2cf5bf26dbe18d7b4c6e3b1a93aa38d7748dc5a3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: dbc8363052556f29633c069bcd82af5249a3406f
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66119138"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66306871"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Windows で初めての Service Fabric コンテナー アプリケーションを作成する
 
@@ -40,7 +40,7 @@ ms.locfileid: "66119138"
 * 次のものを実行している開発コンピューター。
   * Visual Studio 2015 または Visual Studio 2017。
   * [Service Fabric SDK およびツール](service-fabric-get-started.md)。
-  *  Docker for Windows。 [Docker CE for Windows (安定版) を入手します](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description)。 Docker をインストールして起動したら、トレイ アイコンを右クリックし、**[Switch to Windows containers]\(Windows コンテナーに切り替える\)** を選択します。 この手順は、Windows に基づいて Docker イメージを実行するために必要です。
+  *  Docker for Windows。 [Docker CE for Windows (安定版) を入手します](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description)。 Docker をインストールして起動したら、トレイ アイコンを右クリックし、 **[Switch to Windows containers]\(Windows コンテナーに切り替える\)** を選択します。 この手順は、Windows に基づいて Docker イメージを実行するために必要です。
 
 * Windows Server with Containers 上で 3 つ以上のノードを実行している Windows クラスター。 
 
@@ -175,9 +175,9 @@ docker rm my-web-site
 
 コンテナーが開発コンピューターで実行されることを確認したら、イメージを Azure Container Registry のレジストリにプッシュします。
 
-[レジストリの資格情報](../container-registry/container-registry-authentication.md)を使用してコンテナー レジストリにログインするには、``docker login`` を実行します。
+``docker login`` を実行し、ご自分の[レジストリの資格情報](../container-registry/container-registry-authentication.md)を使用してお使いのコンテナー レジストリにサインインします。
 
-次の例では、Azure Active Directory [サービス プリンシパル](../active-directory/develop/app-objects-and-service-principals.md)の ID とパスワードを渡します。 たとえば、自動化シナリオのために、レジストリにサービス プリンシパルを割り当てることができます。 または、レジストリのユーザー名とパスワードを使ってログインすることもできます。
+次の例では、Azure Active Directory [サービス プリンシパル](../active-directory/develop/app-objects-and-service-principals.md)の ID とパスワードを渡します。 たとえば、自動化シナリオのために、レジストリにサービス プリンシパルを割り当てることができます。 または、ご自分のレジストリのユーザー名とパスワードを使ってサインインすることもできます。
 
 ```
 docker login myregistry.azurecr.io -u xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p myPassword
@@ -198,11 +198,11 @@ docker push myregistry.azurecr.io/samples/helloworldapp
 ## <a name="create-the-containerized-service-in-visual-studio"></a>コンテナー化されたサービスを Visual Studio で作成する
 Service Fabric SDK およびツールには、コンテナー化されたアプリケーションを作成するときに役立つサービスのテンプレートが用意されています。
 
-1. Visual Studio を起動します。 **[ファイル]** > **[新規作成]** > **[プロジェクト]** の順に選択します。
-2. **[Service Fabric アプリケーション]** を選択し、"MyFirstContainer" という名前を付けて、**[OK]** をクリックします。
+1. Visual Studio を起動します。 **[ファイル]**  >  **[新規作成]**  >  **[プロジェクト]** の順に選択します。
+2. **[Service Fabric アプリケーション]** を選択し、"MyFirstContainer" という名前を付けて、 **[OK]** をクリックします。
 3. **[サービス テンプレート]** の一覧から **[コンテナー]** を選択します。
 4. **[Image Name]\(イメージ名\)** に、コンテナー リポジトリにプッシュされたイメージである "myregistry.azurecr.io/samples/helloworldapp" を入力します。
-5. サービスに名前を付けて、**[OK]** をクリックします。
+5. サービスに名前を付けて、 **[OK]** をクリックします。
 
 ## <a name="configure-communication"></a>通信を構成する
 コンテナー化されたサービスには、通信のエンドポイントが必要です。 `Endpoint` 要素にプロトコル、ポート、タイプを指定して ServiceManifest.xml ファイルに追加してください。 この例では、固定ポート 8081 を使用します。 ポートを指定しなかった場合は、アプリケーション ポートの範囲から無作為に選択されます。 
@@ -308,8 +308,6 @@ New-SelfSignedCertificate -Type DocumentEncryptionCert -KeyUsage DataEnciphermen
 $cer = Import-AzureKeyVaultCertificate -VaultName $vaultName -Name $certificateName -FilePath $filepath -Password $certpwd
 
 Set-AzKeyVaultAccessPolicy -VaultName $vaultName -ResourceGroupName $groupname -EnabledForDeployment
-
-# Add the certificate to all the VMs in the cluster.
 Add-AzServiceFabricApplicationCertificate -ResourceGroupName $groupname -Name $clustername -SecretIdentifier $cer.SecretId
 ```
 パスワードを暗号化するには、[Invoke-ServiceFabricEncryptText](/powershell/module/servicefabric/Invoke-ServiceFabricEncryptText?view=azureservicefabricps) コマンドレットを使用します。
@@ -421,7 +419,11 @@ Windows では、コンテナーの 2 つの分離モード (プロセスおよ�
 ```
 ## <a name="configure-docker-healthcheck"></a>Docker HEALTHCHECK を構成する 
 
-Service Fabric では、バージョン 6.1 以降、[Docker HEALTHCHECK](https://docs.docker.com/engine/reference/builder/#healthcheck) イベントがシステム正常性レポートに自動的に統合されます。 つまり、コンテナーの **HEALTHCHECK** が有効な場合、Service Fabric は Docker によって報告されたとおりにコンテナーの正常性状態が変化するたびに正常性を報告します。 **OK** 正常性レポートは、*health_status* が "*正常*" のときに、[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) に表示され、**警告**は、*health_status* が "*異常*" のときに表示されます。 コンテナーの正常性の監視のために実行される実際のチェックを指す **HEALTHCHECK** 命令は、コンテナー イメージを生成するときに使用される Dockerfile に存在する必要があります。 
+Service Fabric では、バージョン 6.1 以降、[Docker HEALTHCHECK](https://docs.docker.com/engine/reference/builder/#healthcheck) イベントがシステム正常性レポートに自動的に統合されます。 つまり、コンテナーの **HEALTHCHECK** が有効な場合、Service Fabric は Docker によって報告されたとおりにコンテナーの正常性状態が変化するたびに正常性を報告します。 **OK** 正常性レポートは、*health_status* が "*正常*" のときに、[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) に表示され、**警告**は、*health_status* が "*異常*" のときに表示されます。 
+
+v6.4 の最新の更新リリース以降、Docker の HEALTHCHECK 評価をエラーとしてレポートするかどうかの選択肢ができました。 このオプションを有効にすると、*health_status* が*正常*の場合、**OK** 正常性レポートが表示され、*health_status* が*異常*の場合、**ERROR** が表示されます。
+
+コンテナーの正常性の監視のために実行される実際のチェックを指す **HEALTHCHECK** 命令は、コンテナー イメージを生成するときに使用される Dockerfile に存在する必要があります。
 
 ![HealthCheckHealthy][3]
 
@@ -436,19 +438,25 @@ ApplicationManifest の **ContainerHostPolicies** の一部として **HealthCon
     <ServiceManifestRef ServiceManifestName="ContainerServicePkg" ServiceManifestVersion="2.0.0" />
     <Policies>
       <ContainerHostPolicies CodePackageRef="Code">
-        <HealthConfig IncludeDockerHealthStatusInSystemHealthReport="true" RestartContainerOnUnhealthyDockerHealthStatus="false" />
+        <HealthConfig IncludeDockerHealthStatusInSystemHealthReport="true"
+              RestartContainerOnUnhealthyDockerHealthStatus="false" 
+              TreatContainerUnhealthyStatusAsError="false" />
       </ContainerHostPolicies>
     </Policies>
 </ServiceManifestImport>
 ```
-既定では、*IncludeDockerHealthStatusInSystemHealthReport* は **true** に設定され、*RestartContainerOnUnhealthyDockerHealthStatus* は **false** に設定されています。 *RestartContainerOnUnhealthyDockerHealthStatus* を **true** に設定すると、異常を繰り返し報告するコンテナーが (おそらく他のノードで) 再起動されます。
+既定で、*IncludeDockerHealthStatusInSystemHealthReport* は **true** に設定され、*RestartContainerOnUnhealthyDockerHealthStatus* は **false** に設定され、*TreatContainerUnhealthyStatusAsError* は **false** に設定されています。 
+
+*RestartContainerOnUnhealthyDockerHealthStatus* を **true** に設定すると、異常を繰り返し報告するコンテナーが (おそらく他のノードで) 再起動されます。
+
+*TreatContainerUnhealthyStatusAsError* が **true** に設定されている場合、コンテナーの *health_status* が*異常*のとき、**ERROR** 正常性レポートが表示されます。
 
 Service Fabric クラスター全体で **HEALTHCHECK** 統合を無効化する場合、[EnableDockerHealthCheckIntegration](service-fabric-cluster-fabric-settings.md) を **false** に設定する必要があります。
 
 ## <a name="deploy-the-container-application"></a>コンテナー アプリケーションをデプロイする
-変更をすべて保存し、アプリケーションをビルドします。 アプリケーションを発行するために、ソリューション エクスプローラーの **[MyFirstContainer]** を右クリックし、**[発行]** を選択します。
+変更をすべて保存し、アプリケーションをビルドします。 アプリケーションを発行するために、ソリューション エクスプローラーの **[MyFirstContainer]** を右クリックし、 **[発行]** を選択します。
 
-**[クラスター エンドポイント]** に、クラスターの管理エンドポイントを入力します  (例: "containercluster.westus2.cloudapp.azure.com:19000")。 [Azure Portal](https://portal.azure.com) にある、お使いのクラスターの [概要] タブで、クライアントの接続エンドポイントを探すことができます。
+**[クラスター エンドポイント]** に、クラスターの管理エンドポイントを入力します (例: "containercluster.westus2.cloudapp.azure.com:19000")。 [Azure Portal](https://portal.azure.com) にある、お使いのクラスターの [概要] タブで、クライアントの接続エンドポイントを探すことができます。
 
 **[発行]** をクリックします。
 
@@ -471,7 +479,7 @@ docker rmi myregistry.azurecr.io/samples/helloworldapp
 
 ## <a name="windows-server-container-os-and-host-os-compatibility"></a>Windows Server コンテナーの OS とホスト OS の互換性
 
-Windows Server コンテナーは、ホスト OS のすべてのバージョンで互換性はありません。 例: 
+Windows Server コンテナーは、ホスト OS のすべてのバージョンで互換性はありません。 例:
  
 - Windows Server バージョン 1709 を使用してビルドされた Windows Server コンテナーは、Windows Server バージョン 2016 を実行しているホスト上では機能しません。 
 - Windows Server バージョン 2016 を使用してビルドされた Windows Server コンテナーは、Windows Server バージョン 1709 を実行しているホスト上で HYPER-V 分離モードでのみ機能します。 
@@ -479,7 +487,7 @@ Windows Server コンテナーは、ホスト OS のすべてのバージョン�
  
 詳細については、「[Windows コンテナーのバージョンの互換性](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility)」を参照してください。
 
-コンテナーをビルドして Service Fabric クラスターにデプロイする場合は、ホスト OS とコンテナーの OS の互換性を考慮してください。 例: 
+コンテナーをビルドして Service Fabric クラスターにデプロイする場合は、ホスト OS とコンテナーの OS の互換性を考慮してください。 例:
 
 - クラスター ノード上の OS と互換性のある OS のコンテナーを確実にデプロイする。
 - コンテナー アプリに指定された分離モードが、デプロイ先のノードのコンテナーの OS のサポートと一致していることを確認する。
@@ -726,15 +734,6 @@ Service Fabric ランタイムの 6.2 バージョン以降では、カスタム
 ## <a name="next-steps"></a>次の手順
 * [Service Fabric でのコンテナー](service-fabric-containers-overview.md)の実行について確認します。
 * [コンテナー内の .NET アプリケーションをデプロイする方法](service-fabric-host-app-in-a-container.md)に関するチュートリアルをご覧ください。
-* Service Fabric の[アプリケーション ライフサイクル](service-fabric-application-lifecycle.md)について確認します。
-* GitHub で [Service Fabric コンテナーのコード サンプル](https://github.com/Azure-Samples/service-fabric-containers)を確認します。
-
-[1]: ./media/service-fabric-get-started-containers/MyFirstContainerError.png
-[2]: ./media/service-fabric-get-started-containers/MyFirstContainerReady.png
-[3]: ./media/service-fabric-get-started-containers/HealthCheckHealthy.png
-[4]: ./media/service-fabric-get-started-containers/HealthCheckUnhealthy_App.png
-[5]: ./media/service-fabric-get-started-containers/HealthCheckUnhealthy_Dsp.png
-c-host-app-in-a-container.md) チュートリアル。
 * Service Fabric の[アプリケーション ライフサイクル](service-fabric-application-lifecycle.md)について確認します。
 * GitHub で [Service Fabric コンテナーのコード サンプル](https://github.com/Azure-Samples/service-fabric-containers)を確認します。
 
