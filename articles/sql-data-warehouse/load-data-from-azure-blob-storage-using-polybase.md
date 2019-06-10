@@ -10,12 +10,12 @@ ms.subservice: load data
 ms.date: 04/26/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: a8ca3b52d181578e6b35090489b7133a94b55cbd
-ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
+ms.openlocfilehash: ac0f8cb4d9069d2ef7ce48939ad2dd1c92732d1a
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65852084"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242960"
 ---
 # <a name="tutorial-load-new-york-taxicab-data-to-azure-sql-data-warehouse"></a>チュートリアル:Azure SQL Data Warehouse へのてニューヨークのタクシー データの読み込み
 
@@ -50,7 +50,7 @@ Azure SQL Data Warehouse は、定義済みの一連の[コンピューティン
 
 1. Azure Portal の左上隅にある **[リソースの作成]** をクリックします。
 
-2. **[新規]** ページの **[データベース]** を選択し、**[新規]** ページの **[おすすめ]** で **[SQL Data Warehouse]** を選択します。
+2. **[新規]** ページの **[データベース]** を選択し、 **[新規]** ページの **[おすすめ]** で **[SQL Data Warehouse]** を選択します。
 
     ![データ ウェアハウスを作成する](media/load-data-from-azure-blob-storage-using-polybase/create-empty-data-warehouse.png)
 
@@ -87,7 +87,7 @@ Azure SQL Data Warehouse は、定義済みの一連の[コンピューティン
 8. **[Apply]** をクリックします。
 9. [SQL Data Warehouse] ページで、空のデータベースの **[照合順序]** を選びます。 このチュートリアルでは、既定の値を使います。 照合順序の詳細については、「[Collations (照合順序)](/sql/t-sql/statements/collations)」を参照してください。
 
-11. これで SQL Database フォームの入力が完了したので、**[作成]** をクリックして、データベースをプロビジョニングします。 プロビジョニングには数分かかります。 
+11. これで SQL Database フォームの入力が完了したので、 **[作成]** をクリックして、データベースをプロビジョニングします。 プロビジョニングには数分かかります。 
 
     ![[作成] をクリックする](media/load-data-from-azure-blob-storage-using-polybase/click-create.png)
 
@@ -121,20 +121,20 @@ SQL Data Warehouse サービスでは、外部のアプリケーションやツ�
 
 5. **[Save]** をクリックします。 論理サーバーでポート 1433 を開いている現在の IP アドレスに対して、サーバーレベルのファイアウォール規則が作成されます。
 
-6. **[OK]** をクリックし、**[ファイアウォール設定]** ページを閉じます。
+6. **[OK]** をクリックし、 **[ファイアウォール設定]** ページを閉じます。
 
 この IP アドレスを使って、SQL Server とそのデータ ウェアハウスに接続できるようになります。 接続するには、SQL Server Management Studio または他の適当なツールを使います。 接続するときは、前に作成した ServerAdmin アカウントを使います。  
 
 > [!IMPORTANT]
-> 既定では、すべての Azure サービスで、SQL Database ファイアウォール経由のアクセスが有効になります。 このページの **[オフ]** をクリックし、**[保存]** をクリックして、すべての Azure サービスに対してファイアウォールを無効にします。
+> 既定では、すべての Azure サービスで、SQL Database ファイアウォール経由のアクセスが有効になります。 このページの **[オフ]** をクリックし、 **[保存]** をクリックして、すべての Azure サービスに対してファイアウォールを無効にします。
 
 ## <a name="get-the-fully-qualified-server-name"></a>完全修飾サーバー名を取得する
 
 Azure Portal で、SQL サーバーの完全修飾サーバー名を取得します。 後でサーバーに接続するときに、完全修飾名を使います。
 
 1. [Azure Portal](https://portal.azure.com/) にログインします。
-2. 左側のメニューの **[SQL データ ウェアハウス]** を選択し、**[SQL データ ウェアハウス]** ページで目的のデータベースをクリックします。 
-3. そのデータベースの Azure Portal ページの **[基本]** ウィンドウで、**サーバー名**を見つけてコピーします。  この例の完全修飾名は mynewserver-20180430.database.windows.net です。 
+2. 左側のメニューの **[SQL データ ウェアハウス]** を選択し、 **[SQL データ ウェアハウス]** ページで目的のデータベースをクリックします。 
+3. そのデータベースの Azure Portal ページの **[基本]** ウィンドウで、**サーバー名**を見つけてコピーします。 この例の完全修飾名は mynewserver-20180430.database.windows.net です。 
 
     ![接続情報](media/load-data-from-azure-blob-storage-using-polybase/find-server-name.png)  
 
@@ -158,7 +158,7 @@ Azure Portal で、SQL サーバーの完全修飾サーバー名を取得しま
 
 4. **[接続]** をクリックします。 SSMS でオブジェクト エクスプローラー ウィンドウが開きます。 
 
-5. オブジェクト エクスプローラーで、**[データベース]** を展開します。 **[システム データベース]**、**[master]** の順に展開し、マスター データベースのオブジェクトを表示します。  **mySampleDatabase** を展開して、新しいデータベースのオブジェクトを表示します。
+5. オブジェクト エクスプローラーで、 **[データベース]** を展開します。 **[システム データベース]** 、 **[master]** の順に展開し、マスター データベースのオブジェクトを表示します。  **mySampleDatabase** を展開して、新しいデータベースのオブジェクトを表示します。
 
     ![データベース オブジェクト](media/load-data-from-azure-blob-storage-using-polybase/connected.png) 
 
@@ -170,7 +170,7 @@ Azure Portal で、SQL サーバーの完全修飾サーバー名を取得しま
 
 現在はサーバー管理者として接続しているので、ログインとユーザーを作成することができます。 以下の手順を使って、**LoaderRC20** という名前のログインとユーザーを作成します。 その後、そのユーザーを **staticrc20** リソース クラスに割り当てます。 
 
-1.  SSMS で **[master]** を右クリックしてドロップダウン メニューを表示し、**[新しいクエリ]** を選びます。 新しいクエリ ウィンドウが開きます。
+1.  SSMS で **[master]** を右クリックしてドロップダウン メニューを表示し、 **[新しいクエリ]** を選びます。 新しいクエリ ウィンドウが開きます。
 
     ![master の新しいクエリ](media/load-data-from-azure-blob-storage-using-polybase/create-loader-login.png)
 
@@ -183,7 +183,7 @@ Azure Portal で、SQL サーバーの完全修飾サーバー名を取得しま
 
 3. **[実行]** をクリックします。
 
-4. **mySampleDataWarehouse** を右クリックして、**[新しいクエリ]** を選びます。 新しいクエリ ウィンドウが開きます。  
+4. **mySampleDataWarehouse** を右クリックして、 **[新しいクエリ]** を選びます。 新しいクエリ ウィンドウが開きます。  
 
     ![サンプル データ ウェアハウスに対する新しいクエリ](media/load-data-from-azure-blob-storage-using-polybase/create-loading-user.png)
  
@@ -201,7 +201,7 @@ Azure Portal で、SQL サーバーの完全修飾サーバー名を取得しま
 
 データを読み込むための最初のステップは、LoaderRC20 としてログインすることです。  
 
-1. オブジェクト エクスプローラーで **[接続]** ドロップダウン メニューをクリックして、**[データベース エンジン]** を選びます。 **[サーバーへの接続]** ダイアログ ボックスが表示されます。
+1. オブジェクト エクスプローラーで **[接続]** ドロップダウン メニューをクリックして、 **[データベース エンジン]** を選びます。 **[サーバーへの接続]** ダイアログ ボックスが表示されます。
 
     ![新しいログインで接続する](media/load-data-from-azure-blob-storage-using-polybase/connect-as-loading-user.png)
 
@@ -219,7 +219,7 @@ Azure Portal で、SQL サーバーの完全修飾サーバー名を取得しま
 
 次の SQL スクリプトを実行して、読み込むデータに関する情報を指定します。 この情報には、データが置かれている場所、データの内容の形式、およびデータのテーブル定義が含まれます。 
 
-1. 前のセクションで、LoaderRC20 としてデータ ウェアハウスにログインしました。 SSMS で LoaderRC20 接続を右クリックして、**[新しいクエリ]** を選びます。  新しいクエリ ウィンドウが表示されます。 
+1. 前のセクションで、LoaderRC20 としてデータ ウェアハウスにログインしました。 SSMS で LoaderRC20 接続を右クリックして、 **[新しいクエリ]** を選びます。  新しいクエリ ウィンドウが表示されます。 
 
     ![新しい読み込みクエリ ウィンドウ](media/load-data-from-azure-blob-storage-using-polybase/new-loading-query.png)
 
@@ -231,7 +231,7 @@ Azure Portal で、SQL サーバーの完全修飾サーバー名を取得しま
     CREATE MASTER KEY;
     ```
 
-4. 次の [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql) ステートメントを実行して、Azure BLOB の場所を定義します。 これは、外部のタクシー データの場所です。  クエリ ウィンドウに追加したコマンドを実行するには、実行するコマンドを強調表示にして、**[実行]** をクリックします。
+4. 次の [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql) ステートメントを実行して、Azure BLOB の場所を定義します。 これは、外部のタクシー データの場所です。  クエリ ウィンドウに追加したコマンドを実行するには、実行するコマンドを強調表示にして、 **[実行]** をクリックします。
 
     ```sql
     CREATE EXTERNAL DATA SOURCE NYTPublic
@@ -567,7 +567,7 @@ PolyBase を使用して読み込み、マネージド ID を使用して認証�
 ### <a name="prerequisites"></a>前提条件
 1.  この[ガイド](https://docs.microsoft.com/powershell/azure/install-az-ps)を使用して、Azure PowerShell をインストールします。
 2.  汎用 v1 または BLOB ストレージ アカウントを使用している場合は、この[ガイド](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)を使用して、最初に汎用 v2 にアップグレードする必要があります。
-3.  Azure ストレージ アカウントの **[Firewalls and Virtual networks]\(ファイアウォールと仮想ネットワーク\)** 設定メニューで、**[Allow trusted Microsoft services to access this storage account]\(信頼された Microsoft サービスによるこのストレージ アカウントに対するアクセスを許可します\)** をオンにする必要があります。 詳しくは、この[ガイド](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)をご覧ください。
+3.  Azure ストレージ アカウントの **[Firewalls and Virtual networks]\(ファイアウォールと仮想ネットワーク\)** 設定メニューで、 **[Allow trusted Microsoft services to access this storage account]\(信頼された Microsoft サービスによるこのストレージ アカウントに対するアクセスを許可します\)** をオンにする必要があります。 詳しくは、この[ガイド](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)をご覧ください。
 
 #### <a name="steps"></a>手順
 1. PowerShell で、Azure Active Directory (AAD) に **SQL Database サーバーを登録します**。
@@ -583,7 +583,7 @@ PolyBase を使用して読み込み、マネージド ID を使用して認証�
    > [!NOTE]
    > - 汎用 v1 または BLOB ストレージ アカウントを使用している場合は、この[ガイド](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)を使用して、**最初に v2 にアップグレードする**必要があります。
     
-1. お使いのストレージ アカウントで、**[アクセス制御 (IAM)]** に移動し、**[ロール割り当ての追加]** をクリックします。 **[ストレージ BLOB データ共同作成者]** RBAC ロールを SQL Database サーバーに割り当てます。
+1. お使いのストレージ アカウントで、 **[アクセス制御 (IAM)]** に移動し、 **[ロール割り当ての追加]** をクリックします。 **[ストレージ BLOB データ共同作成者]** RBAC ロールを SQL Database サーバーに割り当てます。
 
    > [!NOTE] 
    > 所有者特権を持つメンバーのみが、この手順を実行できます。 Azure リソースのさまざまな組み込みロールについては、この[ガイド](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)をご覧ください。
@@ -618,13 +618,13 @@ SQL Data Warehouse 用の仮想ネットワーク サービス エンドポイ�
 
     ![リソースのクリーンアップ](media/load-data-from-azure-blob-storage-using-polybase/clean-up-resources.png)
 
-2. コンピューティング リソースを一時停止するには、**[一時停止]** ボタンをクリックします。 データ ウェアハウスが一時停止すると、ボタンの表示が **[開始]** になります。  コンピューティング リソースを再開するには、**[開始]** をクリックします。
+2. コンピューティング リソースを一時停止するには、 **[一時停止]** ボタンをクリックします。 データ ウェアハウスが一時停止すると、ボタンの表示が **[開始]** になります。  コンピューティング リソースを再開するには、 **[開始]** をクリックします。
 
-3. コンピューティング リソースやストレージに課金されないようにデータ ウェアハウスを削除するには、**[削除]** をクリックします。
+3. コンピューティング リソースやストレージに課金されないようにデータ ウェアハウスを削除するには、 **[削除]** をクリックします。
 
-4. 作成した SQL Server を削除するには、前の画像の **mynewserver-20180430.database.windows.net** をクリックして、**[削除]** をクリックします。  サーバーを削除すると、サーバーに割り当てられているすべてのデータベースが削除されるので、注意してください。
+4. 作成した SQL Server を削除するには、前の画像の **mynewserver-20180430.database.windows.net** をクリックして、 **[削除]** をクリックします。  サーバーを削除すると、サーバーに割り当てられているすべてのデータベースが削除されるので、注意してください。
 
-5. リソース グループを削除するには、**myResourceGroup** をクリックして、**[リソース グループの削除]** をクリックします。
+5. リソース グループを削除するには、**myResourceGroup** をクリックして、 **[リソース グループの削除]** をクリックします。
 
 ## <a name="next-steps"></a>次の手順 
 このチュートリアルでは、データ ウェアハウスを作成し、データを読み込むためのユーザーを作成する方法について学習しました。 外部テーブルを作成して Azure Storage Blob に格納されているデータの構造を定義した後、PolyBase の CREATE TABLE AS SELECT ステートメントを使って、データ ウェアハウスにデータを読み込みました。 
@@ -640,7 +640,7 @@ SQL Data Warehouse 用の仮想ネットワーク サービス エンドポイ�
 > * データ読み込みの進行状況を表示しました
 > * 新しく読み込まれたデータの統計を作成しました
 
-移行の概要に進んで、既存のデータベースを SQL Data Warehouse に移行する方法を学習してください。
+開発の概要に進んで、既存のデータベースを SQL Data Warehouse に移行する方法を学習してください。
 
 > [!div class="nextstepaction"]
->[既存のデータベースを SQL Data Warehouse に移行する方法を学習する](sql-data-warehouse-overview-migrate.md)
+>[既存のデータベースを SQL Data Warehouse に移行するための設計上の決定](sql-data-warehouse-overview-migrate.md)

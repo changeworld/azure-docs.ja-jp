@@ -10,12 +10,12 @@ ms.subservice: integration
 ms.date: 04/17/2018
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 94ec38bc2cad3566fad88dc2ac56648f79aa16b2
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: 4650e171c180653e94d78451d66bba1bcc71b136
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65873365"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241284"
 ---
 # <a name="visualize-data-with-power-bi"></a>Power BI でデータを視覚化する
 このチュートリアルでは、Power BI を使用して、SQL Data Warehouse に接続し、いくつかの基本的な視覚化を作成する方法を示します。
@@ -93,4 +93,4 @@ Azure SQL Database の場合と同様、SQL Data Warehouse の直接接続を使
 これらの制限および注意事項は、エクスペリエンスの改善に伴って変更される場合があります。
 
 ## <a name="next-steps"></a>次の手順
-いくつかサンプル データを挙げて、どのようにして[開発](sql-data-warehouse-overview-develop.md)、[読み込み](design-elt-data-loading.md)、[移行](sql-data-warehouse-overview-migrate.md)するかを確認しながらウォーミングアップしていきます。 または、[Power BI の Web サイト](https://www.powerbi.com/)を参照してください。
+これで、サンプル データでのウオーミングアップがある程度できたので、次は[開発](sql-data-warehouse-overview-develop.md)または[読み込み](design-elt-data-loading.md)の方法を参照してください。 または、[Power BI の Web サイト](https://www.powerbi.com/)を参照してください。

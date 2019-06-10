@@ -10,12 +10,13 @@ ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: priyar
-ms.openlocfilehash: 61bd1879a4b1bf8281ac03c8254fb3d48c07a139
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: a046bec5d81d828d88716d31c84e9cbcdcea1a08
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55215862"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "60515433"
 ---
 # <a name="bing-text-to-speech-api"></a>Bing のテキスト読み上げ API
 
@@ -31,7 +32,7 @@ ms.locfileid: "55215862"
 
 音声合成のすべての要求には、アクセス トークンとして JSON Web トークン (JWT) が必要です。 JWT アクセス トークンは、音声要求ヘッダーに入れられ、それを介して渡されます。 トークンの有効期限は 10 分間です。 有効な JWT アクセス トークンを取得するのに使用する API キーのサブスクライブと取得については、[Cognitive Services のサブスクリプション](https://azure.microsoft.com/try/cognitive-services/)についてのページを参照してください。
 
-API キーは、トークン サービスに渡されます。 例: 
+API キーは、トークン サービスに渡されます。 例:
 
 ```HTTP
 POST https://api.cognitive.microsoft.com/sts/v1.0/issueToken
@@ -44,7 +45,7 @@ Name| 形式 | 説明
 ----|----|----
 Ocp-Apim-Subscription-Key | ASCII | Your subscription key (サブスクリプション キー)
 
-トークン サービスは、JWT アクセス トークンを `text/plain` として返します。 次に、`Base64 access_token` としての JWT は、文字列 `Bearer` で始まる承認ヘッダーとして音声エンドポイントに渡されます。 例: 
+トークン サービスは、JWT アクセス トークンを `text/plain` として返します。 次に、`Base64 access_token` としての JWT は、文字列 `Bearer` で始まる承認ヘッダーとして音声エンドポイントに渡されます。 例:
 
 `Authorization: Bearer [Base64 access_token]`
 
@@ -70,7 +71,7 @@ Authorization | 承認トークン |  <a href="#Subscription">承認トークン
 
 ### <a name="InputParam"></a>入力パラメーター
 
-Bing のテキスト読み上げ API に対する要求は、HTTP POST 呼び出しを使用して行います。 ヘッダーは前のセクションで指定されました。 本文には、合成するテキストを表す音声合成マークアップ言語 (SSML) の入力を含めます。 言語や話者の性別など、音声の各側面を制御するために使用するマークアップの説明については、[SSML の W3C 仕様](http://www.w3.org/TR/speech-synthesis/)を参照してください。
+Bing のテキスト読み上げ API に対する要求は、HTTP POST 呼び出しを使用して行います。 ヘッダーは前のセクションで指定されました。 本文には、合成するテキストを表す音声合成マークアップ言語 (SSML) の入力を含めます。 言語や話者の性別など、音声の各側面を制御するために使用するマークアップの説明については、[SSML の W3C 仕様](https://www.w3.org/TR/speech-synthesis/)を参照してください。
 
 >[!NOTE]
 >サポートされている SSML 入力の最大サイズは、すべてのタグを含めて 1,024 文字です。
@@ -140,46 +141,46 @@ Voice name not supported
 
 ## <a name="ChangeSSML"></a>SSML による音声出力の変更
 
-Microsoft Text-to-Speech API は、W3C の[音声合成マークアップ言語 (SSML) バージョン 1.0](http://www.w3.org/TR/2009/REC-speech-synthesis-20090303/) で定義されているとおり SSML 1.0 をサポートしています。 このセクションでは、読み上げ速度や発音など、生成される音声出力の一定の特性を、SSML タグを使用して変更する例を示します。
+Microsoft Text-to-Speech API は、W3C の[音声合成マークアップ言語 (SSML) バージョン 1.0](https://www.w3.org/TR/2009/REC-speech-synthesis-20090303/) で定義されているとおり SSML 1.0 をサポートしています。 このセクションでは、読み上げ速度や発音など、生成される音声出力の一定の特性を、SSML タグを使用して変更する例を示します。
 
 1. 中断を追加する
 
-  ```
-  <speak version='1.0' xmlns="http://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, BenjaminRUS)'> Welcome to use Microsoft Cognitive Services <break time="100ms" /> Text-to-Speech API.</voice> </speak>
-  ```
+   ```
+   <speak version='1.0' xmlns="https://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, BenjaminRUS)'> Welcome to use Microsoft Cognitive Services <break time="100ms" /> Text-to-Speech API.</voice> </speak>
+   ```
 
 2. 読み上げ速度を変更する
 
-  ```
-  <speak version='1.0' xmlns="http://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'><prosody rate="+30.00%">Welcome to use Microsoft Cognitive Services Text-to-Speech API.</prosody></voice> </speak>
-  ```
+   ```
+   <speak version='1.0' xmlns="https://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'><prosody rate="+30.00%">Welcome to use Microsoft Cognitive Services Text-to-Speech API.</prosody></voice> </speak>
+   ```
 
 3. 発音
 
-  ```
-  <speak version='1.0' xmlns="http://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'> <phoneme alphabet="ipa" ph="t&#x259;mei&#x325;&#x27E;ou&#x325;"> tomato </phoneme></voice> </speak>
-  ```
+   ```
+   <speak version='1.0' xmlns="https://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'> <phoneme alphabet="ipa" ph="t&#x259;mei&#x325;&#x27E;ou&#x325;"> tomato </phoneme></voice> </speak>
+   ```
 
 4. 音量を変更する
 
-  ```
-  <speak version='1.0' xmlns="http://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'><prosody volume="+20.00%">Welcome to use Microsoft Cognitive Services Text-to-Speech API.</prosody></voice> </speak>
-  ```
+   ```
+   <speak version='1.0' xmlns="https://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'><prosody volume="+20.00%">Welcome to use Microsoft Cognitive Services Text-to-Speech API.</prosody></voice> </speak>
+   ```
 
 5. ピッチを変更する
 
-  ```
-  <speak version='1.0' xmlns="http://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'>Welcome to use <prosody pitch="high">Microsoft Cognitive Services Text-to-Speech API.</prosody></voice> </speak>
-  ```
+   ```
+   <speak version='1.0' xmlns="https://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'>Welcome to use <prosody pitch="high">Microsoft Cognitive Services Text-to-Speech API.</prosody></voice> </speak>
+   ```
 
 6. 韻律の音調曲線を変更する
 
-  ```
-  <speak version='1.0' xmlns="http://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'><prosody contour="(80%,+20%) (90%,+30%)" >Good morning.</prosody></voice> </speak>
-  ```
+   ```
+   <speak version='1.0' xmlns="https://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'><prosody contour="(80%,+20%) (90%,+30%)" >Good morning.</prosody></voice> </speak>
+   ```
 
 > [!NOTE]
-> オーディオ データは、次の形式で作成された 8 k または 16 k の wav ファイルにする必要があります: **CRC コード** (CRC- 32): 4 バイト (DWORD)、有効範囲は 0x00000000 から 0xFFFFFFF。**オーディオ形式フラグ**: 4 バイト (DWORD)、有効範囲は 0x00000000 から 0xFFFFFFFF。**サンプル数**: 4 バイト (DWORD)、有効範囲は 0x00000000 から 0x7FFFFFFF。**バイナリ本文のサイズ**: 4 バイト (DWORD)、有効範囲は 0x00000000 から 0x7FFFFFFF。**バイナリ本文**: n バイト。
+> オーディオ データは、次の形式の 8 k または 16 k wav フィールドになっている必要があることに注意してください。**CRC コード** (CRC-32):4 バイト (DWORD)、有効範囲は 0x00000000 から 0xFFFFFFFF、**オーディオ形式フラグ**:4 バイト (DWORD)、有効範囲は 0x00000000 から 0xFFFFFFFF、**サンプル数**:4 バイト (DWORD)、有効範囲は 0x00000000 から 0x7FFFFFFF、**バイナリ本文のサイズ**:4 バイト (DWORD)、有効範囲は 0x00000000 から 0x7FFFFFFF、**バイナリ本文**: n バイト。
 
 ## <a name="SampleApp"></a>サンプル アプリケーション
 
@@ -269,6 +270,7 @@ zh-HK | 男性 | "Microsoft Server Speech Text to Speech Voice (zh-HK, Danny, Ap
 zh-TW | 女性 | "Microsoft Server Speech Text to Speech Voice (zh-TW, Yating, Apollo)"
 zh-TW | 女性 | "Microsoft Server Speech Text to Speech Voice (zh-TW, HanHanRUS)"
 zh-TW | 男性 | "Microsoft Server Speech Text to Speech Voice (zh-TW, Zhiwei, Apollo)"
+
  *ar-EG では現代標準アラビア語 (MSA) をサポートしています。
 
 > [!NOTE]

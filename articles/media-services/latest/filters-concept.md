@@ -11,18 +11,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 05/07/2019
+ms.date: 05/23/2019
 ms.author: juliako
-ms.openlocfilehash: bfe4bbae7953479f9b5b5ce9653fb3b8d4b2d092
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: fdf29924da31db0347938df89e698cb258c2336b
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66002382"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66225408"
 ---
 # <a name="filters"></a>フィルター
 
-コンテンツを顧客に配信する (イベントのライブ ストリーミングまたはビデオ オン デマンド) 際に、既定の資産のマニフェスト ファイルに記述された内容だけではクライアントのニーズに柔軟に対応できない場合があります。 Azure Media Services では、アカウント フィルターと、コンテンツの資産フィルターを定義することができます。 
+コンテンツを顧客に配信する (イベントのライブ ストリーミングまたはビデオ オン デマンド) 際に、既定の資産のマニフェスト ファイルに記述された内容だけではクライアントのニーズに柔軟に対応できない場合があります。 Azure Media Services には、定義済みのフィルターに基づいた[動的マニフェスト](filters-dynamic-manifest-overview.md)が用意されています。 
 
 フィルターは、次のような操作を顧客に許可するサーバー側のルールです。 
 
@@ -32,30 +32,22 @@ ms.locfileid: "66002382"
 - コンテンツの再生に使用するデバイスでサポートされている演奏や言語のトラックのみを指定して配信する ("演奏フィルタ―処理")。 
 - プレゼンテーション ウィンドウ (DVR) を調整し、プレーヤーの DVR ウィンドウの長さを限定する ("プレゼンテーション ウィンドウの調整")。
 
-Media Services には、定義済みのフィルターに基づいた[動的マニフェスト](filters-dynamic-manifest-overview.md)が用意されています。 フィルターを定義すると、クライアントからストリーミング URL で使用できるようになります。 フィルターは、アダプティブ ビットレート ストリーミング プロトコル(Apple HTTP Live Streaming (HLS)、MPEG DASH、Smooth Streaming) に適用できます。
+Media Services では、**アカウント フィルター**と、コンテンツの**資産フィルター**を作成することができます。 さらに、事前に作成したフィルターを**ストリーミング ロケーター**に関連付けることができます。
 
-次の表に、フィルターを含んだ URL の例をいくつか示します。
+## <a name="defining-filters"></a>フィルターを定義する
 
-|プロトコル|例|
-|---|---|
-|HLS|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=m3u8-aapl,filter=myAccountFilter)`<br/>HLS v3 の場合は、`format=m3u8-aapl-v3` を使用します。|
-|MPEG DASH|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=mpd-time-csf,filter=myAssetFilter)`|
-|スムーズ ストリーミング|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(filter=myAssetFilter)`|
-
-## <a name="define-filters"></a>フィルターを定義する
-
-次の 2 種類のアセット フィルターがあります。 
+2 種類のフィルターがあります。 
 
 * [アカウント フィルター](https://docs.microsoft.com/rest/api/media/accountfilters) (グローバル) - Azure Media Services アカウントのすべてのアセットに適用可能。アカウントの有効期間があります。
 * [アセット フィルター](https://docs.microsoft.com/rest/api/media/assetfilters) (ローカル) - 作成時にフィルターに関連付けられたアセットにのみ適用可能。アセットの有効期間があります。 
 
-[アカウント フィルター](https://docs.microsoft.com/rest/api/media/accountfilters) タイプと[アセット フィルター](https://docs.microsoft.com/rest/api/media/assetfilters) タイプは、フィルターの定義/記述に関して、まったく同じプロパティを持ちます。 ただし**アセット フィルター**を作成するときは、フィルターを関連付けるアセットの名前を指定する必要があります。
+**アカウント フィルター** タイプと**アセット フィルター** タイプは、フィルターの定義/記述に関して、まったく同じプロパティを持ちます。 ただし**アセット フィルター**を作成するときは、フィルターを関連付けるアセットの名前を指定する必要があります。
 
 実際のシナリオに応じて、アセット フィルターとアカウント フィルターのどちらのタイプのフィルターが適しているかを判断することになります。 アカウント フィルターは、デバイス プロファイル (演奏フィルター処理) に適しています。一方、アセット フィルターは、特定のアセットをトリミングする目的で使用できます。
 
 フィルターは、次のプロパティを使用して記述します。 
 
-|名前|説明|
+|Name|説明|
 |---|---|
 |firstQuality|フィルターの最高品質ビットレートです。|
 |presentationTimeRange|プレゼンテーション時間の範囲です。 このプロパティは、マニフェストの開始/終了ポイント、プレゼンテーション ウィンドウの長さ、ライブ開始位置をフィルタリングする目的で使用します。 <br/>詳細については、「[PresentationTimeRange](#presentationtimerange)」を参照してください。|
@@ -65,7 +57,7 @@ Media Services には、定義済みのフィルターに基づいた[動的マ�
 
 このプロパティは、**アセット フィルター**で使用します。 このプロパティを**アカウント フィルター**で設定することはお勧めできません。
 
-|名前|説明|
+|Name|説明|
 |---|---|
 |**endTimestamp**|ビデオ オン デマンド (VOD) が対象となります。<br/>ライブ ストリーミング プレゼンテーションでは、ダイアログを表示せずに無視され、プレゼンテーションが終了してストリームが VoD になったときに適用されます。<br/>これは long 値であり、プレゼンテーションの絶対的な終了点を表します。最も近い次の GOP 開始に丸められます。 単位はタイムスケールであるため、3 分の場合、endTimestamp は 1800000000 となります。<br/>プレイリスト (マニフェスト) に含まれるフラグメントをトリミングするには、startTimestamp と endTimestamp を使用します。<br/>たとえば、既定のタイムスケールを使用する startTimestamp=40000000 と endTimestamp=100000000 では、VoD プレゼンテーションの 4 秒から 10 秒までのフラグメントを含むプレイリストが生成されます。 その境界をフラグメントがまたいだ場合、フラグメント全体がマニフェストに含められます。|
 |**forceEndTimestamp**|ライブ ストリーミングのみに適用されます。<br/>endTimestamp プロパティが存在する必要があるかどうかを示します。 true の場合、endTimestamp を指定する必要があります。そうしないと、不適切な要求コードが返されます。<br/>使用できる値: false、true。|
@@ -80,7 +72,7 @@ Media Services には、定義済みのフィルターに基づいた[動的マ�
 
 フィルター トラック プロパティ条件は、トラックの種類、値 (以下の表で説明します)、演算 (Equal、NotEqual) を記述したものです。 
 
-|名前|説明|
+|Name|説明|
 |---|---|
 |**Bitrate**|フィルタリングにトラックのビットレートを使用します。<br/><br/>推奨される値は、bps (1 秒あたりのビット数) で表したビットレートの範囲です。 たとえば、「0-2427000」と指定します。<br/><br/>注: 特定のビットレート値、たとえば 250000 (bps) を使用することもできますが、厳密なビットレートはアセットごとに変動するので、この方法はお勧めしません。|
 |**FourCC**|フィルタリングにトラックの FourCC 値を使用します。<br/><br/>この値は、[RFC 6381](https://tools.ietf.org/html/rfc6381) で規定されたコーデック形式の最初の要素です。 現在は、次のコーデックがサポートされています。 <br/>ビデオ: "avc1"、"hev1"、"hvc1"<br/>オーディオ: "mp4a"、"ec-3"<br/><br/>アセットのトラックの FourCC 値を調べるには、マニフェスト ファイルを取得して調査します。|
@@ -145,14 +137,22 @@ Media Services には、定義済みのフィルターに基づいた[動的マ�
 }
 ```
 
-## <a name="associate-filters-with-streaming-locator"></a>フィルターをストリーミング ロケーターに関連付ける
+## <a name="associating-filters-with-streaming-locator"></a>フィルターをストリーミング ロケーターに関連付ける
 
-[資産またはアカウント フィルター](filters-concept.md)の一覧を指定できます。これは[ストリーミング ロケーター](https://docs.microsoft.com/rest/api/media/streaminglocators/create#request-body)に適用されます。 [ダイナミック パッケージャー](dynamic-packaging-overview.md)では、クライアントで URL に指定されるフィルターと共にこのフィルターの一覧が適用されます。 この組み合わせによって、URL 内のフィルターとストリーミング ロケーターに指定されたフィルターに基づく[動的マニフェスト](filters-dynamic-manifest-overview.md)が生成されます。 フィルターを適用したいものの URL でフィルター名を公開したくない場合は、この機能を使用することをお勧めします。
+[ストリーミング ロケーター](https://docs.microsoft.com/rest/api/media/streaminglocators/create#request-body)に対する[資産またはアカウント フィルター](filters-concept.md)の一覧を指定できます。 [ダイナミック パッケージャー](dynamic-packaging-overview.md)では、クライアントで URL に指定されるフィルターと共にこのフィルターの一覧が適用されます。 この組み合わせによって、URL 内のフィルターとストリーミング ロケーターに指定されたフィルターに基づく[動的マニフェスト](filters-dynamic-manifest-overview.md)が生成されます。 
 
 次の例を参照してください。
 
 * [フィルターをストリーミング ロケーターに関連付ける - .NET](filters-dynamic-manifest-dotnet-howto.md#associate-filters-with-streaming-locator)
 * [フィルターをストリーミング ロケーターに関連付ける - CLI](filters-dynamic-manifest-cli-howto.md#associate-filters-with-streaming-locator)
+
+## <a name="updating-filters"></a>フィルターの更新
+ 
+フィルターは更新できますが、**ストリーミング ロケーター**は更新できません。 
+
+CDN が有効になっている場合は特に、アクティブに公開されている**ストリーミング ロケーター**に関連付けられているフィルターの定義を更新することはお勧めできません。 ストリーミング サーバーと CDN には内部キャッシュが存在する可能性があり、その結果として古いキャッシュ データが返される場合があります。 
+
+フィルター定義を変更する必要がある場合は、新しいフィルターを作成してそれを**ストリーミング ロケーター**の URL に追加するか、またはフィルターを直接参照する新しい**ストリーミング ロケーター**を公開することを検討してください。
 
 ## <a name="next-steps"></a>次の手順
 

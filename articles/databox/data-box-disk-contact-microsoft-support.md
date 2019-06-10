@@ -6,18 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: ''
 ms.topic: article
-ms.date: 09/27/2018
+ms.date: 05/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 5b392fecd75f5c18793a6122b8d5d967a2e54afa
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: acba9d2c87d2fb23e48ac24cec22388044702bac
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65604446"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66240143"
 ---
 # <a name="open-a-support-ticket-for-azure-data-box"></a>Azure Data Box のサポート チケットを開く 
 
-この記事は、どちらも Azure Data Box サービスによって管理される Azure Data Box と Azure Data Box Disk に適用されます。 Azure Data Box サービスで問題が発生した場合は、テクニカル サポートに対するサービス要求を作成できます。 この記事で説明する内容は次のとおりです。
+この記事は、Azure Data Box、Azure Data Box Heavy、および Azure Data Box Disk に適用されます。これらはすべて Azure Data Box サービスによって管理されます。 Azure Data Box サービスで問題が発生した場合は、テクニカル サポートに対するサービス要求を作成できます。 この記事で説明する内容は次のとおりです。
 
 * サポート要求を作成する方法
 * ポータル内からサポート要求ライフ サイクルを管理する方法
@@ -34,7 +34,7 @@ ms.locfileid: "65604446"
     
     1. **[問題の種類]** ドロップダウン リストで **[技術]** を選択します。
     2. **サブスクリプション**を選択します。
-    3. **[サービス]** の **[すべてのサービス]** をオンにします。 ドロップダウン リストから、 **[Data Box - Preview]\(Data Box - プレビュー\)** を選びます。 
+    3. **[サービス]** の **[すべてのサービス]** をオンにします。 ドロップダウン リストから、 **[Data Box]** を選びます。 
     4. **[サポート プラン]** を指定します。
     5. **[次へ]** をクリックします。
 
@@ -84,3 +84,5 @@ ms.locfileid: "65604446"
 ## <a name="next-steps"></a>次の手順
 
 [Data Box Disk に関する問題のトラブルシューティング](data-box-disk-troubleshoot.md)方法を確認します。
+[Data Box に関する問題のトラブルシューティング](data-box-troubleshoot.md)方法を確認します。
+[Data Box BLOB ストレージに関する問題のトラブルシューティング](data-box-troubleshoot-rest.md)方法を確認します。

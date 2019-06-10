@@ -9,12 +9,12 @@ ms.date: 09/11/2018
 ms.topic: conceptual
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s '
-ms.openlocfilehash: 39ef23d04dc1cf1b48297ecf8f0accfef4935cd2
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 693abccd7e54a1dfef92cd57a715ac96bfd56a8c
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66158952"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66234016"
 ---
 # <a name="troubleshooting-guide"></a>トラブルシューティング ガイド
 
@@ -404,3 +404,8 @@ Azure Dev Spaces コントローラー名の文字数は 31 文字までです�
 ```cmd
 azds controller create --name my-controller --target-name MyAKS --resource-group MyResourceGroup
 ```
+
+## <a name="enabling-dev-spaces-failing-when-windows-node-pools-are-added-to-an-aks-cluster"></a>AKS クラスターに Windows ノード プールが追加されていると、Dev Spaces を有効にすることができません
+
+### <a name="reason"></a>理由
+現在のところ、Azure Dev Spaces は Linux のポッドとノードのみで実行するものです。 現時点では、Windows ノード プールを含む AKS クラスターで Azure Dev Spaces を有効にすることはできません。

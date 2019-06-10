@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 06/20/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 0e0c83d411242be38992dd763dea72eda70ffbf4
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: e9c307b2b2e720881acb983a2a1b00ac8e03dac4
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60006460"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357072"
 ---
 # <a name="manage-access-to-azure-resources-using-rbac-and-the-rest-api"></a>RBAC と REST API を使用して Azure リソースへのアクセスを管理する
 
@@ -43,7 +43,11 @@ RBAC でアクセス権を一覧表示するには、ロールの割り当てを
     | `subscriptions/{subscriptionId}` | サブスクリプション |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | リソース グループ |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
-
+    
+       
+     > [!NOTE]
+     > 上の例で、Microsoft.web は App Service インスタンスを参照するために使用されるリソース プロバイダーです。 同様に、他の任意のリソース プロバイダーを使用してスコープ URI を構築できます。 詳細については、「[Azure リソース プロバイダーと種類](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services)」およびサポートされている「[Azure RM のリソース プロバイダー操作](https://docs.microsoft.com/azure/role-based-access-control/resource-provider-operations)」を参照してください。  
+     
 1. *{filter}* には、ロールの割り当て一覧をフィルター処理するために適用する条件を指定します。
 
     | filter | 説明 |

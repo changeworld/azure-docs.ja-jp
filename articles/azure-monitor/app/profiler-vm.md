@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: 4cca65e2be44d2c846cd4034f0a9d7e8c7d9af28
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ab30351bfff9c5bbf070a1e8a54a4919e4d2231a
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66130892"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66226266"
 ---
 # <a name="profile-web-apps-running-on-an-azure-virtual-machine-or-a-virtual-machine-scale-set-by-using-application-insights-profiler"></a>Application Insights Profiler を使用して、Azure 仮想マシンまたは仮想マシン スケール セットで実行されている Web アプリをプロファイルする
 
@@ -31,7 +31,8 @@ Azure Application Insights Profiler を次のサービスにデプロイする�
 ## <a name="deploy-profiler-on-a-virtual-machine-or-a-virtual-machine-scale-set"></a>仮想マシンまたは仮想マシン スケール セットに Profiler をデプロイする
 この記事では、Azure 仮想マシン (VM) または Azure 仮想マシン スケール セットで Application Insights Profiler を実行する方法を説明します。 Profiler は、VM 用の Azure Diagnostics 拡張機能と共にインストールされます。 Profiler を実行するように拡張機能を構成し、Application Insights SDK をお使いのアプリケーションにビルドします。
 
-1. Application Insights SDK を、お使いの [ASP.NET アプリケーション](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net)または正規の [.NET アプリケーション](windows-services.md?toc=/azure/azure-monitor/toc.json)に追加します。  
+1. Application Insights SDK を [ASP.NET アプリケーション](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net)に追加します。
+
    要求のプロファイルを表示するには、要求テレメトリを Application Insights に送信する必要があります。
 
 1. Azure Diagnostics 拡張機能を VM にインストールします。 Resource Manager テンプレートの完全な例については、次を参照してください。  

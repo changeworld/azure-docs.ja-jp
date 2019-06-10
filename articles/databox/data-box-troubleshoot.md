@@ -1,54 +1,36 @@
 ---
-title: Azure Data Box に関する問題のトラブルシューティング | Microsoft Docs
-description: Azure にデータをアップロードするときに Azure Data Box で見られる問題のトラブルシューティングを行う方法について説明します。
+title: Azure Data Box、Azure Data Box Heavy に関する問題のトラブルシューティング | Microsoft Docs
+description: Azure Data Box と Azure Data Box Heavy にデータをアップロードするときにこれらのデバイスで見られる問題のトラブルシューティングを行う方法について説明します。
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 05/13/2019
+ms.date: 05/28/2019
 ms.author: alkohli
-ms.openlocfilehash: 1126002a93419371be3216c55114385c9c600419
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 0c454c5f19ebefc7f91df62511448dbedb93dfc4
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65594004"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66257286"
 ---
-# <a name="troubleshoot-issues-related-to-azure-data-box"></a>Azure Data Box に関連する問題のトラブルシューティング
+# <a name="troubleshoot-issues-related-to-azure-data-box-and-azure-data-box-heavy"></a>Azure Data Box と Azure Data Box Heavy に関連する問題のトラブルシューティング
 
-この記事では、Azure Data Box の使用時に見られる問題をトラブルシューティングする方法について説明します。
+この記事では、Azure Data Box または Azure Data Box Heavy の使用時に見られる問題をトラブルシューティングする方法について説明します。
 
 ## <a name="errors-during-data-copy"></a>データ コピー時のエラー
 
 以降のセクションでは、データのコピー中に表示されるすべてのエラーついて簡単に説明します。
 
-### <a name="errorcontainerorsharenamelength"></a>ERROR_CONTAINER_OR_SHARE_NAME_LENGTH 
-
-**エラーの説明:** コンテナーまたは共有の名前は、3 文字から 63 文字で指定する必要があります。
-
-**推奨される解決方法:** Data Box (SMB または NFS) 共有の下にあるフォルダー (データのコピー先) は、ストレージ アカウント内の Azure コンテナーになります。 
-
-- Data Box のローカル Web UI の **[接続とコピー]** ページで、エラー ファイルをダウンロードして確認し、問題があるフォルダーの名前を特定します。
-- Data Box 共有の下にあるフォルダーの名前を変更します。次の点に留意してください。
-
-    - 名前は 3 から 63 文字で指定します。
-    - 名前には、文字、数字、ハイフンのみを使用できます。
-    - 名前の先頭または末尾をハイフンにすることはできません。
-    - 名前に連続するハイフンを含めることはできません。
-    - 有効な名前の例: `my-folder-1`、`my-really-extra-long-folder-111`
-    - 無効な名前の例: `my-folder_1`、`my`、`--myfolder`、`myfolder--`、`myfolder!`
-
-    詳細については、[コンテナー名](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names)と[共有名](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names)の Azure 名前付け規則を参照してください。
-
 ### <a name="errorcontainerorsharenamelength"></a>ERROR_CONTAINER_OR_SHARE_NAME_LENGTH     
 
 **エラーの説明:** コンテナーまたは共有の名前は、3 文字から 63 文字で指定する必要があります。 
 
-**推奨される解決方法:** Data Box (SMB または NFS) 共有の下にあるフォルダー (データのコピー先) は、ストレージ アカウント内の Azure コンテナーになります。 
+**推奨される解決方法:** Data Box または Data Box Heavy 共有 (SMB または NFS) の下にあるフォルダー (データのコピー先) は、ストレージ アカウント内の Azure コンテナーになります。 
 
-- Data Box のローカル Web UI の **[接続とコピー]** ページで、エラー ファイルをダウンロードして確認し、問題があるフォルダーの名前を特定します。
-- Data Box 共有の下にあるフォルダーの名前を変更します。次の点に留意してください。
+- デバイスのローカル Web UI の **[接続とコピー]** ページで、エラー ファイルをダウンロードして確認し、問題があるフォルダーの名前を特定します。
+- Data Box または Data Box Heavy 共有の下にあるフォルダーの名前を変更します。次の点に留意してください。
 
     - 名前は 3 から 63 文字で指定します。
     - 名前には、文字、数字、ハイフンのみを使用できます。
@@ -64,10 +46,10 @@ ms.locfileid: "65594004"
 
 **エラーの説明:** コンテナーまたは共有の名前に使用できるのは、英字、数字、またはハイフンだけです。
 
-**推奨される解決方法:** Data Box (SMB または NFS) 共有の下にあるフォルダー (データのコピー先) は、ストレージ アカウント内の Azure コンテナーになります。 
+**推奨される解決方法:** Data Box または Data Box Heavy 共有 (SMB または NFS) の下にあるフォルダー (データのコピー先) は、ストレージ アカウント内の Azure コンテナーになります。 
 
-- Data Box のローカル Web UI の **[接続とコピー]** ページで、エラー ファイルをダウンロードして確認し、問題があるフォルダーの名前を特定します。
-- Data Box 共有の下にあるフォルダーの名前を変更します。次の点に留意してください。
+- デバイスのローカル Web UI の **[接続とコピー]** ページで、エラー ファイルをダウンロードして確認し、問題があるフォルダーの名前を特定します。
+- Data Box または Data Box Heavy 共有の下にあるフォルダーの名前を変更します。次の点に留意してください。
 
     - 名前は 3 から 63 文字で指定します。
     - 名前には、文字、数字、ハイフンのみを使用できます。
@@ -82,10 +64,10 @@ ms.locfileid: "65594004"
 
 **エラーの説明:** コンテナー名と共有名では、先頭または末尾をハイフンにすることはできず、連続するハイフンを含めることもできません。
 
-**推奨される解決方法:** Data Box (SMB または NFS) 共有の下にあるフォルダー (データのコピー先) は、ストレージ アカウント内の Azure コンテナーになります。 
+**推奨される解決方法:** Data Box または Data Box Heavy 共有 (SMB または NFS) の下にあるフォルダー (データのコピー先) は、ストレージ アカウント内の Azure コンテナーになります。 
 
-- Data Box のローカル Web UI の **[接続とコピー]** ページで、エラー ファイルをダウンロードして確認し、問題があるフォルダーの名前を特定します。
-- Data Box 共有の下にあるフォルダーの名前を変更します。次の点に留意してください。
+- デバイスのローカル Web UI の **[接続とコピー]** ページで、エラー ファイルをダウンロードして確認し、問題があるフォルダーの名前を特定します。
+- Data Box または Data Box Heavy 共有の下にあるフォルダーの名前を変更します。次の点に留意してください。
 
     - 名前は 3 から 63 文字で指定します。
     - 名前には、文字、数字、ハイフンのみを使用できます。
@@ -112,7 +94,7 @@ ms.locfileid: "65594004"
 
 **エラーの説明:** Azure ファイル共有では、1 つの共有につき 5 TB のデータに制限されています。 一部の共有でこの制限を超えています。
 
-**推奨される解決方法:** Data Box のローカル Web UI の **[接続とコピー]** ページで、エラー ファイルをダウンロードして確認します。
+**推奨される解決方法:** ローカル Web UI の **[接続とコピー]** ページで、エラー ファイルをダウンロードして確認します。
 
 エラー ログから、この問題があるフォルダーを特定し、そのフォルダー内のファイルが 5 TB 未満であることを確認します。
 
@@ -194,7 +176,7 @@ ms.locfileid: "65594004"
 
 **エラーの説明:** BLOB またはファイルが正しくアラインされていません。
 
-**推奨される解決方法:** Data Box のページ BLOB 共有では、512 バイトにアラインされたファイルのみがサポートされます (VHD や VHDX など)。 ページ BLOB 共有にコピーされたデータはすべて、ページ BLOB として Azure にアップロードされます。
+**推奨される解決方法:** Data Box または Data Box Heavy のページ BLOB 共有では、512 バイトにアラインされたファイルのみがサポートされます (VHD や VHDX など)。 ページ BLOB 共有にコピーされたデータはすべて、ページ BLOB として Azure にアップロードされます。
 
 ページ BLOB 共有から、VHD または VHDX 以外のデータを削除します。 汎用データには、ブロック BLOB または Azure ファイル用の共有を使用できます。
 

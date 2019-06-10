@@ -8,14 +8,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 05/13/2019
+ms.date: 05/24/2019
 ms.author: jingwang
-ms.openlocfilehash: c0591a7850516a419cb59045754cc4eb02979dfd
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 1e248a005b499227a667bebacf7244fc3df9c828
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66122593"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66239147"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen2-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Data Lake Storage Gen2 との間でデータをコピーする
 
@@ -169,7 +169,7 @@ Azure リソースのマネージド ID 認証を使用するには、次のよ�
 >アカウント レベルでのアクセス許可の付与に問題がある場合は、作成時にテスト接続と入力パスを手動で省略できます。 コピー アクティビティは、コピーされるファイルで、マネージド ID に適切なアクセス許可が与えられている限り機能します。
 
 >[!IMPORTANT]
->PolyBase を使用して ADLS Gen2 から SQL DW にデータを読み込む場合、ADLS Gen2 マネージド ID 認証を使用しているときは、SQL DW についても ADLS Gen2 ストレージの MSI が使用されるように構成し、[こちらのガイダンス](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)の手順 1 から 3.b をに従ってください。 お使いの ADLS Gen2 が VNet サービス エンドポイントで構成されている場合、PolyBase を使用してそこからデータを読み込むには、マネージド ID 認証を使用する必要があります。
+>PolyBase を使用して ADLS Gen2 から SQL DW にデータを読み込む場合、ADLS Gen2 マネージド ID 認証を使用しているときは、[こちらのガイダンス](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)の手順 #1 と #2 にも従って、SQL Database サーバーを Azure Active Directory (AAD) に登録し、SQL Database サーバーにストレージ BLOB データ共同作成者の RBAC ロールを割り当ててください。残りの部分は ADF によって処理されます。 お使いの ADLS Gen2 が VNet サービス エンドポイントで構成されている場合、PolyBase を使用してそこからデータを読み込むには、マネージド ID 認証を使用する必要があります。
 
 リンクされたサービスでは、次のプロパティがサポートされています。
 

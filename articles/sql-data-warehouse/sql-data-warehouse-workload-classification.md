@@ -1,5 +1,5 @@
 ---
-title: SQL Data Warehouse の分類 | Microsoft Docs
+title: Azure SQL Data Warehouse の分類 | Microsoft Docs
 description: Azure SQL Data Warehouse で分類を使用してクエリのコンカレンシー、重要度、コンピューティング リソースを管理するためのガイダンスです。
 services: sql-data-warehouse
 author: ronortloff
@@ -10,14 +10,14 @@ ms.subservice: workload management
 ms.date: 05/01/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: c4630e11ef4001c546aecfe74dbced346b6d30e4
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 3edae23183896651efcbf7f867204a618a10c85d
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66000118"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236897"
 ---
-# <a name="sql-data-warehouse-workload-classification"></a>SQL Data Warehouse のワークロード分類
+# <a name="azure-sql-data-warehouse-workload-classification"></a>Azure SQL Data Warehouse のワークロード分類
 
 この記事では、受信要求にリソース クラスと重要度を割り当てる SQL Data Warehouse のワークロード分類プロセスについて説明します。
 

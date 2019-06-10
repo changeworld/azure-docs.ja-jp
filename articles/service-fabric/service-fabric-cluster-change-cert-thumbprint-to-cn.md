@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/01/2019
 ms.author: aljo
-ms.openlocfilehash: c199bd7314cb076def497bc18030f783eb23f4be
-ms.sourcegitcommit: 3675daec6c6efa3f2d2bf65279e36ca06ecefb41
+ms.openlocfilehash: a94fda5a1f3aedd5842bad92b5348a77177b4137
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65620228"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66302460"
 ---
 # <a name="change-cluster-from-certificate-thumbprint-to-common-name"></a>証明書の拇印から共通名へとクラスターを変更する
 2 つの証明書が同じ拇印を持つことはできず、そのことがクラスター証明書のロール オーバーや管理を困難にしています。 ただし、複数の証明書で同じ共通名や件名を持つことはできます。  デプロイされたクラスターで使用するのを、証明書の拇印から証明書共通名に切り替えることで、証明書の管理が大幅に単純化します。 この記事では、実行中の Service Fabric クラスターを、証明書の拇印ではなく証明書共通名を使用するように更新する方法について説明します。
@@ -102,7 +102,7 @@ Update-AzVmss -ResourceGroupName $VmssResourceGroupName -Verbose `
 > スケール セットのシークレットでは、各シークレットはバージョン管理された一意のリソースであるため、2 つの個別のシークレットに対して同じリソース ID はサポートされません。 
 
 ## <a name="download-and-update-the-template-from-the-portal"></a>ポータルからテンプレートをダウンロードして更新する
-基になるスケール セットに証明書がインストールされましたが、その証明書と共通名を使用するように Service Fabric クラスターを更新する必要もあります。  ここで、クラスター デプロイ用のテンプレートをダウンロードします。  [Azure Portal](https://portal.azure.com) にログインし、クラスターをホストしているリソース グループに移動します。  **[設定]** で、 **[デプロイ]** を選択します。  最新のデプロイを選択し、 **[テンプレートの表示]** をクリックします。
+基になるスケール セットに証明書がインストールされましたが、その証明書と共通名を使用するように Service Fabric クラスターを更新する必要もあります。  ここで、クラスター デプロイ用のテンプレートをダウンロードします。  [Azure portal](https://portal.azure.com) にサインインし、クラスターをホストしているリソース グループに移動します。  **[設定]** で、 **[デプロイ]** を選択します。  最新のデプロイを選択し、 **[テンプレートの表示]** をクリックします。
 
 ![テンプレートの表示][image1]
 

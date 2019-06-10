@@ -18,12 +18,12 @@ ms.date: 01/25/2019
 ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54cb8c3017b2b0a4c476095ba639985fb9418441
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 67811e03bfa87a991b9eeb6f80ddddd87f781335
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64917312"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66305734"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Azure Active Directory の条件付きアクセスのベスト プラクティス
 
@@ -71,7 +71,7 @@ ms.locfileid: "64917312"
 
     ![順序](./media/best-practices/06.png)
     
-    外部の MFA プロバイダーが最初で、次が使用条件です。
+    外部の MFA プロバイダー、次に使用条件が来ます。
 
 
 

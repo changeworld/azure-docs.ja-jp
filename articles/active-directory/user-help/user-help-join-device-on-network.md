@@ -13,12 +13,12 @@ ms.date: 08/03/2018
 ms.author: lizross
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dfd38e775ba418fbe31cafa8df5f37b45c3b0643
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 62faa47c116cceb941f575a9f76052e8bc57f036
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59524372"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66243273"
 ---
 # <a name="join-your-work-device-to-your-organizations-network"></a>職場のデバイスを組織のネットワークに参加させる
 制限されている可能性があるリソースにアクセスできるように、職場所有の Windows 10 デバイスを組織のネットワークに参加させます。
@@ -58,11 +58,11 @@ Windows 10 デバイスを組織のネットワークに参加させている間
 ## <a name="to-make-sure-youre-joined"></a>参加したことを確認するには
 設定を参照することによって、参加したことを確認できます。
 
-1. **[設定]** を開いてから、**[アカウント]** を選択します。
+1. **[設定]** を開いてから、 **[アカウント]** を選択します。
 
     ![[設定] 画面上の [アカウント]](./media/user-help-join-device-on-network/join-device-settings-accounts.png)
 
-2. **[職場または学校にアクセスする]** を選択し、**[*\<your_organization>* Azure AD に接続しました]** のようなテキストが表示されることを確認します。
+2. **[職場または学校にアクセスする]** を選択し、 **[ *\<your_organization>* Azure AD に接続しました]** のようなテキストが表示されることを確認します。
 
     ![接続されている contoso アカウントが表示された [職場または学校にアクセスする] 画面](./media/user-help-join-device-on-network/join-device-oobe-verify.png)
 
@@ -70,21 +70,21 @@ Windows 10 デバイスを組織のネットワークに参加させている間
 ## <a name="to-join-an-already-configured-windows-10-device"></a>既に構成されている Windows 10 デバイスを参加させるには
 デバイスが一定期間使用されており、既に設定されている場合は、次の手順に従ってデバイスをネットワークに参加させることができます。
 
-1. **[設定]** を開いてから、**[アカウント]** を選択します。
+1. **[設定]** を開いてから、 **[アカウント]** を選択します。
 
-2. **[職場または学校にアクセスする]** を選択してから、**[接続]** を選択します。
+2. **[職場または学校にアクセスする]** を選択してから、 **[接続]** を選択します。
 
     ![[職場または学校にアクセスする] および [接続] リンク](./media/user-help-join-device-on-network/join-device-access-work-school-connect.png)
 
-3. **[職場または学校アカウントの設定]** 画面で、**[このデバイスを Azure Active Directory に参加させる]** を選択します。
+3. **[職場または学校アカウントの設定]** 画面で、 **[このデバイスを Azure Active Directory に参加させる]** を選択します。
 
     ![[職場または学校アカウントの設定] 画面](./media/user-help-join-device-on-network/join-device-setup-join-aad.png)
 
-4. **[サインインしましょう]** 画面で、メール アドレス (alain@contoso.com など) を入力し、**[次へ]** を選択します。
+4. **[サインインしましょう]** 画面で、メール アドレス (alain@contoso.com など) を入力し、 **[次へ]** を選択します。
 
     ![[サインインしましょう] 画面](./media/user-help-join-device-on-network/join-device-setup-get-signed-in.png)
 
-5. **[パスワードの入力]** 画面で、パスワードを入力し、**[サインイン]** を選択します。
+5. **[パスワードの入力]** 画面で、パスワードを入力し、 **[サインイン]** を選択します。
 
     ![パスワードの入力](./media/user-help-join-device-on-network/join-device-setup-password.png)
 
@@ -92,22 +92,22 @@ Windows 10 デバイスを組織のネットワークに参加させている間
 
     ![モバイル通知画面](./media/user-help-join-device-on-network/join-device-setup-mobile.png)
 
-7. **[これがあなたの組織のネットワークであることを確認してください]** 画面で、情報が正しいことを確認してから、**[参加]** を選択します。
+7. **[これがあなたの組織のネットワークであることを確認してください]** 画面で、情報が正しいことを確認してから、 **[参加]** を選択します。
 
     ![[これがあなたの組織のネットワークであることを確認してください] 確認画面](./media/user-help-join-device-on-network/join-device-setup-confirm.png)
 
-8. **[これで完了です]** 画面で、**[完了]** をクリックします。
+8. **[これで完了です]** 画面で、 **[完了]** をクリックします。
 
     ![[これで完了です] 画面](./media/user-help-join-device-on-network/join-device-setup-finish.png)
 
 ## <a name="to-make-sure-youre-joined"></a>参加したことを確認するには
 設定を参照することによって、参加したことを確認できます。
 
-1. **[設定]** を開いてから、**[アカウント]** を選択します。
+1. **[設定]** を開いてから、 **[アカウント]** を選択します。
 
     ![[設定] 画面上の [アカウント]](./media/user-help-join-device-on-network/join-device-settings-accounts.png)
 
-2. **[職場または学校にアクセスする]** を選択し、**[*\<your_organization>* Azure AD に接続しました]** のようなテキストが表示されることを確認します。
+2. **[職場または学校にアクセスする]** を選択し、 **[ *\<your_organization>* Azure AD に接続しました]** のようなテキストが表示されることを確認します。
 
     ![接続されている contoso アカウントが表示された [職場または学校にアクセスする] 画面](./media/user-help-join-device-on-network/join-device-setup-verify.png)
 
@@ -116,3 +116,4 @@ Windows 10 デバイスを組織のネットワークに参加させている間
 
 - 組織で電話などの個人デバイスを登録させるようにする場合は、「[個人デバイスを組織のネットワークに登録する](user-help-register-device-on-network.md)」を参照してください。
 
+- 組織が Microsoft Intune を使用して管理されていて、登録、サインイン、またはその他の Intune 関連の問題について質問がある場合は、[Intune ユーザー ヘルプ コンテンツ](https://docs.microsoft.com/intune-user-help/use-managed-devices-to-get-work-done)を参照してください。

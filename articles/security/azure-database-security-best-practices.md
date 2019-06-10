@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: b4744201f506730303e190783acc60bfaa383720
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 9cd02172af5246c60b93a6e4696988268abed506
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65409804"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66258678"
 ---
 # <a name="azure-database-security-best-practices"></a>Azure のデータベース セキュリティに関するベスト プラクティス
 この記事では、データベース セキュリティに関するベスト プラクティスについて説明します。
@@ -165,6 +165,10 @@ SQL Server データベース エンジンまたは個々のデータベース�
 - 潜在的な脅威を検出し、これに対応します。
 
 さらに、脅威の検出は、アラートを、すべての Azure リソースのセキュリティ状態の一元的に表示するための Azure Security Center と統合します。
+
+## <a name="enable-feature-restrictions"></a>機能の制限を有効にする
+
+データベースに含まれているデータは、データベース エラーやクエリの実行時間を悪用する攻撃ベクトルを利用して攻撃者にさらされる可能性があります。 Azure SQL Database では、データベースを保護するために、さまざまな機能の制限のメカニズムが提供されます。 詳細については、[SQL Database 機能の制限](../sql-database/sql-database-feature-restrictions.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 Azure を使用してクラウド ソリューションを設計、デプロイ、管理するときに使用するセキュリティのベスト プラクティスの詳細については、「[Azure セキュリティのベスト プラクティスとパターン](security-best-practices-and-patterns.md)」を参照してください。

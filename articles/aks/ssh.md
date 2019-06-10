@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 05/20/2019
+ms.date: 05/24/2019
 ms.author: iainfou
-ms.openlocfilehash: a85c39fbfbf629e6ba9e668d55dd905c1ce0800c
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 57eacca75d711c5125a2856a7b6219cd2ec5306b
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956356"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242028"
 ---
 # <a name="connect-with-ssh-to-azure-kubernetes-service-aks-cluster-nodes-for-maintenance-or-troubleshooting"></a>メンテナンスまたはトラブルシューティングのために SSH を使用して Azure Kubernetes Service (AKS) クラスター ノードに接続する
 
@@ -33,18 +33,25 @@ Azure Kubernetes Service (AKS) クラスターのライフサイクル全体を�
 > [!NOTE]
 > 現時点では、SSH キーは Azure CLI を使用して Linux ノードにのみ追加できます。 Windows Server ノードを使用する場合は、AKS クラスターを作成したときに指定した SSH キーを使用して、[AKS ノード アドレスを取得する方法](#get-the-aks-node-address)の手順に進みます。 または、[リモート デスクトップ プロトコル (RDP) 接続を使用して、Windows Server ノードに接続][aks-windows-rdp]します。
 
+AKS ノードのプライベート IP アドレスを取得する手順は、実行する AKS クラスターの種類によって異なります。
+
+* ほとんどの AKS クラスターについて、[通常の AKS クラスターの IP アドレスを取得](#add-ssh-keys-to-regular-aks-clusters)する手順に従います。
+* 複数のノード プール、Windows Server コンテナーのサポートなど、仮想マシン スケール セットが使用されている AKS のプレビュー機能を使用する場合は、[仮想マシン スケール セットに基づく AKS クラスターの手順に従います](#add-ssh-keys-to-virtual-machine-scale-set-based-aks-clusters)。
+
+### <a name="add-ssh-keys-to-regular-aks-clusters"></a>通常の AKS クラスターに SSH キーを追加する
+
 SSH キーを Linux AKS ノードに追加するには、次の手順を実行します。
 
-1. [az aks show][az-aks-show] を使用して、AKS クラスター リソースに対するリソース グループ名を取得します。 独自のコア リソース グループと AKS クラスター名を指定します。
+1. [az aks show][az-aks-show] を使用して、AKS クラスター リソースに対するリソース グループ名を取得します。 独自のコア リソース グループと AKS クラスター名を指定します。 クラスター名は *CLUSTER_RESOURCE_GROUP* という名前の変数に割り当てられています。
 
     ```azurecli-interactive
-    az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
+    CLUSTER_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
     ```
 
 1. [az vm list][az-vm-list] コマンドを使用して、AKS クラスター リソース グループ内の VM を一覧表示します。 これらの VM はお使いの AKS ノードです。
 
     ```azurecli-interactive
-    az vm list --resource-group MC_myResourceGroup_myAKSCluster_eastus -o table
+    az vm list --resource-group $CLUSTER_RESOURCE_GROUP -o table
     ```
 
     次の出力例では AKS ノードが示されています。
@@ -59,25 +66,61 @@ SSH キーを Linux AKS ノードに追加するには、次の手順を実行�
 
     ```azurecli-interactive
     az vm user update \
-      --resource-group MC_myResourceGroup_myAKSCluster_eastus \
+      --resource-group $CLUSTER_RESOURCE_GROUP \
       --name aks-nodepool1-79590246-0 \
       --username azureuser \
       --ssh-key-value ~/.ssh/id_rsa.pub
+    ```
+
+### <a name="add-ssh-keys-to-virtual-machine-scale-set-based-aks-clusters"></a>仮想マシン スケール セットに基づく AKS クラスターに SSH キーを追加する
+
+仮想マシン スケール セットに含まれている Linux AKS ノードに SSH キーを追加するには、次の手順を実行します。
+
+1. [az aks show][az-aks-show] を使用して、AKS クラスター リソースに対するリソース グループ名を取得します。 独自のコア リソース グループと AKS クラスター名を指定します。 クラスター名は *CLUSTER_RESOURCE_GROUP* という名前の変数に割り当てられています。
+
+    ```azurecli-interactive
+    CLUSTER_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
+    ```
+
+1. 次に、[az vmss list][az-vmss-list] コマンドを使用して、AKS クラスターの仮想マシン スケール セットを取得します。 仮想マシン スケール セット名は、*SCALE_SET_NAME* という名前の変数に割り当てられています。
+
+    ```azurecli-interactive
+    SCALE_SET_NAME=$(az vmss list --resource-group $CLUSTER_RESOURCE_GROUP --query [0].name -o tsv)
+    ```
+
+1. 仮想マシン スケール セット内のノードに SSH キーを追加するには、[az vmss extension set][az-vmss-extension-set] コマンドを使用します。 クラスター リソース グループと仮想マシン スケール セット名は、前のコマンドから提供されます。 AKS ノードの既定のユーザー名は *azureuser* です。 必要に応じて、独自の SSH 公開キーの場所を更新します (例: *~/.ssh/id_rsa.pub*)。
+
+    ```azurecli-interactive
+    az vmss extension set  \
+        --resource-group $CLUSTER_RESOURCE_GROUP \
+        --vmss-name $SCALE_SET_NAME \
+        --name VMAccessForLinux \
+        --publisher Microsoft.OSTCExtensions \
+        --version 1.4 \
+        --protected-settings "{\"username\":\"azureuser\", \"ssh_key\":\"$(cat ~/.ssh/id_rsa.pub)\"}"
+    ```
+
+1. [az vmss update-instances][az-vmss-update-instances] コマンドを使用して、ノードに SSH キーを適用します。
+
+    ```azurecli-interactive
+    az vmss update-instances --instance-ids '*' \
+        --resource-group $CLUSTER_RESOURCE_GROUP \
+        --name $SCALE_SET_NAME
     ```
 
 ## <a name="get-the-aks-node-address"></a>AKS ノード アドレスを取得する
 
 AKS ノードは、インターネットにパブリックに公開されていません。 AKS ノードに SSH 接続するには、プライベート IP アドレスを使用します。 次の手順では、AKS クラスターでヘルパー ポッドを作成して、ノードのこのプライベート IP アドレスに SSH 接続できるようにします。 AKS ノードのプライベート IP アドレスを取得する手順は、実行する AKS クラスターの種類によって異なります。
 
-* ほとんどの AKS クラスターについて、[通常の AKS クラスターの IP アドレスを取得](#regular-aks-clusters)する手順に従います。
-* 複数のノード プール、Windows Server コンテナーのサポートなど、仮想マシン スケール セットが使用されている AKS のプレビュー機能を使用する場合は、[仮想マシン スケール セットに基づく AKS クラスターの手順に従います](#virtual-machine-scale-set-based-aks-clusters)。
+* ほとんどの AKS クラスターについて、[通常の AKS クラスターの IP アドレスを取得](#ssh-to-regular-aks-clusters)する手順に従います。
+* 複数のノード プール、Windows Server コンテナーのサポートなど、仮想マシン スケール セットが使用されている AKS のプレビュー機能を使用する場合は、[仮想マシン スケール セットに基づく AKS クラスターの手順に従います](#ssh-to-virtual-machine-scale-set-based-aks-clusters)。
 
-### <a name="regular-aks-clusters"></a>通常の AKS クラスター
+### <a name="ssh-to-regular-aks-clusters"></a>通常の AKS クラスターに SSH 接続する
 
 [az vm list-ip-addresses][az-vm-list-ip-addresses] コマンドを使用して、AKS クラスター ノードのプライベート IP アドレスを表示します。 前の [az aks show][az-aks-show] のステップで取得した独自の AKS クラスター リソース グループ名を指定します。
 
 ```azurecli-interactive
-az vm list-ip-addresses --resource-group MC_myResourceGroup_myAKSCluster_eastus -o table
+az vm list-ip-addresses --resource-group $CLUSTER_RESOURCE_GROUP -o table
 ```
 
 次の出力例では AKS ノードのプライベート IP アドレスが示されています。
@@ -88,7 +131,7 @@ VirtualMachine            PrivateIPAddresses
 aks-nodepool1-79590246-0  10.240.0.4
 ```
 
-### <a name="virtual-machine-scale-set-based-aks-clusters"></a>仮想マシン スケール セットに基づく AKS クラスター
+### <a name="ssh-to-virtual-machine-scale-set-based-aks-clusters"></a>仮想マシン スケール セットに基づく AKS クラスターに SSH 接続する
 
 [kubectl get コマンド][kubectl-get]を使用して、ノードの内部 IP アドレスの一覧を表示します。
 
@@ -199,3 +242,6 @@ AKS ノードへの SSH 接続を作成するには、AKS クラスターでヘ�
 [aks-windows-rdp]: rdp.md
 [ssh-nix]: ../virtual-machines/linux/mac-create-ssh-keys.md
 [ssh-windows]: ../virtual-machines/linux/ssh-from-windows.md
+[az-vmss-list]: /cli/azure/vmss#az-vmss-list
+[az-vmss-extension-set]: /cli/azure/vmss/extension#az-vmss-extension-set
+[az-vmss-update-instances]: /cli/azure/vmss#az-vmss-update-instances

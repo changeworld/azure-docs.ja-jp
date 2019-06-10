@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: apimpm
-ms.openlocfilehash: b8bd6e7c77faa54a8ebf0842cf140ef8aa73e953
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.openlocfilehash: 9a19165f9ac15f7a40aea0501f960b06efbd63a3
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65834541"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66304358"
 ---
 # <a name="api-management-policy-expressions"></a>API Management ポリシー式
 この記事で説明するポリシー式の構文は C# 7 です。 それぞれの式は、暗黙的に指定された[コンテキスト](api-management-policy-expressions.md#ContextVariables)変数と、許可されている .NET Framework の型の[サブセット](api-management-policy-expressions.md#CLRTypes)にアクセスできます。
@@ -210,26 +210,26 @@ ms.locfileid: "65834541"
 
 |コンテキスト変数|使用可能なメソッド、プロパティ、パラメーターの値|
 |----------------------|-------------------------------------------------------|
-|context|Api:IApi<br /><br /> Deployment<br /><br /> Elapsed:TimeSpan - Timestamp の値と現在時刻の間の時間間隔<br /><br /> lastError<br /><br /> Operation<br /><br /> Product<br /><br /> Request<br /><br /> RequestId:Guid - 一意の要求識別子<br /><br /> Response<br /><br /> サブスクリプション<br /><br /> Timestamp:DateTime - 要求を受信した時点<br /><br /> Tracing: bool - トレースがオンかオフかを示します <br /><br /> User<br /><br /> Variables:IReadOnlyDictionary<string, object><br /><br /> void Trace(message: 文字列)|
-|context.Api|Id: 文字列<br /><br /> IsCurrentRevision: ブール値<br /><br />  Name: 文字列<br /><br /> Path: 文字列<br /><br /> Revision: 文字列<br /><br /> ServiceUrl:IUrl<br /><br /> Version: 文字列 |
-|context.Deployment|Region: 文字列<br /><br /> ServiceName: 文字列<br /><br /> Certificates:IReadOnlyDictionary<string, X509Certificate2>|
-|context.LastError|Source: 文字列<br /><br /> Reason: 文字列<br /><br /> Message: 文字列<br /><br /> Scope: 文字列<br /><br /> Section: 文字列<br /><br /> Path: 文字列<br /><br /> PolicyId: 文字列<br /><br /> context.LastError の詳細については、[エラー処理](api-management-error-handling-policies.md)に関する記事を参照してください。|
-|context.Operation|Id: 文字列<br /><br /> Method: 文字列<br /><br /> Name: 文字列<br /><br /> UrlTemplate: 文字列|
-|context.Product|Apis:IEnumerable<IApi\><br /><br /> ApprovalRequired: ブール値<br /><br /> Groups:IEnumerable<IGroup\><br /><br /> Id: 文字列<br /><br /> Name: 文字列<br /><br /> State: enum ProductState {NotPublished, Published}<br /><br /> SubscriptionLimit: int?<br /><br /> SubscriptionRequired: ブール値|
-|context.Request|本文は次のようになります。IMessageBody<br /><br /> Certificate:System.Security.Cryptography.X509Certificates.X509Certificate2<br /><br /> Headers:IReadOnlyDictionary<string, string[]><br /><br /> IpAddress: 文字列<br /><br /> MatchedParameters:IReadOnlyDictionary<string, string><br /><br /> Method: 文字列<br /><br /> OriginalUrl:IUrl<br /><br /> Url:IUrl|
-|string context.Request.Headers.GetValueOrDefault(headerName: string, defaultValue: string)|headerName: 文字列<br /><br /> defaultValue: 文字列<br /><br /> コンマ区切りの要求ヘッダー値、またはヘッダーが見つからない場合は `defaultValue` を返します。|
-|context.Response|本文は次のようになります。IMessageBody<br /><br /> Headers:IReadOnlyDictionary<string, string[]><br /><br /> StatusCode: 整数<br /><br /> StatusReason: 文字列|
-|string context.Response.Headers.GetValueOrDefault(headerName: string, defaultValue: string)|headerName: 文字列<br /><br /> defaultValue: 文字列<br /><br /> コンマ区切りの応答ヘッダー値、またはヘッダーが見つからない場合は `defaultValue` を返します。|
-|context.Subscription|CreatedTime:DateTime<br /><br /> EndDate:DateTime?<br /><br /> Id: 文字列<br /><br /> Key: 文字列<br /><br /> Name: 文字列<br /><br /> PrimaryKey: 文字列<br /><br /> SecondaryKey: 文字列<br /><br /> StartDate:DateTime?|
-|context.User|Email: 文字列<br /><br /> FirstName: 文字列<br /><br /> Groups:IEnumerable<IGroup\><br /><br /> Id: 文字列<br /><br /> Identities:IEnumerable<IUserIdentity\><br /><br /> LastName: 文字列<br /><br /> Note: 文字列<br /><br /> RegistrationDate:DateTime|
-|IApi|Id: 文字列<br /><br /> Name: 文字列<br /><br /> Path: 文字列<br /><br /> Protocols:IEnumerable<string\><br /><br /> ServiceUrl:IUrl<br /><br /> SubscriptionKeyParameterNames:ISubscriptionKeyParameterNames|
-|IGroup|Id: 文字列<br /><br /> Name: 文字列|
-|IMessageBody|As<T\>(preserveContent: bool = false):T の値: string、JObject、JToken、JArray、XNode、XElement、XDocument<br /><br /> `context.Request.Body.As<T>` メソッドと `context.Response.Body.As<T>` メソッドは、指定した型 `T` で要求および応答のメッセージ本文を読み取るのに使用します。 メソッドでは既定で元のメッセージ本文のストリームが使用され、制御が戻ると使用不可になります。 本文ストリームのコピーでメソッドを実行することでこれを回避するには、`preserveContent` パラメーターを `true` に設定します。 例については、[こちら](api-management-transformation-policies.md#SetBody)を参照してください。|
-|IUrl|Host: 文字列<br /><br /> Path: 文字列<br /><br /> Port: 整数<br /><br /> クエリ:IReadOnlyDictionary<string, string[]><br /><br /> QueryString: 文字列<br /><br /> Scheme: 文字列|
-|IUserIdentity|Id: 文字列<br /><br /> Provider: 文字列|
-|ISubscriptionKeyParameterNames|Header: 文字列<br /><br /> Query: 文字列|
-|string IUrl.Query.GetValueOrDefault(queryParameterName: string, defaultValue: string)|queryParameterName: 文字列<br /><br /> defaultValue: 文字列<br /><br /> コンマ区切りのクエリ パラメーターの値、またはパラメーターが見つからない場合は `defaultValue` を返します。|
-|T context.Variables.GetValueOrDefault<T\>(variableName: string, defaultValue:T)|variableName: 文字列<br /><br /> defaultValue:T<br /><br /> `T` 型へのキャスト変数値、または変数が見つからない場合は `defaultValue` を返します。<br /><br /> このメソッドは、指定した型が返される変数の実際の型と一致しない場合に、例外をスローします。|
+|context|[Api](#ref-context-api):[IApi](#ref-iapi)<br /><br /> [Deployment](#ref-context-deployment)<br /><br /> Elapsed:TimeSpan - Timestamp の値と現在時刻の間の時間間隔<br /><br /> [LastError](#ref-context-lasterror)<br /><br /> [操作](#ref-context-operation)<br /><br /> [成果物](#ref-context-product)<br /><br /> [要求](#ref-context-request)<br /><br /> RequestId:Guid - 一意の要求識別子<br /><br /> [応答](#ref-context-response)<br /><br /> [サブスクリプション](#ref-context-subscription)<br /><br /> タイムスタンプ:DateTime - 要求を受信した時点<br /><br /> Tracing: bool - トレースがオンかオフかを示します <br /><br /> [User](#ref-context-user)<br /><br /> [変数](#ref-context-variables): IReadOnlyDictionary<string, object><br /><br /> void Trace(message: 文字列)|
+|<a id="ref-context-api"></a>context.Api|Id: 文字列<br /><br /> IsCurrentRevision: ブール値<br /><br />  Name: 文字列<br /><br /> Path: 文字列<br /><br /> Revision: 文字列<br /><br /> ServiceUrl:[IUrl](#ref-iurl)<br /><br /> Version: 文字列 |
+|<a id="ref-context-deployment"></a>context.Deployment|Region: 文字列<br /><br /> ServiceName: 文字列<br /><br /> Certificates:IReadOnlyDictionary<string, X509Certificate2>|
+|<a id="ref-context-lasterror"></a>context.LastError|Source: 文字列<br /><br /> Reason: 文字列<br /><br /> Message: 文字列<br /><br /> Scope: 文字列<br /><br /> Section: 文字列<br /><br /> Path: 文字列<br /><br /> PolicyId: 文字列<br /><br /> context.LastError の詳細については、[エラー処理](api-management-error-handling-policies.md)に関する記事を参照してください。|
+|<a id="ref-context-operation"></a>context.Operation|Id: 文字列<br /><br /> Method: 文字列<br /><br /> Name: 文字列<br /><br /> UrlTemplate: 文字列|
+|<a id="ref-context-product"></a>context.Product|Apis:IEnumerable<[IApi](#ref-iapi)\><br /><br /> ApprovalRequired: ブール値<br /><br /> Groups:IEnumerable<[IGroup](#ref-igroup)\><br /><br /> Id: 文字列<br /><br /> Name: 文字列<br /><br /> State: enum ProductState {NotPublished, Published}<br /><br /> SubscriptionLimit: int?<br /><br /> SubscriptionRequired: ブール値|
+|<a id="ref-context-request"></a>context.Request|本文は次のようになります。[IMessageBody](#ref-imessagebody)<br /><br /> Certificate:System.Security.Cryptography.X509Certificates.X509Certificate2<br /><br /> [Headers](#ref-context-request-headers):IReadOnlyDictionary<string, string[]><br /><br /> IpAddress: 文字列<br /><br /> MatchedParameters:IReadOnlyDictionary<string, string><br /><br /> Method: 文字列<br /><br /> OriginalUrl:[IUrl](#ref-iurl)<br /><br /> Url:[IUrl](#ref-iurl)|
+|<a id="ref-context-request-headers"></a>string context.Request.Headers.GetValueOrDefault(headerName: string, defaultValue: string)|headerName: 文字列<br /><br /> defaultValue: 文字列<br /><br /> コンマ区切りの要求ヘッダー値、またはヘッダーが見つからない場合は `defaultValue` を返します。|
+|<a id="ref-context-response"></a>context.Response|本文は次のようになります。[IMessageBody](#ref-imessagebody)<br /><br /> [Headers](#ref-context-response-headers):IReadOnlyDictionary<string, string[]><br /><br /> StatusCode: 整数<br /><br /> StatusReason: 文字列|
+|<a id="ref-context-response-headers"></a>string context.Response.Headers.GetValueOrDefault(headerName: string, defaultValue: string)|headerName: 文字列<br /><br /> defaultValue: 文字列<br /><br /> コンマ区切りの応答ヘッダー値、またはヘッダーが見つからない場合は `defaultValue` を返します。|
+|<a id="ref-context-subscription"></a>context.Subscription|CreatedTime:DateTime<br /><br /> EndDate:DateTime?<br /><br /> Id: 文字列<br /><br /> Key: 文字列<br /><br /> Name: 文字列<br /><br /> PrimaryKey: 文字列<br /><br /> SecondaryKey: 文字列<br /><br /> StartDate:DateTime?|
+|<a id="ref-context-user"></a>context.User|Email: 文字列<br /><br /> FirstName: 文字列<br /><br /> Groups:IEnumerable<[IGroup](#ref-igroup)\><br /><br /> Id: 文字列<br /><br /> Identities:IEnumerable<[IUserIdentity](#ref-iuseridentity)\><br /><br /> LastName: 文字列<br /><br /> Note: 文字列<br /><br /> RegistrationDate:DateTime|
+|<a id="ref-iapi"></a>IApi|Id: 文字列<br /><br /> Name: 文字列<br /><br /> Path: 文字列<br /><br /> Protocols:IEnumerable<string\><br /><br /> ServiceUrl:[IUrl](#ref-iurl)<br /><br /> SubscriptionKeyParameterNames:[ISubscriptionKeyParameterNames](#ref-isubscriptionkeyparameternames)|
+|<a id="ref-igroup"></a>IGroup|Id: 文字列<br /><br /> Name: 文字列|
+|<a id="ref-imessagebody"></a>IMessageBody|As<T\>(preserveContent: bool = false):T の値: string、JObject、JToken、JArray、XNode、XElement、XDocument<br /><br /> `context.Request.Body.As<T>` メソッドと `context.Response.Body.As<T>` メソッドは、指定した型 `T` で要求および応答のメッセージ本文を読み取るのに使用します。 メソッドでは既定で元のメッセージ本文のストリームが使用され、制御が戻ると使用不可になります。 本文ストリームのコピーでメソッドを実行することでこれを回避するには、`preserveContent` パラメーターを `true` に設定します。 例については、[こちら](api-management-transformation-policies.md#SetBody)を参照してください。|
+|<a id="ref-iurl"></a>IUrl|Host: 文字列<br /><br /> Path: 文字列<br /><br /> Port: 整数<br /><br /> [Query](#ref-iurl-query): IReadOnlyDictionary<string, string[]><br /><br /> QueryString: 文字列<br /><br /> Scheme: 文字列|
+|<a id="ref-iuseridentity"></a>IUserIdentity|Id: 文字列<br /><br /> Provider: 文字列|
+|<a id="ref-isubscriptionkeyparameternames"></a>ISubscriptionKeyParameterNames|Header: 文字列<br /><br /> Query: 文字列|
+|<a id="ref-iurl-query"></a>string IUrl.Query.GetValueOrDefault(queryParameterName: string, defaultValue: string)|queryParameterName: 文字列<br /><br /> defaultValue: 文字列<br /><br /> コンマ区切りのクエリ パラメーターの値、またはパラメーターが見つからない場合は `defaultValue` を返します。|
+|<a id="ref-context-variables"></a>T context.Variables.GetValueOrDefault<T\>(variableName: string, defaultValue:T)|variableName: 文字列<br /><br /> defaultValue:T<br /><br /> `T` 型へのキャスト変数値、または変数が見つからない場合は `defaultValue` を返します。<br /><br /> このメソッドは、指定した型が返される変数の実際の型と一致しない場合に、例外をスローします。|
 |BasicAuthCredentials AsBasic(input: this string)|input: 文字列<br /><br /> 入力パラメーターに有効な HTTP 基本認証の承認要求ヘッダー値が含まれている場合、メソッドは `BasicAuthCredentials` 型のオブジェクトを返します。それ以外の場合、メソッドは null を返します。|
 |bool TryParseBasic(input: this string, result: out BasicAuthCredentials)|input: 文字列<br /><br /> result: out BasicAuthCredentials<br /><br /> 入力パラメーターに要求ヘッダーの有効な HTTP 基本認証の承認値が含まれている場合、メソッドは `true` を返し、結果パラメーターには `BasicAuthCredentials` 型の値が含まれます。それ以外の場合、メソッドは `false` を返します。|
 |BasicAuthCredentials|Password: 文字列<br /><br /> UserId: 文字列|

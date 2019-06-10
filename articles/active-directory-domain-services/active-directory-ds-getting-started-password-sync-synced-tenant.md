@@ -3,7 +3,7 @@ title: Azure AD Domain Services:パスワード同期を有効にする | Micros
 description: Azure Active Directory Domain Services の概要
 services: active-directory-ds
 documentationcenter: ''
-author: eringreenlee
+author: MikeStephens-MS
 manager: daveba
 editor: curtand
 ms.assetid: 8731f2b2-661c-4f3d-adba-2c9e06344537
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/15/2017
-ms.author: ergreenl
-ms.openlocfilehash: 74ad811481aea83454d7e3179652e68d4c406521
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.date: 05/10/2019
+ms.author: mstephen
+ms.openlocfilehash: 37bcdcd304f702f210e755f45af71b2da10bd6e1
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55564971"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66234882"
 ---
 # <a name="enable-password-synchronization-to-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services とのパスワード同期を有効にする
 前のタスクでは、Azure Active Directory (Azure AD) テナントに対して Azure Active Directory Domain Services を有効にしました。 次のタスクでは、NT LAN Manager (NTLM) および Kerberos 認証に必要な資格情報ハッシュを Azure AD Domain Services との間で同期できるようにします。 資格情報の同期が設定されると、ユーザーは自社の資格情報を使用して、マネージド ドメインにサインインできます。
@@ -30,7 +30,7 @@ ms.locfileid: "55564971"
 | **ユーザー アカウントの種類** | **実行する手順** |
 | --- | --- |
 | **オンプレミス ディレクトリとの間で同期されるユーザー アカウント** |**&#x2713;** [この記事の手順に従う](active-directory-ds-getting-started-password-sync-synced-tenant.md#task-5-enable-password-synchronization-to-your-managed-domain-for-user-accounts-synced-with-your-on-premises-ad) |
-| **Azure AD に作成されたクラウド ユーザー アカウント** |**&#x2713;**[クラウド専用ユーザー アカウントのパスワードをマネージド ドメインとの間で同期する](active-directory-ds-getting-started-password-sync.md) |
+| **Azure AD に作成されたクラウド ユーザー アカウント** |**&#x2713;** [クラウド専用ユーザー アカウントのパスワードをマネージド ドメインとの間で同期する](active-directory-ds-getting-started-password-sync.md) |
 
 > [!TIP]
 > **両方の手順を実行することが必要になる場合があります。**
@@ -80,6 +80,6 @@ Set-ADSyncAADPasswordSyncConfiguration -SourceConnector $adConnector -TargetConn
 
 ## <a name="related-content"></a>関連コンテンツ
 * [AAD ドメイン サービスとのパスワード同期を有効にする (クラウド専用 Azure AD ディレクトリの場合)](active-directory-ds-getting-started-password-sync.md)
-* [Azure AD Domain Services のマネージド ドメインの管理](active-directory-ds-admin-guide-administer-domain.md)
+* [Azure AD Domain Services ドメインを管理する](manage-domain.md)
 * [Azure AD Domain Services のマネージド ドメインに Windows 仮想マシンを参加させる](active-directory-ds-admin-guide-join-windows-vm.md)
 * [Azure AD Domain Services のマネージド ドメインに Red Hat Enterprise Linux 仮想マシンを参加させる](active-directory-ds-admin-guide-join-rhel-linux-vm.md)

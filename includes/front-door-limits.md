@@ -5,17 +5,17 @@ services: frontdoor
 author: sharad4u
 ms.service: frontdoor
 ms.topic: include
-ms.date: 9/17/2018
+ms.date: 05/09/2019
 ms.author: sharadag
 ms.custom: include file
-ms.openlocfilehash: e3fa5616518675d8475937ec63afdd8e1742e8c6
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: e1f5a1c8229544d97d9ff64748390f0d5237ab97
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57553839"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66238303"
 ---
-| リソース | 既定の制限 |
+| Resource | 既定/上限 |
 | --- | --- |
 | サブスクリプションあたりの Azure Front Door Service リソース数 | 100 |
 | リソースあたりのカスタム ドメインを含むフロントエンド ホスト数 | 100 |
@@ -41,4 +41,4 @@ ms.locfileid: "57553839"
 |  | チャンク転送エンコーディング (CTE) あり | HTTP チャンクなし |
 | ---- | ------- | ------- |
 | **ダウンロード** | ダウンロード サイズに制限はありません。 | ダウンロード サイズに制限はありません。 |
-| **アップロード** |  各 CTE アップロードが 28.6 MB 未満である限り、制限はありません。 | サイズは、28.6   MB 以下である必要があります。 |
+| **アップロード** |  各 CTE アップロードが 2 GB 未満である限り、制限はありません。 | このサイズが 2 GB を超えることはできません。 |

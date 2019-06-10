@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: c72392e46805049703300dd6f60fc7bf08b9053b
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 9bddb6552b11dd506ee3e2c1c416c15da11048b7
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65235757"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66258753"
 ---
 # <a name="capacity-planning-and-scaling"></a>容量計画とスケーリング
 
@@ -42,7 +42,7 @@ Azure Service Fabric クラスターの作成前、またはクラスターを�
 
 ## <a name="vertical-scaling-considerations"></a>垂直方向のスケーリングに関する考慮事項
 
-Azure Service Fabric で特定のノードの種類を[垂直方向にスケールする](https://docs.microsoft.com/azure/service-fabric/virtual-machine-scale-set-scale-node-type-scale-out)には、いくつかの手順が必要であり、考慮すべきことがあります。 例: 
+Azure Service Fabric で特定のノードの種類を[垂直方向にスケールする](https://docs.microsoft.com/azure/service-fabric/virtual-machine-scale-set-scale-node-type-scale-out)には、いくつかの手順が必要であり、考慮すべきことがあります。 例:
 
 * クラスターは、スケーリングの前に正常になっている必要があります。 そうでないと、さらにクラスターを不安定にするだけになります。
 * ステートフル サービスをホストするすべての Service Fabric クラスター ノードの種類は、**持続性が Silver レベル以上**であることが必要です。
@@ -70,6 +70,9 @@ Service Fabric の [ノード プロパティと配置の制約](https://docs.mi
 2. `Get-ServiceFabricNode` を実行し、ノードが無効に移行したことを確認します。 無効になっていない場合は、無効になるまで待ちます。 これはノードごとに数時間かかる場合があります。 ノードが無効に移行するまで作業を進めないでください。
 3. そのノードの種類である VM の数を 1 つ減らします。 これで 最上位の VM インスタンスが削除されます。
 4. 必要に応じて手順 1. ～ 3. を繰り返します。ただし、プライマリ ノードの種類のインスタンス数を、信頼性レベルで保証するよりも少ない数にスケールダウンしないでください。 推奨されるインスタンスの一覧については、「[Service Fabric クラスターの容量計画](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity)」を参照してください。
+
+> [!NOTE]
+> 垂直スケーリング操作をいつ実行するかについて、サポートされているシナリオは、次のとおりです。アプリケーションのダウンタイムなしで、Service Fabric クラスターとアプリケーションをアンマネージド ディスクからマネージド ディスクに移行できます。 マネージド ディスクで新しい仮想マシン スケール セットをプロビジョニングし、プロビジョニングされる容量をターゲットとする配置の制約を使用してアプリケーション アップグレードを実行することで、Service Fabric クラスターは、アプリケーションのダウンタイムなしで、アップグレード ドメインによってロールアウトされるプロビジョニング済みクラスター ノード容量のワークロードをスケジュールできます。 [Azure Load Balancer Basic SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview#skus) のバックエンド プール エンドポイントは、単一の可用性セットまたは仮想マシン スケール セット内の仮想マシンにすることができます。 つまり、Service Fabric Systems Application をスケール セット間で移動すると、クラスターとそのアプリケーションがまだ実行中であっても、Service Fabric クラスター管理エンドポイントに一時的にアクセスできなくなることを避けて Basic SKU ロード バランサーを使用することはできません。一般に、ユーザーは、Basic SKU LB リソースと Standard SKU LB リソース間で仮想 IP アドレス (VIP) スワップを行うときに、VIP スワップに必要になる約 30 秒のアクセス不能期間を軽減するために、Standard SKU ロード バランサーをプロビジョニングします。
 
 ## <a name="horizontal-scaling"></a>水平スケーリング
 
@@ -99,7 +102,7 @@ scaleSet.Update().WithCapacity(newCapacity).Apply();
 
 ### <a name="scaling-in"></a>スケールイン
 
-スケールインでは、スケールアウトよりも多くのことを考慮する必要があります。例: 
+スケールインでは、スケールアウトよりも多くのことを考慮する必要があります。例:
 
 * Service Fabric システム サービスは、クラスター内のプライマリのノードの種類で実行されます。 信頼性レベルでの保証内容よりもインスタンス数が少なくならないように、シャットダウンしたり、そのノードの種類のインスタンス数をスケールダウンしたりしてはいけません。 
 * ステートフル サービスについては、可用性を保ち、サービスの状態を維持するために、一定数のノードが常に稼働している必要があります。 少なくとも、パーティション/サービスのターゲット レプリカ セットと同数のノードが必要です。
@@ -123,7 +126,7 @@ scaleSet.Update().WithCapacity(newCapacity).Apply();
 
 1. 手順 1. ~ 3. を繰り返して、必要な容量をプロビジョニングします。 プライマリのノードの種類のインスタンス数は、信頼性レベルの保証を下回るまでスケールダウンしないでください。 信頼性レベルと、そのレベルで必要なインスタンス数の詳細については、「[Service Fabric クラスターの容量計画](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity)」を参照してください。
 
-プログラムでのスケーリングのためには、シャット ダウンのためにノードを準備する必要があります。 それには、最上位のインスタンス ノードである削除するノードを見つけて、それを非アクティブ化する必要があります。 例: 
+プログラムでのスケーリングのためには、シャット ダウンのためにノードを準備する必要があります。 それには、最上位のインスタンス ノードである削除するノードを見つけて、それを非アクティブ化する必要があります。 例:
 
 ```c#
 using (var client = new FabricClient())

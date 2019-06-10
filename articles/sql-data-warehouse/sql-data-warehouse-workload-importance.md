@@ -1,5 +1,5 @@
 ---
-title: ワークロードの重要度 | Microsoft Docs
+title: Azure SQL Data Warehouse のワークロードの重要度 | Microsoft Docs
 description: Azure SQL Data Warehouse でクエリの重要度を設定するためのガイダンスです。
 services: sql-data-warehouse
 author: ronortloff
@@ -10,14 +10,14 @@ ms.subservice: workload management
 ms.date: 05/01/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: 92990b68969e754ee126b6cd5a22ecfa700c0494
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 0147977307ec22134777d6c3e8242a4191362ada
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66002886"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66233837"
 ---
-# <a name="sql-data-warehouse-workload-importance"></a>SQL Data Warehouse のワークロードの重要度
+# <a name="azure-sql-data-warehouse-workload-importance"></a>Azure SQL Data Warehouse のワークロードの重要度
 
 この記事では、ワークロードの重要度が、SQL Data Warehouse の要求の実行順序にどのような影響を与えるかについて説明します。
 

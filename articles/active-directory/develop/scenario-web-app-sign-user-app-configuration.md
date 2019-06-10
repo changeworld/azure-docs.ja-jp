@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b2204fe3e08b3c4b909ddc8b7ade4cec219d34fb
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 82e6cbcd01c87ddffb7eac8d0ea0faef85f41a13
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65406629"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66254006"
 ---
 # <a name="web-app-that-signs-in-users---code-configuration"></a>ユーザーをサインインさせる Web アプリ - コードの構成
 
@@ -110,6 +110,9 @@ Azure portal では、アプリケーションの **[認証]** ページに登�
 
 ASP.NET Core Web アプリ (および Web API) では、アプリケーションの初期化を実行するコードは `Startup.cs` ファイルにあり、Microsoft ID プラットフォーム (以前の Azure AD) v2.0 を使用して認証を追加するには、次のコードを追加する必要があります。 コード内のコメントは、見てすぐにわかるものにする必要があります。
 
+  > [!NOTE]
+  > Visual Studio 内または `dotnet new mvc` を使用して、既定の ASP.NET Core Web プロジェクトから、プロジェクトを開始する場合、関連パッケージが自動的に読み込まれるため、メソッド `AddAzureAD` を既定で使用できます。 しかし、最初からプロジェクトをビルドし、下記のコードを使用しようとする場合は、NuGet パッケージ **"Microsoft.AspNetCore.Authentication.AzureAD.UI"** をプロジェクトに追加して、`AddAzureAD` メソッドを使用できるようにすることをお勧めします。
+  
 ```CSharp
  services.AddAuthentication(AzureADDefaults.AuthenticationScheme)
          .AddAzureAD(options => configuration.Bind("AzureAd", options));

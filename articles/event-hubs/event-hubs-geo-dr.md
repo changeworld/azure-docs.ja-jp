@@ -14,18 +14,18 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 56077d018c1ae62809d51fc66d7f5aff93fb4c02
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 7b3b3b019df70b6c27833afdd0447ecf32da32ff
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60002699"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66305006"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure Event Hubs - geo ディザスター リカバリー 
 
 Azure リージョン全体または ([可用性ゾーン](../availability-zones/az-overview.md)が使用されていない) データ センター全体にダウンタイムが発生した場合に、別の地域またはデータ センターでデータ処理が続行されることが重要です。 そのため、*geo ディザスター リカバリー*と *geo レプリケーション*は、どの企業にとっても重要な機能です。 Azure Event Hubs では、geo ディザスター リカバリーと geo レプリケーションの両方が名前空間レベルでサポートされています。 
 
-Event Hubs Standard SKU では、geo ディザスター リカバリー機能がグローバルに使用できます。
+geo ディザスター リカバリー機能は、Event Hubs Standard と専用 SKU の両方でグローバルに使用できます。 名前空間は同じレベルの SKU にまたがってのみ geo ペアリングできることに注意してください。 たとえば、専用 SKU でのみ提供されているクラスター内に名前空間がある場合、その名前空間はもう 1 つのクラスター内の名前空間とのみペアリングできます。 
 
 ## <a name="outages-and-disasters"></a>故障と災害
 

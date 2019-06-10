@@ -5,50 +5,51 @@ services: app-service\mobile
 author: conceptdev
 ms.service: app-service-mobile
 ms.topic: include
-ms.date: 05/25/2018
+ms.date: 05/06/2019
 ms.author: crdun
 ms.custom: include file
-ms.openlocfilehash: 894dd5ea7270390780813b647fe7a8b4c0f173bd
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 3fe571a5e0b10da3c253bca233aad1e16d2ad852
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66139979"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235968"
 ---
-1. **[App Services]** ボタンをクリックして Mobile Apps バックエンドを選択し、**[クイック スタート]** を選択して目的のクライアント プラットフォーム (iOS、Android、Xamarin、Cordova) を選択します。
+1. 次のプラットフォームのためのクライアント SDK クイック スタートをダウンロードします。
+    
+    [iOS (Objective-C)](https://github.com/Azure/azure-mobile-apps-quickstarts/tree/master/client/iOS) [iOS (Swift)](https://github.com/Azure/azure-mobile-apps-quickstarts/tree/master/client/iOS-Swift) [Android (Java)](https://github.com/Azure/azure-mobile-apps-quickstarts/tree/master/client/android) [Xamarin.iOS](https://github.com/Azure/azure-mobile-apps-quickstarts/tree/master/client/xamarin.iOS) [Xamarin.Android](https://github.com/Azure/azure-mobile-apps-quickstarts/tree/master/client/xamarin.android) [Xamarin.Forms](https://github.com/Azure/azure-mobile-apps-quickstarts/tree/master/client/xamarin.forms) [Cordova](https://github.com/Azure/azure-mobile-apps-quickstarts/tree/master/client/cordova) [Windows (C#)](https://github.com/Azure/azure-mobile-apps-quickstarts/tree/master/client/windows-uwp-cs)
+        
+2. Azure Mobile Apps は .NET および Node バックエンド SDK をサポートしています。 アプリの種類によっては、オープン ソース リポジトリの [.NET](https://github.com/Azure/azure-mobile-apps-quickstarts/tree/master/backend/dotnet) または [Node](https://github.com/Azure/azure-mobile-apps-quickstarts/tree/master/backend/node) プロジェクトをダウンロードしてください。
 
-    ![Mobile Apps のクイックスタートが強調表示された Azure Portal][quickstart]
+3. データベース接続を追加するか、または既存の接続に接続する必要があります。 まず、データ ストアを作成するか、または既存のデータ ストアを使用するかを決定します。
 
-1. データベース接続が構成されていない場合は、次の手順で作成します。
+4. **新しいデータ ストアを作成する**: データ ストアを作成する場合は、次のクイック スタートを使用します。
 
-    ![Azure Portal (Mobile Apps をデータベースに接続)][connect]
+    [クイック スタート:Azure SQL Database の単一データベースの概要](https://docs.microsoft.com/azure/sql-database/sql-database-single-database-quickstart-guide)
 
-    a. 新しい SQL データベースとサーバーを作成します。 以降の手順 3. を実行するために、接続文字列名フィールドを既定値 (MS_TableConnectionString) のままにしておく必要があります。
+5. **既存のデータ ソース**: 既存のデータベース接続を使用する場合は、次の手順に従います。
+    1. SQL Database の接続文字列の形式 - `Data Source=tcp:{your_SQLServer},{port};Initial Catalog={your_catalogue};User ID={your_username};Password={your_password}`
+      
+       **{your_SQLServer}** サーバーの名前。これは、データベースの概要ページで見つけることができ、通常は "server_name.database.windows.net" の形式になっています。
+        **{ポート}** 通常は 1433 です。
+        **{your_catalogue}** データベースの名前。
+        **{your_username}** データベースにアクセスするユーザー名。
+        **{your_password}** データベースにアクセスするためのパスワード。
+        
+        [SQL 接続文字列の形式](https://docs.microsoft.com/dotnet/framework/data/adonet/connection-string-syntax#sqlclient-connection-strings)の詳細を確認してください。
 
-    ![Azure Portal (Mobile Apps の新しいデータベースとサーバーを作成)][server]
+    2. **モバイル アプリ**に接続文字列を追加します。App Service では、メニューの **[構成]** オプションを使用して、アプリケーションの接続文字列を管理できます。
 
-    b. データ接続が正常に作成されるまで待ちます。
+        接続文字列を追加するには:
 
-    ![データ接続が正常に作成されたことを示す Azure Portal の通知][notification]
+        1. **[アプリケーションの設定]** タブをクリックします。
 
-    c. データ接続の作成に成功しました。
+        2. **[[+] New connection string] ([+] 新しい接続文字列)** をクリックします。
 
-    ![Azure Portal の通知 ("データ接続が既に存在します")][already-connection]
+        3. 接続文字列の **[名前]** 、 **[値]** 、および **[種類]** を指定する必要があります。
 
-1. **[2. テーブル API の作成]** で、**[バックエンド言語]** として Node.js を選択します。
+        4. **[名前]** を「`MS_TableConnectionString`」と入力します。
 
-1. 確認要求をそのまま受け入れ、**[TodoItem テーブルを作成する]** を選択します。
-    この操作で新しい TodoItem テーブルがデータベースに作成されます。
+        5. [値] は、前の手順で作成した接続文字列にしてください。
 
-    >[!IMPORTANT]
-    > 既存のバックエンドを Node.js に切り替えると、すべてのコンテンツが上書きされます。 .NET バックエンドを作成するには、[Mobile Apps 用 .NET バックエンド サーバー SDK の操作][instructions]に関するページを参照してください。
-
-<!-- Images. -->
-[quickstart]: ./media/app-service-mobile-configure-new-backend/quickstart.png
-[connect]: ./media/app-service-mobile-configure-new-backend/connect-to-bd.png
-[notification]: ./media/app-service-mobile-configure-new-backend/notification-data-connection-create.png
-[server]: ./media/app-service-mobile-configure-new-backend/create-new-server.png
-[already-connection]: ./media/app-service-mobile-configure-new-backend/already-connection.png
-
-<!-- URLs -->
-[instructions]: ../articles/app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#create-app
+        6. SQL Azure データベースに接続文字列を追加している場合は、 **[種類]** の下の **[SQLAzure]** を選択します。        

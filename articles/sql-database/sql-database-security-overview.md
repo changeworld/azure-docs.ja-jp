@@ -12,12 +12,12 @@ ms.author: aliceku
 ms.reviewer: vanto, carlrab, emlisa
 manager: craigg
 ms.date: 05/14/2019
-ms.openlocfilehash: 7916e9493a5d572f844bca23a1dd7806e5fbe572
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: af14d5eb521d531f86433712a0d6c325ae7a1cd6
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65790158"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66258625"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Azure SQL Database のセキュリティ機能の概要
 
@@ -149,7 +149,11 @@ SQL Database 動的データ マスクは、特権のないユーザーに対し
 
 ### <a name="compliance"></a>コンプライアンス
 
-アプリケーションでさまざまなセキュリティ要件を満たすのに役立つ上記の機能以外にも、Azure SQL Database では定期的な監査に参加し、さまざまなコンプライアンス基準に認定されています。 詳細については、「[Microsoft Azure セキュリティ センター](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)」をご覧ください。ここから最新の SQL Database コンプライアンス証明書の一覧を入手できます。
+アプリケーションでさまざまなセキュリティ要件を満たすのに役立つ上記の機能以外にも、Azure SQL Database では定期的な監査に参加し、さまざまなコンプライアンス基準に認定されています。 詳細については、[Microsoft Azure セキュリティ センター](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)に関するページを参照してください。ここから最新の SQL Database コンプライアンス証明書の一覧を入手できます。
+
+### <a name="feature-restrictions"></a>機能の制限
+
+機能の制限により、一部の形式の SQL インジェクションで、SQL インジェクションが成功した場合でも、データベースに関する情報の漏えいを防ぐことができます。 詳細については、「[Azure SQL Database 機能の制限](sql-database-feature-restrictions.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

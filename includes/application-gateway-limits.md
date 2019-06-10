@@ -4,14 +4,14 @@ ms.service: application-gateway
 ms.topic: include
 ms.date: 3/26/2019
 ms.author: victorh
-ms.openlocfilehash: 5ad1339c04444bcb4cc550be26e239e65227d2ce
-ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
+ms.openlocfilehash: 65ed28c967164be4d239cd4d59b6b36f06caeced
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58494669"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "66238172"
 ---
-| Resource | 既定の制限 | Note |
+| Resource | 既定/上限 | Note |
 | --- | --- | --- |
 | Azure Application Gateway |サブスクリプションあたり 1,000 | |
 | フロントエンド IP 構成 |2 |パブリック 1、プライベート 1 |
@@ -23,6 +23,7 @@ ms.locfileid: "58494669"
 | バックエンドの HTTP 設定 |100<sup>1</sup> | |
 | ゲートウェイあたりのインスタンスの数 |32 | |
 | SSL 証明書の数 |100<sup>1</sup> |HTTP リスナーあたり 1 |
+| 最大 SSL 証明書サイズ |V1 SKU - 10 KB<br>V2 SKU - 25 KB| |
 | 認証証明書 |100 | |
 | 信頼されたルート証明書 |100 | |
 | 最小要求タイムアウト |1 秒 | |

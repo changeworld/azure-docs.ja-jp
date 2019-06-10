@@ -3,7 +3,7 @@ title: Windows Defender Advanced Threat Protection と Azure Security Center
 description: このドキュメントでは、Azure Security Center と Windows Defender Advanced Threat Protection の統合について説明します。
 services: security-center
 documentationcenter: na
-author: barclayn
+author: monhaber
 manager: barbkess
 editor: ''
 ms.service: security-center
@@ -11,21 +11,23 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/13/2018
-ms.author: barclayn
-ms.openlocfilehash: ee5ed8871ea5c021ad8c87e35f45e42ad641a324
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 05/27/2018
+ms.author: monhaber
+ms.openlocfilehash: 8511f8987368d5746373f71e9f553013e385e0ee
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58124175"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66258494"
 ---
 # <a name="windows-defender-advanced-threat-protection-with-azure-security-center"></a>Windows Defender Advanced Threat Protection と Azure Security Center
 
 Azure Security Center のクラウド ワークロード保護プラットフォーム オファリングは、[Windows Defender Advanced Threat Protection](https://www.microsoft.com/en-us/WindowsForBusiness/windows-atp) (ATP) との統合によって拡張されています。
 この変更により、包括的なエンドポイントの検出と対応 (EDR) 機能が実現されます。 Windows Defender ATP の統合により、異常を見つけることができます。 また、Azure Security Center によって監視されているサーバー エンドポイントでの高度な攻撃を検出して対応することもできます。
 
-Azure Security Center のお客様は、Windows Defender ATP の機能を使用できるようになりました。
+## <a name="windows-defender-atp-features-in-security-center"></a>Security Center の Windows Defender ATP 機能
+
+Windows Defender ATP を使用すると、次の機能が得られます。
 
 - **次世代の侵害後検出センサー**:Windows サーバー用の Windows Defender ATP センサーは、ありとあらゆる動作の信号を収集します。
 
@@ -53,9 +55,10 @@ Windows Defender ATP にピボットすることによって、アラートを�
 
 ## <a name="platform-support"></a>プラットフォームのサポート
 
-この機能では、Windows Server 2012 R2 と Windows Server 2016 での検出がサポートされます。
+Security Center の Windows Defender ATP は、Standard サービス サブスクリプションに属する Windows Server 2012 R2 および Windows Server 2016 オペレーティング システムでの検出をサポートしています。
 
-Standard サービス レベルのサブスクリプションのサーバーのみがサポートされます。
+> [!NOTE]
+> Azure Security Center を使用してサーバーを監視すると、Windows Defender ATP テナントが自動的に作成され、Windows Defender ATP データが既定ではヨーロッパに格納されます。 データを別の場所に移動する必要がある場合は、Microsoft サポートに連絡してテナントをリセットする必要があります。
 
 ## <a name="onboarding-servers-to-security-center"></a>Security Center にサーバーをオンボードする 
 
@@ -66,14 +69,13 @@ Standard サービス レベルのサブスクリプションのサーバーの�
     
 3. **[サーバーの追加]** を選択すると、Microsoft Monitoring Agent をインストールする手順が表示されます。 
 
-4. オンボード後は、**[計算とアプリ]** でマシンを監視できます。
+4. オンボード後は、 **[計算とアプリ]** でマシンを監視できます。
 
    ![コンピューターをオンボードする](media/security-center-wdatp/onboard-computers.png)
 
-
 ## <a name="enable-windows-defender-atp-integration"></a>Windows Defender ATP の統合を有効にする
 
-Windows Defender ATP の統合が有効になっているかどうか確認するには、**[セキュリティ センター]** > **[セキュリティ ポリシー]** > **[サブスクリプション]** > **[設定の編集]** の順に選択します。
+Windows Defender ATP の統合が有効になっているかどうか確認するには、 **[セキュリティ センター]**  >  **[セキュリティ ポリシー]**  >  **[サブスクリプション]**  >  **[設定の編集]** の順に選択します。
 
   ![Azure Security Center のポリシー管理](media/security-center-wdatp/policy-management.png)
 
@@ -113,7 +115,7 @@ Windows Defender ATP で無害なテスト アラートを生成するには:
 
 3. コマンドが成功した場合、Azure Security Center ダッシュボードと Windows Defender ATP ポータルに新しいアラートが表示されます。 このアラートは、表示されるまでに数分かかることがあります。
 
-4. Security Center 内でアラートを確認するには、**[セキュリティ通知]** >  **[Suspicious Powershell CommandLine]\(疑わしい Powershell コマンド ライン\)** に移動します。
+4. Security Center 内でアラートを確認するには、 **[セキュリティ通知]**  >   **[Suspicious Powershell CommandLine]\(疑わしい Powershell コマンド ライン\)** に移動します。
 
 5. 調査ウィンドウで、リンクを選択して Windows Defender ATP ポータルに移動します。
 

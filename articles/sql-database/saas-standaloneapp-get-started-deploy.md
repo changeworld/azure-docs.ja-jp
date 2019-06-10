@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: sstein
 manager: craigg
 ms.date: 11/07/2018
-ms.openlocfilehash: 4dbf53df4d3f34e80757f9575981b4b053587d97
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b1b281c7beac6b6cb48834e636edff818f89bf12
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58012685"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66304135"
 ---
 # <a name="deploy-and-explore-a-standalone-single-tenant-application-that-uses-azure-sql-database"></a>Azure SQL Database を使用するスタンドアロン シングルテナント アプリケーションをデプロイおよび操作する
 
@@ -25,9 +25,9 @@ ms.locfileid: "58012685"
 
 スタンドアロン アプリケーションまたはテナントごとのアプリケーション パターンでは、各テナントに対するアプリケーション インスタンスをデプロイします。  各アプリケーションは、特定のテナント用に構成され、別個の Azure リソース グループにデプロイされます。 アプリケーションの複数のインスタンスは、マルチテナント ソリューションを提供するようにプロビジョニングされます。 このパターンは、テナント分離が最優先事項になっているテナントの数がより少ない場合に最適です。 Azure には、リソースをテナントのサブスクリプションにデプロイできるパートナー プログラムがあり、テナントの代わりにサービス プロバイダーによって管理されます。 
 
-このチュートリアルでは、3 つのテナントに対応する 3 つのスタンドアロン アプリケーションを Azure サブスクリプションにデプロイします。  ユーザーには、個々のアプリケーション コンポーネントを確認して操作するフル アクセスがあります。
+このチュートリアルでは、3 つのテナントに対応するスタンドアロンのアプリケーションを 3 つ、Azure サブスクリプションにデプロイします。  ユーザーには、個々のアプリケーション コンポーネントを確認して操作するフル アクセスがあります。
 
-アプリケーションのソース コードと管理スクリプトは、[WingtipTicketsSaaS-StandaloneApp](https://github.com/Microsoft/WingtipTicketsSaaS-StandaloneApp) GitHub リポジトリから入手できます。 このアプリケーションは Visual Studio 2015 で作成されました。更新なしでは、Visual Studio 2017 で開いたり、コンパイルしたりできません。
+アプリケーションのソース コードと管理スクリプトは、[WingtipTicketsSaaS-StandaloneApp](https://github.com/Microsoft/WingtipTicketsSaaS-StandaloneApp) GitHub リポジトリから入手できます。 このアプリケーションは Visual Studio 2015 で作成されました。更新なしでは、Visual Studio 2019 で開いたり、コンパイルしたりできません。
 
 
 このチュートリアルで学習する内容は次のとおりです。
@@ -56,7 +56,7 @@ ms.locfileid: "58012685"
     > 一部の認証とサーバー ファイアウォールは、デモンストレーションのために、意図的に保護されていません。 アプリケーション デプロイごとに**新しいリソース グループを作成します**。  既存のリソース グループを使用しないでください。 運用環境にはこのアプリケーション、またはこのアプリケーションが作成したリソースを使用しないでください。 関連する課金を停止するために、サンプル アプリケーションの操作が終了したら、すべてのリソース グループを削除してください。
 
     リソース名にはアルファベットの小文字、数字、およびハイフンのみを使用することをお勧めします。
-    * **リソース グループ**の場合、[新規作成] を選択して、リソース グループの名前を小文字で指定します。 **wingtip-sa-\<venueName\>-\<user\>** は、推奨されるパターンです。  \<VenueName\> には、空白なしの会場の名前を代入します。 \<user\> には、次のいずれかのユーザー値を代入します。  このパターンでは、リソース グループ名は *wingtip-sa-contosoconcerthall-af1*、*wingtip-sa-dogwooddojo-af1*、*wingtip-sa-fabrikamjazzclub-af1* のいずれかになります。
+    * **リソース グループ**の場合、[新規作成] を選択して、リソース グループの名前を小文字で指定します。 **wingtip-sa-\<venueName\>-\<user\>** は、推奨されるパターンです。  \<VenueName\> には、会場の名前を空白なしで指定します。 \<user\> には、次のいずれかのユーザー値を指定します。  このパターンでは、リソース グループ名は *wingtip-sa-contosoconcerthall-af1*、*wingtip-sa-dogwooddojo-af1*、*wingtip-sa-fabrikamjazzclub-af1* のいずれかになります。
     * ドロップダウン から **[場所]** を選択します。
 
     * **ユーザー** - イニシャルに一桁の数字を付加するなど、短いユーザー値をお勧めします (*af1* など)。
@@ -107,7 +107,7 @@ ms.locfileid: "58012685"
 <!--
 * Additional [tutorials that build on the Wingtip SaaS application](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 * To learn about elastic pools, see [*What is an Azure SQL elastic pool*](sql-database-elastic-pool.md)
-* To learn about elastic jobs, see [*Managing scaled-out cloud databases*](sql-database-elastic-jobs-overview.md)
+* To learn about elastic jobs, see [*Managing scaled-out cloud databases*](elastic-jobs-overview.md)
 -->
 
 - マルチテナント SaaS アプリケーションの詳細については、[マルチテナント SaaS アプリケーションの設計パターン](saas-tenancy-app-design-patterns.md)に関するページをご覧ください。

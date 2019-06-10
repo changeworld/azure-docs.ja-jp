@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 05/01/2019
+ms.date: 05/26/2019
 ms.author: juliako
-ms.openlocfilehash: 8f50188480b963d13460c79175ea6972d3e68f6a
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: dd632051ebce6afc3c1f7be118fe8d31cd806ec9
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65153076"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66296800"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 リリース ノート
 
@@ -36,7 +36,21 @@ ms.locfileid: "65153076"
 
 ## <a name="may-2019"></a>2019 年 5 月
 
+### <a name="hls-v4-and-above-support-in-dynamic-packaging"></a>ダイナミック パッケージでの HLS v4 以降のサポート 
+
+ダイナミック パッケージに、複数のオーディオ トラックと複数のコーデックおよび言語を備えた資産に対する HLS (バージョン 4 以降) のサポートが追加されました。
+
+詳細については、「[ダイナミック パッケージ](dynamic-packaging-overview.md)」を参照してください。
+
+### <a name="media-services-availability-in-korea-central-region"></a>韓国中部リージョンでの Media Services の可用性
+
+Media Services が韓国中部リージョンで使用できるようになりました。 
+
+詳細については、「[Media Services v3 が存在するクラウドとリージョン](azure-clouds-regions.md)」を参照してください。
+
 ### <a name="performance-improvements"></a>パフォーマンスの向上
+
+Media Services のパフォーマンス向上を含む更新が追加されました。
 
 * 処理でサポートされているファイルの最大サイズが更新されました。 [クォータと制限](limits-quotas-constraints.md)に関する記事を参照してください。
 * [エンコードの速度の向上](media-reserved-units-cli-how-to.md#choosing-between-different-reserved-unit-types)。
@@ -52,7 +66,7 @@ ms.locfileid: "65153076"
 
 動的パッケージが Dolby Atmos 対応になりました。 詳細については、「[ダイナミック パッケージによってサポートされているオーディオ コーデック](dynamic-packaging-overview.md#audio-codecs-supported-by-dynamic-packaging)」を参照してください。
 
-資産またはアカウント フィルターの一覧を指定できるようになりました。これはストリーミング ロケーターに適用されます。 詳細については、[フィルターとストリーミング ロケーターの関連付け](filters-concept.md#associate-filters-with-streaming-locator)に関する記事を参照してください。
+資産またはアカウント フィルターの一覧を指定できるようになりました。これはストリーミング ロケーターに適用されます。 詳細については、[フィルターとストリーミング ロケーターの関連付け](filters-concept.md#associating-filters-with-streaming-locator)に関する記事を参照してください。
 
 ## <a name="february-2019"></a>2019 年 2 月
 

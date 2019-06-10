@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a20299887de827f25e4c3306f5e78c188c9a8a7f
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 95cde28bc4789346aabd58b5f7b543e1bbc989c1
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65969403"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357690"
 ---
 # <a name="install-sap-netweaver-high-availability-on-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances-on-azure"></a>Windows フェールオーバー クラスターと SAP ASCS/SCS インスタンスのファイル共有を使用した Azure への SAP NetWeaver HA のインストール
 
@@ -324,7 +324,7 @@ SAP ASCS/SCS インスタンス プロファイル \<SID>_ASCS/SCS\<Nr>_ \<ホ�
 | enque/encni/set_so_keepalive  | **true** |
 | service/ha_check_node | **1** |
 
-SAP ASCS/SCS インスタンスを再起動します。 [SAP ASCS/SCS インスタンスのクラスター ノードに対するレジストリ項目の設定]([high-availability-guide]:high-availability-guide.md)に関する記事に従って、両方の SAP ASCS/SCS クラスター ノードの `KeepAlive` パラメーターを設定します。 
+SAP ASCS/SCS インスタンスを再起動します。 [SAP ASCS/SCS インスタンスのクラスター ノードに対するレジストリ項目の設定][high-availability-guide]に関する記事に従って、両方の SAP ASCS/SCS クラスター ノードの `KeepAlive` パラメーターを設定します。 
 
 ## <a name="install-a-dbms-instance-and-sap-application-servers"></a>DBMS インスタンスと SAP アプリケーション サーバーのインストール
 

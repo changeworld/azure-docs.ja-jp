@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 05/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3acaf86123f2cab871bc2f99cc873a73015875e2
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 2dd397e879dd76cabd119a3cbedff34041be2d13
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65989843"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66298478"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Azure Machine Learning service のリリース ノート
 
@@ -24,6 +24,21 @@ ms.locfileid: "65989843"
 + Azure Machine Learning の[**Data Prep SDK**](https://aka.ms/data-prep-sdk)
 
 バグおよび対処法については、[既知の問題のリスト](resource-known-issues.md)を参照してください。
+
+## <a name="2019-05-28"></a>2019-05-28
+
+### <a name="azure-machine-learning-data-prep-sdk-v114"></a>Azure Machine Learning Data Prep SDK v1.1.4
+
++ **新機能**
+  + 次の式言語関数を使用して、datetime 値を新しい列に抽出して解析できるようになりました。
+    + `RegEx.extract_record()` は datetime 要素を新しい列に抽出します。
+    + `create_datetime()` は別の datetime 要素から datetime オブジェクトを作成します。
+  + `get_profile()` を呼び出すとき、分位点の列に (est.) というラベルが付けられ、値が近似値であることを明確に判別できるようになりました。
+  + Azure Blob Storage からの読み取り時に ** グロビングを使用できるようになりました。
+    + 例: `dprep.read_csv(path='https://yourblob.blob.core.windows.net/yourcontainer/**/data/*.csv')`
+
++ **バグの修正**
+  + リモート ソース (Azure Blob) からの Parquet ファイルの読み取りに関連するバグを修正しました。
 
 ## <a name="2019-05-14"></a>2019-05-14
 

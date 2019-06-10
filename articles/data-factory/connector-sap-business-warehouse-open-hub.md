@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: jingwang
-ms.openlocfilehash: c64842dc89c9519c738701558f510940f4cc148d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6fb989632d3165ac5e54e540aae4385fc2258c85
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58103912"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66256906"
 ---
 # <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>Azure Data Factory を使用するオープン ハブを介して SAP Business Warehouse からデータをコピーする
 
@@ -29,7 +29,7 @@ SAP Business Warehouse のデータは、オープン ハブを介して、サ�
 
 具体的には、この SAP Business Warehouse オープン ハブ コネクタは以下をサポートします。
 
-- SAP Business Warehouse **バージョン 7.01 以上 (2015 年以後にリリースされた最近の SAP サポート パッケージ スタックの場合)**。
+- SAP Business Warehouse **バージョン 7.01 以上 (2015 年以後にリリースされた最近の SAP サポート パッケージ スタックの場合)** 。
 - オープン ハブ宛先の、DSO、InfoCube、MultiProvider、DataSource などがその下にある可能性があるローカル テーブルを介したデータのコピー。
 - 基本認証を使用したデータのコピー。
 - アプリケーション サーバーへの接続。
@@ -134,7 +134,7 @@ SAP Business Warehouse オープン ハブのリンクされたサービスで�
 
 ## <a name="dataset-properties"></a>データセットのプロパティ
 
-データセットを定義するために使用できるセクションとプロパティの完全な一覧については、[データセット](concepts-datasets-linked-services.md)に関する記事をご覧ください。 このセクションでは、Salesforce データセット でサポートされるプロパティの一覧を示します。
+データセットを定義するために使用できるセクションとプロパティの完全な一覧については、[データセット](concepts-datasets-linked-services.md)に関する記事をご覧ください。 このセクションでは、SAP BW オープン ハブ データセットでサポートされるプロパティの一覧を示します。
 
 SAP BW オープン ハブとの間でデータをコピーするには、データセットの type プロパティを **SapOpenHubTable** に設定します。 次のプロパティがサポートされています。
 
@@ -143,7 +143,7 @@ SAP BW オープン ハブとの間でデータをコピーするには、デー
 | type | type プロパティは **SapOpenHubTable** に設定する必要があります。  | はい |
 | openHubDestinationName | データのコピー元になるオープン ハブ宛先の名前。 | はい |
 | excludeLastRequest | 最後の要求のレコードを除外するかどうか。 | いいえ (既定値は **true**)。 |
-| baseRequestId | 差分読み込み要求の ID。 設定されると、requestId がこのプロパティの値**より大きい**データのみが取得されます。  | いいえ  |
+| baseRequestId | 差分読み込み要求の ID。 設定されると、requestId がこのプロパティの値**より大きい**データのみが取得されます。  | いいえ |
 
 >[!TIP]
 >オープン ハブ テーブルには、1 つの要求 ID によって生成されたデータのみが含まれています。たとえば、常に完全な読み込みを行い、テーブル内の既存のデータを上書きする場合や、DTP はテストのために 1 回のみ実行する場合は、データを外へコピーするため、忘れずに "excludeLastRequest" オプションをオフにします。
@@ -172,7 +172,7 @@ SAP BW オープン ハブとの間でデータをコピーするには、デー
 
 ### <a name="sap-bw-open-hub-as-source"></a>ソースとしての SAP BW オープン ハブ
 
-SAP BW オープン ハブからデータをコピーするには、コピー アクティビティのソースの種類を **SapOpenHubSource** に設定します。 一方、コピー アクティビティの**ソース** セクションで必要とされる、種類固有のその他のプロパティはありません。
+SAP BW オープン ハブからデータをコピーするには、コピー アクティビティのソースの種類を **SapOpenHubSource** に設定します。 コピー アクティビティの**ソース** セクションで必要とされる、種類固有のその他のプロパティはありません。
 
 **例:**
 

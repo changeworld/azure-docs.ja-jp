@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: f4a562cab445398986c1b8f379f6cb90ca843342
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 18d72d46c46149aded0efcdd54f6f9d1119f8d3e
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58758084"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357658"
 ---
 # <a name="learn-how-to-deploy-modules-and-establish-routes-in-iot-edge"></a>IoT Edge にモジュールをデプロイしてルートを確立する方法について説明します。
 
@@ -116,7 +116,7 @@ $EdgeAgent プロパティは次の構造に従います。
 
 IoT Edge ハブは、モジュール、IoT ハブ、リーフ デバイス間の通信を管理します。 そのため、$edgeHub モジュール ツインには、デプロイ内でのメッセージの受け渡し方法を宣言する、*routes* と呼ばれる必要なプロパティが含まれています。 同じデプロイ内にルートを複数持たせることができます。
 
-ルートは、**$edgeHub** の必要なプロパティで、次の構文を使用して宣言します。
+ルートは、 **$edgeHub** の必要なプロパティで、次の構文を使用して宣言します。
 
 ```json
 "$edgeHub": {
@@ -149,7 +149,7 @@ IoT Edge ハブは、モジュール、IoT ハブ、リーフ デバイス間の
 | `/messages/modules/<moduleId>/outputs/<output>` | 特定の出力を通じて特定のモジュールによって送信される任意の device-to-cloud メッセージ |
 
 ### <a name="condition"></a>条件
-条件は、ルートの宣言では省略可能です。 シンクからソースへのメッセージをすべて渡す場合は、**WHERE** 句全体をそのまま削除します。 または、[IoT Hub クエリ言語](../iot-hub/iot-hub-devguide-routing-query-syntax.md)を使用して、条件を満たす特定のメッセージまたはメッセージの種類をフィルター処理することができます。 IoT Edge のルートは、ツインのタグやプロパティに基づくメッセージのフィルタリングをサポートしません。 
+条件は、ルートの宣言では省略可能です。 ソースからシンクへのメッセージをすべて渡す場合は、**WHERE** 句全体をそのまま削除します。 または、[IoT Hub クエリ言語](../iot-hub/iot-hub-devguide-routing-query-syntax.md)を使用して、条件を満たす特定のメッセージまたはメッセージの種類をフィルター処理することができます。 IoT Edge のルートは、ツインのタグやプロパティに基づくメッセージのフィルタリングをサポートしません。 
 
 IoT Edge のモジュール間を通過するメッセージは、デバイスと Azure IoT Hub の間を通過するメッセージと同じ形式になります。 すべてのメッセージは JSON で書式設定され、パラメーターとして **systemProperties**、**appProperties**、**body** が与えられます。 
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 03/18/2019
+ms.date: 05/23/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7cf8d5cb13b39d58920555ff9d99a4949e1bfc20
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 572f8694d31728a3ca570f6ddb60475e13d71e80
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59521437"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235586"
 ---
 # <a name="combined-security-information-registration-preview"></a>統合されたセキュリティ情報の登録 (プレビュー)
 
@@ -24,7 +24,7 @@ ms.locfileid: "59521437"
 
 ![ユーザーの登録済みのセキュリティ情報を示しているマイ プロファイル](media/concept-registration-mfa-sspr-combined/combined-security-info-defualts-registered.png)
 
-新しいエクスペリエンスを有効にする前に、この管理者対象のドキュメントとユーザー対象のドキュメントを確認して、この機能とその影響を確実に理解するようにしてください。 ユーザー ドキュメントに基づいたトレーニングによってユーザーが新しいエクスペリエンスに対して準備できるようにし、ロールアウトの成功に役立ててください。
+新しいエクスペリエンスを有効にする前に、この管理者対象のドキュメントとユーザー対象のドキュメントを確認して、この機能とその影響を確実に理解するようにしてください。 [ユーザー ドキュメント](../user-help/user-help-security-info-overview.md)に基づいたトレーニングによってユーザーが新しいエクスペリエンスに対して準備できるようにし、ロールアウトの成功に役立ててください。
 
 Azure AD の結合されたセキュリティ情報の登録は、Azure US Government、Azure Germany、Azure China 21Vianet などの各国のクラウドでは現在利用できません。
 
@@ -46,15 +46,15 @@ Azure AD の結合されたセキュリティ情報の登録は、Azure US Gover
 
 |   | Register | Change | 削除 |
 | --- | --- | --- | --- |
-| Microsoft Authenticator | はい (最大 5) | いいえ  | はい |
-| その他の認証アプリ | はい (最大 5) | いいえ  | はい |
-| ハードウェア トークン | いいえ  | いいえ  | はい |
+| Microsoft Authenticator | はい (最大 5) | いいえ | はい |
+| その他の認証アプリ | はい (最大 5) | いいえ | はい |
+| ハードウェア トークン | いいえ | いいえ | はい |
 | 電話 | はい | はい | はい |
 | Alternate phone | はい | はい | はい |
-| 会社電話 | いいえ  | いいえ  | いいえ  |
+| 会社電話 | いいえ | いいえ | いいえ |
 | Email | はい | はい | はい |
-| セキュリティの質問 | はい | いいえ  | はい |
-| アプリ パスワード | はい | いいえ  | はい |
+| セキュリティの質問 | はい | いいえ | はい |
+| アプリ パスワード | はい | いいえ | はい |
 
 > [!NOTE]
 > アプリ パスワードは、Multi-Factor Authentication が適用されているユーザーのみが使用できます。 条件付きアクセス ポリシー経由で Multi-Factor Authentication が有効になっているユーザーはアプリ パスワードを使用できません。
@@ -84,20 +84,20 @@ Azure AD の結合されたセキュリティ情報の登録は、Azure US Gover
 
 ユーザーが自分のセキュリティ情報を登録または更新するよう求められる可能性があるいくつかのシナリオを次に示します。
 
-* Identity Protection によって Multi-Factor Authentication の登録が適用されている: ユーザーは、サインイン中に登録するよう求められます。 ユーザーは Multi-Factor Authentication 方法と SSPR 方法を登録します (ユーザーが SSPR に対して有効になっている場合)。
-* ユーザーごとの Multi-Factor Authentication によって Multi-Factor Authentication の登録が適用されている: ユーザーは、サインイン中に登録するよう求められます。 ユーザーは Multi-Factor Authentication 方法と SSPR 方法を登録します (ユーザーが SSPR に対して有効になっている場合)。
-* 条件付きアクセスまたはその他のポリシーによって Multi-Factor Authentication の登録が適用されている: ユーザーは、Multi-Factor Authentication を必要とするリソースを使用するときに登録するよう求められます。 ユーザーは Multi-Factor Authentication 方法と SSPR 方法を登録します (ユーザーが SSPR に対して有効になっている場合)。
-* SSPR の登録が適用されている: ユーザーは、サインイン中に登録するよう求められます。 ユーザーは SSPR 方法のみを登録します。
-* SSPR の更新が適用されている: ユーザーは、管理者によって設定された間隔で自分のセキュリティ情報を確認する必要があります。ユーザーには自分の情報が表示され、現在の情報を確認するか、または必要に応じて変更を行うことができます。
+- Identity Protection によって Multi-Factor Authentication の登録が適用されている: ユーザーは、サインイン中に登録するよう求められます。 ユーザーは Multi-Factor Authentication 方法と SSPR 方法を登録します (ユーザーが SSPR に対して有効になっている場合)。
+- ユーザーごとの Multi-Factor Authentication によって Multi-Factor Authentication の登録が適用されている: ユーザーは、サインイン中に登録するよう求められます。 ユーザーは Multi-Factor Authentication 方法と SSPR 方法を登録します (ユーザーが SSPR に対して有効になっている場合)。
+- 条件付きアクセスまたはその他のポリシーによって Multi-Factor Authentication の登録が適用されている: ユーザーは、Multi-Factor Authentication を必要とするリソースを使用するときに登録するよう求められます。 ユーザーは Multi-Factor Authentication 方法と SSPR 方法を登録します (ユーザーが SSPR に対して有効になっている場合)。
+- SSPR の登録が適用されている: ユーザーは、サインイン中に登録するよう求められます。 ユーザーは SSPR 方法のみを登録します。
+- SSPR の更新が適用されている: ユーザーは、管理者によって設定された間隔で自分のセキュリティ情報を確認する必要があります。ユーザーには自分の情報が表示され、現在の情報を確認するか、または必要に応じて変更を行うことができます。
 
 登録が適用されると、ユーザーには、Multi-Factor Authentication と SSPR の両方のポリシーに準拠するために必要な最小数の方法が安全性の高い順に表示されます。
 
-例: 
+例:
 
-* ユーザーが SSPR に対して有効になっています。 SSPR ポリシーはリセットするための 2 つの方法を必要とし、モバイル アプリ コード、電子メール、および電話を有効にしています。
-   * このユーザーは 2 つの方法を登録する必要があります。
-      * 既定では、ユーザーには認証アプリと電話が表示されます。
-      * ユーザーは、認証アプリまたは電話の代わりに電子メールを登録することを選択できます。
+- ユーザーが SSPR に対して有効になっています。 SSPR ポリシーはリセットするための 2 つの方法を必要とし、モバイル アプリ コード、電子メール、および電話を有効にしています。
+   - このユーザーは 2 つの方法を登録する必要があります。
+      - 既定では、ユーザーには認証アプリと電話が表示されます。
+      - ユーザーは、認証アプリまたは電話の代わりに電子メールを登録することを選択できます。
 
 このフローチャートは、サインイン中に登録を中断されたときにユーザーにどの方法が表示されるかを説明しています。
 

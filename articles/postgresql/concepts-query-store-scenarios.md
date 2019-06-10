@@ -1,21 +1,21 @@
 ---
-title: Azure Database for PostgreSQL でのクエリ ストアの使用シナリオ
-description: この記事では、Azure Database for PostgreSQL でのクエリ ストアに関するいくつかのシナリオについて説明します。
+title: Azure Database for PostgreSQL - Single Server でのクエリ ストアの使用シナリオ
+description: この記事では、Azure Database for PostgreSQL - Single Server でのクエリ ストアに関するいくつかのシナリオについて説明します。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 03/26/2018
-ms.openlocfilehash: 873462354b70d13e56ca108c3257031ef34873f8
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.date: 5/6/2019
+ms.openlocfilehash: 029c595ba983d3b758568fbacaf6577014d893db
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58480856"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "65067308"
 ---
 # <a name="usage-scenarios-for-query-store"></a>クエリ ストアの使用シナリオ
 
-**適用対象:** Azure Database for PostgreSQL 9.6 および 10
+**適用対象:** Azure Database for PostgreSQL 9.6 および 10 (単一サーバー)
 
 予測可能なワークロード パフォーマンスの追跡と管理が重要であるさまざまなシナリオで、クエリ ストアを使用することができます。 次の例を考えてみます。 
 - 高コスト上位クエリの識別と調整 

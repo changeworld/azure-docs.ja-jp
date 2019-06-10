@@ -8,12 +8,12 @@ ms.date: 01/04/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f3d1fb393138aeb590bc0645d6abe93652a52a5b
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: a6fc2af0cbe770ee787da757966bbc1647717e5a
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54052583"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66302681"
 ---
 # <a name="prepare-your-development-and-test-environment-for-iot-edge"></a>IoT Edge のための開発およびテスト環境の準備
 
@@ -62,11 +62,11 @@ IoT Edge 拡張機能に加えて、開発用のその他の拡張機能をイ�
 | Node.js | <ul><li>[Node.js](https://nodejs.org/) <li> [Yeoman](https://www.npmjs.com/package/yo) <li> [Azure IoT Edge Node.js モジュール ジェネレーター](https://www.npmjs.com/package/generator-azure-iot-edge-module)</ul> |
 | Python |<ul><li> [Python](https://www.python.org/downloads/) <li> [Pip](https://pip.pypa.io/en/stable/installing/#installation) <li> [Cookiecutter](https://cookiecutter.readthedocs.io/en/latest/installation.html) <li> [Git](https://git-scm.com/) </ul> |
 
-### <a name="visual-studio-2017-extension"></a>Visual Studio 2017 拡張機能
+### <a name="visual-studio-20172019-extension"></a>Visual Studio 2017/2019 拡張機能
 
-Azure IoT Edge Tools for Visual Studio では、C# で作成された IoT Edge モジュール テンプレートが提供されます。 
+Azure IoT Edge Tools for Visual Studio では、C# および C で作成された IoT Edge モジュール テンプレートが提供されます。 
 
-詳細情報およびダウンロードについては、[Azure IoT Edge Tools for Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools) に関する記事をご覧ください。
+詳細情報およびダウンロードについては、[Azure IoT Edge Tools for Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools) または [Azure IoT Edge Tools for Visual Studio 2019](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools) に関する記事をご覧ください。
 
 ### <a name="iot-edge-dev-tool"></a>IoT Edge 開発ツール
 
@@ -109,7 +109,7 @@ Azure IoT Edge 開発コンテナーは、IoT Edge 開発に必要なすべて�
 
 ### <a name="iot-edge-device-container"></a>IoT Edge デバイス コンテナー
 
-IoT Edge デバイス コンテナーは、コンテナー エンジンを使用するすべてのマシンで起動できる、すべて揃った IoT Edge デバイスです。 デバイス コンテナーには、IoT Edge ランタイムとコンテナー エンジン自体が含まれています。 コンテナーの各インスタンスは、完全に機能する自己プロビジョニング IoT Edge デバイスです。 デバイス コンテナーは、モジュールへのネットワーク ルートがある限り、モジュールのリモート デバッグをサポートします。 デバイス コンテナーは、規模の大きいシナリオや DevOps パイプラインをテストするため、多数の IoT Edge デバイスをすばやく作成するのに適しています。 Helm 経由での Kubernetes への配置もサポートしています。 
+IoT Edge デバイス コンテナーは、コンテナー エンジンを使用するすべてのマシンで起動できる、すべて揃った IoT Edge デバイスです。 デバイス コンテナーには、IoT Edge ランタイムとコンテナー エンジン自体が含まれています。 コンテナーの各インスタンスは、完全に機能する自己プロビジョニング IoT Edge デバイスです。 デバイス コンテナーは、モジュールへのネットワーク ルートがある限り、モジュールのリモート デバッグをサポートします。 デバイス コンテナーは、規模の大きいシナリオや Azure Pipelines をテストするため、多数の IoT Edge デバイスをすばやく作成するのに適しています。 Helm 経由での Kubernetes への配置もサポートしています。 
 
 詳細については、[Azure IoT Edge デバイス コンテナー](https://github.com/toolboc/azure-iot-edge-device-container)に関するページを参照してください。
 

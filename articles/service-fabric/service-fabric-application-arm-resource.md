@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/06/2017
 ms.author: dekapur
-ms.openlocfilehash: e2e1b2ae354d26c3d9729e3a3fdf39bee43647ca
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: db515454c68fe3a7eb1a4616c3278d9fc93ddb2c
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58663130"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66258660"
 ---
 # <a name="manage-applications-and-services-as-azure-resource-manager-resources"></a>アプリケーションとサービスを Azure Resource Manager のリソースとして管理する
 
@@ -258,6 +258,17 @@ Azure Resource Manager を使用して、Service Fabric クラスターにアプ
    > *apiVersion* は `"2017-07-01-preview"` に設定する必要があります。 クラスターが既にデプロイされている場合は、このテンプレートをクラスターとは別にデプロイすることもできます。
 
 5. デプロイします。 
+
+## <a name="remove-service-fabric-resource-provider-application-resource"></a>Service Fabric リソース プロバイダーのアプリケーション リソースを削除する
+次のコマンドは、クラスターからプロビジョニング解除されるようにアプリ パッケージをトリガーし、それによって、使用されているディスク領域がクリーンアップされます。
+```powershell
+Get-AzureRmResource -ResourceId /subscriptions/{sid}/resourceGroups/{rg}/providers/Microsoft.ServiceFabric/clusters/{cluster}/applicationTypes/{apptType}/versions/{version} -ApiVersion "2017-07-01-preview" | Remove-AzureRmResource -Force -ApiVersion "2017-07-01-preview"
+```
+Microsoft.ServiceFabric/clusters/application を ARM テンプレートから削除するだけでは、アプリケーションはプロビジョニング解除されません
+
+>[!NOTE]
+> 削除が完了すると、SFX または ARM でパッケージ バージョンが表示されなくなります。 実行されているアプリケーションの種類のバージョン リソースを削除することはできません。ARM/SFRP によって妨げられます。 実行中のパッケージをプロビジョニング解除しようとすると、SF ランタイムによって妨げられます。
+
 
 ## <a name="manage-an-existing-application-via-resource-manager"></a>Resource Manager を使用して既存のアプリケーションを管理する
 

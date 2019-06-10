@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/12/2019
+ms.date: 05/22/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur, lenalepa, sureshja
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68973d3a88791bcfffc8183f5e3a16975fe15742
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 2e6a5ecd704aabb4994337cb7b7df9e84677348d
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65540450"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235279"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>方法:すべての Azure Active Directory ユーザーがマルチテナント アプリケーション パターンを使用してサインインする
 
@@ -45,7 +45,7 @@ ms.locfileid: "65540450"
 
 ## <a name="update-registration-to-be-multi-tenant"></a>登録をマルチテナントに更新する
 
-既定では、Azure AD の Web アプリケーション/API の登録はシングル テナントです。 登録をマルチテナントにするには、[Azure Portal][AZURE-portal] のアプリケーション登録の **[プロパティ]** ページで **[マルチテナント]** スイッチを見つけて、**[はい]** に設定します。
+既定では、Azure AD の Web アプリケーション/API の登録はシングル テナントです。 登録をマルチテナントにするには、[Azure portal][AZURE-portal] のアプリケーション登録の **[認証]** ウィンドウで **[サポートされているアカウントの種類]** スイッチを見つけて、 **[任意の組織のディレクトリ内のアカウント]** に設定します。
 
 Azure AD でアプリケーションをマルチテナントにするには、そのアプリケーションのアプリ ID URI をグローバルに一意なものにする必要があります。 アプリ ID URI は、プロトコル メッセージでアプリケーションを識別する手段の 1 つです。 シングル テナント アプリケーションの場合、アプリ ID URI はそのテナント内で一意であれば十分です。 これに対してマルチテナント アプリケーションの場合、Azure AD が全テナントから該当するアプリケーションを特定できるように、アプリ ID URI がグローバルで一意になっている必要があります。 グローバルな一意性を確保するため、アプリ ID URI には Azure AD テナントの検証済みドメインと一致するホスト名が含まれていなければならないという条件が存在します。
 
@@ -138,7 +138,7 @@ Azure AD のアプリケーションにユーザーがサインインするに�
 
 #### <a name="multiple-tiers-in-a-single-tenant"></a>1 つのテナント内の複数の階層
 
-この処理は、論理アプリケーションが 2 つ以上のアプリケーション登録 (別々のクライアントとリソースなど) で構成されている場合に問題になる可能性があります。 まずユーザーのテナントにリソースを追加するにはどうすればいいのでしょうか。 Azure AD では、ワンステップでクライアントとリソースが同意されるようにすることによって、この状況に対応します。 ユーザーには、同意ページにクライアントとリソースの両方によって要求されたアクセス許可の合計が表示されます。 この動作を有効にするには、リソースのアプリケーション登録で、[アプリケーションのマニフェスト][AAD-App-Manifest]に `knownClientApplications` というクライアントのアプリ ID を含める必要があります。 例: 
+この処理は、論理アプリケーションが 2 つ以上のアプリケーション登録 (別々のクライアントとリソースなど) で構成されている場合に問題になる可能性があります。 まずユーザーのテナントにリソースを追加するにはどうすればいいのでしょうか。 Azure AD では、ワンステップでクライアントとリソースが同意されるようにすることによって、この状況に対応します。 ユーザーには、同意ページにクライアントとリソースの両方によって要求されたアクセス許可の合計が表示されます。 この動作を有効にするには、リソースのアプリケーション登録で、[アプリケーションのマニフェスト][AAD-App-Manifest]に `knownClientApplications` というクライアントのアプリ ID を含める必要があります。 例:
 
     knownClientApplications": ["94da0930-763f-45c7-8d26-04d5938baab2"]
 

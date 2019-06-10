@@ -5,14 +5,14 @@ services: batch
 ms.service: batch
 author: mscurrell
 ms.author: markscu
-ms.date: 9/25/2018
+ms.date: 05/28/2019
 ms.topic: conceptual
-ms.openlocfilehash: 8d8df9935e935ac8d5a1194cfab103a006cf5546
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: b0a9d04fccce7ccbacb700f7af5126c6ae05140a
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57791343"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357756"
 ---
 # <a name="check-for-pool-and-node-errors"></a>プールとノードのエラーのチェック
 
@@ -84,18 +84,27 @@ Batch がプール内のノードを正常に割り当てた場合でも、さ�
 
 ノード[エラー](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror)プロパティは、ダウンロードやアプリケーション パッケージの圧縮解除に失敗したノードを報告します。 Batch はノードの状態を**使用不可**に設定します。
 
+### <a name="container-download-failure"></a>コンテナーのダウンロード エラー
+
+プールには、コンテナーの参照を 1 つまたは複数指定できます。 指定したコンテナーが Batch によって各ノードにダウンロードされます。 ノードの [errors](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) プロパティによって、コンテナーのダウンロード エラーがレポートされ、そのノードの状態が**使用不可**に設定されます。
+
 ### <a name="node-in-unusable-state"></a>ノードは使用できない状態
 
 Azure Batch はさまざまな理由で[ノード状態](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodestate)を**使用不可**に設定します。 ノード状態が**使用不可**に設定された場合、ノードにタスクをスケジュールできませんが、料金は発生します。
 
-Batch は、使用できないノードの回復を常に試みますが、原因によっては、回復の可能性がある場合とない場合があります。
+ノードが**使用不可**であるにもかかわらず、[エラー](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror)状態を伴っていない場合、Batch が VM と通信できないことを意味します。 このケースでは、Batch によって常に VM の復旧が試みられます。 アプリケーション パッケージまたはコンテナーのインストール エラーが発生した VM については、その状態が**使用不可**であっても、Batch が自動的に復旧を試みることはありません。
 
 Batch が原因を特定できる場合、ノードの[エラー](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror)プロパティは原因を報告します。
 
 **使用できない** ノードが発生する原因として、次のような例もあります。
 
 - カスタム VM イメージが無効である。 たとえば、イメージが適切に作成されていない場合があります。
+
 - インフラストラクチャの障害または低レベルのアップグレードのため、VM が移動した。 Batch はノードを回復します。
+
+- VM イメージが、それをサポートしないハードウェアにデプロイされている。 たとえば、HPC 以外のハードウェアで "HPC" の VM イメージを実行したり、 [Standard_D1_v2](../virtual-machines/linux/sizes-general.md#dv2-series) の VM で CentOS HPC イメージを実行したりすることが該当します。
+
+- VM が [Azure Virtual Network](batch-virtual-network.md) に存在し、重要なポートへのトラフィックがブロックされている。
 
 ### <a name="node-agent-log-files"></a>ノード エージェント ログ ファイル
 

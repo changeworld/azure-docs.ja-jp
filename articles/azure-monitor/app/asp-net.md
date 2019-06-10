@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: mbullwin
-ms.openlocfilehash: c69e925913d4dcb3a8bec34cbf25dac184ea65c5
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 5b719566ce42639c0c435a8d631e12541d0a0e9d
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65595555"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66256616"
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>ASP.NET Web サイトに Application Insights を設定する
 
@@ -99,12 +99,10 @@ Application Insights リソースを開きます。 [Azure Portal](https://porta
 
 詳細を表示するには、ポータルで任意のタイルまたはグラフをクリックします。
 
-[Azure Portal での Application Insights の使用方法の詳細については、こちらを参照してください](../../azure-monitor/app/app-insights-dashboards.md)。
-
-## <a name="step-4-publish-your-app"></a>手順 4: アプリケーションの発行
+## <a name="step-4-publish-your-app"></a>手順 4:アプリケーションの発行
 IIS サーバーまたは Azure にアプリを発行します。 [ライブ メトリック ストリーム](../../azure-monitor/app/metrics-explorer.md#live-metrics-stream) を観察して、必要な処理がすべて滞りなく実行されていることを確認してください。
 
-Application Insights ポータルにはテレメトリが蓄積されており、メトリックを監視したり、目的のテレメトリを検索したり、[ダッシュボード](../../azure-monitor/app/app-insights-dashboards.md)を設定したりすることができます。 強力な [Kusto クエリ言語](/azure/kusto/query/)を使用して、使用状況やパフォーマンスを分析したり、特定のイベントを見つけたりすることができます。
+Application Insights ポータルにはテレメトリが蓄積されており、メトリックを監視したり、目的のテレメトリを検索したりすることができます。 強力な [Kusto クエリ言語](/azure/kusto/query/)を使用して、使用状況やパフォーマンスを分析したり、特定のイベントを見つけたりすることができます。
 
 [Visual Studio](../../azure-monitor/app/visual-studio.md) から各種ツール (診断検索、[傾向](../../azure-monitor/app/visual-studio-trends.md)など) を使って継続的にテレメトリを分析することもできます。
 
@@ -146,7 +144,6 @@ ApplicationInsights.config をカスタマイズしている場合は、アッ�
 ### <a name="analysis"></a>分析
 
 * **[Visual Studio での Application Insights の操作](../../azure-monitor/app/visual-studio.md)**<br/>テレメトリ、診断検索、コードのドリル スルーを使用したデバッグについて説明しています。
-* **[Application Insights ポータルの操作](../../azure-monitor/app/app-insights-dashboards.md)**<br/> ダッシュボード、強力な診断および分析ツール、アラート、アプリケーションのリアルタイム依存関係マップ、テレメトリのエクスポートについて説明しています。
 * **[Analytics](../../azure-monitor/log-query/get-started-portal.md)** - 強力なクエリ言語です。
 
 ### <a name="alerts"></a>アラート

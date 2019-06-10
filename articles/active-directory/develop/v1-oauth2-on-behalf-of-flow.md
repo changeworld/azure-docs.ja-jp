@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/06/2017
+ms.date: 05/22/2019
 ms.author: ryanwi
 ms.reviewer: hirsin, nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a2983980786fc706d103c0147a0776f2ff8c2d4f
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 0f4ab484b76bb536dd4e9d3c4fff2c85d93e4a41
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545469"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235206"
 ---
 # <a name="service-to-service-calls-that-use-delegated-user-identity-in-the-on-behalf-of-flow"></a>On-Behalf-Of フローでの委任ユーザー ID を使用するサービス間の呼び出し
 
@@ -56,33 +56,34 @@ Azure AD で、中間層サービスとクライアント アプリケーショ�
 ### <a name="register-the-middle-tier-service"></a>中間層サービスの登録
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-1. 上部のバーにある自分のアカウントを選択し、**[ディレクトリ]** の一覧からアプリケーションの Active Directory テナントを選択します。
-1. 左側のウィンドウで **[その他のサービス]** を選択し、**[Azure Active Directory]** を選択します。
-1. **[アプリの登録]**、**[新しいアプリケーションの登録]** の順に選択します。
+1. 上部のバーにある自分のアカウントを選択し、 **[ディレクトリ]** の一覧からアプリケーションの Active Directory テナントを選択します。
+1. 左側のウィンドウで **[その他のサービス]** を選択し、 **[Azure Active Directory]** を選択します。
+1. **[アプリの登録]** を選択し、 **[新規登録]** を選択します。
 1. アプリケーションのフレンドリ名を入力し、アプリケーションの種類を選択します。
-    1. アプリケーションの種類に応じて、サインオン URL またはリダイレクト URL をベース URL に設定します。
-    1. **[作成]** を選択して、アプリケーションを作成します。
+1. **[サポートされているアカウントの種類]** で、 **[Accounts in any organizational directory and personal Microsoft accounts]\(任意の組織のディレクトリ内のアカウントと個人用の Microsoft アカウント\)** を選択します。
+1. リダイレクト URI をベース URL に設定します。
+1. **[登録]** を選択して、アプリケーションを作成します。
 1. Azure portal を終了する前に、クライアント シークレットを生成します。
-   1. Azure portal でアプリケーションを選択して、**[設定]** を選択します。
-   1. [設定] メニューの **[キー]** を選択し、キー有効期間が 1 年または 2 年のキーを追加します。
-   1. このページを保存すると、Azure portal にキー値が表示されます。 キー値をコピーして安全な場所に保存します。
+1. Azure portal でアプリケーションを選択して、 **[証明書とシークレット]** を選択します。
+1. **[New client secret]\(新しいクライアント シークレット\)** を選択し、有効期間が 1 年または 2 年のシークレットを追加します。
+1. このページを保存すると、Azure portal にシークレット値が表示されます。 シークレット値をコピーして安全な場所に保存します。
 
-      > [!IMPORTANT]
-      > 実装でアプリケーション設定を構成するには、このキーが必要です。 このキー値は二度と表示されず、他の方法で取得することはできません。 Azure portal で表示されたら、すぐに記録してください。
+> [!IMPORTANT]
+> 実装でアプリケーション設定を構成するには、このシークレットが必要です。 このシークレット値は二度と表示されず、他の方法で取得することはできません。 Azure portal で表示されたら、すぐに記録してください。
 
 ### <a name="register-the-client-application"></a>クライアント アプリケーションの登録
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-1. 上部のバーにある自分のアカウントを選択し、**[ディレクトリ]** の一覧からアプリケーションの Active Directory テナントを選択します。
-1. 左側のウィンドウで **[その他のサービス]** を選択し、**[Azure Active Directory]** を選択します。
-1. **[アプリの登録]**、**[新しいアプリケーションの登録]** の順に選択します。
+1. 上部のバーにある自分のアカウントを選択し、 **[ディレクトリ]** の一覧からアプリケーションの Active Directory テナントを選択します。
+1. 左側のウィンドウで **[その他のサービス]** を選択し、 **[Azure Active Directory]** を選択します。
+1. **[アプリの登録]** を選択し、 **[新規登録]** を選択します。
 1. アプリケーションのフレンドリ名を入力し、アプリケーションの種類を選択します。
-   1. アプリケーションの種類に応じて、サインオン URL またはリダイレクト URL をベース URL に設定します。
-   1. **[作成]** を選択して、アプリケーションを作成します。
-1. アプリケーション用にアクセス許可を構成します。
-   1. [設定] メニューで、**[必要なアクセス許可]** セクションを選択し、次に **[追加]** と **[API の選択]** を選択します。
-   1. テキスト フィールドに中間層サービスの名前を入力します。
-   1. **[アクセス許可の選択]**、**[サービス名にアクセス]** の順に選択します。
+1. **[サポートされているアカウントの種類]** で、 **[Accounts in any organizational directory and personal Microsoft accounts]\(任意の組織のディレクトリ内のアカウントと個人用の Microsoft アカウント\)** を選択します。
+1. リダイレクト URI をベース URL に設定します。
+1. **[登録]** を選択して、アプリケーションを作成します。
+1. アプリケーション用にアクセス許可を構成します。 **[API のアクセス許可]** で、 **[アクセス許可の追加]** を選択し、 **[自分の API]** を選択します。
+1. テキスト フィールドに中間層サービスの名前を入力します。
+1. **[アクセス許可の選択]** を選択し、 **[<service name> にアクセス]** を選択します。
 
 ### <a name="configure-known-client-applications"></a>既知のクライアント アプリケーションの構成
 
@@ -90,7 +91,7 @@ Azure AD で、中間層サービスとクライアント アプリケーショ�
 
 次の手順に従って、Azure AD でのクライアント アプリの登録を中間層サービスの登録に明示的にバインドします。 この操作により、クライアントと中間層の両方で必要な同意が、1 つのダイアログにマージされます。
 
-1. 中間層サービスの登録に移動し、**[マニフェスト]** を選択してマニフェスト エディターを開きます。
+1. 中間層サービスの登録に移動し、 **[マニフェスト]** を選択してマニフェスト エディターを開きます。
 1. `knownClientApplications` 配列プロパティを探し、要素としてクライアント アプリケーションのクライアント ID を追加します。
 1. **[保存]** を選択してマニフェストを保存します。
 
@@ -112,9 +113,9 @@ https://login.microsoftonline.com/<tenant>/oauth2/token
 | --- | --- | --- |
 | grant_type |必須 | トークン要求の種類。 OBO 要求は JSON Web トークン (JWT) を使用するため、その値は **urn:ietf:params:oauth:grant-type:jwt-bearer** である必要があります。 |
 | assertion |必須 | 要求で使用されるアクセス トークンの値。 |
-| client_id |必須 | Azure AD での登録時に呼び出し元のサービスに割り当てられるアプリ ID。 Azure portal でアプリ ID を調べるには、**[Active Directory]**、目的のディレクトリ、アプリケーション名の順に選択します。 |
+| client_id |必須 | Azure AD での登録時に呼び出し元のサービスに割り当てられるアプリ ID。 Azure portal でアプリ ID を調べるには、 **[Active Directory]** 、目的のディレクトリ、アプリケーション名の順に選択します。 |
 | client_secret |必須 | 呼び出し元のサービスに対して Azure AD に登録されているキー。 この値は登録時にメモしているはずです。 |
-| resource |必須 | 受信側のサービスのアプリ ID URI (セキュリティ保護されたリソース)。 Azure portal でアプリ ID URI を調べるには、**[Active Directory]** を選択し、目的のディレクトリを選びます。 アプリケーション名を選択し、**[すべての設定]**、**[プロパティ]** の順に選択します。 |
+| resource |必須 | 受信側のサービスのアプリ ID URI (セキュリティ保護されたリソース)。 Azure portal でアプリ ID URI を調べるには、 **[Active Directory]** を選択し、目的のディレクトリを選びます。 アプリケーション名を選択し、 **[すべての設定]** 、 **[プロパティ]** の順に選択します。 |
 | requested_token_use |必須 | 要求の処理方法を指定します。 On-Behalf-Of フローでは、値は **on_behalf_of** である必要があります。 |
 | scope |必須 | トークン要求のスコープのスペース区切りリスト。 OpenID Connect の場合、スコープの **openid** を指定する必要があります。|
 
@@ -146,10 +147,10 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 | --- | --- | --- |
 | grant_type |必須 | トークン要求の種類。 OBO 要求は JWT アクセス トークンを使用するため、その値は **urn:ietf:params:oauth:grant-type:jwt-bearer** である必要があります。 |
 | assertion |必須 | 要求で使用されるトークンの値。 |
-| client_id |必須 | Azure AD での登録時に呼び出し元のサービスに割り当てられるアプリ ID。 Azure portal でアプリ ID を調べるには、**[Active Directory]**、目的のディレクトリ、アプリケーション名の順に選択します。 |
+| client_id |必須 | Azure AD での登録時に呼び出し元のサービスに割り当てられるアプリ ID。 Azure portal でアプリ ID を調べるには、 **[Active Directory]** 、目的のディレクトリ、アプリケーション名の順に選択します。 |
 | client_assertion_type |必須 |値は `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` である必要があります |
 | client_assertion |必須 | アプリケーションの資格情報として登録した証明書で作成し署名する JSON Web トークンです。 アサーションの形式と証明書の登録方法との詳細については、[証明書資格情報](active-directory-certificate-credentials.md)に関する記事を参照してください。|
-| resource |必須 | 受信側のサービスのアプリ ID URI (セキュリティ保護されたリソース)。 Azure portal でアプリ ID URI を調べるには、**[Active Directory]** を選択し、目的のディレクトリを選びます。 アプリケーション名を選択し、**[すべての設定]**、**[プロパティ]** の順に選択します。 |
+| resource |必須 | 受信側のサービスのアプリ ID URI (セキュリティ保護されたリソース)。 Azure portal でアプリ ID URI を調べるには、 **[Active Directory]** を選択し、目的のディレクトリを選びます。 アプリケーション名を選択し、 **[すべての設定]** 、 **[プロパティ]** の順に選択します。 |
 | requested_token_use |必須 | 要求の処理方法を指定します。 On-Behalf-Of フローでは、値は **on_behalf_of** である必要があります。 |
 | scope |必須 | トークン要求のスコープのスペース区切りリスト。 OpenID Connect の場合、スコープの **openid** を指定する必要があります。|
 
@@ -256,9 +257,9 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6InowMzl6ZHNGdW
 | --- | --- | --- |
 | grant_type |必須 | トークン要求の種類。 JWT を使用する要求の場合、値は **urn:ietf:params:oauth:grant-type:jwt-bearer** である必要があります。 |
 | assertion |必須 | 要求で使用されるアクセス トークンの値。|
-| client_id |必須 | Azure AD での登録時に呼び出し元のサービスに割り当てられるアプリ ID。 Azure portal でアプリ ID を調べるには、**[Active Directory]**、目的のディレクトリ、アプリケーション名の順に選択します。 |
+| client_id |必須 | Azure AD での登録時に呼び出し元のサービスに割り当てられるアプリ ID。 Azure portal でアプリ ID を調べるには、 **[Active Directory]** 、目的のディレクトリ、アプリケーション名の順に選択します。 |
 | client_secret |必須 | 呼び出し元のサービスに対して Azure AD に登録されているキー。 この値は登録時にメモしているはずです。 |
-| resource |必須 | 受信側のサービスのアプリ ID URI (セキュリティ保護されたリソース)。 これは SAML トークンの対象となるリソースです。 Azure portal でアプリ ID URI を調べるには、**[Active Directory]** を選択し、目的のディレクトリを選びます。 アプリケーション名を選択し、**[すべての設定]**、**[プロパティ]** の順に選択します。 |
+| resource |必須 | 受信側のサービスのアプリ ID URI (セキュリティ保護されたリソース)。 これは SAML トークンの対象となるリソースです。 Azure portal でアプリ ID URI を調べるには、 **[Active Directory]** を選択し、目的のディレクトリを選びます。 アプリケーション名を選択し、 **[すべての設定]** 、 **[プロパティ]** の順に選択します。 |
 | requested_token_use |必須 | 要求の処理方法を指定します。 On-Behalf-Of フローでは、値は **on_behalf_of** である必要があります。 |
 | requested_token_type | 必須 | 要求するトークンの種類を指定します。 アクセス先のリソースの要件に応じて、値は **urn:ietf:params:oauth:token-type:saml2** または **urn:ietf:params:oauth:token-type:saml1** のいずれかです。 |
 

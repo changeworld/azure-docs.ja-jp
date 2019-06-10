@@ -3,7 +3,7 @@ title: Secure LDAP (LDAPS) を使用して Azure AD Domain Services マネージ
 description: Secure LDAP (LDAPS) を使用して Azure AD Domain Services マネージド ドメインにバインドする
 services: active-directory-ds
 documentationcenter: ''
-author: eringreenlee
+author: MikeStephens-MS
 manager: daveba
 editor: curtand
 ms.assetid: 6871374a-0300-4275-9a45-a39a52c65ae4
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/01/2018
-ms.author: ergreenl
-ms.openlocfilehash: 62776408675acba1ee8a57252c794e5a1c840155
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.date: 05/20/2019
+ms.author: mstephen
+ms.openlocfilehash: 47c9553b4191fe6dbae8d92d75dfae83f191a063
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55203387"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66234863"
 ---
 # <a name="bind-to-an-azure-ad-domain-services-managed-domain-using-secure-ldap-ldaps"></a>Secure LDAP (LDAPS) を使用して Azure AD Domain Services マネージド ドメインにバインドする
 
@@ -64,13 +64,13 @@ LDAPS がインターネット経由でマネージド ドメインにアクセ�
 
 
 ## <a name="related-content"></a>関連コンテンツ
-* [Azure AD ドメイン サービス - 作業開始ガイド](active-directory-ds-getting-started.md)
-* [Azure AD Domain Services のマネージド ドメインの管理](active-directory-ds-admin-guide-administer-domain.md)
+* [Azure AD ドメイン サービス - 作業開始ガイド](create-instance.md)
+* [Azure AD Domain Services ドメインを管理する](manage-domain.md)
 * [LDAP query basics](https://technet.microsoft.com/library/aa996205.aspx) (LDAP クエリの基本)
-* [Azure AD Domain Services のマネージド ドメインのグループ ポリシーの管理](active-directory-ds-admin-guide-administer-group-policy.md)
+* [Azure AD Domain Services のグループ ポリシーを管理する](manage-group-policy.md)
 * [ネットワーク セキュリティ グループ](../virtual-network/security-overview.md)
 * [ネットワーク セキュリティ グループの作成](../virtual-network/tutorial-filter-network-traffic.md)
 
 
 ## <a name="next-step"></a>次のステップ
-[マネージド ドメインでの Secure LDAP をトラブルシューティングする](active-directory-ds-ldaps-troubleshoot.md)
+[マネージド ドメインでの Secure LDAP をトラブルシューティングする](tshoot-ldaps.md)

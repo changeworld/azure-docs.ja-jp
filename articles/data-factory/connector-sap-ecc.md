@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: jingwang
-ms.openlocfilehash: d86264b632daa09a899fae28e73e117b16322617
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7c75793a696137a1d4cc24fa94877a7fb4e4247a
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58121963"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66243919"
 ---
 # <a name="copy-data-from-sap-ecc-using-azure-data-factory"></a>Azure Data Factory を使用して SAP ECC からデータをコピーする
 
@@ -32,6 +32,9 @@ SAP ECC から、サポートされている任意のシンク データ スト�
 - SAP NetWeaver バージョン 7.0 以降上の SAP ECC からのデータのコピー。 
 - SAP ECC OData サービス (例: SAP テーブル/ビュー、BAPI、データ エクストラクターなど) によって公開されたオブジェクトからのデータのコピー、または相対アダプターによって OData として取得できる SAP PI に送信されたデータ/IDOC のコピー。
 - 基本認証を使用したデータのコピー。
+
+>[!TIP]
+>SAP ECC のデータを SAP テーブル/ビュー経由でコピーするには、よりパフォーマンスが高く、かつスケーラブルな [SAP テーブル](connector-sap-table.md) コネクタを使用できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -55,9 +58,9 @@ SAP ECC のリンクされたサービスでは、次のプロパティがサポ
 |:--- |:--- |:--- |
 | type | type プロパティは、次のように設定する必要があります:**SapEcc** | はい |
 | url | SAP ECC OData サービスの URL。 | はい |
-| username | SAP ECC への接続に使うユーザー名。 | いいえ  |
-| password | SAP ECC への接続に使うプレーンテキスト パスワード。 | いいえ  |
-| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 セルフホステッド統合ランタイムまたは Azure 統合ランタイム (データ ストアがパブリックにアクセスできる場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ  |
+| userName | SAP ECC への接続に使うユーザー名。 | いいえ |
+| password | SAP ECC への接続に使うプレーンテキスト パスワード。 | いいえ |
+| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 セルフホステッド統合ランタイムまたは Azure 統合ランタイム (データ ストアがパブリックにアクセスできる場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ |
 
 **例:**
 
@@ -121,7 +124,7 @@ SAP ECC からデータをコピーするには、コピー アクティビテ�
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります:**SapEccSource** | はい |
-| query | データをフィルター処理するための OData クエリ オプション。 例: "$select=Name,Description&$top=10"<br/><br/>SAP ECC コネクタは結合された URL からデータをコピーします: <リンクされたサービスで指定されている URL>/<データセットで指定されているパス>?<コピー アクティビティ ソースで指定されているクエリ>。 [OData の URL コンポーネント](https://www.odata.org/documentation/odata-version-3-0/url-conventions/)に関する記事を参照してください。 | いいえ  |
+| query | データをフィルター処理するための OData クエリ オプション。 例: "$select=Name,Description&$top=10"<br/><br/>SAP ECC コネクタは結合された URL からデータをコピーします: <リンクされたサービスで指定されている URL>/<データセットで指定されているパス>?<コピー アクティビティ ソースで指定されているクエリ>。 [OData の URL コンポーネント](https://www.odata.org/documentation/odata-version-3-0/url-conventions/)に関する記事を参照してください。 | いいえ |
 
 **例:**
 

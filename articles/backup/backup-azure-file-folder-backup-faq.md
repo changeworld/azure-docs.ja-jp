@@ -1,18 +1,18 @@
 ---
 title: Azure Backup を使用してファイルとフォルダーをバックアップする場合の一般的な質問
 description: Azure Backup を使用したファイルとフォルダーのバックアップに関する一般的な質問に対応します。
-author: lingliw
-manager: digimobile
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 04/30/2019
-ms.author: v-lingwu
-ms.openlocfilehash: 5dbd4fefd5c5e1acd7e12ace547ddb8866b7f081
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.date: 05/28/2019
+ms.author: dacurwin
+ms.openlocfilehash: 1ac3cdecc79cafb9ea2697cca3c87b2ebe083d40
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148588"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66254863"
 ---
 # <a name="common-questions-about-backing-up-files-and-folders"></a>ファイルとフォルダーのバックアップに関する一般的な質問 
 
@@ -101,7 +101,7 @@ MARS エージェントは NTFS に依存しており、ファイルの名前/�
 キャッシュ フォルダーのサイズによって、バックアップするデータ量が決まります。
 - キャッシュ フォルダー ボリュームには、バックアップ データの合計サイズの少なくとも 5 から 10% に相当する空き領域が必要になります。
 - ボリュームの空き領域が 5% 未満の場合は、ボリューム サイズを増やすか、十分な容量があるボリュームにキャッシュ フォルダーを移動します。
-- 
+- Windows のシステム状態をバックアップする場合は、キャッシュ フォルダーを含むボリューム内に 30 ～ 35 GB の追加の空き領域が必要になります。
 ### <a name="how-do-i-change-the-cache-location-for-the-mars-agent"></a>MARS エージェント用のキャッシュの場所を変更する方法を教えてください。
 
 

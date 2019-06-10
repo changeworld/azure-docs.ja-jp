@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: ab439eb77113c53ab046256dd8d448a18b63f887
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 72d744808d6b52ccd151645c97005bfdfe1a5541
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58850073"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66243466"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-for-consumption-by-an-external-tool"></a>外部ツールで使用する Azure 監視データのイベント ハブへのストリーミング
 
@@ -43,7 +43,7 @@ Azure 環境内には監視データの "層" がいくつかあり、各層の�
 * イベント ハブのスループット スケールは、スループット単位の数によって増やすことができます。 多数のコンシューマー間での消費量は、パーティションの数によって並列化することができます。 1 つのパーティションで、最大 20MBps まで対応できます (1 秒あたり約 20,000 件のメッセージ)。 データの消費元のツールによっては、複数のパーティションからの消費をサポートできない場合もあります。 設定するべきパーティションの数がよくわからない場合は、4 つのパーティションから始めることをお勧めします。
 * イベント ハブでのメッセージのリテンション期間は 7 日間に設定することをお勧めします。 そうすれば、消費元のツールが 1 日以上ダウンした場合でも、ダウンした時点から (最大 7 日前までのイベントを) 復旧することができます。
 * イベント ハブには既定のコンシューマー グループを使用することをお勧めします。 2 つの異なるコンシューマー グループが同じイベント ハブから同じデータを使用するのでないかぎり、他のコンシューマー グループを作成したり、個別のコンシューマー グループを使用する必要はありません。
-* Azure Activity Log については、Event Hubs 名前空間を選択すると、Azure Monitor によってその名前空間 (insights-logs-operationallogs) 内にイベント ハブが作成されます。 その他のログ タイプについては、既存のイベント ハブを選択する (同じ insights-logs-operationallogs イベント ハブを再利用できます) か、Azure Monitor によってログ カテゴリごとにイベント ハブを作成することができます。
+* Azure Activity Log については、Event Hubs 名前空間を選択すると、Azure Monitor によって、その名前空間内に 'insights-logs-operationallogs' と呼ばれるイベント ハブが作成されます。 その他のログ タイプについては、既存のイベント ハブを選択する (同じ insights-logs-operationallogs イベント ハブを再利用できます) か、Azure Monitor によってログ カテゴリごとにイベント ハブを作成することができます。
 * 通常、イベント ハブからデータを消費するコンピューターでは、ポート 5671 と 5672 を開く必要があります。
 
 「[Event Hubs のよく寄せられる質問](../../event-hubs/event-hubs-faq.md)」もご覧ください。
@@ -111,7 +111,7 @@ Azure Monitor で監視データをイベント ハブにルーティングす�
 * **IBM QRadar** - Microsoft Azure DSM および Microsoft Azure Event Hub Protocol は、[IBM サポート Web サイト](https://www.ibm.com/support)からダウンロードすることができます。 Azure との統合の詳細については、[こちら](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0)を参照してください。
 * **Splunk** -Splunk の設定によって、次の 2 つの方法があります。
     1. [Splunk 向けの Azure Monitor アドオン](https://splunkbase.splunk.com/app/3534/)は、Splunkbase およびオープン ソース プロジェクトで入手できます。 ドキュメントは[こちら](https://github.com/Microsoft/AzureMonitorAddonForSplunk/wiki/Azure-Monitor-Addon-For-Splunk)にあります。
-    2. Splunk インスタンスにアドオンをインストールできない場合 (例:  プロキシを使用している場合、Splunk Cloud で実行している場合など)、[イベント ハブの新しいメッセージによってトリガーされるこの機能](https://github.com/Microsoft/AzureFunctionforSplunkVS)を使用して、Splunk HTTP イベント コレクターにこれらのイベントを転送できます。
+    2. Splunk インスタンスにアドオンをインストールできない場合 (例: プロキシを使用している場合、Splunk Cloud で実行している場合など)、[イベント ハブの新しいメッセージによってトリガーされるこの機能](https://github.com/Microsoft/AzureFunctionforSplunkVS)を使用して、Splunk HTTP イベント コレクターにこれらのイベントを転送できます。
 * **SumoLogic** - イベント ハブのデータを使用するように SumoLogic をセットアップする手順については、[こちら](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure-Audit/02Collect-Logs-for-Azure-Audit-from-Event-Hub)を参照してください。
 * **ArcSight** - ArcSight Azure Event Hub スマート コネクタは、[ここの ArcSight スマート コネクタ コレクション](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852)の一部として使用できます。
 * **Syslog サーバー** - Azure Monitor データを Syslog サーバーに直接ストリーム配信する場合は、[この GitHub リポジトリ](https://github.com/miguelangelopereira/azuremonitor2syslog/)をチェックアウトできます。

@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/04/2018
-ms.openlocfilehash: 1a332dd46cac196c8185ddb12c0d900f5c36e1b3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a50778db5fd57202c17f05407045259371912586
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57894055"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66239191"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>Mapping Data Flow のデバッグ モード
 
@@ -26,6 +26,9 @@ Azure Data Factory Mapping Data Flow にはデバッグ モードがあり、デ
 デバッグ モードが有効なときは、アクティブな Spark クラスターを使用して対話的にデータ フローを構築します。 Azure Data Factory でデバッグを無効にすると、セッションは終了します。 デバッグ セッションを有効にしている間に Azure Databricks によって発生する 1 時間あたりの料金を把握しておく必要があります。
 
 ほとんどの場合、デバッグ モードでデータ フローを構築し、ビジネス ロジックを検証してデータ変換を確認してから、Azure Data Factory で作業内容を公開することをお勧めします。 また、パイプライン パネルの [デバッグ] ボタンを使用して、パイプライン内部のデータ フローをテストする必要があります。
+
+> [!NOTE]
+> Data Factory ツールバーのデバッグ モード ライトが緑色の間、60 分の Time to Live と 8 コア/時の一般コンピューティングの Data Flow デバッグ レートで課金されます 
 
 ## <a name="debug-mode-on"></a>デバッグ モードの有効化
 デバッグ モードを有効にすると、サイドパネル フォームが表示され、対話型の Azure Databricks クラスターを指定し、ソース サンプリングのオプションを選択するように求められます。 Azure Databricks の対話型クラスターを使用して、各ソース変換からサンプリング サイズを選択するか、テスト データに使用するテキスト ファイルを選択する必要があります。
@@ -41,7 +44,7 @@ Azure Data Factory Mapping Data Flow にはデバッグ モードがあり、デ
 ## <a name="cluster-status"></a>クラスターの状態
 デザイン サーフェスの上部にはクラスター状態インジケーターがあり、クラスターのデバッグの準備が整うと緑色に変わります。 クラスターが既に実行されている場合、緑色のインジケーターはほぼ瞬時に表示されます。 デバッグ モードを開始したときにクラスターがまだ実行されていなかった場合は、クラスターが起動するまで 5 分から 7 分待つ必要があります。 準備ができるまでインジケーターのライトは黄色になります。 クラスターが Data Flow のデバッグを実行する準備が整うと、インジケーターのライトは緑色に変わります。
 
-デバッグが終了したら、[デバッグ] スイッチをオフにして、Azure Databricks クラスターを終了できるようにします。
+デバッグが終了したら、[デバッグ] スイッチをオフにして、Azure Databricks クラスターを終了できるようにし、デバッグ アクティビティについて課金されないようにします。
 
 <img src="media/data-flow/datapreview.png" width="400">
 

@@ -3,7 +3,7 @@ title: Azure Active Directory Domain Services:機能 | Microsoft Docs
 description: Azure Active Directory Domain Services の機能
 services: active-directory-ds
 documentationcenter: ''
-author: eringreenlee
+author: MikeStephens-MS
 manager: daveba
 editor: curtand
 ms.assetid: 8d1c3eb3-1022-4add-a919-c98cc6584af1
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/30/2018
-ms.author: ergreenl
-ms.openlocfilehash: 9e4ab7aa4f61921d8b327404a266694349d78164
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.date: 05/10/2019
+ms.author: mstephen
+ms.openlocfilehash: 27aaaca4f28feac0f68b4e034426c64b934b1f95
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55163621"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66234931"
 ---
 # <a name="azure-ad-domain-services"></a>Azure AD Domain Services
 ## <a name="features"></a>機能
@@ -32,10 +32,10 @@ Azure AD Domain Services のマネージド ドメインでは、次の機能を
 * **カスタム名を使用したドメインの作成:** Azure AD Domain Services を使用して、カスタム名を指定してドメインを作成できます (例: "contoso100.com")。 確認済みまたは未確認のいずれかのドメイン名を使用できます。 必要に応じて、Azure AD ディレクトリが提供する組み込みのドメイン サフィックス (つまり、"*.onmicrosoft.com" など) を指定してドメインを作成することができます。
 * **Azure AD との統合:** Azure AD Domain Services へのレプリケーションを構成したり管理したりする必要はありません。 Azure AD ディレクトリのユーザー アカウント、グループ メンバーシップ、およびユーザー資格情報 (パスワード) が、Azure AD ドメイン サービスで自動的に利用可能になります。 Azure AD テナントやオンプレミスのディレクトリで新規作成されたユーザーやグループおよび変更が加えられた属性は、Azure AD ドメイン サービスに自動的に同期されます。
 * **NTLM と Kerberos の認証:** NTLM と Kerberos の認証が サポートされているので、Windows 統合認証を利用するアプリケーションをデプロイできます。
-* **会社の資格情報とパスワードの使用:** Azure AD テナントでのユーザーのパスワードは、Azure AD Domain Services で機能します。 ユーザーは会社の資格情報をしてコンピューターをドメインに参加させて、対話的に、またはリモート デスクトップ経由でログインし、マネージド ドメインに対して認証できます。
+* **会社の資格情報とパスワードの使用:** Azure AD テナントでのユーザーのパスワードは、Azure AD Domain Services で機能します。 ユーザーは、会社の資格情報を使用してコンピューターをドメインに参加させたり、対話的にまたはリモート デスクトップ経由でサインインしたり、マネージド ドメインに対して認証したりできます。
 * **LDAP バインドと LDAP 読み取りのサポート:** LDAP バインドを利用するアプリケーションを使用して、Azure AD Domain Services がサービスを提供するドメインでユーザーを認証できます。 さらに、LDAP 読み取り操作を使用してディレクトリのユーザーまたはコンピューターの属性をクエリするアプリケーションも Azure AD ドメイン サービスに対して機能します。
 * **セキュリティで保護された LDAP (LDAPS):** セキュリティで保護された LDAP (LDAPS) を介したディレクトリへのアクセスを有効にできます。 セキュリティで保護された LDAP アクセスは、既定では仮想ネットワーク内で使用できます。 ただし、必要に応じて、インターネット上のセキュリティで保護された LDAP アクセスを有効化することもできます。
-* **グループ ポリシー:** ユーザーやコンピューターのコンテナーごとに組み込みの GPO を 1 つ使用すると、必須のセキュリティ ポリシーにより、ユーザー アカウントとドメインに参加したコンピューターに対して、コンプライアンスを強制的に適用できます。 また、独自のカスタム GPO を作成し、カスタムの組織単位に割り当てて[グループ ポリシーを管理する](active-directory-ds-admin-guide-administer-group-policy.md)こともできます。
+* **グループ ポリシー:** ユーザーやコンピューターのコンテナーごとに組み込みの GPO を 1 つ使用すると、必須のセキュリティ ポリシーにより、ユーザー アカウントとドメインに参加したコンピューターに対して、コンプライアンスを強制的に適用できます。 また、独自のカスタム GPO を作成し、カスタムの組織単位に割り当てて[グループ ポリシーを管理する](manage-group-policy.md)こともできます。
 * **DNS の管理:** "AAD DC 管理者" グループのメンバーは、DNS 管理 MMC スナップインなどの使い慣れた DNS 管理ツールを使用して、マネージド ドメインの DNS を管理できます。
 * **カスタム組織単位 (OU) の作成:** "AAD DC 管理者" グループのメンバーは、マネージド ドメイン内でカスタム OU を作成できます。 これらのユーザーにはカスタム OU に対する完全な管理者特権が付与されるため、カスタム OU のサービス アカウント、コンピューター、グループなどの追加や削除を行うことができます。
 * **Azure の多くのグローバル リージョンで使用可能:** Azure AD Domain Services を使用できる Azure リージョンについては、[リージョンごとの Azure サービス](https://azure.microsoft.com/regions/#services/)に関するページを参照してください。

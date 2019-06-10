@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: kasinh
-ms.openlocfilehash: aa039680be1e88d74cad63eba17d7f3aa89ea49f
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 06faed8ceca77edc20b67f73a76d885839aa7dbc
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66000424"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66304334"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Azure Backup Server のトラブルシューティング
 
@@ -43,7 +43,7 @@ Microsoft Azure Backup Server (MABS) のトラブルシューティングを開�
 
 | Operation | エラーの詳細 | 対処法 |
 | --- | --- | --- |
-| バックアップ | レプリカに整合性がありません | 保護グループ ウィザードで自動の整合性チェック オプションが有効になっていることを確認してください。 レプリカの不整合の原因や関連する提案の詳細については、Microsoft TechNet の記事「[レプリカに整合性がありません](https://technet.microsoft.com/library/cc161593.aspx)」をご覧ください。<br> <ol><li> システム状態のバックアップまたは BMR バックアップの場合は、保護されるサーバーに Windows Server バックアップがインストールされているか確認してください。</li><li> DPM または Microsoft Azure Backup Server 上の DPM 記憶域プールにおいて領域関連の問題が存在するか確認し、必要に応じて記憶域を割り当てます。</li><li> 保護されるサーバーのボリューム シャドウ コピー サービスの状態を確認します。 無効な状態である場合は、手動で開始するように設定します。 サーバーでサービスを開始します。 DPM または Microsoft Azure Backup Server コンソールに戻り、整合性チェック ジョブとの同期を開始します。</li></ol>|
+| バックアップ | レプリカに整合性がありません | 保護グループ ウィザードで自動の整合性チェック オプションが有効になっていることを確認してください。 レプリカの不整合の原因や関連する提案の詳細については、「[レプリカに整合性がありません](https://technet.microsoft.com/library/cc161593.aspx)」の記事をご覧ください。<br> <ol><li> システム状態のバックアップまたは BMR バックアップの場合は、保護されるサーバーに Windows Server バックアップがインストールされているか確認してください。</li><li> DPM または Microsoft Azure Backup Server 上の DPM 記憶域プールにおいて領域関連の問題が存在するか確認し、必要に応じて記憶域を割り当てます。</li><li> 保護されるサーバーのボリューム シャドウ コピー サービスの状態を確認します。 無効な状態である場合は、手動で開始するように設定します。 サーバーでサービスを開始します。 DPM または Microsoft Azure Backup Server コンソールに戻り、整合性チェック ジョブとの同期を開始します。</li></ol>|
 
 ## <a name="online-recovery-point-creation-failed"></a>オンライン回復ポイントを作成できませんでした
 
@@ -82,7 +82,7 @@ Microsoft Azure Backup Server (MABS) のトラブルシューティングを開�
 | Operation | エラーの詳細 | 対処法 |
 | --- | --- | --- |
 | 保護されたサーバーへのエージェントのプッシュ | サーバーに対して指定された資格情報が無効です。 | **製品が推奨する対処法でうまくいかない場合は、次の手順を実行します**: <br> [この記事](https://technet.microsoft.com/library/hh758186(v=sc.12).aspx#BKMK_Manual)に示されているように、保護エージェントを運用サーバーに手動でインストールします。|
-| Azure Backup エージェントは、Azure Backup サービスに接続できませんでした (ID:100050) | Azure Backup エージェントは、Azure Backup サービスに接続できませんでした | **製品が推奨する対処法でうまくいかない場合は、次の手順を実行します**: <br>1.管理者特権のコマンド プロンプトから、コマンド **psexec -i -s "c:\Program Files\Internet Explorer\iexplore.exe** を実行します。 Internet Explorer のウィンドウが開きます。 <br/> 2. **[ツール]**  >  **[インターネット オプション]**  >  **[接続]**  >  **[LAN の設定]** の順に移動します。 <br/> 手順 3.システム アカウントのプロキシ設定を確認します。 プロキシの IP アドレスとポートを設定します。 <br/> 4.Internet Explorer を閉じます。|
+| Azure Backup エージェントは、Azure Backup サービスに接続できませんでした (ID:100050) | Azure Backup エージェントは、Azure Backup サービスに接続できませんでした | **製品が推奨する対処法でうまくいかない場合は、次の手順を実行します**: <br>1.管理者特権のコマンド プロンプトから、コマンド **psexec -i -s "c:\Program Files\Internet Explorer\iexplore.exe** を実行します。 Internet Explorer のウィンドウが開きます。 <br/> 2. **[ツール]**  >  **[インターネット オプション]**  >  **[接続]**  >  **[LAN の設定]** の順に移動します。 <br/> 手順 3.プロキシ サーバーを使用するように設定を変更します。 その後、プロキシ サーバーの詳細を指定します。<br/> 4.マシンのインターネットへのアクセスが制限されている場合は、マシンまたはプロキシのファイアウォール設定によって次の [URL](backup-configure-vault.md#verify-internet-access) と [IP アドレス](backup-configure-vault.md#verify-internet-access)が許可されることを確認します。|
 | Azure Backup エージェントインストールに失敗しました | Microsoft Azure Recovery Services のインストールに失敗しました。 Microsoft Azure Recovery Services のインストールによってシステムに対して実行されたすべての変更はロールバックされました。 (ID: 4024) | Azure エージェントを手動でインストールします。
 
 

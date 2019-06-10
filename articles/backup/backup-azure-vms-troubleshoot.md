@@ -8,26 +8,27 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: srinathvasireddy
-ms.openlocfilehash: 179f806fcff5ce0e384455fdc9db3b2253449eb0
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 23137cd686bcdba59880ff705a43b16ced992b59
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66002308"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66303989"
 ---
 # <a name="troubleshoot-azure-virtual-machine-backup"></a>Azure 仮想マシンのバックアップのトラブルシューティング
 次の情報を使って、Azure Backup の使用中に発生したエラーのトラブルシューティングを行うことができます。
 
 ## <a name="backup"></a>バックアップ
+このセクションでは、Azure 仮想マシンのバックアップ操作のエラーについて説明します。
 
-### <a name="copyingvhdsfrombackupvaulttakinglongtime--copying-backed-up-data-from-vault-timed-out"></a>CopyingVHDsFromBackUpVaultTakingLongTime - コンテナーからのバックアップされたデータのコピーがタイムアウトしました
+## <a name="copyingvhdsfrombackupvaulttakinglongtime---copying-backed-up-data-from-vault-timed-out"></a>CopyingVHDsFromBackUpVaultTakingLongTime - コンテナーからのバックアップされたデータのコピーがタイムアウトしました
 
 エラー コード:CopyingVHDsFromBackUpVaultTakingLongTime <br/>
 エラー メッセージ:コンテナーからのバックアップされたデータのコピーがタイムアウトしました
 
 これは、バックアップ サービスがタイムアウト期間内にデータをコンテナーに転送するときの一時的なストレージ エラーまたはストレージ アカウント IOPS の不足のために発生することがあります。 これらの[ベスト プラクティス](backup-azure-vms-introduction.md#best-practices)を使用して VM バックアップを構成し、バックアップ操作を再試行します。
 
-### <a name="usererrorvmnotindesirablestate---vm-is-not-in-a-state-that-allows-backups"></a>UserErrorVmNotInDesirableState - VM がバックアップできる状態にありません
+## <a name="usererrorvmnotindesirablestate---vm-is-not-in-a-state-that-allows-backups"></a>UserErrorVmNotInDesirableState - VM がバックアップできる状態にありません
 
 エラー コード:UserErrorVmNotInDesirableState <br/>
 エラー メッセージ:VM はバックアップできる状態ではありません。<br/>
@@ -37,7 +38,7 @@ VM が [失敗] 状態にあるため、バックアップ操作に失敗しま�
 * VM が**実行**と**シャットダウン**の間の一時的な状態である場合は、状態が変わるのを待ちます。 その後、バックアップ ジョブをトリガーします。
 *  VM が Linux VM で、Security-Enhanced Linux カーネル モジュールが使用されている場合は、Azure Linux エージェントのパス **/var/lib/waagent** をセキュリティ ポリシーから除外して、Backup 拡張機能が確実にインストールされるようにします。
 
-### <a name="usererrorfsfreezefailed---failed-to-freeze-one-or-more-mount-points-of-the-vm-to-take-a-file-system-consistent-snapshot"></a>UserErrorFsFreezeFailed - ファイル システム整合性スナップショットの取得で VM の 1 つ以上のマウント ポイントの凍結に失敗しました
+## <a name="usererrorfsfreezefailed---failed-to-freeze-one-or-more-mount-points-of-the-vm-to-take-a-file-system-consistent-snapshot"></a>UserErrorFsFreezeFailed - ファイル システム整合性スナップショットの取得で VM の 1 つ以上のマウント ポイントの凍結に失敗しました
 
 エラー コード:UserErrorFsFreezeFailed <br/>
 エラー メッセージ:ファイル システム整合性スナップショットの取得で VM の 1 つ以上のマウント ポイントの凍結に失敗しました。
@@ -47,7 +48,7 @@ VM が [失敗] 状態にあるため、バックアップ操作に失敗しま�
 * **fsck** コマンドを使用して、これらのデバイスに対してファイル システム整合性チェックを実行します。
 * これらのデバイスを再度マウントし、バックアップ操作を再試行します。</ol>
 
-### <a name="extensionsnapshotfailedcom--extensioninstallationfailedcom--extensioninstallationfailedmdtc---extension-installationoperation-failed-due-to-a-com-error"></a>ExtensionSnapshotFailedCOM/ExtensionInstallationFailedCOM/ExtensionInstallationFailedMDTC - COM+ エラーのために拡張機能のインストール/操作に失敗しました
+## <a name="extensionsnapshotfailedcom--extensioninstallationfailedcom--extensioninstallationfailedmdtc---extension-installationoperation-failed-due-to-a-com-error"></a>ExtensionSnapshotFailedCOM/ExtensionInstallationFailedCOM/ExtensionInstallationFailedMDTC - COM+ エラーのために拡張機能のインストール/操作に失敗しました
 
 エラー コード:ExtensionSnapshotFailedCOM <br/>
 エラー メッセージ:COM+ エラーが発生したため、スナップショット操作に失敗しました
@@ -55,7 +56,8 @@ VM が [失敗] 状態にあるため、バックアップ操作に失敗しま�
 エラー コード:ExtensionInstallationFailedCOM  <br/>
 エラー メッセージ:COM+ エラーのために拡張機能のインストール/操作に失敗しました
 
-エラー コード:ExtensionInstallationFailedMDTC エラー メッセージ: "COM+: Microsoft 分散トランザクション コーディネーターと通信できませんでした" というエラーで拡張機能のインストールが失敗しました。
+エラー コード:ExtensionInstallationFailedMDTC <br/>
+エラー メッセージ:"COM+: Microsoft 分散トランザクション コーディネーターと通信できませんでした" というエラーで拡張機能のインストールが失敗しました。 <br/>
 
 Windows サービス **COM+ System** Application での問題のためにバックアップ操作に失敗しました。  この問題を解決するには、次の手順に従ってください。
 
@@ -69,7 +71,7 @@ Windows サービス **COM+ System** Application での問題のためにバッ�
     * MSDTC サービスを起動します
 * Windows サービス **COM+ システム アプリケーション**を開始します。 **COM+ システム アプリケーション**が開始したら、Azure portal からバックアップ ジョブをトリガーします。</ol>
 
-### <a name="extensionfailedvsswriterinbadstate---snapshot-operation-failed-because-vss-writers-were-in-a-bad-state"></a>ExtensionFailedVssWriterInBadState - VSS ライターが正しくない状態にあるため、スナップショット操作に失敗しました
+## <a name="extensionfailedvsswriterinbadstate---snapshot-operation-failed-because-vss-writers-were-in-a-bad-state"></a>ExtensionFailedVssWriterInBadState - VSS ライターが正しくない状態にあるため、スナップショット操作に失敗しました
 
 エラー コード:ExtensionFailedVssWriterInBadState <br/>
 エラー メッセージ:VSS ライターが正しくない状態にあるため、スナップショット操作に失敗しました。
@@ -79,7 +81,7 @@ Windows サービス **COM+ System** Application での問題のためにバッ�
   * ```net stop serviceName```
   * ```net start serviceName```
 
-### <a name="extensionconfigparsingfailure--failure-in-parsing-the-config-for-the-backup-extension"></a>ExtensionConfigParsingFailure - バックアップ拡張機能の構成の解析に失敗しました
+## <a name="extensionconfigparsingfailure--failure-in-parsing-the-config-for-the-backup-extension"></a>ExtensionConfigParsingFailure - バックアップ拡張機能の構成の解析に失敗しました
 
 エラー コード:ExtensionConfigParsingFailure<br/>
 エラー メッセージ:バックアップ拡張機能の構成の解析に失敗しました。
@@ -108,7 +110,7 @@ Windows サービス **COM+ System** Application での問題のためにバッ�
     * **[個人]**  >  **[証明書]** で、**発行先**がクラシック デプロイ モデルまたは **Windows Azure CRP Certificate Generator** であるすべての証明書を削除します。
 3. VM バックアップ ジョブをトリガーします。
 
-### <a name="extensionstuckindeletionstate---extension-state-is-not-supportive-to-backup-operation"></a>ExtensionStuckInDeletionState - 拡張機能の状態がバックアップ操作に対応していません
+## <a name="extensionstuckindeletionstate---extension-state-is-not-supportive-to-backup-operation"></a>ExtensionStuckInDeletionState - 拡張機能の状態がバックアップ操作に対応していません
 
 エラー コード:ExtensionStuckInDeletionState <br/>
 エラー メッセージ:拡張機能の状態がバックアップ操作に対応していません
@@ -121,7 +123,7 @@ Windows サービス **COM+ System** Application での問題のためにバッ�
 * バックアップ拡張機能の削除後、バックアップ操作を再試行します
 * 以降のバックアップ操作によって、新しい拡張機能が適切な状態でインストールされます
 
-### <a name="extensionfailedsnapshotlimitreachederror---snapshot-operation-failed-as-snapshot-limit-is-exceeded-for-some-of-the-disks-attached"></a>ExtensionFailedSnapshotLimitReachedError - 接続されている一部のディスクでスナップショットの制限を超えたため、スナップショット操作に失敗しました
+## <a name="extensionfailedsnapshotlimitreachederror---snapshot-operation-failed-as-snapshot-limit-is-exceeded-for-some-of-the-disks-attached"></a>ExtensionFailedSnapshotLimitReachedError - 接続されている一部のディスクでスナップショットの制限を超えたため、スナップショット操作に失敗しました
 
 エラー コード:ExtensionFailedSnapshotLimitReachedError  <br/>
 エラー メッセージ:接続されている一部のディスクでスナップショットの制限を超えたため、スナップショット操作に失敗しました
@@ -135,7 +137,7 @@ Windows サービス **COM+ System** Application での問題のためにバッ�
     * /etc/azure/vmbackup.conf で **isanysnapshotfailed** の値が false に設定されていることを確認します。
     * Azure Site Recovery をバックアップ操作と競合しないように別の時間にスケジュールします。
 
-### <a name="extensionfailedtimeoutvmnetworkunresponsive---snapshot-operation-failed-due-to-inadequate-vm-resources"></a>ExtensionFailedTimeoutVMNetworkUnresponsive - VM リソースの不足のためにスナップショット操作に失敗しました。
+## <a name="extensionfailedtimeoutvmnetworkunresponsive---snapshot-operation-failed-due-to-inadequate-vm-resources"></a>ExtensionFailedTimeoutVMNetworkUnresponsive - VM リソースの不足のためにスナップショット操作に失敗しました。
 
 エラー コード:ExtensionFailedTimeoutVMNetworkUnresponsive<br/>
 エラー メッセージ:VM リソースの不足のためにスナップショット操作に失敗しました。
@@ -157,7 +159,7 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v CalculateSnapshotTi
 
 **手順 3**:[VM のサイズの増加](https://azure.microsoft.com/blog/resize-virtual-machines/)を試み、操作を再試行します。
 
-### <a name="common-vm-backup-errors"></a>一般的な VM バックアップのエラー
+## <a name="common-vm-backup-errors"></a>一般的な VM バックアップのエラー
 
 | エラーの詳細 | 対処法 |
 | ------ | --- |
@@ -239,7 +241,7 @@ Windows VM 上で VM エージェントのバージョンを確認するには�
 ## <a name="troubleshoot-vm-snapshot-issues"></a>VM スナップショットに関する問題のトラブルシューティング
 VM のバックアップは、基礎をなすストレージへのスナップショット コマンドの発行に依存します。 ストレージにアクセスできなかったり、スナップショット タスクの実行が遅延したりすると、バックアップ ジョブが失敗することがあります。 次の場合にスナップショットのタスクが失敗することがあります。
 
-- **NSG を使用してストレージへのネットワーク アクセスがブロックされています**。 IP のホワイトリスト登録またはプロキシ サーバーを使用してストレージへの[ネットワーク アクセスを有効にする](backup-azure-arm-vms-prepare.md#establish-network-connectivity)方法の詳細を参照してください。
+- **NSG を使用してストレージへのネットワーク アクセスがブロックされています**。 IP の許可リストまたはプロキシ サーバーを使用してストレージへの[ネットワーク アクセスを有効にする](backup-azure-arm-vms-prepare.md#establish-network-connectivity)方法の詳細を参照してください。
 - **SQL Server のバックアップが構成されている VM はスナップショット タスクの遅延を引き起こすことがあります**。 既定では、VM バックアップによって Windows VM 上に VSS フル バックアップが作成されます。 SQL Server を実行していて SQL Server のバックアップを構成されている VM では、スナップショットの遅延が発生する可能性があります。 スナップショットの遅延が原因でバックアップが失敗する場合は、次のレジストリ キーを設定します。
 
    ```
@@ -262,8 +264,8 @@ Backup 拡張機能は、他の拡張機能と同様に、パブリックなイ�
 
 名前解決が正しく実行された後で、Azure IP へのアクセスも提供する必要があります。 Azure インフラストラクチャへのアクセスのブロックを解除するには、次のいずれかの手順に従います。
 
-- Azure データ センターの IP の範囲をホワイトリストに登録します。
-   1. ホワイトリストに登録する [Azure データセンター IP](https://www.microsoft.com/download/details.aspx?id=41653) の一覧を取得します。
+- Azure データセンターの IP 範囲の許可リスト:
+   1. 許可リストに登録する [Azure データセンター IP](https://www.microsoft.com/download/details.aspx?id=41653) の一覧を取得します。
    1. [New-NetRoute](https://docs.microsoft.com/powershell/module/nettcpip/new-netroute) コマンドレットを使用して、IP アドレスのブロックを解除します。 管理者特権の PowerShell ウィンドウで、Azure VM 内でこのコマンドレットを実行します。 管理者として実行します。
    1. NSG を使用している場合は、規則を NSG に追加して IP にアクセスできるようにします。
 - フローに対する HTTP トラフィック用のパスを作成します。

@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 931e44f85131e8cbdd7aecddd6398f6f59d1b166
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 90577ea9f24bc5f36113bc1bdb913949772325c9
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64937288"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66305501"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Azure Active Directory の新着情報のアーカイブ
 
@@ -213,7 +213,7 @@ SAML ベースのアプリの構成 UI が更新された一部として、以�
 
 - SAML アプリの NameID 形式を設定する方法と、ディレクトリ拡張機能として NameID 値を設定する方法。
 
-この更新されたビューをオンにするには、**[シングル サインオン]** ページ上部の **[Try out our new experience] (新しいエクスペリエンスを試す)** リンクをクリックします。 詳細については、「[チュートリアル:Azure Active Directory による SAML ベースのシングル サインオンをアプリケーションに構成する](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-single-sign-on-portal)」を参照してください。
+この更新されたビューをオンにするには、 **[シングル サインオン]** ページ上部の **[Try out our new experience] (新しいエクスペリエンスを試す)** リンクをクリックします。 詳細については、「[チュートリアル:Azure Active Directory による SAML ベースのシングル サインオンをアプリケーションに構成する](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-single-sign-on-portal)」を参照してください。
 
 ---
 
@@ -483,7 +483,7 @@ Azure AD Connect の最新リリースは次のとおりです。
 
 ---
 
-### <a name="updates-to-the-terms-of-use-tou-end-user-ui"></a>使用条件 (ToU) エンドユーザー UI の更新
+### <a name="updates-to-the-terms-of-use-end-user-ui"></a>使用条件エンドユーザー UI の更新
 
 **種類:** 変更された機能  
 **サービス カテゴリ:** 使用条件  
@@ -557,10 +557,10 @@ TOU エンドユーザー UI の同意の文字列を更新しています。
 
 **アプリのアクセス許可を更新するには**
 
-1. Azure Portal にサインインし、**[Azure Active Directory]** を選択してから **[アプリの登録]** を選択します。
-2. Azure AD アクティビティ ログ API を使用しているアプリを選択して **[設定]** を選択し、**[必要なアクセス許可]** を選んでから、**[Windows Azure Active Directory]** API を選択します。
-3. **[アクセスの有効化]** ブレードの **[委任されたアクセス許可]** 領域で、**[ディレクトリ データの読み取り]** チェック ボックスをオンにして、**[保存]** を選択します。
-4. **[アクセス許可の付与]** を選択し、**[はい]** を選択します。
+1. Azure Portal にサインインし、 **[Azure Active Directory]** を選択してから **[アプリの登録]** を選択します。
+2. Azure AD アクティビティ ログ API を使用しているアプリを選択して **[設定]** を選択し、 **[必要なアクセス許可]** を選んでから、 **[Windows Azure Active Directory]** API を選択します。
+3. **[アクセスの有効化]** ブレードの **[委任されたアクセス許可]** 領域で、 **[ディレクトリ データの読み取り]** チェック ボックスをオンにして、 **[保存]** を選択します。
+4. **[アクセス許可の付与]** を選択し、 **[はい]** を選択します。
     
     >[!Note]
     >アプリへのアクセス許可の付与は、全体管理者が行う必要があります。
@@ -579,28 +579,28 @@ TOU エンドユーザー UI の同意の文字列を更新しています。
 
 [PCI Security Standards Council](https://www.pcisecuritystandards.org/) は、**2018 年 6 月 30 日**に開始されたコンプライアンスに沿って、新しいより安全なアプリ プロトコルを有効にして、初期バージョンの TLS および Secure Sockets Layer (SSL) を無効化する必要があることを決定しました。 この変更は、Azure AD サービスに接続し、PCI DSS コンプライアンスを必要とする場合には、TLS 1.0 を無効にしなければならないことを意味します。 複数のバージョンの TLS が使用可能ですが、TLS 1.2 は Azure Active Directory Services に利用できる最新バージョンです。 クライアント/サーバーおよびブラウザー/サーバーの両方の組み合わせにおいて、TLS 1.2 に直接移行することを強くお勧めします。
 
-古いブラウザーでは、TLS 1.2 などの新しい TLS バージョンがサポートされない可能性があります。 お使いのブラウザーでどの TLS バージョンがサポートされるかを確認するには、[Qualys SSL Labs](https://www.ssllabs.com/) サイトへ移動して、**[Test your browser]** をクリックします。 お使いの Web ブラウザーを最新バージョンにアップグレードして、可能であれば TLS 1.2 のみを有効にすることをお勧めします。
+古いブラウザーでは、TLS 1.2 などの新しい TLS バージョンがサポートされない可能性があります。 お使いのブラウザーでどの TLS バージョンがサポートされるかを確認するには、[Qualys SSL Labs](https://www.ssllabs.com/) サイトへ移動して、 **[Test your browser]** をクリックします。 お使いの Web ブラウザーを最新バージョンにアップグレードして、可能であれば TLS 1.2 のみを有効にすることをお勧めします。
 
 **TLS 1.2 を有効にするために、ブラウザーで実行する手順**
 
 - **Microsoft Edge および Internet Explorer (いずれも、Internet Explorer を使用して設定される)**
 
-    1. Internet Explorer を開き、**[ツール]** > **[インターネット オプション]** > **[詳細]** の順に選択します。
-    2. **[セキュリティ]** 領域で、**[use TLS 1.2]\(TLS 1.2 を使用する\)** を選択して、**[OK]** をクリックします。
+    1. Internet Explorer を開き、 **[ツール]**  >  **[インターネット オプション]**  >  **[詳細]** の順に選択します。
+    2. **[セキュリティ]** 領域で、 **[use TLS 1.2]\(TLS 1.2 を使用する\)** を選択して、 **[OK]** をクリックします。
     3. すべてのブラウザー ウィンドウを閉じて、Internet Explorer を再起動します。 
 
 - **Google Chrome**
 
-    1. Google Chrome を開き、「*chrome://settings/*」とアドレス バーに入力して、**Enter** キーを押します。
-    2. **[詳細]** オプションを展開し、**[システム]** 領域へ移動して、**[プロキシ セットアップを開く]** を選択します。
-    3. **[インターネットのプロパティ]** ボックスで、**[詳細]** タブを選択し、**[セキュリティ]** 領域へ移動して、**[use TLS 1.2]\(TLS 1.2 を使用する\)** を選択してから、**[OK]** をクリックします。
+    1. Google Chrome を開き、「*chrome://settings/* 」とアドレス バーに入力して、**Enter** キーを押します。
+    2. **[詳細]** オプションを展開し、 **[システム]** 領域へ移動して、 **[プロキシ セットアップを開く]** を選択します。
+    3. **[インターネットのプロパティ]** ボックスで、 **[詳細]** タブを選択し、 **[セキュリティ]** 領域へ移動して、 **[use TLS 1.2]\(TLS 1.2 を使用する\)** を選択してから、 **[OK]** をクリックします。
     4. すべてのブラウザー ウィンドウを閉じて、Google Chrome を再起動します。
 
 - **Mozilla Firefox**
 
     1. Firefox を開き、アドレス バーに「*about:config*」と入力してから、**Enter** キーを押します。
     2. *TLS* という語句を検索して、**security.tls.version.max** エントリを選択します。
-    3. 値を **3** に設定して、ブラウザーでバージョン TLS 1.2 までを使用するように設定し、**[OK]** をクリックします。
+    3. 値を **3** に設定して、ブラウザーでバージョン TLS 1.2 までを使用するように設定し、 **[OK]** をクリックします。
 
         >[!NOTE]
         >Firefox バージョン 60.0 では TLS 1.3 をサポートしているため、security.tls.version.max の値を **4** に設定することもできます。
@@ -641,25 +641,25 @@ Azure AD Password Protection の詳細については、「[組織内の不適�
 
 ---
 
-### <a name="new-all-guests-conditional-access-policy-template-created-during-terms-of-use-tou-creation"></a>使用条件 (ToU: Terms of Use) の作成時に作成された、新しい "すべてのゲスト" 条件付きアクセス ポリシー テンプレート
+### <a name="new-all-guests-conditional-access-policy-template-created-during-terms-of-use-creation"></a>使用条件の作成中に作成された、新しい "すべてのゲスト" 条件付きアクセス ポリシー テンプレート
 
 **種類:** 新機能  
 **サービス カテゴリ:** 使用条件  
 **製品の機能:** ガバナンス
 
-使用条件 (ToU) の作成時に、"すべてのゲスト" および "すべてのアプリ" 用の新しい条件付きアクセス ポリシー テンプレートも作成されます。 この新しいポリシー テンプレートでは、新しく作成された ToU を適用し、ゲストの作成および強制プロセスを合理化します。
+使用条件の作成中に、"すべてのゲスト" と "すべてのアプリ" のための新しい条件付きアクセス ポリシー テンプレートも作成されます。 この新しいポリシー テンプレートでは、新しく作成された ToU を適用し、ゲストの作成および強制プロセスを合理化します。
 
 詳しくは、「[Azure Active Directory Terms of Use 機能](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use)」を参照してください。
 
 ---
 
-### <a name="new-custom-conditional-access-policy-template-created-during-terms-of-use-tou-creation"></a>使用条件 (ToU) の作成時に作成された、新しい "カスタム" 条件付きアクセス ポリシー テンプレート
+### <a name="new-custom-conditional-access-policy-template-created-during-terms-of-use-creation"></a>使用条件の作成中に作成された、新しい "カスタム" 条件付きアクセス ポリシー テンプレート
 
 **種類:** 新機能  
 **サービス カテゴリ:** 使用条件  
 **製品の機能:** ガバナンス
 
-使用条件 (ToU) の作成時に、新しい "カスタム" 条件付きアクセス ポリシー テンプレートも作成されます。 この新しいポリシー テンプレートでは、ToU を作成してから、すぐに条件付きアクセス ポリシーの作成ブレードに移動できます。ポータル経由で、手動で移動する必要はありません。
+使用条件の作成中に、新しい "カスタム" 条件付きアクセス ポリシー テンプレートも作成されます。 この新しいポリシー テンプレートでは、ToU を作成してから、すぐに条件付きアクセス ポリシーの作成ブレードに移動できます。ポータル経由で、手動で移動する必要はありません。
 
 詳しくは、「[Azure Active Directory Terms of Use 機能](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use)」を参照してください。
 
@@ -699,7 +699,7 @@ MFA のデプロイ ガイドを表示するには、GitHub の [Identity Deploy
 
     - **エンタープライズ アプリ所有者。** SSO 設定、アプリの割り当て、および承認 (Azure AD リソースを除く) を含め、所有するエンタープライズ アプリの多くの側面を管理する権限が付与されます。
 
-パブリック プレビューの詳細については、ブログ「[Azure AD delegated application management roles are in public preview!](https://cloudblogs.microsoft.com/enterprisemobility/2018/06/13/hallelujah-azure-ad-delegated-application-management-roles-are-in-public-preview/)」(Azure AD の委任されたアプリケーション管理ロールをパブリック プレビューで確認しよう!)  を参照してください。 ロールとアクセス許可の詳細については、「[Azure Active Directory の管理者ロールの割り当て](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal)」を参照してください。
+パブリック プレビューの詳細については、ブログ「[Azure AD delegated application management roles are in public preview!](https://cloudblogs.microsoft.com/enterprisemobility/2018/06/13/hallelujah-azure-ad-delegated-application-management-roles-are-in-public-preview/)」(Azure AD の委任されたアプリケーション管理ロールをパブリック プレビューで確認しよう!) を参照してください。 ロールとアクセス許可の詳細については、「[Azure Active Directory の管理者ロールの割り当て](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal)」を参照してください。
 
 ---
 
@@ -729,7 +729,7 @@ Azure Active Directory (Azure AD) などのサービスとしてのソフトウ�
 **サービス カテゴリ:** 使用条件  
 **製品の機能:** 開発者エクスペリエンス
  
-Azure AD Terms of Use を管理するための Microsoft Graph API が追加されました。 使用条件オブジェクトを作成、更新、または削除できます。
+Azure AD Terms of Use の管理操作のための Microsoft Graph API が追加されました。 使用条件オブジェクトを作成、更新、削除できます。
 
 ---
 
@@ -916,7 +916,7 @@ SAML ベースの SSO アプリケーションを構成するときに、構成�
  
 ### <a name="azure-ad-terms-of-use-now-has-per-user-reporting"></a>Azure AD Terms of Use にユーザーごとのレポートが設けられた
 
-**タイプ:** 新機能  
+**種類:** 新機能  
 **サービス カテゴリ:** 使用条件  
 **製品の機能:** コンプライアンス
  
@@ -963,7 +963,7 @@ Connect Health で、U/P ログインの失敗のしきい値を超える IP ア
 **製品の機能:** コンプライアンス
  
 
-Azure AD Terms of Use がパブリック プレビューから一般公開になりました。
+Azure AD Terms of Use がパブリック プレビューから一般公開に移動されました。
 
 詳細については、[Azure AD Terms of Use 機能](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use)に関するページを参照してください。
 
@@ -1020,7 +1020,7 @@ Azure Active Directory (Azure AD) B2B コラボレーション機能を使用し
 **サービス カテゴリ:** その他  
 **製品の機能:** サード パーティ統合
 
-[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps?page=1) にリストされているアプリケーションが SAML ベースのシングル サインオンをサポートしている場合、**[今すぐ入手する]** をクリックすると、そのアプリケーションに関連する統合チュートリアルが表示されます。 
+[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps?page=1) にリストされているアプリケーションが SAML ベースのシングル サインオンをサポートしている場合、 **[今すぐ入手する]** をクリックすると、そのアプリケーションに関連する統合チュートリアルが表示されます。 
 
 ---
 
@@ -1463,9 +1463,9 @@ Azure AD とオンプレミス データ ソース (Windows Server Active Direct
 
 ---
 
-### <a name="terms-of-use-update-to-mobile-experience"></a>モバイル エクスペリエンス向けに使用条件を更新 
+### <a name="terms-of-use-update-to-mobile-experience"></a>使用条件のモバイル エクスペリエンスへの更新 
 
-**タイプ:** 変更された機能  
+**種類:** 変更された機能  
 **サービス カテゴリ:** 使用条件  
 **製品の機能:** コンプライアンス
 
@@ -1511,7 +1511,7 @@ Azure AD Premium P1 エディションでは、ライセンスに含まれない
 **サービス カテゴリ:** マイ アプリ  
 **製品の機能:** SSO
 
-新しいユーザー設定を使用することで、ユーザーのアクセス パネルで Office 365 アプリケーションを表示する方法が管理しやすくなりました。 このオプションは、Office ポータルでのみ Office アプリを表示する場合に、ユーザーのアクセス パネル内のアプリ数を減らすのに役立ちます。 この設定は **[ユーザー設定]** 内にあり、**[ユーザーは Office 365 ポータルでのみ Office 365 アプリを表示できる]** というラベルが付いています。
+新しいユーザー設定を使用することで、ユーザーのアクセス パネルで Office 365 アプリケーションを表示する方法が管理しやすくなりました。 このオプションは、Office ポータルでのみ Office アプリを表示する場合に、ユーザーのアクセス パネル内のアプリ数を減らすのに役立ちます。 この設定は **[ユーザー設定]** 内にあり、 **[ユーザーは Office 365 ポータルでのみ Office 365 アプリを表示できる]** というラベルが付いています。
 
 詳細については、「[Azure Active Directory でユーザーのエクスペリエンスからアプリケーションを非表示にする](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-hide-third-party-app)」をご覧ください。
 
@@ -1552,7 +1552,7 @@ Azure AD Premium P1 エディションでは、ライセンスに含まれない
  
 2018 年 1 月 8日に、PhoneFactor Web ポータルは廃止されました。 このポータルは、MFA サーバーの管理に使用されていましたが、これらの機能は portal.azure.com の Azure Portal に移行しました。 
 
-MFA の構成は、**[Azure Active Directory] \> [MFA サーバー]** にあります。
+MFA の構成は、 **[Azure Active Directory] \> [MFA サーバー]** にあります。
  
 ---
  
@@ -1593,7 +1593,7 @@ MFA の構成は、**[Azure Active Directory] \> [MFA サーバー]** にあり�
 
 2. 右上隅に表示されるご自身の名前をクリックし、一覧から **[プロファイル]** を選択します。 
 
-3. **[プロファイル]** で、**[使用条件の確認]** を選択します。 
+3. **[プロファイル]** で、 **[使用条件の確認]** を選択します。 
 
 4. 承認した使用条件を確認できます。 
 
@@ -2035,7 +2035,7 @@ Azure RBAC 機能を利用する Azure Portal 内のすべてのリソースで�
 **サービス カテゴリ:** マイ アプリ  
 **製品の機能:** シングル サインオン  
 
-新しい**アプリの非表示**プロパティにより、ご利用のユーザー ポータルに表示されるアプリを管理しやすくなりました。 アプリの非表示は、バックエンド サービス用のアプリ タイルが表示されていたり、タイルが重複してユーザーのアプリ ランチャーが整理されていなかったりする場合に役立ちます。 切り替えボタンはサード パーティ製アプリの **[プロパティ]** セクションにあり、**[Visible to user?]\(ユーザーに表示しますか?\)** というラベルが付いています。 PowerShell を介してプログラムでアプリを非表示にすることもできます。 
+新しい**アプリの非表示**プロパティにより、ご利用のユーザー ポータルに表示されるアプリを管理しやすくなりました。 アプリの非表示は、バックエンド サービス用のアプリ タイルが表示されていたり、タイルが重複してユーザーのアプリ ランチャーが整理されていなかったりする場合に役立ちます。 切り替えボタンはサード パーティ製アプリの **[プロパティ]** セクションにあり、 **[Visible to user?]\(ユーザーに表示しますか?\)** というラベルが付いています。 PowerShell を介してプログラムでアプリを非表示にすることもできます。 
 
 詳細については、[Azure AD でユーザーのエクスペリエンスからサードパーティ製アプリケーションを非表示にする](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-hide-third-party-app)方法に関するページをご覧ください。 
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/01/2019
 ms.author: tomfitz
-ms.openlocfilehash: bbbaef306b9ed2bb415b29bc6d96dcfe649338f9
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 95044373800441bdcc04bdb84e8485dce29f11e7
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205939"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357399"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Azure リソース デプロイ時のリンクされたテンプレートおよび入れ子になったテンプレートの使用
 
@@ -91,7 +91,7 @@ ms.locfileid: "65205939"
 > [!NOTE]
 > 入れ子になったテンプレートの場合、入れ子になったテンプレート内に定義されている変数またはパラメーターは使用できません。 パラメーターと変数は、メイン テンプレートから使用できます。 上の例では、`[variables('storageName')]` は、入れ子になったテンプレートではなく、メイン テンプレートから値を取得します。 この制限は、外部テンプレートには適用されません。
 >
-> 入れ子テンプレート内で定義された 2 つのリソースがあり、一方のリソースが他方のリソースに依存している場合、依存関係の値は単に依存先リソースの名前になります。
+> 入れ子になったテンプレート内で定義された 2 つのリソースがあり、一方のリソースが他方のリソースに依存している場合、依存関係の値は単に依存先リソースの名前になります。
 > ```json
 > "dependsOn": [
 >   "[variables('storageAccountName')]"

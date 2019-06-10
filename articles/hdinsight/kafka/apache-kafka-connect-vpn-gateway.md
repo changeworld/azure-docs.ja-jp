@@ -7,13 +7,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/06/2018
-ms.openlocfilehash: 93b5aeafafdc6ab7ee233f6360bb5e09f45b387f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 05/28/2019
+ms.openlocfilehash: ddff9ffb00f4167cb8f64a75b129711467de739d
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64708822"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66297062"
 ---
 # <a name="connect-to-apache-kafka-on-hdinsight-through-an-azure-virtual-network"></a>Azure Virtual Network 経由で HDInsight 上の Apache Kafka に接続する
 
@@ -85,7 +85,7 @@ Kafka クライアントがオンプレミスからクラスターへ接続で�
 
 1. [ポイント対サイト接続での自己署名証明書の使用](../../vpn-gateway/vpn-gateway-certificates-point-to-site.md)に関する記事の手順を実行します。 このドキュメントでは、ゲートウェイに必要な証明書を作成しています。
 
-2. PowerShell プロンプトを開き、次のコードを使用して Azure サブスクリプションにログインします。
+2. PowerShell プロンプトを開き、次のコードを使用して Azure サブスクリプションにサインインします。
 
     ```powershell
     Connect-AzAccount
@@ -197,8 +197,10 @@ Kafka クライアントがオンプレミスからクラスターへ接続で�
     New-AzStorageAccount `
         -ResourceGroupName $resourceGroupName `
         -Name $storageName `
-        -Type Standard_GRS `
-        -Location $location
+        -SkuName Standard_GRS `
+        -Location $location `
+        -Kind StorageV2 `
+        -EnableHttpsTrafficOnly 1
 
     # Get the storage account keys and create a context
     $defaultStorageKey = (Get-AzStorageAccountKey -ResourceGroupName $resourceGroupName `
@@ -240,7 +242,7 @@ Kafka クライアントがオンプレミスからクラスターへ接続で�
 
 既定では、Apache Zookeeper は、Kafka ブローカーのドメイン名をクライアントに返します。 この構成では、仮想ネットワーク内のエンティティに対して名前解決を使用できないため、VPN ソフトウェア クライアントは使用できません。 このように構成する場合は、次の手順を実行して、ドメイン名ではなく IP アドレスを提供するように Kafka を構成します。
 
-1. Web ブラウザーを使用し、 https://CLUSTERNAME.azurehdinsight.net にアクセスします。 __CLUSTERNAME__ を HDInsight クラスター上の Kafka の名前に置き換えます。
+1. Web ブラウザーを使用し、`https://CLUSTERNAME.azurehdinsight.net` にアクセスします。 `CLUSTERNAME` を HDInsight クラスター上の Kafka の名前に置き換えます。
 
     プロンプトが表示されたら、クラスターの HTTPS ユーザー名とパスワードを入力します。 クラスターの Ambari Web UI が表示されます。
 
@@ -268,21 +270,21 @@ Kafka クライアントがオンプレミスからクラスターへ接続で�
 
 6. Kafka がリッスンするインターフェイスを構成するには、右上の __[Filter (フィルター)]__ フィールドに「`listeners`」と入力します。
 
-7. すべてのネットワーク インターフェイスをリッスンするように Kafka を構成するには、__[listeners (リスナー)]__ フィールドの値を `PLAINTEXT://0.0.0.0:9092`に変更します。
+7. すべてのネットワーク インターフェイスをリッスンするように Kafka を構成するには、 __[listeners (リスナー)]__ フィールドの値を `PLAINTEXT://0.0.0.0:9092`に変更します。
 
-8. 構成を保存するには、__[Save (保存)]__ ボタンを使用します。 変更を説明するテキスト メッセージを入力します。 変更が保存されたら、__[OK]__ を保存します。
+8. 構成を保存するには、 __[Save (保存)]__ ボタンを使用します。 変更を説明するテキスト メッセージを入力します。 変更が保存されたら、 __[OK]__ を保存します。
 
     ![構成を保存するボタン](./media/apache-kafka-connect-vpn-gateway/save-button.png)
 
-9. Kafka の再起動時にエラーが発生しないようにするため、__[Service Actions (サービス アクション)__] ボタンを使用して __[Turn On Maintenance Mode (メンテナンス モードの有効化)]__ を選択します。 [OK] を選択して、この操作を完了します。
+9. Kafka の再起動時にエラーが発生しないようにするため、 __[Service Actions (サービス アクション)__ ] ボタンを使用して __[Turn On Maintenance Mode (メンテナンス モードの有効化)]__ を選択します。 [OK] を選択して、この操作を完了します。
 
     ![[Turn On Maintenance Mode (メンテナンス モードの有効化)] が強調表示されているサービス アクション](./media/apache-kafka-connect-vpn-gateway/turn-on-maintenance-mode.png)
 
-10. Kafka を再起動するには、__[Restart (再起動)]__ ボタンをクリックし、__[Restart All Affected (影響を受けるものをすべて再起動)]__ を選択します。 再起動を確認し、操作が完了したら __[OK]__ ボタンを使用します。
+10. Kafka を再起動するには、 __[Restart (再起動)]__ ボタンをクリックし、 __[Restart All Affected (影響を受けるものをすべて再起動)]__ を選択します。 再起動を確認し、操作が完了したら __[OK]__ ボタンを使用します。
 
     ![[Restart All Affected (影響を受けるものをすべて再起動)] が強調表示されている [Restart (再起動)] ボタン](./media/apache-kafka-connect-vpn-gateway/restart-button.png)
 
-11. メンテナンス モードを無効にするには、__[Service Actions (サービス アクション)]__ ボタンをクリックし、__[Turn Off Maintenance Mode (メンテナンス モードの無効化)]__ を選択します。 **[OK]** を選択して、この操作を完了します。
+11. メンテナンス モードを無効にするには、 __[Service Actions (サービス アクション)]__ ボタンをクリックし、 __[Turn Off Maintenance Mode (メンテナンス モードの無効化)]__ を選択します。 **[OK]** を選択して、この操作を完了します。
 
 ### <a name="connect-to-the-vpn-gateway"></a>VPN ゲートウェイに接続する
 
@@ -320,7 +322,9 @@ Kafka への接続を検証するには、次の手順に従って Python プロ
 
 2. 次のコマンドを使用して、[kafka-python](https://kafka-python.readthedocs.io/) クライアントをインストールします。
 
-        pip install kafka-python
+    ```bash
+    pip install kafka-python
+    ```
 
 3. データを Kafka に送信するには、次の Python コードを使用します。
 

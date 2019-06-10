@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/20/2017
-ms.openlocfilehash: eaeb2b4decc7da4caa75cb2af68829b4bf7ce64d
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.openlocfilehash: 7be57733f9bb5936747c77aa06bde3397eb84fa1
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59563848"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66302898"
 ---
 # <a name="programmatically-create-a-stream-analytics-job-monitor"></a>Stream Analytics ジョブ モニターをプログラムで作成する
 
@@ -24,7 +24,7 @@ ms.locfileid: "59563848"
 
 このプロセスを開始する前に、以下の前提条件を満たしている必要があります。
 
-* Visual Studio 2017 または 2015
+* Visual Studio 2019 または 2015
 * [Azure .NET SDK](https://azure.microsoft.com/downloads/) のダウンロードとインストール
 * 監視を有効にする必要がある、既存の Stream Analytics ジョブ
 

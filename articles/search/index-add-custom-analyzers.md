@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: e9daebf46093e38858feff87ca5c4ba89638aa74
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: b670b5aeffcd699226a088d8db21a12dbaf40042
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65951910"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242808"
 ---
 # <a name="add-custom-analyzers-to-an-azure-search-index"></a>Azure Search のインデックスにカスタム アナライザーを追加する
 
@@ -227,6 +227,9 @@ PUT https://[search service name].search.windows.net/indexes/[index name]?api-ve
 |トークナイザー|必須。 下記の[トークナイザー](#Tokenizers)の表に列記されている定義済みのトークナイザーのいずれか、またはインデックスの定義で指定されているカスタム トークナイザーに設定します。|  
 |TokenFilters|[トークン フィルター](#TokenFilters)の表に列記されている定義済みのトークン フィルターのいずれか、またはインデックスの定義で指定されているカスタム トークン フィルターに設定します。|  
 
+> [!NOTE]
+> 300 文字より長いトークンが生成されないように、カスタム アナライザーを構成する必要があります。 そのようなトークンがあると、ドキュメントのインデックス付けが失敗します。 それらをトリミングまたは無視するには、それぞれ **TruncateTokenFilter** および **LengthTokenFilter** を使用します。  参考として、「[**トークン フィルター**](#TokenFilters)」を確認してください。
+
 <a name="CharFilter"></a>
 
 ### <a name="char-filters"></a>文字フィルター
@@ -319,7 +322,7 @@ analyzer_type は、カスタマイズ可能なアナライザーに対しての
 | microsoft_language_stemming_tokenizer | MicrosoftLanguageStemmingTokenizer| 言語固有のルールを使用してテキストが分割され、基本フォームに単語が減らされます<br /><br /> **オプション**<br /><br />maxTokenLength (型: int) - 最大トークン長、既定値は255、最大値は300。 最大長より長いトークンは分割されます。 300 文字より長いトークンは、最初に長さ 300 文字のトークンに分割された後、設定されている maxTokenLength に基づいて各トークンが分割されます。<br /><br /> isSearchTokenizer (型: bool) - 検索トークナイザーとして使用する場合は true に設定し、インデックス付けトークナイザーとして使用する場合は false に設定します。<br /><br /> language (型: string) - 使用する言語。既定値は "english" です。 使用できる値は、以下のとおりです。<br />"arabic"、"bangla"、"bulgarian"、"catalan"、"croatian"、"czech"、"danish"、"dutch"、"english"、"estonian"、"finnish"、"french"、"german"、"greek"、"gujarati"、"hebrew"、"hindi"、"hungarian"、"icelandic"、"indonesian"、"italian"、"kannada"、"latvian"、"lithuanian"、"malay"、"malayalam"、"marathi"、"norwegianBokmaal"、"polish"、"portuguese"、"portugueseBrazilian"、"punjabi"、"romanian"、"russian"、"serbianCyrillic"、"serbianLatin"、"slovak"、"slovenian"、"spanish"、"swedish"、"tamil"、"telugu"、"turkish"、"ukrainian"、"urdu" |
 |[nGram](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/ngram/NGramTokenizer.html)|NGramTokenizer|入力が指定サイズの n グラムにトークン化されます。<br /><br /> **オプション**<br /><br /> minGram (型: int) - 既定値:1、最大値:300。<br /><br /> maxGram (型: int) - 既定値:2、最大値:300。 minGram より大きい値にする必要があります。 <br /><br /> tokenChars (型: string 配列) - トークン内で維持する文字クラス。 使用できる値: "letter"、"digit"、"whitespace"、"punctuation"、"symbol"。 既定値は空の配列で、すべての文字が維持されます。 |  
 |[path_hierarchy_v2](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/path/PathHierarchyTokenizer.html)|PathHierarchyTokenizerV2|パスのような階層のトークナイザー。<br /><br /> **オプション**<br /><br /> delimiter (型: string) - 既定値: '/。<br /><br /> replacement (型: string) - 設定した場合、区切り記号文字が置き換えられます。 既定値は、delimiter の値と同じです。<br /><br /> maxTokenLength (型: int) - 最大トークン長。 既定値は300、最大値は300。 maxTokenLength より長いパスは無視されます。<br /><br /> reverse (型: bool) - true の場合、逆の順序でトークンが生成されます。 既定値は false です。<br /><br /> skip (型: bool) - スキップする最初のトークン。 既定値は 0 です。|  
-|[pattern](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/pattern/PatternTokenizer.html)|PatternTokenizer|このトークナイザーでは、正規表現のパターン マッチングを使用して個別のトークンが作成されます。<br /><br /> **オプション**<br /><br /> pattern (型: string) - 正規表現パターン。 既定値は \w+ です。<br /><br /> [flags](https://docs.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html#field_summary) (型: string) - 正規表現フラグ。 既定値は空の文字列です。 使用できる値は以下の通りです。CANON_EQ、CASE_INSENSITIVE、COMMENTS、DOTALL、LITERAL、MULTILINE、UNICODE_CASE、UNIX_LINES<br /><br /> group (型: int) - トークンの抽出に使用するグループ。 既定値は -1 (分割) です。|  
+|[pattern](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/pattern/PatternTokenizer.html)|PatternTokenizer|このトークナイザーでは、正規表現のパターン マッチングを使用して個別のトークンが作成されます。<br /><br /> **オプション**<br /><br /> [pattern](https://docs.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html) (型: string) - 正規表現パターン。 既定値は \W+ です。 <br /><br /> [flags](https://docs.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html#field_summary) (型: string) - 正規表現フラグ。 既定値は空の文字列です。 使用できる値は以下の通りです。CANON_EQ、CASE_INSENSITIVE、COMMENTS、DOTALL、LITERAL、MULTILINE、UNICODE_CASE、UNIX_LINES<br /><br /> group (型: int) - トークンの抽出に使用するグループ。 既定値は -1 (分割) です。|
 |[standard_v2](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/standard/StandardTokenizer.html)|StandardTokenizerV2|[Unicode テキスト セグメント化ルール](https://unicode.org/reports/tr29/)に従ってテキストを分割します。<br /><br /> **オプション**<br /><br /> maxTokenLength (型: int) - 最大トークン長。 既定値は255、最大値は300。 最大長より長いトークンは分割されます。|  
 |[uax_url_email](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/standard/UAX29URLEmailTokenizer.html)|UaxUrlEmailTokenizer|URL と電子メールが 1 つのトークンとしてトークン化されます。<br /><br /> **オプション**<br /><br /> maxTokenLength (型: int) - 最大トークン長。 既定値は255、最大値は300。 最大長より長いトークンは分割されます。|  
 |[whitespace](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/core/WhitespaceTokenizer.html)|(種類は、オプションが使用可能な場合にだけ適用されます) |空白文字によりテキストが分割されます。 255 文字より長いトークンは分割されます。|  
@@ -377,9 +380,6 @@ analyzer_type は、カスタマイズ可能なアナライザーに対しての
 |[word_delimiter](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/miscellaneous/WordDelimiterFilter.html)|WordDelimiterTokenFilter|単語がサブ単語に分割され、部分語のグループに対してオプションの変換が実行されます。<br /><br /> **オプション**<br /><br /> generateWordParts (型: bool) - 単語が部分ごとに生成されます。たとえば、"AzureSearch" は "Azure" "Search" になります。 既定値は true です。<br /><br /> generateNumberParts (型: bool) - 数字のサブ単語が生成されます。 既定値は true です。<br /><br /> catenateWords (型: bool) - 単語部分の最大の連続が連結されます。たとえば、"Azure-Search" は "AzureSearch" になります。 既定値は false です。<br /><br /> catenateNumbers (型: bool) - 数字部分の最大の連続が連結されます。たとえば、"1-2" は "12" になります。 既定値は false です。<br /><br /> catenateAll (型: bool) - すべてのサブ単語部分が連結されます。たとえば、"Azure-Search-1" は "AzureSearch1" になります。 既定値は false です。<br /><br /> splitOnCaseChange (型: bool) - true の場合、大文字と小文字が変わったところで単語が分割されます。たとえば、"AzureSearch" は "Azure" "Search" になります。 既定値は true です。<br /><br /> preserveOriginal - 元の単語が維持され、サブ単語リストに追加されます。 既定値は false です。<br /><br /> splitOnNumerics (型: bool) - true の場合、数字で分割されます。たとえば、"Azure1Search" は "Azure" "1" "Search" になります。 既定値は true です。<br /><br /> stemEnglishPossessive (型: bool) - 各サブ単語で、末尾の "'s" が削除されます。 既定値は true です。<br /><br /> protectedWords (型: string 配列) - 区切られないように保護するトークン。 既定値は空のリストです。|  
 
  <sup>1</sup> コードでは、トークン フィルターの種類に常にプレフィックス "#Microsoft.Azure.Search" が付きます。たとえば、"ArabicNormalizationTokenFilter" は実際には "#Microsoft.Azure.Search.ArabicNormalizationTokenFilter" と指定します。  テーブルの幅を小さくするためプレフィックスを削除しましたが、コードには忘れずに含めてください。  
-
-> [!NOTE]
-> 300 文字より長いトークンが生成されないように、カスタム アナライザーを構成する必要があります。 そのようなトークンがあると、ドキュメントのインデックス付けが失敗します。 それらをトリミングまたは無視するには、それぞれ **TruncateTokenFilter** および **LengthTokenFilter** を使用します。
 
 
 ## <a name="see-also"></a>関連項目  

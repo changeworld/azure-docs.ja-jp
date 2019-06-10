@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/30/2019
 ms.author: radeltch
-ms.openlocfilehash: 3bd8600d0839c31a17221bb5421dc36165deb434
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: b3b5a89b43eaa5c0851962aef414ec9c9b7440da
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65142980"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357728"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-with-azure-netapp-files-for-sap-applications"></a>SAP アプリケーション用の Azure NetApp Files を使用した SUSE Linux Enterprise Server 上の Azure VM 上の SAP NetWeaver の高可用性
 
@@ -58,7 +58,7 @@ ms.locfileid: "65142980"
 [sap-hana-ha]:sap-hana-high-availability.md
 [nfs-ha]:high-availability-guide-suse-nfs.md
 
-この記事では、[Azure NetApp Files (パブリック プレビュー段階)](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-introduction/) を使用して、仮想マシンのデプロイと構成、クラスター フレームワークのインストール、および高可用性 SAP NetWeaver 7.50 システムのインストールを行う方法について説明します。
+この記事では、[Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-introduction/) を使用して、仮想マシンのデプロイと構成、クラスター フレームワークのインストール、および高可用性 SAP NetWeaver 7.50 システムのインストールを行う方法について説明します。
 サンプルの構成やインストール コマンドなどの場合、ASCS インスタンスの番号は 00、ERS インスタンスの番号は 01、プライマリ アプリケーション インスタンス (PAS) の番号は 02、アプリケーション インスタンス (AAS) の番号は 03 です。 SAP システム ID QAS が使用されます。 
 
 この記事では、Azure NetApp Files を使用して、SAP NetWeaver アプリケーションの高可用性を実現する方法について説明します。 データベース レイヤーについては、詳しくは説明していません。
@@ -139,13 +139,13 @@ SAP NetWeaver ASCS、SAP NetWeaver SCS、SAP NetWeaver ERS、SAP HANA データ�
 
 SAP NetWeaver では、転送とプロファイル ディレクトリ用の共有ストレージが必要です。  Azure NetApp Files インフラストラクチャの設定を開始する前に、「[Azure NetApp Files のドキュメント][anf-azure-doc]」の内容をよく理解しておいてください。 選択した Azure リージョンで、Azure NetApp Files が利用できるかどうかを確認します。 Azure リージョン別に Azure NetApp Files が利用可能かどうかを確認するには、[Azure リージョン別の Azure NetApp Files の利用可能性][anf-avail-matrix]に関するページを参照してください。
 
-一部の Azure リージョンでは、Azure NetApp Files の機能がパブリック プレビューの段階です。 Azure NetApp Files をデプロイする前に、[Azure NetApp Files インフラストラクチャへの登録][anf-register]に関するページに従って、Azure NetApp Files プレビューにサインアップしてください。 
+Azure NetApp Files はいくつかの [Azure リージョン](https://azure.microsoft.com/global-infrastructure/services/?products=netapp)で利用できます。 Azure NetApp Files をデプロイする前に、[Azure NetApp Files インフラストラクチャへの登録][anf-register]に関するページに従って、Azure NetApp Files へのオンボードを要求してください。 
 
 ### <a name="deploy-azure-netapp-files-resources"></a>Azure NetApp Files リソースのデプロイ  
 
-以下の手順では、[Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) が既にインストールされていることを前提としています。 Azure NetApp Files のリソースと、そのリソースがマウントされる VM は、同じ Azure Virtual Network 内にデプロイする必要があることに注意してください。  
+以下の手順では、[Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) が既にインストールされていることを前提としています。 Azure NetApp Files のリソースと、そのリソースがマウントされる VM は、同じ Azure Virtual Network 内またはピアリングされた Azure Virtual Network 内にデプロイする必要があります。  
 
-1. まだそのようになっていない場合は、[Azure NetApp プレビューに加入](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register)することを要求してください。  
+1. まだそのようになっていない場合は、[Azure NetApp Files へのオンボード](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register)を要求してください。  
 
 2. [NetApp アカウントの作成手順](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-netapp-account)に関するページに従って、選択した Azure リージョン内で NetApp アカウントを作成します。  
 3. [Azure NetApp Files の容量プールの設定手順](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-set-up-capacity-pool)に関するページに従って、Azure NetApp Files の容量プールを設定します。  
@@ -153,7 +153,7 @@ SAP NetWeaver では、転送とプロファイル ディレクトリ用の共�
 
 4. [Azure NetApp Files へのサブネットの委任手順](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet)に関するページの説明に従って、サブネットを Azure NetApp Files に委任します。  
 
-5. [Azure NetApp Files 用のボリュームの作成手順](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes)に関するページに従って、Azure NetApp Files のボリュームをデプロイします。 指定された Azure NetApp Files の[サブネット](https://docs.microsoft.com/rest/api/virtualnetwork/subnets)内にボリュームをデプロイします。 Azure NetApp Files のリソースと Azure VM は、同じ Azure Virtual Network 内に配置する必要があることに注意してください。 たとえば、sapmnt<b>QAS</b> や usrsap<b>QAS</b> などはボリューム名、sapmnt<b>qas</b> や usrsap<b>qas</b> などは Azure NetApp Files のボリュームのファイルパスです。  
+5. [Azure NetApp Files 用のボリュームの作成手順](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes)に関するページに従って、Azure NetApp Files のボリュームをデプロイします。 指定された Azure NetApp Files の[サブネット](https://docs.microsoft.com/rest/api/virtualnetwork/subnets)内にボリュームをデプロイします。 Azure NetApp Files のリソースと Azure VM は、同じ Azure Virtual Network 内またはピアリングされた Azure Virtual Network 内に配置する必要があることに注意してください。 たとえば、sapmnt<b>QAS</b> や usrsap<b>QAS</b> などはボリューム名、sapmnt<b>qas</b> や usrsap<b>qas</b> などは Azure NetApp Files のボリュームのファイルパスです。  
 
    1. ボリューム sapmnt<b>QAS</b> (nfs://10.1.0.4/sapmnt<b>qas</b>)
    2. ボリューム usrsap<b>QAS</b> (nfs://10.1.0.4/usrsap<b>qas</b>)
@@ -256,7 +256,7 @@ SUSE High Availability アーキテクチャ上で SAP Netweaver 用に Azure Ne
 
 ### <a name="installation"></a>インストール
 
-次の各手順の先頭には、**[A]** - 全ノードが該当、**[1]** - ノード 1 のみ該当、**[2]** - ノード 2 のみ該当、のいずれかが付いています。
+次の各手順の先頭には、 **[A]** - 全ノードが該当、 **[1]** - ノード 1 のみ該当、 **[2]** - ノード 2 のみ該当、のいずれかが付いています。
 
 1. **[A]** SUSE コネクタをインストールします
 
@@ -364,7 +364,7 @@ SUSE High Availability アーキテクチャ上で SAP Netweaver 用に Azure Ne
    > [!NOTE]
    > 現在、Azure NetApp Files でサポートされるのは NFSv3 のみです。 nfsvers=3 switch は省略しないでください。
    
-   autofs を再起動して新しい共有をマウントします
+   `autofs` を再起動して新しい共有をマウントします
     <pre><code>
       sudo systemctl enable autofs
       sudo service autofs restart
@@ -657,7 +657,7 @@ SUSE High Availability アーキテクチャ上で SAP Netweaver 用に Azure Ne
 
 次の手順では、ASCS/SCS および HANA サーバーとは別のサーバーにアプリケーション サーバーをインストールすることを前提としています。 それ以外の場合、以下の手順の一部 (ホスト名解決の構成など) は必要ありません。
 
-次の各手順の先頭には、**[A]** - PAS と AAS の両方が該当、**[P]** - PAS のみ該当、**[S]** - ノード AAS のみ該当、のいずれかが付いています。
+次の各手順の先頭には、 **[A]** - PAS と AAS の両方が該当、 **[P]** - PAS のみ該当、 **[S]** - ノード AAS のみ該当、のいずれかが付いています。
 
 
 1. **[A]** オペレーティング システムを構成します
@@ -734,7 +734,7 @@ SUSE High Availability アーキテクチャ上で SAP Netweaver 用に Azure Ne
    /usr/sap/<b>QAS</b>/D<b>02</b> -nfsvers=3,nobind,sync <b>10.1.0.5</b>:/ursap<b>qas</b>pas
    </code></pre>
 
-   autofs を再起動して新しい共有をマウントします
+   `autofs` を再起動して新しい共有をマウントします
 
    <pre><code>
    sudo systemctl enable autofs
@@ -759,7 +759,7 @@ SUSE High Availability アーキテクチャ上で SAP Netweaver 用に Azure Ne
    /usr/sap/<b>QAS</b>/D<b>03</b> -nfsvers=3,nobind,sync <b>10.1.0.4</b>:/usrsap<b>qas</b>aas
    </code></pre>
 
-   autofs を再起動して新しい共有をマウントします
+   `autofs` を再起動して新しい共有をマウントします
 
    <pre><code>
    sudo systemctl enable autofs
@@ -1230,7 +1230,7 @@ SUSE High Availability アーキテクチャ上で SAP Netweaver 用に Azure Ne
    <pre><code>anftstsapcl1:~ # pgrep er.sapQAS | xargs kill -9
    </code></pre>
 
-   このコマンドを 1 回だけ実行しても、プロセスは sapstart によって再起動されます。 複数回実行すれば、sapstart によるプロセスの再起動はなくなり、リソースは停止状態になります。 テスト後に、次のコマンドを root として実行して、ERS インスタンスのリソースの状態をクリーンアップします。
+   このコマンドを 1 回だけ実行しても、プロセスは `sapstart` によって再起動されます。 複数回実行すれば、`sapstart` によるプロセスの再起動はなくなり、リソースは停止状態になります。 テスト後に、次のコマンドを root として実行して、ERS インスタンスのリソースの状態をクリーンアップします。
 
    <pre><code>anftstsapcl1:~ # crm resource cleanup rsc_sap_QAS_ERS01
    </code></pre>

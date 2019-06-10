@@ -7,12 +7,12 @@ ms.date: 04/26/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 6e3e01ca9bd459aa6c6aca8dfaacb98b1267fada
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.openlocfilehash: fb7f238bb5c04bb03ee500b1b953895cc88c0596
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65979344"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66298923"
 ---
 # <a name="determine-causes-of-non-compliance"></a>コンプライアンス違反の原因の特定
 
@@ -90,6 +90,10 @@ Azure リソースにポリシー ルールへのコンプライアンス違反�
 |現在の値には、キーとしてターゲット値を含める必要があります。 |containsKey、または notContainsKey **ではない** |
 |現在の値には、ターゲット値を含める必要があります。 |contains、または notContains **ではない** |
 |現在の値は、ターゲット値と等しくなければなりません。 |equals、または notEquals **ではない** |
+|現在の値は、ターゲット値より小さくなければなりません。 |less、または greaterOrEquals **ではない** |
+|現在の値は、ターゲット値以上でなければなりません。 |greaterOrEquals、または less **ではない** |
+|現在の値は、ターゲット値より大きくなければなりません。 |greater、または lessOrEquals **ではない** |
+|現在の値は、ターゲット値以下でなければなりません。 |lessOrEquals、または greater **ではない** |
 |現在の値は存在している必要があります。 |exists |
 |現在の値は、ターゲット値に含まれている必要があります。 |in、または notIn **ではない** |
 |現在の値は、ターゲット値とパターン一致する必要があります。 |like、または notLike **ではない** |

@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ums.workload: na
-ms.date: 01/14/2019
+ms.date: 05/28/2019
 ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: 473f9db7eb507fa910657696590bb656a8aff52f
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 6e99553afc05fca0250607bfccd2799adaf471e5
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56109879"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66298155"
 ---
 # <a name="integrate-azure-active-directory-audit-logs"></a>Azure Active Directory 監査ログの統合
 
@@ -28,7 +28,7 @@ Azure Active Directory (Azure AD) 監査イベントを利用すると、Azure A
 
 
 >[!IMPORTANT]
-> Azure ログの統合機能は、2019 年 6 月 1 日までに廃止される予定です。 AzLog ダウンロードは、2018 年 6 月 27 日に無効になりました。 今後必要な対応のガイダンスについては、[Azure 監視を使って SIEM ツールと統合する](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)方法に関する投稿を確認してください。 
+> Azure ログ統合機能は、2019 年 6 月 15 日までに廃止される予定です。 AzLog ダウンロードは、2018 年 6 月 27 日に無効になりました。 今後必要な対応のガイダンスについては、[Azure 監視を使って SIEM ツールと統合する](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)方法に関する投稿を確認してください。 
 
 ## <a name="steps-to-integrate-azure-active-directory-audit-logs"></a>Azure Active Directory 監査ログを統合する手順
 
@@ -76,4 +76,4 @@ Azure ログ統合の詳細については、次をご覧ください。
 * [Azure ログ用の Microsoft Azure Log Integration](https://www.microsoft.com/download/details.aspx?id=53324): このダウンロード センター ページでは、Azure Log Integration の詳細情報、システム要件、インストール手順などを説明します。
 * [Azure Log Integration の概要](security-azure-log-integration-overview.md): この記事では、Azure Log Integration と、その主な機能およびしくみについて紹介します。
 * [Azure Log Integration の FAQ](security-azure-log-integration-faq.md):この記事は、Azure ログ統合について寄せられる質問とその回答です。
-* [Azure 診断と Azure 監査ログの新機能](https://azure.microsoft.com/blog/new-features-for-azure-diagnostics-and-azure-audit-logs/): このブログ投稿では、Azure 監査ログと、Azure リソースの操作に関する分析情報を得るために役立つその他の機能を紹介します。
+* [Azure Diagnostics と Azure 監査ログの新機能](https://azure.microsoft.com/blog/new-features-for-azure-diagnostics-and-azure-audit-logs/): このブログ投稿では、Azure 監査ログと、Azure リソースの操作に関する分析情報を得るために役立つその他の機能を紹介します。

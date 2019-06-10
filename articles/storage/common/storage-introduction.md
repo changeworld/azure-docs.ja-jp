@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: b03197fb0d4d97756e5a3fe88de78c11a816b5ec
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 4a6a6249f3edca30ab3d3f9a213b4282b4323d15
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65951273"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66258349"
 ---
 # <a name="introduction-to-azure-storage"></a>Azure Storage の概要
 
@@ -85,7 +85,9 @@ Azure Cosmos DB に、新たに Azure Table Storage が加わりました。 Azu
 
 ## <a name="disk-storage"></a>Disk Storage
 
-Azure Storage には、仮想マシンで使用されるマネージド ディスクと非管理対象ディスクの機能も含まれています。 これらの機能の詳細については、[コンピューティング サービスのドキュメント](https://docs.microsoft.com/azure/#pivot=products&panel=Compute)を参照してください。
+Azure マネージド ディスクは仮想ハード ディスク (VHD) です。 オンプレミス サーバーの物理ディスクと似ていますが、仮想化されたディスクと考えることができます。 Azure マネージド ディスクは、Azure のランダム IO ストレージ オブジェクトであるページ BLOB として格納されます。 マネージド ディスクを "マネージド" と呼ぶ理由は、ページ BLOB、BLOB コンテナー、および Azure ストレージ アカウントを抽象化したものであるためです。 マネージド ディスクでは、ディスクをプロビジョニングするだけで、後の管理は Azure が実行します。
+
+マネージド ディスクの詳細については、「[Azure マネージド ディスクの概要](../../virtual-machines/windows/managed-disks-overview.md)」をご覧ください。
 
 ## <a name="types-of-storage-accounts"></a>ストレージ アカウントの種類
 
