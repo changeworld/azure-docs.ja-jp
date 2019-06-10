@@ -111,9 +111,7 @@
           items:
             - name: Azure Portal で管理する
               href: data-box-portal-ui-admin.md
-            - name: データを BLOB 層に移動する
-              href: data-box-how-to-set-data-tier.md
-            - name: Data Box Heavy の問題のトラブルシューティング
+            - name: Data Box Disk の問題のトラブルシューティング
               href: data-box-disk-troubleshoot.md
             - name: サポートに問い合わせる
               href: data-box-disk-contact-microsoft-support.md
@@ -123,6 +121,10 @@
           items:
             - name: Data Box Heavy とは
               href: data-box-heavy-overview.md
+        - name: クイック スタート
+          items:
+            - name: 設定 - Azure portal
+              href: data-box-heavy-quickstart-portal.md
         - name: チュートリアル
           items:
             - name: 1 - 注文
@@ -151,12 +153,18 @@
               href: data-box-local-web-ui-admin.md
             - name: デバイスの問題のトラブルシューティング
               href: data-box-troubleshoot.md
+            - name: データを BLOB 層に移動する
+              href: data-box-how-to-set-data-tier.md
             - name: サポートに問い合わせる
               href: data-box-disk-contact-microsoft-support.md
             - name: 移行
               items:
+                - name: SharePoint Online へ
+                  href: data-box-heavy-migrate-spo.md
                 - name: Azure File Sync へ
                   href: ../storage/files/storage-sync-offline-data-transfer.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
+                - name: HDFS ストアから
+                  href: ../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
     - name: リソース
       items:
         - name: Data Box 製品

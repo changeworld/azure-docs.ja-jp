@@ -2,8 +2,10 @@
   href: index.yml
 - name: 概要
   items:
-    - name: アプリケーション管理について
+    - name: アプリケーション管理とは
       href: what-is-application-management.md
+    - name: アプリケーション プロキシとは
+      href: what-is-application-proxy.md
 - name: クイック スタート
   expanded: true
   items:
