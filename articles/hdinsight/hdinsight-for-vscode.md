@@ -314,14 +314,14 @@ Python ジョブを送信したら、Visual Studio Code の **[出力]** ウィ�
     | args | アプリケーションのコマンド ライン引数 | string のリスト | 
     | jars | このセッションで使用される Jar | 文字列のリスト | 
     | pyFiles | このセッションで使用される Python ファイル | 文字列のリスト |
-    | ファイルのアップロード | このセッションで使用されるファイル | 文字列のリスト |
+    | files | このセッションで使用されるファイル | 文字列のリスト |
     | driverMemory | ドライバーのプロセスに使用するメモリの量 | string |
     | driverCores | ドライバーのプロセスに使用するコアの数 | int |
     | executorMemory | Executor プロセスごとに使用するメモリの量 | string |
     | executorCores | Executor ごとに使用するコアの数 | int |
     | numExecutors | このセッションに対して起動する Executor の数 | int |
     | archives | このセッションで使用されるアーカイブ | 文字列のリスト |
-    | キュー | 送信対象の YARN キューの名前 | string |
+    | queue | 送信対象の YARN キューの名前 | string |
     | name | このセッションの名前 | string |
     | conf | Spark の構成のプロパティ | キーと値のマップ |
 
