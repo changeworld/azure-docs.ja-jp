@@ -11,17 +11,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/14/2019
+ms.date: 05/17/2019
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d0208d25e4583672ad2110d959f8e255affbf3e0
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 8b5a16e2d5e3ac723675ebdb536a51d20412681f
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65764869"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235384"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>方法:リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する
 
@@ -40,11 +40,11 @@ ms.locfileid: "65764869"
 
    ![[アプリの登録] を選択する](./media/howto-create-service-principal-portal/select-app-registrations.png)
 
-1. **[新しいアプリケーションの登録]** を選択します。
+1. **[新規登録]** を選択します。
 
    ![アプリを追加する](./media/howto-create-service-principal-portal/select-add-app.png)
 
-1. アプリケーションの名前と URL を指定します。 作成するアプリケーションの種類として、 **[Web アプリ/API]** を選択します。 [ネイティブ アプリケーション](../manage-apps/application-proxy-configure-native-client-application.md)の資格情報を作成することはできません。 そのタイプを自動化されたアプリケーションに使用することはできません。 値を設定したら、 **[作成]** をクリックします。
+1. アプリケーションの名前を入力します。 サポートされているアカウントを選択します。これにより、アプリケーションを使用できるユーザーを決定します。 **[リダイレクト URI]** で、作成するアプリケーションの種類で **[Web]** を選択します。 アクセス トークンの送信先の URI を入力します。  [ネイティブ アプリケーション](../manage-apps/application-proxy-configure-native-client-application.md)の資格情報を作成することはできません。 そのタイプを自動化されたアプリケーションに使用することはできません。 値を設定したら、 **[登録]** を選択します。
 
    ![アプリケーションに名前を付ける](./media/howto-create-service-principal-portal/create-app.png)
 
@@ -81,31 +81,41 @@ Azure AD アプリケーションとサービス プリンシパルが作成さ�
 
 ## <a name="get-values-for-signing-in"></a>サインインするための値を取得する
 
-### <a name="get-tenant-id"></a>テナント ID を取得する
-
-プログラムでサインインするときは、認証要求でテナント ID を渡す必要があります。
+プログラムでサインインするときは、認証要求でテナント ID を渡す必要があります。 また、アプリケーションの ID と認証キーも必要です。 これらの値を取得するには、次の手順に従います。
 
 1. **[Azure Active Directory]** を選択します。
-1. **[プロパティ]** を選択します。
-
-   ![Azure AD のプロパティを選択する](./media/howto-create-service-principal-portal/select-ad-properties.png)
-
-1. **[ディレクトリ ID]** をコピーしてテナント ID を取得します。
-
-   ![テナント ID](./media/howto-create-service-principal-portal/copy-directory-id.png)
-
-### <a name="get-application-id-and-authentication-key"></a>アプリケーション ID と認証キーを取得する
-
-また、アプリケーションの ID と認証キーも必要です。 これらの値を取得するには、次の手順に従います。
 
 1. Azure AD の **[アプリの登録]** から、アプリケーションを選択します。
 
    ![アプリケーションの選択](./media/howto-create-service-principal-portal/select-app.png)
 
+1. ディレクトリ (テナント) ID をコピーし、アプリケーション コードに保存します。
+
+    ![テナント ID](./media/howto-create-service-principal-portal/copy-tenant-id.png)
+
 1. **アプリケーション ID** をコピーし、アプリケーション コードに保存します。
 
    ![クライアント ID](./media/howto-create-service-principal-portal/copy-app-id.png)
 
+## <a name="certificates-and-secrets"></a>証明書とシークレット
+デーモン アプリケーションでは、Azure AD で認証する 2 つの形式の資格情報 (証明書とアプリケーション シークレット) を使用できます。  証明書を使用するようお勧めしますが、新しいアプリケーション シークレットを作成することもできます。
+
+### <a name="upload-a-certificate"></a>証明書のアップロード
+
+既存の証明書がある場合は、それを使用できます。  必要に応じて、テスト目的で自己署名証明書を作成することもできます。 PowerShell を開いて、次のパラメーターを使用して [New-selfsignedcertificate](/powershell/module/pkiclient/new-selfsignedcertificate) を実行して、コンピューター上のユーザー証明書ストアに自己署名証明書を作成します: `$cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocation "Cert:\CurrentUser\My"  -KeyExportPolicy Exportable -KeySpec Signature`。  Windows コントロール パネルからアクセスできる [[Manage User Certificate](ユーザー証明書の管理)](/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in)MMC スナップインを使用して、この証明書をエクスポートします。
+
+証明書をアップロードするには、次の手順に従います。
+1. **[証明書とシークレット]** を選択します。
+
+   ![[設定] の選択](./media/howto-create-service-principal-portal/select-certs-secrets.png)
+1. **[証明書のアップロード]** をクリックし、証明書 (既存の証明書、またはエクスポートした自己署名証明書) を選択します。
+    ![証明書のアップロード](./media/howto-create-service-principal-portal/upload-cert.png)
+1. **[追加]** をクリックします。
+
+アプリケーション登録ポータルで証明書をアプリケーションに登録したら、クライアント アプリケーションで証明書を使用できるようにする必要があります。
+
+### <a name="create-a-new-application-secret"></a>新しいアプリケーション シークレットを作成する
+証明書を使用しないように選択した場合は、新しいアプリケーション シークレットを作成できます。
 1. **[証明書とシークレット]** を選択します。
 
    ![[設定] の選択](./media/howto-create-service-principal-portal/select-certs-secrets.png)

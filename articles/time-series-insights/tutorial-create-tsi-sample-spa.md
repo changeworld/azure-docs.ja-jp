@@ -120,7 +120,7 @@ Time Series Insights サンプル SPA は、このチュートリアルで使用
 
 1. Visual Studio の **[表示]** メニューで、 **[ソリューション エクスプローラー]** を選択します。 新しいソリューションが開きます。 これには Web サイト プロジェクト (地球アイコン) が含まれていて、ここに HTML ファイルと CSS ファイルが含まれています。
 
-   [Visual Studio![ - ソリューション エクスプローラー内の新しいソリューション](media/tutorial-create-tsi-sample-spa/vs-solution-explorer.png)](media/tutorial-create-tsi-sample-spa/vs-solution-explorer.png#lightbox)
+   [![Visual Studio - ソリューション エクスプローラー内の新しいソリューション](media/tutorial-create-tsi-sample-spa/vs-solution-explorer.png)](media/tutorial-create-tsi-sample-spa/vs-solution-explorer.png#lightbox)
 
 1. アプリを発行する前に、*index.html* の構成設定を変更する必要があります。
 
@@ -146,7 +146,7 @@ Time Series Insights サンプル SPA は、このチュートリアルで使用
 
       [!code-javascript[head-sample](~/samples-javascript/pages/tutorial/index.html?range=147-153&highlight=4-5)]
 
-      例: 
+      例:
 
       ```javascript
       clientId: '8884d4ca-b9e7-403a-bd8a-366d0ce0d460',

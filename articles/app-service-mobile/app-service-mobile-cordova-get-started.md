@@ -14,14 +14,14 @@ ms.workload: na
 ms.tgt_pltfrm: mobile-html
 ms.devlang: javascript
 ms.topic: conceptual
-ms.date: 07/07/2017
+ms.date: 05/09/2019
 ms.author: crdun
-ms.openlocfilehash: 7014d09bbb62e78c37a9496628e3509b6eaaa4ac
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: ac6c2b0f93c56de6e0a2b559645884b60d761ba8
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57768231"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66240240"
 ---
 # <a name="create-an-apache-cordova-app"></a>Apache Cordova アプリの作成
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
@@ -43,42 +43,13 @@ Visual Studio をバイパスし、Apache Cordova のコマンド ラインを�
 ## <a name="create-an-azure-mobile-app-backend"></a>Azure モバイル アプリ バックエンドの作成
 [!INCLUDE [app-service-mobile-dotnet-backend-create-new-service](../../includes/app-service-mobile-dotnet-backend-create-new-service.md)]
 
-[同様の手順を説明するビデオを見る](https://channel9.msdn.com/series/Azure-connected-services-with-Cordova/Azure-connected-services-task-1-Create-an-Azure-Mobile-App)
-
-## <a name="configure-the-server-project"></a>サーバー プロジェクトの構成
+## <a name="create-a-database-connection-and-configure-the-client-and-server-project"></a>データベース接続を作成し、クライアントとサーバー プロジェクトを構成する
 [!INCLUDE [app-service-mobile-configure-new-backend.md](../../includes/app-service-mobile-configure-new-backend.md)]
 
 ## <a name="download-and-run-the-apache-cordova-app"></a>Apache Cordova アプリのダウンロードと実行
 [!INCLUDE [app-service-mobile-cordova-run-app](../../includes/app-service-mobile-cordova-run-app.md)]
-
-## <a name="next-steps"></a>次の手順
-これでこのクイック スタート チュートリアルは終了です。次のいずれかのチュートリアルに進んでください。
-
-* Apache Cordova アプリに[オフライン データを追加する](app-service-mobile-cordova-get-started-offline-data.md)
-* [認証を追加する](app-service-mobile-cordova-get-started-users.md) 
-* [プッシュ通知を追加する](app-service-mobile-cordova-get-started-push.md) 
-
-Azure App Service の主要な概念を確認してください。
-
-* [オフライン データ]
-* [認証]
-* [プッシュ通知]
-
-SDK の使用方法を確認してください。
-
-* [Apache Cordova SDK]
-* [ASP.NET サーバー SDK]
-* [Node.js サーバー SDK]
-
-<!-- Images. -->
-
 <!-- URLs -->
 [Azure portal]: https://portal.azure.com/
+
 [Visual Studio Community 2017]: https://www.visualstudio.com/
 [Apache Cordova の Visual Studio ツール]: https://www.visualstudio.com/en-us/features/cordova-vs.aspx
-[オフライン データ]: app-service-mobile-offline-data-sync.md
-[認証]: app-service-mobile-auth.md
-[プッシュ通知]: ../notification-hubs/notification-hubs-push-notification-overview.md
-[Apache Cordova SDK]: app-service-mobile-cordova-how-to-use-client-library.md
-[ASP.NET サーバー SDK]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
-[Node.js サーバー SDK]: app-service-mobile-node-backend-how-to-use-server-sdk.md
