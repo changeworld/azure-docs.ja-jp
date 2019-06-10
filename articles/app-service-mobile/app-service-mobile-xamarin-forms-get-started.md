@@ -11,14 +11,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 09/24/2018
+ms.date: 05/09/2019
 ms.author: crdun
-ms.openlocfilehash: b99513cad34bba1b050a24795ecb21d0357d19c1
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: b0719f6ac2f99f9e665b1265665752dd53ccbaf0
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65416091"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242655"
 ---
 # <a name="create-a-xamarinforms-app-with-azure"></a>Azure での Xamarin.Forms アプリの作成
 
@@ -39,52 +39,42 @@ Xamarin.Forms の他のすべての Azure Mobile Apps のチュートリアル�
 * (省略可能) iOS アプリをビルドするには、Xcode 9.0 以降がインストールされた Mac が必要です。 Visual Studio for Mac を使用して iOS アプリを開発するか、Visual Studio 2017 以降を使用することができます (Mac がネットワーク上で使用可能な場合)。
 
 ## <a name="create-a-new-mobile-apps-back-end"></a>新しい Mobile Apps バックエンドの作成
-
-新しい Mobile Apps バックエンドを作成するには、次の手順を実行します。
-
 [!INCLUDE [app-service-mobile-dotnet-backend-create-new-service](../../includes/app-service-mobile-dotnet-backend-create-new-service.md)]
 
-以上で、モバイル アプリから使用できる Mobile Apps バックエンドのセットアップが完了しました。 次は、簡単な To Do リスト バックエンドのサーバー プロジェクトをダウンロードして、それを Azure に発行します。
+## <a name="create-a-database-connection-and-configure-the-client-and-server-project"></a>データベース接続を作成し、クライアントとサーバー プロジェクトを構成する
+[!INCLUDE [app-service-mobile-configure-new-backend.md](../../includes/app-service-mobile-configure-new-backend.md)]
 
-## <a name="configure-the-server-project"></a>サーバー プロジェクトの構成
-
-Node.js または .NET バックエンドを使用するようにサーバー プロジェクトを構成するには、次の手順を実行します。
-
-[!INCLUDE [app-service-mobile-configure-new-backend](../../includes/app-service-mobile-configure-new-backend.md)]
-
-## <a name="download-and-run-the-xamarinforms-solution"></a>Xamarin.Forms ソリューションのダウンロードと実行
+## <a name="run-the-xamarinforms-solution"></a>Xamarin.Forms ソリューションを実行する
 
 ソリューションを開くには Visual Studio Tools for Xamarin が必要です。[Xamarin のインストール手順][Install Xamarin]をご覧ください。 ツールが既にインストールされている場合は、以下の手順に従ってソリューションをダウンロードし、開きます。
 
 ### <a name="visual-studio"></a>Visual Studio
 
-1. [Azure Portal]にアクセスします。
+1. [Azure ポータル](https://portal.azure.com/)にアクセスします。
 
-2. モバイル アプリの [設定] ブレードで、**[クイックスタート]** ([デプロイメント] の下) > **[Xamarin.Forms]** の順にクリックします。 手順 3 で、まだ選択されていない場合は **[新しいアプリの作成]** をクリックします。  次に、 **[ダウンロード]** ボタンをクリックします。
+2. モバイル アプリの [設定] ブレードで、 **[クイックスタート]** ([デプロイメント] の下) > **[Xamarin.Forms]** の順にクリックします。 手順 3 で、まだ選択されていない場合は **[新しいアプリの作成]** をクリックします。  次に、 **[ダウンロード]** ボタンをクリックします。
 
    この操作により、モバイル アプリに接続されているクライアント アプリケーションが含まれているプロジェクトがダウンロードされます。 圧縮されたプロジェクト ファイルをローカル コンピューターに保存し、保存場所を書き留めておいてください。
 
 3. ダウンロードしたプロジェクトを抽出し、Visual Studio で開きます。
 
-   ![Visual Studio で抽出されたプロジェクト][8]
-
 4. Android または Windows のプロジェクトを実行するには、以下の手順に従います。また、ネットワーク接続された Mac コンピューターが使用可能な場合は、iOS プロジェクトを実行できます。
 
 ### <a name="visual-studio-for-mac"></a>Visual Studio for Mac
 
-1. [Azure Portal]にアクセスします。
+1. [Azure Portal](https://portal.azure.com/) にアクセスし、作成したモバイル アプリに移動します。 `Overview` ブレードで、モバイル アプリのパブリック エンドポイントである URL を探します。 例 - アプリ名 "test123" のサイト名は https://test123.azurewebsites.net になります。
 
-2. モバイル アプリの [設定] ブレードで、**[クイックスタート]** ([デプロイメント] の下) > **[Xamarin.Forms]** の順にクリックします。 手順 3 で、まだ選択されていない場合は **[新しいアプリの作成]** をクリックします。  次に、 **[ダウンロード]** ボタンをクリックします。
+2. このフォルダー内のファイル `Constants.cs` (xamarin.forms/ZUMOAPPNAME) を開きます。 アプリケーション名は `ZUMOAPPNAME` です。
 
-   この操作により、モバイル アプリに接続されているクライアント アプリケーションが含まれているプロジェクトがダウンロードされます。 圧縮されたプロジェクト ファイルをローカル コンピューターに保存し、保存場所を書き留めておいてください。
+3. `Constants.cs` クラスで、`ZUMOAPPURL` 変数を上のパブリック エンドポイントに置き換えます。
 
-3. ダウンロードしたプロジェクトを抽出し、Visual Studio for Mac で開きます。
+    `public static string ApplicationURL = @"ZUMOAPPURL";`
 
-   ![Visual Studio for Mac で抽出されたプロジェクト][9]
+    →
 
-4. Android または iOS プロジェクトを実行するには、以下の手順に従います。
-
-
+    `public static string ApplicationURL = @"https://test123.azurewebsites.net";`
+    
+4. Android または Windows のプロジェクトを実行するには、以下の手順に従います。また、ネットワーク接続された Mac コンピューターが使用可能な場合は、iOS プロジェクトを実行できます。
 
 ## <a name="optional-run-the-android-project"></a>(省略可能) Android プロジェクトの実行
 
@@ -92,23 +82,21 @@ Node.js または .NET バックエンドを使用するようにサーバー �
 
 ### <a name="visual-studio"></a>Visual Studio
 
-1. Android (Droid) プロジェクトを右クリックし、**[スタートアップ プロジェクトに設定]** を選択します。
+1. Android (Droid) プロジェクトを右クリックし、 **[スタートアップ プロジェクトに設定]** を選択します。
 
 2. **[ビルド]** メニューの **[構成マネージャー]** を選択します。
 
 3. **[構成マネージャー]** ダイアログ ボックスで、Android プロジェクトの横の **[ビルド]** と **[デプロイ]** チェック ボックスをオンにし、共有コード プロジェクトの **[ビルド]** ボックスがオンになっていることを確認します。
 
-4. プロジェクトをビルドし、Android エミュレーターでアプリを起動するには、**F5** キーを押すか、**[開始]** をクリックします。
+4. プロジェクトをビルドし、Android エミュレーターでアプリを起動するには、**F5** キーを押すか、 **[開始]** をクリックします。
 
 ### <a name="visual-studio-for-mac"></a>Visual Studio for Mac
 
-1. Android プロジェクトを右クリックし、**[スタートアップ プロジェクトに設定]** を選択します。
+1. Android プロジェクトを右クリックし、 **[スタートアップ プロジェクトに設定]** を選択します。
 
-2. プロジェクトをビルドして、アプリを Android エミュレーターで起動するには、**[実行]** メニューを選択してから **[デバッグの開始]** を選択します。
+2. プロジェクトをビルドして、アプリを Android エミュレーターで起動するには、 **[実行]** メニューを選択してから **[デバッグの開始]** を選択します。
 
-
-
-アプリで、意味のあるテキスト ("*Xamarin の学習*" など) を入力し、正符号 (**+**) を選択します。
+アプリで、意味のあるテキスト ("*Xamarin の学習*" など) を入力し、正符号 ( **+** ) を選択します。
 
 ![Android の To Do アプリ][11]
 
@@ -124,7 +112,7 @@ Node.js または .NET バックエンドを使用するようにサーバー �
 
 ### <a name="visual-studio"></a>Visual Studio
 
-1. iOS プロジェクトを右クリックし、**[スタートアップ プロジェクトに設定]** を選択します。
+1. iOS プロジェクトを右クリックし、 **[スタートアップ プロジェクトに設定]** を選択します。
 
 2. **[ビルド]** メニューの **[構成マネージャー]** を選択します。
 
@@ -134,13 +122,11 @@ Node.js または .NET バックエンドを使用するようにサーバー �
 
 ### <a name="visual-studio-for-mac"></a>Visual Studio for Mac
 
-1. iOS プロジェクトを右クリックし、**[スタートアップ プロジェクトに設定]** を選択します。
+1. iOS プロジェクトを右クリックし、 **[スタートアップ プロジェクトに設定]** を選択します。
 
 2. **[実行]** メニューで **[デバッグの開始]** を選択し、プロジェクトをビルドして、アプリを iPhone エミュレーターで起動します。
 
-
-
-アプリで、意味のあるテキスト ("*Xamarin の学習*" など) を入力し、正符号 (**+**) を選択します。
+アプリで、意味のあるテキスト ("*Xamarin の学習*" など) を入力し、正符号 ( **+** ) を選択します。
 
 ![iOS の To Do アプリ][10]
 
@@ -156,20 +142,18 @@ Node.js または .NET バックエンドを使用するようにサーバー �
 
 ### <a name="visual-studio"></a>Visual Studio
 
-1. UWP プロジェクトを右クリックし、**[スタートアップ プロジェクトに設定]** を選択します。
+1. UWP プロジェクトを右クリックし、 **[スタートアップ プロジェクトに設定]** を選択します。
 
 2. **[ビルド]** メニューの **[構成マネージャー]** を選択します。
 
 3. **[構成マネージャー]** ダイアログ ボックスで、選択した Windows プロジェクトの横の **[ビルド]** と **[デプロイ]** チェック ボックスをオンにし、共有コード プロジェクトの **[ビルド]** ボックスがオンになっていることを確認します。
 
-4. プロジェクトをビルドし、Windows エミュレーターでアプリを起動するには、**F5** キーを押すか、**[開始]** をクリックします (「**ローカル コンピューター**」と表示されています)。
+4. プロジェクトをビルドし、Windows エミュレーターでアプリを起動するには、**F5** キーを押すか、 **[開始]** をクリックします (「**ローカル コンピューター**」と表示されています)。
 
 > [!NOTE]
 > macOS で Windows プロジェクトを実行することはできません。
 
-
-
-アプリで、意味のあるテキスト ("*Xamarin の学習*" など) を入力し、正符号 (**+**) を選択します。
+アプリで、意味のあるテキスト ("*Xamarin の学習*" など) を入力し、正符号 ( **+** ) を選択します。
 
 この操作で、Azure でホストされている新しい Mobile Apps バックエンドに POST 要求が送信されます。 要求のデータは TodoItem テーブルに挿入されます。 テーブルに格納された項目が Mobile Apps バックエンドによって返され、データが一覧に表示されます。
 
@@ -185,32 +169,10 @@ Node.js または .NET バックエンドを使用するようにサーバー �
 
 Android プロジェクトで参照されるすべてのサポート パッケージのバージョンが同じである必要があることに注意してください。 [Azure Mobile Apps の NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/)には、Android プラットフォームに関して `Xamarin.Android.Support.CustomTabs` の依存関係があるため、プロジェクトで新しいサポート パッケージを使用する場合は、必要なバージョンを使用してこのパッケージを直接インストールし、競合を回避する必要があります。
 
-## <a name="next-steps"></a>次の手順
-
-* [アプリに認証を追加する](app-service-mobile-xamarin-forms-get-started-users.md) ID プロバイダーを使用してアプリのユーザーを認証する方法を学習します。
-
-* [アプリにプッシュ通知を追加する](app-service-mobile-xamarin-forms-get-started-push.md): アプリにプッシュ通知のサポートを追加して、Azure Notification Hubs を使ってプッシュ通知を送信するように Mobile Apps バックエンドを構成する方法を学習します。
-
-* [アプリのオフライン同期の有効化](app-service-mobile-xamarin-forms-get-started-offline-data.md): Mobile Apps バックエンドを使用して、アプリにオフライン サポートを追加する方法を学習します。 オフラインの同期を使用すれば、ネットワーク接続が得られない状況でも、モバイル アプリケーションのデータを表示、追加、または変更することができます。
-
-* [Mobile Apps 用の管理されたクライアントの使用方法](app-service-mobile-dotnet-how-to-use-client-library.md): Xamarin アプリでの管理されたクライアント SDK の操作方法について学習します。
-
-* [Xamarin.Forms で他の Azure サービスを使用する](https://docs.microsoft.com/xamarin/xamarin-forms/data-cloud/): 検索、格納、認知サービスなどの追加の Azure 機能を Xamarin.Forms アプリに追加します。
-
-<!-- Anchors. -->
-[Get started with Mobile Apps back ends]:#getting-started
-[Create a new Mobile Apps back end]:#create-new-service
-[Next steps]:#next-steps
-
 <!-- Images. -->
-[6]: ./media/app-service-mobile-xamarin-forms-get-started/xamarin-forms-quickstart.png
-[8]: ./media/app-service-mobile-xamarin-forms-get-started/xamarin-forms-quickstart-vs.png
-[9]: ./media/app-service-mobile-xamarin-forms-get-started/xamarin-forms-quickstart-xs.png
 [10]: ./media/app-service-mobile-xamarin-forms-get-started/mobile-quickstart-startup-ios.png
 [11]: ./media/app-service-mobile-xamarin-forms-get-started/mobile-quickstart-startup-android.png
 [12]: ./media/app-service-mobile-xamarin-forms-get-started/mobile-quickstart-startup-windows.png
 
 <!-- URLs. -->
 [Install Xamarin]: https://docs.microsoft.com/xamarin/cross-platform/get-started/installation/
-[Mobile app SDK]: https://go.microsoft.com/fwlink/?LinkId=257545
-[Azure Portal]: https://portal.azure.com/

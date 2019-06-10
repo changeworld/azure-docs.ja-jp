@@ -77,7 +77,7 @@ SQL Server 認証を使用する場合は、次のことを行う必要があり
 Azure AD 認証は、Azure AD の ID を使用して Azure SQL Database と [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) に接続するメカニズムです。 Azure AD 認証を使用すると、データベース ユーザーの ID や他の Microsoft サービスを一元管理できます。 ID の一元管理では、1 か所でデータベース ユーザーを管理できるようになるため、アクセス許可の管理が容易になります。
 
 > [!NOTE]
-> SQL Server 認証を使用して Azure AD 認証を使用することをお勧めします。
+> SQL Server 認証の使用よりも Azure AD 認証の使用をお勧めします。
 
 次のような利点があります。
 

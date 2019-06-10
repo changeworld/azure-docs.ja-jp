@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2019
 ms.author: mikhegn
-ms.openlocfilehash: 47b5e89164173869d6964e2c5e392bb99e0c8555
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: cbeb0a8944b35af2a68080a2b2f1bb4436c6e58d
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58317393"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66306691"
 ---
 # <a name="visualize-your-cluster-with-service-fabric-explorer"></a>Service Fabric Explorer を使用したクラスターの視覚化
 
@@ -29,7 +29,7 @@ Service Fabric Explorer (SFX) は、Azure Service Fabric クラスターを検�
 
 デスクトップ アプリケーションとして Service Fabric Explorer をダウンロードするには、次のリンクを使ってください。
 
--  Windows
+- Windows
   - https://aka.ms/sfx-windows
 
 - Linux
@@ -61,7 +61,7 @@ Service Fabric クラスターに接続するには、クラスター管理エ�
 ### <a name="connect-to-a-secure-cluster"></a>セキュリティ保護されたクラスターに接続する
 証明書または Azure Active Directory (AAD) を使用して、クライアントによる Service Fabric クラスターへのアクセスを制御できます。
 
-セキュリティで保護されたクラスターに接続する場合は、クラスターの構成に応じて、クライアント証明書を提示するか、AAD を使ってログインする必要があります。
+セキュリティで保護されたクラスターに接続しようとすると、そのクラスターの構成によっては、クライアント証明書を指定するか、または AAD を使用してサインインすることが必要になります。
 
 ## <a name="understand-the-service-fabric-explorer-layout"></a>Service Fabric Explorer のレイアウトについて
 左側のツリーを使用して、Service Fabric Explorer 内を移動できます。 ツリーのルートでは、クラスター ダッシュボードにクラスターの概要 (アプリケーションとノードの正常性の概要など) が表示されます。
@@ -92,7 +92,7 @@ Service Fabric クラスターのノードは、障害ドメインとアップ�
 ## <a name="actions"></a>Actions
 Service Fabric Explorer では、クラスター内のノード、アプリケーション、サービスに対する操作を簡単に呼び出すことができます。
 
-たとえば、アプリケーション インスタンスを削除するには、左側のツリーでアプリケーションを選択し、**[アクション]** > **[アプリケーションの削除]** の順に選択します。
+たとえば、アプリケーション インスタンスを削除するには、左側のツリーでアプリケーションを選択し、 **[アクション]**  >  **[アプリケーションの削除]** の順に選択します。
 
 ![Service Fabric Explorer でのアプリケーションの削除][sfx-delete-application]
 
