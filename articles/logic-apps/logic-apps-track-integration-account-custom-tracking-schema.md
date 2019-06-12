@@ -59,7 +59,7 @@ ms.locfileid: "57192386"
 | プロパティ | type | 説明 |
 | --- | --- | --- |
 | sourceType |   | 実行ソースのタイプ。 許可されている値は、**Microsoft.Logic/workflows** と **custom** です。 (必須) |
-| ソース |   | ソースのタイプが **Microsoft.Logic/workflows** である場合は、このスキーマの後にソース情報を続ける必要があります。 ソースのタイプが **custom** の場合、スキーマは JToken です。 (必須) |
+| source |   | ソースのタイプが **Microsoft.Logic/workflows** である場合は、このスキーマの後にソース情報を続ける必要があります。 ソースのタイプが **custom** の場合、スキーマは JToken です。 (必須) |
 | systemId | String | ロジック アプリのシステム ID。 (必須) |
 | runId | String | ロジック アプリの実行 ID。 (必須) |
 | operationName | String | 操作の名前 (アクションやトリガーなど)。 (必須) |
