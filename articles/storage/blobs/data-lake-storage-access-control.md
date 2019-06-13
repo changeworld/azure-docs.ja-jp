@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 5adba958ed3bcb9efbf66c079b541e11ceed570c
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 72a72e385217178cb6afee237cc3a3e5c5d1248b
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66243601"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66751639"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 のアクセス制御
 
@@ -53,7 +53,7 @@ SAS トークンには、トークンの一部として許可されるアクセ�
 
 ストレージ アカウント レベルでセキュリティ プリンシパルにロールを割り当てた場合、アクセス制御リストを使って、そのセキュリティ プリンシパルに、特定のファイルおよびディレクトリに対する昇格されたアクセス権を付与することができます。
 
-アクセス制御リストを使って、ロール割り当てによって許可されるレベルより低いアクセスのレベルを提供することはできません。 たとえば、[ストレージ BLOB データ共同作成者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor-preview)ロールをセキュリティ プリンシパルに割り当てた場合、アクセス制御リストを使って、そのセキュリティ プリンシパルによるディレクトリへの書き込みを禁止することはできません。
+アクセス制御リストを使って、ロール割り当てによって許可されるレベルより低いアクセスのレベルを提供することはできません。 たとえば、[ストレージ BLOB データ共同作成者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor)ロールをセキュリティ プリンシパルに割り当てた場合、アクセス制御リストを使って、そのセキュリティ プリンシパルによるディレクトリへの書き込みを禁止することはできません。
 
 ### <a name="set-file-and-directory-level-permissions-by-using-access-control-lists"></a>アクセス制御リストを使ってファイルおよびディレクトリ レベルのアクセス許可を設定する
 

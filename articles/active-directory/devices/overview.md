@@ -17,12 +17,12 @@ ms.date: 06/04/2019
 ms.author: joflore
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f91ff65d0e11ed2e9f923f94c740314c9136d99
-ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
+ms.openlocfilehash: faabc65a78626c053aecfac81b560b4731e40b95
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66688692"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66729992"
 ---
 # <a name="what-is-a-device-identity"></a>デバイス ID とは
 
@@ -155,5 +155,5 @@ Azure AD のデバイス ID 管理では、以下が可能です。
 - 設定するには:
    - Azure Active Directory 登録済み Windows 10 デバイスの場合は、[Azure Active Directory 登録済み Windows 10 デバイスを構成する方法](../user-help/device-management-azuread-registered-devices-windows10-setup.md)に関するページを参照してください。
    - Azure Active Directory 参加済みデバイスの場合は、[Azure Active Directory 参加の実装を計画する方法](azureadjoin-plan.md)に関するページを参照してください。
-   - ハイブリッド Azure AD 参加デバイスの場合は、[ハイブリッド Azure Active Directory 参加の実装を計画する方法](hybrid-azuread-join-plan.md)に関するページを参照してください。   
+   - ハイブリッド Azure AD 参加デバイスの場合は、[ハイブリッド Azure Active Directory 参加の実装を計画する方法](hybrid-azuread-join-plan.md)に関するページを参照してください。
 - デバイスベースの条件付きアクセスの詳細については、[Azure Active Directory デバイスベースの条件付きアクセス ポリシーの構成](../conditional-access/require-managed-devices.md)に関するページを参照してください。
