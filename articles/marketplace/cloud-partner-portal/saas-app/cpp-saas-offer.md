@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/16/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 08baf908d47cdc6a9bc1e97f88eb5ff509d6790e
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.openlocfilehash: 813cfb25ebcd3dd15314d7aa05933d0bf1167917
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65835046"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66258060"
 ---
 # <a name="azure-saas-application-offer"></a>Azure SaaS アプリケーション プラン
 
@@ -20,6 +20,7 @@ ms.locfileid: "65835046"
 
 > [!IMPORTANT] 
 > SaaS オファー機能は、[Microsoft パートナー センター](https://partner.microsoft.com/dashboard/directory)に移行中です。  すべての新規の発行元は、新しい SaaS オファーの作成と既存のオファーの管理にパートナー センターを使用する必要があります。  現時点で SaaS オファーを提供している発行元については、Cloud パートナー ポータルからパートナー センターへのバッチ移行を進めています。  Cloud パートナー ポータルには、特定の既存のオファーが移行済みになった時点を示すステータス メッセージが表示されます。
+> 詳細については、「[Create a new SaaS offer](../../partner-center-portal/create-new-saas-offer.md)」 (新しい SaaS オファーを作成する) を参照してください。
 
 
 ご利用の Azure サブスクリプションでソリューションがデプロイされるとき、およびデザインしたインターフェイスを通じてお客様がサインインし、アプリケーションのテストを管理するときに、SaaS アプリケーションを使います。 <a href="https://azure.microsoft.com/services/active-directory">Azure Active Directory (AAD)</a> は、既存の評価環境を活用するために使用されます。

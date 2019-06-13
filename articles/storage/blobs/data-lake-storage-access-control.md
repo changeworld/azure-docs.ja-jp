@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 5ad7ef714147616fe55a9b978d501b974323e251
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 5adba958ed3bcb9efbf66c079b541e11ceed570c
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65949581"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66243601"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 のアクセス制御
 
@@ -26,9 +26,9 @@ Azure Data Lake Storage Gen2 では、Azure のロールベースのアクセス
 
 RBAC では、ロールの割り当てを使用して、"*セキュリティ プリンシパル*" にアクセス許可のセットが効果的に適用されます。 "*セキュリティ プリンシパル*" は、Azure リソースへのアクセスを要求している、Azure Active Directory (AD) で定義されたユーザー、グループ、サービス プリンシパル、またはマネージド ID を表すオブジェクトです。
 
-通常、それらの Azure リソースは、最上位のリソースに制約されます (例: Azure ストレージ アカウント)。 Azure Storage およびその結果の Azure Data Lake Storage Gen2 の場合、このメカニズムは、ファイル システムのリソースに拡張されています。
+通常、それらの Azure リソースは、最上位のリソースに制約されます (例: Azure ストレージ アカウント)。 Azure Storage およびその結果の Azure Data Lake Storage Gen2 の場合、このメカニズムは、コンテナー (ファイル システム) のリソースに拡張されています。
 
-ストレージ アカウントのスコープでセキュリティ プリンシパルにロールを割り当てる方法については、「[Azure Active Directory を使用して Azure BLOB およびキューへのアクセスを認証する](https://docs.microsoft.com/azure/storage/common/storage-auth-aad?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」をご覧ください。
+お使いのストレージ アカウントのスコープでセキュリティ プリンシパルにロールを割り当てる方法については、「[Azure portal で RBAC を使用して Azure BLOB とキューのデータへのアクセスを付与する](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」をご覧ください。
 
 ### <a name="the-impact-of-role-assignments-on-file-and-directory-level-access-control-lists"></a>ファイルおよびディレクトリ レベルのアクセス制御リストでのロール割り当ての影響
 
@@ -77,8 +77,6 @@ SAS トークンには、トークンの一部として許可されるアクセ�
 
 アクセス ACL と既定の ACL はどちらも同じ構造です。
 
-アクセス ACL と既定の ACL はどちらも同じ構造です。
-
 > [!NOTE]
 > 親の既定の ACL を変更しても、既存の子項目のアクセス ACL または既定の ACL には影響しません。
 
@@ -91,6 +89,9 @@ SAS トークンには、トークンの一部として許可されるアクセ�
 | **読み取り (R)** | ファイルの内容を読み取ることができる | ディレクトリの内容を一覧表示するには、**読み取り**と**実行**が必要です。 |
 | **書き込み (W)** | ファイルへの書き込みまたは追加を実行できる | ディレクトリに子項目を作成するには、**書き込み**と**実行**が必要です。 |
 | **実行 (X)** | Data Lake Storage Gen2 のコンテキストでは、何も意味しない | ディレクトリの子項目をスキャンするために必要です。 |
+
+> [!NOTE]
+> (RBAC は使用せず) ACL のみを使用してアクセス許可を付与するときに、ファイルにサービス プリンシパルの読み取りまたは書き込みアクセスを付与するには、ファイル システムおよびそのファイルにつながるフォルダー階層の各フォルダーにそのサービス プリンシパルの**実行**のアクセス許可を付与する必要があります。
 
 #### <a name="short-forms-for-permissions"></a>アクセス許可の短い形式
 

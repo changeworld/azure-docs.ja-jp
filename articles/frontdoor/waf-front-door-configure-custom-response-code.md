@@ -8,14 +8,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/08/2019
+ms.date: 05/21/2019
 ms.author: tyao;kumud
-ms.openlocfilehash: 7a167deb511347798fa609e2aca2a19f8bf12d21
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: d6d73055abe972cd3b6fee253b6bdb2b082ceca8
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65523717"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242985"
 ---
 # <a name="configure-a-custom-response-for-azure-web-application-firewall"></a>Web アプリケーション ファイアウォールに対するカスタム応答を構成する
 
@@ -65,11 +65,11 @@ New-AzFrontDoorWafPolicy `
 -CustomBlockResponseBody "<html><head><title>You are blocked.</title></head><body></body></html>"
 ```
 
-[Set-AzFrontDoor](/powershell/module/az.frontdoor/set-azfrontdoor) を使用して、既存の WAF ポリシーのカスタム応答コードまたは応答本文の設定を変更します。
+[Update-AzFrontDoorFireWallPolicy](/powershell/module/az.frontdoor/Update-AzFrontDoorWafPolicy) を使用して、既存の WAF ポリシーのカスタム応答コードまたは応答本文の設定を変更します。
 
 ```azurepowershell
 # modify WAF response code
-Set-AzFrontDoorFireWallPolicy `
+Update-AzFrontDoorFireWallPolicy `
 -Name myWAFPolicy `
 -ResourceGroupName myResourceGroupWAF `
 -EnabledState enabled `
@@ -79,7 +79,7 @@ Set-AzFrontDoorFireWallPolicy `
 
 ```azurepowershell
 # modify WAF response body
-Set-AzFrontDoorFireWallPolicy `
+Update-AzFrontDoorFireWallPolicy `
 -Name myWAFPolicy `
 -ResourceGroupName myResourceGroupWAF `
 -CustomBlockResponseBody "<html><head><title> Forbidden</title></head><body></body></html>"

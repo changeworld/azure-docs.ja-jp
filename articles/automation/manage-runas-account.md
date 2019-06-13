@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: shared-capabilities
 author: georgewallace
 ms.author: gwallace
-ms.date: 05/21/2019
+ms.date: 05/24/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3afe27bf71d112b53c31ab696f71d4e1a0cf6b79
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 140b1263047849e13a44441c368e6357078574d8
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66002505"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66240808"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>Azure Automation の実行アカウントを管理する
 
@@ -54,7 +54,7 @@ Azure Automation の実行アカウントは、Azure コマンドレットを使
 |Automation の証明書を作成または削除する|[New-AzureRmAutomationCertificate](/powershell/module/AzureRM.Automation/New-AzureRmAutomationCertificate)</br>[Remove-AzureRmAutomationCertificate](/powershell/module/AzureRM.Automation/Remove-AzureRmAutomationCertificate)     | リソース グループの共同作成者         |Automation アカウントのリソース グループ|
 |Automation の接続を作成または削除する|[New-AzureRmAutomationConnection](/powershell/module/AzureRM.Automation/New-AzureRmAutomationConnection)</br>[Remove-AzureRmAutomationConnection](/powershell/module/AzureRM.Automation/Remove-AzureRmAutomationConnection)|リソース グループの共同作成者 |Automation アカウントのリソース グループ|
 
-<sup>1</sup> **[ユーザー設定]** ページで Azure AD テナントの **[ユーザーはアプリケーションを登録できる]** オプションが **[はい]** に設定されている場合は、Azure AD テナントの管理者以外のユーザーが [AD アプリケーションを登録する](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)ことができます。 [アプリの登録] 設定が **[いいえ]** に指定されている場合、この操作を行うユーザーは、Azure AD の**全体管理者**でなければなりません。
+<sup>1</sup> **[ユーザー設定]** ページで Azure AD テナントの **[ユーザーはアプリケーションを登録できる]** オプションが **[はい]** に設定されている場合は、Azure AD テナントの管理者以外のユーザーが [AD アプリケーションを登録する](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)ことができます。 [アプリの登録] 設定が **[いいえ]** に設定されている場合、この操作を行うユーザーは、前述の表に定義されているユーザーである必要があります。
 
 サブスクリプションの Active Directory インスタンスのメンバーになっていない状態で、サブスクリプションの**全体管理者**ロールに追加された場合は、ゲストとして追加されます。 このような状況では、`You do not have permissions to create…` 警告が **[Add Automation Account]\(Automation アカウントの追加\)** ページに表示されます。 最初に**全体管理者**ロールに追加されていたユーザーは、サブスクリプションの Active Directory インスタンスから削除してから再追加することで、Active Directory の完全なユーザーにすることができます。 このような状況を検証するには、Azure Portal の **[Azure Active Directory]** ウィンドウで、 **[ユーザーとグループ]** 、 **[すべてのユーザー]** 、特定のユーザー、 **[プロファイル]** の順に選択します。 ユーザーのプロファイルの下部にある **[ユーザー タイプ]** 属性の値は、 **[ゲスト]** と一致しないようにする必要があります。
 

@@ -11,12 +11,12 @@ ms.author: nilesha
 ms.reviewer: trbye
 ms.date: 04/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: d6e478cba13c7b4cf628535a4a1ecdbec344a733
-ms.sourcegitcommit: eea74d11a6d6ea6d187e90e368e70e46b76cd2aa
+ms.openlocfilehash: 907383c057c0c1eebee6550a0d1e9c75dd88513c
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65035461"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66417291"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-build-your-regression-model"></a>チュートリアル:自動化された機械学習を使用して回帰モデルを構築する
 
@@ -38,7 +38,7 @@ Azure Machine Learning service を使用してお客様のモデルの構築を�
 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning service](https://aka.ms/AMLFree) を今日からお試しいただけます。
 
 >[!NOTE]
-> この記事のコードは、Azure Machine Learning SDK バージョン 1.0.0 を使用してテストされました。
+> この記事のコードは、Azure Machine Learning SDK バージョン 1.0.39 を使用してテストされました。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -54,12 +54,12 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 以下のいずれかのセクションから、これらすべての前提条件を入手します。
 
-* [ワークスペース内のクラウド ノートブック](#azure)を使用する 
+* [ワークスペース内のクラウド ノートブック サーバー](#azure)を使用する 
 * [独自のノートブック サーバー](#server)を使用する
 
 ### <a name="azure"></a>ワークスペース内のクラウド ノートブックサーバーを使用する
 
-独自のクラウド ベースのノートブック サーバーで簡単に開始できます。 このクラウド リソースを作成すると、[Azure Machine Learning SDK for Python](https://aka.ms/aml-sdk) が既にインストールされて構成されています。
+独自のクラウドベースのノートブック サーバーで簡単に開始できます。 このクラウド リソースを作成すると、[Azure Machine Learning SDK for Python](https://aka.ms/aml-sdk) が既にインストールされて構成されています。
 
 [!INCLUDE [aml-azure-notebooks](../../../includes/aml-azure-notebooks.md)]
 

@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 05/02/2019
+ms.date: 05/29/2019
 ms.topic: tutorial
 ms.service: azure-blockchain
 ms.reviewer: jackyhsu
 manager: femila
-ms.openlocfilehash: 0b5e39e9cf2fc3ffe91db6587bc1ed1bab079e93
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 9037c7b5498a5e0a37b05e5ee09891bf8066393d
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65777337"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66417492"
 ---
 # <a name="tutorial-send-transactions-using-azure-blockchain-service"></a>チュートリアル:Azure Blockchain Service を使用してトランザクションを送信する
 
@@ -35,10 +35,8 @@ ms.locfileid: "65777337"
 
 * 「[Create a blockchain member using the Azure portal (Azure portal を使用してブロックチェーン メンバーを作成する)](create-member.md)」を完了します
 * 「[Quickstart: Use Truffle to connect to a consortium network (クイックスタート: Truffle を使用してコンソーシアム ネットワークに接続する)](connect-truffle.md)」を完了します
-* Truffle では、[Node.js](https://nodejs.org)、[Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)、[Truffle](https://github.com/trufflesuite/truffle) など、いくつかのツールがインストールされている必要があります。
-
-    Windows 10 で迅速に設定するには、Unix Bash シェル ターミナル用の [Ubuntu on Windows](https://www.microsoft.com/p/ubuntu/9nblggh4msv6) をインストールした後、[Truffle](https://github.com/trufflesuite/truffle) をインストールします。 Ubuntu on Windows のディストリビューションには、Node.js と Git が含まれています。
-
+* [Truffle](https://github.com/trufflesuite/truffle) をインストールする。 Truffle では、[Node.js](https://nodejs.org)、[Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) など、いくつかのツールがインストールされている必要があります。
+* [Python 2.7.15](https://www.python.org/downloads/release/python-2715/) をインストールする。 Python は Web3 に必要です。
 * [Visual Studio Code](https://code.visualstudio.com/Download) をインストールします
 * [Visual Studio Code Solidity 拡張機能](https://marketplace.visualstudio.com/items?itemName=JuanBlanco.solidity)をインストールします
 
@@ -65,9 +63,9 @@ ms.locfileid: "65777337"
 
 ノードがプロビジョニングされている間に、チュートリアルを続行できます。 プロビジョニングが完了すると、3 つのトランザクション ノードが作成されます。
 
-## <a name="open-truffle-project"></a>Truffle プロジェクトを開く
+## <a name="open-truffle-console"></a>Truffle コンソールを開く
 
-1. Bash シェル ターミナルを開きます。
+1. Node.js コマンド プロンプトまたはシェルを開きます。
 1. Truffle プロジェクト ディレクトリへのパスを、前提条件の「[Quickstart: Use Truffle to connect to a consortium network (クイックスタート: Truffle を使用してコンソーシアム ネットワークに接続する)](connect-truffle.md)」から変更します。 たとえば、次のように入力します。
 
     ```bash
@@ -82,9 +80,9 @@ ms.locfileid: "65777337"
 
     Truffle では、ローカルの開発用ブロックチェーンが作成されて、対話型コンソールが提供されます。
 
-## <a name="connect-to-transaction-node"></a>トランザクション ノードに接続する
+## <a name="create-ethereum-account"></a>Ethereum アカウントを作成する
 
-Web3 を使って既定のトランザクション ノードに接続し、アカウントを作成します。 Web3 の接続文字列は、Azure portal から取得できます。
+Web3 を使って既定のトランザクション ノードに接続し、Ethereum アカウントを作成します。 Web3 の接続文字列は、Azure portal から取得できます。
 
 1. Azure portal で既定のトランザクション ノードに移動し、 **[Transaction nodes]\(トランザクション ノード\) > [Sample code]\(サンプル コード\) > [Web3]** の順に選択します。
 1. **[HTTPS (Access key 1)]\(HTTPS (アクセス キー 1)\)** から JavaScript をコピーします ![Web3 サンプル コード](./media/send-transaction/web3-code.png)
@@ -105,7 +103,7 @@ Web3 を使って既定のトランザクション ノードに接続し、ア�
     web3.eth.personal.newAccount("1@myStrongPassword");
     ```
 
-    返されるアカウント アドレスと使用したパスワードを、次のセクションのために記録しておきます。
+    返されるアカウント アドレスとパスワードをメモしておきます。 Ethereum アカウント アドレスとパスワードは次のセクションで必要になります。
 
 1. Truffle 開発環境を終了します。
 
@@ -138,101 +136,99 @@ Truffle プロジェクトを構成するには、Azure portal からいくつ�
 1. Truffle 構成ファイル `truffle-config.js` を開きます。
 1. ファイルの内容を、次の構成情報に置き換えます。 エンドポイント アドレスとアカウント情報を含む変数を追加します。 山かっこのセクションは、前のセクションで収集した値に置き換えます。
 
-``` javascript
-var defaultnode = "<default transaction node connection string>";
-var alpha = "<alpha transaction node connection string>";
-var beta = "<beta transaction node connection string>";
-
-var myAccount = "<account address>";
-var myPassword = "<account password>";
-
-var Web3 = require("web3");
-```
-
-構成の **module.exports** セクションに構成コードを追加します。
-
-```javascript
-module.exports = {
-  networks: {
-    defaultnode: {
-      provider:(() =>  {
-      const AzureBlockchainProvider = new Web3.providers.HttpProvider(defaultnode);
-
-      const web3 = new Web3(AzureBlockchainProvider);
-      web3.eth.personal.unlockAccount(myAccount, myPassword);
-
-      return AzureBlockchainProvider;
-      })(),
-
-      network_id: "*",
-      gas: 0,
-      gasPrice: 0,
-      from: myAccount
-    },
-    alpha: {
-      provider: new Web3.providers.HttpProvider(alpha),
-      network_id: "*",
-      gas: 0,
-      gasPrice: 0
-    },
-    beta: {
-      provider: new Web3.providers.HttpProvider(beta),
-      network_id: "*",
-      gas: 0,
-      gasPrice: 0
+    ``` javascript
+    var defaultnode = "<default transaction node connection string>";
+    var alpha = "<alpha transaction node connection string>";
+    var beta = "<beta transaction node connection string>";
+    
+    var myAccount = "<Ethereum account address>";
+    var myPassword = "<Ethereum account password>";
+    
+    var Web3 = require("web3");
+    
+    module.exports = {
+      networks: {
+        defaultnode: {
+          provider:(() =>  {
+          const AzureBlockchainProvider = new Web3.providers.HttpProvider(defaultnode);
+    
+          const web3 = new Web3(AzureBlockchainProvider);
+          web3.eth.personal.unlockAccount(myAccount, myPassword);
+    
+          return AzureBlockchainProvider;
+          })(),
+    
+          network_id: "*",
+          gas: 0,
+          gasPrice: 0,
+          from: myAccount
+        },
+        alpha: {
+          provider: new Web3.providers.HttpProvider(alpha),
+          network_id: "*",
+          gas: 0,
+          gasPrice: 0
+        },
+        beta: {
+          provider: new Web3.providers.HttpProvider(beta),
+          network_id: "*",
+          gas: 0,
+          gasPrice: 0
+        }
+      }
     }
-  }
-}
-```
+    ```
+
+1. `truffle-config.js` に対する変更を保存します。
 
 ## <a name="create-smart-contract"></a>スマート コントラクトを作成する
 
-**contracts** フォルダーに、`SimpleStorage.sol` という名前の新しいファイルを作成します。 次のコードを追加します。
+1. **contracts** フォルダーに、`SimpleStorage.sol` という名前の新しいファイルを作成します。 次のコードを追加します。
 
-```solidity
-pragma solidity >=0.4.21 <0.6.0;
-
-contract SimpleStorage {
-    string public storedData;
-
-    constructor(string memory initVal) public {
-        storedData = initVal;
+    ```solidity
+    pragma solidity >=0.4.21 <0.6.0;
+    
+    contract SimpleStorage {
+        string public storedData;
+    
+        constructor(string memory initVal) public {
+            storedData = initVal;
+        }
+    
+        function set(string memory x) public {
+            storedData = x;
+        }
+    
+        function get() view public returns (string memory retVal) {
+            return storedData;
+        }
     }
+    ```
+    
+1. **migrations** フォルダーに、`2_deploy_simplestorage.js` という名前の新しいファイルを作成します。 次のコードを追加します。
 
-    function set(string memory x) public {
-        storedData = x;
-    }
+    ```solidity
+    var SimpleStorage = artifacts.require("SimpleStorage.sol");
+    
+    module.exports = function(deployer) {
+    
+      // Pass 42 to the contract as the first constructor parameter
+      deployer.deploy(SimpleStorage, "42", {privateFor: ["<alpha node public key>"], from:"<Ethereum account address>"})  
+    };
+    ```
 
-    function get() view public returns (string memory retVal) {
-        return storedData;
-    }
-}
-```
+1. 山かっこ内の値を置き換えます。
 
-**migrations** フォルダーに、`2_deploy_simplestorage.js` という名前の新しいファイルを作成します。 次のコードを追加します。
+    | 値 | 説明
+    |-------|-------------
+    | \<alpha node public key\> | alpha ノードの公開キー
+    | \<Ethereum アカウント アドレス\> | 既定のトランザクション ノードに作成された Ethereum アカウント アドレス。
 
-```solidity
-var SimpleStorage = artifacts.require("SimpleStorage.sol");
+    この例では、**storeData** の初期値は 42 に設定されます。
 
-module.exports = function(deployer) {
+    **privateFor** では、コントラクトを使用できるノードを定義します。 この例では、既定のトランザクション ノードのアカウントはプライベート トランザクションを **alpha** ノードにキャストできます。 すべてのプライベート トランザクション参加者に対して公開キーを追加します。 **privateFor:** と **from:** を含めないと、スマート コントラクト トランザクションはパブリックになり、すべてのコンソーシアム メンバーから見えるようになります。
 
-  // Pass 42 to the contract as the first constructor parameter
-  deployer.deploy(SimpleStorage, "42", {privateFor: ["<alpha node public key>"], from:"<Account address>"})  
-};
-```
-
-山かっこ内の値を置き換えます。
-
-| 値 | 説明
-|-------|-------------
-| \<alpha node public key\> | alpha ノードの公開キー
-| \<Account address\> | 既定のトランザクション ノードで作成されたアカウント アドレス。
-
-この例では、**storeData** の初期値は 42 に設定されます。
-
-**privateFor** では、コントラクトを使用できるノードを定義します。 この例では、既定のトランザクション ノードのアカウントはプライベート トランザクションを **alpha** ノードにキャストできます。 すべてのプライベート トランザクション参加者に対して公開キーを追加する必要があります。 **privateFor:** と **from:** を含めないと、スマート コントラクト トランザクションはパブリックになり、すべてのコンソーシアム メンバーから見えるようになります。
-
-**[ファイル] > [すべて保存]** を選択して、すべてのファイルを保存します。
+1. **[ファイル] > [すべて保存]** を選択して、すべてのファイルを保存します。
 
 ## <a name="deploy-smart-contract"></a>スマート コントラクトをデプロイする
 
@@ -247,7 +243,7 @@ Truffle では、**SimpleStorage** スマート コントラクトが最初に�
 出力例:
 
 ```
-pat@DESKTOP:/mnt/c/truffledemo$ truffle migrate --network defaultnode
+admin@desktop:/mnt/c/truffledemo$ truffle migrate --network defaultnode
 
 2_deploy_simplestorage.js
 =========================
@@ -279,190 +275,185 @@ Summary
 
 ## <a name="validate-contract-privacy"></a>コントラクトのプライバシーを検証する
 
-コントラクトのプライバシーのため、コントラクトの値のクエリは、**privateFor** で宣言したノードからのみ行うことができます。 この例では、アカウントがそのノードに存在するので、既定のトランザクション ノードのクエリを実行できます。 Truffle コンソールを使って、既定のトランザクション ノードに接続します。
+コントラクトのプライバシーのため、コントラクトの値のクエリは、**privateFor** で宣言したノードからのみ行うことができます。 この例では、アカウントがそのノードに存在するので、既定のトランザクション ノードのクエリを実行できます。 
 
-```bash
-truffle console --network defaultnode
-```
+1. Truffle コンソールを使って、既定のトランザクション ノードに接続します。
 
-コントラクト インスタンスの値を返すコマンドを実行します。
+    ```bash
+    truffle console --network defaultnode
+    ```
 
-```bash
-SimpleStorage.deployed().then(function(instance){return instance.get();})
-```
+1. Truffle コンソールで、コントラクト インスタンスの値を返すコードを実行します。
 
-既定のトランザクション ノードのクエリが成功した場合、値 42 が返されます。
+    ```bash
+    SimpleStorage.deployed().then(function(instance){return instance.get();})
+    ```
 
-出力例:
+    既定のトランザクション ノードのクエリが成功した場合、値 42 が返されます。 例:
 
-```
-pat@DESKTOP-J41EP5S:/mnt/c/truffledemo$ truffle console --network defaultnode
-truffle(defaultnode)> SimpleStorage.deployed().then(function(instance){return instance.get();})
-'42'
-```
+    ```
+    admin@desktop:/mnt/c/truffledemo$ truffle console --network defaultnode
+    truffle(defaultnode)> SimpleStorage.deployed().then(function(instance){return instance.get();})
+    '42'
+    ```
 
-コンソールを終了します。
+1. Truffle コンソールを終了します。
 
-```bash
-.exit
-```
+    ```bash
+    .exit
+    ```
 
-**alpha** ノードの公開キーを **privateFor** で宣言したので、**alpha** ノードのクエリを実行できます。 Truffle コンソールを使って、**alpha** ノードに接続します。
+**alpha** ノードの公開キーを **privateFor** で宣言したので、**alpha** ノードのクエリを実行できます。
 
-```bash
-truffle console --network alpha
-```
+1. Truffle コンソールを使って、**alpha** ノードに接続します。
 
-コントラクト インスタンスの値を返すコマンドを実行します。
+    ```bash
+    truffle console --network alpha
+    ```
 
-```bash
-SimpleStorage.deployed().then(function(instance){return instance.get();})
-```
+1. Truffle コンソールで、コントラクト インスタンスの値を返すコードを実行します。
 
-**alpha** ノードのクエリが成功した場合、値 42 が返されます。
+    ```bash
+    SimpleStorage.deployed().then(function(instance){return instance.get();})
+    ```
 
-出力例:
+    **alpha** ノードのクエリが成功した場合、値 42 が返されます。 例:
 
-```
-pat@DESKTOP-J41EP5S:/mnt/c/truffledemo$ truffle console --network alpha
-truffle(alpha)> SimpleStorage.deployed().then(function(instance){return instance.get();})
-'42'
-```
+    ```
+    admin@desktop:/mnt/c/truffledemo$ truffle console --network alpha
+    truffle(alpha)> SimpleStorage.deployed().then(function(instance){return instance.get();})
+    '42'
+    ```
 
-コンソールを終了します。
+1. Truffle コンソールを終了します。
 
-```bash
-.exit
-```
+    ```bash
+    .exit
+    ```
 
-**beta** ノードの公開キーは **privateFor** で宣言しなかったので、コントラクトのプライバシーのため、**beta** ノードのクエリを実行することはできません。 Truffle コンソールを使って、**beta** ノードに接続します。
+**beta** ノードの公開キーは **privateFor** で宣言しなかったので、コントラクトのプライバシーのため、**beta** ノードのクエリを実行することはできません。
 
-```bash
-truffle console --network beta
-```
+1. Truffle コンソールを使って、**beta** ノードに接続します。
 
-コントラクト インスタンスの値を返すコマンドを実行します。
+    ```bash
+    truffle console --network beta
+    ```
 
-```bash
-SimpleStorage.deployed().then(function(instance){return instance.get();})
-```
+1. コントラクト インスタンスの値を返すコードを実行します。
 
-コントラクトがプライベートであるため、**beta** ノードに対するクエリは失敗します。
+    ```bash
+    SimpleStorage.deployed().then(function(instance){return instance.get();})
+    ```
 
-出力例:
+1. コントラクトがプライベートであるため、**beta** ノードに対するクエリは失敗します。 例:
 
-```
-pat@DESKTOP-J41EP5S:/mnt/c/truffledemo$ truffle console --network beta
-truffle(beta)> SimpleStorage.deployed().then(function(instance){return instance.get();})
-Thrown:
-Error: Returned values aren't valid, did it run Out of Gas?
-    at XMLHttpRequest._onHttpResponseEnd (/mnt/c/truffledemo/node_modules/xhr2-cookies/xml-http-request.ts:345:8)
-    at XMLHttpRequest._setReadyState (/mnt/c/truffledemo/node_modules/xhr2-cookies/xml-http-request.ts:219:8)
-    at XMLHttpRequestEventTarget.dispatchEvent (/mnt/c/truffledemo/node_modules/xhr2-cookies/xml-http-request-event-target.ts:44:13)
-    at XMLHttpRequest.request.onreadystatechange (/mnt/c/truffledemo/node_modules/web3-providers-http/src/index.js:96:13)
-```
+    ```
+    admin@desktop:/mnt/c/truffledemo$ truffle console --network beta
+    truffle(beta)> SimpleStorage.deployed().then(function(instance){return instance.get();})
+    Thrown:
+    Error: Returned values aren't valid, did it run Out of Gas?
+        at XMLHttpRequest._onHttpResponseEnd (/mnt/c/truffledemo/node_modules/xhr2-cookies/xml-http-request.ts:345:8)
+        at XMLHttpRequest._setReadyState (/mnt/c/truffledemo/node_modules/xhr2-cookies/xml-http-request.ts:219:8)
+        at XMLHttpRequestEventTarget.dispatchEvent (/mnt/c/truffledemo/node_modules/xhr2-cookies/xml-http-request-event-target.ts:44:13)
+        at XMLHttpRequest.request.onreadystatechange (/mnt/c/truffledemo/node_modules/web3-providers-http/src/index.js:96:13)
+    ```
 
-コンソールを終了します。
+1. Truffle コンソールを終了します。
 
-```bash
-.exit
-```
-
+    ```bash
+    .exit
+    ```
+    
 ## <a name="send-a-transaction"></a>トランザクションを開始する
 
-`sampletx.js`という名前でファイルを作成します。 それをプロジェクトのルートに保存します。
+1. `sampletx.js`という名前でファイルを作成します。 それをプロジェクトのルートに保存します。
+1. このスクリプトでは、コントラクトの **storedData** 変数の値が 65 に設定されます。 新しいファイルにコードを追加します。
 
-このスクリプトでは、コントラクトの **storedData** 変数の値が 65 に設定されます。 新しいファイルにコードを追加します。
+    ```javascript
+    var SimpleStorage = artifacts.require("SimpleStorage");
+    
+    module.exports = function(done) {
+      console.log("Getting deployed version of SimpleStorage...")
+      SimpleStorage.deployed().then(function(instance) {
+        console.log("Setting value to 65...");
+        return instance.set("65", {privateFor: ["<alpha node public key>"], from:"<Ethereum account address>"});
+      }).then(function(result) {
+        console.log("Transaction:", result.tx);
+        console.log("Finished!");
+        done();
+      }).catch(function(e) {
+        console.log(e);
+        done();
+      });
+    };
+    ```
 
-```javascript
-var SimpleStorage = artifacts.require("SimpleStorage");
+    山かっこ内の値を置き換えて、ファイルを保存します。
 
-module.exports = function(done) {
-  console.log("Getting deployed version of SimpleStorage...")
-  SimpleStorage.deployed().then(function(instance) {
-    console.log("Setting value to 65...");
-    return instance.set("65", {privateFor: ["<alpha node public key>"], from:"<Account address>"});
-  }).then(function(result) {
-    console.log("Transaction:", result.tx);
-    console.log("Finished!");
-    done();
-  }).catch(function(e) {
-    console.log(e);
-    done();
-  });
-};
-```
+    | 値 | 説明
+    |-------|-------------
+    | \<alpha node public key\> | alpha ノードの公開キー
+    | \<Ethereum アカウント アドレス\> | 既定のトランザクション ノードに作成された Ethereum アカウント アドレス。
 
-山かっこ内の値を置き換えて、ファイルを保存します。
+    **privateFor** では、トランザクションを使用できるノードを定義します。 この例では、既定のトランザクション ノードのアカウントはプライベート トランザクションを **alpha** ノードにキャストできます。 すべてのプライベート トランザクション参加者に対して公開キーを追加する必要があります。
 
-| 値 | 説明
-|-------|-------------
-| \<alpha node public key\> | alpha ノードの公開キー
-| \<Account address\> | 既定のトランザクション ノードで作成されたアカウント アドレス。
+1. Truffle を使い、既定のトランザクション ノードに対してスクリプトを実行します。
 
-**privateFor** では、トランザクションを使用できるノードを定義します。 この例では、既定のトランザクション ノードのアカウントはプライベート トランザクションを **alpha** ノードにキャストできます。 すべてのプライベート トランザクション参加者に対して公開キーを追加する必要があります。
+    ```bash
+    truffle exec sampletx.js --network defaultnode
+    ```
 
-Truffle を使い、既定のトランザクション ノードに対してスクリプトを実行します。
+1. Truffle コンソールで、コントラクト インスタンスの値を返すコードを実行します。
 
-```bash
-truffle exec sampletx.js --network defaultnode
-```
+    ```bash
+    SimpleStorage.deployed().then(function(instance){return instance.get();})
+    ```
 
-コントラクト インスタンスの値を返すコマンドを実行します。
+    トランザクションが成功した場合は、値 65 が返されます。 例:
+    
+    ```
+    Getting deployed version of SimpleStorage...
+    Setting value to 65...
+    Transaction: 0x864e67744c2502ce75ef6e5e09d1bfeb5cdfb7b880428fceca84bc8fd44e6ce0
+    Finished!
+    ```
 
-```bash
-SimpleStorage.deployed().then(function(instance){return instance.get();})
-```
+1. Truffle コンソールを終了します。
 
-トランザクションが成功した場合は、値 65 が返されます。
-
-出力例:
-
-```
-Getting deployed version of SimpleStorage...
-Setting value to 65...
-Transaction: 0x864e67744c2502ce75ef6e5e09d1bfeb5cdfb7b880428fceca84bc8fd44e6ce0
-Finished!
-```
-
-コンソールを終了します。
-
-```bash
-.exit
-```
-
+    ```bash
+    .exit
+    ```
+    
 ## <a name="validate-transaction-privacy"></a>トランザクションのプライバシーを検証する
 
-トランザクションのプライバシーのため、トランザクションを実行できるのは **privateFor** で宣言したノード上だけです。 この例では、**alpha** ノードの公開キーを **privateFor** で宣言したので、トランザクションを実行できます。 Truffle を使って、**alpha** ノードでトランザクションを実行します。
+トランザクションのプライバシーのため、トランザクションを実行できるのは **privateFor** で宣言したノード上だけです。 この例では、**alpha** ノードの公開キーを **privateFor** で宣言したので、トランザクションを実行できます。 
 
-```bash
-truffle exec sampletx.js --network alpha
-```
+1. Truffle を使って、**alpha** ノードでトランザクションを実行します。
 
-コントラクト インスタンスの値を返すコマンドを実行します。
+    ```bash
+    truffle exec sampletx.js --network alpha
+    ```
+    
+1. コントラクト インスタンスの値を返すコードを実行します。
 
-```bash
-SimpleStorage.deployed().then(function(instance){return instance.get();})
-```
+    ```bash
+    SimpleStorage.deployed().then(function(instance){return instance.get();})
+    ```
+    
+    トランザクションが成功した場合は、値 65 が返されます。 例:
 
-トランザクションが成功した場合は、値 65 が返されます。
+    ```
+    Getting deployed version of SimpleStorage...
+    Setting value to 65...
+    Transaction: 0x864e67744c2502ce75ef6e5e09d1bfeb5cdfb7b880428fceca84bc8fd44e6ce0
+    Finished!
+    ```
+    
+1. Truffle コンソールを終了します。
 
-出力例:
-
-```
-Getting deployed version of SimpleStorage...
-Setting value to 65...
-Transaction: 0x864e67744c2502ce75ef6e5e09d1bfeb5cdfb7b880428fceca84bc8fd44e6ce0
-Finished!
-```
-
-コンソールを終了します。
-
-```bash
-.exit
-```
-
-このチュートリアルでは、コントラクトとトランザクションのプライバシーを説明するため、2 つのトランザクション ノードを追加しました。 既定のノードを使って、プライベート スマート コントラクトをデプロイしました。 コントラクトの値のクエリを実行し、ブロックチェーンでトランザクションを実行して、プライバシーをテストしました。
+    ```bash
+    .exit
+    ```
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
@@ -474,6 +465,8 @@ Finished!
 1. **[リソース グループの削除]** を選択します。 リソース グループ名を入力して削除を確認し、 **[削除]** を選択します。
 
 ## <a name="next-steps"></a>次の手順
+
+このチュートリアルでは、コントラクトとトランザクションのプライバシーを説明するため、2 つのトランザクション ノードを追加しました。 既定のノードを使って、プライベート スマート コントラクトをデプロイしました。 コントラクトの値のクエリを実行し、ブロックチェーンでトランザクションを実行して、プライバシーをテストしました。
 
 > [!div class="nextstepaction"]
 > [Azure Blockchain Service を使用してブロックチェーン アプリケーションを開発する](develop.md)

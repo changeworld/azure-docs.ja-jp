@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 3/19/2019
 ms.author: victorh
-ms.openlocfilehash: 1259e755642563a7baad5496bc84ed736d5499f8
-ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
+ms.openlocfilehash: ee901fdcae9717cc6d03d7653bcaacc0c32518e0
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65849823"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66254314"
 ---
 # <a name="overview-of-ssl-termination-and-end-to-end-ssl-with-application-gateway"></a>Application Gateway での SSL ターミネーションとエンド ツー エンド SSL の概要
 
@@ -50,7 +50,7 @@ Application Gateway では、次の種類の証明書がサポートされてい
 詳細については、[Application Gateway での SSL ターミネーションの構成に関するページ](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal) を参照してください。
 
 ### <a name="size-of-the-certificate"></a>証明書のサイズ
-SSL 証明書情報を含む Personal Information Exchange (PFX) ファイルのサイズは 10 KB 以下にします。
+サポートされる SSL 証明書の最大サイズを把握するには、「[Application Gateway の制限](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits)」セクションを確認してください。
 
 ## <a name="end-to-end-ssl-encryption"></a>エンド ツー エンド SSL 暗号化
 

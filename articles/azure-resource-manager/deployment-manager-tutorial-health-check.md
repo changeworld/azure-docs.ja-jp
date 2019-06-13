@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 05/06/2019
+ms.date: 05/31/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 8ffc64359faab539ab74e354caad4081f31fcd43
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: d43a0e7c48db9dd42c7cf3b52e5d4072a4827898
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65790122"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479182"
 ---
 # <a name="tutorial-use-health-check-in-azure-deployment-manager-public-preview"></a>チュートリアル:Azure Deployment Manager で正常性チェックを使用する (パブリック プレビュー)
 
@@ -50,18 +50,18 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 この記事を完了するには、以下が必要です。
 
 * 「[Resource Manager テンプレートで Azure Deployment Manager を使用する](./deployment-manager-tutorial.md)」を完了します。
-* このチュートリアルで使用される[テンプレートと成果物](https://armtutorials.blob.core.windows.net/admtutorial/ADMTutorial.zip)をダウンロードします。 
+* このチュートリアルで使用される[テンプレートと成果物](https://armtutorials.blob.core.windows.net/admtutorial/ADMTutorial.zip)をダウンロードします。
 
 ## <a name="create-a-health-check-service-simulator"></a>正常性チェック サービス シミュレーターの作成
 
-運用環境では、通常 1 つまたは複数の監視プロバイダーを使用します。 Microsoft は、正常性統合を可能な限り簡単にするために、サービス正常性監視のトップ企業と連携して、正常性チェックをデプロイと統合するための簡単なコピー/貼り付けソリューションを提供しています。 これらの企業の一覧については、[正常性監視プロバイダー](./deployment-manager-health-check.md#health-monitoring-providers)に関するページを参照してください。 このチュートリアルでは、正常性監視サービスをシミュレーションするための [Azure 関数](/azure/azure-functions/)を作成します。 この関数は、状態コードを受け取り、同じコードを返します。 Azure Deployment Manager テンプレートは、その状態コードを使用して、デプロイを進める方法を決定します。 
+運用環境では、通常 1 つまたは複数の監視プロバイダーを使用します。 Microsoft は、正常性統合を可能な限り簡単にするために、サービス正常性監視のトップ企業と連携して、正常性チェックをデプロイと統合するための簡単なコピー/貼り付けソリューションを提供しています。 これらの企業の一覧については、[正常性監視プロバイダー](./deployment-manager-health-check.md#health-monitoring-providers)に関するページを参照してください。 このチュートリアルでは、正常性監視サービスをシミュレーションするための [Azure 関数](/azure/azure-functions/)を作成します。 この関数は、状態コードを受け取り、同じコードを返します。 Azure Deployment Manager テンプレートは、その状態コードを使用して、デプロイを進める方法を決定します。
 
 次の 2 つのファイルは、Azure 関数をデプロイするために使用します。 チュートリアルを進めるためにこれらのファイルをダウンロードする必要はありません。
 
-* Resource Manager テンプレートは、[https://armtutorials.blob.core.windows.net/admtutorial/deploy_hc_azure_function.json](https://armtutorials.blob.core.windows.net/admtutorial/deploy_hc_azure_function.json) にあります。 Azure 関数を作成するには、このテンプレートをデプロイします。  
-* Azure 関数のソース コードの ZIP ファイルは、[http://armtutorials.blob.core.windows.net/admtutorial/ADMHCFunction0417.zip](http://armtutorials.blob.core.windows.net/admtutorial/RestHealthTest.zip) にあります。 この ZIP は、Resource Manager テンプレートによって呼び出されます。
+* Resource Manager テンプレートは、[https://armtutorials.blob.core.windows.net/admtutorial/deploy_hc_azure_function.json](https://armtutorials.blob.core.windows.net/admtutorial/deploy_hc_azure_function.json) にあります。 Azure 関数を作成するには、このテンプレートをデプロイします。
+* Azure 関数のソース コードの ZIP ファイルは、[http://armtutorials.blob.core.windows.net/admtutorial/ADMHCFunction0417.zip](http://armtutorials.blob.core.windows.net/admtutorial/ADMHCFunction0417.zip) にあります。 この ZIP は、Resource Manager テンプレートによって呼び出されます。
 
-Azure 関数をデプロイするには、**[試してみる]** を選択し、Azure Cloud Shell を開いて、シェル ウィンドウに次のスクリプトを貼り付けます。  コードを貼り付けるには、シェル ウィンドウを右クリックして、**[貼り付け]** を選択します。 
+Azure 関数をデプロイするには、 **[試してみる]** を選択し、Azure Cloud Shell を開いて、シェル ウィンドウに次のスクリプトを貼り付けます。  コードを貼り付けるには、シェル ウィンドウを右クリックして、 **[貼り付け]** を選択します。
 
 > [!IMPORTANT]
 > PowerShell スクリプトの **projectName** は、このチュートリアルでデプロイされる Azure サービスの名前を生成するために使用します。 Azure サービスが異なると、名前に関する要件も異なります。 デプロイを確実に成功させるには、小文字と数字のみが含まれた 12 文字未満の名前を選びます。
@@ -81,7 +81,7 @@ Azure 関数を検証およびテストする:
 1. [Azure Portal](https://portal.azure.com)を開きます。
 1. リソース グループを開きます。  既定の名前は、**rg** が付加されたプロジェクト名です。
 1. リソース グループからアプリ サービスを選択します。  アプリ サービスの既定の名前は、**webapp** が付加されたプロジェクト名です。
-1. **[Functions]** を展開して **[HttpTrigger1]** を選択します。 
+1. **[Functions]** を展開して **[HttpTrigger1]** を選択します。
 
     ![Azure Deployment Manager の正常性チェックの Azure 関数](./media/deployment-manager-tutorial-health-check/azure-deployment-manager-hc-function.png)
 
@@ -178,7 +178,7 @@ Azure 関数を検証およびテストする:
     },
     ```
 
-    この定義に基づいて、正常性状態が *healthy* または *warning* のいずれかの場合は、ロールアウトが進行します。 
+    この定義に基づいて、正常性状態が *healthy* または *warning* のいずれかの場合は、ロールアウトが進行します。
 
 1. ロールアウトの定義の **dependsON** を更新して、新しく定義した正常性チェック手順を含めます。
 
@@ -189,7 +189,7 @@ Azure 関数を検証およびテストする:
     ],
     ```
 
-1. **stepGroups** を更新して、正常性チェック手順を含めます。 **healthCheckStep** は、**stepGroup2** の **postDeploymentSteps** 内で呼び出されます。 **stepGroup3** と **stepGroup4** は、正常性状態が *healthy* または *warning* のいずれかの場合のみデプロイされます。 
+1. **stepGroups** を更新して、正常性チェック手順を含めます。 **healthCheckStep** は、**stepGroup2** の **postDeploymentSteps** 内で呼び出されます。 **stepGroup3** と **stepGroup4** は、正常性状態が *healthy* または *warning* のいずれかの場合のみデプロイされます。
 
     ```json
     "stepGroups": [
@@ -240,7 +240,7 @@ Azure 関数を検証およびテストする:
 * トポロジ テンプレート: https://armtutorials.blob.core.windows.net/admtutorial/ADMTemplates/CreateADMServiceTopology.json
 * 成果物ストア: https://armtutorials.blob.core.windows.net/admtutorial/ArtifactStore
 
-トポロジをデプロイするには、**[試してみる]** を選択し、Cloud Shell を開いて PowerShell スクリプトを貼り付けます。
+トポロジをデプロイするには、 **[試してみる]** を選択し、Cloud Shell を開いて PowerShell スクリプトを貼り付けます。
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter the same project name used earlier in this tutorial"
@@ -261,7 +261,7 @@ New-AzResourceGroupDeployment `
 
 ![Azure Deployment Manager チュートリアルの配備済みサービス トポロジ リソース](./media/deployment-manager-tutorial/azure-deployment-manager-tutorial-deployed-topology-resources.png)
 
-リソースを参照するには、**[非表示型の表示]** を選択する必要があります。
+リソースを参照するには、 **[非表示型の表示]** を選択する必要があります。
 
 ## <a name="deploy-the-rollout-with-the-unhealthy-status"></a>異常状態でのロールアウトのデプロイ
 
@@ -394,7 +394,7 @@ Azure リソースが不要になったら、リソース グループを削除�
     * **&lt;namePrefix>ServiceWUSrg**: ServiceWUS によって定義されたリソースが収納されます。
     * **&lt;namePrefix>ServiceEUSrg**: ServiceEUS によって定義されたリソースが収納されます。
     * ユーザー定義マネージド ID 用のリソース グループです。
-3. リソース グループ名を選択します。  
+3. リソース グループ名を選択します。
 4. トップ メニューから **[リソース グループの削除]** を選択します。
 5. このチュートリアルで作成した他のリソース グループを削除するには、最後の 2 つの手順を繰り返します。
 

@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/23/2019
-ms.openlocfilehash: e692b0dc1089804b1d68b79c1a6f438f30554602
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: e29ef2616a43223ec582575ca6363f78b26e5f22
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66146294"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66753048"
 ---
 # <a name="explore-and-prepare-data-with-the-dataset-class-preview"></a>Dataset クラス (プレビュー) でデータを探索して準備する
 
@@ -148,7 +148,7 @@ Datasets では、null 値、NaN、コンテンツがない値が欠損値と見
 
 前のセクションで生成された Dataset プロファイルから、`Latitude` と `Longitude` の列の欠損値の割合が高いことがわかります。 この例では、これら 2 つの列の欠損値の平均値を計算し、補完します。
 
-最初に、[`get_definition()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#get-definition-version-id-none-) を使用して Dataset の最新の定義を取得し、[`keep_columns()`](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#keep-columns-columns--multicolumnselection-----azureml-dataprep-api-dataflow-dataflow) を使用してデータを減らし、対処する列のみを表示するようにします。
+最初に、[`get_definition()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#get-definition-version-id-none-) を使用して Dataset の最新の定義を取得し、[`keep_columns()`](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow#keep-columns-columns--multicolumnselection--validate-column-exists--bool---false-----azureml-dataprep-api-dataflow-dataflow) を使用してデータを減らし、対処する列のみを表示するようにします。
 
 ```Python
 from azureml.core.dataset import Dataset

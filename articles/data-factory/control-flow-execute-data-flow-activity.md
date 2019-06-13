@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/22/2019
 ms.author: makromer
-ms.openlocfilehash: b0a6c6feae11f8daeed54c5e763dbff3aa711652
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: c33219eacb1d3bada5630a7792f98ba33dba824e
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66153486"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235861"
 ---
 # <a name="execute-data-flow-activity-in-azure-data-factory"></a>Azure Data Factory でのデータ フローの実行アクティビティ
 データ フローの実行アクティビティを使用して、パイプライン デバッグ (サンドボックス) 実行とパイプライン トリガー実行で ADF データ フローを実行します。
@@ -49,10 +49,6 @@ ms.locfileid: "66153486"
 
 ![データ フローの実行](media/data-flow/activity-data-flow.png "データ フローの実行")
 
-### <a name="run-on"></a>Run on (実行先)
-
-データ フローのこの実行のコンピューティング環境を選択します。 既定では、Azure Auto-Resolve Default Integration Runtime が選択されています。 この選択肢では、データ ファクトリと同じリージョンの Spark 環境でデータ フローが実行されます。 コンピューティングの種類がジョブ クラスターになるため、コンピューティング環境の起動に数分かかります。
-
 ### <a name="debugging-pipelines-with-data-flows"></a>データ フローを使用したパイプラインのデバッグ
 
 ![デバッグ ボタン](media/data-flow/debugbutton.png "デバッグ ボタン")
@@ -65,9 +61,14 @@ ms.locfileid: "66153486"
 
 データ フローの実行の既定の設定は、一般コンピューティングの 8 コアで、TTL は 60 分です。
 
+データ フローのこの実行のコンピューティング環境を選択します。 既定では、Azure Auto-Resolve Default Integration Runtime が選択されています。 この選択肢では、データ ファクトリと同じリージョンの Spark 環境でデータ フローが実行されます。 コンピューティングの種類がジョブ クラスターになるため、コンピューティング環境の起動に数分かかります。
+
 自分のデータ フロー アクティビティ用の Spark 実行環境を制御できます。 [Azure Integration Runtime](concepts-integration-runtime.md) には、実行エンジンを自分のデータ フロー コンピューティング要件と一致させるための、コンピューティングの種類 (汎用、メモリ最適化、およびコンピューティング最適化)、ワーカー コアの数、および Time-To-Live の設定があります。 また、TTL を設定することで、ジョブの実行ですぐに利用できるウォーム クラスターを管理できます。
 
 ![Azure Integration Runtime](media/data-flow/ir-new.png "Azure Integration Runtime")
+
+> [!NOTE]
+> データ フロー アクティビティでの Integration Runtime の選択は、お使いのパイプラインの*トリガー済みの実行*のみに適用されます。 デバッグ付きデータ フローを使用してお使いのパイプラインをデバッグすると、8 コアの既定の Spark クラスターに対して実行されます。
 
 ### <a name="staging-area"></a>ステージング領域
 

@@ -1,7 +1,7 @@
 ---
 title: ワークスペースとは
 titleSuffix: Azure Machine Learning service
-description: ワークスペースの概要と、それが Azure Machine Learning service に必要な理由を説明します。
+description: ワークスペースは、Azure Machine Learning service の最上位のリソースです。 スクリプトのログ、メトリック、出力、スナップショットなど、すべてのトレーニング実行の履歴も保持されています。 この情報を使用して、最適なモデルを生成するトレーニング実行を判断します
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,20 +9,18 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 05/21/2019
-ms.openlocfilehash: 5785bf8f6538f1d91e7a23178e29487ebee14f29
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 3ecdf62cfed7d70873f3dc752bfacd134e367a90
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65989829"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66388950"
 ---
-# <a name="what-is-an-azure-machine-learning-workspace"></a>Azure Machine Learning ワークスペースとは
+# <a name="what-is-an-azure-machine-learning-service-workspace"></a>Azure Machine Learning service ワークスペースとは
 
-ワークスペースは、Azure Machine Learning service の最上位のリソースです。 Azure Machine Learning service を使用するときに作成する、すべての成果物を操作するための一元的な場所が提供されます。
+ワークスペースは、Azure Machine Learning service の最上位のリソースで、Azure Machine Learning service を使用するときに作成するすべての成果物を操作するための一元的な場所を提供します。  ワークスペースには、スクリプトのログ、メトリック、出力、スナップショットなど、すべてのトレーニング実行の履歴が保持されます。 この情報を使用して、最適なモデルを生成するトレーニング実行を判断します。  
 
-ワークスペースには、スクリプトのログ、メトリック、出力、スナップショットなど、トレーニング実行の履歴が保持されています。 この情報を使用して、最適なモデルを生成するトレーニング実行を判断します。  
-
-必要なモデルを作成したら、ワークスペースに登録します。 登録済みモデルとスコアリング スクリプトを使用して、Azure Container Instances、Azure Kubernetes Service、または Field-Programmable Gate Array (FPGA) に REST ベースの HTTP エンドポイントとしてデプロイします。 モジュールとして Azure IoT Edge デバイスにモデルをデプロイすることもできます。
+必要なモデルを作成したら、ワークスペースに登録します。 次に、登録済みモデルとスコアリング スクリプトを使用して、Azure Container Instances、Azure Kubernetes Service、または Field-Programmable Gate Array (FPGA) に REST ベースの HTTP エンドポイントとしてデプロイします。 モジュールとして Azure IoT Edge デバイスにモデルをデプロイすることもできます。
 
 ## <a name="taxonomy"></a>分類 
 
@@ -50,7 +48,7 @@ ms.locfileid: "65989829"
 ご自身のワークスペースは、次の方法で操作できます。
 
 + Web 上:
-    + [Azure Portal](https://azure.portal.com)
+    + [Azure Portal](https://portal.azure.com)
     + [ビジュアル インターフェイス (プレビュー)](ui-concept-visual-interface.md)
 + Python では Azure Machine Learning [SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) を使用
 + コマンド ラインでは Azure Machine Learning [CLI 拡張機能](https://docs.microsoft.com/azure/machine-learning/service/reference-azure-machine-learning-cli)を使用

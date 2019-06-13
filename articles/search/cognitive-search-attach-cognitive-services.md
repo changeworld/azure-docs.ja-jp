@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: f9a1e82cb60bf0ec32165294e7f4af3e93d042b0
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 44f16b3334b991e071fa85ca4cffbc0837f0a6ec
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66158538"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66244425"
 ---
 # <a name="attach-a-cognitive-services-resource-with-a-skillset-in-azure-search"></a>Azure Search で Cognitive Services リソースをスキルセットにアタッチする 
 
 Azure Search でのドキュメント エンリッチメントに使用される[コグニティブ インデックス パイプライン](cognitive-search-concept-intro.md)は AI アルゴリズムで駆動します。 これらのアルゴリズムは、画像分析および光学式文字認識 (OCR) 用の [Computer Vision](https://azure.microsoft.com/services/cognitive-services/computer-vision/) や、エンティティ認識、キー フレーズ抽出、その他のエンリッチメント用の [Text Analytics](https://azure.microsoft.com/services/cognitive-services/text-analytics/) などの Azure Cognitive Services リソースに基づきます。 Azure Search によってドキュメント エンリッチメントの目的で使用されるとき、アルゴリズムは*スキル*内にラップされ、*スキルセット*に入れられ、インデックス作成中に*インデクサー*によって参照されます。
 
-限られた数のドキュメントであれば無料で強化できます。また、有料の Cognitive Services リソースをアタッチすれば、さらに大きくて複雑なワークロードに対応できます。 この記事では、課金対象の Cognitive Services リソースをコグニティブ スキルセットにアタッチして、[Azure Search のインデックス作成](search-what-is-an-index.md)中にデータをエンリッチする方法について説明します。
+数には制限がありますが、ドキュメントは無料で強化できます。 または、有料の Cognitive Services リソースを*スキルセット*にアタッチして、さらに大きくて複雑なワークロードに対応できます。 この記事では、課金対象の Cognitive Services リソースをアタッチして、Azure Search の[インデックスを作成](search-what-is-an-index.md)中にドキュメントを強化する方法について説明します。
 
 > [!NOTE]
 > 課金対象イベントとしては、Cognitive Services API の呼び出しや、Azure Search でのドキュメント解析段階の一部としての画像抽出があります。 ドキュメントからのテキスト抽出や、Cognitive Services を呼び出さないスキルに対する課金はありません。
@@ -30,7 +30,9 @@ Azure Search でのドキュメント エンリッチメントに使用される
 
 ## <a name="same-region-requirement"></a>同一リージョンの要件
 
-Azure Search と Azure Cognitive Services は同一リージョン内に存在することが要求されます。 そうでない場合は、実行時に次のメッセージを受け取ります。`"Provided key is not a valid CognitiveServices type key for the region of your search service."` リージョン間でサービスを移動する方法はありません。 このエラーを受け取る場合は、同一リージョンに新しいサービスを作成し、それに応じてインデックスを再発行する必要があります。
+Azure Search と Azure Cognitive Services は同一リージョン内に存在することが要求されます。 そうでない場合は、実行時に `"Provided key is not a valid CognitiveServices type key for the region of your search service."` のメッセージが表示されます。 
+
+リージョン間でサービスを移動する方法はありません。 このエラーが表示される場合、Azure Search と同じリージョンに、新しい Cognitive Services リソースを作成する必要があります。
 
 ## <a name="use-free-resources"></a>無料リソースを使用する
 
@@ -48,7 +50,7 @@ Azure Search と Azure Cognitive Services は同一リージョン内に存在�
 
    ![展開された [Cognitive Services をアタッチする] セクション](./media/cognitive-search-attach-cognitive-services/attach1.png "展開された [Cognitive Services をアタッチする] セクション")
 
-1. 次の **[エンリッチメントの追加]** 手順に進みます。 ポータルで使用可能なスキルの説明については、コグニティブ検索のクイックスタート内の「[手順 2:コグニティブ スキルを追加する](cognitive-search-quickstart-blob.md#create-the-enrichment-pipeline)」をご覧ください。
+1. 次の **[エンリッチメントの追加]** 手順に進みます。 このポータルで使用可能なスキルの説明については、「[手順 2:コグニティブ スキルを追加する](cognitive-search-quickstart-blob.md#create-the-enrichment-pipeline)」をご覧ください。
 
 ## <a name="use-billable-resources"></a>課金対象のリソースを使用する
 
@@ -78,7 +80,7 @@ Cognitive Services API を呼び出すスキルに対してのみ課金されま
 
    ![Cognitive Services リソースを選択](./media/cognitive-search-attach-cognitive-services/attach2.png "Cognitive Services リソースを選択")
 
-1. **[エンリッチメントの追加]** セクションを展開して、データに対して実行する特定のコグニティブ スキルを選択します。 ウィザードの残りを完了します。 ポータルで使用可能なスキルの説明については、コグニティブ検索のクイックスタート内の「[手順 2:コグニティブ スキルを追加する](cognitive-search-quickstart-blob.md#create-the-enrichment-pipeline)」をご覧ください。
+1. **[エンリッチメントの追加]** セクションを展開して、データに対して実行する特定のコグニティブ スキルを選択します。 ウィザードの残りを完了します。 このポータルで使用可能なスキルの説明については、「[手順 2:コグニティブ スキルを追加する](cognitive-search-quickstart-blob.md#create-the-enrichment-pipeline)」をご覧ください。
 
 ## <a name="attach-an-existing-skillset-to-a-cognitive-services-resource"></a>既存のスキルセットを Cognitive Services リソースにアタッチする
 

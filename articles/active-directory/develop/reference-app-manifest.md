@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d02642b0c069124ddcfbef1ea655438c906739a
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: d369891624256e98ba8d46168cc9c10c41d37b8d
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545649"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235237"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory のアプリ マニフェスト
 
@@ -50,7 +50,7 @@ Azure portal で、あるいは [REST API](https://docs.microsoft.com/previous-v
 
 | キー  | 値の型 | 説明  | 値の例 |
 |---------|---------|---------|---------|
-| `accessTokenAcceptedVersion` | Null 許容の Int32 | リソースで想定されているアクセス トークンのバージョンを指定します。 これにより、アクセス トークンを要求するために使用されたエンドポイントまたはクライアントとは関係なく、生成される JWT のバージョンと形式が変更されます。<br/><br/>使用されるエンドポイント (v1.0 または v2.0) はクライアントによって選択され、id_token のバージョンにのみ影響します。 リソースでは、サポートされるアクセス トークンの形式を明示的に示すように、`accesstokenAcceptedVersion` を構成する必要があります。<br/><br/>`accesstokenAcceptedVersion` に指定できる値は、1、2、または null です。 値が null の場合の既定値は 1 で、v1.0 のエンドポイントに対応します。 | `2` |
+| `accessTokenAcceptedVersion` | Null 許容の Int32 | リソースで想定されているアクセス トークンのバージョンを指定します。 これにより、アクセス トークンを要求するために使用されたエンドポイントまたはクライアントとは関係なく、生成される JWT のバージョンと形式が変更されます。<br/><br/>使用されるエンドポイント (v1.0 または v2.0) はクライアントによって選択され、id_token のバージョンにのみ影響します。 リソースでは、サポートされるアクセス トークンの形式を明示的に示すように、`accesstokenAcceptedVersion` を構成する必要があります。<br/><br/>`accesstokenAcceptedVersion` に指定できる値は、1、2、または null です。 値が null の場合の既定値は 1 で、v1.0 のエンドポイントに対応します。 <br/><br/>`signInAudience` が `AzureADandPersonalMicrosoftAccount` の場合は、値は `2` である必要があります。  | `2` |
 | `addIns` | コレクション | 使用するサービスが特定のコンテキストでアプリの呼び出しに使用できるカスタム動作を定義します。 たとえば、ファイル ストリームをレンダリングできるアプリケーションでは、その "FileHandler" 機能の addIns プロパティを設定できます。 これにより、Office 365 などのサービスで、ユーザーが作業中のドキュメントのコンテキストでアプリケーションを呼び出すことができます。 | <code>{<br>&nbsp;&nbsp;&nbsp;"id":"968A844F-7A47-430C-9163-07AE7C31D407"<br>&nbsp;&nbsp;&nbsp;"type": "FileHandler",<br>&nbsp;&nbsp;&nbsp;"properties": [<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"key": "version", "value": "2" }<br>&nbsp;&nbsp;&nbsp;]<br>}</code>|
 | `allowPublicClient` | Boolean | フォールバック アプリケーションの種類を指定します。 Azure AD では、既定で replyUrlsWithType からアプリケーションの種類が推測されます。 Azure AD でクライアント アプリの種類を判別できない特定のシナリオがあります (URL リダイレクトなしで HTTP 要求が行われる [ROPC](https://tools.ietf.org/html/rfc6749#section-4.3) フローなど)。 そのような場合、Azure AD では、このプロパティの値に基づいて、アプリケーションの種類が解釈されます。 この値が true に設定されている場合、フォールバック アプリケーションの種類は、モバイル デバイス上で実行されているインストール済みのアプリなど、パブリック クライアントとして設定されます。 既定値は false です。これは、フォールバック アプリケーションの種類が、Web アプリなどの機密クライアントであることを意味します。 | `false` |
 | `availableToOtherTenants` | Boolean | アプリケーションが他のテナントと共有されている場合は true、それ以外の場合は false です。 <br><br> _注:これは、アプリの登録 (レガシ) エクスペリエンスでのみ使用できます。[アプリの登録](https://go.microsoft.com/fwlink/?linkid=2083908)エクスペリエンスでは、`signInAudience` に置き換えられます。_ | |

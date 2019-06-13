@@ -12,12 +12,12 @@ ms.author: josack
 ms.reviewer: sstein
 manager: craigg
 ms.date: 02/13/2019
-ms.openlocfilehash: e13907e96bba338648bddcc102e3b4f51887d0ea
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 73bc2d9889727a1633986e12642bd06cf2714632
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65949905"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66357327"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>クラウドの新しい DBA – Azure SQL Database での単一データベースとプールされたデータベースの管理
 
@@ -29,6 +29,7 @@ ms.locfileid: "65949905"
 
 この記事では、単一データベースおよびエラスティック プール内のプールされたデータベースを使用するときにすぐに利用できる、プラットフォームとしての Azure SQL Database の主要な特性の一部について説明します。 次のような内容です。
 
+- Azure portal を使用したデータベースの監視
 - ビジネス継続性とディザスター リカバリー (BCDR)
 - セキュリティとコンプライアンス
 - インテリジェントなデータベースの監視とメンテナンス
@@ -36,6 +37,25 @@ ms.locfileid: "65949905"
 
 > [!NOTE]
 > この記事は、Azure SQL Database での次のデプロイ オプションに適用されます: 単一データベースとエラスティック プール。 SQL Database のマネージド インスタンスのデプロイ オプションには適用されません。
+
+## <a name="monitor-databases-using-the-azure-portal"></a>Azure ポータルを使用したデータベースの監視
+
+[Azure portal](https://portal.azure.com/) で、ご利用のデータベースを選択し、 **[監視]** グラフをクリックすることによって、個々のデータベースの使用を監視できます。 これにより、 **[メトリック]** ウィンドウが表示されます。 **[グラフの編集]** ボタンをクリックすると、内容を編集できます。 次のメトリックを追加します。
+
+- CPU の割合
+- DTU の割合
+- データ IO の割合
+- データベース サイズの割合
+
+これらのメトリックを追加したら、これらを **[監視]** グラフに引き続き表示し、 **[メトリック]** ウィンドウにはさらに詳細な情報を表示できます。 4 つのメトリックはいずれも、データベースの **DTU** を基準とする平均使用率を示しています。 サービス レベルの詳細については、[DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)と[仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md)に関する記事を参照してください。  
+
+![データベース パフォーマンスのサービス階層の監視](./media/sql-database-single-database-monitoring/sqldb_service_tier_monitoring.png)
+
+また、パフォーマンス メトリックに対してアラートを構成することができます。 **[メトリック]** ウィンドウの **[アラートの追加]** ボタンをクリックします。 ウィザードの指示に従ってアラートを構成します。 メトリックが特定のしきい値を超えた場合、またはメトリックが特定のしきい値を下回った場合に警告するオプションがあります。
+
+たとえば、データベースのワークロードが増加する見込みの場合、データベースのいずれかのパフォーマンス メトリックが 80% に達すると電子メールのアラートを送信するように構成できます。 これは、次に大きいコンピューティング サイズにいつ切り替える必要があるかを見つけるための早期警告として使用できます。
+
+下位のコンピューティング サイズにダウングレードできるかどうかを判断するために、パフォーマンス メトリックを利用することもできます。 たとえば、Standard S2 データベースを使用していて、すべてのパフォーマンス メトリックは、どの時点でもデータベースの平均的な使用率が 10% を超えないとします。 この場合、データベースは Standard S1 で快適に動作します。 ただし、下位のコンピューティング サイズへの移行を決定する前に、急上昇や変動するワークロードに注意してください。
 
 ## <a name="business-continuity-and-disaster-recovery-bcdr"></a>ビジネス継続性とディザスター リカバリー (BCDR)
 

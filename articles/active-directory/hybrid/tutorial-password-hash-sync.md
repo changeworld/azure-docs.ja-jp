@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:パスワード ハッシュの同期 (PHS) を使用して単一 AD フォレストを Azure に統合する | Microsoft Docs
+title: チュートリアル:PHS を使用して単一 AD フォレストを Azure に統合する
 description: パスワード ハッシュの同期を使用してハイブリッド ID 環境をセットアップする方法について説明します。
 services: active-directory
 documentationcenter: ''
@@ -10,16 +10,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/17/2018
+ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45379f8f955c50e2598ebcebd34e971c29b2c81c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b17300fa69b61c7713c860e2a35e63fcb6584bc4
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58103232"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66474004"
 ---
 # <a name="tutorial--integrate-a-single-ad-forest-using-password-hash-sync-phs"></a>チュートリアル:パスワード ハッシュの同期 (PHS) を使用して単一 AD フォレストを統合する
 
@@ -78,10 +78,10 @@ Set-VMFirmware -VMName $VMName -FirstBootDevice $DVDDrive
 1. Hyper-V マネージャーで仮想マシンをダブルクリックします。
 2. [スタート] ボタンをクリックします。
 3. "Press any key to boot from CD or DVD" というメッセージが表示されます。 キーを押して続行します。
-4. Windows Server の起動画面で言語を選択し、**[次へ]** をクリックします。
+4. Windows Server の起動画面で言語を選択し、 **[次へ]** をクリックします。
 5. **[今すぐインストール]** をクリックします。
-6. ライセンス キーを入力し、**[次へ]** をクリックします。
-7. [ライセンス条項に同意します] をオンにし、**[次へ]** をクリックします。
+6. ライセンス キーを入力し、 **[次へ]** をクリックします。
+7. [ライセンス条項に同意します] をオンにし、 **[次へ]** をクリックします。
 8. **[カスタム: Windows のみをインストールする (詳細設定)]** を選択します。
 9. **[次へ]** をクリックします
 10. インストールが完了したら、仮想マシンを再起動してサインインし、Windows の更新プログラムを実行して VM を最新の状態にします。  最新の更新プログラムをインストールします。
@@ -183,7 +183,7 @@ Set-ADUser -Identity $Identity -PasswordNeverExpires $true -ChangePasswordAtLogo
 1. [Azure portal](https://portal.azure.com) に移動し、Azure サブスクリプションがあるアカウントを使ってサインインします。
 2. **プラス (+) アイコン**を選択し、**Azure Active Directory** を検索します。
 3. 検索結果で **[Azure Active Directory]** を選択します。
-4. **作成**を選択します。</br>
+4. **作成** を選択します。</br>
 ![作成](media/tutorial-password-hash-sync/create1.png)</br>
 5. **組織の名前**と**初期ドメイン名**を入力します。 **[作成]** を選択します。 これにより、ディレクトリが作成されます。
 6. これが完了したら、**こちら**のリンクをクリックし、ディレクトリを管理します。
@@ -193,8 +193,8 @@ Azure AD テナントを作成したので、次は全体管理者アカウン�
 
 1.  **[管理]** にある **[ユーザー]** を選択します。</br>
 ![作成](media/tutorial-password-hash-sync/gadmin1.png)</br>
-2.  **[すべてのユーザー]** を選択し、**+ [新しいユーザー]** を選択します。
-3.  このユーザーの名前およびユーザー名を入力します。 これがテナントのグローバル管理者になります。 また、**[ディレクトリ ロール]** を **[全体管理者]** に変更してください。 一時パスワードを表示することもできます。 完了したら、**[作成]** を選択します。</br>
+2.  **[すべてのユーザー]** を選択し、 **+ [新しいユーザー]** を選択します。
+3.  このユーザーの名前およびユーザー名を入力します。 これがテナントのグローバル管理者になります。 また、 **[ディレクトリ ロール]** を **[全体管理者]** に変更してください。 一時パスワードを表示することもできます。 完了したら、 **[作成]** を選択します。</br>
 ![作成](media/tutorial-password-hash-sync/gadmin2.png)</br>
 4. これが完了したら、新しい Web ブラウザーを開き、新しい全体管理者アカウントと一時パスワードを使用して myapps.microsoft.com にサインインします。
 5. グローバル管理者のパスワードを覚えやすいものに変更します。

@@ -10,15 +10,15 @@ ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: quickstart
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: 30625423553b71e848d27d047d4b7bc3add6eaff
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: e180192ed8375e00464ed9ec96080cde10295e5c
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59265153"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66754039"
 ---
 # <a name="quickstart-clone-a-notebook"></a>クイック スタート:ノートブックの複製
 
@@ -28,7 +28,7 @@ ms.locfileid: "59265153"
 
 ## <a name="clone-azure-cognitive-services-notebooks"></a>Azure Cognitive Services ノートブックを複製する
 
-1. [Azure Notebooks](https://notebooks.azure.com) に移動してサインインします  (詳しくは、「[Quickstart - Sign in to Azure Notebooks](quickstart-sign-in-azure-notebooks.md)」(クイック スタート - Azure Notebook にサインインする) をご覧ください)。
+1. [Azure Notebooks](https://notebooks.azure.com) に移動してサインインします (詳しくは、「[Quickstart - Sign in to Azure Notebooks](quickstart-sign-in-azure-notebooks.md)」(クイック スタート - Azure Notebook にサインインする) をご覧ください)。
 
 1. パブリック プロファイル ページから、ページの上部にある **[マイ プロジェクト]** を選択します。
 
@@ -38,13 +38,13 @@ ms.locfileid: "59265153"
 
     ![[マイ プロジェクト] ページの [Upload GitHub Repo]\(GitHub リポジトリのアップロード\) コマンド](media/quickstarts/upload-github-repo-command.png)
 
-1. 表示された **[Upload GitHub Repo]\(GitHub リポジトリのアップロード\)** で、次の詳細を入力または設定した後、**[インポート]** を選択します。
+1. 表示された **[Upload GitHub Repo]\(GitHub リポジトリのアップロード\)** で、次の詳細を入力または設定した後、 **[インポート]** を選択します。
 
-   - **[GitHub リポジトリ]**:Microsoft/cognitive-services-notebooks (この名前により、[https://github.com/Microsoft/cognitive-services-notebooks](https://github.com/Microsoft/cognitive-services-notebooks) にある Azure Cognitive Services 用の Jupyter ノートブックが複製されます)。
-   - **[Clone recursively]\(再帰的に複製\)**: (オフ)
-   - **[プロジェクト名]**:Cognitive Services Clone
-   - **[プロジェクト ID]**: cognitive-services-clone
-   - **[パブリック]**: (オフ)
+   - **[GitHub リポジトリ]** :Microsoft/cognitive-services-notebooks (この名前により、[https://github.com/Microsoft/cognitive-services-notebooks](https://github.com/Microsoft/cognitive-services-notebooks) にある Azure Cognitive Services 用の Jupyter ノートブックが複製されます)。
+   - **[Clone recursively]\(再帰的に複製\)** : (オフ)
+   - **[プロジェクト名]** :Cognitive Services Clone
+   - **[プロジェクト ID]** : cognitive-services-clone
+   - **[パブリック]** : (オフ)
 
      ![リポジトリ情報を収集するための [Upload GitHub Repo]\(GitHub リポジトリのアップロード\) ポップアップ](media/quickstarts/upload-github-repo-popup.png)
 
@@ -56,23 +56,23 @@ ms.locfileid: "59265153"
 
 ## <a name="share-a-notebook"></a>ノートブックを共有する
 
-1. 複製したプロジェクトのコピーを共有するには、**[共有]** コントロールを使用する、リンクを取得する、リンクを含む HTML または Markdown のコードを取得する、またはリンクを含む電子メール メッセージを作成します。
+1. 複製したプロジェクトのコピーを共有するには、 **[共有]** コントロールを使用する、リンクを取得する、リンクを含む HTML または Markdown のコードを取得する、またはリンクを含む電子メール メッセージを作成します。
 
     ![プロジェクト共有コマンド](media/quickstarts/share-project-command.png)
 
-1. プロジェクトを複製するときに **[パブリック]** オプションをオフにしたため、このクローンは非公開です。 コピーを公開するには、**[プロジェクト設定]** を選択します。ポップアップで **[パブリック プロジェクト]** を設定した後、**[保存]** を選択します。
+1. プロジェクトを複製するときに **[パブリック]** オプションをオフにしたため、このクローンは非公開です。 コピーを公開するには、 **[プロジェクト設定]** を選択します。ポップアップで **[パブリック プロジェクト]** を設定した後、 **[保存]** を選択します。
 
 1. プロジェクト内のノートブックを選択して実行します。 Azure Cognitive Services リポジトリ内の各ノートブックは、たとえば自己完結型のクイック スタートです。 次の図は、Cognitive Services API のサブスクリプション キーを追加し、検索語句 "puppies" を "bunnies" に変更した後、BingImageSearchAPI ノートブックを使用した結果を示しています。
 
     ![GitHub から複製された Jupyter ノートブックの実行](media/quickstarts/clone-notebook-result.png)
 
-1. ノートブックの実行が完了したら、**[ファイル]** > **[Close and halt]\(閉じて停止\)** を選択して、ノートブックとブラウザー ウィンドウを閉じます。
+1. ノートブックの実行が完了したら、 **[ファイル]**  >  **[Close and halt]\(閉じて停止\)** を選択して、ノートブックとブラウザー ウィンドウを閉じます。
 
-1. プロジェクト内の個々のノートブックを共有するには、ノートブックを右クリックし、**[リンクのコピー]** (キーボード ショートカット: y) を選択します。
+1. プロジェクト内の個々のノートブックを共有するには、ノートブックを右クリックし、 **[リンクのコピー]** (キーボード ショートカット: y) を選択します。
 
     ![個々のノートブックへのリンクをコピーするためのコンテキスト メニュー コマンド](media/quickstarts/copy-link-to-individual-notebook.png)
 
-1. ノートブック以外のファイルを編集するには、プロジェクト内のファイルを右クリックし、**[ファイルの編集]** (キーボード ショートカット: i) を選択します。 既定のアクションである **[実行]** (キーボード ショートカット: R) ではファイルの内容が表示されるだけであり、編集は許可されません。
+1. ノートブック以外のファイルを編集するには、プロジェクト内のファイルを右クリックし、 **[ファイルの編集]** (キーボード ショートカット: i) を選択します。 既定のアクションである **[実行]** (キーボード ショートカット: R) ではファイルの内容が表示されるだけであり、編集は許可されません。
 
 ## <a name="next-steps"></a>次の手順
 

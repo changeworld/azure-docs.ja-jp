@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 3c008e77116a9b42a2ea137069529c5e241adddd
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 8d10c3edcf64ccc66b0599d064e91270a4ad8202
+ms.sourcegitcommit: f9448a4d87226362a02b14d88290ad6b1aea9d82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66160071"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66814803"
 ---
 [仮想マシン スケール セット](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)と [Azure Monitor の自動スケール機能](../articles/azure-monitor/platform/autoscale-overview.md)を使うと、[仮想マシン (VM)](../articles/virtual-machines/windows/overview.md) を簡単に[自動スケール](../articles/azure-monitor/platform/autoscale-best-practices.md)できます。 自動スケールを適用するには、VM がスケール セットのメンバーになっている必要があります。 この記事では、垂直方向、水平方向を問わず自動または手動で VM をスケールする方法について理解を深めることができるよう、各種の情報を紹介します。
 
@@ -55,9 +55,9 @@ Azure Monitor の自動スケール機能では、実行する VM の数を[メ�
 
 ### <a name="horizontal"></a>水平
 
-スケール セットの容量を変更すると、VM を追加または削除できます。 Azure Portal では [スケーリング] 画面の [Override condition]\(オーバーライド条件\) バーを左右に動かすことによって、スケール セットの VM の数 (表示は **[インスタンス数]**) を調節できます。
+スケール セットの容量を変更すると、VM を追加または削除できます。 Azure Portal では [スケーリング] 画面の [Override condition]\(オーバーライド条件\) バーを左右に動かすことによって、スケール セットの VM の数 (表示は **[インスタンス数]** ) を調節できます。
 
-Azure PowerShell を使用する場合には、[Get-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/get-azvmss) を使ってスケール セット オブジェクトを取得する必要があります。 オブジェクトを取得したら **sku.capacity** プロパティに必要な VM の数を設定し、[Update-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/update-azvmss) を使ってスケール セットを更新します。 Azure CLI を使用する場合には、**--new-capacity** パラメーターを使用して [az vmss scale](/cli/azure/vmss?view=azure-cli-latest#az-vmss-scale) コマンドを実行すると、容量を変更できます。
+Azure PowerShell を使用する場合には、[Get-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/get-azvmss) を使ってスケール セット オブジェクトを取得する必要があります。 オブジェクトを取得したら **sku.capacity** プロパティに必要な VM の数を設定し、[Update-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/update-azvmss) を使ってスケール セットを更新します。 Azure CLI を使用する場合には、 **--new-capacity** パラメーターを使用して [az vmss scale](/cli/azure/vmss?view=azure-cli-latest#az-vmss-scale) コマンドを実行すると、容量を変更できます。
 
 ### <a name="vertical"></a>Vertical
 

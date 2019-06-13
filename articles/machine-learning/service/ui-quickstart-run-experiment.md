@@ -9,18 +9,18 @@ ms.topic: quickstart
 author: sdgilley
 ms.author: sgilley
 ms.date: 05/02/2019
-ms.openlocfilehash: 0c492424e67853f7cb4a017fb4215d38a555a8a4
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 07b86138a95853673b5d54e272b40af41d58f418
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545021"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475951"
 ---
 # <a name="quickstart-prepare-and-visualize-data-without-writing-code-in-azure-machine-learning"></a>クイック スタート:Azure Machine Learning でコードを書かずにデータを準備して視覚化する
 
-Azure Machine Learning のドラッグ アンド ドロップ ビジュアル インターフェイス (プレビュー) でデータを準備して視覚化します。 使用するデータセットには、製造仕様、モデル仕様、技術仕様、価格などの情報を含む、さまざまな個別の自動車のエントリが含まれています。  
+Azure Machine Learning のドラッグ アンド ドロップ ビジュアル インターフェイス (プレビュー) でデータを準備して視覚化します。 使用するデータセットには、製造仕様、モデル仕様、技術仕様、価格などの情報を含む、さまざまな個別の自動車のエントリが含まれています。 このクイックスタートを完了すると、このデータを使用して自動車の価格を予測できるようになります。 
 
-このクイック スタートでは、データを調査して準備します。
+機械学習モデルをトレーニングする前に、データを把握して準備する必要があります。  このクイックスタートでは次の作業を行います。
 
 - データを追加してプレビューする初めての実験を作成する
 - 不足している値を削除することでデータを準備する
@@ -131,7 +131,7 @@ Azure Machine Learning service ワークスペースがある場合は、[次の
 
      ![データをプレビューする](./media/ui-quickstart-run-experiment/preview-data.gif)
 
-1. 各列をクリックしてデータセットの詳細について理解します。
+1. 各列をクリックしてデータセットの詳細を把握し、自動車の価格を予測する際にこれらの列が役立つかどうかを考えます。
 
 ## <a name="prepare-data"></a>データを準備する
 
@@ -176,7 +176,7 @@ Azure Machine Learning service ワークスペースがある場合は、[次の
 
 ### <a name="clean-missing-data"></a>見つからないデータのクリーンアップ
 
-次に、データが不足している残りの行を削除する別のモジュールを追加します。
+モデルをトレーニングする際は、見つからないデータに対処する必要があります。  この場合、見つからないデータを含む残りの行を削除するためのモジュールを追加します。  
 
 1. 検索ボックスに「**Clean**」と入力して、**Clean Missing Data (不足データのクリーンアップ)** モジュールを見つけます。
 
@@ -216,7 +216,7 @@ Azure Machine Learning service ワークスペースがある場合は、[次の
 
     193 の行と 25 の列があります。
 
-    **num-of-doors** をクリックすると、一意の値はまだ 2 つありますが、不足している値がは 0 であることがわかります。  
+    **num-of-doors** をクリックすると、一意の値はまだ 2 つありますが、不足している値がは 0 であることがわかります。 残りの列をクリックスルーし、データセットに欠損値がないことを確認します。 
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
@@ -228,7 +228,7 @@ Azure Machine Learning service ワークスペースがある場合は、[次の
 
 - データを追加してプレビューする初めての実験を作成する
 - 不足している値を削除することでデータを準備する
-- 結果として得られるデータを視覚化する
+- 準備したデータを視覚化する
 
 このデータを使用して自動車の価格を予測するチュートリアルに進みます。
 

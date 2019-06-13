@@ -11,30 +11,30 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/17/2019
+ms.date: 05/23/2019
 ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3fa5c5638da390f4416afc9f4bd9c5d58c34cea8
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 0f4e71bd7fd7e0ed9a220619995ba108fdccabe4
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65825573"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66233760"
 ---
 # <a name="set-a-custom-home-page-for-published-apps-by-using-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシを使用して、発行されたアプリのカスタム ホーム ページを設定する
 
-この記事では、ユーザーをカスタム ホーム ページに案内するようにアプリを構成する方法について説明します。これは、それが内部か外部かによって異なる可能性があります。 アプリケーション プロキシを使用してアプリを発行するときに内部 URL を設定しますが、それが、最初にユーザーに対して表示すべきページでない場合があります。 ユーザーがアプリにアクセスしたときに適切なページが表示されるように、カスタム ホーム ページを設定します。 Azure Active Directory アクセス パネルからアプリにアクセスするか、Office 365 アプリ起動ツールからアクセスするかにかかわらず、ユーザーには、設定したカスタム ホーム ページが表示されます。
+この記事では、ユーザーをカスタム ホーム ページに移動させるようにアプリを構成する方法について説明します。 アプリケーション プロキシを使用してアプリを発行するときに内部 URL を設定しますが、それが、最初にユーザーに対して表示すべきページでない場合があります。 ユーザーがアプリにアクセスしたときに適切なページが表示されるように、カスタム ホーム ページを設定します。 Azure Active Directory アクセス パネルからアプリにアクセスするか、Office 365 アプリ起動ツールからアクセスするかにかかわらず、ユーザーには、設定したカスタム ホーム ページが表示されます。
 
 ユーザーはアプリを起動すると、既定で、発行されたアプリのルート ドメイン URL に案内されます。 通常、ランディング ページがホーム ページの URL として設定されます。 アプリ ユーザーに、アプリ内の特定のページを最初に訪問させたい場合は、Azure AD PowerShell モジュールを使用してカスタム ホーム ページの URL を定義します。
 
-なぜ企業がカスタム ホーム ページを設定し、なぜそれがユーザーの種類に応じて異なるのかを説明する 1 つのシナリオがあります。
+ご自分の会社がカスタム ホーム ページを設定する理由を説明する 1 つのシナリオを次に示します。
 
+- あなたの企業ネットワーク内では、ユーザーが `https://ExpenseApp/login/login.aspx` に移動して、お使いのアプリにサインインしてアクセスします。
 - フォルダー構造の最上位に、アプリケーション プロキシがアクセスする必要がある他のアセット (イメージなど) があるため、内部 URL として `https://ExpenseApp` を使用してアプリを発行します。
-- しかし、企業ネットワーク内では、ユーザーは `https://ExpenseApp/login/login.aspx` に移動して、アプリにサインインしてアクセスします。
 - 既定の外部 URL は `https://ExpenseApp-contoso.msappproxy.net` ですが、外部ユーザーはここからサインイン ページには行けません。
-- 代わりに `https://ExpenseApp-contoso.msappproxy.net/login/login.aspx` を外部ホーム ページ URL として設定します。それにより、外部ユーザーに対して最初にサインインページが表示されます。
+- 代わりに `https://ExpenseApp-contoso.msappproxy.net/login/login.aspx` をホーム ページ URL として設定します。それにより、外部ユーザーに対しては最初にサインインページが表示されます。
 
 >[!NOTE]
 >発行されたアプリにユーザーがアクセスできるようにすると、[Azure AD アクセス パネル](../user-help/my-apps-portal-end-user-access.md)と [Office 365 アプリ起動ツール](https://www.microsoft.com/microsoft-365/blog/2016/09/27/introducing-the-new-office-365-app-launcher/)にアプリが表示されます。
@@ -49,21 +49,21 @@ ms.locfileid: "65825573"
 
 - 発行されたアプリに変更を加えると、ホーム ページの URL の値がリセットされる可能性があります。 後でアプリを更新する場合は、ホーム ページの URL を再確認し、必要であれば更新してください。
 
-外部または内部のホーム ページは、Azure portal から、または PowerShell を使用して変更することができます。
+ホーム ページの URL は、Azure portal または PowerShell を使用して設定することができます。
 
 ## <a name="change-the-home-page-in-the-azure-portal"></a>Azure Portal でホーム ページを変更する
 
-アプリの外部および内部のホーム ページを Azure AD ポータルから変更するには、次の手順に従ってください。
+Azure AD ポータルからご自分のアプリのホーム ページ URL を変更するには、次の手順に従ってください。
 
-1. [Azure Active Directory ポータル](https://aad.portal.azure.com/)にサインインします。 Azure Active Directory 管理センターのダッシュボードが表示されます。
-2. サイドバーで **[Azure Active Directory]** を選択します。 Azure AD の概要ページが表示されます。
-3. 概要のサイドバーで、 **[アプリの登録]** を選択します。 登録済みのアプリの一覧が表示されます。
-4. 一覧からアプリを選択します。 登録済みのアプリの詳細を示すページが表示されます。
-5. **[リダイレクト URI]** の下のリンクを選択します。それにより、Web とパブリック クライアントの種類のリダイレクト URI の数が表示されます。 登録済みアプリの認証ページが表示されます。
-6. **[リダイレクト URI]** テーブルの最後の行で、 **[種類]\(TYPE\)** 列を **[パブリック クライアント (モバイルおよびデスクトップ)]** に設定し、 **[リダイレクト URI]** 列に、使用する内部 URL を入力します。 たった今変更した行の下に新しい空の行が表示されます。
-7. 新しい行で、 **[種類]\(TYPE\)** 列を **[Web]** に設定し、 **[リダイレクト URI]** 列に、使用する外部 URL を入力します。
-8. 既存のリダイレクト URI 行を削除する場合は、不要な各行の横の **[削除]** アイコン (ごみ箱) を選択します。
-9. **[保存]** を選択します。
+1. [Azure Portal](https://portal.azure.com/) に管理者としてサインインします。
+2. **[Azure Active Directory]** を選択し、 **[アプリの登録]** を選択します。 登録済みのアプリの一覧が表示されます。
+3. 一覧からアプリを選択します。 登録済みのアプリの詳細を示すページが表示されます。
+4. **[管理]** 下にある **[ブランド]** を選択します。
+5. **[ホーム ページ URL]** をご自分の新しいパスで更新します。
+
+   ![[ホーム ページ URL] フィールドが表示された登録済みアプリのブランド ページ](media/application-proxy-configure-custom-home-page/app-proxy-app-branding.png)
+ 
+6. **[保存]** を選択します。
 
 ## <a name="change-the-home-page-with-powershell"></a>PowerShell でホーム ページを変更する
 

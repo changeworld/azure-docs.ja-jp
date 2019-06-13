@@ -8,14 +8,14 @@ ms.service: managed-applications
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
-ms.date: 07/10/2018
+ms.date: 06/04/2019
 ms.author: tomfitz
-ms.openlocfilehash: 61cac49c34eb193d641a94c9a7839282289dd9c7
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 40132f67b135b0dc081180c34361047e59776b81
+ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64572585"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66688568"
 ---
 # <a name="azure-managed-applications-in-the-marketplace"></a>Marketplace の Azure マネージド アプリケーション
 
@@ -42,7 +42,7 @@ ms.locfileid: "64572585"
 Azure Marketplace の発行元になるには、次のことを行う必要があります。
 
 1. Microsoft ID を作成する - 個人ではなく会社のドメインに属する電子メール アドレスを使用して、Microsoft アカウントを作成します。 この電子メール アドレスは、Microsoft デベロッパー センターと Cloud パートナー ポータルの両方で使用されます。 詳細については、「[Azure Marketplace Publisher Guide](https://aka.ms/sellerguide)」(Azure Marketplace 発行元ガイド) をご覧ください。
-1. [Azure Marketplace Nomination Form (Azure Marketplace 申請フォーム)](https://aka.ms/ampnomination) を送信する - **[Solution that you intend to publish?]\(公開したいソリューション\)** で、 **[Managed Application]\(マネージド アプリケーション\)** を選択します。 フォームが送信されると、Marketplace オンボード チームによって申し込みが確認され、申請が検証されます。 この承認プロセスには 1 ～ 3 日かかります。 申請が承認されると、お客様にご利用コードが送信されます。このコードを使用すると、デベロッパー センターの登録料金が免除されます。 Marketplace Nomination Form (Marketplace 申請フォーム) に入力**しない**場合、99 ドルの登録料金の支払いを求められます。
+1. [Azure Marketplace 申請フォーム](https://aka.ms/ampnomination)を送信する - **[Solution that you intend to publish?]\(公開したいソリューション\)** で、 **[マネージド アプリケーション]** を選択します。 フォームが送信されると、Marketplace オンボード チームによって申し込みが確認され、申請が検証されます。 この承認プロセスには 1 ～ 3 日かかります。 申請が承認されると、お客様にご利用コードが送信されます。このコードを使用すると、デベロッパー センターの登録料金が免除されます。 Marketplace Nomination Form (Marketplace 申請フォーム) に入力**しない**場合、99 ドルの登録料金の支払いを求められます。
 1. [デベロッパー センター](https://dev.windows.com/registration?accountprogram=azure)に登録する - Microsoft により、お客様の組織が、登録先の国/地域の有効な税 ID を持つ合法的な法人であることが検証されます。 この承認プロセスには 5 ～ 10 日かかります。 登録料金の支払い免除を受けるには、申請プロセスの電子メールで受け取ったご利用コードを使用します。 詳細については、「[Azure Marketplace Publisher Guide](https://aka.ms/sellerguide)」(Azure Marketplace 発行元ガイド) をご覧ください。
 1. [Cloud パートナー ポータル](https://cloudpartner.azure.com)にサインインする - 発行プロファイルで、お客様のデベロッパー センター アカウントを Marketplace Publisher プロファイルに関連付けます。 詳細については、「[Azure Marketplace Publisher Guide](https://aka.ms/sellerguide)」(Azure Marketplace 発行元ガイド) をご覧ください。
 
@@ -103,6 +103,8 @@ SKU は、Marketplace では親プランの下に表示されます。 Azure Por
 
    * **バージョン**:アップロードするパッケージのバージョンを入力します。 `{number}.{number}.{number}{number}` 形式にする必要があります。
    * **パッケージ ファイル (.zip)** : このパッケージには、.zip パッケージに圧縮された 2 つの必須ファイルが含まれています。 1 つのファイルは、マネージド アプリケーションでデプロイするリソースを定義する Resource Manager テンプレートです。 もう 1 つのファイルは、コンシューマーがポータルを使用してマネージド アプリケーションをデプロイするための[ユーザー インターフェイス](create-uidefinition-overview.md)を定義します。 ユーザー インターフェイスでは、コンシューマーがパラメーター値を入力できるようにする要素を指定します。
+   * **テナント ID**:アクセスを取得するアカウントのテナント ID。
+   * **[Enable JIT Access?]\(JIT アクセスの有効化\)** :アカウントで [Just-In-Time アクセス制御](request-just-in-time-access.md)を有効にするには、 **[はい]** を選択します。 有効にすると、指定した期間、コンシューマーのアカウントへのアクセスを要求します。 マネージド アプリケーションのコンシューマーがあなたのアカウントに永続アクセスを付与するように要求するには、 **[いいえ]** を選択します。
    * **PrincipalId**: このプロパティは、顧客のサブスクリプション内のリソースへのアクセス権が付与されているユーザー、ユーザー グループ、またはアプリケーション の Azure Active Directory (Azure AD) 識別子です。 ロールの定義では、アクセス許可について説明します。
    * **ロール定義**: このプロパティは、Azure AD によって提供されているロールベースのアクセス制御 (RBAC) の組み込みロールの一覧です。 最も適切なロールを選択して使用することで、顧客に代わってリソースを管理できます。
    * **ポリシー設定**: マネージド アプリケーションに [Azure Policy](../governance/policy/overview.md) を適用して、デプロイしたソリューションのコンプライアンス要件を指定します。 使用可能なオプションから、適用するポリシーを選択します。 **[ポリシー パラメーター]** には、パラメーターの値を含んだ JSON 文字列を指定します。 ポリシーの定義とパラメーター値の形式については、「[Azure Policy のサンプル](../governance/policy/samples/index.md)」を参照してください。
@@ -117,7 +119,7 @@ RBAC の詳細については、[Azure Portal での RBAC の使用](../role-bas
 
 ### <a name="preview-subscription-ids"></a>サブスクリプション ID をプレビュー
 
-発行されたオファーにアクセスできる Azure サブスクリプション ID の一覧を入力します。 このホワイトリストに追加されたサブスクリプションを使用して、プレビューされたオファーを運用開始前にテストできます。 パートナー ポータルでは、最大 100 個のサブスクリプションのホワイト リストをコンパイルできます。
+発行されたオファーにアクセスできる Azure サブスクリプション ID の一覧を入力します。 このホワイトリストに追加されたサブスクリプションを使用して、プレビューされたオファーを運用開始前にテストできます。 パートナー ポータルでは、最大 100 個のサブスクリプションの許可リストをコンパイルできます。
 
 ### <a name="suggested-categories"></a>推奨されるカテゴリ
 

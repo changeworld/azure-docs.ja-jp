@@ -11,12 +11,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: e1574b55f9f14daba1831ba7f73b7f9ebde4c7f6
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: dd1644ad9b7fcee951b31997ab549f117530f635
+ms.sourcegitcommit: f9448a4d87226362a02b14d88290ad6b1aea9d82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60006898"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66808383"
 ---
 # <a name="start-monitoring-your-java-web-application"></a>Java Web アプリケーションの監視を開始する
 
@@ -46,7 +46,7 @@ Spring フレームワークの方がよければ、[Spring Boot 初期化子ア
 
 Application Insights は、オンプレミスとクラウドのどちらで実行されているかに関係なく、インターネットに接続された任意のアプリケーションからテレメトリ データを収集できます。 このデータの表示を開始するには、次の手順を実行します。
 
-1. **[リソースの作成]** > **[開発者ツール]** > **[Application Insights]** の順に選択します。
+1. **[リソースの作成]**  >  **[開発者ツール]**  >  **[Application Insights]** の順に選択します。
 
    ![Application Insights リソースの追加](./media/java-quick-start/1createresourseappinsights.png)
 
@@ -65,27 +65,27 @@ Application Insights は、オンプレミスとクラウドのどちらで実�
 
 ## <a name="install-app-insights-plugin"></a>App Insights プラグインをインストールする
 
-1. **Eclipse** を起動し、**[Help]** > **[Install New Software]** を選択します。
+1. **Eclipse** を起動し、 **[Help]** > **[Install New Software]** を選択します。
 
    ![新しい App Insights リソースのフォーム](./media/java-quick-start/000-j.png)
 
-2. ```https://dl.microsoft.com/eclipse``` を "Work With" フィールドにコピーし、**[Azure Toolkit for Java]** チェックボックスをオンにした後、**[Applicatin Insights Plugin for Java] を選択し**  > **[Contact all update sites during install to find required software]** チェックボックスをオフにします。
+2. ```https://dl.microsoft.com/eclipse``` を "Work With" フィールドにコピーし、 **[Azure Toolkit for Java]** チェックボックスをオンにした後、 **[Applicatin Insights Plugin for Java] を選択し**  >  **[Contact all update sites during install to find required software]** チェックボックスをオフにします。
 
 3. インストールが完了すると、**Eclipse を再起動**するように求められます。
 
 ## <a name="configure-app-insights-plugin"></a>App Insights プラグインを構成する
 
-1. **Eclipse** を起動し、**プロジェクト**を開いた後、**Project Explorer** でプロジェクト名を右クリックし、**[Azure]** を選択してから **[Sign In]** をクリックします。
+1. **Eclipse** を起動し、**プロジェクト**を開いた後、**Project Explorer** でプロジェクト名を右クリックし、 **[Azure]** を選択してから **[Sign In]** をクリックします。
 
 2. 認証方法に **[Interactive]** を選択して **[Sign In]** をクリックした後、プロンプトが表示されたら **Azure の資格情報**を入力し、**Azure サブスクリプション**を選択します。
 
-3. **Project Explorer** でプロジェクト名を右クリックし、**[Azure]** を選択した後、**[Configure Application Insights]** をクリックします。
+3. **Project Explorer** でプロジェクト名を右クリックし、 **[Azure]** を選択した後、 **[Configure Application Insights]** をクリックします。
 
 4. **[Enable telemetry with Application Insights]** チェックボックスをオンにし、Java アプリにリンクする App Insights リソースおよび関連する**インストルメンテーション キー**を選択します。
 
    ![Eclipse の Azure 構成メニュー](./media/java-quick-start/0007-j.png)
 
-5. Application Insights プラグインを構成した後、テレメトリの送信を始める前に、アプリケーションをもう一度[発行/再発行](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-java#publish-the-web-app-to-azure)する必要があります。
+5. Application Insights プラグインを構成した後、テレメトリの送信を始める前に、アプリケーションをもう一度[発行/再発行](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-java#deploy-the-app)する必要があります。
 
 > [!NOTE]
 > Application Insights SDK for Java はライブ メトリックをキャプチャして視覚化できますが、テレメトリの収集を初めて有効にした場合は、ポータルでデータの表示が開始されるまで数分かかる可能性があります。 このアプリがトラフィックの少ないテスト アプリである場合、ほとんどのメトリックはアクティブな要求や操作がある場合にのみキャプチャされることに留意してください。
@@ -140,7 +140,7 @@ Java の監視に関する詳細については、[App Insights Java の追加�
 
 テストが完了したら、リソース グループとすべての関連リソースを削除できます。 これを行うには、次の手順に従います。
 
-1. Azure Portal の左側のメニューから、**[リソース グループ]**、**[myResourceGroup]** の順にクリックします。
+1. Azure Portal の左側のメニューから、 **[リソース グループ]** 、 **[myResourceGroup]** の順にクリックします。
 2. リソース グループのページで **[削除]** をクリックし、テキスト ボックスに「**myResourceGroup**」と入力してから **[削除]** をクリックします。
 
 ## <a name="next-steps"></a>次の手順

@@ -4,14 +4,14 @@ description: 新しいリソース グループまたはサブスクリプショ
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 5/17/2019
+ms.date: 6/6/2019
 ms.author: tomfitz
-ms.openlocfilehash: dcac557f29a987ea732744c1b82f90f858623ec5
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: 314b28edbd5770186d96fb2a2b203f26ff27bda0
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65872553"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66752357"
 ---
 # <a name="move-operation-support-for-resources"></a>リソースの操作のサポートの移動
 この記事では、Azure リソースの種類は、移動操作をサポートしているかどうかを示します。 リソースの種類には、移動操作がサポートされていても、リソースが移動されることを妨げている条件がある可能性があります。 移動操作に影響する条件の詳細については、[新しいリソース グループまたはサブスクリプションへリソースを移動](resource-group-move-resources.md)を参照してください。
@@ -423,7 +423,7 @@ ms.locfileid: "65872553"
 | metricalerts | いいえ | いいえ |
 | notificationgroups | いいえ | いいえ |
 | notificationrules | いいえ | いいえ |
-| scheduledqueryrules | いいえ | いいえ |
+| scheduledqueryrules | はい | はい |
 | webtests | はい | はい |
 | Workbooks | はい | はい |
 

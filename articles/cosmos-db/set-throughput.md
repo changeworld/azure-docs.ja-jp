@@ -4,14 +4,14 @@ description: Azure Cosmos のコンテナーとデータベースにプロビジ
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 05/28/2019
 ms.author: rimman
-ms.openlocfilehash: 598a1562127a67c78f67cdd02b00d83d4a606739
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: f30155c0fbdbdd93ab4ffc3ae85ef2ad62b188c9
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65953545"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389245"
 ---
 # <a name="provision-throughput-on-containers-and-databases"></a>コンテナーとデータベースのスループットのプロビジョニング
 
@@ -71,8 +71,7 @@ Azure Cosmos データベースにスループットを設定することで、�
 2 つのモデルを組み合わせることができます。 データベースとコンテナーの両方でスループットをプロビジョニングできます。 次の例に、Azure Cosmos データベースとコンテナーでスループットをプロビジョニングする方法を示します。
 
 * *K* RU のプロビジョニング済みスループットで、*Z* という名前の Azure Cosmos データベースを作成できます。 
-* 次に、データベース内に *A*、*B*、*C*、*D*、*E* という名前の 5 つのコンテナーを作成します。
-* コンテナー *B* に *P* RU のプロビジョニング済みスループットを明示的に構成できます。
+* 次に、データベース内に *A*、*B*、*C*、*D*、*E* という名前の 5 つのコンテナーを作成します。 コンテナー B を作成するときに、必ず **[Provision dedicated throughput for this container]\(このコンテナーの専用スループットをプロビジョニングする\)** オプションを有効にし、このコンテナーにプロビジョニングされているスループットの "*P*" RU を明示的に構成します。 共有および専用のスループットを構成できるのは、データベースとコンテナーを作成する場合のみであることに注意してください。 
 * *K* RU のスループットは、*A*、*C*、*D*、*E* の 4 つのコンテナーにわたって共有されます。使用可能なスループットの正確な量は、*A*、*C*、*D*、*E* のそれぞれで異なります。 個々のコンテナーのスループットに対する SLA はありません。
 * コンテナー *B* は常に *P* RU のスループットを取得することが保証されます。 それは SLA によって裏付けられます。
 

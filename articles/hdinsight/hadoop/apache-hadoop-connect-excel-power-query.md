@@ -41,23 +41,23 @@ Power Query for Excel アドインを使うと、HDInsight クラスターから
 
    - Excel 2016
 
-     - **[データ]** メニューをクリックし、**[Get & Transform Data]\(データの取得と変換\)** リボンの **[データの取得]** をクリックして、**[From Azure]\(Azure から\)**、**[From Azure HDInsight(HDFS)]\(Azure HDInsight(HDFS) から\)** を順にクリックします。
+     - **[データ]** メニューをクリックし、 **[Get & Transform Data]\(データの取得と変換\)** リボンの **[データの取得]** をクリックして、 **[From Azure]\(Azure から\)** 、 **[From Azure HDInsight(HDFS)]\(Azure HDInsight(HDFS) から\)** を順にクリックします。
 
        ![HDI.PowerQuery.SelectHdiSource](./media/apache-hadoop-connect-excel-power-query/hdi.powerquery.selecthdisource.excel2016.png)
 
    - Excel 2013/2010
 
-     - **[Power Query]** メニューをクリックし、**[Azure から]**、**[Microsoft Azure HDInsight から]** の順にクリックします。
+     - **[Power Query]** メニューをクリックし、 **[Azure から]** 、 **[Microsoft Azure HDInsight から]** の順にクリックします。
    
        ![HDI.PowerQuery.SelectHdiSource][image-hdi-powerquery-hdi-source]
        
-       **注:****[Power Query]** メニューが表示されない場合は、**[ファイル]** > **[オプション]** > **[アドイン]** をクリックして、ページ下部にある **[管理]** ボックスの一覧の **[COM アドイン]** を選択します。 **[設定]** をクリックして、Power Query for Excel アドインのボックスがオンになっていることを確認します。
+       **注:** **[Power Query]** メニューが表示されない場合は、 **[ファイル]**  >  **[オプション]**  >  **[アドイン]** をクリックして、ページ下部にある **[管理]** ボックスの一覧の **[COM アドイン]** を選択します。 **[設定]** をクリックして、Power Query for Excel アドインのボックスがオンになっていることを確認します。
        
-       **注:** Power Query では、**[その他のデータ ソース]** をクリックして、HDFS からデータをインポートすることもできます。
-4. **[アカウント名]** にクラスターに関連付けられた Azure BLOB ストレージ アカウントの名前を入力し、**[OK]** をクリックします。 既定のストレージ アカウントまたはリンクされたストレージ アカウントを指定できます。  書式は *https://&lt;StorageAccountName>.blob.core.windows.net/* です。
-5. **アカウント キー**に BLOB ストレージ アカウントのキーを入力し、**[保存]** をクリックします。 (アカウント情報を入力するのは、最初にこのストアにアクセスするときだけです。)
+       **注:** Power Query では、 **[その他のデータ ソース]** をクリックして、HDFS からデータをインポートすることもできます。
+4. **[アカウント名]** にクラスターに関連付けられた Azure BLOB ストレージ アカウントの名前を入力し、 **[OK]** をクリックします。 既定のストレージ アカウントまたはリンクされたストレージ アカウントを指定できます。  書式は *https://&lt;StorageAccountName>.blob.core.windows.net/* です。
+5. **アカウント キー**に BLOB ストレージ アカウントのキーを入力し、 **[保存]** をクリックします。 (アカウント情報を入力するのは、最初にこのストアにアクセスするときだけです。)
 6. クエリ エディターの左側にある **[ナビゲーター]** ウィンドウで、BLOB ストレージ コンテナーの名前をダブルクリックします。 既定で、コンテナー名はクラスター名と同じです。
-7. **[名前]** 列 (フォルダーのパスは **../hive/warehouse/hivesampletable/**) で **HiveSampleData.txt** を見つけて、HiveSampleData.txt の左側の **[バイナリ]** をクリックします。 HiveSampleData.txt はすべてのクラスターに用意されています。 必要に応じて、独自のファイルを使用できます。
+7. **[名前]** 列 (フォルダーのパスは **../hive/warehouse/hivesampletable/** ) で **HiveSampleData.txt** を見つけて、HiveSampleData.txt の左側の **[バイナリ]** をクリックします。 HiveSampleData.txt はすべてのクラスターに用意されています。 必要に応じて、独自のファイルを使用できます。
    
     ![HDI.PowerQuery.ImportData][image-hdi-powerquery-importdata]
 8. 列名を変更することもできます。 準備ができたら **[閉じて読み込む]** をクリックします。  ブックにデータが読み込まれます。

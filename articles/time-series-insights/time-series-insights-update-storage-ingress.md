@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8587fb0138309040232b6e0abc0f3eb17cc3093a
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 33ca86fc2d13fb7f6e29c43e9a7c1d2dc6ef4169
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66244072"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66755243"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Azure Time Series Insights プレビューのデータ ストレージおよびイングレス
 
@@ -37,7 +37,7 @@ Time Series Insights プレビューでは、Parquet ファイルの種類で Az
 
 Azure Blob Storage の概要については、[ストレージ BLOB の概要](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction)に関するページを参照してください。
 
-Parquet ファイルの種類の詳細については、[Azure Storage でサポートされているファイルの種類](https://docs.microsoft.com/azure/data-factory/supported-file-formats-and-compression-codecs#Parquet-format)に関するページを参照してください。
+Parquet ファイルの種類の詳細については、[Azure Storage でサポートされているファイルの種類](https://docs.microsoft.com/azure/data-factory/supported-file-formats-and-compression-codecs#parquet-format)に関するページを参照してください。
 
 ## <a name="parquet-file-format"></a>Parquet ファイル形式
 

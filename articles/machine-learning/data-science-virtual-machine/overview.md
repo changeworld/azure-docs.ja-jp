@@ -15,56 +15,56 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 02/22/2019
 ms.author: gokuma
-ms.openlocfilehash: bb04d6c8b16a6b9bdbbb95b0b4f577cf4cc3ed86
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 384cb274496670e0b0b5a33e001e78a0babed3f0
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66235076"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66427796"
 ---
 # <a name="introduction-to-azure-data-science-virtual-machine-for-linux-and-windows"></a>Linux および Windows 用の Azure データ サイエンス仮想マシンの概要
 
 データ サイエンス仮想マシン (DSVM) とは、データ サイエンス専用に構築された Microsoft の Azure クラウド上にあるカスタマイズされた VM イメージです。 多くのよく使われるデータ サイエンス ツールや他のツールが事前にインストールおよび構成されており、高度な分析のためのインテリジェントなアプリケーションの構築をすぐに始めることができます。 Windows Server と Linux で使用できます。 Windows エディションの DSVM は、Windows Server 2016 と Windows Server 2012 で提供しています。 Linux エディションの DSVM は、Ubuntu 16.04 LTS と CentOS 7.4 で提供しています。
 
-このトピックは、データ サイエンス VM でできることを説明し、VM を使う主なシナリオの概要を示し、Windows および Linux バージョンで使用できる主な機能の一覧を示し、使い始める方法について説明します。
+この記事では、Data Science VM でできることについて説明します。 VM の使用に関する主要なシナリオの概要を説明し、Windows および Linux のバージョンで使用できる主な機能を列挙します。 また、この記事では、それらの使用を開始する手順についても説明します。
 
 
 ## <a name="what-can-i-do-with-the-data-science-virtual-machine"></a>データ サイエンス仮想マシンでできること
 Data Science Virtual Machine (DSVM) の目標は、業界を越えてすべてのスキル レベルのデータ専門家に、摩擦のない、事前に構成され、かつ完全に統合されたデータ サイエンス環境を提供することです。 同等のワークスペースを独自にロールアウトする代わりに DSVM をプロビジョニングすることによって、インストール、構成、およびパッケージ管理プロセスにかかる数日、場合によっては "_数週間_" の期間を節約できます。 DSVM が割り当てられたら、直ちにデータ サイエンス プロジェクトに関する作業を開始できます。
 
-データ サイエンス VM は、広範な使用シナリオで使えるように設計および構成されています。 プロジェクトのニーズの変化に応じて、環境をスケールアップまたはスケールダウンできます。好みの言語を使ってデータ サイエンス タスクをプログラミングできます。他のツールをインストールし、正確なニーズに合わせてシステムをカスタマイズできます。
+データ サイエンス VM は、広範な使用シナリオで使えるように設計および構成されています。 環境は、プロジェクトの要件の変化に応じてスケールアップまたはスケールダウンできます。 また、好みの言語を使ってデータ サイエンス タスクをプログラミングしたり、他のツールをインストールして正確なニーズに合わせてシステムをカスタマイズしたりすることもできます。
 
 ## <a name="key-scenarios"></a>主なシナリオ
 ここでは、データ サイエンス VM をデプロイできる主要なシナリオをいくつか示します。
 
 ### <a name="preconfigured-analytics-desktop-in-the-cloud"></a>クラウド内の事前構成済み分析デスクトップ
-データ サイエンス VM は、ローカル デスクトップを管理されたクラウド デスクトップに置き換えようと考えているデータ サイエンス チームに基準となる構成を提供します。 この基準により、チームのすべてのデータ科学者に、実験を確認して共同作業を促進するための一貫性のあるセットアップが保証されます。 また、システム管理者の負担を軽減し、高度な分析を行うために必要なさまざまなソフトウェア パッケージの評価、インストール、および管理に必要な時間を短縮することで、コストも削減できます。
+データ サイエンス VM は、ローカル デスクトップを管理されたクラウド デスクトップに置き換えようと考えているデータ サイエンス チームに基準となる構成を提供します。 この基準により、チームのすべてのデータ科学者に、実験を確認して共同作業を促進するための一貫性のあるセットアップが保証されます。 また、システム管理者の負担が軽減されるためコストも低減されます。 この負担軽減により、高度な分析を行うために必要なさまざまなソフトウェア パッケージの評価、インストール、および保守に必要な時間が節約されます。
 
 ### <a name="data-science-training-and-education"></a>データ サイエンスのトレーニングと教育
-エンタープライズでデータ サイエンスを教える訓練と教育の担当者は、通常、受講者が一貫したセットアップを使用でき、サンプルが予測どおりに動作するように、仮想マシン イメージを提供します。 データ サイエンス VM は、サポートと非互換性の問題を軽減する一貫したセットアップでオンデマンドの環境を作成します。 このような環境を頻繁に構築する必要がある場合 (特に短期間のトレーニング クラスの場合)、非常にメリットがあります。
+データ サイエンスのクラスを教える企業のトレーナーや教育担当者は、通常、仮想マシン イメージを提供します。 彼らは、受講者が一貫したセットアップを行い、サンプルが予想どおりに動作するように、そのイメージを提供します。 データ サイエンス VM は、サポートと非互換性の問題を軽減する一貫したセットアップでオンデマンドの環境を作成します。 このような環境を頻繁に構築する必要がある場合 (特に短期間のトレーニング クラスの場合)、非常にメリットがあります。
 
 ### <a name="on-demand-elastic-capacity-for-large-scale-projects"></a>大規模なプロジェクトのためのオンデマンドで柔軟な容量
-データ サイエンスのハッカーソンや競技または大規模なデータ モデリングと探索では、スケールアウトしたハードウェア容量が通常は短期間に必要になります。 データ サイエンス VM は、高性能コンピューティング リソースを実行する必要がある実験を可能にするスケールアウトされたサーバー上で、必要に応じて迅速にデータ サイエンス環境を複製できます。
+データ サイエンスのハッカーソンや競技または大規模なデータ モデリングと探索では、スケールアウトしたハードウェア容量が通常は短期間に必要になります。 Data Science VM は、高性能コンピューティング リソースが実行される実験を可能にするスケールアウトされたサーバー上で、必要に応じて迅速にデータ サイエンス環境を複製する際に役立ちます。
 
 ### <a name="custom-compute-power-for-azure-notebooks"></a>Azure Notebooks のカスタム コンピューティング能力
 
 [Azure Notebooks](/azure/notebooks/azure-notebooks-overview) は、インストールせずに、クラウドで Jupyter ノートブックを開発、実行、および共有するための無料のホストされるサービスです。 ただし、無料のサービス レベルは 4GB のメモリと 1GB のデータに制限されています。 すべての制限を解放するには、その後 Notebooks プロジェクトを Data Science VM か、または Jupyter サーバーを実行している他の任意の VM に接続できます。 Azure Active Directory を使用してアカウント (会社のアカウントなど) で Azure Notebooks にサインインすると、Notebooks には、そのアカウントに関連付けられたいずれかのサブスクリプションの Data Science VM が自動的に表示されます。 詳細については、「プロジェクトの管理と構成」の「[Compute tier (コンピューティング レベル)](/azure/notebooks/configure-manage-azure-notebooks-projects#compute-tier)」を参照してください。
 
 ### <a name="short-term-experimentation-and-evaluation"></a>短期的な実験と評価
-データ サイエンス VM は、Microsoft ML Server、SQL Server、Visual Studio ツール、Jupyter、ディープ ラーニング/ML ツールキット、およびコミュニティで人気のあるセットアップ作業が最小限の新しいツールなど、ツールの学習と評価のために使用できます。 Data Science VM は迅速に設定できるので、公開された実験の複製、デモの実行、オンライン セッションでのチュートリアルの実施、会議チュートリアルなど、他の短期的な使用シナリオに適用できます。
+データ サイエンス VM は、Microsoft ML Server、SQL Server、Visual Studio ツール、Jupyter、ディープ ラーニング/ML ツールキット、およびコミュニティで人気のあるセットアップ作業が最小限の新しいツールなど、ツールの学習と評価のために使用できます。 Data Science VM は短時間で設定できるため、他の短期的な使用シナリオに適用できます。 これらのシナリオには、公開された実験の複製、デモの実行、オンライン セッションでのチュートリアルの実施、会議チュートリアルが含まれます。
 
 ### <a name="deep-learning"></a>ディープ ラーニング
-Data Science VM は、GPU (グラフィック処理装置) ベースのハードウェア上でディープ ラーニング アルゴリズムを使用するトレーニング モデルに使用できます。 DSVM では、Azure クラウドの VM スケーリング機能を利用すると、必要に応じてクラウド上で GPU ベースのハードウェアを使用できます。 同じ OS ディスクを保持しつつ、大規模モデルをトレーニングするときまたは高速計算が必要なときに GPU ベースの VM に切り替えることができます。  Windows Server 2016 エディションの DSVM には、GPU ドライバー、フレームワーク、および GPU バージョンのディープ ラーニング フレームワークが事前インストールされています。 Linux エディションでは、GPU でのディープ ラーニングは、CentOS と Ubuntu DSVM の両方で可能です。 Data Science VM の Ubuntu、CentOS、または Windows 2016 エディションは GPU ベースでない Azure 仮想マシンにデプロイできます。その場合、すべてのディープ ラーニング フレームワークは CPU モードにフォールバックします。
+Data Science VM は、GPU (グラフィック処理装置) ベースのハードウェア上でディープ ラーニング アルゴリズムを使用するトレーニング モデルに使用できます。 DSVM では、Azure クラウドの VM スケーリング機能を利用すると、必要に応じてクラウド上で GPU ベースのハードウェアを使用できます。 同じ OS ディスクを保持しつつ、大規模モデルをトレーニングするときまたは高速計算が必要なときに GPU ベースの VM に切り替えることができます。  Windows Server 2016 エディションの DSVM には、GPU ドライバー、フレームワーク、および GPU バージョンのディープ ラーニング フレームワークが事前インストールされています。 Linux エディションでは、GPU でのディープ ラーニングは、CentOS と Ubuntu DSVM の両方で可能です。 Data Science VM の Ubuntu、CentOS、または Windows 2016 エディションは GPU ベース以外の Azure 仮想マシンにデプロイできます。 この場合、すべてのディープ ラーニング フレームワークは CPU モードにフォールバックはします。
 
 ## <a name="whats-included-in-the-data-science-vm"></a>データ サイエンス VM に含まれるもの
-データ サイエンス仮想マシンには、多くの一般的なデータ サイエンスおよびディープ ラーニング ツールが既にインストールされ、構成されています。 また、Microsoft ML Server (R、Python) などの各種の Azure データおよび分析製品を簡単に操作して予測モデルを構築したり、SQL Server 2017 を使用して大規模なデータ セットを探査したりするためのツールも含まれています。 オープン ソース コミュニティや Microsoft の他のツールのホスト、およびサンプル コードとノートブックも含まれます。 次の表は、データ サイエンス仮想マシンの Windows エディションと Linux エディションに含まれる主要なコンポーネントを列記して比較したものです。
+データ サイエンス仮想マシンには、多くの一般的なデータ サイエンスおよびディープ ラーニング ツールが既にインストールされ、構成されています。 また、Microsoft ML Server (R、Python) などの各種の Azure データおよび分析製品を簡単に操作して予測モデルを構築したり、SQL Server 2017 を使用して大規模なデータ セットを探査したりするためのツールも含まれています。 この Data Science VM には、オープンソース コミュニティや Microsoft の他のツールのホストのほか、サンプル コードやノートブックも含まれます。 次の表は、データ サイエンス仮想マシンの Windows エディションと Linux エディションに含まれる主要なコンポーネントを列記して比較したものです。
 
 
 | **ツール**                                                           | **Windows エディション** | **Linux エディション** |
 | :------------------------------------------------------------------ |:-------------------:|:------------------:|
 | 人気のパッケージがプレインストールされた [Microsoft R Open](https://mran.microsoft.com/open/)   |Y                      | Y             |
 | [Microsoft ML Server (R、Python)](https://docs.microsoft.com/machine-learning-server/) Developer エディションには次のものが含まれます。 <br />  &nbsp;&nbsp;&nbsp;&nbsp;* [RevoScaleR/revoscalepy](https://docs.microsoft.com/machine-learning-server/r/concept-what-is-revoscaler) の並列および分散型の高機能フレームワーク (R および Python)<br />  &nbsp;&nbsp;&nbsp;&nbsp;* [MicrosoftML](https://docs.microsoft.com/machine-learning-server/r/concept-what-is-the-microsoftml-package) - Microsoft の新しい最先端 ML アルゴリズム <br />  &nbsp;&nbsp;&nbsp;&nbsp;* [R および Python の運用化](https://docs.microsoft.com/machine-learning-server/what-is-operationalization)                                            |Y                      | Y |
-| [Microsoft Office](https://products.office.com/en-us/business/office-365-proplus-business-software) Pro-Plus (共有アクティベーション付き) - Excel、Word および PowerPoint   |Y                      |N              |
+| [Microsoft Office](https://products.office.com/en-us/business/office-365-proplus-business-software) Pro-Plus (共有アクティベーション付き) - Excel、Word、PowerPoint   |Y                      |N              |
 | 人気のパッケージがプレインストールされた [Anaconda Python](https://www.continuum.io/) 2.7、3.5    |Y                      |Y              |
 | Julia 言語用の人気のパッケージがプレインストールされた [JuliaPro](https://juliacomputing.com/products/juliapro.html)                         |Y                      |Y              |
 | リレーショナル データベース                                                            | [SQL Server 2017](https://www.microsoft.com/sql-server/sql-server-2017) <br/> Developer エディション| [PostgreSQL](https://www.postgresql.org/) (CentOS)、<br/>[SQL Server 2017](https://www.microsoft.com/sql-server/sql-server-2017) <br/> Developer エディション (Ubuntu) |
@@ -79,8 +79,8 @@ Data Science VM は、GPU (グラフィック処理装置) ベースのハード
 |     &nbsp;&nbsp;&nbsp;&nbsp;* SparkR     | N | Y |
 | JupyterHub (マルチ ユーザー Notebook サーバー)| N | Y |
 | JupyterLab (マルチ ユーザー Notebook サーバー) | N | Y (Ubuntu のみ) |
-| **開発ツール、IDE、およびコード エディター**| | |
-| &nbsp;&nbsp;&nbsp;&nbsp;* Git プラグイン、Azure HDInsight (Hadoop)、Data Lake、SQL Server データ ツール、[Node.js](https://github.com/Microsoft/nodejstools)、[Python](https://aka.ms/ptvs)、および [R Tools for Visual Studio (RTVS)](https://microsoft.github.io/RTVS-docs/)を備えた [Visual Studio 2017 (Community Edition)](https://www.visualstudio.com/community/) | Y | N |
+| **開発ツール、IDE、コード エディター**| | |
+| &nbsp;&nbsp;&nbsp;&nbsp;* Git プラグイン、Azure HDInsight (Hadoop)、Data Lake、SQL Server Data Tools、[Node.js](https://github.com/Microsoft/nodejstools)、[Python](https://aka.ms/ptvs)、および [R Tools for Visual Studio (RTVS)](https://microsoft.github.io/RTVS-docs/) を備えた [Visual Studio 2019 (Community Edition)](https://www.visualstudio.com/community/) | Y | N |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Visual Studio Code](https://code.visualstudio.com/) | Y | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [RStudio Desktop](https://www.rstudio.com/products/rstudio/#Desktop) | Y | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [RStudio Server](https://www.rstudio.com/products/rstudio/#Server) | N | Y |

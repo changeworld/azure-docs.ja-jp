@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory のデバイス管理とは | Microsoft Docs
-description: デバイス管理を利用して、環境内のリソースにアクセスしているデバイスを管理する方法について説明します。
+title: Azure Active Directory のデバイス ID とは | Microsoft Docs
+description: デバイス ID 管理を活用して、環境内のリソースにアクセスしているデバイスを管理する方法について説明します。
 services: active-directory
 documentationcenter: ''
 author: MicrosoftGuyJFlo
@@ -13,35 +13,31 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 03/01/2019
+ms.date: 06/04/2019
 ms.author: joflore
-ms.reviewer: jairoc
+ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e756b260db0f6db752d345e085b16d58cee5555
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 8f91ff65d0e11ed2e9f923f94c740314c9136d99
+ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65997283"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66688692"
 ---
-# <a name="what-is-device-management-in-azure-active-directory"></a>Azure Active Directory のデバイス管理とは
+# <a name="what-is-a-device-identity"></a>デバイス ID とは
 
 モバイル ファースト、クラウド ファーストの世界では、Azure Active Directory (Azure AD) を使用して、デバイス、アプリ、およびサービスにどこからでもシングル サインオンできます。 Bring Your Own Device (BYOD) を含むデバイスの急増によって、IT プロフェッショナルは、次の 2 つの対立する目標を達成することを迫られています。
 
 - 場所や時間を問わず、常にエンド ユーザーの生産性を高められるようにすること
 - 企業の資産を常に保護すること
 
-ユーザーは、デバイスを通して企業の資産にアクセスしています。 IT 管理者は、企業の資産を保護するために、これらのデバイスを管理します。 管理することによって、ユーザーがセキュリティとコンプライアンスの基準と一致するデバイスからリソースにアクセスしていることを確信できます。
+ユーザーは、Azure AD のデバイスを通して企業の資産にアクセスしています。 IT 管理者は、企業の資産を保護するために、これらのデバイス ID を管理します。 管理することによって、ユーザーがセキュリティとコンプライアンスの基準と一致するデバイスからリソースにアクセスしていることを確信できます。
 
-デバイス管理は、[デバイスに基づく条件付きアクセス](../conditional-access/require-managed-devices.md)の基礎でもあります。 デバイスに基づく条件付きアクセスにより、環境内のリソースへのアクセスは、確実に、管理対象デバイスでのみ可能となります。
+デバイス ID 管理は、[デバイスに基づく条件付きアクセス](../conditional-access/require-managed-devices.md)の基礎でもあります。 デバイスに基づく条件付きアクセスにより、環境内のリソースへのアクセスは、確実に、管理対象デバイスでのみ可能となります。
 
-このトピックでは、Azure Active Directory でのデバイス管理のしくみについて説明します。
+## <a name="getting-devices-in-azure-ad"></a>Azure AD でのデバイスの取得
 
-> [!VIDEO https://www.youtube.com/embed/NeezfKhomQU]
-
-## <a name="getting-devices-under-the-control-of-azure-ad"></a>デバイスを Azure AD の管理下におく
-
-デバイスを Azure AD の管理下におくには、次の 2 つのオプションがあります。
+Azure AD でデバイスを取得するには、2 つのオプションがあります。
 
 - 登録
 - 参加
@@ -66,7 +62,7 @@ Azure AD 登録デバイス済みの目標は、**Bring Your Own Device (BYOD)**
 - 初めて作業アプリケーションにアクセスするとき
 - **[設定]** メニューを使用して手動で (Windows 10 の場合)
 
-Windows 10、iOS、Android、および macOS で Azure AD 登録済みデバイスを構成できます。
+**Windows 10 (個人用)、iOS、Android、macOS** のデバイスで Azure AD 登録済みデバイスの状態を構成できます。
 
 ## <a name="azure-ad-joined-devices"></a>Azure AD 参加済みデバイス
 
@@ -88,12 +84,11 @@ Azure AD Join は、次の方法のいずれかを使用して展開できます
 
 Azure AD 参加済みデバイスを実装すると、次のメリットを得ることができます。
 
-- Azure が管理している SaaS アプリやサービスへの**シングル サインオン (SSO)**。 ユーザーが職場のリソースにアクセスするときに、追加の認証プロンプトが表示されることはありません。 SSO 機能は、ユーザーがドメイン ネットワークに接続されていない場合も使用できます。
+- Azure が管理している SaaS アプリやサービスへの**シングル サインオン (SSO)** 。 ユーザーが職場のリソースにアクセスするときに、追加の認証プロンプトが表示されることはありません。 SSO 機能は、ユーザーがドメイン ネットワークに接続されていない場合も使用できます。
 - 参加デバイス間でのユーザー設定の**企業に準拠しているローミング**。 ユーザーは、デバイスの設定を確認するときに Microsoft アカウント (Hotmail など) に接続する必要はありません。
 - Azure AD アカウントを使用した**ビジネス向け Windows ストアへのアクセス**。 ユーザーは、組織によって事前選択されているアプリケーションのインベントリから選択できます。
 - **Windows Hello** のサポート。
 - コンプライアンス ポリシーを満たしているデバイスのみにアプリへのアクセスを許可する**アクセスの制限**。
-
 - デバイスがオンプレミスのドメイン コントローラーにアクセスできる場合の**オンプレミス リソースへのシームレスなアクセス**。
 
 Azure AD への参加は、主にオンプレミスの Windows Server Active Directory インフラストラクチャを持っていない組織向けですが、次のようなシナリオで確実に使用できます。
@@ -129,9 +124,9 @@ Windows 10 デバイスで Azure AD 参加済みデバイスを構成できま�
 
 ## <a name="summary"></a>まとめ
 
-Azure AD のデバイス管理を使用して、次の操作を実行できます。
+Azure AD のデバイス ID 管理では、以下が可能です。
 
-- デバイスを Azure AD の管理下におくプロセスを簡略化する
+- デバイスを Azure AD に設定して管理するプロセスを簡略化する
 - 組織のクラウドベースのリソースへの使いやすいアクセス方法をユーザーに提供する
 
 おおざっぱにまとめると、次のようになります。
@@ -156,9 +151,9 @@ Azure AD のデバイス管理を使用して、次の操作を実行できま�
 
 ## <a name="next-steps"></a>次の手順
 
-- Azure Portal でデバイスを管理する方法の概要については、[Azure Portal によるデバイスの管理](device-management-azure-portal.md)に関するページを参照してください
-- デバイスベースの条件付きアクセスについて詳しくは、「[Azure Active Directory 接続アプリケーションに対するデバイスベースの条件付きアクセス ポリシーを設定する方法](../conditional-access/require-managed-devices.md)」を参照してください。
-- セットアップするには:
+- Azure portal でデバイス ID を管理する方法の概要については、[Azure portal によるデバイス ID の管理](device-management-azure-portal.md)に関するページを参照してください。
+- 設定するには:
    - Azure Active Directory 登録済み Windows 10 デバイスの場合は、[Azure Active Directory 登録済み Windows 10 デバイスを構成する方法](../user-help/device-management-azuread-registered-devices-windows10-setup.md)に関するページを参照してください。
-   - Azure Active Directory 参加済みデバイスの場合は、[Azure Active Directory 参加済みデバイスを構成する方法](../user-help/device-management-azuread-joined-devices-setup.md)に関するページを参照してください。
-   - ハイブリッド Azure AD 参加デバイスの場合は、[ハイブリッド Azure Active Directory 参加の実装を計画する方法](hybrid-azuread-join-plan.md)に関するページを参照してください。
+   - Azure Active Directory 参加済みデバイスの場合は、[Azure Active Directory 参加の実装を計画する方法](azureadjoin-plan.md)に関するページを参照してください。
+   - ハイブリッド Azure AD 参加デバイスの場合は、[ハイブリッド Azure Active Directory 参加の実装を計画する方法](hybrid-azuread-join-plan.md)に関するページを参照してください。   
+- デバイスベースの条件付きアクセスの詳細については、[Azure Active Directory デバイスベースの条件付きアクセス ポリシーの構成](../conditional-access/require-managed-devices.md)に関するページを参照してください。

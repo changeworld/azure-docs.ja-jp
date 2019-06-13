@@ -11,12 +11,12 @@ ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 05/02/2018
 ms.custom: seodec18
-ms.openlocfilehash: 3730e4a0bfa05e6606e50b9bbd9d9152e2488954
-ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
+ms.openlocfilehash: 9d173409fc9f270f13d688999a88f9480c3eb40f
+ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65851715"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66742918"
 ---
 # <a name="troubleshooting-azure-machine-learning-service-aks-and-aci-deployments"></a>Azure Machine Learning service の AKS および ACI デプロイのトラブルシューティング
 
@@ -117,7 +117,7 @@ __ポータル__:
 Create image "myimage": An internal server error occurred. Please try again. If the problem persists, contact support.
 ```
 
-__SDK__: 
+__SDK__:
 ```python
 image = ContainerImage.create(name = "myimage", models = [model], image_config = image_config, workspace = ws)
 Creating image
@@ -165,12 +165,12 @@ b\'{"code":"InternalServerError","statusCode":500,"message":"An internal server 
 ローカルにデプロイするには、`LocalWebservice.deploy_configuration()` を使用してデプロイ構成を作成するようにコードを変更します。 次に、`Model.deploy()` を使用して、サービスをデプロイします。 次の例では、モデル (`model` 変数に含まれる) をローカル Web サービスとしてデプロイします。
 
 ```python
-from azureml.core.model import InferenceConfig
+from azureml.core.model import InferenceConfig,Model
 from azureml.core.webservice import LocalWebservice
 
 # Create inference configuration. This creates a docker image that contains the model.
 inference_config = InferenceConfig(runtime= "python", 
-                                   execution_script="score.py",
+                                   entry_script="score.py",
                                    conda_file="myenv.yml")
 
 # Create a local deployment, using port 8890 for the web service endpoint
@@ -256,7 +256,7 @@ print(Model.get_model_path(model_name='my-best-model'))
 
 ## <a name="function-fails-runinputdata"></a>run(input_data) 関数が失敗する
 
-サービスが正常にデプロイされたが、スコアリング エンドポイントにデータを投稿するとクラッシュする場合、代わりに詳細なエラー メッセージが返されるように `run(input_data)` 関数にエラーをキャッチするステートメントを追加できます。 例: 
+サービスが正常にデプロイされたが、スコアリング エンドポイントにデータを投稿するとクラッシュする場合、代わりに詳細なエラー メッセージが返されるように `run(input_data)` 関数にエラーをキャッチするステートメントを追加できます。 例:
 
 ```python
 def run(input_data):

@@ -8,12 +8,12 @@ ms.date: 01/24/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: f93f6c8891ba9f7407310a8f09387e97f5c1f578
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 65de80004dd05e3eb29f3313bc17405c40450d7a
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59793440"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66397137"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Runbook のエラーをトラブルシューティングする
 
@@ -217,7 +217,7 @@ Exception: A task was canceled.
 
 このエラーは、Azure モジュールを最新のバージョンに更新すると解決できます。
 
-Automation アカウントで、**[モジュール]** をクリックし、**[Azure モジュールの更新]** をクリックします。 この更新には、失敗した Runbook の再実行を完了してから約 15 分かかります。 モジュールの更新の詳細については、「[Azure Automation で Azure モジュールを更新する](../automation-update-azure-modules.md)」を参照してください。
+Automation アカウントで、 **[モジュール]** をクリックし、 **[Azure モジュールの更新]** をクリックします。 この更新には、失敗した Runbook の再実行を完了してから約 15 分かかります。 モジュールの更新の詳細については、「[Azure Automation で Azure モジュールを更新する](../automation-update-azure-modules.md)」を参照してください。
 
 ### <a name="runbook-auth-failure"></a>シナリオ:複数のサブスクリプションを処理するときに Runbook が失敗する
 
@@ -305,6 +305,8 @@ The job was tried three times but it failed
 
 4. Runbook で、Azure サンドボックス内で実行されている Runbook 内の実行可能ファイルまたはサブプロセスを呼び出そうとしました。 このシナリオは Azure サンドボックスではサポートされていません。
 
+5. Runbook により、例外データの出力ストリームへの書き込みが過剰に試行されました。
+
 #### <a name="resolution"></a>解決策
 
 次の解決策のいずれでもこの問題は解決されます。
@@ -316,6 +318,8 @@ The job was tried three times but it failed
 * 別の解決策は、[Hybrid Runbook Worker](../automation-hrw-run-runbooks.md) で Runbook を実行することです。 ハイブリッド worker には、Azure サンドボックスのようなメモリとネットワークの制限はありません。
 
 * Runbook 内のプロセス (.exe や subprocess.call など) を呼び出す必要がある場合は、[Hybrid Runbook Worker](../automation-hrw-run-runbooks.md) で Runbook を実行する必要があります。
+
+* ジョブ出力ストリームでは 1 MB の制限があります。 実行可能ファイルまたはサブプロセスへの呼び出しを try/catch ブロックで必ず囲みます。 例外がスローされる場合は、その例外から Automation 変数にメッセージを書き込みます。 これにより、ジョブ出力ストリームに書き込まれなくなります。
 
 ### <a name="fails-deserialized-object"></a>シナリオ:逆シリアル化されたオブジェクトであるため、Runbook が失敗する
 
@@ -389,7 +393,7 @@ The quota for the monthly total job run time has been reached for this subscript
 
 1. Azure サブスクリプションにサインインします。  
 2. アップグレードする Automation アカウントを選択します。  
-3. **[設定]** > **[価格]** の順にクリックします。
+3. **[設定]**  >  **[価格]** の順にクリックします。
 4. ページ下部にある **[有効]** をクリックして、アカウントを **Basic** レベルにアップグレードします。
 
 ### <a name="cmdlet-not-recognized"></a>シナリオ:Runbook の実行時にコマンドレットが認識されない

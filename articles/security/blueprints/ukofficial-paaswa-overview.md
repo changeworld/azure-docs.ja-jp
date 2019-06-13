@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: jomolesk
-ms.openlocfilehash: 95e10f4727de239016a2e3c88571e74267e3967b
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: e3ee5a0aa22d1231dca7d02a77d39e0a2b569314
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58482989"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66753857"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Azure のセキュリティとコンプライアンスのブループリント:UK OFFICIAL ワークロード向け PaaS Web アプリケーション ホスティング
 
@@ -125,7 +125,7 @@ SQL Database は、リレーショナル データ、JSON、空間、XML など�
 
 Azure SQL データベース インスタンスは、次のデータベース セキュリティ対策を使用します。
 
-- [サーバー レベルおよびデータベース レベルのファイアウォール ルール](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)、または[仮想ネットワーク ルール](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview)を使用した[仮想ネットワーク サービス エンドポイント](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)
+- [サーバー レベルおよびデータベース レベルのファイアウォール ルール](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)、または[仮想ネットワーク規則](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview)を使用した[仮想ネットワーク サービス エンドポイント](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)
 - [透過的なデータ暗号化](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)によって、悪意のあるアクティビティの脅威から Azure SQL Database と Azure Data Warehouse の保護を支援します。 データベース、関連付けられているバックアップ、保管されているトランザクション ログ ファイルの暗号化と暗号化解除をリアルタイムで実行することにより、アプリケーションに変更を加えずに暗号化を行うことができます。
 - [Azure AD 認証](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication)を使用すると、データベース ユーザーの ID や他の Microsoft サービスを一元管理できます。 ID の一元管理では、1 か所でデータベース ユーザーを管理できるようになるため、アクセス許可の管理が容易になります。
 - データベース管理のための Azure Active Directory の使用
@@ -191,7 +191,7 @@ Azure Storage のセキュリティ保護の詳細については、[セキュ�
 
 #### <a name="azure-activity-logs"></a>Azure アクティビティ ログ
 
-[Azure Activity Log](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs#what-you-can-do-with-the-activity-log) は、サブスクリプションのコントロール プレーン イベントを監査します。 アクティビティ ログを使用すると、サブスクリプションのリソースに対して発生する書き込み操作 (PUT、POST、DELETE) すべてについて、"いつ誰が何を" 行ったのかを確認できます。 さらに、操作の状態など、重要性の大きなプロパティを確認することもできます。
+[Azure Activity Log](https://docs.microsoft.com/azure/azure-monitor/platform/activity-logs-overview) は、サブスクリプションのコントロール プレーン イベントを監査します。 アクティビティ ログを使用すると、サブスクリプションのリソースに対して発生する書き込み操作 (PUT、POST、DELETE) すべてについて、"いつ誰が何を" 行ったのかを確認できます。 さらに、操作の状態など、重要性の大きなプロパティを確認することもできます。
 
 #### <a name="azure-monitor"></a>Azure Monitor
 

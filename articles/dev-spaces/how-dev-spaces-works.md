@@ -10,12 +10,12 @@ ms.date: 03/04/2019
 ms.topic: conceptual
 description: Azure Dev Spaces の使用を開始するためのプロセスおよび azds.yaml 構成ファイルでのそれらの構成方法について説明します
 keywords: azds.yaml, Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
-ms.openlocfilehash: f7cf5ae875fa0fb87322052df036d35e8e5e89a4
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: e437a53d640bbdad3cdeeba8fd73e1f9ffef4023
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65605418"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399835"
 ---
 # <a name="how-azure-dev-spaces-works-and-is-configured"></a>Azure Dev Spaces のしくみと構成方法
 
@@ -80,7 +80,7 @@ Azure Dev Spaces の設定と使用の基本的なフローは次のとおりで
 ## <a name="prepare-your-aks-cluster"></a>AKS クラスターを準備する
 
 AKS クラスターの準備には以下が含まれます。
-* AKS クラスターが [Azure Dev Spaces でサポートされている](https://docs.microsoft.com/azure/dev-spaces/#a-rapid,-iterative-kubernetes-development-experience-for-teams)リージョン内にあることを確認する。
+* AKS クラスターが [Azure Dev Spaces でサポートされている][supported-regions]リージョン内にあることを確認する。
 * Kubernetes 1.10.3 以降が実行されていることを確認する。
 * `az aks use-dev-spaces` を使用して Azure Dev Spaces をクラスターで有効にする。
 
@@ -408,7 +408,7 @@ Java、.NET、および Node.js アプリケーションの場合、Visual Studi
 
 ![コードのデバッグ](media/get-started-node/debug-configuration-nodejs2.png)
 
-Visual Studio Code または Visual Studio を使用してデバッグ用にアプリケーションを起動すると、`azds up` の実行と同じ方法で起動および開発スペースへの接続が処理されます。 また、Visual Studio Code および Visual Studio のクライアント側ツールには、デバッグ用の特定の情報を含む追加のパラメーターが用意されています。 このパラメーターには、デバッガー イメージの名前、デバッガー イメージ内のデバッガーの場所、およびアプリケーションのコンテナー内でのデバッガー フォルダーのマウント先が含まれています。 
+Visual Studio Code または Visual Studio を使用してデバッグ用にアプリケーションを起動すると、`azds up` の実行と同じ方法で起動および開発スペースへの接続が処理されます。 また、Visual Studio Code および Visual Studio のクライアント側ツールには、デバッグ用の特定の情報を含む追加のパラメーターが用意されています。 このパラメーターには、デバッガー イメージの名前、デバッガー イメージ内のデバッガーの場所、およびアプリケーションのコンテナー内でのデバッガー フォルダーのマウント先が含まれています。
 
 デバッガー イメージは、クライアント側ツールによって自動的に指定されます。 `azds prep` の実行時に Dockerfile と Helm チャートの生成に使用したのと同じ方法が使用されます。 アプリケーションのイメージにマウントされたデバッガーは `azds exec` を使用して実行されます。
 
@@ -442,3 +442,7 @@ Azure Dev Spaces の使用を開始するには、以下のクイック スタ�
 * [チーム開発 - .NET Core (CLI と Visual Studio Code を使用)](team-development-netcore.md)
 * [チーム開発 - .NET Core (Visual Studio を使用)](team-development-netcore-visualstudio.md)
 * [チーム開発 - Node.js (CLI と Visual Studio Code を使用)](team-development-nodejs.md)
+
+
+
+[supported-regions]: about.md#supported-regions-and-configurations

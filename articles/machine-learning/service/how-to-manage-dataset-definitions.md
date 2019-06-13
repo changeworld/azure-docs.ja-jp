@@ -1,5 +1,5 @@
 ---
-title: azureml-datasets を使用したデータセット定義とバージョン管理
+title: azureml-datasets を使用したバージョンおよびデータセット定義の管理
 titleSuffix: Azure Machine Learning service
 description: データセット定義を更新したり、定義のライフサイクルを管理したりする方法について説明します。
 services: machine-learning
@@ -10,14 +10,14 @@ ms.author: sihhu
 author: MayMSFT
 ms.reviewer: larryfr
 ms.date: 05/02/2019
-ms.openlocfilehash: e58ce156deaaad259ea7b74521bcf9b79afbd183
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 4476bdd902f054683fa544dc44b548689f3a1881
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66146213"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66241877"
 ---
-# <a name="update-and-manage-the-lifecycle-of-dataset-definitions"></a>データセット定義のライフサイクルを更新、管理する
+# <a name="version-and-manage-your-dataset-definitions"></a>バージョンおよびお使いのデータセット定義の管理
 
 Azure Machine Learning Datasets (プレビュー) を使用してデータセット定義を更新したり管理したりする方法について説明します。
 
@@ -37,7 +37,7 @@ Azure Machine Learning Datasets (プレビュー) を使用してデータセッ
 
 このドキュメントの例で使用しているサンプル ファイルは、[https://dprepdata.blob.core.windows.net/dataset-sample-files/crime.csv](https://dprepdata.blob.core.windows.net/dataset-sample-files/crime.csv) から入手できます。
 
-## <a name="update-dataset-definitions"></a>データセット定義を更新する
+## <a name="create-and-update-definitions"></a>定義の作成および更新
 
 まず、データセットを作成してワークスペースに登録します。
 

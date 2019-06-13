@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/16/2019
-ms.openlocfilehash: 8d186ae83e1016de9c4548d4b1c39303025a5270
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 0392cc6334aaf383f43d55134fa65f82c44270c3
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65795819"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66428409"
 ---
 # <a name="quickstart-1---create-an-azure-search-index-in-c"></a>クイック スタート:1 - C# で Azure Search インデックスを作成する
 > [!div class="op_single_selector"]
@@ -26,7 +26,7 @@ ms.locfileid: "65795819"
 > * [Postman](search-fiddler.md)
 >*
 
-この記事では、C# と [.NET SDK](https://aka.ms/search-sdk) を使用して [Azure Search のインデックス](search-what-is-an-index.md)を作成するプロセスについて説明します。 これは、インデックスの作成、読み込み、照会に関する 3 部構成の演習の最初のレッスンです。 インデックスの作成は、次のタスクを実行することによって実現されます。
+この記事では、C# と [.NET SDK](https://aka.ms/search-sdk) を使用して [Azure Search のインデックス](search-what-is-an-index.md)を作成するプロセスについて説明します。 このクイックスタートは、インデックスの作成、読み込み、照会に関する 3 部構成の演習の最初のレッスンです。 インデックスの作成は、次のタスクを実行することによって実現されます。
 
 > [!div class="checklist"]
 > * 検索サービスに接続するための [`SearchServiceClient`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient?view=azure-dotnet) オブジェクトを作成する。
@@ -39,7 +39,7 @@ ms.locfileid: "65795819"
 
 + [Azure Search サービスを作成](search-create-service-portal.md)するか、現在のサブスクリプションから[既存のサービスを見つけます](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 このクイック スタート用には、無料のサービスを使用できます。
 
-+ [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) (任意のエディション)。 サンプル コードと手順については、無料の Community エディションでテストされています。
+[Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)(任意のエディション)。 サンプル コードと手順については、無料の Community エディションでテストされています。
 
 + Azure サンプル GitHub リポジトリにある [DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo) には、サンプル ソリューション (C# で記述された .NET Core コンソール アプリケーション) が置かれています。 そのソリューションをダウンロードして展開します。 既定では、ソリューションは読み取り専用です。 ソリューションを右クリックし、読み取り専用属性をオフにして、ファイルを変更できるようにします。 このソリューションにはデータが含まれています。
 
@@ -49,7 +49,7 @@ ms.locfileid: "65795819"
 
 1. [Azure portal にサインイン](https://portal.azure.com/)し、ご使用の検索サービスの **[概要]** ページで、URL を入手します。 たとえば、エンドポイントは `https://mydemo.search.windows.net` のようになります。
 
-2. **[設定]** > **[キー]** で、サービスに対する完全な権限の管理者キーを取得します。 管理キーをロールオーバーする必要がある場合に備えて、2 つの交換可能な管理キーがビジネス継続性のために提供されています。 オブジェクトの追加、変更、および削除の要求には、主キーまたはセカンダリ キーのどちらかを使用できます。
+2. **[設定]**  >  **[キー]** で、サービスに対する完全な権限の管理者キーを取得します。 管理キーをロールオーバーする必要がある場合に備えて、2 つの交換可能な管理キーがビジネス継続性のために提供されています。 オブジェクトの追加、変更、および削除の要求には、主キーまたはセカンダリ キーのどちらかを使用できます。
 
 ![HTTP エンドポイントとアクセス キーを取得する](media/search-fiddler/get-url-key.png "HTTP エンドポイントとアクセス キーを取得する")
 
@@ -61,17 +61,15 @@ ms.locfileid: "65795819"
 
 1. appsettings.json 内で、既定のコンテンツを次の例に置き換えた後、サービスのサービス名と管理者 API キーを指定します。 
 
-
    ```json
    {
        "SearchServiceName": "Put your search service name here (not the full URL)",
        "SearchServiceAdminApiKey": "Put your primary or secondary API key here",
     }
    ```
+   サービス名には名前だけが必要です。 たとえば、URL が https://mydemo.search.windows.net の場合は、JSON ファイルに `mydemo` を追加します。
 
-  サービス名には名前だけが必要です。 たとえば、URL が https://mydemo.search.windows.net の場合は、JSON ファイルに `mydemo` を追加します。
-
-1. F5 キーを押して、ソリューションをビルドし、コンソール アプリを実行します。 この演習の残りの手順とそれに続く手順では、このコードがどのように動作するかを説明します。 
+1. F5 キーを押して、ソリューションをビルドし、コンソール アプリを実行します。 この演習の残りの手順とそれに続く手順では、このコードの動作を説明します。 
 
 代わりに、SDK の動作の詳細については、「[.NET アプリケーションから Azure Search を使用する方法](search-howto-dotnet-sdk.md)」を参照してください。 
 
@@ -108,7 +106,7 @@ private static SearchServiceClient CreateSearchServiceClient(IConfigurationRoot 
 
 1. `Index` オブジェクトの `Name` プロパティをインデックスの名前に設定します。
 
-2. `Index` オブジェクトの `Fields` プロパティを `Field` オブジェクトの配列に設定します。 `Field` オブジェクトを作成する最も簡単な方法は、`FieldBuilder.BuildForType` メソッドを呼び出し、型パラメーターのモデル クラスを渡すことです。 モデル クラスには、インデックスのフィールドにマップされるプロパティがあります。 これにより、ドキュメントを検索インデックスからモデル クラスのインスタンスにバインドすることができます。
+2. `Index` オブジェクトの `Fields` プロパティを `Field` オブジェクトの配列に設定します。 `Field` オブジェクトを作成する最も簡単な方法は、`FieldBuilder.BuildForType` メソッドを呼び出し、型パラメーターのモデル クラスを渡すことです。 モデル クラスには、インデックスのフィールドにマップされるプロパティがあります。 このマッピングにより、ドキュメントを検索インデックスからモデル クラスのインスタンスにバインドすることができます。
 
 > [!NOTE]
 > モデル クラスを使用する予定がない場合でも、`Field` オブジェクトを直接作成してインデックスを定義できます。 コンストラクターに対して、データ型 (または文字列フィールドのアナライザー) と共に、フィールドの名前を指定することができます。 `IsSearchable` や `IsFilterable` など、他のプロパティを設定することもできます。
@@ -175,7 +173,7 @@ public partial class Hotel
 
 各プロパティの属性は、アプリケーションでどのように使用されるかに応じて、慎重に選択しています。 たとえば、ホテルについて検索するユーザーは `description` フィールドでのキーワードの一致に関心がある可能性が高いため、`IsSearchable` 属性を `Description` プロパティに追加してそのフィールドの全文検索を有効にしています。
 
-`Key` 属性を追加して、インデックスの `string` 型のフィールドを 1 つだけ *key* フィールドとして指定する必要があることにご注意ください (上記の例の `HotelId` を参照)。
+`Key` 属性を追加して、インデックスの `string` 型のフィールドを 1 つだけ *key* フィールドとして指定する必要があることに注意してください (上記の例の `HotelId` を参照)。
 
 上記のインデックス定義では、フランス語のテキストを格納することを目的としているため、`description_fr` フィールドに言語アナライザーを使用しています。 詳細については、「[Azure Search のインデックスに言語アナライザーを追加する](index-add-language-analyzers.md)」を参照してください。
 
@@ -184,7 +182,7 @@ public partial class Hotel
 > 
 > 
 
-モデル クラスの定義が完了したので、インデックス定義を非常に簡単に作成できます。
+モデル クラスの定義が完了したので、インデックスの定義を簡単に作成できます。
 
 ```csharp
 var definition = new Index()
@@ -203,7 +201,7 @@ serviceClient.Indexes.Create(definition);
 
 要求が成功すると、メソッドは通常どおりに復帰します。 無効なパラメーターなど、要求に問題がある場合、メソッドは `CloudException` をスローします。
 
-インデックスが不要になり、それを削除する場合は、`SearchServiceClient` で `Indexes.Delete` を呼び出します。 例: 
+インデックスが不要になり、それを削除する場合は、`SearchServiceClient` で `Indexes.Delete` を呼び出します。 例:
 
 ```csharp
 serviceClient.Indexes.Delete("hotels");

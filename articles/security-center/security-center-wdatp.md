@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/27/2018
 ms.author: monhaber
-ms.openlocfilehash: 8511f8987368d5746373f71e9f553013e385e0ee
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: d42b929807bf67b73d0587232608efc0cea6d717
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66258494"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66752578"
 ---
 # <a name="windows-defender-advanced-threat-protection-with-azure-security-center"></a>Windows Defender Advanced Threat Protection と Azure Security Center
 
@@ -44,10 +44,6 @@ Windows Defender ATP を使用すると、次の機能が得られます。
 - **マシンの詳細な調査**:Azure Security Center のお客様は、Windows Defender ATP コンソールにアクセスして、詳細な調査を実行し、侵害の範囲を明らかにすることができます。
 
 ![アラートの一覧と各アラートに関する一般的な情報が表示されている Azure Security Center](media/security-center-wdatp/image1.png)
-
-Azure Security Center で[アラートを調査する](security-center-investigation.md)ことができます。
-
-![Azure Security Center のアラート調査ダッシュボード](media/security-center-wdatp/image2.png)
 
 Windows Defender ATP にピボットすることによって、アラートをさらに調査できます。 アラート プロセス ツリーやインシデント グラフなどの追加情報を表示できます。 最大 6 か月前まで遡って、すべての動作を示す詳細なマシン タイムラインを見ることもできます。
 
@@ -97,7 +93,7 @@ Windows Defender ATP の統合が有効になっているかどうか確認す�
 
 ## <a name="set-the-firewall-configuration"></a>ファイアウォールの構成を設定する
 
-匿名のトラフィックをブロックするプロキシまたはファイアウォールがある場合、Windows Defender ATP センサーはシステム コンテキストから接続するので、匿名のトラフィックが許可されていることを確認します。 「[Enable access to Windows Defender ATP service URLs in the proxy server](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/configure-proxy-internet-windows-defender-advanced-threat-protection#enable-access-to-windows-defender-atp-service-urls-in-the-proxy-server)」(プロキシ サーバーで Windows Defender ATP サービス URL へのアクセスを有効にする) の説明に従ってください。
+匿名のトラフィックをブロックするプロキシまたはファイアウォールがある場合、Windows Defender ATP センサーはシステム コンテキストから接続するので、匿名のトラフィックが許可されていることを確認します。 「[Enable access to Windows Defender ATP service URLs in the proxy server](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/configure-proxy-internet-windows-defender-advanced-threat-protection#enable-access-to-microsoft-defender-atp-service-urls-in-the-proxy-server)」(プロキシ サーバーで Windows Defender ATP サービス URL へのアクセスを有効にする) の説明に従ってください。
 
 ## <a name="test-the-feature"></a>機能をテストする
 

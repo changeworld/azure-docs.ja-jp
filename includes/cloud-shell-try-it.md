@@ -1,24 +1,26 @@
 ---
-author: cynthn
+author: sptramer
 ms.service: azure
 ms.topic: include
-ms.date: 11/09/2018
-ms.author: cynthn
-ms.openlocfilehash: b9ecccfef48af8cf3fe7e679277b870256443fab
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.date: 05/31/2019
+ms.author: sttramer
+ms.openlocfilehash: 8eafa0a07f760c64c45aeaec8876a485ab95d5d7
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66111090"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66726747"
 ---
 ## <a name="open-azure-cloud-shell"></a>Azure Cloud Shell を開く
 
-Azure Cloud Shell は無料のインタラクティブ シェルです。この記事の手順は、Azure Cloud Shell を使って実行することができます。 Cloud Shell には一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 **[コピー]** を選択してコードをコピーし、Cloud Shell に貼り付け、Enter キーを押して実行します。 Cloud Shell は、次のようにいくつかの方法で開くことができます。
+Azure Cloud Shell は、Azure でホストされる対話型のシェル環境で、ブラウザーを介して使用されます。 Azure Cloud Shell では、`bash` または `PowerShell` のいずれかのシェルを使用して、Azure サービスで動作するさまざまなツールを実行できます。 Azure Cloud Shell にはコマンドがプレインストールされており、ローカル環境に何もインストールしなくても、この記事の内容を実行できるようになっています。
+
+この記事に含まれるコードを Azure Cloud Shell で実行するには、Cloud Shell セッションを開き、コード ブロック上の **[コピー]** ボタンを使ってコードをコピーし、__Ctrl + Shift + V__ キー (Windows と Linux) または __command + Shift + V__ キー (macOS) を押して Cloud Shell セッションに貼り付けます。 テキストを貼り付けても自動的には実行されません。コードを実行するには、**Enter** キーを押します。
+
+Azure Cloud Shell は次の方法で起動できます。
 
 |  |   |
 |-----------------------------------------------|---|
-| コード ブロックの右上隅にある **[使ってみる]** を選択します。 | ![Azure Cloud Shell の [使ってみる] の例](./media/cloud-shell-try-it/cli-try-it.png) |
-| ブラウザーで Cloud Shell を開きます。 | [![Azure Cloud Shell の起動ボタン](./media/cloud-shell-try-it/launchcloudshell.png)](https://shell.azure.com/bash) |
-| [Azure Portal](https://portal.azure.com) の右上隅にあるメニューの **[Cloud Shell]** ボタンを選択します。 |    ![Azure Portal の [Cloud Shell] ボタン](./media/cloud-shell-try-it/cloud-shell-menu.png) |
-|  |  |
-
+| コード ブロックの右上隅にある **[使ってみる]** を選択します。 テキストが自動的に Cloud Shell にコピーされるわけでは__ありません__。 | ![Azure Cloud Shell の [使ってみる] の例](./media/cloud-shell-try-it/cli-try-it.png) |
+| ブラウザーで [shell.azure.com](https://shell.azure.com) を開きます。 | [![Azure Cloud Shell の起動ボタン](./media/cloud-shell-try-it/launchcloudshell.png)](https://shell.azure.com) |
+| [Azure Portal](https://portal.azure.com) の右上隅にあるメニューの **[Cloud Shell]** ボタンを選択します。 | ![Azure Portal の [Cloud Shell] ボタン](./media/cloud-shell-try-it/cloud-shell-menu.png) |

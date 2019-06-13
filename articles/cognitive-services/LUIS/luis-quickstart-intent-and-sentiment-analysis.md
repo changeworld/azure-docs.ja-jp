@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 05/07/2018
+ms.date: 06/03/2019
 ms.author: diberry
-ms.openlocfilehash: 3315af0898cb3b18af0334a433a94242b056a8bd
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 1408e29793fdac77b89e3f0cc0a7be525f7fa1d2
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236199"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479780"
 ---
 # <a name="tutorial--get-sentiment-of-utterance"></a>チュートリアル:発話の感情を取得する
 
@@ -54,12 +54,13 @@ ms.locfileid: "65236199"
 
 ## <a name="add-personname-prebuilt-entity"></a>事前構築済みエンティティ PersonName を追加する 
 
+1. ナビゲーション メニューから **[Build]\(ビルド\)** を選択します。
 
 1. 左側のナビゲーション メニューの **[Entities]\(エンティティ\)** を選択します。
 
 1. **[Add prebuilt entity]\(作成済みエンティティの追加\)** ボタンを選択します。
 
-1. 事前構築済みエンティティの一覧から 次のエンティティを選択し、**[完了]** を選択します。
+1. 事前構築済みエンティティの一覧から 次のエンティティを選択し、 **[完了]** を選択します。
 
    * **[PersonName](luis-reference-prebuilt-person.md)** 
 
@@ -69,11 +70,11 @@ ms.locfileid: "65236199"
 
 新しい意図を追加して、会社のメンバーから従業員のフィードバックをキャプチャします。 
 
-1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. 左側のパネルから **[Intents]\(意図\)** を選びます。
 
-2. **[Create new intent]\(意図の新規作成\)** を選択します。
+1. **[Create new intent]\(意図の新規作成\)** を選択します。
 
-3. 新しい意図の名前として「`EmployeeFeedback`」と入力します。
+1. 新しい意図の名前として「`EmployeeFeedback`」と入力します。
 
     ![名前として EmployeeFeedback が指定された [Create new intent]\(意図の新規作成\) ダイアログ ボックス](./media/luis-quickstart-intent-and-sentiment-analysis/hr-create-new-intent-ddl.png)
 
@@ -90,7 +91,7 @@ ms.locfileid: "65236199"
     |Mark Mathews はハーバードでの売り込みを上手くこなしました。|
     |Walter Williams はスタンフォードのプレゼンテーションで大活躍でした。|
 
-    名前を表示するには、**[View options]\(オプションの表示\)** を選択し、**[Show entity values]\(エンティティの値を表示する\)** を選択します。
+    名前を表示するには、 **[View options]\(オプションの表示\)** を選択し、 **[Show entity values]\(エンティティの値を表示する\)** を選択します。
 
     [![EmployeeFeedback 意図の発話の例が示された LUIS アプリのスクリーンショット](./media/luis-quickstart-intent-and-sentiment-analysis/hr-utterance-examples.png)](./media/luis-quickstart-intent-and-sentiment-analysis/hr-utterance-examples.png#lightbox)
 
@@ -106,7 +107,7 @@ ms.locfileid: "65236199"
 
 1. 右上のナビゲーションで **[管理]** を選択し、左側のメニューから **[Publish settings]\(発行設定\)** を選択します。
 
-1. **[感情分析]** を選択して、この設定を有効にします。 
+1. **[Use sentiment analysis to determine if a user's utterance is positive, negative, or neutral.]\(感情分析を使用して、ユーザーの発話がポジティブか、ネガティブか、ニュートラルかを判別する\)** を選択して、この設定を有効にします。 
 
     ![感情分析を発行設定として有効にする](./media/luis-quickstart-intent-and-sentiment-analysis/turn-on-sentiment-analysis-as-publish-setting.png)
 
@@ -118,7 +119,11 @@ ms.locfileid: "65236199"
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
-1. アドレスの URL の末尾に移動し、「`Jill Jones work with the media team on the public portal was amazing`」と入力します。 最後の querystring パラメーターは `q` です。これは発話の**クエリ**です。 この発話はラベル付けされたどの発話とも同じではないので、よいテストであり、感情分析が抽出された `EmployeeFeedback` 意図を返す必要があります。
+1. アドレスの URL の末尾に移動し、次の発話を入力します。
+
+    `Jill Jones work with the media team on the public portal was amazing` 
+
+    最後の querystring パラメーターは `q` です。これは発話の**クエリ**です。 この発話はラベル付けされたどの発話とも同じではないので、よいテストであり、感情分析が抽出された `EmployeeFeedback` 意図を返す必要があります。
     
     ```json
     {
@@ -153,6 +158,8 @@ ms.locfileid: "65236199"
     ```
 
     sentimentAnalysis はポジティブで、スコアは 86% です。 
+
+    ブラウザーのアドレス バーの `q` の値を削除して、別の発話を試行します:`William Jones did a terrible job presenting his ideas.` センチメント スコアは、低いスコア `0.18597582` を返すことにより、ネガティブな感情を示します。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

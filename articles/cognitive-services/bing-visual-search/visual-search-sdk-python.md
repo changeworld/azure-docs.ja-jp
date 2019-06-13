@@ -10,12 +10,12 @@ ms.subservice: bing-visual-search
 ms.topic: quickstart
 ms.date: 06/11/2018
 ms.author: v-gedod
-ms.openlocfilehash: b2cb82076eb54f858fffb67d585ac2273f98583d
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: eb115d1bfe033761c8dab82b693e4e694ff3bd2b
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65796323"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66734635"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-sdk-for-python"></a>クイック スタート:Bing Visual Search SDK for Python を使用して画像に関する分析情報を取得する
 
@@ -50,6 +50,7 @@ ms.locfileid: "65796323"
         Filters,
         KnowledgeRequest,
     )
+    from msrest.authentication import CognitiveServicesCredentials
     ```
 2. サブスクリプション キー、カスタム構成 ID、およびアップロードする画像のための変数を作成します。 
     
@@ -63,7 +64,7 @@ ms.locfileid: "65796323"
 3. クライアントのインスタンス化
 
     ```python
-    var client = new VisualSearchClient(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"))
+    client = VisualSearchClient(endpoint="https://api.cognitive.microsoft.com", credentials=CognitiveServicesCredentials(subscription_key))
     ```
 
 ## <a name="send-the-search-request"></a>検索要求を送信する

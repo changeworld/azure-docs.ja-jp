@@ -11,16 +11,20 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: diberry
-ms.openlocfilehash: b4c1de8edf04e15b540adeac01bcbf0cb1d1b8af
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: f922f9c64f182377365192543305b48659c518da
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65766945"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66417979"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding についてよくあるご質問 (FAQ)
 
 この記事では、Language Understanding (LUIS) についてよく寄せられる質問とその回答を紹介します。
+
+## <a name="whats-new"></a>新機能
+
+Language Understanding の詳細については、[こちら](whats-new.md)をご覧ください。
 
 <a name="luis-authoring"></a>
 
@@ -297,6 +301,10 @@ Build 2019 Conference では、次の機能が公開されました。
 * [改善された事前構築済みドメイン](luis-reference-prebuilt-domains.md) 
 * [動的なリスト エンティティ](luis-migration-api-v3.md#dynamic-lists-passed-in-at-prediction-time)
 * [外部エンティティ](luis-migration-api-v3.md#external-entities-passed-in-at-prediction-time)
+
+ビデオ:
+
+* [How to use Azure Conversational AI to scale your business for the next generation (Azure の対話型 AI を使用して次世代のビジネスを拡大する方法)](https://www.youtube.com/watch?v=_k97jd-csuk&feature=youtu.be)
 
 ## <a name="next-steps"></a>次の手順
 

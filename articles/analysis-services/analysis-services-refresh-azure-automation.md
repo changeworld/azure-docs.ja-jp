@@ -7,12 +7,12 @@ ms.service: analysis-services
 ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: chlound
-ms.openlocfilehash: abbad97e29f60e5f135017cd43f9d30eba1805ca
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 4cae93cff594ad561973f8029ea7335dc4c60263
+ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66142666"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66356998"
 ---
 # <a name="refresh-with-azure-automation"></a>Azure Automation を使用した更新
 
@@ -26,7 +26,7 @@ Azure Automation および PowerShell Runbook を使用して、Azure Analysis �
 
 すべての呼び出しを、有効な Azure Active Directory (OAuth 2) トークンで認証する必要があります。  この記事の例では、サービス プリンシパル (SPN) を使用して Azure Analysis Services を認証します。
 
-サービス プリンシパルを作成する方法の詳細については、[] を参照してください
+サービス プリンシパルの作成の詳細については、[Azure portal を使用したサービス プリンシパルの作成](../active-directory/develop/howto-create-service-principal-portal.md)に関する記事を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 

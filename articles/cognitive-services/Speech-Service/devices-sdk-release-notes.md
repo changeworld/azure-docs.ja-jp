@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: wellsi
-ms.openlocfilehash: fab23c86ee2e8f654ac4a9619c39d05ee4e9e4c1
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 1c91cde45a6a420376af36f70487adf7fe0ee83a
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66237931"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66751811"
 ---
 # <a name="release-notes-of-cognitive-services-speech-devices-sdk"></a>Cognitive Services Speech Devices SDK のリリース ノート
 以下のセクションでは、最新リリースでの変更点の一覧を示します。
@@ -49,7 +49,7 @@ ms.locfileid: "66237931"
 
 **重大な変更** 
 
-*   [ウェイク ワードのインストール](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-qsg#run-a-sample-application)が簡素化されました。アプリの一部になったので、デバイスに個別にインストールする必要がなくなりました。
+*   [ウェイク ワードのインストール](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-create-kws)が簡素化されました。アプリの一部になったので、デバイスに個別にインストールする必要がなくなりました。
 *   ウェイク ワードの認識が変更され、2 つのイベントがサポートされました。
     - RecognizingKeyword は、音声認識の結果に (未確認の) キーワード テキストが含まれていることを示します。
     - RecognizedKeyword は、キーワード認識が完了し、特定のキーワードが認識されたことを示します。

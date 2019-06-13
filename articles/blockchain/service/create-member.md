@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 05/02/2019
+ms.date: 05/29/2019
 ms.topic: quickstart
 ms.service: azure-blockchain
 ms.reviewer: janders
 manager: femila
-ms.openlocfilehash: 51775c5534a13fb2515fafa182658beafd38c1eb
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 5cb236dc38ae41b202004b7e4806d8129378cfdb
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65029940"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66417497"
 ---
 # <a name="quickstart-create-an-azure-blockchain-service-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Azure Blockchain Service を作成する
 
@@ -29,7 +29,7 @@ Azure Blockchain Service は、定義された一連のコンピューティン�
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 1. Azure Portal の左上隅にある **[リソースの作成]** を選択します。
-1. **[ブロックチェーン]** > **[Azure Blockchain Service]\(Azure Blockchain Service \)** を選択します。
+1. **[ブロックチェーン]**  >  **[Azure Blockchain Service]\(Azure Blockchain Service \)** を選択します。
 1. テンプレートを編集して完成させます。
 
     ![サービスの作成](./media/create-member/create-member.png)
@@ -40,11 +40,12 @@ Azure Blockchain Service は、定義された一連のコンピューティン�
     サブスクリプション | サービスに使用する Azure サブスクリプションを選択します。 複数のサブスクリプションをお持ちの場合は、リソースの課金対象となるサブスクリプションを選択してください。
     リソース グループ | 新しいリソース グループ名、またはサブスクリプションの既存のリソース グループ名。
     リージョン | コンソーシアムの全メンバーの場所は同じにする必要があります。
-    メンバー アカウントのパスワード | メンバー アカウントの新しいパスワードを入力します。 メンバー アカウントのパスワードは、基本認証を使用してブロックチェーン メンバーのパブリック エンドポイントへの認証を行うために使用されます。
+    メンバー アカウントのパスワード | メンバー アカウントのパスワードは、メンバー用に作成される Ethereum アカウントの秘密キーの暗号化に使用されます。 メンバー アカウントとメンバー アカウントのパスワードをコンソーシアムの管理に使用します。
     コンソーシアム名 | 新しいコンソーシアムの一意の名前を入力します。 招待状を介してコンソーシアムに参加する場合、この値は参加しているコンソーシアムです。
     説明 | コンソーシアムの説明。
     Protocol |  プレビューは Quorum プロトコルをサポートしています。
     価格 | 新しいサービスのノード構成。 **[Standard]** を選択します。 2 つの検証ノードと 1 つのトランザクション ノードが既定の設定です。
+    トランザクション ノードのパスワード | メンバーの既定のトランザクション ノードのパスワード。 このパスワードは、ブロックチェーン メンバーの既定のトランザクション ノード パブリック エンドポイントに接続する際の基本認証に使用します。
 
 1. **[作成]** を選択して、サービスをプロビジョニングします。 プロビジョニングには約 10 分かかります。
 1. デプロイ プロセスを監視するには、ツール バーの **[通知]** を選択します。
@@ -61,7 +62,7 @@ Azure Blockchain Service は、定義された一連のコンピューティン�
 リソース グループを削除するには:
 
 1. Azure Portal で、左側のナビゲーション ウィンドウの **[リソース グループ]** に移動し、削除するリソース グループを選択します。
-2. **[リソース グループの削除]** を選択します。 リソース グループ名を入力して削除を確認し、**[削除]** を選択します。
+2. **[リソース グループの削除]** を選択します。 リソース グループ名を入力して削除を確認し、 **[削除]** を選択します。
 
 ## <a name="next-steps"></a>次の手順
 

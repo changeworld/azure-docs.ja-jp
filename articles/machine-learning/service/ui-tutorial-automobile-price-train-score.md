@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 04/06/2019
-ms.openlocfilehash: 52b5291e4b56b5065b9dddd5b8908ade0c1a8387
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: e37e99323c92adad0b9e897af8c276a8ac153371
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "66019845"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66515631"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-visual-interface"></a>チュートリアル:ビジュアル インターフェイスで自動車価格を予測する
 
@@ -33,7 +33,7 @@ ms.locfileid: "66019845"
 
 > [!NOTE]
 > このチュートリアルの完成版は、実験のサンプルとして使用できます。
-> [実験] ページで、**[新規追加]** > **サンプル 1 - 回帰: Automobile Price Prediction(Basic)** (自動車価格の予測 (Basic)) に移動します。
+> [実験] ページで、 **[新規追加]**  > **サンプル 1 - 回帰: Automobile Price Prediction(Basic)** (自動車価格の予測 (Basic)) に移動します。
 
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2X1GY]
@@ -48,7 +48,7 @@ Azure Machine Learning service ワークスペースがある場合は、[次の
 
 1. [Azure Portal](https://portal.azure.com/) でワークスペースを開きます。  
 
-1. ワークスペースで、**[ビジュアル インターフェイス]** を選択します。  次に、**[ビジュアル インターフェイスを起動する]** を選択します。  
+1. ワークスペースで、 **[ビジュアル インターフェイス]** を選択します。  次に、 **[ビジュアル インターフェイスを起動する]** を選択します。  
 
     ![Machine Learning service ワークスペースからビジュアル インターフェイスにアクセスする方法を示す Azure portal のスクリーンショット](./media/ui-tutorial-automobile-price-train-score/launch-ui.png)
 
@@ -80,9 +80,9 @@ Azure Machine Learning service ワークスペースがある場合は、[次の
 
 1. ビジュアル インターフェイス ウィンドウの下部にある **[+ 新規]** を選択して、新しい実験を作成します。
 
-1. **[EXPERIMENT]\(実験\)** >  **[Blank Experiment]\(空の実験\)** の順に選択します。
+1. **[Experiments]\(実験\)**  >   **[Blank Experiment]\(空の実験\)** の順に選択します。
 
-1. キャンバスの上部にある既定の実験名 "**Experimented Created on ...**" を選択し、わかりやすい名前に変更します。 たとえば、**Automobile price prediction** (自動車価格の予測) です。 名前は一意でなくてもかまいません。
+1. キャンバスの上部にある既定の実験名 "**Experimented Created on ...** " を選択し、わかりやすい名前に変更します。 たとえば、**Automobile price prediction** (自動車価格の予測) です。 名前は一意でなくてもかまいません。
 
 1. 実験キャンバスの左側には、データセットとモジュールのパレットがあります。 モジュールを検索するには、モジュール パレットの上部にある検索ボックスを使用します。 検索ボックスに「**automobile**」と入力し、**Automobile price data (Raw)** (自動車価格データ (Raw)) というラベルが付いたデータセットを検索します。 このデータセットを実験キャンバスにドラッグします。
 
@@ -96,7 +96,7 @@ Azure Machine Learning service ワークスペースがある場合は、[次の
 
     ![Automobile Price Data (自動車価格データ) モジュールを Select Columns (列の選択) モジュールに接続する方法を示すアニメーション GIF](./media/ui-tutorial-automobile-price-train-score/connect-modules.gif)
 
-1. Select Columns in Dataset (データセット内の列の選択) モジュールを選択し、**[Properties]\(プロパティ\)** ウィンドウの **[Launch column selector]\(列セレクターの起動\)** を選択します。
+1. Select Columns in Dataset (データセット内の列の選択) モジュールを選択し、 **[Properties]\(プロパティ\)** ウィンドウの **[Launch column selector]\(列セレクターの起動\)** を選択します。
 
    1. 左側の **[With rules]\(規則を使用\)** を選択します。
 
@@ -114,7 +114,7 @@ Azure Machine Learning service ワークスペースがある場合は、[次の
 
 1. 検索ボックスに「**Clean**」と入力して、**Clean Missing Data** (見つからないデータのクリーンアップ) モジュールを見つけます。 **Clean Missing Data** (見つからないデータのクリーンアップ) モジュールを実験キャンバスにドラッグし、**Select Columns in Dataset** (データセット内の列の選択) モジュールに接続します。
 
-1. **[Properties]\(プロパティ\)** ウィンドウで、**[Cleaning mode]\(整理モード\)** の下の **[Remove entire row]\(行全体を削除\)** を選択します。 これらのオプションにより、**Clean Missing Data** (見つからないデータのクリーンアップ) では値が不足している行が削除され、データがクリーンアップされます。 モジュールをダブルクリックして、「Remove missing value rows」(値が不足している行を削除する) というコメントを入力します。
+1. **[Properties]\(プロパティ\)** ウィンドウで、 **[Cleaning mode]\(整理モード\)** の下の **[Remove entire row]\(行全体を削除\)** を選択します。 これらのオプションにより、**Clean Missing Data** (見つからないデータのクリーンアップ) では値が不足している行が削除され、データがクリーンアップされます。 モジュールをダブルクリックして、「Remove missing value rows」(値が不足している行を削除する) というコメントを入力します。
 
 ![Clean Missing Data (見つからないデータのクリーンアップ) モジュールの正しい構成を示すスクリーンショット](./media/ui-tutorial-automobile-price-train-score/clean-missing-data.png)
 
@@ -140,9 +140,9 @@ Azure Machine Learning service ワークスペースがある場合は、[次の
 
 1. 学習アルゴリズムを選択するには、モジュール パレットの検索ボックスをオフにします。
 
-1. **[Machine Learning]** を展開し、**[Initialize Model]\(モデルの初期化\)** を展開します。 これにより、機械学習アルゴリズムの初期化に使用できるモジュールのカテゴリが複数表示されます。
+1. **[Machine Learning]** を展開し、 **[Initialize Model]\(モデルの初期化\)** を展開します。 これにより、機械学習アルゴリズムの初期化に使用できるモジュールのカテゴリが複数表示されます。
 
-1. この実験では、**[Regression]\(回帰\)** > **Linear Regression** (線形回帰) モジュールを選択し、実験キャンバスにドラッグします。
+1. この実験では、 **[Regression]\(回帰\)**  > **Linear Regression** (線形回帰) モジュールを選択し、実験キャンバスにドラッグします。
 
     ![[Properties]\(プロパティ\) ウィンドウの正しい構成を示すスクリーンショット "Split Data" (データの分割) の各値は、"Split Rows" (行の分割)、0.7、Randomized split (ランダム分割)、0、False である必要があります。](./media/ui-tutorial-automobile-price-train-score/linear-regression-module.png)
 
@@ -150,7 +150,7 @@ Azure Machine Learning service ワークスペースがある場合は、[次の
 
     ![Train Model (モデルのトレーニング) モジュールの正しい構成を示すスクリーンショット。 Linear Regression (線形回帰) モジュールが、Train Model (モデルのトレーニング) モジュールの左側のポートに接続され、Split Data (データの分割) モジュールが、Train Model (モデルのトレーニング) モジュールの右側のポートに接続されています。](./media/ui-tutorial-automobile-price-train-score/train-model.png)
 
-1. **Train Model** (モデルのトレーニング) モジュールを選択します。 [Properties]\(プロパティ\) ウィンドウで [Launch column selector]\(列セレクターの起動\) を選択し、**[Include]\(含める\)、[column names]\(列名\)** の横にあるボックスに「**price**」と入力します。 price (価格) は、モデルで予測する値です。
+1. **Train Model** (モデルのトレーニング) モジュールを選択します。 [Properties]\(プロパティ\) ウィンドウで [Launch column selector]\(列セレクターの起動\) を選択し、 **[Include]\(含める\)、[column names]\(列名\)** の横にあるボックスに「**price**」と入力します。 price (価格) は、モデルで予測する値です。
 
     ![列セレクター モジュールの正しい構成を示すスクリーンショット。 [With rules]\(規則を使用\) > [Include]\(含める\)、[column names]\(列名\) > "price"](./media/ui-tutorial-automobile-price-train-score/select-price.png)
 
@@ -173,7 +173,7 @@ Azure Machine Learning service ワークスペースがある場合は、[次の
 
 1. 以前に使用したのと同じコンピューティング ターゲットを使用して、実験を実行します。
 
-1. **Score Model** (モデルのスコア付け) の出力ポートをクリックし、**[Visualize]\(視覚化\)** を選択すると、**Score Model** (モデルのスコア付け) モジュールの出力が表示されます。 出力に、予測された価格の値と、テスト データからの既知の値が表示されます。
+1. **Score Model** (モデルのスコア付け) の出力ポートをクリックし、 **[Visualize]\(視覚化\)** を選択すると、**Score Model** (モデルのスコア付け) モジュールの出力が表示されます。 出力に、予測された価格の値と、テスト データからの既知の値が表示されます。
 
     !["Scored Label" (スコア付けラベル) 列が強調表示された状態の出力の視覚化のスクリーンショット](./media/ui-tutorial-automobile-price-train-score/score-result.png)
 
@@ -197,7 +197,7 @@ Azure Machine Learning service ワークスペースがある場合は、[次の
 
 1. [Azure Portal](https://portal.azure.com/) でワークスペースを開きます。  
 
-1. ワークスペースで、**[実験]** を選択します。 次に、作成した実験を選択します。
+1. ワークスペースで、 **[実験]** を選択します。 次に、作成した実験を選択します。
 
     ![Azure portal で実験に移動する方法を示すスクリーンショット](./media/ui-tutorial-automobile-price-train-score/portal-experiments.png)
 
@@ -209,7 +209,7 @@ Azure Machine Learning service ワークスペースがある場合は、[次の
 
     ![詳細な実行レポートを示すスクリーンショット](./media/ui-tutorial-automobile-price-train-score/run-details.png)
 
-    実行レポートはリアルタイムで更新されます。 実験で **Execute Python Script** (Python スクリプトの実行) モジュールを使用した場合は、**[ログ]** タブで出力にスクリプト ログを指定できます。
+    実行レポートはリアルタイムで更新されます。 実験で **Execute Python Script** (Python スクリプトの実行) モジュールを使用した場合は、 **[ログ]** タブで出力にスクリプト ログを指定できます。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

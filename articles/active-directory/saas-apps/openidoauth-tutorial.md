@@ -12,25 +12,25 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/07/2019
+ms.date: 05/30/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 713e4e7874b2ca650ab669d52f9d3026b5e80899
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 166452b052313397f1ec17adb59cad3c20fab1f9
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57780985"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66497485"
 ---
 # <a name="configure-an-openidoauth-application-from-the-azure-ad-app-gallery"></a>Azure AD アプリ ギャラリーの OpenID および OAuth アプリケーションを構成する
 
 ## <a name="process-of-adding-an-openid-application-from-the-gallery"></a>ギャラリーから OpenID アプリケーションを追加する手順
 
-1. [Azure Portal](https://portal.azure.com) の左側のウィンドウで、**[Azure Active Directory]** を選択します。 
+1. [Azure Portal](https://portal.azure.com) の左側のウィンドウで、 **[Azure Active Directory]** を選択します。 
 
     ![Azure Active Directory のボタン](common/select-azuread.png))
 
-2. **[エンタープライズ アプリケーション]** > **[すべてのアプリケーション]** の順に移動します。
+2. **[エンタープライズ アプリケーション]**  >  **[すべてのアプリケーション]** の順に移動します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -43,7 +43,7 @@ ms.locfileid: "57780985"
     ![結果一覧の Openid](common/search-new-app.png)
 
     > [!NOTE]
-    > OpenID Connect と OAuth アプリでは、**[追加]** ボタンは既定で無効になっています。 ここでテナント管理者は、サインアップ ボタンを選択して、アプリケーションに同意する必要があります。 これでアプリケーションが顧客テナントに追加され、必要な構成を行うことができます。 アプリケーションを明示的に追加する必要はありません。
+    > OpenID Connect と OAuth アプリでは、 **[追加]** ボタンは既定で無効になっています。 ここでテナント管理者は、サインアップ ボタンを選択して、アプリケーションに同意する必要があります。 これでアプリケーションが顧客テナントに追加され、必要な構成を行うことができます。 アプリケーションを明示的に追加する必要はありません。
 
     ![[追加] ボタン](./media/openidoauth-tutorial/addbutton.png)
 
@@ -98,7 +98,25 @@ Azure AD のユーザーとグループや、Microsoft クラウド サービス
 
 以下の手順は、アプリケーションの開発者とユーザーにとっての同意エクスペリエンスがどのようなものになるかを示しています。
 
-1. リソースまたは API にアクセスするために一定のアクセス許可を要求する必要がある Web クライアント アプリケーションがあると仮定しましょう。 Azure Portal は、構成時にアクセス許可要求を宣言するために使用されます。 この設定は他の構成設定と同じく、アプリケーションを Azure AD に登録する作業の一環として行います。
+1. リソースまたは API にアクセスするために一定のアクセス許可を要求する必要がある Web クライアント アプリケーションがあると仮定しましょう。 Azure Portal は、構成時にアクセス許可要求を宣言するために使用されます。 これらは他の構成設定と同様、アプリケーションを Azure AD に登録する一環として行います。 必要なアクセス許可の要求パスについては、以下の手順に従ってください。
+
+    a. メニューの左側で **[アプリの登録]** をクリックし、検索ボックスにアプリケーション名を入力して自分のアプリケーションを開きます。
+
+    ![Graph API](./media/openidoauth-tutorial/application.png)
+
+    b. **[API アクセス許可の表示]** をクリックします。
+
+    ![Graph API](./media/openidoauth-tutorial/api-permission.png)
+
+    c. **[アクセス許可の追加]** をクリックします。
+
+    ![Graph API](./media/openidoauth-tutorial/add-permission.png)
+
+    d. **[Microsoft Graph]** をクリックします。
+
+    ![Graph API](./media/openidoauth-tutorial/microsoft-graph.png)
+
+    e. **[委任されたアクセス許可]** と **[アプリケーションのアクセス許可]** から必要なオプションを選択します。
 
     ![Graph API](./media/openidoauth-tutorial/graphapi.png)
 
@@ -118,12 +136,12 @@ Azure AD のユーザーとグループや、Microsoft クラウド サービス
 
 ## <a name="difference-between-admin-consent-and-user-consent"></a>管理者の同意とユーザーの同意の違い
 
-管理者であれば、テナント内のユーザー全員に代わってアプリケーションの委任されたアクセス許可に同意することもできます。 管理者が同意すると、テナントの各ユーザーには同意ダイアログ ボックスが表示されなくなります。 管理者ロールを持つユーザーは Azure portal で同意を付与することができます。 アプリケーションの **[設定]** ページで、**[必要なアクセス許可]** > **[アクセス許可の付与]** の順に選択します。
+管理者であれば、テナント内のユーザー全員に代わってアプリケーションの委任されたアクセス許可に同意することもできます。 管理者が同意すると、テナントの各ユーザーには同意ダイアログ ボックスが表示されなくなります。 管理者ロールを持つユーザーは Azure portal で同意を付与することができます。 アプリケーションの **[設定]** ページで、 **[必要なアクセス許可]**  >  **[管理者の同意の付与]** の順に選択します。
 
 ![[アクセス許可の付与] ボタン](./media/openidoauth-tutorial/grantpermission.png)
 
 > [!NOTE]
-> 現在、ADAL.js が使用されるシングルページ アプリケーション (SPA) では、**[アクセス許可の付与]** ボタンを使用して明示的に同意を付与する必要があります。 そうしないと、アクセス トークンが要求されたときにアプリケーションでエラーが発生します。
+> 現在、ADAL.js が使用されるシングルページ アプリケーション (SPA) では、 **[管理者の同意の付与]** ボタンを使用して明示的に同意を付与する必要があります。 そうしないと、アクセス トークンが要求されたときにアプリケーションでエラーが発生します。
 
 アプリケーション専用アクセス許可では、常にテナント管理者の同意が必要になります。 アプリケーションがアプリ専用アクセス許可を要求する場合に、ユーザーがそのアプリケーションにサインインしようとすると、エラー メッセージが表示されます。 メッセージによって、そのユーザーは同意できないことが伝えられます。
 

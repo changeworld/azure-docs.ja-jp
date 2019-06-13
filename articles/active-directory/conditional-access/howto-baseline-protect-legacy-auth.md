@@ -11,19 +11,19 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b562214d4bf8fd83f740e114a6d77200b4611649
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: e7eebc68ae8a55d636f3bc85e179bd7d6813be8d
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66003539"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235551"
 ---
 # <a name="baseline-policy-block-legacy-authentication-preview"></a>ベースライン ポリシー: レガシ認証をブロックする (プレビュー)
 
 指定したユーザーがお使いのクラウド アプリに簡単にアクセスできるように、Azure Active Directory (Azure AD) ではレガシ認証を含め、幅広い認証プロトコルをサポートしています。 レガシ認証は、次のものによって行われる認証要求を指す用語です。
 
 * 先進認証を使用していない古い Office クライアント (Office 2010 クライアントなど)
-* IMAP/SMPT/POP3 などの従来のメール プロトコルを使用しているすべてのクライアント
+* IMAP/SMTP/POP3 などの従来のメール プロトコルを使用しているすべてのクライアント
 
 現在、危険にさらそうとするすべてのサインイン試行の大部分はレガシ認証から来ています。 レガシ認証は、多要素認証 (MFA) をサポートしていません。 ディレクトリ上で MFA ポリシーが有効になっている場合でも、悪意のあるアクターはレガシ プロトコルを使用して認証し、MFA を迂回できます。
 
@@ -74,13 +74,13 @@ MacOS を使用している場合は、Office for Mac 2016 以降にアップグ
 
 Windows ベースの Outlook クライアントで先進認証を使用するには、Exchange Online でも先進認証が有効になっている必要があります。 Exchange Online に対して先進認証が無効になっている場合、先進認証をサポートする Windows ベースの Outlook クライアント (Outlook 2013 以降) は、基本認証を使用して Exchange Online メールボックスに接続します。
 
-SharePoint Online は、先進認証が既定で有効になっています。 2017 年 8 月 1 日の後に作成されたディレクトリの場合、先進認証は Exchange Online で既定で有効になっています。 ただし、以前に先進認証を無効にしたか、またはこの日付の前に作成されたディレクトリを使用している場合は、「[Exchange Online で先進認証を有効にする](https://docs.microsoft.com/en-us/exchange/clients-and-mobile-in-exchange-online/enable-or-disable-modern-authentication-in-exchange-online)」の記事にある手順に従ってください。
+SharePoint Online は、先進認証が既定で有効になっています。 2017 年 8 月 1 日の後に作成されたディレクトリの場合、先進認証は Exchange Online で既定で有効になっています。 ただし、以前に先進認証を無効にしたか、またはこの日付の前に作成されたディレクトリを使用している場合は、「[Exchange Online で先進認証を有効にする](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/enable-or-disable-modern-authentication-in-exchange-online)」の記事にある手順に従ってください。
 
 ### <a name="step-4-skype-for-business"></a>手順 4:Skype for Business
 
 Skype for Business によって行われるレガシ認証要求を防止するには、Skype for Business Online の先進認証を有効にする必要があります。 2017 年 8 月 1 日の後に作成されたディレクトリの場合、Skype for Business の先進認証は既定で有効になっています。
 
-Skype for Business の先進認証を有効にするには、既定で先進認証をサポートする Microsoft Teams に移行することをお勧めします。 ただし、現時点で移行できない場合は、Skype for Business クライアントが先進認証の使用を開始できるように、Skype for Business Online の先進認証を有効にする必要があります。 Skype for Business の先進認証を有効にする手順については、「[先進認証でサポートされる Skype for Business トポロジ](https://docs.microsoft.com/en-us/skypeforbusiness/plan-your-deployment/modern-authentication/topologies-supported)」の記事にある手順に従ってください。
+Skype for Business の先進認証を有効にするには、既定で先進認証をサポートする Microsoft Teams に移行することをお勧めします。 ただし、現時点で移行できない場合は、Skype for Business クライアントが先進認証の使用を開始できるように、Skype for Business Online の先進認証を有効にする必要があります。 Skype for Business の先進認証を有効にする手順については、「[先進認証でサポートされる Skype for Business トポロジ](https://docs.microsoft.com/skypeforbusiness/plan-your-deployment/modern-authentication/topologies-supported)」の記事にある手順に従ってください。
 
 Skype for Business Online の先進認証の有効化に加えて、Skype for Business の先進認証を有効にするときに Exchange Online に対して先進認証を有効にすることをお勧めします。 このプロセスは Exchange Online と Skype for Business Online の先進認証の状態を同期するのに役立つと共に、Skype for Business クライアントに複数のサインイン プロンプトが表示されることを防止します。
 
@@ -105,7 +105,7 @@ Exchange Server と Skype for Business をオンプレミスで使用してい�
 
 ポリシー **[ベースライン ポリシー: レガシ認証をブロックする (プレビュー)]** は事前に構成されており、Azure portal の [条件付きアクセス] ブレードに移動すると一番上に表示されます。
 
-このポリシーを有効にして管理者を保護するには:
+このポリシーを有効にしてご自分の組織を保護するには:
 
 1.  **Azure portal**  にグローバル管理者、セキュリティ管理者、または条件付きアクセス管理者としてサインインします。
 1. **[Azure Active Directory]**  >  **[条件付きアクセス]** の順に移動します。

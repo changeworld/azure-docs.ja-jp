@@ -8,12 +8,12 @@ services: site-recovery
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: raynew
-ms.openlocfilehash: 2d1999077f6315658dbfd69473ddf5561bd76e0b
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 514aaaf7a274e60a17bbae62b3c62e7cf3668e7a
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65540583"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66237313"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>VMware VM および物理サーバーの Azure へのディザスター リカバリーのサポート マトリックス
 
@@ -46,7 +46,7 @@ RAM | 16 GB
 ディスクの数 | ディスク 3 台<br/><br/> ディスクには、OS ディスク、プロセス サーバーのキャッシュ ディスク、フェールバック用リテンション ドライブが含まれます。
 ディスクの空き領域 | プロセス サーバーのキャッシュのために必要な 600 GB の領域。
 ディスクの空き領域 | リテンション ドライブのために必要な 600 GB の領域。
-オペレーティング システム  | Windows Server 2012 R2 または Windows Server 2016 |
+オペレーティング システム  | Windows Server 2012 R2 またはデスクトップ エクスペリエンス搭載 Windows Server 2016 |
 オペレーティング システムのロケール | 英語 (en-us)
 PowerCLI | [PowerCLI 6.0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1 "PowerCLI 6.0") は、バージョン [9.14](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery) 以降の構成サーバーには必要ありません。
 Windows Server の役割 | 以下は有効にしません: <br/> - Active Directory Domain Services <br/>- インターネット インフォメーション サービス <br/> - Hyper-V |

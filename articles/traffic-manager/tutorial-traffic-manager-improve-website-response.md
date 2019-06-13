@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/23/2018
 ms.author: allensu
-ms.openlocfilehash: 8f64e3aa7cbe5441df1861b3176cc7e2072afa2a
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 304beeae02da5836ba88a56d7166fc681e263501
+ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65991959"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "66258352"
 ---
 # <a name="tutorial-improve-website-response-using-traffic-manager"></a>チュートリアル:Traffic Manager を使用して Web サイトの応答性を向上させる
 
@@ -54,30 +54,30 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 #### <a name="create-vms-for-running-websites"></a>Web サイトを実行するための VM を作成する
 
-このセクションでは、2 台の VM (*myIISVMEastUS* と *myIISVMWEurope*) を、Azure リージョンの**米国東部**と**西ヨーロッパ**に作成します。
+このセクションでは、**米国東部**と**西ヨーロッパ**の 2 つの Azure リージョンに 2 台の VM (*myIISVMEastUS* と *myIISVMWestEurope*) を作成します。
 
-1. Azure portal の左上隅から、 **[リソースの作成]**  >  **[コンピューティング]**  >  **[Windows Server 2019 Datacenter]** を選択します。
+1. Azure portal の左上隅で、 **[リソースの作成]**  >  **[Compute]**  >  **[Windows Server 2019 Datacenter]** の順に選択します。
 2. **[仮想マシンの作成]** の **[Basic]** タブに次の値を入力するか選択します。
 
    - **[サブスクリプション]**  >  **[リソース グループ]** : **[新規作成]** を選択し、「**myResourceGroupTM1**」と入力します。
    - **[インスタンスの詳細]**  >  **[仮想マシン名]** : 「*myIISVMEastUS*」と入力します。
    - **[インスタンスの詳細]**  >  **[リージョン]** : **[米国東部]** を選択します。
-   - **[管理者アカウント]**  >  **[ユーザー名]** :任意のユーザー名を入力します。
-   - **[管理者アカウント]**  >  **[パスワード]** :任意のパスワードを入力します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。
+   - **[管理者アカウント]**  >  **[ユーザー名]** : 任意のユーザー名を入力します。
+   - **[管理者アカウント]**  >  **[パスワード]** : 任意のパスワードを入力します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。
    - **[受信ポートの規則]**  >  **[パブリック受信ポート]** : **[選択したポートを許可する]** を選択します。
-   - **[受信ポートの規則]**  >  **[受信ポートの選択]** :プルダウン ボックスから **[RDP]** と **[HTTP]** を選択します。
+   - **[受信ポートの規則]**  >  **[受信ポートの選択]** : プルダウン ボックスから **[RDP]** と **[HTTP]** を選択します。
 
 3. **[管理]** タブを選択します。または、 **[次へ: ディスク]** を選択してから **[次へ: ネットワーク]** を選択し、 **[次へ: 管理]** を選択します。 **[監視]** で **[ブート診断]** を **[オフ]** に設定します。
 4. **[Review + create]\(レビュー + 作成\)** を選択します。
 5. 設定を確認し、 **[作成]** をクリックします。  
-6. 手順に従って、「*myIISVMWEurope*」という名前の 2 番目の VM を作成します。 **[リソース グループ]** 名は「*myResourceGroupTM2*」、 **[場所]** は「*西ヨーロッパ*」、そして他のすべての設定は、「*myIISVMEastUS*」と同じにします。
+6. 手順に従って、*myIISVMWestEurope* という名前の 2 番目の VM を作成します。 **[リソース グループ]** の名前は *myResourceGroupTM2*、 **[場所]** は "*西ヨーロッパ*"、他のすべての設定は、*myIISVMEastUS* と同じにします。
 7. VM の作成には数分かかります。 両方の VM の作成が完了するまで、以降の手順に進まないでください。
 
    ![VM の作成](./media/tutorial-traffic-manager-improve-website-response/createVM.png)
 
 #### <a name="install-iis-and-customize-the-default-web-page"></a>IIS をインストールして既定の Web ページをカスタマイズする
 
-このセクションでは、2 台の VM (*myIISVMEastUS* & *myIISVMWEurope*) に IIS サーバーをインストールした後、既定の Web サイト ページを更新します。 カスタマイズする Web サイト ページには、Web ブラウザーからその Web サイトにアクセスするときに接続する VM の名前が表示されます。
+このセクションでは、2 台の VM (*myIISVMEastUS* と *myIISVMWestEurope*) に IIS サーバーをインストールした後、既定の Web サイト ページを更新します。 カスタマイズする Web サイト ページには、Web ブラウザーからその Web サイトにアクセスするときに接続する VM の名前が表示されます。
 
 1. 左側のメニューで **[すべてのリソース]** を選択し、リソースの一覧で *myResourceGroupTM1* リソース グループにある *myIISVMEastUS* をクリックします。
 2. **[概要]** ページで **[接続]** **[仮想マシンへの接続]** の順にクリックし、 **[RDP ファイルのダウンロード]** を選択します。
@@ -100,20 +100,20 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
      ![IIS のインストールと Web ページのカスタマイズ](./media/tutorial-traffic-manager-improve-website-response/deployiis.png)
 8. *myIISVMEastUS* との RDP 接続を閉じます。
-9. *myResourceGroupTM2* リソース グループ内の VM (*myIISVMWEurope*) への RDP 接続を作成し、手順 1 から 8 を繰り返して、IIS のインストールと既定の Web ページのカスタマイズを実行します。
+9. *myResourceGroupTM2* リソース グループ内の VM (*myIISVMWestEurope*) への RDP 接続を作成し、手順 1 から 8 を繰り返して、IIS のインストールと既定の Web ページのカスタマイズを行います。
 
 #### <a name="configure-dns-names-for-the-vms-running-iis"></a>IIS を実行する VM の DNS 名を構成する
 
-Traffic Manager は、サービス エンドポイントの DNS 名に基づいてユーザー トラフィックをルーティングします。 このセクションでは、IIS サーバー *myIISVMEastUS* と *myIISVMWEurope* の DNS 名を構成します。
+Traffic Manager は、サービス エンドポイントの DNS 名に基づいてユーザー トラフィックをルーティングします。 このセクションでは、IIS サーバー *myIISVMEastUS* と *myIISVMWestEurope* の DNS 名を構成します。
 
 1. 左側のメニューで **[すべてのリソース]** を選択し、リソースの一覧で *myResourceGroupTM1* リソース グループにある *myIISVMEastUS* を選択します。
 2. **[概要]** ページで、 **[DNS 名]** の下の **[構成]** を選択します。
 3. **[構成]** ページで、[DNS 名ラベル] の下に一意の名前を追加した後、 **[保存]** を選択します。
-4. 「*myResourceGroupTM2*」リソース グループにある「*myIISVMWestEurope*」という名前の VM に対して手順 1 から 3 を繰り返します。
+4. *myResourceGroupTM2* リソース グループにある *myIISVMWestEurope* という名前の VM に対して、手順 1. から 3. を繰り返します。
 
 ### <a name="create-test-vms"></a>テスト VM を作成する
 
-このセクションでは、VM (*mVMEastUS* と *myVMWestEurope*) を、該当する Azure リージョン (**米国東部**と**西ヨーロッパ**) 内に作成します。 これらの VM は、Web サイトが参照されるときに、Traffic Manager が最も近い IIS サーバーにトラフィックをルーティングすることをテストするために使用します。
+このセクションでは、VM (*myVMEastUS* と *myVMWestEurope*) を、該当する Azure リージョン (**米国東部**と**西ヨーロッパ**) 内に作成します。 これらの VM は、Web サイトが参照されるときに、Traffic Manager が最も近い IIS サーバーにトラフィックをルーティングすることをテストするために使用します。
 
 1. Azure portal の左上隅から、 **[リソースの作成]**  >  **[コンピューティング]**  >  **[Windows Server 2019 Datacenter]** を選択します。
 2. **[仮想マシンの作成]** の **[Basic]** タブに次の値を入力するか選択します。
@@ -121,15 +121,15 @@ Traffic Manager は、サービス エンドポイントの DNS 名に基づい�
    - **[サブスクリプション]**  >  **[リソース グループ]** : **myResourceGroupTM1** を選択します。
    - **[インスタンスの詳細]**  >  **[仮想マシン名]** : 「*myVMEastUS*」と入力します。
    - **[インスタンスの詳細]**  >  **[リージョン]** : **[米国東部]** を選択します。
-   - **[管理者アカウント]**  >  **[ユーザー名]** :任意のユーザー名を入力します。
-   - **[管理者アカウント]**  >  **[パスワード]** :任意のパスワードを入力します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。
+   - **[管理者アカウント]**  >  **[ユーザー名]** : 任意のユーザー名を入力します。
+   - **[管理者アカウント]**  >  **[パスワード]** : 任意のパスワードを入力します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。
    - **[受信ポートの規則]**  >  **[パブリック受信ポート]** : **[選択したポートを許可する]** を選択します。
-   - **[受信ポートの規則]**  >  **[受信ポートの選択]** :プルダウン ボックスから **[RDP]** を選択します。
+   - **[受信ポートの規則]**  >  **[受信ポートの選択]** : プルダウン ボックスから **[RDP]** を選択します。
 
 3. **[管理]** タブを選択します。または、 **[次へ: ディスク]** を選択してから **[次へ: ネットワーク]** を選択し、 **[次へ: 管理]** を選択します。 **[監視]** で **[ブート診断]** を **[オフ]** に設定します。
 4. **[Review + create]\(レビュー + 作成\)** を選択します。
 5. 設定を確認し、 **[作成]** をクリックします。  
-6. 手順に従って、「*myVMWestEurope*」という名前の 2 番目の VM を作成します。 **[リソース グループ]** 名は「*myResourceGroupTM2*」、 **[場所]** は *[西ヨーロッパ]* 、そして他のすべての設定は「*myVMEastUS*」と同じにします。
+6. 手順に従って、*myVMWestEurope* という名前の 2 番目の VM を作成します。 **[リソース グループ]** の名前は *myResourceGroupTM2*、 **[場所]** は "*西ヨーロッパ*"、他のすべての設定は *myVMEastUS* と同じにします。
 7. VM の作成には数分かかります。 両方の VM の作成が完了するまで、以降の手順に進まないでください。
 
 ## <a name="create-a-traffic-manager-profile"></a>Traffic Manager プロファイルの作成
@@ -152,7 +152,7 @@ Traffic Manager は、サービス エンドポイントの DNS 名に基づい�
 
 ## <a name="add-traffic-manager-endpoints"></a>Traffic Manager エンドポイントの追加
 
-ユーザーに最も近いエンドポイントにユーザー トラフィックをルーティングするために、IIS サーバーを実行する 2 台の VM (*myIISVMEastUS* & *myIISVMWEurope*) を追加します。
+ユーザーに最も近いエンドポイントにユーザー トラフィックをルーティングするために、IIS サーバーを実行する 2 台の VM (*myIISVMEastUS* & *myIISVMWestEurope*) を追加します。
 
 1. ポータルの検索バーで、前のセクションで作成した Traffic Manager プロファイルの名前を検索し、表示された結果からそのプロファイルを選択します。
 2. **[Traffic Manager プロファイル]** の **[設定]** セクションで **[エンドポイント]** をクリックし、 **[追加]** をクリックします。
@@ -166,7 +166,7 @@ Traffic Manager は、サービス エンドポイントの DNS 名に基づい�
     | ターゲット リソース          | **パブリック IP アドレスを選択**して、同じサブスクリプションでパブリック IP アドレスを持つリソースの一覧を表示します。 **[リソース]** で、*myIISVMEastUS-ip* という名前のパブリック IP アドレスを選択します。 これは、米国東部内の IIS サーバー VM のパブリック IP アドレスです。|
     |        |           |
 
-4. 手順 2 と 3 を繰り返して、*myIISVMWEurope* という名前の IIS サーバー VM に関連付けられた パブリック IP アドレス *myIISVMWEurope-ip* 用の *myWestEuropeEndpoint* という名前の別のエンドポイントを追加します。
+4. 手順 2 と 3 を繰り返して、*myIISVMWestEurope* という名前の IIS サーバー VM に関連付けられたパブリック IP アドレス *myIISVMWestEurope-ip* 用の *myWestEuropeEndpoint* という名前の別のエンドポイントを追加します。
 5. 両方のエンドポイントは、追加が完了すると、 **[Traffic Manager プロファイル]** に、監視ステータスが **[オンライン]** の状態で表示されます。
 
     ![Traffic Manager エンドポイントの追加](./media/tutorial-traffic-manager-improve-website-response/traffic-manager-endpoint.png)
@@ -178,7 +178,7 @@ Traffic Manager は、サービス エンドポイントの DNS 名に基づい�
 1. Traffic Manager プロファイルの DNS 名を判別します。
 2. 次のように、動作中の Traffic Manager を表示します。
     - **米国東部**リージョン内のテスト VM (*myVMEastUS*) から、Web ブラウザーで、Traffic Manager プロファイルの DNS 名を参照します。
-    - **西ヨーロッパ**リージョン内のテスト VM (*myVMEastUS*) から、Web ブラウザーで、Traffic Manager プロファイルの DNS 名を参照します。
+    - **西ヨーロッパ** リージョン内のテスト VM (*myVMWestEurope*) から、Web ブラウザーで、Traffic Manager プロファイルの DNS 名を参照します。
 
 ### <a name="determine-dns-name-of-traffic-manager-profile"></a>Traffic Manager プロファイルの DNS 名を判別する
 
@@ -205,7 +205,7 @@ Traffic Manager は、サービス エンドポイントの DNS 名に基づい�
 
    ![Traffic Manager プロファイルのテスト](./media/tutorial-traffic-manager-improve-website-response/eastus-traffic-manager-test.png)
 
-2. 次に、手順 1 から 5 を使用して**西ヨーロッパ**にある VM *myVMWestEurope* に接続し、その VM から Traffic Manager プロファイルのドメイン名を参照します。 この VM は**西ヨーロッパ**にあるため、**西ヨーロッパ**にある最も近い IIS サーバー *myIISVMWEurope* でホストされている Web サイトにルーティングされます。
+2. 次に、手順 1 から 5 を使用して**西ヨーロッパ**にある VM *myVMWestEurope* に接続し、その VM から Traffic Manager プロファイルのドメイン名を参照します。 この VM は**西ヨーロッパ**にあるため、**西ヨーロッパ**にある最も近い IIS サーバー *myIISVMWestEurope* でホストされている Web サイトにルーティングされます。
 
    ![Traffic Manager プロファイルのテスト](./media/tutorial-traffic-manager-improve-website-response/westeurope-traffic-manager-test.png)
 

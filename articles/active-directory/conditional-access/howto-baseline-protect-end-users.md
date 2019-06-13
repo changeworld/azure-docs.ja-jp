@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 35cd52fb82e5e4cce759be5dfdd8872f64802459
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 104665774eee885cc2f562e9813cffcf23aa943e
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66003531"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66235503"
 ---
 # <a name="baseline-policy-end-user-protection-preview"></a>ベースライン ポリシー:エンド ユーザーの保護 (プレビュー)
 
@@ -58,7 +58,7 @@ Azure AD Premium ライセンスが割り当てられているユーザーは、
 レガシ認証プロトコル (IMAP、SMTP、POP3 など) は、認証要求を行うためにメール クライアントによって使用されます。 これらのプロトコルは、MFA をサポートしていません。  Microsoft によって確認されているアカウントのセキュリティ侵害のほとんどでは、攻撃者がレガシ プロトコルを攻撃することによって MFA のバイパスを試みています。 アカウントにログインするときに確実に MFA を要求し、攻撃者が MFA をバイパスできないようにするために、このポリシーは、レガシ プロトコルから管理者アカウントに対して行われるすべての認証要求をブロックします。
 
 > [!WARNING]
-> このポリシーを有効にする前に、ユーザーがレガシ認証プロトコルを使用していないことを確認してください。 詳しくは、[条件付きアクセスを使用して Azure AD へのレガシ認証をブロックする方法](howto-baseline-protect-legacy-auth.md#identify-legacy-authentication-use)に関する記事を参照してください。
+> このポリシーを有効にする前に、ユーザーがレガシ認証プロトコルを使用していないことを確認してください。 詳細については、[条件付きアクセスを使用して Azure AD へのレガシ認証をブロックする](howto-baseline-protect-legacy-auth.md#identify-legacy-authentication-use)方法に関するページを参照してください。
 
 ### <a name="user-exclusions"></a>ユーザーの除外
 
@@ -73,13 +73,13 @@ Azure AD Premium ライセンスが割り当てられているユーザーは、
 
 ## <a name="enable-the-baseline-policy"></a>ベースライン ポリシーを有効にする
 
-ポリシー **[Baseline policy: End user protection (preview)]\(ベースライン ポリシー: エンド ユーザーの保護 (プレビュー)\)** は事前に構成されており、Azure portal の [条件付きアクセス] ブレードに移動すると一番上に表示されます。
+ポリシー **[ベースライン ポリシー: エンド ユーザーの保護 (プレビュー)]** は事前に構成されており、Azure portal の [条件付きアクセス] ブレードに移動すると一番上に表示されます。
 
-このポリシーを有効にして管理者を保護するには:
+このポリシーを有効にしてご自分のユーザーを保護するには:
 
 1.  **Azure portal**  にグローバル管理者、セキュリティ管理者、または条件付きアクセス管理者としてサインインします。
 1. **[Azure Active Directory]**  >  **[条件付きアクセス]** の順に移動します。
-1. ポリシーの一覧で、 **[Baseline policy: End user protection (preview)]\(ベースライン ポリシー: エンド ユーザーの保護 (プレビュー)\)** を選択します。
+1. ポリシーの一覧で、 **[ベースライン ポリシー: エンド ユーザーの保護 (プレビュー)]** を選択します。
 1. **[ポリシーを有効にする]** を **[ポリシーをすぐに使用する]** に設定します。
 1. **[ユーザー]**  >  **[除外するユーザーの選択]** をクリックし、除外する必要があるユーザーを選択することによって、すべてのユーザー除外を追加します。 **[選択]** 、 **[完了]** の順にクリックします。
 1.  **[保存]** をクリックします。

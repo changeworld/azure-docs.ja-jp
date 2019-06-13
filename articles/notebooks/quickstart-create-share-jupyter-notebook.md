@@ -10,15 +10,15 @@ ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: quickstart
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: b1618e2ac997445606ce98fc72a1ec35ca1280be
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 42f5d3abda715d83d58b0d341aed784de639e460
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59273670"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66751786"
 ---
 # <a name="quickstart-create-and-share-a-notebook"></a>クイック スタート:ノートブックの作成と共有
 
@@ -28,24 +28,24 @@ ms.locfileid: "59273670"
 
     ![ブラウザー ウィンドウの上部にある [マイ プロジェクト] リンク](media/quickstarts/my-projects-link.png)
 
-1. **[マイ プロジェクト]** ページで、**[+ 新しいプロジェクト]** (キーボード ショートカット: N) を選択します。ブラウザー ウィンドウが狭い場合、ボタンに **[+]** だけが表示されることがあります。
+1. **[マイ プロジェクト]** ページで、 **[+ 新しいプロジェクト]** (キーボード ショートカット: N) を選択します。ブラウザー ウィンドウが狭い場合、ボタンに **[+]** だけが表示されることがあります。
 
     ![[マイ プロジェクト] ページの [新しいプロジェクト] コマンド](media/quickstarts/new-project-command.png)
 
-1. 表示される **[新しいプロジェクトの作成]** ポップアップで、次の詳細を入力または設定した後、**[作成]** を選択します。
+1. 表示される **[新しいプロジェクトの作成]** ポップアップで、次の詳細を入力または設定した後、 **[作成]** を選択します。
 
-   - **[プロジェクト名]**:Hello World in Python
-   - **[プロジェクト ID]**: hello-world-python
-   - **[Public project]\(パブリック プロジェクト\)**: (オフ)
-   - **[Create a README.md]\(README.md を作成する\)**: (オフ)
+   - **[プロジェクト名]** :Hello World in Python
+   - **[プロジェクト ID]** : hello-world-python
+   - **[Public project]\(パブリック プロジェクト\)** : (オフ)
+   - **[Create a README.md]\(README.md を作成する\)** : (オフ)
 
      ![詳細が設定された新しいプロジェクト ポップアップ](media/quickstarts/new-project-popup.png)
 
-1. しばらくすると、Azure Notebooks は新しいプロジェクトに移動します。 **[+ 新規]** ドロップダウン (**[+]** とだけ表示されている場合があります) を選択し、**[Notebook]\(ノートブック\)** を選択することで、新しいノートブックをプロジェクトに追加します。
+1. しばらくすると、Azure Notebooks は新しいプロジェクトに移動します。 **[+ 新規]** ドロップダウン ( **[+]** とだけ表示されている場合があります) を選択し、 **[Notebook]\(ノートブック\)** を選択することで、新しいノートブックをプロジェクトに追加します。
 
     [![](media/quickstarts/empty-project-new-notebook-button.png "新しい空のプロジェクトと、ノートブックの追加コマンド")](media/quickstarts/empty-project-new-notebook-button.png#lightbox)
 
-1. 表示される **[Create New Notebook]\(新しいノートブックの作成\)** ポップアップで、ノートブックのファイル名 (例: *HelloWorldInPython.ipynb*、*.ipynb* は IronPython (Jupyter) ノートブックを意味します) を入力し、言語 ("*カーネル*" とも呼ばれます) として **[Python 3.6]** を選択します。
+1. 表示される **[Create New Notebook]\(新しいノートブックの作成\)** ポップアップで、ノートブックのファイル名 (例: *HelloWorldInPython.ipynb*、 *.ipynb* は IronPython (Jupyter) ノートブックを意味します) を入力し、言語 ("*カーネル*" とも呼ばれます) として **[Python 3.6]** を選択します。
 
     ![新しいノートブックの作成ポップアップ](media/quickstarts/new-notebook-popup.png)
 
@@ -59,7 +59,7 @@ ms.locfileid: "59273670"
 
     ![Azure Notebooks でのノートブックの表示](media/quickstarts/create-notebook-first-open.png)
 
-1. 既定では、ノートブックには空のコード セルが 1 つあります。 セルの種類を **Markdown** に変更するには、セルの種類のドロップダウンを使用して、**[Markdown]** を選択します。
+1. 既定では、ノートブックには空のコード セルが 1 つあります。 セルの種類を **Markdown** に変更するには、セルの種類のドロップダウンを使用して、 **[Markdown]** を選択します。
 
     ![新しいノートブックのセルの種類の変更](media/quickstarts/create-notebook-cell-type.png)
 
@@ -69,7 +69,7 @@ ms.locfileid: "59273670"
     # Hello World in Python
     ```
 
-1. Markdown を編集しているため、ヘッダーとして表示されるテキストには "#" が付きます。 Markdown を HTML にレンダリングするには、**[実行]** ボタンを選択します。 後で Azure Notebooks によって新しいコード セルが自動的に作成されます。
+1. Markdown を編集しているため、ヘッダーとして表示されるテキストには "#" が付きます。 Markdown を HTML にレンダリングするには、 **[実行]** ボタンを選択します。 後で Azure Notebooks によって新しいコード セルが自動的に作成されます。
 
     ![セルの実行ボタンとレンダリングされた Markdown](media/quickstarts/run-cell-markdown-render.png)
 
@@ -93,13 +93,13 @@ ms.locfileid: "59273670"
 
     ![Jupyter Notebook のツール バーの保存アイコン](media/quickstarts/hello-results-save-icon.png)
 
-1. **[ファイル]** > **[Close and Halt]\(閉じて停止\)** メニュー コマンドを選択し、サーバーを停止してブラウザー ウィンドウを閉じます。
+1. **[ファイル]**  >  **[Close and Halt]\(閉じて停止\)** メニュー コマンドを選択し、サーバーを停止してブラウザー ウィンドウを閉じます。
 
 ## <a name="share-the-notebook"></a>ノートブックを共有する
 
-ノートブックを共有するには、必要な場合はプロジェクトのページに戻り、ノートブック ファイルを右クリックし、**[Copy Link]\(リンクのコピー\)** (キーボード ショートカット: Y) を選択して、適切なメッセージにそのリンクを貼り付けます (メール、IM など)。
+ノートブックを共有するには、必要な場合はプロジェクトのページに戻り、ノートブック ファイルを右クリックし、 **[Copy Link]\(リンクのコピー\)** (キーボード ショートカット: Y) を選択して、適切なメッセージにそのリンクを貼り付けます (メール、IM など)。
 
-プロジェクト ページでは、**[Share]\(共有\)** メニューを使用してリンクを取得し、そのリンクでメール メッセージを作成するか、または HTML と Markdown の埋め込みコードを取得することもできます。
+プロジェクト ページでは、 **[Share]\(共有\)** メニューを使用してリンクを取得し、そのリンクでメール メッセージを作成するか、または HTML と Markdown の埋め込みコードを取得することもできます。
 
 ![プロジェクト共有コマンド](media/quickstarts/share-project-command.png)
 

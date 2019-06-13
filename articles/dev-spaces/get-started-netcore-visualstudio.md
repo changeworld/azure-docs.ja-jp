@@ -11,12 +11,12 @@ ms.date: 07/09/2018
 ms.topic: tutorial
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
-ms.openlocfilehash: 39948479cc563d2f622763ea7b4d09910ffc494c
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 9b529780387e1129dd7827e4d9c805d185a459d0
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65779870"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399249"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-net-core-and-visual-studio"></a>Azure Dev Spaces での .NET Core と Visual Studio の使用
 
@@ -34,13 +34,13 @@ ms.locfileid: "65779870"
 ## <a name="create-a-kubernetes-cluster-enabled-for-azure-dev-spaces"></a>Azure Dev Spaces 対応の Kubernetes クラスターを作成する
 
 1. Azure Portal ( https://portal.azure.com ) にサインインします。
-1. **[Create a resource]\(リソースの作成\)** を選択し、**[Kubernetes]** を検索して、**[Azure Kubernetes Service]** > **[作成]** を選択します。
+1. **[Create a resource]\(リソースの作成\)** を選択し、 **[Kubernetes]** を検索して、 **[Azure Kubernetes Service]**  >  **[作成]** を選択します。
 
-   *[Kubernetes クラスターを作成]* フォームの各見出しで次の手順を完了し、選択した[リージョンで Azure Dev Spaces がサポートされている](https://docs.microsoft.com/azure/dev-spaces/#a-rapid,-iterative-kubernetes-development-experience-for-teams)ことを確認します。
+   *[Kubernetes クラスターを作成]* フォームの各見出しで次の手順を完了し、選択した[リージョンで Azure Dev Spaces がサポートされている][supported-regions]ことを確認します。
 
-   - **[プロジェクトの詳細]**: Azure サブスクリプションと、新規または既存の Azure リソース グループを選択します。
-   - **CLUSTER DETAILS (クラスターの詳細)**: AKS クラスターの名前、リージョン、バージョン、および DNS 名プレフィックスを入力します。
-   - **[SCALE]\(スケール\)**: AKS エージェント ノードの VM サイズとノード数を選択します。 Azure Dev Spaces を初めてお使いになる場合、ノード数は 1 つあれば十分にさまざまな機能を試すことができます。 ノード数は、クラスターのデプロイ後、いつでも簡単に調整できます。 AKS クラスターの作成後に VM サイズを変更することはできないので注意してください。 ただし、AKS クラスターのデプロイ後にスケールアップする必要が生じた場合は、より大きな VM を使って新しい AKS クラスターを簡単に作成できます。Dev Spaces を使用して、その大きい方のクラスターに再デプロイすることができます。
+   - **[プロジェクトの詳細]** : Azure サブスクリプションと、新規または既存の Azure リソース グループを選択します。
+   - **CLUSTER DETAILS (クラスターの詳細)** : AKS クラスターの名前、リージョン、バージョン、および DNS 名プレフィックスを入力します。
+   - **[SCALE]\(スケール\)** : AKS エージェント ノードの VM サイズとノード数を選択します。 Azure Dev Spaces を初めてお使いになる場合、ノード数は 1 つあれば十分にさまざまな機能を試すことができます。 ノード数は、クラスターのデプロイ後、いつでも簡単に調整できます。 AKS クラスターの作成後に VM サイズを変更することはできないので注意してください。 ただし、AKS クラスターのデプロイ後にスケールアップする必要が生じた場合は、より大きな VM を使って新しい AKS クラスターを簡単に作成できます。Dev Spaces を使用して、その大きい方のクラスターに再デプロイすることができます。
 
    ![Kubernetes の構成設定](media/common/Kubernetes-Create-Cluster-2.PNG)
 
@@ -51,13 +51,10 @@ ms.locfileid: "65779870"
 
     ![RBAC の設定](media/common/k8s-RBAC.PNG)
 
-1. 完了したら、**[Review + create] (レビュー + 作成)**、**[作成]** の順に選択します。
+1. 完了したら、 **[Review + create] (レビュー + 作成)** 、 **[作成]** の順に選択します。
 
 ## <a name="get-the-visual-studio-tools"></a>Visual Studio ツールを入手する
-1. 最新バージョンの [Visual Studio 2017](https://www.visualstudio.com/vs/) をインストールします。
-1. Visual Studio インストーラーで、次のワークロードが選択されていることを確認します。
-    * ASP.NET および Web の開発
-1. [Visual Studio Tools for Kubernetes](https://aka.ms/get-azds-visualstudio) をインストールする
+最新バージョンの [Visual Studio](https://www.visualstudio.com/vs/) をインストールします。 Windows 上の Visual Studio 2019 の場合は、Azure 開発ワークロードをインストールする必要があります。 Windows 上の Visual Studio 2017 の場合は、ASP.NET と Web 開発ワークロード、および [Visual Studio Tools for Kubernetes](https://aka.ms/get-azds-visualstudio) をインストールする必要があります。
 
 ## <a name="create-a-web-app-running-in-a-container"></a>コンテナーで実行される Web アプリを作成する
 
@@ -65,7 +62,7 @@ ms.locfileid: "65779870"
 
 ### <a name="create-an-aspnet-web-app"></a>ASP.NET Web アプリを作成する
 
-Visual Studio 2017 で、新しいプロジェクトを作成します。 現時点では、このプロジェクトは **ASP.NET Core Web アプリケーション**である必要があります。 プロジェクトに "**webfrontend**" という名前を付けます。
+Visual Studio 内から、新しいプロジェクトを作成します。 現時点では、このプロジェクトは **ASP.NET Core Web アプリケーション**である必要があります。 プロジェクトに "**webfrontend**" という名前を付けます。
 
 ![](media/get-started-netcore-visualstudio/NewProjectDialog1.png)
 
@@ -83,7 +80,7 @@ Visual Studio 2017 で、新しいプロジェクトを作成します。 現時
 
 ![](media/get-started-netcore-visualstudio/Azure-Dev-Spaces-Dialog.PNG)
 
-現時点では、**[スペース]** ドロップダウンは既定の `default` のままにしておきます。 このオプションについては、後で詳しく説明します。 パブリック エンドポイント経由で Web アプリにアクセスできるように、**[Publicly Accessible]\(パブリックにアクセス可能\)** チェック ボックスをオンにします。 この設定は必須ではありませんが、このチュートリアルの後の方でいくつかの概念を示す際に役立ちます。 いずれにせよ、Visual Studio を使用して Web サイトをデバッグできるので心配はありません。
+現時点では、 **[スペース]** ドロップダウンは既定の `default` のままにしておきます。 このオプションについては、後で詳しく説明します。 パブリック エンドポイント経由で Web アプリにアクセスできるように、 **[Publicly Accessible]\(パブリックにアクセス可能\)** チェック ボックスをオンにします。 この設定は必須ではありませんが、このチュートリアルの後の方でいくつかの概念を示す際に役立ちます。 いずれにせよ、Visual Studio を使用して Web サイトをデバッグできるので心配はありません。
 
 ![](media/get-started-netcore-visualstudio/Azure-Dev-Spaces-Dialog2.png)
 
@@ -150,3 +147,6 @@ Azure Dev Spaces は、Kubernetes でコードを実行するだけのもので�
 
 > [!div class="nextstepaction"]
 > [マルチサービス開発について学習する](multi-service-netcore-visualstudio.md)
+
+
+[supported-regions]: about.md#supported-regions-and-configurations

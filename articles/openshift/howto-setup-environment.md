@@ -3,18 +3,18 @@ title: Azure Red Hat OpenShift 開発環境の設定 | Microsoft Docs
 description: Microsoft Azure Red Hat OpenShift を使用して作業するための前提条件を示します。
 services: openshift
 keywords: red hat openshift セットアップ設定
-author: TylerMSFT
-ms.author: twhitney
+author: jimzim
+ms.author: jzim
 ms.date: 05/10/2019
 ms.topic: conceptual
 ms.service: openshift
 manager: jeconnoc
-ms.openlocfilehash: 6ba7e67620ebfd7ff98c1ba81c7cecb133288be7
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: f0ef421d7954aa33cf69e7de2f4902a86ed8b580
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65962124"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66306399"
 ---
 # <a name="set-up-your-azure-red-hat-openshift-dev-environment"></a>Azure Red Hat OpenShift 開発環境の設定
 
@@ -65,31 +65,43 @@ az --version
     az account set --subscription <SUBSCRIPTION ID>
     ```
 
-2. Microsoft.ContainerService openshiftmanagedcluster 機能を登録します。
+1. Microsoft.ContainerService openshiftmanagedcluster 機能を登録します。
 
     ```bash
     az feature register --namespace Microsoft.ContainerService -n openshiftmanagedcluster
     ```
 
-3. Microsoft.Solutions プロバイダーを登録します。
+1. Microsoft.Storage プロバイダーを登録します。
+
+    ```bash
+    az provider register -n Microsoft.Storage --wait
+    ```
+    
+1. Microsoft.Compute プロバイダーを登録します。
+
+    ```bash
+    az provider register -n Microsoft.Compute --wait
+    ```
+
+1. Microsoft.Solutions プロバイダーを登録します。
 
     ```bash
     az provider register -n Microsoft.Solutions --wait
     ```
 
-4. Microsoft.Network プロバイダーを登録します。
+1. Microsoft.Network プロバイダーを登録します。
 
     ```bash
     az provider register -n Microsoft.Network --wait
     ```
 
-5. Microsoft.KeyVault プロバイダーを登録します。
+1. Microsoft.KeyVault プロバイダーを登録します。
 
     ```bash
     az provider register -n Microsoft.KeyVault --wait
     ```
 
-6. Microsoft.ContainerService リソース プロバイダーの登録を更新します。
+1. Microsoft.ContainerService リソース プロバイダーの登録を更新します。
 
     ```bash
     az provider register -n Microsoft.ContainerService --wait

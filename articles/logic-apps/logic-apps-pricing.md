@@ -10,12 +10,12 @@ ms.reviewer: estfan, LADocs
 ms.assetid: f8f528f5-51c5-4006-b571-54ef74532f32
 ms.topic: article
 ms.date: 05/22/2019
-ms.openlocfilehash: b37a6b6995df6f784b5f1b4a7a3f54d91faafc13
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 20e84482b31c4da991f3fdc9c7bbf6ee0e7f902a
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65990186"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66299096"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Azure Logic Apps の価格モデル
 
@@ -38,14 +38,14 @@ Azure Logic Apps では、ご自身のロジック アプリ内で実行する�
 
 ## <a name="fixed-pricing-model"></a>固定価格モデル
 
-"[*統合サービス環境* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)" には、Azure 仮想ネットワーク内のリソースにアクセスできるロジック アプリを作成して実行するための、プライベートな分離された専用の方法が用意されています。 ISE 内で実行される新しいロジック アプリの場合、組み込みのアクションとトリガー、および標準コネクタについて固定の月額料金を支払います。
+"[*統合サービス環境* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)" には、Azure 仮想ネットワーク内のリソースにアクセスできるロジック アプリを作成して実行するための、プライベートな分離された専用の方法が用意されています。 ISE 内で実行される新しいロジック アプリの場合、組み込みのアクションとトリガー、および標準コネクタについて[固定の月額料金](https://azure.microsoft.com/pricing/details/logic-apps)を支払います。
 
-ISE には無料のエンタープライズ コネクタも 1 つ含まれ、必要なだけいくつでも接続を含めることができます。 追加のエンタープライズ コネクタを使用すると、エンタープライズ使用料金に基づいて課金されます。
+ISE には無料のエンタープライズ コネクタも 1 つ含まれ、必要なだけいくつでも*接続*を含めることができます。 追加のエンタープライズ コネクタを使用すると、[エンタープライズ使用料金](https://azure.microsoft.com/pricing/details/logic-apps)に基づいて課金されます。 一般公開されているエンタープライズ コネクタのみが、エンタープライズ使用料金で課金されます。 パブリック プレビューのエンタープライズ コネクタは、[標準コネクタの価格](https://azure.microsoft.com/pricing/details/logic-apps)で課金されます。
 
 > [!NOTE]
 > ISE 内で、組み込みのトリガーとアクションは **Core** というラベルを表示し、ロジック アプリと同じ ISE で実行されます。 **ISE** というラベルが表示される標準およびエンタープライズ コネクタは、ロジック アプリと同じ ISE で実行されます。 ISE というラベルが表示されないコネクタは、グローバルな Logic Apps サービスで実行されます。
 
-ISE ベース ユニットの容量は固定されているため、さらにスループットが必要な場合は、作成中または作成後に[スケール ユニットを追加](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#add-capacity)できます。 
+ISE ベース ユニットの容量は固定されているため、さらにスループットが必要な場合は、作成中または作成後に[スケール ユニットを追加](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#add-capacity)できます。 ISE で実行するロジック アプリでは、データ保持のコストはかかりません。
 
 詳細な価格情報については、「[Azure Logic Apps の価格](https://azure.microsoft.com/pricing/details/logic-apps)」を参照してください。
 
@@ -108,7 +108,7 @@ Free、Basic、Standard の統合アカウントから選択するには:
 
 ## <a name="data-retention"></a>データの保持
 
-お客様のロジック アプリの[実行保有期間](logic-apps-limits-and-config.md#run-duration-retention-limits)に基づいて、ロジック アプリの実行履歴に格納されるすべての入力と出力が課金されます。 詳細な価格情報については、「[Azure Logic Apps の価格](https://azure.microsoft.com/pricing/details/logic-apps)」を参照してください。
+統合サービス環境 (ISE) で実行するロジック アプリを除き、ロジック アプリの[実行保有期間](logic-apps-limits-and-config.md#run-duration-retention-limits)に基づいて、ご利用のロジック アプリの実行履歴に格納されるすべての入力と出力に課金されます。 ISE で実行するロジック アプリでは、データ保持のコストはかかりません。 詳細な価格情報については、「[Azure Logic Apps の価格](https://azure.microsoft.com/pricing/details/logic-apps)」を参照してください。
 
 ご自身のロジック アプリのストレージ消費量を監視するために、以下を実行できます。
 

@@ -7,12 +7,12 @@ ms.author: parthp
 ms.service: marketplace
 ms.topic: how-to
 ms.date: 05/30/2019
-ms.openlocfilehash: 935d2e1c96705506636c2883113a64bb70c39336
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 5cb4caa6f0f8098e68d693be6cc2f33b5ccbeb32
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65804835"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66752830"
 ---
 # <a name="how-to-manage-your-commercial-marketplace-account-in-partner-center"></a>パートナー センターで商業マーケットプレース アカウントを管理する方法 
 
@@ -84,7 +84,7 @@ ms.locfileid: "65804835"
 
 Microsoft アカウントの関連付けが済んだら、支払い受取口座を追加するために、次の作業が必要となります。
 - **支払い方法を選択する**: 銀行口座または PayPal
-- **支払情報を追加する**: たとえば、口座の種類 (当座預金または普通預金) を選択し、口座名義人の名前、口座番号、銀行支店コード、請求先住所、電話番号、PayPal メール アドレスなどを入力します。 * アカウントの支払い方法として PayPal を使用する場合の詳細およびご利用の市場地域における PayPal の対応状況については、「[PayPal 情報](https://docs.microsoft.com/windows/uwp/publish/setting-up-your-payout-account-and-tax-forms#paypal-info)」を参照してください。
+- **支払情報を追加する**: たとえば、口座の種類 (当座預金または普通預金) を選択し、口座名義人の名前、口座番号、銀行支店コード、請求先住所、電話番号、PayPal メール アドレスなどを入力します。 \* アカウントの支払い方法として PayPal を使用する場合の詳細およびご利用の市場地域における PayPal の対応状況については、「[PayPal 情報](https://docs.microsoft.com/windows/uwp/publish/setting-up-your-payout-account-and-tax-forms#paypal-info)」を参照してください。
 
 > [!IMPORTANT]
 > 支払いアカウントを変更すると、最大で支払い期間 1 回分の遅延が支払いに発生する可能性があります。 この遅延は、支払い受取口座が初めて設定された場合と同様に、口座変更の場合にも確認が必要となるために発生します。 アカウントが確認された後も、お支払いは引き続き一括払いになります。期日が現在の支払い期間内にある支払いは、次の支払い期間に追加されます。  
@@ -174,7 +174,7 @@ Microsoft から支払いを受けたり、租税条約上の権利を申し立�
 
 1. **[アカウント設定]** の **[ユーザー]** に移動し、 **[ユーザーの追加]** を選択します。
 2. 表示された一覧から少なくとも 1 人のユーザーを選択します。 検索ボックスを使用して特定のユーザーを検索できます。
-* パートナー センター アカウントに追加するユーザーを複数選択する場合は、それらのユーザーに同じロール (カスタム アクセス許可のセット) を割り当てる必要があります。 ロールやアクセス許可が異なる複数のユーザーを追加するには、ロール (カスタム アクセス許可のセット) ごとにこれらの手順を繰り返してください。
+\* パートナー センター アカウントに追加するユーザーを複数選択する場合は、それらのユーザーに同じロール (カスタム アクセス許可のセット) を割り当てる必要があります。 ロールやアクセス許可が異なる複数のユーザーを追加するには、ロール (カスタム アクセス許可のセット) ごとにこれらの手順を繰り返してください。
 3.  ユーザーの選択が完了したら、 **[選択項目の追加]** をクリックします。
 5.  **[ロール]** セクションで、選択したユーザーのロール (またはカスタマイズされたアクセス許可) を指定します。
 6.  **[保存]** を選択します。
@@ -279,7 +279,7 @@ Microsoft から支払いを受けたり、租税条約上の権利を申し立�
 1.  **[アカウント設定]** の **[ユーザー]** ページから **[Add Azure AD applications]\(Azure AD アプリケーションの追加\)** を選択します。
 2.  次のページで、 **[New Azure AD application]\(新しい Azure AD アプリケーション\)** を選択します。
 3.  新しい Azure AD アプリケーションの**応答 URL** を入力します。 これは、Azure AD アプリケーションにユーザーがサインインして使用するための URL です ("アプリの URL" や "サインオン URL" と呼ばれることもあります)。 **応答 URL** は 256 文字未満、かつディレクトリ内で一意であることが必要です。
-4.  新しい Azure AD アプリケーションの**アプリ ID/URI** を入力します。 これは、シングル サインオン要求が Azure AD に送信されるときに提示される、Azure AD アプリケーションの論理的な ID です。 **アプリ ID/URI** は、ディレクトリ内の Azure AD アプリケーションごとに一意であることが必要です。 この ID は 256 文字以下にする必要があります。 アプリ ID/URI の詳細については、[Azure Active Directory とアプリケーションの統合](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications#changing-the-application-registration-to-support-multi-tenant)に関するページを参照してください。
+4.  新しい Azure AD アプリケーションの**アプリ ID/URI** を入力します。 これは、シングル サインオン要求が Azure AD に送信されるときに提示される、Azure AD アプリケーションの論理的な ID です。 **アプリ ID/URI** は、ディレクトリ内の Azure AD アプリケーションごとに一意であることが必要です。 この ID は 256 文字以下にする必要があります。 アプリ ID/URI の詳細については、[Azure Active Directory とアプリケーションの統合](https://docs.microsoft.com/azure/active-directory/develop/quickstart-modify-supported-accounts#change-the-application-registration-to-support-different-accounts)に関するページを参照してください。
 5.  **[ロール]** セクションで、Azure AD アプリケーションのロール (またはカスタマイズされたアクセス許可) を指定します。
 6.  **[保存]** を選択します。
 

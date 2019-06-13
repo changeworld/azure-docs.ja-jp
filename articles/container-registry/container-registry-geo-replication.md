@@ -6,18 +6,18 @@ author: stevelas
 manager: jeconnoc
 ms.service: container-registry
 ms.topic: overview
-ms.date: 04/10/2018
+ms.date: 05/24/2019
 ms.author: stevelas
-ms.openlocfilehash: 2dc314dd1d1e728f03c1d0c660d9339254ddc462
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: a26b261a900dfae742e00d9540e744524b781815
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57541861"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66384119"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Azure Container Registry の geo レプリケーション
 
-ローカル プレゼンスやホット バックアップを必要とする企業は、複数の Azure リージョンからサービスを実行しています。 ベスト プラクティスとして、イメージが実行されている各リージョンにコンテナー レジストリを配置してネットワーク上の近い場所での操作を可能にすることで、高速で信頼性の高いイメージ レイヤー転送を実現します。 geo レプリケーションにより、Azure コンテナー レジストリが単一のレジストリとして機能することが可能になり、マルチマスター リージョン レジストリで複数のリージョンに対応できます。
+ローカル プレゼンスやホット バックアップを必要とする企業は、複数の Azure リージョンからサービスを実行しています。 ベスト プラクティスとして、イメージが実行されている各リージョンにコンテナー レジストリを配置してネットワーク上の近い場所での操作を可能にすることで、高速で信頼性の高いイメージ レイヤー転送を実現します。 geo レプリケーションにより、Azure コンテナー レジストリが単一のレジストリとして機能することが可能になり、マルチマスター リージョン レジストリで複数のリージョンに対応できます。 
 
 geo レプリケートされたレジストリには次の利点があります。
 
@@ -60,10 +60,11 @@ Azure Container Registry の geo レプリケーション機能を使用する�
 
 * すべてのリージョンにまたがる 1 つのレジストリ (`contoso.azurecr.io`) を管理すれば済む。
 * すべてのリージョンで同じイメージ URL (`contoso.azurecr.io/public/products/web:1.2`) が使用されるので、イメージのデプロイの 1 つの構成を管理すれば済む。
-* 1 つのレジストリにプッシュすれば済む。ローカル通知用のリージョン Webhook を含め、geo レプリケーションは ACR が管理する。
+* 1 つのレジストリにプッシュすれば済む。geo レプリケーションは、ACR が管理する。 特定のレプリカ内のイベントを通知するように、リージョン [Webhook](container-registry-webhook.md) を構成できます。
 
 ## <a name="configure-geo-replication"></a>geo レプリケーションの構成
-geo レプリケーションは、マップ上でリージョンをクリックして簡単に構成できます。
+
+geo レプリケーションは、マップ上でリージョンをクリックして簡単に構成できます。 Azure CLI の [az acr replication](/cli/azure/acr/replication) コマンドなどのツールを使用して、geo レプリケーションを管理することもできます。
 
 geo レプリケーションは、[Premium レジストリ](container-registry-skus.md)限定の機能です。 レジストリがまだ Premium でない場合は、[Azure Portal](https://portal.azure.com) で Basic および Standard から Premium に変更できます。
 
@@ -71,7 +72,7 @@ geo レプリケーションは、[Premium レジストリ](container-registry-s
 
 Premium レジストリの geo レプリケーションを構成するには、Azure Portal (https://portal.azure.com) にログインします。
 
-Azure Container Registry に移動し、**[レプリケーション]** を選択します。
+Azure Container Registry に移動し、 **[レプリケーション]** を選択します。
 
 ![Azure Portal のコンテナー レジストリ UI の [レプリケーション]](media/container-registry-geo-replication/registry-services.png)
 
@@ -83,23 +84,27 @@ Azure Container Registry に移動し、**[レプリケーション]** を選択
 * 緑色の六角形は、レプリカを構成可能なリージョンを表します。
 * 灰色の六角形は、レプリケーションをまだ利用できない Azure リージョンを表します。
 
-レプリカを構成するには、緑色の六角形を選択し、**[作成]** をクリックします。
+レプリカを構成するには、緑色の六角形を選択し、 **[作成]** をクリックします。
 
  ![Azure Portal の [レプリケーションの作成] UI](media/container-registry-geo-replication/create-replication.png)
 
-追加のレプリカを構成するには、他のリージョンの緑色の六角形を選択し、**[作成]** をクリックします。
+追加のレプリカを構成するには、他のリージョンの緑色の六角形を選択し、 **[作成]** をクリックします。
 
 ACR は、構成済みのレプリカ間でイメージの同期を開始します。 同期が完了すると、ポータルに *[準備完了]* と表示されます。 ポータルのレプリカの状態は自動的に更新されるわけではありません。 最新の状態を表示するには、更新ボタンを使用します。
+
+## <a name="considerations-for-using-a-geo-replicated-registry"></a>geo レプリケーションされたレジストリの使用に関する注意点
+
+* geo レプリケーションされたレジストリの各リージョンは、設定後は独立しています。 Azure Container Registry の SLA は、geo レプリケーションされた各リージョンに適用されます。
+* geo レプリケーションされたレジストリからイメージをプッシュまたはプルすると、バックグラウンドの Azure Traffic Manager は最も近いリージョンにあるレジストリに要求を送信します。
+* イメージまたはタグの更新を最も近いリージョンにプッシュした後、Azure Container Registry がマニフェストとレイヤーを、選択された残りのリージョンにレプリケートするまでに、少し時間がかかります。 大きいイメージは、小さいイメージよりもレプリケートに時間がかかります。 イメージとタグは、最終的な整合性モデルを使用して、レプリケーションのリージョン間で同期されます。
+* geo レプリケーションされたレジストリへのプッシュ更新に依存するワークフローを管理するには、プッシュ イベントに応答するように [Webhook](container-registry-webhook.md) を構成することをお勧めします。 geo レプリケーションされたレジストリ内にリージョンの Webhook を設定して、geo レプリケーションされたすべてのリージョンにわたってプッシュ イベントが完了したときにそれを追跡できます。
+
 
 ## <a name="geo-replication-pricing"></a>geo レプリケーションの価格
 
 geo レプリケーションは、Azure Container Registry の [Premium SKU](container-registry-skus.md) の機能です。 レジストリを目的のリージョンにレプリケートすると、リージョンごとに Premium レジストリ料金が発生します。
 
 前の例では、Contoso は、米国東部、カナダ中部、西ヨーロッパにレプリカを追加して、2 つのレジストリを 1 つに統合しました。 Contoso には、1 か月あたり 4 倍の Premium 料金が課金されます。追加の構成や管理は不要です。 各リージョンではイメージをローカルでプルできるようになったため、米国西部からカナダおよび米国東部へのネットワーク エグレス料金が発生することなく、パフォーマンスと信頼性が向上します。
-
-## <a name="summary"></a>まとめ
-
-geo レプリケーションにより、リージョン データ センターを 1 つのグローバル クラウドとして管理できます。 イメージは多くの Azure サービスで使用されるので、ネットワーク上の近い場所での高速で信頼性の高いローカル イメージのプルを維持しながら、単一の管理プレーンによるメリットが得られます。
 
 ## <a name="next-steps"></a>次の手順
 

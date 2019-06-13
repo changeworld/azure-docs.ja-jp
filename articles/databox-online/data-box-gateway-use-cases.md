@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 03/02/2019
 ms.author: alkohli
-ms.openlocfilehash: cdc1b07b93386c0225c1e6c5f570ea1247e450b5
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: e9092fb91ad98e6147647717e11d1a64bcff580e
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64924392"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66754183"
 ---
 # <a name="use-cases-for-azure-data-box-gateway"></a>Azure Data Box Gateway のユース ケース
 
@@ -50,7 +50,7 @@ Data Box Gateway の主な利点の 1 つは、データ サイズに関係な�
 - データがアップロードされた後、それをアーカイブ層に移動する必要があります。 2 つの方法で BLOB 層を設定できます。Azure PowerShell スクリプトまたは Azure Storage ライフサイクル管理ポリシーです。  
     - Azure PowerShell を使用する場合、こちらの[手順](/azure/databox/data-box-how-to-set-data-tier#use-azure-powershell-to-set-the-blob-tier)に従ってデータをアーカイブ層に移動します。
     - Azure ライフサイクル管理を使用する場合、次の手順に従ってデータをアーカイブ層に移動します。
-        - アーカイブ層を使用するために、BLOB ライフサイクル管理サービスのプレビューに[登録](/azure/storage/common/storage-lifecycle-management-concepts#register-for-preview)します。
+        - アーカイブ層を使用するために、BLOB ライフサイクル管理サービスのプレビューに[登録](/azure/storage/common/storage-lifecycle-management-concepts)します。
         - 次のポリシーを使用して、[取り込み時にデータをアーカイブ](/azure/storage/blobs/storage-lifecycle-management-concepts#archive-data-at-ingest)します。
 - BLOB はアーカイブとしてマークされると、ホット層またはコールド層に移動されない限り、ゲートウェイによって変更できなくなります。 ファイルがローカル ストレージにある場合、ローカル コピーに行われる変更 (削除も含む) はアーカイブ層にアップロードされません。
 - アーカイブ ストレージ内のデータを読み取るには、BLOB 層をホットかクールに変更してリハイドレートする必要があります。 ゲートウェイ上の[共有を更新](data-box-gateway-manage-shares.md#refresh-shares)しても、BLOB はリハイドレートされません。
@@ -81,7 +81,7 @@ Data Box Gateway を使用して継続的なインジェストを行うには、
 
 1. Data Box Gateway 上にクラウド共有を作成します。 この共有から、データが Azure ストレージ アカウントに自動的にアップロードされます。 お客様の Data Box Gateway リソースの **[共有]** に移動して、 **+ [共有の追加]** をクリックします。
 
-    ![+ [共有の追加] のクリック](media/data-box-gateway-use-cases/add-share1.png)
+    ![\+ [共有の追加] のクリック](media/data-box-gateway-use-cases/add-share1.png)
 
 2. この共有が、シード済みのデータを含むコンテナーにマップされるようにします。 **[BLOB コンテナーの選択]** で、 **[既存のものを使用]** を選択し、Data Box からのデータが転送されたコンテナーを参照します。
 

@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c28277f61885b574026b19305bef143f09e0ec69
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 9f6cdc782f091709ed00358dd309e9fd4ccfd0eb
+ms.sourcegitcommit: f9448a4d87226362a02b14d88290ad6b1aea9d82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65785225"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66807701"
 ---
 # <a name="office-365-external-sharing-and-azure-active-directory-b2b-collaboration"></a>Office 365 の外部共有と Azure Active Directory B2B コラボレーション
 
@@ -32,7 +32,7 @@ OneDrive/SharePoint Online には、独自の招待マネージャーがあり�
 
 - Azure AD B2B コラボレーションで招待されたユーザーは、OneDrive/SharePoint Online 共有の各ダイアログ ボックスで選択できます。 OneDrive/SharePoint Online で招待されたユーザーも、招待に応じた後は、Azure AD に表示されます。
 
-- ライセンスの要件が異なります。 Azure AD の有料ライセンスごとに、最大 5 人のゲスト ユーザーに対して、有料の Azure AD 機能へのアクセスを許可できます。 ライセンスについて詳しくは、[Azure AD B2B のライセンスに関する記事](https://docs.microsoft.com/azure/active-directory/b2b/licensing-guidance)と、[SharePoint Online の外部共有の概要に関する記事の「外部ユーザーとは」](https://docs.microsoft.com/sharepoint/external-sharing-overview#what-is-an-external-user)をご覧ください。
+- ライセンスの要件が異なります。 Azure AD の有料ライセンスごとに、最大 5 人のゲスト ユーザーに対して、有料の Azure AD 機能へのアクセスを許可できます。 ライセンスについて詳しくは、[Azure AD B2B のライセンスに関する記事](https://docs.microsoft.com/azure/active-directory/b2b/licensing-guidance)と、[SharePoint Online の外部共有の概要に関する記事の「外部ユーザーとは」](https://docs.microsoft.com/sharepoint/external-sharing-overview#what-happens-when-users-share)をご覧ください。
 
 OneDrive/SharePoint Online と Azure AD B2B コラボレーションの外部共有を管理するには、OneDrive/SharePoint Online の外部共有の設定を **[Allow sharing only with the external users that already exist in your organization's directory]\(既にディレクトリに存在する外部ユーザーのみに共有を許可する\)** に設定します。 ユーザーは外部の共有サイトに移動し、管理者が追加した外部コラボレーターを選択できます。 管理者は、B2B コラボレーションの招待 API を通じて、外部コラボレーターを追加できます。
 

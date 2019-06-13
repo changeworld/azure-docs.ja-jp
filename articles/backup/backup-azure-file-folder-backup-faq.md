@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: dacurwin
-ms.openlocfilehash: 1ac3cdecc79cafb9ea2697cca3c87b2ebe083d40
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: 56dc87b1cdf36d761c46133004a05f8fa225a091
+ms.sourcegitcommit: f9448a4d87226362a02b14d88290ad6b1aea9d82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66254863"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66808301"
 ---
 # <a name="common-questions-about-backing-up-files-and-folders"></a>ファイルとフォルダーのバックアップに関する一般的な質問 
 
@@ -83,11 +83,11 @@ Windows マシンの名前を変更すると、現在構成されているすべ
 - 以前のサーバー名を使ってコンテナーにバックアップしたデータを回復する必要がある場合は、データの回復ウィザードで別の場所に復元するためのオプションを使用します。 [詳細情報](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine)。 
 
 ### <a name="what-is-the-maximum-file-path-length-for-backup"></a>バックアップするファイル パスの最大長はいくつですか。
-MARS エージェントは NTFS に依存しており、[Windows API](/windows/desktop/FileIO/naming-a-file#fully_qualified_vs._relative_paths) によって制限されているファイルパス長の仕様を利用します。 保護するファイルが許可された値よりも長くなる場合は、親フォルダーまたはディスク ドライブをバックアップします。  
+MARS エージェントは NTFS に依存しており、[Windows API](/windows/desktop/FileIO/naming-a-file#fully-qualified-vs-relative-paths) によって制限されているファイルパス長の仕様を利用します。 保護するファイルが許可された値よりも長くなる場合は、親フォルダーまたはディスク ドライブをバックアップします。  
 
 ### <a name="what-characters-are-allowed-in-file-paths"></a>ファイル パスに許可されるのは、どのような文字ですか。
 
-MARS エージェントは NTFS に依存しており、ファイルの名前/パスには[サポートされている文字](/windows/desktop/FileIO/naming-a-file#naming_conventions)を許可します。
+MARS エージェントは NTFS に依存しており、ファイルの名前/パスには[サポートされている文字](/windows/desktop/FileIO/naming-a-file#naming-conventions)を許可します。
 
 ### <a name="the-warning-azure-backups-have-not-been-configured-for-this-server-appears"></a>"このサーバーに対して Azure Backups が構成されていない" ことを示す警告が表示されます。
 ローカル サーバーに保存されているバックアップ スケジュールの設定がバックアップ コンテナーに格納されている設定と異なる場合、バックアップ ポリシーを構成済みでも、この警告が表示されることがあります。

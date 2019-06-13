@@ -8,12 +8,12 @@ ms.date: 04/25/2019
 ms.author: dpalled
 manager: cshankar
 ms.custom: seodec18
-ms.openlocfilehash: 5ee6e9aefb235feb28468798c3bd6b107f8c7c49
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 2f25267b95e9ed5f7d5f6e6373fb9e3807927a7f
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66244034"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66735350"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-single-page-web-app"></a>チュートリアル:Azure Time Series Insights シングルページ Web アプリの作成
 
@@ -126,7 +126,7 @@ Time Series Insights サンプル SPA は、このチュートリアルで使用
 
    1. コメント `"PROD RESOURCE LINKS"` の下の 3 行をコメント解除して、依存関係を DEVELOPMENT から PRODUCTION に切り替えます。 コメント `"DEV RESOURCE LINKS"` の下の 3 行をコメント アウトします。
 
-      [!code-javascript[head-sample](~/samples-javascript/pages/tutorial/index.html?range=2-20&highlight=10-13,15-18)]
+      [!code-html[head-sample](~/samples-javascript/pages/tutorial/index.html?range=2-20&highlight=10-13,15-18)]
 
       依存関係は次の例のようにコメントする必要があります。
 

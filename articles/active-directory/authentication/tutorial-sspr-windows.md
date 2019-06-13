@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea65120a2a735477d048b9012e160e0cdafe8835
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: 2a4bdaba45c466b7f1f6fb8e91033f9a7665e034
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66253066"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66730548"
 ---
 # <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>チュートリアル: ログイン画面からの Azure AD パスワード リセット
 
@@ -113,6 +113,8 @@ Azure AD 監査ログには、パスワードのリセットが発生した IP �
 ユーザーが Windows 10 デバイスのログイン画面から自分のパスワードをリセットすると、"defaultuser1" という低特権の一時的なアカウントが作成されます。 このアカウントは、パスワード リセット プロセスを安全に保つために使用されます。 このアカウントは、それ自体でランダムに生成されたパスワードを持ち、デバイスのサインインには表示されず、ユーザーがパスワードをリセットした後に自動的に削除されます。 複数の "defaultuser" プロファイルが存在する可能性がありますが、安全に無視することができます。
 
 ## <a name="limitations"></a>制限事項
+
+アカウントのロック解除、モバイル アプリの通知、およびモバイル アプリのコードは、Windows 10 の SSPR ではサポートされていません。
 
 Hyper-V を使用してこの機能をテストすると、"パスワードのリセット" リンクが表示されません。
 

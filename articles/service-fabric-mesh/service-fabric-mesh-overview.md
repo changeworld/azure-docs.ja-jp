@@ -9,19 +9,19 @@ ms.date: 10/1/2018
 ms.topic: overview
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: 44c58e09c478c9dba9143b10d150babc553f4695
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: d315ca0702b1d76e0f990d4d33a3807a1dc57935
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58337682"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66428176"
 ---
 # <a name="what-is-service-fabric-mesh"></a>Service Fabric Mesh とは
 
 このビデオでは、Service Fabric Mesh の概要を簡単に説明します。
 > [!VIDEO https://www.youtube.com/embed/7qWeVGzAid0]
 
-Azure Service Fabric Mesh は、仮想マシン、ストレージ、ネットワークを管理することなく開発者がマイクロサービス アプリケーションをデプロイできるフル マネージド サービスです。 Service Fabric mesh でホストされたアプリケーションは、その基盤となるインフラストラクチャについて心配しなくとも、実行され、スケーリングされます。  Service Fabric mesh は数千台のマシンのクラスターで構成されます。  すべてのクラスター操作は開発者から見えなくなっています。 コードをアップロードして、必要なリソース、可用性の要件、リソースの制限を指定するだけかまいません。  Service Fabric Mesh では、インフラストラクチャが自動的に割り当てられ、インフラストラクチャの障害も処理されます。これにより、アプリケーションの高可用性が確保されます。 アプリケーションの正常性と応答性さえ管理すればよく、インフラストラクチャを管理する必要がありません。  
+Azure Service Fabric Mesh は、仮想マシン、ストレージ、ネットワークを管理することなく開発者がマイクロサービス アプリケーションをデプロイできるフル マネージド サービスです。 Service Fabric mesh でホストされたアプリケーションは、その基盤となるインフラストラクチャについて心配しなくとも、実行され、スケーリングされます。  Service Fabric mesh は数千台のマシンのクラスターで構成されます。  すべてのクラスター操作は開発者から見えなくなっています。 コードをアップロードし、必要なリソース、可用性の要件、リソースの制限を指定します。  Service Fabric Mesh では、インフラストラクチャが自動的に割り当てられ、インフラストラクチャの障害も処理されます。これにより、アプリケーションの高可用性が確保されます。 アプリケーションの正常性と応答性さえ管理すればよく、インフラストラクチャを管理する必要がありません。  
 
 [!INCLUDE [preview note](./includes/include-preview-note.md)]
 
@@ -29,24 +29,24 @@ Azure Service Fabric Mesh は、仮想マシン、ストレージ、ネットワ
 
 ## <a name="great-developer-experience"></a>優れた開発者エクスペリエンス
 
-Service Fabric Mesh では、コンテナーで実行できるあらゆるプログラミング言語またはフレームワークがサポートされます。 Visual Studio 2017 および Visual Studio Code ツール サポートによって、.NET アプリケーション用および .NET Core アプリケーション用の強力な編集およびデバッグ エクスペリエンスが提供されます。 
+Service Fabric Mesh では、コンテナーで実行できるあらゆるプログラミング言語またはフレームワークがサポートされます。 Visual Studio 2019 と Visual Studio Code ツール サポートによって、.NET および .NET Core アプリケーション用の強力な編集およびデバッグ エクスペリエンスが提供されます。 
 
 Service Fabric Mesh では、以下が可能です。
 
 - 現在のアプリケーションを最新化して大規模に実行するために、既存のアプリケーションをコンテナーに "リフト アンド シフト" する。
-- Azure で新しいマイクロサービス アプリケーションを構築して大規模にデプロイする。  コンテナーで実行されている他の Azure サービスや既存のアプリケーションと統合します。 各マイクロサービスは、CPU コアやメモリ、ディスク領域などについて定義されたリソース ガバナンス ポリシーがあり、ネットワークから分離された安全なアプリケーションの一部です。
+- Azure で新しいマイクロサービス アプリケーションを構築して大規模にデプロイする。  コンテナーで実行されている他の Azure サービスや既存のアプリケーションと統合します。 各マイクロサービスは、ネットワークから分離された、セキュリティで保護されたアプリケーションの一部です。 マイクロサービスには、CPU コア、メモリ、ディスク領域などについて定義されているリソース ガバナンス ポリシーがあります。
 - 既存のアプリケーションに変更を加えることなく、それらのアプリケーションと統合して拡張する。 独自の仮想ネットワークを使用して、既存のアプリケーションを新しいアプリケーションに接続します。  
 - Service Fabric mesh に移行して、既存の Cloud Services アプリケーションを最新化する。  
 
 ## <a name="simple-operational-lifecycle"></a>シンプルな運用ライフサイクル
 
-運用環境におけるアプリケーションの実行 (アプリケーションのアップグレードやバージョン管理など)、アプリケーションの監視、デバッグを容易に管理できます。 これらのアプリケーションは、独自のネットワーク内に分離された単一または複数のマイクロサービスで構成できます。 デプロイ、配置、フェールオーバーにかかる時間が短く、アプリケーションは効率的に実行されます。
+運用環境におけるアプリケーションの実行、アプリケーションの監視、デバッグを簡単に管理できます。 この管理には、アプリケーションのアップグレードとバージョン管理が含まれます。 これらのアプリケーションは、独自のネットワーク内に分離された単一または複数のマイクロサービスで構成できます。 デプロイ、配置、フェールオーバーにかかる時間が短く、アプリケーションは効率的に実行されます。
 
 Service Fabric mesh では、以下が可能です。
 
 - インフラストラクチャを明示的にプロビジョニングして管理することなく、アプリケーションのデプロイと管理を行う。  Service Fabric mesh では、基盤となるインフラストラクチャのプロビジョニング、アップグレード、パッチ適用、メンテナンスが自動で行われます。
 - アプリケーションを簡単にパッケージ化してデプロイできる統合されたツールを使用して、継続的インテグレーションを設定する。
-- Azure Resource Manager リソースの機能 (監査証跡や[ロールベースのアクセス制御](/azure/role-based-access-control/overview)など) をすべて利用する。これは、Azure で Service Fabric Mesh サービスにデプロイするアプリケーション、サービス、シークレットなどのすべてのリソースが Azure Resource Manager リソースであるためです。
+- Azure Resource Manager リソースのすべての機能を活用する。 これらの機能の例には、監査証跡と[ロールベースのアクセス制御](/azure/role-based-access-control/overview)が含まれます。 Azure で Service Fabric Mesh サービスにデプロイするすべてのリソースは Azure Resource Manager リソースです。 これらのリソースには、アプリケーション、サービス、シークレットなどが含まれます。
 - [Azure portal](https://portal.azure.com)、Resource Manager テンプレート、または Azure CLI/PowerShell ライブラリを使用して、リソースのデプロイと管理を行う。
 - [Application Insights](/azure/application-insights/) (または好きなツール) を使用して操作の監視とアラートを設定し、プラットフォームから操作と診断のトレースを収集する。
 - [Application Insights](/azure/application-insights/) または好きなツールを使用して、アプリケーション モデルから出力されたアプリケーション診断情報にアクセスする。
@@ -54,7 +54,7 @@ Service Fabric mesh では、以下が可能です。
 
 ## <a name="mission-critical-platform-capabilities"></a>ミッション クリティカルなプラットフォーム機能
 
-Service Fabric mesh では、[Azure 可用性ゾーン](/azure/availability-zones/az-overview)/地政学的リージョンの境界にまたがる一連のクラスターが作成されます。 アプリケーションは、スケールやハードウェア要件、持続性要件、セキュリティ ポリシーなど、意図のセットで説明されます。  アプリケーションのデプロイ時、Service Fabric mesh によって最適な実行場所が検出されます。
+Service Fabric Mesh では、[Azure 可用性ゾーン](/azure/availability-zones/az-overview)/地政学的リージョンの境界にまたがる一連のクラスターが作成されます。 Service Fabric Mesh では、スケール、ハードウェア要件、持続性要件、セキュリティ ポリシーなどの一連の意図を使用してアプリケーションを説明します。  アプリケーションのデプロイ時、Service Fabric Mesh によって最適な実行場所が検出されます。
 
 Service Fabric mesh では、以下が可能です。
 

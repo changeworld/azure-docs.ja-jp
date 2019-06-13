@@ -15,12 +15,12 @@ ms.workload: azure-vs
 ms.date: 03/26/2018
 ms.author: mikhegn
 ms.custom: mvc, devcenter, vs-azure
-ms.openlocfilehash: aebc308f6bfaddbe8e9b430096cb6698d7dd06c5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d7c0f19d6680eef7492faaaab0d45e0c70011f01
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58099071"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66428083"
 ---
 # <a name="quickstart-deploy-a-net-reliable-services-application-to-service-fabric"></a>クイック スタート:Service Fabric に .NET Reliable Services アプリケーションをデプロイする
 
@@ -43,7 +43,7 @@ Azure Service Fabric は、スケーラブルで信頼性に優れたマイク�
 
 このクイック スタートを完了するには、以下が必要です。
 
-1. [Visual Studio 2017 をインストール](https://www.visualstudio.com/)し、**Azure 開発**ワークロードと **ASP.NET および Web 開発**ワークロードをインストールする
+1. **Azure 開発**および **ASP.NET と Web 開発**ワークロードと共に [Visual Studio 2019 をインストール](https://www.visualstudio.com/)する
 2. [Git をインストールする](https://git-scm.com/)
 3. [Microsoft Azure Service Fabric SDK をインストールする](https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-CoreSDK)
 4. 次のコマンドを実行して Visual Studio からローカル Service Fabric クラスターへのデプロイを有効にする
@@ -87,11 +87,11 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
 ## <a name="run-the-application-locally"></a>ローカルでアプリケーションを実行する
 
-スタート メニューで Visual Studio アイコンを右クリックし、**[管理者として実行]** を選択します。 サービスにデバッガーをアタッチするには、Visual Studio を管理者として実行する必要があります。
+スタート メニューで Visual Studio アイコンを右クリックし、 **[管理者として実行]** を選択します。 サービスにデバッガーをアタッチするには、Visual Studio を管理者として実行する必要があります。
 
 複製したリポジトリから Visual Studio ソリューション **Voting.sln** を開きます。
 
-既定では、この投票アプリケーションは、ポート 8080 でリッスンします。  アプリケーションのポートは、*/VotingWeb/PackageRoot/ServiceManifest.xml* ファイルで設定されます。  アプリケーションのポートは、**Endpoint** 要素の **Port** 属性を更新することで変更できます。  アプリケーションをローカルでデプロイして実行するには、アプリケーションのポートをコンピューター上で開いて、使用できるようにする必要があります。  アプリケーションのポートを変更する場合は、この記事全体で "8080" の代わりにアプリケーションのポートの新しい値を使用してください。
+既定では、この投票アプリケーションは、ポート 8080 でリッスンします。  アプリケーションのポートは、 */VotingWeb/PackageRoot/ServiceManifest.xml* ファイルで設定されます。  アプリケーションのポートは、**Endpoint** 要素の **Port** 属性を更新することで変更できます。  アプリケーションをローカルでデプロイして実行するには、アプリケーションのポートをコンピューター上で開いて、使用できるようにする必要があります。  アプリケーションのポートを変更する場合は、この記事全体で "8080" をアプリケーションのポートの新しい値に置き換えてください。
 
 アプリケーションをデプロイするには、**F5** キーを押します。
 
@@ -123,7 +123,7 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
 ## <a name="debug-in-visual-studio"></a>Visual Studio でのデバッグ
 
-アプリケーションは正常に実行されているはずですが、デバッガーを使用して、アプリケーションの主要部分がどのように動作しているかを確認することができます。 Visual Studio でアプリケーションをデバッグするときは、ローカルの Service Fabric 開発クラスターを使用します。 デバッグのエクスペリエンスは実際のシナリオに合わせて調整することができます。 このアプリケーションでは、データは信頼性の高いディクショナリを使ってバックエンド サービスに保存されます。 既定では、デバッガーを停止すると、Visual Studio によってアプリケーションが削除されます。 アプリケーションが削除されると、バックエンド サービス内のデータも削除されます。 デバッグ セッションの終了後もデータを維持するには、Visual Studio の **Voting** プロジェクトのプロパティで、**[アプリケーション デバッグ モード]** を変更してください。
+アプリケーションは正常に実行されているはずですが、デバッガーを使用して、アプリケーションの主要部分がどのように動作しているかを確認することができます。 Visual Studio でアプリケーションをデバッグするときは、ローカルの Service Fabric 開発クラスターを使用します。 デバッグのエクスペリエンスは実際のシナリオに合わせて調整できます。 このアプリケーションでは、データは信頼性の高いディクショナリを使ってバックエンド サービスに保存されます。 既定では、デバッガーを停止すると、Visual Studio によってアプリケーションが削除されます。 アプリケーションが削除されると、バックエンド サービス内のデータも削除されます。 デバッグ セッションの終了後もデータを維持するには、Visual Studio の **Voting** プロジェクトのプロパティで、 **[アプリケーション デバッグ モード]** を変更してください。
 
 コードでどのような処理が実行されているのかを確認するには、次の手順に従います。
 
@@ -132,13 +132,13 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 2. **/VotingData/Controllers/VoteDataController.cs** ファイルを開き、この Web API の **Put** メソッド (54 行目) にブレークポイントを設定します。
 
 3. ブラウザーに戻り、投票の選択肢をクリックするか、新しい選択肢を追加します。 Web フロントエンドの API コントローラーで 1 つ目のブレークポイントに到達します。
-   * ここは、JavaScript がブラウザーからフロントエンド サービスの Web API コントローラーに要求を送信する部分です。
+   * このステップは、ブラウザーの JavaScript がフロントエンド サービスの Web API コントローラーに要求を送信する部分です。
 
      ![投票フロントエンド サービスの追加](./media/service-fabric-quickstart-dotnet/addvote-frontend.png)
 
-   * 最初にバックエンド サービスの ReverseProxy の URL を構築します **(1)**。
-   * 次に HTTP PUT 要求を ReverseProxy に送信します **(2)**。
-   * 最後にバックエンド サービスからの応答をクライアントに返します **(3)**。
+   * 最初にバックエンド サービスの ReverseProxy の URL を構築します **(1)** 。
+   * 次に HTTP PUT 要求を ReverseProxy に送信します **(2)** 。
+   * 最後にバックエンド サービスからの応答をクライアントに返します **(3)** 。
 
 4. **F5** キーを押して続行します。
    - ブラウザーのプロンプトが表示された場合は、デバッグ モードに使用する読み取りと実行のアクセス許可を ServiceFabricAllowedUsers グループに与えます。
@@ -148,7 +148,7 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
    - メソッド **(1)** の先頭行では、`StateManager` によって信頼性の高いディクショナリ (`counts`) が取得または追加されます。
    - 信頼性の高いディクショナリ内の値とのすべてのやり取りにはトランザクションが必要です。この using ステートメント **(2)** によってトランザクションが作成されます。
-   - その後、トランザクションで、投票の選択肢に関連したキーの値を更新し、操作をコミットします **(3)**。 コミット メソッドから制御が戻ると、ディクショナリ内のデータが更新され、クラスター内の他のノードにレプリケートされます。 これでデータが安全にクラスターに保存され、バックエンド サービスは、データの可用性を維持したまま他のノードにフェールオーバーすることができます。
+   - その後、トランザクションで、投票の選択肢に関連したキーの値を更新し、操作をコミットします **(3)** 。 コミット メソッドから制御が戻ると、ディクショナリ内のデータが更新され、クラスター内の他のノードにレプリケートされます。 これでデータが安全にクラスターに保存され、バックエンド サービスは、データの可用性を維持したまま他のノードにフェールオーバーすることができます。
 5. **F5** キーを押して続行します。
 
 デバッグ セッションを停止するには、**Shift + F5** キーを押します。
@@ -162,13 +162,13 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 1. Visual Studio で **/VotingWeb/Views/Home/Index.cshtml** ファイルを開きます。
 2. テキストを追加または更新して、ページの見出しを変更します。 たとえば、見出しを "Service Fabric Voting Sample v2" に変更します。
 3. ファイルを保存します。
-4. ソリューション エクスプローラーで **[Voting]** を右クリックして、**[発行]** を選択します。 [発行] ダイアログが表示されます。
+4. ソリューション エクスプローラーで **[Voting]** を右クリックして、 **[発行]** を選択します。 [発行] ダイアログが表示されます。
 5. **[マニフェストのバージョン]** ボタンをクリックしてサービスとアプリケーションのバージョンを変更します。
-6. たとえば **VotingWebPkg** の **Code** 要素のバージョンを "2.0.0" に変更し、**[保存]** をクリックします。
+6. たとえば **VotingWebPkg** の **Code** 要素のバージョンを "2.0.0" に変更し、 **[保存]** をクリックします。
 
     ![バージョンの変更ダイアログ](./media/service-fabric-quickstart-dotnet/change-version.png)
-7. **[Service Fabric アプリケーションの発行]** ダイアログで、**[アプリケーションをアップグレードする] チェック ボックス**をオンにします。
-8.  **[ターゲット プロファイル]** を **[PublishProfiles\Local.5Node.xml]** に変更し、**[接続のエンドポイント]** を **[ローカル クラスター]** に設定します。 
+7. **[Service Fabric アプリケーションの発行]** ダイアログで、 **[アプリケーションをアップグレードする] チェック ボックス**をオンにします。
+8.  **[ターゲット プロファイル]** を **[PublishProfiles\Local.5Node.xml]** に変更し、 **[接続のエンドポイント]** を **[ローカル クラスター]** に設定します。 
 9. **[アプリケーションをアップグレードする]** を選択します。
 
     ![[発行] ダイアログのアップグレード設定](./media/service-fabric-quickstart-dotnet/upgrade-app.png)
@@ -177,7 +177,7 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
     アップグレード中もアプリケーションを使い続けることができます。 クラスターで実行されているサービスのインスタンスは 2 つあるため、アップグレード後のアプリケーションによって処理される要求と、アップグレード前のアプリケーションによって処理される要求が混在する可能性があります。
 
-11. ブラウザーを開いて、クラスターのアドレスにポート 19080 でアクセスします。 たとえば、「 `http://localhost:19080/` 」のように指定します。
+11. ブラウザーを開いて、クラスターのアドレスにポート 19080 でアクセスします。 たとえば、「 `http://localhost:19080/` 」のように入力します。
 12. ツリー ビューの **[Applications]\(アプリケーション\)** ノードをクリックし、右側のペインの **[Upgrades in Progress]\(進行中のアップグレード\)** をクリックします。 アップグレードが、クラスター内のアップグレード ドメインに展開されていくようすが表示されます。個々のドメインが正常であることを確認してから、次の手順に進んでください。 ドメインの正常性が確認されると、進行状況バーのアップグレード ドメインが緑で表示されます。
     ![Service Fabric Explorer のアップグレード ビュー](./media/service-fabric-quickstart-dotnet/upgrading.png)
 

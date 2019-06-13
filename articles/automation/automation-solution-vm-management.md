@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 05/21/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2269eac0790e61dbf0ce893bbb737cb22d58d497
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: d4e1ad106b928c41bd6940d7c3713b5fb34afe3a
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66002488"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389103"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Azure Automation でのピーク時間外 VM 起動/停止ソリューション
 
@@ -71,7 +71,8 @@ Automation アカウントと Log Analytics に対して Start/Stop VMs during o
 | Microsoft.OperationsManagement/solutions/write | リソース グループ |
 | Microsoft.OperationalInsights/workspaces/* | リソース グループ |
 | Microsoft.Insights/diagnosticSettings/write | リソース グループ |
-| Microsoft.Insights/ActionGroups/WriteMicrosoft.Insights/ActionGroups/read | リソース グループ |
+| Microsoft.Insights/ActionGroups/Write | リソース グループ |
+| Microsoft.Insights/ActionGroups/read | リソース グループ |
 | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループ |
 | Microsoft.Resources/deployments/* | リソース グループ |
 

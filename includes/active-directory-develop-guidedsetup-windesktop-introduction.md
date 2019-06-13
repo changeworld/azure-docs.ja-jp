@@ -14,21 +14,21 @@ ms.workload: identity
 ms.date: 04/10/2019
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: f0cc888eaf3724737e9c868c69a641094a19348c
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: ae17ef749a353cd60227e31ba4dadf328b1dc935
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66121637"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66482348"
 ---
 # <a name="call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>Windows デスクトップ アプリから Microsoft Graph API を呼び出す
 
-このガイドでは、ネイティブの Windows デスクトップ .NET (XAML) アプリケーションにおいて、アクセス トークンを取得し、開発者用の Microsoft ID プラットフォーム (旧称 Azure AD) v2.0 エンドポイントからのアクセス トークンを必要とする Microsoft Graph API またはその他の API を呼び出す方法について説明します。
+このガイドでは、ネイティブの Windows デスクトップ .NET アプリケーションでアクセス トークンを使用して Microsoft Graph API を呼び出す方法を紹介します。 また、このアプリは、開発者用の Microsoft ID プラットフォーム v2.0 エンドポイントのアクセス トークンを必要とする他の API にもアクセスできます。 このプラットフォームは、以前 Azure AD という名前でした。
 
 このガイドを完了すると、アプリケーションで個人アカウント (outlook.com、live.com など) を使用する保護された API を呼び出すことができるようになります。 このアプリケーションでは、Azure Active Directory を使用する会社または組織の職場および学校のアカウントも使用します。  
 
 > [!NOTE]
-> このガイドでは、Visual Studio 2015 Update 3 または Visual Studio 2017 が必要です。 どちらのバージョンもお持ちでない場合は、 [Visual Studio 2017 を無料でダウンロードできます](https://www.visualstudio.com/downloads/)。
+> このガイドでは、Visual Studio 2015 Update 3 または Visual Studio 2019 が必要です。 どちらのバージョンもお持ちでない場合は、 [Visual Studio 2019 を無料でダウンロードできます](https://www.visualstudio.com/downloads/)。
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>このガイドで生成されたサンプル アプリの動作
 

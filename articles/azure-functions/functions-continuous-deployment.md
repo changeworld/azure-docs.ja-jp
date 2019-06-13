@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/25/2016
 ms.author: glenga
-ms.openlocfilehash: cb3f3ad3bb7b42429654ea4bf9b49f7e230db1da
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 8fed6925d8c9341612c1f02ed20d83c492a68140
+ms.sourcegitcommit: f9448a4d87226362a02b14d88290ad6b1aea9d82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64943894"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66807243"
 ---
 # <a name="continuous-deployment-for-azure-functions"></a>Azure Functions の継続的なデプロイ
 Azure Functions を利用すると、継続的インテグレーションを使用して、関数アプリを簡単にデプロイできます。 Functions は、主要なコード リポジトリおよびデプロイ ソースと統合します。 この統合により、関数コードの更新がこれらのサービスのいずれかによって行われるワークフローで、Azure へのデプロイをトリガーできるようになります。 Azure Functions を初めて使う場合は、最初に「[Azure Functions の概要](functions-overview.md)」をご覧ください。
@@ -39,7 +39,7 @@ Azure Functions を利用すると、継続的インテグレーションを使�
 
 [!INCLUDE [functions-folder-structure](../../includes/functions-folder-structure.md)]
 
-Azure DevOps からデプロイできるようにするには、まず、Azure サブスクリプションに Azure DevOps 組織をリンクする必要があります。 詳しくは、「[Set up billing for your Azure DevOps organization](https://docs.microsoft.com/azure/devops/organizations/billing/set-up-billing-for-your-organization-vs?view=vsts#set-up-billing-via-the-azure-portal)」\(Azure DevOps 組織の課金の設定\) をご覧ください。
+Azure DevOps からデプロイできるようにするには、まず、Azure サブスクリプションに Azure DevOps 組織をリンクする必要があります。 詳しくは、「[Set up billing for your Azure DevOps organization](https://docs.microsoft.com/azure/devops/organizations/billing/set-up-billing-for-your-organization-vs#set-up-billing)」\(Azure DevOps 組織の課金の設定\) をご覧ください。
 
 ## <a name="set-up-continuous-deployment"></a>Azure App Service での GIT による継続的なデプロイ
 既存の関数アプリの継続的なデプロイを構成するには、次の手順に従います。 この手順は、GitHub リポジトリとの統合を示しますが、Azure DevOps またはその他のデプロイ サービスに対しても同様の手順が適用されます。

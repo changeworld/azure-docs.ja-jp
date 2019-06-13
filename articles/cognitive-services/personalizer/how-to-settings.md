@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 05/07/2019
 ms.author: edjez
-ms.openlocfilehash: 80e5feeccc4acc3e1f3dab6b815c8605332c7c71
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.openlocfilehash: 976830232453eee0993e64ac445c2e6a2f7e20ef
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65834308"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66478581"
 ---
 # <a name="personalizer-settings"></a>Personalizer 設定
 
@@ -63,7 +63,9 @@ ms.locfileid: "65834308"
 
 ### <a name="model-update-frequency"></a>モデルの更新頻度
 
-**[Model update frequency]\(モデルの更新頻度\)** により、新しい Personalizer モデルを再トレーニングする頻度を設定します。 
+すべてのアクティブ イベントからの Reward API 呼び出しからトレーニングされた最新のモデルは、Personalizer の Rank 呼び出しで自動的に使用されません。 **[Model update frequency]\(モデルの更新頻度\)** は、Rank 呼び出しによって使用されるモデルが更新される頻度を設定します。 
+
+モデルの更新頻度を高くすると、ユーザーの動作の変化を詳細に追跡したい場合に便利です。 例としては、ライブ ニュース、バイラル コンテンツ、またはライブ商品入札で実行されるサイトがあります。 これらのシナリオでは、15 分間の頻度を使用できます。 ほとんどのユース ケースでは、更新頻度が低い方が効果的です。 1 分間の更新頻度は、Personalizer を使用してアプリケーションのコードをデバッグするとき、デモを実行するとき、または機械学習の側面を対話形式でテストするときに有用です。
 
 ![[Model update frequency]\(モデルの更新頻度\) により、新しい Personalizer モデルを再トレーニングする頻度を設定します。](media/settings/configure-model-update-frequency-settings.png)
 
@@ -77,7 +79,7 @@ ms.locfileid: "65834308"
 
 ## <a name="export-the-personalizer-model"></a>Personalizer モデルをエクスポートする
 
-**[Model and Policy]\(モデルとポリシー\)** のリソース管理セクションで、モデルの作成日と最終更新日を確認し、現在のモデルをエクスポートします。
+**[Model and Policy]\(モデルとポリシー\)** のリソース管理セクションで、モデルの作成日と最終更新日を確認し、現在のモデルをエクスポートします。 Azure portal または Personalizer API を使用すると、アーカイブ目的でモデル ファイルをエクスポートすることができます。 
 
 ![現在の Personalizer モデルをエクスポートする](media/settings/export-current-personalizer-model.png)
 

@@ -80,7 +80,7 @@ direct で Azure AD のシングル サインオンを構成してテストす�
 2. **[direct シングル サインオンの構成](#configure-direct-single-sign-on)** - アプリケーション側でシングル サインオン設定を構成します。
 3. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[direct テスト ユーザーの作成](#create-direct-test-user)** - Direct で Britta Simon に対応するユーザーを作成し、Azure AD のこのユーザーにリンクさせます。
+5. **[direct テスト ユーザーの作成](#create-direct-test-user)** - direct で Britta Simon に対応するユーザーを作成し、Azure AD のこのユーザーにリンクさせます。
 6. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成

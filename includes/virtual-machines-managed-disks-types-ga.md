@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/14/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 30df480eb314594cbc4d949302aff11e6d764b6f
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: c7b73cad200666db9e926d8e808eaa4a8dccffb2
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66147873"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66249050"
 ---
 ## <a name="premium-ssd"></a>Premium SSD
 
@@ -24,7 +24,7 @@ Premium Storage に互換性のあるサイズなど、Windows 用の Azure 内�
 ### <a name="disk-size"></a>ディスク サイズ
 [!INCLUDE [disk-storage-premium-ssd-sizes](disk-storage-premium-ssd-sizes.md)]
 
-Premium Storage ディスクをプロビジョニングすると、Standard Storage とは異なり、対象のディスクの容量、IOPS、スループットが保証されます。 たとえば、P50 ディスクを作成した場合、対象のディスクに 4,095 GB のストレージ容量、7,500 IOPS、および 250 MB/秒のスループットがプロビジョニングされます。 アプリケーションでは、容量とパフォーマンスのすべてまたは一部を使用できます。 Premium SSD ディスクは、99.9% の時間においてターゲット パフォーマンスを提供するように設計されています。
+Premium Storage ディスクをプロビジョニングすると、Standard Storage とは異なり、対象のディスクの容量、IOPS、スループットが保証されます。 たとえば、P50 ディスクを作成した場合、対象のディスクに 4,095 GB のストレージ容量、7,500 IOPS、および 250 MB/秒のスループットがプロビジョニングされます。 アプリケーションでは、容量とパフォーマンスのすべてまたは一部を使用できます。 Premium SSD ディスクは、1 桁のミリ秒の低待機時間と、前出の表に示した目標 IOPS とスループットを 99.9% の時間で提供するように設計されています。
 
 ### <a name="transactions"></a>トランザクション
 
@@ -37,7 +37,7 @@ Azure Standard SSD は、比較的低い IOPS レベルで一貫したパフォ�
 ### <a name="disk-size"></a>ディスク サイズ
 [!INCLUDE [disk-storage-standard-ssd-sizes](disk-storage-standard-ssd-sizes.md)]
 
-Standard SSD では、ほとんどの IO 操作で 1 桁ミリ秒の待機時間が実現され、99% の時間で前記の表に記載されている最大 IOPS と最大スループットが提供されるように設計されています。 実際の IOPS とスループットは、トラフィック パターンによって異なる場合があります。 Standard SSD は、HDD ディスクよりも一貫したパフォーマンスを提供し、待機時間が短くなります。
+Standard SSD は、1 桁のミリ秒の待機時間と、前出の表に示されている上限までの IOPS とスループットを 99% の時間で提供するように設計されています。 実際の IOPS とスループットは、トラフィック パターンによって異なる場合があります。 Standard SSD は、HDD ディスクよりも一貫したパフォーマンスを提供し、待機時間が短くなります。
 
 ### <a name="transactions"></a>トランザクション
 
@@ -45,7 +45,7 @@ Standard SSD では、スループットが 256 KiB 以下の I/O 操作は、�
 
 ## <a name="standard-hdd"></a>Standard HDD
 
-Azure Standard HDD では、待機時間の影響を受けないワークロードを実行する VM 向けの信頼性の高い低コストのディスク サポートが提供されます。 また、BLOB、テーブル、キュー、ファイルもサポートしています。 Standard Storage では、データはハード ディスク ドライブ (HDD) に格納されます。 VM を使用するとき、開発/テスト シナリオや重要度の低いワークロードには Standard SSD および HDD ディスクを使用できます。 Standard HDD はすべての Azure リージョンで使用可能であり、すべての Azure VM で使用できます。
+Azure Standard HDD では、待機時間の影響を受けないワークロードを実行する VM 向けの信頼性の高い低コストのディスク サポートが提供されます。 Standard Storage では、データはハード ディスク ドライブ (HDD) に格納されます。 Standard HDD ディスクの待機時間、IOPS、スループットは、SSD ベースのディスクと比較してより大きく異なる可能性があります。 VM を使用するとき、開発/テスト シナリオや重要度の低いワークロードには Standard HDD ディスクを使用できます。 Standard HDD はすべての Azure リージョンで使用可能であり、すべての Azure VM で使用できます。
 
 ### <a name="disk-size"></a>ディスク サイズ
 [!INCLUDE [disk-storage-standard-hdd-sizes](disk-storage-standard-hdd-sizes.md)]

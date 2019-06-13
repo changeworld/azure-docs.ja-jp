@@ -9,12 +9,12 @@ ms.date: 10/24/2018
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 3d4c40e172352fc2d92ea5523cad2aebe5468e1e
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 111167584fb2e0e2ee5977e0e24b3ebf07b170c1
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65961428"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66238003"
 ---
 # <a name="zone-redundant-storage-zrs-highly-available-azure-storage-applications"></a>ゾーン冗長ストレージ (ZRS):高可用 Azure Storage アプリケーション
 [!INCLUDE [storage-common-redundancy-ZRS](../../../includes/storage-common-redundancy-zrs.md)]
@@ -49,7 +49,7 @@ ZRS は、複数のゾーンが永続的に影響を受けるリージョンの�
 ## <a name="converting-to-zrs-replication"></a>ZRS レプリケーションへの変換
 LRS、GRS、および RA-GRS 間の移行は簡単です。 アカウントの冗長性の種類を変更するには、Azure portal またはストレージ リソース プロバイダー API を使用します。 その後 Azure は、データを適宜レプリケートします。 
 
-ZRS との間のデータ移行には別の戦略が必要です。 ZRS 移行には、リージョン内の 1 つのストレージ スタンプから複数のスタンプへのデータの物理的移動が含まれます。
+ZRS へのデータ移行には別の戦略が必要です。 ZRS 移行には、リージョン内の 1 つのストレージ スタンプから複数のスタンプへのデータの物理的移動が含まれます。
 
 ZRS に移行するとき、主に 2 つの選択肢があります。 
 

@@ -11,19 +11,17 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: overview
 ms.custom: mvc
-ms.date: 02/14/2019
+ms.date: 06/03/2019
 ms.author: mbullwin
-ms.openlocfilehash: ec595e23fbbf3ace5bfd0786d88250a88b61453c
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: cdaae4e539d5216cf4950c15349f01b54ae8acd2
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66256646"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66496371"
 ---
 # <a name="what-is-application-insights"></a>Application Insights とは何か?
 Application Insights は、複数のプラットフォームで使用できる Web 開発者向けの拡張可能なアプリケーション パフォーマンス管理 (APM) サービスです。 このサービスを使用して、実行中の Web アプリケーションを監視することができます。 パフォーマンスに異常があると、自動的に検出されます。 組み込まれている強力な分析ツールを使えば、問題を診断し、ユーザーがアプリを使用して実行している操作を把握できます。  Application Insights は、パフォーマンスやユーザビリティを継続的に向上させるうえで役立つように設計されています。 オンプレミス、ハイブリッド、または任意のパブリック クラウドでホストされている .NET、Node.js、Java EE などのさまざまなプラットフォーム上のアプリで機能します。 DevOps プロセスと統合され、さまざまなツールへの接続ポイントを備えています。 Visual Studio App Center と統合することで、モバイル アプリからテレメトリを監視および分析できます。
-
-[概要を説明するアニメーションを参照してください](https://www.youtube.com/watch?v=fX2NtGrh-Y0)。
 
 ## <a name="how-does-application-insights-work"></a>Application Insights のしくみ
 小さなインストルメンテーション パッケージをアプリケーションにインストールし、Application Insights リソースを Microsoft Azure ポータルに設定します。 このインストルメンテーションがアプリを監視し、テレメトリ データをポータルに送信します (アプリケーションの実行場所は問いません。Azure でホストされている必要はありません)。
@@ -104,11 +102,13 @@ Application Insights は、Microsoft Azure でホストされる多数のサー�
 
 作業の開始方法はいくつかあります。 目的に適した方法から始めてください。 後で、他のものを追加することもできます。
 
-* **実行時: サーバー上の Web アプリをインストルメント化します。** コードを更新しなくて済みます。 サーバーへの管理者アクセスが必要になります。
-  * [**オンプレミスまたは VM 上の IIS**](../../azure-monitor/app/monitor-performance-live-website-now.md)
-  * [**Azure Web アプリまたは VM**](../../azure-monitor/app/monitor-performance-live-website-now.md)
-* **開発時: コードに Application Insights を追加します。** カスタム テレメトリを記述したり、バックエンド アプリおよびデスクトップ アプリをインストルメント化したりすることができます。
-  * [Visual Studio](../../azure-monitor/app/asp-net.md) 2013 Update 2 以降。
+* **実行時: サーバー上の Web アプリをインストルメント化します。** 既にデプロイ済みのアプリケーションに最適です。 コードを更新しなくて済みます。
+  * [**オンプレミスまたは VM の IIS でホストされる ASP.NET アプリケーション**](../../azure-monitor/app/monitor-performance-live-website-now.md)
+  * [**Azure Web Apps でホストされる ASP.NET または ASP.NET Core アプリケーション**](../../azure-monitor/app/azure-web-apps.md)
+* **開発時: コードに Application Insights を追加します。** テレメトリの収集をカスタマイズし、追加のテレメトリを送信できます。
+  * [ASP.NET アプリケーション](../../azure-monitor/app/asp-net.md)
+  * [ASP.NET Core アプリケーション](../../azure-monitor/app/asp-net-core.md)
+  * [.NET コンソール アプリケーション](../../azure-monitor/app/console.md)
   * [Java](../../azure-monitor/app/java-get-started.md)
   * [Node.js](../../azure-monitor/app/nodejs.md)
   * [その他のプラットフォーム](../../azure-monitor/app/platforms.md)
@@ -120,10 +120,12 @@ Application Insights は、Microsoft Azure でホストされる多数のサー�
 実行時に開始する:
 
 * [IIS サーバー](../../azure-monitor/app/monitor-performance-live-website-now.md)
+* [Azure Web Apps](../../azure-monitor/app/azure-web-apps.md)
 
 開発時に開始する:
 
 * [ASP.NET](../../azure-monitor/app/asp-net.md)
+* [ASP.NET Core](../../azure-monitor/app/asp-net-core.md)
 * [Java](../../azure-monitor/app/java-get-started.md)
 * [Node.JS](../../azure-monitor/app/nodejs.md)
 
@@ -139,9 +141,9 @@ Application Insights は、Microsoft Azure でホストされる多数のサー�
 
 ## <a name="videos"></a>ビデオ
 
-[![Animated introduction](./media/app-insights-overview/video-front-1.png)](https://www.youtube.com/watch?v=fX2NtGrh-Y0)
-
-> [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player] 
+- 外部のビデオ: [ASP.NET アプリケーションでの Application Insights の構成](https://www.youtube.com/watch?v=blnGAVgMAfA)。
+- 外部のビデオ: [ASP.NET Core および Visual Studio での Application Insights の構成](https://www.youtube.com/watch?v=NoS9UhcR4gA&t)。
+- 外部のビデオ: [ASP.NET Core および Visual Studio Code での Application Insights の構成](https://youtu.be/ygGt84GDync)。
 
 <!--Link references-->
 

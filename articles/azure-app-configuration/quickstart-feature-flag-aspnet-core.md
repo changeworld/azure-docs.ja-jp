@@ -14,16 +14,16 @@ ms.tgt_pltfrm: ASP.NET Core
 ms.workload: tbd
 ms.date: 04/19/2019
 ms.author: yegu
-ms.openlocfilehash: 95f702b1d85dc8fe22b1800df3f7b0ebc987bee5
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: f83283dbf2a78b3717ba719f21dd9249a8a09d1f
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65411838"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393328"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>クイック スタート:ASP.NET Core アプリに機能フラグを追加する
 
-アプリケーションを Azure App Configuration に接続することで、ASP.NET Core の機能管理を有効にできます。 この管理されたサービスを使用して、すべての機能フラグを格納し、その状態を一元的に制御できます。 このクイック スタートでは、このサービスを ASP.NET Core Web アプリに組み込み、機能管理のエンド ツー エンド実装を作成します。
+アプリケーションを Azure App Configuration に接続することで、ASP.NET Core の機能管理を有効にできます。 この管理されたサービスを使用して、すべての機能フラグを格納し、その状態を一元的に制御できます。 このクイック スタートでは、App Configuration を ASP.NET Core Web アプリに組み込み、機能管理のエンド ツー エンド実装を作成します。
 
 .NET Core 機能管理ライブラリは、包括的な機能フラグのサポートにより、フレームワークを拡張します。 これらのライブラリは、.NET Core 構成システム上に構築されます。 また、.NET Core 構成プロバイダーを介して、App Configuration とシームレスに統合されます。
 
@@ -35,11 +35,11 @@ ms.locfileid: "65411838"
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="create-an-app-configuration-store"></a>アプリ構成ストアを作成する
+## <a name="create-an-app-configuration-store"></a>App Configuration ストアを作成する
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. **[Feature Manager]\(機能マネージャー\)** > **[+ Create]\(+ 作成\)** を選択し、次の機能フラグを追加します。
+6. **[Feature Manager]\(機能マネージャー\)**  >  **[+Create]\(+ 作成\)** の順に選択し、次の機能フラグを追加します。
 
     | キー | 状態 |
     |---|---|
@@ -47,19 +47,22 @@ ms.locfileid: "65411838"
 
 ## <a name="create-an-aspnet-core-web-app"></a>ASP.NET Core Web アプリケーションの作成
 
-[.NET Core コマンド ライン インターフェイス (CLI)](https://docs.microsoft.com/dotnet/core/tools/) を使用して、新しい ASP.NET Core MVC Web アプリ プロジェクトを作成します。 Visual Studio ではなく .NET Core CLI を使用する利点は、Windows、macOS、および Linux プラットフォームで使用できることです。
+[.NET Core コマンド ライン インターフェイス (CLI)](https://docs.microsoft.com/dotnet/core/tools/) を使用して、新しい ASP.NET Core MVC Web アプリ プロジェクトを作成します。 Visual Studio ではなく .NET Core CLI を使用する利点は、.NET Core CLI は Windows、macOS、および Linux プラットフォームで使用できるという点です。
 
 1. プロジェクト用の新規フォルダーを作成します。 このクイック スタートでは、*TestFeatureFlags* という名前を付けます。
 
-2. 新しいフォルダーで次のコマンドを実行して、新しい ASP.NET Core MVC Web アプリ プロジェクトを作成します。
+1. 新しいフォルダーで次のコマンドを実行して、新しい ASP.NET Core MVC Web アプリ プロジェクトを作成します。
 
-        dotnet new mvc
+   ```    
+   dotnet new mvc
+   ```
 
 ## <a name="add-secret-manager"></a>シークレット マネージャーを追加する
 
-プロジェクトに[シークレット マネージャー ツール](https://docs.microsoft.com/aspnet/core/security/app-secrets)を追加します。 シークレット マネージャー ツールは、開発作業の機密データをプロジェクト ツリーの外部に格納します。 これにより、ソース コード内のアプリ シークレットが偶発的に共有されるのを防止できます。
+プロジェクトに[シークレット マネージャー ツール](https://docs.microsoft.com/aspnet/core/security/app-secrets)を追加します。 シークレット マネージャー ツールは、開発作業のための機密データをプロジェクト ツリーの外部に格納します。 これにより、ソース コード内のアプリ シークレットが偶発的に共有されるのを防止できます。
 
-- *.csproj* ファイルを開きます。 次に示すように、`UserSecretsId` 要素を追加し、その値を自分の値 (通常は GUID) に置き換えます。 ファイルを保存します。
+1. *.csproj* ファイルを開きます。
+1. 次の例に示すように、`UserSecretsId` 要素を追加し、その値を独自の値 (通常は GUID) に置き換えます。
 
     ```xml
     <Project Sdk="Microsoft.NET.Sdk.Web">
@@ -77,37 +80,45 @@ ms.locfileid: "65411838"
     </Project>
     ```
 
-## <a name="connect-to-an-app-configuration-store"></a>アプリ構成ストアに接続する
+1. ファイルを保存します。
+
+## <a name="connect-to-an-app-configuration-store"></a>App Configuration ストアに接続する
 
 1. 次のコマンドを実行して、`Microsoft.Extensions.Configuration.AzureAppConfiguration` パッケージと `Microsoft.FeatureManagement` NuGet パッケージへの参照を追加します。
 
-        dotnet add package Microsoft.Extensions.Configuration.AzureAppConfiguration --version 1.0.0-preview-008520001
+    ```
+    dotnet add package Microsoft.Extensions.Configuration.AzureAppConfiguration --version 1.0.0-preview-008520001
 
-        dotnet add package Microsoft.FeatureManagement.AspNetCore --version 1.0.0-preview-008560001-910
+    dotnet add package Microsoft.FeatureManagement.AspNetCore --version 1.0.0-preview-008560001-910
+    ```
 
-2. 次のコマンドを実行して、プロジェクトのパッケージを復元します。
+1. 次のコマンドを実行して、プロジェクトのパッケージを復元します。
 
-        dotnet restore
+    ```
+    dotnet restore
+    ```
 
-3. シークレット マネージャーに、*ConnectionStrings:AppConfig* という名前のシークレットを追加します。
+1. シークレット マネージャーに、**ConnectionStrings:AppConfig** という名前のシークレットを追加します。
 
-    このシークレットには、アプリ構成ストアにアクセスするための接続文字列が格納されます。 次のコマンドの値を、自分のアプリ構成ストアの接続文字列に置き換えます。
+    このシークレットには、App Configuration ストアにアクセスするための接続文字列が格納されます。 次のコマンドの `<your_connection_string>` の値を、自分の App Configuration ストアの接続文字列に置き換えます。
 
-    このコマンドは、*.csproj* ファイルと同じディレクトリで実行する必要があります。
+    このコマンドは、 *.csproj* ファイルと同じディレクトリで実行する必要があります。
 
-        dotnet user-secrets set ConnectionStrings:AppConfig <your_connection_string>
+    ```
+    dotnet user-secrets set ConnectionStrings:AppConfig <your_connection_string>
+    ```
 
-    シークレット マネージャーは、Web アプリをローカルにテストするためだけに使用されます。 たとえば [Azure App Service](https://azure.microsoft.com/services/app-service/web) にアプリをデプロイするときは、シークレット マネージャーで接続文字列を格納する代わりに、App Service でアプリケーションの設定の**接続文字列**を使用します。
+    シークレット マネージャーは、Web アプリをローカルにテストするためだけに使用されます。 たとえば [Azure App Service](https://azure.microsoft.com/services/app-service) にアプリをデプロイするときは、シークレット マネージャーを使用して接続文字列を格納する代わりに、App Service で **[接続文字列]** という名前のアプリケーション設定を使用します。
 
-    このシークレットには、構成 API を使用してアクセスします。 サポートされているすべてのプラットフォームで、構成 API を使用する際の構成名にコロン (:) を使用できます。 [環境別の構成](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/index?tabs=basicconfiguration&view=aspnetcore-2.0)に関するページを参照してください。
+    このシークレットには、App Configuration API を使用してアクセスできます。 構成名の中のコロン (:) は、サポートされているすべてのプラットフォーム上の App Configuration API で機能します。 [環境別の構成](https://docs.microsoft.com/aspnet/core/fundamentals/configuration)に関するページを参照してください。
 
-4. *Program.cs* を開き、.NET Core App Configuration プロバイダーへの参照を追加します。
+1. *Program.cs* を開き、.NET Core App Configuration プロバイダーへの参照を追加します。
 
     ```csharp
     using Microsoft.Extensions.Configuration.AzureAppConfiguration;
     ```
 
-5. `config.AddAzureAppConfiguration()` メソッドを呼び出して App Configuration を使用するように、`CreateWebHostBuilder` メソッドを更新します。
+1. `config.AddAzureAppConfiguration()` メソッドを呼び出して App Configuration を使用するように、`CreateWebHostBuilder` メソッドを更新します。
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -123,13 +134,13 @@ ms.locfileid: "65411838"
             .UseStartup<Startup>();
     ```
 
-6. *Startup.cs*を開き、.NET Core 機能マネージャーへの参照を追加します。
+1. *Startup.cs* を開き、.NET Core 機能マネージャーへの参照を追加します。
 
     ```csharp
     using Microsoft.FeatureManagement.AspNetCore;
     ```
 
-7. `services.AddFeatureManagement()` メソッドを呼び出し、必要に応じて `services.AddFeatureFilter<FilterType>()` を呼び出して機能フラグで使用するフィルターを含めることで、`ConfigureServices` メソッドを更新して機能フラグのサポートを追加します。
+1. `services.AddFeatureManagement()` メソッドを呼び出して機能フラグ サポートを追加するように、`ConfigureServices` メソッドを更新します。 必要に応じて、`services.AddFeatureFilter<FilterType>()` を呼び出すことで、機能フラグで使用される任意のフィルターを含めることができます。
 
     ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -138,7 +149,7 @@ ms.locfileid: "65411838"
     }
     ```
 
-8. *MyFeatureFlags.cs* ファイルを追加します。
+1. *MyFeatureFlags.cs* ファイルを追加します。
 
     ```csharp
     namespace TestFeatureFlags
@@ -150,7 +161,7 @@ ms.locfileid: "65411838"
     }
     ```
 
-9. Controllers ディレクトリに *BetaController.cs* を追加します。
+1. *Controllers* ディレクトリに *BetaController.cs* を追加します。
 
     ```csharp
     using Microsoft.AspNetCore.Mvc;
@@ -176,13 +187,13 @@ ms.locfileid: "65411838"
     }
     ```
 
-10. Views ディレクトリで *_ViewImports.cshtml* を開き、機能マネージャーのタグ ヘルパーを追加します。
+1. *Views* ディレクトリの *_ViewImports.cshtml* を開き、機能マネージャーのタグ ヘルパーを追加します。
 
     ```html
     @addTagHelper *, Microsoft.FeatureManagement.AspNetCore
     ```
 
-11. Views の Shared ディレクトリにある *_Layout.cshtml* を開いて、`<body>` > `<header>` の下の `<nav>` バーの内容を次のコードに置き換えます。
+1. *Views*\\*Shared* ディレクトリにある *_Layout.cshtml* を開いて、`<body>` > `<header>` の下の `<nav>` バー コードを次のコードに置き換えます。
 
     ```html
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
@@ -211,7 +222,7 @@ ms.locfileid: "65411838"
     </nav>
     ```
 
-12. Views の下に Beta ディレクトリを作成し、そこに *Index.cshtml* を追加します。
+1. *Views* の下に *Beta* ディレクトリを作成し、そこに *Index.cshtml* を追加します。
 
     ```html
     @{
@@ -227,25 +238,29 @@ ms.locfileid: "65411838"
 
 1. .NET Core CLI を使用してアプリケーションをビルドするには、コマンド シェルで次のコマンドを実行します。
 
-        dotnet build
+    ```
+    dotnet build
+    ```
 
-2. ビルドが正常に完了したら、次のコマンドを実行して、Web アプリをローカルで実行します。
+1. ビルドが正常に完了したら、次のコマンドを実行して、Web アプリをローカルで実行します。
 
-        dotnet run
+    ```
+    dotnet run
+    ```
 
-3. ブラウザー ウィンドウを開いて、`https://localhost:5001` (ローカルでホストされた Web アプリの既定の URL) に移動します。
+1. ブラウザー ウィンドウを開いて、`https://localhost:5001` (ローカルでホストされた Web アプリの既定の URL) に移動します。
 
     ![クイック スタートのアプリ (ローカルで起動)](./media/quickstarts/aspnet-core-feature-flag-local-before.png)
 
-4. [Azure Portal](https://aka.ms/azconfig/portal) にサインインします。 **[すべてのリソース]** を選択し、クイック スタートで作成したアプリ構成ストア インスタンスを選択します。
+1. [Azure Portal](https://portal.azure.com) にサインインします。 **[すべてのリソース]** を選択し、クイック スタートで作成した App Configuration ストア インスタンスを選択します。
 
-5. **[Feature Manager]\(機能マネージャー\)** を選択し、*[Beta]\(ベータ\)* の値を *[On]\(オン\)* に変更します。
+1. **[Feature Manager]\(機能マネージャー\)** を選択し、 **[Beta]\(ベータ\)** キーの状態を **[On]\(オン\)** に変更します。
 
     | キー | 状態 |
     |---|---|
     | Beta | On |
 
-6. ブラウザー ページを最新の情報に更新して新しい構成設定を確認します。
+1. ブラウザー ページを最新の情報に更新して新しい構成設定を確認します。
 
     ![クイック スタートのアプリ (ローカルで起動)](./media/quickstarts/aspnet-core-feature-flag-local-after.png)
 
@@ -255,8 +270,8 @@ ms.locfileid: "65411838"
 
 ## <a name="next-steps"></a>次の手順
 
-このクイック スタートでは、新しいアプリ構成ストアを作成し、[機能管理ライブラリ](https://go.microsoft.com/fwlink/?linkid=2074664)を介して ASP.NET Core Web アプリで機能を管理するために、この構成ストアを使用しました。
+このクイック スタートでは、新しい App Configuration ストアを作成し、この構成ストアを使用して、[機能管理ライブラリ](https://go.microsoft.com/fwlink/?linkid=2074664)を介して ASP.NET Core Web アプリの機能を管理しました。
 
-* [機能管理](./concept-feature-management.md) の詳細を確認する
-* [機能フラグを管理する](./manage-feature-flags.md)
-* [.NET Core アプリ内で機能フラグを使用する](./use-feature-flags-dotnet-core.md)
+- [機能管理](./concept-feature-management.md)の詳細を確認します。
+- [機能フラグを管理](./manage-feature-flags.md)します。
+- [ASP.NET Core アプリ内で機能フラグを使用](./use-feature-flags-dotnet-core.md)します。

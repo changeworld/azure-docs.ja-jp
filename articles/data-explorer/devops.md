@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 05/05/2019
-ms.openlocfilehash: a70a887ccb19d9c1cbdb5f8ebf6aa8d4b25a0dfd
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 0628d5c07d7258cc4d68727c364e65bd81c78e8e
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65158065"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66388992"
 ---
 # <a name="azure-devops-task-for-azure-data-explorer"></a>Azure Data Explorer の Azure DevOps タスク
 
@@ -47,7 +47,7 @@ Git リポジトリでサンプル フォルダー (*Functions*、*Policies*、*
 ## <a name="create-a-release-pipeline"></a>リリース パイプラインを作成する
 
 1. [Azure DevOps 組織](https://dev.azure.com/)にサインインします。
-1. 左側のメニューから **[パイプライン]**、**[リリース]** の順に選択し、**[新しいパイプライン]** を選択します。
+1. 左側のメニューから **[パイプライン]**  > 、 **[リリース]** の順に選択し、 **[新しいパイプライン]** を選択します。
 
     ![新しいパイプライン](media/devops/new-pipeline.png)
 
@@ -59,7 +59,7 @@ Git リポジトリでサンプル フォルダー (*Functions*、*Policies*、*
 
     ![ステージに名前を付ける](media/devops/stage-name.png)
 
-1. **[成果物の追加]** ボタンを選択します。 **[成果物の追加]** ウィンドウで、コードが存在するリポジトリを選択し、関連情報を入力し、**[追加]** をクリックします。 **[保存]** を選択し、パイプラインを保存します。
+1. **[成果物の追加]** ボタンを選択します。 **[成果物の追加]** ウィンドウで、コードが存在するリポジトリを選択し、関連情報を入力し、 **[追加]** をクリックします。 **[保存]** を選択し、パイプラインを保存します。
 
     ![アーティファクトの追加](media/devops/add-artifact.png)
 
@@ -67,27 +67,27 @@ Git リポジトリでサンプル フォルダー (*Functions*、*Policies*、*
 
     ![変数の作成](media/devops/create-variable.png)
 
-    Azure portal の **Azure Data Explorer クラスター**の概要ページに Azure Data Explorer クラスター URI が含まれています。自分のエンドポイント URL はそこで見つかります。 URI は形式 `https://<Azure Data Explorer cluster URI>?DatabaseName=<DBName>` で構築します。  たとえば、 https://kustodocs.westus.kusto.windows.net?DatabaseName=SampleDB のように指定します。
+    Azure portal の **Azure Data Explorer クラスター**の概要ページに Azure Data Explorer クラスター URI が含まれています。自分のエンドポイント URL はそこで見つかります。 URI は形式 `https://<Azure Data Explorer cluster URI>?DatabaseName=<DBName>` で構築します。  https:\//kustodocs.westus.kusto.windows.net?DatabaseName=SampleDB などです。
 
     ![Azure Data Explorer クラスター URI](media/devops/adx-cluster-uri.png)
 
 ## <a name="create-tasks-to-deploy"></a>デプロイするタスクの作成
 
-1. **[パイプライン]** タブで、**[1 ジョブ、0 タスク]** をクリックし、タスクを追加します。 
+1. **[パイプライン]** タブで、 **[1 ジョブ、0 タスク]** をクリックし、タスクを追加します。 
 
     ![タスクの追加](media/devops/add-task.png)
 
 1. **Tables**、**Functions**、**Policies** をデプロイする 3 つのタスクをこの順番で作成します。 
 
-1. **[タスク]** タブで **[エージェント ジョブ]** の横にある **+** を選択します。 **Azure Data Explorer** を検索します。 **マーケットプレース**で、**Azure Data Explorer – Admin Commands** 拡張をインストールします。 次に、**[Run Azure Data Explorer Command]\(Azure Data Explorer コマンドの実行\)** で **[追加]** を選択します。
+1. **[タスク]** タブで **[エージェント ジョブ]** の横にある **+** を選択します。 **Azure Data Explorer** を検索します。 **マーケットプレース**で、**Azure Data Explorer – Admin Commands** 拡張をインストールします。 次に、 **[Run Azure Data Explorer Command]\(Azure Data Explorer コマンドの実行\)** で **[追加]** を選択します。
 
      ![管理者コマンドの追加](media/devops/add-admin-commands.png)
 
 1. 左の **[Kusto コマンド]** をクリックし、次の情報でタスクを更新します。
     * **表示名**:タスクの名前
-    * **[ファイル パス]**:**[Tables]** タスクで */Tables/*.csl を指定します。テーブル作成ファイルが *Table* フォルダーにあるためです。
-    * **[エンドポイント URL]**: 前の手順で作成した `EndPoint URL` 変数を入力します。
-    * **[Use Service Endpoint]\(サービス エンドポイントの使用\)** を選択し、**[+ 新規]** を選択します。
+    * **[ファイル パス]** : **[Tables]** タスクで */Tables/* .csl を指定します。テーブル作成ファイルが *Table* フォルダーにあるためです。
+    * **[エンドポイント URL]** : 前の手順で作成した `EndPoint URL` 変数を入力します。
+    * **[Use Service Endpoint]\(サービス エンドポイントの使用\)** を選択し、 **[+ 新規]** を選択します。
 
     ![Kusto コマンドの更新タスク](media/devops/kusto-command-task.png)
 
@@ -109,7 +109,7 @@ Git リポジトリでサンプル フォルダー (*Functions*、*Policies*、*
 
     ![すべてのフォルダーのデプロイ](media/devops/deploy-all-folders.png)
 
-1. **[+ リリース]**、**[リリースの作成]** の順に選択し、リリースを作成します。
+1. **[+ リリース]**  > 、 **[リリースの作成]** の順に選択し、リリースを作成します。
 
     ![リリースを作成する](media/devops/create-release.png)
 

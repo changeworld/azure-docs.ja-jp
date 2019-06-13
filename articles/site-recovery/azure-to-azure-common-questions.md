@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 04/29/2019
 ms.topic: conceptual
 ms.author: asgan
-ms.openlocfilehash: 1a13bda37c5bfac4efe6bd6109cb1dfcd5f7d2a9
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 271e3c31c3e08d170add84ca4995f4876d4d3a33
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925671"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66753776"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>一般的な質問:Azure から Azure へのディザスター リカバリー
 
@@ -143,7 +143,7 @@ Site Recovery では、5 分ごとにクラッシュ整合性復旧ポイント�
 レプリケートされたすべての仮想マシン間で復旧ポイントに整合性があることを確認することを意味します。
 Site Recovery の [マルチ VM 整合性] オプションを選択した場合、グループの一部であるすべてのマシンをまとめてレプリケートするためのレプリケーション グループが作成されます。
 すべての仮想マシンが、フェールオーバー時に共有のクラッシュ整合性復旧ポイントとアプリ整合性復旧ポイントを持ちます。
-[マルチ VM 整合性の有効化](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication#enable-replication)に関するチュートリアルをご覧ください。
+[マルチ VM 整合性の有効化](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication#enable-replication-for-a-vm)に関するチュートリアルをご覧ください。
 
 ### <a name="can-i-failover-single-virtual-machine-within-a-multi-vm-consistency-replication-group"></a>マルチ VM 整合性レプリケーション グループ内の単一の仮想マシンをフェールオーバーできますか?
 [マルチ VM 整合性] オプションを選択すると、アプリケーションがグループ内のすべての仮想マシンに対して依存関係を持つことが示されます。 そのため、単一の仮想マシンのフェールオーバーは許可されません。

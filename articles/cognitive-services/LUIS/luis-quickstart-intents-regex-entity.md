@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 05/07/2018
+ms.date: 06/03/2019
 ms.author: diberry
-ms.openlocfilehash: 71104ecf0514b61e4f0d224d25f2ace9457f3cd3
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 5e79de8dc8b4e81f427925b6e3d662bd4931804d
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65145504"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66497018"
 ---
 # <a name="tutorial-get-well-formatted-data-from-the-utterance"></a>チュートリアル:発話から適切な形式のデータを取得する
 このチュートリアルでは、**正規表現**エンティティを使用して、発話から一貫した形式のデータを抽出するアプリを作成します。
@@ -63,7 +63,7 @@ ms.locfileid: "65145504"
 
 1. **[Create new intent]\(意図の新規作成\)** を選択します。 
 
-1. ポップアップ ダイアログ ボックスに「`FindForm`」と入力して、**[完了]** を選択します。 
+1. ポップアップ ダイアログ ボックスに「`FindForm`」と入力して、 **[完了]** を選択します。 
 
     ![検索ボックスにユーティリティが表示されている [Create new intent]\(意図の新規作成\) ダイアログのスクリーンショット](./media/luis-quickstart-intents-regex-entity/create-new-intent-ddl.png)
 
@@ -99,11 +99,11 @@ LUIS では、発話が意図に追加されるときに、発話をトークン
 
 1. [エンティティ] ページで **[新しいエンティティの作成]** ボタンを選択します。 
 
-1. ポップアップ ダイアログで、新しいエンティティ名 `HRF-number` を入力して、エンティティ型として **RegEx** を選択し、**Regex** の値に「`hrf-[0-9]{6}`」と入力してから、**[完了]** を選択します。
+1. ポップアップ ダイアログで、新しいエンティティ名 `HRF-number` を入力して、エンティティ型として **RegEx** を選択し、**Regex** の値に「`hrf-[0-9]{6}`」と入力してから、 **[完了]** を選択します。
 
     ![ポップアップ ダイアログ設定の新しいエンティティ プロパティのスクリーン ショット](./media/luis-quickstart-intents-regex-entity/create-regex-entity.png)
 
-1. 左側のメニューから **[Intents]\(意図\)**、**[FindForm]** 意図の順に選択して、発話に正規表現のラベルが付与されていることを確認します。 
+1. 左側のメニューから **[Intents]\(意図\)** 、 **[FindForm]** 意図の順に選択して、発話に正規表現のラベルが付与されていることを確認します。 
 
     [![既存のエンティティと正規パターンでのラベル発話のスクリーンショット](./media/luis-quickstart-intents-regex-entity/labeled-utterances-for-entity.png)](./media/luis-quickstart-intents-regex-entity/labeled-utterances-for-entity.png#lightbox)
 
@@ -125,7 +125,11 @@ LUIS では、発話が意図に追加されるときに、発話をトークン
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
-2. アドレスの URL の末尾に移動し、「`When were HRF-123456 and hrf-234567 published in the last year?`」と入力します。 最後の querystring パラメーターは `q` です。これは発話の**クエリ**です。 この発話はラベル付けされたどの発話とも同じではないので、よいテストであり、`FindForm` 意図と 2 つのフォーム番号 `HRF-123456` と `hrf-234567` が返される必要があります。
+2. アドレスの URL の末尾に移動し、次の発話を入力します。
+
+    `When were HRF-123456 and hrf-234567 published in the last year?`
+
+    最後の querystring パラメーターは `q` です。これは発話の**クエリ**です。 この発話はラベル付けされたどの発話とも同じではないので、よいテストであり、`FindForm` 意図と 2 つのフォーム番号 `HRF-123456` と `hrf-234567` が返される必要があります。
 
     ```json
     {

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/16/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 3fa463cb7178fa5cc2108383047a7ca94ffb48a3
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: bac897178c8220abe72a92a5cf14fc4767cdd3bf
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65797378"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66755067"
 ---
 # <a name="monitor-resource-consumption-and-query-activity-in-azure-search"></a>Azure Search でリソースの消費量とクエリ アクティビティを監視する
 
@@ -175,7 +175,7 @@ Azure Search REST API または .NET SDK を使用することにより、プロ
 * [ドキュメントの数](/rest/api/searchservice/count-documents)
 * [インデクサーの状態の取得](/rest/api/searchservice/get-indexer-status)
 
-PowerShell または Azure CLI の使用を有効にする方法については、[こちら](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs#how-to-enable-collection-of-diagnostic-logs)のマニュアルをご覧ください。
+PowerShell または Azure CLI の使用を有効にする方法については、[こちら](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview)のマニュアルをご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 

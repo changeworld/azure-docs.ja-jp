@@ -18,12 +18,12 @@ ms.date: 01/25/2019
 ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 67811e03bfa87a991b9eeb6f80ddddd87f781335
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 0fd18cdf5ef326e5836332d70aec89a101f249af
+ms.sourcegitcommit: f9448a4d87226362a02b14d88290ad6b1aea9d82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66305734"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66807749"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Azure Active Directory の条件付きアクセスのベスト プラクティス
 
@@ -109,7 +109,7 @@ Azure Active Directory によって両方のポリシーが適用されます。
 
 ### <a name="does-conditional-access-work-with-exchange-activesync"></a>条件付きアクセスは、Exchange ActiveSync と連携しますか。
 
-はい。いくつかの[制限](https://docs.microsoft.com/azure/active-directory/conditional-access/conditional-access-for-exo-and-spo#exchange-activesync)が付いている条件付きアクセス ポリシーで Exchange ActiveSync を使用できます。 
+はい。いくつかの[制限](https://docs.microsoft.com/azure/active-directory/conditional-access/conditional-access-for-exo-and-spo)が付いている条件付きアクセス ポリシーで Exchange ActiveSync を使用できます。 
 
 ### <a name="how-should-you-configure-conditional-access-with-office-365-apps"></a>Office 365 アプリでは条件付きアクセスをどのように構成すればよいですか。
 
