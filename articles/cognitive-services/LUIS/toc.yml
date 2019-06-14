@@ -327,7 +327,7 @@
       href: 'https://go.microsoft.com/fwlink/?linkid=2092157'
     - name: REST API
       items:
-        - name: V2 REST API の作成
+        - name: オーサリング V2 REST API
           href: 'https://go.microsoft.com/fwlink/?linkid=2092087'
         - name: エンドポイント V2 REST API
           href: 'https://go.microsoft.com/fwlink/?linkid=2092356'
@@ -338,7 +338,7 @@
       items:
         - name: 'C#'
           items:
-            - name: NuGet - 作成
+            - name: NuGet - オーサリング
               href: 'https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring/'
             - name: NuGet - ランタイム
               href: 'https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/'
@@ -348,7 +348,7 @@
               href: 'https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/LUIS'
         - name: Go
           items:
-            - name: SDK - 作成
+            - name: SDK - オーサリング
               href: 'https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.0/luis/authoring'
             - name: SDK - ランタイム
               href: 'https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.0/luis/runtime'
@@ -356,7 +356,7 @@
               href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.0/luis/'
         - name: Java
           items:
-            - name: Maven - 作成
+            - name: Maven - オーサリング
               href: 'https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-luis-authoring'
             - name: Maven - ランタイム
               href: 'https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-luis-runtime'
@@ -366,7 +366,7 @@
               href: 'https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Language/LanguageUnderstanding'
         - name: Node.js
           items:
-            - name: NPM - 作成
+            - name: NPM - オーサリング
               href: 'https://www.npmjs.com/package/azure-cognitiveservices-luis-authoring'
             - name: NPM - ランタイム
               href: 'https://www.npmjs.com/package/azure-cognitiveservices-luis-runtime'
