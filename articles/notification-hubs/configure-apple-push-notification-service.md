@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: jowargo
 ms.openlocfilehash: 9a9db9f05895569b050e56cdeec1ee2ee25af0df
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58488104"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60237827"
 ---
 # <a name="configure-apple-push-notification-service-apns-settings-for-a-notification-hub-in-the-azure-portal"></a>Azure portal で通知ハブ用に Apple Push Notification Service (APNS) の設定を構成する
 この記事では、Azure portal を使用して Azure 通知ハブ用に Apple Push Notification Service (APNS) の設定を構成する方法について説明します。 
@@ -34,14 +34,14 @@ ms.locfileid: "58488104"
    a. **[証明書]** を選択した場合:
    * ファイル アイコンを選択し、アップロードする *.p12* ファイルを選択します。
    * パスワードを入力します。
-   * **[サンドボックス]** モードを選択します。 または、ストアからアプリを購入したユーザーにプッシュ通知を送信する場合は、**[Production]\(運用\)** モードを選択します。
+   * **[サンドボックス]** モードを選択します。 または、ストアからアプリを購入したユーザーにプッシュ通知を送信する場合は、 **[Production]\(運用\)** モードを選択します。
 
      ![Azure portal における APNS 証明書構成のスクリーンショット](./media/notification-hubs-ios-get-started/notification-hubs-apple-config-cert.png)
 
    b. **[トークン]** を選択した場合:
 
-   * **[キー ID]**、**[バンドル ID]**、**[チーム ID]**、**[トークン]** に値を入力します。
-   * **[サンドボックス]** モードを選択します。 または、ストアからアプリを購入したユーザーにプッシュ通知を送信する場合は、**[Production]\(運用\)** モードを選択します。
+   * **[キー ID]** 、 **[バンドル ID]** 、 **[チーム ID]** 、 **[トークン]** に値を入力します。
+   * **[サンドボックス]** モードを選択します。 または、ストアからアプリを購入したユーザーにプッシュ通知を送信する場合は、 **[Production]\(運用\)** モードを選択します。
 
      ![Azure portal における APNS トークン構成のスクリーンショット](./media/notification-hubs-ios-get-started/notification-hubs-apple-config-token.png)
 

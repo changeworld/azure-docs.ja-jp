@@ -13,11 +13,11 @@ ms.reviewer: vanto, carlrab
 manager: craigg
 ms.date: 02/08/2019
 ms.openlocfilehash: 60839fa06d8436d3d2202d1d97735c42c5768e9e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59797211"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60331480"
 ---
 # <a name="azure-sql-database-threat-detection-for-single-or-pooled-databases"></a>単一またはプールされたデータベース用の Azure SQL Database の脅威検出
 
@@ -30,7 +30,7 @@ ms.locfileid: "59797211"
 ## <a name="set-up-threat-detection-for-your-database-in-the-azure-portal"></a>Azure Portal でデータベースの脅威検出を設定する
 
 1. Azure Portal ([https://portal.azure.com](https://portal.azure.com)) を開きます。
-2. 保護する Azure SQL Database サーバーの構成ページに移動します。 セキュリティの設定で、**[Advanced Data Security]** を選びます。
+2. 保護する Azure SQL Database サーバーの構成ページに移動します。 セキュリティの設定で、 **[Advanced Data Security]** を選びます。
 3. **[Advanced Data Security]** の構成ページで、
 
    - サーバーで Advanced Data Security を有効にします。

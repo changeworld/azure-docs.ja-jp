@@ -13,11 +13,11 @@ ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9634e2578ea256d1dec71389f676ee53627e6272
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58077770"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60474231"
 ---
 # <a name="backup-and-recover-account-credentials-with-the-microsoft-authenticator-app"></a>Microsoft Authenticator アプリを使用してアカウント資格情報をバックアップおよび復旧する
 
@@ -42,7 +42,7 @@ Microsoft Authenticator アプリは、アカウント資格情報と、アカ�
 両方のアカウントへのサインインを要求すると、バックアップ情報のセキュリティが向上します。
 
 **クラウド バックアップを有効にするには**
--   iOS デバイスで、**[設定]**、**[バックアップ]** の順に選択し、**[iCloud のバックアップ]** を有効にします。
+-   iOS デバイスで、 **[設定]** 、 **[バックアップ]** の順に選択し、 **[iCloud のバックアップ]** を有効にします。
 
     アカウントの資格情報は、自分の iCloud アカウントにバックアップされます。
 

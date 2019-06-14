@@ -14,11 +14,11 @@ ms.workload: required
 ms.date: 06/30/2017
 ms.author: pakunapa
 ms.openlocfilehash: b465ab602a14285f8cf40b24ce1dfa9c763fecb8
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58667003"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60773351"
 ---
 # <a name="secure-service-remoting-communications-in-a-java-service"></a>Java サービスでのサービス リモート処理通信をセキュリティで保護する
 > [!div class="op_single_selector"]

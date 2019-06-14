@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: bikang
 ms.openlocfilehash: d5b6f183a59e3f47aa5867b5e09e06541a6a67db
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662654"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60803244"
 ---
 # <a name="azure-service-fabric-cli"></a>Azure Service Fabric CLI
 
@@ -54,7 +54,7 @@ Service Fabric CLI リリースの詳細については、[GitHub のドキュ�
 
 ご利用のプラットフォームには、さまざまな方法で pip と Python をインストールできます。 ここでは主なオペレーティング システムを対象に、Python 3 と pip をすばやく設定する手順を説明します。
 
-### <a name="windows"></a> Windows
+### <a name="windows"></a>Windows
 
 Windows 10、Windows Server 2016、Windows Server 2012 R2 については、標準的な公式インストール手順を使用してください。 Python インストーラーを実行すると、既定で pip もインストールされます。
 

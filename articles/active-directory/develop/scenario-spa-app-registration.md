@@ -16,10 +16,10 @@ ms.author: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b1faf4669dca2aaaf3f873e66f859473ccd99f10
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65080095"
 ---
 # <a name="single-page-application---app-registration"></a>シングルページ アプリケーション - アプリの登録
@@ -38,7 +38,7 @@ ms.locfileid: "65080095"
 
 ## <a name="enable-the-implicit-flow"></a>暗黙的フローの有効化
 
-同じ「**認証**」ページ上の **[詳細設定]** で、**[暗黙的な許可]** も有効にする必要があります。 お使いのアプリケーションでユーザーのサインインの実行と ID トークンの取得のみを行う場合は、**[ID トークン]** チェック ボックスを有効にするだけで十分です。
+同じ「**認証**」ページ上の **[詳細設定]** で、 **[暗黙的な許可]** も有効にする必要があります。 お使いのアプリケーションでユーザーのサインインの実行と ID トークンの取得のみを行う場合は、 **[ID トークン]** チェック ボックスを有効にするだけで十分です。
 
 お使いのアプリケーションで、API を呼び出すためにアクセス トークンも取得する必要がある場合は、必ず **[アクセス トークン]** チェック ボックスも有効にしてください。 詳細については、「[ID トークン](./id-tokens.md)」と「[アクセス トークン](./access-tokens.md)」を参照してください。
 

@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 11/19/2016
 ms.author: mbullwin
 ms.openlocfilehash: 8a7b19dd6e5bc08c0c7e278b514ecaa9dc13a00e
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58485240"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60254489"
 ---
 # <a name="powershell-script-to-create-an-application-insights-resource"></a>Application Insights リソースを作成するための PowerShell スクリプト
 
@@ -112,6 +112,6 @@ iKey を SDK で使用できるようにする方法は 2 つあります。
 
 ## <a name="see-also"></a>関連項目
 * [テンプレートから Application Insights と Web テスト リソースを作成する](powershell.md)
-* [PowerShell で Azure 診断の監視を設定する](powershell-azure-diagnostics.md) 
+* [PowerShell で Azure Diagnostics の監視を設定する](powershell-azure-diagnostics.md) 
 * [PowerShell を使用したアラートの設定](powershell-alerts.md)
 

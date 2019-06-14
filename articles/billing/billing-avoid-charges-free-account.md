@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 09/25/2017
 ms.author: banders
 ms.openlocfilehash: 7bb8e4f53dd07a613ab4b9ff05600a22f76a4ba7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57872706"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60617855"
 ---
 # <a name="avoid-getting-charged-for-your-azure-free-account"></a>Azure 無料アカウントの課金の回避
 
@@ -47,7 +47,7 @@ Azure 無料アカウントに無料で付随していないサービスを使�
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 
-2. 左側のナビゲーション領域で、**[すべてのサービス]** を選択します。
+2. 左側のナビゲーション領域で、 **[すべてのサービス]** を選択します。
 
 3.  **[サブスクリプション]** を選択します。
 

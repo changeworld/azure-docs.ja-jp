@@ -17,11 +17,11 @@ ms.date: 11/02/2018
 ms.author: banders
 ms.custom: seodec18
 ms.openlocfilehash: 8c2843840790d1e0dbfd4a789775c6c7ceb51a54
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57838257"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60918696"
 ---
 # <a name="manage-access-to-billing-information-for-azure"></a>Asure の課金情報へのアクセスの管理
 
@@ -50,7 +50,7 @@ EA のお客様を除くすべてのユーザーは、チームのメンバー�
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
 1. アカウント管理者として、Azure Portal の[[サブスクリプション] ブレード](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)でサブスクリプションを選択します。
 
-1. **[請求書]** を選択し、**[Access to invoices (請求書へのアクセス)]** を選択します。
+1. **[請求書]** を選択し、 **[Access to invoices (請求書へのアクセス)]** を選択します。
 
     ![請求書へのアクセスの委任方法を示すスクリーンショット](./media/billing-manage-access/AA-optin.png)
 
@@ -74,7 +74,7 @@ EA のお客様の場合は、アカウント所有者または部門管理者�
 1. **[アクセス制御 (IAM)]** を選択します。
 1. **[ロールの割り当て]** を選択して、このサブスクリプションのすべてのロールの割り当てを表示します。
 1. **[ロールの割り当ての追加]** を選択します。
-1. **[ロール]** ドロップダウン リストで、**[請求閲覧者]** を選択します。
+1. **[ロール]** ドロップダウン リストで、 **[請求閲覧者]** を選択します。
 1. **[選択]** テキストボックスに、追加するユーザーの名前またはメール アドレスを入力します。
 1. ユーザーを選択します。
 1. **[保存]** を選択します。
@@ -89,8 +89,8 @@ EA のお客様の場合は、アカウント所有者または部門管理者�
 
 1. エンタープライズ管理者として [EA ポータル](https://ea.azure.com/)にサインインします。
 1. **[管理]** を選択します。
-1. **[登録]** で、部門管理者が使用状況とコストを表示できるようにする場合は、**[DA ビューの請求額]** を **[有効]** に変更します。
-1. アカウント所有者が使用状況とコストを表示できるようにする場合は、**[AO ビューの請求額]** を **[有効]** に変更します。
+1. **[登録]** で、部門管理者が使用状況とコストを表示できるようにする場合は、 **[DA ビューの請求額]** を **[有効]** に変更します。
+1. アカウント所有者が使用状況とコストを表示できるようにする場合は、 **[AO ビューの請求額]** を **[有効]** に変更します。
 
 
 詳細については、「[Azure の Azure Enterprise Agreement 管理者ロールを理解する](billing-understand-ea-roles.md)」を参照してください。

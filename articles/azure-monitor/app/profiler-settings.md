@@ -13,25 +13,25 @@ ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
 ms.openlocfilehash: 2bc32e28ffd6dd9dab2da61078684791a04709cc
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64922986"
 ---
 # <a name="configure-application-insights-profiler"></a>Application Insights Profiler を構成する
 
 ## <a name="profiler-settings-pane"></a>Profiler の設定ウィンドウ
 
-Azure Application Insights Profiler の設定ウィンドウを開くには、Application Insights の [パフォーマンス] ウィンドウに移動して、**[Profiler]** ボタンを選択します。
+Azure Application Insights Profiler の設定ウィンドウを開くには、Application Insights の [パフォーマンス] ウィンドウに移動して、 **[Profiler]** ボタンを選択します。
 
 ![Profiler の構成ウィンドウ][configure-profiler-entry]
 
 **[Application Insights Profiler の構成]** ウィンドウには 4 つの機能が含まれています。 
-* **[今すぐプロファイル]**:Application Insights のこのインスタンスにリンクされているすべてのアプリのプロファイリング セッションを開始します。
-* **[リンクされたアプリ]**:この Application Insights リソースにプロファイリング データを送信しているアプリケーションの一覧が表示されます。
-* **[セッションは進行中です]**:**[今すぐプロファイル]** を選択したときのセッションの状態が表示されます。 
-* **[最近のプロファイリング セッション]**:過去のプロファイリング セッションに関する情報が表示されます。
+* **[今すぐプロファイル]** :Application Insights のこのインスタンスにリンクされているすべてのアプリのプロファイリング セッションを開始します。
+* **[リンクされたアプリ]** :この Application Insights リソースにプロファイリング データを送信しているアプリケーションの一覧が表示されます。
+* **[セッションは進行中です]** : **[今すぐプロファイル]** を選択したときのセッションの状態が表示されます。 
+* **[最近のプロファイリング セッション]** :過去のプロファイリング セッションに関する情報が表示されます。
 
 ![オンデマンドでのプロファイラー][profiler-on-demand]
 
@@ -51,13 +51,13 @@ Azure App Service Environment の構成によっては、エージェントの�
 
 Web アプリが既にトラフィックを受信している、または手動でトラフィックを生成する場合は、このセクションをスキップして手順 2 に進みます。
 
-1. Application Insights ポータルで、**[構成]** > **[パフォーマンス テスト]** を選択します。 
+1. Application Insights ポータルで、 **[構成]**  >  **[パフォーマンス テスト]** を選択します。 
 
-1. 新しいパフォーマンス テストを開始するには、**[新規]** ボタンを選択します。
+1. 新しいパフォーマンス テストを開始するには、 **[新規]** ボタンを選択します。
 
    ![新しいパフォーマンス テストを作成する][create-performance-test]
 
-1. **[新しいパフォーマンス テスト]** ウィンドウで、テスト対象の URL を構成します。 すべての設定を既定値のままにし、**[テストの実行]** を選択してロード テストの実行を開始します。
+1. **[新しいパフォーマンス テスト]** ウィンドウで、テスト対象の URL を構成します。 すべての設定を既定値のままにし、 **[テストの実行]** を選択してロード テストの実行を開始します。
 
     ![ロード テストを構成する][configure-performance-test]
 
@@ -109,7 +109,7 @@ App Services の **[アプリケーション設定]** ウィンドウに移動�
 
     ![サイト拡張機能の更新][update-site-extension]
 
-1. Profiler を確実に有効にするため、**[変更]** を選択し、**[OK]** を選択して、変更を保存します。
+1. Profiler を確実に有効にするため、 **[変更]** を選択し、 **[OK]** を選択して、変更を保存します。
 
     ![App Insights を変更して保存する][change-and-save-appinsights]
 
@@ -120,7 +120,7 @@ App Services の **[アプリケーション設定]** ウィンドウに移動�
 
      ![Profiler 用のアプリ設定][app-settings-for-profiler]
 
-1. 必要に応じて、**[拡張機能]** を選択し、拡張機能のバージョンを確認して、更新プログラムを利用できるかどうかを判断します。
+1. 必要に応じて、 **[拡張機能]** を選択し、拡張機能のバージョンを確認して、更新プログラムを利用できるかどうかを判断します。
 
     ![拡張機能の更新プログラムを確認する][check-for-extension-update]
 

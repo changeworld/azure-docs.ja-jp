@@ -15,10 +15,10 @@ ms.date: 06/05/2018
 ms.author: dariagrigoriu;cephalin
 ms.custom: seodec18
 ms.openlocfilehash: b879036dcd79901cb634fa197932e833cb22d12a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65956063"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Azure App Service へのローカル Git デプロイ
@@ -29,7 +29,7 @@ ms.locfileid: "65956063"
 
 ## <a name="prerequisites"></a>前提条件
 
-このハウツー ガイドの手順に従うには: 
+このハウツー ガイドの手順に従うには:
 
 * [Git をインストールします](https://www.git-scm.com/downloads)。
 * デプロイするコードを含むローカル Git リポジトリのメンテナンスを管理します。
@@ -110,22 +110,22 @@ git push azure master
 
 Kudu ビルド サーバーを使用したアプリへの ローカルGit のデプロイを有効にするには、[Azure Portal](https://portal.azure.com) でアプリに移動します。
 
-アプリ ページの左側のナビゲーションで、**[デプロイ センター]** > **[ローカル Git]** > **[継続]** をクリックします。
+アプリ ページの左側のナビゲーションで、 **[デプロイ センター]**  >  **[ローカル Git]**  >  **[継続]** をクリックします。
 
 ![](media/app-service-deploy-local-git/portal-enable.png)
 
-**[Azure Pipelines (プレビュー)]** > **[続行]** の順にクリックします。
+**[Azure Pipelines (プレビュー)]**  >  **[続行]** の順にクリックします。
 
 ![](media/app-service-deploy-local-git/pipeline-builds.png)
 
-**[構成]** ページで、新しい Azure DevOps 組織を構成するか、既存の組織を指定します。 完了したら、**[続行]** をクリックします。
+**[構成]** ページで、新しい Azure DevOps 組織を構成するか、既存の組織を指定します。 完了したら、 **[続行]** をクリックします。
 
 > [!NOTE]
 > 一覧にない既存の Azure DevOps 組織を使用する場合、[Azure DevOps Services 組織を Azure サブスクリプションにリンク](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App)する必要があります。
 
-App Service プランの[価格レベル](https://azure.microsoft.com/pricing/details/app-service/plans/)によっては、**[ステージングへのデプロイ]** ページも表示される場合があります。 デプロイ スロットを有効にするかどうかを選択し、**[続行]** をクリックします。
+App Service プランの[価格レベル](https://azure.microsoft.com/pricing/details/app-service/plans/)によっては、 **[ステージングへのデプロイ]** ページも表示される場合があります。 デプロイ スロットを有効にするかどうかを選択し、 **[続行]** をクリックします。
 
-**[概要]** ページで、選択内容を確認し、**[完了]** をクリックします。
+**[概要]** ページで、選択内容を確認し、 **[完了]** をクリックします。
 
 Azure DevOps Services 組織の準備が完了するまで数分かかります。 準備ができたら、デプロイ センターで Git リポジトリの URL をコピーします。
 
@@ -172,7 +172,7 @@ Git を使用して Azure の App Service アプリに発行するときの一�
 
 **原因**: このエラーは、`git push` でブランチを指定しなかった場合、または `.gitconfig` に `push.default` 値を設定しなかった場合に発生する可能性があります。
 
-**解決策**: master ブランチを指定して、もう一度 `git push` を実行します。 例: 
+**解決策**: master ブランチを指定して、もう一度 `git push` を実行します。 例:
 
 ```bash
 git push azure master
@@ -183,7 +183,7 @@ git push azure master
 
 **原因**: このエラーは、"azure" リモートの master 以外のブランチにプッシュしようとした場合に発生する可能性があります。
 
-**解決策**: master ブランチを指定して、もう一度 `git push` を実行します。 例: 
+**解決策**: master ブランチを指定して、もう一度 `git push` を実行します。 例:
 
 ```bash
 git push azure master

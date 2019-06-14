@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
 ms.openlocfilehash: d2e628fb7fc502ef9ba81d20680d66f24fd7d138
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58004926"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61339097"
 ---
 # <a name="evaluate-method"></a>Evaluate メソッド
 
@@ -33,11 +33,11 @@ https://westus.api.cognitive.microsoft.com/academic/v1.0/evaluate?
 Name     | 値 | 必須  | 説明
 -----------|-----------|---------|--------
 **expr**       | テキスト文字列 | はい | エンティティが返す必要のあるエンティティを指定するクエリ式。
-**model**      | テキスト文字列 | いいえ   | クエリを実行するモデルの名前。  現時点では、既定値は *latest* です。        
-**attributes** | テキスト文字列 | いいえ <br>既定値:Id | 応答に含まれている属性値を指定するコンマ区切りリスト。 属性名の大文字と小文字は区別されます。
-**count**        | Number | いいえ <br>既定値は10 | 返す結果の数。
-**offset**     | Number |   いいえ <br>既定値は0    | 返す最初の結果のインデックス。
-**orderby** |   テキスト文字列 | いいえ <br>既定値: 確率の降順 | エンティティの並べ替えに使用される属性の名前。 必要に応じて、昇順/降順を指定できます。 形式: *name:asc* または *name:desc*。
+**model**      | テキスト文字列 | いいえ  | クエリを実行するモデルの名前。  現時点では、既定値は *latest* です。        
+**attributes** | テキスト文字列 | いいえ<br>既定値:Id | 応答に含まれている属性値を指定するコンマ区切りリスト。 属性名の大文字と小文字は区別されます。
+**count**        | Number | いいえ<br>既定値は10 | 返す結果の数。
+**offset**     | Number |   いいえ<br>既定値は0    | 返す最初の結果のインデックス。
+**orderby** |   テキスト文字列 | いいえ<br>既定値: 確率の降順 | エンティティの並べ替えに使用される属性の名前。 必要に応じて、昇順/降順を指定できます。 形式: *name:asc* または *name:desc*。
   
  <br>
 

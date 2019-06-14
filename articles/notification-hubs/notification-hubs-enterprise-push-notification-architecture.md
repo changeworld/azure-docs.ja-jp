@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
 ms.openlocfilehash: 938801148b175456553865b54d59271021811401
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58372422"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60873394"
 ---
 # <a name="enterprise-push-architectural-guidance"></a>エンタープライズ環境のプッシュ アーキテクチャに関するガイダンス
 
@@ -224,7 +224,7 @@ ms.locfileid: "58372422"
     }
     ```
 
-    e. このアプリを **WebJob** として発行するには、Visual Studio でソリューションを右クリックし、**[WebJob として発行]** を選択します。
+    e. このアプリを **WebJob** として発行するには、Visual Studio でソリューションを右クリックし、 **[WebJob として発行]** を選択します。
 
     ![][2]
 

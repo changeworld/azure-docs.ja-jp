@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 37fe208f5087f318e665e76825127854b4a11c98
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ad4bf7ae97a08f89b9d82e1d4e025a5bd5d47fc1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22997927"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64696167"
 ---
 # <a name="monitor-the-health-of-azure-cdn-resources"></a>Azure CDN リソースの正常性の監視
   
@@ -38,12 +38,12 @@ Azure CDN リソース正常性は、[Azure Resource Health](../resource-health/
 
     ![[設定] ボタン](./media/cdn-resource-health/cdn-profile-settings.png)
 
-3. *[サポート + トラブルシューティング]* で、**[リソース正常性]** をクリックします。
+3. *[サポート + トラブルシューティング]* で、 **[リソース正常性]** をクリックします。
 
     ![CDN リソース正常性](./media/cdn-resource-health/cdn-resource-health3.png)
 
 >[!TIP] 
->*[ヘルプとサポート]* ブレードの *[リソース正常性]* タイルでも CDN リソースを確認できます。  *[ヘルプとサポート]* にすばやくアクセスするには、ポータルの右上にある、丸で囲まれた **?**  をクリックします。
+>*[ヘルプとサポート]* ブレードの *[リソース正常性]* タイルでも CDN リソースを確認できます。  *[ヘルプとサポート]* にすばやくアクセスするには、ポータルの右上にある、丸で囲まれた **?** をクリックします。
 >
 > ![[ヘルプとサポート]](./media/cdn-resource-health/cdn-help-support.png)
 
@@ -51,7 +51,7 @@ Azure CDN リソース正常性は、[Azure Resource Health](../resource-health/
 
 Azure CDN リソース正常性に関連する状態を次に示します。
 
-|メッセージ | 推奨される操作 |
+|Message | 推奨される操作 |
 |---|---|
 |1 つまたは複数の CDN エンドポイントが停止または削除されたか、正しく構成されなかった可能性があります | 1 つまたは複数の CDN エンドポイントが停止または削除されたか、正しく構成されなかった可能性があります。|
 |申し訳ありません。CDN 管理サービスは現在利用できません | ここで状態の更新をもう一度確認してください。想定された時間が経過しても問題が解決しない場合は、サポートにお問い合わせください。|
@@ -60,7 +60,7 @@ Azure CDN リソース正常性に関連する状態を次に示します。
 |申し訳ありません。補助ポータルの読み込みで問題が発生しています | ここで状態の更新をもう一度確認してください。想定された時間が経過しても問題が解決しない場合は、サポートにお問い合わせください。|
 申し訳ありません。CDN プロバイダーの一部で問題が発生しています | ここで状態の更新をもう一度確認してください。想定された時間が経過しても問題が解決しない場合は、サポートにお問い合わせください。 |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [Azure Resource Health の概要を確認します](../resource-health/resource-health-overview.md)
 - [CDN 圧縮に関する問題のトラブルシューティングを行います](./cdn-troubleshoot-compression.md)

@@ -8,11 +8,11 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
 ms.openlocfilehash: 6c09b509399647f4cacbc96427200da5a1b00ac9
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60010754"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61000748"
 ---
 # <a name="how-to-secure-access-to-data-catalog-and-data-assets"></a>データ カタログとデータ資産へのアクセスをセキュリティで保護する方法
 > [!IMPORTANT]
@@ -23,16 +23,16 @@ Azure Data Catalog では、データ カタログにアクセスできるユー
 ## <a name="catalog-users-and-permissions"></a>カタログのユーザーとアクセス許可
 ユーザーまたはグループにデータ カタログへのアクセスを提供し、アクセス許可を設定するには、次のようにします。
 
-1. [データ カタログのホーム ページ](https://www.azuredatacatalog.com)のツールバーで、**[設定]** をクリックします。
+1. [データ カタログのホーム ページ](https://www.azuredatacatalog.com)のツールバーで、 **[設定]** をクリックします。
 
     ![データ カタログ - 設定](media/data-catalog-how-to-secure-catalog/data-catalog-settings.png)
-2. [設定] ページで、**[カタログ ユーザー]** セクションを展開します。
+2. [設定] ページで、 **[カタログ ユーザー]** セクションを展開します。
     ![[カタログ ユーザー] - [追加]](media/data-catalog-how-to-secure-catalog/data-catalog-add-button.png)
 3. **[追加]** をクリックします。
 4. 完全修飾**ユーザー名**または**セキュリティ グループ**の名前を、カタログに関連付けられている Azure Active Directory (AAD) に入力します。 複数のユーザーまたはグループを追加する場合は、区切り記号としてカンマ (`,’) を使用します。
     ![[カタログ ユーザー] - ユーザーまたはグループ](media/data-catalog-how-to-secure-catalog/data-catalog-users-groups.png)
 5. テキスト ボックス外で **Enter** キーまたは **Tab** キーを押します。 
-6.  すべてのアクセス許可 (**[注釈]**、**[登録]**、および **[所有権の取得]**) がこれらのユーザーまたはグループに既定で割り当てられていることを確認します。 これはつまり、ユーザーまたはグループが[データ資産を登録する]( data-catalog-how-to-register.md)、[データ資産に注釈を付ける]( data-catalog-how-to-annotate.md)、および[データ資産の所有権を取得する]( data-catalog-how-to-manage.md)ことができることを意味します。 
+6.  すべてのアクセス許可 ( **[注釈]** 、 **[登録]** 、および **[所有権の取得]** ) がこれらのユーザーまたはグループに既定で割り当てられていることを確認します。 これはつまり、ユーザーまたはグループが[データ資産を登録する]( data-catalog-how-to-register.md)、[データ資産に注釈を付ける]( data-catalog-how-to-annotate.md)、および[データ資産の所有権を取得する]( data-catalog-how-to-manage.md)ことができることを意味します。 
     ![[カタログ ユーザー] - 既定のアクセス許可](media/data-catalog-how-to-secure-catalog/data-catalog-default-permissions.png)
 7.  ユーザーまたはグループにカタログに対する読み取りアクセスのみを与えるには、そのユーザーまたはグループの **[注釈]** オプションをオフにします。 オフにすると、ユーザーおよびグループはカタログ内のデータ資産に注釈を付けられなくなりますが、表示は可能です。 
 8.  ユーザーまたはグループによるデータ資産の登録を拒否するには、そのユーザーまたはグループの **[登録]** オプションをオフにします。

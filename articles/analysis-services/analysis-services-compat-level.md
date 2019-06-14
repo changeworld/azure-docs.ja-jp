@@ -9,11 +9,11 @@ ms.date: 04/01/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 67a6c99253c549f0b8d3b55809b35b81756843eb
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58803495"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61032621"
 ---
 # <a name="compatibility-level-for-analysis-services-tabular-models"></a>Analysis Services 表形式モデルの互換性レベル
 
@@ -34,26 +34,26 @@ Azure Analysis Services は、互換性レベル 1200 と 1400 の表形式モ�
 
 ## <a name="set-compatibility-level"></a>互換性レベルの設定
 
- SSDT で新しい表形式モデル プロジェクトを作成する場合、**[テーブル モデル デザイナー]** ダイアログボックスで互換性レベルを指定します。 
+ SSDT で新しい表形式モデル プロジェクトを作成する場合、 **[テーブル モデル デザイナー]** ダイアログボックスで互換性レベルを指定します。 
   
  ![ssas_tabularproject_compat1200](./media/analysis-services-compat-level/aas-tabularproject-compat.png)  
   
- **[今後このメッセージを表示しない]** オプションを選択すると、後続のすべてのプロジェクトで、ここで指定した互換性レベルが既定値として使用されます。 SSDT の既定の互換性レベルは、**[ツール]** > **[オプション]** で変更することができます。  
+ **[今後このメッセージを表示しない]** オプションを選択すると、後続のすべてのプロジェクトで、ここで指定した互換性レベルが既定値として使用されます。 SSDT の既定の互換性レベルは、 **[ツール]**  >  **[オプション]** で変更することができます。  
   
  SSDT で既存のテーブル モデル プロジェクトをアップグレードするには、モデルの **[プロパティ]** ウィンドウで **[互換性レベル]** プロパティを設定します。 互換性レベルのアップグレードは元に戻せないので、注意してください。
   
 ## <a name="check-compatibility-level-for-a-tabular-model-database-in-sql-server-management-studio"></a>SQL Server Management Studio での表形式モデルのデータベースの互換性レベルの確認 
 
- SSMS で、データベース名を右クリックして > **[プロパティ]** > **[互換性レベル]** と移動します。  
+ SSMS で、データベース名を右クリックして > **[プロパティ]**  >  **[互換性レベル]** と移動します。  
   
 ## <a name="check-supported-compatibility-level-for-a-server-in-ssms"></a>SSMS のサーバーでサポートされる互換性レベルの確認  
 
- SSMS で、サーバー名を右クリックして >  **[プロパティ]** > **[サポートされている互換性レベル]** と移動します。  
+ SSMS で、サーバー名を右クリックして >  **[プロパティ]**  >  **[サポートされている互換性レベル]** と移動します。  
   
  このプロパティは、サーバーで実行されるデータベースの最上位の互換性レベルを指定します (プレビューを除く)。 サポートされる互換性レベルは変更できません。  
 
 > [!NOTE]
-> SSMS で Azure Analysis Services サーバーに接続したとき、**[サポートされている互換性レベル]** プロパティには **1200** と表示されます。 これは既知の問題であり、今後の SSMS の更新で解決されます。 解決されれば、サポートされている最も高い互換性レベルがこのプロパティに表示されます。
+> SSMS で Azure Analysis Services サーバーに接続したとき、 **[サポートされている互換性レベル]** プロパティには **1200** と表示されます。 これは既知の問題であり、今後の SSMS の更新で解決されます。 解決されれば、サポートされている最も高い互換性レベルがこのプロパティに表示されます。
 
 ## <a name="next-steps"></a>次の手順
 

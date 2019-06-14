@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/30/2016
 ms.author: crdun
 ms.openlocfilehash: 40a7552ffd0bfcab173d2e35c52313a94ec3d0bb
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52960330"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62114336"
 ---
 # <a name="add-push-notifications-to-your-apache-cordova-app"></a>Apache Cordova アプリへのプッシュ通知の追加
 
@@ -65,8 +65,8 @@ Apache Cordova アプリ プロジェクトが確実にプッシュ通知を処�
 
 * 構成デザイナーを開くには、`config.xml` を右クリックします。
 * **[プラットフォーム]** タブを選択します。
-* **[Cordova CLI]** テキスト ボックスで、**[6.1.1]** を選択します。 
-* プロジェクトを更新するには、**[構築]**、**[Build Solution] (ソリューションの構築)** の順に選択します。
+* **[Cordova CLI]** テキスト ボックスで、 **[6.1.1]** を選択します。 
+* プロジェクトを更新するには、 **[構築]** 、 **[Build Solution] (ソリューションの構築)** の順に選択します。
 
 #### <a name="install-the-push-plugin"></a>プッシュ プラグインをインストールする
 
@@ -82,7 +82,7 @@ Apache Cordova アプリケーションでは、デバイスやネットワー�
 
 **Visual Studio 内から:**
 
-1. ソリューション エクスプローラーで、`config.xml` ファイルを開きます。 次に、**[プラグイン]** > **[カスタム]** を選択します。 その後、インストール ソースとして **[Git]** を選択します。
+1. ソリューション エクスプローラーで、`config.xml` ファイルを開きます。 次に、 **[プラグイン]**  >  **[カスタム]** を選択します。 その後、インストール ソースとして **[Git]** を選択します。
 
 2. ソースとして `https://github.com/phonegap/phonegap-plugin-push` を入力します。
 
@@ -101,7 +101,7 @@ Apache Cordova アプリケーションでは、デバイスやネットワー�
 
 #### <a name="install-the-device-plugin"></a>デバイス プラグインをインストールする
 
-プッシュ プラグインのインストールに使用したものと同じ手順に従います。 コア プラグインの一覧からデバイス プラグインを追加します。 (これを見つけるには、**[プラグイン]** > **[コア]** を選択します。)このプラグインはプラットフォーム名の取得に必要です。
+プッシュ プラグインのインストールに使用したものと同じ手順に従います。 コア プラグインの一覧からデバイス プラグインを追加します。 (これを見つけるには、 **[プラグイン]**  >  **[コア]** を選択します。)このプラグインはプラットフォーム名の取得に必要です。
 
 #### <a name="register-your-device-when-the-application-starts"></a>アプリケーションの起動時にデバイスを登録する 
 
@@ -217,8 +217,8 @@ pushRegistration = PushNotification.init({
 
 Android デバイスにアプリケーションをデプロイするには、USB デバッグを有効にしておく必要があります。 Android フォンで次の手順を実行します。
 
-1. **[設定]** > **[端末情報]** に移動します。 その後、開発者モードが有効になるまで (約 7 回) **[ビルド番号]** をタップします。
-2. **[設定]** > **[Developer Options] (開発者オプション)** に戻り、**[USB debugging] (USB デバッグ)** を有効にします。 次に、USB ケーブルを使用して Android フォンを開発 PC に接続します。
+1. **[設定]**  >  **[端末情報]** に移動します。 その後、開発者モードが有効になるまで (約 7 回) **[ビルド番号]** をタップします。
+2. **[設定]**  >  **[Developer Options] (開発者オプション)** に戻り、 **[USB debugging] (USB デバッグ)** を有効にします。 次に、USB ケーブルを使用して Android フォンを開発 PC に接続します。
 
 このチュートリアルのテストでは、Android 6.0 (Marshmallow) を実行している Google Nexus 5X を使用しました。 ただし、その手法は最新のどの Android リリースでも共通です。
 
@@ -226,7 +226,7 @@ Android デバイスにアプリケーションをデプロイするには、USB
 
 プッシュ プラグインでは、プッシュ通知に Android Google Play Services を利用します。
 
-1. Visual Studio で、**[ツール]** > **[Android]** > **[Android SDK Manager]** を選択します。 次に、**Extras** フォルダーを展開します。 次の各 SDK が確実にインストールされるように、適切なボックスにチェックを入れます。
+1. Visual Studio で、 **[ツール]**  >  **[Android]**  >  **[Android SDK Manager]** を選択します。 次に、**Extras** フォルダーを展開します。 次の各 SDK が確実にインストールされるように、適切なボックスにチェックを入れます。
 
    * Android 2.3 以上
    * Google Repository リビジョン 27 以上
@@ -240,7 +240,7 @@ Android デバイスにアプリケーションをデプロイするには、USB
 
 ここで、アプリを実行して TodoItem テーブルにアイテムを挿入することにより、プッシュ通知をテストできます。 同じバックエンドを使用している限り、同じデバイスまたは 2 番目のデバイスからテストできます。 次のいずれかの方法により、Android プラットフォームで Cordova アプリをテストします。
 
-* *物理デバイス上:* Android デバイスを USB ケーブルで開発用コンピューターに接続します。  **Google Android エミュレーター**の代わりに、**[デバイス]** を選択します。 Visual Studio がデバイスにアプリケーションをデプロイし、そのアプリケーションを実行します。 デバイスでアプリケーションを操作できるようになります。
+* *物理デバイス上:* Android デバイスを USB ケーブルで開発用コンピューターに接続します。  **Google Android エミュレーター**の代わりに、 **[デバイス]** を選択します。 Visual Studio がデバイスにアプリケーションをデプロイし、そのアプリケーションを実行します。 デバイスでアプリケーションを操作できるようになります。
 
   [Mobizen][20] などの画面共有アプリケーションは、Android アプリケーションの開発に役立ちます。 Mobizen では、Android の画面を PC の Web ブラウザーで表示できます。
 
@@ -252,7 +252,7 @@ Android デバイスにアプリケーションをデプロイするには、USB
 
     より高速な x86 エミュレーターを使用する場合は、[HAXM ドライバーをインストールし][11]、それを使用するようにエミュレーターを構成します。
 
-    **[アプリ]** > **[設定]** > **[アカウントの追加]** を選択することによって、Android デバイスに Google アカウントを追加します。 その後、プロンプトに従います。
+    **[アプリ]**  >  **[設定]**  >  **[アカウントの追加]** を選択することによって、Android デバイスに Google アカウントを追加します。 その後、プロンプトに従います。
 
     ![Android デバイスに Google アカウントを追加する](./media/app-service-mobile-cordova-get-started-push/add-google-account.png)
 
@@ -283,7 +283,7 @@ iOS 用アプリのビルドが可能であることを確認します。 Visual
     xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:vs="http://schemas.microsoft.com/appx/2014/htmlapps">
 ```
 
-後で Apple の開発者ポータルでアプリ ID を作成するときに、この識別子を使用します  開発者ポータルで別のアプリ ID を作成した場合は、このチュートリアルの後半でいくつかの追加の手順が必要になります。 ウィジェット要素の ID は、開発者ポータルのアプリ ID と一致している必要があります。
+後で Apple の開発者ポータルでアプリ ID を作成するときに、この識別子を使用します 開発者ポータルで別のアプリ ID を作成した場合は、このチュートリアルの後半でいくつかの追加の手順が必要になります。 ウィジェット要素の ID は、開発者ポータルのアプリ ID と一致している必要があります。
 
 #### <a name="register-the-app-for-push-notifications-on-apples-developer-portal"></a>Apple の開発者ポータルにプッシュ通知のアプリを登録する
 
@@ -307,17 +307,17 @@ Apple 開発者アカウントで作成したアプリ ID が config.xml ファ�
 
 ##### <a name="test-push-notifications-in-your-ios-app"></a>iOS アプリでプッシュ通知をテストする
 
-1. Visual Studio で、デプロイ ターゲットとして **[iOS]** が選択されていることを確認します。 次に、**[デバイス]** を選択して、接続された iOS デバイスでプッシュ通知を実行します。
+1. Visual Studio で、デプロイ ターゲットとして **[iOS]** が選択されていることを確認します。 次に、 **[デバイス]** を選択して、接続された iOS デバイスでプッシュ通知を実行します。
 
     iTunes で PC に接続された iOS デバイスでプッシュ通知を実行できます。 iOS シミュレーターでは、プッシュ通知はサポートされていません。
 
-2. Visual Studio で **[実行]** ボタンまたは **F5** を選択して、プロジェクトをビルドし、iOS デバイスでアプリを起動します。 次に、**[OK]** を選択してプッシュ通知を受け入れます。
+2. Visual Studio で **[実行]** ボタンまたは **F5** を選択して、プロジェクトをビルドし、iOS デバイスでアプリを起動します。 次に、 **[OK]** を選択してプッシュ通知を受け入れます。
 
    > [!NOTE]
    > アプリは最初の実行中にプッシュ通知の確認を要求します。
 
 3. アプリで、タスクを入力し、プラス **(+)** アイコンを選択します。
-4. 通知が受信されたことを確認します。 次に、**[OK]** を選択して通知を無視します。
+4. 通知が受信されたことを確認します。 次に、 **[OK]** を選択して通知を無視します。
 
 ## <a name="optional-configure-and-run-on-windows"></a>(省略可能) Windows で構成して実行する
 
@@ -325,7 +325,7 @@ Apple 開発者アカウントで作成したアプリ ID が config.xml ファ�
 
 #### <a name="register-your-windows-app-for-push-notifications-with-wns"></a>WNS を使用して Windows アプリをプッシュ通知に登録する
 
-Visual Studio でストアのオプションを使用するには、ソリューション プラットフォームの一覧から Windows ターゲット (**[Windows-x64]** や **[Windows-x86]** など) を選択します。 (プッシュ通知に **[Windows-AnyCPU]** は避けてください。)
+Visual Studio でストアのオプションを使用するには、ソリューション プラットフォームの一覧から Windows ターゲット ( **[Windows-x64]** や **[Windows-x86]** など) を選択します。 (プッシュ通知に **[Windows-AnyCPU]** は避けてください。)
 
 [!INCLUDE [app-service-mobile-register-wns](../../includes/app-service-mobile-register-wns.md)]
 
@@ -337,7 +337,7 @@ Visual Studio でストアのオプションを使用するには、ソリュー
 
 #### <a name="configure-your-cordova-app-to-support-windows-push-notifications"></a>Cordova アプリを構成して Windows プッシュ通知をサポートする
 
-**config.xml** を右クリックして、構成デザイナーを開きます。 その後、**[ビュー デザイナー]** を選択します。 次に、**[Windows]** タブを選択してから、**[Windows Target Version] (Windows ターゲット バージョン)** の下の **[Windows 10]** を選択します。
+**config.xml** を右クリックして、構成デザイナーを開きます。 その後、 **[ビュー デザイナー]** を選択します。 次に、 **[Windows]** タブを選択してから、 **[Windows Target Version] (Windows ターゲット バージョン)** の下の **[Windows 10]** を選択します。
 
 既定の (デバッグ) ビルドでプッシュ通知をサポートするには、**build.json** ファイルを開きます。 次に、"release" 構成をデバッグ構成にコピーします。
 
@@ -369,7 +369,7 @@ Visual Studio でストアのオプションを使用するには、ソリュー
 
 #### <a name="test-push-notifications-in-your-windows-app"></a>Windows アプリでプッシュ通知をテストする
 
-Visual Studio で、**Windows-x64** や **Windows-x86** などの Windows プラットフォームがデプロイ ターゲットとして選択されていることを確認します。 Visual Studio をホストしている Windows 10 PC 上でアプリを実行するには、**[ローカル コンピューター]** を選択します。
+Visual Studio で、**Windows-x64** や **Windows-x86** などの Windows プラットフォームがデプロイ ターゲットとして選択されていることを確認します。 Visual Studio をホストしている Windows 10 PC 上でアプリを実行するには、 **[ローカル コンピューター]** を選択します。
 
 1. **[実行]** ボタンを選択して、プロジェクトをビルドし、アプリを起動します。
 

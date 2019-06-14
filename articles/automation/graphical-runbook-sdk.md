@@ -10,11 +10,11 @@ ms.date: 07/20/2018
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: bc9f1feff6d8d45e52c8621d1ec4b36e0a4a4a76
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54434259"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61303218"
 ---
 # <a name="use-the-azure-automation-graphical-runbook-sdk"></a>Azure Automation Grpahical Runbook SDK を使用する
 

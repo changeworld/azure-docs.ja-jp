@@ -9,11 +9,11 @@ ms.date: 06/29/2017
 ms.author: muralikk
 ms.subservice: common
 ms.openlocfilehash: 777e0aac46dbffb1e491874b5889667a888aadf5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57898688"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61478516"
 ---
 # <a name="preparing-hard-drives-for-an-import-job"></a>インポート ジョブ用のハード ドライブを準備する
 
@@ -80,7 +80,7 @@ BasePath,DstBlobPathOrPrefix,BlobType,Disposition,MetadataFile,PropertiesFile
 | --- | --- |
 | BasePath | **[必須]**<br/>このパラメーターの値は、インポートするデータが配置されるソースを表します。 ツールでは、このパスに配置されたすべてのデータを再帰的にコピーします。<br><br/>**使用可能な値**:ローカル コンピューター上の有効なパスまたは有効な共有パスを指定する必要があります。ユーザーがアクセスできるパスを指定してください。 ディレクトリ パスは絶対パス (相対パスではなく) にする必要があります。 パスが "\\" で終わる場合は、ディレクトリを表し、それ以外の "\\" なしで終わるパスは、ファイルを表します。<br/>このフィールドでは正規表現を使用できません。 パスにスペースが含まれる場合は、"" で囲んでください。<br><br/>**例**: "c:\Directory\c\Directory\File.txt"<br>"\\\\FBaseFilesharePath.domain.net\sharename\directory\"  |
 | DstBlobPathOrPrefix | **[必須]**<br/> Microsoft Azure ストレージ アカウントのインポート先の仮想ディレクトリへのパス。 仮想ディレクトリが既に存在しているかどうかは、場合によって異なります。 仮想ディレクトリがない場合は、インポート/エクスポート サービスによって作成されます。<br/><br/>コピー先の仮想ディレクトリや BLOB を指定する場合は、有効なコンテナー名を使用してください。 コンテナー名は小文字にする必要があります。 コンテナーの名前付け規則については、「[コンテナー、BLOB、およびメタデータの名前付けおよび参照](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)」をご覧ください。 ルートのみが指定されている場合、ソースのディレクトリ構造は、インポート先の BLOB コンテナーにレプリケートされます。 ソースのディレクトリ構造ではなく、別のディレクトリ構造が必要な場合は、CSV のマッピングを複数行にします。<br/><br/>コンテナーまたは BLOB プレフィックス (例: music/70s/) を指定できます。 インポート先のディレクトリの先頭はコンテナー名にして、その後にスラッシュ (/) を続けます。末尾が "/" の仮想 BLOB ディレクトリ (省略可能) を追加することもできます。<br/><br/>インポート先のコンテナーがルート コンテナーの場合は、スラッシュを含むルート コンテナーを明示的に指定する必要があります (例: $root/)。 ルート コンテナーにある BLOB の名前に "/" を含めることはできないため、インポート先のディレクトリがルート コンテナーの場合、ソース ディレクトリのサブディレクトリはコピーされません。<br/><br/>**例**<br/>コピー先 BLOB パスが https://mystorageaccount.blob.core.windows.net/video の場合、このフィールドの値は video/ となります。  |
-| BlobType | **[省略可能]** block &#124; page<br/>現在、インポート/エクスポート サービスは 2 種類の BLOB をサポートしています  (ページ BLOB とブロック BLOB)。既定では、すべてのファイルがブロック BLOB としてインポートされます。 また、\*.vhd と \*.vhdx はページ BLOB としてインポートされます。ブロック BLOB と ページ BLOB に使用できるサイズには制限があります。 詳細については、[Azure Storage のスケーラビリティ ターゲット](storage-scalability-targets.md)に関するページを参照してください。  |
+| BlobType | **[省略可能]** block &#124; page<br/>現在、インポート/エクスポート サービスは 2 種類の BLOB をサポートしています (ページ BLOB とブロック BLOB)。既定では、すべてのファイルがブロック BLOB としてインポートされます。 また、\*.vhd と \*.vhdx はページ BLOB としてインポートされます。ブロック BLOB と ページ BLOB に使用できるサイズには制限があります。 詳細については、[Azure Storage のスケーラビリティ ターゲット](storage-scalability-targets.md)に関するページを参照してください。  |
 | Disposition | **[省略可能]** rename &#124; no-overwrite &#124; overwrite <br/> このフィールドは、インポート中 ( 例: データのディスクからストレージ アカウントへのアップロード中) のコピー動作を指定します。 利用可能なオプションは rename&#124;overwite&#124;no-overwrite です。何も指定しない場合は、既定値の "rename" になります。 <br/><br/>**rename**: 同名のオブジェクトが存在する場合に、インポート先にコピーを作成します。<br/>overwrite: ファイルを新しいファイルで上書きします。 更新日の最も新しいファイルで上書きされます。<br/>**no-overwrite**: 既存のファイルがある場合は、ファイルの書き込みをスキップします。|
 | MetadataFile | **[省略可能]** <br/>このフィールドの値は、オブジェクトのメタデータを保持するか、またはカスタム メタデータを指定する必要がある場合に指定可能なメタデータ ファイルです。 インポート先の BLOB のメタデータ ファイルへのパスです。 詳細については、「[Import/Export サービスのメタデータとプロパティ ファイルの形式](../storage-import-export-file-format-metadata-and-properties.md)」を参照してください。 |
 | PropertiesFile | **[省略可能]** <br/>インポート先の BLOB のプロパティ ファイルへのパスです。 詳細については、「[Import/Export サービスのメタデータとプロパティ ファイルの形式](../storage-import-export-file-format-metadata-and-properties.md)」を参照してください。 |
@@ -358,7 +358,7 @@ BitLocker で TPM を無効にするには、次の手順に従ってくださ�
 1. コマンド プロンプトで「gpedit.msc」と入力して**グループ ポリシー エディター**を起動します。 **グループ ポリシー エディター**を使用できない場合は、先に BitLocker を有効にします。 前述の FAQ を参照してください。
 2. **[ローカル コンピューター ポリシー] &gt; [コンピューターの構成] &gt; [管理用テンプレート] &gt; [Windows コンポーネント] &gt; [BitLocker ドライブ暗号化] &gt; [オペレーティング システムのドライブ]** を開きます。
 3. **[スタートアップ時に追加の認証を要求する]** ポリシーを編集します。
-4. ポリシーを **[有効]** に設定し、**[互換性のある TPM が装備されていない BitLocker を許可する]** チェック ボックスがオンになっていることを確認します。
+4. ポリシーを **[有効]** に設定し、 **[互換性のある TPM が装備されていない BitLocker を許可する]** チェック ボックスがオンになっていることを確認します。
 
 ####  <a name="how-to-check-if-net-4-or-higher-version-is-installed-on-my-machine"></a>.NET 4 以降のバージョンがコンピューターにインストールされているかどうかを確認するにはどうすればよいですか?
 

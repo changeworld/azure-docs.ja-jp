@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 02/19/2019
 ms.author: danlep
 ms.openlocfilehash: ebbfaba158e7ddb669111f097eb1adde2373aa6c
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58361287"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60828649"
 ---
 # <a name="lock-a-container-image-in-an-azure-container-registry"></a>Azure コンテナー レジストリのコンテナー イメージをロックする
 
@@ -66,7 +66,7 @@ az acr repository update \
 
 ### <a name="lock-an-image-by-manifest-digest"></a>マニフェスト ダイジェストでイメージをロックする
 
-マニフェスト ダイジェスト (`sha256:...` として表される、SHA-256 ハッシュ) で識別された *myrepo/myimage* イメージをロックするには、次のコマンドを実行します  (1 つまたは複数のイメージ タグに関連付けられているマニフェスト ダイジェストを見つけるには、[az acr repository show-manifests][az-acr-repository-show-manifests] コマンドを実行します)。
+マニフェスト ダイジェスト (`sha256:...` として表される、SHA-256 ハッシュ) で識別された *myrepo/myimage* イメージをロックするには、次のコマンドを実行します (1 つまたは複数のイメージ タグに関連付けられているマニフェスト ダイジェストを見つけるには、[az acr repository show-manifests][az-acr-repository-show-manifests] コマンドを実行します)。
 
 ```azurecli
 az acr repository update \

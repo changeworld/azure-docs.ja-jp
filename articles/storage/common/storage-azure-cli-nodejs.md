@@ -10,10 +10,10 @@ ms.author: tamram
 ms.reviewer: seguler
 ms.subservice: common
 ms.openlocfilehash: 88f713c5695e2453edc58d072899aa417f0514af
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65147037"
 ---
 # <a name="using-the-azure-classic-cli-with-azure-storage"></a>Azure Storage での Azure クラシック CLI の使用
@@ -79,11 +79,11 @@ Azure サブスクリプションの詳細については、「 [Azure Active Di
 5. ローカル コンピューターで、任意のテキスト エディター (vim など) を開きます。 上記のスクリプトをテキスト エディターに入力します。
 6. ここで、構成設定に基づいてスクリプト変数を更新する必要があります。
 
-   * **<storage_account_name>**: スクリプトの所定の名前を使用するか、ストレージ アカウントの新しい名前を入力します。 **重要:** ストレージ アカウントの名前は、Azure 上で一意である必要があります。 また、小文字にする必要もあります。
-   * **<storage_account_key>**: ストレージ アカウントのアクセス キー。
-   * **<container_name>**: スクリプトの所定の名前を使用するか、コンテナーの新しい名前を入力します。
-   * **<image_to_upload>**: ローカル コンピューター上の画像へのパスを入力します。たとえば、"~/images/HelloWorld.png" などです。
-   * **<destination_folder>**: Azure Storage からダウンロードしたファイルを格納するローカル ディレクトリへのパスを入力します。たとえば、"~/downloadImages" などです。
+   * **<storage_account_name>** : スクリプトの所定の名前を使用するか、ストレージ アカウントの新しい名前を入力します。 **重要:** ストレージ アカウントの名前は、Azure 上で一意である必要があります。 また、小文字にする必要もあります。
+   * **<storage_account_key>** : ストレージ アカウントのアクセス キー。
+   * **<container_name>** : スクリプトの所定の名前を使用するか、コンテナーの新しい名前を入力します。
+   * **<image_to_upload>** : ローカル コンピューター上の画像へのパスを入力します。たとえば、"~/images/HelloWorld.png" などです。
+   * **<destination_folder>** : Azure Storage からダウンロードしたファイルを格納するローカル ディレクトリへのパスを入力します。たとえば、"~/downloadImages" などです。
 7. vim で必要な変数を更新したら、"`ESC` キー、`:` キー、`wq!` キー" というキーの組み合わせを使用してスクリプトを保存します。
 8. このスクリプトを実行するには、bash コンソールでスクリプト ファイル名を入力するだけです。 このスクリプトを実行すると、ダウンロードした画像ファイルを格納するローカルの格納先フォルダーの準備が整います。 次のスクリーンショットは、この出力の例を示しています。
 
@@ -197,7 +197,7 @@ azure storage directory create myshare myDir
 ディレクトリ パスには複数のレベルを含めることができます ( *例*: **a/b**)。 ただし、すべての親ディレクトリが存在することを確認する必要があります。 たとえば、パス **a/b** の場合、最初に**a** ディレクトリを作成した後、**b** ディレクトリを作成する必要があります。
 
 ### <a name="upload-a-local-file-to-directory"></a>ディレクトリにローカル ファイルをアップロードする
-次の例では、**~/temp/samplefile.txt** から **myDir** ディレクトリにファイルをアップロードします。 ファイル パスを編集して、ローカル マシン上の有効なファイルを指定してください。
+次の例では、 **~/temp/samplefile.txt** から **myDir** ディレクトリにファイルをアップロードします。 ファイル パスを編集して、ローカル マシン上の有効なファイルを指定してください。
 
 ```azurecli
 azure storage file upload '~/temp/samplefile.txt' myshare myDir

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2017
 ms.author: alkohli
-ms.openlocfilehash: d987a4ae170f21532a886552cbe1eb5a0d25fc3f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c174f6ce0fb3d40af953be205a7bfcca60fbfeec
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23108210"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60633141"
 ---
 # <a name="use-the-service-summary-blade-for-storsimple-8000-series-device"></a>StorSimple 8000 シリーズ デバイスのサービスの概要ブレードを使用する
 
@@ -39,11 +39,11 @@ StorSimple のサービスの概要ブレードには、StorSimple デバイス 
 こうしたオプションを使用して、共有やボリュームの追加、StorSimple デバイスで実行されている各種ジョブの監視など、さまざまな操作を実行します。
 
 
-## <a name="essentials"></a>[要点]
+## <a name="essentials"></a>要点
 
 要点領域では、StorSimple デバイス マネージャーが作成されたリソース グループ、場所、サブスクリプションなど、重要なプロパティがいくつかキャプチャされます。
 
-![[要点]](./media/storsimple-8000-service-dashboard/service-summary3.png)
+![要点](./media/storsimple-8000-service-dashboard/service-summary3.png)
 
 ## <a name="storsimple-device-manager-service-summary"></a>StorSimple デバイス マネージャー サービスの概要
 
@@ -51,11 +51,11 @@ StorSimple のサービスの概要ブレードには、StorSimple デバイス 
 
     ![[アラート] タイル](./media/storsimple-8000-service-dashboard/service-summary4.png)
 
-    タイルをクリックすると、**[アラート]** ブレードが表示されます。このブレードで各アラートをクリックすることで、そのアラートの詳細情報 (推奨される対応など) を確認できます。 問題が解決した場合は、アラートをクリアすることもできます。
+    タイルをクリックすると、 **[アラート]** ブレードが表示されます。このブレードで各アラートをクリックすることで、そのアラートの詳細情報 (推奨される対応など) を確認できます。 問題が解決した場合は、アラートをクリアすることもできます。
 
     ![[アラート] タイルをクリック](./media/storsimple-8000-service-dashboard/service-summary8.png)
 
-* **[容量]** タイルには、すべてのデバイスで使用できる合計ストレージに対する、すべてのデバイスのプロビジョニング済みプライマリ ストレージと、残りのプライマリ ストレージの容量が表示されます。 **[プロビジョニング済み]** は、使用のための準備および割り当てが完了しているストレージ容量を、**[残り]** は、すべてのデバイスでプロビジョニングできる残りの容量を示します。
+* **[容量]** タイルには、すべてのデバイスで使用できる合計ストレージに対する、すべてのデバイスのプロビジョニング済みプライマリ ストレージと、残りのプライマリ ストレージの容量が表示されます。 **[プロビジョニング済み]** は、使用のための準備および割り当てが完了しているストレージ容量を、 **[残り]** は、すべてのデバイスでプロビジョニングできる残りの容量を示します。
 
     ![[容量] タイル](./media/storsimple-8000-service-dashboard/service-summary6.png)
 
@@ -85,7 +85,7 @@ StorSimple のサービスの概要ブレードには、StorSimple デバイス 
 StorSimple デバイス マネージャー内で実行されるさまざまな操作を表示するには、StorSimple サービスの概要ブレードの左側にある **[アクティビティ ログ]** リンクをクリックします。 これにより **[アクティビティ ログ]** ブレードが表示され、最近実行された操作の概要を確認できます。
 
 ![アクティビティ ログ](./media/storsimple-8000-service-dashboard/activity-logs1.png)
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [StorSimple デバイス マネージャー サービスを使用した StorSimple デバイスの管理方法](storsimple-8000-manager-service-administration.md)
 

@@ -9,11 +9,11 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.openlocfilehash: bb402a5a059fb6f2836bddbd951220271ca77ba3
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57534367"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60400604"
 ---
 # <a name="control-access-to-iot-hub"></a>IoT Hub へのアクセスの制御
 
@@ -35,7 +35,7 @@ IoT Hub のエンドポイントにアクセスするには、適切なアクセ
 
 次の方法で[アクセス許可](#iot-hub-permissions)を付与できます。
 
-* **IoT Hub レベルの共有アクセス ポリシー**:  共有アクセス ポリシーにより、[アクセス許可](#iot-hub-permissions)を自由に組み合わせて付与できます。 ポリシーは、[Azure portal](https://portal.azure.com) で、[IoT Hub Resource REST API](/rest/api/iothub/iothubresource) を使ってプログラムにより、または [az iot hub policy](/cli/azure/iot/hub/policy?view=azure-cli-latest) CLI を使って、定義することができます。 新しく作成された IoT Hub には、次の既定のポリシーがあります。
+* **IoT Hub レベルの共有アクセス ポリシー**: 共有アクセス ポリシーにより、[アクセス許可](#iot-hub-permissions)を自由に組み合わせて付与できます。 ポリシーは、[Azure portal](https://portal.azure.com) で、[IoT Hub Resource REST API](/rest/api/iothub/iothubresource) を使ってプログラムにより、または [az iot hub policy](/cli/azure/iot/hub/policy?view=azure-cli-latest) CLI を使って、定義することができます。 新しく作成された IoT Hub には、次の既定のポリシーがあります。
   
   | 共有アクセス ポリシー | アクセス許可 |
   | -------------------- | ----------- |

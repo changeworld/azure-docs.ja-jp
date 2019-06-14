@@ -10,11 +10,11 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 10/19/2018
 ms.openlocfilehash: d4a94e75de34bbafd3bc8f1c1a0d1a6817245e5f
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57194913"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60846625"
 ---
 # <a name="create-tracking-queries-for-b2b-messages-in-azure-monitor-logs-for-azure-logic-apps"></a>Azure Monitor ログで Azure Logic Apps の B2B メッセージの追跡クエリを作成する
 
@@ -37,7 +37,7 @@ ms.locfileid: "57194913"
 
 特定のプロパティや値に基づいてメッセージを検索するため、フィルターを使用するクエリを作成できます。 
 
-1. [Azure portal](https://portal.azure.com) で **[すべてのサービス]** を選択します。 検索ボックスに「log analytics」と入力して検索し、**[Log Analytics]** を選択します。
+1. [Azure portal](https://portal.azure.com) で **[すべてのサービス]** を選択します。 検索ボックスに「log analytics」と入力して検索し、 **[Log Analytics]** を選択します。
 
    ![[Log Analytics] を選択する](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/find-log-analytics.png)
 
@@ -45,14 +45,14 @@ ms.locfileid: "57194913"
 
    ![Log Analytics ワークスペースを選択する](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/select-log-analytics-workspace.png)
 
-1. ワークスペース メニューの **[全般]** で、**[ログ (クラシック)]** または **[ログ]** のいずれかを選択します。 
+1. ワークスペース メニューの **[全般]** で、 **[ログ (クラシック)]** または **[ログ]** のいずれかを選択します。 
 
    この例では、クラシック ログのビューを使用する方法を示しています。 
-   **[Maximize your Log Analytics experience]\(Log Analytics エクスペリエンスの最大化)** セクションの **[Search and analyze logs]\(検索と分析ログ)** で **[View logs]\(ログの表示)** を選択した場合は、**[Logs (classic view)]\(ログ (クラシック ビュー))** が表示されます。 
+   **[Maximize your Log Analytics experience]\(Log Analytics エクスペリエンスの最大化)** セクションの **[Search and analyze logs]\(検索と分析ログ)** で **[View logs]\(ログの表示)** を選択した場合は、 **[Logs (classic view)]\(ログ (クラシック ビュー))** が表示されます。 
 
    ![クラシック ログを表示する](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/view-classic-logs.png)
 
-1. クエリの編集ボックスで、検索するフィールド名の入力を開始します。 入力を開始すると、クエリ エディターには一致項目と使用できる操作が表示されます。 クエリを作成した後は、**[実行]** を選択するか、Enter キーを押します。
+1. クエリの編集ボックスで、検索するフィールド名の入力を開始します。 入力を開始すると、クエリ エディターには一致項目と使用できる操作が表示されます。 クエリを作成した後は、 **[実行]** を選択するか、Enter キーを押します。
 
    この例では、**LogicAppB2B** に対する一致を検索します。 
    詳細については、[Azure Monitor ログでのデータの検索方法](../log-analytics/log-analytics-log-searches.md)に関する記事を参照してください。
@@ -63,7 +63,7 @@ ms.locfileid: "57194913"
 
    ![期間を変更する](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/change-timeframe.png)
 
-1. クエリにフィルターを追加するには、**[追加]** を選択します。 
+1. クエリにフィルターを追加するには、 **[追加]** を選択します。 
 
    ![クエリにフィルターを追加する](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/add-filter.png)
 
@@ -90,15 +90,15 @@ ms.locfileid: "57194913"
 
    ![[Analytics] を選択する](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/choose-analytics.png)
 
-1. クエリのツールバーで、**[保存]** を選択します。
+1. クエリのツールバーで、 **[保存]** を選択します。
 
    ![[Save]\(保存\) を選択](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/save-query.png)
 
-1. クエリの詳細を指定します。たとえば、クエリに名前を付けて、**[クエリ]** を選択し、カテゴリ名を指定します。 完了したら、**[保存]** を選択します。
+1. クエリの詳細を指定します。たとえば、クエリに名前を付けて、 **[クエリ]** を選択し、カテゴリ名を指定します。 完了したら、 **[保存]** を選択します。
 
    ![[Save]\(保存\) を選択](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/query-details.png)
 
-1. 保存されたクエリを表示するには、クエリ ページに戻ります。 クエリのツールバーで、**[保存された検索条件]** を選択します。
+1. 保存されたクエリを表示するには、クエリ ページに戻ります。 クエリのツールバーで、 **[保存された検索条件]** を選択します。
 
    ![[保存された検索条件] を選択する](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/choose-saved-searches.png)
 
@@ -110,7 +110,7 @@ ms.locfileid: "57194913"
 
 ## <a name="find-and-run-saved-queries"></a>保存されたクエリを検索して実行する
 
-1. [Azure portal](https://portal.azure.com) で **[すべてのサービス]** を選択します。 検索ボックスに「log analytics」と入力して検索し、**[Log Analytics]** を選択します。
+1. [Azure portal](https://portal.azure.com) で **[すべてのサービス]** を選択します。 検索ボックスに「log analytics」と入力して検索し、 **[Log Analytics]** を選択します。
 
    ![[Log Analytics] を選択する](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/find-log-analytics.png)
 
@@ -118,7 +118,7 @@ ms.locfileid: "57194913"
 
    ![Log Analytics ワークスペースを選択する](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/select-log-analytics-workspace.png)
 
-1. ワークスペース メニューの **[全般]** で、**[ログ (クラシック)]** または **[ログ]** のいずれかを選択します。 
+1. ワークスペース メニューの **[全般]** で、 **[ログ (クラシック)]** または **[ログ]** のいずれかを選択します。 
 
    この例では、クラシック ログのビューを使用する方法を示しています。 
 

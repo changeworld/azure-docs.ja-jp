@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
 ms.openlocfilehash: abbd26779cefaf52c6f2247a5d27db25f280c930
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58118052"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60395807"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>IT Service Management Connector を使用して Azure を ITSM ツールに接続する
 
@@ -52,11 +52,11 @@ ITSM Connector の使用を開始するには、次の手順を使用します�
 
 接続を作成する前に、ITSM Connector ソリューションを追加する必要があります。
 
-1. Azure Portal で、**[+ 新規]** アイコンをクリックします。
+1. Azure Portal で、 **[+ 新規]** アイコンをクリックします。
 
    ![Azure の新しいリソース](media/itsmc-overview/azure-add-new-resource.png)
 
-2. Marketplace で **IT Service Management Connector** を検索し、**[作成]** をクリックします。
+2. Marketplace で **IT Service Management Connector** を検索し、 **[作成]** をクリックします。
 
    ![ITSMC ソリューションの追加](media/itsmc-overview/add-itsmc-solution.png)
 
@@ -90,7 +90,7 @@ ITSM Connector の使用を開始するには、次の手順を使用します�
 ITSM ツールの準備が完了したら、次の手順に従って接続を作成します。
 
 1. **[すべてのリソース]** に移動し、**ServiceDesk(YourWorkspaceName)** を探します。
-2. 左側のウィンドウの **[ワークスペースのデータ ソース]** で、**[ITSM 接続]** をクリックします。
+2. 左側のウィンドウの **[ワークスペースのデータ ソース]** で、 **[ITSM 接続]** をクリックします。
    ![ITSM 接続](media/itsmc-overview/itsm-connections.png)
 
    このページには接続の一覧を表示されています。
@@ -118,16 +118,16 @@ ITSM 接続を作成したら、**アクション グループ**の **ITSM ア�
 
 次の手順に従います。
 
-1. Azure Portal で、**[監視]** をクリックします。
-2. 左側のウィンドウで、**[アクション グループ]** をクリックします。 **[アクション グループの追加]** ウィンドウが表示されます。
+1. Azure Portal で、 **[監視]** をクリックします。
+2. 左側のウィンドウで、 **[アクション グループ]** をクリックします。 **[アクション グループの追加]** ウィンドウが表示されます。
 
-    ![アクション グループ](media/itsmc-overview/action-groups.png)
+    ![Action Groups](media/itsmc-overview/action-groups.png)
 
 3. アクション グループの**名前**と**短い名前**を入力します。 アクション グループを作成する**リソース グループ**と**サブスクリプション**を選択します。
 
     ![アクション グループの詳細](media/itsmc-overview/action-groups-details.png)
 
-4. アクション リストで、**[アクションの種類]** のドロップダウン メニューから **[ITSM]** を選択します。 アクションの**名前**を入力し、**[詳細の編集]** をクリックします。
+4. アクション リストで、 **[アクションの種類]** のドロップダウン メニューから **[ITSM]** を選択します。 アクションの**名前**を入力し、 **[詳細の編集]** をクリックします。
 5. Log Analytics ワークスペースが配置される**サブスクリプション**を選択します。 ご使用のワークスペース名が後に続く**接続**名 (ITSM Connector の名前) を選択します。 たとえば、"MyITSMMConnector(MyWorkspace)" などです。
 
     ![ITSM アクションの詳細](media/itsmc-overview/itsm-action-details.png)
@@ -190,7 +190,7 @@ ServiceDeskWorkItemType_s="Incident"
 - 作成者
 - 解決者
 - 終了者
-- ソース
+- source
 - 割当先
 - Category
 - タイトル
@@ -211,10 +211,10 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 - サービス デスク ID
 - 作成者
 - 終了者
-- ソース
+- source
 - 割当先
 - タイトル
-- type
+- Type
 - Category
 - 状態
 - エスカレーション
@@ -266,7 +266,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | ClosedBy_s | 終了者 |
 | AssignedTo_s | 割り当て先  |
 | Title_s|  簡単な説明 |
-| Type_s|  type |
+| Type_s|  Type |
 | Category_s|  Category |
 | CRState_s|  状態|
 | Urgency_s|  緊急度 |
@@ -298,7 +298,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 
 ## <a name="troubleshoot-service-manager-web-app-deployment"></a>Service Manager Web アプリのデプロイのトラブルシューティング
 1.  Web アプリのデプロイに関する問題が発生した場合は、該当するサブスクリプションでリソースを作成/デプロイするための十分なアクセス許可があることを確認します。
-2.  [スクリプト](itsmc-service-manager-script.md)の実行時に "**オブジェクト参照がオブジェクトのインスタンスに設定されていません**" というエラーが発生した場合は、**[ユーザー構成]** セクションに有効な値が入力されていることを確認します。
+2.  [スクリプト](itsmc-service-manager-script.md)の実行時に "**オブジェクト参照がオブジェクトのインスタンスに設定されていません**" というエラーが発生した場合は、 **[ユーザー構成]** セクションに有効な値が入力されていることを確認します。
 3.  Service Bus Relay 名前空間を作成できない場合は、必要なリソース プロバイダーがサブスクリプションに登録されていることを確認します。 登録されていない場合は、Azure Portal で Service Bus Relay 名前空間を手動で作成します。 リソース プロバイダーは、Azure Portal で[ハイブリッド接続を作成](../../azure-monitor/platform/itsmc-connections.md#configure-the-hybrid-connection)するときに作成することもできます。
 
 

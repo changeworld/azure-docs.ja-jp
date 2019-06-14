@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.openlocfilehash: e8f3cf3889b3f79e930630ff0e768a0c4875eec6
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58361729"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60611686"
 ---
 # <a name="security-frame-session-management"></a>セキュリティ フレーム:セッションの管理
 | 製品/サービス | 記事 |
@@ -290,7 +290,7 @@ cookie を使うすべての HTTP ベースのアプリケーションでは、w
 ```
 
 ### <a name="example"></a>例
-同時に、Html.AntiForgeryToken() は、上で示したランダムな非表示値と同じ値を含む __RequestVerificationToken という名前の cookie を訪問者に渡します。 次に、受信したフォーム投稿を検証するため、[ValidateAntiForgeryToken] フィルターを対象のアクション メソッドに追加します。 例: 
+同時に、Html.AntiForgeryToken() は、上で示したランダムな非表示値と同じ値を含む __RequestVerificationToken という名前の cookie を訪問者に渡します。 次に、受信したフォーム投稿を検証するため、[ValidateAntiForgeryToken] フィルターを対象のアクション メソッドに追加します。 例:
 ```
 [ValidateAntiForgeryToken]
 public ViewResult SubmitUpdate()
@@ -534,7 +534,7 @@ CSRF 対策フォームと ASP.NET MVC フォーム - ビューの AntiForgeryTo
 ```
 
 ### <a name="example"></a>例
-同時に、Html.AntiForgeryToken() は、上で示したランダムな非表示値と同じ値を含む __RequestVerificationToken という名前の cookie を訪問者に渡します。 次に、受信したフォーム投稿を検証するため、[ValidateAntiForgeryToken] フィルターを対象のアクション メソッドに追加します。 例: 
+同時に、Html.AntiForgeryToken() は、上で示したランダムな非表示値と同じ値を含む __RequestVerificationToken という名前の cookie を訪問者に渡します。 次に、受信したフォーム投稿を検証するため、[ValidateAntiForgeryToken] フィルターを対象のアクション メソッドに追加します。 例:
 ```
 [ValidateAntiForgeryToken]
 public ViewResult SubmitUpdate()

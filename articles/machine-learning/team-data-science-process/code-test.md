@@ -12,11 +12,11 @@ ms.date: 05/19/2018
 ms.author: tdsp
 ms.custom: seodec18, previous-author=weig, previous-ms.author=weig
 ms.openlocfilehash: 10692fcb720be819dcf94a8ecbc541983ffc8853
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55478034"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60336695"
 ---
 # <a name="data-science-code-testing-on-azure-with-the-team-data-science-process-and-azure-devops-services"></a>Team Data Science Process と Azure DevOps Services を使用した Azure でのデータ サイエンス コードのテスト
 この記事では、データ サイエンス ワークフローでコードをテストするうえでの予備的ガイドラインについて取り上げます。 このようなテストにより、データ サイエンティストは、秩序立った効率的な方法で、自分のコードの品質と期待される成果をチェックすることができます。 ここでは、[UCI 成人収入データセットを使用した Team Data Science Process (TDSP) プロジェクト](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome)を用います。以前、コード テストの実行方法を紹介する際に発行したものです。 
@@ -100,7 +100,7 @@ ms.locfileid: "55478034"
     
     ![クラスとして一連のテストを含んだ Python ファイル](./media/code-test/create_file_test1_class.PNG)
 
-1. クラス名の後に **codetest.testCase** を置くと、これらのテストが自動的に検出されます。 右側のウィンドウでテスト エクスプローラーを開き、**[Run All]\(すべて実行\)** を選択します。 すべてのテストが順次実行され、その成否が通知されます。
+1. クラス名の後に **codetest.testCase** を置くと、これらのテストが自動的に検出されます。 右側のウィンドウでテスト エクスプローラーを開き、 **[Run All]\(すべて実行\)** を選択します。 すべてのテストが順次実行され、その成否が通知されます。
 
     ![テストの実行](./media/code-test/run_tests.PNG)
 
@@ -112,7 +112,7 @@ ms.locfileid: "55478034"
 
 1. Azure DevOps で自動ビルドとテストをセットアップします。
 
-    a. プロジェクト リポジトリで **[ビルドとリリース]** を選択し、**[+新規]** を選択して新しいビルド プロセスを作成します。
+    a. プロジェクト リポジトリで **[ビルドとリリース]** を選択し、 **[+新規]** を選択して新しいビルド プロセスを作成します。
 
        ![Selections for starting a new build process](./media/code-test/create_new_build.PNG)
 
@@ -120,7 +120,7 @@ ms.locfileid: "55478034"
     
        ![Source, name, repository, and branch information](./media/code-test/fill_in_build_info.PNG)
 
-    c. テンプレートを選択します。 Python プロジェクト テンプレートは存在しないので、**[空のプロセス]** を選択して開始します。 
+    c. テンプレートを選択します。 Python プロジェクト テンプレートは存在しないので、 **[空のプロセス]** を選択して開始します。 
 
        ![List of templates and "Empty process" button](./media/code-test/start_empty_process_template.PNG)
 
@@ -128,7 +128,7 @@ ms.locfileid: "55478034"
     
        ![Build and agent selections](./media/code-test/select_agent.PNG)
 
-    e. 左側のウィンドウで [**+**] を選択して、このビルド フェーズのタスクを追加します。 Python スクリプト **test1.py** を実行してすべてのチェックを行うことになるので、このタスクでは、PowerShell コマンドを使用して Python コードを実行します。
+    e. 左側のウィンドウで [ **+** ] を選択して、このビルド フェーズのタスクを追加します。 Python スクリプト **test1.py** を実行してすべてのチェックを行うことになるので、このタスクでは、PowerShell コマンドを使用して Python コードを実行します。
     
        !["Add tasks" pane with PowerShell selected](./media/code-test/add_task_powershell.PNG)
 

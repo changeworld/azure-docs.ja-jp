@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 10/30/2018
 ms.author: TomSh
 ms.openlocfilehash: 7e0e93c82279ec1a4fbecbbf27c7a1866286b2f8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57860518"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60587656"
 ---
 # <a name="azure-database-security-overview"></a>Azure のデータベース セキュリティの概要
 
@@ -62,7 +62,7 @@ SQL Database は、次の暗号化を提供することでデータを保護し�
 
 データがデータベースとの間で "送受信中" である間は、常に Azure SQL Database への接続をすべて (TLS/SSL を使用して) 暗号化する必要があります。 SQL Database では、TLS/SSL を使用してサーバーとクライアントを認証し、その後は認証済みの関係者間で送受信されるメッセージを暗号化します。 
 
-アプリケーションの接続文字列では、パラメーターを指定して接続を暗号化し、サーバー証明書を信頼しないようにする必要があります  (これは、Azure Portal 以外で接続文字列をコピーする場合に行います)。そうしないと、接続ではサーバーの ID が検証されず、"アクティブな中間者" の攻撃の影響を受けやすくなります。 たとえば ADO.NET ドライバーの場合、これらの接続文字列のパラメーターは、`Encrypt=True` および `TrustServerCertificate=False` です。
+アプリケーションの接続文字列では、パラメーターを指定して接続を暗号化し、サーバー証明書を信頼しないようにする必要があります (これは、Azure Portal 以外で接続文字列をコピーする場合に行います)。そうしないと、接続ではサーバーの ID が検証されず、"アクティブな中間者" の攻撃の影響を受けやすくなります。 たとえば ADO.NET ドライバーの場合、これらの接続文字列のパラメーターは、`Encrypt=True` および `TrustServerCertificate=False` です。
 
 ### <a name="encryption-at-rest"></a>保存時の暗号化
 
@@ -150,7 +150,7 @@ Azure SQL Database サービスは TCP ポート 1433 経由でのみ利用で�
 
 #### <a name="row-level-security"></a>行レベルのセキュリティ
 
-マルチテナント データベースに共通するもう 1 つのセキュリティ要件として、[行レベルのセキュリティ](https://msdn.microsoft.com/library/dn765131.aspx)があります。 この機能を使用して、クエリを実行しているユーザーの特性に基づいて、データベース テーブル内の行へのアクセスを制御できます  (例の特性は、グループ メンバーシップと実行コンテキストです)。
+マルチテナント データベースに共通するもう 1 つのセキュリティ要件として、[行レベルのセキュリティ](https://msdn.microsoft.com/library/dn765131.aspx)があります。 この機能を使用して、クエリを実行しているユーザーの特性に基づいて、データベース テーブル内の行へのアクセスを制御できます (例の特性は、グループ メンバーシップと実行コンテキストです)。
 
 ![行レベルのセキュリティによって、ユーザーはクライアント アプリ経由でテーブル内の行にアクセスできる](./media/azure-databse-security-overview/azure-database-fig4.png)
 

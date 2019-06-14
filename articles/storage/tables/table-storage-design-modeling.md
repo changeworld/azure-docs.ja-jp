@@ -9,11 +9,11 @@ ms.date: 04/23/2018
 ms.author: sngun
 ms.subservice: tables
 ms.openlocfilehash: 5d83e61282d2f21a3016997e324d0f58eff15e78
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55813009"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60502538"
 ---
 # <a name="modeling-relationships"></a>リレーションシップのモデル化
 この記事では、Azure テーブル ストレージ ソリューションの設計に役立つモデル化プロセスについて説明します。

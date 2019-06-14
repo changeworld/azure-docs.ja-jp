@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: 10fb44b0e76282ad78e7687beaa2e50e819e5cd9
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58667720"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62110011"
 ---
 # <a name="guide-to-converting-web-and-worker-roles-to-service-fabric-stateless-services"></a>Web ロールと worker ロールを Service Fabric ステートレス サービスに変換する手順
 この記事では、Cloud Services の Web ロールと worker ロールを Service Fabric ステートレス サービスに移行する方法について説明します。 アーキテクチャ全体をほぼ同じまま維持するアプリケーションの場合、これが Cloud Services から Service Fabric への最も単純な移行パスです。
@@ -41,7 +41,7 @@ worker ロールと同様に、Web ロールもステートレス ワークロ�
 
 | **Application** | **サポートされています** | **移行パス** |
 | --- | --- | --- |
-| ASP.NET Web Forms |いいえ  |ASP.NET Core 1 MVC への変換 |
+| ASP.NET Web Forms |いいえ |ASP.NET Core 1 MVC への変換 |
 | ASP.NET MVC |移行あり |ASP.NET Core 1 MVC にアップグレードする |
 | ASP.NET Web API |移行あり |自己ホスト型サーバーまたは ASP.NET Core 1 を使用する |
 | ASP.NET Core 1 |はい |該当なし |

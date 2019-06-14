@@ -9,11 +9,11 @@ ms.date: 02/19/2019
 ms.author: bwren
 ms.subservice: alerts
 ms.openlocfilehash: 429770b7651a93473c03f5e386d8f7b72692c161
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59784383"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60995971"
 ---
 # <a name="log-alert-queries-in-azure-monitor"></a>Azure Monitor でのログ アラートのクエリ
 [Azure Monitor ログに基づくアラート ルール](alerts-unified-log.md)は一定間隔で実行されるため、必ずオーバーヘッドと待機時間を最小限に抑えるように記述する必要があります。 この記事では、ログ アラートの効率的なクエリの記述と、既存のクエリを変換するためのプロセスに関する推奨事項を示します。 

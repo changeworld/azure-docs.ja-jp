@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: hrasheed
 ms.openlocfilehash: bef71f210e015dc10cd6f5c0c655d0d3beee3655
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64728925"
 ---
 # <a name="analyze-website-logs-using-a-custom-python-library-with-apache-spark-cluster-on-hdinsight"></a>HDInsight 上の Apache Spark クラスターでカスタム Python ライブラリを使用して Web サイト ログを分析する
@@ -37,8 +37,8 @@ ms.locfileid: "64728925"
 
 データが Apache Hive テーブルとして保存されたら、次のセクションでは、Power BI や Tableau などの BI ツールを使用してその Hive テーブルに接続します。
 
-1. [Azure Portal](https://portal.azure.com/) のスタート画面で Spark クラスターのタイルをクリックします (スタート画面にピン留めしている場合)。 **[すべて参照]** > **[HDInsight クラスター]** でクラスターに移動することもできます。   
-2. Spark クラスター ブレードから **[クラスター ダッシュボード]** をクリックし、**[Jupyter Notebook]** をクリックします。 入力を求められたら、クラスターの管理者資格情報を入力します。
+1. [Azure Portal](https://portal.azure.com/) のスタート画面で Spark クラスターのタイルをクリックします (スタート画面にピン留めしている場合)。 **[すべて参照]**  >  **[HDInsight クラスター]** でクラスターに移動することもできます。   
+2. Spark クラスター ブレードから **[クラスター ダッシュボード]** をクリックし、 **[Jupyter Notebook]** をクリックします。 入力を求められたら、クラスターの管理者資格情報を入力します。
 
    > [!NOTE]
    > ブラウザーで次の URL を開き、クラスターの Jupyter Notebook にアクセスすることもできます。 **CLUSTERNAME** をクラスターの名前に置き換えます。
@@ -46,7 +46,7 @@ ms.locfileid: "64728925"
    > `https://CLUSTERNAME.azurehdinsight.net/jupyter`
    >
    >
-3. 新しい Notebook を作成します。 **[新規]** をクリックし、**[PySpark]** をクリックします。
+3. 新しい Notebook を作成します。 **[新規]** をクリックし、 **[PySpark]** をクリックします。
 
     ![新しい Jupyter Notebook の作成](./media/apache-spark-custom-library-website-log-analysis/hdinsight-create-jupyter-notebook.png "新しい Jupyter Notebook の作成")
 4. Untitled.pynb という名前の新しい Notebook が作成されて開かれます。 上部の Notebook 名をクリックし、わかりやすい名前を入力します。
@@ -58,7 +58,7 @@ ms.locfileid: "64728925"
         from pyspark.sql.types import *
 
 
-1. クラスターにあらかじめ用意されているサンプル ログ データを使用して、RDD を作成します。 クラスターに関連付けられている既定のストレージ アカウント内のデータ (**\HdiSamples\HdiSamples\WebsiteLogSampleData\SampleLog\909f2b.log**) にアクセスすることができます。
+1. クラスターにあらかじめ用意されているサンプル ログ データを使用して、RDD を作成します。 クラスターに関連付けられている既定のストレージ アカウント内のデータ ( **\HdiSamples\HdiSamples\WebsiteLogSampleData\SampleLog\909f2b.log**) にアクセスすることができます。
 
         logs = sc.textFile('wasb:///HdiSamples/HdiSamples/WebsiteLogSampleData/SampleLog/909f2b.log')
 

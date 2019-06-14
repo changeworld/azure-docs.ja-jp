@@ -15,11 +15,11 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: d13e304b0d10e8bd34d306426f1f9164bcc6be94
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54014252"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60567675"
 ---
 # <a name="azure-data-factory-copy-wizard"></a>Azure Data Factory コピー ウィザード
 > [!NOTE]
@@ -66,7 +66,7 @@ Azure Data Factory コピー ウィザードを使用すると、通常はエン
 ![式の検証](./media/data-factory-copy-wizard/validate-expressions.png)
 
 ### <a name="filtering-of-data-in-an-azure-blob-folder"></a>Azure BLOB フォルダー内のデータのフィルター処理
-フォルダー パスで変数を使用すると、[システム変数](data-factory-functions-variables.md#data-factory-system-variables)に基づいて実行時に決定されるフォルダーからデータをコピーできます。 サポートされている変数は、**{year}**、**{month}**、**{day}**、**{hour}**、**{minute}**、**{custom}** です。 例: inputfolder/{year}/{month}/{day}。
+フォルダー パスで変数を使用すると、[システム変数](data-factory-functions-variables.md#data-factory-system-variables)に基づいて実行時に決定されるフォルダーからデータをコピーできます。 サポートされている変数は、 **{year}** 、 **{month}** 、 **{day}** 、 **{hour}** 、 **{minute}** 、 **{custom}** です。 例: inputfolder/{year}/{month}/{day}。
 
 次の形式の入力フォルダーがあるとします。
 
@@ -75,7 +75,7 @@ Azure Data Factory コピー ウィザードを使用すると、通常はエン
     2016/03/01/03
     ...
 
-**[ファイルまたはフォルダー]** の **[参照]** ボタンをクリックして、これらのフォルダーのいずれか (例: 2016->03->01->02) を参照し、**[選択]** をクリックします。 テキスト ボックスに `2016/03/01/02` と表示されます。 ここで、**2016** を **{year}**、**03** を **{month}**、**01** を **{day}**、**02** を **{hour}** にそれぞれ置き換え、**Tab** キーを押します。 この 4 つの変数の形式を選択するドロップダウン リストが表示されます。
+**[ファイルまたはフォルダー]** の **[参照]** ボタンをクリックして、これらのフォルダーのいずれか (例: 2016->03->01->02) を参照し、 **[選択]** をクリックします。 テキスト ボックスに `2016/03/01/02` と表示されます。 ここで、**2016** を **{year}** 、**03** を **{month}** 、**01** を **{day}** 、**02** を **{hour}** にそれぞれ置き換え、**Tab** キーを押します。 この 4 つの変数の形式を選択するドロップダウン リストが表示されます。
 
 ![システム変数の使用](./media/data-factory-copy-wizard/blob-standard-variables-in-folder-path.png)   
 
@@ -91,4 +91,4 @@ Azure Data Factory コピー ウィザードを使用すると、通常はエン
 ![スケジュール プロパティ](./media/data-factory-copy-wizard/scheduling-properties.png)
 
 ## <a name="next-steps"></a>次の手順
-Data Factory コピー ウィザードを使用して、コピー アクティビティを含むパイプラインを作成する簡単なチュートリアルについては、「[チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」をご覧ください。
+Data Factory コピー ウィザードを使用して、コピー アクティビティを含むパイプラインを作成する簡単なチュートリアルについては、「[チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」を参照してください。

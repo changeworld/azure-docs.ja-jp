@@ -12,11 +12,11 @@ ms.custom: mvc
 ms.topic: article
 ms.date: 03/12/2019
 ms.openlocfilehash: 325bbee3f3d5ad5097f710cb56fe03baff97388a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58173857"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60532802"
 ---
 # <a name="monitor-migration-activity"></a>移行アクティビティの監視
 この記事では、データベース レベルとテーブル レベルの両方で移行の進行状況を監視する方法について説明します。
@@ -136,7 +136,7 @@ ms.locfileid: "58173857"
 | **Update** | ターゲットに適用された行に含まれている CDC 更新の数。      |
 | **削除**      | ターゲットに適用された行に含まれている CDC 削除の数。 |
 | **適用の合計**      | ターゲットに適用された行に含まれている CDC の更新、挿入、削除の総数。 |
-| **データ エラー** | このテーブルで発生したデータ エラーの数。 エラーの例には、*"511: 1 行のサイズ %d が許容最大行サイズ %d を超えているので行を作成できません" や "8114: データ型 %ls を %ls に変換中にエラーが発生しました"* があります。  Azure ターゲットの dms_apply_exceptions テーブルでクエリを実行して、エラーの詳細を確認する必要があります。    |
+| **データ エラー** | このテーブルで発生したデータ エラーの数。 エラーの例には、 *"511: 1 行のサイズ %d が許容最大行サイズ %d を超えているので行を作成できません" や "8114: データ型 %ls を %ls に変換中にエラーが発生しました"* があります。  Azure ターゲットの dms_apply_exceptions テーブルでクエリを実行して、エラーの詳細を確認する必要があります。    |
 
 > [!NOTE]
 > [挿入]、[更新]、[削除]、[適用の合計] の CDC 値は、データベースが一括移行されたとき、または移行が再起動されたときに減少することがあります。

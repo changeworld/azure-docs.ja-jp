@@ -17,11 +17,11 @@ ms.custom: seohack1
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 39ac0e9cf11a0c6c212c4beadb6635ad2b6b056d
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56734712"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60244708"
 ---
 # <a name="update-the-ssl-certificate-for-an-active-directory-federation-services-ad-fs-farm"></a>Active Directory フェデレーション サービス (AD FS) ファームの SSL 証明書の更新
 
@@ -53,7 +53,7 @@ Azure AD Connect は、次の方法で自動的に AD FS ファームに関す�
 
 ![AD FS サーバーの情報](./media/how-to-connect-fed-ssl-update/adfsserverinfo.png)
 
-AD FS ファームの一部ではなくなったサーバーが一覧に含まれる場合は、**[削除]** をクリックして、AD FS ファームのサーバーの一覧からそのサーバーを削除します。
+AD FS ファームの一部ではなくなったサーバーが一覧に含まれる場合は、 **[削除]** をクリックして、AD FS ファームのサーバーの一覧からそのサーバーを削除します。
 
 ![一覧でのオフライン サーバー](./media/how-to-connect-fed-ssl-update/offlineserverlist.png)
 
@@ -95,11 +95,11 @@ AD FS ファームのサーバーに関する情報の確認が済むと、Azure
 
 * **サーバーがオフラインとして表示されます。どうすればよいですか。**
 
-    サーバーがオフラインの場合、Azure AD Connect はどのような操作も実行できません。 サーバーが AD FS ファームの一部である場合は、サーバーへの接続を確認します。 問題を解決した後は、ウィザードで更新アイコンをクリックして状態を更新します。 以前はファームの一部であったサーバーが存在しなくなっている場合は、**[削除]** をクリックして、Azure AD Connect が保持するサーバーの一覧から削除します。 Azure AD Connect の一覧からサーバーを削除しても、AD FS の構成自体は変更されません。 Windows Server 2016 以降の AD FS を使用している場合、サーバーは構成設定に残るため、タスクを実行するともう一度表示されます。
+    サーバーがオフラインの場合、Azure AD Connect はどのような操作も実行できません。 サーバーが AD FS ファームの一部である場合は、サーバーへの接続を確認します。 問題を解決した後は、ウィザードで更新アイコンをクリックして状態を更新します。 以前はファームの一部であったサーバーが存在しなくなっている場合は、 **[削除]** をクリックして、Azure AD Connect が保持するサーバーの一覧から削除します。 Azure AD Connect の一覧からサーバーを削除しても、AD FS の構成自体は変更されません。 Windows Server 2016 以降の AD FS を使用している場合、サーバーは構成設定に残るため、タスクを実行するともう一度表示されます。
 
 * **新しい SSL 証明書でファーム サーバーのサブセットを更新できますか。**
 
-    はい。 いつでも、**SSL 証明書の更新**タスクを再び実行して、残りのサーバーを更新できます。 **[SSL 証明書の更新を実行するサーバーを選択します]** ページでは、**[SSL の有効期限]** でサーバーの一覧を並べ替えて、まだ更新されていないサーバーに簡単にアクセスできます。
+    はい。 いつでも、**SSL 証明書の更新**タスクを再び実行して、残りのサーバーを更新できます。 **[SSL 証明書の更新を実行するサーバーを選択します]** ページでは、 **[SSL の有効期限]** でサーバーの一覧を並べ替えて、まだ更新されていないサーバーに簡単にアクセスできます。
 
 * **以前の実行でサーバーを削除しましたが、[AD FS サーバー] ページの一覧にオフラインとしてまだ表示されます。削除した後にオフライン サーバーがまだ表示されるのはなぜですか。**
 

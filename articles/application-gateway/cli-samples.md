@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 01/30/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 10857e248382156f7f65b343e3eedb65229f6639
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 90e5c52c9efae7538308371a157b552d4e4d12ee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33201013"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60831131"
 ---
 # <a name="azure-application-gateway-azure-cli-samples"></a>Azure Application Gateway CLI Azure サンプル
 

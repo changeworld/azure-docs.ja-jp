@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: tulasim
 ms.openlocfilehash: cb38fdcfa8cbbfa0b90141c2de2280ff1ef08c3b
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58437989"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61372358"
 ---
 # <a name="share-or-upgrade-your-qna-maker-service"></a>QnA Maker サービスの共有またはアップグレード
 リソースの管理を強化するために、QnA Maker サービスを共有するかアップグレードします。 
@@ -40,11 +40,11 @@ QnA Maker はいくつかの Azure リソースを作成します。 管理を�
 
 QnA Maker 管理 SKU をアップグレードするには、次の手順に従います。
 
-1. Azure portal の QnA Maker リソースに移動し、**[価格レベル]** を選択します。
+1. Azure portal の QnA Maker リソースに移動し、 **[価格レベル]** を選択します。
 
     ![QnA Maker リソース](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-resource.png)
 
-2. 適切な SKU を選択し、**[選択]** を押します。
+2. 適切な SKU を選択し、 **[選択]** を押します。
 
     ![QnA Maker の価格](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-pricing-page.png)
 
@@ -70,7 +70,7 @@ App Service は、[スケールアップ](https://docs.microsoft.com/azure/app-s
 
 2. 元の Azure Search リソースのインデックスを新しいリソースに復元します。 [こちら](https://github.com/pchoudhari/QnAMakerBackupRestore)でバックアップ復元のサンプル コードを参照してください。
 
-3. データが復元されたら、新しい Azure Search リソースに移動し、**[キー]** を選択して、**[名前]** と **[管理者キー]** を書き留めます。
+3. データが復元されたら、新しい Azure Search リソースに移動し、 **[キー]** を選択して、 **[名前]** と **[管理者キー]** を書き留めます。
 
     ![QnA Maker Azure Search キー](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-azuresearch-keys.png)
 
@@ -78,7 +78,7 @@ App Service は、[スケールアップ](https://docs.microsoft.com/azure/app-s
 
     ![QnA Maker App Service](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-resource-list-appservice.png)
 
-5. **[アプリケーションの設定]** を選択し、**[AzureSearchName]** フィールドと **[AzureSearchAdminKey]** フィールドを手順 3. で書き留めた値に置き換えます。
+5. **[アプリケーションの設定]** を選択し、 **[AzureSearchName]** フィールドと **[AzureSearchAdminKey]** フィールドを手順 3. で書き留めた値に置き換えます。
 
     ![QnA Maker App Service の設定](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-settings.png)
 

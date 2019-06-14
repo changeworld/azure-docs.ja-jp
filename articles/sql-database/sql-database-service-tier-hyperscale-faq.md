@@ -13,10 +13,10 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 05/06/2019
 ms.openlocfilehash: 38d9ad007b67756bdca0c6f98267aa16ba38ee9d
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65791423"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>Azure SQL ハイパースケール データベースに関する FAQ
@@ -182,11 +182,11 @@ Parallel Data Warehouse (PDW)、Teradata、またはその他の超並列プロ�
 
 ### <a name="can-i-manage-or-define-files-or-filegroups-with-hyperscale"></a>ハイパースケールを使用してファイルまたはファイルグループを管理または定義できるか
 
-いいえ 
+いいえ
   
 ### <a name="can-i-provision-a-hard-cap-on-the-data-growth-for-my-database"></a>データベースのデータ増加にハード キャップをプロビジョニングできるか
 
-いいえ 
+いいえ
 
 ### <a name="how-are-data-files-laid-out-with-sql-database-hyperscale"></a>SQL Database ハイパースケールではどのようにデータ ファイルがレイアウトされるか
 
@@ -194,7 +194,7 @@ Parallel Data Warehouse (PDW)、Teradata、またはその他の超並列プロ�
 
 ### <a name="is-database-shrink-supported"></a>データベースの縮小はサポートされるか
 
-いいえ 
+いいえ
 
 ### <a name="is-database-compression-supported"></a>データベースの圧縮はサポートされるか
 

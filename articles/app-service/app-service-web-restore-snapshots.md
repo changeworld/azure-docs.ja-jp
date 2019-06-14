@@ -15,11 +15,11 @@ ms.date: 04/04/2018
 ms.author: aelnably;nicking
 ms.custom: seodec18
 ms.openlocfilehash: 8d4290f1411749e2d8d3d27fbd792ceeeea47ef7
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56100501"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60851335"
 ---
 # <a name="restore-an-app-in-azure-from-a-snapshot"></a>Azure でスナップショットからアプリケーションを復元する
 この記事では、[Azure App Service](../app-service/overview.md) でスナップショットからアプリを復元する方法について説明します。 アプリのスナップショットの 1 つに基づいて、アプリを以前の状態に復元することができます。 スナップショットのバックアップを有効にする必要はありません。データ復旧の目的で、すべてのアプリのスナップショットが自動的に保存されます。
@@ -43,7 +43,7 @@ ms.locfileid: "56100501"
 
 ## <a name="restore-an-app-from-a-snapshot"></a>アプリをスナップショットから復元する
 
-1. [Azure Portal](https://portal.azure.com) にあるアプリの **[設定]** ページで、**[バックアップ]** をクリックして **[バックアップ]** ページを表示します。 次に、**[スナップショット (プレビュー)]** セクションにある **[復元]** をクリックします。
+1. [Azure Portal](https://portal.azure.com) にあるアプリの **[設定]** ページで、 **[バックアップ]** をクリックして **[バックアップ]** ページを表示します。 次に、 **[スナップショット (プレビュー)]** セクションにある **[復元]** をクリックします。
    
     ![](./media/app-service-web-restore-snapshots/1.png)
 

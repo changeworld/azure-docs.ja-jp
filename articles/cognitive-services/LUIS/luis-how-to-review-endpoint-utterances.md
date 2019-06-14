@@ -12,11 +12,11 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: diberry
 ms.openlocfilehash: 8fac360682ef11c438cdec333fac21d6f8cfc117
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59791053"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60195124"
 ---
 # <a name="how-to-review-endpoint-utterances-in-luis-portal-for-active-learning"></a>アクティブ ラーニングのためにエンドポイント発話を LUIS ポータルでレビューする方法
 
@@ -37,7 +37,7 @@ ms.locfileid: "59791053"
 
 1. **[Improve app performance]\(アプリのパフォーマンス向上\)** で **[Review endpoint utterances]\(エンドポイントの発話の確認\)** を選択します。
 
-1. **[Review endpoint utterances]\(エンドポイントの発話の確認\)** ページで、**[Filter list by intent or entity]\(意図またはエンティティでリストをフィルター処理する\)** テキスト ボックス内を選択します。 このドロップダウン リストでは、**[INTENTS]\(意図\)** にすべての意図が含まれ、**[ENTITIES]\(エンティティ\)** にすべてのエンティティが含まれています。
+1. **[Review endpoint utterances]\(エンドポイントの発話の確認\)** ページで、 **[Filter list by intent or entity]\(意図またはエンティティでリストをフィルター処理する\)** テキスト ボックス内を選択します。 このドロップダウン リストでは、 **[INTENTS]\(意図\)** にすべての意図が含まれ、 **[ENTITIES]\(エンティティ\)** にすべてのエンティティが含まれています。
 
     ![発話フィルター](./media/label-suggested-utterances/filter.png)
 
@@ -56,7 +56,7 @@ LUIS では、エンティティ トークン (単語) が、青色で強調表�
 
 ## <a name="align-single-utterance"></a>1 つの発話を配置する
 
-各発話では、**[Aligned intent]\(配置される意図\)** 列に意図の候補が表示されます。 
+各発話では、 **[Aligned intent]\(配置される意図\)** 列に意図の候補が表示されます。 
 
 1. その候補に同意する場合は、チェック マークをオンにします。
 
@@ -70,13 +70,13 @@ LUIS では、エンティティ トークン (単語) が、青色で強調表�
 
 ## <a name="align-several-utterances"></a>複数の発話を配置する
 
-複数の発話を配置するには、発話の左側のチェック ボックスをオンにし、**[Add selected]\(選択項目の追加\)** を選択します。 
+複数の発話を配置するには、発話の左側のチェック ボックスをオンにし、 **[Add selected]\(選択項目の追加\)** を選択します。 
 
 ![複数の発話を配置する](./media/label-suggested-utterances/add-selected.png)
 
 ## <a name="verify-aligned-intent"></a>配置された意図を確認する
 
-発話に適切な意図が配置されていることを確認するには、**[Intents]\(意図\)** ページに移動し、意図名を選択して、発話を確認します。 **[Review endpoint utterances]\(エンドポイントの発話の確認\)** の発話がリストに含まれています。
+発話に適切な意図が配置されていることを確認するには、 **[Intents]\(意図\)** ページに移動し、意図名を選択して、発話を確認します。 **[Review endpoint utterances]\(エンドポイントの発話の確認\)** の発話がリストに含まれています。
 
 ## <a name="delete-utterance"></a>発話を削除する
 
@@ -86,7 +86,7 @@ LUIS では、エンティティ トークン (単語) が、青色で強調表�
 
 ## <a name="delete-several-utterances"></a>複数の発話を削除する
 
-複数の発話を削除するには、各項目を選択し、**[Add selected]\(選択項目の追加\)** の右側にあるごみ箱を選択します。
+複数の発話を削除するには、各項目を選択し、 **[Add selected]\(選択項目の追加\)** の右側にあるごみ箱を選択します。
 
 ![複数の発話を削除する](./media/label-suggested-utterances/delete-several.png)
 

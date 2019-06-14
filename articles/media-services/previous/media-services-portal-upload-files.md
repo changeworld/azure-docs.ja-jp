@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: 3ebeb3c601dd3f734265d49d60728056561928be
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58803218"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61127823"
 ---
 # <a name="upload-files-to-a-media-services-account-in-the-azure-portal"></a>Azure Portal での Media Services アカウントへのファイルのアップロード 
 
@@ -40,7 +40,7 @@ Media Services では、処理するファイルに対して、最大ファイ�
 
 ## <a name="upload-files"></a>ファイルをアップロードする
 1. [Azure Portal](https://portal.azure.com/) で Azure Media Services アカウントを選択します。
-2. **[設定]** > **[資産]** を参照してください。 次に、**[アップロード]** ボタンを選択します。
+2. **[設定]**  >  **[資産]** を参照してください。 次に、 **[アップロード]** ボタンを選択します。
    
     ![ファイルをアップロードする](./media/media-services-portal-vod-get-started/media-services-upload.png)
    
@@ -49,11 +49,11 @@ Media Services では、処理するファイルに対して、最大ファイ�
    > [!NOTE]
    > Media Services には、アップロードするビデオ ファイルのサイズに関する制限はありません。
  
-3. コンピューター上で、アップロードするビデオの場所に移動します。 ビデオを選択し、**[OK]** を選択します。  
+3. コンピューター上で、アップロードするビデオの場所に移動します。 ビデオを選択し、 **[OK]** を選択します。  
    
     アップロードが開始されます。 ファイル名の下に進行状況が表示されます。  
 
-アップロードが完了すると、**[アセット]** ウィンドウの一覧に新しいアセットが表示されます。 
+アップロードが完了すると、 **[アセット]** ウィンドウの一覧に新しいアセットが表示されます。 
 
 ## <a name="media-services-learning-paths"></a>Media Services のラーニング パス
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

@@ -18,11 +18,11 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: gokuma
 ms.openlocfilehash: f30c241feced3031d9ed9791c27c6bb1e1e99efb
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59046184"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60366268"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Windows データ サイエンス仮想マシンでできる 10 のこと
 
@@ -61,9 +61,9 @@ R に関しては、スタート メニュー、デスクトップ、または R
 
 Python に関しては、Python Tools for Visual Studio (PTVS) 拡張機能がプレインストールされる Visual Studio Community Edition などの IDE を使用できます。 既定では、Python 3.6 のみ、ルート Conda 環境が PTVS 上に構成されます。 Anaconda Python 2.7 を有効にするために、次の手順を実行する必要があります。
 
-* Visual Studio Community Edition の **[ツール]** -> **[Python ツール]** -> **[Python 環境]** の順に移動し、**[+ カスタム]** をクリックして、各バージョンのカスタム環境を作成します。
+* Visual Studio Community Edition の **[ツール]**  ->  **[Python ツール]**  ->  **[Python 環境]** の順に移動し、 **[+ カスタム]** をクリックして、各バージョンのカスタム環境を作成します。
 * 環境の説明を入力し、プレフィックス パス (Anaconda Python 2.7 の場合は *c:\anaconda\envs\python2*) を設定します。
-* **[Auto Detect (自動検出)]** をクリックし、**[Apply (適用)]** をクリックして環境を保存します。
+* **[Auto Detect (自動検出)]** をクリックし、 **[Apply (適用)]** をクリックして環境を保存します。
 
 以下のスクリーンショットは、Visual Studio でカスタム環境のセットアップを行っているところです。
 
@@ -71,7 +71,7 @@ Python に関しては、Python Tools for Visual Studio (PTVS) 拡張機能が�
 
 Python 環境の作成方法の詳細については、 [PTVS のドキュメント](https://aka.ms/ptvsdocs) を参照してください。
 
-これで、新しい Python プロジェクトを作成する準備が整いました。 **[ファイル]** -> **[新規作成]** -> **[プロジェクト]** -> **[Python]** の順に移動し、作成している Python アプリケーションの種類を選択します。 現在のプロジェクトの Python 環境を目的のバージョン (Python 2.7 または 3.6) に設定できます。これには、**[Python 環境]** を右クリックして、**[Python 環境の追加/削除]** を選択し、目的の環境を選択します。 PTVS の操作方法の詳細については、製品の[ドキュメント](https://aka.ms/ptvsdocs)を参照してください。
+これで、新しい Python プロジェクトを作成する準備が整いました。 **[ファイル]**  ->  **[新規作成]**  ->  **[プロジェクト]**  ->  **[Python]** の順に移動し、作成している Python アプリケーションの種類を選択します。 現在のプロジェクトの Python 環境を目的のバージョン (Python 2.7 または 3.6) に設定できます。これには、 **[Python 環境]** を右クリックして、 **[Python 環境の追加/削除]** を選択し、目的の環境を選択します。 PTVS の操作方法の詳細については、製品の[ドキュメント](https://aka.ms/ptvsdocs)を参照してください。
 
 ## <a name="2-using-a-jupyter-notebook-to-explore-and-model-your-data-with-python-or-r"></a>2.Jupyter Notebook から Python または R を使用してデータの探索とモデリングを行う
 Jupyter Notebook は、ブラウザー ベースの "IDE" でデータの探索とモデリングを行うことができる強力な環境です。 Jupyter Notebook では Python 2 と Python 3 のほか R (オープン ソース R と Microsoft R Server の両方に対応) を使用できます。
@@ -82,7 +82,7 @@ Jupyter が開始されたら、DSVM に同梱されているいくつかのサ�
 
 * Notebook をクリックしてコードを参照する。
 * **Shift キーを押しながら Enter キー**を押すことで各セルを実行する。
-* **[Cell (セル)]** -> **[Run (実行)]** をクリックして Notebook 全体を実行する。
+* **[Cell (セル)]**  ->  **[Run (実行)]** をクリックして Notebook 全体を実行する。
 * 新しい Notebook を作成する。これには、Jupyter アイコン (左上隅) をクリックし、右側の **[New (新規)]** ボタンをクリックして、Notebook の言語 (カーネルとも呼ばれます) を選択します。   
 
 > [!NOTE]
@@ -315,8 +315,8 @@ AzCopy コマンドを実行して Azure BLOB にコピーするとすぐに、�
 
 Azure ストレージ エクスプローラーを使用して、VM 内のローカル ファイルからデータをアップロードすることもできます。
 
-* コンテナーにデータをアップロードするには、対象のコンテナーを選択し、**[アップロード]** ボタンをクリックします。![Azure Storage Explorer の [アップロード] ボタンのスクリーンショット](./media/vm-do-ten-things/storage-accounts.png)
-* **[ファイル]** ボックスの右側の **[...]** をクリックし、アップロードする 1 つまたは複数のファイルをファイル システムから選択します。**[アップロード]** をクリックして、ファイルのアップロードを開始します。![ファイルのアップロード ダイアログのスクリーンショット](./media/vm-do-ten-things/upload-files-to-blob.png)
+* コンテナーにデータをアップロードするには、対象のコンテナーを選択し、 **[アップロード]** ボタンをクリックします。![Azure Storage Explorer の [アップロード] ボタンのスクリーンショット](./media/vm-do-ten-things/storage-accounts.png)
+* **[ファイル]** ボックスの右側の **[...]** をクリックし、アップロードする 1 つまたは複数のファイルをファイル システムから選択します。 **[アップロード]** をクリックして、ファイルのアップロードを開始します。![ファイルのアップロード ダイアログのスクリーンショット](./media/vm-do-ten-things/upload-files-to-blob.png)
 
 **Azure Blob からデータの読み取り: Machine Learning リーダー モジュール**
 
@@ -399,7 +399,7 @@ Azure Data Lake Storage は、ビッグ データ分析ワークロード用の�
 
 **Azure BLOB から Data Lake にデータを読み取る: U-SQL**
 
-データが Azure Blob Storage に存在する場合、U-SQL クエリで Azure Storage BLOB から直接データを読み取ることができます。 U-SQL クエリを作成する前に、ご利用の BLOB ストレージ アカウントが Azure Data Lake にリンクされていることを確認します。 **Azure Portal** に移動して [Azure Data Lake Analytics] ダッシュボードを探し、**[データ ソースの追加]** をクリックします。ストレージの種類に **[Azure Storage]** を選択し、Azure ストレージ アカウントの名前とキーを追加します。 これで、ストレージ アカウントに保存されているデータを参照できます。
+データが Azure Blob Storage に存在する場合、U-SQL クエリで Azure Storage BLOB から直接データを読み取ることができます。 U-SQL クエリを作成する前に、ご利用の BLOB ストレージ アカウントが Azure Data Lake にリンクされていることを確認します。 **Azure Portal** に移動して [Azure Data Lake Analytics] ダッシュボードを探し、 **[データ ソースの追加]** をクリックします。ストレージの種類に **[Azure Storage]** を選択し、Azure ストレージ アカウントの名前とキーを追加します。 これで、ストレージ アカウントに保存されているデータを参照できます。
 
 ![[データ ソースの追加] ダイアログのスクリーンショット](./media/vm-do-ten-things/Link_Blob_to_ADLA_v2.PNG)
 
@@ -474,7 +474,7 @@ Azure HDInsight は、クラウド上で管理されている Apache Hadoop、Sp
 
 ![Azure portal からの HDInsight の作成のスクリーンショット](./media/vm-do-ten-things/Create_Azure_Blob.PNG)
 
-*  [Azure ポータル](../team-data-science-process/customize-hadoop-cluster.md)
+* [Azure ポータル](../team-data-science-process/customize-hadoop-cluster.md)
   
   * 作成したストレージ アカウントは、この HDInsight クラスターに対して作成時にリンクします。 このストレージ アカウントは、クラスター内で処理可能なデータにアクセスするために使用されます。
 
@@ -855,7 +855,7 @@ Azure Cosmos DB は、クラウドにおける NoSQL データベースです。
 4. 展開アイコン (列の右側にある "左矢印と右矢印" のアイコン) をクリックして列を展開します。
 5. その位置が "Record" フィールドであることに注目します。 そのレコードを展開し、coordinates のみを選択してください。 coordinate はリスト列です。
 6. 新しい列を追加し、 ```Text.From([coordinates]{1})&","&Text.From([coordinates]{0})```という式を使って、リストの coordinate 列を、coordinate リスト フィールドの 2 つの要素を連結したコンマ区切りの LatLong 列に変換します。
-7. 最後に、```Elevation``` 列を Decimal に変換し、**[閉じる]** と **[適用]** を選択します。
+7. 最後に、```Elevation``` 列を Decimal に変換し、 **[閉じる]** と **[適用]** を選択します。
 
 以下のコードは、データ変換をクエリ言語で記述できる Power BI の詳細エディターで使用した手順をスクリプト化したものです。前の手順を実行する代わりに、このコードをコピーして貼り付けてもかまいません。
 
@@ -896,7 +896,7 @@ in
 ## <a name="10-install-additional-tools-on-your-virtual-machine"></a>10.仮想マシンに追加のツールをインストールする
 多くの一般的なデータ分析のニーズに対応できる、DSVM に事前に組み込まれた複数のツールがあります。 これにより、1 つずつインストールして環境を構成しなくてもよいため、時間を節約できると共に、使用するリソースのみに対して支払いを行うことで、コストを節約できます。
 
-この記事の中で取り上げた他の Azure データ サービスと Azure 分析サービスを利用して、分析環境を強化することができます。 場合によっては、サード パーティが独自に開発したツールなど、特別なツールが必要になることもあります。 新しいツールが必要となった場合、インストールには、仮想マシンに対するフル管理者アクセス権が必要です。 プレインストールされない、Python と R の追加パッケージをインストールすることもできます。 Python の場合、```conda``` または ```pip``` を使用できます。 R の場合は、R コンソールで ```install.packages()``` を使用するか、IDE で **[Packages (パッケージ)]** -> **[Install Packages (パッケージのインストール)]** を選択できます。
+この記事の中で取り上げた他の Azure データ サービスと Azure 分析サービスを利用して、分析環境を強化することができます。 場合によっては、サード パーティが独自に開発したツールなど、特別なツールが必要になることもあります。 新しいツールが必要となった場合、インストールには、仮想マシンに対するフル管理者アクセス権が必要です。 プレインストールされない、Python と R の追加パッケージをインストールすることもできます。 Python の場合、```conda``` または ```pip``` を使用できます。 R の場合は、R コンソールで ```install.packages()``` を使用するか、IDE で **[Packages (パッケージ)]**  ->  **[Install Packages (パッケージのインストール)]** を選択できます。
 
 ## <a name="summary"></a>まとめ
 ここで紹介したのは、Microsoft データ サイエンス仮想マシンでできることの一例にすぎません。 他にもさまざまな手段で分析環境を強化することができます。

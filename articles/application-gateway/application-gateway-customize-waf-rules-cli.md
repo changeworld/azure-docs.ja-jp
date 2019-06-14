@@ -7,11 +7,11 @@ ms.service: application-gateway
 ms.date: 2/22/2019
 ms.author: victorh
 ms.openlocfilehash: 5e364c597b8c524e95297f279003462f2d16abe1
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56726263"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60832899"
 ---
 # <a name="customize-web-application-firewall-rules-through-the-azure-cli"></a>Azure CLI 2.0 を使用した Web アプリケーション ファイアウォール ルールのカスタマイズ
 
@@ -130,7 +130,7 @@ az network application-gateway waf-config set --resource-group AdatumAppGatewayR
 * 要求本文 (ファイルを含む) のサイズが制限を超えている場合
 * WAF エンジンで内部エラーが発生した場合
 
-CRS 3.x 固有: 
+CRS 3.x 固有:
 
 * インバウンド異常スコアがしきい値を超えました
 

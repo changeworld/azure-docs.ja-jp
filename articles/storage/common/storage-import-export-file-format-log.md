@@ -9,11 +9,11 @@ ms.date: 01/23/2017
 ms.author: muralikk
 ms.subservice: common
 ms.openlocfilehash: 00e226134039d29efd744290c4bc63abd50adc89
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55697834"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61478608"
 ---
 # <a name="azure-importexport-service-log-file-format"></a>Azure Import/Export サービスのログ ファイルの形式
 Microsoft Azure Import/Export サービスが、インポート ジョブまたはエクスポート ジョブの一部としてドライブでアクションを実行する場合、そのジョブに関連付けられているストレージ アカウントのブロック BLOB にログが書き込まれます。  
@@ -33,9 +33,9 @@ Import/Export サービスによって書き込まれるログは 2 種類あり
   
 |認証方法|`ImportExportStatesPath` 要素の値|ログ BLOB の場所|  
 |---------------------------|----------------------------------------------|---------------------------|  
-|ストレージ アカウント キー|既定値|`waimportexport` という名前のコンテナー。規定のコンテナーです。 例: <br /><br /> `https://myaccount.blob.core.windows.net/waimportexport`|  
-|ストレージ アカウント キー|ユーザーが指定した値|ユーザーが指定したコンテナー。 例: <br /><br /> `https://myaccount.blob.core.windows.net/mylogcontainer`|  
-|コンテナー SAS|既定値|`waimportexport` という名前の仮想ディレクトリ。これは SAS で指定されたコンテナーの下にある既定の名前です。<br /><br /> たとえば、ジョブに指定された SAS が `https://myaccount.blob.core.windows.net/mylogcontainer?sv=2012-02-12&se=2015-05-22T06%3A54%3A55Z&sr=c&sp=wl&sig=sigvalue` の場合、ログの場所は `https://myaccount.blob.core.windows.net/mylogcontainer/waimportexport` になります。|  
+|ストレージ アカウント キー|Default value|`waimportexport` という名前のコンテナー。規定のコンテナーです。 例:<br /><br /> `https://myaccount.blob.core.windows.net/waimportexport`|  
+|ストレージ アカウント キー|ユーザーが指定した値|ユーザーが指定したコンテナー。 例:<br /><br /> `https://myaccount.blob.core.windows.net/mylogcontainer`|  
+|コンテナー SAS|Default value|`waimportexport` という名前の仮想ディレクトリ。これは SAS で指定されたコンテナーの下にある既定の名前です。<br /><br /> たとえば、ジョブに指定された SAS が `https://myaccount.blob.core.windows.net/mylogcontainer?sv=2012-02-12&se=2015-05-22T06%3A54%3A55Z&sr=c&sp=wl&sig=sigvalue` の場合、ログの場所は `https://myaccount.blob.core.windows.net/mylogcontainer/waimportexport` になります。|  
 |コンテナー SAS|ユーザーが指定した値|SAS で指定されたコンテナーの下にあるユーザーが指定した仮想ディレクトリ。<br /><br /> たとえば、ジョブに指定された SAS が `https://myaccount.blob.core.windows.net/mylogcontainer?sv=2012-02-12&se=2015-05-22T06%3A54%3A55Z&sr=c&sp=wl&sig=sigvalue` で、指定された仮想ディレクトリの名前が `mylogblobs` の場合、ログの場所は `https://myaccount.blob.core.windows.net/mylogcontainer/waimportexport/mylogblobs` になります。|  
   
 [Get Job](/rest/api/storageimportexport/jobs) 操作を呼び出すことで、エラー ログと詳細ログの URL が取得できます。 ログは、ドライブの処理が完了すると利用できます。  
@@ -101,19 +101,19 @@ properties-status ::=
 
 ログ ファイルの要素を次の表に示します。  
   
-|XML 要素|type|説明|  
+|XML 要素|Type|説明|  
 |-----------------|----------|-----------------|  
 |`DriveLog`|XML 要素|ドライブ ログを表します。|  
 |`Version`|属性、String|ログのフォーマットのバージョン。|  
-|`DriveId`|String|ドライブのハードウェア シリアル番号。|  
-|`Status`|String|ドライブの処理状態です。 詳細については、下の `Drive Status Codes` 表をご覧ください。|  
+|`DriveId`|string|ドライブのハードウェア シリアル番号。|  
+|`Status`|string|ドライブの処理状態です。 詳細については、下の `Drive Status Codes` 表をご覧ください。|  
 |`Blob`|入れ子になった XML 要素|BLOB を表します。|  
-|`Blob/BlobPath`|String|BLOB の URI。|  
-|`Blob/FilePath`|String|ドライブ上のファイルの相対パス。|  
+|`Blob/BlobPath`|string|BLOB の URI。|  
+|`Blob/FilePath`|string|ドライブ上のファイルの相対パス。|  
 |`Blob/Snapshot`|DateTime|BLOB のスナップショット バージョン (エクスポート ジョブの場合のみ)。|  
 |`Blob/Length`|整数|BLOB の長さの合計 (単位: バイト)。|  
 |`Blob/LastModified`|DateTime|BLOB の最終変更日時 (エクスポート ジョブの場合のみ)。|  
-|`Blob/ImportDisposition`|String|BLOB のインポート処理 (インポート ジョブの場合のみ)。|  
+|`Blob/ImportDisposition`|string|BLOB のインポート処理 (インポート ジョブの場合のみ)。|  
 |`Blob/ImportDisposition/@Status`|属性、String|インポート処理の状態です。|  
 |`PageRangeList`|入れ子になった XML 要素|ページ BLOB のページ範囲の一覧を表します。|  
 |`PageRange`|XML 要素|ページ範囲を表します。|  
@@ -130,17 +130,17 @@ properties-status ::=
 |`Block/@Status`|属性、String|ブロックの処理状態です。|  
 |`Metadata`|入れ子になった XML 要素|BLOB メタデータを表します。|  
 |`Metadata/@Status`|属性、String|BLOB メタデータの処理の状態です。|  
-|`Metadata/GlobalPath`|String|グローバル メタデータ ファイルへの相対パス。|  
+|`Metadata/GlobalPath`|string|グローバル メタデータ ファイルへの相対パス。|  
 |`Metadata/GlobalPath/@Hash`|属性、String|グローバル メタデータ ファイルの Base16 エンコード MD5 ハッシュ。|  
-|`Metadata/Path`|String|メタデータ ファイルへの相対パス。|  
+|`Metadata/Path`|string|メタデータ ファイルへの相対パス。|  
 |`Metadata/Path/@Hash`|属性、String|メタデータ ファイルの Base16 エンコード MD5 ハッシュ。|  
 |`Properties`|入れ子になった XML 要素|BLOB のプロパティを表します。|  
 |`Properties/@Status`|属性、String|ファイルが見つからない、完了などの BLOB のプロパティの処理状態です。|  
-|`Properties/GlobalPath`|String|グローバル プロパティ ファイルへの相対パス。|  
+|`Properties/GlobalPath`|string|グローバル プロパティ ファイルへの相対パス。|  
 |`Properties/GlobalPath/@Hash`|属性、String|グローバル プロパティ ファイルの Base16 エンコード MD5 ハッシュ。|  
-|`Properties/Path`|String|プロパティ ファイルへの相対パス。|  
+|`Properties/Path`|string|プロパティ ファイルへの相対パス。|  
 |`Properties/Path/@Hash`|属性、String|プロパティ ファイルの Base16 エンコード MD5 ハッシュ。|  
-|`Blob/Status`|String|BLOB の処理状態です。|  
+|`Blob/Status`|string|BLOB の処理状態です。|  
   
 ## <a name="drive-status-codes"></a>ドライブの状態コード  
 次の表は、ドライブの処理に関する状態コードを示します。  

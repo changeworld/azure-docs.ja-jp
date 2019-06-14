@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 01/14/2019
 ms.author: tulasim
 ms.openlocfilehash: f6c317cc1281a5a9bc18a2057fa12b7b61bb7689
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55875265"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61371938"
 ---
 # <a name="language-support-of-knowledge-base-content-for-qna-maker"></a>QnA Maker のナレッジ ベース コンテンツの言語サポート
 QnA Maker は、さまざまな言語のナレッジ ベース コンテンツをサポートしています。 ただし、1 つの言語につき 1 つ QnA Maker サービスを確保する必要があります。 特定の QnA Maker サービスの言語は、そのサービスを対象に作成された 1 つ目のナレッジ ベースによって設定されます。 サポートされている言語の一覧については、[こちら](../Overview/languages-supported.md)を参照してください。
@@ -24,7 +24,7 @@ QnA Maker は、さまざまな言語のナレッジ ベース コンテンツ�
 
 1. [Azure Portal](https://portal.azure.com/) に移動します。
 
-2. **[リソース グループ]** を選択し、QnA Maker サービスがデプロイされているリソース グループに移動して、**[Azure Search]** リソースを選択します。
+2. **[リソース グループ]** を選択し、QnA Maker サービスがデプロイされているリソース グループに移動して、 **[Azure Search]** リソースを選択します。
 
     ![Azure Search リソースを選択](../media/qnamaker-how-to-language-kb/select-azsearch.png)
 

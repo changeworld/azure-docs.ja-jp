@@ -12,10 +12,10 @@ ms.date: 03/04/2019
 ms.author: tulasim
 ms.custom: seodec18
 ms.openlocfilehash: 458d587c7ac73f7c8dacdceae3c9f923263533b3
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65792542"
 ---
 # <a name="how-to-manage-keys-in-qna-maker"></a>QnA Maker でキーを管理する方法
@@ -42,7 +42,7 @@ QnA Maker サービスは、**サブスクリプション キー**と**エンド
 
 エンドポイント キーは、[QnA Maker ポータル](https://qnamaker.ai)から管理することができます。
 
-1. [QnA Maker ポータル](https://qnamaker.ai)にログインし、お使いのプロファイルに移動してから、**[サービスの設定]** をクリックします。
+1. [QnA Maker ポータル](https://qnamaker.ai)にログインし、お使いのプロファイルに移動してから、 **[サービスの設定]** をクリックします。
 
     ![エンドポイント キー](../media/qnamaker-how-to-key-management/Endpoint-keys.png)
 

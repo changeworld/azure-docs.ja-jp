@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alkarche
 ms.openlocfilehash: 6d11961f06a75341e633c7a8963e6b83ed37cf13
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58076736"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61341707"
 ---
 # <a name="openapi-20-metadata-support-in-azure-functions-preview"></a>Azure Functions での OpenAPI 2.0 メタデータのサポート (プレビュー)
 Azure Functions での OpenAPI 2.0 (旧称 Swagger) メタデータ サポートは、関数アプリ内での OpenAPI 2.0 定義の作成に使用できるプレビュー機能です。 関数アプリを使用して、そのファイルをホストできます。
 
 > [!IMPORTANT]
-> 現在、OpenAPI のプレビュー機能は、1.x ランタイムでのみ利用できます。 1.x 関数アプリを作成する方法については、[こちらにあります](./functions-versions.md#creating-1x-apps)。
+> 現在、OpenAPI のプレビュー機能は、1.x ランタイムでのみ利用できます。 1\.x 関数アプリを作成する方法については、[こちらにあります](./functions-versions.md#creating-1x-apps)。
 
 [OpenAPI メタデータ](https://swagger.io/)では、REST API をホストしている関数を、他のさまざまなソフトウェアで使用できます。 このソフトウェアには、PowerApps や [Azure App Service の API Apps 機能](../app-service/overview.md)などの Microsoft 製品、[Postman](https://www.getpostman.com/docs/importing_swagger) などのサード パーティの開発者ツール、および[多くのその他のパッケージ](https://swagger.io/tools/)が含まれています。
 
@@ -36,7 +36,7 @@ Azure Functions での OpenAPI 2.0 (旧称 Swagger) メタデータ サポート
 > [!NOTE]
 > 現在、関数 API の定義機能は、ベータ版のランタイムではサポートされません。
 
-ホストされる OpenAPI と定義およびクイック スタート定義の生成を有効にするには、**[API 定義のソース]** を **[関数 (プレビュー)]** に設定します。 **外部 URL** を使用して、他の場所でホストされている OpenAPI 定義を自分の関数で使用できます。
+ホストされる OpenAPI と定義およびクイック スタート定義の生成を有効にするには、 **[API 定義のソース]** を **[関数 (プレビュー)]** に設定します。 **外部 URL** を使用して、他の場所でホストされている OpenAPI 定義を自分の関数で使用できます。
 
 ## <a name="generate-definition"></a>関数のメタデータからの Swagger スケルトンの生成
 テンプレートは、最初の OpenAPI 定義の記述を開始するのに役立ちます。 定義テンプレート機能では、HTTP トリガー関数ごとに、function.json ファイル内のすべてのメタデータを使用してスパース OpenAPI 定義が作成されます。 要求や応答のテンプレートなど、[OpenAPI 仕様](https://swagger.io/specification/)から API に関する詳細情報を入力する必要があります。
@@ -71,9 +71,9 @@ Azure Functions での OpenAPI 2.0 (旧称 Swagger) メタデータ サポート
 
  ソース管理から API 定義を変更するためにソース管理を有効にする前に、ポータルで API 定義ホスティングを有効にする必要があります。 以下の手順に従います。
 
-1. 関数アプリの設定で、**[API 定義 (プレビュー)]** を参照します。
+1. 関数アプリの設定で、 **[API 定義 (プレビュー)]** を参照します。
    1. **[API 定義のソース]** を **[関数]** に設定します。
-   1. **[API 定義テンプレートを生成する]** をクリックし、**[保存]** をクリックして、後で変更するためにテンプレートの定義を作成します。
+   1. **[API 定義テンプレートを生成する]** をクリックし、 **[保存]** をクリックして、後で変更するためにテンプレートの定義を作成します。
    1. API 定義の URL とキーに注意してください。
 1. [継続的インテグレーションと継続的デプロイ (CI/CD) のセットアップ](https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment#continuous-deployment-requirements)
 2. \site\wwwroot\.azurefunctions\swagger\swagger.json でソース管理の swagger.json を変更します。

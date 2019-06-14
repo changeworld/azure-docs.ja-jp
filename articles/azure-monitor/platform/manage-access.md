@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: magoedte
 ms.openlocfilehash: 27db27d79a05f24461e63242c0395cfd81315432
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59276413"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60782804"
 ---
 # <a name="manage-log-data-and-workspaces-in-azure-monitor"></a>Azure Monitor でログ データとワークスペースを管理する
 Azure Monitor のログ データは、Log Analytics ワークスペースに格納されます。Log Analytics ワークスペースは基本的に、データと構成情報が含まれるコンテナーです。 ログ データへのアクセスを管理するには、ワークスペースに関するさまざまな管理タスクを実行します。 組織のメンバーは、複数のワークスペースを使用して、IT インフラストラクチャの一部またはすべてから収集されるデータのさまざまなセットを管理する場合があります。
@@ -66,7 +66,7 @@ System Center Operations Manager を使用している場合、各 Operations Ma
 Log Analytics ワークスペース内のデータの分析は Azure portal の **[Azure Monitor]** メニューで行いますが、ワークスペースの作成と管理は **[Log Analytics ワークスペース]** メニューで行います。
  
 
-1. [Azure portal](https://portal.azure.com) にサインインし、**[すべてのサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **Log Analytics** ワークスペースを選択します。  
+1. [Azure portal](https://portal.azure.com) にサインインし、 **[すべてのサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **Log Analytics** ワークスペースを選択します。  
 
     ![Azure ポータル](media/manage-access/azure-portal-01.png)  
 
@@ -137,7 +137,7 @@ _アクセス モード_は、ユーザーが Log Analytics ワークスペー�
 
 
 ### <a name="define-access-control-mode-in-azure-portal"></a>Azure portal でアクセス制御モードを定義する
-現在のワークスペース アクセス制御モードは、**[Log Analytics ワークスペース]** メニューのワークスペースの **[概要]** ページで確認できます。
+現在のワークスペース アクセス制御モードは、 **[Log Analytics ワークスペース]** メニューのワークスペースの **[概要]** ページで確認できます。
 
 ![ワークスペースのアクセス制御モードの表示](media/manage-access/view-access-control-mode.png)
 
@@ -270,7 +270,7 @@ Log Analytics 共同作成者ロールには、次の Azure アクションが�
 | `Microsoft.Insights/logs/<tableName>/read`<br><br>次に例を示します。<br>`Microsoft.Insights/logs/*/read`<br>`Microsoft.Insights/logs/Heartbeat/read` | リソースのすべてのログ データを表示可能。  |
 
 
-通常、このアクセス許可は、組み込みの[閲覧者](../../role-based-access-control/built-in-roles.md#reader)ロールまたは[共同作成者](../../role-based-access-control/built-in-roles.md#contributor)ロールなど、_\*/read or_ _\*_ アクセス許可を含むロールによって付与されます。 特定の操作を含むカスタム ロールまたは専用の組み込みロールには、このアクセス許可が含まれないことがあります。
+通常、このアクセス許可は、組み込みの[閲覧者](../../role-based-access-control/built-in-roles.md#reader)ロールまたは[共同作成者](../../role-based-access-control/built-in-roles.md#contributor)ロールなど、 _\*/read or_ _\*_ アクセス許可を含むロールによって付与されます。 特定の操作を含むカスタム ロールまたは専用の組み込みロールには、このアクセス許可が含まれないことがあります。
 
 さまざまな表に対して異なるアクセス制御を作成する場合は、下記の[テーブルごとのアクセス制御の定義](#table-level-rbac)に関する説明を参照してください。
 

@@ -10,11 +10,11 @@ ms.date: 03/22/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: 6879dd975f97ba2746165e87a135e5d90e8b229f
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58620643"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60308768"
 ---
 # <a name="scale-partitions-and-replicas-for-query-and-indexing-workloads-in-azure-search"></a>Azure Search でクエリとインデックス作成のワークロードに応じてパーティションとレプリカをスケーリングする
 [価格レベルを選択](search-sku-tier.md)して [Search サービスをプロビジョニング](search-create-service-portal.md)したら、サービスで使用するレプリカまたはパーティションの数を必要に応じて増やします。 各レベルには固定された請求単位数が用意されています。 この記事では、こうした請求単位を、クエリの実行、インデックス作成、およびストレージの要件のバランスを考慮しながら割り当てて、最適な構成を実現する方法について説明します。
@@ -47,7 +47,7 @@ Azure Search では最初に、1 つのパーティションと 1 つのレプ�
 一般的に、検索アプリケーションでは、パーティションよりもレプリカの方が多く必要となります。特に、サービス操作でクエリ ワークロードの比重が高い場合は、その傾向が強まります。 その理由については、[高可用性](#HA)に関するセクションで説明します。
 
 1. [Azure Portal](https://portal.azure.com/) にサインインし、Search サービスを選択します。
-2. **[設定]** で、**[スケール]** ページを開いてレプリカとパーティションの数を変更します。 
+2. **[設定]** で、 **[スケール]** ページを開いてレプリカとパーティションの数を変更します。 
 
    次のスクリーンショットは、1 つのレプリカとパーティションでプロビジョニングされる標準のサービスを示しています。 下部の式は、使用される検索ユニットの数 (1) を示しています。 ユニットの価格が 100 ドル (実際の価格ではありません) の場合、このサービスを実行するための毎月のコストは平均 100 ドルになります。
 

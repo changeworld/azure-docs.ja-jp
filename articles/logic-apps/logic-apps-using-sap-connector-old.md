@@ -11,11 +11,11 @@ ms.reviewer: klam, divswa, LADocs
 ms.suite: integration
 tags: connectors
 ms.openlocfilehash: d677c0eae9c92f90783ed4ebd95a528b34c872ec
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58170838"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60847402"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Azure Logic Apps から SAP システムに接続する
 
@@ -65,12 +65,12 @@ Azure Logic Apps では、すべてのロジック アプリは、必ず[トリ�
 
 1. Azure portal で空のロジック アプリを作成して、ロジック アプリ デザイナーを開きます。 
 
-2. 検索ボックスに、フィルターとして「HTTP 要求」と入力します。 トリガーの一覧から、**[要求 - HTTP 要求の受信時]** を選択します。
+2. 検索ボックスに、フィルターとして「HTTP 要求」と入力します。 トリガーの一覧から、 **[要求 - HTTP 要求の受信時]** を選択します。
 
    ![HTTP 要求トリガーの追加](./media/logic-apps-using-sap-connector-old/add-trigger.png)
 
 3. ロジック アプリに使用するエンドポイントの URL を生成するために、ここでロジック アプリを保存します。
-デザイナーのツール バーで、**[保存]** を選択します。 
+デザイナーのツール バーで、 **[保存]** を選択します。 
 
    次のように、エンドポイントの URL がトリガーに表示されます。
 
@@ -82,7 +82,7 @@ Azure Logic Apps では、すべてのロジック アプリは、必ず[トリ�
 
 Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md#logic-app-concepts)とは、トリガーまたは別のアクションに続くワークフロー内のステップです。 この例に沿って作業を進める場合、まだロジック アプリにトリガーを追加していない方は、[こちらのセクションで説明されているトリガーを追加](#add-trigger)してください。
 
-1. ロジック アプリ デザイナーで、トリガーの下に表示される **[新しいステップ]** > **[アクションの追加]** を順に選択します。
+1. ロジック アプリ デザイナーで、トリガーの下に表示される **[新しいステップ]**  >  **[アクションの追加]** を順に選択します。
 
    ![アクションを追加する](./media/logic-apps-using-sap-connector-old/add-action.png) 
 
@@ -91,7 +91,7 @@ Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md
    * **[SAP Application Server - Send to SAP]\(SAP アプリケーション サーバー - SAP に送信\)**
    * **[SAP Message Server - Send to SAP]\(SAP メッセージ サーバー - SAP に送信\)**
 
-   この例では、次のアクションを使用します。**[SAP Application Server - Send to SAP]\(SAP アプリケーション サーバー - SAP に送信\)**
+   この例では、次のアクションを使用します。 **[SAP Application Server - Send to SAP]\(SAP アプリケーション サーバー - SAP に送信\)**
 
    !["SAP アプリケーション サーバー" または "SAP メッセージ サーバー" を選択](media/logic-apps-using-sap-connector-old/select-sap-action.png)
 
@@ -99,7 +99,7 @@ Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md
 
    **オンプレミス SAP 接続の作成**
 
-   1. オンプレミス接続のプロパティを表示するために、**[ゲートウェイ]** の **[オンプレミスのデータ ゲートウェイ経由で接続]** をオンにします。
+   1. オンプレミス接続のプロパティを表示するために、 **[ゲートウェイ]** の **[オンプレミスのデータ ゲートウェイ経由で接続]** をオンにします。
 
    2. SAP サーバーの接続情報を指定します。 
    **gateway** プロパティには、ゲートウェイのインストール用に Azure portal で作成したデータ ゲートウェイを選択してください (次の例を参照)。
@@ -112,7 +112,7 @@ Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md
 
       ![SAP メッセージ サーバー接続を作成](media/logic-apps-using-sap-connector-old/create-SAP-message-server-connection.png) 
 
-   2. 操作が完了したら、**[作成]** を選択します。
+   2. 操作が完了したら、 **[作成]** を選択します。
 
       Logic Apps により、接続のセットアップとテストが行われ、適切に機能していることが確認されます。
 
@@ -132,7 +132,7 @@ Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md
       IDoc の操作の詳細については、「[IDOC 操作のメッセージ スキーマ](https://docs.microsoft.com/biztalk/adapters-and-accelerators/adapter-sap/message-schemas-for-idoc-operations)」を参照してください。
 
    2. **[入力メッセージ]** ボックス内をクリックして、動的コンテンツ リストを表示します。 
-   このリストの **[HTTP 要求の受信時]** で、**[本文]** フィールドを選択します。 
+   このリストの **[HTTP 要求の受信時]** で、 **[本文]** フィールドを選択します。 
 
       このステップで、HTTP 要求トリガーから本文コンテンツが取り込まれ、その出力が SAP サーバーに送信されます。
 
@@ -142,7 +142,7 @@ Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md
 
       ![SAP アクションの完成](./media/logic-apps-using-sap-connector-old/SAP-app-server-complete-action.png)
 
-6. ロジック アプリを保存し、 デザイナーのツール バーで、**[保存]** を選択します。
+6. ロジック アプリを保存し、 デザイナーのツール バーで、 **[保存]** を選択します。
 
 <a name="add-response"></a>
 
@@ -150,11 +150,11 @@ Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md
 
 ロジック アプリのワークフローに応答アクションを追加し、SAP アクションからの出力を取り込みます。 こうして SAP サーバーから受け取った結果が、ロジック アプリから要求元に返されます。 
 
-1. ロジック アプリ デザイナーで、SAP アクションの下に表示される **[新しいステップ]** > **[アクションの追加]** を順に選択します。
+1. ロジック アプリ デザイナーで、SAP アクションの下に表示される **[新しいステップ]**  >  **[アクションの追加]** を順に選択します。
 
-2. 検索ボックスに、フィルターとして「応答」と入力します。 アクションの一覧から、次のアクションを選択します。**[要求と応答]**
+2. 検索ボックスに、フィルターとして「応答」と入力します。 アクションの一覧から、次のアクションを選択します。 **[要求と応答]**
 
-3. **[本文]** ボックス内をクリックして、動的コンテンツ リストを表示します。 このリストの **[Send to SAP]\(SAP に送信\)** で、**[本文]** フィールドを選択します。 
+3. **[本文]** ボックス内をクリックして、動的コンテンツ リストを表示します。 このリストの **[Send to SAP]\(SAP に送信\)** で、 **[本文]** フィールドを選択します。 
 
    ![SAP アクションの完成](./media/logic-apps-using-sap-connector-old/select-sap-body-for-response-action.png)
 
@@ -162,7 +162,7 @@ Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md
 
 ## <a name="test-your-logic-app"></a>ロジック アプリをテストする
 
-1. まだロジック アプリが有効になっていない場合は、ロジック アプリのメニューで **[概要]** を選択します。 ツール バーで、**[有効]** を選択します。 
+1. まだロジック アプリが有効になっていない場合は、ロジック アプリのメニューで **[概要]** を選択します。 ツール バーで、 **[有効]** を選択します。 
 
 2. ロジック アプリ デザイナーのツール バーの **[実行]** を選択します。 この手順では、ロジック アプリを手動で起動します。
 

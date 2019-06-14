@@ -10,11 +10,11 @@ ms.reviewer: klam, estfan, LADocs
 ms.topic: article
 ms.date: 01/13/2019
 ms.openlocfilehash: a933824e9553ee7f638da495b46ebed19e04169d
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58316968"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60846766"
 ---
 # <a name="connect-to-on-premises-file-systems-with-azure-logic-apps"></a>Azure Logic Apps でオンプレミスのファイル システムに接続する
 
@@ -60,7 +60,7 @@ ms.locfileid: "58316968"
 
 ## <a name="add-actions"></a>アクションの追加
 
-1. トリガーで、**[次のステップ]** を選択します。 検索ボックスに、フィルターとして「file system」と入力します。 アクションの一覧から、次のアクションを選択します。**[ファイルの作成 - ファイル システム]**
+1. トリガーで、 **[次のステップ]** を選択します。 検索ボックスに、フィルターとして「file system」と入力します。 アクションの一覧から、次のアクションを選択します。 **[ファイルの作成 - ファイル システム]**
 
    ![ファイル システム コネクタの検索](media/logic-apps-using-file-connector/find-file-system-action.png)
 
@@ -72,13 +72,13 @@ ms.locfileid: "58316968"
    | -------- | -------- | ----- | ----------- | 
    | **Connection Name** | はい | <*connection-name*> | 接続に付ける名前 | 
    | **ルート フォルダー** | はい | <*root-folder-name*> | ファイル システムのルート フォルダー。たとえば、オンプレミスのデータ ゲートウェイをインストールしている場合は、オンプレミスのデータ ゲートウェイがインストールされているコンピューターのローカル フォルダーや、コンピューターがアクセス可能なネットワーク共有のフォルダー。 <p>次に例を示します。`\\PublicShare\\DropboxFiles` <p>ルート フォルダーはメインの親フォルダーで、すべてのファイル関連のアクションの相対パスに使用されます。 | 
-   | **認証の種類** | いいえ  | <*auth-type*> | ファイル システムで使用される認証の種類 (**Windows** など) | 
+   | **認証の種類** | いいえ | <*auth-type*> | ファイル システムで使用される認証の種類 (**Windows** など) | 
    | **ユーザー名** | はい | <*domain*>\\<*username*> | ファイル システムが存在するコンピューターでのユーザー名 | 
    | **パスワード** | はい | <*your-password*> | ファイル システムが存在するコンピューターでのパスワード | 
    | **gateway** | はい | <*installed-gateway-name*> | あらかじめインストールしておいたゲートウェイの名前 | 
    ||| 
 
-1. 操作が完了したら、**[作成]** を選択します。
+1. 操作が完了したら、 **[作成]** を選択します。
 
    Logic Apps により、接続の構成とテストが行われ、適切に機能していることが確認されます。 
    接続が正しくセットアップされると、事前に選択したアクションのオプションが表示されます。 

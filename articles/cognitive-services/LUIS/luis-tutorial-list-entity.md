@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 01/23/2019
 ms.author: diberry
 ms.openlocfilehash: 929dc7a86d141446a2070b046c6febfda4a07f0f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58092567"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62117450"
 ---
 # <a name="use-a-list-entity-to-increase-entity-detection"></a>リスト エンティティを使用してエンティティの検出を向上する 
 このチュートリアルでは、[リスト エンティティ](luis-concept-entity-types.md)を使用してエンティティの検出を向上する方法について説明します。 リスト エンティティは、用語の完全一致なので、ラベルを付ける必要はありません。  

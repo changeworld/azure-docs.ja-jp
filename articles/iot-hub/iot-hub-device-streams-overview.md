@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: rezas
 ms.openlocfilehash: 672b06dda41edb18cbf31352188b0fdd2a155782
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58649648"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60401104"
 ---
 # <a name="iot-hub-device-streams-preview"></a>IoT Hub デバイス ストリーム (プレビュー)
 
@@ -121,12 +121,12 @@ IoT ハブでデバイス ストリームのアクティビティ ログを収�
 
 IoT Hub のデバイス ストリーム アクティビティのために Azure Monitor ログを構成するには、以下の手順に従います。
 
-1. IoT Hub の *[診断設定]* タブに移動し、*[診断をオンにする]* リンクをクリックします。
+1. IoT Hub の *[診断設定]* タブに移動し、 *[診断をオンにする]* リンクをクリックします。
 
    ![代替テキスト](./media/iot-hub-device-streams-overview/device-streams-diagnostics-settings.PNG "診断ログの有効化")
 
 
-2. 診断設定の名前を指定し、*[Log Analytics への送信]* オプションを選びます。 既存の Log Analytics ワークスペース リソースを選ぶか、新しいものを作成するよう指示されます。 さらに、リストの *[DeviceStreams]* を確認します。
+2. 診断設定の名前を指定し、 *[Log Analytics への送信]* オプションを選びます。 既存の Log Analytics ワークスペース リソースを選ぶか、新しいものを作成するよう指示されます。 さらに、リストの *[DeviceStreams]* を確認します。
 
     ![代替テキスト](./media/iot-hub-device-streams-overview/device-streams-diagnostics.PNG "デバイス ストリーム ログを有効にする")
 

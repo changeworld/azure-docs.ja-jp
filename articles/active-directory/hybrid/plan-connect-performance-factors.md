@@ -13,11 +13,11 @@ ms.reviewer: martincoetzer
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3a3a57fbe5df690e4dbdba8cbab85e62648bb298
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56192576"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60295376"
 ---
 # <a name="factors-influencing-the-performance-of-azure-ad-connect"></a>Azure AD Connect のパフォーマンスに影響を及ぼす因子
 
@@ -104,7 +104,7 @@ Azure AD Connect では、次のステージング領域、規則、およびプ
 * エクスポートも線形です。
 * 同期は、他のオブジェクトへの参照を含むオブジェクトの数に基づいて指数関数的に増加します。 グループ メンバーシップと入れ子になったグループは、そのメンバーがユーザー オブジェクトまたはその他のグループを参照するため、主要なパフォーマンスへの影響があります。 同期サイクルを完了するには、これらの参照を検出し、MV 内の実際のオブジェクトに参照されるようにする必要があります。
 
-### <a name="filtering"></a>フィルター処理
+### <a name="filtering"></a>Filtering
 
 インポートする Active Directory トポロジのサイズは、プロビジョニング エンジンの内部コンポーネントが要するパフォーマンスと全体的な時間に影響を及ぼす第 1 の因子です。
 

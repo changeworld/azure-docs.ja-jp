@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 11/09/2018
 ms.author: njray
 ms.openlocfilehash: fba6b5308b380b374611c09747302dbf8305dd9b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58014982"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60716049"
 ---
 # <a name="deploy-ibm-db2-purescale-on-azure"></a>Azure 上に IBM DB2 pureScale をデプロイする
 
@@ -57,7 +57,7 @@ deploy.sh スクリプトを実行すると、このアーキテクチャの Azu
 
 -   テストに使用する Windows 仮想マシンを作成します。ただし、このマシン上には何もインストールしません。
 
-次に、デプロイ スクリプトにより、Azure 上の共有ストレージに対して iSCSI 仮想記憶域ネットワーク (vSAN) が設定されます。 この例では、iSCSI は GlusterFS に接続します。 このソリューションは、単一の Windows ノードとして iSCSI ターゲットをインストールするオプションも提供します  iSCSI は TCP/IP 上で共有ブロック ストレージ インターフェイスを提供します。これにより、DB2 pureScale セットアップ手順で、デバイス インターフェイスを使用して、共有ストレージに接続できます。 GlusterFS の基礎については、Gluster Docs の「[Architecture:Types of volumes (アーキテクチャ: ボリュームの種類)](https://docs.gluster.org/en/latest/Quick-Start-Guide/Architecture/)」トピックをご覧ください。
+次に、デプロイ スクリプトにより、Azure 上の共有ストレージに対して iSCSI 仮想記憶域ネットワーク (vSAN) が設定されます。 この例では、iSCSI は GlusterFS に接続します。 このソリューションは、単一の Windows ノードとして iSCSI ターゲットをインストールするオプションも提供します iSCSI は TCP/IP 上で共有ブロック ストレージ インターフェイスを提供します。これにより、DB2 pureScale セットアップ手順で、デバイス インターフェイスを使用して、共有ストレージに接続できます。 GlusterFS の基礎については、Gluster Docs の「[Architecture:Types of volumes (アーキテクチャ: ボリュームの種類)](https://docs.gluster.org/en/latest/Quick-Start-Guide/Architecture/)」トピックをご覧ください。
 
 通常、デプロイ スクリプトでは、次の手順が実行されます。
 

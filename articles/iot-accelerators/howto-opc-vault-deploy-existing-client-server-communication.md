@@ -9,11 +9,11 @@ ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 5ba2dba02585598b3797dd1b490976ebe34b489e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59495296"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61450666"
 ---
 # <a name="secure-opc-ua-client-and-opc-ua-server-application"></a>OPC UA クライアントと OPC UA サーバー アプリケーションをセキュリティで保護する 
 OPC Vault は、OPC UA サーバーとクライアント アプリケーションに使用される証明書のライフサイクルの構成、登録、管理をクラウドで行うマイクロサービスです。 この記事では、OPC Vault を使用する新しいキー ペアと証明書で OPC UA クライアントと OPC UA サーバー アプリケーションを保護する方法について説明します。

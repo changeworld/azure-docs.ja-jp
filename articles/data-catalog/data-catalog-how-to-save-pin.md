@@ -9,11 +9,11 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
 ms.openlocfilehash: df3220ddb80ebc329ed6b0024ca4eefd2bdfb321
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60002019"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61002064"
 ---
 # <a name="save-searches-and-pin-data-assets-in-azure-data-catalog"></a>Azure Data Catalog での検索条件の保存とデータ資産のピン留め
 ## <a name="introduction"></a>はじめに
@@ -26,18 +26,18 @@ Data Catalog の保存された検索条件とは、再利用可能な、ユー�
 
 ### <a name="create-a-saved-search"></a>保存する検索条件の作成
 保存する検索条件を作成するには、次の操作を行います。
-1. Azure Data Catalog ポータルの **[現在の検索]** ウィンドウで、**[保存]** をクリックします。 
+1. Azure Data Catalog ポータルの **[現在の検索]** ウィンドウで、 **[保存]** をクリックします。 
 
     ![[現在の検索] 設定の [保存] リンク](./media/data-catalog-how-to-save-pin/01-save-option.png) 
 
-2. 再利用する検索条件を入力して、**[保存]** をクリックします。
+2. 再利用する検索条件を入力して、 **[保存]** をクリックします。
 
     ![[現在の検索] 設定の保存された検索条件の名前](./media/data-catalog-how-to-save-pin/02-name.png)
 
 3. メッセージが表示されたら、保存する検索条件の名前を入力します。 検索で返されるデータ資産をわかりやすく表す、意味のある名前を選択します。
 
 ### <a name="manage-saved-searches"></a>保存された検索条件の管理
-1 つ以上の検索条件を保存すると、**[保存された検索条件]** オプションが **[現在の検索]** ボックスの下に表示されます。 リストを展開すると、保存された検索条件がすべて表示されます。
+1 つ以上の検索条件を保存すると、 **[保存された検索条件]** オプションが **[現在の検索]** ボックスの下に表示されます。 リストを展開すると、保存された検索条件がすべて表示されます。
 
  ![List of saved searches](./media/data-catalog-how-to-save-pin/03-list.png)
 
@@ -49,14 +49,14 @@ Data Catalog の保存された検索条件とは、再利用可能な、ユー�
 
     ![Options for managing saved searches](./media/data-catalog-how-to-save-pin/04-managing.png)
 
-* 保存された検索条件に新しい名前を入力するには、**[名前の変更]** を選択します。 検索の定義は変更されません。
+* 保存された検索条件に新しい名前を入力するには、 **[名前の変更]** を選択します。 検索の定義は変更されません。
 
-* 保存された検索条件をリストから削除するには、**[削除]** を選択し、削除を確定します。
+* 保存された検索条件をリストから削除するには、 **[削除]** を選択し、削除を確定します。
 
-* 保存された検索条件を既定の検索条件としてマークするには、**[既定値として保存]** を選択します。 Azure Data Catalog のホーム ページから "空の" 検索を実行すると、既定の検索条件が実行されます。 さらに、既定の検索としてマークされている検索条件は、**[保存された検索条件]** リストの一番上に表示されます。
+* 保存された検索条件を既定の検索条件としてマークするには、 **[既定値として保存]** を選択します。 Azure Data Catalog のホーム ページから "空の" 検索を実行すると、既定の検索条件が実行されます。 さらに、既定の検索としてマークされている検索条件は、 **[保存された検索条件]** リストの一番上に表示されます。
 
 ### <a name="organizational-saved-searches"></a>組織の保存した検索条件
-組織内のすべてのユーザーが、独自の検索条件を保存できます。 Data Catalog 管理者は、組織内のすべてのユーザーの検索条件を保存することもできます。 管理者が検索条件を保存する場合は、**[会社内で共有します]** オプションが表示されます。 このオプションを選択すると、保存された検索条件が組織内のすべてのユーザーに共有されます。
+組織内のすべてのユーザーが、独自の検索条件を保存できます。 Data Catalog 管理者は、組織内のすべてのユーザーの検索条件を保存することもできます。 管理者が検索条件を保存する場合は、 **[会社内で共有します]** オプションが表示されます。 このオプションを選択すると、保存された検索条件が組織内のすべてのユーザーに共有されます。
 
  ![組織の保存した検索条件](./media/data-catalog-how-to-save-pin/08-organizational-saved-search.png)
 

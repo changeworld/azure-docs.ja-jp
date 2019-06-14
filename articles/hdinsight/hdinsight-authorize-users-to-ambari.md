@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/26/2017
 ms.author: maxluk
 ms.openlocfilehash: 69ae1bd05b64912b3d53ca88b468a72a90ff5a74
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64718312"
 ---
 # <a name="authorize-users-for-apache-ambari-views"></a>Apache Ambari ビューに対してユーザーを承認する
@@ -50,19 +50,19 @@ Ambari には、[Apache Hive](https://hive.apache.org/) や [Apache TEZ](https:/
 
 **[Grant permission to these groups]\(次のグループにアクセス許可を付与\)** ![[Grant permission to these groups]\(次のグループにアクセス許可を付与\)](./media/hdinsight-authorize-users-to-ambari/add-group-to-view.png)
 
-1. ユーザーを追加するには、**[Add User]\(ユーザーの追加\)** ボタンを選択します。
+1. ユーザーを追加するには、 **[Add User]\(ユーザーの追加\)** ボタンを選択します。
 
    * ユーザー名を入力し始めると、既に定義されている名前がドロップダウン リストに表示されます。
 
      ![ユーザーのオートコンプリート](./media/hdinsight-authorize-users-to-ambari/user-autocomplete.png)
 
-   * ユーザー名を選択するか、最後まで入力します。 このユーザー名を新しいユーザーとして追加するには、**[New]\(新規\)** ボタンを選択します。
+   * ユーザー名を選択するか、最後まで入力します。 このユーザー名を新しいユーザーとして追加するには、 **[New]\(新規\)** ボタンを選択します。
 
    * 変更を保存するには、**青色のチェック ボックス**をオンにします。
 
      ![入力されたユーザー](./media/hdinsight-authorize-users-to-ambari/user-entered.png)
 
-1. グループを追加するには、**[Add Group]\(グループの追加\)** ボタンを選択します。
+1. グループを追加するには、 **[Add Group]\(グループの追加\)** ボタンを選択します。
 
    * グループ名の入力を開始します。 既存のグループ名を選択 (または新しいグループを追加) するプロセスは、ユーザーを追加するときと同じです。
    * 変更を保存するには、**青色のチェック ボックス**をオンにします。

@@ -15,17 +15,17 @@ ms.workload: infrastructure-services
 ms.date: 08/24/2018
 ms.author: kumud
 ms.openlocfilehash: 894a56c2e51e8fa8a2d72253563d218416ace4cb
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53161935"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60861965"
 ---
 # <a name="overview-of-ipv6-for-azure-load-balancer"></a>Azure Load Balancer の IPv6 の概要
 
 
 >[!NOTE] 
->Azure Load Balancer では、Basic と Standard の 2 種類がサポートされています。 この記事では、Basic Load Balancer について説明します。 Standard Load Balancer について詳しくは、[Standard Load Balancer の概要](load-balancer-standard-overview.md)に関するページをご覧ください。
+>Azure Load Balancer では、Basic と Standard です。 この記事では、Basic Load Balancer について説明します。 Standard Load Balancer について詳しくは、[Standard Load Balancer の概要](load-balancer-standard-overview.md)に関するページをご覧ください。
 
 インターネットに接続するロード バランサーは、IPv6 アドレスでデプロイできます。 これにより、IPv4 接続に加えて次の機能を使用できます。
 

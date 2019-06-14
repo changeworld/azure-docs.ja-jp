@@ -13,11 +13,11 @@ ms.date: 05/15/2017
 ms.reviewer: sergkanz
 ms.author: mbullwin
 ms.openlocfilehash: 7c1f47c9b88bd68b326b3c8923ba5b81d425c3e4
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015476"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60900712"
 ---
 # <a name="telemetry-context-application-insights-data-model"></a>テレメトリ コンテキスト:Application Insights データ モデル
 
@@ -121,7 +121,7 @@ ms.locfileid: "54015476"
 
 ## <a name="internal-sdk-version"></a>内部:SDK バージョン
 
-SDK バージョン。 詳細については、「 https://github.com/Microsoft/ApplicationInsights-Home/blob/master/SDK-AUTHORING.md#sdk-version-specification」を参照してください。
+SDK バージョン。 詳細については、「 https://github.com/Microsoft/ApplicationInsights-Home/blob/master/SDK-AUTHORING.md#sdk-version-specification 」を参照してください。
 
 最大長:64
 

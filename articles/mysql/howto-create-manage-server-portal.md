@@ -7,11 +7,11 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/28/2018
 ms.openlocfilehash: 6d6f24475497382dd9e04d3335fb89d6f0bdd514
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57528680"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61459520"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-server-using-azure-portal"></a>Azure Portal を使用した Azure Database for MySQL サーバーの作成と管理
 このトピックでは、新しい Azure Database for MySQL サーバーをすばやく作成する方法について説明します。 Azure Portal を使用したサーバーの管理方法に関する情報も含まれています。 サーバーの管理には、サーバーの詳細とデータベースの表示、パスワードのリセット、リソースのスケーリング、サーバーの削除が含まれます。
@@ -44,7 +44,7 @@ ms.locfileid: "57528680"
     | *場所* | 東南アジア (北ヨーロッパまたは米国西部を選びます) |
     | *バージョン* | 5.7 (Azure Database for MySQL サーバーのバージョンを選びます) |
 
-4. **[価格レベル]** をクリックして、新しいサーバーのサービス レベルとパフォーマンス レベルを指定します。 **[汎用]** タブを選びます。*Gen 5*、*2 仮想コア*、*5 GB*、および *7 日* は、それぞれ **[コンピューティング世代]**、**[仮想コア]**、**[ストレージ]**、および **[バックアップの保有期間]** の既定値です。 これらのスライダーはそのままにします。 サーバー バックアップを geo 冗長ストレージで有効にするには、**[バックアップ冗長オプション]** から **[地理冗長]** を選択します。
+4. **[価格レベル]** をクリックして、新しいサーバーのサービス レベルとパフォーマンス レベルを指定します。 **[汎用]** タブを選びます。*Gen 5*、*2 仮想コア*、*5 GB*、および *7 日* は、それぞれ **[コンピューティング世代]** 、 **[仮想コア]** 、 **[ストレージ]** 、および **[バックアップの保有期間]** の既定値です。 これらのスライダーはそのままにします。 サーバー バックアップを geo 冗長ストレージで有効にするには、 **[バックアップ冗長オプション]** から **[地理冗長]** を選択します。
 
    ![create-server-pricing-tier](./media/howto-create-manage-server-portal/create-server-pricing-tier.png)
 
@@ -56,7 +56,7 @@ ms.locfileid: "57528680"
 新しいサーバーをプロビジョニングした後、ユーザーには、管理者パスワードのリセットや、仮想コアまたはストレージの変更によるサーバーのスケールアップやスケールダウンなど、既存サーバーの構成に関するいくつかのオプションがあります。
 
 ### <a name="change-the-administrator-user-password"></a>管理者ユーザー パスワードを変更する
-1. サーバーの **[概要]** から、**[パスワードのリセット]** をクリックしてパスワード リセット ウィンドウを表示します。
+1. サーバーの **[概要]** から、 **[パスワードのリセット]** をクリックしてパスワード リセット ウィンドウを表示します。
 
    ![概要](./media/howto-create-manage-server-portal/overview.png)
 
@@ -70,7 +70,7 @@ ms.locfileid: "57528680"
 
 1. **[設定]** の下にある **[価格レベル]** をクリックします。
 
-2. スライダーを目的の値に動かして、**[vCore]** の設定を変更します。
+2. スライダーを目的の値に動かして、 **[vCore]** の設定を変更します。
 
     ![scale-compute](./media/howto-create-manage-server-portal/scale-compute.png)
 
@@ -80,7 +80,7 @@ ms.locfileid: "57528680"
 
 1. **[設定]** の下にある **[価格レベル]** をクリックします。
 
-2. スライダーを目的の値に動かして、**[ストレージ]** の設定を変更します。
+2. スライダーを目的の値に動かして、 **[ストレージ]** の設定を変更します。
 
     ![scale-storage](./media/howto-create-manage-server-portal/scale-storage.png)
 
@@ -104,7 +104,7 @@ ms.locfileid: "57528680"
    ![データベースの表示](./media/howto-create-manage-server-portal/show-databases.png)
 
 ## <a name="show-details-of-an-azure-database-for-mysql-server"></a>Azure Database for MySQL サーバーの詳細を表示する
-サーバーに関する詳細情報を表示するには、**[設定]** の下にある **[プロパティ]** をクリックします。
+サーバーに関する詳細情報を表示するには、 **[設定]** の下にある **[プロパティ]** をクリックします。
 
 ![properties](./media/howto-create-manage-server-portal/properties.png)
 

@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
 ms.openlocfilehash: b679f1da0ada3e61fca79cdb985a43dc445877ce
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57975493"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61338454"
 ---
 # <a name="interpret-method"></a>Interpret メソッド
 
@@ -32,11 +32,11 @@ ms.locfileid: "57975493"
 Name     | 値 | 必須  | 説明
 ---------|---------|---------|---------
 **query**    | テキスト文字列 | はい | ユーザーが入力したクエリ。  complete が 1 に設定されている場合、クエリは、クエリのオートコンプリートの候補を生成するためのプレフィックスとして解釈されます。        
-**model**    | テキスト文字列 | いいえ   | クエリを実行するモデルの名前。  現時点では、既定値は *latest* です。        
-**complete** | 0 または 1 | いいえ <br>既定値: 0  | 1 は、文法およびグラフ データに基づいてオートコンプリートの候補が生成されることを意味します。         
-**count**    | Number | いいえ <br>既定値: 10 | 返される解釈の最大数。         
-**offset**   | Number | いいえ <br>既定値: 0  | 返される最初の解釈のインデックス。 たとえば、*count=2&offset=0* では、解釈 0 および 1 が返されます。 *count=2&offset=2* では、解釈 2 および 3 が返されます。       
-**timeout**  | Number | いいえ <br>既定値: 1000 | タイムアウト (ミリ秒)。 タイムアウトが経過する前に見つかった解釈だけが返されます。
+**model**    | テキスト文字列 | いいえ  | クエリを実行するモデルの名前。  現時点では、既定値は *latest* です。        
+**complete** | 0 または 1 | いいえ<br>既定値: 0  | 1 は、文法およびグラフ データに基づいてオートコンプリートの候補が生成されることを意味します。         
+**count**    | Number | いいえ<br>既定値: 10 | 返される解釈の最大数。         
+**offset**   | Number | いいえ<br>既定値: 0  | 返される最初の解釈のインデックス。 たとえば、*count=2&offset=0* では、解釈 0 および 1 が返されます。 *count=2&offset=2* では、解釈 2 および 3 が返されます。       
+**timeout**  | Number | いいえ<br>既定値: 1000 | タイムアウト (ミリ秒)。 タイムアウトが経過する前に見つかった解釈だけが返されます。
 
 <br>
   

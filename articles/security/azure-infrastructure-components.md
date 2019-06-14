@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
 ms.openlocfilehash: b390dc9bd2b690837a85a5bab361a534b9c9d5a5
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56118141"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60587208"
 ---
 # <a name="azure-information-system-components-and-boundaries"></a>Azure 情報システムのコンポーネントと境界
 この記事では、Azure のアーキテクチャと管理について、一般的な説明を行います。 Azure システムの環境は、次のネットワークで構成されています。

@@ -12,11 +12,11 @@ ms.date: 11/09/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: be75490e4e86956337ce38133df6095790b3a374
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57896298"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60303655"
 ---
 # <a name="explore-data-in-sql-server-virtual-machine-on-azure"></a>Azure の SQL Server Virtual Machine に格納されているデータを探索する
 
@@ -41,7 +41,7 @@ SQL Server のデータ ストアの探索に使用できるいくつかのサ�
 3. 2 つのカテゴリ列の組み合わせ内のレベルの数を取得する 
    
     `select <column_a>, <column_b>,count(*) from <tablename> group by <column_a>, <column_b>`
-4. 数値型列の分布を取得する 
+4. 数値型列の分布を取得する
    
     `select <column_name>, count(*) from <tablename> group by <column_name>`
 

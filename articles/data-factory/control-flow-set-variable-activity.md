@@ -12,11 +12,11 @@ author: sharonlo101
 ms.author: shlo
 manager: craigg
 ms.openlocfilehash: 71abfdff629f36b278488851b546c7371353a4d9
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57575292"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60767967"
 ---
 # <a name="set-variable-activity-in-azure-data-factory"></a>Azure Data Factory の変数アクティビティの設定
 
@@ -26,7 +26,7 @@ ms.locfileid: "57575292"
 
 プロパティ | 説明 | 必須
 -------- | ----------- | --------
-name | パイプラインのアクティビティの名前 | [はい]
+name | パイプラインのアクティビティの名前 | はい
 description | アクティビティの動作を説明するテキスト | ×
 type | アクティビティの種類は SetVariable です | はい
 value | 指定した変数を設定するために使用する文字列リテラルまたは式のオブジェクト値 | はい

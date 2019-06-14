@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: mareat
 ms.openlocfilehash: a5fadcfce154740a79a8764f44f08b21ad18f4d8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57879941"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60625287"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-in-azure-using-network-watcher-and-graylog"></a>Network Watcher と Graylog を使用した Azure のネットワーク セキュリティ グループ フロー ログの管理と分析
 
@@ -178,18 +178,18 @@ Logstash を使用してフロー ログへの接続を確立し、Graylog サ�
 
 1. 構成済みの URL を使用して、Graylog サーバーの Web インターフェイスに移動します。 インターフェイスにアクセスするには、ブラウザーで `http://<graylog-server-ip>:9000/` を参照します。
 
-2. 構成ページに移動するには、上部のナビゲーション バーの右にある **[System]\(システム\)** ドロップダウン メニューをクリックし、**[Inputs]\(入力\)** をクリックします。
+2. 構成ページに移動するには、上部のナビゲーション バーの右にある **[System]\(システム\)** ドロップダウン メニューをクリックし、 **[Inputs]\(入力\)** をクリックします。
    または、`http://<graylog-server-ip>:9000/system/inputs` に移動します。
 
    ![使用の開始](./media/network-watcher-analyze-nsg-flow-logs-graylog/getting-started.png)
 
-3. 新しい入力を開始するには、**[Select input]\(入力の選択\)** ドロップダウンで *[GELF UDP]* を選択し、フォームに入力します。 GELF は Graylog Extended Log Format の略です。 GELF 形式は Graylog によって開発されました。 この形式の利点の詳細については、Graylog の[ドキュメント](https://docs.graylog.org/en/2.2/pages/gelf.html)を参照してください。
+3. 新しい入力を開始するには、 **[Select input]\(入力の選択\)** ドロップダウンで *[GELF UDP]* を選択し、フォームに入力します。 GELF は Graylog Extended Log Format の略です。 GELF 形式は Graylog によって開発されました。 この形式の利点の詳細については、Graylog の[ドキュメント](https://docs.graylog.org/en/2.2/pages/gelf.html)を参照してください。
 
    Graylog サーバーが構成されている IP に入力をバインドする必要があります。 IP アドレスは、Logstash 構成ファイルの UDP 出力の **host** フィールドと一致する必要があります。 既定のポートは *12201* です。 ポートが、Logstash 構成ファイルで指定されている UDP 出力の **port** フィールドと一致することを確認します。
 
    ![入力](./media/network-watcher-analyze-nsg-flow-logs-graylog/inputs.png)
 
-   入力を開始すると、次の図に示すように、**[Local inputs]\(ローカル入力\)** セクションに表示されます。
+   入力を開始すると、次の図に示すように、 **[Local inputs]\(ローカル入力\)** セクションに表示されます。
 
    ![](./media/network-watcher-analyze-nsg-flow-logs-graylog/local-inputs.png)
 
@@ -199,7 +199,7 @@ Logstash を使用してフロー ログへの接続を確立し、Graylog サ�
 
 ### <a name="search-through-graylog-messages"></a>Graylog のメッセージを検索する
 
-Graylog サーバーがメッセージを収集するまでしばらく待ってからメッセージを検索できます。 Graylog サーバーに送信されるメッセージを確認するには、**[Inputs]\(入力\)** 構成ページで、作成済みの GELF UDP 入力の **[Show received messages]\(受信メッセージの表示\)** ボタンをクリックします。 次の図のような画面が表示されます。 
+Graylog サーバーがメッセージを収集するまでしばらく待ってからメッセージを検索できます。 Graylog サーバーに送信されるメッセージを確認するには、 **[Inputs]\(入力\)** 構成ページで、作成済みの GELF UDP 入力の **[Show received messages]\(受信メッセージの表示\)** ボタンをクリックします。 次の図のような画面が表示されます。 
 
 ![ヒストグラム](./media/network-watcher-analyze-nsg-flow-logs-graylog/histogram.png)
 
@@ -215,7 +215,7 @@ Graylog の設定が完了したので、その機能を使用してフロー �
 
 ### <a name="create-a-dashboard"></a>ダッシュボードを作成する
 
-1. 上部のナビゲーション バーで、**[Dashboards]\(ダッシュボード\)** を選択するか、`http://<graylog-server-ip>:9000/dashboards/` に移動します。
+1. 上部のナビゲーション バーで、 **[Dashboards]\(ダッシュボード\)** を選択するか、`http://<graylog-server-ip>:9000/dashboards/` に移動します。
 
 2. そこから、緑色の **[Create dashboard]\(ダッシュボードの作成\)** ボタンをクリックし、簡単なフォームにダッシュボードのタイトルと説明を入力します。 **[Save]\(保存\)** をクリックして、新しいダッシュボードを作成します。 次の図のようなダッシュボードが表示されます。
 
@@ -227,9 +227,9 @@ Graylog の設定が完了したので、その機能を使用してフロー �
 
 1. 上部のナビゲーション バーの **[Search]\(検索\)** をクリックして、フロー ログを受信している UDP 入力の検索結果に戻ります。
 
-2. 画面の左側の **[Search result]\(検索結果\)** パネルで、**[Fields]\(フィールド\)** タブを見つけます。このタブには、受信フロー タプルの各メッセージのさまざまなフィールドが表示されます。
+2. 画面の左側の **[Search result]\(検索結果\)** パネルで、 **[Fields]\(フィールド\)** タブを見つけます。このタブには、受信フロー タプルの各メッセージのさまざまなフィールドが表示されます。
 
-3. 視覚化する目的のパラメーターを選択します (この例では、IP ソースを選択しています)。 使用可能なウィジェットの一覧を表示するには、フィールドの左側の青色のドロップダウン矢印をクリックします。次に、**[Quick values]** を選択してウィジェットを生成します。 次の図のような画面が表示されます。
+3. 視覚化する目的のパラメーターを選択します (この例では、IP ソースを選択しています)。 使用可能なウィジェットの一覧を表示するには、フィールドの左側の青色のドロップダウン矢印をクリックします。次に、 **[Quick values]** を選択してウィジェットを生成します。 次の図のような画面が表示されます。
 
    ![発信元 IP](./media/network-watcher-analyze-nsg-flow-logs-graylog/srcip.png)
 

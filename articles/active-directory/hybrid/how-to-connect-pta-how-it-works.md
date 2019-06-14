@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 59cd52dbdf6c13900cde592aeb52d8bf9abf850f
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56174029"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60347782"
 ---
 # <a name="azure-active-directory-pass-through-authentication-technical-deep-dive"></a>Azure Active Directory パススルー認証:技術的な詳細情報
 この記事は、Azure Active Directory (Azure AD) パススルー認証のしくみの概要です。 技術とセキュリティの詳細情報については、[セキュリティの詳細](how-to-connect-pta-security-deep-dive.md)に関する記事をご覧ください。
@@ -35,8 +35,8 @@ ms.locfileid: "56174029"
 
 1. ユーザーが [Outlook Web アプリ](https://outlook.office365.com/owa/)などのアプリケーションへのアクセスを試みます。
 2. まだサインインしていない場合、ユーザーは Azure AD の**ユーザー サインイン** ページにリダイレクトされます。
-3. ユーザーが Azure AD サインイン ページにユーザー名を入力し、**[次へ]** ボタンを選択します。
-4. ユーザーが Azure AD サインイン ページにパスワードを入力し、**[サインイン]** ボタンを選択します。
+3. ユーザーが Azure AD サインイン ページにユーザー名を入力し、 **[次へ]** ボタンを選択します。
+4. ユーザーが Azure AD サインイン ページにパスワードを入力し、 **[サインイン]** ボタンを選択します。
 5. サインインの要求を受け取った Azure AD が、(認証エージェントの公開キーを使用して暗号化された) ユーザー名とパスワードをキューに入れます。
 6. オンプレミス認証エージェントが、ユーザー名と暗号化されたパスワードをキューから取得します。 エージェントはキューの要求のために頻繁にポーリングしませんが、事前に確立された永続的な接続を介して要求を取得します。
 7. エージェントがその秘密キーを使用してパスワードの暗号化を解除します。

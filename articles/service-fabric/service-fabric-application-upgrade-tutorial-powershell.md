@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 3d4634249b0dc2638373383b7a7cea376b98c65a
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: c8f56897380bc3108cb979d9d15e7dbd0a329064
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670542"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60614372"
 ---
 # <a name="service-fabric-application-upgrade-using-powershell"></a>PowerShell を使用した Service Fabric アプリケーションのアップグレード
 > [!div class="op_single_selector"]
@@ -37,7 +37,7 @@ ms.locfileid: "58670542"
 Service Fabric による監視付きローリング アップグレードを使用することにより、アプリケーション管理者は、アプリケーションの正常性を判断するために Service Fabric が使用する正常性評価ポリシーを構成できます。 また、管理者は、正常性評価が失敗した場合 (たとえば、自動ロールバック時) に実行するアクションを構成できます。このセクションでは、PowerShell を使用した SDK サンプルの 1 つの監視付きアップグレードについて説明します。 
 
 ## <a name="step-1-build-and-deploy-the-visual-objects-sample"></a>手順 1:ビジュアル オブジェクト サンプルのビルドとデプロイ
-**VisualObjectsApplication** アプリケーション プロジェクトを右クリックし、**[発行]** コマンドを選択して、アプリケーションをビルドし、発行します。  詳細については、 [Service Fabric アプリケーションのアップグレード チュートリアル](service-fabric-application-upgrade-tutorial.md)を参照してください。  代わりに、PowerShell を使用して、アプリケーションをデプロイすることができます。
+**VisualObjectsApplication** アプリケーション プロジェクトを右クリックし、 **[発行]** コマンドを選択して、アプリケーションをビルドし、発行します。  詳細については、 [Service Fabric アプリケーションのアップグレード チュートリアル](service-fabric-application-upgrade-tutorial.md)を参照してください。  代わりに、PowerShell を使用して、アプリケーションをデプロイすることができます。
 
 > [!NOTE]
 > PowerShell で Service Fabric のコマンドを使用する前に、まず、`Connect-ServiceFabricCluster` コマンドレットを使用してクラスターに接続する必要があります。 また、クラスターがローカル コンピューターにセットアップ済みになっている必要があります。 「 [Service Fabric 開発環境の設定](service-fabric-get-started.md)」の記事を参照してください。
@@ -72,7 +72,7 @@ VisualObjects ソリューション内の VisualObjects.ActorService プロジ�
  <ServiceManifestRefServiceManifestName="VisualObjects.ActorService" ServiceManifestVersion="2.0" />
 ```
 
-ここで、Visual Studio で **ActorService** プロジェクトのみを選択して右クリックし、**[ビルド]** オプションを選択して、プロジェクトをビルドします。 コードが変更されているため、 **[すべてリビルド]** を選択すると、すべてのプロジェクトのバージョンを更新する必要があります。 次は、***VisualObjectsApplication*** を右クリックし、Service Fabric のメニュー、**[パッケージ]** の順に選択して、更新されたアプリケーションをパッケージ化しましょう。 このアクションにより、デプロイ可能なアプリケーション パッケージが作成されます。  更新されたアプリケーションをデプロイする準備は完了です。
+ここで、Visual Studio で **ActorService** プロジェクトのみを選択して右クリックし、 **[ビルド]** オプションを選択して、プロジェクトをビルドします。 コードが変更されているため、 **[すべてリビルド]** を選択すると、すべてのプロジェクトのバージョンを更新する必要があります。 次は、***VisualObjectsApplication*** を右クリックし、Service Fabric のメニュー、 **[パッケージ]** の順に選択して、更新されたアプリケーションをパッケージ化しましょう。 このアクションにより、デプロイ可能なアプリケーション パッケージが作成されます。  更新されたアプリケーションをデプロイする準備は完了です。
 
 ## <a name="step-3--decide-on-health-policies-and-upgrade-parameters"></a>手順 3:正常性ポリシーとアップグレード パラメーターの決定
 [アプリケーション アップグレード パラメーター](service-fabric-application-upgrade-parameters.md)と[アップグレード プロセス](service-fabric-application-upgrade.md)に詳しくなって、アップグレードのさまざまなパラメーター、タイムアウト、および適用されている正常性条件に対する理解を深めます。 このチュートリアルでは、サービスの正常性評価条件は既定 (推奨値) に設定されています。つまり、すべてのサービスとインスタンスは、アップグレード後も *healthy* である必要があります。  

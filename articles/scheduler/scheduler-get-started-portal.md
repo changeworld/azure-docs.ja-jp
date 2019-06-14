@@ -11,11 +11,11 @@ ms.assetid: e69542ec-d10f-4f17-9b7a-2ee441ee7d68
 ms.topic: conceptual
 ms.date: 09/17/2018
 ms.openlocfilehash: 3b2cfc932c6322df8237ec7cdf820fc4242bfa72
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57887223"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60532014"
 ---
 # <a name="create-and-schedule-your-first-job-with-azure-scheduler---azure-portal"></a>Azure Scheduler で初めてのジョブを作成してスケジュールする - Azure portal
 
@@ -30,7 +30,7 @@ Azure サブスクリプションがない場合は、<a href="https://azure.mic
 
 1. [Azure Portal](https://portal.azure.com/) にサインインします。  
 
-1. Azure のメイン メニューで **[リソースの作成]** を選択します。 検索ボックスに「scheduler」と入力します。 結果の一覧から **Scheduler** を選択し、**[作成]** を選択します。
+1. Azure のメイン メニューで **[リソースの作成]** を選択します。 検索ボックスに「scheduler」と入力します。 結果の一覧から **Scheduler** を選択し、 **[作成]** を選択します。
 
    ![Scheduler リソースを作成する](./media/scheduler-get-started-portal/scheduler-v2-portal-marketplace-create.png)
 
@@ -71,11 +71,11 @@ Azure サブスクリプションがない場合は、<a href="https://azure.mic
 
    ![スケジュールを定義する](./media/scheduler-get-started-portal/scheduler-v2-portal-recurrence-schedule.png)
 
-1. 準備ができたら、**[作成]** をクリックします。
+1. 準備ができたら、 **[作成]** をクリックします。
 
    作成したジョブが Azure によってデプロイされて、Azure ダッシュボードに表示されます。 
 
-1. デプロイが成功した通知が表示されたら、**[ダッシュボードにピン留め]** を選択します。 表示されない場合は、Azure ツール バーの **[通知]** アイコン (ベル) を選択して、**[ダッシュボードにピン留め]** を選択します。
+1. デプロイが成功した通知が表示されたら、 **[ダッシュボードにピン留め]** を選択します。 表示されない場合は、Azure ツール バーの **[通知]** アイコン (ベル) を選択して、 **[ダッシュボードにピン留め]** を選択します。
 
 ## <a name="monitor-and-manage-jobs"></a>ジョブを監視および管理する
 
@@ -95,7 +95,7 @@ Azure サブスクリプションがない場合は、<a href="https://azure.mic
 
 ### <a name="properties"></a>Properties
 
-ジョブの管理メタデータを記述する読み取り専用のプロパティを表示するには、**[プロパティ]** を選択します。
+ジョブの管理メタデータを記述する読み取り専用のプロパティを表示するには、 **[プロパティ]** を選択します。
 
 ![ジョブのプロパティを表示する](./media/scheduler-get-started-portal/scheduler-v2-portal-job-properties.png)
 
@@ -103,7 +103,7 @@ Azure サブスクリプションがない場合は、<a href="https://azure.mic
 
 ### <a name="action-settings"></a>[アクションの設定]
 
-ジョブの詳細な設定を変更するには、**[アクションの設定]** を選択します。 
+ジョブの詳細な設定を変更するには、 **[アクションの設定]** を選択します。 
 
 ![アクションの設定を確認する](./media/scheduler-get-started-portal/scheduler-v2-portal-job-action-settings.png)
 
@@ -122,7 +122,7 @@ Azure サブスクリプションがない場合は、<a href="https://azure.mic
 ジョブ ウィザードを使用してスケジュールを設定する場合は、開始日時、繰り返しスケジュール、繰り返しジョブの終了日時など、そのスケジュールを変更できます。
 さらに[複雑なスケジュールと高度な繰り返し](scheduler-advanced-complexity.md)を作成することもできます。
 
-ビューまたはジョブのスケジュールを変更するには、**[スケジュール]** を選択します。
+ビューまたはジョブのスケジュールを変更するには、 **[スケジュール]** を選択します。
 
 ![ジョブのスケジュールを表示する](./media/scheduler-get-started-portal/scheduler-v2-portal-job-schedule.png)
 
@@ -130,11 +130,11 @@ Azure サブスクリプションがない場合は、<a href="https://azure.mic
 
 ### <a name="history"></a>履歴
 
-選択したジョブのすべての実行に関するメトリックを表示するには、**[履歴]** を選択します。 これらのメトリックでは、状態、再試行回数、出現回数、開始日時、終了日時など、ジョブの正常性に関するリアルタイム値が提供されます。
+選択したジョブのすべての実行に関するメトリックを表示するには、 **[履歴]** を選択します。 これらのメトリックでは、状態、再試行回数、出現回数、開始日時、終了日時など、ジョブの正常性に関するリアルタイム値が提供されます。
 
 ![ジョブの履歴とメトリックを表示する](./media/scheduler-get-started-portal/scheduler-v2-portal-job-history.png)
 
-実行ごとの完全な応答など、各実行の履歴の詳細を表示するには、**[履歴]** で各実行を選択します。 
+実行ごとの完全な応答など、各実行の履歴の詳細を表示するには、 **[履歴]** で各実行を選択します。 
 
 ![ジョブ履歴の詳細を表示する](./media/scheduler-get-started-portal/scheduler-v2-portal-job-history-details.png)
 

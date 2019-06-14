@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 03/21/2018
 ms.author: kumud
 ms.openlocfilehash: ec43b79109181457f8ef8e214e296969db5dcb26
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66122331"
 ---
 # <a name="configure-high-availability-ports-for-an-internal-load-balancer"></a>内部ロード バランサー用の高可用性ポートの構成
@@ -48,7 +48,7 @@ ms.locfileid: "66122331"
 
 ### <a name="configure-a-high-availability-ports-load-balancer-rule-with-the-azure-portal"></a>Azure Portal を使用して高可用性ポートのロード バランサー規則を構成する
 
-Azure Portal を使用して高可用性ポートを構成するには、**[HA ポート]** チェック ボックスをオンにします。 このオプションを選択すると、関連するポートとプロトコルの構成が自動的に設定されます。 
+Azure Portal を使用して高可用性ポートを構成するには、 **[HA ポート]** チェック ボックスをオンにします。 このオプションを選択すると、関連するポートとプロトコルの構成が自動的に設定されます。 
 
 ![Azure Portal を使用した高可用性ポートの構成](./media/load-balancer-configure-ha-ports/haports-portal.png)
 

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: eb20630533735fb46ea7743be75448329281938a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58916565"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60334633"
 ---
 # <a name="real-time-stats-in-microsoft-azure-cdn"></a>Microsoft Azure CDN でのリアルタイム統計情報
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
@@ -90,7 +90,7 @@ HTTP 状態コードの一覧は、グラフの上に直接表示されます。
 このグラフは、エッジ サーバーとの間で確立された接続の数を示しています。 資産に対する要求が CDN を通過するたびに接続が確立されます。
 
 ## <a name="next-steps"></a>次の手順
-*  [Azure CDN のリアルタイム アラート](cdn-real-time-alerts.md)
-*  [詳細な HTTP レポート](cdn-advanced-http-reports.md)
-*  [使用量パターン](cdn-analyze-usage-patterns.md)
+* [Azure CDN のリアルタイム アラート](cdn-real-time-alerts.md)
+* [詳細な HTTP レポート](cdn-advanced-http-reports.md)
+* [使用量パターン](cdn-analyze-usage-patterns.md)
 

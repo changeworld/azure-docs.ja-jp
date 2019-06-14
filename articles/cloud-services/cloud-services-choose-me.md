@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 04/19/2017
 ms.author: jeconnoc
 ms.openlocfilehash: ce88dcaedf32f293fc121cda2a088388c99badee
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53603829"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60337522"
 ---
 # <a name="overview-of-azure-cloud-services"></a>Azure Cloud Services の概要
 Azure Cloud Services は、[サービスとしてのプラットフォーム](https://azure.microsoft.com/overview/what-is-paas/) (PaaS) の 1 つの例です。 このテクノロジは、[Azure App Service](../app-service/overview.md) と同様に、スケーラブルで信頼性が高く、運用コストが低いアプリケーションをサポートするように設計されています。 App Service と同様に、Azure Cloud Services も仮想マシン (VM) 上でホストされます。 しかし、VM に対してより細かな制御を行うことができます。 Azure Cloud Services を使用する VM に独自のソフトウェアをインストールし、それらにリモートでアクセスできます。
@@ -33,7 +33,7 @@ Azure Cloud Services ロールには、次の 2 種類があります。 2 つ�
 
 * **worker ロール**:IIS を使用せず、アプリをスタンドアロンで実行します。
 
-たとえば、単純なアプリケーションでは、web ロールを 1 つだけ使用して web サイトにサービスを提供している場合があります。 もっと複雑なアプリケーションでは、Web ロールを使用してユーザーからの受信要求を処理し、次にそれらの要求を worker ロールに渡して処理を行っている場合があります  (この通信は、[Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) または [Azure Queue Storage](../storage/common/storage-introduction.md) を使用する可能性があります)。
+たとえば、単純なアプリケーションでは、web ロールを 1 つだけ使用して web サイトにサービスを提供している場合があります。 もっと複雑なアプリケーションでは、Web ロールを使用してユーザーからの受信要求を処理し、次にそれらの要求を worker ロールに渡して処理を行っている場合があります (この通信は、[Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) または [Azure Queue Storage](../storage/common/storage-introduction.md) を使用する可能性があります)。
 
 上記の図に示すように、1 つのアプリケーションのすべての VM は同じクラウド サービスで実行されます。 ユーザーは 1 つのパブリック IP アドレスを通してアプリケーションにアクセスし、要求はアプリケーションの VM 間で自動的に負荷分散されます。 プラットフォームは、ハードウェアの単一障害点を回避するように、Azure Cloud Services アプリケーションで VM を[スケールおよびデプロイ](cloud-services-how-to-scale-portal.md)します。
 

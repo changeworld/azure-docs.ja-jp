@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: sajagtap
 ms.openlocfilehash: 7827cee2af2dfc0c1fddc407c1d146dc9a66c514
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58756096"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60607577"
 ---
 # <a name="define-and-use-moderation-jobs-rest"></a>モデレーション ジョブ (REST) を定義して使用する
 
@@ -41,7 +41,7 @@ REST 呼び出しを作成するには、次の値を入力します。
 - **ContentId**:カスタム識別子の文字列。 この文字列は API に渡され、コールバックで返されます。 これは、内部識別子またはメタデータをモデレーション ジョブの結果に関連付けるために役立ちます。
 - **Workflowname**: 以前に作成したワークフローの名前 (既定のワークフローの場合は "default")。
 - **CallbackEndpoint**: (省略可能) レビューが完了したときにコールバック情報を受信する URL。
-- **Ocp-Apim-Subscription-Key**: Content Moderator のキー。 [レビュー ツール](https://contentmoderator.cognitive.microsoft.com)の **[設定]** タブ内にあります。
+- **Ocp-Apim-Subscription-Key**: ご自分の Content Moderator キー。 [レビュー ツール](https://contentmoderator.cognitive.microsoft.com)の **[設定]** タブ内にあります。
 
 ### <a name="fill-in-the-request-body"></a>要求本文を入力する
 
@@ -51,7 +51,7 @@ REST 呼び出しの本文には、1 つのフィールド **[ContentValue]** �
 
 ### <a name="submit-your-request"></a>要求を送信する
 
-**[送信]** を選択します。 操作が成功すると、**[応答の状態]** は `200 OK` になり、**[応答のコンテンツ]** ボックスにはジョブの ID が表示されます。 次の手順で使用するためにこの ID をコピーします。
+**[送信]** を選択します。 操作が成功すると、 **[応答の状態]** は `200 OK` になり、 **[応答のコンテンツ]** ボックスにはジョブの ID が表示されます。 次の手順で使用するためにこの ID をコピーします。
 
 ![[Review - Create]\(Review - Create\) コンソールの [応答のコンテンツ] ボックスに表示されるレビュー ID](images/test-drive-job-3.PNG)
 
@@ -61,7 +61,7 @@ REST 呼び出しの本文には、1 つのフィールド **[ContentValue]** �
 
 ![「Job - Get」のリージョン選択肢](images/test-drive-region.png)
 
-上記のセクションと同様に、REST 呼び出しパラメーターを入力します。 この手順で、**JobId** はジョブを作成するときに受信した一意の ID 文字列です。 **[送信]** を選択します。 操作が成功すると、**[応答の状態]** は `200 OK` になり、**[応答のコンテンツ]** ボックスには次のような JSON 形式のジョブが表示されます。
+上記のセクションと同様に、REST 呼び出しパラメーターを入力します。 この手順で、**JobId** はジョブを作成するときに受信した一意の ID 文字列です。 **[送信]** を選択します。 操作が成功すると、 **[応答の状態]** は `200 OK` になり、 **[応答のコンテンツ]** ボックスには次のような JSON 形式のジョブが表示されます。
 
 ```json
 {  
@@ -115,7 +115,7 @@ REST 呼び出しの本文には、1 つのフィールド **[ContentValue]** �
 
 ### <a name="examine-the-new-reviews"></a>新しいレビューを確認する
 
-コンテンツ ジョブの結果、レビューが作成された場合は、これを[レビュー ツール](https://contentmoderator.cognitive.microsoft.com)で確認することができます。 **[レビュー]** > **[Image]**/**[Text]**/**[Video]** を (使用したコンテンツに応じて) 選択します。 コンテンツが表示され、人によるレビューが可能な状態になります。 人間のモデレーターが自動割り当てタグと予測データをレビューして、最終的なモデレーション意思決定を送信した後で、ジョブ API がすべての情報を指定されたコールバック エンドポイントに送信します。
+コンテンツ ジョブの結果、レビューが作成された場合は、これを[レビュー ツール](https://contentmoderator.cognitive.microsoft.com)で確認することができます。 **[レビュー]**  >  **[Image]** / **[Text]** / **[Video]** を (使用したコンテンツに応じて) 選択します。 コンテンツが表示され、人によるレビューが可能な状態になります。 人間のモデレーターが自動割り当てタグと予測データをレビューして、最終的なモデレーション意思決定を送信した後で、ジョブ API がすべての情報を指定されたコールバック エンドポイントに送信します。
 
 ## <a name="next-steps"></a>次の手順
 

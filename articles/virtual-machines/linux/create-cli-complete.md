@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 12/14/2017
 ms.author: cynthn
 ms.openlocfilehash: eb4c5897cdadecd074c2764faceeed13f4c724c3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58008742"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60328641"
 ---
 # <a name="create-a-complete-linux-virtual-machine-with-the-azure-cli"></a>Azure CLI を使用した完全な Linux 仮想マシンの作成
 必要なサポート リソースすべてを既定値で作成する単一の Azure CLI コマンドを使用すると、Azure で仮想マシン (VM) を短時間で作成することができます。 仮想ネットワーク、パブリック IP アドレス、ネットワーク セキュリティ グループの規則などのリソースが自動的に作成されます。 実稼働用に環境をより細かく制御する場合は、こうしたリソースを先に作成してから、作成したリソースに VM を追加します。 この記事では、VM の作成方法、および各サポート リソースを 1 つずつ作成する方法を説明します。
@@ -103,7 +103,7 @@ az network vnet create \
 
 
 ## <a name="create-a-public-ip-address"></a>パブリック IP アドレスの作成
-次に、[az network public-ip create](/cli/azure/network/public-ip) を使用してパブリック IP アドレスを作成します。 インターネットからは、このパブリック IP アドレスで VM に接続することができます。 既定のアドレスは動的であるため、`--domain-name-label` パラメーターを指定して名前付きの DNS エントリを作成します。 次の例では、DNS 名が *mypublicdns* で *myPublicIP* という名前のパブリック IP を作成します  DNS 名は一意である必要があるので、独自の DNS 名を指定します。
+次に、[az network public-ip create](/cli/azure/network/public-ip) を使用してパブリック IP アドレスを作成します。 インターネットからは、このパブリック IP アドレスで VM に接続することができます。 既定のアドレスは動的であるため、`--domain-name-label` パラメーターを指定して名前付きの DNS エントリを作成します。 次の例では、DNS 名が *mypublicdns* で *myPublicIP* という名前のパブリック IP を作成します DNS 名は一意である必要があるので、独自の DNS 名を指定します。
 
 ```azurecli
 az network public-ip create \

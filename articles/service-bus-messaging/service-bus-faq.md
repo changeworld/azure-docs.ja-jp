@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
 ms.openlocfilehash: 8461764a3f1f682ffb97420a4efdf2803f518872
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64707141"
 ---
 # <a name="service-bus-faq"></a>Service Bus に関する FAQ
@@ -43,7 +43,7 @@ ms.locfileid: "64707141"
  パーティション分割されたエンティティは [Premium SKU](service-bus-premium-messaging.md) ではサポートされなくなりました。 
 
 ### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>ファイアウォールで開く必要があるのはどのポートですか？ 
-Azure Service Bus でメッセージを送受信する次のプロトコルを使用できます。
+Azure Service Bus でメッセージを送受信する場合、次のプロトコルを使用できます。
 
 - Advanced Message Queuing Protocol (AMQP)
 - Service Bus メッセージング プロトコル (SBMP)
@@ -58,23 +58,23 @@ Azure Service Bus でメッセージを送受信する次のプロトコルを�
 | HTTP、HTTPS | 80、443 | 
 
 ### <a name="what-ip-addresses-do-i-need-to-whitelist"></a>どのような IP アドレスをホワイト リストに登録する必要がありますか。
-接続のホワイト リストに適切な IP アドレスを検索するには、次の手順に従います。
+接続のためにホワイトリストに登録する必要がある適切な IP アドレスを検索するには、次の手順に従います。
 
 1. コマンド プロンプトで、次のコマンドを実行します。 
 
     ```
     nslookup <YourNamespaceName>.servicebus.windows.net
     ```
-2. `Non-authoritative answer`で返された IP アドレスをメモします。 この IP アドレスは静的です。 時間内で唯一変更するポイントは、別のクラスターに名前空間を復元するかどうかです。
+2. `Non-authoritative answer` で返された IP アドレスをメモします。 この IP アドレスは静的です。 これが変更されるのは、名前空間を別のクラスターに復元した場合のみです。
 
-名前空間のゾーン冗長性を使用する場合は、いくつかの追加手順を実行する必要があります。 
+名前空間にゾーン冗長性を使用している場合は、次の追加手順を実行する必要があります。 
 
-1. 最初に、名前空間で nslookup を実行します。
+1. まず、名前空間に対して nslookup を実行します。
 
     ```
     nslookup <yournamespace>.servicebus.windows.net
     ```
-2. 「**non-authoritative answer**」 (権限のない応答) セクションに、次のいずれかの形式で書き留めます。 
+2. **non-authoritative answer** セクションの名前をメモします。これは、次のいずれかの形式になります。 
 
     ```
     <name>-s1.servicebus.windows.net

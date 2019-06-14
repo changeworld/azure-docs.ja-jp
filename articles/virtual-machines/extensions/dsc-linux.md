@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: robreed
-ms.openlocfilehash: 67f72c5b396bc935f7bec34bc8a52f63131649b1
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 4b0cd88cbb3729a3e81aeb5d6f43f417c8cb2f17
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58904476"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64682762"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>Linux 用の DSC 拡張機能 (Microsoft.OSTCExtensions.DSCForLinux)
 
@@ -34,7 +34,7 @@ DSCForLinux 拡張機能は Microsoft によって公開され、サポートさ
 - カスタム DSC モジュールを Linux VM にインストールする (Install ExtensionAction)
 - カスタム DSC モジュールを Linux VM から削除する (Remove ExtensionAction)
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -67,7 +67,7 @@ DSCForLinux 拡張機能では、ターゲット仮想マシンがインター�
 * `ConfigurationModeFrequencyMins`: (省略可能、整数) DSC によって構成が望ましい状態にされる頻度 (分単位) を指定します。
 
 > [!NOTE]
-> 2.3 未満のバージョンを使用している場合、モード パラメーターは ExtensionAction と同じです。 モードは多義な用語であるようです。 そのため、混乱を避ける目的で、バージョン 2.3 から ExtensionAction が使用されています。 下位互換性を実現するために、拡張機能ではモードと ExtensionAction の両方がサポートされます。 
+> 2\.3 未満のバージョンを使用している場合、モード パラメーターは ExtensionAction と同じです。 モードは多義な用語であるようです。 そのため、混乱を避ける目的で、バージョン 2.3 から ExtensionAction が使用されています。 下位互換性を実現するために、拡張機能ではモードと ExtensionAction の両方がサポートされます。 
 >
 
 ### <a name="12-protected-configuration"></a>1.2 保護された構成
@@ -284,7 +284,7 @@ Azure Resource Manager テンプレートの詳細については、[Azure Resou
 
 ## <a name="azure-cli-deployment"></a>Azure CLI でのデプロイ
 
-### <a name="21-using-azure-cliazure-cli"></a>2.1. **[Azure CLI]**[azure-cli の使用
+### <a name="21-using-azure-cliazure-cli"></a>2.1. **[Azure CLI]** [azure-cli の使用
 DSCForLinux 拡張機能をデプロイする前に、セクション 3. のさまざまなシナリオに応じて、`public.json` と `protected.json` を構成する必要があります。
 
 #### <a name="211-classic"></a>2.1.1. クラシック
@@ -320,7 +320,7 @@ DSCForLinux Microsoft.OSTCExtensions <version> \
 > Azure Resource Manager モードでは現在、`azure vm extension list` を使用できません。
 >
 
-### <a name="22-using-azure-powershellazure-powershell"></a>2.2. **[Azure PowerShell]**[azure-powershell の使用
+### <a name="22-using-azure-powershellazure-powershell"></a>2.2. **[Azure PowerShell]** [azure-powershell の使用
 
 #### <a name="221-classic"></a>2.2.1. クラシック
 
@@ -420,7 +420,7 @@ az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 ```
 
 エラー コード:51 は、サポートされていないディストリビューションまたはサポートされていない拡張機能アクションのいずれかを表します。
-場合によっては、既に高いバージョンの OMI がマシン内に存在するときに、DSC Linux 拡張機能で OMI のインストールが失敗します  [エラー応答:(000003) ダウングレードは許可されていません]
+場合によっては、既に高いバージョンの OMI がマシン内に存在するときに、DSC Linux 拡張機能で OMI のインストールが失敗します [エラー応答:(000003) ダウングレードは許可されていません]
 
 
 

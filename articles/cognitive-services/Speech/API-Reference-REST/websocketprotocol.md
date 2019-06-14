@@ -12,11 +12,11 @@ ms.date: 09/18/2018
 ms.author: zhouwang
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: d6601f57d87b518b2061df64174818432b822755
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58076192"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60515320"
 ---
 # <a name="bing-speech-websocket-protocol"></a>Bing Speech の WebSocket プロトコル
 
@@ -69,7 +69,7 @@ Speech Service では、すべてのクライアントに、接続を識別す�
 
 有効な JWT アクセス トークンを取得するために使用される API キーのサブスクライブ方法と取得方法については、[Cognitive Services のサブスクリプション](https://azure.microsoft.com/try/cognitive-services/)に関するページをご覧ください。
 
-API キーは、トークン サービスに渡されます。 例: 
+API キーは、トークン サービスに渡されます。 例:
 
 ``` HTTP
 POST https://api.cognitive.microsoft.com/sts/v1.0/issueToken
@@ -82,7 +82,7 @@ Content-Length: 0
 |----|----|----|
 | Ocp-Apim-Subscription-Key | ASCII | Your subscription key (サブスクリプション キー) |
 
-トークン サービスは、JWT アクセス トークンを `text/plain` として返します。 その後 JWT は、文字列 `Bearer` のプレフィックスが付いた *Authorization* ヘッダーで、`Base64 access_token` としてハンドシェイクに渡されます。 例: 
+トークン サービスは、JWT アクセス トークンを `text/plain` として返します。 その後 JWT は、文字列 `Bearer` のプレフィックスが付いた *Authorization* ヘッダーで、`Base64 access_token` としてハンドシェイクに渡されます。 例:
 
 `Authorization: Bearer [Base64 access_token]`
 

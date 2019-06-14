@@ -10,11 +10,11 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 10/19/2018
 ms.openlocfilehash: 3f890e6cabd757fdd38374befaaccd1a10c9bd96
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57192464"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62106212"
 ---
 # <a name="monitor-logic-apps-with-azure-monitor-logs"></a>Azure Monitor ログでロジック アプリを監視する
 
@@ -33,7 +33,7 @@ ms.locfileid: "57192464"
 
 ## <a name="turn-on-diagnostics-logging-when-creating-logic-apps"></a>ロジック アプリの作成時に診断ログの記録をオンにする
 
-1. [Azure Portal](https://portal.azure.com) で、ロジック アプリを作成します。 **[リソースの作成]** > **[統合]** > **[ロジック アプリ]** を選択します。
+1. [Azure Portal](https://portal.azure.com) で、ロジック アプリを作成します。 **[リソースの作成]**  >  **[統合]**  >  **[ロジック アプリ]** を選択します。
 
    ![ロジック アプリを作成します](media/logic-apps-monitor-your-logic-apps-oms/find-logic-apps-azure.png)
 
@@ -52,7 +52,7 @@ ms.locfileid: "57192464"
       この手順を完了すると、Azure によりロジック アプリが作成されます。このアプリは、Log Analytics ワークスペースに関連付けられています。 
       また、この手順では、ワークスペースに Logic Apps 管理ソリューションが自動的にインストールされます。
 
-   1. 操作が完了したら、**[作成]** を選択します。
+   1. 操作が完了したら、 **[作成]** を選択します。
 
 1. ロジック アプリの実行を確認するには、[この手順を続行します](#view-logic-app-runs-oms)。
 
@@ -60,7 +60,7 @@ ms.locfileid: "57192464"
 
 ロジック アプリの作成時にすでに Azure Monitor ログをオンにしている場合は、この手順をスキップします。 Logic Apps 管理ソリューションが既にインストールされています。
 
-1. [Azure portal](https://portal.azure.com) で **[すべてのサービス]** を選択します。 検索ボックスに「log analytics」と入力して検索し、**[Log Analytics]** を選択します。
+1. [Azure portal](https://portal.azure.com) で **[すべてのサービス]** を選択します。 検索ボックスに「log analytics」と入力して検索し、 **[Log Analytics]** を選択します。
 
    !["Log Analytics" を選択する](./media/logic-apps-monitor-your-logic-apps-oms/find-log-analytics.png)
 
@@ -68,11 +68,11 @@ ms.locfileid: "57192464"
 
    ![Log Analytics ワークスペースを選択する](./media/logic-apps-monitor-your-logic-apps-oms/select-log-analytics-workspace.png)
 
-1. **[Log Analytics の使用を開始する]** > **[監視ソリューションの構成]** の順に選択し、**[ソリューションの表示]** を選択します。
+1. **[Log Analytics の使用を開始する]**  >  **[監視ソリューションの構成]** の順に選択し、 **[ソリューションの表示]** を選択します。
 
    ![[ソリューションの表示] を選択する](media/logic-apps-monitor-your-logic-apps-oms/log-analytics-workspace.png)
 
-1. [概要] ページで、**[追加]** を選択して、**[管理ソリューション]** の一覧を開きます。 その一覧から **[Logic Apps 管理]** を選択します。 
+1. [概要] ページで、 **[追加]** を選択して、 **[管理ソリューション]** の一覧を開きます。 その一覧から **[Logic Apps 管理]** を選択します。 
 
    ![[Logic Apps 管理] を選択する](./media/logic-apps-monitor-your-logic-apps-oms/add-logic-apps-management-solution.png)
 
@@ -90,7 +90,7 @@ ms.locfileid: "57192464"
 
 ## <a name="view-logic-app-run-information"></a>ロジック アプリ実行情報を参照する
 
-ロジック アプリを実行した後、**[Logic Apps 管理]** タイルで状態と実行件数を参照できます。 
+ロジック アプリを実行した後、 **[Logic Apps 管理]** タイルで状態と実行件数を参照できます。 
 
 1. Log Analytics ワークスペースに移動し、[概要] ページを開きます。 **[Logic Apps 管理]** を選択します。 
 
@@ -109,16 +109,16 @@ ms.locfileid: "57192464"
 
    このページには、次のような高度なオプションがあります。
 
-   * **[追跡対象プロパティ]**:
+   * **[追跡対象プロパティ]** :
 
-     この列には、ロジック アプリの追跡プロパティがアクション別にグループ化されて表示されます。 追跡対象プロパティを表示するには、**[表示]** を選択します。 
+     この列には、ロジック アプリの追跡プロパティがアクション別にグループ化されて表示されます。 追跡対象プロパティを表示するには、 **[表示]** を選択します。 
      追跡対象プロパティを検索するには、列フィルターを使用します。
    
      ![ロジック アプリの追跡対象プロパティを表示する](media/logic-apps-monitor-your-logic-apps-oms/logic-app-tracked-properties.png)
 
      追跡対象プロパティを新たに追加した場合、最初に表示されるまでに 10 - 15 分かかる場合があります。 [ロジック アプリに追跡対象プロパティを追加する方法](logic-apps-monitor-your-logic-apps.md#azure-diagnostics-event-settings-and-details)をご覧ください。
 
-   * **[再送信]:** 失敗、成功、または実行中の状態の、1 つ以上のロジック アプリの実行を再送信できます。 再送信する実行のチェックボックスをオンにして、**[再送信]** を選択します。 
+   * **[再送信]:** 失敗、成功、または実行中の状態の、1 つ以上のロジック アプリの実行を再送信できます。 再送信する実行のチェックボックスをオンにして、 **[再送信]** を選択します。 
 
      ![ロジック アプリの実行を再送信する](media/logic-apps-monitor-your-logic-apps-oms/logic-app-resubmit.png)
 
@@ -138,16 +138,16 @@ ms.locfileid: "57192464"
 
    ![ロジック アプリの実行のアクションを表示する](media/logic-apps-monitor-your-logic-apps-oms/logic-app-action-details.png)
    
-1. 結果ページで、結果の背後にあるクエリを表示したり、すべての結果を表示したりするには、**[See All]\(すべて表示\)** を選択します。すると、[ログ検索] ページが開きます。
+1. 結果ページで、結果の背後にあるクエリを表示したり、すべての結果を表示したりするには、 **[See All]\(すべて表示\)** を選択します。すると、[ログ検索] ページが開きます。
    
    ![結果ページの [See All]\(すべて表示\)](media/logic-apps-monitor-your-logic-apps-oms/logic-app-seeall.png)
    
    [ログ検索] ページで、
 
-   * クエリの結果を表で確認するには、**[表]** を選択します。
+   * クエリの結果を表で確認するには、 **[表]** を選択します。
 
    * クエリを変更するには、検索バーでクエリ文字列を編集します。 
-   より高いエクスペリエンスを得るには、**[高度な分析]** を選択します。
+   より高いエクスペリエンスを得るには、 **[高度な分析]** を選択します。
 
      ![ロジック アプリの実行のアクションと詳細を表示する](media/logic-apps-monitor-your-logic-apps-oms/log-search-page.png)
      

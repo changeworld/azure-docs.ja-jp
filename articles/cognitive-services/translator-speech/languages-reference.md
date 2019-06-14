@@ -12,11 +12,11 @@ ms.date: 05/18/2018
 ms.author: v-jansko
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 7498ba08b9ce7b6aae10f38a393eb8cba37f3f4e
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57435764"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60827903"
 ---
 # <a name="translator-speech-api-languages"></a>Translator Speech API: Languages
 
@@ -132,7 +132,7 @@ Langagues { speech (object, optional), text (object, optional), tts (object, opt
 
 ### <a name="headers"></a>headers
 
-|ヘッダー|説明|type|
+|ヘッダー|説明|Type|
 :--|:--|:--|
 X-RequestId|要求を識別するためにサーバーによって生成され、トラブルシューティングのために使用される値。|文字列|
 

@@ -11,10 +11,10 @@ ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 12/18/2017
 ms.openlocfilehash: e6a7eaa94e7196c830a66b2d77023bd562119c92
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64699438"
 ---
 # <a name="analyze-customer-churn-using-azure-machine-learning-studio"></a>Azure Machine Learning Studio を使用して顧客離れを分析する
@@ -188,7 +188,7 @@ Machine Learning Studio でホストされたモデルは、実行速度の点�
 電気通信業界では、離反の分析用に、いくつかのプラクティスが登場しています。  
 
 * 4 つの基本的なカテゴリに対応したメトリックを探してください。
-  * **エンティティ (サブスクリプションなど)**。 離反の主体であるサブスクリプションまたは顧客に関する基本的な情報を準備します。
+  * **エンティティ (サブスクリプションなど)** 。 離反の主体であるサブスクリプションまたは顧客に関する基本的な情報を準備します。
   * **アクティビティ**。 たとえば、ログインの数など、エンティティに関連するすべての可能な使用状況情報を取得します。
   * **カスタマー サポート**。 サブスクリプションに問題やカスタマー サポートとのやり取りがあったかどうかを示す情報をカスタマー サポート ログから収集します。
   * **競合に関するデータとビジネス データ**。 顧客に関して入手可能な情報をすべて入手します (入手できない場合や、トラッキングできない場合もあります)。

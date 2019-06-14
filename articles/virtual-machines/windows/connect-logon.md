@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 11/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 136b9141ccccfedf8d37fa0832b0673495d82417
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66160001"
 ---
 # <a name="how-to-connect-and-sign-on-to-an-azure-virtual-machine-running-windows"></a>Windows が実行されている Azure 仮想マシンに接続してサインオンする方法
@@ -37,7 +37,7 @@ Mac から Windows VM に接続するには、[Microsoft リモート デスク�
 2. `.rdp` ファイルの発行元が不明であることを示す警告が表示されます。 これは予期されることです。 **[リモート デスクトップ接続]** ウィンドウで **[接続]** を選択して続行します。
    
     ![Screenshot of a warning about an unknown publisher.](./media/connect-logon/rdp-warn.png)
-3. **[Windows セキュリティ]** ウィンドウで、**[その他]**、**[別のアカウントを使用する]** の順に選択します。 仮想マシンのアカウントの資格情報を入力し、**[OK]** を選択します。
+3. **[Windows セキュリティ]** ウィンドウで、 **[その他]** 、 **[別のアカウントを使用する]** の順に選択します。 仮想マシンのアカウントの資格情報を入力し、 **[OK]** を選択します。
    
      **ローカル アカウント**:通常は、仮想マシンの作成時に指定したローカル アカウントのユーザー名とパスワードです。 この場合、ドメインは仮想マシンの名前です。これを *vmname*&#92;*username* の形式で入力します。  
    

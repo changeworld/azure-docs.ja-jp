@@ -11,11 +11,11 @@ ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
 ms.topic: article
 ms.date: 01/01/2018
 ms.openlocfilehash: daeb900abc3f24a408fc1b5f6e989e5181f2a463
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57862745"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60427049"
 ---
 # <a name="create-edit-or-extend-json-for-logic-app-definitions-in-azure-logic-apps"></a>Azure Logic Apps でのロジック アプリ定義の JSON の作成、編集、拡張
 
@@ -33,7 +33,7 @@ JSON でロジック アプリ定義を操作するには、Azure Portal また�
 
 2. 左側のメニューの **[すべてのサービス]** を選択します。 検索ボックスで "logic apps" を検索し、検索結果からロジック アプリを選択します。
 
-3. ロジック アプリのメニューで、**[開発ツール]** の **[ロジック アプリ コード ビュー]** を選択します。
+3. ロジック アプリのメニューで、 **[開発ツール]** の **[ロジック アプリ コード ビュー]** を選択します。
 
    コード ビュー エディターが開き、JSON 形式でロジック アプリ定義が表示されます。
 
@@ -100,7 +100,7 @@ Visual Studio では、Azure Portal から直接デプロイされているか�
    2 つ以上の文字列を結合する場合、`concat` 関数を使用することもできます。 
    たとえば、`"@concat('#',parameters('currentFeedUrl'))"` は上記の例と同様に動作します。
 
-3.  完了したら、**[保存]** を選択します。
+3.  完了したら、 **[保存]** を選択します。
 
 これで、`currentFeedURL` オブジェクトから別の URL を渡すことで、Web サイトの RSS フィードを変更できるようになりました。
 

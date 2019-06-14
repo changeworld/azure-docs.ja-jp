@@ -17,10 +17,10 @@ ms.date: 12/12/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
 ms.openlocfilehash: cdf7385b3686c5c3f91e66c67ab5f0758935b39f
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66730140"
 ---
 # <a name="create-a-windows-virtual-machine-with-the-simplified-new-azvm-cmdlet-in-cloud-shell"></a>Cloud Shell で簡素化された New-AzVM コマンドレットを使用して Windows 仮想マシンを作成する 

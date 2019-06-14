@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 02/19/2019
 ms.author: banders
 ms.openlocfilehash: f93152ae3db926fb989c219d1e515abaf0281bf4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57837883"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60372183"
 ---
 # <a name="understand-the-charges-on-your-microsoft-customer-agreements-invoice"></a>Microsoft 顧客契約の請求書での料金を理解する
 
@@ -38,7 +38,7 @@ Microsoft 顧客契約の請求先アカウントにおいて、請求書はす�
 
     ![Azure portal でのコストの管理と請求の検索を示すスクリーンショット](./media/billing-understand-your-bill-mca/billing-search-cost-management-billing.png)
 
-3. 画面の左側から **[すべてのトランザクション]** を選択します。 アクセス方法によっては、請求先アカウントまたは課金プロファイルを選択し、**[すべてのトランザクション]** を選択することが必要な場合があります。
+3. 画面の左側から **[すべてのトランザクション]** を選択します。 アクセス方法によっては、請求先アカウントまたは課金プロファイルを選択し、 **[すべてのトランザクション]** を選択することが必要な場合があります。
 
 4. [すべてのトランザクション] ページには次の情報が表示されます。
 

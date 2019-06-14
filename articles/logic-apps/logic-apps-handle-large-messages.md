@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 4/27/2018
 ms.author: shhurst
 ms.openlocfilehash: 5aa5ea2a39a0fb9f969e965fed14063522197cda
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50085802"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60303792"
 ---
 # <a name="handle-large-messages-with-chunking-in-azure-logic-apps"></a>Azure Logic Apps でチャンクを使用して大きいサイズのメッセージを処理する
 
@@ -57,11 +57,11 @@ Logic Apps と通信するサービスが、独自のメッセージ サイズ�
 
 また、HTTP アクションがチャンクを既に有効にしていない場合は、アクションの `runTimeConfiguration` プロパティにチャンクを設定する必要があります。 このプロパティは、後述するようにコード ビュー エディターでアクション内に直接設定するか、次の説明に従って Logic Apps デザイナーで設定できます。
 
-1. HTTP アクションの右上隅の省略記号ボタン (**.**) を選択し、**［設定］** を選択します。
+1. HTTP アクションの右上隅の省略記号ボタン ( **.** ) を選択し、 **［設定］** を選択します。
 
    ![アクションの [設定] メニューを開く](./media/logic-apps-handle-large-messages/http-settings.png)
 
-2. **[コンテンツ転送]** で、**[チャンクの許可]** を **[On]** に設定します。
+2. **[コンテンツ転送]** で、 **[チャンクの許可]** を **[On]** に設定します。
 
    ![チャンクをオンにする](./media/logic-apps-handle-large-messages/set-up-chunking.png)
 
@@ -117,18 +117,18 @@ HTTP アクションからチャンクされたコンテンツをアップロー
 
 1. ロジック アプリは、最初の HTTP POST または PUT 要求をメッセージ本文を空にして送信します。 要求ヘッダーには、ロジック アプリがチャンクでアップロードするコンテンツに関する情報が含まれます。
 
-   | Logic Apps の要求ヘッダー フィールド | 値 | 型 | 説明 |
+   | Logic Apps の要求ヘッダー フィールド | 値 | Type | 説明 |
    |---------------------------------|-------|------|-------------|
-   | **x-ms-transfer-mode** | chunked | String | コンテンツがチャンクでアップロードされることを示します |
+   | **x-ms-transfer-mode** | chunked | string | コンテンツがチャンクでアップロードされることを示します |
    | **x-ms-content-length** | <*content-length*> | 整数 | チャンクする前のコンテンツ全体のサイズ (バイト単位) |
    ||||
 
 2. エンドポイントは、成功を示す状態コード "200" と次の省略可能な情報を返します。
 
-   | エンドポイントの応答ヘッダー フィールド | 型 | 必須 | 説明 |
+   | エンドポイントの応答ヘッダー フィールド | Type | 必須 | 説明 |
    |--------------------------------|------|----------|-------------|
-   | **x-ms-chunk-size** | 整数 | いいえ  | 推奨されたチャンク サイズ (バイト単位) |
-   | **Location** | String | いいえ  | HTTP PATCH メッセージを送信する URL の場所 |
+   | **x-ms-chunk-size** | 整数 | いいえ | 推奨されたチャンク サイズ (バイト単位) |
+   | **Location** | string | いいえ | HTTP PATCH メッセージを送信する URL の場所 |
    ||||
 
 3. ロジック アプリは、それぞれが次の情報を含む フォローアップ HTTP PATCH メッセージを作成して送信します。
@@ -137,11 +137,11 @@ HTTP アクションからチャンクされたコンテンツをアップロー
 
    * これらのヘッダーには、それぞれの PATCH メッセージで送信されるコンテンツのチャンクの詳細が記述されます。
 
-     | Logic Apps の要求ヘッダー フィールド | 値 | type | 説明 |
+     | Logic Apps の要求ヘッダー フィールド | 値 | Type | 説明 |
      |---------------------------------|-------|------|-------------|
-     | **Content-Range** | <*range*> | String | 現在のコンテンツのチャンクのバイト範囲。開始値、終了値、および合計コンテンツ サイズ合計が含まれます。例: "bytes=0-1023/10100" |
-     | **Content-Type** | <*content-type*> | String | チャンクされたコンテンツの種類 |
-     | **Content-Length** | <*content-length*> | String | 現在のチャンクのサイズ (バイト単位) |
+     | **Content-Range** | <*range*> | string | 現在のコンテンツのチャンクのバイト範囲。開始値、終了値、および合計コンテンツ サイズ合計が含まれます。例: "bytes=0-1023/10100" |
+     | **Content-Type** | <*content-type*> | string | チャンクされたコンテンツの種類 |
+     | **Content-Length** | <*content-length*> | string | 現在のチャンクのサイズ (バイト単位) |
      |||||
 
 4. PATCH 要求後に、エンドポイントは、状態コード "200" で応答することで、各チャンクの受信を確認します。

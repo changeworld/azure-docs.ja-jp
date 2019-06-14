@@ -13,11 +13,11 @@ ms.date: 02/19/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: dbfcab7900a1552a46341ec71b8b0ea4b41b0bce
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57339167"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60474723"
 ---
 # <a name="view-your-privacy-related-info-from-the-my-profile-preview-portal"></a>マイ プロファイル (プレビュー) ポータルからご自分のプライバシー関連情報を表示する
 **マイ プロファイル** ポータルの **[プライバシー]** ページから、所属の組織でご自分のデータがどのように使用されているかを確認できます。
@@ -27,7 +27,7 @@ ms.locfileid: "57339167"
 ## <a name="view-your-privacy-related-info"></a>プライバシー関連情報を表示する
 1. ご自分の職場または学校アカウントでサインインした後、 https://myprofile.microsoft.com/ ページに移動します。
 
-2. 左側のナビゲーション ウィンドウから **[プライバシー]** を選択するか、**[プライバシー]** ブロックから **[プライバシーの確認]** リンクを選択します。
+2. 左側のナビゲーション ウィンドウから **[プライバシー]** を選択するか、 **[プライバシー]** ブロックから **[プライバシーの確認]** リンクを選択します。
 
     ![[プライバシー] リンクが強調表示されている [マイ プロファイル] ページ](media/myprofile-portal/myprofile-portal-privacy.png)
 

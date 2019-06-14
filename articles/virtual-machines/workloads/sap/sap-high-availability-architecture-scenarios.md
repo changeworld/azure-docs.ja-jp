@@ -18,11 +18,11 @@ ms.date: 01/21/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 37f5040585681a53743fb3426b7f7ffac36de51c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58008692"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60936277"
 ---
 # <a name="high-availability-architecture-and-scenarios-for-sap-netweaver"></a>SAP NetWeaver のための高可用性のアーキテクチャとシナリオ
 
@@ -250,7 +250,7 @@ Azure での SAP 高可用性は、次の 3 つの種類に分類できます。
 
 * **SAP アプリケーションの高可用性** 
 
-    SAP システム全体の高可用性を実現するには、SAP システムの重要なすべてのコンポーネントを保護する必要があります。 例: 
+    SAP システム全体の高可用性を実現するには、SAP システムの重要なすべてのコンポーネントを保護する必要があります。 例:
     * SAP アプリケーション サーバーの冗長性。
     * 一意のコンポーネント。 たとえば、SAP ASCS/SCS インスタンスやデータベース管理システム (DBMS) などの単一障害点 (SPOF) コンポーネントがあります。
 
@@ -268,7 +268,7 @@ Windows 向けはありますが、Linux 向けの sapinst-integrated SAP 高可
 
 (可用性サービス #1/100) * (可用性サービス #2/100) * (可用性サービス #3/100) \*…
 
-例: 
+例:
 
 (99.95/100) * (99.9/100) * (99.9/100) = 0.9975、つまり 99.75% の全体的な可用性。
 
@@ -335,7 +335,7 @@ Linux で WSFC や Pacemaker などの機能 (現在 SUSE Linux Enterprise Serve
 
 ## <a name="baed0eb3-c662-4405-b114-24c10a62954e"></a> Azure IaaS での SAP アプリケーションの高可用性
 
-SAP システム全体の高可用性を実現するには、SAP システムの重要なすべてのコンポーネントを保護する必要があります。 例: 
+SAP システム全体の高可用性を実現するには、SAP システムの重要なすべてのコンポーネントを保護する必要があります。 例:
   * SAP アプリケーション サーバーの冗長性。
   * 一意のコンポーネント。 たとえば、SAP ASCS/SCS インスタンスやデータベース管理システム (DBMS) などの単一障害点 (SPOF) コンポーネントがあります。
 
@@ -345,7 +345,7 @@ SAP システム全体の高可用性を実現するには、SAP システムの
 
 > このセクションは次に適用されます。
 >
-> ![ Windows][Logo_Windows] Windows および ![Linux][Logo_Linux] Linux
+> ![Windows][Logo_Windows] Windows および ![Linux][Logo_Linux] Linux
 >
 
 SAP アプリケーション サーバーおよびダイアログ インスタンスについては、通常、特定の高可用性ソリューションは不要です。 高可用性は冗長性によって実現し、Azure Virtual Machines のさまざまなインスタンスで複数のダイアログ インスタンスを構成します。 Azure Virtual Machines の 2 つのインスタンスに少なくとも 2 つの SAP アプリケーション インスタンスをインストールする必要があります。
@@ -369,7 +369,7 @@ Azure スケール ユニット内の Azure 可用性セットで使用できる
 専用の VM 内に少数の SAP アプリケーション サーバー インスタンスをデプロイし、5 つの更新ドメインがあるとした場合、次のような状態になります。 可用性セット内の更新ドメインと障害ドメインの実際の最大数は、後で変わる可能性があります。
 
 "![図 2:Azure 可用性セット内の SAP アプリケーション サーバーの高可用性][planning-guide-figure-3000]
-"_**図 2:** Azure 可用性セット内の SAP アプリケーション サーバーの高可用性_"
+" _**図 2:** Azure 可用性セット内の SAP アプリケーション サーバーの高可用性_"
 
 詳細については、「[Azure での Windows 仮想マシンの可用性の管理][azure-virtual-machines-manage-availability]」をご覧ください。
 
@@ -383,7 +383,7 @@ Azure スケール ユニット内の Azure 可用性セットで使用できる
 
 ### <a name="high-availability-architecture-for-an-sap-ascsscs-instance-on-windows"></a>Windows での SAP ASCS/SCS インスタンスの高可用性のアーキテクチャ
 
-> ![ Windows][Logo_Windows]  Windows
+> ![Windows][Logo_Windows] Windows
 >
 
 WSFC ソリューションを使用して、SAP ASCS/SCS インスタンスを保護できます。 ソリューションには、2 つのバリエーションがあります。
@@ -403,7 +403,7 @@ Red Hat クラスター フレームワークを使用した SAP ASCS/SCS イン
 
 ### <a name="sap-netweaver-multi-sid-configuration-for-a-clustered-sap-ascsscs-instance"></a>クラスター化された SAP ASCS/SCS インスタンスのための SAP NetWeaver マルチ SID の構成
 
-> ![ Windows][Logo_Windows]  Windows
+> ![Windows][Logo_Windows] Windows
 > 
 > 現在、マルチ SID は WSFC でのみサポートされます。 マルチ SID は、ファイル共有と共有ディスクを使用してサポートされます。
 > 

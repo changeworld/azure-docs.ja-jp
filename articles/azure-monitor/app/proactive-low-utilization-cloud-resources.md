@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: mbullwin
 ms.openlocfilehash: 7cf72068b9cabceb0c5b535986ac4dfb62151b94
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54027601"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61297513"
 ---
 # <a name="low-cpu-utilization-in-cloud-resources-preview"></a>クラウド リソースでの低い CPU 使用率 (プレビュー)
 
@@ -34,5 +34,5 @@ Application Insight は、アプリケーションの各ロール インスタ�
 ## <a name="how-do-i-fix-it"></a>どのように修正すればよいですか
 通知には、診断プロセスでサポートされる診断情報が含まれています。
 1. **トリアージ**。 通知には、CPU 使用率が低くなっているアプリのロールが示されます。 この情報を基に、問題に優先順位を割り当てることができます。
-2. **範囲**。 いくつのロールで CPU 使用率が低くなり、各ロールのいくつのインスタンスで CPU 使用率が低いのか?  この情報を通知から取得できます。
+2. **範囲**。 いくつのロールで CPU 使用率が低くなり、各ロールのいくつのインスタンスで CPU 使用率が低いのか? この情報を通知から取得できます。
 3. **診断**。 検出には CPU が使用された割合が含まれ、特定の期間の各インスタンスの CPU 使用率が示されます。 サポート情報 (CPU 使用の割合など) にリンクしている関連項目とレポートを使用して、問題の詳細な診断に役立てることもできます。

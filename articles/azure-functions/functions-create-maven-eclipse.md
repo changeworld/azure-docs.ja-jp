@@ -13,11 +13,11 @@ ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
 ms.openlocfilehash: 123a24eb13de584d8e3b70d0d8b1173f583867c1
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58881428"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61341441"
 ---
 # <a name="create-your-first-function-with-java-and-eclipse"></a>Java と Eclipse を使用して初めての関数を作成する 
 
@@ -44,7 +44,7 @@ Azure Functions を実行およびデバッグするためのローカル環境�
 ## <a name="create-a-functions-project"></a>Functions プロジェクトを作成する
 
 1. Eclipse の **[File]\(ファイル\)** メニューから **[Project]\(プロジェクト\)** を選択します。 
-1. **[New Project]\(新しいプロジェクト\)** ウィンドウで **[Java Project]\(Java プロジェクト\)** フォルダーを開き、**[Maven Project]\(Maven プロジェクト\)** を選択して **[Next]\(次へ\)** を選択します。
+1. **[New Project]\(新しいプロジェクト\)** ウィンドウで **[Java Project]\(Java プロジェクト\)** フォルダーを開き、 **[Maven Project]\(Maven プロジェクト\)** を選択して **[Next]\(次へ\)** を選択します。
 1. **[New Maven Project]\(新しい Maven プロジェクト\)** ダイアログを既定値のままにして **[Next]\(次へ\)** を選択します。
 1. **[Add Archetype]\(Archetype の追加\)** を選択し、[azure-functions-archetype](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype) のエントリを追加します。
     - [Archetype Group ID]\(Archetype グループ ID\): com.microsoft.azure
@@ -60,8 +60,8 @@ Maven は、_artifactId_ という名前の新しいフォルダーに、プロ�
 > [!NOTE]
 > 関数をローカルで実行およびデバッグするには、[Azure Functions Core Tools、バージョン 2](functions-run-local.md#v2) をインストールする必要があります。
 
-1. 生成されたプロジェクトを右クリックし、**[別のユーザーとして実行]** と **[Maven ビルド]** を選択します。
-1. **[構成の編集]** ダイアログで、**[目標]** フィールドと **[名前]** フィールドに `package` を入力し、**[実行]** を選択します。 関数コードがビルドされ、パッケージ化されます。
+1. 生成されたプロジェクトを右クリックし、 **[別のユーザーとして実行]** と **[Maven ビルド]** を選択します。
+1. **[構成の編集]** ダイアログで、 **[目標]** フィールドと **[名前]** フィールドに `package` を入力し、 **[実行]** を選択します。 関数コードがビルドされ、パッケージ化されます。
 1. ビルドが完了したら、目標と名前に `azure-functions:run` を指定して前述のように別の実行構成を作成します。 **[実行]** を選択して IDE で関数を実行します。
 
 関数のテストが完了したら、コンソール ウィンドウのランタイムを終了します。 アクティブにして同時にローカルで実行できる関数ホストは 1 つだけです。
@@ -70,7 +70,7 @@ Maven は、_artifactId_ という名前の新しいフォルダーに、プロ�
 
 前の手順で設定した **[別のユーザーとして実行]** で、`azure-functions:run` を `mvn azure-functions:run -DenableDebug` に変更し、更新された構成を実行してデバッグ モードで関数アプリを起動します。
 
-**[実行]** メニューを選択し、**[デバッグ構成]** を開きます。 **[Remote Java Application]\(リモート Java アプリケーション\)** を選択し、新しいアプリケーションを作成します。 構成に名前を付けて、設定を入力します。 ポートは、関数ホストによって開かれたデバッグ ポート (既定では `5005`) と同じにする必要があります。 設定が完了したら、[`Debug`] をクリックしてデバッグを開始します。
+**[実行]** メニューを選択し、 **[デバッグ構成]** を開きます。 **[Remote Java Application]\(リモート Java アプリケーション\)** を選択し、新しいアプリケーションを作成します。 構成に名前を付けて、設定を入力します。 ポートは、関数ホストによって開かれたデバッグ ポート (既定では `5005`) と同じにする必要があります。 設定が完了したら、[`Debug`] をクリックしてデバッグを開始します。
 
 ![Eclipse での関数のデバッグ](media/functions-create-first-java-eclipse/debug-configuration-eclipse.PNG)
 

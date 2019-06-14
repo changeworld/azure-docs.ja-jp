@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: jingwang
 ms.openlocfilehash: 9bf90c9d3ce593ba5bf6339cd9cec31bb49f14f1
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55658523"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61399929"
 ---
 # <a name="copy-data-from-netezza-by-using-azure-data-factory"></a>Azure Data Factory を使用して Netezza からデータをコピーする
 
@@ -43,13 +43,13 @@ Netezza のリンクされたサービスでは、次のプロパティがサポ
 |:--- |:--- |:--- |
 | type | **type** プロパティを **Netezza** に設定する必要があります。 | はい |
 | connectionString | Netezza に接続するための ODBC 接続文字列。 <br/>Data Factory に安全に格納するには、このフィールドを SecureString として指定します。 パスワードを Azure Key Vault に格納して、接続文字列から `pwd` 構成をプルすることもできます。 詳細については、次のサンプルと「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」の記事を参照してください。 | はい |
-| connectVia | データ ストアに接続するために使用される [Integration Runtime](concepts-integration-runtime.md)。 セルフホステッド統合ランタイムまたは Azure Integration Runtime (データ ストアがパブリックにアクセスできる場合) を選択できます。 指定されていない場合は、既定の Azure Integration Runtime が使用されます。 |いいえ  |
+| connectVia | データ ストアに接続するために使用される [Integration Runtime](concepts-integration-runtime.md)。 セルフホステッド統合ランタイムまたは Azure Integration Runtime (データ ストアがパブリックにアクセスできる場合) を選択できます。 指定されていない場合は、既定の Azure Integration Runtime が使用されます。 |いいえ |
 
 一般的な接続文字列は `Server=<server>;Port=<port>;Database=<database>;UID=<user name>;PWD=<password>` です。 次の表では、設定できる他のプロパティについて説明します。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| SecurityLevel | ドライバーがデータ ストアへの接続に使用するセキュリティ (SSL/TLS) のレベル。 例: `SecurityLevel=preferredSecured`. サポートされる値は次のとおりです。<br/>- **セキュリティで保護されていない接続のみ** (**onlyUnSecured**):ドライバーで SSL を使用しません。<br/>- **セキュリティで保護されていない接続を優先 (preferredUnSecured) (既定値)**:サーバーによって選択肢が提供される場合、ドライバーでは SSL を使用しません。 <br/>- **セキュリティで保護されている接続を優先 (preferredSecured)**:サーバーによって選択肢が提供される場合、ドライバーで SSL を使用します。 <br/>- **セキュリティで保護されている接続のみ (onlySecured)**:SSL 接続を利用できない場合、ドライバーは接続しません。 | いいえ  |
+| SecurityLevel | ドライバーがデータ ストアへの接続に使用するセキュリティ (SSL/TLS) のレベル。 例: `SecurityLevel=preferredSecured`. サポートされる値は次のとおりです。<br/>- **セキュリティで保護されていない接続のみ** (**onlyUnSecured**):ドライバーで SSL を使用しません。<br/>- **セキュリティで保護されていない接続を優先 (preferredUnSecured) (既定値)** :サーバーによって選択肢が提供される場合、ドライバーでは SSL を使用しません。 <br/>- **セキュリティで保護されている接続を優先 (preferredSecured)** :サーバーによって選択肢が提供される場合、ドライバーで SSL を使用します。 <br/>- **セキュリティで保護されている接続のみ (onlySecured)** :SSL 接続を利用できない場合、ドライバーは接続しません。 | いいえ |
 | CaCertFile | サーバーによって使用される SSL 証明書の完全パス。 例: `CaCertFile=<cert path>;`| はい (SSL が有効になっている場合) |
 
 **例**

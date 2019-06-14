@@ -9,11 +9,11 @@ ms.author: eamono
 ms.topic: conceptual
 ms.date: 10/30/2018
 ms.openlocfilehash: bee414ada61e2cfcf7609b02ef1da7323a0fe0e3
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59606924"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61304649"
 ---
 # <a name="create-an-azure-automation-watcher-tasks-to-track-file-changes-on-a-local-machine"></a>ローカル マシンでのファイル変更を追跡する Azure Automation 監視タスクを作成する
 
@@ -44,18 +44,18 @@ Azure Automation では、PowerShell Runbook で監視タスクを使用して�
 
 このチュートリアルでは、**Watch-NewFile** という名前の監視 Runbook を使用して、ディレクトリ内の新規ファイルを検索します。 この監視 Runbook は、フォルダー内のファイルに対する既知の最終書き込み時刻を取得し、この基準時刻より新しいファイルを監視します。 このステップでは、この Runbook を Automation アカウントにインポートします。
 
-1. Automation アカウントを開き、**[Runbook]** ページをクリックします。
+1. Automation アカウントを開き、 **[Runbook]** ページをクリックします。
 2. **[ギャラリーの参照]** ボタンをクリックします。
-3. "監視 Runbook" を検索し、**[Watcher runbook that looks for new files in a directory]\(ディレクトリ内の新規ファイルを検索する監視 Runbook\)** を選択して **[インポート]** をクリックします。
+3. "監視 Runbook" を検索し、 **[Watcher runbook that looks for new files in a directory]\(ディレクトリ内の新規ファイルを検索する監視 Runbook\)** を選択して **[インポート]** をクリックします。
   ![UI での Automation Runbook のインポート](media/automation-watchers-tutorial/importsourcewatcher.png)
 1. Runbook の名前と説明を入力して **[OK]** を選択し、Automation アカウントにこの Runbook をインポートします。
-1. **[編集]** を選択し、**[公開]** をクリックします。 プロンプトが表示されたら、**[はい]** を選択して Runbook を公開します。
+1. **[編集]** を選択し、 **[公開]** をクリックします。 プロンプトが表示されたら、 **[はい]** を選択して Runbook を公開します。
 
 ## <a name="create-an-automation-variable"></a>Automation 変数を作成する
 
 [Automation 変数](automation-variables.md)を使用して、上述の Runbook が各ファイルから読み取って保存するタイムスタンプを格納します。
 
-1. **[共有リソース]** の **[変数]** を選択し、**[+ 変数の追加]** を選びます。
+1. **[共有リソース]** の **[変数]** を選択し、 **[+ 変数の追加]** を選びます。
 1. 名前に「Watch-NewFileTimestamp」と入力します。
 1. 型には DateTime を選択します。
 1. **[作成]** ボタンをクリックします。 これで、Automation 変数が作成されます。
@@ -64,19 +64,19 @@ Azure Automation では、PowerShell Runbook で監視タスクを使用して�
 
 監視タスクで、アクション Runbook を使用して、監視 Runbook から渡されたデータを操作します。 PowerShell ワークフロー Runbook は監視タスクではサポートされておらず、PowerShell Runbook を使用する必要があります。 この手順では、"Process-NewFile" という名前の事前定義済みのアクション Runbook をインポートして更新します。
 
-1. Automation アカウントに移動して、**[プロセスの自動化]** カテゴリで **[Runbook]** を選択します。
+1. Automation アカウントに移動して、 **[プロセスの自動化]** カテゴリで **[Runbook]** を選択します。
 1. **[ギャラリーの参照]** ボタンをクリックします。
-1. "監視アクション" を検索して **[Watcher action that processes events triggered by a watcher runbook]\(監視 Runbook でトリガーされたイベントを処理する監視アクション\)** を選択し、**[インポート]** をクリックします。
+1. "監視アクション" を検索して **[Watcher action that processes events triggered by a watcher runbook]\(監視 Runbook でトリガーされたイベントを処理する監視アクション\)** を選択し、 **[インポート]** をクリックします。
   ![UI でのアクション Runbook のインポート](media/automation-watchers-tutorial/importsourceaction.png)
 1. Runbook の名前と説明を入力して **[OK]** を選択し、Automation アカウントにこの Runbook をインポートします。
-1. **[編集]** を選択し、**[公開]** をクリックします。 プロンプトが表示されたら、**[はい]** を選択して Runbook を公開します。
+1. **[編集]** を選択し、 **[公開]** をクリックします。 プロンプトが表示されたら、 **[はい]** を選択して Runbook を公開します。
 
 ## <a name="create-a-watcher-task"></a>監視タスクを作成する
 
 監視タスクには、2 つの要素が含まれています。 監視とアクションです。 監視の実行は、監視タスクに定義された間隔で行われます。 監視 Runbook からのデータは、アクション Runbook に渡されます。 この手順では、上記の手順で定義した監視 Runbook とアクション Runbook を参照する監視タスクを構成します。
 
-1. Automation アカウントに移動して、**[プロセスの自動化]** カテゴリで **[監視タスク]** を選択します。
-1. [監視タスク] ページを選択して、**[+ 監視タスクの追加]** ボタンをクリックします。
+1. Automation アカウントに移動して、 **[プロセスの自動化]** カテゴリで **[監視タスク]** を選択します。
+1. [監視タスク] ページを選択して、 **[+ 監視タスクの追加]** ボタンをクリックします。
 1. 名前に「WatchMyFolder」と入力します。
 
 1. **[監視を構成]** を選択し、**Watch-NewFile** Runbook を選びます。
@@ -123,7 +123,7 @@ Mode                LastWriteTime         Length Name
 
 ## <a name="inspect-the-output"></a>出力を確認する
 
-1. Automation アカウントに移動して、**[プロセスの自動化]** カテゴリで **[監視タスク]** を選択します。
+1. Automation アカウントに移動して、 **[プロセスの自動化]** カテゴリで **[監視タスク]** を選択します。
 1. 監視タスク "WatchMyFolder" を選択します。
 1. **[ストリーム]** の **[監視ストリームを表示]** をクリックして、監視が新しいファイルを検出し、アクション Runbook を開始したかを確認します。
 1. **[監視アクション ジョブを表示]** をクリックして、アクション Runbook ジョブを表示します。 各ジョブを選択すると、ジョブの詳細を確認できます。

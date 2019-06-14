@@ -11,11 +11,11 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: delhan
 ms.openlocfilehash: 59602977c1b7f6dd0524c6535d8458d3eb1a3f26
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54425579"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60505871"
 ---
 # <a name="how-to-use-boot-diagnostics-to-troubleshoot-virtual-machines-in-azure"></a>ブート診断を使用して、Azure 内の仮想マシンをトラブルシューティングする方法
 
@@ -47,7 +47,7 @@ Linux 仮想マシンについては、コンソール ログの出力をポー�
 
 次の手順は、Resource Manager デプロイ モデルを使用して作成された Azure 仮想マシン向けです。
 
-**[管理]** タブの **[監視]** セクションで、**[ブート診断]** がオンになっていることを確認します。 **[診断ストレージ アカウント]** ドロップダウン リストから、診断ファイルの配置先となるストレージ アカウントを選択します。
+**[管理]** タブの **[監視]** セクションで、 **[ブート診断]** がオンになっていることを確認します。 **[診断ストレージ アカウント]** ドロップダウン リストから、診断ファイルの配置先となるストレージ アカウントを選択します。
  
 ![VM を作成する](./media/virtual-machines-common-boot-diagnostics/enable-boot-diagnostics-vm.png)
 
@@ -86,8 +86,8 @@ Azure Resource Manager テンプレートからデプロイする場合は、ご
 既存の仮想マシンでブート診断を有効にするには、次の手順に従います。
 
 1. [Azure portal](https://portal.azure.com) にサインインし、仮想マシンを選択します。
-2. **[サポート + トラブルシューティング]** セクションで **[ブート診断]** を選択し、**[設定]** タブを選択します。
-3. **[ブート診断]** 設定で、状態を **[オン]** に変更し、**[ストレージ アカウント]** ドロップダウン リストからストレージ アカウントを選択します。 
+2. **[サポート + トラブルシューティング]** セクションで **[ブート診断]** を選択し、 **[設定]** タブを選択します。
+3. **[ブート診断]** 設定で、状態を **[オン]** に変更し、 **[ストレージ アカウント]** ドロップダウン リストからストレージ アカウントを選択します。 
 4. 変更を保存します。
 
     ![既存の VM の更新](./media/virtual-machines-common-boot-diagnostics/enable-for-existing-vm.png)

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: hrasheed
 ms.openlocfilehash: 5e384520c1b8d6cf5e3b182bbddf41a5f4f7f8f6
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64707819"
 ---
 # <a name="debug-apache-spark-jobs-running-on-azure-hdinsight"></a>Azure HDInsight で実行される Apache Spark ジョブのデバッグ
@@ -24,7 +24,7 @@ ms.locfileid: "64707819"
 
 * Azure サブスクリプション。 [Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 * HDInsight での Apache Spark クラスター。 手順については、「 [Create Apache Spark clusters in Azure HDInsight (Azure HDInsight での Apache Spark クラスターの作成)](apache-spark-jupyter-spark-sql.md)」を参照してください。
-* 「**[Machine Learning:MLlib を使用した食品検査データの予測分析](apache-spark-machine-learning-mllib-ipython.md)**」のノートブックが既に実行されているはずです。 このノートブックの実行方法については、リンク先のページを参照してください。  
+* 「 **[Machine Learning:MLlib を使用した食品検査データの予測分析](apache-spark-machine-learning-mllib-ipython.md)** 」のノートブックが既に実行されているはずです。 このノートブックの実行方法については、リンク先のページを参照してください。  
 
 ## <a name="track-an-application-in-the-yarn-ui"></a>YARN UI でのアプリケーションの追跡
 1. YARN UI を起動します。 **[クラスター ダッシュボード]** の **[Yarn]** をクリックします。
@@ -32,7 +32,7 @@ ms.locfileid: "64707819"
     ![Launch YARN UI](./media/apache-spark-job-debugging/launch-yarn-ui.png)
    
    > [!TIP]  
-   > Ambari UI から YARN UI を起動してもかまいません。 Ambari UI を起動するには、**[クラスター ダッシュボード]** の **[Ambari ホーム]** をクリックします。 Ambari UI から **[YARN]**、**[クイック リンク]** の順にクリックし、アクティブな Resource Manager をクリックして、**[Resource Manager UI]** をクリックします。 
+   > Ambari UI から YARN UI を起動してもかまいません。 Ambari UI を起動するには、 **[クラスター ダッシュボード]** の **[Ambari ホーム]** をクリックします。 Ambari UI から **[YARN]** 、 **[クイック リンク]** の順にクリックし、アクティブな Resource Manager をクリックして、 **[Resource Manager UI]** をクリックします。 
 
 2. Jupyter Notebook を使用して Spark ジョブを開始したため、アプリケーションの名前は **remotesparkmagics** (ノートブックから開始されたすべてのアプリケーションに使用される名前) になっています。 ジョブに関する詳しい情報を確認するには、アプリケーション名に対応するアプリケーション ID をクリックします。 これによりアプリケーション ビューが起動されます。
    
@@ -85,12 +85,12 @@ ms.locfileid: "64707819"
 ## <a name="find-information-about-completed-jobs-using-the-spark-history-server"></a>完了したジョブに関する情報を Spark History Server で探す
 完了したジョブに関する情報は、Spark History Server に保存されています。
 
-1. Spark History Server を起動するには、[概要] ブレードから、**[クラスター ダッシュボード]** の **[Spark History Server]** をクリックします。
+1. Spark History Server を起動するには、[概要] ブレードから、 **[クラスター ダッシュボード]** の **[Spark History Server]** をクリックします。
    
     ![Launch Spark History Server](./media/apache-spark-job-debugging/launch-spark-history-server.png)
    
    > [!TIP]  
-   > Ambari UI から Spark History Server の UI を起動してもかまいません。 Ambari UI を起動するには、[概要] ブレードから、**[クラスター ダッシュボード]** の **[Ambari ホーム]** をクリックします。 Ambari UI から **[Spark]**、**[クイック リンク]** の順にクリックし、**[Spark History Server UI]** をクリックします。
+   > Ambari UI から Spark History Server の UI を起動してもかまいません。 Ambari UI を起動するには、[概要] ブレードから、 **[クラスター ダッシュボード]** の **[Ambari ホーム]** をクリックします。 Ambari UI から **[Spark]** 、 **[クイック リンク]** の順にクリックし、 **[Spark History Server UI]** をクリックします。
 
 2. 完了済みのすべてのアプリケーションが一覧表示されます。 アプリケーションをドリルダウンして、より詳しい情報を入手するには、アプリケーション ID をクリックします。
    

@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: orspodek
 ms.openlocfilehash: f501257903f3b7c621512f06d1c8c7109e22db1e
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60009363"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60394508"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Data Explorer をコピー先またはコピー元としてデータをコピーする
 
@@ -139,7 +139,7 @@ Azure Data Explorer からデータをコピーするには、コピー アク�
 |:--- |:--- |:--- |
 | type | コピー アクティビティのソースの **type** プロパティを、次の値に設定する必要があります:**AzureDataExplorerSource** | はい |
 | query | [KQL 形式](/azure/kusto/query/)で指定された読み取り専用要求。 参照としてカスタム KQL クエリを使用します。 | はい |
-| queryTimeout | クエリ要求がタイムアウトするまでの待機時間。既定値は 10 分 (00:10:00)、許容される最大値は 1 時間 (01:00:00) です。 | いいえ  |
+| queryTimeout | クエリ要求がタイムアウトするまでの待機時間。既定値は 10 分 (00:10:00)、許容される最大値は 1 時間 (01:00:00) です。 | いいえ |
 
 >[!NOTE]
 >既定で、Azure Data Explorer ソースでは、500,000 レコードまたは 64 MB のサイズ制限があります。 切り捨てることなくすべてのレコードを取得するには、クエリの先頭に `set notruncation;` を指定します。 詳細については、「[Query limits (クエリの制限)](https://docs.microsoft.com/azure/kusto/concepts/querylimits)」を参照してください。
@@ -184,7 +184,7 @@ Azure Data Explorer にデータをコピーするには、コピー アクテ�
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | コピー アクティビティのシンクの **type** プロパティは、次のように設定する必要があります:**AzureDataExplorerSink** | はい |
-| ingestionMappingName | Kusto テーブルで事前作成済みの**[マッピング](/azure/kusto/management/mappings#csv-mapping)** の名前。 ソースから Azure Data Explorer に列をマッピングするには (CSV/JSON/Avro 形式など、**[サポートされているすべてのソース ストアや形式](copy-activity-overview.md#supported-data-stores-and-formats)** に適用されます)、コピー アクティビティの[列マッピング](copy-activity-schema-and-type-mapping.md)(名前で暗黙的に、または構成で明示的に) や Azure Data Explorer のマッピングを使用できます。 | いいえ  |
+| ingestionMappingName | Kusto テーブルで事前作成済みの **[マッピング](/azure/kusto/management/mappings#csv-mapping)** の名前。 ソースから Azure Data Explorer に列をマッピングするには (CSV/JSON/Avro 形式など、 **[サポートされているすべてのソース ストアや形式](copy-activity-overview.md#supported-data-stores-and-formats)** に適用されます)、コピー アクティビティの[列マッピング](copy-activity-schema-and-type-mapping.md)(名前で暗黙的に、または構成で明示的に) や Azure Data Explorer のマッピングを使用できます。 | いいえ |
 
 **例:**
 

@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 02/01/2018
 ms.author: cshoe
 ms.openlocfilehash: bf54d312de5625a7fa44cea4d5107e83cf15583c
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50248253"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62105510"
 ---
 # <a name="azure-functions-error-handling"></a>Azure Functions のエラー処理
 

@@ -17,11 +17,11 @@ ms.date: 04/16/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4fadebc689f10b40131bb0feb12d846d3bdde704
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56206686"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62104700"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-safetynet"></a>チュートリアル:Azure Active Directory と SafetyNet の統合
 
@@ -61,11 +61,11 @@ Azure AD への SafetyNet の統合を構成するには、ギャラリーから
 
 **ギャラリーから SafetyNet を追加するには、次の手順に従います。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。 
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。 
 
     ![Azure Active Directory のボタン][1]
 
-1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+1. **[エンタープライズ アプリケーション]** に移動します。 次に、 **[すべてのアプリケーション]** に移動します。
 
     ![[エンタープライズ アプリケーション] ブレード][2]
     
@@ -73,7 +73,7 @@ Azure AD への SafetyNet の統合を構成するには、ギャラリーから
 
     ![[新しいアプリケーション] ボタン][3]
 
-1. 検索ボックスに「**SafetyNet**」と入力し、結果パネルで **SafetyNet** を選び、**[追加]** をクリックして、アプリケーションを追加します。
+1. 検索ボックスに「**SafetyNet**」と入力し、結果パネルで **SafetyNet** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
     ![結果一覧の SafetyNet](./media/safetynet-tutorial/tutorial_safetynet_addfromgallery.png)
 
@@ -97,15 +97,15 @@ SafetyNet で Azure AD のシングル サインオンを構成してテスト�
 
 **SafetyNet で Azure AD シングル サインオンを構成するには、次の手順に従います。**
 
-1. Azure Portal の **SafetyNet** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
+1. Azure Portal の **SafetyNet** アプリケーション統合ページで、 **[シングル サインオン]** をクリックします。
 
     ![シングル サインオン構成のリンク][4]
 
-1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+1. **[シングル サインオン]** ダイアログで、 **[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
     ![[シングル サインオン] ダイアログ ボックス](./media/safetynet-tutorial/tutorial_safetynet_samlbase.png)
 
-1. アプリケーションを **IDP** 開始モードで構成する場合は、**[SafetyNet のドメインと URL]** セクションで次の手順を実行します。
+1. アプリケーションを **IDP** 開始モードで構成する場合は、 **[SafetyNet のドメインと URL]** セクションで次の手順を実行します。
 
     ![[SafetyNet のドメインと URL] のシングル サインオン情報](./media/safetynet-tutorial/tutorial_safetynet_url.png)
 
@@ -113,7 +113,7 @@ SafetyNet で Azure AD のシングル サインオンを構成してテスト�
 
     b. **[応答 URL]** ボックスに、`https://<subdomain>.predictivesolutions.com/CRMApp/saml/SSO` のパターンを使用して URL を入力します。
 
-1. アプリケーションを **SP** 開始モードで構成する場合は、**[詳細な URL 設定の表示]** チェックボックスをオンにして次の手順を実行します。
+1. アプリケーションを **SP** 開始モードで構成する場合は、 **[詳細な URL 設定の表示]** チェックボックスをオンにして次の手順を実行します。
 
     ![[SafetyNet のドメインと URL] のシングル サインオン情報](./media/safetynet-tutorial/tutorial_safetynet_url1.png)
 
@@ -122,7 +122,7 @@ SafetyNet で Azure AD のシングル サインオンを構成してテスト�
     > [!NOTE] 
     > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[SafetyNet クライアント サポート チーム](mailto:dev@predictivesolutions.com)に問い合わせてください。
 
-1.  **[SAML 署名証明書]**  セクションで、コピー ボタンをクリックして **[アプリのフェデレーション メタデータ URL]** をコピーし、メモ帳に貼り付けます。
+1.  **[SAML 署名証明書]**   セクションで、コピー ボタンをクリックして **[アプリのフェデレーション メタデータ URL]** をコピーし、メモ帳に貼り付けます。
 
     ![証明書のダウンロードのリンク](./media/safetynet-tutorial/tutorial_safetynet_certificate.png)
 
@@ -144,11 +144,11 @@ SafetyNet で Azure AD のシングル サインオンを構成してテスト�
 
     ![Azure Active Directory のボタン](./media/safetynet-tutorial/create_aaduser_01.png)
 
-1. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックします。
+1. ユーザーの一覧を表示するには、 **[ユーザーとグループ]** に移動し、 **[すべてのユーザー]** をクリックします。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](./media/safetynet-tutorial/create_aaduser_02.png)
 
-1. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
+1. **[ユーザー]** ダイアログ ボックスを開くには、 **[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
 
     ![[追加] ボタン](./media/safetynet-tutorial/create_aaduser_03.png)
 
@@ -160,9 +160,9 @@ SafetyNet で Azure AD のシングル サインオンを構成してテスト�
 
     b. **[ユーザー名]** ボックスに、ユーザーである Britta Simon の電子メール アドレスを入力します。
 
-    c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
+    c. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
+    d. **Create** をクリックしてください。
  
 ### <a name="create-a-safetynet-test-user"></a>SafetyNet テスト ユーザーの作成
 
@@ -176,7 +176,7 @@ SafetyNet で Azure AD のシングル サインオンを構成してテスト�
 
 **SafetyNet に Britta Simon を割り当てるには、次の手順を実行します。**
 
-1. Azure Portal でアプリケーション ビューを開き、ディレクトリ ビューに移動します。次に、**[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** をクリックします。
+1. Azure Portal でアプリケーション ビューを開き、ディレクトリ ビューに移動します。次に、 **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** をクリックします。
 
     ![ユーザーの割り当て][201] 
 
@@ -188,7 +188,7 @@ SafetyNet で Azure AD のシングル サインオンを構成してテスト�
 
     ![[ユーザーとグループ] リンク][202]
 
-1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[追加]** ボタンをクリックします。 次に、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ][203]
 

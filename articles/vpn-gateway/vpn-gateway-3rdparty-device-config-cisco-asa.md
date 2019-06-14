@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 10/19/2018
 ms.author: yushwang
 ms.openlocfilehash: e575fac61a1c5d9351391d39d200b87e34ff26cd
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55817242"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60648763"
 ---
 # <a name="sample-configuration-cisco-asa-device-ikev2no-bgp"></a>サンプル構成:Cisco ASA デバイス (IKEv2/BGP なし)
 この記事では、Cisco Adaptive Security Appliance (ASA) デバイスを Azure VPN ゲートウェイに接続するためのサンプル構成を紹介します。 この例は、ボーダー ゲートウェイ プロトコル (BGP) を使用せずに IKEv2 を実行する Cisco ASA デバイスに適用されます。 
@@ -27,7 +27,7 @@ ms.locfileid: "55817242"
 | テスト済みのモデル           | ASA 5505                          |
 | テスト済みのバージョン         | 9.2                               |
 | IKE バージョン            | IKEv2                             |
-| BGP                    | いいえ                                 |
+| BGP                    | いいえ                                |
 | Azure VPN ゲートウェイの種類 | ルートベースの VPN ゲートウェイ           |
 |                        |                                   |
 

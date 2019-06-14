@@ -11,11 +11,11 @@ ms.topic: resources
 ms.date: 03/20/2019
 ms.author: kylestorck
 ms.openlocfilehash: 50de4d983ed24440d655cf5b9ba3fb5e33d8d7cd
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58309947"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61335349"
 ---
 # <a name="project-acoustics-known-issues"></a>Project Acoustics の既知の問題
 Project Acoustics の Designer Preview の使用時に、以下で説明する既知の問題が発生する場合があります。

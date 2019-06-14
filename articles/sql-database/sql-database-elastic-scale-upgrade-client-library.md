@@ -13,17 +13,17 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 01/03/2019
 ms.openlocfilehash: 02c09e5a2ad0c3e23fe641bf445a646477f7db2c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57993969"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60335051"
 ---
 # <a name="upgrade-an-app-to-use-the-latest-elastic-database-client-library"></a>最新のエラスティック データベース クライアント ライブラリを使用するためのアプリのアップグレード
 
 [エラスティック データベース クライアント ライブラリ](sql-database-elastic-database-client-library.md) の新しいバージョンが NuGet と Visual Studio の NuGetPackage マネージャーのインターフェイスから利用できるようになりました。 アップグレードにはバグ修正が含まれており、クライアント ライブラリの新機能をサポートします。
 
-**最新バージョン:**[Microsoft.Azure.SqlDatabase.ElasticScale.Client](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/) に移動してください。
+**最新バージョン:** [Microsoft.Azure.SqlDatabase.ElasticScale.Client](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/) に移動してください。
 
 新しいライブラリを使用してアプリケーションを再構築し、新しい機能をサポートするために、Azure SQL データベースに格納されている既存のシャード マップ マネージャーのメタデータを変更します。
 
@@ -33,7 +33,7 @@ ms.locfileid: "57993969"
 
 **1.アプリケーションをアップグレードします。** Visual Studio で、最新のクライアント ライブラリのバージョンをダウンロードして、ライブラリを使用する開発プロジェクトのすべてに参照させます。その後、再構築してデプロイします。
 
-* Visual Studio ソリューションで **[ツール]** --> **[NuGet Package Manager]** -->  **[Manage NuGet Packages for Solution (ソリューションの NuGet パッケージを管理)]** と選択します。
+* Visual Studio ソリューションで **[ツール]**  -->  **[NuGet Package Manager]**  -->   **[Manage NuGet Packages for Solution (ソリューションの NuGet パッケージを管理)]** と選択します。
 * (Visual Studio 2013) 左側のパネルで **[更新]** を選択し、ウィンドウに表示される **Azure SQL Database Elastic Scale Client Library** パッケージの **[更新]** ボタンを選択します。
 * (Visual Studio 2015) [フィルター] ボックスで **[アップグレード可能]** を選択します。 アップグレードするパッケージを選択し、 **[アップグレード]** ボタンをクリックします。
 * (Visual Studio 2017) ダイアログの上部にある **[更新プログラム]** を選択します。 アップグレードするパッケージを選択し、 **[アップグレード]** ボタンをクリックします。

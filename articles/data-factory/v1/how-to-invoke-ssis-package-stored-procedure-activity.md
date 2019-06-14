@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: jingwang
 ms.openlocfilehash: d61874a57801a6c02af885cab6a97ed38da1deb1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66156679"
 ---
 # <a name="invoke-an-ssis-package-using-stored-procedure-activity-in-azure-data-factory"></a>Azure Data Factory のストアド プロシージャ アクティビティを使用して SSIS パッケージを呼び出す
@@ -41,10 +41,10 @@ Azure-SSIS 統合ランタイムがない場合は、[SSIS パッケージのデ
 最初の手順として、Azure Portal を使用してデータ ファクトリを作成します。 
 
 1. [Azure Portal](https://portal.azure.com) に移動します。 
-2. 左側のメニューで **[新規]** をクリックし、**[データ + 分析]**、**[Data Factory]** の順にクリックします。 
+2. 左側のメニューで **[新規]** をクリックし、 **[データ + 分析]** 、 **[Data Factory]** の順にクリックします。 
    
    ![New->DataFactory](./media/how-to-invoke-ssis-package-stored-procedure-activity/new-azure-data-factory-menu.png)
-2. **[新しいデータ ファクトリ]** ページで、**[名前]** に「**ADFTutorialDataFactory**」と入力します。 
+2. **[新しいデータ ファクトリ]** ページで、 **[名前]** に「**ADFTutorialDataFactory**」と入力します。 
       
      ![[新しいデータ ファクトリ] ページ](./media/how-to-invoke-ssis-package-stored-procedure-activity/new-azure-data-factory.png)
  
@@ -62,7 +62,7 @@ Azure-SSIS 統合ランタイムがない場合は、[SSIS パッケージのデ
 5. データ ファクトリの **場所** を選択します。 Data Factory でサポートされている場所のみがドロップダウン リストに表示されます。 データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他の場所に配置できます。
 6. **[ダッシュボードにピン留めする]** をオンにします。     
 7. **Create** をクリックしてください。
-8. ダッシュボードに、**[Deploying data factory]\(データ ファクトリをデプロイしています\)** というステータスを示したタイルが表示されます。 
+8. ダッシュボードに、 **[Deploying data factory]\(データ ファクトリをデプロイしています\)** というステータスを示したタイルが表示されます。 
 
      ![[Deploying data factory]\(データ ファクトリをデプロイしています\) タイル](media//how-to-invoke-ssis-package-stored-procedure-activity/deploying-data-factory.png)
 9. 作成が完了すると、図に示されているような **[Data Factory]** ページが表示されます。
@@ -75,7 +75,7 @@ Azure-SSIS 統合ランタイムがない場合は、[SSIS パッケージのデ
 ### <a name="create-an-azure-sql-database-linked-service"></a>Azure SQL Database のリンクされたサービスを作成する
 リンクされたサービスを作成して、SSIS カタログをホストする Azure SQL データベースをデータ ファクトリにリンクします。 このリンクされたサービスの情報をデータ ファクトリが使用して、SSISDB データベースに接続し、ストアド プロシージャを実行して SSIS パッケージを実行します。 
 
-1. Data Factory エディターで、メニューの **[新しいデータ ストア]** をクリックし、**[Azure SQL Database]** をクリックします。 
+1. Data Factory エディターで、メニューの **[新しいデータ ストア]** をクリックし、 **[Azure SQL Database]** をクリックします。 
 
     ![[新しいデータ ストア] -> [Azure SQL Database]](./media/how-to-invoke-ssis-package-stored-procedure-activity/new-azure-sql-database-linked-service-menu.png)
 2. 右側のペインで、次の手順を実行します。
@@ -91,7 +91,7 @@ Azure-SSIS 統合ランタイムがない場合は、[SSIS パッケージのデ
 ### <a name="create-a-dummy-dataset-for-output"></a>出力のダミー データセットを作成する
 この出力データセットは、パイプラインのスケジュールを開始するダミーのデータセットです。 頻度は [時間] に設定され、間隔は 1 に設定されています。 したがって、パイプラインは、パイプラインの開始時刻から終了時刻までの間に 1 時間に 1 回実行されます。 
 
-1. Data Factory エディターの左側のペインで、**[...詳細]** -> **[New dataset] (新しいデータセット)** -> **[Azure SQL]** をクリックします。
+1. Data Factory エディターの左側のペインで、 **[...詳細]**  ->  **[New dataset] (新しいデータセット)**  ->  **[Azure SQL]** をクリックします。
 
     ![[詳細] -> [New dataset] (新しいデータセット)](./media/how-to-invoke-ssis-package-stored-procedure-activity/new-dataset-menu.png)
 2. 次の JSON スニペットを右側のペインの JSON エディターにコピーします。 
@@ -115,7 +115,7 @@ Azure-SSIS 統合ランタイムがない場合は、[SSIS パッケージのデ
 ### <a name="create-a-pipeline-with-stored-procedure-activity"></a>ストアド プロシージャ アクティビティを含むパイプラインを作成する 
 この手順では、ストアド プロシージャ アクティビティを含むパイプラインを作成します。 このアクティビティは、SSIS パッケージを実行する sp_executesql ストアド プロシージャを呼び出します。 
 
-1. 左側のペインで、**[...More (...詳細)]**、**[新しいパイプライン]** の順にクリックします。
+1. 左側のペインで、 **[...More (...詳細)]** 、 **[新しいパイプライン]** の順にクリックします。
 2. 次の JSON スニペットを JSON エディターにコピーします。 
 
     > [!IMPORTANT]
@@ -156,7 +156,7 @@ Azure-SSIS 統合ランタイムがない場合は、[SSIS パッケージのデ
 1. データ ファクトリのホーム ページが表示されるように、エディター ウィンドウを閉じます。 **[監視と管理]** タイルをクリックします。 
 
     ![Diagram tile](./media/how-to-invoke-ssis-package-stored-procedure-activity/monitor-manage-tile.png)
-2. **[開始時刻]** と **[終了時刻]** を **01/18/2018 午前 08:30** と **01/20/2018 午前 08:30** に更新し、**[適用]** をクリックします。 パイプライン実行に関連付けられた**アクティビティ ウィンドウ**が表示されます。 
+2. **[開始時刻]** と **[終了時刻]** を **01/18/2018 午前 08:30** と **01/20/2018 午前 08:30** に更新し、 **[適用]** をクリックします。 パイプライン実行に関連付けられた**アクティビティ ウィンドウ**が表示されます。 
 
     ![アクティビティ ウィンドウ](./media/how-to-invoke-ssis-package-stored-procedure-activity/activity-windows.png)
 

@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 4/15/2019
 ms.author: victorh
 ms.openlocfilehash: 7107f45253c4f13b3378489726bf5034e104fa30
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59608473"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62095984"
 ---
 # <a name="create-an-application-gateway-by-using-the-azure-cli"></a>Azure CLI を使用してアプリケーション ゲートウェイを作成する
 
@@ -133,9 +133,9 @@ azure network application-gateway create \
 
 ## <a name="next-steps"></a>次の手順
 
- [カスタムの正常性プローブの作成](application-gateway-create-probe-portal.md)
+[カスタムの正常性プローブの作成](application-gateway-create-probe-portal.md)
 
- [SSL オフロードの構成](application-gateway-ssl-arm.md)
+[SSL オフロードの構成](application-gateway-ssl-arm.md)
 
 <!--Image references-->
 

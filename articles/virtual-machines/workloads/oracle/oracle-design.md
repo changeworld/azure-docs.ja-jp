@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 8241dc0303b7e60f9ce1e04e56d152c9a0b3906c
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: c5a76b9cee8fd6eb09ee4d24c1380202fd17cc6d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56327512"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60836310"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>Azure での Oracle データベースの設計と実装
 
@@ -196,13 +196,13 @@ I/O 要件を明確に把握した後に、これらの要件に最適なドラ�
 
 **Recommendations (推奨事項)**
 
-スループットを最大化するには、ホスト キャッシュを **[なし]** で開始することをお勧めします。 Premium Storage では、**[読み取り専用]** または **[なし]** のオプションでファイル システムをマウントするときに、"バリア" を無効にする必要があることに注意してください。 UUID を使用して、/etc/fstab ファイルをディスクに更新します。
+スループットを最大化するには、ホスト キャッシュを **[なし]** で開始することをお勧めします。 Premium Storage では、 **[読み取り専用]** または **[なし]** のオプションでファイル システムをマウントするときに、"バリア" を無効にする必要があることに注意してください。 UUID を使用して、/etc/fstab ファイルをディスクに更新します。
 
 ![マネージド ディスク ページのスクリーンショット](./media/oracle-design/premium_disk02.png)
 
 - OS ディスクには、既定の **[読み取り/書き込み]** キャッシュを使用します。
 - SYSTEM、TEMP、UNDO には、キャッシュに **[なし]** を使用します。
-- DATA には、キャッシュに **[なし]** を使用します。 ただし、お使いのデータベースが読み取り専用または読み取り集約型の場合は、**[読み取り専用]** キャッシュを使用します。
+- DATA には、キャッシュに **[なし]** を使用します。 ただし、お使いのデータベースが読み取り専用または読み取り集約型の場合は、 **[読み取り専用]** キャッシュを使用します。
 
 データ ディスクの設定が保存された後に、OS レベルでドライブのマウントを解除し、変更後に再マウントするまでは、ホストのキャッシュ設定を変更できません。
 

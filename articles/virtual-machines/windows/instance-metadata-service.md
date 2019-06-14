@@ -16,10 +16,10 @@ ms.date: 04/25/2019
 ms.author: sukumari
 ms.reviewer: azmetadata
 ms.openlocfilehash: 160d494eea4bd597725a4e7c21ad9b763502bee6
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65792092"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure Instance Metadata Service
@@ -359,7 +359,7 @@ azEnvironment | VM が実行されている Azure 環境 | 2018 年 10 月 1 日
 customData | 「[カスタム データ](#custom-data)」を参照してください | 2019-02-01
 location | VM を実行中の Azure リージョン | 2017-04-02
 name | VM の名前 | 2017-04-02
-offer | VM イメージの情報。Azure イメージ ギャラリーからデプロイされるイメージについてのみ情報が存在します。 | 2017-04-02
+offer | VM イメージのオファーの情報。Azure イメージ ギャラリーからデプロイされるイメージについてのみ存在します。 | 2017-04-02
 osType | Linux または Windows | 2017-04-02
 placementGroupId | お使いの仮想マシン スケール セットの[配置グループ](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) | 2017-08-01
 プラン | Azure Marketplace イメージの場合、[プラン](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan)には VM の名前、製品、発行元が含まれています | 2018-04-02
@@ -698,7 +698,7 @@ ARM テンプレートの例については、「[Deploy a Virtual Machine with 
 
 カスタム データは、VM 内で実行されているすべてのプロセスで使用できます。 顧客がカスタム データに機密情報を挿入しないようにすることをお勧めします。
 
-現時点では、VM のブートストラップ中にカスタム データが必ず使用可能になります。 ディスクの追加や VM サイズ変更など、VM が更新された場合、Instance Metadata Service はカスタム データを提供しません。 Instance Metadata Service を介して持続的にカスタム データを提供する機能が現在、開発段階にあります。
+現時点では、VM のブートストラップ中は必ずカスタム データを利用できます。 ディスクの追加や VM のサイズ変更などによって VM が更新された場合、Instance Metadata Service からカスタム データが提供されなくなります。 現在、Instance Metadata Service から持続的にカスタム データを提供する機能を開発中です。
 
 #### <a name="retrieving-custom-data-in-virtual-machine"></a>仮想マシン内のカスタム データの取得
 Instance Metadata Service では、Base64 のエンコード形式で、カスタム データを VM に提供しています。 次の例は、Base64 でエンコードされた文字列をデコードしています。

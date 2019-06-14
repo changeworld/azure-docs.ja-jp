@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.service: service-fabric-mesh
 manager: chakdan
 ms.openlocfilehash: cb4e327e1c8c0a653cb94233f568b4847494c439
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57779880"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60419446"
 ---
 # <a name="containerize-an-existing-net-app-for-service-fabric-mesh"></a>既存の .NET アプリを Service Fabric Mesh 用にコンテナー化する
 
@@ -49,12 +49,12 @@ git clone https://github.com/MikkelHegn/ContainersSFLab.git
  
 Service Fabric Mesh ツールを使用して、既存の ASP.NET または Console プロジェクトにコンテナー オーケストレーション サポートを追加します。手順は次のとおりです。
 
-Visual Studio のソリューション エクスプ ローラーで、プロジェクト名 (この例では **eShopLegacyWebForms**) を右クリックし、**[追加]** > **[コンテナー オーケストレーター サポート]** を選択します。
+Visual Studio のソリューション エクスプ ローラーで、プロジェクト名 (この例では **eShopLegacyWebForms**) を右クリックし、 **[追加]**  >  **[コンテナー オーケストレーター サポート]** を選択します。
 **[コンテナー オーケストレーター サポートの追加]** ダイアログが表示されます。
 
 ![Visual Studio の [コンテナー オーケストレーター サポートの追加] ダイアログ](./media/service-fabric-mesh-howto-containerize-vs/add-container-orchestration-support.png)
 
-ドロップダウン リストから **[Service Fabric Mesh]** を選択し、**[OK]** をクリックします。
+ドロップダウン リストから **[Service Fabric Mesh]** を選択し、 **[OK]** をクリックします。
 
 ツールによって Docker がインストールされ、プロジェクトに Dockerfile が追加されて、プロジェクト用の docker イメージがプルダウンされます。  
 Service Fabric Mesh のアプリケーション プロジェクトがソリューションに追加されます。 これには、Mesh の発行プロファイルと構成ファイルが含まれています。 プロジェクトの名前は、ご使用のプロジェクト名の末尾に "Application" を連結したものになります (例: **eShopLegacyWebFormsApplication**)。 

@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 04/13/2018
 ms.author: chrisgre
 ms.openlocfilehash: 0302146634904ccf1d87220d3a24553149e10372
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59011558"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61321185"
 ---
 # <a name="automatic-iot-device-management-at-scale-using-the-azure-cli"></a>Azure CLI を使用した大規模な自動 IoT デバイス管理
 
@@ -23,7 +23,7 @@ Azure IoT Hub の自動デバイス管理では、多数のデバイスを管理
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-自動デバイス管理は、一連のデバイス ツインを目的のプロパティで更新し、デバイス ツインで報告されたプロパティに基づくサマリーを報告することにより機能します。  この機能では、*構成*という新しいクラスと JSON ドキュメントが導入されています。構成には、次の 3 つの要素が含まれています。
+自動デバイス管理では、一連のデバイス ツインが目的のプロパティで更新され、デバイス ツインで報告されたプロパティに基づくサマリーが報告されます。  この機能では、*構成*という新しいクラスと JSON ドキュメントが導入されています。構成には、次の 3 つの要素が含まれています。
 
 * **ターゲットの条件**: 更新されるデバイス ツインのスコープ (範囲) を定義します。 ターゲットの条件は、デバイス ツインのタグや報告されたプロパティに関するクエリとして指定されます。
 
@@ -99,11 +99,11 @@ Azure IoT Hub の自動デバイス管理では、多数のデバイスを管理
 
 * --**config-id** - IoT ハブに作成される構成の名前です。 構成に一意の名前を付けます。名前は最大 128 文字の英小文字で指定します。 スペースや、無効な文字は使用しないでください。`& ^ [ ] { } \ | " < > /`
 
-* --**labels** - 構成を追跡するためのラベルを追加します。 ラベルは、デプロイを説明する、[名前] と [値] で一組になっています。 たとえば、`HostPlatform, Linux` や `Version, 3.0.1`
+* --**labels** - 構成を追跡するためのラベルを追加します。 ラベルは、デプロイを説明する、[名前] と [値] で一組になっています。 たとえば、`HostPlatform, Linux` や `Version, 3.0.1` のようにします。
 
 * --**content** - インライン JSON 、またはツインの必要なプロパティとして設定されるターゲット コンテンツへのファイル パス。 
 
-* --**hub-name** - 構成が作成される IoT ハブの名前です。 ハブは現在のサブスクリプションにある必要があります。 コマンドを使用して目的のサブスクリプションに切り替えます。 `az account set -s [subscription name]`
+* --**hub-name** - 構成が作成される IoT ハブの名前です。 ハブは現在のサブスクリプションにある必要があります。 コマンド `az account set -s [subscription name]` を使用して目的のサブスクリプションに切り替えます。
 
 * --**target-condition** - どのデバイスがこの構成の対象となるかを指定する対象の条件を入力します。 条件は、デバイス ツイン タグか、デバイス ツインで必要なプロパティに基づいて指定し、式の形式に一致させる必要があります。 たとえば、`tags.environment='test'` または `properties.desired.devicemodel='4000x'` です。 
 
@@ -122,7 +122,7 @@ az iot hub configuration show --config-id [configuration id] \
 
 * --**config-id** - IoT ハブに存在する構成の名前です。
 
-* --**hub-name** - 構成が存在する IoT ハブの名前です。 ハブは現在のサブスクリプションにある必要があります。 コマンドを使用して目的のサブスクリプションに切り替えます。 `az account set -s [subscription name]`
+* --**hub-name** - 構成が存在する IoT ハブの名前です。 ハブは現在のサブスクリプションにある必要があります。 コマンド `az account set -s [subscription name]` を使用して目的のサブスクリプションに切り替えます。
 
 コマンド ウィンドウで構成を調べます。  **メトリック** プロパティは、各ハブによって評価される各メトリックの数を表示します。
 
@@ -172,7 +172,7 @@ az iot hub configuration update --config-id [configuration id] \
 
 * --**set** - 構成のプロパティを更新します。 次のプロパティを更新することができます。
 
-    * targetCondition - 例: `targetCondition=tags.location.state='Oregon'`
+    * targetCondition - `targetCondition=tags.location.state='Oregon'` など
 
     * labels 
 

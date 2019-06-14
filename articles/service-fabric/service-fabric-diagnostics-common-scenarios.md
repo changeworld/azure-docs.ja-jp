@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 02/25/2019
 ms.author: srrengar
 ms.openlocfilehash: 265aea1b8873d812859b39175c732c3e7118cbb5
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58669284"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60394207"
 ---
 # <a name="diagnose-common-scenarios-with-service-fabric"></a>Service Fabric で一般的なシナリオを診断する
 
@@ -32,7 +32,7 @@ ms.locfileid: "58669284"
 この記事のソリューションでは、次のツールを使用します。 これらを設定および構成しておくことをお勧めします。
 
 * [Service Fabric での Application Insights](service-fabric-tutorial-monitoring-aspnet.md)
-* [クラスターでの Azure 診断の有効化](service-fabric-diagnostics-event-aggregation-wad.md)
+* [クラスターでの Azure Diagnostics の有効化](service-fabric-diagnostics-event-aggregation-wad.md)
 * [Log Analytics ワークスペースを設定する](service-fabric-diagnostics-oms-setup.md)
 * [パフォーマンス カウンターを追跡するための Log Analytics エージェント](service-fabric-diagnostics-oms-agent.md)
 

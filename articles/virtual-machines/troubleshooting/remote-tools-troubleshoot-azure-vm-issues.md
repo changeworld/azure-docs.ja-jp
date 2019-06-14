@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 01/11/2018
 ms.author: delhan
-ms.openlocfilehash: dc27ea0552c6135d01256586b1746219caac17f1
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 513ce98703e67053ab0bcac3e6fc7a3e959f6870
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58539872"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64717275"
 ---
 # <a name="use-remote-tools-to-troubleshoot-azure-vm-issues"></a>リモート ツールを使用して Azure VM の問題をトラブルシューティングする
 
@@ -91,7 +91,7 @@ Set-AzureVMCustomScriptExtension "CustomScriptExtension" -VM $vm -StorageAccount
 
 ### <a name="for-v2-vms"></a>V2 VM の場合
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ```powershell
 #Setup the basic variables
@@ -213,7 +213,7 @@ Invoke-Command -ComputerName "<<COMPUTERNAME>" -ScriptBlock {"<<SCRIPT BLOCK>>"}
 
 1. 同じ VNET 上の別の VM から、レジストリ エディター (regedit.exe) を開きます。
 
-2. **[ファイル]** >**[Connect Network Registry]\(ネットワーク レジストリへの接続\)** の順に選択します。
+2. **[ファイル]**  > **[Connect Network Registry]\(ネットワーク レジストリへの接続\)** の順に選択します。
 
    ![リモート オプション](./media/remote-tools-troubleshoot-azure-vm-issues/remote-registry.png) 
 

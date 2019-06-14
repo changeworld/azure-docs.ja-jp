@@ -9,13 +9,13 @@ ms.date: 03/28/2018
 ms.author: wesmc
 ms.custom: include file
 ms.openlocfilehash: 0f1decae5fb3ec4a07f01c5bff7475f3d73a3cbb
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66132850"
 ---
-1. キャッシュを作成するには、まず [Azure portal](https://portal.azure.com) にサインインします。 **[リソースの作成]** > **[データベース]** > **[Azure Cache for Redis]** を選択します。
+1. キャッシュを作成するには、まず [Azure portal](https://portal.azure.com) にサインインします。 **[リソースの作成]**  >  **[データベース]**  >  **[Azure Cache for Redis]** を選択します。
 
     ![新しいキャッシュ](media/redis-cache-create/redis-cache-new-cache-menu.png)
 
@@ -32,7 +32,7 @@ ms.locfileid: "66132850"
 
     ![キャッシュの作成](media/redis-cache-create/redis-cache-cache-create.png) 
 
-3. 新しいキャッシュ設定を構成したら、**[作成]** を選択します。 
+3. 新しいキャッシュ設定を構成したら、 **[作成]** を選択します。 
 
     キャッシュが作成されるまで数分かかる場合があります。 状態を確認するには、ダッシュボードで進行状況を監視してください。 キャッシュが作成されると、**実行中**の状態が表示され、使用できるようになります。
 

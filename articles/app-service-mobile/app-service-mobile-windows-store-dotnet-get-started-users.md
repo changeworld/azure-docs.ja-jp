@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: panarasi
 ms.openlocfilehash: 7caaa1ca4cdaf7290b7ce05d17c07e565e7b51d1
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59698684"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62128000"
 ---
 # <a name="add-authentication-to-your-windows-app"></a>Windows アプリに認証を追加する
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
@@ -141,8 +141,8 @@ ms.locfileid: "59698684"
             Window.Current.Activate();
             base.OnActivated(args);
         }
-6. Package.appxmanifest ファイルを開き、 **[宣言]** に移動して、**[使用可能な宣言]** ドロップダウン リストで **[プロトコル]** を選択し、**[追加]** ボタンをクリックします。 次に、**[プロトコル]** 宣言の **[プロパティ]** を構成します。 **[表示名]** で、アプリケーションのユーザーに表示する名前を追加します。 **[名前]** に、自分の {url_scheme_of_your_app} を追加します。
-7. F5 キーを押してアプリを実行します。**[サインイン]** ボタンをクリックして、選択した ID プロバイダーでアプリにサインインします。 サインインに成功すると、アプリはエラーなしで実行し、バックエンドに対してクエリを行ってデータを更新できるようになります。
+6. Package.appxmanifest ファイルを開き、 **[宣言]** に移動して、 **[使用可能な宣言]** ドロップダウン リストで **[プロトコル]** を選択し、 **[追加]** ボタンをクリックします。 次に、 **[プロトコル]** 宣言の **[プロパティ]** を構成します。 **[表示名]** で、アプリケーションのユーザーに表示する名前を追加します。 **[名前]** に、自分の {url_scheme_of_your_app} を追加します。
+7. F5 キーを押してアプリを実行します。 **[サインイン]** ボタンをクリックして、選択した ID プロバイダーでアプリにサインインします。 サインインに成功すると、アプリはエラーなしで実行し、バックエンドに対してクエリを行ってデータを更新できるようになります。
 
 ## <a name="tokens"></a>クライアント側で認証トークンを保存する
 前の例では、標準のサインインを示しました。標準のサインインでは、アプリケーションが開始するたびに、クライアントは ID プロバイダーと App Service の両方にアクセスする必要があります。 この方法は非効率であるだけでなく、多くの顧客が同時にアプリケーションを開始すると、使用率に関連した問題が発生する場合があります。 よって、App Service から返される承認トークンをキャッシュし、最初にその承認トークンの使用を試してから、プロバイダー ベースのサインインを使用するほうが効果的です。

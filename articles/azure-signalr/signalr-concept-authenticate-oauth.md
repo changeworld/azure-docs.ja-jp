@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: zhshang
 ms.openlocfilehash: 7660e1405598676599cab30467d22ac979438deb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66128309"
 ---
 # <a name="azure-signalr-service-authentication"></a>Azure SignalR Service の認証
@@ -54,16 +54,16 @@ GitHub を通じて提供される OAuth 認証 API の詳細については、�
 
 1. Web ブラウザーを開き、`https://github.com` に移動してアカウントにサインインします。
 
-2. アカウントで **[Settings]\(設定\)** > **[Developer settings]\(開発者向け設定\)** に移動し、*[OAuth Apps]\(OAuth アプリ\)* の下の **[Register a new application]\(新しいアプリケーションの登録\)** または **[New OAuth App]\(新しい OAuth アプリ\)** をクリックします。
+2. アカウントで **[Settings]\(設定\)**  >  **[Developer settings]\(開発者向け設定\)** に移動し、 *[OAuth Apps]\(OAuth アプリ\)* の下の **[Register a new application]\(新しいアプリケーションの登録\)** または **[New OAuth App]\(新しい OAuth アプリ\)** をクリックします。
 
-3. 新しい OAuth アプリには次の設定を使用し、**[アプリケーションの登録]** をクリックします。
+3. 新しい OAuth アプリには次の設定を使用し、 **[アプリケーションの登録]** をクリックします。
 
     | 設定名 | 推奨値 | 説明 |
     | ------------ | --------------- | ----------- |
     | アプリケーション名 | *Azure SignalR チャット* | GitHub ユーザーは、認証しているアプリを認識して信頼することができる必要があります。   |
     | ホームページ URL | `http://localhost:5000/home` | |
     | アプリケーションの説明 | *Azure SignalR サービスと GitHub 認証を使用するチャット ルーム サンプル* | 使用されている認証のコンテキストをアプリケーションのユーザーが理解するために役立つ、アプリケーションの有益な説明。 |
-    | 認証コールバックの URL | `http://localhost:5000/signin-github` | この設定は、OAuth アプリケーションの最も重要な設定です。 認証の成功後に GitHub がユーザーに返すコールバック URL です。 このチュートリアルでは、*/signin-github* の *AspNet.Security.OAuth.GitHub* パッケージの既定のコールバック URL を使用する必要があります。  |
+    | 認証コールバックの URL | `http://localhost:5000/signin-github` | この設定は、OAuth アプリケーションの最も重要な設定です。 認証の成功後に GitHub がユーザーに返すコールバック URL です。 このチュートリアルでは、 */signin-github* の *AspNet.Security.OAuth.GitHub* パッケージの既定のコールバック URL を使用する必要があります。  |
 
 4. 新しい OAuth アプリの登録が完了したら、次のコマンドを使用して、*クライアント ID* と*クライアント シークレット*を Secret Manager に追加します。 *Your_GitHub_Client_Id* と *Your_GitHub_Client_Secret* を実際の OAuth アプリの値に置き換えます。
 
@@ -539,9 +539,9 @@ az webapp deployment source config-local-git --name $WebAppName \
 
 最後に、GitHub OAuth アプリの**ホームページ URL** と**認証コールバックの URL** を、ホストされている新しいアプリを指すように更新する必要があります。
 
-1. ブラウザーで [https://github.com](https://github.com) を開き、アカウントの **[Settings]\(設定\)** > **[Developer settings]\(開発者向け設定\)** > **[Oauth Apps]\(Oauth アプリ\)** の順に移動します。
+1. ブラウザーで [https://github.com](https://github.com) を開き、アカウントの **[Settings]\(設定\)**  >  **[Developer settings]\(開発者向け設定\)**  >  **[Oauth Apps]\(Oauth アプリ\)** の順に移動します。
 
-2. 認証アプリをクリックし、**[Homepage URL]\(ホームページ URL\)** と **[Authorization callback URL]\(認証コールバックの URL\)** を次のように更新します。
+2. 認証アプリをクリックし、 **[Homepage URL]\(ホームページ URL\)** と **[Authorization callback URL]\(認証コールバックの URL\)** を次のように更新します。
 
     | Setting | 例 |
     | ------- | ------- |
@@ -563,11 +563,11 @@ az webapp deployment source config-local-git --name $WebAppName \
 
 [Azure ポータル](https://portal.azure.com) にサインインし、 **[リソース グループ]** をクリックします。
 
-**[名前でフィルター]** ボックスにリソース グループの名前を入力します。 この記事の手順では、*SignalRTestResources* という名前のリソース グループを使用しました。 結果一覧でリソース グループの **[...]** をクリックし、**[リソース グループの削除]** をクリックします。
+**[名前でフィルター]** ボックスにリソース グループの名前を入力します。 この記事の手順では、*SignalRTestResources* という名前のリソース グループを使用しました。 結果一覧でリソース グループの **[...]** をクリックし、 **[リソース グループの削除]** をクリックします。
 
 ![削除](./media/signalr-concept-authenticate-oauth/signalr-delete-resource-group.png)
 
-リソース グループの削除の確認を求めるメッセージが表示されます。 確認のためにリソース グループの名前を入力し、**[削除]** をクリックします。
+リソース グループの削除の確認を求めるメッセージが表示されます。 確認のためにリソース グループの名前を入力し、 **[削除]** をクリックします。
 
 しばらくすると、リソース グループとそこに含まれているすべてのリソースが削除されます。
 

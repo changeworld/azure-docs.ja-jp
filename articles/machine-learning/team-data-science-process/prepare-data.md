@@ -12,11 +12,11 @@ ms.date: 11/09/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 2b3ec3352d6e1939b195bbba87b8a824404346ae
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55453520"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61044602"
 ---
 # <a name="tasks-to-prepare-data-for-enhanced-machine-learning"></a>機械学習を強化するためのデータを準備するタスク
 データの前処理とクリーニングは、通常は、機械学習でデータセットを効果的に使用する前に行う必要がある重要なタスクです。 未加工のデータは、多くの場合、ノイズが多く、信頼性が低く、値が欠落している可能性もあります。 このようなデータを使用してモデリングを行うと、誤解を招く結果が生成されることがあります。 これらのタスクは、Team Data Science Process (TDSP) の一部です。通常、必要な前処理の検出と計画に使用されるデータセットの初期の探察の後に行われます。 TDSP プロセスの詳細については、「[Team Data Science Process](overview.md)」の手順を参照してください。

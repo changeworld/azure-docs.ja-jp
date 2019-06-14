@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: 1928185521419006a487a933e2ecba79894a09d3
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64686785"
 ---
 # <a name="localization-support-in-azure-maps"></a>Azure Maps でのローカライズのサポート
@@ -91,7 +91,7 @@ Azure Maps のビュー パラメーター (「ユーザーの地域のパラメ
 
 | 表示         | 説明                            |  マップ | Search | JS マップ コントロール |
 |--------------|----------------------------------------|:-----:|:------:|:--------------:|
-| AE           | アラブ首長国連邦 (アラビアのビュー)    |   ✓   |        |     ✓          |
+| AE           | アラブ首長国連邦、AE    |   ✓   |        |     ✓          |
 | AR           | アルゼンチン (アルゼンチン ビュー)           |   ✓   |    ✓   |     ✓          |
 | BH           | バーレーン (アラビアのビュー)                 |   ✓   |        |     ✓          |
 | IN           | インド (インド ビュー)                    |   ✓   |   ✓     |     ✓          |

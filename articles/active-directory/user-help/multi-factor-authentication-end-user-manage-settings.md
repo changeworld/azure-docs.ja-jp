@@ -15,11 +15,11 @@ ms.date: 05/23/2017
 ms.author: lizross
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 433c2d712ca4867a5ec59f86c333511070b6d507
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58665051"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60334490"
 ---
 # <a name="manage-your-settings-for-two-step-verification"></a>2 段階認証設定の管理
 この記事では、2 段階認証または多要素認証の設定の更新方法に関する質問に回答しています。 アカウントへのサインインで問題が発生している場合のトラブルシューティング ヘルプについては、「[Having trouble with two-step verification (2 段階認証で問題が発生した場合)](multi-factor-authentication-end-user-troubleshoot.md)」をご覧ください。
@@ -63,7 +63,7 @@ ms.locfileid: "58665051"
 
 **予備の電話番号を追加するには:**  
 
-1. [追加のセキュリティ確認] ページで、**[代替の認証用電話]** の横のチェック ボックスをオンにします。  
+1. [追加のセキュリティ確認] ページで、 **[代替の認証用電話]** の横のチェック ボックスをオンにします。  
 2. 予備の話番号をテキスト ボックスに入力します。  
 3. **[保存]** を選択すると、変更が完了します。  
 
@@ -71,7 +71,7 @@ ms.locfileid: "58665051"
 
 組織の設定によっては、ブラウザーで 2 段階認証を実行するときに、"今後 **X** 日間はこのメッセージを表示しない" というチェック ボックスが表示される場合があります。 このボックスをオンにした後、デバイスを紛失した場合やアカウントが侵害されたと思われる場合は、すべてのデバイスに 2 段階認証を復元する必要があります。
 
-1. [追加のセキュリティ確認] ページで、**[以前の信頼済みデバイスに Multi-Factor Authentication を復元する]** を選択します。
+1. [追加のセキュリティ確認] ページで、 **[以前の信頼済みデバイスに Multi-Factor Authentication を復元する]** を選択します。
 2. 任意のデバイスで次回サインインするときに、2 段階認証を実行するよう求められます。
 
 ## <a name="how-do-i-clean-up-microsoft-authenticator-from-my-old-device-and-move-to-a-new-one"></a>古いデバイスから Microsoft Authenticator をクリーンアップして新しいデバイスに移行する場合

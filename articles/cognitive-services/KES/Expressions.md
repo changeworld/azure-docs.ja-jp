@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
 ms.openlocfilehash: a544cdca1ef4be56fcf368a39040f4ee85076a9e
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55860136"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60815099"
 ---
 # <a name="structured-query-expression"></a>構造化クエリ式
 
@@ -29,11 +29,11 @@ ms.locfileid: "55860136"
 
 属性クエリ式は、特定の属性との照合に基づいてオブジェクトのセットを識別します。  [スキーマ](SchemaFormat.md)で指定された属性の種類およびインデックス付けされた操作に応じて、異なる照合操作がサポートされます。
 
-| type | Operation | 例 |
+| Type | Operation | 例 |
 |------|-------------|------------|
-| String | equals | Title='latent semantic analysis'  (正規 + シノニム) |
-| String | equals | Author.Name=='susan t dumais'  (正規のみ)|
-| String | starts_with | Title='latent s'... |
+| string | equals | Title='latent semantic analysis'  (正規 + シノニム) |
+| string | equals | Author.Name=='susan t dumais'  (正規のみ)|
+| string | starts_with | Title='latent s'... |
 | Int32/Int64/Double | equals | Year=2000 |
 | Int32/Int64/Double | starts_with | Year='20'... (any decimal value starting with "20") |
 | Int32/Int64/Double | is_between | Year&lt;2000 <br/> Year&lt;=2000 <br/> Year&gt;2000 <br/> Year&gt;=2000 <br/> Year=[2010,2012) *(左の境界値のみを含む: 2010、2011)* <br/> Year=[2000,2012] *(両方の境界値を含む: 2010、2011、2012)* |

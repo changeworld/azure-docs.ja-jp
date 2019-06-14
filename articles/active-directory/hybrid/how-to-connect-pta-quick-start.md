@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ba5455680647b90b113d31c55816a2e0b0131b33
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59617803"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60243627"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quick-start"></a>Azure Active Directory パススルー認証: クイック スタート
 
@@ -66,7 +66,7 @@ Azure Active Directory (Azure AD) パススルー認証を使用すると、ユ�
      | **8080** (省略可能) | ポート 443 が使用できない場合、認証エージェントは、ポート 8080 経由で 10 分ごとにその状態を報告します。 この状態は Azure AD ポータルに表示されます。 ポート 8080 は、ユーザー サインインには _使用されません_。 |
      
      ご利用のファイアウォールが送信元ユーザーに応じて規則を適用している場合は、ネットワーク サービスとして実行されている Windows サービスを送信元とするトラフィックに対してこれらのポートを開放します。
-   - ファイアウォールまたはプロキシが DNS ホワイトリストを許可している場合は、**\*.msappproxy.net** と **\*.servicebus.windows.net** への接続をホワイトリストに登録できます。 そうでない場合は、毎週更新される [Azure データセンターの IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)へのアクセスを許可します。
+   - ファイアウォールまたはプロキシが DNS ホワイトリストを許可している場合は、 **\*.msappproxy.net** と **\*.servicebus.windows.net** への接続をホワイトリストに登録できます。 そうでない場合は、毎週更新される [Azure データセンターの IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)へのアクセスを許可します。
    - 認証エージェントは初回の登録のために **login.windows.net** と **login.microsoftonline.com** にアクセスする必要があるため、 これらの URL にもファイアウォールを開きます。
    - 証明書の検証のために、URL **mscrl.microsoft.com:80**、**crl.microsoft.com:80**、**ocsp.msocsp.com:80**、**www\.microsoft.com:80** のブロックを解除します。 他の Microsoft 製品でもこれらの URL を証明書の検証に使用しているので、URL のブロックを既に解除している可能性もあります。
 
@@ -93,7 +93,7 @@ Azure AD Connect を初めてインストールする場合は、[カスタム �
 この手順に従って、パススルー認証の有効化を正しく行ったことを確認します。
 
 1. テナントのグローバル管理者の資格情報を使って、[Azure Active Directory 管理センター](https://aad.portal.azure.com)にサインインします。
-2. 左ウィンドウで、**[Azure Active Directory]** を選択します。
+2. 左ウィンドウで、 **[Azure Active Directory]** を選択します。
 3. **[Azure AD Connect]** を選びます。
 4. **[パススルー認証]** 機能が **[有効]** と表示されていることを確認します。
 5. **[パススルー認証]** を選択します。 **[パススルー認証]** 　ウィンドウには、認証エージェントがインストールされているサーバーが一覧表示されます。
@@ -122,8 +122,8 @@ Azure AD Connect を初めてインストールする場合は、[カスタム �
 最初に、次の手順に従って、認証エージェント ソフトウェアをダウンロードします。
 
 1. 最新バージョン (1.5.193.0 以降) の認証エージェントをダウンロードするには、テナントのグローバル管理者の資格情報で [Azure Active Directory 管理センター](https://aad.portal.azure.com)にサインインします。
-2. 左ウィンドウで、**[Azure Active Directory]** を選択します。
-3. **[Azure AD Connect]**、**[パススルー認証]**、**[エージェントのダウンロード]** の順に選択します。
+2. 左ウィンドウで、 **[Azure Active Directory]** を選択します。
+3. **[Azure AD Connect]** 、 **[パススルー認証]** 、 **[エージェントのダウンロード]** の順に選択します。
 4. **[使用条件に同意してダウンロードする]** をクリックします。
 
 ![Azure Active Directory 管理センター: 認証エージェントのダウンロード ボタン](./media/how-to-connect-pta-quick-start/pta9.png)

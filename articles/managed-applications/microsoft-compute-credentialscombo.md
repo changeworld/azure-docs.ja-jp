@@ -14,11 +14,11 @@ ms.workload: na
 ms.date: 09/29/2018
 ms.author: tomfitz
 ms.openlocfilehash: 0412d55fe60524cde404e6a640723d3259e020e1
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47586242"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60251430"
 ---
 # <a name="microsoftcomputecredentialscombo-ui-element"></a>Microsoft.Compute.CredentialsCombo UI 要素
 Windows と Linux のパスワードと SSH 公開キーの検証が組み込まれているコントロールのグループです。
@@ -97,7 +97,7 @@ Windows の場合、次のスキーマを使います。
 
 ## <a name="remarks"></a>解説
 - `osPlatform` は指定する必要があり、**Windows** と **Linux** のいずれかを使用できます。
-- `constraints.required` が **true** に設定されている場合、パスワードまたは SSH 公開キーのテキスト ボックスには、正常に検証を完了できる値を指定する必要があります。 既定値は **true**です。
+- `constraints.required` が **true** に設定されている場合、パスワードまたは SSH 公開キーのテキスト ボックスには、正常に検証を完了できる値を指定する必要があります。 既定値は **true** です。
 - `options.hideConfirmation` が **true** に設定されている場合、ユーザーのパスワードを確認するための 2 つ目のテキスト ボックスは表示されません。 既定値は **false** です。
 - `options.hidePassword` が **true** に設定されている場合、パスワード認証を使用するオプションは表示されません。 これは `osPlatform` が **Linux** であるときのみ使用できます。 既定値は **false** です。
 - `customPasswordRegex` プロパティを使用して、許可されたパスワードに対する追加の制約を実装できます。 `customValidationMessage` 内の文字列は、パスワードのカスタム検証が失敗したときに表示されます。 これらのプロパティの既定値は両方とも **null** です。

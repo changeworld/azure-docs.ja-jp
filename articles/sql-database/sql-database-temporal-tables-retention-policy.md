@@ -13,11 +13,11 @@ ms.reviewer: carlrab
 manager: craigg
 ms.date: 09/25/2018
 ms.openlocfilehash: 62e88d912c55015f87cc00f21527010ad01ee00c
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55560857"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60615709"
 ---
 # <a name="manage-historical-data-in-temporal-tables-with-retention-policy"></a>リテンション ポリシーを使用したテンポラル テーブルでの履歴データの管理
 
@@ -31,7 +31,7 @@ ms.locfileid: "55560857"
 ValidTo < DATEADD (MONTH, -6, SYSUTCDATETIME())
 ```
 
-上の例では、**[ValidTo]** 列が SYSTEM_TIME 期間終了と一致するという前提になっています。
+上の例では、 **[ValidTo]** 列が SYSTEM_TIME 期間終了と一致するという前提になっています。
 
 ## <a name="how-to-configure-retention-policy"></a>リテンション ポリシーの構成方法
 
@@ -169,7 +169,7 @@ SELECT * FROM dbo.WebsiteUserInfo FOR SYSTEM_TIME ALL;
 
 ## <a name="point-in-time-restore-considerations"></a>ポイントインタイム リストアの考慮事項
 
-[既存のデータベースを特定の時点に復元](sql-database-recovery-using-backups.md)して新しいデータベースを作成するときは、データベース レベルのテンポラル リテンション期間が無効になります  (**is_temporal_history_retention_enabled** フラグがオフに設定されます)。 この機能では、復元時にすべての履歴列を確認できるため、クエリを実行する前に期限切れの行が削除されることはありません。 この機能を使用すると、*構成された保有期間を超える履歴データを検査*できます。
+[既存のデータベースを特定の時点に復元](sql-database-recovery-using-backups.md)して新しいデータベースを作成するときは、データベース レベルのテンポラル リテンション期間が無効になります (**is_temporal_history_retention_enabled** フラグがオフに設定されます)。 この機能では、復元時にすべての履歴列を確認できるため、クエリを実行する前に期限切れの行が削除されることはありません。 この機能を使用すると、*構成された保有期間を超える履歴データを検査*できます。
 
 テンポラル テーブルに 1 か月のリテンション期間が指定されているとします。 Premium サービス階層でデータベースが作成されている場合、過去 35 日間までの状態のデータベースのコピーを作成できます。 履歴テーブルにクエリを直接実行することにより、実質的に、最大 65 日間の履歴行を分析できます。
 

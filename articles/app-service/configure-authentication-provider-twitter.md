@@ -16,11 +16,11 @@ ms.date: 04/19/2018
 ms.author: mahender
 ms.custom: seodec18
 ms.openlocfilehash: 51a2ac93fd2d863855c820ba147418c5397c2a89
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53411416"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60851559"
 ---
 # <a name="how-to-configure-your-app-service-application-to-use-twitter-login"></a>Twitter ログインを使用するように App Service アプリケーションを構成する方法
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
@@ -32,10 +32,10 @@ ms.locfileid: "53411416"
 ## <a name="register"> </a>Twitter にアプリケーションを登録する
 1. [Azure Portal]にログオンし、アプリケーションに移動します。 **[URL]** をコピーします。 この URL は、Twitter アプリの構成で使用します。
 2. [Twitter Developers] の Web サイトに移動し、Twitter アカウント資格情報でサインインして、 **[Create New App]** をクリックします。
-3. 新しいアプリの **[Name (名前)]** と **[Description (説明)]** を入力します。 **[Website (Web サイト)]** 値にアプリケーションの **URL** を貼り付けます。 次に、**[Callback URL (コールバック URL)]** に先ほどコピーした**コールバック URL** を貼り付けます。 この URL は、モバイル アプリ ゲートウェイの後にパス */.auth/login/twitter/callback* を追加したフォーマットです。 たとえば、「 `https://contoso.azurewebsites.net/.auth/login/twitter/callback`」のように入力します。 HTTPS スキームを使用していることを確認します。
+3. 新しいアプリの **[Name (名前)]** と **[Description (説明)]** を入力します。 **[Website (Web サイト)]** 値にアプリケーションの **URL** を貼り付けます。 次に、 **[Callback URL (コールバック URL)]** に先ほどコピーした**コールバック URL** を貼り付けます。 この URL は、モバイル アプリ ゲートウェイの後にパス */.auth/login/twitter/callback* を追加したフォーマットです。 たとえば、「 `https://contoso.azurewebsites.net/.auth/login/twitter/callback`」のように入力します。 HTTPS スキームを使用していることを確認します。
 4. ページの下部で、条項を読み、同意します。 **[Create your Twitter application]** をクリックします。 これでアプリケーションが登録され、アプリケーションの詳細が表示されます。
-5. **[Settings (設定)]** タブをクリックし、**[Allow this application to be used to sign in with Twitter (このアプリケーションが Twitter でのサインインに使用されることを許可する)]** チェック ボックスをオンにして、**[Update Settings (設定の更新)]** をクリックします。
-6. **[Keys and Access Tokens]** タブをクリックします。**[Consumer Key (API Key) (コンシューマー キー (API キー))]** と **[Consumer secret (API Secret) (コンシューマー シークレット (API シークレット))]** の値を書き留めます。
+5. **[Settings (設定)]** タブをクリックし、 **[Allow this application to be used to sign in with Twitter (このアプリケーションが Twitter でのサインインに使用されることを許可する)]** チェック ボックスをオンにして、 **[Update Settings (設定の更新)]** をクリックします。
+6. **[Keys and Access Tokens]** タブをクリックします。[Consumer Key (API Key) (コンシューマー キー (API キー))] と **[Consumer secret (API Secret) (コンシューマー シークレット (API シークレット))]** の値を書き留めます。
    
    > [!NOTE]
    > コンシューマー シークレットは、重要なセキュリティ資格情報です。 このシークレットは、他のユーザーと共有したり、アプリケーションと共に配布したりしないでください。
@@ -43,14 +43,14 @@ ms.locfileid: "53411416"
    > 
 
 ## <a name="secrets"> </a>アプリケーションに Twitter 情報を追加する
-1. [Azure Portal]に戻り、アプリケーションに移動します。 **[設定]**、**[認証/承認]** の順にクリックします。
+1. [Azure Portal]に戻り、アプリケーションに移動します。 **[設定]** 、 **[認証/承認]** の順にクリックします。
 2. [認証/承認] 機能が有効になっていない場合は、スイッチを **[オン]** に切り替えます。
 3. **[Twitter]** をクリックします。 以前に入手したアプリ ID とアプリ シークレットの値を貼り付けます。 次に、 **[OK]** をクリックします
    
    ![][1]
    
    App Service は既定では認証を行いますが、サイトのコンテンツと API へのアクセス承認については制限を設けていません。 アプリケーション コードでユーザーを承認する必要があります。
-4. (省略可能) Twitter によって認証されたユーザーしかサイトにアクセスできないように制限するには、**[要求が認証されない場合に実行するアクション]** を **[Twitter]** に設定します。 この場合、要求はすべて認証される必要があり、認証されていない要求はすべて認証のために Twitter にリダイレクトされます。
+4. (省略可能) Twitter によって認証されたユーザーしかサイトにアクセスできないように制限するには、 **[要求が認証されない場合に実行するアクション]** を **[Twitter]** に設定します。 この場合、要求はすべて認証される必要があり、認証されていない要求はすべて認証のために Twitter にリダイレクトされます。
 5. **[Save]** をクリックします。
 
 これで、アプリケーションで認証に Twitter を使用する準備ができました。

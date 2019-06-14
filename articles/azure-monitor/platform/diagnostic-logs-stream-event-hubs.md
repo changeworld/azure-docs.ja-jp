@@ -9,11 +9,11 @@ ms.date: 07/25/2018
 ms.author: johnkem
 ms.subservice: ''
 ms.openlocfilehash: b5299af375646e7759d0770139df2cd6d7ce105c
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57314080"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60237695"
 ---
 # <a name="stream-azure-diagnostic-logs-to-an-event-hub"></a>Azure 診断ログをイベント ハブにストリーミングする
 **[Azure 診断ログ](diagnostic-logs-overview.md)** は、ポータルに組み込まれた [Event Hubs にエクスポート] オプションを使用するか、Azure PowerShell コマンドレットまたは Azure CLI を使用して診断設定でイベント ハブ承認規則 ID を有効にすることによって、任意のアプリケーションにほぼリアルタイムでストリーミングできます。
@@ -57,7 +57,7 @@ ms.locfileid: "57314080"
 
 ## <a name="stream-diagnostic-logs-using-the-portal"></a>ポータルを使用して診断ログをストリーミングする
 
-1. ポータルで、Azure Monitor に移動し、**[診断設定]** をクリックします。
+1. ポータルで、Azure Monitor に移動し、 **[診断設定]** をクリックします。
 
     ![Azure Monitor の [監視] セクション](media/diagnostic-logs-stream-event-hubs/diagnostic-settings-blade.png)
 

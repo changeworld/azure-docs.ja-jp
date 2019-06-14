@@ -8,11 +8,11 @@ ms.date: 1/8/2019
 ms.author: victorh
 ms.topic: conceptual
 ms.openlocfilehash: 2f0bd0a20b866d342802014f1034a7ed9d939d53
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57792244"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60831376"
 ---
 # <a name="url-path-based-routing-overview"></a>URL パス ベースのルーティングの概要
 
@@ -64,7 +64,7 @@ urlPathMap 要素は、パス パターンのバックエンド サーバー プ
 
 ### <a name="pathpattern"></a>PathPattern
 
-PathPattern は照合するパス パターンの一覧です。 それぞれ / で始まる必要があり、"*" が許可されるのは末尾の "/" の後だけです。 パス照合に渡される文字列の最初の ?  または # の後にテキストは含まれず、これらの文字はここでは許可されません。 それ以外の場合、URL で許可される文字はすべて PathPattern で許可されます。
+PathPattern は照合するパス パターンの一覧です。 それぞれ / で始まる必要があり、"*" が許可されるのは末尾の "/" の後だけです。 パス照合に渡される文字列の最初の ? または # の後にテキストは含まれず、これらの文字はここでは許可されません。 それ以外の場合、URL で許可される文字はすべて PathPattern で許可されます。
 
 Application Gateway v1 と v2 のいずれをデプロイしているかによって、サポートされるパターンは異なります。
 

@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: peterpr
 ms.openlocfilehash: 3e77494eacaf16ac23a531cb7a16fe8bf6117006
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64714422"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-c"></a>Raspberry Pi を Azure IoT Central アプリケーションに接続する (C#)
@@ -91,7 +91,7 @@ Azure IoT Central アプリケーションで、**Raspberry Pi** デバイス �
     > [!NOTE]
     > **Microsoft.Azure.Devices.Client** パッケージのバージョン番号が、示されているものより大きいことがあります。
 
-1. **pisample.csproj** を保存します。 Visual Studio Code から復元コマンドを実行するよう求められた場合は、**[復元]** を選択します。
+1. **pisample.csproj** を保存します。 Visual Studio Code から復元コマンドを実行するよう求められた場合は、 **[復元]** を選択します。
 
 1. **Program.cs** を開き、その内容を次のコードに置き換えます。
 

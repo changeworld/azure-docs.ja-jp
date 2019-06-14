@@ -14,11 +14,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: abfdad1db655c102dbfb300434eac952fe2154dc
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58095902"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60381896"
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory シームレス シングル サインオンのトラブルシューティングを行う
 
@@ -36,8 +36,8 @@ ms.locfileid: "58095902"
 - シームレス SSO は、iOS および Android 上のモバイル ブラウザーでは動作しません。
 - Active Directory でユーザーが属しているグループ数が多すぎる場合、ユーザーの Kerberos チケットが大きすぎて処理できなくなり、シームレス SSO が失敗する可能性があります。 Azure AD HTTPS 要求のヘッダーは最大サイズが 50 KB です。Cookie など、他の Azure AD アーティファクト (通常、2 から 5 KB) に対応するには、Kerberos チケットのサイズを、制限より小さくする必要があります。 ユーザーのグループ メンバーシップを減らし、再試行することをお勧めします。
 - 30 以上の Active Directory フォレストを同期している場合は、Azure AD Connect によるシームレス SSO を有効にすることはできません。 この問題を回避するには、テナントでこの機能を[手動で有効](#manual-reset-of-the-feature)にします。
-- Azure AD サービスの URL (https://autologon.microsoftazuread-sso.com)) を、ローカル イントラネット ゾーンではなく信頼済みサイト ゾーンに追加すると、"*ユーザーのサインインがブロック*" されます。
-- シームレス SSO では、Kerberos のために **RC4_HMAC_MD5** の暗号化の種類を使用します。 Active Directory の設定で **RC4_HMAC_MD5** の暗号化の種類の使用を無効にすると、シームレス SSO が中断されます。 グループ ポリシー管理エディター ツールで、**[コンピューターの構成]、[Windows 設定]、[セキュリティ設定]、[ローカル ポリシー]、[セキュリティ オプション]、[ネットワーク セキュリティ:** **Kerberos で許可する暗号化の種類を構成する]** の順に選択して、[RC4_HMAC_MD5] のポリシーの値が **[有効]** になっていることを確認してください。 さらに、シームレス SSO では他の暗号化の種類を使用できないため、それらが **[無効]** になっていることを確認してください。
+- Azure AD サービスの URL (https://autologon.microsoftazuread-sso.com) ) を、ローカル イントラネット ゾーンではなく信頼済みサイト ゾーンに追加すると、"*ユーザーのサインインがブロック*" されます。
+- シームレス SSO では、Kerberos のために **RC4_HMAC_MD5** の暗号化の種類を使用します。 Active Directory の設定で **RC4_HMAC_MD5** の暗号化の種類の使用を無効にすると、シームレス SSO が中断されます。 グループ ポリシー管理エディター ツールで、 **[コンピューターの構成]、[Windows 設定]、[セキュリティ設定]、[ローカル ポリシー]、[セキュリティ オプション]、[ネットワーク セキュリティ:** **Kerberos で許可する暗号化の種類を構成する]** の順に選択して、[RC4_HMAC_MD5] のポリシーの値が **[有効]** になっていることを確認してください。 さらに、シームレス SSO では他の暗号化の種類を使用できないため、それらが **[無効]** になっていることを確認してください。
 
 ## <a name="check-status-of-feature"></a>機能の状態の確認
 
@@ -55,7 +55,7 @@ ms.locfileid: "58095902"
 
 ![Azure Active Directory 管理センター: サインイン レポート](./media/tshoot-connect-sso/sso9.png)
 
-[Azure Active Directory 管理センター](https://aad.portal.azure.com/)で **[Azure Active Directory]** > **[サインイン]** に移動し、特定のユーザーのサインイン アクティビティを選択します。 **[サインインのエラー コード]** フィールドを探します。 次の表を使用して、そのフィールドの値を、失敗の理由と解決策にマップします。
+[Azure Active Directory 管理センター](https://aad.portal.azure.com/)で **[Azure Active Directory]**  >  **[サインイン]** に移動し、特定のユーザーのサインイン アクティビティを選択します。 **[サインインのエラー コード]** フィールドを探します。 次の表を使用して、そのフィールドの値を、失敗の理由と解決策にマップします。
 
 |サインイン エラー コード|サインインが失敗した理由|解決策
 | --- | --- | ---
@@ -86,12 +86,12 @@ ms.locfileid: "58095902"
 - コマンド プロンプトから `klist` コマンド使用して、デバイス上の既存の Kerberos チケットを一覧表示します。 `AZUREADSSOACC` コンピューター アカウントに対して発行されたチケットが存在することを確認します。 ユーザーの Kerberos チケットは、通常は 10 時間有効です。 Active Directory で別の設定が行われていることがあります。
 - テナントでシームレス SSO を無効にして再度有効にすると、キャッシュされた Kerberos チケットが期限切れになるまでシングル サインオン機能は利用できません。
 - `klist purge` コマンドを使用してデバイスから既存の Kerberos チケットを消去し、やり直します。
-- JavaScript に関連する問題があるかどうかを確認するために、ブラウザーのコンソール ログ (**[開発者ツール]** の下) を確認します。
+- JavaScript に関連する問題があるかどうかを確認するために、ブラウザーのコンソール ログ ( **[開発者ツール]** の下) を確認します。
 - [ドメイン コントローラーのログ](#domain-controller-logs)を確認します。
 
 ### <a name="domain-controller-logs"></a>ドメイン コントローラーのログ
 
-ドメイン コントローラーで成功の監査を有効にすると、ユーザーがシームレス SSO でサインインするたびに、セキュリティ エントリがイベント ログに記録されます。 こうしたセキュリティ イベントは、次のクエリを使用して検索できます  (コンピューター アカウント **AzureADSSOAcc$** に関連付けられているイベント **4769** を探します)。
+ドメイン コントローラーで成功の監査を有効にすると、ユーザーがシームレス SSO でサインインするたびに、セキュリティ エントリがイベント ログに記録されます。 こうしたセキュリティ イベントは、次のクエリを使用して検索できます (コンピューター アカウント **AzureADSSOAcc$** に関連付けられているイベント **4769** を探します)。
 
 ```
     <QueryList>

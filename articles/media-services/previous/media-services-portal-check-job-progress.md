@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 86c91582256261d701dc3c73b1bdfdcb6002f6e6
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64867215"
 ---
 # <a name="monitor-encoding-job-progress-with-the-azure-portal"></a>Azure ポータルを使用したエンコード ジョブの進行状況の監視
@@ -30,7 +30,7 @@ ms.locfileid: "64867215"
 
 ジョブを実行する際には、多くの場合、ジョブの進行状況を追跡する手段が必要になります。 
 
-エンコード ジョブの進行状況を監視するには、ページの上部にある **[設定]** をクリックし、**[ジョブ]** を選択します。
+エンコード ジョブの進行状況を監視するには、ページの上部にある **[設定]** をクリックし、 **[ジョブ]** を選択します。
 
 ![[ジョブ]](./media/media-services-portal-vod-get-started/media-services-jobs.png)
 

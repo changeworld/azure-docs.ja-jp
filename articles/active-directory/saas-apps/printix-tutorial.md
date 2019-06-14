@@ -16,11 +16,11 @@ ms.date: 06/29/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e883833f7998c073b574c892ed5c7777e01faab4
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56180295"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62111461"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-printix"></a>チュートリアル:Azure Active Directory と Printix の統合
 
@@ -60,11 +60,11 @@ Azure AD への Printix の統合を構成するには、ギャラリーから�
 
 **ギャラリーから Printix を追加するには、次の手順を実行します。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。 
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。 
 
     ![Active Directory][1]
 
-1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+1. **[エンタープライズ アプリケーション]** に移動します。 次に、 **[すべてのアプリケーション]** に移動します。
 
     ![[アプリケーション]][2]
     
@@ -76,7 +76,7 @@ Azure AD への Printix の統合を構成するには、ギャラリーから�
 
     ![Azure AD のテスト ユーザーの作成](./media/printix-tutorial/tutorial_printix_search.png)
 
-1. 結果パネルで **[Printix]** を選択し、**[追加]** ボタンをクリックしてアプリケーションを追加します。
+1. 結果パネルで **[Printix]** を選択し、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
 
     ![Azure AD のテスト ユーザーの作成](./media/printix-tutorial/tutorial_printix_addfromgallery.png)
 
@@ -101,11 +101,11 @@ Printix で Azure AD のシングル サインオンを構成してテストす�
 
 **Printix で Azure AD シングル サインオンを構成するには、次の手順を実行します。**
 
-1. Azure Portal の **Printix** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
+1. Azure Portal の **Printix** アプリケーション統合ページで、 **[シングル サインオン]** をクリックします。
 
     ![Configure single sign-on][4]
 
-1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+1. **[シングル サインオン]** ダイアログで、 **[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
     ![Configure single sign-on](./media/printix-tutorial/tutorial_printix_samlbase.png)
 
@@ -118,7 +118,7 @@ Printix で Azure AD のシングル サインオンを構成してテストす�
     > [!NOTE] 
     > この値は実際のものではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[Printix クライアント サポート チーム](mailto:support@printix.net)に問い合わせてください。 
  
-1. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
+1. **[SAML 署名証明書]** セクションで、 **[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
     ![Configure single sign-on](./media/printix-tutorial/tutorial_printix_certificate.png) 
 
@@ -128,7 +128,7 @@ Printix で Azure AD のシングル サインオンを構成してテストす�
 
 1. Printix テナントに管理者としてサインオンします。
 
-1. 上部のメニューで右上隅のアイコンをクリックし、**[認証]** を選択します。
+1. 上部のメニューで右上隅のアイコンをクリックし、 **[認証]** を選択します。
    
     ![Configure single sign-on](./media/printix-tutorial/tutorial_printix_06.png)
 
@@ -142,9 +142,9 @@ Printix で Azure AD のシングル サインオンを構成してテストす�
    
     ![Configure single sign-on](./media/printix-tutorial/tutorial_printix_08.png)
    
-1. テストに成功した場合は、**[Test (テスト)]** ボタンをクリックし、**[OK]** ボタンをクリックします。
+1. テストに成功した場合は、 **[Test (テスト)]** ボタンをクリックし、 **[OK]** ボタンをクリックします。
    
-     **テスト** ボタンをクリックした後に Azure Active Directory ページが表示されます。 ここで「テストに成功した」とは、Azure テスト アカウントの資格情報を入力した後にメッセージ "Settings tested OK" がポップ アップ表示されるということです。**[OK]** ボタンをクリックしてください。
+     **テスト** ボタンをクリックした後に Azure Active Directory ページが表示されます。 ここで「テストに成功した」とは、Azure テスト アカウントの資格情報を入力した後にメッセージ "Settings tested OK" がポップ アップ表示されるということです。 **[OK]** ボタンをクリックしてください。
    
     ![Configure single sign-on](./media/printix-tutorial/tutorial_printix_09.png)
 
@@ -152,7 +152,7 @@ Printix で Azure AD のシングル サインオンを構成してテストす�
 
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、 **[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -162,15 +162,15 @@ Printix で Azure AD のシングル サインオンを構成してテストす�
 
 **Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
 
-1. **Azure Portal** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+1. **Azure Portal** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
     ![Azure AD のテスト ユーザーの作成](./media/printix-tutorial/create_aaduser_01.png) 
 
-1. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
+1. **[ユーザーとグループ]** に移動し、 **[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
     
     ![Azure AD のテスト ユーザーの作成](./media/printix-tutorial/create_aaduser_02.png) 
 
-1. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
+1. ダイアログの上部にある **[追加]** をクリックして、 **[ユーザー]** ダイアログを開きます。
  
     ![Azure AD のテスト ユーザーの作成](./media/printix-tutorial/create_aaduser_03.png) 
 
@@ -182,9 +182,9 @@ Printix で Azure AD のシングル サインオンを構成してテストす�
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
-    c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
+    c. **[パスワードを表示]** を選択し、 **[パスワード]** の値をメモします。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
+    d. **Create** をクリックしてください。
  
 ### <a name="creating-a-printix-test-user"></a>Printix テスト ユーザーの作成
 
@@ -204,7 +204,7 @@ Printix で Azure AD のシングル サインオンを構成してテストす�
 
 **Printix に Britta Simon を割り当てるには、次の手順を実行します。**
 
-1. Azure Portal でアプリケーション ビューを開き、ディレクトリ ビューに移動します。次に、**[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** をクリックします。
+1. Azure Portal でアプリケーション ビューを開き、ディレクトリ ビューに移動します。次に、 **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** をクリックします。
 
     ![ユーザーの割り当て][201] 
 
@@ -216,7 +216,7 @@ Printix で Azure AD のシングル サインオンを構成してテストす�
 
     ![ユーザーの割り当て][202] 
 
-1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[追加]** ボタンをクリックします。 次に、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![ユーザーの割り当て][203]
 

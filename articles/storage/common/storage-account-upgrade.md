@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 03/26/2019
 ms.author: tamram
 ms.openlocfilehash: 2d6a5c96bf99439520e26fc905668835944cee29
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66115640"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>汎用 v2 ストレージ アカウントにアップグレードする
@@ -141,8 +141,8 @@ BLOB ストレージのデータ アクセス パターンを監視するには�
 
 BLOB ストレージ アカウントのトランザクション コストを見積もるには、トランザクションを 3 つのグループに分類する必要があります (それぞれ価格が異なるため)。
 
-* *"PutBlob"*、*"PutBlock"*、*"PutBlockList"*、*"AppendBlock"*、*"ListBlobs"*、*"ListContainers"*、*"CreateContainer"*、*"SnapshotBlob"*、*"CopyBlob"* などの書き込みトランザクション。
-* *"DeleteBlob"*、*"DeleteContainer"* などの削除トランザクション。
+* *"PutBlob"* 、 *"PutBlock"* 、 *"PutBlockList"* 、 *"AppendBlock"* 、 *"ListBlobs"* 、 *"ListContainers"* 、 *"CreateContainer"* 、 *"SnapshotBlob"* 、 *"CopyBlob"* などの書き込みトランザクション。
+* *"DeleteBlob"* 、 *"DeleteContainer"* などの削除トランザクション。
 * その他すべてのトランザクション。
 
 GPv1 ストレージ アカウントのトランザクション コストを見積もるには、操作と API に関係なく、すべてのトランザクションを集計する必要があります。
@@ -155,7 +155,7 @@ BLOB ストレージ アカウントのデータ アクセス コストを見積
 
 * ストレージ アカウントから取得されたデータの量は、主に *"GetBlob"* 操作と *"CopyBlob"* 操作の *"TotalEgress"* の合計を確認することで見積もることができます。
 
-* ストレージ アカウントに書き込まれたデータの量は、主に *"PutBlob"* 操作、*"PutBlock"* 操作、*"CopyBlob"* 操作、*"AppendBlock"* 操作の *"TotalIngress"* の合計を確認することで見積もることができます。
+* ストレージ アカウントに書き込まれたデータの量は、主に *"PutBlob"* 操作、 *"PutBlock"* 操作、 *"CopyBlob"* 操作、 *"AppendBlock"* 操作の *"TotalIngress"* の合計を確認することで見積もることができます。
 
 また、BLOB ストレージ アカウントの geo レプリケーション データ転送のコストは、GRS ストレージ アカウントまたは RA-GRS ストレージ アカウントを使用する場合に書き込まれるデータ量の見積もりを使用することによって計算することもできます。
 

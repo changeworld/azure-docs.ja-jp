@@ -9,15 +9,15 @@ ms.date: 04/18/2019
 ms.author: johnkem
 ms.subservice: logs
 ms.openlocfilehash: b17978da3195b364f868d33ab7ad9faa1544e9ec
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60006796"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60238009"
 ---
 # <a name="stream-azure-diagnostic-logs-to-log-analytics-workspace-in-azure-monitor"></a>Azure Monitor の Log Analytics ワークスペースに Azure 診断ログをストリーミングする
 
-ポータル、PowerShell コマンドレット、または Azure CLI を使用して、Azure Monitor の Log Analytics ワークスペースに、**[Azure 診断ログ](diagnostic-logs-overview.md)** をほぼリアルタイムでストリーミングすることができます。
+ポータル、PowerShell コマンドレット、または Azure CLI を使用して、Azure Monitor の Log Analytics ワークスペースに、 **[Azure 診断ログ](diagnostic-logs-overview.md)** をほぼリアルタイムでストリーミングすることができます。
 
 ## <a name="what-you-can-do-with-diagnostics-logs-in-a-log-analytics-workspace"></a>Log Analytics ワークスペースの診断ログを使用してできること
 
@@ -41,7 +41,7 @@ Azure Monitor では、柔軟なログ クエリと分析のツールが提供�
 >
 
 ## <a name="stream-diagnostic-logs-using-the-portal"></a>ポータルを使用して診断ログをストリーミングする
-1. ポータルで、Azure Monitor に移動し、**[設定]** メニューの **[診断設定]** をクリックします。
+1. ポータルで、Azure Monitor に移動し、 **[設定]** メニューの **[診断設定]** をクリックします。
 
 
 2. 必要に応じて、リソース グループまたはリソースの種類で一覧をフィルタリングして、診断設定を行うリソースをクリックします。
@@ -54,7 +54,7 @@ Azure Monitor では、柔軟なログ クエリと分析のツールが提供�
 
    ![診断設定の追加 - 既存の設定が存在する](media/diagnostic-logs-stream-log-store/diagnostic-settings-multiple.png)
 
-3. 設定に名前を付け、**[Log Analytics への送信]** チェック ボックスをオンにして、Log Analytics ワークスペースを選択します。
+3. 設定に名前を付け、 **[Log Analytics への送信]** チェック ボックスをオンにして、Log Analytics ワークスペースを選択します。
 
    ![診断設定の追加 - 既存の設定が存在する](media/diagnostic-logs-stream-log-store/diagnostic-settings-configure.png)
 

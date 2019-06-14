@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 04/19/2019
 ms.author: haroldw
 ms.openlocfilehash: d8a9b82e51c837af6343ddf851545d02299aa527
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60001651"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61473887"
 ---
 # <a name="common-prerequisites-for-deploying-openshift-in-azure"></a>Azure で OpenShift をデプロイする場合の共通の前提条件
 
@@ -53,7 +53,7 @@ Ansible でリモート ホストへの SSH 接続を行う場合、パスワー
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン 
-[az login](/cli/azure/reference-index) コマンドで Azure サブスクリプションにサインインし、画面上の指示に従うか、**[使ってみる]** をクリックして Cloud Shell を使用します。
+[az login](/cli/azure/reference-index) コマンドで Azure サブスクリプションにサインインし、画面上の指示に従うか、 **[使ってみる]** をクリックして Cloud Shell を使用します。
 
 ```azurecli 
 az login
@@ -68,7 +68,7 @@ az login
 az group create --name keyvaultrg --location eastus
 ```
 
-## <a name="create-a-key-vault"></a>キー コンテナーを作成する
+## <a name="create-a-key-vault"></a>Key Vault を作成します
 [az keyvault create](/cli/azure/keyvault) コマンドを使用して、クラスターの SSH キーを格納するキー コンテナーを作成します。 キー コンテナーの名前はグローバルに一意である必要があります。
 
 次の例では、*keyvault* という名前のキー コンテナーを *keyvaultrg* リソース グループに作成します。

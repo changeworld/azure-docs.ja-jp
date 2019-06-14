@@ -12,11 +12,11 @@ ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
 ms.openlocfilehash: e636b2bb08477e6c56c6ae41f08983fc5bfa2a9b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59798657"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60450745"
 ---
 # <a name="monitor-and-manage-sharepoint-resources-with-azure-logic-apps"></a>Azure Logic Apps を使用して SharePoint リソースを監視および管理する
 
@@ -65,14 +65,14 @@ SharePoint から応答を取得し、その出力を他のアクションが使
 
    または
 
-   既存のロジック アプリの場合: SharePoint アクションを追加する最後のステップの下で、**[新しいステップ]** を選択します。 
+   既存のロジック アプリの場合: SharePoint アクションを追加する最後のステップの下で、 **[新しいステップ]** を選択します。 
    検索ボックスに、フィルターとして「sharepoint」と入力します。 
    アクションの一覧で、目的のアクションを選択します。
 
    ステップの間にアクションを追加するには、ステップ間の矢印の上にポインターを移動します。 
-   表示されるプラス記号 (**+**) を選択し、**[アクションの追加]** を選択します。
+   表示されるプラス記号 ( **+** ) を選択し、 **[アクションの追加]** を選択します。
 
-1. サインインするように求められたら、必要な接続情報を入力します。 SharePoint Server を使用している場合は、**[オンプレミスのデータ ゲートウェイ経由で接続]** を選択してください。 操作が完了したら、**[作成]** を選択します。
+1. サインインするように求められたら、必要な接続情報を入力します。 SharePoint Server を使用している場合は、 **[オンプレミスのデータ ゲートウェイ経由で接続]** を選択してください。 操作が完了したら、 **[作成]** を選択します。
 
 1. 選択したトリガーまたはアクションのために必要な詳細を指定し、ロジック アプリのワークフローの構築を続けます。
 

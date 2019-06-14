@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ae83cea866367fa6a6596caa683d0287bea96c29
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59616211"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60456181"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Azure Active Directory パススルー認証のトラブルシューティング
 
@@ -58,7 +58,7 @@ ms.locfileid: "59616211"
 
 ![Azure Active Directory 管理センター - サインイン レポート](./media/tshoot-connect-pass-through-authentication/pta4.png)
 
-[Azure Active Directory 管理センター](https://aad.portal.azure.com/)で **[Azure Active Directory]** -> **[サインイン]** に移動し、特定のユーザーのサインイン アクティビティをクリックします。 **[サインインのエラー コード]** フィールドを探します。 次の表を使用して、そのフィールドの値を、失敗の理由と解決策にマップします。
+[Azure Active Directory 管理センター](https://aad.portal.azure.com/)で **[Azure Active Directory]**  ->  **[サインイン]** に移動し、特定のユーザーのサインイン アクティビティをクリックします。 **[サインインのエラー コード]** フィールドを探します。 次の表を使用して、そのフィールドの値を、失敗の理由と解決策にマップします。
 
 |サインイン エラー コード|サインインが失敗した理由|解決策
 | --- | --- | ---
@@ -123,7 +123,7 @@ Azure AD Connect がインストールされているサーバーが、[こち�
 
 ### <a name="azure-ad-connect-logs"></a>Azure AD Connect のログ
 
-インストールに関するエラーが発生する場合は、**%ProgramData%\AADConnect\trace-\*.log** の Azure AD Connect ログを確認してください。
+インストールに関するエラーが発生する場合は、 **%ProgramData%\AADConnect\trace-\*.log** の Azure AD Connect ログを確認してください。
 
 ### <a name="authentication-agent-event-logs"></a>認証エージェントのイベント ログ
 
@@ -133,7 +133,7 @@ Azure AD Connect がインストールされているサーバーが、[こち�
 
 ### <a name="detailed-trace-logs"></a>詳細なトレース ログ
 
-ユーザー サインイン エラーのトラブルシューティングを行うときは、**%ProgramData%\Microsoft\Azure AD Connect Authentication Agent\Trace\\** でトレース ログを探します。 これらのログには、パススルー認証機能を使用した特定のユーザー サインインが失敗した原因が記録されています。 これらのエラーは、前の表に示したサインインの失敗の理由にもマップされます。 次にログ エントリの例を示します。
+ユーザー サインイン エラーのトラブルシューティングを行うときは、 **%ProgramData%\Microsoft\Azure AD Connect Authentication Agent\Trace\\** でトレース ログを探します。 これらのログには、パススルー認証機能を使用した特定のユーザー サインインが失敗した原因が記録されています。 これらのエラーは、前の表に示したサインインの失敗の理由にもマップされます。 次にログ エントリの例を示します。
 
 ```
     AzureADConnectAuthenticationAgentService.exe Error: 0 : Passthrough Authentication request failed. RequestId: 'df63f4a4-68b9-44ae-8d81-6ad2d844d84e'. Reason: '1328'.
@@ -161,7 +161,7 @@ Azure AD Connect がインストールされているサーバーが、[こち�
 
 ## <a name="performance-monitor-counters"></a>パフォーマンス モニター カウンター
 
-認証エージェントを監視するもう 1 つの方法は、認証エージェントがインストールされている各サーバーで特定のパフォーマンス モニター カウンターを追跡することです。 下記に示すグローバルなカウンター (**# PTA authentications**、**#PTA failed authentications**、**#PTA successful authentications**) とエラー カウンター (**# PTA authentication errors**) を使用します。
+認証エージェントを監視するもう 1 つの方法は、認証エージェントがインストールされている各サーバーで特定のパフォーマンス モニター カウンターを追跡することです。 下記に示すグローバルなカウンター ( **# PTA authentications**、 **#PTA failed authentications**、 **#PTA successful authentications**) とエラー カウンター ( **# PTA authentication errors**) を使用します。
 
 ![パススルー認証のパフォーマンス モニター カウンター](./media/tshoot-connect-pass-through-authentication/pta12.png)
 

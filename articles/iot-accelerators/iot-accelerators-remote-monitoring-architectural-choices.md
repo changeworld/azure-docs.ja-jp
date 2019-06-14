@@ -9,11 +9,11 @@ services: iot-accelerators
 ms.date: 11/20/2018
 ms.topic: conceptual
 ms.openlocfilehash: 1bd08596a30db7322a72b4269fddfe0b9df19119
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54464223"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61447177"
 ---
 # <a name="remote-monitoring-architectural-choices"></a>リモート監視のアーキテクチャの選択
 

@@ -9,11 +9,11 @@ ms.date: 08/01/2016
 ms.author: jeconnoc
 ms.subservice: diagnostic-extension
 ms.openlocfilehash: 23379e9d9bb29efb7fb026260e8245e8eb8a2d71
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54468524"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60395069"
 ---
 # <a name="store-and-view-diagnostic-data-in-azure-storage"></a>Azure Storage への診断データの保存と表示
 診断データは、Microsoft Azure ストレージ エミュレーターまたは Azure ストレージに転送しない限り、永続的に保存されません。 診断データは、いったんストレージに保存されると、用意されているいくつかのツールの 1 つを使用して確認することができます。
@@ -34,13 +34,13 @@ ServiceConfiguration.cscfg ファイル内で使用するストレージ アカ�
 | データ ソース | ストレージ形式 |
 | --- | --- |
 | Azure ログ |テーブル |
-| IIS 7.0 ログ |BLOB |
+| IIS 7.0 ログ |Blob |
 | Azure Diagnostics インフラストラクチャ ログ |テーブル |
-| 失敗した要求トレース ログ |BLOB |
+| 失敗した要求トレース ログ |Blob |
 | Windows イベント ログ |テーブル |
 | パフォーマンス カウンター |テーブル |
-| クラッシュ ダンプ |BLOB |
-| カスタム エラー ログ |BLOB |
+| クラッシュ ダンプ |Blob |
+| カスタム エラー ログ |Blob |
 
 ## <a name="transfer-diagnostic-data"></a>診断データの転送
 SDK 2.5 以降では、診断データの転送要求は構成ファイルを介して発生します。 構成で指定したスケジュール間隔で、診断データを転送することができます。
@@ -65,19 +65,19 @@ SDK 2.4 およびそれ以前のバージョンでは、構成ファイルを介
 
 **BLOB**
 
-* **wad-control-container** – (SDK 2.4 およびそれ以前のバージョンのみ) Azure 診断を制御する XML 構成ファイルが含まれます。
+* **wad-control-container** – (SDK 2.4 およびそれ以前のバージョンのみ) Azure Diagnostics を制御する XML 構成ファイルが含まれます。
 * **wad-iis-failedreqlogfiles** – IIS の失敗した要求ログからの情報が含まれます。
 * **wad-iis-logfiles** – IIS ログに関する情報が含まれます。
 * **"custom"** – 診断モニターによって監視されるディレクトリの構成に基づくカスタム コンテナーです。  この BLOB コンテナーの名前は WADDirectoriesTable で指定されます。
 
 ## <a name="tools-to-view-diagnostic-data"></a>診断データを表示するツール
-ストレージへの転送後にデータを表示するには、いくつかのツールを利用できます。 例: 
+ストレージへの転送後にデータを表示するには、いくつかのツールを利用できます。 例:
 
 * Visual Studio のサーバー エクスプローラー - Azure Tools for Microsoft Visual Studio がインストールされている場合、サーバー エクスプローラーの Azure Storage ノードを使用して、Azure ストレージ アカウントの読み取り専用の BLOB およびテーブル データを表示できます。 データは、ローカルのストレージ エミュレーター アカウントから表示できます。また、Azure 用に作成したストレージ アカウントから表示することもできます。 詳細については、「[サーバー エクスプローラーを使用したストレージ リソースの参照と管理](/visualstudio/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage)」を参照してください。
 * [Microsoft Azure ストレージ エクスプローラー](../../vs-azure-tools-storage-manage-with-storage-explorer.md) は、Windows、OSX、Linux で Azure Storage データを容易に操作できるスタンドアロン アプリです。
 * [Azure Management Studio](https://www.cerebrata.com/products/azure-management-studio/introduction) に含まれている Azure Diagnostics Manager では、Azure で実行されているアプリケーションによって収集された診断データの表示、ダウンロード、管理を行うことができます。
 
 ## <a name="next-steps"></a>次の手順
-[Azure 診断で Cloud Services アプリケーションのフローをトレースする](../../cloud-services/cloud-services-dotnet-diagnostics-trace-flow.md)
+[Azure Diagnostics で Cloud Services アプリケーションのフローをトレースする](../../cloud-services/cloud-services-dotnet-diagnostics-trace-flow.md)
 
 

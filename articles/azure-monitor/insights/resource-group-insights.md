@@ -12,11 +12,11 @@ ms.date: 09/19/2018
 ms.reviewer: mbullwin
 ms.author: daviste
 ms.openlocfilehash: d5c07e0d4aca8bda42ea9f78a1475ea7bb5861f0
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55997024"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62119423"
 ---
 # <a name="monitor-resource-groups-with-azure-monitor-preview"></a>Azure Monitor でリソース グループを監視する (プレビュー)
 
@@ -117,7 +117,7 @@ Azure Monitor でリソース グループのアラートを確認するには�
 
 Azure Monitor for Resource Groups は、Azure Monitor Alerts Management システムに依存して、アラート ステータスを取得します。 Alerts Management は、既定でどのリソース グループおよびサブスクリプションにも構成されているわけではなく、所有者または共同作成者ロールを持つユーザーしか有効化できません。 次のいずれかの方法で、有効化できます。
 * サブスクリプション内の任意のリソース グループに対して Azure Monitor for Resource Groups を開く。
-* サブスクリプションに移動して、**[リソース プロバイダー]** をクリックしてから、**[Register for Alerts.Management]\(Alerts.Management への登録\)** をクリックする。
+* サブスクリプションに移動して、 **[リソース プロバイダー]** をクリックしてから、 **[Register for Alerts.Management]\(Alerts.Management への登録\)** をクリックする。
 
 ## <a name="next-steps"></a>次の手順
 

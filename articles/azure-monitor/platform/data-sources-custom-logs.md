@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: bwren
 ms.openlocfilehash: c80736dcd8be0c7ff3aae850aaaf9659f47daf36
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56234799"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60996518"
 ---
 # <a name="custom-logs-in-azure-monitor"></a>Azure Monitor のカスタム ログ
 Azure Monitor のカスタム ログ データ ソースでは、Windows コンピューターと Linux コンピューターの両方のテキスト ファイルからイベントを収集できます。 多くのアプリケーションは、Windows イベント ログや Syslog などの標準のログ記録サービスの代わりに、テキスト ファイルに情報を記録します。 収集されたデータは、クエリで解析して個別のフィールドに格納するか、または収集時に個別のフィールドに抽出することができます。
@@ -29,7 +29,7 @@ Azure Monitor のカスタム ログ データ ソースでは、Windows コン�
 
 - ログでは 1 行につき 1 エントリとするか、各エントリの先頭に次のいずれかの形式に一致するタイムスタンプを使用する必要があります。
 
-    YYYY-MM-DD HH:MM:SS <br>M/D/YYYY HH:MM:SS AM/PM<br>Mon DD, YYYY HH:MM:SS<br />yyMMdd HH:mm:ss<br />ddMMyy HH:mm:ss<br />MMM d hh:mm:ss<br />dd/MMM/yyyy:HH:mm:ss zzz<br />yyyy-MM-ddTHH:mm:ssK
+    YYYY-MM-DD HH:MM:SS<br>M/D/YYYY HH:MM:SS AM/PM<br>Mon DD, YYYY HH:MM:SS<br />yyMMdd HH:mm:ss<br />ddMMyy HH:mm:ss<br />MMM d hh:mm:ss<br />dd/MMM/yyyy:HH:mm:ss zzz<br />yyyy-MM-ddTHH:mm:ssK
 
 - ログ ファイルでは、新しいエントリでファイルが上書きされる巡回ログまたはログ ローテーションを許可しないでください。
 - ログ ファイルでは、ASCII または UTF-8 エンコードを使用する必要があります。  UTF-16 など他の形式はサポートされていません。
@@ -56,8 +56,8 @@ Azure Monitor のカスタム ログ データ ソースでは、Windows コン�
 ### <a name="step-1-open-the-custom-log-wizard"></a>手順 1. カスタム ログ ウィザードを開く
 カスタム ログ ウィザードは Azure Portal で実行され、収集する新しいカスタム ログを定義できます。
 
-1. Azure portal で、**[Log Analytics ワークスペース]**、目的のワークスペース、**[詳細設定]** の順に選択します。
-2. **[データ]** > **[カスタム ログ]** をクリックします。
+1. Azure portal で、 **[Log Analytics ワークスペース]** 、目的のワークスペース、 **[詳細設定]** の順に選択します。
+2. **[データ]**  >  **[カスタム ログ]** をクリックします。
 3. 既定では、すべての構成変更はすべてのエージェントに自動的にプッシュされます。  Linux エージェントの場合、構成ファイルが Fluentd データ コレクターに送信されます。  各 Linux エージェントでこのファイルを手動で変更する場合、 *[Apply below configuration to my Linux machines (Linux コンピューターに以下の構成を適用する)]* チェック ボックスのチェックを外します。
 4. **[追加+]** をクリックし、カスタム ログ ウィザードを開きます。
 
@@ -159,7 +159,7 @@ Azure Monitor は約 5 分おきに各カスタム ログから新しいエン�
 ![ログのコレクション パス](media/data-sources-custom-logs/collection-path.png)
 
 ### <a name="provide-a-name-and-description-for-the-log"></a>ログの名前と説明を指定する
-*MyApp_CL* という名前を使用し、**[説明]** に入力します。
+*MyApp_CL* という名前を使用し、 **[説明]** に入力します。
 
 ![ログ名](media/data-sources-custom-logs/log-name.png)
 

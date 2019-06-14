@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
 ms.openlocfilehash: 20cb7a446befb1d31f0e069d91d0230fc4a2a901
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59999469"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60565601"
 ---
 # <a name="troubleshoot-failback-to-on-premises-from-azure"></a>Azure からオンプレミスへのフェールバックのトラブルシューティング
 
@@ -63,7 +63,7 @@ ms.locfileid: "59999469"
 
 ### <a name="error-code-8061"></a>エラー コード 8061
 
-"**データ ストアには、ESXi ホストからアクセスできません。**"
+"**データ ストアには、ESXi ホストからアクセスできません。** "
 
 [マスター ターゲットの前提条件とフェールバック用にサポートされているデータストア](vmware-azure-reprotect.md#deploy-a-separate-master-target-server)を確認してください。
 

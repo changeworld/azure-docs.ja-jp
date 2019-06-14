@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
 ms.openlocfilehash: f1e486a302b440d819e15ef86f8d76ea5e50d201
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54036326"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60888414"
 ---
 # <a name="using-a-partitioned-graph-in-azure-cosmos-db"></a>Azure Cosmos DB でのパーティション分割されたグラフの使用
 
@@ -38,7 +38,7 @@ Azure Cosmos DB の Gremlin API の主な特長の 1 つとして、水平スケ
     - `/id` および `/label` は、Gremlin API でのコンテナーに対するパーティション キーとしてサポートされていません。
 
 
-    - ID によって頂点を選択してから、**`.has()` ステップを使用してパーティション キー プロパティを指定する**: 
+    - ID によって頂点を選択してから、 **`.has()` ステップを使用してパーティション キー プロパティを指定する**: 
     
         ```
         g.V('vertex_id').has('partitionKey', 'partitionKey_value')

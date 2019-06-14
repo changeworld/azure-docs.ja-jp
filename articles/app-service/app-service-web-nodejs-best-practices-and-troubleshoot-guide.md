@@ -16,11 +16,11 @@ ms.date: 11/09/2017
 ms.author: ranjithr
 ms.custom: seodec18
 ms.openlocfilehash: 321dbf891c77007952f01b32bb509a15c2ac3e6f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58895785"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60853064"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Azure App Service Windows でのノード アプリケーションのベスト プラクティスとトラブルシューティング ガイド
 
@@ -212,7 +212,7 @@ http.createServer(function (req, res) {
 
 ![](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/scm_profile.cpuprofile.png)
 
-このファイルをダウンロードし、Chrome の F12 ツールで開きます。 Chrome で F12 キーを押し、**[Profiles]\(プロファイル\)** タブを選択します。**[Load]\(読み込み\)** ボタンを選択します。 ダウンロードした profile.cpuprofile ファイルを選択します。 読み込んだプロファイルをクリックします。
+このファイルをダウンロードし、Chrome の F12 ツールで開きます。 Chrome で F12 キーを押し、 **[Profiles]\(プロファイル\)** タブを選択します。 **[Load]\(読み込み\)** ボタンを選択します。 ダウンロードした profile.cpuprofile ファイルを選択します。 読み込んだプロファイルをクリックします。
 
 ![](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/chrome_tools_view.png)
 

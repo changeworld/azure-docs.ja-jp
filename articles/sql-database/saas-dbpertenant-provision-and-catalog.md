@@ -13,11 +13,11 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 09/24/2018
 ms.openlocfilehash: 803d05e1aaf4d9c26a6132bde30f101ce3905924
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58096828"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61388344"
 ---
 # <a name="learn-how-to-provision-new-tenants-and-register-them-in-the-catalog"></a>新しいテナントをプロビジョニングしてカタログに登録する方法の詳細
 
@@ -114,7 +114,7 @@ Wingtip Tickets アプリケーションで新しいテナント プロビジョ
 * **テナント キーが既に存在するかどうかの確認。** カタログにキーがあることを確認します。
 * **New-TenantDatabase によるテナント データベースのプロビジョニング。** F11 キーを使用して、[Azure Resource Manager テンプレート](../azure-resource-manager/resource-manager-template-walkthrough.md)によってデータベースがどのようにプロビジョニングされているかをステップ インします。
 
-    データベース名は、どのシャードがどのテナントに属しているかが明確になるよう、テナント名を基に作成されます  他のデータベース名前付け規則も使用できます。 Resource Manager テンプレートは、カタログ サーバーでテンプレート データベース (_baseTenantDB_) をコピーすることでテナント データベースを作成します。 代わりに、データベースを作成し、bacpac をインポートしてそれを初期化できます。 または、既知の場所から初期化スクリプトを実行できます。
+    データベース名は、どのシャードがどのテナントに属しているかが明確になるよう、テナント名を基に作成されます 他のデータベース名前付け規則も使用できます。 Resource Manager テンプレートは、カタログ サーバーでテンプレート データベース (_baseTenantDB_) をコピーすることでテナント データベースを作成します。 代わりに、データベースを作成し、bacpac をインポートしてそれを初期化できます。 または、既知の場所から初期化スクリプトを実行できます。
 
     Resource Manager テンプレートは、…\Learning Modules\Common\ フォルダーにある *tenantdatabasecopytemplate.json* ファイルです。
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/19/2019
 ms.author: banders
-ms.openlocfilehash: 9ba52951565c910138a5a49ecc97ad5748411e6d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 4303b79a7ee69d029504bf6ca2359f6e6070e5b8
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57842313"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60370153"
 ---
 # <a name="understand-your-microsoft-azure-bill"></a>Microsoft Azure の課金内容を確認する
 Azure の課金内容を確認するには、詳細な毎日の使用状況ファイルおよび Azure ポータルのコスト管理レポートと、請求書を比較します。
@@ -47,8 +47,8 @@ Azure の課金内容を確認するには、詳細な毎日の使用状況フ�
  | --- | --- |
 |請求サイクル | 請求期間 |
  |Name |測定カテゴリ |
- |type |測定サブカテゴリ |
- |リソース |測定名 |
+ |Type |測定サブカテゴリ |
+ |Resource |測定名 |
  |リージョン |測定リージョン |
  |消費量 |消費量 |
  |あり |含まれる量 |

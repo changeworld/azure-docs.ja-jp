@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
 ms.openlocfilehash: 628be573d03d42ec62a358071074facfe228852d
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58418671"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60318190"
 ---
 # <a name="prepare-source-machine-for-push-installation-of-mobility-agent"></a>モビリティ エージェントをプッシュ インストールできるようソース マシンを準備する
 
@@ -27,7 +27,7 @@ ms.locfileid: "58418671"
     - HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System レジストリ キーに、新しい DWORD 値**LocalAccountTokenFilterPolicy** を追加します。 値を **1** に設定します。
     -  これをコマンド プロンプトから行うには、次のコマンドを実行します。  
    `REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d
-3. 保護対象のマシンの Windows ファイアウォールで、**[Windows ファイアウォールを介したアプリまたは機能を許可]** を選択します。 **[ファイルとプリンターの共有]** と **[Windows Management Instrumentation (WMI)]** を有効にします。 コンピューターがドメインに属している場合は、グループ ポリシー オブジェクト (GPO) を使用してファイアウォールの設定を構成できます。
+3. 保護対象のマシンの Windows ファイアウォールで、 **[Windows ファイアウォールを介したアプリまたは機能を許可]** を選択します。 **[ファイルとプリンターの共有]** と **[Windows Management Instrumentation (WMI)]** を有効にします。 コンピューターがドメインに属している場合は、グループ ポリシー オブジェクト (GPO) を使用してファイアウォールの設定を構成できます。
 
    ![ファイアウォールの設定](./media/vmware-azure-install-mobility-service/mobility1.png)
 
@@ -42,7 +42,7 @@ ms.locfileid: "58418671"
 保護する各 Linux マシンで、次のようにします。
 
 1. Linux マシンとプロセス サーバー間にネットワーク接続が存在することを確認します。
-2. プロセス サーバーがコンピューターへのアクセスに使用できるアカウントを作成します。 アカウントは、ソース Linux サーバーの **root** ユーザーである必要があります  このアカウントは、プッシュ インストールと更新にのみ使用します。
+2. プロセス サーバーがコンピューターへのアクセスに使用できるアカウントを作成します。 アカウントは、ソース Linux サーバーの **root** ユーザーである必要があります このアカウントは、プッシュ インストールと更新にのみ使用します。
 3. ソース Linux サーバーの /etc/hosts ファイルに、ローカル ホスト名を、すべてのネットワーク アダプターに関連付けられた IP アドレスにマップするエントリが存在することを確認します。
 4. レプリケート対象のコンピューターに最新の openssh、openssh-server、openssl の各パッケージをインストールします。
 5. SSH (Secure Shell) が有効になっており、ポート 22 で実行中であることを確認します。
@@ -66,6 +66,6 @@ ms.locfileid: "58418671"
 
 ## <a name="next-steps"></a>次の手順
 
-モビリティ サービスがインストールされたら、Azure portal で、**[+ レプリケート]** を選択し、これらの VM の保護を開始します。 [VMware VM]\(vmware-azure-enable-replication.md) および[物理サーバー](physical-azure-disaster-recovery.md#enable-replication)でレプリケーションを有効にする方法についてさらに学習します。
+モビリティ サービスがインストールされたら、Azure portal で、 **[+ レプリケート]** を選択し、これらの VM の保護を開始します。 [VMware VM]\(vmware-azure-enable-replication.md) および[物理サーバー](physical-azure-disaster-recovery.md#enable-replication)でレプリケーションを有効にする方法についてさらに学習します。
 
 

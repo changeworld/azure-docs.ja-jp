@@ -16,11 +16,11 @@ ms.date: 01/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 607d538a2a2636e17265e95195000a777f162dc4
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56192338"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60263370"
 ---
 # <a name="tutorial-configure-jive-for-automatic-user-provisioning"></a>チュートリアル:Jive を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -60,11 +60,11 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 このセクションでは、Active Directory のユーザー アカウントのプロビジョニングを Jive に対して有効にする方法を説明します。
 この手順の一環として、Jive.com からの要求に必要なユーザー セキュリティ トークンを指定する必要があります。
 
-1. [Azure Portal](https://portal.azure.com) で、**[Azure Active Directory]、[エンタープライズ アプリ]、[すべてのアプリケーション]** セクションの順に移動します。
+1. [Azure Portal](https://portal.azure.com) で、 **[Azure Active Directory]、[エンタープライズ アプリ]、[すべてのアプリケーション]** セクションの順に移動します。
 
-1. シングル サインオンのために Jive を既に構成している場合は、検索フィールドで Jive のインスタンスを検索します。 構成していない場合は、**[追加]** を選択してアプリケーション ギャラリーで **Jive** を検索します。 検索結果から Jive を選択してアプリケーションの一覧に追加します。
+1. シングル サインオンのために Jive を既に構成している場合は、検索フィールドで Jive のインスタンスを検索します。 構成していない場合は、 **[追加]** を選択してアプリケーション ギャラリーで **Jive** を検索します。 検索結果から Jive を選択してアプリケーションの一覧に追加します。
 
-1. Jive のインスタンスを選択してから、**[プロビジョニング]** タブを選択します。
+1. Jive のインスタンスを選択してから、 **[プロビジョニング]** タブを選択します。
 
 1. **[プロビジョニング モード]** を **[自動]** に設定します。 
 
@@ -82,7 +82,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
       > Jive テナント URL は、組織が Jive にログインするために使用する URL です。  
       > 通常、URL の形式は **www.\<<組織名>\>.jive.com** のようになります。          
 
-1. Azure Portal で、**[テスト接続]** をクリックして Azure AD が Jive アプリに接続できることを確認します。
+1. Azure Portal で、 **[テスト接続]** をクリックして Azure AD が Jive アプリに接続できることを確認します。
 
 1. プロビジョニングのエラー通知を受け取るユーザーまたはグループの電子メール アドレスを **[通知用メール]** フィールドに入力して、下のチェック ボックスをオンにします。
 
