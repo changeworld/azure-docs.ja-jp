@@ -11,10 +11,10 @@ ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
 ms.openlocfilehash: 15babefda36ba37cf6df7820ac888668e4a502be
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65509916"
 ---
 # <a name="manage-users-in-azure-blockchain-workbench"></a>Azure Blockchain Workbench でのユーザーの管理
@@ -34,7 +34,7 @@ Blockchain Workbench ユーザーをアプリケーションやロールに割�
 1.  [Azure Portal](https://portal.azure.com) にサインインします。
 2.  右上隅で自分のアカウントを選択し、Blockchain Workbench に関連付けられた Azure AD テナントに切り替えます。
 3.  **[Azure Active Directory] > [ユーザー]** を選択します。 ディレクトリ内のユーザーの一覧が表示されます。
-4.  ディレクトリにユーザーを追加するには、**[新しいユーザー]** を選択します。 外部ユーザーの場合は、**[新しいゲスト ユーザー]** を選択します。
+4.  ディレクトリにユーザーを追加するには、 **[新しいユーザー]** を選択します。 外部ユーザーの場合は、 **[新しいゲスト ユーザー]** を選択します。
 
     ![新しいユーザー](./media/manage-users/add-ad-user.png)
 
@@ -56,7 +56,7 @@ Azure AD ディレクトリ内の**管理者**グループにユーザーを追�
     ![すべてのエンタープライズ アプリケーション登録](./media/manage-users/select-blockchain-client-app.png)
 
 5.  **[ユーザーとグループ] > [ユーザーの追加]** を選択します。
-6.  **[割り当ての追加]** で **[ユーザー]** を選択します。 管理者として追加するユーザーを選択するか、検索します。 選択が完了したら、**[選択]** をクリックします。
+6.  **[割り当ての追加]** で **[ユーザー]** を選択します。 管理者として追加するユーザーを選択するか、検索します。 選択が完了したら、 **[選択]** をクリックします。
 
     ![割り当ての追加](./media/manage-users/add-user-assignment.png)
 
@@ -75,7 +75,7 @@ Azure AD ディレクトリ内の**管理者**グループにユーザーを追�
 
     メンバーは各アプリケーションに追加されます。 メンバーは 1 つ以上のアプリケーション ロールを持ち、コントラクトを開始したり、アクションを実行することができます。
 
-2. アプリケーションのメンバーを管理するには、**[アプリケーション]** ウィンドウでアプリケーション タイルを選択します。
+2. アプリケーションのメンバーを管理するには、 **[アプリケーション]** ウィンドウでアプリケーション タイルを選択します。
 
     選択したアプリケーションに関連付けられているメンバーの数は、メンバー タイルに反映されます。
 

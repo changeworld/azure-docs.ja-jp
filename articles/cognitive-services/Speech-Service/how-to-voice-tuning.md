@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
 ms.openlocfilehash: 8d3e25f8217f3cc8772de9fbbb06a407008ca6f6
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65593879"
 ---
 # <a name="fine-tune-text-to-speech-output"></a>テキスト読み上げの出力を微調整する
@@ -43,7 +43,7 @@ Voice Tuning ツールを使用してテキスト読み上げの出力の微調�
    * **[すべてのサブスクリプション]** を探して選択します。  
    * **[Connect Existing Subscription]\(既存のサブスクリプションに接続\)** を選択します。  
      ![既存のサブスクリプションに接続する](./media/custom-voice/custom-voice-connect-subscription.png)
-   * Azure Speech Services サブスクリプション キーを入力し、**[追加]** を選択します。 サブスクリプション キーは、[サブスクリプション ページ](https://go.microsoft.com/fwlink/?linkid=2090458)の Speech のカスタマイズ ポータルにあります。 [Azure portal](https://portal.azure.com/) の [リソースの管理] ウィンドウからキーを取得することもできます。
+   * Azure Speech Services サブスクリプション キーを入力し、 **[追加]** を選択します。 サブスクリプション キーは、[サブスクリプション ページ](https://go.microsoft.com/fwlink/?linkid=2090458)の Speech のカスタマイズ ポータルにあります。 [Azure portal](https://portal.azure.com/) の [リソースの管理] ウィンドウからキーを取得することもできます。
    * 使用する予定の Speech Services サブスクリプションが複数ある場合は、サブスクリプションごとにこれらの手順を繰り返します。
 
 ## <a name="customize-the-text-to-speech-output"></a>テキスト読み上げの出力のカスタマイズ

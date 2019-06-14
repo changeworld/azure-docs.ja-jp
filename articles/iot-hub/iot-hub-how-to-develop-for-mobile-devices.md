@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 04/16/2018
 ms.author: yizhon
 ms.openlocfilehash: 5256a58a2b68584888abcac915392d8e389e9772
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54054539"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60399370"
 ---
 # <a name="develop-for-mobile-devices-using-azure-iot-sdks"></a>Azure IoT SDK を利用したモバイル デバイス向け開発
 
@@ -22,7 +22,7 @@ ms.locfileid: "54054539"
 
 Azure IoT Hub SDK は､Azure IoT Hub C SDK を介してネイティブ iOS プラットフォーム サポートを提供します｡  これは iOS SDK と考えることができ､Swift や Objective C Xcode プロジェクトに組み込むことができます｡  iOS 上で C SDK を利用する方法は 2 通りあります｡
 
-*  XCode プロジェクトで CocoaPod ライブラリを直接に利用する｡  
+* XCode プロジェクトで CocoaPod ライブラリを直接に利用する｡  
 * C SDK 用のソース コードをダウンロードし、MacOS 向け [build instruction](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md) に従って iOS プラットフォーム向けにビルドする。  
 
 さまざまなプラットフォームに移植しやすいよう､Azure IoT Hub C SDK は C99 で作成されています｡  移植プロセスでは、プラットフォーム固有のコンポーネント用の thin adoption layer の作成が必要です。[iOS](https://github.com/Azure/azure-c-shared-utility/tree/master/pal/ios-osx) 用はこちらにあります。  iOS プラットフォーム上では､サポートされている Azure IoT Hub プリミティブや､SDK固有の機能であるネットワークの信頼性のための再試行ポリシーをはじめとする C SDK の機能を利用することができます｡  また iOS SDK 用のインターフェイスは､Azure IoT Hub C SDK 用のインターフェイスに似ています｡  

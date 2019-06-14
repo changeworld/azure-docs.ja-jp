@@ -17,11 +17,11 @@ ms.date: 07/12/2018
 ms.author: cynthn
 ms.subservice: disks
 ms.openlocfilehash: d5dd916f7e4434640db6dae6f8c5a73d1ff2d3e0
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56327961"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60187950"
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>ポータルを利用し、データ ディスクを Linux VM に接続する 
 この記事では、Azure ポータルを使用して新しいディスクと既存のディスクの両方を Linux 仮想マシンに接続する方法について示します。 [Azure Portal で Windows VM にデータ ディスクを接続する](../windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)こともできます。 
@@ -37,19 +37,19 @@ VM にディスクを接続する前に、次のヒントを確認してくだ�
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
 2. 左側のメニューで **[仮想マシン]** をクリックします。
 3. 一覧から仮想マシンを選択します。
-4. [仮想マシン] ページにアクセスし、**[要点]** にある **[ディスク]** をクリックします。
+4. [仮想マシン] ページにアクセスし、 **[要点]** にある **[ディスク]** をクリックします。
    
     ![ディスク設定を開く](./media/attach-disk-portal/find-disk-settings.png)
 
 
 ## <a name="attach-a-new-disk"></a>新しいディスクの接続
 
-1. **[ディスク]** ウィンドウで、**[+ データ ディスクの追加]** をクリックします。
-2. **[名前]** のドロップダウン メニューをクリックして、**[ディスクの作成]** を選択します。
+1. **[ディスク]** ウィンドウで、 **[+ データ ディスクの追加]** をクリックします。
+2. **[名前]** のドロップダウン メニューをクリックして、 **[ディスクの作成]** を選択します。
 
     ![Azure マネージド ディスクの作成](./media/attach-disk-portal/create-new-md.png)
 
-3. マネージド ディスクの名前を入力します。 既定の設定を確認し、必要に応じて更新して、**[作成]** をクリックします。
+3. マネージド ディスクの名前を入力します。 既定の設定を確認し、必要に応じて更新して、 **[作成]** をクリックします。
    
    ![ディスク設定を確認する](./media/attach-disk-portal/create-new-md-settings.png)
 
@@ -62,7 +62,7 @@ VM にディスクを接続する前に、次のヒントを確認してくだ�
    ![リソース グループの Azure Managed Disk](./media/attach-disk-portal/view-md-resource-group.png)
 
 ## <a name="attach-an-existing-disk"></a>既存のディスクの接続
-1. **[ディスク]** ウィンドウで、**[+ データ ディスクの追加]** をクリックします。
+1. **[ディスク]** ウィンドウで、 **[+ データ ディスクの追加]** をクリックします。
 2. **[名前]** のドロップダウン メニューをクリックして、Azure サブスクリプションにアクセスできる既存のマネージド ディスク一覧を確認します。 接続するマネージド ディスクを選択します。
 
    ![既存の Azure Managed Disk の接続](./media/attach-disk-portal/select-existing-md.png)
@@ -182,19 +182,19 @@ Creating journal (32768 blocks): done
 Writing superblocks and filesystem accounting information: done
 ```
 ### <a name="mount-the-disk"></a>ディスクのマウント
-`mkdir` を使用して、ファイル システムをマウントするディレクトリを作成します。 次の例では、*/datadrive* にディレクトリを作成します。
+`mkdir` を使用して、ファイル システムをマウントするディレクトリを作成します。 次の例では、 */datadrive* にディレクトリを作成します。
 
 ```bash
 sudo mkdir /datadrive
 ```
 
-`mount` を使用して、ファイル システムをマウントします。 次の例では、*/dev/sdc1* パーティションを */datadrive* マウント ポイントにマウントします。
+`mount` を使用して、ファイル システムをマウントします。 次の例では、 */dev/sdc1* パーティションを */datadrive* マウント ポイントにマウントします。
 
 ```bash
 sudo mount /dev/sdc1 /datadrive
 ```
 
-再起動後にドライブを自動的に再マウントするために、そのドライブを */etc/fstab* ファイルに追加する必要があります。 ドライブを参照する際に、デバイス名 (*/dev/sdc1* など) だけでなく、UUID (汎用一意識別子) を */etc/fstab* で使用することもお勧めします。 UUID を使用すると、OS が起動中にディスク エラーを検出した場合に、間違ったディスクが特定の場所にマウントされるのを防ぐことができます。 その後、残りのデータ ディスクは、その同じデバイス ID に割り当てられます。 新しいドライブの UUID を確認するには、`blkid` ユーティリティを使用します。
+再起動後にドライブを自動的に再マウントするために、そのドライブを */etc/fstab* ファイルに追加する必要があります。 ドライブを参照する際に、デバイス名 ( */dev/sdc1* など) だけでなく、UUID (汎用一意識別子) を */etc/fstab* で使用することもお勧めします。 UUID を使用すると、OS が起動中にディスク エラーを検出した場合に、間違ったディスクが特定の場所にマウントされるのを防ぐことができます。 その後、残りのデータ ディスクは、その同じデバイス ID に割り当てられます。 新しいドライブの UUID を確認するには、`blkid` ユーティリティを使用します。
 
 ```bash
 sudo -i blkid
@@ -233,7 +233,7 @@ UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,nofail 
 
 Linux VM で TRIM のサポートを有効にする方法は 2 通りあります。 通常どおり、ご使用のディストリビューションで推奨される方法をお問い合わせください。
 
-* 次のように、*/etc/fstab* で `discard` マウント オプションを使用します。
+* 次のように、 */etc/fstab* で `discard` マウント オプションを使用します。
 
     ```bash
     UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,discard   1   2

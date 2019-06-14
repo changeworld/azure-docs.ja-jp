@@ -10,10 +10,10 @@ ms.date: 10/19/2018
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: da0cbab59d9c801419ac4b3704fee3275f337fd9
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66131622"
 ---
 [Application Insights のメトリックを計算する](../articles/azure-functions/functions-monitoring.md#configure-the-aggregator)ときに集計される関数呼び出しの数を指定します。 

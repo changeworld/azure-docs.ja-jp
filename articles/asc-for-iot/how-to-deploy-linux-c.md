@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/28/2019
 ms.author: mlottner
 ms.openlocfilehash: 49ebb5932e1e918330625fd0df98811873dd5cd5
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65200652"
 ---
 # <a name="deploy-azure-security-center-for-iot-c-based-security-agent-for-linux"></a>Linux 用の Azure Security Center for IoT の C ベースのセキュリティ エージェントをデプロイする
@@ -51,7 +51,7 @@ ms.locfileid: "65200652"
 
 1. [GitHub](https://aka.ms/iot-security-github-c) からマシンに最新バージョンをダウンロードします。
 
-1. パッケージの内容を展開し、_/Install_ フォルダーに移動します。
+1. パッケージの内容を展開し、 _/Install_ フォルダーに移動します。
 
 1. 以下を実行して、**InstallSecurityAgent スクリプト**に実行アクセス許可を追加します。
     

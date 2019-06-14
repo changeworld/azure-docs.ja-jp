@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: pullabhk
 ms.openlocfilehash: 986414d0bac24d0c7e37b34df473346742fa97fd
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65204178"
 ---
 # <a name="back-up-and-restore-azure-files-with-powershell"></a>PowerShell を使用して Azure Files をバックアップおよび復元する
@@ -65,7 +65,7 @@ PowerShell を次のように設定します。
 3. **Connect-AzAccount** を使用して Azure アカウントにサインインします。
 4. 表示される Web ページで、アカウントの資格情報を入力するように求められます。
 
-    - または、**-Credential** を使用して、**Connect-AzAccount** コマンドレットのパラメーターとしてアカウントの資格情報を含めることもできます。
+    - または、 **-Credential** を使用して、**Connect-AzAccount** コマンドレットのパラメーターとしてアカウントの資格情報を含めることもできます。
     - CSP パートナーがテナントの代理としてサインインする場合は、その顧客をテナントとして指定します。該当する tenantID またはテナントのプライマリ ドメイン名で指定してください。 たとえば、「**Connect-AzAccount -Tenant** fabrikam.com」を指定します。
 
 4. 1 つのアカウントが複数のサブスクリプションを持つことができるため、使用するサブスクリプションをアカウントに関連付けます。
@@ -288,7 +288,7 @@ Enable-AzRecoveryServicesBackupProtection -Item $afsBkpItem -Policy $monthlyafsP
 - 変数 **$rp** は、過去 7 日間に選択したバックアップ項目の復旧ポイントの配列です。
 - この配列は時間の逆順で並べ替えられています。最新の復旧ポイントのインデックスは **0** です。
 - 標準の PowerShell 配列のインデックスを使用して、復旧ポイントを選択します。
-- 次の例では、**$rp[0]** によって最新の復旧ポイントが選択されます。
+- 次の例では、 **$rp[0]** によって最新の復旧ポイントが選択されます。
 
 ```powershell
 $startDate = (Get-Date).AddDays(-7)

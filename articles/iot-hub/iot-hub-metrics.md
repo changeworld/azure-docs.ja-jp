@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: jlian
 ms.openlocfilehash: 8eac70db0c563f102dfa0e3fcece9d4604582cce
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65595649"
 ---
 # <a name="understand-iot-hub-metrics"></a>IoT Hub メトリックの理解
@@ -66,7 +66,7 @@ IoT Hub には、ハブの正常性の概要と、ハブに接続されている
 |d2c<br>.endpoints<br>.latency<br>.storage|ルーティング: ストレージのメッセージの待機時間|ミリ秒|平均|IoT Hub の受信メッセージとストレージ エンドポイントの受信テレメトリ メッセージの間の平均待機時間 (ミリ秒)。|ディメンションなし|
 |d2c<br>.endpoints<br>.egress<br>.storage<br>.bytes|ルーティング: ストレージに配信されたデータ|Bytes|合計|IoT Hub ルーティングでストレージ エンドポイントに配信されたデータの量 (バイト)。|ディメンションなし|
 |d2c<br>.endpoints<br>.egress<br>.storage<br>.blobs|ルーティング: ストレージに配信された BLOB|Count|合計|IoT Hub ルーティングで BLOB がストレージ エンドポイントに配信された回数。|ディメンションなし|
-|EventGridDeliveries|Event Grid の配信 (プレビュー)|Count|合計|IoT Hub が Event Grid にイベントを出力する要求の数。 この数には、成功した要求と失敗した要求が含まれます。 別の種類の応答の数には Result ディメンションを使用します。 要求の送信元を確認するには、EventType ディメンションを使用します。|Result、EventType|
+|EventGridDeliveries|Event Grid の配信数 (プレビュー)|Count|合計|IoT Hub が Event Grid にイベントを出力する要求の数。 この数には、成功した要求と失敗した要求が含まれます。 別の種類の応答の数には Result ディメンションを使用します。 要求の送信元を確認するには、EventType ディメンションを使用します。|Result、EventType|
 |EventGridLatency|Event Grid の待機時間 (プレビュー)|ミリ秒|平均|IoT Hub へのイベント イングレスと Event Grid へのイベント イングレスの間の平均待機時間 (ミリ秒)。 この数は、すべてのイベントの種類の間の平均値です。 特定の種類のイベントの待機時間を確認するには、EventType ディメンションを使用します。|EventType|
 |d2c<br>.twin<br>.read<br>.success|成功したデバイスからのツイン読み取り|Count|合計|デバイスが開始して成功したツイン読み取りの数。|ディメンションなし|
 |d2c<br>.twin<br>.read<br>.failure|失敗したデバイスからのツイン読み取り|Count|合計|デバイスが開始したツイン読み取りの失敗数。|ディメンションなし|

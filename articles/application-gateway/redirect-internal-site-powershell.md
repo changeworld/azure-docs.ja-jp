@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 7/13/2018
 ms.author: victorh
 ms.openlocfilehash: c887c5ea72a64828749bfc62756e59a8a22ea9df
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66729635"
 ---
 # <a name="create-an-application-gateway-with-internal-redirection-using-azure-powershell"></a>Azure PowerShell を使用して内部リダイレクトと共にアプリケーション ゲートウェイを作成する
@@ -300,7 +300,7 @@ Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAdd
 
 ![アプリケーション ゲートウェイの contoso サイトをテストする](./media/redirect-internal-site-powershell/application-gateway-iistest.png)
 
-アドレスを他のドメインに変更します (例: http://www.contoso.org)。トラフィックが www\.contoso.com のリスナーにリダイレクトされたことがわかります。
+アドレスを他のドメインに変更します (例: http://www.contoso.org )。トラフィックが www\. contoso.com のリスナーにリダイレクトされたことがわかります。
 
 ## <a name="next-steps"></a>次の手順
 

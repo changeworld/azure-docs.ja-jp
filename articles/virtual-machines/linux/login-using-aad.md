@@ -15,10 +15,10 @@ ms.workload: infrastructure
 ms.date: 06/17/2018
 ms.author: cynthn
 ms.openlocfilehash: d1db228f4c73cc00cd32ca6ae5b86056db68f05b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66155949"
 ---
 # <a name="log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Azure Active Directory 認証 (プレビュー) を使用して Azure の Linux 仮想マシンにログインする
@@ -118,7 +118,7 @@ az role assignment create \
 ```
 
 > [!NOTE]
-> AAD ドメインとログオン ユーザー名ドメインが一致しない場合は、*--assignee* のユーザー名だけでなく、*--assignee-object-id* を使用してユーザー アカウントのオブジェクト ID を指定する必要があります。 ユーザー アカウントのオブジェクト ID は、[az ad user list](/cli/azure/ad/user#az-ad-user-list)を使用して取得できます。
+> AAD ドメインとログオン ユーザー名ドメインが一致しない場合は、 *--assignee* のユーザー名だけでなく、 *--assignee-object-id* を使用してユーザー アカウントのオブジェクト ID を指定する必要があります。 ユーザー アカウントのオブジェクト ID は、[az ad user list](/cli/azure/ad/user#az-ad-user-list)を使用して取得できます。
 
 RBAC を使用して、Azure サブスクリプション リソースへのアクセスを管理する方法の詳細については、[Azure CLI](../../role-based-access-control/role-assignments-cli.md)、[Azure portal](../../role-based-access-control/role-assignments-portal.md)、または [Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md) の使用に関する記事を参照してください。
 

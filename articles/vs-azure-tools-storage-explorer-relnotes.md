@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
 ms.openlocfilehash: b753b565b7dae6cdc244d05d051df964eda3c6f2
-ms.sourcegitcommit: 3675daec6c6efa3f2d2bf65279e36ca06ecefb41
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65620496"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Microsoft Azure Storage Explorer のリリース ノート
@@ -208,10 +208,10 @@ ms.locfileid: "65620496"
 * AzCopy が有効なっているときに、アップロードする BLOB の種類を選択できるようになりました。 #1111
 * 以前は、ADLS Gen2 ストレージ アカウントに対して静的な Web サイトを有効化し、名前とキーをアタッチした場合、Storage Explorer では、階層型名前空間が有効になったことが検出されませんでした。 この問題は修正されています。 #1081
 * BLOB エディターで、残りの保持日数またはステータスによる並べ替えに障害が発生していました。 この問題は修正されています。 #1106
-* 1.5.0 以降の Storage Explorer では、名前変更またはコピー/貼り付け時に、サーバー側の貼り付けが完了するまで待機しないまま、操作の完了が報告されていました。 この問題は修正されています。 #976
+* 1\.5.0 以降の Storage Explorer では、名前変更またはコピー/貼り付け時に、サーバー側の貼り付けが完了するまで待機しないまま、操作の完了が報告されていました。 この問題は修正されています。 #976
 * 実験用の AzCopy 機能を使用する際に、[Copy command to clipboard]\(コマンドをクリップボードにコピー\) をクリックした後にコピーしたコマンドが、実行可能にならない場合がありました。 現在は、転送を手動で実行するために必要なすべてのコマンドがコピーされます。 #1079
-* 以前は、プロキシの背後にある場合、ADLS Gen2 BLOB にアクセスできませんでした。 これは、Storage SDK で使用される新しいネットワーク ライブラリのバグが原因でした。 1.7.0 では、この問題の解消が試行されましたが、一部のユーザーでは引き続きこの問題が発生する場合があります。 完全な修正プログラムは今後の更新でリリースされます。 #1090
-* 1.7.0 のファイル保存ダイアログでは、前回ファイルを保存した場所が正しく記憶されるようになりました。 #16
+* 以前は、プロキシの背後にある場合、ADLS Gen2 BLOB にアクセスできませんでした。 これは、Storage SDK で使用される新しいネットワーク ライブラリのバグが原因でした。 1\.7.0 では、この問題の解消が試行されましたが、一部のユーザーでは引き続きこの問題が発生する場合があります。 完全な修正プログラムは今後の更新でリリースされます。 #1090
+* 1\.7.0 のファイル保存ダイアログでは、前回ファイルを保存した場所が正しく記憶されるようになりました。 #16
 * プロパティ パネルで、ストレージ アカウントの SKU レベルがアカウントの種類として表示されていました。 この問題は修正されています。 #654
 * BLOB の名前を正しく入力しても、BLOB のリースを中断できない場合がありました。 この問題は修正されています。 #1070
 
@@ -259,9 +259,9 @@ ms.locfileid: "65620496"
 1/9/2019
 
 ### <a name="hotfixes"></a>修正プログラム
-* 1.6.1 では、ObjectId によって ADLS Gen2 ACL に追加される、ユーザーではないエンティティは、常にグループとして追加されました。 現在は、グループのみがグループとして追加され、エンタープライズ アプリケーションやサービス プリンシパルなどのエンティティはユーザーとして追加されます。 [#1049](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1049)
+* 1\.6.1 では、ObjectId によって ADLS Gen2 ACL に追加される、ユーザーではないエンティティは、常にグループとして追加されました。 現在は、グループのみがグループとして追加され、エンタープライズ アプリケーションやサービス プリンシパルなどのエンティティはユーザーとして追加されます。 [#1049](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1049)
 * コンテナーを持たない ADLS Gen2 Storage アカウントが名前とキーでアタッチされた場合、Storage Explorer ではそのストレージ アカウントが ADLS Gen2 であることが検出されませんでした。 この問題は修正されています。 [#1048](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1048)
-* 1.6.0 では、コピーおよび貼り付けでの競合に対して、解決を求めるメッセージが表示されませんでした。 代わりに、競合するコピーは単に失敗しました。 現在は、最初の競合では、ユーザーに解決するかどうかを確認するメッセージが表示されます。 [#1014](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1014)
+* 1\.6.0 では、コピーおよび貼り付けでの競合に対して、解決を求めるメッセージが表示されませんでした。 代わりに、競合するコピーは単に失敗しました。 現在は、最初の競合では、ユーザーに解決するかどうかを確認するメッセージが表示されます。 [#1014](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1014)
 * API の制限により、[アクセスの管理] ダイアログの ObjectId のすべての検証が無効になりました。 検証はユーザー UPN に対してのみ実行されるようになりました。 [#954](https://www.github.com/Microsoft/AzureStorageExplorer/issues/954)
 * ADLS Gen2 の [アクセスの管理] ダイアログでは、グループのアクセス許可を変更できませんでした。 この問題は修正されています。 [#958](https://www.github.com/Microsoft/AzureStorageExplorer/issues/958)
 * ADLS Gen2 エディターにドラッグ アンド ドロップによるアップロードのサポートが追加されました。 [#953](https://www.github.com/Microsoft/AzureStorageExplorer/issues/953)
@@ -269,11 +269,11 @@ ms.locfileid: "65620496"
 * ADLS Gen2 コンテナー、ファイル、またはフォルダーの現在のアクセス許可を取得できなかった場合、アクティビティ ログにエラーが適切に表示されるようになりました。 [#965](https://www.github.com/Microsoft/AzureStorageExplorer/issues/965)
 * Windows の MAX_PATH よりも長いパスが作成される可能性を減らすために、ファイルを開くために作成される一時パスが短くなりました。 [#93](https://www.github.com/Microsoft/AzureStorageExplorer/issues/93)
 * サインインしているユーザーがおらず、リソースがアタッチされていない場合に [接続] ダイアログが正常に表示されるようになりました。 [#944](https://www.github.com/Microsoft/AzureStorageExplorer/issues/944)
-* 1.6.0 では、HNS 以外の BLOB およびファイルのプロパティを保存すると、すべてのプロパティの値がエンコードされました。 この結果、ASCII 文字のみが含まれている値が不必要にエンコードされていました。 ASCII 以外の文字が含まれている場合にのみ、値がエンコードされるようになりました。 [#986](https://www.github.com/Microsoft/AzureStorageExplorer/issues/986)
+* 1\.6.0 では、HNS 以外の BLOB およびファイルのプロパティを保存すると、すべてのプロパティの値がエンコードされました。 この結果、ASCII 文字のみが含まれている値が不必要にエンコードされていました。 ASCII 以外の文字が含まれている場合にのみ、値がエンコードされるようになりました。 [#986](https://www.github.com/Microsoft/AzureStorageExplorer/issues/986)
 * 読み取りアクセス許可がない SAS を使用した場合、HNS 以外の BLOB コンテナーにフォルダーをアップロードできませんでした。 この問題は修正されています。 [#970](https://www.github.com/Microsoft/AzureStorageExplorer/issues/970)
 * AzCopy の転送のキャンセルが機能しませんでした。 この問題は修正されています。 [#943](https://www.github.com/Microsoft/AzureStorageExplorer/issues/943)
 * 名前にスペースが含まれているフォルダーを ADLS Gen2 の BLOB コンテナーからダウンロードしようとすると、AzCopy が失敗しました。 この問題は修正されています。 [#990](https://www.github.com/Microsoft/AzureStorageExplorer/issues/990)
-* 1.6.0 では、CosmosDB エディターが壊れていました。 これが修正されました。 [#950](https://www.github.com/Microsoft/AzureStorageExplorer/issues/950)
+* 1\.6.0 では、CosmosDB エディターが壊れていました。 これが修正されました。 [#950](https://www.github.com/Microsoft/AzureStorageExplorer/issues/950)
         
 ### <a name="new"></a>新規
 
@@ -338,11 +338,11 @@ ms.locfileid: "65620496"
 * ADLS Gen2 コンテナー、ファイル、またはフォルダーの現在のアクセス許可を取得できなかった場合、アクティビティ ログにエラーが適切に表示されるようになりました。 [#965](https://www.github.com/Microsoft/AzureStorageExplorer/issues/965)
 * Windows の MAX_PATH よりも長いパスが作成される可能性を減らすために、ファイルを開くために作成される一時パスが短くなりました。 [#93](https://www.github.com/Microsoft/AzureStorageExplorer/issues/93)
 * サインインしているユーザーがおらず、リソースがアタッチされていない場合に [接続] ダイアログが正常に表示されるようになりました。 [#944](https://www.github.com/Microsoft/AzureStorageExplorer/issues/944)
-* 1.6.0 では、HNS 以外の BLOB およびファイルのプロパティを保存すると、すべてのプロパティの値がエンコードされました。 この結果、ASCII 文字のみが含まれている値が不必要にエンコードされていました。 ASCII 以外の文字が含まれている場合にのみ、値がエンコードされるようになりました。 [#986](https://www.github.com/Microsoft/AzureStorageExplorer/issues/986)
+* 1\.6.0 では、HNS 以外の BLOB およびファイルのプロパティを保存すると、すべてのプロパティの値がエンコードされました。 この結果、ASCII 文字のみが含まれている値が不必要にエンコードされていました。 ASCII 以外の文字が含まれている場合にのみ、値がエンコードされるようになりました。 [#986](https://www.github.com/Microsoft/AzureStorageExplorer/issues/986)
 * 読み取りアクセス許可がない SAS を使用した場合、HNS 以外の BLOB コンテナーにフォルダーをアップロードできませんでした。 この問題は修正されています。 [#970](https://www.github.com/Microsoft/AzureStorageExplorer/issues/970)
 * AzCopy の転送のキャンセルが機能しませんでした。 この問題は修正されています。 [#943](https://www.github.com/Microsoft/AzureStorageExplorer/issues/943)
 * 名前にスペースが含まれているフォルダーを ADLS Gen2 の BLOB コンテナーからダウンロードしようとすると、AzCopy が失敗しました。 この問題は修正されています。 [#990](https://www.github.com/Microsoft/AzureStorageExplorer/issues/990)
-* 1.6.0 では、CosmosDB エディターが壊れていました。 これが修正されました。 [#950](https://www.github.com/Microsoft/AzureStorageExplorer/issues/950)
+* 1\.6.0 では、CosmosDB エディターが壊れていました。 これが修正されました。 [#950](https://www.github.com/Microsoft/AzureStorageExplorer/issues/950)
         
 ### <a name="new"></a>新規
 
@@ -1358,7 +1358,7 @@ ms.locfileid: "65620496"
 
 #### <a name="known-issues"></a>既知の問題
 
-* 0.8.10 にアップグレードした後に、すべての資格情報を更新する必要があります。
+* 0\.8.10 にアップグレードした後に、すべての資格情報を更新する必要があります。
 * 拡大縮小を行っているときに、ズーム レベルが既定のレベルにすぐにリセットされる可能性があります。
 * BLOB またはファイルのグループを 3 つ以上同時にアップロードすると、エラーが発生する場合があります。
 * サブスクリプションをフィルターするために、資格情報の再入力が必要であることがアカウント設定パネルに表示されることがあります。

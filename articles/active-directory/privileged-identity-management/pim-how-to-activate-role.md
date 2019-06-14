@@ -15,11 +15,11 @@ ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fa820d6c140251fce6b09110e65b45005b53afcc
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59488441"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60289622"
 ---
 # <a name="activate-my-azure-ad-roles-in-pim"></a>PIM で Azure AD ロールをアクティブ化する
 
@@ -49,7 +49,7 @@ Azure AD ロールを有効にする必要がある場合は、PIM の **[自分
 
 1. **[アクティブ化]** をクリックして、[ロールのアクティブ化の詳細] ウィンドウを開きます。
 
-1. お使いのロールで多要素認証 (MFA) が必要な場合は、**[続行する前に ID を確認してください]** をクリックします。 認証は、セッションごとに 1 回だけ行う必要があります。
+1. お使いのロールで多要素認証 (MFA) が必要な場合は、 **[続行する前に ID を確認してください]** をクリックします。 認証は、セッションごとに 1 回だけ行う必要があります。
 
     ![ロール アクティブ化前の MFA の確認](./media/pim-how-to-activate-role/directory-roles-my-roles-mfa.png)
 
@@ -71,11 +71,11 @@ Azure AD ロールを有効にする必要がある場合は、PIM の **[自分
 
 1. **[アクティブ化]** をクリックします。
 
-    ロールに承認が必要ない場合、**[アクティブ化の状態]** ウィンドウが表示され、アクティブ化の状態が示されます。
+    ロールに承認が必要ない場合、 **[アクティブ化の状態]** ウィンドウが表示され、アクティブ化の状態が示されます。
 
     ![アクティブ化の状態](./media/pim-how-to-activate-role/activation-status.png)
 
-    すべてのステージが完了したら、**[サインアウト]** リンクをクリックして、Azure portal からサインアウトします。 ポータルにもう一度サインインすると、ロールを使用できるようになります。
+    すべてのステージが完了したら、 **[サインアウト]** リンクをクリックして、Azure portal からサインアウトします。 ポータルにもう一度サインインすると、ロールを使用できるようになります。
 
     アクティブ化に[承認が必要なロール](./azure-ad-pim-approval-workflow.md)の場合は、ブラウザーの右上隅に通知が表示され、承認待ちになっていることが示されます。
 
@@ -107,7 +107,7 @@ Azure AD ロールを有効にする必要がある場合は、PIM の **[自分
 
 1. **[アクティブなロール]** をクリックして、アクティブなロールの一覧を表示します。
 
-1. 使用が終了したロールを探し、**[非アクティブ化]** をクリックします。
+1. 使用が終了したロールを探し、 **[非アクティブ化]** をクリックします。
 
 ## <a name="cancel-a-pending-request"></a>保留中の要求をキャンセルする
 

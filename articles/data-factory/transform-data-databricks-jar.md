@@ -13,11 +13,11 @@ author: nabhishek
 ms.author: abnarain
 manager: craigg
 ms.openlocfilehash: d299a785d50657ef40c0c49cb2dce33b8939fd02
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57575870"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60860988"
 ---
 # <a name="transform-data-by-running-a-jar-activity-in-azure-databricks"></a>Azure Databricks で Jar アクティビティを実行してデータを変換する
 
@@ -58,12 +58,12 @@ Databricks Jar アクティビティのサンプルの JSON 定義を次に示�
 
 |プロパティ|説明|必須|
 |:--|---|:-:|
-|name|パイプラインのアクティビティの名前。|[はい]|
-|description|アクティビティの動作を説明するテキスト。|いいえ |
-|type|Databricks Jar アクティビティでは、アクティビティの種類は DatabricksSparkJar です。|[はい]|
-|linkedServiceName|Jar アクティビティが実行されている Databricks リンク サービスの名前です。 このリンクされたサービスの詳細については、 [コンピューティングのリンクされたサービス](compute-linked-services.md) に関する記事をご覧ください。|[はい]|
-|mainClassName|実行される main メソッドを含むクラスのフル ネーム。 このクラスは、ライブラリとして提供される JAR に含まれている必要があります。|[はい]|
-|parameters|main メソッドに渡されるパラメーター。  文字列の配列です。|いいえ |
+|name|パイプラインのアクティビティの名前。|はい|
+|description|アクティビティの動作を説明するテキスト。|いいえ|
+|type|Databricks Jar アクティビティでは、アクティビティの種類は DatabricksSparkJar です。|はい|
+|linkedServiceName|Jar アクティビティが実行されている Databricks リンク サービスの名前です。 このリンクされたサービスの詳細については、 [コンピューティングのリンクされたサービス](compute-linked-services.md) に関する記事をご覧ください。|はい|
+|mainClassName|実行される main メソッドを含むクラスのフル ネーム。 このクラスは、ライブラリとして提供される JAR に含まれている必要があります。|はい|
+|parameters|main メソッドに渡されるパラメーター。  文字列の配列です。|いいえ|
 |libraries|ジョブを実行するクラスターにインストールされるライブラリのリスト。 <文字列, オブジェクト> の配列を指定できます。|はい (mainClassName メソッドを少なくとも 1 つ含む)|
 
 ## <a name="supported-libraries-for-databricks-activities"></a>databricks アクティビティでサポートされるライブラリ

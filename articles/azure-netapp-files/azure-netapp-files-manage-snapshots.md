@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: b-juche
 ms.openlocfilehash: 01387d0c219c86f33762b9c3fbf9f81cf04b4455
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58880816"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61086851"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>Azure NetApp Files を使用して、スナップショットを管理する
 
@@ -29,7 +29,7 @@ Azure NetApp Files を使用すると、ボリュームのオンデマンド ス
 
 スナップショットは、オンデマンドでのみ作成できます。 スナップショット ポリシーは、現在サポートされていません。
 
-1.  [ボリューム] ブレードで、**[スナップショット]** をクリックします。
+1.  [ボリューム] ブレードで、 **[スナップショット]** をクリックします。
 
     ![スナップショットに移動する](../media/azure-netapp-files/azure-netapp-files-navigate-to-snapshots.png)
 
@@ -53,12 +53,12 @@ Azure NetApp Files を使用すると、ボリュームのオンデマンド ス
     ![スナップショットから新しいボリュームを復元する](../media/azure-netapp-files/azure-netapp-files-snapshot-restore-to-new-volume.png)
 
 4. [新しいボリューム] ウィンドウで、新しいボリュームの情報を指定します。  
-    * **[名前]**   
+    * **[名前]**    
         作成するボリュームの名前を指定します。  
         
         名前はリソース グループ内で一意である必要があります。 3 文字以上になるようにしてください。  任意の英数字を使用できます。
 
-    * **[ファイル パス]**     
+    * **[ファイル パス]**      
         新しいボリュームのエクスポート パスを作成する際に使用するファイル パスを指定します。 ボリュームのマウントとアクセスには、このエクスポート パスが使用されます。   
         
         マウント ターゲットは、NFS サービスの IP アドレスのエンドポイントです。 自動的に生成されます。   

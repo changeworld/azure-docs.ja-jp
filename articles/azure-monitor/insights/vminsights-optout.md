@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 11/05/2018
 ms.author: magoedte
 ms.openlocfilehash: 0f35ea3e35277ee7f1afd8278a31f45ed20c6995
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65522116"
 ---
 # <a name="how-to-disable-monitoring-of-your-virtual-machines-with-azure-monitor-for-vms-preview"></a>Azure Monitor for VMs (プレビュー) を使用した仮想マシンの監視を無効にする方法
@@ -50,7 +50,7 @@ Azure Monitor for VMs を使用した仮想マシンの監視の無効化を準�
 >
 
 1. Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
-2. Azure Portal で、**[すべてのサービス]** をクリックします。 リソースの一覧で、「Log Analytics」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** を選択します。
+2. Azure Portal で、 **[すべてのサービス]** をクリックします。 リソースの一覧で、「Log Analytics」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** を選択します。
 3. Log Analytics ワークスペースの一覧で、Azure Monitor for VMs の搭載時に選択したワークスペースを選択します。
 4. 左側のウィンドウで、 **[ソリューション]** を選択します。  
 5. ソリューションの一覧で、**InfrastructureInsights (ワークスペースの名前)** を選択してから、ソリューションの **[概要]** ページで **[削除]** をクリックします。  確認メッセージが表示されたら、 **[はい]** をクリックします。  
@@ -66,8 +66,8 @@ Azure Monitor for VMs を搭載する前にワークスペースで Windows ま�
 >仮想マシンを Azure Automation が管理してプロセスを調整し、構成を管理し、あるいは更新を管理する場合、あるいは Azure Security Center がセキュリティ管理や脅威検出のために管理する場合は、Log Analytics エージェントを削除しないでください。 それ以外の場合は、これらのサービスとソリューションが VM を積極的に管理できないようにすることになります。 
 
 1. Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。 
-2. Azure Portal で、**[仮想マシン]** を選択します。 
+2. Azure Portal で、 **[仮想マシン]** を選択します。 
 3. 一覧から VM を選択します。 
-4. 左側のウィンドウで **[拡張機能]** を選択して、**[拡張機能]** ページで **DependencyAgent** を選択します。
-5. 拡張機能のプロパティ ページで、**[アンインストール]** をクリックします。
+4. 左側のウィンドウで **[拡張機能]** を選択して、 **[拡張機能]** ページで **DependencyAgent** を選択します。
+5. 拡張機能のプロパティ ページで、 **[アンインストール]** をクリックします。
 6. **[拡張機能]** ページで、**MicrosoftMonitoringAgent** を選択して拡張機能のプロパティ ページで **[アンインストール]** をクリックします。  

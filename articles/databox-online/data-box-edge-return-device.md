@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 05/07/2019
 ms.author: alkohli
 ms.openlocfilehash: 9aeae0ab68d809b36a3316054f12a5a9657721f1
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65468460"
 ---
 # <a name="return-your-azure-data-box-edge-device"></a>Azure Data Box Edge を返却する
@@ -35,12 +35,12 @@ ms.locfileid: "65468460"
 
 ローカル Web UI を使用してデバイスをリセットするには、次の手順を行います。
 
-1. ローカル Web UI で、**[メンテナンス] > [デバイスのリセット]** に移動します。
+1. ローカル Web UI で、 **[メンテナンス] > [デバイスのリセット]** に移動します。
 2. **[デバイスのリセット]** を選択します。
 
     ![デバイスをリセットする](media/data-box-edge-return-device/device-reset-1.png)
 
-3. 確認を求めるメッセージが表示されたら、警告を確認し、**[はい]** を選択して続行します。
+3. 確認を求めるメッセージが表示されたら、警告を確認し、 **[はい]** を選択して続行します。
 
     ![リセットの確認](media/data-box-edge-return-device/device-reset-2.png)  
 
@@ -66,8 +66,8 @@ ms.locfileid: "65468460"
 
 ## <a name="schedule-a-pickup"></a>集荷をスケジュールする
 
-1. デバイスをシャットダウンします。 ローカル Web UI で、**[メンテナンス] > [Power settings]\(電源設定\)** に移動します。
-2. **[シャットダウン]** を選択します。 確認を求めるメッセージが表示されたら、**[はい]** をクリックして続行します。 詳細については、「[電源を管理する](data-box-gateway-manage-access-power-connectivity-mode.md#manage-power)」を参照してください。
+1. デバイスをシャットダウンします。 ローカル Web UI で、 **[メンテナンス] > [Power settings]\(電源設定\)** に移動します。
+2. **[シャットダウン]** を選択します。 確認を求めるメッセージが表示されたら、 **[はい]** をクリックして続行します。 詳細については、「[電源を管理する](data-box-gateway-manage-access-power-connectivity-mode.md#manage-power)」を参照してください。
 3. 電源ケーブルを外して、デバイスからネットワーク ケーブルをすべて取り外します。
 4. 自分の箱または Azure から受け取った空き箱を使用して、出荷パッケージを準備します。 デバイスとそのデバイスに同梱されていた電源コードを箱に入れます。
 5. Azure から受け取った出荷ラベルをパッケージに貼り付けます。
@@ -96,7 +96,7 @@ ms.locfileid: "65468460"
 
 Azure portal でデバイスとリソースを削除するには、次の手順を行います。
 
-1. Azure portal で自分のリソースに移動し、**[概要]** に移動します。 コマンド バーで、**[削除]** を選択します。
+1. Azure portal で自分のリソースに移動し、 **[概要]** に移動します。 コマンド バーで、 **[削除]** を選択します。
 
     ![[削除] の選択](media/data-box-edge-return-device/delete-resource-1.png)
 

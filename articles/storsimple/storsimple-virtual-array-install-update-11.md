@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 07/18/2018
 ms.author: alkohli
 ms.openlocfilehash: 88b903d68e4398b4e30b0b7435279c29bee6cd6b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58005228"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61408770"
 ---
 # <a name="install-update-11-on-your-storsimple-virtual-array"></a>StorSimple Virtual Array に Update 1.1 をインストールする
 
@@ -70,7 +70,7 @@ Update 0.2 以降を実行している場合は、Azure Portal から更新プ�
 
 2. このコンピューターで Microsoft Update カタログを初めて使用する場合は、Microsoft Update カタログ アドオンのインストールを求められたら、 **[インストール]** をクリックします。
 
-3. Microsoft Update カタログの検索ボックスに、ダウンロードする修正プログラムのサポート技術情報 (KB) 番号を入力します。 Update 1.1 については「**4337628**」と入力し、**[検索]** をクリックします。
+3. Microsoft Update カタログの検索ボックスに、ダウンロードする修正プログラムのサポート技術情報 (KB) 番号を入力します。 Update 1.1 については「**4337628**」と入力し、 **[検索]** をクリックします。
    
     **StorSimple Virtual Array Update 1.1** など、修正プログラムの一覧が表示されます。
    
@@ -99,7 +99,7 @@ Update 0.2 以降を実行している場合は、Azure Portal から更新プ�
 
 #### <a name="to-install-the-update-or-the-hotfix"></a>更新プログラムまたは修正プログラムをインストールするには
 
-1. ローカル Web UI で、**[メンテナンス]** > **[ソフトウェア更新プログラム]** に移動します。 実行しているソフトウェアのバージョンをメモしておきます。 **Update 1 (10.0.10296.0) を実行している場合にのみ、この更新プログラムを続行します。Update 0.6 を実行している場合は、最初に [Update 1 をインストール](storsimple-virtual-array-install-update-1.md)してから、Update 1.1 を適用してください**。
+1. ローカル Web UI で、 **[メンテナンス]**  >  **[ソフトウェア更新プログラム]** に移動します。 実行しているソフトウェアのバージョンをメモしておきます。 **Update 1 (10.0.10296.0) を実行している場合にのみ、この更新プログラムを続行します。Update 0.6 を実行している場合は、最初に [Update 1 をインストール](storsimple-virtual-array-install-update-1.md)してから、Update 1.1 を適用してください**。
    
     ![デバイスの更新](./media/storsimple-virtual-array-install-update-11/update1m.png)
 
@@ -115,7 +115,7 @@ Update 0.2 以降を実行している場合は、Azure Portal から更新プ�
    
     ![デバイスの更新](./media/storsimple-virtual-array-install-update-11/update5m.png)
 
-5. 再起動が完了したら、 **サインイン** ページが表示されます。 デバイス ソフトウェアが更新されたことを確認するには、ローカル Web UI で、**[メンテナンス]** > **[ソフトウェア更新プログラム]** に移動します。 表示されるソフトウェアのバージョンは、Update 1.1 では **10.0.0.0.0.10307** です。
+5. 再起動が完了したら、 **サインイン** ページが表示されます。 デバイス ソフトウェアが更新されたことを確認するには、ローカル Web UI で、 **[メンテナンス]**  >  **[ソフトウェア更新プログラム]** に移動します。 表示されるソフトウェアのバージョンは、Update 1.1 では **10.0.0.0.0.10307** です。
    
    > [!NOTE]
    > ローカル Web UI と Azure Portal では、ソフトウェアのバージョンの表示方法が少し異なります。 たとえば、同じバージョンの場合、ローカル Web UI では **10.0.0.0.0.10307** と表示され、Azure portal では **10.0.10307.0** と表示されます。

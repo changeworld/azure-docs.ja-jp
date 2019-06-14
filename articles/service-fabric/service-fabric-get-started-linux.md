@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
 ms.openlocfilehash: a063461d9da66d57a7bdc3311ae80dec7f2c98f1
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65470244"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Linux で開発環境を準備する
@@ -273,9 +273,9 @@ Eclipse IDE for Java Developers または Eclipse IDE for Java EE Developers 内
 > 
 > Ubuntu では、パッケージ インストーラー (`apt` または `apt-get`) を使用するのではなく、Eclipse サイトから直接インストールすることをお勧めします。 そうすることで、Eclipse の最新バージョンを確実に入手することができます。 Eclipse IDE for Java Developers または Eclipse IDE for Java EE Developers をインストールできます。
 
-1. Eclipse で、Eclipse Neon 以降および Buildship バージョン 2.2.1 以降がインストールされていることを確認します。 **[ヘルプ]** > **[Eclipse について]** > **[インストール詳細]** の順に選択して、インストールされたコンポーネントのバージョンを確認します。 Buildship は、[Eclipse Buildship:Gradle 用の Eclipse プラグイン][buildship-update]に関するページの手順に従って更新できます。
+1. Eclipse で、Eclipse Neon 以降および Buildship バージョン 2.2.1 以降がインストールされていることを確認します。 **[ヘルプ]**  >  **[Eclipse について]**  >  **[インストール詳細]** の順に選択して、インストールされたコンポーネントのバージョンを確認します。 Buildship は、[Eclipse Buildship:Gradle 用の Eclipse プラグイン][buildship-update]に関するページの手順に従って更新できます。
 
-2. **[Help]\(ヘルプ\)** > **[Install New Software]\(新しいソフトウェアのインストール\)** の順に選択して、Service Fabric プラグインをインストールします。
+2. **[Help]\(ヘルプ\)**  >  **[Install New Software]\(新しいソフトウェアのインストール\)** の順に選択して、Service Fabric プラグインをインストールします。
 
 3. **[Work with]\(作業対象\)** ボックスに「 **https://dl.microsoft.com/eclipse** 」と入力します。
 
@@ -283,11 +283,11 @@ Eclipse IDE for Java Developers または Eclipse IDE for Java EE Developers 内
 
     ![[利用可能なソフトウェア] ページ][sf-eclipse-plugin]
 
-5. **[ServiceFabric]** プラグインを選択し、**[次へ]** を選択します。
+5. **[ServiceFabric]** プラグインを選択し、 **[次へ]** を選択します。
 
 6. インストール手順を実行します。 次に、使用許諾契約に同意します。
 
-Service Fabric Eclipse プラグインを既にインストールしてある場合は、最新バージョンを使用していることを確認してください。 確認するには、**[ヘルプ]** > **[Eclipse について]** > **[インストール詳細]** の順に選択します。 次に、インストールされているプラグインの一覧で Service Fabric を探します。新しいバージョンが使用できる場合は **[更新]** を選択します。
+Service Fabric Eclipse プラグインを既にインストールしてある場合は、最新バージョンを使用していることを確認してください。 確認するには、 **[ヘルプ]**  >  **[Eclipse について]**  >  **[インストール詳細]** の順に選択します。 次に、インストールされているプラグインの一覧で Service Fabric を探します。新しいバージョンが使用できる場合は **[更新]** を選択します。
 
 詳細については、「[Eclipse Java アプリケーション開発用の Service Fabric プラグイン](service-fabric-get-started-eclipse.md)」を参照してください。
 

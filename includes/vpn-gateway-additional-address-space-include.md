@@ -9,10 +9,10 @@ ms.date: 11/30/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: cc17df68280c342f863e69e6a253788d20caeba8
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66171602"
 ---
 ### <a name="to-add-additional-address-space"></a>追加のアドレス空間を追加するには
@@ -25,7 +25,7 @@ ms.locfileid: "66171602"
 ### <a name="to-create-additional-subnets"></a>追加のサブネットを作成するには
 
 1. サブネットを作成するには、仮想ネットワーク ページの **[設定]** セクションで **[サブネット]** を選択します。 **[サブネット]** ページが表示されます。 
-2. **[サブネット]** を選択して、**[サブネットの追加]** ページを開きます。 新しいサブネットの**名前**を入力し、**アドレス範囲**を指定します。
+2. **[サブネット]** を選択して、 **[サブネットの追加]** ページを開きます。 新しいサブネットの**名前**を入力し、**アドレス範囲**を指定します。
 
    ![サブネット設定](./media/vpn-gateway-additional-address-space-include/add_subnet.png)
 3. 変更内容を保存するには、ページの下部にある **[OK]** を選択します。

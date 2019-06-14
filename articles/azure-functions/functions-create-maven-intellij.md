@@ -13,11 +13,11 @@ ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
 ms.openlocfilehash: da93c60b52edf509900adf89fb688a0596d9763b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58877808"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61342228"
 ---
 # <a name="create-your-first-azure-function-with-java-and-intellij"></a>Java と IntelliJ を使用して初めての Azure 関数を作成する
 
@@ -46,16 +46,16 @@ Java および IntelliJ で関数を開発するには、次のソフトウェ�
 
 ## <a name="create-a-functions-project"></a>Functions プロジェクトを作成する
 
-1. IntelliJ IDEA で、**[新しいプロジェクトの作成]** を選択します。  
+1. IntelliJ IDEA で、 **[新しいプロジェクトの作成]** を選択します。  
 1. **[新しいプロジェクト]** ウィンドウの左ウィンドウで **[Maven]** を選択します。
-1. **[Create from archetype]**(アーキタイプからの作成) チェック ボックスをオンにして、**[Add Archetype]**(アーキタイプの追加) に [[azure-functions-archetype]](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype) を選択します。
-1. **[Add Archetype]**(アーキタイプの追加) ウィンドウで、次のように各フィールドに入力します。
+1. **[Create from archetype]** (アーキタイプからの作成) チェック ボックスをオンにして、 **[Add Archetype]** (アーキタイプの追加) に [[azure-functions-archetype]](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype) を選択します。
+1. **[Add Archetype]** (アーキタイプの追加) ウィンドウで、次のように各フィールドに入力します。
     - _GroupId_: com.microsoft.azure
     - _ArtifactId_: azure-functions-archetype
     - _バージョン_:[中央リポジトリの最新バージョンを使用します](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)
     ![IntelliJ IDEAでアーキタイプから Maven プロジェクトを作成します](media/functions-create-first-java-intellij/functions-create-intellij.png)  
-1. **[OK]** を選択し、**[次へ]** を選択します。
-1. 現在のプロジェクトの詳細を入力し、**[完了]** を選択します。
+1. **[OK]** を選択し、 **[次へ]** を選択します。
+1. 現在のプロジェクトの詳細を入力し、 **[完了]** を選択します。
 
 Maven は、_ArtifactId_ 値と同じ名前で新しいフォルダーにプロジェクト ファイルを作成します。 生成されるプロジェクトのコードは、トリガーする HTTP 要求の本文をエコーする、[HTTP によってトリガーされる](/azure/azure-functions/functions-bindings-http-webhook)単純な関数です。
 
@@ -65,9 +65,9 @@ Maven は、_ArtifactId_ 値と同じ名前で新しいフォルダーにプロ�
 > 関数をローカルで実行およびデバッグするには、[Azure Functions Core Tools、バージョン 2](functions-run-local.md#v2) をインストールしていることを確認してください。
 
 1. 変更を手動でインポートするか、[自動インポート](https://www.jetbrains.com/help/idea/creating-and-optimizing-imports.html)を有効にします。
-1. **[Maven Projects]**(Maven プロジェクト) ツールバーを開きます。
-1. **[Lifecycle]** を展開し、**[package]** を開きます。 ソリューションが、新しく作成されたターゲット ディレクトリに構築されパッケージ化されます。
-1. **[Plugins]** > **[azure-functions]** を展開し、**[azure-functions:run]** を開いて Azure Functions ローカル ランタイムを開始します。  
+1. **[Maven Projects]** (Maven プロジェクト) ツールバーを開きます。
+1. **[Lifecycle]** を展開し、 **[package]** を開きます。 ソリューションが、新しく作成されたターゲット ディレクトリに構築されパッケージ化されます。
+1. **[Plugins]**  >  **[azure-functions]** を展開し、 **[azure-functions:run]** を開いて Azure Functions ローカル ランタイムを開始します。  
   ![Azure Functions の Maven ツールバー](media/functions-create-first-java-intellij/functions-intellij-java-maven-toolbar.png)  
 
 1. 関数のテストが終了したら、実行ダイアログ ボックスを閉じます。 アクティブにして同時にローカルで実行できる関数ホストは 1 つだけです。
@@ -83,9 +83,9 @@ Maven は、_ArtifactId_ 値と同じ名前で新しいフォルダーにプロ�
    このコマンドにより、関数ホストがデバッグ ポートを 5005 で開きます。
 
 1. **[実行]** メニューで **[構成の編集]** を選択します。
-1. **(+)** を選択して、**[リモート]** を追加します。
-1. _[名前]_ および _[設定]_ フィールドに入力し、**[OK]** を選択して構成を保存します。
-1. セットアップ後、**[Debug < Remote Configuration Name >]**(<リモート構成名> のデバッグ) を選択するか、キーボードで Shift + F9 キーを押してデバッグを開始します。
+1. **(+)** を選択して、 **[リモート]** を追加します。
+1. _[名前]_ および _[設定]_ フィールドに入力し、 **[OK]** を選択して構成を保存します。
+1. セットアップ後、 **[Debug < Remote Configuration Name >]** (<リモート構成名> のデバッグ) を選択するか、キーボードで Shift + F9 キーを押してデバッグを開始します。
 
    ![IntelliJ での関数のデバッグ](media/functions-create-first-java-intellij/debug-configuration-intellij.PNG)
 

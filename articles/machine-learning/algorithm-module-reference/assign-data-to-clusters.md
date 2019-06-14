@@ -11,10 +11,10 @@ ms.author: zhanxia
 ms.date: 05/06/2019
 ROBOTS: NOINDEX
 ms.openlocfilehash: 1c2d2a02ecfb617551dd9174b87f363d57b151a8
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65467196"
 ---
 # <a name="module-assign-data-to-clusters"></a>モジュール:クラスターへのデータの割り当て
@@ -41,7 +41,7 @@ Assign Data to Clusters (データのクラスターへの割り当て) モジ�
     > [!TIP]
     > クラスター予測からインターフェイスに書き込まれる列数を減らすには、[[Select columns in the dataset]\(データセット内の列の選択\)](select-columns-in-dataset.md) を使用して列の一部を選択します。 
     
-4. 結果 (クラスターの割り当て) を表示する列を含め、入力データセット全体を結果に含める場合は、**[Check for Append or Uncheck for Result Only]\(追加についてはオン、または結果のみについてはオフにする\)** チェック ボックスをオンのままにします。
+4. 結果 (クラスターの割り当て) を表示する列を含め、入力データセット全体を結果に含める場合は、 **[Check for Append or Uncheck for Result Only]\(追加についてはオン、または結果のみについてはオフにする\)** チェック ボックスをオンのままにします。
   
     このチェック ボックスをオフにすると、結果のみが返されます。 このオプションは、Web サービスの一部として予測を作成するときに役立ちます。
   
@@ -49,5 +49,5 @@ Assign Data to Clusters (データのクラスターへの割り当て) モジ�
   
 ### <a name="results"></a>結果
 
-+  データセットの値を表示するには、モジュールを右クリックし、**[Result datasets]\(結果データセット\)** を選択してから **[視覚化]** を選択します。
++  データセットの値を表示するには、モジュールを右クリックし、 **[Result datasets]\(結果データセット\)** を選択してから **[視覚化]** を選択します。
 

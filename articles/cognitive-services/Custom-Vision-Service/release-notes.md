@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: anroth
 ms.openlocfilehash: 4b4e449b9260debbe90523141cacc4ed76219490
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65787949"
 ---
 # <a name="custom-vision-service-release-notes"></a>Custom Vision Service リリース ノート
@@ -40,7 +40,7 @@ ms.locfileid: "65787949"
 
 - Custom Vision Service が Azure で一般提供されました。
 - 特に高度な処理が必要になるデータセットや詳細に設定された分類でのパフォーマンスを高めるための新しい機械学習バックエンドを備えた、高度なトレーニング機能が追加されました。 高度なトレーニングにより、トレーニングのコンピューティング時間予算を指定でき、Custom Vision によって、経験に基づいて最適なトレーニングと拡張設定が特定されます。 クイック イテレーションについては、引き続き既存の高速トレーニングを使用することができます。
-- 3.0 API が導入されました。 2019 年 10 月 1 日の 3.0 より前の API の廃止予定を発表しました。 作業の開始方法の例については、[.Net](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/csharp-tutorial)、[Python](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/python-tutorial)、[Node](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/node-tutorial)、[Java](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/java-tutorial)、または [Go](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/go-tutorial) のドキュメントのクイックスタートを参照してください。
+- 3\.0 API が導入されました。 2019 年 10 月 1 日の 3.0 より前の API の廃止予定を発表しました。 作業の開始方法の例については、[.Net](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/csharp-tutorial)、[Python](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/python-tutorial)、[Node](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/node-tutorial)、[Java](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/java-tutorial)、または [Go](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/go-tutorial) のドキュメントのクイックスタートを参照してください。
 - "既定のイテレーション" が 3.0 API の発行/発行取り消しで置き換えられました。
 - 新しいモデルのエクスポート ターゲットが追加されました。 Raspberry Pi 3 の ARM をサポートするために、Dockerfile のエクスポートがアップグレードされました。 [Vision AI Dev Kit](https://visionaidevkit.com/) にエクスポートのサポートが追加されました。
 - S0 レベルのプロジェクトあたりのタグの制限を 500 に増やしました。 S0 レベルのプロジェクトあたりのイメージの制限を 100,000 に増やしました。

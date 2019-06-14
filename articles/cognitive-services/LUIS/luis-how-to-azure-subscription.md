@@ -12,11 +12,11 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: diberry
 ms.openlocfilehash: 7315c80ad74eae07e41577fb2ac13742002e729e
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57781699"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60198658"
 ---
 # <a name="using-subscription-keys-with-your-luis-app"></a>LUIS アプリでのサブスクリプション キーの使用
 
@@ -90,7 +90,7 @@ HTTP 403 または 429 の形式で _クォータ不足_ エラーが表示さ�
 ```
 
 ### <a name="enable-bing-spell-checker"></a>Bing のスペル チェック機能を有効にする 
-**[Endpoint url settings]\(エンドポイント URL 設定)** では、**[Bing spell checker]\(Bing のスペル チェック機能)** トグルによって、LUIS での予測前にスペルミスがある単語を収集できます。 **[Bing Spell Check キー](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api)** を作成します。 
+**[Endpoint url settings]\(エンドポイント URL 設定)** では、 **[Bing spell checker]\(Bing のスペル チェック機能)** トグルによって、LUIS での予測前にスペルミスがある単語を収集できます。 **[Bing Spell Check キー](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api)** を作成します。 
 
 **spellCheck=true** querystring パラメーターと **bing-spell-check-subscription-key={YOUR_BING_KEY_HERE}** を追加します。 `{YOUR_BING_KEY_HERE}` を実際の Bing スペル チェック機能キーに置き換えます。
 
@@ -133,7 +133,7 @@ CI/CD パイプラインなどの自動化を目指す場合、LUIS アプリへ
 
     この POST API には、次の設定が必要です。
 
-    |type|Setting|値|
+    |Type|Setting|値|
     |--|--|--|
     |ヘッダー|`Authorization`|`Authorization` の値は `Bearer {token}` です。 トークンの値の前に、`Bearer` という単語とスペースを 1 つ入力する必要があることに注意してください。|
     |ヘッダー|`Ocp-Apim-Subscription-Key`|実際の[オーサリング キー](luis-how-to-account-settings.md)。|
@@ -147,9 +147,9 @@ CI/CD パイプラインなどの自動化を目指す場合、LUIS アプリへ
 
 1.  [Azure](https://portal.azure.com) で、ご自身の LUIS サブスクリプションを検索します。 LUIS サブスクリプションを選択します。
     ![LUIS サブスクリプション の検索](./media/luis-usage-tiers/find.png)
-1.  使用可能な価格レベルを表示するには、**[価格レベル]** を選択します。 
+1.  使用可能な価格レベルを表示するには、 **[価格レベル]** を選択します。 
     ![価格レベルの表示](./media/luis-usage-tiers/subscription.png)
-1.  価格レベルを選択し、**[選択]** を選択して、ご自身の変更内容を保存します。 
+1.  価格レベルを選択し、 **[選択]** を選択して、ご自身の変更内容を保存します。 
     ![ご自身の LUIS 支払いレベルの変更](./media/luis-usage-tiers/plans.png)
 1.  価格の変更が完了したら、ポップアップ ウィンドウで新しい価格レベルを確認します。 
     ![ご自身の LUIS 支払いレベルの確認](./media/luis-usage-tiers/updated.png)
@@ -161,7 +161,7 @@ CI/CD パイプラインなどの自動化を目指す場合、LUIS アプリへ
 価格レベルごとに、1 か月に許可される累積要求数が決まっています。 要求の合計数が、許可されている割合を超えると、要求は "403: 許可されていません" という HTTP エラーを受け取ります。  
 
 ## <a name="viewing-summary-usage"></a>使用状況の表示
-Azure で LUIS の使用に関する情報を表示できます。 **[概要]** ページには、呼び出し、エラーなど、最近の概要情報が表示されます。 LUIS エンドポイント要求を行ったらすぐに、**[概要] ページ**を確認します。使用状況が表示されるまでに最大で 5 分かかります。
+Azure で LUIS の使用に関する情報を表示できます。 **[概要]** ページには、呼び出し、エラーなど、最近の概要情報が表示されます。 LUIS エンドポイント要求を行ったらすぐに、 **[概要] ページ**を確認します。使用状況が表示されるまでに最大で 5 分かかります。
 
 ![使用状況の表示](./media/luis-usage-tiers/overview.png)
 

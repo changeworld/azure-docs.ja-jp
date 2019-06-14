@@ -10,10 +10,10 @@ ms.assetid: ad14d53c-fed4-478d-ab4b-6d2e14ff2097
 ms.topic: conceptual
 ms.date: 06/29/2018
 ms.openlocfilehash: 4273828c9c2bdb75fcbc1de45da55c5a03dd615f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66156435"
 ---
 # <a name="manage-azure-data-lake-analytics-using-azure-powershell"></a>Azure PowerShell を使用する Azure Data Lake Analytics の管理
@@ -28,10 +28,10 @@ ms.locfileid: "66156435"
 Data Lake Analytics で PowerShell を使用するには、次の情報を収集します。 
 
 * **サブスクリプション ID**:Data Lake Analytics アカウントを含む Azure サブスクリプションの ID。
-* **[リソース グループ]**:Data Lake Analytics アカウントが含まれている Azure リソース グループの名前。
+* **[リソース グループ]** :Data Lake Analytics アカウントが含まれている Azure リソース グループの名前。
 * **Data Lake Analytics アカウント名**:Data Lake Analytics アカウントの名前。
 * **既定の Data Lake Store アカウント名**:各 Data Lake Analytics アカウントには、既定の Data Lake Store アカウントがあります。
-* **[場所]**:Data Lake Analytics アカウントの場所。"米国東部 2" やサポートされているその他の場所です。
+* **[場所]** :Data Lake Analytics アカウントの場所。"米国東部 2" やサポートされているその他の場所です。
 
 このチュートリアルの PowerShell スニペットでは、以下の変数を使って各情報を格納します。
 

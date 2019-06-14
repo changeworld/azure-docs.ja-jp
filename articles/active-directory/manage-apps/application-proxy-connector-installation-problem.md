@@ -17,10 +17,10 @@ ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2c82bba6ccb1eaa1933176362e34b8c3e30c37f8
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65783627"
 ---
 # <a name="problem-installing-the-application-proxy-agent-connector"></a>アプリケーション プロキシ エージェント コネクタのインストール時の問題
@@ -68,7 +68,7 @@ Microsoft AAD アプリケーション プロキシ コネクタは、発信接�
 
 **資格情報が適切であることを確認するには:**
 
-<https://login.microsoftonline.com> に接続し、同じ資格情報を使用します。 ログインに成功したことを確認します。 **[Azure Active Directory]** -&gt; **[ユーザーとグループ]** -&gt; **[すべてのユーザー]** に移動して、ユーザー ロールを確認できます。 
+<https://login.microsoftonline.com> に接続し、同じ資格情報を使用します。 ログインに成功したことを確認します。 **[Azure Active Directory]**  -&gt; **[ユーザーとグループ]**  -&gt; **[すべてのユーザー]** に移動して、ユーザー ロールを確認できます。 
 
 ユーザー アカウントを選択し、表示されたメニューの [ディレクトリ ロール] を選択します。 選択されているロールが "アプリケーション管理者" であることを確認します。 これらの手順に従っても、どのページにもアクセスできない場合、ユーザーは必要なロールを持っていません。
 

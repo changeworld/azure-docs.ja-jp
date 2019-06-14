@@ -2,17 +2,16 @@
 title: Azure DNS ゾーンとレコードを保護する
 description: Microsoft Azure DNS で DNS ゾーンとレコード セットを保護する方法
 services: dns
-author: WenJason
+author: vhorne
 ms.service: dns
 ms.topic: article
-origin.date: 12/4/2018
-ms.date: 03/04/2019
-ms.author: v-jay
+ms.date: 12/4/2018
+ms.author: victorh
 ms.openlocfilehash: 9340a43eb88b4be03c0f0ccc0d07a32f22a9001c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66121450"
 ---
 # <a name="how-to-protect-dns-zones-and-records"></a>DNS ゾーンとレコードを保護する方法
@@ -33,7 +32,7 @@ DNS ゾーン共同作成者ロールは、Azure に用意されている DNS �
 
 たとえば、リソース グループ *myzones* に Contoso Corporation の 5 つのゾーンが含まれているとします。 このリソース グループに対する DNS ゾーン共同作成者アクセス許可を DNS 管理者に付与すると、管理者はこれらの DNS ゾーンを完全に制御できるようになります。 DNS 管理者が仮想マシンの作成や停止などを実行できないように、必要のないアクセス許可は付与しないようにしてください。
 
-RBAC アクセス許可の割り当ては、[Azure Portal](../role-based-access-control/role-assignments-portal.md) を使用すると最も簡単に行うことができます。  リソース グループの **[アクセス制御 (IAM)]** を開き、**[追加]**、**[DNS Zone Contributor (DNS ゾーン共同作成者)]** ロールの順に選択し、アクセス許可の付与が必要なユーザーまたはグループを選択します。
+RBAC アクセス許可の割り当ては、[Azure Portal](../role-based-access-control/role-assignments-portal.md) を使用すると最も簡単に行うことができます。  リソース グループの **[アクセス制御 (IAM)]** を開き、 **[追加]** 、 **[DNS Zone Contributor (DNS ゾーン共同作成者)]** ロールの順に選択し、アクセス許可の付与が必要なユーザーまたはグループを選択します。
 
 ![Azure Portal を使用したリソース グループ レベルの RBAC](./media/dns-protect-zones-recordsets/rbac1.png)
 
@@ -57,7 +56,7 @@ Azure RBAC のルールは、サブスクリプション、リソース グル�
 
 たとえば、リソース グループ *myzones* にゾーン *contoso.com* とサブゾーン *customers.contoso.com* が含まれていて、サブゾーンには顧客アカウントごとに CNAME レコードが作成されているとします。  これらの CNAME レコードの管理に使用するアカウントに、*customers.contoso.com* ゾーンにのみレコードを作成できるアクセス許可を割り当て、他のゾーンにはアクセスできないようにするような状況が該当します。
 
-ゾーン レベルの RBAC アクセス許可は、Azure Portal から付与できます。  ゾーンの **[アクセス制御 (IAM)]** を開き、**[追加]**、**[DNS Zone Contributor (DNS ゾーン共同作成者)]** ロールの順に選択し、アクセス許可の付与が必要なユーザーまたはグループを選択します。
+ゾーン レベルの RBAC アクセス許可は、Azure Portal から付与できます。  ゾーンの **[アクセス制御 (IAM)]** を開き、 **[追加]** 、 **[DNS Zone Contributor (DNS ゾーン共同作成者)]** ロールの順に選択し、アクセス許可の付与が必要なユーザーまたはグループを選択します。
 
 ![Azure Portal を使用した DNS ゾーン レベルの RBAC](./media/dns-protect-zones-recordsets/rbac2.png)
 
@@ -118,7 +117,8 @@ Contoso Corporation が顧客アカウントごとの CNAME レコードをゾ�
         "Microsoft.Insights/alertRules/*",
         "Microsoft.ResourceHealth/availabilityStatuses/read",
         "Microsoft.Resources/deployments/*",
-        "Microsoft.Resources/subscriptions/resourceGroups/read"
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Support/*"
     ],
     "NotActions": [
     ],
@@ -166,7 +166,7 @@ Azure Resource Manager は、RBAC に加えて、別のタイプのセキュリ�
 
 一切の変更を防止するには、ゾーンに対して ReadOnly ロックを適用します。  これにより、レコード セットの新規作成と既存のレコード セットに対する変更や削除を防止できます。
 
-ゾーン レベルのリソース ロックは、Azure Portal を使用して作成できます。  DNS ゾーン ページから **[ロック]**、**[+ 追加]** の順に選択します。
+ゾーン レベルのリソース ロックは、Azure Portal を使用して作成できます。  DNS ゾーン ページから **[ロック]** 、 **[+ 追加]** の順に選択します。
 
 ![Azure Portal を使用したゾーン レベルのリソース ロック](./media/dns-protect-zones-recordsets/locks1.png)
 

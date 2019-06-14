@@ -17,10 +17,10 @@ ms.reviewer: sumitp
 ms.custom: seohack1;it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 333f0ae0153073b57740446ecf47e36a1f9ce590
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65192452"
 ---
 # <a name="how-to-migrate-users-with-individual-licenses-to-groups-for-licensing"></a>個別にライセンスを付与されたユーザーをライセンスのためにグループに移行する方法
@@ -59,7 +59,7 @@ ms.locfileid: "65192452"
 
 1. Azure Portal を使用して、Azure AD で EMS ライセンスを**すべてのユーザー** グループに割り当てます。 E3 ライセンスを、必要なすべてのユーザーが含まれた**財務部門**グループに割り当てます。
 
-2. 各グループについて、すべてのユーザーのライセンス割り当てが完了したことを確認します。 各グループのブレードに移動して **[ライセンス]** を選択し、**[ライセンス]** ブレードの上部にある処理状態を確認します。
+2. 各グループについて、すべてのユーザーのライセンス割り当てが完了したことを確認します。 各グループのブレードに移動して **[ライセンス]** を選択し、 **[ライセンス]** ブレードの上部にある処理状態を確認します。
 
    - "Latest license changes have been applied to all users (最新のライセンス変更がすべてのユーザーに適用されました)" というメッセージを探して、処理が完了したことを確認します。
 

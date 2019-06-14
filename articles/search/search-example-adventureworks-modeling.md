@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 01/25/2019
 ms.author: chstone
 ms.openlocfilehash: 6d5d01dfbbcfda56818f5c38b06117a87e021445
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55174569"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61291910"
 ---
 # <a name="example-model-the-adventureworks-inventory-database-for-azure-search"></a>例:AdventureWorks の在庫データベースを Azure Search 用にモデル化する
 
@@ -43,7 +43,7 @@ Road-650 モデルには 12 個のオプションがあることに注意して�
 
 ## <a name="use-a-collection-data-type"></a>Collection データ型を使用する
 
-"正しいアプローチ" は、データベース モデルに直接的な並列がない次の検索スキーマ機能を利用することです。**Collection(Edm.String)**。 Collection データ型は、非常に長い (単一の) 文字列ではなく個々の文字列のリストがある場合に使用されます。 タグまたはキーワードがある場合は、Collection データ型をそのフィールドに使用します。
+"正しいアプローチ" は、データベース モデルに直接的な並列がない次の検索スキーマ機能を利用することです。**Collection(Edm.String)** 。 Collection データ型は、非常に長い (単一の) 文字列ではなく個々の文字列のリストがある場合に使用されます。 タグまたはキーワードがある場合は、Collection データ型をそのフィールドに使用します。
 
 "色"、"サイズ"、および "イメージ" に対して **Collection(Edm.String)** の複数値のインデックス フィールドを定義することで、重複エントリを含むインデックスを汚染せずにファセットとフィルターを行うための補助的な情報が保持されます。 同様に、集計関数を Product の数値フィールドに適用し、すべての製品の **listPrice** ではなく **minListPrice** にインデックスを付けます。
 

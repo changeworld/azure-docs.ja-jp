@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 03/21/2018
 ms.author: danlep
 ms.openlocfilehash: 55c84907ab41f6da9d7a0989c68a1c1f90c5e424
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57551026"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60827274"
 ---
 # <a name="container-image-storage-in-azure-container-registry"></a>Azure Container Registry へのコンテナー イメージの保存
 
@@ -34,7 +34,7 @@ Azure では、geo 冗長ストレージ スキームを使用して、コンテ
 
 次の表は、Azure Container Registry に適用されるコンテナー イメージとストレージの制限について説明しています。
 
-| リソース | 制限 |
+| Resource | 制限 |
 | -------- | :---- |
 | リポジトリ | 制限なし |
 | イメージ | 制限なし |

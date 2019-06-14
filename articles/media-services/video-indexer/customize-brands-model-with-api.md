@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
 ms.openlocfilehash: 8d0806bc0262cd45a49e4f97ea629683ac239aa8
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65799636"
 ---
 # <a name="customize-a-brands-model-with-the-video-indexer-api"></a>Video Indexer API を使用してブランド モデルをカスタマイズする
@@ -59,7 +59,7 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 }
 ```
 
-**enabled** を true に設定すると、Video Indexer での検出対象として *[含める]* リストにブランドが配置されます。 **enabled** を false に設定すると、*[除外]* リストにブランドが配置されます。したがって、Video Indexer では検出されません。
+**enabled** を true に設定すると、Video Indexer での検出対象として *[含める]* リストにブランドが配置されます。 **enabled** を false に設定すると、 *[除外]* リストにブランドが配置されます。したがって、Video Indexer では検出されません。
 
 **referenceUrl** 値は、Wikipedia ページへのリンクなど、ブランドの参照 Web サイトにすることができます。
 
@@ -89,7 +89,7 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 
 ## <a name="delete-a-brand"></a>ブランドを削除する
 
-指定されたアカウントのカスタム ブランド モデルからブランドを削除します。 アカウントは **accountId** パラメーターで指定されます。 呼び出しが正常に行われると、ブランドは、*[含める]* や *[除外]* のブランド リストに配置されなくなります。
+指定されたアカウントのカスタム ブランド モデルからブランドを削除します。 アカウントは **accountId** パラメーターで指定されます。 呼び出しが正常に行われると、ブランドは、 *[含める]* や *[除外]* のブランド リストに配置されなくなります。
 
 ### <a name="request-url"></a>要求 URL
 
@@ -287,7 +287,7 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 ```
 
 > [!NOTE]
-> *Example* という名前のブランドは、Video Indexer での検出対象として *[含める]* リストにあります。*Example2* という名前のブランドは、*[除外]* リストにあるため、Video Indexer では検出されません。
+> *Example* という名前のブランドは、Video Indexer での検出対象として *[含める]* リストにあります。*Example2* という名前のブランドは、 *[除外]* リストにあるため、Video Indexer では検出されません。
 
 ## <a name="get-brands-model-settings"></a>ブランド モデルの設定を取得する
 

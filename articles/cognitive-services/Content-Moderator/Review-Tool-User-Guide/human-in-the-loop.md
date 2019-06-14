@@ -11,11 +11,11 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.author: sajagtap
 ms.openlocfilehash: b7ec997fd3e9bfe294050893d80fd57a96a47aae
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58755873"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61270006"
 ---
 # <a name="content-moderator-review-tool"></a>Content Moderator レビュー ツール
 
@@ -43,7 +43,7 @@ Azure Content Moderator は機械学習によるコンテンツ モデレーシ�
 
 ## <a name="review-tool-credentials"></a>レビュー ツールの資格情報
 
-[レビュー ツール](https://contentmoderator.cognitive.microsoft.com)にサインアップすると、ご使用のアカウントの Azure リージョンの選択を求められます。 これは、[レビュー ツール](https://contentmoderator.cognitive.microsoft.com)により、Azure Content Moderator サービスの無料試用版キーが生成されるためです。REST 呼び出しまたはクライアント SDK からいずれかのサービスにアクセスする場合に、このキーが必要になります。 ご自分のキーと API エンドポイント URL を確認するには、**[設定]** > **[資格情報]** を選択します。
+[レビュー ツール](https://contentmoderator.cognitive.microsoft.com)にサインアップすると、ご使用のアカウントの Azure リージョンの選択を求められます。 これは、[レビュー ツール](https://contentmoderator.cognitive.microsoft.com)により、Azure Content Moderator サービスの無料試用版キーが生成されるためです。REST 呼び出しまたはクライアント SDK からいずれかのサービスにアクセスする場合に、このキーが必要になります。 ご自分のキーと API エンドポイント URL を確認するには、 **[設定]**  >  **[資格情報]** を選択します。
 
 ![Content Moderator 資格情報](images/settings-6-credentials.png)
 

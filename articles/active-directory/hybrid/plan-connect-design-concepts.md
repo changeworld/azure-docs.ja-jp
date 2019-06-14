@@ -18,11 +18,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 311ba489073805fdb034b435ab9e5e1ddc2c4e3c
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57535044"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60382291"
 ---
 # <a name="azure-ad-connect-design-concepts"></a>Azure AD Connect:設計概念
 このドキュメントの目的は、Azure AD Connect の実装設計時に検討する必要がある領域について説明することです。 このドキュメントでは特定の領域について詳しく説明しますが、これらの概念については、他のドキュメントでも簡単に説明しています。
@@ -133,19 +133,19 @@ Azure AD Connect を高速モードでインストールする場合、sourceAnc
 
 ソース アンカー属性を ObjectGuid から ConsistencyGuid に切り替えるには:
 
-1. Azure AD Connect ウィザードを起動し、**[構成]** をクリックしてタスク画面に移動します。
+1. Azure AD Connect ウィザードを起動し、 **[構成]** をクリックしてタスク画面に移動します。
 
-2. **[Configure Source Anchor\(ソース アンカーを構成\)]** タスク オプションを選択して、**[次へ]** をクリックします。
+2. **[Configure Source Anchor\(ソース アンカーを構成\)]** タスク オプションを選択して、 **[次へ]** をクリックします。
 
    ![既存のデプロイで ConsistencyGuid を有効にする - 手順 2](./media/plan-connect-design-concepts/consistencyguidexistingdeployment01.png)
 
-3. Azure AD の管理者資格情報を入力し、**[次へ]** をクリックします。
+3. Azure AD の管理者資格情報を入力し、 **[次へ]** をクリックします。
 
 4. オンプレミスの Active Directory で ms-DS-ConsistencyGuid 属性の状態が Azure AD Connect ウィザードによって解析されます。 属性がディレクトリ内のどのオブジェクトにも構成されていない場合、Azure AD Connect はその属性を使用しているアプリケーションは現在なく、ソース アンカー属性として使用しても問題がないと判断します。 **[次へ]** をクリックして続行します。
 
    ![既存のデプロイで ConsistencyGuid を有効にする - 手順 4](./media/plan-connect-design-concepts/consistencyguidexistingdeployment02.png)
 
-5. **[構成の準備完了]** 画面で、**[構成]** をクリックし構成を変更します。
+5. **[構成の準備完了]** 画面で、 **[構成]** をクリックし構成を変更します。
 
    ![既存のデプロイで ConsistencyGuid を有効にする - 手順 5](./media/plan-connect-design-concepts/consistencyguidexistingdeployment03.png)
 
@@ -157,7 +157,7 @@ Azure AD Connect を高速モードでインストールする場合、sourceAnc
 
 ![既存のデプロイで ConsistencyGuid を有効にする - エラー](./media/plan-connect-design-concepts/consistencyguidexistingdeploymenterror.png)
 
- 属性が他の既存のアプリケーションで使用されていないことがわかっている場合は、**/SkipLdapSearch** スイッチを指定して Azure AD Connect ウィザードを再起動することで、エラーを抑制することができます。 これを行うには、コマンド プロンプトで次のコマンドを実行します。
+ 属性が他の既存のアプリケーションで使用されていないことがわかっている場合は、 **/SkipLdapSearch** スイッチを指定して Azure AD Connect ウィザードを再起動することで、エラーを抑制することができます。 これを行うには、コマンド プロンプトで次のコマンドを実行します。
 
 ```
 "c:\Program Files\Microsoft Azure Active Directory Connect\AzureADConnect.exe" /SkipLdapSearch

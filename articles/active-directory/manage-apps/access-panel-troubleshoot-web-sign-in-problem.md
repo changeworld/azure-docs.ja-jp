@@ -17,10 +17,10 @@ ms.author: mimart
 ms.reviwer: japere,asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a7c6a9c3f26c8939176197a2ecf2fcd6026e9928
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65784303"
 ---
 # <a name="problem-signing-in-to-the-access-panel-website"></a>アクセス パネルの Web サイトにサインインできない問題
@@ -102,7 +102,7 @@ Azure AD の職場または学校アカウントを持つユーザーは、次�
 
 2.  左側のメイン ナビゲーション メニューの上部にある **[すべてのサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
 
-3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
+3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、 **[Azure Active Directory]** 項目を選択します。
 
 4.  ナビゲーション メニューで **[ユーザーとグループ]** をクリックします。
 
@@ -120,7 +120,7 @@ Azure AD の職場または学校アカウントを持つユーザーは、次�
 
 2.  左側のメイン ナビゲーション メニューの上部にある **[すべてのサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
 
-3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
+3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、 **[Azure Active Directory]** 項目を選択します。
 
 4.  ナビゲーション メニューで **[ユーザーとグループ]** をクリックします。
 
@@ -130,7 +130,7 @@ Azure AD の職場または学校アカウントを持つユーザーは、次�
 
 7.  **[Profile]** をクリックします。
 
-8.  **[設定]** で、**[サインインのブロック]** が **[いいえ]** に設定されていることを確認します。
+8.  **[設定]** で、 **[サインインのブロック]** が **[いいえ]** に設定されていることを確認します。
 
 ### <a name="reset-a-users-password"></a>ユーザーのパスワードをリセットする
 
@@ -140,7 +140,7 @@ Azure AD の職場または学校アカウントを持つユーザーは、次�
 
 2.  左側のメイン ナビゲーション メニューの上部にある **[すべてのサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
 
-3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
+3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、 **[Azure Active Directory]** 項目を選択します。
 
 4.  ナビゲーション メニューで **[ユーザーとグループ]** をクリックします。
 
@@ -172,7 +172,7 @@ Azure AD の職場または学校アカウントを持つユーザーは、次�
 
 2. 左側のメイン ナビゲーション メニューの上部にある **[すべてのサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
 
-3. フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
+3. フィルター検索ボックスに「**Azure Active Directory**」と入力し、 **[Azure Active Directory]** 項目を選択します。
 
 4. ナビゲーション メニューで **[ユーザーとグループ]** をクリックします。
 
@@ -199,7 +199,7 @@ Azure AD の職場または学校アカウントを持つユーザーは、次�
 
 2.  左側のメイン ナビゲーション メニューの上部にある **[すべてのサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
 
-3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
+3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、 **[Azure Active Directory]** 項目を選択します。
 
 4.  ナビゲーション メニューで **[ユーザーとグループ]** をクリックします。
 
@@ -221,7 +221,7 @@ Azure AD の職場または学校アカウントを持つユーザーは、次�
 
 2.  左側のメイン ナビゲーション メニューの上部にある **[すべてのサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
 
-3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
+3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、 **[Azure Active Directory]** 項目を選択します。
 
 4.  ナビゲーション メニューで **[ユーザーとグループ]** をクリックします。
 
@@ -239,7 +239,7 @@ Azure AD の職場または学校アカウントを持つユーザーは、次�
 
 2.  左側のメイン ナビゲーション メニューの上部にある **[すべてのサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
 
-3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
+3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、 **[Azure Active Directory]** 項目を選択します。
 
 4.  ナビゲーション メニューで **[ユーザーとグループ]** をクリックします。
 
@@ -257,7 +257,7 @@ Azure AD の職場または学校アカウントを持つユーザーは、次�
 
 2.  左側のメイン ナビゲーション メニューの上部にある **[すべてのサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
 
-3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
+3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、 **[Azure Active Directory]** 項目を選択します。
 
 4.  ナビゲーション メニューで **[ユーザーとグループ]** をクリックします。
 

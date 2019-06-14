@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 07/17/2017
 ms.author: cynthn
 ms.openlocfilehash: 816233368c2274e34d2acdd712aed270a5e3bfa5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58010896"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60203926"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-java"></a>Java を使用して Azure で Windows VM を作成および管理する
 
@@ -134,7 +134,7 @@ ms.locfileid: "58010896"
     graphURL=https://graph.windows.net/
     ```
 
-    **&lt;subscription-id&gt;** をサブスクリプション ID に、**&lt;application-id&gt;** を Active Directory アプリケーション ID に、**&lt;authentication-key&gt;** をアプリケーション キーに、**&lt;tenant-id&gt;** をテナント識別子に置き換えます。
+    **&lt;subscription-id&gt;** をサブスクリプション ID に、 **&lt;application-id&gt;** を Active Directory アプリケーション ID に、 **&lt;authentication-key&gt;** をアプリケーション キーに、 **&lt;tenant-id&gt;** をテナント識別子に置き換えます。
 
 2. ファイルを保存します。
 3. シェルの AZURE_AUTH_LOCATION という名前の環境変数に、認証ファイルへの完全なパスを設定します。

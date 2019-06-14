@@ -9,10 +9,10 @@ ms.date: 10/31/2018
 ms.author: genli
 ms.subservice: common
 ms.openlocfilehash: cf1cba6f6d26d66fc560c86ea42459fa276cc880
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66114903"
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>Azure Storage の移行についてよくあるご質問
@@ -64,7 +64,7 @@ Automation スクリプトは、ストレージ コンテンツの操作では�
 > [!NOTE]
 > Azure BLOB 間でコピーする場合、AzCopy CLI は **Pattern** スイッチとは連携しません。
 >
-> AzCopy コマンドを直接コピーして編集し、**Pattern** がソースと一致することを確認します。 また、**/S** ワイルドカードが有効であることも確認します。 詳細については、「[AzCopy のパラメーター](storage-use-azcopy.md)」をご覧ください。
+> AzCopy コマンドを直接コピーして編集し、**Pattern** がソースと一致することを確認します。 また、 **/S** ワイルドカードが有効であることも確認します。 詳細については、「[AzCopy のパラメーター](storage-use-azcopy.md)」をご覧ください。
 
 **ストレージ コンテナー間でデータを移動するにはどうすればよいですか?**
 
@@ -266,9 +266,9 @@ Azure CLI をご利用いただけます。
 
 -   Microsoft Azure Storage のコマンド ラインから AzCopy はアクセスするには、「**AzCopy**」と入力します。 コマンド ラインは、AzCopy と同時にインストールされます。
 
--   32 ビット バージョンをインストールした場合は、**%ProgramFiles(x86)%\\Microsoft SDKs\\Azure\\AzCopy** にあります。
+-   32 ビット バージョンをインストールした場合は、 **%ProgramFiles(x86)%\\Microsoft SDKs\\Azure\\AzCopy** にあります。
 
--   64 ビット バージョンをインストールした場合は、**%ProgramFiles%\\Microsoft SDKs\\Azure\\AzCopy** にあります。
+-   64 ビット バージョンをインストールした場合は、 **%ProgramFiles%\\Microsoft SDKs\\Azure\\AzCopy** にあります。
 
 **レプリケートされたストレージ アカウント (ZRS、GRS、または読み取り GRS など) の場合、セカンダリ リージョンに格納されているデータにアクセスする方法は?**
 
@@ -276,7 +276,7 @@ Azure CLI をご利用いただけます。
 
 -   読み取りアクセス GRS を使用している場合は、セカンダリ リージョンのデータにいつでもアクセスできます。 次のいずれかの方法を使用します。  
       
-    - **AzCopy**:**-secondary** を URL のストレージ アカウント名の後に追加して、セカンダリ エンドポイントにアクセスします。 例:   
+    - **AzCopy**: **-secondary** を URL のストレージ アカウント名の後に追加して、セカンダリ エンドポイントにアクセスします。 例:  
      
       https://storageaccountname-secondary.blob.core.windows.net/vhds/BlobName.vhd
 

@@ -16,10 +16,10 @@ ms.date: 04/10/2019
 ms.author: lahugh
 ms.custom: include file
 ms.openlocfilehash: 711b662c35b5f8fec96f1edee765696bc1028bf8
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66127507"
 ---
 ### <a name="general-requirements"></a>一般的な要件
@@ -71,7 +71,7 @@ ms.locfileid: "66127507"
 
 **アウトバウンド セキュリティ規則**
 
-| ソース | ソース ポート | 宛先 | 宛先サービス タグ | Protocol | Action |
+| source | ソース ポート | 宛先 | 宛先サービス タグ | Protocol | Action |
 | --- | --- | --- | --- | --- | --- |
 | 任意 | 443 | [サービス タグ](../articles/virtual-network/security-overview.md#service-tags) | `Storage` (ご利用の Batch アカウントおよび VNET と同じリージョン内)  | 任意 | ALLOW |
 
@@ -104,6 +104,6 @@ NSG を指定する必要はありません。Batch IP アドレスからプー�
 
 **アウトバウンド セキュリティ規則**
 
-| ソース | ソース ポート | 変換先 | ターゲット ポート | Protocol | Action |
+| source | ソース ポート | 変換先 | ターゲット ポート | Protocol | Action |
 | --- | --- | --- | --- | --- | --- |
 | 任意 | * | 任意 | 443  | 任意 | ALLOW |

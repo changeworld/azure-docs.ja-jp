@@ -8,10 +8,10 @@ ms.date: 04/08/2019
 ms.topic: conceptual
 ms.author: sutalasi
 ms.openlocfilehash: 5490149f199c2d7887716ceae3f035527ad33961
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66170049"
 ---
 # <a name="set-up-disaster-recovery-of-vmware-vms-to-azure-with-powershell"></a>PowerShell を使用して VMware VM の Azure へのディザスター リカバリーを設定する
@@ -118,7 +118,7 @@ Set-ASRVaultContext コマンドレットを使って、コンテナーのコン
    VMwareDRToAzurePs VMwareDRToAzurePs Microsoft.RecoveryServices vaults
    ```
 
-Set-ASRVaultContext コマンドレットの代替として、Import-AzRecoveryServicesAsrVaultSettingsFile コマンドレットを使用してコンテナー コンテキストを設定することもできます。 コンテナー登録キー ファイルが -path パラメーターとして置かれているパスを Import-AzRecoveryServicesAsrVaultSettingsFile コマンドレットに指定します。 例: 
+Set-ASRVaultContext コマンドレットの代替として、Import-AzRecoveryServicesAsrVaultSettingsFile コマンドレットを使用してコンテナー コンテキストを設定することもできます。 コンテナー登録キー ファイルが -path パラメーターとして置かれているパスを Import-AzRecoveryServicesAsrVaultSettingsFile コマンドレットに指定します。 例:
 
    ```azurepowershell
    Get-AzRecoveryServicesVaultSettingsFile -SiteRecovery -Vault $Vault -Path "C:\Work\"
@@ -279,7 +279,7 @@ Set-ASRVaultContext コマンドレットの代替として、Import-AzRecoveryS
 
 ## <a name="add-a-vcenter-server-and-discover-vms"></a>vCenter サーバーを追加して VM を検出する
 
-IP アドレスまたはホスト名で vCenter サーバーを追加します。 **-port** パラメーターは vCenter サーバー上の接続先ポート、**-Name** パラメーターは vCenter サーバーに使用するフレンドリ名、**-Account** パラメーターは vCenter サーバーによって管理される仮想マシンの検出に使う構成サーバー上のアカウント ハンドルを指定します。
+IP アドレスまたはホスト名で vCenter サーバーを追加します。 **-port** パラメーターは vCenter サーバー上の接続先ポート、 **-Name** パラメーターは vCenter サーバーに使用するフレンドリ名、 **-Account** パラメーターは vCenter サーバーによって管理される仮想マシンの検出に使う構成サーバー上のアカウント ハンドルを指定します。
 
 ```azurepowershell
 # The $AccountHandles[0] variable holds details of vCenter_account
@@ -452,7 +452,7 @@ Errors           : {}
    #Start the test failover operation
    $TFOJob = Start-ASRTestFailoverJob -ReplicationProtectedItem $ReplicatedVM1 -AzureVMNetworkId $TestFailovervnet.Id -Direction PrimaryToRecovery
    ```
-2. テスト フェールオーバー ジョブが正常に完了すると、名前に "*-Test*" というサフィックスが付いた仮想マシン (この例では Win2K12VM1-Test) が、Azure に作成されます。
+2. テスト フェールオーバー ジョブが正常に完了すると、名前に " *-Test*" というサフィックスが付いた仮想マシン (この例では Win2K12VM1-Test) が、Azure に作成されます。
 3. テスト フェールオーバーが行われた仮想マシンに接続して、テスト フェールオーバーを検証できるようになります。
 4. Start-ASRTestFailoverCleanupJob コマンドレットを使って、テスト フェールオーバーをクリーンアップします。 この操作により、テスト フェールオーバー操作の一部として作成された仮想マシンが削除されます。
 

@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: alkarche
 ms.openlocfilehash: 2fbf29385b9a14cf5d4a9df621f0767a32079587
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58094577"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61020999"
 ---
 # <a name="work-with-azure-functions-proxies"></a>Azure Functions プロキシの操作
 
@@ -31,7 +31,7 @@ ms.locfileid: "58094577"
 このセクションでは、Functions ポータルでプロキシを作成する方法を示します。
 
 1. [Azure Portal] を開き、関数アプリに移動します。
-2. 左側のウィンドウで、**[新しいプロキシ]** を選択します。
+2. 左側のウィンドウで、 **[新しいプロキシ]** を選択します。
 3. プロキシの名前を指定します。
 4. **ルート テンプレート**と **HTTP メソッド**を指定して、この関数アプリで公開されるエンドポイントを構成します。 これらのパラメーターは、[HTTP トリガー]の規則に従って動作します。
 5. **バックエンド URL** を他のエンドポイントに設定します。 このエンドポイントは、別の関数アプリ内の関数にすることも、他の任意の API にすることもできます。 静的な値である必要はありません。[アプリケーション設定]や[元のクライアント要求のパラメーター]を参照することもできます。
@@ -80,23 +80,23 @@ ms.locfileid: "58094577"
 #### <a name="additional-request-parameters"></a>要求のパラメーター (その他)
 構成の値には、ルート テンプレートのパラメーターに加え、次の値を使うことができます。
 
-* **{request.method}**:元の要求に使われていた HTTP メソッド。
-* **{request.headers.\<HeaderName\>}**:元の要求から読み取り可能なヘッダー。 *\<HeaderName\>* は、読み取るヘッダーの名前に置き換えます。 該当するヘッダーが要求に含まれていない場合、この値は空の文字列になります。
-* **{request.querystring.\<ParameterName\>}**:元の要求から読み取り可能なクエリ文字列パラメーター。 *\<ParameterName\>* は、読み取るパラメーターの名前に置き換えます。 該当するパラメーターが要求に含まれていない場合、この値は空の文字列になります。
+* **{request.method}** :元の要求に使われていた HTTP メソッド。
+* **{request.headers.\<HeaderName\>}** :元の要求から読み取り可能なヘッダー。 *\<HeaderName\>* は、読み取るヘッダーの名前に置き換えます。 該当するヘッダーが要求に含まれていない場合、この値は空の文字列になります。
+* **{request.querystring.\<ParameterName\>}** :元の要求から読み取り可能なクエリ文字列パラメーター。 *\<ParameterName\>* は、読み取るパラメーターの名前に置き換えます。 該当するパラメーターが要求に含まれていない場合、この値は空の文字列になります。
 
 ### <a name="response-parameters"></a>バックエンドからの応答のパラメーターを参照する
 
 応答のパラメーターは、クライアントへの応答に加える変更の一部として使うことができます。 構成の値には、次の値を使うことができます。
 
-* **{backend.response.statusCode}**:バックエンドからの応答で返される HTTP 状態コード。
-* **{backend.response.statusReason}**:バックエンドからの応答で返される HTTP 理由文字列。
-* **{backend.response.headers.\<HeaderName\>}**:バックエンドの応答から読み取り可能なヘッダー。 *\<HeaderName\>* は、読み取るヘッダーの名前に置き換えます。 該当するヘッダーが応答に含まれていない場合、この値は空の文字列になります。
+* **{backend.response.statusCode}** :バックエンドからの応答で返される HTTP 状態コード。
+* **{backend.response.statusReason}** :バックエンドからの応答で返される HTTP 理由文字列。
+* **{backend.response.headers.\<HeaderName\>}** :バックエンドの応答から読み取り可能なヘッダー。 *\<HeaderName\>* は、読み取るヘッダーの名前に置き換えます。 該当するヘッダーが応答に含まれていない場合、この値は空の文字列になります。
 
 ### <a name="use-appsettings"></a>アプリケーション設定を参照する
 
 [関数アプリに対して定義されているアプリケーション設定](https://docs.microsoft.com/azure/azure-functions/functions-how-to-use-azure-function-app-settings)を参照することもできます。その場合は、設定名をパーセント記号 (%) で囲みます。
 
-たとえば、*https://%ORDER_PROCESSING_HOST%/api/orders* のバックエンド URL で、"%ORDER_PROCESSING_HOST%" は ORDER_PROCESSING_HOST 設定の値に置き換えられます。
+たとえば、 *https://%ORDER_PROCESSING_HOST%/api/orders* のバックエンド URL で、"%ORDER_PROCESSING_HOST%" は ORDER_PROCESSING_HOST 設定の値に置き換えられます。
 
 > [!TIP] 
 > 複数のデプロイまたはテスト環境がある場合は、バックエンド ホストのアプリケーション設定を使用してください。 そうすることで、常にその環境の適切なバックエンドと通信することができます。
@@ -118,7 +118,7 @@ ms.locfileid: "58094577"
 構成するプロキシは、関数アプリ ディレクトリのルートにある *proxies.json* ファイルに格納されます。 このファイルを手動で編集し、Functions でサポートされているいずれかの[デプロイ方法](https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment)を使用するときにアプリの一部としてデプロイできます。 
 
 > [!TIP] 
-> いずれのデプロイ方法もまだ設定していない場合は、ポータルで *proxies.json* ファイルを編集することもできます。 目的の関数アプリに移動して **[プラットフォーム機能]** を選択し、**[App Service エディター]** を選択します。 これにより、関数アプリのファイル構造全体が表示され、変更を加えることができます。
+> いずれのデプロイ方法もまだ設定していない場合は、ポータルで *proxies.json* ファイルを編集することもできます。 目的の関数アプリに移動して **[プラットフォーム機能]** を選択し、 **[App Service エディター]** を選択します。 これにより、関数アプリのファイル構造全体が表示され、変更を加えることができます。
 
 *Proxies.json* は、名前付きプロキシとその定義から構成されるプロキシ オブジェクトによって定義されます。 エディターがサポートしていれば、必要に応じて [JSON スキーマ](http://json.schemastore.org/proxies)を参照してコード補完を行うことができます。 サンプル ファイルは、次のようになります。
 
@@ -189,8 +189,8 @@ ms.locfileid: "58094577"
 バックエンド リソースが呼び出されたときに要求に対して行う変更は、requestOverrides オブジェクトで定義します。 このオブジェクトは、次のプロパティによって定義されます。
 
 * **backend.request.method**:バックエンドを呼び出す際に使用される HTTP メソッドです。
-* **backend.request.querystring.\<ParameterName\>**:バックエンドの呼び出し時に設定できるクエリ文字列パラメーターです。 *\<ParameterName\>* は、設定するパラメーターの名前に置き換えます。 空の文字列を指定した場合、このパラメーターはバックエンドへの要求に反映されません。
-* **backend.request.headers.\<HeaderName\>**:バックエンドの呼び出し時に設定できるヘッダーです。 *\<HeaderName\>* は、設定するヘッダーの名前に置き換えます。 空の文字列を指定した場合、このヘッダーはバックエンドへの要求に反映されません。
+* **backend.request.querystring.\<ParameterName\>** :バックエンドの呼び出し時に設定できるクエリ文字列パラメーターです。 *\<ParameterName\>* は、設定するパラメーターの名前に置き換えます。 空の文字列を指定した場合、このパラメーターはバックエンドへの要求に反映されません。
+* **backend.request.headers.\<HeaderName\>** :バックエンドの呼び出し時に設定できるヘッダーです。 *\<HeaderName\>* は、設定するヘッダーの名前に置き換えます。 空の文字列を指定した場合、このヘッダーはバックエンドへの要求に反映されません。
 
 アプリケーション設定や元のクライアント要求のパラメーターを値から参照することができます。
 
@@ -222,7 +222,7 @@ ms.locfileid: "58094577"
 * **response.statusCode**:クライアントに返される HTTP 状態コード。
 * **response.statusReason**:クライアントに返される HTTP 理由文字列。
 * **response.body**:クライアントに返される本体の文字列表記。
-* **response.headers.\<HeaderName\>**:クライアントへの応答時に設定可能なヘッダー。 *\<HeaderName\>* は、設定するヘッダーの名前に置き換えます。 空の文字列を指定した場合、このヘッダーは応答に反映されません。
+* **response.headers.\<HeaderName\>** :クライアントへの応答時に設定可能なヘッダー。 *\<HeaderName\>* は、設定するヘッダーの名前に置き換えます。 空の文字列を指定した場合、このヘッダーは応答に反映されません。
 
 アプリケーション設定や元のクライアント要求のパラメーター、バックエンドからの応答のパラメーターを値から参照することができます。
 

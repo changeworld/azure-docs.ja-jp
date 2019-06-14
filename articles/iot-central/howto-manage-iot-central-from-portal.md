@@ -9,10 +9,10 @@ ms.date: 01/14/2019
 ms.topic: conceptual
 manager: philmea
 ms.openlocfilehash: c72de0ef874659a5d7840689e38bd7857c25b840
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65464094"
 ---
 # <a name="manage-iot-central-from-the-azure-portal"></a>Azure portal で IoT Central を管理する
@@ -35,7 +35,7 @@ IoT Central の [[Application Manager]\(アプリケーション マネージャ
 
 ![管理ポータル: 検索結果](media/howto-manage-iot-central-from-portal/image0b1.png)
 
-ここで、**[作成]** を選択します。
+ここで、 **[作成]** を選択します。
 
 ![管理ポータル: IoT Central リソース](media/howto-manage-iot-central-from-portal/image0c1.png)
 
@@ -43,7 +43,7 @@ IoT Central の [[Application Manager]\(アプリケーション マネージャ
 
 ![管理ポータル: IoT Central リソースの作成](media/howto-manage-iot-central-from-portal/image1a.png)  
 
-すべてのフィールドに値を入力したら、**[作成]** を選択します。
+すべてのフィールドに値を入力したら、 **[作成]** を選択します。
 
 ## <a name="manage-existing-iot-central-applications"></a>既存の IoT Central アプリケーションを管理する
 

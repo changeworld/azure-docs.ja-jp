@@ -9,11 +9,11 @@ ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 5c46d4e4d23744cf07ccf7857a33990bf405a6a1
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54189016"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61023259"
 ---
 # <a name="connect-with-excel"></a>Excel を使用した接続
 
@@ -27,16 +27,16 @@ ms.locfileid: "54189016"
 
 Excel でのサーバーへの接続は、Excel 2016 以降のデータの取得を使用してサポートされます。 Power Pivot での [テーブルのインポート] ウィザードを使用した接続はサポートされません。 
 
-1. Excel では、**[データ]** リボンで **[外部データの取り込み]** > **[その他のデータ ソース]** > **[Analysis Services]** の順にクリックします。
+1. Excel では、 **[データ]** リボンで **[外部データの取り込み]**  >  **[その他のデータ ソース]**  >  **[Analysis Services]** の順にクリックします。
 
-2. データ接続ウィザードで、**[サーバー名]** にプロトコルや URI などのサーバー名を入力します。 たとえば、「asazure://westcentralus.asazure.windows.net/advworks」のように入力します。 そして **[ログオン資格情報]** で **[以下のユーザー名とパスワードを使用する]** を選択し、組織でのユーザー名 (たとえば nancy@adventureworks.com) とパスワードを入力します。
+2. データ接続ウィザードで、 **[サーバー名]** にプロトコルや URI などのサーバー名を入力します。 たとえば、「asazure://westcentralus.asazure.windows.net/advworks」のように入力します。 そして **[ログオン資格情報]** で **[以下のユーザー名とパスワードを使用する]** を選択し、組織でのユーザー名 (たとえば nancy@adventureworks.com) とパスワードを入力します。
 
     > [!IMPORTANT]
     > Microsoft アカウント、Live ID、Yahoo、Gmail などでサインインする場合や、多要素認証を使用してサインインする必要がある場合は、パスワード フィールドを空白のままにしておきます。 [次へ] をクリックすると、パスワードの入力を求められます。 
 
     ![Excel ログオンから接続する](./media/analysis-services-connect-excel/aas-connect-excel-logon.png)
 
-3. **[データベースとテーブルの選択]** で、データベースとモデルまたはパースペクティブを選択し、**[完了]** をクリックします。
+3. **[データベースとテーブルの選択]** で、データベースとモデルまたはパースペクティブを選択し、 **[完了]** をクリックします。
    
     ![Excel 選択モデルから接続する](./media/analysis-services-connect-excel/aas-connect-excel-select.png)
 

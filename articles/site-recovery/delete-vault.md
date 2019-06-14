@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/27/2018
 ms.author: rajani-janaki-ram
 ms.openlocfilehash: 981b78345a0d9ea589e9c39ddaa2e253f1dd343f
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65412837"
 ---
 # <a name="delete-a-site-recovery-services-vault"></a>Site Recovery Services コンテナーを削除する
@@ -43,7 +43,7 @@ ms.locfileid: "65412837"
 ### <a name="hyper-v-vms-with-vmm-to-azure"></a>Hyper-V VM (VMM を使用) を Azure に
 1. 保護されている VM をすべて削除するには、[Hyper-V VM (VMM 使用) の保護の無効化](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-hyper-v-virtual-machine-replicating-to-azure-using-the-system-center-vmm-to-azure-scenario)に関する記事の手順に従います。
 
-2. コンテナー -> **[Site Recovery Infrastracture]\(Site Recovery インフラストラクチャ\)** - > **[For System Center VMM]\(System Center VMM\)** -> **[レプリケーション ポリシー]** にアクセスして、すべてのレプリケーション ポリシーを関連付け解除し、削除します。
+2. コンテナー -> **[Site Recovery Infrastracture]\(Site Recovery インフラストラクチャ\)** - > **[For System Center VMM]\(System Center VMM\)**  ->  **[レプリケーション ポリシー]** にアクセスして、すべてのレプリケーション ポリシーを関連付け解除し、削除します。
 
 3.  VMM サーバーへの関連付けを削除するには、「[接続されている VMM サーバーの登録解除](site-recovery-manage-registration-and-protection.md##unregister-a-vmm-server)」の手順に従います。
 
@@ -52,7 +52,7 @@ ms.locfileid: "65412837"
 ### <a name="hyper-v-vms-without-virtual-machine-manager-to-azure"></a>Hyper-V VM (Virtual Machine Manager なし) から Azure へ
 1. [Hyper-V 仮想マシンの保護の無効化 (Hyper-V から Azure へ)](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-hyper-v-virtual-machine-hyper-v-to-azure) に関するページの手順に従って、保護されている VM をすべて削除します。
 
-2. コンテナー -> **[Site Recovery Infrastructure]\(Site Recovery インフラストラクチャ\)** - > **[For Hyper-V Sites]\(Hyper-V サイト\)** -> **[レプリケーション ポリシー]** にアクセスして、すべてのレプリケーション ポリシーを関連付け解除し、削除します。
+2. コンテナー -> **[Site Recovery Infrastructure]\(Site Recovery インフラストラクチャ\)** - > **[For Hyper-V Sites]\(Hyper-V サイト\)**  ->  **[レプリケーション ポリシー]** にアクセスして、すべてのレプリケーション ポリシーを関連付け解除し、削除します。
 
 3. HYPER-V サーバーへの関連付けを削除するには、「[HYPER-V ホストの登録を解除](site-recovery-manage-registration-and-protection.md#unregister-a-hyper-v-host-in-a-hyper-v-site)」の手順に従います。
 

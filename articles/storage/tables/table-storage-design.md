@@ -9,11 +9,11 @@ ms.date: 04/23/2018
 ms.author: sngun
 ms.subservice: tables
 ms.openlocfilehash: 8387e41d57edfa0e54ac930c9462714aca571f2a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55472560"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60848284"
 ---
 # <a name="design-scalable-and-performant-tables"></a>高性能で拡張性の高いテーブルの設計
 
@@ -50,7 +50,7 @@ Table service とは 名前が示すとおり、Table service ではデータの
 <th>FirstName</th>
 <th>LastName</th>
 <th>Age</th>
-<th>電子メール</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Don</td>
@@ -70,7 +70,7 @@ Table service とは 名前が示すとおり、Table service ではデータの
 <th>FirstName</th>
 <th>LastName</th>
 <th>Age</th>
-<th>電子メール</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Jun</td>
@@ -107,7 +107,7 @@ Table service とは 名前が示すとおり、Table service ではデータの
 <th>FirstName</th>
 <th>LastName</th>
 <th>Age</th>
-<th>電子メール</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Ken</td>

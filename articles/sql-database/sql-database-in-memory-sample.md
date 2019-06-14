@@ -13,11 +13,11 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 12/18/2018
 ms.openlocfilehash: 2aa98c3958f1dffeb8adbad5e91a11f397d4a9fd
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58005727"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61035736"
 ---
 # <a name="in-memory-sample"></a>In-Memory のサンプル
 
@@ -52,7 +52,7 @@ Azure SQL Database のインメモリ テクノロジにより、アプリケー
 
 3. [インメモリ OLTP Transact-SQL スクリプト](https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/features/in-memory/t-sql-scripts/sql_in-memory_oltp_sample.sql) をクリップボードにコピーします。 この T-SQL スクリプトによって、手順 1. で作成した AdventureWorksLT サンプル データベース内に、必要なインメモリ オブジェクトが作成されます。
 
-4. T-SQL スクリプトを SSMS に貼り付け、スクリプトを実行します。 `MEMORY_OPTIMIZED = ON` 句の CREATE TABLE ステートメントが重要です。 例: 
+4. T-SQL スクリプトを SSMS に貼り付け、スクリプトを実行します。 `MEMORY_OPTIMIZED = ON` 句の CREATE TABLE ステートメントが重要です。 例:
 
 
 ```sql
@@ -88,7 +88,7 @@ SELECT DatabasePropertyEx(DB_Name(), 'IsXTPSupported');
 - Demo.DemoSalesOrderDetailSeed
 
 
-SSMS で**オブジェクト エクスプローラー**を使用してメモリ最適化テーブルを確認できます。 **[テーブル]** を右クリックし、 > **[フィルター]** > **[フィルターの設定]** > **[Is Memory Optimized (メモリ最適化済み)]** の順に選択します。 値は 1 です。
+SSMS で**オブジェクト エクスプローラー**を使用してメモリ最適化テーブルを確認できます。 **[テーブル]** を右クリックし、 >  **[フィルター]**  >  **[フィルターの設定]**  >  **[Is Memory Optimized (メモリ最適化済み)]** の順に選択します。 値は 1 です。
 
 
 または、次のようにカタログ ビューにクエリを実行できます。
@@ -237,10 +237,10 @@ ostress.exe -n100 -r50 -S<servername>.database.windows.net -U<login> -P<password
 `11/12/15 00:35:00.873 [0x000030A8] OSTRESS exiting normally, elapsed time: 00:01:31.867`
 
 
-#### <a name="reset-edit-for-ondisk-then-rerun"></a>リセット、*_ondisk* の編集、再実行
+#### <a name="reset-edit-for-ondisk-then-rerun"></a>リセット、 *_ondisk* の編集、再実行
 
 
-*_inmem* 実行の結果を取得したら、*_ondisk* 実行に次の手順を実行します。
+*_inmem* 実行の結果を取得したら、 *_ondisk* 実行に次の手順を実行します。
 
 
 1. SSMS で次のコマンドを実行してデータベースをリセットし、前回の実行で挿入されたすべてのデータを削除します。

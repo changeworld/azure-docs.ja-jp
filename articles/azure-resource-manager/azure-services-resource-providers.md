@@ -7,10 +7,10 @@ ms.topic: reference
 ms.date: 04/25/2019
 ms.author: tomfitz
 ms.openlocfilehash: 54493efdc0bffcbb4654b65676554f6707716968
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65235581"
 ---
 # <a name="resource-providers-for-azure-services"></a>Azure サービスのリソース プロバイダー
@@ -35,7 +35,7 @@ ms.locfileid: "65235581"
 | Microsoft.AzureActiveDirectory | [Azure Active Directory B2C](../active-directory-b2c/index.yml) |
 | Microsoft.AzureStack | [Azure Stack](/azure-stack/user/) |
 | Microsoft.Batch | [Batch](../batch/index.yml) |
-| Microsoft.Billing | [課金](/azure/billing/) |
+| Microsoft.Billing | [Billing](/azure/billing/) |
 | Microsoft.BingMaps | [Bing Maps](https://docs.microsoft.com/BingMaps/#pivot=main&panel=BingMapsAPI) |
 | Microsoft.BizTalkServices | [BizTalk Services](../logic-apps/logic-apps-move-from-mabs.md) |
 | Microsoft.Blockchain | [Azure Blockchain サービス](/azure/blockchain/workbench/) |

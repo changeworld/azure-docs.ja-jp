@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 1/7/2019
 ms.author: dkshir
 ms.openlocfilehash: ff8638042fa10c939ff9c5fa7af99a660fcdc753
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54198645"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60924738"
 ---
 # <a name="how-to-query-azure-digital-twins-apis-for-common-tasks"></a>一般的なタスクについて Azure Digital Twins API をクエリする方法
 

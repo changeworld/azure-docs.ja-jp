@@ -13,11 +13,11 @@ ms.workload: identity
 ms.date: 04/05/2019
 ms.author: dugill
 ms.openlocfilehash: ae405d5dd99a0e2acced924ccccab292b4489cde
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59791912"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61063294"
 ---
 # <a name="use-resource-manager-authentication-api-to-access-subscriptions"></a>サブスクリプションにアクセスするための Resource Manager 認証 API の使用
 
@@ -70,7 +70,7 @@ Web アプリケーションのフローを次に示します。
 
 アプリを登録する場合は、「[クイック スタート: Microsoft ID プラットフォームにアプリケーションを登録する](../active-directory/develop/quickstart-register-app.md)」を参照してください。 アプリに名前を付けて、サポートされているアカウントの種類で **[任意の組織のディレクトリ内のアカウント]** を選択します。 リダイレクト URL で、Azure Active Directory に関連付けられているドメインを指定します。
 
-AD アプリケーションとしてサインインするには、アプリケーション ID とシークレットが必要です。 アプリケーション ID はアプリケーションの概要に表示されます。 シークレットを作成し、API のアクセス許可を要求する場合は、「[クイック スタート: Web API にアクセスするようにクライアント アプリケーションを構成する](../active-directory/develop/quickstart-configure-app-access-web-apis.md)」を参照してください。 新しいクライアント シークレットを指定します。 API のアクセス許可で、**[Azure Service Management]** を選択します。 **[委任されたアクセス許可]** と **[user_impersonation]** を選択します。
+AD アプリケーションとしてサインインするには、アプリケーション ID とシークレットが必要です。 アプリケーション ID はアプリケーションの概要に表示されます。 シークレットを作成し、API のアクセス許可を要求する場合は、「[クイック スタート: Web API にアクセスするようにクライアント アプリケーションを構成する](../active-directory/develop/quickstart-configure-app-access-web-apis.md)」を参照してください。 新しいクライアント シークレットを指定します。 API のアクセス許可で、 **[Azure Service Management]** を選択します。 **[委任されたアクセス許可]** と **[user_impersonation]** を選択します。
 
 ### <a name="optional-configuration---certificate-credential"></a>オプションの構成 - 証明書資格情報
 Azure AD では、アプリケーションの証明書資格情報もサポートしています。自己署名証明書を作成し、秘密キーを保持して、Azure AD アプリケーションの登録に公開キーを追加します。 認証では、アプリケーションが秘密キーを使用して署名された小さなペイロードを Azure AD に送信すると、Azure AD は登録済みの公開キーを使用して署名を検証します。

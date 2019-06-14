@@ -18,10 +18,10 @@ ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 04d2be76072866da2b21718f60fd0c9a5923b15b
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65545105"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-resource-owner-password-credential"></a>Microsoft ID プラットフォームと OAuth 2.0 リソース所有者のパスワード資格情報
@@ -89,7 +89,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 | パラメーター | 形式 | 説明 |
 | --------- | ------ | ----------- |
-| `token_type` | String | 常に `Bearer` に設定します。 |
+| `token_type` | string | 常に `Bearer` に設定します。 |
 | `scope` | スペース区切りの文字列 | アクセス トークンが返された場合、このパラメーターによって、アクセス トークンが有効なスコープの一覧が生成されます。 |
 | `expires_in`| int | 含まれているアクセス トークンが有効となる秒数。 |
 | `access_token`| 不透明な文字列 | 要求された[スコープ](v2-permissions-and-consent.md)に対して発行されます。 |

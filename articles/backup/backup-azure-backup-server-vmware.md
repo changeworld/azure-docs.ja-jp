@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 12/11/2018
 ms.author: raynew
 ms.openlocfilehash: f034f31f2c8c49bbdfb88e2ba0a009ff5b795fa2
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65789599"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>Azure Backup Server を使用して VMware VM をバックアップする

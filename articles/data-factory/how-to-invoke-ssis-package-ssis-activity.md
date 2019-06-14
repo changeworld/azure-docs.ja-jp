@@ -14,10 +14,10 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
 ms.openlocfilehash: 7287dc2fccf461cf23c45202336e3d92bc5a40aa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66152967"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>Azure Data Factory の SSIS パッケージの実行アクティビティを使用して SSIS パッケージを実行する
@@ -35,7 +35,7 @@ Azure-SSIS Integration Runtime (IR) がない場合は、[Azure への SSIS パ�
 ### <a name="create-a-pipeline-with-an-execute-ssis-package-activity"></a>SSIS パッケージの実行アクティビティでパイプラインを作成する
 この手順では、ADF UI/アプリを使用してパイプラインを作成します。 パイプラインに SSIS パッケージの実行アクティビティを追加し、SSIS パッケージを実行するように構成します。 
 
-1. Azure portal の ADF の概要/ホーム ページで、**[Author & Monitor]\(作成と監視\)** タイルをクリックして ADF UI/アプリを別のタブで起動します。 
+1. Azure portal の ADF の概要/ホーム ページで、 **[Author & Monitor]\(作成と監視\)** タイルをクリックして ADF UI/アプリを別のタブで起動します。 
 
    ![データ ファクトリのホーム ページ](./media/how-to-invoke-ssis-package-stored-procedure-activity/data-factory-home-page.png)
 
@@ -43,7 +43,7 @@ Azure-SSIS Integration Runtime (IR) がない場合は、[Azure への SSIS パ�
 
    ![開始ページ](./media/how-to-invoke-ssis-package-stored-procedure-activity/get-started-page.png)
 
-2. **[アクティビティ]** ツールボックスで **[一般]** を展開し、**[SSIS パッケージの実行]** アクティビティをドラッグしてパイプライン デザイナー画面にドロップします。 
+2. **[アクティビティ]** ツールボックスで **[一般]** を展開し、 **[SSIS パッケージの実行]** アクティビティをドラッグしてパイプライン デザイナー画面にドロップします。 
 
    ![SSIS パッケージの実行アクティビティをデザイナー画面にドラッグする](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-designer.png) 
 
@@ -51,7 +51,7 @@ Azure-SSIS Integration Runtime (IR) がない場合は、[Azure への SSIS パ�
 
    ![[一般] タブでプロパティを設定する](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png)
 
-4. SSIS パッケージの実行アクティビティの **[設定]** タブで、パッケージがデプロイされる SSISDB データベースに関連付けられている Azure-SSIS IR を選択します。 パッケージが Windows 認証を使用してデータ ストア (オンプレミスの SQL Server/ファイル共有、Azure Files など) にアクセスする場合は **[Windows 認証]** チェック ボックスをオンにし、パッケージ実行のドメイン/ユーザー名/パスワードを入力します。 パッケージで 32 ビット ランタイムを実行する必要がある場合は、**[32-Bit runtime]\(32 ビット ランタイム\)** チェック ボックスをオンにします。 **[ログ レベル]** で、パッケージ実行用のログの定義済みのスコープを選択します。 カスタマイズしたログ名を代わりに入力する場合は、**[Customized]\(カスタマイズ\)** チェック ボックスをオンにします。 Azure-SSIS IR の実行中に **[Manual entries]\(手動入力\)** チェック ボックスがオフになっている場合は、既存のフォルダー/プロジェクト/パッケージ/環境を SSISDB から参照して選択できます。 **[更新]** ボタンをクリックして、SSISDB から新しく追加したフォルダー/プロジェクト/パッケージ/環境を取り込み、それらを参照して選択できるようにします。 
+4. SSIS パッケージの実行アクティビティの **[設定]** タブで、パッケージがデプロイされる SSISDB データベースに関連付けられている Azure-SSIS IR を選択します。 パッケージが Windows 認証を使用してデータ ストア (オンプレミスの SQL Server/ファイル共有、Azure Files など) にアクセスする場合は **[Windows 認証]** チェック ボックスをオンにし、パッケージ実行のドメイン/ユーザー名/パスワードを入力します。 パッケージで 32 ビット ランタイムを実行する必要がある場合は、 **[32-Bit runtime]\(32 ビット ランタイム\)** チェック ボックスをオンにします。 **[ログ レベル]** で、パッケージ実行用のログの定義済みのスコープを選択します。 カスタマイズしたログ名を代わりに入力する場合は、 **[Customized]\(カスタマイズ\)** チェック ボックスをオンにします。 Azure-SSIS IR の実行中に **[Manual entries]\(手動入力\)** チェック ボックスがオフになっている場合は、既存のフォルダー/プロジェクト/パッケージ/環境を SSISDB から参照して選択できます。 **[更新]** ボタンをクリックして、SSISDB から新しく追加したフォルダー/プロジェクト/パッケージ/環境を取り込み、それらを参照して選択できるようにします。 
 
    ![[設定] タブでプロパティを設定する - 自動](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings.png)
 
@@ -71,14 +71,14 @@ Azure-SSIS Integration Runtime (IR) がない場合は、[Azure への SSIS パ�
 
    ![[プロパティのオーバーライド] タブでプロパティを設定する](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-property-overrides.png)
 
-8. パイプラインの構成を検証するために、ツール バーの **[検証]** をクリックします。 **[>>]** をクリックして、**[Pipeline Validation Report]\(パイプライン検証レポート\)** を閉じます。
+8. パイプラインの構成を検証するために、ツール バーの **[検証]** をクリックします。 **[>>]** をクリックして、 **[Pipeline Validation Report]\(パイプライン検証レポート\)** を閉じます。
 
 9. **[Publish All]\(すべて発行\)** ボタンをクリックして、ADF にパイプラインを発行します。 
 
 ### <a name="run-the-pipeline"></a>パイプラインを実行する
 この手順では、パイプラインの実行をトリガーします。 
 
-1. パイプラインの実行をトリガーするために、ツール バーの **[トリガー]** をクリックし、**[Trigger Now]\(今すぐトリガー\)** をクリックします。 
+1. パイプラインの実行をトリガーするために、ツール バーの **[トリガー]** をクリックし、 **[Trigger Now]\(今すぐトリガー\)** をクリックします。 
 
    ![[Trigger Now]\(今すぐトリガー\)](./media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-trigger.png)
 
@@ -86,7 +86,7 @@ Azure-SSIS Integration Runtime (IR) がない場合は、[Azure への SSIS パ�
 
 ### <a name="monitor-the-pipeline"></a>パイプラインの監視
 
-1. 左側で **[監視]** タブに切り替えます。 パイプラインの実行とその状態が、その他の情報 (実行開始時刻など) と共に表示されます。 ビューを更新するには、**[Refresh]\(最新の情報に更新\)** をクリックします。
+1. 左側で **[監視]** タブに切り替えます。 パイプラインの実行とその状態が、その他の情報 (実行開始時刻など) と共に表示されます。 ビューを更新するには、 **[Refresh]\(最新の情報に更新\)** をクリックします。
 
    ![パイプライン実行](./media/how-to-invoke-ssis-package-stored-procedure-activity/pipeline-runs.png)
 

@@ -9,10 +9,10 @@ ms.date: 10/22/2018
 ms.author: danlep
 ms.custom: ''
 ms.openlocfilehash: ac0a84aa3121c6ebb91860c96c0f6692827c8a3f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66152338"
 ---
 # <a name="how-to-use-managed-identities-with-azure-container-instances"></a>Azure Container Instances でマネージド ID を使用する方法
@@ -170,7 +170,7 @@ token=$(curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=
 
 ```
 
-次に、アクセス トークンを使って Key Vault に対して認証し、シークレットを読み取ります。 URL 内のキー コンテナー名を必ず置き換えてください (*https://mykeyvault.vault.azure.net/...*):
+次に、アクセス トークンを使って Key Vault に対して認証し、シークレットを読み取ります。 URL 内のキー コンテナー名を必ず置き換えてください ( *https://mykeyvault.vault.azure.net/...* ):
 
 ```bash
 curl https://mykeyvault.vault.azure.net/secrets/SampleSecret/?api-version=2016-10-01 -H "Authorization: Bearer $token"
@@ -252,7 +252,7 @@ token=$(curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=
 
 ```
 
-次に、アクセス トークンを使って Key Vault に対して認証し、シークレットを読み取ります。 URL 内のキー コンテナー名を必ず置き換えてください (*https:\//mykeyvault.vault.azure.net/...*)。
+次に、アクセス トークンを使って Key Vault に対して認証し、シークレットを読み取ります。 URL 内のキー コンテナー名を必ず置き換えてください (*https:\//mykeyvault.vault.azure.net/...* )。
 
 ```bash
 curl https://mykeyvault.vault.azure.net/secrets/SampleSecret/?api-version=2016-10-01 -H "Authorization: Bearer $token"

@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 11/01/2018
 ms.author: rosh, v-gedod
 ms.openlocfilehash: 82b2f5ca70927856aeac889675b5ec4a54ae034f
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65796747"
 ---
 # <a name="bing-local-business-search-api-v7-reference"></a>Bing Local Business Search API v7 リファレンス
@@ -72,14 +72,14 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
   
 |Name|値|Type|必須|  
 |----------|-----------|----------|--------------|
-|<a name="count" />count|`offset` パラメーターで指定されたインデックスから始まる、返す結果の数。|String|いいえ|   
-|<a name="localCategories" />localCategories|ビジネス カテゴリ別に検索を定義するオプションの一覧。  [地元企業のカテゴリ検索](local-categories.md)についてのページを参照してください|String|いいえ|  
-|<a name="mkt" />mkt|結果の取得元の市場。 <br /><br />可能な市場の値の一覧については、市場コードに関するページを参照してください。<br /><br /> **注:** 現在 Local Business Search API でサポートされるのは en-us の市場と言語のみです。<br /><br />|String|はい|
+|<a name="count" />count|`offset` パラメーターで指定されたインデックスから始まる、返す結果の数。|string|いいえ|   
+|<a name="localCategories" />localCategories|ビジネス カテゴリ別に検索を定義するオプションの一覧。  [地元企業のカテゴリ検索](local-categories.md)についてのページを参照してください|string|いいえ|  
+|<a name="mkt" />mkt|結果の取得元の市場。 <br /><br />可能な市場の値の一覧については、市場コードに関するページを参照してください。<br /><br /> **注:** 現在 Local Business Search API でサポートされるのは en-us の市場と言語のみです。<br /><br />|string|はい|
 |<a name="offset"/>offset|`count` パラメーターで指定された、結果を開始するインデックス。|整数|いいえ|  
-|<a name="query" />q|ユーザーの検索語句。|String|いいえ|  
-|<a name="responseformat" />responseFormat|応答に使用するメディアの種類。 次の値を指定できます。大文字と小文字は区別されません。<br /><ul><li>JSON</li><li>JSONLD</li></ul><br /> 既定値は JSON です。 応答に含まれる JSON オブジェクトについては、「[応答オブジェクト](#response-objects)」を参照してください。<br /><br />  JsonLd を指定すると、検索結果が含まれている JSON-LD オブジェクトが応答本文に含まれます。 JSON-LD については、[JSON-LD](https://json-ld.org/) に関するページを参照してください。|String|いいえ|  
-|<a name="safesearch" />safeSearch|成人向けコンテンツのフィルター処理に使用されるフィルター。 次のフィルター値を指定できます。大文字と小文字は区別されません。<br /><ul><li>Off &mdash; 成人向けのテキスト、画像、ビデオが含まれた Web ページを返します。<br /><br/></li><li>Moderate &mdash; 成人向けのテキストが含まれているものの、成人向けの画像またはビデオは含まれていない Web ページを返します。<br /><br/></li><li>Strict &mdash; 成人向けのテキスト、画像、ビデオが含まれた Web ページを返しません。</li></ul><br /> 既定値は Moderate です。<br /><br /> **注:** `safeSearch` が Strict に設定されるよう Bing の成人向けコンテンツ ポリシーによって強制される市場が要求元の場合、Bing によって `safeSearch` の値が無視され、Strict が使用されます。<br/><br/>**注:** `site:` クエリ演算子を使用している場合、`safeSearch` クエリ パラメーターの設定にかかわらず、成人向けのコンテンツが応答に含まれることがあります。 `site:` は、そのサイト上のコンテンツがわかっていて、成人向けコンテンツが含まれていても問題のないシナリオの場合にのみ使用してください。 |String|いいえ|  
-|<a name="setlang" />setLang|ユーザー インターフェイス文字列に使用する言語。 ISO 639-1 の 2 文字言語コードを使って言語を指定します。 たとえば、英語の言語コードは EN です。 既定値は EN (英語) です。<br /><br /> 省略可能ですが、常に言語を指定することをお勧めします。 ユーザー インターフェイス文字列が別の言語で表示されることをユーザーが望まない限り、通常、`setLang` は `mkt` で指定されるのと同じ言語に設定します。<br /><br /> このパラメーターと [Accept-Language](#acceptlanguage) ヘッダーは相互に排他的なので、両方は指定しないでください。<br /><br /> ユーザー インターフェイス文字列は、ユーザー インターフェイスでラベルとして使われる文字列です。 JSON 応答オブジェクトには、いくつかのユーザー インターフェイス文字列があります。 また、応答オブジェクト内の Bing.com プロパティへのリンクには、指定された言語が適用されます。|String|いいえ| 
+|<a name="query" />q|ユーザーの検索語句。|string|いいえ|  
+|<a name="responseformat" />responseFormat|応答に使用するメディアの種類。 次の値を指定できます。大文字と小文字は区別されません。<br /><ul><li>JSON</li><li>JSONLD</li></ul><br /> 既定値は JSON です。 応答に含まれる JSON オブジェクトについては、「[応答オブジェクト](#response-objects)」を参照してください。<br /><br />  JsonLd を指定すると、検索結果が含まれている JSON-LD オブジェクトが応答本文に含まれます。 JSON-LD については、[JSON-LD](https://json-ld.org/) に関するページを参照してください。|string|いいえ|  
+|<a name="safesearch" />safeSearch|成人向けコンテンツのフィルター処理に使用されるフィルター。 次のフィルター値を指定できます。大文字と小文字は区別されません。<br /><ul><li>Off &mdash; 成人向けのテキスト、画像、ビデオが含まれた Web ページを返します。<br /><br/></li><li>Moderate &mdash; 成人向けのテキストが含まれているものの、成人向けの画像またはビデオは含まれていない Web ページを返します。<br /><br/></li><li>Strict &mdash; 成人向けのテキスト、画像、ビデオが含まれた Web ページを返しません。</li></ul><br /> 既定値は Moderate です。<br /><br /> **注:** `safeSearch` が Strict に設定されるよう Bing の成人向けコンテンツ ポリシーによって強制される市場が要求元の場合、Bing によって `safeSearch` の値が無視され、Strict が使用されます。<br/><br/>**注:** `site:` クエリ演算子を使用している場合、`safeSearch` クエリ パラメーターの設定にかかわらず、成人向けのコンテンツが応答に含まれることがあります。 `site:` は、そのサイト上のコンテンツがわかっていて、成人向けコンテンツが含まれていても問題のないシナリオの場合にのみ使用してください。 |string|いいえ|  
+|<a name="setlang" />setLang|ユーザー インターフェイス文字列に使用する言語。 ISO 639-1 の 2 文字言語コードを使って言語を指定します。 たとえば、英語の言語コードは EN です。 既定値は EN (英語) です。<br /><br /> 省略可能ですが、常に言語を指定することをお勧めします。 ユーザー インターフェイス文字列が別の言語で表示されることをユーザーが望まない限り、通常、`setLang` は `mkt` で指定されるのと同じ言語に設定します。<br /><br /> このパラメーターと [Accept-Language](#acceptlanguage) ヘッダーは相互に排他的なので、両方は指定しないでください。<br /><br /> ユーザー インターフェイス文字列は、ユーザー インターフェイスでラベルとして使われる文字列です。 JSON 応答オブジェクトには、いくつかのユーザー インターフェイス文字列があります。 また、応答オブジェクト内の Bing.com プロパティへのリンクには、指定された言語が適用されます。|string|いいえ| 
 
 
 ## <a name="response-objects"></a>応答オブジェクト  
@@ -96,12 +96,12 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
   
 |要素|説明|Type|  
 |-------------|-----------------|----------|  
-|<a name="error-code" />code|エラーのカテゴリを特定するエラー コード。 考えられるコードの一覧については、「[エラー コード](#error-codes)」を参照してください。|String|  
-|<a name="error-message" />message|エラーの説明。|String|  
-|<a name="error-moredetails" />moreDetails|エラーに関する追加情報を提供する説明。|String|  
-|<a name="error-parameter" />parameter|エラーを引き起こした要求内のクエリ パラメーター。|String|  
-|<a name="error-subcode" />subCode|エラーを特定するエラー コード。 たとえば、`code` が InvalidRequest の場合、`subCode` は ParameterInvalid か ParameterInvalidValue の場合があります。 |String|  
-|<a name="error-value" />value|有効でなかったクエリ パラメーター値。|String|  
+|<a name="error-code" />code|エラーのカテゴリを特定するエラー コード。 考えられるコードの一覧については、「[エラー コード](#error-codes)」を参照してください。|string|  
+|<a name="error-message" />message|エラーの説明。|string|  
+|<a name="error-moredetails" />moreDetails|エラーに関する追加情報を提供する説明。|string|  
+|<a name="error-parameter" />parameter|エラーを引き起こした要求内のクエリ パラメーター。|string|  
+|<a name="error-subcode" />subCode|エラーを特定するエラー コード。 たとえば、`code` が InvalidRequest の場合、`subCode` は ParameterInvalid か ParameterInvalidValue の場合があります。 |string|  
+|<a name="error-value" />value|有効でなかったクエリ パラメーター値。|string|  
   
 
 ### <a name="errorresponse"></a>ErrorResponse  
@@ -109,7 +109,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
   
 |Name|値|Type|  
 |----------|-----------|----------|  
-|_type|種類のヒント。|String|  
+|_type|種類のヒント。|string|  
 |<a name="errors" />errors|要求が失敗した理由を示すエラーの一覧。|[エラー](#error)[]|  
 
   
@@ -119,8 +119,8 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
   
 |Name|値|Type|  
 |----------|-----------|----------|  
-|name|ライセンスの名前。|String|  
-|url|ライセンスに関する詳しい情報を取得できる Web サイトへの URL。<br /><br /> 名前と URL を使用してハイパーリンクを作成します。|String|  
+|name|ライセンスの名前。|string|  
+|url|ライセンスに関する詳しい情報を取得できる Web サイトへの URL。<br /><br /> 名前と URL を使用してハイパーリンクを作成します。|string|  
 
 
 ### <a name="link"></a>Link  
@@ -128,9 +128,9 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
   
 |Name|値|Type|  
 |----------|-----------|----------|  
-|_type|種類のヒント。|String|  
-|text|表示テキスト。|String|  
-|url|URL。 この URL と表示テキストを使用してハイパーリンクを作成します。|String|  
+|_type|種類のヒント。|string|  
+|text|表示テキスト。|string|  
+|url|URL。 この URL と表示テキストを使用してハイパーリンクを作成します。|string|  
   
 
 
@@ -142,8 +142,8 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
   
 |Name|値|Type|  
 |----------|-----------|----------|  
-|name|公開元の名前。|String|  
-|url|公開元の Web サイトへの URL。<br /><br /> 公開元が Web サイトを提供しない場合があることに注意してください。|String|  
+|name|公開元の名前。|string|  
+|url|公開元の Web サイトへの URL。<br /><br /> 公開元が Web サイトを提供しない場合があることに注意してください。|string|  
   
   
 
@@ -152,13 +152,13 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
   
 |Name|値|Type|  
 |----------|-----------|----------|  
-|_type|種類のヒントは、次のいずれかに設定される可能性があります。<br /><br /><ul><li>Hotel</li><li>LocalBusiness<br /></li><li>レストラン</ul><li>|String|  
+|_type|種類のヒントは、次のいずれかに設定される可能性があります。<br /><br /><ul><li>Hotel</li><li>LocalBusiness<br /></li><li>レストラン</ul><li>|string|  
 |address|エンティティがある場所の住所。|PostalAddress|  
 |entityPresentationInfo|エンティティの種類を特定するために使用できるヒントなどの、エンティティに関する追加情報。 たとえば、それがレストランであるかホテルであるか。 `entityScenario` フィールドは ListItem に設定されます。|EntityPresentationInfo|  
-|name|エンティティの名前。|String|  
-|telephone|エンティティの電話番号。|String|  
-|url|エンティティの Web サイトへの URL。<br /><br /> クリックされたときにハイパーリンクを作成するためにエンティティの名前と共にこの URL を使用して、ユーザーをエンティティの web サイトに移動します。|String|  
-|webSearchUrl|この場所についての Bing の検索結果への URL。|String| 
+|name|エンティティの名前。|string|  
+|telephone|エンティティの電話番号。|string|  
+|url|エンティティの Web サイトへの URL。<br /><br /> クリックされたときにハイパーリンクを作成するためにエンティティの名前と共にこの URL を使用して、ユーザーをエンティティの web サイトに移動します。|string|  
+|webSearchUrl|この場所についての Bing の検索結果への URL。|string| 
   
   
 ### <a name="querycontext"></a>QueryContext  
@@ -167,16 +167,16 @@ Bing によって要求に使用されたクエリ コンテキストを定義�
 |要素|説明|Type|  
 |-------------|-----------------|----------|  
 |adultIntent|指定されたクエリに成人の意図が含まれているかどうかを示すブール値。 クエリに成人の意図が含まれている場合には値が **true** になり、含まれていない場合には **false** になります。|Boolean|  
-|alterationOverrideQuery|Bing による元の文字列の使用を強制するために使用するクエリ文字列。 たとえば、クエリ文字列が *saling downwind* である場合、上書きクエリ文字列は *+saling downwind* になります。 必ず、結果が *%2Bsaling+downwind* となるクエリ文字列をエンコードしてください。<br /><br /> このフィールドは、元のクエリ文字列にスペル ミスがある場合にのみ含まれます。|String|  
-|alteredQuery|クエリを実行するために Bing によって使用されるクエリ文字列。 元のクエリ文字列にスペル ミスがあった場合、変更されたクエリ文字列が Bing によって使用されます。 たとえば、クエリ文字列が `saling downwind` の場合、変更されたクエリ文字列は `sailing downwind` になります。<br /><br /> このフィールドは、元のクエリ文字列にスペル ミスがある場合にのみ含まれます。|String|  
+|alterationOverrideQuery|Bing による元の文字列の使用を強制するために使用するクエリ文字列。 たとえば、クエリ文字列が *saling downwind* である場合、上書きクエリ文字列は *+saling downwind* になります。 必ず、結果が *%2Bsaling+downwind* となるクエリ文字列をエンコードしてください。<br /><br /> このフィールドは、元のクエリ文字列にスペル ミスがある場合にのみ含まれます。|string|  
+|alteredQuery|クエリを実行するために Bing によって使用されるクエリ文字列。 元のクエリ文字列にスペル ミスがあった場合、変更されたクエリ文字列が Bing によって使用されます。 たとえば、クエリ文字列が `saling downwind` の場合、変更されたクエリ文字列は `sailing downwind` になります。<br /><br /> このフィールドは、元のクエリ文字列にスペル ミスがある場合にのみ含まれます。|string|  
 |askUserForLocation|正確な結果の提供を目的として、Bing からユーザーの位置情報が要求されているかどうかを示すブール値。 [X-MSEdge-ClientIP](#clientip) ヘッダーと [X-Search-Location](#location) ヘッダーを使用してユーザーの位置情報を指定した場合、このフィールドは無視できます。<br /><br /> 正確な結果を得るためにユーザーの位置情報が必要な位置情報対応クエリ ("today's weather" や "restaurants near me" など) では、このフィールドは **true** に設定されます。<br /><br /> 位置情報が含まれている位置情報対応クエリ ("Seattle weather" など) では、このフィールドは **false** に設定されます。 このフィールドは、位置情報に未対応のクエリ ("best sellers" など) でも **false** に設定されます。|Boolean|  
-|originalQuery|要求で指定されたとおりのクエリ文字列。|String|  
+|originalQuery|要求で指定されたとおりのクエリ文字列。|string|  
 
 ### <a name="identifiable"></a>Identifiable
 
 |Name|値|Type|  
 |-------------|-----------------|----------|
-|id|リソース識別子|String|
+|id|リソース識別子|string|
  
 ### <a name="rankinggroup"></a>RankingGroup
 検索結果グループ (メインラインなど) を定義します。
@@ -191,7 +191,7 @@ Bing によって要求に使用されたクエリ コンテキストを定義�
 |Name|値|Type|  
 |-------------|-----------------|----------|
 |resultIndex|表示される回答内の項目のゼロベース インデックス。 このフィールドが項目に含まれていない場合、回答のすべての項目が表示されます。 たとえば、News 回答ではすべてのニュース記事が表示されます。|整数|
-|answerType|表示される項目が含まれている回答。 たとえば、News などです。<br /><br />種類を使用して SearchResponse オブジェクト内の回答を探します。 種類は SearchResponse フィールドの名前です。<br /><br /> ただし、このオブジェクトに value フィールドが含まれている場合にのみ回答の種類を使用し、そうでない場合は無視します。|String|
+|answerType|表示される項目が含まれている回答。 たとえば、News などです。<br /><br />種類を使用して SearchResponse オブジェクト内の回答を探します。 種類は SearchResponse フィールドの名前です。<br /><br /> ただし、このオブジェクトに value フィールドが含まれている場合にのみ回答の種類を使用し、そうでない場合は無視します。|string|
 |textualIndex|表示される textualAnswers 内の回答のインデックス。| 符号なし整数|
 |value|表示される回答と表示される回答の項目のいずれかを特定する ID。 ID によって回答が特定される場合、回答の項目がすべて表示されます。|Identifiable|
 
@@ -211,7 +211,7 @@ Bing によって要求に使用されたクエリ コンテキストを定義�
   
 |Name|値|Type|  
 |----------|-----------|----------|  
-|_type|種類のヒント。これは SearchResponse に設定されます。|String|  
+|_type|種類のヒント。これは SearchResponse に設定されます。|string|  
 |places|検索クエリに関連するエンティティの一覧。|JSON オブジェクト|  
 |queryContext|Bing が要求に使用したクエリ文字列を含むオブジェクト。<br /><br /> このオブジェクトには、ユーザーが入力したとおりのクエリ文字列が含まれています。 クエリ文字列にスペル ミスが含まれていた場合は、Bing がクエリに使用した、変更後のクエリ文字列が含まれる場合もあります。|[QueryContext](#querycontext)|  
 

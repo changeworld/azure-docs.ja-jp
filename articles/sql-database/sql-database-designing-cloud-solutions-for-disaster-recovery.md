@@ -14,11 +14,11 @@ ms.reviewer: carlrab
 manager: craigg
 ms.date: 12/04/2018
 ms.openlocfilehash: 46232afcaf9504d4cfbd80160e2d7e7ea958d600
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53272781"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61488190"
 ---
 # <a name="designing-globally-available-services-using-azure-sql-database"></a>Azure SQL Database を使用して世界規模の可用性を備えたサービスを設計する
 
@@ -153,7 +153,7 @@ Traffic Manager は、リージョン A への接続障害を検出すると、�
 
 実際のクラウド ディザスター リカバリー戦略では、対象アプリケーションのニーズに合わせて、これらの設計パターンを組み合わせたり拡張したりすることができます。  既に述べたように、選択すべき戦略は、利用者に提供する SLA とアプリケーションのデプロイ トポロジによって異なります。 以下の表では、意思決定の目安として、復旧ポイントの目標 (RPO) と推定復旧時間 (ERT) に基づいてそれぞれの選択肢を比較しています。
 
-| パターン | RPO | ERT |
+| Pattern | RPO | ERT |
 |:--- |:--- |:--- |
 | アクティブ/パッシブ デプロイとデータベース併置によるディザスター リカバリー |読み取り/書き込みアクセス = 5 秒未満 |障害検出時間 + DNS TLL |
 | アクティブ/アクティブ デプロイによるアプリケーション負荷分散 |読み取り/書き込みアクセス = 5 秒未満 |障害検出時間 + DNS TLL |

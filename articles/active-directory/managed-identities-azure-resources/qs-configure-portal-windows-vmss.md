@@ -16,11 +16,11 @@ ms.date: 02/20/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 57f0ec91bd5c72b593d9b28f7d47f691181a6a0f
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58446325"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60290614"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-the-azure-portal"></a>Azure portal を使用して仮想マシン スケール セットで Azure リソースのマネージド ID を構成する
 
@@ -57,7 +57,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
 
 2. 目的の仮想マシン スケール セットに移動します。
 
-3. **[システム割り当て済み]** にある **[状態]** で **[オン]** を選択して、**[保存]** をクリックします。
+3. **[システム割り当て済み]** にある **[状態]** で **[オン]** を選択して、 **[保存]** をクリックします。
 
    ![[構成] ページのスクリーンショット](./media/msi-qs-configure-portal-windows-vmss/create-windows-vmss-portal-configuration-blade.png) 
 
@@ -69,7 +69,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
 
 2. 目的の仮想マシン スケール セットに移動します。
 
-3. **[システム割り当て済み]** にある **[状態]** で **[オフ]** を選択して、**[保存]** をクリックします。
+3. **[システム割り当て済み]** にある **[状態]** で **[オフ]** を選択して、 **[保存]** をクリックします。
 
    ![[構成] ページのスクリーンショット](./media/msi-qs-configure-portal-windows-vmss/disable-windows-vmss-portal-configuration-blade.png)
 
@@ -86,18 +86,18 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
 ### <a name="assign-a-user-assigned-managed-identity-to-an-existing-virtual-machine-scale-set"></a>既存の仮想マシン スケール セットにユーザー割り当てマネージド ID を割り当てる
 
 1. 仮想マシン スケール セットが含まれる Azure サブスクリプションに関連付けられているアカウントを使用して、[Azure Portal](https://portal.azure.com) にサインインします。
-2. 目的の仮想マシン スケール セットに移動して、**[ID]**、**[ユーザー割り当て済み]**、**\+[追加]** の順にクリックします。
+2. 目的の仮想マシン スケール セットに移動して、 **[ID]** 、 **[ユーザー割り当て済み]** 、 **\+[追加]** の順にクリックします。
 
    ![VMSS へのユーザー割り当て ID の追加](./media/msi-qs-configure-portal-windows-vm/add-user-assigned-identity-vmss-screenshot1.png)
 
-3. 仮想マシン スケール セットに追加したいユーザー割り当て ID をクリックして、**[追加]** をクリックします。
+3. 仮想マシン スケール セットに追加したいユーザー割り当て ID をクリックして、 **[追加]** をクリックします。
    
    ![VMSS へのユーザー割り当て ID の追加](./media/msi-qs-configure-portal-windows-vm/add-user-assigned-identity-vm-screenshot2.png)
 
 ### <a name="remove-a-user-assigned-managed-identity-from-a-virtual-machine-scale-set"></a>仮想マシン スケール セットからユーザー割り当てマネージド ID を削除する
 
 1. VM が含まれる Azure サブスクリプションに関連付けられているアカウントを使用して、[Azure Portal](https://portal.azure.com) にサインインします。
-2. 目的の仮想マシン スケール セットに移動します。次に、**[ID]**、**[ユーザー割り当て済み]**、削除したいユーザー割り当てマネージド ID の名前を順にクリックしてから、**[削除]** をクリックします (確認ウィンドウで **[はい]** をクリックします)。
+2. 目的の仮想マシン スケール セットに移動します。次に、 **[ID]** 、 **[ユーザー割り当て済み]** 、削除したいユーザー割り当てマネージド ID の名前を順にクリックしてから、 **[削除]** をクリックします (確認ウィンドウで **[はい]** をクリックします)。
 
    ![VMSS からのユーザー割り当て ID の削除](./media/msi-qs-configure-portal-windows-vm/remove-user-assigned-identity-vmss-screenshot.png)
 

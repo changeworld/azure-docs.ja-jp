@@ -15,10 +15,10 @@ ms.date: 02/12/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 5efbe874bbf3c1c4081eb7a2c76c1be5a3358ec8
-ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65518982"
 ---
 # <a name="use-azure-sql-vm-cli-to-configure-always-on-availability-group-for-sql-server-on-an-azure-vm"></a>Azure SQL VM CLI を使用して Azure VM で SQL Server の Always On 可用性グループを構成する
@@ -115,7 +115,7 @@ az network lb create --name sqlILB -g <resource group name> --sku Standard `
 ```
 
   >[!IMPORTANT]
-  > 各 SQL Server VM 用のパブリック IP リソースには、Standard Load Balancer と互換性のある Standard SKU が必要です。 VM のパブリック IP リソースの SKU を決定するには、**[リソース グループ]** に移動し、目的の SQL Server VM 用の **[パブリック IP アドレス]** リソースを選択し、**[概要]** ウィンドウの **[SKU]** で値を見つけます。  
+  > 各 SQL Server VM 用のパブリック IP リソースには、Standard Load Balancer と互換性のある Standard SKU が必要です。 VM のパブリック IP リソースの SKU を決定するには、 **[リソース グループ]** に移動し、目的の SQL Server VM 用の **[パブリック IP アドレス]** リソースを選択し、 **[概要]** ウィンドウの **[SKU]** で値を見つけます。  
 
 ## <a name="step-6---create-availability-group-listener"></a>手順 6 - 可用性グループ リスナーを作成する
 可用性グループが手動で作成されたら、[az sql vm ag-listener](/cli/azure/sql/vm/group/ag-listener?view=azure-cli-latest#az-sql-vm-group-ag-listener-create) を使用してリスナーを作成できます。 
@@ -125,7 +125,7 @@ az network lb create --name sqlILB -g <resource group name> --sku Standard `
    1. [Azure Portal](https://portal.azure.com) で、リソース グループに移動します。 
    1. vNet リソースを選択します。 
    1. **[設定]** ウィンドウで **[プロパティ]** を選択します。 
-   1. vNet のリソース ID を識別し、その最後に `/subnets/<subnetname>` を追加してサブネット リソース ID を作成します。 例: 
+   1. vNet のリソース ID を識別し、その最後に `/subnets/<subnetname>` を追加してサブネット リソース ID を作成します。 例:
         - vNet リソース ID は `/subscriptions/a1a1-1a11a/resourceGroups/SQLVM-RG/providers/Microsoft.Network/virtualNetworks/SQLVMvNet` です。
         - サブネット名は `default` です。
         - そのため、サブネット リソース ID は `/subscriptions/a1a1-1a11a/resourceGroups/SQLVM-RG/providers/Microsoft.Network/virtualNetworks/SQLVMvNet/subnets/default` です。

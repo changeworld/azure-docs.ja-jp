@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
 ms.openlocfilehash: 318df03c7c4447d051dfa396098462c0f8bbf423
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65410433"
 ---
 # <a name="provision-a-deep-learning-virtual-machine-on-azure"></a>Azure でディープ ラーニング 仮想マシンをプロビジョニングする 
@@ -40,7 +40,7 @@ DLVM には、Microsoft Cognitive Toolkit、TensorFlow、Keras、Caffe2、Chaine
    1. **基本**
       
       1. **名前**: 作成するデータ サイエンス サーバーの名前です。
-      2. **Select OS type for the Deep Learning VM\(ディープ ラーニング VM の OS の種類を選択\)**: Windows または Linux (Windows 2016 および Ubuntu Linux ベースの DSVM の場合) を選択します。
+      2. **Select OS type for the Deep Learning VM\(ディープ ラーニング VM の OS の種類を選択\)** : Windows または Linux (Windows 2016 および Ubuntu Linux ベースの DSVM の場合) を選択します。
       2. **ユーザー名**: 管理者アカウントのログイン ID です。
       3. **パスワード**: 管理者アカウントのパスワードです。
       4. **サブスクリプション**:複数のサブスクリプションがある場合は、マシンが作成されて課金されるサブスクリプションを選択します。
@@ -48,13 +48,13 @@ DLVM には、Microsoft Cognitive Toolkit、TensorFlow、Keras、Caffe2、Chaine
       6. **場所**: 最適なデータ センターを選択します。 通常は、ネットワーク アクセスを最速にするために、データの大部分があるか、物理的に最も近いデータ センターを選びます。 
       
       > [!NOTE]
-      > DLVM は、すべての NC および ND シリーズ GPU VM インスタンスをサポートしています。 DLVM をプロビジョニングするときには、GPU がある Azure 内の場所の 1 つを選択する必要があります。 選択できる場所については、[リージョン別の Azure 製品](https://azure.microsoft.com/regions/services/)に関するページを確認して、**[コンピューティング]** で **NC シリーズ**、**NCv2 シリーズ**、**NCv3 シリーズ**、または **ND シリーズ**を探してください。 
+      > DLVM は、すべての NC および ND シリーズ GPU VM インスタンスをサポートしています。 DLVM をプロビジョニングするときには、GPU がある Azure 内の場所の 1 つを選択する必要があります。 選択できる場所については、[リージョン別の Azure 製品](https://azure.microsoft.com/regions/services/)に関するページを確認して、 **[コンピューティング]** で **NC シリーズ**、**NCv2 シリーズ**、**NCv3 シリーズ**、または **ND シリーズ**を探してください。 
 
    1. **設定**:機能要件とコスト制約を満たしている、いずれかの NC シリーズ (NC、NCv2、NCv3) または ND シリーズの GPU 仮想マシン サイズを選択します。 VM のストレージ アカウントを作成します。  ![dlvm-settings](./media/dlvm-provision-step-2.PNG)
    
    1. **概要**:入力したすべての情報が正しいことを確認します。
 
-   1. **[購入]**:プロビジョニングを開始するには、**[購入]** をクリックします。 取引条件へのリンクが用意されています。 **[サイズ]** ステップで選択したサーバー サイズのコンピューティングを超える追加の課金が VM によって発生することはありません。 
+   1. **[購入]** :プロビジョニングを開始するには、 **[購入]** をクリックします。 取引条件へのリンクが用意されています。 **[サイズ]** ステップで選択したサーバー サイズのコンピューティングを超える追加の課金が VM によって発生することはありません。 
 
 > [!NOTE]
 > プロビジョニングには、10 ～ 20 分くらいかかります。 プロビジョニングの状態は、Azure ポータルに表示されます。
@@ -81,12 +81,12 @@ Linux DLVM は、既に X2Go サーバーでプロビジョニングされてお
 1. [X2Go](https://wiki.x2go.org/doku.php/doc:installation:x2goclient)のページから、お使いのクライアント プラットフォーム向けの X2Go クライアントをダウンロードしてインストールします。    
 2. X2Go クライアントを実行し、 **[New Session (新しいセッション)]** を選択します。 複数のタブがある構成ウィンドウが開きます。 次の構成パラメーターを入力します。
    * **[Session] \(セッション) タブ**:
-     * **[Host]\(ホスト\)**: Linux Data Science VM のホスト名または IP アドレス。
-     * **[Login]\(ログイン\)**: Linux VM のユーザー名。
-     * **[SSH Port]\(SSH ポート\)**: 既定値の 22 のままにします。
-     * **[Session Type]\(セッションの種類\)**: 値を **XFCE** に変更します。 現在、Linux DSVM では XFCE デスクトップのみをサポートしています。
+     * **[Host]\(ホスト\)** : Linux Data Science VM のホスト名または IP アドレス。
+     * **[Login]\(ログイン\)** : Linux VM のユーザー名。
+     * **[SSH Port]\(SSH ポート\)** : 既定値の 22 のままにします。
+     * **[Session Type]\(セッションの種類\)** : 値を **XFCE** に変更します。 現在、Linux DSVM では XFCE デスクトップのみをサポートしています。
    * **[Media]\(メディア\) タブ**: 音声のサポートとクライアントの印刷を使用しない場合は、それらをオフにできます。
-   * **[Shared folders]\(共有フォルダー\)**: クライアント コンピューターのディレクトリを Linux VM にマウントする場合は、このタブで VM と共有するクライアント コンピューターのディレクトリを追加します。
+   * **[Shared folders]\(共有フォルダー\)** : クライアント コンピューターのディレクトリを Linux VM にマウントする場合は、このタブで VM と共有するクライアント コンピューターのディレクトリを追加します。
 
 SSH クライアントを使用するか、X2Go クライアントから XFCE グラフィカル デスクトップを使用して VM にサインインしたら、VM にインストールされ、構成されているツールをすぐに使い始めることができます。 XFCE では、アプリケーション メニューのショートカットとさまざまなツールのデスクトップ アイコンが表示されます。
 

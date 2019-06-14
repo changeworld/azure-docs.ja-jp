@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 11/20/2018
 ms.author: mahender
 ms.openlocfilehash: 0942d5ba7b31ddb2c0dec5fe979f1331d1bf3bfd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66136964"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>App Service と Azure Functions でマネージド ID を使用する方法
@@ -42,11 +42,11 @@ ms.locfileid: "66136964"
 
 1. ポータルを使って通常の方法でアプリを作成します。 ポータルでアプリに移動します。
 
-2. 関数アプリを使っている場合は、**[プラットフォーム機能]** に移動します。 他のアプリの種類の場合は、左側のナビゲーションを下にスクロールして **[設定]** グループに移動します。
+2. 関数アプリを使っている場合は、 **[プラットフォーム機能]** に移動します。 他のアプリの種類の場合は、左側のナビゲーションを下にスクロールして **[設定]** グループに移動します。
 
 3. **[マネージド ID]** を選択します。
 
-4. **[システム割り当て済み]** タブで、**[状態]** を **[オン]** に切り替えます。 **[Save]** をクリックします。
+4. **[システム割り当て済み]** タブで、 **[状態]** を **[オン]** に切り替えます。 **[Save]** をクリックします。
 
 ![App Service のマネージド ID](media/app-service-managed-service-identity/msi-blade-system.png)
 
@@ -175,7 +175,7 @@ Azure Resource Manager テンプレートを使って、Azure リソースのデ
 
 2. ポータルを使って通常の方法でアプリを作成します。 ポータルでアプリに移動します。
 
-3. 関数アプリを使っている場合は、**[プラットフォーム機能]** に移動します。 他のアプリの種類の場合は、左側のナビゲーションを下にスクロールして **[設定]** グループに移動します。
+3. 関数アプリを使っている場合は、 **[プラットフォーム機能]** に移動します。 他のアプリの種類の場合は、左側のナビゲーションを下にスクロールして **[設定]** グループに移動します。
 
 4. **[マネージド ID]** を選択します。
 

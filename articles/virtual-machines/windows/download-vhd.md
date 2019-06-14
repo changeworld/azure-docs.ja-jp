@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 06/01/2018
 ms.author: cynthn
 ms.openlocfilehash: 3d44a4a723c39bf9780475a2ac3088da94285f6e
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56329372"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61076329"
 ---
 # <a name="download-a-windows-vhd-from-azure"></a>Azure から Windows VHD をダウンロードする
 
@@ -36,14 +36,14 @@ VHD をイメージとして使用して他の VM を作成するには、次の
 2.  [VM に接続します](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 
 3.  VM で、管理者としてコマンド プロンプト ウィンドウを開きます。
 4.  ディレクトリを *%windir%\system32\sysprep* に変更し、sysprep.exe を実行します。
-5.  [システム準備ツール] ダイアログ ボックスで **[システムの OOBE (Out-of-Box Experience) に入る]** を選択し、**[一般化する]** チェック ボックスがオンになっていることを確認します。
-6.  [シャットダウン オプション] の **[シャットダウン]** を選択し、**[OK]** をクリックします。 
+5.  [システム準備ツール] ダイアログ ボックスで **[システムの OOBE (Out-of-Box Experience) に入る]** を選択し、 **[一般化する]** チェック ボックスがオンになっていることを確認します。
+6.  [シャットダウン オプション] の **[シャットダウン]** を選択し、 **[OK]** をクリックします。 
 
 VHD を既存の VM の新しいインスタンス用のディスクまたはデータ ディスクとして使用するには、次の手順を実行します。
 
-1.  Azure Portal のハブ メニューで、**[仮想マシン]** をクリックします。
+1.  Azure Portal のハブ メニューで、 **[仮想マシン]** をクリックします。
 2.  一覧から VM を選択します。
-3.  VM のブレードで、**[停止]** をクリックします。
+3.  VM のブレードで、 **[停止]** をクリックします。
 
     ![VM の停止](./media/download-vhd/export-stop.png)
 
@@ -51,8 +51,8 @@ VHD を既存の VM の新しいインスタンス用のディスクまたはデ
 
 VHD ファイルをダウンロードするには、[Shared Access Signature (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) URL を生成する必要があります。 URL が生成されると、その URL に有効期限が割り当てられます。
 
-1.  VM のブレードのメニューで、**[ディスク]** をクリックします。
-2.  VM のオペレーティング システム ディスクを選択し、**[エクスポート]** をクリックします。
+1.  VM のブレードのメニューで、 **[ディスク]** をクリックします。
+2.  VM のオペレーティング システム ディスクを選択し、 **[エクスポート]** をクリックします。
 3.  URL の有効期限を *36000* に設定します。
 4.  **[URL の生成]** をクリックします。
 

@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 05/01/219
 ms.author: bwren
 ms.openlocfilehash: 2db6ddf57802f6fcf38cfc3ad7094ed94eaca3d8
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65234190"
 ---
 # <a name="import-azure-monitor-log-data-into-power-bi"></a>Azure Monitor ログ データを Power BI にインポートする
@@ -36,7 +36,7 @@ Azure Monitor の [Log Analytics ワークスペース](manage-access.md) から
 まず、Power BI データセットに取り込むデータを返す[ログ クエリ](../log-query/log-query-overview.md)を作成します。  次にそのクエリを Power BI Desktop で使用できる [Power Query (M) 言語](https://msdn.microsoft.com/library/mt807488.aspx)にエクスポートします。
 
 1. データセットのデータを抽出するために [Log Analytics にログ クエリを作成します](../log-query/get-started-portal.md)。
-2. **[エクスポート]** > **[Power BI Query (M)]** の順に選択します。  これにより、**PowerBIQuery.txt** という名前のテキスト ファイルにクエリがエクスポートされます。 
+2. **[エクスポート]**  >  **[Power BI Query (M)]** の順に選択します。  これにより、**PowerBIQuery.txt** という名前のテキスト ファイルにクエリがエクスポートされます。 
 
     ![ログ検索のエクスポート](media/powerbi/export-analytics.png)
 
@@ -46,7 +46,7 @@ Azure Monitor の [Log Analytics ワークスペース](manage-access.md) から
 Power BI Desktop は、Power BI に発行可能なデータセットおよび レポートを作成できるデスクトップ アプリケーションです。  これを使用して、Azure Monitor からエクスポートした Power Query 言語を使ってクエリを作成することもできます。 
 
 1. まだお持ちでない場合は [Power BI Desktop](https://powerbi.microsoft.com/desktop/) をインストールし、アプリケーションを開きます。
-2. **[データの取得]** > **[空のクエリ]** の順に選択して新しいクエリを開きます。  次に **[詳細エディター]** を選択し、エクスポートしたファイルの内容をクエリに貼り付けます。 **[Done]** をクリックします。
+2. **[データの取得]**  >  **[空のクエリ]** の順に選択して新しいクエリを開きます。  次に **[詳細エディター]** を選択し、エクスポートしたファイルの内容をクエリに貼り付けます。 **[Done]** をクリックします。
 
     ![Power BI Desktop クエリ](media/powerbi/desktop-new-query.png)
 
@@ -61,8 +61,8 @@ Power BI Desktop は、Power BI に発行可能なデータセットおよび �
 Power BI に発行すると、データセットとレポートが作成されます。  Power BI Desktop でレポートを作成すると、お使いのデータを使用したレポートが発行されます。  そうしない場合は、空のレポートが作成されます。  Power BI でレポートを変更したり、データセットに基づく新しいレポートを作成したりできます。
 
 1. お使いのデータに基づくレポートを作成します。  不慣れな場合には [Power BI Desktop のドキュメント](https://docs.microsoft.com/power-bi/desktop-report-view)を使用してください。  
-1. Power BI に送信する準備ができたら、**[発行]** をクリックします。  
-1. メッセージが表示されたら、Power BI アカウント内で発行先を選択します。  特定の発行先がない限りは、**[マイ ワークスペース]** を使用します。
+1. Power BI に送信する準備ができたら、 **[発行]** をクリックします。  
+1. メッセージが表示されたら、Power BI アカウント内で発行先を選択します。  特定の発行先がない限りは、 **[マイ ワークスペース]** を使用します。
 
     ![Power BI Desktop の発行](media/powerbi/desktop-publish.png)
 
@@ -72,14 +72,14 @@ Power BI に発行すると、データセットとレポートが作成され�
 ### <a name="configure-scheduled-refresh"></a>スケジュールされた更新を構成する
 Power BI で作成されたデータセットには、前に Power BI Desktop で見たのと同じデータがあります。  再度クエリを実行して Azure Monitor から最新データを取り込むために、データセットを定期的に更新する必要があります。  
 
-1. レポートをアップロードしたワークスペースをクリックし、**[データセット]** メニューを選択します。 
-1. 新しいデータセットの横にあるコンテキスト メニューを選択し、**[設定]** を選択します。 
+1. レポートをアップロードしたワークスペースをクリックし、 **[データセット]** メニューを選択します。 
+1. 新しいデータセットの横にあるコンテキスト メニューを選択し、 **[設定]** を選択します。 
 1. **[データ ソースの資格情報]** に、資格情報が無効であることを示すメッセージがあるはずです。  これは、そのデータを更新するときにデータセットが使用する資格情報を、まだ指定していないためです。  
-1. **[資格情報の編集]** をクリックし、Azure Monitor の Log Analytics ワークスペースにアクセスできる資格情報を指定します。 2 要素認証が必要な場合は、**[認証方法]** で **[OAuth2]** を選択して、自分の資格情報でログインするように求められるようにします。
+1. **[資格情報の編集]** をクリックし、Azure Monitor の Log Analytics ワークスペースにアクセスできる資格情報を指定します。 2 要素認証が必要な場合は、 **[認証方法]** で **[OAuth2]** を選択して、自分の資格情報でログインするように求められるようにします。
 
     ![Power BI のスケジュール](media/powerbi/powerbi-schedule.png)
 
-5. **[スケジュールされている更新]** で、**[データを最新の状態に保つ]** オプションをオンにします。  必要に応じて **[更新の頻度]** および更新を実行する 1 つまたは複数の特定の時間を変更できます。
+5. **[スケジュールされている更新]** で、 **[データを最新の状態に保つ]** オプションをオンにします。  必要に応じて **[更新の頻度]** および更新を実行する 1 つまたは複数の特定の時間を変更できます。
 
     ![Power BI の更新](media/powerbi/powerbi-schedule-refresh.png)
 

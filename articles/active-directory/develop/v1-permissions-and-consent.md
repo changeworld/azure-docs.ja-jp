@@ -19,10 +19,10 @@ ms.reviewer: jesakowi, justhu
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6fb4342e024d826c65ed33184aaf33012d09190a
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65545203"
 ---
 # <a name="permissions-and-consent-in-the-azure-active-directory-v10-endpoint"></a>Azure Active Directory v1.0 エンドポイントでのアクセス許可と同意
@@ -106,7 +106,7 @@ Azure AD のアプリケーションでは、必要なリソースや API への
   - `Permission` は、ユーザーがそのデータに対して行うアクションに対応します
   - `Modifier` は、別のアクセス許可の特殊化を記述するためにオプションで使用されます
     
-    例: 
+    例:
   - Mail.Read - ユーザーにメールの読み取りを許可します。
   - Mail.ReadWrite - ユーザーにメールの読み取りまたは書き込みを許可します。
   - Mail.ReadWrite.All - 管理者またはユーザーに、組織内のすべてのメールへのアクセスを許可します。

@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 962e2b10136cf1cbab7cc5d3d06059922c363b15
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65410267"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server の PostgreSQL 拡張機能
@@ -133,7 +133,7 @@ TimescaleDB をインストールするには、それをサーバーの共有�
 
 1. Azure Database for PostgreSQL サーバーを選択します。
 
-2. サイドバーから、**[サーバー パラメーター]** を選択します。
+2. サイドバーから、 **[サーバー パラメーター]** を選択します。
 
 3. `shared_preload_libraries` パラメーターを検索します。
 

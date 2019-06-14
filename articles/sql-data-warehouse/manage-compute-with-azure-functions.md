@@ -11,11 +11,11 @@ ms.date: 04/27/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
 ms.openlocfilehash: b94e4c6f178119d6205c302cf35a9effaf2aa885
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57870932"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61083863"
 ---
 # <a name="use-azure-functions-to-manage-compute-resources-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse で Azure Functions を使用してコンピューティング リソースを管理します。
 
@@ -49,11 +49,11 @@ Azure Function App を SQL Data Warehouse と組み合わせて使用するた�
 
    ![テンプレートでデプロイされる関数](media/manage-compute-with-azure-functions/five-functions.png)
 
-2. 変更の対象がスケールアップ時刻であるかスケールダウン時刻であるかに応じて、*[DWScaleDownTrigger]* または *[DWScaleUpTrigger]* を選択します。 ドロップダウン メニューで [統合] を選択します。
+2. 変更の対象がスケールアップ時刻であるかスケールダウン時刻であるかに応じて、 *[DWScaleDownTrigger]* または *[DWScaleUpTrigger]* を選択します。 ドロップダウン メニューで [統合] を選択します。
 
    ![関数の統合を選択](media/manage-compute-with-azure-functions/select-integrate.png)
 
-3. この時点で表示される値は、*%ScaleDownTime%* と *%ScaleUpTime%* のどちらかです。 これらの値は、[[アプリケーション設定]][Application Settings] に定義された値に基づくスケジュールであることを示します。 差し当たり、この値は無視してかまいません。以降の手順に基づき、必要な時刻に合わせてスケジュールを変更してください。
+3. この時点で表示される値は、 *%ScaleDownTime%* と *%ScaleUpTime%* のどちらかです。 これらの値は、[[アプリケーション設定]][Application Settings] に定義された値に基づくスケジュールであることを示します。 差し当たり、この値は無視してかまいません。以降の手順に基づき、必要な時刻に合わせてスケジュールを変更してください。
 
 4. SQL Data Warehouse のスケールアップ頻度を表す時刻 (CRON 式) をスケジュール領域に追加します。 
 
@@ -71,7 +71,7 @@ Azure Function App を SQL Data Warehouse と組み合わせて使用するた�
 
 1. ご利用の Function App サービスに移動します。 テンプレートを既定値のままデプロイした場合、このサービスの名前は *DWOperations* になります。 Function App を開くと、Function App サービスに 5 つの関数がデプロイされていることがわかります。 
 
-2. 変更の対象がスケールアップのコンピューティング値であるかスケールダウンのコンピューティング値であるかに応じて、*[DWScaleDownTrigger]* または *[DWScaleUpTrigger]* を選択します。 関数を選択すると、ウィンドウに *index.js* ファイルが表示されます。
+2. 変更の対象がスケールアップのコンピューティング値であるかスケールダウンのコンピューティング値であるかに応じて、 *[DWScaleDownTrigger]* または *[DWScaleUpTrigger]* を選択します。 関数を選択すると、ウィンドウに *index.js* ファイルが表示されます。
 
    ![関数のトリガー コンピューティング レベルを変更](media/manage-compute-with-azure-functions/index-js.png)
 
@@ -103,7 +103,7 @@ Azure Function App を SQL Data Warehouse と組み合わせて使用するた�
 
    ![新しい関数の作成](media/manage-compute-with-azure-functions/create-new-function.png)
 
-2. [言語] から *[JavaScript]* を選択し、*[TimerTrigger]* を選択します。
+2. [言語] から *[JavaScript]* を選択し、 *[TimerTrigger]* を選択します。
 
    ![新しい関数の作成](media/manage-compute-with-azure-functions/timertrigger-js.png)
 
@@ -144,7 +144,7 @@ Azure Function App を SQL Data Warehouse と組み合わせて使用するた�
 
 毎日午前 8 時に DW600 にスケールアップし、午後 8 時に DW200 にスケールダウンします。
 
-| 関数  | スケジュール     | Operation                                |
+| Function  | スケジュール     | Operation                                |
 | :-------- | :----------- | :--------------------------------------- |
 | Function1 | 0 0 8 * * *  | `var operation = {"operationType": "ScaleDw",  "ServiceLevelObjective": "DW600"}` |
 | Function2 | 0 0 20 * * * | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW200"}` |
@@ -153,7 +153,7 @@ Azure Function App を SQL Data Warehouse と組み合わせて使用するた�
 
 毎日午前 8 時に DW1000 にスケールアップし、午後 4 時に DW600 にスケールダウンします。さらに、午後 10 時に DW200 にスケールダウンします。
 
-| 関数  | スケジュール     | Operation                                |
+| Function  | スケジュール     | Operation                                |
 | :-------- | :----------- | :--------------------------------------- |
 | Function1 | 0 0 8 * * *  | `var operation = {"operationType": "ScaleDw",  "ServiceLevelObjective": "DW1000"}` |
 | Function2 | 0 0 16 * * * | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW600"}` |
@@ -163,7 +163,7 @@ Azure Function App を SQL Data Warehouse と組み合わせて使用するた�
 
 平日の午前 8 時に DW1000 にスケールアップし、午後 4 時に 1 回 DW600 にスケールダウンします。 金曜日の午後 11 時に一時停止し、月曜朝の午前 7 時に再開します。
 
-| 関数  | スケジュール       | Operation                                |
+| Function  | スケジュール       | Operation                                |
 | :-------- | :------------- | :--------------------------------------- |
 | Function1 | 0 0 8 * * 1-5  | `var operation = {"operationType": "ScaleDw",    "ServiceLevelObjective": "DW1000"}` |
 | Function2 | 0 0 16 * * 1-5 | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW600"}` |

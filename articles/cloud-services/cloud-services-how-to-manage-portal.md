@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeconnoc
-ms.openlocfilehash: e9f4153c68f0a2a4ce83f900ff63152311163ff6
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: d3d1ae759f0f3fa5edd417da61f1fa50b5d9cde7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40038580"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61433970"
 ---
 # <a name="manage-cloud-services-in-the-azure-portal"></a>Azure Portal で Cloud Services を管理する
 Azure Portal の **[Cloud Services]** 領域では、次の操作を行うことができます。
@@ -36,7 +36,7 @@ Azure Portal の **[Cloud Services]** 領域では、次の操作を行うこと
 
 1. [Azure Portal][Azure portal] で、更新するクラウド サービスを選択します。 この手順により、クラウド サービス インスタンス ブレードが開きます。
 
-2. ブレードで、**[更新]** を選択します。
+2. ブレードで、 **[更新]** を選択します。
 
     ![[更新] ボタン](./media/cloud-services-how-to-manage-portal/update-button.png)
 
@@ -46,11 +46,11 @@ Azure Portal の **[Cloud Services]** 領域では、次の操作を行うこと
 
 4. 必要に応じて、ストレージ アカウントとデプロイ ラベルを更新します。
 
-5. ロール インスタンスが 1 つしかないロールがある場合は、**[1 つ以上のロールに単一のインスタンスが含まれている場合でもデプロイする]** チェック ボックスをオンにして、アップグレードを続行できるようにします。
+5. ロール インスタンスが 1 つしかないロールがある場合は、 **[1 つ以上のロールに単一のインスタンスが含まれている場合でもデプロイする]** チェック ボックスをオンにして、アップグレードを続行できるようにします。
 
     Azure でクラウド サービスの更新中に 99.95% のサービスの可用性を保証できるのは、各ロールに少なくとも 2 つのロール インスタンス (仮想マシン) がある場合だけです。 2 つのロール インスタンスがある場合は、一方の仮想マシンでクライアント要求を処理している間に、もう一方が更新されます。
 
-6. パッケージのアップロードが完了した後に更新プログラムを適用するには、**[デプロイの開始]** チェック ボックスをオンにします。
+6. パッケージのアップロードが完了した後に更新プログラムを適用するには、 **[デプロイの開始]** チェック ボックスをオンにします。
 
 7. **[OK]** を選択して、サービスの更新を開始します。
 
@@ -61,7 +61,7 @@ Azure Portal の **[Cloud Services]** 領域では、次の操作を行うこと
 
 1. [Azure Portal][Azure portal] で、更新するクラウド サービスを選択します。 この手順により、クラウド サービス インスタンス ブレードが開きます。
 
-2. ブレードで、**[スワップ]** を選択します。
+2. ブレードで、 **[スワップ]** を選択します。
 
     ![Cloud Services の [スワップ] ボタン](./media/cloud-services-how-to-manage-portal/swap-button.png)
 
@@ -69,7 +69,7 @@ Azure Portal の **[Cloud Services]** 領域では、次の操作を行うこと
 
     ![Cloud Services のスワップ](./media/cloud-services-how-to-manage-portal/swap-prompt.png)
 
-4. デプロイ情報を確認した後、**[OK]** を選択してデプロイをスワップします。
+4. デプロイ情報を確認した後、 **[OK]** を選択してデプロイをスワップします。
 
     変更されるのはデプロイメントの仮想 IP アドレス (VIP) だけであるため、デプロイメントのスワップは直ちに実行されます。
 
@@ -100,17 +100,17 @@ Azure Portal の **[Cloud Services]** 領域では、次の操作を行うこと
 
 1. [Azure Portal][Azure portal] で、削除するクラウド サービスを選択します。 この手順により、クラウド サービス インスタンス ブレードが開きます。
 
-2. ブレードで、**[削除]** を選択します。
+2. ブレードで、 **[削除]** を選択します。
 
     ![Cloud Services の [削除] ボタン](./media/cloud-services-how-to-manage-portal/delete-button.png)
 
-3. クラウド サービス全体を削除するには、**[クラウド サービスとそのデプロイ]** チェック ボックスをオンにします。 または、**[本番デプロイ]** または **[ステージング環境のデプロイ]** のいずれかのチェック ボックスをオンにすることができます。
+3. クラウド サービス全体を削除するには、 **[クラウド サービスとそのデプロイ]** チェック ボックスをオンにします。 または、 **[本番デプロイ]** または **[ステージング環境のデプロイ]** のいずれかのチェック ボックスをオンにすることができます。
 
     ![Cloud Services の削除](./media/cloud-services-how-to-manage-portal/delete-blade.png)
 
 4. 下部にある **[削除]** を選択します。
 
-5. クラウド サービスを削除するには、**[クラウド サービスの削除]** を選択します。 次に、確認ダイアログで **[はい]** を選択します。
+5. クラウド サービスを削除するには、 **[クラウド サービスの削除]** を選択します。 次に、確認ダイアログで **[はい]** を選択します。
 
 > [!NOTE]
 > 詳細監視が構成されている場合は、クラウド サービスが削除された後に、データをストレージ アカウントから手動で削除する必要があります。 メトリック テーブルのある場所については、「[クラウド サービスの監視の概要](cloud-services-how-to-monitor.md)」を参照してください。

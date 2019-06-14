@@ -11,10 +11,10 @@ ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
 ms.openlocfilehash: 215d8b8fbc49e9f38dc89655981edce37984163a
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65510666"
 ---
 # <a name="view-azure-blockchain-workbench-data-with-microsoft-excel"></a>Microsoft Excel で Azure Blockchain Workbench データを表示する
@@ -59,7 +59,7 @@ Blockchain Workbench データベースに接続する手順は次の通りで�
 
 以下は､ビューのデータを Excel のブックに読み込む例です｡
 
-1. **Navigator** のスクロール バーで **vwContractAction** ビューを選択します｡ **vwContractAction** プレビューに､Blockchain Workbench のコントラクトに関係するすべてのアクションが表示されます｡ 
+1. **Navigator** のスクロール バーで **vwContractAction** ビューを選択します｡ **vwContractAction** プレビューに､Blockchain Workbench のコントラクトに関係するすべてのアクションが表示されます｡
 2. **Load** を選択してビュー内のすべてーのデータを読み出し､Excel のブックに読み込みます｡
 
    ![ビューから読み込まれたデータ](./media/data-excel/view-data.png)

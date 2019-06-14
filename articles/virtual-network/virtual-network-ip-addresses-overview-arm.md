@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 03/05/2019
 ms.author: kumud
 ms.openlocfilehash: 73b185eabc77d293328b1251a4af1aafffc5f319
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65236363"
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>Azure における IP アドレスの種類と割り当て方法
@@ -137,7 +137,7 @@ Basic SKU のパブリック IP アドレスは、*動的*割り当て方法も�
 | --- | --- | --- | --- |
 | 仮想マシン |Linux |はい |はい |
 | インターネットに接続するロード バランサー |フロント エンド構成 |はい |はい |
-| VPN Gateway |ゲートウェイ IP の構成 |はい |いいえ  |
+| VPN Gateway |ゲートウェイ IP の構成 |はい |いいえ |
 | Application gateway |フロント エンド構成 |はい (V1 のみ) |はい (V2 のみ) |
 
 ## <a name="private-ip-addresses"></a>プライベート IP アドレス

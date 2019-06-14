@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 05/24/2019
 ms.author: jingwang
 ms.openlocfilehash: 3a7cc1ac3940104993e6643e92da923ad1c6a14a
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66249012"
 ---
 | Category | データ ストア | [コピー アクティビティ](../articles/data-factory/copy-activity-overview.md) ソースとしてサポート | [コピー アクティビティ](../articles/data-factory/copy-activity-overview.md) シンクとしてサポート | [Azure IR](../articles/data-factory/concepts-integration-runtime.md#azure-integration-runtime) がサポート | [セルフホステッド IR](../articles/data-factory/concepts-integration-runtime.md#self-hosted-integration-runtime) がサポート | [Data Flow](../articles/data-factory/concepts-data-flow-overview.md) がサポート

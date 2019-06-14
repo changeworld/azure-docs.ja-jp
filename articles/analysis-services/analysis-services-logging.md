@@ -9,10 +9,10 @@ ms.date: 02/14/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 2303d385d3d688050a8d82c07e78a68588f41e88
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66142627"
 ---
 # <a name="setup-diagnostic-logging"></a>診断ログのセットアップ
@@ -25,7 +25,7 @@ Analysis Services ソリューションの重要な部分は、サーバーの�
 
 ## <a name="whats-logged"></a>ログに記録されるもの
 
-**[エンジン]**、**[サービス]**、および **[メトリック]** のカテゴリを選択できます。
+**[エンジン]** 、 **[サービス]** 、および **[メトリック]** のカテゴリを選択できます。
 
 ### <a name="engine"></a>Engine
 
@@ -73,7 +73,7 @@ Analysis Services ソリューションの重要な部分は、サーバーの�
 
 ### <a name="azure-portal"></a>Azure ポータル
 
-1. [Azure Portal](https://portal.azure.com) > サーバーで、左のナビゲーションから、**[診断ログ]** をクリックし、**[診断をオンにする]** をクリックします。
+1. [Azure Portal](https://portal.azure.com) > サーバーで、左のナビゲーションから、 **[診断ログ]** をクリックし、 **[診断をオンにする]** をクリックします。
 
     ![Azure Portal で Azure Cosmos DB の診断ログを有効にする](./media/analysis-services-logging/aas-logging-turn-on-diagnostics.png)
 
@@ -81,7 +81,7 @@ Analysis Services ソリューションの重要な部分は、サーバーの�
 
     * **名前**。 作成するログの名前を入力します。
 
-    * **[ストレージ アカウントへのアーカイブ]**。 このオプションを使用するには、接続先として既存のストレージ アカウントが必要です。 「[ストレージ アカウントを作成する](../storage/common/storage-create-storage-account.md)」を参照してください。 指示に従って、Resource Manager の汎用アカウントを作成し、ポータルのこのページに戻ってストレージ アカウントを選択します。 新しく作成されたストレージ アカウントがドロップダウン メニューに表示されるまでには、数分かかる場合があります。
+    * **[ストレージ アカウントへのアーカイブ]** 。 このオプションを使用するには、接続先として既存のストレージ アカウントが必要です。 「[ストレージ アカウントを作成する](../storage/common/storage-create-storage-account.md)」を参照してください。 指示に従って、Resource Manager の汎用アカウントを作成し、ポータルのこのページに戻ってストレージ アカウントを選択します。 新しく作成されたストレージ アカウントがドロップダウン メニューに表示されるまでには、数分かかる場合があります。
     * **イベント ハブにストリーミングします**。 このオプションを使用するには、既存の Event Hubs 名前空間と接続先のイベント ハブが必要です。 詳細については、「[Azure Portal を使用して Event Hubs 名前空間とイベント ハブを作成する](../event-hubs/event-hubs-create.md)」をご覧ください。 Portal でこのページに戻り、Event Hubs 名前空間とポリシー名を選択します。
     * **Azure Monitor (Log Analytics ワークスペース) に送信します**。 このオプションを使用するには、既存のワークスペースを使用するか、またはポータルで[新しいワークスペース リソースを作成](../azure-monitor/learn/quick-create-workspace.md)します。 ログを表示する方法について詳しくは、この記事の「[Log Analytics ワークスペースでログを表示する](#view-logs-in-log-analytics-workspace)」をご覧ください。
 
@@ -244,7 +244,7 @@ $account = Get-AzResource -ResourceGroupName awsales_resgroup `
 
 ### <a name="enable-logging"></a>ログの有効化
 
-ログ記録を有効にするために、Set-AzDiagnosticSetting コマンドレットを、新しいストレージ アカウント、サーバー アカウント、およびカテゴリの変数と組み合わせて使用します。 次のコマンドを実行し、**-Enabled** フラグを **$true** に設定します。
+ログ記録を有効にするために、Set-AzDiagnosticSetting コマンドレットを、新しいストレージ アカウント、サーバー アカウント、およびカテゴリの変数と組み合わせて使用します。 次のコマンドを実行し、 **-Enabled** フラグを **$true** に設定します。
 
 ```powershell
 Set-AzDiagnosticSetting  -ResourceId $account.ResourceId -StorageAccountId $sa.Id -Enabled $true -Categories Engine
@@ -291,7 +291,7 @@ Tags                        :
 
 この出力を見れば、ログ記録がサーバーに対して有効になっていること、ストレージ アカウントに情報が保存されることを確認できます。
 
-古いログが自動的に削除されるように、ログのアイテム保持ポリシーを設定することもできます。 たとえば、**-RetentionEnabled** フラグを **$true** に設定し、**-RetentionInDays** パラメーターを **90** に設定したアイテム保持ポリシーを設定します。 90 日を経過したログは自動的に削除されます。
+古いログが自動的に削除されるように、ログのアイテム保持ポリシーを設定することもできます。 たとえば、 **-RetentionEnabled** フラグを **$true** に設定し、 **-RetentionInDays** パラメーターを **90** に設定したアイテム保持ポリシーを設定します。 90 日を経過したログは自動的に削除されます。
 
 ```powershell
 Set-AzDiagnosticSetting -ResourceId $account.ResourceId`

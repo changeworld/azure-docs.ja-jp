@@ -7,11 +7,11 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.openlocfilehash: e16cac281b77f3ca93d9ef358ae806203bc8b663
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59794365"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61348509"
 ---
 # <a name="azure-data-factory-pivot-transformation"></a>Azure Data Factory のピボット変換
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
@@ -50,7 +50,7 @@ ADF Data Flow のピボットを集計として使用します。この場合、
 
 ピボット値に使用する集計を設定するには、[Pivoted Columns]\(ピボットされた列\) ウィンドウの下部にあるフィールドをクリックします。 ADF Data Flow の式ビルダーが開き、そこで集計式を作成し、新しい集計値にわかりやすいエイリアス名を付けることができます。
 
-式ビルダーで、ADF Data Flow 記述言語を使ってピボット列の変換を記述します (https://aka.ms/dataflowexpressions)。
+式ビルダーで、ADF Data Flow 記述言語を使ってピボット列の変換を記述します (https://aka.ms/dataflowexpressions )。
 
 ## <a name="pivot-metadata"></a>ピボットのメタデータ
 

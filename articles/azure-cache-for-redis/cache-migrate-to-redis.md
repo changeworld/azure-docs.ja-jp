@@ -15,11 +15,11 @@ ms.workload: tbd
 ms.date: 05/30/2017
 ms.author: yegu
 ms.openlocfilehash: 116e54fd39af801cf8941a974da2b72c483097dc
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237023"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60830273"
 ---
 # <a name="migrate-from-managed-cache-service-to-azure-cache-for-redis"></a>Managed Cache Service から Azure Cache for Redis への移行
 Azure Managed Cache Service を使用するアプリケーションの Azure Cache for Redis への移行は、キャッシュ アプリケーションで使用されている Managed Cache Service の機能によっては、最小限の変更をアプリケーションに対して行うだけで実現できます。 API はまったく同じではありませんがよく似ており、Managed Cache Service を使用してキャッシュにアクセスする既存コードの多くは最小限の変更で再利用できます。 この記事では、Azure Cache for Redis を使用するように Managed Cache Service アプリケーションを移行する際に必要な構成とアプリケーションの変更を行う方法、および Azure Cache for Redis の機能の一部を使用して Managed Cache Service キャッシュの機能を実装する方法について説明します。
@@ -80,7 +80,7 @@ Microsoft Azure Cache for Redis は以下のレベルでご利用いただけま
 ### <a name="remove-the-managed-cache-service-configuration"></a>Managed Cache Service の構成を削除する
 Azure Cache for Redis 用にクライアント アプリケーションを構成するには、その前に、Managed Cache Service の NuGet パッケージをアンインストールすることによって、既存の Managed Cache Service の構成とアセンブリ参照を削除する必要があります。
 
-Managed Cache Service の NuGet パッケージをアンインストールするには、**ソリューション エクスプローラー**でクライアント プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。 **[インストール済みのパッケージ]** ノードを選択し、[Search installed packages (インストール済みパッケージの検索)] ボックスに「**WindowsAzure.Caching**」と入力します。 **[Windows** **Azure Cache**] (または、NuGet パッケージのバージョンによっては **[Windows** **Azure Caching]**) を選択し、**[アンインストール]** をクリックして、**[閉じる]** をクリックします。
+Managed Cache Service の NuGet パッケージをアンインストールするには、**ソリューション エクスプローラー**でクライアント プロジェクトを右クリックし、 **[NuGet パッケージの管理]** をクリックします。 **[インストール済みのパッケージ]** ノードを選択し、[Search installed packages (インストール済みパッケージの検索)] ボックスに「**WindowsAzure.Caching**」と入力します。 **[Windows** **Azure Cache**] (または、NuGet パッケージのバージョンによっては **[Windows** **Azure Caching]** ) を選択し、 **[アンインストール]** をクリックして、 **[閉じる]** をクリックします。
 
 ![Azure Managed Cache Service NuGet パッケージのアンインストール](./media/cache-migrate-to-redis/IC757666.jpg)
 

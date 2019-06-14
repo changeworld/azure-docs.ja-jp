@@ -12,11 +12,11 @@ ms.date: 03/04/2019
 ms.author: tulasim
 ms.custom: seodec18
 ms.openlocfilehash: 02111ac90fe97ddaddbd41ad42410e7e76f1c405
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57311106"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61379290"
 ---
 # <a name="what-is-a-qna-maker-knowledge-base"></a>QnA Maker ナレッジ ベースとは
 
@@ -36,7 +36,7 @@ QnA Maker のナレッジ ベースは、一連の質問と回答 (QnA) のペ�
 
 リッチ コンテンツをナレッジ ベースに取り込むと、QnA Maker はコンテンツを markdown に変換しようとします。 ほとんどのチャット クライアントが解釈できる markdown 形式について理解するには、[こちらの](https://aka.ms/qnamaker-docs-markdown-support)ブログをお読みください。
 
-メタデータ フィールドは、コロンで区切られたキーと値のペアで構成されます **(製品:シュレッダー)**。 キーと値は、どちらもテキストである必要があります。 メタデータのキーにスペースを含めることはできません。 メタデータでは、1 つのキーにつき 1 つの値だけがサポートされています。
+メタデータ フィールドは、コロンで区切られたキーと値のペアで構成されます **(製品:シュレッダー)** 。 キーと値は、どちらもテキストである必要があります。 メタデータのキーにスペースを含めることはできません。 メタデータでは、1 つのキーにつき 1 つの値だけがサポートされています。
 
 ## <a name="next-steps"></a>次の手順
 

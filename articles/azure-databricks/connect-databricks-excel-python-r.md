@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: mamccrea
 ms.openlocfilehash: c57550a8b683ad8f184884374c4f09216417fc40
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52995633"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60236342"
 ---
 # <a name="connect-to-azure-databricks-from-excel-python-or-r"></a>Excel、Python、R から Azure Databricks に接続する
 
@@ -36,7 +36,7 @@ ms.locfileid: "52995633"
 
     ![Databricks クラスターを開く](./media/connect-databricks-excel-python-r/open-databricks-cluster.png "Databricks クラスターを開く")
 
-2. **[構成]** タブの下で、**[JDBC/ODBC]\(JDBC/ODBC\)** タブをクリックし、**[Server Hostname]\(サーバー ホスト名\)** と **[HTTP Path]\(HTTP パス\)** の値をコピーします。 この記事の手順を完了するにはこれらの値が必要です。
+2. **[構成]** タブの下で、 **[JDBC/ODBC]\(JDBC/ODBC\)** タブをクリックし、 **[Server Hostname]\(サーバー ホスト名\)** と **[HTTP Path]\(HTTP パス\)** の値をコピーします。 この記事の手順を完了するにはこれらの値が必要です。
 
     ![Databricks 構成を取得する](./media/connect-databricks-excel-python-r/get-databricks-jdbc-configuration.png "Databricks 構成を取得する")
 
@@ -44,7 +44,7 @@ ms.locfileid: "52995633"
 
     ![ODBC を起動する](./media/connect-databricks-excel-python-r/launch-odbc-app.png "ODBC アプリを起動する")
 
-4. **[ユーザー DSN]** タブの **[追加]** をクリックします。 **[新規データ ソースの作成]** ダイアログ ボックスで、**[Simba Spark ODBC Driver]\(Simba Spark ODBC ドライバー\)** を選択し、**[完了]** をクリックします。
+4. **[ユーザー DSN]** タブの **[追加]** をクリックします。 **[新規データ ソースの作成]** ダイアログ ボックスで、 **[Simba Spark ODBC Driver]\(Simba Spark ODBC ドライバー\)** を選択し、 **[完了]** をクリックします。
 
     ![ODBC を起動する](./media/connect-databricks-excel-python-r/add-new-user-dsn.png "ODBC アプリを起動する")
 
@@ -66,7 +66,7 @@ ms.locfileid: "52995633"
     DSN 設定ダイアログ ボックスでさらに次の手順を実行します。
     
     * **[HTTP Options]\(HTTP オプション\)** をクリックします。 ダイアログ ボックスが開いたら、Databricks ワークスペースからコピーした *[HTTP Path]\(HTTP パス\)* の値を貼り付けます。 Click **OK**.
-    * **[SSL Options]\(SSL オプション\)** をクリックします。 ダイアログ ボックスが開いたら、**[SSL を有効にする]** チェック ボックスをオンにします。 Click **OK**.
+    * **[SSL Options]\(SSL オプション\)** をクリックします。 ダイアログ ボックスが開いたら、 **[SSL を有効にする]** チェック ボックスをオンにします。 Click **OK**.
     * **[テスト]** をクリックして Azure Databricks への接続をテストします。 **[OK]** をクリックして構成を保存します。
     * **[ODBC データ ソース アドミニストレーター]** ダイアログ ボックスで **[OK]** をクリックします。
 
@@ -76,7 +76,7 @@ ms.locfileid: "52995633"
 
 このセクションでは、作成した DSN を使用して、Azure Databricks から Microsoft Excel にデータをプルします。 開始する前に、ご使用のコンピューターに Microsoft Excel がインストールされていることを確認します。 Excel の試用版は [Microsoft Excel 試用版リンク](https://products.office.com/excel)で使用できます。
 
-1. Microsoft Excel で空のブックを開きます。 **[データ]** リボンで **[データ取り出し]** をクリックします。 **[その他のデータ ソース]** をクリックし、**[ODBC から]** をクリックします。
+1. Microsoft Excel で空のブックを開きます。 **[データ]** リボンで **[データ取り出し]** をクリックします。 **[その他のデータ ソース]** をクリックし、 **[ODBC から]** をクリックします。
 
     ![Excel から ODBC を起動する](./media/connect-databricks-excel-python-r/launch-odbc-from-excel.png "Excel から ODBC を起動する")
 
@@ -88,7 +88,7 @@ ms.locfileid: "52995633"
 
     ![Databricks の資格情報を指定する](./media/connect-databricks-excel-python-r/excel-databricks-token.png "DSN を選択する")
 
-4. [ナビゲーター] ウィンドウで、Excel に読み込む Databricks のテーブルを選択し、**[読み込む]** をクリックします。 
+4. [ナビゲーター] ウィンドウで、Excel に読み込む Databricks のテーブルを選択し、 **[読み込む]** をクリックします。 
 
     ![Excel にデータを読み込む](./media/connect-databricks-excel-python-r/excel-load-data.png "Excel にデータを読み込む")
 

@@ -11,10 +11,10 @@ ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 05/10/2019
 ms.openlocfilehash: f37c945758cfbd03889d79acf764e7f67022267a
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65789397"
 ---
 # <a name="sample-3---classification-predict-credit-risk"></a>サンプル 3 - 分類:信用リスクの予測
@@ -64,7 +64,7 @@ UC Irvine リポジトリの German Credit Card のデータセットを使用�
 
 ![結果を評価](media/ui-sample-classification-predict-credit-risk-basic/evaluate-result.png)
 
-評価結果で、モデルの AUC が 0.776 であることがわかります。 0.5 のしきい値では、精度は 0.621、再現率は 0.456、F1 スコアは 0.526 です。
+評価結果で、モデルの AUC が 0.776 であることがわかります。 0\.5 のしきい値では、精度は 0.621、再現率は 0.456、F1 スコアは 0.526 です。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 2/14/2019
 ms.author: victorh
 ms.openlocfilehash: abfe33ff679bef125d9bf5b78e1790a1a4c64863
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301606"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60832038"
 ---
 # <a name="create-application-gateway-custom-error-pages"></a>Application Gateway のカスタム エラー ページを作成する
 
@@ -57,7 +57,7 @@ Application Gateway では、既定のエラー ページを表示する代わ�
     > [!NOTE]
     > Azure portal からのグローバル レベル カスタム エラー ページの作成は、現在サポートされていません。
 
-4. 特定のエラー状態コード用の公的にアクセス可能な BLOB URL を指定し、**[保存]** をクリックします。 これで、カスタム エラー ページで Application Gateway が構成されます。
+4. 特定のエラー状態コード用の公的にアクセス可能な BLOB URL を指定し、 **[保存]** をクリックします。 これで、カスタム エラー ページで Application Gateway が構成されます。
 
    ![Application Gateway のエラー コード](media/custom-error/ag-error-codes.png)
 

@@ -8,10 +8,10 @@ ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
 ms.openlocfilehash: fa9b970ee9319af061ceab99844b0497253881ad
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66117928"
 ---
 # <a name="enable-azure-disk-encryption-for-windows-iaas-vms-previous-release"></a>Windows IaaS VM で Azure Disk Encryption を有効にする (以前のリリース)
@@ -32,7 +32,7 @@ ms.locfileid: "66117928"
 ## <a name="enable-encryption-on-new-iaas-vms-created-from-the-marketplace"></a>Marketplace から作成された新しい IaaS VM で暗号化を有効にする
 Azure の Marketplace から作成された新しい IaaS Windows VM でのディスク暗号化を有効にするには、Resource Manager テンプレートを使用します。 このテンプレートでは、Windows Server 2012 ギャラリー イメージを使用して、新しい暗号化された Windows VM を作成します。
 
-1. [Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-new-vm-gallery-image)で、**[Azure に配置する]** をクリックします。
+1. [Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-new-vm-gallery-image)で、 **[Azure に配置する]** をクリックします。
 
 2. サブスクリプション、リソース グループ、リソース グループの場所、パラメーター、法律条項、契約を選択します。 **[購入]** をクリックして、暗号化が有効になっている新しい IaaS VM をデプロイします。
 
@@ -49,7 +49,7 @@ Azure の Marketplace から作成された新しい IaaS Windows VM でのデ�
          Get-AzVmDiskEncryptionStatus -ResourceGroupName 'MyVirtualMachineResourceGroup' -VMName 'MySecureVM'
          ```
 
-     -  VM を選択し、**[設定]** 見出しの下にある **[ディスク]** をクリックして、ポータルで暗号化の状態を確認します。 **[暗号化]** の下のグラフには、暗号化が有効かどうかが示されます。 
+     -  VM を選択し、 **[設定]** 見出しの下にある **[ディスク]** をクリックして、ポータルで暗号化の状態を確認します。 **[暗号化]** の下のグラフには、暗号化が有効かどうかが示されます。 
            ![Azure portal - ディスク暗号化が有効になっている状態](./media/azure-security-disk-encryption/disk-encryption-fig2.png) 次の表は、Azure AD のクライアント ID を使用して Marketplace シナリオから作成された新しい VM に対する、Resource Manager テンプレートのパラメーターをまとめたものです。
 
 | パラメーター | 説明 | 
@@ -164,7 +164,7 @@ Azure の Marketplace から作成された新しい IaaS Windows VM でのデ�
 [実行中の Windows VM を暗号化するための Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm)を使用して、Azure で既存または実行中の IaaS Windows VM に対してディスク暗号化を有効にすることができます。
 
 
-1. Azure クイックスタート テンプレートで、**[Azure に配置する]** をクリックします。
+1. Azure クイックスタート テンプレートで、 **[Azure に配置する]** をクリックします。
 
 2. サブスクリプション、リソース グループ、リソース グループの場所、パラメーター、法律条項、契約を選択します。 **[購入]** をクリックして、既存または実行中の IaaS VM で暗号化を有効にします。
 

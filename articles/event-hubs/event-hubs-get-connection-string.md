@@ -11,10 +11,10 @@ ms.custom: seodec18
 ms.date: 02/19/2019
 ms.author: spelluru
 ms.openlocfilehash: edd197fb6d578df064c67a422767e3e70a0c8142
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66158907"
 ---
 # <a name="get-an-event-hubs-connection-string"></a>Event Hubs の接続文字列の取得
@@ -38,7 +38,7 @@ Endpoint=sb://<FQDN>/;SharedAccessKeyName=<KeyName>;SharedAccessKey=<KeyValue>
 
 ## <a name="get-connection-string-from-the-portal"></a>ポータルから接続文字列を取得する
 1. [Azure ポータル](https://portal.azure.com)にサインインします。 
-2. 左のナビゲーション メニューから、**[すべてのサービス]** を選択します。 
+2. 左のナビゲーション メニューから、 **[すべてのサービス]** を選択します。 
 3. **[分析]** セクションで **[Event Hubs]** を選択します。 
 4. イベント ハブの一覧で、自分のイベント ハブを選択します。
 6. **[Event Hubs 名前空間]** ページで、左側のメニューの **[共有アクセス ポリシー]** を選択します。

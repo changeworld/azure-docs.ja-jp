@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 9a592533a92ec724c9a332bef5fdfcf385cb7b2c
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: 1ec4786291d6e2e5be6785e52cf3ab5bb5bbc690
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66730687"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66754543"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>クラスター構成できめ細かなロールベースのアクセスに移行する
 
@@ -59,10 +59,10 @@ HDInsight クラスター オペレーター ロールの割り当てを特定�
 - [**GET /configurations/{configurationName}** ](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#get-configuration) (機密情報が削除される)
     - 以前は、個々の構成の種類 (機密情報を含む) を取得するために使用されていました。
     - この API 呼び出しからは、シークレットを省略した状態で個々の構成の種類が返されるようになります。 シークレットを含むすべての構成を取得するには、新しい POST/configurations 呼び出しを使用します。 ゲートウェイ設定だけを取得するには、新しい POST/getGatewaySettings 呼び出しを使用します。
-- [**GET /configurations**](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#get-configurations) (非推奨)
+- [**GET /configurations**](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#get-configuration) (非推奨)
     - 以前は、すべての構成 (機密情報を含む) を取得するために使用されていました。
     - この API 呼び出しはサポートされなくなります。 今後すべての構成を取得するには、新しい POST /configurations 呼び出しを使用します。 機密性の高いパラメーターを省略した状態で構成を取得するには、GET /configurations/{configurationName} 呼び出しを使用します。
-- [**POST /configurations/{configurationName}** ](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#change-connectivity-settings) (非推奨)
+- [**POST /configurations/{configurationName}** ](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#update-gateway-settings) (非推奨)
     - 以前はゲートウェイの資格情報を更新するために使用されていました。
     - この API 呼び出しは非推奨となり、サポートされなくなります。 代わりに、新しい POST/updateGatewaySettings を使用してください。
 

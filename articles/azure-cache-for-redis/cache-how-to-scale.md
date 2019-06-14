@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/11/2017
 ms.author: yegu
 ms.openlocfilehash: 495fc031150d04f253279606baebb5d64d52bce7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66132966"
 ---
 # <a name="how-to-scale-azure-cache-for-redis"></a>Azure Cache for Redis のスケーリング方法
@@ -37,13 +37,13 @@ Azure Cache for Redis の [監視](cache-how-to-monitor.md)機能を使用して
 キャッシュがアプリケーションの要件を満たさなくなったと判断した場合は、ご利用のアプリケーションにとって適切な価格レベルのキャッシュにスケーリングできます。 使用するキャッシュの価格レベルを決定する方法の詳細については、「[What Azure Cache for Redis offering and size should I use](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)」 (Azure Cache for Redis のサービス内容と適切なサイズの選択) をご覧ください。
 
 ## <a name="scale-a-cache"></a>キャッシュのスケーリング
-キャッシュをスケーリングするには、[Azure Portal](https://portal.azure.com) で[キャッシュを参照](cache-configure.md#configure-azure-cache-for-redis-settings)し、**[リソース] メニュー**の **[スケール]** をクリックします。
+キャッシュをスケーリングするには、[Azure Portal](https://portal.azure.com) で[キャッシュを参照](cache-configure.md#configure-azure-cache-for-redis-settings)し、 **[リソース] メニュー**の **[スケール]** をクリックします。
 
 ![スケール](./media/cache-how-to-scale/redis-cache-scale-menu.png)
 
-**[価格レベルの選択]** ブレードから希望の価格レベルを選択し、**[選択]** をクリックします。
+**[価格レベルの選択]** ブレードから希望の価格レベルを選択し、 **[選択]** をクリックします。
 
-![価格レベル ][redis-cache-pricing-tier-blade]
+![価格レベル][redis-cache-pricing-tier-blade]
 
 
 別の価格レベルにスケーリングできますが、次のような制約があります。
@@ -55,7 +55,7 @@ Azure Cache for Redis の [監視](cache-how-to-monitor.md)機能を使用して
 * **Basic** キャッシュから直接 **Premium** キャッシュにスケールすることはできません。 まず、1 回のスケーリング操作で **Basic** から **Standard** にスケーリングし、その後の操作で **Standard** から **Premium** にスケーリングします。
 * **C0 (250 MB)** サイズにそれより大きなサイズからスケールダウンすることはできません。
  
-キャッシュを新しい価格レベルにスケーリングするときに、**[Azure Cache for Redis]** ブレードで状態が **[拡大中]** と表示されます。
+キャッシュを新しい価格レベルにスケーリングするときに、 **[Azure Cache for Redis]** ブレードで状態が **[拡大中]** と表示されます。
 
 ![スケーリング][redis-cache-scaling]
 

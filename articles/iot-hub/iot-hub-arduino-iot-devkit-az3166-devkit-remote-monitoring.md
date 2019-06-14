@@ -10,11 +10,11 @@ ms.tgt_pltfrm: arduino
 ms.date: 02/02/2018
 ms.author: liydu
 ms.openlocfilehash: ae8dc263e08528c6e3b3bae8c779162c96d51f43
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58100787"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61324639"
 ---
 # <a name="connect-mxchip-iot-devkit-to-azure-iot-remote-monitoring-solution-accelerator"></a>MXChip IoT DevKit を Azure IoT リモート監視ソリューション アクセラレータに接続する
 
@@ -37,7 +37,7 @@ ms.locfileid: "58100787"
 
 ## <a name="create-an-azure-iot-remote-monitoring-solution-accelerator"></a>Azure IoT リモート監視ソリューション アクセラレータを作成する
 
-1. [Azure IoT ソリューション アクセラレータのサイト](https://www.azureiotsolutions.com/)に移動して、**[新しいソリューションの作成]** をクリックします。
+1. [Azure IoT ソリューション アクセラレータのサイト](https://www.azureiotsolutions.com/)に移動して、 **[新しいソリューションの作成]** をクリックします。
 
    ![Azure IoT ソリューション アクセラレータの種類の選択](media/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring/azure-iot-suite-solution-types.png)
 
@@ -46,11 +46,11 @@ ms.locfileid: "58100787"
 
 2. **[リモート監視]** を選択します。
 
-3. ソリューション名を入力し、サブスクリプションとリージョンを選択して、**[ソリューションの作成]** をクリックします。 ソリューションのプロビジョニングにはしばらく時間がかかる場合があります。
+3. ソリューション名を入力し、サブスクリプションとリージョンを選択して、 **[ソリューションの作成]** をクリックします。 ソリューションのプロビジョニングにはしばらく時間がかかる場合があります。
   
    ![ソリューションを作成する](media/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring/azure-iot-suite-new-solution.png)
 
-4. プロビジョニングが完了したら、**[起動]** をクリックします。 一部のシミュレートされたデバイスが、プロビジョニング処理中にソリューション用に作成されます。 **[デバイス]** をクリックしてチェック アウトします。
+4. プロビジョニングが完了したら、 **[起動]** をクリックします。 一部のシミュレートされたデバイスが、プロビジョニング処理中にソリューション用に作成されます。 **[デバイス]** をクリックしてチェック アウトします。
 
    ![ダッシュボード](media/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring/azure-iot-suite-new-solution-created.png)
   
@@ -62,11 +62,11 @@ ms.locfileid: "58100787"
   
    ![新しいデバイスを追加する](media/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring/azure-iot-suite-add-new-device.png)
 
-7. **[デバイス ID を自分で定義する]** をクリックして、「`AZ3166`」と入力し、**[作成]** をクリックします。
+7. **[デバイス ID を自分で定義する]** をクリックして、「`AZ3166`」と入力し、 **[作成]** をクリックします。
   
    ![ID を使用したデバイスの作成](media/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring/azure-iot-suite-new-device-configuration.png)
 
-8. **IoT Hub ホスト名**をメモし、**[完了]** をクリックします。
+8. **IoT Hub ホスト名**をメモし、 **[完了]** をクリックします。
 
 ## <a name="open-the-remotemonitoring-sample"></a>RemoteMonitoring サンプルを開く
 
@@ -79,10 +79,10 @@ ms.locfileid: "58100787"
    * DevKit 概要ページ
    * [Arduino Examples]\(Arduino の例\): DevKit の使用を開始するためのハンズオン サンプル。
 
-4. 左側の **[Arduino Examples]\(Arduino の例\)** セクションを展開し、**[Examples for MXCHIP AZ3166] > [AzureIoT]** を参照して、**[RemoteMonitoring]** を選択します。 プロジェクト フォルダーを含む新しい VS Code ウィンドウが開きます。
+4. 左側の **[Arduino Examples]\(Arduino の例\)** セクションを展開し、 **[Examples for MXCHIP AZ3166] > [AzureIoT]** を参照して、 **[RemoteMonitoring]** を選択します。 プロジェクト フォルダーを含む新しい VS Code ウィンドウが開きます。
 
    > [!NOTE]
-   > ウィンドウを偶然閉じた場合は、再度開くことができます。 `Ctrl+Shift+P` キー (macOS: `Cmd+Shift+P` キー) を使用してコマンド パレットを開き、「**Arduino**」と入力します。次に、**[Arduino:Examples]\(Arduino: 例\)** を見つけて選択します。
+   > ウィンドウを偶然閉じた場合は、再度開くことができます。 `Ctrl+Shift+P` キー (macOS: `Cmd+Shift+P` キー) を使用してコマンド パレットを開き、「**Arduino**」と入力します。次に、 **[Arduino:Examples]\(Arduino: 例\)** を見つけて選択します。
 
 ## <a name="provision-required-azure-services"></a>必要な Azure サービスのプロビジョニング
 
@@ -112,7 +112,7 @@ DevKit が再起動され、コードの実行が開始されます。
 
 サンプル アプリが実行されると、DevKit はセンサー データを WiFi 経由で Azure IoT リモート監視ソリューション アクセラレータに送信します。 結果を表示するには、次の手順に従います。
 
-1. Azure IoT リモート監視ソリューション アクセラレータに移動し、**[DASHBOARD]** をクリックします。
+1. Azure IoT リモート監視ソリューション アクセラレータに移動し、 **[DASHBOARD]** をクリックします。
 
 2. リモート監視ソリューション コンソールに DevKit センサーの状態が表示されます。
 

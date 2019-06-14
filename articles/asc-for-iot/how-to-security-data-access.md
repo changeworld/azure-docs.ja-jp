@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/25/2019
 ms.author: mlottner
 ms.openlocfilehash: 1ec6a174d05f8707bbffcc9fb013a98c2eb9196c
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65200556"
 ---
 # <a name="access-your-security-data"></a>セキュリティ データにアクセスする 
@@ -40,7 +40,7 @@ Azure Security Center (ASC) for IoT は、Log Analytics ワークスペースに
 構成後の Log Analytics ワークスペースにアクセスするには:
 
 1. ASC for IoT でアラートまたは推奨事項を選択します。 
-2. **[Further investigation]** \(さらに調査\) をクリックし、**[To see which devices have this alert click here and view the DeviceId column]** \(このアラートがどのデバイスのものかを確認するには、ここをクリックして DeviceId 列を見てください\) をクリックします。
+2. **[Further investigation]** \(さらに調査\) をクリックし、 **[To see which devices have this alert click here and view the DeviceId column]** \(このアラートがどのデバイスのものかを確認するには、ここをクリックして DeviceId 列を見てください\) をクリックします。
 
 Log Analytics からデータのクエリを実行する方法の詳細については、「[Log Analytics のクエリの概要](https://docs.microsoft.com//azure/log-analytics/query-language/get-started-queries)」を参照してください。
 

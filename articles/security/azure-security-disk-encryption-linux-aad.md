@@ -8,10 +8,10 @@ ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
 ms.openlocfilehash: 1e535ed92305d124499fd0ce9933b7edd19df32e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66118095"
 ---
 # <a name="enable-azure-disk-encryption-for-linux-iaas-vms-previous-release"></a>Linux IaaS VM で Azure Disk Encryption を有効にする (以前のリリース)
@@ -132,7 +132,7 @@ key-encryption-key パラメーターの値の構文は、 https://[keyvault-nam
 
 Azure 内にある既存または実行中の IaaS Linux VM でのディスク暗号化は、[Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-linux-vm)を使用して有効化できます。
 
-1. Azure クイックスタート テンプレートで、**[Azure に配置する]** をクリックします。
+1. Azure クイックスタート テンプレートで、 **[Azure に配置する]** をクリックします。
 
 2. サブスクリプション、リソース グループ、リソース グループの場所、パラメーター、法律条項、および契約を選択します。 **[作成]** をクリックして、既存または実行中の IaaS VM で暗号化を有効にします。
 
@@ -175,7 +175,7 @@ RAID または LVM ボリュームではなく RAID または LVM ボリュー�
 EncryptFormatAll オプションを使用するには、Linux VM を暗号化する既存の Azure Resource Manager テンプレートを使用して、AzureDiskEncryption リソースの **EncryptionOperation** フィールドを変更します。
 
 1. たとえば、[実行中の Linux IaaS VM を暗号化する Resource Manager テンプレート](https://github.com/vermashi/azure-quickstart-templates/tree/encrypt-format-running-linux-vm/201-encrypt-running-linux-vm)を使用します。 
-2. Azure クイックスタート テンプレートで、**[Azure に配置する]** をクリックします。
+2. Azure クイックスタート テンプレートで、 **[Azure に配置する]** をクリックします。
 3. **EncryptionOperation** を **EnableEncryption** から **EnableEncryptionFormatAl** に変更します。
 4. サブスクリプション、リソース グループ、リソース グループの場所、その他のパラメーター、法律条項、および契約を選択します。 **[作成]** をクリックして、既存または実行中の IaaS VM で暗号化を有効にします。
 

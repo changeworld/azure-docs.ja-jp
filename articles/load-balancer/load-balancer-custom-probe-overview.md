@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 05/07/2019
 ms.author: kumud
 ms.openlocfilehash: e488a4a6438279270f3d86dafa16c45eda184059
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65415709"
 ---
 # <a name="load-balancer-health-probes"></a>Load Balancer の正常性プローブ
@@ -121,7 +121,7 @@ Cloud Services を使用し、w3wp.exe を使う Web ロールがある場合は
 
 既定では、クラウド サービス ロール (worker ロールと Web ロール) は、ゲスト エージェントを使用してプローブを監視します。  ゲスト エージェント プローブは最終手段の構成です。  常に、TCP または HTTP のプローブを使って明示的に正常性プローブを使用してください。 ほとんどのアプリケーション シナリオでは、ゲスト エージェント プローブは明示的に定義されたプローブほど効果的ではありません。
 
-ゲスト エージェント プローブは、VM 内のゲスト エージェントのチェックです。 その後リッスンし、インスタンスが準備完了状態になっている場合にのみ、HTTP 200 OK で応答します  (他の状態はビジー、リサイクル中、停止中です)。
+ゲスト エージェント プローブは、VM 内のゲスト エージェントのチェックです。 その後リッスンし、インスタンスが準備完了状態になっている場合にのみ、HTTP 200 OK で応答します (他の状態はビジー、リサイクル中、停止中です)。
 
 詳しくは、[正常性プローブのサービス定義ファイル (csdef) の構成](https://msdn.microsoft.com/library/azure/ee758710.aspx)に関するページまたは[クラウド サービス用のパブリック ロード バランサーの作成の開始](load-balancer-get-started-internet-classic-cloud.md#check-load-balancer-health-status-for-cloud-services)に関するページをご覧ください。
 
@@ -204,7 +204,7 @@ Load Balancer の正常性プローブによってお客様のインスタンス
 
 正常性プローブの失敗をテストしたい場合、または個別のインスタンスをダウンとしてマークしたい場合は、[ネットワーク セキュリティ グループ](../virtual-network/security-overview.md)を使用し、正常性プローブ (宛先ポートまたは[ソース IP](#probesource)) を明示的にブロックしてプローブの失敗をシミュレートできます。
 
-168.63.129.16 が含まれている Microsoft 所有の IP アドレス範囲を使用してお客様の VNet を構成しないでください。  このような構成は正常性プローブの IP アドレスと競合して、お客様のシナリオの失敗を引き起こす可能性があります。
+168\.63.129.16 が含まれている Microsoft 所有の IP アドレス範囲を使用してお客様の VNet を構成しないでください。  このような構成は正常性プローブの IP アドレスと競合して、お客様のシナリオの失敗を引き起こす可能性があります。
 
 VM に複数のインターフェイスがある場合は、プローブを受信したインターフェイスでプローブに応答することを保証する必要があります。  VM でインターフェイスごとにこのアドレスをソース ネットワーク アドレス変換することが必要な場合があります。
 

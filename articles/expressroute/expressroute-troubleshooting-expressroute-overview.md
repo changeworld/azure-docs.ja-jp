@@ -9,10 +9,10 @@ ms.date: 09/26/2017
 ms.author: rambala
 ms.custom: seodec18
 ms.openlocfilehash: 888f4dedf2fda0f54297d42a5f813abf73ded748
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66117880"
 ---
 # <a name="verifying-expressroute-connectivity"></a>ExpressRoute 接続の検証
@@ -80,7 +80,7 @@ Azure Portal で、ExpressRoute 回線の状態を確認するには、左側の
 
 ExpressRoute の [要点] にある *[回線の状態]* は Microsoft 側の回線の状態を示します。 *[Provider status (プロバイダーの状態)]* は、サービス プロバイダー側で回線が "*プロビジョニング済み/未プロビジョニング*" かどうかを示します。 
 
-ExpressRoute 回線を運用可能にするには、*[回線の状態]* が *[有効]*、*[Provider status (プロバイダーの状態)]* が *[プロビジョニング済み]* である必要があります。
+ExpressRoute 回線を運用可能にするには、 *[回線の状態]* が *[有効]* 、 *[Provider status (プロバイダーの状態)]* が *[プロビジョニング済み]* である必要があります。
 
 > [!NOTE]
 > *[回線の状態]* が有効になっていない場合は、[Microsoft サポート][Support]にお問い合わせください。 *[Provider status (プロバイダーの状態)]* が未プロビジョニングの場合は、サービス プロバイダーにお問い合わせください。

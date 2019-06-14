@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 04/02/2019
 ms.author: magoedte
 ms.openlocfilehash: 86a56e71b89e7408d1bc8ca0ee1dc8112bea368f
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65522141"
 ---
 # <a name="known-issues-with-azure-monitor-for-vms-preview"></a>Azure Monitor for VMs (プレビュー) の既知の問題

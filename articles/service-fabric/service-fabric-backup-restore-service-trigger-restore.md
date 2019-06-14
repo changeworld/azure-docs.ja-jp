@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 10/30/2018
 ms.author: aagup
 ms.openlocfilehash: e4ada412547360f97e869d3312b65d869fa3df48
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65413731"
 ---
 # <a name="restoring-backup-in-azure-service-fabric"></a>Azure Service Fabric でのバックアップの復元
@@ -35,7 +35,7 @@ Azure Service Fabric では、Reliable Stateful サービスおよび Reliable A
 ## <a name="prerequisites"></a>前提条件
 
 - 復元をトリガーするには、_Fault Analysis Service (FAS)_ がクラスターで有効になっている必要があります。
-- "_バックアップ復元サービス (BRS)_" がバックアップを作成しました。
+- "_バックアップ復元サービス (BRS)_ " がバックアップを作成しました。
 - 復元は、パーティションでのみトリガーできます。
 - 構成の呼び出しを行うため、Microsoft.ServiceFabric.Powershell.Http モジュール [プレビュー] をインストールします。
 
@@ -161,7 +161,7 @@ FailureError            :
 
 [パーティション スキーム](service-fabric-concepts-partitioning.md#get-started-with-partitioning)で詳しく述べているように、代替クラスター内のバックアップ先パーティションを選択する必要もあります。 代替クラスターのバックアップは、元の失われたクラスターの、パーティション スキームで指定されたパーティションに復元されます。
 
-代替クラスターでのパーティション ID が `1c42c47f-439e-4e09-98b9-88b8f60800c6` である場合、"_範囲パーティション分割 (UniformInt64Partition)_" に対する上位キーと下位キーを比較することによって、元のクラスターのパーティション ID `974bd92a-b395-4631-8a7f-53bd4ae9cf22` にマップできます。
+代替クラスターでのパーティション ID が `1c42c47f-439e-4e09-98b9-88b8f60800c6` である場合、"_範囲パーティション分割 (UniformInt64Partition)_ " に対する上位キーと下位キーを比較することによって、元のクラスターのパーティション ID `974bd92a-b395-4631-8a7f-53bd4ae9cf22` にマップできます。
 
 "_名前付きパーティション分割_" では、名前の値を比較して、代替クラスターの対象パーティションが識別されます。
 
@@ -223,7 +223,7 @@ CreationTimeUtc         : 2018-04-06T21:10:27Z
 FailureError            :
 ```
 
-復元 API には、_BackupId_ と _BackupLocation_ の詳細を提供します。 クラスターでバックアップが有効になっているので、Service Fabric の "_バックアップ復元サービス (BRS)_" では、関連付けられているバックアップ ポリシーから適切なストレージの場所が識別されます。
+復元 API には、_BackupId_ と _BackupLocation_ の詳細を提供します。 クラスターでバックアップが有効になっているので、Service Fabric の "_バックアップ復元サービス (BRS)_ " では、関連付けられているバックアップ ポリシーから適切なストレージの場所が識別されます。
 
 
 #### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>Microsoft.ServiceFabric.Powershell.Http モジュールを使用した PowerShell

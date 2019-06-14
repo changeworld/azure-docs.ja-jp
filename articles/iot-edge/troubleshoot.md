@@ -10,10 +10,10 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
 ms.openlocfilehash: 00147002317f15345f01c88e81973837d16e6669
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65797623"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Azure IoT Edge での一般的な問題と解決
@@ -265,7 +265,7 @@ IoT Edge ランタイムは、64 文字未満のホスト名のみをサポー�
 
    ![仮想マシンの DNS 名を構成する](./media/troubleshoot/configure-dns.png)
 
-3. **[DNS 名ラベル]** に値を指定し、**[保存]** を選択します。
+3. **[DNS 名ラベル]** に値を指定し、 **[保存]** を選択します。
 4. 新しい DNS 名をコピーします。名前は **\<DNSnamelabel\>.\<vmlocation\>.cloudapp.azure.com** の形式である必要があります。
 5. 仮想マシン内で、次のコマンドを使用して、実際の DNS 名によって IoT Edge ランタイムを設定します。
 
@@ -292,7 +292,7 @@ IoT Edge ハブに対して、環境変数 **OptimizeForPerformance** を **fals
 
 UI で: 
 
-ポータル内で、**[デバイスの詳細]** > **[モジュールの設定]** > **[Edge ランタイムの詳細設定を構成する]** の順に移動します。 *OptimizeForPerformance* という Edge Hub モジュール用の環境変数を、*false* に設定して作成します。
+ポータル内で、 **[デバイスの詳細]**  >  **[モジュールの設定]**  >  **[Edge ランタイムの詳細設定を構成する]** の順に移動します。 *OptimizeForPerformance* という Edge Hub モジュール用の環境変数を、*false* に設定して作成します。
 
 ![false に設定された OptimizeForPerformance](./media/troubleshoot/optimizeforperformance-false.png)
 
@@ -368,7 +368,7 @@ IoT Edge は、Azure IoT Edge ランタイムとデプロイされたモジュ�
 
 **オプション 1:コンテナー エンジンの設定で DNS サーバーを設定します**
 
-コンテナー エンジンの設定で環境に対して DNS サーバーを指定すると、そのエンジンによって開始されるすべてのコンテナー モジュールに適用されます。 `daemon.json` という名前のファイルを作成し、使用する DNS サーバーを指定します。 例: 
+コンテナー エンジンの設定で環境に対して DNS サーバーを指定すると、そのエンジンによって開始されるすべてのコンテナー モジュールに適用されます。 `daemon.json` という名前のファイルを作成し、使用する DNS サーバーを指定します。 例:
 
 ```
 {
@@ -396,7 +396,7 @@ IoT Edge は、Azure IoT Edge ランタイムとデプロイされたモジュ�
 
 **オプション 2:モジュールごとに IoT Edge のデプロイで DNS サーバーを設定します**
 
-IoT Edge のデプロイで各モジュールの *createOptions* に DNS サーバーを設定できます。 例: 
+IoT Edge のデプロイで各モジュールの *createOptions* に DNS サーバーを設定できます。 例:
 
 ```
 "createOptions": {

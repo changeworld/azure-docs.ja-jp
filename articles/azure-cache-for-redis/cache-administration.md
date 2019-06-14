@@ -15,11 +15,11 @@ ms.workload: tbd
 ms.date: 07/05/2017
 ms.author: yegu
 ms.openlocfilehash: 81ef669b62c822e10d8bf5c45e58dd769c5dbeb9
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56888391"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60233017"
 ---
 # <a name="how-to-administer-azure-cache-for-redis"></a>Azure Cache for Redis を管理する方法
 このトピックでは、Azure Cache for Redis インスタンスについて、[再起動](#reboot)、[更新スケジュール](#schedule-updates)などの管理タスクを実行する方法について説明します。
@@ -31,7 +31,7 @@ ms.locfileid: "56888391"
 
 ![再起動](./media/cache-administration/redis-cache-administration-reboot.png)
 
-再起動するノードを選び、**[再起動]** をクリックします。
+再起動するノードを選び、 **[再起動]** をクリックします。
 
 ![再起動](./media/cache-administration/redis-cache-reboot.png)
 
@@ -39,7 +39,7 @@ ms.locfileid: "56888391"
 
 ![再起動](./media/cache-administration/redis-cache-reboot-cluster.png)
 
-キャッシュのノードを再起動するには、目的のノードを選択し、 **[再起動]** をクリックします。 クラスタリングが有効になっている Premium キャッシュがある場合は、再起動したいシャードを選択し、**[再起動]** をクリックします。 数分後、選択したノードが再起動され、さらに数分後にオンラインに戻ります。
+キャッシュのノードを再起動するには、目的のノードを選択し、 **[再起動]** をクリックします。 クラスタリングが有効になっている Premium キャッシュがある場合は、再起動したいシャードを選択し、 **[再起動]** をクリックします。 数分後、選択したノードが再起動され、さらに数分後にオンラインに戻ります。
 
 クライアント アプリケーションへの影響は、再起動するノードによって異なります。
 

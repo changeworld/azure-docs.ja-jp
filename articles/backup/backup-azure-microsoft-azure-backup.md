@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: kasinh
 ms.openlocfilehash: 26f25a0dcbeef0d5b7456d42caaca392c3ca6a1a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58075614"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62098864"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Azure Backup Server のインストールとアップグレード
 > [!div class="op_single_selector"]
@@ -80,7 +80,7 @@ Azure Backup Server は、常にドメインに参加させる必要がありま
 ストレージ レプリケーション設定を編集するには、次の手順を実行します。
 
 1. コンテナーを選択して、コンテナーのダッシュボードと [設定] メニューを開きます。 **[設定]** メニューが開かない場合は、コンテナーのダッシュボードで **[すべての設定]** をクリックします。
-2. **[設定]** メニューで、**[バックアップ インフラストラクチャ]** > **[バックアップ構成]** をクリックして **[バックアップ構成]** ブレードを開きます。 **[バックアップ構成]** メニューで、コンテナーのストレージ レプリケーション オプションを選択します。
+2. **[設定]** メニューで、 **[バックアップ インフラストラクチャ]**  >  **[バックアップ構成]** をクリックして **[バックアップ構成]** ブレードを開きます。 **[バックアップ構成]** メニューで、コンテナーのストレージ レプリケーション オプションを選択します。
 
     ![バックアップ コンテナーの一覧](./media/backup-azure-vms-first-look-arm/choose-storage-configuration-rs-vault.png)
 
@@ -102,22 +102,22 @@ Azure Backup Server は、常にドメインに参加させる必要がありま
      選択したコンテナーのダッシュボードが開きます。
 
      ![Open vault blade](./media/backup-azure-microsoft-azure-backup/vault-dashboard.png)
-3. 既定では、**[設定]** ブレードが開きます。 設定ブレードが閉じている場合は、 **[設定]** をクリックして設定ブレードを開きます。
+3. 既定では、 **[設定]** ブレードが開きます。 設定ブレードが閉じている場合は、 **[設定]** をクリックして設定ブレードを開きます。
 
     ![Open vault blade](./media/backup-azure-microsoft-azure-backup/vault-setting.png)
 4. **[バックアップ]** をクリックして、作業の開始ウィザードを開きます。
 
     ![バックアップ作業の開始](./media/backup-azure-microsoft-azure-backup/getting-started-backup.png)
 
-    表示される **[バックアップ作業の開始]** ブレードでは、**[バックアップの目標]** が自動的に選択されます。
+    表示される **[バックアップ作業の開始]** ブレードでは、 **[バックアップの目標]** が自動的に選択されます。
 
     ![Backup-goals-default-opened](./media/backup-azure-microsoft-azure-backup/getting-started.png)
 
-5. **[What do you want to backup バックアップの目標]** ブレードで、**[ワークロードはどこで実行されていますか?]** メニューの **[オンプレミス]** を選択します。
+5. **[What do you want to backup バックアップの目標]** ブレードで、 **[ワークロードはどこで実行されていますか?]** メニューの **[オンプレミス]** を選択します。
 
     ![目標としてのオンプレミスおよびワークロード](./media/backup-azure-microsoft-azure-backup/backup-goals-azure-backup-server.png)
 
-    **[何をバックアップしますか?]** ドロップダウン メニューで、Azure Backup Server を使用して保護するワークロードを選択し、**[OK]** をクリックします。
+    **[何をバックアップしますか?]** ドロップダウン メニューで、Azure Backup Server を使用して保護するワークロードを選択し、 **[OK]** をクリックします。
 
     **バックアップ作業の開始**ウィザードが、Azure にワークロードを保護するための **[インフラストラクチャの準備]** オプションに切り替わります。
 
@@ -157,7 +157,7 @@ Azure Backup Server は、常にドメインに参加させる必要がありま
 2. ようこそ画面で **[次へ]** をクリックします。 *[前提条件の確認]* セクションが表示されます。 この画面で **[確認]** をクリックして、Azure Backup Server のハードウェアとソフトウェアの前提条件が満たされているかどうかを確認します。 前提条件がすべて正常に満たされている場合は、マシンが要件を満たしていることを示すメッセージが表示されます。 **[次へ]** をクリックします。
 
     ![Azure Backup Server - Welcome and Prerequisites check](./media/backup-azure-microsoft-azure-backup/prereq/prereq-screen2.png)
-3. Microsoft Azure Backup Server には、SQL Server Enterprise が必要です。 また、Azure Backup Server のインストール パッケージには、独自の SQL を使用しない場合に必要となる適切な SQL Server バイナリがバンドルされています。 新しい Azure Backup Server のインストールを開始するには、**[Install new Instance of SQL Server with this Setup (このセットアップを使用して、SQL Server の新しいインスタンスをインストールします)]** をオンにし、**[確認してインストール]** をクリックします。 前提条件が正常にインストールされたら、 **[次へ]** をクリックします。
+3. Microsoft Azure Backup Server には、SQL Server Enterprise が必要です。 また、Azure Backup Server のインストール パッケージには、独自の SQL を使用しない場合に必要となる適切な SQL Server バイナリがバンドルされています。 新しい Azure Backup Server のインストールを開始するには、 **[Install new Instance of SQL Server with this Setup (このセットアップを使用して、SQL Server の新しいインスタンスをインストールします)]** をオンにし、 **[確認してインストール]** をクリックします。 前提条件が正常にインストールされたら、 **[次へ]** をクリックします。
 
     ![Azure Backup Server - SQL check](./media/backup-azure-microsoft-azure-backup/sql/01.png)
 
@@ -227,20 +227,20 @@ MABS は、System Center Data Protection Manager 保護エージェントを使�
 
 この後のセクションでは、クライアント コンピューターのために保護エージェントを更新する方法を説明します。
 
-1. Backup Server の管理者コンソールで、**[Management]** \(管理) > **[Agents]** \(エージェント) の順に選択します。
+1. Backup Server の管理者コンソールで、 **[Management]** \(管理) >  **[Agents]** \(エージェント) の順に選択します。
 
 2. 表示ウィンドウで、保護エージェントを更新するクライアント コンピューターを選択します。
 
    > [!NOTE]
-   > **[Agent Updates]** \(エージェントの更新プログラム) 列は、保護されるコンピューターごとに保護エージェントの更新がいつ行われるかを示します。 **[アクション]** ウィンドウでは、**[更新する]** アイコンは、保護されるコンピューターが選択されていて、更新プログラムが利用可能なときのみ表示されます。
+   > **[Agent Updates]** \(エージェントの更新プログラム) 列は、保護されるコンピューターごとに保護エージェントの更新がいつ行われるかを示します。 **[アクション]** ウィンドウでは、 **[更新する]** アイコンは、保護されるコンピューターが選択されていて、更新プログラムが利用可能なときのみ表示されます。
    >
    >
 
-3. 選択したコンピューターに更新された保護エージェントをインストールするには、**[アクション]** ウィンドウで、**[更新する]** を選択します。
+3. 選択したコンピューターに更新された保護エージェントをインストールするには、 **[アクション]** ウィンドウで、 **[更新する]** を選択します。
 
-4. ネットワークに接続されていないクライアント コンピューターでは、コンピューターがネットワークに接続されるまで、**[エージェントの状態]** 列には **[更新保留中]** の状態が表示されます。
+4. ネットワークに接続されていないクライアント コンピューターでは、コンピューターがネットワークに接続されるまで、 **[エージェントの状態]** 列には **[更新保留中]** の状態が表示されます。
 
-   クライアント コンピューターがネットワークに接続された後、クライアント コンピューターの **[Agent Updates]** \(エージェントの更新プログラム) 列には、**[更新中]** の状態が表示されます。
+   クライアント コンピューターがネットワークに接続された後、クライアント コンピューターの **[Agent Updates]** \(エージェントの更新プログラム) 列には、 **[更新中]** の状態が表示されます。
 
 ## <a name="move-mabs-to-a-new-server"></a>MABS を新しいサーバーに移動する
 
@@ -338,7 +338,7 @@ MABS をアップグレードするには、次の手順を使用します。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 Microsoft Azure Backup Server がセットアップ段階 (またはバックアップや復元) でエラーのため失敗した場合、詳細については、この[エラー コードのドキュメント](https://support.microsoft.com/kb/3041338)を参照してください。
- [Azure Backup 関連の FAQ](backup-azure-backup-faq.md)
+[Azure Backup 関連の FAQ](backup-azure-backup-faq.md)
 
 ## <a name="next-steps"></a>次の手順
 [DPM 用の環境の準備](https://technet.microsoft.com/library/hh758176.aspx) について、Microsoft TechNet サイトのページで詳細を確認してください。 このページには、Azure Backup Server のデプロイと使用が可能なサポートされる構成も記載されています。 一連の [PowerShell コマンドレット](https://docs.microsoft.com/powershell/module/dataprotectionmanager/?view=systemcenter-ps-2016)を使用して、さまざまな操作を実行できます。

@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 03/22/2019
 ms.author: magoedte
 ms.openlocfilehash: 41ea6222689516f224fc23ce6a658d17f7f81866
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58372303"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60240841"
 ---
 # <a name="syslog-data-sources-in-azure-monitor"></a>Azure Monitor の Syslog データ ソース
 Syslog は、Linux に共通のイベント ログ プロトコルです。 アプリケーションは、ローカル コンピューターへの保存または Syslog コレクターへの配信が可能なメッセージを送信します。 Linux 用 Log Analytics エージェントがインストールされている場合は、エージェントにメッセージを転送するローカル Syslog デーモンが構成されます。 エージェントは Azure Monitor にメッセージを送信し、そこで対応するレコードが作成されます。  
@@ -95,7 +95,7 @@ rsyslog の構成ファイルは、 **/etc/rsyslog.d/95-omsagent.conf**にあり
 
 
 #### <a name="syslog-ng"></a>syslog-ng
-syslog-ng の構成ファイルは、**/etc/syslog-ng/syslog-ng.conf** にあります。  既定の内容を以下に示します。 これは、ローカル エージェントから送信された、すべてのファシリティのすべての重大度の syslog メッセージを収集します。   
+syslog-ng の構成ファイルは、 **/etc/syslog-ng/syslog-ng.conf** にあります。  既定の内容を以下に示します。 これは、ローカル エージェントから送信された、すべてのファシリティのすべての重大度の syslog メッセージを収集します。   
 
     #
     # Warnings (except iptables) in one file:

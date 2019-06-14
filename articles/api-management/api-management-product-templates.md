@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
 ms.openlocfilehash: 14090e21fb7c6ca07fe63220ffd1d44d483ac869
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443629"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61088175"
 ---
 # <a name="product-templates-in-azure-api-management"></a>Azure API Management の製品テンプレート
 
@@ -78,9 +78,9 @@ Azure API Management には、開発者ポータルの各ページの内容を�
   
 ### <a name="data-model"></a>データ モデル  
   
-|プロパティ|type|説明|  
+|プロパティ|Type|説明|  
 |--------------|----------|-----------------|  
-|Paging|[ページング](api-management-template-data-model-reference.md#Paging) エンティティ。|製品コレクションのページング情報。|  
+|Paging|[Paging](api-management-template-data-model-reference.md#Paging) エンティティ。|製品コレクションのページング情報。|  
 |Filtering|[フィルター処理](api-management-template-data-model-reference.md#Filtering)エンティティ。|製品リスト ページのフィルター処理情報。|  
 |Products|[製品](api-management-template-data-model-reference.md#Product)エンティティのコレクション。|現在のユーザーに表示される製品。|  
   
@@ -203,7 +203,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
   
 ### <a name="data-model"></a>データ モデル  
   
-|プロパティ|type|説明|  
+|プロパティ|Type|説明|  
 |--------------|----------|-----------------|  
 |Product|[成果物](api-management-template-data-model-reference.md#Product)|指定された製品。|  
 |IsDeveloperSubscribed|ブール値|現在のユーザーがこの製品をサブスクライブしているかどうか。|  

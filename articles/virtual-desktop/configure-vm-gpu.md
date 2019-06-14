@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 05/06/2019
 ms.author: denisgun
 ms.openlocfilehash: a6a67c89253a1b16f9266d7917655d1b1104022e
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65157881"
 ---
 # <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop-preview"></a>Windows Virtual Desktop プレビュー用にグラフィックス処理装置 (GPU) のアクセラレーションを構成する
@@ -52,7 +52,7 @@ Windows Virtual Desktop プレビュー用にサポートされているのは�
 
 1. ローカル管理者特権を持つアカウントを使って、VM のデスクトップに接続します。
 2. [スタート] メニューを開き、「gpedit.msc」と入力して、グループ ポリシー エディターを開きます。
-3. ツリーで、**[コンピューターの構成]** > **[管理用テンプレート]** > **[Windows コンポーネント]** > **[リモート デスクトップ サービス]** > **[リモート デスクトップ セッション ホスト]** > **[リモート セッション環境]** に移動します。
+3. ツリーで、 **[コンピューターの構成]**  >  **[管理用テンプレート]**  >  **[Windows コンポーネント]**  >  **[リモート デスクトップ サービス]**  >  **[リモート デスクトップ セッション ホスト]**  >  **[リモート セッション環境]** に移動します。
 4. ポリシー **[すべてのリモート デスクトップ サービス セッションにハードウェアの既定のグラフィックス アダプターを使用する]** を選択し、このポリシーを **[有効]** に設定して、リモート セッションでの GPU レンダリングを有効にします。
 
 ## <a name="configure-gpu-accelerated-frame-encoding"></a>GPU アクセラレーションを使用するフレーム エンコードを構成する
@@ -63,7 +63,7 @@ Windows Virtual Desktop プレビュー用にサポートされているのは�
 2. ポリシー **[リモート デスクトップ接続用に H.264/AVC ハードウェア エンコードを構成する]** を選択し、このポリシーを **[有効]** に設定して、リモート セッションで AVC/H.264 に対するハードウェア エンコードを有効にします。
 
     >[!NOTE]
-    >Windows Server 2016 では、**[AVC ハードウェア エンコードを優先]** オプションを **[常に試行]** に設定します。
+    >Windows Server 2016 では、 **[AVC ハードウェア エンコードを優先]** オプションを **[常に試行]** に設定します。
 
 3. グループ ポリシーを編集したので、強制的にグループ ポリシーを更新します。 コマンド プロンプトを開き、次のように入力します。
 
@@ -85,7 +85,7 @@ Windows Virtual Desktop プレビュー用にサポートされているのは�
 リモート デスクトップで GPU アクセラレーションを使用するエンコードが使われていることを検証するには:
 
 1. Windows Virtual Desktop クライアントを使って VM のデスクトップに接続します。
-2. イベント ビューアーを起動し、次のノードに移動します。**[アプリケーションとサービス ログ]** > **[Microsoft]** > **[Windows]** > **[RemoteDesktopServices RdpCoreTS]** > **[Operational]**
+2. イベント ビューアーを起動し、次のノードに移動します。 **[アプリケーションとサービス ログ]**  >  **[Microsoft]**  >  **[Windows]**  >  **[RemoteDesktopServices RdpCoreTS]**  >  **[Operational]**
 3. GPU アクセラレーションを使用するエンコードが使われているかどうかを確認するには、イベント ID 170 を探します。 [AVC ハードウェア エンコーダーが有効になりました: 1] と表示される場合は、GPU エンコードが使われています。
 4. AVC 444 モードが使われているかどうかを確認するには、イベント ID 162 を探します。 [AVC 対応: 1、初期プロファイル: 2048] と表示される場合は、AVC 444 が使われています。
 

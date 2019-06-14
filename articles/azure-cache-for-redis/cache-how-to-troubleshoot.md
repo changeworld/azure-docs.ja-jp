@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/15/2019
 ms.author: yegu
 ms.openlocfilehash: 66361871d365068a90a2eeab70d92adb6b246a83
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59527168"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60830009"
 ---
 # <a name="how-to-troubleshoot-azure-cache-for-redis"></a>Azure Cache for Redis のトラブルシューティング方法
 
@@ -246,7 +246,7 @@ StackExchange.Redis は、同期操作に `synctimeout` という名前の構成
 
     redis-cli と stunnel を使用したキャッシュの SSL エンドポイントへの接続については、「[Redis のプレビュー リリースの ASP.NET セッション状態プロバイダーの通知](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx)」のブログの投稿を参照してください。
 1. Redis サーバーの負荷が高いとタイムアウトが生じる場合があります。 `Redis Server Load` [キャッシュ パフォーマンス メトリック](cache-how-to-monitor.md#available-metrics-and-reporting-intervals)を監視することで、サーバーの負荷を監視できます。 100 (最大値) のサーバーの負荷は、Redis サーバーが要求を処理しており、ビジー状態であり、アイドル時間がないことを示します。 特定の要求がサーバーを占有しているかどうかを確認するには、前の段落で説明したように、SlowLog コマンドを実行します。 詳細については、「CPU 使用率またはサーバーの負荷が高い」を参照してください。
-1. ネットワーク ブリップの原因と思われる、クライアント側のイベントは他にありますか?  共通イベントには、クライアント インスタンスの数のスケールアップ/スケールダウン、新しいバージョンのクライアントのデプロイ、または自動スケールの有効化が含まれます。 当社のテストでは、自動スケールまたはスケールアップ/スケールダウンによって発信ネットワーク接続が数秒間失われる場合があることがわかりました。 StackExchange.Redis コードはこのようなイベントに対応し、再接続します。 再接続中に、キュー内のすべての要求がタイムアウトになることがあります。
+1. ネットワーク ブリップの原因と思われる、クライアント側のイベントは他にありますか? 共通イベントには、クライアント インスタンスの数のスケールアップ/スケールダウン、新しいバージョンのクライアントのデプロイ、または自動スケールの有効化が含まれます。 当社のテストでは、自動スケールまたはスケールアップ/スケールダウンによって発信ネットワーク接続が数秒間失われる場合があることがわかりました。 StackExchange.Redis コードはこのようなイベントに対応し、再接続します。 再接続中に、キュー内のすべての要求がタイムアウトになることがあります。
 1. タイムアウトになったキャッシュへの数個の小さい要求の前に大きい要求がありましたか? エラー メッセージ内のパラメーター `qs` は、クライアントからサーバーに送信されたが、まだ応答を処理していない要求の数を示します。 StackExchange.Redis は単一の TCP 接続を使用し、一度に読み取ることができる応答は 1 つのみであるため、この値が増え続ける可能性があります。 最初の操作がタイムアウトになっても、サーバーとの間のそれ以降のデータの送信は停止されません。 他の要求は、大きい要求が完了するまでブロックされるため、タイムアウトになることがあります。 1 つの解決策は、キャッシュがワークロードに対して十分な大きさであることを確認し、大きい値をより小さいチャンクに分割して、タイムアウトの可能性を最小限に抑えることです。 この他に考えられる解決策は、クライアントで `ConnectionMultiplexer` オブジェクトのプールを使用し、新しい要求の送信時に負荷が最も少ない `ConnectionMultiplexer` を選択することです。 複数の接続オブジェクトにわたって読み込むと、1 つのタイムアウトのために他の要求もタイムアウトになることは防止されます。
 1. `RedisSessionStateProvider` を使用している場合は、再試行タイムアウトを正しく設定していることを確認してください。 `retryTimeoutInMilliseconds` は `operationTimeoutInMilliseconds` よりも高くする必要があります。そうしないと、再試行が発生しません。 次の例では、`retryTimeoutInMilliseconds` は 3000 に設定されています。 詳細については、「[ASP.NET Session State Provider for Azure Cache for Redis ](cache-aspnet-session-state-provider.md)」(Azure Cache for Redis の ASP.NET セッション状態プロバイダー) と「[How to use the configuration parameters of Session State Provider and Output Cache Provider](https://github.com/Azure/aspnet-redis-providers/wiki/Configuration)」(セッション状態プロバイダーと出力キャッシュ プロバイダーの構成パラメーターの使用方法) を参照してください。
 

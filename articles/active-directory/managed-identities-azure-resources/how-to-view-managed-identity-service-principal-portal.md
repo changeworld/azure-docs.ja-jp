@@ -16,11 +16,11 @@ ms.date: 11/29/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5f6139062c4d302284cc653606ae838206d3691a
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58444998"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60290726"
 ---
 # <a name="view-the-service-principal-of-a-managed-identity-in-the-azure-portal"></a>Azure portal でマネージド ID のサービス プリンシパルを表示する
 
@@ -38,7 +38,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
 
 この手順を行うと、VM のサービス プリンシパルが表示されます。また、システム割り当ての ID が有効になっていることを確認できます。アプリケーションの場合も同じ手順が適用されます。
 
-1. **[Azure Active Directory]** をクリックしてから、**[エンタープライズ アプリケーション]** をクリックします。
+1. **[Azure Active Directory]** をクリックしてから、 **[エンタープライズ アプリケーション]** をクリックします。
 2. **[アプリケーションの種類]** で **[すべてのアプリケーション]** を選択します。
 3. 検索フィルター ボックスに、マネージド ID が有効になっている VM またはアプリケーションの名前を入力するか、表示された一覧から選択します。
 

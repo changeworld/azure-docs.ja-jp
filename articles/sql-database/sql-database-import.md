@@ -13,10 +13,10 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 03/12/2019
 ms.openlocfilehash: 98b316f8a9c1c8ceba91870af4ff67b1aa854a9b
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65785333"
 ---
 # <a name="quickstart-import-a-bacpac-file-to-a-database-in-azure-sql-database"></a>クイック スタート:BACPAC ファイルを Azure SQL Database 内のデータベースにインポートする
@@ -35,7 +35,7 @@ ms.locfileid: "65785333"
 > [!NOTE]
 > [マネージド インスタンス](sql-database-managed-instance.md)では現在、Azure portal を使用した BACPAC ファイルからインスタンス データベースへのデータベースの移行はサポートされていません。 マネージド インスタンスにインポートするには、SQL Server Management Studio または SQLPackage を使用します。
 
-1. Azure portal を使用して新しい単一データベースに BACPAC ファイルからインポートするには、適切なデータベース サーバーのページを開き、**[データベースのインポート]** を選択します。  
+1. Azure portal を使用して新しい単一データベースに BACPAC ファイルからインポートするには、適切なデータベース サーバーのページを開き、 **[データベースのインポート]** を選択します。  
 
    ![データベース インポート 1](./media/sql-database-import/import1.png)
 
@@ -46,11 +46,11 @@ ms.locfileid: "65785333"
 
 4. Click **OK**.
 
-5. インポートの進行状況を監視するには、データベースのサーバー ページを開き、**[設定]** の下にある **[インポート/エクスポート履歴]** を選択します。 成功すると、インポートは**完了**状態になります。
+5. インポートの進行状況を監視するには、データベースのサーバー ページを開き、 **[設定]** の下にある **[インポート/エクスポート履歴]** を選択します。 成功すると、インポートは**完了**状態になります。
 
    ![データベース インポートの状態](./media/sql-database-import/import-status.png)
 
-6. データベースがデータベース サーバー上で稼働していることを確認するには、**[SQL データベース]** を選択し、新しいデータベースが **[オンライン]** であることを確認します。
+6. データベースがデータベース サーバー上で稼働していることを確認するには、 **[SQL データベース]** を選択し、新しいデータベースが **[オンライン]** であることを確認します。
 
 ## <a name="import-from-a-bacpac-file-using-sqlpackage"></a>SqlPackage を使用して BACPAC ファイルからインポートする
 

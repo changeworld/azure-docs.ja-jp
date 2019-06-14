@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
 ms.openlocfilehash: 37aef7c0ae06aefc69b8a72a80c8ade3951e8b0d
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65799518"
 ---
 # <a name="manage-a-video-indexer-account-connected-to-azure"></a>Azure に接続された Video Indexer アカウントを管理する
@@ -36,7 +36,7 @@ ms.locfileid: "65799518"
 
 設定を表示するには:
 
-1. 右上隅にあるユーザー アイコンをクリックし、**[設定]** を選択します。
+1. 右上隅にあるユーザー アイコンをクリックし、 **[設定]** を選択します。
 
     ![設定](./media/manage-account-connected-to-azure/select-settings.png)
 
@@ -64,7 +64,7 @@ Videos Indexer アカウントが Azure に接続されている場合は、次�
 
 * Event Grid
 
-    Azure Portal を使用して EventGrid リソース プロバイダーを登録する必要があります。 [Azure Portal](https://portal.azure.com/) で、**[サブスクリプション]** > [<サブスクリプション>] > **[ResourceProviders]** > **[Microsoft.EventGrid]** に移動します。 **[登録済み]** 状態でない場合は、**[登録]** をクリックします。 登録には数分かかります。 
+    Azure Portal を使用して EventGrid リソース プロバイダーを登録する必要があります。 [Azure Portal](https://portal.azure.com/) で、 **[サブスクリプション]** > [<サブスクリプション>] > **[ResourceProviders]**  >  **[Microsoft.EventGrid]** に移動します。 **[登録済み]** 状態でない場合は、 **[登録]** をクリックします。 登録には数分かかります。 
 
 * ストリーミング エンドポイント
 

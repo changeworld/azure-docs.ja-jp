@@ -13,11 +13,11 @@ ms.workload: na
 ms.date: 04/13/2019
 ms.author: banders
 ms.openlocfilehash: 872837c774368820527b12778b1a7dd4ddc5c7af
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59995525"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60369167"
 ---
 # <a name="view-azure-reservations-in-the-azure-portal"></a>Azure portal に Azure の予約を表示する
 
@@ -54,7 +54,7 @@ Azure portal で予約トランザクションを表示するには
     ![Azure portal の検索を表示するスクリーンショット](./media/billing-view-reservation/portal-cm-billing-search.png)
 
 1. **[予約トランザクション]** を選択します。
-1. 結果をフィルター処理するには、**[期間]**、**[種類]** または **[説明]** を選択します。
+1. 結果をフィルター処理するには、 **[期間]** 、 **[種類]** または **[説明]** を選択します。
 1. **[適用]** を選択します。
 
     ![予約トランザクションの結果を示すスクリーンショット](./media/billing-view-reservation/portal-billing-reservation-transaction-results.png)
@@ -71,7 +71,7 @@ Azure の予約の詳細については、次の記事を参照してくださ�
 サービス プランの購入:
 
 - [Cosmos DB 予約容量の前払い](../cosmos-db/cosmos-db-reserved-capacity.md)
-- [Azure SQL Database の容量が予約された SQL Database 計算リソースの前払い](../sql-database/sql-database-reserved-capacity.md)
+- [Azure SQL Database の予約容量を使用した SQL Database 計算リソースの前払い](../sql-database/sql-database-reserved-capacity.md)
 - [Azure Reserved VM Instances による仮想マシンの前払い](../virtual-machines/windows/prepay-reserved-vm-instances.md)
 
 ソフトウェア プランの購入:

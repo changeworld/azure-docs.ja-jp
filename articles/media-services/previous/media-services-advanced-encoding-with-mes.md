@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.openlocfilehash: fadf1aa54f525fb3d4c414161583f8a89f2e4c05
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58576294"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61230255"
 ---
 # <a name="perform-advanced-encoding-by-customizing-mes-presets"></a>MES プリセットをカスタマイズして高度なエンコードを実行する 
 
@@ -239,7 +239,7 @@ XML プリセットを使用する場合、下で示す XML サンプルのよ�
 
   * 負でない整数である場合は、フレーム番号 (例: "Start": "120")
   * % サフィックス付きで表現されている場合は、ソース期間に相対的 (例: "Start": "15%")
-  * HH:MM:SS… 形式で表現されている場合は、タイムスタンプ  たとえば、"Start": "00:01:00"
+  * HH:MM:SS… 形式で表現されている場合は、タイムスタンプ たとえば、"Start": "00:01:00"
 
     必要に応じて、表記法を混在させたり、一致させたりすることができます。
 

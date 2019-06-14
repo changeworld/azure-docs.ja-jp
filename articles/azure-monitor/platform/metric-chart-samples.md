@@ -9,11 +9,11 @@ ms.date: 01/29/2019
 ms.author: vitalyg
 ms.subservice: metrics
 ms.openlocfilehash: bbfeb428d38c23955df4497242184499349aecf9
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55302983"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60256690"
 ---
 # <a name="metric-chart-samples"></a>メトリック グラフのサンプル
 
@@ -29,7 +29,7 @@ Azure プラットフォームでは [1,000 個を超えるメトリック](http
 
 ### <a name="how-to-configure-this-chart"></a>このグラフを構成する方法
 
-お客様の App Service リソースを選択し、**[CPU の割合]** メトリックを見つけます。 次に、**[Apply splitting]\(分割の適用\)** をクリックし、**[インスタンス]** ディメンションを選択します。
+お客様の App Service リソースを選択し、 **[CPU の割合]** メトリックを見つけます。 次に、 **[Apply splitting]\(分割の適用\)** をクリックし、 **[インスタンス]** ディメンションを選択します。
 
 ## <a name="application-availability-by-region"></a>リージョンごとのアプリケーションの可用性
 
@@ -49,7 +49,7 @@ Azure プラットフォームでは [1,000 個を超えるメトリック](http
 
 ### <a name="how-to-configure-this-chart"></a>このグラフを構成する方法
 
-メトリックの選択ツールで、お客様のストレージ アカウントと **[トランザクション]** メトリックを選択します。 グラフの種類を**棒グラフ**に切り替えます。 **[Apply splitting]\(分割の適用\)** をクリックし、**[API 名]** ディメンションを選択します。 次に、**[フィルターの追加]** をクリックし、もう一度 **[API 名]** ディメンションを選択します。 フィルター ダイアログで、グラフにプロットしたい API を選択します。
+メトリックの選択ツールで、お客様のストレージ アカウントと **[トランザクション]** メトリックを選択します。 グラフの種類を**棒グラフ**に切り替えます。 **[Apply splitting]\(分割の適用\)** をクリックし、 **[API 名]** ディメンションを選択します。 次に、 **[フィルターの追加]** をクリックし、もう一度 **[API 名]** ディメンションを選択します。 フィルター ダイアログで、グラフにプロットしたい API を選択します。
 
 ## <a name="next-steps"></a>次の手順
 

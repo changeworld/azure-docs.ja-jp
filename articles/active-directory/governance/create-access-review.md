@@ -15,12 +15,12 @@ ms.date: 05/21/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7cb889b243de7459b7b14f9d778a3177873de3f6
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 1ef72f1649c3f3e0af7fba53b2e8dbcee49d4b59
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66473301"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66734559"
 ---
 # <a name="create-an-access-review-of-groups-or-applications-in-azure-ad-access-reviews"></a>グループまたはアプリケーションのアクセス レビューを Azure AD アクセス レビューで作成する
 
@@ -31,7 +31,6 @@ ms.locfileid: "66473301"
 ## <a name="prerequisites"></a>前提条件
 
 - Azure AD Premium P2
-- [アクセス レビューの配布準備](access-reviews-overview.md)
 - グローバル管理者またはユーザー管理者
 
 詳細については、[ライセンスが必要なユーザー](access-reviews-overview.md#which-users-must-have-licenses)に関する記事をご覧ください。

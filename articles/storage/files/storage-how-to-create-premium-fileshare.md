@@ -9,10 +9,10 @@ ms.date: 05/05/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 265a1cf0a8a5e1e099a4ec7a9f0d674e0c474dd4
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65190094"
 ---
 # <a name="how-to-create-an-premium-azure-file-share"></a>Premium Azure ファイル共有を作成する方法
@@ -47,7 +47,7 @@ Premium Azure ファイル共有などの Azure リソースにアクセスす�
 1. 次に、ストレージ アカウントの名前を入力します。 選択する名前は Azure 全体で一意である必要があります。 また、名前の長さは 3 から 24 文字とし、数字と小文字のみを使用できます。
 1. ストレージ アカウントの場所を選択するか、または既定の場所を使います。
 1. **[パフォーマンス]** では **[Premium]** を選択します。
-1. **[アカウントの種類]** を選択し、**[FileStorage (preview)]\(FileStorage (プレビュー)\)** を選択します。
+1. **[アカウントの種類]** を選択し、 **[FileStorage (preview)]\(FileStorage (プレビュー)\)** を選択します。
 1. **[レプリケーション]** の設定は、既定値の **[ローカル冗長ストレージ (LRS)]** のままにします。
 
     ![Premium ファイル共有にストレージ アカウントを作成する方法](media/storage-how-to-create-premium-fileshare/premium-files-storage-account.png)
@@ -59,9 +59,9 @@ Premium Azure ファイル共有などの Azure リソースにアクセスす�
 
 ### <a name="create-a-premium-file-share"></a>Premium ファイル共有を作成する
 
-1. ストレージ アカウントの左側のメニューで、**[File サービス]** セクションまでスクロールし、**[Files (プレビュー)]** を選択します。
+1. ストレージ アカウントの左側のメニューで、 **[File サービス]** セクションまでスクロールし、 **[Files (プレビュー)]** を選択します。
 1. **[+ ファイル共有]** を選択して、Premium ファイル共有を作成します。
-1. ファイル共有の名前と必要なクォータを入力し、**[作成]** を選択します。
+1. ファイル共有の名前と必要なクォータを入力し、 **[作成]** を選択します。
 
 > [!NOTE]
 > プロビジョニングされる共有サイズは共有クォータによって指定され、ファイル共有はプロビジョニングされたサイズで課金されます。詳しくは、[価格のページ](https://azure.microsoft.com/pricing/details/storage/files/)をご覧ください。

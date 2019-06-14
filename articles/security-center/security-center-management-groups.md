@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/19/2018
 ms.author: rkarlin
 ms.openlocfilehash: 7e26dc37c5c4f85e3db634bd961bf9308e418a03
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66148154"
 ---
 # <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>Azure Security Center に対するテナント全体の可視性を確保する
@@ -42,8 +42,8 @@ Azure の管理グループを使用すると、一連のサブスクリプシ�
 
  
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. **[すべてのサービス]** > **[管理グループ]** を選択します。
-3. メイン ページで、**[New Management group]\(新しい管理グループ\)** を選択します。 
+2. **[すべてのサービス]**  >  **[管理グループ]** を選択します。
+3. メイン ページで、 **[New Management group]\(新しい管理グループ\)** を選択します。 
 
     ![メイン グループ](./media/security-center-management-groups/main.png) 
 4.  [管理グループ ID] フィールドに入力します。 
@@ -70,7 +70,7 @@ Azure Active Directory テナント管理者には、Azure サブスクリプシ
 
 1. [Azure Portal](https://portal.azure.com) または [Azure Active Directory 管理センター](https://aad.portal.azure.com)にサインインします。
 
-2. ナビゲーション リストで **[Azure Active Directory]**、**[プロパティ]** の順にクリックします。
+2. ナビゲーション リストで **[Azure Active Directory]** 、 **[プロパティ]** の順にクリックします。
 
    ![Azure AD のプロパティ - スクリーンショット](./media/security-center-management-groups/aad-properties.png)
 
@@ -96,16 +96,16 @@ Azure Active Directory テナント管理者には、Azure サブスクリプシ
 #### <a name="assign-rbac-roles-to-users-through-the-azure-portal"></a>Azure portal を使用してユーザーに RBAC ロールを割り当てます。 
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。 
-1. 管理グループを表示するには、Azure メイン メニューの **[すべてのサービス]** を選択してから、**[管理グループ]** を選択します。
-1.  管理グループを選択し、**[詳細]** をクリックします。
+1. 管理グループを表示するには、Azure メイン メニューの **[すべてのサービス]** を選択してから、 **[管理グループ]** を選択します。
+1.  管理グループを選択し、 **[詳細]** をクリックします。
 
     ![管理グループの詳細のスクリーンショット](./media/security-center-management-groups/management-group-details.PNG)
  
-1. **[アクセス制御 (IAM)]**、**[ロールの割り当て]** の順にクリックします。
+1. **[アクセス制御 (IAM)]** 、 **[ロールの割り当て]** の順にクリックします。
 
 1. **[ロールの割り当ての追加]** をクリックします。
 
-1. 割り当てるロールとユーザーを選択し、**[保存]** をクリックします。  
+1. 割り当てるロールとユーザーを選択し、 **[保存]** をクリックします。  
    
    ![セキュリティ閲覧者ロールの追加のスクリーンショット](./media/security-center-management-groups/asc-security-reader.png)
 
@@ -147,7 +147,7 @@ Azure Active Directory テナント管理者には、Azure サブスクリプシ
 
     ![サブスクリプション セレクターのスクリーンショット](./media/security-center-management-groups/subscription-selector.png)
 
-1. Azure メイン メニューの **[すべてのサービス]** を選択し、**[Security Center]** を選択します。
+1. Azure メイン メニューの **[すべてのサービス]** を選択し、 **[Security Center]** を選択します。
 2. **[概要]** には、サブスクリプションの対象範囲のグラフが表示されます。
 
     ![サブスクリプションの対象範囲グラフのスクリーンショット](./media/security-center-management-groups/security-center-subscription-coverage.png)
@@ -161,7 +161,7 @@ RBAC ロールがユーザーに割り当てられたら、テナント管理者
 
 1. [Azure Portal](https://portal.azure.com) または [Azure Active Directory 管理センター](https://aad.portal.azure.com)にサインインします。
 
-2. ナビゲーション リストで **[Azure Active Directory]**、**[プロパティ]** の順にクリックします。
+2. ナビゲーション リストで **[Azure Active Directory]** 、 **[プロパティ]** の順にクリックします。
 
 3. **[全体管理者は、Azure サブスクリプションと管理グループを管理できます]** のスイッチを **[いいえ]** に設定します。
 
@@ -180,7 +180,7 @@ RBAC ロールがユーザーに割り当てられたら、テナント管理者
 
     ![既存のものを追加します](./media/security-center-management-groups/add-existing.png)
 
-3. **[Add existing resource]\(既存のリソースの追加\)** でサブスクリプションを入力し、**[保存]** をクリックします。
+3. **[Add existing resource]\(既存のリソースの追加\)** でサブスクリプションを入力し、 **[保存]** をクリックします。
 
 4. 手順 1 ～ 3 を繰り返して、スコープ内のすべてのサブスクリプションを追加します。
 

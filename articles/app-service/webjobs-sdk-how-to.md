@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
 ms.openlocfilehash: 38d8bdfcba48d2080b434ebec192b41f3663ae6a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58895209"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60831794"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>イベント ドリブンのバックグラウンド処理に Azure WebJobs SDK を使用する方法
 
@@ -696,7 +696,7 @@ Azure Functions のドキュメントでは、各バインドの種類に関す�
 * [例](../azure-functions/functions-bindings-storage-queue.md#trigger---example)。 コード サンプルです。 C# クラス ライブラリの例は、WebJobs SDK に適用されます。 `FunctionName` 属性は単に省略します。
 * [属性](../azure-functions/functions-bindings-storage-queue.md#trigger---attributes)。 バインドの種類に使用する属性です。
 * [構成](../azure-functions/functions-bindings-storage-queue.md#trigger---configuration)。 属性のプロパティとコンストラクターのパラメーターの説明です。
-* [[使用状況]](../azure-functions/functions-bindings-storage-queue.md#trigger---usage):  どの種類にバインドできるかとバインドの動作方法に関する情報です。 例: ポーリング アルゴリズム、有害キュー処理。
+* [[使用状況]](../azure-functions/functions-bindings-storage-queue.md#trigger---usage): どの種類にバインドできるかとバインドの動作方法に関する情報です。 例: ポーリング アルゴリズム、有害キュー処理。
   
 バインドの参照記事の一覧については、Azure Functions の[トリガーとバインド](../azure-functions/functions-triggers-bindings.md#supported-bindings)に関する記事の「サポートされるバインディング」をご覧ください。 その一覧では、HTTP、Webhook、Event Grid のバインドは、Azure Functions でのみサポートされており、WebJobs SDK ではサポートされていません。
 

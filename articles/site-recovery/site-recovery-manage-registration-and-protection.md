@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajani-janaki-ram
 ms.openlocfilehash: 1b4cd5bb020e73dc9045eb164ce49931f818f72d
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65415476"
 ---
 # <a name="remove-servers-and-disable-protection"></a>サーバーの削除と保護の無効化
@@ -32,7 +32,7 @@ VMware VM または Windows/Linux 物理サーバーを Azure にレプリケー
 1. 削除する VMM サーバー上のクラウドで仮想マシンのレプリケートを停止します。
 2. 削除する VMM サーバー上のクラウドで使用されているすべてのネットワーク マッピングを削除します。 **[Site Recovery Infrastructure (Site Recovery インフラストラクチャ)]**  >  **[For System Center VMM (System Center VMM)]**  >  **[ネットワーク マッピング]** で、ネットワーク マッピングを右クリックして **[削除]** をクリックします。
 3. VMM サーバーの ID を書き留めます。
-4. 削除する VMM サーバー上のクラウドからレプリケーション ポリシーの関連付けを解除します。  **[Site Recovery Infrastructure (Site Recovery インフラストラクチャ)]**  >  **[For System Center VMM (System Center VMM)]**  >   **[レプリケーション ポリシー]** で、関連付けられているポリシーをダブルクリックします。 クラウドを右クリックして、**[関連付け解除]** をクリックします。
+4. 削除する VMM サーバー上のクラウドからレプリケーション ポリシーの関連付けを解除します。  **[Site Recovery Infrastructure (Site Recovery インフラストラクチャ)]**  >  **[For System Center VMM (System Center VMM)]**  >   **[レプリケーション ポリシー]** で、関連付けられているポリシーをダブルクリックします。 クラウドを右クリックして、 **[関連付け解除]** をクリックします。
 5. VMM サーバーまたはアクティブなノードを削除します。 **[Site Recovery Infrastructure (Site Recovery インフラストラクチャ)]**  >  **[For System Center VMM (System Center VMM)]**  >  **[VMM サーバー]** で、サーバーを右クリックして **[削除]** をクリックします。
 6. VMM サーバーが切断状態になっていた場合は、VMM サーバーで[クリーンアップ スクリプト](https://aka.ms/asr-cleanup-script-vmm)をダウンロードして実行します。 **[管理者として実行]** オプションを使用して PowerShell を開き、既定 (LocalMachine) のスコープの実行ポリシーを変更します。 スクリプトで、削除する VMM サーバーの ID を指定します。 このスクリプトにより、登録とクラウドのペアリングの情報がサーバーから削除されます。
 5. 任意のセカンダリ VMM サーバーでクリーンアップ スクリプトを実行します。
@@ -45,9 +45,9 @@ VMware VM または Windows/Linux 物理サーバーを Azure にレプリケー
 Hyper-V サイトには、VMM で管理されていない Hyper-V ホストが収集されます。 次の方法で Hyper-V サイト上のホストを削除します。
 
 1. ホストに配置されている Hyper-V VM のレプリケーションを無効にします。
-2. Hyper-V サイトのポリシーの関連付けを解除します。 **[Site Recovery Infrastructure (Site Recovery インフラストラクチャ)]**  >  **[For Hyper-V Sites (Hyper-V サイト)]**  >   **[レプリケーション ポリシー]** で、関連付けられているポリシーをダブルクリックします。 サイトを右クリックして、**[関連付け解除]** をクリックします。
-3. Hyper-V ホストを削除します。 **[Site Recovery Infrastructure]\(Site Recouvery インフラストラクチャ\)** > **[For Hyper-V Sites]\(Hyper-V サイト\)** > **[Hyper-V Hosts]\(Hyper-V ホスト\)** で、サーバーを右クリックして **[削除]** をクリックします。
-4. すべてのホストを削除したら、Hyper-V サイトを削除します。 **[Site Recovery Infrastructure]\(Site Recouvery インフラストラクチャ\)** > **[For Hyper-V Sites]\(Hyper-V サイト\)** > **[Hyper-サイト]** で、サイトを右クリックして **[削除]** をクリックします。
+2. Hyper-V サイトのポリシーの関連付けを解除します。 **[Site Recovery Infrastructure (Site Recovery インフラストラクチャ)]**  >  **[For Hyper-V Sites (Hyper-V サイト)]**  >   **[レプリケーション ポリシー]** で、関連付けられているポリシーをダブルクリックします。 サイトを右クリックして、 **[関連付け解除]** をクリックします。
+3. Hyper-V ホストを削除します。 **[Site Recovery Infrastructure]\(Site Recouvery インフラストラクチャ\)**  >  **[For Hyper-V Sites]\(Hyper-V サイト\)**  >  **[Hyper-V Hosts]\(Hyper-V ホスト\)** で、サーバーを右クリックして **[削除]** をクリックします。
+4. すべてのホストを削除したら、Hyper-V サイトを削除します。 **[Site Recovery Infrastructure]\(Site Recouvery インフラストラクチャ\)**  >  **[For Hyper-V Sites]\(Hyper-V サイト\)**  >  **[Hyper-サイト]** で、サイトを右クリックして **[削除]** をクリックします。
 5. Hyper-V ホストが **[切断]** 状態だった場合は、削除した各 Hyper-V ホストで次のスクリプトを実行します。 このスクリプトは、サーバー上の設定をクリーンアップし、コンテナーからサーバーの登録を解除します。
 
 

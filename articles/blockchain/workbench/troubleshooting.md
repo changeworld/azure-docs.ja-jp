@@ -11,10 +11,10 @@ ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
 ms.openlocfilehash: b0263761a4aaf663b16584fbf9caa11bb124d5c4
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65510087"
 ---
 # <a name="azure-blockchain-workbench-troubleshooting"></a>Azure Blockchain Workbench のトラブルシューティング
@@ -39,7 +39,7 @@ git clone https://github.com/Azure-Samples/blockchain.git
 ## <a name="run-the-script"></a>スクリプトを実行する
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install.md)]
 
-`collectBlockchainWorkbenchTroubleshooting.ps1` スクリプトを実行してログを収集し、トラブルシューティング情報のフォルダーを含む ZIP ファイルを作成します。 例: 
+`collectBlockchainWorkbenchTroubleshooting.ps1` スクリプトを実行してログを収集し、トラブルシューティング情報のフォルダーを含む ZIP ファイルを作成します。 例:
 
 ``` powershell
 collectBlockchainWorkbenchTroubleshooting.ps1 -SubscriptionID "<subscription_id>" -ResourceGroupName "workbench-resource-group-name"
@@ -50,11 +50,11 @@ collectBlockchainWorkbenchTroubleshooting.ps1 -SubscriptionID "<subscription_id>
 |---------|---------|----|
 | SubscriptionID | すべてのリソースを作成または特定する サブスクリプション ID。 | はい |
 | ResourceGroupName | Blockchain Workbench がデプロイされている Azure リソース グループの名前。 | はい |
-| OutputDirectory | 出力 .ZIP ファイルを作成するパス。 指定しない場合、既定は現在のディレクトリになります。 | いいえ  |
-| LookbackHours | 利用統計情報を取得する際に使用する時間数。 既定値は 24 時間です。 最大値は 90 時間です | いいえ  |
-| OmsSubscriptionId | Azure Monitor ログのデプロイ先のサブスクリプション ID。 ブロックチェーン ネットワークの Azure Monitor ログが Blockchain Workbench のリソース グループ以外にデプロイされている場合にのみ、このパラメーターを渡します。| いいえ  |
-| OmsResourceGroup |Azure Monitor ログのデプロイ先のリソース グループ。 ブロックチェーン ネットワークの Azure Monitor ログが Blockchain Workbench のリソース グループ以外にデプロイされている場合にのみ、このパラメーターを渡します。| いいえ  |
-| OmsWorkspaceName | Log Analytics ワークスペース名。 ブロックチェーン ネットワークの Azure Monitor ログが Blockchain Workbench のリソース グループ以外にデプロイされている場合にのみ、このパラメーターを渡します | いいえ  |
+| OutputDirectory | 出力 .ZIP ファイルを作成するパス。 指定しない場合、既定は現在のディレクトリになります。 | いいえ |
+| LookbackHours | 利用統計情報を取得する際に使用する時間数。 既定値は 24 時間です。 最大値は 90 時間です | いいえ |
+| OmsSubscriptionId | Azure Monitor ログのデプロイ先のサブスクリプション ID。 ブロックチェーン ネットワークの Azure Monitor ログが Blockchain Workbench のリソース グループ以外にデプロイされている場合にのみ、このパラメーターを渡します。| いいえ |
+| OmsResourceGroup |Azure Monitor ログのデプロイ先のリソース グループ。 ブロックチェーン ネットワークの Azure Monitor ログが Blockchain Workbench のリソース グループ以外にデプロイされている場合にのみ、このパラメーターを渡します。| いいえ |
+| OmsWorkspaceName | Log Analytics ワークスペース名。 ブロックチェーン ネットワークの Azure Monitor ログが Blockchain Workbench のリソース グループ以外にデプロイされている場合にのみ、このパラメーターを渡します | いいえ |
 
 ## <a name="what-is-collected"></a>収集される内容
 

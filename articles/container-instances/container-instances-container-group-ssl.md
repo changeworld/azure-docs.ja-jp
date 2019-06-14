@@ -10,10 +10,10 @@ ms.date: 04/03/2019
 ms.author: danlep
 ms.custom: ''
 ms.openlocfilehash: 12de4ef31084d8ac8586c79ffe3d0a8e891727bf
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65411400"
 ---
 # <a name="enable-an-ssl-endpoint-in-a-container-group"></a>コンテナー グループで SSL エンドポイントを有効にする
@@ -44,7 +44,7 @@ openssl req -new -newkey rsa:2048 -nodes -keyout ssl.key -out ssl.csr
 
 画面の指示に従って、ID 情報を追加します。 Common Name には、証明書に関連付けられているホスト名を入力します。 パスワードの入力を求めるメッセージが表示されたら、何も入力せず Enter キーを押して、パスワードの追加をスキップします。
 
-次のコマンドを実行して、証明書の要求から自己署名証明書 (.crt file) を作成します。 例: 
+次のコマンドを実行して、証明書の要求から自己署名証明書 (.crt file) を作成します。 例:
 
 ```console
 openssl x509 -req -days 365 -in ssl.csr -signkey ssl.key -out ssl.crt

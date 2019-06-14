@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: mareat
 ms.openlocfilehash: 7361eff0f76271564fd5a0e9b8a18221ec4138e3
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56099005"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60860118"
 ---
 # <a name="visualize-azure-network-watcher-nsg-flow-logs-using-open-source-tools"></a>オープン ソース ツールを使用した Azure Network Watcher NSG フロー ログの視覚化
 
@@ -205,7 +205,7 @@ sudo /etc/init.d/logstash start
 
 [ダッシュボード ファイル](https://aka.ms/networkwatchernsgflowlogdashboard)、[視覚化ファイル](https://aka.ms/networkwatchernsgflowlogvisualizations)、[保存された検索ファイル](https://aka.ms/networkwatchernsgflowlogsearch)をそれぞれダウンロードします。
 
-Kibana の **[Management (管理)]** タブの下で **[Saved Objects (保存されたオブジェクト)]** に移動して、3 つのファイルすべてをインポートします。 これで、**[Dashboard (ダッシュボード)]** タブからサンプル ダッシュボードを開いて読み込むことができます。
+Kibana の **[Management (管理)]** タブの下で **[Saved Objects (保存されたオブジェクト)]** に移動して、3 つのファイルすべてをインポートします。 これで、 **[Dashboard (ダッシュボード)]** タブからサンプル ダッシュボードを開いて読み込むことができます。
 
 関心のあるメトリックに合わせて独自の視覚化とダッシュボードを作成することもできます。 Kibana の視覚化を作成する方法の詳細については、Kibana の[公式ドキュメント](https://www.elastic.co/guide/en/kibana/current/visualize.html)を参照してください。
 

@@ -18,10 +18,10 @@ ms.reviewer: lenalepa, sureshja, zachowd
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d47075f9e18b299341a98983ffb8a47389fd7063
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65540238"
 ---
 # <a name="how-to-configure-an-applications-publisher-domain-preview"></a>方法:アプリケーションの発行元ドメインを構成する (プレビュー)
@@ -55,19 +55,19 @@ ms.locfileid: "65540238"
 1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
 
 1. アカウントが複数の Azure AD テナントに存在する場合:
-   1. ページの右上隅にあるメニューからプロファイルを選択し、**[ディレクトリの切り替え]** を選択します。
+   1. ページの右上隅にあるメニューからプロファイルを選択し、 **[ディレクトリの切り替え]** を選択します。
    1. アプリケーションを作成する Azure AD テナントにセッションを変更します。
 
 1. [[Azure Active Directory] > [アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) に移動し、構成するアプリを見つけて選択します。
 
    アプリを選択すると、アプリの **[概要]** ページが表示されます。
 
-1. アプリの **[概要]** ページから、**[ブランド]** セクションを選択します。
+1. アプリの **[概要]** ページから、 **[ブランド]** セクションを選択します。
 
 1. **[発行元ドメイン]** フィールドを見つけ、次のいずれかのオプションを選択します。
 
-   - ドメインがまだ構成されていない場合は、**[ドメインの構成]** を選択します。
-   - ドメインが既に構成されている場合は、**[ドメインを更新]** を選択します。
+   - ドメインがまだ構成されていない場合は、 **[ドメインの構成]** を選択します。
+   - ドメインが既に構成されている場合は、 **[ドメインを更新]** を選択します。
 
 アプリがテナントで登録されている場合は、選択するタブとして **[確認済みドメインの選択]** と **[新しいドメインの確認]** の 2 つが表示されます。
 
@@ -95,7 +95,7 @@ ms.locfileid: "65540238"
 
 ### <a name="to-select-a-verified-domain"></a>検証済みのドメインを選択するには
 
-- テナントに検証済みのドメインが存在する場合は、**[確認済みドメインの選択]** ドロップダウンからいずれかのドメインを選択します。
+- テナントに検証済みのドメインが存在する場合は、 **[確認済みドメインの選択]** ドロップダウンからいずれかのドメインを選択します。
 
 ## <a name="implications-on-the-app-consent-prompt"></a>アプリの同意プロンプトへの影響
 

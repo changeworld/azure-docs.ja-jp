@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/26/2019
 ms.author: absha
 ms.openlocfilehash: cfc63349e20aa6dbef4e0d31e81842d325bd3ec6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66134612"
 ---
 # <a name="configure-an-application-gateway-with-an-internal-load-balancer-ilb-endpoint"></a>内部ロード バランサー (ILB) エンドポイントでアプリケーション ゲートウェイを構成する
@@ -39,8 +39,8 @@ Azure Portal (<https://portal.azure.com>) にログインします
 1. Azure Portal の左上にある **[新規]** をクリックします。
 2. **[ネットワーク]** を選択し、注目のリストで **[Application Gateway]** を選択します。
 3. アプリケーション ゲートウェイの名前として「*myAppGateway*」を、新しいリソース グループとして「*myResourceGroupAG*」を入力します。
-4. 他の設定は既定値をそのまま使用し、**[OK]** をクリックします。
-5. **[仮想ネットワークの選択]**、**[新規作成]** の順にクリックし、次の仮想ネットワークの値を入力します。
+4. 他の設定は既定値をそのまま使用し、 **[OK]** をクリックします。
+5. **[仮想ネットワークの選択]** 、 **[新規作成]** の順にクリックし、次の仮想ネットワークの値を入力します。
    - myVNet* - 仮想ネットワークの名前です。
    - 10.0.0.0/16* - 仮想ネットワークのアドレス空間です。
    - *myAGSubnet* - サブネットの名前です。
@@ -48,12 +48,12 @@ Azure Portal (<https://portal.azure.com>) にログインします
      ![private-frontendip-1](./media/configure-application-gateway-with-private-frontend-ip/private-frontendip-1.png)
 6. **[OK]** をクリックして、仮想ネットワークとサブネットを作成します。
 7. プライベートとしてフロントエンド IP 構成を選びます。既定では、動的 IP アドレスの割り当てになっています。 選択したサブネットの最初に利用可能なアドレスが、フロントエンド IP アドレスとして割り当てられます。
-8. サブネット アドレス範囲 (静的割り当て) からプライベート IP を選ぶ場合は、**[特定のプライベート IP アドレスの選択]** チェック ボックスをオンにして、IP アドレスを指定します。
+8. サブネット アドレス範囲 (静的割り当て) からプライベート IP を選ぶ場合は、 **[特定のプライベート IP アドレスの選択]** チェック ボックスをオンにして、IP アドレスを指定します。
    > [!NOTE]
    > 一度割り当てられると、IP アドレスの種類 (静的または動的) を後で変更することはできません。
 9. リスナーの構成でプロトコルとポート、WAF 構成 (必要な場合) を選択して、[OK] をクリックします。
     ![private-frontendip-2](./media/configure-application-gateway-with-private-frontend-ip/private-frontendip-2.png)
-10. 概要ページで設定を確認し、**[OK]** をクリックして、ネットワーク リソースとアプリケーション ゲートウェイを作成します。 アプリケーション ゲートウェイの作成には数分かかる場合があります。デプロイが正常に終了するのを待ち、その後で次のセクションに進みます。
+10. 概要ページで設定を確認し、 **[OK]** をクリックして、ネットワーク リソースとアプリケーション ゲートウェイを作成します。 アプリケーション ゲートウェイの作成には数分かかる場合があります。デプロイが正常に終了するのを待ち、その後で次のセクションに進みます。
 
 ## <a name="add-backend-pool"></a>バックエンド プールを追加する
 
@@ -71,12 +71,12 @@ Azure Portal (<https://portal.azure.com>) にログインします
    - *myVM* - 仮想マシンの名前です。
    - *azureuser* - 管理者のユーザー名です。
    - *Azure123456!* パスワードです。
-   - **[既存のものを使用]**、*[myResourceGroupAG]* の順に選択します。
+   - **[既存のものを使用]** 、 *[myResourceGroupAG]* の順に選択します。
 4. Click **OK**.
-5. 仮想マシンのサイズとして **[DS1_V2]** を選択し、**[選択]** をクリックします。
+5. 仮想マシンのサイズとして **[DS1_V2]** を選択し、 **[選択]** をクリックします。
 6. 仮想ネットワークに対して **[myVNet]** が選択されていること、およびサブネットが **myBackendSubnet** であることを確認します。
 7. **[無効]** をクリックして、ブート診断を無効にします。
-8. **[OK]** をクリックし、概要ページの設定を確認して、**[作成]** をクリックします。
+8. **[OK]** をクリックし、概要ページの設定を確認して、 **[作成]** をクリックします。
 
 ### <a name="install-iis"></a>IIS のインストール
 

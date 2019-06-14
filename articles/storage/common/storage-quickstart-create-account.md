@@ -10,10 +10,10 @@ ms.date: 05/06/2019
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: 8375f4c54dc436ecf0694ec5f629c81d3591594d
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65234187"
 ---
 # <a name="create-a-storage-account"></a>ストレージ アカウントの作成
@@ -182,7 +182,7 @@ az storage account create \
 
 # <a name="templatetabtemplate"></a>[テンプレート](#tab/template)
 
-Azure PowerShell または Azure CLI を使用して Resource Manager テンプレートをデプロイし、ストレージ アカウントを作成できます。 このハウツー記事で使うテンプレートは、[Azure Resource Manager クイックスタートのテンプレート](https://azure.microsoft.com/resources/templates/101-storage-account-create/)に関する記事からのものです。 スクリプトを実行するには、**[使ってみる]** を選択して、Azure Cloud Shell を開きます。 スクリプトを貼り付けるには、シェルを右クリックし、**[貼り付け]** を選択します。
+Azure PowerShell または Azure CLI を使用して Resource Manager テンプレートをデプロイし、ストレージ アカウントを作成できます。 このハウツー記事で使うテンプレートは、[Azure Resource Manager クイックスタートのテンプレート](https://azure.microsoft.com/resources/templates/101-storage-account-create/)に関する記事からのものです。 スクリプトを実行するには、 **[使ってみる]** を選択して、Azure Cloud Shell を開きます。 スクリプトを貼り付けるには、シェルを右クリックし、 **[貼り付け]** を選択します。
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -219,8 +219,8 @@ az group deployment create --resource-group $resourceGroupName --template-file "
 
 Azure Portal を使用してリソース グループを削除するには:
 
-1. Azure Portal で左側のメニューを展開してサービスのメニューを開き、**[リソース グループ]** を選択して、リソース グループの一覧を表示します。
-2. 削除するリソース グループを見つけて、一覧の右側にある **[詳細]** ボタン (**...**) を右クリックします。
+1. Azure Portal で左側のメニューを展開してサービスのメニューを開き、 **[リソース グループ]** を選択して、リソース グループの一覧を表示します。
+2. 削除するリソース グループを見つけて、一覧の右側にある **[詳細]** ボタン ( **...** ) を右クリックします。
 3. **[リソース グループの削除]** を選択し、確認します。
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)

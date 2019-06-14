@@ -10,11 +10,11 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.openlocfilehash: 0b68819ba032d7655433aadd30fe2852941096ce
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54000548"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61478880"
 ---
 # <a name="leverage-query-parallelization-in-azure-stream-analytics"></a>Azure Stream Analytics でのクエリの並列処理の活用
 この記事では、Azure Stream Analytics で並列処理を活用する方法を示します。 入力パーティションの構成と分析クエリ定義のチューニングによって Stream Analytics ジョブをスケールする方法について説明します。
@@ -180,7 +180,7 @@ Stream Analytics ジョブで使用できるストリーミング ユニット�
 パーティション分割されていないステップは、Stream Analytics ジョブの 6 個のストリーミング ユニット (SU) にスケールアップできます。 さらに、パーティション分割されたステップでパーティションごとに 6 SU を追加できます。
 いくつかの**例**を次の表に示します。
 
-| クエリ                                               | ジョブの最大 SU 数 |
+| Query                                               | ジョブの最大 SU 数 |
 | --------------------------------------------------- | ------------------- |
 | <ul><li>クエリに 1 つのステップが含まれている。</li><li>ステップはパーティション分割されていない。</li></ul> | 6 |
 | <ul><li>入力データ ストリームは 16 個にパーティション分割されている。</li><li>クエリに 1 つのステップが含まれている。</li><li>ステップはパーティション分割されていない。</li></ul> | 96 (6 * 16 パーティション) |

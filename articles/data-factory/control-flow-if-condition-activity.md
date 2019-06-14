@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 ms.openlocfilehash: 52f96b8fc2a1288c652169817a3a73d7b26caac9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66153475"
 ---
 # <a name="if-condition-activity-in-azure-data-factory"></a>Azure Data Factory の If Condition アクティビティ
@@ -66,7 +66,7 @@ If Condition アクティビティは、プログラミング言語における 
 
 プロパティ | 説明 | 使用できる値 | 必須
 -------- | ----------- | -------------- | --------
-name | if-condition アクティビティの名前。 | String | はい
+name | if-condition アクティビティの名前。 | string | はい
 type | **IfCondition** に設定する必要があります。 | String | はい
 expression | true または false に評価される式であることが必要です | 結果の型がブール値の式 | はい
 ifTrueActivities | 式が `true` に評価されたときに実行される一連のアクティビティです。 | Array | はい

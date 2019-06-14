@@ -16,10 +16,10 @@ ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3dbfbd76d235cedd297a5ad54b51bc4ebb550bb1
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65466277"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Azure Active Directory のグループのライセンスに関する問題を特定して解決する
@@ -33,7 +33,7 @@ Azure Active Directory (Azure AD) のグループベースのライセンスで�
 ## <a name="how-to-find-license-assignment-errors"></a>ライセンスの割り当てエラーを見つける方法
 **ライセンスの割り当てエラーを見つけるには**
 
-1. 特定のグループ内でエラー状態にあるユーザーを見つけるには、そのグループのウィンドウを開きます。 エラー状態にあるユーザーが存在する場合は、**[ライセンス]** の下に通知が表示されます。
+1. 特定のグループ内でエラー状態にあるユーザーを見つけるには、そのグループのウィンドウを開きます。 エラー状態にあるユーザーが存在する場合は、 **[ライセンス]** の下に通知が表示されます。
 
    ![グループおよびエラーの通知メッセージ](./media/licensing-groups-resolve-problems/group-error-notification.png)
 
@@ -41,7 +41,7 @@ Azure Active Directory (Azure AD) のグループベースのライセンスで�
 
    ![グループ ライセンス エラー状態のユーザーの一覧](./media/licensing-groups-resolve-problems/list-of-users-with-errors.png)
 
-3. 少なくとも 1 つのエラーを含むすべてのグループを見つけるには、**[Azure Active Directory]** ブレードで、**[ライセンス]**、**[概要]** の順に選択します。 注意が必要なグループの場合は、情報ボックスが表示されます。
+3. 少なくとも 1 つのエラーを含むすべてのグループを見つけるには、 **[Azure Active Directory]** ブレードで、 **[ライセンス]** 、 **[概要]** の順に選択します。 注意が必要なグループの場合は、情報ボックスが表示されます。
 
    ![概要、およびエラー状態にあるグループに関する情報](./media/licensing-groups-resolve-problems/group-errors-widget.png)
 
@@ -56,7 +56,7 @@ Azure Active Directory (Azure AD) のグループベースのライセンスで�
 
 **問題**:グループに指定されたいずれかの製品について、利用できるライセンスの数が不足しています。 該当する製品のライセンスを追加で購入するか、他のユーザーかグループから未使用のライセンスを解放する必要があります。
 
-利用できるライセンスの数を確認するには、**[Azure Active Directory]** > **[ライセンス]** > **[すべての製品]** を選択します。
+利用できるライセンスの数を確認するには、 **[Azure Active Directory]**  >  **[ライセンス]**  >  **[すべての製品]** を選択します。
 
 ライセンスを使用中のユーザーとグループを確認するには、製品を選択します。 **[ライセンスされているユーザー]** には、ライセンスが直接または 1 つ以上のグループ経由で割り当てられているユーザーの一覧が表示されます。 **[ライセンスされているグループ]** には、その製品が割り当てられているグループがすべて表示されます。
 

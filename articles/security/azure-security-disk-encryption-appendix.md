@@ -8,10 +8,10 @@ ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
 ms.openlocfilehash: 675ce2de91dd4e53f4945ceef3b174c33be001f6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66118492"
 ---
 # <a name="appendix-for-azure-disk-encryption"></a>Azure Disk Encryption に関する付録 
@@ -175,7 +175,7 @@ Azure Disk Encryption の前提条件に既に精通している場合は、[Azu
 以下のセクションに示すのは、事前に暗号化された Windows VHD を準備し、それを Azure IaaS 内の暗号化された VHD としてデプロイするために必要な情報です。 Azure Site Recovery や Azure 上に新しい Windows VM (VHD) を準備し、それらを起動する際には、これらの情報を使用してください。 VHD を準備してアップロードする方法の詳細については、「[汎用化した VHD をアップロードして Azure で新しい VM を作成する](../virtual-machines/windows/upload-generalized-managed.md)」を参照してください。
 
 ### <a name="update-group-policy-to-allow-non-tpm-for-os-protection"></a>グループ ポリシーを更新して非 TPM で OS を保護できるようにする
-**[ローカル コンピューター ポリシー]** > **[コンピューターの構成]** > **[管理用テンプレート]** > **[Windows コンポーネント]** の下にある、**[BitLocker ドライブ暗号化]** という BitLocker グループ ポリシー設定を構成します。 以下の図に示すように、**[オペレーティング システムのドライブ]** > **[スタートアップ時に追加の認証を要求する]** > **[互換性のある TPM が装備されていない BitLocker を許可する]** の順に選択して、この設定を変更します。
+**[ローカル コンピューター ポリシー]**  >  **[コンピューターの構成]**  >  **[管理用テンプレート]**  >  **[Windows コンポーネント]** の下にある、 **[BitLocker ドライブ暗号化]** という BitLocker グループ ポリシー設定を構成します。 以下の図に示すように、 **[オペレーティング システムのドライブ]**  >  **[スタートアップ時に追加の認証を要求する]**  >  **[互換性のある TPM が装備されていない BitLocker を許可する]** の順に選択して、この設定を変更します。
 
 ![Azure での Microsoft マルウェア対策](./media/azure-security-disk-encryption/disk-encryption-fig8.png)
 
@@ -382,7 +382,7 @@ OS 暗号化の進行状況を監視するには、次の 3 つの方法があ�
 
 ### <a name="bkmk_openSUSE"></a>  openSUSE 13.2
 ディストリビューションのインストール時に暗号化を構成するには、次の手順を行います。
-1. ディスクをパーティション分割するときに、**[ボリューム グループの暗号化]** を選択し、パスワードを入力します。 これは、キー コンテナーにアップロードするパスワードです。
+1. ディスクをパーティション分割するときに、 **[ボリューム グループの暗号化]** を選択し、パスワードを入力します。 これは、キー コンテナーにアップロードするパスワードです。
 
    ![openSUSE 13.2 のセットアップ - ボリューム グループの暗号化](./media/azure-security-disk-encryption/opensuse-encrypt-fig1.png)
 

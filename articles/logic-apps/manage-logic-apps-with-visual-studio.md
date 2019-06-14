@@ -11,10 +11,10 @@ ms.topic: article
 ms.custom: mvc
 ms.date: 05/07/2019
 ms.openlocfilehash: 6a36770ff623e35c56a972a482e24ebb24849051
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65467417"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>Visual Studio でロジック アプリを管理する
@@ -36,7 +36,7 @@ ms.locfileid: "65467417"
   このクイックスタートでは、無料の Visual Studio Community 2017 を使用します。
 
     > [!IMPORTANT]
-    > Visual Studio 2019 または 2017 をインストールする場合は、**[Azure の開発]** ワークロードを選択してください。 Visual Studio 2019 の場合、Cloud Explorer は Azure portal でロジック アプリ デザイナーを開くことはできますが、まだ埋め込まれている Logic App Designer を開くことはできません。 詳細については、「[Visual Studio Cloud Explorer で Azure アカウントに関連付けられているリソースを管理する](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer?view)」を参照してください。
+    > Visual Studio 2019 または 2017 をインストールする場合は、 **[Azure の開発]** ワークロードを選択してください。 Visual Studio 2019 の場合、Cloud Explorer は Azure portal でロジック アプリ デザイナーを開くことはできますが、まだ埋め込まれている Logic App Designer を開くことはできません。 詳細については、「[Visual Studio Cloud Explorer で Azure アカウントに関連付けられているリソースを管理する](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer?view)」を参照してください。
 
     Cloud Explorer for Visual Studio 2015 をインストールするには、[Visual Studio Marketplace から Cloud Explorer をダウンロード](https://marketplace.visualstudio.com/items?itemName=MicrosoftCloudExplorer.CloudExplorerforVisualStudio2015)します。 
     詳細については、[Visual Studio Cloud Explorer での Azure アカウントに関連付けられているリソースの管理 (2015)](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer?view=vs-2015) に関するページをご覧ください。
@@ -69,7 +69,7 @@ Visual Studio では、Azure サブスクリプションに関連付けられて
 
 1. Visual Studio を開きます。 **[表示]** メニューで **[Cloud Explorer]** を選びます。
 
-1. Cloud Explorer で **[アカウント管理]** を選びます。 ロジック アプリに関連付けられている Azure サブスクリプションを選び、**[適用]** を選びます。 例: 
+1. Cloud Explorer で **[アカウント管理]** を選びます。 ロジック アプリに関連付けられている Azure サブスクリプションを選び、 **[適用]** を選びます。 例:
 
    ![[アカウント管理] を選ぶ](./media/manage-logic-apps-with-visual-studio/account-management-select-Azure-subscription.png)
 
@@ -88,7 +88,7 @@ Visual Studio では、Azure Portal から直接デプロイされているか�
 
 1. Cloud Explorer を開いて、ロジック アプリを検索します。 
 
-1. ロジック アプリのショートカット メニューで、**[Logic App Editor で開く]** を選びます。
+1. ロジック アプリのショートカット メニューで、 **[Logic App Editor で開く]** を選びます。
 
    この例では、リソースの種類ごとに示されているので、ロジック アプリは **[Logic Apps]** セクションに表示されます。
 
@@ -108,12 +108,12 @@ Visual Studio では、Azure Portal から直接デプロイされているか�
    > [!NOTE]
    > Visual Studio 2019 の場合、Cloud Explorer は Azure portal でロジック アプリ デザイナーを開くことはできますが、ロジック アプリをダウンロードするために、埋め込まれているロジック アプリ デザイナーを開くことはまだできません。
 
-2. アプリのショートカット メニューで、**[Logic App Editor で開く]** を選びます。
+2. アプリのショートカット メニューで、 **[Logic App Editor で開く]** を選びます。
 
    ロジック アプリ デザイナーが開き、ロジック アプリが表示されます。 
    ロジック アプリの基になっている定義と構造を確認するには、デザイナーの下端で **[コード ビュー]** を選びます。 
 
-3. デザイナーのツール バーで、**[ダウンロード]** を選びます。
+3. デザイナーのツール バーで、 **[ダウンロード]** を選びます。
 
    ![[ダウンロード] を選ぶ](./media/manage-logic-apps-with-visual-studio/download-logic-app.png)
 
@@ -127,11 +127,11 @@ Visual Studio では、Azure Portal から直接デプロイされているか�
 
 Azure Portal で行ったロジック アプリの編集による変更を残しておきたい場合は、Visual Studio で保持されているそのアプリのバージョンを、これらの変更で更新する必要があります。 
 
-* Visual Studio のロジック アプリ デザイナーのツール バーで、**[最新の情報に更新]** を選びます。
+* Visual Studio のロジック アプリ デザイナーのツール バーで、 **[最新の情報に更新]** を選びます。
 
   または
 
-* Visual Studio の Cloud Explorer で、ロジック アプリのショートカット メニューを開き、**[最新の情報に更新]** を選びます。
+* Visual Studio の Cloud Explorer で、ロジック アプリのショートカット メニューを開き、 **[最新の情報に更新]** を選びます。
 
 ![更新でロジック アプリを最新の情報に更新する](./media/manage-logic-apps-with-visual-studio/refresh-logic-app.png)
 
@@ -151,38 +151,38 @@ Azure に展開されているロジック アプリを、Visual Studio から�
 
 ロジック アプリの実行の状態を確認して問題を診断するには、実行の入力や出力などの詳細を Visual Studio で確認できます。
 
-1. Cloud Explorer でロジック アプリのショートカット メニューを開き、**[実行履歴を開く]** を選びます。
+1. Cloud Explorer でロジック アプリのショートカット メニューを開き、 **[実行履歴を開く]** を選びます。
 
    ![実行履歴を開く](./media/manage-logic-apps-with-visual-studio/view-run-history.png)
 
-1. 特定の実行の詳細を表示するには、実行をダブルクリックします。 例: 
+1. 特定の実行の詳細を表示するには、実行をダブルクリックします。 例:
 
    ![詳細な実行履歴](./media/manage-logic-apps-with-visual-studio/view-run-history-details.png)
   
    > [!TIP]
    > プロパティでテーブルを並べ替えるには、そのプロパティの列ヘッダーを選びます。 
 
-1. 入力と出力を確認するステップを展開します。 例: 
+1. 入力と出力を確認するステップを展開します。 例:
 
    ![各ステップの入力と出力を表示する](./media/manage-logic-apps-with-visual-studio/run-inputs-outputs.png)
 
 ## <a name="disable-or-enable-logic-app"></a>ロジック アプリを無効または有効にする
 
 ロジック アプリを削除することなく、次にトリガー条件が満たされたときにトリガーが発動しないようにすることができます。 ロジック アプリを無効にすると、それ以降、Logic Apps エンジンはロジック アプリのワークフロー インスタンスを作成および実行しなくなります。
-Cloud Explorer でロジック アプリのショートカット メニューを開き、**[無効化]** を選びます。
+Cloud Explorer でロジック アプリのショートカット メニューを開き、 **[無効化]** を選びます。
 
 ![ロジック アプリを無効にする](./media/manage-logic-apps-with-visual-studio/disable-logic-app.png)
 
 > [!NOTE]
 > ロジック アプリを無効にすると、新しい実行は開始されなくなります。 進行中および保留中のすべての実行は完了するまで引き続き実行され、完了するには時間がかかる場合があります。 
 
-ロジック アプリの動作を再開する準備ができたら、ロジック アプリを再アクティブ化できます。 Cloud Explorer でロジック アプリのショートカット メニューを開き、**[有効化]** を選びます。
+ロジック アプリの動作を再開する準備ができたら、ロジック アプリを再アクティブ化できます。 Cloud Explorer でロジック アプリのショートカット メニューを開き、 **[有効化]** を選びます。
 
 ![ロジック アプリを有効にする](./media/manage-logic-apps-with-visual-studio/enable-logic-app.png)
 
 ## <a name="delete-your-logic-app"></a>ロジック アプリを削除する
 
-Azure Portal からロジック アプリを削除するには、Cloud Explorer でロジック アプリのショートカット メニューを開き、**[削除]** を選びます。
+Azure Portal からロジック アプリを削除するには、Cloud Explorer でロジック アプリのショートカット メニューを開き、 **[削除]** を選びます。
 
 ![ロジック アプリを削除する](./media/manage-logic-apps-with-visual-studio/delete-logic-app.png)
 

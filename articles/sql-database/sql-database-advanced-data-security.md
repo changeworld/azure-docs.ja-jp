@@ -12,11 +12,11 @@ ms.reviewer: vanto
 manager: craigg
 ms.date: 03/31/2019
 ms.openlocfilehash: a078ac38cef5b395a19481188c474c7f908160d5
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59784485"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61419562"
 ---
 # <a name="advanced-data-security-for-azure-sql-database"></a>Azure SQL Database 向け Advanced Data Security
 
@@ -40,7 +40,7 @@ ADS の使用を始める手順は以下のとおりです。
 
 ## <a name="1-enable-ads"></a>1.ADS を有効にする
 
-ADS を有効にするには、ご使用の SQL Database サーバーまたはマネージド インスタンスの **[セキュリティ]** 見出しの下の **[Advanced Data Security]** に移動します。 データベース サーバーまたはマネージド インスタンス上のすべてのデータベースに対して ADS を有効にするには、**[サーバーで Advanced Data Security を有効にします]** をクリックします。
+ADS を有効にするには、ご使用の SQL Database サーバーまたはマネージド インスタンスの **[セキュリティ]** 見出しの下の **[Advanced Data Security]** に移動します。 データベース サーバーまたはマネージド インスタンス上のすべてのデータベースに対して ADS を有効にするには、 **[サーバーで Advanced Data Security を有効にします]** をクリックします。
 
 > [!NOTE]
 > ストレージ アカウントが自動的に作成され、**脆弱性評価**のスキャン結果を格納するように構成されます。 同じリソース グループおよびリージョン内の別のサーバー用に ADS を既に有効にしてある場合は、既存のストレージ アカウントが使用されます。
@@ -52,7 +52,7 @@ ADS を有効にするには、ご使用の SQL Database サーバーまたは�
 
 ## <a name="2-start-classifying-data-tracking-vulnerabilities-and-investigating-threat-alerts"></a>2.データの分類、脆弱性の追跡、脅威アラートの調査を開始する
 
-**[データの検出と分類]** カードをクリックして、分類が推奨される機密性の高い列を表示し、永続的な機密ラベルを使ってデータを分類します。 **[脆弱性評価]** カードをクリックして、脆弱性のスキャンとレポートを表示および管理し、セキュリティ水準を追跡します。 セキュリティ通知を受け取った場合は、**[Advanced Threat Protection]** カードをクリックして、通知の詳細を表示し、Azure Security Center のセキュリティ通知ページを使って Azure サブスクリプション内のすべての通知の統合レポートを表示します。
+**[データの検出と分類]** カードをクリックして、分類が推奨される機密性の高い列を表示し、永続的な機密ラベルを使ってデータを分類します。 **[脆弱性評価]** カードをクリックして、脆弱性のスキャンとレポートを表示および管理し、セキュリティ水準を追跡します。 セキュリティ通知を受け取った場合は、 **[Advanced Threat Protection]** カードをクリックして、通知の詳細を表示し、Azure Security Center のセキュリティ通知ページを使って Azure サブスクリプション内のすべての通知の統合レポートを表示します。
 
 ## <a name="3-manage-ads-settings-on-your-sql-database-server-or-managed-instance"></a>手順 3.SQL Database サーバーまたはマネージド インスタンス上で ADS の設定を管理する
 
@@ -62,13 +62,13 @@ ADS の設定を表示および管理するには、ご使用の SQL Database �
 
 ## <a name="4-manage-ads-settings-for-a-sql-database"></a>4.SQL Database の ADS の設定を管理する
 
-特定のデータベースに対する ADS の設定をオーバーライドするには、**[データベース レベルで Advanced Data Security を有効にします]** チェック ボックスをオンにします。 このオプションは、データベース サーバーまたはマネージド インスタンス上の全データベースについて受け取る通知の代わりに、またはそれに加えて、個別のデータベースに対する Advanced Threat Protection アラートまたは脆弱性評価結果を別に受け取る特定の要件がある場合にのみ使用します。
+特定のデータベースに対する ADS の設定をオーバーライドするには、 **[データベース レベルで Advanced Data Security を有効にします]** チェック ボックスをオンにします。 このオプションは、データベース サーバーまたはマネージド インスタンス上の全データベースについて受け取る通知の代わりに、またはそれに加えて、個別のデータベースに対する Advanced Threat Protection アラートまたは脆弱性評価結果を別に受け取る特定の要件がある場合にのみ使用します。
 
 チェック ボックスをオンにすると、このデータベースに対して関連する設定を構成することができます。
  
 ![データベースと Advanced Threat Protection の設定](./media/sql-advanced-protection/database_threat_detection_settings.png) 
 
-データベース サーバーまたはマネージド インスタンス用の Advanced Data Security 設定には、ADS のデータベース ウィンドウからもアクセスできます。 メインの ADS ウィンドウで **[設定]** をクリックし、**[Advanced Data Security サーバー設定を表示します]** をクリックします。 
+データベース サーバーまたはマネージド インスタンス用の Advanced Data Security 設定には、ADS のデータベース ウィンドウからもアクセスできます。 メインの ADS ウィンドウで **[設定]** をクリックし、 **[Advanced Data Security サーバー設定を表示します]** をクリックします。 
 
 ![データベース設定](./media/sql-advanced-protection/database_settings.png) 
 

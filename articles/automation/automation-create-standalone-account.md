@@ -10,11 +10,11 @@ ms.date: 01/15/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: cdffc339bee1f5456e4eeb619e566b1f9c34b143
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58093179"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61076795"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>スタンドアロン Azure Automation アカウントを作成する
 
@@ -37,18 +37,18 @@ Azure Portal で Automation アカウントを作成すると、次のアカウ�
 Automation アカウントを作成または更新したり、この記事で説明されているタスクを完了したりするには、次の特権とアクセス許可が必要です。
 
 * Automation アカウントを作成するには、Azure AD ユーザー アカウントが、**Microsoft.Automation** リソースの所有者ロールに相当するアクセス許可を持つロールに追加されている必要があります。 詳細については、「[Azure Automation におけるロールベースのアクセス制御](automation-role-based-access-control.md)」を参照してください。
-* Azure Portal の **[Azure Active Directory]** > **[管理]** > **[アプリの登録]** で、(**[アプリの登録]** が **[はい]** に設定されている場合)、Azure AD テナント内の管理者以外のユーザーは [Active Directory アプリケーションを登録](../active-directory/develop/howto-create-service-principal-portal.md#check-azure-subscription-permissions)できます。 **[アプリの登録]** が **[いいえ]** に設定されている場合、このアクションを実行するユーザーは Azure AD 内のグローバル管理者である必要があります。
+* Azure Portal の **[Azure Active Directory]**  >  **[管理]**  >  **[アプリの登録]** で、( **[アプリの登録]** が **[はい]** に設定されている場合)、Azure AD テナント内の管理者以外のユーザーは [Active Directory アプリケーションを登録](../active-directory/develop/howto-create-service-principal-portal.md#check-azure-subscription-permissions)できます。 **[アプリの登録]** が **[いいえ]** に設定されている場合、このアクションを実行するユーザーは Azure AD 内のグローバル管理者である必要があります。
 
-サブスクリプションの Active Directory インスタンスのメンバーになっていない状態で、サブスクリプションのグローバル管理者/共同管理者ロールに追加された場合、Active Directory にはゲストとして追加されます。 このシナリオでは、**[Automation アカウントの追加]** ページに "作成するためのアクセス許可がありません" というメッセージが表示されます。
+サブスクリプションの Active Directory インスタンスのメンバーになっていない状態で、サブスクリプションのグローバル管理者/共同管理者ロールに追加された場合、Active Directory にはゲストとして追加されます。 このシナリオでは、 **[Automation アカウントの追加]** ページに "作成するためのアクセス許可がありません" というメッセージが表示されます。
 
 ユーザーが先にグローバル管理者/共同管理者ロールに追加された場合は、そのユーザーをサブスクリプションの Active Directory インスタンスから削除した後、Active Directory の完全なユーザー ロールに再度追加できます。
 
 ユーザー ロールを確認するには
 
-1. Azure Portal で、**[Azure Active Directory]** ウィンドウに移動します。
+1. Azure Portal で、 **[Azure Active Directory]** ウィンドウに移動します。
 1. **[ユーザーとグループ]** を選択します。
 1. **[すべてのユーザー]** を選択します。
-1. 特定のユーザーを選択した後、**[プロファイル]** を選択します。 ユーザーのプロファイルの下にある **[ユーザー タイプ]** 属性の値が **[ゲスト]** であってはいけません。
+1. 特定のユーザーを選択した後、 **[プロファイル]** を選択します。 ユーザーのプロファイルの下にある **[ユーザー タイプ]** 属性の値が **[ゲスト]** であってはいけません。
 
 ## <a name="create-a-new-automation-account-in-the-azure-portal"></a>Azure Portal で新しい Automation アカウントを作成する
 
@@ -56,7 +56,7 @@ Azure Portal で Azure Automation アカウントを作成するには、以下�
 
 1. サブスクリプション管理者ロールのメンバーであり、かつサブスクリプションの共同管理者であるアカウントを使用して Azure Portal にサインインします。
 1. **[+ リソースの作成]** を選択します。
-1. 「**Automation**」を検索します。 検索結果で、**[Automation]** を選択します。
+1. 「**Automation**」を検索します。 検索結果で、 **[Automation]** を選択します。
 
    ![Azure Marketplace で [Automation & Control] を検索して選択する](media/automation-create-standalone-account/automation-marketplace-select-create-automationacct.png)
 
@@ -70,13 +70,13 @@ Azure Portal で Azure Automation アカウントを作成するには、以下�
    > ![[Automation アカウントの追加] の警告](media/automation-create-standalone-account/create-account-without-perms.png)
 
 1. **[Automation アカウントの追加]** ウィンドウの **[名前]** ボックスに、新しい Automation アカウントの名前を入力します。 この名前は、選択後に変更することはできません。 *Automation アカウント名は、リージョンおよびリソース グループごとに一意です。削除された Automation アカウントの名前はすぐには使用できない場合があります。*
-1. 複数のサブスクリプションがある場合は、**[サブスクリプション]** ボックスで、新しいアカウントで使用するサブスクリプションを指定します。
+1. 複数のサブスクリプションがある場合は、 **[サブスクリプション]** ボックスで、新しいアカウントで使用するサブスクリプションを指定します。
 1. **[リソース グループ]** に、新しいリソース グループを入力するか既存のリソース グループを選択します。
 1. **[場所]** で、Azure データセンターの場所を選択します。
-1. **[Azure 実行アカウントの作成]** オプションで、**[はい]** が選択されていることを確認し、**[作成]** を選択します。
+1. **[Azure 実行アカウントの作成]** オプションで、 **[はい]** が選択されていることを確認し、 **[作成]** を選択します。
 
    > [!NOTE]
-   > **[Azure 実行アカウントの作成]** で **[いいえ]** を選択して、実行アカウントを作成しなかった場合、**[Automation アカウントの追加]** ウィンドウにメッセージが表示されます。 Azure Portal でアカウントが作成されますが、このアカウントは、クラシック デプロイ モデル内または Azure Resource Manager サブスクリプションのディレクトリ サービス内に対応する認証 ID を持ちません。 その結果、この Automation アカウントは、ご使用のサブスクリプションのリソースへのアクセス権を持ちません。 そのため、このアカウントを参照する Runbook は認証を通過できず、これらのデプロイメント モデルのリソースに対するタスクを実行することができません。
+   > **[Azure 実行アカウントの作成]** で **[いいえ]** を選択して、実行アカウントを作成しなかった場合、 **[Automation アカウントの追加]** ウィンドウにメッセージが表示されます。 Azure Portal でアカウントが作成されますが、このアカウントは、クラシック デプロイ モデル内または Azure Resource Manager サブスクリプションのディレクトリ サービス内に対応する認証 ID を持ちません。 その結果、この Automation アカウントは、ご使用のサブスクリプションのリソースへのアクセス権を持ちません。 そのため、このアカウントを参照する Runbook は認証を通過できず、これらのデプロイメント モデルのリソースに対するタスクを実行することができません。
    >
    > ![[Automation アカウントの追加] の警告](media/automation-create-standalone-account/create-account-decline-create-runas-msg.png)
    >
@@ -89,7 +89,7 @@ Azure Portal で Azure Automation アカウントを作成するには、以下�
 
 Automation アカウントが正常に作成されると、いくつかのリソースが自動的に作成されます。 これらの作成後、Runbook を保持しない場合は安全に削除できます。 実行アカウントを使用して、Runbook でアカウントに対する認証を行うことができます。別の実行アカウントを作成する場合や実行アカウントを必要としない場合を除き、実行アカウントは残しておく必要があります。 実行アカウントのリソースを次の表に示します。
 
-| リソース | 説明 |
+| Resource | 説明 |
 | --- | --- |
 | AzureAutomationTutorial Runbook |実行アカウントを使用した認証の方法を示す、サンプルのグラフィカルな Runbook。 この Runbook は、すべての Resource Manager リソースを取得します。 |
 | AzureAutomationTutorialScript Runbook |実行アカウントを使用した認証の方法を示す、サンプルの PowerShell Runbook。 この Runbook は、すべての Resource Manager リソースを取得します。 |
@@ -99,7 +99,7 @@ Automation アカウントが正常に作成されると、いくつかのリソ
 
 クラシック実行アカウントのリソースを次の表に示します。
 
-| リソース | 説明 |
+| Resource | 説明 |
 | --- | --- |
 | AzureClassicAutomationTutorial Runbook |サンプルのグラフィカル Runbook。 Runbook は、クラシック実行アカウント (証明書) を使用して、サブスクリプション内のすべてのクラシック VM を取得します。 その後、VM の名前と状態が表示されます。 |
 | AzureClassicAutomationTutorial Script Runbook |サンプルの PowerShell Runbook。 Runbook は、クラシック実行アカウント (証明書) を使用して、サブスクリプション内のすべてのクラシック VM を取得します。 その後、VM の名前と状態が表示されます。 |

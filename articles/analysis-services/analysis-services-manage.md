@@ -9,11 +9,11 @@ ms.date: 12/06/2018
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 0bae06d46c2c96ba9dd058e9c2d380379523811c
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52993923"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61065201"
 ---
 # <a name="manage-analysis-services"></a>Analysis Services を管理する
 Azure に Analysis Services サーバーを作成した後は、すぐに、または後で、管理タスクを行うことが必要になる場合があります。 たとえば、データ更新処理の実行、サーバー上のモデルにアクセスできるユーザーの制御、サーバーの正常性の監視などです。 Azure Portal または SQL Server Management Studio (SSMS) のどちらかでしか実行できないもの、またはどちらでも実行できるものがあります。
@@ -37,22 +37,22 @@ Azure のサーバーへの接続は、組織内のサーバー インスタン�
 ### <a name="to-connect-with-ssms"></a>SSMS で接続するには
  SSMS を使用する場合は、最初にサーバーに接続する前に、Analysis Services の管理者グループにユーザー名が含まれていることを確認してください。 詳細については、この記事で後述する「[サーバー管理者とデータベース ユーザー](#server-administrators-and-database-users)」を参照してください。
 
-1. 接続する前に、サーバー名を取得する必要があります。 **Azure Portal** でサーバーを選び、**[概要]** > **[サーバー名]** のサーバー名をコピーします。
+1. 接続する前に、サーバー名を取得する必要があります。 **Azure Portal** でサーバーを選び、 **[概要]**  >  **[サーバー名]** のサーバー名をコピーします。
    
     ![Azure でサーバー名を取得する](./media/analysis-services-deploy/aas-deploy-get-server-name.png)
-2. SSMS の**オブジェクト エクスプローラー**で、**[接続]** > **[Analysis Services]** の順にクリックします。
-3. **[サーバーへの接続]** ダイアログ ボックスで、サーバー名を貼り付けてから、**[認証]** で次のいずれかの認証の種類を選びます。   
+2. SSMS の**オブジェクト エクスプローラー**で、 **[接続]**  >  **[Analysis Services]** の順にクリックします。
+3. **[サーバーへの接続]** ダイアログ ボックスで、サーバー名を貼り付けてから、 **[認証]** で次のいずれかの認証の種類を選びます。   
     > [!NOTE]
-    > 認証の種類として、**[Active Directory - MFA サポートで汎用]** が推奨されます。
+    > 認証の種類として、 **[Active Directory - MFA サポートで汎用]** が推奨されます。
 
     > [!NOTE]
     > Microsoft アカウント、Live ID、Yahoo、Gmail などでサインインする場合は、パスワード フィールドを空白のままにしておきます。 [接続] をクリックすると、パスワードの入力を求められます。
 
-    **[Windows 認証]**: <Windows ドメイン>\<ユーザー名> とパスワードを資格情報として使います。
+    **[Windows 認証]** : <Windows ドメイン>\<ユーザー名> とパスワードを資格情報として使います。
 
-    **[Active Directory パスワード認証]**: 組織アカウントを使います。 たとえば、ドメイン参加非コンピューターから接続するときです。
+    **[Active Directory パスワード認証]** : 組織アカウントを使います。 たとえば、ドメイン参加非コンピューターから接続するときです。
 
-    **[Active Directory - MFA サポートで汎用]**: [非対話型認証または多要素認証](../sql-database/sql-database-ssms-mfa-authentication.md)を使います。 
+    **[Active Directory - MFA サポートで汎用]** : [非対話型認証または多要素認証](../sql-database/sql-database-ssms-mfa-authentication.md)を使います。 
    
     ![SSMS で接続する](./media/analysis-services-manage/aas-manage-connect-ssms.png)
 

@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: philmea
 ms.openlocfilehash: b1edd4777839c947cf8f60bb6857f939553e2603
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65467621"
 ---
 # <a name="configure-the-application-dashboard"></a>アプリケーション ダッシュボードの構成
@@ -32,7 +32,7 @@ ms.locfileid: "65467621"
 
 ![ダッシュボード ライブラリ](media/howto-configure-homepage/image2a.png)
 
-たとえば、**[デバイス設定とプロパティ]** タイルを追加して、デバイスの一連の設定とプロパティ値を表示することもできます。 これを行うには、まず **[デバイス テンプレート]** を選択し、次に **[デバイス インスタンス]** を選択します。 その後、タイルのタイトルを指定し、表示する**設定**または**プロパティ**を選択します。 次のスクリーンショットでは、タイルに追加するために選択された設定とプロパティを示しています。 **[完了]** を選択して、ダッシュボードへの変更を保存します。
+たとえば、 **[デバイス設定とプロパティ]** タイルを追加して、デバイスの一連の設定とプロパティ値を表示することもできます。 これを行うには、まず **[デバイス テンプレート]** を選択し、次に **[デバイス インスタンス]** を選択します。 その後、タイルのタイトルを指定し、表示する**設定**または**プロパティ**を選択します。 次のスクリーンショットでは、タイルに追加するために選択された設定とプロパティを示しています。 **[完了]** を選択して、ダッシュボードへの変更を保存します。
 
 ![設定とプロパティの詳細が表示された [Configure Device Details]\(デバイスの詳細の構成\) フォーム](media/howto-configure-homepage/image3a.png)
 

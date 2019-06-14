@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/21/2018
 ms.author: spelluru
 ms.openlocfilehash: 2433f4b3563cc8b301d1815cccf5ab24406e8662
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66111478"
 ---
 # <a name="azure-relay-faqs"></a>Azure Relay に関する FAQ
@@ -71,7 +71,7 @@ WCF リレーは、Standard レベルの名前空間でのみ使用できます�
 場合によっては、1 つのリレーに複数のリスナーが接続されていることも考えられます。 リレーは、接続されているリレー リスナーが 1 つでもあれば、開いていると見なされます。 開いているリレーにリスナーを追加すると、追加のリレー時間が発生します。 また、リレーに接続されたリレー センダー (リレーに対するメッセージの呼び出しまたは送信を実行するクライアント) の数は、リレー時間の計算には影響しません。
 
 ### <a name="how-is-the-messages-meter-calculated-for-wcf-relays"></a>WCF Relay の場合、メッセージ数のメーターはどのようにして計算されますか?
-(**これは、WCF リレーにのみ該当します。メッセージはハイブリッド接続では課金されません。**)
+(**これは、WCF リレーにのみ該当します。メッセージはハイブリッド接続では課金されません。** )
 
 一般に、リレーの場合も、前述した仲介型エンティティ (キュー、トピック、サブスクリプション) と同じ方法で、課金対象のメッセージが計算されます。 ただし、注目すべき違いがいくつかあります。
 

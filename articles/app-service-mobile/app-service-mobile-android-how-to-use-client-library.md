@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 03/07/2019
 ms.author: crdun
 ms.openlocfilehash: 45b5ac0c9b3535e5cc5efdc6827d694b41e0b8dd
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57732117"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60859394"
 ---
 # <a name="how-to-use-the-azure-mobile-apps-sdk-for-android"></a>Azure Mobile Apps SDK for Android の使用方法
 
@@ -108,7 +108,7 @@ MobileServiceClient mClient = new MobileServiceClient(
 
 また、クライアントは、アクティビティまたはコンテキストにアクセスできる必要があります。この例では `this` パラメーターです。  MobileServiceClient の構築が `AndroidManifest.xml` ファイルで参照されるアクティビティの `onCreate()` メソッド内で発生する必要があります。
 
-ベスト プラクティスとして、サーバーの通信を独自の (シングルトン パターン) クラスに要約する必要があります。  この場合、サービスを適切に構成するために、コンストラクター内のアクティビティを渡す必要があります。  例: 
+ベスト プラクティスとして、サーバーの通信を独自の (シングルトン パターン) クラスに要約する必要があります。  この場合、サービスを適切に構成するために、コンストラクター内のアクティビティを渡す必要があります。  例:
 
 ```java
 package com.example.appname.services;
@@ -207,7 +207,7 @@ Azure Mobile Apps バックエンド テーブルでは 5 つの特別なフィ�
 * `byte[] version`:通常、文字列として表され、バージョンもサーバーによって設定されます。
 * `boolean deleted`:レコードが削除されたが、まだ消去されていないことを示します。  クラスのプロパティとして `deleted` を使用しないでください。
 
-`id` フィールドは必須です。  `updatedAt` フィールドと `version` フィールドはオフライン同期に使用されます (それぞれ増分同期、競合の解決用)。  `createdAt` フィールドは参照フィールドであり、クライアントによって使用されません。  名前は、プロパティの "ネットワーク経由" の名前であり、調整することはできません。  ただし、[gson][3] ライブラリを使用して、オブジェクトと "ネットワーク経由" の名前との間のマッピングを作成することができます。  例: 
+`id` フィールドは必須です。  `updatedAt` フィールドと `version` フィールドはオフライン同期に使用されます (それぞれ増分同期、競合の解決用)。  `createdAt` フィールドは参照フィールドであり、クライアントによって使用されません。  名前は、プロパティの "ネットワーク経由" の名前であり、調整することはできません。  ただし、[gson][3] ライブラリを使用して、オブジェクトと "ネットワーク経由" の名前との間のマッピングを作成することができます。  例:
 
 ```java
 package com.example.zumoappname;
@@ -456,7 +456,7 @@ do {
 
 ### <a name="chaining"></a>方法:クエリ メソッドを連結する
 
-バックエンド テーブルのクエリに使用するメソッドは連結できます。 クエリ メソッドを連結することで、フィルター処理した行を並べ替えてから、それらの行の特定の列を選択してページングを行うことができます。 複雑な論理フィルターも作成できます。  各クエリ メソッドでは、query オブジェクトが返されます。 一連のメソッドを完結させてクエリを実際に実行するには、 **execute** メソッドを呼び出します。 例: 
+バックエンド テーブルのクエリに使用するメソッドは連結できます。 クエリ メソッドを連結することで、フィルター処理した行を並べ替えてから、それらの行の特定の列を選択してページングを行うことができます。 複雑な論理フィルターも作成できます。  各クエリ メソッドでは、query オブジェクトが返されます。 一連のメソッドを完結させてクエリを実際に実行するには、 **execute** メソッドを呼び出します。 例:
 
 ```java
 List<ToDoItem> results = mToDoTable
@@ -526,7 +526,7 @@ public class ToDoItemAdapter extends ArrayAdapter<ToDoItem> {
 }
 ```
 
-アダプターの **getView** メソッドをオーバーライドします。 例: 
+アダプターの **getView** メソッドをオーバーライドします。 例:
 
 ```java
     @Override
@@ -1112,7 +1112,7 @@ Active Directory 認証ライブラリ (ADAL) を使用して、Azure Active Dir
     * **INSERT-AUTHORITY-HERE** を、アプリケーションをプロビジョニングしたテナントの名前に置き換えます。 形式は https://login.microsoftonline.com/contoso.onmicrosoft.com である必要があります。
     * **INSERT-RESOURCE-ID-HERE** を、モバイル アプリ バックエンドのクライアント ID に置き換えます。 クライアント ID は、ポータルの **[Azure Active Directory の設定]** の **[詳細]** タブで入手できます。
     * **INSERT-CLIENT-ID-HERE** を、ネイティブ クライアント アプリケーションからコピーしたクライアント ID に置き換えます。
-    * **INSERT-REDIRECT-URI-HERE** を、HTTPS スキームを使用して、サイトの */.auth/login/done* エンドポイントに置き換えます。 これは、*https://contoso.azurewebsites.net/.auth/login/done* のような値である必要があります。
+    * **INSERT-REDIRECT-URI-HERE** を、HTTPS スキームを使用して、サイトの */.auth/login/done* エンドポイントに置き換えます。 これは、 *https://contoso.azurewebsites.net/.auth/login/done* のような値である必要があります。
 
 ```java
 private AuthenticationContext mContext;

@@ -17,11 +17,11 @@ ms.date: 05/16/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 02b831df98db5b9d63873a0da93e603cd7cbf308
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57456042"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60269451"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iwellnessnow"></a>チュートリアル:Azure Active Directory と iWellnessNow の統合
 
@@ -61,11 +61,11 @@ Azure AD への iWellnessNow の統合を構成するには、ギャラリーか
 
 **ギャラリーから iWellnessNow を追加するには、次の手順に従います。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。 
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。 
 
     ![Azure Active Directory のボタン][1]
 
-1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+1. **[エンタープライズ アプリケーション]** に移動します。 次に、 **[すべてのアプリケーション]** に移動します。
 
     ![[エンタープライズ アプリケーション] ブレード][2]
     
@@ -73,7 +73,7 @@ Azure AD への iWellnessNow の統合を構成するには、ギャラリーか
 
     ![[新しいアプリケーション] ボタン][3]
 
-1. 検索ボックスに「**iWellnessNow**」と入力し、結果パネルで **iWellnessNow** を選び、**[追加]** をクリックして、アプリケーションを追加します。
+1. 検索ボックスに「**iWellnessNow**」と入力し、結果パネルで **iWellnessNow** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
     ![結果リストの iWellnessNow](./media/iwellnessnow-tutorial/tutorial_iwellnessnow_addfromgallery.png)
 
@@ -97,11 +97,11 @@ iWellnessNow で Azure AD のシングル サインオンを構成してテス�
 
 **iWellnessNow で Azure AD シングル サインオンを構成するには、次の手順に従います。**
 
-1. Azure portal の **iWellnessNow** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
+1. Azure portal の **iWellnessNow** アプリケーション統合ページで、 **[シングル サインオン]** をクリックします。
 
     ![シングル サインオン構成のリンク][4]
 
-1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+1. **[シングル サインオン]** ダイアログで、 **[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
     ![[シングル サインオン] ダイアログ ボックス](./media/iwellnessnow-tutorial/tutorial_iwellnessnow_samlbase.png)
 
@@ -113,7 +113,7 @@ iWellnessNow で Azure AD のシングル サインオンを構成してテス�
 
     ![[iWellnessNow のドメインと URL] のシングル サインオンの uploadconfig](./media/iwellnessnow-tutorial/tutorial_iwellnessnow_uploadconfig.png)
 
-    b. **フォルダー ロゴ**をクリックしてメタデータ ファイルを選択し、**[アップロード]** をクリックします。
+    b. **フォルダー ロゴ**をクリックしてメタデータ ファイルを選択し、 **[アップロード]** をクリックします。
     
     c. **サービス プロバイダー メタデータ ファイル**のアップロードが正常に完了すると、次のように、**識別子**と**応答 URL** の値が **[iWellnessNow のドメインと URL]** セクションのテキストボックスに自動的に入力されます。
 
@@ -127,7 +127,7 @@ iWellnessNow で Azure AD のシングル サインオンを構成してテス�
 
     b. **[応答 URL]** ボックスに、`https://<CustomerName>.iwellnessnow.com/ssologin` のパターンを使用して URL を入力します。
 
-1. アプリケーションを **SP** 開始モードで構成する場合は、**[詳細な URL 設定の表示]** チェックボックスをオンにして次の手順を実行します。
+1. アプリケーションを **SP** 開始モードで構成する場合は、 **[詳細な URL 設定の表示]** チェックボックスをオンにして次の手順を実行します。
 
     ![[iWellnessNow のドメインと URL] のシングル サインオン情報](./media/iwellnessnow-tutorial/tutorial_iwellnessnow_url1.png)
 
@@ -136,7 +136,7 @@ iWellnessNow で Azure AD のシングル サインオンを構成してテス�
     > [!NOTE] 
     > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[iWellnessNow クライアント サポート チーム](mailto:info@iwellnessnow.com)にお問い合わせください。
 
-1. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
+1. **[SAML 署名証明書]** セクションで、 **[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
     ![証明書のダウンロードのリンク](./media/iwellnessnow-tutorial/tutorial_iwellnessnow_certificate.png) 
 
@@ -158,11 +158,11 @@ iWellnessNow で Azure AD のシングル サインオンを構成してテス�
 
     ![Azure Active Directory のボタン](./media/iwellnessnow-tutorial/create_aaduser_01.png)
 
-1. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックします。
+1. ユーザーの一覧を表示するには、 **[ユーザーとグループ]** に移動し、 **[すべてのユーザー]** をクリックします。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](./media/iwellnessnow-tutorial/create_aaduser_02.png)
 
-1. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
+1. **[ユーザー]** ダイアログ ボックスを開くには、 **[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
 
     ![[追加] ボタン](./media/iwellnessnow-tutorial/create_aaduser_03.png)
 
@@ -174,7 +174,7 @@ iWellnessNow で Azure AD のシングル サインオンを構成してテス�
 
     b. **[ユーザー名]** ボックスに、ユーザーである Britta Simon の電子メール アドレスを入力します。
 
-    c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
+    c. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
 
     d. **Create** をクリックしてください。
  
@@ -190,7 +190,7 @@ iWellnessNow で Azure AD のシングル サインオンを構成してテス�
 
 **iWellnessNow に Britta Simon を割り当てるには、次の手順に従います。**
 
-1. Azure Portal でアプリケーション ビューを開き、ディレクトリ ビューに移動します。次に、**[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** をクリックします。
+1. Azure Portal でアプリケーション ビューを開き、ディレクトリ ビューに移動します。次に、 **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** をクリックします。
 
     ![ユーザーの割り当て][201] 
 
@@ -202,7 +202,7 @@ iWellnessNow で Azure AD のシングル サインオンを構成してテス�
 
     ![[ユーザーとグループ] リンク][202]
 
-1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[追加]** ボタンをクリックします。 次に、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ][203]
 

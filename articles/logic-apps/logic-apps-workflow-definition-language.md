@@ -10,10 +10,10 @@ ms.reviewer: klam, LADocs
 ms.topic: reference
 ms.date: 05/13/2019
 ms.openlocfilehash: 3b0ad33ea6348f24079b3c88f972437244c0bc93
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65596764"
 ---
 # <a name="schema-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Azure Logic Apps のワークフロー定義言語のスキーマ参照
@@ -78,7 +78,7 @@ ms.locfileid: "65596764"
 
 | Attribute | 必須 | Type | 説明 |
 |-----------|----------|------|-------------|
-| <*key-name*> | はい | String | 出力戻り値のキーの名前 |
+| <*key-name*> | はい | string | 出力戻り値のキーの名前 |
 | <*key-type*> | はい | int、float、string、securestring、bool、array、JSON オブジェクト | 出力戻り値の型 |
 | <*key-value*> | はい | <*key-type*> と同じ | 出力の戻り値 |
 |||||
@@ -145,11 +145,11 @@ ms.locfileid: "65596764"
 
 | Attribute | 必須 | Type | 説明 |
 |-----------|----------|------|-------------|
-| <*static-result-definition-name*> | はい | String | アクションの定義が `runtimeConfiguration.staticResult` オブジェクトを介して参照できる、静的な結果の定義の名前。 詳細については、「[ランタイム構成の設定](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-config-options)」を参照してください。 <p>任意の一意の名前を使用できます。 既定では、この一意の名前に数値が追加されます。この数値は必要に応じてインクリメントされます。 |
+| <*static-result-definition-name*> | はい | string | アクションの定義が `runtimeConfiguration.staticResult` オブジェクトを介して参照できる、静的な結果の定義の名前。 詳細については、「[ランタイム構成の設定](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-config-options)」を参照してください。 <p>任意の一意の名前を使用できます。 既定では、この一意の名前に数値が追加されます。この数値は必要に応じてインクリメントされます。 |
 | <*output-attributes-and-values-returned*> | はい | 多様 | これらの属性の要件は、さまざまな条件によって異なります。 たとえば、`status` が `Succeeded` の場合、`outputs` 属性には、アクションによってモック出力として返される属性と値が含まれます。 `status` が `Failed` の場合は、`outputs` 属性には `errors` 属性が含まれます。これは、エラー情報が格納された、1 つ以上のエラー `message` オブジェクトの配列です。 |
 | <*header-values*> | いいえ | JSON | アクションによって返されるヘッダー値 |
-| <*status-code-returned*> | はい | String | アクションによって返される状態コード |
-| <*action-status*> | はい | String | アクションの状態 (例: `Succeeded` または `Failed`) |
+| <*status-code-returned*> | はい | string | アクションによって返される状態コード |
+| <*action-status*> | はい | string | アクションの状態 (例: `Succeeded` または `Failed`) |
 |||||
 
 たとえば、この HTTP アクション定義では、`runtimeConfiguration.staticResult.name` 属性は、アクションのモック出力が定義されている `staticResults` 属性内部の `HTTP0` を参照します。 `runtimeConfiguration.staticResult.staticResultOptions` 属性は、静的な結果の設定が HTTP アクションで `Enabled` であることを指定します。

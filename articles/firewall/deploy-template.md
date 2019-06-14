@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 12/01/2018
 ms.author: victorh
 ms.openlocfilehash: e0fbec8b22993345114d8d6642e42095191d0b37
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66115684"
 ---
 # <a name="deploy-azure-firewall-using-a-template"></a>テンプレートを使用して Azure Firewall をデプロイする
@@ -32,22 +32,22 @@ Azure Firewall の詳細については、[Azure portal を使用した Azure Fi
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-**テンプレートを使用して Azure Firewall をインストールしてデプロイするには:** 
+**テンプレートを使用して Azure Firewall をインストールしてデプロイするには:**
 
 1. [https://github.com/Azure/azure-quickstart-templates/tree/master/101-azurefirewall-sandbox](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azurefirewall-sandbox) でテンプレートにアクセスします。
    
-1. 概要を読み、デプロイする準備ができたら、**[Azure へのデプロイ]** を選択します。
+1. 概要を読み、デプロイする準備ができたら、 **[Azure へのデプロイ]** を選択します。
    
 1. 必要に応じて、Azure portal にサインインします。 
 
 1. ポータルの **[Create a sandbox setup of AzureFirewall]\(AzureFirewall のサンド ボックス設定の作成\)** ページで、次の値を入力または選択します。
    
-   - **リソース グループ**: **[新規作成]** を選択して、リソース グループの名前を入力し、**[OK]** を選択します。 
+   - **リソース グループ**: **[新規作成]** を選択して、リソース グループの名前を入力し、 **[OK]** を選択します。 
    - **仮想ネットワーク名**: 新しい VNet の名前を入力します。 
    - **管理ユーザー名**: 管理者ユーザー アカウントのユーザー名を入力します。
    - **管理パスワード**: 管理者パスワードを入力します。 
    
-1. 使用条件を読み、**[上記の使用条件に同意する]** をオンにします。
+1. 使用条件を読み、 **[上記の使用条件に同意する]** をオンにします。
    
 1. **[購入]** を選択します。
    

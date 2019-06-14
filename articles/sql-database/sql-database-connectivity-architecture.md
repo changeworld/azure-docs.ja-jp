@@ -13,10 +13,10 @@ ms.reviewer: carlrab
 manager: craigg
 ms.date: 04/03/2019
 ms.openlocfilehash: 4ff6cc0ba18074f353eb5b99af7052edd658a80e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66164456"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Azure SQL の接続アーキテクチャ
@@ -98,7 +98,7 @@ Azure 外から接続する場合、接続には既定で `Proxy` の接続ポ�
 | 米国西部 2 | 13.66.226.202 | |
 ||||
 
-\* **注:***米国東部 2* には、`52.167.104.0` の第 3 IP アドレスもあります。
+\* **注:** *米国東部 2* には、`52.167.104.0` の第 3 IP アドレスもあります。
 
 ## <a name="change-azure-sql-database-connection-policy"></a>Azure SQL Database 接続ポリシーを変更する
 

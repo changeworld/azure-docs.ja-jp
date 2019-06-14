@@ -14,10 +14,10 @@ ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: 25cf9c3b7968be16dcc22f4140725efc22d785f2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66156532"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Azure Data Factory - JSON スクリプトのリファレンス
@@ -290,7 +290,7 @@ Azure Data Factory のデータセットは次のように定義されます。
 | type | データセットの型。 Azure Data Factory でサポートされている型のいずれかを指定します (たとえば、AzureBlob、AzureSqlTable)。 Data Factory でサポートされるデータ ストアとデータセットの種類の全一覧については、「[データ ストア](#data-stores)」セクションを参照してください。 |
 | structure | データセットのスキーマ。 列やその型が含まれます。 | いいえ |NA |
 | typeProperties | 選択された型に対応するプロパティ。 サポートされている型とそのプロパティについては、「[データ ストア](#data-stores)」セクションを参照してください。 |はい |NA |
-| 外部 | データセットをデータ ファクトリ パイプラインによって明示的に生成するかどうかを指定するブール型のフラグ。 |いいえ |false |
+| external | データセットをデータ ファクトリ パイプラインによって明示的に生成するかどうかを指定するブール型のフラグ。 |いいえ |false |
 | availability | データセット生成の処理時間枠またはスライシング モデルを定義します。 データセットのスライシング モデルの詳細については、 [スケジュール設定と実行](data-factory-scheduling-and-execution.md) に関する記事を参照してください。 |はい |NA |
 | policy |データセット スライスで満たさなければならない基準または条件を定義します。 <br/><br/>詳細については、「データセット ポリシー」セクションを参照してください。 |いいえ |NA |
 
@@ -887,7 +887,7 @@ Azure Cosmos DB にデータをコピーする場合は、コピー アクティ
 | --- | --- | --- | --- |
 | nestingSeparator |入れ子になった文書が必要であることを示すソース列名の特殊文字。 <br/><br/>上記の例の場合: 出力テーブルの `Name.First` は、Cosmos DB ドキュメントで次の JSON 構造を生成します。<br/><br/>"Name": {<br/>    "First":"John"<br/>}, |入れ子レベルの分割に使用される文字。<br/><br/>既定値は `.` (ドット) です。 |入れ子レベルの分割に使用される文字。 <br/><br/>既定値は `.` (ドット) です。 |
 | writeBatchSize |Azure Cosmos DB サービスにドキュメントの作成を要求する並列要求の数。<br/><br/>このプロパティを使用して、Azure Cosmos DB との間でデータをコピーするときのパフォーマンスを微調整できます。 writeBatchSize を増やすと、Azure Cosmos DB に送信される並列要求の数が増えるため、パフォーマンスを向上させることができます。 ただし、"要求レートが大きい" というエラー メッセージをスローする可能性のあるスロットルを回避する必要があります。<br/><br/>スロットルは、ドキュメントのサイズ、ドキュメント内の語句の数、ターゲット コレクションの索引作成ポリシーなど、さまざまな要因により決定されます。コピー操作の場合、もっとよいコレクションを利用し (S3 など)、最大のスループットを得ることができます (毎秒 2,500 要求ユニット)。 |整数 |いいえ (既定値:5) |
-| writeBatchTimeout |タイムアウトする前に操作の完了を待つ時間です。 |timespan<br/><br/> 例:"00:30:00" (30 分)。 |いいえ |
+| writeBatchTimeout |タイムアウトする前に操作の完了を待つ時間です。 |TimeSpan<br/><br/> 例:"00:30:00" (30 分)。 |いいえ |
 
 #### <a name="example"></a>例
 
@@ -1049,7 +1049,7 @@ Azure SQL Database にデータをコピーする場合は、コピー アクテ
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
-| writeBatchTimeout |タイムアウトする前に一括挿入操作の完了を待つ時間です。 |timespan<br/><br/> 例:"00:30:00" (30 分)。 |いいえ |
+| writeBatchTimeout |タイムアウトする前に一括挿入操作の完了を待つ時間です。 |TimeSpan<br/><br/> 例:"00:30:00" (30 分)。 |いいえ |
 | writeBatchSize |バッファー サイズが writeBatchSize に達したときに SQL テーブルにデータを挿入します。 |整数 (行数) |いいえ (既定値:10000) |
 | sqlWriterCleanupScript |特定のスライスのデータを消去するコピー アクティビティのクエリを指定します。 |クエリ ステートメント。 |いいえ |
 | sliceIdentifierColumnName |自動生成スライス ID を入力するためのコピー アクティビティの列名を指定します。再実行時、特定のスライスのデータを消去するときに使用されます。 |バイナリ (32) のデータ型の列の列名。 |いいえ |
@@ -1233,7 +1233,7 @@ Azure SQL Data Warehouse にデータをコピーする場合は、コピー ア
 | rejectSampleValue |拒否された行の割合が PolyBase で再計算されるまでに取得する行数を決定します。 |1、2、… |はい (**rejectType** が **percentage** の場合) |
 | useTypeDefault |PolyBase がテキスト ファイルからデータを取得する場合にどのように区切りテキスト ファイル内の不足値を処理するかを、指定します。<br/><br/>このプロパティの詳細については、[CREATE EXTERNAL FILE FORMAT (Transact-SQL)](https://msdn.microsoft.com/library/dn935026.aspx) Arguments セクションをご覧ください。 |True、False (既定値) |いいえ |
 | writeBatchSize |バッファー サイズが writeBatchSize に到達したときに SQL テーブルにデータを挿入します。 |整数 (行数) |いいえ (既定値:10000) |
-| writeBatchTimeout |タイムアウトする前に一括挿入操作の完了を待つ時間です。 |timespan<br/><br/> 例:"00:30:00" (30 分)。 |いいえ |
+| writeBatchTimeout |タイムアウトする前に一括挿入操作の完了を待つ時間です。 |TimeSpan<br/><br/> 例:"00:30:00" (30 分)。 |いいえ |
 
 #### <a name="example"></a>例
 
@@ -1540,7 +1540,7 @@ Azure Table Storage にデータをコピーする場合は、コピー アク�
 | azureTableRowKeyName |値を行キーとして使用する列の名前を指定します。 指定しない場合、各行に GUID を使用します。 |列の名前。 |いいえ |
 | azureTableInsertType |Azure テーブルにデータを挿入する方法です。<br/><br/>このプロパティは、一致するパーティションと列キーを持つ出力テーブル内の既存の行で、値を置換するか結合するかを制御します。 <br/><br/>これらの設定 (結合と置換) の機能については、「[Insert or Merge Entity (エンティティの挿入または結合)](https://msdn.microsoft.com/library/azure/hh452241.aspx)」および「[Insert or Replace Entity (エンティティの挿入または置換)](https://msdn.microsoft.com/library/azure/hh452242.aspx)」をご覧ください。 <br/><br> この設定は、テーブル レベルではなく、行レベルで適用されます。どちらのオプションでも、出力テーブル内の、入力内に存在しない行は削除されません。 |merge (既定値)<br/>replace |いいえ |
 | writeBatchSize |writeBatchSize または writeBatchTimeout に達したときに、Azure テーブルにデータを挿入します。 |整数 (行数) |いいえ (既定値:10000) |
-| writeBatchTimeout |writeBatchSize または writeBatchTimeout に達したときに、Azure テーブルにデータを挿入します。 |timespan<br/><br/>例:"00:20:00" (20 分) |No (既定値はストレージ クライアントの既定のタイムアウト値の 90 秒) |
+| writeBatchTimeout |writeBatchSize または writeBatchTimeout に達したときに、Azure テーブルにデータを挿入します。 |TimeSpan<br/><br/>例:"00:20:00" (20 分) |No (既定値はストレージ クライアントの既定のタイムアウト値の 90 秒) |
 
 #### <a name="example"></a>例
 
@@ -2059,7 +2059,7 @@ Oracle データベースにデータをコピーする場合は、コピー ア
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
-| writeBatchTimeout |タイムアウトする前に一括挿入操作の完了を待つ時間です。 |timespan<br/><br/> 例:00:30:00 (30 分) |いいえ |
+| writeBatchTimeout |タイムアウトする前に一括挿入操作の完了を待つ時間です。 |TimeSpan<br/><br/> 例:00:30:00 (30 分) |いいえ |
 | writeBatchSize |バッファー サイズが writeBatchSize に達したときに SQL テーブルにデータを挿入します。 |整数 (行数) |いいえ (既定値: 100) |
 | sqlWriterCleanupScript |特定のスライスのデータを消去するコピー アクティビティのクエリを指定します。 |クエリ ステートメント。 |いいえ |
 | sliceIdentifierColumnName |自動生成スライス ID を入力するためのコピー アクティビティの列名を指定します。再実行時、特定のスライスのデータを消去するときに使用されます。 |バイナリ (32) のデータ型の列の列名。 |いいえ |
@@ -2610,7 +2610,7 @@ SQL Server データベースにデータをコピーする場合は、コピー
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
-| writeBatchTimeout |タイムアウトする前に一括挿入操作の完了を待つ時間です。 |timespan<br/><br/> 例:"00:30:00" (30 分)。 |いいえ |
+| writeBatchTimeout |タイムアウトする前に一括挿入操作の完了を待つ時間です。 |TimeSpan<br/><br/> 例:"00:30:00" (30 分)。 |いいえ |
 | writeBatchSize |バッファー サイズが writeBatchSize に達したときに SQL テーブルにデータを挿入します。 |整数 (行数) |いいえ (既定値:10000) |
 | sqlWriterCleanupScript |特定のスライスのデータを消去するコピー アクティビティのクエリを指定します。 詳細については、「再現性」セクションを参照してください。 |クエリ ステートメント。 |いいえ |
 | sliceIdentifierColumnName |自動生成スライス ID を入力するためのコピー アクティビティの列名を指定します。再実行時、特定のスライスのデータを消去するときに使用されます。 詳細については、「再現性」セクションを参照してください。 |バイナリ (32) のデータ型の列の列名。 |いいえ |
@@ -3177,10 +3177,10 @@ Amazon S3 データセットを定義するには、データセットの **type
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
-| bucketName |S3 バケットの名前。 |String |はい |
-| key |S3 オブジェクト キー。 |String |いいえ |
-| prefix |S3 オブジェクト キーのプレフィックス。 キーがこのプレフィックスで始まるオブジェクトが選択されます。 キーが空の場合にのみ適用されます。 |String |いいえ |
-| version |S3 のバージョン管理が有効になっている場合の S3 オブジェクトのバージョン。 |String |いいえ |
+| bucketName |S3 バケットの名前。 |string |はい |
+| key |S3 オブジェクト キー。 |string |いいえ |
+| prefix |S3 オブジェクト キーのプレフィックス。 キーがこのプレフィックスで始まるオブジェクトが選択されます。 キーが空の場合にのみ適用されます。 |string |いいえ |
+| version |S3 のバージョン管理が有効になっている場合の S3 オブジェクトのバージョン。 |string |いいえ |
 | format | 次の種類の形式がサポートされます:**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat** です。 形式の **type** プロパティをいずれかの値に設定します。 詳細については、[Text Format](data-factory-supported-file-and-compression-formats.md#text-format)、[Json Format](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format)、[Parquet Format](data-factory-supported-file-and-compression-formats.md#parquet-format) の各セクションを参照してください。 <br><br> ファイルベースのストア間で**ファイルをそのままコピー** (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。 |いいえ | |
 | compression | データの圧縮の種類とレベルを指定します。 サポートされる種類は、**GZip**、**Deflate**、**BZip2**、**ZipDeflate** です。 サポートされるレベルは、**Optimal** と **Fastest** です。 詳細については、「[Azure Data Factory のファイル形式と圧縮形式](data-factory-supported-file-and-compression-formats.md#compression-support)」を参照してください。 |いいえ | |
 
@@ -3731,7 +3731,7 @@ HDFS のリンクされたサービスを定義するには、リンクされた
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | type |type プロパティは、次のように設定する必要があります:**Hdfs** |はい |
-| Url |HDFS への URL |はい |
+| url |HDFS への URL |はい |
 | authenticationType |Anonymous または Basic。 <br><br> HDFS コネクタに **Kerberos 認証**を使用するには、こちらのセクションを参照して、オンプレミス環境を設定します。 |はい |
 | userName |Windows 認証のユーザー名。 |あり (Windows 認証用) |
 | password |Windows 認証のパスワード。 |あり (Windows 認証用) |

@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: diberry
 ms.openlocfilehash: 1333aefc145e95223624f42a28ec0bb31ab70065
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60011760"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60828124"
 ---
 # <a name="configure-text-analytics-docker-containers"></a>Text Analytics の docker コンテナーの構成
 
@@ -53,7 +53,7 @@ Text Analytics ではコンテナーごとに一般的な構成フレームワ�
 
 |必須| Name | データ型 | 説明 |
 |--|------|-----------|-------------|
-|はい| `Billing` | String | 課金エンドポイント URI<br><br>例:<br>`Billing=https://westus.api.cognitive.microsoft.com/text/analytics/v2.1` |
+|はい| `Billing` | string | 課金エンドポイント URI<br><br>例:<br>`Billing=https://westus.api.cognitive.microsoft.com/text/analytics/v2.1` |
 
 ## <a name="eula-setting"></a>Eula 設定
 
@@ -81,8 +81,8 @@ Text Analytics コンテナーでは、トレーニングやサービスのデ�
 
 |省略可能| Name | データ型 | 説明 |
 |-------|------|-----------|-------------|
-|禁止| `Input` | String | Text Analytics コンテナーでは、これは使用されません。|
-|省略可能| `Output` | String | 出力マウントのターゲット。 既定値は `/output` です。 これはログの保存先です。 これには、コンテナーのログが含まれます。 <br><br>例:<br>`--mount type=bind,src=c:\output,target=/output`|
+|禁止| `Input` | string | Text Analytics コンテナーでは、これは使用されません。|
+|省略可能| `Output` | string | 出力マウントのターゲット。 既定値は `/output` です。 これはログの保存先です。 これには、コンテナーのログが含まれます。 <br><br>例:<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>docker run コマンドの例 
 
@@ -93,7 +93,7 @@ Text Analytics コンテナーでは、トレーニングやサービスのデ�
 
 `text/analytics/v2.0` ルーティングをエンドポイント URI に追加する必要があります。次の BILLING_ENDPOINT_URI の例を参照してください。
 
-{_<引数名>_} はお客様独自の値に置き換えてください。
+{ _<引数名>_ } はお客様独自の値に置き換えてください。
 
 | プレースホルダー | 値 | 形式または例 |
 |-------------|-------|---|

@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 11/01/2018
 ms.author: rosh; v-gedod
 ms.openlocfilehash: 45f7adab684b7b6097328a42abb60c8d58c1acc2
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65796789"
 ---
 # <a name="sending-and-using-bing-local-business-search-api-queries-and-responses"></a>Bing Local Business Search API クエリと応答の送信と使用
@@ -22,7 +22,7 @@ Bing Local Business Search API から、検索クエリをそのエンドポイ�
 
 ## <a name="creating-a-request"></a>要求の作成
 
-Bing Local Business Search API に要求を送信するには、検索語句を `q=` パラメーターに追加してから、それを API エンドポイントに追加して、`Ocp-Apim-Subscription-Key` ヘッダーを含めます。 例: 
+Bing Local Business Search API に要求を送信するには、検索語句を `q=` パラメーターに追加してから、それを API エンドポイントに追加して、`Ocp-Apim-Subscription-Key` ヘッダーを含めます。 例:
 
 `https://api.cognitive.microsoft.com/bing/localbusinesses/v7.0/search?q=restaurant+in+Bellevue`
 

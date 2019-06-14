@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/07/2019
 ms.author: rkarlin
 ms.openlocfilehash: 6b1e167d26b5848238dd51bf9792f8316c33a385
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65205562"
 ---
 # <a name="connect-data-from-office-365-logs"></a>Office 365 ログからデータを接続する
@@ -37,12 +37,12 @@ ms.locfileid: "65205562"
 
 ## <a name="connect-to-office-365"></a>Office 365 への接続
 
-1. Azure Sentinel で **[Data connectors]\(データ コネクタ\)** を選択し、**[Office 365]** タイルをクリックします。
+1. Azure Sentinel で **[Data connectors]\(データ コネクタ\)** を選択し、 **[Office 365]** タイルをクリックします。
 
-2. まだ有効でない場合は、**[接続]** で、**[有効化]** を使用して Office 365 ソリューションを有効にします。 既に有効な場合は、既に有効になっていることが接続画面で識別されます。
-1. Office 365 により、複数のテナントから Azure Sentinel にデータをストリーミングできます。 接続先のテナントごとに、**[Connect tenants to Azure Sentinel]\(Azure Sentinel にテナントを接続\)** でテナントを追加します。 
+2. まだ有効でない場合は、 **[接続]** で、 **[有効化]** を使用して Office 365 ソリューションを有効にします。 既に有効な場合は、既に有効になっていることが接続画面で識別されます。
+1. Office 365 により、複数のテナントから Azure Sentinel にデータをストリーミングできます。 接続先のテナントごとに、 **[Connect tenants to Azure Sentinel]\(Azure Sentinel にテナントを接続\)** でテナントを追加します。 
 1. Active Directory Domain Services の画面が開きます。 Azure Sentinel に接続するテナントごとにグローバル管理者ユーザーによる認証を求められるので、ログを読み取るための Azure Sentinel へのアクセス許可を付与します。 
-5. Stream の Office 365 アクティビティ ログで、**[選択]** をクリックし、Azure Sentinel にストリーミングするログの種類を選択します。 現時点では、Azure Sentinel は、Exchange および SharePoint をサポートしています。
+5. Stream の Office 365 アクティビティ ログで、 **[選択]** をクリックし、Azure Sentinel にストリーミングするログの種類を選択します。 現時点では、Azure Sentinel は、Exchange および SharePoint をサポートしています。
 
 4. **[変更の適用]** をクリックします。
 

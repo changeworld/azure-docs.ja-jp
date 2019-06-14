@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/18/2019
 ms.author: mlottner
 ms.openlocfilehash: 15e65c155a98ae12c156587735d34a16ed2c9109
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65192652"
 ---
 # <a name="investigate-a-suspicious-iot-device"></a>疑わしい IoT デバイスを調査する
@@ -43,7 +43,7 @@ Azure Security Center (ASC) for IoT サービスのアラートと証拠では�
 データ保存用の Log Analytics ワークスペースを見つけるには、次のように操作します。
 
 1. IoT ハブを開きます。 
-1. **[セキュリティ]** で **[概要]** をクリックし、**[設定]** を選択します。
+1. **[セキュリティ]** で **[概要]** をクリックし、 **[設定]** を選択します。
 1. Log Analytics ワークスペースの構成の詳細を変更します。 
 1. **[Save]** をクリックします。 
 

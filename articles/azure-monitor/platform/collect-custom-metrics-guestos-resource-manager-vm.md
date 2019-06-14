@@ -9,10 +9,10 @@ ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
 ms.openlocfilehash: 5647802ff383ce046d108f25384df81bcbd08cd3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66129659"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-using-a-resource-manager-template-for-a-windows-virtual-machine"></a>Resource Manager テンプレートを使用して Windows 仮想マシンのゲスト OS メトリックを Azure Monitor メトリック ストアに送信する
@@ -256,7 +256,7 @@ Resource Manager テンプレートをデプロイするために、Azure PowerS
 
 1. 次のコマンドを実行して、Resource Manager テンプレートを使用して VM をデプロイします。
    > [!NOTE]
-   > 既存の VM を更新するには、*-Mode Incremental* を以下のコマンドの末尾に追加するだけです。
+   > 既存の VM を更新するには、 *-Mode Incremental* を以下のコマンドの末尾に追加するだけです。
 
    ```powershell
    New-AzResourceGroupDeployment -Name "<NameThisDeployment>" -ResourceGroupName "<Name of the Resource Group>" -TemplateFile "<File path of your Resource Manager template>" -TemplateParameterFile "<File path of your parameters file>"
@@ -273,7 +273,7 @@ Resource Manager テンプレートをデプロイするために、Azure PowerS
 
 2. 左側のメニューで **[モニター]** を選択します。
 
-3. [モニター] ページで、**[メトリック]** を選択します。
+3. [モニター] ページで、 **[メトリック]** を選択します。
 
    ![メトリック ページ](media/collect-custom-metrics-guestos-resource-manager-vm/metrics.png)
 
@@ -281,9 +281,9 @@ Resource Manager テンプレートをデプロイするために、Azure PowerS
 
 5. リソースのドロップダウン メニューで、作成した VM を選択します。 テンプレートの名前を変更しなかった場合は、*SimpleWinVM2* のはずです。
 
-6. 名前空間のドロップダウン メニューで、**[azure.vm.windows.guest]** を選択します
+6. 名前空間のドロップダウン メニューで、 **[azure.vm.windows.guest]** を選択します
 
-7. メトリックのドロップダウン メニューで、**[Memory\%Committed Bytes in Use]** を選択します。
+7. メトリックのドロップダウン メニューで、 **[Memory\%Committed Bytes in Use]** を選択します。
 
 
 ## <a name="next-steps"></a>次の手順

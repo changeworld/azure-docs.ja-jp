@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 02/28/2019
 ms.author: banders
 ms.openlocfilehash: 105b8481486c088a05e3acb95081d3ee55b55f52
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57897107"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60372026"
 ---
 # <a name="create-an-additional-azure-subscription-for-microsoft-customer-agreement"></a>Microsoft 顧客契約用に追加の Azure サブスクリプションを作成する
 
@@ -47,11 +47,11 @@ ms.locfileid: "57897107"
 
 6. 請求書セクションを選択します。 お使いのサブスクリプションの料金は、その課金プロファイルの請求書のこのセクションに反映されます。 アクセスできる請求書セクションが 1 つのみの場合は、この選択範囲はグレー表示されます。
 
-7. サブスクリプションのプランを選択します。 開発またはワークロードのテストにこのサブスクリプションを使用する場合は、**[Dev/Test 用 Microsoft Azure プラン]** を選択します。その他の場合には、**[Microsoft Azure プラン]** を使用します。 アクセスできるプランが 1 つのみの場合は、この選択範囲はグレー表示されます。
+7. サブスクリプションのプランを選択します。 開発またはワークロードのテストにこのサブスクリプションを使用する場合は、 **[Dev/Test 用 Microsoft Azure プラン]** を選択します。その他の場合には、 **[Microsoft Azure プラン]** を使用します。 アクセスできるプランが 1 つのみの場合は、この選択範囲はグレー表示されます。
 
 8. サブスクリプションの名前を入力します。 この名前を使用すると、Azure portal でサブスクリプションを簡単に識別できます。
 
-9. **作成**を選択します。
+9. **作成** を選択します。
 
 ## <a name="give-others-permission-to-create-azure-subscriptions"></a>Azure サブスクリプションを作成する権限を他のユーザーに付与する
 

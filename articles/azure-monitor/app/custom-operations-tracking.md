@@ -13,11 +13,11 @@ ms.date: 06/30/2017
 ms.reviewer: sergkanz
 ms.author: mbullwin
 ms.openlocfilehash: ae6e0e186f5cc0c9e3f0cd02d45d57c079eb3539
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59995542"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60900891"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>Application Insights .NET SDK でカスタム操作を追跡する
 
@@ -229,8 +229,8 @@ Storage キューは HTTP API をサポートしているため、キューを�
 
 この例は、`Enqueue` 操作を追跡する方法を示しています。 次のようにすることができます。
 
- - **再試行を関連付ける (存在する場合)**:すべての再試行には、`Enqueue` 操作という共通の親が 1 つ存在します。 また、受信要求の子として追跡されます。 キューに対する論理要求が複数存在する場合、どの呼び出しが再試行されたかを見極めることは難しいことがあります。
- - **Storage ログを関連付ける (存在する場合に必要に応じて)**:Storage ログは Application Insights のテレメトリに関連付けられます。
+ - **再試行を関連付ける (存在する場合)** :すべての再試行には、`Enqueue` 操作という共通の親が 1 つ存在します。 また、受信要求の子として追跡されます。 キューに対する論理要求が複数存在する場合、どの呼び出しが再試行されたかを見極めることは難しいことがあります。
+ - **Storage ログを関連付ける (存在する場合に必要に応じて)** :Storage ログは Application Insights のテレメトリに関連付けられます。
 
 `Enqueue` 操作は、親操作 (受信 HTTP 要求など) の子です。 HTTP の依存関係呼び出しは、`Enqueue` 操作の子であり、受信要求の孫でもあります。
 

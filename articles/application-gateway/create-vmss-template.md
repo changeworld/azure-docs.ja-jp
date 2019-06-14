@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: victorh
 ms.openlocfilehash: 7ff6db5acb150207f975931155386a308c48888b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66134096"
 ---
 # <a name="create-an-application-gateway-by-using-the-azure-resource-manager-template"></a>Azure リソース マネージャー テンプレートを使用した Application Gateway の作成
@@ -49,7 +49,7 @@ GitHub から直接テンプレートをデプロイするだけで、変更を�
 GitHub から既存の Azure リソース マネージャー テンプレートをダウンロードして仮想ネットワークと 2 つのサブネットを作成し、そのテンプレートに変更を加えて再利用することができます。 そのためには、次の手順を実行してください。
 
 1. 「[Web アプリケーション ファイアウォールが有効なアプリケーション ゲートウェイの作成](https://github.com/Azure/azure-quickstart-templates/tree/master/101-application-gateway-waf)」に移動します。
-1. **[azuredeploy.json]**、**[RAW]** の順にクリックします。
+1. **[azuredeploy.json]** 、 **[RAW]** の順にクリックします。
 1. お使いのコンピューター上のローカル フォルダーにファイルを保存します。
 1. Azure リソース マネージャー テンプレートを使用したことがある場合は、手順 7 に進みます。
 1. 保存したファイルを開き、5 行目にある **parameters** の内容を確認します。
@@ -62,7 +62,7 @@ GitHub から既存の Azure リソース マネージャー テンプレート�
    | **backendIpaddress1** |1 番目の Web サーバーの IP アドレス。 |
    | **backendIpaddress2** |2 番目の Web サーバーの IP アドレス。 |
    | **wafEnabled** | WAF が有効かどうかを決定する設定。|
-   | **wafMode** | Web アプリケーション ファイアウォールのモード。  使用できるオプションは、**[防止]** または **[検出]** です。|
+   | **wafMode** | Web アプリケーション ファイアウォールのモード。  使用できるオプションは、 **[防止]** または **[検出]** です。|
    | **wafRuleSetType** | WAF のルールセットの種類。  現在、サポートされているオプションは、OWASP だけです。 |
    | **wafRuleSetVersion** |ルールセットのバージョン。 現在、サポートされているオプションは、OWASP CRS 2.2.9 および 3.0 です。 |
 
@@ -73,7 +73,7 @@ GitHub から既存の Azure リソース マネージャー テンプレート�
    * **properties**。 リソースのプロパティの一覧です。 このテンプレートは、Application Gateway の作成の過程で、仮想ネットワークとパブリック IP アドレスを使用します。 テンプレート内のアプリケーション ゲートウェイの JSON 構文とプロパティについては、[Microsoft.Network/applicationGateways](/azure/templates/microsoft.network/applicationgateways) に関するページを参照してください。
 
 1. [https://github.com/Azure/azure-quickstart-templates/blob/master/101-application-gateway-waf/](https://github.com/Azure/azure-quickstart-templates/blob/master/101-application-gateway-waf) に戻ります。
-1. **[azuredeploy-paremeters.json]**、**[RAW]** の順にクリックします。
+1. **[azuredeploy-paremeters.json]** 、 **[RAW]** の順にクリックします。
 1. お使いのコンピューター上のローカル フォルダーにファイルを保存します。
 1. 保存したファイルを開き、パラメーターの値を編集します。 次の値を使用して、このシナリオで説明したアプリケーション ゲートウェイをデプロイします。
 
@@ -167,9 +167,9 @@ Azure CLI を使用してダウンロードした Azure Resource Manager テン�
     az group create --location westus --name appgatewayRG
     ```
     
-    **-n (または --name)**。 新しいリソース グループの名前です。 このシナリオでは、 *appgatewayRG*です。
+    **-n (または --name)** 。 新しいリソース グループの名前です。 このシナリオでは、 *appgatewayRG*です。
     
-    **-l (または --location)**。 新しいリソース グループが作成される Azure リージョンです。 このシナリオでは、*westus* です。
+    **-l (または --location)** 。 新しいリソース グループが作成される Azure リージョンです。 このシナリオでは、*westus* です。
 
 1. `az group deployment create` コマンドレットを実行し、前の手順でダウンロードおよび変更したテンプレート ファイルとパラメーター ファイルを使用して、新しい仮想ネットワークをデプロイします。 出力の後に表示される一覧では、使用されたパラメーターについて説明されています。
 
@@ -191,7 +191,7 @@ Azure CLI を使用してダウンロードした Azure Resource Manager テン�
 
     ![parameters](./media/create-vmss-template/ibiza1.png)
     
-1. **[上記の使用条件に同意する]** を選択し、**[購入]** をクリックします。
+1. **[上記の使用条件に同意する]** を選択し、 **[購入]** をクリックします。
 
 1. [カスタム デプロイ] ブレードで、 **[作成]** をクリックします。
 

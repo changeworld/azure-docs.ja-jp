@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: magoedte
 ms.openlocfilehash: eac6a27c3bcf64462a9f3d9a57da6df736f30c78
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58883277"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61386227"
 ---
 # <a name="vmware-monitoring-deprecated-solution-in-azure-monitor"></a>Azure Monitor の VMware Monitoring (非推奨) ソリューション
 
@@ -47,24 +47,24 @@ ESXi ホストからのすべての syslog データを受信する Linux オペ
    ![syslog のフロー](./media/vmware/diagram.png)
 
 ### <a name="configure-syslog-collection"></a>syslog の収集の構成
-1. VSphere の syslog 転送を設定します。 syslog 転送の設定方法について詳しくは、「[Configuring syslog on ESXi 5.0 and higher (2003322)](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2003322)」(ESXi 5.0 以降での syslog の構成 (2003322)) をご覧ください。 **ESXi ホストの [構成]** > **[ソフトウェア]** > **[詳細設定]** > **[Syslog]** に移動します。
+1. VSphere の syslog 転送を設定します。 syslog 転送の設定方法について詳しくは、「[Configuring syslog on ESXi 5.0 and higher (2003322)](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2003322)」(ESXi 5.0 以降での syslog の構成 (2003322)) をご覧ください。 **ESXi ホストの [構成]**  >  **[ソフトウェア]**  >  **[詳細設定]**  >  **[Syslog]** に移動します。
    ![vsphereconfig](./media/vmware/vsphere1.png)  
 1. *Syslog.global.logHost* フィールドに、Linux サーバーとポート番号 *1514* を追加します。 たとえば、`tcp://hostname:1514` や `tcp://123.456.789.101:1514` のようにします。
-1. ESXi ホストの syslog 用ファイアウォールを開きます。 **ESXi ホストの [構成]** > **[ソフトウェア]** > **[セキュリティ プロファイル]** > **[ファイアウォール]** をクリックし、**[プロパティ]** を開きます。  
+1. ESXi ホストの syslog 用ファイアウォールを開きます。 **ESXi ホストの [構成]**  >  **[ソフトウェア]**  >  **[セキュリティ プロファイル]**  >  **[ファイアウォール]** をクリックし、 **[プロパティ]** を開きます。  
 
     ![vspherefw](./media/vmware/vsphere2.png)  
 
     ![vspherefwproperties](./media/vmware/vsphere3.png)  
 1. vSphere コンソールを調べて、syslog が正しく設定されていることを確認します。 ESXI ホストで、ポート **1514** が構成されていることを確認します。
 1. Linux 用 Log Analytics エージェントをダウンロードし、Linux サーバーにインストールします。 詳細については、[Linux 用の Log Analytics エージェントのドキュメント](https://github.com/Microsoft/OMS-Agent-for-Linux)をご覧ください。
-1. Linux 用 Log Analytics エージェントをインストールしたら、/etc/opt/microsoft/omsagent/sysconf/omsagent.d ディレクトリに移動して vmware_esxi.conf ファイルを /etc/opt/microsoft/omsagent/conf/omsagent.d ディレクトリにコピーし、ファイルの所有者/グループとアクセス許可を変更します。 例: 
+1. Linux 用 Log Analytics エージェントをインストールしたら、/etc/opt/microsoft/omsagent/sysconf/omsagent.d ディレクトリに移動して vmware_esxi.conf ファイルを /etc/opt/microsoft/omsagent/conf/omsagent.d ディレクトリにコピーし、ファイルの所有者/グループとアクセス許可を変更します。 例:
 
     ```
     sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.d/vmware_esxi.conf /etc/opt/microsoft/omsagent/conf/omsagent.d
    sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/conf/omsagent.d/vmware_esxi.conf
     ```
 1. `sudo /opt/microsoft/omsagent/bin/service_control restart` を実行して Linux 用 Log Analytics エージェントを再起動します。
-1. ESXi ホストで `nc` コマンドを使用して、Linux サーバーと ESXi ホスト間の接続をテストします。 例: 
+1. ESXi ホストで `nc` コマンドを使用して、Linux サーバーと ESXi ホスト間の接続をテストします。 例:
 
     ```
     [root@ESXiHost:~] nc -z 123.456.789.101 1514
@@ -158,7 +158,7 @@ ESXi ホストの VM 作成データの詳細を表示したい場合は、ESXi 
 
 
 #### <a name="save-queries"></a>クエリの保存
-ログ クエリの保存は Azure Monitor の標準機能であり、便利なクエリを保存しておくのに役立ちます。 作成したクエリが便利であることがわかったら、**[お気に入り]** をクリックして保存します。 保存したクエリは、後で [[マイ ダッシュボード]](../learn/tutorial-logs-dashboards.md) ページから簡単に再利用できます。このページでは、独自のカスタム ダッシュボードを作成できます。
+ログ クエリの保存は Azure Monitor の標準機能であり、便利なクエリを保存しておくのに役立ちます。 作成したクエリが便利であることがわかったら、 **[お気に入り]** をクリックして保存します。 保存したクエリは、後で [[マイ ダッシュボード]](../learn/tutorial-logs-dashboards.md) ページから簡単に再利用できます。このページでは、独自のカスタム ダッシュボードを作成できます。
 
 ![DockerDashboardView](./media/vmware/dockerdashboardview.png)
 

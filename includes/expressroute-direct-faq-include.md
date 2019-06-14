@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/25/2019
 ms.author: jaredro
 ms.custom: include file
-ms.openlocfilehash: 1bcadc18172535649a0ceb482939ca6a75477e25
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: ab74c331bdc8b72612aa848688e1de080314337a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66170712"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67133071"
 ---
 ### <a name="what-is-expressroute-direct"></a>ExpressRoute Direct とは何ですか?
 
@@ -28,7 +28,6 @@ ExpressRoute Direct では、世界中に戦略的に分散されたピアリン
 使用可能なポートは動的であり、PowerShell を使用して容量を表示できます。 次の場所が含まれ、*可用性に基づいて変更される可能性があります*。
 
 * アムステルダム
-* キャンベラ
 * シカゴ
 * ワシントン DC
 * ダラス 

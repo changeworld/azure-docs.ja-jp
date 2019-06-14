@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/11/2019
 ms.author: lahugh
 ms.custom: include file
-ms.openlocfilehash: 7196a2ea794c1d17a2c55c05accb447d83929972
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 5c35cbfbd2e9d0a1655d05c1116d293fb78c9eb7
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66145723"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67133684"
 ---
 このセクションでは、より古い世代の仮想マシンのサイズの情報が提供されます。 これらのサイズは引き続きサポートされますが、追加容量は得られません。 一般提供されるより新しいまたは代替のサイズがあります。 ニーズに最も合う VM サイズを選択する場合は、「[Sizes for Windows virtual machines in Azure](../articles/virtual-machines/windows/sizes.md)」 (Azure の Windows 仮想マシンのサイズ) または「[Sizes for Linux virtual machines in Azure](../articles/virtual-machines/linux/sizes.md)」 (Azure の Linux 仮想マシンのサイズ) を参照してください。  
 
@@ -23,7 +23,7 @@ Linux VM のサイズ変更の詳細については、「[Resize a Linux virtual
 
 ### <a name="basic-a"></a>Basic A  
 
-**新しいサイズ (推奨)**:[Av2 シリーズ](../articles/virtual-machines/windows/sizes-general.md#av2-series)
+**新しいサイズ (推奨)** :[Av2 シリーズ](../articles/virtual-machines/windows/sizes-general.md#av2-series)
 
 Premium Storage: サポートされていません
 
@@ -43,7 +43,7 @@ Basic レベルのサイズは主に、負荷分散や自動スケール、メ�
 
 ### <a name="a-series"></a>A シリーズ  
 
-**新しいサイズ (推奨)**:[Av2 シリーズ](../articles/virtual-machines/windows/sizes-general.md#av2-series)
+**新しいサイズ (推奨)** :[Av2 シリーズ](../articles/virtual-machines/windows/sizes-general.md#av2-series)
 
 ACU: 50-100
 
@@ -68,7 +68,7 @@ Premium Storage キャッシュ:サポートされていません
 
 ### <a name="a-series---compute-intensive-instances"></a>A シリーズ - コンピューティング集中型インスタンス  
 
-**新しいサイズ (推奨)**:[Av2 シリーズ](../articles/virtual-machines/windows/sizes-general.md#av2-series)
+**新しいサイズ (推奨)** :[Av2 シリーズ](../articles/virtual-machines/windows/sizes-general.md#av2-series)
 
 ACU: 225
 
@@ -91,7 +91,7 @@ A8 ～ A11 と H シリーズのサイズは、 *コンピューティング集�
 
 ### <a name="d-series"></a>D シリーズ  
 
-**新しいサイズ (推奨)**:[Dv3 シリーズ](../articles/virtual-machines/windows/sizes-general.md#dv3-series-1)
+**新しいサイズ (推奨)** :[Dv3 シリーズ](../articles/virtual-machines/windows/sizes-general.md#dv3-series-1)
 
 ACU: 160 から 250 <sup>1</sup>
 
@@ -112,7 +112,7 @@ Premium Storage キャッシュ:サポートされていません
 
 ### <a name="d-series---memory-optimized"></a>D シリーズ - メモリ最適化済み  
 
-**新しいサイズ (推奨)**:[Dv3 シリーズ](../articles/virtual-machines/windows/sizes-general.md#dv3-series-1)
+**新しいサイズ (推奨)** :[Dv3 シリーズ](../articles/virtual-machines/windows/sizes-general.md#dv3-series-1)
 
 ACU: 160 から 250 <sup>1</sup>
 
@@ -133,7 +133,7 @@ Premium Storage キャッシュ:サポートされていません
 
 ### <a name="ds-series"></a>DS シリーズ  
 
-**新しいサイズ (推奨)**:[DSv3 シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general#dsv3-series-1)
+**新しいサイズ (推奨)** :[DSv3 シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general#dsv3-series-1)
 
 ACU: 160 から 250 <sup>1</sup>
 
@@ -154,7 +154,7 @@ Premium Storage キャッシュ:サポートされています
 
 ### <a name="ds-series---memory-optimized"></a>DS シリーズ - メモリ最適化済み  
 
-**新しいサイズ (推奨)**:[DSv3 シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general#dsv3-series-1)
+**新しいサイズ (推奨)** :[DSv3 シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general#dsv3-series-1)
 
 ACU: 160 から 250 <sup>1、2</sup>
 
@@ -172,4 +172,47 @@ Premium Storage キャッシュ:サポートされています
 <sup>1</sup> DS シリーズの VM で実現可能な最大ディスク スループット (IOPS または MBps) は、接続ディスクの数、サイズ、ストライピングによって制限される場合があります。  詳細については、[高パフォーマンス用の設計](../articles/virtual-machines/windows/premium-storage-performance.md)に関する記事を参照してください。   
 <sup>2</sup> VM ファミリは、次の CPU のいずれかで実行できます。2.2 GHz Intel Xeon® E5-2660 v2、2.4 GHz Intel Xeon® E5-2673 v3 (Haswell)、または 2.3 GHz Intel XEON® E5-2673 v4 (Broadwell)  
 
+<br>
+
+### <a name="gs-series"></a>GS シリーズ 
+
+ACU: 180 から 240 <sup>1</sup>
+
+Premium Storage: サポートされています
+
+Premium Storage キャッシュ:サポートされています
+
+| Size | vCPU | メモリ: GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | キャッシュが有効な場合の一時ストレージの最大スループット: IOPS/MBps (キャッシュ サイズは GiB 単位) | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) |
+|---|---|---|---|---|---|---|---|
+| Standard_GS1 |2 |28 |56 |8 |10,000/100 (264) |5,000/125 |2/2,000 |
+| Standard_GS2 |4 |56 |112 |16 |20,000/200 (528) |10,000 / 250 |2/4,000 |
+| Standard_GS3 |8 |112 |224 |32 |40,000/400 (1,056) |20,000/500 |4/8,000 |
+| Standard_GS4&nbsp;<sup>3</sup> |16 |224 |448 |64 |80,000/800 (2,112) |40,000/1,000 |8/1,6000 |
+| Standard_GS5&nbsp;<sup>2、&nbsp;3</sup> |32 |448 |896 |64 |160,000/1,600 (4,224) |80,000/2,000 |8/20,000 |
+
+<sup>1</sup> GS シリーズの VM で実現可能な最大ディスク スループット (IOPS または MBps) は、接続ディスクの数、サイズ、ストライピングによって制限される場合があります。 詳細については、[高パフォーマンス用の設計](../articles/virtual-machines/windows/premium-storage-performance.md)に関する記事を参照してください。
+
+<sup>2</sup> インスタンスは、単一の顧客専用のハードウェアに分離されます。
+
+<sup>3</sup> コア数を制限したサイズも提供しています。
+
+<br>
+
+### <a name="g-series"></a>G シリーズ
+
+ACU: 180 から 240
+
+Premium Storage: サポートされていません
+
+Premium Storage キャッシュ:サポートされていません
+
+| Size         | vCPU | メモリ: GiB | 一時ストレージ (SSD) GiB | 一時ストレージの最大スループット: IOPS/読み取り MBps/書き込み MBps | 最大データ ディスク数/スループット: IOPS | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) |
+|--------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
+| Standard_G1  | 2         | 28          | 384            | 6000/93/46                                           | 8 / 8 x 500                       | 2/2,000                     |
+| Standard_G2  | 4         | 56          | 768            | 12000/187/93                                         | 16 / 16 x 500                       | 2/4,000                     |
+| Standard_G3  | 8         | 112         | 1,536          | 24000/375/187                                        | 32 / 32 x 500                     | 4/8,000                |
+| Standard_G4  | 16        | 224         | 3,072          | 48000/750/375                                        | 64 / 64 x 500                     | 8/1,6000          |
+| Standard_G5&nbsp;<sup>1</sup> | 32        | 448         | 6,144          | 96000/1500/750                                       | 64 / 64 x 500                     | 8/20,000           |
+
+<sup>1</sup> インスタンスは、単一の顧客専用のハードウェアに分離されます。
 <br>

@@ -14,12 +14,12 @@ ms.custom: vs-azure
 ms.workload: azure-vs
 ms.date: 02/18/2019
 ms.author: glenga;david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: b8cc628ef7db198c5068bb3917cf41113ba1687a
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 9f4d3ff6fa02369c0e4a01949cc686b842a63a12
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66417088"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66808473"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio---azure-app-service"></a>Visual Studio を使用して Web ジョブを開発してデプロイする - Azure App Service
 
@@ -92,7 +92,7 @@ Web ジョブ対応のプロジェクトでは、次の項目が追加されて�
 
 Visual Studio 2015 を使用している場合は、[Azure SDK for .NET (Visual Studio 2015)](https://azure.microsoft.com/downloads/) をインストールします。
 
-Visual Studio 2019 を使用している場合は、[Azure 開発ワークロード](https://docs.microsoft.com/visualstudio/install/install-visual-studio#step-4---select-workloads)をインストールします。
+Visual Studio 2019 を使用している場合は、[Azure 開発ワークロード](https://docs.microsoft.com/visualstudio/install/install-visual-studio#step-4---choose-workloads)をインストールします。
 
 ### <a id="convert"></a>既存のコンソール アプリケーション プロジェクトに対する Web ジョブのデプロイを有効にする
 

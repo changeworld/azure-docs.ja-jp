@@ -13,11 +13,11 @@ ms.date: 04/25/2017
 ms.reviewer: sergkanz
 ms.author: mbullwin
 ms.openlocfilehash: df85aafc81b199610c02f0faecb06e804fda24bb
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118066"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60899291"
 ---
 # <a name="trace-telemetry-application-insights-data-model"></a>トレース テレメトリ:Application Insights データ モデル
 

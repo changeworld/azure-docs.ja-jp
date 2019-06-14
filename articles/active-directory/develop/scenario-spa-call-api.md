@@ -16,10 +16,10 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 77a4ed01ac55a1153a62c672b33056a543b912ed
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65545611"
 ---
 # <a name="single-page-application---call-a-web-api"></a>シングルページ アプリケーション - Web API の呼び出し
@@ -30,7 +30,7 @@ Web API を呼び出す前に、`acquireTokenSilent` メソッドを呼び出し
 
 ### <a name="javascript"></a>JavaScript
 
-取得したアクセス トークンを HTTP 要求のベアラーとして使用して、Microsoft Graph API などの任意の Web API を呼び出します。 例: 
+取得したアクセス トークンを HTTP 要求のベアラーとして使用して、Microsoft Graph API などの任意の Web API を呼び出します。 例:
 
 ```javascript
     var headers = new Headers();

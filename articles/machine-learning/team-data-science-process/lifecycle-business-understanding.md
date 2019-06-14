@@ -12,11 +12,11 @@ ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 35d03a52125bd2646f86b96bcffe123d9fab7f64
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59545316"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60303555"
 ---
 # <a name="the-business-understanding-stage-of-the-team-data-science-process-lifecycle"></a>Team Data Science Process ライフサイクルのビジネスの把握ステージ
 
@@ -48,11 +48,11 @@ TDSP ライフサイクルを視覚化すると、次のようになります。
 
 2. 関連性があり、具体的かつ明確な "鋭い" 質問の問いかけと改善を行うことで、プロジェクトの目標を定義します。 データ サイエンスは、名前と数字を使用してこのような質問に回答するプロセスです。 データ サイエンスや機械学習は、一般的には以下の 5 種類の質問に回答するために使用されます。
  
-   * どのくらいの量または数か  (回帰)
-   * どのカテゴリか  (分類)
-   * どのグループか  (クラスタリング)
+   * どのくらいの量または数か (回帰)
+   * どのカテゴリか (分類)
+   * どのグループか (クラスタリング)
    * 異常か (異常の検出)
-   * どの選択肢を選ぶべきか  (推奨)
+   * どの選択肢を選ぶべきか (推奨)
 
    これらの質問のうちのどれについて質問し、どのような回答がビジネス上の目標の達成に役立つかを判断します。
 

@@ -16,11 +16,11 @@ ms.topic: conceptual
 ms.date: 3/13/2019
 ms.author: banders
 ms.openlocfilehash: b910cb3061b1451ea80b9843e2aa4047a784548f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57876869"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60918730"
 ---
 # <a name="add-update-or-remove-a-credit-or-debit-card-for-azure"></a>Azure のクレジット カードまたはデビット カードを追加、更新、または削除する
 
@@ -100,7 +100,7 @@ Azure portal では、新しいクレジット カードの追加、既存のク
 
     ![検索を示すスクリーンショット](./media/billing-how-to-change-credit-card/search.png)
 
-1. **[請求]** で、**[支払方法]** を選択します。
+1. **[請求]** で、 **[支払方法]** を選択します。
 
     ![選択した [支払い方法の管理] オプションのスクリーン ショット。](./media/billing-how-to-change-credit-card/payment-methods-blade-x.png)
 
@@ -185,7 +185,7 @@ If your credit card is associated with other active Microsoft subscriptions, you
 
 ### <a name="how-do-i-change-the-tax-id"></a>税 ID を変更する方法を教えてください。
 
-税 ID を追加または更新するには、[Azure アカウント センターの **[プロファイル]**](https://account.azure.com/Profile) にアクセスし、**[納税記録]** を選択してください。 この税 ID は、免税の計算に使用され、請求書に表示されます。
+税 ID を追加または更新するには、[Azure アカウント センターの **[プロファイル]** ](https://account.azure.com/Profile) にアクセスし、 **[納税記録]** を選択してください。 この税 ID は、免税の計算に使用され、請求書に表示されます。
 
 ## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
 

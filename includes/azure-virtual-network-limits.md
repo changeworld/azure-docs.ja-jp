@@ -5,15 +5,15 @@ services: networking
 author: anavinahar
 ms.service: networking
 ms.topic: include
-ms.date: 05/15/2019
+ms.date: 06/13/2019
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: cb586be1a139b331c259a1197cc62e7ca4f25666
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 813c8e92907a60046c2e53f97d4dd05125076241
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66238737"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67133372"
 ---
 <a name="virtual-networking-limits-classic"></a>次の制限は、サブスクリプションごとに**クラシック** デプロイ モデルを通じて管理されるネットワーク リソースのみに適用されます。 [サブスクリプションの上限に対する現在のリソース使用状況の確認](../articles/networking/check-usage-against-limits.md)に関するページを参照してください。
 
@@ -81,7 +81,7 @@ ms.locfileid: "66238737"
 | リソースあたりのルール数、Basic | 250 |
 | リソースあたりのルール数、Standard | 1,500 | 
 | IP 構成あたりのルール数 | 299 |
-| NIC あたりのルール数 | 500 |
+| NIC あたりのルール数 | 300 |
 | フロントエンド IP 構成、Basic | 200 |
 | フロントエンド IP の構成、Standard | 600 |
 | バックエンド プール (Basic) | 100、1 つの可用性セット |
