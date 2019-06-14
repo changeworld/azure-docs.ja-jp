@@ -12,10 +12,10 @@ author: marthalc
 ms.date: 12/03/2018
 ms.custom: seodec18
 ms.openlocfilehash: df2f0731aff6c90ef83b26041a9d383ce14974c6
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65024246"
 ---
 # <a name="collect-data-for-models-in-production"></a>実稼働環境でモデルのデータを収集する
@@ -113,11 +113,11 @@ ms.locfileid: "65024246"
 
 1. ワークスペースを開きます。
 
-1. **[デプロイ]** -> **[サービスの選択]** -> **[編集]** の順に選択します。
+1. **[デプロイ]**  ->  **[サービスの選択]**  ->  **[編集]** の順に選択します。
 
    ![サービスの編集](media/how-to-enable-data-collection/EditService.PNG)
 
-1. **[詳細設定]** で、**[モデルのデータ コレクションを有効にする]** をオフにします。 
+1. **[詳細設定]** で、 **[モデルのデータ コレクションを有効にする]** をオフにします。 
 
     [![データ収集をオンにする](media/how-to-enable-data-collection/CheckDataCollection.png)](./media/how-to-enable-data-collection/CheckDataCollection.png#lightbox)
 
@@ -134,11 +134,11 @@ ms.locfileid: "65024246"
 
   1. ワークスペースを開きます。
 
-  1. **[デプロイ]** -> **[サービスの選択]** -> **[編集]** の順に選択します。
+  1. **[デプロイ]**  ->  **[サービスの選択]**  ->  **[編集]** の順に選択します。
 
      [![編集オプション](media/how-to-enable-data-collection/EditService.PNG)](./media/how-to-enable-data-collection/EditService.PNG#lightbox)
 
-  1. **[詳細設定]** で、**[モデルのデータ コレクションを有効にする]** をオフにします。 
+  1. **[詳細設定]** で、 **[モデルのデータ コレクションを有効にする]** をオフにします。 
 
      [![データ コレクションをオフにする](media/how-to-enable-data-collection/UncheckDataCollection.png)](./media/how-to-enable-data-collection/UncheckDataCollection.png#lightbox)
 
@@ -181,7 +181,7 @@ BLOB のデータにすばやくアクセスするには:
 
 1. ストレージ アカウント名を追加し、ストレージ キーを入力します。 この情報は、BLOB の **[設定]** > [アクセス キー] で確認できます。 
 
-1. コンテナー **modeldata** を選択し、**[編集]** をクリックします。 
+1. コンテナー **modeldata** を選択し、 **[編集]** をクリックします。 
 
     [![PBI ナビゲーター](media/how-to-enable-data-collection/pbiNavigator.png)](./media/how-to-enable-data-collection/pbiNavigator.png#lightbox)
 
@@ -210,11 +210,11 @@ BLOB のデータにすばやくアクセスするには:
 
 1. Databricks ワークスペースに移動します。 
 
-1. Databricks ワークスペースで、**[Upload Data]\(データのアップロード\)** を選択します。
+1. Databricks ワークスペースで、 **[Upload Data]\(データのアップロード\)** を選択します。
 
     [![DB のアップロード](media/how-to-enable-data-collection/dbupload.png)](./media/how-to-enable-data-collection/dbupload.png#lightbox)
 
-1. 新しいテーブルを作成し、**[他のデータ ソース]** > [Azure Blob Storage] > [Create Table in Notebook]\(ノートブックにテーブルを作成\) を選択します。
+1. 新しいテーブルを作成し、 **[他のデータ ソース]** > [Azure Blob Storage] > [Create Table in Notebook]\(ノートブックにテーブルを作成\) を選択します。
 
     [![DB テーブル](media/how-to-enable-data-collection/dbtable.PNG)](./media/how-to-enable-data-collection/dbtable.PNG#lightbox)
 

@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/12/2016
 ms.author: crdun
-ms.openlocfilehash: 32a8c36d223e2b0c12f5d82ec748af66ae841b01
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: de24b64ecd95eec79d7508f978acda9f0ae5a8d6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42819024"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62097519"
 ---
 # <a name="add-push-notifications-to-your-xamarinios-app"></a>Xamarin iOS アプリへのプッシュ通知の追加
 
@@ -142,12 +142,12 @@ ms.locfileid: "42819024"
 
 ## <a name="test"></a>アプリケーションでプッシュ通知をテストする
 
-1. **[実行]** を押してプロジェクトをビルドし、iOS 対応のデバイスでアプリケーションを開始します。**[OK]** をクリックして、プッシュ通知を受け入れます。
+1. **[実行]** を押してプロジェクトをビルドし、iOS 対応のデバイスでアプリケーションを開始します。 **[OK]** をクリックして、プッシュ通知を受け入れます。
 
    > [!NOTE]
    > アプリケーションからのプッシュ通知を明示的に受け入れる必要があります。 これが必要であるのは、初めてアプリケーションを実行するときだけです。
 
-2. アプリケーションで、タスクを入力し、プラス (**+**) アイコンをクリックします。
+2. アプリケーションで、タスクを入力し、プラス ( **+** ) アイコンをクリックします。
 3. 通知が受信されたことを確認し、 **[OK]** をクリックして通知を破棄します。
 4. 手順 2. を繰り返してすぐにアプリケーションを閉じたら、通知が表示されることを確認します。
 

@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: sajagtap
 ms.openlocfilehash: d1c65b590fd68f68fdaeb110c0fd00e0c5a6649a
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58756467"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62127670"
 ---
 # <a name="quickstart-try-content-moderator-on-the-web"></a>クイック スタート:Web 上で Content Moderator を試す
 
@@ -38,7 +38,7 @@ Content Moderator レビュー ツールは、レビューア担当者が意思�
 
 ## <a name="upload-sample-content"></a>サンプル コンテンツのアップロード
 
-サンプル コンテンツをアップロードする準備ができました。 **[Try > Image] (トライ > イメージ)**、**[Try > Text] (トライ > テキスト)**、または **[Try > Video] (トライ > ビデオ)**.を選択します。
+サンプル コンテンツをアップロードする準備ができました。 **[Try > Image] (トライ > イメージ)** 、 **[Try > Text] (トライ > テキスト)** 、または **[Try > Video] (トライ > ビデオ)** .を選択します。
 
 ![画像またはテキスト モデレーションを試す](images/tryimagesortext.png)
 

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: e9fc8351b5e9a4f2274f0906d4071f86dcbcff26
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54259684"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60640668"
 ---
 # <a name="install-the-azure-virtual-machine-agent-in-offline-mode"></a>オフライン モードでの Azure 仮想マシン エージェントのインストール 
 
@@ -50,7 +50,7 @@ Azure 仮想マシン エージェント (VM エージェント) は、ローカ
 
 2.  OS ディスクをデータ ディスクとして別の VM ("_トラブルシューティング ツール_" VM と呼ばれます) に接続します。 詳細については、[Azure Portal での Windows VM へのデータ ディスクの接続](../windows/attach-managed-disk-portal.md)に関するページをご覧ください。
 
-3.  トラブルシューティング ツール VM に接続します。 **[コンピューターの管理]** > **[ディスクの管理]** の順に開きます。 OS ディスクがオンラインであることと、ドライブ文字がディスク パーティションに割り当てられていることを確認します。
+3.  トラブルシューティング ツール VM に接続します。 **[コンピューターの管理]**  >  **[ディスクの管理]** の順に開きます。 OS ディスクがオンラインであることと、ドライブ文字がディスク パーティションに割り当てられていることを確認します。
 
 ### <a name="step-2-modify-the-os-disk-to-install-the-azure-vm-agent"></a>手順 2: Azure VM エージェントをインストールするように OS ディスクを変更する
 
@@ -60,7 +60,7 @@ Azure 仮想マシン エージェント (VM エージェント) は、ローカ
 
 3.  **レジストリ エディター** (regedit.exe) を起動します。
 
-4.  **HKEY_LOCAL_MACHINE** キーを選択します。 メニューで、**[ファイル]** > **[ハイブの読み込み]** を選択します。
+4.  **HKEY_LOCAL_MACHINE** キーを選択します。 メニューで、 **[ファイル]**  >  **[ハイブの読み込み]** を選択します。
 
     ![ハイブを読み込む](./media/install-vm-agent-offline/load-hive.png)
 
@@ -105,9 +105,9 @@ Azure 仮想マシン エージェント (VM エージェント) は、ローカ
 
              ![GuestAgent フォルダーをコピーする](./media/install-vm-agent-offline/copy-files.png)
 
-9.  **[BROKENSYSTEM]** を選択します。 メニューから、**[ファイル]** > **[ハイブのアンロード]** を選択します。
+9.  **[BROKENSYSTEM]** を選択します。 メニューから、 **[ファイル]**  >  **[ハイブのアンロード]** を選択します。
 
-10.  **[BROKENSOFTWARE]** を選択します。 メニューから、**[ファイル]** > **[ハイブのアンロード]** を選択します。
+10.  **[BROKENSOFTWARE]** を選択します。 メニューから、 **[ファイル]**  >  **[ハイブのアンロード]** を選択します。
 
 11.  OS ディスクの接続を解除してから、OS ディスクを使用して VM を再作成します。
 

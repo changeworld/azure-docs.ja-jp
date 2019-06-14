@@ -8,10 +8,10 @@ ms.author: cabailey
 manager: barbkess
 ms.date: 05/07/2019
 ms.openlocfilehash: 468e392cd2c45d79cbb24f8d737a6e83fbcd2725
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65080685"
 ---
 # <a name="customer-lockbox-for-microsoft-azure"></a>Microsoft Azure 用カスタマー ロックボックス
@@ -64,7 +64,7 @@ Microsoft Azure 用カスタマー ロックボックスには、お客様が顧
     
     ![Azure カスタマー ロックボックス - 保留中の要求を表示する](./media/azure-customer-lockbox/customer-lockbox-pending-requests.png)
 
-10. 指定された承認者は **[サービス要求 ID]** を選択して、元のユーザーが作成したサポート チケット要求を表示することもできます。 この情報には、Microsoft サポートが対応している理由と、報告された問題の履歴に関する状況が提供されます。 例: 
+10. 指定された承認者は **[サービス要求 ID]** を選択して、元のユーザーが作成したサポート チケット要求を表示することもできます。 この情報には、Microsoft サポートが対応している理由と、報告された問題の履歴に関する状況が提供されます。 例:
     
     ![Azure カスタマー ロックボックス - サポート チケット要求を表示する](./media/azure-customer-lockbox/customer-lockbox-support-ticket.png)
 

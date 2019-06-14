@@ -9,10 +9,10 @@ ms.date: 01/31/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: c0f19e3ea4f5952ac96b589fa267a2136c85e4f3
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64711652"
 ---
 # <a name="monitor-azure-file-sync"></a>Azure File Sync の監視
@@ -29,19 +29,19 @@ Azure portal では、登録済みサーバーの正常性、サーバー エン
 
 ### <a name="storage-sync-service"></a>ストレージ同期サービス
 
-登録済みサーバーの正常性、サーバー エンドポイントの正常性、およびメトリックを表示するには、Azure portal 内でストレージ同期サービスに移動します。 **[登録済みサーバー]** ブレードに登録済みサーバーの正常性が表示され、**[同期グループ]** ブレードにサーバー エンドポイントの正常性が表示されます。
+登録済みサーバーの正常性、サーバー エンドポイントの正常性、およびメトリックを表示するには、Azure portal 内でストレージ同期サービスに移動します。 **[登録済みサーバー]** ブレードに登録済みサーバーの正常性が表示され、 **[同期グループ]** ブレードにサーバー エンドポイントの正常性が表示されます。
 
-登録済みサーバーの正常性: 
+登録済みサーバーの正常性:
 
 - **登録済みサーバー**の状態が **[オンライン]** である場合、サーバーは正常にサービスと通信しています。
 - **登録済みサーバー**の状態が **[オフラインのようです]** である場合は、ストレージ同期モニター (AzureStorageSyncMonitor.exe) プロセスがサーバー上で実行されているか確認します。 サーバーがファイアウォールまたはプロキシの内側にある場合は、[こちらの記事](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy)を参照して、ファイアウォールとプロキシを構成してください。
 
-サーバー エンドポイントの正常性: 
+サーバー エンドポイントの正常性:
 
 - ポータルのサーバー エンドポイントの正常性は、サーバーのテレメトリ イベント ログに記録されている同期イベント (ID 9102 および 9302) に基づきます。 一時的なエラーが原因で同期セッションが失敗した場合 (エラーで取り消された場合など)、現在の同期セッションが進行中である限り、ポータルには同期の正常性が引き続き表示される可能性があります。 ファイルが適用されているかどうかを判断するために、イベント ID 9302 が使用されます。 詳細については、[同期の正常性](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync)と[同期の進行状況](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session)に関するドキュメントを参照してください。
 - 同期が進行していないことが原因でポータルに同期エラーが表示された場合は、[トラブルシューティングに関するドキュメント](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#common-sync-errors)を参考にしてください。
 
-メトリック: 
+メトリック:
 
 - ストレージ同期サービス ポータルでは、次のメトリックを表示できます。
 
@@ -83,7 +83,7 @@ Windows Server では、クラウドを使った階層化、登録済みのサ�
 
 サーバーのテレメトリ イベント ログを使用して、登録済みサーバー、同期、およびクラウドを使った階層化の正常性を監視します。 テレメトリ イベント ログは、イベント ビューアーの *Applications and Services\Microsoft\FileSync\Agent* にあります。
 
-同期の正常性: 
+同期の正常性:
 
 - 同期セッションが終了すると、イベント ID 9102 がログに記録されます。 同期セッションが正常に終了している (**HResult = 0**) かどうか、および項目単位の同期エラーがあるかどうかを確認する場合は、このイベントを使用します。 詳細については、[同期の正常性](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync)および[項目単位のエラー](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing)に関するドキュメントを参照してください。
 
@@ -92,11 +92,11 @@ Windows Server では、クラウドを使った階層化、登録済みのサ�
 
 - アクティブな同期セッションがある場合は、5 分から 10 分ごとにイベント ID 9302 がログに記録されます。 現在の同期セッションが進行中 (**AppliedItemCount が 0 より大きい**) かどうかを確認するには、このイベントを使用します。 同期が進行していない場合、同期セッションは最終的に失敗するはずです。イベント ID 9102 はエラーと共にログに記録されます。 詳細については、[同期の進行に関するドキュメント](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session)をご覧ください。
 
-登録済みサーバーの正常性: 
+登録済みサーバーの正常性:
 
 - サーバーでサービスのジョブについてクエリが実行されている場合、30 秒ごとにイベント ID 9301 がログに記録されます。 GetNextJob が **0 の状態**で終了した場合、サーバーはサービスと通信できます。 GetNextJob がエラーで終了した場合は、[トラブルシューティングに関するドキュメント](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#common-sync-errors)を参考にしてください。
 
-クラウドを使った階層化の正常性: 
+クラウドを使った階層化の正常性:
 
 - サーバー上の階層化アクティビティを監視するには、テレメトリ イベント ログ (イベント ビューアーの *[アプリケーションとサービス]\[Microsoft]\[FileSync]\[Agent]* の下) にあるイベント ID 9003、9016、9029 を使用します。
 

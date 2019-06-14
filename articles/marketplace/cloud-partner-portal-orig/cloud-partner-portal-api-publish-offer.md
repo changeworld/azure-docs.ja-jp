@@ -8,10 +8,10 @@ ms.topic: reference
 ms.date: 09/13/2018
 ms.author: pabutler
 ms.openlocfilehash: 117a4e5e238e754524ff813ce25ebc1105e2153c
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64934971"
 ---
 <a name="publish-an-offer"></a>プランの発行
@@ -26,8 +26,8 @@ ms.locfileid: "64934971"
 
 |  **Name**      |    **説明**                               |  **データの種類** |
 |  ------------- |  ------------------------------------            |   -----------  |
-|  publisherId   | パブリッシャー ID。たとえば、`contoso`      |   String       |
-|  offerId       | オファー ID                                 |   String       |
+|  publisherId   | パブリッシャー ID。たとえば、`contoso`      |   string       |
+|  offerId       | オファー ID                                 |   string       |
 |  api-version   | API の最新バージョン                        |   Date         |
 |  |  |
 

@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: bwren
 ms.openlocfilehash: fb637197139001c67a4cfa773f897e6701dc1e9c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58100651"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61425136"
 ---
 # <a name="splunk-to-azure-monitor-log-query"></a>Splunk ユーザーのための Azure Monitor ログ クエリ
 
@@ -32,7 +32,7 @@ ms.locfileid: "58100651"
  | --- | --- | --- | ---
  | 展開単位  | cluster |  cluster |  Azure Monitor では、任意のクロス クラスター クエリが可能です。 Splunk ではできません。 |
  | データ キャッシュ |  バケット  |  キャッシュおよび保持ポリシー |  データの期間とキャッシュ レベルを制御します。 この設定は、クエリのパフォーマンスと展開のコストに直接影響します。 |
- | データの論理パーティション  |  Index  |  database  |  データの論理的な分離を可能にします。 どちらの実装でも、これらのパーティション間の和集合と結合が可能です。 |
+ | データの論理パーティション  |  index  |  database  |  データの論理的な分離を可能にします。 どちらの実装でも、これらのパーティション間の和集合と結合が可能です。 |
  | 構造化されたイベント メタデータ | 該当なし | table |  Splunk には、イベント メタデータの検索言語に対して公開される概念はありません。 Azure Monitor ログには、列を含むテーブルの概念があります。 各イベント インスタンスは行にマップされます。 |
  | データ レコード | event | 行 |  用語の変更のみです。 |
  | データ レコード属性 | フィールド |  列 |  Azure Monitor では、テーブル構造の一部として事前に定義されます。 Splunk では、イベントごとに固有のフィールドのセットがあります。 |

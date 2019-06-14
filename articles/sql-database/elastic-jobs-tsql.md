@@ -13,11 +13,11 @@ ms.reviewer: sstein
 manager: craigg
 ms.date: 01/25/2019
 ms.openlocfilehash: 59e0e4cf82af9851dacf3ec030575ed392571331
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59523768"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61475815"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Transact-SQL (T-SQL) を使用して Elastic Database ジョブを作成および管理する
 
@@ -456,7 +456,7 @@ EXEC jobs.sp_delete_job @job_name='ResultsPoolsJob'
 [ **\@enabled =** ] enabled  
 ジョブのスケジュールを有効にするかどうか。 Enabled は bit であり、既定値は 0 (無効) です。 0 の場合、ジョブは有効ではなく、そのスケジュールどおりには実行されません。ただし、手動で実行することはできます。 1 の場合、ジョブはそのスケジュールに従って実行され、手動で実行することもできます。
 
-[ **\@schedule_interval_type =**] schedule_interval_type  
+[ **\@schedule_interval_type =** ] schedule_interval_type  
 値はジョブが実行されるときを示します。 schedule_interval_type は nvarchar(50)、既定値は Once であり、次のいずれかの値を指定できます。
 - 'Once'
 - 'Minutes'

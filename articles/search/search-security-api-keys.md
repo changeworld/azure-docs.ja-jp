@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: heidist
 ms.openlocfilehash: f12d7f1a7dfcaf80df9a71a0bfc598d72db63a2e
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65024409"
 ---
 # <a name="create-and-manage-api-keys-for-an-azure-search-service"></a>Azure Search サービスの管理者 API キーを作成する
@@ -47,7 +47,7 @@ API キーは、ランダムに生成された数字と文字から成る文字�
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. サブスクリプションの[検索サービス](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)を一覧表示します。
-3. サービスを選択し、[概要] ページで **[設定]** >**[キー]** の順に移動して管理者キーとクエリ キーを表示します。
+3. サービスを選択し、[概要] ページで **[設定]**  > **[キー]** の順に移動して管理者キーとクエリ キーを表示します。
 
    ![ポータル ページの [設定] の [キー] セクション](media/search-security-overview/settings-keys.png)
 
@@ -59,7 +59,7 @@ API キーは、ランダムに生成された数字と文字から成る文字�
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. サブスクリプションの[検索サービス](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)を一覧表示します。
-3. サービスを選択し、[概要]ページで、**[設定]** >**[キー]** をクリックします。
+3. サービスを選択し、[概要]ページで、 **[設定]**  > **[キー]** をクリックします。
 4. **[クエリ キーの管理]** をクリックします。
 5. サービス用に既に生成されているクエリ キーを使用するか、最大 50 個の新しいクエリ キーを作成します。 既定のクエリ キーには名前はありませんが、追加のクエリ キーには、管理を容易にするために名前を付けることができます。
 
@@ -74,7 +74,7 @@ API キーは、ランダムに生成された数字と文字から成る文字�
 
 ビジネス継続性のためにセカンダリ キーを使用してプライマリ キーをローテーションできるように、サービスごとに 2 つの管理キーが作成されます。
 
-1. **[設定]** >**[キー]** ページで、セカンダリ キーをコピーします。
+1. **[設定]**  > **[キー]** ページで、セカンダリ キーをコピーします。
 2. すべてのアプリケーションについて、セカンダリ キーを使用するように API キーの設定を更新します。
 3. プライマリ キーを再生成します。
 4. 新しいプライマリ キーを使用するように、すべてのアプリケーションを更新します。
@@ -88,7 +88,7 @@ API キーは、ランダムに生成された数字と文字から成る文字�
 ## <a name="secure-api-keys"></a>API キーをセキュリティ保護する
 キーのセキュリティは、ポータルまたはリソース マネージャーのインターフェイス (PowerShell またはコマンドライン インターフェイス) でアクセスを制限することによって確保されます。 前述のように、サブスクリプションの管理者はすべての API キーを表示および再生成できます。 用心のために、ロールの割り当てを調べて、管理キーへのアクセス権を持つユーザーを確認してください。
 
-+ サービス ダッシュボードで、**[アクセス制御 (IAM)]** をクリックし、次に **[ロールの割り当て]** タブをクリックして、サービスのロールの割り当てを表示します。
++ サービス ダッシュボードで、 **[アクセス制御 (IAM)]** をクリックし、次に **[ロールの割り当て]** タブをクリックして、サービスのロールの割り当てを表示します。
 
 次のロールのメンバーは、キーの表示と再生成が可能です: 所有者、投稿者、[Search Service の共同作成者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#search-service-contributor)
 

@@ -46,5 +46,5 @@ sections:
       - type: list
         style: ordered
         items:
-          - html: <a href="/azure/sql-database/sql-database-features">SQL Server と Azure SQL Database の機能の違い</a> を説明します。
+          - html: <a href="/azure/sql-database/sql-database-features">SQL Server と Azure SQL データベースの機能の違い</a> を説明します。
           - html: これらの機能の使用法について <a href="/azure/sql-database/sql-database-howto">ハウツーガイド</a> で説明します。

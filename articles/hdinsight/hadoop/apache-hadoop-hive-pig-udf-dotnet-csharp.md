@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: hrasheed
 ms.openlocfilehash: 31738c43756da14ba6c2c92afbcb2882561c8001
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64722880"
 ---
 # <a name="use-c-user-defined-functions-with-apache-hive-and-apache-pig-streaming-on-apache-hadoop-in-hdinsight"></a>HDInsight 上の Apache Hadoop の Apache Hive と Apache Pig ストリーミングで C# のユーザー定義関数 (UDF) を使用する
@@ -54,10 +54,10 @@ HDInsight バージョンに付属する Mono と .NET framework のバージョ
 
 ### <a name="apache-hive-udf"></a>Apache Hive UDF
 
-1. Visual Studio を開き、ソリューションを作成します。 プロジェクトの種類で、**[Console App (.NET Framework)]** を選択し、新しいプロジェクトに **HiveCSharp** という名前を付けます。
+1. Visual Studio を開き、ソリューションを作成します。 プロジェクトの種類で、 **[Console App (.NET Framework)]** を選択し、新しいプロジェクトに **HiveCSharp** という名前を付けます。
 
     > [!IMPORTANT]
-    > Linux ベースの HDInsight クラスターを使用している場合は、[__.NET Framework 4.5__] を選択します。 .NET Framework のバージョンと Mono の互換性の詳細については、「[Mono compatibility](https://www.mono-project.com/docs/about-mono/compatibility/)」 (Mono の互換性) を参照してください。
+    > Linux ベースの HDInsight クラスターを使用している場合は、[ __.NET Framework 4.5__] を選択します。 .NET Framework のバージョンと Mono の互換性の詳細については、「[Mono compatibility](https://www.mono-project.com/docs/about-mono/compatibility/)」 (Mono の互換性) を参照してください。
 
 2. **Program.cs** の内容を次のコードに置き換えます。
 
@@ -114,7 +114,7 @@ HDInsight バージョンに付属する Mono と .NET framework のバージョ
 
 ### <a name="apache-pig-udf"></a>Apache Pig UDF
 
-1. Visual Studio を開き、ソリューションを作成します。 プロジェクトの種類で、**[コンソール アプリケーション]** を選択し、新しいプロジェクトに **PigUDF** という名前を付けます。
+1. Visual Studio を開き、ソリューションを作成します。 プロジェクトの種類で、 **[コンソール アプリケーション]** を選択し、新しいプロジェクトに **PigUDF** という名前を付けます。
 
 2. **Program.cs** ファイルの内容を次のコードに置き換えます。
 
@@ -155,7 +155,7 @@ HDInsight バージョンに付属する Mono と .NET framework のバージョ
 
 1. Visual Studio で、 **サーバー エクスプローラー**を開きます。
 
-2. **[Azure]** を展開して、**[HDInsight]** を展開します。
+2. **[Azure]** を展開して、 **[HDInsight]** を展開します。
 
 3. 入力を求められた場合は、Azure サブスクリプションの資格情報を入力し、 **[サインイン]** をクリックします。
 
@@ -163,17 +163,17 @@ HDInsight バージョンに付属する Mono と .NET framework のバージョ
 
     ![クラスターのストレージ アカウントを表示するサーバー エクスプローラー](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/storage.png)
 
-    * このエントリを展開できる場合は、クラスターの既定のストレージとして __Azure Storage アカウント__ を使用します。 クラスターの既定のストレージにファイルを表示するには、エントリを展開し、__[(既定のコンテナー)]__ をダブルクリックします。
+    * このエントリを展開できる場合は、クラスターの既定のストレージとして __Azure Storage アカウント__ を使用します。 クラスターの既定のストレージにファイルを表示するには、エントリを展開し、 __[(既定のコンテナー)]__ をダブルクリックします。
 
-    * このエントリを展開できない場合は、クラスターの既定のストレージとして __Azure Data Lake Storage__ を使用します。 クラスターの既定のストレージにファイルを表示するには、__(既定のストレージ アカウント)__ エントリをダブルクリックします。
+    * このエントリを展開できない場合は、クラスターの既定のストレージとして __Azure Data Lake Storage__ を使用します。 クラスターの既定のストレージにファイルを表示するには、 __(既定のストレージ アカウント)__ エントリをダブルクリックします。
 
 6. .exe ファイルをアップロードするには、次のいずれかの方法を使用します。
 
-   * __Azure ストレージ アカウント__ を使用している場合は、アップロード アイコンをクリックし、**HiveCSharp** プロジェクトの **bin\debug** フォルダーを参照します。 最後に、**HiveCSharp.exe** ファイルを選択し、**[OK]** をクリックします。
+   * __Azure ストレージ アカウント__ を使用している場合は、アップロード アイコンをクリックし、**HiveCSharp** プロジェクトの **bin\debug** フォルダーを参照します。 最後に、**HiveCSharp.exe** ファイルを選択し、 **[OK]** をクリックします。
 
        ![アップロード アイコン](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/upload.png)
     
-   * __Azure Data Lake Storage__ を使用している場合は、ファイルの一覧の空の領域を右クリックし、__[アップロード]__ を選択します。 最後に、**HiveCSharp.exe** ファイルを選択し、**[OK]** をクリックします。
+   * __Azure Data Lake Storage__ を使用している場合は、ファイルの一覧の空の領域を右クリックし、 __[アップロード]__ を選択します。 最後に、**HiveCSharp.exe** ファイルを選択し、 **[OK]** をクリックします。
 
      __HiveCSharp.exe__ のアップロードが完了したら、__PigUDF.exe__ ファイルのアップロード プロセスを繰り返します。
 
@@ -181,9 +181,9 @@ HDInsight バージョンに付属する Mono と .NET framework のバージョ
 
 1. Visual Studio で、 **サーバー エクスプローラー**を開きます。
 
-2. **[Azure]** を展開して、**[HDInsight]** を展開します。
+2. **[Azure]** を展開して、 **[HDInsight]** を展開します。
 
-3. **HiveCSharp** アプリケーションをデプロイしたクラスターを右クリックし、**[Write a Hive Query]** を選択します。
+3. **HiveCSharp** アプリケーションをデプロイしたクラスターを右クリックし、 **[Write a Hive Query]** を選択します。
 
 4. Hive クエリには、次のテキストを使用します。
 
@@ -209,7 +209,7 @@ HDInsight バージョンに付属する Mono と .NET framework のバージョ
 
 5. **[送信]** をクリックして、HDInsight クラスターにジョブを送信します。 **[Hive ジョブの概要]** ウィンドウが開きます。
 
-6. **[更新]** をクリックし、**[ジョブの状態]** が **[完了]** に変わるまで概要を更新します。 ジョブの出力を表示するには、 **[ジョブの出力]** をクリックします。
+6. **[更新]** をクリックし、 **[ジョブの状態]** が **[完了]** に変わるまで概要を更新します。 ジョブの出力を表示するには、 **[ジョブの出力]** をクリックします。
 
 ## <a name="run-an-apache-pig-job"></a>Apache Pig ジョブを実行する
 

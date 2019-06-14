@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 4/25/2019
 ms.author: amsriva
 ms.openlocfilehash: 2a1c7e480e896da6852949c9d765d17290e4e9ce
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64697159"
 ---
 # <a name="troubleshooting-bad-gateway-errors-in-application-gateway"></a>Application Gateway での無効なゲートウェイによるエラーのトラブルシューティング
@@ -22,7 +22,7 @@ Azure Application Gateway の使用時に表示される無効なゲートウェ
 
 ## <a name="overview"></a>概要
 
-アプリケーション ゲートウェイの構成後に発生する可能性があるエラーの 1 つに次のようなエラーがあります。"サーバー エラー:502 - Web サーバーがゲートウェイまたはプロキシ サーバーとして動作しているときに、無効な応答を受信しました" このエラーが発生する主な理由としては、次のことが考えられます。
+アプリケーション ゲートウェイの構成後に発生する可能性があるエラーの 1 つに次のようなエラーがあります。"サーバー エラー:502 - Web サーバーがゲートウェイまたはプロキシ サーバーとして動作しているときに、無効な応答を受信しました" というエラーが発生する場合。 このエラーが発生する主な理由としては、次のことが考えられます。
 
 * NSG、UDR、またはカスタム DNS が、バックエンド プールのメンバーへのアクセスをブロックしている。
 * バックエンド VM または仮想マシン スケール セットのインスタンスが既定の正常性プローブに応答していない。

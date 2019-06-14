@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: pabutler
 ms.openlocfilehash: fba5ac7669f7e2b1cfd3320e813891b5f99551d4
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64943168"
 ---
 # <a name="iot-edge-module-support-tab"></a>IoT Edge モジュールの [サポート] タブ
 
-**[新しいプラン]** ページの **[サポート]** タブでは、オファーに対するテクニカル サポートとユーザー サポートのリソースを指定します。  [サポート] フォームには、 **[Engineering Contact]\(エンジニアリング連絡先\)** 、 **[カスタマー サポート]** 、 **[Support Urls]\(サポート URL\)** の各入力領域があります。 フィールド名に付いているアスタリスク (*) は、そのフィールドが必須であることを示します。
+**[新しいプラン]** ページの **[サポート]** タブでは、オファーに対するテクニカル サポートとユーザー サポートのリソースを指定します。  サポート フォームには、次の入力領域が用意されています。**Engineering Contact (エンジニアリングの連絡先)** 、**Customer Support (カスタマー サポート)** 、および **Support Urls (サポート URL)** 。 フィールド名に付いているアスタリスク (*) は、そのフィールドが必須であることを示します。
 
 ![IoT Edge モジュールの [新しいプラン] フォームの [サポート] タブ](./media/iot-edge-module-support-tab.png)
 

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/28/2019
 ms.author: banders
 ms.openlocfilehash: 284480ab8b9973c02f365dbf3ebfd3a103ef4b42
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64919149"
 ---
 # <a name="set-up-your-billing-account-for-a-microsoft-customer-agreement"></a>Microsoft 顧客契約の請求先アカウントの設定
@@ -193,7 +193,7 @@ Enterprise Agreement 加入契約が期限切れになる前に、請求先ア�
     - Azure サブスクリプションの請求先は、新しいアカウントに切り替えられます。 **この切り替え中に Azure サービスは影響を受けません。中断なく稼働し続けます**。
     - Azure の予約がある場合は、同じ割引内容と条件で新しい請求先アカウントに移行されます。 切り替え中も予約割引が引き続き適用されます。
 
-4. 切り替えの状態は、**[切り替え状態]** ページで監視することができます。
+4. 切り替えの状態は、 **[切り替え状態]** ページで監視することができます。
 
    ![切り替え状態を示すスクリーンショット](./media/billing-mca-setup-account/ea-mca-set-up-status.png)
 
@@ -225,7 +225,7 @@ Enterprise Agreement 加入契約から新しい請求先アカウントに切�
 
    ![Azure portal の検索を表示するスクリーンショット](./media/billing-mca-setup-account/billing-search-cost-management-billing.png)
 
-3. 請求書セクションを選択します。 お持ちのアクセス権によっては、請求先アカウントまたは課金プロファイルを選択することが必要な場合があります。  請求先アカウントまたは課金プロファイルから、**[請求書セクション]** を選択し、請求書セクションを選択します。
+3. 請求書セクションを選択します。 お持ちのアクセス権によっては、請求先アカウントまたは課金プロファイルを選択することが必要な場合があります。  請求先アカウントまたは課金プロファイルから、 **[請求書セクション]** を選択し、請求書セクションを選択します。
 
     ![切り替え後の請求書セクションの一覧を示すスクリーンショット](./media/billing-mca-setup-account/billing-mca-invoice-sections-post-transition.png)
 
@@ -261,7 +261,7 @@ Enterprise Agreement 加入契約から新しい請求先アカウントに移�
 
    ![Azure portal の検索を表示するスクリーンショット](./media/billing-mca-setup-account/billing-search-cost-management-billing.png)。
 
-3. 請求書セクションを選択します。 請求書セクションは、Enterprise Agreement 加入契約内にそれぞれの部署と同じ名前を持ちます。 お持ちのアクセス権によっては、請求先アカウントまたは課金プロファイルを選択することが必要な場合があります。 課金プロファイルまたは請求先アカウントから、**[請求書セクション]** を選択し、請求書セクションを選択します。
+3. 請求書セクションを選択します。 請求書セクションは、Enterprise Agreement 加入契約内にそれぞれの部署と同じ名前を持ちます。 お持ちのアクセス権によっては、請求先アカウントまたは課金プロファイルを選択することが必要な場合があります。 課金プロファイルまたは請求先アカウントから、 **[請求書セクション]** を選択し、請求書セクションを選択します。
 
    ![切り替え後の請求書セクションの一覧を示すスクリーンショット](./media/billing-mca-setup-account/billing-mca-invoice-sections-post-transition.png)
 
@@ -269,7 +269,7 @@ Enterprise Agreement 加入契約から新しい請求先アカウントに移�
 
     ![切り替え後の部署管理者とアカウント管理者のアクセス権を示すスクリーンショット](./media/billing-mca-setup-account/billing-mca-department-account-admins-access-post-transition.png)
 
-エンタープライズ管理者と部署管理者は請求書セクション所有者または請求書セクション閲覧者として表示され、部署のアカウント オーナーは Azure サブスクリプション作成者として表示されます。 すべての請求書セクションについて手順を繰り返して、Enterprise Agreement 加入契約のすべての部署に対するアクセス権を確認します。 どの部署にも属していなかったアカウント オーナーは、**[Default invoice section]\(既定請求書セクション\)** という請求書セクションに対するアクセス許可を取得します。 管理者のアクセス権が不足していると思われる場合は、Azure portal 上でアクセス権を付与できます。 詳しくは、「[Azure portal での組み込みロールを管理する](billing-understand-mca-roles.md#manage-billing-roles-in-the-azure-portal)」をご覧ください。
+エンタープライズ管理者と部署管理者は請求書セクション所有者または請求書セクション閲覧者として表示され、部署のアカウント オーナーは Azure サブスクリプション作成者として表示されます。 すべての請求書セクションについて手順を繰り返して、Enterprise Agreement 加入契約のすべての部署に対するアクセス権を確認します。 どの部署にも属していなかったアカウント オーナーは、 **[Default invoice section]\(既定請求書セクション\)** という請求書セクションに対するアクセス許可を取得します。 管理者のアクセス権が不足していると思われる場合は、Azure portal 上でアクセス権を付与できます。 詳しくは、「[Azure portal での組み込みロールを管理する](billing-understand-mca-roles.md#manage-billing-roles-in-the-azure-portal)」をご覧ください。
 
 ## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください
 
