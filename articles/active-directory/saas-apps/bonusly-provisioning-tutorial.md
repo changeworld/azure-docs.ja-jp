@@ -17,11 +17,11 @@ ms.date: 03/27/2019
 ms.author: v-wingf-msft
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4ad0ee590572dbc92e67be9f84ffc65afc3e8473
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59278736"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60282181"
 ---
 # <a name="tutorial-configure-bonusly-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニングに対応するように Bonusly を構成する
 
@@ -47,11 +47,11 @@ Azure AD での自動ユーザー プロビジョニング用に Bonusly を構�
 
 **Azure AD アプリケーション ギャラリーから Bonusly を追加するには、次の手順を実行します。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
     ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
+2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -59,7 +59,7 @@ Azure AD での自動ユーザー プロビジョニング用に Bonusly を構�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Bonusly**」と入力し、結果ウィンドウで **Bonusly** を選び、**[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Bonusly**」と入力し、結果ウィンドウで **Bonusly** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
     ![結果一覧の Bonusly](common/search-new-app.png)
 
@@ -86,7 +86,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 ### <a name="to-configure-automatic-user-provisioning-for-bonusly-in-azure-ad"></a>Azure AD で Bonusly の自動ユーザー プロビジョニングを構成するには:
 
-1. [Azure portal](https://portal.azure.com) にサインインし、**[エンタープライズ アプリケーション]**、**[すべてのアプリケーション]**、**[Bonusly]** の順に選択します。
+1. [Azure portal](https://portal.azure.com) にサインインし、 **[エンタープライズ アプリケーション]** 、 **[すべてのアプリケーション]** 、 **[Bonusly]** の順に選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -106,7 +106,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
     ![Bonusly のプロビジョニング](./media/bonusly-provisioning-tutorial/secrettoken.png)
 
-6. Bonusly アカウントの**シークレット トークン** は、**[Admin]\(管理者\) > [Company]\(会社\) > [Integrations]\(統合\)** に配置されています。 **[If you want to code]\(コーディングするもの\)** セクションで、**[API] > [Create New API Access Token]\(新しい API アクセストークンの作成\)** をクリックして、新しいシークレット トークンを作成します。
+6. Bonusly アカウントの**シークレット トークン** は、 **[Admin]\(管理者\) > [Company]\(会社\) > [Integrations]\(統合\)** に配置されています。 **[If you want to code]\(コーディングするもの\)** セクションで、 **[API] > [Create New API Access Token]\(新しい API アクセストークンの作成\)** をクリックして、新しいシークレット トークンを作成します。
 
     ![Bonusly のプロビジョニング](./media/bonusly-provisioning-tutorial/BonuslyIntegrations.png)
 
@@ -114,17 +114,17 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
     ![Bonusly のプロビジョニング](./media/bonusly-provisioning-tutorial/CreateToken.png)
 
-7. 次の画面で、用意されたテキスト ボックスに、アクセス トークンの名前を入力し、**[Create Api Key]\(API キーの作成\)**  をクリックします。 数秒後にポップアップ内に新しいアクセス トークンが表示されます。
+7. 次の画面で、用意されたテキスト ボックスに、アクセス トークンの名前を入力し、 **[Create Api Key]\(API キーの作成\)**  をクリックします。 数秒後にポップアップ内に新しいアクセス トークンが表示されます。
 
     ![Bonusly のプロビジョニング](./media/bonusly-provisioning-tutorial/Token01.png)
 
     ![Bonusly のプロビジョニング](./media/bonusly-provisioning-tutorial/Token02.png)
 
-8. 手順 5 に示されたフィールドに値を入力したら、**[テスト接続]** をクリックして、Azure AD が Bonusly に接続できることを確認します。 接続できない場合は、使用中の Bonusly アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
+8. 手順 5 に示されたフィールドに値を入力したら、 **[テスト接続]** をクリックして、Azure AD が Bonusly に接続できることを確認します。 接続できない場合は、使用中の Bonusly アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
     ![Bonusly のプロビジョニング](./media/bonusly-provisioning-tutorial/TestConnection.png)
 
-9. **[通知用メール]** フィールドに、プロビジョニングのエラー通知を受け取るユーザーまたはグループの電子メール アドレスを入力して、**[エラーが発生したときにメール通知を送信します]** チェック ボックスをオンにします。
+9. **[通知用メール]** フィールドに、プロビジョニングのエラー通知を受け取るユーザーまたはグループの電子メール アドレスを入力して、 **[エラーが発生したときにメール通知を送信します]** チェック ボックスをオンにします。
 
     ![Bonusly のプロビジョニング](./media/bonusly-provisioning-tutorial/EmailNotification.png)
 
@@ -140,7 +140,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 13. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)の次の手順を参照してください。
 
-14. Bonusly に対して Azure AD プロビジョニング サービスを有効にするには、**[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
+14. Bonusly に対して Azure AD プロビジョニング サービスを有効にするには、 **[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
 
     ![Bonusly のプロビジョニング](./media/bonusly-provisioning-tutorial/ProvisioningStatus.png)
 
@@ -148,11 +148,11 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
     ![Bonusly のプロビジョニング](./media/bonusly-provisioning-tutorial/ScopeSync.png)
 
-16. プロビジョニングの準備ができたら、**[保存]** をクリックします。
+16. プロビジョニングの準備ができたら、 **[保存]** をクリックします。
 
     ![Bonusly のプロビジョニング](./media/bonusly-provisioning-tutorial/SaveProvisioning.png)
 
-これにより、**[設定]** セクションの **[スコープ]** で 定義したユーザーやグループの初期同期が開始されます。 初期同期は後続の同期よりも実行に時間がかかります。後続の同期は、Azure AD のプロビジョニング サービスが実行されている限り約 40 分ごとに実行されます。 **[同期の詳細]** セクションを使用すると、進行状況を監視できるほか、リンクをクリックしてプロビジョニング アクティビティ レポートを取得できます。このレポートには、Azure AD プロビジョニング サービスによって Bonusly に対して実行されたすべてのアクションが記載されています。
+これにより、 **[設定]** セクションの **[スコープ]** で 定義したユーザーやグループの初期同期が開始されます。 初期同期は後続の同期よりも実行に時間がかかります。後続の同期は、Azure AD のプロビジョニング サービスが実行されている限り約 40 分ごとに実行されます。 **[同期の詳細]** セクションを使用すると、進行状況を監視できるほか、リンクをクリックしてプロビジョニング アクティビティ レポートを取得できます。このレポートには、Azure AD プロビジョニング サービスによって Bonusly に対して実行されたすべてのアクションが記載されています。
 
 Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](../manage-apps/check-status-user-account-provisioning.md)」をご覧ください。
 

@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 03/01/2019
 tags: connectors
 ms.openlocfilehash: 5a1bfe8ca38fc23f09b13195fb8ca5bd443a4afd
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58314418"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60312560"
 ---
 # <a name="upload-and-manage-files-in-dropbox-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して Dropbox 内のファイルをアップロードおよび管理する
 
@@ -35,7 +35,7 @@ Dropbox コネクタと Azure Logic Apps を使用すると、Dropbox アカウ�
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. 検索ボックスで、**[すべて]** を選択します。 検索ボックスに、フィルターとして「dropbox」と入力します。
+1. 検索ボックスで、 **[すべて]** を選択します。 検索ボックスに、フィルターとして「dropbox」と入力します。
 トリガーの一覧から、**ファイルの作成時**
 
    ![Dropbox トリガーを選択](media/connectors-create-api-dropbox/select-dropbox-trigger.png)
@@ -44,22 +44,22 @@ Dropbox コネクタと Azure Logic Apps を使用すると、Dropbox アカウ�
 
 1. トリガーに必要な情報を入力します。 
 
-   この例では、ファイルの作成を追跡するフォルダーを選択します。 フォルダーを参照するには、**[フォルダー]** ボックスの横のフォルダー アイコンを選択します。
+   この例では、ファイルの作成を追跡するフォルダーを選択します。 フォルダーを参照するには、 **[フォルダー]** ボックスの横のフォルダー アイコンを選択します。
 
 ## <a name="add-action"></a>アクションを追加する
 
 新しいファイルからコンテンツを取得するアクションを追加します。
 
-1. トリガーで、**[次のステップ]** を選択します。 
+1. トリガーで、 **[次のステップ]** を選択します。 
 
-1. 検索ボックスで、**[すべて]** を選択します。 検索ボックスに、フィルターとして「dropbox」と入力します。
+1. 検索ボックスで、 **[すべて]** を選択します。 検索ボックスに、フィルターとして「dropbox」と入力します。
 アクションの一覧から、次のアクションを選択します。**パスを使用してファイルの内容を取得する**
 
 1. Azure Logic Apps の Dropbox へのアクセスをまだ承認していない場合、ここでアクセスを承認します。
 
-1. 使用するファイル パスを参照するには、**[ファイル パス]** ボックスの横の省略記号 (**...**) ボタンを選択します。 
+1. 使用するファイル パスを参照するには、 **[ファイル パス]** ボックスの横の省略記号 ( **...** ) ボタンを選択します。 
 
-   **[ファイル パス]** ボックス内をクリックし、動的コンテンツ リストから、**[ファイル パス]** を選択することもできます。この値は、前のセクションで追加したトリガーからの出力として取得できます。
+   **[ファイル パス]** ボックス内をクリックし、動的コンテンツ リストから、 **[ファイル パス]** を選択することもできます。この値は、前のセクションで追加したトリガーからの出力として取得できます。
 
 1. 完了したら、ロジック アプリを保存します。
 

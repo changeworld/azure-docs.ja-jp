@@ -17,11 +17,11 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0e006111cce7f53ff87f1c6d60b2a5147da02e1e
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58438990"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60284948"
 ---
 # <a name="tutorial-get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>チュートリアル:Azure Active Directory Reporting API と証明書を使用したデータの取得
 
@@ -61,13 +61,13 @@ ms.locfileid: "58438990"
 
 ## <a name="get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>Azure Active Directory Reporting API と証明書を使用したデータの取得
 
-1. [Azure portal](https://portal.azure.com) に移動し、**[Azure Active Directory]**、**[アプリの登録]** の順に選択し、リストからアプリケーションを選択します。 
+1. [Azure portal](https://portal.azure.com) に移動し、 **[Azure Active Directory]** 、 **[アプリの登録]** の順に選択し、リストからアプリケーションを選択します。 
 
-2. **[設定]** > **[キー]** を選択し、**[公開キーのアップロード]** を選択します。
+2. **[設定]**  >  **[キー]** を選択し、 **[公開キーのアップロード]** を選択します。
 
-3. 前の手順の証明書ファイルを選択し、**[保存]** を選択します。 
+3. 前の手順の証明書ファイルを選択し、 **[保存]** を選択します。 
 
-4. アプリケーション ID と、アプリケーションで登録した証明書のサムプリントを書き留めます。 サムプリントを調べるには、ポータルのアプリケーション ページから **[設定]** に移動し、**[キー]** をクリックします。 サムプリントは **[公開鍵]** 一覧の下にあります。
+4. アプリケーション ID と、アプリケーションで登録した証明書のサムプリントを書き留めます。 サムプリントを調べるには、ポータルのアプリケーション ページから **[設定]** に移動し、 **[キー]** をクリックします。 サムプリントは **[公開鍵]** 一覧の下にあります。
 
 5. インライン マニフェスト エディターでアプリケーション マニフェストを開き、次のスキーマを使用して、*keyCredentials* プロパティを新しい証明書情報に置き換えます。 
 

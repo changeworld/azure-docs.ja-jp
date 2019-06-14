@@ -15,11 +15,11 @@ ms.date: 04/09/2019
 ms.author: rolyon
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 786b5ed99cce29c7217bfa42446821848ca8e05f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59492636"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60288154"
 ---
 # <a name="discover-azure-resources-to-manage-in-pim"></a>PIM で管理する Azure リソースを検出する
 
@@ -47,7 +47,7 @@ PIM を Azure リソース用に初めて設定するときは、PIM を使っ�
 
     ![[検出] ウィンドウ](./media/pim-resource-roles-discover-resources/discovery-pane.png)
 
-1. [検出] ウィンドウで、**[リソース状態のフィルター]** と **[リソースの種類の選択]** を使用して、書き込みアクセス許可がある管理グループまたはサブスクリプションをフィルター処理します。 おそらく、最も簡単なのは、**[すべて]** から始めることです。
+1. [検出] ウィンドウで、 **[リソース状態のフィルター]** と **[リソースの種類の選択]** を使用して、書き込みアクセス許可がある管理グループまたはサブスクリプションをフィルター処理します。 おそらく、最も簡単なのは、 **[すべて]** から始めることです。
 
     検索して選択できるのは、PIM を使用して管理する管理グループまたはサブスクリプション リソースのみです。 PIM で管理グループまたはサブスクリプションを管理するときは、子リソースも管理できます。
 
@@ -60,7 +60,7 @@ PIM を Azure リソース用に初めて設定するときは、PIM を使っ�
 
     ![検出 - リソースの管理](./media/pim-resource-roles-discover-resources/discovery-manage-resource.png)
 
-1. 選択した管理用リソースのオンボードを確認するメッセージが表示されたら、**[はい]** をクリックします。
+1. 選択した管理用リソースのオンボードを確認するメッセージが表示されたら、 **[はい]** をクリックします。
 
     ![検出 - リソース メッセージの管理](./media/pim-resource-roles-discover-resources/discovery-manage-resource-message.png)
 

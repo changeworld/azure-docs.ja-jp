@@ -10,11 +10,11 @@ services: azure-maps
 manager: ''
 ms.custom: codepen
 ms.openlocfilehash: f61c7a939902ee5d02b2e9ba896c7555968f9d0d
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59547987"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60769517"
 ---
 # <a name="add-a-shape-to-a-map"></a>マップにシェイプを追加する
 
@@ -126,7 +126,7 @@ Polygon レイヤーにはごくわずかのスタイル オプションしか�
 
 ## <a name="add-a-circle-to-the-map"></a>マップに円を追加する
 
-Azure Maps は、[ここ](extend-geojson.md#circle)に示されている円の定義を提供する、GeoJSON スキーマの拡張バージョンを使用してします。 値 `"Circle"` の `subType` プロパティとメートル単位の半径を表す数値を含む `radius` プロパティを含む `Point` フィーチャーを作成することで、円をマップ上にレンダリングすることができます。 例: 
+Azure Maps は、[ここ](extend-geojson.md#circle)に示されている円の定義を提供する、GeoJSON スキーマの拡張バージョンを使用してします。 値 `"Circle"` の `subType` プロパティとメートル単位の半径を表す数値を含む `radius` プロパティを含む `Point` フィーチャーを作成することで、円をマップ上にレンダリングすることができます。 例:
 
 ```javascript
 {

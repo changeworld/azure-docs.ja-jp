@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 03/22/2019
 ms.author: magoedte
 ms.openlocfilehash: 19ae3322d26447cf7c7dd94d06f073ccf013738e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58878357"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60255091"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>Operations Manager を Azure Monitor に接続する
 
@@ -110,7 +110,7 @@ Operations Manager 管理グループが  Log Analytics ワークスペースの
 1. Operations Manager コンソールで、 **[管理]** ワークスペースを選択します。
 1. [Operations Management Suite] ノードを展開し、 **[接続]** をクリックします。
 1. **[Operations Management Suite への登録]** リンクをクリックします。
-1. **[Operations Management Suite オンボード ウィザード:認証]** ページで、OMS サブスクリプションに関連付けられている管理者アカウントの電子メール アドレスまたは電話番号とパスワードを入力して、**[サインイン]** をクリックします。
+1. **[Operations Management Suite オンボード ウィザード:認証]** ページで、OMS サブスクリプションに関連付けられている管理者アカウントの電子メール アドレスまたは電話番号とパスワードを入力して、 **[サインイン]** をクリックします。
 
    >[!NOTE]
    >Operations Management Suite 名は廃止されました。 
@@ -131,7 +131,7 @@ Log Analytics ワークスペースとの統合が構成された後には､サ
 1. Operations Manager コンソールを開き、 **[Administration (管理)]** ワークスペースを選択します。
 1. [Operations Management Suite] ノードを展開し、 **[接続]** をクリックします。
 1. ウィンドウの右側の [アクション] 見出しの下にある **[コンピューター/グループの追加]** リンクをクリックします。
-1. **[コンピューターの検索]** ダイアログ ボックスでは、Operations Manager で監視するコンピューターまたはグループを検索できます。 Azure Monitor にオンボードするコンピューターまたはグループを選択し、**[追加]** をクリックして、**[OK]** をクリックします。
+1. **[コンピューターの検索]** ダイアログ ボックスでは、Operations Manager で監視するコンピューターまたはグループを検索できます。 Azure Monitor にオンボードするコンピューターまたはグループを選択し、 **[追加]** をクリックして、 **[OK]** をクリックします。
 
 オペレーション コンソールの **[管理]** ワークスペースにある [Operations Management Suite] の下に、マネージド コンピューター ノードからデータを収集するように構成されたコンピューターとグループが表示されます。 ここから、必要に応じて、コンピューターおよびグループの追加または削除ができます。
 
@@ -142,7 +142,7 @@ Log Analytics ワークスペースとの統合が構成された後には､サ
 1. Operations Manager コンソールを開き、 **[Administration (管理)]** ワークスペースを選択します。
 1. [Operations Management Suite] を展開し、 **[接続]** をクリックします。
 1. [OMS の接続] ビューで、 **[プロキシ サーバーの構成]** をクリックします。
-1. **[Operations Management Suite 設定ウィザード:プロキシ サーバー]** ページで **[Operations Management Suite へのアクセスにプロキシ サーバーを使用する]** を選択して、ポート番号と URL を入力し (例: http://corpproxy:80)、**[完了]** をクリックします。
+1. **[Operations Management Suite 設定ウィザード:プロキシ サーバー]** ページで **[Operations Management Suite へのアクセスにプロキシ サーバーを使用する]** を選択して、ポート番号と URL を入力し (例: http://corpproxy:80 )、 **[完了]** をクリックします。
 
 プロキシ サーバーで認証が必要な場合は、次の手順を実行して、管理グループ内の Azure Monitor への報告を行うマネージド コンピューターに伝達される必要がある設定と資格情報を構成します。
 
@@ -150,9 +150,9 @@ Log Analytics ワークスペースとの統合が構成された後には､サ
 1. **[RunAs Configuration (RunAs の構成)]** で **[Profiles (プロファイル)]** を選択します。
 1. **System Center Advisor Run As Profile Proxy** というプロファイルを開きます。
 1. 実行プロファイル ウィザードで [追加] をクリックし、実行アカウントを使用します。 [実行アカウント](https://technet.microsoft.com/library/hh321655.aspx) を作成することも、既存のアカウントを使用することもできます。 このアカウントには、プロキシ サーバーを通過するための十分な権限を持たせる必要があります。
-1. 管理するアカウントを設定するには、**[選択したクラス、グループ、またはオブジェクト]** を選択し、**[選択...]** をクリックします。 次に、**[グループ...]** をクリックし、**[グループの検索]** ボックス開きます。
-1. **Microsoft System Center Advisor Monitoring Server Group**を検索して選択します。 グループを選択したら、**[OK]** をクリックして、**[グループ検索]** ボックスを閉じます。
-1. **[OK]** をクリックして、**[実行アカウントの追加]** ボックスを閉じます。
+1. 管理するアカウントを設定するには、 **[選択したクラス、グループ、またはオブジェクト]** を選択し、 **[選択...]** をクリックします。 次に、 **[グループ...]** をクリックし、 **[グループの検索]** ボックス開きます。
+1. **Microsoft System Center Advisor Monitoring Server Group**を検索して選択します。 グループを選択したら、 **[OK]** をクリックして、 **[グループ検索]** ボックスを閉じます。
+1. **[OK]** をクリックして、 **[実行アカウントの追加]** ボックスを閉じます。
 1. **[保存]** をクリックして、ウィザードを完了し、変更を保存します。
 
 接続が作成されてから、データを収集して Azure Monitor にログ データを報告するエージェントを設定すると、管理グループで以下の構成が適用されます (ただし、必ずしもこの記載順に設定されるわけではありません)。
@@ -177,7 +177,7 @@ Log Analytics ワークスペースとの統合が構成された後には､サ
 1. Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
 1. Azure ポータルで、左下隅にある **[その他のサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **Log Analytics** を選択して､ワークスペースを作成します｡  
 1. Operations Manager 管理者ロールのメンバーであるアカウントを使用して Operations Manager コンソールを開き、 **[管理]** ワークスペースを選択します。
-1. Log Analytics を展開し、**[接続]** を選択します。
+1. Log Analytics を展開し、 **[接続]** を選択します。
 1. ウィンドウの中央にある **[Operation Management Suite の再構成]** リンクを選択します。
 1. **Log Analytics オンボード ウィザード**に従って､新しい Log Analytics ワークスペースに関連付けられている管理者アカウントの電子メール アドレスか電話番号とパスワードを入力します｡
    
@@ -202,9 +202,9 @@ Operations Manager への Azure Monitor の統合の成功を確認する方法�
 ### <a name="to-confirm-integration-from-the-operations-console"></a>オペレーション コンソールから統合を確認するには
 
 1. Operations Manager コンソールを開き、 **[Administration (管理)]** ワークスペースを選択します。
-1. **[管理パック]** を選択し、**[Look for (検索する文字列)]** ボックスに「**Advisor**」または「**Intelligence**」と入力します。
+1. **[管理パック]** を選択し、 **[Look for (検索する文字列)]** ボックスに「**Advisor**」または「**Intelligence**」と入力します。
 1. 有効にしたソリューションによって、対応する管理パックが検索結果に表示されます。  たとえば、アラート管理ソリューションを有効にした場合、管理パック Microsoft System Center Advisor Alert Management がリストに表示されます。
-1. **[監視]** ビューで、**[Operations Management Suite\Health State (Operations Management Suite\ヘルス状態)]** ビューに移動します。  **Management Server State** の部分から管理サーバーを選択し､**Detail View** の部分で､**Authentication service URI** プロパティの値が Log Analytics ワークスペース ID に一致していることを確認します｡
+1. **[監視]** ビューで、 **[Operations Management Suite\Health State (Operations Management Suite\ヘルス状態)]** ビューに移動します。  **Management Server State** の部分から管理サーバーを選択し､**Detail View** の部分で､**Authentication service URI** プロパティの値が Log Analytics ワークスペース ID に一致していることを確認します｡
    
    ![oms-opsmgr-mg-authsvcuri-property-ms](./media/om-agents/oms-opsmgr-mg-authsvcuri-property-ms.png)
 
@@ -229,14 +229,14 @@ Operations Manager との統合を有効にしたソリューションの管理�
     >  
 
 1. Operations Manager 管理者ロールのメンバーであるアカウントを使用して Operations Manager オペレーション コンソールを開きます。
-1. **[管理]** で **[管理パック]** ノードを選択し、**[Look for (検索する文字列)]** ボックスに「**Advisor**」と入力して、次の管理パックが管理グループにインポートされた状態になっていることを確認します。
+1. **[管理]** で **[管理パック]** ノードを選択し、 **[Look for (検索する文字列)]** ボックスに「**Advisor**」と入力して、次の管理パックが管理グループにインポートされた状態になっていることを確認します。
    
    * Microsoft System Center Advisor
    * Microsoft System Center Advisor Internal
 
-1. Azure portal で、**[設定]** タイルをクリックします。
-1. **[Connected Sources]**(接続されているソース) を選択します。
-1. [System Center Operations Manager] セクションの下の表に、ワークスペースから削除する管理グループの名前が表示されます。 **[Last Data (最後のデータ)]** 列で、**[削除]** をクリックします。  
+1. Azure portal で、 **[設定]** タイルをクリックします。
+1. **[Connected Sources]** (接続されているソース) を選択します。
+1. [System Center Operations Manager] セクションの下の表に、ワークスペースから削除する管理グループの名前が表示されます。 **[Last Data (最後のデータ)]** 列で、 **[削除]** をクリックします。  
    
     > [!NOTE]
     > **[削除]** リンクは、接続された管理グループからアクティビティが検出されない場合、14 日後までは使用できません。  

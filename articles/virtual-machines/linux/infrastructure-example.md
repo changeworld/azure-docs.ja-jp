@@ -17,11 +17,11 @@ ms.date: 12/15/2017
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 00357641f51be703d2e5c52c5b9cc6187ce05ff6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58002690"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60543071"
 ---
 # <a name="example-azure-infrastructure-walkthrough-for-linux-vms"></a>Linux VM 用の サンプルの Azure インフラストラクチャによるチュートリアル
 この記事では、サンプルのアプリケーション インフラストラクチャの構築について説明します。 ここでは、名前付け規則、可用性セット、仮想ネットワークおよびロード バランサーに関するガイドラインと意思決定のすべてをまとめたシンプルなオンライン ストア向けインフラストラクチャを設計し、実際に仮想マシン (VM) をデプロイする方法について説明します。
@@ -55,8 +55,8 @@ Adventure Works Cycles では、以下の項目で構成されるオンライン
 * Adventure Works Cycles は、プレフィックスとして **[IT ワークロード]-[場所]-[Azure リソース]** を使用します。
   * たとえば、"**azos**" (Azure On-line Store) は IT ワークロード名であり、"**use**" (米国東部 2) は場所です。
 * 仮想ネットワークは、AZOS-USE-VN<strong>[番号]</strong> を使用します。
-* 可用性セットは、azos-use-as-**[ロール]** を使用します。
-* 仮想マシン名は、azos-use-vm-**[仮想マシン名]** を使用します。
+* 可用性セットは、azos-use-as- **[ロール]** を使用します。
+* 仮想マシン名は、azos-use-vm- **[仮想マシン名]** を使用します。
 
 ## <a name="azure-subscriptions-and-accounts"></a>Azure サブスクリプションとアカウント
 Adventure Works Cycles は、Adventure Works Enterprise Subscription という名前のエンタープライズ サブスクリプションを使用して、この IT ワークロードに対する課金を行います。

@@ -19,11 +19,11 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 021e13dafcc659337d4096a068e224312e69db1b
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56870943"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60353633"
 ---
 # <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>Azure AD Connect を使用した Active Directory フェデレーション サービスの管理とカスタマイズ
 この記事では、Azure Active Directory (Azure AD) Connect を使用して、Active Directory フェデレーション サービス (AD FS) を管理およびカスタマイズする方法について説明します。 また、AD FS ファームの完全な構成のために必要となる可能性のある他の一般的な AD FS タスクについても説明します。
@@ -51,7 +51,7 @@ Azure AD Connect を使用して、AD FS と Azure AD の信頼の現在の正�
 1. 追加タスクの一覧から **[AAD と ADFS 信頼を修復します]** を選択します。
    ![[AAD と ADFS 信頼を修復します]](./media/how-to-connect-fed-management/RepairADTrust1.PNG)
 
-2. **[Azure AD に接続]** ページで、Azure AD の全体管理者の資格情報を入力し、**[次へ]** をクリックします。
+2. **[Azure AD に接続]** ページで、Azure AD の全体管理者の資格情報を入力し、 **[次へ]** をクリックします。
    ![Azure への接続](./media/how-to-connect-fed-management/RepairADTrust2.PNG)
 
 3. **[リモート アクセスの資格情報]** ページで、ドメイン管理者の資格情報を入力します。
@@ -92,11 +92,11 @@ AD FS 用の代替ログイン ID の構成は、主に 2 つの手順で構成�
 > [!NOTE]
 > Azure AD Connect で AD FS サーバーを追加するには、PFX 証明書が必要です。 そのため、この操作を実行できるのは、Azure AD Connect を使用して AD FS ファームを構成した場合のみです。
 
-1. **[追加のフェデレーション サーバーをデプロイします]** を選択し、**[次へ]** をクリックします。
+1. **[追加のフェデレーション サーバーをデプロイします]** を選択し、 **[次へ]** をクリックします。
 
    ![Additional federation server](./media/how-to-connect-fed-management/AddNewADFSServer1.PNG)
 
-2. **[Azure AD に接続]** ページで、Azure AD の全体管理者の資格情報を入力し、**[次へ]** をクリックします。
+2. **[Azure AD に接続]** ページで、Azure AD の全体管理者の資格情報を入力し、 **[次へ]** をクリックします。
 
    ![Azure への接続](./media/how-to-connect-fed-management/AddNewADFSServer2.PNG)
 
@@ -226,7 +226,7 @@ Azure AD Connect では、オブジェクトが Azure AD に同期されると�
     NOT EXISTS([Type == "http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid"])
     => add(Type = "urn:anandmsft:tmp/idflag", Value = "useguid");
 
-この規則では、ユーザーの **ms-ds-concistencyguid** が設定されていない場合に **useguid** に設定される、**idflag** という一時フラグを定義します。 この規則は、AD FS では空の要求が許可されないという事実に基づいています。 http://contoso.com/ws/2016/02/identity/claims/objectguidクレームを追加するとき、 http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguidルール 1 では、その値がユーザーに設定される場合にだけ、**msdsconsistencyguid** 要求で終了します。 値が設定されていない場合、AD FS によって空の値を持つことになると判断され、すぐに削除されます。 すべてのオブジェクトは **objectGuid**を持つため、規則 1 が実行された後には、常に要求が存在することになります。
+この規則では、ユーザーの **ms-ds-concistencyguid** が設定されていない場合に **useguid** に設定される、**idflag** という一時フラグを定義します。 この規則は、AD FS では空の要求が許可されないという事実に基づいています。 http://contoso.com/ws/2016/02/identity/claims/objectguid クレームを追加するとき、 http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid ルール 1 では、その値がユーザーに設定される場合にだけ、**msdsconsistencyguid** 要求で終了します。 値が設定されていない場合、AD FS によって空の値を持つことになると判断され、すぐに削除されます。 すべてのオブジェクトは **objectGuid**を持つため、規則 1 が実行された後には、常に要求が存在することになります。
 
 **規則 3: ms-ds-consistencyguid が存在する場合にそれを不変 ID として発行する**
 

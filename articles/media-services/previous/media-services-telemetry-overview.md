@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: 8e8b493881662483e66dd835d1cc68a471b18454
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58803309"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60545522"
 ---
 # <a name="azure-media-services-telemetry"></a>Azure Media Services テレメトリ  
 
@@ -83,7 +83,7 @@ Type|テレメトリ データを提供するエンティティの種類|Channel
 Name|テレメトリ イベントの名前|ChannelHeartbeat/StreamingEndpointRequestLog
 ObservedTime|テレメトリ イベントが発生した時刻 (UTC)|2016-09-09T22:42:36.924Z<br/><br/>監視時刻は、テレメトリを送信するエンティティ (たとえばチャネル) によって提供されます。 コンポーネント間で時間同期問題が存在する可能性があるため、この値は概算値です。
 ServiceID|{サービス ID}|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
-エンティティ固有のプロパティ|イベントによって定義されたとおり|StreamName: stream1, Bitrate 10123, …<br/><br/>残りのプロパティは、指定されたイベントの種類に対して定義されます。 Azure Table の内容は、キーと値のペアです   (つまり、テーブル内の異なる行には、異なるプロパティのセットが格納されます)。
+エンティティ固有のプロパティ|イベントによって定義されたとおり|StreamName: stream1, Bitrate 10123, …<br/><br/>残りのプロパティは、指定されたイベントの種類に対して定義されます。 Azure Table の内容は、キーと値のペアです  (つまり、テーブル内の異なる行には、異なるプロパティのセットが格納されます)。
 
 ### <a name="entity-specific-schema"></a>エンティティ固有のスキーマ
 
@@ -135,7 +135,7 @@ NonincreasingCount|タイムスタンプに変化がないために破棄され�
 UnalignedKeyFrames|キー フレームがアラインされていないフラグメントを受信したかどうか (品質レベル) |True
 UnalignedPresentationTime|プレゼンテーション時間がアラインされていないフラグメントを受信したかどうか (品質レベル/トラック)|True
 UnexpectedBitrate|オーディオ/ビデオ トラックの計算ビットレートまたは実ビットレートが > 40,000 bps であり、IncomingBitrate == 0 であるか IncomingBitrate と actualBitrate の差が 50% の場合は True |True
-Healthy|次の場合は True: <br/>overlapCount、 <br/>DiscontinuityCount、 <br/>NonIncreasingCount、 <br/>UnalignedKeyFrames、 <br/>UnalignedPresentationTime、 <br/>UnexpectedBitrate<br/> がいずれも 0|True <br/><br/>Healthy は、次の条件のいずれかに該当する場合は false を返す複合関数です。<br/><br/>- OverlapCount > 0<br/>- DiscontinuityCount > 0<br/>- NonincreasingCount > 0<br/>- UnalignedKeyFrames == True<br/>- UnalignedPresentationTime == True<br/>- UnexpectedBitrate == True
+Healthy|次の場合は True: <br/>overlapCount、 <br/>DiscontinuityCount、 <br/>NonIncreasingCount、 <br/>UnalignedKeyFrames、 <br/>UnalignedPresentationTime、 <br/>UnexpectedBitrate<br/> がいずれも 0|True<br/><br/>Healthy は、次の条件のいずれかに該当する場合は false を返す複合関数です。<br/><br/>- OverlapCount > 0<br/>- DiscontinuityCount > 0<br/>- NonincreasingCount > 0<br/>- UnalignedKeyFrames == True<br/>- UnalignedPresentationTime == True<br/>- UnexpectedBitrate == True
 
 **ライブ アーカイブ**
 

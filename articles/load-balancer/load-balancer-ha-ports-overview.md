@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 12/11/2018
 ms.author: kumud
 ms.openlocfilehash: 328471292ea6cbe07e96cc18af7f9c524407de3d
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55809472"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60930286"
 ---
 # <a name="high-availability-ports-overview"></a>高可用性ポートの概要
 
@@ -66,7 +66,7 @@ HA ポート機能は、すべてのグローバル Azure リージョンで使�
 
 この構成は、基本的な HA ポートの構成です。 次の手順によって、単一フロントエンド IP アドレスでの HA ポート負荷分散規則を構成できます:
 1. Standard Load Balancer を構成するときに、Load Balancer 規則の構成で **[HA ポート]** チェック ボックスをオンにします。
-2. **[フローティング IP]** で、**[無効]** を選択します。
+2. **[フローティング IP]** で、 **[無効]** を選択します。
 
 この構成は、現在のロード バランサー リソース上で他のいかなる負荷分散規則の構成も許可しません。 また、バックエンド インスタンスの特定のセットについて、他の内部ロード バランサー リソース構成を許可しません。
 
@@ -74,7 +74,7 @@ HA ポート機能は、すべてのグローバル Azure リージョンで使�
 
 ### <a name="a-single-floating-ip-direct-server-return-ha-ports-configuration-on-an-internal-standard-load-balancer"></a>内部 Standard Load Balancer 上の単一のフローティング IP (Direct Server Return) HA ポートの構成
 
-同様に、**HA ポート**と単一フロントエンドの負荷分散規則を使用するようにロード バランサーを構成できます。それには、**[フローティング IP]** を **[有効]** に設定します。 
+同様に、**HA ポート**と単一フロントエンドの負荷分散規則を使用するようにロード バランサーを構成できます。それには、 **[フローティング IP]** を **[有効]** に設定します。 
 
 この構成を使用することにより、複数のフローティング IP 負荷分散規則またはパブリック ロード バランサー、あるいはその両方を追加できます。 ただし、この構成の上で、非フローティング IP と HA ポートを使用する負荷分散構成は使用できません。
 

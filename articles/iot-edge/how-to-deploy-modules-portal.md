@@ -11,11 +11,11 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
 ms.openlocfilehash: 9d7729dce5419c5813de3c4dfce55c40098f5988
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56430116"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60595240"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-the-azure-portal"></a>Azure Portal から Azure IoT Edge モジュールをデプロイする
 
@@ -45,7 +45,7 @@ Azure Portal には、JSON ドキュメントを手動で作成する代わり�
 
 1. ページの **[レジストリ設定]** セクションで、モジュール イメージを格納するプライベート コンテナー レジストリにアクセスするための資格情報を指定します。
 
-1. ページの **[Deployment modules]\(デプロイ モジュール\)** セクションで、**[追加]** を選択します。
+1. ページの **[Deployment modules]\(デプロイ モジュール\)** セクションで、 **[追加]** を選択します。
 
 1. ドロップダウン リストでモジュールの種類を確認します。
 
@@ -55,7 +55,7 @@ Azure Portal には、JSON ドキュメントを手動で作成する代わり�
 
 1. **[IoT Edge モジュール]** を選択します。
 
-1. モジュールの名前を入力し、コンテナー イメージを指定します。 例: 
+1. モジュールの名前を入力し、コンテナー イメージを指定します。 例:
 
    * **名前** - tempSensor
    * **イメージの URI** - mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0
@@ -72,13 +72,13 @@ Azure Portal には、JSON ドキュメントを手動で作成する代わり�
 
 既定では、**FROM /\* INTO $upstream** として定義済みの **route** という名前のルートがウィザードから提供されます。つまり、モジュールによるメッセージ出力は IoT ハブに送信されます。  
 
-[ルートの宣言](module-composition.md#declare-routes)の情報を使用してルートを追加または更新し、**[次へ]** を選択して確認のセクションに進みます。
+[ルートの宣言](module-composition.md#declare-routes)の情報を使用してルートを追加または更新し、 **[次へ]** を選択して確認のセクションに進みます。
 
 ### <a name="review-deployment"></a>デプロイを確認する
 
-確認のセクションには、前述の 2 つのセクションの選択項目に基づいて作成された JSON 配置マニフェストが表示されます。 追加しなかった 2 つのモジュール (**$edgeAgent** および **$edgeHub**) が宣言されていることに注目してください。 これらの 2 つのモジュールは、[IoT Edge ランタイム](iot-edge-runtime.md)を構成し、すべてのデプロイの既定値として使用されます。
+確認のセクションには、前述の 2 つのセクションの選択項目に基づいて作成された JSON 配置マニフェストが表示されます。 追加しなかった 2 つのモジュール ( **$edgeAgent** および **$edgeHub**) が宣言されていることに注目してください。 これらの 2 つのモジュールは、[IoT Edge ランタイム](iot-edge-runtime.md)を構成し、すべてのデプロイの既定値として使用されます。
 
-デプロイ情報を確認し、**[送信]** を選択します。
+デプロイ情報を確認し、 **[送信]** を選択します。
 
 ## <a name="view-modules-on-your-device"></a>デバイス上のモジュールを表示する
 
@@ -92,11 +92,11 @@ Azure Marketplace または Azure portal のいずれかから、IoT Edge モジ
 
 1. モジュールを見つけて、デプロイ プロセスを開始します。
 
-   * Azure portal:モジュールを見つけて、**[作成]** を選択します。
+   * Azure portal:モジュールを見つけて、 **[作成]** を選択します。
 
    * Azure Marketplace:
 
-     1. モジュールを見つけて、**[今すぐ入手する]** を選択します。
+     1. モジュールを見つけて、 **[今すぐ入手する]** を選択します。
      1. **[続行]** を選択して、プロバイダーの使用条件とプライバシー ポリシーを確認します。
 
 1. お使いのサブスクリプションと、ターゲット デバイスをアタッチする IoT ハブを選択します。

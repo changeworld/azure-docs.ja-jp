@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/03/2018
 ms.openlocfilehash: 4532e0c6e8095c9d64897410e0492e2135d8a478
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50747934"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60630083"
 ---
 # <a name="test-your-azure-data-lake-analytics-code"></a>Azure Data Lake Analytics コードのテスト
 
@@ -29,7 +29,7 @@ U-SQL スクリプトは実行可能コードにコンパイルおよび最適�
 
 Azure Data Lake Tools for Visual Studio では、U-SQL スクリプトのテスト ケースを作成できます。
 
-1.  ソリューション エクスプローラーで U-SQL スクリプトを右クリックし、**[Create Unit Test]\(単体テストの作成\)** を選択します。
+1.  ソリューション エクスプローラーで U-SQL スクリプトを右クリックし、 **[Create Unit Test]\(単体テストの作成\)** を選択します。
 2.  新しいテスト プロジェクトを作成するか、既存のテスト プロジェクトにテスト ケースを挿入します。
 
     ![Data Lake Tools for Visual Studio - U-SQL テスト プロジェクトを作成する](./media/data-lake-analytics-cicd-test/data-lake-tools-create-usql-test-project.png) 
@@ -56,7 +56,7 @@ U-SQL テスト SDK で `Initialize()` インターフェイスを呼び出す�
 
 ### <a name="run-test-cases-in-visual-studio"></a>Visual Studio でのテスト ケースの実行
 
-U-SQL スクリプトのテスト プロジェクトは、C# 単体テスト フレームワークの上に構築されます。 プロジェクトをビルドした後、**テスト エクスプローラーの [プレイリスト]** からすべてのテスト ケースを実行できます。 または、.cs ファイルを右クリックし、**[テストの実行]** を選択します。
+U-SQL スクリプトのテスト プロジェクトは、C# 単体テスト フレームワークの上に構築されます。 プロジェクトをビルドした後、**テスト エクスプローラーの [プレイリスト]** からすべてのテスト ケースを実行できます。 または、.cs ファイルを右クリックし、 **[テストの実行]** を選択します。
 
 ## <a name="test-c-udos"></a>C# UDO のテスト
 
@@ -131,7 +131,7 @@ CPPSDK は、Microsoft Visual C++ 14 および Windows SDK 10.0.10240.0 を含�
 CPPSDK の依存関係を Azure DevOps で準備する最も一般的な方法は次のとおりです:
 
 1.  CPPSDK ライブラリを含むフォルダーを zip 圧縮します。
-2.  ソース管理システムに .zip ファイルをチェックインします  (zip ファイルにより、".gitignore" によって一部のファイルが無視されることなく、CPPSDK フォルダー下のすべてのライブラリを確実にチェックインできます)。   
+2.  ソース管理システムに .zip ファイルをチェックインします (zip ファイルにより、".gitignore" によって一部のファイルが無視されることなく、CPPSDK フォルダー下のすべてのライブラリを確実にチェックインできます)。   
 3.  zip ファイルをビルド パイプラインに解凍します。
 4.  ビルド コンピューター上で、`USqlScriptTestRunner` がこの解凍したフォルダーを指すようにします。
 

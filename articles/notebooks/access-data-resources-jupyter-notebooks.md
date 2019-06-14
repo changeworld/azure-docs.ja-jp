@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
 ms.openlocfilehash: 14a4191612a5d42836ae4be3ff902ca47a6b06d4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59271520"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60634347"
 ---
 # <a name="access-cloud-data-in-a-notebook"></a>ノートブックでクラウド データにアクセスする
 
@@ -53,7 +53,7 @@ if response.status_code == 200:
 
 pyodbc または pymssql ライブラリを利用して、SQL Server データベースにアクセスできます。
 
-「[Python を使用して Azure SQL Database に照会する](https://docs.microsoft.com/azure/sql-database/sql-database-connect-query-python)」では、AdventureWorks のデータを含むデータベースを作成する方法と、そのデータのクエリを行う方法が示されています。 この記事のサンプルのノートブックには同じコードがあります。
+「[Python を使用して Azure SQL データベースに照会する](https://docs.microsoft.com/azure/sql-database/sql-database-connect-query-python)」では、AdventureWorks のデータを含むデータベースを作成する方法と、そのデータのクエリを行う方法が示されています。 この記事のサンプルのノートブックには同じコードがあります。
 
 ## <a name="azure-storage"></a>Azure Storage
 

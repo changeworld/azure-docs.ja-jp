@@ -15,11 +15,11 @@ ms.author: rolyon
 ms.custom: pim ; H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b6f978612cbbf0c326c3e66f25a0fbf4b749cc73
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59496609"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60286930"
 ---
 # <a name="azure-ad-roles-security-wizard-in-pim"></a>PIM での Azure AD ロール セキュリティ ウィザード
 
@@ -41,7 +41,7 @@ ms.locfileid: "59496609"
 
 1. **[Azure AD Privileged Identity Management]** を開きます。
 
-1. **[Azure AD ロール]** をクリックし、**[ウィザード]** をクリックします。
+1. **[Azure AD ロール]** をクリックし、 **[ウィザード]** をクリックします。
 
     ![Azure AD ロール - ウィザード](./media/pim-security-wizard/wizard-start.png)
 
@@ -55,7 +55,7 @@ ms.locfileid: "59496609"
 
     ![メンバーを対象的に変換](./media/pim-security-wizard/convert-members-eligible.png)
 
-1. メンバーを選択したら、**[次へ]** をクリックします。
+1. メンバーを選択したら、 **[次へ]** をクリックします。
 
     ![変更の確認](./media/pim-security-wizard/review-changes.png)
 

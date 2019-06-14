@@ -9,11 +9,11 @@ ms.author: tarcher
 ms.date: 05/15/2018
 ms.topic: article
 ms.openlocfilehash: 2bdcd4c504822a2e60156b0ac565465e0cf23a85
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54358526"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60388813"
 ---
 # <a name="use-habitat-to-deploy-your-application-to-azure"></a>Habitat を使用してアプリケーションを Azure にデプロイする
 [Habitat](https://www.habitat.sh/) はアプリケーション パッケージ化およびランタイム システムであり、アプリケーションとその自動化をデプロイの単位としてバンドルします。 これにより、アプリケーションのための究極の移植性が作成され、書き換えや再パッケージ化を行う必要なしに、コンテナー、仮想マシン、ベア メタル、または PaaS にアプリケーションをデプロイできます。

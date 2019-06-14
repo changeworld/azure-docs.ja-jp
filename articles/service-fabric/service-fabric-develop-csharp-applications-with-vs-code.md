@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 06/29/2018
 ms.author: pepogors
 ms.openlocfilehash: 680c141e32333c4747ee69919229bd9381f536a4
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58664245"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60393748"
 ---
 # <a name="develop-c-service-fabric-applications-with-visual-studio-code"></a>Visual Studio Code を使用して C# Service Fabric アプリケーションを開発する
 
@@ -42,8 +42,8 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-core-getting-st
 
 ## <a name="open-the-application-in-vs-code"></a>VS Code でアプリケーションを開く
 
-### <a name="windows"></a> Windows
-スタート メニューで VS Code アイコンを右クリックし、**[管理者として実行]** を選択します。 サービスにデバッガーをアタッチするには、VS Code を管理者として実行する必要があります。
+### <a name="windows"></a>Windows
+スタート メニューで VS Code アイコンを右クリックし、 **[管理者として実行]** を選択します。 サービスにデバッガーをアタッチするには、VS Code を管理者として実行する必要があります。
 
 ### <a name="linux"></a>Linux
 ターミナルを使用して、ローカルでアプリケーションが複製されたディレクトリからパス /service-fabric-dotnet-core-getting-started/Services/CounterService に移動します。
@@ -95,7 +95,7 @@ VS Code でアプリケーションをデバッグする場合、ローカル �
 
    ![CounterService のプライマリ ノード](./media/service-fabric-develop-csharp-applications-with-vs-code/counter-service-primary-node.png)
 
-4. VS Code で、**[.NET Core Attach]\(.NET Core のアタッチ\)** デバッグ構成の横にある実行アイコン (緑の矢印) をクリックします。 プロセスの選択ダイアログで、手順 4 で特定したプライマリ ノード上で実行されている CounterService プロセスを選択します。
+4. VS Code で、 **[.NET Core Attach]\(.NET Core のアタッチ\)** デバッグ構成の横にある実行アイコン (緑の矢印) をクリックします。 プロセスの選択ダイアログで、手順 4 で特定したプライマリ ノード上で実行されている CounterService プロセスを選択します。
 
    ![プライマリ プロセス](./media/service-fabric-develop-csharp-applications-with-vs-code/select-process.png)
 
@@ -107,7 +107,7 @@ VS Code でアプリケーションをデバッグする場合、ローカル �
    
    ![デバッガーから切断する](./media/service-fabric-develop-csharp-applications-with-vs-code/debug-bar-disconnect.png)
        
-7. デバッグが完了したら、**[Service Fabric:Remove Application]\(Service Fabric: アプリケーションの削除\)** コマンドを使用して、ローカル クラスターから CounterService アプリケーションを削除できます。 
+7. デバッグが完了したら、 **[Service Fabric:Remove Application]\(Service Fabric: アプリケーションの削除\)** コマンドを使用して、ローカル クラスターから CounterService アプリケーションを削除できます。 
 
 ## <a name="next-steps"></a>次の手順
 

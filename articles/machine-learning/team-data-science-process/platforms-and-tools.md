@@ -11,11 +11,11 @@ ms.date: 09/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 31c6c1258b6d20eb2d2802cf23244cb59df682c0
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59786491"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61428732"
 ---
 # <a name="platforms-and-tools-for-data-science-projects"></a>データ サイエンス プロジェクトのためのプラットフォームとツール
 
@@ -133,11 +133,11 @@ Linux (CentOS) コンピューターを使用して Git コマンドを実行し
 
 - *ssh-rsa* も含めた SSH キー全体をコピーします。 
 - Azure DevOps Services にログインします。 
-- ページの右上隅にある **<自分の名前\>** をクリックし、**[セキュリティ]** をクリックします。 
+- ページの右上隅にある **<自分の名前\>** をクリックし、 **[セキュリティ]** をクリックします。 
     
     ![自分の名前をクリックしてから [セキュリティ] をクリックする](./media/platforms-and-tools/resources-2-user-setting.png)
 
-- **[SSH 公開キー]** をクリックし、**[+追加]** をクリックします。 
+- **[SSH 公開キー]** をクリックし、 **[+追加]** をクリックします。 
 
     ![[SSH 公開キー] をクリックしてから [+追加] をクリックする](./media/platforms-and-tools/resources-3-add-ssh.png)
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/30/2016
 ms.author: lesun
 ROBOTS: NOINDEX
-ms.openlocfilehash: 9338e87644554ac8b3121c5341cea6f2bc512a97
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 1b33b60f674eebb15fdc6112e1d630b93b98494b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878189"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60404722"
 ---
 # <a name="analyzers-method"></a>Analyzers メソッド
 
@@ -32,15 +32,17 @@ ms.locfileid: "55878189"
 <br>
 
 ## <a name="response-parameters"></a>応答パラメーター
-Name | type | 説明
+
+Name | Type | 説明
 -----|------|--------------
 languages | string のリスト | このアナライザーを使用できる 2 文字の ISO 言語コードの一覧。
-id   | 文字列 | このアナライザーの一意の ID
-kind | 文字列 | アナライザーの大まかな種類
-specification | 文字列 | このアナライザーに使用される仕様の名前
-implementation | 文字列 | このアナライザーの背後にあるモデルやアルゴリズムの説明
+id   | string | このアナライザーの一意の ID
+kind | string | アナライザーの大まかな種類
+specification | string | このアナライザーに使用される仕様の名前
+implementation | string | このアナライザーの背後にあるモデルやアルゴリズムの説明
 
 <br>
+
 ## <a name="example"></a>例
 GET /analyzers
 

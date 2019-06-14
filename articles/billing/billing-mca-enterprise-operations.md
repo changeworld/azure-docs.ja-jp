@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 02/24/2018
 ms.author: banders
 ms.openlocfilehash: 9b76fa935263904957c87cd062c84d0607771369
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57341392"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60371337"
 ---
 # <a name="complete-enterprise-agreement-tasks-in-your-billing-account-for-a-microsoft-customer-agreement"></a>Microsoft 顧客契約用の課金アカウントでの Enterprise Agreement タスクを実行する
 
@@ -35,7 +35,7 @@ ms.locfileid: "57341392"
 |------------------------|--------------------------------------------------------|
 | 加入            | Enterprise Agreement 加入契約と同様に、組織の課金は課金プロファイルを使用して管理されます。 エンタープライズ管理者が課金プロファイルの所有者になります。 課金プロファイルについて詳しくは、「[Understand billing profiles (課金プロファイルについて)](billing-mca-overview.md#understand-billing-profiles)」をご覧ください。
 | 部署            | Enterprise Agreement 加入契約の部署と同様に、コストは、請求書セクションを使用して整理されます。 部署が請求書セクションになり、部署管理者がそれぞれの請求書セクションの所有者になります。 請求書セクションについて詳しくは、「[Understand invoice sections (請求書セクションについて)](billing-mca-overview.md#understand-invoice-sections)」をご覧ください。 |
-| アカウント               | Enterprise Agreement で作成されたアカウントは、新しい課金アカウントではサポートされません。 アカウントのサブスクリプションは、各部署の請求書セクションに属します。 アカウント所有者は、各自の請求書セクションのサブスクリプションを作成および管理できます。 |
+| Account               | Enterprise Agreement で作成されたアカウントは、新しい課金アカウントではサポートされません。 アカウントのサブスクリプションは、各部署の請求書セクションに属します。 アカウント所有者は、各自の請求書セクションのサブスクリプションを作成および管理できます。 |
 
 ## <a name="changes-for-enterprise-administrators-in-the-new-billing-account"></a>新しい課金アカウントでのエンタープライズ管理者に対する変更
 
@@ -134,7 +134,7 @@ Enterprise Agreement のアカウント所有者は、新しい課金アカウ�
 
 **Azure サブスクリプション作成者** - Enterprise Agreement の部署用に作成された請求書セクションに対する Azure サブスクリプション作成者ロールが割り当てられます。 アカウントが部署に属していない場合は、[既定の請求書セクション] という名前のセクションに対して Azure サブスクリプション作成者ロールが与えられます。 このロールでは、請求書セクションの Azure サブスクリプションを作成できます。
 
-### <a name="create-an-azure-subscription"></a>Azure サブスクリプションを作成する
+### <a name="create-an-azure-subscription"></a>Azure サブスクリプションを作成します。
 
 Azure portal で請求書セクションの Azure サブスクリプションを作成できます。 詳細については、「[Create an additional Azure subscription for Microsoft Customer Agreement (Microsoft 顧客契約の追加の Azure サブスクリプションを作成する)](billing-mca-create-subscription.md)」を参照してください。
 

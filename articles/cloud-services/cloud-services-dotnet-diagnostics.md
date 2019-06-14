@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 05/22/2017
 ms.author: jeconnoc
 ms.openlocfilehash: ba69a5aaffb39c26731ffd209587a8c8223b032a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59786243"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60337393"
 ---
 # <a name="enabling-azure-diagnostics-in-azure-cloud-services"></a>Azure Cloud Services での Azure Diagnostics の有効化
 Azure 診断の背景については、「 [What is Microsoft Azure Diagnostics](../azure-diagnostics.md) 」をご覧ください。
@@ -35,7 +35,7 @@ Azure 診断の背景については、「 [What is Microsoft Azure Diagnostics]
 2. .NET Framework 4.5 をターゲットとする **[クラウド]** テンプレートから、**Azure クラウド サービス** プロジェクトを作成します。  プロジェクト名を「WadExample」と入力し、[OK] をクリックします。
 3. **[worker ロール]** を選択して [OK] をクリックします。 プロジェクトが作成されます。
 4. **ソリューション エクスプローラー**で、**WorkerRole1** プロパティ ファイルをダブルクリックします。
-5. **[構成]** タブで、**[診断を有効にする]** をオフにして診断 1.0 (Azure SDK 2.4 以前) を無効にします。
+5. **[構成]** タブで、 **[診断を有効にする]** をオフにして診断 1.0 (Azure SDK 2.4 以前) を無効にします。
 6. ソリューションを構築してエラーが発生しないことを確認します。
 
 ### <a name="step-2-instrument-your-code"></a>手順 2:コードをインストルメント化する
@@ -126,12 +126,12 @@ namespace WorkerRole1
 
 [!INCLUDE [cloud-services-wad-warning](../../includes/cloud-services-wad-warning.md)]
 
-1. ソリューション エクスプローラーで **[WadExample]** プロジェクトを選択し、**[ビルド]** メニューから **[発行]** を選択して、worker ロールを Visual Studio から Azure にデプロイします。
+1. ソリューション エクスプローラーで **[WadExample]** プロジェクトを選択し、 **[ビルド]** メニューから **[発行]** を選択して、worker ロールを Visual Studio から Azure にデプロイします。
 2. サブスクリプションを選択します。
-3. **[Microsoft Azure 発行設定]** ダイアログで、**[新規作成]** を選択します。
+3. **[Microsoft Azure 発行設定]** ダイアログで、 **[新規作成]** を選択します。
 4. **[クラウド サービスとストレージ アカウントの作成]** ダイアログで **[名前]** を入力し ("WadExample" など)、リージョンまたはアフィニティ グループを選択します。
 5. **[環境]** を **[ステージング]** に設定します。
-6. 必要に応じて、他の **[設定]** を変更し、**[発行]** をクリックします。
+6. 必要に応じて、他の **[設定]** を変更し、 **[発行]** をクリックします。
 7. デプロイが完了したら、クラウド サービスが **[実行中]** 状態になっていることを Azure Portal で確認します。
 
 ### <a name="step-4-create-your-diagnostics-configuration-file-and-install-the-extension"></a>手順 4:診断構成ファイルを作成して拡張機能をインストールする
@@ -140,10 +140,10 @@ namespace WorkerRole1
     ```powershell
     (Get-AzureServiceAvailableExtension -ExtensionName 'PaaSDiagnostics' -ProviderNamespace 'Microsoft.Azure.Diagnostics').PublicConfigurationSchema | Out-File -Encoding utf8 -FilePath 'WadConfig.xsd'
     ```
-2. **WorkerRole1** プロジェクトを右クリックし、**[追加]** -> **[新しいアイテム]** の順に選択して、XML ファイルを **WorkerRole1** プロジェクトに追加します。  -> **[Visual C# アイテム]**  -> **[データ]**  -> **[XML ファイル]** の順に選びます ファイルに「WadExample.xml」という名前を付けます。
+2. **WorkerRole1** プロジェクトを右クリックし、 **[追加]**  ->  **[新しいアイテム]** の順に選択して、XML ファイルを **WorkerRole1** プロジェクトに追加します。 ->  **[Visual C# アイテム]**  ->  **[データ]**  ->  **[XML ファイル]** の順に選びます ファイルに「WadExample.xml」という名前を付けます。
 
    ![CloudServices_diag_add_xml](./media/cloud-services-dotnet-diagnostics/AddXmlFile.png)
-3. 構成ファイルに WadConfig.xsd を関連付けます。 WadExample.xml エディター ウィンドウがアクティブになっていることを確認します。 **F4** キーを押し、**[プロパティ]** ウィンドウを開きます。 **[プロパティ]** ウィンドウで **[スキーマ]** プロパティをクリックします。 **[スキーマ]** プロパティで  in the **[…]** をクリックします。 **[追加]**  ボタンをクリックし、XSD ファイルを保存した場所に移動して [WadConfig.xsd] を選択します。 Click **OK**.
+3. 構成ファイルに WadConfig.xsd を関連付けます。 WadExample.xml エディター ウィンドウがアクティブになっていることを確認します。 **F4** キーを押し、 **[プロパティ]** ウィンドウを開きます。 **[プロパティ]** ウィンドウで **[スキーマ]** プロパティをクリックします。 **[スキーマ]** プロパティで in the **[…]** をクリックします。 **[追加]** ボタンをクリックし、XSD ファイルを保存した場所に移動して [WadConfig.xsd] を選択します。 Click **OK**.
 
 4. WadExample.xml 構成ファイルの内容を次の XML に置き換え、ファイルを保存します。 この構成ファイルは、収集するいくつかのパフォーマンス カウンターを定義します。1 つは CPU 使用率、1 つはメモリ使用率です。 次に、SampleEventSourceWriter クラスのメソッドに対応する 4 つのイベントを定義します。
 

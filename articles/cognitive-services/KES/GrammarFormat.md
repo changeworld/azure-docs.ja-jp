@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
 ms.openlocfilehash: 844bd9a88c52fd398fc66c71e59da513c0d7d90d
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57544326"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60814862"
 ---
 # <a name="grammar-format"></a>文法形式
 
@@ -128,8 +128,8 @@ before <attrref uri="academic#Year" op="lt" name="year"/
 
 | 属性の種類 | op 値 | 説明 | インデックス操作
 |----|----|----|----|
-| String | eq | 文字列の完全一致 | equals |
-| String | starts_with | 文字列のプレフィックス一致 | starts_with |
+| string | eq | 文字列の完全一致 | equals |
+| string | starts_with | 文字列のプレフィックス一致 | starts_with |
 | Int32、Int64、Double | eq |  数値の等号一致 | equals |
 | Int32、Int64、Double | lt、le、gt、ge | 数値の不等号一致 (<、< =、>、> =) | is_between |
 | Int32、Int64、Double | starts_with | 小数点表記の値のプレフィックス一致 | starts_with |

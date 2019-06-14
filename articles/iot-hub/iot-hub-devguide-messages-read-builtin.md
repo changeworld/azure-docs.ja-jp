@@ -9,11 +9,11 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/26/2019
 ms.openlocfilehash: 827d7d9a3d584342703a84dd2a42e5cda9b3a656
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58579412"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61363998"
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>デバイスからクラウドへのメッセージを組み込みのエンドポイントから読み取る
 
@@ -44,13 +44,13 @@ IoT Hub を認識しない Event Hubs SDK や製品統合を使用している�
 
 2. **[組み込みのエンドポイント]** をクリックします。
 
-3. **[イベント]** セクションには、**[パーティション]**、**[イベント ハブ互換名]**、**[イベント ハブ互換エンドポイント]**、**[保持期間]**、**[コンシューマー グループ]** の各値が含まれています。
+3. **[イベント]** セクションには、 **[パーティション]** 、 **[イベント ハブ互換名]** 、 **[イベント ハブ互換エンドポイント]** 、 **[保持期間]** 、 **[コンシューマー グループ]** の各値が含まれています。
 
     ![Device-to-cloud settings](./media/iot-hub-devguide-messages-read-builtin/eventhubcompatible.png)
 
 ポータルの [イベント ハブ互換エンドポイント] フィールドには、Event Hubs の完全な接続文字列 (例: **Endpoint=sb://abcd1234namespace.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=keykeykeykeykeykey=;EntityPath=iothub-ehub-abcd-1234-123456**) が含まれています。 使用している SDK で他の値が必要な場合、値は次のようになります。
 
-| 名前 | 値 |
+| Name | 値 |
 | ---- | ----- |
 | エンドポイント | sb://abcd1234namespace.servicebus.windows.net/ |
 | ホスト名 | abcd1234namespace.servicebus.windows.net |

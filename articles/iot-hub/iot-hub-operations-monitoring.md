@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: nberdy
 ms.openlocfilehash: 84f28a1cb411e7df156fc08fa683efe7f83eda64
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59258115"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60345722"
 ---
 # <a name="iot-hub-operations-monitoring-deprecated"></a>IoT Hub 操作の監視 (非推奨)
 
@@ -42,12 +42,12 @@ IoT Hub では、次の 6 つのカテゴリのイベントを監視します。
 
     ![ポータルでのアクセス操作監視の設定](./media/iot-hub-operations-monitoring/enable-OM-1.png)
 
-3. 監視する監視カテゴリを選択し、**[保存]** をクリックします。 イベントは、 **[監視の設定]** に一覧表示された Event Hub 対応のエンドポイントから読み取ることができます。 IoT Hub エンドポイントの名前は `messages/operationsmonitoringevents`です。
+3. 監視する監視カテゴリを選択し、 **[保存]** をクリックします。 イベントは、 **[監視の設定]** に一覧表示された Event Hub 対応のエンドポイントから読み取ることができます。 IoT Hub エンドポイントの名前は `messages/operationsmonitoringevents`です。
 
     ![IoT Hub での操作監視の設定](./media/iot-hub-operations-monitoring/enable-OM-2.png)
 
 > [!NOTE]
-> **[接続]** カテゴリに対して **[詳細]** 監視を選ぶと、IoT Hub は追加の診断メッセージを生成します。 他のすべてのカテゴリでは、**[詳細]** 設定を選ぶと、IoT Hub が個々のエラー メッセージに含める情報の量が変わります。
+> **[接続]** カテゴリに対して **[詳細]** 監視を選ぶと、IoT Hub は追加の診断メッセージを生成します。 他のすべてのカテゴリでは、 **[詳細]** 設定を選ぶと、IoT Hub が個々のエラー メッセージに含める情報の量が変わります。
 
 ## <a name="event-categories-and-how-to-use-them"></a>イベント カテゴリとその使用方法
 
@@ -196,11 +196,11 @@ IoT Hub での監視エンドポイントは、Event Hub と互換性のある�
 
 1. ポータルで、IoT Hub リソース ブレードに移動します。
 
-2. **[操作の監視]** を選択して、**[Event Hub 互換名]** と **[Event Hub 互換エンドポイント]** の値をメモします。
+2. **[操作の監視]** を選択して、 **[Event Hub 互換名]** と **[Event Hub 互換エンドポイント]** の値をメモします。
 
     ![Event Hub 互換エンドポイントの値](./media/iot-hub-operations-monitoring/monitoring-endpoint.png)
 
-3. **[共有アクセス ポリシー]** を選択し、**[サービス]** を選択します。 **[主キー]** の値をメモします。
+3. **[共有アクセス ポリシー]** を選択し、 **[サービス]** を選択します。 **[主キー]** の値をメモします。
 
     ![サービスの共有アクセス ポリシーの主キー](./media/iot-hub-operations-monitoring/service-key.png)
 

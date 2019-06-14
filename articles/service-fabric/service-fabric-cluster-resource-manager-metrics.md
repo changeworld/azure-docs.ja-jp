@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 1a61de6b0b6f73e112dd69108272ded3a67497e8
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58661702"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60516769"
 ---
 # <a name="managing-resource-consumption-and-load-in-service-fabric-with-metrics"></a>Service Fabric のリソース使用量と負荷をメトリックで管理する
 "*メトリック*" は、サービスが関心を持っているリソースであり、クラスター内のノードによって提供されます。 メトリックは、サービスのパフォーマンスを向上させたり監視したりするために管理する必要があるすべての要素を指します。 たとえば、メモリの消費量を監視して、サービスが過負荷になっているかどうかを知ることができます。 パフォーマンスを向上させるためにメモリ制約が少ないところにサービスを移動できるかどうかを確認するために使用することもできます。
@@ -144,7 +144,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 次に、各設定の詳細と動作に与える影響について説明します。
 
 ## <a name="load"></a>Load
-メトリックを定義することの本質は、負荷を表現することです。 "*負荷*" とは、特定のノード上のサービス インスタンスまたはレプリカが使用する特定のメトリックの量のことです。 負荷はほぼどの時点でも構成できます。 例: 
+メトリックを定義することの本質は、負荷を表現することです。 "*負荷*" とは、特定のノード上のサービス インスタンスまたはレプリカが使用する特定のメトリックの量のことです。 負荷はほぼどの時点でも構成できます。 例:
 
   - 負荷は、サービスの作成時に定義できます。 これは、"_既定の負荷_" と呼ばれます。
   - サービスの既定の負荷を含むメトリック情報は、サービスの作成後に更新できます。 これは、"_サービスの更新_" と呼ばれます。 
@@ -227,7 +227,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 
 さらに説明が必要な点がいくつかあります。
 
-* 1.75 という比率が妥当であるかどうかを、何を根拠に決定するのか。 Cluster Resource Manager はそれが十分であるか、もっと調整が必要であるかをどのように判断するのか。
+* 1\.75 という比率が妥当であるかどうかを、何を根拠に決定するのか。 Cluster Resource Manager はそれが十分であるか、もっと調整が必要であるかをどのように判断するのか。
 * 負荷分散はいつ実行されるのか。
 * Memory の重みが "High" であるとは、どのような意味があるのか。
 

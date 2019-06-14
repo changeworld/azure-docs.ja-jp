@@ -12,11 +12,11 @@ ms.topic: article
 ms.date: 01/24/2019
 ms.author: diberry
 ms.openlocfilehash: 8e11b6d5a9c9df10e789c8e0be3a90d94ecf3d23
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55874398"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60505678"
 ---
 # <a name="add-prebuilt-intents-for-common-intents"></a>一般的な意図の事前構築済み意図を追加する 
 

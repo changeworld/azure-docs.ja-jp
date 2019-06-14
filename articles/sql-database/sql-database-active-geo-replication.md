@@ -13,11 +13,11 @@ ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 03/26/2019
 ms.openlocfilehash: ca53f4bfa80d6fdead24dc7d562c2240bb3fa86d
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58498487"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60387453"
 ---
 # <a name="creating-and-using-active-geo-replication"></a>アクティブ geo レプリケーションの作成と使用
 
@@ -134,12 +134,12 @@ geo レプリケートされたデータベースには、[データベース �
 
 ## <a name="monitoring-geo-replication-lag"></a>geo レプリケーションの遅延の監視
 
-RPO に関する遅延を監視するには、プライマリ データベースの [sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) の *replication_lag_sec* 列を使用します。 ここには、プライマリでコミットされたトランザクションと、セカンダリで保持されているトランザクションとの間の遅延が秒単位で表示されます。 例:  遅延の値が 1 秒というのは、今この瞬間にプライマリが停電の影響を受けてフェールオーバーが開始された場合、最新の 1 秒間のトランザクションが保持されないことを意味します。 
+RPO に関する遅延を監視するには、プライマリ データベースの [sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) の *replication_lag_sec* 列を使用します。 ここには、プライマリでコミットされたトランザクションと、セカンダリで保持されているトランザクションとの間の遅延が秒単位で表示されます。 例: 遅延の値が 1 秒というのは、今この瞬間にプライマリが停電の影響を受けてフェールオーバーが開始された場合、最新の 1 秒間のトランザクションが保持されないことを意味します。 
 
 セカンダリに適用済みの (つまり、セカンダリから読み取り可能な) プライマリ データベースに対する変更に関する遅延を測定するには、セカンダリ データベースの *last_commit* 時間を、プライマリ データベースの同じ値と比較します。
 
 > [!NOTE]
-> プライマリ データベースの *replication_lag_sec* の値が NULL になっていることがありますが、これは、現時点でプライマリとセカンダリとの間の遅延時間が不明であることを意味します。   これは、プロセスが再起動した後に発生する一時的な状態であることがほとんどです。 *replication_lag_sec* から長時間にわたって NULL が返される場合は、アプリケーションにアラートを送ることを検討してください。 永続的な接続エラーにより、セカンダリ データベースがプライマリと通信できないことを示していると考えられます。 セカンダリとプライマリ データベース間の *last_commit* 時間に大きな差が生じる可能性のある状況は他にもあります。 例:  長時間変更がなかったプライマリでコミットが行われた場合、差異は非常に大きくなりますが、すぐに 0 に戻ります。 これらの 2 つの値の差が大きい状況が長時間続く場合は、エラーの状態にあると考えられます。
+> プライマリ データベースの *replication_lag_sec* の値が NULL になっていることがありますが、これは、現時点でプライマリとセカンダリとの間の遅延時間が不明であることを意味します。   これは、プロセスが再起動した後に発生する一時的な状態であることがほとんどです。 *replication_lag_sec* から長時間にわたって NULL が返される場合は、アプリケーションにアラートを送ることを検討してください。 永続的な接続エラーにより、セカンダリ データベースがプライマリと通信できないことを示していると考えられます。 セカンダリとプライマリ データベース間の *last_commit* 時間に大きな差が生じる可能性のある状況は他にもあります。 例: 長時間変更がなかったプライマリでコミットが行われた場合、差異は非常に大きくなりますが、すぐに 0 に戻ります。 これらの 2 つの値の差が大きい状況が長時間続く場合は、エラーの状態にあると考えられます。
 
 
 ## <a name="programmatically-managing-active-geo-replication"></a>アクティブ geo レプリケーションのプログラムでの管理
@@ -197,7 +197,7 @@ RPO に関する遅延を監視するには、プライマリ データベース
 
 - サンプル スクリプトは、以下を参照してください。
   - [アクティブ geo レプリケーションを使用して、単一のデータベースを構成およびフェールオーバーする](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)
-  - [アクティブ geo レプリケーションを使用して、プールされているデータベースを構成およびフェールオーバーする](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md)
+  - [アクティブ geo レプリケーションを使用して、プールされたデータベースを構成およびフェールオーバーする](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md)
 - SQL Database でも自動フェールオーバー グループがサポートされています。 詳細については、[自動フェールオーバー グループ](sql-database-auto-failover-group.md)の使用に関するページを参照してください。
 - ビジネス継続性の概要およびシナリオについては、[ビジネス継続性の概要](sql-database-business-continuity.md)を参照してください。
 - Azure SQL Database 自動バックアップの詳細については、「 [SQL Database 自動バックアップ](sql-database-automated-backups.md)」を参照してください

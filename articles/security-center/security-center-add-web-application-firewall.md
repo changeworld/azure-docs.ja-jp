@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 12/13/2018
 ms.author: rkarlin
 ms.openlocfilehash: 63852ccab842f11f30bcbe695206fedf72931911
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56105045"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60706239"
 ---
 # <a name="add-a-web-application-firewall-in-azure-security-center"></a>Azure Security Center で Web アプリケーション ファイアウォールを追加する
 Azure Security Center では、Web アプリケーションを保護するために、Microsoft パートナーの Web アプリケーション ファイアウォール (WAF) を追加することを勧める場合があります。 このドキュメントでは、この推奨事項を適用する方法の例を紹介します。
@@ -34,13 +34,13 @@ Security Center では、[Isolated](https://azure.microsoft.com/pricing/details/
 >
 
 ## <a name="implement-the-recommendation"></a>推奨事項の実装
-1. **[推奨事項]** で、**[Web アプリケーション ファイアウォールを使用して、Web アプリケーションをセキュリティで保護する]** を選択します。
+1. **[推奨事項]** で、 **[Web アプリケーション ファイアウォールを使用して、Web アプリケーションをセキュリティで保護する]** を選択します。
    ![Secure web Application][1]
 2. **[Web アプリケーション ファイアウォールを使用した安全な Web アプリケーション]** で、Web アプリケーションを選択します。 **[Web アプリケーション ファイアウォールの追加]** が開きます。
    ![Web アプリケーション ファイアウォールの追加][2]
 3. 利用可能な場合は、既存の Web アプリケーション ファイアウォールを使用することを選択するか、または新しい WAF を作成することができます。 この例では、利用可能な既存の WAF がないため、WAF を作成します。
-4. WAF を作成するには、統合されたパートナーの一覧からソリューションを選択します。 この例では、**[Barracuda Web アプリケーション ファイアウォール]** を選択します。
-5. パートナー ソリューションに関する情報を提供する **[Barracuda Web アプリケーション ファイアウォール]** が開きます。 **作成**を選択します。
+4. WAF を作成するには、統合されたパートナーの一覧からソリューションを選択します。 この例では、 **[Barracuda Web アプリケーション ファイアウォール]** を選択します。
+5. パートナー ソリューションに関する情報を提供する **[Barracuda Web アプリケーション ファイアウォール]** が開きます。 **作成** を選択します。
 
    ![ファイアウォール情報ブレード][3]
 
@@ -49,10 +49,10 @@ Security Center では、[Isolated](https://azure.microsoft.com/pricing/details/
 
    ![VM 構成][4]
    
-8. **[新しい Web アプリケーション ファイアウォール]** に戻り、**[WAF 情報]** を選択します。 **[WAF 情報]** で、WAF 自体を構成します。 手順 7. では、WAF が実行される仮想マシンを構成できます。手順 8. では、WAF 自体をプロビジョニングできます。
+8. **[新しい Web アプリケーション ファイアウォール]** に戻り、 **[WAF 情報]** を選択します。 **[WAF 情報]** で、WAF 自体を構成します。 手順 7. では、WAF が実行される仮想マシンを構成できます。手順 8. では、WAF 自体をプロビジョニングできます。
 
 ## <a name="finalize-application-protection"></a>アプリケーション保護を完了する
-1. **[推奨事項]** に戻ります。 WAF を作成した後は、**[Finalize application protection] \(アプリケーション保護を完了する)** という新しいエントリが生成されています。 このエントリは、WAF によるアプリケーションの保護を有効にするには、Azure Virtual Network 内で実際に WAF を接続するプロセスを完了する必要があることを示しています。
+1. **[推奨事項]** に戻ります。 WAF を作成した後は、 **[Finalize application protection] \(アプリケーション保護を完了する)** という新しいエントリが生成されています。 このエントリは、WAF によるアプリケーションの保護を有効にするには、Azure Virtual Network 内で実際に WAF を接続するプロセスを完了する必要があることを示しています。
 
    ![アプリケーション保護を完了する][5]
 

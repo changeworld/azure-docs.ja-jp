@@ -12,11 +12,11 @@ tags: connectors
 ms.topic: article
 ms.date: 07/18/2016
 ms.openlocfilehash: 9408b66f74391b080ef46c758b07850b2ae8de57
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58893398"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60448636"
 ---
 # <a name="call-rest-endpoints-with-http--swagger-connector-in-azure-logic-apps"></a>Azure Logic Apps で HTTP + Swagger コネクタを使用して REST エンドポイントを呼び出す
 
@@ -52,7 +52,7 @@ HTTP + Swagger トリガーおよびアクションは、[HTTP アクション](
 
 Azure Storage で Swagger ドキュメントを作成、構成し、格納する手順を次に示します。
 
-1. [Azure BLOB ストレージでストレージ アカウントを作成します](../storage/common/storage-create-storage-account.md)  この手順を実行するには、アクセス許可を **[パブリック アクセス]** に設定します。
+1. [Azure BLOB ストレージでストレージ アカウントを作成します](../storage/common/storage-create-storage-account.md) この手順を実行するには、アクセス許可を **[パブリック アクセス]** に設定します。
 
 2. BLOB で CORS を有効にします。 
 
@@ -62,7 +62,7 @@ Azure Storage で Swagger ドキュメントを作成、構成し、格納する
 
    この手順は、[Azure Portal](https://portal.azure.com) から、または [Azure ストレージ エクスプローラー](https://storageexplorer.com/)などのツールから実行できます。
 
-4. Azure BLOB ストレージ内のドキュメントへの HTTPS リンクを参照します  
+4. Azure BLOB ストレージ内のドキュメントへの HTTPS リンクを参照します 
 
    リンクは、次の形式を使用します。
 

@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 04/14/2019
 ms.author: ramamill
 ms.openlocfilehash: 5f0578026e95378065fc68198434e347a87eb1fe
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60149021"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62123916"
 ---
 # <a name="set-up-the-configuration-server-for-disaster-recovery-of-physical-servers-to-azure"></a>物理サーバーの Azure へのディザスター リカバリーのために構成サーバーを設定する
 
@@ -36,10 +36,10 @@ ms.locfileid: "60149021"
 ## <a name="choose-your-protection-goals"></a>保護の目標を選択する
 
 1. Azure Portal で、**Recovery Services** コンテナー ブレードに移動し、コンテナーを選択します。
-2. コンテナーの**リソース** メニューで、**[作業の開始]** > **[Site Recovery]** > **[手順 1:インフラストラクチャを準備する]** > **[保護の目標]** の順にクリックします。
+2. コンテナーの**リソース** メニューで、 **[作業の開始]**  >  **[Site Recovery]**  >  **[手順 1:インフラストラクチャを準備する]**  >  **[保護の目標]** の順にクリックします。
 
     ![Choose goals](./media/physical-azure-set-up-source/choose-goals.png)
-3. **[保護の目標]** で、**[To Azure (Azure へ)]** を選択し、**[非仮想化/その他]** を選択し、**[OK]** をクリックします。
+3. **[保護の目標]** で、 **[To Azure (Azure へ)]** を選択し、 **[非仮想化/その他]** を選択し、 **[OK]** をクリックします。
 
     ![Choose goals](./media/physical-azure-set-up-source/physical-protection-goal.png)
 
@@ -48,7 +48,7 @@ ms.locfileid: "60149021"
 1. **[ソースの準備]** で、構成サーバーがない場合は **[+ 構成サーバー]** をクリックして追加します。
 
    ![Set up source](./media/physical-azure-set-up-source/plus-config-srv.png)
-2. **[サーバーの追加]** ブレードで、**[サーバーの種類]** に **[構成サーバー]** が表示されていることを確認します。
+2. **[サーバーの追加]** ブレードで、 **[サーバーの種類]** に **[構成サーバー]** が表示されていることを確認します。
 4. Site Recovery 統合セットアップ インストール ファイルをダウンロードします。
 5. コンテナー登録キーをダウンロードします。 統合セットアップを実行する際には、登録キーが必要です。 キーは生成後 5 日間有効です。
 

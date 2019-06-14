@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 01/11/2019
 ms.custom: seodec18
 ms.openlocfilehash: 734cf09869e5a2df5f9a505a3cb8ccc7bc2338d5
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59495978"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60402313"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Azure Cosmos DB への Azure Stream Analytics の出力  
 Stream Analytics では、 JSON 出力のターゲットを [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) にすることができるため、構造化されていない JSON データに対してデータ アーカイブと待機時間の短いクエリを有効にすることができます。 このドキュメントでは、この構成を実装するためのベスト プラクティスについて説明します。
@@ -39,7 +39,7 @@ Azure Cosmos DB では、アプリケーション要件を満たすために、�
 ## <a name="upserts-from-stream-analytics"></a>Stream Analytics からのアップサート
 Stream Analytics を Azure Cosmos DB と統合することで、特定のドキュメント ID 列に基づき、コレクションでレコードを挿入または更新できるようになります。 この機能は、 *アップサート*とも呼ばれています。
 
-Stream Analytics では、オプティミスティック アップサート手法を使用しています。この手法では、ドキュメント ID の競合が原因で挿入に失敗した場合にのみ更新が実行されます。 互換性レベル 1.0 では、この更新は PATCH として実行されるため、ドキュメントに対する部分更新が可能です。つまり、新しいプロパティの追加や既存のプロパティの置き換えは段階的に実行されます。 ただし、JSON ドキュメント内の配列プロパティの値を変更すると、配列全体が上書きされることになるので注意してください。つまり、配列はマージされません。 1.2 では、アップサートの動作がドキュメントの挿入または置換に変更されています。 これについては、下の互換性レベル 1.2 に関するセクションで詳しく説明します。
+Stream Analytics では、オプティミスティック アップサート手法を使用しています。この手法では、ドキュメント ID の競合が原因で挿入に失敗した場合にのみ更新が実行されます。 互換性レベル 1.0 では、この更新は PATCH として実行されるため、ドキュメントに対する部分更新が可能です。つまり、新しいプロパティの追加や既存のプロパティの置き換えは段階的に実行されます。 ただし、JSON ドキュメント内の配列プロパティの値を変更すると、配列全体が上書きされることになるので注意してください。つまり、配列はマージされません。 1\.2 では、アップサートの動作がドキュメントの挿入または置換に変更されています。 これについては、下の互換性レベル 1.2 に関するセクションで詳しく説明します。
 
 受信した JSON ドキュメントに既存の ID フィールドがある場合、そのフィールドが Cosmos DB のドキュメント ID 列として自動的に使用され、後続の書き込みもすべてそのように処理されるため、次のいずれかの状態になります。
 - 一意の ID が挿入される
@@ -58,9 +58,9 @@ Azure Cosmos DB ではワークロードに基づいてパーティションが�
 複数の固定コンテナーへの書き込みは非推奨です。また、Stream Analytics ジョブのスケールアウトに推奨される方法ではありません。 この詳細については、[Cosmos DB でのパーティション分割とスケーリング](../cosmos-db/sql-api-partition-data.md)に関する記事を参照してください。
 
 ## <a name="improved-throughput-with-compatibility-level-12"></a>互換性レベル 1.2 でのスループットの向上
-互換性レベル 1.2 では、Stream Analytics で Cosmos DB への一括書き込みのためのネイティブ統合がサポートされます。 これにより、スループットを最大化し、スロットル リクエストを効率的に処理して、効果的に Cosmos DB への書き込みを行うことができます。 この強化された書き込みメカニズムは、新しい互換性レベルで利用できます。これは、アップサートの動作が異なるためです。  1.2 以前のアップサートの動作は、ドキュメントの挿入またはマージです。 1.2 では、アップサートの動作がドキュメントの挿入または置換に変更されています。 
+互換性レベル 1.2 では、Stream Analytics で Cosmos DB への一括書き込みのためのネイティブ統合がサポートされます。 これにより、スループットを最大化し、スロットル リクエストを効率的に処理して、効果的に Cosmos DB への書き込みを行うことができます。 この強化された書き込みメカニズムは、新しい互換性レベルで利用できます。これは、アップサートの動作が異なるためです。  1\.2 以前のアップサートの動作は、ドキュメントの挿入またはマージです。 1\.2 では、アップサートの動作がドキュメントの挿入または置換に変更されています。 
 
-1.2 以前では、Cosmos DB へのドキュメントの一括アップサートは、カスタム ストアド プロシージャを使用してパーティション キーごとに行われます。このとき、バッチはトランザクションとして書き込まれます。 1 つのレコードで一時的なエラー (スロットリング) が発生しただけでも、バッチ全体を再試行する必要があります。 このため、妥当なスロットリングのシナリオであっても、比較的低速になります。 以下の比較は、このようなジョブが 1.2 でどのように動作するかを示しています。
+1\.2 以前では、Cosmos DB へのドキュメントの一括アップサートは、カスタム ストアド プロシージャを使用してパーティション キーごとに行われます。このとき、バッチはトランザクションとして書き込まれます。 1 つのレコードで一時的なエラー (スロットリング) が発生しただけでも、バッチ全体を再試行する必要があります。 このため、妥当なスロットリングのシナリオであっても、比較的低速になります。 以下の比較は、このようなジョブが 1.2 でどのように動作するかを示しています。
 
 下のセットアップは、同じ入力 (イベント ハブ) から読み取られるまったく同じ 2 つの Stream Analytics ジョブを示しています。 どちらの Stream Analytics ジョブもパススルー クエリにより[完全にパーティション分割](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#embarrassingly-parallel-jobs)されており、同じ CosmosDB コレクションに書き込みを行っています。 左側のメトリックは互換性レベル 1.0 で構成されたジョブからのもので、右側は 1.2 で構成されたものです。 Cosmos DB コレクションのパーティション キーは、入力イベントからの一意の guid です。
 
@@ -70,7 +70,7 @@ Azure Cosmos DB ではワークロードに基づいてパーティションが�
 
 ![Cosmos DB のメトリックの比較](media/stream-analytics-documentdb-output/stream-analytics-documentdb-output-2.png)
 
-1.2 を使用することで、Stream Analytics は Cosmos DB で使用可能なスループットの 100% をより賢く利用することができ、スロットリング/速度の制限による再送信はほとんどありません。 これにより、コレクションで同時に実行されるクエリなどの他のワークロードにも優れたエクスペリエンスが提供されます。 1k から 10k のメッセージ/秒のシンクとして Cosmos DB を使用する ASA がどのようにスケール アウトするか試してみたい場合は、この [azure サンプル プロジェクト](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-cosmosdb)で実行できます。
+1\.2 を使用することで、Stream Analytics は Cosmos DB で使用可能なスループットの 100% をより賢く利用することができ、スロットリング/速度の制限による再送信はほとんどありません。 これにより、コレクションで同時に実行されるクエリなどの他のワークロードにも優れたエクスペリエンスが提供されます。 1k から 10k のメッセージ/秒のシンクとして Cosmos DB を使用する ASA がどのようにスケール アウトするか試してみたい場合は、この [azure サンプル プロジェクト](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-cosmosdb)で実行できます。
 Cosmos DB の出力スループットは 1.0 と 1.1 で同じある点に注意してください。 現在 1.2 は既定ではないため、Stream Analytics ジョブの[互換性レベルを設定](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-compatibility-level)するには、ポータルを使用するか、[create job REST API 呼び出し](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-job)を使用します。 Cosmos DB を使用する ASA では互換性レベル 1.2 を使用することを "*強くお勧め*" します。 
 
 
@@ -88,5 +88,5 @@ Stream Analytics で Cosmos DB を出力として作成すると、情報の入�
 |Account ID      | Azure Cosmos DB アカウントの名前またはエンドポイント URI。|
 |アカウント キー     | Azure Cosmos DB アカウントの共有アクセス キー。|
 |Database        | Azure Cosmos DB データベース名。|
-|コレクション名のパターン | 使用するコレクションのコレクション名。 `MyCollection`  は有効な入力の例です。`MyCollection` という 1 つのコレクションが存在する必要があります。  |
+|コレクション名のパターン | 使用するコレクションのコレクション名。 `MyCollection` は有効な入力の例です。`MyCollection` という 1 つのコレクションが存在する必要があります。  |
 |ドキュメント ID     | 省略可能。 挿入操作または更新操作の基にする必要がある固有キーとして使用される出力イベント内の列名。 空のままにすると、更新オプションはなく、すべてのイベントが挿入されます。|

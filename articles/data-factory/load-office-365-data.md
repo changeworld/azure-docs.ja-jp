@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 10/22/2018
 ms.author: jingwang
 ms.openlocfilehash: fe3a3b673f6512856f3640b3e103db8623570a88
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58445769"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60548107"
 ---
 # <a name="load-data-from-office-365-by-using-azure-data-factory"></a>Azure Data Factory を使用して Office 365 からデータを読み込む
 
@@ -24,7 +24,7 @@ ms.locfileid: "58445769"
 
 ## <a name="create-a-data-factory"></a>Data Factory を作成する。
 
-1. 左側のメニューで、**[リソースの作成]** > **[データ + 分析]** > **[Data Factory]** の順に選択します。 
+1. 左側のメニューで、 **[リソースの作成]**  >  **[データ + 分析]**  >  **[Data Factory]** の順に選択します。 
    
    ![[新規] ウィンドウでの [Data Factory] の選択](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
 
@@ -32,13 +32,13 @@ ms.locfileid: "58445769"
       
    ![[新しいデータ ファクトリ] ページ](./media/load-office-365-data/new-azure-data-factory.png)
  
-    * **名前**:Azure Data Factory のグローバルに一意の名前を入力します。 "データ ファクトリ名 \"LoadFromOffice365Demo\" は利用できません" というエラーが発生する場合は、データ ファクトリの別の名前を入力します。 たとえば、_**yourname**_**LoadFromOffice365Demo** という名前を使用できます。 データ ファクトリをもう一度作成してみます。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関する記事をご覧ください。
+    * **名前**:Azure Data Factory のグローバルに一意の名前を入力します。 "データ ファクトリ名 \"LoadFromOffice365Demo\" は利用できません" というエラーが発生する場合は、データ ファクトリの別の名前を入力します。 たとえば、 _**yourname**_ **LoadFromOffice365Demo** という名前を使用できます。 データ ファクトリをもう一度作成してみます。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関する記事をご覧ください。
     * **サブスクリプション**:データ ファクトリを作成する Azure サブスクリプションを選択します。 
-    * **リソース グループ**:ドロップダウン リストから既存のリソース グループを選択するか、**[新規作成]** オプションを選択し、リソース グループの名前を入力します。 リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/resource-group-overview.md)に関するページを参照してください。  
-    * **バージョン**:**[V2]** を選択します。
+    * **リソース グループ**:ドロップダウン リストから既存のリソース グループを選択するか、 **[新規作成]** オプションを選択し、リソース グループの名前を入力します。 リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/resource-group-overview.md)に関するページを参照してください。  
+    * **バージョン**: **[V2]** を選択します。
     * **場所**:データ ファクトリの場所を選択します。 サポートされている場所のみがドロップダウン リストに表示されます。 データ ファクトリによって使用されるデータ ストアは、他の場所やリージョンにあってもかまいません。 このようなデータ ストアには、Azure Data Lake Store、Azure Storage、Azure SQL Database などがあります。
 
-3. **作成**を選択します。
+3. **作成** を選択します。
 4. 作成が完了したら、データ ファクトリに移動します。 次の画像のように **[データ ファクトリ]** ホーム ページが表示されます。
    
    ![データ ファクトリのホーム ページ](./media/load-office-365-data/data-factory-home-page.png)
@@ -57,9 +57,9 @@ ms.locfileid: "58445769"
 
 ### <a name="configure-source"></a>ソースの構成
 
-1. パイプラインの **[ソース]** タブに移動し、**[+ 新規]** をクリックしてソース データセットを作成します。 
+1. パイプラインの **[ソース]** タブに移動し、 **[+ 新規]** をクリックしてソース データセットを作成します。 
 
-2. [新しいデータセット] ウィンドウで **[Office 365]** を選択し、**[完了]** を選択します。
+2. [新しいデータセット] ウィンドウで **[Office 365]** を選択し、 **[完了]** を選択します。
 
     ![Office 365 の新しいデータセット](./media/load-office-365-data/new-office-365-dataset.png)
  
@@ -79,7 +79,7 @@ ms.locfileid: "58445769"
 
     ![Office 365 データセット テーブルを構成する](./media/load-office-365-data/config-office-365-dataset-table.png)
  
-7. プロパティ ウィンドウの **[スキーマ]** タブに移動し、**[スキーマのインポート]** を選択します。  連絡先データセットのスキーマとサンプルの値が表示されることに注目してください。
+7. プロパティ ウィンドウの **[スキーマ]** タブに移動し、 **[スキーマのインポート]** を選択します。  連絡先データセットのスキーマとサンプルの値が表示されることに注目してください。
 
     ![Office 365 データセット スキーマを構成する](./media/load-office-365-data/config-office-365-dataset-schema.png)
 
@@ -87,9 +87,9 @@ ms.locfileid: "58445769"
  
 ### <a name="configure-sink"></a>シンクの構成
 
-1. パイプライン -> **[シンク]** タブに移動し、**[+ 新規]** を選択してシンク データセットを作成します。
+1. パイプライン -> **[シンク]** タブに移動し、 **[+ 新規]** を選択してシンク データセットを作成します。
  
-2. [新しいデータセット] ウィンドウで、Office 365 からコピーするときには、サポートされているコピー先のみが選択されていることに注目します。 **[Azure Blob Storage]** を選択し、**[完了]** を選択します。  このチュートリアルでは、Office 365 のデータを Azure Blob Storage にコピーします。
+2. [新しいデータセット] ウィンドウで、Office 365 からコピーするときには、サポートされているコピー先のみが選択されていることに注目します。 **[Azure Blob Storage]** を選択し、 **[完了]** を選択します。  このチュートリアルでは、Office 365 のデータを Azure Blob Storage にコピーします。
 
     ![新しい BLOB データセット](./media/load-office-365-data/new-blob-dataset.png)
 
@@ -123,7 +123,7 @@ ms.locfileid: "58445769"
 
 ## <a name="trigger-the-pipeline-manually"></a>パイプラインを手動でトリガーする
 
-ツール バーの **[トリガー]** を選択し、**[Trigger Now]\(今すぐトリガー\)** を選択します。 [Pipeline Run]\(パイプラインの実行\) ページで **[完了]** を選択します。 
+ツール バーの **[トリガー]** を選択し、 **[Trigger Now]\(今すぐトリガー\)** を選択します。 [Pipeline Run]\(パイプラインの実行\) ページで **[完了]** を選択します。 
 
 ## <a name="monitor-the-pipeline"></a>パイプラインの監視
 
@@ -137,7 +137,7 @@ ms.locfileid: "58445769"
 
 このコンテキスト (アクセスされようとしているデータ テーブル、データが読み込まれようとしている宛先アカウント、データ アクセス要求を行っているユーザー ID の組み合わせ) のデータを要求するのはこれが初めてである場合は、コピー アクティビティの状態が "**In Progress**(進行中)" として表示されます。[アクション] の下にある [詳細] リンクをクリックしたときにのみ、状態は "**RequesetingConsent**" と表示されます。  データの抽出を進めるには、データ アクセス承認者グループのメンバーが、Privileged Access Management で要求を承認する必要があります。
 
-_同意を要求しているときの状態:_
+_同意を要求しているときの状態:_ 
 ![アクティビティ実行の詳細 - 同意の要求](./media/load-office-365-data/activity-details-request-consent.png) 
 
 _データを抽出しているときの状態:_

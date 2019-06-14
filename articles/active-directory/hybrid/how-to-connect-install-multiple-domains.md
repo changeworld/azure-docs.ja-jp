@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9e822906a072ec8244c7108e98289482adebb5a7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58098680"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60245121"
 ---
 # <a name="multiple-domain-support-for-federating-with-azure-ad"></a>Azure AD とのフェデレーションに使用する複数ドメインのサポート
 ここでは、Office 365 または Azure AD のドメインとのフェデレーション時に、複数のトップレベル ドメインとサブドメインを使用する方法について説明します。
@@ -101,7 +101,7 @@ Azure AD ポータルに新しいドメインを正常に追加した後、`Conv
 以下の手順で、Microsoft Online の信頼を削除し、元のドメインを更新します。
 
 1. AD FS フェデレーション サーバーで、 **AD FS 管理**
-2. 左側で、**[信頼関係]**、**[証明書利用者信頼]** の順に展開します。
+2. 左側で、 **[信頼関係]** 、 **[証明書利用者信頼]** の順に展開します。
 3. 右側で、 **[Microsoft Office 365 ID プラットフォーム]** エントリを削除します。
    ![Remove Microsoft Online](./media/how-to-connect-install-multiple-domains/trust4.png)
 4. [Windows PowerShell 用 Azure Active Directory モジュール](https://msdn.microsoft.com/library/azure/jj151815.aspx)をインストールしているマシンで、次のコードを実行します: `$cred=Get-Credential`。  
@@ -137,7 +137,7 @@ PowerShell コマンド `Get-MsolDomainFederationSettings -DomainName <your doma
 ## <a name="support-for-subdomains"></a>サブドメインのサポート
 サブドメインの追加では、Azure AD がドメインを処理する方法のために、親の設定を継承します。  そのため、IssuerUri は親に一致させる必要があります。
 
-たとえば、bmcontoso.com を運用している状況で、corp.bmcontoso.com を追加するとします。  この場合、corp.bmcontoso.com に属するユーザーの IssuerUri は、**http://bmcontoso.com/adfs/services/trust とする必要があります。**  しかし、上で Azure AD に適用した標準ルールでは、発行者を **http://corp.bmcontoso.com/adfs/services/trust**  としてトークンを生成するので、ドメインに必要な値と一致せず、認証に失敗します。
+たとえば、bmcontoso.com を運用している状況で、corp.bmcontoso.com を追加するとします。  この場合、corp.bmcontoso.com に属するユーザーの IssuerUri は、 **http://bmcontoso.com/adfs/services/trust とする必要があります。**  しかし、上で Azure AD に適用した標準ルールでは、発行者を **http://corp.bmcontoso.com/adfs/services/trust** としてトークンを生成するので、ドメインに必要な値と一致せず、認証に失敗します。
 
 ### <a name="how-to-enable-support-for-subdomains"></a>サブドメインのサポートを有効にする方法
 この動作を回避するには、Microsoft Online 用 AD FS 証明書利用者の信頼を更新する必要があります。  そのためには、カスタム Issuer 値の構築時にユーザーの UPN サフィックスからサブドメインを削除するよう、カスタム要求規則を構成する必要があります。

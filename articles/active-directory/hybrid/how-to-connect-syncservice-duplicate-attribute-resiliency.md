@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a65af5a5ea0629b617c4e736d8c110cbb9aa540c
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58438303"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60348811"
 ---
 # <a name="identity-synchronization-and-duplicate-attribute-resiliency"></a>ID 同期と重複属性の回復性
 重複属性の回復性は、Microsoft のいずれかの同期ツールを実行しているときに **UserPrincipalName** や **ProxyAddress** の競合によって引き起こされる不整合を避けるために Azure Active Directory に備えられている機能です。
@@ -45,7 +45,7 @@ ms.locfileid: "58438303"
 
 属性の検疫時に、競合に関する情報は、従来の動作で使用されるのと同じエラー レポート電子メールで送信されます。 ただし、この情報は、検疫が発生した際にエラー レポートに 1 回表示されるだけで、その後の電子メールではログに記録されません。 また、このオブジェクトのエクスポートは成功しているため、同期クライアントはエラーをログに記録せず、後続の同期サイクルで作成/更新操作を再試行しません。
 
-この動作をサポートするために、次の新しい属性が User、Group、および Contact オブジェクト クラスに追加されました:   
+この動作をサポートするために、次の新しい属性が User、Group、および Contact オブジェクト クラスに追加されました:  
 **DirSyncProvisioningErrors**
 
 これは複数値の属性であり、普通に追加されたら一意性の制約に違反する、競合している属性を格納します。 Azure Active Directory で、解決された重複属性の競合を検出し、該当する属性を検疫から自動的に削除するための、1 時間ごとに実行されるバックグラウンド タイマー タスクが有効になりました。
@@ -103,12 +103,12 @@ ms.locfileid: "58438303"
 `Get-MsolDirSyncProvisioningError -ErrorCategory PropertyConflict -PropertyName ProxyAddresses`
 
 #### <a name="by-conflicting-value"></a>競合する値ごと
-特定のプロパティに関連するエラーを表示するには、次のように **-PropertyValue** フラグを追加します (このフラグを追加する場合は、**-PropertyName** も使用する必要があります)。
+特定のプロパティに関連するエラーを表示するには、次のように **-PropertyValue** フラグを追加します (このフラグを追加する場合は、 **-PropertyName** も使用する必要があります)。
 
 `Get-MsolDirSyncProvisioningError -ErrorCategory PropertyConflict -PropertyValue User@domain.com -PropertyName UserPrincipalName`
 
 #### <a name="using-a-string-search"></a>文字列検索を使用
-広範な文字列検索を行うには、**-SearchString** フラグを使用します。 このフラグは上記のすべてのフラグとは別に使用できますが、**-ErrorCategory PropertyConflict** は例外です。このフラグとは常に一緒に使用する必要があります。
+広範な文字列検索を行うには、 **-SearchString** フラグを使用します。 このフラグは上記のすべてのフラグとは別に使用できますが、 **-ErrorCategory PropertyConflict** は例外です。このフラグとは常に一緒に使用する必要があります。
 
 `Get-MsolDirSyncProvisioningError -ErrorCategory PropertyConflict -SearchString User`
 
@@ -142,7 +142,7 @@ ProxyAddress の競合に関する電子メール通知の例を、次に示し�
 **主要な動作:**
 
 1. 特定の属性構成を持つオブジェクトは、検疫されている重複属性ではなく、エクスポート エラーを受信し続けます。  
-   例: 
+   例:
    
     a. AD で、UPN を **Joe\@contoso.com** および ProxyAddress **smtp:Joe\@contoso.com** として新しいユーザーが作成されました。
    
@@ -154,7 +154,7 @@ ProxyAddress の競合に関する電子メール通知の例を、次に示し�
 **Office ポータル レポート**:
 
 1. UPN 競合セットの 2 つのオブジェクトの詳細なエラー メッセージは、同一です。 つまり、両方で UPN が変更/検疫されたと示されますが、実際には一方だけでデータが変更されています。
-2. UPN 競合の詳細なエラー メッセージは、UPN を変更/検疫したユーザーの正しくない displayName を表示します。 例: 
+2. UPN 競合の詳細なエラー メッセージは、UPN を変更/検疫したユーザーの正しくない displayName を表示します。 例:
    
     a. **ユーザー A** が最初に **UPN = User\@contoso.com** で同期を実行します。
    

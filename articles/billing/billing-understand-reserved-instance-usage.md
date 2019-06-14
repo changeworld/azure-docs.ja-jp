@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 03/13/2019
 ms.author: banders
 ms.openlocfilehash: 14bd7b61038bf938f7d370eaf6e16d71b5da43ca
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652537"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60370358"
 ---
 # <a name="understand-azure-reservation-usage-for-your-pay-as-you-go-subscription"></a>従量課金制サブスクリプションに適用される Azure の予約の使用状況について
 
@@ -36,7 +36,7 @@ Enterprise Agreement をご利用のお客様は、[エンタープライズ加�
 | フィールド | 値 |
 |---| :---: |
 |ReservationId |8117adfb-1d94-4675-be2b-f3c1bca808b6|
-|数量 |1|
+|Quantity |1|
 |SKU | Standard_DS1_v2|
 |リージョン | eastus |
 
@@ -44,7 +44,7 @@ Enterprise Agreement をご利用のお客様は、[エンタープライズ加�
 
 ### <a name="statement-section-of-csv-file-for-vms"></a>VM の CSV ファイルの Statement セクション
 
-CSV ファイルのこのセクションには、予約の合計使用量が表示されます。 **Meter Sub-category** フィールドに対して "**Reservation-**" を含むフィルターを適用します。 次のスクリーンショットのように表示されます。
+CSV ファイルのこのセクションには、予約の合計使用量が表示されます。 **Meter Sub-category** フィールドに対して "**Reservation-** " を含むフィルターを適用します。 次のスクリーンショットのように表示されます。
 
 ![フィルター処理された予約の使用状況の詳細と料金のスクリーンショット](./media/billing-understand-reserved-instance-usage/billing-payg-reserved-instance-csv-statements.png)
 
@@ -71,13 +71,13 @@ SQL Database Gen 4 を米国東部リージョンで実行していて、その�
 | フィールド | 値 |
 |---| --- |
 |ReservationId |446ec809-423d-467c-8c5c-bbd5d22906b1|
-|数量 |2|
+|Quantity |2|
 |Product| SQL Database Gen 4 (2 Core)|
 |リージョン | eastus |
 
 ### <a name="statement-section-of-csv-file"></a>CSV ファイルの Statement セクション
 
-**[Reserved Instance 使用量]** という測定名でフィルターを適用し、必要な**メーター カテゴリ** (Azure SQL Database または Azure Cosmos DB) を選択します。 次のスクリーンショットのように表示されます。
+**[Reserved Instance 使用量]** という測定名でフィルターを適用し、必要な**メーター カテゴリ** (Azure SQL データベースまたは Azure Cosmos DB) を選択します。 次のスクリーンショットのように表示されます。
 
 ![SQL Database の予約容量の CSV ファイル](./media/billing-understand-reserved-instance-usage/billing-payg-sql-db-reserved-capacity-csv-statements.png)
 
@@ -103,7 +103,7 @@ Azure の予約の詳細については、次の記事を参照してくださ�
 
 - [Azure の予約とは](billing-save-compute-costs-reservations.md)
 - [Azure Reserved VM Instances による仮想マシンの前払い](../virtual-machines/windows/prepay-reserved-vm-instances.md)
-- [Azure SQL Database の容量が予約された SQL Database 計算リソースの前払い](../sql-database/sql-database-reserved-capacity.md)
+- [Azure SQL Database の予約容量を使用した SQL Database 計算リソースの前払い](../sql-database/sql-database-reserved-capacity.md)
 - [Azure の予約の管理](billing-manage-reserved-vm-instance.md)
 - [予約割引の適用方法について](billing-understand-vm-reservation-charges.md)
 - [エンタープライズ加入契約の予約使用量について](billing-understand-reserved-instance-usage-ea.md)

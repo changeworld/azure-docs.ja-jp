@@ -12,11 +12,11 @@ ms.workload: na
 ms.date: 02/28/2019
 ms.author: banders
 ms.openlocfilehash: 21d6c1671c57341d785c002f360c05cc5c610657
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57551621"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60371618"
 ---
 # <a name="create-sections-on-your-invoice-to-organize-your-costs"></a>請求書にセクションを作成してコストを整理する
 
@@ -34,7 +34,7 @@ ms.locfileid: "57551621"
 
    ![Azure portal の検索を表示するスクリーンショット](./media/billing-mca-section-invoice/billing-search-cost-management-billing.png)
 
-3. 左側のペインから **[請求書セクション]** を選びます。 アクセス方法によっては、課金プロファイルまたは請求先アカウントを選択してから、**[請求書セクション]** を選択することが必要な場合があります。
+3. 左側のペインから **[請求書セクション]** を選びます。 アクセス方法によっては、課金プロファイルまたは請求先アカウントを選択してから、 **[請求書セクション]** を選択することが必要な場合があります。
 
    ![Azure portal の検索を表示するスクリーンショット](./media/billing-mca-section-invoice/billing-mca-list-invoice-sections.png)
 
@@ -46,7 +46,7 @@ ms.locfileid: "57551621"
 
 6. 課金プロファイルを選択します。 請求書セクションのすべての利用料金や購入が、課金プロファイルの請求書に反映されます。
 
-7. **作成**を選択します。
+7. **作成** を選択します。
 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Microsoft 顧客契約にアクセスできるかどうかを確認する
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]

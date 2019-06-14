@@ -15,11 +15,11 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d47072713c57576abe780134792c3a5cbc27127c
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58439041"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60438328"
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>Azure Portal でアクティビティ レポートを見つける
 
@@ -48,7 +48,7 @@ ms.locfileid: "58439041"
 
 ### <a name="filtering-on-audit-logs"></a>監査ログのフィルター処理
 
-監査レポートで高度なフィルター処理を使用すると、**[カテゴリ]** フィルターで指定することで、特定のカテゴリの監査データにアクセスできます。 たとえば、ユーザーに関連するすべてのアクティビティを表示するには、**UserManagement** カテゴリを選択します。 
+監査レポートで高度なフィルター処理を使用すると、 **[カテゴリ]** フィルターで指定することで、特定のカテゴリの監査データにアクセスできます。 たとえば、ユーザーに関連するすべてのアクティビティを表示するには、**UserManagement** カテゴリを選択します。 
 
 次のようなカテゴリがあります。
 
@@ -69,7 +69,7 @@ ms.locfileid: "58439041"
 - RoleManagement
 - UserManagement
 
-**[サービス]** ドロップダウン フィルターを使用して、特定のサービスでフィルター処理することもできます。 たとえば、セルフサービスによるパスワード管理に関連するすべての監査イベントを取得するには、**[Self-service Password Management]\(セルフサービスによるパスワード管理\)** フィルターを選択します。
+**[サービス]** ドロップダウン フィルターを使用して、特定のサービスでフィルター処理することもできます。 たとえば、セルフサービスによるパスワード管理に関連するすべての監査イベントを取得するには、 **[Self-service Password Management]\(セルフサービスによるパスワード管理\)** フィルターを選択します。
 
 次のようなサービスがあります。
 
@@ -91,7 +91,7 @@ ms.locfileid: "58439041"
 
 ## <a name="sign-ins-report"></a>サインイン レポート 
 
-**[サインイン]** ビューには、すべてのユーザー サインインと、**アプリケーションの使用状況**レポートが表示されます。 アプリケーションの使用状況に関する情報は、**[エンタープライズ アプリケーション]** の概要の **[管理]** セクションで確認することもできます。
+**[サインイン]** ビューには、すべてのユーザー サインインと、**アプリケーションの使用状況**レポートが表示されます。 アプリケーションの使用状況に関する情報は、 **[エンタープライズ アプリケーション]** の概要の **[管理]** セクションで確認することもできます。
 
 サインイン レポートにアクセスするには:
 
@@ -134,7 +134,7 @@ ms.locfileid: "58439041"
 
 ### <a name="detected-risk-events"></a>検出されたリスク イベント
 
-[Azure portal](https://portal.azure.com) では、**[Azure Active Directory]** ブレードの **[セキュリティ]** セクションで、検出されたリスク イベントに関するレポートにアクセスできます。 検出されたリスク イベントは、次のレポートで追跡されます。   
+[Azure portal](https://portal.azure.com) では、 **[Azure Active Directory]** ブレードの **[セキュリティ]** セクションで、検出されたリスク イベントに関するレポートにアクセスできます。 検出されたリスク イベントは、次のレポートで追跡されます。   
 
 - [危険な状態のユーザー](concept-user-at-risk.md)
 - [リスクの高いサインイン](concept-risky-sign-ins.md)
@@ -215,8 +215,8 @@ Azure Active Directory Actions には、ライセンスに応じて次の期間�
 
 | レポート           | &nbsp; |  Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
 | ---              | ----   |  ---           | ---                 | ---                 |
-| ディレクトリ監査  | &nbsp; |   7 日     | 30 日             | 30 日             |
-| サインイン アクティビティ | &nbsp; | 使用できません。 7 日間分のサインインについては、個人のユーザー プロファイル ブレードからアクセスできます | 30 日 | 30 日             |
+| 監査ログ  | &nbsp; |   7 日     | 30 日             | 30 日             |
+| サインイン | &nbsp; | 使用できません。 7 日間分のサインインについては、個人のユーザー プロファイル ブレードからアクセスできます | 30 日 | 30 日             |
 
 詳細については、「[Azure Active Directory レポートのアイテム保持ポリシー](reference-reports-data-retention.md)」を参照してください。  
 

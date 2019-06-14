@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
 ms.openlocfilehash: 2ef327721fd42e5274381834721fd987ec7e9d75
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59263283"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60240520"
 ---
 # <a name="use-azure-machine-learning-service-in-a-notebook"></a>ノートブックで Azure Machine Learning service を使用する
 
@@ -28,8 +28,8 @@ Azure Notebooks は、[Azure Machine Learning service](/azure/machine-learning/s
 
 1. [Azure Notebooks](https://notebooks.azure.com/) にサインインします。
 1. **[マイ プロジェクト]** を選択し、プロジェクト ダッシュボードに移動します。
-1. **[Upload GitHub Repo]\(GitHub リポジトリのアップロード\)** (上向き矢印) ボタンを選択し、**[Upload GitHub Repository]\(GitHub リポジトリのアップロード\)** ポップアップを開きます。
-1. このポップアップで、**[GitHub リポジトリ]** に「`Azure/MachineLearningNotebooks`」と入力し、**[プロジェクト名]** でプロジェクトの名前を指定し ("Azure Machine Learning service" など)、**[プロジェクト ID]** で識別子を指定し、必要であれば **[公開]** を選択解除して、**[インポート]** を選択します。
+1. **[Upload GitHub Repo]\(GitHub リポジトリのアップロード\)** (上向き矢印) ボタンを選択し、 **[Upload GitHub Repository]\(GitHub リポジトリのアップロード\)** ポップアップを開きます。
+1. このポップアップで、 **[GitHub リポジトリ]** に「`Azure/MachineLearningNotebooks`」と入力し、 **[プロジェクト名]** でプロジェクトの名前を指定し ("Azure Machine Learning service" など)、 **[プロジェクト ID]** で識別子を指定し、必要であれば **[公開]** を選択解除して、 **[インポート]** を選択します。
 
     ![Azure Machine Learning Notebook サンプルを自分の Notebooks アカウントにインポートする](media/azureml-import-project.png)
 
@@ -41,7 +41,7 @@ Azure Notebooks は、[Azure Machine Learning service](/azure/machine-learning/s
 
     - Azure Notebooks には必要な Python パッケージが既に含まれているため、前提条件の手順 2 でコード スニペットを実行するだけで Azure ML SDK のバージョンを確認できます。
 
-1. 構成の完了後、**[01.getting-started]** を選択し、13 個の異なるサンプル ノートブックが含まれるフォルダーに移動します。このサンプル ノートブックはいずれも、見れば内容がわかるようになっています。
+1. 構成の完了後、 **[01.getting-started]** を選択し、13 個の異なるサンプル ノートブックが含まれるフォルダーに移動します。このサンプル ノートブックはいずれも、見れば内容がわかるようになっています。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 11/18/2016
 ms.author: cawa
 ms.openlocfilehash: f46467871a5ae0147b5dc60881bda4175eabac56
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57858169"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60458559"
 ---
 # <a name="manage-azure-blob-storage-resources-with-storage-explorer"></a>Storage Explorer を使用して Azure Blob Storage リソースを管理する
 ## <a name="overview"></a>概要
@@ -66,7 +66,7 @@ BLOB コンテナーには、BLOB とフォルダーが含まれます (フォ�
    ![Blob container editor][3]
 
 ## <a name="delete-a-blob-container"></a>BLOB コンテナーを削除する
-BLOB コンテナーは、必要に応じて、簡単に作成および削除できます  (個々の BLOB を削除する方法については、「[BLOB コンテナー内の BLOB を管理する](#managing-blobs-in-a-blob-container)」セクションをご覧ください)。
+BLOB コンテナーは、必要に応じて、簡単に作成および削除できます (個々の BLOB を削除する方法については、「[BLOB コンテナー内の BLOB を管理する](#managing-blobs-in-a-blob-container)」セクションをご覧ください)。
 
 次の手順では、Storage Explorer 内の BLOB コンテナーを削除する方法を説明します。
 
@@ -82,7 +82,7 @@ BLOB コンテナーは、必要に応じて、簡単に作成および削除で
    ![Delete blob Container confirmation][5]
 
 ## <a name="copy-a-blob-container"></a>BLOB コンテナーをコピーする
-Storage Explorer を使用すると、BLOB コンテナーをクリップボードにコピーし、その BLOB コンテナーを別のストレージ アカウントに貼り付けることができます  (個々の BLOB をコピーする方法については、「[BLOB コンテナー内の BLOB を管理する](#managing-blobs-in-a-blob-container)」セクションをご覧ください)。
+Storage Explorer を使用すると、BLOB コンテナーをクリップボードにコピーし、その BLOB コンテナーを別のストレージ アカウントに貼り付けることができます (個々の BLOB をコピーする方法については、「[BLOB コンテナー内の BLOB を管理する](#managing-blobs-in-a-blob-container)」セクションをご覧ください)。
 
 次の手順では、あるストレージ アカウントから別のストレージ アカウントに BLOB コンテナーをコピーする方法を説明します。
 
@@ -133,7 +133,7 @@ Storage Explorer を使用すると、BLOB コンテナーをクリップボー�
 6. アクセス ポリシーの管理タスクに応じて、以下の手順に従います。
 
    * **新しいアクセス ポリシーを追加する** - **[追加]** を選択します。 生成後、 **[アクセス ポリシー]** ダイアログには、新しく追加されたアクセス ポリシー (既定の設定) が表示されます。
-   * **アクセス ポリシーを編集する** - 必要な編集を行い、**[保存]** を選択します。
+   * **アクセス ポリシーを編集する** - 必要な編集を行い、 **[保存]** を選択します。
    * **アクセス ポリシーを削除する** - 削除するアクセス ポリシーの横にある **[削除]** を選択します。
 
 ## <a name="set-the-public-access-level-for-a-blob-container"></a>BLOB コンテナーのパブリック アクセス レベルを設定する
@@ -172,7 +172,7 @@ BLOB コンテナーを作成したら、その BLOB コンテナーに BLOB を
      1. メイン ウィンドウのツール バーで **[アップロード]** を選択し、ドロップダウン メニューで **[Upload Files (ファイルのアップロード)]** を選択します。
 
         ![Upload files menu][15]
-     2. **[Upload Files (ファイルのアップロード)]** ダイアログで、**[ファイル]** ボックスの右側にある省略記号 (**[...]**) ボタンをクリックし、アップロードするファイルを選択します。
+     2. **[Upload Files (ファイルのアップロード)]** ダイアログで、 **[ファイル]** ボックスの右側にある省略記号 ( **[...]** ) ボタンをクリックし、アップロードするファイルを選択します。
 
         ![Upload files options][16]
      3. **[BLOB の種類]** に種類を指定します。 詳細については、「[コンテナーを作成し、アクセス許可を設定する](storage/blobs/storage-quickstart-blobs-dotnet.md#upload-blobs-to-the-container)」を参照してください。
@@ -183,7 +183,7 @@ BLOB コンテナーを作成したら、その BLOB コンテナーに BLOB を
      1. メイン ウィンドウのツール バーで **[アップロード]** を選択し、ドロップダウン メニューで **[Upload Folder (フォルダーのアップロード)]** を選択します。
 
         ![Upload folder menu][17]
-     2. **[Upload Folder (フォルダーのアップロード)]** ダイアログで、**[フォルダー]** ボックスの右側にある省略記号 (**[...]**) ボタンをクリックし、アップロードする内容を含むフォルダーを選択します。
+     2. **[Upload Folder (フォルダーのアップロード)]** ダイアログで、 **[フォルダー]** ボックスの右側にある省略記号 ( **[...]** ) ボタンをクリックし、アップロードする内容を含むフォルダーを選択します。
 
         ![Upload folder options][18]
      3. **[BLOB の種類]** に種類を指定します。 詳細については、「[コンテナーを作成し、アクセス許可を設定する](storage/blobs/storage-quickstart-blobs-dotnet.md#upload-blobs-to-the-container)」を参照してください。

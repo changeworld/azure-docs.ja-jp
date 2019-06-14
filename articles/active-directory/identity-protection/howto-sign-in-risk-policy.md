@@ -18,11 +18,11 @@ ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fe9e0a4d481ef7b802c50fdc347872e389fa8ef7
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58518045"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60294674"
 ---
 # <a name="how-to-configure-the-sign-in-risk-policy"></a>方法:サインイン リスク ポリシーを構成する
 
@@ -111,7 +111,7 @@ MFA を要求するようにサインイン リスク セキュリティ ポリ�
 
 - 多数の誤検知を生成する可能性があるユーザー (開発者、セキュリティ アナリスト) を除外します。
 
-- 初期のポリシー展開中、またはエンド ユーザーに表示されるチャレンジを最小限に抑える必要がある場合は、**[高]** しきい値を使用します。
+- 初期のポリシー展開中、またはエンド ユーザーに表示されるチャレンジを最小限に抑える必要がある場合は、 **[高]** しきい値を使用します。
 
 - 組織のセキュリティを強化する必要がある場合は、**低**しきい値を使用します。 **低** しきい値を選択すると、追加のユーザー サインイン チャレンジが導入されますが、セキュリティは強化されます。
 

@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 40918493071fe0dd694c43e2b087a2bf7eb197d8
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59489195"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60414625"
 ---
 # <a name="troubleshooting-combined-security-information-registration-preview"></a>結合されたセキュリティ情報の登録のトラブルシューティング (プレビュー)
 
@@ -155,7 +155,7 @@ PowerShell ウィンドウで、次のコマンドを実行し、スクリプト
 ユーザーのプレビュー エクスペリエンスを無効にするには、次の手順を実行します。
 
 1. ユーザー管理者として Azure Portal にサインインします。
-2. **[Azure Active Directory]** > **[ユーザー設定]** > **[アクセス パネル プレビュー機能の設定を管理]** の順に移動します。
+2. **[Azure Active Directory]**  >  **[ユーザー設定]**  >  **[アクセス パネル プレビュー機能の設定を管理]** の順に移動します。
 3. **[ユーザーはセキュリティ情報の登録と管理のためにプレビュー機能を使用できます]** で、セレクターを **[なし]** に設定して **[保存]** を選択します。
 
 ユーザーは、プレビュー エクスペリエンスを使った登録を求められなくなります。

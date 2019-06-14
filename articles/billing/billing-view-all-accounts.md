@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 05/11/2018
 ms.author: banders
 ms.openlocfilehash: 31e4eb1d6493c8de99ac48e09dfb2b8b6481b70a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57854281"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60369252"
 ---
 # <a name="view-your-billing-accounts-in-azure-portal"></a>Azure portal での請求先アカウントの表示  
 

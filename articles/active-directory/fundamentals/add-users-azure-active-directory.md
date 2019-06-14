@@ -14,11 +14,11 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c1bac4d2c0f236b8fca611c7391846abdb782796
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59009599"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60247741"
 ---
 # <a name="add-or-delete-users-using-azure-active-directory"></a>Azure Active Directory を使用してユーザーを追加または削除する
 Azure Active Directory (Azure AD) 組織に対して、新しいユーザーの追加または既存のユーザーの削除を行います。
@@ -29,7 +29,7 @@ Azure Active Directory ポータルを使用して、新しいユーザーを作
 ### <a name="to-add-a-new-user"></a>新しいユーザーを追加するには
 1. [Azure portal](https://portal.azure.com/) に組織のユーザー管理者としてサインインします。
 
-2. **[Azure Active Directory]**、**[ユーザー]** の順に選択し、**[新しいユーザー]** を選択します。
+2. **[Azure Active Directory]** 、 **[ユーザー]** の順に選択し、 **[新しいユーザー]** を選択します。
 
     ![[ユーザー] - [すべてのユーザー] ページ ([新しいユーザー] が強調表示されている)](media/add-users-azure-active-directory/new-user-all-users-blade.png)
 
@@ -64,13 +64,13 @@ Azure Active Directory ポータルを使用して、既存のユーザーを削
 ### <a name="to-delete-a-user"></a>ユーザーの削除
 1. 組織のユーザー管理者アカウントを使用して [Azure portal](https://portal.azure.com/) にサインインします。
 
-2. **[Azure Active Directory]**、**[ユーザー]** の順に選択し、Azure AD テナントから削除するユーザーを検索して選択します。 たとえば、_Mary Parker_ を選択します。
+2. **[Azure Active Directory]** 、 **[ユーザー]** の順に選択し、Azure AD テナントから削除するユーザーを検索して選択します。 たとえば、_Mary Parker_ を選択します。
 
 3. **[ユーザーの削除]** を選択します。
 
     ![[ユーザー] - [すべてのユーザー] ページ ([ユーザーの削除] が強調表示されている)](media/add-users-azure-active-directory/delete-user-all-users-blade.png)
 
-    ユーザーが削除され、**[ユーザー] - [すべてのユーザー]** ページに表示されなくなります。 ユーザーは、削除後 30 日間は **[削除済みのユーザー]** ページに表示され、その期間内であれば復元できます。 ユーザーの復元の詳細については、[最近削除されたユーザーを復元するか完全に削除する方法](active-directory-users-restore.md)に関するページを参照してください。 ユーザーが削除されると、そのユーザーによって使用されていたライセンスは、別のユーザーが使用できるようになります。
+    ユーザーが削除され、 **[ユーザー] - [すべてのユーザー]** ページに表示されなくなります。 ユーザーは、削除後 30 日間は **[削除済みのユーザー]** ページに表示され、その期間内であれば復元できます。 ユーザーの復元の詳細については、[最近削除されたユーザーを復元するか完全に削除する方法](active-directory-users-restore.md)に関するページを参照してください。 ユーザーが削除されると、そのユーザーによって使用されていたライセンスは、別のユーザーが使用できるようになります。
 
     >[!Note]
     >権限ソースが Windows Server Active Directory であるユーザーの ID、連絡先情報、仕事情報を更新するには、Windows Server Active Directory を使用する必要があります。 次の同期のサイクルの完了を待機すると、更新の完了による変更が反映されています。
@@ -79,11 +79,11 @@ Azure Active Directory ポータルを使用して、既存のユーザーを削
 
 ユーザーを追加したら、次の基本的なプロセスを実行できます。
 
-- [ユーザー プロファイル情報の追加または変更](active-directory-users-profile-azure-portal.md)
+- [プロファイル情報を追加または変更する](active-directory-users-profile-azure-portal.md)
 
 - [ユーザーにロールを割り当てる](active-directory-users-assign-role-azure-portal.md)
 
-- [基本グループを作成してメンバーを追加する](active-directory-groups-create-azure-portal.md)
+- [基本的なグループを作成し、メンバーを追加する](active-directory-groups-create-azure-portal.md)
 
 - [動的グループとユーザーを操作する](../users-groups-roles/groups-create-rule.md)
 

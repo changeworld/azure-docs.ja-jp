@@ -15,11 +15,11 @@ ms.date: 07/11/2017
 ms.author: celested
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f6c313cc654461ea22c126fede317ed230408b82
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58079198"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60291604"
 ---
 # <a name="problem-configuring-password-single-sign-on-for-an-azure-ad-gallery-application"></a>Azure AD ギャラリー アプリケーションのパスワード シングル サインオンを構成する場合の問題
 
@@ -91,7 +91,7 @@ Microsoft には、アプリケーションの統合の破綻を自動的に検�
 
 2.  アクセス パネルで、**パスワード SSO アプリケーション**をクリックします。
 
-3.  ソフトウェアのインストールを確認するプロンプトで、**[今すぐインストール]** を選択します。
+3.  ソフトウェアのインストールを確認するプロンプトで、 **[今すぐインストール]** を選択します。
 
 4.  お使いのブラウザーに基づいて、ダウンロード リンクが表示されます。 お使いのブラウザーに拡張機能を**追加**します。
 

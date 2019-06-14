@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 10/23/2017
 ms.author: alkohli
 ms.openlocfilehash: 30d70bb7e1f868060e3b287a0cdfb117c585b9ba
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59790078"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60310152"
 ---
 # <a name="use-azure-automation-runbooks-to-manage-storsimple-devices"></a>Azure Automation Runbook を使用して StorSimple デバイスを管理する
 
@@ -49,7 +49,7 @@ StorSimple 8000 シリーズ デバイス管理用のオートメーション �
         cd C:\scripts\StorSimpleSDKTools
     ```
 
-2. 前の手順で作成したフォルダーに [NuGet CLI をダウンロード](https://www.nuget.org/downloads)します。 _nuget.exe_ にはさまざまなバージョンがあります。 SDK に対応するバージョンを選択します。 各ダウンロード リンクは、_.exe_ ファイルを直接ポイントします。 ブラウザーから実行するのではなく、ファイルを右クリックしてコンピューターに保存してください。
+2. 前の手順で作成したフォルダーに [NuGet CLI をダウンロード](https://www.nuget.org/downloads)します。 _nuget.exe_ にはさまざまなバージョンがあります。 SDK に対応するバージョンを選択します。 各ダウンロード リンクは、 _.exe_ ファイルを直接ポイントします。 ブラウザーから実行するのではなく、ファイルを右クリックしてコンピューターに保存してください。
 
     次のコマンドを実行して、スクリプトをダウンロードし、前に作成した同じフォルダーに格納することもできます。
 
@@ -179,7 +179,7 @@ StorSimple 8000 シリーズ デバイス管理用のオートメーション �
 
 ### <a name="import-publish-and-run-automation-runbook"></a>Automation Runbook をインポート、発行、および実行する
 
-1. Azure Portal で、Azure 実行アカウントを Automation として作成します。 そのためには、**[Azure Marketplace] > [すべて]** に移動し、**Automation** を検索します。 **[Automation アカウント]** を選択します。
+1. Azure Portal で、Azure 実行アカウントを Automation として作成します。 そのためには、 **[Azure Marketplace] > [すべて]** に移動し、**Automation** を検索します。 **[Automation アカウント]** を選択します。
 
     ![search-automation](./media/storsimple-8000-automation-azurerm-runbook/automation1.png)
 
@@ -190,7 +190,7 @@ StorSimple 8000 シリーズ デバイス管理用のオートメーション �
    3. 新しいリソース グループを作成するか、既存のリソース グループを選択します。
    4. **場所** (可能な場合は、サービスが実行されている場所と同じ場所) を選択します。
    5. **[Create Run As account]\(実行アカウントの作成\)** オプションは既定値の選択状態のままにします。
-   6. オプションで、**[ダッシュボードにピン留めする]** をオンにします。 **Create** をクリックしてください。
+   6. オプションで、 **[ダッシュボードにピン留めする]** をオンにします。 **Create** をクリックしてください。
 
        ![create-automation-account](./media/storsimple-8000-automation-azurerm-runbook/create-automation-account.png)
 
@@ -200,13 +200,13 @@ StorSimple 8000 シリーズ デバイス管理用のオートメーション �
 
     ![add-permissions-automation-account](./media/storsimple-8000-automation-azurerm-runbook/goto-add-roles.png)
 
-4. 新しく作成されたアカウントで、**[共有リソース] > [モジュール]** に移動し、**[+ モジュールの追加]** をクリックします。
+4. 新しく作成されたアカウントで、 **[共有リソース] > [モジュール]** に移動し、 **[+ モジュールの追加]** をクリックします。
 
 5. **[モジュールの追加]** ブレードで、zip 形式のモジュールの場所を参照し、モジュールを選択して開きます。 Click **OK**.
 
     ![add-module](./media/storsimple-8000-automation-azurerm-runbook/add-module.png)
 
-6. **[プロセス オートメーション] > [Runbook] に移動し、[+ Runbook の追加] をクリックします**。 **[Runbook の追加]** ブレードで、**[既存の Runbook のインポート]** をクリックします。 **[Runbook ファイル]** で、Windows PowerShell スクリプト ファイルを参照します。 Runbook の種類が自動的に選択されます。 Runbook の名前と説明 (オプション) を入力します。 **Create** をクリックしてください。
+6. **[プロセス オートメーション] > [Runbook] に移動し、[+ Runbook の追加] をクリックします**。 **[Runbook の追加]** ブレードで、 **[既存の Runbook のインポート]** をクリックします。 **[Runbook ファイル]** で、Windows PowerShell スクリプト ファイルを参照します。 Runbook の種類が自動的に選択されます。 Runbook の名前と説明 (オプション) を入力します。 **Create** をクリックしてください。
 
     ![add-module](./media/storsimple-8000-automation-azurerm-runbook/import-runbook.png)
 
@@ -214,7 +214,7 @@ StorSimple 8000 シリーズ デバイス管理用のオートメーション �
 
     ![click-new-runbook](./media/storsimple-8000-automation-azurerm-runbook/verify-runbook-created.png)
 
-8. Runbook を編集し、**[テスト ウィンドウ]** をクリックします。 StorSimple デバイス マネージャー サービスの名前、StorSimple デバイスの名前、サブスクリプションなどのパラメーターを入力します。 テストを**開始**します。 実行が完了すると、レポートが生成されます。 詳細については、[Runbook のテスト方法](../automation/automation-first-runbook-textual-powershell.md#step-3---test-the-runbook)に関するセクションを参照してください。
+8. Runbook を編集し、 **[テスト ウィンドウ]** をクリックします。 StorSimple デバイス マネージャー サービスの名前、StorSimple デバイスの名前、サブスクリプションなどのパラメーターを入力します。 テストを**開始**します。 実行が完了すると、レポートが生成されます。 詳細については、[Runbook のテスト方法](../automation/automation-first-runbook-textual-powershell.md#step-3---test-the-runbook)に関するセクションを参照してください。
 
     ![test-runbook](./media/storsimple-8000-automation-azurerm-runbook/test-runbook.png)
 

@@ -15,11 +15,11 @@ ms.date: 09/04/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 36a648e2d46cce96a8ff663f45ccf45326898a84
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417008"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60477893"
 ---
 # <a name="operations-model-and-responsibilities"></a>運用モデルと責任
 
@@ -43,7 +43,7 @@ SAP HANA on Azure (L インスタンス) が提供するサービスは Azure Ia
 
 **O/S**: サーバーで実行するために選択する OS (SUSE Linux または Red Hat Linux)。 お客様に提供される OS イメージは、SAP HANA を実行するために各 Linux ベンダーから Microsoft に提供されたイメージです。 特定の SAP HANA 最適化イメージでは、Linux ベンダーのサブスクリプションが必要です。 OS ベンダーへのイメージの登録はお客様が行う必要があります。 
 
-Microsoft による引き渡しの時点から、Linux オペレーティング システムの修正プログラムの適用もお客様の責任になります。 この修正プログラムには、SAP HANA を正常にインストールするために必要であり、特定の Linux ベンダーが SAP HANA に最適化された OS イメージに含めていない追加パッケージが含まれます  (詳細については、SAP の HANA インストール ドキュメントと SAP ノートをご覧ください)。 
+Microsoft による引き渡しの時点から、Linux オペレーティング システムの修正プログラムの適用もお客様の責任になります。 この修正プログラムには、SAP HANA を正常にインストールするために必要であり、特定の Linux ベンダーが SAP HANA に最適化された OS イメージに含めていない追加パッケージが含まれます (詳細については、SAP の HANA インストール ドキュメントと SAP ノートをご覧ください)。 
 
 お客様は、OS の動作不良または最適化に関連する OS 修正プログラムと特定のサーバー ハードウェアに関連するドライバーに対して責任を負います。 また、OS のセキュリティまたは機能の修正プログラムの適用もお客様の責任となります。 
 

@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: kegodin
 ms.openlocfilehash: 4a1a0b15da091a1c020eb132f6b14b9ee14d334c
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58316070"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61335418"
 ---
 # <a name="project-acoustics-design-process-concepts"></a>Project Acoustics の設計概念
 

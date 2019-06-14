@@ -12,11 +12,11 @@ ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 932587afcffcb3b1a259a02a98c648e938e99931
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57845340"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60256412"
 ---
 # <a name="overview-of-data-science-using-spark-on-azure-hdinsight"></a>Azure HDInsight 上の Spark を使用したデータ サイエンスの概要
 
@@ -141,7 +141,7 @@ NYC タクシー乗車データは、約 20 GB の圧縮されたコンマ区切
 | tip_class |チップのクラス (0: $0、1: $0 - 5、2: $6 - 10、3: $11 - 20、4: $20 以上) |
 
 ## <a name="execute-code-from-a-jupyter-notebook-on-the-spark-cluster"></a>Spark クラスターで、Jupyter Notebook からのコードを実行する
-Jupyter Notebook は Azure ポータルから起動できます。 ダッシュボードでご利用の Spark クラスターを見つけてクリックし、クラスターの管理ページにアクセスします。 **[クラスター ダッシュボード]** -> **[Jupyter Notebook]** をクリックして、Spark クラスターに関連付けられている Notebook を開きます。
+Jupyter Notebook は Azure ポータルから起動できます。 ダッシュボードでご利用の Spark クラスターを見つけてクリックし、クラスターの管理ページにアクセスします。 **[クラスター ダッシュボード]**  ->  **[Jupyter Notebook]** をクリックして、Spark クラスターに関連付けられている Notebook を開きます。
 
 ![クラスター ダッシュボード](./media/spark-overview/spark-jupyter-on-portal.png)
 
@@ -156,7 +156,7 @@ Jupyter Notebook は Azure ポータルから起動できます。 ダッシュ�
 Jupyter ファイルの一覧にファイル名が **[アップロード]** ボタンと共に表示されます。 この **[アップロード]** ボタンをクリックします。 これで、ノートブックがインポートされます。 このチュートリアルの他のノートブックをアップロードするには、この手順を繰り返します。
 
 > [!TIP]
-> ブラウザーの下部にあるリンクを右クリックし、**[リンクのコピー]** を選択すると、GitHub の生コンテンツ URL を取得できます。 この URL を、Jupyter アップロード ファイル エクスプローラーのダイアログ ボックスに貼り付けることができます。
+> ブラウザーの下部にあるリンクを右クリックし、 **[リンクのコピー]** を選択すると、GitHub の生コンテンツ URL を取得できます。 この URL を、Jupyter アップロード ファイル エクスプローラーのダイアログ ボックスに貼り付けることができます。
 > 
 > 
 
@@ -164,7 +164,7 @@ Jupyter ファイルの一覧にファイル名が **[アップロード]** ボ�
 
 * Notebook をクリックしてコードを参照する。
 * **Shift キーを押しながら Enter キー**を押すことで各セルを実行する。
-* **[セル]** -> **[実行]** をクリックして Notebook 全体を実行する。
+* **[セル]**  ->  **[実行]** をクリックして Notebook 全体を実行する。
 * クエリの自動視覚化を使用する。
 
 > [!TIP]
@@ -177,7 +177,7 @@ Jupyter ファイルの一覧にファイル名が **[アップロード]** ボ�
 ## <a name="whats-next"></a>次の手順
 HDInsight Spark クラスターが設定され、Jupyter Notebook がアップロードされると、これら 3 つの PySpark ノートブックに関連するトピックに進むことができます。 これらのトピックには、データの探索方法、モデルの作成方法および使用方法が示されています。 高度なデータの探索と Notebook のモデリングでは、クロス検証、ハイパー パラメーター スイープ、モデルの評価を使用する方法を示します。
 
-**Spark を使用したデータ探索とモデリング:**[Spark MLlib ツールキットを使用したデータの二項分類と回帰モデルの作成](spark-data-exploration-modeling.md)に関するトピックで、データセットの詳細を確認し、機械学習モデルの作成、スコア付け、評価を行います。
+**Spark を使用したデータ探索とモデリング:** [Spark MLlib ツールキットを使用したデータの二項分類と回帰モデルの作成](spark-data-exploration-modeling.md)に関するトピックで、データセットの詳細を確認し、機械学習モデルの作成、スコア付け、評価を行います。
 
 **モデルの使用:** このトピックで作成した分類モデルと回帰モデルにスコアを付ける方法については、[Spark で構築した機械学習モデルのスコア付けと評価](spark-model-consumption.md)に関するページを参照してください。
 

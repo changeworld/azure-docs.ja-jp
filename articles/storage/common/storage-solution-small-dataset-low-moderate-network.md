@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 12/05/2018
 ms.author: alkohli
 ms.openlocfilehash: 3e6f4f3eb312f0d4d96a008c0944a9608d0bf4a7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58124305"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60397279"
 ---
 # <a name="data-transfer-for-small-datasets-with-low-to-moderate-network-bandwidth"></a>低速から中速のネットワーク帯域幅での小規模なデータセットのデータ転送
  
@@ -52,13 +52,13 @@ ms.locfileid: "58124305"
 | 機能 | Azure ストレージ エクスプローラー | Azure ポータル | AzCopy<br>Azure PowerShell<br>Azure CLI | Azure Storage REST API または SDK |
 |---------|------------------------|--------------|-----------------------------------------|---------------------------------|
 | 可用性 | ダウンロードとインストール <br>スタンドアロン ツール | Azure portal の Web ベースの探索ツール | コマンド ライン ツール |.NET、Java、Python、JavaScript、C++、Go、Ruby、および PHP でのプログラミング可能なインターフェイス |
-| グラフィカル インターフェイス | はい | はい | いいえ  | いいえ  |
+| グラフィカル インターフェイス | はい | はい | いいえ | いいえ |
 | サポートされているプラットフォーム | Windows、Mac、Linux | Web ベース |Windows、Mac、Linux |すべてのプラットフォーム |
 | 使用できる Blob Storage 操作<br>(対 BLOB およびフォルダー) | アップロード<br>ダウンロード<br>管理 | アップロード<br>ダウンロード<br>管理 |アップロード<br>ダウンロード<br>管理 | はい、カスタマイズ可能 |
-| 使用できる Data Lake Gen1 ストレージ<br>操作 (対ファイルおよびフォルダー) | アップロード<br>ダウンロード<br>管理 | いいえ  |アップロード<br>ダウンロード<br>管理                   | いいえ  |
+| 使用できる Data Lake Gen1 ストレージ<br>操作 (対ファイルおよびフォルダー) | アップロード<br>ダウンロード<br>管理 | いいえ |アップロード<br>ダウンロード<br>管理                   | いいえ |
 | 使用できる File Storage 操作<br>(対ファイルおよびディレクトリ) | アップロード<br>ダウンロード<br>管理 | アップロード<br>ダウンロード<br>管理   |アップロード<br>ダウンロード<br>管理 | はい、カスタマイズ可能 |
-| 使用できる Table Storage 操作<br>(対テーブル) |管理 | いいえ  |AzCopy v7 でのテーブル サポート |はい、カスタマイズ可能|
-| 使用できる Queue Storage 操作 | 管理 | いいえ   |いいえ  | はい、カスタマイズ可能|
+| 使用できる Table Storage 操作<br>(対テーブル) |管理 | いいえ |AzCopy v7 でのテーブル サポート |はい、カスタマイズ可能|
+| 使用できる Queue Storage 操作 | 管理 | いいえ  |いいえ | はい、カスタマイズ可能|
 
 
 ## <a name="next-steps"></a>次の手順

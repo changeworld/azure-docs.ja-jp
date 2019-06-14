@@ -16,11 +16,11 @@ ms.topic: conceptual
 ms.date: 08/01/2018
 ms.author: ergreenl
 ms.openlocfilehash: df189e405dcd5277c1ccbd94e9d5d302660be79b
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55171424"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60359825"
 ---
 # <a name="enable-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services のマネージド ドメインに対してセキュリティで保護された LDAP (LDAPS) を有効にする
 
@@ -48,7 +48,7 @@ ms.locfileid: "55171424"
 4. 既定では、セキュリティで保護された LDAP を利用してマネージド ドメインにアクセスする機能は無効になっています。 **[Secure LDAP]** を **[有効にする]** に切り替えます。
 
     ![セキュリティで保護された LDAP を有効にする](./media/active-directory-domain-services-admin-guide/secure-ldap-blade-configure.png)
-5. 既定では、セキュリティで保護された LDAP を利用し、インターネット経由でマネージド ドメインにアクセスする機能は無効になっています。 必要に応じて、**[インターネット経由での Secure LDAP アクセスを許可]** を **[有効にする]** に切り替えます。
+5. 既定では、セキュリティで保護された LDAP を利用し、インターネット経由でマネージド ドメインにアクセスする機能は無効になっています。 必要に応じて、 **[インターネット経由での Secure LDAP アクセスを許可]** を **[有効にする]** に切り替えます。
 
     > [!WARNING]
     > インターネット経由での Secure LDAP アクセスを有効にすると、インターネットを介してパスワードのブルート フォース攻撃を受けやすくなります。 そのため、必要なソース IP アドレス範囲へのアクセスをロック ダウンするように NSG を設定することをお勧めします。 [LDAPS を利用し、インターネット経由でマネージド ドメインにアクセスする機能を停止する](active-directory-ds-ldaps-bind-lockdown.md#task-6-lock-down-secure-ldap-access-to-your-managed-domain-over-the-internet)手順を参照してください。
@@ -58,7 +58,7 @@ ms.locfileid: "55171424"
 
 7. **[PFX ファイルの暗号化を解除するためのパスワード]** を指定します。 証明書を PFX ファイルにエクスポートするときに使用したパスワードを入力します。
 
-8. 終了したら、**[保存]** ボタンをクリックします。
+8. 終了したら、 **[保存]** ボタンをクリックします。
 
 9. セキュリティで保護された LDAP がマネージド ドメインに構成されたことが通知されます。 この操作が完了するまでは、ドメインのその他の設定を変更できません。
 

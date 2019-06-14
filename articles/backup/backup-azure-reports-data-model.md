@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 06/26/2017
 ms.author: adigan
 ms.openlocfilehash: c6160570644da108ba713e8229b38f9587495c92
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55299420"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60337580"
 ---
 # <a name="data-model-for-azure-backup-reports"></a>Azure Backup レポートのデータ モデル
 この記事では、Azure Backup レポートの作成に使用する Power BI データ モデルについて説明します。 このデータ モデルを使用すると、関連するフィールドに基づく既存のレポートをフィルター処理し、さらに重要なことに、モデルのテーブルとフィールドを使用して独自のレポートを作成できます。 
@@ -32,7 +32,7 @@ Power BI には、[データ モデルを使用してレポートを作成でき
 | #AlertsCreatedInPeriod |整数 |選択した期間に作成されるアラートの数 |
 | %ActiveAlertsCreatedInPeriod |割合 |選択した期間のアクティブなアラートの割合 |
 | %CriticalAlertsCreatedInPeriod |割合 |選択した期間の重大なアラートの割合 |
-| AlertOccurrenceDate |日付 |アラートが作成された日付 |
+| AlertOccurrenceDate |Date |アラートが作成された日付 |
 | AlertSeverity |Text |アラートの重要度 (例: 重大) |
 | AlertStatus |Text |アラートの状態 (例: アクティブ) |
 | AlertType |Text |生成されたアラートの種類 (例: バックアップ) |
@@ -64,17 +64,17 @@ Power BI には、[データ モデルを使用してレポートを作成でき
 
 | フィールド | データ型 | 説明 |
 | --- | --- | --- |
-| 日付 |日付 |データをフィルター処理するために選択した日付 |
+| Date |Date |データをフィルター処理するために選択した日付 |
 | DateKey |Text |各日付項目の一意のキー |
 | DayDiff |10 進数 |データのフィルター処理に使用する日単位の差。たとえば、0 は現在の日付のデータを示し、-1 は前日のデータを示し、0 および-1 は現在の日付と前日のデータを示します  |
 | 月 |Text |データをフィルター処理するために選択した月。月は 1 日から始まり、31 日で終わります |
-| MonthDate | 日付 |データをフィルター処理するために選択した、月が終わる日付 |
+| MonthDate | Date |データをフィルター処理するために選択した、月が終わる日付 |
 | MonthDiff |10 進数 |データのフィルター処理に使用する月単位の差。たとえば、0 は現在の月のデータを示し、-1 は前月のデータを示し、0 および-1 は現在の月と前月のデータを示します |
 | 週 |Text |データをフィルター処理するために選択した週。週は日曜日から始まり、土曜日で終わります |
-| WeekDate |日付 |データをフィルター処理するために選択した、週が終わる曜日 |
+| WeekDate |Date |データをフィルター処理するために選択した、週が終わる曜日 |
 | WeekDiff |10 進数 |データのフィルター処理に使用する週単位の差。たとえば、0 は現在の週のデータを示し、-1 は前の週のデータを示し、0 および-1 は現在と前の週のデータを示します |
 | 年 |Text |データをフィルター処理するために選択したカレンダーの年 |
-| YearDate |日付 |データをフィルター処理するために選択した、年が終わる日付 |
+| YearDate |Date |データをフィルター処理するために選択した、年が終わる日付 |
 
 ### <a name="job"></a>ジョブ
 次の表は、さまざまなジョブに関連するフィールドの基本フィールドと集計を示しています。
@@ -91,7 +91,7 @@ Power BI には、[データ モデルを使用してレポートを作成でき
 | EntityState |Text |ジョブ オブジェクトの現在の状態 (例: アクティブ、削除済み) |
 | JobFailureCode |Text |ジョブ エラーが発生したことによるエラー コードの文字列 |
 | JobOperation |Text |ジョブを実行する対象の操作 (例: バックアップ、復元、バックアップの構成) |
-| JobStartDate |日付 |ジョブの実行開始日 |
+| JobStartDate |Date |ジョブの実行開始日 |
 | JobStartTime |Time |ジョブの実行開始時刻 |
 | JobStatus |Text |完了したジョブの状態 (例: 完了、失敗) |
 | JobUniqueId |Text |ジョブを識別する一意の ID |
@@ -158,7 +158,7 @@ Power BI には、[データ モデルを使用してレポートを作成でき
 | AsOnDateTime |日付/時刻 |選択した行の最新の更新時刻 |
 | CloudStorageInMB |10 進数 |選択した時刻の最新の値に基づいて計算された、バックアップによって使用されるクラウド バックアップ ストレージ |
 | EntityState |Text |オブジェクトの現在の状態 (例: アクティブ、削除済み) |
-| LastUpdatedDate |日付 |選択した行が最後に更新された日付 |
+| LastUpdatedDate |Date |選択した行が最後に更新された日付 |
 
 ### <a name="time"></a>Time
 次の表は、時刻に関連するフィールドを示しています。

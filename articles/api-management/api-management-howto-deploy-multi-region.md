@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 04/04/2019
 ms.author: apimpm
 ms.openlocfilehash: d22da92355616c208c7616b4b0e8c26b7f9e7006
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59793625"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60658201"
 ---
 # <a name="how-to-deploy-an-azure-api-management-service-instance-to-multiple-azure-regions"></a>複数の Azure リージョンに Azure API Management サービス インスタンスをデプロイする方法
 
@@ -60,7 +60,7 @@ Azure Portal で API Management サービス インスタンスの **[スケー�
 
 テーブルの右端にある **[...]** ボタンを使用して、削除する場所のコンテキスト メニューを開きます。 **[削除]** を選択します。
 
-削除されたことを確認したら、**[保存]** をクリックして変更を適用します。
+削除されたことを確認したら、 **[保存]** をクリックして変更を適用します。
 
 ## <a name="route-backend"> </a>リージョンのバックエンド サービスに API 呼び出しをルーティングする
 

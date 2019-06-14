@@ -15,11 +15,11 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 769305cc3d838832f8f445ac9623a1724603f968
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58002735"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60307906"
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>Windows 用 Azure パフォーマンス診断 VM 拡張機能
 
@@ -93,13 +93,13 @@ Windows 仮想マシンにこの拡張機能をインストールするには、
 2. この拡張機能をインストールする仮想マシンを選びます。
 
     ![仮想マシンが強調表示されている Azure Portal のスクリーンショット](media/performance-diagnostics-vm-extension/select-the-virtual-machine.png)
-3. **[拡張機能]** ブレード、**[追加]** の順に選択します。
+3. **[拡張機能]** ブレード、 **[追加]** の順に選択します。
 
     ![[追加] が強調表示されている [拡張機能] ブレードのスクリーンショット](media/performance-diagnostics-vm-extension/select-extensions.png)
-4. **[Azure Performance Diagnostics]\(Azure パフォーマンス診断\)** を選択し、使用条件を確認して、**[作成]** を選択します。
+4. **[Azure Performance Diagnostics]\(Azure パフォーマンス診断\)** を選択し、使用条件を確認して、 **[作成]** を選択します。
 
     ![[Azure Performance Diagnostics]\(Azure パフォーマンス診断\) が強調表示されている [新しいリソース] 画面のスクリーンショット](media/performance-diagnostics-vm-extension/create-azure-performance-diagnostics-extension.png)
-5. インストールのパラメーター値を指定し、**[OK]** をクリックして拡張機能をインストールします。 サポートされるシナリオの詳細については、「[PerfInsights を使用する方法](how-to-use-perfInsights.md#supported-troubleshooting-scenarios)」を参照してください。 
+5. インストールのパラメーター値を指定し、 **[OK]** をクリックして拡張機能をインストールします。 サポートされるシナリオの詳細については、「[PerfInsights を使用する方法](how-to-use-perfInsights.md#supported-troubleshooting-scenarios)」を参照してください。 
 
     ![[拡張機能のインストール] ダイアログ ボックスのスクリーンショット](media/performance-diagnostics-vm-extension/install-the-extension.png)
 6. 正常にインストールされると、次の状態を示すメッセージが表示されます。
@@ -112,13 +112,13 @@ Windows 仮想マシンにこの拡張機能をインストールするには、
 ## <a name="remove-the-extension"></a>拡張機能を削除する
 仮想マシンから拡張機能を削除するには、以下の手順のようにします。
 
-1. [Azure Portal](https://portal.azure.com) にサインインし、この拡張機能を削除する仮想マシンを選択し、**[拡張機能]** ブレードを選択します。 
-2. 一覧でパフォーマンス診断拡張機能のエントリの **[...]** をクリックし、**[アンインストール]** を選択します。
+1. [Azure Portal](https://portal.azure.com) にサインインし、この拡張機能を削除する仮想マシンを選択し、 **[拡張機能]** ブレードを選択します。 
+2. 一覧でパフォーマンス診断拡張機能のエントリの **[...]** をクリックし、 **[アンインストール]** を選択します。
 
     ![[アンインストール] が強調表示されている [拡張機能] ブレードのスクリーンショット](media/performance-diagnostics-vm-extension/uninstall-the-extension.png)
 
     > [!NOTE]
-    > 拡張機能のエントリを選び、**[アンインストール]** オプションを選んでもかまいません。
+    > 拡張機能のエントリを選び、 **[アンインストール]** オプションを選んでもかまいません。
 
 ## <a name="template-deployment"></a>テンプレートのデプロイ
 Azure 仮想マシン拡張機能は、Azure Resource Manager テンプレートでデプロイできます。 前のセクションで詳しく説明した JSON スキーマを Azure Resource Manager テンプレートで使用できます。 その場合、Azure Resource Manager テンプレートのデプロイ時に Azure パフォーマンス診断 VM 拡張機能が実行されます。 サンプル テンプレートを次に示します。
@@ -256,4 +256,4 @@ PerfInsights ツールは、選んだシナリオに応じて、さまざまな�
 
         C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Performance.Diagnostics.AzurePerformanceDiagnostics\<version>
 
-この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムと Stack Overflow フォーラム](https://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。 または、Azure サポート インシデントを送信できます。 その場合は、[Azure サポートのサイト](https://azure.microsoft.com/support/options/)に移動して、**[サポートの要求]** をクリックします。 Azure サポートの使用方法の詳細については、「[Microsoft Azure サポートに関する FAQ](https://azure.microsoft.com/support/faq/)」を参照してください。
+この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムと Stack Overflow フォーラム](https://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。 または、Azure サポート インシデントを送信できます。 その場合は、[Azure サポートのサイト](https://azure.microsoft.com/support/options/)に移動して、 **[サポートの要求]** をクリックします。 Azure サポートの使用方法の詳細については、「[Microsoft Azure サポートに関する FAQ](https://azure.microsoft.com/support/faq/)」を参照してください。

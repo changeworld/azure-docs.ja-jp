@@ -17,11 +17,11 @@ ms.date: 11/09/2017
 ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: 936abe80a66c1dbe99e7d8a255fe8995a2df0803
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53715663"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60852286"
 ---
 # <a name="manage-an-app-service-plan-in-azure"></a>Azure で App Service プランを管理する
 
@@ -34,7 +34,7 @@ ms.locfileid: "53715663"
 
 空の App Service プランを作成したり、またはアプリ作成の一部としてプランを作成したりすることができます。
 
-1. [Azure Portal](https://portal.azure.com) で **[新規]** > **[Web + モバイル]** の順に選択し、**[Web アプリ]** またはその他の App Service アプリの種類を選択します。
+1. [Azure Portal](https://portal.azure.com) で **[新規]**  >  **[Web + モバイル]** の順に選択し、 **[Web アプリ]** またはその他の App Service アプリの種類を選択します。
 
 2. 新しいアプリ用に既存の App Service プランを選択するか、プランを作成します。
 
@@ -66,7 +66,7 @@ ms.locfileid: "53715663"
 
 1. [Azure Portal](https://portal.azure.com) で、移動するアプリを参照します。
 
-1. メニューで、**[App Service プラン]** セクションを探します。
+1. メニューで、 **[App Service プラン]** セクションを探します。
 
 1. **[App Service プランの変更]** を選択して **[App Service プラン]** セレクターを開きます。
 

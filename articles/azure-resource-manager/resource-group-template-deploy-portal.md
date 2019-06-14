@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: tomfitz
 ms.openlocfilehash: 7b28129a3afe9f78d0ef749fa0c7759082c5f758
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652452"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60520584"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-portal"></a>Resource Manager テンプレートと Azure ポータルを使用したリソースのデプロイ
 
@@ -24,7 +24,7 @@ ms.locfileid: "58652452"
 
 ## <a name="create-resource-group"></a>リソース グループの作成
 
-1. 空のリソース グループを作成するには、**[リソース グループ]** を選択します。
+1. 空のリソース グループを作成するには、 **[リソース グループ]** を選択します。
 
    ![リソース グループの選択](./media/resource-group-template-deploy-portal/select-resource-groups.png)
 
@@ -36,9 +36,9 @@ ms.locfileid: "58652452"
 
    ![グループの値の設定](./media/resource-group-template-deploy-portal/set-group-properties.png)
 
-   プロパティの設定が完了したら、**[作成]** を選択します。
+   プロパティの設定が完了したら、 **[作成]** を選択します。
 
-1. 新しいリソース グループを表示するには、**[更新]** を選択します。
+1. 新しいリソース グループを表示するには、 **[更新]** を選択します。
 
    ![リソース グループの更新](./media/resource-group-template-deploy-portal/refresh-resource-groups.png)
 
@@ -46,7 +46,7 @@ ms.locfileid: "58652452"
 
 リソース グループを作成したら、それに Marketplace からリソースをデプロイできます。 Marketplace には、一般的なシナリオに対応する事前定義されたソリューションが用意されています。
 
-1. デプロイを開始するには、**[リソースの作成]** を選択します。
+1. デプロイを開始するには、 **[リソースの作成]** を選択します。
 
    ![新しいリソース](./media/resource-group-template-deploy-portal/new-resources.png)
 
@@ -70,7 +70,7 @@ ms.locfileid: "58652452"
 
    ![通知の表示](./media/resource-group-template-deploy-portal/view-notification.png)
 
-1. リソースのデプロイ後、**[追加]** を選択して、リソース グループにリソースを追加することができます。
+1. リソースのデプロイ後、 **[追加]** を選択して、リソース グループにリソースを追加することができます。
 
    ![リソースの追加](./media/resource-group-template-deploy-portal/add-resource.png)
 
@@ -81,11 +81,11 @@ ms.locfileid: "58652452"
 > [!NOTE]
 > ポータル インターフェイスは、[Key Vault からのシークレット](resource-manager-keyvault-parameter.md)の参照をサポートしません。 代わりに、[PowerShell](resource-group-template-deploy.md) または [Azure CLI](resource-group-template-deploy-cli.md) を使用して、テンプレートをローカルにデプロイするか、外部 URI からデプロイします。
 
-1. カスタマイズされたテンプレートをポータル経由でデプロイするには、**[リソースの作成]** を選択し、オプションから選択できるようになるまで **[テンプレートのデプロイ]** を検索します。
+1. カスタマイズされたテンプレートをポータル経由でデプロイするには、 **[リソースの作成]** を選択し、オプションから選択できるようになるまで **[テンプレートのデプロイ]** を検索します。
 
    ![テンプレートのデプロイの検索](./media/resource-group-template-deploy-portal/search-template.png)
 
-1. **作成**を選択します。
+1. **作成** を選択します。
 
    ![作成の選択](./media/resource-group-template-deploy-portal/show-template-option.png)
 
@@ -101,7 +101,7 @@ ms.locfileid: "58652452"
 
    ![テンプレートの編集](./media/resource-group-template-deploy-portal/select-add-resource.png)
 
-1. **[ストレージ アカウント]** を選択し、名前を入力します。 値を入力したら、**[OK]** を選択します。
+1. **[ストレージ アカウント]** を選択し、名前を入力します。 値を入力したら、 **[OK]** を選択します。
 
    ![ストレージ アカウントを選択する](./media/resource-group-template-deploy-portal/add-storage-account.png)
 
@@ -109,7 +109,7 @@ ms.locfileid: "58652452"
 
    ![テンプレートの表示](./media/resource-group-template-deploy-portal/show-json.png)
 
-1. テンプレートに定義されたリソースをデプロイするオプションがあります。 デプロイするには、使用条件に同意して、**[購入]** を選択します。
+1. テンプレートに定義されたリソースをデプロイするオプションがあります。 デプロイするには、使用条件に同意して、 **[購入]** を選択します。
 
    ![テンプレートのデプロイ](./media/resource-group-template-deploy-portal/provide-custom-template-values.png)
 
@@ -117,7 +117,7 @@ ms.locfileid: "58652452"
 
 ポータルでは、Azure アカウントにテンプレートを保存し、後で再デプロイを行うことができます。 テンプレートの詳細については、「[初めての Azure Resource Manager テンプレートを作成およびデプロイする](resource-manager-create-first-template.md)」を参照してください。
 
-1. 保存したテンプレートを検索するには、**[その他のサービス]** を選択します。
+1. 保存したテンプレートを検索するには、 **[その他のサービス]** を選択します。
 
    ![その他のサービス](./media/resource-group-template-deploy-portal/more-services.png)
 

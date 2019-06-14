@@ -9,11 +9,11 @@ ms.date: 01/23/2017
 ms.author: muralikk
 ms.subservice: common
 ms.openlocfilehash: b80ba1cbe168270ec591bdd38859408eae387bbf
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58311715"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60320586"
 ---
 # <a name="sample-workflow-to-prepare-hard-drives-for-an-import-job"></a>インポート ジョブ用のハード ドライブを準備するためのサンプル ワークフロー
 このトピックでは、インポート ジョブ用のドライブを準備するプロセスの手順について説明します。  
@@ -29,7 +29,7 @@ ms.locfileid: "58311715"
   
 インポート ジョブでは、ストレージ アカウント内の次のインポート先にこのデータをインポートします。  
   
-|ソース|インポート先の仮想ディレクトリまたは BLOB|  
+|source|インポート先の仮想ディレクトリまたは BLOB|  
 |------------|-------------------------------------------|  
 |H:\Video|https:\//mystorageaccount.blob.core.windows.net/video|  
 |H:\Photo|https:\//mystorageaccount.blob.core.windows.net/photo|  

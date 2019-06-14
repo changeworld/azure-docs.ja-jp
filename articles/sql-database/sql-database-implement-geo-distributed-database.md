@@ -13,11 +13,11 @@ ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 03/12/2019
 ms.openlocfilehash: 6022c016b83ffe1362db4d826a5ee4397afd4128
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57844145"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60338991"
 ---
 # <a name="tutorial-implement-a-geo-distributed-database"></a>チュートリアル:地理的に分散したデータベースの実装
 
@@ -102,7 +102,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
        -FailoverGroupName $myfailovergroupname
    ```
 
-geo レプリケーションの設定は、Azure portal でデータベースを選択し、**[設定]** > **[geo レプリケーション]** の順に選択することで変更することもできます。
+geo レプリケーションの設定は、Azure portal でデータベースを選択し、 **[設定]**  >  **[geo レプリケーション]** の順に選択することで変更することもできます。
 
 ![geo レプリケーションの設定](./media/sql-database-implement-geo-distributed-database/geo-replication.png)
 

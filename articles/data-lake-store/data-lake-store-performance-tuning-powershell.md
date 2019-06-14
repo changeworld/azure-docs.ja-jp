@@ -12,11 +12,11 @@ ms.topic: article
 ms.date: 01/09/2018
 ms.author: stewu
 ms.openlocfilehash: 1c554b0eee844a632e6412b6f8a285c7a2573326
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58885317"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60195856"
 ---
 # <a name="performance-tuning-guidance-for-using-powershell-with-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 で PowerShell を使用するためのパフォーマンス チューニング ガイダンス
 
@@ -52,7 +52,7 @@ ms.locfileid: "58885317"
         Total thread count = 16 cores * 6 = 96 threads
 
 
-* **手順 2:PerFileThreadCount を計算する** - ファイルのサイズに基づいて PerFileThreadCount を計算します。 2.5 GB 未満のファイルの場合、既定値の 10 で十分なため、このパラメーターを変更する必要はありません。 2.5 GB を超えるファイルの場合、最初の 2.5 GB に基準として 10 個のスレッドを使用し、ファイル サイズが 256 MB 増加するたびにスレッドを 1 つ追加する必要があります。 コピーするフォルダーにさまざまなファイル サイズが含まれている場合は、似たようなファイル サイズに分類することを検討してください。 異なるファイル サイズがあると、最適なパフォーマンスを得られない可能性があります。 似たようなファイル サイズをグループ化できない場合は、最も大きいファイル サイズに基づいて PerFileThreadCount を設定する必要があります。
+* **手順 2:PerFileThreadCount を計算する** - ファイルのサイズに基づいて PerFileThreadCount を計算します。 2\.5 GB 未満のファイルの場合、既定値の 10 で十分なため、このパラメーターを変更する必要はありません。 2\.5 GB を超えるファイルの場合、最初の 2.5 GB に基準として 10 個のスレッドを使用し、ファイル サイズが 256 MB 増加するたびにスレッドを 1 つ追加する必要があります。 コピーするフォルダーにさまざまなファイル サイズが含まれている場合は、似たようなファイル サイズに分類することを検討してください。 異なるファイル サイズがあると、最適なパフォーマンスを得られない可能性があります。 似たようなファイル サイズをグループ化できない場合は、最も大きいファイル サイズに基づいて PerFileThreadCount を設定する必要があります。
 
         PerFileThreadCount = 10 threads for the first 2.5 GB + 1 thread for each additional 256 MB increase in file size
 

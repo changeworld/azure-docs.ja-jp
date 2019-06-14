@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 08/01/2018
 ms.author: danlep
 ms.openlocfilehash: 2df6a2724cbdcd6bbb6c6ca6636256b7e399da8e
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854543"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60686893"
 ---
 # <a name="update-containers-in-azure-container-instances"></a>Azure Container Instances のコンテナーを更新する
 
@@ -68,7 +68,7 @@ Windows Server Core などの大規模なコンテナー イメージに基づ�
 * CPU
 * メモリ
 * 再起動ポリシー
-* ポート
+* Port
 
 コンテナー グループを削除して再作成する場合、"再デプロイ" ではなく新規作成になります。 すべてのイメージ レイヤーは、以前のデプロイでキャッシュされたレイヤーではなくレジストリからプルされます。 別の基になるホストにコンテナー グループがデプロイされるため、コンテナーの IP アドレスも変わる可能性があります。
 

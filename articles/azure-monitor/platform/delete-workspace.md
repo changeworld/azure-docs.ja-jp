@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: magoedte
 ms.openlocfilehash: a6542838acba3143123dc90d96746179a2b4469b
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55989136"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60236126"
 ---
 # <a name="delete-an-azure-log-analytics-workspace-with-the-azure-portal"></a>Azure Portal で Azure Log Analytics ワークスペースを削除する
 この記事では、不要になった Azure Log Analytics ワークスペースを Azure Portal を使用して削除する方法を示します。 
@@ -41,5 +41,5 @@ Log Analytics ワークスペースを削除すると、そのワークスペー
 1. [Azure Portal](https://portal.azure.com) にサインインします。 
 2. Azure ポータルで、左下隅にある **[その他のサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics ワークスペース]** を選択します。
 3. Log Analytics サブスクリプション ウィンドウでワークスペースを選択して、中央のウィンドウの上部にある **[削除]** をクリックします。<br><br> ![ワークスペースのプロパティ ウィンドウの削除オプション](media/delete-workspace/log-analytics-delete-workspace.png)<br>  
-4. ワークスペースの削除を確定するよう求める確認メッセージ ウィンドウが表示されたら、**[はい]** をクリックします。<br><br> ![ワークスペースの削除の確定](media/delete-workspace/log-analytics-delete-workspace-confirm.png)
+4. ワークスペースの削除を確定するよう求める確認メッセージ ウィンドウが表示されたら、 **[はい]** をクリックします。<br><br> ![ワークスペースの削除の確定](media/delete-workspace/log-analytics-delete-workspace-confirm.png)
 

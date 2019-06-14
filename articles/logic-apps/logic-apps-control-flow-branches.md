@@ -10,11 +10,11 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 10/10/2018
 ms.openlocfilehash: 2e1c155a371fa96e4f772f632a9585948b012e54
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232245"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60685162"
 ---
 # <a name="create-or-join-parallel-branches-for-workflow-actions-in-azure-logic-apps"></a>Azure Logic Apps のワークフロー アクションに対して並列分岐を作成または結合する
 
@@ -44,7 +44,7 @@ ms.locfileid: "54232245"
 
 1. <a href="https://portal.azure.com" target="_blank">Azure Portal</a> のロジック アプリ デザイナーでロジック アプリを開きます。
 
-1. 並列分岐を追加するステップにポインターを移動します。 表示される**プラス**記号 (**+**) を選択し、**[並列分岐の追加]** を選択します。 
+1. 並列分岐を追加するステップにポインターを移動します。 表示される**プラス**記号 ( **+** ) を選択し、 **[並列分岐の追加]** を選択します。 
 
    ![並列分岐を追加する](media/logic-apps-control-flow-branches/add-parallel-branch.png)
 
@@ -56,7 +56,7 @@ ms.locfileid: "54232245"
 
    ![目的のアクションを探して選択する](media/logic-apps-control-flow-branches/added-parallel-branch.png)
 
-1. 各並列分岐に必要なステップを追加します。 分岐に別のアクションを追加するには、順次アクションを追加するアクションの下にポインターを移動します。 表示される**プラス**(**+**) 記号を選択し、**[アクションの追加]** を選択します。
+1. 各並列分岐に必要なステップを追加します。 分岐に別のアクションを追加するには、順次アクションを追加するアクションの下にポインターを移動します。 表示される**プラス**( **+** ) 記号を選択し、 **[アクションの追加]** を選択します。
 
    ![並列分岐に順次アクションを追加する](media/logic-apps-control-flow-branches/add-sequential-action.png)
 

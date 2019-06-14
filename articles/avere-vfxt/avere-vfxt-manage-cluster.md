@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: v-erkell
 ms.openlocfilehash: be9205fdf7fec0661d7382ed0d1bedf47487b15e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59787979"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60409772"
 ---
 # <a name="manage-the-avere-vfxt-cluster"></a>Avere vFXT クラスターの管理
 
@@ -58,7 +58,7 @@ Avere コントロール パネルには Web ブラウザーからアクセス�
 
 **[FXT Nodes]\(FXT ノード)** 設定ページには、個々のノードを管理するためのコントロールがあります。
 
-ノードをシャットダウン、再起動、または削除するには、**[FXT Nodes]\(FXT ノード)** ページの一覧でノードを見つけ、**[アクション]** 列で適切なボタンをクリックします。
+ノードをシャットダウン、再起動、または削除するには、 **[FXT Nodes]\(FXT ノード)** ページの一覧でノードを見つけ、 **[アクション]** 列で適切なボタンをクリックします。
 
 > [!NOTE] 
 > アクティブ ノード数が変更されたときに IP アドレスがクラスター ノード間で移動することがあります。
@@ -181,7 +181,7 @@ vFXT ノードとして使用されている 1 つまたは複数のインスタ
 > [!NOTE] 
 > キャッシュに残っているクライアントの変更内容をバックエンド ストレージに書き込む場合は、vfxt.py の `--destroy` オプションを使用するか、Avere コントロール パネルを使用して、Azure portal でのノード インスタンスを削除する前に、クラスターを完全にシャットダウンします。
 
-Azure portal で削除することにより、ノード インスタンスを完全に破棄できます。 上記の説明に従って 1 つずつ削除できますが、**[Virtual Machines]\(仮想マシン)** ページを使用してすべてのクラスター VM を検索し、チェック ボックスを使用して選択し、**[削除]** ボタンをクリックしてそれらを 1 回のアクションで削除できます。
+Azure portal で削除することにより、ノード インスタンスを完全に破棄できます。 上記の説明に従って 1 つずつ削除できますが、 **[Virtual Machines]\(仮想マシン)** ページを使用してすべてのクラスター VM を検索し、チェック ボックスを使用して選択し、 **[削除]** ボタンをクリックしてそれらを 1 回のアクションで削除できます。
 
 ![ポータルの VM の一覧。"cluster" という単語でフィルター処理され、3 ～ 4 つの VM にチェックマークが付いて強調表示されている](media/avere-vfxt-multi-vm-delete.png)
 

@@ -10,11 +10,11 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
 ms.openlocfilehash: 376ee74732daf526b31129fa8c93cbaa32350eae
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58107816"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60318208"
 ---
 # <a name="understand-iot-edge-automatic-deployments-for-single-devices-or-at-scale"></a>1 台のデバイスまたは多数のデバイスを対象とした IoT Edge 自動デプロイについて
 
@@ -51,8 +51,8 @@ IoT Edge の自動デプロイでは、実行する IoT Edge モジュール イ
 
 各モジュールの構成メタデータには、次のものが含まれます。 
 
-* Version 
-* type 
+* バージョン 
+* Type 
 * 状態 (実行中または停止など) 
 * 再起動ポリシー 
 * イメージおよびコンテナー レジストリ

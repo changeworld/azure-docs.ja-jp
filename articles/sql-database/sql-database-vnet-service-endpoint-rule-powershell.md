@@ -13,11 +13,11 @@ ms.reviewer: genemi, vanto
 manager: craigg
 ms.date: 03/12/2019
 ms.openlocfilehash: 6713182003a280c1d53e904209159b55b4ad01c6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57855573"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60331147"
 ---
 # <a name="powershell--create-a-virtual-service-endpoint-and-vnet-rule-for-sql"></a>PowerShell: SQL の Virtual Service エンドポイントと VNet 規則を作成する
 
@@ -67,7 +67,7 @@ ms.locfileid: "57855573"
 
 <a name="a-script-10" />
 
-### <a name="script-1-variables"></a>スクリプト 1: variables
+### <a name="script-1-variables"></a>スクリプト 1: 変数
 
 この最初の PowerShell スクリプトは、変数に値を割り当てます。 後続のスクリプトは、これらの変数によって決まります。
 

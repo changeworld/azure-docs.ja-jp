@@ -12,11 +12,11 @@ ms.date: 03/15/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: dd0467479960df30b1d44aeaef7ed0ed0d6c2a87
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59524584"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60253166"
 ---
 # <a name="operationalize-spark-built-machine-learning-models"></a>Spark で構築した機械学習モデルの操作
 
@@ -43,7 +43,7 @@ Spark 1.6 向け Jupyter Notebook を変更して HDInsight Spark 2.0 クラス�
 ## <a name="setup-storage-locations-libraries-and-the-preset-spark-context"></a>セットアップ: ストレージの場所、ライブラリ、プリセットの Spark コンテキスト
 Spark は Azure Storage BLOB (WASB) の読み取りと書き込みを実行できます。 そのため、WASB に保存されている既存のデータは Spark を使用して処理することができ、結果も WASB に保存できます。
 
-WASB にモデルやファイルを保存するには、パスを正しく指定する必要があります。 Spark クラスターに接続されている既定のコンテナーは、*"wasb///"* で始まるパスを使用して参照できます。 次のコード サンプルでは、読み取るデータの場所と、モデルの出力の保存先となるモデル ストレージ ディレクトリのパスを指定しています。 
+WASB にモデルやファイルを保存するには、パスを正しく指定する必要があります。 Spark クラスターに接続されている既定のコンテナーは、 *"wasb///"* で始まるパスを使用して参照できます。 次のコード サンプルでは、読み取るデータの場所と、モデルの出力の保存先となるモデル ストレージ ディレクトリのパスを指定しています。 
 
 ### <a name="set-directory-paths-for-storage-locations-in-wasb"></a>WASB のストレージの場所となるディレクトリ パスの設定
 モデルが保存されるのは、"wasb:///user/remoteuser/NYCTaxi/Models" です。 このパスが正しく設定されていない場合、スコア付けするモデルが読み込まれません。
@@ -580,7 +580,7 @@ Livy を利用し、基本認証を使った簡単な HTTPS 呼び出しを実�
 
 コードを使用しないクライアント エクスペリエンスを実現するには、[Azure Logic Apps](https://azure.microsoft.com/documentation/services/app-service/logic/) を使用し、**Logic Apps デザイナー**で HTTP 操作を定義してそのパラメーターを設定することで、Spark バッチ スコアリングを呼び出します。 
 
-* Azure Portal で、**[+ 新規]** -> **[Web + モバイル]** -> **[ロジック アプリ]** の順に選択して、新しいロジック アプリを作成します。 
+* Azure Portal で、 **[+ 新規]**  ->  **[Web + モバイル]**  ->  **[ロジック アプリ]** の順に選択して、新しいロジック アプリを作成します。 
 * ロジック アプリと App Service プランの名前を入力して、**Logic Apps デザイナー**を起動します。
 * HTTP 操作を選択して、次の図に示すようにパラメーターを入力します。
 

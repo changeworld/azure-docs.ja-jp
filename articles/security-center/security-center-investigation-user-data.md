@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 11/20/2018
 ms.author: rkarlin
 ms.openlocfilehash: bec9be627937913c268d65bb6cdadcf68c7a3fb4
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57244300"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60909215"
 ---
 # <a name="manage-user-data-found-in-an-azure-security-center-investigation"></a>Azure Security Center 調査で検出されたユーザー データの管理
 この記事では、Azure Security Center 調査機能で検出されたユーザー データの管理方法を説明します。 調査データは [Azure Monitor ログ](../log-analytics/log-analytics-overview.md)に格納され、Azure Security Center で公開されます。 ユーザー データの管理には、データを削除したりエクスポートしたりする機能が含まれます。
@@ -27,7 +27,7 @@ ms.locfileid: "57244300"
 [!INCLUDE [gdpr-intro-sentence.md](../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="searching-for-and-identifying-personal-data"></a>個人データの検索と識別
-Azure Portal では、Azure Security Center [調査機能](../security-center/security-center-investigation.md)を使用して個人データを検索できます。 調査機能は、**[セキュリティ アラート]** の中にあります。
+Azure Portal では、Azure Security Center [調査機能](../security-center/security-center-investigation.md)を使用して個人データを検索できます。 調査機能は、 **[セキュリティ アラート]** の中にあります。
 
 調査機能の **[エンティティ]** タブに、すべてのエンティティ、ユーザー情報、およびデータが表示されます。
 
@@ -54,7 +54,7 @@ https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{reso
 ```
 
 ## <a name="exporting-personal-data"></a>個人データのエクスポート
-閲覧者、所有者、共同作成者、またはアカウント管理者のロールが割り当てられている Azure Security Center のユーザーは、調査情報をエクスポートできます。 調査情報をエクスポートするには、**[エンティティ]** タブに移動して関連する情報をコピーして貼り付けます。
+閲覧者、所有者、共同作成者、またはアカウント管理者のロールが割り当てられている Azure Security Center のユーザーは、調査情報をエクスポートできます。 調査情報をエクスポートするには、 **[エンティティ]** タブに移動して関連する情報をコピーして貼り付けます。
 
 ## <a name="next-steps"></a>次の手順
 ユーザー データの管理の詳細については、[Azure Security Center でのユーザー データの管理](security-center-privacy.md)に関する記事を参照してください。

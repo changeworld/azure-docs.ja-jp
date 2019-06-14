@@ -12,11 +12,11 @@ author: gauravmalhot
 ms.author: gamal
 manager: craigg
 ms.openlocfilehash: 4bd38991b2452bdda65a7647f844dcc17fdfb125
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58003551"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60786980"
 ---
 # <a name="templates"></a>テンプレート
 
@@ -30,7 +30,7 @@ ms.locfileid: "58003551"
 
     ![[概要] ページからテンプレート ギャラリーを開く](media/solution-templates-introduction/templates-intro-image1.png)
 
-1.  リソース エクスプローラーの [作成者] タブで、[**+**] を選択し、**[Pipeline from template]\(テンプレートのパイプライン\)** を選択してテンプレート ギャラリーを開きます。
+1.  リソース エクスプローラーの [作成者] タブで、[ **+** ] を選択し、 **[Pipeline from template]\(テンプレートのパイプライン\)** を選択してテンプレート ギャラリーを開きます。
 
     ![[作成者] タブからテンプレート ギャラリーを開く](media/solution-templates-introduction/templates-intro-image2.png)
 

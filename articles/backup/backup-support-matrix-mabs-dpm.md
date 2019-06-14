@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.author: raynew
 manager: carmonm
 ms.openlocfilehash: 704bb409d2b21e2ae258dbb2d627b1c088d80db7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57860926"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60254650"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Microsoft Azure Backup Server または System Center DPM を使用したバックアップのサポート マトリックス
 
@@ -75,7 +75,7 @@ Azure Backup は、次のいずれかのオペレーティング システムを
 
 **シナリオ** | **DPM/MABS** 
 --- | --- 
-**Azure VM 上の MABS** |  Windows Server 2012 R2 です。<br/><br/> Windows 2016 Datacenter。<br/><br/> Windows 2019 Datacenter。<br/><br/> マーケットプレースのイメージから始めることをお勧めします。<br/><br/> 2 つのコアと 3.5 GB の RAM を備えた最小の A2 Standard。 
+**Azure VM 上の MABS** | Windows Server 2012 R2 です。<br/><br/> Windows 2016 Datacenter。<br/><br/> Windows 2019 Datacenter。<br/><br/> マーケットプレースのイメージから始めることをお勧めします。<br/><br/> 2 つのコアと 3.5 GB の RAM を備えた最小の A2 Standard。 
 **Azure VM 上の DPM** | 更新プログラム 3 以降が適用された System Center 2012 R2。<br/><br/> [System Center](https://docs.microsoft.com/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-1807#dpm-server) で必要とされる Windows オペレーティング システム。<br/><br/> マーケットプレースのイメージから始めることをお勧めします。<br/><br/> 2 つのコアと 3.5 GB の RAM を備えた最小の A2 Standard。 
 **MABS オンプレミス** | サポートされている 64 ビット オペレーティング システム:<br/><br/> MABS v3 以降: Windows Server 2019 (Standard、Datacenter、Essentials)。 <br/><br/> MABS v2 以降: Windows Server 2016 (Standard、Datacenter、Essentials)。<br/><br/> MABS のすべてのバージョン: Windows Server 2012 R2、Windows Server 2012 (Standard、Datacenter、Foundation)。<br/><br/>MABS のすべてのバージョン: Windows Storage Server 2012 R2、Windows Server 2012 (Standard、Workgroup)。
 **DPM オンプレミス** | 物理サーバー/Hyper-V VM: System Center 2012 SP1 以降。<br/><br/> VMware VM: 更新プログラム 5 以降が適用された System Center 2012 R2。 

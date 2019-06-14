@@ -11,11 +11,11 @@ ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 05/25/2018
 ms.openlocfilehash: 827714fea9618724ef058e1f76dc099f692482bc
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57850532"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60750112"
 ---
 # <a name="export-and-delete-in-product-user-data-from-azure-machine-learning-studio"></a>Azure Machine Learning Studio から製品内ユーザー データをエクスポートおよび削除する
 
@@ -65,7 +65,7 @@ Machine Learning Studio には 3 種類のアカウントがあります。 所�
 
 ユーザーはまた、ワークスペース全体を削除することもできます。
 - 有料のワークスペース:Azure portal を使用して削除します。
-- 無料のワークスペース:**[設定]** ウィンドウの [削除] ボタンを使用します。
+- 無料のワークスペース: **[設定]** ウィンドウの [削除] ボタンを使用します。
 
 ![Machine Learning Studio で無料のワークスペースを削除する](./media/export-delete-personal-data-dsr/delete-studio-data-workspace.png)
  

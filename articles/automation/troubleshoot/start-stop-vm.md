@@ -10,11 +10,11 @@ ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 03bad12b7fcba5a247e05884aa0eb0493163a5c4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59785962"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60578999"
 ---
 # <a name="troubleshoot-the-startstop-vms-during-off-hours-solution"></a>Start/Stop VMs during off-hours ソリューションのトラブルシューティング
 
@@ -88,7 +88,7 @@ VM の起動/停止ソリューションを構成したが、構成されてい�
 
 * VM の起動/停止ソリューションのスケジュールが適切に構成されていることを確認します。 スケジュールを構成する方法については、[スケジュール](../automation-schedules.md)に関する記事を参照してください。
 
-* [ジョブ ストリーム](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal)を確認してエラーを探します。 ポータルで Automation アカウントに移動し、**[プロセス オートメーション]** の下で **[ジョブ]** を選択します。 **[ジョブ]** ページで、次に示すいずれかの Runbook からジョブを探します。
+* [ジョブ ストリーム](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal)を確認してエラーを探します。 ポータルで Automation アカウントに移動し、 **[プロセス オートメーション]** の下で **[ジョブ]** を選択します。 **[ジョブ]** ページで、次に示すいずれかの Runbook からジョブを探します。
 
   * AutoStop_CreateAlert_Child
   * AutoStop_CreateAlert_Parent
@@ -100,7 +100,7 @@ VM の起動/停止ソリューションを構成したが、構成されてい�
   * ScheduledStartStop_Parent
   * SequencedStartStop_Parent
 
-* 起動または停止しようとしている VM に対する適切なアクセス許可が[実行アカウント](../manage-runas-account.md)にあることを確認します。 リソースに対するアクセス許可を確認する方法については、「[クイック スタート:Azure portal を使用してユーザーに割り当てられているロールを表示する](../../role-based-access-control/check-access.md)」を参照してください。 実行アカウントで使用されるサービス プリンシパルのアプリケーション ID を指定する必要があります。 この値を取得するには、Azure portal で Automation アカウントに移動し、**[アカウント設定]** の下で **[実行アカウント]** を選択して適切な実行アカウントをクリックします。
+* 起動または停止しようとしている VM に対する適切なアクセス許可が[実行アカウント](../manage-runas-account.md)にあることを確認します。 リソースに対するアクセス許可を確認する方法については、「[クイック スタート:Azure portal を使用してユーザーに割り当てられているロールを表示する](../../role-based-access-control/check-access.md)」を参照してください。 実行アカウントで使用されるサービス プリンシパルのアプリケーション ID を指定する必要があります。 この値を取得するには、Azure portal で Automation アカウントに移動し、 **[アカウント設定]** の下で **[実行アカウント]** を選択して適切な実行アカウントをクリックします。
 
 * VM が明示的に除外されている場合は、VM を起動または停止できません。 除外対象の VM は、ソリューションのデプロイ先の Automation アカウントの **External_ExcludeVMNames** 変数に設定されます。 次の例は、PowerShell を使用してその値のクエリを実行する方法を示しています。
 
@@ -139,11 +139,11 @@ VM の起動/停止ソリューションを構成したが、構成されてい�
   Get-AzureRmAutomationVariable -Name External_ExcludeVMNames -AutomationAccountName <automationAccountName> -ResourceGroupName <resourceGroupName> | Select-Object Value
   ```
 
-* VM を起動および停止するには、Automation アカウントの実行アカウントに VM に対する適切なアクセス許可が必要です。 リソースに対するアクセス許可を確認する方法については、「[クイック スタート:Azure portal を使用してユーザーに割り当てられているロールを表示する](../../role-based-access-control/check-access.md)」を参照してください。 実行アカウントで使用されるサービス プリンシパルのアプリケーション ID を指定する必要があります。 この値を取得するには、Azure portal で Automation アカウントに移動し、**[アカウント設定]** の下で **[実行アカウント]** を選択して適切な実行アカウントをクリックします。
+* VM を起動および停止するには、Automation アカウントの実行アカウントに VM に対する適切なアクセス許可が必要です。 リソースに対するアクセス許可を確認する方法については、「[クイック スタート:Azure portal を使用してユーザーに割り当てられているロールを表示する](../../role-based-access-control/check-access.md)」を参照してください。 実行アカウントで使用されるサービス プリンシパルのアプリケーション ID を指定する必要があります。 この値を取得するには、Azure portal で Automation アカウントに移動し、 **[アカウント設定]** の下で **[実行アカウント]** を選択して適切な実行アカウントをクリックします。
 
 * 起動または割り当て解除に関する問題が VM で発生している場合は、VM 自体の問題が原因でこの動作が引き起こされる可能性があります。 一部の例または潜在的な問題としては、シャットダウン試行時の更新の適用、サービスのハングなどがあります。 VM リソースに移動して、**アクティビティ ログ**にエラーが記録されているかどうかを確認してください。 また、VM にログインしてイベント ログにエラーが記録されているかどうかを確認することもできます。 ご自分の VM のトラブルシューティングの詳細については、「[Azure Virtual Machines のトラブルシューティング](../../virtual-machines/troubleshooting/index.md)」を参照してください。
 
-* [ジョブ ストリーム](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal)を確認してエラーを探します。 ポータルで Automation アカウントに移動し、**[プロセス オートメーション]** の下で **[ジョブ]** を選択します。
+* [ジョブ ストリーム](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal)を確認してエラーを探します。 ポータルで Automation アカウントに移動し、 **[プロセス オートメーション]** の下で **[ジョブ]** を選択します。
 
 ## <a name="custom-runbook"></a>シナリオ:カスタム Runbook を使用して VM を起動または停止できない
 
@@ -153,11 +153,11 @@ VM の起動/停止ソリューションを構成したが、構成されてい�
 
 ### <a name="cause"></a>原因
 
-このエラーには多くの原因が考えられます。 Azure portal で Automation アカウントに移動し、**[プロセス オートメーション]** の下で **[ジョブ]** を選択します。 **[ジョブ]** ページで、Runbook のジョブを検索してジョブのエラーを表示します。
+このエラーには多くの原因が考えられます。 Azure portal で Automation アカウントに移動し、 **[プロセス オートメーション]** の下で **[ジョブ]** を選択します。 **[ジョブ]** ページで、Runbook のジョブを検索してジョブのエラーを表示します。
 
 ### <a name="resolution"></a>解決策
 
-[Start/Stop VMs during off-hours ソリューション](../automation-solution-vm-management.md)を使用して Azure Automation で VM を起動および停止することをお勧めします。 このソリューションは Microsoft が作成したものです。 カスタム Runbook は Microsoft ではサポートされていません。 [Runbook のトラブルシューティング](runbooks.md)の記事を参照すると、カスタム Runbook に関する解決策が見つかる場合があります。 この記事では、すべての種類の Runbook に関する一般的なガイダンスとトラブルシューティングを示します。 [ジョブ ストリーム](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal)を確認してエラーを探します。 ポータルで Automation アカウントに移動し、**[プロセス オートメーション]** の下で **[ジョブ]** を選択します。
+[Start/Stop VMs during off-hours ソリューション](../automation-solution-vm-management.md)を使用して Azure Automation で VM を起動および停止することをお勧めします。 このソリューションは Microsoft が作成したものです。 カスタム Runbook は Microsoft ではサポートされていません。 [Runbook のトラブルシューティング](runbooks.md)の記事を参照すると、カスタム Runbook に関する解決策が見つかる場合があります。 この記事では、すべての種類の Runbook に関する一般的なガイダンスとトラブルシューティングを示します。 [ジョブ ストリーム](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal)を確認してエラーを探します。 ポータルで Automation アカウントに移動し、 **[プロセス オートメーション]** の下で **[ジョブ]** を選択します。
 
 ## <a name="dont-start-stop-in-sequence"></a>シナリオ:VM が正しい順序で起動または停止しない
 
@@ -191,13 +191,13 @@ Start/Stop VMs during off-hours ソリューションの Runbook に対する `4
 
 ### <a name="resolution"></a>解決策
 
-実行アカウントが適切に構成されていることを確認するには、Azure portal で Automation アカウントに移動し、**[アカウント設定]** の下で **[実行アカウント]** を選択します。 ここでは、実行アカウントが適切に構成されていない場合や、実行アカウントの期限が切れている場合に、その状態が表示されます。
+実行アカウントが適切に構成されていることを確認するには、Azure portal で Automation アカウントに移動し、 **[アカウント設定]** の下で **[実行アカウント]** を選択します。 ここでは、実行アカウントが適切に構成されていない場合や、実行アカウントの期限が切れている場合に、その状態が表示されます。
 
 実行アカウントの[構成が誤っている](../manage-runas-account.md#misconfiguration)場合は、実行アカウントを削除して再作成する必要があります。
 
 実行アカウントの証明書の期限が切れている場合は、「[自己署名証明書の書き換え](../manage-runas-account.md#cert-renewal)」の手順に従って証明書を書き換えてください。
 
-この問題は、アクセス許可がない場合に発生する可能性があります。 リソースに対するアクセス許可を確認する方法については、「[クイック スタート:Azure portal を使用してユーザーに割り当てられているロールを表示する](../../role-based-access-control/check-access.md)」を参照してください。 実行アカウントで使用されるサービス プリンシパルのアプリケーション ID を指定する必要があります。 この値を取得するには、Azure portal で Automation アカウントに移動し、**[アカウント設定]** の下で **[実行アカウント]** を選択して適切な実行アカウントをクリックします。
+この問題は、アクセス許可がない場合に発生する可能性があります。 リソースに対するアクセス許可を確認する方法については、「[クイック スタート:Azure portal を使用してユーザーに割り当てられているロールを表示する](../../role-based-access-control/check-access.md)」を参照してください。 実行アカウントで使用されるサービス プリンシパルのアプリケーション ID を指定する必要があります。 この値を取得するには、Azure portal で Automation アカウントに移動し、 **[アカウント設定]** の下で **[実行アカウント]** を選択して適切な実行アカウントをクリックします。
 
 ## <a name="other"></a>シナリオ:問題が上記の一覧にない
 
@@ -211,7 +211,7 @@ Start/Stop VMs during off-hours ソリューションの使用時に、このペ
 
 ### <a name="resolution"></a>解決策
 
-何度も発生するエラーを解決するには、ソリューションを削除および更新することをお勧めします。 ソリューションを更新する方法については、[Start/Stop VMs during off-hours ソリューションの更新](../automation-solution-vm-management.md#update-the-solution)に関するページを参照してください。 さらに、[ジョブ ストリーム](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal)を確認してエラーを探すことができます。 ポータルで Automation アカウントに移動し、**[プロセス オートメーション]** の下で **[ジョブ]** を選択します。
+何度も発生するエラーを解決するには、ソリューションを削除および更新することをお勧めします。 ソリューションを更新する方法については、[Start/Stop VMs during off-hours ソリューションの更新](../automation-solution-vm-management.md#update-the-solution)に関するページを参照してください。 さらに、[ジョブ ストリーム](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal)を確認してエラーを探すことができます。 ポータルで Automation アカウントに移動し、 **[プロセス オートメーション]** の下で **[ジョブ]** を選択します。
 
 ## <a name="next-steps"></a>次の手順
 

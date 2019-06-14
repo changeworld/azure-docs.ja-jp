@@ -11,11 +11,11 @@ ms.date: 11/28/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 551d0cd149c4d1555a40ccf0d7baeff97c6809c2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57863300"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60336292"
 ---
 # <a name="collaborative-coding-with-git"></a>Git を使用した共同コーディング
 
@@ -26,7 +26,7 @@ ms.locfileid: "57863300"
 
 Azure DevOps Services は、作業項目 (ストーリーやタスク) を Git ブランチに接続する便利な手段を提供します。 これにより、関連付けられているコードにストーリーやタスクを直接リンクすることができます。 
 
-作業項目を新しいブランチに接続するには、作業項目をダブルクリックし、ポップアップ ウィンドウで、**[+ リンクを追加]** の下の **[新しいブランチを作成]** をクリックします。  
+作業項目を新しいブランチに接続するには、作業項目をダブルクリックし、ポップアップ ウィンドウで、 **[+ リンクを追加]** の下の **[新しいブランチを作成]** をクリックします。  
 
 ![1](./media/collaborative-coding-with-git/1-sprint-board-view.png)
 
@@ -46,7 +46,7 @@ Azure DevOps Services は、作業項目 (ストーリーやタスク) を Git �
 
 *<ブランチ名\>* を **master** に変更すると、**master** ブランチに切り替わります。 作業ブランチに切り替えた後で、その作業項目での作業を開始し、項目を完成するために必要なコードまたはドキュメント アーティファクトを開発できます。 
 
-作業項目を既存のブランチにリンクすることもできます。 作業項目の **[詳細]** ページで、**[新しいブランチを作成]** をクリックする代わりに **[+ リンクを追加]** をクリックします。 次に、作業項目のリンク先のブランチを選択します。 
+作業項目を既存のブランチにリンクすることもできます。 作業項目の **[詳細]** ページで、 **[新しいブランチを作成]** をクリックする代わりに **[+ リンクを追加]** をクリックします。 次に、作業項目のリンク先のブランチを選択します。 
 
 ![4](./media/collaborative-coding-with-git/4-link-to-an-existing-branch.png)
 
@@ -70,7 +70,7 @@ Git Bash コマンドで新しいブランチを作成することもできま�
 
 いくつかのコミットとプッシュの後、現在のブランチをそのベース ブランチにマージする準備ができたら、Azure DevOps Services サーバーに **pull request** を送信できます。 
 
-プロジェクトのメイン ページに移動し、**[CODE]\(コード\)** をクリックします。 マージするブランチと、ブランチのマージ先の Git リポジトリ名を選択します。 次に、**[Pull Requests]** をクリックし、**[新しい pull request]** をクリックして、ブランチでの作業がベース ブランチにマージされる前に pull request レビューを作成します。
+プロジェクトのメイン ページに移動し、 **[CODE]\(コード\)** をクリックします。 マージするブランチと、ブランチのマージ先の Git リポジトリ名を選択します。 次に、 **[Pull Requests]** をクリックし、 **[新しい pull request]** をクリックして、ブランチでの作業がベース ブランチにマージされる前に pull request レビューを作成します。
 
 ![6](./media/collaborative-coding-with-git/6-spring-create-pull-request.png)
 
@@ -86,7 +86,7 @@ pull request が作成されると、レビュー担当者は、pull request の
 
 ![9](./media/collaborative-coding-with-git/9-spring-approve-pullrequest.png)
 
-レビューの完了後、**[完了]** をクリックすると、作業しているブランチがそのベース ブランチにマージされます。 マージ後に、作業しているブランチを削除することを選択できます。 
+レビューの完了後、 **[完了]** をクリックすると、作業しているブランチがそのベース ブランチにマージされます。 マージ後に、作業しているブランチを削除することを選択できます。 
 
 ![10](./media/collaborative-coding-with-git/10-spring-complete-pullrequest.png)
 

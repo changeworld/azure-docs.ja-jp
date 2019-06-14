@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/24/2015
 ms.author: MicrosoftHelp@twilio.com
 ms.openlocfilehash: 3b8b21de9664a969e8b1ce5699034aa9ab41d0f1
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58762896"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60329491"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-from-azure"></a>Azure から音声および SMS 機能に Twilio を使用する方法
 このガイドでは、Azure の Twilio API サービスを使用して一般的なプログラミング タスクを実行する方法を紹介します。 電話の発信と Short Message Service (SMS) メッセージの送信の各シナリオについて説明します。 Twilio の詳細とアプリケーションで音声と SMS を使用する方法については、「 [次の手順](#NextSteps) 」を参照してください。
@@ -40,7 +40,7 @@ Twilio API は、アプリケーションに音声および SMS 機能を提供�
 Twilio API の主要な側面として、Twilio 動詞と Twilio Markup Language (TwiML) が挙げられます。
 
 ### <a id="Verbs"></a>Twilio 動詞
-API では、Twilio 動詞を使用します。たとえば、**&lt;Say&gt;** 動詞は、メッセージを音声で返すことを Twilio に指示します。
+API では、Twilio 動詞を使用します。たとえば、 **&lt;Say&gt;** 動詞は、メッセージを音声で返すことを Twilio に指示します。
 
 Twilio 動詞の一覧を次に示します。  他の動詞と機能については、 [Twilio Markup Language のドキュメント](https://www.twilio.com/docs/api/twiml)を参照してください。
 
@@ -110,7 +110,7 @@ Microsoft Visual Studio 2010 では既定で NuGet の Version 1.2 がインス�
 ### <a id="use_nuget"></a>Twilio ライブラリを Visual Studio プロジェクトに追加するには、次の手順を実行します。
 1. Visual Studio でソリューションを開きます。
 2. **[参照]** を右クリックします。
-3.  **[NuGet パッケージの管理]**
+3. **[NuGet パッケージの管理]**
 4. **[オンライン]** をクリックします。
 5. [オンライン検索] ボックスに、「 *twilio*」と入力します。
 6. Twilio パッケージで **[インストール]** をクリックします。
@@ -176,7 +176,7 @@ catch (TwilioException ex)
 アプリケーションで Twilio API の呼び出しをインスタンス化する場合 (たとえば、**CallResource.Create** メソッドを使用した場合)、Twilio は TwiML 応答を返すことが想定されている URL にユーザーの要求を送信します。 「[方法:発信通話する](#howto_make_call)」の例では、Twilio で提供される URL [https://twimlets.com/message][twimlet_message_url] を使用して応答を返します。
 
 > [!NOTE]
-> TwiML は Web サービスで使用するように設計されており、ブラウザーで表示できます。 たとえば、[https://twimlets.com/message][twimlet_message_url] をクリックすると、空の `<Response>` 要素が表示されます。別の例として、[https://twimlets.com/message?Message%5B0%5D=Hello%20World](https://twimlets.com/message?Message%5B0%5D=Hello%20World) をクリックすると、&lt;Say&gt; 要素を含む `<Response>` 要素が表示されます。
+> TwiML は Web サービスで使用するように設計されており、ブラウザーで表示できます。 たとえば、[https://twimlets.com/message][twimlet_message_url] をクリックすると、空の `<Response>` 要素が表示されます。別の例として、[https://twimlets.com/message?Message%5B0%5D=Hello%20World](https://twimlets.com/message?Message%5B0%5D=Hello%20World) をクリックすると、&lt; Say&gt; 要素を含む `<Response>` 要素が表示されます。
 >
 
 Twilio から提供される URL を使用する代わりに、HTTP 応答を返す独自の URL サイトを作成できます。 HTTP 応答を返すサイトは、任意の言語で作成できます。 このトピックでは、ASP.NET 汎用ハンドラーから URL をホストすることを想定しています。

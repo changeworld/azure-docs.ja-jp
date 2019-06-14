@@ -17,11 +17,11 @@ ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 47e9033b33c70a72a1685696f75a442e88eed033
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59493571"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60289771"
 ---
 # <a name="approve-or-deny-requests-for-azure-ad-roles-in-pim"></a>PIM で Azure AD ロールに対する要求を承認または拒否する
 
@@ -47,7 +47,7 @@ Azure AD ロールに対する要求を承認または拒否するには、こ�
 
 ## <a name="approve-requests"></a>要求の承認
 
-1. 承認する要求を選択し、**[承認]** をクリックして、[選択した要求の承認] ウィンドウを開きます。
+1. 承認する要求を選択し、 **[承認]** をクリックして、[選択した要求の承認] ウィンドウを開きます。
 
     ![PIM の [申請の承認] リスト](./media/azure-ad-pim-approval-workflow/pim-approve-requests-list.png)
 
@@ -63,7 +63,7 @@ Azure AD ロールに対する要求を承認または拒否するには、こ�
 
 ## <a name="deny-requests"></a>要求を拒否する
 
-1. 拒否する要求を選択し、**[拒否]** をクリックして、[選択した要求の拒否] ウィンドウを開きます。
+1. 拒否する要求を選択し、 **[拒否]** をクリックして、[選択した要求の拒否] ウィンドウを開きます。
 
     ![PIM の [申請の承認] リスト](./media/azure-ad-pim-approval-workflow/pim-deny-requests-list.png)
 

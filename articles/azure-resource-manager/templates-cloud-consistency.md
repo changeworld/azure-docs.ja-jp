@@ -13,11 +13,11 @@ ms.date: 12/09/2018
 ms.author: mavane
 ms.custom: seodec18
 ms.openlocfilehash: 390e49a09136c21f3fd2f6555c0d56fde6e3b267
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60008219"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60388134"
 ---
 # <a name="develop-azure-resource-manager-templates-for-cloud-consistency"></a>クラウドの一貫性のための Azure Resource Manager テンプレートを開発する
 
@@ -493,7 +493,7 @@ Azure では、VM イメージの豊富な選択肢が提供されています�
 az vm image list -all
 ```
 
-Azure PowerShell コマンドレット [Get-AzureRmVMImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) を使用し、`-Location` パラメーターで目的の場所を指定して、同じ一覧を取得できます。 例: 
+Azure PowerShell コマンドレット [Get-AzureRmVMImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) を使用し、`-Location` パラメーターで目的の場所を指定して、同じ一覧を取得できます。 例:
 
 ```azurepowershell-interactive
 Get-AzureRmVMImagePublisher -Location "West Europe" | Get-AzureRmVMImageOffer | Get-AzureRmVMImageSku | Get-AzureRmVMImage
@@ -596,7 +596,7 @@ Get-AzureRmVMSize -Location "West Europe"
 az vm extension image list --location myLocation
 ```
 
-また、Azure PowerShell の [Get-AzureRmVmImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) コマンドレットを実行し、`-Location` を使って仮想マシン イメージの場所を指定することもできます。 例: 
+また、Azure PowerShell の [Get-AzureRmVmImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) コマンドレットを実行し、`-Location` を使って仮想マシン イメージの場所を指定することもできます。 例:
 
 ```azurepowershell-interactive
 Get-AzureRmVmImagePublisher -Location myLocation | Get-AzureRmVMExtensionImageType | Get-AzureRmVMExtensionImage | Select Type, Version

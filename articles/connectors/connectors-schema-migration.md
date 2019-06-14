@@ -10,11 +10,11 @@ ms.assetid: 3e177e49-fd69-43e9-9b9b-218abb250c31
 ms.topic: article
 ms.date: 08/25/2018
 ms.openlocfilehash: bf27739bd42106550c18e3bbc27a1ff8b3770747
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321128"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60447157"
 ---
 # <a name="migrate-logic-apps-to-latest-schema-version"></a>ロジック アプリを最新のスキーマ バージョンに移行する
 
@@ -22,7 +22,7 @@ ms.locfileid: "54321128"
 
 1. [Azure portal](https://portal.azure.com) のロジック アプリ デザイナーでロジック アプリを開きます。
 
-2. ロジック アプリのメニューで、**[概要]** を選択します。 ツール バーで **[スキーマの更新]** を選択します。
+2. ロジック アプリのメニューで、 **[概要]** を選択します。 ツール バーで **[スキーマの更新]** を選択します。
 
    > [!NOTE]
    > **[スキーマの更新]** を選択すると、Azure Logic Apps によって自動的に移行ステップが実行され、必要な出力コードが提供されます。 この出力を使用してロジック アプリの定義を更新することができます。 ただし、以降の「**ベスト プラクティス**」セクションに記載されているベスト プラクティスには必ず従ってください。

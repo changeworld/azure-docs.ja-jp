@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 05/11/2018
 ms.author: ningk
 ms.openlocfilehash: 7cbffdd40e574c7e906a9388b70ca9d32fd84649
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57550175"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60198981"
 ---
 # <a name="integrate-cloud-foundry-with-azure"></a>Cloud Foundry と Azure を統合する
 
@@ -79,7 +79,7 @@ Open Source と Pivotal の両方の Cloud Foundry 環境に Azure Log Analytics
 ## <a name="7-cost-saving"></a>7.コストの削減
 ### <a name="cost-saving-for-devtest-environments"></a>開発/テスト環境でのコスト削減
 #### <a name="b-series-"></a>B シリーズ: *
-Pivotal Cloud Foundry の運用環境では、F および D VM シリーズが一般的に推奨されていましたが、新しい "バースト対応の" [B シリーズ](https://azure.microsoft.com/blog/introducing-b-series-our-new-burstable-vm-size/)が選択肢に加わりました。 Web サーバー、小規模なデータベース、開発とテスト環境など、CPU が常時最大限のパフォーマンスを発揮している必要のないワークロードでは、B シリーズのバースト可能な VM が最適です。 このようなワークロードでは通常、負荷の急増に対応できることがパフォーマンスの要件となります。 0.05 米国ドル/時間 (F1) と比較して、0.012 米国ドル/時間 (B1) です。詳細については、[VM サイズ](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-general)と[料金](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)の完全な一覧を参照してください。 
+Pivotal Cloud Foundry の運用環境では、F および D VM シリーズが一般的に推奨されていましたが、新しい "バースト対応の" [B シリーズ](https://azure.microsoft.com/blog/introducing-b-series-our-new-burstable-vm-size/)が選択肢に加わりました。 Web サーバー、小規模なデータベース、開発とテスト環境など、CPU が常時最大限のパフォーマンスを発揮している必要のないワークロードでは、B シリーズのバースト可能な VM が最適です。 このようなワークロードでは通常、負荷の急増に対応できることがパフォーマンスの要件となります。 0\.05 米国ドル/時間 (F1) と比較して、0.012 米国ドル/時間 (B1) です。詳細については、[VM サイズ](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-general)と[料金](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)の完全な一覧を参照してください。 
 #### <a name="managed-standard-disk"></a>マネージド Standard ディスク: 
 運用環境で信頼性の高いパフォーマンスを得るには、Premium ディスクが推奨されていました。  [マネージド ディスク](https://azure.microsoft.com/services/managed-disks/)により、Standard ストレージでも同様の信頼性が得られるようになりました。ただし、パフォーマンスは異なります。 開発/テスト環境や重要度が低い環境のようなパフォーマンスが重視されないワークロードの場合、マネージド Standard ディスクは低コストな代替オプションになります。  
 ### <a name="cost-saving-in-general"></a>一般的なコスト削減 
@@ -93,6 +93,6 @@ Azure のファースト パーティ サービスの利点を活用すると、
 Pivotal は、PCF ユーザー向けに [Small Footprint ERT](https://docs.pivotal.io/pivotalcf/2-0/customizing/small-footprint.html) の提供を開始しました。コンポーネントは、4 つの VM だけに配置され、最大で 2,500 のアプリケーション インスタンスを実行します。 評価版は、[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/pivotal.pivotal-cloud-foundry) を通じて利用できるようになりました。
 
 ## <a name="next-steps"></a>次の手順
-Azure の統合機能は、Pivotal Cloud Foundry で利用できるようになる前に、まずは [Open Source Cloud Foundry](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/tree/master/docs/advanced/) で利用することができます。 * のマークが付いている機能は、PCF ではまだ利用できません。 Azure Stack との Cloud Foundry 統合も、このドキュメントでは説明されていません。
-* のマークが付いている機能の PCF サポート、または Azure Stack との Cloud Foundry 統合の最新の状況については、Pivotal および Microsoft のアカウント マネージャーに問い合わせてください。 
+Azure の統合機能は、Pivotal Cloud Foundry で利用できるようになる前に、まずは [Open Source Cloud Foundry](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/tree/master/docs/advanced/) で利用することができます。 \* のマークが付いている機能は、PCF ではまだ利用できません。 Azure Stack との Cloud Foundry 統合も、このドキュメントでは説明されていません。
+\* のマークが付いている機能の PCF サポート、または Azure Stack との Cloud Foundry 統合の最新の状況については、Pivotal および Microsoft のアカウント マネージャーに問い合わせてください。 
 

@@ -16,11 +16,11 @@ ms.date: 04/20/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 64edf2aa47211c1d2a598417a7b2edc00f260075
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56208573"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60321385"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-scalex-enterprise"></a>チュートリアル:Azure Active Directory と ScaleX Enterprise の統合
 
@@ -60,11 +60,11 @@ Azure AD への ScaleX Enterprise の統合を構成するには、ギャラリ�
 
 **ギャラリーから ScaleX Enterprise を追加するには、次の手順に従います。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。 
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。 
 
     ![Active Directory][1]
 
-1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+1. **[エンタープライズ アプリケーション]** に移動します。 次に、 **[すべてのアプリケーション]** に移動します。
 
     ![[アプリケーション]][2]
     
@@ -76,7 +76,7 @@ Azure AD への ScaleX Enterprise の統合を構成するには、ギャラリ�
 
     ![Azure AD のテスト ユーザーの作成](./media/scalexenterprise-tutorial/tutorial_scalexenterprise_search.png)
 
-1. 結果ウィンドウで **[ScaleX Enterprise]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
+1. 結果ウィンドウで **[ScaleX Enterprise]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
 
     ![Azure AD のテスト ユーザーの作成](./media/scalexenterprise-tutorial/tutorial_scalexenterprise_addfromgallery.png)
 
@@ -101,11 +101,11 @@ ScaleX Enterprise で Azure AD のシングル サインオンを構成し、テ
 
 **ScaleX Enterprise で Azure AD シングル サインオンを構成するには、次の手順に従います。**
 
-1. Azure ポータルの **ScaleX Enterprise** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
+1. Azure ポータルの **ScaleX Enterprise** アプリケーション統合ページで、 **[シングル サインオン]** をクリックします。
 
     ![Configure single sign-on][4]
 
-1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択してシングル サインオンを有効にします。
+1. **[シングル サインオン]** ダイアログで、 **[モード]** として **[SAML ベースのサインオン]** を選択してシングル サインオンを有効にします。
  
     ![Configure single sign-on](./media/scalexenterprise-tutorial/tutorial_scalexenterprise_samlbase.png)
 
@@ -117,7 +117,7 @@ ScaleX Enterprise で Azure AD のシングル サインオンを構成し、テ
 
     b. **[応答 URL]** ボックスに、`https://platform.rescale.com/saml2/<company id>/acs/` のパターンを使用して URL を入力します。
 
-1. **SP** 開始モードでアプリケーションを構成する場合は、**[詳細な URL 設定の表示]** チェックボックスをオンにします。
+1. **SP** 開始モードでアプリケーションを構成する場合は、 **[詳細な URL 設定の表示]** チェックボックスをオンにします。
 
     ![Configure single sign-on](./media/scalexenterprise-tutorial/tutorial_scalexenterprise_url2.png)
 
@@ -138,7 +138,7 @@ ScaleX Enterprise で Azure AD のシングル サインオンを構成し、テ
 
     ![Configure single sign-on](./media/scalexenterprise-tutorial/edit_email_attribute.png) 
     
-1. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
+1. **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
 
     ![Configure single sign-on](./media/scalexenterprise-tutorial/tutorial_scalexenterprise_certificate.png) 
 
@@ -146,20 +146,20 @@ ScaleX Enterprise で Azure AD のシングル サインオンを構成し、テ
 
     ![Configure single sign-on](./media/scalexenterprise-tutorial/tutorial_general_400.png)
     
-1. **[ScaleX Enterprise の構成]** セクションで、**[ScaleX Enterprise を構成する]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML エンティティ ID** と **SAML シングル サインオン サービス URL** をコピーします。
+1. **[ScaleX Enterprise の構成]** セクションで、 **[ScaleX Enterprise を構成する]** をクリックして、 **[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML エンティティ ID** と **SAML シングル サインオン サービス URL** をコピーします。
 
     ![Configure single sign-on](./media/scalexenterprise-tutorial/tutorial_scalexenterprise_configure.png) 
 
 1. **ScaleX Enterprise** 側でシングル サインオンを構成するには、管理者として ScaleX Enterprise の Web サイトにログインします。
 
-1. 右上隅のメニューを選択し、**[Contoso Administration (Contoso の管理)]** をクリックします。
+1. 右上隅のメニューを選択し、 **[Contoso Administration (Contoso の管理)]** をクリックします。
 
     > [!NOTE] 
     > Contoso は一例です。 これは、実際の会社名でなければなりません。 
 
     ![Configure single sign-on](./media/scalexenterprise-tutorial/Test_Admin.png) 
 
-1. 上部メニューから **[Integrations (統合)]** を選択し、**[Single Sign-On (シングル サインオン)]** を選択します。
+1. 上部メニューから **[Integrations (統合)]** を選択し、 **[Single Sign-On (シングル サインオン)]** を選択します。
 
     ![Configure single sign-on](./media/scalexenterprise-tutorial/admin_sso.png) 
 
@@ -169,22 +169,22 @@ ScaleX Enterprise で Azure AD のシングル サインオンを構成し、テ
     
     a. **[Create any user who can authenticate with SSO (SSO で認証できるユーザーを作成する)]** を選択します。
 
-    b. **[Service Provider saml]\(サービス プロバイダー SAML\)**:値 ***urn:oasis:names:tc:SAML:2.0:nameid-format:persistent*** を貼り付けます
+    b. **[Service Provider saml]\(サービス プロバイダー SAML\)** :値 ***urn:oasis:names:tc:SAML:2.0:nameid-format:persistent*** を貼り付けます
 
-    c. **[Name of Identity Provider email field in ACS response]\(ACS 応答での ID プロバイダーの電子メール フィールドの名前\)**:値 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` を貼り付けます
+    c. **[Name of Identity Provider email field in ACS response]\(ACS 応答での ID プロバイダーの電子メール フィールドの名前\)** :値 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` を貼り付けます
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Identity Provider EntityDescriptor Entity ID]\(ID プロバイダーの EntityDescriptor エンティティ ID\):** Azure portal からコピーした **SAML エンティティ ID** 値を貼り付けます。
+    d. **[Identity Provider EntityDescriptor Entity ID]\(ID プロバイダーの EntityDescriptor エンティティ ID\):** Azure portal からコピーした **SAML エンティティ ID** 値を貼り付けます。
 
     e. **Identity Provider SingleSignOnService URL\(ID プロバイダーの SingleSignOnService URL\):** Azure portal からの **SAML シングル サインオン サービス URL** を貼り付けます。
 
     f. **[Identity Provider public X509 certificate]\(ID プロバイダーのパブリック X509 証明書\):** Azure からダウンロードした X509 証明書をメモ帳で開いて、このボックスに貼り付けます。 証明書の内容の途中に改行が含まれていないことを確認します。
     
-    g. 次のチェックボックスをオンにします:**[Enabled]\(有効化\)、[Encrypt NameID]\(暗号 NameID\)、[Sign AuthnRequests]\(AuthnRequests に署名する\)**。
+    g. 次のチェックボックスをオンにします: **[Enabled]\(有効化\)、[Encrypt NameID]\(暗号 NameID\)、[Sign AuthnRequests]\(AuthnRequests に署名する\)** 。
 
     h. **[Update SSO Settings (SSO 設定を更新する)]** をクリックして設定を保存します。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、 **[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -194,11 +194,11 @@ ScaleX Enterprise で Azure AD のシングル サインオンを構成し、テ
 
 **Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
 
-1. **Azure Portal** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+1. **Azure Portal** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
     ![Azure AD のテスト ユーザーの作成](./media/scalexenterprise-tutorial/create_aaduser_01.png) 
 
-1. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
+1. **[ユーザーとグループ]** に移動し、 **[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
     
     ![Azure AD のテスト ユーザーの作成](./media/scalexenterprise-tutorial/create_aaduser_02.png) 
 
@@ -214,9 +214,9 @@ ScaleX Enterprise で Azure AD のシングル サインオンを構成し、テ
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
-    c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
+    c. **[パスワードを表示]** を選択し、 **[パスワード]** の値をメモします。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
+    d. **Create** をクリックしてください。
  
 ### <a name="creating-a-scalex-enterprise-test-user"></a>ScaleX Enterprise テスト ユーザーの作成
 
@@ -230,7 +230,7 @@ Azure AD ユーザーが ScaleX Enterprise にログインできるようにす�
 
 **Britta Simon を ScaleX Enterprise に割り当てるには、次の手順に従います。**
 
-1. Azure Portal でアプリケーション ビューを開き、ディレクトリ ビューに移動します。次に、**[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** をクリックします。
+1. Azure Portal でアプリケーション ビューを開き、ディレクトリ ビューに移動します。次に、 **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** をクリックします。
 
     ![ユーザーの割り当て][201] 
 
@@ -242,7 +242,7 @@ Azure AD ユーザーが ScaleX Enterprise にログインできるようにす�
 
     ![ユーザーの割り当て][202] 
 
-1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[追加]** ボタンをクリックします。 次に、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![ユーザーの割り当て][203]
 

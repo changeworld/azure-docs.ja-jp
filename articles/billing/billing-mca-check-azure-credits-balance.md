@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 02/28/2019
 ms.author: amberb
 ms.openlocfilehash: 1e8c3e6863b9cd8f2f5ced18a57918c32c865e75
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57544598"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60372264"
 ---
 # <a name="track-azure-credit-balance-for-microsoft-customer-agreement"></a>Microsoft 顧客契約の Azure クレジット残高を追跡する
 
@@ -45,7 +45,7 @@ Azure portal で、Microsoft 顧客契約の Azure クレジット残高を確�
 
    ![課金プロファイルのクレジット残高とトランザクションのスクリーンショット](./media/billing-mca-check-azure-credits-balance/billing-mca-credits-overview.png)
 
-   | 用語               | 定義                           |
+   | 期間               | 定義                           |
    |--------------------|--------------------------------------------------------|
    | 推定残高  | すべての課金トランザクションと保留中トランザクションを考慮した後の、クレジットの推定金額 |
    | 現在の残高    | 前回請求時点でのクレジットの金額。 保留中のトランザクションは含まれません |
@@ -53,13 +53,13 @@ Azure portal で、Microsoft 顧客契約の Azure クレジット残高を確�
 
    推定残高が 0 になると、クレジット対象製品も含めて、すべての使用料がお客様に請求されます。
 
-6. 課金プロファイルのクレジットの一覧を見るには、**[クレジットの一覧]** を選択します。 クレジットの一覧では次の情報が提供されます。
+6. 課金プロファイルのクレジットの一覧を見るには、 **[クレジットの一覧]** を選択します。 クレジットの一覧では次の情報が提供されます。
 
    ![課金プロファイルのクレジット一覧のスクリーンショット](./media/billing-mca-check-azure-credits-balance/billing-mca-credits-list.png)
 
-   | 用語                 | 定義                           |
+   | 期間                 | 定義                           |
    |----------------------|--------------------------------------------------------|
-   | ソース               | クレジット取得の基になったもの |
+   | source               | クレジット取得の基になったもの |
    | 開始日           | クレジットを取得した日付 |
    | 有効期限      | クレジットの有効期限が切れる日付 |
    | Balance              | 前回の請求時点での残高 |

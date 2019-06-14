@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: sajagtap
-ms.openlocfilehash: e4dd7299907168bb50ac8ebdf90b381c0bac01f2
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: c8572e6bc7fdedb68527cad4e7ea4109838089b5
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59527372"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64726834"
 ---
 # <a name="create-video-reviews-using-net"></a>.NET を使用してビデオ レビューを作成する
 
@@ -174,7 +174,7 @@ public static ContentModeratorClient NewClient()
 - **Status**。 値を "Unpublished" に設定します。 設定しない場合は既定で "Pending" になります。これはビデオ レビューが公開済みで、人間によるレビュー待ちであることを意味します。 ビデオ レビューが公開されると、ビデオ フレーム、トランスクリプト、トランスクリプトのモデレート結果を追加できなくなります。
 
 > [!NOTE]
-> **CreateVideoReviews** は IList<string> を返します。 これらの文字列には、それぞれビデオ レビューの ID が含まれています。 これらの ID は GUID であり、**ContentId** プロパティの値とは異なります。 
+> **CreateVideoReviews** により IList\<string> が返されます。 これらの文字列には、それぞれビデオ レビューの ID が含まれています。 これらの ID は GUID であり、**ContentId** プロパティの値とは異なります。 
 
 名前空間 VideoReviews、クラス Program に次のメソッド定義を追加します。
 
@@ -550,7 +550,7 @@ Press any key to close the application.
 
 ## <a name="check-out-your-video-review"></a>ビデオ レビューを確認する
 
-これで、Content Moderator のレビュー ツール アカウントの **[Review]\(レビュー\)**>**[Video]\(ビデオ\)** 画面にビデオ レビューが表示されます。
+これで、Content Moderator のレビュー ツール アカウントの **[Review]\(レビュー\)** > **[Video]\(ビデオ\)** 画面にビデオ レビューが表示されます。
 
 ![人間のモデレーター用のビデオ レビュー](images/ams-video-review.PNG)
 

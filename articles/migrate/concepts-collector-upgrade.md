@@ -8,11 +8,11 @@ ms.date: 03/29/2019
 ms.author: hamusa
 services: azure-migrate
 ms.openlocfilehash: 7cd44318716200d665ece9ffecc45225bdfb85eb
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58648675"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60685921"
 ---
 # <a name="collector-appliance-updates"></a>コレクター アプライアンスの更新
 
@@ -32,8 +32,8 @@ OVA を再度ダウンロードせずに、Collector を最新バージョンに
 
     例:**C:\>CertUtil -HashFile C:\AzureMigrate\CollectorUpdate_release_1.0.9.14.zip SHA256)**
 4. Collector アプライアンス VM に zip ファイルをコピーします。
-5. Zip ファイルを右クリックして、**[すべて展開]** を選択します。
-6. **[Setup.ps1]** > **[Run with PowerShell]** を右クリックし、インストールの指示に従います。
+5. Zip ファイルを右クリックして、 **[すべて展開]** を選択します。
+6. **[Setup.ps1]**  >  **[Run with PowerShell]** を右クリックし、インストールの指示に従います。
 
 ## <a name="collector-update-release-history"></a>コレクターの更新プログラムのリリース履歴
 

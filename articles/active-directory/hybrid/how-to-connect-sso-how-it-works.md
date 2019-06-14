@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 907abe3b09f9999b30703281f7e4ff286e2bae14
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59677886"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60242342"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Azure Active Directory シームレス シングル サインオン:技術的な詳細情報
 
@@ -52,7 +52,7 @@ ms.locfileid: "59677886"
 
 Web ブラウザーでのサインインのフローは次のとおりです。
 
-1. ユーザーは、web のアプリケーション（たとえば、outlook　Web アプリケーションに）、 https://outlook.office365.com/owa/)企業ネットワーク内のドメインに参加している、会社のデバイスからアクセスします。
+1. ユーザーは、web のアプリケーション（たとえば、outlook　Web アプリケーションに）、 https://outlook.office365.com/owa/) 企業ネットワーク内のドメインに参加している、会社のデバイスからアクセスします。
 2. まだサインインしていない場合、ユーザーは、Azure AD のサインイン ページにリダイレクトされます。
 3. ユーザーが、Azure AD サインイン ページにユーザー名を入力します。
 

@@ -12,11 +12,11 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: c7b99548e2fe1ad0c1cab39953e28a97e7ebff4b
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56984400"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60193919"
 ---
 # <a name="application-layer-security-with-front-door"></a>Front Door によるアプリケーション層セキュリティ
 Azure Front Door Service では Wet アプリケーションの保護機能が提供されます。この機能を使用することで、SQL インジェクションやクロス サイト スクリプティング (XSS) のようなネットワーク攻撃および一般的な Web の脆弱性の悪用からご利用の Web アプリケーションを保護できます。 http(s) フロント エンドに対して有効にすることで、Front Door のアプリケーション層セキュリティがグローバルに分散され、常時接続となり、バックエンドから遠く離れた場所にある、Azure のネットワーク エッジで悪意のある攻撃を防ぐことができます。 セキュリティの強化とパフォーマンスの最適化により、Front Door ではエンド ユーザーに高速かつ安全な Web エクスペリエンスが提供されます。

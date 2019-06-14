@@ -18,10 +18,10 @@ ms.date: 04/20/2018
 ms.author: kumud
 ms.custom: ''
 ms.openlocfilehash: 968b7dd703ba40f46a068deb1d8b7d2b32e0de2b
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64688212"
 ---
 # <a name="diagnose-a-virtual-machine-network-routing-problem---azure-cli"></a>仮想マシン ネットワークのルーティングの問題を診断する - Azure CLI
@@ -85,7 +85,7 @@ az network watcher show-next-hop \
   --out table
 ```
 
-数秒後、**[nextHopType]** が **[インターネット]** であり、**[routeTableId]** が **[System Route]\(システム ルート\)** であることが出力からわかります。 この結果から、接続先に対して有効なルートが存在することがわかります。
+数秒後、 **[nextHopType]** が **[インターネット]** であり、 **[routeTableId]** が **[System Route]\(システム ルート\)** であることが出力からわかります。 この結果から、接続先に対して有効なルートが存在することがわかります。
 
 VM から 172.31.0.100 への送信通信をテストします。
 
@@ -99,7 +99,7 @@ az network watcher show-next-hop \
   --out table
 ```
 
-返される出力は、**[nextHopType]** が **[なし]** であり、**[routeTableId]** が **[System Route]\(システム ルート\)** であることを示しています。 この結果から、送信先への有効なシステム ルートはあるものの、接続先にトラフィックをルーティングする次ホップはないことがわかります。
+返される出力は、 **[nextHopType]** が **[なし]** であり、 **[routeTableId]** が **[System Route]\(システム ルート\)** であることを示しています。 この結果から、送信先への有効なシステム ルートはあるものの、接続先にトラフィックをルーティングする次ホップはないことがわかります。
 
 ## <a name="view-details-of-a-route"></a>ルートの詳細の表示
 
@@ -149,7 +149,7 @@ az network nic show-effective-route-table \
 },
 ```
 
-`az network watcher nic show-effective-route-table` コマンドの出力でもわかるように、アドレス 172.31.0.100 を含む 172.16.0.0/12 プレフィックスへの既定のルートがあるにもかかわらず、**[nextHopType]** は **[なし]** になっています。 Azure では、172.16.0.0/12 への既定のルートを作成しますが、理由がない限り次ホップの種類は指定しません。 たとえば、仮想ネットワークのアドレス空間に 172.16.0.0/12 アドレス範囲を追加した場合は、ルートの **[nextHopType]** を **[仮想ネットワーク]** に変更します。 **[nextHopType]** として **[仮想ネットワーク]** にチェック マークが表示されます。
+`az network watcher nic show-effective-route-table` コマンドの出力でもわかるように、アドレス 172.31.0.100 を含む 172.16.0.0/12 プレフィックスへの既定のルートがあるにもかかわらず、 **[nextHopType]** は **[なし]** になっています。 Azure では、172.16.0.0/12 への既定のルートを作成しますが、理由がない限り次ホップの種類は指定しません。 たとえば、仮想ネットワークのアドレス空間に 172.16.0.0/12 アドレス範囲を追加した場合は、ルートの **[nextHopType]** を **[仮想ネットワーク]** に変更します。 **[nextHopType]** として **[仮想ネットワーク]** にチェック マークが表示されます。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

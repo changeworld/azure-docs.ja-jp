@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: banders
 ms.openlocfilehash: c234f75ec752ec79e9f2a051f79e91bdde81de15
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57845374"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60371014"
 ---
 # <a name="understand-azure-spending-limit-and-how-to-remove-it"></a>Azure の使用制限のしくみと削除方法を理解する
 
@@ -46,7 +46,7 @@ Azure の使用制限は、信用取引金額を超過する支出を防ぐた�
 使用制限を削除するには、次の手順に従ってください。
 
 1. [アカウント センター](https://account.windowsazure.com/Subscriptions)にサインインします。
-1. サブスクリプションを選択します。 使用制限に達したためにサブスクリプションが無効にされている場合は、次の通知をクリックします:"サブスクリプションの使用制限に達したので、課金されないように無効にされました。" それ以外の場合は、**[サブスクリプションの状態]** 領域の **[使用制限の削除]** をクリックします。
+1. サブスクリプションを選択します。 使用制限に達したためにサブスクリプションが無効にされている場合は、次の通知をクリックします:"サブスクリプションの使用制限に達したので、課金されないように無効にされました。" それ以外の場合は、 **[サブスクリプションの状態]** 領域の **[使用制限の削除]** をクリックします。
 1. 適切なオプションを選択します。
 
 ![使用制限を削除するためのオプションを選択](./media/billing-spending-limit/remove-spending-limit.PNG)

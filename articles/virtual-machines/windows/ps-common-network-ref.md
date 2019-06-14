@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: 31a0d486f2540ea75a57b29b8f1da21839783468
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 020f2a4171a5bd656e53c91e59edb16931b20d0d
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984642"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60597672"
 ---
 # <a name="common-powershell-commands-for-azure-virtual-networks"></a>Azure Virtual Networks 用の一般的な PowerShell コマンド
 
@@ -35,7 +35,7 @@ ms.locfileid: "55984642"
 
 ## <a name="create-network-resources"></a>ネットワーク リソースを作成する
 
-| タスク | コマンド |
+| タスク | command |
 | ---- | ------- |
 | サブネットの構成の作成 |$subnet1 = [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig) -Name "mySubnet1" -AddressPrefix XX.X.X.X/XX<BR>$subnet2 = New-AzVirtualNetworkSubnetConfig -Name "mySubnet2" -AddressPrefix XX.X.X.X/XX<BR><BR>標準的なネットワークには、[インターネットに接続するロード バランサー](../../load-balancer/load-balancer-internet-overview.md)のサブネットと[内部ロード バランサー](../../load-balancer/load-balancer-internal-overview.md)の別のサブネットがあります。 |
 | 仮想ネットワークの作成 |$vnet = [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork) -Name "myVNet" -ResourceGroupName $myResourceGroup -Location $location -AddressPrefix XX.X.X.X/XX -Subnet $subnet1, $subnet2 |
@@ -65,7 +65,7 @@ ms.locfileid: "55984642"
 
 ## <a name="manage-network-resources"></a>ネットワーク リソースの管理
 
-| タスク | コマンド |
+| タスク | command |
 | ---- | ------- |
 | 仮想ネットワークへのサブネットの追加 |[Add-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/add-azvirtualnetworksubnetconfig) -AddressPrefix XX.X.X.X/XX -Name "mySubnet1" -VirtualNetwork $vnet<BR><BR>既存の仮想ネットワークにサブネットを追加します。 $vnet 値は、Get-AzVirtualNetwork によって返されるオブジェクトを表します。 |
 | 仮想ネットワークの削除 |[Remove-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/remove-azvirtualnetwork) -Name "myVNet" -ResourceGroupName $myResourceGroup<BR><BR>リソース グループから、指定された仮想ネットワークを削除します。 |

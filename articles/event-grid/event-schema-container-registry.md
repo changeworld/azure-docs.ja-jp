@@ -9,11 +9,11 @@ ms.topic: reference
 ms.date: 03/12/2019
 ms.author: spelluru
 ms.openlocfilehash: c5998ff428c4b6f4c1f7a4087c6ccb27d93773eb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58084329"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60345466"
 ---
 # <a name="azure-event-grid-event-schema-for-container-registry"></a>Container Registry 用の Azure Event Grid イベント スキーマ
 
@@ -155,49 +155,49 @@ Azure Container Registry では、次の種類のイベントが生成されま�
 
 イベントのトップレベルのデータを次に示します。
 
-| プロパティ | type | 説明 |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
-| topic | 文字列 | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
-| subject | 文字列 | 発行元が定義したイベントの対象のパス。 |
-| eventType | 文字列 | このイベント ソース用に登録されたイベントの種類のいずれか。 |
-| eventTime | 文字列 | プロバイダーの UTC 時刻に基づくイベントの生成時刻。 |
-| id | 文字列 | イベントの一意識別子。 |
-| data | オブジェクト | Blob Storage イベントのデータ。 |
-| dataVersion | 文字列 | データ オブジェクトのスキーマ バージョン。 スキーマ バージョンは発行元によって定義されます。 |
-| metadataVersion | 文字列 | イベント メタデータのスキーマ バージョン。 最上位プロパティのスキーマは Event Grid によって定義されます。 この値は Event Grid によって指定されます。 |
+| topic | string | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
+| subject | string | 発行元が定義したイベントの対象のパス。 |
+| eventType | string | このイベント ソース用に登録されたイベントの種類のいずれか。 |
+| eventTime | string | プロバイダーの UTC 時刻に基づくイベントの生成時刻。 |
+| id | string | イベントの一意識別子。 |
+| data | object | Blob Storage イベントのデータ。 |
+| dataVersion | string | データ オブジェクトのスキーマ バージョン。 スキーマ バージョンは発行元によって定義されます。 |
+| metadataVersion | string | イベント メタデータのスキーマ バージョン。 最上位プロパティのスキーマは Event Grid によって定義されます。 この値は Event Grid によって指定されます。 |
 
 データ オブジェクトには、次のプロパティがあります。
 
-| プロパティ | type | 説明 |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
-| id | 文字列 | イベント ID。 |
-| timestamp | 文字列 | イベントが発生した時刻。 |
-| action | 文字列 | 指定されたイベントを引き起こすアクション。 |
-| target | オブジェクト | イベントのターゲット。 |
-| request | オブジェクト | イベントを生成した要求。 |
+| id | string | イベント ID。 |
+| timestamp | string | イベントが発生した時刻。 |
+| action | string | 指定されたイベントを引き起こすアクション。 |
+| target | object | イベントのターゲット。 |
+| request | object | イベントを生成した要求。 |
 
 ターゲット オブジェクトには、次のプロパティがあります。
 
-| プロパティ | type | 説明 |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
-| mediaType | 文字列 | 参照されているオブジェクトの MIME の種類。 |
+| mediaType | string | 参照されているオブジェクトの MIME の種類。 |
 | size | integer | コンテンツのバイト数。 length フィールドと同じです。 |
-| digest | 文字列 | コンテンツのダイジェスト。Registry V2 HTTP API 仕様で定義されています。 |
+| digest | string | コンテンツのダイジェスト。Registry V2 HTTP API 仕様で定義されています。 |
 | length | integer | コンテンツのバイト数。 size フィールドと同じです。 |
-| repository | 文字列 | リポジトリの名前。 |
-| tag | 文字列 | タグ名。 |
-| name | 文字列 | チャートの名前。 |
-| version | 文字列 | チャートのバージョン。 |
+| repository | string | リポジトリの名前。 |
+| tag | string | タグ名。 |
+| name | string | チャートの名前。 |
+| version | string | チャートのバージョン。 |
 
 要求オブジェクトには、次のプロパティがあります。
 
-| プロパティ | type | 説明 |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
-| id | 文字列 | イベントを開始した要求の ID。 |
-| addr | 文字列 | IP またはホスト名。イベントを開始したクライアント接続のポートの可能性もあります。 この値は、標準 http 要求からの RemoteAddr です。 |
-| host | 文字列 | レジストリ インスタンスの外部からアクセス可能なホスト名。受信した要求の http ホスト ヘッダーで指定されています。 |
-| method | 文字列 | イベントを生成した要求メソッド。 |
-| useragent | 文字列 | 要求のユーザー エージェント ヘッダー。 |
+| id | string | イベントを開始した要求の ID。 |
+| addr | string | IP またはホスト名。イベントを開始したクライアント接続のポートの可能性もあります。 この値は、標準 http 要求からの RemoteAddr です。 |
+| host | string | レジストリ インスタンスの外部からアクセス可能なホスト名。受信した要求の http ホスト ヘッダーで指定されています。 |
+| method | string | イベントを生成した要求メソッド。 |
+| useragent | string | 要求のユーザー エージェント ヘッダー。 |
 
 ## <a name="next-steps"></a>次の手順
 

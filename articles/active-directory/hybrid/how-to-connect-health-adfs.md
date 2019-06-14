@@ -18,11 +18,11 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 92825a9ef84edc30b6b34aa875f8a207c70c8511
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59260937"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60350441"
 ---
 # <a name="monitor-ad-fs-using-azure-ad-connect-health"></a>Azure AD Connect Health を使用した AD FS の 監視
 次のドキュメントは、Azure AD Connect Health を使用した AD FS インフラストラクチャの監視に固有のドキュメントです。 Azure AD Connect Health での Azure AD Connect (同期) の監視については、「 [Azure AD Connect Health for Sync の使用](how-to-connect-health-sync.md)」を参照してください。また、Azure AD Connect Health での Active Directory Domain Services の監視については、「[AD DS での Azure AD Connect Health の使用](how-to-connect-health-adds.md)」を参照してください。
@@ -58,7 +58,7 @@ Azure AD Connect Health 利用状況分析では、フェデレーション サ�
 | ネットワークの場所 | ユーザーのネットワークの場所に基づいて、要求の合計をグループ化します。 イントラネットまたはエクストラネットを指定できます。 このグループ化は、イントラネットからのトラフィックとエクストラネットからのトラフィックの割合を把握するのに役立ちます。 |
 
 
-**メトリック: 失敗した要求の合計数** - フェデレーション サービスによって処理され、失敗した要求の合計数。  (このメトリックは、Windows Server 2012 R2 の AD FS でのみ使用できます)
+**メトリック: 失敗した要求の合計数** - フェデレーション サービスによって処理され、失敗した要求の合計数。 (このメトリックは、Windows Server 2012 R2 の AD FS でのみ使用できます)
 
 |グループ化 | グループ化の意味と役立つ理由 |
 | --- | --- |

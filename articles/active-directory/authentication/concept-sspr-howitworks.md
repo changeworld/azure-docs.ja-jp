@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 47a6f475b5f1152850ec918b196883c6974f4d95
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58370008"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60415621"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>動作のしくみ: Azure AD のセルフ サービスによるパスワードのリセット
 
@@ -39,7 +39,7 @@ ms.locfileid: "58370008"
 
 パスワード リセット ページの背後にあるロジックの詳細については、次の手順をお読みください。
 
-1. ユーザーは、**[アカウントにアクセスできません]** リンクを選ぶか、直接 [https://aka.ms/sspr](https://passwordreset.microsoftonline.com) に移動します。
+1. ユーザーは、 **[アカウントにアクセスできません]** リンクを選ぶか、直接 [https://aka.ms/sspr](https://passwordreset.microsoftonline.com) に移動します。
    * ブラウザーのロケールに基づいて、エクスペリエンスが適切な言語で表示されます。 パスワード リセットのエクスペリエンスは、Office 365 でサポートされている言語と同じ言語にローカライズされています。
    * パスワードのリセット ポータルを別のローカライズ言語で表示するには、パスワードのリセット URL の末尾に「?mkt=」を追加します。[https://passwordreset.microsoftonline.com/?mkt=es-us](https://passwordreset.microsoftonline.com/?mkt=es-us) は、スペイン語へのローカライズの例を示しています。
 2. ユーザーは、ユーザー ID を入力し、CAPTCHA を渡します。
@@ -63,7 +63,7 @@ SSPR が有効になっている場合は、認証方法として以下のオプ
 
 * モバイル アプリ通知 (プレビュー)
 * モバイル アプリ コード (プレビュー)
-* 電子メール
+* Email
 * 携帯電話
 * 会社電話
 * セキュリティの質問
@@ -134,13 +134,13 @@ Microsoft Authenticator アプリなどのモバイル アプリを使用して�
 登録の要求が無効になっている場合でも、ユーザーは手動で登録を行うことができます。 [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup) にアクセスするか、アクセス パネルの **[プロファイル]** タブの下にある **[パスワード リセットの登録]** リンクを使って行うことができます。
 
 > [!NOTE]
-> ユーザーは、**[キャンセル]** を選ぶか、ウィンドウを閉じることで、パスワード リセット登録ポータルを終了できます。 ただし、登録を完了するまでは、サインインのたびに登録を求められます。
+> ユーザーは、 **[キャンセル]** を選ぶか、ウィンドウを閉じることで、パスワード リセット登録ポータルを終了できます。 ただし、登録を完了するまでは、サインインのたびに登録を求められます。
 >
 > ユーザーが既にサインインしている場合、この中断によりその接続が切断されることはありません。
 
 ### <a name="set-the-number-of-days-before-users-are-asked-to-reconfirm-their-authentication-information"></a>ユーザーが認証情報を再確認するように求められるまでの日数を設定する
 
-このオプションは、認証情報を設定してから再確認するまでの期間を決定し、**[サインイン時にユーザーに登録を求めますか]** オプションを有効にした場合にのみ表示されます。
+このオプションは、認証情報を設定してから再確認するまでの期間を決定し、 **[サインイン時にユーザーに登録を求めますか]** オプションを有効にした場合にのみ表示されます。
 
 有効な値は 0 - 730 日で、"0" はユーザーに認証情報の再確認を求めることがないことを意味します。
 

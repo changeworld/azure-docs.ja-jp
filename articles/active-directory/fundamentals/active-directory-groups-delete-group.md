@@ -14,11 +14,11 @@ ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d9543908aafbb4ecd8f642f766f656f780706a36
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56207213"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60249181"
 ---
 # <a name="delete-a-group-using-azure-active-directory"></a>Azure Active Directory を使用してグループを削除する
 Azure Active Directory (Azure AD) グループはさまざまな理由で削除されますが、通常は次のために行います。
@@ -32,9 +32,9 @@ Azure Active Directory (Azure AD) グループはさまざまな理由で削除�
 ## <a name="to-delete-a-group"></a>グループを削除するには
 1. ディレクトリの全体管理者アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
 
-2. **[Azure Active Directory]** を選択し、**[グループ]** を選択します。
+2. **[Azure Active Directory]** を選択し、 **[グループ]** を選択します。
 
-3. **[グループ - すべてのグループ]** ページで、削除するグループを検索して選択します。 この手順では、**[MDM policy - East]** \(MDM ポリシー - 東部\) を使用します。
+3. **[グループ - すべてのグループ]** ページで、削除するグループを検索して選択します。 この手順では、 **[MDM policy - East]** \(MDM ポリシー - 東部\) を使用します。
 
     ![[グループ - すべてのグループ] ページ、グループ名が強調表示](media/active-directory-groups-delete-group/group-all-groups-screen.png)
 

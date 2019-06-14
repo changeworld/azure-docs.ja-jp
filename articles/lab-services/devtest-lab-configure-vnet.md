@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/05/2018
 ms.author: spelluru
 ms.openlocfilehash: 8fb3b4ac748fcae2e3aad5b3bfb2a893340dc61a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51256138"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60694820"
 ---
 # <a name="configure-a-virtual-network-in-azure-devtest-labs"></a>Azure DevTest Labs で仮想ネットワークを構成する
 [ラボへの VM の追加](devtest-lab-add-vm.md)に関する記事で説明しているように、ラボで VM を作成する際に、構成されている仮想ネットワークを指定できます。 たとえば、ExpressRoute またはサイト間 VPN で構成されている仮想ネットワークを使用して、VM から企業ネットワーク リソースにアクセスしなければならない場合があります。
@@ -32,18 +32,18 @@ ms.locfileid: "51256138"
 1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインします。
 1. **[すべてのサービス]** を選択し、一覧の **[DevTest Labs]** を選択します。
 1. ラボの一覧で目的のラボを選択します。 
-1. ラボのメイン ウィンドウで、**[構成とポリシー]** を選択します。
+1. ラボのメイン ウィンドウで、 **[構成とポリシー]** を選択します。
 
     ![ラボの構成とポリシーにアクセスする](./media/devtest-lab-configure-vnet/policies-menu.png)
 1. **[外部リソース]** セクションで **[仮想ネットワーク]** を選択します。 現在のラボに構成した仮想ネットワークのほか、ラボ用に作成される既定の仮想ネットワークの一覧が表示されます。 
 1. **[+ 追加]** を選択します。
    
     ![既存の仮想ネットワークをラボに追加する](./media/devtest-lab-configure-vnet/lab-settings-vnet-add.png)
-1. **[仮想ネットワーク]** ウィンドウで、**[仮想ネットワークの選択]** を選択します。
+1. **[仮想ネットワーク]** ウィンドウで、 **[仮想ネットワークの選択]** を選択します。
    
     ![既存の仮想ネットワークを選択する](./media/devtest-lab-configure-vnet/lab-settings-vnets-vnet1.png)
 1. **[仮想ネットワークの選択]** ウィンドウで、目的の仮想ネットワークを選択します。 サブスクリプションでラボと同じリージョンの下にある仮想ネットワークの一覧が表示されます。
-1. 仮想ネットワークを選択すると、**[仮想ネットワーク]** ウィンドウに戻ります。 下部の一覧からサブネットを選択します。
+1. 仮想ネットワークを選択すると、 **[仮想ネットワーク]** ウィンドウに戻ります。 下部の一覧からサブネットを選択します。
 
     ![サブネットの一覧](./media/devtest-lab-configure-vnet/lab-settings-vnets-vnet2.png)
     
@@ -52,9 +52,9 @@ ms.locfileid: "51256138"
     ![[ラボ サブネット] ウィンドウ](./media/devtest-lab-configure-vnet/lab-subnet.png)
      
    - **ラボ サブネット名**を指定します。
-   - ラボ VM の作成にサブネットを使用できるようにするには、**[仮想マシンの作成に使用]** を選択します。
-   - [共有パブリック IP アドレス](devtest-lab-shared-ip.md)を有効にするには、**[Enable shared public IP (共有パブリック IP を有効にする)]** を選択します。
-   - サブネットでパブリック IP アドレスを許可するには、**[Allow public IP creation (パブリック IP の作成を許可する)]** を選択します。
+   - ラボ VM の作成にサブネットを使用できるようにするには、 **[仮想マシンの作成に使用]** を選択します。
+   - [共有パブリック IP アドレス](devtest-lab-shared-ip.md)を有効にするには、 **[Enable shared public IP (共有パブリック IP を有効にする)]** を選択します。
+   - サブネットでパブリック IP アドレスを許可するには、 **[Allow public IP creation (パブリック IP の作成を許可する)]** を選択します。
    - **[ユーザーあたりの最大仮想マシン数]** フィールドに、サブネットごとのユーザーあたりの最大 VM 数を指定します。 無制限の VM 数が必要な場合は、このフィールドを空白のままにします。
 1. **[OK]** を選択して、[ラボ サブネット] ウィンドウを閉じます。
 1. **[保存]** を選択して、[仮想ネットワーク] ウィンドウを閉じます。

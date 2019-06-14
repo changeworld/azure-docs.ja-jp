@@ -10,11 +10,11 @@ ms.workload: NA
 ms.date: 02/01/2019
 ms.author: kasparks
 ms.openlocfilehash: a7e82fffdd9c865de6040c05ec28bc8bd2dced61
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58111397"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60468274"
 ---
 # <a name="get-started-with-azure-advisor"></a>Azure Advisor の使用を開始する
 
@@ -27,13 +27,13 @@ Azure Portal を使用して Advisor にアクセスし、推奨事項を取得�
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 
-1. 左側のウィンドウで、**[Advisor]** をクリックします。  左側のウィンドウに Advisor が表示されていない場合は、**[すべてのサービス]** をクリックします。  サービス メニュー ウィンドウで、**[Monitoring and Management]\(監視と管理\)** の **[Advisor]** をクリックします。 Advisor ダッシュボードが表示されます。
+1. 左側のウィンドウで、 **[Advisor]** をクリックします。  左側のウィンドウに Advisor が表示されていない場合は、 **[すべてのサービス]** をクリックします。  サービス メニュー ウィンドウで、 **[Monitoring and Management]\(監視と管理\)** の **[Advisor]** をクリックします。 Advisor ダッシュボードが表示されます。
 
    ![Azure Portal を使用した Azure Advisor へのアクセス](./media/advisor-get-started/advisor-portal-menu.png) 
 
 1. Advisor ダッシュボードには、選択したすべてのサブスクリプションの推奨事項の概要が表示されます。  サブスクリプション フィルター ドロップダウンを使用して、推奨事項を表示するサブスクリプションを選択できます。
 
-1. 特定のカテゴリの推奨事項を取得するには、次の各タブのいずれかをクリックします。**[高可用性]**、**[セキュリティ]**、**[パフォーマンス]**、**[コスト]**。 
+1. 特定のカテゴリの推奨事項を取得するには、次の各タブのいずれかをクリックします。 **[高可用性]** 、 **[セキュリティ]** 、 **[パフォーマンス]** 、 **[コスト]** 。 
 
    ![Azure Advisor ダッシュボード](./media/advisor-overview/advisor-dashboard.png)
 
@@ -43,7 +43,7 @@ Advisor の推奨事項を選択して、詳細 (推奨されるアクション�
 
 1. [Azure Portal](https://portal.azure.com) にサインインし、[Advisor](https://aka.ms/azureadvisordashboard) を開きます。
 
-1. 推奨事項のカテゴリを選択して、そのカテゴリ内の推奨事項の一覧を表示するか、**[すべて]** タブを選択して、すべての推奨事項を表示します。
+1. 推奨事項のカテゴリを選択して、そのカテゴリ内の推奨事項の一覧を表示するか、 **[すべて]** タブを選択して、すべての推奨事項を表示します。
 
 1. 詳細を確認する推奨事項をクリックします。
 
@@ -71,7 +71,7 @@ Advisor の推奨事項を選択して、詳細 (推奨されるアクション�
 
 1. **[延期]** をクリックします。 
 
-1. 延期期間を指定するか、**[Never]** を選択して推奨事項を無視します。
+1. 延期期間を指定するか、 **[Never]** を選択して推奨事項を無視します。
 
 ## <a name="exclude-subscriptions-or-resource-groups"></a>サブスクリプションまたはリソース グループを除外する
 
@@ -107,9 +107,9 @@ Advisor は、仮想マシンの使用状況を 14 日間にわたって監視�
 
 1. **[ルール]** タブをクリックします。
 
-1. 平均 CPU 使用率ルールを調整するサブスクリプションを選択し、**[編集]** をクリックします。
+1. 平均 CPU 使用率ルールを調整するサブスクリプションを選択し、 **[編集]** をクリックします。
 
-1. 平均 CPU 使用率の目的の値を選択し、**[適用]** をクリックします。
+1. 平均 CPU 使用率の目的の値を選択し、 **[適用]** をクリックします。
 
 1. **[推奨事項を更新する]** をクリックして、新しい平均 CPU 使用率ルールを使用する既存の推奨事項を更新します。 
 

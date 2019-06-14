@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 01/30/2019
 ms.author: manayar
 ms.openlocfilehash: d1cff1011e190e5fbb2874657cbdfbdc68bde0c0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58084397"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60619826"
 ---
 # <a name="using-application-health-extension-with-virtual-machine-scale-sets"></a>アプリケーションの正常性拡張機能と仮想マシン スケール セットの使用
 お使いのアプリケーションの正常性の監視は、ご自身のデプロイを管理およびアップグレードするための重要なシグナルです。 Azure 仮想マシン スケール セットでは、[OS イメージの自動アップグレード](virtual-machine-scale-sets-automatic-upgrade.md)などの[ローリング アップグレード](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)がサポートされ、個々のインスタンスの正常性を監視することで、ご自身のデプロイをアップグレードします。
@@ -66,17 +66,17 @@ ms.locfileid: "58084397"
 | Name | 値/例 | データ型
 | ---- | ---- | ---- 
 | apiVersion | `2018-10-01` | date |
-| publisher | `Microsoft.ManagedServices` | 文字列 |
-| type | `ApplicationHealthLinux` (Linux)、`ApplicationHealthWindows` (Windows) | 文字列 |
+| publisher | `Microsoft.ManagedServices` | string |
+| type | `ApplicationHealthLinux` (Linux)、`ApplicationHealthWindows` (Windows) | string |
 | typeHandlerVersion | `1.0` | int |
 
 ### <a name="settings"></a>設定
 
 | Name | 値/例 | データ型
 | ---- | ---- | ----
-| protocol | `http` または `tcp` | 文字列 |
+| protocol | `http` または `tcp` | string |
 | port | プロトコルが `http` の場合は省略可能、プロトコルが `tcp` の場合は必須 | int |
-| requestPath | プロトコルが `http` の場合は必須、プロトコルが `tcp` の場合は許可されていません | 文字列 |
+| requestPath | プロトコルが `http` の場合は必須、プロトコルが `tcp` の場合は許可されていません | string |
 
 ## <a name="deploy-the-application-health-extension"></a>アプリケーションの正常性拡張機能をデプロイする
 次の例で詳しく示すように、アプリケーションの正常性拡張機能をお使いのスケール セットにデプロイする方法は複数あります。

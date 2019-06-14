@@ -16,11 +16,11 @@ ms.workload: iaas-sql-server
 ms.date: 06/04/2018
 ms.author: mikeray
 ms.openlocfilehash: ab239d0546508d74874c6b6be03f6afc06b08fa7
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286297"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60563434"
 ---
 # <a name="backup-and-restore-for-sql-server-in-azure-virtual-machines"></a>Azure Virtual Machines おける SQL Server のバックアップと復元
 
@@ -69,7 +69,7 @@ SQL VM の自動バックアップを構成する方法の詳細については�
 - **一元管理と監視**:Azure Backup がサポートする他のワークロードを含め、すべてのバックアップを Azure の単一のダッシュボードで一元管理できます。
 - **ポリシーに基づくバックアップと保持**:定期的なバックアップ用の標準バックアップ ポリシーを作成できます。 何年もバックアップを維持するためのバックアップ ポリシーを作成することもできます。
 - **SQL Always On のサポート**:SQL Server Always On 構成を検出して保護し、バックアップ可用性グループのバックアップ設定を使用します。
-- **15 分の復旧ポイント目標 (RPO)**:SQL トランザクション ログのバックアップを最大 15 分ごとに構成できます。
+- **15 分の復旧ポイント目標 (RPO)** :SQL トランザクション ログのバックアップを最大 15 分ごとに構成できます。
 - **ポイントインタイム リストア**:ポータルを使用して、データベースを特定の時点に復元できます。複数の完全バックアップ、差分バックアップ、およびログ バックアップを手動で復元する必要はありません。
 - **エラーが発生した場合の統合電子メール アラート**:エラーが発生した場合の統合電子メール通知を構成できます。
 - **ロールベースのアクセス制御**:ポータルを介してバックアップと復元の操作を管理できるユーザーを決定できます。

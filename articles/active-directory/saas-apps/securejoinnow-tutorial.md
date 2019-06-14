@@ -16,11 +16,11 @@ ms.date: 07/06/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5b367befb90ec28ece963d67b479749e1c8ad363
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56175321"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60340007"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-securew2-joinnow-connector"></a>チュートリアル:Azure Active Directory と SecureW2 JoinNow Connector の統合
 
@@ -60,11 +60,11 @@ Azure AD への SecureW2 JoinNow Connector の統合を構成するには、ギ�
 
 **ギャラリーから SecureW2 JoinNow Connector を追加するには、次の手順を行います。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。 
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。 
 
     ![Azure Active Directory のボタン][1]
 
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+2. **[エンタープライズ アプリケーション]** に移動します。 次に、 **[すべてのアプリケーション]** に移動します。
 
     ![[エンタープライズ アプリケーション] ブレード][2]
     
@@ -72,7 +72,7 @@ Azure AD への SecureW2 JoinNow Connector の統合を構成するには、ギ�
 
     ![[新しいアプリケーション] ボタン][3]
 
-4. 検索ボックスに「**SecureW2 JoinNow Connector**」と入力して、結果パネルから **[SecureW2 JoinNow Connector]** を選択し、**[追加]** ボタンをクリックしてアプリケーションを追加します。
+4. 検索ボックスに「**SecureW2 JoinNow Connector**」と入力して、結果パネルから **[SecureW2 JoinNow Connector]** を選択し、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
 
     ![結果一覧の SecureW2 JoinNow Connector](./media/securejoinnow-tutorial/tutorial_securejoinnow_addfromgallery.png)
 
@@ -96,11 +96,11 @@ SecureW2 JoinNow Connector で Azure AD のシングル サインオンを構成
 
 **SecureW2 JoinNow Connector で Azure AD シングル サインオンを構成するには、次の手順を行います。**
 
-1. Azure Portal の **SecureW2 JoinNow Connector** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
+1. Azure Portal の **SecureW2 JoinNow Connector** アプリケーション統合ページで、 **[シングル サインオン]** をクリックします。
 
     ![シングル サインオン構成のリンク][4]
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+2. **[シングル サインオン]** ダイアログで、 **[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
     ![[シングル サインオン] ダイアログ ボックス](./media/securejoinnow-tutorial/tutorial_securejoinnow_samlbase.png)
 
@@ -115,7 +115,7 @@ SecureW2 JoinNow Connector で Azure AD のシングル サインオンを構成
     > [!NOTE] 
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 これらの値を取得するには、[SecureW2 JoinNow Connector クライアント サポート チーム](mailto:support@securew2.com)に連絡してください。 
 
-4. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
+4. **[SAML 署名証明書]** セクションで、 **[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
     ![証明書のダウンロードのリンク](./media/securejoinnow-tutorial/tutorial_securejoinnow_certificate.png) 
 
@@ -137,11 +137,11 @@ SecureW2 JoinNow Connector で Azure AD のシングル サインオンを構成
 
     ![Azure Active Directory のボタン](./media/securejoinnow-tutorial/create_aaduser_01.png)
 
-2. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックします。
+2. ユーザーの一覧を表示するには、 **[ユーザーとグループ]** に移動し、 **[すべてのユーザー]** をクリックします。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](./media/securejoinnow-tutorial/create_aaduser_02.png)
 
-3. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
+3. **[ユーザー]** ダイアログ ボックスを開くには、 **[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
 
     ![[追加] ボタン](./media/securejoinnow-tutorial/create_aaduser_03.png)
 
@@ -153,9 +153,9 @@ SecureW2 JoinNow Connector で Azure AD のシングル サインオンを構成
 
     b. **[ユーザー名]** ボックスに、ユーザーである Britta Simon の電子メール アドレスを入力します。
 
-    c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
+    c. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
+    d. **Create** をクリックしてください。
  
 ### <a name="create-a-securew2-joinnow-connector-test-user"></a>SecureW2 JoinNow Connector テスト ユーザーを作成する
 
@@ -169,7 +169,7 @@ SecureW2 JoinNow Connector で Azure AD のシングル サインオンを構成
 
 **SecureW2 JoinNow Connector に Britta Simon を割り当てるには、次の手順を行います。**
 
-1. Azure Portal でアプリケーション ビューを開き、ディレクトリ ビューに移動します。次に、**[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** をクリックします。
+1. Azure Portal でアプリケーション ビューを開き、ディレクトリ ビューに移動します。次に、 **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** をクリックします。
 
     ![ユーザーの割り当て][201] 
 
@@ -181,7 +181,7 @@ SecureW2 JoinNow Connector で Azure AD のシングル サインオンを構成
 
     ![[ユーザーとグループ] リンク][202]
 
-4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[追加]** ボタンをクリックします。 次に、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ][203]
 

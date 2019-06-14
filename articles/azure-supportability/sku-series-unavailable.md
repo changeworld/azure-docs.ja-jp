@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: xingwan
-ms.openlocfilehash: 62964d0c5d75168226a35b25e5c256a1b57f3f81
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: a57899e36a6716a6fd59cb018119c225b7396c0d
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2017
-ms.locfileid: "24870580"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60649107"
 ---
 # <a name="region-or-sku-unavailable"></a>リージョンまたは SKU が利用できない
 この記事では、Azure サブスクリプションからリージョンまたは VM SKU を利用できない問題の解決方法について説明します。

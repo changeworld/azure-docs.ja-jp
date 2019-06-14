@@ -15,11 +15,11 @@ ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 090a066afb24c4776f9844b8850264ffad842c59
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56187051"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60350158"
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Azure Active Directory Connect Health の操作
 このトピックでは、Azure Active Directory (Azure AD) Connect Health を使用して実行できるさまざまな操作について説明します。
@@ -37,10 +37,10 @@ ID インフラストラクチャの状態に問題があることをアラー�
 ### <a name="to-enable-azure-ad-connect-health-email-notifications"></a>Azure AD Connect Health の電子メール通知を有効にするには
 1. 電子メール通知を受信するサービスの **[アラート]** ブレードを開きます。
 2. 操作バーの **[通知設定]** をクリックします。
-3. 電子メール通知スイッチで、**[オン]** を選択します。
+3. 電子メール通知スイッチで、 **[オン]** を選択します。
 4. すべてのグローバル管理者が電子メール通知を受信するようにする場合は、チェック ボックスをオンにします。
-5. 他の電子メール アドレスで電子メール通知を受信する必要がある場合は、**[追加の電子メール受信者]** ボックスで指定します。 このリストから電子メール アドレスを削除するには、対象のエントリを右クリックして **[削除]** を選択します。
-6. 変更を確定するには、**[保存]** をクリックします。 保存した後にのみ変更は有効になります。
+5. 他の電子メール アドレスで電子メール通知を受信する必要がある場合は、 **[追加の電子メール受信者]** ボックスで指定します。 このリストから電子メール アドレスを削除するには、対象のエントリを右クリックして **[削除]** を選択します。
+6. 変更を確定するには、 **[保存]** をクリックします。 保存した後にのみ変更は有効になります。
 
 ## <a name="delete-a-server-or-service-instance"></a>サーバーまたはサービス インスタンスを削除する
 
@@ -88,7 +88,7 @@ Azure Active Directory Domain Services の Azure AD Connect Health の場合は�
 * このアクションを実行した後、サービスの監視を再開する場合、すべてのサーバー上の Health エージェントをアンインストールしてから再インストールしてください。 このアクションを実行した後、同じサーバーの監視を再開する場合、そのサーバー上の Health エージェントをアンインストールしてから再インストールし、登録してください。
 
 #### <a name="to-delete-a-service-instance-from-the-azure-ad-connect-health-service"></a>Azure AD Connect Health サービスからサービス インスタンスを削除するには
-1. **[サービスの一覧]** ブレードから、削除するサービスの ID (ファーム名) を選択して、**[サービス]** ブレードを開きます。 
+1. **[サービスの一覧]** ブレードから、削除するサービスの ID (ファーム名) を選択して、 **[サービス]** ブレードを開きます。 
 2. **[サービス]** ブレードで、操作バーの **[削除]** をクリックします。 
 ![Azure AD Connect Health でのサービスの削除のスクリーンショット](./media/how-to-connect-health-operations/DeleteServer.png)
 3. 確認ボックスにサービス名 (例: sts.contoso.com) を入力して確定します。
@@ -124,10 +124,10 @@ Azure AD Connect Health では、2 つのレベルのアクセス管理をサポ
 Azure AD Connect Health 内で "*すべてのサービス インスタンス*" レベルのユーザーにアクセスを許可するには、Azure AD Connect Health でメイン ブレードを開きます。<br>
 
 #### <a name="step-2-add-users-and-groups-and-assign-roles"></a>手順 2:ユーザーおよびグループを追加し、ロールを割り当てる
-1. **[構成]** セクションで、**[ユーザー]** をクリックします。<br>
+1. **[構成]** セクションで、 **[ユーザー]** をクリックします。<br>
    ![Azure AD Connect Health リソースのサイドバーのスクリーンショット](./media/how-to-connect-health-operations/startRBAC.png)
 2. **[追加]** を選択します。
-3. **[役割の選択]** ウィンドウで、ロール (たとえば、**[所有者]**) を選択します。<br>
+3. **[役割の選択]** ウィンドウで、ロール (たとえば、 **[所有者]** ) を選択します。<br>
    ![Azure AD Connect Health RBAC のユーザー ウィンドウのスクリーンショット](./media/how-to-connect-health-operations/RBAC_add.png)
 4. 対象となるユーザー/グループの名前または識別子を入力します。 1 つまたは複数のユーザー/グループを同時に選択できます。 **[選択]** をクリックします。
    ![Azure AD Connect Health RBAC のユーザー ウィンドウのスクリーンショット](./media/how-to-connect-health-operations/RBAC_select_users.png)

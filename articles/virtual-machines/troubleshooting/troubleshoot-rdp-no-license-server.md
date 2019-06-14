@@ -14,11 +14,11 @@ ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
 ms.openlocfilehash: 550b971602d1736e0ba3981a5b7ca546862ea034
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50913855"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60318954"
 ---
 # <a name="remote-desktop-license-server-isnt-available-when-you-connect-to-an-azure-vm"></a>Azure VM に接続すると、リモート デスクトップ ライセンス サーバーが利用できない
 
@@ -63,7 +63,7 @@ mstsc /v:<Server>[:<Port>] /admin
 
     管理セッションを使用して VM に接続できない場合、[Azure 上の仮想マシン シリアル コンソール](serial-console-windows.md)を使用して次のように VM にアクセスできます。
 
-    1. **[サポートとトラブルシューティング]** > **[Serial console (Preview)]\(シリアル コンソール (プレビュー))** を選択して[シリアル コンソール] にアクセスします。 VM で機能が有効な場合、VM を正常に接続できます。
+    1. **[サポートとトラブルシューティング]**  >  **[Serial console (Preview)]\(シリアル コンソール (プレビュー))** を選択して[シリアル コンソール] にアクセスします。 VM で機能が有効な場合、VM を正常に接続できます。
 
     2. CMD インスタンス用の新しいチャネルを作成します。 「**CMD**」と入力してチャネルを開始し、チャネル名を取得します。
 
@@ -129,4 +129,4 @@ mstsc /v:<Server>[:<Port>] /admin
 
 ## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください
 
-まだ支援が必要な場合は、[サポートに問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)て問題を解決してください。
+お困りの際は、[サポートに問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)て問題を解決してください。

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 05/30/2017
 ms.author: lmazuel
 ms.openlocfilehash: 573c6d3ded8fea58e0c9ba1afa7da2d8dd0fce91
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57531839"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60525526"
 ---
 # <a name="use-service-management-from-python"></a>Python からサービス管理を使用する
 このガイドでは、Python から一般的なサービス管理タスクをプログラムで実行する方法について説明します。 [Azure SDK for Python](https://github.com/Azure/azure-sdk-for-python) の **ServiceManagementService** クラスは、[Azure Portal][management-portal] で使用できるサービス管理関連の機能の多くへのプログラムによるアクセスをサポートしています。 この機能を使用して、クラウド サービス、デプロイ、データ管理サービス、および仮想マシンの作成、更新、および削除を行うことができます。 この機能は、サービス管理へのプログラムによるアクセスが必要なアプリケーションをビルドするために役立つ場合があります。
@@ -54,7 +54,7 @@ Azure SDK for Python は、REST API である [Service Management API][svc-mgmt-
 
 Azure 証明書の詳細については、「[Azure Cloud Services の証明書の概要](cloud-services-certs-create.md)」を参照してください。 OpenSSL のパラメーターの詳細については、[https://www.openssl.org/docs/apps/openssl.html](https://www.openssl.org/docs/apps/openssl.html) のドキュメントを参照してください。
 
-これらのファイルを作成したら、`.cer` ファイルを Azure にアップロードします。 [Azure Portal][management-portal] の **[設定]** タブで、**[アップロード]** を選択します。 `.pem` ファイルを保存した場所をメモします。
+これらのファイルを作成したら、`.cer` ファイルを Azure にアップロードします。 [Azure Portal][management-portal] の **[設定]** タブで、 **[アップロード]** を選択します。 `.pem` ファイルを保存した場所をメモします。
 
 サブスクリプション ID を取得した後、証明書を作成し、`.cer` ファイルを Azure にアップロードして、Azure 管理エンドポイントに接続します。 サブスクリプション ID と `.pem` ファイルのパスを **ServiceManagementService** に渡すことで、接続します。
 
@@ -75,7 +75,7 @@ Azure 証明書の詳細については、「[Azure Cloud Services の証明書�
 
 このコマンドにより、`.cer` ファイルが作成され、**個人用**証明書ストアにインストールされます。 詳細については、「[Azure Cloud Services の証明書の概要](cloud-services-certs-create.md)」を参照してください。
 
-証明書を作成したら、`.cer` ファイルを Azure にアップロードします。 [Azure Portal][management-portal] の **[設定]** タブで、**[アップロード]** を選択します。
+証明書を作成したら、`.cer` ファイルを Azure にアップロードします。 [Azure Portal][management-portal] の **[設定]** タブで、 **[アップロード]** を選択します。
 
 サブスクリプション ID を取得した後、証明書を作成し、`.cer` ファイルを Azure にアップロードして、Azure 管理エンドポイントに接続します。 サブスクリプション ID と**個人用**証明書ストア内の証明書の場所を **ServiceManagementService** に渡すことで、接続します (再度、*AzureCertificate* を証明書の名前に置き換えます)。
 
@@ -107,7 +107,7 @@ Azure 証明書の詳細については、「[Azure Cloud Services の証明書�
 * 北ヨーロッパ
 * 東南アジア
 * 東アジア
-* 米国中央部
+* 米国中部
 * 米国中北部
 * 米国中南部
 * 米国西部

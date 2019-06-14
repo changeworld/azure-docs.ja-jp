@@ -12,11 +12,11 @@ ms.date: 02/08/2019
 ms.author: erhopf
 ms.custom: seodec18
 ms.openlocfilehash: 09cc38cd5343e8b01b3e704191ea40c133d724f8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58103725"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60541511"
 ---
 # <a name="try-speech-services-for-free"></a>Speech Services を無料で試す
 
@@ -38,7 +38,7 @@ Speech Services は、低コストで簡単に使い始めることができま�
 
    ![[Speech Services] タブ](media/index/try-speech-api-free-trial1.png)
 
-1. **[Speech Services]** で、**[API キーの取得]** ボタンをクリックします。
+1. **[Speech Services]** で、 **[API キーの取得]** ボタンをクリックします。
 
    ![API キー](media/index/try-speech-api-free-trial2.png)
 
@@ -48,7 +48,7 @@ Speech Services は、低コストで簡単に使い始めることができま�
 
 1. Microsoft、Facebook、LinkedIn、または GitHub アカウントを使用してサインインします。
 
-    [Microsoft アカウント ポータル](https://account.microsoft.com/account)から無料の Microsoft アカウントにサインアップできます。 始めるには、**[Microsoft アカウントでサインイン]** をクリックし、サインインを求められたら **[Create one]\(アカウントの作成\)** をクリックします。 新しい Microsoft アカウントを作成して確認する手順に従います。
+    [Microsoft アカウント ポータル](https://account.microsoft.com/account)から無料の Microsoft アカウントにサインアップできます。 始めるには、 **[Microsoft アカウントでサインイン]** をクリックし、サインインを求められたら **[Create one]\(アカウントの作成\)** をクリックします。 新しい Microsoft アカウントを作成して確認する手順に従います。
 
 [Try Cognitive Services]\(Cognitive Services を試す\) にサインインすると、無料試用が開始します。 表示される Web ページには、現在の試用版サブスクリプションの対象となるすべての Azure Cognitive Services のサービスが一覧表示されます。 **[Speech Services]** の横に、2 つのサブスクリプション キーが表示されます。 アプリケーションでどちらのキーを使用しても構いません。
 
@@ -59,9 +59,9 @@ Speech Services は、低コストで簡単に使い始めることができま�
 
 新しい Azure アカウントでは、最大 30 日間利用可能な 200 ドルのサービス クレジットが提供されます。 このクレジットを使用して、Speech Services をさらに探索したり、アプリケーション開発を開始したりできます。
 
-新しい Azure アカウントにサインアップするには、[Azure サインアップ ページ](https://azure.microsoft.com/free/ai/)に移動し、**[無料で始める]** をクリックし、お使いの Microsoft アカウントを使用して新しい Azure アカウントを作成します。
+新しい Azure アカウントにサインアップするには、[Azure サインアップ ページ](https://azure.microsoft.com/free/ai/)に移動し、 **[無料で始める]** をクリックし、お使いの Microsoft アカウントを使用して新しい Azure アカウントを作成します。
 
-[Microsoft アカウント ポータル](https://account.microsoft.com/account)から無料の Microsoft アカウントにサインアップできます。 始めるには、**[Microsoft アカウントでサインイン]** をクリックし、サインインを求められたら **[Create one]\(アカウントの作成\)** をクリックします。 新しい Microsoft アカウントを作成して確認する手順に従います。
+[Microsoft アカウント ポータル](https://account.microsoft.com/account)から無料の Microsoft アカウントにサインアップできます。 始めるには、 **[Microsoft アカウントでサインイン]** をクリックし、サインインを求められたら **[Create one]\(アカウントの作成\)** をクリックします。 新しい Microsoft アカウントを作成して確認する手順に従います。
 
 Azure アカウントを作成したら、次のセクションの手順に従って、Speech Services のサブスクリプションを開始します。
 
@@ -75,13 +75,13 @@ Speech Services リソース (無料または有料レベル) を Azure アカ�
 
     ![リソースの作成](media/index/try-speech-api-create-speech1.png)
 
-1. **[New]\(新規\)** ウィンドウで、**[speech]** を検索します。
+1. **[New]\(新規\)** ウィンドウで、 **[speech]** を検索します。
 
-1. 検索結果で、**[Speech]** を選択します。
+1. 検索結果で、 **[Speech]** を選択します。
 
     ![[Speech] を選択](media/index/try-speech-api-create-speech2.png)
 
-1. **[Speech]** で、**[作成]** ボタンを選択します。
+1. **[Speech]** で、 **[作成]** ボタンを選択します。
 
     ![[作成] ボタンを選択](media/index/try-speech-api-create-speech3.png)
 
@@ -92,7 +92,7 @@ Speech Services リソース (無料または有料レベル) を Azure アカ�
    * リソースを使用するリージョンを選択します。 現時点では、Speech Services は、東アジア、北ヨーロッパ、米国西部の各リージョンで利用できます。
    * 無料または有料の価格レベルのどちらかを選択します。 **[価格の詳細を表示]** をクリックすると、各レベルの価格と使用量クォータについて詳細を確認できます。
    * この Speech サブスクリプションの新しいリソース グループを作成するか、既存のリソース グループにサブスクリプションを割り当てます。 リソース グループは、さまざまな Azure サブスクリプションを整理しておくのに役立ちます。
-   * 今後、サブスクリプションに簡単にアクセスできるように、**[ダッシュボードにピン留めする]** チェック ボックスをオンにします。
+   * 今後、サブスクリプションに簡単にアクセスできるように、 **[ダッシュボードにピン留めする]** チェック ボックスをオンにします。
    * **[作成]** を選択します。
 
      ![[作成] ボタンを選択](media/index/try-speech-api-create-speech4.png)

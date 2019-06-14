@@ -15,11 +15,11 @@ ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ce0d99fb283be8cbeba6f8a7954ff49161a2d511
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59496711"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60288547"
 ---
 # <a name="configure-security-alerts-for-azure-ad-roles-in-pim"></a>PIM で Azure AD ロールに対するセキュリティ アラートを構成する
 
@@ -120,7 +120,7 @@ ms.locfileid: "59496711"
 
 1. **[Azure AD roles]\(Azure AD ロール)** をクリックします。
 
-1. **[設定]**、**[アラート]** の順にクリックします。
+1. **[設定]** 、 **[アラート]** の順にクリックします。
 
     ![セキュリティ アラートの設定への移動](./media/pim-how-to-configure-security-alerts/settings-alerts.png)
 

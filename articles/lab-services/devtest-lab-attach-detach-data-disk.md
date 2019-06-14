@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/05/2018
 ms.author: spelluru
 ms.openlocfilehash: 2e168867ed342fb0b0545b5fdc330ba790f78de0
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51243557"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60304523"
 ---
 # <a name="attach-or-detach-a-data-disk-to-a-virtual-machine-in-azure-devtest-labs"></a>Azure DevTest Labs でデータ ディスクを仮想マシンにアタッチまたはデタッチする
 [Azure Managed Disks](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview) は、仮想マシンのデータ ディスクに関連付けられているストレージ アカウントを管理します。 ユーザーが新しいデータ ディスクを VM にアタッチし、必要なディスクの種類とサイズを指定すると、Azure によってディスクが自動的に作成され、管理されます。 データ ディスクはその後 VM からデタッチできます。後で同じ VM に再アタッチすることも、同じユーザーが所有する別の VM にアタッチすることもできます。
@@ -45,7 +45,7 @@ Azure DevTest Labs で新しいマネージド データ ディスクを作成�
 1. **[Attach new]\(新しいディスクのアタッチ\)** を選択し、新しいデータ ディスクを作成して VM にアタッチします。
 
     ![新しいデータ ディスクを仮想マシンにアタッチする](./media/devtest-lab-attach-detach-data-disk/devtest-lab-attach-new.png)
-1. データ ディスクの名前、種類、サイズを入力して、**[Attach new disk]\(新しいディスクのアタッチ\)** ウィンドウを完了します。
+1. データ ディスクの名前、種類、サイズを入力して、 **[Attach new disk]\(新しいディスクのアタッチ\)** ウィンドウを完了します。
 
     ![[Attach new disk]\(新しいディスクのアタッチ\) フォームを完了する](./media/devtest-lab-attach-detach-data-disk/devtest-lab-attach-new-form.png)
 1. **[OK]** を選択します。
@@ -85,16 +85,16 @@ VM にアタッチされたデータ ディスクは、不要になった場合�
 
 ディスクがデタッチされ、別の VM にアタッチできるようになります。 
 ### <a name="detach-from-the-labs-main-pane"></a>ラボのメイン ウィンドウからのデタッチ
-1. ラボのメイン ウィンドウで、**[個人用データ ディスク]** を選択します。
+1. ラボのメイン ウィンドウで、 **[個人用データ ディスク]** を選択します。
 
     ![ラボのデータ ディスクにアクセスする](./media/devtest-lab-attach-detach-data-disk/devtest-lab-my-data-disks.png)
-1. デタッチしたいデータ ディスクを右クリックするか、省略記号 (...) を選択し、**[Detach]\(デタッチ\)** を選択します。
+1. デタッチしたいデータ ディスクを右クリックするか、省略記号 (...) を選択し、 **[Detach]\(デタッチ\)** を選択します。
 
     ![データ ディスクの切断](./media/devtest-lab-attach-detach-data-disk/devtest-lab-detach-data-disk.png)
 1. **[はい]** を選択して、デタッチすることを確認します。
 
    > [!NOTE]
-   > データ ディスクが既にデタッチされている場合は、**[削除]** を選択して、使用可能なデータ ディスクの一覧から削除することができます。
+   > データ ディスクが既にデタッチされている場合は、 **[削除]** を選択して、使用可能なデータ ディスクの一覧から削除することができます。
    >
    >
 

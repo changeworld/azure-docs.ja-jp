@@ -16,11 +16,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7f5e2443a285e065426e3dba0312ef6420097ef1
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59617218"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60348061"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Azure Active Directory パススルー認証のセキュリティの詳細
 
@@ -72,7 +72,7 @@ Azure AD の運用、サービス、データのセキュリティに関する�
 
 ### <a name="authentication-agent-installation"></a>認証エージェントのインストール
 
-(Azure AD Connect またはスタンドアロンを使用して) オンプレミス サーバーに認証エージェントをインストールできるのは、全体管理者のみです。 インストールでは、次の 2 つの新しい項目が、**[コントロール パネル]** > **[プログラム]** > **[プログラムと機能]** の一覧に追加されます。
+(Azure AD Connect またはスタンドアロンを使用して) オンプレミス サーバーに認証エージェントをインストールできるのは、全体管理者のみです。 インストールでは、次の 2 つの新しい項目が、 **[コントロール パネル]**  >  **[プログラム]**  >  **[プログラムと機能]** の一覧に追加されます。
 - 認証エージェント アプリケーション自体。 このアプリケーションは [NetworkService](https://msdn.microsoft.com/library/windows/desktop/ms684272.aspx) 権限で実行されます。
 - 認証エージェントの自動更新で使用されるアップデーター アプリケーション。 このアプリケーションは [LocalSystem](https://msdn.microsoft.com/library/windows/desktop/ms684190.aspx) 権限で実行されます。
 
@@ -133,8 +133,8 @@ Azure AD の運用、サービス、データのセキュリティに関する�
 1. ユーザーが [Outlook Web アプリ](https://outlook.office365.com/owa)などのアプリケーションへのアクセスを試みます。
 2. ユーザーがまだサインインしていない場合は、アプリケーションでブラウザーが Azure AD のサインイン ページにリダイレクトされます。
 3. Azure AD STS サービスが**ユーザー サインイン** ページで応答します。
-4. ユーザーが **[ユーザー サインイン]** ページにユーザー名を入力し、**[次へ]** ボタンを選択します。
-5. ユーザーが **[ユーザー サインイン]** ページにパスワードを入力し、**[サインイン]** ボタンを選択します。
+4. ユーザーが **[ユーザー サインイン]** ページにユーザー名を入力し、 **[次へ]** ボタンを選択します。
+5. ユーザーが **[ユーザー サインイン]** ページにパスワードを入力し、 **[サインイン]** ボタンを選択します。
 6. ユーザー名とパスワードが HTTPS POST 要求で Azure AD STS に送信されます。
 7. Azure AD STS が、Azure SQL データベースから、テナントで登録されたすべての認証エージェントの公開キーを取得し、それらを使用してパスワードを暗号化します。
     - テナントで登録された "N" 個の認証エージェントに対し、"N" 個の暗号化されたパスワード値が生成されます。

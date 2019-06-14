@@ -15,11 +15,11 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1e7a3f80067adb3093bd27e34a45b3afd72b4993
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286858"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60247584"
 ---
 # <a name="assign-or-remove-licenses-using-the-azure-active-directory-portal"></a>Azure Active Directory ポータルを使用したライセンスの割り当てと削除
 多くの Azure Active Directory (Azure AD) サービスでは、Azure AD 製品をアクティブ化し、ユーザーまたはグループ (および関連するメンバー) ごとにその製品のライセンスを付与する必要があります。 アクティブなライセンスを持つユーザーのみが、ライセンスされている Azure AD サービスにアクセスおよび使用できるようになります。
@@ -43,13 +43,13 @@ Azure AD 製品に利用できるいくつかのエディションがありま�
 ### <a name="to-find-your-product-and-license-details"></a>ご利用の製品とライセンスの詳細を確認するには
 1. ディレクトリの全体管理者アカウントを使用して、[Azure portal](https://portal.azure.com/) にサインインします。
 
-2. **[Azure Active Directory]** を選択し、**[ライセンス]** を選択します。
+2. **[Azure Active Directory]** を選択し、 **[ライセンス]** を選択します。
 
     **[ライセンス]** ページが表示されます。
 
     ![購入した製品数と割り当てられたライセンスを示す [ライセンス] ページ](media/license-users-groups/license-details-blade.png)
     
-3. **購入した製品**のリンクを選択して **[製品]** ページを表示し、特定の製品エディションごとに **[割り当て済み]**、**[利用可能]**、**[まもなく有効期限切れ]** の詳細情報を確認します。
+3. **購入した製品**のリンクを選択して **[製品]** ページを表示し、特定の製品エディションごとに **[割り当て済み]** 、 **[利用可能]** 、 **[まもなく有効期限切れ]** の詳細情報を確認します。
 
     ![製品エディションと関連するライセンス情報を含む [製品] ページ](media/license-users-groups/license-products-blade-with-products.png)
 
@@ -66,7 +66,7 @@ Azure AD 製品に利用できるいくつかのエディションがありま�
 
     ![製品エディションが強調表示されている [製品] ページ](media/license-users-groups/license-products-blade-with-product-highlight.png)
 
-2. **[Azure Active Directory Premium プラン 2]** ページで、**[割り当て]** を選択します。
+2. **[Azure Active Directory Premium プラン 2]** ページで、 **[割り当て]** を選択します。
 
     ![[割り当て] オプションが強調表示されている [製品] ページ](media/license-users-groups/license-products-blade-with-assign-option-highlight.png)
 
@@ -74,7 +74,7 @@ Azure AD 製品に利用できるいくつかのエディションがありま�
 
     ![検索と [選択] オプションが強調表示されている [ライセンスの割り当て] ページ](media/license-users-groups/assign-license-blade-with-highlight.png)
 
-4. **[割り当てオプション]** を選択して、適切なライセンス オプションをオンにしていることを確認し、**[OK]** を選択します。
+4. **[割り当てオプション]** を選択して、適切なライセンス オプションをオンにしていることを確認し、 **[OK]** を選択します。
 
     ![エディションで利用可能なすべてのオプションを示している [ライセンス オプション] ページ](media/license-users-groups/license-option-blade-assignments.png)
 
@@ -92,15 +92,15 @@ Azure AD 製品に利用できるいくつかのエディションがありま�
 
     ![製品エディションが強調表示されている [製品] ブレード](media/license-users-groups/license-products-blade-with-product-highlight.png)
 
-2. **[Azure Active Directory Premium プラン 2]** ページで、**[割り当て]** を選択します。
+2. **[Azure Active Directory Premium プラン 2]** ページで、 **[割り当て]** を選択します。
 
     ![[割り当て] オプションが強調表示されている [製品] ページ](media/license-users-groups/license-products-blade-with-assign-option-highlight.png)
 
-3. **[割り当て]** ページで **[ユーザーとグループ]** を選択し、ライセンスを割り当てるグループを検索して選択します。 たとえば、_[MDM policy - West]\(MDM ポリシー - 西部\)_ です。
+3. **[割り当て]** ページで **[ユーザーとグループ]** を選択し、ライセンスを割り当てるグループを検索して選択します。 たとえば、 _[MDM policy - West]\(MDM ポリシー - 西部\)_ です。
 
     ![検索と [選択] オプションが強調表示されている [ライセンスの割り当て] ページ](media/license-users-groups/assign-group-license-blade-with-highlight.png)
 
-4. **[割り当てオプション]** を選択して、適切なライセンス オプションをオンにしていることを確認し、**[OK]** を選択します。
+4. **[割り当てオプション]** を選択して、適切なライセンス オプションをオンにしていることを確認し、 **[OK]** を選択します。
 
     ![エディションで利用可能なすべてのオプションを示している [ライセンス オプション] ページ](media/license-users-groups/license-option-blade-group-assignments.png)
 
@@ -124,7 +124,7 @@ Azure AD 製品に利用できるいくつかのエディションがありま�
     ![[ライセンスを削除する] オプションが強調表示されている [ライセンスされているユーザー] ページ](media/license-users-groups/license-products-user-blade-with-remove-option-highlight.png)
 
 ### <a name="to-remove-a-license-from-a-group"></a>グループからライセンスを削除するには
-1. 製品エディションの **[ライセンスされているグループ]** ページで、ライセンスが必要なくなったグループを選択します。 たとえば、_[MDM policy - West]\(MDM ポリシー - 西部\)_ です。
+1. 製品エディションの **[ライセンスされているグループ]** ページで、ライセンスが必要なくなったグループを選択します。 たとえば、 _[MDM policy - West]\(MDM ポリシー - 西部\)_ です。
 
 2. **[ライセンスを削除する]** を選択します。
 

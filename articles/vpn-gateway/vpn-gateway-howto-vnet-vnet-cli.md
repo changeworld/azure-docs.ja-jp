@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: cherylmc
 ms.openlocfilehash: e18f37b31b7f0a49717e174d8a20d56388ad4808
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59526148"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60411833"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-azure-cli"></a>Azure CLI を使用して VNet 間の VPN ゲートウェイ接続を構成する
 
@@ -338,7 +338,7 @@ VNet 間接続による仮想ネットワークの接続が望ましいのは、
 
 ### <a name="connections5"></a>手順 8 - 接続を作成する
 
-ゲートウェイが異なるサブスクリプションにあるため、この手順は、**[サブスクリプション 1]** と **[サブスクリプション 5]** というマークの付いた 2 つの CLI セッションに分かれています。 サブスクリプションを切り替えるには、`az account list --all` を使用して、ご自分のアカウントで使用できるサブスクリプションを一覧表示します。次に、`az account set --subscription <subscriptionID>` を実行して、使用するサブスクリプションに切り替えます。
+ゲートウェイが異なるサブスクリプションにあるため、この手順は、 **[サブスクリプション 1]** と **[サブスクリプション 5]** というマークの付いた 2 つの CLI セッションに分かれています。 サブスクリプションを切り替えるには、`az account list --all` を使用して、ご自分のアカウントで使用できるサブスクリプションを一覧表示します。次に、`az account set --subscription <subscriptionID>` を実行して、使用するサブスクリプションに切り替えます。
 
 1. **[サブスクリプション 1]** サブスクリプション 1 にログインして接続します。 次のコマンドを実行し、その出力からゲートウェイの名前と ID を取得します。
 

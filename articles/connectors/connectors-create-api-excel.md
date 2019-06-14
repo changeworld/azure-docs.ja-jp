@@ -11,11 +11,11 @@ tags: connectors
 ms.topic: article
 ms.date: 08/23/2018
 ms.openlocfilehash: 28739ad65462acc9f2d2ed7db1e9ed14d19f032c
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58314521"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60311966"
 ---
 # <a name="manage-excel-online-data-with-azure-logic-apps"></a>Azure Logic Apps を使用して Excel Online データを管理する
 
@@ -49,11 +49,11 @@ Azure Logic Apps と Excel Online コネクタを使用して、Excel Online for
 
 1. [Azure Portal](https://portal.azure.com) のロジック アプリ デザイナーでロジック アプリを開きます (まだ開いていない場合)。
 
-1. トリガーで、**[新しいステップ]** を選択します。
+1. トリガーで、 **[新しいステップ]** を選択します。
 
 1. 検索ボックスに、フィルターとして「excel」と入力します。 アクションの一覧で、目的のアクションを選択します。
 
-1. Office 365 アカウントへのサインインを求められたら、**[サインイン]** を選択します。
+1. Office 365 アカウントへのサインインを求められたら、 **[サインイン]** を選択します。
 
    Excel Online への接続を作成してデータにアクセスしてよいという承認が、この資格情報によってロジック アプリに与えられます。
 

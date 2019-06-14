@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 02/15/2018
 ms.author: magattus
 ms.openlocfilehash: c21ae227d74442be5701dd906180392b1e0fdf8b
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59525672"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60636707"
 ---
 # <a name="manage-expiration-of-web-content-in-azure-cdn"></a>Azure CDN で Web コンテンツ有効期限を管理する
 > [!div class="op_single_selector"]
@@ -47,7 +47,7 @@ Web サーバーの `Cache-Control` ヘッダーを設定するための推奨�
 
 1. Azure Portal で、CDN プロファイルを選択してから、Web サーバーのエンドポイントを選択します。
 
-1. 左側のウィンドウの [設定] で、**[キャッシュ規則]** を選択します。
+1. 左側のウィンドウの [設定] で、 **[キャッシュ規則]** を選択します。
 
    ![[CDN キャッシュ規則] ボタン](./media/cdn-manage-expiration-of-cloud-service-content/cdn-caching-rules-btn.png)
 
@@ -58,9 +58,9 @@ Web サーバーの `Cache-Control` ヘッダーを設定するための推奨�
 
 **グローバル キャッシュ規則を使用して Web サーバーの Cache-Control ヘッダーを設定するには:**
 
-1. **[グローバル キャッシュ規則]** で、**[クエリ文字列のキャッシュ動作]** を **[クエリ文字列を無視]** に設定し、**[キャッシュ動作]** を **[オーバーライド]** に設定します。
+1. **[グローバル キャッシュ規則]** で、 **[クエリ文字列のキャッシュ動作]** を **[クエリ文字列を無視]** に設定し、 **[キャッシュ動作]** を **[オーバーライド]** に設定します。
       
-1. **[キャッシュの有効期間]** として、**[Seconds] (秒)** ボックスに「3600」と入力するか、または **[時間]** ボックスに「1」と入力します。 
+1. **[キャッシュの有効期間]** として、 **[Seconds] (秒)** ボックスに「3600」と入力するか、または **[時間]** ボックスに「1」と入力します。 
 
    ![CDN グローバル キャッシュ規則の例](./media/cdn-manage-expiration-of-cloud-service-content/cdn-global-caching-rules-example.png)
 
@@ -72,9 +72,9 @@ Web サーバーの `Cache-Control` ヘッダーを設定するための推奨�
 
 1. **[Custom caching rules] (カスタム キャッシュ規則)** で、次の 2 つの一致条件を作成します。
 
-     a. 最初の一致条件では、**[一致条件]** を **[パス]** に設定し、**[一致する値]** として `/webfolder1/*` を入力します。 **[キャッシュ動作]** を **[オーバーライド]** に設定し、**[時間]** ボックスに「4」と入力します。
+     a. 最初の一致条件では、 **[一致条件]** を **[パス]** に設定し、 **[一致する値]** として `/webfolder1/*` を入力します。 **[キャッシュ動作]** を **[オーバーライド]** に設定し、 **[時間]** ボックスに「4」と入力します。
 
-     b. 2 番目の一致条件では、**[一致条件]** を **[パス]** に設定し、**[一致する値]** として `/webfolder1/file1.txt` を入力します。 **[キャッシュ動作]** を **[オーバーライド]** に設定し、**[時間]** ボックスに「2」と入力します。
+     b. 2 番目の一致条件では、 **[一致条件]** を **[パス]** に設定し、 **[一致する値]** として `/webfolder1/file1.txt` を入力します。 **[キャッシュ動作]** を **[オーバーライド]** に設定し、 **[時間]** ボックスに「2」と入力します。
 
     ![CDN カスタム キャッシュ規則の例](./media/cdn-manage-expiration-of-cloud-service-content/cdn-custom-caching-rules-example.png)
 

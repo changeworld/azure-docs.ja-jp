@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 07/20/2016
 ms.author: jehollan
 ms.openlocfilehash: 2a82afe396039857e5b9ad6b8a6d0e710573037f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59794881"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60538245"
 ---
 # <a name="get-started-with-the-query-action"></a>クエリ アクションの概要
 クエリ アクションを使用し、バッチと配列を操作して次のワークフローを実現できます。
@@ -40,11 +40,11 @@ ms.locfileid: "59794881"
 
 1. **[新しいステップ]** をクリックします。
 2. **[アクションの追加]** を選択します。
-3. アクションの検索ボックスに「**フィルター**」と入力して、**[配列のフィルター処理]** アクションを表示します。
+3. アクションの検索ボックスに「**フィルター**」と入力して、 **[配列のフィルター処理]** アクションを表示します。
    
     ![クエリ アクションを選択する](./media/connectors-native-query/using-action-1.png)
-4. フィルター処理する配列を選択します  (次のスクリーン ショットは、Twitter 検索結果の配列を示しています)。
-5. 各項目について評価する条件を作成します  (次のスクリーン ショットは、フォロワー数が 100 を超えるユーザーのツイートをフィルター処理したものです)。
+4. フィルター処理する配列を選択します (次のスクリーン ショットは、Twitter 検索結果の配列を示しています)。
+5. 各項目について評価する条件を作成します (次のスクリーン ショットは、フォロワー数が 100 を超えるユーザーのツイートをフィルター処理したものです)。
    
     ![クエリ アクションを完了する](./media/connectors-native-query/using-action-2.png)
    

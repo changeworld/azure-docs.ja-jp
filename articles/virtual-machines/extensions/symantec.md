@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 03/31/2017
 ms.author: roiyz
 ms.openlocfilehash: 65b52c88741e618e8048451370918b06db73a651
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58014424"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60617879"
 ---
 # <a name="how-to-install-and-configure-symantec-endpoint-protection-on-a-windows-vm"></a>Windows VM に Symantec Endpoint Protection をインストールし、構成する方法
 > [!IMPORTANT] 
@@ -62,7 +62,7 @@ Set-AzureVMExtension -Publisher Symantec –Version $Agent.Version -ExtensionNam
 Symantec のセキュリティ拡張機能がインストールされ、最新の状態であることを確認するには:
 
 1. 仮想マシンにログオンします。 詳細については、[Windows Server が実行されている仮想マシンにログオンする方法][Logon]に関するページを参照してください。
-2. Windows Server 2008 R2 の場合は、**[スタート]、[Symantec Endpoint Protection]** の順にクリックします。 Windows Server 2012 または Windows Server 2012 R2 で、スタート画面から、「**Symantec**」と入力し、**[Symantec Endpoint Protection]** をクリックします。
+2. Windows Server 2008 R2 の場合は、 **[スタート]、[Symantec Endpoint Protection]** の順にクリックします。 Windows Server 2012 または Windows Server 2012 R2 で、スタート画面から、「**Symantec**」と入力し、 **[Symantec Endpoint Protection]** をクリックします。
 3. **[状態: Symantec Endpoint Protection]** ウィンドウの **[状態]** タブで、更新を適用するか、必要に応じて再起動します。
 
 ## <a name="additional-resources"></a>その他のリソース

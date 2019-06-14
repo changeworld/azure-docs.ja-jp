@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: twooley
 ms.openlocfilehash: d3dbacd58b3bda3fbf8ee8ad5f175eccc2cb2a24
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58877552"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60194944"
 ---
 # <a name="stream-data-from-azure-storage-blob-into-azure-data-lake-storage-gen1-using-azure-stream-analytics"></a>Azure Stream Analytics を使用した Azure Storage Blob から Azure Data Lake Storage Gen1 へのデータ ストリーム
 この記事では、Azure Data Lake Storage Gen1 を Azure Stream Analytics ジョブの出力として使用する方法について説明します。 ここでは、Azure Storage BLOB (入力) からデータを読み取り、そのデータを Azure Data Lake Storage Gen1 (出力) に書き込む簡単なシナリオを紹介します。
@@ -36,7 +36,7 @@ ms.locfileid: "58877552"
 
 1. [Azure Portal](https://portal.azure.com) にサインオンします。
 
-2. 左側のウィンドウで、**[Stream Analytics ジョブ]** をクリックし、**[追加]** をクリックします。
+2. 左側のウィンドウで、 **[Stream Analytics ジョブ]** をクリックし、 **[追加]** をクリックします。
 
     ![Stream Analytics ジョブの作成](./media/data-lake-store-stream-analytics/create.job.png "Stream Analytics ジョブの作成")
 
@@ -46,7 +46,7 @@ ms.locfileid: "58877552"
 
 ## <a name="create-a-blob-input-for-the-job"></a>ジョブに BLOB 入力を作成
 
-1. Stream Analytics ジョブのページを開き、左側のウィンドウで **[入力]** タブをクリックし、**[追加]** をクリックします。
+1. Stream Analytics ジョブのページを開き、左側のウィンドウで **[入力]** タブをクリックし、 **[追加]** をクリックします。
 
     ![ジョブへの入力の追加](./media/data-lake-store-stream-analytics/create.input.1.png "ジョブへの入力の追加")
 
@@ -55,21 +55,21 @@ ms.locfileid: "58877552"
     ![ジョブへの入力の追加](./media/data-lake-store-stream-analytics/create.input.2.png "ジョブへの入力の追加")
 
    * **[入力のエイリアス]** で、このジョブ入力の一意の名前を入力します。
-   * **[ソースの種類]** で、**[データ ストリーム]** を選択します。
-   * **[ソース]** で、**[BLOB ストレージ]** を選択します。
-   * **[サブスクリプション]** で、**[現在のサブスクリプションの BLOB ストレージを使う]** を選択します。
+   * **[ソースの種類]** で、 **[データ ストリーム]** を選択します。
+   * **[ソース]** で、 **[BLOB ストレージ]** を選択します。
+   * **[サブスクリプション]** で、 **[現在のサブスクリプションの BLOB ストレージを使う]** を選択します。
    * **[ストレージ アカウント]** で、前提条件の一部として作成したストレージ アカウントを選択します。 
    * **[コンテナー]** で、選択したストレージ アカウント内に作成したコンテナーを選択します。
-   * **[イベントのシリアル化の形式]** で、**[CSV]** を選択します。
-   * **[区切り記号]** で、**[タブ]** を選択します。
-   * **[エンコード]** で、**[UTF-8]** を選択します。
+   * **[イベントのシリアル化の形式]** で、 **[CSV]** を選択します。
+   * **[区切り記号]** で、 **[タブ]** を選択します。
+   * **[エンコード]** で、 **[UTF-8]** を選択します。
 
      **Create** をクリックしてください。 これで、ポータルは、この入力を追加して接続をテストします。
 
 
 ## <a name="create-a-data-lake-storage-gen1-output-for-the-job"></a>ジョブに Data Lake Storage Gen1 出力を作成
 
-1. Stream Analytics ジョブのページを開き、**[出力]** タブをクリックしてから **[追加]** をクリックし、**[Data Lake Storage Gen1]** を選択します。
+1. Stream Analytics ジョブのページを開き、 **[出力]** タブをクリックしてから **[追加]** をクリックし、 **[Data Lake Storage Gen1]** を選択します。
 
     ![ジョブへの出力の追加](./media/data-lake-store-stream-analytics/create.output.1.png "ジョブへの出力の追加")
 
@@ -86,17 +86,17 @@ ms.locfileid: "58877552"
 
    * **[アカウント名]** で、ジョブ出力の送信先として作成済みの Data Lake Storage Gen1 アカウントを選択します。
    * **[パス プレフィックスのパターン]** で、指定した Data Lake Storage Gen1 アカウント内にファイルを書き込むために使用するファイル パスを入力します。
-   * プレフィックス パスで日付トークンを使用する場合は、**[日付形式]** でファイルを編成する日付形式を選択できます。
-   * プレフィックス パスで時刻トークンを使用する場合は、**[時刻形式]** でファイルを編成する時刻形式を選択できます。
-   * **[イベントのシリアル化の形式]** で、**[CSV]** を選択します。
-   * **[区切り記号]** で、**[タブ]** を選択します。
-   * **[エンコード]** で、**[UTF-8]** を選択します。
+   * プレフィックス パスで日付トークンを使用する場合は、 **[日付形式]** でファイルを編成する日付形式を選択できます。
+   * プレフィックス パスで時刻トークンを使用する場合は、 **[時刻形式]** でファイルを編成する時刻形式を選択できます。
+   * **[イベントのシリアル化の形式]** で、 **[CSV]** を選択します。
+   * **[区切り記号]** で、 **[タブ]** を選択します。
+   * **[エンコード]** で、 **[UTF-8]** を選択します。
     
      **Create** をクリックしてください。 これで、ポータルは、この出力を追加して接続をテストします。
     
 ## <a name="run-the-stream-analytics-job"></a>Stream Analytics ジョブの実行
 
-1. Stream Analytics ジョブを実行するには、**[クエリ]** タブからクエリを実行する必要があります。このチュートリアルでは、次の画面キャプチャに示すように、プレースホルダーをジョブの入力および出力エイリアスで置き換えて、サンプル クエリを実行することができます。
+1. Stream Analytics ジョブを実行するには、 **[クエリ]** タブからクエリを実行する必要があります。このチュートリアルでは、次の画面キャプチャに示すように、プレースホルダーをジョブの入力および出力エイリアスで置き換えて、サンプル クエリを実行することができます。
 
     ![クエリの実行](./media/data-lake-store-stream-analytics/run.query.png "クエリの実行")
 

@@ -14,11 +14,11 @@ ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: 0e0a249c53c90d3d8d03dcdb5fbb4f11f31c54df
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57545164"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60565720"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Azure Data Factory でサポートされるコンピューティング環境
 > [!NOTE]
@@ -123,14 +123,14 @@ Data Factory では、データを処理するための Windows ベースまた�
 ### <a name="properties"></a>Properties
 | プロパティ                     | 説明                              | 必須 |
 | ---------------------------- | ---------------------------------------- | -------- |
-| type                         | type プロパティを **HDInsightOnDemand** に設定します。 | [はい]      |
-| clusterSize                  | クラスターの worker とデータ ノードの数です。 HDInsight クラスターは、このプロパティで指定した worker ノードの数に加え、2 つのヘッド ノードを使用して作成されます。 ノードのサイズは Standard_D3 (4 コア) です。 4 worker ノード クラスターのコアは 24 個になります (worker ノード用に 4\*4 = 16 個のコアと、ヘッド ノード用に 2\*4 = 8 個のコア)。 Standard_D3 レベルの詳細については、[HDInsight での Linux ベースの Hadoop クラスターの作成](../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md)に関するページをご覧ください。 | [はい]      |
-| timeToLive                   | オンデマンド HDInsight クラスターに許可されるアイドル時間です。 他のアクティブなジョブがクラスターにない場合、アクティビティの実行が完了したときに、オンデマンド HDInsight クラスターが起動状態を維持する時間を指定します。<br /><br />たとえば、アクティビティ実行に 6 分かかるときに **timeToLive** が 5 分に設定されている場合、アクティビティの実行の 6 分間の処理の後、クラスターが起動状態を 5 分間維持します。 別のアクティビティの実行が 6 分の時間枠で実行される場合、それは同じクラスターで処理されます。<br /><br />オンデマンド HDInsight クラスターの作成は高額な作業です (時間がかかる場合もあります)。 この設定を必要に応じて使用し、オンデマンド HDInsight クラスターを再利用することで、データ ファクトリのパフォーマンスを改善します。<br /><br />**timeToLive** 値を **0** に設定した場合、クラスターは、アクティビティの実行の完了直後に削除されます。 一方、高い値を設定すると、クラスターでは不必要にアイドル状態が維持され、コストの上昇を招きます。 重要なのは、ニーズに合わせて適切な値を設定することです。<br /><br />**timeToLive** 値が適切に設定されている場合、複数のパイプラインでオンデマンド HDInsight クラスターのインスタンスを共有できます。 | [はい]      |
-| version                      | HDInsight クラスターのバージョン。 許可されている HDInsight バージョンについては、「[サポートされる HDInsight のバージョン](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#supported-hdinsight-versions)」を参照してください。 この値が指定されていない場合は、[最新 HDI の既定のバージョン](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning)が使用されます。 | いいえ        |
-| linkedServiceName            | データを保存し、処理するためにオンデマンド クラスターで使用される Azure Storage のリンクされたサービスです。 HDInsight クラスターは、このストレージ アカウントと同じリージョンに作成されます。<p>現時点では、Azure Data Lake Store をストレージとして使用するオンデマンド HDInsight クラスターを作成することはできません。 HDInsight 処理の結果データを Data Lake Store に保存する必要がある場合は、コピー アクティビティを使用して、Blob Storage から Data Lake Store にデータをコピーします。 </p> | [はい]      |
-| additionalLinkedServiceNames | HDInsight のリンクされたサービスの追加ストレージ アカウントを指定します。 ストレージ アカウントは、Data Factory によって自動的に登録されます。 こうしたストレージ アカウントは、HDInsight クラスターと同じリージョンに存在する必要があります。 HDInsight クラスターは、**linkedServiceName** プロパティで指定されているストレージ アカウントと同じリージョンで作成されます。 | いいえ        |
-| osType                       | オペレーティング システムの種類。 使用可能な値は **Linux** と **Windows** です。 この値を指定しない場合は、**Linux** が使用されます。  <br /><br />Linux ベースの HDInsight クラスターを使用することを強くお勧めします。 Windows 向けの HDInsight の提供終了日は 2018 年 7 月 31 日です。 | いいえ        |
-| hcatalogLinkedServiceName    | HCatalog データベースを指定する Azure SQL のリンクされたサービスの名前。 オンデマンド HDInsight クラスターは、SQL データベースを metastore として使用して作成されます。 | いいえ        |
+| type                         | type プロパティを **HDInsightOnDemand** に設定します。 | はい      |
+| clusterSize                  | クラスターの worker とデータ ノードの数です。 HDInsight クラスターは、このプロパティで指定した worker ノードの数に加え、2 つのヘッド ノードを使用して作成されます。 ノードのサイズは Standard_D3 (4 コア) です。 4 worker ノード クラスターのコアは 24 個になります (worker ノード用に 4\*4 = 16 個のコアと、ヘッド ノード用に 2\*4 = 8 個のコア)。 Standard_D3 レベルの詳細については、[HDInsight での Linux ベースの Hadoop クラスターの作成](../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md)に関するページをご覧ください。 | はい      |
+| timeToLive                   | オンデマンド HDInsight クラスターに許可されるアイドル時間です。 他のアクティブなジョブがクラスターにない場合、アクティビティの実行が完了したときに、オンデマンド HDInsight クラスターが起動状態を維持する時間を指定します。<br /><br />たとえば、アクティビティ実行に 6 分かかるときに **timeToLive** が 5 分に設定されている場合、アクティビティの実行の 6 分間の処理の後、クラスターが起動状態を 5 分間維持します。 別のアクティビティの実行が 6 分の時間枠で実行される場合、それは同じクラスターで処理されます。<br /><br />オンデマンド HDInsight クラスターの作成は高額な作業です (時間がかかる場合もあります)。 この設定を必要に応じて使用し、オンデマンド HDInsight クラスターを再利用することで、データ ファクトリのパフォーマンスを改善します。<br /><br />**timeToLive** 値を **0** に設定した場合、クラスターは、アクティビティの実行の完了直後に削除されます。 一方、高い値を設定すると、クラスターでは不必要にアイドル状態が維持され、コストの上昇を招きます。 重要なのは、ニーズに合わせて適切な値を設定することです。<br /><br />**timeToLive** 値が適切に設定されている場合、複数のパイプラインでオンデマンド HDInsight クラスターのインスタンスを共有できます。 | はい      |
+| version                      | HDInsight クラスターのバージョン。 許可されている HDInsight バージョンについては、「[サポートされる HDInsight のバージョン](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#supported-hdinsight-versions)」を参照してください。 この値が指定されていない場合は、[最新 HDI の既定のバージョン](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning)が使用されます。 | いいえ       |
+| linkedServiceName            | データを保存し、処理するためにオンデマンド クラスターで使用される Azure Storage のリンクされたサービスです。 HDInsight クラスターは、このストレージ アカウントと同じリージョンに作成されます。<p>現時点では、Azure Data Lake Store をストレージとして使用するオンデマンド HDInsight クラスターを作成することはできません。 HDInsight 処理の結果データを Data Lake Store に保存する必要がある場合は、コピー アクティビティを使用して、Blob Storage から Data Lake Store にデータをコピーします。 </p> | はい      |
+| additionalLinkedServiceNames | HDInsight のリンクされたサービスの追加ストレージ アカウントを指定します。 ストレージ アカウントは、Data Factory によって自動的に登録されます。 こうしたストレージ アカウントは、HDInsight クラスターと同じリージョンに存在する必要があります。 HDInsight クラスターは、**linkedServiceName** プロパティで指定されているストレージ アカウントと同じリージョンで作成されます。 | いいえ       |
+| osType                       | オペレーティング システムの種類。 使用可能な値は **Linux** と **Windows** です。 この値を指定しない場合は、**Linux** が使用されます。  <br /><br />Linux ベースの HDInsight クラスターを使用することを強くお勧めします。 Windows 向けの HDInsight の提供終了日は 2018 年 7 月 31 日です。 | いいえ       |
+| hcatalogLinkedServiceName    | HCatalog データベースを指定する Azure SQL のリンクされたサービスの名前。 オンデマンド HDInsight クラスターは、SQL データベースを metastore として使用して作成されます。 | いいえ       |
 
 #### <a name="example-linkedservicenames-json"></a>例:LinkedServiceNames JSON
 
@@ -146,14 +146,14 @@ Data Factory では、データを処理するための Windows ベースまた�
 
 | プロパティ               | 説明                              | 必須 |
 | :--------------------- | :--------------------------------------- | :------- |
-| coreConfiguration      | 作成する HDInsight クラスターにコア構成パラメーター (core-site.xml) を指定します。 | いいえ        |
-| hBaseConfiguration     | HDInsight クラスターに HBase 構成パラメーター (hbase-site.xml) を指定します。 | いいえ        |
-| hdfsConfiguration      | HDInsight クラスターに HDFS 構成パラメーター (hdfs-site.xml) を指定します。 | いいえ        |
-| hiveConfiguration      | HDInsight クラスターに Hive 構成パラメーター (hive-site.xml) を指定します。 | いいえ        |
-| mapReduceConfiguration | HDInsight クラスターに MapReduce 構成パラメーター (mapred-site.xml) を指定します。 | いいえ        |
-| oozieConfiguration     | HDInsight クラスターに Oozie 構成パラメーター (oozie-site.xml) を指定します。 | いいえ        |
-| stormConfiguration     | HDInsight クラスターに Storm 構成パラメーター (storm-site.xml) を指定します。 | いいえ        |
-| yarnConfiguration      | HDInsight クラスターに YARN 構成パラメーター (yarn-site.xml) を指定します。 | いいえ        |
+| coreConfiguration      | 作成する HDInsight クラスターにコア構成パラメーター (core-site.xml) を指定します。 | いいえ       |
+| hBaseConfiguration     | HDInsight クラスターに HBase 構成パラメーター (hbase-site.xml) を指定します。 | いいえ       |
+| hdfsConfiguration      | HDInsight クラスターに HDFS 構成パラメーター (hdfs-site.xml) を指定します。 | いいえ       |
+| hiveConfiguration      | HDInsight クラスターに Hive 構成パラメーター (hive-site.xml) を指定します。 | いいえ       |
+| mapReduceConfiguration | HDInsight クラスターに MapReduce 構成パラメーター (mapred-site.xml) を指定します。 | いいえ       |
+| oozieConfiguration     | HDInsight クラスターに Oozie 構成パラメーター (oozie-site.xml) を指定します。 | いいえ       |
+| stormConfiguration     | HDInsight クラスターに Storm 構成パラメーター (storm-site.xml) を指定します。 | いいえ       |
+| yarnConfiguration      | HDInsight クラスターに YARN 構成パラメーター (yarn-site.xml) を指定します。 | いいえ       |
 
 #### <a name="example-on-demand-hdinsight-cluster-configuration-with-advanced-properties"></a>例:オンデマンド HDInsight クラスター構成と詳細なプロパティ
 
@@ -199,9 +199,9 @@ Data Factory では、データを処理するための Windows ベースまた�
 
 | プロパティ          | 説明                              | 必須 |
 | :---------------- | :--------------------------------------- | :------- |
-| headNodeSize      | ヘッド ノードのサイズを設定します。 既定値は **Standard_D3** です。 詳細については、「[ノード サイズの指定](#specify-node-sizes)」を参照してください。 | いいえ        |
-| dataNodeSize      | データ ノードのサイズを設定します。 既定値は **Standard_D3** です。 | いいえ        |
-| zookeeperNodeSize | ZooKeeper ノードのサイズを設定します。 既定値は **Standard_D3** です。 | いいえ        |
+| headNodeSize      | ヘッド ノードのサイズを設定します。 既定値は **Standard_D3** です。 詳細については、「[ノード サイズの指定](#specify-node-sizes)」を参照してください。 | いいえ       |
+| dataNodeSize      | データ ノードのサイズを設定します。 既定値は **Standard_D3** です。 | いいえ       |
+| zookeeperNodeSize | ZooKeeper ノードのサイズを設定します。 既定値は **Standard_D3** です。 | いいえ       |
 
 #### <a name="specify-node-sizes"></a>ノード サイズの指定
 前のセクションで説明したプロパティに対して指定する必要がある文字列値については、[仮想マシンのサイズ](../../virtual-machines/linux/sizes.md)に関するページをご覧ください。 値は、[仮想マシンのサイズ](../../virtual-machines/linux/sizes.md)に関するページで参照されているコマンドレットおよび API に準拠している必要があります。 Large (既定値) データ ノードのサイズは 7 GB のメモリ容量です。 これはシナリオによっては不十分な場合があります。 
@@ -259,11 +259,11 @@ HDInsight のリンクされたサービスを作成し、独自の HDInsight �
 ### <a name="properties"></a>Properties
 | プロパティ          | 説明                              | 必須 |
 | ----------------- | ---------------------------------------- | -------- |
-| type              | type プロパティを **HDInsight** に設定します。 | [はい]      |
-| clusterUri        | HDInsight クラスターの URI です。        | [はい]      |
-| username          | 既存の HDInsight クラスターへの接続に使用するユーザー アカウントの名前です。 | [はい]      |
-| password          | ユーザー アカウントのパスワードです。   | [はい]      |
-| linkedServiceName | HDInsight クラスターで使用される Blob Storage を参照するストレージのリンクされたサービスの名前です。 <p>現在、Data Lake Store のリンクされたサービスをこのプロパティに指定することはできません。 HDInsight クラスターが Data Lake Store にアクセスできる場合、Hive または Pig スクリプトから Data Lake Store のデータにアクセスできます。 </p> | [はい]      |
+| type              | type プロパティを **HDInsight** に設定します。 | はい      |
+| clusterUri        | HDInsight クラスターの URI です。        | はい      |
+| username          | 既存の HDInsight クラスターへの接続に使用するユーザー アカウントの名前です。 | はい      |
+| password          | ユーザー アカウントのパスワードです。   | はい      |
+| linkedServiceName | HDInsight クラスターで使用される Blob Storage を参照するストレージのリンクされたサービスの名前です。 <p>現在、Data Lake Store のリンクされたサービスをこのプロパティに指定することはできません。 HDInsight クラスターが Data Lake Store にアクセスできる場合、Hive または Pig スクリプトから Data Lake Store のデータにアクセスできます。 </p> | はい      |
 
 ## <a name="azure-batch-linked-service"></a>Azure Batch のリンクされたサービス
 Batch のリンクされたサービスを作成し、仮想マシン (VM) の Batch プールをデータ ファクトリに登録できます。 Microsoft .NET カスタム アクティビティを実行するには、Batch または HDInsight のいずれかを使用します。
@@ -291,13 +291,13 @@ Batch サービスを初めて利用する場合:
 }
 ```
 
-**accountName** プロパティについては、**.\<region name\>** をバッチ アカウントの名前に追加します。 例: 
+**accountName** プロパティについては、 **.\<region name\>** をバッチ アカウントの名前に追加します。 例:
 
 ```json
 "accountName": "mybatchaccount.eastus"
 ```
 
-また、**batchUri** エンドポイントを指定することもできます。 例: 
+また、**batchUri** エンドポイントを指定することもできます。 例:
 
 ```json
 "accountName": "adfteam",
@@ -307,11 +307,11 @@ Batch サービスを初めて利用する場合:
 ### <a name="properties"></a>Properties
 | プロパティ          | 説明                              | 必須 |
 | ----------------- | ---------------------------------------- | -------- |
-| type              | type プロパティを **AzureBatch** に設定します。 | [はい]      |
-| accountName       | Batch アカウントの名前。         | [はい]      |
-| accessKey         | Batch アカウントのアクセス キー。  | [はい]      |
-| poolName          | VM のプールの名前。    | [はい]      |
-| linkedServiceName | この Batch のリンクされたサービスに関連付けられている、ストレージのリンクされたサービスの名前。 このリンクされたサービスは、アクティビティの実行およびアクティビティの実行ログの保存に必要なステージング ファイルに使用されます。 | [はい]      |
+| type              | type プロパティを **AzureBatch** に設定します。 | はい      |
+| accountName       | Batch アカウントの名前。         | はい      |
+| accessKey         | Batch アカウントのアクセス キー。  | はい      |
+| poolName          | VM のプールの名前。    | はい      |
+| linkedServiceName | この Batch のリンクされたサービスに関連付けられている、ストレージのリンクされたサービスの名前。 このリンクされたサービスは、アクティビティの実行およびアクティビティの実行ログの保存に必要なステージング ファイルに使用されます。 | はい      |
 
 ## <a name="azure-machine-learning-linked-service"></a>Azure Machine Learning のリンクされたサービス
 Machine Learning のリンクされたサービスを作成して、Machine Learning のバッチ スコアリング エンドポイントをデータ ファクトリに登録できます。
@@ -334,9 +334,9 @@ Machine Learning のリンクされたサービスを作成して、Machine Lear
 ### <a name="properties"></a>Properties
 | プロパティ   | 説明                              | 必須 |
 | ---------- | ---------------------------------------- | -------- |
-| type       | type プロパティを **AzureML** に設定します。 | [はい]      |
-| mlEndpoint | バッチ スコアリング URL です。                   | [はい]      |
-| apiKey     | 公開されたワークスペース モデルの API です。     | [はい]      |
+| Type       | type プロパティを **AzureML** に設定します。 | はい      |
+| mlEndpoint | バッチ スコアリング URL です。                   | はい      |
+| apiKey     | 公開されたワークスペース モデルの API です。     | はい      |
 
 ## <a name="azure-data-lake-analytics-linked-service"></a>Azure Data Lake Analytics リンク サービス
 Data Lake Analytics のリンクされたサービスを作成して、Data Lake Analytics コンピューティング サービスを Azure データ ファクトリにリンクできます。 パイプラインの Data Lake Analytics U-SQL アクティビティは、このリンク サービスを参照します。 
@@ -345,11 +345,11 @@ Data Lake Analytics のリンクされたサービスを作成して、Data Lake
 
 | プロパティ                 | 説明                              | 必須                                 |
 | ------------------------ | ---------------------------------------- | ---------------------------------------- |
-| type                 | type プロパティを **AzureDataLakeAnalytics** に設定します。 | [はい]                                      |
-| accountName          | Data Lake Analytics アカウント名です。  | [はい]                                      |
-| dataLakeAnalyticsUri | Data Lake Analytics URI です。           | いいえ                                        |
-| subscriptionId       | Azure サブスクリプション ID です。                    | いいえ <br /><br />(指定されていない場合は、データ ファクトリのサブスクリプションが使用されます)。 |
-| resourceGroupName    | Azure リソース グループ名です。                | いいえ <br /><br /> (指定されていない場合は、データ ファクトリのリソース グループが使用されます)。 |
+| type                 | type プロパティを **AzureDataLakeAnalytics** に設定します。 | はい                                      |
+| accountName          | Data Lake Analytics アカウント名です。  | はい                                      |
+| dataLakeAnalyticsUri | Data Lake Analytics URI です。           | いいえ                                       |
+| subscriptionId       | Azure サブスクリプション ID です。                    | いいえ<br /><br />(指定されていない場合は、データ ファクトリのサブスクリプションが使用されます)。 |
+| resourceGroupName    | Azure リソース グループ名です。                | いいえ<br /><br /> (指定されていない場合は、データ ファクトリのリソース グループが使用されます)。 |
 
 ### <a name="authentication-options"></a>認証オプション
 Data Lake Analytics のリンクされたサービスについては、サービス プリンシパルまたはユーザー資格情報のいずれかを使用した認証を選択できます。
@@ -364,9 +364,9 @@ Data Lake Analytics のリンクされたサービスについては、サービ
 
 | プロパティ                | 説明                              | 必須 |
 | :---------------------- | :--------------------------------------- | :------- |
-| servicePrincipalId  | アプリケーションのクライアント ID です。     | [はい]      |
-| servicePrincipalKey | アプリケーションのキーです。           | [はい]      |
-| tenant              | アプリケーションが配置されているテナントの情報 (ドメイン名またはテナント ID)。 この情報を取得するには、Azure Portal の右上隅にマウス ポインターを移動します。 | [はい]      |
+| servicePrincipalId  | アプリケーションのクライアント ID です。     | はい      |
+| servicePrincipalKey | アプリケーションのキーです。           | はい      |
+| tenant              | アプリケーションが配置されているテナントの情報 (ドメイン名またはテナント ID)。 この情報を取得するには、Azure Portal の右上隅にマウス ポインターを移動します。 | はい      |
 
 **例:サービス プリンシパルの認証**
 ```json
@@ -392,8 +392,8 @@ Data Lake Analytics のユーザー資格情報認証については、次のプ
 
 | プロパティ          | 説明                              | 必須 |
 | :---------------- | :--------------------------------------- | :------- |
-| authorization | Data Factory エディターで、**[承認する]** を選択します。 自動生成された認可 URL をこのプロパティに割り当てる資格情報を入力します。 | [はい]      |
-| sessionId     | OAuth 認可セッションからの OAuth セッション ID です。 各セッション ID は一意であり、1 回のみ使うことができます。 Data Factory エディターを使用すると、この設定が自動的に生成されます。 | [はい]      |
+| authorization | Data Factory エディターで、 **[承認する]** を選択します。 自動生成された認可 URL をこのプロパティに割り当てる資格情報を入力します。 | はい      |
+| sessionId     | OAuth 認可セッションからの OAuth セッション ID です。 各セッション ID は一意であり、1 回のみ使うことができます。 Data Factory エディターを使用すると、この設定が自動的に生成されます。 | はい      |
 
 **例:ユーザー資格情報認証**
 ```json
@@ -427,7 +427,7 @@ Data Lake Analytics のユーザー資格情報認証については、次のプ
 | Azure AD で管理 "*されない*" ユーザー アカウント (Hotmail、Live など) | 12 時間。                                 |
 | Azure AD で管理 "*される*" ユーザー アカウント | スライスの最後の実行から 14 日後。 <br /><br />OAuth ベースのリンクされたサービスに基づくスライスが 14 日ごとに少なくとも 1 回実行される場合は 90 日。 |
 
-このエラーを回避または解決するには、トークンの有効期限が切れたときに、**[承認する]** ボタンを選択して再承認します。 その後、リンクされたサービスを再デプロイします。 次のコードを使って、**sessionId** および **authorization** プロパティの値をプログラムで生成することもできます。
+このエラーを回避または解決するには、トークンの有効期限が切れたときに、 **[承認する]** ボタンを選択して再承認します。 その後、リンクされたサービスを再デプロイします。 次のコードを使って、**sessionId** および **authorization** プロパティの値をプログラムで生成することもできます。
 
 ```csharp
 if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService ||

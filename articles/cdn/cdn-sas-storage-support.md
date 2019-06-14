@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 06/21/2018
 ms.author: magattus
 ms.openlocfilehash: 7edf0a9f8d4eb4c01b6d80fd82a1061b6cbb1e35
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58918554"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60324154"
 ---
 # <a name="using-azure-cdn-with-sas"></a>SAS を利用した Azure CDN の使用
 
@@ -39,7 +39,7 @@ SAS トークンが生成されたら、URL の末尾に `?sv=<SAS token>` を�
 
 `https://<account name>.blob.core.windows.net/<container>/<file>?sv=<SAS token>`
  
-例: 
+例:
  ```
 https://democdnstorage1.blob.core.windows.net/container1/demo.jpg?sv=2017-07-29&ss=b&srt=co&sp=r&se=2038-01-02T21:30:49Z&st=2018-01-02T13:30:49Z&spr=https&sig=QehoetQFWUEd1lhU5iOMGrHBmE727xYAbKJl5ohSiWI%3D
 ```
@@ -52,7 +52,7 @@ https://democdnstorage1.blob.core.windows.net/container1/demo.jpg?sv=2017-07-29&
 
 このオプションは最も簡単で、CDN から配信元サーバーに渡される SAS トークン 1 つのみを使用します。
  
-1. エンドポイントを選択し、**[キャッシュ規則]** をクリックしてから、**[クエリ文字列のキャッシュ]** の一覧で **[一意の URL をすべてキャッシュ]** を選択します。
+1. エンドポイントを選択し、 **[キャッシュ規則]** をクリックしてから、 **[クエリ文字列のキャッシュ]** の一覧で **[一意の URL をすべてキャッシュ]** を選択します。
 
     ![CDN キャッシュ規則](./media/cdn-sas-storage-support/cdn-caching-rules.png)
 
@@ -60,7 +60,7 @@ https://democdnstorage1.blob.core.windows.net/container1/demo.jpg?sv=2017-07-29&
    
    結果として生成される CDN エンドポイント URL の形式は次のとおりです: `https://<endpoint hostname>.azureedge.net/<container>/<file>?sv=<SAS token>`
 
-   例:    
+   例:   
    ```
    https://demoendpoint.azureedge.net/container1/demo.jpg/?sv=2017-07-29&ss=b&srt=c&sp=r&se=2027-12-19T17:35:58Z&st=2017-12-19T09:35:58Z&spr=https&sig=kquaXsAuCLXomN7R00b8CYM13UpDbAHcsRfGOW3Du1M%3D
    ```
@@ -91,7 +91,7 @@ https://democdnstorage1.blob.core.windows.net/container1/demo.jpg?sv=2017-07-29&
 
 2. 新しいルールがアクティブになった後は、URL で SAS トークンを使用しているかどうかに関係なく、CDN エンドポイント上の指定されたコンテナー内のファイルにだれでもアクセスできます。 形式は次のとおりです: `https://<endpoint hostname>.azureedge.net/<container>/<file>`
  
-   例:    
+   例:   
    `https://sasstoragedemo.azureedge.net/container1/demo.jpg`
        
 
@@ -106,7 +106,7 @@ Azure CDN セキュリティ トークン認証を使用するには、**Azure C
    セキュリティ トークン エンドポイント URL は、次のような形式です。   
    `https://<endpoint hostname>.azureedge.net/<container>/<file>?<security_token>`
  
-   例:    
+   例:   
    ```
    https://sasstoragedemo.azureedge.net/container1/demo.jpg?a4fbc3710fd3449a7c99986bkquaXsAuCLXomN7R00b8CYM13UpDbAHcsRfGOW3Du1M%3D
    ```

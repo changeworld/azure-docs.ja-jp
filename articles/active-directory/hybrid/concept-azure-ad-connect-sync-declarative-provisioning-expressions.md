@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cdc7c9dba49bf37db1f039d43b0450c65884c74b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56181985"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60245499"
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning-expressions"></a>Azure AD Connect 同期: 宣言型のプロビジョニングの式について
 Azure AD Connect Sync は、Forefront Identity Manager 2010 で初めて導入された宣言型のプロビジョニングに基づいています。 これにより、コンパイル済みコードを記述することなく完全な ID 統合ビジネス ロジックを実装できます。
@@ -82,7 +82,7 @@ Active Directory Connector は、受信同期ルールについて次のパラ�
 ## <a name="multi-valued-attributes"></a>複数値の属性
 関数は、単一値の属性と複数値の属性両方に対して使用できます。 複数値の属性の場合、関数は、すべての値で動作し、すべての値に同じ関数を適用します。
 
-例:   
+例:  
 `Trim([proxyAddresses])` proxyAddress 属性の各値の Trim を実行します。  
 `Word([proxyAddresses],1,"@") & "@contoso.com"` @-sign を含むすべての文字列では、ドメインを @contoso.com に置き換えます。  
 `IIF(InStr([proxyAddresses],"SIP:")=1,NULL,[proxyAddresses])` SIP アドレスを検索し、値から削除します。

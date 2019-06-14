@@ -15,11 +15,11 @@ ms.date: 09/10/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 2f4c74076f2763addc1f2b971d8ea0ca29ce6fd0
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49393000"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60203977"
 ---
 # <a name="additional-network-requirements-for-large-instances"></a>L インスタンス向け追加のネットワーク要件
 
@@ -39,7 +39,7 @@ Azure portal から追加のサブネットを作成するには、[Azure portal
 
 ## <a name="increase-expressroute-circuit-bandwidth"></a>ExpressRoute 回線の帯域幅の増加
 
-SAP HANA on Microsoft サービス管理にお問い合わせください。 SAP HANA on Azure (L インスタンス) の ExpressRoute 回線の帯域幅を増やすよう推奨された場合は、Azure サポート要求を作成します  (1 つの回線につき、帯域幅を最大 10 Gbps 増やすよう要求することができます)。作業が完了すると通知が届きます。その他の作業は不要で、これで Azure が高速化されます。
+SAP HANA on Microsoft サービス管理にお問い合わせください。 SAP HANA on Azure (L インスタンス) の ExpressRoute 回線の帯域幅を増やすよう推奨された場合は、Azure サポート要求を作成します (1 つの回線につき、帯域幅を最大 10 Gbps 増やすよう要求することができます)。作業が完了すると通知が届きます。その他の作業は不要で、これで Azure が高速化されます。
 
 ## <a name="add-an-additional-expressroute-circuit"></a>ExpressRoute 回線の追加
 
@@ -49,7 +49,7 @@ SAP HANA on Microsoft サービス管理にお問い合わせください。 Exp
 
 ## <a name="delete-a-subnet"></a>サブネットの削除
 
-仮想ネットワーク サブネットを削除するには、Azure portal、PowerShell、または Azure CLI を使用できます。 Azure 仮想ネットワークの IP アドレス範囲またはアドレス空間の範囲が集約されている場合、Microsoft のフォローアップはありません  (ただし、削除したサブネットを含む BGP ルート アドレス空間は依然として仮想ネットワークから伝播されていることに注意してください)。Azure 仮想ネットワークのアドレス範囲またはアドレス空間を複数の IP アドレス範囲として定義しており、そのいずれかが削除したサブネットに割り当てられていることがあります。 それを仮想ネットワーク アドレス空間から削除してください。 次に、SAP HANA on Microsoft サービス管理に、SAP HANA on Azure (L インスタンス) が通信を許可されている範囲から、それを削除するように通知します。
+仮想ネットワーク サブネットを削除するには、Azure portal、PowerShell、または Azure CLI を使用できます。 Azure 仮想ネットワークの IP アドレス範囲またはアドレス空間の範囲が集約されている場合、Microsoft のフォローアップはありません (ただし、削除したサブネットを含む BGP ルート アドレス空間は依然として仮想ネットワークから伝播されていることに注意してください)。Azure 仮想ネットワークのアドレス範囲またはアドレス空間を複数の IP アドレス範囲として定義しており、そのいずれかが削除したサブネットに割り当てられていることがあります。 それを仮想ネットワーク アドレス空間から削除してください。 次に、SAP HANA on Microsoft サービス管理に、SAP HANA on Azure (L インスタンス) が通信を許可されている範囲から、それを削除するように通知します。
 
 詳細については、「[サブネットの削除](../../../virtual-network/virtual-network-manage-subnet.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#delete-a-subnet)」を参照してください。
 

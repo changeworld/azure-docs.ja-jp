@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
 ms.openlocfilehash: 42a2055b9a49d6d9f8f4930cb3704fe581f41724
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50669619"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60409993"
 ---
 # <a name="avere-vfxt-demo-projects"></a>Avere vFXT デモ プロジェクト
 
@@ -21,7 +21,7 @@ ms.locfileid: "50669619"
 
 * 「[Rendering using Azure Batch and Avere vFXT](https://github.com/Azure/Avere/blob/master/docs/maya_azure_batch_avere_vfxt_demo.md)」 (Azure Batch と Avere vFXT を使用したレンダリング) - Azure Batch および Avere vFXT クラスターと共に Autodesk Maya を使用して、アニメーション ムービーを生成する方法を紹介する 60 分間のデモ
 
-* 「[Why use the Avere vFXT for rendering?](https://github.com/Azure/Avere/blob/master/docs/why_avere_for_rendering.md)」 (Avere vFXT をレンダリングに使用する理由)  - Avere vFXT クラスターを使用した場合と使用しない場合の NAS のレンダリング時間を比較するデモ 
+* 「[Why use the Avere vFXT for rendering?](https://github.com/Azure/Avere/blob/master/docs/why_avere_for_rendering.md)」 (Avere vFXT をレンダリングに使用する理由) - Avere vFXT クラスターを使用した場合と使用しない場合の NAS のレンダリング時間を比較するデモ 
 
 
 ## <a name="high-performance-computing"></a>ハイ パフォーマンス コンピューティング

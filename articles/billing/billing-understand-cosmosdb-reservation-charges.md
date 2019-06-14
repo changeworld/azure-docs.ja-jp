@@ -10,11 +10,11 @@ ms.date: 04/13/2019
 ms.author: banders
 ms.reviewer: sngun
 ms.openlocfilehash: d5a13e4466234d73bafe8dbe76cae92955cf64bd
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60010298"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60370749"
 ---
 # <a name="understand-how-the-reservation-discount-is-applied-to-azure-cosmos-db"></a>Azure Cosmos DB に予約割引が適用されるしくみについて
 
@@ -119,7 +119,7 @@ Azure の予約の詳細については、次の記事を参照してくださ�
 
 * [Azure の予約とは](../billing/billing-save-compute-costs-reservations.md)  
 * [Azure Cosmos DB の容量が予約された Azure Cosmos DB リソースの前払い](../cosmos-db/cosmos-db-reserved-capacity.md)  
-* [Azure SQL Database の容量が予約された SQL Database 計算リソースの前払い](../sql-database/sql-database-reserved-capacity.md)  
+* [Azure SQL Database の予約容量を使用した SQL Database 計算リソースの前払い](../sql-database/sql-database-reserved-capacity.md)  
 * [Azure の予約の管理](../billing/billing-manage-reserved-vm-instance.md)  
 * [従量課金制サブスクリプションの予約使用量について](../billing/billing-understand-reserved-instance-usage.md)  
 * [エンタープライズ加入契約の予約使用量について](../billing/billing-understand-reserved-instance-usage-ea.md)

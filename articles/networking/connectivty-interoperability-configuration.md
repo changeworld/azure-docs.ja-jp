@@ -11,11 +11,11 @@ ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
 ms.openlocfilehash: 2ceb4aeac55bd555a41c29bd41b00c771490e5f9
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57777093"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60425756"
 ---
 # <a name="interoperability-in-azure-back-end-connectivity-features-test-configuration-details"></a>Azure バックエンド接続機能の相互運用性: テスト構成の詳細
 
@@ -23,11 +23,11 @@ ms.locfileid: "57777093"
 
 ## <a name="spoke-vnet-connectivity-by-using-vnet-peering"></a>VNet ピアリングを使用したスポーク VNet 接続
 
-次の図は、スポーク仮想ネットワーク (VNet) の Azure Virtual Network ピアリングの詳細を示したものです。 2 つの VNet 間のピアリングを設定する方法については、[VNet ピアリングの管理][VNet-Config]に関する記事をご覧ください。 スポーク VNet で、ハブ VNet に接続されたゲートウェイを使用する場合は､**[リモート ゲートウェイを使用する]** を選択します。
+次の図は、スポーク仮想ネットワーク (VNet) の Azure Virtual Network ピアリングの詳細を示したものです。 2 つの VNet 間のピアリングを設定する方法については、[VNet ピアリングの管理][VNet-Config]に関する記事をご覧ください。 スポーク VNet で、ハブ VNet に接続されたゲートウェイを使用する場合は､ **[リモート ゲートウェイを使用する]** を選択します。
 
 [![1]][1]
 
-次の図は､ハブ VNet の VNet ピアリングの詳細を示したものです。 スポーク VNet でハブ VNet のゲートウェイを使用する場合は､**[リモート ゲートウェイを使用する]** を選択します。
+次の図は､ハブ VNet の VNet ピアリングの詳細を示したものです。 スポーク VNet でハブ VNet のゲートウェイを使用する場合は､ **[リモート ゲートウェイを使用する]** を選択します。
 
 [![2]][2]
 

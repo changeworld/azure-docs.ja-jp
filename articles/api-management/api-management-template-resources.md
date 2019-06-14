@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
 ms.openlocfilehash: 673dcbeb630899eebc328cd4fae16f7fe8f47a55
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58757611"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60557887"
 ---
 # <a name="azure-api-management-template-resources"></a>Azure API Management テンプレート リソース
 Azure API Management には、開発者ポータル テンプレート用に次の種類のリソースが用意されています。  
@@ -82,7 +82,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
   
 -   [CommonStrings](#CommonStrings)  
   
--   [Documentation](#Documentation)  
+-   [ドキュメント](#Documentation)  
   
 -   [ErrorPageStrings](#ErrorPageStrings)  
   
@@ -112,13 +112,13 @@ Azure API Management には、開発者ポータル テンプレート用に次�
   
 ###  <a name="ApisStrings"></a> ApisStrings  
   
-|名前|テキスト|  
+|Name|Text|  
 |----------|----------|  
 |PageTitleApis|API|  
   
 ###  <a name="AppDetailsStrings"></a> AppDetailsStrings  
   
-|名前|テキスト|  
+|Name|Text|  
 |----------|----------|  
 |WebApplicationsDetailsTitle|Application preview (アプリケーションのプレビュー)|  
 |WebApplicationsRequirementsHeader|必要条件|  
@@ -127,13 +127,13 @@ Azure API Management には、開発者ポータル テンプレート用に次�
   
 ###  <a name="ApplicationListStrings"></a> ApplicationListStrings  
   
-|名前|テキスト|  
+|Name|Text|  
 |----------|----------|  
 |WebDevelopersAppDeleteConfirmation|Are you sure that you want to remove application? (アプリケーションを削除しますか?)|  
 |WebDevelopersAppNotPublished|Not published (未発行)|  
 |WebDevelopersAppNotSubmitted|Not submitted (未申請)|  
 |WebDevelopersAppTableCategoryHeader|Category|  
-|WebDevelopersAppTableNameHeader|名前|  
+|WebDevelopersAppTableNameHeader|Name|  
 |WebDevelopersAppTableStateHeader|状態|  
 |WebDevelopersEditLink|Edit|  
 |WebDevelopersRegisterAppLink|アプリケーションを登録する|  
@@ -143,13 +143,13 @@ Azure API Management には、開発者ポータル テンプレート用に次�
   
 ###  <a name="AppStrings"></a> AppStrings  
   
-|名前|テキスト|  
+|Name|Text|  
 |----------|----------|  
 |WebApplicationsHeader|[アプリケーション]|  
   
 ###  <a name="CommonResources"></a> CommonResources  
   
-|名前|テキスト|  
+|Name|Text|  
 |----------|----------|  
 |NoItemsToDisplay|該当するものが見つかりません。|  
 |GeneralExceptionMessage|Something is not right. (問題があります。) It could be a temporary glitch or a bug. (一時的な障害またはバグである可能性があります。) Please, try again. (もう一度実行してください。)|  
@@ -160,7 +160,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
   
 ###  <a name="CommonStrings"></a> CommonStrings  
   
-|名前|テキスト|  
+|Name|Text|  
 |----------|----------|  
 |ButtonLabelCancel|キャンセル|  
 |ButtonLabelSave|保存|  
@@ -184,7 +184,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
   
 ###  <a name="Documentation"></a> Documentation  
   
-|名前|テキスト|  
+|Name|Text|  
 |----------|----------|  
 |WebDocumentationInvalidHeaderErrorMessage|Invalid header '{0}' (ヘッダー '{0}' が無効です)|  
 |WebDocumentationInvalidRequestErrorMessage|Invalid Request URL (要求 URL が無効です)|  
@@ -332,7 +332,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
   
 ###  <a name="ErrorPageStrings"></a> ErrorPageStrings  
   
-|名前|Text|  
+|Name|Text|  
 |----------|----------|  
 |LinkLabelBack|戻る|  
 |LinkLabelHomePage|home page|  
@@ -350,7 +350,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
   
 ###  <a name="IssuesStrings"></a> IssuesStrings  
   
-|名前|テキスト|  
+|Name|Text|  
 |----------|----------|  
 |WebIssuesIndexTitle|発行|  
 |WebIssuesNoActiveSubscriptions|You have no active subscriptions. (アクティブなサブスクリプションがありません。) You need to subscribe for a product to report an issue. (問題を報告するには、製品をサブスクライブする必要があります。)|  
@@ -361,7 +361,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
   
 ###  <a name="NotFoundStrings"></a> NotFoundStrings  
   
-|名前|テキスト|  
+|Name|Text|  
 |----------|----------|  
 |LinkLabelHomePage|home page|  
 |LinkLabelSendUsEmail|Send us an e-mail (電子メールを送信する)|  
@@ -376,7 +376,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
   
 ###  <a name="ProductDetailsStrings"></a> ProductDetailsStrings  
   
-|名前|テキスト|  
+|Name|Text|  
 |----------|----------|  
 |WebProductsAgreement|By subscribing to {0} Product, I agree to the `<a data-toggle='modal' href='#legal-terms'\>Terms of Use</a\>`. ({0} 製品をサブスクライブすることで、使用条件に同意します。)|  
 |WebProductsLegalTermsLink|使用条件|  
@@ -398,13 +398,13 @@ Azure API Management には、開発者ポータル テンプレート用に次�
   
 ###  <a name="ProductsStrings"></a> ProductsStrings  
   
-|名前|Text|  
+|Name|Text|  
 |----------|----------|  
-|PageTitleProducts|成果物|  
+|PageTitleProducts|製品|  
   
 ###  <a name="ProviderInfoStrings"></a> ProviderInfoStrings  
   
-|名前|Text|  
+|Name|Text|  
 |----------|----------|  
 |TextboxExternalIdentitiesDisabled|Sign in is disabled by the administrators at the moment. (サインインは、現在、管理者によって無効になっています。)|  
 |TextboxExternalIdentitiesSigninInvitation|Alternatively, sign in with (次のアカウントでサインインすることもできます)|  
@@ -412,7 +412,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
   
 ###  <a name="SigninResources"></a> SigninResources  
   
-|名前|Text|  
+|Name|Text|  
 |----------|----------|  
 |PrincipalNotFound|Principal is not found or signature is invalid (プリンシパルが見つからないか、署名が無効です)|  
 |ErrorSsoAuthenticationFailed|SSO authentication failed (SSO 認証に失敗しました)|  
@@ -431,7 +431,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
 |WebAuthenticationEmailHasBeenRevertedNotice|You email already exist. (メール アドレスは既に存在します。) Request has been reverted (要求は戻されました)|  
 |ValidationErrorEmailAlreadyExists|Email already exist (メール アドレスは既に存在します)|  
 |ValidationErrorEmailInvalid|Invalid e-mail address (メール アドレスが無効です)|  
-|TextboxLabelEmail|電子メール|  
+|TextboxLabelEmail|Email|  
 |ValidationErrorEmailRequired|Email is required. (メール アドレスは必須です。)|  
 |WebAuthenticationErrorNoticeHeader|Error|  
 |WebAuthenticationFieldLengthErrorMessage|{0} must be a maximum length of {1} ({0} は最大長 {0} である必要があります)|  
@@ -508,7 +508,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
   
 ###  <a name="SigninStrings"></a> SigninStrings  
   
-|名前|テキスト|  
+|Name|Text|  
 |----------|----------|  
 |WebAuthenticationForgotPassword|パスワードを忘れた場合|  
 |WebAuthenticationIfAdministrator|If you are an Administrator you must sign in `<a href="{0}"\>here</a\>`. (管理者である場合は、ここでサインインする必要があります。)|  
@@ -520,7 +520,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
   
 ###  <a name="SignupStrings"></a> SignupStrings  
   
-|名前|テキスト|  
+|Name|Text|  
 |----------|----------|  
 |PageTitleSignup|サインアップ|  
 |WebAuthenticationAlreadyAMember|Already a member? (既にメンバーの場合)|  
@@ -530,7 +530,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
   
 ###  <a name="SubscriptionListStrings"></a> SubscriptionListStrings  
   
-|名前|テキスト|  
+|Name|Text|  
 |----------|----------|  
 |SubscriptionCancelConfirmation|Are you sure that you want to cancel this subscription? (このサブスクリプションを取り消しますか?)|  
 |SubscriptionRenewConfirmation|Are you sure that you want to renew this subscription? (このサブスクリプションを更新しますか?)|  
@@ -542,7 +542,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
 |ButtonLabelRenewSubscription|更新|  
 |WebDevelopersSubscriptionRequested|Requested on {0} (要求日時: {0})|  
 |WebDevelopersSubscriptionRequestedState|Requested (要求済み)|  
-|WebDevelopersSubscriptionTableNameHeader|名前|  
+|WebDevelopersSubscriptionTableNameHeader|Name|  
 |WebDevelopersSubscriptionTableStateHeader|状態|  
 |WebDevelopersUsageStatisticsLink|Analytics reports (分析レポート)|  
 |WebDevelopersYourSubscriptions|Your subscriptions (サブスクリプション)|  
@@ -553,7 +553,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
   
 ###  <a name="SubscriptionStrings"></a> SubscriptionStrings  
   
-|名前|テキスト|  
+|Name|Text|  
 |----------|----------|  
 |SectionHeadingCloseAccount|Looking to close your account? (アカウントを削除する場合)|  
 |PageTitleDeveloperProfile|プロファイル|  
@@ -564,19 +564,19 @@ Azure API Management には、開発者ポータル テンプレート用に次�
   
 ###  <a name="UpdateProfileStrings"></a> UpdateProfileStrings  
   
-|名前|テキスト|  
+|Name|Text|  
 |----------|----------|  
 |ButtonLabelUpdateProfile|プロファイルの更新|  
 |PageTitleUpdateProfile|Update account information (アカウント情報の更新)|  
   
 ###  <a name="UserProfile"></a> UserProfile  
   
-|名前|テキスト|  
+|Name|Text|  
 |----------|----------|  
 |ButtonLabelChangeAccountInfo|Change account information (アカウント情報の変更)|  
 |ButtonLabelChangePassword|パスワードの変更|  
 |ButtonLabelCloseAccount|Close account (アカウントの削除)|  
-|TextboxLabelEmail|電子メール|  
+|TextboxLabelEmail|Email|  
 |TextboxLabelEmailFirstName|名|  
 |TextboxLabelEmailLastName|姓|  
 |TextboxLabelNotificationsSenderEmail|Notifications sender email (通知の差出人アドレス)|  

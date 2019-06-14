@@ -13,11 +13,11 @@ ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: 083770c24a6c8939f8d1ff9f0efd5d18aff9dcb0
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57539617"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60487084"
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure Data Factory - データ移動のセキュリティに関する考慮事項
 
@@ -114,8 +114,8 @@ Salesforce では、ファイル、添付ファイル、カスタム フィー�
   
 | ゲートウェイのバージョン (作成時) | 資格情報の格納先 | 資格情報の暗号化/セキュリティ | 
 | --------------------------------- | ------------------ | --------- |  
-| 2.3.xxxx.x 以前 | クラウド | 証明書を使用して暗号化されます (資格情報マネージャー アプリケーションで使用する証明書とは異なります) | 
-| 2.4.xxxx.x 以降 | オンプレミス | DPAPI を使用して保護されます | 
+| 2\.3.xxxx.x 以前 | クラウド | 証明書を使用して暗号化されます (資格情報マネージャー アプリケーションで使用する証明書とは異なります) | 
+| 2\.4.xxxx.x 以降 | オンプレミス | DPAPI を使用して保護されます | 
   
 
 ### <a name="encryption-in-transit"></a>転送中の暗号化
@@ -127,7 +127,7 @@ Salesforce では、ファイル、添付ファイル、カスタム フィー�
 
 次の表には、ハイブリッド データ移動のソースと移動先の場所の異なる組み合わせに基づいたネットワークとゲートウェイの構成の推奨事項がまとめてあります。
 
-| ソース | 宛先 | ネットワーク構成 | ゲートウェイの設定 |
+| source | 宛先 | ネットワーク構成 | ゲートウェイの設定 |
 | ------ | ----------- | --------------------- | ------------- | 
 | オンプレミス | 仮想ネットワークにデプロイされた仮想マシンとクラウド サービス | IPSec VPN (ポイント対サイトまたはサイト間) | ゲートウェイはオンプレミスまたは VNet の Azure 仮想マシン (VM) にインストールできます | 
 | オンプレミス | 仮想ネットワークにデプロイされた仮想マシンとクラウド サービス | ExpressRoute (プライベート ピアリング) | ゲートウェイはオンプレミスまたは VNet の Azure VM にインストールできます | 

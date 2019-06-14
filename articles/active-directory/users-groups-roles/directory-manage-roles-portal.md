@@ -14,11 +14,11 @@ ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 20842c8c644a351b59322569661abf82bb524449
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56187153"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60472593"
 ---
 # <a name="view-and-assign-administrator-roles-in-azure-active-directory"></a>Azure Active Directory で管理者ロールを表示して割り当てる
 
@@ -26,7 +26,7 @@ Azure Active Directory ポータルで、管理者ロールのすべてのメン
 
 ## <a name="view-all-roles"></a>すべてのロールを表示する
 
-Azure Active Directory で、**[ロールと管理者]** を選択して、利用可能なすべてのロールの一覧を表示します。 
+Azure Active Directory で、 **[ロールと管理者]** を選択して、利用可能なすべてのロールの一覧を表示します。 
 
 各行の右側にある省略記号をクリックすると、ロールの詳細な説明が表示されます。
 
@@ -38,7 +38,7 @@ Azure Active Directory で、**[ロールと管理者]** を選択して、利�
 
 ## <a name="view-assignments-for-a-role"></a>ロールの割り当てを表示する
 
-ロールに割り当てられているユーザーを表示するには、ロールをクリックします。 追加の管理機能の **[Manage in PIM]\(PIM で管理\)** を選択できます。 特権ロール管理者は、割り当てを "永続的" (ロールで常にアクティブ) から "有資格" (昇格された場合にのみ、ロールに存在) に変更することができます。 PIM がない場合でも、**[Manage in PIM]\(PIM で管理\)** を選択して、試用版にサインアップできます。 Privileged Identity Management には、[Azure AD Premium P2 ライセンス プラン](../privileged-identity-management/subscription-requirements.md)が必要です。
+ロールに割り当てられているユーザーを表示するには、ロールをクリックします。 追加の管理機能の **[Manage in PIM]\(PIM で管理\)** を選択できます。 特権ロール管理者は、割り当てを "永続的" (ロールで常にアクティブ) から "有資格" (昇格された場合にのみ、ロールに存在) に変更することができます。 PIM がない場合でも、 **[Manage in PIM]\(PIM で管理\)** を選択して、試用版にサインアップできます。 Privileged Identity Management には、[Azure AD Premium P2 ライセンス プラン](../privileged-identity-management/subscription-requirements.md)が必要です。
 
 ![管理者ロールのメンバーの一覧](./media/directory-manage-roles-portal/member-list.png)
 
@@ -46,7 +46,7 @@ Azure Active Directory で、**[ロールと管理者]** を選択して、利�
 
 ## <a name="view-a-users-role-permissions"></a>ユーザーのロールのアクセス許可を表示する
 
-ロールのメンバーを表示しているときに、**[説明]** を選択すると、ロールの割り当てによって付与されているアクセス許可の完全な一覧が表示されます。 このページには、ディレクトリ ロールの管理について説明している関連ドキュメントへのリンクが含まれています。
+ロールのメンバーを表示しているときに、 **[説明]** を選択すると、ロールの割り当てによって付与されているアクセス許可の完全な一覧が表示されます。 このページには、ディレクトリ ロールの管理について説明している関連ドキュメントへのリンクが含まれています。
 
 ![管理者ロールのアクセス許可の一覧](./media/directory-manage-roles-portal/role-description.png)
 

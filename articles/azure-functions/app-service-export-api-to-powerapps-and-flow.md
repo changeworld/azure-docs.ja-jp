@@ -12,11 +12,11 @@ ms.date: 12/15/2017
 ms.author: glenga
 ms.reviewer: sunayv
 ms.openlocfilehash: 9f4bbf91b09abeb917fd9f49482881e33bf788ec
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54413936"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60499571"
 ---
 # <a name="exporting-an-azure-hosted-api-to-powerapps-and-microsoft-flow"></a>Azure でホストされる API を PowerApps と Microsoft Flow にエクスポートする
 
@@ -34,7 +34,7 @@ API 定義をエクスポートするには、次の手順を実行します。
 
 1. [Azure Portal](https://portal.azure.com) で、Azure Functions または別の App Service アプリケーションに移動します。
 
-    Azure Functions を使用している場合、関数アプリを選択して、**[プラットフォーム機能]**、**[API 定義]** の順に選択します。
+    Azure Functions を使用している場合、関数アプリを選択して、 **[プラットフォーム機能]** 、 **[API 定義]** の順に選択します。
 
     ![Azure Functions API の定義](media/app-service-export-api-to-powerapps-and-flow/api-definition-function.png)
 
@@ -99,15 +99,15 @@ PowerApps と Microsoft Flow に API 定義をインポートするには、次�
 
 1. [powerapps.com](https://web.powerapps.com) または [flow.microsoft.com](https://flow.microsoft.com) に移動します。
 
-2. 右上にある歯車アイコンをクリックし、**[カスタム コネクタ]** をクリックします。
+2. 右上にある歯車アイコンをクリックし、 **[カスタム コネクタ]** をクリックします。
 
    ![サービスの歯車アイコン](media/app-service-export-api-to-powerapps-and-flow/icon-gear.png)
 
-3. **[カスタム コネクタの作成]**、**[Import an OpenAPI definition]\(OpenAPI 定義のインポート\)** の順にクリックします。
+3. **[カスタム コネクタの作成]** 、 **[Import an OpenAPI definition]\(OpenAPI 定義のインポート\)** の順にクリックします。
 
    ![カスタム コネクタの作成](media/app-service-export-api-to-powerapps-and-flow/flow-apps-create-connector.png)
 
-4. カスタム コネクタの名前を入力し、エクスポートした OpenAPI 定義に移動して、**[続行]** をクリックします。
+4. カスタム コネクタの名前を入力し、エクスポートした OpenAPI 定義に移動して、 **[続行]** をクリックします。
 
    ![OpenAPI 定義のアップロード](media/app-service-export-api-to-powerapps-and-flow/flow-apps-upload-definition.png)
 

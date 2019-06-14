@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 02/28/2019
 ms.author: banders
 ms.openlocfilehash: be8c7fcebca224196d9eac7d22387989b1bdfd46
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57890935"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60371922"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-from-other-users"></a>他のユーザーから Azure サブスクリプションの課金所有権を取得する
 
@@ -39,10 +39,10 @@ ms.locfileid: "57890935"
 
    ![Azure portal でのコストの管理と請求の検索を示すスクリーンショット](./media/billing-mca-request-billing-ownership/billing-search-cost-management-billing.png)
 
-3. 請求書セクションに移動します。 アクセス方法によっては、請求先アカウントまたは課金プロファイルを選択する必要があります。 請求先アカウントまたは課金プロファイルから、**[請求書セクション]** を選択し、請求書セクションを選択します。
+3. 請求書セクションに移動します。 お持ちのアクセスによっては、課金アカウントまたは課金プロファイルを選択する必要があります。 請求先アカウントまたは課金プロファイルから、 **[請求書セクション]** を選択し、請求書セクションを選択します。
    <!-- Todo - Add a screenshot -->
 
-4. 左下から **[Transfer requests]**(譲渡要求) を選択します。
+4. 左下から **[Transfer requests]** (譲渡要求) を選択します。
 
 5. ページの最上部から **[追加]** を選択します。
 
@@ -68,10 +68,10 @@ ms.locfileid: "57890935"
 
    ![Azure portal でのコストの管理と請求の検索を示すスクリーンショット](./media/billing-mca-request-billing-ownership/billing-search-cost-management-billing.png)
 
-3. 請求書セクションに移動します。 アクセス方法によっては、請求先アカウントまたは課金プロファイルを選択する必要があります。 請求先アカウントまたは課金プロファイルから、**[請求書セクション]** を選択し、請求書セクションを選択します。
+3. 請求書セクションに移動します。 お持ちのアクセスによっては、課金アカウントまたは課金プロファイルを選択する必要があります。 請求先アカウントまたは課金プロファイルから、 **[請求書セクション]** を選択し、請求書セクションを選択します。
    <!-- Todo - Add a screenshot -->
 
-4. 左下から **[Transfer requests]**(譲渡要求) を選択します。
+4. 左下から **[Transfer requests]** (譲渡要求) を選択します。
 
 5. 譲渡要求ページには、次の情報が表示されます。
 
