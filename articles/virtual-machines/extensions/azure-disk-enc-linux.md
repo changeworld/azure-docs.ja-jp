@@ -86,7 +86,7 @@ Linux 用 Azure Disk Encryption では、Active Directory、Key Vault、Storage�
 | KeyEncryptionAlgorithm | 'RSA-OAEP'、'RSA-OAEP-256'、'RSA1_5' | 文字列 |
 | KeyEncryptionKeyURL | url | 文字列 |
 | KeyVaultURL | url | 文字列 |
-| パスフレーズ | password | 文字列 | 
+| Passphrase | password | 文字列 | 
 | SequenceVersion | uniqueidentifier | 文字列 |
 | VolumeType | OS、Data、All | 文字列 |
 
