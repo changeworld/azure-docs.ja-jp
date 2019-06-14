@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/14/2019
+ms.date: 06/04/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: vitavor
 ms.custom: secdec18
-ms.openlocfilehash: 89ba5b9641d156dfb098d51272b8bf8d3fd53f5b
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 946a9bd7595692dddd157d01945fd15bdf1ab965
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65785855"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66493753"
 ---
 # <a name="assign-access-to-cost-management-data"></a>Cost Management のデータへのアクセス許可を割り当てる
 
@@ -170,6 +170,13 @@ EA ポータルで **[DA ビューの請求額]** が無効になっている場
 7. **[アクセスの割り当て先]** の下で、 **[Azure AD のユーザー、グループ、またはアプリケーション]** を選択します。
 8. アクセス許可を割り当てるには、ユーザーを検索して選択します。
 9. **[Save]** をクリックします。
+
+## <a name="cross-tenant-authentication-issues"></a>テナント間の認証の問題
+
+現在、Azure Cost Management では、テナント間の認証のサポートが制限されています。 テナント間で認証しようとした場合、状況によっては、コスト分析で**アクセス拒否**エラーが表示される場合があります。 この問題は、別のテナントのサブスクリプションにロールベースのアクセス制御 (RBAC) を構成した後でコストのデータを表示しようとした場合に発生する可能性があります。
+
+"*回避策は次のとおりです*": テナント間の RBAC を構成した後、1 時間待機します。 その後、コスト分析でコストを表示するか、両方のテナントのユーザーに Cost Management へのアクセス権を付与します。  
+
 
 ## <a name="next-steps"></a>次の手順
 

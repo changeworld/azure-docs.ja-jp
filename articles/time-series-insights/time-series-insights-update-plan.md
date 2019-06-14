@@ -10,19 +10,19 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 04/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7c07a9bd771fa8dc1f7ff50f2efae4cd48672de5
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 435e5f2163270672ac5f1f5695ca2fe9be22ee6b
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66244120"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66388758"
 ---
 # <a name="plan-your-azure-time-series-insights-preview-environment"></a>Azure Time Series Insights プレビューの環境を計画する
 
 この記事では、Azure Time Series Insights プレビューを使用して、迅速に計画し、開始するためのベスト プラクティスについて説明します。
 
 > [!NOTE]
-> 一般提供 TSI インスタンスを計画するためのベスト プラクティスについては、「[Plan your Azure Time Series Insights GA environment (Azure Time Series Insights GA 環境の計画)](time-series-insights-environment-planning.md)」を参照してください。
+> 一般公開 Time Series Insights インスタンスを計画するためのベスト プラクティスについては、[Azure Time Series Insights 一般公開環境の計画](time-series-insights-environment-planning.md)に関するページを参照してください。
 
 ## <a name="best-practices-for-planning-and-preparation"></a>計画と準備のベスト プラクティス
 
@@ -45,13 +45,13 @@ Time Series Insights プレビュー環境をプロビジョニングする際�
 
 始めに、3 つの追加項目が必要です。
 
-* [タイム シリーズ モデル](./time-series-insights-update-tsm.md)。
-* [Time Series Insights に接続されているイベント ソース](./time-series-insights-how-to-add-an-event-source-iothub.md)。
-* どちらもモデルにマップされ、有効な JSON 形式である[イベント ソースに送られるイベント](./time-series-insights-send-events.md)。
+* [タイム シリーズ モデル](./time-series-insights-update-tsm.md)
+* [Time Series Insights に接続されているイベント ソース](./time-series-insights-how-to-add-an-event-source-iothub.md)
+* どちらもモデルにマップされ、有効な JSON 形式である[イベント ソースに送られるイベント](./time-series-insights-send-events.md)
 
 ## <a name="configure-time-series-ids-and-timestamp-properties"></a>タイム シリーズ ID と Timestamp プロパティの構成
 
-新しい Time Series Insights 環境を作成するには、**タイム シリーズ ID** を選択します。 そうすることで、データの論理パーティションとして機能します。 前述のように、タイム シリーズ ID の準備ができていることを確認します。
+新しい Time Series Insights 環境を作成するには、タイム シリーズ ID を選択します。 そうすることで、データの論理パーティションとして機能します。 前述のように、タイム シリーズ ID の準備ができていることを確認します。
 
 > [!IMPORTANT]
 > タイム シリーズ ID は、*不変*で*後で変更することはできません*。 最終的な選択と初めて使用する前に、それぞれを確認してください。
@@ -63,11 +63,11 @@ Timestamp プロパティも重要です。 イベント ソースを追加す�
 > [!TIP]
 > イベント ソースの書式設定と解析の要件を確認します。
 
-空白のままにすると、イベント ソースのイベント エンキュー時間が、イベント タイムスタンプとして使用されます。 履歴データまたはバッチ処理されたイベントを送信する場合は、既定のイベント エンキュー時間より、Timestamp プロパティをカスタマイズすることが役立ちます。 詳細については、[IoT Hub にイベント ソースを追加する方法](./time-series-insights-how-to-add-an-event-source-iothub.md)に関するページを参照してください。
+空白のままにすると、イベント ソースのイベント エンキュー時間が、イベント タイムスタンプとして使用されます。 履歴データまたはバッチ処理されたイベントを送信する場合は、既定のイベント エンキュー時間より、Timestamp プロパティをカスタマイズすることが役立ちます。 詳細については、[Azure IoT Hub にイベント ソースを追加する](./time-series-insights-how-to-add-an-event-source-iothub.md)方法に関するページを参照してください。
 
 ## <a name="understand-the-time-series-model"></a>タイム シリーズ モデルについて
 
-Time Series Insights 環境のタイム シリーズ モデルを構成できるようになりました。 新しいモデルにより、IoT データの検索と分析が簡単になります。 時系列データのキュレーション、メンテナンス、およびエンリッチメントが可能になり、コンシューマー対応データ セットの準備に役立ちます。 モデルでは、**タイム シリーズ ID** が使われ、これは、型と呼ばれる変数と階層に一意のリソースを関連付けるインスタンスにマップされます。 新しい[タイム シリーズ モデル](./time-series-insights-update-tsm.md)について参照してください。
+Time Series Insights 環境のタイム シリーズ モデルを構成できるようになりました。 新しいモデルにより、IoT データの検索と分析が簡単になります。 時系列データのキュレーション、メンテナンス、およびエンリッチメントが可能になり、コンシューマー対応データ セットの準備に役立ちます。 モデルでは、タイム シリーズ ID が使われ、これは、型と呼ばれる変数と階層に一意のリソースを関連付けるインスタンスにマップされます。 新しい[タイム シリーズ モデル](./time-series-insights-update-tsm.md)について参照してください。
 
 モデルは動的であるため、いつでも構築できます。 すばやく開始するため、データを Time Series Insights にプッシュする前に、モデルを構築してアップロードしてください。 モデルを構築するには、[タイム シリーズ モデルの使用](./time-series-insights-update-how-to-tsm.md)に関するページを参照してください。
 
@@ -79,8 +79,8 @@ Time Series Insights にイベントを送信する方法を確認できます�
 
 お勧めの方法:
 
-* タイム シリーズ モデルにメタデータを格納します
-* タイム シリーズ モード、インスタンス フィールド、およびイベントには、必要な情報 (**タイム シリーズ ID**、**タイムスタンプ**など) のみを含めます。
+* タイム シリーズ モデルにメタデータを格納します。
+* タイム シリーズ モード、インスタンス フィールド、およびイベントには、必要な情報 (タイム シリーズ ID、タイムスタンプなど) のみを含めます。
 
 詳細については、[イベントの調整](./time-series-insights-send-events.md#json)に関するページを参照してください。
 
@@ -89,5 +89,4 @@ Time Series Insights にイベントを送信する方法を確認できます�
 ## <a name="next-steps"></a>次の手順
 
 - Time Series Insights プレビューの[ストレージとイングレス](./time-series-insights-update-storage-ingress.md)の詳細を確認する。
-
 - Time Series Insights プレビューの[データ モデリング](./time-series-insights-update-tsm.md)について学習する。

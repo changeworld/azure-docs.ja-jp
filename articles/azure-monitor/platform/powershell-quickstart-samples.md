@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 2/14/2018
 ms.author: robb
 ms.subservice: ''
-ms.openlocfilehash: 59cb14c86963d956b0bd63f65b10776dff4aa97f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: ada62fbfa51604a6b3188c27d5c14da40c8ac116
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59698078"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66400205"
 ---
 # <a name="azure-monitor-powershell-quick-start-samples"></a>Azure Monitor の PowerShell クイック スタート サンプル
 この記事では、Azure Monitor の機能にアクセスするために役立つ PowerShell のサンプル コマンドを紹介します。
@@ -42,6 +42,11 @@ Connect-AzAccount
 Get-AzSubscription
 ```
 
+作業コンテキスト (どのサブスクリプションに対してコマンドが実行されるのか) を確認するには、次のコマンドを使用します。
+
+```powershell
+Get-AzContext
+```
 作業コンテキストを別のサブスクリプションに変更するには、次のコマンドを使用します。
 
 ```powershell
@@ -50,18 +55,23 @@ Set-AzContext -SubscriptionId <subscriptionid>
 
 
 ## <a name="retrieve-activity-log-for-a-subscription"></a>サブスクリプションのアクティビティ ログの取得
-`Get-AzLog` コマンドレットを使用します。  一般的な例を次に示します。
+[Get-AzLog](https://docs.microsoft.com/powershell/module/az.monitor/get-azlog) コマンドレットを使用します。  一般的な例を次に示します。 アクティビティ ログでは、過去 90 日間の操作が保持されます。 これより前の日付を使用すると、エラー メッセージが表示されます。  
+
+以降のコマンドでどのような時間を使用できるかを確認するために、現在の日付/時刻を表示します。
+```powershell
+Get-Date
+```
 
 指定した日時のログ エントリを取得します。
 
 ```powershell
-Get-AzLog -StartTime 2016-03-01T10:30
+Get-AzLog -StartTime 2019-03-01T10:30
 ```
 
 範囲内の日時のログ エントリを取得します。
 
 ```powershell
-Get-AzLog -StartTime 2015-01-01T10:30 -EndTime 2015-01-01T11:30
+Get-AzLog -StartTime 2019-01-01T10:30 -EndTime 2015-01-01T11:30
 ```
 
 特定のリソース グループのログ エントリを取得します。
@@ -85,13 +95,13 @@ Get-AzLog -Caller 'myname@company.com'
 次のコマンドは、アクティビティ ログから最後の 1000 件のイベントを取得します。
 
 ```powershell
-Get-AzLog -MaxEvents 1000
+Get-AzLog -MaxRecord 10
 ```
 
 `Get-AzLog` は、他にも多くのパラメーターをサポートしています。 詳細については、 `Get-AzLog` のリファレンスをご覧ください。
 
 > [!NOTE]
-> `Get-AzLog` は、15 日間の履歴のみを提供します。 **-MaxEvents** パラメーターを使用すると、15 日間を超えて最後の N 件のイベントを照会できます。 15 日より前のイベントにアクセスするには、REST API または SDK (SDK を使用した C# のサンプル) を使用します。 **StartTime** を指定しない場合、既定値は **EndTime** から 1 時間引いた値になります。 **EndTime**を指定しない場合、既定値は現在の時刻です。 時刻はすべて UTC 形式です。
+> `Get-AzLog` は、15 日間の履歴のみを提供します。 **-MaxRecords** パラメーターを使用すると、15 日間を超えて最後の N 件のイベントを照会できます。 15 日より前のイベントにアクセスするには、REST API または SDK (SDK を使用した C# のサンプル) を使用します。 **StartTime** を指定しない場合、既定値は **EndTime** から 1 時間引いた値になります。 **EndTime**を指定しない場合、既定値は現在の時刻です。 時刻はすべて UTC 形式です。
 > 
 > 
 

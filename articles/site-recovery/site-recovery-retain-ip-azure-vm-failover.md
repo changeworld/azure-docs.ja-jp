@@ -6,12 +6,12 @@ ms.date: 4/9/2019
 author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 618d60417aa6b582eaef94bf75dcf16c74750f83
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 7b7772bad5bb1c5b43a4bcc8d727a22c82547043
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59788873"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479964"
 ---
 # <a name="retain-ip-addresses-during-failover"></a>フェールオーバー時に IP アドレスを保持する
 
@@ -132,7 +132,7 @@ A 社は、Azure ですべてのアプリを実行しています。
   - 東アジアでは、**Source VNet** 内の次の 3 つのサブネットにわたってワークロードを分割しています。
     - **サブネット 1**:10.1.1.0/24
     - **サブネット 2**:10.1.2.0/24
-    - **サブネット 3**:10.1.0.0/16 の Azure 仮想ネットワークを使用する 10.1.3.0/24。 この仮想ネットワークの名前は **Source VNet** です
+    - **サブネット 3**:アドレス空間 10.1.0.0/16 の Azure 仮想ネットワークを使用する 10.1.3.0/24。 この仮想ネットワークの名前は **Source VNet** です
       - セカンダリ (ターゲット) リージョンは Azure 東南アジアです。
   - 東南アジアには、**Source VNet** と同一の復旧用 VNet (**Recovery VNet**) があります。
 - 東アジアの VM は、Azure ExpressRoute またはサイト間 VPN で、オンプレミス データセンターに接続されています。

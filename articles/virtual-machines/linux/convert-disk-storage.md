@@ -16,16 +16,18 @@ ms.topic: article
 ms.date: 07/12/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 2e7eb455a53abbe2df6ff72f091a599665732429
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: bc42bcbf7149f88eb895317a411c7acd5913d63d
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64724903"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66417682"
 ---
 # <a name="convert-azure-managed-disks-storage-from-standard-to-premium-or-premium-to-standard"></a>Azure マネージド ディスク ストレージを Standard から Premium に、または Premium から Standard に変換する
 
-Azure マネージド ディスクには[ディスクの種類](disks-types.md)が 4 つあります。Azure Ultra Disk Storage、Premium SSD、Standard SSD、Standard HDD です。 パフォーマンス ニーズに合わせ、Premium SSD、Standard SSD、Standard HDD を簡単に切り替えることができます。ダウンタイムはほとんどありません。 この機能は、アンマネージド ディスクや Ultra Disk Storage ではサポートされていません。 ただし、ディスクの種類を簡単に切り替えることができるように、簡単に[アンマネージド ディスクをマネージド ディスクに変換](convert-unmanaged-to-managed-disks.md)できます。
+Azure マネージド ディスクには、ディスクの種類が 4 つあります。Azure Ultra SSD (プレビュー)、Premium SSD、Standard SSD、および Standard HDD です。 パフォーマンスのニーズに合わせて、3 つの GA ディスクの種類 (Premium SSD、Standard SSD、および Standard HDD) を切り替えることができます。 まだ Ultra SSD との切り替えはできません。新しいディスクをデプロイする必要があります。
+
+この機能は、アンマネージド ディスクではサポートされていません。 ただし、ディスクの種類を切り替えられるようにするために、簡単に[アンマネージド ディスクをマネージド ディスクに変換](convert-unmanaged-to-managed-disks.md)できます。
 
 この記事では、Azure CLI を使用し、Azure マネージド ディスクを Standard から Premium に、または Premium から Standard に変換する方法について説明します。 ツールをインストールまたはアップグレードする必要には、「[Azure CLI のインストール](/cli/azure/install-azure-cli)」をご覧ください。
 
@@ -37,7 +39,7 @@ Azure マネージド ディスクには[ディスクの種類](disks-types.md)�
 
 ## <a name="switch-all-managed-disks-of-a-vm-between-premium-and-standard"></a>VM のすべてのマネージド ディスクを Premium と Standard の間で切り替える
 
-この例では、VM のすべてのディスクを Standard ストレージから Premium ストレージに、または Premium ストレージから Standard ストレージに変換する方法について説明します。 Premium マネージド ディスクを使用するには、Premium Storage に対応している [VM のサイズ](sizes.md)を使用している必要があります。 この例は、Premium ストレージに対応するサイズへの切り替えも行います。
+この例では、VM のすべてのマネージド ディスクを Standard ストレージから Premium ストレージに、または Premium ストレージから Standard ストレージに変換する方法について説明します。 Premium マネージド ディスクを使用するには、Premium Storage に対応している [VM のサイズ](sizes.md)を使用している必要があります。 この例は、Premium ストレージに対応するサイズへの切り替えも行います。
 
  ```azurecli
 

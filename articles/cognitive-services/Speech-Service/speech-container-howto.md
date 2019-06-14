@@ -10,23 +10,23 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: diberry
-ms.openlocfilehash: b620cbb8e51fbe41defb6bdbdc66ba4a7e539aa0
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 7a4153dd382a901db21752dd3d55a01803431791
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306554"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66388686"
 ---
 # <a name="install-and-run-speech-service-containers"></a>Speech サービス コンテナーをインストールして実行する
 
-Speech コンテナーでは、堅牢なクラウド機能とエッジの局所性の両方を活用するように最適化された 1 つの音声アプリケーション アーキテクチャを構築できます。 Microsoft が現在サポートしている 2 つの Speech コンテナーは、"**音声テキスト変換**" と "**テキスト読み上げ**" です。 
+Speech コンテナーでは、堅牢なクラウド機能とエッジの局所性の両方を活用するように最適化された 1 つの音声アプリケーション アーキテクチャを構築できます。 
 
 2 つの Speech コンテナーは、"**音声テキスト変換**" と "**テキスト読み上げ**" です。 
 
 |Function|機能|最新|
 |-|-|--|
-|音声テキスト変換| <li>連続するリアルタイムの音声をテキストに書き起こします。<li>音声録音から音声を一括で文字起こしできます。 <li>中間結果、音声の終わりの検出、テキストの自動的な書式設定、および不適切な表現のマスキングをサポートします。 <li>[Language Understanding](https://docs.microsoft.com/azure/cognitive-services/luis/) (LUIS) を呼び出して、文字起こしされた音声からユーザーの意図を導き出すことができます。\*|1.1.1|
-|テキスト読み上げ| <li>テキストを自然な音声に変換します。 <li>複数の性別やサポートされている多くの言語の方言が用意されています。 <li>プレーンテキストの入力または音声合成マークアップ言語 (SSML) をサポートします。 |1.1.0|
+|音声テキスト変換| <li>連続するリアルタイムの音声またはバッチ音声録音を、中間結果を含むテキストに文字起こしします。|1.1.1|
+|テキスト読み上げ| <li>テキストを自然な音声に変換します。 プレーンテキストの入力または音声合成マークアップ言語 (SSML) に対応しています。 |1.1.0|
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 

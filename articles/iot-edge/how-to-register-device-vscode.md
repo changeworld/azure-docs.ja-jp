@@ -4,23 +4,23 @@ description: Visual Studio Code を使用して Azure IoT Hub に新しい IoT E
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 01/03/2019
+ms.date: 06/03/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 2b851e7f2ebdbff08fa09002765fbd7d7927deba
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: c8fce104d48acc3a562599c65eb15cb0a66657b7
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54051171"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66495306"
 ---
 # <a name="register-a-new-azure-iot-edge-device-from-visual-studio-code"></a>Visual Studio Code から新しい Azure IoT Edge デバイスを登録する
 
-Azure IoT Edge で IoT デバイスを使用する前に、それらを IoT ハブに登録する必要があります。 デバイスを登録すると、Edge ワークロード用にデバイスを設定するために使用できる接続文字列を受け取ります。
+Azure IoT Edge で IoT デバイスを使用する前に、それらを IoT ハブに登録する必要があります。 デバイスを登録すると、IoT Edge ワークロード用にデバイスを設定するために使用できる接続文字列を受け取ります。
 
-この記事では、Visual Studio Code (VS Code) を使用して新しい IoT Edge デバイスを登録する方法を示します。 VS Code では、ほとんどの操作を複数の方法で実行できます。 この記事ではエクスプローラーを使用していますが、コマンド パレットを使用してほとんどの手順を実行することもできます。
+この記事では、Visual Studio Code (VS Code) を使用して新しい IoT Edge デバイスを登録する方法を示します。 VS Code では、ほとんどの操作を複数の方法で実行できます。 この記事ではエクスプローラーを使用していますが、コマンド パレットを使用して手順を実行することもできます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -30,15 +30,15 @@ Azure IoT Edge で IoT デバイスを使用する前に、それらを IoT ハ�
 
 ## <a name="sign-in-to-access-your-iot-hub"></a>サインインして IoT ハブにアクセスする
 
-Visual Studio Code 用の Azure IoT 拡張機能を使用して、IoT ハブで操作を実行できます。 これらの操作を動作させるには、Azure アカウントにサインインし、作業している IoT ハブを選択する必要があります。
+Visual Studio Code 用の Azure IoT 拡張機能を使用して、IoT ハブで操作を実行できます。 これらの操作を動作させるには、Azure アカウントにサインインし、IoT ハブを選択する必要があります。
 
 1. Visual Studio Code で**エクスプローラー** ビューを開きます。
 
-1. エクスプローラーの下部で、**[Azure IoT Hub Devices]\(Azure IoT Hub デバイス\)** セクションを展開します。
+1. エクスプローラーの下部で、 **[Azure IoT Hub]** セクションを展開します。
 
    ![[Azure IoT Hub Devices]\(Azure IoT Hub デバイス\) セクションを展開する](./media/how-to-register-device-vscode/azure-iot-hub-devices.png)
 
-1. **[Azure IoT Hub Devices]\(Azure IoT Hub デバイス\)** セクション ヘッダーで **[...]** をクリックします。 省略記号が表示されない場合は、ヘッダーをクリックするかポイントします。
+1. **[Azure IoT Hub]** セクション ヘッダーで **[...]** をクリックします。 省略記号が表示されない場合は、ヘッダーをクリックするかポイントします。
 
 1. **[Select IoT Hub]\(IoT ハブの選択\)** を選択します。
 
@@ -50,7 +50,7 @@ Visual Studio Code 用の Azure IoT 拡張機能を使用して、IoT ハブで�
 
 ## <a name="create-a-device"></a>デバイスを作成する
 
-1. VS Code エクスプローラーで、**[Azure IoT Hub Devices]\(Azure IoT Hub デバイス\)** セクションを展開します。
+1. VS Code エクスプローラーで、 **[Azure IoT Hub Devices]\(Azure IoT Hub デバイス\)** セクションを展開します。
 
 1. **[Azure IoT Hub Devices]\(Azure IoT Hub デバイス\)** セクション ヘッダーで **[...]** をクリックします。 省略記号が表示されない場合は、ヘッダーをクリックするかポイントします。
 
@@ -62,7 +62,7 @@ Visual Studio Code 用の Azure IoT 拡張機能を使用して、IoT ハブで�
 
 ## <a name="view-all-devices"></a>すべてのデバイスを表示する
 
-IoT ハブに接続するすべてのデバイスは、Visual Studio Code エクスプローラーの **[Azure IoT Hub Devices]\(Azure IoT Hub デバイス\)** セクションに表示されます。 IoT Edge デバイスとそれ以外のデバイスはアイコンで区別できます。IoT Edge デバイスを展開すると、各デバイスにデプロイされたモジュールが表示されます。
+IoT ハブに接続するすべてのデバイスは、Visual Studio Code エクスプローラーの **[Azure IoT Hub]** セクションに表示されます。 IoT Edge デバイスとそれ以外のデバイスはアイコンで区別できるほか、各 IoT Edge デバイスには **$edgeAgent** モジュールと **$edgeHub** モジュールがデプロイされています。
 
    ![IoT ハブ内のすべての IoT Edge デバイスを表示する](./media/how-to-register-device-vscode/view-devices.png)
 
@@ -70,7 +70,7 @@ IoT ハブに接続するすべてのデバイスは、Visual Studio Code エク
 
 デバイスを設定する準備ができたら、物理デバイスを IoT ハブ内でのその ID にリンクする接続文字列が必要です。
 
-1. **[Azure IoT Hub Devices]\(Azure IoT Hub デバイス\)** セクションでデバイスの ID を右クリックします。
+1. **[Azure IoT Hub]** セクションでデバイスの ID を右クリックします。
 
 1. **[Copy Device Connection String]\(デバイス接続文字列のコピー\)** を選択します。
 

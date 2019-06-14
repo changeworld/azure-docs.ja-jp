@@ -3,17 +3,17 @@ title: Azure IoT Central でのアーキテクチャの概念 | Microsoft Docs
 description: この記事では、Azure IoT Central のアーキテクチャに関連する主要な概念を紹介します。
 author: dominicbetts
 ms.author: dobett
-ms.date: 03/26/2019
+ms.date: 05/31/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-manager: timlt
-ms.openlocfilehash: 4f4b917808f4973dc83294391f58d7e0e2d01c4c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+manager: philmea
+ms.openlocfilehash: 4bc9a79576c3165585a4a2c897bd41bfb77c080c
+ms.sourcegitcommit: 18a0d58358ec860c87961a45d10403079113164d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59798812"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66693138"
 ---
 # <a name="azure-iot-central-architecture"></a>Azure IoT Central のアーキテクチャ
 
@@ -79,6 +79,14 @@ Azure IoT Central アプリケーションでは、デバイス テンプレー�
 
 アプリケーションには、各デバイス テンプレートに基づいて 1 つ以上のシミュレートされた実デバイスを割り当てることができます。
 
+## <a name="data-export"></a>データのエクスポート
+
+Azure IoT Central アプリケーションでは、ご自分の Azure イベント ハブと Azure Service Bus インスタンスに[データを継続的にエクスポート](howto-export-data-event-hubs-service-bus.md)できます。 また、データをご自分の Azure BLOB ストレージ アカウントに定期的にエクスポートすることもできます。 IoT Central では、測定、デバイス、デバイス テンプレートをエクスポートできます。
+
+## <a name="batch-device-updates"></a>デバイスの一括更新
+
+Azure IoT Central アプリケーションでは、接続されたデバイスを管理するための[ジョブを作成して実行](howto-run-a-job.md)できます。 これらのジョブを使用すると、デバイスのプロパティや設定を一括更新したり、コマンドを実行したりできます。 たとえば、複数の冷蔵自動販売機のファン速度を上げるジョブを作成できます。
+
 ## <a name="role-based-access-control-rbac"></a>ロール ベースのアクセス制御 (RBAC)
 
 管理者は、事前に定義されたロールを使用して Azure IoT Central アプリケーションに対する[アクセス ルールを定義できます](howto-administer.md)。 管理者は、ユーザーがアプリケーションのどの領域にアクセスできるかを決定するロールにユーザーを割り当てることができます。
@@ -95,7 +103,10 @@ Azure IoT Central 内のセキュリティ機能には、次のものがあり�
 ## <a name="ui-shell"></a>UI シェル
 
 UI シェルは、最新の、応答性に優れた、HTML5 ブラウザー ベースのアプリケーションです。
+管理者は、カスタム テーマを適用したり、独自のカスタム ヘルプ リソースを指すようにヘルプのリンクを変更したりして、アプリケーションの UI をカスタマイズできます。 UI カスタムの詳細については、記事「[Azure IoT Central の UI をカスタマイズする](howto-customize-ui.md)」を参照してください。
+
+オペレーターは、パーソナライズされたアプリケーション ダッシュボードを作成できます。 別のデータを表示する複数のダッシュボードを持っておいて切り替えることができます。
 
 ## <a name="next-steps"></a>次の手順
 
-ここでは、Azure IoT Central のアーキテクチャについて説明しました。推奨される次の手順は、Azure IoT Central での[デバイス接続](concepts-connectivity.md)の学習です。
+ここでは、Azure IoT Central のアーキテクチャについて学習しました。推奨される次の手順は、Azure IoT Central での[デバイス接続](concepts-connectivity.md)の学習です。
