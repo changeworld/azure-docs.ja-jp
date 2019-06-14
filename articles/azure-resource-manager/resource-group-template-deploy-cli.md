@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/28/2019
 ms.author: tomfitz
-ms.openlocfilehash: 92476f9ac48c168c3bbe85d4da49b6afe034c117
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 6cccae343e0a06af88c2e996c37910de72138c60
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58648658"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475043"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-cli"></a>Resource Manager テンプレートと Azure CLI を使用したリソースのデプロイ
 
@@ -42,6 +42,8 @@ az group deployment create --resource-group <resource-group-name> --template-fil
 ```azurecli
 az deployment create --location <location> --template-file <path-to-template>
 ```
+
+現在、管理グループのデプロイは、REST API を介してのみサポートされています。 「[Resource Manager テンプレートと Resource Manager REST API を使用したリソースのデプロイ](resource-group-template-deploy-rest.md)」を参照してください。
 
 この記事の例では、リソース グループ デプロイを使用します。 サブスクリプション デプロイの詳細については、「[サブスクリプション レベルでリソース グループとリソースを作成する](deploy-to-subscription.md)」を参照してください。
 
@@ -102,7 +104,7 @@ az group deployment create --resource-group examplegroup \
 
 ## <a name="redeploy-when-deployment-fails"></a>デプロイに失敗したときに再デプロイする
 
-この機能は、"*エラー時のロールバック*" とも呼ばれます。 デプロイに失敗した場合、デプロイ履歴から以前に成功したデプロイを自動的に再デプロイすることができます。 再デプロイを指定するには、デプロイ コマンドで `--rollback-on-error` パラメーターを使用します。 この機能は、インフラストラクチャのデプロイに対して既知の正常な状態を取得してあり、それに戻したい場合に便利です。 いくつかの注意事項と制限があります。
+この機能は、"*エラー時のロールバック*" とも呼ばれます。 デプロイに失敗した場合、デプロイ履歴から以前に成功したデプロイを自動的に再デプロイすることができます。 再デプロイを指定するには、デプロイ コマンドで `--rollback-on-error` パラメーターを使用します。 この機能は、インフラストラクチャのデプロイに関して既知の正常な状態が存在し、その状態に戻したい場合に便利です。 いくつかの注意事項と制限があります。
 
 - 再デプロイは、以前に実行されたときとまったく同じパラメーターで実行されます。 パラメーターを変更することはできません。
 - 以前のデプロイは、[完全モード](./deployment-modes.md#complete-mode)を使用して実行されます。 以前のデプロイに含まれていなかったリソースはすべて削除され、すべてのリソースの構成は以前の状態に設定されます。 [デプロイ モード](./deployment-modes.md)を完全に理解しておいてください。

@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: f83eb87d2eecb91aa18b1caceb42f9d8bd6c2a0e
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: cfa94fc1c75bcd1eaa9a076cfe63369f60ce5f1c
+ms.sourcegitcommit: 18a0d58358ec860c87961a45d10403079113164d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64939587"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66693087"
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>複数のクラウドおよびオンプレミス データベースにわたるデータを SQL データ同期で同期します
 
@@ -129,6 +129,7 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 - オブジェクト (データベース、テーブル、および列) の名前には、印刷可能な文字のピリオド (.)、左角かっこ ([)、または右角かっこ (]) を使用できません。
 - Azure Active Directory 認証はサポートされていません。
 - 名前が同じでスキーマが異なるテーブル (たとえば、dbo.customers や sales.customers など) はサポートされていません。
+- ユーザー定義データ型の列はサポートされていません。
 
 #### <a name="unsupported-data-types"></a>サポートされていないデータ型
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Status Monitor v2 API リファレンス:状態を取得する | Microsoft Docs
-description: Status Monitor v2 API リファレンス Get-ApplicationInsightsMonitoringStatus。 Web サイトを再デプロイせずに Web サイトのパフォーマンスを監視します。 オンプレミス、VM、または Azure でホストされた ASP.NET Web アプリが対象です。
+title: 'Azure Status Monitor v2 API リファレンス: 状態を取得する | Microsoft Docs'
+description: Status Monitor v2 API リファレンス。 Get-ApplicationInsightsMonitoringStatus。 Web サイトを再デプロイせずに Web サイトのパフォーマンスを監視します。 オンプレミス、VM、または Azure でホストされた ASP.NET Web アプリが対象です。
 services: application-insights
 documentationcenter: .net
 author: MS-TimothyMothra
@@ -12,27 +12,27 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: ff61cf2bfb49a64d2f885cb13fd6c48e32c1f8f3
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: 860226320fe1a546798cc462e4e5c06d4b9228cf
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65415998"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66514300"
 ---
 # <a name="status-monitor-v2-api-get-applicationinsightsmonitoringstatus-v022-alpha"></a>Status Monitor v2 API:Get-ApplicationInsightsMonitoringStatus (v0.2.2-alpha)
 
-このドキュメントでは、[Az.ApplicationMonitor PowerShell モジュール](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)のメンバーとして付属しているコマンドレットについて説明します。
+この記事では、[Az.ApplicationMonitor PowerShell モジュール](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)のメンバーであるコマンドレットについて説明します。
 
 > [!IMPORTANT]
 > 現在、Status Monitor v2 はパブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
+> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されており、運用環境のワークロードに使用することは推奨されません。 一部の機能は、サポートされていなかったり、制限されていたりする場合があります。
 > 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 ## <a name="description"></a>説明
 
-このコマンドレットは、使用中の PowerShell モジュールをトラブルシューティングするために提供されています。
-このコマンドレットは、監視に必要なバージョン情報と主要なファイルを報告します。
-追加のパラメーターにより、現在の監視の状態が報告されます。
+使用中の PowerShell モジュールのトラブルシューティングを有効にします。
+このコマンドレットでは、監視に必要なバージョン情報と主要なファイルに関する情報をレポートします。
+追加のパラメーターを使用すると、監視の状態に関する追加のレポートが得られます。
 
 > [!IMPORTANT] 
 > このコマンドレットでは、管理者権限の PowerShell セッションが必要です。
@@ -40,9 +40,9 @@ ms.locfileid: "65415998"
 ## <a name="examples"></a>例
 
 
-### <a name="example-basic-information"></a>例: 基本情報
+### <a name="example-basic-information"></a>例:基本情報
 
-このモジュールについての情報の出力を取得するには、`Get-ApplicationInsightsMonitoringStatus` コマンドを実行します。
+`Get-ApplicationInsightsMonitoringStatus` を実行して現在のモジュールに関する情報を表示します。
 
 ```
 PS C:\> Get-ApplicationInsightsMonitoringStatus
@@ -77,11 +77,11 @@ Machine Identifier:
 0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF
 ```
 
-### <a name="example-runtime-status"></a>例: ランタイムの状態
+### <a name="example-runtime-status"></a>例:ランタイムの状態
 
-インストルメント化されたコンピューターでプロセスを調べて、すべての DLL が読み込まれているかどうかを確認できます。 監視が動作している場合は、少なくとも 12 個の DLL が読み込まれる必要があります。
+インストルメント化されたコンピューターでプロセスを調べて、すべての DLL が読み込まれているかどうかを確認できます。 監視が機能している場合は、少なくとも 12 個の DLL が読み込まれる必要があります。
 
-- コマンド: `Get-ApplicationInsightsMonitoringStatus -InspectProcess`
+コマンド `Get-ApplicationInsightsMonitoringStatus -InspectProcess` を実行します。
 
 
 ```
@@ -115,19 +115,19 @@ listdlls64.exe -accepteula w3wp
 0x000000000ad60000  0x108000  C:\Windows\TEMP\2.4.0.0.Microsoft.ApplicationInsights.Extensions.Intercept_x64.dll
 ```
 
-## <a name="parameters"></a>parameters 
+## <a name="parameters"></a>parameters
 
-### <a name="no-params"></a>(パラメーターなし)
+### <a name="no-parameters"></a>(パラメーターなし)
 
-**既定**では、このコマンドレットは、監視に必要なバージョン番号と DLL のパスを報告します。
+既定では、このコマンドレットによって、監視に必要なバージョン番号と DLL のパスがレポートされます。
 
 Application Insights SDK を含む任意の DLL のバージョンを特定する必要がある場合は、このオプションを使用します。
 
 
 ### <a name="-inspectprocess"></a>-InspectProcess
 
-**省略可能**。 このコマンドレットは、IIS が実行されているかどうかを報告します。
-また、外部のツールをダウンロードして、必要な DLL が IIS ランタイムに読み込まれているかどうかを検査します。
+**省略可能**。 このパラメーターは、IIS が実行されているかどうかをレポートするために使用します。
+また、外部のツールをダウンロードして、必要な DLL が IIS ランタイムに読み込まれているかどうかを特定します。
 
 
 何らかの理由でこのプロセスが失敗した場合は、次のコマンドを手動で実行できます。
@@ -138,10 +138,10 @@ Application Insights SDK を含む任意の DLL のバージョンを特定す�
 
 ### <a name="-force"></a>-Force
 
-**省略可能**。 InspectProcess でのみ使用されます。 このスイッチでは、追加のツールをダウンロードするためのユーザー プロンプトがスキップされます。
+**省略可能**。 InspectProcess でのみ使用されます。 このスイッチは、追加のツールがダウンロードされる前に表示されるユーザー プロンプトをスキップするために使用します。
 
 
 ## <a name="next-steps"></a>次の手順
 
- Status Monitor v2 をさらに活用します。
- - ガイドを使用して、Status Monitor v2 を[トラブルシューティング](status-monitor-v2-troubleshoot.md)します。
+ Status Monitor v2 の活用:
+ - ガイドを使用して、Status Monitor v2 の[トラブルシューティング](status-monitor-v2-troubleshoot.md)を行います。

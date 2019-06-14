@@ -9,12 +9,12 @@ ms.date: 10/04/2018
 ms.topic: conceptual
 description: 何もインストールせずにブラウザーから直接 Azure Dev Spaces に対応する Kubernetes クラスターをすばやく作成する方法について説明します。
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
-ms.openlocfilehash: c9dabc13e85295b88483f43b26ccf0b15406ad9b
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: 532a094f96817f3c525384694b6fa60a292aa948
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65861607"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66391670"
 ---
 # <a name="create-a-kubernetes-cluster-using-azure-cloud-shell"></a>Azure Cloud Shell を使用して Kubernetes クラスターを作成する
 
@@ -22,7 +22,7 @@ ms.locfileid: "65861607"
 
 ## <a name="create-the-cluster"></a>クラスターを作成する
 
-まず、[Azure Dev Spaces をサポートするリージョン](https://docs.microsoft.com/azure/dev-spaces/#a-rapid,-iterative-kubernetes-development-experience-for-teams)にリソース グループを作成します。
+まず、[Azure Dev Spaces をサポートするリージョン][supported-regions]にリソース グループを作成します。
 
 ```azurecli-interactive
 az group create --name MyResourceGroup --location <region>
@@ -39,3 +39,6 @@ az aks create -g MyResourceGroup -n MyAKS --location <region> --disable-rbac --g
 ## <a name="next-steps"></a>次の手順
 
 各種のチュートリアルへのリンクについては、「[Azure Dev Spaces](/azure/dev-spaces/)」を参照してください。
+
+
+[supported-regions]: ../about.md#supported-regions-and-configurations

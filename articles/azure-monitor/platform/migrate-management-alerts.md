@@ -1,26 +1,26 @@
 ---
 title: 管理イベントに関する Azure アラートをアクティビティ ログ アラートに移行する
 description: 管理イベントに関するアラートは 10 月 1 日に削除されます。 既存のアラートを移行して準備してください。
-author: johnkemnetz
+author: rboucher
 services: monitoring
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 08/14/2017
-ms.author: johnkem
+ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: fb54e11c9da6bec2a1e0354317df6343140cbf09
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 78519dad85739b6e4d760bc34719837956638f48
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59794118"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66388711"
 ---
 # <a name="migrate-azure-alerts-on-management-events-to-activity-log-alerts"></a>管理イベントに関する Azure アラートをアクティビティ ログ アラートに移行する
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 > [!WARNING]
-> 管理イベントに関するアラートは 10 月 1 日以降に無効になります。 以下の手順に従って、該当するアラートがあるかどうかを確認し、存在する場合はそのアラートを移行してください。
+> 管理イベントに関するアラートは、2017 年 10 月 1 日以降に無効になります。 以下の手順に従って、該当するアラートがあるかどうかを確認し、存在する場合はそのアラートを移行してください。
 
 ## <a name="what-is-changing"></a>変更点
 

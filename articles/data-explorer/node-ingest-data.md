@@ -1,28 +1,28 @@
 ---
-title: 'クイック スタート: Azure Data Explorer の Node ライブラリを使用してデータを取り込む'
-description: このクイック スタートでは、Node.js を使用して Azure Data Explorer にデータを取り込む (読み込む) 方法について説明します。
+title: Azure Data Explorer の Node ライブラリを使用してデータを取り込む
+description: この記事では、Node.js を使用して Azure Data Explorer にデータを取り込む (読み込む) 方法について説明します。
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
-ms.topic: quickstart
-ms.date: 10/25/2018
-ms.openlocfilehash: 42a4d2e34eab3679f98d5a62099ab57e5924fcc3
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.topic: conceptual
+ms.date: 06/03/2019
+ms.openlocfilehash: 19da42437cfe1d7b63dfed4bd2b30716d691a0e3
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65800422"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66494496"
 ---
-# <a name="quickstart-ingest-data-using-the-azure-data-explorer-node-library"></a>クイック スタート: Azure Data Explorer の Node ライブラリを使用してデータを取り込む
+# <a name="ingest-data-using-the-azure-data-explorer-node-library"></a>Azure Data Explorer の Node ライブラリを使用してデータを取り込む
 
-Azure Data Explorer は、ログと利用統計情報データのための高速で拡張性に優れたデータ探索サービスです。 Azure Data Explorer では、Node 用のクライアント ライブラリとして、[取り込みライブラリ](https://github.com/Azure/azure-kusto-node/tree/master/azure-kusto-ingest)と[データ ライブラリ](https://github.com/Azure/azure-kusto-node/tree/master/azure-kusto-data)の 2 つが用意されています。 これらのライブラリを使用すると、クラスターにデータを取り込み (読み込み)、コードからデータのクエリを行うことができます。 このクイック スタートではまず、テスト クラスター内にテーブルとデータ マッピングを作成します。 その後、クラスターに対するインジェストをキューに入れて、結果を検証します。
+Azure Data Explorer は、ログと利用統計情報データのための高速で拡張性に優れたデータ探索サービスです。 Azure Data Explorer では、Node 用のクライアント ライブラリとして、[取り込みライブラリ](https://github.com/Azure/azure-kusto-node/tree/master/azure-kusto-ingest)と[データ ライブラリ](https://github.com/Azure/azure-kusto-node/tree/master/azure-kusto-data)の 2 つが用意されています。 これらのライブラリを使用すると、クラスターにデータを取り込み (読み込み)、コードからデータのクエリを行うことができます。 この記事ではまず、テスト クラスター内にテーブルとデータ マッピングを作成します。 その後、クラスターに対するインジェストをキューに入れて、結果を検証します。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料の Azure アカウント](https://azure.microsoft.com/free/)を作成してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイック スタートを実行するには、Azure サブスクリプションに加え、以下が必要です。
+この記事内容を実行するには、Azure サブスクリプションに加え、以下が必要です。
 
 * [テスト用のクラスターとデータベース](create-cluster-database-portal.md)
 
@@ -158,7 +158,7 @@ kustoClient.execute(kustoDatabase, query, (err, results) => {
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-他のクイック スタートやチュートリアルを行う場合は、作成したリソースをそのままにします。 行わない場合は、データベースで次のコマンドを実行して、`StormEvents` テーブルをクリーンアップします。
+他の記事に進む場合は、作成したリソースをそのままにします。 行わない場合は、データベースで次のコマンドを実行して、`StormEvents` テーブルをクリーンアップします。
 
 ```Kusto
 .drop table StormEvents
@@ -166,5 +166,4 @@ kustoClient.execute(kustoDatabase, query, (err, results) => {
 
 ## <a name="next-steps"></a>次の手順
 
-> [!div class="nextstepaction"]
-> [クエリを作成する](write-queries.md)
+* [クエリを作成する](write-queries.md)

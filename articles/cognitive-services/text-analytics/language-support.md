@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: aahi
-ms.openlocfilehash: 4f1ce8fd44a501f594f3093789d1ef03e664d018
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 69c14c6b98b572bc413f5a35696269e13344387e
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60008496"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66417316"
 ---
 # <a name="language-and-region-support-for-the-text-analytics-api"></a>Text Analytics API の言語と地域のサポート
 
@@ -23,7 +23,11 @@ ms.locfileid: "60008496"
 
 ## <a name="language-detection"></a>言語検出
 
-Text Analytics API は最大 120 の異なる言語を検出できます。 言語検出は言語の "スクリプト" を返します。 たとえば、"I have a dog" という表現の場合、`en-US` ではなく `en` が返されます。 唯一の特殊なケースは中国語で、テキストが与えられたときスクリプトを決定できる場合、言語検出機能は `zh_CHS` または `zh_CHT` を返します。 中国語のドキュメントについて、特定のスクリプトを識別できない場合、`zh` が返されます。
+Text Analytics API では、広範囲の言語、異形、方言、およびいくつかの地方/文化言語を検出できます。  言語検出は言語の "スクリプト" を返します。 たとえば、"I have a dog" という表現の場合、`en-US` ではなく `en` が返されます。 唯一の特殊なケースは中国語で、テキストが与えられたときスクリプトを決定できる場合、言語検出機能は `zh_CHS` または `zh_CHT` を返します。 中国語のドキュメントについて、特定のスクリプトを識別できない場合、`zh` が返されます。
+
+この機能の言語の正確な一覧は公開されていませんが、さまざまな言語、異形、方言、一部の地方言語や文化言語を検出できます。 
+
+使用頻度の低い言語で表されるコンテンツがある場合は、言語検出を試して、コードが返されるかどうかを確認できます。 検出できない言語の応答は `unknown` です。
 
 ## <a name="sentiment-analysis-key-phrase-extraction-and-named-entity-recognition"></a>感情分析、キー フレーズ抽出、および名前付きエンティティ認識
 

@@ -6,14 +6,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 02/14/2019
+ms.date: 06/03/2019
 ms.author: hrasheed
-ms.openlocfilehash: 2e0c17b07f70d9b05ff9ea6c3af2e8dc26127cae
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 56a2b89277cbf8866c1992a6738bd80106ef3313
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65906517"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66480008"
 ---
 # <a name="query-apache-hive-through-the-jdbc-driver-in-hdinsight"></a>HDInsight 上で JDBC ドライバーを使用して Apache Hive のクエリを実行する
 
@@ -28,7 +28,6 @@ Hive JDBC インターフェイスの詳細については、 [HiveJDBCInterface
 * HDInsight Hadoop クラスター。 その作成方法については、[Azure HDInsight の概要](apache-hadoop-linux-tutorial-get-started.md)に関するページをご覧ください。
 * [Java Developer Kit (JDK) バージョン 11](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html) 以降。
 * [SQuirreL SQL](http://squirrel-sql.sourceforge.net/)。 SQuirreL は、JDBC クライアント アプリケーションです。
-
 
 ## <a name="jdbc-connection-string"></a>JDBC 接続文字列
 
@@ -54,27 +53,19 @@ SQuirreL SQL は、HDInsight クラスターを使用して Hive クエリをリ
 
 1. クラスターからコピーする特定のファイルを含むディレクトリを作成します。
 
-2. 次のスクリプトで、`sshuser` をクラスターの SSH ユーザー アカウント名に置き換えます。  `CLUSTERNAME` を HDInsight クラスター名に置き換えます。  コマンド ラインで次のコマンドを入力し、HDInsight クラスターからファイルをコピーします。
+2. 次のスクリプトで、`sshuser` をクラスターの SSH ユーザー アカウント名に置き換えます。  `CLUSTERNAME` を HDInsight クラスター名に置き換えます。  作業ディレクトリをコマンドラインから前の手順で作成したものに変更し、次のコマンドを入力して HDInsight クラスターからファイルをコピーします。
 
-    ```bash
-    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hadoop-client/hadoop-auth.jar .
-    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hadoop-client/hadoop-common.jar .
-    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hadoop-client/lib/log4j-*.jar .
-    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hadoop-client/lib/slf4j-*.jar .
-    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hive-client/lib/commons-codec*.jar .
-    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hive-client/lib/commons-logging-*.jar .
-    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hive-client/lib/hive-*-1.2*.jar .
-    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hive-client/lib/httpclient-*.jar .
-    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hive-client/lib/httpcore-*.jar .
-    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hive-client/lib/libfb*.jar .
-    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hive-client/lib/libthrift-*.jar .
+    ```cmd
+    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hadoop-client/{hadoop-auth.jar,hadoop-common.jar,lib/log4j-*.jar,lib/slf4j-*.jar} .
+
+    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hive-client/lib/{commons-codec*.jar,commons-logging-*.jar,hive-*-1.2*.jar,httpclient-*.jar,httpcore-*.jar,libfb*.jar,libthrift-*.jar} .
     ```
 
 3. SQuirreL SQL アプリケーションを起動します。 ウィンドウの左側から **[Drivers]** を選択します。
 
     ![ウィンドウの左側の [Drivers] タブ](./media/apache-hadoop-connect-hive-jdbc-driver/squirreldrivers.png)
 
-4. **[Drivers\(ドライバー\)]** ダイアログの上部にあるアイコンから、**+** アイコンを選択してドライバーを作成します。
+4. **[Drivers\(ドライバー\)]** ダイアログの上部にあるアイコンから、 **+** アイコンを選択してドライバーを作成します。
 
     ![[Drivers] アイコン](./media/apache-hadoop-connect-hive-jdbc-driver/driversicons.png)
 
@@ -82,14 +73,14 @@ SQuirreL SQL は、HDInsight クラスターを使用して Hive クエリをリ
 
     * **Name**:Hive
     * **Example URL**: `jdbc:hive2://localhost:443/default;transportMode=http;ssl=true;httpPath=/hive2`
-    * **Extra Class Path (追加クラス パス)**:[追加] ボタンを使って、以前にダウンロードしたすべての jar ファイルを追加します
+    * **Extra Class Path (追加クラス パス)** : **[追加]** ボタンを使って、以前にダウンロードしたすべての jar ファイルを追加します
     * **Class Name**: org.apache.hive.jdbc.HiveDriver
 
    ![[Add Driver] ダイアログ](./media/apache-hadoop-connect-hive-jdbc-driver/adddriver.png)
 
    **[OK]** を選択してこれらの設定を保存します。
 
-6. SQuirreL SQL ウィンドウの左側で、**[Aliases]** を選択します。 次に **+** アイコンを選択して接続のエイリアスを作成します。
+6. SQuirreL SQL ウィンドウの左側で、 **[Aliases]** を選択します。 次に **+** アイコンを選択して接続のエイリアスを作成します。
 
     ![新しいエイリアスの追加](./media/apache-hadoop-connect-hive-jdbc-driver/aliases.png)
 
@@ -97,7 +88,7 @@ SQuirreL SQL は、HDInsight クラスターを使用して Hive クエリをリ
 
     * **Name**:HDInsight の Hive
 
-    * **Driver**:ドロップダウンを使用して、**[Hive]** ドライバーを選択します
+    * **Driver**:ドロップダウンを使用して、 **[Hive]** ドライバーを選択します
 
     * **URL**: `jdbc:hive2://CLUSTERNAME.azurehdinsight.net:443/default;transportMode=http;ssl=true;httpPath=/hive2`
 
@@ -110,15 +101,15 @@ SQuirreL SQL は、HDInsight クラスターを使用して Hive クエリをリ
    ![[Add Alias] ダイアログ](./media/apache-hadoop-connect-hive-jdbc-driver/addalias.png)
 
     > [!IMPORTANT] 
-    > **[Test]** ボタンを使用して、接続が機能することを確認します。 **[Connect to: Hive on HDInsight] (接続先: HDInsight 上の Hive)** ダイアログが表示されたら、**[接続]** を選択してテストを実行します。 テストが成功した場合、**[Connection successful\(接続成功\)]** ダイアログが表示されます。 エラーが発生した場合は、「[トラブルシューティング](#troubleshooting)」を参照してください。
+    > **[Test]** ボタンを使用して、接続が機能することを確認します。 **[Connect to: Hive on HDInsight] (接続先: HDInsight 上の Hive)** ダイアログが表示されたら、 **[接続]** を選択してテストを実行します。 テストが成功した場合、 **[Connection successful\(接続成功\)]** ダイアログが表示されます。 エラーが発生した場合は、「[トラブルシューティング](#troubleshooting)」を参照してください。
 
     **[Add Alias\(エイリアスの追加\)]** ダイアログの下部にある **[OK]** ボタンを使用して、接続エイリアスを保存します。
 
-8. SQuirreL SQL の上部にある **[Connect to]** ドロップダウンから、**[Hive on HDInsight]** を選択します。 メッセージが表示されたら、**[Connect]** を選択します。
+8. SQuirreL SQL の上部にある **[Connect to]** ドロップダウンから、 **[Hive on HDInsight]** を選択します。 メッセージが表示されたら、 **[Connect]** を選択します。
 
     ![接続ダイアログ](./media/apache-hadoop-connect-hive-jdbc-driver/connect.png)
 
-9. 接続されたら、SQL クエリ ダイアログに次のクエリを入力し、**[Run]\(実行\)** アイコン (走っている人) を選択します。 結果領域にクエリの結果が表示されます。
+9. 接続されたら、SQL クエリ ダイアログに次のクエリを入力し、 **[Run]\(実行\)** アイコン (走っている人) を選択します。 結果領域にクエリの結果が表示されます。
 
     ```hql
     select * from hivesampletable limit 10;

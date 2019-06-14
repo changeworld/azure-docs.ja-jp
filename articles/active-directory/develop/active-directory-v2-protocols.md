@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/11/2019
+ms.date: 05/30/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 536210922d13f66aaa5a09bd87bd2d92da8d416c
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: cfc9c027806cb1a3f65e67eda771894a7250ee67
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65546111"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66417656"
 ---
 # <a name="microsoft-identity-platform-protocols"></a>Microsoft ID プラットフォームのプロトコル
 
@@ -48,7 +48,7 @@ OAuth 2.0 と OpenID Connect におけるフローはほぼすべて、情報の
 個人用アカウントと職場や学校のアカウントの両方を受け付けるアプリはすべて、[Azure portal](https://aka.ms/appregistrations) の**アプリの登録** エクスペリエンスを通じて登録する必要があります。登録後、OAuth 2.0 または OpenID Connect を使用して、それらのユーザーをサインインさせることができます。 アプリの登録プロセスでは、いくつかの値が収集され、対象のアプリに割り当てられます。
 
 * アプリを一意に識別する**アプリケーション ID**。
-* **リダイレクト URI** または**パッケージ識別子** (アプリに戻す応答をリダイレクトする際に使用)。
+* 応答をアプリにリダイレクトして戻すために使用できる**リダイレクト URI** (オプション)
 * その他シナリオに応じた値。
 
 詳細については、 [アプリの登録](quickstart-register-app.md)方法を参照してください。

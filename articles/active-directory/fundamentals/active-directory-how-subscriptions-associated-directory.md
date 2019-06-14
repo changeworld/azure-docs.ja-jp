@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f37c501bb53b3b73c30d02d00d49515f907e4ae
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: d2889af6000e77fba7a91392c0adb227588b5306
+ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65463622"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66430798"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>Azure サブスクリプションを Azure Active Directory テナントに関連付けるまたは追加する
 
@@ -42,6 +42,7 @@ Azure サブスクリプションには、Azure Active Directory (Azure AD) と�
     - RBAC を使用してロールが割り当てられているユーザーはアクセスできなくなる
     - サービス管理者と共同管理者はアクセスできなくなる
     - キー コンテナーがある場合はアクセスできなくなり、関連付けを行った後にそれらの修正が必要になる
+    - Virtual Machines や Logic Apps などのリソースのマネージド ID を持っている場合は、関連付け後にそれらを再度有効にするか再作成する必要がある
     - 登録されている Azure Stack がある場合は、関連付けを行った後に再登録が必要になる
 
 1. 次のようなアカウントを使用してサインインします。
@@ -58,7 +59,7 @@ Azure サブスクリプションには、Azure Active Directory (Azure AD) と�
 
     ![[ディレクトリの変更] オプションが強調表示された [サブスクリプション] ページ](media/active-directory-how-subscriptions-associated-directory/change-directory-button.png)
 
-3. 表示されたすべての警告を確認してから、**[変更]** を選択します。
+3. 表示されたすべての警告を確認してから、 **[変更]** を選択します。
 
     ![ディレクトリの変更先が表示された [ディレクトリの変更] ページ](media/active-directory-how-subscriptions-associated-directory/edit-directory-ui.png)
 
@@ -76,7 +77,9 @@ Azure サブスクリプションには、Azure Active Directory (Azure AD) と�
 
 1. キー コンテナーがある場合は、キー コンテナーのテナント ID を変更する必要があります。 詳細については、「[サブスクリプション移行後のキー コンテナー テナント ID の変更](../../key-vault/key-vault-subscription-move-fix.md)」を参照してください。
 
-2. このサブスクリプションを使用して Azure Stack を登録した場合は、再登録する必要があります。 詳細については、「[Azure サブスクリプションを使用した Azure Stack の登録](/azure-stack/operator/azure-stack-registration)」を参照してください。
+2. リソースにシステム割り当てマネージド ID を使用していた場合は、これらを再度有効にする必要があります。 ユーザー割り当てマネージド ID を使用していた場合は、これらを再作成する必要があります。 マネージド ID を再度有効にするか再作成した後、それらの ID に割り当てられているアクセス許可を再確立する必要があります。 詳細については、「[What is managed identities for Azure resources? (Azure リソースのマネージド ID とは)](../managed-identities-azure-resources/overview.md)」を参照してください。
+
+3. このサブスクリプションを使用して Azure Stack を登録した場合は、再登録する必要があります。 詳細については、「[Azure サブスクリプションを使用した Azure Stack の登録](/azure-stack/operator/azure-stack-registration)」を参照してください。
 
 
 

@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 63bb5c6338cf230c2bb47cb0a2c03810053f970a
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 7cb0d77a266dbe8afd331782965e7e9a44663671
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60002580"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66514459"
 ---
 # <a name="troubleshoot-desired-state-configuration-dsc"></a>Desired State Configuration (DSC) をトラブルシューティングする
 
@@ -86,7 +86,7 @@ The attempt to get the action from server https://<url>//accounts/<account-id>/N
 * ノードに "構成名" ではなく、"ノード構成名" が割り当てられていることを確認してください。
 * ノード構成は、Azure ポータルまたは PowerShell コマンドレットを使用してノードに割り当てることができます。
 
-  * Azure Portal を使用してノードにノード構成を割り当てるには、**[DSC ノード]** ページを開き、ノードを選択し、**[ノード構成の割り当て]** ボタンをクリックします。  
+  * Azure Portal を使用してノードにノード構成を割り当てるには、 **[DSC ノード]** ページを開き、ノードを選択し、 **[ノード構成の割り当て]** ボタンをクリックします。  
   * PowerShell コマンドレットを使用してノードにノード構成を割り当てるには、**Set-AzureRmAutomationDscNode** コマンドレットを使用します。
 
 ### <a name="no-mof-files"></a>シナリオ:構成のコンパイルを実行しても、ノード構成 (MOF ファイル) が生成されなかった
@@ -145,6 +145,25 @@ System.InvalidOperationException error processing property 'Credential' of type 
 #### <a name="resolution"></a>解決策
 
 * 上記の構成の各ノード構成について **PSDscAllowPlainTextPassword** を true に設定するために、適切な **ConfigurationData** を渡してください。 詳細については、[Azure Automation DSC の資産](../automation-dsc-compile.md#assets)に関するページをご覧ください。
+
+### <a name="failure-processing-extension"></a>シナリオ:DSC 拡張機能からのオンボード、"エラーの処理拡張機能" のエラー
+
+#### <a name="issue"></a>問題
+
+DSC 拡張機能を使用してオンボードするときに、下記を含むエラーが発生する
+
+```error
+VM has reported a failure when processing extension 'Microsoft.Powershell.DSC'. Error message: \"DSC COnfiguration 'RegistrationMetaConfigV2' completed with error(s). Following are the first few: Registration of the Dsc Agent with the server <url> failed. The underlying error is: The attempt to register Dsc Agent with Agent Id <ID> with the server <url> return unexpected response code BadRequest. .\".
+```
+
+#### <a name="cause"></a>原因
+
+通常、このエラーは、サービスに存在しないノード構成名がノードに割り当てられたときに発生します。
+
+#### <a name="resolution"></a>解決策
+
+* ノードに割り当てるノード構成名が、サービスに存在するものと正確に一致していることを確認します。
+* ノード構成名を含めないようにすることもできます。この場合、ノードはオンボードされますが、ノード構成は割り当てられません。
 
 ## <a name="next-steps"></a>次の手順
 

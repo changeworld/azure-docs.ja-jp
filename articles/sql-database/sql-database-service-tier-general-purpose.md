@@ -12,12 +12,12 @@ ms.author: jovanpop-msft
 ms.reviewer: sstein
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: dc379f1ee67174cd806840e4244054701d18f0d4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b972ea985a09457d8b6a17a292e18754761f5a6e
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59784024"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479200"
 ---
 # <a name="general-purpose-service-tier---azure-sql-database"></a>General Purpose サービス レベル - Azure SQL Database
 
@@ -45,10 +45,11 @@ General Purpose サービス レベルのアーキテクチャ モデルには�
 
 ## <a name="when-to-choose-this-service-tier"></a>このサービス レベルを選択する場合
 
-General Purpose サービス レベルは、ほとんどの一般的なワークロード向けに設計されている Azure SQL Database の既定のサービス レベルです。 ほとんどのケースで、Azure SQL IaaS に匹敵する、ストレージ待機時間が 5 から 10 ミリ秒で SLA が 99.99% のフル マネージド データベース エンジンが必要な場合は、General Purpose レベルをお勧めします。
+General Purpose サービス レベルは、ほとんどの一般的なワークロード向けに設計されている Azure SQL Database の既定のサービス レベルです。 ほとんどのケースで、Azure SQL IaaS に匹敵する、ストレージの待ち時間が 5 から 10 ミリ秒で SLA が 99.99% のフル マネージド データベース エンジンが必要な場合は、General Purpose レベルをお勧めします。
 
 ## <a name="next-steps"></a>次の手順
 
+- [Managed Instance](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) の General Purpose/Standard レベル、[仮想コア モデル](sql-database-vcore-resource-limits-single-databases.md#general-purpose-service-tier-storage-sizes-and-compute-sizes)または [DTU モデル](sql-database-dtu-resource-limits-single-databases.md#single-database-storage-sizes-and-compute-sizes)の単一データベース、[仮想コア モデル](sql-database-vcore-resource-limits-elastic-pools.md#general-purpose-service-tier-storage-sizes-and-compute-sizes)および [DTU モデル](sql-database-dtu-resource-limits-elastic-pools.md#standard-elastic-pool-limits)のエラスティック プールのリソース特性 (コア数、IO、メモリ) を確認します。
 - [Business Critical](sql-database-service-tier-business-critical.md) レベルと [Hyperscale](sql-database-service-tier-hyperscale.md) レベルについて学びます。
 - [Service Fabric](../service-fabric/service-fabric-overview.md) について学びます。
 - 高可用性およびディザスター リカバリーのためのその他のオプションについては、[ビジネス継続性](sql-database-business-continuity.md)に関するページを参照してください。
