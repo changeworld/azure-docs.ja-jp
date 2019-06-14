@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/29/2019
 ms.author: BrianLevenson
 ms.openlocfilehash: 5e20d65160e66937668d9f504245a8c042d58fee
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66751653"
 ---
 # <a name="azure-marketplace-and-appsource-roadmap"></a>Azure Marketplace および AppSource のロードマップ

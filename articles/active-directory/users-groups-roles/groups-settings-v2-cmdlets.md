@@ -15,10 +15,10 @@ ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cb48d37e1cf552f9ad375906d8cd05301ac2dd0c
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65407861"
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>グループ管理用の Azure Active Directory バージョン 2 のコマンドレット
@@ -111,7 +111,7 @@ Azure AD PowerShell コマンドレットを使用してグループの管理を
     SecurityEnabled              : True
 
 > [!NOTE] 
-> Azure AD PowerShell コマンドレットは標準の OData クエリを実装しています。 詳しくは、「[OData エンドポイントを使用する OData システム クエリ オプション](https://msdn.microsoft.com/library/gg309461.aspx#BKMK_filter)」の「**$filter**」を参照してください。
+> Azure AD PowerShell コマンドレットは標準の OData クエリを実装しています。 詳しくは、「[OData エンドポイントを使用する OData システム クエリ オプション](https://msdn.microsoft.com/library/gg309461.aspx#BKMK_filter)」の「 **$filter**」を参照してください。
 
 ## <a name="create-groups"></a>グループを作成する
 新しいグループをディレクトリに作成するには、New-AzureADGroup コマンドレットを使用します。 このコマンドレットでは、"Marketing" という新しいセキュリティ グループを作成します。

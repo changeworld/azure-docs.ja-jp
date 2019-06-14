@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aaaa00d6dcee6a3c03a357d22db2994a25c4427d
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: adfc96d2d7abf38c00f32a5d53615bb7c99c320e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66729963"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66742382"
 ---
 # <a name="error-on-an-applications-page-after-signing-in"></a>サインイン後、アプリケーションのページでエラーが発生する
 
@@ -71,7 +71,7 @@ Azure AD 応答で送信される属性を Azure AD の構成に追加するに�
 
 SAML 応答にロールなどの属性が欠落しているため、またはアプリケーションが EntityID 属性に別の形式または値を想定しているため、アプリケーションへのサインインが失敗します。
 
-アプリケーション内のユーザーを作成、管理、削除するために [Azure AD 自動ユーザー プロビジョニング](https://docs.microsoft.com/en-us/azure/active-directory/manage-apps/user-provisioning)を使用している場合。 ユーザーが SaaS アプリケーションに正常にプロビジョニングされていることを確認します。 詳細については、「[Azure AD ギャラリー アプリケーションにユーザーがプロビジョニングされない](https://docs.microsoft.com/en-us/azure/active-directory/manage-apps/application-provisioning-config-problem-no-users-provisioned)」を参照してください。
+アプリケーション内のユーザーを作成、管理、削除するために [Azure AD 自動ユーザー プロビジョニング](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)を使用している場合。 ユーザーが SaaS アプリケーションに正常にプロビジョニングされていることを確認します。 詳細については、「[Azure AD ギャラリー アプリケーションにユーザーがプロビジョニングされない](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-config-problem-no-users-provisioned)」を参照してください。
 
 ## <a name="add-an-attribute-in-the-azure-ad-application-configuration"></a>Azure AD アプリケーションの構成に属性を追加する:
 

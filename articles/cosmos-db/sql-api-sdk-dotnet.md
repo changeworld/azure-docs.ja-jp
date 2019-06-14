@@ -9,10 +9,10 @@ ms.topic: reference
 ms.date: 03/09/2018
 ms.author: sngun
 ms.openlocfilehash: 3c420882b734883039ec95d609c155617359fa25
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65510716"
 ---
 # <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>Azure Cosmos DB .NET SDK for SQL API: ダウンロードおよびリリース ノート
@@ -196,10 +196,10 @@ ms.locfileid: "65510716"
 *   SDK でのパフォーマンスが向上しています。
 
 ### <a name="a-name11341134"></a><a name="1.13.4"/>1.13.4
-* 1.13.3 と機能的には同じです。 内部的な変更がいくつか追加されました。
+* 1\.13.3 と機能的には同じです。 内部的な変更がいくつか追加されました。
 
 ### <a name="a-name11331133"></a><a name="1.13.3"/>1.13.3
-* 1.13.2 と機能的には同じです。 内部的な変更がいくつか追加されました。
+* 1\.13.2 と機能的には同じです。 内部的な変更がいくつか追加されました。
 
 ### <a name="a-name11321132"></a><a name="1.13.2"/>1.13.2
 * 集計クエリの FeedOptions 内に指定された PartitionKey 値が無視される問題を修正しました。
@@ -238,7 +238,7 @@ ms.locfileid: "65510716"
 * PopulateQuotaInfo 要求オプションが設定されている場合、ドキュメント コレクションの読み取り要求の ResourceResponse に、リソース クォータのさまざまな統計情報が含まれるようになりました。
 
 ### <a name="a-name11111111"></a><a name="1.11.1"/>1.11.1
-* 1.11.0 で導入された CreateDocumentCollectionIfNotExistsAsync API のパフォーマンスが少し改善されました。
+* 1\.11.0 で導入された CreateDocumentCollectionIfNotExistsAsync API のパフォーマンスが少し改善されました。
 * 高度な同時要求を伴うシナリオのために、SDK のパフォーマンスが改善されました。
 
 ### <a name="a-name11101110"></a><a name="1.11.0"/>1.11.0

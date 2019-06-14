@@ -12,10 +12,10 @@ ms.reviewer: vanto, carlrab
 manager: craigg
 ms.date: 05/07/2019
 ms.openlocfilehash: d3e68a5287e59c576f85491e6e5eba33fac080ca
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65465156"
 ---
 # <a name="configure-public-endpoint-in-azure-sql-database-managed-instance"></a>Azure SQL Database マネージド インスタンスのパブリック エンドポイントの構成
@@ -41,8 +41,8 @@ ms.locfileid: "65465156"
 
 1. Azure portal (<https://portal.azure.com/.>) を起動します。
 1. マネージド インスタンスのあるリソース グループを開き、パブリック エンドポイントを構成する **SQL マネージド インスタンス**を選択します。
-1. **[セキュリティ]** の設定で、**[仮想ネットワーク]** タブを選択します。
-1. 仮想ネットワークの構成ページで **[有効]** を選択し、**[保存]** アイコンを選択して構成を更新します。
+1. **[セキュリティ]** の設定で、 **[仮想ネットワーク]** タブを選択します。
+1. 仮想ネットワークの構成ページで **[有効]** を選択し、 **[保存]** アイコンを選択して構成を更新します。
 
 ![mi-vnet-config.png](media/sql-database-managed-instance-public-endpoint-configure/mi-vnet-config.png)
 
@@ -81,7 +81,7 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
 
 ## <a name="allow-public-endpoint-traffic-on-the-network-security-group"></a>ネットワーク セキュリティ グループでパブリック エンドポイント トラフィックを許可する
 
-1. マネージド インスタンスの構成ページをまだ開いている場合は、**[概要]** タブに移動します。そうでない場合は、**SQL マネージド インスタンス** リソースに戻ります。 **[仮想ネットワーク/サブネット]** リンクを選択します。そうすると、仮想ネットワーク構成ページが表示されます。
+1. マネージド インスタンスの構成ページをまだ開いている場合は、 **[概要]** タブに移動します。そうでない場合は、**SQL マネージド インスタンス** リソースに戻ります。 **[仮想ネットワーク/サブネット]** リンクを選択します。そうすると、仮想ネットワーク構成ページが表示されます。
 
     ![mi-overview.png](media/sql-database-managed-instance-public-endpoint-configure/mi-overview.png)
 

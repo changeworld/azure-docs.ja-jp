@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/09/2019
 ms.author: tomfitz
 ms.openlocfilehash: ea9499da3dac67635a48704f439f6592c6ed467e
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65515067"
 ---
 # <a name="single-and-multi-resource-export-to-template-in-azure-portal"></a>Azure portal のテンプレートへの単一および複数リソースのエクスポート
@@ -56,7 +56,7 @@ Resource Manager では、テンプレートにエクスポートするリソー
 
    ![すべてのリソースをエクスポートする](./media/export-template-portal/select-all-resources.png)
 
-1. エクスポート対象として特定のリソースを選択するには、それらのリソースの横にあるチェック ボックスを選択します。 次に、**[テンプレートのエクスポート]** を選択します。
+1. エクスポート対象として特定のリソースを選択するには、それらのリソースの横にあるチェック ボックスを選択します。 次に、 **[テンプレートのエクスポート]** を選択します。
 
    ![エクスポートするリソースを選択する](./media/export-template-portal/select-resources.png)
 
@@ -86,7 +86,7 @@ Resource Manager では、テンプレートにエクスポートするリソー
 
 1. 新しいサービスの値を入力します。
 
-1. 検証に合格したら、デプロイを開始する前に、**[Automation のテンプレートをダウンロードする]** を選択します。
+1. 検証に合格したら、デプロイを開始する前に、 **[Automation のテンプレートをダウンロードする]** を選択します。
 
    ![テンプレートのダウンロード](./media/export-template-portal/download-before-deployment.png)
 

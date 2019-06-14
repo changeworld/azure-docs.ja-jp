@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/25/2019
 ms.author: mlottner
 ms.openlocfilehash: 3c05b7e9b1c6d1b9214da168f7abfcbb322f8f6d
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65192520"
 ---
 # <a name="security-agent-reference-architecture"></a>セキュリティ エージェントの参照アーキテクチャ
@@ -51,7 +51,7 @@ ASC for IoT セキュリティ エージェントはオープン ソース プ�
 
 ASC for IoT では、32 ビットと 64 ビットの Windows のエージェントには異なるインストーラー、32 ビットと 64 ビットの Linux のエージェントには同じインストーラーが用意されています。 次の表に従って、ご使用のデバイスごとに適切なエージェント インストーラーがあることを確認してください。
 
-| 32 または 64 ビット | Linux |  Windows |    詳細|
+| 32 または 64 ビット | Linux | Windows |    詳細|
 |----------|----------------------------------------------|-------------|-------------------------------------------|
 | 32 ビット  | C  | C#  ||
 | 64 ビット  | C# または C           | C#      | リソースが少ないデバイスの場合は C エージェントを使用|

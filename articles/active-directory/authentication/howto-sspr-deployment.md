@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9c254ef3a71e95b33df2a779c728d47fff3c3759
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65190357"
 ---
 # <a name="how-to-successfully-roll-out-self-service-password-reset"></a>セルフサービスによるパスワードのリセットを適切にロールアウトする方法
@@ -40,7 +40,7 @@ Azure Active Directory (Azure AD) のセルフサービスによるパスワー�
    * このドキュメントの以下のセクションでは、通信のサンプル、パスワード ポータル、登録の強制、認証データの設定について説明します。
    * Azure Active Directory の製品グループは、組織がビジネス ケースを作成し、セルフサービスのパスワード リセットのデプロイを計画できるように、このサイトのドキュメントと並行して使用できる[ステップバイステップのデプロイ プラン](https://aka.ms/SSPRDeploymentPlan)を作成しました。
 1. セルフサービスによるパスワードのリセットを組織全体で有効にします。
-   * 準備ができたら、**[セルフ サービスによるパスワードのリセットが有効]** スイッチを **[すべて]** に設定することで、すべてのユーザーのパスワードのリセットを有効にします。
+   * 準備ができたら、 **[セルフ サービスによるパスワードのリセットが有効]** スイッチを **[すべて]** に設定することで、すべてのユーザーのパスワードのリセットを有効にします。
 
 ## <a name="sample-communication"></a>通信のサンプル
 
@@ -80,7 +80,7 @@ Azure Active Directory (Azure AD) のセルフサービスによるパスワー�
 
 ## <a name="disable-self-service-password-reset"></a>セルフサービスのパスワード リセットの無効化
 
-組織がセルフサービスによるパスワード リセットを無効にしたい場合、単純なプロセスで実行できます。 Azure AD テナントを開いて **[パスワードのリセット]** > **[プロパティ]** の順に移動し、**[セルフ サービスによるパスワードのリセットが有効]** の **[なし]** を選択します。 ユーザーの登録されている認証方法は引き続き維持されて、将来も使われます。
+組織がセルフサービスによるパスワード リセットを無効にしたい場合、単純なプロセスで実行できます。 Azure AD テナントを開いて **[パスワードのリセット]**  >  **[プロパティ]** の順に移動し、 **[セルフ サービスによるパスワードのリセットが有効]** の **[なし]** を選択します。 ユーザーの登録されている認証方法は引き続き維持されて、将来も使われます。
 
 ## <a name="next-steps"></a>次の手順
 

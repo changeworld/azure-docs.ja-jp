@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 2/28/2019
 ms.author: rkarlin
 ms.openlocfilehash: ffe3ae5b6aa26d154928a74e51864a0574b82c68
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65228638"
 ---
 # <a name="use-jupyter-notebooks-to-hunt-for-security-threats"></a>Jupyter Notebook を使用してセキュリティの脅威を検出する
@@ -65,7 +65,7 @@ Azure Sentinel ノートブックでは、pandas、matplotlib、bokeh など、�
 
 次の例では Azure Sentinel ポータルから Azure Notebooks プロジェクトを作成し、このプロジェクトにノートブックを設定します。 これらのノートブックは、使用する前にコピーを作成し、そのコピーで作業することをお勧めします。 コピーで作業すると、データを上書きせずに将来のバージョンのノートブックへと更新できるので安全です。
 
-1. Azure Sentinel ポータル内のナビゲーション メニューにある **[ノートブック]** をクリックします。 新しい Azure Notebooks プロジェクトを作成するには、**[Clone Azure Sentinel Notebooks]\(Azure Sentinel Notebooks の複製\)** をクリックします。既存のノートブック プロジェクトを開くには、**[Go to your Notebooks]\(ノートブックに移動する\)** をクリックします。
+1. Azure Sentinel ポータル内のナビゲーション メニューにある **[ノートブック]** をクリックします。 新しい Azure Notebooks プロジェクトを作成するには、 **[Clone Azure Sentinel Notebooks]\(Azure Sentinel Notebooks の複製\)** をクリックします。既存のノートブック プロジェクトを開くには、 **[Go to your Notebooks]\(ノートブックに移動する\)** をクリックします。
   
    ![ノートブックを選択する](./media/notebooks/sentinel-az-notebooks-home.png)
 

@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: v-ant-msft
 ms.openlocfilehash: 54cf2924a94dda1d29baf048c866f019b82e1402
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59256840"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67049901"
 ---
 # <a name="tutorial-configure-zscaler-beta-for-automatic-user-provisioning"></a>チュートリアル:Zscaler Beta を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -49,11 +49,11 @@ Azure AD で自動ユーザー プロビジョニング用に Zscaler Beta を�
 
 **Azure AD アプリケーション ギャラリーから Zscaler Beta を追加するには、次の手順を行います。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
     ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
+2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -88,11 +88,11 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 ### <a name="to-configure-automatic-user-provisioning-for-zscaler-beta-in-azure-ad"></a>Azure AD で Zscaler Beta の自動ユーザー プロビジョニングを構成するには
 
-1. [Azure portal](https://portal.azure.com) にサインインし、**[エンタープライズ アプリケーション]**、**[すべてのアプリケーション]**、**[Zscaler Beta]** の順に選択します。
+1. [Azure portal](https://portal.azure.com) にサインインし、 **[エンタープライズ アプリケーション]** 、 **[すべてのアプリケーション]** 、 **[Zscaler Beta]** の順に選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-2. アプリケーションの一覧で、**[Zscaler Beta]** を選択します。
+2. アプリケーションの一覧で、 **[Zscaler Beta]** を選択します。
 
     ![アプリケーションの一覧の Zscaler Beta のリンク](common/all-applications.png)
 
@@ -106,21 +106,21 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 5. **[管理者資格情報]** セクションで、手順 6 で説明する Zscaler Beta アカウントの **[テナント URL]** と **[シークレット トークン]** を入力します。
 
-6. **[テナント URL]** と **[シークレット トークン]** を取得するには、Zscaler Beta ポータル ユーザー インターフェイスで **[管理]、[認証の設定]** の順に移動し、**[認証の種類]** で **[SAML]** をクリックします。
+6. **[テナント URL]** と **[シークレット トークン]** を取得するには、Zscaler Beta ポータル ユーザー インターフェイスで **[管理]、[認証の設定]** の順に移動し、 **[認証の種類]** で **[SAML]** をクリックします。
 
     ![Zscaler Beta のプロビジョニング](./media/zscaler-beta-provisioning-tutorial/secret-token-1.png)
 
-    **[Configure SAML]\(SAML の構成\)** をクリックし、**[Configuration SAML]\(構成 SAML\)** オプションを開きます。
+    **[Configure SAML]\(SAML の構成\)** をクリックし、 **[Configuration SAML]\(構成 SAML\)** オプションを開きます。
 
     ![Zscaler Beta のプロビジョニング](./media/zscaler-beta-provisioning-tutorial/secret-token-2.png)
 
     **[Enable SCIM-Based Provisioning]\(SCIM ベースのプロビジョニングを有効にする\)** を選択して、**ベース URL** と**ベアラー トークン**を取得し、設定を保存します。 Azure portal で**ベース URL**を**テナント URL** にコピーし、**ベアラー トークン**を**シークレット トークン**にコピーします。
 
-7. 手順 5 の各フィールドに値を入力したら、**[テスト接続]** をクリックして、Azure AD が Zscaler Beta に接続できることを確認します。 接続できない場合は、使用中の Zscaler Beta アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
+7. 手順 5 の各フィールドに値を入力したら、 **[テスト接続]** をクリックして、Azure AD が Zscaler Beta に接続できることを確認します。 接続できない場合は、使用中の Zscaler Beta アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
     ![Zscaler Beta のプロビジョニング](./media/zscaler-beta-provisioning-tutorial/test-connection.png)
 
-8. **[通知用メール]** フィールドに、プロビジョニングのエラー通知を受け取るユーザーまたはグループの電子メール アドレスを入力して、**[エラーが発生したときにメール通知を送信します]** チェック ボックスをオンにします。
+8. **[通知用メール]** フィールドに、プロビジョニングのエラー通知を受け取るユーザーまたはグループの電子メール アドレスを入力して、 **[エラーが発生したときにメール通知を送信します]** チェック ボックスをオンにします。
 
     ![Zscaler Beta のプロビジョニング](./media/zscaler-beta-provisioning-tutorial/notification.png)
 
@@ -144,7 +144,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 14. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](./../active-directory-saas-scoping-filters.md)の次の手順を参照してください。
 
-15. Zscaler Beta に対して Azure AD プロビジョニング サービスを有効にするには、**[設定]** セクションで **[プロビジョニングの状態]** を **[オン]** に変更します。
+15. Zscaler Beta に対して Azure AD プロビジョニング サービスを有効にするには、 **[設定]** セクションで **[プロビジョニングの状態]** を **[オン]** に変更します。
 
     ![Zscaler Beta のプロビジョニング](./media/zscaler-beta-provisioning-tutorial/provisioning-status.png)
 
@@ -152,11 +152,11 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
     ![Zscaler Beta のプロビジョニング](./media/zscaler-beta-provisioning-tutorial/scoping.png)
 
-17. プロビジョニングの準備ができたら、**[保存]** をクリックします。
+17. プロビジョニングの準備ができたら、 **[保存]** をクリックします。
 
     ![Zscaler Beta のプロビジョニング](./media/zscaler-beta-provisioning-tutorial/save-provisioning.png)
 
-これにより、**[設定]** セクションの **[スコープ]** で 定義したユーザーやグループの初期同期が開始されます。 初期同期は後続の同期よりも実行に時間がかかります。後続の同期は、Azure AD のプロビジョニング サービスが実行されている限り約 40 分ごとに実行されます。 **[同期の詳細]** セクションを使用すると、進行状況を監視できるほか、リンクをクリックしてプロビジョニング アクティビティ レポートを取得できます。このレポートには、Azure AD プロビジョニング サービスによって Zscaler Beta に対して実行されたすべてのアクションが記載されています。
+これにより、 **[設定]** セクションの **[スコープ]** で 定義したユーザーやグループの初期同期が開始されます。 初期同期は後続の同期よりも実行に時間がかかります。後続の同期は、Azure AD のプロビジョニング サービスが実行されている限り約 40 分ごとに実行されます。 **[同期の詳細]** セクションを使用すると、進行状況を監視できるほか、リンクをクリックしてプロビジョニング アクティビティ レポートを取得できます。このレポートには、Azure AD プロビジョニング サービスによって Zscaler Beta に対して実行されたすべてのアクションが記載されています。
 
 Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](../active-directory-saas-provisioning-reporting.md)」をご覧ください。
 

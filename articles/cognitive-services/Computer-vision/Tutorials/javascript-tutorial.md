@@ -12,10 +12,10 @@ ms.date: 04/30/2019
 ms.author: kefre
 ms.custom: seodec18
 ms.openlocfilehash: 91af70406590ab8e65a5d4a4b53835e9e4d4ed2a
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65231668"
 ---
 # <a name="use-computer-vision-features-with-the-rest-api-and-javascript"></a>REST API と JavaScript を使用して Computer Vision 機能を使用する
@@ -152,7 +152,7 @@ function AnalyzeImage(sourceImageUrl, responseTextArea, captionSpan) {
 
 #### <a name="run-the-analyze-function"></a>分析関数を実行する
 
-**analyze.html** ファイルを保存し、Web ブラウザーで開きます。 **[Subscription Key]\(サブスクリプション キー\)** フィールドにサブスクリプション キーを入力し、**[Subscription Region]\(サブスクリプション リージョン\)** で正しいリージョンが使用されていることを確認します。 分析するイメージへの URL を入力し、**[Analyze Image]\(イメージの分析\)** ボタンをクリックしてイメージを分析し、結果を確認します。
+**analyze.html** ファイルを保存し、Web ブラウザーで開きます。 **[Subscription Key]\(サブスクリプション キー\)** フィールドにサブスクリプション キーを入力し、 **[Subscription Region]\(サブスクリプション リージョン\)** で正しいリージョンが使用されていることを確認します。 分析するイメージへの URL を入力し、 **[Analyze Image]\(イメージの分析\)** ボタンをクリックしてイメージを分析し、結果を確認します。
 
 ### <a name="recognize-a-landmark"></a>ランドマークを認識する
 
@@ -257,7 +257,7 @@ function IdentifyLandmarks(sourceImageUrl, responseTextArea, captionSpan) {
 
 #### <a name="run-the-landmark-function"></a>ランドマーク関数を実行する
 
-**landmark.html** ファイルを保存し、Web ブラウザーで開きます。 **[Subscription Key]\(サブスクリプション キー\)** フィールドにサブスクリプション キーを入力し、**[Subscription Region]\(サブスクリプション リージョン\)** で正しいリージョンが使用されていることを確認します。 分析するイメージへの URL を入力し、**[Analyze Image]\(イメージの分析\)** ボタンをクリックしてイメージを分析し、結果を確認します。
+**landmark.html** ファイルを保存し、Web ブラウザーで開きます。 **[Subscription Key]\(サブスクリプション キー\)** フィールドにサブスクリプション キーを入力し、 **[Subscription Region]\(サブスクリプション リージョン\)** で正しいリージョンが使用されていることを確認します。 分析するイメージへの URL を入力し、 **[Analyze Image]\(イメージの分析\)** ボタンをクリックしてイメージを分析し、結果を確認します。
 
 ### <a name="recognize-celebrities"></a>著名人を認識する
 
@@ -358,7 +358,7 @@ function IdentifyCelebrities(sourceImageUrl, responseTextArea, captionSpan) {
 
 #### <a name="run-the-celebrities-function"></a>著名人関数を実行する
 
-**celebrities.html** ファイルを保存し、Web ブラウザーで開きます。 **[Subscription Key]\(サブスクリプション キー\)** フィールドにサブスクリプション キーを入力し、**[Subscription Region]\(サブスクリプション リージョン\)** で正しいリージョンが使用されていることを確認します。 分析するイメージへの URL を入力し、**[Analyze Image]\(イメージの分析\)** ボタンをクリックしてイメージを分析し、結果を確認します。
+**celebrities.html** ファイルを保存し、Web ブラウザーで開きます。 **[Subscription Key]\(サブスクリプション キー\)** フィールドにサブスクリプション キーを入力し、 **[Subscription Region]\(サブスクリプション リージョン\)** で正しいリージョンが使用されていることを確認します。 分析するイメージへの URL を入力し、 **[Analyze Image]\(イメージの分析\)** ボタンをクリックしてイメージを分析し、結果を確認します。
 
 ### <a name="intelligently-generate-a-thumbnail"></a>サムネイルをインテリジェントに生成する
 
@@ -477,7 +477,7 @@ function getThumbnail (sourceImageUrl, smartCropping, imageElement, responseText
 
 #### <a name="run-the-thumbnail-function"></a>サムネイル関数を実行する
 
-**thumbnail.html** ファイルを保存し、Web ブラウザーで開きます。 **[Subscription Key]\(サブスクリプション キー\)** フィールドにサブスクリプション キーを入力し、**[Subscription Region]\(サブスクリプション リージョン\)** で正しいリージョンが使用されていることを確認します。 分析するイメージへの URL を入力し、**[Generate Thumbnails]\(サムネイルの生成\)** ボタンをクリックしてイメージを分析し、結果を確認します。
+**thumbnail.html** ファイルを保存し、Web ブラウザーで開きます。 **[Subscription Key]\(サブスクリプション キー\)** フィールドにサブスクリプション キーを入力し、 **[Subscription Region]\(サブスクリプション リージョン\)** で正しいリージョンが使用されていることを確認します。 分析するイメージへの URL を入力し、 **[Generate Thumbnails]\(サムネイルの生成\)** ボタンをクリックしてイメージを分析し、結果を確認します。
 
 ### <a name="read-printed-text-ocr"></a>印字されたテキストを読み取る (OCR)
 
@@ -570,7 +570,7 @@ function ReadOcrImage(sourceImageUrl, responseTextArea) {
 
 #### <a name="run-the-ocr-function"></a>OCR 関数を実行する
 
-**ocr.html** ファイルを保存し、Web ブラウザーで開きます。 **[Subscription Key]\(サブスクリプション キー\)** フィールドにサブスクリプション キーを入力し、**[Subscription Region]\(サブスクリプション リージョン\)** で正しいリージョンが使用されていることを確認します。 読み取るテキストのイメージへの URL を入力し、**[Read Image]\(イメージの読み取り\)** ボタンをクリックしてイメージを分析し、結果を確認します。
+**ocr.html** ファイルを保存し、Web ブラウザーで開きます。 **[Subscription Key]\(サブスクリプション キー\)** フィールドにサブスクリプション キーを入力し、 **[Subscription Region]\(サブスクリプション リージョン\)** で正しいリージョンが使用されていることを確認します。 読み取るテキストのイメージへの URL を入力し、 **[Read Image]\(イメージの読み取り\)** ボタンをクリックしてイメージを分析し、結果を確認します。
 
 ### <a name="read-handwritten-text-handwriting-recognition"></a>手書きのテキストを読み取る (手書き認識)
 
@@ -729,7 +729,7 @@ function ReadHandwrittenImage(sourceImageUrl, responseTextArea) {
 
 #### <a name="run-the-handwriting-function"></a>手書き関数を実行する
 
-**handwriting.html** ファイルを保存し、Web ブラウザーで開きます。 **[Subscription Key]\(サブスクリプション キー\)** フィールドにサブスクリプション キーを入力し、**[Subscription Region]\(サブスクリプション リージョン\)** で正しいリージョンが使用されていることを確認します。 読み取るテキストのイメージへの URL を入力し、**[Read Image]\(イメージの読み取り\)** ボタンをクリックしてイメージを分析し、結果を確認します。
+**handwriting.html** ファイルを保存し、Web ブラウザーで開きます。 **[Subscription Key]\(サブスクリプション キー\)** フィールドにサブスクリプション キーを入力し、 **[Subscription Region]\(サブスクリプション リージョン\)** で正しいリージョンが使用されていることを確認します。 読み取るテキストのイメージへの URL を入力し、 **[Read Image]\(イメージの読み取り\)** ボタンをクリックしてイメージを分析し、結果を確認します。
 
 ## <a name="next-steps"></a>次の手順
 

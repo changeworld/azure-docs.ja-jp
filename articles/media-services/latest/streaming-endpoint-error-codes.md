@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 05/07/2019
 ms.author: juliako
 ms.openlocfilehash: ebcda6026f79bc88df91471d8be88316ba57bfc6
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65411370"
 ---
 # <a name="streaming-endpoint-origin-errors"></a>ストリーミング エンドポイント (配信元) エラー 
@@ -30,8 +30,8 @@ ms.locfileid: "65411370"
 
 |エラー コード|16 進値 |エラーの説明|
 |---|---|---|
-|MPE_BAD_URL_SYNTAX |0x80890201|URL 構文または形式エラー。 例には、無効な型の要求、無効なフラグメント、または無効なトラックなどがあります。 |
-|MPE_ENC_ENCRYPTION_NOT_SPECIFIED_IN_URL |0x8088024C|要求の URL に暗号化タグが含まれていません。 CMAF 要求では、URL に暗号化タグが必要です。 1 つ以上の暗号化の種類で構成されているその他のプロトコルでも、あいまいさを排除するために暗号化タグが必要です。 |
+|MPE_BAD_URL_SYNTAX |0x80890201|URL 構文または形式エラー。 例として、無効な型の要求、無効なフラグメント、または無効なトラックなどがあります。 |
+|MPE_ENC_ENCRYPTION_NOT_SPECIFIED_IN_URL |0x8088024C|要求の URL に暗号化タグが含まれていません。 CMAF 要求では、URL 内に暗号化タグが必要です。 1 つ以上の暗号化の種類で構成されているその他のプロトコルでも、あいまいさを排除するために暗号化タグが必要です。 |
 |MPE_STORAGE_BAD_URL_SYNTAX |0x808900E9|要求を満たすためのストレージに対する要求が、無効な要求エラーで失敗しました。 |
 
 ## <a name="403-forbidden"></a>403 許可されていません
@@ -63,7 +63,7 @@ ms.locfileid: "65411370"
 |MPE_LIVE_MEDIA_ENTRIES_NOT_FOUND |0x80890254 |moov バッファーを取得するためのライブ メディア エントリが見つかりません。 |
 |MPE_FRAGMENT_TIMESTAMP_NOT_FOUND |0x80890255 |特定のトラックで要求された時間のフラグメントが見つかりません。<br/><br/>そのフラグメントがストレージに存在していない可能性があります。 フラグメントが存在する可能性があるプレゼンテーションの別のレイヤーを試してください。 |
 |MPE_MANIFEST_MEDIA_ENTRY_NOT_FOUND |0x80890256 |マニフェストで要求されたビットレートのメディア エントリが見つかりません。 <br/><br/>プレーヤーで、マニフェストに存在しなかった特定のビットレートのビデオ トラックが要求された可能性があります。|
-|MPE_METADATA_NOT_FOUND |0x80890257 |マニフェストに特定のメタデータが見つかりません、またはストレージからリベースを見つけることができません。 |
+|MPE_METADATA_NOT_FOUND |0x80890257 |マニフェストで特定のメタデータを見つけることができません。またはストレージからリベースを見つけることができません。 |
 |MPE_STORAGE_RESOURCE_NOT_FOUND |0x808900ED |ストレージ操作エラー。リソースが見つかりません。 |
 
 ## <a name="409-conflict"></a>409 競合
@@ -87,7 +87,7 @@ ms.locfileid: "65411370"
 |エラー コード|16 進値 |エラーの説明|
 |---|---|---|
 |MPE_FRAGMENT_NOT_READY |0x80890200 |要求されたフラグメントは準備ができていません。|
-|MPE_STORAGE_PRECONDITION_FAILED| 0x808900EF|ストレージ操作エラー。前提条件エラー。|
+|MPE_STORAGE_PRECONDITION_FAILED| 0x808900EF|ストレージ操作エラー。前提条件エラーです。|
 
 ## <a name="415-unsupported-media-type"></a>415 Unsupported Media Type
 
@@ -96,7 +96,7 @@ ms.locfileid: "65411370"
 |エラー コード|16 進値 |エラーの説明|
 |---|---|---|
 |MPE_ENC_ALREADY_ENCRYPTED| 0x8088021F| 既に暗号化されているコンテンツに暗号化を適用すべきではありません。|
-|MPE_ENC_INVALID_INPUT_ENCRYPTION_FORMAT|0x8088021D |入力形式の暗号化は無効です。|
+|MPE_ENC_INVALID_INPUT_ENCRYPTION_FORMAT|0x8088021D |入力形式の暗号化が無効です。|
 |MPE_INVALID_ASSET_DELIVERY_POLICY_TYPE|0x8088021C| 配信ポリシーの種類が無効です。|
 |MPE_ENC_MULTIPLE_SAME_DELIVERY_TYPE|0x8088024E |元の設定が複数の出力形式で共有されている可能性があります。|
 |MPE_FORMAT_NOT_SUPPORTED|0x80890205|メディアの形式または種類がサポートされていません。 たとえば、Media Services では、64 を超える品質レベルはサポートされていません。 Media Services では、FLV ビデオ タグの複数の SPS と複数の PPS ビデオ フレームはサポートされていません。|
@@ -110,7 +110,7 @@ ms.locfileid: "65411370"
 |MPE_SOURCE_PROTECTION_CONVERSION_NOT_SUPPORTED|0x80890212|ソースの保護された資産は、出力形式に変換できません。|
 |MPE_OUTPUT_PROTECTION_FORMAT_NOT_SUPPORTED|0x80890213|保護形式が、出力形式でサポートされていません。|
 |MPE_INPUT_PROTECTION_FORMAT_NOT_SUPPORTED|0x80890219|保護形式が、入力形式でサポートされていません。|
-|MPE_INVALID_VIDEO_NAL_UNIT|0x80890231|無効なビデオ NAL ユニットです。たとえば、サンプルの最初の NAL のみが、AUD である可能性があります。|
+|MPE_INVALID_VIDEO_NAL_UNIT|0x80890231|無効なビデオ NAL ユニットです。たとえば、AUD になることができるのは、サンプルの最初の NAL だけです。|
 |MPE_INVALID_NALU_SIZE|0x80890260|NAL ユニットのサイズが無効です。|
 |MPE_INVALID_NALU_LENGTH_FIELD|0x80890261|NAL ユニットの長さ値が無効です。|
 |MPE_FILTER_INVALID|0x80890236|動的マニフェスト フィルターが無効です。|
@@ -126,11 +126,11 @@ ms.locfileid: "65411370"
 |MPE_FILTER_LIVE_BACKOFF_OVER_PRESENTATION_WINDOW|0x80890262|ライブ バックオフがプレゼンテーション ウィンドウを超えています。|
 |MPE_FILTER_COMPOSITION_FILTER_COUNT_OVER_LIMIT|0x80890246|許可される最大 10 個の既定のフィルターを超えています。|
 |MPE_FILTER_COMPOSITION_MULTIPLE_FIRST_QUALITY_OPERATOR_NOT_ALLOWED|0x80890248|複合要求フィルターでは、複数の最高動画品質演算子は許可されません。|
-|MPE_FILTER_FIRST_QUALITY_ATTRIBUTE_INVALID|0x80890249|最高品質ビットレートの数は、1 つでなければなりません。|
+|MPE_FILTER_FIRST_QUALITY_ATTRIBUTE_INVALID|0x80890249|最高品質ビットレートの数は、1 でなければなりません。|
 |MPE_HLS_SEGMENT_TOO_LARGE|0x80890243|HLS セグメント期間は、DVR ウィンドウおよび HLS バックオフの 3 分の 1 より小さくなければなりません。|
 |MPE_KEY_FRAME_INTERVAL_TOO_LARGE|0x808901FE|フラグメント期間は約 20 秒以下である必要があります。そうでないと、入力品質レベルの時間が一致しません。|
-|MPE_DTS_RESERVEDBOX_EXPECTED|0x80890105|DTS 固有エラー。DTS ボックス解析中に DTSSpecficBox に存在する必要がある ReservedBox が見つかりません。|
-|MPE_DTS_INVALID_CHANNEL_COUNT|0x80890106|DTS 固有エラー。DTS ボックス解析中に、DTSSpecficBox にチャンネルが見つかりません。|
+|MPE_DTS_RESERVEDBOX_EXPECTED|0x80890105|DTS 固有エラー。DTS ボックスの解析中に DTSSpecficBox に存在する必要がある ReservedBox が見つかりません。|
+|MPE_DTS_INVALID_CHANNEL_COUNT|0x80890106|DTS 固有エラー。DTS ボックスの解析中に、DTSSpecficBox にチャンネルが見つかりません。|
 |MPE_DTS_SAMPLETYPE_MISMATCH|0x80890107|DTS 固有エラー。DTSSpecficBox でサンプルの種類が一致しません。|
 |MPE_DTS_MULTIASSET_DTSH_MISMATCH|0x80890108|DTS 固有エラー。複数の資産が設定されていますが、DTSH サンプルの種類が一致しません。|
 |MPE_DTS_INVALID_CORESTREAM_SIZE|0x80890109|DTS 固有エラー。コア ストリーム サイズが無効です。|
@@ -160,14 +160,14 @@ ms.locfileid: "65411370"
 ライブの記事とサンプルについては、以下をご覧ください。
 
 - [概念: ライブ ストリーミングの概要](live-streaming-overview.md)
-- [概念: ライブ イベントとライブ出力](live-events-outputs-concept.md)
+- [概念: ライブ ストリーミングの概要](live-events-outputs-concept.md)
 - [サンプル: ライブ ストリーミングのチュートリアル](stream-live-tutorial-with-api.md)
 
-## <a name="416-range-not-satisfiable"></a>416 範囲が満たされていません
+## <a name="416-range-not-satisfiable"></a>416 Range Not Satisfiable
 
 |エラー コード|16 進値 |エラーの説明|
 |---|---|---|
-|MPE_STORAGE_INVALID_RANGE|0x808900F1|ストレージ操作のエラー、http 416 エラーが返されました、無効な範囲。|
+|MPE_STORAGE_INVALID_RANGE|0x808900F1|ストレージ操作エラー。HTTP 416 エラー (無効な範囲) が返されました。|
 
 ## <a name="500-internal-server-error"></a>500 内部サーバー エラー
 
@@ -178,9 +178,9 @@ ms.locfileid: "65411370"
 |MPE_STORAGE_SOCKET_TIMEOUT|0x808900F4|Winhttp エラー コード ERROR_WINHTTP_TIMEOUT (0x00002ee2) を受け取り、それから変換されました。|
 |MPE_STORAGE_SOCKET_CONNECTION_ERROR|0x808900F5|Winhttp エラー コード ERROR_WINHTTP_CONNECTION_ERROR (0x00002efe) を受け取り、それから変換されました。|
 |MPE_STORAGE_SOCKET_NAME_NOT_RESOLVED|0x808900F6|Winhttp エラー コード ERROR_WINHTTP_NAME_NOT_RESOLVED (0x00002ee7) を受け取り、それから変換されました。|
-|MPE_STORAGE_INTERNAL_ERROR|0x808900E6|ストレージ操作エラー、HTTP 500 エラーのいずれかの一般的な InternalError です。|
+|MPE_STORAGE_INTERNAL_ERROR|0x808900E6|ストレージ操作エラー。HTTP 500 エラーのいずれかの一般的な InternalError です。|
 |MPE_STORAGE_OPERATION_TIMED_OUT|0x808900E7|ストレージ操作エラー、HTTP 500 エラーのいずれかの一般的な OperationTimedOut です。|
-|MPE_STORAGE_FAILURE|0x808900F2|ストレージ操作エラー、InternalError または OperationTimedOut 以外の他の HTTP 500 エラーです。|
+|MPE_STORAGE_FAILURE|0x808900F2|ストレージ操作エラー。InternalError または OperationTimedOut 以外の HTTP 500 エラーです。|
 
 ## <a name="503-service-unavailable"></a>503 サービス利用不可
 
@@ -192,9 +192,9 @@ ms.locfileid: "65411370"
 
 |エラー コード|16 進値 |エラーの説明|
 |---|---|---|
-|MPE_STORAGE_SERVER_BUSY|0x808900E8|ストレージ操作エラー、HTTP サーバー ビジー エラー 503 を受け取りました。|
+|MPE_STORAGE_SERVER_BUSY|0x808900E8|ストレージ操作エラー。HTTP サーバー ビジー エラー 503 を受け取りました。|
 
-## <a name="ask-questions-give-feedback-get-updates"></a>質問する、フィードバックを送る、最新情報を入手する
+## <a name="ask-questions-give-feedback-get-updates"></a>質問する。フィードバックする。最新情報を入手する
 
 「[Azure Media Services community (Azure Media Services コミュニティ)](media-services-community.md)」を参照して、さまざまな質問の方法、フィードバックする方法、Media Services に関する最新情報の入手方法を確認してください。
 

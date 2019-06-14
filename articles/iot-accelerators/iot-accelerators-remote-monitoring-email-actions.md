@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 11/12/2018
 ms.topic: conceptual
 ms.openlocfilehash: fbb5f92258ff31dd7077bb1ade7fa7e5644c8bac
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65466920"
 ---
 # <a name="add-an-email-action"></a>電子メール アクションを作成する
@@ -35,7 +35,7 @@ ms.locfileid: "65466920"
 
 1. 変更する既存のルールの横にあるチェック ボックスをクリックし、上部にある **[編集]** をクリックします。 編集可能な **[ルール]** パネルが表示されます。
 
-1. **[アクション]** セクションで、**[Email enabled]\(電子メールが有効\)** を **[On]\(オン\)** に切り替えます。
+1. **[アクション]** セクションで、 **[Email enabled]\(電子メールが有効\)** を **[On]\(オン\)** に切り替えます。
 
 1. 最初にソリューション アクセラレータで電子メール アクションを有効にするときは、[Outlook にサインイン](#outlook)する必要があります。
 
@@ -61,9 +61,9 @@ ms.locfileid: "65466920"
 
     ![[ルール] ページ](./media/iot-accelerators-remote-monitoring-email-actions/rules-email.png)
 
-1. [「create a rule」 (ルールを作成する) セクション](iot-accelerators-remote-monitoring-automate.md#create-a-rule)の手順を実行します。 [「create an advanced rule」 (高度なルールを作成する)](iot-accelerators-remote-monitoring-automate.md#create-an-advanced-rule) セクションの手順を、**[重大度レベル]** を設定するところまで実行します。 **[適用]** はまだクリックしないでください。
+1. [「create a rule」 (ルールを作成する) セクション](iot-accelerators-remote-monitoring-automate.md#create-a-rule)の手順を実行します。 [「create an advanced rule」 (高度なルールを作成する)](iot-accelerators-remote-monitoring-automate.md#create-an-advanced-rule) セクションの手順を、 **[重大度レベル]** を設定するところまで実行します。 **[適用]** はまだクリックしないでください。
 
-1. **[アクション]** セクションで、**[Email enabled]\(電子メールが有効\)** を **[On]\(オン\)** に切り替えます。
+1. **[アクション]** セクションで、 **[Email enabled]\(電子メールが有効\)** を **[On]\(オン\)** に切り替えます。
 
 1. 最初にソリューション アクセラレータで電子メール アクションを有効にするときは、[Outlook にサインイン](#outlook)する必要があります。
 

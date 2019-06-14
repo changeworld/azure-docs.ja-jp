@@ -11,10 +11,10 @@ ms.date: 03/27/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.openlocfilehash: 3f25d2ab5b2b988725d8f4fdf942854746f404d1
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66754852"
 ---
 # <a name="troubleshooting-connectivity-issues"></a>接続の問題のトラブルシューティング

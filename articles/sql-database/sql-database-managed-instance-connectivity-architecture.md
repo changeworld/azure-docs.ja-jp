@@ -13,10 +13,10 @@ ms.reviewer: sstein, bonova, carlrab
 manager: craigg
 ms.date: 04/16/2019
 ms.openlocfilehash: dbb5ee122e715aeaa66d786f02966beedd2447c3
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65522326"
 ---
 # <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Azure SQL Database マネージド インスタンス用の接続アーキテクチャ
@@ -97,7 +97,7 @@ Microsoft の管理およびデプロイ サービスは、仮想ネットワー
 
 ### <a name="mandatory-inbound-security-rules"></a>必須の受信セキュリティ規則
 
-| Name       |Port                        |Protocol|ソース           |宛先|Action|
+| Name       |Port                        |Protocol|source           |宛先|Action|
 |------------|----------------------------|--------|-----------------|-----------|------|
 |management  |9000、9003、1438、1440、1452|TCP     |任意              |MI SUBNET  |ALLOW |
 |mi_subnet   |任意                         |任意     |MI SUBNET        |MI SUBNET  |ALLOW |
@@ -105,7 +105,7 @@ Microsoft の管理およびデプロイ サービスは、仮想ネットワー
 
 ### <a name="mandatory-outbound-security-rules"></a>必須の送信セキュリティ規則
 
-| Name       |Port          |Protocol|ソース           |宛先|Action|
+| Name       |Port          |Protocol|source           |宛先|Action|
 |------------|--------------|--------|-----------------|-----------|------|
 |management  |80、443、12000|TCP     |MI SUBNET        |AzureCloud |ALLOW |
 |mi_subnet   |任意           |任意     |MI SUBNET        |MI SUBNET  |ALLOW |

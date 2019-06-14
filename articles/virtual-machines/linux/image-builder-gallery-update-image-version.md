@@ -8,10 +8,10 @@ ms.topic: article
 ms.service: virtual-machines-linux
 manager: jeconnoc
 ms.openlocfilehash: 31ef53abcf9b416500ee70e42cc3cbd12cb11f35
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65157877"
 ---
 # <a name="preview-create-a-new-image-version-from-an-existing-image-version-using-azure-image-builder"></a>更新:Azure Image Builder を使用して、既存のイメージ バージョンから新しいイメージ バージョンを作成する
@@ -55,7 +55,7 @@ az provider register -n Microsoft.Storage
 
 [イメージの作成と共有イメージ ギャラリーへの配布](image-builder-gallery.md)に関するページを使用して共有イメージ ギャラリーを作成した場合は、必要とする変数のいくつかが既に作成されています。 それ以外の場合は、この例で使用するいくつかの変数を設定してください。
 
-プレビューの場合、Image Builder は、ソース マネージド イメージと同じリソース グループ内でのソースカスタム イメージの作成だけをサポートします。 ソース マネージド イメージと同じリソース グループになるように、この例のリソース グループ名を更新します。
+プレビューの Image Builder では、ソース マネージド イメージと同じリソース グループ内にのみ、カスタム イメージを作成できます。 ソース マネージド イメージと同じリソース グループになるように、この例のリソース グループ名を更新します。
 
 
 ```azurecli-interactive
@@ -142,7 +142,7 @@ az resource invoke-action \
      --action Run 
 ```
 
-イメージが構築されレプリケーションされるまで待ってから、次の手順に進みます。
+イメージがビルドされてレプリケートされるまで待ってから、次の手順に進みます。
 
 
 ## <a name="create-the-vm"></a>VM の作成

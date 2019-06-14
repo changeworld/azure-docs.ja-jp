@@ -16,10 +16,10 @@ ms.date: 09/11/2018
 ms.author: ryanwi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a8b93f26080229e980b680c157f59db4edf33e7a
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65545494"
 ---
 # <a name="how-to-fill-out-specific-fields-for-a-custom-developed-application"></a>独自に開発したアプリケーションの特定のフィールドを指定する方法
@@ -30,9 +30,9 @@ ms.locfileid: "65545494"
 
 -   新しいアプリケーションを登録するには、[Azure Portal](https://portal.azure.com) に移動します。
 
--   左側のナビゲーション ウィンドウで、**[Azure Active Directory]** をクリックします。
+-   左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** をクリックします。
 
--   **[アプリの登録]** を選択して、**[追加]** をクリックします。
+-   **[アプリの登録]** を選択して、 **[追加]** をクリックします。
 
 -   アプリケーション登録フォームが開きます。
 

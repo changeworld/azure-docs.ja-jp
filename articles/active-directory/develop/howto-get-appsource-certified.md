@@ -19,10 +19,10 @@ ms.reviewer: andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0b820068f7bd59941346c8d2a3e8ede15252d58b
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65540262"
 ---
 # <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>Azure Active Directory の AppSource 認定を取得する方法
@@ -40,7 +40,7 @@ OpenID Connect を使用してアプリケーションを Azure AD と統合す�
 *マルチ テナント アプリケーション*とは、Azure AD を持つ会社または組織のユーザーのサインインを許可しているアプリケーションで、別のインスタンス、構成、またはデプロイを必要としないアプリケーションです。 AppSource では、アプリケーションにマルチテナント機能を実装し、*シングル クリック*の無料試用版のエクスペリエンスを有効にすることをお勧めしています。
 
 アプリケーションでマルチテナント機能を有効にするには、次の手順を実行します。
-1. [Azure portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps) のアプリケーション登録の情報で `Multi-Tenanted` プロパティを `Yes` に設定します。 既定で Azure portal で作成されたアプリケーションは、*[シングル テナント](#single-tenant-applications)* として構成されます。
+1. [Azure portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps) のアプリケーション登録の情報で `Multi-Tenanted` プロパティを `Yes` に設定します。 既定で Azure portal で作成されたアプリケーションは、 *[シングル テナント](#single-tenant-applications)* として構成されます。
 1. `common` エンドポイントに要求を送信するようにコードを更新します。 これを行うには、エンドポイントを `https://login.microsoftonline.com/{yourtenant}` から `https://login.microsoftonline.com/common*` に更新します。
 1. ASP. NET などの一部のプラットフォームでは、コードを更新して複数の発行者を許可する必要もあります。
 

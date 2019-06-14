@@ -15,10 +15,10 @@ ms.date: 03/12/2018
 ms.author: ghogen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9bea0a870a6ef0685f4f4bce5ad3b0d1ff1f616a
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65414007"
 ---
 # <a name="adding-an-azure-active-directory-by-using-connected-services-in-visual-studio"></a>Visual Studio の接続済みサービスを利用して Azure Active Directory を追加する
@@ -40,7 +40,7 @@ Azure Active Directory (Azure AD) を使用すると、ASP.NET MVC Web アプリ
 
 1. **[プロジェクト] > [接続済みサービスの追加]** メニュー コマンドを選択するか、ソリューション エクスプローラーでプロジェクト以下にある **[接続済みサービス]** ノードをダブル クリックします。
 
-1. **[接続済みサービス]** ページで、**[Azure Active Directory での認証]** を選択します。
+1. **[接続済みサービス]** ページで、 **[Azure Active Directory での認証]** を選択します。
 
     ![[接続済みサービス] ページ](./media/vs-azure-active-directory/connected-services-add-active-directory.png)
 
@@ -48,11 +48,11 @@ Azure Active Directory (Azure AD) を使用すると、ASP.NET MVC Web アプリ
 
     ![[概要] ページ](./media/vs-azure-active-directory/configure-azure-ad-wizard-1.png)
 
-1. **[シングル サインオン]** ページで、**[ドメイン]** ドロップダウン リストからドメインを選択します。 このリストには、Visual Studio の [アカウント設定] ダイアログ (**[ファイル] > [アカウント設定]**) に表示されている、アカウントからアクセスできるすべてのドメインが含まれています。探しているドメインが見つからない場合は、代替として `mydomain.onmicrosoft.com` のようなドメイン名を入力できます。 Azure Active Directory アプリを作成したり、既存の Azure Active Directory アプリの設定を使用したりできます。 操作が完了したら、**[次へ]** をクリックします。
+1. **[シングル サインオン]** ページで、 **[ドメイン]** ドロップダウン リストからドメインを選択します。 このリストには、Visual Studio の [アカウント設定] ダイアログ ( **[ファイル] > [アカウント設定]** ) に表示されている、アカウントからアクセスできるすべてのドメインが含まれています。探しているドメインが見つからない場合は、代替として `mydomain.onmicrosoft.com` のようなドメイン名を入力できます。 Azure Active Directory アプリを作成したり、既存の Azure Active Directory アプリの設定を使用したりできます。 操作が完了したら、 **[次へ]** をクリックします。
 
     ![[シングル サインオン] ページ](./media/vs-azure-active-directory/configure-azure-ad-wizard-2.png)
 
-1. **[ディレクトリ アクセス]** ページで、**[ディレクトリ データの読み取り]** オプションを選択します。 一般的に開発時にはこのオプションを含めます。
+1. **[ディレクトリ アクセス]** ページで、 **[ディレクトリ データの読み取り]** オプションを選択します。 一般的に開発時にはこのオプションを含めます。
 
     ![[ディレクトリ アクセス] ページ](./media/vs-azure-active-directory/configure-azure-ad-wizard-3.png)
 

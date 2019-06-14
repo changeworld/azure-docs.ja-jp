@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
 ms.openlocfilehash: 311a867c863cbd72292d8e34b4f7abdb949b12c6
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65198439"
 ---
 # <a name="tutorial-configure-security-agents"></a>チュートリアル:セキュリティ エージェントを構成する
@@ -112,7 +112,7 @@ ASC for IoT セキュリティ エージェントに関連する各プロパテ�
 |highPriorityMessageFrequency|必須: false |有効な値: ISO 8601 形式の期間 |既定値:PT7M |優先度の高いメッセージが送信されるまでの最大時間。|
 |lowPriorityMessageFrequency |必須: false|有効な値: ISO 8601 形式の期間 |既定値:PT5H |低優先度のメッセージが送信されるまでの最大時間。| 
 |snapshotFrequency |必須: false|有効な値: ISO 8601 形式の期間 |既定値: PT13H |デバイス状態のスナップショットを作成する時間間隔。| 
-|maxLocalCacheSizeInBytes |必須: false |有効な値:  |既定値:2560000 (8192 より大きい値) | エージェントのメッセージ キャッシュで許容される最大ストレージ (バイト単位)。 メッセージが送信される前に、デバイス上にメッセージを保存するために許可される領域の上限。| 
+|maxLocalCacheSizeInBytes |必須: false |有効な値: |既定値:2560000 (8192 より大きい値) | エージェントのメッセージ キャッシュで許容される最大ストレージ (バイト単位)。 メッセージが送信される前に、デバイス上にメッセージを保存するために許可される領域の上限。| 
 |maxMessageSizeInBytes |必須: false |有効な値: 8192 より大きく、262144 より小さい正の数 |既定値:204800 |クラウドにメッセージを送信するエージェントの最大許容サイズ。 この設定は、各メッセージで送信されるデータの最大量を制御します。 |
 |eventPriority${EventName} |必須: false |有効な値: High、Low、Off |既定値: |エージェントが生成した各イベントの優先順位 | 
 

@@ -11,10 +11,10 @@ ms.author: amlstudiodocs
 ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/14/2019
 ms.openlocfilehash: b636883ee1f08fa0fb6d080b6980cd07553dde1b
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65234045"
 ---
 # <a name="retrain-and-deploy-a-classic-studio-web-service"></a>従来の Studio Web サービスの再トレーニングとデプロイ
@@ -45,7 +45,7 @@ ms.locfileid: "65234045"
 ### <a name="use-the-azure-web-services-portal-to-add-an-endpoint"></a>Azure Web サービス ポータルを使用してエンドポイントを追加する
 
 1. Machine Learning Studio の左側のナビゲーション列で [Web サービス] をクリックします。
-1. Web サービス ダッシュボードの下部で、**[Manage endpoints preview (エンドポイント プレビューの管理)]** をクリックします。
+1. Web サービス ダッシュボードの下部で、 **[Manage endpoints preview (エンドポイント プレビューの管理)]** をクリックします。
 1. **[追加]** をクリックします。
 1. 新しいエンドポイントの名前と説明を入力します。 ログ レベルとサンプル データが有効になっているかどうかを選択します。 詳細については、「 [Machine Learning Web サービスのログ記録の有効化](web-services-logging.md)」を参照してください。
 
@@ -73,10 +73,10 @@ ms.locfileid: "65234045"
 1. 作業中のスコアリング Web サービスをクリックします (Web サービスの既定の名前を変更しなかった場合、その名前の末尾は "[Scoring Exp.]" になります)。
 1. **[+新規]** をクリックします。
 1. エンドポイントが追加されたら、エンドポイントの名前をクリックします。
-1. **パッチ** URL の下で、**[API Help]\(API ヘルプ\)** をクリックして、パッチ適用のヘルプ ページを開きます。
+1. **パッチ** URL の下で、 **[API Help]\(API ヘルプ\)** をクリックして、パッチ適用のヘルプ ページを開きます。
 
 > [!NOTE]
-> エンドポイントを予測 Web サービスではなくトレーニング Web サービスに追加した場合は、**[リソースの更新]** リンクをクリックすると、"この機能はサポートされていないか、このコンテキストでは使用できません。 この Web サービスには、更新可能なリソースがありません。 ご不便をおかけして申し訳ありません。現在、このワークフローの強化に取り組んでいます" というエラーが表示されます。
+> エンドポイントを予測 Web サービスではなくトレーニング Web サービスに追加した場合は、 **[リソースの更新]** リンクをクリックすると、"この機能はサポートされていないか、このコンテキストでは使用できません。 この Web サービスには、更新可能なリソースがありません。 ご不便をおかけして申し訳ありません。現在、このワークフローの強化に取り組んでいます" というエラーが表示されます。
 >
 
 PATCH ヘルプ ページには、使用する必要のある PATCH URL が含まれており、これを呼び出すために使用できるサンプル コードが提供されています。
@@ -137,7 +137,7 @@ PATCH ヘルプ ページには、使用する必要のある PATCH URL が含�
 1. [名前] で **[Census Model [predictive exp.]]** をクリックします。
 1. 追加した新しいエンドポイントをクリックします。
 1. エンドポイント ダッシュボードで、 **[リソースの更新]** をクリックします。
-1. Web サービスの [Update Resource API Documentation (リソース API ドキュメントの更新)] ページで、**[Updatable Resource (更新可能なリソース)]** の **[リソース名]** を確認します。
+1. Web サービスの [Update Resource API Documentation (リソース API ドキュメントの更新)] ページで、 **[Updatable Resource (更新可能なリソース)]** の **[リソース名]** を確認します。
 
 エンドポイントの更新が完了する前に SAS トークンの有効期限が切れる場合は、ジョブ ID を指定して GET を実行し、新しいトークンを取得する必要があります。
 

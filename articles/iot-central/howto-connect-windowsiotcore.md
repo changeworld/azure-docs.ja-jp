@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: peterpr
 ms.openlocfilehash: e8d4ab46c598580a3a87f4344202f2700926bf5c
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65510320"
 ---
 # <a name="connect-a-windows-iot-core-device-to-your-azure-iot-central-application"></a>Windows IoT Core デバイスを Azure IoT Central アプリケーションに接続する
@@ -41,7 +41,7 @@ ms.locfileid: "65510320"
 
 ## <a name="add-a-real-device"></a>実デバイスの追加
 
-Azure IoT Central アプリケーションでは、**Device Explorer** ページを使用して **Windows 10 IoT Core** デバイス テンプレートから実デバイスを追加します。 デバイス接続の詳細 (**[スコープ ID]**、**[デバイス ID]**、**[主キー]**) をメモします。 詳細については、「[接続情報の取得](howto-generate-connection-string.md#get-connection-information)」を参照してください。
+Azure IoT Central アプリケーションでは、**Device Explorer** ページを使用して **Windows 10 IoT Core** デバイス テンプレートから実デバイスを追加します。 デバイス接続の詳細 ( **[スコープ ID]** 、 **[デバイス ID]** 、 **[主キー]** ) をメモします。 詳細については、「[接続情報の取得](howto-generate-connection-string.md#get-connection-information)」を参照してください。
 
 ## <a name="prepare-the-device"></a>デバイスの準備
 
@@ -54,7 +54,7 @@ Azure IoT Central アプリケーションでは、**Device Explorer** ページ
 **connection.string.iothub** をデスクトップ コンピューターからお使いのデバイス上の `C:\Data\Users\DefaultAccount\Documents\` フォルダーにコピーするには、[Windows Device Portal](https://docs.microsoft.com/windows/iot-core/manage-your-device/deviceportal) を使用できます。
 
 1. Web ブラウザーを使用して、お使いのデバイス上の Windows Device Portal に移動します。
-1. お使いのデバイス上のファイルを参照するには、**[アプリ] > [File explorer]\(ファイル エクスプローラー\)** を選択します。
+1. お使いのデバイス上のファイルを参照するには、 **[アプリ] > [File explorer]\(ファイル エクスプローラー\)** を選択します。
 1. **User Folders\Documents** に移動します。 次に **connection.string.iothub** ファイルをアップロードします。
 
     ![接続文字列のアップロード](media/howto-connect-windowsiotcore/device-portal.png)
@@ -64,7 +64,7 @@ Azure IoT Central アプリケーションでは、**Device Explorer** ページ
 お使いのデバイスにサンプル アプリケーションをデプロイして実行するには、[Windows Device Portal](https://docs.microsoft.com/windows/iot-core/manage-your-device/deviceportal) を使用できます。
 
 1. Web ブラウザーを使用して、お使いのデバイス上の Windows Device Portal に移動します。
-1. **Azure IoT Hub クライアント** アプリケーションをデプロイして実行するには、**[アプリ] > [Quick-run samples]\(サンプルのクイック実行\)** を選択します。 次に **[Azure IoT Hub Client]\(Azure IoT Hub クライアント\)** を選択します。
+1. **Azure IoT Hub クライアント** アプリケーションをデプロイして実行するには、 **[アプリ] > [Quick-run samples]\(サンプルのクイック実行\)** を選択します。 次に **[Azure IoT Hub Client]\(Azure IoT Hub クライアント\)** を選択します。
 1. **[Deploy and run]\(デプロイして実行\)** を選択します。
 
     ![デプロイして実行する](media/howto-connect-windowsiotcore/quick-run.png)
@@ -74,7 +74,7 @@ Azure IoT Central アプリケーションでは、**Device Explorer** ページ
 [Windows Device Portal](https://docs.microsoft.com/windows/iot-core/manage-your-device/deviceportal) には、デバイスのトラブルシューティングに使用できるツールが含まれています。
 
 - **[Apps Manager]** ページを使用して、デバイスで実行されているアプリを制御できます。
-- デバイスに接続されているモニターがない場合、**[デバイスの設定]** ページを使用して、デバイスからスクリーン ショットをキャプチャできます。 例: 
+- デバイスに接続されているモニターがない場合、 **[デバイスの設定]** ページを使用して、デバイスからスクリーン ショットをキャプチャできます。 例:
 
     ![アプリのスクリーンショット](media/howto-connect-windowsiotcore/iot-hub-foreground-client.png)
 
