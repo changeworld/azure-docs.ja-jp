@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.openlocfilehash: 8f1ed582b7abf43afd38ca5c358aa7e179bfecb3
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64702275"
 ---
 # <a name="submit-jobs-from-r-tools-for-visual-studio"></a>R Tools for Visual Studio からのジョブの送信
@@ -27,7 +27,7 @@ RTVS は、[R インタラクティブ ウィンドウ](https://docs.microsoft.c
 
     ![Visual Studio 2017 での RTVS のインストール](./media/r-server-submit-jobs-r-tools-vs/install-r-tools-for-vs.png)
 
-2. *[データ サイエンスと分析のアプリケーション]* ワークロードを選択し、**[R 言語サポート]**、**[R 開発ツールのランタイム サポート]**、**[Microsoft R Client ]** の各オプションを選択します。
+2. *[データ サイエンスと分析のアプリケーション]* ワークロードを選択し、 **[R 言語サポート]** 、 **[R 開発ツールのランタイム サポート]** 、 **[Microsoft R Client ]** の各オプションを選択します。
 
 3. SSH 認証のための公開キーと秘密キーを用意します。
    <!-- {TODO tbd, no such file yet}[use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-windows.md) -->
@@ -37,14 +37,14 @@ RTVS は、[R インタラクティブ ウィンドウ](https://docs.microsoft.c
 5. ローカル クライアントから HDInsight クラスターに対して `RevoScaleR` 関数を実行するための計算コンテキストを提供する、[PuTTY](https://www.putty.org/) をインストールします。
 
 6. Visual Studio 環境にデータ サイエンスの設定を適用して、R Tools のワークスペースに新しいレイアウトを提供するオプションがあります。
-   1. 現在の Visual Studio 設定を保存するには、**[ツール] > [設定のインポートとエクスポート]** コマンドを使用し、**[選択された環境設定をエクスポート]** を選択してファイル名を指定します。 それらの設定を復元するには、同じコマンドを使用し、**[選択された環境設定をインポート]** を選択します。
+   1. 現在の Visual Studio 設定を保存するには、 **[ツール] > [設定のインポートとエクスポート]** コマンドを使用し、 **[選択された環境設定をエクスポート]** を選択してファイル名を指定します。 それらの設定を復元するには、同じコマンドを使用し、 **[選択された環境設定をインポート]** を選択します。
 
-   2. **[R Tools]** メニュー項目に移動して、**[データ サイエンスの設定...]** を選択します。
+   2. **[R Tools]** メニュー項目に移動して、 **[データ サイエンスの設定...]** を選択します。
 
        ![[データ サイエンスの設定...]](./media/r-server-submit-jobs-r-tools-vs/data-science-settings.png)
 
       > [!NOTE]  
-      > 手順 1 のアプローチを使用して、**[データ サイエンスの設定]** コマンドを繰り返さずに、パーソナライズされたデータ サイエンティストのレイアウトを保存および復元することもできます。
+      > 手順 1 のアプローチを使用して、 **[データ サイエンスの設定]** コマンドを繰り返さずに、パーソナライズされたデータ サイエンティストのレイアウトを保存および復元することもできます。
 
 ## <a name="execute-local-r-methods"></a>ローカル R メソッドを実行する
 
@@ -127,7 +127,7 @@ PuTTY が搭載された Windows コンピューターから Microsoft ML Server
 
         ![Containers](./media/r-server-submit-jobs-r-tools-vs/containers.png)
 
-    4. クラスターのコンテナー名を選択し、**[user]** フォルダーを参照して (一覧の一番下の *[さらに読み込む]* のクリックが必要な場合があります)、*[RevoShare]*、**[newUser]** の順に選択します。 `newUser` フォルダーに `people.json` ファイルが表示されます。
+    4. クラスターのコンテナー名を選択し、 **[user]** フォルダーを参照して (一覧の一番下の *[さらに読み込む]* のクリックが必要な場合があります)、 *[RevoShare]* 、 **[newUser]** の順に選択します。 `newUser` フォルダーに `people.json` ファイルが表示されます。
 
         ![コピーされたファイル](./media/r-server-submit-jobs-r-tools-vs/copied-file.png)
 

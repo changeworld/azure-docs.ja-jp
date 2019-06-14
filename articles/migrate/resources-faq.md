@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: snehaa
 ms.openlocfilehash: 17cead93325da903161d95b315435d6e7b106dbb
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59578919"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61292975"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Azure Migrate - よく寄せられる質問 (FAQ)
 
@@ -144,7 +144,7 @@ Azure Migrate に送信されるデータの量は、複数のパラメーター
 
 ### <a name="i-changed-my-machine-size-can-i-rerun-the-assessment"></a>マシン サイズを変更しました。 アセスメントを再実行できますか。
 
-評価する VM の設定を変更する場合は、コレクター アプライアンスを使用して検出をもう一度トリガーします。 アプライアンスで、**[コレクションをもう一度開始します]** オプションを使用してこの操作を実行します。 コレクションが完了したら、ポータルで評価の **[再計算]** オプションを選択して、更新された評価結果を取得します。
+評価する VM の設定を変更する場合は、コレクター アプライアンスを使用して検出をもう一度トリガーします。 アプライアンスで、 **[コレクションをもう一度開始します]** オプションを使用してこの操作を実行します。 コレクションが完了したら、ポータルで評価の **[再計算]** オプションを選択して、更新された評価結果を取得します。
 
 ### <a name="how-can-i-discover-a-multi-tenant-environment-in-azure-migrate"></a>Azure Migrate でマルチテナント環境を検出するにはどうすればよいですか。
 

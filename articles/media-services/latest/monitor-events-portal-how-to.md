@@ -16,11 +16,11 @@ ms.workload: media
 ms.date: 10/15/2018
 ms.author: juliako
 ms.openlocfilehash: d4592c93cb7969c45a107d7365a1b9dabf11f412
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57884037"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60326531"
 ---
 # <a name="create-and-monitor-media-services-events-with-event-grid-using-the-azure-portal"></a>Azure portal を使用した Event Grid による Media Services イベントの作成と監視
 
@@ -53,14 +53,14 @@ Media Services アカウントのイベントをサブスクライブする前�
 
 どのイベントを追跡し、どこにイベントを送信するかは、トピックを購読することによって Event Grid に伝えます。
 
-1. ポータルで Media Services アカウントを選択し、**[イベント]** を選択します。
+1. ポータルで Media Services アカウントを選択し、 **[イベント]** を選択します。
 1. イベントをビューアー アプリに送信するには、エンドポイントの Web hook を使用します。 
 
    ![[webhook] を選択する](./media/monitor-events-portal/select-web-hook.png)
 
 1. イベント サブスクリプションには、Media Services アカウントの値があらかじめ入力されています。 
 1. **[エンドポイントのタイプ]** には "webhook" を選択します。
-1. このトピックでは、**[すべてのイベントの種類を購読します]** チェック ボックスをオンにしておきます。 ただし、オフにして、特定のイベントの種類をフィルター処理することもできます。 
+1. このトピックでは、 **[すべてのイベントの種類を購読します]** チェック ボックスをオンにしておきます。 ただし、オフにして、特定のイベントの種類をフィルター処理することもできます。 
 1. **[エンドポイントの選択]** リンクをクリックします。
 
     Web hook エンドポイントに対して、Web アプリの URL を入力し、ホーム ページの URL に `api/updates` を追加します。 

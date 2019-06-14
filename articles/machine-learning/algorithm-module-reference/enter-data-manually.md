@@ -11,10 +11,10 @@ ms.author: zhanxia
 ms.date: 05/02/2019
 ROBOTS: NOINDEX
 ms.openlocfilehash: ee15b6fb7160ece907d55e790b0ae38ee458ab96
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65027701"
 ---
 # <a name="enter-data-manually-module"></a>データの手動入力モジュール
@@ -37,13 +37,13 @@ ms.locfileid: "65027701"
   
 2.  **[DataFormat]** で、次のいずれかのオプションを選択します。 指定したデータの解析方法は、これらのオプションによって決まります。 それぞれの形式で要件が大きく異なるため、関連するトピックに必ず目を通してください。  
   
-    -   **ARFF**:  Attribute-Relation File Format の略。Weka で使用されます。   
+    -   **ARFF**: Attribute-Relation File Format の略。Weka で使用されます。   
   
-    -   **CSV**:  コンマ区切り値形式。 詳細については、「[Convert to CSV (CSV への変換)](./convert-to-csv.md)」を参照してください。  
+    -   **CSV**: コンマ区切り値形式。 詳細については、「[Convert to CSV (CSV への変換)](./convert-to-csv.md)」を参照してください。  
   
-    -   **SVMLight**:  Vowpal Wabbit などの機械学習フレームワークで使用される形式。  
+    -   **SVMLight**: Vowpal Wabbit などの機械学習フレームワークで使用される形式。  
   
-    -   **TSV**:  タブ区切り値形式。
+    -   **TSV**: タブ区切り値形式。
 
      形式を選択したにもかかわらず、その形式の仕様を満たしたデータを入力しなかった場合、実行時エラーが発生します。
   
@@ -98,7 +98,7 @@ ms.locfileid: "65027701"
   
      欠損値を含んだ行を作成した場合、それらの行は、後からいつでもフィルターで除去できます。  
   
-5.  モジュールを右クリックし、**[Run selected]\(選択項目の実行\)** を選択すると、データが解析されて、データセットとしてワークスペースに読み込まれます。  
+5.  モジュールを右クリックし、 **[Run selected]\(選択項目の実行\)** を選択すると、データが解析されて、データセットとしてワークスペースに読み込まれます。  
   
      データセットを表示するには、出力ポートをクリックして **[Visualize]\(可視化\)** を選択します。  
 ## <a name="next-steps"></a>次の手順

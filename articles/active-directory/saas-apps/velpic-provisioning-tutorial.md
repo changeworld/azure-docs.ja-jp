@@ -17,11 +17,11 @@ ms.date: 03/27/2019
 ms.author: zhchia
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 16c302fbe151d6cd8c2198240bc31a2bd69dbd7b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59270915"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60337682"
 ---
 # <a name="tutorial-configuring-velpic-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニングのための Velpic の構成
 
@@ -61,21 +61,21 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 ### <a name="to-configure-automatic-user-account-provisioning-to-velpic-in-azure-ad"></a>Azure AD で Velpic への自動ユーザー アカウント プロビジョニングを構成するには
 
-1. [Azure Portal](https://portal.azure.com) で、**[Azure Active Directory]、[エンタープライズ アプリ]、[すべてのアプリケーション]** セクションの順に移動します。
+1. [Azure Portal](https://portal.azure.com) で、 **[Azure Active Directory]、[エンタープライズ アプリ]、[すべてのアプリケーション]** セクションの順に移動します。
 
-2. シングル サインオンのために Velpic を既に構成している場合は、検索フィールドで Velpic のインスタンスを検索します。 構成していない場合は、**[追加]** を選択し、アプリケーション ギャラリーで **Velpic** を検索します。 検索結果から Velpic を選択し、アプリケーションの一覧に追加します。
+2. シングル サインオンのために Velpic を既に構成している場合は、検索フィールドで Velpic のインスタンスを検索します。 構成していない場合は、 **[追加]** を選択し、アプリケーション ギャラリーで **Velpic** を検索します。 検索結果から Velpic を選択し、アプリケーションの一覧に追加します。
 
-3. Velpic のインスタンスを選択し、**[プロビジョニング]** タブを選択します。
+3. Velpic のインスタンスを選択し、 **[プロビジョニング]** タブを選択します。
 
 4. **[プロビジョニング モード]** を **[自動]** に設定します。
 
     ![Velpic のプロビジョニング](./media/velpic-provisioning-tutorial/Velpic1.png)
 
-5. **[管理者資格情報]** セクションで、Velpic の**テナントの URL とシークレット トークン**を入力します (これらの値は Velpic アカウントで確認できます **([Manage]\(管理\)** > **[Integration]\(統合\)** > **[Plugin]\(プラグイン\)** > **[SCIM]**))。
+5. **[管理者資格情報]** セクションで、Velpic の**テナントの URL とシークレット トークン**を入力します (これらの値は Velpic アカウントで確認できます **([Manage]\(管理\)**  >  **[Integration]\(統合\)**  >  **[Plugin]\(プラグイン\)**  >  **[SCIM]** ))。
 
     ![承認の値](./media/velpic-provisioning-tutorial/Velpic2.png)
 
-6. Azure portal で、**[テスト接続]** をクリックして Azure AD が Velpic アプリに接続できることを確認します。 接続できない場合は、お使いの Velpic アカウントに管理者アクセス許可があることを確認してから、手順 5. をもう一度試します。
+6. Azure portal で、 **[テスト接続]** をクリックして Azure AD が Velpic アプリに接続できることを確認します。 接続できない場合は、お使いの Velpic アカウントに管理者アクセス許可があることを確認してから、手順 5. をもう一度試します。
 
 7. プロビジョニングのエラー通知を受け取るユーザーまたはグループの電子メール アドレスを **[通知用メール]** フィールドに入力して、下のチェック ボックスをオンにします。
 
@@ -85,7 +85,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 10. **[属性マッピング]** セクションで、Azure AD から Velpic に同期されるユーザー属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新操作で Velpic のユーザー アカウントとの照合に使用されます。 [保存] ボタンをクリックして変更をコミットします。
 
-11. Velpic に対して Azure AD プロビジョニング サービスを有効にするには、**[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
+11. Velpic に対して Azure AD プロビジョニング サービスを有効にするには、 **[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
 
 12. **[Save]** をクリックします。
 

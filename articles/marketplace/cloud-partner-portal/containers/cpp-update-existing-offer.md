@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/01/2018
 ms.author: pabutler
 ms.openlocfilehash: 0e0db961dec69880eff6ef640e9210af6fcbc978
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64942594"
 ---
 # <a name="update-an-existing-container-offer"></a>既存のコンテナー オファーを更新する
@@ -47,7 +47,7 @@ ms.locfileid: "64942594"
 1. [Cloud パートナー ポータル](https://cloudpartner.azure.com/)にサインインします。
 2. **[すべてのプラン]** から、更新するプランを見つけます。
 3. **[SKU]** タブで、更新するコンテナー イメージに関連付けられている SKU を選択します。
-4. **[Container image](コンテナー イメージ)** で **[+ New Image Version](+ 新しいイメージ バージョン)** を選択し、新しいコンテナー イメージを追加します。
+4. **[Container image]\(コンテナー イメージ)** で **[+ New Image Version]\(+ 新しいイメージ バージョン)** を選択し、新しいコンテナー イメージを追加します。
 5. 新しいコンテナー **イメージ バージョン**を提供します。 イメージ バージョンでは、以前のバージョンと同じタグのガイドラインに従う必要があります。 バージョン タグの形式は X.Y.Z で、X、Y、Z は整数です。 指定した新しいバージョンが以前のすべてのバージョンよりも大きいことを確認します。
 6. **[発行]** を選択し、新しいコンテナー イメージ バージョンを Azure Marketplace に発行するワークフローを開始します。
 

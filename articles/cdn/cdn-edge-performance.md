@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 7dfa252c29121adca2ecc77c08b2fca81d56e575
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54320077"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61070011"
 ---
 # <a name="analyze-edge-node-performance-in-microsoft-azure-cdn"></a>Microsoft Azure CDN でのエッジ ノード パフォーマンスの分析
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
@@ -117,7 +117,7 @@ ms.locfileid: "54320077"
 | フィールド | 説明 |
 | --- | --- |
 | 転送速度 |コンテンツが CDN から要求者に転送されたときの平均速度を示します。 |
-| duration |アセットを要求者 (Web ブラウザーなど) に配信するまでにかかった平均時間をミリ秒単位で示します。 |
+| Duration |アセットを要求者 (Web ブラウザーなど) に配信するまでにかかった平均時間をミリ秒単位で示します。 |
 | 圧縮された要求の率 |CDN (エッジ サーバー) から要求者 (Web ブラウザーなど) に圧縮された形式で配信されたヒットの割合を示します。 |
 | 4xx エラー率 |4xx 状態コードを生成したヒットの割合を示します。 |
 | 5xx エラー率 |5xx 状態コードを生成したヒットの割合を示します。 |
@@ -134,7 +134,7 @@ ms.locfileid: "54320077"
 | セキュリティで保護されたヒット |CDN コンテンツの HTTPS 要求の数を示します。 |
 | セキュリティで保護された出力バイト数 |CDN (エッジ サーバー) から要求者 (Web ブラウザーなど) に配信された HTTPS トラフィックの量をバイト単位で示します。 |
 
-## <a name="reports"></a>レポート
+## <a name="reports"></a>Reports
 このモジュールの各レポートには、帯域幅やトラフィック使用状況に関するさまざまな種類のメトリック (HTTP 状態コード、キャッシュの状態コード、要求 URL など) のグラフと統計情報が含まれています。 この情報は、コンテンツがクライアントにどのように提供されているかを詳しく調査し、CDN の動作を調整してデータ配信パフォーマンスを向上させるために使用することができます。
 
 ### <a name="accessing-the-edge-performance-reports"></a>エッジ パフォーマンス レポートへのアクセス

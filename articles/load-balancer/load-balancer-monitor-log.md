@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 08/10/2018
 ms.author: kumud
 ms.openlocfilehash: 0d7c792c5230a5d82e97f4598a5dcfb864cead74
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57847146"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60861173"
 ---
 # <a name="azure-monitor-logs-for-public-basic-load-balancer"></a>パブリック Basic ロード バランサーの Azure Monitor ログ
 
@@ -45,12 +45,12 @@ Azure の各種ログを使用して、Basic Load Balancer の管理やトラブ
 
     ![portal - load-balancer](./media/load-balancer-monitor-log/load-balancer-browse.png)
 
-3. 既存のロード バランサーを選択し、**[すべての設定]** をクリックします。
-4. ダイアログの右側のロード バランサー名の下で、**[監視]** までスクロールし、**[診断]** をクリックします。
+3. 既存のロード バランサーを選択し、 **[すべての設定]** をクリックします。
+4. ダイアログの右側のロード バランサー名の下で、 **[監視]** までスクロールし、 **[診断]** をクリックします。
 
     ![portal - load-balancer-settings](./media/load-balancer-monitor-log/load-balancer-settings.png)
 
-5. **[診断]** ウィンドウの **[状態]** で、**[オン]** を選択します。
+5. **[診断]** ウィンドウの **[状態]** で、 **[オン]** を選択します。
 6. **[ストレージ アカウント]** をクリックします。
 7. **[ログ]** で既存のストレージ アカウントを選択するか、新しいストレージ アカウントを作成します。 スライダーを使用して、イベント データをイベント ログに格納しておく日数を指定します。 
 8. **[Save]** をクリックします。

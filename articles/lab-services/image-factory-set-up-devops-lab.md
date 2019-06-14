@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
 ms.openlocfilehash: abb85d568e26e4b6f85b960a2560aae570daf201
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60149182"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61320617"
 ---
 # <a name="run-an-image-factory-from-azure-devops"></a>Azure DevOps からイメージ ファクトリを実行する
 この記事では、Azure DevOps (旧称 Visual Studio Team Services) からイメージ ファクトリを実行するために必要な、すべての準備について説明します。
@@ -68,7 +68,7 @@ Azure DevOps では、ソース コードを格納し、1 つの場所で Azure 
 
     ![[ビルドのセットアップ] ボタン](./media/set-up-devops-lab/setup-build-button.png)
 2. ビルドの**名前**を指定します (たとえば、"イメージのビルドと DevTest Labs への配信")。
-3. **空の**ビルド定義を選択し、**[適用]** を選択してビルドを作成します。
+3. **空の**ビルド定義を選択し、 **[適用]** を選択してビルドを作成します。
 4. この段階で、ビルド エージェントに **[Hosted]\(ホステッド\)**  を選択できます。
 5. ビルド定義の **[保存]** を実行します。
 
@@ -96,14 +96,14 @@ Azure DevOps では、ソース コードを格納し、1 つの場所で Azure 
 
 1. **[タスクの追加]** を選択します。
 2. **Azure PowerShell** を検索します。
-3. 見つかった場合は、**[追加]** を選択してタスクをビルドに追加します。 これを実行すると、追加されたタスクが左側に表示されます。
+3. 見つかった場合は、 **[追加]** を選択してタスクをビルドに追加します。 これを実行すると、追加されたタスクが左側に表示されます。
 
 ![PowerShell のセットアップ手順](./media/set-up-devops-lab/set-up-powershell-step.png)
 
 サービス プリンシパルをセットアップする最も速い方法は、Azure DevOps にその実行を任せることです。
 
 1. 先ほど追加した**タスク**を選択します。
-2. **[Azure 接続の種類]** で、**[Azure Resource Manager]** を選択します。
+2. **[Azure 接続の種類]** で、 **[Azure Resource Manager]** を選択します。
 3. **[管理]** リンクを選択して、サービス プリンシパルを設定します。
 
 詳細については、[このブログの投稿](https://devblogs.microsoft.com/devops/automating-azure-resource-group-deployment-using-a-service-principal-in-visual-studio-online-buildrelease-management/)を参照してください。 **[管理]** リンクを選択すると、Azure への接続を設定するための、DevOps の適切な場所が表示されます (ブログ投稿の 2 番目のスクリーン ショット)。 これを設定するときには、**Azure Resource Manager サービス エンドポイント**を必ず選択します。
@@ -122,7 +122,7 @@ Azure DevOps では、ソース コードを格納し、1 つの場所で Azure 
 
 
 ## <a name="queue-the-build"></a>ビルドをキューに配置する
-新しいビルドをキューに配置することで、すべてが正しく設定されていることを確認します。 ビルドの実行中に、[Azure portal](https://portal.azure.com) に切り替え、**[All Virtual Machines]\(すべての仮想マシン\)** をイメージ ファクトリのラボで選択して、すべてが正しく動作することを確認します。 ラボに 3 つの仮想マシンが作成されていることが表示されます。
+新しいビルドをキューに配置することで、すべてが正しく設定されていることを確認します。 ビルドの実行中に、[Azure portal](https://portal.azure.com) に切り替え、 **[All Virtual Machines]\(すべての仮想マシン\)** をイメージ ファクトリのラボで選択して、すべてが正しく動作することを確認します。 ラボに 3 つの仮想マシンが作成されていることが表示されます。
 
 ![ラボの VM](./media/set-up-devops-lab/vms-in-lab.png)
 

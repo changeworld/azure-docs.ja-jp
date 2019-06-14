@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 06/11/2018
 ms.author: spelluru
 ms.openlocfilehash: cb4a3ec9be82957b4c0366ec232f1147c52d0251
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60148774"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62125901"
 ---
 # <a name="import-vms-from-another-lab-in-azure-devtest-labs"></a>Azure DevTest Labs で別のラボから VM をインポートする
 Azure DevTest Labs サービスにより、開発とテスト用の仮想マシン (VM) の管理が大幅に向上します。 この方法を使用すると、チームやインフラストラクチャの要件の変化に応じて、あるラボから別のラボに、VM を移動できます。 これが必要となる一般的なシナリオを次に示します。

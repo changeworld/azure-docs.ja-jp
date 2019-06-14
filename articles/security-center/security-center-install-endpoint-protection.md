@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 03/28/2019
 ms.author: rkarlin
 ms.openlocfilehash: 882d4e0592b74e8af30ff5bf110a41e403c3bf7d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59789653"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60906577"
 ---
 # <a name="manage-endpoint-protection-issues-with-azure-security-center"></a>Azure Security Center での Endpoint Protection の問題の管理
 Azure Security Center では、マルウェア保護の状態を監視し、[Endpoint protection issues]\(Endpoint Protection の問題\) ブレードでこれを報告します。 Security Center では、仮想マシン (VM) やコンピューターをマルウェアの脅威に対して脆弱にする可能性のある問題 (検出された脅威や不十分な保護など) が示されます。 **[Endpoint protection issues]\(Endpoint Protection の問題\)** に表示される情報を使用して、特定された問題に対処する計画を立てることができます。
@@ -41,17 +41,17 @@ Security Center では、次の Endpoint Protection の問題が報告されま�
     >
 
 ## <a name="implement-the-recommendation"></a>推奨事項の実装
-Endpoint Protection の問題は、Security Center に推奨事項として表示されます。  環境がマルウェアの脅威に対して脆弱である場合、**[推奨事項]** と **[コンピューティング]** にこの推奨事項が表示されます。 **[Endpoint protection issues]\(Endpoint Protection の問題\) ダッシュボード**を表示するには、コンピューティング ワークフローに従う必要があります。
+Endpoint Protection の問題は、Security Center に推奨事項として表示されます。  環境がマルウェアの脅威に対して脆弱である場合、 **[推奨事項]** と **[コンピューティング]** にこの推奨事項が表示されます。 **[Endpoint protection issues]\(Endpoint Protection の問題\) ダッシュボード**を表示するには、コンピューティング ワークフローに従う必要があります。
 
-この例では、**[コンピューティング]** を使用します。  Azure VM と非 Azure コンピューターにマルウェア対策をインストールする方法を説明します。
+この例では、 **[コンピューティング]** を使用します。  Azure VM と非 Azure コンピューターにマルウェア対策をインストールする方法を説明します。
 
 ## <a name="install-antimalware-on-azure-vms"></a>Azure VM へのマルウェア対策のインストール
 
-1. Security Center のメイン メニューの **[計算とアプリ]** を選択するか、**[概要]** を選択します。
+1. Security Center のメイン メニューの **[計算とアプリ]** を選択するか、 **[概要]** を選択します。
 
    ![[コンピューティング] を選択する][1]
 
-2. **[コンピューティング]** で、**[Endpoint protection issues]\(Endpoint Protection の問題\)** を選択します。 **[Endpoint protection issues]\(Endpoint Protection の問題\)** ダッシュボードが開きます。
+2. **[コンピューティング]** で、 **[Endpoint protection issues]\(Endpoint Protection の問題\)** を選択します。 **[Endpoint protection issues]\(Endpoint Protection の問題\)** ダッシュボードが開きます。
 
    ![[Endpoint protection issues]\(Endpoint Protection の問題\) を選択する][2]
 
@@ -75,12 +75,12 @@ Endpoint Protection の問題は、Security Center に推奨事項として表�
    ![[Endpoint protection not installed on Azure VMs]\(Azure VM に Endpoint Protection がインストールされていません\) を選択する][3]
 
 4. **[Endpoint protection not installed on Azure VMs]\(Azure VM に Endpoint Protection がインストールされていません\)** に、マルウェア対策がインストールされていない Azure VM の一覧が表示されます。  一覧のすべての VM にマルウェア対策をインストールすることも、特定の VM をクリックして、マルウェア対策をインストールする個々の VM を選択することもできます。
-5. **[Endpoint Protection の選択]** で、使用する Endpoint Protection ソリューションを選択します。 この例では、**[Microsoft マルウェア対策]** を選択します。
+5. **[Endpoint Protection の選択]** で、使用する Endpoint Protection ソリューションを選択します。 この例では、 **[Microsoft マルウェア対策]** を選択します。
 6. Endpoint Protection ソリューションに関する追加情報が表示されます。 **作成** を選択します。
 
 ## <a name="install-antimalware-on-non-azure-computers"></a>非 Azure コンピューターへのマルウェア対策のインストール
 
-1. **[Endpoint protection issues]\(Endpoint Protection の問題\)** に戻り、**[Endpoint protection not installed on non-Azure computers]\(非 Azure コンピューターに Endpoint Protection がインストールされていません\)** を選択します。
+1. **[Endpoint protection issues]\(Endpoint Protection の問題\)** に戻り、 **[Endpoint protection not installed on non-Azure computers]\(非 Azure コンピューターに Endpoint Protection がインストールされていません\)** を選択します。
 
    ![[Endpoint protection not installed on non-Azure computers]\(非 Azure コンピューターに Endpoint Protection がインストールされていません\) を選択する][4]
 

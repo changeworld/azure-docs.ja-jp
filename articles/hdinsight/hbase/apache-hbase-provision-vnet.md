@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: hrasheed
 ms.openlocfilehash: 85eaa81a0cfd7ccfe8ad3ae818f89966280d279e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64730369"
 ---
 # <a name="create-apache-hbase-clusters-on-hdinsight-in-azure-virtual-network"></a>Azure 仮想ネットワーク内の HDInsight 上に Apache HBase クラスターを作成する
@@ -34,7 +34,7 @@ ms.locfileid: "64730369"
 このセクションでは、[Azure Resource Manager テンプレート](../../azure-resource-manager/resource-group-template-deploy.md)を使用して Azure 仮想ネットワーク内の依存する Azure ストレージ アカウントで Linux ベースの Apache HBase クラスターを作成します。 その他のクラスター作成方法と設定の詳細については、「 [HDInsight での Linux ベースの Hadoop クラスターの作成](../hdinsight-hadoop-provision-linux-clusters.md)」を参照してください。 テンプレートを利用して HDInsight で Apache Hadoop クラスターを作成する方法の詳細については、「[Resource Manager テンプレートを使用して HDInsight で Apache Hadoop クラスターを作成する](../hdinsight-hadoop-create-linux-clusters-arm-templates.md)」をご覧ください。
 
 > [!NOTE]  
-> 一部のプロパティは、テンプレートにハードコーディングされています。 例: 
+> 一部のプロパティは、テンプレートにハードコーディングされています。 例:
 >
 > * **場所**:米国東部 2
 > * **クラスターのバージョン**:3.6
@@ -55,7 +55,7 @@ ms.locfileid: "64730369"
 2. **[カスタム デプロイ]** ブレードで以下のプロパティを入力します。
 
    * **サブスクリプション**:HDInsight クラスター、依存するストレージ アカウント、Azure 仮想ネットワークの作成に使用した Azure サブスクリプションを選択します。
-   * **リソース グループ**:**[新規作成]** を選択し、新しいリソース グループの名前を指定します。
+   * **リソース グループ**: **[新規作成]** を選択し、新しいリソース グループの名前を指定します。
    * **場所**:リソース グループの場所を選びます。
    * **ClusterName**:作成される Hadoop クラスターの名前を入力します。
    * **クラスター ログイン名とパスワード**:既定のログイン名は **admin** です。
@@ -93,7 +93,7 @@ ms.locfileid: "64730369"
         curl -u <username>:<password> -k https://<clustername>.azurehdinsight.net/ambari/api/v1/clusters/<clustername>.azurehdinsight.net/services/hbase/components/hbrest
      ```
 
-     返された JavaScript Object Notation (JSON) データで、"host_name" エントリを見つけます。 これには、クラスターのノードの FQDN が含まれています。 例: 
+     返された JavaScript Object Notation (JSON) データで、"host_name" エントリを見つけます。 これには、クラスターのノードの FQDN が含まれています。 例:
 
          ...
          "host_name": "wordkernode0.<clustername>.b1.cloudapp.net
@@ -222,7 +222,7 @@ ms.locfileid: "64730369"
 
 仮想マシンが HBase クラスターと通信できることを確認するには、仮想マシンからコマンド `ping headnode0.<dns suffix>` を使用します。 たとえば、「ping headnode0.mycluster.b1.cloudapp.net」のように入力します。
 
-Java アプリケーションでこの情報を使用するには、[HDInsight (Hadoop) で Apache HBase を使用する Java アプリケーションを構築するための Apache Maven の使用](./apache-hbase-build-java-maven-linux.md)に関する記事の手順に従って、アプリケーションを作成します。 アプリケーションをリモート HBase サーバーに接続するには、Zookeeper の FQDN を使用するように、この例の **hbase-site.xml** ファイルを変更します。 例: 
+Java アプリケーションでこの情報を使用するには、[HDInsight (Hadoop) で Apache HBase を使用する Java アプリケーションを構築するための Apache Maven の使用](./apache-hbase-build-java-maven-linux.md)に関する記事の手順に従って、アプリケーションを作成します。 アプリケーションをリモート HBase サーバーに接続するには、Zookeeper の FQDN を使用するように、この例の **hbase-site.xml** ファイルを変更します。 例:
 
     <property>
         <name>hbase.zookeeper.quorum</name>

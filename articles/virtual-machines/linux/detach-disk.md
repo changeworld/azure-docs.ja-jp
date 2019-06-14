@@ -17,10 +17,10 @@ ms.date: 07/18/2018
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: 02cb970b5c70064abbbc71e585fe3dd1540fda90
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64696717"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-linux-virtual-machine"></a>データ ディスクを Linux 仮想マシンから切断する方法
@@ -91,7 +91,7 @@ sudo vi /etc/fstab
 UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,nofail   1   2
 ```
 
-`umount` を使用してディスクのマウントを解除します。 次の例では、*/datadrive* マウント ポイントから */dev/sdc1* パーティションのマウントを解除します。
+`umount` を使用してディスクのマウントを解除します。 次の例では、 */datadrive* マウント ポイントから */dev/sdc1* パーティションのマウントを解除します。
 
 ```bash
 sudo umount /dev/sdc1 /datadrive
@@ -115,8 +115,8 @@ az vm disk detach \
 ## <a name="detach-a-data-disk-using-the-portal"></a>ポータルを使用してデータ ディスクを切断する方法
 
 1. 左側のメニューで **[Virtual Machines]** を選択します。
-2. 切断するデータ ディスクが接続されている仮想マシンを選択し、**[停止]** をクリックして VM の割り当てを解除します。
-3. 仮想マシンのウィンドウで、**[ディスク]** を選択します。
+2. 切断するデータ ディスクが接続されている仮想マシンを選択し、 **[停止]** をクリックして VM の割り当てを解除します。
+3. 仮想マシンのウィンドウで、 **[ディスク]** を選択します。
 4. **[ディスク]** ウィンドウの上部にある **[編集]** を選択します。
 5. **[ディスク]** ウィンドウで、切断するデータ ディスクの右端にある ![切断ボタンのイメージ](./media/detach-disk/detach.png) 切断ボタンをクリックします。
 5. ディスクが削除されたら、ウィンドウの上部にある [保存] をクリックします。

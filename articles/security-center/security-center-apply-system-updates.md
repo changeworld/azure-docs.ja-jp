@@ -15,25 +15,25 @@ ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
 ms.openlocfilehash: ebd9939128d1f2b870541e82710792d13b69728e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58099003"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62095449"
 ---
 # <a name="apply-system-updates-in-azure-security-center"></a>Azure Security Center でシステムの更新プログラムを適用する
 Azure Security Center では、オペレーティング システムに不足している更新プログラムがないかどうかを確認するために、Windows および Linux 仮想マシン (VM) およびコンピューターの監視が毎日行われています。 Security Center は、Windows コンピューターに構成されているサービスに応じて、Windows Update または Windows Server Update Services (WSUS) から利用可能なセキュリティ更新プログラムと重要な更新プログラムの一覧を取得します。 また、Linux システムにおける最新の更新プログラムについても確認します。 VM またはコンピューターでシステムの更新プログラムが不足している場合、Security Center は、それらを適用することを推奨します。
 
 ## <a name="implement-the-recommendation"></a>推奨事項の実装
-システムの更新プログラムの適用は、Security Center に推奨事項として表示されます。 VM またはコンピューターでシステムの更新プログラムが不足している場合、この推奨事項は、**[推奨事項]** と **[コンピューティング]** に表示されます。  推奨事項を選択すると、**[システムの更新プログラムを適用する]** ダッシュボードが開きます。
+システムの更新プログラムの適用は、Security Center に推奨事項として表示されます。 VM またはコンピューターでシステムの更新プログラムが不足している場合、この推奨事項は、 **[推奨事項]** と **[コンピューティング]** に表示されます。  推奨事項を選択すると、 **[システムの更新プログラムを適用する]** ダッシュボードが開きます。
 
-この例では、**[コンピューティング]** を使用します。
+この例では、 **[コンピューティング]** を使用します。
 
 1. Security Center のメイン メニューの **[コンピューティング]** を選択します。
 
    ![[コンピューティング] を選択する][1]
 
-2. **[コンピューティング]** で、**[不足しているシステムの更新]** を選択します。 **[システムの更新プログラムを適用する]** ダッシュボードが開きます。
+2. **[コンピューティング]** で、 **[不足しているシステムの更新]** を選択します。 **[システムの更新プログラムを適用する]** ダッシュボードが開きます。
 
    ![[システムの更新プログラムを適用する] ダッシュボード][2]
 

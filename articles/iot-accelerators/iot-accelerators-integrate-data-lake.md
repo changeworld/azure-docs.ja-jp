@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.openlocfilehash: 021f18f588613817110539d408f9260fb9247895
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53603931"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61449504"
 ---
 # <a name="integrate-the-remote-monitoring-solution-with-azure-data-lake-store"></a>リモート監視ソリューションを Azure Data Lake Store と統合する
 
@@ -57,7 +57,7 @@ az iot hub consumer-group create --hub-name contoso-rm30263 --name streamanalyti
 
 IoT Hub から Azure Data Lake Store にデータをストリーミングする Azure Stream Analytics ジョブを作成します。
 
-1. **[リソースの作成]** をクリックします。Marketplace から [モノのインターネット] を選択し、**[Stream Analytics ジョブ]** をクリックします。
+1. **[リソースの作成]** をクリックします。Marketplace から [モノのインターネット] を選択し、 **[Stream Analytics ジョブ]** をクリックします。
 
     ![新しい Stream Analytics ジョブ](./media/iot-accelerators-integrate-data-lake/new-stream-analytics-job.png)
 
@@ -75,7 +75,7 @@ IoT Hub から Azure Data Lake Store にデータをストリーミングする 
 
 1. リモート監視ソリューションのリソース グループ内の **Stream Analytics ジョブ**に移動します。
 
-1. [概要] ページで、**[入力]** をクリックします。
+1. [概要] ページで、 **[入力]** をクリックします。
 
     ![[概要] ページ](./media/iot-accelerators-integrate-data-lake/stream-analytics-overview.png)
 
@@ -91,7 +91,7 @@ IoT Hub から Azure Data Lake Store にデータをストリーミングする 
 
 1. **[Save]** をクリックします。
 
-1. [概要] ページで、**[出力]** をクリックします。
+1. [概要] ページで、 **[出力]** をクリックします。
 
     ![Data Lake Store の追加](./media/iot-accelerators-integrate-data-lake/stream-analytics-overview-2.png)
 
@@ -103,7 +103,7 @@ IoT Hub から Azure Data Lake Store にデータをストリーミングする 
 
 1. 前の手順で作成した Data Lake Store アカウントを選択し、ストアにデータをストリーミングするフォルダー構造を用意します。
 
-1. [日付の形式] フィールドに、「**/streaming/{date}/{time}**」と入力します。 [日付の形式] と [時刻の形式] は既定のままにします (それぞれ [YYYY/MM/DD] と [HH])。
+1. [日付の形式] フィールドに、「 **/streaming/{date}/{time}** 」と入力します。 [日付の形式] と [時刻の形式] は既定のままにします (それぞれ [YYYY/MM/DD] と [HH])。
 
     ![フォルダー構造の用意](./media/iot-accelerators-integrate-data-lake/stream-analytics-new-output.png)
 
@@ -124,7 +124,7 @@ IoT Hub から Azure Data Lake Store にデータをストリーミングする 
 
 Azure Stream Analytics では、SQL に似たクエリ言語を使用して、データのストリーミングと目的に応じたデータの変換を実行する入力ソースと、多様なストレージや処理変換先への出力を指定します。
 
-1. [概要] タブで、**[クエリの編集]** をクリックします。
+1. [概要] タブで、 **[クエリの編集]** をクリックします。
 
     ![クエリの編集](./media/iot-accelerators-integrate-data-lake/stream-analytics-edit-query.png)
 
@@ -146,11 +146,11 @@ Azure Stream Analytics では、SQL に似たクエリ言語を使用して、�
 
 ## <a name="start-the-stream-analytics-job"></a>Stream Analytics ジョブの開始
 
-1. [概要] タブで、**[開始]** をクリックします。
+1. [概要] タブで、 **[開始]** をクリックします。
 
     ![Stream Analytics ジョブを開始します。](./media/iot-accelerators-integrate-data-lake/stream-analytics-start.png)
 
-1. [ジョブの開始] タブで、**[カスタム]** をクリックします。
+1. [ジョブの開始] タブで、 **[カスタム]** をクリックします。
 
 1. データを取得するために、デバイスがストリーミングを開始した時点から数時間遡ったカスタム時間を設定します。
 
@@ -168,9 +168,9 @@ Azure Stream Analytics では、SQL に似たクエリ言語を使用して、�
 
 1. Data Lake Store に移動します。
 
-1. [概要] タブで、**[データ エクスプローラー]** をクリックします。
+1. [概要] タブで、 **[データ エクスプローラー]** をクリックします。
 
-1. データ エクスプローラーで、**/streaming** フォルダーに移動します。 YYYY/MM/DD/HH 形式で作成されたフォルダーが表示されます。
+1. データ エクスプローラーで、 **/streaming** フォルダーに移動します。 YYYY/MM/DD/HH 形式で作成されたフォルダーが表示されます。
 
     ![ストリーミング データの探索](./media/iot-accelerators-integrate-data-lake/data-lake-store-data-explorer.png)
 

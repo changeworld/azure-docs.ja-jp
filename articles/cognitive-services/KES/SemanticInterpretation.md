@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
 ms.openlocfilehash: 26f8d885f8cf85ab849ba221392df206e492aac4
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55860815"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60814478"
 ---
 # <a name="semantic-interpretation"></a>セマンティック解釈
 
@@ -33,9 +33,9 @@ ms.locfileid: "55860815"
 
 現在サポートされているデータ型の一覧を次に示します。
 
-|type|説明|例|
+|Type|説明|例|
 |----|----|----|
-|String|0 文字以上のシーケンス|"Hello World!"<br/>""|
+|string|0 文字以上のシーケンス|"Hello World!"<br/>""|
 |Bool|ブール値|true<br/>false|
 |Int32|32 ビット符号付き整数  -2.1e9 から 2.1e9|123<br/>-321|
 |Int64|64 ビット符号付き整数 -9.2e18 と 9.2e18|9876543210|
@@ -139,7 +139,7 @@ And(Composite(Query("academic#Author.Name", "harry shum"),
 
 システム変数はサービスによって事前に定義されており、システムの現在の状態に関するさまざまな統計情報を取得するために使用できます。  現在サポートされている一連のシステム変数を次に示します。
 
-|Name|type|説明|
+|Name|Type|説明|
 |----|----|----|
 |IsAtEndOfQuery|Bool|現在の解釈がすべての入力クエリ テキストと一致した場合は true|
 |IsBeyondEndOfQuery|Bool|現在の解釈に、入力クエリ テキスト以外の提案された入力候補がある場合は true|

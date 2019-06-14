@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
 ms.openlocfilehash: 02473eb5649c7d201b6a54fd57faea997c1a21cc
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54450236"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60872092"
 ---
 # <a name="templates"></a>テンプレート
 
@@ -157,7 +157,7 @@ Windows ストア クライアント アプリ用の同様のテンプレート�
 </tile>
 ```
 
-先に説明したように、連結を使用している場合は、式を中かっこで囲む必要があります。 例: 
+先に説明したように、連結を使用している場合は、式を中かっこで囲む必要があります。 例:
 
 ```xml
 <tile>

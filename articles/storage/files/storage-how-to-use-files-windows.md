@@ -9,10 +9,10 @@ ms.date: 06/07/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 899bf4bbf201ae785a4f49c7f278de75fb48945e
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64926272"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Windows で Azure ファイル共有を使用する
@@ -31,8 +31,8 @@ Azure ファイル共有は、Azure VM とオンプレミスのどちらかで�
 | Windows 8.1            | SMB 3.0     | はい                   | はい                  |
 | Windows Server 2012 R2 | SMB 3.0     | はい                   | はい                  |
 | Windows Server 2012    | SMB 3.0     | はい                   | はい                  |
-| Windows 7              | SMB 2.1     | はい                   | いいえ                    |
-| Windows Server 2008 R2 | SMB 2.1     | はい                   | いいえ                    |
+| Windows 7              | SMB 2.1     | はい                   | いいえ                   |
+| Windows Server 2008 R2 | SMB 2.1     | はい                   | いいえ                   |
 
 <sup>1</sup>Windows 10 バージョン 1507、1607、1703、1709、1803、1809。  
 <sup>2</sup>Windows Server バージョン 1709 および 1803。
@@ -205,7 +205,7 @@ Remove-PSDrive -Name <desired-drive-letter>
     
     ![Azure ファイル共有がマウントされました](./media/storage-how-to-use-files-windows/4_MountOnWindows10.png)
 
-7. Azure ファイル共有をマウント解除することになったら、エクスプローラーの **[ネットワークの場所]** の下にある共有のエントリを右クリックし、**[切断]** を選択します。
+7. Azure ファイル共有をマウント解除することになったら、エクスプローラーの **[ネットワークの場所]** の下にある共有のエントリを右クリックし、 **[切断]** を選択します。
 
 ### <a name="accessing-share-snapshots-from-windows"></a>Windows から共有スナップショットへのアクセス
 手動で、またはスクリプトや Azure Backup のようなサービスを通じて自動で共有スナップショットを取得した場合、Windows のファイル共有内にある以前のバージョンの共有、ディレクトリ、または特定のファイルを表示することができます。 共有スナップショットは、[Azure portal](storage-how-to-use-files-portal.md)、[Azure PowerShell](storage-how-to-use-files-powershell.md)、および [Azure CLI](storage-how-to-use-files-cli.md) で取得することができます。
@@ -224,7 +224,7 @@ Remove-PSDrive -Name <desired-drive-letter>
 ![開かれたスナップショット](./media/storage-how-to-use-files-windows/snapshot-browse-windows.png)
 
 #### <a name="restore-from-a-previous-version"></a>以前のバージョンから復元する
-共有スナップショット作成時のディレクトリ全体の内容を元の場所に再帰的にコピーするには、**[復元]** を選択します。
+共有スナップショット作成時のディレクトリ全体の内容を元の場所に再帰的にコピーするには、 **[復元]** を選択します。
  ![警告メッセージ内の [復元] ボタン](./media/storage-how-to-use-files-windows/snapshot-windows-restore.png) 
 
 ## <a name="securing-windowswindows-server"></a>Windows/Windows Server のセキュリティ保護

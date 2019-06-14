@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: b622de3e21d26676bb11d81a6facf8fea18cabc1
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65067197"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>クエリ ストアによるパフォーマンスの監視
@@ -27,7 +27,7 @@ Azure Database for PostgreSQL のクエリ ストア機能では、一定期間�
 
 ### <a name="enable-query-store-using-the-azure-portal"></a>Azure portal を使用してクエリ ストアを有効にする
 1. Azure portal にサインインし、ご利用の Azure Database for PostgreSQL サーバーを選択します。
-2. メニューの **[設定]** セクションで、**[サーバー パラメーター]** を選択します。
+2. メニューの **[設定]** セクションで、 **[サーバー パラメーター]** を選択します。
 3. `pg_qs.query_capture_mode` パラメーターを検索します。
 4. 値を `TOP` に設定して**保存**します。
 

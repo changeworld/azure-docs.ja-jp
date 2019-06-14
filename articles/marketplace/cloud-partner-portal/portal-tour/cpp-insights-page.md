@@ -1,5 +1,5 @@
 ---
-title: Azure Marketplace の [Insights]\(分析情報\) ページ
+title: Azure Marketplace の Insights (分析情報\) ページ
 description: Azure Marketplace の Cloud パートナー ポータルの [Insights]\(分析情報\) ページに関する概要です。
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: pabutler
 ms.openlocfilehash: 2cbe3b790197c3f71305e4cb21d0f37fe0404511
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64943510"
 ---
 # <a name="insights-page"></a>[Insights]\(インサイト\) ページ

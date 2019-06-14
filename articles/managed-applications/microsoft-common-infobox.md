@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/15/2018
 ms.author: tomfitz
-ms.openlocfilehash: abd1329f2ebac90bf846dfd5fc5b307ddb5e52bd
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 2330197b4512dfdd72de3529145103b644594e25
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47095482"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64711228"
 ---
 # <a name="microsoftcommoninfobox-ui-element"></a>Microsoft.Common.InfoBox UI 要素
 情報ボックスを追加するコントロール。 ボックスには、提供する値の特定に役立つ重要なテキストや警告が含まれています。 詳細についての URI にリンクされている場合もあります。
@@ -43,7 +43,7 @@ ms.locfileid: "47095482"
 
 ## <a name="remarks"></a>解説
 
-* `icon`では、**None****Info****Warning**または **Error**を使用します。
+* `icon`では、**None** **Info** **Warning**または **Error**を使用します。
 * `uri` プロパティは省略可能です。
 
 ## <a name="sample-output"></a>サンプル出力

@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
 ms.openlocfilehash: 58e360bb355c7faf9608b00dd65b14f27aca4367
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59790545"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61038851"
 ---
 # <a name="set-up-disaster-recovery-for-active-directory-and-dns"></a>Active Directory と DNS のディザスター リカバリーを設定する
 
@@ -73,7 +73,7 @@ Site Recovery を使用してレプリケートされたドメイン コント�
 
 1. Site Recovery を使用して、ドメイン コントローラーまたは DNS をホストする仮想マシンを[レプリケート](vmware-azure-tutorial.md)します。
 2. 分離されたネットワークを作成します。 既定では、Azure に作成するすべての仮想ネットワークは、その他のネットワークから分離されます。 このネットワークの IP アドレス範囲は、運用ネットワークと同じものを使用することをお勧めします。 このネットワーク上でサイト間接続を有効化しないでください。
-3. 分離されたネットワークに DNS の IP アドレスを指定します。 DNS 仮想マシンに取得させる IP アドレスを使用します。 Azure にレプリケートする場合は、フェールオーバーで使用される仮想マシンの IP アドレスを指定します。 IP アドレスを入力するには、レプリケートされる仮想マシンの **[コンピューティングとネットワーク]** 設定で、**[ターゲット IP]** 設定を選択します。
+3. 分離されたネットワークに DNS の IP アドレスを指定します。 DNS 仮想マシンに取得させる IP アドレスを使用します。 Azure にレプリケートする場合は、フェールオーバーで使用される仮想マシンの IP アドレスを指定します。 IP アドレスを入力するには、レプリケートされる仮想マシンの **[コンピューティングとネットワーク]** 設定で、 **[ターゲット IP]** 設定を選択します。
 
     ![Azure テスト ネットワーク](./media/site-recovery-active-directory/azure-test-network.png)
 

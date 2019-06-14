@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 08/07/2018
 ms.author: rkmanda
 ms.openlocfilehash: 7479d9a230bd28c2ed2e4c8c79ba9301028af36c
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60007629"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60779374"
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>IoT Hub の高可用性とディザスター リカバリー
 
@@ -127,9 +127,9 @@ IoT ソリューションでのデプロイ トポロジの詳しい説明はこ
 
 | HA/DR のオプション | RTO | RPO | 手動操作が必要? | 実装の複雑さ | 追加コストの影響|
 | --- | --- | --- | --- | --- | --- |
-| Microsoft が開始するフェールオーバー |2 - 26 時間|前述の RPO の表を参照してください|いいえ |なし|なし|
+| Microsoft が開始するフェールオーバー |2 - 26 時間|前述の RPO の表を参照してください|いいえ|なし|なし|
 | 手動フェールオーバー |10 分 - 2 時間|前述の RPO の表を参照してください|はい|非常に低い。 この操作は、ポータルからトリガーする必要があります。|なし|
-| リージョン間 HA |1 分未満|カスタム HA ソリューションのレプリケーション頻度によって変わります|いいえ |高|1 IoT Hub のコストの 1 倍を超えます|
+| リージョン間 HA |1 分未満|カスタム HA ソリューションのレプリケーション頻度によって変わります|いいえ|高|1 IoT Hub のコストの 1 倍を超えます|
 
 ## <a name="next-steps"></a>次の手順
 

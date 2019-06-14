@@ -12,11 +12,11 @@ ms.topic: article
 ms.date: 06/06/2017
 ms.author: KumudD
 ms.openlocfilehash: 9f5206ef5348ee8fd7b3fe981a9cfe4afc1367fb
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58337054"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60734543"
 ---
 # <a name="get-load-balancer-utilization-metrics-using-the-rest-api"></a>REST API を使用して Load Balancer の使用率のメトリックを取得する
 
@@ -50,7 +50,7 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 | loadBalancerName | Azure Load Balancer の名前。 |
 | metricnames | 有効な[Load Balancer メトリック](/azure/load-balancer/load-balancer-standard-diagnostics)のコンマ区切りリスト。 |
 | api-version | 要求で使用する API のバージョン。<br /><br /> このドキュメントでは、api-version `2018-01-01` を使用し、上記の URL に含まれています。  |
-| timespan | クエリの期間。 `startDateTime_ISO/endDateTime_ISO` という形式の文字列です。 この省略可能なパラメーターは、例では 1 日分のデータを返すように設定されています。 |
+| TimeSpan | クエリの期間。 `startDateTime_ISO/endDateTime_ISO` という形式の文字列です。 この省略可能なパラメーターは、例では 1 日分のデータを返すように設定されています。 |
 | &nbsp; | &nbsp; |
 
 ### <a name="request-body"></a>要求本文

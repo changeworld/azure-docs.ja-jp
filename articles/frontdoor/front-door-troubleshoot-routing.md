@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 09/22/2018
 ms.author: sharadag
 ms.openlocfilehash: 7a261d65a7bd3eea150dd764c65b94ddd47466b3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58100311"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60736124"
 ---
 # <a name="troubleshooting-common-routing-issues"></a>ルーティングの一般的な問題のトラブルシューティング
 この記事では、Azure Front Door Service の構成で、よく発生する可能性のあるルーティングの問題をトラブルシューティングする方法について説明します。 
@@ -62,7 +62,7 @@ ms.locfileid: "58100311"
 
 
 3. ルーティング規則の設定を確認する
-     - 問題のフロントエンド ホスト名からバックエンド プールにルーティングする、ルーティング規則に移動します。 許可されているプロトコルが確実に正しく構成されるようにします。構成されていない場合、要求の送信時に Front Door が使用するプロトコルが確実に正しく構成されているようにします。 _[accepted protocols]_ \(許可されているプロトコル\) により、Front Door で許可される要求が決定されます。また、_[詳細]_ タブの _[転送プロトコル]_ により、Front Door がバックエンドの要求の転送に使用するプロトコルが決定されます。
+     - 問題のフロントエンド ホスト名からバックエンド プールにルーティングする、ルーティング規則に移動します。 許可されているプロトコルが確実に正しく構成されるようにします。構成されていない場合、要求の送信時に Front Door が使用するプロトコルが確実に正しく構成されているようにします。 _[accepted protocols]_ \(許可されているプロトコル\) により、Front Door で許可される要求が決定されます。また、 _[詳細]_ タブの _[転送プロトコル]_ により、Front Door がバックエンドの要求の転送に使用するプロトコルが決定されます。
           - たとえば、バックエンドが HTTP 要求のみを許可している場合、次の構成が有効になります。
                - _[accepted protocols]_ \(許可されているプロトコル\) は、HTTP および HTTPS です。 _[転送プロトコル]_ は HTTP です。 HTTPS は許可されているプロトコルであるため、一致要求は機能しません。要求が HTTPS で受信された場合、Front Door は HTTPS を使用してそれを転送します。
 

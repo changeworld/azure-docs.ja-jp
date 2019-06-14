@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
 ms.openlocfilehash: e021d8c056028c03ac71d2a27c9128272f374da6
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58883583"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60877955"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-the-azure-portal"></a>Azure Portal で Azure Data Lake Storage Gen1 の使用を開始する
 
@@ -45,8 +45,8 @@ Azure portal を使用して、Azure Data Lake Storage Gen1 アカウントを�
    
    * **名前**。 Data Lake Storage Gen1 アカウント用に一意の名前を入力します。
    * **サブスクリプション**。 新しい Data Lake Storage Gen1 アカウントを作成するサブスクリプションを選択します。
-   * **リソース グループ**。 既存のリソース グループを選択するか、**[新規作成]** をクリックしてリソース グループを作成します。 リソース グループは、1 つのアプリケーションの関連リソースを保持するコンテナーです。 詳細については、[Azure のリソース グループ](../azure-resource-manager/resource-group-overview.md#resource-groups)に関する記事をご覧ください。
-   * **[場所]**:Data Lake Storage Gen1 アカウントを作成する場所を選択します。
+   * **リソース グループ**。 既存のリソース グループを選択するか、 **[新規作成]** をクリックしてリソース グループを作成します。 リソース グループは、1 つのアプリケーションの関連リソースを保持するコンテナーです。 詳細については、[Azure のリソース グループ](../azure-resource-manager/resource-group-overview.md#resource-groups)に関する記事をご覧ください。
+   * **[場所]** :Data Lake Storage Gen1 アカウントを作成する場所を選択します。
    * **暗号化設定**。 次の 3 つのオプションがあります。
      
      * **暗号化を有効にしない**。
@@ -71,8 +71,8 @@ Azure Key Vault のキーを使用して Data Lake Storage Gen1 アカウント�
 
     ![Data Lake Storage Gen1 の暗号化](./media/data-lake-store-get-started-portal/adls-encryption-4.png "Data Lake Storage Gen1 の暗号化")
    
-   * 最初のオプションでは、**[アクセス許可の付与]** をクリックしてアクセスを構成します。 最初のオプションは、Data Lake Storage Gen1 アカウントを作成したユーザーが Azure Key Vault の管理者でもある場合にのみ有効になります。
-   * もう 1 つのオプションでは、ブレードに表示されている PowerShell コマンドレットを実行します。 この場合、Azure Key Vault の所有者であるか、Azure Key Vault に対するアクセス許可を付与できる必要があります。 コマンドレットを実行したら、ブレードに戻り、**[有効にする]** をクリックしてアクセスを構成します。
+   * 最初のオプションでは、 **[アクセス許可の付与]** をクリックしてアクセスを構成します。 最初のオプションは、Data Lake Storage Gen1 アカウントを作成したユーザーが Azure Key Vault の管理者でもある場合にのみ有効になります。
+   * もう 1 つのオプションでは、ブレードに表示されている PowerShell コマンドレットを実行します。 この場合、Azure Key Vault の所有者であるか、Azure Key Vault に対するアクセス許可を付与できる必要があります。 コマンドレットを実行したら、ブレードに戻り、 **[有効にする]** をクリックしてアクセスを構成します。
 
 > [!NOTE]
 > Azure Resource Manager テンプレートを使用して、Data Lake Storage Gen1 アカウントを作成することもできます。 以下のテンプレートは、[Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/?term=data+lake+store)からアクセスすることができます。
@@ -88,10 +88,10 @@ Azure Key Vault のキーを使用して Data Lake Storage Gen1 アカウント�
 ご自分の Data Lake Storage Gen1 アカウントにフォルダーを作成し、データの管理と保存を行うことができます。
 
 1. 作成した Data Lake Storage Gen1 アカウントを開きます。 左側のウィンドウで **[すべてのリソース]** をクリックし、[すべてのリソース] ブレードで、フォルダーの作成先となるアカウント名をクリックします。 スタート画面にアカウントをピン留めした場合は、そのアカウントのタイルをクリックします。
-2. Data Lake Storage Gen1 アカウントのブレードで、**[データ エクスプローラー]** をクリックします。
+2. Data Lake Storage Gen1 アカウントのブレードで、 **[データ エクスプローラー]** をクリックします。
    
     ![Data Lake Storage Gen1 アカウントでのフォルダーの作成](./media/data-lake-store-get-started-portal/ADL.Create.Folder.png "Data Lake Storage Gen1 アカウントでのフォルダーの作成")
-3. [データ エクスプローラー] ブレードで、**[新しいフォルダー]** をクリックし、新しいフォルダーの名前を入力して、**[OK]** をクリックします。
+3. [データ エクスプローラー] ブレードで、 **[新しいフォルダー]** をクリックし、新しいフォルダーの名前を入力して、 **[OK]** をクリックします。
    
     ![Data Lake Storage Gen1 アカウントでのフォルダーの作成](./media/data-lake-store-get-started-portal/ADL.Folder.Name.png "Data Lake Storage Gen1 アカウントでのフォルダーの作成")
    
@@ -102,8 +102,8 @@ Azure Key Vault のキーを使用して Data Lake Storage Gen1 アカウント�
 ## <a name="uploaddata"></a>Data Lake Storage Gen1 アカウントへのデータのアップロード
 データは、Data Lake Storage Gen1 アカウントの root レベルに直接アップロードすることも、アカウント内に作成したフォルダーにアップロードすることもできます。 
 
-1. **[データ エクスプローラー]** ブレードで、**[アップロード]** をクリックします。 
-2. **[ファイルのアップロード]** ブレードで、アップロードするファイルに移動し、**[選択されたファイルを追加します]** をクリックします。 複数のファイルを選択してアップロードすることもできます。
+1. **[データ エクスプローラー]** ブレードで、 **[アップロード]** をクリックします。 
+2. **[ファイルのアップロード]** ブレードで、アップロードするファイルに移動し、 **[選択されたファイルを追加します]** をクリックします。 複数のファイルを選択してアップロードすることもできます。
 
     ![データのアップロード](./media/data-lake-store-get-started-portal/ADL.New.Upload.File.png "データのアップロード")
 

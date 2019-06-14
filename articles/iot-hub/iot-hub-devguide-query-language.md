@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: rezas
 ms.openlocfilehash: e5387f1e44a55b0a30f8620b49d237ac1e1ec2b6
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57730598"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61442139"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>デバイス ツイン、モジュール ツイン、ジョブ、メッセージ ルーティングの IoT Hub クエリ言語
 
@@ -454,13 +454,13 @@ GROUP BY <group_by_element>
 ### <a name="functions"></a>Functions
 ツインとジョブのクエリにおいて、サポートされている唯一の関数は次のとおりです。
 
-| 関数 | 説明 |
+| Function | 説明 |
 | -------- | ----------- |
 | IS_DEFINED(property) | プロパティに値が代入されているかどうかを示すブール値を返します (`null` を含む)。 |
 
 ルートの条件では、次の計算関数がサポートされています。
 
-| 関数 | 説明 |
+| Function | 説明 |
 | -------- | ----------- |
 | ABS(x) | 指定された数値式の絶対値 (正の値) を返します。 |
 | EXP(x) | 指定された数値式の指数値を返します (e^x)。 |
@@ -473,7 +473,7 @@ GROUP BY <group_by_element>
 
 ルートの条件では、次の型の確認とキャスト関数がサポートされています。
 
-| 関数 | 説明 |
+| Function | 説明 |
 | -------- | ----------- |
 | AS_NUMBER | 入力文字列を数値に変換します。 入力が数値の場合は `noop`、文字列が数値を表していない場合は `Undefined` です。|
 | IS_ARRAY | 指定した式の型が配列であるかどうかを示すブール値を返します。 |
@@ -487,7 +487,7 @@ GROUP BY <group_by_element>
 
 ルートの条件では、次の文字列関数がサポートされています。
 
-| 関数 | 説明 |
+| Function | 説明 |
 | -------- | ----------- |
 | CONCAT(x, y, …) | 2 つ以上の文字列値を連結した結果である文字列を返します。 |
 | LENGTH(x) | 指定された文字列式の文字数を返します。|

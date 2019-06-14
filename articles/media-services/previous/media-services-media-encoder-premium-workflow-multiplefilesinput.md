@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: xpouyat;anilmur;juliako
 ms.openlocfilehash: 608ca4bc3b58dd3c718d6239f90260154d2f6c3a
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58189480"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61465535"
 ---
 # <a name="using-multiple-input-files-and-component-properties-with-premium-encoder"></a>Premium Encoder での複数の入力ファイルとコンポーネント プロパティの使用
 ## <a name="overview"></a>概要
@@ -136,7 +136,7 @@ XML 値が想定されるプロパティを設定するには、 `<![CDATA[ and 
 前の例では、propertyPath は、"/Media File Input/filename"、"/inactiveTimeout"、"clipListXml" のいずれかでした。
 これは、一般的に、コンポーネントの名前、つまりプロパティの名前です。 パスのレベルは、"/primarySourceFile" (プロパティがワークフローのルートにある)、"/Video Processing/Graphic Overlay/Opacity" (オーバーレイがグループ内にある) のように、多かったり少なかったりします。    
 
-パスとプロパティ名を確認するには、各プロパティのすぐ横にあるアクション ボタンを使用します。 このアクション ボタンをクリックし、**[編集]** を選択できます。 プロパティの実際の名前と、その名前のすぐに上に名前空間が表示されます。
+パスとプロパティ名を確認するには、各プロパティのすぐ横にあるアクション ボタンを使用します。 このアクション ボタンをクリックし、 **[編集]** を選択できます。 プロパティの実際の名前と、その名前のすぐに上に名前空間が表示されます。
 
 ![アクション/編集](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture6_actionedit.png)
 

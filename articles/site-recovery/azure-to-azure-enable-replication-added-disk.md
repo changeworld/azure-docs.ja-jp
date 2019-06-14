@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/29/2018
 ms.author: asgang
 ms.openlocfilehash: 69122ffe9cefa3e1b9c6c8fbadfa80492ebebbde
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64928764"
 ---
 # <a name="enable-replication-for-a-disk-added-to-an-azure-vm"></a>Azure VM に追加されたディスクのレプリケーションを有効にする
@@ -40,8 +40,8 @@ VM に追加したディスクのレプリケーションの有効化は、マ�
 
 追加したディスクのレプリケーションを有効にするには、次の操作を行います。
 
-1. [資格情報コンテナー] > **[レプリケートされたアイテム]** で、ディスクを追加する VM をクリックします。
-2. **[ディスク]** をクリックし、レプリケーションを有効にするデータ ディスクを選択します (それらのディスクは**保護されていない**状態です)。
+1. コンテナーの **[レプリケートされたアイテム]** で、ディスクを追加した VM をクリックします。
+2. **[ディスク]** をクリックし、レプリケーションを有効にするデータ ディスクを選択します (これらのディスクの状態は**未保護**です。)。
 3.  **[ディスクの詳細]** で、 **[レプリケーションを有効にする]** をクリックします。
 
     ![追加したディスクのレプリケーションを有効にする](./media/azure-to-azure-enable-replication-added-disk/enabled-added.png)

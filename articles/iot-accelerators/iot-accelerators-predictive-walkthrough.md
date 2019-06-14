@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: dobett
 ms.openlocfilehash: 3387996dc0e1953eaafee9c4c61eb8faa865b654
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58172837"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61447540"
 ---
 # <a name="predictive-maintenance-solution-accelerator-overview"></a>予測メンテナンスのソリューション アクセラレータの概要
 
@@ -77,7 +77,7 @@ Machine Learning モデルは、IoT ソリューション アクセラレータ 
 
 Azure IoT 予測メンテナンスのソリューション アクセラレータは、このテンプレートから作成された回帰モデルを使用します。 モデルは、Azure サブスクリプションにデプロイされ、自動的に生成される API を通じて利用できます。 ソリューションには、4 つのエンジン (合計 100) および 4 つのセンサー データ ストリーム (合計 21) のテスト データのサブセットが含まれます。 このデータは、トレーニング済みのモデルから正確な結果を得るには十分な量です。
 
-*\[1\] A. Saxena と K. Goebel (2008 年)。「Turbofan Engine Degradation Simulation Data Set (ターボファン エンジンの劣化シミュレーション データ セット)」、NASA Ames Prognostics Data Repository (https://c3.nasa.gov/dashlink/resources/139/))、NASA Ames Research Center、カリフォルニア州モフェット フィールド*
+*\[1\] A. Saxena と K. Goebel (2008 年)。「Turbofan Engine Degradation Simulation Data Set (ターボファン エンジンの劣化シミュレーション データ セット)」、NASA Ames Prognostics Data Repository (https://c3.nasa.gov/dashlink/resources/139/) )、NASA Ames Research Center、カリフォルニア州モフェット フィールド*
 
 ## <a name="next-steps"></a>次の手順
 予測メンテナンスのソリューション アクセラレータの主要コンポーネントは確認しました。次は、それをカスタマイズします。

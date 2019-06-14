@@ -16,11 +16,11 @@ ms.date: 07/05/2016
 ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: 98d3d1f6fc0f2f30196f360811808579dfbab312
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53727481"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60832158"
 ---
 # <a name="scale-up-an-app-in-azure"></a>Azure でのアプリのスケールアップ
 
@@ -49,31 +49,31 @@ App Service の個々のプランの価格と機能の詳細については、 [
 
 ## <a name="scale-up-your-pricing-tier"></a>価格レベルのスケールアップ
 1. ブラウザーで、[Azure Portal][portal] を開きます。
-2. App Service のアプリ ページで、**[すべての設定]**、**[スケールアップ]** の順にクリックします。
+2. App Service のアプリ ページで、 **[すべての設定]** 、 **[スケールアップ]** の順にクリックします。
    
     ![Navigate to scale up your Azure app.][ChooseWHP]
-3. レベルを選び、**[適用]** をクリックします。
+3. レベルを選び、 **[適用]** をクリックします。
    
-    操作が完了すると、**[通知]** タブに緑色で "**成功**" が点滅します。
+    操作が完了すると、 **[通知]** タブに緑色で "**成功**" が点滅します。
 
 <a name="ScalingSQLServer"></a>
 
 ## <a name="scale-related-resources"></a>スケール関連リソース
 Azure SQL Database や Azure Storage などの他のサービスにアプリが依存している場合は、これらのリソースも個別にスケールアップできます。 これらのリソースは、App Service プランでは管理されません。
 
-1. **[要点]** で、**[リソース グループ]** リンクをクリックします。
+1. **[要点]** で、 **[リソース グループ]** リンクをクリックします。
    
     ![Scale up your Azure app's related resources](./media/web-sites-scale/RGEssentialsLink.png)
 2. **[リソース グループ]** ページの **[概要]** 部分で、スケールするリソースをクリックします。 以下のスクリーンショットは、SQL Database リソースと Azure Storage リソースを示しています。
    
     ![Navigate to resource group page to scale up your Azure app](./media/web-sites-scale/ResourceGroup.png)
-3. SQL Database リソースの場合は、**[設定]** > **[価格レベル]** の順にクリックして価格レベルをスケールします。
+3. SQL Database リソースの場合は、 **[設定]**  >  **[価格レベル]** の順にクリックして価格レベルをスケールします。
    
     ![Scale up the SQL Database backend for your Azure app](./media/web-sites-scale/ScaleDatabase.png)
    
     SQL データベース インスタンス用に、 [[geo レプリケーション]](../sql-database/sql-database-geo-replication-overview.md) を有効にすることもできます。
    
-    Azure Storage リソースの場合は、**[設定]** > **[構成]** の順にクリックしてストレージ オプションをスケールアップします。
+    Azure Storage リソースの場合は、 **[設定]**  >  **[構成]** の順にクリックしてストレージ オプションをスケールアップします。
    
     ![Scale up the Azure Storage account used by your Azure app](./media/web-sites-scale/ScaleStorage.png)
 

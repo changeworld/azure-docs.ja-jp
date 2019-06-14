@@ -11,11 +11,11 @@ ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/15/2019
 ms.openlocfilehash: ac434a696f6e77e5ce61b430232166e7727eda38
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58084693"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60751180"
 ---
 # <a name="create-endpoints-for-deployed-azure-machine-learning-studio-web-services"></a>デプロイされた Azure Machine Learning Studio Web サービスのエンドポイントを作成する
 
@@ -33,7 +33,7 @@ Azure Machine Learning Web サービス ポータルを使用して、Web サー
 > Web サービスにエンドポイントを追加した場合、既定のエンドポイントを削除することはできません。
 
 1. Machine Learning Studio の左側のナビゲーション列で [Web サービス] をクリックします。
-2. Web サービス ダッシュボードの下部で、**[Manage endpoints]\(エンドポイントの管理\)** をクリックします。 Azure Machine Learning Web サービス ポータルが Web サービスのエンドポイント ページに表示されます。
+2. Web サービス ダッシュボードの下部で、 **[Manage endpoints]\(エンドポイントの管理\)** をクリックします。 Azure Machine Learning Web サービス ポータルが Web サービスのエンドポイント ページに表示されます。
 3. **[新規]** をクリックします。
 4. 新しいエンドポイントの名前と説明を入力します。 エンドポイントの名前は、長さが 24 文字以内で、小文字のアルファベットまたは数字で構成されている必要があります。 ログ レベルとサンプル データが有効になっているかどうかを選択します。 詳細については、「 [Machine Learning Web サービスのログ記録の有効化](web-services-logging.md)」を参照してください。
 

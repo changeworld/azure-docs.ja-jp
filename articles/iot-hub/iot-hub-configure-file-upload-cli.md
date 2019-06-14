@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: robinsh
 ms.openlocfilehash: fe6ce23b9e87235521739b7808712a9d541dabf9
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59048964"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60734917"
 ---
 # <a name="configure-iot-hub-file-uploads-using-azure-cli"></a>Azure CLI を使用して IoT Hub ファイルのアップロードを構成する
 
@@ -95,9 +95,9 @@ az storage account show-connection-string --name {your storage account name} \
 
 * **SAS TTL**:IoT Hub によりデバイスに返される SAS URI の有効期間を設定します。 既定では 1 時間に設定されています。
 
-* **File notification settings default TTL (ファイル通知設定の既定の TTL)**:有効期限が切れるまでのファイルのアップロード通知の有効期間です。 既定では 1 日に設定されています。
+* **File notification settings default TTL (ファイル通知設定の既定の TTL)** :有効期限が切れるまでのファイルのアップロード通知の有効期間です。 既定では 1 日に設定されています。
 
-* **File notification maximum delivery count (ファイル通知設定の最大配信回数)**:IoT Hub がファイルのアップロード通知の配信を試行する回数です。 既定では 10 に設定されています。
+* **File notification maximum delivery count (ファイル通知設定の最大配信回数)** :IoT Hub がファイルのアップロード通知の配信を試行する回数です。 既定では 10 に設定されています。
 
 IoT Hub でファイルのアップロード設定を構成するには、次の Azure CLI コマンドを使用します。
 

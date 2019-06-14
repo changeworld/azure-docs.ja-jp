@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
-ms.openlocfilehash: a75e68c84a50977b162ca4d3a4a02936ca78cb6b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9d222097f9fb99a24f6213584a3419ed777f4a22
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23108900"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61408440"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-troubleshoot-the-storsimple-virtual-array"></a>StorSimple デバイス マネージャー サービスを使用して、StorSimple Virtual Array のトラブルシューティングを行います
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 
 StorSimple デバイス マネージャー サービスの概要ブレードには、**問題の診断と解決**の設定が表示され、仮想アレイで発生する可能性がある一般的な問題と、その解決方法が強調表示されています。 このチュートリアルでは、StorSimple デバイス マネージャー サービスに用意されているセルフ サービスのトラブルシューティング機能を紹介します。
 
@@ -42,6 +42,6 @@ StorSimple デバイス マネージャー サービスの概要ブレードで�
 
 3. 問題への参照が見つからない場合、または問題を解決できない場合は、Microsoft サポートにお問い合わせください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [サポート チケットを記録](storsimple-virtual-array-log-support-ticket.md)する方法を確認します
 

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: pabutler
 ms.openlocfilehash: 6fdab26bb5a4da5402a3a0a895a7c8835ef22c2f
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64935795"
 ---
 # <a name="configure-lead-management-for-dynamics-crm-online"></a>Dynamics CRM Online の潜在顧客管理を構成する
@@ -142,4 +142,4 @@ Azure Active Directory を使用したくない場合は、*Microsoft 365 管理
 生成されたアカウント情報を Cloud パートナー ポータルに追加することで、潜在顧客を管理するための Dynamics CRM の構成を終了します。 例:
 
 -   **Azure Active Directory** - **アプリケーション ID** (例: *23456052-aaaa-bbbb-8662-1234df56788f*)、**ディレクトリ ID** (例: *12345678-8af1-4asf-1234-12234d01db47*)、および**アプリケーション キー** (例: *1234ABCDEDFRZ/G/FdY0aUABCEDcqhbLn/ST122345nBc=* )。
--   **Office 365** - **URL** (例: *https://contoso.crm4.dynamics.com* )、**ユーザー名** (例: *contoso\@contoso.onmicrosoft.com*)、および**パスワード** (例: *P\@ssw0rd*)。
+-   **Office 365** - **URL** (例: *https://contoso.crm4.dynamics.com* )、**ユーザー名** (例: *contoso\@ contoso.onmicrosoft.com*)、および**パスワード** (例: *P\@ ssw0rd*)。

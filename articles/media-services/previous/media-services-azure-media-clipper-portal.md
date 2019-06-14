@@ -10,15 +10,15 @@ ms.date: 03/14/2019
 ms.topic: article
 ms.service: media-services
 ms.openlocfilehash: 8c88caefb0909da55de87116a23fa520c1679cc2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57990606"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61465849"
 ---
 # <a name="create-clips-with-azure-media-clipper-in-the-portal"></a>ポータルで Azure Media Clipper を使用してクリップを作成する  
 
-ポータルで Azure Media Clipper を使用すると、メディア サービス アカウント内のアセットからクリップを作成できます。 作成を開始するには、Azure Portal でメディア サービス アカウントに移動します。 次に、**[サブクリップ]** タブを選択します。
+ポータルで Azure Media Clipper を使用すると、メディア サービス アカウント内のアセットからクリップを作成できます。 作成を開始するには、Azure Portal でメディア サービス アカウントに移動します。 次に、 **[サブクリップ]** タブを選択します。
 
 **[サブクリップ]** タブでは、クリップの作成を開始できます。 ポータルで Clipper は、有効なストリーミング ロケーターに公開されている単一ビットレートの MP4、マルチビット レートの MP4、ライブ アーカイブを読み込みます。 公開されていないアセットは読み込まれません。
 
@@ -34,7 +34,7 @@ ms.locfileid: "57990606"
 ## <a name="producing-dynamic-manifest-filters"></a>動的マニフェスト フィルターの生成
 [動的マニフェスト フィルター](https://azure.microsoft.com/blog/dynamic-manifest/)では、マニフェスト属性とアセットのタイムラインに基づく一連のルールを記述します。 これらのルールで、ストリーミング エンドポイントが、出力プレイリストを操作する方法 (マニフェスト) が決定されます。 このフィルターを使用すると、再生でストリーミングするセグメントを変更できます。 Clipper によって生成されたフィルターは、ローカルのフィルターであり、ソース アセットに固有のものです。 レンダリングされたクリップとは異なり、フィルターは新しいアセットではなく、生成するためにエンコード ジョブは必要ありません。 [.NET SDK](https://docs.microsoft.com/azure/media-services/media-services-dotnet-dynamic-manifest) または [REST API](https://docs.microsoft.com/azure/media-services/media-services-rest-dynamic-manifest) を使用して簡単に作成することができますが、精度は GOP までです。 通常、ストリーミング用にエンコードされたアセットの GOP サイズは 2 秒です。
 
-動的なマニフェスト フィルターを作成するには、**[アセット]** タブに移動して目的のアセットを選びます。 上部メニューの **[サブクリップ]** ボタンを選びます。 [詳細設定] メニューからクリッピング モードとして動的マニフェスト フィルターを選びます。 レンダリングされたクリップを生成するのと同じ手順で、フィルターを作成できます。 フィルターは、1 つのアセットからのみ生成することができます。
+動的なマニフェスト フィルターを作成するには、 **[アセット]** タブに移動して目的のアセットを選びます。 上部メニューの **[サブクリップ]** ボタンを選びます。 [詳細設定] メニューからクリッピング モードとして動的マニフェスト フィルターを選びます。 レンダリングされたクリップを生成するのと同じ手順で、フィルターを作成できます。 フィルターは、1 つのアセットからのみ生成することができます。
 
 次の図は、Azure Portal で動的マニフェスト フィルター モードにある Clipper を示しています。![Azure Portal で動的マニフェスト フィルター モードにある Azure Media Clipper](media/media-services-azure-media-clipper-portal/media-services-azure-media-clipper-filter.PNG)
 

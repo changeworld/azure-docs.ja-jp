@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako;dbgeorge
 ms.openlocfilehash: 058a1f964eb14d89628c92cbadd80511b7a27bae
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58014952"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61230581"
 ---
 # <a name="use-the-haivision-kb-live-encoder-to-send-a-single-bitrate-live-stream"></a>Haivision KB エンコーダーを使用して、単一ビットレートのライブ ストリームを送信する  
 > [!div class="op_single_selector"]
@@ -45,9 +45,9 @@ ms.locfileid: "58014952"
 * ソフトウェア ベースのエンコーダーを使用する際は、不要なプログラムを終了します。
 
 ## <a name="create-a-channel"></a>チャネルの作成
-1. AMSE ツールで、**[Live]** タブに移動して、チャネル領域内を右クリックします。 メニューから **[チャネルの作成]**  を選択します。
+1. AMSE ツールで、 **[Live]** タブに移動して、チャネル領域内を右クリックします。 メニューから **[チャネルの作成]** を選択します。
 [Haivision](./media/media-services-configure-kb-live-encoder/channel.png)
-2. チャネルの名前を指定します。説明フィールドは省略可能です。 [チャネル設定] の [Live Encoding] オプションで入力プロトコルを **[RTMP]** に設定して、**[Standard]** を選択します。 それ以外の設定はすべてそのままにしておくことができます。 **[新しいチャネルを今すぐ開始する]** が選択されていることを確認します。
+2. チャネルの名前を指定します。説明フィールドは省略可能です。 [チャネル設定] の [Live Encoding] オプションで入力プロトコルを **[RTMP]** に設定して、 **[Standard]** を選択します。 それ以外の設定はすべてそのままにしておくことができます。 **[新しいチャネルを今すぐ開始する]** が選択されていることを確認します。
 3. **[チャネルの作成]** をクリックします。
 [Haivision](./media/media-services-configure-kb-live-encoder/livechannel.png)
 
@@ -71,7 +71,7 @@ ms.locfileid: "58014952"
 
 ## <a name="configuration-steps"></a>構成の手順
 1.  Haivision KB のユーザー インターフェイスにログインします。
-2.  チャネル コントロール センターの**メニュー ボタン**をクリックし、**[Add Channel]\(チャネルの追加\)** を選びます  
+2.  チャネル コントロール センターの**メニュー ボタン**をクリックし、 **[Add Channel]\(チャネルの追加\)** を選びます  
     ![スクリーンショット 2017-08-14 午前 9.15.09](./media/media-services-configure-kb-live-encoder/step2.png)
 3.  [Name]\(名前\) フィールドに**チャネル名**を入力し、[Next]\(次へ\) をクリックします。  
     ![スクリーンショット 2017-08-14 午前 9.19.07](./media/media-services-configure-kb-live-encoder/step3.png)

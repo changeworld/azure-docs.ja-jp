@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: sajagtap
 ms.openlocfilehash: eb16f5e1e72e5a9379ad530ab9677adba2ccbbcd
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57899565"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61465679"
 ---
 # <a name="use-azure-media-content-moderator-to-detect-possible-adult-and-racy-content"></a>Azure Media Content Moderator を使用して、成人向けやわいせつな可能性のあるコンテンツを検出する 
 
@@ -71,7 +71,7 @@ JSON 形式のモデレート済み出力には、自動検出されたショッ
 | reviewRecommended | **adultScore** または **racyScore** が内部しきい値を超えているかどうかに応じて `true` または `false` です。 |
 | adultScore | 成人向けの可能性のあるコンテンツの信頼度スコアです。0.00 から 0.99 の間の値です。 |
 | racyScore | わいせつな可能性のあるコンテンツの信頼度ストアです。0.00 から 0.99 の間の値です。 |
-| Index | フレームのインデックスです。最初のフレーム インデックスから最後のフレーム インデックスの間の値です。 |
+| index | フレームのインデックスです。最初のフレーム インデックスから最後のフレーム インデックスの間の値です。 |
 | timestamp | フレームの位置です ("ティック数")。 |
 | shotIndex | 親ショットのインデックスです。 |
 

@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
 ms.openlocfilehash: b50f98c4abaeda3ac1805b73aa18fe6c29596426
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64708696"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>キー、シークレット、証明書について
@@ -387,7 +387,7 @@ Key Vault で証明書発行者を作成するには、その前に、次の前�
 
 1. 証明機関 (CA) プロバイダーにオンボードします  
 
-    -   組織の管理者は、会社 (例:  Contoso) を少なくとも 1 つの CA プロバイダーにオンボードする必要があります。  
+    -   組織の管理者は、会社 (例: Contoso) を少なくとも 1 つの CA プロバイダーにオンボードする必要があります。  
 
 2. 管理者は、SSL 証明書を登録 (および更新) するための Key Vault に対する要求者資格情報を作成します  
 

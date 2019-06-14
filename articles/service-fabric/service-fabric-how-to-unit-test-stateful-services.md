@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 09/04/2018
 ms.author: atsenthi
 ms.openlocfilehash: b066296ca52d3067f8985245161eb4fa7b484a07
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58669114"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60720129"
 ---
 # <a name="create-unit-tests-for-stateful-services"></a>ステートフル サービスの単体テストの作成
 Service Fabric ステートフル サービスの単体テストにより、従来のアプリケーションまたはドメイン固有の単体テストでは必ずしも検出されない一般的な誤りが明らかになります。 ステートフル サービスの単体テストを作成するときに、留意すべき特別な考慮事項があります。

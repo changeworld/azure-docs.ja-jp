@@ -11,11 +11,11 @@ ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 04/04/2017
 ms.openlocfilehash: a191a7adc2c43337b663fc44a8ef40df9d8ffef4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57848921"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60773685"
 ---
 # <a name="use-powershell-to-create-studio-models-and-web-service-endpoints-from-one-experiment"></a>PowerShell を使用して 1 つの実験から Studio モデルと Web サービス エンドポイントを作成する
 
@@ -57,10 +57,10 @@ ms.locfileid: "57848921"
 それではトレーニング データセットとして既定値の *rental001.csv* を使用し、このトレーニング実験を実行してみましょう。 **Evaluate** モジュールの出力を表示 (出力をクリックして **[視覚化]** を選択) すると、*AUC* = 0.91 という良好なパフォーマンスが得られていることを確認できます。 これで、このトレーニング実験から Web サービスをデプロイする準備ができました。
 
 ## <a name="deploy-the-training-and-scoring-web-services"></a>トレーニング Web サービスとスコア付け Web サービスのデプロイ
-トレーニング Web サービスをデプロイするには、実験キャンバスの下にある **[Set Up Web Service (Web サービスのセットアップ)]** ボタンをクリックし、**[Deploy Web Service (Web サービスのデプロイ)]** を選びます。 この Web サービスを "Bike Rental Training" と呼ぶことにします。
+トレーニング Web サービスをデプロイするには、実験キャンバスの下にある **[Set Up Web Service (Web サービスのセットアップ)]** ボタンをクリックし、 **[Deploy Web Service (Web サービスのデプロイ)]** を選びます。 この Web サービスを "Bike Rental Training" と呼ぶことにします。
 
 次に、スコア付け Web サービスをデプロイする必要があります。
-そのためには、キャンバスの下にある **[Web サービスの設定]** をクリックし、**[予測 Web サービス]** を選びます。 これでスコア付け実験が作成されます。
+そのためには、キャンバスの下にある **[Web サービスの設定]** をクリックし、 **[予測 Web サービス]** を選びます。 これでスコア付け実験が作成されます。
 これを Web サービスとして利用するためには、若干の調整を加える必要があります。 入力データからラベル列 "cnt" を削除すると共に、出力内容はインスタンス ID および対応する予測値に限定します。
 
 この作業を省略する場合は、既に作成済みの[予測実験](https://gallery.azure.ai/Experiment/Bike-Rental-Predicative-Experiment-1)をギャラリーで開いてもかまいません。
@@ -94,7 +94,7 @@ Web サービスをデプロイするには、予測実験を実行し、キャ�
 ## <a name="update-the-endpoints-to-use-separate-training-datasets-using-powershell"></a>個別のトレーニング データセットを使用するように PowerShell を使ってエンドポイントを更新する
 次に、各顧客の個別のデータで独自にトレーニングされたモデルでエンドポイントを更新します。 ただし最初に、これらのモデルを **Bike Rental Training** Web サービスから生成する必要があります。 **Bike Rental Training** Web サービスに戻りましょう。 10 個の異なるモデルを作成するためには、対応する BES エンドポイントを 10 回、10 個の異なるトレーニング データセットで呼び出す必要があります。 ここでは、PowerShell コマンドレット **InovkeAmlWebServiceBESEndpoint** を使用してこの処理を実行します。
 
-また、Blob Storage アカウントの資格情報を `$configContent` に与える必要があります。 つまり、フィールド `AccountName`、`AccountKey`、`RelativeLocation` です。 `AccountName` には、自分が所有するいずれかのアカウント名を指定できます。アカウント名は、**Azure Portal** (*[ストレージ]* タブ) に表示されます。 ストレージ アカウントをクリックし、一番下にある **[アクセス キーの管理]** ボタンを押して*プライマリ アクセス キー*をコピーすることによって、対応する `AccountKey` を確認できます。 `RelativeLocation` には、新しいモデルの保存先を、ストレージを起点とする相対パスで指定します。 たとえば、以下のスクリプトでパス `hai/retrain/bike_rental/` が指し示しているのは、`hai` という名前のコンテナーであり、`/retrain/bike_rental/` はサブフォルダーです。 現在サブフォルダーをポータルの UI で作成することはできませんが、[いくつかの Azure ストレージ エクスプローラー](../../storage/common/storage-explorers.md)で作成することはできます。 トレーニング済みの新しいモデル (.ilearner ファイル) は、ストレージに新しいコンテナーを作成して保存することをお勧めします。コンテナーを作成するには、ストレージ ページの一番下にある **[追加]** をクリックし、`retrain` という名前を付けます。 まとめると、以下のスクリプトでは、`AccountName`、`AccountKey`、`RelativeLocation` (:`"retrain/model' + $seq + '.ilearner"`) に関して変更が必要となります。
+また、Blob Storage アカウントの資格情報を `$configContent` に与える必要があります。 つまり、フィールド `AccountName`、`AccountKey`、`RelativeLocation` です。 `AccountName` には、自分が所有するいずれかのアカウント名を指定できます。アカウント名は、**Azure Portal** ( *[ストレージ]* タブ) に表示されます。 ストレージ アカウントをクリックし、一番下にある **[アクセス キーの管理]** ボタンを押して*プライマリ アクセス キー*をコピーすることによって、対応する `AccountKey` を確認できます。 `RelativeLocation` には、新しいモデルの保存先を、ストレージを起点とする相対パスで指定します。 たとえば、以下のスクリプトでパス `hai/retrain/bike_rental/` が指し示しているのは、`hai` という名前のコンテナーであり、`/retrain/bike_rental/` はサブフォルダーです。 現在サブフォルダーをポータルの UI で作成することはできませんが、[いくつかの Azure ストレージ エクスプローラー](../../storage/common/storage-explorers.md)で作成することはできます。 トレーニング済みの新しいモデル (.ilearner ファイル) は、ストレージに新しいコンテナーを作成して保存することをお勧めします。コンテナーを作成するには、ストレージ ページの一番下にある **[追加]** をクリックし、`retrain` という名前を付けます。 まとめると、以下のスクリプトでは、`AccountName`、`AccountKey`、`RelativeLocation` (:`"retrain/model' + $seq + '.ilearner"`) に関して変更が必要となります。
 
     # Invoke the retraining API 10 times
     # This is the default (and the only) endpoint on the training web service

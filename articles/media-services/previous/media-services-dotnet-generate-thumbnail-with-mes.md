@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 6bc29c098bcf7ef1d1a2e2532a00c95f0ec7e927
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57834589"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61244231"
 ---
 # <a name="how-to-generate-thumbnails-using-media-encoder-standard-with-net"></a>.NET で Media Encoder Standard を使用してサムネイルを生成する方法 
 
@@ -553,7 +553,7 @@ namespace EncodeAndGenerateThumbnails
   
   * 負でない整数である場合は、フレーム番号 (例: "Start": "120")
   * % サフィックス付きで表現されている場合は、ソース期間に相対的 (例: "Start": "15%")
-  * HH:MM:SS… 形式で表現されている場合は、タイムスタンプ  ( 例: "Start": "00:01:00"
+  * HH:MM:SS… 形式で表現されている場合は、タイムスタンプ ( 例: "Start": "00:01:00"
     
     必要に応じて、表記法を混在させたり、一致させたりすることができます。
     

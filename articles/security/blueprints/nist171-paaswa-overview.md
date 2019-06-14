@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 07/31/2018
 ms.author: jomolesk
 ms.openlocfilehash: f9773c3b372ab22cbcd99828e147d23c185c4eb6
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57244623"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62127329"
 ---
 # <a name="azure-security-and-compliance-blueprint---paas-web-application-for-nist-special-publication-800-171"></a>Azure のセキュリティとコンプライアンスのブループリント - NIST Special Publication 800-171 のための PaaS Web アプリケーション
 
@@ -36,7 +36,7 @@ ms.locfileid: "57244623"
 
 SQL Database は SQL Server Management Studio により管理されます。 これはセキュリティで保護された VPN または Azure ExpressRoute 接続経由で SQL Database にアクセスするように構成されているローカル コンピューターから実行されます。
 
-Application Insights は、Azure Monitor ログを通して、リアルタイムでアプリケーションのパフォーマンス管理と分析を行います。"*Microsoft では、管理用の VPN または ExpressRoute 接続を構成し、参照アーキテクチャ サブネットにデータをインポートすることをお勧めしています。*"
+Application Insights は、Azure Monitor ログを通して、リアルタイムでアプリケーションのパフォーマンス管理と分析を行います。"*Microsoft では、管理用の VPN または ExpressRoute 接続を構成し、参照アーキテクチャ サブネットにデータをインポートすることをお勧めしています。* "
 
 ![NIST SP 800-171 のための PaaS Web アプリケーションの参照アーキテクチャ ダイアグラム](images/nist171-paaswa-architecture.png "NIST SP 800-171 のための PaaS Web アプリケーションの参照アーキテクチャ ダイアグラム")
 
@@ -66,7 +66,7 @@ Application Insights は、Azure Monitor ログを通して、リアルタイム
 - Azure SQL Database
 - Azure Storage
 - Azure Automation
-- Azure Web Apps 
+- Azure Web Apps
 
 ## <a name="deployment-architecture"></a>デプロイメント アーキテクチャ
 次のセクションで、デプロイと実装の要素について詳しく説明します。
@@ -77,7 +77,7 @@ Application Insights は、Azure Monitor ログを通して、リアルタイム
 
 このソリューションでは、次の構成を持つドメイン参加済み要塞ホストとして仮想マシンを作成します。
 -   [マルウェア対策拡張機能](https://docs.microsoft.com/azure/security/azure-security-antimalware)
--   [Azure 診断拡張機能](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-extensions-diagnostics-template)
+-   [Azure Diagnostics 拡張機能](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-extensions-diagnostics-template)
 -   Azure Key Vault を使用した [Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption)
 -   未使用時の仮想マシン リソースの消費を抑えるための[自動シャットダウン ポリシー](https://azure.microsoft.com/blog/announcing-auto-shutdown-for-vms-using-azure-resource-manager/)。
 -   [Windows Defender Credential Guard](https://docs.microsoft.com/windows/access-protection/credential-guard/credential-guard) の有効化。実行中のオペレーティング システムから分離されている保護された環境で、資格情報とその他のシークレットが実行されるようにします。

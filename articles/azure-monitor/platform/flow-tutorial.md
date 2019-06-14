@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 09/29/2017
 ms.author: bwren
 ms.openlocfilehash: c3732dd2fa87b00eec38f88ab828605b33567235
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58123149"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60396598"
 ---
 # <a name="automate-azure-monitor-log-processes-with-the-connector-for-microsoft-flow"></a>Microsoft Flow のコネクタを使用して Azure Monitor ログのプロセスを自動化する
 [Microsoft Flow](https://ms.flow.microsoft.com) を使用すると、各種サービス用の何百ものアクションを使用して自動化されたワークフローを作成できます。 あるアクションの出力は別のアクションへの入力として使用できます。これにより、さまざまなサービス間の統合を作成できます。  Microsoft Flow 用の Azure Log Analytics コネクタを使用すると、Azure Monitor の Log Analytics ワークスペースから、ログ クエリによって取得されるデータを含むワークフローを構築できます。
@@ -29,18 +29,18 @@ ms.locfileid: "58123149"
 
 
 ## <a name="step-1-create-a-flow"></a>手順 1:フローを作成する
-1. [Microsoft Flow](https://flow.microsoft.com) にサインインし、**[マイ フロー]** を選択します。
+1. [Microsoft Flow](https://flow.microsoft.com) にサインインし、 **[マイ フロー]** を選択します。
 2. **[一から作成]** をクリックします。
 
 ## <a name="step-2-create-a-trigger-for-your-flow"></a>手順 2:フローのトリガーを作成する
 1. **[Search hundreds of connectors and triggers]\(何百ものコネクタやトリガーを検索する\)** をクリックします。
 2. 検索ボックスに「**スケジュール**」と入力します。
-3. **[スケジュール]** を選択し、**[スケジュール - 繰り返し]** を選択します。
-4. **[頻度]** ボックスで **[日]** を選択し、**[間隔]** ボックスに「**1**」と入力します。<br><br>![Microsoft Flow のトリガー ダイアログ ボックス](media/flow-tutorial/flow01.png)
+3. **[スケジュール]** を選択し、 **[スケジュール - 繰り返し]** を選択します。
+4. **[頻度]** ボックスで **[日]** を選択し、 **[間隔]** ボックスに「**1**」と入力します。<br><br>![Microsoft Flow のトリガー ダイアログ ボックス](media/flow-tutorial/flow01.png)
 
 
 ## <a name="step-3-add-a-log-analytics-action"></a>手順 3:Log Analytics のアクションを追加する
-1. **[+ 新しいステップ]** をクリックし、**[アクションの追加]** をクリックします。
+1. **[+ 新しいステップ]** をクリックし、 **[アクションの追加]** をクリックします。
 2. **Log Analytics** を検索します。
 3. **[Azure Log Analytics – Run query and visualize results]\(Azure Log Analytics – クエリを実行して結果を視覚化する\)** をクリックします。<br><br>![Log Analytics のクエリ実行ウィンドウ](media/flow-tutorial/flow02.png)
 
@@ -56,11 +56,11 @@ ms.locfileid: "58123149"
     | sort by Computer
    ```
 
-2. **[グラフの種類]** ボックスで、**[HTML の表]** を選択します。<br><br>![Log Analytics のアクション](media/flow-tutorial/flow03.png)
+2. **[グラフの種類]** ボックスで、 **[HTML の表]** を選択します。<br><br>![Log Analytics のアクション](media/flow-tutorial/flow03.png)
 
 ## <a name="step-5-configure-the-flow-to-send-email"></a>手順 5:電子メールを送信するフローを構成する
 
-1. **[新しいステップ]** をクリックし、**[アクションの追加]** をクリックします。
+1. **[新しいステップ]** をクリックし、 **[アクションの追加]** をクリックします。
 2. **Office 365 Outlook** を検索します。
 3. **[Office 365 Outlook – Send an email]\(Office 365 Outlook – 電子メールの送信\)** をクリックします。<br><br>![Office 365 Outlook の選択ウィンドウ](media/flow-tutorial/flow04.png)
 
@@ -68,12 +68,12 @@ ms.locfileid: "58123149"
 5. **[本文]** ボックスの任意の場所をクリックします。  前のアクションの値が入った **[動的なコンテンツ]** ウィンドウが開きます。  
 6. **[本文]** を選択します。  これは Log Analytics アクションのクエリの結果です。
 6. **[詳細オプションを表示する]** をクリックします。
-7. **[Is HTML]\(HTML にする\)** ボックスで、**[はい]** を選択します。<br><br>![Office 365 の電子メール設定ウィンドウ](media/flow-tutorial/flow05.png)
+7. **[Is HTML]\(HTML にする\)** ボックスで、 **[はい]** を選択します。<br><br>![Office 365 の電子メール設定ウィンドウ](media/flow-tutorial/flow05.png)
 
 ## <a name="step-6-save-and-test-your-flow"></a>手順 6:自分のフローを保存してテストする
-1. **[フロー名]** ボックスにフローの名前を追加し、**[フローの作成]** をクリックします。<br><br>![フローを保存する](media/flow-tutorial/flow06.png)
+1. **[フロー名]** ボックスにフローの名前を追加し、 **[フローの作成]** をクリックします。<br><br>![フローを保存する](media/flow-tutorial/flow06.png)
 2. フローが作成され、指定したスケジュール通りに 1 日後に実行されます。 
-3. フローをすぐにテストするには、**[今すぐ実行]** をクリックして **[フローの実行]** をクリックします。<br><br>![フローを実行する](media/flow-tutorial/flow07.png)
+3. フローをすぐにテストするには、 **[今すぐ実行]** をクリックして **[フローの実行]** をクリックします。<br><br>![フローを実行する](media/flow-tutorial/flow07.png)
 3. フローが完了したら、指定した受信者のメールを確認します。  次のような本文のメールを受信します。<br><br>![電子メールのサンプル](media/flow-tutorial/flow08.png)
 
 

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm
 ms.openlocfilehash: ef24e356c9ac8424fc519a3b16af5d37a20e706f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57999799"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60444220"
 ---
 # <a name="how-to-use-the-azure-slave-plug-in-with-hudson-continuous-integration"></a>Azure スレーブ プラグインを Hudson 継続的インテグレーションで使用する方法
 Hudson 用 Azure スレーブ プラグインを使用して、分散されたビルドを実行するときにスレーブ ノードを Azure にプロビジョニングできます。
@@ -88,7 +88,7 @@ Hudson 用 Azure スレーブ プラグインを使用して、分散された�
 1. Hudson ダッシュボードで、 **[Manage Hudson]** をクリックします。
 2. **[Configure System]** をクリックします。
 3. ページを下にスクロールして **[Cloud]** セクションを探します。
-4. **[Cloud (クラウド)]** セクションで、**[Add Azure Virtual Machine Template (Azure 仮想マシン テンプレートの追加)]** を探し、**[Add (追加)]** ボタンをクリックします。
+4. **[Cloud (クラウド)]** セクションで、 **[Add Azure Virtual Machine Template (Azure 仮想マシン テンプレートの追加)]** を探し、 **[Add (追加)]** ボタンをクリックします。
    
     ![VM テンプレートの追加][add vm template]
 5. **[Name]** フィールドにクラウド サービスの名前を指定します。 指定した名前が既存のクラウド サービスを指す場合、VM はそのサービス内にプロビジョニングされます。 それ以外の場合、Azure は新しいものを作成します。
@@ -111,8 +111,8 @@ Hudson 用 Azure スレーブ プラグインを使用して、分散された�
     
      代わりに使用するカスタム イメージがある場合は、そのカスタム イメージの名前を入力します。 カスタム イメージの名前は一覧には表示されないため、名前が正しく入力されていることを確認する必要があります。    
     
-     このチュートリアルでは、「**U**」と入力して Ubuntu イメージの一覧を表示し、**[Ubuntu Server 14.04 LTS]** を選択します。
-14. **[Launch method (起動方法)]** で、**[SSH]** を選択します。
+     このチュートリアルでは、「**U**」と入力して Ubuntu イメージの一覧を表示し、 **[Ubuntu Server 14.04 LTS]** を選択します。
+14. **[Launch method (起動方法)]** で、 **[SSH]** を選択します。
 15. 次のスクリプトをコピーして **[Init script]** フィールドに貼り付けます。
     
          # Install Java
@@ -150,9 +150,9 @@ Hudson 用 Azure スレーブ プラグインを使用して、分散された�
 3. ジョブの種類として、 **[Build a free-style software job]** を選択します。
 4. Click **OK**.
 5. ジョブを構成するページで、 **[Restrict where this project can be run]** を選択します。
-6. **[Node and label menu (ノードとラベルのメニュー)]** を選択し、**[linux]** を選択します (このラベルは、前のセクションで仮想マシン テンプレートを作成するときに指定したものです)。
-7. **[Build (ビルド)]** セクションで、**[Add build step (ビルド ステップの追加)]** をクリックし、**[Execute shell (シェルの実行)]** を選択します。
-8. 次のスクリプトを編集します。**{your github account name}**、**{your project name}**、**{your project directory}** を適切な値に置き換え、編集後のスクリプトを次に表示されるテキスト領域に貼り付けます。
+6. **[Node and label menu (ノードとラベルのメニュー)]** を選択し、 **[linux]** を選択します (このラベルは、前のセクションで仮想マシン テンプレートを作成するときに指定したものです)。
+7. **[Build (ビルド)]** セクションで、 **[Add build step (ビルド ステップの追加)]** をクリックし、 **[Execute shell (シェルの実行)]** を選択します。
+8. 次のスクリプトを編集します。 **{your github account name}** 、 **{your project name}** 、 **{your project directory}** を適切な値に置き換え、編集後のスクリプトを次に表示されるテキスト領域に貼り付けます。
    
         # Clone from git repo
    

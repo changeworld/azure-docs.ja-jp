@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 07/30/2018
 ms.author: spelluru
 ms.openlocfilehash: 9634c70566aba21bdd28ee016c9fa94464ec9c1b
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52956332"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62127414"
 ---
 # <a name="delete-a-lab-or-vm-in-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs でラボやラボ内の VM を削除する
 この記事では、ラボまたはラボ内の VM を削除する方法について説明します。
@@ -38,10 +38,10 @@ DevTest Labs インスタンスをリソース グループから削除すると
 3. **[DevTest Lab]** ページで、ツール バーの **[削除]** をクリックします。 
 
     ![[削除] ボタン](media/devtest-lab-delete-lab-vm/delete-button.png)
-4. **[確認]** ページで、ラボの**名前**を入力し、**[削除]** を選択します。 
+4. **[確認]** ページで、ラボの**名前**を入力し、 **[削除]** を選択します。 
 
     ![Confirm](media/devtest-lab-delete-lab-vm/confirm-delete.png)
-5. 操作の状態を確認するには、**[通知]** アイコン (ベル) を選択します。 
+5. 操作の状態を確認するには、 **[通知]** アイコン (ベル) を選択します。 
 
     ![通知](media/devtest-lab-delete-lab-vm/delete-status.png)
 
@@ -60,11 +60,11 @@ DevTest Labs インスタンスをリソース グループから削除すると
 2. 左側のメニューから **[すべてのリソース]** を選択し、サービスの種類として **[DevTest Labs]** を選択し、ラボを選択します。
 
     ![ラボを選択する](media/devtest-lab-delete-lab-vm/select-lab.png)
-3. VM 一覧にある VM の **[...] \(省略記号\)** を選択し、**[削除]** を選択します。 
+3. VM 一覧にある VM の **[...] \(省略記号\)** を選択し、 **[削除]** を選択します。 
 
     ![メニューの VM の削除](media/devtest-lab-delete-lab-vm/delete-vm-menu-in-list.png)
 4. **確認**のダイアログ ボックスで **[はい]** を選択します。 
-5. 操作の状態を確認するには、**[通知]** アイコン (ベル) を選択します。 
+5. 操作の状態を確認するには、 **[通知]** アイコン (ベル) を選択します。 
 
 **[仮想マシン] ページ**から VM を削除するには、次の図のようにツール バーの **[削除]** を選択します。
 

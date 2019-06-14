@@ -17,11 +17,11 @@ ms.date: 02/17/2017
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: e20e2a094e1fd88dfc2a25b586dc6c894f92b418
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58312446"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62108481"
 ---
 # <a name="configure-azure-key-vault-integration-for-sql-server-on-azure-virtual-machines-classic"></a>Azure Virtual Machines (クラシック) 上の SQL Server 向け Azure Key Vault 統合の構成
 > [!div class="op_single_selector"]
@@ -57,7 +57,7 @@ PowerShell を使用し、Azure Key Vault 統合を構成します。 次のセ�
 | **$spName** |**サービス プリンシパル名** |"fde2b411-33d5-4e11-af04eb07b669ccf2" |
 | **$spSecret** |**サービス プリンシパル シークレット** |"9VTJSQwzlFepD8XODnzy8n2V01Jd8dAjwm/azF1XDKM=" |
 | **$credName** |**資格情報名**:AKV 統合により SQL Server 内に資格情報が作成されます。VM に Key Vault にアクセスする許可が与えられます。 この資格情報の名前を選択します。 |"mycred1" |
-| **$vmName** |**[仮想マシン名]**: 前に作成した SQL VM の名前。 |"myvmname" |
+| **$vmName** |**[仮想マシン名]** : 前に作成した SQL VM の名前。 |"myvmname" |
 | **$serviceName** |**サービス名**:SQL VM に関連付けられているクラウド サービスの名前。 |"mycloudservicename" |
 
 ### <a name="enable-akv-integration-with-powershell"></a>PowerShell で AKV 統合を有効にする

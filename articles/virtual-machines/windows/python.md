@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 06/22/2017
 ms.author: cynthn
 ms.openlocfilehash: 748bc08e003d398e96ef55493e4f3b0bf6b7da28
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56326978"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61034758"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-python"></a>Python を使用して Azure で Windows VM を作成および管理する
 
@@ -39,15 +39,15 @@ ms.locfileid: "56326978"
 
 ## <a name="create-a-visual-studio-project"></a>Visual Studio プロジェクトを作成する
 
-1. まだ [Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio) をインストールしていない場合は、インストールを実行します。 [ワークロード] ページで **[Python 開発]** を選び、**[インストール]** をクリックします。 概要では、**Python 3 64 ビット (3.6.0)** が自動的に選択されていることがわかります。 Visual Studio を既にインストールしてある場合は、Visual Studio 起動ツールを使って Python ワークロードを追加できます。
-2. Visual Studio をインストールして起動した後、**[ファイル]** > **[新規]** > **[プロジェクト]** の順にクリックします。
-3. **[テンプレート]** > **[Python]** > **[Python アプリケーション]** の順にクリックし、プロジェクトの名前に「*myPythonProject*」と入力して、プロジェクトの場所を選んだ後、**[OK]** をクリックします。
+1. まだ [Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio) をインストールしていない場合は、インストールを実行します。 [ワークロード] ページで **[Python 開発]** を選び、 **[インストール]** をクリックします。 概要では、**Python 3 64 ビット (3.6.0)** が自動的に選択されていることがわかります。 Visual Studio を既にインストールしてある場合は、Visual Studio 起動ツールを使って Python ワークロードを追加できます。
+2. Visual Studio をインストールして起動した後、 **[ファイル]**  >  **[新規]**  >  **[プロジェクト]** の順にクリックします。
+3. **[テンプレート]**  >  **[Python]**  >  **[Python アプリケーション]** の順にクリックし、プロジェクトの名前に「*myPythonProject*」と入力して、プロジェクトの場所を選んだ後、 **[OK]** をクリックします。
 
 ## <a name="install-packages"></a>パッケージをインストールする
 
-1. ソリューション エクスプローラーで、*myPythonProject* の **[Python 環境]** を右クリックし、**[仮想環境の追加]** を選びます。
-2. [仮想環境の追加] 画面で、既定の名前 *env* をそのまま使い、ベース インタープリターとして *[Python 3.6 (64-bit)]\(Python 3.6 (64 ビット)\)* が選ばれていることを確認して、**[作成]** をクリックします。
-3. 作成した *env* 環境を右クリックして、**[Python パッケージのインストール]** をクリックし、検索ボックスに「*azure*」と入力して Enter キーを押します。
+1. ソリューション エクスプローラーで、*myPythonProject* の **[Python 環境]** を右クリックし、 **[仮想環境の追加]** を選びます。
+2. [仮想環境の追加] 画面で、既定の名前 *env* をそのまま使い、ベース インタープリターとして *[Python 3.6 (64-bit)]\(Python 3.6 (64 ビット)\)* が選ばれていることを確認して、 **[作成]** をクリックします。
+3. 作成した *env* 環境を右クリックして、 **[Python パッケージのインストール]** をクリックし、検索ボックスに「*azure*」と入力して Enter キーを押します。
 
 出力ウィンドウに、Azure パッケージが正常にインストールされたことが表示されます。 
 

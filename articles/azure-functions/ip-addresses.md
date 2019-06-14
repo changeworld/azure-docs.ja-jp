@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 12/03/2018
 ms.author: glenga
 ms.openlocfilehash: 83e5a15d8a7f9c01f6a180ebceb715600b8a39db
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52849481"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61035863"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>Azure Functions の IP アドレス
 
@@ -34,7 +34,7 @@ IP アドレスは、個々の関数ではなく、関数アプリに関連付�
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. 関数アプリに移動します。
 3. **[プラットフォーム機能]** を選択します。
-4. **[プロパティ]** を選択すると、**[仮想 IP アドレス]** の下に着信 IP アドレスが表示されます。
+4. **[プロパティ]** を選択すると、 **[仮想 IP アドレス]** の下に着信 IP アドレスが表示されます。
 
 ## <a name="find-outbound-ip-addresses"></a>関数アプリの送信 IP アドレス
 
@@ -124,7 +124,7 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. 関数アプリに移動します。
 3. **[概要]** タブを選択します。
-4. App Service プランの階層は、**[App Service プラン/価格レベル]** の下に表示されます。 App Service 環境の価格レベルは、**[Isolated]** です。
+4. App Service プランの階層は、 **[App Service プラン/価格レベル]** の下に表示されます。 App Service 環境の価格レベルは、 **[Isolated]** です。
  
 別の方法として、[Cloud Shell](../cloud-shell/quickstart.md) を使用することもできます。
 

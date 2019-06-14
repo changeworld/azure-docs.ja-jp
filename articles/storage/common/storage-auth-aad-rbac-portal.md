@@ -10,10 +10,10 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: ebb67ff295a934b4e125e298018c27a095adc590
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65153861"
 ---
 # <a name="grant-access-to-azure-blob-and-queue-data-with-rbac-in-the-azure-portal"></a>Azure portal で RBAC を使用して Azure BLOB とキューのデータへのアクセスを付与する
@@ -85,7 +85,7 @@ RBAC ロールが Azure AD セキュリティ プリンシパルに割り当て�
 
 1. [Azure portal](https://portal.azure.com) のストレージ アカウントに移動します。
 1. **[アクセス制御 (IAM)]** を選択して、ストレージ アカウントのアクセス制御設定を表示します。 **[ロールの割り当て]** タブを選択して、ロールの割り当ての一覧を表示します。
-1. **[ロールの割り当ての追加]** ウィンドウで、**[閲覧者]** ロールを選択します。 
+1. **[ロールの割り当ての追加]** ウィンドウで、 **[閲覧者]** ロールを選択します。 
 1. **[アクセスの割り当て先]** フィールドで **[Azure AD のユーザー、グループ、サービス プリンシパル]** を選択します。
 1. ロールの割り当て先となるセキュリティ プリンシパルを検索して見つけます。
 1. ロールの割り当てを保存します。

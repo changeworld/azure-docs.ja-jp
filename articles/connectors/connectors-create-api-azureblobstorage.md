@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 05/21/2018
 tags: connectors
 ms.openlocfilehash: ea3e97db9ec560306788943d92a7670025f38bdc
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58310372"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60958640"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-with-azure-logic-apps"></a>Azure Logic Apps を使用して Azure BLOB ストレージ内に BLOB を作成して管理する
 
@@ -53,7 +53,7 @@ Azure Logic Apps では、すべてのロジック アプリは、必ず[トリ�
 
 2. 検索ボックスに、フィルターとして「azure blob」と入力します。 トリガーの一覧から、目的のトリガーを選択します。
 
-   この例では、次のトリガーを使用します。**[Azure Blob Storage -BLOB が追加または変更されたとき (プロパティのみ)]**
+   この例では、次のトリガーを使用します。 **[Azure Blob Storage -BLOB が追加または変更されたとき (プロパティのみ)]**
 
    ![トリガーの選択](./media/connectors-create-api-azureblobstorage/azure-blob-trigger.png)
 
@@ -63,13 +63,13 @@ Azure Logic Apps では、すべてのロジック アプリは、必ず[トリ�
 
    1. **[コンテナー]** ボックスで、フォルダー アイコンを選択します。
 
-   2. フォルダーの一覧で、右山かっこ (**>**) を選択し、目的のフォルダーを参照して選択します。
+   2. フォルダーの一覧で、右山かっこ ( **>** ) を選択し、目的のフォルダーを参照して選択します。
 
       ![フォルダーの選択](./media/connectors-create-api-azureblobstorage/trigger-select-folder.png)
 
    3. トリガーがフォルダーの変更をチェックする間隔と頻度を選択します。
 
-4. 操作が完了したら、デザイナーのツールバーで、**[保存]** を選択します。
+4. 操作が完了したら、デザイナーのツールバーで、 **[保存]** を選択します。
 
 5. トリガーの結果を使用して実行するタスクの 1 つまたは複数のアクションをロジック アプリに追加する操作に進みます。
 
@@ -81,16 +81,16 @@ Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md
 
 1. Azure Portal または Visual Studio で、ロジック アプリをロジック アプリ デザイナーで開きます。 この例では、Azure Portal を使用します。
 
-2. Logic Apps デザイナーのトリガーまたはアクションで、**[新しいステップ]** > **[アクションの追加]** を選択します。
+2. Logic Apps デザイナーのトリガーまたはアクションで、 **[新しいステップ]**  >  **[アクションの追加]** を選択します。
 
    ![アクションを追加する](./media/connectors-create-api-azureblobstorage/add-action.png) 
 
    既存のステップの間にアクションを追加するには、接続矢印の上にマウスを移動します。 
-   表示されるプラス記号 (**+**) を選択し、**[アクションの追加]** を選択します。
+   表示されるプラス記号 ( **+** ) を選択し、 **[アクションの追加]** を選択します。
 
 3. 検索ボックスに、フィルターとして「azure blob」と入力します。 アクションの一覧から、目的のアクションを選択します。
 
-   この例では、次のアクションを使用します。**[Azure Blob Storage - BLOB コンテンツの取得]**
+   この例では、次のアクションを使用します。 **[Azure Blob Storage - BLOB コンテンツの取得]**
 
    ![選択アクション](./media/connectors-create-api-azureblobstorage/azure-blob-action.png) 
 
@@ -104,7 +104,7 @@ Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md
 
    2. BLOB の **ID** 番号に基づいて目的のファイルを見つけて選択します。 この **ID** 番号は、前に説明した BLOB Storage トリガーで返される BLOB のメタデータ内で見つけることができます。
 
-5. 操作が完了したら、デザイナーのツールバーで、**[保存]** を選択します。
+5. 操作が完了したら、デザイナーのツールバーで、 **[保存]** を選択します。
 ロジック アプリをテストするには、選択したフォルダーに BLOB が含まれていることを確認します。
 
 この例では、BLOB の内容の取得のみが実行されます。 内容を表示するには、別のコネクタを使用して、BLOB のファイルを作成する別のアクションを追加します。 たとえば、BLOB の内容に基づいてファイルを作成する OneDrive アクションを追加します。

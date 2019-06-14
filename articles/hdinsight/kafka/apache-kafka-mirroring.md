@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.openlocfilehash: ba04ed7c95cbf00d5996ef237d3ac65053da0662
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64727378"
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>MirrorMaker を使用して HDInsight 上の Kafka に Apache Kafka トピックをレプリケートする
@@ -63,12 +63,12 @@ Azure 仮想ネットワークと Kafka クラスターは手動で作成でき�
    
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-kafka-mirror-cluster-in-vnet-v2.1.json" target="_blank"><img src="./media/apache-kafka-mirroring/deploy-to-azure.png" alt="Deploy to Azure"></a>
    
-    Azure Resource Manager テンプレートは、**https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-mirror-cluster-in-vnet-v2.1.json** にあります。
+    Azure Resource Manager テンプレートは、 **https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-mirror-cluster-in-vnet-v2.1.json** にあります。
 
     > [!WARNING]  
     > HDInsight で Kafka の可用性を保証するには、クラスターに少なくとも 3 つのワーカー ノードが必要です。 このテンプレートは、3 つのワーカー ノードが含まれる Kafka クラスターを作成します。
 
-2. 次の情報に従って、**[カスタム デプロイ]** ブレードの各エントリに入力します。
+2. 次の情報に従って、 **[カスタム デプロイ]** ブレードの各エントリに入力します。
     
     ![HDInsight のカスタム デプロイ](./media/apache-kafka-mirroring/parameters.png)
     
@@ -76,9 +76,9 @@ Azure 仮想ネットワークと Kafka クラスターは手動で作成でき�
 
     * **場所**: 地理的に近い場所を選択します。
      
-    * **Base Cluster Name (ベース クラスター名)**:この値は、Kafka クラスターのベース名として使用されます。 たとえば、「**hdi**」と入力すると、**source-hdi** と、**dest-hdi** という名前のクラスターが作成されます。
+    * **Base Cluster Name (ベース クラスター名)** :この値は、Kafka クラスターのベース名として使用されます。 たとえば、「**hdi**」と入力すると、**source-hdi** と、**dest-hdi** という名前のクラスターが作成されます。
 
-    * **Cluster Login User Name (クラスター ログイン ユーザー名)**:移行元および移行先の Kafka クラスターの管理者ユーザー名。
+    * **Cluster Login User Name (クラスター ログイン ユーザー名)** :移行元および移行先の Kafka クラスターの管理者ユーザー名。
 
     * **クラスター ログイン パスワード**:移行元および移行先の Kafka クラスターの管理者ユーザー パスワード。
 
@@ -86,9 +86,9 @@ Azure 仮想ネットワークと Kafka クラスターは手動で作成でき�
 
     * **SSH パスワード**:移行元および移行先の Kafka クラスター用の SSH ユーザーのパスワード。
 
-3. **使用条件**を読み、**[上記の使用条件に同意する]** をオンにします。
+3. **使用条件**を読み、 **[上記の使用条件に同意する]** をオンにします。
 
-4. 最後に、**[ダッシュボードにピン留めする]** をオンにし、**[購入]** をクリックします。 クラスターの作成には約 20 分かかります。
+4. 最後に、 **[ダッシュボードにピン留めする]** をオンにし、 **[購入]** をクリックします。 クラスターの作成には約 20 分かかります。
 
 > [!IMPORTANT]  
 > 各 HDInsight クラスターの名前は、**source-BASENAME** と **dest-BASENAME** です。BASENAME はテンプレートで指定した名前です。 これらの名前は、後の手順でクラスターに接続するときに使用します。
@@ -232,12 +232,12 @@ Azure 仮想ネットワークと Kafka クラスターは手動で作成でき�
         トピックを自動的に作成するように移行先クラスターを構成するには、次の手順を実行します。
 
         1. [Azure Portal](https://portal.azure.com) から、移行先の Kafka クラスターを選択します。
-        2. クラスターの概要から __[クラスター ダッシュボード]__ を選択します。 次に、__[HDInsight クラスター ダッシュボード]__ を選択します。 認証を求められたら、クラスターのログイン (管理者) 資格情報を使用して認証を行います。
+        2. クラスターの概要から __[クラスター ダッシュボード]__ を選択します。 次に、 __[HDInsight クラスター ダッシュボード]__ を選択します。 認証を求められたら、クラスターのログイン (管理者) 資格情報を使用して認証を行います。
         3. ページの左側にあるリストから __Kafka__ サービスを選択します。
         4. ページ中央の __[Configs]\(構成\)__ を選択します。
         5. __[フィルター]__ フィールドに `auto.create` の値を入力します。 プロパティの一覧にフィルターが適用されて `auto.create.topics.enable` 設定が表示されます。
         6. `auto.create.topics.enable` の値を true に変更して __[保存]__ を選択します。 ノートを追加して、もう一度 __[保存]__ を選択します。
-        7. __Kafka__ サービスを選択し、__[Restart]\(再起動\)__ を選択して、__[Restart all affected]\(影響を受けるものをすべて再起動\)__ を選択します。 メッセージが表示されたら、__[Confirm restart all]\(すべて再起動\)__ を選択します。
+        7. __Kafka__ サービスを選択し、 __[Restart]\(再起動\)__ を選択して、 __[Restart all affected]\(影響を受けるものをすべて再起動\)__ を選択します。 メッセージが表示されたら、 __[Confirm restart all]\(すべて再起動\)__ を選択します。
 
 ## <a name="start-mirrormaker"></a>MirrorMaker の開始
 

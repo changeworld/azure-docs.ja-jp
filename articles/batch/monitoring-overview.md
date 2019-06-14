@@ -12,11 +12,11 @@ ms.workload: na
 ms.date: 04/05/2018
 ms.author: lahugh
 ms.openlocfilehash: b0243b37f725fc977337b72998d610e9bda71a86
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58848031"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62128857"
 ---
 # <a name="monitor-batch-solutions"></a>Batch ソリューションの監視
 
@@ -30,7 +30,7 @@ Batch アカウントを含むサブスクリプション レベルでは、[Azu
 
 具体的に Batch アカウントでは、アクティビティ ログによってアカウントの作成と削除やキー管理に関連するイベントが収集されます。
 
-アクティビティ ログからイベントを取得する 1 つの方法として、Azure Portal を使用できます。 **[すべてのサービス]** > **[アクティビティ ログ]** をクリックします。 または Azure CLI、PowerShell コマンドレットか Azure Monitor REST API を使用して、イベントのクエリを実行します。 アクティビティ ログをエクスポートしたり、[アクティビティ ログ アラート](../monitoring-and-diagnostics/monitoring-activity-log-alerts-new-experience.md)を構成したりすることもできます。
+アクティビティ ログからイベントを取得する 1 つの方法として、Azure Portal を使用できます。 **[すべてのサービス]**  >  **[アクティビティ ログ]** をクリックします。 または Azure CLI、PowerShell コマンドレットか Azure Monitor REST API を使用して、イベントのクエリを実行します。 アクティビティ ログをエクスポートしたり、[アクティビティ ログ アラート](../monitoring-and-diagnostics/monitoring-activity-log-alerts-new-experience.md)を構成したりすることもできます。
 
 ## <a name="batch-account-level-monitoring"></a>Batch アカウント レベルの監視
 
@@ -41,7 +41,7 @@ Batch アカウントを含むサブスクリプション レベルでは、[Azu
 
 ## <a name="batch-resource-monitoring"></a>Batch リソースの監視
 
-Batch アプリケーションでは、Batch API を使用して、ジョブ、タスク、ノード、プールなどのリソースの状態の監視またはクエリを実行します。 例: 
+Batch アプリケーションでは、Batch API を使用して、ジョブ、タスク、ノード、プールなどのリソースの状態の監視またはクエリを実行します。 例:
 
 * [状態ごとにタスクとコンピューティング ノードをカウントする](batch-get-resource-counts.md)
 * [効率的に Batch リソースを一覧表示するクエリを作成する](batch-efficient-list-queries.md)

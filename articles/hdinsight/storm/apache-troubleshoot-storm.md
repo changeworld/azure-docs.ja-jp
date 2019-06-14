@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
 ms.openlocfilehash: 3866e25cc3c87f569e84b2d5639d25aa9386cc78
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64713762"
 ---
 # <a name="troubleshoot-apache-storm-by-using-azure-hdinsight"></a>Azure HDInsight を使用した Apache Storm のトラブルシューティング
@@ -51,7 +51,7 @@ HDInsight Storm イベント ハブ スパウト .jar ファイルを使用し�
 
 lib フォルダーには、エクスポート/インポート操作の実装を含む .jar ファイルがあります。 bash フォルダーには、古いクラスター上の Zookeeper サーバーからデータをエクスポートし、新しいクラスター上の Zookeeper サーバーにデータをインポートして戻す方法を示すサンプル スクリプトがあります。
 
-データをエクスポートし、インポートするには、Zookeeper ノードから [stormmeta.sh](https://github.com/hdinsight/hdinsight-storm-examples/blob/master/tools/zkdatatool-1.0/bash/stormmeta.sh) スクリプトを実行します。 スクリプトを適切な Hortonworks Data Platform (HDP) バージョンに更新します  (Microsoft では、HDInsight でこれらのスクリプトを汎用スクリプトにするよう取り組んでいます。 汎用スクリプトは、ユーザーが変更しなくてもクラスターのどのノードからでも実行できます)。
+データをエクスポートし、インポートするには、Zookeeper ノードから [stormmeta.sh](https://github.com/hdinsight/hdinsight-storm-examples/blob/master/tools/zkdatatool-1.0/bash/stormmeta.sh) スクリプトを実行します。 スクリプトを適切な Hortonworks Data Platform (HDP) バージョンに更新します (Microsoft では、HDInsight でこれらのスクリプトを汎用スクリプトにするよう取り組んでいます。 汎用スクリプトは、ユーザーが変更しなくてもクラスターのどのノードからでも実行できます)。
 
 エクスポート コマンドでは、設定されている場所の Apache Hadoop 分散ファイル システム (HDFS) パス (Azure Blob Storage または Azure Data Lake Storage 内) にメタデータが書き込まれます。
 

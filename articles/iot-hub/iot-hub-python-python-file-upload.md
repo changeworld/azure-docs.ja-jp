@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: kgremban
 ms.openlocfilehash: 6195c37780acaf8c8f432fa09c5ac01a75363c04
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59265528"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61441306"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub"></a>IoT Hub を使用してデバイスからクラウドにファイルをアップロードする
 
@@ -29,7 +29,7 @@ ms.locfileid: "59265528"
 「[IoT Hub への利用統計情報の送信](quickstart-send-telemetry-python.md)」クイック　スタートでは、IoT Hub のデバイスからクラウドへの基本的なメッセージング機能が示されます。 ただし、一部のシナリオでは、デバイスから送信されるデータを、IoT Hub が受け取る、クラウドからデバイスへの比較的小さなメッセージにマッピングすることは簡単ではありません。 デバイスからファイルをアップロードする必要がある場合も、IoT Hub のセキュリティを信頼性を使用できます。
 
 > [!NOTE]
-> IoT Hub Python SDK は現在、**.txt** ファイルなどの文字ベースのファイルのアップロードのみをサポートしています。
+> IoT Hub Python SDK は現在、 **.txt** ファイルなどの文字ベースのファイルのアップロードのみをサポートしています。
 
 このチュートリアルの最後に、Python コンソール アプリを実行します。
 
@@ -63,7 +63,7 @@ ms.locfileid: "59265528"
 2. テキスト エディターを使用して、BLOB ストレージにアップロードするテスト ファイルを作成します。
 
     > [!NOTE]
-    > IoT Hub Python SDK は現在、**.txt** ファイルなどの文字ベースのファイルのアップロードのみをサポートしています。
+    > IoT Hub Python SDK は現在、 **.txt** ファイルなどの文字ベースのファイルのアップロードのみをサポートしています。
 
 3. テキスト エディターを使用して、作業フォルダーに **FileUpload.py** ファイルを作成します。
 

@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 6f9064c6027499fff3a8551ee60722cd66c54dc2
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58883430"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60877697"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-by-using-the-azure-portal"></a>Azure portal を使用して、Azure Data Lake Storage Gen1 を使用する HDInsight クラスターを作成する
 > [!div class="op_single_selector"]
@@ -34,7 +34,7 @@ Azure portal を使用して、既定のストレージまたは追加のスト�
 このチュートリアルを開始する前に、次の要件を満たしていることを確認します。
 
 * **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページをご覧ください。
-* **Data Lake Storage Gen1 アカウント**。 「[Azure portal で Azure Data Lake Storage Gen1 の使用を開始する](data-lake-store-get-started-portal.md)」の手順に従ってください。 アカウントのルート フォルダーも作成する必要があります。  このチュートリアルでは、__/clusters__ という名前のルート フォルダーを使用します。
+* **Data Lake Storage Gen1 アカウント**。 「[Azure portal で Azure Data Lake Storage Gen1 の使用を開始する](data-lake-store-get-started-portal.md)」の手順に従ってください。 アカウントのルート フォルダーも作成する必要があります。  このチュートリアルでは、 __/clusters__ という名前のルート フォルダーを使用します。
 * **Azure Active Directory サービス プリンシパル**。 このチュートリアルでは、Azure Active Directory (Azure AD) でサービス プリンシパルを作成する方法について説明します。 ただし、サービス プリンシパルを作成するには、Azure AD 管理者である必要があります。 管理者である場合は、この前提条件をスキップしてチュートリアルを進めることができます。
 
     >[!NOTE]
@@ -51,16 +51,16 @@ Azure portal を使用して、既定のストレージまたは追加のスト�
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. HDInsight クラスターの作成に関する一般的な情報については、「[クラスターの作成](../hdinsight/hdinsight-hadoop-create-linux-clusters-portal.md#create-clusters)」を参照してください。
-3. **[ストレージ]** ブレードの **[プライマリ ストレージの種類]** で、**[Azure Data Lake Storage Gen1]** を選択して、次の情報を入力します。
+3. **[ストレージ]** ブレードの **[プライマリ ストレージの種類]** で、 **[Azure Data Lake Storage Gen1]** を選択して、次の情報を入力します。
 
     ![HDInsight クラスターにサービス プリンシパルを追加する](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.1.adls.storage.png "HDInsight クラスターにサービス プリンシパルを追加する")
 
     - **Data Lake Store アカウントを選択する**:既存の Data Lake Storage Gen1 アカウントを選択します。 既存の Data Lake Storage Gen1 アカウントが必要です。  「[前提条件](#prerequisites)」を参照してください。
-    - **ルート パス**:クラスターに固有のファイルが格納されるパスを入力します。 このスクリーン ショットでは、__/clusters/myhdiadlcluster/__ です。この場合、__/clusters__ フォルダーが存在する必要があり、Portal では *myhdicluster* フォルダーが作成されます。  *myhdicluster* がクラスター名です。
-    - **[Data Lake Store アクセス]**:Data Lake Storage Gen1 アカウントと HDInsight クラスターの間のアクセスを構成します。 手順については、「Data Lake Storage Gen1 のアクセスの構成」を参照してください。
+    - **ルート パス**:クラスターに固有のファイルが格納されるパスを入力します。 このスクリーン ショットでは、 __/clusters/myhdiadlcluster/__ です。この場合、 __/clusters__ フォルダーが存在する必要があり、Portal では *myhdicluster* フォルダーが作成されます。  *myhdicluster* がクラスター名です。
+    - **[Data Lake Store アクセス]** :Data Lake Storage Gen1 アカウントと HDInsight クラスターの間のアクセスを構成します。 手順については、「Data Lake Storage Gen1 のアクセスの構成」を参照してください。
     - **追加のストレージ アカウント**:クラスターの追加のストレージ アカウントとして Azure ストレージ アカウントを追加します。 Data Lake Storage Gen1 アカウントの追加は、プライマリ ストレージ タイプとして Data Lake Storage Gen1 アカウントを構成する際に、他の Data Lake Storage Gen1 アカウントのデータに対するクラスターのアクセス許可を与えることで完了します。 「Data Lake Storage Gen1 のアクセスの構成」を参照してください。
 
-4. **[Data Lake Store アクセス]** で、**[選択]** をクリックし、[HDInsight での Hadoop クラスターの作成](../hdinsight/hdinsight-hadoop-create-linux-clusters-portal.md)に関するページの説明に従ってクラスターの作成に進みます。
+4. **[Data Lake Store アクセス]** で、 **[選択]** をクリックし、[HDInsight での Hadoop クラスターの作成](../hdinsight/hdinsight-hadoop-create-linux-clusters-portal.md)に関するページの説明に従ってクラスターの作成に進みます。
 
 
 ### <a name="create-a-cluster-with-data-lake-storage-gen1-as-additional-storage"></a>Data Lake Storage Gen1 を追加のストレージとして使用してクラスターを作成する
@@ -71,14 +71,14 @@ Azure portal を使用して、既定のストレージまたは追加のスト�
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. HDInsight クラスターの作成に関する一般的な情報については、「[クラスターの作成](../hdinsight/hdinsight-hadoop-create-linux-clusters-portal.md#create-clusters)」を参照してください。
-3. **[ストレージ]** ブレードの **[プライマリ ストレージの種類]** で、**[Azure Storage]** を選択して、次の情報を入力します。
+3. **[ストレージ]** ブレードの **[プライマリ ストレージの種類]** で、 **[Azure Storage]** を選択して、次の情報を入力します。
 
     ![HDInsight クラスターにサービス プリンシパルを追加する](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.1.png "HDInsight クラスターにサービス プリンシパルを追加する")
 
-    - **[メソッドの選択]**: 次のいずれかのオプションを使うことができます。
+    - **[メソッドの選択]** : 次のいずれかのオプションを使うことができます。
 
-        * Azure サブスクリプションの一部であるストレージ アカウントを指定するには、**[個人用サブスクリプション]** を選択し、ストレージ アカウントを選択します。
-        * Azure サブスクリプションの外部にあるストレージ アカウントを指定するには、**[アクセス キー]** を選択し、外部のストレージ アカウントの情報を入力します。
+        * Azure サブスクリプションの一部であるストレージ アカウントを指定するには、 **[個人用サブスクリプション]** を選択し、ストレージ アカウントを選択します。
+        * Azure サブスクリプションの外部にあるストレージ アカウントを指定するには、 **[アクセス キー]** を選択し、外部のストレージ アカウントの情報を入力します。
 
     - **既定のコンテナー**: 既定値を使用するか、独自の名前を指定します。
 
@@ -96,7 +96,7 @@ Azure Portal から、既存のサービス プリンシパルを使用するか
 **Azure Portal からサービス プリンシパルを作成するには**
 
 1. [ストレージ] ブレードから **[Data Lake Store アクセス]** をクリックします。
-2. **[Data Lake Storage Gen1 アクセス]** ブレードで、**[新規作成]** をクリックします。
+2. **[Data Lake Storage Gen1 アクセス]** ブレードで、 **[新規作成]** をクリックします。
 3. **[サービス プリンシパル]** をクリックし、サービス プリンシパルを作成する手順に従います。
 4. 証明書を今後も使用する場合は、ダウンロードします。 証明書のダウンロードは、追加の HDInsight クラスターを作成するときに同じサービス プリンシパルを使用したい場合に役立ちます。
 
@@ -108,7 +108,7 @@ Azure Portal から、既存のサービス プリンシパルを使用するか
 **Azure Portal から既存のサービス プリンシパルを使用するには**
 
 1. **[Data Lake Store アクセス]** をクリックします。
-1. **[Data Lake Storage Gen1 アクセス]** ブレードで、**[既存のものを使用]** をクリックします。
+1. **[Data Lake Storage Gen1 アクセス]** ブレードで、 **[既存のものを使用]** をクリックします。
 2. **[サービス プリンシパル]** をクリックし、サービス プリンシパルを選択します。 
 3. 選択したサービス プリンシパルに関連付けられている証明書 (.pfx ファイル) をアップロードし、証明書のパスワードを入力します。
 
@@ -131,12 +131,12 @@ Azure Portal から、既存のサービス プリンシパルを使用するか
 
 **Data Lake Storage Gen1 アカウントのルート レベルでアクセス許可を割り当てるには**
 
-1. **[Data Lake Storage Gen1 アクセス]** ブレードで、**[アクセス]** をクリックします。 **[ファイル アクセス許可の選択]** ブレードが開きます。 このブレードには、サブスクリプション内のすべての Data Lake Storage Gen1 アカウントが一覧表示されます。
+1. **[Data Lake Storage Gen1 アクセス]** ブレードで、 **[アクセス]** をクリックします。 **[ファイル アクセス許可の選択]** ブレードが開きます。 このブレードには、サブスクリプション内のすべての Data Lake Storage Gen1 アカウントが一覧表示されます。
 2. Data Lake Storage Gen1 アカウント名の上にマウス ポインターを置いて (クリックしないでください) チェック ボックスを表示し、そのチェック ボックスを選択します。
 
     ![HDInsight クラスターにサービス プリンシパルを追加する](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.3.png "HDInsight クラスターにサービス プリンシパルを追加する")
 
-   既定では、__[読み取り]__、__[書き込み]__、__[実行]__ がすべて選択されています。
+   既定では、 __[読み取り]__ 、 __[書き込み]__ 、 __[実行]__ がすべて選択されています。
 
 3. ページの下部にある **[選択]** をクリックします。
 4. **[実行]** をクリックして、アクセス許可を割り当てます。
@@ -144,7 +144,7 @@ Azure Portal から、既存のサービス プリンシパルを使用するか
 
 **HDInsight クラスターのルート レベルでアクセス許可を割り当てるには**
 
-1. **[Data Lake Storage Gen1 アクセス]** ブレードで、**[アクセス]** をクリックします。 **[ファイル アクセス許可の選択]** ブレードが開きます。 このブレードには、サブスクリプション内のすべての Data Lake Storage Gen1 アカウントが一覧表示されます。
+1. **[Data Lake Storage Gen1 アクセス]** ブレードで、 **[アクセス]** をクリックします。 **[ファイル アクセス許可の選択]** ブレードが開きます。 このブレードには、サブスクリプション内のすべての Data Lake Storage Gen1 アカウントが一覧表示されます。
 1. **[ファイル アクセス許可の選択]** ブレードで、そのコンテンツを表示する Data Lake Storage Gen1 アカウントの名前をクリックします。
 2. フォルダーの左側のチェック ボックスを選択して HDInsight クラスター記憶域のルートを選択します。 前のスクリーンショットでは、クラスター記憶域のルートは、Data Lake Storage Gen1 を既定のストレージとして選択したときに指定した __/clusters__ フォルダーです。
 3. フォルダーのアクセス許可を設定します。  既定では、[読み取り]、[書き込み]、[実行] がすべて選択されています。

@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 03/29/2019
 ms.author: gregman
 ms.openlocfilehash: 7062bd2dbd8c375b8dd3fad348e5cc26de8f36d2
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59698590"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60595126"
 ---
 # <a name="run-azure-iot-edge-on-ubuntu-virtual-machines"></a>Ubuntu 仮想マシン上で Azure IoT Edge を実行する
 
@@ -29,12 +29,12 @@ IoT Edge ランタイムの動作とランタイムに含まれるコンポー�
 ## <a name="deploy-from-the-azure-marketplace"></a>Azure Marketplace からデプロイする
 1.  [Azure IoT Edge on Ubuntu](https://aka.ms/azure-iot-edge-ubuntuvm) Marketplace オファーに移動するか、[Azure Marketplace](https://azuremarketplace.microsoft.com/) で "Azure IoT Edge on Ubuntu" を検索します
 2.  **[今すぐ入手する]** を選択し、次のダイアログで **[続行]** を選択します。
-3.  Azure portal に移動したら、**[作成]** を選択し、ウィザードに従って VM をデプロイします。 
+3.  Azure portal に移動したら、 **[作成]** を選択し、ウィザードに従って VM をデプロイします。 
     *   VM を初めて試す場合は、パスワードを使用し、パブリック受信ポート メニューで SSH を有効にするのが最も簡単です。 
     *   リソース消費の激しいワークロードがある場合は、CPU やメモリを追加して、仮想マシンのサイズをアップグレードしてください。
 4.  仮想マシンがデプロイされたら、IoT Hub に接続するように構成します。
     1.  IoT Hub で作成された IoT Edge デバイスから、デバイス接続文字列をコピーします (このプロセスに詳しくない場合は、[Azure portal から新しい Azure IoT Edge デバイスを登録する](how-to-register-device-portal.md)方法のハウツー ガイドをご覧ください)
-    1.  Azure portal から新しく作成された仮想マシン リソースを選択し、**[実行コマンド]** オプションを開きます
+    1.  Azure portal から新しく作成された仮想マシン リソースを選択し、 **[実行コマンド]** オプションを開きます
     1.  **[RunShellScript]** オプションを選択します
     1.  コマンド ウィンドウから、デバイス接続文字列を使用して下記のスクリプトを実行します。`/etc/iotedge/configedge.sh “{device_connection_string}”`
     1.  **[実行]** を選択します
@@ -48,8 +48,8 @@ Azure portal から、"Azure IoT Edge" を検索し、"**Ubuntu Server 16.04 LTS
 1. CLI から仮想マシンをデプロイするのが初めての場合は、ご利用の Azure サブスクリプションで、プログラムによるデプロイを有効にする必要があります。
    1. [Azure IoT Edge on Ubuntu](https://aka.ms/azure-iot-edge-ubuntuvm) Marketplace オファーを開きます
    1. **[今すぐ入手する]** を選択し、次のダイアログで **[続行]** を選択します
-   1. ポータル内のダイアログの下部で、**[プログラムによるデプロイについて作業を開始する]** を選択します。
-   1. **[プログラムによるデプロイの構成]** ページの **[有効にする]** ボタンをクリックし、**[保存]** をクリックします
+   1. ポータル内のダイアログの下部で、 **[プログラムによるデプロイについて作業を開始する]** を選択します。
+   1. **[プログラムによるデプロイの構成]** ページの **[有効にする]** ボタンをクリックし、 **[保存]** をクリックします
 1. デスクトップで Azure CLI を使用している場合は、まずログインします。
 
    ```azurecli-interactive

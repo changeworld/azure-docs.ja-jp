@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 7d3283b03d15278d1f7fd42a72b154dab1a442b4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58878531"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60878768"
 ---
 # <a name="copy-data-between-azure-data-lake-storage-gen1-and-azure-sql-database-using-sqoop"></a>Sqoop を使用して Azure Data Lake Storage Gen1 と Azure SQL データベースの間でデータをコピーする
 Apache Sqoop を使用して Azure SQL Database と Azure Data Lake Storage Gen1 の間でデータのインポートおよびエクスポートを行う方法について説明します。
@@ -87,7 +87,7 @@ HDInsight クラスターには、使用可能な Sqoop パッケージが既に
 
         sqoop-import --connect "jdbc:sqlserver://<sql-database-server-name>.database.windows.net:1433;username=<username>@<sql-database-server-name>;password=<password>;database=<sql-database-name>" --table Table1 --target-dir adl://<data-lake-storage-gen1-name>.azuredatalakestore.net/Sqoop/SqoopImportTable1
 
-    **sql-database-server-name** プレースホルダーは、Azure SQL Database が実行されているサーバーの名前を表していることに注意してください。 **sql-database-name** プレース ホルダーは、実際のデータベース名を表します。
+    **sql-database-server-name** プレースホルダーは、Azure SQL データベースが実行されているサーバーの名前を表していることに注意してください。 **sql-database-name** プレース ホルダーは、実際のデータベース名を表します。
 
     たとえば、次のように入力します。
 
@@ -107,7 +107,7 @@ HDInsight クラスターには、使用可能な Sqoop パッケージが既に
         -rwxrwxrwx   0 sshuser hdfs         13 2016-02-26 21:09 adl://hdiadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1/part-m-00002
         -rwxrwxrwx   0 sshuser hdfs         18 2016-02-26 21:09 adl://hdiadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1/part-m-00003
 
-    各 **part-m-*** ファイルは、ソース テーブル **Table1** 内の行に対応します。 検証する part-m-* ファイルのコンテンツを表示できます。
+    各 **part-m-** * ファイルは、ソース テーブル **Table1** 内の行に対応します。 検証する part-m-* ファイルのコンテンツを表示できます。
 
 
 ### <a name="export-data-from-data-lake-storage-gen1-into-azure-sql-database"></a>Data Lake Storage Gen1 から Azure SQL Database にデータをエクスポートする

@@ -10,11 +10,11 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 06/28/2017
 ms.openlocfilehash: 9032a6903833ba819e09fd1ca11cd6b43d5485cb
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57541691"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60399489"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-java"></a>IoT Hub を使用したクラウドからデバイスへのメッセージの送信 (Java)
 
@@ -127,7 +127,7 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
     import java.net.URISyntaxException;
     ```
 
-7. 次のクラス レベルの変数を **App** クラスに追加し、**{yourhubconnectionstring}** と **{yourdeviceid}** を先にメモした値に置き換えます。
+7. 次のクラス レベルの変数を **App** クラスに追加し、 **{yourhubconnectionstring}** と **{yourdeviceid}** を先にメモした値に置き換えます。
 
     ```java
     private static final String connectionString = "{yourhubconnectionstring}";

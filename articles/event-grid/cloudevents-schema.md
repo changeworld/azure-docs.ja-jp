@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 11/07/2018
 ms.author: babanisa
 ms.openlocfilehash: 0195ce82396a7b05335242a38a2881e1b2d1afb3
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58317495"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61436599"
 ---
 # <a name="use-cloudevents-schema-with-event-grid"></a>CloudEvents スキーマを Event Grid で使用する
 
@@ -64,14 +64,14 @@ CloudEvents v0.1 では、次のプロパティが使えます。
 
 | CloudEvents        | Type     | JSON 値の例             | 説明                                                        | Event Grid のマッピング
 |--------------------|----------|--------------------------------|--------------------------------------------------------------------|-------------------------
-| eventType          | String   | "com.example.someevent"          | 発生したオカレンスの種類                                   | eventType
-| eventTypeVersion   | String   | "1.0"                            | eventType のバージョン (省略可能)                            | dataVersion
-| cloudEventsVersion | String   | "0.1"                            | イベントで使用される CloudEvents 仕様のバージョン        | *パススルー*
+| eventType          | string   | "com.example.someevent"          | 発生したオカレンスの種類                                   | eventType
+| eventTypeVersion   | string   | "1.0"                            | eventType のバージョン (省略可能)                            | dataVersion
+| cloudEventsVersion | string   | "0.1"                            | イベントで使用される CloudEvents 仕様のバージョン        | *パススルー*
 | source             | URI      | "/mycontext"                     | イベント プロデューサーの説明                                       | topic#subject
-| eventID            | String   | "1234-1234-1234"                 | イベントの ID                                                    | id
+| eventID            | string   | "1234-1234-1234"                 | イベントの ID                                                    | id
 | eventTime          | Timestamp| "2018-04-05T17:31:00Z"           | イベントが発生したときのタイムスタンプ (省略可能)                    | eventTime
 | schemaURL          | URI      | "https:\//myschema.com"           | データ属性が準拠しているスキーマへのリンク (省略可能) | *使用されません*
-| contentType        | String   | "application/json"               | データ エンコード形式の説明 (省略可能)                       | *使用されません*
+| contentType        | string   | "application/json"               | データ エンコード形式の説明 (省略可能)                       | *使用されません*
 | 拡張機能         | マップ      | { "extA": "vA", "extB", "vB" }  | 追加のメタデータ (省略可能)                                 | *使用されません*
 | data               | Object   | { "objA": "vA", "objB", "vB" }  | イベント ペイロード (省略可能)                                       | data
 

@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
 ms.openlocfilehash: 0191c56e1140870b1710b48c4fa1189fd92a337b
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59521477"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61362118"
 ---
 # <a name="common-issues-in-stream-analytics-and-steps-to-troubleshoot"></a>Stream Analytics での一般的な問題とトラブルシューティングの手順
 
@@ -73,7 +73,7 @@ Stream Analytics ジョブが開始されると、入力イベントが読み取
 - アップストリーム ソースが調整されているか
 - クエリの処理ロジックがコンピューティング集約型かどうか
 
-これらの詳細を確認するには、Azure Portal で、ストリーミング ジョブを選択して、**[ジョブ ダイアグラム]** を選択します。 各入力には、パーティションごとのバックログ イベント メトリックがあります。 バックログ イベント メトリックが継続的に増加している場合、システム リソースが制約を受けていることを示す指標になります。 出力のシンク調整または高使用率の CPU が原因になっている可能性があります。 ジョブ ダイアグラムの使用に関する詳細については、「[ジョブ ダイアグラムを使用したデータ主導型デバッグ](stream-analytics-job-diagram-with-metrics.md)」をご覧ください。
+これらの詳細を確認するには、Azure Portal で、ストリーミング ジョブを選択して、 **[ジョブ ダイアグラム]** を選択します。 各入力には、パーティションごとのバックログ イベント メトリックがあります。 バックログ イベント メトリックが継続的に増加している場合、システム リソースが制約を受けていることを示す指標になります。 出力のシンク調整または高使用率の CPU が原因になっている可能性があります。 ジョブ ダイアグラムの使用に関する詳細については、「[ジョブ ダイアグラムを使用したデータ主導型デバッグ](stream-analytics-job-diagram-with-metrics.md)」をご覧ください。
 
 ## <a name="handle-duplicate-records-in-azure-sql-database-output"></a>Azure SQL Database 出力での重複レコードの処理
 

@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/24/2018
 ms.openlocfilehash: 951bd74c67c77c944a17e41646c4fe49ef46b33f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64725678"
 ---
 # <a name="manage-hdinsight-clusters-with-enterprise-security-package"></a>Enterprise セキュリティ パッケージを使用して HDInsight クラスターを管理する
@@ -45,7 +45,7 @@ Ambari 管理対象ユーザー名を使用することで、ノーマル クラ
 
    ![リンク クラスターのコンテキスト メニュー](./media/apache-domain-joined-manage/link-a-cluster-context-menu.png)
 
-2. **[クラスター名]**、**[ユーザー名]**、**[パスワード]** を入力します。 認証エラーが発生した場合、ユーザー名とパスワードを確認する必要があります。 任意で、[ストレージ アカウント] と [ストレージ キー] を追加し、[ストレージ コンテナー] からコンテナーを選択します。 ストレージ情報は、左のツリーのストレージ エクスプローラーに関するものです。
+2. **[クラスター名]** 、 **[ユーザー名]** 、 **[パスワード]** を入力します。 認証エラーが発生した場合、ユーザー名とパスワードを確認する必要があります。 任意で、[ストレージ アカウント] と [ストレージ キー] を追加し、[ストレージ コンテナー] からコンテナーを選択します。 ストレージ情報は、左のツリーのストレージ エクスプローラーに関するものです。
    
    ![リンク クラスターのダイアログ](./media/apache-domain-joined-manage/link-a-cluster-dialog.png)
 
@@ -54,7 +54,7 @@ Ambari 管理対象ユーザー名を使用することで、ノーマル クラ
    > ![IntelliJ のストレージ エクスプローラー](./media/apache-domain-joined-manage/storage-explorer-in-IntelliJ.png)
 
    
-3. 入力した情報が正しい場合、**[HDInsight]** ノードに [リンク済み] クラスターが表示されます。 これでリンクされたクラスターにアプリケーションを送信できるようになりました。
+3. 入力した情報が正しい場合、 **[HDInsight]** ノードに [リンク済み] クラスターが表示されます。 これでリンクされたクラスターにアプリケーションを送信できるようになりました。
 
    ![リンクされたクラスター](./media/apache-domain-joined-manage/linked-cluster-intellij.png)
 
@@ -69,7 +69,7 @@ Ambari 管理対象ユーザー名を使用することで、ノーマル クラ
 
    ![リンク クラスターのコンテキスト メニュー](./media/apache-domain-joined-manage/link-a-cluster-context-menu.png)
 
-2. **[クラスター名]**、**[ユーザー名]**、**[パスワード]** を入力し、[OK] ボタンをクリックしてクラスターをリンクします。 任意で、[ストレージ アカウント] と [ストレージ キー] を入力し、左のツリー ビューでストレージ エクスプローラーに [ストレージ コンテナー] を選択します。
+2. **[クラスター名]** 、 **[ユーザー名]** 、 **[パスワード]** を入力し、[OK] ボタンをクリックしてクラスターをリンクします。 任意で、[ストレージ アカウント] と [ストレージ キー] を入力し、左のツリー ビューでストレージ エクスプローラーに [ストレージ コンテナー] を選択します。
    
    ![リンク クラスターのダイアログ](./media/apache-domain-joined-manage/link-cluster-dialog.png)
    
@@ -181,7 +181,7 @@ HDInsight Enterprise セキュリティ パッケージには次のロールが�
 2. HDInsight クラスターを開きます。
 3. 上部のメニューで **[ダッシュボード]** をクリックして、Ambari を開きます。
 4. クラスター管理者のドメイン ユーザー名とパスワードを使用して、Ambari にサインインします。
-5. 右上隅のドロップダウン メニューで **[Admin (管理者)]** をクリックし、**[Manage Ambari (Ambari の管理)]** をクリックします。
+5. 右上隅のドロップダウン メニューで **[Admin (管理者)]** をクリックし、 **[Manage Ambari (Ambari の管理)]** をクリックします。
 
     ![ESP HDInsight での Ambari の管理](./media/apache-domain-joined-manage/hdinsight-domain-joined-manage-ambari.png)
 

@@ -7,10 +7,10 @@ ms.author: hrasheed
 ms.topic: conceptual
 ms.date: 10/15/2018
 ms.openlocfilehash: b77e7e9d5a68439e7f336ecb26e91031d80a7606
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64695201"
 ---
 # <a name="improve-performance-of-apache-spark-workloads-using-azure-hdinsight-io-cache-preview"></a>Azure HDInsight IO キャッシュ (プレビュー) を使用して Apache Spark のワークロードのパフォーマンスを改善する
@@ -53,11 +53,11 @@ IO キャッシュを有効にした後に Spark のジョブを実行すると�
 
 1. Apache Ambari で、左側にある **[HDFS]** サービスを選択します。
 
-1. **[Configs]\(構成\)** タブを選択し、**[Advanced]\(詳細\)** タブを選択します。
+1. **[Configs]\(構成\)** タブを選択し、 **[Advanced]\(詳細\)** タブを選択します。
 
     ![HDFS の詳細構成を編集する](./media/apache-spark-improve-performance-iocache/ambariui-hdfs-service-configs-advanced.png "HDFS の詳細構成を編集する")
 
-1. 下にスクロールし、**[Custom core-site]\(カスタム コアサイト\)** 領域を展開します。
+1. 下にスクロールし、 **[Custom core-site]\(カスタム コアサイト\)** 領域を展開します。
 
 1. プロパティ **hadoop.cache.data.fullness.percentage** を探します。
 
@@ -67,7 +67,7 @@ IO キャッシュを有効にした後に Spark のジョブを実行すると�
 
 1. 右上の **[Save]\(保存\)** を選択します。
 
-1. **[Restart]\(再起動\)** > **[Restart All Affected]\(影響を受けるすべてを再起動\)** を選択します。
+1. **[Restart]\(再起動\)**  >  **[Restart All Affected]\(影響を受けるすべてを再起動\)** を選択します。
 
     ![影響を受けるすべてを再起動する](./media/apache-spark-improve-performance-iocache/ambariui-restart-all-affected.png "影響を受けるすべてを再起動する")
 

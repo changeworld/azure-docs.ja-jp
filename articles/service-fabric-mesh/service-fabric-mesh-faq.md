@@ -10,10 +10,10 @@ ms.topic: troubleshooting
 ms.service: service-fabric-mesh
 manager: jeanpaul.connock
 ms.openlocfilehash: 950f9ac89b9d3224db29b32fe2d1e403ccc98116
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65143293"
 ---
 # <a name="commonly-asked-service-fabric-mesh-questions"></a>Service Fabric Mesh に関してよく寄せられる質問
@@ -49,7 +49,7 @@ Azure Service Fabric Mesh は、仮想マシン、ストレージ、ネットワ
 
 そのようになった場合は、Azure CLI で `az mesh app show` コマンドを実行することで、システムがシャットダウンしたことを確認できます。 `"status": "Failed", "statusDetails": "Stopped resource due to max lifetime policies for an application during preview. Delete the resource to continue."` が返されるかどうかをチェックします 
 
-例:  
+例: 
 
 ```cli
 ~$ az mesh app show --resource-group myResourceGroup --name helloWorldApp
@@ -110,7 +110,7 @@ Windows 10 April 2018 Update (バージョン 1803) のコンピューターで�
 
 - Windows Fall Creators Update (バージョン 1709) 以降をベース コンテナー イメージとして使用します。
 - サービス名だけでは機能しない場合は、完全修飾名を試してください:ServiceName.ApplicationName。
-- サービスの Docker ファイルで、`EXPOSE <port>` を追加します。port はサービスを公開しているポートです。 例: 
+- サービスの Docker ファイルで、`EXPOSE <port>` を追加します。port はサービスを公開しているポートです。 例:
 
 ```Dockerfile
 EXPOSE 80
@@ -128,7 +128,7 @@ Windows 10 で Service Fabric 開発クラスターを実行するときに発�
 
 ### <a name="networking"></a>ネットワーク
 
-ローカル コンピューターでアプリを使用または実行中に ServiceFabric ネットワーク NAT が消失する場合があります。 これが発生したかどうかを診断するには、コマンド プロンプトから 
+ローカル コンピューターでアプリを使用または実行中に ServiceFabric ネットワーク NAT が消失する場合があります。 これが発生したかどうかを診断するには、コマンド プロンプトから
 
 `docker network ls` を実行し、`servicefabric_nat` が表示されているかどうか確認します。  されていない場合、次のコマンドを実行します: `docker network create -d=nat --subnet 10.128.0.0/24 --gateway 10.128.0.1 servicefabric_nat`
 

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: b7962f42b4244121a67b88ef3bf789ce40f7b1e5
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64719624"
 ---
 # <a name="get-started-with-azure-ad-authentication-by-using-the-azure-portal"></a>Azure ポータルで Azure AD 認証を開始する
@@ -58,7 +58,7 @@ Azure Media Services で Azure AD 認証を使用する場合、次の 2 つの�
 * Media Services (ネイティブ) アプリケーション リダイレクト URI 
 * REST Media Services のリソース URI
 
-これらのパラメーターの値は、**[ユーザー認証を使って Media Services API に接続する]** ページで取得することができます。 
+これらのパラメーターの値は、 **[ユーザー認証を使って Media Services API に接続する]** ページで取得することができます。 
 
 ![[ユーザー認証を使って Media Services API に接続する] ページ](./media/media-services-portal-get-started-with-aad/media-services-portal-get-started02.png)
 
@@ -75,11 +75,11 @@ Media Services .NET クライアント SDK を使用しない場合は、前述�
 * REST Media Services のリソース URI
 * Azure AD アプリケーションの値: **クライアント ID** と**クライアント シークレット**
 
-これらのパラメーターの値は、**[サービス プリンシパルを使って Media Services API に接続する]** ページで取得することができます。 このページを使用して、新しい Azure AD アプリケーションを作成するか、既存の Azure AD アプリケーションを選択します。 Azure AD アプリを選択すると、クライアント ID (アプリケーション ID) を取得し、クライアント シークレット (キー) の値を生成できます。 
+これらのパラメーターの値は、 **[サービス プリンシパルを使って Media Services API に接続する]** ページで取得することができます。 このページを使用して、新しい Azure AD アプリケーションを作成するか、既存の Azure AD アプリケーションを選択します。 Azure AD アプリを選択すると、クライアント ID (アプリケーション ID) を取得し、クライアント シークレット (キー) の値を生成できます。 
 
 ![[サービス プリンシパルを使って Media Services API に接続する] ページ](./media/media-services-portal-get-started-with-aad/media-services-portal-get-started04.png)
 
-次の条件を満たす最初の Azure AD アプリケーションが選択された状態で、**[サービス プリンシパル]** ブレードが開きます。
+次の条件を満たす最初の Azure AD アプリケーションが選択された状態で、 **[サービス プリンシパル]** ブレードが開きます。
 
 - 登録済みの Azure AD アプリケーションであること。
 - アカウントに共同作成者または所有者ロールベースのアクセス制御許可があること。
@@ -98,17 +98,17 @@ Media Services .NET クライアント SDK を使用しない場合は、前述�
 
 ![[アクセス許可の管理] ボタンと [アプリケーションの管理] ボタン](./media/media-services-portal-get-started-with-aad/media-services-portal-manage.png)
 
-[Azure AD アプリケーション] ブレードを開くには、**[アプリケーションの管理]** をクリックします。 **[アプリケーションの管理]** ブレードで、アプリのクライアント ID (アプリケーション ID) を取得できます。 クライアント シークレット (キー) を生成するには、**[キー]** を選択します。
+[Azure AD アプリケーション] ブレードを開くには、 **[アプリケーションの管理]** をクリックします。 **[アプリケーションの管理]** ブレードで、アプリのクライアント ID (アプリケーション ID) を取得できます。 クライアント シークレット (キー) を生成するには、 **[キー]** を選択します。
 
 ![[アプリケーションの管理] ブレードの [キー] オプション](./media/media-services-portal-get-started-with-aad/media-services-portal-get-started06.png) 
 
 ### <a name="manage-permissions-and-the-application"></a>アクセス許可とアプリケーションを管理する
 
-Azure AD アプリケーションを選択して、アプリケーションとアクセス許可を管理できます。 その他のアプリケーションにアクセスできるように Azure AD アプリケーションをセットアップするには、**[アクセス許可の管理]** をクリックします。 キーと応答 URL の変更やアプリケーションのマニフェストの編集などの管理タスクを行うには、**[アプリケーションの管理]** をクリックします。
+Azure AD アプリケーションを選択して、アプリケーションとアクセス許可を管理できます。 その他のアプリケーションにアクセスできるように Azure AD アプリケーションをセットアップするには、 **[アクセス許可の管理]** をクリックします。 キーと応答 URL の変更やアプリケーションのマニフェストの編集などの管理タスクを行うには、 **[アプリケーションの管理]** をクリックします。
 
 ### <a name="edit-the-apps-settings-or-manifest"></a>アプリの設定またはマニフェストを編集する
 
-アプリの設定またはマニフェストを編集するには、**[アプリケーションの管理]** をクリックします。
+アプリの設定またはマニフェストを編集するには、 **[アプリケーションの管理]** をクリックします。
 
 ![[アプリケーションの管理] ページ](./media/media-services-portal-get-started-with-aad/media-services-portal-get-started05.png)
 

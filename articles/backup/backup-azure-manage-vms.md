@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: sogup
 ms.openlocfilehash: aa953440f03137f3359276bc9e06cb0c73f0ab4a
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295778"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61219306"
 ---
 # <a name="manage-azure-vm-backups"></a>Azure VM のバックアップを管理する
 
@@ -36,20 +36,20 @@ Azure portal では、Recovery Services コンテナーのダッシュボード�
 コンテナー ダッシュボードに VM を表示するには、次の手順を実行します。
 
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
-2. [ハブ] メニューで、**[参照]** を選択します。 リソース ボックスに「 **Recovery Services**」と入力します。 入力すると、入力内容に基づいて、一覧がフィルター処理されます。 **[Recovery Services コンテナー]** を選択します。
+2. [ハブ] メニューで、 **[参照]** を選択します。 リソース ボックスに「 **Recovery Services**」と入力します。 入力すると、入力内容に基づいて、一覧がフィルター処理されます。 **[Recovery Services コンテナー]** を選択します。
 
     ![Recovery Services コンテナーを作成する](./media/backup-azure-manage-vms/browse-to-rs-vaults.png)
 
-3. 使いやすいように、コンテナーを右クリックして、**[ダッシュボードにピン留めする]** を選択します。
+3. 使いやすいように、コンテナーを右クリックして、 **[ダッシュボードにピン留めする]** を選択します。
 4. コンテナー ダッシュボードを開きます。
 
     ![コンテナー ダッシュボードと設定ブレードを開く](./media/backup-azure-manage-vms/full-view-rs-vault.png)
 
-5. **[バックアップ項目]** タイルで、**[Azure Virtual Machines]** を選択します。
+5. **[バックアップ項目]** タイルで、 **[Azure Virtual Machines]** を選択します。
 
     ![[バックアップ項目] タイルを開く](./media/backup-azure-manage-vms/contoso-vault-1606.png)
 
-6.  **[バックアップ項目]**  ブレードでは、保護されている VM の一覧を表示することができます。 この例では、コンテナーは 1 つの仮想マシン、demobackup を保護します。  
+6.  **[バックアップ項目]**   ブレードでは、保護されている VM の一覧を表示することができます。 この例では、コンテナーは 1 つの仮想マシン、demobackup を保護します。  
 
     ![[バックアップ項目] ブレードを表示する](./media/backup-azure-manage-vms/backup-items-blade-select-item.png)
 
@@ -62,17 +62,17 @@ Azure portal では、Recovery Services コンテナーのダッシュボード�
 バックアップ ポリシーを管理するには、次の手順を実行します。
 
 1. [Azure Portal](https://portal.azure.com/) にサインインします。 コンテナー ダッシュボードを開きます。
-2. **[バックアップ項目]** タイルで、**[Azure Virtual Machines]** を選択します。
+2. **[バックアップ項目]** タイルで、 **[Azure Virtual Machines]** を選択します。
 
     ![[バックアップ項目] タイルを開く](./media/backup-azure-manage-vms/contoso-vault-1606.png)
 
-3.  **[バックアップ項目]**  ブレードでは、保護されている VM と、最新の復旧ポイントの時点の最後のバックアップの状態の一覧を表示することができます。
+3.  **[バックアップ項目]**   ブレードでは、保護されている VM と、最新の復旧ポイントの時点の最後のバックアップの状態の一覧を表示することができます。
 
     ![[バックアップ項目] ブレードを表示する](./media/backup-azure-manage-vms/backup-items-blade-select-item.png)
 
 4. コンテナー項目のダッシュボードでは、バックアップ ポリシーを選択できます。
 
-   * ポリシーを切り替えるには、別のポリシーを選択し、**[保存]** を選択します。 すぐに、新しいポリシーがコンテナーに適用されます。
+   * ポリシーを切り替えるには、別のポリシーを選択し、 **[保存]** を選択します。 すぐに、新しいポリシーがコンテナーに適用されます。
 
      ![バックアップ ポリシーの選択](./media/backup-azure-manage-vms/backup-policy-create-new.png)
 
@@ -85,12 +85,12 @@ Azure portal では、Recovery Services コンテナーのダッシュボード�
 
 オンデマンド バックアップをトリガーするには:
 
-1. [コンテナー項目のダッシュボード](#view-vms-on-the-dashboard)の **[保護された項目]** で、**[バックアップ項目]** を選択します。
+1. [コンテナー項目のダッシュボード](#view-vms-on-the-dashboard)の **[保護された項目]** で、 **[バックアップ項目]** を選択します。
 
     ![[今すぐバックアップ] オプション](./media/backup-azure-manage-vms/backup-now-button.png)
 
-2. **[バックアップの管理の種類]** で、**[Azure Virtual Machine]** を選択します。 **[バックアップ項目 (Azure Virtual Machin)]** ブレードが表示されます。
-3. VM を選択し、**[今すぐバックアップ]** を選択してオンデマンド バックアップを作成します。 **[今すぐバックアップ]** ブレードが表示されます。
+2. **[バックアップの管理の種類]** で、 **[Azure Virtual Machine]** を選択します。 **[バックアップ項目 (Azure Virtual Machin)]** ブレードが表示されます。
+3. VM を選択し、 **[今すぐバックアップ]** を選択してオンデマンド バックアップを作成します。 **[今すぐバックアップ]** ブレードが表示されます。
 4. **[バックアップの保持]** フィールドに、バックアップが保持される日付を指定します。
 
     ![[今すぐバックアップ] のカレンダー](./media/backup-azure-manage-vms/backup-now-check.png)
@@ -150,7 +150,7 @@ VM のバックアップ ジョブを停止または無効にした後は、バ�
 
     ![復旧ポイントを削除してもよいことを確認する](./media/backup-azure-manage-vms/item-verification-box.png)
 
-1. 項目のバックアップ データを削除するには、**[削除]** を選択します。 バックアップ データが削除されたことを示す通知メッセージが表示されます。
+1. 項目のバックアップ データを削除するには、 **[削除]** を選択します。 バックアップ データが削除されたことを示す通知メッセージが表示されます。
 
 ## <a name="next-steps"></a>次の手順
 - [VM の設定から Azure VM をバックアップする](backup-azure-vms-first-look-arm.md)方法を確認します。

@@ -9,11 +9,11 @@ ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 30eedd982fa0536ce45506c159de6d04132e9a14
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59494015"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61451091"
 ---
 # <a name="secure-the-communication-of-opc-client-and-opc-plc"></a>OPC クライアントと OPC PLC の通信をセキュリティで保護する
 

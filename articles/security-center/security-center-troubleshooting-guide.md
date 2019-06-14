@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 3/20/2019
 ms.author: rkarlin
 ms.openlocfilehash: 63275db36bdb64985625c3789d558bd09e2d47bc
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58401454"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60912061"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Azure Security Center トラブルシューティング ガイド
 このガイドは、所属組織が Azure Security Center を使用しており、Security Center に関連する問題のトラブルシューティングを必要としている情報技術 (IT) プロフェッショナル、情報セキュリティ アナリスト、クラウド管理者を対象としています。
@@ -48,7 +48,7 @@ Security Center では、Microsoft Monitoring Agent を使用して、Azure 仮�
 
 ![サービス](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig5.png)
 
-エージェントのバージョンを確認するには、**タスク マネージャー**を開き、**[プロセス]** タブで **Microsoft Monitoring Agent サービス**を見つけます。サービスを右クリックし、**[プロパティ]** をクリックします。 **[詳細]** タブで、次のようなファイルのバージョンを確認します。
+エージェントのバージョンを確認するには、**タスク マネージャー**を開き、 **[プロセス]** タブで **Microsoft Monitoring Agent サービス**を見つけます。サービスを右クリックし、 **[プロパティ]** をクリックします。 **[詳細]** タブで、次のようなファイルのバージョンを確認します。
 
 ![ファイル](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig6.png)
 
@@ -65,7 +65,7 @@ Security Center では、Microsoft Monitoring Agent を使用して、Azure 仮�
 >
 
 ## <a name="mon-agent">エージェントの正常性の監視に関する問題</a>
-**[監視の状態]** には、自動プロビジョニングの対象として初期化された VM およびコンピューターを Security Center で正常に監視できない理由が定義されています。 次の表は、**[監視の状態]** の値、説明、解決手順を示したものです。
+**[監視の状態]** には、自動プロビジョニングの対象として初期化された VM およびコンピューターを Security Center で正常に監視できない理由が定義されています。 次の表は、 **[監視の状態]** の値、説明、解決手順を示したものです。
 
 | 監視の状態 | 説明 | 解決手順 |
 |---|---|---|
@@ -89,7 +89,7 @@ Security Center に接続して登録するエージェントには、ドメイ�
 
 次の表は、通信で必要なリソースを示しています。
 
-| エージェントのリソース | ポート | バイパス HTTPS 検査 |
+| エージェントのリソース | Port | バイパス HTTPS 検査 |
 |---|---|---|
 | *.ods.opinsights.azure.com | 443 | はい |
 | *.oms.opinsights.azure.com | 443 | はい |

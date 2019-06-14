@@ -13,10 +13,10 @@ ms.reviewer: sstein, carlrab
 manager: craigg
 ms.date: 04/26/2019
 ms.openlocfilehash: 74a52df4eab8a3e471e541889cde74846af00fb8
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64574195"
 ---
 # <a name="prepay-for-sql-database-compute-resources-with-azure-sql-database-reserved-capacity"></a>Azure SQL Database の予約容量を使用した SQL Database 計算リソースの前払い
@@ -43,7 +43,7 @@ Azure SQL Database の予約容量は、[Azure portal](https://portal.azure.com)
 ## <a name="buy-sql-database-reserved-capacity"></a>SQL Database の予約容量の購入
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. **[すべてのサービス]** > **[予約]** を選択します。
+2. **[すべてのサービス]**  >  **[予約]** を選択します。
 3. **[追加]** を選択し、[製品の種類を選択してください] ウィンドウで **[SQL Database]** を選択して、SQL Database の新しい予約を購入します。
 4. 必須フィールドに必要事項を入力します。 選択した属性と一致する既存または新規の単一データベース、エラスティック プール、マネージド インスタンスが、予約容量の割引を受けられます。 割引を受ける SQL Database インスタンスの実際の数は、選択したスコープと数量によって変わります。
 
@@ -67,9 +67,9 @@ Azure SQL Database の予約容量は、[Azure portal](https://portal.azure.com)
 
 ## <a name="cancellations-and-exchanges"></a>キャンセルと交換
 
-SQL Database の予約容量の予約をキャンセルする必要がある場合は、12% の中途解約料が発生する可能性があります。 払い戻し額は、購入価格または予約の現在の価格のいずれかの最低価格に基づいています。 払い戻し額の上限は年額 50,000 ドルです。 日割り計算によって算出された金額から 12% の中途解約料を差し引いた金額が払い戻されます。 キャンセルを要求するには、Azure portal で予約に移動し、**[返金]** を選択して、サポート要求を作成します。
+SQL Database の予約容量の予約をキャンセルする必要がある場合は、12% の中途解約料が発生する可能性があります。 払い戻し額は、購入価格または予約の現在の価格のいずれかの最低価格に基づいています。 払い戻し額の上限は年額 50,000 ドルです。 日割り計算によって算出された金額から 12% の中途解約料を差し引いた金額が払い戻されます。 キャンセルを要求するには、Azure portal で予約に移動し、 **[返金]** を選択して、サポート要求を作成します。
 
-SQL Database の予約容量の予約を別のリージョン、デプロイの種類、パフォーマンス レベル、または期間に変更する必要がある場合は、同等以上の価値がある別の予約に交換できます。 新しい予約期間の開始日は、元の予約からは引き継がれません。 1 年または 3 年の予約期間は、新しい予約を作成した時点から始まります。 交換を要求するには、Azure portal で予約に移動し、**[交換]** を選択して、サポート要求を作成します。
+SQL Database の予約容量の予約を別のリージョン、デプロイの種類、パフォーマンス レベル、または期間に変更する必要がある場合は、同等以上の価値がある別の予約に交換できます。 新しい予約期間の開始日は、元の予約からは引き継がれません。 1 年または 3 年の予約期間は、新しい予約を作成した時点から始まります。 交換を要求するには、Azure portal で予約に移動し、 **[交換]** を選択して、サポート要求を作成します。
 
 予約を交換または返金する方法の詳細については、[予約の交換と返金](../billing/billing-azure-reservations-self-service-exchange-and-refund.md)に関するページを参照してください。
 

@@ -9,11 +9,11 @@ ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
 ms.openlocfilehash: 30d99c3f4767eb50361f7074c0d508fcf309faca
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58896728"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61488462"
 ---
 # <a name="run-micro-focus-enterprise-server-40-in-a-docker-container-on-azure"></a>Azure 上の Docker コンテナーで Micro Focus Enterprise Server 4.0 を実行する
 
@@ -54,7 +54,7 @@ Docker により、移植性と分離性がアプリケーションに追加さ�
 
     4. **[ユーザー名]** には、使用する管理者アカウントとパスワードを入力します。
 
-    5. **ポート 3389 RDP** が開かれていることを確認します。 VM にサインインできるよう、このポートのみをパブリックに公開する必要があります。 すべての既定値をそのまま使用して、**[確認と作成]** をクリックします。
+    5. **ポート 3389 RDP** が開かれていることを確認します。 VM にサインインできるよう、このポートのみをパブリックに公開する必要があります。 すべての既定値をそのまま使用して、 **[確認と作成]** をクリックします。
 
      ![仮想マシンの作成ウィンドウ](media/container-02.png)
 
@@ -137,7 +137,7 @@ Docker により、移植性と分離性がアプリケーションに追加さ�
        docker inspect <containerID> --format="{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}"
     ```
 
-       例: 
+       例:
 
     ```   
         docker inspect 22a0fe3159d0 --format="{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}"
@@ -150,9 +150,9 @@ Docker により、移植性と分離性がアプリケーションに追加さ�
 
     ![CICS へのサインオン画面](media/container-07.png)
 
-6. **[USERID]\(ユーザー ID\)** に「**SYSAD**」と入力し、**[Password]\(パスワード\)** に「**SYSAD**」と入力して、CICS 領域にサインインします。
+6. **[USERID]\(ユーザー ID\)** に「**SYSAD**」と入力し、 **[Password]\(パスワード\)** に「**SYSAD**」と入力して、CICS 領域にサインインします。
 
-7. エミュレーターのキーマップを使用して、画面をクリアします。 x3270 の場合は、**[Keymap]\(キーマップ\)** メニュー オプションを選択します。
+7. エミュレーターのキーマップを使用して、画面をクリアします。 x3270 の場合は、 **[Keymap]\(キーマップ\)** メニュー オプションを選択します。
 
 8. acctdemo アプリケーションを起動するには、「**ACCT**」と入力します。 アプリケーションの最初の画面が表示されます。
 

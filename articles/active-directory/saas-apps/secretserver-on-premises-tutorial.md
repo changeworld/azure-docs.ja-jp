@@ -17,11 +17,11 @@ ms.date: 04/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9167a5ed72e6fec2ca03cc97d1d41dd6cd4aaba6
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58885844"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62104581"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-secret-server-on-premises"></a>チュートリアル:Azure Active Directory と Secret Server (On-Premises) の統合
 
@@ -61,11 +61,11 @@ Azure AD への Secret Server (On-Premises) の統合を構成するには、ギ
 
 **ギャラリーから Secret Server (On-Premises) を追加するには、次の手順に従います。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。 
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。 
 
     ![Azure Active Directory のボタン][1]
 
-1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+1. **[エンタープライズ アプリケーション]** に移動します。 次に、 **[すべてのアプリケーション]** に移動します。
 
     ![[エンタープライズ アプリケーション] ブレード][2]
     
@@ -73,7 +73,7 @@ Azure AD への Secret Server (On-Premises) の統合を構成するには、ギ
 
     ![[新しいアプリケーション] ボタン][3]
 
-1. 検索ボックスに「**Secret Server (On-Premises)**」と入力し、結果ウィンドウで **Secret Server (On-Premises)** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
+1. 検索ボックスに「**Secret Server (On-Premises)** 」と入力し、結果ウィンドウで **Secret Server (On-Premises)** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
 
     ![結果一覧の Secret Server (On-Premises)](./media/secretserver-on-premises-tutorial/tutorial_secretserver_addfromgallery.png)
 
@@ -97,11 +97,11 @@ Secret Server (On-Premises) で Azure AD のシングル サインオンを構�
 
 **Secret Server (On-Premises) で Azure AD シングル サインオンを構成するには、次の手順に従います。**
 
-1. Azure Portal の **Secret Server (On-Premises)** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
+1. Azure Portal の **Secret Server (On-Premises)** アプリケーション統合ページで、 **[シングル サインオン]** をクリックします。
 
     ![シングル サインオン構成のリンク][4]
 
-1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+1. **[シングル サインオン]** ダイアログで、 **[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
 
     ![[シングル サインオン] ダイアログ ボックス](./media/secretserver-on-premises-tutorial/tutorial_secretserver_samlbase.png)
 
@@ -116,7 +116,7 @@ Secret Server (On-Premises) で Azure AD のシングル サインオンを構�
     > [!NOTE]
     > 上記のエンティティ ID は単なる一例です。Azure AD で Secret Server インスタンスを識別する一意の値を自由に選択することができます。 このエンティティ ID を [Secret Server (On-Premises) クライアント サポート チーム](https://thycotic.force.com/support/s/)に送り、サポート チーム側で構成してもらう必要があります。 詳細については、[こちらの記事](https://thycotic.force.com/support/s/article/Configuring-SAML-in-Secret-Server)を参照してください。
 
-1. アプリケーションを **SP** 開始モードで構成する場合は、**[詳細な URL 設定の表示]** チェックボックスをオンにして次の手順を実行します。
+1. アプリケーションを **SP** 開始モードで構成する場合は、 **[詳細な URL 設定の表示]** チェックボックスをオンにして次の手順を実行します。
 
     ![[Secret Server (On-Premises) のドメインと URL] のシングル サインオン情報](./media/secretserver-on-premises-tutorial/tutorial_secretserver_url1.png)
 
@@ -125,11 +125,11 @@ Secret Server (On-Premises) で Azure AD のシングル サインオンを構�
     > [!NOTE] 
     > これらは実際の値ではありません。 実際の応答 URLとサインオン URL でこれらの値を更新します。 これらの値を取得するには、[Secret Server (On-Premises) クライアント サポート チーム](https://thycotic.force.com/support/s/)に問い合わせてください。
 
-1. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
+1. **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
 
     ![証明書のダウンロードのリンク](./media/secretserver-on-premises-tutorial/tutorial_secretserver_certificate.png)
 
-1. **[証明書署名の設定詳細を表示する]** をオンにし、**[署名オプション]** で **[SAML 応答とアサーションへの署名]** を選択します。
+1. **[証明書署名の設定詳細を表示する]** をオンにし、 **[署名オプション]** で **[SAML 応答とアサーションへの署名]** を選択します。
 
     ![署名オプション](./media/secretserver-on-premises-tutorial/signing.png)
 
@@ -137,7 +137,7 @@ Secret Server (On-Premises) で Azure AD のシングル サインオンを構�
 
     ![[シングル サインオンの構成] の [保存] ボタン](./media/secretserver-on-premises-tutorial/tutorial_general_400.png)
     
-1. **[Secret Server (On-Premises) の構成]** セクションで **[Secret Server (On-Premises) の構成]** をクリックし、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
+1. **[Secret Server (On-Premises) の構成]** セクションで **[Secret Server (On-Premises) の構成]** をクリックし、 **[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
 
     ![Secret Server (On-Premises) の構成](./media/secretserver-on-premises-tutorial/tutorial_secretserver_configure.png)
 
@@ -155,11 +155,11 @@ Secret Server (On-Premises) で Azure AD のシングル サインオンを構�
 
     ![Azure Active Directory のボタン](./media/secretserver-on-premises-tutorial/create_aaduser_01.png)
 
-1. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックします。
+1. ユーザーの一覧を表示するには、 **[ユーザーとグループ]** に移動し、 **[すべてのユーザー]** をクリックします。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](./media/secretserver-on-premises-tutorial/create_aaduser_02.png)
 
-1. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
+1. **[ユーザー]** ダイアログ ボックスを開くには、 **[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
 
     ![[追加] ボタン](./media/secretserver-on-premises-tutorial/create_aaduser_03.png)
 
@@ -171,7 +171,7 @@ Secret Server (On-Premises) で Azure AD のシングル サインオンを構�
 
     b. **[ユーザー名]** ボックスに、ユーザーである Britta Simon の電子メール アドレスを入力します。
 
-    c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
+    c. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
 
     d. **Create** をクリックしてください。
  
@@ -187,7 +187,7 @@ Secret Server (On-Premises) で Azure AD のシングル サインオンを構�
 
 **Secret Server (On-Premises) に Britta Simon を割り当てるには、次の手順に従います。**
 
-1. Azure Portal でアプリケーション ビューを開き、ディレクトリ ビューに移動します。次に、**[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** をクリックします。
+1. Azure Portal でアプリケーション ビューを開き、ディレクトリ ビューに移動します。次に、 **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** をクリックします。
 
     ![ユーザーの割り当て][201]
 
@@ -199,7 +199,7 @@ Secret Server (On-Premises) で Azure AD のシングル サインオンを構�
 
     ![[ユーザーとグループ] リンク][202]
 
-1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[追加]** ボタンをクリックします。 次に、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ][203]
 

@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 04/14/2019
 ms.author: ramamill
 ms.openlocfilehash: 35c317c4b73e9a22e3b0d6192abcfc2a596066b8
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60149998"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60598268"
 ---
 # <a name="automate-mobility-service-installation-with-system-center-configuration-manager"></a>System Center Configuration Manager を使用して Mobility Service のインストールを自動化する
 
@@ -156,7 +156,7 @@ IF NOT %ERRORLEVEL% EQU 0 (
 ### <a name="create-a-package"></a>パッケージを作成する
 
 1. Configuration Manager コンソールにサインインします。
-2. **[ソフトウェア ライブラリ]** > 、**[アプリケーション管理]**、 > **[パッケージ]** と移動します。
+2. **[ソフトウェア ライブラリ]**  > 、 **[アプリケーション管理]** 、 >  **[パッケージ]** と移動します。
 3. **[パッケージ]** を右クリックして **[パッケージの作成]** を選択します。
 4. 名前、説明、製造元、言語、バージョンの値を指定します。
 5. **[このパッケージにソース ファイルを含める]** チェック ボックスをオンします。
@@ -164,11 +164,11 @@ IF NOT %ERRORLEVEL% EQU 0 (
 
    ![パッケージとプログラムの作成ウィザードのスクリーンショット](./media/vmware-azure-mobility-install-configuration-mgr/create_sccm_package.png)
 
-7. **[作成するプログラムの種類の選択]** ページで、**[標準プログラム]** を選択して **[次へ]** をクリックします。
+7. **[作成するプログラムの種類の選択]** ページで、 **[標準プログラム]** を選択して **[次へ]** をクリックします。
 
    ![パッケージとプログラムの作成ウィザードのスクリーンショット](./media/vmware-azure-mobility-install-configuration-mgr/sccm-standard-program.png)
 
-8. **[この標準プログラムに関する情報の指定]** ページで、次の入力を指定して **[次へ]** をクリックします  (その他の入力は既定値を使用できます)。
+8. **[この標準プログラムに関する情報の指定]** ページで、次の入力を指定して **[次へ]** をクリックします (その他の入力は既定値を使用できます)。
 
    | **パラメーター名** | **値** |
    |--|--|
@@ -191,7 +191,7 @@ IF NOT %ERRORLEVEL% EQU 0 (
 ### <a name="deploy-the-package"></a>パッケージをデプロイする
 1. Configuration Manager コンソールで、パッケージを右クリックして **[コンテンツの配布]** を選択します。
    ![Configuration Manager コンソールのスクリーンショット](./media/vmware-azure-mobility-install-configuration-mgr/sccm_distribute.png)
-2. パッケージのコピー先とする**[配布ポイント](https://technet.microsoft.com/library/gg712321.aspx#BKMK_PlanForDistributionPoints)** を選択します。
+2. パッケージのコピー先とする **[配布ポイント](https://technet.microsoft.com/library/gg712321.aspx#BKMK_PlanForDistributionPoints)** を選択します。
 3. ウィザードを終了します。 指定した配布ポイントへのパッケージのレプリケートが開始されます。
 4. パッケージの配布が完了したら、パッケージを右クリックして **[展開]** を選択します。
    ![Configuration Manager コンソールのスクリーンショット](./media/vmware-azure-mobility-install-configuration-mgr/sccm_deploy.png)
@@ -210,7 +210,7 @@ IF NOT %ERRORLEVEL% EQU 0 (
 > [!TIP]
 > 不要な再起動を避けるためには、月次のメンテナンス期間中またはソフトウェアの更新期間中にパッケージのインストールをスケジュールします。
 
-Configuration Manager コンソールを使用して、展開の進行状況を監視できます。 **[監視]**、 > **[展開]**、 > *[対象のパッケージ名]* と移動します。
+Configuration Manager コンソールを使用して、展開の進行状況を監視できます。 **[監視]** 、 >  **[展開]** 、 >  *[対象のパッケージ名]* と移動します。
 
   ![展開を監視する Configuration Manager のオプションのスクリーン ショット](./media/vmware-azure-mobility-install-configuration-mgr/report.PNG)
 
@@ -381,7 +381,7 @@ cd /tmp
 ### <a name="create-a-package"></a>パッケージを作成する
 
 1. Configuration Manager コンソールにサインインします。
-2. **[ソフトウェア ライブラリ]** > 、**[アプリケーション管理]**、 > **[パッケージ]** と移動します。
+2. **[ソフトウェア ライブラリ]**  > 、 **[アプリケーション管理]** 、 >  **[パッケージ]** と移動します。
 3. **[パッケージ]** を右クリックして **[パッケージの作成]** を選択します。
 4. 名前、説明、製造元、言語、バージョンの値を指定します。
 5. **[このパッケージにソース ファイルを含める]** チェック ボックスをオンします。
@@ -389,11 +389,11 @@ cd /tmp
 
    ![パッケージとプログラムの作成ウィザードのスクリーンショット](./media/vmware-azure-mobility-install-configuration-mgr/create_sccm_package-linux.png)
 
-7. **[作成するプログラムの種類の選択]** ページで、**[標準プログラム]** を選択して **[次へ]** をクリックします。
+7. **[作成するプログラムの種類の選択]** ページで、 **[標準プログラム]** を選択して **[次へ]** をクリックします。
 
    ![パッケージとプログラムの作成ウィザードのスクリーンショット](./media/vmware-azure-mobility-install-configuration-mgr/sccm-standard-program.png)
 
-8. **[この標準プログラムに関する情報の指定]** ページで、次の入力を指定して **[次へ]** をクリックします  (その他の入力は既定値を使用できます)。
+8. **[この標準プログラムに関する情報の指定]** ページで、次の入力を指定して **[次へ]** をクリックします (その他の入力は既定値を使用できます)。
 
     | **パラメーター名** | **値** |
    |--|--|
@@ -403,7 +403,7 @@ cd /tmp
 
    ![パッケージとプログラムの作成ウィザードのスクリーンショット](./media/vmware-azure-mobility-install-configuration-mgr/sccm-program-properties-linux.png)
 
-9. 次のページで、**[任意のプラットフォームで実行可能]** を選択します。
+9. 次のページで、 **[任意のプラットフォームで実行可能]** を選択します。
    ![パッケージとプログラムの作成ウィザードのスクリーンショット](./media/vmware-azure-mobility-install-configuration-mgr/sccm-program-properties-page2-linux.png)
 
 10. **[次へ]** を 2 回クリックしてウィザードを終了します。
@@ -414,7 +414,7 @@ cd /tmp
 ### <a name="deploy-the-package"></a>パッケージをデプロイする
 1. Configuration Manager コンソールで、パッケージを右クリックして **[コンテンツの配布]** を選択します。
    ![Configuration Manager コンソールのスクリーンショット](./media/vmware-azure-mobility-install-configuration-mgr/sccm_distribute.png)
-2. パッケージのコピー先とする**[配布ポイント](https://technet.microsoft.com/library/gg712321.aspx#BKMK_PlanForDistributionPoints)** を選択します。
+2. パッケージのコピー先とする **[配布ポイント](https://technet.microsoft.com/library/gg712321.aspx#BKMK_PlanForDistributionPoints)** を選択します。
 3. ウィザードを終了します。 指定した配布ポイントへのパッケージのレプリケートが開始されます。
 4. パッケージの配布が完了したら、パッケージを右クリックして **[展開]** を選択します。
    ![Configuration Manager コンソールのスクリーンショット](./media/vmware-azure-mobility-install-configuration-mgr/sccm_deploy.png)

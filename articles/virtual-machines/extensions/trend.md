@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2018
 ms.author: roiyz
-ms.openlocfilehash: 0bb49d3d75b88f197a42e02f03f89480563537ef
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d7808fbff0199105a12c0570807876413d5c98c6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58005483"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60800100"
 ---
 # <a name="how-to-install-and-configure-trend-micro-deep-security-as-a-service-on-a-windows-vm"></a>Windows VM に Trend Micro Deep Security をサービスとしてインストールし、構成する方法
 [!INCLUDE [virtual-machines-extensions-deprecation-statement](../../../includes/virtual-machines-extensions-deprecation-statement.md)]
@@ -44,11 +44,11 @@ Trend Micro のオンプレミスのソリューション用サブスクリプ�
 
    ![拡張機能の追加開始][1]
 
-2. **[新しいリソース]** ウィンドウで **Deep Security Agent** を選択します。 Deep Security Agent ウィンドウで、**[作成]** をクリックします。
+2. **[新しいリソース]** ウィンドウで **Deep Security Agent** を選択します。 Deep Security Agent ウィンドウで、 **[作成]** をクリックします。
 
    ![Deep Security Agent の識別][2]
 
-3. 拡張機能の**テナント ID**と**テナント アクティべーション パスワード**を入力します。 必要に応じて、**セキュリティ ポリシー識別子**を入力できます。 次に、**[OK]** をクリックして、クライアントを追加します。
+3. 拡張機能の**テナント ID**と**テナント アクティべーション パスワード**を入力します。 必要に応じて、**セキュリティ ポリシー識別子**を入力できます。 次に、 **[OK]** をクリックして、クライアントを追加します。
 
    ![拡張機能の詳細提示][3]
 

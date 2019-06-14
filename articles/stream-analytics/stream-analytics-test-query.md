@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
 ms.openlocfilehash: fca76b632e9bcc27ed762886eaea696a5696ad3f
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53557634"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60761906"
 ---
 # <a name="test-a-stream-analytics-query-with-sample-data"></a>サンプル データを利用した Stream Analytics クエリのテスト
 
@@ -32,7 +32,7 @@ Azure Stream Analytics を使用すると、ジョブの起動や停止をする
 
     ![Stream Analytics クエリ エディターでクエリをテストする](media/stream-analytics-test-query/stream-analytics-test-query-editor-upload.png)
 
-5. アップロードが完了したら、**[テスト]** を選択して、用意したサンプル データでこのクエリをテストします。
+5. アップロードが完了したら、 **[テスト]** を選択して、用意したサンプル データでこのクエリをテストします。
 
     ![Stream Analytics クエリ エディターでサンプル データをテストする](media/stream-analytics-test-query/stream-analytics-test-query-editor-test.png)
 

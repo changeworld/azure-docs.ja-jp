@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: pabutler
 ms.openlocfilehash: 9433673e464beb2df74eb4f49851e960d2e7f99c
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64942666"
 ---
 # <a name="publish-container-offer"></a>コンテナー オファーを発行する
 
- **[New Offer](新しいオファー)** ページを使用して新しいオファーを作成した後で、そのオファーを発行できます。 **[発行]** を選択して、プロセスの発行を開始します。
+ **New Offer (新しいオファー)** ページを使用して新しいオファーを作成した後で、そのオファーを発行できます。 **[発行]** を選択して、プロセスの発行を開始します。
 
 次の図は、"Go Live" へのプランの発行処理の主な手順を示しています。
 

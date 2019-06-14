@@ -12,17 +12,17 @@ ms.topic: reference
 ms.date: 12/12/2017
 ms.author: glenga
 ms.openlocfilehash: 44a9368f82e95641d3df893ba0958c6bf8cf696f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64724963"
 ---
 # <a name="azure-functions-c-script-csx-developer-reference"></a>Azure Functions C# スクリプト (.csx) 開発者向けリファレンス
 
 <!-- When updating this article, make corresponding changes to any duplicate content in functions-dotnet-class-library.md -->
 
-この記事では、C# スクリプト (*.csx*) を使用した Azure Functions 開発の概要を示します。
+この記事では、C# スクリプト ( *.csx*) を使用した Azure Functions 開発の概要を示します。
 
 Azure Functions では、C# および C# スクリプト プログラミング言語をサポートします。 [Visual Studio クラス ライブラリ プロジェクトでの C# の使用](functions-develop-vs.md)に関するガイダンスをお探しの場合は、[C# 開発者向けリファレンス](functions-dotnet-class-library.md)のページをご覧ください。
 
@@ -220,7 +220,7 @@ public class Order
 * `#load "loadedfiles\mylogger.csx"` によって、関数フォルダー内のフォルダーにあるファイルが読み込まれます。
 * `#load "..\shared\mylogger.csx"` によって、関数フォルダーと同じレベル ( *wwwroot*の直下) にあるフォルダーのファイルが読み込まれます。
 
-`#load` ディレクティブは、*.csx* ファイルでのみ機能し、*.cs* ファイルでは機能しません。
+`#load` ディレクティブは、 *.csx* ファイルでのみ機能し、 *.cs* ファイルでは機能しません。
 
 ## <a name="binding-to-method-return-value"></a>メソッドの戻り値へのバインド
 
@@ -393,9 +393,9 @@ NuGet パッケージを 2.x C# 関数内で使用するには、*function.proj*
 カスタムの NuGet フィードを使用するには、関数アプリのルートにある *Nuget.Config* ファイルでフィードを指定します。 詳しくは、「[NuGet の動作の構成](/nuget/consume-packages/configuring-nuget-behavior)」をご覧ください。 
 
 > [!NOTE]
-> 1.x C# 関数では、NuGet パッケージは *function.proj* ファイルの代わりに *project.json* ファイルで参照されます。
+> 1\.x C# 関数では、NuGet パッケージは *function.proj* ファイルの代わりに *project.json* ファイルで参照されます。
 
-1.x 関数では、代わりに *project.json* ファイルを使用します。 *project.json* ファイルの例を次に示します。 
+1\.x 関数では、代わりに *project.json* ファイルを使用します。 *project.json* ファイルの例を次に示します。 
 
 ```json
 {
@@ -488,7 +488,7 @@ public static async Task Run(string input, Binder binder)
 
 ### <a name="multiple-attribute-example"></a>複数属性の例
 
-前の例では、関数アプリのメイン ストレージ アカウント接続文字列 (`AzureWebJobsStorage`) のアプリ設定を取得します。 ストレージ アカウントに使用するカスタム アプリ設定を指定するには、[StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) を追加し、属性の配列を `BindAsync<T>()` に渡します。 `IBinder`ではなく、`Binder` パラメーターを使用します。  例: 
+前の例では、関数アプリのメイン ストレージ アカウント接続文字列 (`AzureWebJobsStorage`) のアプリ設定を取得します。 ストレージ アカウントに使用するカスタム アプリ設定を指定するには、[StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) を追加し、属性の配列を `BindAsync<T>()` に渡します。 `IBinder`ではなく、`Binder` パラメーターを使用します。  例:
 
 ```cs
 using Microsoft.Azure.WebJobs;

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 12/21/2018
 ms.author: ellacroi
 ms.openlocfilehash: c06a338ec041c83588c3ee5126795b8c445ef469
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64937983"
 ---
 # <a name="offer-listing-best-practices"></a>オファーの掲載のベスト プラクティス
@@ -21,7 +21,7 @@ ms.locfileid: "64937983"
 ## <a name="storefront-offer-details"></a>ストアフロント オファーの詳細
 | ストアフロントの設定 | ベスト プラクティス |
 |:--- |:--- |  
-| プラン名 | 強力なタイトルを付ける:<br> <ul> <li> アプリには、顧客に対する中心的な価値を伝える名前を付けるようにします。 </li> <li> 検索エンジンの結果で高い順位を得られるように、アプリのタイトルに検索キーワードを含めます。 </li> </ul> コンサルティング サービスのリストは、決められたタイトルの形式 <br>[オファー名] : [期間] [オファーの種類] に従います (例: *Contoso:2 週間の実装*)。 <br><br> ブランドのガイドラインに従う:<br>Microsoft の商標、Microsoft のソフトウェア、製品、およびサービスの名前を参照するときは、[Microsoft の商標およびブランド ガイドライン](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx)と、関連する製品固有のガイドラインに従ってください。 |
+| プラン名 | 強力なタイトルを付ける:<br> <ul> <li> アプリには、顧客に対する中心的な価値を伝える名前を付けるようにします。 </li> <li> 検索エンジンの結果で高い順位を得られるように、アプリのタイトルに検索キーワードを含めます。 </li> </ul> コンサルティング サービスのリストは、決められたタイトルの形式<br>[オファー名] : [期間] [オファーの種類] に従います (例: *Contoso:2 週間の実装*)。 <br><br> ブランドのガイドラインに従う:<br>Microsoft の商標、Microsoft のソフトウェア、製品、およびサービスの名前を参照するときは、[Microsoft の商標およびブランド ガイドライン](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx)と、関連する製品固有のガイドラインに従ってください。 |
 | オファーの説明 | オファーの明確な説明を入力する:<br> <ul> <li> 説明の先頭の数文で、オファーの価値提案を明確に説明します。 </li> <li> 先頭の数文は、検索エンジンの結果に表示される可能性があることを留意してください。 </li> <li> 特徴や機能に頼って製品を販売しようとせずに、 提供する価値に焦点を当ててください。 </li> <li> できるだけ業界固有の語彙や利益に基づく表現を使用します。</li> <li> さらに、コンサルティング サービスの掲載では、提供するプロフェッショナル サービスを明確に示す必要があります。 </li></ul> 価値提案の中心の要素には、以下の情報を含めるようにします。<ul><li>製品の説明。</li><li>製品から利益を得られるユーザーの種類。</li><li>製品が対応する顧客のニーズや問題。</li></ul> |
 
 ## <a name="storefront-listing-details"></a>ストアフロントのリストの詳細

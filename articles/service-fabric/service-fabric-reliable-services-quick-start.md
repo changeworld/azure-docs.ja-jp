@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 03/16/2018
 ms.author: vturecek
 ms.openlocfilehash: d27702983a4378becdbc67f3f156c92be3dc3af6
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58665136"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62130094"
 ---
 # <a name="get-started-with-reliable-services"></a>Reliable Services 使用
 > [!div class="op_single_selector"]
@@ -45,7 +45,7 @@ Visual Studio 2015 または Visual Studio 2017 を管理者として起動し�
 
 ![[新しいプロジェクト] ダイアログを使用して新しい Service Fabric アプリケーションを作成する](media/service-fabric-reliable-services-quick-start/hello-stateless-NewProject.png)
 
-次に、**.NET Core 2.0** を使用して、*HelloWorldStateless* という名前のステートレス サービス プロジェクトを作成します。
+次に、 **.NET Core 2.0** を使用して、*HelloWorldStateless* という名前のステートレス サービス プロジェクトを作成します。
 
 ![2 番目のダイアログ ボックスでステートレス サービス プロジェクトを作成する](media/service-fabric-reliable-services-quick-start/hello-stateless-NewProject2.png)
 
@@ -123,7 +123,7 @@ Service Fabric には、新しい種類のステートフルなサービスが�
 
 サービスが移動または再起動した場合でも、カウンター値をステートレスから高可用と永続性に変換するには、ステートフル サービスが必要です。
 
-先ほどと同じ *HelloWorld* アプリケーションで、アプリケーション プロジェクトの [サービス] を右クリックし、**[追加] -> [新しい Service Fabric サービス]** を選択することで、新しいサービスを追加できます。
+先ほどと同じ *HelloWorld* アプリケーションで、アプリケーション プロジェクトの [サービス] を右クリックし、 **[追加] -> [新しい Service Fabric サービス]** を選択することで、新しいサービスを追加できます。
 
 ![Service Fabric アプリケーションにサービスを追加します。](media/service-fabric-reliable-services-quick-start/hello-stateful-NewService.png)
 

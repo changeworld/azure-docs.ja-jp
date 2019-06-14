@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: jeconnoc
 ms.openlocfilehash: cd0bceae770182e778410d8065d34dfeed055acc
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57993253"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61433205"
 ---
 # <a name="build-a-nodejs-chat-application-with-socketio-on-an-azure-cloud-service"></a>Azure Cloud Services で Socket.IO を使用する Node.js チャット アプリケーションを構築する
 
@@ -32,14 +32,14 @@ Socket.IO は、node.js サーバーとクライアントの間のリアルタ�
 ## <a name="prerequisites"></a>前提条件
 この記事の例を正常に完了するには、次の製品とバージョンがインストールされている必要があります。
 
-*  [Visual Studio](https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx)
-*  [Node.js](https://nodejs.org/download/)
-*  [Python version 2.7.10](https://www.python.org/)
+* [Visual Studio](https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx)
+* [Node.js](https://nodejs.org/download/)
+* [Python version 2.7.10](https://www.python.org/)
 
 ## <a name="create-a-cloud-service-project"></a>クラウド サービス プロジェクトの作成
 次の手順では、Socket.IO アプリケーションをストリーミングするクラウド サービス プロジェクトを作成します。
 
-1. **[スタート]** メニューまたは**スタート画面**で、**Windows PowerShell** を検索します。 最後に、**[Windows PowerShell]** を右クリックし、**[管理者として実行]** を選択します。
+1. **[スタート]** メニューまたは**スタート画面**で、**Windows PowerShell** を検索します。 最後に、 **[Windows PowerShell]** を右クリックし、 **[管理者として実行]** を選択します。
    
     ![Azure PowerShell アイコン][powershell-menu]
 2. **c:\\node** というディレクトリを作成します。 
@@ -113,7 +113,7 @@ Azure エミュレーターでアプリケーションをテストする前に�
    > 
    > AzureAuthoringTools v 2.7.1 と AzureComputeEmulator v 2.7 を再インストールし、そのバージョンが一致することを確認します。
 
-2. ブラウザーを開き、**http://127.0.0.1** に移動します。
+2. ブラウザーを開き、 **http://127.0.0.1** に移動します。
 3. ブラウザー ウィンドウが開いたら、ニックネームを入力して Enter キーを押します。
    これにより、特定のニックネームでメッセージを投稿できます。 マルチユーザー機能をテストするには、同じ URL を使用して新しいブラウザー ウィンドウを開き、別のニックネームを入力します。
    
@@ -121,7 +121,7 @@ Azure エミュレーターでアプリケーションをテストする前に�
 4. アプリケーションのテストが終了したら、次のコマンドを発行してエミュレーターを停止します。
    
        PS C:\node\chatapp\WorkerRole1> Stop-AzureEmulator
-5. Azure にアプリケーションをデプロイするには、 **Publish-AzureServiceProject** コマンドレットを使用します。 例: 
+5. Azure にアプリケーションをデプロイするには、 **Publish-AzureServiceProject** コマンドレットを使用します。 例:
    
        PS C:\node\chatapp\WorkerRole1> Publish-AzureServiceProject -ServiceName mychatapp -Location "East US" -Launch
    

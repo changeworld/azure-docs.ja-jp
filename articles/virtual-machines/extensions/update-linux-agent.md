@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 08/02/2017
 ms.author: roiyz
 ms.openlocfilehash: 5d53f34ea6b0983d0687cdaf6ec6271c703bb055
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57998531"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60799751"
 ---
 # <a name="how-to-update-the-azure-linux-agent-on-a-vm"></a>VM で Azure Linux エージェントを更新する方法
 
@@ -79,13 +79,13 @@ sudo sed -i 's/# AutoUpdate.Enabled=n/AutoUpdate.Enabled=y/g' /etc/waagent.conf
 
 ### <a name="restart-the-waagent-service"></a>waagent サービスを再起動します
 
-#### <a name="restart-agent-for-1404"></a>14.04 のエージェントをリセットする
+#### <a name="restart-agent-for-1404"></a>14\.04 のエージェントをリセットする
 
 ```bash
 initctl restart walinuxagent
 ```
 
-#### <a name="restart-agent-for-1604--1704"></a>16.04 / 17.04 のエージェントをリセットする
+#### <a name="restart-agent-for-1604--1704"></a>16\.04 / 17.04 のエージェントをリセットする
 
 ```bash
 systemctl restart walinuxagent.service

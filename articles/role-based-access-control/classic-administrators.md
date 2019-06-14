@@ -15,10 +15,10 @@ ms.date: 02/19/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 9c3bd2480853f5c4134cd560c20a6007b044e138
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64924648"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Azure の従来のサブスクリプション管理者
@@ -44,11 +44,11 @@ ms.locfileid: "64924648"
 
     ![[従来の管理者] が開かれているスクリーンショット](./media/classic-administrators/classic-administrators.png)
 
-1. **[追加]** > **[共同管理者の追加]** をクリックして、[共同管理者の追加] ウィンドウを開きます。
+1. **[追加]**  >  **[共同管理者の追加]** をクリックして、[共同管理者の追加] ウィンドウを開きます。
 
     [共同管理者の追加] オプションが無効になっている場合は、アクセス許可がありません。
 
-1. 追加するユーザーを選択して、**[追加]** をクリックします。
+1. 追加するユーザーを選択して、 **[追加]** をクリックします。
 
     ![共同管理者追加のスクリーンショット](./media/classic-administrators/add-coadmin.png)
 
@@ -79,7 +79,7 @@ ms.locfileid: "64924648"
 
 1. **[削除]** をクリックします。
 
-1. 表示されるメッセージ ボックスで、**[はい]** をクリックします。
+1. 表示されるメッセージ ボックスで、 **[はい]** をクリックします。
 
     ![共同管理者削除のスクリーンショット](./media/classic-administrators/remove-coadmin.png)
 
@@ -105,7 +105,7 @@ ms.locfileid: "64924648"
 
     [サービス管理者] ボタンが無効になっている場合は、アクセス許可がありません。 サービス管理者を変更できるのは、アカウント管理者であるユーザーだけです。
 
-1. 新しいサービス管理者を選択して、**[保存]** をクリックします。
+1. 新しいサービス管理者を選択して、 **[保存]** をクリックします。
 
 ### <a name="account-center"></a>アカウント センター
 
@@ -133,8 +133,8 @@ ms.locfileid: "64924648"
 
   | サインイン方法 | サービス管理者として Microsoft アカウント ユーザーを追加できる | 同じ組織内の職場または学校アカウントをサービス管理者として追加できる | 別の組織内の職場または学校アカウントをサービス管理者として追加できる |
   | --- | --- | --- | --- |
-  |  Microsoft アカウント |はい |いいえ  |いいえ  |
-  |  会社または学校のアカウント |はい |はい |いいえ  |
+  |  Microsoft アカウント |はい |いいえ |いいえ |
+  |  会社または学校のアカウント |はい |はい |いいえ |
 
 ## <a name="view-the-account-administrator"></a>アカウント管理者を表示する
 
@@ -148,7 +148,7 @@ ms.locfileid: "64924648"
 
 1. **[プロパティ]** をクリックします。
 
-    サブスクリプションのアカウント管理者が、**[アカウント管理者]** ボックスに表示されます。
+    サブスクリプションのアカウント管理者が、 **[アカウント管理者]** ボックスに表示されます。
 
     ![アカウント管理者を示すスクリーンショット](./media/classic-administrators/account-admin.png)
 

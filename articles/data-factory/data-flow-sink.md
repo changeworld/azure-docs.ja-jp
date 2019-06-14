@@ -7,10 +7,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
 ms.openlocfilehash: 4341cbb0e24330d535f5211c088f0068eab33af7
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65596268"
 ---
 # <a name="sink-transformation-for-a-data-flow"></a>データ フローのシンク変換
@@ -21,7 +21,7 @@ ms.locfileid: "65596268"
 
 スキーマの誤差や受信データの変更に対処するには、出力データセットに定義済みのスキーマがない状態で出力データをフォルダーにシンクします。 ソースで **[Allow schema drift]** (スキーマの誤差を許可) を選択することで、ソース内の列変更に対処することもできます。 この場合、シンク内のすべてのフィールドが自動マッピングされます。
 
-![[Auto Map](自動マップ) オプションを含む [シンク] タブのオプション](media/data-flow/sink1.png "シンク 1")
+![[Auto Map]\(自動マップ) オプションを含む [シンク] タブのオプション](media/data-flow/sink1.png "シンク 1")
 
 すべての受信フィールドをシンクするには、 **[Auto Map]** (自動マップ) をオンにします。 変換先にシンクするフィールドを選択したり、変換先でのフィールドの名前を変更するには、 **[Auto Map]** (自動マップ) をオフにします。 続いて **[マッピング]** タブを開いて、出力フィールドをマップします。
 

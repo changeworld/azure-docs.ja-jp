@@ -15,11 +15,11 @@ ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
 ms.openlocfilehash: 26f0abb48ba268f79167ed5d00e4f96d8b5e5998
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58498173"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60821865"
 ---
 # <a name="receive-events-from-azure-event-hubs-using-event-processor-host"></a>イベント プロセッサ ホストを使用して Azure Event Hubs からイベントを受信する
 
@@ -85,7 +85,7 @@ public class SimpleEventProcessor : IEventProcessor
 
 - **hostName:** 各コンシューマー インスタンスの名前。 **EventProcessorHost** の各インスタンスは、コンシューマー グループ内でこの変数の一意の値を持つ必要があります。したがって、この値をハードコーディングしないでください。
 - **eventHubPath:** イベント ハブの名前。
-- **consumerGroupName:** Event Hubs は、既定のコンシューマー グループの名前として "**$既定**" を使用しますが、処理の特定の側面についてコンシューマー グループを作成することをお勧めします。
+- **consumerGroupName:** Event Hubs は、既定のコンシューマー グループの名前として " **$既定**" を使用しますが、処理の特定の側面についてコンシューマー グループを作成することをお勧めします。
 - **eventHubConnectionString:** イベント ハブへの接続文字列。この値は、Azure portal から取得できます。 この接続文字列には、イベント ハブに対する**リッスン** アクセス許可が付与されている必要があります。
 - **storageConnectionString:** 内部リソースの管理に使用されるストレージ アカウント。
 

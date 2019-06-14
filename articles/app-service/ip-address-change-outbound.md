@@ -12,11 +12,11 @@ ms.date: 06/28/2018
 ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: ac62217af096653d61a79ff29ae352c8e950f8af
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53719304"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61269777"
 ---
 # <a name="how-to-prepare-for-an-outbound-ip-address-change"></a>送信 IP アドレスの変更に備える方法
 
@@ -36,13 +36,13 @@ ms.locfileid: "53719304"
 
 1.  [Azure Portal](https://portal.azure.com)を開きます。
 
-2.  左側のナビゲーション メニューで、**[App Services]** を選択します。
+2.  左側のナビゲーション メニューで、 **[App Services]** を選択します。
 
 3.  一覧から App Service アプリを選択します。
 
 1.  アプリが関数アプリの場合、「[Function app outbound IP addresses](../azure-functions/ip-addresses.md#find-outbound-ip-addresses)」(関数アプリの送信 IP アドレス) を参照してください。
 
-4.  **[設定]** ヘッダーの下で、左側のナビゲーションにある **[プロパティ]** をクリックし、**[送信 IP アドレス]** というラベルの付いたセクションを見つけます。
+4.  **[設定]** ヘッダーの下で、左側のナビゲーションにある **[プロパティ]** をクリックし、 **[送信 IP アドレス]** というラベルの付いたセクションを見つけます。
 
 5. IP アドレスをコピーして、フィルターや許可リストなどの送信トラフィックの特別な処理に追加します。 リスト内の既存の IP アドレスは削除しないでください。
 

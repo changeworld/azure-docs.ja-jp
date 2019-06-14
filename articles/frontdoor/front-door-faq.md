@@ -12,11 +12,11 @@ ms.workload: infrastructure-services
 ms.date: 03/08/2019
 ms.author: sharadag
 ms.openlocfilehash: 256435dfd016ebbd86dbbe49f4abbb346fb1cd19
-ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58407737"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60736668"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door-service"></a>Azure Front Door Service についてよく寄せられる質問
 
@@ -24,7 +24,7 @@ ms.locfileid: "58407737"
 
 1. この記事のコメント セクション。
 2. [Azure Front Door Service の UserVoice](https://feedback.azure.com/forums/217313-networking?category_id=345025)。
-3. **Microsoft のサポート:** 新しいサポート要求を作成するには、Azure Portal の **[ヘルプ]** タブで、**[ヘルプとサポート]** ボタンを選択し、**[新しいサポート要求]** を選択します。
+3. **Microsoft のサポート:** 新しいサポート要求を作成するには、Azure Portal の [ヘルプ] タブで、 **[ヘルプとサポート]** ボタンを選択し、 **[新しいサポート要求]** を選択します。
 
 ## <a name="general"></a>全般
 

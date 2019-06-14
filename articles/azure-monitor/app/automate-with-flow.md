@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 03/12/2019
 ms.author: mbullwin
 ms.openlocfilehash: 15299be83758c157bf3bc7d9fb27b50763b9148e
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58438939"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60903661"
 ---
 # <a name="automate-azure-application-insights-processes-with-the-connector-for-microsoft-flow"></a>Microsoft Flow 対応のコネクタを使って Azure Application Insights のプロセスを自動化する
 
@@ -33,17 +33,17 @@ ms.locfileid: "58438939"
 このチュートリアルでは、Analytics 自動クラスター アルゴリズムを使うフローを作成して、Web アプリケーションのデータの属性をグループ化する方法を説明します。 このフローは結果を自動的にメールで送信しますが、これは、Microsoft Flow と Application Insights Analytics を共に利用する方法の一例にすぎません。 
 
 ### <a name="step-1-create-a-flow"></a>手順 1: フローを作成する
-1. [Microsoft Flow](https://flow.microsoft.com) にサインインし、**[マイ フロー]** を選択します。
+1. [Microsoft Flow](https://flow.microsoft.com) にサインインし、 **[マイ フロー]** を選択します。
 2. **[新規]** をクリックして、次に **[一から作成する]** をクリックします。
 
     ![新しいフローを一から作成する](./media/automate-with-flow/1createflow.png)
 
 ### <a name="step-2-create-a-trigger-for-your-flow"></a>手順 2:フローのトリガーを作成する
-1. [ビルドイン] タブで、**[スケジュール]** を選択し、**[スケジュール - 繰り返し]** を選択します。
+1. [ビルドイン] タブで、 **[スケジュール]** を選択し、 **[スケジュール - 繰り返し]** を選択します。
 
     ![[ビルドイン] でスケジュールを選択](./media/automate-with-flow/2schedule.png)
 
-1. **[間隔]** ボックスで「**1**」を入力し、**[頻度]** ボックスで **[日]** を選択します。
+1. **[間隔]** ボックスで「**1**」を入力し、 **[頻度]** ボックスで **[日]** を選択します。
 2. **[新しいステップ]** をクリックします。
 
     ![頻度と間隔を入力して、スケジュールの繰り返しを設定します。](./media/automate-with-flow/3schedulerecurrence.png)
@@ -112,12 +112,12 @@ ms.locfileid: "58438939"
 
     b. **[添付ファイルの内容]** を選択します。
     
-    c. **[Is HTML]\(HTML にする\)** ボックスで、**[はい]** を選択します。
+    c. **[Is HTML]\(HTML にする\)** ボックスで、 **[はい]** を選択します。
 
     ![Office 365 の電子メール設定ウィンドウ](./media/automate-with-flow/11emailattachment.png)
 
 ### <a name="step-7-save-and-test-your-flow"></a>手順 7: フローを保存してテストする
-- **[フロー名]** ボックスにフローの名前を追加し、**[保存]** をクリックします。
+- **[フロー名]** ボックスにフローの名前を追加し、 **[保存]** をクリックします。
 
     ![フローに名前を付けて保存](./media/automate-with-flow/12nameflow.png)
 

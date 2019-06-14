@@ -12,11 +12,11 @@ ms.topic: article
 ms.date: 12/06/2018
 ms.author: spelluru
 ms.openlocfilehash: ccb2fa7b0805b332957513c52c0c1051d068d2cc
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55507537"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60821677"
 ---
 # <a name="use-firewall-rules"></a>ファイアウォール ルールを使用する
 
@@ -54,7 +54,7 @@ IP フィルター規則は順に適用され、IP アドレスと一致する�
 > - Azure データ エクスプローラー
 >
 > 次の Microsoft サービスが仮想ネットワーク上に存在する必要があります
-> - Azure Web Apps 
+> - Azure Web Apps
 > - Azure Functions
 
 ### <a name="creating-a-firewall-rule-with-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用してファイアウォール ルールを作成する

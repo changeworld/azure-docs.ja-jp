@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 04/13/2018
 ms.author: chrisgre
 ms.openlocfilehash: 598bf82e375f472b2f723c3462ba7ba7b4d25fbe
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59011556"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61333641"
 ---
 # <a name="automatic-iot-device-management-at-scale-using-the-azure-portal"></a>Azure portal を使用した大規模な自動 IoT デバイス管理
 
@@ -88,7 +88,7 @@ Azure IoT Hub の自動デバイス管理では、多数のデバイスを管理
 
 2. **[メトリックの条件]** にクエリを入力します。  このクエリは、デバイス ツインから報告されるプロパティに基づいて指定します。  メトリックは、クエリによって返された行の数を表します。
 
-例: 
+例:
 
 ```sql
 SELECT deviceId FROM devices 
@@ -117,7 +117,7 @@ SELECT deviceId FROM devices
 
 ### <a name="review-configuration"></a>構成の確認
 
-構成情報を確認し、**[送信]** を選択します。
+構成情報を確認し、 **[送信]** を選択します。
 
 ## <a name="monitor-a-configuration"></a>構成の監視
 

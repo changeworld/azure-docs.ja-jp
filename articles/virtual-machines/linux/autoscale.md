@@ -15,11 +15,11 @@ ms.date: 08/21/2017
 ms.author: cynthn
 ms.topic: conceptual
 ms.openlocfilehash: 1457c22034a9d6994485a297b3cb01bc05dcd9d6
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57790188"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62127125"
 ---
 # <a name="automatically-scale-virtual-machines-in-azure"></a>Azure で仮想マシンを自動的にスケーリングする
 

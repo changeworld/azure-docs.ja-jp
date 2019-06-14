@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/31/2017
 ms.author: alch
 ms.openlocfilehash: 92844b5faf691b67617c9f3424a1322aa05429bb
-ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64875738"
 ---
 # <a name="paper-entity"></a>論文エンティティ
@@ -25,26 +25,26 @@ ms.locfileid: "64875738"
 Name    |説明                                        |Type       | Operations
 ------- | ------------------------------------------------- | --------- | ----------------------------
 Id      |エンティティ ID                                          |Int64      |等しい
-Ti      |論文のタイトル                                        |String     |Equals、<br/>StartsWith
-L       |"\@\@\@" によって区切られたペーパー言語コード          |String     |等しい
+Ti      |論文のタイトル                                        |string     |Equals、<br/>StartsWith
+L       |"\@\@\@" によって区切られたペーパー言語コード          |string     |等しい
 Y       |論文の年                                         |Int32      |Equals、<br/>IsBetween
 D       |論文の日付                                         |Date       |Equals、<br/>IsBetween
 CC      |引用数                                     |Int32      |なし  
 ECC     |推定引用数                           |Int32      |なし
-AA.AuN  |著者名                                        |String     |Equals、<br/>StartsWith
+AA.AuN  |著者名                                        |string     |Equals、<br/>StartsWith
 AA.AuId |著者 ID                                          |Int64      |等しい
-AA.AfN  |著者の所属名                            |String     |Equals、<br/>StartsWith
+AA.AfN  |著者の所属名                            |string     |Equals、<br/>StartsWith
 AA.AfId |著者の所属 ID                              |Int64      |等しい
 AA.S    |論文の著者の順序                         |Int32      |等しい
-F.FN    |研究分野の名前                                |String     |Equals、<br/>StartsWith
+F.FN    |研究分野の名前                                |string     |Equals、<br/>StartsWith
 F.FId   |研究分野の ID                                  |Int64      |等しい
-J.JN    |ジャーナル名                                       |String     |Equals、<br/>StartsWith
+J.JN    |ジャーナル名                                       |string     |Equals、<br/>StartsWith
 J.JId   |ジャーナル ID                                         |Int64      |等しい
-C.CN    |会議シリーズ名                             |String     |Equals、<br/>StartsWith
+C.CN    |会議シリーズ名                             |string     |Equals、<br/>StartsWith
 C.CId   |会議シリーズ ID                               |Int64      |等しい
 RId     |参照論文 ID                              |Int64[]    |等しい
 W       |論文のタイトルと要約の単語                |String[]   |等しい
-E       |拡張メタデータ (次の表を参照)                |String     |なし  
+E       |拡張メタデータ (次の表を参照)                |string     |なし  
         
 
 

@@ -12,10 +12,10 @@ ms.reviewer: carlrab
 manager: cgronlun
 ms.date: 03/01/2019
 ms.openlocfilehash: 92785015a1ce122b8301b56fa62d122c8d95180c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64725055"
 ---
 # <a name="key-differences-between-machine-learning-services-in-azure-sql-database-preview-and-sql-server"></a>SQL Server の Machine Learning Services と Azure SQL Database の Machine Learning Services (プレビュー) の主な違い
@@ -63,4 +63,4 @@ R に使用できるメモリが不足している場合は、エラー メッ�
 
 - 「[Azure SQL Database Machine Learning Services with R (preview)](sql-database-machine-learning-services-overview.md) 」(R 付き Azure SQL Database 機械学習サービスと R (プレビュー)) の概要を参照してください。
 - Azure SQL データベース機械学習サービス (プレビュー) を R で照会する方法について、「[クイック スタート ガイド](sql-database-connect-query-r.md)」を参照してください。
-- シンプルな R スクリプトで開始すするには、「[Create and run simple R scripts in Azure SQL Database Machine Learning Services (preview)](sql-database-quickstart-r-create-script.md)」(Azure SQL データベース機械学習サービス (プレビュー)) を参照してください。
+- シンプルな R スクリプトから始めるには、「[Azure SQL Database Machine Learning Services (プレビュー) で簡単な R スクリプトを作成して実行する](sql-database-quickstart-r-create-script.md)」を参照してください。

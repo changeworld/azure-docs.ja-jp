@@ -16,11 +16,11 @@ ms.date: 01/11/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 3c9fe597957057dc61da5c2b1cf6f9216711764a
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54247845"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61419156"
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-vmware"></a>StorSimple Virtual Array をデプロイする - VMware でプロビジョニングする
 ![](./media/storsimple-virtual-array-deploy2-provision-vmware/vmware4.png)
@@ -105,7 +105,7 @@ VMware ESXi 5.0、5.5、6.0、または 6.5 を実行しているホスト シ�
 9. **Datastore Browser** の左側のウィンドウに新しいフォルダーが表示されます。
 
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image9.png)
-10. アップロード アイコン ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image10.png) をクリックして、**[Upload File]** を選択します。
+10. アップロード アイコン ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image10.png) をクリックして、 **[Upload File]** を選択します。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image11.png)
 11. ダウンロードした VMDK ファイルを参照して、ポイントします。 2 つのファイルがあります。 アップロードするファイルを選択します。
@@ -131,10 +131,10 @@ VMware ESXi 5.0、5.5、6.0、または 6.5 を実行しているホスト シ�
 18. **[仮想マシンのバージョン]** ページで **[仮想マシンバージョン: 8]** を選択します。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image19.png)
-19. **[Guest Operating System]** ページで、**[Guest Operating System]** に **[Windows]** を選択します。 **[Version]** には、ドロップダウンリストから **[Microsoft Windows Server 2012 (64-bit)]** を選択します。
+19. **[Guest Operating System]** ページで、 **[Guest Operating System]** に **[Windows]** を選択します。 **[Version]** には、ドロップダウンリストから **[Microsoft Windows Server 2012 (64-bit)]** を選択します。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image20.png)
-20. **[CPUs]** ページで、**[Number of virtual sockets]** と **[Number of cores per virtual socket]** を **[Total number of cores]** が 4 (またはそれ以上) になるように調整します。 **[次へ]** をクリックします。
+20. **[CPUs]** ページで、 **[Number of virtual sockets]** と **[Number of cores per virtual socket]** を **[Total number of cores]** が 4 (またはそれ以上) になるように調整します。 **[次へ]** をクリックします。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image21.png)
 21. **[Memory]** ページで RAM を 8 GB (またはそれ以上) に指定します。 **[次へ]** をクリックします。
@@ -152,7 +152,7 @@ VMware ESXi 5.0、5.5、6.0、または 6.5 を実行しているホスト シ�
 25. **[Select Existing Disk]** ページの **[Disk File Path]** で **[Browse]** をクリックします。 **[Browse Datastores]** ダイアログ ボックスが開きます。 VMDK をアップロードした場所に移動します。 最初にアップロードした 2 つのファイルがマージされたため、データストアには 1 つのファイルのみが表示されます。 ファイルを選択し、 **[OK]** をクリックします。 **[次へ]** をクリックします。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image26.png)
-26. **[Advanced Options]** ページで既定値をそのまま使用して、**[Next]** をクリックします。
+26. **[Advanced Options]** ページで既定値をそのまま使用して、 **[Next]** をクリックします。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image27.png)
 27. **[Ready to Complete]** ページで、新しい仮想マシンに関連するすべての設定を確認します。 **[Edit the virtual machine settings before completion]** をオンにします。 **[続行]** をクリックします。
@@ -161,7 +161,7 @@ VMware ESXi 5.0、5.5、6.0、または 6.5 を実行しているホスト シ�
 28. **[Virtual Machines Properties]** ページの **[Hardware]** タブでデバイス ハードウェアを見つけます。 **[New Hard Disk]** を選択します。 **[追加]** をクリックします。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image29.png)
-29. **[Add Hardware]** ウィンドウが表示されます。 **[Device Type]** ページの **[Choose the type of device you wish to add]** から **[Hard Disk]** を選択して、**[Next]** をクリックします。
+29. **[Add Hardware]** ウィンドウが表示されます。 **[Device Type]** ページの **[Choose the type of device you wish to add]** から **[Hard Disk]** を選択して、 **[Next]** をクリックします。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image30.png)
 30. **[Select a Disk]** ページで **[Create a new virtual disk]** を選択します。 **[次へ]** をクリックします。
@@ -192,7 +192,7 @@ VMware ESXi 5.0、5.5、6.0、または 6.5 を実行しているホスト シ�
 仮想デバイスを起動して接続するには、次の手順を実行します。
 
 #### <a name="to-start-the-virtual-device"></a>仮想デバイスを起動するには
-1. 仮想デバイスを起動します。 vSphere Configuration Manager の左側のウィンドウでデバイスを選択して右クリックし、コンテキスト メニューを表示します。 **[Power]**、**[Power on]** の順に選択します。 これで、仮想マシンの電源がオンになります。 vSphere client のページ下部の **[Recent Tasks]** ウィンドウで状態を確認できます。
+1. 仮想デバイスを起動します。 vSphere Configuration Manager の左側のウィンドウでデバイスを選択して右クリックし、コンテキスト メニューを表示します。 **[Power]** 、 **[Power on]** の順に選択します。 これで、仮想マシンの電源がオンになります。 vSphere client のページ下部の **[Recent Tasks]** ウィンドウで状態を確認できます。
 
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image37.png)
 2. 設定タスクの完了には数分かかります。 デバイスが起動したら **[Console]** タブに移動します。Ctrl + Alt + Del キーを押して、デバイスにログインします。 [Console] ウィンドウにカーソルをポイントして Ctrl + Alt + Insert キーを押すこともできます。 既定のユーザーは *StorSimpleAdmin* で、既定のパスワードは *Password1* です。

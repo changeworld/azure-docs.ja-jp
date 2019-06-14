@@ -11,11 +11,11 @@ ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 11/03/2017
 ms.openlocfilehash: 0d79bc167ea0416218a4d4822bcd6221699643ca
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57852886"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60347256"
 ---
 # <a name="manage-azure-machine-learning-studio-web-services-using-api-management"></a>API Management を使用して Azure Machine Learning Studio Web サービスを管理する
 ## <a name="overview"></a>概要
@@ -40,7 +40,7 @@ Azure Machine Learning Web サービスは、API Management インスタンス�
 3. 検索ボックスに「API management」と入力して "API Management" リソースを選択します。
 4. **Create** をクリックしてください。
 5. **[名前]** の値は、一意の URL を作成するために使用されます (この例では "demoazureml" を使用します)。
-6. サービス インスタンスの **[サブスクリプション]**、**[リソース グループ]**、**[場所]** を選択します。
+6. サービス インスタンスの **[サブスクリプション]** 、 **[リソース グループ]** 、 **[場所]** を選択します。
 7. **[組織名]** の値を指定します (この例では "demoazureml" を使用します)。
 8. **[管理者のメール アドレス]** を入力します。API Management システムからの通知には、このメール アドレスが使用されます。
 9. **Create** をクリックしてください。
@@ -71,11 +71,11 @@ API を作成するには、次の手順に従います。
 
 ## <a name="add-the-operations"></a>操作の追加
 
-操作を API に追加して構成するには、パブリッシャー ポータルを使用します。 発行者ポータルにアクセスするには、API Management サービスの Azure Portal で **[パブリッシャー ポータル]** をクリックし、**[API]**、**[操作]** の順に選択して、**[操作の追加]** をクリックします。
+操作を API に追加して構成するには、パブリッシャー ポータルを使用します。 発行者ポータルにアクセスするには、API Management サービスの Azure Portal で **[パブリッシャー ポータル]** をクリックし、 **[API]** 、 **[操作]** の順に選択して、 **[操作の追加]** をクリックします。
 
 ![add-operation](./media/manage-web-service-endpoints-using-api-management/add-an-operation.png)
 
-**[新しい操作]** ウィンドウが表示され、**[署名]** タブが既定で選択されます。
+**[新しい操作]** ウィンドウが表示され、 **[署名]** タブが既定で選択されます。
 
 ## <a name="add-rrs-operation"></a>RRS 操作の追加
 まず、AzureML RRS サービスの操作を作成します。
@@ -86,7 +86,7 @@ API を作成するには、次の手順に従います。
 
    ![add-rrs-operation-signature](./media/manage-web-service-endpoints-using-api-management/add-rrs-operation-signature.png)
 
-4. 左側の **[応答]** > **[追加]** をクリックし、**[200 OK]** を選択します。
+4. 左側の **[応答]**  >  **[追加]** をクリックし、 **[200 OK]** を選択します。
 5. **[保存]** を選択してこの操作を保存します。
 
    ![add-rrs-operation-response](./media/manage-web-service-endpoints-using-api-management/add-rrs-operation-response.png)
@@ -102,7 +102,7 @@ API を作成するには、次の手順に従います。
 2. **[HTTP 動詞]** に **[POST]** を選択します。
 3. **[URL テンプレート]** に「`/workspaces/{workspace}/services/{service}/jobs?api-version={apiversion}`」と入力します。
 4. **[表示名]** を入力します (この例では "BES Submit" を使用します)。
-5. 左側の **[応答]** > **[追加]** をクリックし、**[200 OK]** を選択します。
+5. 左側の **[応答]**  >  **[追加]** をクリックし、 **[200 OK]** を選択します。
 6. **[Save]** をクリックします。
 
 ### <a name="start-a-batch-execution-job"></a>バッチ実行ジョブを送信する
@@ -111,7 +111,7 @@ API を作成するには、次の手順に従います。
 2. **[HTTP 動詞]** に **[POST]** を選択します。
 3. **[HTTP 動詞]** に「`/workspaces/{workspace}/services/{service}/jobs/{jobid}/start?api-version={apiversion}`」と入力します。
 4. **[表示名]** を入力します (この例では "BES Start" を使用します)。
-6. 左側の **[応答]** > **[追加]** をクリックし、**[200 OK]** を選択します。
+6. 左側の **[応答]**  >  **[追加]** をクリックし、 **[200 OK]** を選択します。
 7. **[Save]** をクリックします。
 
 ### <a name="get-the-status-or-result-of-a-batch-execution-job"></a>バッチ実行ジョブの状態または結果を取得する
@@ -120,7 +120,7 @@ API を作成するには、次の手順に従います。
 2. **[HTTP 動詞]** に **[GET]** を選択します。
 3. **[URL テンプレート]** に「`/workspaces/{workspace}/services/{service}/jobs/{jobid}?api-version={apiversion}`」と入力します。
 4. **[表示名]** を入力します (この例では "BES Status" を使用します)。
-6. 左側の **[応答]** > **[追加]** をクリックし、**[200 OK]** を選択します。
+6. 左側の **[応答]**  >  **[追加]** をクリックし、 **[200 OK]** を選択します。
 7. **[Save]** をクリックします。
 
 ### <a name="delete-a-batch-execution-job"></a>バッチ実行ジョブの削除
@@ -129,7 +129,7 @@ API を作成するには、次の手順に従います。
 2. **[HTTP 動詞]** に **[削除]** を選択します。
 3. **[URL テンプレート]** に「`/workspaces/{workspace}/services/{service}/jobs/{jobid}?api-version={apiversion}`」と入力します。
 4. **[表示名]** を入力します (この例では "BES Delete" を使用します)。
-5. 左側の **[応答]** > **[追加]** をクリックし、**[200 OK]** を選択します。
+5. 左側の **[応答]**  >  **[追加]** をクリックし、 **[200 OK]** を選択します。
 6. **[Save]** をクリックします。
 
 ## <a name="call-an-operation-from-the-developer-portal"></a>開発者ポータルから操作を呼び出す
@@ -140,7 +140,7 @@ API を作成するには、次の手順に従います。
 
    ![developer-portal](./media/manage-web-service-endpoints-using-api-management/developer-portal.png)
 
-2. 上部のメニューで **[API]** をクリックし、**[AzureML Demo API]** をクリックして、利用できる操作を表示します。
+2. 上部のメニューで **[API]** をクリックし、 **[AzureML Demo API]** をクリックして、利用できる操作を表示します。
 
    ![demoazureml-api](./media/manage-web-service-endpoints-using-api-management/demoazureml-api.png)
 
@@ -148,9 +148,9 @@ API を作成するには、次の手順に従います。
 
    ![try-it](./media/manage-web-service-endpoints-using-api-management/try-it.png)
 
-4. **[要求パラメーター]** の **[ワークスペース]** と **[サービス]** を入力し、**[apiversion]** に「2.0」を、**[詳細]** に「true」を入力します。 AzureML Web サービスのダッシュボードに**ワークスペース**と**サービス**が表示されます (付録 A の「**Web サービスをテストする**」をご覧ください)。
+4. **[要求パラメーター]** の **[ワークスペース]** と **[サービス]** を入力し、 **[apiversion]** に「2.0」を、 **[詳細]** に「true」を入力します。 AzureML Web サービスのダッシュボードに**ワークスペース**と**サービス**が表示されます (付録 A の「**Web サービスをテストする**」をご覧ください)。
 
-   **[要求ヘッダー]** で **[ヘッダーの追加]** をクリックし、「Content-Type」と「application/json」を入力します。 **[ヘッダーの追加]** をもう一度クリックし、「Authorization」と「Bearer *\<実際のサービス API キー\>*」を入力します。 AzureML Web サービスのダッシュボードに API キーが表示されます (付録 A の「**Web サービスをテストする**」をご覧ください)。
+   **[要求ヘッダー]** で **[ヘッダーの追加]** をクリックし、「Content-Type」と「application/json」を入力します。 **[ヘッダーの追加]** をもう一度クリックし、「Authorization」と「Bearer *\<実際のサービス API キー\>* 」を入力します。 AzureML Web サービスのダッシュボードに API キーが表示されます (付録 A の「**Web サービスをテストする**」をご覧ください)。
 
    **[要求本文]** に「`{"Inputs": {"input1": {"ColumnNames": ["Col2"], "Values": [["This is a good day"]]}}, "GlobalParameters": {}}`」と入力します。
 
@@ -166,7 +166,7 @@ API を作成するには、次の手順に従います。
 
 ## <a name="appendix-a---creating-and-testing-a-simple-azureml-web-service"></a>付録 A - シンプルな AzureML Web サービスを作成しテストする
 ### <a name="creating-the-experiment"></a>実験の作成
-シンプルな AzureML 実験を作成し、Web サービスとしてデプロイする手順を次に示します。 Web サービスは、任意のテキストの列を入力として取得し、整数として表される機能のセットを返します。 例: 
+シンプルな AzureML 実験を作成し、Web サービスとしてデプロイする手順を次に示します。 Web サービスは、任意のテキストの列を入力として取得し、整数として表される機能のセットを返します。 例:
 
 | Text | ハッシュされたテキスト |
 | --- | --- |
@@ -176,11 +176,11 @@ API を作成するには、次の手順に従います。
 
 ![search-experiment-templates](./media/manage-web-service-endpoints-using-api-management/search-experiment-templates.png)
 
-名前を **SimpleFeatureHashingExperiment**に変更します。 **[保存されたデータセット]** を展開し、**[Amazon の書評]** を実験にドラッグします。
+名前を **SimpleFeatureHashingExperiment**に変更します。 **[保存されたデータセット]** を展開し、 **[Amazon の書評]** を実験にドラッグします。
 
 ![simple-feature-hashing-experiment](./media/manage-web-service-endpoints-using-api-management/simple-feature-hashing-experiment.png)
 
-**[データ操作]** と **[操作]** を展開し、**[データセット内の列の選択]** を実験にドラッグします。 **[Amazon の書評]** を **[データセット内の列の選択]** に接続します。
+**[データ操作]** と **[操作]** を展開し、 **[データセット内の列の選択]** を実験にドラッグします。 **[Amazon の書評]** を **[データセット内の列の選択]** に接続します。
 
 ![書評データセット モジュールをプロジェクト列モジュールに接続する](./media/manage-web-service-endpoints-using-api-management/project-columns.png)
 
@@ -188,7 +188,7 @@ API を作成するには、次の手順に従います。
 
 ![列名を使用して列を選択する](./media/manage-web-service-endpoints-using-api-management/select-columns.png)
 
-**[テキスト分析]** を展開し、**[特徴ハッシュ]** を実験にドラッグします。 **[データセット内の列の選択]** を **[特徴ハッシュ]** に接続します。
+**[テキスト分析]** を展開し、 **[特徴ハッシュ]** を実験にドラッグします。 **[データセット内の列の選択]** を **[特徴ハッシュ]** に接続します。
 
 ![connect-project-columns](./media/manage-web-service-endpoints-using-api-management/connect-project-columns.png)
 
@@ -201,7 +201,7 @@ API を作成するには、次の手順に従います。
 ![[実行]](./media/manage-web-service-endpoints-using-api-management/run.png)
 
 ### <a name="create-a-web-service"></a>Web サービスの作成
-Web サービスを作成します。 **[Web サービス]** を展開し、**[入力]** を実験にドラッグします。 **[入力]** を **[特徴ハッシュ]** に接続します。 **[出力]** を実験にドラッグします。 **[出力]** を **[特徴ハッシュ]** に接続します。
+Web サービスを作成します。 **[Web サービス]** を展開し、 **[入力]** を実験にドラッグします。 **[入力]** を **[特徴ハッシュ]** に接続します。 **[出力]** を実験にドラッグします。 **[出力]** を **[特徴ハッシュ]** に接続します。
 
 ![output-to-feature-hashing](./media/manage-web-service-endpoints-using-api-management/output-to-feature-hashing.png)
 
@@ -273,7 +273,7 @@ RRS エンドポイントを簡単にテストするには、Web サービス �
 #### <a name="test-bes-endpoint"></a>BES エンドポイントのテスト
 ダッシュボードの **[バッチ実行]** をクリックして、最下部までスクロールします。 C# の場合、Python、R のサンプル コードが表示されます。また、ジョブを送信する、ジョブを送信する、ジョブを開始する、ジョブのステータスか結果を取得する、ジョブを削除するなどの BES 要求の構文も表示されます。
 
-このガイドでは、Python の機能例について説明します。 実験の **workspace**、**service**、**api_key** を使用して変更する必要があります。 また、**ストレージ アカウント名**、**ストレージ アカウント キー**、**ストレージ コンテナー名**を変更するがあります。 最後に、**[入力ファイル]** の場所と **[出力ファイル]** の場所を変更する必要があります。
+このガイドでは、Python の機能例について説明します。 実験の **workspace**、**service**、**api_key** を使用して変更する必要があります。 また、**ストレージ アカウント名**、**ストレージ アカウント キー**、**ストレージ コンテナー名**を変更するがあります。 最後に、 **[入力ファイル]** の場所と **[出力ファイル]** の場所を変更する必要があります。
 
     import urllib2
     import json

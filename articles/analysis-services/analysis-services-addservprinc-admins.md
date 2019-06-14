@@ -9,11 +9,11 @@ ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 701be795ca217c4a2dc5a7dbaa3a3717d16c85bc
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56730224"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61024611"
 ---
 # <a name="add-a-service-principal-to-the-server-administrator-role"></a>サーバー管理者ロールへのサービス プリンシパルの追加 
 
@@ -31,12 +31,12 @@ ms.locfileid: "56730224"
 ## <a name="add-service-principal-to-server-administrators-role"></a>サーバー管理者ロールへのサービス プリンシパルの追加
 
 1. SSMS で、目的の Azure AS サーバーに接続します。
-2. **[サーバーのプロパティ]** > **[セキュリティ]** で、**[追加]** をクリックします。
-3. **[ユーザーまたはグループを選択します]** で、登録されているアプリを名前で検索し、選択した後、**[追加]** をクリックします。
+2. **[サーバーのプロパティ]**  >  **[セキュリティ]** で、 **[追加]** をクリックします。
+3. **[ユーザーまたはグループを選択します]** で、登録されているアプリを名前で検索し、選択した後、 **[追加]** をクリックします。
 
     ![サービス プリンシパル アカウントの検索](./media/analysis-services-addservprinc-admins/aas-add-sp-ssms-picker.png)
 
-4. サービス プリンシパルのアカウント ID を確認し、**[OK]** をクリックします。
+4. サービス プリンシパルのアカウント ID を確認し、 **[OK]** をクリックします。
     
     ![サービス プリンシパル アカウントの検索](./media/analysis-services-addservprinc-admins/aas-add-sp-ssms-add.png)
 

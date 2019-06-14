@@ -16,11 +16,11 @@ ms.date: 05/24/2018
 ms.author: lahugh
 ms.custom: ''
 ms.openlocfilehash: 1e9d039769e7fbcb9c2b7285aa727acd7322bcdf
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58103334"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62127830"
 ---
 # <a name="use-an-azure-file-share-with-a-batch-pool"></a>Batch プールと共に Azure ファイル共有を使用する
 
@@ -51,8 +51,8 @@ Batch では、タスクが Windows ノード上で実行されるたびに共�
 
 たとえば、各タスクのコマンド ラインの一部としてファイル共有をマウントするための `net use` コマンドを含めます。 ファイル共有をマウントするには、次の資格情報が必要になります。
 
-* **[ユーザー名]**: AZURE\\\<storageaccountname\> (たとえば、AZURE\\*mystorageaccountname*)
-* **パスワード**: <StorageAccountKeyWhichEnds in==> (たとえば、*XXXXXXXXXXXXXXXXXXXXX==*)
+* **[ユーザー名]** : AZURE\\\<storageaccountname\> (たとえば、AZURE\\*mystorageaccountname*)
+* **パスワード**: <StorageAccountKeyWhichEnds in==> (たとえば、*XXXXXXXXXXXXXXXXXXXXX==* )
 
 次のコマンドは、ストレージ アカウント *mystorageaccountname* にあるファイル共有 *myfileshare* を *S:* ドライブとしてマウントします。
 
@@ -120,7 +120,7 @@ tasks.Add(task);
 
 Azure ファイル共有は、[CIFS カーネル クライアント](https://wiki.samba.org/index.php/LinuxCIFS)を使用して Linux ディストリビューションにマウントできます。 次の例は、Ubuntu 16.04 LTS 計算ノードのプール上でファイル共有をマウントする方法を示しています。 異なる Linux ディストリビューションを使用する場合、一般的な手順はほぼ同じですが、ディストリビューションに適したパッケージ マネージャーを使用してください。 詳細およびその他の例については、「[Linux で Azure Files を使用する](../storage/files/storage-how-to-use-files-linux.md)」を参照してください。
 
-最初に、管理者ユーザー ID で、`cifs-utils` パッケージをインストールして、ローカル ファイルシステムにマウント ポイント (たとえば、*/mnt/MyAzureFileShare*) を作成します。 マウント ポイント用のフォルダーはファイル システム上のどこにでも作成できますが、`/mnt` フォルダー下にこれを作成するのが一般的な規則です。 必ず、`/mnt` (Ubuntu 上) または `/mnt/resource` (他のディストリビューション上) に直接、マウント ポイントを作成しないようにしてください。
+最初に、管理者ユーザー ID で、`cifs-utils` パッケージをインストールして、ローカル ファイルシステムにマウント ポイント (たとえば、 */mnt/MyAzureFileShare*) を作成します。 マウント ポイント用のフォルダーはファイル システム上のどこにでも作成できますが、`/mnt` フォルダー下にこれを作成するのが一般的な規則です。 必ず、`/mnt` (Ubuntu 上) または `/mnt/resource` (他のディストリビューション上) に直接、マウント ポイントを作成しないようにしてください。
 
 ```
 apt-get update && apt-get install cifs-utils && sudo mkdir -p /mnt/MyAzureFileShare
@@ -129,7 +129,7 @@ apt-get update && apt-get install cifs-utils && sudo mkdir -p /mnt/MyAzureFileSh
 次に、以下の資格情報を指定して、`mount` コマンドを実行してファイル共有をマウントします。
 
 * **ユーザー名**: \<storageaccountname\> (たとえば、*mystorageaccountname*)
-* **パスワード**: <StorageAccountKeyWhichEnds in==> (たとえば、*XXXXXXXXXXXXXXXXXXXXX==*)
+* **パスワード**: <StorageAccountKeyWhichEnds in==> (たとえば、*XXXXXXXXXXXXXXXXXXXXX==* )
 
 次のコマンドは、ストレージ アカウント *mystorageaccountname* にあるファイル共有 *myfileshare* を */mnt/MyAzureFileShare* でマウントします。 
 

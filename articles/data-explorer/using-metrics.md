@@ -8,11 +8,11 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.openlocfilehash: a9c9f4d827d21c374bebba9d39e33b0bcad8a83e
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59050617"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60826800"
 ---
 # <a name="monitor-azure-data-explorer-performance-health-and-usage-with-metrics"></a>メトリックを使用した Azure Data Explorer のパフォーマンス、正常性、および使用状況の監視
 
@@ -30,7 +30,7 @@ Azure Data Explorer は、アプリケーション、Web サイト、IoT デバ�
 
 ## <a name="using-metrics"></a>メトリックの使用
 
-Azure Data Explorer クラスターで、**[メトリック]** を選択して [メトリック] ウィンドウを開き、クラスターの分析を開始します。
+Azure Data Explorer クラスターで、 **[メトリック]** を選択して [メトリック] ウィンドウを開き、クラスターの分析を開始します。
 
 ![メトリックを選択する](media/using-metrics/select-metrics.png)
 
@@ -46,7 +46,7 @@ Azure Data Explorer クラスターで、**[メトリック]** を選択して [
     | CPU | Percent | Avg、Max、Min | クラスター内のマシンで現在使用中の割り当てられたコンピューティング リソースの割合。 80% 以下の平均 CPU 使用率が、クラスターにとって持続可能です。 CPU の最大値は 100% であり、これは、データを処理する計算リソースがそれ以上ないことを示します。 クラスターのパフォーマンスが良くない場合は、特定の CPU がブロックされていないか判別するために、CPU の最大値を確認してください。 |
     | (Event Hubs の) 処理されたイベント | Count | Max、Min、Sum | イベント ハブから読み取られ、クラスターによって処理されたイベントの数。 イベントは、クラスター エンジンによって拒否されたイベントと受け入れられたイベントに分類されます。 |
     | インジェストの待ち時間 | Seconds | Avg、Max、Min | クラスターでデータが受信された時点からクエリー用に準備できるまでの、取り込まれたデータの待ち時間。 インジェストの待ち時間の長さは、インジェストのシナリオに応じて異なります。 |
-    | インジェストの結果 | Count | Count | 失敗および成功したインジェスト操作の合計数。 **[Apply Splitting]\(分割の適用\)** を使用して、成功および失敗した結果のバケットを作成し、ディメンションを分析します (**[値]** > **[状態]**)。|
+    | インジェストの結果 | Count | Count | 失敗および成功したインジェスト操作の合計数。 **[Apply Splitting]\(分割の適用\)** を使用して、成功および失敗した結果のバケットを作成し、ディメンションを分析します ( **[値]**  >  **[状態]** )。|
     | インジェストの使用率 | Percent | Avg、Max、Min | 割り当てられた合計リソースからのデータのインジェストに使用された実際のリソースと、インジェストを実行するために容量ポリシーに割り当てられた合計リソースの間の比率。 既定の容量ポリシーでは、同時実行のインジェスト操作は 512 以下、またはインジェストに使用されるクラスター リソースは 75% 以下です。 80% 以下の平均インジェスト使用率が、クラスターにとって持続可能な状態です。 インジェスト使用率の最大値は 100% であり、これは、すべてのクラスター インジェスト機能が使用され、インジェストがキューに入れられる結果となる可能性を示します。 |
     | インジェストの量 (MB 単位) | Count | Max、Min、Sum | 圧縮前にクラスターにインジェストされたデータの合計サイズ (MB 単位)。 |
     | キープ アライブ | Count | Avg | クラスターの応答性を追跡します。 応答性の高いクラスターは 1 の値を返し、ブロックまたは切断されたクラスターは 0 を返します。 |
@@ -55,12 +55,12 @@ Azure Data Explorer クラスターで、**[メトリック]** を選択して [
 
     [サポートされる Azure Data Explorer クラスター メトリック](/azure/azure-monitor/platform/metrics-supported#microsoftkustoclusters)に関する追加情報
 
-2. 同じグラフにプロットされた複数のメトリックを表示する場合は、**[メトリックの追加]** ボタンを選択します。
-3. 1 つのビューに複数のグラフを表示する場合は、**[+ New chart]\(+ 新規グラフ\)** ボタンを選択します。
+2. 同じグラフにプロットされた複数のメトリックを表示する場合は、 **[メトリックの追加]** ボタンを選択します。
+3. 1 つのビューに複数のグラフを表示する場合は、 **[+ New chart]\(+ 新規グラフ\)** ボタンを選択します。
 4. 時間範囲を変更する場合は、時刻の選択ツールを使用します (既定: 過去 24 時間)。
-5. ディメンションを持つメトリックには、[**[フィルターの追加]** および **[Apply Splitting]\(分割の適用\)**](/azure/azure-monitor/platform/metrics-getting-started#apply-dimension-filters-and-splitting) を使用します。
-6. グラフ構成をダッシュボードに追加して、再度表示できるようにする場合は、**[ダッシュボードにピン留めする]** を選択します。
-7. 設定した条件を使用してメトリックを視覚化するには、**[新しいアラート ルール]** を設定します。 新しいアラート ルールにはターゲット リソース、メトリック、分割、およびグラフからのフィルター ディメンションが含まれます。 これらの設定は、[アラート ルールの作成ウィンドウ](/azure/azure-monitor/platform/metrics-charts#create-alert-rules)で変更します。
+5. ディメンションを持つメトリックには、[ **[フィルターの追加]** および **[Apply Splitting]\(分割の適用\)** ](/azure/azure-monitor/platform/metrics-getting-started#apply-dimension-filters-and-splitting) を使用します。
+6. グラフ構成をダッシュボードに追加して、再度表示できるようにする場合は、 **[ダッシュボードにピン留めする]** を選択します。
+7. 設定した条件を使用してメトリックを視覚化するには、 **[新しいアラート ルール]** を設定します。 新しいアラート ルールにはターゲット リソース、メトリック、分割、およびグラフからのフィルター ディメンションが含まれます。 これらの設定は、[アラート ルールの作成ウィンドウ](/azure/azure-monitor/platform/metrics-charts#create-alert-rules)で変更します。
 
 [メトリックス エクスプローラー](/azure/azure-monitor/platform/metrics-getting-started)の使用に関する追加情報。
 

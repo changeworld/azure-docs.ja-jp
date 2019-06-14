@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 09/12/2018
 ms.author: qianw211
 ms.openlocfilehash: 981d9427dc8407c7300f01c941e39ba9723d53a8
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64938084"
 ---
 # <a name="enable-an-appsource-and-marketplace-listing-by-using-azure-active-directory"></a>Azure Active Directory を使用して AppSource と Marketplace のリストを有効にする
@@ -35,12 +35,12 @@ AppSource と Azure Marketplace 用のさまざまな[オプションとオフ�
 | **オファリング タイプ**    | **Azure AD の SSO が必要か?**  |  |   |  |
 | :------------------- | :-------------------|:-------------------|:-------------------|:-------------------|
 |  | 連絡する | 試用版 | 体験版 | トランザクション |
-| 仮想マシン | 該当なし | いいえ  | いいえ  | いいえ  |
+| 仮想マシン | 該当なし | いいえ | いいえ | いいえ |
 | Azure アプリ (ソリューション テンプレート)  | 該当なし | 該当なし | 該当なし | 該当なし |
-| マネージド アプリ  | 該当なし | 該当なし | 該当なし | いいえ  |
-| SaaS  | いいえ  | 可能  | はい | はい |
-| Containers  | 該当なし | 該当なし | 該当なし | いいえ  |
-| コンサルティング サービス  | いいえ  | 該当なし | 該当なし | 該当なし |
+| マネージド アプリ  | 該当なし | 該当なし | 該当なし | いいえ |
+| SaaS  | いいえ | 可能 | はい | はい |
+| Containers  | 該当なし | 該当なし | 該当なし | いいえ |
+| コンサルティング サービス  | いいえ | 該当なし | 該当なし | 該当なし |
 
 SaaS 技術要件に関する詳細については、「[SaaS アプリケーションのオファー発行ガイド](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide)」を参照してください。
 

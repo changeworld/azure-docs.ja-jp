@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 11/08/2017
 ms.author: alkohli
 ms.openlocfilehash: df7866d4f87f55523e8139232e48d81cb17c80e4
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57763165"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62117335"
 ---
 # <a name="deploy-and-manage-a-storsimple-cloud-appliance-in-azure-update-3-and-later"></a>Azure での StorSimple Cloud Appliance のデプロイと管理 (Update 3 以降)
 
@@ -229,7 +229,7 @@ StorSimple Cloud Appliance の作成と構成が終了したので、操作を�
 
 詳しい手順については、「 [StorSimple デバイスの非アクティブ化と削除](storsimple-8000-deactivate-and-delete-device.md)」をご覧ください。
 
-クラウド アプライアンスは、StorSimple デバイス マネージャー サービス ブレードで非アクティブと表示されたら、**[デバイス]** ブレードのデバイス一覧から削除できます。
+クラウド アプライアンスは、StorSimple デバイス マネージャー サービス ブレードで非アクティブと表示されたら、 **[デバイス]** ブレードのデバイス一覧から削除できます。
 
 ### <a name="start-stop-and-restart-a-cloud-appliance"></a>クラウド アプライアンスの開始、停止、および再起動
 StorSimple 物理デバイスとは異なり、StorSimple Cloud Appliance には電源をオンまたはオフにするボタンはありません。 ただし、クラウド アプライアンスを停止して再起動する必要がある場合があります。

@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: spelluru
 ms.openlocfilehash: 6faf32232c42f863bff52fdfb3c0714aee8e9b88
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58190485"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60702414"
 ---
 # <a name="create-an-environment-with-multiple-vms-inside-a-template-vm-of-a-classroom-lab"></a>クラスルーム ラボのテンプレート VM 内に複数の VM を備えた環境を作成する
 現在、Azure Lab Services では、ラボ内に 1 つのテンプレート仮想マシンを設定し、各ユーザーが 1 つのコピーを使用できるようにすることができます。 ただし、ファイアウォールやサーバーの設定方法について IT クラスに講義する教授であれば、必要に応じて、複数の仮想マシンがネットワークを介して相互に通信できる環境を各学生に用意します。
@@ -63,7 +63,7 @@ ms.locfileid: "58190485"
 
         > [!IMPORTANT]
         > ユーザー名とパスワードはメモしておいてください。 これらは再表示されません。
-    3. **作成**を選択します。 
+    3. **作成** を選択します。 
 
         ![資格情報の設定](../media/tutorial-setup-classroom-lab/set-credentials.png)
 6. **[Configure template**]\(テンプレートの構成\) ページで、ラボの作成プロセスの状態を確認します。 ラボ内のテンプレートの作成には、最大 20 分がかかります。 
@@ -72,7 +72,7 @@ ms.locfileid: "58190485"
 7. テンプレートの構成が完了すると、次のページが表示されます。 
 
     ![完了後の [Configure template]\(テンプレートの構成\) ページ](../media/tutorial-setup-classroom-lab/configure-template-after-complete.png)
-8. **[Configure template]\(テンプレートの構成\)** ページで、**[接続]** を選択してテンプレート VM に接続し、入れ子になった仮想化を構成します。 また、このウィザードの手順を完了した後で設定することもできます。 
+8. **[Configure template]\(テンプレートの構成\)** ページで、 **[接続]** を選択してテンプレート VM に接続し、入れ子になった仮想化を構成します。 また、このウィザードの手順を完了した後で設定することもできます。 
 9. テンプレート仮想マシン内で、入れ子になった仮想化を設定し、複数の仮想マシンがある仮想ネットワークを構成します。 詳細な手順については、「[Azure VM で入れ子になった仮想化を有効にする方法](../../virtual-machines/windows/nested-virtualization.md)」を参照してください。 手順の概要を次に示します。 
     1. テンプレート仮想マシンで Hyper-V 機能を有効にします。
     2. 入れ子になった仮想マシンにインターネット接続を使用して内部仮想ネットワークを設定します
@@ -80,11 +80,11 @@ ms.locfileid: "58190485"
     4. IP アドレスを仮想マシンに割り当てます
 10. [Configure template]\(テンプレートの構成\) ページの **[次へ]** を選択します。 
 11. **[Publish the template]** \(テンプレートの発行\) ページで、次の操作を行います。 
-    1. テンプレートをすぐに発行するには、**[Publish]\(発行\)** を選択します。  
+    1. テンプレートをすぐに発行するには、 **[Publish]\(発行\)** を選択します。  
 
         > [!WARNING]
         > 一度発行すると、再発行することはできません。 
-    2. 後で発行する場合は、**[後のために保存]** を選択します。 ウィザードが完了した後に、テンプレート VM を発行することができます。 ウィザード完了後の構成および発行方法の詳細については、「[クラスルーム ラボの管理](how-to-manage-classroom-labs.md)」記事の「[テンプレートを発行する](how-to-create-manage-template.md#publish-the-template-vm)」セクションを参照してください。
+    2. 後で発行する場合は、 **[後のために保存]** を選択します。 ウィザードが完了した後に、テンプレート VM を発行することができます。 ウィザード完了後の構成および発行方法の詳細については、「[クラスルーム ラボの管理](how-to-manage-classroom-labs.md)」記事の「[テンプレートを発行する](how-to-create-manage-template.md#publish-the-template-vm)」セクションを参照してください。
 
         ![テンプレートを発行する](../media/how-to-enable-multi-vm-environment/publish-template-page.png)
 11. テンプレートの**発行に関する進行状況**が表示されます。 このプロセスには、最大で 1 時間かかることがあります。 

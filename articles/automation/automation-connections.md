@@ -10,11 +10,11 @@ ms.date: 01/16/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: e7dccc4a396d4cf8af1062057c4c3ce6efe978ed
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58918027"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61074251"
 ---
 # <a name="connection-assets-in-azure-automation"></a>Azure Automation での接続資産
 
@@ -72,8 +72,8 @@ Windows PowerShell で Automation 接続を作成および管理するには、�
 
 ### <a name="to-create-a-new-connection-with-the-azure-portal"></a>Azure ポータルで新しい接続を作成するには
 
-1. Automation アカウントから、**[資産]** 部分をクリックして **[資産]** ブレードを開きます。
-2. **[接続]** 部分をクリックして、**[接続]** ブレードを開きます。
+1. Automation アカウントから、 **[資産]** 部分をクリックして **[資産]** ブレードを開きます。
+2. **[接続]** 部分をクリックして、 **[接続]** ブレードを開きます。
 3. ブレード上部の **[接続の追加]** をクリックします。
 4. **[種類]** ドロップダウンで、作成する接続の種類を選択します。 フォームにその特定の種類のプロパティが表示されます。
 5. フォームに入力し、 **[作成]** をクリックして新しい接続を保存します。

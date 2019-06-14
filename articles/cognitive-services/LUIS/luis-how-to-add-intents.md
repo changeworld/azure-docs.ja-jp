@@ -12,10 +12,10 @@ ms.date: 04/01/2019
 ms.author: diberry
 ms.service: cognitive-services
 ms.openlocfilehash: 0c42ab44ba317888b982ba7c72f78be4ca73d93c
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65148160"
 ---
 # <a name="add-intents-to-determine-user-intention-of-utterances"></a>ユーザーの発話意図を判断する意図を追加する
@@ -26,9 +26,9 @@ ms.locfileid: "65148160"
 
 ## <a name="add-intent"></a>意図を追加する
 
-1. **[Intents]\(意図\)** ページで、**[Create new intent]\(意図の新規作成\)** を選びます。
+1. **[Intents]\(意図\)** ページで、 **[Create new intent]\(意図の新規作成\)** を選びます。
 
-1. **[Create new intent]\(意図の新規作成\)** ダイアログ ボックスで、意図の名前 (`GetEmployeeInformation`) を入力し、**[完了]** をクリックします。
+1. **[Create new intent]\(意図の新規作成\)** ダイアログ ボックスで、意図の名前 (`GetEmployeeInformation`) を入力し、 **[完了]** をクリックします。
 
     ![意図の追加](./media/luis-how-to-add-intents/Addintent-dialogbox.png)
 
@@ -48,7 +48,7 @@ ms.locfileid: "65148160"
 
 意図に含まれている発話の例では、発話の例が現在含まれている意図とトレーニング中に決定された予測意図の間に意図予測のエラーが存在することがあります。 
 
-発話予測のエラーを見つけて修正するには、**[フィルター]** オプションの [Incorrect] (正しくない) および [Unclear] (不明) の **[評価]** オプションを **[詳細ビュー]** の **[表示]** オプションと組み合わせて使用します。 
+発話予測のエラーを見つけて修正するには、 **[フィルター]** オプションの [Incorrect] (正しくない) および [Unclear] (不明) の **[評価]** オプションを **[詳細ビュー]** の **[表示]** オプションと組み合わせて使用します。 
 
 ![発話予測のエラーを見つけて修正するには、[フィルター] オプションを使用します。](./media/luis-how-to-add-intents/find-intent-prediction-errors.png)
 

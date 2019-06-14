@@ -16,11 +16,11 @@ ms.date: 11/30/2018
 ms.author: cephalin;dariac
 ms.custom: seodec18
 ms.openlocfilehash: db8445ec2b3dd8bdefa661d7f186e720c6fada09
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57858879"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62130111"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>FTP/S を使用した Azure App Service へのアプリのデプロイ
 
@@ -32,17 +32,17 @@ ms.locfileid: "57858879"
 
 [Azure Portal](https://portal.azure.com) でアプリの[リソース ページ](../azure-resource-manager/manage-resources-portal.md#manage-resources)を開きます。
 
-FTP ダッシュボードを開くには、**[デプロイ センター]** > **[FTP]** > **[ダッシュボード]** の順にクリックします。
+FTP ダッシュボードを開くには、 **[デプロイ センター]**  >  **[FTP]**  >  **[ダッシュボード]** の順にクリックします。
 
 ![FTP ダッシュボードを開く](./media/app-service-deploy-ftp/open-dashboard.png)
 
 ## <a name="get-ftp-connection-information"></a>FTP の接続情報を取得する
 
-FTP ダッシュボードで、**[コピー]** をクリックして、FTPS エンドポイントとアプリの資格情報をコピーします。
+FTP ダッシュボードで、 **[コピー]** をクリックして、FTPS エンドポイントとアプリの資格情報をコピーします。
 
 ![FTP 情報のコピー](./media/app-service-deploy-ftp/ftp-dashboard.png)
 
-アプリごとに一意であるため、**アプリの資格情報**を使用してデプロイすることをお勧めします。 ただし、**[ユーザーの資格情報]** をクリックした場合は、サブスクリプション内のすべての App Service アプリへの FTP/S のログインで使用できるユーザー レベルの資格情報を設定できます。
+アプリごとに一意であるため、**アプリの資格情報**を使用してデプロイすることをお勧めします。 ただし、 **[ユーザーの資格情報]** をクリックした場合は、サブスクリプション内のすべての App Service アプリへの FTP/S のログインで使用できるユーザー レベルの資格情報を設定できます。
 
 > [!NOTE]
 > ユーザーレベルの資格情報を使用した FTP または FTPS エンドポイントの認証には、次の形式のユーザー名が必要です。 
@@ -55,7 +55,7 @@ FTP ダッシュボードで、**[コピー]** をクリックして、FTPS エ�
 ## <a name="deploy-files-to-azure"></a>ファイルを Azure にデプロイする
 
 1. FTP クライアント ([Visual Studio](https://www.visualstudio.com/vs/community/)、[Cyberduck](https://cyberduck.io/)、[WinSCP](https://winscp.net/index.php) など) から、収集した接続情報を使用してアプリに接続します。
-2. ファイルとそれぞれのディレクトリ構造を、Azure の [**/site/wwwroot** ディレクトリ](https://github.com/projectkudu/kudu/wiki/File-structure-on-azure) (WebJobs の場合は **/site/wwwroot/App_Data/Jobs/** ディレクトリ) にコピーします。
+2. ファイルとそれぞれのディレクトリ構造を、Azure の [ **/site/wwwroot** ディレクトリ](https://github.com/projectkudu/kudu/wiki/File-structure-on-azure) (WebJobs の場合は **/site/wwwroot/App_Data/Jobs/** ディレクトリ) にコピーします。
 3. アプリの URL を参照して、アプリが正しく動作していることを確認します。 
 
 > [!NOTE] 
@@ -74,7 +74,7 @@ FTP ダッシュボードで、**[コピー]** をクリックして、FTPS エ�
 
 [Azure Portal](https://portal.azure.com) 上のアプリのリソース ページで、左側のナビゲーションの **[アプリの設定]** を選択します。
 
-暗号化されていない FTP を無効にするには、**[FTPS only]\(FTPS のみ\)** を選択します。 FTP および FTPS の両方を完全に無効にするには、**[無効にする]** を選択します。 完了したら、**[保存]** をクリックします。 **[FTPS のみ]** を使用する場合は、Web アプリの **[SSL 設定]** ブレードに移動して TLS 1.2 以降を強制的に使用する必要があります。 TLS 1.0 と 1.1 は、**[FTPS のみ]** ではサポートされません。
+暗号化されていない FTP を無効にするには、 **[FTPS only]\(FTPS のみ\)** を選択します。 FTP および FTPS の両方を完全に無効にするには、 **[無効にする]** を選択します。 完了したら、 **[保存]** をクリックします。 **[FTPS のみ]** を使用する場合は、Web アプリの **[SSL 設定]** ブレードに移動して TLS 1.2 以降を強制的に使用する必要があります。 TLS 1.0 と 1.1 は、 **[FTPS のみ]** ではサポートされません。
 
 ![FTP/S の無効化](./media/app-service-deploy-ftp/disable-ftp.png)
 

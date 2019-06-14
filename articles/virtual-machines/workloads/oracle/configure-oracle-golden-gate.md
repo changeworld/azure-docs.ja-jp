@@ -16,10 +16,10 @@ ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
 ms.openlocfilehash: c8d2a948dd82fb2c04aceb24815e63be13e35919
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64722607"
 ---
 # <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>Azure Linux VM での Oracle Golden Gate の実装 
@@ -389,10 +389,10 @@ Oracle Golden Gate ソフトウェアをダウンロードして準備するに�
 
 3. PuTTY Key Generator で、次の手順を実行します。
 
-   - キーを生成するために、**[Generate]\(生成\)** ボタンを選択します。
+   - キーを生成するために、 **[Generate]\(生成\)** ボタンを選択します。
    - キーの内容をコピーします (**Ctrl + C キー**)。
    - **[Save private key]\(秘密キーの保存\)** ボタンを選択します。
-   - 表示される警告を無視し、**[OK]** を選択します。
+   - 表示される警告を無視し、 **[OK]** を選択します。
 
    ![PuTTY Key Generator ページのスクリーンショット](./media/oracle-golden-gate/puttykeygen.png)
 
@@ -410,15 +410,15 @@ Oracle Golden Gate ソフトウェアをダウンロードして準備するに�
    > キーには、`ssh-rsa` という文字列を含める必要があります。 また、キーの内容は 1 行のテキストである必要があります。
    >  
 
-6. PuTTY を起動します。 **[Category]\(カテゴリ\)** ウィンドウで、**[Connection]\(接続\)** > **[SSH]** > **[Auth]\(認証\)** の順に選択します。**[Private key file for authentication]\(認証のための秘密キー ファイル\)** ボックスに、先ほど生成したキーを参照します。
+6. PuTTY を起動します。 **[Category]\(カテゴリ\)** ウィンドウで、 **[Connection]\(接続\)**  >  **[SSH]**  >  **[Auth]\(認証\)** の順に選択します。 **[Private key file for authentication]\(認証のための秘密キー ファイル\)** ボックスに、先ほど生成したキーを参照します。
 
    ![秘密キーを設定するページのスクリーンショット](./media/oracle-golden-gate/setprivatekey.png)
 
-7. **[Category]\(カテゴリ\)** ウィンドウで、**[Connection]\(接続\)** > **[SSH]** > **[X11]** の順に選択します。 **[Enable X11 forwarding]\(X11 フォワーディングを有効にする\)** チェック ボックスをオンにします。
+7. **[Category]\(カテゴリ\)** ウィンドウで、 **[Connection]\(接続\)**  >  **[SSH]**  >  **[X11]** の順に選択します。 **[Enable X11 forwarding]\(X11 フォワーディングを有効にする\)** チェック ボックスをオンにします。
 
    ![X11 を有効にするページのスクリーンショット](./media/oracle-golden-gate/enablex11.png)
 
-8. **[Category]\(カテゴリ\)** ウィンドウで、**[Session]\(セッション\)** に移動します。 ホスト情報を入力し、**[Open]\(開く\)** を選択します。
+8. **[Category]\(カテゴリ\)** ウィンドウで、 **[Session]\(セッション\)** に移動します。 ホスト情報を入力し、 **[Open]\(開く\)** を選択します。
 
    ![セッション ページのスクリーンショット](./media/oracle-golden-gate/puttysession.png)
 
@@ -440,11 +440,11 @@ Oracle Golden Gate をインストールするには、次の手順を実行し�
 
    ![[Select Installation]\(インストールの選択\) ページのスクリーンショット](./media/oracle-golden-gate/golden_gate_install_02.png)
 
-4. インベントリ ディレクトリを変更し、**[Next]\(次へ\)** を選択して続行します。
+4. インベントリ ディレクトリを変更し、 **[Next]\(次へ\)** を選択して続行します。
 
    ![[Select Installation]\(インストールの選択\) ページのスクリーンショット](./media/oracle-golden-gate/golden_gate_install_03.png)
 
-5. **[Summary]\(概要\)** 画面で、**[Install]\(インストール\)** を選択して続行します。
+5. **[Summary]\(概要\)** 画面で、 **[Install]\(インストール\)** を選択して続行します。
 
    ![インストーラーの [Select Installation]\(インストールの選択\) ページのスクリーンショット](./media/oracle-golden-gate/golden_gate_install_04.png)
 
@@ -452,7 +452,7 @@ Oracle Golden Gate をインストールするには、次の手順を実行し�
 
    ![[Select Installation]\(インストールの選択\) ページのスクリーンショット](./media/oracle-golden-gate/golden_gate_install_05.png)
 
-7. インストールが完了したら、**[Close]\(閉じる\)** を選択してプロセスを完了します。
+7. インストールが完了したら、 **[Close]\(閉じる\)** を選択してプロセスを完了します。
 
    ![[Select Installation]\(インストールの選択\) ページのスクリーンショット](./media/oracle-golden-gate/golden_gate_install_06.png)
 

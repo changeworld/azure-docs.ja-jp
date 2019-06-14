@@ -13,11 +13,11 @@ ms.reviewer: sstein, carlrab, bonova, jovanpop
 manager: craigg
 ms.date: 03/13/2019
 ms.openlocfilehash: 9ca9506ad9ca826349b2815e504e9ba8bf976faa
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59788064"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60702073"
 ---
 # <a name="quickstart-configure-a-point-to-site-connection-to-an-azure-sql-database-managed-instance-from-on-premises"></a>クイック スタート:オンプレミスから Azure SQL Database Managed Instance へのポイント対サイト接続を構成する
 
@@ -69,12 +69,12 @@ ms.locfileid: "59788064"
 
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
 2. 仮想ネットワーク ゲートウェイを作成したリソース グループを開き、仮想ネットワーク ゲートウェイ リソースを開きます。
-3. **[ポイント対サイトの構成]** を選択し、**[VPN クライアントのダウンロード]** を選択します。
+3. **[ポイント対サイトの構成]** を選択し、 **[VPN クライアントのダウンロード]** を選択します。
 
     ![VPN クライアントのダウンロード](./media/sql-database-managed-instance-configure-p2s/download-vpn-client.png)  
 4. オンプレミスのクライアント コンピューターで、ZIP ファイルから必要なファイルを抽出し、抽出されたファイルのあるフォルダーを開きます。
 5. **WindowsAmd64** フォルダーを開き、**VpnClientSetupAmd64.exe** ファイルを開きます。
-6. **[Windows によって PC が保護されました]** というメッセージが表示されたら、**[詳細]** をクリックし、**[実行]** をクリックします。
+6. **[Windows によって PC が保護されました]** というメッセージが表示されたら、 **[詳細]** をクリックし、 **[実行]** をクリックします。
 
     ![VPN クライアントをインストールします](./media/sql-database-managed-instance-configure-p2s/vpn-client-defender.png)\
 7. [ユーザー アカウント制御] ダイアログ ボックスで **[はい]** をクリックして続行します。
@@ -89,7 +89,7 @@ ms.locfileid: "59788064"
 3. ダイアログ ボックスで **[接続]** を選択します。
 
     ![VPN 接続](./media/sql-database-managed-instance-configure-p2s/vpn-connection2.png)  
-4. 接続マネージャーで昇格された特権がルート テーブルの更新に必要であると表示されたら、**[続行]** を選択します。
+4. 接続マネージャーで昇格された特権がルート テーブルの更新に必要であると表示されたら、 **[続行]** を選択します。
 5. [ユーザー アカウント制御] ダイアログ ボックスで **[はい]** を選択して続行します。
 
    マネージド インスタンス VNet への VPN 接続が確立されました。
@@ -99,8 +99,8 @@ ms.locfileid: "59788064"
 ## <a name="use-ssms-to-connect-to-the-managed-instance"></a>SSMS を使用してマネージド インスタンスに接続する
 
 1. オンプレミスのクライアント コンピューターで、SQL Server Management Studio (SSMS) を開きます。
-2. **[サーバーに接続]** ダイアログ ボックスで、**[サーバー名]** ボックスにマネージド インスタンスの完全修飾**ホスト名**を入力します。
-3. **[SQL Server 認証]** を選択し、ユーザー名とパスワードを入力して、**[接続]** を選択します。
+2. **[サーバーに接続]** ダイアログ ボックスで、 **[サーバー名]** ボックスにマネージド インスタンスの完全修飾**ホスト名**を入力します。
+3. **[SQL Server 認証]** を選択し、ユーザー名とパスワードを入力して、 **[接続]** を選択します。
 
     ![SSMS 接続](./media/sql-database-managed-instance-configure-vm/ssms-connect.png)  
 

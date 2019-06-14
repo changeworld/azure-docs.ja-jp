@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/12/2016
 ms.author: crdun
 ms.openlocfilehash: 7efd853e7b66933cac811625d7510139864f41f3
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53001847"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62128034"
 ---
 # <a name="add-push-notifications-to-your-windows-app"></a>Windows アプリにプッシュ通知を追加する
 
@@ -39,14 +39,14 @@ ms.locfileid: "53001847"
 
 Microsoft Store にアプリを送信した後、サーバープロジェクトを [Windows Notification Services (WNS)](https://docs.microsoft.com/windows/uwp/design/shell/tiles-and-notifications/windows-push-notification-services--wns--overview) と統合してプッシュを送信するように構成する必要があります。
 
-1. Visual Studio ソリューション エクスプローラーで、UWP アプリ プロジェクトを右クリックし、**[ストア]**  >  **[アプリケーションをストアと関連付ける]** の順にクリックします。
+1. Visual Studio ソリューション エクスプローラーで、UWP アプリ プロジェクトを右クリックし、 **[ストア]**  >  **[アプリケーションをストアと関連付ける]** の順にクリックします。
 
     ![Microsoft ストアにアプリを関連付けます](./media/app-service-mobile-windows-store-dotnet-get-started-push/notification-hub-associate-uwp-app.png)
 
-2. ウィザードで **[次へ]** をクリックし、Microsoft アカウントでサインインします。次に、**[新しいアプリケーション名の予約]** にアプリの名前を入力し、**[予約]** をクリックします。
-3. アプリの登録が正常に作成されたら、新しいアプリ名を選択し、**[次へ]** をクリックし、**[関連付け]** をクリックします。 この操作により、必要な Windows ストア登録情報がアプリケーション マニフェストに追加されます。
+2. ウィザードで **[次へ]** をクリックし、Microsoft アカウントでサインインします。次に、 **[新しいアプリケーション名の予約]** にアプリの名前を入力し、 **[予約]** をクリックします。
+3. アプリの登録が正常に作成されたら、新しいアプリ名を選択し、 **[次へ]** をクリックし、 **[関連付け]** をクリックします。 この操作により、必要な Windows ストア登録情報がアプリケーション マニフェストに追加されます。
 4. [アプリケーション登録ポータル](https://apps.dev.microsoft.com/)に移動し、Microsoft アカウントでサインインします。 前の手順で関連付けた Microsoft Store アプリをクリックします。
-5. 登録ページで、**[アプリケーション シークレット]** と **[パッケージ SID]** の値を記録しておきます。モバイル アプリ バックエンドを構成するときに使用します。
+5. 登録ページで、 **[アプリケーション シークレット]** と **[パッケージ SID]** の値を記録しておきます。モバイル アプリ バックエンドを構成するときに使用します。
 
     ![Microsoft ストアにアプリを関連付けます](./media/app-service-mobile-windows-store-dotnet-get-started-push/app-service-mobile-uwp-app-push-auth.png)
 
@@ -65,7 +65,7 @@ Microsoft Store にアプリを送信した後、サーバープロジェクト�
 
 ### <a name="dotnet"></a>.NET バックエンド プロジェクト
 
-1. Visual Studio で、サーバー プロジェクトを右クリックして **[NuGet パッケージの管理]** をクリックし、Microsoft.Azure.NotificationHubs を検索して、**[インストール]** をクリックします。 これにより、Notification Hubs のクライアント ライブラリがインストールされます。
+1. Visual Studio で、サーバー プロジェクトを右クリックして **[NuGet パッケージの管理]** をクリックし、Microsoft.Azure.NotificationHubs を検索して、 **[インストール]** をクリックします。 これにより、Notification Hubs のクライアント ライブラリがインストールされます。
 2. **Controllers**を展開し、TodoItemController.cs を開いて、次の using ステートメントを追加します。
 
     ```csharp

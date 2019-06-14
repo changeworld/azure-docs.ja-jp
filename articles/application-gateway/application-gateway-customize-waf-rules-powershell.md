@@ -7,11 +7,11 @@ ms.service: application-gateway
 ms.date: 2/22/2019
 ms.author: victorh
 ms.openlocfilehash: f96395a54f66b787878faeee057f02818f956ade
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57317001"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60831454"
 ---
 # <a name="customize-web-application-firewall-rules-through-powershell"></a>PowerShell を使用した Web アプリケーション ファイアウォール ルールのカスタマイズ
 
@@ -100,9 +100,9 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 * 要求本文 (ファイルを含む) のサイズが制限を超えている場合
 * WAF エンジンで内部エラーが発生した場合
 
-CRS 3.x 固有: 
+CRS 3.x 固有:
 
-* インバウンド異常スコアがしきい値を超えた場合
+* インバウンド異常スコアがしきい値を超えました
 
 ## <a name="next-steps"></a>次の手順
 

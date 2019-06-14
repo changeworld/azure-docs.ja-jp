@@ -14,11 +14,11 @@ ms.pm_owner: daviste;NumberByColors
 ms.reviewer: mbullwin
 ms.author: daviste
 ms.openlocfilehash: f2539d5250ff436a720fe10f748f40db29b0ee25
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118525"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60783428"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Application Insights による利用状況分析
 
@@ -28,9 +28,9 @@ ms.locfileid: "54118525"
 
 Application Insights をアプリのサーバー コードと Web ページの両方にインストールすることにより、最適な操作環境が得られます。 アプリのクライアントおよびサーバー コンポーネントから Azure Portal に分析用のテレメトリが送信されます。
 
-1. **サーバー コード:**[ASP.NET](../../azure-monitor/app/asp-net.md)、[Azure](../../azure-monitor/app/app-insights-overview.md)、[Java](../../azure-monitor/app/java-get-started.md)、[Node.js](../../azure-monitor/app/nodejs.md)、または[その他](../../azure-monitor/app/platforms.md)のアプリ向けの適切なモジュールをインストールします。
+1. **サーバー コード:** [ASP.NET](../../azure-monitor/app/asp-net.md)、[Azure](../../azure-monitor/app/app-insights-overview.md)、[Java](../../azure-monitor/app/java-get-started.md)、[Node.js](../../azure-monitor/app/nodejs.md)、または[その他](../../azure-monitor/app/platforms.md)のアプリ向けの適切なモジュールをインストールします。
 
-    * "*サーバー コードをインストールしたくない場合は、[Azure Application Insights リソースの作成](../../azure-monitor/app/create-new-resource.md )のみを行ってください。*"
+    * "*サーバー コードをインストールしたくない場合は、[Azure Application Insights リソースの作成](../../azure-monitor/app/create-new-resource.md )のみを行ってください。* "
 
 2. **Web ページ コード:** Web ページの閉じる ``</head>`` タグの前に、次のスクリプトを追加します。 インストルメンテーション キーを Application Insights リソースの適切な値に置き換えます。
 
@@ -47,7 +47,7 @@ Application Insights をアプリのサーバー コードと Web ページの�
     ```
     Web サイトを監視するためのより高度な構成については、[JavaScript SDK の API リファレンス](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md)を参照してください。
 
-3. **モバイル アプリ コード:**[このガイド](../../azure-monitor/learn/mobile-center-quickstart.md)に従い、App Center SDK を使ってアプリからイベントを収集し、これらのイベントのコピーを分析のために Application Insights に送信します。
+3. **モバイル アプリ コード:** [このガイド](../../azure-monitor/learn/mobile-center-quickstart.md)に従い、App Center SDK を使ってアプリからイベントを収集し、これらのイベントのコピーを分析のために Application Insights に送信します。
 
 4. **テレメトリの取得:** プロジェクトをデバッグ モードで数分間実行し、Application Insights の [概要] ブレードで結果を確認します。
 

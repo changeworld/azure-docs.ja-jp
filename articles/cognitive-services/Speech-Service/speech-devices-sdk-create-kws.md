@@ -12,10 +12,10 @@ ms.date: 05/02/2019
 ms.author: erhopf
 ms.custom: seodec18
 ms.openlocfilehash: 2280af4bf37fdb3cd12482da855f979a9180f0ec
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65020541"
 ---
 # <a name="create-a-custom-wake-word-by-using-the-speech-service"></a>Speech サービスを使用してカスタム ウェイク ワードを作成する
@@ -38,7 +38,7 @@ ms.locfileid: "65020541"
 
 * 一般的な単語は選択しないでください。 たとえば、"eat" や "go" は、普通の会話の中で頻繁に出てくる単語です。 これらは、デバイスの誤ったトリガーとなる可能性があります。
 
-* 別の発音を持つことがあるウェイク ワードは使わないようにします。 ユーザーは、デバイスが応答するようにするために、”正しい” 発音を知っている必要があります。 たとえば "509" は、"five zero nine"、"five oh nine"、または "five hundred and nine" と発音できます。 "R.E.I."  は、"R E I" または "Ray" として発音できます。 "Live" は、"/Līv/" または "/liv/" と発音できます。
+* 別の発音を持つことがあるウェイク ワードは使わないようにします。 ユーザーは、デバイスが応答するようにするために、”正しい” 発音を知っている必要があります。 たとえば "509" は、"five zero nine"、"five oh nine"、または "five hundred and nine" と発音できます。 "R.E.I." は、"R E I" または "Ray" として発音できます。 "Live" は、"/Līv/" または "/liv/" と発音できます。
 
 * 特殊な文字、記号、または数字は使用しないでください。 たとえば、"Go#" および "20 + cats" の場合は、適切なウェイク ワードにはなりません。 ただし、"go sharp" や "twenty plus cats" は機能するでしょう。 それでもブランディングにおいて記号を使用して、正しい発音が一般に認知されるように、マーケティングやドキュメントを利用することができます。
 
@@ -49,11 +49,11 @@ ms.locfileid: "65020541"
 
 カスタム ウェイク ワードをデバイスで使用する前に、Microsoft Custom Wake Word Generation サービスを使用してウェイク ワードを作成する必要があります。 ウェイク ワードを指定すると、このサービスによってファイルが作成されます。このファイルを開発キットに展開することで、デバイスでウェイク ワードを有効にできます。
 
-1. [Custom Speech Service ポータル](https://aka.ms/sdsdk-speechportal)に移動して**サインイン**します。音声サブスクリプションを持っていない場合は、[**[サブスクリプションを作成する]**](https://go.microsoft.com/fwlink/?linkid=2086754) を選択します。
+1. [Custom Speech Service ポータル](https://aka.ms/sdsdk-speechportal)に移動して**サインイン**します。音声サブスクリプションを持っていない場合は、[ **[サブスクリプションを作成する]** ](https://go.microsoft.com/fwlink/?linkid=2086754) を選択します。
 
     ![Custom Speech Service ポータル](media/speech-devices-sdk/wake-word-4.png)
 
-1. [[Custom Wake Word]\(カスタム ウェイク ワード\)](https://aka.ms/sdsdk-wakewordportal) ページに選択したウェイク ワードを入力し、**[Add wake word]\(ウェイク ワードの追加\)** をクリックします。 効果的なキーワードを選択するために役立つ[ガイドライン](#choose-an-effective-wake-word)がいくつかあります。 現在は、en-US 言語のみがサポートされています。
+1. [[Custom Wake Word]\(カスタム ウェイク ワード\)](https://aka.ms/sdsdk-wakewordportal) ページに選択したウェイク ワードを入力し、 **[Add wake word]\(ウェイク ワードの追加\)** をクリックします。 効果的なキーワードを選択するために役立つ[ガイドライン](#choose-an-effective-wake-word)がいくつかあります。 現在は、en-US 言語のみがサポートされています。
 
     ![ウェイク ワードを入力する](media/speech-devices-sdk/wake-word-5.png)
 

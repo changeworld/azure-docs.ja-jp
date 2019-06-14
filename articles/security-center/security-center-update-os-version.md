@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
 ms.openlocfilehash: a17bc3cf8c8f1ffbb2a91e17944bfc1c203f439d
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56111868"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60905860"
 ---
 # <a name="update-os-version-in-azure-security-center"></a>Azure Security Center で OS バージョンを更新する
 Azure Security Center では、クラウド サービス内の仮想マシン (VM) で使用しているオペレーティング システム (OS) の最新バージョンが提供されている場合、そのバージョンに更新するよう推奨されます。  監視されるのは、運用スロットで実行されているクラウド サービスの Web ロールと worker ロールだけです。
@@ -30,7 +30,7 @@ Azure Security Center では、クラウド サービス内の仮想マシン (V
 > 
 
 ## <a name="implement-the-recommendation"></a>推奨事項の実装
-1. **[推奨事項]** ブレードで、**[OS バージョンの更新]** を選択します。
+1. **[推奨事項]** ブレードで、 **[OS バージョンの更新]** を選択します。
    ![OS バージョンの更新][1]
 2. これにより、 **[Update OS version (OS バージョンの更新)]** ブレードが開きます。 このブレードの手順に従い、OS バージョンを更新します。
 

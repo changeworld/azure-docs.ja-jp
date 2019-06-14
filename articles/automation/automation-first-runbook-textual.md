@@ -11,11 +11,11 @@ ms.date: 09/24/2018
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 1697f479cf013f2ef94dd5a8a2fc637d72e6e18a
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59549246"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60739959"
 ---
 # <a name="my-first-powershell-workflow-runbook"></a>最初の PowerShell Workflow Runbook
 
@@ -44,9 +44,9 @@ ms.locfileid: "59549246"
    Automation アカウント ページでは、そのアカウントのリソースを簡単に確認できます。 既に資産がいくつかあります。 これらの資産のほとんどは、新しい Automation アカウントに自動的に含まれるモジュールです。 [前提条件](#prerequisites)で説明されている資格情報資産も必要です。
 
 1. **[プロセス オートメーション]** の **[Runbook]** を選択し、Runbook の一覧を開きます。
-1. **[+ Runbook の追加]** ボタンをクリックし、**[新しい Runbook の作成]** をクリックして新しい Runbook を作成します。
+1. **[+ Runbook の追加]** ボタンをクリックし、 **[新しい Runbook の作成]** をクリックして新しい Runbook を作成します。
 1. Runbook に *MyFirstRunbook-Workflow*という名前を付けます。
-1. ここでは、[PowerShell Workflow Runbook](automation-runbook-types.md#powershell-workflow-runbooks) を作成するため、**[Runbook の種類]** として **[PowerShell ワークフロー]** を選択します。
+1. ここでは、[PowerShell Workflow Runbook](automation-runbook-types.md#powershell-workflow-runbooks) を作成するため、 **[Runbook の種類]** として **[PowerShell ワークフロー]** を選択します。
 1. **[作成]** をクリックして Runbook を作成し、テキスト エディターを開きます。
 
 ## <a name="step-2---add-code-to-the-runbook"></a>手順 2 - コードを Runbook に追加する
@@ -93,10 +93,10 @@ Runbook を発行して運用環境で使用できるようにする前に、Run
 前の手順で作成した Runbook は、まだドラフト モードです。 運用環境で実行できるようにするには、発行する必要があります。 Runbook を発行するときは、既存の発行済みバージョンをドラフト バージョンで上書きします。 この例では、Runbook を作成したばかりなので、発行済みバージョンはまだありません。
 
 1. **[発行]** をクリックして Runbook を発行し、確認を要求されたら **[はい]** をクリックします。
-1. ここで **[Runbook]** ウィンドウで左へスクロールして Runbook を表示すると、**[編集状態]** は **[発行済み]** になっています。
+1. ここで **[Runbook]** ウィンドウで左へスクロールして Runbook を表示すると、 **[編集状態]** は **[発行済み]** になっています。
 1. 右にスクロールして戻り、 **MyFirstRunbook-Workflowl**のウィンドウを表示します。  
    上部のオプションを使用すると、Runbook の開始、将来の開始スケジュールの設定、または HTTP 呼び出しで開始できるようにする [Webhook](automation-webhooks.md) の作成を行うことができます。
-1. ここでは単純に Runbook を開始するので、**[開始]** をクリックし、確認を求められたら **[はい]** をクリックします。
+1. ここでは単純に Runbook を開始するので、 **[開始]** をクリックし、確認を求められたら **[はい]** をクリックします。
 
    ![Runbook の開始](media/automation-first-runbook-textual/automation-runbook-controls-start.png)
 
@@ -154,9 +154,9 @@ Runbook をテストして発行しましたが、これまでのところ役に
 
 ## <a name="step-6---add-code-to-start-a-virtual-machine"></a>手順 6 - 仮想マシンを開始するコードを追加する
 
-これで、Runbook で Azure サブスクリプションに対する認証が行われ、リソースを管理できるようになります。 仮想マシンを起動するコマンドを追加します。 Azure サブスクリプション内の任意の仮想マシンを選択し、ここではその名前を Runbook にハードコーディングします。 複数のサブスクリプションにわたってリソースを管理しようとしている場合は、**-AzureRmContext** パラメーターを [Get-AzureRmContext](/powershell/module/azurerm.profile/get-azurermcontext) と共に使用する必要があります。
+これで、Runbook で Azure サブスクリプションに対する認証が行われ、リソースを管理できるようになります。 仮想マシンを起動するコマンドを追加します。 Azure サブスクリプション内の任意の仮想マシンを選択し、ここではその名前を Runbook にハードコーディングします。 複数のサブスクリプションにわたってリソースを管理しようとしている場合は、 **-AzureRmContext** パラメーターを [Get-AzureRmContext](/powershell/module/azurerm.profile/get-azurermcontext) と共に使用する必要があります。
 
-1. *Connect-AzureRmAccount* の後に、起動する仮想マシンの名前とリソース グループ名を指定して「*Start-AzureRmVM -Name 'VMName' -ResourceGroupName 'NameofResourceGroup'*」と入力します。  
+1. *Connect-AzureRmAccount* の後に、起動する仮想マシンの名前とリソース グループ名を指定して「*Start-AzureRmVM -Name 'VMName' -ResourceGroupName 'NameofResourceGroup'* 」と入力します。  
 
    ```powershell-interactive
    workflow MyFirstRunbook-Workflow

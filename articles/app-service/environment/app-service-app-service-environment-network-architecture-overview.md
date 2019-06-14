@@ -16,11 +16,11 @@ ms.date: 10/04/2016
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: 0d7d4af46e54ad89e0d084cb15af13e56115e996
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53274172"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60765313"
 ---
 # <a name="network-architecture-overview-of-app-service-environments"></a>App Service 環境のネットワーク アーキテクチャの概要
 ## <a name="introduction"></a>はじめに

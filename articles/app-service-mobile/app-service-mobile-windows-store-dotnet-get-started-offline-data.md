@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
 ms.openlocfilehash: 69ee9e7101a2b7337e1e42ff5ae09954fbfd50b2
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52994920"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62128051"
 ---
 # <a name="enable-offline-sync-for-your-windows-app"></a>Windows アプリのオフライン同期を有効にする
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
@@ -45,7 +45,7 @@ Azure モバイル アプリのオフライン機能を使用すると、オフ�
 1. [ユニバーサル Windows プラットフォーム用の SQLite ランタイム](https://sqlite.org/2016/sqlite-uwp-3120200.vsix)をインストールします。
 2. Visual Studio で、「[Create a Windows app (Windows アプリの作成)]」チュートリアルで完了した UWP アプリ プロジェクトの NuGet パッケージ マネージャーを開きます。
     **Microsoft.Azure.Mobile.Client.SQLiteStore** NuGet パッケージを検索してインストールします。
-3. ソリューション エクスプ ローラーで、**[参照]** > **[参照の追加]**> **[ユニバーサル Windows]** > **[拡張機能]** の順に右クリックおよびクリックして、**[ユニバーサル Windows プラットフォーム用 SQLite]** と **[Visual C++ 2015 Runtime for Universal Windows Platform apps]\(ユニバーサルWindows プラットフォーム アプリ用 Visual C++ 2015 ランタイム\)** の両方を有効にします。
+3. ソリューション エクスプ ローラーで、 **[参照]** > **[参照の追加]** > **[ユニバーサル Windows]** > **[拡張機能]** の順に右クリックおよびクリックして、 **[ユニバーサル Windows プラットフォーム用 SQLite]** と **[Visual C++ 2015 Runtime for Universal Windows Platform apps]\(ユニバーサルWindows プラットフォーム アプリ用 Visual C++ 2015 ランタイム\)** の両方を有効にします。
 
     ![SQLite UWP リファレンスを追加する][1]
 4. MainPage.xaml.cs ファイルを開き、`#define OFFLINE_SYNC_ENABLED`の定義をコメント解除します。
@@ -62,7 +62,7 @@ Azure モバイル アプリのオフライン機能を使用すると、オフ�
 2. **F5** キーを押し、アプリケーションをビルドして実行します。 アプリを起動した際の更新時には同期が失敗することに注意してください。
 3. 新しい項目を入力し、 [MobileServicePushFailedException] をクリックするたびに **CancelledByNetworkError**ステータスでプッシュが失敗することを確認します。 ただし、新しい todo 項目は、モバイル アプリ バックエンドにプッシュされるまでは、ローカル ストア内に存在します。  運用アプリでは、これらの例外を抑制した場合、クライアント アプリはモバイル アプリ バックエンドにまだ接続されているかのように動作します。
 4. アプリケーションを終了し、再起動して、作成した新しい項目がローカル ストアに保存されていることを確認します。
-5. (省略可能) Visual Studio で、 **サーバー エクスプローラー**を開きます。 **[Azure]**->**[SQL Databases]** を選択して、データベースに移動します。 データベースを右クリックし、 **[SQL Server オブジェクト エクスプローラーで開く]** を選択します。 これで SQL データベースのテーブルとその内容を参照できます。 バックエンド データベース内のデータが変更されていないことを確認します。
+5. (省略可能) Visual Studio で、 **サーバー エクスプローラー**を開きます。 **[Azure]** -> **[SQL Databases]** を選択して、データベースに移動します。 データベースを右クリックし、 **[SQL Server オブジェクト エクスプローラーで開く]** を選択します。 これで SQL データベースのテーブルとその内容を参照できます。 バックエンド データベース内のデータが変更されていないことを確認します。
 6. (省略可能) Fiddler や Postman などの REST ツールを使用して、モバイルのバックエンドをクエリします。その際、`https://<your-mobile-app-backend-name>.azurewebsites.net/tables/TodoItem` の形式で、GET クエリを使用します。
 
 ## <a name="update-online-app"></a>モバイル アプリ バックエンドに再接続するようにアプリケーションを更新する

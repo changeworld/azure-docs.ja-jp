@@ -12,11 +12,11 @@ author: marthalc
 ms.date: 04/02/2019
 ms.custom: seoapril2019
 ms.openlocfilehash: 2e481a388d8cbd6baf66b95c74449396b2e70f7d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58885503"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60820227"
 ---
 # <a name="monitor-your-azure-machine-learning-models-with-application-insights"></a>Application Insights を使用して Azure Machine Learning のモデルを監視する
 
@@ -91,7 +91,7 @@ Azure portal で Application Insights を有効または無効にすることが
 
    [![[編集] ボタン](media/how-to-enable-app-insights/Edit.PNG)](./media/how-to-enable-app-insights/Edit.PNG#lightbox)
 
-4. **[詳細設定]** で、**[AppInsights 診断を有効にする]** チェック ボックスをオンにします。
+4. **[詳細設定]** で、 **[AppInsights 診断を有効にする]** チェック ボックスをオンにします。
 
    [![診断を有効にするために選択されたチェック ボックス](media/how-to-enable-app-insights/AdvancedSettings.png)](./media/how-to-enable-app-insights/AdvancedSettings.png#lightbox)
 
@@ -99,11 +99,11 @@ Azure portal で Application Insights を有効または無効にすることが
 
 ### <a name="disable"></a>Disable
 1. [Azure portal](https://portal.azure.com) でワークスペースを開きます。
-1. **[デプロイ]** を選択し、サービスを選択し、**[編集]** を選択します。
+1. **[デプロイ]** を選択し、サービスを選択し、 **[編集]** を選択します。
 
    [![[編集] ボタンを使用する](media/how-to-enable-app-insights/Edit.PNG)](./media/how-to-enable-app-insights/Edit.PNG#lightbox)
 
-1. **[詳細設定]** で、**[AppInsights 診断を有効にする]** チェック ボックスをオフにします。 
+1. **[詳細設定]** で、 **[AppInsights 診断を有効にする]** チェック ボックスをオフにします。 
 
    [![診断を有効にするためのチェック ボックスをオフ](media/how-to-enable-app-insights/uncheck.png)](./media/how-to-enable-app-insights/uncheck.png#lightbox)
 
@@ -121,8 +121,8 @@ Azure portal で Application Insights を有効または無効にすることが
 
    [![概要](media/how-to-enable-app-insights/overview.png)](./media/how-to-enable-app-insights/overview.png#lightbox)
 
-3. カスタム トレースを確認するには、**[分析]** を選択します。
-4. [スキーマ] セクションで **[トレース]** を選択します。 次に、**[実行]** を選択してクエリを実行します。 データは表形式で表示され、スコアリング ファイルのカスタムの呼び出しにマップされます。 
+3. カスタム トレースを確認するには、 **[分析]** を選択します。
+4. [スキーマ] セクションで **[トレース]** を選択します。 次に、 **[実行]** を選択してクエリを実行します。 データは表形式で表示され、スコアリング ファイルのカスタムの呼び出しにマップされます。 
 
    [![カスタム トレース](media/how-to-enable-app-insights/logs.png)](./media/how-to-enable-app-insights/logs.png#lightbox)
 

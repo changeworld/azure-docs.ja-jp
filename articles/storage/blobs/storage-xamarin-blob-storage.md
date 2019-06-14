@@ -10,10 +10,10 @@ ms.date: 05/11/2017
 ms.author: mhopkins
 ms.reviewer: seguler
 ms.openlocfilehash: 1953a0af89e5ea018bd3654c3b82087331b3d565
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65141276"
 ---
 # <a name="how-to-use-blob-storage-from-xamarin"></a>Xamarin から BLOB ストレージを使用する方法
@@ -30,7 +30,7 @@ Xamarin を利用すれば、開発者は共有 C# コードベースを利用�
 次の手順でアプリケーションを作成します。
 
 1. [Xamarin for Visual Studio](https://www.xamarin.com/download)をダウンロードしてインストールします (まだ、インストールしていない場合)。
-2. Visual Studio を開き、空のアプリ (ネイティブ ポータブル) を作成します (**[ファイル]、[新規]、[プロジェクト]、[クロス プラットフォーム]、[空のアプリ (ネイティブ ポータブル)]** の順に移動)。
+2. Visual Studio を開き、空のアプリ (ネイティブ ポータブル) を作成します ( **[ファイル]、[新規]、[プロジェクト]、[クロス プラットフォーム]、[空のアプリ (ネイティブ ポータブル)]** の順に移動)。
 3. [ソリューション エクスプローラー] ウィンドウでソリューションを右クリックし、 **[ソリューションの NuGet パッケージの管理]** を選択します。 **WindowsAzure.Storage** を検索し、最新の安定バージョンを、ソリューション内のすべてのプロジェクトにインストールします。
 4. プロジェクトをビルドして実行します。
 

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/30/2016
 ms.author: crdun
 ms.openlocfilehash: 3c22aab20a9260bfd21869f0b327211e2f3d8894
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58004209"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62109578"
 ---
 # <a name="how-to-use-apache-cordova-client-library-for-azure-mobile-apps"></a>Azure Mobile Apps 向け Apache Cordova クライアント ライブラリの使用方法
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
@@ -93,12 +93,12 @@ Apache Cordova アプリで認証を使用する場合は、次の Cordova プ�
 
 ローカル設定を構成に追加するには、以下の手順に従います。
 
-1.  [Azure Portal]
+1. [Azure Portal]
 2. **[すべてのリソース]** または **[App Services]** を選択し、モバイル アプリの名前をクリックします。
-3.  **[ツール]**
-4. [監視] メニューの **[リソース エクスプローラー]** をクリックし、**[実行]** をクリックします。  新しいウィンドウまたはタブが開きます。
-5. 左側のナビゲーションで、サイトの **[config]** ノード、**[authsettings]** ノードの順に展開します。
-6.  **[編集]**
+3. **[ツール]**
+4. [監視] メニューの **[リソース エクスプローラー]** をクリックし、 **[実行]** をクリックします。  新しいウィンドウまたはタブが開きます。
+5. 左側のナビゲーションで、サイトの **[config]** ノード、 **[authsettings]** ノードの順に展開します。
+6. **[編集]**
 7. "allowedExternalRedirectUrls" 要素を探します。  この要素は、null または値の配列に設定できます。  値を次の値に変更します。
 
          "allowedExternalRedirectUrls": [
@@ -113,7 +113,7 @@ Apache Cordova アプリで認証を使用する場合は、次の Cordova プ�
 この時点で設定が保存されます。  設定の保存が完了するまで、ブラウザー ウィンドウを閉じないでください。
 また、App Service の CORS 設定に、これらのループバック URL を追加します。
 
-1.  [Azure Portal]
+1. [Azure Portal]
 2. **[すべてのリソース]** または **[App Services]** を選択し、モバイル アプリの名前をクリックします。
 3. [設定] ブレードが自動的に開きます。  開かない場合は、 **[すべての設定]** をクリックします。
 4. API メニューの **[CORS]** をクリックします。

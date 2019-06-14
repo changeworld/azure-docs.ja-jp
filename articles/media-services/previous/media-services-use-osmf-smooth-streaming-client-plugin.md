@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: c40d8b93a7487619cc94586c7e6b4cdc550435cd
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58314061"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60825593"
 ---
 # <a name="how-to-use-the-microsoft-smooth-streaming-plugin-for-the-adobe-open-source-media-framework"></a>Adobe Open Source Media Framework 用 Microsoft スムーズ ストリーミング プラグインを使用する方法  
 ## <a name="overview"></a>概要
@@ -331,7 +331,7 @@ package {
 OSMF 用スムーズ ストリーミング動的プラグインには、 [Strobe Media Playback (SMP)](http://osmf.org/strobe_mediaplayback.html)との互換性があります。 OSMF 用 SS プラグインを使用すると、スムーズ ストリーミング コンテンツ再生機能を SMP に追加することができます。 これには、"MSAdaptiveStreamingPlugin-v1.0.3-osmf2.0.swf" を Web サーバーにコピーし、次に示す手順を使用して HTTP 読み込みを行ってください。
 
 1. [Strobe Media Playback セットアップ ページ](http://osmf.org/dev/2.0gm/setup.html)に移動します。 
-2. src を Smooth Streaming ソースに設定します (例: http://devplatem.vo.msecnd.net/Sintel/Sintel_H264.ism/manifest))。 
+2. src を Smooth Streaming ソースに設定します (例: http://devplatem.vo.msecnd.net/Sintel/Sintel_H264.ism/manifest) )。 
 3. 必要な構成変更を行い、[Preview and Update] をクリックします。
    
    **注** : コンテンツ Web サーバーには有効な crossdomain.xml が必要です。 
