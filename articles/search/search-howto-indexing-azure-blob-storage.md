@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: e55d596cfaf34c177f6dc43c27aaac37da87d2f7
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: f60146e4e11e50b2f2254a0d8d7f59c01ba74464
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024857"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479940"
 ---
 # <a name="indexing-documents-in-azure-blob-storage-with-azure-search"></a>Azure Blob Storage 内ドキュメントのインデックスを Azure Search で作成する
 この記事では、Azure Search を使用して、Azure Blob Storage に格納されているドキュメント (PDF や Microsoft Office ドキュメント、その他のよく使用されている形式など) のインデックスを作成する方法を説明します。 まず、BLOB インデクサーの設定と構成の基礎を説明します。 次に、発生する可能性のある動作とシナリオについて詳しく説明します。
@@ -139,6 +139,7 @@ Shared Access Signature について詳しくは、「[Shared Access Signature �
   * **metadata\_storage\_last\_modified** (Edm.DateTimeOffset) - 前回変更時の BLOB のタイムスタンプ。 インデックスの初回作成後に最初から作成し直さなくても済むよう、変更された BLOB を Azure Search が特定するために、このタイムスタンプが使用されます。
   * **metadata\_storage\_size** (Edm.Int64) - BLOB のサイズ (バイト単位)。
   * **metadata\_storage\_content\_md5** (Edm.String) - BLOB コンテンツの MD5 ハッシュ (利用可能な場合)。
+  * **metadata\_storage\_sas\_token** (Edm.String) - BLOB に対して適切にアクセスするために、[カスタム スキル](cognitive-search-custom-skill-interface.md)で使用できる一時的なトークン。 この SAS トークンは、有効期限付きのため、後で使用するために保存しておくことはできません。
 * 各ドキュメント形式に固有のメタデータのプロパティは、[こちら](#ContentSpecificMetadata)に記載したフィールドに抽出されます。
 
 検索インデックスに対し、ここに挙げたすべてのプロパティのフィールドを定義する必要はありません。実際のアプリケーションで必要となるプロパティだけを取り込んでください。
@@ -154,7 +155,7 @@ Azure Search では、ドキュメントがそのキーによって一意に識�
 
 抽出されたフィールドとインデックスのキー フィールドとのマッピングは、慎重に検討する必要があります。 その例を次に示します。
 
-* **metadata\_storage\_name** - 名前をキーにできればそれに越したことはありませんが、1) 同じ名前の BLOB が別のフォルダーに存在し、名前が重複する可能性があること、2) ドキュメント キーに無効な文字 (ダッシュなど) が名前に含まれている可能性があることに注意する必要があります。 無効な文字は、`base64Encode` [フィールド マッピング関数](search-indexer-field-mappings.md#base64EncodeFunction)を使用して処理できます。その場合、API 呼び出し (Lookup など) にドキュメント キーを渡すとき、必ずエンコードしてください  (たとえば、.NET であれば [UrlTokenEncode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokenencode.aspx) メソッドを利用できます)。
+* **metadata\_storage\_name** - 名前をキーにできればそれに越したことはありませんが、1) 同じ名前の BLOB が別のフォルダーに存在し、名前が重複する可能性があること、2) ドキュメント キーに無効な文字 (ダッシュなど) が名前に含まれている可能性があることに注意する必要があります。 無効な文字は、`base64Encode` [フィールド マッピング関数](search-indexer-field-mappings.md#base64EncodeFunction)を使用して処理できます。その場合、API 呼び出し (Lookup など) にドキュメント キーを渡すとき、必ずエンコードしてください (たとえば、.NET であれば [UrlTokenEncode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokenencode.aspx) メソッドを利用できます)。
 * **metadata\_storage\_path** - 完全パスであれば一意性は保証されます。ただし、パスに使われる `/` 文字は、[ドキュメント キーでは無効](https://docs.microsoft.com/rest/api/searchservice/naming-rules)です。  この場合も、`base64Encode` [関数](search-indexer-field-mappings.md#base64EncodeFunction)を使用してキーをエンコーディングすることができます。
 * いずれの選択肢も利用できない場合は、独自のメタデータ プロパティを BLOB に追加できます。 ただし、この方法を選んだ場合、BLOB のアップロード プロセスで、該当するメタデータのプロパティをすべての BLOB に追加する必要があります。 キーは必須のプロパティであるため、そのプロパティを持たない BLOB については、インデックスが一切作成されません。
 
@@ -272,7 +273,7 @@ Azure Search では、インデックスを付ける BLOB のサイズが制限�
 
     "parameters" : { "configuration" : { "indexStorageMetadataOnlyForOversizedDocuments" : true } }
 
-BLOB の解析中またはインデックスへのドキュメントの追加中、処理のどこかの時点でエラーが発生した場合に、インデックス付けを続行することもできます。 特定数のエラーを無視するには、構成パラメーター `maxFailedItems` と `maxFailedItemsPerBatch` を望ましい値に設定します。 例: 
+BLOB の解析中またはインデックスへのドキュメントの追加中、処理のどこかの時点でエラーが発生した場合に、インデックス付けを続行することもできます。 特定数のエラーを無視するには、構成パラメーター `maxFailedItems` と `maxFailedItemsPerBatch` を望ましい値に設定します。 例:
 
     {
       ... other parts of indexer definition
