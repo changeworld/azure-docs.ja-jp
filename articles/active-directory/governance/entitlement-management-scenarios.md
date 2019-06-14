@@ -16,12 +16,12 @@ ms.date: 04/23/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 96442a9d49581da6841fa7acb8329354ec727f60
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 6a50f4a8a63022668dac68c974f8c828c72777c9
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64918474"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66473141"
 ---
 # <a name="common-scenarios-in-azure-ad-entitlement-management-preview"></a>Azure AD エンタイトルメント管理 (プレビュー) での一般的なシナリオ
 
@@ -50,7 +50,7 @@ ms.locfileid: "64918474"
 > | **2.** [リソースのロールをアクセス パッケージに追加する](entitlement-management-access-package-edit.md#add-resource-roles)<ul><li>グループ</li><li>[アプリケーション]</li><li>SharePoint サイト</li></ul> | ![リソース ロールを追加する](./media/entitlement-management-scenarios/resource-roles.png) |
 > | **3.** [ポリシーを追加する](entitlement-management-access-package-edit.md#policy-for-users-in-your-directory)<ul><li>ディレクトリ内のユーザーに対して</li><li>承認を要求する</li><li>有効期限の設定</li></ul> | ![ポリシーの追加](./media/entitlement-management-scenarios/policy.png) |
 
-### <a name="i-want-to-allow-users-from-my-business-partners-including-users-not-yet-in-my-directory-to-request-access-to-groups-applications-or-sharepoint-sites"></a>ビジネス パートナーからのユーザー (自分のディレクトリ内にまだいないユーザーを含む) に、グループ、アプリケーション、または SharePoint サイトへのアクセスを要求することを許可します。
+### <a name="i-want-to-allow-users-from-my-business-partners-directory-including-users-not-yet-in-my-directory-to-request-access-to-groups-applications-or-sharepoint-sites"></a>ビジネス パートナー ディレクトリからのユーザー (自分のディレクトリ内にまだいないユーザーを含む) に、グループ、アプリケーション、または SharePoint サイトへのアクセスを要求することを許可します。
 
 > [!div class="mx-tableFixed"]
 > | 手順 | 例 |
