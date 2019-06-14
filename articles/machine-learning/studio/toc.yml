@@ -7,8 +7,7 @@
       displayName: overview
       href: what-is-ml-studio.md
     - name: Microsoft の ML 製品の比較
-      href: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning
-      maintainContext: true
+      href: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure/machine-learning/studio/context/ml-context
 - name: チュートリアル
   items:
     - name: 初めての実験を作成する
@@ -59,7 +58,7 @@
           href: deploy-with-resource-manager-template.md
     - name: トレーニング データをインポートする
       items:
-        - name: Import data
+        - name: データのインポート
           href: import-data.md
         - name: オンプレミス SQL からのデータの使用
           displayName: on-premises

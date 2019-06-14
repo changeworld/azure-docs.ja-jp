@@ -39,6 +39,8 @@
   items:
     - name: Azure PowerShell を使用したデプロイ
       href: deploy-ps.md
+    - name: Azure CLI を使用したデプロイ
+      href: deploy-cli.md
     - name: テンプレートを使用したデプロイ
       href: deploy-template.md
     - name: Load Balancer との統合

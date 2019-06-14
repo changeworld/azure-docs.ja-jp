@@ -233,7 +233,5 @@
   items:
     - name: Windows クラスター
       items:
-        - name: Windows クラスターを Linux クラスターに移行する
-          href: ../hdinsight-migrate-from-windows-to-linux.md
         - name: .NET ソリューションを Linux クラスターに移行する
           href: ../hdinsight-hadoop-migrate-dotnet-to-linux.md

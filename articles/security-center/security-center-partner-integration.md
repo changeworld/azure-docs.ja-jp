@@ -25,7 +25,7 @@ ms.locfileid: "64569819"
 このドキュメントは、既に Azure Security Center に接続されているセキュリティ ソリューションを管理したり、新しいセキュリティ ソリューションを追加したりする際に役立ちます。
 
 > [!NOTE]
-> セキュリティ ソリューションのサブセットは、2019 年 7 月 31 日に廃止されます。 詳細および代替のサービスは、次を参照してください。 [Security Center の提供終了の機能 (7 月 2019)](security-center-features-retirement-july2019.md#menu_solutions)します。
+> セキュリティ ソリューションのサブセットは、2019 年 6 月 31 日に廃止されます。 詳細および代替サービスについては、「[Security Center の機能の廃止 (2019 年 7 月)](security-center-features-retirement-july2019.md#menu_solutions)」を参照してください。
 
 ## <a name="integrated-azure-security-solutions"></a>統合された Azure セキュリティ ソリューション
 Security Center を使用すると、Azure で統合されたセキュリティ ソリューションを簡単に有効にすることができます。 利点は次のとおりです。

@@ -8,6 +8,7 @@
     - name: ユーザー シナリオの例
       href: text-analytics-user-scenarios.md
 - name: クイック スタート
+  expanded: true
   items:
     - name: REST API
       items:
@@ -33,6 +34,8 @@
           href: quickstarts/go-sdk.md
         - name: Ruby
           href: quickstarts/ruby-sdk.md
+        - name: Node.js
+          href: quickstarts/nodejs-sdk.md
 - name: チュートリアル
   items:
     - name: Power BI を統合して顧客からのフィードバックを分析する

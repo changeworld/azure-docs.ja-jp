@@ -64,7 +64,7 @@ sections:
         className: cardsD
         items:
           - title: プレビュー
-            html: '<p><a href="stream-analytics-previews#public-previews">パブリック プレビュー</a></p><p><a href="stream-analytics-previews#private-previews">プライベート プレビュー</a></p>'
+            html: '<p><a href="stream-analytics-previews#public-previews">パブリック プレビュー</a></p><p><a href="stream-analytics-previews#other-previews">プライベート プレビュー</a></p>'
           - title: コマンド ライン
             html: '<p><a href="https://docs.microsoft.com/powershell/module/az.streamanalytics/#stream_analytics">Azure PowerShell</a></p>'
           - title: Languages
