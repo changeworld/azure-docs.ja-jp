@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: magoedte
 ms.openlocfilehash: 0a45c84b01cace7e14bd1a945617598c6295631e
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59524278"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60496206"
 ---
 # <a name="container-monitoring-solution-in-azure-monitor"></a>Azure Monitor のコンテナー監視ソリューション
 
@@ -122,7 +122,7 @@ Windows を実行しているコンピューターに Docker エンジンをイ�
 
 ### <a name="install-and-configure-linux-container-hosts"></a>Linux コンテナー ホストをインストールして構成する
 
-Docker をインストールした後で、コンテナー ホストの次の設定を使用して、Docker で使用するためにエージェントを構成します。 まず、Log Analytics のワークスペース ID とキーが必要です。これらは Azure Portal 上で見つけることができます。 ワークスペースで **[クイック スタート]** > **[コンピューター]** をクリックして、**ワークスペース ID** と**主キー**を表示します。  両方をコピーしてお使いのエディターに貼り付けます。
+Docker をインストールした後で、コンテナー ホストの次の設定を使用して、Docker で使用するためにエージェントを構成します。 まず、Log Analytics のワークスペース ID とキーが必要です。これらは Azure Portal 上で見つけることができます。 ワークスペースで **[クイック スタート]**  >  **[コンピューター]** をクリックして、**ワークスペース ID** と**主キー**を表示します。  両方をコピーしてお使いのエディターに貼り付けます。
 
 **CoreOS を除くすべての Linux コンテナー ホスト**
 
@@ -521,7 +521,7 @@ Windows でコンテナー監視ソリューションが正しく設定されて
 
 ## <a name="solution-components"></a>ソリューションのコンポーネント
 
-Azure ポータルから *[ソリューション ギャラリー]* に移動し、**[コンテナー監視ソリューション]** を追加します。 Windows エージェントを使用している場合、このソリューションを追加するときに、各コンピューターにエージェントと共に次の管理パックがインストールされます。 この管理パックは構成や保守が不要です。
+Azure ポータルから *[ソリューション ギャラリー]* に移動し、 **[コンテナー監視ソリューション]** を追加します。 Windows エージェントを使用している場合、このソリューションを追加するときに、各コンピューターにエージェントと共に次の管理パックがインストールされます。 この管理パックは構成や保守が不要です。
 
 - *ContainerManagement.xxx* は、C:\Program Files\Microsoft Monitoring Agent\Agent\Health Service State\Management Packs にインストールされます。
 
@@ -632,7 +632,7 @@ Log Analytics が開き、コンテナーの状態に関する情報が表示さ
 
 
 ## <a name="example-log-queries"></a>ログ クエリの例
-クエリの作成の際には、多くの場合、1 ～ 2 個の例で始め、その後環境に合わせて変更するとうまくいきます。 まず、**[サンプル クエリ]** エリアで試すと、より高度なクエリを作成しやすくなります。
+クエリの作成の際には、多くの場合、1 ～ 2 個の例で始め、その後環境に合わせて変更するとうまくいきます。 まず、 **[サンプル クエリ]** エリアで試すと、より高度なクエリを作成しやすくなります。
 
 ![コンテナーのクエリ](./media/containers/containers-queries.png)
 
@@ -640,7 +640,7 @@ Log Analytics が開き、コンテナーの状態に関する情報が表示さ
 ## <a name="saving-log-queries"></a>ログ クエリの保存
 クエリの保存は、Azure Monitor の標準的な機能です。 クエリを保存しておけば、後で使えるように、便利なクエリを取っておくことができます。
 
-作成したクエリが便利であることがわかったら、**[ログ検索]** ページの上部にある [お気に入り] をクリックして保存してください。 後で **[マイ ダッシュボード]** ページで簡単にアクセスできます。
+作成したクエリが便利であることがわかったら、 **[ログ検索]** ページの上部にある [お気に入り] をクリックして保存してください。 後で **[マイ ダッシュボード]** ページで簡単にアクセスできます。
 
 ## <a name="next-steps"></a>次の手順
 * [ログをクエリ](../log-query/log-query-overview.md)して、詳細なコンテナー データ レコードを確認します。

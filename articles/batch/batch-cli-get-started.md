@@ -16,11 +16,11 @@ ms.date: 07/24/2018
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: e2bd67ebb977a37c75631f16fbbf4c7dbd6bf250
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57765372"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60782573"
 ---
 # <a name="manage-batch-resources-with-azure-cli"></a>Azure CLI で Batch リソースを管理する
 
@@ -39,7 +39,7 @@ Azure CLI は、Azure リソースを管理するための、Azure のコマン�
 
 ## <a name="command-help"></a>コマンドのヘルプ
 
-Azure CLI のどのコマンドでも、コマンドの後ろに `-h` を付加すると、ヘルプ テキストを表示できます。 他のオプションは指定しないでください。 例: 
+Azure CLI のどのコマンドでも、コマンドの後ろに `-h` を付加すると、ヘルプ テキストを表示できます。 他のオプションは指定しないでください。 例:
 
 * `az` コマンドのヘルプを表示するには、「`az -h`」と入力します。
 * CLI のすべての Batch コマンドの一覧を取得するには、「`az batch -h`」と入力します。
@@ -122,7 +122,7 @@ Batch で一般的なタスクを実行する [CLI スクリプトの例](cli-sa
 
 ## <a name="json-files-for-resource-creation"></a>リソースを作成するための JSON ファイル
 
-プールやジョブなどの Batch リソースを作成する際、コマンド ライン オプションとしてパラメーターを渡す代わりに、新しいリソースの構成を含む JSON ファイルを指定できます。 例: 
+プールやジョブなどの Batch リソースを作成する際、コマンド ライン オプションとしてパラメーターを渡す代わりに、新しいリソースの構成を含む JSON ファイルを指定できます。 例:
 
 ```azurecli
 az batch pool create my_batch_pool.json

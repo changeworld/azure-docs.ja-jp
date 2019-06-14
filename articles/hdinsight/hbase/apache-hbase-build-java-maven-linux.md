@@ -9,10 +9,10 @@ ms.custom: hdinsightactive,seodec18
 ms.topic: conceptual
 ms.date: 04/16/2019
 ms.openlocfilehash: a4c601e81390efa3bb53a6f07225bb6e939bc9bb
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64726447"
 ---
 # <a name="build-java-applications-for-apache-hbase"></a>Apache HBase 向けの Java アプリケーションの構築
@@ -74,7 +74,7 @@ cd C:\HDI
 
 ## <a name="update-the-project-object-model"></a>プロジェクト オブジェクト モデルを更新する
 
-pom.xml ファイルの完全なリファレンスについては、 https://maven.apache.org/pom.htmlを参照してください。  以下のコマンドを入力して `pom.xml` を開きます。
+pom.xml ファイルの完全なリファレンスについては、 https://maven.apache.org/pom.html を参照してください。  以下のコマンドを入力して `pom.xml` を開きます。
 
 ```cmd
 notepad pom.xml

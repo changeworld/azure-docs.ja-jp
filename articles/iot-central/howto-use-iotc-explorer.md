@@ -9,11 +9,11 @@ ms.service: iot-central
 services: iot-central
 manager: peterpr
 ms.openlocfilehash: 16cb27ab330118d1bb59cf4f3d782bf55fa28d43
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57779744"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60517112"
 ---
 # <a name="monitor-device-connectivity-using-the-azure-iot-central-explorer"></a>Azure IoT Central エクスプローラーを使用してデバイスの接続を監視する
 
@@ -47,11 +47,11 @@ npm install -g iotc-explorer
 
 作業を開始する前に、ご利用の IoT Central アプリケーションの管理者に連絡して、使用するアクセス トークンを取得してもらう必要があります。 管理者は次の手順を行います。
 
-1. **[管理]**、**[アクセス トークン]** の順に移動します。
+1. **[管理]** 、 **[アクセス トークン]** の順に移動します。
 1. **[トークンの生成]** を選択します。
     ![アクセス トークン ページのスクリーンショット](media/howto-use-iotc-explorer/accesstokenspage.png)
 
-1. トークン名を入力し、**[次へ]** を選択し、**[コピー]** を選択します。
+1. トークン名を入力し、 **[次へ]** を選択し、 **[コピー]** を選択します。
     > [!NOTE]
     > トークンの値が表示されるのは 1 回だけなので、ダイアログを閉じる前にコピーする必要があります。 ダイアログを閉じた後、再び表示されることはありません。
 

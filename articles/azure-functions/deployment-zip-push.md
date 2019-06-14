@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 08/12/2018
 ms.author: glenga
 ms.openlocfilehash: 2762e5c4f2b67415a0e42e80a34ae5b34c57adc9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58086583"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62111201"
 ---
 # <a name="zip-deployment-for-azure-functions"></a>Azure Functions の zip デプロイ
 
@@ -53,7 +53,7 @@ Azure Functions には、Azure App Service によって提供されている、�
 
   1. [Azure Portal](https://portal.azure.com) にサインインし、関数アプリに移動します。
 
-  2. **[概要]** タブで、**[アプリのコンテンツのダウンロードド]** を選択します。 ダウンロード オプションを選択し、**[ダウンロード]** を選択します。
+  2. **[概要]** タブで、 **[アプリのコンテンツのダウンロードド]** を選択します。 ダウンロード オプションを選択し、 **[ダウンロード]** を選択します。
 
       ![関数アプリ プロジェクトのダウンロード](./media/deployment-zip-push/download-project.png)
 

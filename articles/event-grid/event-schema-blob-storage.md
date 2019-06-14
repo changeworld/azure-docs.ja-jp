@@ -8,11 +8,11 @@ ms.topic: reference
 ms.date: 01/17/2019
 ms.author: spelluru
 ms.openlocfilehash: 401eb660d7e5ddc68bc7422ef9f2e600295d2aea
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54469741"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60614898"
 ---
 # <a name="azure-event-grid-event-schema-for-blob-storage"></a>Azure Event Grid の Blob Storage 用のイベント スキーマ
 
@@ -88,31 +88,31 @@ Blob Storage から出力されるイベントの種類は次のとおりです�
 
 イベントのトップレベルのデータを次に示します。
 
-| プロパティ | type | 説明 |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
-| topic | 文字列 | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
-| subject | 文字列 | 発行元が定義したイベントの対象のパス。 |
-| eventType | 文字列 | このイベント ソース用に登録されたイベントの種類のいずれか。 |
-| eventTime | 文字列 | プロバイダーの UTC 時刻に基づくイベントの生成時刻。 |
-| id | 文字列 | イベントの一意識別子。 |
-| data | オブジェクト | Blob Storage イベントのデータ。 |
-| dataVersion | 文字列 | データ オブジェクトのスキーマ バージョン。 スキーマ バージョンは発行元によって定義されます。 |
-| metadataVersion | 文字列 | イベント メタデータのスキーマ バージョン。 最上位プロパティのスキーマは Event Grid によって定義されます。 この値は Event Grid によって指定されます。 |
+| topic | string | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
+| subject | string | 発行元が定義したイベントの対象のパス。 |
+| eventType | string | このイベント ソース用に登録されたイベントの種類のいずれか。 |
+| eventTime | string | プロバイダーの UTC 時刻に基づくイベントの生成時刻。 |
+| id | string | イベントの一意識別子。 |
+| data | object | Blob Storage イベントのデータ。 |
+| dataVersion | string | データ オブジェクトのスキーマ バージョン。 スキーマ バージョンは発行元によって定義されます。 |
+| metadataVersion | string | イベント メタデータのスキーマ バージョン。 最上位プロパティのスキーマは Event Grid によって定義されます。 この値は Event Grid によって指定されます。 |
 
 データ オブジェクトには、次のプロパティがあります。
 
-| プロパティ | type | 説明 |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
-| api | 文字列 | イベントのトリガーとなった操作。 |
-| clientRequestId | 文字列 | クライアントによって生成される opaque 値 (文字数の上限は 1 KB)。 Storage Analytics のログを有効にすると、Analytics のログに記録されます。 |
-| requestId | 文字列 | 要求の一意の識別子。 要求のトラブルシューティングに使用されます。 |
-| eTag | 文字列 | この値を使用することで、条件に応じて操作を実行することができます。 |
-| contentType | 文字列 | BLOB に関して指定されたコンテンツの種類。 |
+| api | string | イベントのトリガーとなった操作。 |
+| clientRequestId | string | クライアントによって生成される opaque 値 (文字数の上限は 1 KB)。 Storage Analytics のログを有効にすると、Analytics のログに記録されます。 |
+| requestId | string | 要求の一意の識別子。 要求のトラブルシューティングに使用されます。 |
+| eTag | string | この値を使用することで、条件に応じて操作を実行することができます。 |
+| contentType | string | BLOB に関して指定されたコンテンツの種類。 |
 | contentLength | integer | BLOB のサイズ (単位: バイト)。 |
-| blobType | 文字列 | BLOB の種類。 有効な値は "BlockBlob" または "PageBlob" です。 |
-| url | 文字列 | BLOB へのパス。 |
-| sequencer | 文字列 | ユーザーによって制御される値。要求を追跡する際に使用できます。 |
-| storageDiagnostics | オブジェクト | ストレージ診断に関する情報。 |
+| blobType | string | BLOB の種類。 有効な値は "BlockBlob" または "PageBlob" です。 |
+| url | string | BLOB へのパス。 |
+| sequencer | string | ユーザーによって制御される値。要求を追跡する際に使用できます。 |
+| storageDiagnostics | object | ストレージ診断に関する情報。 |
  
 ## <a name="next-steps"></a>次の手順
 

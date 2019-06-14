@@ -11,11 +11,11 @@ ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
 ms.openlocfilehash: d89a701f1d4528e1f3dff08daf31873891778f07
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369192"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60751394"
 ---
 # <a name="data-science-for-beginners-video-1-the-5-questions-data-science-answers"></a>初心者向けデータ サイエンス解説ビデオ 1:データ サイエンスが回答する 5 つの質問
 トップ データ サイエンティストによる "*初心者向けデータ サイエンス*" の 5 本の短いビデオでは、データ サイエンスの概要を簡単に説明します。 基本的な内容を扱っているビデオですが、データ サイエンスの実行に関心を持っている場合や、データ サイエンティストと共に作業する場合に便利です。
@@ -45,7 +45,7 @@ ms.locfileid: "58369192"
 
 データ サイエンスでは、質問に対する回答を予測するために、数値と名前 (カテゴリやラベルとも呼ばれます) を使用します。
 
-意外かもしれませんが、 *"データ サイエンスが回答する質問は次の 5 つのみです"*。
+意外かもしれませんが、 *"データ サイエンスが回答する質問は次の 5 つのみです"* 。
 
 * A か B か
 * 異常か
@@ -66,7 +66,7 @@ ms.locfileid: "58369192"
 
 2 つの解答が考えられる質問に役立ちます。
 
-例: 
+例:
 
 * 次の 1,000 マイルでこのタイヤが故障するか、しないか
 * 集客が多いのは5 ドルのクーポンと 25% の割引のどちらか

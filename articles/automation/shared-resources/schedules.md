@@ -10,11 +10,11 @@ ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 483f9092d29fc40937ed9d54510269af2af30872
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59008648"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62128806"
 ---
 # <a name="scheduling-a-runbook-in-azure-automation"></a>Azure Automation の Runbook をスケジュール設定する
 
@@ -29,7 +29,7 @@ Azure Automation から PowerShell を使用してスケジュールを作成し
 
 | コマンドレット | 説明 |
 |:--- |:--- |
-| [Get-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/get-azurermautomationschedule) |スケジュールを取得します。 |
+| [Get AzureRmAutomationSchedule](/powershell/module/azurerm.automation/get-azurermautomationschedule) |スケジュールを取得します。 |
 | [New-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/new-azurermautomationschedule) |新しいスケジュールを作成します。 |
 | [Remove-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/remove-azurermautomationschedule) |スケジュールを削除します。 |
 | [Set-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/set-azurermautomationschedule) |既存のスケジュールのプロパティを設定します。 |
@@ -50,16 +50,16 @@ Runbook の新しいスケジュールは、Azure portal または PowerShell �
 1. Azure Portal の Automation アカウントから、左側の **[共有リソース]** セクションで **[スケジュール]** を選択します。
 2. ページ上部の **[スケジュールの追加]** をクリックします。
 3. **[新しいスケジュール]** ウィンドウで、新しいスケジュールの**名前**と、必要に応じて**説明**を入力します。
-4. スケジュールを 1 回だけ実行するか、繰り返し実行するかを、**[1 回]** または **[Recurring]\(繰り返し\)** から選択します。 **[1 回]** を選択した場合は、**[開始時刻]** を指定し、**[作成]** をクリックします。 **[繰り返し]** を選択した場合は、**[開始時刻]** を指定し、**[間隔]** で、Runbook を繰り返す頻度を **[時間]**、**[日]**、**[週]**、または **[月]** から選択します。
-    1. **[週]** を選択すると、選択可能な曜日の一覧が表示されます。 必要な曜日をすべて選択してください。 ご自身のスケジュールが最初に実行されるのは、開始時刻後に選択されている最初の曜日です。 たとえば、週末のスケジュールを選択するには、**[土曜日]** と **[日曜日]** を選択します。
+4. スケジュールを 1 回だけ実行するか、繰り返し実行するかを、 **[1 回]** または **[Recurring]\(繰り返し\)** から選択します。 **[1 回]** を選択した場合は、 **[開始時刻]** を指定し、 **[作成]** をクリックします。 **[繰り返し]** を選択した場合は、 **[開始時刻]** を指定し、 **[間隔]** で、Runbook を繰り返す頻度を **[時間]** 、 **[日]** 、 **[週]** 、または **[月]** から選択します。
+    1. **[週]** を選択すると、選択可能な曜日の一覧が表示されます。 必要な曜日をすべて選択してください。 ご自身のスケジュールが最初に実行されるのは、開始時刻後に選択されている最初の曜日です。 たとえば、週末のスケジュールを選択するには、 **[土曜日]** と **[日曜日]** を選択します。
 
        ![週末の定期スケジュールの設定](../media/schedules/week-end-weekly-recurrence.png)
 
-    2. **[月]** を選択すると、別のオプションが表示されます。 **[毎月の特定曜日]** オプションで、**[月の日付]** と **[平日]** のいずれかを選択します。 **[月の日]** を選択すると、必要な日付を選択できるカレンダーが表示されます。 現在の月にはない日付 (31 日など) を選択すると、スケジュールは実行されません。 月の最後の日にスケジュールを実行する場合は、**[Run on last day of month]\(月の最終日に実行\)** で **[はい]** を選択します。 **[Week days]\(曜日\)** を選択すると、**[間隔]** オプションが表示されます。 **[第 1]**、**[第 2]**、**[第 3]**、**[第 4]**、または **[Last]\(最終\)** を選択します。 最後に、スケジュールを繰り返す曜日を選択します。
+    2. **[月]** を選択すると、別のオプションが表示されます。 **[毎月の特定曜日]** オプションで、 **[月の日付]** と **[平日]** のいずれかを選択します。 **[月の日]** を選択すると、必要な日付を選択できるカレンダーが表示されます。 現在の月にはない日付 (31 日など) を選択すると、スケジュールは実行されません。 月の最後の日にスケジュールを実行する場合は、 **[Run on last day of month]\(月の最終日に実行\)** で **[はい]** を選択します。 **[Week days]\(曜日\)** を選択すると、 **[間隔]** オプションが表示されます。 **[第 1]** 、 **[第 2]** 、 **[第 3]** 、 **[第 4]** 、または **[Last]\(最終\)** を選択します。 最後に、スケジュールを繰り返す曜日を選択します。
 
        ![初日、15 日、末日の月単位のスケジュール](../media/schedules/monthly-first-fifteenth-last.png)
 
-5. 完了したら、**[作成]** をクリックします。
+5. 完了したら、 **[作成]** をクリックします。
 
 ### <a name="to-create-a-new-schedule-with-powershell"></a>PowerShell で新しいスケジュールを作成するには
 
@@ -122,7 +122,7 @@ New-AzureRmAutomationSchedule -AutomationAccountName "TestAzureAuto" -Name "1st,
 1. Azure Portal の Automation アカウントから、左側の **[プロセス オートメーション]** セクションで **[Runbook]** を選択します。
 2. Runbook の名前をクリックして、スケジュールを設定します。
 3. 現在、Runbook がスケジュールにリンクされていない場合は、新しいスケジュールを作成するオプション、または既存のスケジュールにリンクするオプションが表示されます。
-4. Runbook にパラメーターがある場合は、**[実行設定を変更する (既定: Azure)]** オプションを選択すると **[パラメーター]** ウィンドウが表示されるので、情報を入力することができます。
+4. Runbook にパラメーターがある場合は、 **[実行設定を変更する (既定: Azure)]** オプションを選択すると **[パラメーター]** ウィンドウが表示されるので、情報を入力することができます。
 
 ### <a name="to-link-a-schedule-to-a-runbook-with-powershell"></a>PowerShell で Runbook にスケジュールをリンクするには
 

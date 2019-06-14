@@ -8,10 +8,10 @@ ms.date: 4/9/2019
 ms.topic: conceptual
 ms.author: ramamill
 ms.openlocfilehash: 9a77b3982d8aed6ae694c32baecd7ae194c51724
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64924845"
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-azure"></a>Azure への VMware ディザスター リカバリーの容量とスケーリングを計画する
@@ -120,7 +120,7 @@ Site Recovery インフラストラクチャを設定する前に、その環境
 
 ## <a name="deploy-additional-process-servers"></a>追加のプロセス サーバーをデプロイする
 
-ソース マシンが 200 台を超えるデプロイ、または合計日次変化率が 2 TB を超えるデプロイでスケールアウトする場合は、トラフィック ボリュームに対応するためにプロセス サーバーを追加する必要があります。 9.24 バージョンで製品を拡張し、スケールアウト プロセス サーバーをセットアップするときの[プロセス サーバーのアラート](vmware-physical-azure-monitor-process-server.md#process-server-alerts)を備えました。 [プロセス サーバーをセットアップして、](vmware-azure-set-up-process-server-scale.md)新しいソース マシンを保護するかまたは[負荷を分散させます](vmware-azure-manage-process-server.md#move-vms-to-balance-the-process-server-load)。
+ソース マシンが 200 台を超えるデプロイ、または合計日次変化率が 2 TB を超えるデプロイでスケールアウトする場合は、トラフィック ボリュームに対応するためにプロセス サーバーを追加する必要があります。 9\.24 バージョンで製品を拡張し、スケールアウト プロセス サーバーをセットアップするときの[プロセス サーバーのアラート](vmware-physical-azure-monitor-process-server.md#process-server-alerts)を備えました。 [プロセス サーバーをセットアップして、](vmware-azure-set-up-process-server-scale.md)新しいソース マシンを保護するかまたは[負荷を分散させます](vmware-azure-manage-process-server.md#move-vms-to-balance-the-process-server-load)。
 
 ### <a name="migrate-machines-to-use-the-new-process-server"></a>マシンを移行して新しいプロセス サーバーを使用する
 

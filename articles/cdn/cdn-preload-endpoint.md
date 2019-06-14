@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 02/12/2018
 ms.author: magattus
 ms.openlocfilehash: 0d34985c8d83e8adad43aeec36ead939d8b22132
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58918367"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60627401"
 ---
 # <a name="pre-load-assets-on-an-azure-cdn-endpoint"></a>Azure CDN エンドポイント上の資産を事前に読み込む
 [!INCLUDE [cdn-verizon-only](../../includes/cdn-verizon-only.md)]
@@ -37,7 +37,7 @@ ms.locfileid: "58918367"
 1. [Azure Portal](https://portal.azure.com) で、事前に読み込むエンドポイントを含む CDN プロファイルを参照します。 プロファイルのウィンドウが開きます。
     
 2. リスト内のエンドポイントをクリックします。 エンドポイントのウィンドウが開きます。
-3. CDN エンドポイント ウィンドウで、**[読み込み]** を選択します。
+3. CDN エンドポイント ウィンドウで、 **[読み込み]** を選択します。
    
     ![CDN エンドポイント ウィンドウ](./media/cdn-preload-endpoint/cdn-endpoint-blade.png)
    
@@ -47,7 +47,7 @@ ms.locfileid: "58918367"
 4. **[コンテンツ パス]** で、読み込む各アセットの完全なパスを入力します (たとえば、`/pictures/kitten.png`)。
    
    > [!TIP]
-   > テキストの入力を開始すると、**[コンテンツ パス]** テキスト ボックスが追加されるため、複数のアセットの一覧を作成できます。 一覧からアセットを削除するには、省略記号 (...) ボタンを選択し、**[削除]** を選択します。
+   > テキストの入力を開始すると、 **[コンテンツ パス]** テキスト ボックスが追加されるため、複数のアセットの一覧を作成できます。 一覧からアセットを削除するには、省略記号 (...) ボタンを選択し、 **[削除]** を選択します。
    > 
    > 各コンテンツ パスは、次の[正規表現](/dotnet/standard/base-types/regular-expression-language-quick-reference)に準拠する相対 URL にする必要があります。  
    > - 1 つのファイル パスの読み込み: `^(?:\/[a-zA-Z0-9-_.%=\u0020]+)+$`  
@@ -58,7 +58,7 @@ ms.locfileid: "58918367"
    > 
    
     ![[読み込み] ボタン](./media/cdn-preload-endpoint/cdn-load-paths.png)
-5. コンテンツ パスの入力が終わったら、**[読み込み]** を選択します。
+5. コンテンツ パスの入力が終わったら、 **[読み込み]** を選択します。
    
 
 > [!NOTE]

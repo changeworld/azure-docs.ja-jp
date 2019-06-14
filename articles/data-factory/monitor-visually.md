@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: shlo
 ms.openlocfilehash: df684860cd3d1b6a002a300682ca4c6398461ba6
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54409964"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60716898"
 ---
 # <a name="visually-monitor-azure-data-factories"></a>Azure Data Factory を視覚的に監視する
 Azure Data Factory は、データドリブン型のワークフローをクラウドに作成することでデータの移動と変換を制御し、自動化することができるクラウドベースのデータ統合サービスです。 Azure Data Factory を使えば、データ主導型のワークフロー (パイプライン) を作成し、スケジューリングできます。具体的には、各種データ ストアからデータを取り込む、そのデータを各種コンピューティング サービス (Azure HDInsight Hadoop、Spark、Azure Data Lake Analytics、Azure Machine Learning など) で処理/変換する、データ ストア (Azure SQL Data Warehouse など) に出力データを公開して、それを利用するビジネス インテリジェンス (BI) アプリケーションに提供するという一連の処理を行えるワークフローです。
@@ -42,7 +42,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 | Pipeline Name (パイプライン名) | パイプラインの名前。 |
 | Actions | アクティビティ実行の表示に使用できる単一のアクション。 |
 | Run Start (実行の開始) | パイプラインの実行の開始日時 (MM/DD/YYYY, HH:MM:SS AM/PM) |
-| duration | 実行期間 (HH:MM:SS) |
+| Duration | 実行期間 (HH:MM:SS) |
 | Triggered By (トリガー元) | 手動トリガー、スケジュール トリガー |
 | Status | 失敗、成功、進行中 |
 | parameters | パイプラインの実行パラメーター (名前、値のペア) |
@@ -59,10 +59,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 | Activity Name (アクティビティ名) | パイプライン内のアクティビティの名前。 |
 | Activity Type (アクティビティの種類) | アクティビティの種類 (Copy、HDInsightSpark、HDInsightHive など) |
 | Run Start (実行の開始) | アクティビティの実行の開始日時 (MM/DD/YYYY, HH:MM:SS AM/PM) |
-| duration | 実行期間 (HH:MM:SS) |
+| Duration | 実行期間 (HH:MM:SS) |
 | Status | 失敗、成功、進行中 |
 | 入力 | アクティビティの入力を記述する JSON 配列 |
-| 出力 | アクティビティの出力を記述する JSON 配列 |
+| Output | アクティビティの出力を記述する JSON 配列 |
 | Error | アクティビティの実行エラー (発生した場合) |
 
 ![アクティビティの実行を監視する](media/monitor-visually/activity-runs.png)
@@ -101,7 +101,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="promote-user-properties-to-monitor"></a>監視対象のユーザー プロパティを昇格する
 
-監視可能なエンティティになるように、任意のパイプラインのアクティビティ プロパティをユーザー プロパティとして昇格できます。 たとえば、パイプラインのコピー アクティビティの **Source** プロパティと **Destination** プロパティをユーザー プロパティとして昇格できます。 また、**[自動生成]** を選択して、コピー アクティビティの **Source** および **Destination** ユーザー プロパティを生成することもできます。
+監視可能なエンティティになるように、任意のパイプラインのアクティビティ プロパティをユーザー プロパティとして昇格できます。 たとえば、パイプラインのコピー アクティビティの **Source** プロパティと **Destination** プロパティをユーザー プロパティとして昇格できます。 また、 **[自動生成]** を選択して、コピー アクティビティの **Source** および **Destination** ユーザー プロパティを生成することもできます。
 
 ![ユーザー プロパティの作成](media/monitor-visually/monitor-user-properties-image1.png)
 
@@ -146,7 +146,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="alerts"></a>アラート
 
-Data Factory で、サポートされるメトリックに対してアラートを生成できます。 Data Factory の [監視] ページで **[監視]、[Alerts & Metrics]\(アラートとメトリック\)**  の順に選択して開始します。
+Data Factory で、サポートされるメトリックに対してアラートを生成できます。 Data Factory の [監視] ページで **[監視]、[Alerts & Metrics]\(アラートとメトリック\)**   の順に選択して開始します。
 
 ![](media/monitor-visually/alerts01.png)
 
@@ -156,7 +156,7 @@ Data Factory で、サポートされるメトリックに対してアラート�
 
 ### <a name="create-alerts"></a>アラートを作成する
 
-1.  **[+ 新しいアラート ルール]**  をクリックして新しいアラートを作成します。
+1.  **[+ 新しいアラート ルール]**   をクリックして新しいアラートを作成します。
 
     ![](media/monitor-visually/alerts02.png)
 

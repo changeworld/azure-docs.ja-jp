@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/30/2016
 ms.author: crdun
 ms.openlocfilehash: 44c54b570a38eb1a3b9ca773893599d1d497dfa2
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52972152"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62110993"
 ---
 # <a name="enable-offline-sync-for-your-cordova-mobile-app"></a>Cordova モバイル アプリのオフライン同期を有効にする
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
@@ -66,7 +66,7 @@ ms.locfileid: "52972152"
         // Get the sync context from the client
         syncContext = client.getSyncContext();
 
-    上記のコードの追加によって、ローカル ストアが初期化され、Azure バックエンドで使用される列の値が一致するローカル テーブルが定義されます  (このコードにすべての列の値を含める必要はありません)。`version` フィールドは、モバイル バックエンドが管理し、競合の解決に使用します。
+    上記のコードの追加によって、ローカル ストアが初期化され、Azure バックエンドで使用される列の値が一致するローカル テーブルが定義されます (このコードにすべての列の値を含める必要はありません)。`version` フィールドは、モバイル バックエンドが管理し、競合の解決に使用します。
 
     同期コンテキストへの参照を取得するには、 **getSyncContext**を呼び出します。 同期コンテキストは、 `.push()` が呼び出されたときに、クライアント アプリが変更を行ったすべてのテーブルで、変更を追跡およびプッシュすることで、テーブルの関係を保持するのに役立ちます。
 
@@ -173,7 +173,7 @@ ms.locfileid: "52972152"
 
 5. (省略可能) Visual Studio を使用して、Azure SQL Database テーブルを表示し、バックエンドのデータベースのデータが変更されていないことを確認します。
 
-    Visual Studio で、 **サーバー エクスプローラー**を開きます。 **[Azure]**->**[SQL Databases]** を選択して、データベースに移動します。 データベースを右クリックし、 **[SQL Server オブジェクト エクスプローラーで開く]** を選択します。 これで SQL データベースのテーブルとその内容を参照できます。
+    Visual Studio で、 **サーバー エクスプローラー**を開きます。 **[Azure]** -> **[SQL Databases]** を選択して、データベースに移動します。 データベースを右クリックし、 **[SQL Server オブジェクト エクスプローラーで開く]** を選択します。 これで SQL データベースのテーブルとその内容を参照できます。
 
 ## <a name="optional-test-the-reconnection-to-your-mobile-backend"></a>(省略可能) モバイル バックエンドへの再接続のテスト
 

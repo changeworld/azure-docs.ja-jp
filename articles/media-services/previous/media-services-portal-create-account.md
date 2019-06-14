@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: ddc1c7f2dd207cba18a8c080c8b14cc53c149a39
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59797271"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61463448"
 ---
 # <a name="create-a-media-services-account-using-the-azure-portal"></a>Azure portal を使用して Media Services アカウントを作成する
 
@@ -46,7 +46,7 @@ Media Services アカウントおよび関連するすべてのストレージ �
 このセクションでは、AMS アカウントを作成する方法について説明します。
 
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
-2. **[+新規]** > **[Web + モバイル]** > **[Media Services]** の順にクリックします。
+2. **[+新規]**  >  **[Web + モバイル]**  >  **[Media Services]** の順にクリックします。
    
     ![Media Services Create](./media/media-services-create-account/media-services-new1.png)
 3. **[CREATE MEDIA SERVICES ACCOUNT (Media Services アカウントの作成)]** に必要な値を入力します。
@@ -70,7 +70,7 @@ Media Services アカウントおよび関連するすべてのストレージ �
    
 ## <a name="to-manage-your-ams-account"></a>AMS アカウントを管理するには
 
-AMS アカウントの管理 (たとえば、プログラムによる AMS API への接続、ビデオのアップロード、資産のエンコード、コンテンツ保護の構成、ジョブの進行状況の監視など) を行うには、ポータルの左側にある **[設定]** を選択します。 **[設定]** から、使用可能ないずれかのブレード (たとえば、**[API アクセス]**、**[資産]**、**[ジョブ]**、**[コンテンツ保護]**) に移動します。
+AMS アカウントの管理 (たとえば、プログラムによる AMS API への接続、ビデオのアップロード、資産のエンコード、コンテンツ保護の構成、ジョブの進行状況の監視など) を行うには、ポータルの左側にある **[設定]** を選択します。 **[設定]** から、使用可能ないずれかのブレード (たとえば、 **[API アクセス]** 、 **[資産]** 、 **[ジョブ]** 、 **[コンテンツ保護]** ) に移動します。
 
 
 ## <a name="next-steps"></a>次の手順

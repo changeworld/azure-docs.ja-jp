@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
 ms.openlocfilehash: c70e88a572bc261ad9d25f9a742b1987d0c19b44
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540841"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60656719"
 ---
 # <a name="issue-templates-in-azure-api-management"></a>Azure API Management の問題テンプレート
 Azure API Management には、開発者ポータルの各ページの内容を、内容を構成するテンプレート セットを使用してカスタマイズする機能があります。 [DotLiquid](http://dotliquidmarkup.org/) 構文、好みのエディター ([DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)など)、および用意されているローカライズされた[文字列リソース](api-management-template-resources.md#strings)、[グリフ リソース](api-management-template-resources.md#glyphs)、および[ページ コントロール](api-management-page-controls.md)のセットをテンプレートで使用して、表示されるページの内容を自由に構成できます。  
@@ -103,7 +103,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 |`Paging`|[Paging](api-management-template-data-model-reference.md#Paging) エンティティ。|アプリケーション コレクションのページング情報。|  
 |`IsAuthenticated`|ブール値|現在のユーザーが開発者ポータルにサインインしているかどうか。|  
 |`CanReportIssues`|ブール値|問題を報告する権限が現在のユーザーにあるかどうか。|  
-|`Search`|文字列|このプロパティは非推奨です。使用しないでください。|  
+|`Search`|string|このプロパティは非推奨です。使用しないでください。|  
   
 ### <a name="sample-template-data"></a>サンプル テンプレート データ  
   

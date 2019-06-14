@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 01/16/2018
 ms.author: alkohli
 ms.openlocfilehash: 80f01a926b94deebab59f8ef91bfc36a4600b5f0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57885052"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60632360"
 ---
 # <a name="use-the-net-sdk-to-initiate-data-transformation"></a>.NET SDK を使用してデータ変換を開始する
 
@@ -82,12 +82,12 @@ ms.locfileid: "57885052"
 
 4. ここで、[dlls](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/tree/master/Data_Manager_Job_Run/dlls) フォルダーに存在するすべての dll を、作成したプロジェクトに**参照**として追加します。 dll ファイルを追加するには、次の手順を実行します。
 
-   1. Visual Studio で、**[表示] > [ソリューション エクスプ ローラー]** の順に移動します。
-   2. データ変換アプリ プロジェクトの左側にある矢印をクリックします。 **[参照]** をクリックし、**[参照の追加]** を右クリックします。
+   1. Visual Studio で、 **[表示] > [ソリューション エクスプ ローラー]** の順に移動します。
+   2. データ変換アプリ プロジェクトの左側にある矢印をクリックします。 **[参照]** をクリックし、 **[参照の追加]** を右クリックします。
     
        ![dlls の追加 1](media/storsimple-data-manager-dotnet-jobs/create-new-project-4.png)
 
-   3. パッケージ フォルダーの場所に移動し、すべての DLL を選択して、**[追加]**、**[OK]** の順にクリックします。
+   3. パッケージ フォルダーの場所に移動し、すべての DLL を選択して、 **[追加]** 、 **[OK]** の順にクリックします。
 
        ![dlls の追加 2](media/storsimple-data-manager-dotnet-jobs/create-new-project-6.png)
 

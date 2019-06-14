@@ -16,11 +16,11 @@ ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 04e8615cc5534255308c35fa1f675ef3a85aa84e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59493554"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60438455"
 ---
 # <a name="activate-my-azure-resource-roles-in-pim"></a>PIM で自分の Azure リソース ロールをアクティブにする
 
@@ -50,7 +50,7 @@ Azure リソース ロールが必要な場合は、PIM の **[自分のロー�
 
 1. **[アクティブ化]** をクリックして、[アクティブ化] ウィンドウを開きます。
 
-1. お使いのロールで多要素認証 (MFA) が必要な場合は、**[続行する前に ID を確認してください]** をクリックします。 認証は、セッションごとに 1 回だけ行う必要があります。
+1. お使いのロールで多要素認証 (MFA) が必要な場合は、 **[続行する前に ID を確認してください]** をクリックします。 認証は、セッションごとに 1 回だけ行う必要があります。
 
     ![ロール アクティブ化前の MFA の確認](./media/pim-resource-roles-activate-your-roles/resources-my-roles-mfa.png)
 
@@ -58,7 +58,7 @@ Azure リソース ロールが必要な場合は、PIM の **[自分のロー�
 
     ![追加のセキュリティ確認](./media/pim-resource-roles-activate-your-roles/resources-mfa-enter-code.png)
 
-1. より狭いスコープを指定する場合は、**[Scope]\(スコープ\)** をクリックして [リソース フィルター] ウィンドウを開きます。
+1. より狭いスコープを指定する場合は、 **[Scope]\(スコープ\)** をクリックして [リソース フィルター] ウィンドウを開きます。
 
     ベスト プラクティスは、必要なリソースへのアクセスのみを要求することです。 [リソース フィルター] ウィンドウでは、アクセスする必要があるリソース グループまたはリソースを指定できます。
 

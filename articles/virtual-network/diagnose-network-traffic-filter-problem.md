@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 05/29/2018
 ms.author: kumud
 ms.openlocfilehash: f84e8a24e8f28cdccc987afbd1449cb17422ce0c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64712672"
 ---
 # <a name="diagnose-a-virtual-machine-network-traffic-filter-problem"></a>仮想マシン ネットワーク トラフィック フィルターの問題を診断する
@@ -38,7 +38,7 @@ NSG を使うと、VM を出入りするトラフィックの種類を制御で�
 
 1. [必要なアクセス許可](virtual-network-network-interface.md#permissions)を持つアカウントで Azure [portal](https://portal.azure.com) にログインします。
 2. Azure portal の上部の検索ボックスに、VM の名前を入力します。 検索結果に VM の名前が表示されたら、それを選択します。
-3. 次の図に示すように、**[設定]** で **[ネットワーク]** を選択します。
+3. 次の図に示すように、 **[設定]** で **[ネットワーク]** を選択します。
 
    ![セキュリティ規則を表示する](./media/diagnose-network-traffic-filter-problem/view-security-rules.png)
 
@@ -49,13 +49,13 @@ NSG を使うと、VM を出入りするトラフィックの種類を制御で�
 
    **DenyAllInBound** という名前のルールが、「[シナリオ](#scenario)」で説明したように、ポート 80 経由でのインターネットから VM への受信通信を妨げています。 規則の **[ソース]** には *0.0.0.0/0* と表示されており、これにはインターネットが含まれます。 優先順位がそれより高くて (小さい値) ポート 80 での受信を許可する規則は他にありません。 インターネットから VM へのポート 80 での受信を許可する方法については、「[問題を解決する](#resolve-a-problem)」をご覧ください。 セキュリティ規則および Azure によるその適用方法について詳しくは、「[ネットワーク セキュリティ グループ](security-overview.md)」をご覧ください。
 
-   図の下部には、**[送信ポートの規則]** も示されています。 そこには、ネットワーク インターフェイスの送信ポート規則が表示されます。 図で各 NSG に表示されている受信規則は 4 つだけですが、もっと多くの規則がある場合もあります。 図では、**[ソース]** と **[ターゲット]** に **VirtualNetwork** と、また **[ソース]** に **AzureLoadBalancer** と表示されています。 **VirtualNetwork** と **AzureLoadBalancer** は [サービス タグ](security-overview.md#service-tags)です。 サービス タグは IP アドレス プレフィックスのグループを表し、セキュリティ規則の作成の複雑さを最小限に抑えるのに役立ちます。
+   図の下部には、 **[送信ポートの規則]** も示されています。 そこには、ネットワーク インターフェイスの送信ポート規則が表示されます。 図で各 NSG に表示されている受信規則は 4 つだけですが、もっと多くの規則がある場合もあります。 図では、 **[ソース]** と **[ターゲット]** に **VirtualNetwork** と、また **[ソース]** に **AzureLoadBalancer** と表示されています。 **VirtualNetwork** と **AzureLoadBalancer** は [サービス タグ](security-overview.md#service-tags)です。 サービス タグは IP アドレス プレフィックスのグループを表し、セキュリティ規則の作成の複雑さを最小限に抑えるのに役立ちます。
 
 4. VM が実行状態であることを確認した後、前の図のように **[有効なセキュリティ規則]** を選択して、次の図のように有効なセキュリティ規則を表示します。
 
    ![有効なセキュリティ規則を表示する](./media/diagnose-network-traffic-filter-problem/view-effective-security-rules.png)
 
-   表示されている規則はステップ 3 と同じですが、ネットワーク インターフェイスとサブネットに関連付けられている NSG に対する別のタブがあります。 図に示すように、最初の 50 規則のみが表示されています。 すべての規則を含む .csv ファイルをダウンロードするには、**[ダウンロード]** を選択します。
+   表示されている規則はステップ 3 と同じですが、ネットワーク インターフェイスとサブネットに関連付けられている NSG に対する別のタブがあります。 図に示すように、最初の 50 規則のみが表示されています。 すべての規則を含む .csv ファイルをダウンロードするには、 **[ダウンロード]** を選択します。
 
    各サービス タグが表すプレフィックスを確認するには、**AllowAzureLoadBalancerInbound** のような規則を選択します。 次の図では、**AzureLoadBalancer** サービス タグのプレフィックスが示されています。
 

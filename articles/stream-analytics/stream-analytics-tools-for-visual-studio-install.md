@@ -10,11 +10,11 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/22/2018
 ms.openlocfilehash: 673f4935dce28b30c10e6abf4c7d22e00c1dd73a
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56343912"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60762237"
 ---
 # <a name="install-azure-stream-analytics-tools-for-visual-studio"></a>Visual Studio の Azure Stream Analytics ツールのインストール
 Azure Stream Analytics ツールでは、Visual Studio 2017、2015、2013 がサポートされます。 この記事では、ツールのインストールとアンインストールの方法を説明します。
@@ -34,7 +34,7 @@ Azure Stream Analytics ツールでは、Visual Studio 2017、2015、2013 がサ
 
 ![[Azure の開発] ワークロードが選択される](./media/stream-analytics-tools-for-visual-studio-install/stream-analytics-tools-for-vs-2017-install-02.png)
 
-* [ツール] メニューの **[拡張機能と更新プログラム]** を選択します。 インストールされた拡張機能で Azure Data Lake および Stream Analytics ツールを見つけて、**[更新]** をクリックし、最新の拡張機能をインストールします。 
+* [ツール] メニューの **[拡張機能と更新プログラム]** を選択します。 インストールされた拡張機能で Azure Data Lake および Stream Analytics ツールを見つけて、 **[更新]** をクリックし、最新の拡張機能をインストールします。 
 
 ![Visual Studio の拡張機能と更新プログラム](./media/stream-analytics-tools-for-visual-studio-install/stream-analytics-tools-for-vs-extensions-updates.png)
 
@@ -57,7 +57,7 @@ Azure Stream Analytics ツールでは、Visual Studio 2017、2015、2013 がサ
 ## <a name="uninstall"></a>アンインストール
 
 ### <a name="visual-studio-2019-and-2017"></a>Visual Studio 2019 および 2017
-Visual Studio インストーラーをダブルクリックし、**[変更]** を選択します。 **[データの保存と処理]** ワークロードまたは **[Azure の開発]** ワークロードから、**[Azure Data Lake および Stream Analytics ツール]** チェック ボックスをオフにします。
+Visual Studio インストーラーをダブルクリックし、 **[変更]** を選択します。 **[データの保存と処理]** ワークロードまたは **[Azure の開発]** ワークロードから、 **[Azure Data Lake および Stream Analytics ツール]** チェック ボックスをオフにします。
 
 ### <a name="visual-studio-2015-and-2013"></a>Visual Studio 2015 および 2013
 コントロール パネルに移動し、**Microsoft Azure Data Lake and Stream Analytics tools for Visual Studio** をアンインストールします。

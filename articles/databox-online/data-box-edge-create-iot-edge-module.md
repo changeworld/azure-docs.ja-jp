@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: alkohli
 ms.openlocfilehash: c2803ba598895834bb197f4a06ff0635354fcaca
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64680891"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-data-box-edge"></a>Data Box Edge 上のファイルを移動する C# IoT Edge モジュールを開発する
@@ -53,8 +53,8 @@ Data Box Edge デバイスでは、IoT Edge モジュールを展開して実行
 - 次の開発リソース。
 
     - [Visual Studio Code](https://code.visualstudio.com/)。
-    - [Visual Studio Code 用の C# (OmniSharp を使用) 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp) 
-    - [Visual Studio Code 用の Azure IoT Edge 拡張機能](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) 
+    - [Visual Studio Code 用の C# (OmniSharp を使用) 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
+    - [Visual Studio Code 用の Azure IoT Edge 拡張機能](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge)
     - [.NET Core 2.1 SDK](https://www.microsoft.com/net/download)。
     - [Docker CE](https://store.docker.com/editions/community/docker-ce-desktop-windows)。 ソフトウェアをダウンロードしてインストールするには、アカウントの作成が必要になる場合があります。
 
@@ -76,7 +76,7 @@ Azure Container Registry は、プライベート Docker コンテナー イメ�
       ![コンテナー レジストリを作成する](./media/data-box-edge-create-iot-edge-module/create-container-registry-1.png)
  
 4. **作成** を選択します。
-5. コンテナー レジストリが作成されたら、その場所を参照し、**[アクセス キー]** を選択します。
+5. コンテナー レジストリが作成されたら、その場所を参照し、 **[アクセス キー]** を選択します。
 
     ![アクセス キーを取得する](./media/data-box-edge-create-iot-edge-module/get-access-keys-1.png)
  
@@ -91,7 +91,7 @@ Azure Container Registry は、プライベート Docker コンテナー イメ�
 
 独自のコードでカスタマイズできる C# ソリューション テンプレートを作成します。
 
-1. Visual Studio Code で、**[表示] > [コマンド パレット]** を選択して、VS Code コマンド パレットを開きます。
+1. Visual Studio Code で、 **[表示] > [コマンド パレット]** を選択して、VS Code コマンド パレットを開きます。
 2. コマンド パレットで、**Azure: Sign in** コマンドを入力して実行し、手順に従って Azure アカウントにサインインします。 既にサインインしている場合、この手順は省略できます。
 3. コマンド パレットで、**Azure IoT Edge: New IoT Edge solution** コマンドを入力して実行します。 コマンド パレットで、次の情報を指定してソリューションを作成します。
 
@@ -115,7 +115,7 @@ Azure Container Registry は、プライベート Docker コンテナー イメ�
 
     ![新しいソリューションの作成 4](./media/data-box-edge-create-iot-edge-module/create-new-solution-4.png)
 
-5. 先に作成した **[EdgeSolution]** フォルダーを選択します。 VS Code ウィンドウに、IoT Edge ソリューション ワークスペースと 5 つの上位レベル コンポーネントが表示されます。 この記事では、**.vscode** フォルダー、**.gitignore** ファイル、**.env** ファイル、**deployment.template.json** は編集しません。
+5. 先に作成した **[EdgeSolution]** フォルダーを選択します。 VS Code ウィンドウに、IoT Edge ソリューション ワークスペースと 5 つの上位レベル コンポーネントが表示されます。 この記事では、 **.vscode** フォルダー、 **.gitignore** ファイル、 **.env** ファイル、**deployment.template.json** は編集しません。
     
     変更するコンポーネントは、モジュール フォルダーだけです。 このフォルダーには、モジュールの C# コードと、モジュールをコンテナー イメージとしてビルドするための Docker ファイルが含まれています。
 
@@ -123,7 +123,7 @@ Azure Container Registry は、プライベート Docker コンテナー イメ�
 
 ### <a name="update-the-module-with-custom-code"></a>カスタム コードでモジュールを更新する
 
-1. VS Code エクスプローラーで、**[モジュール] > [FileCopyModule] > [Program.cs]** の順に開きます。
+1. VS Code エクスプローラーで、 **[モジュール] > [FileCopyModule] > [Program.cs]** の順に開きます。
 2. **[FileCopyModule]** 名前空間の上部で、後で使用する型として次の using ステートメントを追加します。 **Microsoft.Azure.Devices.Client.Transport.Mqtt** は、メッセージを IoT Edge Hub に送信するためのプロトコルです。
 
     ```
@@ -252,7 +252,7 @@ Azure Container Registry は、プライベート Docker コンテナー イメ�
 
 2. 入力を求められたら、パスワードを入力します。 ログイン サーバー、ユーザー名、パスワードは、Azure portal のコンテナー レジストリ内の **[アクセス キー]** から取得することもできます。
  
-3. 資格情報を提供すると、モジュール イメージを Azure Container Registry にプッシュできます。 VS Code エクスプローラーで、**module.json** ファイルを右クリックし、**[Build and Push IoT Edge solution] (IoT Edge ソリューションのビルドとプッシュ)** を選択します。
+3. 資格情報を提供すると、モジュール イメージを Azure Container Registry にプッシュできます。 VS Code エクスプローラーで、**module.json** ファイルを右クリックし、 **[Build and Push IoT Edge solution] (IoT Edge ソリューションのビルドとプッシュ)** を選択します。
 
     ![IoT Edge ソリューションをビルドしてプッシュする](./media/data-box-edge-create-iot-edge-module/build-iot-edge-solution-2.png)
  

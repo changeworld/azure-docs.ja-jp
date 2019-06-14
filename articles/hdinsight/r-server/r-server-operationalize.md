@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.openlocfilehash: 916c4fae8eed9451080f92e97743876e89bd25ea
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64719760"
 ---
 # <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>Azure HDInsight 上の ML サービス クラスターの運用化
@@ -142,21 +142,21 @@ ML サービス クラスターは [Apache Hadoop YARN](https://hadoop.apache.or
 
 次の手順に従って、worker ノードの使用を停止します。
 
-1. クラスターの Ambari コンソールにログインして、**[ホスト]** タブをクリックします。
+1. クラスターの Ambari コンソールにログインして、 **[ホスト]** タブをクリックします。
 
 1. (使用を停止する) worker ノードを選択します。
 
-1. **[アクション]** > **[選択したホスト]** > **[ホスト]** > **[メンテナンス モードの有効化]** の順にクリックします。 たとえば、次の画像では、使用停止の対象として wn3 と wn4 が選択されています。  
+1. **[アクション]**  >  **[選択したホスト]**  >  **[ホスト]**  >  **[メンテナンス モードの有効化]** の順にクリックします。 たとえば、次の画像では、使用停止の対象として wn3 と wn4 が選択されています。  
 
    ![ワーカー ノードの使用停止](./media/r-server-operationalize/get-started-operationalization.png)  
 
-* **[アクション]** > **[選択したホスト]** > **[DataNodes]** の順に選択し、**[使用停止]** をクリックします。
-* **[アクション]** > **[選択したホスト]** > **[NodeManagers]** の順に選択し、**[使用停止]** をクリックします。
-* **[アクション]** > **[選択したホスト]** > **[DataNodes]** の順に選択し、**[停止]** をクリックします。
-* **[アクション]** > **[選択したホスト]** > **[NodeManagers]** の順に選択し、**[停止]** をクリックします。
-* **[アクション]** > **[選択したホスト]** > **[ホスト]** の順に選択し、**[Stop All Components]\(すべてのコンポーネントを停止\)** をクリックします。
+* **[アクション]**  >  **[選択したホスト]**  >  **[DataNodes]** の順に選択し、 **[使用停止]** をクリックします。
+* **[アクション]**  >  **[選択したホスト]**  >  **[NodeManagers]** の順に選択し、 **[使用停止]** をクリックします。
+* **[アクション]**  >  **[選択したホスト]**  >  **[DataNodes]** の順に選択し、 **[停止]** をクリックします。
+* **[アクション]**  >  **[選択したホスト]**  >  **[NodeManagers]** の順に選択し、 **[停止]** をクリックします。
+* **[アクション]**  >  **[選択したホスト]**  >  **[ホスト]** の順に選択し、 **[Stop All Components]\(すべてのコンポーネントを停止\)** をクリックします。
 * ワーカー ノードの選択を解除し、ヘッド ノードを選択します。
-* **[アクション]** > **[選択したホスト]** > **[ホスト]** の順に選択し、**[Restart All Components]\(すべてのコンポーネントを再起動\)** をクリックします。
+* **[アクション]**  >  **[選択したホスト]**  >  **[ホスト]** の順に選択し、 **[Restart All Components]\(すべてのコンポーネントを再起動\)** をクリックします。
 
 ### <a name="step-2-configure-compute-nodes-on-each-decommissioned-worker-nodes"></a>手順 2:使用停止された各ワーカー ノード上でコンピューティング ノードを構成する
 

@@ -11,11 +11,11 @@ ms.reviewer: klam, LADocs
 ms.date: 10/03/2018
 ms.topic: article
 ms.openlocfilehash: 48fb2d14cd4cf99510fff88b25b9ae45814a92a8
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58882414"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60685554"
 ---
 # <a name="run-actions-based-on-group-status-with-scopes-in-azure-logic-apps"></a>Azure Logic Apps でスコープを利用し、グループの状態に基づいてアクションを実行する
 
@@ -54,7 +54,7 @@ ms.locfileid: "58882414"
 
 1. まだサインインしていない場合は、<a href="https://portal.azure.com" target="_blank">Azure Portal</a> にサインインします。 空のロジック アプリを作成します。
 
-1. **[スケジュール - 繰り返し]** トリガーを追加します。**[間隔]** は "1"、**[頻度]** は [分] に、それぞれ設定します
+1. **[スケジュール - 繰り返し]** トリガーを追加します。 **[間隔]** は "1"、 **[頻度]** は [分] に、それぞれ設定します
 
    ![[スケジュール - 繰り返し] トリガーを設定する](./media/logic-apps-control-flow-run-steps-group-scopes/recurrence.png)
 
@@ -71,7 +71,7 @@ ms.locfileid: "58882414"
       | **API キー** | <*your-Bing-Maps-key*> | あらかじめ取得しておいた Bing 地図のキーを入力します。 | 
       ||||  
 
-   1. この画像の下の表に示すように、**[Get route]\(ルートを取得する\)** アクションを設定します。
+   1. この画像の下の表に示すように、 **[Get route]\(ルートを取得する\)** アクションを設定します。
 
       ![[Bing Maps - Get route]\(Bing 地図 - ルートを取得する\) アクションを設定する](./media/logic-apps-control-flow-run-steps-group-scopes/get-route.png) 
 
@@ -94,11 +94,11 @@ ms.locfileid: "58882414"
 
    1. 条件の名前を次の文言に変更します:**If traffic time is more than specified time (移動時間が指定した時間を超える場合)**
 
-   1. 左端の列で、**[値の選択]** ボックス内をクリックします。動的コンテンツ リストが表示されます。 その一覧から、**[Travel Duration Traffic]\(移動時間の交通量\)** フィールドを選択します (秒単位)。 
+   1. 左端の列で、 **[値の選択]** ボックス内をクリックします。動的コンテンツ リストが表示されます。 その一覧から、 **[Travel Duration Traffic]\(移動時間の交通量\)** フィールドを選択します (秒単位)。 
 
       ![条件をビルドする](./media/logic-apps-control-flow-run-steps-group-scopes/build-condition.png)
 
-   1. 真ん中のボックスで、**[次の値より大きい]** 演算子を選択します。
+   1. 真ん中のボックスで、 **[次の値より大きい]** 演算子を選択します。
 
    1. 右端の列にこの比較値を入力します。これは秒単位であり、10 分であれば次の値になります:**600**
 
@@ -130,11 +130,11 @@ ms.locfileid: "58882414"
 
    1. カーソルが関数の括弧内にある状態で **[動的コンテンツ]** を選択すると、動的コンテンツ リストが表示されます。 
    
-   1. **[ルートを取得する]** セクションから、**[Travel Duration Traffic]\(移動時間の交通量\)** フィールドを選択します。
+   1. **[ルートを取得する]** セクションから、 **[Travel Duration Traffic]\(移動時間の交通量\)** フィールドを選択します。
 
       ![[Travel Duration Traffic]\(移動時間の交通量\) フィールドを選択する](./media/logic-apps-control-flow-run-steps-group-scopes/send-email-2.png)
 
-   1. フィールドが JSON 形式に解決された後、数字 ```60``` に続けて**カンマ** (```,```) を追加して、**[Travel Duration Traffic]\(移動時間の交通量\)** の値を秒から分に変換します。 
+   1. フィールドが JSON 形式に解決された後、数字 ```60``` に続けて**カンマ** (```,```) を追加して、 **[Travel Duration Traffic]\(移動時間の交通量\)** の値を秒から分に変換します。 
    
       ```
       div(body('Get_route')?['travelDurationTraffic'],60)
@@ -144,7 +144,7 @@ ms.locfileid: "58882414"
 
       ![式を仕上げる](./media/logic-apps-control-flow-run-steps-group-scopes/send-email-3.png)  
 
-   1. 完了したら、**[OK]** を選びます。
+   1. 完了したら、 **[OK]** を選びます。
 
    <!-- markdownlint-disable MD038 -->
    1. 式が解決された後は、先頭にスペースを入れたテキスト ``` minutes``` を追加します
@@ -165,7 +165,7 @@ ms.locfileid: "58882414"
 1. 必要なワークフローの場所にスコープを追加します。 たとえば、ロジック アプリ ワークフローに既存の手順間のスコープを追加するには、次の手順を行います。 
 
    1. スコープを追加する場所の矢印の上にポインターを移動します。 
-   **プラス記号** (**+**) を選択し、**[アクションの追加]** を選択します。
+   **プラス記号** ( **+** ) を選択し、 **[アクションの追加]** を選択します。
 
       ![スコープを追加する](./media/logic-apps-control-flow-run-steps-group-scopes/add-scope.png)
 
@@ -177,7 +177,7 @@ ms.locfileid: "58882414"
 1. ここで、スコープ内で実行するステップを追加するか、既存のステップをドラッグします。 この例では、次のアクションをスコープにドラッグします。
       
    * **[Get route]\(ルートを取得する\)**
-   * **If traffic time is more than specified time (移動時間が指定した時間を超える場合)**。**true** と **false** の両方のブランチが含まれます。
+   * **If traffic time is more than specified time (移動時間が指定した時間を超える場合)** 。**true** と **false** の両方のブランチが含まれます。
 
    これでロジック アプリは次の例のようになります。
 
@@ -189,10 +189,10 @@ ms.locfileid: "58882414"
   
 1. 条件で、スコープの状態が "失敗" または "中止" に相当するかどうかを判断する次のような式を追加します。 
 
-   1. 別の行を追加するには、**[追加]** を選択します。 
+   1. 別の行を追加するには、 **[追加]** を選択します。 
 
    1. 各行で左のボックス内をクリックすると、動的コンテンツ リストが表示されます。 
-   動的コンテンツ リストから **[式]** を選択します。 編集ボックスにこの式を入力し、**[OK]** を選択します。 
+   動的コンテンツ リストから **[式]** を選択します。 編集ボックスにこの式を入力し、 **[OK]** を選択します。 
    
       `result('Scope')[0]['status']`
 
@@ -209,7 +209,7 @@ ms.locfileid: "58882414"
 
       次に、条件によってスコープの状態が確認され、後の手順で定義する照合アクションが実行されるように、条件の `runAfter` プロパティを設定します。
 
-   1. **[If scope failed]** 条件で**省略記号** (...) ボタンを選択し、**[実行条件の構成]** を選択します。
+   1. **[If scope failed]** 条件で**省略記号** (...) ボタンを選択し、 **[実行条件の構成]** を選択します。
 
       !["runAfter" プロパティを構成する](./media/logic-apps-control-flow-run-steps-group-scopes/configure-run-after.png)
 
@@ -217,7 +217,7 @@ ms.locfileid: "58882414"
 
       ![スコープの状態を選択する](./media/logic-apps-control-flow-run-steps-group-scopes/select-run-after-statuses.png)
 
-   1. 完了したら、**[完了]** を選択します。 
+   1. 完了したら、 **[完了]** を選択します。 
    条件に "情報" アイコンが表示されます。
 
 1. **[If true]\(true の場合\)** ブランチと **[If false]\(false の場合\)** ブランチに、スコープの状態に基づいて実行するアクション (例: 電子メールまたはメッセージを送信する) を追加します。
@@ -232,7 +232,7 @@ ms.locfileid: "58882414"
 
 ## <a name="test-your-work"></a>作業をテストする
 
-デザイナーのツールバーで、**[実行]** を選択します。 すべてのアクションが成功した場合、ロジック アプリは [Scope succeeded]\(スコープが成功した場合\) のメッセージを送信します。 いずれかのアクションが失敗した場合は、[Scope failed]\(スコープが失敗した場合\) のメッセージが送信されます。 
+デザイナーのツールバーで、 **[実行]** を選択します。 すべてのアクションが成功した場合、ロジック アプリは [Scope succeeded]\(スコープが成功した場合\) のメッセージを送信します。 いずれかのアクションが失敗した場合は、[Scope failed]\(スコープが失敗した場合\) のメッセージが送信されます。 
 
 <a name="scopes-json"></a>
 

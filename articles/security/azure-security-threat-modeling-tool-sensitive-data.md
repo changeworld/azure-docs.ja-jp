@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.openlocfilehash: 27028903daeaf62a25584300944538341a861c80
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57905224"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60610564"
 ---
 # <a name="security-frame-sensitive-data--mitigations"></a>セキュリティ フレーム: 機密データ | 軽減策 
 | 製品/サービス | 記事 |
@@ -161,7 +161,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | 該当なし  |
-| **手順** | パスワード、クレジット カード番号、SSN などの機密データは、画面に表示するときにマスクする必要があります。 これは、承認されていない人物がデータにアクセスするのを防ぐためです (たとえば、サポート担当者が表示しているユーザーの SSN 番号を肩越しに見る、など)。 これらのデータ要素がプレーン テキストで表示されず、適切にマスクされるようにします。 このような対処は、入力を受け付けるときだけでなく (例:  input type = "password")、画面に再表示するときも行う必要があります (例: クレジット カード番号の末尾 4 桁だけを表示する)。 |
+| **手順** | パスワード、クレジット カード番号、SSN などの機密データは、画面に表示するときにマスクする必要があります。 これは、承認されていない人物がデータにアクセスするのを防ぐためです (たとえば、サポート担当者が表示しているユーザーの SSN 番号を肩越しに見る、など)。 これらのデータ要素がプレーン テキストで表示されず、適切にマスクされるようにします。 このような対処は、入力を受け付けるときだけでなく (例: input type = "password")、画面に再表示するときも行う必要があります (例: クレジット カード番号の末尾 4 桁だけを表示する)。 |
 
 ## <a id="dynamic-users"></a>動的データ マスクを実装して、権限を持たないユーザーへの機密データの露出を制限する
 

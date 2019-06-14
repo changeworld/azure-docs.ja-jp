@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.author: ramamill
 ms.date: 02/27/2019
 ms.openlocfilehash: 58c09c71aad2b6244f6e2f3d144c033665932f50
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64925576"
 ---
 # <a name="troubleshoot-mobility-service-push-installation-issues"></a>モビリティ サービスのプッシュ インストールに関する問題のトラブルシューティング
@@ -118,11 +118,11 @@ ms.locfileid: "64925576"
 
 * Windows ファイアウォールを介してファイルとプリンターの共有を有効にする
   * コントロール パネルを開きます。[システムとセキュリティ]、[Windows ファイアウォール] の順に選択し、左側のウィンドウで [詳細設定] をクリックし、コンソール ツリーの [受信の規則] をクリックします。
-  * [ファイルとプリンターの共有 (NB セッション受信)] 規則と [ファイルとプリンターの共有 (SMB 受信)] 規則を探します。 各規則を右クリックして、**[規則の有効化]** をクリックします。
+  * [ファイルとプリンターの共有 (NB セッション受信)] 規則と [ファイルとプリンターの共有 (SMB 受信)] 規則を探します。 各規則を右クリックして、 **[規則の有効化]** をクリックします。
 * グループ ポリシーを使用してファイル共有を有効にする
   * [スタート] メニューに移動し、「gpmc.msc」と入力して検索します。
   * ナビゲーション ウィンドウで、[ローカル コンピューター ポリシー]、[ユーザーの構成]、[管理用テンプレート]、[Windows コンポーネント]、および [ネットワーク共有] の各フォルダーを順に開きます。
-  * 詳細ウィンドウで、**[ユーザーがプロファイル内のファイルを共有できないようにします]** をダブルクリックします。 グループ ポリシー設定を無効にして、ユーザーがファイルを共有できるようにするには、[無効] をクリックします。 [OK] をクリックして変更を保存します。 詳細については、「[グループ ポリシーを使用してファイルの共有を有効または無効にする](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754359(v=ws.10))」を参照してください。
+  * 詳細ウィンドウで、 **[ユーザーがプロファイル内のファイルを共有できないようにします]** をダブルクリックします。 グループ ポリシー設定を無効にして、ユーザーがファイルを共有できるようにするには、[無効] をクリックします。 [OK] をクリックして変更を保存します。 詳細については、「[グループ ポリシーを使用してファイルの共有を有効または無効にする](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754359(v=ws.10))」を参照してください。
 
 **より新しいバージョン**の場合は、「[VMware VM と物理サーバーのディザスター リカバリーのためにモビリティ サービスをインストールする](vmware-azure-install-mobility-service.md)」に記載されている手順に従ってファイルとプリンターの共有を有効にします。
 
@@ -150,7 +150,7 @@ Azure Site Recovery でサポートされているオペレーティング シ�
 
 ### <a name="boot-and-system-partitions--volumes-are-not-the-same-disk-errorid-95309"></a>ブートおよびシステムのパーティション/ボリュームが同じディスクではありません (ErrorID: 95309)
 
-9.20 より前のバージョンでは、異なるディスク上のブートおよびシステムのパーティション/ボリュームは、サポートされる構成ではありませんでした。 [9.20 以降のバージョン](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery)から、この構成がサポートされています。 このサポートを得るために、最新バージョンを使用してください。
+9\.20 より前のバージョンでは、異なるディスク上のブートおよびシステムのパーティション/ボリュームは、サポートされる構成ではありませんでした。 [9.20 以降のバージョン](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery)から、この構成がサポートされています。 このサポートを得るために、最新バージョンを使用してください。
 
 ### <a name="the-boot-disk-is-not-available-errorid-95310"></a>ブート ディスクが使用できない (エラー ID:95310)
 
@@ -162,12 +162,12 @@ Azure Site Recovery でサポートされているオペレーティング シ�
 
 ## <a name="system-partition-on-multiple-disks-errorid-95313"></a>複数のディスク上のシステム パーティション (ErrorID: 95313)
 
-9.20 より前のバージョンでは、複数のディスク上に存在するルート パーティションまたはボリュームは、サポートされる構成ではありませんでした。 [9.20 以降のバージョン](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery)から、この構成がサポートされています。 このサポートを得るために、最新バージョンを使用してください。
+9\.20 より前のバージョンでは、複数のディスク上に存在するルート パーティションまたはボリュームは、サポートされる構成ではありませんでした。 [9.20 以降のバージョン](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery)から、この構成がサポートされています。 このサポートを得るために、最新バージョンを使用してください。
 
 ## <a name="enable-protection-failed-as-device-name-mentioned-in-the-grub-configuration-instead-of-uuid-errorid-95320"></a>GRUB 構成で UUID ではなくデバイス名が指定されているため、保護を有効にできなかった (エラー ID:95320)
 
 **考えられる原因:** </br>
-GRUB 構成ファイル ("/boot/grub/menu.lst"、"/boot/grub/grub.cfg"、"/boot/grub2/grub.cfg"、または "/etc/default/grub") で、**root** パラメーターと **resume** パラメーターの値として、UUID でなく、実際のデバイス名が含まれている可能性があります。 デバイス名は VM のリブートによって変更される可能性があり、フェールオーバー時に VM が同じ名前で起動されないことで問題が発生するため、Site Recovery では UUID を使用する必要があります。 例:  </br>
+GRUB 構成ファイル ("/boot/grub/menu.lst"、"/boot/grub/grub.cfg"、"/boot/grub2/grub.cfg"、または "/etc/default/grub") で、**root** パラメーターと **resume** パラメーターの値として、UUID でなく、実際のデバイス名が含まれている可能性があります。 デバイス名は VM のリブートによって変更される可能性があり、フェールオーバー時に VM が同じ名前で起動されないことで問題が発生するため、Site Recovery では UUID を使用する必要があります。 例: </br>
 
 
 - GRUB ファイル **/boot/grub2/grub.cfg** の次の行。 <br>
@@ -183,7 +183,7 @@ GRUB 構成ファイル ("/boot/grub/menu.lst"、"/boot/grub/grub.cfg"、"/boot/
 デバイス名を対応する UUID に置き換える必要があります。<br>
 
 
-1. "blkid \<デバイス名>" コマンドを実行して、デバイスの UUID を検出します。 例: <br>
+1. "blkid \<デバイス名>" コマンドを実行して、デバイスの UUID を検出します。 例:<br>
    ```
    blkid /dev/sda1
    /dev/sda1: UUID="6f614b44-433b-431b-9ca1-4dd2f6f74f6b" TYPE="swap"
@@ -204,9 +204,9 @@ Site Recovery モビリティ サービスには多数のコンポーネント�
 > [!TIP]
 >メンテナンス期間中のアップグレードのスケジュールに関するベスト プラクティスについては、「Azure Site Recovery のサービスの更新情報」の「[最新の OS/カーネル バージョンのサポート](https://aka.ms/v2a_asr_upgrade_practice)」を参照してください。
 
-## <a name="lvm-support-from-920-version"></a>9.20 以降のバージョンでの LVM のサポート
+## <a name="lvm-support-from-920-version"></a>9\.20 以降のバージョンでの LVM のサポート
 
-9.20 より前のバージョンでは、データ ディスク用の LVM のみがサポートされていました。 /boot はディスク パーティション上にあり、LVM ボリュームではないことが必要です。
+9\.20 より前のバージョンでは、データ ディスク用の LVM のみがサポートされていました。 /boot はディスク パーティション上にあり、LVM ボリュームではないことが必要です。
 
 [9.20 以降のバージョン](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery)から、[LVM 上の OS ディスク](vmware-physical-azure-support-matrix.md#linux-file-systemsguest-storage)がサポートされています。 このサポートを得るために、最新バージョンを使用してください。
 

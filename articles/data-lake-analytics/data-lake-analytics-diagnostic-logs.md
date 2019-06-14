@@ -9,11 +9,11 @@ ms.assetid: cf5633d4-bc43-444e-90fc-f90fbd0b7935
 ms.topic: conceptual
 ms.date: 02/12/2018
 ms.openlocfilehash: 7fd88383e909ebd6be64c22721b813946e37179e
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56959133"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60616505"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-analytics"></a>Azure Data Lake Analytics の診断ログへのアクセス
 
@@ -27,7 +27,7 @@ ms.locfileid: "56959133"
 
 1. [Azure Portal](https://portal.azure.com) にサインオンします。
 
-2. Data Lake Analytics アカウントを開き、__[監視]__ セクションから **[診断ログ]** を選択します。 次に、__[診断を有効にする]__ を選択します。
+2. Data Lake Analytics アカウントを開き、 __[監視]__ セクションから **[診断ログ]** を選択します。 次に、 __[診断を有効にする]__ を選択します。
 
     ![診断を有効にして、監査ログと要求ログを収集する](./media/data-lake-analytics-diagnostic-logs/turn-on-logging.png)
 
@@ -49,11 +49,11 @@ ms.locfileid: "56959133"
    * [ __Save__] をクリックします。
 
         > [!NOTE]
-        > __[保存]__ ボタンをクリックする前に、__[Archive to a storage account]__(ストレージ アカウントへのアーカイブ)、__[Stream to an Event Hub]__(イベント ハブへのストリーム)、または __[Send to Log Analytics]__(Log Analytics に送信) のいずれかを選択する必要があります。
+        > __[保存]__ ボタンをクリックする前に、 __[Archive to a storage account]__ (ストレージ アカウントへのアーカイブ)、 __[Stream to an Event Hub]__ (イベント ハブへのストリーム)、または __[Send to Log Analytics]__ (Log Analytics に送信) のいずれかを選択する必要があります。
 
 ### <a name="use-the-azure-storage-account-that-contains-log-data"></a>ログ データを含む Azure ストレージ アカウントを使用する
 
-1. ログ データを保持する BLOB コンテナーを表示するには、ログ記録用の Data Lake Analytics に使用する Azure Storage アカウントを開き、__[BLOB]__ をクリックします。
+1. ログ データを保持する BLOB コンテナーを表示するには、ログ記録用の Data Lake Analytics に使用する Azure Storage アカウントを開き、 __[BLOB]__ をクリックします。
 
    * コンテナー **insights-logs-audit** には、監査ログが含まれます。
    * コンテナー **insights-logs-requests** には、要求ログが含まれます。
@@ -127,13 +127,13 @@ JSON 形式の要求ログのエントリの例を次に示します。 各 BLOB
 
 | Name | Type | 説明 |
 | --- | --- | --- |
-| time |String |ログのタイムスタンプ (UTC) |
-| resourceId |String |操作が行われたリソースの ID |
-| category |String |ログのカテゴリ。 **Requests**など。 |
-| operationName |String |ログに記録される操作の名前。 GetAggregatedJobHistory など。 |
-| resultType |String |操作の状態。200 など。 |
-| callerIpAddress |String |要求を行うクライアントの IP アドレス |
-| correlationId |String |ロールの ID この値は、関係のあるログ エントリをグループ化する際に使用します |
+| time |string |ログのタイムスタンプ (UTC) |
+| resourceId |string |操作が行われたリソースの ID |
+| category |string |ログのカテゴリ。 **Requests**など。 |
+| operationName |string |ログに記録される操作の名前。 GetAggregatedJobHistory など。 |
+| resultType |string |操作の状態。200 など。 |
+| callerIpAddress |string |要求を行うクライアントの IP アドレス |
+| correlationId |string |ロールの ID この値は、関係のあるログ エントリをグループ化する際に使用します |
 | identity |Object |ログを生成した ID |
 | properties |JSON |詳しくは、次のセクション (「要求ログのプロパティのスキーマ」) をご覧ください |
 
@@ -141,12 +141,12 @@ JSON 形式の要求ログのエントリの例を次に示します。 各 BLOB
 
 | Name | Type | 説明 |
 | --- | --- | --- |
-| HttpMethod |String |操作に使用される HTTP メソッド。 GET など。 |
-| Path |String |操作が実行されたパス |
+| HttpMethod |string |操作に使用される HTTP メソッド。 GET など。 |
+| Path |string |操作が実行されたパス |
 | RequestContentLength |int |HTTP 要求のコンテンツの長さ |
-| ClientRequestId |String |この要求を一意に識別する ID |
-| StartTime |String |サーバーが要求を受信した時刻 |
-| EndTime |String |サーバーが応答を送信した時間 |
+| ClientRequestId |string |この要求を一意に識別する ID |
+| StartTime |string |サーバーが要求を受信した時刻 |
+| EndTime |string |サーバーが応答を送信した時間 |
 
 ### <a name="audit-logs"></a>監査ログ
 
@@ -179,13 +179,13 @@ JSON 形式の監査ログのエントリの例を次に示します。 各 BLOB
 
 | Name | Type | 説明 |
 | --- | --- | --- |
-| time |String |ログのタイムスタンプ (UTC) |
-| resourceId |String |操作が行われたリソースの ID |
-| category |String |ログのカテゴリ。 **Audit**など。 |
-| operationName |String |ログに記録される操作の名前。 JobSubmitted など。 |
-| resultType |String |ジョブの状態 (operationName) の副状態。 |
-| resultSignature |String |ジョブの状態 (operationName) に関する追加の詳細。 |
-| identity |String |操作を要求したユーザー。 たとえば、「 susan@contoso.com 」のように入力します。 |
+| time |string |ログのタイムスタンプ (UTC) |
+| resourceId |string |操作が行われたリソースの ID |
+| category |string |ログのカテゴリ。 **Audit**など。 |
+| operationName |string |ログに記録される操作の名前。 JobSubmitted など。 |
+| resultType |string |ジョブの状態 (operationName) の副状態。 |
+| resultSignature |string |ジョブの状態 (operationName) に関する追加の詳細。 |
+| identity |string |操作を要求したユーザー。 たとえば、「 susan@contoso.com 」のように入力します。 |
 | properties |JSON |詳しくは、次のセクション (「監査ログのプロパティのスキーマ」) をご覧ください |
 
 > [!NOTE]
@@ -197,13 +197,13 @@ JSON 形式の監査ログのエントリの例を次に示します。 各 BLOB
 
 | Name | Type | 説明 |
 | --- | --- | --- |
-| JobId |String |ジョブに割り当てられた ID |
-| JobName |String |ジョブに与えられている名前 |
-| JobRunTime |String |ジョブの処理に使用するランタイム |
-| SubmitTime |String |ジョブが送信された時間 (UTC) |
-| StartTime |String |ジョブが送信された後に実行を開始した時刻 (UTC) |
-| EndTime |String |ジョブが終了した時刻 |
-| Parallelism |String |このジョブの送信中にこのジョブについて要求された Data Lake Analytics ユニットの数 |
+| JobId |string |ジョブに割り当てられた ID |
+| JobName |string |ジョブに与えられている名前 |
+| JobRunTime |string |ジョブの処理に使用するランタイム |
+| SubmitTime |string |ジョブが送信された時間 (UTC) |
+| StartTime |string |ジョブが送信された後に実行を開始した時刻 (UTC) |
+| EndTime |string |ジョブが終了した時刻 |
+| Parallelism |string |このジョブの送信中にこのジョブについて要求された Data Lake Analytics ユニットの数 |
 
 > [!NOTE]
 > **SubmitTime**、**StartTime**、**EndTime**、**Parallelism** は操作に関する情報を提供します。 これらのエントリには、その操作が開始または完了した場合にのみ値が含まれます。 たとえば、**SubmitTime** であれば、**operationName** の値が **JobSubmitted** になった後にのみ値が入ります。

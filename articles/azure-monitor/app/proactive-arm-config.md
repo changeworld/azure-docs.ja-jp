@@ -14,11 +14,11 @@ ms.date: 02/07/2019
 ms.reviewer: mbullwin
 ms.author: harelbr
 ms.openlocfilehash: 3ab50c92543615488d9ced599df433bf7e1e4061
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55962232"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61461563"
 ---
 # <a name="manage-application-insights-smart-detection-rules-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Application Insights スマート検出ルールを管理する
 
@@ -31,7 +31,7 @@ Application Insights のスマート検出ルールは、[Azure Resource Manager
 - ルールが有効になっているかどうか (既定値は **true**)。
 - 検出が見つかったときに、サブスクリプションの所有者、共同作成者、閲覧者に電子メールを送信する必要があるかどうか (既定値は**true**)。
 - 検出が見つかったときに通知を受ける必要があるその他の電子メール受信者。
-- * 電子メールの構成は、_プレビュー_ とマークされたスマート検出ルールで使用できません。
+- * 電子メールの構成は、_プレビュー_とマークされたスマート検出ルールで使用できません。
 
 Azure Resource Manager を使用してルールの設定を構成できるように、スマート検出ルールの構成は、Application Insights リソース内で **ProactiveDetectionConfigs** という名前の内部リソースとして使用できるようになりました。
 柔軟性を最大化するために、各スマート検出ルールを一意の通知設定で構成できます。
@@ -39,7 +39,7 @@ Azure Resource Manager を使用してルールの設定を構成できるよう
 ## <a name="examples"></a>例
 
 Azure Resource Manager テンプレートを使用してスマート検出ルールの設定を構成する方法を示す例を次にいくつか示します。
-すべてのサンプルは、_"myApplication"_ という名前の Application Insights リソースと、_"longdependencyduration"_ という内部名の "長い依存関係期間スマート検出ルール" を参照します。
+すべてのサンプルは、 _"myApplication"_ という名前の Application Insights リソースと、 _"longdependencyduration"_ という内部名の "長い依存関係期間スマート検出ルール" を参照します。
 Application Insights リソース名を置換し、関連するスマート検出ルールの内部名を指定してください。 各スマート検出ルールに対応する Azure Resource Manager 内部名の一覧については、次の表をご確認ください。
 
 ### <a name="disable-a-smart-detection-rule"></a>スマート検出ルールを無効にする

@@ -12,10 +12,10 @@ ms.date: 03/21/2019
 ms.author: tulasim
 ms.custom: seodec18
 ms.openlocfilehash: 496f7c75e6633089d4ca88a9e3cd7c76ee415780
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64922405"
 ---
 # <a name="language-support-for-qna-maker"></a>QnA Maker の言語サポート
@@ -35,7 +35,7 @@ QnA Maker は任意の言語ページでの質問と回答の抽出をサポー�
 
 ## <a name="primary-language-detection"></a>第一言語検出
 
-検出に使用される第一言語は、最初のドキュメントまたは URL が最初のナレッジ ベースに追加されるときに、QnA Maker リソースと、そのリソースに作成されるすべてのナレッジ ベースに設定されます。 言語は変更できません。 
+検出に使用された第一言語は、最初のドキュメントまたは URL が最初のナレッジ ベースに追加されるときに、QnA Maker リソースと、そのリソースで作成されたすべてのナレッジ ベースに対して設定されます。 言語は変更できません。 
 
 複数の言語をサポートする予定があるユーザーは、言語ごとに新しい QnA Maker リソースが必要です。 [言語ベースの QnA Maker ナレッジ ベースを作成](../how-to/language-knowledge-base.md)する方法をご覧ください。  
 

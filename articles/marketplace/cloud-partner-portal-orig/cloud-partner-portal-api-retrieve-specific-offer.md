@@ -8,10 +8,10 @@ ms.topic: reference
 ms.date: 09/13/2018
 ms.author: pabutler
 ms.openlocfilehash: bb6bbd457ff372ad46091f49cf4ae7e4b34b3d83
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64935435"
 ---
 <a name="retrieve-a-specific-offer"></a>特定のプランを取得する
@@ -40,8 +40,8 @@ ms.locfileid: "64935435"
 
 | **Name**    | **説明**                                                                          | **データの種類** |
 |-------------|------------------------------------------------------------------------------------------|---------------|
-| publisherId | 発行元の ID。 たとえば、Contoso です。                                                        | String        |
-| offerId     | プランを一意に識別する GUID。                                                 | String        |
+| publisherId | 発行元の ID。 たとえば、Contoso です。                                                        | string        |
+| offerId     | プランを一意に識別する GUID。                                                 | string        |
 | version     | 取得されるプランのバージョン。 既定では、最新版のプランが取得されます。 | 整数       |
 | slotId      | プランが取得されるスロット。次のいずれかになります。      <br/>  - `Draft` (既定) の場合、現在ドラフトの状態にあるプランが取得されます。  <br/>  -  `Preview` の場合、現在プレビューの状態にあるプランが取得されます。     <br/>  -  `Production` の場合、現在運用の状態にあるプランが取得されます。          |      enum |
 | api-version | API の最新バージョン                                                                    | Date          |

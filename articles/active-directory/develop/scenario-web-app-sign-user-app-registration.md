@@ -16,10 +16,10 @@ ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e6f512911811535818f4ad857c5c3b956870f619
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65080057"
 ---
 # <a name="web-app-that-signs-in-users---app-registration"></a>ユーザーをサインインさせる Web アプリ - アプリの登録
@@ -28,7 +28,7 @@ ms.locfileid: "65080057"
 
 アプリケーションを登録するには、次を使用することができます。
 
-- [Web アプリ クイックスタート](#register-an-app-using-the-quickstarts) - アプリケーションを初めて作成するすばらしい体験に加えて、Azure portal のクイックスタートには、**[この変更を行う]** という名前のボタンが含まれます。 既存のアプリであっても、このボタンを使用して必要なプロパティを設定できます。 これらのプロパティの値を自分のケースに適応させる必要があります。 具体的には、自分のアプリ用の Web API URL は、提案された既定値とは異なる可能性があり、URI のサインアウトにも影響があります。
+- [Web アプリ クイックスタート](#register-an-app-using-the-quickstarts) - アプリケーションを初めて作成するすばらしい体験に加えて、Azure portal のクイックスタートには、 **[この変更を行う]** という名前のボタンが含まれます。 既存のアプリであっても、このボタンを使用して必要なプロパティを設定できます。 これらのプロパティの値を自分のケースに適応させる必要があります。 具体的には、自分のアプリ用の Web API URL は、提案された既定値とは異なる可能性があり、URI のサインアウトにも影響があります。
 - [手動でアプリケーションを登録する](#register-an-app-using-azure-portal) Azure portal
 - PowerShell とコマンドライン ツール
 
@@ -46,13 +46,13 @@ ms.locfileid: "65080057"
 
 1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。 または、選択した各国のクラウドの Azure portal にサインインします。
 1. ご利用のアカウントで複数のテナントにアクセスできる場合は、右上隅でアカウントを選択し、ポータルのセッションを目的の Azure AD テナントに設定します。
-1. 左側のナビゲーション ウィンドウで、**[Azure Active Directory]** サービスを選択し、**[アプリの登録]** > **[新規登録]** を選択します。
+1. 左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** サービスを選択し、 **[アプリの登録]**  >  **[新規登録]** を選択します。
 1. **[アプリケーションの登録]** ページが表示されたら、以下のアプリケーションの登録情報を入力します。
    - アプリケーションに対してサポートされるアカウントの種類を選びます (「[Supported Account types](./v2-supported-account-types.md)」 (サポートされるアカウントの種類) を参照してください)
    - **[名前]** セクションに、アプリのユーザーに表示されるわかりやすいアプリケーション名を入力します (例: `AspNetCore-WebApp`)。
-   - **[応答 URL]** に自分のアプリに対する応答 URL (例: `https://localhost:44321/`) を追加し、**[登録]** を選択します。
+   - **[応答 URL]** に自分のアプリに対する応答 URL (例: `https://localhost:44321/`) を追加し、 **[登録]** を選択します。
 1. **[認証]** メニューを選択し、次の情報を追加します。
-- **[応答 URL]** に「`https://localhost:44321/signin-oidc`」を追加し、**[登録]** を選択します。
+- **[応答 URL]** に「`https://localhost:44321/signin-oidc`」を追加し、 **[登録]** を選択します。
 - **[詳細設定]** セクションの **[サインアウト URL]** に「`https://localhost:44321/signout-oidc`」を設定します。
 - **[暗黙的な許可]** の **[ID トークン]** チェック ボックスをオンにします。
 - **[保存]** を選択します。

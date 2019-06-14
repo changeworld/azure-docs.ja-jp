@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alch
 ms.openlocfilehash: 5d47b938560fb1bd15adfe1a1c2d35b7359d47a3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57977413"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61339121"
 ---
 # <a name="graph-search-method"></a>グラフ検索メソッド
 
@@ -32,7 +32,7 @@ https://westus.api.cognitive.microsoft.com/academic/v1.0/graph/search?
 
 Name     | 値 | 必須  | 説明
 -----------|-----------|---------|--------
-**mode**       | テキスト文字列 | [はい] | 使用するモードの名前。 値は *json* または *lambda* です。
+**mode**       | テキスト文字列 | はい | 使用するモードの名前。 値は *json* または *lambda* です。
 
 グラフ検索メソッドは、HTTP POST 要求を介して呼び出す必要があります。 post 要求には、コンテンツ タイプ ヘッダー **application/json** が含まれている必要があります。
 

@@ -10,11 +10,11 @@ ms.suite: integration
 ms.topic: article
 ms.date: 08/16/2018
 ms.openlocfilehash: 5472a8ce2670a34174d6d39f0d90faca8a7002ad
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58292888"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61467529"
 ---
 # <a name="perform-advanced-json-transformations-with-liquid-templates-in-azure-logic-apps"></a>Azure Logic Apps で Liquid テンプレートを使用して高度な JSON 変換を実行する
 
@@ -58,11 +58,11 @@ ms.locfileid: "58292888"
    }
    ```
 
-2. [Azure Portal](https://portal.azure.com) にサインインします。 Azure のメイン メニューで、**[すべてのリソース]** を選択します。 検索ボックスで、統合アカウントを見つけて選択します。
+2. [Azure Portal](https://portal.azure.com) にサインインします。 Azure のメイン メニューで、 **[すべてのリソース]** を選択します。 検索ボックスで、統合アカウントを見つけて選択します。
 
    ![統合アカウントを選択する](./media/logic-apps-enterprise-integration-liquid-transform/select-integration-account.png)
 
-3.  **[コンポーネント]** で、**[マップ]** を選択します。
+3.  **[コンポーネント]** で、 **[マップ]** を選択します。
 
     ![マップを選択する](./media/logic-apps-enterprise-integration-liquid-transform/add-maps.png)
 
@@ -71,7 +71,7 @@ ms.locfileid: "58292888"
    | プロパティ | 値 | 説明 | 
    |----------|-------|-------------|
    | **Name** | JsonToJsonTemplate | マップの名前 (この例では "JsonToJsonTemplate")。 | 
-   | **マップの種類** | **liquid** | マップの種類。 JSON から JSON への変換では、**[liquid]** を選択する必要があります。 | 
+   | **マップの種類** | **liquid** | マップの種類。 JSON から JSON への変換では、 **[liquid]** を選択する必要があります。 | 
    | **Map** | "SimpleJsonToJsonTemplate.liquid" | 変換に使用する既存の Liquid テンプレートまたはマップ ファイル (この例では "SimpleJsonToJsonTemplate.liquid")。 このファイルを見つけるには、ファイル ピッカーを使用できます。 |
    ||| 
 
@@ -83,12 +83,12 @@ ms.locfileid: "58292888"
 
 2. ロジック アプリ デザイナーで、ロジック アプリに[要求トリガー](../connectors/connectors-native-reqres.md#use-the-http-request-trigger)を追加します。
 
-3. トリガーで、**[新しいステップ]** を選択します。 
+3. トリガーで、 **[新しいステップ]** を選択します。 
    検索ボックスに、フィルターとして「liquid」と入力し、アクションとして **[Transform JSON to JSON - Liquid]\(JSON から JSON への変換- Liquid\)** を選択します。
 
    ![Liquid アクションを見つけて選択する](./media/logic-apps-enterprise-integration-liquid-transform/search-action-liquid.png)
 
-4. **[本文]** ボックス内をクリックして動的コンテンツ リストを表示し、**[本文]** トークンを選択します。
+4. **[本文]** ボックス内をクリックして動的コンテンツ リストを表示し、 **[本文]** トークンを選択します。
   
    ![本文を選択する](./media/logic-apps-enterprise-integration-liquid-transform/select-body.png)
  
@@ -99,9 +99,9 @@ ms.locfileid: "58292888"
    マップ一覧が空の場合は、おそらくロジック アプリが統合アカウントにリンクされていません。 
    Liquid テンプレートまたはマップが含まれた統合アカウントにロジック アプリをリンクするには、次の手順に従います。
 
-   1. ロジック アプリのメニューで、**[ワークフロー設定]** を選択します。
+   1. ロジック アプリのメニューで、 **[ワークフロー設定]** を選択します。
 
-   2. **[統合アカウントを選択してください]** の一覧から統合アカウントを選択し、**[保存]** をクリックします。
+   2. **[統合アカウントを選択してください]** の一覧から統合アカウントを選択し、 **[保存]** をクリックします。
 
       ![ロジック アプリを統合アカウントにリンクする](./media/logic-apps-enterprise-integration-liquid-transform/link-integration-account.png)
 

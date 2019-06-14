@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: ec79f6a9b255d44e66b901a0aae263c8dbbf2863
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60149862"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60623509"
 ---
 # <a name="scale-quotas-and-limits-in-devtest-labs"></a>DevTest Labs でのクォータと制限のスケール
 お気づきかもしれませんが、DevTest Labs での作業時に、一部の Azure リソースに一定の既定の制限があります。これは、DevTest Labs サービスに影響する場合があります。 これらの制限は、**クォータ**と呼ばれます。
@@ -51,12 +51,12 @@ Azure リソースの最も一般的な一部のクォータについては、[A
 
 [Azure ポータル](https://go.microsoft.com/fwlink/p/?LinkID=525040)を使用してクォータの引き上げを要求するには、次の手順に従います。
 
-1. **[その他のサービス]**、**[課金]**、**[使用量 + クォータ]** の順に選択します。
-1. [使用量 + クォータ] ブレードで、**[引き上げを依頼する]** ボタンを選択します。
+1. **[その他のサービス]** 、 **[課金]** 、 **[使用量 + クォータ]** の順に選択します。
+1. [使用量 + クォータ] ブレードで、 **[引き上げを依頼する]** ボタンを選択します。
 
    ![[引き上げを依頼する] ボタン](./media/devtest-lab-scale-lab/devtestlab-request-increase.png)
 
-1. 要求を送信して完了するには、**[新しいサポート要求]** フォームの 3 つすべてのタブの必要な情報を入力します。
+1. 要求を送信して完了するには、 **[新しいサポート要求]** フォームの 3 つすべてのタブの必要な情報を入力します。
 
    ![[引き上げを依頼する] フォーム](./media/devtest-lab-scale-lab/devtestlab-support-form.png)
 

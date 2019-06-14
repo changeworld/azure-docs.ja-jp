@@ -16,11 +16,11 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 3e7db670a125f3c5f308107aabfbbab9301b7561
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53718097"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60765171"
 ---
 # <a name="create-a-web-app-in-an-app-service-environment-v1"></a>App Service Environment v1 で Web アプリを作成する
 
@@ -40,7 +40,7 @@ ms.locfileid: "53718097"
 このチュートリアルは、App Service 環境が作成済みであることを前提としています。 まだ完了していない場合は、「 [App Service 環境を作成する](app-service-web-how-to-create-an-app-service-environment.md)」を参照してください。 
 
 ## <a name="create-a-web-app"></a>Web アプリを作成する
-1. [Azure Portal](https://portal.azure.com/) で、**[リソースの作成] > [Web + モバイル] > [Web アプリ]** の順にクリックします。 
+1. [Azure Portal](https://portal.azure.com/) で、 **[リソースの作成] > [Web + モバイル] > [Web アプリ]** の順にクリックします。 
    
     ![][1]
 2. サブスクリプションを選択します。  
@@ -63,7 +63,7 @@ ms.locfileid: "53718097"
     ASE で外部 VIP を使用する場合、ASE でのアプリの URL は [*サイト名*].azurewebsites.net ではなく、[*サイト名*].[*App Service Environment の名前*].p.azurewebsites.net になります。
    
     ASE で内部 VIP を使用する場合、ASE 内のアプリの URL は [*サイト名*].[*ASE の作成時に指定されたサブドメイン*] になります。   
-    ASE の作成時に ASP を選択すると、**[名前]** の下のサブドメインが更新されます。
+    ASE の作成時に ASP を選択すると、 **[名前]** の下のサブドメインが更新されます。
 
 ## <a name="createplan"></a> App Service プランを作成する
 App Service 環境に App Service プランを作成する場合、ASE には共有ワーカーがないため、ワーカーの選択肢が異なります。  使用する必要があるワーカーは、管理者によって ASE に割り当てられたワーカーです。つまり、新しいプランを作成するには、ASE ワーカー プールに既に存在しているすべてのプランのインスタンスの総数よりも多くのワーカーを ASE ワーカー プールに割り当てておく必要があります。  プランを作成するのに十分なワーカーが ASE ワーカー プールにない場合は、ASE の管理者に依頼してワーカーを追加してもらう必要があります。

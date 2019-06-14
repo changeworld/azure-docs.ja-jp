@@ -10,11 +10,11 @@ ms.date: 02/25/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: b53e07d6086f2a02fd1bbd158ffc09dc95b0c377
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59796381"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60500126"
 ---
 # <a name="manage-python-2-packages-in-azure-automation"></a>Azure Automation で Python 2 パッケージを管理する
 
@@ -26,7 +26,7 @@ Automation アカウントの **[共有リソース]** で **[Python 2 packages]
 
 ![Python パッケージを追加する](media/python-packages/add-python-package.png)
 
-**[Python 2 パッケージの追加]** ページで、アップロードするローカル パッケージを選択します。 パッケージは `.whl` ファイルまたは `.tar.gz` ファイルを指定できます。 選択したら、**[OK]** をクリックしてパッケージをアップロードします。
+**[Python 2 パッケージの追加]** ページで、アップロードするローカル パッケージを選択します。 パッケージは `.whl` ファイルまたは `.tar.gz` ファイルを指定できます。 選択したら、 **[OK]** をクリックしてパッケージをアップロードします。
 
 ![Python パッケージを追加する](media/python-packages/upload-package.png)
 

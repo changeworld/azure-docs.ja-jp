@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/12/2016
 ms.author: crdun
 ms.openlocfilehash: f2c58d64a662a6e2be355c1f672c01e5a679b3f8
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52993232"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62127950"
 ---
 # <a name="add-push-notifications-to-your-xamarinandroid-app"></a>Xamarin.Android アプリへのプッシュ通知の追加
 
@@ -70,7 +70,7 @@ ms.locfileid: "52993232"
 
     ![](./media/app-service-mobile-xamarin-android-get-started-push/google-apis-avd-settings.png)
 
-2. **[アプリ]** > **[設定]** > **[アカウントの追加]** をクリックして Android デバイスに Google アカウントを追加した後、画面の指示に従います。
+2. **[アプリ]**  >  **[設定]**  >  **[アカウントの追加]** をクリックして Android デバイスに Google アカウントを追加した後、画面の指示に従います。
 
     ![](./media/app-service-mobile-xamarin-android-get-started-push/add-google-account.png)
 

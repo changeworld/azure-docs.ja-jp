@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/30/2016
 ms.author: crdun
 ms.openlocfilehash: 16871bdc59d141334bc2c95f26929f270d7971cf
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56100535"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62106746"
 ---
 # <a name="how-to-use-the-javascript-client-library-for-azure-mobile-apps"></a>Azure Mobile Apps 向け JavaScript クライアント ライブラリの使用方法
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
@@ -40,7 +40,7 @@ Azure Mobile Apps JavaScript SDK のインストールは、次の `npm` コマ�
 npm install azure-mobile-apps-client --save
 ```
 
-ライブラリは、Browserify や Webpack などの CommonJS 環境では ES2015 モジュールとして使用できるほか、AMD ライブラリとしても使用できます。  例: 
+ライブラリは、Browserify や Webpack などの CommonJS 環境では ES2015 モジュールとして使用できるほか、AMD ライブラリとしても使用できます。  例:
 
 ```javascript
 // For ECMAScript 5.1 CommonJS
@@ -73,7 +73,7 @@ Azure App Service は、Facebook、Google、Microsoft アカウント、Twitter 
 
 既定では、App Service 認証は、モバイル アプリ バックエンドからのアクセスだけを許可するように構成されているため、ローカルで実行すると、問題が発生する可能性があります。 App Service 設定を変更して、サーバーがローカルで実行されているときに認証を有効にするには、次の手順を実行します。
 
-1.  [Azure Portal]
+1. [Azure Portal]
 2. モバイル アプリ バックエンドに移動します。
 3. **[開発ツール]** メニューの **[リソース エクスプローラー]** を選択します。
 4. **[移動]** をクリックして、新しいタブまたはウィンドウでモバイル アプリ バックエンドのリソース エクスプローラーを開きます。
@@ -87,7 +87,7 @@ Azure App Service は、Facebook、Google、Microsoft アカウント、Twitter 
          ],
 
     配列内の URL をサービスの URL に置き換えます。この例では、ローカルの Node.js サンプル サービス用の `http://localhost:3000` を使用しています。 アプリケーションの構成に応じて、Ripple サービス用の `http://localhost:4400` や他の URL を使用することもできます。
-8. ページの上部で **[読み取り/書き込み]**、**[PUT]** の順にクリックして、更新を保存します。
+8. ページの上部で **[読み取り/書き込み]** 、 **[PUT]** の順にクリックして、更新を保存します。
 
 CORS のホワイトリスト設定にも、同じループバック URL を追加する必要があります。
 
@@ -95,7 +95,7 @@ CORS のホワイトリスト設定にも、同じループバック URL を追�
 2. モバイル アプリ バックエンドに移動します。
 3. **API** メニューの **[CORS]** をクリックします。
 4. 空の **[許可される元のドメイン]** ボックスに各 URL を入力します。  新しいテキスト ボックスが作成されます。
-5.  **[保存]**
+5. **[保存]**
 
 バックエンドの更新が済むと、アプリケーションで新しいループバック URL を使用できるようになります。
 

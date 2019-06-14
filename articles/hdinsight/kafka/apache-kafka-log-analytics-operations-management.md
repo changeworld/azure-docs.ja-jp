@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.openlocfilehash: 1e141aea3b22bfdcb981513f03e595b6c2f15466
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65147982"
 ---
 # <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>HDInsight で Apache Kafka のログを分析する
@@ -38,7 +38,7 @@ HDInsight の Azure Monitor ログを有効にする手順は、すべての HDI
 
 1. [Azure Portal](https://portal.azure.com) から、Log Analytics のワークスペースを選択します。
 
-2. 左側のメニューの **[全般]** で、**[ログ]** を選択します。 ここでは、Kafka から収集されたデータを検索できます。 クエリ ウィンドウでクエリを入力し、**[実行]** を選択します。 次に検索例をいくつか示します。
+2. 左側のメニューの **[全般]** で、 **[ログ]** を選択します。 ここでは、Kafka から収集されたデータを検索できます。 クエリ ウィンドウでクエリを入力し、 **[実行]** を選択します。 次に検索例をいくつか示します。
 
 * ディスク使用量:
 

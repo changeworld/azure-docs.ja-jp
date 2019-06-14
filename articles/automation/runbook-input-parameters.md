@@ -10,11 +10,11 @@ ms.date: 02/14/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 5f190d60a059108b9763f35e2ee8cf99ae77b694
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58578154"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60500039"
 ---
 # <a name="runbook-input-parameters"></a>Runbook の入力パラメーター
 
@@ -57,7 +57,7 @@ Param
 
 ![Automation PowerShell ワークフロー](media/automation-runbook-input-parameters/automation-01-powershellworkflow.png)
 
-このパラメーター定義では、**\$VMName** と **\$resourceGroupName** は文字列型の単純なパラメーターです。 しかし、PowerShell と PowerShell Workflow Runbook では、入力パラメーターとして **object** や **PSCredential** など、すべての単純型と複合型がサポートされています。
+このパラメーター定義では、 **\$VMName** と **\$resourceGroupName** は文字列型の単純なパラメーターです。 しかし、PowerShell と PowerShell Workflow Runbook では、入力パラメーターとして **object** や **PSCredential** など、すべての単純型と複合型がサポートされています。
 
 Runbook に object 型の入力パラメーターが含まれている場合は、値を渡すために、(name,value) の組み合わせで PowerShell ハッシュテーブルを使用します。 たとえば、Runbook に次のパラメーターがある場合、
 
@@ -85,12 +85,12 @@ Runbook に object 型の入力パラメーターが含まれている場合は�
 
 [**Write-Output**](/powershell/module/microsoft.powershell.utility/write-output) アクティビティを利用し、仮想マシンの名前を出力できます。 **Get-AzureRmVm** アクティビティは 2 つのパラメーターを受け取ります。**仮想マシン名** と **リソース グループの名前**です。 これらのパラメーターは Runbook を起動するたびに異なる値を必要とする可能性があるため、入力パラメーターを Runbook に追加できます。 以下は入力パラメーターを追加する手順です。
 
-1. **[Runbook]** ブレードからグラフィカル Runbook を選択し、[**[編集]**](automation-graphical-authoring-intro.md) します。
-2. Runbook エディタで **[入力と出力]** をクリックし、**[入力と出力]** ブレードを開きます。
+1. **[Runbook]** ブレードからグラフィカル Runbook を選択し、[ **[編集]** ](automation-graphical-authoring-intro.md) します。
+2. Runbook エディタで **[入力と出力]** をクリックし、 **[入力と出力]** ブレードを開きます。
 
    ![Automation graphical runbook](media/automation-runbook-input-parameters/automation-02-graphical-runbok-editor.png)
 
-3. **[入力と出力]** ブレードには、Runbook に定義されている入力パラメーターの一覧が表示されます。 このブレードで、新しい入力パラメーターを追加したり、既存の入力パラメーターの構成を編集したりすることができます。 Runbook に新しいパラメーターを追加するには、**[入力の追加]** をクリックし、**[Runbook 入力パラメーター]** ブレードを開きます。 このブレードで、次のパラメーターを構成できます。
+3. **[入力と出力]** ブレードには、Runbook に定義されている入力パラメーターの一覧が表示されます。 このブレードで、新しい入力パラメーターを追加したり、既存の入力パラメーターの構成を編集したりすることができます。 Runbook に新しいパラメーターを追加するには、 **[入力の追加]** をクリックし、 **[Runbook 入力パラメーター]** ブレードを開きます。 このブレードで、次のパラメーターを構成できます。
 
    | **プロパティ** | **説明** |
    |:--- |:--- |
@@ -135,7 +135,7 @@ Azure Portal、Webhook、PowerShell コマンドレット、REST API、SDK な�
 
 #### <a name="start-a-published-runbook-by-using-the-azure-portal-and-assign-parameters"></a>Azure ポータルを使用して公開済み Runbook を起動し、パラメーターを割り当てる
 
-[Runbook を起動する](start-runbooks.md#start-a-runbook-with-the-azure-portal)と、**[Runbook の開始]** ブレードが開きます。ここで、作成したパラメーターの値を入力できます。
+[Runbook を起動する](start-runbooks.md#start-a-runbook-with-the-azure-portal)と、 **[Runbook の開始]** ブレードが開きます。ここで、作成したパラメーターの値を入力できます。
 
 ![Start using the portal](media/automation-runbook-input-parameters/automation-04-startrunbookusingportal.png)
 
@@ -146,7 +146,7 @@ Azure Portal、Webhook、PowerShell コマンドレット、REST API、SDK な�
 
 #### <a name="start-a-published-runbook-by-using-powershell-cmdlets-and-assign-parameters"></a>PowerShell コマンドレットを利用して公開済み Runbook を起動し、パラメーターを割り当てる
 
-* **Azure Resource Manager コマンドレット:**[Start-AzureRmAutomationRunbook](/powershell/module/azurerm.automation/start-azurermautomationrunbook) を使用して、リソース グループ内に作成された Automation Runbook を起動できます。
+* **Azure Resource Manager コマンドレット:** [Start-AzureRmAutomationRunbook](/powershell/module/azurerm.automation/start-azurermautomationrunbook) を使用して、リソース グループ内に作成された Automation Runbook を起動できます。
   
   **例:**
 
@@ -156,7 +156,7 @@ Azure Portal、Webhook、PowerShell コマンドレット、REST API、SDK な�
   Start-AzureRmAutomationRunbook -AutomationAccountName "TestAutomation" -Name "Get-AzureVMGraphical" –ResourceGroupName $resourceGroupName -Parameters $params
   ```
 
-* **Azure クラシック デプロイ モデルのコマンドレット:**[Start-AzureAutomationRunbook](/powershell/module/servicemanagement/azure/start-azureautomationrunbook) を使用して、既定のリソース グループ内に作成された Automation Runbook を起動できます。
+* **Azure クラシック デプロイ モデルのコマンドレット:** [Start-AzureAutomationRunbook](/powershell/module/servicemanagement/azure/start-azureautomationrunbook) を使用して、既定のリソース グループ内に作成された Automation Runbook を起動できます。
   
   **例:**
 
@@ -171,7 +171,7 @@ Azure Portal、Webhook、PowerShell コマンドレット、REST API、SDK な�
 
 #### <a name="start-a-runbook-by-using-an-sdk-and-assign-parameters"></a>SDK で Runbook を起動し、パラメーターを割り当てる
 
-* **Azure Resource Manager メソッド:**:プログラミング言語の SDK を利用して Runbook を起動できます。 以下は、Automation アカウントで Runbook を起動する C# コード スニペットです。 完全なコードは、 [GitHub リポジトリ](https://github.com/Azure/azure-sdk-for-net/blob/master/src/ResourceManagement/Automation/Automation.Tests/TestSupport/AutomationTestBase.cs)にあります。  
+* **Azure Resource Manager メソッド:** :プログラミング言語の SDK を利用して Runbook を起動できます。 以下は、Automation アカウントで Runbook を起動する C# コード スニペットです。 完全なコードは、 [GitHub リポジトリ](https://github.com/Azure/azure-sdk-for-net/blob/master/src/ResourceManagement/Automation/Automation.Tests/TestSupport/AutomationTestBase.cs)にあります。  
 
   ```csharp
    public Job StartRunbook(string runbookName, IDictionary<string, string> parameters = null)
@@ -259,7 +259,7 @@ Runbook ジョブにパラメーターを渡すには、要求本文を使用し
 
 ### <a name="test-a-runbook-and-assign-parameters"></a>Runbook をテストし、パラメーターを割り当てる
 
-テスト オプションを利用し、[Runbook の草案バージョンをテスト](automation-testing-runbook.md)すると、**[テスト]** ページが開きます。このページで、先に作成したパラメーターの値を構成できます。
+テスト オプションを利用し、[Runbook の草案バージョンをテスト](automation-testing-runbook.md)すると、 **[テスト]** ページが開きます。このページで、先に作成したパラメーターの値を構成できます。
 
 ![Test and assign parameters](media/automation-runbook-input-parameters/automation-06-testandassignparameters.png)
 

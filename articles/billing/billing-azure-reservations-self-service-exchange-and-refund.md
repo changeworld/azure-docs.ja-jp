@@ -13,11 +13,11 @@ ms.workload: na
 ms.date: 04/13/2019
 ms.author: banders
 ms.openlocfilehash: 54578746ea8029a760663edc456660f98358abc5
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60009312"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60615982"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Azure の予約のセルフサービスによる交換と払戻
 
@@ -38,7 +38,7 @@ Azure の予約は、変化するニーズを満たすために柔軟性を提�
 3. トランザクションを確認して、完了します。  
     ![交換による VM 製品の購入で返金を完了する例の画像](./media/billing-azure-reservations-self-service-exchange-and-refund/exchange-refund-confirm-exchange.png)
 
-予約を払い戻すには、**[予約の詳細]** に移動し、**[払戻]** をクリックします。
+予約を払い戻すには、 **[予約の詳細]** に移動し、 **[払戻]** をクリックします。
 
 ## <a name="how-transactions-are-processed"></a>トランザクションの処理方法
 
@@ -77,7 +77,7 @@ Azure の予約は、変化するニーズを満たすために柔軟性を提�
 
 ## <a name="exchange-non-premium-storage-for-premium-storage"></a>Premium Storage 以外のストレージを Premium Storage と交換する
 
-Premium Storage をサポートしない VM サイズの購入済み予約を、Premium Storage をサポートする対応する VM サイズと交換できます。 たとえば、_F1_ を _F1s_ と交換できます。 交換を行う場合は、[予約の詳細] に移動し、**[交換]** をクリックします。 交換により、予約済みインスタンスの期間のリセットや、新しいトランザクションの作成が行われることはありません。
+Premium Storage をサポートしない VM サイズの購入済み予約を、Premium Storage をサポートする対応する VM サイズと交換できます。 たとえば、_F1_ を _F1s_ と交換できます。 交換を行う場合は、[予約の詳細] に移動し、 **[交換]** をクリックします。 交換により、予約済みインスタンスの期間のリセットや、新しいトランザクションの作成が行われることはありません。
 
 ## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
 

@@ -11,12 +11,12 @@ services: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: f030ac07dc1615c435c1a110836d7a03ab8a8546
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 3865fbc4fbc39da0860218565b0a8956b2dad8ee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35295610"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62105873"
 ---
 # <a name="get-started-with-the-office-365-users-connector"></a>Office 365 Users コネクタの使用
 Office 365 ユーザーに接続して、プロファイルの取得、ユーザーの検索などを行います。 Office 365 ユーザーは、次のことを行えます。

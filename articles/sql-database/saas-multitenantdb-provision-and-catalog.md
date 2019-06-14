@@ -13,11 +13,11 @@ ms.reviewer: billgib,andrela,stein
 manager: craigg
 ms.date: 09/24/2018
 ms.openlocfilehash: d29baaad6090cea5eb31f5f50bba444cb3771155
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57835783"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61485982"
 ---
 # <a name="provision-and-catalog-new-tenants-in-a-saas-application-using-a-sharded-multi-tenant-azure-sql-database"></a>シャード マルチテナント Azure SQL データベースを使用した SaaS アプリケーションの新しいテナントのプロビジョニングとカタログ化
 
@@ -201,7 +201,7 @@ PowerShell スクリプトのデバッグの詳細については、「[PowerShe
    - **$VenueType** = **soccer** (事前に定義しておいた会場の種類のいずれか: blues、classicalmusic、dance、jazz、judo、motorracing、multipurpose、opera、rockmusic、soccer (小文字、スペースなし))。
    - **$DemoScenario** = **2** (独自のデータベースにテナントをプロビジョニングします)。
 
-2. 新しいブレークポイントを追加します。これには、57 行目 (*&&nbsp;$PSScriptRoot\New-TenantAndDatabase `* と記述されている行) のどこかにカーソルを置いて、**F9 キー**を押します。
+2. 新しいブレークポイントを追加します。これには、57 行目 ( *&&nbsp;$PSScriptRoot\New-TenantAndDatabase `* と記述されている行) のどこかにカーソルを置いて、**F9 キー**を押します。
 
    ![ブレーク ポイント](media/saas-multitenantdb-provision-and-catalog/breakpoint2.png)
 
@@ -213,7 +213,7 @@ PowerShell スクリプトのデバッグの詳細については、「[PowerShe
 
 この演習では、17 のテナントのバッチをプロビジョニングします。 他の Wingtip Tickets チュートリアルを開始する前に、このテナントをまとめてプロビジョニングして、多くのデータベースを操作できるようにしておくことをお勧めします。
 
-1. *PowerShell ISE* で ...\\Learning Modules\\ProvisionTenants\\*Demo-ProvisionTenants.ps1* を開き、*$DemoScenario* パラメーターを 4 に変更します。
+1. *PowerShell ISE* で ...\\Learning Modules\\ProvisionTenants\\*Demo-ProvisionTenants.ps1* を開き、 *$DemoScenario* パラメーターを 4 に変更します。
    - **$DemoScenario** = **4** (テナントをまとめて共有データベースにプロビジョニングします)。
 
 2. **F5** キーを押して、スクリプトを実行します。
@@ -243,7 +243,7 @@ Azure Portal でテナント データベースを表示しても、共有デー
 
 2. SSMS オブジェクト エクスプローラーで、*tenantcatalog* データベースのビューに移動します。
 
-3. *TenantsExtended* ビューを右クリックして、**[Select Top 1000 Rows]\(上位 1000 行の選択\)** を選択します。 別のテナントのテナント名とデータベースとの間のマッピングに注意してください。
+3. *TenantsExtended* ビューを右クリックして、 **[Select Top 1000 Rows]\(上位 1000 行の選択\)** を選択します。 別のテナントのテナント名とデータベースとの間のマッピングに注意してください。
 
     ![SSMS 内の ExtendedTenants ビュー](media/saas-multitenantdb-provision-and-catalog/extendedtenantsview.png)
       

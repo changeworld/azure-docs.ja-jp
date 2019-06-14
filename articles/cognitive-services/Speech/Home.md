@@ -12,11 +12,11 @@ ms.date: 09/18/2018
 ms.author: zhouwang
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: d2c7211831658a18e65e04aa753607f4eb22dac8
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56673190"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60515086"
 ---
 # <a name="what-is-bing-speech"></a>Bing Speech とは
 
@@ -37,9 +37,9 @@ Microsoft Speech Recognition API は、オーディオ ストリームを、ア�
 | ユース ケース | [REST API](GetStarted/GetStartedREST.md) | [クライアント ライブラリ](GetStarted/GetStartedClientLibraries.md) |
 |-----|-----|-----|
 | 短い発話音声を変換する。たとえば、中間結果を使用しないコマンド (15 秒以下の音声) など | はい | はい |
-| 長い音声 (15 秒以上) を変換する | いいえ  | はい |
-| 中間結果を使って音声をストリーミングする | いいえ  | はい |
-| LUIS を使用して、音声から変換されたテキストの意味を解釈する | いいえ  | はい |
+| 長い音声 (15 秒以上) を変換する | いいえ | はい |
+| 中間結果を使って音声をストリーミングする | いいえ | はい |
+| LUIS を使用して、音声から変換されたテキストの意味を解釈する | いいえ | はい |
 
 いずれの手法 (REST API とクライアント ライブラリ) を使用する場合でも、Microsoft Speech Service は次をサポートします。
 

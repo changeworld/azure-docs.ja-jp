@@ -12,11 +12,11 @@ ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
 ms.openlocfilehash: e3570ab1227ca388ac62bffdc74bb68b1ddc41d1
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230169"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62105668"
 ---
 # <a name="monitor-and-manage-wunderlist-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して Wunderlist の監視と管理を行う
 
@@ -56,12 +56,12 @@ Azure Logic Apps と Wunderlist コネクターを使用して、Wunderlist ア�
 
    * 既存のロジック アプリの場合: 
    
-     * アクションを追加する最後のステップの下で、**[新しいステップ]** を選択します。 
+     * アクションを追加する最後のステップの下で、 **[新しいステップ]** を選択します。 
 
        または
 
      * アクションを追加するステップの間で、ステップ間の矢印の上にポインターを移動します。 
-     表示されるプラス記号 (**+**) を選択し、**[アクションの追加]**  を選択します。
+     表示されるプラス記号 ( **+** ) を選択し、 **[アクションの追加]**  を選択します。
      
        検索ボックスに、フィルターとして「Wunderlist」と入力します。 
        アクションの一覧で、目的のアクションを選択します。

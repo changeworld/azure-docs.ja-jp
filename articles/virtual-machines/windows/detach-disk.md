@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/17/2018
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: bd91607260d47d37bc3ce94ec63f700082416b6d
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 21b9ec78c4b4ca3a0f96bdd84be1d11e9d7257d4
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56329901"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64681869"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-windows-virtual-machine"></a>Windows 仮想マシンからディスクを切断する方法
 
@@ -32,7 +32,7 @@ ms.locfileid: "56329901"
 
 再びディスク上の既存のデータを使用する場合は、同じ仮想マシンや別の仮想マシンに再接続できます。
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="detach-a-data-disk-using-powershell"></a>PowerShell を使用してデータ ディスクを切断する方法
 
@@ -51,8 +51,8 @@ Update-AzVM -ResourceGroupName "myResourceGroup" -VM $VirtualMachine
 ## <a name="detach-a-data-disk-using-the-portal"></a>ポータルを使用してデータ ディスクを切断する方法
 
 1. 左側のメニューで **[Virtual Machines]** を選択します。
-2. 切断するデータ ディスクが接続されている仮想マシンを選択し、**[停止]** をクリックして VM の割り当てを解除します。
-3. 仮想マシンのウィンドウで、**[ディスク]** を選択します。
+2. 切断するデータ ディスクが接続されている仮想マシンを選択し、 **[停止]** をクリックして VM の割り当てを解除します。
+3. 仮想マシンのウィンドウで、 **[ディスク]** を選択します。
 4. **[ディスク]** ウィンドウの上部にある **[編集]** を選択します。
 5. **[ディスク]** ウィンドウで、切断するデータ ディスクの右端にある ![切断ボタンのイメージ](./media/detach-disk/detach.png) 切断ボタンをクリックします。
 5. ディスクが削除されたら、ウィンドウの上部にある **[保存]** をクリックします。

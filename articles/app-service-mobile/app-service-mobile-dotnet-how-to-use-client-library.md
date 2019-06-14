@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 09/24/2018
 ms.author: crdun
 ms.openlocfilehash: 8f014f1cb40e1a629d1989f00805fc91015a3ae9
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58886014"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62119305"
 ---
 # <a name="how-to-use-the-managed-client-for-azure-mobile-apps"></a>Azure Mobile Apps 用の管理されたクライアントの使用方法
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
@@ -67,8 +67,8 @@ Mobile Apps バックエンドにテーブルを作成する方法について�
 ### <a name="how-to-install-the-managed-client-sdk-package"></a>方法:マネージド クライアント SDK パッケージをインストールする
 [NuGet][9] から、Mobile Apps 用の管理されたクライアント SDK パッケージをインストールするには、次のいずれかの方法を使用します。
 
-* **Visual Studio** でプロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。`Microsoft.Azure.Mobile.Client` パッケージを見つけ、**[インストール]** をクリックします。
-* **Xamarin Studio** でプロジェクトを右クリックし、**[Add]\(追加\)**、>**[Add NuGet Packages]\(NuGet パッケージの追加\)** の順にクリックします。`Microsoft.Azure.Mobile.Client` パッケージを見つけ、**[Add Package]\(パッケージの追加\)** をクリックします。
+* **Visual Studio** でプロジェクトを右クリックし、 **[NuGet パッケージの管理]** をクリックします。`Microsoft.Azure.Mobile.Client` パッケージを見つけ、 **[インストール]** をクリックします。
+* **Xamarin Studio** でプロジェクトを右クリックし、 **[Add]\(追加\)** 、> **[Add NuGet Packages]\(NuGet パッケージの追加\)** の順にクリックします。`Microsoft.Azure.Mobile.Client` パッケージを見つけ、 **[Add Package]\(パッケージの追加\)** をクリックします。
 
 メイン アクティビティ ファイルに、次の **using** ステートメントを必ず追加してください。
 
@@ -378,7 +378,7 @@ await table.DeleteAsync(jo);
 
 Mobile Apps はオプティミスティック コンカレンシーをサポートしており、モバイル アプリ バックエンドで各テーブルに定義されている `version` システム プロパティ列を使用して各項目の変更を追跡します。 レコードが更新されるたびに、Mobile Apps はそのレコードの `version` プロパティを新しい値に設定します。 各更新要求の際に、要求に含まれているレコードの `version` プロパティが、サーバー上のレコードの同じプロパティと比較されます。 要求で渡されたバージョンがバックエンドと一致しない場合、クライアント ライブラリは `MobileServicePreconditionFailedException<T>` 例外を生成します。 例外に含まれている型は、レコードのサーバー側のバージョンを含んでいるバックエンドのレコードです。 アプリケーションはこの情報を使用して、バックエンドからの正しい `version` 値で更新要求をもう一度実行して変更をコミットするかどうかを判断できます。
 
-オプティミスティック コンカレンシーを有効にするには、テーブル クラスに `version` システム プロパティ用の列を定義します。 例: 
+オプティミスティック コンカレンシーを有効にするには、テーブル クラスに `version` システム プロパティ用の列を定義します。 例:
 
 ```csharp
 public class TodoItem
@@ -517,13 +517,13 @@ PullOptions pullOptions = new PullOptions
 ## <a name="#offlinesync"></a>オフライン テーブルの操作
 オフライン テーブルは、ローカル SQLite ストア データを使用して、オフラインのときに使用するためのデータを格納します。  テーブル操作はすべて、リモート サーバー ストアではなく、ローカル SQLite ストアに対して実行されます。  オフライン テーブルを作成するには、まずプロジェクトを準備します。
 
-1. Visual Studio で、ソリューション、**[ソリューションの NuGet パッケージの管理...]** の順に右クリックし、ソリューション内のすべてのプロジェクトの **Microsoft.Azure.Mobile.Client.SQLiteStore** NuGet パッケージを探してインストールします。
+1. Visual Studio で、ソリューション、 **[ソリューションの NuGet パッケージの管理...]** の順に右クリックし、ソリューション内のすべてのプロジェクトの **Microsoft.Azure.Mobile.Client.SQLiteStore** NuGet パッケージを探してインストールします。
 2. (省略可能) Windows デバイスをサポートする場合、次の SQLite ランタイム パッケージのいずれかをインストールします。
 
    * **Windows 8.1 ランタイム:** [SQLite for Windows 8.1][3] をインストールします。
    * **Windows Phone 8.1:** [SQLite for Windows Phone 8.1][4] をインストールします。
    * **ユニバーサル Windows プラットフォーム**: [ユニバーサル Windows プラットフォーム用 SQLite][5] をインストールします。
-3. (省略可能)。 Windows デバイスで、**[参照]**、 > **[参照の追加]** の順に右クリックします。**Windows** フォルダー、**[拡張機能]** の順に展開してから、**Visual C++ 2013 Runtime for Windows** SDK と共に適切な **SQLite for Windows** SDK を有効にします。
+3. (省略可能)。 Windows デバイスで、 **[参照]** 、 >  **[参照の追加]** の順に右クリックします。**Windows** フォルダー、 **[拡張機能]** の順に展開してから、**Visual C++ 2013 Runtime for Windows** SDK と共に適切な **SQLite for Windows** SDK を有効にします。
     Windows プラットフォームによって SQLite SDK の名前はわずかに異なります。
 
 テーブル参照を作成する前に、ローカル ストアを準備する必要があります。
@@ -616,7 +616,7 @@ var result = await client.InvokeApiAsync<MarkAllResult>("completeAll", System.Ne
 この形式は型指定されたメソッド呼び出しであり、**MarkAllResult** の戻り値の型が定義されている必要があります。 型指定および型指定のないメソッドの両方がサポートされます。
 
 API が "/" で始まっていない限り、InvokeApiAsync() メソッドは API の先頭に "/api/" を追加します。
-例: 
+例:
 
 * `InvokeApiAsync("completeAll",...)` はバックエンドで /api/completeAll を呼び出します
 * `InvokeApiAsync("/.auth/me",...)` はバックエンドで /.auth/me を呼び出します
@@ -657,7 +657,7 @@ Active Directory Authentication Library (ADAL) を使うと、クライアント
    * **INSERT-AUTHORITY-HERE** を、アプリケーションをプロビジョニングしたテナントの名前に置き換えます。 形式は https://login.microsoftonline.com/contoso.onmicrosoft.com である必要があります。 この値は、[Azure ポータル] の Azure Active Directory の [ドメイン] タブからコピーできます。
    * **INSERT-RESOURCE-ID-HERE** を、モバイル アプリ バックエンドのクライアント ID に置き換えます。 クライアント ID は、ポータルの **[Azure Active Directory の設定]** の **[詳細]** タブで入手できます。
    * **INSERT-CLIENT-ID-HERE** を、ネイティブ クライアント アプリケーションからコピーしたクライアント ID に置き換えます。
-   * **INSERT-REDIRECT-URI-HERE** を、HTTPS スキームを使用して、サイトの */.auth/login/done* エンドポイントに置き換えます。 これは、*https://contoso.azurewebsites.net/.auth/login/done* のような値である必要があります。
+   * **INSERT-REDIRECT-URI-HERE** を、HTTPS スキームを使用して、サイトの */.auth/login/done* エンドポイントに置き換えます。 これは、 *https://contoso.azurewebsites.net/.auth/login/done* のような値である必要があります。
 
      各プラットフォームに必要なコードは次のとおりです。
 
@@ -909,11 +909,11 @@ Microsoft Store アプリでプッシュ通知を有効にするには、パッ�
 
 この値を取得するには:
 
-1. Visual Studio ソリューション エクスプローラーで、Microsoft Store アプリプロジェクトを右クリックし、  **[ストア]**、 > **[アプリケーションをストアと関連付ける]** の順にクリックします。
-2. ウィザードで **[次へ]** をクリックし、Microsoft アカウントでサインインします。次に、**[新しいアプリケーション名の予約]** にアプリの名前を入力し、**[予約]** をクリックします。
-3. アプリの登録が正常に作成されたら、アプリ名を選択し、**[次へ]** をクリックして、**[関連付け]** をクリックします。
+1. Visual Studio ソリューション エクスプローラーで、Microsoft Store アプリプロジェクトを右クリックし、  **[ストア]** 、 >  **[アプリケーションをストアと関連付ける]** の順にクリックします。
+2. ウィザードで **[次へ]** をクリックし、Microsoft アカウントでサインインします。次に、 **[新しいアプリケーション名の予約]** にアプリの名前を入力し、 **[予約]** をクリックします。
+3. アプリの登録が正常に作成されたら、アプリ名を選択し、 **[次へ]** をクリックして、 **[関連付け]** をクリックします。
 4. Microsoft アカウントを使用して [Windows デベロッパー センター] にログインします。 **[マイ アプリ]** で、作成したアプリ登録をクリックします。
-5. **[アプリ管理]**、 > **[アプリ ID]** の順にクリックし、下にスクロールして **[パッケージ SID]** を探します。
+5. **[アプリ管理]** 、 >  **[アプリ ID]** の順にクリックし、下にスクロールして **[パッケージ SID]** を探します。
 
 多くの場合、パッケージ SID は URI として処理されます。その場合、スキームとして *ms-app://* を使用する必要があります。 この値をプレフィックスとして連結して形成されたパッケージ SID のバージョンをメモしておきます。
 

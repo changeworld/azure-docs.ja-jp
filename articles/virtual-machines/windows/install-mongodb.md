@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 12/15/2017
 ms.author: cynthn
 ms.openlocfilehash: afd8e6b47fb86985acde062af1fb38ec3af4e902
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57998486"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60711420"
 ---
 # <a name="install-and-configure-mongodb-on-a-windows-vm-in-azure"></a>Azure の Windows VM に MongoDB をインストールして構成する
 [MongoDB](https://www.mongodb.org) は、高いパフォーマンスを特徴とし、広く普及しているオープン ソースの NoSQL データベースです。 この記事では、Azure の Windows Server 2016 仮想マシン (VM) での MongoDB のインストールと構成について説明します。 [Azure の Linux VM に MongoDB をインストールする](../linux/install-mongodb.md)こともできます。
@@ -38,30 +38,30 @@ MongoDB のインストールと構成を開始するには、リモート デ�
 
 
 1. リモート デスクトップを使用して VM に接続したら、タスク バーから Internet Explorer を開きます。
-2. Internet Explorer を初めて開くときは **[お勧めのセキュリティ、プライバシー、互換性の設定を使う]** を選択し、**[OK]** をクリックします。
+2. Internet Explorer を初めて開くときは **[お勧めのセキュリティ、プライバシー、互換性の設定を使う]** を選択し、 **[OK]** をクリックします。
 3. Internet Explorer の強化されたセキュリティ構成は、既定で有効になっています。 MongoDB Web サイトを、許可されたサイトの一覧に追加します。
    
    * 右上隅にある **[ツール]** アイコンを選択します。
-   * **[インターネット オプション]** で、**[セキュリティ]** タブ、**[信頼済みサイト]** アイコンの順に選択します。
+   * **[インターネット オプション]** で、 **[セキュリティ]** タブ、 **[信頼済みサイト]** アイコンの順に選択します。
    * **[サイト]** ボタンをクリックします。 信頼済みサイトの一覧に *https://\*.mongodb.com* を追加し、ダイアログ ボックスを閉じます。
      
      ![Internet Explorer のセキュリティ設定の構成](./media/install-mongodb/configure-internet-explorer-security.png)
-4. [MongoDB のダウンロード](https://www.mongodb.com/downloads) ページ (https://www.mongodb.com/downloads)) を参照します。
-5. 必要に応じて、**Community Server** エディションを選んでから、"*Windows Server 2008 R2 64 ビット以降*" 用の最新の安定版リリースを選びます。 インストーラーをダウンロードするには、**[DOWNLOAD (msi) (ダウンロード (msi))]** をクリックします。
+4. [MongoDB のダウンロード](https://www.mongodb.com/downloads) ページ (https://www.mongodb.com/downloads) ) を参照します。
+5. 必要に応じて、**Community Server** エディションを選んでから、"*Windows Server 2008 R2 64 ビット以降*" 用の最新の安定版リリースを選びます。 インストーラーをダウンロードするには、 **[DOWNLOAD (msi) (ダウンロード (msi))]** をクリックします。
    
     ![MongoDB インストーラーのダウンロード](./media/install-mongodb/download-mongodb.png)
    
     ダウンロードが完了したら、インストーラーを実行します。
-6. 使用許諾契約を読み、同意します。 メッセージが表示されたら、**[Complete (完全)]** インストールを選択します。
+6. 使用許諾契約を読み、同意します。 メッセージが表示されたら、 **[Complete (完全)]** インストールを選択します。
 7. 必要に応じて、MongoDB のグラフィカル インターフェイスである Compass をインストールすることもできます。
 8. 最後の画面で **[Install (インストール)]** をクリックします。
 
 ## <a name="configure-the-vm-and-mongodb"></a>VM と MongoDB の構成
 1. path 変数は、MongoDB インストーラーでは更新されません。 path 変数に MongoDB の `bin` の場所が指定されていない場合は、MongoDB 実行可能ファイルを使用するたびに完全パスを指定する必要があります。 path 変数に場所を追加する方法は、次のとおりです。
    
-   * **[スタート]** メニューを右クリックし、**[システム]** を選択します。
-   * **[システムの詳細設定]** をクリックし、**[環境変数]** をクリックします。
-   * **[システム変数]** で、**[Path]**、**[編集]** の順にクリックします。
+   * **[スタート]** メニューを右クリックし、 **[システム]** を選択します。
+   * **[システムの詳細設定]** をクリックし、 **[環境変数]** をクリックします。
+   * **[システム変数]** で、 **[Path]** 、 **[編集]** の順にクリックします。
      
      ![PATH 変数の構成](./media/install-mongodb/configure-path-variables.png)
      
@@ -112,7 +112,7 @@ MongoDB のインストールと構成を開始するには、リモート デ�
     MongoDB サービスの作成の詳細については、「[Configure a Windows Service for MongoDB (MongoDB 用の Windows サービスの構成)](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/#mongodb-as-a-windows-service)」を参照してください。
 
 ## <a name="test-the-mongodb-instance"></a>MongoDB インスタンスのテスト
-MongoDB を 1 つのインスタンスとして実行するか、サービスとしてインストールしたら、データベースの作成と使用を開始できます。 MongoDB 管理シェルを開始するには、**[スタート]** メニューからもう 1 つコマンド プロンプト ウィンドウを開き、次のコマンドを入力します。
+MongoDB を 1 つのインスタンスとして実行するか、サービスとしてインストールしたら、データベースの作成と使用を開始できます。 MongoDB 管理シェルを開始するには、 **[スタート]** メニューからもう 1 つコマンド プロンプト ウィンドウを開き、次のコマンドを入力します。
 
 ```
 mongo  

@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
 ms.openlocfilehash: f989f4d103efecf2b6e206287dd8b7b300a1796d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57856843"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60794303"
 ---
 # <a name="access-the-vfxt-cluster"></a>vFXT クラスターへのアクセス
 
@@ -53,7 +53,7 @@ PuTTY の **[ホスト名]** フィールドにクラスター コントロー�
 
 **[構成]** パネルで次の手順を行います。
 
-1. 左側にある **[接続]** > **[SSH]** を展開します。 
+1. 左側にある **[接続]**  >  **[SSH]** を展開します。 
 1. **[Tunnels]\(トンネル\)** をクリックします。 
 1. ソース ポート (8443 など) を入力します。 
 1. 宛先については、vFXT クラスターの管理 IP アドレスとポート 443 を入力します。 
@@ -75,7 +75,7 @@ SSH 公開キーを使用してクラスターを作成し、一致するキー�
 
 * VPN または ExpressRoute を使用してクラスターにアクセスする場合は、ブラウザーでクラスター管理 IP アドレスに移動します。 例: ``https://203.0.113.51``
 
-ブラウザーによっては、**[Advanced]\(詳細設定\)** をクリックして、そのページへのアクセスが安全であることを確認する必要があります。
+ブラウザーによっては、 **[Advanced]\(詳細設定\)** をクリックして、そのページへのアクセスが安全であることを確認する必要があります。
 
 クラスターの作成時に指定した、ユーザー名 `admin` と管理パスワードを入力します。
 

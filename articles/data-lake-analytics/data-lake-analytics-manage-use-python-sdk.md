@@ -10,11 +10,11 @@ ms.assetid: d4213a19-4d0f-49c9-871c-9cd6ed7cf731
 ms.topic: conceptual
 ms.date: 06/08/2018
 ms.openlocfilehash: 82007c780a0c9ff3bb2e1a50a4826499f9df9c9f
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58518968"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60811707"
 ---
 # <a name="manage-azure-data-lake-analytics-using-python"></a>Python を使用して Azure Data Lake Analytics を管理する
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -24,7 +24,7 @@ ms.locfileid: "58518968"
 ## <a name="supported-python-versions"></a>サポートされている Python のバージョン
 
 * Python の 64 ビット バージョンを使用します。
-*  **[Python.org ダウンロード](https://www.python.org/downloads/)** にある標準の Python ディストリビューションを使用できます。 
+* **[Python.org ダウンロード](https://www.python.org/downloads/)** にある標準の Python ディストリビューションを使用できます。 
 * 多くの開発者は、 **[Anaconda Python ディストリビューション](https://www.anaconda.com/download/)** を使用すると便利なことがわかります。  
 * この資料は、標準の Python ディストリビューションからの Python バージョン 3.6 を使用して作成されました。
 

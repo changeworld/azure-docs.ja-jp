@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/26/2018
 ms.author: spelluru
-ms.openlocfilehash: 3ef08cfc94a029f97250578e9b0366a18770c809
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 9d11179a8518ebf48f68f8607f94e0253d4edb80
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43696742"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60789928"
 ---
 # <a name="azure-relay-port-settings"></a>Azure リレー ポート設定
 
@@ -31,23 +31,23 @@ Azure リレーのポート値に必要な構成を次の表に示します。
 
 ## <a name="wcf-relays"></a>WCF リレー
   
-|バインド|トランスポート セキュリティ|ポート|  
+|バインド|トランスポート セキュリティ|Port|  
 |-------------|------------------------|----------|  
 |[BasicHttpRelayBinding クラス](/dotnet/api/microsoft.servicebus.basichttprelaybinding) (クライアント)|はい|HTTPS| 
-|" |いいえ |HTTP|  
+|" |いいえ|HTTP|  
 |[BasicHttpRelayBinding クラス](/dotnet/api/microsoft.servicebus.basichttprelaybinding) (サービス)|使用できるのは|9351/HTTP|  
 |[NetEventRelayBinding クラス](/dotnet/api/microsoft.servicebus.neteventrelaybinding) (クライアント)|はい|9351/HTTPS|  
-|" |いいえ |9350/HTTP|  
+|" |いいえ|9350/HTTP|  
 |[NetEventRelayBinding クラス](/dotnet/api/microsoft.servicebus.neteventrelaybinding) (サービス)|使用できるのは|9351/HTTP|  
 |[NetTcpRelayBinding クラス](/dotnet/api/microsoft.servicebus.nettcprelaybinding) (クライアント/サービス)|使用できるのは|5671/9352/HTTP (ハイブリッドを使用している場合は 9352/9353)|  
 |[NetOnewayRelayBinding クラス](/dotnet/api/microsoft.servicebus.netonewayrelaybinding) (クライアント)|はい|9351/HTTPS|  
-|" |いいえ |9350/HTTP|  
+|" |いいえ|9350/HTTP|  
 |[NetOnewayRelayBinding クラス](/dotnet/api/microsoft.servicebus.netonewayrelaybinding) (サービス)|使用できるのは|9351/HTTP|  
 |[WebHttpRelayBinding クラス](/dotnet/api/microsoft.servicebus.webhttprelaybinding) (クライアント)|はい|HTTPS|  
-|" |いいえ |HTTP|  
+|" |いいえ|HTTP|  
 |[WebHttpRelayBinding クラス](/dotnet/api/microsoft.servicebus.webhttprelaybinding) (サービス)|使用できるのは|9351/HTTP|  
 |[WS2007HttpRelayBinding クラス](/dotnet/api/microsoft.servicebus.ws2007httprelaybinding) (クライアント)|はい|HTTPS|  
-|" |いいえ |HTTP|  
+|" |いいえ|HTTP|  
 |[WS2007HttpRelayBinding クラス](/dotnet/api/microsoft.servicebus.ws2007httprelaybinding) (サービス)|使用できるのは|9351/HTTP|
 
 ## <a name="next-steps"></a>次の手順

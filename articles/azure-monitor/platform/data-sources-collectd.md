@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 11/27/2018
 ms.author: magoedte
 ms.openlocfilehash: 2118f137f2c0d32f891a170c3509bceee7ba13ed
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59794440"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60764964"
 ---
 # <a name="collect-data-from-collectd-on-linux-agents-in-azure-monitor"></a>Azure Monitor で Linux エージェント上の CollectD からデータを収集する
 [CollectD](https://collectd.org/) は、アプリケーションおよびシステム レベルの情報から定期的にパフォーマンス メトリックを収集するオープン ソースの Linux デーモンです。 アプリケーションの例には、Java 仮想マシン (JVM)、MySQL Server、および Nginx が含まれます。 この記事では、Azure Monitor での CollectD からのパフォーマンス データの収集に関する情報を提供します。
@@ -95,7 +95,7 @@ Azure Monitor での CollectD データの収集を構成するための基本�
         sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.d/oms.conf /etc/collectd/collectd.conf.d/oms.conf
 
     >[!NOTE]
-    >5.5 より前の CollectD バージョンでは、上に示すように `oms.conf` 内のタグを変更する必要があります。
+    >5\.5 より前の CollectD バージョンでは、上に示すように `oms.conf` 内のタグを変更する必要があります。
     >
 
 2. collectd.conf を目的のワークスペースの omsagent 構成ディレクトリにコピーします。
@@ -114,7 +114,7 @@ Azure Monitor での CollectD データの収集を構成するための基本�
 |:--|:--|
 | `host` | Computer |
 | `plugin` | なし |
-| `plugin_instance` | インスタンス名<br>**plugin_instance** が *null* である場合、InstanceName="*_Total*" |
+| `plugin_instance` | インスタンス名<br>**plugin_instance** が *null* である場合、InstanceName=" *_Total*" |
 | `type` | ObjectName |
 | `type_instance` | CounterName<br>**type_instance** が *null* である場合、CounterName=**blank** |
 | `dsnames[]` | CounterName |

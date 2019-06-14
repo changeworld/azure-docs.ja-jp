@@ -9,11 +9,11 @@ ms.service: azure-databricks
 ms.topic: conceptual
 ms.date: 03/18/2019
 ms.openlocfilehash: 2db588a0cf67d7826408139e8facb43a2e897951
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60003447"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62126683"
 ---
 # <a name="deploy-azure-databricks-in-your-virtual-network-preview"></a>仮想ネットワーク内での Azure Databricks のデプロイ (プレビュー)
 
@@ -121,7 +121,7 @@ Azure Databricks ワークスペースをデプロイする仮想ネットワー
 
 [Azure portal](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-inject.html#vnet-inject-portal) や [Azure Resource Manager テンプレート](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-inject.html#vnet-inject-advanced)を使用せずにネットワーク セキュリティ グループを作成する場合は、サブネット上の以下のトラフィックを手動でホワイトリスト登録する必要があります。
 
-|方向|プロトコル|ソース|発信元ポート|変換先|宛先ポート|
+|Direction|Protocol|source|発信元ポート|変換先|宛先ポート|
 |---------|--------|------|-----------|-----------|----------------|
 |受信|\*|VirtualNetwork|\*|\*|\*|
 |受信|\*|コントロール プレーン NAT IP|\*|\*|22|
@@ -133,7 +133,7 @@ Azure Databricks ワークスペースをデプロイする仮想ネットワー
 
 以下の IP アドレスを使用してサブネット トラフィックをホワイトリスト登録します。 SQL (metastore) およびストレージ (成果物およびログ ストレージ) の場合は、SQL およびストレージの[サービス タグ](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)を使用する必要があります。
 
-|Azure Databricks リージョン|サービス|パブリック IP|
+|Azure Databricks リージョン|Service|パブリック IP|
 |-----------------------|-------|---------|
 |米国東部|コントロール プレーン NAT </br></br>Webapp|23.101.152.95/32 </br></br>40.70.58.221/32|
 |米国東部 2|コントロール プレーン NAT </br></br>Webapp|23.101.152.95/32 </br></br>40.70.58.221/32|
@@ -164,7 +164,7 @@ Azure Databricks ワークスペースをデプロイする仮想ネットワー
 
 ### <a name="workspace-launch-errors"></a>ワークスペース起動時のエラー
 
-Azure Databricks のサインイン画面で、カスタム仮想ネットワーク内のワークスペースを起動することができず、**[We've encountered an error creating your workspace.Make sure the custom network configuration is correct and try again.]\(ワークスペースの作成中にエラーが発生しました。カスタム ネットワーク構成が正しいことを確認して、やり直してください。\)** というエラーが表示されます。
+Azure Databricks のサインイン画面で、カスタム仮想ネットワーク内のワークスペースを起動することができず、 **[We've encountered an error creating your workspace.Make sure the custom network configuration is correct and try again.]\(ワークスペースの作成中にエラーが発生しました。カスタム ネットワーク構成が正しいことを確認して、やり直してください。\)** というエラーが表示されます。
 
 このエラーは、ネットワーク構成が要件を満たしていない場合に発生します。 ワークスペースを作成したときに、このトピックの手順に従っていたことを確認してください。
 

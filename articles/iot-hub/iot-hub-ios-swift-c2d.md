@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 04/19/2018
 ms.author: kgremban
 ms.openlocfilehash: e7e8d12af92a566753d8f3d7baf5019bae44de2c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58163519"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60398945"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-ios"></a>IoT Hub (iOS) を使用した cloud-to-device メッセージの送信
 
@@ -97,7 +97,7 @@ pod install
 
 5. 変更を保存します。 
 
-6. デバイス エミュレーターで、**[ビルド/実行]** ボタンまたは **Command + r** キーの組み合わせを使用してプロジェクトを実行します。 
+6. デバイス エミュレーターで、 **[ビルド/実行]** ボタンまたは **Command + r** キーの組み合わせを使用してプロジェクトを実行します。 
 
    ![プロジェクトの実行](media/iot-hub-ios-swift-c2d/run-sample.png)
 
@@ -149,7 +149,7 @@ pod install
 
    ![エミュレーター デバイスの変更](media/iot-hub-ios-swift-c2d/change-device.png)
 
-8. デバイス エミュレーターで、**[ビルド/実行]** ボタンまたは **Command + r** キーの組み合わせを使用してプロジェクトを実行します。 
+8. デバイス エミュレーターで、 **[ビルド/実行]** ボタンまたは **Command + r** キーの組み合わせを使用してプロジェクトを実行します。 
 
    ![プロジェクトを実行する](media/iot-hub-ios-swift-c2d/run-app.png)
 
@@ -157,13 +157,13 @@ pod install
 
 2 つのアプリケーションを使用して、cloud-to-device メッセージを送受信する準備が整いました。
 
-1. シミュレートされた IoT デバイスで実行されている **iOS App Sample** アプリで、**[開始]** をクリックします。 アプリケーションは device-to-cloud メッセージの送信を開始しますが、cloud-to-device メッセージのリッスンも開始します。 
+1. シミュレートされた IoT デバイスで実行されている **iOS App Sample** アプリで、 **[開始]** をクリックします。 アプリケーションは device-to-cloud メッセージの送信を開始しますが、cloud-to-device メッセージのリッスンも開始します。 
 
    ![サンプル IoT デバイス アプリの表示](media/iot-hub-ios-swift-c2d/view-d2c.png)
 
 2. シミュレートされたサービス デバイスで実行されている **IoTHub Service Client Sample** アプリで、メッセージの送信先の IoT デバイスの ID を入力します。 
 
-3. プレーンテキスト メッセージを作成し、**[送信]** をクリックします。 
+3. プレーンテキスト メッセージを作成し、 **[送信]** をクリックします。 
 
     [送信] をクリックするとすぐにいくつかのアクションが発生します。 サービス サンプルでは、指定したサービス接続文字列によりアプリがアクセスできる IoT ハブにメッセージが送信されます。 IoT ハブは、デバイス ID を確認し、宛先デバイスにメッセージを送信し、ソース デバイスに受信確認を送信します。 シミュレートされた IoT デバイスで実行されているアプリは、IoT ハブからのメッセージを確認し、最新のメッセージのテキストを画面に出力します。
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: genli
-ms.openlocfilehash: 0b6c8da03c4a67aadb38280ba958a9b0feb88d1f
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: e1b8bb3544a08b60564ceb5bd7e1666214059e09
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38678580"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60743923"
 ---
 # <a name="control-routing-and-use-virtual-appliances-classic-using-the-azure-cli"></a>Azure CLI を使用してルーティングを制御し仮想アプライアンス (クラシック) を使用する
 
@@ -72,8 +72,8 @@ ms.locfileid: "38678580"
    
     パラメーター:
    
-   * **-l (または --location)**。 NSG が作成される Azure リージョンです。 ここでは、 *westus*です。
-   * **-n (または --name)**。 新しい NSG の名前です。 ここでは、 *NSG-FrontEnd*です。
+   * **-l (または --location)** 。 NSG が作成される Azure リージョンです。 ここでは、 *westus*です。
+   * **-n (または --name)** 。 新しい NSG の名前です。 ここでは、 *NSG-FrontEnd*です。
 3. バックエンドのサブネット (192.168.2.0/24) 宛てのすべてのトラフィックを **FW1** VM (192.168.0.4) に送信するために、次のコマンドを実行して、上記で作成済みのルート テーブル内にルートを作成します。
 
     ```azurecli
@@ -89,9 +89,9 @@ ms.locfileid: "38678580"
    
     パラメーター:
    
-   * **-r (または --route-table-name)**。 ルートが追加されるルート テーブルの名前です。 ここでは、 *UDR-FrontEnd*です。
-   * **-a (または --address-prefix)**。 パケットの送信先であるサブネットのアドレス プレフィックスです。 ここでは、 *192.168.2.0/24*です。
-   * **-t (または --next-hop-type)**。 トラフィックの送信先となるオブジェクトの種類です。 指定できる値は *VirtualAppliance*、*VirtualNetworkGateway*、*VNETLocal*、*Internet*、または *None* です。
+   * **-r (または --route-table-name)** 。 ルートが追加されるルート テーブルの名前です。 ここでは、 *UDR-FrontEnd*です。
+   * **-a (または --address-prefix)** 。 パケットの送信先であるサブネットのアドレス プレフィックスです。 ここでは、 *192.168.2.0/24*です。
+   * **-t (または --next-hop-type)** 。 トラフィックの送信先となるオブジェクトの種類です。 指定できる値は *VirtualAppliance*、*VirtualNetworkGateway*、*VNETLocal*、*Internet*、または *None* です。
    * **-p (または --next-hop-ip-address**)。 次のホップ先の IP アドレスです。 ここでは、 *192.168.0.4*です。
 4. 次のコマンドを実行して、作成したルート テーブルを **FrontEnd** サブネットに関連付けます。
 
@@ -114,7 +114,7 @@ ms.locfileid: "38678580"
    
     パラメーター:
    
-   * **-t (または --vnet-name)**。 サブネットが置かれている VNet の名前です。 ここでは、 *TestVNet*です。
+   * **-t (または --vnet-name)** 。 サブネットが置かれている VNet の名前です。 ここでは、 *TestVNet*です。
    * **-n (または --subnet-name**)。 ルート テーブルが追加されるサブネットの名前です。 ここでは、 *FrontEnd*です。
 
 ## <a name="create-the-udr-for-the-back-end-subnet"></a>バックエンドのサブネットの UDR を作成する

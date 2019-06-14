@@ -7,10 +7,10 @@ ms.author: mbaldwin
 manager: barbkess
 ms.date: 03/19/2019
 ms.openlocfilehash: 330337620f1732b9ccecfb2c95a0b4495476f97b
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64720529"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Azure Key Vault の論理的な削除の概要
@@ -18,7 +18,7 @@ ms.locfileid: "64720529"
 Key Vault の論理的な削除機能を使用すると、削除されたコンテナーとコンテナー オブジェクトを復旧できます (論理的な削除として知られています)。 具体的には、以下のシナリオを扱います。
 
 - キー コンテナーの回復可能な削除のサポート
-- キー コンテナー オブジェクトの回復可能な削除のサポート (例:  キー、シークレット、証明書)
+- キー コンテナー オブジェクトの回復可能な削除のサポート (例: キー、シークレット、証明書)
 
 ## <a name="supporting-interfaces"></a>インターフェイスのサポート
 

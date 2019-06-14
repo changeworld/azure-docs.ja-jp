@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
 ms.openlocfilehash: a78c03537d7fb3db6afa0c4a4e84c4746146ca85
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58486376"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60657828"
 ---
 # <a name="api-templates-in-azure-api-management"></a>Azure API Management の API テンプレート
 
@@ -345,12 +345,12 @@ Azure API Management には、開発者ポータルの各ページの内容を�
   
 |プロパティ|Type|説明|  
 |--------------|----------|-----------------|  
-|`apiId`|文字列|現在の API の ID。|  
-|`apiName`|文字列|API の名前。|  
-|`apiDescription`|文字列|API の説明。|  
+|`apiId`|string|現在の API の ID。|  
+|`apiName`|string|API の名前。|  
+|`apiDescription`|string|API の説明。|  
 |`api`|[API の概要](api-management-template-data-model-reference.md#APISummary)エンティティ。|現在の API。|  
 |`operation`|[操作](api-management-template-data-model-reference.md#Operation)|現在表示されている操作。|  
-|`sampleUrl`|文字列|現在の操作の URL。|  
+|`sampleUrl`|string|現在の操作の URL。|  
 |`operationMenu`|[Operation menu](api-management-template-data-model-reference.md#Menu)|この API の操作のメニュー。|  
 |`consoleUrl`|URI|**[試してみる]** ボタンの URI。|  
 |`samples`|[Code sample](api-management-template-data-model-reference.md#Sample) エンティティのコレクション。|現在の操作のコード サンプル。|  

@@ -12,11 +12,11 @@ ms.date: 03/15/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: acc701431afa458efd0768fb3d6898fd1920e333
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59528086"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60811256"
 ---
 # <a name="data-exploration-and-modeling-with-spark"></a>Spark を使用したデータ探索とモデリング
 
@@ -589,8 +589,8 @@ ML アルゴリズムのトレーニングとテストの所要時間は、分�
 各モデル構築コードのセクションは、次のステップに分けることができます。 
 
 1. **モデルのトレーニング** データ
-2. **モデルの評価** 
-3. **モデルの保存** 
+2. **モデルの評価**
+3. **モデルの保存**
 
 ### <a name="classification-using-logistic-regression"></a>ロジスティック回帰を使用した分類
 このセクションのコードでは、NYC タクシーの乗車と料金のデータセットで、乗車でチップが支払われるかどうかを予測するロジスティック回帰モデル ( [LBFGS](https://en.wikipedia.org/wiki/Broyden%E2%80%93Fletcher%E2%80%93Goldfarb%E2%80%93Shanno_algorithm) を使用) をトレーニング、評価し、保存する方法を示します。
@@ -847,8 +847,8 @@ ROC 下面積 = 0.985297691373
 これらのモデルについては、「はじめに」で説明しました。 各モデル構築コードのセクションは、次のステップに分けることができます。 
 
 1. **モデルのトレーニング** データ
-2. **モデルの評価** 
-3. **モデルの保存** 
+2. **モデルの評価**
+3. **モデルの保存**
 
 ### <a name="linear-regression-with-sgd"></a>SGD を使用した線形回帰
 このセクションのコードでは、スケーリングされた特徴を使用して、最適化に確率的勾配降下 (SGD) を使用する線形回帰をトレーニングする方法と、このモデルにスコアを付け、評価し、Azure BLOB Storage (WASB) に保存する方法を示します。

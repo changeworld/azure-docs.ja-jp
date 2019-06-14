@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: apimpm
 ms.openlocfilehash: 99f756b5415811b3d4c2ee0167f98b31c905df1a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58793679"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60657705"
 ---
 # <a name="policies-in-azure-api-management"></a>Azure API Management のポリシー
 
@@ -93,7 +93,7 @@ Azure API Management (APIM) のポリシーは、発行者がその構成を通�
 
 ### <a name="restrict-incoming-requests"></a>受信要求を制限する
 
-新しいステートメントを追加して受信要求を指定された IP アドレスに制限するには、`inbound` XML 要素内にカーソルを置き、**[Restrict caller IPs]\(呼び出し元 IP の制限\)** ステートメントをクリックします。
+新しいステートメントを追加して受信要求を指定された IP アドレスに制限するには、`inbound` XML 要素内にカーソルを置き、 **[Restrict caller IPs]\(呼び出し元 IP の制限\)** ステートメントをクリックします。
 
 ![制限ポリシー][policies-restrict]
 

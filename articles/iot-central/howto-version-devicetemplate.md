@@ -9,11 +9,11 @@ ms.service: iot-central
 services: iot-central
 manager: peterpr
 ms.openlocfilehash: d4f9617a5c2ba6f6cf8dc261845aa98e33d70a55
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59281779"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60649205"
 ---
 # <a name="create-a-new-device-template-version"></a>デバイス テンプレートの新しいバージョンを作成する
 
@@ -59,7 +59,7 @@ Azure IoT Central を使用すると、IoT アプリケーションを迅速に�
 1. **デバイス エクスプローラー** ページに移動します。
 1. 別のバージョンに移行する必要があるデバイスを選択します。
 1. **[Migrate Device]\(デバイスの移行\)** を選択します。
-1. デバイスの移行先のバージョン番号を選択して、**[移行]** を選択します。
+1. デバイスの移行先のバージョン番号を選択して、 **[移行]** を選択します。
 
 ![デバイスを移行する方法](media/howto-version-devicetemplate/pick-version.png)
 

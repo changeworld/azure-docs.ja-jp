@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/04/2016
 ms.author: crdun
 ms.openlocfilehash: 506c59ca24aeafbac59b1508bb78142051302765
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53001821"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62127881"
 ---
 # <a name="enable-offline-sync-for-your-xamarinforms-mobile-app"></a>Xamarin.Forms モバイル アプリのオフライン同期の有効化
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
@@ -34,7 +34,7 @@ ms.locfileid: "53001821"
 ## <a name="enable-offline-sync-functionality-in-the-quickstart-solution"></a>クイック スタート ソリューションでのオフライン同期機能の有効化
 オフライン同期コードは、C# プリプロセッサ ディレクティブを使用してプロジェクトにインクルードされます。 **OFFLINE\_SYNC\_ENABLED** シンボルを定義すると、これらのコード パスがビルドにインクルードされます。 Windows アプリの場合、SQLite プラットフォームもインストールする必要があります。
 
-1. Visual Studio で、ソリューション、**[ソリューションの NuGet パッケージの管理...]** の順に右クリックし、ソリューション内のすべてのプロジェクトの **Microsoft.Azure.Mobile.Client.SQLiteStore** NuGet パッケージを探してインストールします。
+1. Visual Studio で、ソリューション、 **[ソリューションの NuGet パッケージの管理...]** の順に右クリックし、ソリューション内のすべてのプロジェクトの **Microsoft.Azure.Mobile.Client.SQLiteStore** NuGet パッケージを探してインストールします。
 2. ソリューション エクスプローラーで、ポータブル クラス ライブラリ プロジェクトである **Portable** というプロジェクトから TodoItemManager.cs ファイルを開き、次のプリプロセッサ ディレクティブをコメント解除します。
 
         #define OFFLINE_SYNC_ENABLED
@@ -45,7 +45,7 @@ ms.locfileid: "53001821"
    * **ユニバーサル Windows プラットフォーム:** [ユニバーサル Windows プラットフォーム用 SQLite][5] をインストールします。
 
      クイック スタートには、ユニバーサル Windows プロジェクトは含まれていませんが、ユニバーサル Windows プラットフォームは Xamarin フォームでサポートされます。
-4. (省略可能) それぞれの Windows アプリ プロジェクトで、**[参照]** > **[参照の追加]** の順に右クリックして、**Windows** フォルダー、**[拡張機能]** の順に展開します。
+4. (省略可能) それぞれの Windows アプリ プロジェクトで、 **[参照]**  >  **[参照の追加]** の順に右クリックして、**Windows** フォルダー、 **[拡張機能]** の順に展開します。
     適切な **SQLite for Windows** SDK と **Visual C++ 2013 Runtime for Windows** SDK を有効にします。
     Windows プラットフォームによって SQLite SDK の名前はわずかに異なります。
 
@@ -114,7 +114,7 @@ ms.locfileid: "53001821"
     このサンプルでは、既定の同期ハンドラーを使った単純なエラー処理を使用しています。 実際のアプリケーションでは、ネットワーク状態やサーバーの競合などの各種エラーが、カスタム **IMobileServiceSyncHandler** の実装を使用して処理されます。
 
 ## <a name="offline-sync-considerations"></a>オフライン同期に関する考慮事項
-このサンプルでは、**SyncAsync** メソッドは起動時と同期が明示的に要求された場合にのみ呼び出されます。  Android アプリまたは iOS アプリで同期を開始するには、項目一覧でプルダウンします。Windows アプリでは、**[同期]** ボタンを使用します。 実際のアプリケーションでは、ネットワークの状態が変更されたときに同期がトリガーされるように設定することもできます。
+このサンプルでは、**SyncAsync** メソッドは起動時と同期が明示的に要求された場合にのみ呼び出されます。  Android アプリまたは iOS アプリで同期を開始するには、項目一覧でプルダウンします。Windows アプリでは、 **[同期]** ボタンを使用します。 実際のアプリケーションでは、ネットワークの状態が変更されたときに同期がトリガーされるように設定することもできます。
 
 コンテキストによって追跡された保留中のローカル更新のあるテーブルに対してプルが実行される場合、そのプル操作は前のコンテキストのプッシュを自動的にトリガーします。 このサンプルの項目を更新、追加、完了するとき、明示的な **PushAsync** の呼び出しを省略できます。
 
@@ -139,7 +139,7 @@ ms.locfileid: "53001821"
 4. アプリケーションを終了し、再起動して、作成した新しい項目がローカル ストアに保存されていることを確認します。
 5. (省略可能) Visual Studio を使用して、Azure SQL Database テーブルを表示し、バックエンドのデータベースのデータが変更されていないことを確認します。
 
-    Visual Studio で、 **サーバー エクスプローラー**を開きます。 **[Azure]**->**[SQL Databases]** を選択して、データベースに移動します。 データベースを右クリックし、 **[SQL Server オブジェクト エクスプローラーで開く]** を選択します。 これで SQL データベースのテーブルとその内容を参照できます。
+    Visual Studio で、 **サーバー エクスプローラー**を開きます。 **[Azure]** -> **[SQL Databases]** を選択して、データベースに移動します。 データベースを右クリックし、 **[SQL Server オブジェクト エクスプローラーで開く]** を選択します。 これで SQL データベースのテーブルとその内容を参照できます。
 
 ## <a name="update-the-client-app-to-reconnect-your-mobile-backend"></a>クライアント アプリを更新し、モバイルのバックエンドを再接続します。
 このセクションでは、アプリケーションをモバイル バックエンドに再接続して、アプリケーションがオンライン状態に戻ったときの動作をシミュレーションします。 更新ジェスチャを実行すると、データがモバイル バックエンドに同期されます。

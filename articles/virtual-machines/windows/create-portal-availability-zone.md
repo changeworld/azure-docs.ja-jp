@@ -17,11 +17,11 @@ ms.date: 03/27/2018
 ms.author: danlep
 ms.custom: ''
 ms.openlocfilehash: e813b26a91d25fbaa1298acd455f27d2cac705f6
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59997055"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61403633"
 ---
 # <a name="create-a-windows-virtual-machine-in-an-availability-zone-with-the-azure-portal"></a>Azure Portal を使用して可用性ゾーン内に Windows 仮想マシンを作成する
 
@@ -37,9 +37,9 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 1. Azure Portal の左上隅にある **[リソースの作成]** をクリックします。
 
-2. **[コンピューティング]**、**[Windows Server 2016 Datacenter]** の順に選択します。 
+2. **[コンピューティング]** 、 **[Windows Server 2016 Datacenter]** の順に選択します。 
 
-3. 仮想マシンの情報を入力します。 ここに入力したユーザー名とパスワードが、仮想マシンへのサインインに使用されます。 パスワードは 12 文字以上で、[定義された複雑さの要件](faq.md#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。 米国東部 2 など、可用性ゾーンをサポートする場所を選びます。 完了したら、**[OK]** をクリックします。
+3. 仮想マシンの情報を入力します。 ここに入力したユーザー名とパスワードが、仮想マシンへのサインインに使用されます。 パスワードは 12 文字以上で、[定義された複雑さの要件](faq.md#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。 米国東部 2 など、可用性ゾーンをサポートする場所を選びます。 完了したら、 **[OK]** をクリックします。
 
     ![ポータルのブレードで VM に関する基本情報を入力する](./media/create-portal-availability-zone/create-windows-vm-portal-basic-blade.png)
 
@@ -47,11 +47,11 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
     ![VM のサイズを選ぶ](./media/create-portal-availability-zone/create-windows-vm-portal-sizes.png)  
 
-5. **[設定]** > **[高可用性]** で、**[可用性ゾーン]** ドロップダウン リストからいずれかの番号付きのゾーンを選択し、残りを既定値のままにして、**[OK]** をクリックします。
+5. **[設定]**  >  **[高可用性]** で、 **[可用性ゾーン]** ドロップダウン リストからいずれかの番号付きのゾーンを選択し、残りを既定値のままにして、 **[OK]** をクリックします。
 
     ![可用性ゾーンを選択する](./media/create-portal-availability-zone/create-windows-vm-portal-availability-zone.png)
 
-6. 概要ページで、**[作成]** をクリックして、仮想マシンの展開を始めます。
+6. 概要ページで、 **[作成]** をクリックして、仮想マシンの展開を始めます。
 
 7. 対応する VM が、Azure Portal のダッシュボードにピン留めされます。 デプロイが完了すると、VM の概要が自動的に表示されます。
 

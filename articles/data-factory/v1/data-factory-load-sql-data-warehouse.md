@@ -14,11 +14,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: e275411f9fd9dfb672bb0815e83e37bcd5d1dda9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58077022"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60825422"
 ---
 # <a name="load-1-tb-into-azure-sql-data-warehouse-under-15-minutes-with-data-factory"></a>1 TB のデータを Data Factory を使用して 15 分以内に Azure SQL Data Warehouse に 読み込む
 > [!NOTE]
@@ -70,11 +70,11 @@ Azure SQL Data Warehouse は、**Azure Data Factory** の使用によって、�
 
     ![パフォーマンス スライダー](media/data-factory-load-sql-data-warehouse/performance-slider.png)
 
-    6,000 DWU で構成されていない既存のデータベースの場合は、Azure ポータルを使用してスケール アップできます。  Azure ポータルで既存のデータベースに移動します。次の図に示すように、**[概要]** パネルに **[スケール]** ボタンがあります。
+    6,000 DWU で構成されていない既存のデータベースの場合は、Azure ポータルを使用してスケール アップできます。  Azure ポータルで既存のデータベースに移動します。次の図に示すように、 **[概要]** パネルに **[スケール]** ボタンがあります。
 
     ![[スケール] ボタン](media/data-factory-load-sql-data-warehouse/scale-button.png)    
 
-    **[スケール]** ボタンをクリックして次に示すパネルを開き、スライダーを最大値まで移動し、**[保存]** ボタンをクリックします。
+    **[スケール]** ボタンをクリックして次に示すパネルを開き、スライダーを最大値まで移動し、 **[保存]** ボタンをクリックします。
 
     ![[スケール] ダイアログ](media/data-factory-load-sql-data-warehouse/scale-dialog.png)
 
@@ -113,7 +113,7 @@ Azure SQL Data Warehouse は、**Azure Data Factory** の使用によって、�
 
 ## <a name="launch-copy-wizard"></a>コピー ウィザードの起動
 1. [Azure Portal](https://portal.azure.com) にログインします。
-2. 左上隅にある **[リソースの作成]**、**[インテリジェンス + 分析]**、**[データ ファクトリ]** の順にクリックします。
+2. 左上隅にある **[リソースの作成]** 、 **[インテリジェンス + 分析]** 、 **[データ ファクトリ]** の順にクリックします。
 3. **[新しいデータ ファクトリ]** ウィンドウで、次の手順を実行します。
 
    1. **[名前]** に「**LoadIntoSQLDWDataFactory**」と入力します。
@@ -149,38 +149,38 @@ Azure SQL Data Warehouse は、**Azure Data Factory** の使用によって、�
 ## <a name="step-2-configure-source"></a>手順 2:ソースの構成
 このセクションでは、1-TB TPC-H 行アイテム ファイルを含む Azure BLOB のソースを構成する手順を示します。
 
-1. データ ストアとして **[Azure Blob Storage]** を選択し、**[次へ]** をクリックします。
+1. データ ストアとして **[Azure Blob Storage]** を選択し、 **[次へ]** をクリックします。
 
     ![コピー ウィザード - ソース選択ページ](media/data-factory-load-sql-data-warehouse/select-source-connection.png)
 
-2. Azure Blob ストレージ アカウントの接続情報を入力し、**[次へ]** をクリックします。
+2. Azure Blob ストレージ アカウントの接続情報を入力し、 **[次へ]** をクリックします。
 
     ![コピー ウィザード - ソース接続情報](media/data-factory-load-sql-data-warehouse/source-connection-info.png)
 
-3. TPC-H 行項目ファイルが含まれている**フォルダー**を選択し、**[次へ]** をクリックします。
+3. TPC-H 行項目ファイルが含まれている**フォルダー**を選択し、 **[次へ]** をクリックします。
 
     ![コピー ウィザード - 入力フォルダーの選択](media/data-factory-load-sql-data-warehouse/select-input-folder.png)
 
-4. **[次へ]** をクリックすると、ファイル形式の設定が自動的に検出されます。  列区切り記号が、既定のカンマ ‘,’ ではなく、‘|’ になっていることを確認します。  データをプレビューした後、**[次へ]** をクリックします。
+4. **[次へ]** をクリックすると、ファイル形式の設定が自動的に検出されます。  列区切り記号が、既定のカンマ ‘,’ ではなく、‘|’ になっていることを確認します。  データをプレビューした後、 **[次へ]** をクリックします。
 
     ![コピー ウィザード - ファイル形式の設定](media/data-factory-load-sql-data-warehouse/file-format-settings.png)
 
 ## <a name="step-3-configure-destination"></a>手順 3:コピー先を構成する
 このセクションでは、変換先 (Azure SQL Data Warehouse データベースの `lineitem` テーブル) を構成する方法を示します。
 
-1. 変換先ストアとして **[Azure SQL Data Warehouse]** を選択し、**[次へ]** をクリックします。
+1. 変換先ストアとして **[Azure SQL Data Warehouse]** を選択し、 **[次へ]** をクリックします。
 
     ![コピー ウィザード - 変換先データ ストアの選択](media/data-factory-load-sql-data-warehouse/select-destination-data-store.png)
 
-2. Azure SQL Data Warehouse の接続情報を入力します。  `xlargerc` ロールのメンバーであるユーザー (詳細な手順については「**前提条件**」セクションを参照してください) を指定したことを確認し、**[次へ]** をクリックします。
+2. Azure SQL Data Warehouse の接続情報を入力します。  `xlargerc` ロールのメンバーであるユーザー (詳細な手順については「**前提条件**」セクションを参照してください) を指定したことを確認し、 **[次へ]** をクリックします。
 
     ![コピー ウィザード - 変換先の接続情報](media/data-factory-load-sql-data-warehouse/destination-connection-info.png)
 
-3. 変換先テーブルを選択し、**[次へ]** をクリックします。
+3. 変換先テーブルを選択し、 **[次へ]** をクリックします。
 
     ![コピー ウィザード - [テーブル マッピング] ページ](media/data-factory-load-sql-data-warehouse/table-mapping-page.png)
 
-4. [スキーマ マッピング] ページで [Apply column mapping (列マッピングの適用)] オプションをオフにして、**[次へ]** をクリックします。
+4. [スキーマ マッピング] ページで [Apply column mapping (列マッピングの適用)] オプションをオフにして、 **[次へ]** をクリックします。
 
 ## <a name="step-4-performance-settings"></a>手順 4:パフォーマンス設定
 

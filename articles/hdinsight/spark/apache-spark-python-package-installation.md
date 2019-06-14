@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.openlocfilehash: c07326cc3a4334f1873eef2dc23da05156a93577
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64574650"
 ---
 # <a name="use-script-action-to-install-external-python-packages-for-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>スクリプト アクションを使用して HDInsight の Apache Spark クラスターの Jupyter Notebook で外部の Python パッケージをインストールする
@@ -68,7 +68,7 @@ HDInsight サービスで利用できるオープン ソース コンポーネ�
     |スクリプトの種類 | ドロップダウン リストから **[- カスタム]** を選択します。|
     |Name |テキスト ボックスに「`tensorflow`」と入力します。|
     |Bash スクリプト URI |テキスト ボックスに「`https://hdiconfigactions.blob.core.windows.net/linuxtensorflow/tensorflowinstall.sh`」と入力します。 |
-    |ノードの種類 | **[ヘッド]** を選択し、**[ワーカー]** チェック ボックスをオンにします。 |
+    |ノードの種類 | **[ヘッド]** を選択し、 **[ワーカー]** チェック ボックスをオンにします。 |
 
     `tensorflowinstall.sh` には次のコマンドが含まれます。
 

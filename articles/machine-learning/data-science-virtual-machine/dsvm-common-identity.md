@@ -17,11 +17,11 @@ ms.topic: article
 ms.date: 05/08/2018
 ms.author: gokuma
 ms.openlocfilehash: 0146ee6ee37c2eb9e98d831b54df2218d7de5b62
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55754602"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60502393"
 ---
 # <a name="set-up-a-common-identity-on-the-data-science-virtual-machine"></a>Data Science Virtual Machine で共通 ID を設定する
 
@@ -43,21 +43,21 @@ Azure AD DS により、Azure 上でフル マネージドのサービスを提�
 
    a. [Azure Active Directory 管理センター](https://aad.portal.azure.com)に、ディレクトリの全体管理者のアカウントでサインインします。
     
-   b. **[Azure Active Directory]** を選択し、**[ユーザーとグループ]** を選択します。
+   b. **[Azure Active Directory]** を選択し、 **[ユーザーとグループ]** を選択します。
     
-   c. **[ユーザーとグループ]** で、**[すべてのユーザー]** を選択し、**[新しいユーザー]** を選択します。
+   c. **[ユーザーとグループ]** で、 **[すべてのユーザー]** を選択し、 **[新しいユーザー]** を選択します。
    
       **[ユーザー]** ウィンドウが開きます。
       
       ![[ユーザー] ウィンドウ](./media/add-user.png)
     
-   d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **名前**や**ユーザー名**など、ユーザーの詳細を入力します。 ユーザー名のドメイン名の部分は、既定の初期ドメイン名 "<ドメイン名>.onmicrosoft.com"、または検証済みの非フェデレーション [カスタム ドメイン名](../../active-directory/add-custom-domain.md) ("contoso.com" など) のいずれかである必要があります。
+   d. **名前**や**ユーザー名**など、ユーザーの詳細を入力します。 ユーザー名のドメイン名の部分は、既定の初期ドメイン名 "<ドメイン名>.onmicrosoft.com"、または検証済みの非フェデレーション [カスタム ドメイン名](../../active-directory/add-custom-domain.md) ("contoso.com" など) のいずれかである必要があります。
     
    e. このプロセスの完了後、ユーザーに提供できるように、生成されたユーザー パスワードをコピーするか、メモしておきます。
     
-   f. 必要に応じて、ユーザーの **[プロファイル]**、**[グループ]**、または **[ディレクトリ ロール]** を開き、情報を入力します。 
+   f. 必要に応じて、ユーザーの **[プロファイル]** 、 **[グループ]** 、または **[ディレクトリ ロール]** を開き、情報を入力します。 
     
-   g. **[ユーザー]** で、**[作成]** を選択します。
+   g. **[ユーザー]** で、 **[作成]** を選択します。
     
    h. ユーザーがサインインできるように、新しいユーザーに生成されたパスワードを安全に配布します。
 

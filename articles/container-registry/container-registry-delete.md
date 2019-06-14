@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 04/04/2019
 ms.author: danlep
 ms.openlocfilehash: 1e496002c869c5d2c072773d37ed5fd5d4a5841e
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59683462"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60430807"
 ---
 # <a name="delete-container-images-in-azure-container-registry"></a>Azure Container Registry のコンテナー イメージを削除する
 
@@ -164,7 +164,7 @@ Are you sure you want to continue? (y/n): y
 
 1 つの[マニフェスト ダイジェスト](#manifest-digest)を 1 つまたは複数のタグと関連付けることができ、マニフェスト ダイジェストをタグに関連付けないでおくこともできます。 ダイジェストを指定して削除すると、マニフェストによって参照されているすべてのタグが削除され、イメージに固有のレイヤーのレイヤー データも削除されます。 共有されているレイヤーのデータは削除されません。
 
-ダイジェストを使用して削除するには、最初に、削除するイメージを含むリポジトリのマニフェスト ダイジェストのリストを取得します。 例: 
+ダイジェストを使用して削除するには、最初に、削除するイメージを含むリポジトリのマニフェスト ダイジェストのリストを取得します。 例:
 
 ```console
 $ az acr repository show-manifests --name myregistry --repository acr-helloworld

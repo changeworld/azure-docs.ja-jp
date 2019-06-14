@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.openlocfilehash: 465b53e1c5f56c5c05c860ebd69a825141f7e703
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64706061"
 ---
 # <a name="get-started-with-ml-services-on-azure-hdinsight"></a>Azure HDInsight の ML サービスの概要
@@ -30,7 +30,7 @@ Azure HDInsight を使用すると、ML サービス クラスターを作成で
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 
-2. **[+ リソースの作成]** > **[Analytics]** > **[HDInsight]** に移動します。
+2. **[+ リソースの作成]**  >  **[Analytics]**  >  **[HDInsight]** に移動します。
 
 3. **[基本]** から次の情報を入力します。
 
@@ -39,15 +39,15 @@ Azure HDInsight を使用すると、ML サービス クラスターを作成で
     * **クラスター ログイン ユーザー名**および**クラスター ログイン パスワード**:HTTPS 経由でクラスターにアクセスする場合のログイン。 これらの資格情報を使用して、Apache Ambari Web UI や REST API などのサービスにアクセスします。
     * **Secure Shell (SSH) ユーザー名**:SSH 経由でクラスターにアクセスする際に使用されるログイン。 既定では、このパスワードは、クラスター ログイン パスワードと同じです。
     * **リソース グループ**:クラスターが作成されるリソース グループ。
-    * **[場所]**:クラスターが作成される Azure リージョン。
+    * **[場所]** :クラスターが作成される Azure リージョン。
 
         ![クラスターの基本情報](./media/r-server-get-started/clustername.png)
 
-4. **[クラスターの種類]** を選択し、**[クラスターの構成]** セクションで次の値を設定します。
+4. **[クラスターの種類]** を選択し、 **[クラスターの構成]** セクションで次の値を設定します。
 
     * **クラスターの種類**:ML サービス
 
-    * **[オペレーティング システム]**:Linux
+    * **[オペレーティング システム]** :Linux
 
     * **バージョン**:ML Server 9.3 (HDI 3.6)。 ML Server 9.3 のリリース ノートは、[docs.microsoft.com](https://docs.microsoft.com/machine-learning-server/whats-new-in-machine-learning-server) でご確認いただけます。
 
@@ -55,13 +55,13 @@ Azure HDInsight を使用すると、ML サービス クラスターを作成で
 
         ![クラスターの基本情報](./media/r-server-get-started/clustertypeconfig.png)
 
-4. クラスターの種類を選択したら、__[選択]__ ボタンを使用してクラスターの種類を設定します。 次に、__[次へ]__ ボタンを使用して、基本的な構成を完了します。
+4. クラスターの種類を選択したら、 __[選択]__ ボタンを使用してクラスターの種類を設定します。 次に、 __[次へ]__ ボタンを使用して、基本的な構成を完了します。
 
 5. **[ストレージ]** セクションで、ストレージ アカウントを選択または作成します。 このドキュメントの手順では、このセクションの他のフィールドを既定値のままにします。 __[次へ]__ ボタンを使用して、ストレージの構成を保存します。
 
     ![HDInsight のストレージ アカウント設定](./media/r-server-get-started/cluster-storage.png)
 
-6. **[概要]** セクションで、クラスターの構成を確認します。 間違った設定を変更するには、__[編集]__ リンクを使用します。 最後に、__[作成]__ ボタンを使用してクラスターを作成します。
+6. **[概要]** セクションで、クラスターの構成を確認します。 間違った設定を変更するには、 __[編集]__ リンクを使用します。 最後に、 __[作成]__ ボタンを使用してクラスターを作成します。
 
     ![HDInsight のストレージ アカウント設定](./media/r-server-get-started/clustersummary.png)
 
@@ -174,11 +174,11 @@ ML サービス クラスターのエッジ ノードに接続するための SS
 
    `ssh USERNAME@CLUSTERNAME-ed-ssh.azurehdinsight.net`
 
-クラスターの SSH コマンドを入手するには、Azure Portal でクラスター名をクリックし、**[SSH + Cluster login]\(SSH + クラスター ログイン\)** をクリックして、**[ホスト名]** でエッジ ノードを選択します。 これにより、エッジ ノードの SSH エンドポイント情報が表示されます。
+クラスターの SSH コマンドを入手するには、Azure Portal でクラスター名をクリックし、 **[SSH + Cluster login]\(SSH + クラスター ログイン\)** をクリックして、 **[ホスト名]** でエッジ ノードを選択します。 これにより、エッジ ノードの SSH エンドポイント情報が表示されます。
 
 ![エッジ ノードの SSH エンドポイントの画像](./media/r-server-get-started/sshendpoint.png)
 
-SSH ユーザー アカウントを保護するためにパスワードを使用している場合は、パスワードの入力を求められます。 公開キーを使用している場合、 `-i` パラメーターを使用して、対応する秘密キーを指定することが必要な場合があります。 例: 
+SSH ユーザー アカウントを保護するためにパスワードを使用している場合は、パスワードの入力を求められます。 公開キーを使用している場合、 `-i` パラメーターを使用して、対応する秘密キーを指定することが必要な場合があります。 例:
 
     ssh -i ~/.ssh/id_rsa USERNAME@CLUSTERNAME-ed-ssh.azurehdinsight.net
 

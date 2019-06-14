@@ -9,11 +9,11 @@ ms.service: azure-databricks
 ms.topic: conceptual
 ms.date: 04/02/2019
 ms.openlocfilehash: 295b64b10f9f78ca6224d60fb84c6d1310aaa42e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59287522"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60770609"
 ---
 # <a name="quickstart-create-an-azure-databricks-workspace-in-a-virtual-network"></a>クイック スタート:仮想ネットワーク内に Azure Databricks ワークスペースを作成する
 
@@ -27,7 +27,7 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 
 ## <a name="create-a-virtual-network"></a>仮想ネットワークの作成
 
-1. Azure Portal で、**[リソースの作成]** > **[ネットワーク]** > **[仮想ネットワーク]** の順に選択します。
+1. Azure Portal で、 **[リソースの作成]**  >  **[ネットワーク]**  >  **[仮想ネットワーク]** の順に選択します。
 
 2. **[仮想ネットワークの作成]** で、次の設定を適用します。 
 
@@ -43,13 +43,13 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 
     ![Azure portal で仮想ネットワークを作成する](./media/quickstart-create-databricks-workspace-vnet-injection/create-virtual-network.png)
 
-3. デプロイが完了したら、仮想ネットワークに移動し、**[設定]** で **[アドレス空間]** を選択します。 *[その他のアドレス範囲の追加]* というボックスをオンにし、`10.179.0.0/16` を挿入して **[保存]** を選択します。
+3. デプロイが完了したら、仮想ネットワークに移動し、 **[設定]** で **[アドレス空間]** を選択します。 *[その他のアドレス範囲の追加]* というボックスをオンにし、`10.179.0.0/16` を挿入して **[保存]** を選択します。
 
     ![Azure 仮想ネットワークのアドレス空間](./media/quickstart-create-databricks-workspace-vnet-injection/add-address-space.png)
 
 ## <a name="create-an-azure-databricks-workspace"></a>Azure Databricks ワークスペースを作成する
 
-1. Azure portal で、**[リソースの作成]** > **[分析]** > **[Databricks]** の順に選択します。
+1. Azure portal で、 **[リソースの作成]**  >  **[分析]**  >  **[Databricks]** の順に選択します。
 
 2. **[Azure Databricks サービス]** で、次の設定を適用します。
 
@@ -82,9 +82,9 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 > [!NOTE]
 > 無料アカウントを使用して Azure Databricks クラスターを作成するには、クラスターを作成する前に、プロファイルにアクセスし、サブスクリプションを**従量課金制**に変更します。 詳細については、[Azure 無料アカウント](https://azure.microsoft.com/free/)に関するページをご覧ください。
 
-1. Azure Databricks サービスに戻り、**[概要]** ページで **[ワークスペースの起動]** を選択します。
+1. Azure Databricks サービスに戻り、 **[概要]** ページで **[ワークスペースの起動]** を選択します。
 
-2. **[クラスター]** > **[+ クラスターの作成]** の順に選択します。 次に、*databricks-quickstart-cluster* のようなクラスター名を作成し、残りの既定の設定を受け入れます。 **[クラスターの作成]** を選択します。
+2. **[クラスター]**  >  **[+ クラスターの作成]** の順に選択します。 次に、*databricks-quickstart-cluster* のようなクラスター名を作成し、残りの既定の設定を受け入れます。 **[クラスターの作成]** を選択します。
 
     ![Azure Databricks クラスターの作成](./media/quickstart-create-databricks-workspace-vnet-injection/create-cluster.png)
 
@@ -92,13 +92,13 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 
     ![クラスター作成後の Azure Databricks マネージド リソース グループ](./media/quickstart-create-databricks-workspace-vnet-injection/managed-resource-group2.png)
 
-4. Azure Databricks ワークスペースに戻り、作成したクラスターを選択します。 次に、**[Spark UI]** ページの **[エグゼキュータ]** タブに移動します。 ドライバーとエグゼキュータのアドレスがプライベート サブネットの範囲内にあることに注意してください。 この例では、ドライバーは 10.179.0.6 で、エグゼキュータは 10.179.0.4 と 10.179.0.5 です。 IP アドレスは異なる場合があります。
+4. Azure Databricks ワークスペースに戻り、作成したクラスターを選択します。 次に、 **[Spark UI]** ページの **[エグゼキュータ]** タブに移動します。 ドライバーとエグゼキュータのアドレスがプライベート サブネットの範囲内にあることに注意してください。 この例では、ドライバーは 10.179.0.6 で、エグゼキュータは 10.179.0.4 と 10.179.0.5 です。 IP アドレスは異なる場合があります。
 
     ![Azure Databricks の Spark UI エグゼキュータ](./media/quickstart-create-databricks-workspace-vnet-injection/databricks-sparkui-executors.png)
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-記事を完了したら、クラスターを終了できます。 そのためには、Azure Databricks ワークスペースの左側のウィンドウで、**[クラスター]** を選択します。 終了するクラスターで、**[アクション]** 列の下にある省略記号をポイントし、**[終了]** アイコンを選択します。 これによりクラスターが停止します。
+記事を完了したら、クラスターを終了できます。 そのためには、Azure Databricks ワークスペースの左側のウィンドウで、 **[クラスター]** を選択します。 終了するクラスターで、 **[アクション]** 列の下にある省略記号をポイントし、 **[終了]** アイコンを選択します。 これによりクラスターが停止します。
 
 クラスター作成時に **[Terminate after \_\_ minutes of inactivity]** \(アクティビティが \_\_ 分ない場合は終了する\) チェック ボックスをオンにしていた場合、手動で終了しなくともクラスターは自動で停止します。 このような場合、クラスターは、一定の時間だけ非アクティブな状態が続くと自動的に停止します。
 

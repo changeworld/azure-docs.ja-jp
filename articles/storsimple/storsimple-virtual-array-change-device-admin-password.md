@@ -15,12 +15,12 @@ ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 260a23003d705e6598da8c51bb5a96f2539a0014
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5308badf439254062a8aefca1840eb21bc234ace
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23109430"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60580416"
 ---
 # <a name="change-the-storsimple-virtual-array-device-administrator-password-via-storsimple-device-manager"></a>StorSimple デバイス マネージャー を介して StorSimple Virtual Array デバイス管理者のパスワードを変更する
 
@@ -38,11 +38,11 @@ Azure Portal を使用してデバイス管理者のパスワードを変更す�
 
 #### <a name="to-change-the-device-administrator-password-via-the-azure-portal"></a>Azure Portal を使用してデバイス管理者のパスワードを変更するには
 
-1. サービスのランディング ページで、サービスを選択し、サービス名をダブルクリックします。次に、**[管理]** セクションで、**[デバイス]** をクリックします。 **[デバイス]** ブレードが開き、StorSimple Virtual Array デバイスの一覧が表示されます。
+1. サービスのランディング ページで、サービスを選択し、サービス名をダブルクリックします。次に、 **[管理]** セクションで、 **[デバイス]** をクリックします。 **[デバイス]** ブレードが開き、StorSimple Virtual Array デバイスの一覧が表示されます。
 
 2. **[デバイス]** ブレードで、パスワードを変更する必要があるデバイスをダブルクリックします。
 
-3. デバイスの **[設定]** ブレードで、**[セキュリティ]** をクリックします。
+3. デバイスの **[設定]** ブレードで、 **[セキュリティ]** をクリックします。
 
 4. **[セキュリティ設定]** ブレードで、次の操作を行います。
    
@@ -60,7 +60,7 @@ Azure Portal を使用してデバイス管理者のパスワードを変更す�
 
 #### <a name="to-change-the-device-administrator-password-via-the-local-web-ui"></a>ローカル Web UI を使用してデバイス管理者のパスワードを変更するには
 
-1. ローカル Web UI で、デバイスの **[メンテナンス]** > **[パスワードの変更]** をクリックします。
+1. ローカル Web UI で、デバイスの **[メンテナンス]**  >  **[パスワードの変更]** をクリックします。
    
     ![password1 の変更](./media/storsimple-virtual-array-change-device-admin-password/image40.png)
 2. **現在のパスワード**を入力します。
@@ -77,6 +77,6 @@ Azure Portal を使用してデバイス管理者のパスワードを変更す�
     パスワードが正常に更新されると、その旨が通知されます。 この変更されたパスワードを使用して、デバイスにローカルにアクセスすることができます。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [StorSimple Virtual Array を管理する](storsimple-ova-web-ui-admin.md)方法を確認します。
 

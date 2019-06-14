@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: pabutler
 ms.openlocfilehash: ac77767aee2dcde33f4266e1d2d09c49dcf5f8a3
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64943298"
 ---
 <a name="store-your-appsource-package-to-azure-storage-and-generate-a-url-with-sas-key"></a>AppSource パッケージを Azure Storage に保存し、SAS キーで URL を生成する
@@ -29,7 +29,7 @@ ms.locfileid: "64943298"
 
    ![Microsoft Azure portal の [データ + ストレージ] ブレード](media/CRMScreenShot7.png)
 
-4. **[名前]** と **[リソース グループ]** 名を入力し、**[作成]** ボタンをクリックします。
+4. **[名前]** と **[リソース グループ]** 名を入力し、 **[作成]** ボタンをクリックします。
 
    ![Microsoft Azure portal でストレージ アカウントを作成する](media/CRMScreenShot8.png)
 
@@ -41,15 +41,15 @@ ms.locfileid: "64943298"
 
 7. ストレージ エクスプローラーを起動し、アイコンを使用して Azure ストレージ アカウントに接続します。
 
-8. 作成した BLOB コンテナーに移動し、**[アップロード]** をクリックしてパッケージ zip ファイルを追加します。
+8. 作成した BLOB コンテナーに移動し、 **[アップロード]** をクリックしてパッケージ zip ファイルを追加します。
 
    ![Microsoft ストレージ エクスプローラーを使用してパッケージをアップロードする](media/CRMScreenShot10.png)
 
-9. ファイルを右クリックし、**[Get Shared Access Signature]\(Shared Access Signature の取得\)** を選択します。
+9. ファイルを右クリックし、 **[Get Shared Access Signature]\(Shared Access Signature の取得\)** を選択します。
 
    ![Azure ファイルの Shared Access Signature を取得する](media/CRMScreenShot11.png)
 
-10. **[有効期限]** を修正して SAS を 1 か月間有効にし、**[作成]** をクリックします。
+10. **[有効期限]** を修正して SAS を 1 か月間有効にし、 **[作成]** をクリックします。
 
     ![Azure ファイルの SAS 有効期限を修正する](media/CRMScreenShot12.png)
 

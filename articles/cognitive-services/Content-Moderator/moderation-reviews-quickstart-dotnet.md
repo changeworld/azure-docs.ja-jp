@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: sajagtap
 ms.openlocfilehash: 153d42bf4ce4322536d6837be3058d1f9bfb49a2
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58758637"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60607187"
 ---
 # <a name="create-human-reviews-net"></a>人によるレビューの作成 (.NET)
 
@@ -186,9 +186,9 @@ public static class Clients
 これらの値を、お客様のサブスクリプションとチームに固有の情報を含むように更新します。
 
 > [!NOTE]
-> TeamName 定数は、[Content Moderator レビュー ツール](https://contentmoderator.cognitive.microsoft.com/)のサブスクリプションの作成時に使用した名前に設定します。 TeamName は、**[設定]** (歯車) メニューの **[資格情報]** セクションから取得します。
+> TeamName 定数は、[Content Moderator レビュー ツール](https://contentmoderator.cognitive.microsoft.com/)のサブスクリプションの作成時に使用した名前に設定します。 TeamName は、 **[設定]** (歯車) メニューの **[資格情報]** セクションから取得します。
 >
-> チーム名は、**[API]** セクションの **[Id]** フィールドの値です。
+> チーム名は、 **[API]** セクションの **[Id]** フィールドの値です。
 
 ```csharp
 /// <summary>

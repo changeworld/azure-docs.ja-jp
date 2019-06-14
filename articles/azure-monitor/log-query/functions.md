@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: bwren
 ms.openlocfilehash: 7eb5f090026b415e3c980116a9317594f4ca8115
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56750771"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60728068"
 ---
 # <a name="using-functions-in-azure-monitor-log-queries"></a>Azure Monitor ログ クエリでの関数の使用
 
@@ -37,7 +37,7 @@ Azure portal の Log Analytics で **[保存]** をクリックした後、次�
 | Setting | 説明 |
 |:---|:---|
 | Name           | **クエリ エクスプローラー**に表示されるクエリの名前。 |
-| 名前を付けて保存        | 関数 |
+| 名前を付けて保存        | Function |
 | 関数のエイリアス | この関数を他のクエリの中で使用するための短い名前。 スペースを含めることはできず、一意である必要があります。 |
 | Category       | 保存したクエリと関数を**クエリ エクスプローラー**内で整理するためのカテゴリ。 |
 

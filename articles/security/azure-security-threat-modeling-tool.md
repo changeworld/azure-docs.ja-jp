@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 02/16/2017
 ms.author: jegeib
 ms.openlocfilehash: 4e08491ae898fef16af1e199a76a4c07a6c226b9
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54358662"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60610492"
 ---
 # <a name="microsoft-threat-modeling-tool"></a>Microsoft Threat Modeling Tool
 
@@ -38,7 +38,7 @@ Threat Modeling Tool は、Microsoft セキュリティ開発ライフサイク�
 * **レポート:** 検証フェーズでのセキュリティ アクティビティとテスト
 * **独自の方法論:** 脅威を視覚化し、より的確に理解
 * **開発者向けの設計とソフトウェア重視:** 多くのアプローチでは、資産または攻撃者が中心になっています。 このツールでは、ソフトウェアが中心です。 すべてのソフトウェア開発者やアーキテクトが慣れ親しんでいる、ソフトウェア アーキテクチャの図の作成などのアクティビティをベースにしています
-* **設計分析を重視:**"脅威モデリング" という用語は、要件を意味することも、設計分析手法を意味することもあります。 場合によっては、両方が複雑に入り交じっています。 脅威モデリングに対する Microsoft SDL のアプローチでは、設計分析手法に重点を置いています
+* **設計分析を重視:** "脅威モデリング" という用語は、要件を意味することも、設計分析手法を意味することもあります。 場合によっては、両方が複雑に入り交じっています。 脅威モデリングに対する Microsoft SDL のアプローチでは、設計分析手法に重点を置いています
 
 ## <a name="next-steps"></a>次の手順
 

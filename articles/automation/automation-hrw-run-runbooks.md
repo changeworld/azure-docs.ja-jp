@@ -10,11 +10,11 @@ ms.date: 01/29/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: fab886de55cc524390093f7e7913c79f7af3fe78
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57858143"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60738504"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Hybrid Runbook Worker での Runbook の実行
 
@@ -72,7 +72,7 @@ Restart-Computer -ComputerName $Computer -Credential $Cred
 1. ローカル リソースに対するアクセス権を持つ [資格情報資産](automation-credentials.md) を作成します。
 2. Azure ポータルで Automation アカウントを開きます。
 3. **[ハイブリッド Worker グループ]** タイルを選択し、グループを選択します。
-4. **[すべての設定]**、**[ハイブリッド Worker グループの設定]** の順に選択します。
+4. **[すべての設定]** 、 **[ハイブリッド Worker グループの設定]** の順に選択します。
 5. **[実行者]** を **[既定]** から **[カスタム]** に変更します。
 6. 資格情報を選択し、 **[保存]** をクリックします。
 

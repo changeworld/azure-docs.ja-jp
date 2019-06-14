@@ -16,11 +16,11 @@ ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
 ms.openlocfilehash: 639bc4ff9c69bca3d5f8bca6967bfc3e8e6a13d4
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56100552"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60822414"
 ---
 # <a name="event-hubs-capture-walkthrough-python"></a>Event Hubs Capture チュートリアル:Python
 
@@ -45,11 +45,11 @@ Capture は Azure Event Hubs の機能です。 これを使用すると、任�
 
 ## <a name="create-an-azure-blob-storage-account"></a>Azure BLOB ストレージ アカウントを作成する
 1. [Azure Portal][Azure portal] にサインインします。
-2. ポータルの左側のウィンドウで **[新規]** > **[ストレージ]** > **[ストレージ アカウント]** の順に選択します。
-3. **[ストレージ アカウントの作成]** ウィンドウで情報を選択し、**[作成]** を選択します。
+2. ポータルの左側のウィンドウで **[新規]**  >  **[ストレージ]**  >  **[ストレージ アカウント]** の順に選択します。
+3. **[ストレージ アカウントの作成]** ウィンドウで情報を選択し、 **[作成]** を選択します。
    
    ![[ストレージ アカウントの作成] ウィンドウ][1]
-4. **[デプロイメントが成功しました]** メッセージが表示されたら、新しいストレージ アカウントの名前を選択し、**[要点]** ウィンドウで **[BLOB]** を選択します。 **[Blob service]** ウィンドウが開いたら、上部にある **[+ コンテナー]** を選択します。 コンテナーの**キャプチャ**に名前を付け、**[Blob service]** ウィンドウを閉じます。
+4. **[デプロイメントが成功しました]** メッセージが表示されたら、新しいストレージ アカウントの名前を選択し、 **[要点]** ウィンドウで **[BLOB]** を選択します。 **[Blob service]** ウィンドウが開いたら、上部にある **[+ コンテナー]** を選択します。 コンテナーの**キャプチャ**に名前を付け、 **[Blob service]** ウィンドウを閉じます。
 5. 左側のウィンドウにある **[アクセス キー]** を選択し、ストレージ アカウントの名前と **[key1]** の値をコピーします。 これらの値をメモ帳などに一時的に保存します。
 
 ## <a name="create-a-python-script-to-send-events-to-your-event-hub"></a>イベントをイベント ハブに送信する Python スクリプトを作成する
@@ -80,7 +80,7 @@ Capture は Azure Event Hubs の機能です。 これを使用すると、任�
 
 ## <a name="create-a-python-script-to-read-your-capture-files"></a>Capture ファイルを読み取る Python スクリプトを作成する
 
-1. ウィンドウに情報を入力し、**[作成]** を選択します。
+1. ウィンドウに情報を入力し、 **[作成]** を選択します。
 2. **capturereader.py** という名前のスクリプトを作成します。 このスクリプトはキャプチャされたファイルを読み取り、それぞれのデバイスにのみデータを書き込むようにデバイスごとのファイルを作成します。
 3. 以下のコードを capturereader.py に貼り付けます。
    
@@ -138,7 +138,7 @@ Capture は Azure Event Hubs の機能です。 これを使用すると、任�
    pip install avro
    ```
    
-   **azure-storage** または **azure** の以前のバージョンを使用する場合は、**--upgrade** オプションの使用が必要になることがあります。
+   **azure-storage** または **azure** の以前のバージョンを使用する場合は、 **--upgrade** オプションの使用が必要になることがあります。
    
    また、次のコマンドの実行が必要になる場合もあります (ほとんどのシステムでは必要ありません):
    

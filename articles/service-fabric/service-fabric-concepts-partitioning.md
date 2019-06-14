@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 06/30/2017
 ms.author: atsenthi
 ms.openlocfilehash: 833d87dab59890b9903ea8eecf2334d7dd1c7436
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58666224"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60711889"
 ---
 # <a name="partition-service-fabric-reliable-services"></a>Service Fabric Reliable Services のパーティション分割
 この記事では、Azure Service Fabric Reliable Services のパーティション分割の基本概念について説明します。 この記事で使用するソース コードは、 [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions)にも掲載されています。
@@ -126,10 +126,10 @@ Service Fabric には、3 つのパーティション スキーマが用意さ�
 > 
 > 
 
-1. **Visual Studio** で、 > **[ファイル]** > **[新規作成]** > **[プロジェクト]** の順に開きます。
+1. **Visual Studio** で、 >  **[ファイル]**  >  **[新規作成]**  >  **[プロジェクト]** の順に開きます。
 2. **[新しいプロジェクト]** ダイアログ ボックスで、Service Fabric アプリケーションを選択します
 3. プロジェクトに "AlphabetPartitions" と名前を付けます
-4. **[Create a Service] (サービスの作成)** ダイアログ ボックスで、**[ステートフル サービス]** を選択して "Alphabet.Processing" と名前を付けます。
+4. **[Create a Service] (サービスの作成)** ダイアログ ボックスで、 **[ステートフル サービス]** を選択して "Alphabet.Processing" と名前を付けます。
 5. パーティション数を設定します。 AlphabetPartitions プロジェクトの ApplicationPackageRoot フォルダーにある ApplicationManifest.xml ファイルを開き、下図のようにパラメーター Processing_PartitionCount を 26 に更新します。
    
     ```xml
@@ -239,7 +239,7 @@ Service Fabric には、3 つのパーティション スキーマが用意さ�
 10. プロジェクトにステートレス サービスを追加して、特定のパーティションを呼び出す方法を見てみましょう。
     
     このサービスは、姓をクエリ文字列パラメーターとして受け取り、パーティション キーを決定し、Alphabet.Processing サービスに送信して処理するという、単純な Web インターフェイスとして機能します。
-11. 次のように、**[Create a Service]** (サービスの作成) ダイアログ ボックスで **[ステートレス サービス]** を選択し、"Alphabet.Web" と名前を付けます。
+11. 次のように、 **[Create a Service]** (サービスの作成) ダイアログ ボックスで **[ステートレス サービス]** を選択し、"Alphabet.Web" と名前を付けます。
     
     ![ステートレス サービスのスクリーン ショット](./media/service-fabric-concepts-partitioning/createnewstateless.png)にも掲載されています。
 12. Alphabet.WebApi サービスの ServiceManifest.xml のエンドポイント情報を更新し、次のようにポートを開きます。

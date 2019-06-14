@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: cynthn
-ms.openlocfilehash: c4684dd27aeed4fab4335a93ea5a458b4a9f5d80
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: a6474320fd8b1545d61320cd43e155ab077ba310
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56821185"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64683525"
 ---
 # <a name="manage-a-virtual-machine-scale-set-with-azure-powershell"></a>Azure PowerShell を使用して仮想マシン スケール セットを管理する
 
@@ -28,7 +28,7 @@ ms.locfileid: "56821185"
 
 仮想マシン スケール セットを作成する必要がある場合は、[Azure PowerShell でスケール セットを作成](quick-create-powershell.md)できます。
 
-[!INCLUDE [updated-for-az-vm.md](../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../includes/updated-for-az.md)]
 
 ## <a name="view-information-about-a-scale-set"></a>スケール セットに関する情報を表示する
 スケール セットに関する全体的な情報を表示するには、[Get-AzVmss](/powershell/module/az.compute/get-azvmss) を使用します。 次の例では、*myResourceGroup* リソース グループ内の *myScaleSet* という名前のスケール セットに関する情報を取得します。 独自の名前を次のように入力します。

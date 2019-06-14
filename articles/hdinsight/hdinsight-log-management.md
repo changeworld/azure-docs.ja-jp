@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: hrasheed
 ms.openlocfilehash: b42eb51b510423ffc0d15ee3a646bca3d4392f7f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64686856"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>HDInsight クラスターのログを管理する
@@ -75,13 +75,13 @@ HDInsight クラスターのログ管理戦略作成の最初のステップで�
 
 ### <a name="view-cluster-configuration-settings-with-the-ambari-ui"></a>Ambari UI でクラスターの構成設定を表示する
 
-Apache Ambari には Web UI と REST API が用意されており、HDInsight クラスターを簡単に管理、構成、監視できます。 Ambari は Linux ベースの HDInsight クラスターに付属しています。 Azure portal の HDInsight ページで **[クラスター ダッシュボード]** ウィンドウを選び、**[クラスター ダッシュボード]** リンク ページを開きます。  次に、**[HDInsight クラスター ダッシュボード]** ウィンドウを選んで、Ambari UI を開きます。  クラスター ログイン資格情報の入力を求められます。
+Apache Ambari には Web UI と REST API が用意されており、HDInsight クラスターを簡単に管理、構成、監視できます。 Ambari は Linux ベースの HDInsight クラスターに付属しています。 Azure portal の HDInsight ページで **[クラスター ダッシュボード]** ウィンドウを選び、 **[クラスター ダッシュボード]** リンク ページを開きます。  次に、 **[HDInsight クラスター ダッシュボード]** ウィンドウを選んで、Ambari UI を開きます。  クラスター ログイン資格情報の入力を求められます。
 
-サービス ビューの一覧を開くには、HDInsight の Azure Portal ページで **[Ambari Views]** ウィンドウを選びます。  この一覧は、インストールされているライブラリによって異なります。  たとえば、YARN Queue Manager、Hive View、Tez View などが表示される場合があります。  構成とサービスの情報を表示するには、サービスのリンクを選びます。  Ambari UI の **[Stack and Version]\(スタックとバージョン\)** ページには、クラスター サービスの構成とサービスのバージョン履歴に関する情報が表示されます。 Ambari UI のこのセクションに移動するには、**[Admin]\(管理\)** メニューを選んでから、**[Stacks and Versions]\(スタックとバージョン\)** を選びます。  サービスのバージョン情報を見るには、**[Versions]\(バージョン\)** タブを選びます。
+サービス ビューの一覧を開くには、HDInsight の Azure Portal ページで **[Ambari Views]** ウィンドウを選びます。  この一覧は、インストールされているライブラリによって異なります。  たとえば、YARN Queue Manager、Hive View、Tez View などが表示される場合があります。  構成とサービスの情報を表示するには、サービスのリンクを選びます。  Ambari UI の **[Stack and Version]\(スタックとバージョン\)** ページには、クラスター サービスの構成とサービスのバージョン履歴に関する情報が表示されます。 Ambari UI のこのセクションに移動するには、 **[Admin]\(管理\)** メニューを選んでから、 **[Stacks and Versions]\(スタックとバージョン\)** を選びます。  サービスのバージョン情報を見るには、 **[Versions]\(バージョン\)** タブを選びます。
 
 ![スタックとバージョン](./media/hdinsight-log-management/stack-versions.png)
 
-Ambari UI を使って、クラスターの特定のホスト (またはノード) で実行されている任意 (またはすべて) のサービスの構成をダウンロードできます。  **[Hosts]\(ホスト\)** メニューを選んでから、目的のホストのリンクを選びます。 ホストのページで、**[Host Actions]\(ホスト アクション\)** ボタンを選んでから、**[Download Client Configs]\(クライアント構成のダウンロード\)** を選びます。 
+Ambari UI を使って、クラスターの特定のホスト (またはノード) で実行されている任意 (またはすべて) のサービスの構成をダウンロードできます。  **[Hosts]\(ホスト\)** メニューを選んでから、目的のホストのリンクを選びます。 ホストのページで、 **[Host Actions]\(ホスト アクション\)** ボタンを選んでから、 **[Download Client Configs]\(クライアント構成のダウンロード\)** を選びます。 
 
 ![ホストのクライアント構成](./media/hdinsight-log-management/client-configs.png)
 
@@ -132,7 +132,7 @@ YARN ResourceManager UI は、クラスターのヘッド ノード上で実行�
 
 1. Web ブラウザーで `https://CLUSTERNAME.azurehdinsight.net` にアクセスします。 CLUSTERNAME を、使用する HDInsight クラスターの名前に置き換えます。
 2. 左側のサービスの一覧で、[YARN] を選びます。
-3. [クイック リンク] ボックスの一覧で、クラスター ヘッド ノードのいずれかを選び、**[ResourceManager logs]\(ResourceManager ログ\)** を選びます。 YARN のログへのリンクの一覧が表示されます。
+3. [クイック リンク] ボックスの一覧で、クラスター ヘッド ノードのいずれかを選び、 **[ResourceManager logs]\(ResourceManager ログ\)** を選びます。 YARN のログへのリンクの一覧が表示されます。
 
 ## <a name="step-4-forecast-log-volume-storage-sizes-and-costs"></a>ステップ 4: ログ ボリュームのストレージ サイズとコストを予測する
 
@@ -146,7 +146,7 @@ YARN ResourceManager UI は、クラスターのヘッド ノード上で実行�
 
 削除できるログ ファイルを決定した後は、さまざまな Hadoop サービスのログ パラメーターを調整して、指定期間後にログ ファイルを自動的に削除できます。
 
-一部のログ ファイルについては、低コストのログ ファイル アーカイブ方法を使うことができます。 Azure Resource Manager のアクティビティ ログの場合、Azure Portal を使ってこの方法を調べることができます。  HDInsight インスタンスの Azure Portal で **[アクティビティ ログ]** リンクを選んで、ARM ログのアーカイブをセットアップします。  アクティビティ ログ検索ページの上部にある **[エクスポート]** メニュー項目を選んで、**[アクティビティ ログのエクスポート]** ウィンドウを開きます。  サブスクリプション、リージョン、ストレージ アカウントにエクスポートするかどうか、ログを保持する日数を入力します。 この同じウィンドウで、イベント ハブにエクスポートするかどうかを指定することもできます。 
+一部のログ ファイルについては、低コストのログ ファイル アーカイブ方法を使うことができます。 Azure Resource Manager のアクティビティ ログの場合、Azure Portal を使ってこの方法を調べることができます。  HDInsight インスタンスの Azure Portal で **[アクティビティ ログ]** リンクを選んで、ARM ログのアーカイブをセットアップします。  アクティビティ ログ検索ページの上部にある **[エクスポート]** メニュー項目を選んで、 **[アクティビティ ログのエクスポート]** ウィンドウを開きます。  サブスクリプション、リージョン、ストレージ アカウントにエクスポートするかどうか、ログを保持する日数を入力します。 この同じウィンドウで、イベント ハブにエクスポートするかどうかを指定することもできます。 
 
 ![ログ ファイルのエクスポート](./media/hdinsight-log-management/archive.png)
 

@@ -11,11 +11,11 @@ ms.topic: article
 ms.assetid: 85928ec6-d7cb-488e-926e-2e5db89508ee
 ms.date: 10/18/2016
 ms.openlocfilehash: 624539557b0bf57e9d919a3a46337f1cf93a4f07
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58894236"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62128602"
 ---
 # <a name="create-azure-resource-manager-templates-for-deploying-logic-apps"></a>ロジック アプリをデプロイするための Azure Resource Manager テンプレートの作成
 
@@ -79,7 +79,7 @@ PowerShell をインストールした後は、次のコマンドを使用して
 
 * ロジック アプリのワークフロー定義には、独自の [`parameters` セクション](../logic-apps/logic-apps-workflow-definition-language.md#parameters)があり、ここには、ロジック アプリがデプロイ時に入力を受け入れるために使用するすべてのパラメーターを定義できます。
 
-* Resource Manager テンプレートには、ロジック アプリの `parameters` セクションとは別に、独自の [`parameters` セクション](../azure-resource-manager/resource-group-authoring-templates.md#parameters)があります。 例: 
+* Resource Manager テンプレートには、ロジック アプリの `parameters` セクションとは別に、独自の [`parameters` セクション](../azure-resource-manager/resource-group-authoring-templates.md#parameters)があります。 例:
 
   [!INCLUDE [logic-deploy-parameters](../../includes/app-service-logic-deploy-parameters.md)]
 
@@ -174,13 +174,13 @@ PowerShell をインストールした後は、次のコマンドを使用して
 
 1. ソリューション エクスプローラーで、`<template>.json` ファイルを開きます。
 
-2. **[表示]** メニューの **[その他のウィンドウ]** > **[JSON アウトライン]** を選択します。
+2. **[表示]** メニューの **[その他のウィンドウ]**  >  **[JSON アウトライン]** を選択します。
 
-3. テンプレート ファイルにリソースを追加するには、[JSON アウトライン] ウィンドウの上部にある **[リソースの追加]** を選択します。 または、[JSON アウトライン] ウィンドウで、**[リソース]** を右クリックして、**[新しいリソースの追加]** を選びます。
+3. テンプレート ファイルにリソースを追加するには、[JSON アウトライン] ウィンドウの上部にある **[リソースの追加]** を選択します。 または、[JSON アウトライン] ウィンドウで、 **[リソース]** を右クリックして、 **[新しいリソースの追加]** を選びます。
 
    ![[JSON アウトライン] ウィンドウ](./media/logic-apps-create-deploy-template/jsonoutline.png)
 
-4. **[リソースの追加]** ダイアログ ボックスで、**[ロジック アプリ]** を探して選びます。 ロジック アプリの名前を指定し、**[追加]** を選びます。
+4. **[リソースの追加]** ダイアログ ボックスで、 **[ロジック アプリ]** を探して選びます。 ロジック アプリの名前を指定し、 **[追加]** を選びます。
 
    ![リソースの追加](./media/logic-apps-create-deploy-template/addresource.png)
 

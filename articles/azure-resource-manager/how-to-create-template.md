@@ -12,11 +12,11 @@ ms.workload: na
 ms.date: 12/27/2018
 ms.author: tomfitz
 ms.openlocfilehash: b198f860c10bd207a191057e21a8a159c5ebde26
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57403517"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60551004"
 ---
 # <a name="create-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを作成する
 
@@ -56,7 +56,7 @@ Resource Manager ツールの拡張機能をインストールするチュート
 
 必要なものと同じようなテンプレートのリポジトリを検索してください。 テンプレートが必要なものと厳密に同じでなくてもかまいません。それをカスタマイズできます。
 
-テンプレートを見つけたら、**[GitHub で参照する]** を選択し、リポジトリから **azuredeploy.json** ファイルをコピーします。 VS Code で新しい **azuredeploy.json** という名前のファイルを作成し、クイック スタート リポジトリからコピーしたテンプレート ファイルの内容を追加します。
+テンプレートを見つけたら、 **[GitHub で参照する]** を選択し、リポジトリから **azuredeploy.json** ファイルをコピーします。 VS Code で新しい **azuredeploy.json** という名前のファイルを作成し、クイック スタート リポジトリからコピーしたテンプレート ファイルの内容を追加します。
 
 ## <a name="add-resources"></a>リソースを追加する
 

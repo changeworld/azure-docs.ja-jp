@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 02/08/2018
 ms.author: jomolesk
 ms.openlocfilehash: 13ea2b68027c81bca7b43cef62cf7039aa0ea8dd
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57443472"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60609489"
 ---
 # <a name="azure-security-and-compliance-blueprint---three-tier-iaas-web-application-for-uk-official"></a>Azure のセキュリティとコンプライアンスのブループリント: UK OFFICIAL のための 3 層 IaaS Web アプリケーション
 
@@ -154,7 +154,7 @@ Storage
 
 **ネットワーク セキュリティ グループ**: [NSG](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) には、VNet 内のトラフィックを許可または拒否するアクセス制御リストが含まれます。 NSG を使用して、サブネットまたは個々の VM レベルでトラフィックを保護できます。
 
-**Active Directory Domain Services (AD DS)**: このアーキテクチャでは、専用 [Active Directory Domain Services](https://technet.microsoft.com/library/hh831484.aspx) デプロイが提供されます。
+**Active Directory Domain Services (AD DS)** : このアーキテクチャでは、専用 [Active Directory Domain Services](https://technet.microsoft.com/library/hh831484.aspx) デプロイが提供されます。
 
 **ログ記録と監査**: [Azure アクティビティ ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)には、操作を開始したユーザー、操作の発生時期、操作の状態、操作の調査に役立つ可能性のあるその他のプロパティの値など、サブスクリプション内のリソースに対して行われた操作がキャプチャされます。 Azure アクティビティ ログは、サブスクリプションのすべてのアクションをキャプチャする Azure プラットフォーム サービスです。 必要に応じてログをアーカイブまたはエクスポートできます。
 

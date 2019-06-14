@@ -13,11 +13,11 @@ ms.reviewer: billgib
 manager: craigg
 ms.date: 09/24/2018
 ms.openlocfilehash: 28deb9b7ba15744b9bd3d273d02db4398d2b2ef3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57896944"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61484592"
 ---
 # <a name="provision-and-catalog-new-tenants-using-the--application-per-tenant-saas-pattern"></a>テナントごとのアプリケーション SaaS パターンを使用して、新しいテナントのプロビジョニングとカタログ化を行います
 
@@ -82,8 +82,8 @@ Azure Resource Manager テンプレートを使用して、アプリケーショ
 * Azure Resource Management テンプレートを使用して**カタログ データベースをプロビジョニングする。** データベースは、bacpac ファイルをインポートすることで初期化されます。  
 * デプロイ済みの**サンプル テナント データベースを登録する。**  各テナントは、テナント名のハッシュから構築されたキーを使用して登録されます。  テナント名も、カタログ内の拡張テーブルに格納されます。
 
-1. PowerShell ISE で、*...\Learning Modules\UserConfig.psm* を開き、**\<ユーザー\>** 値を、3 つのサンプル アプリケーションのデプロイ時に使用した値に更新します。  **ファイルを保存します**。  
-1. PowerShell ISE で、*...\Learning Modules\ProvisionTenants\Demo-ProvisionAndCatalog.ps1* を開き、**$Scenario = 1** を設定します。 テナント カタログをデプロイし、定義済みのテナントを登録します。
+1. PowerShell ISE で、 *...\Learning Modules\UserConfig.psm* を開き、 **\<ユーザー\>** 値を、3 つのサンプル アプリケーションのデプロイ時に使用した値に更新します。  **ファイルを保存します**。  
+1. PowerShell ISE で、 *...\Learning Modules\ProvisionTenants\Demo-ProvisionAndCatalog.ps1* を開き、 **$Scenario = 1** を設定します。 テナント カタログをデプロイし、定義済みのテナントを登録します。
 
 1. ブレークポイントを追加します。追加するには、`& $PSScriptRoot\New-Catalog.ps1` と記述されている行のどこかにカーソルを置いて、**F9** キーを押します。
 
@@ -123,7 +123,7 @@ Azure Resource Manager テンプレートを使用して、アプリケーショ
 * **データベースを基本的なテナント情報で初期化します**。 この操作には、会場の種類の指定が含まれます。それにより、イベント Web サイトの背景として使用される写真が決まります。 
 * **データベースをカタログ データベースに登録します**。 
 
-1. PowerShell ISE で、*...\Learning Modules\ProvisionTenants\Demo-ProvisionAndCatalog.ps1* を開き、**$Scenario = 2** を設定します。 テナント カタログをデプロイし、定義済みのテナントを登録します。
+1. PowerShell ISE で、 *...\Learning Modules\ProvisionTenants\Demo-ProvisionAndCatalog.ps1* を開き、 **$Scenario = 2** を設定します。 テナント カタログをデプロイし、定義済みのテナントを登録します。
 
 1. スクリプトにブレークポイントを追加します。追加するには、`& $PSScriptRoot\New-TenantApp.ps1` と記述されている行 49 のどこかにカーソルを置いて、**F9** キーを押します。
 1. **F5** キーを押してスクリプトを実行します。 

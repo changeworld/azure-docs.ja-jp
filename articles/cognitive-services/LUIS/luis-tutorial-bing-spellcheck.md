@@ -12,11 +12,11 @@ ms.topic: article
 ms.date: 03/04/2019
 ms.author: diberry
 ms.openlocfilehash: 1e5536b08b3b78f35426207369f444e6eb21c87d
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57341804"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60495002"
 ---
 # <a name="correct-misspelled-words-with-bing-spell-check"></a>Bing Spell Check を使用した単語のスペルミスの修正
 
@@ -47,7 +47,7 @@ LUIS アプリと [Bing Spell Check API V7](https://azure.microsoft.com/services
 
     ![サービス設定の入力](./media/luis-tutorial-bing-spellcheck/subscription-settings.png)
 
-7. 左側のナビゲーションの **[お気に入り]** の下で、**[すべてのリソース]** を選択します。
+7. 左側のナビゲーションの **[お気に入り]** の下で、 **[すべてのリソース]** を選択します。
 
 8. 新しいサービスを選択します。 種類は **[Cognitive Services]** で、場所は **[グローバル]** です。 
 
@@ -92,7 +92,7 @@ LUIS では 2 つの場所でキーを使用します。 1 つ目は[テスト �
 Bing Spell Check API v7 サービスを使用したくない場合は、LUIS が正しいスペルと入力ミスを学習できるように、スペル ミスを含む発話にラベルを付けることができます。 このラベル付けオプションは、スペル チェックを使用するよりも手間がかかります。
 
 ## <a name="publishing-page"></a>ページの公開
-[公開](luis-how-to-publish-app.md)ページには、**[Enable Bing spell checker]\(Bing スペル チェックを有効にする\)** チェック ボックスがあります。 これは、キーを作成し、エンドポイント URL がどのように変わったかを解釈するうえで便利です。 発話ごとにスペルが修正されるようにするには、引き続き正しいエンドポイント パラメーターを使用する必要があります。 
+[公開](luis-how-to-publish-app.md)ページには、 **[Enable Bing spell checker]\(Bing スペル チェックを有効にする\)** チェック ボックスがあります。 これは、キーを作成し、エンドポイント URL がどのように変わったかを解釈するうえで便利です。 発話ごとにスペルが修正されるようにするには、引き続き正しいエンドポイント パラメーターを使用する必要があります。 
 
 > [!div class="nextstepaction"]
 > [発話の例の詳細](luis-how-to-add-example-utterances.md)

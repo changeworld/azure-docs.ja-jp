@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: kumud
 ms.openlocfilehash: 65ce9e7d298131486ae4e5f3584c7975ca81e1ab
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64684239"
 ---
 # <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>Azure Network Watcher のリソース トラブルシューティングの概要
@@ -52,13 +52,13 @@ ms.locfileid: "64684239"
 | エラーの種類 | 理由 | ログ|
 |---|---|---|
 | NoFault | エラーが検出されなかった場合 |はい|
-| GatewayNotFound | ゲートウェイが見つからないか、またはゲートウェイがプロビジョニングされていません。 |いいえ |
-| PlannedMaintenance |  ゲートウェイ インスタンスがメンテナンス中です。  |いいえ |
-| UserDrivenUpdate | このエラーは、ユーザーの更新が進行中である場合に発生します。 この更新は、サイズ変更操作である可能性があります。 | いいえ  |
-| VipUnResponsive | このエラーは、正常性プローブの失敗のためにゲートウェイのプライマリ インスタンスに到達できない場合に発生します。 | いいえ  |
-| PlatformInActive | プラットフォームに問題があります。 | いいえ |
-| ServiceNotRunning | 基になるサービスが実行されていません。 | いいえ |
-| NoConnectionsFoundForGateway | ゲートウェイ上に接続が存在しません。 このエラーは、単なる警告です。| いいえ |
+| GatewayNotFound | ゲートウェイが見つからないか、またはゲートウェイがプロビジョニングされていません。 |いいえ|
+| PlannedMaintenance |  ゲートウェイ インスタンスがメンテナンス中です。  |いいえ|
+| UserDrivenUpdate | このエラーは、ユーザーの更新が進行中である場合に発生します。 この更新は、サイズ変更操作である可能性があります。 | いいえ |
+| VipUnResponsive | このエラーは、正常性プローブの失敗のためにゲートウェイのプライマリ インスタンスに到達できない場合に発生します。 | いいえ |
+| PlatformInActive | プラットフォームに問題があります。 | いいえ|
+| ServiceNotRunning | 基になるサービスが実行されていません。 | いいえ|
+| NoConnectionsFoundForGateway | ゲートウェイ上に接続が存在しません。 このエラーは、単なる警告です。| いいえ|
 | ConnectionsNotConnected | どの接続も接続されていません。 このエラーは、単なる警告です。| はい|
 | GatewayCPUUsageExceeded | 現在のゲートウェイの CPU 使用率が 95% を超えています。 | はい |
 
@@ -67,12 +67,12 @@ ms.locfileid: "64684239"
 | エラーの種類 | 理由 | ログ|
 |---|---|---|
 | NoFault | エラーが検出されなかった場合 |はい|
-| GatewayNotFound | ゲートウェイが見つからないか、またはゲートウェイがプロビジョニングされていません。 |いいえ |
-| PlannedMaintenance | ゲートウェイ インスタンスがメンテナンス中です。  |いいえ |
-| UserDrivenUpdate | このエラーは、ユーザーの更新が進行中である場合に発生します。 この更新は、サイズ変更操作である可能性があります。  | いいえ  |
-| VipUnResponsive | このエラーは、正常性プローブの失敗のためにゲートウェイのプライマリ インスタンスに到達できない場合に発生します。 | いいえ  |
-| ConnectionEntityNotFound | 接続の構成がありません。 | いいえ  |
-| ConnectionIsMarkedDisconnected | 接続が "切断" とマークされています。 |いいえ |
+| GatewayNotFound | ゲートウェイが見つからないか、またはゲートウェイがプロビジョニングされていません。 |いいえ|
+| PlannedMaintenance | ゲートウェイ インスタンスがメンテナンス中です。  |いいえ|
+| UserDrivenUpdate | このエラーは、ユーザーの更新が進行中である場合に発生します。 この更新は、サイズ変更操作である可能性があります。  | いいえ |
+| VipUnResponsive | このエラーは、正常性プローブの失敗のためにゲートウェイのプライマリ インスタンスに到達できない場合に発生します。 | いいえ |
+| ConnectionEntityNotFound | 接続の構成がありません。 | いいえ |
+| ConnectionIsMarkedDisconnected | 接続が "切断" とマークされています。 |いいえ|
 | ConnectionNotConfiguredOnGateway | 基になるサービスの接続が構成されていません。 | はい |
 | ConnectionMarkedStandby | 基になるサービスがスタンバイとマークされています。| はい|
 | Authentication | 事前共有キーが一致しません。 | はい|

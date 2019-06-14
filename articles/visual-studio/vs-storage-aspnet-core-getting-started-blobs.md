@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 12/07/2017
 ms.author: casoper
 ms.openlocfilehash: f8de7f7a263a087abb16ed48d05b2cae9834b4ad
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52961112"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62110522"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-aspnet-core"></a>Azure Blob ストレージと Visual Studio 接続済みサービスの概要 (ASP.NET Core)
 
@@ -45,13 +45,13 @@ Azure Blob Storage は、非構造化データをクラウド内にオブジェ�
 
 1. Visual Studio を開きます。
 
-1. メイン メニューから、**[ファイル]** > **[新規作成]** > **[プロジェクト]** の順に選択します。
+1. メイン メニューから、 **[ファイル]**  >  **[新規作成]**  >  **[プロジェクト]** の順に選択します。
 
-1. **[新しいプロジェクト]** ダイアログ ボックスで、**[Web]** > **[ASP.NET Core Web アプリケーション]** > **[AspNetCoreStorage]** の順に選択します。 **[OK]** をクリックします。
+1. **[新しいプロジェクト]** ダイアログ ボックスで、 **[Web]**  >  **[ASP.NET Core Web アプリケーション]**  >  **[AspNetCoreStorage]** の順に選択します。 **[OK]** をクリックします。
 
     ![Visual Studio [新しいプロジェクト] ダイアログ ボックスのスクリーンショット](./media/vs-storage-aspnet-core-getting-started-blobs/new-project.png)
 
-1. **[新しい ASP.NET Core Web アプリケーション]** ダイアログ ボックスで、**[.NET Core]** > **[ASP.NET Core 2.0]** > **[Web アプリケーション (モデル ビュー コントローラー)]** の順に選択します。 **[OK]** をクリックします。
+1. **[新しい ASP.NET Core Web アプリケーション]** ダイアログ ボックスで、 **[.NET Core]**  >  **[ASP.NET Core 2.0]**  >  **[Web アプリケーション (モデル ビュー コントローラー)]** の順に選択します。 **[OK]** をクリックします。
 
     ![[新しい ASP.NET Core Web アプリケーション] ダイアログ ボックスのスクリーンショット](./media/vs-storage-aspnet-core-getting-started-blobs/new-mvc.png)
 
@@ -59,13 +59,13 @@ Azure Blob Storage は、非構造化データをクラウド内にオブジェ�
 
 1. **Solution Explorer** で、プロジェクト名を右クリックします。
 
-2. コンテキスト メニューから、**[追加]** > **[接続済みサービス]** の順に選択します。
+2. コンテキスト メニューから、 **[追加]**  >  **[接続済みサービス]** の順に選択します。
 
-1. **[接続済みサービス]** ダイアログ ボックスで **[Azure Storage を使用したクラウド ストレージ]** を選択し、**[構成]** を選択します。
+1. **[接続済みサービス]** ダイアログ ボックスで **[Azure Storage を使用したクラウド ストレージ]** を選択し、 **[構成]** を選択します。
 
     ![[接続済みサービス] ダイアログ ボックスのスクリーンショット](./media/vs-storage-aspnet-core-getting-started-blobs/connected-services.png)
 
-1. **[Azure Storage]** ダイアログ ボックスで、このチュートリアルで使用する Azure ストレージ アカウントを選択します。 新しい Azure ストレージ アカウントを作成するには、**[新しいストレージ アカウントの作成]** を選択し、フォームに入力します。 既存のストレージ アカウントを選択するか新しいストレージ アカウントを作成したら、**[追加]** を選択します。 Visual Studio によって Azure Storage 用の NuGet パッケージと **appsettings.json** へのストレージ接続文字列がインストールされます。
+1. **[Azure Storage]** ダイアログ ボックスで、このチュートリアルで使用する Azure ストレージ アカウントを選択します。 新しい Azure ストレージ アカウントを作成するには、 **[新しいストレージ アカウントの作成]** を選択し、フォームに入力します。 既存のストレージ アカウントを選択するか新しいストレージ アカウントを作成したら、 **[追加]** を選択します。 Visual Studio によって Azure Storage 用の NuGet パッケージと **appsettings.json** へのストレージ接続文字列がインストールされます。
 
 > [!TIP]
 > [Azure ポータル](https://portal.azure.com)でのストレージ アカウントの作成方法については、「[ストレージ アカウントの作成](../storage/common/storage-quickstart-create-account.md)」を参照してください。
@@ -75,17 +75,17 @@ Azure Blob Storage は、非構造化データをクラウド内にオブジェ�
 
 ### <a name="create-an-mvc-controller"></a>MVC コントローラーを作成する 
 
-1. **ソリューション エクスプローラー**で、**[コントローラー]** を右クリックします。
+1. **ソリューション エクスプローラー**で、 **[コントローラー]** を右クリックします。
 
-2. コンテキスト メニューから、**[追加]** > **[コントローラー]** の順に選択します。
+2. コンテキスト メニューから、 **[追加]**  >  **[コントローラー]** の順に選択します。
 
     ![ソリューション エクスプローラーのスクリーンショット](./media/vs-storage-aspnet-core-getting-started-blobs/add-controller-menu.png)
 
-1. **[スキャフォールディングの追加]** ダイアログ ボックスで **[MVC コントローラー - 空]** を選択し、**[追加]** を選択します。
+1. **[スキャフォールディングの追加]** ダイアログ ボックスで **[MVC コントローラー - 空]** を選択し、 **[追加]** を選択します。
 
     ![[スキャフォールディングの追加] ダイアログ ボックスのスクリーンショット](./media/vs-storage-aspnet-core-getting-started-blobs/add-controller.png)
 
-1. **[Add Empty MVC Controller]\(空の MVC コントローラーの追加\)** ダイアログ ボックスで、コントローラーに *BlobsController* という名前を付けて、**[追加]** を選択します。
+1. **[Add Empty MVC Controller]\(空の MVC コントローラーの追加\)** ダイアログ ボックスで、コントローラーに *BlobsController* という名前を付けて、 **[追加]** を選択します。
 
     ![[Add Empty MVC Controller]\(空の MVC コントローラーの追加\) ダイアログ ボックスのスクリーンショット](./media/vs-storage-aspnet-core-getting-started-blobs/add-controller-name.png)
 
@@ -172,15 +172,15 @@ BLOB コンテナーとは、BLOB とフォルダーの入れ子になった階�
     }
     ```
 
-1. **ソリューション エクスプローラー**で、**[ビュー]** フォルダーを右クリックします。
+1. **ソリューション エクスプローラー**で、 **[ビュー]** フォルダーを右クリックします。
 
-2. コンテキスト メニューから、**[追加]** > **[新しいフォルダー]** の順に選択します。 新しいフォルダーに *Blobs* という名前を付けます。 
+2. コンテキスト メニューから、 **[追加]**  >  **[新しいフォルダー]** の順に選択します。 新しいフォルダーに *Blobs* という名前を付けます。 
 
-1. **ソリューション エクスプローラー**で、**[ビュー]** フォルダーを展開し、**[BLOB]** を右クリックします。
+1. **ソリューション エクスプローラー**で、 **[ビュー]** フォルダーを展開し、 **[BLOB]** を右クリックします。
 
-4. コンテキスト メニューから、**[追加]** > **[ビュー]** の順に選択します。
+4. コンテキスト メニューから、 **[追加]**  >  **[ビュー]** の順に選択します。
 
-1. **[ビューの追加]**  ダイアログ ボックスで、ビューの名前として「**CreateBlobContainer**」と入力し、**[追加]** を選択します。
+1. **[ビューの追加]**  ダイアログ ボックスで、ビューの名前として「**CreateBlobContainer**」と入力し、 **[追加]** を選択します。
 
 1. `CreateBlobContainer.cshtml` を開き、次のコード スニペットのように変更します。
 
@@ -194,7 +194,7 @@ BLOB コンテナーとは、BLOB とフォルダーの入れ子になった階�
     Creation of @ViewBag.BlobContainerName @(ViewBag.Success == true ? "succeeded" : "failed")
     ```
 
-1. **ソリューション エクスプローラー**で、**[ビュー]** > **[共有]** フォルダーを順に展開し、`_Layout.cshtml` を開きます。
+1. **ソリューション エクスプローラー**で、 **[ビュー]**  >  **[共有]** フォルダーを順に展開し、`_Layout.cshtml` を開きます。
 
 1. `<ul class="nav navbar-nav">` のような順序なしリストを探します。  リストの最後の `<li>` 要素の後ろに、次の HTML を追加して別のナビゲーション メニュー項目を追加します。
 
@@ -240,7 +240,7 @@ BLOB コンテナーとは、BLOB とフォルダーの入れ子になった階�
     > [!NOTE]
     > BLOB 名は BLOB を取得するために使用される URL の一部であり、任意の文字列にすることができ、ファイルの名前も使用できます。
 
-1. BLOB の参照を取得したら、BLOB 参照オブジェクトの `UploadFromStream` メソッドを呼び出すことで、データの任意のストリームを BLOB にアップロードできます。 `UploadFromStream` メソッドは、BLOB が存在しない場合は作成し、存在する場合は上書きします  (*&lt;file-to-upload>* を、アップロードするファイルへの完全修飾パスに変更します)。
+1. BLOB の参照を取得したら、BLOB 参照オブジェクトの `UploadFromStream` メソッドを呼び出すことで、データの任意のストリームを BLOB にアップロードできます。 `UploadFromStream` メソッドは、BLOB が存在しない場合は作成し、存在する場合は上書きします ( *&lt;file-to-upload>* を、アップロードするファイルへの完全修飾パスに変更します)。
 
     ```csharp
     using (var fileStream = System.IO.File.OpenRead(@"<file-to-upload>"))
@@ -264,7 +264,7 @@ BLOB コンテナーとは、BLOB とフォルダーの入れ子になった階�
     }
     ```
 
-1. **ソリューション エクスプローラー**で、**[ビュー]** > **[共有]** フォルダーを順に展開し、`_Layout.cshtml` を開きます。
+1. **ソリューション エクスプローラー**で、 **[ビュー]**  >  **[共有]** フォルダーを順に展開し、`_Layout.cshtml` を開きます。
 
 1. リストの最後の `<li>` 要素の後ろに、次の HTML を追加して別のナビゲーション メニュー項目を追加します。
 
@@ -272,7 +272,7 @@ BLOB コンテナーとは、BLOB とフォルダーの入れ子になった階�
     <li><a asp-area="" asp-controller="Blobs" asp-action="UploadBlob">Upload blob</a></li>
     ```
 
-1. アプリケーションを実行し、**[BLOB のアップロード]** を選択します。 *success!* という単語が 表示されます。
+1. アプリケーションを実行し、 **[BLOB のアップロード]** を選択します。 *success!* という単語が 表示されます。
     
     ![成功の検証のスクリーンショット](./media/vs-storage-aspnet-core-getting-started-blobs/upload-blob.png)
   
@@ -355,11 +355,11 @@ BLOB コンテナーとは、BLOB とフォルダーの入れ子になった階�
     }
     ```
 
-1. **ソリューション エクスプローラー**で、**[ビュー]** フォルダーを展開し、**[BLOB]** を右クリックします。
+1. **ソリューション エクスプローラー**で、 **[ビュー]** フォルダーを展開し、 **[BLOB]** を右クリックします。
 
-2. コンテキスト メニューから、**[追加]** > **[ビュー]** の順に選択します。
+2. コンテキスト メニューから、 **[追加]**  >  **[ビュー]** の順に選択します。
 
-1. **[ビューの追加]** ダイアログ ボックスで、ビューの名前として「`ListBlobs`」と入力し、**[追加]** を選択します。
+1. **[ビューの追加]** ダイアログ ボックスで、ビューの名前として「`ListBlobs`」と入力し、 **[追加]** を選択します。
 
 1. `ListBlobs.cshtml` を開き、内容を次のコードに置き換えます。
 
@@ -379,7 +379,7 @@ BLOB コンテナーとは、BLOB とフォルダーの入れ子になった階�
     </ul>
     ```
 
-1. **ソリューション エクスプローラー**で、**[ビュー]** > **[共有]** フォルダーを順に展開し、`_Layout.cshtml` を開きます。
+1. **ソリューション エクスプローラー**で、 **[ビュー]**  >  **[共有]** フォルダーを順に展開し、`_Layout.cshtml` を開きます。
 
 1. リストの最後の `<li>` 要素の後ろに、次の HTML を追加して別のナビゲーション メニュー項目を追加します。
 
@@ -420,7 +420,7 @@ BLOB コンテナーとは、BLOB とフォルダーの入れ子になった階�
     CloudBlockBlob blob = container.GetBlockBlobReference("myBlob");
     ```
 
-1. BLOB をダウンロードするには、`CloudBlockBlob.DownloadToStream` メソッドを使用します。 次のコードは、BLOB の内容をストリーム オブジェクトに転送します。 そのオブジェクトはローカル ファイルに保存されます。 (*&lt;local-file-name>* を、BLOB がダウンロードされる場所を表す完全修飾ファイル名に変更します。) 
+1. BLOB をダウンロードするには、`CloudBlockBlob.DownloadToStream` メソッドを使用します。 次のコードは、BLOB の内容をストリーム オブジェクトに転送します。 そのオブジェクトはローカル ファイルに保存されます。 ( *&lt;local-file-name>* を、BLOB がダウンロードされる場所を表す完全修飾ファイル名に変更します。) 
 
     ```csharp
     using (var fileStream = System.IO.File.OpenWrite(<local-file-name>))
@@ -444,7 +444,7 @@ BLOB コンテナーとは、BLOB とフォルダーの入れ子になった階�
     }
     ```
 
-1. **ソリューション エクスプローラー**で、**[ビュー]** > **[共有]** フォルダーを順に展開し、`_Layout.cshtml` を開きます。
+1. **ソリューション エクスプローラー**で、 **[ビュー]**  >  **[共有]** フォルダーを順に展開し、`_Layout.cshtml` を開きます。
 
 1. リストの最後の `<li>` 要素の後ろに、次の HTML を追加して別のナビゲーション メニュー項目を追加します。
 
@@ -452,7 +452,7 @@ BLOB コンテナーとは、BLOB とフォルダーの入れ子になった階�
     <li><a asp-area="" asp-controller="Blobs" asp-action="DownloadBlob">Download blob</a></li>
     ```
 
-1. アプリケーションを実行し、**[BLOB のダウンロード]** を選択して、BLOB をダウンロードします。 `CloudBlobContainer.GetBlockBlobReference` メソッドの呼び出しで指定された BLOB が `File.OpenWrite` メソッドの呼び出しで指定された場所にダウンロードされます。 *success!* というテキストが ブラウザーに表示されます。 
+1. アプリケーションを実行し、 **[BLOB のダウンロード]** を選択して、BLOB をダウンロードします。 `CloudBlobContainer.GetBlockBlobReference` メソッドの呼び出しで指定された BLOB が `File.OpenWrite` メソッドの呼び出しで指定された場所にダウンロードされます。 *success!* というテキストが ブラウザーに表示されます。 
 
 ## <a name="delete-blobs"></a>BLOB を削除する
 
@@ -501,7 +501,7 @@ BLOB コンテナーとは、BLOB とフォルダーの入れ子になった階�
     }
     ```
 
-1. **ソリューション エクスプローラー**で、**[ビュー]** > **[共有]** フォルダーを順に展開し、`_Layout.cshtml` を開きます。
+1. **ソリューション エクスプローラー**で、 **[ビュー]**  >  **[共有]** フォルダーを順に展開し、`_Layout.cshtml` を開きます。
 
 1. リストの最後の `<li>` 要素の後ろに、次の HTML を追加して別のナビゲーション メニュー項目を追加します。
 
@@ -509,7 +509,7 @@ BLOB コンテナーとは、BLOB とフォルダーの入れ子になった階�
     <li><a asp-area="" asp-controller="Blobs" asp-action="DeleteBlob">Delete blob</a></li>
     ```
 
-1. アプリケーションを実行し、**[BLOB の削除]** を選択して、`CloudBlobContainer.GetBlockBlobReference` メソッドの呼び出しで指定された BLOB を削除します。 *success!* というテキストが ブラウザーに表示されます。 ブラウザーの **[戻る]** ボタンを選択し、**[BLOB の一覧表示]** を選択して、BLOB がコンテナーに存在しないことを確認します。
+1. アプリケーションを実行し、 **[BLOB の削除]** を選択して、`CloudBlobContainer.GetBlockBlobReference` メソッドの呼び出しで指定された BLOB を削除します。 *success!* というテキストが ブラウザーに表示されます。 ブラウザーの **[戻る]** ボタンを選択し、 **[BLOB の一覧表示]** を選択して、BLOB がコンテナーに存在しないことを確認します。
 
 ## <a name="next-steps"></a>次の手順
 

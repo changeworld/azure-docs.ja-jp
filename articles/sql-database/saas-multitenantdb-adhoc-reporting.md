@@ -13,11 +13,11 @@ ms.reviewer: sstein
 manager: craigg
 ms.date: 10/30/2018
 ms.openlocfilehash: d4c5a2ca88f982626c8c2a8b37e4a7d6dfdbe599
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58076362"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61485825"
 ---
 # <a name="run-ad-hoc-analytics-queries-across-multiple-azure-sql-databases"></a>複数の Azure SQL データベースにわたるアドホック分析クエリの実行
 
@@ -118,7 +118,7 @@ Wingtip Tickets SaaS Multi-tenant Database アプリケーションでは、テ�
 
 1. *SSMS* で ...\\Learning Modules\\Operational Analytics\\Adhoc Reporting\\*Demo-AdhocReportingQueries.sql* を開きます。
 2. **adhocreporting** データベースに接続していることを確認します。
-3. **[クエリ]** メニューを選択し、**[実際の実行プランを含める]** をクリックします。
+3. **[クエリ]** メニューを選択し、 **[実際の実行プランを含める]** をクリックします。
 4. *[Which venues are currently registered?]* クエリを強調表示し、**F5** を押します。
 
    クエリは会場一覧全体を返します。すべてのテナントにクエリを実行し、各テナントからデータを返すことがいかに簡単かわかります。

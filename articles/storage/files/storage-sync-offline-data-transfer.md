@@ -9,10 +9,10 @@ ms.date: 02/12/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: d1ec5168b898d0aa75c12e6eb435e20c09de1929
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64700272"
 ---
 # <a name="migrate-bulk-data-to-azure-file-sync"></a>Azure File Sync に大量のデータを移行する
@@ -49,13 +49,13 @@ Data Box などの転送ツールをオフライン移行に使用する主な�
 
 ![Azure File Sync の設定方法を示す図](media/storage-sync-files-offline-data-transfer/data-box-integration-1-600.png)
 
-| 手順 | 詳細 |
+| 手順 | Detail |
 |---|---------------------------------------------------------------------------------------|
-| ![手順 1](media/storage-sync-files-offline-data-transfer/bullet_1.png) | [お客様の Data Box を注文します](../../databox/data-box-deploy-ordered.md)。 お客様のニーズに対応するため、Data Box ファミリには[いくつかの製品](https://azure.microsoft.com/services/storage/databox/data)が用意されています。 Data Box を受け取ったら、ドキュメントの記載に従って Data Box 上の次の UNC パスに[データをコピー](../../databox/data-box-deploy-copy-data.md#copy-data-to-data-box)します: *\\<DeviceIPAddres\>\<StorageAccountName_AzFile\>\<ShareName\>*。 ここで、*ShareName* はステージング共有の名前です。 Data Box を Azure に送り返します。 |
+| ![手順 1](media/storage-sync-files-offline-data-transfer/bullet_1.png) | [お客様の Data Box を注文します](../../databox/data-box-deploy-ordered.md)。 お客様のニーズに対応するため、Data Box ファミリには[いくつかの製品](https://azure.microsoft.com/services/storage/databox/data)が用意されています。 Data Box を受け取ったら、ドキュメントの記載に従って Data Box 上の次の UNC パスに[データをコピー](../../databox/data-box-deploy-copy-data.md#copy-data-to-data-box)します: *\\<DeviceIPAddres\>\<StorageAccountName_AzFile\>\<ShareName\>* 。 ここで、*ShareName* はステージング共有の名前です。 Data Box を Azure に送り返します。 |
 | ![手順 2.](media/storage-sync-files-offline-data-transfer/bullet_2.png) | 一時的なステージング共有として選択した Azure ファイル共有にファイルが表示されるまで待ちます。 *それらの共有への同期を有効にしないでください。* |
 | ![手順 3.](media/storage-sync-files-offline-data-transfer/bullet_3.png) | Data Box によって作成されたファイル共有ごとに、空の新しい共有を作成します。 この新しい共有は Data Box 共有と同じストレージ アカウントにある必要があります。 [新しい Azure ファイル共有を作成する方法](storage-how-to-create-file-share.md)。 |
 | ![手順 4.](media/storage-sync-files-offline-data-transfer/bullet_4.png) | ストレージ同期サービスで[同期グループを作成](storage-sync-files-deployment-guide.md#create-a-sync-group-and-a-cloud-endpoint)します。 空の共有をクラウド エンドポイントとして参照します。 Data Box のファイル共有ごとにこの手順を繰り返します。 [Azure File Sync を設定します](storage-sync-files-deployment-guide.md)。 |
-| ![手順 5.](media/storage-sync-files-offline-data-transfer/bullet_5.png) | [ライブ サーバー ディレクトリをサーバー エンドポイントとして追加](storage-sync-files-deployment-guide.md#create-a-server-endpoint)します。 このプロセスでは、Azure にファイルを移動したことを指定し、ステージング共有を参照します。 必要に応じて、クラウドの階層化を有効または無効にできます。 ライブ サーバー上でサーバー エンドポイントを作成している間は、ステージング共有を参照します。 **[サーバー エンドポイントの追加]** ブレードの **[オフラインのデータ転送]** で、**[有効]** を選択し、クラウド エンドポイントと同じストレージ アカウントに存在する必要があるステージング共有を選択します。 ここで、利用可能な共有の一覧は、まだ同期されていないストレージ アカウントと共有によってフィルター処理されます。 |
+| ![手順 5.](media/storage-sync-files-offline-data-transfer/bullet_5.png) | [ライブ サーバー ディレクトリをサーバー エンドポイントとして追加](storage-sync-files-deployment-guide.md#create-a-server-endpoint)します。 このプロセスでは、Azure にファイルを移動したことを指定し、ステージング共有を参照します。 必要に応じて、クラウドの階層化を有効または無効にできます。 ライブ サーバー上でサーバー エンドポイントを作成している間は、ステージング共有を参照します。 **[サーバー エンドポイントの追加]** ブレードの **[オフラインのデータ転送]** で、 **[有効]** を選択し、クラウド エンドポイントと同じストレージ アカウントに存在する必要があるステージング共有を選択します。 ここで、利用可能な共有の一覧は、まだ同期されていないストレージ アカウントと共有によってフィルター処理されます。 |
 
 ![新しいサーバー エンドポイントを作成するときにオフライン データ転送を有効にする方法を示す、Azure portal ユーザー インターフェイスのスクリーンショット](media/storage-sync-files-offline-data-transfer/data-box-integration-2-600.png)
 
@@ -78,7 +78,7 @@ Azure File Sync は、使用した一括移行ツールが最初に ACL を転�
 
 この段階では、次のようにしてステージング共有をクリーンアップしてコストを節約できます。
 
-1. 状態が **[完了]** のときに、**[サーバー エンドポイントのプロパティ]** ブレードで **[オフラインのデータ転送を無効にする]** を選択します。
+1. 状態が **[完了]** のときに、 **[サーバー エンドポイントのプロパティ]** ブレードで **[オフラインのデータ転送を無効にする]** を選択します。
 2. コストを節約するためにステージング共有を削除することを検討します。 ステージング共有にファイルとフォルダーの ACL が含まれていることはほとんどないため、ステージング共有はそれほど役に立ちません。 バックアップの特定の時点の目的で、[同期する Azure ファイル共有の実際のスナップショット](storage-snapshots-files.md)を作成します。 スケジュールに基づいて[スナップショットを作成するように Azure Backup を設定する]( ../../backup/backup-azure-files.md)ことができます。
 
 状態が **[完了]** の場合、または構成の誤りが原因で中止したい場合にのみ、オフライン データ転送モードを無効にしてください。 デプロイ時にこのモードを無効にすると、ステージング共有がまだ利用可能であっても、ファイルはサーバーからアップロードされ始めます。

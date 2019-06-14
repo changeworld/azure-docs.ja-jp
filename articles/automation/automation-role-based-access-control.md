@@ -11,11 +11,11 @@ ms.date: 05/17/2018
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: bcbda2464a4607aaa0b1bb96ef8f34c8713cb5f1
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58918792"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60738759"
 ---
 # <a name="role-based-access-control-in-azure-automation"></a>Azure Automation におけるロールベースのアクセス制御
 
@@ -287,7 +287,7 @@ Log Analytics 閲覧者は、すべての監視データの表示と検索、お
 
 2. 利用可能なロールの一覧からロールを選択します。 Automation アカウントでサポートされている任意の組み込みロールを選択してもかまいません。また、自分で定義したカスタム ロールを選択することもできます。
 
-3. アクセス許可を付与するユーザーのユーザー名を **[選択]** フィールドに入力します。 一覧からユーザーを選択し、**[保存]** をクリックします。
+3. アクセス許可を付与するユーザーのユーザー名を **[選択]** フィールドに入力します。 一覧からユーザーを選択し、 **[保存]** をクリックします。
 
    ![Add users](media/automation-role-based-access-control/automation-04-add-users.png)
 
@@ -307,8 +307,8 @@ Log Analytics 閲覧者は、すべての監視データの表示と検索、お
 
 Automation アカウントの管理に関与しないユーザーや既に退社したユーザーについては、アクセス権を削除することができます。 ユーザーを削除する手順を次に示します。
 
-1. **[アクセス制御 (IAM)]** ページで、削除するユーザーを選択し、**[削除]** をクリックします。
-2. 割り当ての詳細ウィンドウで、**[削除]** ボタンをクリックします。
+1. **[アクセス制御 (IAM)]** ページで、削除するユーザーを選択し、 **[削除]** をクリックします。
+2. 割り当ての詳細ウィンドウで、 **[削除]** ボタンをクリックします。
 3. **[はい]** をクリックして削除を確定します。
 
    ![Remove users](media/automation-role-based-access-control/automation-08-remove-users.png)
@@ -416,7 +416,7 @@ New-AzureRmRoleAssignment -ObjectId $userId -RoleDefinitionName "Automation Job 
 New-AzureRmRoleAssignment -ObjectId $userId -RoleDefinitionName "Automation Runbook Operator" -Scope $rb.ResourceId
 ```
 
-実行後、ユーザーは Azure Portal にログインし、**[すべてのリソース]** を表示できます。 一覧に **Automation Runbook オペレーター**用として追加された Runbook が表示されます。
+実行後、ユーザーは Azure Portal にログインし、 **[すべてのリソース]** を表示できます。 一覧に **Automation Runbook オペレーター**用として追加された Runbook が表示されます。
 
 ![ポータルの Runbook RBAC](./media/automation-role-based-access-control/runbook-rbac.png)
 

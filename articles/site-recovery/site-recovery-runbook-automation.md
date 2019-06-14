@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: 5587d86cb4b3a213961ce46e77c75e947de2d29e
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 26c3466080cb356ca3610d42eaaf5ee4975d3731
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52866374"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61471952"
 ---
 # <a name="add-azure-automation-runbooks-to-recovery-plans"></a>復旧計画に Azure Automation Runbook を追加する
 この記事では、復旧計画の拡張に役立てるために Azure Site Recovery と Azure Automation をどのように統合するかについて説明します。 復旧計画では、Site Recovery で保護される VM の復旧を調整できます。 復旧計画は、セカンダリ クラウドへのレプリケーションと Azure へのレプリケーションの両方に対して機能します。 復旧計画はまた、復旧を**常に正確で**、**繰り返し可能**、さらに**自動化される**ようにするのにも役立ちます。 VM を Azure にフェールオーバーする場合、Azure Automation との統合によって復旧計画が拡張されます。 それを使用して、強力な自動化タスクを提供する Runbook を実行できます。
@@ -22,12 +22,12 @@ Azure Automation が初めての場合は、[サインアップ](https://azure.m
 この記事では、復旧計画に Azure Automation Runbook を統合する方法について説明します。 ここでは、以前は手動の介入を必要とした基本的なタスクを自動化する例を使用します。 また、複数手順の復旧を 1 回のクリックでの復旧アクションに変換する方法についても説明します。
 
 ## <a name="customize-the-recovery-plan"></a>復旧計画のカスタマイズ
-1. **Site Recovery** 復旧計画リソース ブレードに移動します。 この例では、復旧用に復旧計画に 2 つの VM が追加されています。 Runbook の追加を開始するには、**[カスタマイズ]** タブをクリックします。
+1. **Site Recovery** 復旧計画リソース ブレードに移動します。 この例では、復旧用に復旧計画に 2 つの VM が追加されています。 Runbook の追加を開始するには、 **[カスタマイズ]** タブをクリックします。
 
     ![[カスタマイズ] ボタンをクリックします。](media/site-recovery-runbook-automation-new/essentials-rp.png)
 
 
-2. **[Group 1: Start] \(グループ 1: 開始)** を右クリックしてから、**[Add post action] \(事後アクションを追加する)** を選択します。
+2. **[Group 1: Start] \(グループ 1: 開始)** を右クリックしてから、 **[Add post action] \(事後アクションを追加する)** を選択します。
 
     ![[Group 1: Start] \(グループ 1: 開始) の右クリックおよび事後アクションの追加](media/site-recovery-runbook-automation-new/customize-rp.png)
 
@@ -43,7 +43,7 @@ Azure Automation が初めての場合は、[サインアップ](https://azure.m
 
 6. Automation アカウントで、Runbook を選択します。 この Runbook は、最初のグループの復旧後、復旧計画の実行中に実行されるスクリプトです。
 
-7. スクリプトを保存するには、**[OK]** をクリックします。 このスクリプトは **[グループ 1: 後の手順]** に追加されます。
+7. スクリプトを保存するには、 **[OK]** をクリックします。 このスクリプトは **[グループ 1: 後の手順]** に追加されます。
 
     ![事後アクション グループ 1: 開始](media/site-recovery-runbook-automation-new/addedscript-rp.PNG)
 
@@ -240,7 +240,7 @@ workflow AddPublicIPAndNSG {
 
 ## <a name="sample-scripts"></a>サンプルのスクリプト
 
-サンプル スクリプトを Automation アカウントにデプロイするには、**[Azure へのデプロイ]** ボタンをクリックします。
+サンプル スクリプトを Automation アカウントにデプロイするには、 **[Azure へのデプロイ]** ボタンをクリックします。
 
 [![Azure へのデプロイ](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
 

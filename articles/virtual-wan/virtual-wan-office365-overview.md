@@ -7,12 +7,12 @@ services: virtual-wan
 ms.topic: article
 ms.date: 9/24/2018
 ms.author: cherylmc
-ms.openlocfilehash: 815b91295540e93f8f0ffbc002fcf02ce1c13365
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: cb91c1364a91c101ecf8362acd7aab01440143fc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46992679"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64685276"
 ---
 # <a name="office-365-control-plane-in-virtual-wan"></a>Virtual WAN の Office 365 コントロール プレーン
 
@@ -26,7 +26,7 @@ ms.locfileid: "46992679"
 Virtual WAN のこの機能を使用すると、ダイレクト インターネット ブレークアウトのために、信頼する Office 365 トラフィック カテゴリを指定できるようになります。 この信頼済み O365 トラフィックはプロキシをバイパスし、ユーザーの場所から最寄りの Microsoft POP に直接ルーティングされます。 これにより、トラフィックのバックホーリングやヘアピニングが回避されるので、最適なユーザー エクスペリエンスが提供され、WAN コストも削減されます。 
 
 ### <a name="what-are-the-office-365-traffic-categories"></a>Office 365 トラフィック カテゴリを教えてください。
-Office 365 エンドポイントは、ネットワーク アドレスとサブネットを表します。 エンドポイントは、URL、IP アドレス、または IP 範囲になります。 URL には、*account.office.net* のような FQDN、または **.office365.com* のようなワイルドカード URL を使用できます。 エンドポイントは、重要度に基づいて、**最適化**、**許可**、**既定**の 3 つのカテゴリに分けられます。 エンドポイントのカテゴリの詳細については、[こちら](https://docs.microsoft.com/office365/enterprise/office-365-network-connectivity-principles#BKMK_Categories)をご覧ください。
+Office 365 エンドポイントは、ネットワーク アドレスとサブネットを表します。 エンドポイントは、URL、IP アドレス、または IP 範囲になります。 URL には、*account.office.net* のような FQDN、または * *.office365.com* のようなワイルドカード URL を使用できます。 エンドポイントは、重要度に基づいて、**最適化**、**許可**、**既定**の 3 つのカテゴリに分けられます。 エンドポイントのカテゴリの詳細については、[こちら](https://docs.microsoft.com/office365/enterprise/office-365-network-connectivity-principles#BKMK_Categories)をご覧ください。
 
 ### <a name="which-office-365-traffic-category-is-recommended-by-microsoft-for-direct-internet-breakout"></a>ダイレクト インターネット ブレークアウトに推奨される Office 365 トラフィック カテゴリはどれですか?
 **最適化**カテゴリは最も重要なネットワーク エンドポイントであり、SSL 中断/検査デバイスや他のネットワーク セキュリティ デバイスをバイパスする必要があります。 ユーザーの近くに直接インターネット エグレスが必要です。 これらのエンドポイントは、ネットワークのパフォーマンス、待ち時間、可用性の影響を最も受けやすい Office 365 シナリオを表します。 このカテゴリには、重要な URL の小規模なセット (最大約 10 個) と、Office 365 コア ワークロード (Exchange Online、SharePoint Online、Skype for Business Online、Microsoft Teams など) 専用の IP サブネットの定義済みセットが含まれます。 
@@ -34,7 +34,7 @@ Office 365 エンドポイントは、ネットワーク アドレスとサブ�
 **許可**カテゴリも、直接インターネット エグレスに推奨されます。 ただし、"許可" ネットワーク トラフィックは、多少のネットワーク待ち時間を許容できます。 "最適化" カテゴリと "許可" カテゴリのエンドポイントは、すべて Microsoft データセンターでホストされ、Office 365 の一部として管理されます。 "既定" カテゴリは、既定のインターネット エグレスの場所に送信されます。直接インターネット エグレスや、SSL 中断/検査デバイスのバイパスは不要です。
 
 ### <a name="how-do-i-set-my-o365-policies-via-virtual-wan"></a>Virtual WAN を使用して O365 ポリシーを設定するにはどうすればよいですか?
-ポリシーは、**[Virtual WAN]** -> **[設定]** -> **[構成]** タブで有効にすることができます。ここで、ダイレクト インターネット ブレークアウトのための O365 トラフィックの優先カテゴリを指定できます。
+ポリシーは、 **[Virtual WAN]**  ->  **[設定]**  ->  **[構成]** タブで有効にすることができます。ここで、ダイレクト インターネット ブレークアウトのための O365 トラフィックの優先カテゴリを指定できます。
 
 ![Virtual WAN で Office 365 コントロール プレーンを構成する](media/virtual-wan-office365-overview/configure-office365-control-plane.png)
 

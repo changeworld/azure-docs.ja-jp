@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 04/01/2017
 ms.author: kasing
 ms.openlocfilehash: de2279d7f24400142f9d47ecf25378e7e4c47f9e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58111975"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61474040"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>クラシックから Azure Resource Manager への IaaS リソースの移行計画
 Azure Resource Manager には多くの優れた機能が用意されていますが、移行をスムーズに進めるには工程をしっかりと計画することが重要です。 時間をかけて計画すると、移行アクティビティの実行中に問題が発生することはありません。 
@@ -92,7 +92,7 @@ Azure Resource Manager には多くの優れた機能が用意されています
   - ドライ ランの前に以下の項目を解決する必要がありますが、ドライ ラン テストは、準備の手順が失敗しても安全に進められます。 エンタープライズでの移行中に、ドライ ランが移行の準備のための安全かつ貴重な方法であることがわかりました。
   - 準備の実施中は、コントロール プレーン (Azure の管理操作) が仮想ネットワーク全体に対してロックされるため、検証/準備/中止の際に VM のメタデータを変更することはできません。  ただし、それ以外のアプリケーション機能 (RD、VM の使用など) が影響を受けることはありません。  ドライ ランが実施されていることは VM のユーザーにはわかりません。
 
-- **ExpressRoute 回線と VPN** -  現在、承認リンクを使用する ExpressRoute ゲートウェイをダウンタイムなしで移行することはできません。 回避策については、[クラシック デプロイ モデルから Resource Manager デプロイ モデルへの ExpressRoute 回線および関連する仮想ネットワークの移行](../../expressroute/expressroute-migration-classic-resource-manager.md)に関する記事をご覧ください。
+- **ExpressRoute 回線と VPN** - 現在、承認リンクを使用する ExpressRoute ゲートウェイをダウンタイムなしで移行することはできません。 回避策については、[クラシック デプロイ モデルから Resource Manager デプロイ モデルへの ExpressRoute 回線および関連する仮想ネットワークの移行](../../expressroute/expressroute-migration-classic-resource-manager.md)に関する記事をご覧ください。
 
 - **VM 拡張機能** - 仮想マシン拡張機能は、実行中の VM を移行する際の最も大きな障害の 1 つとなる可能性があります。 VM 拡張機能の修復には 1 ～ 2 日かかる可能性があるため、それに応じた計画を行ってください。  動作中の VM の VM 拡張機能の状態を報告するには、Azure エージェントを稼働させておく必要があります。 実行中の VM について不適切な状態が返された場合は、移行が停止します。 移行を可能にするためにエージェント自体が正常に動作している必要はありませんが、VM に拡張機能が存在する場合は、移行を進めるために、動作中のエージェントと送信インターネット接続 (DNS を使用) の両方が必要になります。
   - 移行中に DNS サーバーへの接続が失われた場合は、移行準備前のすべての VM から BGInfo v1.\* を除くすべての VM 拡張機能を削除し、Azure Resource Managerの移行後に VM に追加し直す必要があります。  **これは実行中の VM の場合のみです。**  VM が割り当てを解除した状態で停止している場合、VM 拡張機能を削除する必要はありません。 **注:** Azure Diagnostics やセキュリティ センターの監視などの多くの拡張機能は、移行後に再インストールされるため、削除しても問題ありません。
@@ -108,7 +108,7 @@ Azure Resource Manager には多くの優れた機能が用意されています
 
 - **Web/ワーカー ロール デプロイメント** - Web およびワーカー ロールを含む Cloud Services を Azure Resource Manager に移行することはできません。 移行を開始するには、最初に Web/worker ロールを仮想ネットワークから削除する必要があります。  一般的な解決策として、ExpressRoute 回線にもリンクされている別のクラシック仮想ネットワークに Web/worker ロール インスタンスを移動するか、コードを新しい PaaS App Services (このドキュメントでは説明しません) に移行します。 前者の再デプロイの場合は、新しいクラシック仮想ネットワークを作成し、Web/worker ロールをその新しい仮想ネットワークに移動/再デプロイして、移動元の仮想ネットワークからデプロイメントを削除します。 コードの変更が不要な方法。 新しい[仮想ネットワーク ピアリング](../../virtual-network/virtual-network-peering-overview.md)機能を使用すると、Web/worker ロールを含むクラシック仮想ネットワークと、Azure リージョン内の他の仮想ネットワーク (移行対象の仮想ネットワークなど) をピアリングできます (**ピアリングした仮想ネットワークは移行できないため、仮想ネットワークの移行の完了後**)。そのため、同じ機能を提供しても、パフォーマンスが失われたり、待ち時間や帯域幅のペナルティが発生したりすることはありません。 [仮想ネットワーク ピアリング](../../virtual-network/virtual-network-peering-overview.md)の追加により、Web/worker ロールのデプロイメントを簡単に移行できるようになりました。また、Azure Resource Manager への移行がブロックされることもありません。
 
-- **Azure Resource Manager のクォータ** - Azure リージョンには、クラシックと Azure Resource Manager の両方に個別のクォータ/制限があります。 移行シナリオにおいて新しいハードウェアを使用していない "*(クラシックの既存の VM を Azure Resource Manager に交換した)*" としても、移行の開始前には、十分な容量を持つ Azure Resource Manager のクォータが必要です。 問題となる主要な制限を以下に示します。  制限を引き上げるためのサポート チケットを開いてください。 
+- **Azure Resource Manager のクォータ** - Azure リージョンには、クラシックと Azure Resource Manager の両方に個別のクォータ/制限があります。 移行シナリオにおいて新しいハードウェアを使用していない " *(クラシックの既存の VM を Azure Resource Manager に交換した)* " としても、移行の開始前には、十分な容量を持つ Azure Resource Manager のクォータが必要です。 問題となる主要な制限を以下に示します。  制限を引き上げるためのサポート チケットを開いてください。 
 
     > [!NOTE]
     > 移行対象の現在の環境と同じリージョンでは、これらの制限を引き上げる必要があります。

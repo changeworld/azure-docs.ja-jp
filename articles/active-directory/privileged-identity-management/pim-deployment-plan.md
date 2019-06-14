@@ -15,11 +15,11 @@ ms.author: rolyon
 ms.custom: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1755d627473b0ae47bbc4bc74a3f0d2210e5372b
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58578201"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60440629"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>Azure AD Privileged Identity Management (PIM) をデプロイする
 
@@ -99,7 +99,7 @@ PIM を使用するには、お客様のディレクトリに次のいずれか�
 
 #### <a name="stakeholders-pim-for-azure-ad-roles"></a>利害関係者:Azure AD ロール用の PIM
 
-| 名前 | Role | Action |
+| Name | Role | Action |
 | --- | --- | --- |
 | 名前とメール | **ID アーキテクトまたは Azure グローバル管理者**<br/>この変更をどのように組織内の主要な ID 管理インフラストラクチャに合わせるかを定義する責任がある、ID 管理チームの代表。 | SO/R/I |
 | 名前とメール | **サービス所有者 / ライン マネージャー**<br/>サービスまたはサービス グループの IT 所有者の代表。 主に決定を下し、チームの PIM のロールアウトを支援します。 | SO/R/I |
@@ -109,7 +109,7 @@ PIM を使用するには、お客様のディレクトリに次のいずれか�
 
 #### <a name="stakeholders-pim-for-azure-resource-roles"></a>利害関係者:Azure リソース ロール用の PIM
 
-| 名前 | Role | Action |
+| Name | Role | Action |
 | --- | --- | --- |
 | 名前とメール | **サブスクリプション / リソース所有者**<br/>PIM をデプロイする必要がある各サブスクリプションまたはリソースの IT 所有者の代表 | SO/R/I |
 | 名前とメール | **セキュリティ所有者**<br/>計画が組織のセキュリティ要件を満たしていることをサインオフできるセキュリティ チームの代表。 | SO/R |
@@ -296,7 +296,7 @@ PIM ソリューションを実装する前に、組織で使用するすべて�
 
 1. 計画内容に基づいて、[Azure AD ロールの設定を構成](pim-how-to-change-default-settings.md)します。
 
-1. **[Azure AD ロール]** に移動し、**[ロール]** をクリックして、先ほど構成したロールを選びます。
+1. **[Azure AD ロール]** に移動し、 **[ロール]** をクリックして、先ほど構成したロールを選びます。
 
 1. テスト ユーザーのグループについては、既に永続的な管理者である場合、それらを検索し、その行の 3 つのドットをクリックして永続的から有資格に変換することで、対象にすることができます。 まだロールの割り当てがない場合は、[新たに資格のある割り当てを行う](pim-how-to-add-role-to-user.md#make-a-user-eligible-for-a-role)ことができます。
 
@@ -308,7 +308,7 @@ PIM ソリューションを実装する前に、組織で使用するすべて�
 
 1. テストするサブスクリプションまたはリソース内のロール用に、[Azure リソース ロールの設定を構成](pim-resource-roles-configure-role-settings.md)します。
 
-1. そのサブスクリプションの **[Azure リソース]** に移動し、**[ロール]** をクリックして、先ほど構成したロールを選びます。
+1. そのサブスクリプションの **[Azure リソース]** に移動し、 **[ロール]** をクリックして、先ほど構成したロールを選びます。
 
 1. テスト ユーザーのグループについては、既にアクティブな管理者である場合、それらを検索して対象にし、[そのロール割り当てを更新](pim-resource-roles-assign-roles.md#update-or-remove-an-existing-role-assignment)できます。 まだロールがない場合は、[新しいロールを割り当てる](pim-resource-roles-assign-roles.md#assign-a-role)ことができます。
 
@@ -352,8 +352,8 @@ PIM が運用環境で必要に応じて機能しない場合、以下のロー�
 
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
 1. **[Azure AD Privileged Identity Management]** を開きます。
-1. **[Azure AD ロール]**、**[ロール]** の順にクリックします。
-1. 構成した各ロールについて、資格のある割り当てを持つすべてのユーザーに対する省略記号 (**...**) をクリックします。
+1. **[Azure AD ロール]** 、 **[ロール]** の順にクリックします。
+1. 構成した各ロールについて、資格のある割り当てを持つすべてのユーザーに対する省略記号 ( **...** ) をクリックします。
 1. **[永続化]** オプションをクリックし、ロール割り当てを永続化します。
 
 #### <a name="azure-resource-roles"></a>Azure リソース ロール
@@ -362,7 +362,7 @@ PIM が運用環境で必要に応じて機能しない場合、以下のロー�
 1. **[Azure AD Privileged Identity Management]** を開きます。
 1. **[Azure リソース]** をクリックしてから、ロールバックするサブスクリプションまたはリソースをクリックします。
 1. **[ロール]** をクリックします。
-1. 構成した各ロールについて、資格のある割り当てを持つすべてのユーザーに対する省略記号 (**...**) をクリックします。
+1. 構成した各ロールについて、資格のある割り当てを持つすべてのユーザーに対する省略記号 ( **...** ) をクリックします。
 1. **[永続化]** オプションをクリックし、ロール割り当てを永続化します。
 
 ## <a name="step-4-next-steps-after-deploying-pim"></a>手順 4. PIM のデプロイ後の次の手順
@@ -375,7 +375,7 @@ PIM が運用環境で必要に応じて機能しない場合、以下のロー�
 
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
 1. **[Azure AD Privileged Identity Management]** を開きます。
-1. **[Azure AD ロール]**、**[アラート]** の順にクリックします。
+1. **[Azure AD ロール]** 、 **[アラート]** の順にクリックします。
 
 > [!TIP]
 > :heavy_check_mark:**Microsoft のお勧め**: 高重大度のマークが付けられたすべてのアラートを直ちに処理します。 中および低の重大度アラートについては、最新情報を把握し、セキュリティ脅威と思われる場合には変更を加える必要があります。

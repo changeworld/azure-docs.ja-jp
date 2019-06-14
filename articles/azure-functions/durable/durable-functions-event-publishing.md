@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: glenga
 ms.openlocfilehash: c07a42349fbd81a46b1b7cd9bcad1978f891a6b2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58136363"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60733775"
 ---
 # <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>Azure Event Grid への Durable Functions の発行 (プレビュー)
 
@@ -250,19 +250,19 @@ Azure Portal で作成した関数からのログをご覧ください。
 
 次の一覧では、ライフサイクル イベントのスキーマについて説明します。
 
-* **`id`**:イベント グリッド イベントの一意識別子。
-* **`subject`**:イベントの件名へのパス。 `durable/orchestrator/{orchestrationRuntimeStatus}` `{orchestrationRuntimeStatus}` は`Running`、`Completed`、`Failed`、`Terminated` になります。  
-* **`data`**:Durable Functions 固有のパラメーター。
-  * **`hubName`**:[TaskHub](durable-functions-task-hubs.md) の名前。
-  * **`functionName`**:オーケストレーター関数の名前。
-  * **`instanceId`**:Durable Functions のインスタンス ID。
-  * **`reason`**:追跡イベントに関連付けられている追加のデータ。 詳しくは、「[Durable Functions における診断 (Azure Functions)](durable-functions-diagnostics.md)」をご覧ください
-  * **`runtimeStatus`**:オーケストレーションのランタイム状態。 実行中、完了、失敗、取り消し済みです。
-* **`eventType`**: "orchestratorEvent"
-* **`eventTime`**:イベント時間 (UTC)。
-* **`dataVersion`**:ライフサイクル イベント スキーマのバージョン。
-* **`metadataVersion`**:メタデータのバージョン。
-* **`topic`**:イベント グリッド トピック リソース。
+* **`id`** :イベント グリッド イベントの一意識別子。
+* **`subject`** :イベントの件名へのパス。 `durable/orchestrator/{orchestrationRuntimeStatus}` `{orchestrationRuntimeStatus}` は`Running`、`Completed`、`Failed`、`Terminated` になります。  
+* **`data`** :Durable Functions 固有のパラメーター。
+  * **`hubName`** :TaskHub](durable-functions-task-hubs.md) の名前。
+  * **`functionName`** :オーケストレーター関数の名前。
+  * **`instanceId`** :Durable Functions のインスタンス ID。
+  * **`reason`** :追跡イベントに関連付けられている追加のデータ。 詳しくは、「[Durable Functions における診断 (Azure Functions)](durable-functions-diagnostics.md)」をご覧ください
+  * **`runtimeStatus`** :オーケストレーションのランタイム状態。 実行中、完了、失敗、取り消し済みです。
+* **`eventType`** : "orchestratorEvent"
+* **`eventTime`** :イベント時間 (UTC)。
+* **`dataVersion`** :ライフサイクル イベント スキーマのバージョン。
+* **`metadataVersion`** :メタデータのバージョン。
+* **`topic`** :イベント グリッド トピック リソース。
 
 ## <a name="how-to-test-locally"></a>ローカルでテストする方法
 

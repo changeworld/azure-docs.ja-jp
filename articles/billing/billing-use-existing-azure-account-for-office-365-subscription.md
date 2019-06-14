@@ -16,11 +16,11 @@ ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: banders
 ms.openlocfilehash: b67f3c590be290515329af390b4d3d79a9746112
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339229"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60369887"
 ---
 # <a name="sign-up-for-an-office-365-subscription-with-your-azure-account"></a>Azure アカウントで Office 365 サブスクリプションにサインアップする
 Azure サブスクライバ―は、Azure アカウントを使用して、Office 365 サブスクリプションにサインアップできます。 Azure サブスクリプションがある組織に属している場合は、既存の Azure Active Directory (Azure AD) にユーザーの Office 365 サブスクリプションを作成できます。 Azure Active Directory テナントでグローバル管理者または課金管理者権限を持っているアカウントを使用して、Office 365 サブスクリプションにサインアップします。 詳細については、「[Azure AD でアカウントのアクセス許可を確認する](#RoleInAzureAD)」と「[Azure Active Directory の管理者ロールの割り当て](../active-directory/users-groups-roles/directory-assign-admin-roles.md)」を参照してください。
@@ -47,7 +47,7 @@ Azure サブスクライバ―は、Azure アカウントを使用して、Offic
 組織のための Office 365 サブスクリプションを作成した場合は、次の手順を使用して、Azure AD ユーザーが Office 365 ユーザーになっていることを確認するます。
 
 1. Microsoft 365 管理センターを開きます。
-2. **[ユーザー]** を展開し、**[アクティブ ユーザー]** をクリックします。
+2. **[ユーザー]** を展開し、 **[アクティブ ユーザー]** をクリックします。
 
     ![Microsoft 365 管理センターのユーザーのスクリーンショット](./media/billing-use-existing-azure-account-office-365-subscription/16-microsoft-365-admin-center-users.png)
 
@@ -55,10 +55,10 @@ Azure サブスクライバ―は、Azure アカウントを使用して、Offic
 
 ## <a id="RoleInAzureAD"></a>Azure AD でアカウントのアクセス許可を確認する
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
-2. **[すべてのサービス]** をクリックし、**[Active Directory]** を検索します。
+2. **[すべてのサービス]** をクリックし、 **[Active Directory]** を検索します。
 
     ![Azure ポータルでの Active Directory のスクリーンショット](./media/billing-use-existing-azure-account-office-365-subscription/billing-more-services-active-directory.png)
-3. **[ユーザーとグループ]** > **[すべてのユーザー]** をクリックします。
+3. **[ユーザーとグループ]**  >  **[すべてのユーザー]** をクリックします。
 4. ユーザー名を選択します。
 
     ![Azure Active Directory ユーザーの表示のスクリーン ショット](./media/billing-use-existing-azure-account-office-365-subscription/billing-users-groups.png)

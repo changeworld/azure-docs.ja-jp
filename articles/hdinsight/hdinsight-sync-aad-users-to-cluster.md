@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: 2be67c604bebbe9b4c4356e241d1480ca0778d4a
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64688544"
 ---
 # <a name="synchronize-azure-active-directory-users-to-an-hdinsight-cluster"></a>Azure Active Directory ユーザーを HDInsight クラスターに同期する
@@ -29,7 +29,7 @@ ms.locfileid: "64688544"
 
 1. [Azure Portal](https://portal.azure.com) で、ESP クラスターに関連付けられた Azure AD ディレクトリに移動します。
 
-2. 左側のメニューから **[すべてのユーザー]** を選択してから、**[New user] (新しいユーザー)** を選択します。
+2. 左側のメニューから **[すべてのユーザー]** を選択してから、 **[New user] (新しいユーザー)** を選択します。
 
     ![[すべてのユーザー] ペイン](./media/hdinsight-sync-aad-users-to-cluster/aad-users.png)
 
@@ -45,7 +45,7 @@ ms.locfileid: "64688544"
 
 次のメソッドは、Ambari REST API で POST を使用します。 詳細については、「[Ambari REST API を使用した HDInsight クラスターの管理](hdinsight-hadoop-manage-ambari-rest-api.md)」を参照してください。
 
-1. [SSH でクラスターに接続します](hdinsight-hadoop-linux-use-ssh-unix.md)。 Azure Portal のクラスターの概要ペインから、**[Secure Shell (SSH)]** ボタンを選択します。
+1. [SSH でクラスターに接続します](hdinsight-hadoop-linux-use-ssh-unix.md)。 Azure Portal のクラスターの概要ペインから、 **[Secure Shell (SSH)]** ボタンを選択します。
 
     ![[Secure Shell (SSH)]](./media/hdinsight-sync-aad-users-to-cluster/ssh.png)
 
@@ -129,7 +129,7 @@ ms.locfileid: "64688544"
 
 新しい Azure AD ユーザーが追加されたことを確認するには、[Apache Ambari Web UI](hdinsight-hadoop-manage-ambari.md) を開きます。 **`https://<YOUR CLUSTER NAME>.azurehdinsight.net`** を参照することによって、Ambari Web UI にアクセスします。 クラスター管理者のユーザー名とパスワードを入力します。
 
-1. Ambari ダッシュボードから、**[管理者]** メニューの下にある **[Ambari の管理]** を選択します。
+1. Ambari ダッシュボードから、 **[管理者]** メニューの下にある **[Ambari の管理]** を選択します。
 
     ![Ambari の管理](./media/hdinsight-sync-aad-users-to-cluster/manage-ambari.png)
 

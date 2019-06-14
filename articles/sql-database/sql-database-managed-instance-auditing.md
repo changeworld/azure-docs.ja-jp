@@ -15,11 +15,11 @@ ms.reviewer: vanto
 manager: craigg
 ms.date: 04/08/2019
 ms.openlocfilehash: 6ada2a5e505bfe37f4f9a956570d8b6f38f55e55
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59357427"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60702866"
 ---
 # <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>Azure SQL Database マネージド インスタンスの監査の概要
 
@@ -40,15 +40,15 @@ ms.locfileid: "59357427"
       > [!IMPORTANT]
       > リージョンをまたいで読み取り/書き込みが行われないように、マネージド インスタンスと同じリージョンのストレージ アカウントを使います。
 
-   1. ストレージ アカウントで **[概要]** に移動し、**[BLOB]** をクリックします。
+   1. ストレージ アカウントで **[概要]** に移動し、 **[BLOB]** をクリックします。
 
       ![Azure BLOB ウィジェット](./media/sql-managed-instance-auditing/1_blobs_widget.png)
 
-   1. 上部のメニューで、**[+ コンテナー]** をクリックして新しいコンテナーを作成します。
+   1. 上部のメニューで、 **[+ コンテナー]** をクリックして新しいコンテナーを作成します。
 
       ![BLOB コンテナーの作成アイコン](./media/sql-managed-instance-auditing/2_create_container_button.png)
 
-   1. コンテナーの **[名前]** を指定し、パブリック アクセス レベルを **[プライベート]** に設定して、**[OK]** をクリックします。
+   1. コンテナーの **[名前]** を指定し、パブリック アクセス レベルを **[プライベート]** に設定して、 **[OK]** をクリックします。
 
       ![BLOB コンテナー構成の作成アイコン](./media/sql-managed-instance-auditing/3_create_container_config.png)
 
@@ -56,11 +56,11 @@ ms.locfileid: "59357427"
 
    - <a id="blobtsql"></a>T-SQL を使用して監査ログ用の BLOB ストレージを構成する:
 
-     1. コンテナーの一覧で新しく作成されたコンテナーをクリックし、**[コンテナーのプロパティ]** をクリックします。
+     1. コンテナーの一覧で新しく作成されたコンテナーをクリックし、 **[コンテナーのプロパティ]** をクリックします。
 
         ![BLOB コンテナーのプロパティ ボタン](./media/sql-managed-instance-auditing/4_container_properties_button.png)
 
-     1. コピー アイコンをクリックしてコンテナーの URL をコピーし、後で使えるように (メモ帳などに) URL を保存します。 コンテナー URL は、次の形式になっている必要があります `https://<StorageName>.blob.core.windows.net/<ContainerName>`
+     1. コピー アイコンをクリックしてコンテナーの URL をコピーし、後で使えるように (メモ帳などに) URL を保存します。 コンテナー URL は、`https://<StorageName>.blob.core.windows.net/<ContainerName>` という形式になっている必要があります。
 
         ![BLOB コンテナーの URL をコピーする](./media/sql-managed-instance-auditing/5_container_copy_name.png)
 
@@ -121,11 +121,11 @@ ms.locfileid: "59357427"
 
      1. オブジェクト エクスプローラーのルート ノードを展開します。
 
-     1. **[セキュリティ]** ノードを展開し、**[監査]** ノードを右クリックして [新しい監査] をクリックします。
+     1. **[セキュリティ]** ノードを展開し、 **[監査]** ノードを右クリックして [新しい監査] をクリックします。
 
         ![[セキュリティ] ノードと [監査] ノードを展開する](./media/sql-managed-instance-auditing/10_mi_SSMS_new_audit.png)
 
-     1. **[監査の出力先]** で [URL] が選択されていることを確認し、**[参照]** をクリックします。
+     1. **[監査の出力先]** で [URL] が選択されていることを確認し、 **[参照]** をクリックします。
 
         ![Azure Storage を参照する](./media/sql-managed-instance-auditing/11_mi_SSMS_audit_browse.png)
 
@@ -133,7 +133,7 @@ ms.locfileid: "59357427"
 
         ![Azure へのサインイン](./media/sql-managed-instance-auditing/12_mi_SSMS_sign_in_to_azure.png)
 
-     1. ドロップダウンからサブスクリプション、ストレージ アカウント、および BLOB コンテナーを選択するか、**[作成]** をクリックして独自のコンテナーを作成します。 完了したら、**[OK]** をクリックします。
+     1. ドロップダウンからサブスクリプション、ストレージ アカウント、および BLOB コンテナーを選択するか、 **[作成]** をクリックして独自のコンテナーを作成します。 完了したら、 **[OK]** をクリックします。
 
         ![Azure サブスクリプション、ストレージ アカウント、および BLOB コンテナーを選択する](./media/sql-managed-instance-auditing/13_mi_SSMS_select_subscription_account_container.png)
 
@@ -166,7 +166,7 @@ ms.locfileid: "59357427"
 
 2. **[診断設定]** をクリックします。
 
-3. **[Turn on diagnostics]\(診断をオンにする\)** をクリックします。 診断が既に有効になっている場合は、*[+Add diagnostic setting]\(+ 診断設定を追加する\)* が代わりに表示されます。
+3. **[Turn on diagnostics]\(診断をオンにする\)** をクリックします。 診断が既に有効になっている場合は、 *[+Add diagnostic setting]\(+ 診断設定を追加する\)* が代わりに表示されます。
 
 4. ログのリストで **[SQLSecurityAuditEvents]** を選択します。
 
@@ -215,7 +215,7 @@ BLOB 監査ログを表示するには、いくつかの方法が使用できま
 
 ### <a name="consume-and-analyze-logs-stored-in-azure-monitor-logs"></a>Azure Monitor ログに格納されているログの使用および分析
 
-監査ログが Azure Monitor ログに書き込まれると、それらの監査ログが Log Analytics ワークスペースで使用可能になります。Log Analytics ワークスペースでは、監査データに対して高度な検索を実行できます。 その出発点として、Log Analytics ワークスペースに移動し、*[全般]* セクションの下で *[ログ]* をクリックし、単純なクエリ (例: `search "SQLSecurityAuditEvents"`) を入力して、監査ログを表示してみましょう。  
+監査ログが Azure Monitor ログに書き込まれると、それらの監査ログが Log Analytics ワークスペースで使用可能になります。Log Analytics ワークスペースでは、監査データに対して高度な検索を実行できます。 その出発点として、Log Analytics ワークスペースに移動し、 *[全般]* セクションの下で *[ログ]* をクリックし、単純なクエリ (例: `search "SQLSecurityAuditEvents"`) を入力して、監査ログを表示してみましょう。  
 
 Azure Monitor ログにより、統合された検索とカスタム ダッシュボードを使用してオペレーション インサイトがリアルタイムで得られるため、ワークロードやサーバー全体に散在する何百万件のレコードもすぐに分析できます。 Azure Monitor ログの検索言語とコマンドに関する有用な追加情報については、[Azure Monitor ログ検索リファレンス](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview)に関するページをご覧ください。
 

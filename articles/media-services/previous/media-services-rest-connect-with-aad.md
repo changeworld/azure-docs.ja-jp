@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: willzhan;juliako;johndeu
 ms.openlocfilehash: 6284a1aa0cc3a49291553309b058e4d9f65b24c6
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64701025"
 ---
 # <a name="use-azure-ad-authentication-to-access-the-media-services-api-with-rest"></a>Azure AD 認証を使用して REST で Media Services API にアクセスする
@@ -108,7 +108,7 @@ Media Services API にアクセスするには、以下のデータ ポイント
    2. **[キー]** をクリックします。
     
        ![API アクセス](./media/connect-with-rest/manage-app.png)
-   3. **[説明]** と **[有効期限]** に入力し、**[保存]** をクリックしてアプリケーション キー (クライアント シークレット) を生成します。
+   3. **[説明]** と **[有効期限]** に入力し、 **[保存]** をクリックしてアプリケーション キー (クライアント シークレット) を生成します。
     
        **[保存]** ボタンをクリックすると、キー値が表示されます。 ブレードから離れる前に、キー値をコピーします。
 
@@ -163,7 +163,7 @@ AD 接続パラメーターの値を web.config ファイルまたは app.config
 
 1. **Postman** を開きます。
 2. **[GET]** を選択します。
-3. REST API エンドポイントを貼り付けます (例: https://amshelloworld.restv2.westus.media.azure.net/api/Assets)。
+3. REST API エンドポイントを貼り付けます (例: https://amshelloworld.restv2.westus.media.azure.net/api/Assets) 。
 4. **[Authorization]\(承認\)** タブを選択します。 
 5. **[Bearer Token]\(ベアラー トークン\)** を選択します。
 6. 前のセクションで作成したトークンを貼り付けます。

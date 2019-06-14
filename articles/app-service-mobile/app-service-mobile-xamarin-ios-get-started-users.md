@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: crdun
 ms.openlocfilehash: 132909931291daf3aefddd5e1a44273050d98e06
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56326172"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62120911"
 ---
 # <a name="add-authentication-to-your-xamarinios-app"></a>Xamarin.iOS アプリに認証を追加する
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
@@ -131,7 +131,7 @@ ms.locfileid: "56326172"
     }
     ```
 
-6. **Info.plist** ファイルを開き、**[詳細設定]** セクションの **[URL の種類]** に移動します。 次に、URL の種類の **[識別子]** および **[URL スキーマ]** を構成して、**[Add URL Type]\(URL の種類の追加\)** をクリックします。 **[URL スキーマ]** は {url_scheme_of_your_app} と同じにする必要があります。
+6. **Info.plist** ファイルを開き、 **[詳細設定]** セクションの **[URL の種類]** に移動します。 次に、URL の種類の **[識別子]** および **[URL スキーマ]** を構成して、 **[Add URL Type]\(URL の種類の追加\)** をクリックします。 **[URL スキーマ]** は {url_scheme_of_your_app} と同じにする必要があります。
 7. Mac ホストまたは Visual Studio for Mac に接続している Visual Studio で、デバイスまたはエミュレーターをターゲットとしているクライアント プロジェクトを実行します。 アプリケーションにデータが表示されないことを確認します。
 
     項目の一覧をプルダウンして更新操作を実行すると、ログイン画面が表示されます。 有効な資格情報を正しく入力すると、Todo 項目の一覧が表示され、データを更新できるようになります。

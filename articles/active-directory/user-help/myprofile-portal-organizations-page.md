@@ -13,11 +13,11 @@ ms.date: 02/19/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c6053313c6971f1bcf66bc447b4f4f5fe5817666
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57339744"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60475526"
 ---
 # <a name="manage-your-organizations-from-the-my-profile-preview-portal"></a>マイ プロファイル (プレビュー) ポータルから自分の組織を管理する
 **マイ プロファイル** ポータルの **[組織]** ページで、ご自分の組織を管理できます。
@@ -33,7 +33,7 @@ ms.locfileid: "57339744"
 ## <a name="view-your-organizations"></a>組織を表示する
 1. ご自分の職場または学校アカウントでサインインした後、 https://myprofile.microsoft.com/ ページに移動します。
 
-2. 左側のナビゲーション ウィンドウから **[組織]** を選択するか、**[組織]** ブロックから **[組織の確認]** リンクを選択します。
+2. 左側のナビゲーション ウィンドウから **[組織]** を選択するか、 **[組織]** ブロックから **[組織の確認]** リンクを選択します。
 
     ![[組織] リンクが強調表示されている [マイ プロファイル] ページ](media/myprofile-portal/myprofile-portal-organizations.png)
 
@@ -51,7 +51,7 @@ ms.locfileid: "57339744"
 
 1. **[Other organizations I work with]\(私が作業しているその他の組織\)** 領域からご自分のアカウントにサインインします。
 
-2. **[組織から脱退する]** を選択した後、**[はい]** を選択して、組織から脱退することを確認します。
+2. **[組織から脱退する]** を選択した後、 **[はい]** を選択して、組織から脱退することを確認します。
 
     ![[組織から脱退する] リンクが強調表示されている [組織] ページ](media/myprofile-portal/myprofile-portal-organizations-leave.png)
 

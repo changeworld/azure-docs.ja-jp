@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 02/15/2017
 ms.author: dx@sendgrid.com
 ms.openlocfilehash: 91d28802b4af23da5b8060fa7c8f9a7e843a7dab
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52840267"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60444881"
 ---
 # <a name="how-to-send-email-using-sendgrid-with-azure"></a>SendGrid を使用した Azure での電子メールの送信方法
 ## <a name="overview"></a>概要
@@ -43,16 +43,16 @@ SendGrid は、信頼性の高い[トランザクション メール配信]、�
 [SendGrid NuGet パッケージ](https://www.nuget.org/packages/Sendgrid) は、SendGrid API を取得し、すべての依存関係を備えたアプリケーションを構成する最も簡単な方法です。 NuGet は Microsoft Visual Studio 2015 以降に含まれる Visual Studio 拡張機能であり、これを使用してライブラリおよびツールのインストールと更新を簡単に行うことができます。
 
 > [!NOTE]
-> Visual Studio 2015 よりも前のバージョンの Visual Studio を利用している場合、NuGet をインストールするには、[https://www.nuget.org](https://www.nuget.org)にアクセスして、**[Install NuGet]** をクリックしてください。
+> Visual Studio 2015 よりも前のバージョンの Visual Studio を利用している場合、NuGet をインストールするには、[https://www.nuget.org](https://www.nuget.org)にアクセスして、 **[Install NuGet]** をクリックしてください。
 >
 >
 
 アプリケーションに SendGrid NuGet パッケージをインストールするには、次のステップを行います。
 
-1. **[新しいプロジェクト]** をクリックし、**[テンプレート]** を選択します。
+1. **[新しいプロジェクト]** をクリックし、 **[テンプレート]** を選択します。
 
    ![新しいプロジェクトを作成する][create-new-project]
-2. **[ソリューション エクスプローラー]** で、**[参照]** を右クリックし、**[NuGet パッケージの管理]** をクリックします。
+2. **[ソリューション エクスプローラー]** で、 **[参照]** を右クリックし、 **[NuGet パッケージの管理]** をクリックします。
 
    ![SendGrid NuGet パッケージ][SendGrid-NuGet-package]
 3. 「**SendGrid**」を検索し、検索結果の一覧から **SendGrid** を選択します。

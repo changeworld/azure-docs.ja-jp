@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: menchi
 ms.openlocfilehash: cd0a9a66f3014a39a73cf04badfc67cd2ff4c3de
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295744"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61363452"
 ---
 # <a name="understand-and-use-module-twins-in-iot-hub"></a>IoT Hub のモジュール ツインの理解と使用
 
@@ -113,7 +113,7 @@ ms.locfileid: "58295744"
 
 ### <a name="desired-property-example"></a>必要なプロパティの例
 
-上記の例では、ソリューション バックエンドとモジュール アプリが `telemetryConfig` モジュール ツインの必要なプロパティと報告されたプロパティを使用して、モジュールのテレメトリ構成を同期しています。 例: 
+上記の例では、ソリューション バックエンドとモジュール アプリが `telemetryConfig` モジュール ツインの必要なプロパティと報告されたプロパティを使用して、モジュールのテレメトリ構成を同期しています。 例:
 
 1. ソリューション バックエンドでは、必要なプロパティが必要な構成値で設定されます。 以下は、ドキュメント内の必要なプロパティ セットを使用した部分です。
 
@@ -275,7 +275,7 @@ ms.locfileid: "58295744"
 ## <a name="module-twin-metadata"></a>モジュール ツインのメタデータ
 
 IoT Hub は、各 JSON オブジェクトが最後に更新されたときのタイムスタンプを、モジュール ツインの必要なプロパティと報告されるプロパティに保持します。 タイムスタンプは UTC であり、[ISO8601](https://en.wikipedia.org/wiki/ISO_8601) 形式の `YYYY-MM-DDTHH:MM:SS.mmmZ` でエンコードされます。
-例: 
+例:
 
 ```json
 {

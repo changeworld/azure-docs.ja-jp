@@ -18,11 +18,11 @@ ms.date: 02/03/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a840deb2349d952b1ef4faeab4ee860e6b0b99df
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540144"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60651717"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -196,7 +196,7 @@ ms.locfileid: "58540144"
 
 # <a name="sap-ascsscs-instance-multi-sid-high-availability-with-windows-server-failover-clustering-and-file-share-on-azure"></a>Azure での Windows Server フェールオーバー クラスタリングとファイル共有による SAP ASCS/SCS インスタンスのマルチ SID 高可用性
 
-> ![ Windows][Logo_Windows]  Windows
+> ![Windows][Logo_Windows] Windows
 >
 
 [Azure 内部ロード バランサー][load-balancer-multivip-overview]を使用して複数の仮想 IP アドレスを管理できます。 
@@ -269,12 +269,12 @@ _**図 3:** マルチ SID の SOFS は SAP グローバル ホスト名と同じ
 
 > [!IMPORTANT]
 >第 2 の**SAP \<SID2>** システムには、同じ Volume1 と同じ **\<SAPGlobalHost>** ネットワーク名を使います。
->さまざまな SAP システムの共有名として **SAPMNT** を既に設定してあるので、**\<SAPGlobalHost>** ネットワーク名を再利用するには、同じ **Volume1** を使う必要があります。
+>さまざまな SAP システムの共有名として **SAPMNT** を既に設定してあるので、 **\<SAPGlobalHost>** ネットワーク名を再利用するには、同じ **Volume1** を使う必要があります。
 >
 >\<SID2> グローバル ホストのファイル パスは、C:\ClusterStorage\\**Volume1**\usr\sap\<SID2>\SYS\. です
 >
 
-\<SID2> システムの場合は、SAP グローバル ホスト ..\SYS\..  フォルダーを SOFS クラスターに準備する必要があります。
+\<SID2> システムの場合は、SAP グローバル ホスト ..\SYS\.. フォルダーを SOFS クラスターに準備する必要があります。
 
 \<SID2> インスタンスの SAP グローバル ホストを準備するには、次の PowerShell スクリプトを実行します。
 
@@ -396,23 +396,23 @@ Set-Acl $UsrSAPFolder $Acl -Verbose
 
 2 つ目の SAP \<SID2> 用として、ホスト名 *\<SAPGlobalHost2>* で Volume2 に SAPMNT ファイル共有を作成するには、フェールオーバー クラスター マネージャーで **[ファイル共有の追加]** ウィザードを開始します。
 
-**saoglobal2** SOFS クラスター グループを右クリックして、**[ファイル共有の追加]** を選びます。
+**saoglobal2** SOFS クラスター グループを右クリックして、 **[ファイル共有の追加]** を選びます。
 
 ![図 6:[ファイル共有の追加] ウィザードを起動する][sap-ha-guide-figure-8017]
 
-_**図 6:**[ファイル共有の追加] ウィザードを起動する_
+_**図 6:** [ファイル共有の追加] ウィザードを起動する_
 
 <br>
 
 ![図 7:[SMB 共有 - 簡易] を選ぶ][sap-ha-guide-figure-8018]
 
-_**図 7:**[SMB 共有 - 簡易] を選ぶ_
+_**図 7:** [SMB 共有 - 簡易] を選ぶ_
 
 <br>
 
 ![図 8:"sapglobalhost2" を選んで Volume2 のパスを指定する][sap-ha-guide-figure-8019]
 
-_**図 8:**"sapglobalhost2" を選んで Volume2 のパスを指定する_
+_**図 8:** "sapglobalhost2" を選んで Volume2 のパスを指定する_
 
 <br>
 
@@ -440,7 +440,7 @@ _**図 11:** ユーザー グループとコンピューター アカウント�
 
 ![図 12:[作成] を選択する][sap-ha-guide-figure-8023]
 
-_**図 12:**[作成] を選ぶ_
+_**図 12:** [作成] を選ぶ_
 
 <br>
 

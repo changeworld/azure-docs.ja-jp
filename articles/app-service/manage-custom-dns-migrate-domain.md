@@ -17,11 +17,11 @@ ms.date: 06/28/2017
 ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: 6215230a52bcb5c44f54747b447dc5f64e6af650
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57999091"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62130383"
 ---
 # <a name="migrate-an-active-dns-name-to-azure-app-service"></a>Azure App Service へのアクティブな DNS 名の移行
 
@@ -75,7 +75,7 @@ DNS レコードのページで、移行する DNS 名のレコード タイプ�
 
 ![[カスタム ドメイン] メニュー](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
-**[カスタム ドメイン]** ページで、**[ホスト名の追加]** の横にある **+** アイコンをクリックします。
+**[カスタム ドメイン]** ページで、 **[ホスト名の追加]** の横にある **+** アイコンをクリックします。
 
 ![ホスト名の追加](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
 
@@ -107,7 +107,7 @@ DNS レコードのページで、移行する DNS 名のレコード タイプ�
 
 CNAME レコードを再マップしている場合、このセクションは省略します。 
 
-A レコードを再マップするには、**[カスタム ドメイン]** ページに示されている App Service アプリの外部 IP アドレスが必要です。
+A レコードを再マップするには、 **[カスタム ドメイン]** ページに示されている App Service アプリの外部 IP アドレスが必要です。
 
 右上隅の **[X]** をクリックして **[ホスト名の追加]** ページを閉じます。 
 

@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: hrasheed
 ms.openlocfilehash: f0db36fa380d0d1bb7f2b581c4bf8fa1abfaadaf
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58805382"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60698824"
 ---
 # <a name="use-apache-ambari-to-optimize-hdinsight-cluster-configurations"></a>Apache Ambari を使用して HDInsight クラスター構成を最適化する
 
@@ -29,7 +29,7 @@ Ambari Web UI を使用して、ホスト、サービス、アラート、構成
 
 ## <a name="manage-your-clusters-configuration"></a>クラスターの構成の管理
 
-構成設定は、特定のサービスを調整する際に役立ちます。 サービスの構成設定を変更するには、**[Services]\(サービス\)** サイドバー (左側) でサービスを選択し、サービスの詳細ページで **[Configs]\(構成\)** タブに移動します。
+構成設定は、特定のサービスを調整する際に役立ちます。 サービスの構成設定を変更するには、 **[Services]\(サービス\)** サイドバー (左側) でサービスを選択し、サービスの詳細ページで **[Configs]\(構成\)** タブに移動します。
 
 ![[Services]\(サービス\) サイドバー](./media/hdinsight-changing-configs-via-ambari/services-sidebar.png)
 
@@ -39,7 +39,7 @@ NameNode の Java ヒープ サイズは、クラスターの負荷、ファイ�
 
 NameNode の Java ヒープ サイズを変更するには、次の手順を実行します。
 
-1. [Services]\(サービス\) サイドバーで **[HDFS]** を選択し、**[Configs]\(構成\)** タブに移動します。
+1. [Services]\(サービス\) サイドバーで **[HDFS]** を選択し、 **[Configs]\(構成\)** タブに移動します。
 
     ![HDFS の構成](./media/hdinsight-changing-configs-via-ambari/hdfs-config.png)
 
@@ -80,7 +80,7 @@ Hive は、[Apache Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapre
 
 ### <a name="tune-mappers"></a>マッパーを調整する
 
-Hadoop では、1 つのファイルを複数のファイルに分割 (*"マップ"*) し、分割されたファイルの並列処理を試みます。 マッパーの数は分割数によって異なります。 次の 2 つの構成パラメーターは、Tez 実行エンジンの分割数を制御します。
+Hadoop では、1 つのファイルを複数のファイルに分割 ( *"マップ"* ) し、分割されたファイルの並列処理を試みます。 マッパーの数は分割数によって異なります。 次の 2 つの構成パラメーターは、Tez 実行エンジンの分割数を制御します。
 
 * `tez.grouping.min-size`:グループ化された分割のサイズの下限であり、既定値は 16 MB (16,777,216 バイト) です。
 * `tez.grouping.max-size`:グループ化された分割のサイズの上限であり、既定値は 1 GB (1,073,741,824 バイト) です。
@@ -178,10 +178,10 @@ CBO を有効にすると、次の追加の構成パラメーターによって 
 
 | 形式 | ツール | アルゴリズム | ファイル拡張子 | 分割可能かどうか |
 | -- | -- | -- | -- | -- |
-| Gzip | Gzip | DEFLATE | .gz | いいえ  |
+| Gzip | Gzip | DEFLATE | .gz | いいえ |
 | Bzip2 | Bzip2 | Bzip2 |.bz2 | はい |
 | LZO | Lzop | LZO | .lzo | はい (インデックス付きの場合) |
-| Snappy | 該当なし | Snappy | Snappy | いいえ  |
+| Snappy | 該当なし | Snappy | Snappy | いいえ |
 
 原則として、分割可能な圧縮方法を使用することが重要です。そうしないと、作成されるマッパーがごく少数になります。 入力データがテキストの場合は、`bzip2` が最適なオプションです。 ORC 形式の場合、Snappy が最速の圧縮オプションです。
 
@@ -196,9 +196,9 @@ CBO を有効にすると、次の追加の構成パラメーターによって 
 
 1. カスタム設定を追加するには、次の手順を実行します。
 
-    a. Hive の **[Configs]\(構成\)** タブに移動し、**[Advanced]\(詳細設定\)** タブを選択します。
+    a. Hive の **[Configs]\(構成\)** タブに移動し、 **[Advanced]\(詳細設定\)** タブを選択します。
 
-    b. **[Advanced]\(詳細設定\)** タブで、**[Custom hive-site]\(カスタム hive-site\)** ウィンドウを見つけて展開します。
+    b. **[Advanced]\(詳細設定\)** タブで、 **[Custom hive-site]\(カスタム hive-site\)** ウィンドウを見つけて展開します。
 
     c. [Custom hive-site]\(カスタム hive-site\) ウィンドウの下部にある **[Add Property]\(プロパティの追加\)** リンクをクリックします。
 
@@ -291,7 +291,7 @@ Hive 実行エンジンの最適化に関するその他の推奨事項を次に
 
 Ambari Web UI から [Apache Pig](https://pig.apache.org/) プロパティを変更して、Pig クエリを調整できます。 Ambari から Pig プロパティを変更すると、`/etc/pig/2.4.2.0-258.0/pig.properties` ファイルの Pig プロパティが直接変更されます。
 
-1. Pig プロパティを変更するには、Pig の **[Configs]\(構成\)** タブに移動し、**[Advanced pig-properties]\(高度な pig-properties\)** ウィンドウを展開します。
+1. Pig プロパティを変更するには、Pig の **[Configs]\(構成\)** タブに移動し、 **[Advanced pig-properties]\(高度な pig-properties\)** ウィンドウを展開します。
 
 1. 変更するプロパティの値を見つけ、コメント解除して変更します。
 
@@ -306,7 +306,7 @@ Ambari Web UI から [Apache Pig](https://pig.apache.org/) プロパティを変
 
 Pig スクリプトを実行するために、MapReduce と Tez の 2 つの実行エンジンを使用できます。 Tez は最適化されたエンジンであり、MapReduce よりもはるかに高速です。
 
-1. 実行エンジンを変更するには、**[Advanced pig-properties]\(高度な pig-properties\)** ウィンドウで、`exectype` プロパティを見つけます。
+1. 実行エンジンを変更するには、 **[Advanced pig-properties]\(高度な pig-properties\)** ウィンドウで、`exectype` プロパティを見つけます。
 
 1. 既定値は **MapReduce** です。 これを **Tez** に変更します。
 
@@ -363,7 +363,7 @@ Pig では、ジョブの実行中に一時ファイルが生成されます。 
 
 ## <a name="apache-hbase-optimization-with-the-ambari-web-ui"></a>Ambari Web UI を使用した Apache HBase の最適化
 
-[Apache HBase](https://hbase.apache.org/) の構成は、**[HBase Configs] (HBase の構成)** タブから変更されます。以下のセクションでは、HBase のパフォーマンスに影響する重要な構成設定について説明します。
+[Apache HBase](https://hbase.apache.org/) の構成は、 **[HBase Configs] (HBase の構成)** タブから変更されます。以下のセクションでは、HBase のパフォーマンスに影響する重要な構成設定について説明します。
 
 ### <a name="set-hbaseheapsize"></a>HBASE_HEAPSIZE を設定する
 
@@ -384,11 +384,11 @@ HBase のヒープ サイズは、"*リージョン*" サーバーと "*マス�
 
 ブロック キャッシュは読み取りキャッシュです。 そのサイズは、`hfile.block.cache.size` パラメーターで制御されます。 既定値は 0.4 です。これは、リージョン サーバーのメモリ合計の 40% を表します。 ブロック キャッシュ サイズが大きいほど、ランダム読み取りが高速化されます。
 
-1. このパラメーターを変更するには、HBase の **[Configs]\(構成\)** タブの **[Settings]\(設定\)** タブに移動し、**[% of RegionServer Allocated to Read Buffers]\(読み取りバッファーに割り当てられた RegionServer の割合 (%)\)** を見つけます。
+1. このパラメーターを変更するには、HBase の **[Configs]\(構成\)** タブの **[Settings]\(設定\)** タブに移動し、 **[% of RegionServer Allocated to Read Buffers]\(読み取りバッファーに割り当てられた RegionServer の割合 (%)\)** を見つけます。
 
     ![HBase のブロック キャッシュ サイズ](./media/hdinsight-changing-configs-via-ambari/hbase-block-cache-size.png)
  
-1. 値を変更するには、**[Edit]\(編集\)** アイコンを選択します。
+1. 値を変更するには、 **[Edit]\(編集\)** アイコンを選択します。
 
 
 #### <a name="memstore-size"></a>Memstore のサイズ

@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: adsolank;juliako;
 ms.openlocfilehash: 8ce3ea3847e4c8c022f17375676d8415372dec85
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57991633"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61466308"
 ---
 # <a name="task-preset-for-azure-media-indexer"></a>Azure Media Indexer 用のタスク プリセット 
 

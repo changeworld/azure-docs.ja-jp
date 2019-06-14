@@ -8,11 +8,11 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: 36e1bb77be1e825e42f0e5d25457214a8b5f882d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59045670"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60758801"
 ---
 # <a name="manage-azure-data-explorer-database-permissions"></a>Azure データ エクスプローラーのデータベース アクセス許可を管理する
 
@@ -44,15 +44,15 @@ Azure データ エクスプローラーには、次のロールがあります�
 
     ![データベースの選択](media/manage-database-permissions/select-database.png)
 
-1. **[アクセス許可]** を選択し、**[追加]** を選択します。
+1. **[アクセス許可]** を選択し、 **[追加]** を選択します。
 
     ![データベースのアクセス許可](media/manage-database-permissions/database-permissions.png)
 
-1. **[Add database permissions]\(データベース アクセス許可の追加\)** でプリンシパルを割り当てるロールを選択し、**[Select principals]\(プリンシパルの選択\)** を選択します。
+1. **[Add database permissions]\(データベース アクセス許可の追加\)** でプリンシパルを割り当てるロールを選択し、 **[Select principals]\(プリンシパルの選択\)** を選択します。
 
     ![データベースのアクセス許可を追加する](media/manage-database-permissions/add-permission.png)
 
-1. プリンシパルを探して選択し、**[選択]** を選択します。
+1. プリンシパルを探して選択し、 **[選択]** を選択します。
 
     ![Azure portal でアクセス許可を管理する](media/manage-database-permissions/new-principals.png)
 

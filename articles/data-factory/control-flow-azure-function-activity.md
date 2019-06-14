@@ -12,10 +12,10 @@ author: sharonlo101
 ms.author: shlo
 manager: craigg
 ms.openlocfilehash: 82786b8f01ce409179f4ddd37127679f9357cd0e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64727070"
 ---
 # <a name="azure-function-activity-in-azure-data-factory"></a>Azure Data Factory の Azure 関数アクティビティ
@@ -41,10 +41,10 @@ Azure 関数の戻り値の型は、有効な `JObject` である必要があり
 
 | **プロパティ**  | **説明** | **使用できる値** | **必須** |
 | --- | --- | --- | --- |
-| name  | パイプラインのアクティビティの名前。  | String | はい |
-| type  | アクティビティの種類は 'AzureFunctionActivity' です | String | はい |
+| name  | パイプラインのアクティビティの名前。  | string | はい |
+| type  | アクティビティの種類は 'AzureFunctionActivity' です | string | はい |
 | linked service | 対応する Azure 関数アプリの、Azure 関数のリンクされたサービス  | リンクされたサービスの参照 | はい |
-| function name  | このアクティビティによって呼び出される Azure 関数アプリ内の関数の名前 | String | はい |
+| function name  | このアクティビティによって呼び出される Azure 関数アプリ内の関数の名前 | string | はい |
 | method  | 関数呼び出しのための REST API メソッド | 文字列がサポートされている型:"GET"、"POST"、"PUT"   | はい |
 | header  | 要求に送信されるヘッダー。 たとえば、要求に種類と言語を設定する場合: "headers": { "Accept-Language": "en-us", "Content-Type": "application/json" } | 文字列 (または文字列の resultType を含む式) | いいえ |
 | body  | 関数 API メソッドへの要求と共に送信される本文  | 文字列 (または文字列の resultType を含む式) またはオブジェクト。   | PUT/POST メソッドには必須です |

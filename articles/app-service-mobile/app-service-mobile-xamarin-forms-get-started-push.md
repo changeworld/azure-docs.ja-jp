@@ -15,13 +15,13 @@ ms.topic: article
 ms.date: 10/12/2016
 ms.author: crdun
 ms.openlocfilehash: 99f2d9fb7c9a74e57eff3cd0b007fcee459cab88
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53000231"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62098703"
 ---
-# <a name="add-push-notifications-to-your-xamarinforms-app"></a> Xamarin.Forms アプリにプッシュ通知を追加する
+# <a name="add-push-notifications-to-your-xamarinforms-app"></a>Xamarin.Forms アプリにプッシュ通知を追加する
 
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
 
@@ -59,7 +59,7 @@ iOS については、[Apple Developer Program メンバーシップ](https://de
 
 FCM を使用してバックエンドを構成すると、コンポーネントとコードをクライアントに追加して FCM に登録できます。 Mobile Apps バックエンドを通じて Azure Notification Hubs によるプッシュ通知に登録し、通知を受信することもできます。
 
-1. **Droid** プロジェクトで、**[参照] > [NuGet パッケージの管理...]** の順に右クリックします。
+1. **Droid** プロジェクトで、 **[参照] > [NuGet パッケージの管理...]** の順に右クリックします。
 1. [NuGet パッケージ マネージャー] ウィンドウで **[Xamarin.Firebase.Messaging]** パッケージを検索して、プロジェクトに追加します。
 1. **Droid** プロジェクトのプロジェクト プロパティで、Android バージョン 7.0 以降を使用してコンパイルするようにアプリを設定します。
 1. Firebase コンソールからダウンロードした **google-services.json** ファイルを **Droid** プロジェクトのルートに追加して、ビルド アクションを **GoogleServicesJson** に設定します。 詳細については、[Google Services JSON ファイルの追加](https://developer.xamarin.com/guides/android/data-and-cloud-services/google-messaging/remote-notifications-with-fcm/#Add_the_Google_Services_JSON_File)に関する記事をご覧ください。
@@ -229,10 +229,10 @@ FCM を使用してバックエンドを構成すると、コンポーネント�
 最初の 2 つの手順は、エミュレーターでテストする場合にのみ必要です。
 
 1. 必ず Google Play 開発者サービスで構成されたデバイスまたはエミュレーターに対してデプロイまたはデバッグします。 これを確かめるには、**Play** アプリがデバイスまたはエミュレーターにインストールされていることを確認します。
-2. **[アプリ]** > **[設定]** > **[アカウントの追加]** をクリックして Android デバイスに Google アカウントを追加します。 プロンプトに従って既存の Google アカウントをデバイスに追加するか、新たにアカウントを作成します。
-3. Visual Studio または Xamarin Studio で、**Droid** プロジェクトを右クリックし、**[スタートアップ プロジェクトに設定]** をクリックします。
+2. **[アプリ]**  >  **[設定]**  >  **[アカウントの追加]** をクリックして Android デバイスに Google アカウントを追加します。 プロンプトに従って既存の Google アカウントをデバイスに追加するか、新たにアカウントを作成します。
+3. Visual Studio または Xamarin Studio で、**Droid** プロジェクトを右クリックし、 **[スタートアップ プロジェクトに設定]** をクリックします。
 4. **[実行]** をクリックしてプロジェクトをビルドし、Android デバイスまたはエミュレーターでアプリを起動します。
-5. アプリケーションで、タスクを入力し、プラス (**+**) アイコンをクリックします。
+5. アプリケーションで、タスクを入力し、プラス ( **+** ) アイコンをクリックします。
 6. 項目が追加されたときに、通知が受信されていることを確認します。
 
 ## <a name="configure-and-run-the-ios-project-optional"></a>iOS プロジェクトを構成して実行する (省略可能)
@@ -320,14 +320,14 @@ FCM を使用してバックエンドを構成すると、コンポーネント�
 
 #### <a name="test-push-notifications-in-your-ios-app"></a>iOS アプリでプッシュ通知をテストする
 
-1. iOS プロジェクトを右クリックし、**[スタートアップ プロジェクトに設定]** をクリックします。
+1. iOS プロジェクトを右クリックし、 **[スタートアップ プロジェクトに設定]** をクリックします。
 2. Visual Studio で **[実行]** または **F5** キーを押してプロジェクトをビルドし、iOS デバイスでアプリを起動します。 **[OK]** をクリックして、プッシュ通知を受け入れます。
 
    > [!NOTE]
    > アプリケーションからのプッシュ通知を明示的に受け入れる必要があります。 これが必要であるのは、初めてアプリケーションを実行するときだけです。
 
-3. アプリケーションで、タスクを入力し、プラス (**+**) アイコンをクリックします。
-4. 通知が受信されたことを確認し、**[OK]** をクリックして通知を破棄します。
+3. アプリケーションで、タスクを入力し、プラス ( **+** ) アイコンをクリックします。
+4. 通知が受信されたことを確認し、 **[OK]** をクリックして通知を破棄します。
 
 ## <a name="configure-and-run-windows-projects-optional"></a>Windows プロジェクトを構成して実行する (省略可能)
 
@@ -391,14 +391,14 @@ FCM を使用してバックエンドを構成すると、コンポーネント�
 
     これにより、アプリの起動時に毎回プッシュ通知登録が作成または更新されるようになります。 これを行うことは、WNS プッシュ チャネルが常にアクティブであることを保証するために重要です。  
 
-4. Visual Studio のソリューション エクスプローラーで、**Package.appxmanifest** ファイルを開き、**[通知]** で **[トースト対応]** を **[はい]** に設定します。
+4. Visual Studio のソリューション エクスプローラーで、**Package.appxmanifest** ファイルを開き、 **[通知]** で **[トースト対応]** を **[はい]** に設定します。
 5. アプリをビルドし、エラーがないことを確認します。 これで、クライアント アプリが、Mobile Apps バックエンドから送信されるテンプレート通知に登録されました。 ソリューションのすべての Windows プロジェクトについて、このセクションを繰り返します。
 
 #### <a name="test-push-notifications-in-your-windows-app"></a>Windows アプリでプッシュ通知をテストする
 
-1. Visual Studio で、Windows プロジェクトを右クリックし、**[スタートアップ プロジェクトに設定]** をクリックします。
+1. Visual Studio で、Windows プロジェクトを右クリックし、 **[スタートアップ プロジェクトに設定]** をクリックします。
 2. **[実行]** ボタンを押してプロジェクトをビルドし、アプリケーションを開始します。
-3. アプリで新しい todoitem の名前を入力し、プラス (**+**) アイコンをクリックして追加します。
+3. アプリで新しい todoitem の名前を入力し、プラス ( **+** ) アイコンをクリックして追加します。
 4. 項目が追加されたときに、通知が受信されていることを確認します。
 
 ## <a name="next-steps"></a>次の手順
@@ -409,12 +409,12 @@ FCM を使用してバックエンドを構成すると、コンポーネント�
 * [Firebase クラウド メッセージング](https://developer.xamarin.com/guides/android/data-and-cloud-services/google-messaging/firebase-cloud-messaging/)
 * [Firebase クラウド メッセージングによるリモート通知](https://developer.xamarin.com/guides/android/data-and-cloud-services/google-messaging/remote-notifications-with-fcm/)
 * [プッシュ通知の問題の診断](../notification-hubs/notification-hubs-push-notification-fixer.md)  
-   通知が破棄されたり、デバイスに届かなかったりするのにはさまざまな原因があります。 このトピックでは、プッシュ通知のエラーの根本原因を分析、解明する方法について説明しています。
+  通知が破棄されたり、デバイスに届かなかったりするのにはさまざまな原因があります。 このトピックでは、プッシュ通知のエラーの根本原因を分析、解明する方法について説明しています。
 
 次のチュートリアルのいずれかに進むこともできます。
 
 * [アプリへの認証の追加](app-service-mobile-xamarin-forms-get-started-users.md)  
-   ID プロバイダーを使用してアプリのユーザーを認証する方法について説明します。
+  ID プロバイダーを使用してアプリのユーザーを認証する方法について説明します。
 * [アプリのオフライン同期の有効化](app-service-mobile-xamarin-forms-get-started-offline-data.md)  
   Mobile Apps バックエンドを使用してオフライン サポートをアプリに追加する方法について説明します。 オフライン同期を使用すると、ユーザーはネットワークにアクセスできなくても、データの表示、追加、変更など、モバイル アプリケーションとやり取りできます。
 

@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
 ms.openlocfilehash: 9245d4c01816d26e262b1c8bd35015e2a6a9558c
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58650744"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60550548"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-azure-cli"></a>Azure CLI を使用した Azure Resource Manager リソース グループの管理
 
@@ -33,7 +33,7 @@ ms.locfileid: "58650744"
 
 リソース グループには、リソースについてのメタデータが格納されます。 そのため、リソース グループの場所を指定するとき、このメタデータが格納される場所を指定することになります。 コンプライアンス上の理由から、データは特定のリージョンに格納されるようにする必要があります。
 
-リソース グループには、リソースについてのメタデータが格納されます。 リソース グループの場所を指定するときは、このメタデータが格納されている場所を指定します。
+リソース グループには、リソースについてのメタデータが格納されます。 リソース グループの場所を指定するとき、このメタデータが格納される場所を指定することになります。
 
 ## <a name="create-resource-groups"></a>リソース グループを作成する
 
@@ -47,7 +47,7 @@ read location &&
 az group create --name $resourceGroupName --location $location
 ```
 
-## <a name="list-resource-groups"></a>List resource groups
+## <a name="list-resource-groups"></a>リソース グループの一覧を表示する
 
 次の CLI スクリプトでは、サブスクリプションのリソース グループを一覧表示します。
 
@@ -125,13 +125,13 @@ az lock delete --name $lockName --resource-group $resourceGroupName
 
 ## <a name="tag-resource-groups"></a>リソース グループにタグを適用する
 
-リソース グループやリソースにタグを適用して、アセットを論理的に整理できます。 詳細については、[タグを使用した Azure リソースの整理](./resource-group-using-tags.md#azure-cli)に関する記事をご覧ください。
+リソース グループやリソースにタグを適用して、アセットを論理的に整理できます。 詳細については、[タグを使用した Azure リソースの整理](./resource-group-using-tags.md#azure-cli) に関する記事をご覧ください。
 
 ## <a name="export-resource-groups-to-templates"></a>リソース グループをテンプレートにエクスポートする
 
 リソース グループを正常に設定したら、リソース グループの Resource Manager テンプレートを表示できます。 テンプレートのエクスポートには、2 つの利点があります。
 
-- テンプレートには完全なインフラストラクチャが含まれているため、ソリューションの将来のデプロイを自動化できます。
+- テンプレートに完全なインフラストラクチャが含まれているため、ソリューションの将来のデプロイを自動化します。
 - ソリューションを表す JavaScript Object Notation (JSON) を調べることで、テンプレートの構文を確認できます。
 
 ```azurecli-interactive
@@ -146,11 +146,11 @@ az group export --name $resourceGroupName
 
 ## <a name="manage-access-to-resource-groups"></a>リソース グループへのアクセスを管理する
 
-[ロールベースのアクセス制御 (RBAC)](../role-based-access-control/overview.md) は、Azure に存在するリソースに対するアクセス権を管理するための手法です。 詳細については、[RBAC と Azure CLI を使用したアクセスの管理](../role-based-access-control/role-assignments-cli.md)に関する記事をご覧ください。
+[ロールベースのアクセス制御 (RBAC)](../role-based-access-control/overview.md) は、Azure に存在するリソースに対するアクセス権を管理するための手法です。 詳しくは、[RBAC と Azure CLI を使用したアクセスの管理](../role-based-access-control/role-assignments-cli.md)に関する記事をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 
-- Azure Resource Manager については、「[Azure Resource Manager の概要](./resource-group-overview.md)」をご覧ください。
-- Resource Manager テンプレートの構文については、「[Azure Resource Manager テンプレートの構造と構文の詳細](./resource-group-authoring-templates.md)」をご覧ください。
-- テンプレートを開発する方法については、[ステップバイステップのチュートリアル](/azure/azure-resource-manager/)をご覧ください。
-- Azure Resource Manager のテンプレートのスキーマを表示するには、[テンプレート リファレンス](/azure/templates/)をご覧ください。
+- Azure Resource Manager については、「[Azure Resource Manager の概要](./resource-group-overview.md)」を参照してください。
+- Resource Manager テンプレートの構文については、「[Azure Resource Manager テンプレートの構造と構文の詳細](./resource-group-authoring-templates.md)」を参照してください。
+- テンプレートを開発する方法については、[ステップバイステップのチュートリアル](/azure/azure-resource-manager/)のページをご覧ください。
+- Azure Resource Manager テンプレートのスキーマを表示するには、[テンプレート リファレンス](/azure/templates/)のページをご覧ください。

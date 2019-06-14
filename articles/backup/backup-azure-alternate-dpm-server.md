@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: kasinh
 ms.openlocfilehash: d1fb3434f0d3954a07980963866bcd7cce004379
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59528103"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60650899"
 ---
 # <a name="recover-data-from-azure-backup-server"></a>Azure Backup Server からデータを回復する
 Azure Backup Server を使用して、Recovery Services コンテナーにバックアップしたデータを回復することができます。 そのためのプロセスは、Azure Backup Server 管理コンソールに統合されており、他の Azure Backup コンポーネントの回復ワークフローに似ています。
@@ -36,11 +36,11 @@ Azure Backup Server からデータを回復するには:
    >
    >
 
-    外部 Azure Backup Server が追加されたら、**[回復]** タブから外部 Azure Backup Server とローカル Azure Backup Server のデータを閲覧できます。
+    外部 Azure Backup Server が追加されたら、 **[回復]** タブから外部 Azure Backup Server とローカル Azure Backup Server のデータを閲覧できます。
 3. 外部 Azure Backup Server で保護されている本稼働サーバーの一覧を閲覧し、該当するデータ ソースを選択します。
 
     ![外部 DPM サーバーの参照](./media/backup-azure-alternate-dpm-server/browse-external-dpm.png)
-4. **[回復ポイント]** ドロップダウンから **[月/年]** を選択し、回復ポイントが作成された **[回復日]** を選択し、**[回復時刻]** を選択します。
+4. **[回復ポイント]** ドロップダウンから **[月/年]** を選択し、回復ポイントが作成された **[回復日]** を選択し、 **[回復時刻]** を選択します。
 
     ファイルとフォルダーの一覧が下のページに表示されるので、任意の場所を参照し、そこに回復できます。
 
@@ -54,7 +54,7 @@ Azure Backup Server からデータを回復するには:
 7. **[別の場所に回復する]** を選択します。 **[参照]** で適切な回復場所を開きます。
 
     ![外部の DPM 回復の別場所](./media/backup-azure-alternate-dpm-server/external-dpm-recovery-alternate-location.png)
-8. **[コピーの作成]**、**[スキップ]**、**[上書き]** に関連付けられているオプションを選択します。
+8. **[コピーの作成]** 、 **[スキップ]** 、 **[上書き]** に関連付けられているオプションを選択します。
 
    * **[コピーの作成]** - 名前の競合がある場合、ファイルのコピーを作成します。
    * **スキップ** - 名前の競合がある場合、ファイルを回復せず、元のファイルを残します。

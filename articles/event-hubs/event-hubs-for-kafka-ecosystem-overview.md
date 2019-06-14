@@ -11,11 +11,11 @@ ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: bahariri
 ms.openlocfilehash: 8bf381e7c66e06bbaa140ed865f0f7c9b4f001af
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54452345"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60821709"
 ---
 # <a name="use-azure-event-hubs-from-apache-kafka-applications"></a>Apache Kafka アプリケーションから Azure Event Hubs を使用する
 Event Hubs は、独自の Kafka クラスターを実行する代わりに、既存の Kafka ベースのアプリケーションが使用できる Kafka エンドポイントを提供します。 Event Hubs は、[Apache Kafka 1.0 以降](https://kafka.apache.org/documentation/)をサポートしており、MirrorMaker を含む既存の Kafka アプリケーションに対応します。  
@@ -34,7 +34,7 @@ Kafka と Event Hubs は、概念的にはほぼ同じものです。これら�
 | トピック | イベント ハブ |
 | Partition | Partition|
 | コンシューマー グループ | コンシューマー グループ |
-| offset | offset|
+| Offset | Offset|
 
 ### <a name="key-differences-between-kafka-and-event-hubs"></a>Kafka と Event Hubs の主な違い
 

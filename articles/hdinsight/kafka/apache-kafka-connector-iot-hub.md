@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.openlocfilehash: 420800e718c8f98bfd3d5d7383829d5aa5472828
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64698161"
 ---
 # <a name="use-apache-kafka-on-hdinsight-with-azure-iot-hub"></a>HDInsight 上の Apache Kafka を Azure IoT Hub と共に使用する
@@ -169,8 +169,8 @@ Connect API について詳しくは、[https://kafka.apache.org/documentation/#
 
    * __[Azure Portal](https://portal.azure.com/) で__、次の手順に従います。
 
-     1. IoT ハブに移動し、__[エンドポイント]__ を選択します。
-     2. __[組み込みのエンドポイント]__ から、__[イベント]__ を選択します。
+     1. IoT ハブに移動し、 __[エンドポイント]__ を選択します。
+     2. __[組み込みのエンドポイント]__ から、 __[イベント]__ を選択します。
      3. __[プロパティ]__ から、次のフィールドの値をコピーします。
 
          * __イベント ハブ互換の名前__
@@ -198,7 +198,7 @@ Connect API について詳しくは、[https://kafka.apache.org/documentation/#
 
     * __[Azure Portal](https://portal.azure.com/) で__、次の手順に従います。
 
-        1. __[共有アクセス ポリシー]__ を選択してから、__[サービス]__ を選択します。
+        1. __[共有アクセス ポリシー]__ を選択してから、 __[サービス]__ を選択します。
         2. __[主キー]__ の値をコピーします。
         3. __[接続文字列 -- 主キー]__ の値をコピーします。
 

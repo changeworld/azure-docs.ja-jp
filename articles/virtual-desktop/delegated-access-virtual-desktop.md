@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: helohr
 ms.openlocfilehash: 250aea52de63a6397ce00e9cadcadf3a8ba39858
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58399998"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60870508"
 ---
 # <a name="delegated-access-in-windows-virtual-desktop-preview"></a>Windows Virtual Desktop プレビューにおける委任されたアクセス
 
@@ -54,10 +54,10 @@ Windows Virtual Desktop の委任されたアクセスには、ユーザーお�
 
 * **AadTenantId**: サービス プリンシパルがメンバーとなる Azure Active Directory テナント ID を指定します。
 * **AppGroupName**: リモート デスクトップのアプリ グループの名前です。
-* **Diagnostics**: 診断のスコープを示します  (**Infrastructure** または **Tenant** パラメーターのいずれかと組み合わせる必要があります)。
+* **Diagnostics**: 診断のスコープを示します (**Infrastructure** または **Tenant** パラメーターのいずれかと組み合わせる必要があります)。
 * **HostPoolName**: リモート デスクトップのホスト プールの名前です。
 * **Infrastructure**: インフラストラクチャのスコープを示します。
-* **RoleDefinitionName**: ユーザー、グループ、またはアプリに割り当てられているリモート デスクトップ サービスのロールベース アクセス制御のロールの名前  (リモート デスクトップ サービスの所有者、リモート デスクトップ サービスの閲覧者など)。
+* **RoleDefinitionName**: ユーザー、グループ、またはアプリに割り当てられているリモート デスクトップ サービスのロールベース アクセス制御のロールの名前 (リモート デスクトップ サービスの所有者、リモート デスクトップ サービスの閲覧者など)。
 * **ServerPrincipleName**: Azure Active Directory アプリケーションの名前。
 * **SignInName**: ユーザーの電子メール アドレスまたはユーザー プリンシパル名。
 * **TenantName**: リモート デスクトップ テナントの名前。

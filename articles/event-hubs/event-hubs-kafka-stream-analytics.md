@@ -14,11 +14,11 @@ ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: spelluru
 ms.openlocfilehash: b6bba4ed45530ba66a1adde274022a80091cd199
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57539159"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60748143"
 ---
 # <a name="process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>Stream Analytics を使用して Event Hubs イベントの Apache Kafka を処理する 
 この記事では、データを Kafka 対応 Event Hubs にストリームし、Azure Stream Analytics で処理する方法について説明します。 次の手順について説明します。 
@@ -62,7 +62,7 @@ ms.locfileid: "57539159"
 
     ![名前空間の作成](./media/event-hubs-kafka-stream-analytics/creation-station-message.png)
 1. リソース グループ内の**イベント ハブ名前空間**を選択します。 
-2. 名前空間が作成されたら、**[設定]** の **[共有アクセス ポリシー]** を選択します。
+2. 名前空間が作成されたら、 **[設定]** の **[共有アクセス ポリシー]** を選択します。
 
     ![[共有アクセス ポリシー] をクリックする](./media/event-hubs-kafka-stream-analytics/shared-access-policies.png)
 5. 既定値の **RootManageSharedAccessKey** を選択することも、新しいポリシーを追加することもできます。 ポリシー名をクリックして、**接続文字列**をコピーします。 接続文字列を使用して Kafka クライアントを構成します。 
@@ -120,8 +120,8 @@ Stream Analytics ジョブのクエリは、分析を実行せずにデータを
 
 ### <a name="create-a-stream-analytics-job"></a>Stream Analytics のジョブの作成 
 
-1. [Azure portal](https://portal.azure.com) で、**[+ リソースの作成]** を選択します。
-2. **[Azure Marketplace]** メニューで **[Analytics]** を選択し、**[Stream Analytics ジョブ]** を選択します。 
+1. [Azure portal](https://portal.azure.com) で、 **[+ リソースの作成]** を選択します。
+2. **[Azure Marketplace]** メニューで **[Analytics]** を選択し、 **[Stream Analytics ジョブ]** を選択します。 
 3. **[新しい Stream Analytics]** ページで、次の手順を実行します。 
     1. ジョブの**名前**を入力します。 
     2. **サブスクリプション**を選択します。
@@ -133,7 +133,7 @@ Stream Analytics ジョブのクエリは、分析を実行せずにデータを
 
 ### <a name="configure-job-input"></a>ジョブの入力を構成する
 
-1. 通知メッセージで、**[リソースに移動]** を選択すると、**[Stream Analytics ジョブ]** ページが表示されます。 
+1. 通知メッセージで、 **[リソースに移動]** を選択すると、 **[Stream Analytics ジョブ]** ページが表示されます。 
 2. 左側のメニューの **[ジョブ トポロジ]** セクションで **[入力]** を選択します。
 3. **[ストリーム入力の追加]** を選択して **[イベント ハブ]** を選択します。 
 
@@ -151,7 +151,7 @@ Stream Analytics ジョブのクエリは、分析を実行せずにデータを
 ### <a name="configure-job-output"></a>ジョブの出力を構成する 
 
 1. メニューの **[ジョブ トポロジ]** セクションで **[出力]** を選択します。 
-2. ツールバーの **[+ 追加]** を選択し、**[BLOB ストレージ]** を選択します。
+2. ツールバーの **[+ 追加]** を選択し、 **[BLOB ストレージ]** を選択します。
 3. BLOB のストレージ出力設定ページで、次の手順を実行します。 
     1. 出力に**エイリアス**を指定します。 
     2. Azure **サブスクリプション**を選択します。 

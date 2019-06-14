@@ -14,12 +14,12 @@ ms.devlang: java
 ms.topic: article
 ms.date: 11/17/2017
 ms.author: crdun
-ms.openlocfilehash: 557f6f6a6d4925ec167760455dfc67449582c05c
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: 352e64664e6796fb4e0a7941de91ef4045076aed
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42811672"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62104615"
 ---
 # <a name="add-push-notifications-to-your-android-app"></a>プッシュ通知を Android アプリに追加する
 
@@ -93,4 +93,4 @@ Android フォンを USB ケーブルで直接接続するか、エミュレー�
 
 <!-- URLs -->
 [Android クイック スタート]: app-service-mobile-android-get-started.md
-[Android プロジェクトに Firebase を追加する]:https://firebase.google.com/docs/android/setup
+[Android プロジェクトに Firebase を追加する]: https://firebase.google.com/docs/android/setup

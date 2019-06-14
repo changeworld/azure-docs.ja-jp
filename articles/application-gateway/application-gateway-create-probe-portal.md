@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: victorh
 ms.openlocfilehash: 90d576fd00a39f7e871cbe0922ce131dfbe38ff0
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58862167"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62122389"
 ---
 # <a name="create-a-custom-probe-for-application-gateway-by-using-the-portal"></a>ポータルを使用して Application Gateway 用カスタム プローブを作成する
 
@@ -43,7 +43,7 @@ Application Gateway がまだない場合は、[Application Gateway の作成](a
 
 1. Azure Portal の [お気に入り] ウィンドウで [すべてのリソース] をクリックします。 [すべてのリソース] ブレードで Application Gateway をクリックします。 選択したサブスクリプションに既存のリソースがいくつもある場合は、[名前でフィルター] ボックスに「partners.contoso.net」と入力すると、 目的のアプリケーション ゲートウェイがすぐに見つかります。
 
-1. **[プローブ]** をクリックし、**[追加]** ボタンをクリックしてプローブを追加します。
+1. **[プローブ]** をクリックし、 **[追加]** ボタンをクリックしてプローブを追加します。
 
    ![Add Probe blade with information filled out][1]
 
@@ -53,7 +53,7 @@ Application Gateway がまだない場合は、[Application Gateway の作成](a
    |---|---|---|
    |**Name**|customProbe|この値は、ポータルでアクセス可能なプローブのフレンドリ名です。|
    |**プロトコル**|HTTP または HTTPS | 正常性プローブが使用するプロトコルです。|
-   |**Host**|つまり  contoso.com|この値は、プローブに使用されるホスト名です。 Application Gateway でマルチサイトが構成されている場合にのみ適用されます。それ以外の場合は、"127.0.0.1" を使用します。 この値は VM ホスト名とは異なります。|
+   |**Host**|つまり contoso.com|この値は、プローブに使用されるホスト名です。 Application Gateway でマルチサイトが構成されている場合にのみ適用されます。それ以外の場合は、"127.0.0.1" を使用します。 この値は VM ホスト名とは異なります。|
    |**パス**|/ または別のパス|カスタム プローブの完全な URL の残りの部分です。 パスは先頭が "/" である必要があります。 既定のパス http:\//contoso.com では "/" のみを使用します。 |
    |**間隔 (秒)**|30|正常性を確認するためにプローブを実行する頻度です。 30 秒未満に設定しないようにすることをお勧めします。|
    |**タイムアウト (秒)**|30|タイムアウトまでにプローブが待機する時間です。タイムアウトまでの時間は、バックエンドの正常性ページが利用可能であることを確認するために HTTP 呼び出しを実行できるだけの長さである必要があります。|
@@ -70,8 +70,8 @@ Application Gateway がまだない場合は、[Application Gateway の作成](a
 
    ![https settings window][2]
 
-1. **appGatewayBackEndHttpSettings** 設定ブレードで、**[カスタム プローブの使用]** チェックボックスをオンにし、「[プローブの作成](#createprobe)」セクションで作成したプローブを **[カスタム プローブ]** ドロップダウンで選択します。
-   完了したら、**[保存]** をクリックし、設定を適用します。
+1. **appGatewayBackEndHttpSettings** 設定ブレードで、 **[カスタム プローブの使用]** チェックボックスをオンにし、「[プローブの作成](#createprobe)」セクションで作成したプローブを **[カスタム プローブ]** ドロップダウンで選択します。
+   完了したら、 **[保存]** をクリックし、設定を適用します。
 
 既定のプローブでは、Web アプリケーションへの既定のアクセスがチェックされます。 カスタム プローブが作成されたら、Application Gateway は、定義されているカスタム パスを使用して、バックエンド サーバーの正常性を監視します。 定義された条件に基づいて、Application Gateway は、プローブで指定されているパスをチェックします。 host:Port/path への呼び出しによって HTTP 200-399 という状態の応答が返されない場合は、異常のしきい値に達した後、サーバーがローテーションから除外されます。 プローブは、もう一度正常になるタイミングを判断するために、異常なインスタンス上で続行します。 インスタンスが正常なサーバー プールに戻されると、トラフィックはもう一度そこに流れ始め、インスタンスへのプローブは、通常どおり、ユーザーが指定した間隔で続行します。
 

@@ -10,12 +10,12 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 01/18/2017
 ms.author: alch
-ms.openlocfilehash: 44930ad0f941ea174d95658f220db7aa95012133
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 7f692c08f8af322bf7e6ab576e2e6f516594a6c4
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55868686"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61336519"
 ---
 # <a name="similarity-method"></a>Similarity メソッド
 
@@ -28,26 +28,34 @@ https://westus.api.cognitive.microsoft.com/academic/v1.0/similarity?
 ```
 
 ## <a name="request-parameters"></a>要求パラメーター
+
 パラメーター        |データ型      |必須 | 説明
 ----------|----------|----------|------------
 **s1**        |String   |はい  |比較する文字列*
 **s2**        |String   |はい  |比較する文字列*
+
 <sub> *比較する文字列の長さは最大 1 MB です。</sub>
 <br>
+
 ## <a name="response"></a>Response
+
 Name | 説明
 --------|---------
 **SimilarityScore**        |s1 と s2 のコサイン類似度を表す浮動小数点数値で、値が 1.0 に近いほど類似度が高く、値が -1.0 に近いほど類似度が低くなります
+
 <br>
 
 ## <a name="successerror-conditions"></a>成功/エラー条件
+
 HTTP の状態 | 理由 | Response
 -----------|----------|--------
 **200**         |Success | 浮動小数点数
 **400**         | 不適切な要求または要求が無効です | エラー メッセージ      
 **500**         |内部サーバー エラー | エラー メッセージ
 **Timed out**     | 要求がタイムアウトしました。  | エラー メッセージ
+
 <br>
+
 ## <a name="example-calculate-similarity-of-two-partial-abstracts"></a>例:2 つの部分的な要約の類似度を計算します
 #### <a name="request"></a>要求:
 ```

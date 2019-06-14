@@ -15,17 +15,17 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 618acae10b874eb5ebd5b6da7fe081368528dbd8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57851768"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61217510"
 ---
 # <a name="develop-azure-functions-with-media-services"></a>Media Services を使用する Azure 関数の開発
 
 この記事では、Media Services を使用した Azure Functions の作成方法について説明しています。 この記事で定義されている Azure Function は、新しい MP4 ファイルの **input** という名前付きストレージ アカウント コンテナーを監視します。 ストレージ コンテナーにファイルを削除すると、BLOB トリガーは関数を実行します。 Azure 関数について確認するには、**Azure 関数**のセクションで[概要](../../azure-functions/functions-overview.md)およびその他のトピックを参照してください。
 
-Azure Media Services を使用する既存の Azure 関数を探してデプロイするには、[Media Services Azure Functions](https://github.com/Azure-Samples/media-services-dotnet-functions-integration) をチェックアウトしてください。 このリポジトリには、Media Services を使ったサンプルが格納されています。Blob Storage から直接コンテンツを取り込んだり、エンコードしたり、Blob Storage にコンテンツを書き戻したりする処理に関連するワークフローの例が紹介されています。 また、webhook と Azure キューを介してジョブの通知を監視するサンプルも含まれています。 さらに、[Media Services Azure Functions](https://github.com/Azure-Samples/media-services-dotnet-functions-integration) リポジトリの例に基づいて関数をデプロイすることもできます。 関数をデプロイするには、**[Azure に配置する]** を押します。
+Azure Media Services を使用する既存の Azure 関数を探してデプロイするには、[Media Services Azure Functions](https://github.com/Azure-Samples/media-services-dotnet-functions-integration) をチェックアウトしてください。 このリポジトリには、Media Services を使ったサンプルが格納されています。Blob Storage から直接コンテンツを取り込んだり、エンコードしたり、Blob Storage にコンテンツを書き戻したりする処理に関連するワークフローの例が紹介されています。 また、webhook と Azure キューを介してジョブの通知を監視するサンプルも含まれています。 さらに、[Media Services Azure Functions](https://github.com/Azure-Samples/media-services-dotnet-functions-integration) リポジトリの例に基づいて関数をデプロイすることもできます。 関数をデプロイするには、 **[Azure に配置する]** を押します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -58,9 +58,9 @@ Media Services の関数を開発するときは、自分が開発するさま�
 
 ## <a name="create-a-function"></a>関数を作成する
 
-デプロイした関数アプリは、**[App Services]** の Azure Functions に表示されます。
+デプロイした関数アプリは、 **[App Services]** の Azure Functions に表示されます。
 
-1. 目的の関数アプリを選択し、**[新しい関数]** をクリックします。
+1. 目的の関数アプリを選択し、 **[新しい関数]** をクリックします。
 2. **C#** 言語と**データ処理**シナリオを選択します。
 3. **BlobTrigger** テンプレートを選択します。 BLOB を **input** コンテナーにアップロードするたびに、この関数はトリガーされます。 **input** 名は、次の手順の **Path** で指定されます。
 
@@ -135,7 +135,7 @@ project.json ファイルには、依存関係が含まれています。 以下
 
 現実のシナリオでは、ほとんどの場合、ジョブの進行状況を追跡し、エンコードされた資産を発行します。 詳細については、[Azure WebHook を使用して Media Services ジョブ通知を監視する](media-services-dotnet-check-job-progress-with-webhooks.md)に関する記事を参照してください。 例については、「[Media Services Azure Functions](https://github.com/Azure-Samples/media-services-dotnet-functions-integration)」を参照してください。  
 
-既存の run.csx ファイルの内容を次のコードで置き換えます。必要な関数を定義したら、**[保存および実行]** をクリックします。
+既存の run.csx ファイルの内容を次のコードで置き換えます。必要な関数を定義したら、 **[保存および実行]** をクリックします。
 
 ```csharp
 #r "Microsoft.WindowsAzure.Storage"

@@ -16,11 +16,11 @@ ms.date: 10/14/2016
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: e0fa87facec73efdfff1a9908dcba92838215425
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56113381"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62130672"
 ---
 # <a name="network-configuration-details-for-app-service-environment-for-powerapps-with-azure-expressroute"></a>Azure ExpressRoute を使用した PowerApps 用の App Service Environment のネットワーク構成の詳細
 
@@ -95,7 +95,7 @@ DNS 要件を満たすには、仮想ネットワークに対して有効な DNS
 
 ### <a name="prerequisites"></a>前提条件
 
-* [Azure ダウンロード ページ][AzureDownloads]から Azure PowerShell をインストールします。 2015 年 6 月以降の日付のダウンロードを選択してください。 **[コマンド ライン ツール]** > **[Windows Powershell]** で、**[インストール]** を選択して最新の PowerShell コマンドレットをインストールします。
+* [Azure ダウンロード ページ][AzureDownloads]から Azure PowerShell をインストールします。 2015 年 6 月以降の日付のダウンロードを選択してください。 **[コマンド ライン ツール]**  >  **[Windows Powershell]** で、 **[インストール]** を選択して最新の PowerShell コマンドレットをインストールします。
 
 * App Service Environment が独占的に使用する一意のサブネットを作成します。 一意のサブネットにより、サブネットに適用される UDR で、App Service Environment 用の発信トラフィックのみが開くことが保証されます。
 
@@ -116,7 +116,7 @@ DNS 要件を満たすには、仮想ネットワークに対して有効な DNS
 
 `Get-AzureRouteTable -Name 'DirectInternetRouteTable' | Set-AzureRoute -RouteName 'Direct Internet Range 0' -AddressPrefix 0.0.0.0/0 -NextHopType Internet`
 
-0.0.0.0/0 は広いアドレス範囲です。 この範囲は、より具体的な ExpressRoute からアドバタイズされたアドレス範囲によってオーバーライドされます。 0.0.0.0/0 ルートの UDR は、0.0.0.0/0 のみをアドバタイズする ExressRoute 構成と組み合わせて使用する必要があります。 
+0.0.0.0/0 は広いアドレス範囲です。 この範囲は、より具体的な ExpressRoute からアドバタイズされたアドレス範囲によってオーバーライドされます。 0\.0.0.0/0 ルートの UDR は、0.0.0.0/0 のみをアドバタイズする ExressRoute 構成と組み合わせて使用する必要があります。 
 
 または、Azure で使用されている CIDR 範囲の最新の全一覧をダウンロードしてください。 すべての Azure IP アドレス範囲の XML ファイルは、[Microsoft ダウンロード センター][DownloadCenterAddressRanges]で入手できます。  
 
