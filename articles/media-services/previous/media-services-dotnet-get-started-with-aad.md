@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: ecb704253597bf4eb5672fe924a0dafc4c1b3fd1
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64726525"
 ---
 # <a name="use-azure-ad-authentication-to-access-azure-media-services-api-with-net"></a>.NET で Azure AD Authentication を使用して Azure Media Services API にアクセスする
@@ -60,7 +60,7 @@ Azure Media Service .NET SDK を使用しない場合は、[Azure AD Authenticat
 1. Visual Studio で、新しい C# コンソール アプリケーションを作成します。
 2. NuGet パッケージ [windowsazure.mediaservices](https://www.nuget.org/packages/windowsazure.mediaservices) を使用して、**Azure Media Services .NET SDK** をインストールします。 
 
-    NuGet を使用して参照を追加するには、**ソリューション エクスプローラー**で、プロジェクト名を右クリックし、**[NuGet パッケージの管理]** を選択します。 次に、**windowsazure.mediaservices** を検索し、**[インストール]** を選択します。
+    NuGet を使用して参照を追加するには、**ソリューション エクスプローラー**で、プロジェクト名を右クリックし、 **[NuGet パッケージの管理]** を選択します。 次に、**windowsazure.mediaservices** を検索し、 **[インストール]** を選択します。
     
     または
 
@@ -92,7 +92,7 @@ Azure Media Service .NET SDK を使用しない場合は、[Azure AD Authenticat
   
 Media Services に対するプログラミングを開始するには、サーバー コンテキストを表す **CloudMediaContext** インスタンスを作成する必要があります。 **CloudMediaContext** には、ジョブ、アセット、ファイル、アクセス ポリシー、ロケーターなどの重要なコレクションへの参照が含まれています。 
 
-**CloudMediaContext** コンストラクターに **Media REST Services のリソース URI** を渡す必要もあります。 Media REST Services のリソース URI を取得するには、Azure Portal にサインインして、Azure Media Services アカウントを選択し、**[API アクセス]** を選択してから **[Connect to Azure Media Services with user authentication]\(ユーザー認証を使用して Azure Media Services に接続する\)** を選択します。 
+**CloudMediaContext** コンストラクターに **Media REST Services のリソース URI** を渡す必要もあります。 Media REST Services のリソース URI を取得するには、Azure Portal にサインインして、Azure Media Services アカウントを選択し、 **[API アクセス]** を選択してから **[Connect to Azure Media Services with user authentication]\(ユーザー認証を使用して Azure Media Services に接続する\)** を選択します。 
 
 次のコード例では **CloudMediaContext** インスタンスを作成します。
 

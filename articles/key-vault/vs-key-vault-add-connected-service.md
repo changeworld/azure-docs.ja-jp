@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: ghogen
 ms.openlocfilehash: 154eaa577ea66056c301db9516b425931b81d24d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64730430"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Visual Studio 接続済みサービスを使用して Web アプリケーションに Key Vault を追加する
@@ -27,14 +27,14 @@ ms.locfileid: "64730430"
 
 - **Azure サブスクリプション**。 このサブスクリプションがない場合は、 [無料アカウント](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
 - **Visual Studio 2019** または **Visual Studio 2017 バージョン 15.7** (**Web 開発**ワークロードもインストールされます)。 [こちら](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)でダウンロードできます。
-- ASP.NET (Core ではありません) と Visual Studio 2017 の組み合わせの場合、.NET Framework 4.7.1 以降の開発ツールが必要ですが、これは既定ではインストールされません。 インストールするには、Visual Studio インストーラーを起動し、**[変更]** を選択します。次に、**[個々 のコンポーネント]** を選択した後、右側にある **[ASP.NET と Web 開発]** を展開し、**[.NET Framework 4.7.1 開発ツール]** を選択します。
+- ASP.NET (Core ではありません) と Visual Studio 2017 の組み合わせの場合、.NET Framework 4.7.1 以降の開発ツールが必要ですが、これは既定ではインストールされません。 インストールするには、Visual Studio インストーラーを起動し、 **[変更]** を選択します。次に、 **[個々 のコンポーネント]** を選択した後、右側にある **[ASP.NET と Web 開発]** を展開し、 **[.NET Framework 4.7.1 開発ツール]** を選択します。
 - ASP.NET 4.7.1 以降または ASP.NET Core 2.0 Web プロジェクトが開きます。
 
 ## <a name="add-key-vault-support-to-your-project"></a>Key Vault のサポートをプロジェクトに追加する
 
-1. **ソリューション エクスプローラー**で、**[追加]** > **[接続済みサービス]** を選択します。
+1. **ソリューション エクスプローラー**で、 **[追加]**  >  **[接続済みサービス]** を選択します。
    [接続済みサービス] ページが開いて、プロジェクトに追加できるサービスが表示されます。
-1. 使用可能なサービスのメニューから、**[Secure Secrets With Azure Key Vault]\(Azure Key Vault でシークレットを保護する\)** を選択します。
+1. 使用可能なサービスのメニューから、 **[Secure Secrets With Azure Key Vault]\(Azure Key Vault でシークレットを保護する\)** を選択します。
 
    ![[Secure Secrets With Azure Key Vault]\(Azure Key Vault でシークレットを保護する\) を選択する](media/vs-key-vault-add-connected-service/KeyVaultConnectedService1.PNG)
 
@@ -52,19 +52,19 @@ ms.locfileid: "64730430"
 1. Key Vault を作成するリージョンを選択します。 Web アプリケーションが Azure でホストされる場合は、Web アプリケーションを最適なパフォーマンスでホストするリージョンを選択します。
 1. 価格レベルを選択します。 詳細については、「[Key Vault の価格](https://azure.microsoft.com/pricing/details/key-vault/)」を参照してください。
 1. [OK] を選択して、構成の選択を受け入れます。
-1. **[追加]** を選択して Key Vault を作成します。 既に使用されている名前を選択した場合、作成処理は失敗することがあります。  これが発生した場合は、**[編集]** リンクを使用して Key Vault の名前を変更し、もう一度やり直してください。
+1. **[追加]** を選択して Key Vault を作成します。 既に使用されている名前を選択した場合、作成処理は失敗することがあります。  これが発生した場合は、 **[編集]** リンクを使用して Key Vault の名前を変更し、もう一度やり直してください。
 
    ![接続済みサービスをプロジェクトに追加する](media/vs-key-vault-add-connected-service/KeyVaultConnectedService4.PNG)
 
-1. 次に、Azure 内の Key Vault にシークレットを追加します。 ポータルの適切な場所に移動するには、このキー コンテナーに格納される管理シークレット用のリンクをクリックします。 ページまたはプロジェクトが閉じている場合は、[Azure portal](https://portal.azure.com) で **[すべてのサービス]** を選択し、**[セキュリティ]** の下の **[Key Vault]** を選択します。次に、作成したキー コンテナーを選択することで、同じ場所に移動できます。
+1. 次に、Azure 内の Key Vault にシークレットを追加します。 ポータルの適切な場所に移動するには、このキー コンテナーに格納される管理シークレット用のリンクをクリックします。 ページまたはプロジェクトが閉じている場合は、[Azure portal](https://portal.azure.com) で **[すべてのサービス]** を選択し、 **[セキュリティ]** の下の **[Key Vault]** を選択します。次に、作成したキー コンテナーを選択することで、同じ場所に移動できます。
 
    ![ポータルに移動する](media/vs-key-vault-add-connected-service/manage-secrets-link.jpg)
 
-1. 作成したキー コンテナーの [Key Vault] セクションで、**[シークレット]**、**[生成/インポート]** の順に選択します。
+1. 作成したキー コンテナーの [Key Vault] セクションで、 **[シークレット]** 、 **[生成/インポート]** の順に選択します。
 
    ![シークレットを生成/インポートする](media/vs-key-vault-add-connected-service/generate-secrets.jpg)
 
-1. 「MySecret」などのシークレットを入力し、テストとして任意の文字列値を指定した後、**[作成]** ボタンを選択します。
+1. 「MySecret」などのシークレットを入力し、テストとして任意の文字列値を指定した後、 **[作成]** ボタンを選択します。
 
    ![シークレットの作成](media/vs-key-vault-add-connected-service/create-a-secret.jpg)
 
@@ -141,7 +141,7 @@ ms.locfileid: "64730430"
 
 1. ポータル上部にある検索ボックスにリソース グループの名前を入力します。 このクイック スタートで使用されているリソース グループが検索結果に表示されたら、それを選択します。
 2. **[リソース グループの削除]** を選択します。
-3. **[リソース グループ名を入力してください:]** ボックスにリソース グループの名前を入力し、**[削除]** を選択します。
+3. **[リソース グループ名を入力してください:]** ボックスにリソース グループの名前を入力し、 **[削除]** を選択します。
 
 ## <a name="how-your-aspnet-core-project-is-modified"></a>ASP.NET Core プロジェクトの変更
 

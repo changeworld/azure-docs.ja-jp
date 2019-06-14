@@ -13,11 +13,11 @@ ms.reviewer: sstein
 manager: craigg
 ms.date: 04/03/2019
 ms.openlocfilehash: ddb115370c62371e769ef98e0031f7e0379bafbf
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58916174"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61075499"
 ---
 # <a name="ports-beyond-1433-for-adonet-45"></a>ADO.NET 4.5 用の 1433 以外のポート
 
@@ -84,6 +84,6 @@ Azure クラウド境界内でクライアントを実行している場合、�
 * [TDS プロトコルのバージョンの一覧](http://www.freetds.org/userguide/tdshistory.htm)
 * [SQL Database の開発: 概要](sql-database-develop-overview.md)
 * [Azure SQL Database ファイアウォール](sql-database-firewall-configure.md)
-* [方法:SQL Database でファイアウォール設定を構成する](sql-database-configure-firewall-settings.md)
+* [方法: SQL Database でファイアウォール設定を構成する](sql-database-configure-firewall-settings.md)
 
 

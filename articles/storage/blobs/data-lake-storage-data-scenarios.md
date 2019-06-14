@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: normesta
 ms.openlocfilehash: c5b6287757f6b71cfd60687f463673f142db04d9
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64939291"
 ---
 # <a name="using-azure-data-lake-storage-gen2-for-big-data-requirements"></a>Data Lake Storage Gen2 を使用してビッグ データの要件に対応する
@@ -73,7 +73,7 @@ Storage Explorer または AzCopy を使用してファイル システムを作
 |Apache DistCp | ユーザー割り当てマネージド ID にロールを割り当てる | [Data Lake Storage Gen2 を使用する HDInsight クラスターの作成](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2) |
 |Azure Data Factory| ユーザー割り当てマネージド ID にロールを割り当てる<br>**or**<br> サービス プリンシパルにロールを割り当てる<br>**or**<br> ストレージ アカウント キーを使用する | [リンクされたサービスのプロパティ](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#linked-service-properties) |
 |Azure HDInsight| ユーザー割り当てマネージド ID にロールを割り当てる | [Data Lake Storage Gen2 を使用する HDInsight クラスターの作成](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2)|
-|Azure Databricks| サービス プリンシパルにロールを割り当てる | [方法:リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)|
+|Azure Databricks| サービス プリンシパルにロールを割り当てる | [方法: リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)|
 
 特定のファイルやフォルダーへのアクセス権を付与するには、次の記事をご覧ください。
 

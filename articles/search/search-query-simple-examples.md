@@ -11,10 +11,10 @@ ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: 0c47212e51725e7d4a173c441709dca739d4e357
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65024544"
 ---
 # <a name="query-examples-using-the-simple-search-syntax-in-azure-search"></a>Azure Search における "単純な" 検索構文を利用したクエリの例
@@ -55,7 +55,7 @@ URL は、次の要素から構成されます。
 
 ## <a name="send-your-first-query"></a>初めてクエリを送信する
 
-確認手順として、次の要求を GET に貼り付け、**[送信]** をクリックします。 結果は冗長な JSON ドキュメントとして返されます。 ドキュメント全体が返され、すべてのフィールドとすべての値を確認することができます。
+確認手順として、次の要求を GET に貼り付け、 **[送信]** をクリックします。 結果は冗長な JSON ドキュメントとして返されます。 ドキュメント全体が返され、すべてのフィールドとすべての値を確認することができます。
 
 次の URL を検証手順として REST クライアントに貼り付けて、ドキュメントの構造を表示します。
 
@@ -194,7 +194,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 ```
 
 > [!NOTE]
-> 検索アプリケーションでは値の範囲に対するファセットが一般に必要になります。 ファセット ナビゲーション構造に対するフィルターの作成に関する情報と例については、[*「ファセット ナビゲーションを実装する方法」の「範囲に基づくフィルター」*](search-faceted-navigation.md#filter-based-on-a-range)を参照してください。
+> 検索アプリケーションでは値の範囲に対するファセットが一般に必要になります。 ファセット ナビゲーション構造に対するフィルターの作成に関する情報と例については、[ *「ファセット ナビゲーションを実装する方法」の「範囲に基づくフィルター」* ](search-faceted-navigation.md#filter-based-on-a-range)を参照してください。
 
 ## <a name="example-5-geo-search"></a>例 5:地理空間検索
 
@@ -235,7 +235,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&search=fire department
 ```
 
-例 3: **`&search="fire department"`** は、82 件の結果を返します。 文字列を二重引用符で囲むと両方の用語に対して逐語的検索を実行することを表します。一致は、結合された用語で構成されるインデックス内のトークン化された用語で検出されます。 これが、**`search=+fire +department`** のような検索と同等でない理由です。 どちらの用語も必須ですが、これらは個別にスキャンされます。 
+例 3: **`&search="fire department"`** は、82 件の結果を返します。 文字列を二重引用符で囲むと両方の用語に対して逐語的検索を実行することを表します。一致は、結合された用語で構成されるインデックス内のトークン化された用語で検出されます。 これが、 **`search=+fire +department`** のような検索と同等でない理由です。 どちらの用語も必須ですが、これらは個別にスキャンされます。 
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&search="fire department"
@@ -262,7 +262,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 
 ## <a name="example-8-structuring-results"></a>例 8:結果の構造化
 
-いくつかのパラメーターは、検索結果に含まれるフィールド、各バッチで返されるドキュメントの数、および並べ替え順を制御します。 この例では、前の例のいくつかを再利用し、**$select** ステートメントと逐語検索基準を使用して結果を特定のフィールドに限定し、82 件の一致を返します 
+いくつかのパラメーターは、検索結果に含まれるフィールド、各バッチで返されるドキュメントの数、および並べ替え順を制御します。 この例では、前の例のいくつかを再利用し、 **$select** ステートメントと逐語検索基準を使用して結果を特定のフィールドに限定し、82 件の一致を返します 
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"
@@ -273,7 +273,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"&$orderby=civil_service_title
 ```
 
-結果のページングは、**$top** パラメーターを使用して実装できます。このケースでは、上位 5 つのドキュメントが返されます。
+結果のページングは、 **$top** パラメーターを使用して実装できます。このケースでは、上位 5 つのドキュメントが返されます。
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"&$orderby=civil_service_title&$top=5&$skip=0

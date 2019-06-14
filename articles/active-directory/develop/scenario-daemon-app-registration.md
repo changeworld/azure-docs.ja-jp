@@ -17,10 +17,10 @@ ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 79a355ab226e56a3dde1df5369deda5142d47848
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65080283"
 ---
 # <a name="daemon-app-that-calls-web-apis---app-registration"></a>Web API を呼び出すデーモン アプリ - アプリの登録
@@ -40,7 +40,7 @@ ms.locfileid: "65080283"
 
 ## <a name="api-permissions---app-permissions-and-admin-consent"></a>API のアクセス許可 - アプリのアクセス許可および管理者の同意
 
-デーモン アプリケーションでは、(委任されたアクセス許可ではなく) API に対するアプリケーションのアクセス許可のみを要求できます。 アプリケーション登録の「**API のアクセス許可**」ページで **[アクセス許可の追加]** を選択して API ファミリを選択した後に、**[アプリケーションのアクセス許可]** を選択して、該当のアクセス許可を選択します
+デーモン アプリケーションでは、(委任されたアクセス許可ではなく) API に対するアプリケーションのアクセス許可のみを要求できます。 アプリケーション登録の「**API のアクセス許可**」ページで **[アクセス許可の追加]** を選択して API ファミリを選択した後に、 **[アプリケーションのアクセス許可]** を選択して、該当のアクセス許可を選択します
 
 ![アプリのアクセス許可と管理者の同意](media/scenario-daemon-app/app-permissions-and-admin-consent.png)
 

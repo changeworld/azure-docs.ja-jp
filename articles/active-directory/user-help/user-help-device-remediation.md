@@ -15,11 +15,11 @@ ms.reviewer: jairoc
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a317680a39d4594aacdf84ccdf963bb84bfbf07b
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57452039"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60473805"
 ---
 # <a name="potential-reasons-for-the-you-cant-get-there-from-here-error-message"></a>「ここからアクセスすることはできません」というエラー メッセージを受け取る場合の考えられる理由
 組織内部の Web アプリやサービスにアクセスするとき、「**ここからアクセスすることはできません**」というエラー メッセージが出力されることがあります。 このメッセージは、デバイスが組織のリソースにアクセスできないようにするポリシーが組織で設定されていることを意味します。 最終的にはヘルプデスクに連絡してこの問題を解決してもらうことになりますが、まず最初に試すことができるいくつかの操作を以下に示します。
@@ -34,13 +34,13 @@ ms.locfileid: "57452039"
 ## <a name="make-sure-youre-using-a-supported-operating-system"></a>サポートされているオペレーティング システムを使用しているかどうかを確認する
 サポートされているオペレーティング システムのバージョンを実行しているかどうかを確認します。これには以下のバージョンが含まれます。
 
-- **Windows クライアント。**  Windows 7 以降。
+- **Windows クライアント。** Windows 7 以降。
 
-- **Windows Server。**  Windows Server 2008 R2 以降。
+- **Windows Server。** Windows Server 2008 R2 以降。
 
-- **MacOS。**  macOS X 以降
+- **MacOS。** macOS X 以降
 
-- **Android および iOS。**  Android および iOS モバイル オペレーティング システムの最新バージョン
+- **Android および iOS。** Android および iOS モバイル オペレーティング システムの最新バージョン
 
 この問題を解決するには、サポートされているオペレーティング システムをインストールして実行する必要があります。
 
@@ -58,7 +58,7 @@ ms.locfileid: "57452039"
 
 4. 職場または学校アカウントを使用してデバイスのロックを解除し、問題のあるアプリまたはサービスにもう一度アクセスしてみます。
 
-    「**ここからアクセスすることはできません**」エラー メッセージが再び表示される場合、**[詳細]** リンクを選択し、詳細情報をヘルプデスクに連絡してください。
+    「**ここからアクセスすることはできません**」エラー メッセージが再び表示される場合、 **[詳細]** リンクを選択し、詳細情報をヘルプデスクに連絡してください。
 
 ### <a name="to-join-your-device-to-your-network"></a>デバイスをネットワークに参加させる
 デバイスが組織のネットワークに参加していない場合は、次の 2 つのいずれかの操作を行います。

@@ -16,11 +16,11 @@ ms.date: 07/12/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: dfef1371b7ac61712c0f70efd48c0e791c4c729d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56162681"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60518269"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-runmyprocess"></a>チュートリアル:Azure Active Directory と RunMyProcess の統合
 
@@ -60,11 +60,11 @@ Azure AD への RunMyProcess の統合を構成するには、ギャラリーか
 
 **ギャラリーから RunMyProcess を追加するには、次の手順に従います。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。 
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。 
 
     ![Active Directory][1]
 
-1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+1. **[エンタープライズ アプリケーション]** に移動します。 次に、 **[すべてのアプリケーション]** に移動します。
 
     ![[アプリケーション]][2]
     
@@ -76,7 +76,7 @@ Azure AD への RunMyProcess の統合を構成するには、ギャラリーか
 
     ![Azure AD のテスト ユーザーの作成](./media/runmyprocess-tutorial/tutorial_runmyprocess_search.png)
 
-1. 結果パネルで **[RunMyProcess]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
+1. 結果パネルで **[RunMyProcess]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
 
     ![Azure AD のテスト ユーザーの作成](./media/runmyprocess-tutorial/tutorial_runmyprocess_addfromgallery.png)
 
@@ -101,11 +101,11 @@ RunMyProcess で Azure AD のシングル サインオンを構成してテス�
 
 **RunMyProcess で Azure AD シングル サインオンを構成するには、次の手順に従います。**
 
-1. Azure Portal の **RunMyProcess** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
+1. Azure Portal の **RunMyProcess** アプリケーション統合ページで、 **[シングル サインオン]** をクリックします。
 
     ![Configure single sign-on][4]
 
-1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+1. **[シングル サインオン]** ダイアログで、 **[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
     ![Configure single sign-on](./media/runmyprocess-tutorial/tutorial_runmyprocess_samlbase.png)
 
@@ -118,7 +118,7 @@ RunMyProcess で Azure AD のシングル サインオンを構成してテス�
     > [!NOTE] 
     > この値は実際のものではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[RunMyProcess クライアント サポート チーム](mailto:support@runmyprocess.com)に問い合わせてください。 
 
-1. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
+1. **[SAML 署名証明書]** セクションで、 **[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
 
     ![Configure single sign-on](./media/runmyprocess-tutorial/tutorial_runmyprocess_certificate.png) 
 
@@ -126,13 +126,13 @@ RunMyProcess で Azure AD のシングル サインオンを構成してテス�
 
     ![Configure single sign-on](./media/runmyprocess-tutorial/tutorial_general_400.png)
 
-1. **[RunMyProcess Configuration (RunMyProcess 構成)]** セクションで、**[Configure RunMyProcess (RunMyProcess を構成する)]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **クイック リファレンス セクション**から、**サインアウト URL と SAML シングル サインオン サービス URL** をコピーします。
+1. **[RunMyProcess Configuration (RunMyProcess 構成)]** セクションで、 **[Configure RunMyProcess (RunMyProcess を構成する)]** をクリックして、 **[サインオンの構成]** ウィンドウを開きます。 **クイック リファレンス セクション**から、**サインアウト URL と SAML シングル サインオン サービス URL** をコピーします。
 
     ![Configure single sign-on](./media/runmyprocess-tutorial/tutorial_runmyprocess_configure.png) 
 
 1. 別の Web ブラウザーのウィンドウで、管理者として RunMyProcess テナントにサインオンします。
 
-1. 左側のナビゲーション パネルで、**[Account (アカウント)]**、**[Configuration (構成)]** の順にクリックします。
+1. 左側のナビゲーション パネルで、 **[Account (アカウント)]** 、 **[Configuration (構成)]** の順にクリックします。
    
     ![アプリ側でのシングル サインオンの構成](./media/runmyprocess-tutorial/tutorial_runmyprocess_001.png)
 
@@ -140,20 +140,20 @@ RunMyProcess で Azure AD のシングル サインオンを構成してテス�
    
     ![アプリ側でのシングル サインオンの構成](./media/runmyprocess-tutorial/tutorial_runmyprocess_002.png)
 
-    a. **[Method]** として、**[SSO with Samlv2]** を選択します。 
+    a. **[Method]** として、 **[SSO with Samlv2]** を選択します。 
 
     b. **[SSO redirect (SSO リダイレクト)]** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
 
     c. **[Logout redirect (ログアウト リダイレクト)]** ボックスに、Azure Portal からコピーした **サインアウト URL** の値を貼り付けます。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[名前識別子形式]** ボックスで、**名前識別子形式**の値を「**urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress**」と入力します。
+    d. **[名前識別子形式]** ボックスで、**名前識別子形式**の値を「**urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress**」と入力します。
 
-    e. ダウンロードした証明書ファイルのコンテンツをコピーし、**[Certificate (証明書)]** ボックスに貼り付けます。 
+    e. ダウンロードした証明書ファイルのコンテンツをコピーし、 **[Certificate (証明書)]** ボックスに貼り付けます。 
  
     f. **[Save (保存)]** アイコンをクリックします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、 **[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -163,15 +163,15 @@ RunMyProcess で Azure AD のシングル サインオンを構成してテス�
 
 **Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
 
-1. **Azure Portal** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+1. **Azure Portal** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
     ![Azure AD のテスト ユーザーの作成](./media/runmyprocess-tutorial/create_aaduser_01.png) 
 
-1. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
+1. **[ユーザーとグループ]** に移動し、 **[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
     
     ![Azure AD のテスト ユーザーの作成](./media/runmyprocess-tutorial/create_aaduser_02.png) 
 
-1. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
+1. ダイアログの上部にある **[追加]** をクリックして、 **[ユーザー]** ダイアログを開きます。
  
     ![Azure AD のテスト ユーザーの作成](./media/runmyprocess-tutorial/create_aaduser_03.png) 
 
@@ -183,9 +183,9 @@ RunMyProcess で Azure AD のシングル サインオンを構成してテス�
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
-    c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
+    c. **[パスワードを表示]** を選択し、 **[パスワード]** の値をメモします。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
+    d. **Create** をクリックしてください。
  
 ### <a name="creating-a-runmyprocess-test-user"></a>RunMyProcess のテスト ユーザーの作成
 
@@ -195,7 +195,7 @@ Azure AD ユーザーが RunMyProcess にログインできるようにするに
 
 1. RunMyProcess 企業サイトに管理者としてログインします。
 
-1. 左側のナビゲーション パネルで **[Account (アカウント)]**、**[Users (ユーザー)]** の順にクリックし、**[New User (新しいユーザー)]** をクリックします。
+1. 左側のナビゲーション パネルで **[Account (アカウント)]** 、 **[Users (ユーザー)]** の順にクリックし、 **[New User (新しいユーザー)]** をクリックします。
    
     ![New User](./media/runmyprocess-tutorial/tutorial_runmyprocess_003.png "New User")
 
@@ -205,11 +205,11 @@ Azure AD ユーザーが RunMyProcess にログインできるようにするに
   
     a. プロビジョニングする有効な Azure AD アカウントの**名前**と**メール**を対応するボックスに入力します。 
 
-    b. **[IDE 言語]**、**[言語]**、**[プロファイル]** を選択します。 
+    b. **[IDE 言語]** 、 **[言語]** 、 **[プロファイル]** を選択します。 
 
     c. **[アカウント作成の電子メールを自分に送信]** を選択します。 
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Save]** をクリックします。
+    d. **[Save]** をクリックします。
    
     >[!NOTE]
     >他の RunMyProcess ユーザー アカウントの作成ツールまたは RunMyProcess から提供されている API を使用して、Azure Active Directory ユーザー アカウントをプロビジョニングできます。 
@@ -223,7 +223,7 @@ Azure AD ユーザーが RunMyProcess にログインできるようにするに
 
 **Britta Simon を RunMyProcess に割り当てるには、次の手順に従います。**
 
-1. Azure Portal でアプリケーション ビューを開き、ディレクトリ ビューに移動します。次に、**[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** をクリックします。
+1. Azure Portal でアプリケーション ビューを開き、ディレクトリ ビューに移動します。次に、 **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** をクリックします。
 
     ![ユーザーの割り当て][201] 
 
@@ -235,7 +235,7 @@ Azure AD ユーザーが RunMyProcess にログインできるようにするに
 
     ![ユーザーの割り当て][202] 
 
-1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[追加]** ボタンをクリックします。 次に、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![ユーザーの割り当て][203]
 

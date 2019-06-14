@@ -17,11 +17,11 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 11/16/2016
 ms.openlocfilehash: 8e91d0cd68997dee9bb00cceeaa6b697f6644ee5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58100957"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60736566"
 ---
 # <a name="azure-machine-learning-studio-rest-api-error-codes"></a>Azure Machine Learning Studio REST API のエラー コード
  
@@ -55,7 +55,7 @@ Azure Machine Learning Studio の Web サービスの操作で、次のエラー
 | InvalidBlobExtension | Blob の参照: {0} のファイル拡張子が無効か、見つかりません。 この出力の種類でサポートされているファイル拡張子は "{1}" です。 |
 | InvalidInputNames | 要求で指定されたサービスの入力名が無効です: {0}。 入力データを正しいサービスの入力にマップしてから、やり直してください。 |
 | InvalidOutputOverrideName | 出力のオーバーライドの名前が無効です: {0}。 サービスには、この名前の出力ノードがありません。 オーバーライドする正しい出力ノード名を渡してください (大文字と小文字が区別されます)。 |
-| InvalidQueryParameter | クエリ パラメーター '{0}' が無効です。 {1} |
+| InvalidQueryParameter | クエリ パラメーター '{0}' が無効です。 [https://login.microsoftonline.com/tfp/00000000-0000-0000-0000-000000000000/b2c_1a_tp_sign-up-or-sign-in/v2.0/]({1}) |
 | MissingInputBlobInformation | Azure Storage BLOB の情報が不足しています。 有効な接続文字列と相対パスまたは URI を指定してから、やり直してください。 |
 | MissingJobId | ジョブ ID が指定されていません。 初めてジョブを送信すると、ジョブ ID が返されます。 ジョブ ID が正しいことを確認してから、やり直してください。 |
 | MissingKeys | キーが指定されていないか、プライマリ キーとセカンダリ キーのいずれかが指定されていません。 |

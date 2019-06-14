@@ -8,11 +8,11 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.openlocfilehash: bc83b41067d587adce41658a2c4b3d68969750ba
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56729340"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61364462"
 ---
 # <a name="azure-data-factory-mapping-data-flow-select-transformation"></a>Azure Data Factory の Mapping Data Flow の選択変換
 

@@ -17,11 +17,11 @@ ms.date: 04/02/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 8240308b3e0955b1d4d3ef2e82cad215daf95b00
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59009370"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61482229"
 ---
 # <a name="azure-hana-large-instances-control-through-azure-portal"></a>Azure portal を介した Azure HANA L インスタンスの制御
 このドキュメントでは、[HANA Large Instances](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) が [Azure portal](https://portal.azure.com) で提供される方法、および自動的にデプロイされる HANA Large Instance ユニットについて Azure portal で実行できるアクティビティについて説明します。 Azure portal での HANA Large Instances の表示は、HANA Large Instances 用の Azure リソース プロバイダー (現在はパブリック プレビュー) によって提供されます

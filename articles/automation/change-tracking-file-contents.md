@@ -10,11 +10,11 @@ ms.date: 07/03/2018
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: dae0ea3e564a3dfafcd7f072f9b0d8854df17ed7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58074745"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61304342"
 ---
 # <a name="view-contents-of-a-file-that-is-being-tracked-with-change-tracking"></a>Change Tracking で追跡されているファイルのコンテンツを表示する
 
@@ -30,17 +30,17 @@ ms.locfileid: "58074745"
 
 ## <a name="enable-file-content-tracking"></a>ファイル コンテンツの追跡の有効化
 
-1. Azure portal で、Automation アカウントを開き、**[変更の追跡]** を選択します。
-2. 上部のメニューで、**[設定の編集]** を選択します。
-3. **[ファイル コンテンツ]** を選択し、**[リンク]** をクリックします。 これにより **[Change Tracking の対象となるコンテンツの場所を追加]** ウィンドウが開きます。
+1. Azure portal で、Automation アカウントを開き、 **[変更の追跡]** を選択します。
+2. 上部のメニューで、 **[設定の編集]** を選択します。
+3. **[ファイル コンテンツ]** を選択し、 **[リンク]** をクリックします。 これにより **[Change Tracking の対象となるコンテンツの場所を追加]** ウィンドウが開きます。
 
    ![enable](./media/change-tracking-file-contents/enable.png)
 
-4. サブスクリプションと、ファイル コンテンツを格納するために使用するストレージ アカウントを選択します。 既存の追跡対象ファイルすべてに対してファイル コンテンツの追跡を有効にする場合は、**[すべての設定のファイル コンテンツをアップロードする]** で **[オン]** を選択します。 これは後からファイル パスごとに変更することができます。
+4. サブスクリプションと、ファイル コンテンツを格納するために使用するストレージ アカウントを選択します。 既存の追跡対象ファイルすべてに対してファイル コンテンツの追跡を有効にする場合は、 **[すべての設定のファイル コンテンツをアップロードする]** で **[オン]** を選択します。 これは後からファイル パスごとに変更することができます。
 
    ![ストレージ アカウントの設定](./media/change-tracking-file-contents/storage-account.png)
 
-5. 有効にすると、ストレージ アカウントと SAS URI が表示されます。 SAS URI は 365 日後に有効期限切れになり、**[再生成]** ボタンをクリックして再作成することができます。
+5. 有効にすると、ストレージ アカウントと SAS URI が表示されます。 SAS URI は 365 日後に有効期限切れになり、 **[再生成]** ボタンをクリックして再作成することができます。
 
    ![アカウント キーの一覧表示](./media/change-tracking-file-contents/account-keys.png)
 
@@ -48,9 +48,9 @@ ms.locfileid: "58074745"
 
 次の手順では、ファイルの変更の追跡を有効化する手順を説明します。
 
-1. **Change Tracking** の **[設定の編集]** ページで、**[Windows ファイル]** または **[Linux ファイル]** のいずれかのタブを選択し、**[追加]** をクリックします。
+1. **Change Tracking** の **[設定の編集]** ページで、 **[Windows ファイル]** または **[Linux ファイル]** のいずれかのタブを選択し、 **[追加]** をクリックします。
 
-1. ファイル パスの情報を入力し、**[すべての設定のファイル コンテンツをアップロードする]** の下で **[True]** を選択します。 この設定は、そのファイル パスに対してのみファイル コンテンツの追跡を有効にします。
+1. ファイル パスの情報を入力し、 **[すべての設定のファイル コンテンツをアップロードする]** の下で **[True]** を選択します。 この設定は、そのファイル パスに対してのみファイル コンテンツの追跡を有効にします。
 
    ![Linux ファイルの追加](./media/change-tracking-file-contents/add-linux-file.png)
 

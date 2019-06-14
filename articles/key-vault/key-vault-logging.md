@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: barclayn
 ms.openlocfilehash: 89f9ef37ed7c53817854442b3a32b32b7d11ae27
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64706028"
 ---
 # <a name="azure-key-vault-logging"></a>Azure Key Vault のログ記録
@@ -96,7 +96,7 @@ $kv = Get-AzKeyVault -VaultName 'ContosoKeyVault'
 
 ## <a id="enable"></a>ログの有効化
 
-Key Vault のログ記録を有効にするために、**Set-AzDiagnosticSetting** コマンドレットを、新しいストレージ アカウントおよび Key Vault 用に作成した変数と組み合わせて使用します。 また、**-Enabled** フラグを **$true** に設定し、カテゴリを **AuditEvent** (Key Vault ログ記録の唯一のカテゴリ) に設定します。
+Key Vault のログ記録を有効にするために、**Set-AzDiagnosticSetting** コマンドレットを、新しいストレージ アカウントおよび Key Vault 用に作成した変数と組み合わせて使用します。 また、 **-Enabled** フラグを **$true** に設定し、カテゴリを **AuditEvent** (Key Vault ログ記録の唯一のカテゴリ) に設定します。
 
 ```powershell
 Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $true -Category AuditEvent
@@ -116,7 +116,7 @@ Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Ena
 
 この出力を見れば、ログ記録がキー コンテナーに対して有効になっていることと、ストレージ アカウントに情報が保存されることを確認できます。
 
-必要に応じて、ログのアイテム保持ポリシーを、古いログが自動的に削除されるように設定することができます。 たとえば、**-RetentionEnabled** フラグを **$true** に設定し、**-RetentionInDays** パラメーターを **90** に設定した保持ポリシーを設定すると、90 日より前のログが自動的に削除されます。
+必要に応じて、ログのアイテム保持ポリシーを、古いログが自動的に削除されるように設定することができます。 たとえば、 **-RetentionEnabled** フラグを **$true** に設定し、 **-RetentionInDays** パラメーターを **90** に設定した保持ポリシーを設定すると、90 日より前のログが自動的に削除されます。
 
 ```powershell
 Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $true -Category AuditEvent -RetentionEnabled $true -RetentionInDays 90
@@ -168,7 +168,7 @@ resourceId=/SUBSCRIPTIONS/361DA5D4-A47A-4C79-AFDD-XXXXXXXXXXXX/RESOURCEGROUPS/CO
 
 同じストレージ アカウントを使用して複数のリソースのログを収集することができるので、必要な BLOB のみにアクセスしたり、ダウンロードしたりする場合には、BLOB 名に完全なリソース ID を使用すると便利です。 その前に、すべての BLOB をダウンロードする方法を説明します。
 
-フォルダーを作成して BLOB をダウンロードします。 例: 
+フォルダーを作成して BLOB をダウンロードします。 例:
 
 ```powershell 
 New-Item -Path 'C:\Users\username\ContosoKeyVaultLogs' -ItemType Directory -Force
@@ -188,7 +188,7 @@ $blobs | Get-AzStorageBlobContent -Destination C:\Users\username\ContosoKeyVault
 
 この 2 番目のコマンドを実行すると、BLOB 名に含まれる **/** 区切り記号によって、宛先フォルダーの下にフォルダー構造全体が作成されます。 この構造は、BLOB をファイルとしてダウンロードし、保存するために使用します。
 
-BLOB を選択的にダウンロードするには、ワイルドカードを使用します。 例: 
+BLOB を選択的にダウンロードするには、ワイルドカードを使用します。 例:
 
 * 複数の Key Vault を持っている場合に、CONTOSOKEYVAULT3 という名前の Key Vault のみについてログをダウンロードするには、次のようにします。
 
@@ -264,7 +264,7 @@ Get-AzKeyVault -VaultName 'contosokeyvault'`
 | **identity** |REST API 要求に提示されたトークンからの ID です。 これは、通常、Azure PowerShell コマンドレットの実行結果として生じる要求の場合と同様に、"user"、"service principal"、または組み合わせ "user+appId" となります。 |
 | **properties** |操作によって異なる情報です (**operationName**)。 ほとんどの場合、このフィールドには、クライアント情報 (クライアントから渡されたユーザー エージェント文字列)、正確な REST API 要求 URI、および HTTP 状態コードが含まれます。 さらに、要求 (**KeyCreate** または **VaultGet** など) を行った結果としてオブジェクトが返される場合は、キーの URI ("id" として)、資格情報コンテナーの URI、またはシークレットの URI も含まれます。 |
 
-**operationName** フィールドの値は、*ObjectVerb* 形式となります。 例: 
+**operationName** フィールドの値は、*ObjectVerb* 形式となります。 例:
 
 * キー コンテナーに関するすべての操作は、`Vault<action>` 形式となります (`VaultGet` や `VaultCreate` など)。
 * キーに関するすべての操作は、`Key<action>` 形式となります (`KeySign` や `KeyList` など)。

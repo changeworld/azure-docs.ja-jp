@@ -11,10 +11,10 @@ ms.topic: article
 ms.assetid: a01e9ca9-816b-479e-ab11-4a984f10f62d
 ms.date: 01/27/2017
 ms.openlocfilehash: 871d6d2b2019372bd258f8909ed0feeeddac4af7
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64705690"
 ---
 # <a name="encode-x12-messages-in-azure-logic-apps-with-enterprise-integration-pack"></a>Enterprise Integration Pack を備えた Azure Logic Apps で X12 メッセージをエンコードする
@@ -52,7 +52,7 @@ Encode X12 Message コネクタでは、EDI およびパートナー固有のプ
     | 接続名 * |接続の任意の名前を入力します。 |
     | 統合アカウント * |統合アカウントの名前を入力します。 統合アカウントとロジック アプリが同じ Azure の場所にあることを確認してください。 |
 
-5.  完了したら、接続の詳細は次の例のようになります。 接続の作成を完了するには、**[作成]** を選択します。
+5.  完了したら、接続の詳細は次の例のようになります。 接続の作成を完了するには、 **[作成]** を選択します。
 
     ![integration account connection created](./media/logic-apps-enterprise-integration-x12-encode/x12encodeimage2.png)
 
@@ -62,7 +62,7 @@ Encode X12 Message コネクタでは、EDI およびパートナー固有のプ
 
 #### <a name="encode-x12-messages-by-agreement-name"></a>契約名に基づく X12 メッセージのエンコード
 
-契約名で X12 メッセージをエンコードすることを選択した場合は、**[X12 契約の名前]** リストを開き、既存の X12 契約を入力または選択します。 エンコードする XML メッセージを入力します。
+契約名で X12 メッセージをエンコードすることを選択した場合は、 **[X12 契約の名前]** リストを開き、既存の X12 契約を入力または選択します。 エンコードする XML メッセージを入力します。
 
 ![X12 契約名とエンコードする XML メッセージの入力](./media/logic-apps-enterprise-integration-x12-encode/x12encodeimage4.png)
 

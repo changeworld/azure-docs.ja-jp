@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: ambapat
 ms.openlocfilehash: f32146697be234a8a288ff991b1f7adf6e76dc7e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64724497"
 ---
 # <a name="change-a-key-vault-tenant-id-after-a-subscription-move"></a>サブスクリプション移行後のキー コンテナー テナント ID の変更
@@ -39,7 +39,7 @@ $vault.Properties.AccessPolicies = @()
 Set-AzResource -ResourceId $vaultResourceId -Properties $vault.Properties
 </pre>
 
-このコンテナーは移行前にテナント A にあったため、**$vault.Properties.TenantId** の元の値はテナント A です。一方、**(Get-AzContext).Tenant.TenantId** の値はテナント B になります。
+このコンテナーは移行前にテナント A にあったため、 **$vault.Properties.TenantId** の元の値はテナント A です。一方、 **(Get-AzContext).Tenant.TenantId** の値はテナント B になります。
 
 これで、コンテナーが正しいテナント ID に関連付けられ、古いアクセス ポリシー エントリが削除されたので、[Set-AzKeyVaultAccessPolicy](https://docs.microsoft.com/powershell/module/az.keyvault/Set-azKeyVaultAccessPolicy) で新しいアクセス ポリシー エントリを設定します。
 

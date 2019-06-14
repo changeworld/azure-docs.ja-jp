@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 11/28/2018
 ms.author: rkarlin
 ms.openlocfilehash: ec16e6daec099adbede625c5ec6fe6909059143b
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56116747"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60907002"
 ---
 # <a name="security-playbook-in-azure-security-center-preview"></a>Azure Security Center のセキュリティ プレイブック (プレビュー)
 このドキュメントは、Azure Security Center のセキュリティ プレイブックを使用して、セキュリティ関連の問題に対応する際に役立ちます。
@@ -34,15 +34,15 @@ ms.locfileid: "56116747"
 Security Center から新しいセキュリティ プレイブックを作成するには、次の手順に従います。
 
 1.  **[Security Center]** ダッシュボードを開きます。
-2.  左側のウィンドウで、**[Automation & Orchestration]\(オートメーションとオーケストレーション\)** セクションの **[Playbooks (Preview)]\(プレイブック (プレビュー)\)** をクリックします。
+2.  左側のウィンドウで、 **[Automation & Orchestration]\(オートメーションとオーケストレーション\)** セクションの **[Playbooks (Preview)]\(プレイブック (プレビュー)\)** をクリックします。
 
     ![ロジック アプリ](./media/security-center-playbooks/security-center-playbooks-fig17.png)
 
-3. **[Security Center - Playbooks (Preview)]\(Security Center - プレイブック (プレビュー)\)** ページで、**[追加]** ボタンをクリックします。
+3. **[Security Center - Playbooks (Preview)]\(Security Center - プレイブック (プレビュー)\)** ページで、 **[追加]** ボタンをクリックします。
 
     ![ロジック アプリを作成する](./media/security-center-playbooks/security-center-playbooks-fig2.png)
 
-4. **[ロジック アプリの作成]** ページで、新しいロジック アプリを作成するために要求された情報を入力し、**[作成]** ボタンをクリックします。 作成が完了すると、新しいプレイブックが一覧に表示されます。 表示されない場合は、**[更新]** ボタンをクリックしてください。 表示されたら、それをクリックしてこのプレイブックの編集を開始します。
+4. **[ロジック アプリの作成]** ページで、新しいロジック アプリを作成するために要求された情報を入力し、 **[作成]** ボタンをクリックします。 作成が完了すると、新しいプレイブックが一覧に表示されます。 表示されない場合は、 **[更新]** ボタンをクリックしてください。 表示されたら、それをクリックしてこのプレイブックの編集を開始します。
 
     ![ロジック アプリを作成する](./media/security-center-playbooks/security-center-playbooks-fig3.png)
 
@@ -50,7 +50,7 @@ Security Center から新しいセキュリティ プレイブックを作成す
 
     ![ロジック アプリ デザイナー](./media/security-center-playbooks/security-center-playbooks-fig4.png)
 
-6. **[すべてのコネクタとトリガーを検索する]** フィールドに「*Azure Security Center*」と入力し、**[Azure Security Center 通知への応答がトリガーされるとき]** を選択します。
+6. **[すべてのコネクタとトリガーを検索する]** フィールドに「*Azure Security Center*」と入力し、 **[Azure Security Center 通知への応答がトリガーされるとき]** を選択します。
 
     ![トリガー](./media/security-center-playbooks/security-center-playbooks-fig12.png)
 
@@ -72,7 +72,7 @@ Security Center から新しいセキュリティ プレイブックを作成す
 
     ![プレイブックを実行する](./media/security-center-playbooks/security-center-playbooks-fig7.png)
 
-5. [プレイブック] ページで、実行するプレイブックを選択し、**[実行]** ボタンをクリックします。 トリガーする前にプレイブックを表示するには、それをクリックすると、デザイナーが開きます。
+5. [プレイブック] ページで、実行するプレイブックを選択し、 **[実行]** ボタンをクリックします。 トリガーする前にプレイブックを表示するには、それをクリックすると、デザイナーが開きます。
 
     ![プレイブック](./media/security-center-playbooks/security-center-playbooks-fig13.png)
 

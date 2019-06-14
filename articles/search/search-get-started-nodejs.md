@@ -10,11 +10,11 @@ ms.date: 04/26/2017
 ms.author: jjed
 ms.custom: seodec2018
 ms.openlocfilehash: 1b37b3c52abd3750c3452a46bdf5b0c5954de4dd
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56005337"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61289205"
 ---
 # <a name="get-started-with-azure-search-in-nodejs"></a>Node.js での Azure Search の使用
 > [!div class="op_single_selector"]
@@ -45,7 +45,7 @@ ms.locfileid: "56005337"
 サービスを作成したら、ポータルに戻って URL または `api-key`を取得します。 Search サービスに接続するには、URL に加えて、呼び出しを認証するための `api-key` が必要になります。
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. ジャンプ バーで、**[Search サービス]** をクリックして、サブスクリプション用にプロビジョニングされたすべての Azure Search サービスの一覧を表示します。
+2. ジャンプ バーで、 **[Search サービス]** をクリックして、サブスクリプション用にプロビジョニングされたすべての Azure Search サービスの一覧を表示します。
 3. 使用するサービスを選択します。
 4. サービスのダッシュボードには、基本情報のタイルのほか、管理者キーにアクセスするためのキー アイコンが表示されます。
 5. サービスの URL、管理キー、クエリ キーをコピーします。 後で config.js ファイルに追加するときにこれら 3 つがすべて必要になります。
@@ -58,7 +58,7 @@ ms.locfileid: "56005337"
 
 以降のすべてのファイル変更および実行ステートメントは、このフォルダー内のファイルに対して行われます。
 
-## <a name="update-the-configjs-with-your-search-service-url-and-api-key"></a>config.js の更新  (Search サービスの URL と API キーを使用)
+## <a name="update-the-configjs-with-your-search-service-url-and-api-key"></a>config.js の更新 (Search サービスの URL と API キーを使用)
 先にコピーした URL と API キーを使用し、構成ファイルで URL、管理キー、クエリ キーを指定します。
 
 管理キーは、インデックスの作成または削除やドキュメントの読み込みなど、サービス操作に対する完全な制御を付与します。 これに対し、クエリ キーは読み取り専用の操作用であり、通常は、Azure Search に接続するクライアント アプリケーションによって使用されます。

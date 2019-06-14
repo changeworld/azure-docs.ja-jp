@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/09/2018
 ms.author: vashan
-ms.openlocfilehash: 31933b0297dd821340313df04b3f6eccd5865e13
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: d7341c40b8a130b81e61277daf306f7a900d24ec
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "40043608"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64704465"
 ---
 # <a name="virtual-machines-lifecycle-and-states"></a>仮想マシンのライフサイクルと状態
 
@@ -27,4 +27,4 @@ ms.locfileid: "40043608"
 
 ## <a name="next-steps"></a>次の手順
 
-VM の監視の詳細については、「[Azure で仮想マシンを監視する方法](monitor.md)」を参照してください。
+VM の監視について詳しくは、「[Azure で仮想マシンを監視する方法](monitor.md)」をご覧ください。

@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
 ms.openlocfilehash: a20c79acce8c9dc9051651a0473fd07b8e62f5de
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52960347"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62126904"
 ---
 # <a name="enable-offline-sync-for-your-android-mobile-app"></a>Android モバイル アプリのオフライン同期の有効化
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
@@ -86,7 +86,7 @@ Azure Mobile Apps を初めて使用する場合は、チュートリアル「 [
 2. *ToDo* 項目をいくつか追加するか、一部の項目を完了済みとしてマークします。 デバイスまたはシミュレーターを終了して (またはアプリケーションを強制的に閉じて)、再起動します。 変更はローカルの SQLite ストアに保持されているため、変更がデバイスに保存されたことを確認します。
 3. *SQL Server Management Studio* などの SQL ツール、または *Fiddler* や *Postman* などの REST クライアントを使用して、Azure *TodoItem* テーブルの内容を表示します。 新しい項目が、サーバーと*同期されていない*ことを確認します。
    
-       + Node.js バックエンドの場合は、[Azure Portal](https://portal.azure.com/)に移動し、Mobile App バックエンドで **[簡易テーブル]** > **、[TodoItem]** をクリックして、`TodoItem` テーブルの内容を表示します。
+       + Node.js バックエンドの場合は、[Azure Portal](https://portal.azure.com/)に移動し、Mobile App バックエンドで **[簡易テーブル]**  >  **、[TodoItem]** をクリックして、`TodoItem` テーブルの内容を表示します。
        + .NET バックエンドの場合は、*SQL Server Management Studio* などの SQL ツール、または *Fiddler* や *Postman* などの REST クライアントを使用して、テーブルの内容を表示します。
 4. デバイスまたはシミュレーターの WiFi を有効にします。 次に **[更新]** ボタンを押します。
 5. Azure ポータルで、もう一度 TodoItem のデータを参照します。 新しく変更した TodoItems が表示されます。

@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 03/05/2019
 ms.author: danlep
 ms.openlocfilehash: 4c0845b9cf5194ecbd0ab813997e17e070840f44
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58099901"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61331343"
 ---
 # <a name="azure-container-registry-webhook-reference"></a>Azure Container Registry webhook リファレンス
 
@@ -40,33 +40,33 @@ Azure Container Registry webhook の構成方法については、「[Azure Cont
 
 ### <a name="push-event-payload"></a>push イベントのペイロード
 
-|要素|type|説明|
+|要素|Type|説明|
 |-------------|----------|-----------|
-|`id`|String|webhook イベントの ID。|
+|`id`|string|webhook イベントの ID。|
 |`timestamp`|DateTime|webhook イベントがトリガーされた日時。|
-|`action`|String|webhook イベントをトリガーしたアクション。|
+|`action`|string|webhook イベントをトリガーしたアクション。|
 |[target](#target)|複合型|webhook イベントをトリガーしたイベントのターゲット。|
 |[request](#request)|複合型|webhook イベントを生成した要求。|
 
 ### <a name="target"></a>target
 
-|要素|type|説明|
+|要素|Type|説明|
 |------------------|----------|-----------|
-|`mediaType`|String|参照されているオブジェクトの MIME の種類。|
+|`mediaType`|string|参照されているオブジェクトの MIME の種類。|
 |`size`|Int32|コンテンツのバイト数。 length フィールドと同じです。|
-|`digest`|String|コンテンツのダイジェスト。Registry V2 HTTP API 仕様で定義されています。|
+|`digest`|string|コンテンツのダイジェスト。Registry V2 HTTP API 仕様で定義されています。|
 |`length`|Int32|コンテンツのバイト数。 size フィールドと同じです。|
-|`repository`|String|リポジトリの名前。|
-|`tag`|String|イメージ タグの名前。|
+|`repository`|string|リポジトリの名前。|
+|`tag`|string|イメージ タグの名前。|
 
 ### <a name="request"></a>request
 
-|要素|type|説明|
+|要素|Type|説明|
 |------------------|----------|-----------|
-|`id`|String|イベントを開始した要求の ID。|
-|`host`|String|レジストリ インスタンスの外部からアクセス可能なホスト名。受信した要求の HTTP ホスト ヘッダーで指定されています。|
-|`method`|String|イベントを生成した要求メソッド。|
-|`useragent`|String|要求のユーザー エージェント ヘッダー。|
+|`id`|string|イベントを開始した要求の ID。|
+|`host`|string|レジストリ インスタンスの外部からアクセス可能なホスト名。受信した要求の HTTP ホスト ヘッダーで指定されています。|
+|`method`|string|イベントを生成した要求メソッド。|
+|`useragent`|string|要求のユーザー エージェント ヘッダー。|
 
 ### <a name="payload-example-image-push-event"></a>ペイロードの例: イメージの push イベント
 
@@ -104,24 +104,24 @@ Helm chart がリポジトリにプッシュされるとトリガーされる We
 
 ### <a name="chart-push-event-payload"></a>chart の push イベントのペイロード
 
-|要素|type|説明|
+|要素|Type|説明|
 |-------------|----------|-----------|
-|`id`|String|webhook イベントの ID。|
+|`id`|string|webhook イベントの ID。|
 |`timestamp`|DateTime|webhook イベントがトリガーされた日時。|
-|`action`|String|webhook イベントをトリガーしたアクション。|
+|`action`|string|webhook イベントをトリガーしたアクション。|
 |[target](#helm_target)|複合型|webhook イベントをトリガーしたイベントのターゲット。|
 
 ### <a name="helm_target"></a>target
 
-|要素|type|説明|
+|要素|Type|説明|
 |------------------|----------|-----------|
-|`mediaType`|String|参照されているオブジェクトの MIME の種類。|
+|`mediaType`|string|参照されているオブジェクトの MIME の種類。|
 |`size`|Int32|コンテンツのバイト数。|
-|`digest`|String|コンテンツのダイジェスト。Registry V2 HTTP API 仕様で定義されています。|
-|`repository`|String|リポジトリの名前。|
-|`tag`|String|chart のタグ名。|
-|`name`|String|chart の名前。|
-|`version`|String|chart のバージョン。|
+|`digest`|string|コンテンツのダイジェスト。Registry V2 HTTP API 仕様で定義されています。|
+|`repository`|string|リポジトリの名前。|
+|`tag`|string|chart のタグ名。|
+|`name`|string|chart の名前。|
+|`version`|string|chart のバージョン。|
 
 ### <a name="payload-example-chart-push-event"></a>ペイロードの例: chart の push イベント
 
@@ -154,30 +154,30 @@ az acr helm push wordpress-5.4.0.tgz --name MyRegistry
 
 ### <a name="delete-event-payload"></a>delete イベントのペイロード
 
-|要素|type|説明|
+|要素|Type|説明|
 |-------------|----------|-----------|
-|`id`|String|webhook イベントの ID。|
+|`id`|string|webhook イベントの ID。|
 |`timestamp`|DateTime|webhook イベントがトリガーされた日時。|
-|`action`|String|webhook イベントをトリガーしたアクション。|
+|`action`|string|webhook イベントをトリガーしたアクション。|
 |[target](#delete_target)|複合型|webhook イベントをトリガーしたイベントのターゲット。|
 |[request](#delete_request)|複合型|webhook イベントを生成した要求。|
 
 ### <a name="delete_target"></a> target
 
-|要素|type|説明|
+|要素|Type|説明|
 |------------------|----------|-----------|
-|`mediaType`|String|参照されているオブジェクトの MIME の種類。|
-|`digest`|String|コンテンツのダイジェスト。Registry V2 HTTP API 仕様で定義されています。|
-|`repository`|String|リポジトリの名前。|
+|`mediaType`|string|参照されているオブジェクトの MIME の種類。|
+|`digest`|string|コンテンツのダイジェスト。Registry V2 HTTP API 仕様で定義されています。|
+|`repository`|string|リポジトリの名前。|
 
 ### <a name="delete_request"></a> request
 
-|要素|type|説明|
+|要素|Type|説明|
 |------------------|----------|-----------|
-|`id`|String|イベントを開始した要求の ID。|
-|`host`|String|レジストリ インスタンスの外部からアクセス可能なホスト名。受信した要求の HTTP ホスト ヘッダーで指定されています。|
-|`method`|String|イベントを生成した要求メソッド。|
-|`useragent`|String|要求のユーザー エージェント ヘッダー。|
+|`id`|string|イベントを開始した要求の ID。|
+|`host`|string|レジストリ インスタンスの外部からアクセス可能なホスト名。受信した要求の HTTP ホスト ヘッダーで指定されています。|
+|`method`|string|イベントを生成した要求メソッド。|
+|`useragent`|string|要求のユーザー エージェント ヘッダー。|
 
 ### <a name="payload-example-image-delete-event"></a>ペイロードの例: イメージの delete イベント
 
@@ -216,24 +216,24 @@ Helm chart またはリポジトリが削除されるとトリガーされる We
 
 ### <a name="chart-delete-event-payload"></a>chart の delete イベントのペイロード
 
-|要素|type|説明|
+|要素|Type|説明|
 |-------------|----------|-----------|
-|`id`|String|webhook イベントの ID。|
+|`id`|string|webhook イベントの ID。|
 |`timestamp`|DateTime|webhook イベントがトリガーされた日時。|
-|`action`|String|webhook イベントをトリガーしたアクション。|
+|`action`|string|webhook イベントをトリガーしたアクション。|
 |[target](#chart_delete_target)|複合型|webhook イベントをトリガーしたイベントのターゲット。|
 
 ### <a name="chart_delete_target"></a> target
 
-|要素|type|説明|
+|要素|Type|説明|
 |------------------|----------|-----------|
-|`mediaType`|String|参照されているオブジェクトの MIME の種類。|
+|`mediaType`|string|参照されているオブジェクトの MIME の種類。|
 |`size`|Int32|コンテンツのバイト数。|
-|`digest`|String|コンテンツのダイジェスト。Registry V2 HTTP API 仕様で定義されています。|
-|`repository`|String|リポジトリの名前。|
-|`tag`|String|chart のタグ名。|
-|`name`|String|chart の名前。|
-|`version`|String|chart のバージョン。|
+|`digest`|string|コンテンツのダイジェスト。Registry V2 HTTP API 仕様で定義されています。|
+|`repository`|string|リポジトリの名前。|
+|`tag`|string|chart のタグ名。|
+|`name`|string|chart の名前。|
+|`version`|string|chart のバージョン。|
 
 ### <a name="payload-example-chart-delete-event"></a>ペイロードの例: chart の delete イベント
 

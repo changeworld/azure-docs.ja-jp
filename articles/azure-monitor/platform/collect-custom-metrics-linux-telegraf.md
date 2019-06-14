@@ -9,11 +9,11 @@ ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
 ms.openlocfilehash: 14415b88cd6036642442ef9ae23e8dee301bb908
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57775613"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60741557"
 ---
 # <a name="collect-custom-metrics-for-a-linux-vm-with-the-influxdata-telegraf-agent"></a>Linux VM のカスタム メトリックを InfluxData Telegraf エージェントを使用して収集する
 
@@ -33,9 +33,9 @@ Azure Monitor を使用すると、アプリケーション テレメトリ、Az
 
 新しい Linux VM を作成するには、次の手順を実行します。 
 
-1. 左側のナビゲーション ウィンドウで  **[リソースの作成]**  オプションを選択します。 
+1. 左側のナビゲーション ウィンドウで  **[リソースの作成]**   オプションを選択します。 
 1. 「**仮想マシン**」を検索します。  
-1. **[Ubuntu 16.04 LTS]** を選択し、**[作成]** を選択します。 
+1. **[Ubuntu 16.04 LTS]** を選択し、 **[作成]** を選択します。 
 1. VM 名 ( **MyTelegrafVM** など) を指定します。  
 1. ディスクの種類を **SSD** のままにしておきます。  **azureuser** のように、**ユーザー名**を指定します。 
 1.  **[認証の種類]** で  **[パスワード]** を選択します。 次に、この VM への SSH に後から使用する予定のパスワードを入力します。 
@@ -43,27 +43,27 @@ Azure Monitor を使用すると、アプリケーション テレメトリ、Az
 
     ![Ubuntu VM を作成する](./media/collect-custom-metrics-linux-telegraf/create-vm.png)
 
-1. VM のサイズを選択します。  **[コンピューティングの種類]**  や  **[ディスクの種類]** などで、フィルター処理できます。 
+1. VM のサイズを選択します。  **[コンピューティングの種類]**   や  **[ディスクの種類]** などで、フィルター処理できます。 
 
     ![Telegraph エージェントの概要の仮想マシンのサイズ](./media/collect-custom-metrics-linux-telegraf/vm-size.png)
 
-1.  **[設定]**  ページの  **[ネットワーク]** > **[ネットワーク セキュリティ グループ]** > **[Select public inbound ports]\(パブリック受信ポートの選択)** を選択し、 **[HTTP]** と  **[SSH (22)]** を選択します。 残りの部分は既定値のままにし、 **[OK]** を選択します。 
+1.  **[設定]**   ページの  **[ネットワーク]**  > **[ネットワーク セキュリティ グループ]**  > **[Select public inbound ports]\(パブリック受信ポートの選択)** を選択し、 **[HTTP]**  と  **[SSH (22)]** を選択します。 残りの部分は既定値のままにし、 **[OK]** を選択します。 
 
-1. 概要ページで、 **[作成]**  を選択して、VM のデプロイを開始します。 
+1. 概要ページで、 **[作成]**   を選択して、VM のデプロイを開始します。 
 
 1. 対応する VM が、Azure portal のダッシュボードにピン留めされます。 デプロイが完了すると、VM の概要が自動的に表示されます。 
 
-1. [VM] ウィンドウで、**[ID]** タブに移動します。お使いの VM で、システム割り当て ID が **[オン]** に設定されていることを確認します。 
+1. [VM] ウィンドウで、 **[ID]** タブに移動します。お使いの VM で、システム割り当て ID が **[オン]** に設定されていることを確認します。 
  
     ![Telegraf VM の ID プレビュー](./media/collect-custom-metrics-linux-telegraf/connect-to-VM.png)
  
 ## <a name="connect-to-the-vm"></a>VM に接続します 
 
-VM との SSH 接続を作成します。 VM の概要ページの  **[接続]**  ボタンを選択します。 
+VM との SSH 接続を作成します。 VM の概要ページの  **[接続]**   ボタンを選択します。 
 
 ![Telegraf VM の概要ページ](./media/collect-custom-metrics-linux-telegraf/connect-VM-button2.png)
 
- **[Connect to virtual machine]\(仮想マシンへの接続\)**  ページで、ポート 22 を介して DNS 名で接続する既定のオプションをそのまま使用します。  **[VM ローカル アカウントを使用してログインする]** に、接続コマンドが表示されます。 ボタンをクリックして、このコマンドをコピーします。 SSH 接続コマンドの例を次に示します。 
+ **[Connect to virtual machine]\(仮想マシンへの接続\)**   ページで、ポート 22 を介して DNS 名で接続する既定のオプションをそのまま使用します。  **[VM ローカル アカウントを使用してログインする]** に、接続コマンドが表示されます。 ボタンをクリックして、このコマンドをコピーします。 SSH 接続コマンドの例を次に示します。 
 
 ```cmd
 ssh azureuser@XXXX.XX.XXX 
@@ -108,7 +108,7 @@ sudo systemctl start telegraf
 
 1. [Azure Portal](https://portal.azure.com)を開きます。 
 
-1. 新しい  **[モニター]**  タブに移動します。  **[メトリック]** を選択します。  
+1. 新しい  **[モニター]**   タブに移動します。  **[メトリック]** を選択します。  
 
      ![[モニター] - [メトリック] (プレビュー)](./media/collect-custom-metrics-linux-telegraf/metrics.png)
 
@@ -116,7 +116,7 @@ sudo systemctl start telegraf
 
      ![メトリック グラフ](./media/collect-custom-metrics-linux-telegraf/metric-chart.png)
 
-1. **[Telegraf/CPU]** 名前空間を選択し、**[usage_system]** メトリックを選択します。 このメトリックをディメンションによってフィルター処理したり、分割したりすることを選択できます。  
+1. **[Telegraf/CPU]** 名前空間を選択し、 **[usage_system]** メトリックを選択します。 このメトリックをディメンションによってフィルター処理したり、分割したりすることを選択できます。  
 
      ![名前空間とメトリックを選択する](./media/collect-custom-metrics-linux-telegraf/VM-resource-selector.png)
 

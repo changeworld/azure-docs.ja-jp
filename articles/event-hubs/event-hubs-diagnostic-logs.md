@@ -17,24 +17,24 @@ ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
 ms.openlocfilehash: c8f2dba8ff30ceae4085d96640623a01b6784b1e
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56957523"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60822338"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>Azure イベント ハブの診断ログを設定する
 
 Azure Event Hubs の 2 種類のログを表示できます。
 
-* **[アクティビティ ログ](../azure-monitor/platform/activity-logs-overview.md)**: これらのログには、ジョブで実行された操作に関する情報が含まれます。 このログは常に有効になっています。
-* **[診断ログ](../azure-monitor/platform/diagnostic-logs-overview.md)**: 診断ログを構成することで、ジョブで発生するすべてのイベントについて、より深く考察できます。 診断ログは、ジョブが作成されたときからジョブが削除されるまでのアクティビティを記録します。ジョブの実行中に発生した更新やアクティビティも含まれます。
+* **[アクティビティ ログ](../azure-monitor/platform/activity-logs-overview.md)** : これらのログには、ジョブで実行された操作に関する情報が含まれます。 このログは常に有効になっています。
+* **[診断ログ](../azure-monitor/platform/diagnostic-logs-overview.md)** : 診断ログを構成することで、ジョブで発生するすべてのイベントについて、より深く考察できます。 診断ログは、ジョブが作成されたときからジョブが削除されるまでのアクティビティを記録します。ジョブの実行中に発生した更新やアクティビティも含まれます。
 
-## <a name="enable-diagnostic-logs"></a>Azure App Service の Web アプリの診断ログの有効化
+## <a name="enable-diagnostic-logs"></a>Traffic Manager で診断ログを有効にする
 
 既定では、診断ログは無効になっています。 診断ログを有効にするには、次の手順を実行します。
 
-1.  [Azure ポータル](https://portal.azure.com)の **[監視 + 管理]** で、**[診断ログ]** をクリックします。
+1.  [Azure ポータル](https://portal.azure.com)の **[監視 + 管理]** で、 **[診断ログ]** をクリックします。
 
     ![ウィンドウで診断ログに移動する](./media/event-hubs-diagnostic-logs/image1.png)
 
@@ -44,7 +44,7 @@ Azure Event Hubs の 2 種類のログを表示できます。
 
     ![診断ログを有効にする](./media/event-hubs-diagnostic-logs/image2.png)
 
-4.  **[状態]** で、**[オン]** をクリックします。
+4.  **[状態]** で、 **[オン]** をクリックします。
 
     ![診断ログの状態を変更する](./media/event-hubs-diagnostic-logs/image3.png)
 

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
 ms.openlocfilehash: dd808a04dff77388248bf7309f5ff804e6dd065c
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54447754"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60873088"
 ---
 # <a name="azure-notification-hubs-rich-push"></a>Azure Notification Hubs のリッチなプッシュ
 
@@ -135,14 +135,14 @@ ms.locfileid: "54447754"
     }
     ```
 8. 次に、このアプリを Azure の Web サイトにもう一度デプロイして、すべてのデバイスからアクセスできるようにします。 **AppBackend** プロジェクトを右クリックして **[発行]** を選択します。
-9. 発行先として Azure の Web サイトを選択します。 Azure アカウントでログインし、既存または新規の Web サイトを選択します。**[接続]** タブの **[宛先 URL]** プロパティをメモしておきます。後で、この URL を *バックエンド エンドポイント* として参照します。 **[発行]** をクリックします。
+9. 発行先として Azure の Web サイトを選択します。 Azure アカウントでログインし、既存または新規の Web サイトを選択します。 **[接続]** タブの **[宛先 URL]** プロパティをメモしておきます。後で、この URL を *バックエンド エンドポイント* として参照します。 **[発行]** をクリックします。
 
 ## <a name="modify-the-ios-project"></a>iOS プロジェクトを変更する
 
 アプリ バックエンドを通知の *ID* だけを送信するように変更したので、iOS アプリをその ID を処理してバックエンドからリッチ メッセージを取得するように変更します。
 
 1. iOS プロジェクトを開き、 **[Targets]** セクションのメイン アプリケーション ターゲットに移動して、リモート通知を有効にします。
-2. **[Capabilities]** をクリックし、**[Background Modes]** を [ON] にし、**[Remote Notifications]** チェックボックスをオンにします。
+2. **[Capabilities]** をクリックし、 **[Background Modes]** を [ON] にし、 **[Remote Notifications]** チェックボックスをオンにします。
 
     ![][IOS3]
 3. `Main.storyboard` を開き、[ユーザーへの通知](notification-hubs-aspnet-backend-ios-apple-apns-notification.md)に関するチュートリアルの View Controller (このチュートリアルでは Home View Controller) があることを確認します。

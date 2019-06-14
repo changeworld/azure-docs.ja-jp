@@ -10,10 +10,10 @@ ms.date: 07/13/2017
 ms.author: robb
 ms.subservice: diagnostic-extension
 ms.openlocfilehash: c5fc2199de8623dd3a9f2bc5faf23c7c40d67d75
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64922822"
 ---
 # <a name="streaming-azure-diagnostics-data-in-the-hot-path-by-using-event-hubs"></a>Event Hubs を利用してホット パスの Azure Diagnostics データをストリーム配信する
@@ -45,7 +45,7 @@ Azure Diagnostics からデータを受け取る Event Hubs は、Azure SDK 2.9 
 * 「[Event Hubs の使用](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)」に従ってプロビジョニングされた Event Hubs 名前空間
 
 ## <a name="connect-azure-diagnostics-to-event-hubs-sink"></a>Azure Diagnostics を Event Hubs シンクに接続する
-既定では、Azure Diagnostics では常に、ログとメトリックが Azure Storage アカウントに送信されます。 *.wadcfgx* ファイルの **PublicConfig**  / セクションの **WadCfg** 要素に新しい **Sinks** セクションを追加することで、アプリケーションでデータを Event Hubs に送信することもできます。 Visual Studio で、*.wadcfgx*ファイルは次のパスに格納されます。**[Cloud Service Project (クラウド サービス プロジェクト)]** > **[ロール]** > **[(ロール名)]** > **diagnostics.wadcfgx** ファイル。
+既定では、Azure Diagnostics では常に、ログとメトリックが Azure Storage アカウントに送信されます。 *.wadcfgx* ファイルの **PublicConfig**  / セクションの **WadCfg** 要素に新しい **Sinks** セクションを追加することで、アプリケーションでデータを Event Hubs に送信することもできます。 Visual Studio で、 *.wadcfgx*ファイルは次のパスに格納されます。 **[Cloud Service Project (クラウド サービス プロジェクト)]**  >  **[ロール]**  >  **[(ロール名)]**  > **diagnostics.wadcfgx** ファイル。
 
 ```xml
 <SinksConfig>
@@ -100,7 +100,7 @@ Event Hubs シンクは、 **.wadcfgx** 構成ファイルの *PrivateConfig* �
 }
 ```
 
-`SharedAccessKeyName` 値は、**Event Hubs** 名前空間に定義されている Shared Access Signature (SAS) のキーとポリシーに一致する必要があります。 [Azure Portal](https://portal.azure.com) の Event Hubs のダッシュボードに移動し、**[構成]** タブをクリックして、"*送信*" のアクセス許可を持つ名前付きのポリシー (たとえば、"SendRule") を設定します。 **StorageAccount** は **PrivateConfig** でも宣言されています。 正常に動作している場合、ここでは値を変更する必要はありません。 この例では、値を空のまま残しました。これはダウン ストリームの資産によって、値が設定されることを意味します。 たとえば、*ServiceConfiguration.Cloud.cscfg* 環境構成ファイルによって、環境に適した名前とキーが設定されます。  
+`SharedAccessKeyName` 値は、**Event Hubs** 名前空間に定義されている Shared Access Signature (SAS) のキーとポリシーに一致する必要があります。 [Azure Portal](https://portal.azure.com) の Event Hubs のダッシュボードに移動し、 **[構成]** タブをクリックして、"*送信*" のアクセス許可を持つ名前付きのポリシー (たとえば、"SendRule") を設定します。 **StorageAccount** は **PrivateConfig** でも宣言されています。 正常に動作している場合、ここでは値を変更する必要はありません。 この例では、値を空のまま残しました。これはダウン ストリームの資産によって、値が設定されることを意味します。 たとえば、*ServiceConfiguration.Cloud.cscfg* 環境構成ファイルによって、環境に適した名前とキーが設定されます。  
 
 > [!WARNING]
 > Event Hubs の SAS キーは、 *.wadcfgx* ファイルにプレーン テキストで保存されます。 多くの場合、このキーは、ソース コード管理にチェックインされるか、ビルド サーバーの資産として利用されるため、適切に保護する必要があります。 ここでは、悪意のあるユーザーがイベント ハブに書き込むことはできても、リッスンしたり操作したりすることはできないように、 *"送信のみ"* のアクセス許可を持つ SAS キーを使用することが推奨されます。
@@ -202,7 +202,7 @@ Event Hubs シンクは、 **.wadcfgx** 構成ファイルの *PrivateConfig* �
 この例では、シンクはログに適用され、エラー レベル トレースのみを対象にフィルター処理されます。
 
 ## <a name="deploy-and-update-a-cloud-services-application-and-diagnostics-config"></a>Cloud Services アプリケーションと診断構成をデプロイして更新する
-Visual Studio には、アプリケーションと Event Hubs シンク構成をデプロイするための最も簡単な方法が用意されています。 構成ファイルを表示して編集するには、Visual Studio で *.wadcfgx* ファイルを開き、編集して保存します。 ファイルのパスは、**[Cloud Service Project (クラウド サービス プロジェクト)]** > **[ロール]** > **[(ロール名)]** > **diagnostics.wadcfgx** です。  
+Visual Studio には、アプリケーションと Event Hubs シンク構成をデプロイするための最も簡単な方法が用意されています。 構成ファイルを表示して編集するには、Visual Studio で *.wadcfgx* ファイルを開き、編集して保存します。 ファイルのパスは、 **[Cloud Service Project (クラウド サービス プロジェクト)]**  >  **[ロール]**  >  **[(ロール名)]**  > **diagnostics.wadcfgx** です。  
 
 現時点では、Visual Studio、Visual Studio Team System、MSBuild に基づき **/t:publish target** を使用するすべてのコマンドまたはスクリプトにおいて、すべてのデプロイとデプロイ更新アクションのパッケージ化プロセスに *.wadcfgx* が含まれます。 さらに、デプロイと更新では、VM 上で適切な Azure Diagnostics エージェント拡張機能を使用してファイルを Azure にデプロイします。
 

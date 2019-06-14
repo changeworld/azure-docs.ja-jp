@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.service: service-fabric-mesh
 manager: chakdan
 ms.openlocfilehash: db8c68bf5f9aeb8069044c1344be9f69e498b1b7
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57780884"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60419562"
 ---
 # <a name="find-service-fabric-mesh-samples"></a>Service Fabric Mesh のサンプル
 

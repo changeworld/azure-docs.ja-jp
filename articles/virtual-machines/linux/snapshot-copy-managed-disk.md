@@ -15,10 +15,10 @@ ms.date: 07/11/2018
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: 9f2f3ac3668f0e48716fc30fb69cd1782dbd4e56
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64706977"
 ---
 # <a name="create-a-snapshot"></a>スナップショットの作成 
@@ -51,7 +51,7 @@ az snapshot create \
 ```
 
 > [!NOTE]
-> スナップショットをゾーン回復性のあるストレージに格納する場合は、[可用性ゾーン](../../availability-zones/az-overview.md)をサポートするリージョンにストレージを作成し、**--sku Standard_ZRS** パラメーターを含める必要があります。
+> スナップショットをゾーン回復性のあるストレージに格納する場合は、[可用性ゾーン](../../availability-zones/az-overview.md)をサポートするリージョンにストレージを作成し、 **--sku Standard_ZRS** パラメーターを含める必要があります。
 
 [az snapshot list](/cli/azure/snapshot#az-snapshot-list) を使用して、スナップショットの一覧を表示できます。
 
@@ -64,12 +64,12 @@ az snapshot list \
 ## <a name="use-azure-portal"></a>Azure Portal の使用 
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. 左上の **[リソースの作成]** をクリックし、**[スナップショット]** を探します。 検索結果から **[スナップショット]** を選択します。
+2. 左上の **[リソースの作成]** をクリックし、 **[スナップショット]** を探します。 検索結果から **[スナップショット]** を選択します。
 3. **[スナップショット]** ブレードで **[作成]** をクリックします。
 4. スナップショットの **[名前]** を入力します。
 5. 既存のリソース グループを選択するか、新しいリソース グループの名前を入力します。 
 7. **[ソース ディスク]** で、スナップショットを作成するマネージド ディスクを選びます。
-8. スナップショットの保存に使う **[アカウントの種類]** を選びます。 高パフォーマンスの SSD に保存する必要がある場合を除き、**[Standard HDD]** を使用します。
+8. スナップショットの保存に使う **[アカウントの種類]** を選びます。 高パフォーマンスの SSD に保存する必要がある場合を除き、 **[Standard HDD]** を使用します。
 9. **Create** をクリックしてください。
 
 

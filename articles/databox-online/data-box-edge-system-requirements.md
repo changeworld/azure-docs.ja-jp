@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 04/03/2019
 ms.author: alkohli
 ms.openlocfilehash: 90c60d586d505ca0c9bd787c37e137f7a38ee1f7
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59996749"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60756547"
 ---
 # <a name="azure-data-box-edge-system-requirements"></a>Azure Data Box Edge のシステム要件
 
@@ -120,7 +120,7 @@ Azure IoT Edge ランタイムをホストするサーバーのポート構成�
 
 ソリューションのパフォーマンスを理解して改良するために、以下を使用できます。
 
-- Azure portal で入手できるコンピューティング メトリック。 Data Box Edge リソースに移動し、**[監視] > [メトリック]** に移動します。 **[Edge コンピューティング - メモリ使用量]** と **[Edge コンピューティング - CPU の割合]** を調べて、使用できるリソースとリソースがどのように消費されているかを理解します。
+- Azure portal で入手できるコンピューティング メトリック。 Data Box Edge リソースに移動し、 **[監視] > [メトリック]** に移動します。 **[Edge コンピューティング - メモリ使用量]** と **[Edge コンピューティング - CPU の割合]** を調べて、使用できるリソースとリソースがどのように消費されているかを理解します。
 - デバイスの PowerShell インターフェイスから次のような監視コマンドを使用できます。
 
     - `dkr`: コンテナー リソースの使用状況統計のライブ ストリームを取得します。 このコマンドは、CPU、メモリ使用量、メモリの制限、およびネットワーク IO のメトリックをサポートします。

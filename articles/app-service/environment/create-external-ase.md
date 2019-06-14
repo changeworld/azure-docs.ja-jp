@@ -15,11 +15,11 @@ ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: eef13c5a4e3757b0eafd77c0915717175c2dbd8c
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59545418"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60769116"
 ---
 # <a name="create-an-external-app-service-environment"></a>外部 App Service Environment の作成
 
@@ -66,7 +66,7 @@ App Service プランは、アプリのコンテナーです。 App Service で�
 
 App Service プランを作成中に ASE を作成するには、次の手順を実行します。
 
-1. [Azure Portal](https://portal.azure.com/) で、**[リソースの作成]** > **[Web + モバイル]** > **[Web アプリ]** を選択します。
+1. [Azure Portal](https://portal.azure.com/) で、 **[リソースの作成]**  >  **[Web + モバイル]**  >  **[Web アプリ]** を選択します。
 
     ![Web アプリの作成][1]
 
@@ -76,13 +76,13 @@ App Service プランを作成中に ASE を作成するには、次の手順を
 
 4. お使いの OS (Windows、Linux、Docker) を選択します。 
 
-5. App Service プランを選択し、**[新規作成]** を選択します。 Linux Web アプリと Windows Web アプリを同じ App Service プランに追加することはできませんが、同じ App Service 環境に追加することはできます。 
+5. App Service プランを選択し、 **[新規作成]** を選択します。 Linux Web アプリと Windows Web アプリを同じ App Service プランに追加することはできませんが、同じ App Service 環境に追加することはできます。 
 
     ![新しい App Service プラン][2]
 
 6. **[場所]** ドロップダウン リストで、ASE を作成するリージョンを選択します。 既存の ASE を選択した場合、新しい ASE は作成されません。 選択した ASE に、App Service プランが作成されます。 
 
-7. **[価格レベル]** を選択し、**[分離]** 価格の SKU のいずれかを選択します。 **[分離]** SKU カードと ASE 以外の場所を選択すると、新しい ASE がその場所に作成されます。 ASE を作成するプロセスを開始するには、**[選択]** を選択します。 **[分離]** SKU は、ASE と組み合わせた場合にのみ使用できます。 また、ASE では、**[分離]** 以外の他の価格 SKU は使用できません。 
+7. **[価格レベル]** を選択し、 **[分離]** 価格の SKU のいずれかを選択します。 **[分離]** SKU カードと ASE 以外の場所を選択すると、新しい ASE がその場所に作成されます。 ASE を作成するプロセスを開始するには、 **[選択]** を選択します。 **[分離]** SKU は、ASE と組み合わせた場合にのみ使用できます。 また、ASE では、 **[分離]** 以外の他の価格 SKU は使用できません。 
 
     ![価格レベルの選択][3]
 
@@ -104,7 +104,7 @@ App Service プランを作成中に ASE を作成するには、次の手順を
 
 ## <a name="create-an-ase-and-a-linux-web-app-using-a-custom-docker-image-together"></a>カスタム Docker イメージを一緒に使用して ASE と Linux Web アプリを作成する
 
-1. [Azure Portal](https://portal.azure.com/) で、**[リソースの作成]** > **[Web + モバイル]** > **[Web App for Containers]** をクリックします。 
+1. [Azure Portal](https://portal.azure.com/) で、 **[リソースの作成]**  >  **[Web + モバイル]**  >  **[Web App for Containers]** をクリックします。 
 
     ![Web アプリの作成][7]
 
@@ -112,13 +112,13 @@ App Service プランを作成中に ASE を作成するには、次の手順を
 
 1. リソース グループを選択または作成します。 リソース グループを使用すると、関連する複数の Azure リソースを 1 つの単位として管理できます。 リソース グループは、アプリ用にロールベースのアクセス制御規則を作成する際にも便利です。 詳細については、「[Azure Resource Manager の概要][ARMOverview]」をご覧ください。
 
-1. App Service プランを選択し、**[新規作成]** を選択します。 Linux Web アプリと Windows Web アプリを同じ App Service プランに追加することはできませんが、同じ App Service 環境に追加することはできます。 
+1. App Service プランを選択し、 **[新規作成]** を選択します。 Linux Web アプリと Windows Web アプリを同じ App Service プランに追加することはできませんが、同じ App Service 環境に追加することはできます。 
 
     ![新しい App Service プラン][8]
 
 1. **[場所]** ドロップダウン リストで、ASE を作成するリージョンを選択します。 既存の ASE を選択した場合、新しい ASE は作成されません。 選択した ASE に、App Service プランが作成されます。 
 
-1. **[価格レベル]** を選択し、**[分離]** 価格の SKU のいずれかを選択します。 **[分離]** SKU カードと ASE 以外の場所を選択すると、新しい ASE がその場所に作成されます。 ASE を作成するプロセスを開始するには、**[選択]** を選択します。 **[分離]** SKU は、ASE と組み合わせた場合にのみ使用できます。 また、ASE では、**[分離]** 以外の他の価格 SKU は使用できません。 
+1. **[価格レベル]** を選択し、 **[分離]** 価格の SKU のいずれかを選択します。 **[分離]** SKU カードと ASE 以外の場所を選択すると、新しい ASE がその場所に作成されます。 ASE を作成するプロセスを開始するには、 **[選択]** を選択します。 **[分離]** SKU は、ASE と組み合わせた場合にのみ使用できます。 また、ASE では、 **[分離]** 以外の他の価格 SKU は使用できません。 
 
     ![価格レベルの選択][3]
 
@@ -148,7 +148,7 @@ App Service プランを作成中に ASE を作成するには、次の手順を
 
 ASE スタンドアロンを作成する場合、ASE には何も含まれません。 空の ASE でも、インフラストラクチャに対して月額料金が発生します。 以下の手順は、ILB を備えた ASE を作成するか、独自のリソース グループ内に ASE を作成する場合に行います。 ASE を作成した後は、通常のプロセスを使用してその中にアプリを作成できます。 場所として、新しい ASE を選択します。
 
-1. Azure Marketplace で **App Service Environment** を検索するか、**[リソースの作成]** > **[Web + モバイル]** > **[App Service Environment]** の順に選択します。 
+1. Azure Marketplace で **App Service Environment** を検索するか、 **[リソースの作成]**  >  **[Web + モバイル]**  >  **[App Service Environment]** の順に選択します。 
 
 1. ご使用の ASE の名前を入力します。 この名前は、ASE で作成されるアプリで使用されます。 名前が *mynewdemoase* の場合、サブドメイン名は *.mynewdemoase.p.azurewebsites.net* になります。 ここで *mytestapp* という名前のアプリを作成した場合、この Web アプリのアドレスは mytestapp.mynewdemoase.p.azurewebsites.net になります。 名前に空白文字は使用できません。 大文字を使用した場合、ドメイン名はその名前をすべて小文字で表記したバージョンになります。 ILB を使用する場合、ASE の名前はサブドメインでは使用されず、ASE の作成時に明示的に指定されます。
 

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: jroth
 ms.openlocfilehash: d4e8d99cd7c67136f359772664eb017c6207e6e4
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66165512"
 ---
 ### <a name="create-a-tcp-endpoint-for-the-virtual-machine"></a>仮想マシン用の TCP エンドポイントを作成する
@@ -19,9 +19,9 @@ ms.locfileid: "66165512"
 > 
 > 
 
-1. Azure Portal で、**[仮想マシン (クラシック)]** を選択します。
+1. Azure Portal で、 **[仮想マシン (クラシック)]** を選択します。
 2. SQL Server 仮想マシンを選択します。
-3. **[エンドポイント]** を選択し、**[エンドポイント]** ブレードの上部にある [追加] ボタンをクリックします。
+3. **[エンドポイント]** を選択し、 **[エンドポイント]** ブレードの上部にある [追加] ボタンをクリックします。
    
     ![ポータルでのエンドポイント作成手順](./media/virtual-machines-sql-server-connection-steps/portal-endpoint-creation.png)
 4. **[エンドポイントの追加]** ブレードの **[名前]** に、SQLEndpoint などの名前を入力します。

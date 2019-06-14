@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 256d530590fadc9e2aeb1ea1efb7a52608014978
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 59a3bac39437b91eeee3b005bd23476a34a308b7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46988565"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60736583"
 ---
 # <a name="health-probes"></a>正常性プローブ
 
@@ -29,7 +29,7 @@ Front Door では、HTTP または HTTPS プロトコルを使用したプロー
 
 ## <a name="health-probe-responses"></a>正常性プローブの応答
 
-| 応答  | 説明 | 
+| Responses  | 説明 | 
 | ------------- | ------------- |
 | 正常性の特定  |  200 OK 状態コードは、バックエンドが正常であることを示します。 他のすべての状態コードは、エラーとみなされます。 (ネットワーク障害を含む) 何らかの理由で有効な HTTP 応答がプローブに対して受信されない場合、そのプローブはエラーとしてカウントされます。|
 | 待ち時間の測定  | 待ち時間は、プローブ要求を送信する直前から応答の最後のバイトを受信した瞬間までの実時間です。 要求ごとに新しい TCP 接続が使用されるため、この測定値が既存のウォーム接続のあるバックエンドに偏ることはありません。  |

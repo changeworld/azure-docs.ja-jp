@@ -11,10 +11,10 @@ ms.service: azure-blockchain
 ms.reviewer: seal
 manager: femila
 ms.openlocfilehash: dffeb81ae1eb244c38639a1241c0581e6fcdf94a
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65027625"
 ---
 # <a name="configure-azure-blockchain-service-transaction-nodes"></a>Azure Blockchain Service のトランザクション ノードを構成する
@@ -44,7 +44,7 @@ Azure Blockchain Service を操作するには、ブロックチェーン メン
 
 トランザクション ノードを追加するには:
 
-1. Azure portal で自分の Azure Blockchain Service メンバーに移動して、**[Transaction nodes]\(トランザクション ノード\) > [追加]** を選択します。
+1. Azure portal で自分の Azure Blockchain Service メンバーに移動して、 **[Transaction nodes]\(トランザクション ノード\) > [追加]** を選択します。
 1. 新しいトランザクション ノードの設定を完了します。
 
     ![トランザクション ノードを追加する](./media/configure-transaction-nodes/add-node.png)
@@ -64,7 +64,7 @@ Azure Blockchain Service を操作するには、ブロックチェーン メン
 
 トランザクション ノードのエンドポイントの詳細を表示するには:
 
-1. Azure portal で Azure Blockchain Service メンバーのトランザクション ノードの 1 つに移動して、**[概要]** を選択します。
+1. Azure portal で Azure Blockchain Service メンバーのトランザクション ノードの 1 つに移動して、 **[概要]** を選択します。
 
     ![エンドポイント](./media/configure-transaction-nodes/endpoints.png)
 
@@ -76,14 +76,14 @@ Azure Blockchain Service のトランザクション ノード エンドポイ�
 
 エンドポイントへの Azure AD アクセス制御を許可するには:
 
-1. Azure portal で自分の Azure Blockchain Service メンバーに移動して、**[Transaction nodes]\(トランザクション ノード\) > [アクセス制御 (IAM)] > [追加] > [ロールの割り当ての追加]** の順に選択します。
+1. Azure portal で自分の Azure Blockchain Service メンバーに移動して、 **[Transaction nodes]\(トランザクション ノード\) > [アクセス制御 (IAM)] > [追加] > [ロールの割り当ての追加]** の順に選択します。
 1. ユーザー、グループ、またはサービス プリンシパル (アプリケーション ロール) に対して、新しいロールの割り当てを作成します。
 
     ![IAM ロールを追加する](./media/configure-transaction-nodes/add-role.png)
 
     | Setting | Action |
     |---------|-------------|
-    | Role | **[所有者]**、**[共同作成者]**、または **[閲覧者]** を選択します。
+    | Role | **[所有者]** 、 **[共同作成者]** 、または **[閲覧者]** を選択します。
     | アクセスの割り当て先 | **[Azure AD のユーザー、グループ、サービス プリンシパル]** を選択します。
     | 選択 | 追加するユーザー、グループ、またはサービス プリンシパルを検索します。
 
@@ -103,7 +103,7 @@ HTTPS 基本認証では、ユーザー名とパスワードの資格情報を�
 
 ユーザー名はノードの名前で、変更できません。
 
-URL を使用するには、\<password\> をノードのプロビジョニング時に設定したパスワードに置き換えます。 パスワードは、**[パスワードのリセット]** を選択して更新できます。
+URL を使用するには、\<password\> をノードのプロビジョニング時に設定したパスワードに置き換えます。 パスワードは、 **[パスワードのリセット]** を選択して更新できます。
 
 ### <a name="access-keys"></a>[アクセス キー]
 

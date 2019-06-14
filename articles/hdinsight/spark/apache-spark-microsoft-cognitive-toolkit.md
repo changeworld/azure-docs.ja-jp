@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: hrasheed
 ms.openlocfilehash: 3462255311eaa6e418f97de5da598eb985b2a935
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64695093"
 ---
 # <a name="use-microsoft-cognitive-toolkit-deep-learning-model-with-azure-hdinsight-spark-cluster"></a>Azure HDInsight Spark クラスターで Microsoft Cognitive Toolkit ディープ ラーニング モデルを使用する
@@ -73,7 +73,7 @@ Azure HDInsight Spark クラスターで Microsoft Cognitive Toolkit を使用�
 
 1. GitHub リポジトリ [https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration](https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration) を複製します。 複製の手順については、「[Cloning a repository (リポジトリの複製)](https://help.github.com/articles/cloning-a-repository/)」を参照してください。
 
-2. Azure portal から、既にプロビジョニングしている Spark クラスターのブレードを開き、**[クラスター ダッシュボード]** をクリックし、**[Jupyter Notebook]** をクリックします。
+2. Azure portal から、既にプロビジョニングしている Spark クラスターのブレードを開き、 **[クラスター ダッシュボード]** をクリックし、 **[Jupyter Notebook]** をクリックします。
 
     Jupyter Notebook は URL `https://<clustername>.azurehdinsight.net/jupyter/` に移動して起動することもできます。 \<clustername> を、使用する HDInsight クラスターの名前に置き換えます。
 

@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 08/23/2018
 ms.author: genli
 ms.openlocfilehash: 2a46879a6882e6d45e4a7ccce59e4a02feea9005
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56805588"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61432961"
 ---
 # <a name="connectivity-and-networking-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure Cloud Services の接続とネットワークの問題:よく寄せられる質問 (FAQ)
 
@@ -50,7 +50,7 @@ Azure では、分散型サービス拒否 (DDoS) 攻撃からプラットフォ
 ## <a name="when-i-try-to-rdp-to-my-cloud-service-instance-i-get-the-message-the-user-account-has-expired"></a>自分のクラウド サービス インスタンスに RDP 接続しようとすると、"このユーザー アカウントの有効期限が切れています" というメッセージを受け取ります。
 RDP の設定で構成されている有効期限の日付を無視すると、"このユーザー アカウントの有効期限が切れています" のエラー メッセージを受け取ることがあります。 ポータルから有効期限の日付を変更するには、次の手順を実行します。
 
-1. [Azure Portal](https://portal.azure.com) にサインインし、お使いのクラウド サービスに移動して、**[リモート デスクトップ]** タブを選びます。
+1. [Azure Portal](https://portal.azure.com) にサインインし、お使いのクラウド サービスに移動して、 **[リモート デスクトップ]** タブを選びます。
 
 2. **[運用]** または **[ステージング]** のデプロイ スロットを選びます。
 

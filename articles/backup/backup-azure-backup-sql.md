@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: kasinh
 ms.openlocfilehash: d7d94c7b238f8d413d8837c3c34468c6cd653fe3
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55300695"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60644136"
 ---
 # <a name="back-up-sql-server-to-azure-as-a-dpm-workload"></a>SQL Server を Azure に DPM ワークロードとしてバックアップする
 この記事では、Azure Backup を使用して SQL Server データベースのバックアップを構成する手順について説明します。
@@ -46,7 +46,7 @@ SQL Server データベースの Azure へのバックアップと Azure から�
     ![Data Protection Method - short term disk & Online Azure](./media/backup-azure-backup-sql/pg-name.png)
 7. **[短期的な目標値の指定]** 画面で、ディスクへのバックアップ ポイントを作成するために必要な入力を含めます。
 
-    ここで、**[保有期間の範囲]** が *5 日間*、**[同期の頻度]** (バックアップが実行される頻度) が *15 分*ごとに設定されていることを確認します。 **[高速完全バックアップ]** は *午後 8 時 00 分*に設定されています。
+    ここで、 **[保有期間の範囲]** が *5 日間*、 **[同期の頻度]** (バックアップが実行される頻度) が *15 分*ごとに設定されていることを確認します。 **[高速完全バックアップ]** は *午後 8 時 00 分*に設定されています。
 
     ![Short term goals](./media/backup-azure-backup-sql/pg-shortterm.png)
 
@@ -108,7 +108,7 @@ SQL Server データベースの Azure へのバックアップと Azure から�
     * **[オフライン バックアップ]** のしくみについては、「 [Azure Backup でのオフライン バックアップのワークフロー](backup-azure-backup-import-export.md)」を参照してください。
 
     初期バックアップのコピーを Azure に転送するための適切な転送メカニズムを選択し、 **[次へ]** をクリックします。
-15. **[概要]** 画面でポリシーの詳細を確認したら、**[グループの作成]** をクリックしてワークフローを完了します。 **[閉じる]** をクリックして、[監視] ワークスペースでジョブの進行状況を監視できます。
+15. **[概要]** 画面でポリシーの詳細を確認したら、 **[グループの作成]** をクリックしてワークフローを完了します。 **[閉じる]** をクリックして、[監視] ワークスペースでジョブの進行状況を監視できます。
 
     ![Creation of Protection Group In-Progress](./media/backup-azure-backup-sql/pg-summary.png)
 
@@ -121,7 +121,7 @@ SQL Server データベースの Azure へのバックアップと Azure から�
 2. データベースを右クリックし、 **[回復ポイントの作成]** を選択します。
 
     ![Create Online Recovery Point](./media/backup-azure-backup-sql/sqlbackup-createrp.png)
-3. ドロップダウン メニューから **[オンライン保護]** を選択し、**[OK]** をクリックします。 これにより、Azure での回復ポイントの作成が開始されます。
+3. ドロップダウン メニューから **[オンライン保護]** を選択し、 **[OK]** をクリックします。 これにより、Azure での回復ポイントの作成が開始されます。
 
     ![[回復ポイントの作成]](./media/backup-azure-backup-sql/sqlbackup-azure.png)
 4. 次の図に示すように、進行中のジョブが表示される **[監視]** ワークスペースで、ジョブの進行状況を確認できます。
@@ -134,7 +134,7 @@ SQL Server データベースの Azure へのバックアップと Azure から�
 1. DPM サーバーの管理コンソールを開きます。 DPM によってバックアップされたサーバーを確認できる **[回復]** ワークスペースに移動します。 目的のデータベース (この場合は ReportServer$MSDPM2012) を参照します。 "**オンライン**" で終わる **[回復元]** の時間を選択します。
 
     ![Select Recovery point](./media/backup-azure-backup-sql/sqlbackup-restorepoint.png)
-2. データベース名を右クリックし、**[回復]** をクリックします。
+2. データベース名を右クリックし、 **[回復]** をクリックします。
 
     ![Recover from Azure](./media/backup-azure-backup-sql/sqlbackup-recover.png)
 3. DPM に回復ポイントの詳細が表示されます。 **[次へ]** をクリックします。 データベースを上書きするには、回復のタイプとして **[元の SQL Server のインスタンスに回復する]** を選択します。 **[次へ]** をクリックします。
@@ -145,7 +145,7 @@ SQL Server データベースの Azure へのバックアップと Azure から�
 4. **[回復オプションの指定]** 画面で、[ネットワークの使用帯域幅の調整] を選択して回復で使用される帯域幅を調整するなど、回復のオプションを選択できます。 **[次へ]** をクリックします。
 5. **[概要]** 画面に、これまでに指定した回復の構成が表示されます。 **[回復]** をクリックします。
 
-    回復の状態に、データベースが回復されていることが表示されます。 **[閉じる]** をクリックしてウィザードを閉じ、**[監視]** ワークスペースで進行状況を確認できます。
+    回復の状態に、データベースが回復されていることが表示されます。 **[閉じる]** をクリックしてウィザードを閉じ、 **[監視]** ワークスペースで進行状況を確認できます。
 
     ![Initiate recovery process](./media/backup-azure-backup-sql/sqlbackup-recoverying.png)
 

@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 01/29/2019
 ms.author: asgang
 ms.openlocfilehash: 6c639d4503b170660abed5767e3571c8a2bf24b9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58112774"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60790335"
 ---
 # <a name="replicate-azure-virtual-machines-using-storage-spaces-direct-to-another-azure-region"></a>記憶域スペース ダイレクトを使用する Azure 仮想マシンを別の Azure リージョンにレプリケートする
 
@@ -83,7 +83,7 @@ ms.locfileid: "58112774"
 3.  **[テスト フェールオーバー]** を選択します。
 4.  テスト フェールオーバー プロセスを開始するには、復旧ポイントと Azure 仮想ネットワークを選択します。
 5.  セカンダリ環境が立ち上がったら、検証を実行します。
-6.  検証が完了したら、フェールオーバー環境をクリーニングするために、**[テスト フェールオーバーのクリーンアップ]** を選択します。
+6.  検証が完了したら、フェールオーバー環境をクリーニングするために、 **[テスト フェールオーバーのクリーンアップ]** を選択します。
 
 詳しくは、「[Site Recovery での Azure へのフェールオーバーをテストする](site-recovery-test-failover-to-azure.md)」をご覧ください。
 

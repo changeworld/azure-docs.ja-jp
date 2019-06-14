@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.custom: seodec2018
 ms.openlocfilehash: 462a99ffab8038f34b1ffd038ce5c8e8ec9a8565
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65024441"
 ---
 # <a name="create-a-basic-index-in-azure-search"></a>Azure Search で基本的なインデックスを作成する
@@ -30,7 +30,7 @@ Azure Search における*インデックス*とは、Azure Search サービス�
 
 1. [インデクサー](search-indexer-overview.md#supported-data-sources)を使用できるかどうかを判断します。 外部データがサポートされているデータソースのものである場合、[**データのインポート**](search-import-data-portal.md) ウィザードを使用してインデックスのプロトタイプ作成と読み込みを行うことができます。
 
-2. **データのインポート**を使用できない場合でも、[ポータルで初期インデックスを作成](search-create-index-portal.md)し、フィールドとデータ型を追加し、**[インデックスの追加]** ページのコントロールを使用して属性を割り当てることができます。 ポータルでは、さまざまなデータ型に対してどの属性が使用できるかが表示されます。 インデックスの作成が初めての場合、これが役立ちます。
+2. **データのインポート**を使用できない場合でも、[ポータルで初期インデックスを作成](search-create-index-portal.md)し、フィールドとデータ型を追加し、 **[インデックスの追加]** ページのコントロールを使用して属性を割り当てることができます。 ポータルでは、さまざまなデータ型に対してどの属性が使用できるかが表示されます。 インデックスの作成が初めての場合、これが役立ちます。
 
    ![データ型ごとに属性が表示されるインデックス追加ページ](media/search-create-index-portal/field-attributes.png "データ型ごとに属性が表示されるインデックス追加ページ")
   

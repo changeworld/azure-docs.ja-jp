@@ -13,11 +13,11 @@ ms.date: 01/07/2019
 ms.reviewer: sergkanz
 ms.author: mbullwin
 ms.openlocfilehash: fef016d87cc60bc916fdcb08f92171e115221fe5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57884122"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60900531"
 ---
 # <a name="request-telemetry-application-insights-data-model"></a>要求テレメトリ:Application Insights データ モデル
 
@@ -39,19 +39,19 @@ Application Insights Web SDK は、要求の名前の大文字小文字を "そ�
 
 最大長:128 文字
 
-## <a name="url"></a>Url
+## <a name="url"></a>url
 
 すべてのクエリ文字列パラメーター付きの要求 URL。
 
 最大長:2048 文字
 
-## <a name="source"></a>ソース
+## <a name="source"></a>source
 
 要求のソース。 例: 呼び出し元のインストルメンテーション キーや呼び出し元の IP アドレス。 詳細については、[相関付け](../../azure-monitor/app/correlation.md)に関するページを参照してください。
 
 最大長:1024 文字
 
-## <a name="duration"></a>duration
+## <a name="duration"></a>Duration
 
 `DD.HH:MM:SS.MMMMMM` 形式の要求時間。 正の `1000` 日未満の値にする必要があります。 要求テレメトリは開始と終了によって操作を表すため、このフィールドは必須です。
 

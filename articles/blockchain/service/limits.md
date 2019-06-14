@@ -11,21 +11,21 @@ ms.service: azure-blockchain
 ms.reviewer: janders
 manager: femila
 ms.openlocfilehash: 169ec7a8ef407af3f754046aa8e3b06793a7e962
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65027653"
 ---
 # <a name="limits-in-azure-blockchain-service"></a>Azure Blockchain Service での制限事項
 
 Azure Blockchain Service のサービスと機能には、メンバーが持つことのできるノードの数、コンソーシアムの制限、ストレージの量などの制限事項があります。
 
-## <a name="pricing-tier"></a>価格レベル 
+## <a name="pricing-tier"></a>価格レベル
 
 トランザクションと検証ノードの数の上限は、Azure Blockchain Service を Basic または Standard のどちらの価格レベルでプロビジョニングするかによって異なります。
 
-| 価格レベル  | トランザクション ノードの最大数 | 検証ノードの最大数 |
+| 価格レベル | トランザクション ノードの最大数 | 検証ノードの最大数 |
 |:---|:---:|:---:|
 | Basic | 10 | 1 |
 | Standard | 10 | 2 |

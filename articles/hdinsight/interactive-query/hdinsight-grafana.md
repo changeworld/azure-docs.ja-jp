@@ -8,10 +8,10 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 12/11/2018
 ms.openlocfilehash: 42429f0e8e541d0481f991761ead63e4751fcc3d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64719725"
 ---
 # <a name="access-grafana-in-azure-hdinsight"></a>Azure HDInsight で Grafana にアクセスする
@@ -54,7 +54,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
        
     一部のプロパティは、テンプレートにハードコーディングされています。  これらの値はテンプレートから構成することができます。 これらのプロパティについて詳しくは、[HDInsight での Apache Hadoop クラスターの作成](../hdinsight-hadoop-provision-linux-clusters.md)に関するページをご覧ください。
 
-3. **[上記の使用条件に同意する]**、**[ダッシュボードにピン留めする]** の順に選択し、**[購入]** を選択します。 ポータルのダッシュボードに、**[デプロイを送信しています]** という新しいタイルが表示されます。 クラスターの作成には約 20 分かかります。
+3. **[上記の使用条件に同意する]** 、 **[ダッシュボードにピン留めする]** の順に選択し、 **[購入]** を選択します。 ポータルのダッシュボードに、 **[デプロイを送信しています]** という新しいタイルが表示されます。 クラスターの作成には約 20 分かかります。
 
     ![テンプレートのデプロイの進行状況](./media/hdinsight-grafana/deployment-progress-tile.png "Azure テンプレートのデプロイの進行状況")
 
@@ -74,7 +74,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 2. **[HDInsight クラスター]** を選択し、前のセクションで作成したクラスター名を選択します。
 
-3. **[クイック リンク]** で、**[クラスター ダッシュボード]** をクリックします。
+3. **[クイック リンク]** で、 **[クラスター ダッシュボード]** をクリックします。
 
     ![HDInsight クラスター ダッシュボード ポータル](./media/hdinsight-grafana/hdinsight-portal-cluster-dashboard.png "ポータルの HDInsight クラスター ダッシュボード")
 
@@ -96,7 +96,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 **クラスターと既定のストレージ アカウントを削除するには、次の手順に従います。**
 
-1. ブラウザーの Azure Portal を開いているタブに戻ります。 [クラスターの概要] ページが表示されているはずです。 クラスターのみを削除し、既定のストレージ アカウントを保持する場合は、**[削除]** を選択します。
+1. ブラウザーの Azure Portal を開いているタブに戻ります。 [クラスターの概要] ページが表示されているはずです。 クラスターのみを削除し、既定のストレージ アカウントを保持する場合は、 **[削除]** を選択します。
 
     ![HDInsight におけるクラスターの削除](./media/hdinsight-grafana/hdinsight-delete-cluster.png "HDInsight クラスターの削除")
 

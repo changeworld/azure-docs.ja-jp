@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.openlocfilehash: cb0c350df3056636701b5ff5d3962e2a0e96f40d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64696364"
 ---
 # <a name="azure-storage-solutions-for-ml-services-on-azure-hdinsight"></a>Azure HDInsight の ML Services 向けの Azure Storage ソリューション
@@ -110,13 +110,13 @@ R コードで、名前ノード参照が **storage2** ストレージ アカウ
 ### <a name="add-cluster-access-to-your-azure-data-lake-storage"></a>Azure Data Lake Storage へのクラスター アクセスの追加
 HDInsight クラスターに関連付けられている Azure Active Directory (Azure AD) サービス プリンシパルを使用して、Data Lake Storage にアクセスします。
 
-1. HDInsight クラスターを作成するときに、**[データ ソース]** タブの **[クラスター AAD ID]** を選択します。
+1. HDInsight クラスターを作成するときに、 **[データ ソース]** タブの **[クラスター AAD ID]** を選択します。
 
-2. **[クラスター AAD ID]** ダイアログ ボックスの **[AD サービス プリンシパルの選択]** で、**[新規作成]** を選択します。
+2. **[クラスター AAD ID]** ダイアログ ボックスの **[AD サービス プリンシパルの選択]** で、 **[新規作成]** を選択します。
 
-サービス プリンシパルに名前を付けてパスワードを設定したら、**[ADLS アクセスを管理する]** をクリックして、サービス プリンシパルをご自身の Data Lake Storage と関連付けます。
+サービス プリンシパルに名前を付けてパスワードを設定したら、 **[ADLS アクセスを管理する]** をクリックして、サービス プリンシパルをご自身の Data Lake Storage と関連付けます。
 
-また、クラスター作成後に 1 つ以上の Data Lake Storage アカウントへのクラスター アクセスを追加することもできます。 そのためには、Data Lake Storage の Azure portal エントリを開き、**[データ エクスプローラー]、[アクセス]、[追加]** の順に移動します。 
+また、クラスター作成後に 1 つ以上の Data Lake Storage アカウントへのクラスター アクセスを追加することもできます。 そのためには、Data Lake Storage の Azure portal エントリを開き、 **[データ エクスプローラー]、[アクセス]、[追加]** の順に移動します。 
 
 ### <a name="how-to-access-data-lake-storage-gen1-from-ml-services-on-hdinsight"></a>HDInsight で ML Services から Data Lake Storage Gen1 にアクセスする方法
 

@@ -9,11 +9,11 @@ ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 31e8e65b382a3a6bcad2998a0babdf9605dc4968
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58539107"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61023909"
 ---
 # <a name="backup-and-restore"></a>バックアップと復元
 
@@ -32,11 +32,11 @@ Azure Analysis Services の表形式モデル データベースのバックア�
 
 
 ### <a name="to-configure-storage-settings"></a>ストレージ設定を構成するには
-1.  Azure Portal の **[設定]** で、**[バックアップ]** をクリックします。
+1.  Azure Portal の **[設定]** で、 **[バックアップ]** をクリックします。
 
     ![[設定] の [バックアップ]](./media/analysis-services-backup/aas-backup-backups.png)
 
-2.  **[有効]** をクリックし、**[ストレージの設定]** をクリックします。
+2.  **[有効]** をクリックし、 **[ストレージの設定]** をクリックします。
 
     ![有効化](./media/analysis-services-backup/aas-backup-enable.png)
 
@@ -54,9 +54,9 @@ Azure Analysis Services の表形式モデル データベースのバックア�
 
 ### <a name="to-backup-by-using-ssms"></a>SSMS を使用してバックアップするには
 
-1. SSMS でデータベースを右クリックし、**[バックアップ]** を選択します。
+1. SSMS でデータベースを右クリックし、 **[バックアップ]** を選択します。
 
-2. **[データベースのバックアップ]** > **[バックアップ ファイル]** の順に移動し、**[参照]** をクリックします。
+2. **[データベースのバックアップ]**  >  **[バックアップ ファイル]** の順に移動し、 **[参照]** をクリックします。
 
 3. **[ファイル名を付けて保存]** ダイアログでフォルダーのパスを確認し、バックアップ ファイルの名前を入力します。 
 
@@ -86,7 +86,7 @@ Azure Analysis Services の表形式モデル データベースのバックア�
 
 ### <a name="to-restore-by-using-ssms"></a>SSMS を使って復元するには
 
-1. SSMS でデータベースを右クリックし、**[復元]** を選択します。
+1. SSMS でデータベースを右クリックし、 **[復元]** を選択します。
 
 2. **[データベースのバックアップ]** ダイアログの **[バックアップ ファイル]** で **[参照]** をクリックします。
 

@@ -15,10 +15,10 @@ ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0a0680ddf2c9e654455933bf09699ab81e8ab65d
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65141695"
 ---
 # <a name="create-an-access-review-of-azure-ad-roles-in-pim"></a>PIM で Azure AD ロールのアクセス レビューを作成する
@@ -37,7 +37,7 @@ ms.locfileid: "65141695"
 
 1. **[Azure AD Privileged Identity Management]** を開きます。
 
-1. 左側のメニューで **[Azure AD ロール]** をクリックしてから、**[アクセス レビュー]** をクリックします。
+1. 左側のメニューで **[Azure AD ロール]** をクリックしてから、 **[アクセス レビュー]** をクリックします。
 
 1. [管理] の下の **[アクセス レビュー]** をクリックします。
 
@@ -49,7 +49,7 @@ ms.locfileid: "65141695"
 
 ## <a name="start-the-access-review"></a>アクセス レビューを開始する
 
-アクセス レビューの設定を指定したら、**[開始]** をクリックします。 アクセス レビューはステータスと共にリストに表示されます。
+アクセス レビューの設定を指定したら、 **[開始]** をクリックします。 アクセス レビューはステータスと共にリストに表示されます。
 
 ![アクセス レビューのリスト](./media/pim-how-to-start-security-review/access-reviews-list.png)
 
@@ -65,7 +65,7 @@ ms.locfileid: "65141695"
 
 アクセス レビューの系列を管理するには、アクセス レビューに移動し、[Scheduled]\(スケジュール済み\) レビューで今後予定されている実行を見つけ、それに応じて終了日を編集したり、レビュー担当者を追加/削除したりします。
 
-**[Upon completion]\(完了時\)** 設定での選択に基づいて、レビューの終了日の後、またはレビューを手動で停止したときに自動適用が実行されます。 レビューの状態は、**[完了]** から **[適用中]** などの中間状態を経由して、最後に状態 **[適用済み]** まで変化します。 拒否されたユーザーが存在する場合は、それらのユーザーが数分以内にロールから削除されることを確認できます。
+**[Upon completion]\(完了時\)** 設定での選択に基づいて、レビューの終了日の後、またはレビューを手動で停止したときに自動適用が実行されます。 レビューの状態は、 **[完了]** から **[適用中]** などの中間状態を経由して、最後に状態 **[適用済み]** まで変化します。 拒否されたユーザーが存在する場合は、それらのユーザーが数分以内にロールから削除されることを確認できます。
 
 ## <a name="next-steps"></a>次の手順
 

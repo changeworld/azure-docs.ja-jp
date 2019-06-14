@@ -10,11 +10,11 @@ ms.date: 8/15/2018
 ms.topic: article
 ms.custom: bfmigrate
 ms.openlocfilehash: 590d790939f2986570019122817444238a41bb7d
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "58408442"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60780834"
 ---
 # <a name="migrate-analytics-resources-to-global-azure"></a>分析リソースをグローバル Azure に移行する
 
@@ -48,7 +48,7 @@ Event Hubs テンプレートをエクスポートすると、次のメタデー
 
 ## <a name="hdinsight"></a>HDInsight
 
-Azure HDInsight クラスターを Azure Germany からグローバル Azure に移行するには: 
+Azure HDInsight クラスターを Azure Germany からグローバル Azure に移行するには:
 
 1. HDInsight クラスターを停止します。
 2. AzCopy または同様のツールを使用して、Azure Storage アカウント内のデータを新しいリージョンに移行します。
@@ -105,7 +105,7 @@ Azure Analysis Services モデルを Azure Germany からグローバル Azure �
 
 ## <a name="next-steps"></a>次の手順
 
-次のサービス カテゴリ内のリソースを移行するためのツール、テクニック、および推奨事項を確認します。
+次のサービス カテゴリのリソースを移行するためのツール、テクニック、および推奨事項について学習します。
 
 - [Compute](./germany-migration-compute.md)
 - [ネットワーク](./germany-migration-networking.md)

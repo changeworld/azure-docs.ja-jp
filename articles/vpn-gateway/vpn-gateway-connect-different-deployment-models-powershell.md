@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/17/2018
 ms.author: cherylmc
-ms.openlocfilehash: cf7726d017afd579b1eb227ec0fd3b9710395de6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2263996b84b17f7de9826c07eb28e4b7668cd915
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58082264"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62095594"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-powershell"></a>異なるデプロイ モデルの仮想ネットワークを PowerShell を使用して接続する
 
@@ -44,7 +44,7 @@ ms.locfileid: "58082264"
 
 **クラシック VNet の設定**
 
-VNet Name = ClassicVNet  <br>
+VNet Name = ClassicVNet <br>
 Location = West US <br>
 Virtual Network Address Spaces = 10.0.0.0/24 <br>
 Subnet-1 = 10.0.0.0/27 <br>
@@ -54,7 +54,7 @@ GatewayType = DynamicRouting
 
 **Resource Manager の VNet の設定**
 
-VNet Name = RMVNet  <br>
+VNet Name = RMVNet <br>
 Resource Group = RG1 <br>
 Virtual Network IP Address Spaces = 192.168.0.0/16 <br>
 Subnet-1 = 192.168.1.0/24 <br>
@@ -221,7 +221,7 @@ New-AzureVNetGateway -VNetName ClassicVNet -GatewayType DynamicRouting
 
 6. ゲートウェイ IP アドレス指定の構成を作成します。 ゲートウェイの構成で、使用するサブネットとパブリック IP アドレスを定義します。 次のサンプルを使用して、ゲートウェイの構成を作成します。
 
-   この手順では、**-SubnetId** パラメーターと **-PublicIpAddressId** パラメーターはそれぞれ、サブネットの ID プロパティと IP アドレス オブジェクトの ID プロパティを渡さなければなりません。 単純な文字列を使用することはできません。 これらの変数は、パブリック IP を要求する手順とサブネットを取得する手順で設定されます。
+   この手順では、 **-SubnetId** パラメーターと **-PublicIpAddressId** パラメーターはそれぞれ、サブネットの ID プロパティと IP アドレス オブジェクトの ID プロパティを渡さなければなりません。 単純な文字列を使用することはできません。 これらの変数は、パブリック IP を要求する手順とサブネットを取得する手順で設定されます。
 
    ```azurepowershell-interactive
    $gwipconfig = New-AzVirtualNetworkGatewayIpConfig `
@@ -265,7 +265,7 @@ New-AzureVNetGateway -VNetName ClassicVNet -GatewayType DynamicRouting
 ## <a name="connect"></a>セクション 4 - ゲートウェイ間の接続を作成する
 ゲートウェイ間の接続を作成するには PowerShell が必要です。 従来のバージョンの PowerShell コマンドレットを使って、Azure アカウントを追加する必要が生じる場合もあります。 それには、**Add-azureaccount** を使用します。
 
-1. PowerShell コンソールで、共有キーを設定します。 コマンドレットを実行する前に、ダウンロードしたネットワーク構成ファイルで、Azure が期待する正確な名前を確認します。 スペースを含む VNet の名前を指定するときは、単一引用符を使って値を囲みます。<br><br>次の例では、**-VNetName** はクラシック VNet の名前で、**-LocalNetworkSiteName** はローカル ネットワーク サイトに対して指定した名前です。 **-SharedKey** は、生成して指定する値です。 この例では "abc123" を使いましたが、さらに複雑な値を生成して使うことができます。 重要なのは、ここで指定する値は、次の手順で接続を作成するときに指定するものと同じ値でなければならないということです。 戻り値が **Status: Successful** を示している必要があります。
+1. PowerShell コンソールで、共有キーを設定します。 コマンドレットを実行する前に、ダウンロードしたネットワーク構成ファイルで、Azure が期待する正確な名前を確認します。 スペースを含む VNet の名前を指定するときは、単一引用符を使って値を囲みます。<br><br>次の例では、 **-VNetName** はクラシック VNet の名前で、 **-LocalNetworkSiteName** はローカル ネットワーク サイトに対して指定した名前です。 **-SharedKey** は、生成して指定する値です。 この例では "abc123" を使いましたが、さらに複雑な値を生成して使うことができます。 重要なのは、ここで指定する値は、次の手順で接続を作成するときに指定するものと同じ値でなければならないということです。 戻り値が **Status: Successful** を示している必要があります。
 
    ```azurepowershell
    Set-AzureVNetGatewayKey -VNetName ClassicVNet `

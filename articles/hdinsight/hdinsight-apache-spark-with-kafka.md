@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
 ms.openlocfilehash: e0c39ae5f5c23ae0715ef1eee38b6dd34704538a
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64690955"
 ---
 # <a name="apache-spark-streaming-dstream-example-with-apache-kafka-on-hdinsight"></a>HDInsight 上の Apache Kafka を用いた Apache Spark ストリーミング (DStream) の例
@@ -43,14 +43,14 @@ Azure 仮想ネットワーク、Kafka、および Spark クラスターは手�
     
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-kafka-spark-cluster-in-vnet-v4.1.json" target="_blank"><img src="./media/hdinsight-apache-spark-with-kafka/deploy-to-azure.png" alt="Deploy to Azure"></a>
     
-    Azure Resource Manager テンプレートは、**https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-spark-cluster-in-vnet-v4.1.json** にあります。
+    Azure Resource Manager テンプレートは、 **https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-spark-cluster-in-vnet-v4.1.json** にあります。
 
     > [!WARNING]  
     > HDInsight で Kafka の可用性を保証するには、クラスターに少なくとも 3 つのワーカー ノードが必要です。 このテンプレートは、3 つのワーカー ノードが含まれる Kafka クラスターを作成します。
 
     このテンプレートは、Kafka と Spark の両方の HDInsight 3.6 クラスターを作成します。
 
-2. 以下の情報を使用して、**[カスタム デプロイ]** セクションに各エントリを入力します。
+2. 以下の情報を使用して、 **[カスタム デプロイ]** セクションに各エントリを入力します。
    
     ![HDInsight のカスタム デプロイ](./media/hdinsight-apache-spark-with-kafka/parameters.png)
    
@@ -58,9 +58,9 @@ Azure 仮想ネットワーク、Kafka、および Spark クラスターは手�
 
     * **場所**: 地理的に近い場所を選択します。
 
-    * **Base Cluster Name (ベース クラスター名)**:この値は、Spark クラスターと Kafka クラスターのベース名として使用されます。 たとえば、「**hdistreaming**」と入力すると、__spark-hdistreaming__ という名前の Spark クラスターと、**kafka-hdistreaming** という名前の Kafka クラスターが作成されます。
+    * **Base Cluster Name (ベース クラスター名)** :この値は、Spark クラスターと Kafka クラスターのベース名として使用されます。 たとえば、「**hdistreaming**」と入力すると、__spark-hdistreaming__ という名前の Spark クラスターと、**kafka-hdistreaming** という名前の Kafka クラスターが作成されます。
 
-    * **Cluster Login User Name (クラスター ログイン ユーザー名)**:Spark クラスターと Kafka クラスターの管理者のユーザー名。
+    * **Cluster Login User Name (クラスター ログイン ユーザー名)** :Spark クラスターと Kafka クラスターの管理者のユーザー名。
 
     * **クラスター ログイン パスワード**: Spark クラスターと Kafka クラスターの管理者のユーザー パスワード。
 
@@ -68,9 +68,9 @@ Azure 仮想ネットワーク、Kafka、および Spark クラスターは手�
 
     * **SSH パスワード**: Spark クラスターと Kafka クラスター用の SSH ユーザーのパスワード。
 
-3. **使用条件**を読み、**[上記の使用条件に同意する]** をオンにします。
+3. **使用条件**を読み、 **[上記の使用条件に同意する]** をオンにします。
 
-4. 最後に、**[購入]** を選択します。 クラスターの作成には約 20 分かかります。
+4. 最後に、 **[購入]** を選択します。 クラスターの作成には約 20 分かかります。
 
 リソースが作成されると、概要ページが表示されます。
 

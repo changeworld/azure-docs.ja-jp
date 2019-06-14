@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: 1d996469c01640a70b68d70e8c24c617e0defd64
-ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
+ms.openlocfilehash: a01e50debf11daf2f1163a56726f5574f7e3e379
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "40250753"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62123469"
 ---
 # <a name="automatically-scale-an-azure-api-management-instance"></a>Azure API Management インスタンスを自動的にスケーリングする  
 
@@ -32,6 +32,8 @@ Azure API Management サービス インスタンスは、一連の規則に基�
 + Azure API Management インスタンスがある。 詳細については、[Azure API Management インスタンスの作成](get-started-create-service-instance.md)に関する記事を参照してください。
 + [Azure API Management インスタンスの容量](api-management-capacity.md)の概念を理解している。
 + [Azure API Management インスタンスの手動スケーリングのプロセス](upgrade-and-scale.md)について、コストの影響を含めて理解している。
+
+[!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
 ## <a name="azure-api-management-autoscale-limitations"></a>Azure API Management の自動スケールの制限事項
 
@@ -57,11 +59,11 @@ Azure API Management サービスの自動スケーリングを構成するに�
 
 3. ドロップダウン メニューのフィルターに基づいて、Azure API Management サービスを探します。
 4. 目的の Azure API Management サービス インスタンスを選択します。
-5. 新しく開いたセクションで、**[自動スケールの有効化]** ボタンをクリックします。
+5. 新しく開いたセクションで、 **[自動スケールの有効化]** ボタンをクリックします。
 
     ![Azure Monitor 自動スケール有効](media/api-management-howto-autoscale/03.png)
 
-6. **[Rules]\(規則\)** セクションで、**[+ Add a rule]\(+ 規則の追加\)** をクリックします。
+6. **[Rules]\(規則\)** セクションで、 **[+ Add a rule]\(+ 規則の追加\)** をクリックします。
 
     ![Azure Monitor 自動スケールの規則追加](media/api-management-howto-autoscale/04.png)
 
@@ -76,8 +78,8 @@ Azure API Management サービスの自動スケーリングを構成するに�
     | 時間の集計      | 平均           |                                                                                                                                                                                                                                                                                 |
     | メトリックの名前           | 容量          | 容量メトリックは、Azure API Management インスタンスのリソース使用状況を反映する Azure API Management メトリックです。                                                                                                                                                            |
     | 時間グレインの統計  | 平均           |                                                                                                                                                                                                                                                                                 |
-    | operator              | より大きい      |                                                                                                                                                                                                                                                                                 |
-    | しきい値             | 80%               | 平均容量メトリックのしきい値。                                                                                                                                                                                                                                 |
+    | Operator              | より大きい      |                                                                                                                                                                                                                                                                                 |
+    | Threshold             | 80%               | 平均容量メトリックのしきい値。                                                                                                                                                                                                                                 |
     | 期間 (分) | 30                | 容量メトリックの平均値を算出するタイムスパンは使用パターンに固有です。 期間を長くすればするほど、反応は平滑化されます (断続的なスパイクがスケールアウトの決定にあまり影響しなくなります)。 ただし、スケールアウトのトリガーも遅れることになります。 |
     | *アクション*              |                   |                                                                                                                                                                                                                                                                                 |
     | Operation             | カウントを増やす量 |                                                                                                                                                                                                                                                                                 |
@@ -103,8 +105,8 @@ Azure API Management サービスの自動スケーリングを構成するに�
     | 時間の集計      | 平均           |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
     | メトリックの名前           | 容量          | スケールアウト規則に使用したものと同じメトリックです。                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
     | 時間グレインの統計  | 平均           |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-    | operator              | より小さい         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-    | しきい値             | 35%               | スケールアウト規則と同様、この値は Azure API Management の使用状況パターンに大きく依存します。 |
+    | Operator              | より小さい         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+    | Threshold             | 35%               | スケールアウト規則と同様、この値は Azure API Management の使用状況パターンに大きく依存します。 |
     | 期間 (分) | 30                | スケールアウト規則に使用したものと同じ値です。                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
     | *アクション*              |                   |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
     | Operation             | カウントを減らす量 | スケールアウト規則に使用したものの逆です。                                                                                                                                                                                                                                                                                                                                                                                                                                                   |

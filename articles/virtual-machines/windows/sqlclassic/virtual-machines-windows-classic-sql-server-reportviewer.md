@@ -16,15 +16,15 @@ ms.workload: iaas-sql-server
 ms.date: 01/11/2017
 ms.author: maghan
 ms.openlocfilehash: b554dc1fa33519d87aa0c9c5ba9130b47cbea142
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53971752"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60580070"
 ---
 # <a name="use-reportviewer-in-a-web-site-hosted-in-azure"></a>Azure でホストされる Web サイトで ReportViewer を使用する
 > [!IMPORTANT]
-> Azure には、リソースの作成と操作に関して、2 種類のデプロイ モデルが用意されています。[Resource Manager とクラシック](../../../azure-resource-manager/resource-manager-deployment-model.md)です。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイメントでは、リソース マネージャー モデルを使用することをお勧めします。
+> Azure には、リソースの作成と操作に関して、2 種類のデプロイ モデルがあります。[Resource Manager とクラシック](../../../azure-resource-manager/resource-manager-deployment-model.md)です。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイメントでは、リソース マネージャー モデルを使用することをお勧めします。
 
 Microsoft Azure 仮想マシンに保存されたレポートを表示する Visual Studio ReportViewer コントロールを使用して、Microsoft Azure Web サイトを作成できます。 ReportViewer コントロールは、ASP.NET Web アプリケーション テンプレートを使用して作成する Web アプリケーション内にあります。
 
@@ -33,9 +33,9 @@ Microsoft Azure 仮想マシンに保存されたレポートを表示する Vis
 
 ReportViewer を Microsoft Azure Web サイトに組み込むには、次のタスクを完了する必要があります。
 
-* **追加する** 
-* **構成する** 
-* **発行する** 
+* **追加する**
+* **構成する**
+* **発行する**
 
 ## <a name="prerequisites"></a>前提条件
 「 [Azure Virtual Machines での SQL Server Business Intelligence](../classic/ps-sql-bi.md)」の「一般的な推奨事項とベスト プラクティス」セクションを参照してください。
@@ -65,8 +65,8 @@ ASP.NET アプリケーションをオンプレミスでホストする場合、
 1. [Microsoft ダウンロード センター](https://go.microsoft.com/fwlink/?LinkId=317386)から、適切な Microsoft Report Viewer 2012 Runtime 再頒布可能パッケージをインストールします。
 2. ドロップダウン リストから言語を選択すると、ダウンロード センターの対応するページにリダイレクトされます。
 3. **[ダウンロード]** をクリックして、ReportViewerLP.exe のダウンロードを開始します。
-4. ReportViewerLP.exe をダウンロードしたら、**[実行]** をクリックしてすぐにインストールするか、**[保存]** をクリックしてコンピューターに保存します。 **[保存]** をクリックした場合は、ファイルを保存したフォルダーの名前を覚えておいてください。
-5. ファイルを保存したフォルダーを見つけます。 ReportViewerLP.exe を右クリックし、**[管理者として実行]**、**[はい]** の順にクリックします。
+4. ReportViewerLP.exe をダウンロードしたら、 **[実行]** をクリックしてすぐにインストールするか、 **[保存]** をクリックしてコンピューターに保存します。 **[保存]** をクリックした場合は、ファイルを保存したフォルダーの名前を覚えておいてください。
+5. ファイルを保存したフォルダーを見つけます。 ReportViewerLP.exe を右クリックし、 **[管理者として実行]** 、 **[はい]** の順にクリックします。
 6. ReportViewerLP.exe を実行した後、C:\windows\assembly にリソース ファイル **Microsoft.ReportViewer.Webforms.Resources** および **Microsoft.ReportViewer.Common.Resources** が含まれていることが確認できます。
 
 ### <a name="to-configure-for-localized-reportviewer-control"></a>ローカライズされた ReportViewer コントロール用に構成する

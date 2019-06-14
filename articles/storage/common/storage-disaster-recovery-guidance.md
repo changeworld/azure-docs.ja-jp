@@ -10,10 +10,10 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: f9d68af12f6b2e98c77d0bd1b65a82c69588f203
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65147613"
 ---
 # <a name="disaster-recovery-and-storage-account-failover-preview-in-azure-storage"></a>Azure Storage でのディザスター リカバリーとストレージ アカウントのフェールオーバー (プレビュー)
@@ -51,9 +51,9 @@ Azure Storage の他の冗長性オプションとしては、1 つのリージ�
 
 さらに、Azure Storage のデータの高可用性を維持するためには、次のベスト プラクティスに留意してください。
 
-* **ディスク:**[Azure Backup](https://azure.microsoft.com/services/backup/) を使用して、Azure 仮想マシンで使用される VM ディスクをバックアップします。 また、[Azure Site Recovery](https://azure.microsoft.com/services/site-recovery/) を使用して地域的な災害が発生した場合の VM の保護も検討します。
-* **ブロック BLOB:**[ソフト削除](../blobs/storage-blob-soft-delete.md)を有効にしてオブジェクトレベルの削除および上書きから保護するか、[AzCopy](storage-use-azcopy.md)、[Azure PowerShell](storage-powershell-guide-full.md)、または [Azure Data Movement Library](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/) を使用して、他のリージョンの別のストレージ アカウントにブロック BLOB をコピーします。
-* **ファイル:**[AzCopy](storage-use-azcopy.md) または [Azure PowerShell](storage-powershell-guide-full.md) を使用して、他のリージョンの別のストレージ アカウントにファイルをコピーします。
+* **ディスク:** [Azure Backup](https://azure.microsoft.com/services/backup/) を使用して、Azure 仮想マシンで使用される VM ディスクをバックアップします。 また、[Azure Site Recovery](https://azure.microsoft.com/services/site-recovery/) を使用して地域的な災害が発生した場合の VM の保護も検討します。
+* **ブロック BLOB:** [ソフト削除](../blobs/storage-blob-soft-delete.md)を有効にしてオブジェクトレベルの削除および上書きから保護するか、[AzCopy](storage-use-azcopy.md)、[Azure PowerShell](storage-powershell-guide-full.md)、または [Azure Data Movement Library](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/) を使用して、他のリージョンの別のストレージ アカウントにブロック BLOB をコピーします。
+* **ファイル:** [AzCopy](storage-use-azcopy.md) または [Azure PowerShell](storage-powershell-guide-full.md) を使用して、他のリージョンの別のストレージ アカウントにファイルをコピーします。
 * **テーブル:** [AzCopy](storage-use-azcopy.md) を使用して、テーブル データを、他のリージョンの別のストレージ アカウントにエクスポートします。
 
 ## <a name="track-outages"></a>障害を追跡する
@@ -106,7 +106,7 @@ GRS および RA-GRS アカウントの場合は、DNS エントリが更新さ�
 
 ストレージ アカウントが geo 冗長に再構成された後、新しいプライマリから新しいセカンダリへの別のフェールオーバーが開始される可能性があります。 この場合、フェールオーバー前の元のプライマリ リージョンが再びプライマリ リージョンになり、ローカル冗長に構成されます。 その場合、フェールオーバー後のプライマリ リージョン (元のセカンダリ) のすべてのデータが失われます。 フェールバックの前にストレージ アカウントのほとんどのデータが新しいセカンダリにレプリケートされていなかった場合、大きなデータ損失が発生する可能性があります。 
 
-大きなデータ損失を防ぐため、フェールバックを行う前に、**[最終同期時刻]** プロパティの値を確認してください。 最終同期時刻を、新しいプライマリにデータが書き込まれた最後の時刻と比較して、予想されるデータ損失を評価します。 
+大きなデータ損失を防ぐため、フェールバックを行う前に、 **[最終同期時刻]** プロパティの値を確認してください。 最終同期時刻を、新しいプライマリにデータが書き込まれた最後の時刻と比較して、予想されるデータ損失を評価します。 
 
 ## <a name="initiate-an-account-failover"></a>アカウントのフェールオーバーを開始する
 

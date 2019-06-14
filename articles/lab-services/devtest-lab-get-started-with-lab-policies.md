@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: 8cc529fbf9b24335be1bec07f81c732ced7a2b72
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51227010"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60773844"
 ---
 # <a name="manage-basic-policies-for-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs でのラボの基本ポリシーの管理
 
@@ -49,9 +49,9 @@ Azure DevTest Labs では、各ラボのポリシー (設定) を管理するこ
    
     ![ユーザーごとの VM 数](./media/devtest-lab-set-lab-policy/max-vms-per-user.png)
 
-1. **[はい]** を選択して、ユーザーごとの VM 数を制限します。 ユーザーごとの VM 数を制限しない場合は、**[いいえ]** を選択します。 **[はい]** を選択した場合は、ユーザーが作成または要求できる VM の最大数を示す数値を入力します。 
+1. **[はい]** を選択して、ユーザーごとの VM 数を制限します。 ユーザーごとの VM 数を制限しない場合は、 **[いいえ]** を選択します。 **[はい]** を選択した場合は、ユーザーが作成または要求できる VM の最大数を示す数値を入力します。 
 
-1. **[はい]** を選択して、SSD (ソリッド ステート ディスク) を使用できる VM 数を制限します。 SSD を使用できる VM 数を制限しない場合は、**[いいえ]** を選択します。 **[はい]** を選択した場合は、SSD を使用して作成できる VM の最大数を示す数値を入力します。 
+1. **[はい]** を選択して、SSD (ソリッド ステート ディスク) を使用できる VM 数を制限します。 SSD を使用できる VM 数を制限しない場合は、 **[いいえ]** を選択します。 **[はい]** を選択した場合は、SSD を使用して作成できる VM の最大数を示す数値を入力します。 
 
 1. **[保存]** を選択します。
 

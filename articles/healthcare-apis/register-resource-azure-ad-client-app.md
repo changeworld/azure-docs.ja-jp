@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: mihansen
 ms.openlocfilehash: e8305c5a69fa3fda29f4f1292b7faa59f8ec3608
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55870148"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60709611"
 ---
 # <a name="register-a-resource-application-in-azure-active-directory"></a>Azure Active Directory にリソース アプリケーションを登録する
 
@@ -20,9 +20,9 @@ ms.locfileid: "55870148"
 
 ## <a name="app-registrations-in-azure-portal"></a>Azure portal でのアプリの登録
 
-1. [Azure portal](https://portal.azure.com) の左側のナビゲーション パネルで、**[Azure Active Directory]** をクリックします。
+1. [Azure portal](https://portal.azure.com) の左側のナビゲーション パネルで、 **[Azure Active Directory]** をクリックします。
 
-2. **[Azure Active Directory]** ブレードで、**[アプリの登録 (プレビュー)]** をクリックします。
+2. **[Azure Active Directory]** ブレードで、 **[アプリの登録 (プレビュー)]** をクリックします。
 
     ![Azure portal。 新しいアプリの登録。](media/how-to-aad/portal-aad-new-app-registration.png)
 
@@ -42,7 +42,7 @@ ms.locfileid: "55870148"
 
 2. *[アプリケーション ID URI]* の横にある **[設定]** をクリックします。
 
-3. 識別子 URI を入力し、**[保存]** をクリックします。 適切な識別子 URI は、FHIR サーバーの URI になります。
+3. 識別子 URI を入力し、 **[保存]** をクリックします。 適切な識別子 URI は、FHIR サーバーの URI になります。
 
 4. **[スコープの追加]** をクリックして、API に対して定義するあらゆるスコープを追加します。 Azure AD では現在、スコープ名でスラッシュ (`/`) は使用できません。 代わりに `$` を使用することをお勧めします。 `patient/*.read` のようなスコープは `patient$*.read` になります。
 

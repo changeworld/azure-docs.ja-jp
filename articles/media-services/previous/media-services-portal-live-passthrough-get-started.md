@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: 9a8ab024443744f50482dd2ca1cfb33db43359e9
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58802815"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61463374"
 ---
 # <a name="perform-live-streaming-with-on-premises-encoders-using-azure-portal"></a>Azure portal を使用してオンプレミス エンコーダーでライブ ストリーミングを実行する方法
 > [!div class="op_single_selector"]
@@ -97,7 +97,7 @@ Azure ポータルからの通知とエラーを表示するには、通知ア�
 
 ストリーミングとアーカイブを開始する準備ができたら、イベントを開始します。 イベントのストリーミングとアーカイブを停止するときにプログラムを停止します。 
 
-アーカイブ済みコンテンツを削除するには、イベントを停止して削除したうえで、関連付けられた資産を削除します。 イベントがアセットを使用している場合はアセットを削除できません。まずイベントを削除する必要があります。  
+アーカイブ済みコンテンツを削除するには、イベントを停止して削除したうえで、関連付けられた資産を削除します。 イベントがアセットを使用している場合はアセットを削除できません。まずイベントを削除する必要があります。 
 
 イベントを停止して削除した後も、アセットを削除していなければ、アーカイブ済みコンテンツをオンデマンドでのビデオとしてストリーミングできます。
 
@@ -109,7 +109,7 @@ Azure ポータルからの通知とエラーを表示するには、通知ア�
 パススルー チャネルの詳細については、「[マルチビットレートのストリームを作成するオンプレミス エンコーダーを使用したライブ ストリーミング](media-services-live-streaming-with-onprem-encoders.md)」を参照してください。
 
 1. [Azure Portal](https://portal.azure.com/) で Azure Media Services アカウントを選択します。
-2. **[設定]** ウィンドウで、**[ライブ ストリーミング]** をクリックします。 
+2. **[設定]** ウィンドウで、 **[ライブ ストリーミング]** をクリックします。 
    
     ![使用の開始](./media/media-services-portal-passthrough-get-started/media-services-getting-started.png)
    
@@ -146,9 +146,9 @@ Azure ポータルからの通知とエラーを表示するには、通知ア�
 * チャネルを削除できるのは、チャネルのすべてのライブ イベントが削除されている場合のみです。
 
 ## <a name="view-archived-content"></a>アーカイブ済みコンテンツを視聴する
-イベントを停止して削除した後も、アセットを削除していなければ、アーカイブ済みコンテンツをオンデマンドでのビデオとしてストリーミングできます。 イベントがアセットを使用している場合はアセットを削除できません。まずイベントを削除する必要があります。  
+イベントを停止して削除した後も、アセットを削除していなければ、アーカイブ済みコンテンツをオンデマンドでのビデオとしてストリーミングできます。 イベントがアセットを使用している場合はアセットを削除できません。まずイベントを削除する必要があります。 
 
-アセットを管理するには、**[設定]** を選択し、**[アセット]** をクリックします。
+アセットを管理するには、 **[設定]** を選択し、 **[アセット]** をクリックします。
 
 ![資産](./media/media-services-portal-passthrough-get-started/media-services-assets.png)
 

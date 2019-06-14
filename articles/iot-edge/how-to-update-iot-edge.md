@@ -11,10 +11,10 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
 ms.openlocfilehash: a3b6327b9e05b039696cc1743fc2d16c5e945e26
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65152629"
 ---
 # <a name="update-the-iot-edge-security-daemon-and-runtime"></a>IoT Edge セキュリティ デーモンおよびランタイムの更新
@@ -94,7 +94,7 @@ IoT Edge サービスによって、ランタイム イメージの最新バー�
 
 デプロイで特定のタグを使用している (mcr.microsoft.com/azureiotedge-hub:**1.0.2** など) 場合、行う必要がある作業は、配置マニフェスト内のタグを更新し、デバイスに変更を適用することだけです。 
 
-Azure portal で、ランタイム デプロイ イメージは、**[Edge ランタイムの詳細設定を構成する]** セクションで宣言されています。 
+Azure portal で、ランタイム デプロイ イメージは、 **[Edge ランタイムの詳細設定を構成する]** セクションで宣言されています。 
 
 ![Edge ランタイムの詳細設定を構成する](./media/how-to-update-iot-edge/configure-runtime.png)
 

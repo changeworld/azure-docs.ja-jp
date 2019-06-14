@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2017
 ms.author: yurid
-ms.openlocfilehash: 9ff111bb70716e4ca218dce81dd1754181cdd93b
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: af9b1ef64944e72a24d76cc555e51841e75401ff
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56113330"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60909403"
 ---
 # <a name="azure-security-center-and-azure-virtual-machines-with-linux"></a>Linux での Azure Security Center と Azure 仮想マシン
 [Azure Security Center](https://azure.microsoft.com/services/security-center/) は、脅威の防御、検出、対応を可能にする機能です。 これにより、Azure サブスクリプション全体に統合セキュリティの監視とポリシーの管理を提供し、気付かない可能性がある脅威を検出し、セキュリティ ソリューションの広範なエコシステムと連動します。
@@ -50,7 +50,7 @@ Azure Security Center の使用を開始するには、次のことを理解し�
 * サポートされているオペレーティング システムの情報については、「[Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md)」を参照してください。 
 
 ## <a name="set-security-policy"></a>セキュリティ ポリシーの設定
-Azure Security Center で必要な情報を収集し、構成したセキュリティ ポリシーに基づいて推奨事項と警告を生成できるよう、データ収集を有効にしておく必要があります。 次の図では、**[データ収集]** が **[オン]** になっていることがわかります。
+Azure Security Center で必要な情報を収集し、構成したセキュリティ ポリシーに基づいて推奨事項と警告を生成できるよう、データ収集を有効にしておく必要があります。 次の図では、 **[データ収集]** が **[オン]** になっていることがわかります。
 
 セキュリティ ポリシーは、指定されたサブスクリプションまたはリソース グループ内のリソースに推奨されるコントロールのセットを定義します。 セキュリティ ポリシーを有効にする前に、データ収集を有効にしておく必要があります。Security Center では、仮想マシンのセキュリティ状態へのアクセス、セキュリティ推奨事項の提供、脅威についての警告を行うために、その仮想マシンからデータを収集します。 Security Center では、セキュリティに関する会社のニーズ、および各サブスクリプションでのアプリケーションの種類やデータの機密度に合わせて、Azure サブスクリプションまたはリソース グループのポリシーを定義できます。 
 
@@ -80,7 +80,7 @@ Azure Security Center で必要な情報を収集し、構成したセキュリ�
 > 
 
 ## <a name="monitor-security-health"></a>セキュリティ正常性を監視する
-サブスクリプションのリソースに対して [セキュリティ ポリシー](tutorial-security-policy.md) を有効にすると、Security Center は、リソースのセキュリティを分析して潜在的な脆弱性を特定します。  **[リソース セキュリティの正常性]** ブレードで、リソースのセキュリティの状態と、問題がある場合はその問題を確認することができます。 **[リソース セキュリティの正常性]** タイルの **[仮想マシン]** をクリックすると、**[仮想マシン]** ブレードが開いて VM の推奨事項が表示されます。 
+サブスクリプションのリソースに対して [セキュリティ ポリシー](tutorial-security-policy.md) を有効にすると、Security Center は、リソースのセキュリティを分析して潜在的な脆弱性を特定します。  **[リソース セキュリティの正常性]** ブレードで、リソースのセキュリティの状態と、問題がある場合はその問題を確認することができます。 **[リソース セキュリティの正常性]** タイルの **[仮想マシン]** をクリックすると、 **[仮想マシン]** ブレードが開いて VM の推奨事項が表示されます。 
 
 ![セキュリティの正常性](./media/security-center-virtual-machine/security-center-virtual-machine-fig2.png)
 
@@ -92,7 +92,7 @@ Security Center は、真の脅威を検出し、偽陽性を減らすために�
 セキュリティの警告を選択して、警告を発生させたイベントの詳細を確認します。必要に応じて、攻撃を受けたものを修復するために必要な手順を確認します。 セキュリティの警告は、[種類](security-center-alerts-type.md)と日付によってグループ化されます。
 
 ## <a name="monitor-security-health"></a>セキュリティ正常性の監視
-サブスクリプションのリソースに対して [セキュリティ ポリシー](tutorial-security-policy.md) を有効にすると、Security Center は、リソースのセキュリティを分析して潜在的な脆弱性を特定します。  **[リソース セキュリティの正常性]** ブレードで、リソースのセキュリティの状態と、問題がある場合はその問題を確認することができます。 **[リソース セキュリティの正常性]** タイルの **[仮想マシン]** をクリックすると、**[仮想マシン]** ブレードが開いて VM の推奨事項が表示されます。 
+サブスクリプションのリソースに対して [セキュリティ ポリシー](tutorial-security-policy.md) を有効にすると、Security Center は、リソースのセキュリティを分析して潜在的な脆弱性を特定します。  **[リソース セキュリティの正常性]** ブレードで、リソースのセキュリティの状態と、問題がある場合はその問題を確認することができます。 **[リソース セキュリティの正常性]** タイルの **[仮想マシン]** をクリックすると、 **[仮想マシン]** ブレードが開いて VM の推奨事項が表示されます。 
 
 ![セキュリティの正常性](./media/security-center-linux-virtual-machine/security-center-linux-virtual-machine-fig4.png)
 

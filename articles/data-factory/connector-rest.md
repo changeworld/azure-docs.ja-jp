@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: jingwang
 ms.openlocfilehash: ee47f464c59bd9deed98671f19cfcc6d2c3c1b39
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58762482"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60546643"
 ---
 # <a name="copy-data-from-a-rest-endpoint-by-using-azure-data-factory"></a>Azure Data Factory を使用して REST エンドポイントからデータをコピーする
 
@@ -37,7 +37,7 @@ REST ソースから、サポートされている任意のシンク データ �
 
 - **GET** または **POST** メソッドを使用して、REST エンドポイントからデータを取得する。
 - 次のいずれかの認証を使用してデータを取得する。**匿名**、**基本**、**AAD サービス プリンシパル**、**Azure リソースのマネージド ID**。
-- REST API 内の**[改ページ位置の自動修正](#pagination-support)**。
+- REST API 内の **[改ページ位置の自動修正](#pagination-support)** 。
 - REST JSON 応答を[そのまま](#export-json-response-as-is)コピーするか、[スキーマ マッピング](copy-activity-schema-and-type-mapping.md#schema-mapping)を使用して解析する。 **JSON** では応答ペイロードのみがサポートされます。
 
 > [!TIP]
@@ -57,9 +57,9 @@ REST のリンクされたサービスでは、次のプロパティがサポー
 |:--- |:--- |:--- |
 | type | **type** プロパティには **RestService** を設定する必要があります。 | はい |
 | url | REST サービスのベース URL。 | はい |
-| enableServerCertificateValidation | エンドポイントに接続するときに、サーバー側の SSL 証明書を検証するかどうか。 | いいえ <br /> (既定値は **true** です)。 |
+| enableServerCertificateValidation | エンドポイントに接続するときに、サーバー側の SSL 証明書を検証するかどうか。 | いいえ<br /> (既定値は **true** です)。 |
 | authenticationType | REST サービスへの接続に使用される認証の種類。 使用できる値は、**Anonymous**、**Basic**、**AadServicePrincipal**、および **ManagedServiceIdentity** です。 それぞれのプロパティとサンプルについては、以下の対応するセクションを参照してください。 | はい |
-| connectVia | データ ストアに接続するために使用される [Integration Runtime](concepts-integration-runtime.md)。 Azure Integration Runtime またはセルフホステッド統合ランタイムを使用できます (データ ストアがプライベート ネットワークにある場合)。 指定されていない場合は、既定の Azure Integration Runtime が使用されます。 |いいえ  |
+| connectVia | データ ストアに接続するために使用される [Integration Runtime](concepts-integration-runtime.md)。 Azure Integration Runtime またはセルフホステッド統合ランタイムを使用できます (データ ストアがプライベート ネットワークにある場合)。 指定されていない場合は、既定の Azure Integration Runtime が使用されます。 |いいえ |
 
 ### <a name="use-basic-authentication"></a>基本認証を使用する
 
@@ -170,11 +170,11 @@ REST からのデータ コピーについては、次のプロパティがサ�
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | データセットの **type** プロパティを **RestResource** に設定する必要があります。 | はい |
-| relativeUrl | データを含むリソースへの相対 URL。 このプロパティが指定されていない場合は、リンクされたサービス定義に指定されている URL のみが使用されます。 | いいえ  |
-| requestMethod | HTTP メソッド。 使用できる値は、**Get** (既定値) と **Post** です。 | いいえ  |
-| additionalHeaders | 追加の HTTP 要求ヘッダー。 | いいえ  |
-| requestBody | HTTP 要求の本文。 | いいえ  |
-| paginationRules | 次のページ要求を作成する改ページ位置の自動修正規則。 詳細については、「[pagination support](#pagination-support)」(改ページ位置の自動調整のサポート) セクションを参照してください。 | いいえ  |
+| relativeUrl | データを含むリソースへの相対 URL。 このプロパティが指定されていない場合は、リンクされたサービス定義に指定されている URL のみが使用されます。 | いいえ |
+| requestMethod | HTTP メソッド。 使用できる値は、**Get** (既定値) と **Post** です。 | いいえ |
+| additionalHeaders | 追加の HTTP 要求ヘッダー。 | いいえ |
+| requestBody | HTTP 要求の本文。 | いいえ |
+| paginationRules | 次のページ要求を作成する改ページ位置の自動修正規則。 詳細については、「[pagination support](#pagination-support)」(改ページ位置の自動調整のサポート) セクションを参照してください。 | いいえ |
 
 **例 1:改ページ位置の自動修正で Get メソッドを使用する**
 
@@ -233,8 +233,8 @@ REST からのデータ コピーについては、次のプロパティがサ�
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | コピー アクティビティのソースの **type** プロパティを **RestSource** に設定する必要があります | はい |
-| httpRequestTimeout | HTTP 要求が応答を取得する際のタイムアウト (**TimeSpan** 値)。 この値は、応答データの読み取りのタイムアウトではなく、応答の取得のタイムアウトです。 既定値は **00:01:40** です。  | いいえ  |
-| requestInterval | 次のページに対する要求を送信する前に待機する時間。 既定値は **00:00:01** です。 |  いいえ  |
+| httpRequestTimeout | HTTP 要求が応答を取得する際のタイムアウト (**TimeSpan** 値)。 この値は、応答データの読み取りのタイムアウトではなく、応答の取得のタイムアウトです。 既定値は **00:01:40** です。  | いいえ |
+| requestInterval | 次のページに対する要求を送信する前に待機する時間。 既定値は **00:00:01** です。 |  いいえ |
 
 **例**
 

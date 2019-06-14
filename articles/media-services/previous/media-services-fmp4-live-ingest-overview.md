@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: cenkd;juliako
 ms.openlocfilehash: b3357436d068396c5c3c4fae10ed6857759c5aed
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58189344"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61221325"
 ---
 # <a name="azure-media-services-fragmented-mp4-live-ingest-specification"></a>Azure Media Services の Fragmented MP4 ライブ インジェスト仕様 
 
@@ -110,7 +110,7 @@ Media Services 用 ISO Fragmented MP4 ベースのライブ インジェスト�
 1. HTTP 要求のメッセージ チャンクの送信に、短いタイムアウトを使用します。 ターゲット MP4 フラグメントの継続時間が N 秒の場合、N ～ 2N 秒の間の送信タイムアウトを使用します。たとえば、MP4 フラグメントの継続時間が 6 秒の場合は、6 - 12 秒のタイムアウトを使用します。 タイムアウトが発生したら、接続をリセットし、新しい接続を開いて、新しい接続でストリーム インジェストを再開します。 
 1. サービスに対して正常にすべて送信された最後の 2 つのフラグメントが含まれるローリング バッファーを各トラックで維持します。  ストリームの HTTP POST 要求がストリームの終了前に終了またはタイムアウトした場合、新しい接続を開き、別の HTTP POST 要求を開始して、ストリーム ヘッダーを再送信し、各トラックの最後の 2 つのフラグメントを再送信することによって、メディア タイムラインに不連続性を発生させずにストリームを再開します。 これにより、データが失われる確率が減少します。
 1. エンコーダーで、接続を確立する際や TCP エラーが発生した後にストリーミングを再開する際の再試行回数を制限しないことをお勧めします。
-1. TCP エラー後: 
+1. TCP エラー後:
   
     a. 現在の接続を終了し、新しい HTTP POST 要求用に新しい接続を作成しなければなりません。
 

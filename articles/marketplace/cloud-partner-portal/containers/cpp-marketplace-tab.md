@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: pabutler
 ms.openlocfilehash: f2d735662fcd177f64d1ebc71a25b7d7629db3ce
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64942656"
 ---
 # <a name="container-marketplace-tab"></a>コンテナーの [Marketplace] タブ
@@ -28,7 +28,7 @@ ms.locfileid: "64942656"
 
 |    フィールド                  |       説明                                                            |
 |  ---------                |     ---------------                                                          |
-| **Title (タイトル)\***                 | プランのタイトル。 マーケットプレースで目立つように表示されます。  最大文字数は 50 文字です。 |
+| **[Title]\(タイトル\)\***                 | プランのタイトル。 マーケットプレースで目立つように表示されます。  最大文字数は 50 文字です。 |
 | **Summary (要約)\***               | プランの短い要約。 最大長は 100 文字です。 |
 | **Long Summary (長い要約)\***          | プランのより長い要約 ( **[要約]** と同じでもかまいません)。  最大長は 256 文字です。 |
 | **説明\***           | プランの説明。  最大長は 3,000 文字で、単純な HTML 書式がサポートされています。

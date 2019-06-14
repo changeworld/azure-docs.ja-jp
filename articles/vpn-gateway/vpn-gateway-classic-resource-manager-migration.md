@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/02/2017
 ms.author: amsriva
-ms.openlocfilehash: 1164fc24355657af22b6befaad74685ebbc2b5cb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b65b47389611bcc0e5acb3c7ebff672f72a87581
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23127100"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60761586"
 ---
 # <a name="vpn-gateway-classic-to-resource-manager-migration"></a>VPN Gateway クラシックから Resource Manager への移行
 VPN Gateway は クラシック モデル から Resource Manager デプロイ モデルに移行できるようになりました。 詳細については、Azure Resource Manager の[機能と利点](../azure-resource-manager/resource-group-overview.md)をご覧ください。 この記事では、従来のデプロイメントから新しい Resource Manager ベースモデルへの移行方法について説明します。 
@@ -56,7 +56,7 @@ Resource Manager モデルは従来のモデルと異なり、仮想ネットワ
 VNet の移行中、現在の VNet の VPN Gateway に接続しているエンティティが、別の VNet であることが検出され、両方の VNet の移行の完了後、他の VNet を表す 2 つのローカル サイトは表示されなくなります。 2 つの VPN Gateway、2 つのローカル サイト、それらを結ぶ2 つの接続といったクラシック モデルは、2 つの VPN Gateway と 2 つの VNet2VNet 接続種類を使用するリソース マネージャー モデルに変換されます。
 
 ## <a name="transit-vpn-connectivity"></a>トランジット VPN 接続
-オンプレミスに直接接続している別の VNet に接続することによって、VNet へのオンプレミス接続を確立する、というトポロジで、VPN Gateway を構成できます。 これはトランジット VPN 接続であり、1 つ目の VNet のインスタンスは、直接オンプレミスに接続されている Vnet 上にある VPN ゲートウェイへの転送によってオンプレミスリソースに接続されます。 従来のデプロイ モデルでこの構成を行うには、接続済みの VNet とオンプレミスのアドレス空間の両方を表す集計プレフィックスのあるローカル サイトを作成する必要がありました。 その後、そのローカル サイトを VNet に接続してトランジット接続が確立されていました。 この従来モデルにも、オンプレミスのアドレス範囲を変更した場合には、VNet とオンプレミスの集計を表すローカル サイトにも反映しなければならないという管理上の問題がありました。 Resource Manager がサポートするゲートウェイで BGP がサポートされるようになったことにより、接続されているゲートウェイがオンプレミスからルートを学習することができ、手動でプレフィックスを修正する必要がなくなったため管理が簡素化されます。
+オンプレミスに直接接続している別の VNet に接続することによって、VNet へのオンプレミス接続を確立する、というトポロジで、VPN Gateway を構成できます。 これはトランジット VPN 接続であり、1 つ目の VNet のインスタンスは、直接オンプレミスに接続されている Vnet 上にある VPN ゲートウェイへの転送によってオンプレミスリソースに接続されます。 クラシック デプロイ モデルでこの構成を行うには、接続済みの VNet とオンプレミスのアドレス空間の両方を表す集計プレフィックスのあるローカル サイトを作成する必要がありました。 その後、そのローカル サイトを VNet に接続してトランジット接続が確立されていました。 この従来モデルにも、オンプレミスのアドレス範囲を変更した場合には、VNet とオンプレミスの集計を表すローカル サイトにも反映しなければならないという管理上の問題がありました。 Resource Manager がサポートするゲートウェイで BGP がサポートされるようになったことにより、接続されているゲートウェイがオンプレミスからルートを学習することができ、手動でプレフィックスを修正する必要がなくなったため管理が簡素化されます。
 
 ![トランジット ルーティングのシナリオのスクリーンショット。](./media/vpn-gateway-migration/migration2.png)
 
@@ -65,6 +65,6 @@ VNet の移行中、現在の VNet の VPN Gateway に接続しているエン�
 * 互いに接続されていて、オンプレミスに接続している VPN Gateway で BGP を有効にします。 BGP を有効にすると、VNet ゲートウェイ間でお互いにルートを学習し、通知し合うため、他の構成変更なしに接続が復元されます。 BGP のオプションは、Standard 以上の SKU でのみ利用できます。
 * 影響を受けるVNet からオンプレミスの場所を表すローカル ネットワーク ゲートウェイへの明示的な接続を確立します。 これには、オンプレミスのルーターの構成を変更して、IPsec トンネルを作成、構成する必要もあります。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 VPN Gateway の移行サポートについて学習した後は、[プラットフォームでサポートされる、クラシックから Azure Resource Manager への IaaS リソースの移行](../virtual-machines/windows/migration-classic-resource-manager-ps.md)に関する記事をご覧ください。
 

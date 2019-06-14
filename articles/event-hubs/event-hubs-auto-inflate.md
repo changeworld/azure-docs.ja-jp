@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 12/06/2018
 ms.author: shvija
 ms.openlocfilehash: d705993c7cd3816e89da21625dc5b003435b9128
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408164"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60822728"
 ---
 # <a name="automatically-scale-up-azure-event-hubs-throughput-units"></a>Azure Event Hubs のスループット単位を自動的にスケールアップする
 Azure Event Hubs は、拡張性の高いデータ ストリーミング プラットフォームです。 そのため、Event Hubs の使用は、多くの場合、サービスの利用開始後に増えます。 このような使用では、Event Hubs のスケーリングとより大きな転送率の処理を行うために、事前に定義された[スループット単位](event-hubs-features.md#throughput-units)を増やす必要があります。 Event Hubs の**自動インフレ**機能は、使用量のニーズに合わせてスループット単位の数を増やすことで、自動的にスケールアップします。 スループット単位を増やすことで、以下の状況で必要になる調整シナリオを防ぐことができます。
@@ -58,10 +58,10 @@ Event Hubs 名前空間の自動インフレを有効または無効にするに
 #### <a name="enable-auto-inflate-for-an-existing-event-hub"></a>既存のイベント ハブの自動インフレを有効にする
 自動インフレ機能を有効にし、次の手順を使用してその設定を変更することもできます。 
  
-1. **[Event Hubs 名前空間**] ページの **[Auto-inflate throughput units](自動インフレのスループット ユニット)** で **[無効]** を選択します。  
+1. **[Event Hubs 名前空間**] ページの **[Auto-inflate throughput units]\(自動インフレのスループット ユニット)** で **[無効]** を選択します。  
 
     ![[Event Hubs 名前空間] ページでスループット ユニットを選択する](./media/event-hubs-auto-inflate/select-throughput-units.png)
-2. **[スケールの設定**] ページで、**[有効]** のチェック ボックスをオンにします (自動スケール機能が有効になっていなかった場合)。
+2. **[スケールの設定**] ページで、 **[有効]** のチェック ボックスをオンにします (自動スケール機能が有効になっていなかった場合)。
 
     ![[有効] を選択する](./media/event-hubs-auto-inflate/scale-settings.png)
 3. スループット ユニットの**最大**数を入力するか、スクロール バーを使用して値を設定します。 
@@ -73,7 +73,7 @@ Event Hubs 名前空間の自動インフレを有効または無効にするに
 
 ### <a name="enable-auto-inflate-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して自動インフレを有効にする
 
-Azure Resource Manager テンプレートのデプロイ時に自動インフレを有効にできます。 たとえば、`isAutoInflateEnabled` プロパティを **true** に設定し、`maximumThroughputUnits` を 10 に設定します。 例: 
+Azure Resource Manager テンプレートのデプロイ時に自動インフレを有効にできます。 たとえば、`isAutoInflateEnabled` プロパティを **true** に設定し、`maximumThroughputUnits` を 10 に設定します。 例:
 
 ```json
 "resources": [

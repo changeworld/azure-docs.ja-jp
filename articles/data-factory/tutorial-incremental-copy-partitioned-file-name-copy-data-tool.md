@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 1/24/2019
 ms.openlocfilehash: c89764d746f07e6100b1f250d4c107bb700fe014
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58445848"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61099076"
 ---
 # <a name="incrementally-copy-new-files-based-on-time-partitioned-file-name-by-using-the-copy-data-tool"></a>データのコピー ツールを使用することにより、パーティション分割されたファイル名に基づく新しいファイルを増分コピーする
 
@@ -54,11 +54,11 @@ ms.locfileid: "58445848"
 
 ## <a name="create-a-data-factory"></a>Data Factory を作成する。
 
-1. 左側のメニューで、**[リソースの作成]** > **[データ + 分析]** > **[Data Factory]** の順に選択します。 
+1. 左側のメニューで、 **[リソースの作成]**  >  **[データ + 分析]**  >  **[Data Factory]** の順に選択します。 
    
    ![[新規] ウィンドウでの [Data Factory] の選択](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
 
-2. **[新しいデータ ファクトリ]** ページで、**[名前]** に「**ADFTutorialDataFactory**」と入力します。 
+2. **[新しいデータ ファクトリ]** ページで、 **[名前]** に「**ADFTutorialDataFactory**」と入力します。 
       
     ![新しいデータ ファクトリ](./media/tutorial-copy-data-tool/new-azure-data-factory.png)
     
@@ -66,7 +66,7 @@ ms.locfileid: "58445848"
    
    ![[新しいデータ ファクトリ] のエラー メッセージ](./media/tutorial-copy-data-tool/name-not-available-error.png)
    
-   データ ファクトリの名前の値に関するエラー メッセージが表示された場合は、別の名前を入力してください。 たとえば、_**yourname**_**ADFTutorialDataFactory** という名前を使用します。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関するページを参照してください。
+   データ ファクトリの名前の値に関するエラー メッセージが表示された場合は、別の名前を入力してください。 たとえば、 _**yourname**_ **ADFTutorialDataFactory** という名前を使用します。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関するページを参照してください。
 3. 新しいデータ ファクトリの作成先となる Azure **サブスクリプション**を選択します。 
 4. **[リソース グループ]** で、次の手順のいずれかを行います。
      
@@ -79,18 +79,18 @@ ms.locfileid: "58445848"
 5. **[バージョン]** で、バージョンとして **[V2]** を選択します。
 6. **[場所]** で、データ ファクトリの場所を選択します。 サポートされている場所のみがドロップダウン リストに表示されます。 データ ファクトリによって使用されるデータ ストア (Azure Storage、SQL Database など) やコンピューティング (Azure HDInsight など) は、他の場所やリージョンに存在していてもかまいません。
 7. **[ダッシュボードにピン留めする]** をオンにします。 
-8. **作成**を選択します。
+8. **作成** を選択します。
 9. ダッシュボードの **[Deploying Data Factory]\(データ ファクトリをデプロイしています\)** タイルに処理の状態が表示されます。
 
     ![[Deploying data factory]\(データ ファクトリをデプロイしています\) タイル](media/tutorial-copy-data-tool/deploying-data-factory.png)
-10. 作成が完了すると、**[Data Factory]** ホーム ページが表示されます。
+10. 作成が完了すると、 **[Data Factory]** ホーム ページが表示されます。
    
     ![データ ファクトリのホーム ページ](./media/tutorial-copy-data-tool/data-factory-home-page.png)
-11. 別のタブで Azure Data Factory ユーザー インターフェイス (UI) を起動するには、**[Author & Monitor]\(作成と監視\)** タイルを選択します。 
+11. 別のタブで Azure Data Factory ユーザー インターフェイス (UI) を起動するには、 **[Author & Monitor]\(作成と監視\)** タイルを選択します。 
 
 ## <a name="use-the-copy-data-tool-to-create-a-pipeline"></a>データのコピー ツールを使用してパイプラインを作成する
 
-1. **[Let's get started]\(始めましょう\)** ページで、**[データのコピー]** タイルを選択してデータのコピー ツールを起動します。 
+1. **[Let's get started]\(始めましょう\)** ページで、 **[データのコピー]** タイルを選択してデータのコピー ツールを起動します。 
 
    ![データのコピー ツールのタイル](./media/tutorial-copy-data-tool/copy-data-tool-tile.png)
    
@@ -98,9 +98,9 @@ ms.locfileid: "58445848"
 
     a. **[タスク名]** に「**DeltaCopyFromBlobPipeline**」と入力します。
 
-    b. **[Task cadence or Task schedule]\(タスクの周期またはスケジュール\)** で、**[Run regularly on schedule]\(スケジュールに従って定期的に実行する\)** を選択します。
+    b. **[Task cadence or Task schedule]\(タスクの周期またはスケジュール\)** で、 **[Run regularly on schedule]\(スケジュールに従って定期的に実行する\)** を選択します。
 
-    c. **[Trigger type]\(トリガーの種類\)** で、**[Tumbling Window]\(タンブリング ウィンドウ\)** を選択します。
+    c. **[Trigger type]\(トリガーの種類\)** で、 **[Tumbling Window]\(タンブリング ウィンドウ\)** を選択します。
     
     d. **[Recurrence]\(繰り返し\)** で、**1 時間**と指定します。 
     
@@ -115,24 +115,24 @@ ms.locfileid: "58445848"
 
     ![[ソース データ ストア] ページ](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/source-data-store-page.png)
     
-    b. ギャラリーから **[Azure Blob Storage]** を選択して、**[続行]** をクリックします。
+    b. ギャラリーから **[Azure Blob Storage]** を選択して、 **[続行]** をクリックします。
 
     ![[ソース データ ストア] ページ](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/source-data-store-page-select-blob.png)
     
-    c. **[New Linked Service]\(新しいリンクされたサービス\)** ページで、**[ストレージ アカウント名]** ボックスの一覧からストレージ アカウントを選択して、**[完了]** をクリックします。
+    c. **[New Linked Service]\(新しいリンクされたサービス\)** ページで、 **[ストレージ アカウント名]** ボックスの一覧からストレージ アカウントを選択して、 **[完了]** をクリックします。
     
     ![[ソース データ ストア] ページ](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/source-data-store-page-linkedservice.png)
     
-    d. 新しく作成したリンクされたサービスを選択して、**[次へ]** をクリックします。 
+    d. 新しく作成したリンクされたサービスを選択して、 **[次へ]** をクリックします。 
     
    ![[ソース データ ストア] ページ](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/source-data-store-page-select-linkedservice.png)
 4. **[Choose the input file or folder]\(入力ファイルまたはフォルダーの選択\)** ページで、次の手順を行います。
     
-    a. **source** コンテナーを選択してから、**[選択]** を選択します。
+    a. **source** コンテナーを選択してから、 **[選択]** を選択します。
     
     ![[Choose the input file or folder]\(入力ファイルまたはフォルダーの選択\)](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/choose-input-file-folder.png)
     
-    b. **[File loading behavior]\(ファイル読み込み動作\)** で、**[Incremental load: time-partitioned folder/file names]\(段階的に読み込み: 時間でパーティション分割されたフォルダー/ファイル名\)** を選択します。
+    b. **[File loading behavior]\(ファイル読み込み動作\)** で、 **[Incremental load: time-partitioned folder/file names]\(段階的に読み込み: 時間でパーティション分割されたフォルダー/ファイル名\)** を選択します。
     
     ![[Choose the input file or folder]\(入力ファイルまたはフォルダーの選択\)](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/choose-loading-behavior.png)
     
@@ -140,15 +140,15 @@ ms.locfileid: "58445848"
     
     ![[Choose the input file or folder]\(入力ファイルまたはフォルダーの選択\)](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/input-file-name.png)
     
-    d. **[Binary copy]\(バイナリ コピー\)** をオンにして、**[次へ]** をクリックします。
+    d. **[Binary copy]\(バイナリ コピー\)** をオンにして、 **[次へ]** をクリックします。
     
     ![[Choose the input file or folder]\(入力ファイルまたはフォルダーの選択\)](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/check-binary-copy.png)     
-5. **[Destination data store]\(コピー先データ ストア\)** ページで、データ コピー元ストアと同じストレージ アカウントである **AzureBlobStorage** を選択し、**[次へ]** をクリックします。
+5. **[Destination data store]\(コピー先データ ストア\)** ページで、データ コピー元ストアと同じストレージ アカウントである **AzureBlobStorage** を選択し、 **[次へ]** をクリックします。
 
     ![[Destination data store]\(コピー先データ ストア\) ページ](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/destination-data-store-page-select-linkedservice.png) 
 6. **[Choose the output file or folder]\(出力ファイルまたはフォルダーの選択\)** ページで、次の手順を行います。
     
-    a. **destination** フォルダーを参照して選択し、**[選択]** をクリックします。
+    a. **destination** フォルダーを参照して選択し、 **[選択]** をクリックします。
     
     ![出力ファイルまたはフォルダーの選択](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/choose-output-file-folder.png)   
     
@@ -162,21 +162,21 @@ ms.locfileid: "58445848"
 7. **[設定]** ページで **[次へ]** を選択します。 
 
     ![[設定] ページ](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/settings-page.png)  
-8. **[サマリー]** ページで設定を確認し、**[次へ]** を選択します。
+8. **[サマリー]** ページで設定を確認し、 **[次へ]** を選択します。
 
     ![概要ページ](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/summary-page.png)
     
 9. **[Deployment]\(デプロイ\)** ページで **[監視]** を選択してパイプライン (タスク) を監視します。
     ![[Deployment]\(デプロイ\) ページ](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/deployment-page.png)
     
-10. 左側の **[監視]** タブが自動的に選択されたことがわかります。  パイプラインの実行が自動的にトリガーされるまで待機する必要があります (約 1 時間後)。  それが実行されると、**[アクション]** 列には、アクティビティの実行の詳細を表示するリンクとパイプラインを再実行するリンクが表示されます。 **[更新]** を選択して一覧を更新し、**[Actions]\(アクション\)** 列で **[View Activity Runs]\(アクティビティの実行の表示\)** リンクを選択します。 
+10. 左側の **[監視]** タブが自動的に選択されたことがわかります。  パイプラインの実行が自動的にトリガーされるまで待機する必要があります (約 1 時間後)。  それが実行されると、 **[アクション]** 列には、アクティビティの実行の詳細を表示するリンクとパイプラインを再実行するリンクが表示されます。 **[更新]** を選択して一覧を更新し、 **[Actions]\(アクション\)** 列で **[View Activity Runs]\(アクティビティの実行の表示\)** リンクを選択します。 
 
     ![パイプラインの実行を監視する](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs1.png)
 11. パイプライン内のアクティビティ (コピー アクティビティ) は 1 つだけなので、エントリは 1 つのみです。 ソース ファイル (file1.txt) が **source/2019/02/26/14** から **destination/2019/02/26/14/** に同じファイル名でコピーされたことがわかります。  
 
     ![パイプラインの実行を監視する](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs2.png)
     
-    Azure Storage Explorer (https://storageexplorer.com/)) を使用してファイルをスキャンしても、同じことを確認できます。
+    Azure Storage Explorer (https://storageexplorer.com/) ) を使用してファイルをスキャンしても、同じことを確認できます。
     
     ![パイプラインの実行を監視する](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs3.png)
 12. 別の空のテキスト ファイルを作成し、**file2.txt** という新しい名前を付けます。 ご利用のストレージ アカウント内のフォルダー パス **source/2019/02/26/15** にファイル file2.txt をアップロードします。   この作業は、[Azure Storage Explorer](https://storageexplorer.com/) をはじめとするさまざまなツールを使用して実行できます。   
@@ -186,7 +186,7 @@ ms.locfileid: "58445848"
     > [!NOTE]
     > 新しいフォルダー パスを作成する必要がないか注意してください。 フォルダー名は、UTC 時間に合わせて調整してください。  たとえば、現在の UTC 時間が 2019 年 2 月 26 日、午後 3 時 20 分である場合は、**source/{Year}/{Month}/{Day}/{Hour}/** のルールに従って、**source/2019/02/26/15/** というフォルダー パスを作成できます。
     
-13. **[Pipeline Runs]\(パイプライン実行\)** ビューに戻るには、**[All Pipelines Runs]\(すべてのパイプライン実行\)** を選択し、もう 1 時間経過してから同じパイプラインが再び自動的にトリガーされるまで待ちます。  
+13. **[Pipeline Runs]\(パイプライン実行\)** ビューに戻るには、 **[All Pipelines Runs]\(すべてのパイプライン実行\)** を選択し、もう 1 時間経過してから同じパイプラインが再び自動的にトリガーされるまで待ちます。  
 
     ![パイプラインの実行を監視する](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs5.png)
 
@@ -198,7 +198,7 @@ ms.locfileid: "58445848"
     
     ![パイプラインの実行を監視する](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs7.png) 
     
-    Azure Storage Explorer (https://storageexplorer.com/)) を使用して **destination** コンテナー内でファイルをスキャンしても、同じことを確認できます。
+    Azure Storage Explorer (https://storageexplorer.com/) ) を使用して **destination** コンテナー内でファイルをスキャンしても、同じことを確認できます。
     
     ![パイプラインの実行を監視する](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs8.png)
 

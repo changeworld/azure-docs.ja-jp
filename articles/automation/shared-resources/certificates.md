@@ -10,11 +10,11 @@ ms.date: 04/02/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: d230fa97d009f0ee2a3bc86a0b6b7c8d40687a46
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60010281"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61216073"
 ---
 # <a name="certificate-assets-in-azure-automation"></a>Azure Automation の証明書資産
 
@@ -63,11 +63,11 @@ Runbook および DSC 構成で証明書にアクセスするために、次の�
 
 ### <a name="to-create-a-new-certificate-with-the-azure-portal"></a>Azure ポータルで新しい証明書を作成するには
 
-1. Automation アカウントから、**[資産]** タイルをクリックして **[資産]** ページを開きます。
+1. Automation アカウントから、 **[資産]** タイルをクリックして **[資産]** ページを開きます。
 2. **[証明書]** タイルをクリックして **[証明書]** ページを開きます。
 3. ページ上部の **[証明書の追加]** をクリックします。
 4. Type a name for the certificate in the **Name** box.
-5. .cer または .pfx ファイルを参照するには、**[Upload a certificate file]\(証明書ファイルのアップロード\)** の **[ファイルの選択]** をクリックします。 .pfx ファイルを選択する場合は、パスワードおよびエクスポートを許可するかどうかを指定します。
+5. .cer または .pfx ファイルを参照するには、 **[Upload a certificate file]\(証明書ファイルのアップロード\)** の **[ファイルの選択]** をクリックします。 .pfx ファイルを選択する場合は、パスワードおよびエクスポートを許可するかどうかを指定します。
 6. **[作成]** をクリックして、新しい証明書資産を保存します。
 
 ### <a name="to-create-a-new-certificate-with-powershell"></a>PowerShell で新しい証明書を作成するには

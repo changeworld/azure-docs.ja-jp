@@ -10,12 +10,12 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: article
 ms.date: 04/06/2018
-ms.openlocfilehash: be678648ab93fcbdfd0a0baa1b01dcb273060ce2
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 7a51477dbbf6f4e50959a6d979342961c7e49ad9
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45729454"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60641111"
 ---
 # <a name="overview-of-business-continuity-with-microsoft-genomics"></a>Microsoft Genomics によるビジネス継続性の概要
 この概要では、Microsoft Genomics が提供するビジネス継続性とディザスター リカバリーの機能について説明します。 Azure リージョンの停止など、データ損失の原因となる可能性のある破壊的なイベントから復旧するためのオプションについて説明します。 
@@ -30,7 +30,7 @@ ms.locfileid: "45729454"
 
 
 ### <a name="manually-failover-microsoft-genomics-workflows-to-another-region"></a>Microsoft Genomics のワークフローを別のリージョンに手動でフェールオーバーする
-リージョン規模でデータ センターの停止が発生した場合、個々のデータの主権とビジネス継続性の要件に基づいて、Microsoft Genomics のワークフローをセカンダリ リージョンに送信することができます。 Microsoft Genomics のワークフローを手動でフェールオーバーするには、異なるリージョン固有の  Genomics アカウントを使用し、適切なリージョン固有の Genomics アカウントとストレージ アカウントの資格情報を使用してジョブを送信します。
+リージョン規模でデータ センターの停止が発生した場合、個々のデータの主権とビジネス継続性の要件に基づいて、Microsoft Genomics のワークフローをセカンダリ リージョンに送信することができます。 Microsoft Genomics のワークフローを手動でフェールオーバーするには、異なるリージョン固有の Genomics アカウントを使用し、適切なリージョン固有の Genomics アカウントとストレージ アカウントの資格情報を使用してジョブを送信します。
 
 具体的には、次のようにする必要があります。
 * Azure Portal を使用して、セカンダリ リージョンに Genomics アカウントを作成します。 

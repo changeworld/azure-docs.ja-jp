@@ -15,11 +15,11 @@ ms.date: 08/29/2018
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: bcb0c806d916b9dff4461cad829a1d75e8df7cf6
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53271897"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60766269"
 ---
 # <a name="certificates-and-the-app-service-environment"></a>証明書と App Service Environment 
 
@@ -65,7 +65,7 @@ ASE でホストされているアプリは、マルチテナント App Service 
 - IP ベースの SSL。外部 ASE でのみサポートされます。  ILB ASE は、IP ベースの SSL をサポートしていません。
 - KeyVault がホストされている証明書 
 
-これらの証明書のアップロードおよび管理の手順は、App Service SSL チュートリアル (https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-ssl) にあります。  Web アプリに割り当てたカスタム ドメイン名と一致するように証明書を構成するだけの場合は、これらの手順で十分です。 既定のドメイン名を使用して ILB ASE Web アプリ用に証明書をアップロードする場合は、前述したように、証明書の SAN 内の scm サイトを指定します。 
+これらの証明書のアップロードおよび管理の手順は、App Service SSL チュートリアル (https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-ssl ) にあります。  Web アプリに割り当てたカスタム ドメイン名と一致するように証明書を構成するだけの場合は、これらの手順で十分です。 既定のドメイン名を使用して ILB ASE Web アプリ用に証明書をアップロードする場合は、前述したように、証明書の SAN 内の scm サイトを指定します。 
 
 ## <a name="tls-settings"></a>TLS の設定 
 

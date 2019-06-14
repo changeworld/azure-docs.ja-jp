@@ -11,11 +11,11 @@ ms.topic: article
 ms.assetid: 20fc3722-6f8b-402f-b391-b84e9df6fcff
 ms.date: 07/08/2016
 ms.openlocfilehash: 05368f627c5e9482a43d5e30b0e16b1d47f6217c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58074724"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60999185"
 ---
 # <a name="receive-b2b-data-with-azure-logic-apps-and-enterprise-integration-pack"></a>Azure Logic Apps と Enterprise Integration Pack で B2B データを受信する
 
@@ -35,7 +35,7 @@ AS2 と X12 のアクションを使用するには、エンタープライズ�
 
     ![](./media/logic-apps-enterprise-integration-b2b/flatfile-1.png)
 
-3. **AS2 のデコード** アクションを追加するには、**[アクションの追加]** を選択します。
+3. **AS2 のデコード** アクションを追加するには、 **[アクションの追加]** を選択します。
 
     ![](./media/logic-apps-enterprise-integration-b2b/transform-2.png)
 
@@ -78,7 +78,7 @@ AS2 と X12 のアクションを使用するには、エンタープライズ�
     次に、取引先から受信した X12 データをデコードし、項目を JSON オブジェクトに出力する手順を追加します。 
     データを受信したことをパートナーに知らせるために、HTTP 応答アクションで AS2 Message Disposition Notification (MDN) を含む応答を返すことができます。
 
-12. **[応答]** アクションを追加するには、**[アクションの追加]** を選択します。
+12. **[応答]** アクションを追加するには、 **[アクションの追加]** を選択します。
 
     ![](./media/logic-apps-enterprise-integration-b2b/b2b-14.png)
 

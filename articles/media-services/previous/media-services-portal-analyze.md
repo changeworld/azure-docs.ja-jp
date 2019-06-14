@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: d3917f65d8be08d6355013393f6c6675ea6c7fc5
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58619443"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61131821"
 ---
 # <a name="analyze-your-media-using-the-azure-portal"></a>Azure Portal を使用してメディアを分析する 
 > [!NOTE]
@@ -34,10 +34,10 @@ Azure Media Services Analytics は、組織や企業がビデオ ファイルか
 
 ## <a name="choose-an-asset-that-you-want-to-analyze"></a>分析する資産を選択する
 1. [Azure Portal](https://portal.azure.com/) で Azure Media Services アカウントを選択します。
-2. **[設定]** ウィンドウで、**[資産]** を選択します。  
+2. **[設定]** ウィンドウで、 **[資産]** を選択します。  
    
     ![ビデオを分析する](./media/media-services-portal-analyze/media-services-portal-analyze001.png)
-3. 分析する資産を選択し、**[分析]** をクリックします。
+3. 分析する資産を選択し、 **[分析]** をクリックします。
    
     ![ビデオを分析する](./media/media-services-portal-analyze/media-services-portal-analyze002.png)
 4. **[メディア分析を使用したメディア資産の処理]** ウィンドウでプロセッサを選択します。 

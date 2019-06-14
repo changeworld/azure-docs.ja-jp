@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 09/29/2017
 ms.author: apipm
 ms.openlocfilehash: 251caa840446e75ff13d9b4dcebcbae3a36473c8
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54265449"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60657511"
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>API のインポートに関する制限事項と既知の問題
 ## <a name="about-this-list"></a>このリストについて

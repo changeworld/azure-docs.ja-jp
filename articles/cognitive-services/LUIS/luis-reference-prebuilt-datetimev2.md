@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 05/07/2019
 ms.author: diberry
 ms.openlocfilehash: e7577dcf4859b1192121fe0406d0efb63a9f5990
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65148633"
 ---
 # <a name="datetimev2-prebuilt-entity-for-a-luis-app"></a>LUIS アプリの datetimeV2 作成済みエンティティ
@@ -298,7 +298,7 @@ LUIS アプリで `datetime` を `datetimeV2` に置き換えるには、次の�
 1. LUIS Web インターフェイスの **[Entities]\(エンティティ\)** ウィンドウを開きます。 
 2. **datetime** 作成済みエンティティを削除します。
 3. **[Add prebuilt entity]\(作成済みエンティティの追加\)** をクリックします。
-4. **datetimeV2** を選択し、**[保存]** をクリックします。
+4. **datetimeV2** を選択し、 **[保存]** をクリックします。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -9,11 +9,11 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/28/2017
 ms.openlocfilehash: f11034a4970e3fb95333310af82a6b2a2551f1eb
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59257282"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61479151"
 ---
 # <a name="scale-your-stream-analytics-job-with-azure-machine-learning-functions"></a>Azure Machine Learning 関数を使用した Stream Analytics ジョブのスケーリング
 Stream Analytics ジョブを設定し、そのジョブにサンプル データを供給することは簡単です。 同じジョブを大量のデータに対して実行する必要がある場合は、どうしたらよいのでしょうか。 それには、Stream Analytics ジョブをスケールできるように構成する方法を把握する必要があります。 このドキュメントでは、Machine Learning 関数を使用した Stream Analytics ジョブのスケーリングの特別な側面について説明します。 通常の Stream Analytics ジョブをスケーリングする方法の詳細については、「 [ストリーム データ処理スループット向上のための Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)」を参照してください。
@@ -94,11 +94,11 @@ Stream Analytics ジョブの [監視] 領域には、3 つの関数関連のメ
 
 定義は次のとおりです。
 
-**[関数要求]**:関数要求の数。
+**[関数要求]** :関数要求の数。
 
-**[関数イベント]**:関数要求のイベントの数。
+**[関数イベント]** :関数要求のイベントの数。
 
-**[FAILED FUNCTION REQUESTS]\(失敗した関数要求\)**:失敗した関数要求の数。
+**[FAILED FUNCTION REQUESTS]\(失敗した関数要求\)** :失敗した関数要求の数。
 
 ## <a name="key-takeaways"></a>重要なポイント
 要点をまとめると、Machine Learning 関数を使用して Stream Analytics ジョブをスケールするには、次の項目を考慮する必要があります。

@@ -15,11 +15,11 @@ ms.date: 11/08/2018
 ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: 97764db40807214e756f119ca95fd640164f0cf2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57877309"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60851424"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Azure App Service 上での認証と承認の高度な使用方法
 
@@ -41,9 +41,9 @@ ms.locfileid: "57877309"
 
 最初に、Azure Portal の **[認証/承認]** ページで、有効にする各 ID プロバイダーを構成します。
 
-**[要求が認証されない場合に実行するアクション]** で、**[匿名要求を許可する (操作不要)]** を選択します。
+**[要求が認証されない場合に実行するアクション]** で、 **[匿名要求を許可する (操作不要)]** を選択します。
 
-サインイン ページ、ナビゲーション バー、またはアプリのその他の任意の場所で、有効にした各プロバイダーへのサインイン リンク (`/.auth/login/<provider>`) を追加します。 例: 
+サインイン ページ、ナビゲーション バー、またはアプリのその他の任意の場所で、有効にした各プロバイダーへのサインイン リンク (`/.auth/login/<provider>`) を追加します。 例:
 
 ```HTML
 <a href="/.auth/login/aad">Log in with Azure AD</a>
@@ -65,7 +65,7 @@ ms.locfileid: "57877309"
 
 クライアント主導のサインインでは、アプリケーションはユーザーをプロバイダーに手動でサインインさせ、検証のために認証トークンを App Service に送信します (「[Authentication flow](overview-authentication-authorization.md#authentication-flow)」をご覧ください)。 この検証自体では、必要なアプリ リソースへのアクセス権が実際には付与されませんが、検証に成功すると、アプリ リソースへのアクセスに使用できるセッション トークンが付与されます。 
 
-プロバイダーのトークンを検証するには、最初に目的のプロバイダーを使用して App Service のアプリが構成されている必要があります。 実行時に、プロバイダーから認証トークンを取得した後、検証のためにトークンを `/.auth/login/<provider>` にポストします。 例:  
+プロバイダーのトークンを検証するには、最初に目的のプロバイダーを使用して App Service のアプリが構成されている必要があります。 実行時に、プロバイダーから認証トークンを取得した後、検証のためにトークンを `/.auth/login/<provider>` にポストします。 例: 
 
 ```
 POST https://<appname>.azurewebsites.net/.auth/login/aad HTTP/1.1
@@ -96,7 +96,7 @@ Content-Type: application/json
 }
 ```
 
-このセッション トークンを入手したら、`X-ZUMO-AUTH` ヘッダーを HTTP 要求に追加することで、保護対象のアプリ リソースにアクセスすることができます。 例:  
+このセッション トークンを入手したら、`X-ZUMO-AUTH` ヘッダーを HTTP 要求に追加することで、保護対象のアプリ リソースにアクセスすることができます。 例: 
 
 ```
 GET https://<appname>.azurewebsites.net/api/products/1
@@ -117,7 +117,7 @@ Web ページの簡単なサインアウト リンクを次に示します。
 <a href="/.auth/logout">Sign out</a>
 ```
 
-既定では、サインアウトに成功すると、クライアントは URL `/.auth/logout/done` にリダイレクトされます。 `post_logout_redirect_uri` クエリ パラメーターを追加して、サインアウト後のリダイレクト ページを変更できます。 例: 
+既定では、サインアウトに成功すると、クライアントは URL `/.auth/logout/done` にリダイレクトされます。 `post_logout_redirect_uri` クエリ パラメーターを追加して、サインアウト後のリダイレクト ページを変更できます。 例:
 
 ```
 GET /.auth/logout?post_logout_redirect_uri=/index.html
@@ -186,7 +186,7 @@ App Service では、特殊なヘッダーを使用して、アプリケーシ�
 - **Microsoft アカウント**: [Microsoft アカウント認証設定を構成する](configure-authentication-provider-microsoft.md)場合は、`wl.offline_access` スコープを選択します。
 - **Azure Active Directory**: [https://resources.azure.com](https://resources.azure.com) で、次の手順を実行します。
     1. ページの上部にある **[Read/Write]** を選択します。
-    2. 左側のブラウザーで、**subscriptions** > **_\<subscription\_name_** > **resourceGroups** > _**\<resource\_group\_name>**_ > **providers** > **Microsoft.Web** > **sites** > _**\<app\_name>**_ > **config** > **authsettings** に移動します。 
+    2. 左側のブラウザーで、**subscriptions** >   ** _\<subscription\_name_**  > **resourceGroups** >  _ **\<resource\_group\_name>** _ > **providers** > **Microsoft.Web** > **sites** >  _ **\<app\_name>** _ > **config** > **authsettings** に移動します。 
     3. **[編集]** をクリックします。
     4. 次のプロパティを変更します。 _\<app\_id>_ を、アクセスするサービスの Azure Active Directory アプリケーション ID に置き換えます。
 
@@ -233,9 +233,9 @@ az webapp auth update --resource-group <group_name> --name <app_name> --token-re
 
 Microsoft アカウントと Azure Active Directory の両方に複数のドメインからサインインできます。 たとえば、Microsoft アカウントでは _outlook.com_、_live.com_、_hotmail.com_ アカウントが許可されます。 Azure Active Directory では、サインイン アカウントに任意の数のカスタム ドメインが許可されます。 この動作は、ユーザーが _outlook.com_ アカウントでアクセスすることが望ましくない内部アプリでは望ましくない場合があります。 サインイン アカウントのドメイン名を制限するには、以下の手順に従います。
 
-[https://resources.azure.com](https://resources.azure.com) で、**subscriptions** > **_\<subscription\_name_** > **resourceGroups** > _**\<resource\_group\_name>**_ > **providers** > **Microsoft.Web** > **sites** > _**\<app\_name>**_ > **config** > **authsettings** に移動します。 
+[https://resources.azure.com](https://resources.azure.com) で、**subscriptions** >   ** _\< subscription\_ name_**  > **resourceGroups** >  _ **\< resource\_ group\_ name>** _ > **providers** > **Microsoft.Web** > **sites** >  _ **\< app\_ name>** _ > **config** > **authsettings** に移動します。 
 
-**[Edit]** をクリックし、次のプロパティを変更し、**[Put]** をクリックします。 _\<domain\_name>_ は使用するドメインで置き換えてください。
+**[Edit]** をクリックし、次のプロパティを変更し、 **[Put]** をクリックします。 _\<domain\_name>_ は使用するドメインで置き換えてください。
 
 ```json
 "additionalLoginParams": ["domain_hint=<domain_name>"]

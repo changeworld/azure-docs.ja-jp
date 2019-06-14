@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: e522883da7fddad44741599107f2dbc4c99aace6
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58316373"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60827027"
 ---
 # <a name="upload-files-into-a-media-services-account-using-the-aspera-server-on-demand-service-on-azure"></a>Azure 上の Aspera Server On Demand サービスを使用して Media Services アカウントにファイルをアップロードする 
 
@@ -61,11 +61,11 @@ Azure Marketplace にログインしたら、次の基本的な手順に従っ�
 
    ![Aspera](./media/media-services-upload-files-with-aspera/media-services-upload-files-with-aspera003.png)
 
-4. **[価格レベル]** をクリックし、サブパネルで希望の月間ボリュームを選択します。 **[Plan details (プランの詳細)]** パネルで、**[OK]** を選択します。 その後、**[価格レベルの選択]** パネルで、**[選択]** をクリックします。
+4. **[価格レベル]** をクリックし、サブパネルで希望の月間ボリュームを選択します。 **[Plan details (プランの詳細)]** パネルで、 **[OK]** を選択します。 その後、 **[価格レベルの選択]** パネルで、 **[選択]** をクリックします。
 
    ![Aspera](./media/media-services-upload-files-with-aspera/media-services-upload-files-with-aspera004.png)
 
-5. **[法律条項]** をクリックし、サブパネルで法律条項を確認して同意します。 法律条項を確認したら、**[購入]** をクリックします。
+5. **[法律条項]** をクリックし、サブパネルで法律条項を確認して同意します。 法律条項を確認したら、 **[購入]** をクリックします。
 
    ![Aspera](./media/media-services-upload-files-with-aspera/media-services-upload-files-with-aspera005.png)
 
@@ -113,7 +113,7 @@ Azure Marketplace にログインしたら、次の基本的な手順に従っ�
    3. Azure Media アカウントに関連付けられているストレージ アカウントの情報を、[Azure Portal](https://portal.azure.com/) を使用して取得します。 具体的には、名前とキーのほか、コンテンツの配置先となるストレージ BLOB コンテナー名です。 
 
        * ポータルからストレージ情報を取得するには、ストレージ アカウントを見つけて、[アクセス キー] をクリックし、アカウントの名前とキーをコピーします。
-       * コンテナー名を取得するには、ストレージ アカウントを見つけて、**[BLOB]** を選択し、コンテンツのアップロード先にするコンテナーの名前を選択します。 
+       * コンテナー名を取得するには、ストレージ アカウントを見つけて、 **[BLOB]** を選択し、コンテンツのアップロード先にするコンテナーの名前を選択します。 
 
       Aspera クライアントの **Connection Manager** のスクリーンショットを次に示します。ここでは、ストレージの種類 "Azure" と資格情報に加え、BLOB コンテナーを指定する必要があります。
 

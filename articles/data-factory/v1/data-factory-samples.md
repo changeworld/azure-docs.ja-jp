@@ -14,11 +14,11 @@ ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: 03127dc777588f669ef07af52c8f73d986bfe0ea
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54020814"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61260040"
 ---
 # <a name="azure-data-factory---samples"></a>Azure Data Factory - サンプル
 > [!NOTE]
@@ -48,7 +48,7 @@ ms.locfileid: "54020814"
 ## <a name="azure-resource-manager-templates"></a>Azure Resource Manager のテンプレート
 GitHub 上に、Data Factory 向けの次の Azure Resource Manager テンプレートがあります。
 
-| テンプレート | 説明 |
+| Template | 説明 |
 | --- | --- |
 | [Azure Blob Storage から Azure SQL Database にコピーする](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-blob-to-sql-copy) |このテンプレートをデプロイすると、指定した Azure Blob Storage から Azure SQL データベースにデータをコピーするパイプラインを持つ Azure データ ファクトリが作成されます。 |
 | [Salesforce から Azure Blob Storage にコピーする](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-salesforce-to-blob-copy) |このテンプレートをデプロイすると、指定した Salesforce アカウントから Azure Blob Storage にデータをコピーするパイプラインを持つ Azure データ ファクトリが作成されます。 |
@@ -58,7 +58,7 @@ GitHub 上に、Data Factory 向けの次の Azure Resource Manager テンプレ
 データ ファクトリのホーム ページにある **[サンプル パイプライン]** タイルを使用して、パイプラインのサンプルおよび関連付けられているエンティティ (データセットおよびリンクされたサービス) をデータ ファクトリにデプロイできます。
 
 1. データ ファクトリを作成するか、既存のデータ ファクトリを開きます。 データ ファクトリを作成する手順については、「[Data Factory を使用した Blob Storage から SQL Database へのデータのコピー](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)」を参照してください。
-2. データ ファクトリの **[Data Factory]** ブレードで、**[サンプル パイプライン]** タイルをクリックします。
+2. データ ファクトリの **[Data Factory]** ブレードで、 **[サンプル パイプライン]** タイルをクリックします。
 
     ![サンプル パイプライン タイル](./media/data-factory-samples/SamplePipelinesTile.png)
 3. **[サンプル パイプライン]** ブレードで、デプロイする**サンプル**をクリックします。
@@ -71,7 +71,7 @@ GitHub 上に、Data Factory 向けの次の Azure Resource Manager テンプレ
 6. 先程 **[サンプル パイプライン]** ブレードでクリックしたサンプルのタイルに、デプロイの状態が表示されます。
 
     ![[デプロイ ステータス]](./media/data-factory-samples/DeploymentStatus.png)
-7. サンプルのタイルに "**デプロイに成功しました**" メッセージが表示されたら、**[サンプル パイプライン]** ブレードを閉じます。  
+7. サンプルのタイルに "**デプロイに成功しました**" メッセージが表示されたら、 **[サンプル パイプライン]** ブレードを閉じます。  
 8. **[Data Factory]** ブレードで、リンクされたサービス、データ セット、パイプラインがデータ ファクトリに追加されたことを確認します。  
 
     ![[Data Factory] ブレード](./media/data-factory-samples/DataFactoryBladeAfter.png)
@@ -81,11 +81,11 @@ GitHub 上に、Data Factory 向けの次の Azure Resource Manager テンプレ
 コンピューターに以下がインストールされている必要があります。
 
 * Visual Studio 2013 または Visual Studio 2015
-* Azure SDK for Visual Studio 2013 または Visual Studio 2015 をダウンロードします。 [Azure ダウンロード ページ](https://azure.microsoft.com/downloads/)に移動し、**.NET** セクションの **[VS 2013]** または **[VS 2015]** をクリックします。
+* Azure SDK for Visual Studio 2013 または Visual Studio 2015 をダウンロードします。 [Azure ダウンロード ページ](https://azure.microsoft.com/downloads/)に移動し、 **.NET** セクションの **[VS 2013]** または **[VS 2015]** をクリックします。
 * Visual Studio 用の最新の Azure Data Factory プラグイン ([VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) または [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005)) をダウンロードします。 Visual Studio 2013 を使用している場合は、次の手順を実行してプラグインを更新することもできます。メニューで **[ツール]**  ->  **[拡張機能と更新プログラム]**  ->  **[オンライン]**  ->  **[Visual Studio ギャラリー]**  ->  **[Microsoft Azure Data Factory Tools for Visual Studio]**  ->  **[更新]** の順にクリックします。
 
 ### <a name="use-data-factory-templates"></a>Data Factory テンプレートの使用
-1. メニューの **[ファイル]** をクリックし、**[新規作成]** をポイントして、**[プロジェクト]** をクリックします。
+1. メニューの **[ファイル]** をクリックし、 **[新規作成]** をポイントして、 **[プロジェクト]** をクリックします。
 2. **[新しいプロジェクト]** ダイアログ ボックスで、次の操作を行います。
 
    1. **[テンプレート]** で **[DataFactory]** を選択します。
@@ -95,7 +95,7 @@ GitHub 上に、Data Factory 向けの次の Azure Resource Manager テンプレ
    5. Click **OK**.
 
       ![[新しいプロジェクト] ダイアログ ボックス](./media/data-factory-samples/vs-new-project-adf-templates.png)
-3. **[Data Factory Templates]** (Data Factory テンプレート) ダイアログ ボックスで、**[Use-Case Templates]** (ユースケース テンプレート) セクションからサンプル テンプレートを選択し、**[次へ]** をクリックします。 この後の手順では、 **顧客プロファイリング** テンプレートの使用方法について説明します。 他のサンプルでも手順は同じです。
+3. **[Data Factory Templates]** (Data Factory テンプレート) ダイアログ ボックスで、 **[Use-Case Templates]** (ユースケース テンプレート) セクションからサンプル テンプレートを選択し、 **[次へ]** をクリックします。 この後の手順では、 **顧客プロファイリング** テンプレートの使用方法について説明します。 他のサンプルでも手順は同じです。
 
     ![Data Factory Templates dialog box](./media/data-factory-samples/vs-data-factory-templates-dialog.png)
 4. **[Data Factory Configuration]** (Data Factory の構成) ダイアログの **[Data Factory Basics]** (Data Factory の基本) ページで **[次へ]** をクリックします。
@@ -104,14 +104,14 @@ GitHub 上に、Data Factory 向けの次の Azure Resource Manager テンプレ
    2. データ ファクトリの **名前** を入力します。
    3. データ ファクトリを作成する **Azure サブスクリプション** を選択します。
    4. データ ファクトリの **リソース グループ** を選択します。
-   5. **リージョン**として **[米国西部]**、**[米国東部]**、または **[北ヨーロッパ]** を選択します。
+   5. **リージョン**として **[米国西部]** 、 **[米国東部]** 、または **[北ヨーロッパ]** を選択します。
    6. **[次へ]** をクリックします。
-6. **[Configure data stores]** (データ ストアの構成) ページで、既存の **Azure SQL Database** と **Azure ストレージ アカウント**を指定するか、データベースかストレージを作成して、[次へ] をクリックします。
-7. **[コンピューティングの構成]** ページで、既定値を選択し、**[次へ]** をクリックします。
-8. **[概要]** ページで、すべての設定を確認し、**[次へ]** をクリックします。
+6. **[Configure data stores]** (データ ストアの構成) ページで、既存の **Azure SQL データベース** と **Azure ストレージ アカウント**を指定するか、データベースかストレージを作成して、[次へ] をクリックします。
+7. **[コンピューティングの構成]** ページで、既定値を選択し、 **[次へ]** をクリックします。
+8. **[概要]** ページで、すべての設定を確認し、 **[次へ]** をクリックします。
 9. **[Deployment Status]** (デプロイ ステータス) ページで、デプロイが完了するまで待ってから **[完了]** をクリックします。
 10. ソリューション エクスプローラーでプロジェクトを右クリックし、 **[発行]** をクリックします。
-11. **[Microsoft アカウントへのサインイン]** ダイアログ ボックスが表示されたら、Azure サブスクリプションを所有するアカウントの資格情報を入力し、**[サインイン]** をクリックします。
+11. **[Microsoft アカウントへのサインイン]** ダイアログ ボックスが表示されたら、Azure サブスクリプションを所有するアカウントの資格情報を入力し、 **[サインイン]** をクリックします。
 12. 次のダイアログ ボックスが表示されます。
 
     ![[発行] ダイアログ ボックス](./media/data-factory-build-your-first-pipeline-using-vs/publish.png)
@@ -119,8 +119,8 @@ GitHub 上に、Data Factory 向けの次の Azure Resource Manager テンプレ
 
     1. **[既存のデータ ファクトリを使用する]** オプションが選択されていることを確認します。
     2. テンプレートを使用する際に選択した**データ ファクトリ**を選択します。
-    3. **[次へ]** をクリックし、**[項目の発行]** ページに切り替えます。 (**[次へ]** ボタンが無効になっている場合は、**Tab** キーを押して [名前] フィールドの外に移動します。)
-14. **[項目の発行]** ページで、すべての Data Factory エンティティが選択されていることを確認し、**[次へ]** をクリックして **[概要]** ページに切り替えます。     
+    3. **[次へ]** をクリックし、 **[項目の発行]** ページに切り替えます。 ( **[次へ]** ボタンが無効になっている場合は、**Tab** キーを押して [名前] フィールドの外に移動します。)
+14. **[項目の発行]** ページで、すべての Data Factory エンティティが選択されていることを確認し、 **[次へ]** をクリックして **[概要]** ページに切り替えます。     
 15. 概要を確認してから **[次へ]** をクリックし、デプロイ プロセスを開始して **[デプロイ ステータス]** を表示します。
 16. **[デプロイ ステータス]** ページに、デプロイメント プロセスのステータスが表示されます。 デプロイメントが完了したら、[完了] をクリックします。
 

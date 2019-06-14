@@ -11,11 +11,11 @@ ms.custom: seodec18
 ms.date: 04/15/2019
 ms.author: shvija
 ms.openlocfilehash: 0487cac6a0cf7d37befdf0d7cfab33ad6a62cf7f
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59679644"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60822911"
 ---
 # <a name="send-events-to-or-receive-events-from-azure-event-hubs-using-java"></a>Java を使用して Azure Event Hubs との間でイベントを送受信する | Microsoft Docs
 
@@ -179,11 +179,11 @@ eventHubClient.closeSync();
 EventProcessorHost を使用するには、[Azure Storage アカウント][Azure Storage アカウント]が必要です。
 
 1. [Azure portal](https://portal.azure.com) にサインインし、画面左側の **[+ Create a resource]\(+ リソースの作成\)** をクリックします。
-2. **[ストレージ]**、**[ストレージ アカウント]** の順にクリックします。 **[ストレージ アカウントの作成]** ウィンドウで、ストレージ アカウントの名前を入力します。 残りのフィールドを完了し、目的の地域を選択し、**[作成]** をクリックします。
+2. **[ストレージ]** 、 **[ストレージ アカウント]** の順にクリックします。 **[ストレージ アカウントの作成]** ウィンドウで、ストレージ アカウントの名前を入力します。 残りのフィールドを完了し、目的の地域を選択し、 **[作成]** をクリックします。
    
     ![ストレージ アカウントの作成](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage2.png)
 
-3. 新しく作成したストレージ アカウントをクリックし、**[アクセス キー]** をクリックします。
+3. 新しく作成したストレージ アカウントをクリックし、 **[アクセス キー]** をクリックします。
    
     ![アクセス キーを取得する](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage3.png)
 
@@ -206,7 +206,7 @@ Event Hubs の Java クライアント ライブラリは、 [Maven セントラ
 </dependency>
 ```
 
-ビルド環境の種類に応じて、[Maven セントラル リポジトリ][https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs-eph%22] から最新リリースの JAR ファイルを明示的に取得できます。  
+ビルド環境の種類に応じて、[Maven セントラル リポジトリ][https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs-eph%22 ] から最新リリースの JAR ファイルを明示的に取得できます。  
 
 1. 次のサンプルでは、最初に、好みの Java 開発環境でコンソール/シェル アプリケーション用の新しい Maven プロジェクトを作成します。 このクラスは `ErrorNotificationHandler`と呼ばれます。     
    

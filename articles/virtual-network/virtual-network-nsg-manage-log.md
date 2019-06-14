@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 06/04/2018
 ms.author: kumud
 ms.openlocfilehash: b3225d8d2f9eb7ccd0f4087d93cd9c1d940783d9
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64714681"
 ---
 # <a name="diagnostic-logging-for-a-network-security-group"></a>ネットワーク セキュリティ グループの診断ログ
@@ -40,11 +40,11 @@ ms.locfileid: "64714681"
 1. [ポータル](https://portal.azure.com)にサインインします。
 2. **[すべてのサービス]** を選び、「*ネットワーク セキュリティ グループ*」と入力します。 検索結果に **[ネットワーク セキュリティ グループ]** が表示されたら、それを選びます。
 3. ログを有効にする NSG を選択します。
-4. 次の図に示すように、**[監視]** で **[診断ログ]** を選び、**[診断をオンにする]** を選びます。
+4. 次の図に示すように、 **[監視]** で **[診断ログ]** を選び、 **[診断をオンにする]** を選びます。
 
    ![診断の有効化](./media/virtual-network-nsg-manage-log/turn-on-diagnostics.png)
 
-5. **[診断設定]** で、次の情報を入力するか選んだ後、**[保存]** を選びます。
+5. **[診断設定]** で、次の情報を入力するか選んだ後、 **[保存]** を選びます。
 
     | Setting                                                                                     | 値                                                          |
     | ---------                                                                                   |---------                                                       |

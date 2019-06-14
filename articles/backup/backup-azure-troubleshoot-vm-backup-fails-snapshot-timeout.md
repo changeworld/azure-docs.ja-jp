@@ -10,10 +10,10 @@ ms.topic: troubleshooting
 ms.date: 12/03/2018
 ms.author: genli
 ms.openlocfilehash: 826a38dd80db7cd0e6e500949d2c259c3808c0a9
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64914949"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup の失敗のトラブルシューティング:エージェント/拡張機能に関する問題
@@ -30,9 +30,9 @@ ms.locfileid: "64914949"
 **エラー メッセージ**:VM エージェントが Azure Backup と通信できない<br>
 
 Backup サービスに VM を登録してスケジュール設定すると、Backup サービスは、VM エージェントと通信してジョブを開始し、ポイントインタイム スナップショットを作成します。 以下のいずれかの状況によって、スナップショットをトリガーできない場合があります。 スナップショットがトリガーされずにバックアップが失敗する可能性があります。 次のトラブルシューティング手順を上から順に実行した後で、必要な操作を再試行してください。<br>
-**原因 1:[エージェントが VM にインストールされているが応答しない (Windows VM の場合)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**    
+**原因 1:[エージェントが VM にインストールされているが応答しない (Windows VM の場合)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**     
 **原因 2:[VM にインストールされているエージェントが古くなっている (Linux VM の場合)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
-**原因 3:[スナップショットの状態を取得できないか、スナップショットを作成できない](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**    
+**原因 3:[スナップショットの状態を取得できないか、スナップショットを作成できない](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**     
 **原因 4:[バックアップ拡張機能の更新または読み込みに失敗した](#the-backup-extension-fails-to-update-or-load)**  
 **原因 5:[VM がインターネットにアクセスできない](#the-vm-has-no-internet-access)**
 
@@ -116,7 +116,7 @@ VM をバックアップするときディスク サイズが 4095 GB よりも�
 
 進行中のバックアップ ジョブがあるため、最新のバックアップ ジョブが失敗しました。 新しいバックアップ ジョブは、現在のジョブが完了するまで開始できません。 他のバックアップ操作をトリガーまたはスケジュールする前に、進行中のバックアップ操作が完了していることを確認します。 バックアップ ジョブの状態を確認するには、以下の手順を実行します。
 
-1. Azure portal にサインインし、**[すべてのサービス]** をクリックします。 「Recovery Services」と入力し、**[Recovery Services コンテナー]** をクリックします。 Recovery Services コンテナーの一覧が表示されます。
+1. Azure portal にサインインし、 **[すべてのサービス]** をクリックします。 「Recovery Services」と入力し、 **[Recovery Services コンテナー]** をクリックします。 Recovery Services コンテナーの一覧が表示されます。
 2. Recovery Services コンテナーの一覧から、バックアップの構成先のコンテナーを選択します。
 3. コンテナーのダッシュボード メニューの **[バックアップ ジョブ]** をクリックすると、すべてのバックアップ ジョブが表示されます。
 
@@ -145,7 +145,7 @@ VM をバックアップするときディスク サイズが 4095 GB よりも�
 VM エージェントが破損しているまたはサービスが停止している可能性があります。 VM エージェントを再インストールすることで最新バージョンを入手できます。 その際に、サービスとの通信も再開されます。
 
 1. VM サービス (services.msc) で Windows Azure ゲスト エージェント サービスが実行されているかどうかを確認します。 Windows Azure ゲスト エージェント サービスの再起動とバックアップの開始を試みます。    
-2. コントロール パネルの [サービス] に Windows Azure ゲスト エージェント サービスが表示されない場合は、**[プログラムと機能]** に移動し、Windows Azure ゲスト エージェント サービスがインストールされているかどうかを確認してください。
+2. コントロール パネルの [サービス] に Windows Azure ゲスト エージェント サービスが表示されない場合は、 **[プログラムと機能]** に移動し、Windows Azure ゲスト エージェント サービスがインストールされているかどうかを確認してください。
 4. Windows Azure ゲスト エージェント サービスが **[プログラムと機能]** に表示される場合は、Windows Azure ゲスト エージェントをアンインストールします。
 5. [最新バージョンのエージェント MSI](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) をダウンロードしてインストールします。 インストールを実行するには、管理者権限が必要です。
 6. [サービス] に Windows Azure ゲスト エージェント サービスが表示されることを確認します。
@@ -218,7 +218,7 @@ Linux VM で、VMSnapshot 拡張機能が Azure Portal に表示されない場�
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
 2. **[すべてのリソース] オプション**に移動して、AzureBackupRG_`<Geo>`_`<number>` という形式の復元ポイント コレクションのリソース グループを選択します。
 3. **[設定]** セクションで **[ロック]** を選択して、ロックを表示します。
-4. ロックを解除するには、省略記号を選択し、**[削除]** をクリックします。
+4. ロックを解除するには、省略記号を選択し、 **[削除]** をクリックします。
 
     ![ロックを解除する](./media/backup-azure-arm-vms-prepare/delete-lock.png)
 
@@ -241,7 +241,7 @@ Linux VM で、VMSnapshot 拡張機能が Azure Portal に表示されない場�
 
     ![ロックを解除する](./media/backup-azure-arm-vms-prepare/resource-group.png)
 
-3. リソース グループをクリックすると、**[概要]** ブレードが表示されます。
+3. リソース グループをクリックすると、 **[概要]** ブレードが表示されます。
 4. **[非表示の型の表示]** オプションを選択して、非表示のすべてのリソースを表示します。 AzureBackupRG_`<VMName>`_`<number>` という形式の復元ポイント コレクションを選択します。
 
     ![ロックを解除する](./media/backup-azure-arm-vms-prepare/restore-point-collection.png)
