@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.reviewer: vitalyg
 ms.author: cithomas
-ms.openlocfilehash: c11eeb84fe4ed1ded93cb8de7ff54b756fd36749
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: c94167929782a2deca7bba19924bfe67dd46bf29
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65779902"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66388385"
 ---
 # <a name="sampling-in-application-insights"></a>Application Insights におけるサンプリング
 
@@ -527,3 +527,4 @@ ASP.NET バージョン 2.0.0 以降および Java SDK バージョン 2.0.1 以
 ## <a name="next-steps"></a>次の手順
 
 * [フィルター](../../azure-monitor/app/api-filtering-sampling.md) を使用して、SDK から送信される情報についてさらに厳密に制御できます。
+* [Application Insights によるテレメトリの最適化](https://msdn.microsoft.com/magazine/mt808502.aspx)に関する Developer Network の記事を読みます。

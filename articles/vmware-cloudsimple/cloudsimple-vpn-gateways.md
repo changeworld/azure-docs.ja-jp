@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: fa7730247ddc5f30c3d21a32421a6c55ec4ef72e
-ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
+ms.openlocfilehash: 9b2630614e549181f4dd2f4e79871c4594d09201
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64872760"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66496866"
 ---
 # <a name="vpn-gateways-overview"></a>VPN ゲートウェイの概要
 
@@ -36,6 +36,8 @@ VPN ゲートウェイでは、プライベート クラウド上のオンプレ
 * VCenter ID ソースとして、オンプレミスの Active Directory Domain Services を使用します。
 * オンプレミス リソースからプライベート クラウド vCenter への、VM テンプレート、ISO イメージ、その他のファイルの簡易な転送。
 * プライベート クラウドで実行されているワークロードへの、オンプレミス ネットワークからのアクセシビリティ。
+
+![サイト間 VPN 接続の図](media/cloudsimple-site-to-site-vpn-connection.png)
 
 ### <a name="cryptographic-parameters"></a>暗号化パラメーター
 

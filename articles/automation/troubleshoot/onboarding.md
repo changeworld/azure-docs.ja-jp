@@ -4,16 +4,16 @@ description: Update Management、Change Tracking、および Inventory ソリュ
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/20/2019
+ms.date: 05/22/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 16a03840f6bbf44853cf01e50189a194672d153e
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 8867912d98897a695c1e59ebd4177301230281bb
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65145160"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399769"
 ---
 # <a name="troubleshoot-errors-when-onboarding-solutions"></a>ソリューションをオンボードする際のエラーをトラブルシューティングする
 
@@ -43,6 +43,24 @@ The solution cannot be enabled on this VM because the permission to read the wor
 
 仮想マシンをオンボードする正しいアクセス許可を持つことを確認します。 [マシンをオンボードするために必要なアクセス許可](../automation-role-based-access-control.md#onboarding)を確認し、再度ソリューションをオンボードしてください。 `The solution cannot be enabled on this VM because the permission to read the workspace is missing` というエラーが発生する場合は、ワークスペースにVM がオンボードされているかどうかを調べることができる `Microsoft.OperationalInsights/workspaces/read` アクセス許可があることを確認します。
 
+### <a name="diagnostic-logging"></a>シナリオ:オンボードが失敗し、"診断ログのオートメーション アカウントを構成できませんでした" というメッセージが表示されます
+
+#### <a name="issue"></a>問題
+
+仮想マシンをソリューションにオンボードしようとすると、次のメッセージが表示されます。
+
+```error
+Failed to configure automation account for diagnostic logging
+```
+
+#### <a name="cause"></a>原因
+
+このエラーは、価格レベルがサブスクリプションの課金モデルと一致しない場合に発生することがあります。 詳細については、「[Azure Monitor での使用量と推定コストの監視](http://aka.ms/PricingTierWarning)」を参照してください。
+
+#### <a name="resolution"></a>解決策
+
+Log Analytics ワークスペースを手動で作成し、オンボード プロセスを繰り返して、作成したワークスペースを選択します。
+
 ### <a name="computer-group-query-format-error"></a>シナリオ:ComputerGroupQueryFormatError
 
 #### <a name="issue"></a>問題
@@ -55,7 +73,7 @@ The solution cannot be enabled on this VM because the permission to read the wor
 
 #### <a name="resolution"></a>解決策
 
-そのソリューションに対するクエリを削除し、ソリューションを再オンボードすることができます。その際にクエリが再生成されます。 クエリはワークスペース内の、**[保存された検索条件]** にあります。 クエリの名前は **MicrosoftDefaultComputerGroup** です。また、クエリのカテゴリは、このクエリに関連付けられたソリューションの名前です。 複数のソリューションが有効な場合は、**MicrosoftDefaultComputerGroup** が複数回 **[保存された検索条件]** に表示されます。
+そのソリューションに対するクエリを削除し、ソリューションを再オンボードすることができます。その際にクエリが再生成されます。 クエリはワークスペース内の、 **[保存された検索条件]** にあります。 クエリの名前は **MicrosoftDefaultComputerGroup** です。また、クエリのカテゴリは、このクエリに関連付けられたソリューションの名前です。 複数のソリューションが有効な場合は、**MicrosoftDefaultComputerGroup** が複数回 **[保存された検索条件]** に表示されます。
 
 ### <a name="policy-violation"></a>シナリオ:PolicyViolation
 
@@ -77,7 +95,7 @@ The solution cannot be enabled on this VM because the permission to read the wor
   * ポリシーの対象を特定のリソースに設定し直す (特定の Automation アカウントなど)。
   * 拒否するようにポリシーが構成されているリソースのセットを変更する
 
-Azure portal の右上にある通知を確認するか、Automation アカウントを含むリソース グループに移動し、**[設定]** の **[デプロイ]** を選択して、失敗したデプロイメントを表示します。 Azure Policy の詳細については、次をご覧ください。[Azure Policy の概要](../../governance/policy/overview.md?toc=%2fazure%2fautomation%2ftoc.json)。
+Azure portal の右上にある通知を確認するか、Automation アカウントを含むリソース グループに移動し、 **[設定]** の **[デプロイ]** を選択して、失敗したデプロイメントを表示します。 Azure Policy の詳細については、次をご覧ください。[Azure Policy の概要](../../governance/policy/overview.md?toc=%2fazure%2fautomation%2ftoc.json)。
 
 ### <a name="unlink"></a>シナリオ:ワークスペースのリンクを解除しようとすると発生するエラー
 
@@ -106,7 +124,7 @@ The link cannot be updated or deleted because it is linked to Update Management 
 * 更新管理
   * Automation アカウントから、更新プログラムの展開 (スケジュール) を削除します。
 * 勤務時間外に VM を起動/停止する
-  * **[設定]** > **[ロック]** で、Automation アカウントのソリューション コンポーネントに対するロックを解除します。
+  * **[設定]**  >  **[ロック]** で、Automation アカウントのソリューション コンポーネントに対するロックを解除します。
   * Start/Stop VMs during off-hours ソリューションを削除する追加の手順については、[Start/Stop VM during off-hours ソリューションの削除](../automation-solution-vm-management.md##remove-the-solution)に関する記事を参照してください。
 
 ## <a name="mma-extension-failures"></a>MMA 拡張機能のエラー

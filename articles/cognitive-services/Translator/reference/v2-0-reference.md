@@ -3,19 +3,19 @@ title: Translator Text API V2.0
 titleSuffix: Azure Cognitive Services
 description: V2.0 Translator Text API のリファレンス ドキュメント。
 services: cognitive-services
-author: v-pawal
+author: rajdeep-in
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 05/15/2018
-ms.author: v-jansko
-ms.openlocfilehash: 961dd277034db7e5406e671233f26b4fd8fe5f26
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.author: v-pawal
+ms.openlocfilehash: d2ff61908d7901fc464b58ee1ef9b5605b3026a3
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59527287"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389842"
 ---
 # <a name="translator-text-api-v20"></a>Translator Text API v2.0
 
@@ -28,11 +28,18 @@ Translator Text API V2 は、アプリケーション、Web サイト、ツー�
 Translator Text API にアクセスするには、[Microsoft Azure にサインアップ](../translator-text-how-to-signup.md)する必要があります。
 
 ## <a name="authorization"></a>Authorization
-Translator Text API への呼び出しでは、いずれも認証にサブスクリプション キーが必要です。 API では、2 つの認証モードがサポートされています。
+Translator Text API への呼び出しでは、いずれも認証にサブスクリプション キーが必要です。 API では、3 つの認証モードがサポートされています。
 
-* アクセス トークンを使用します。 **ステップ** 9 で参照されているサブスクリプション キーを使用して、承認サービスに POST 要求を行うことで、アクセス トークンを生成します。 詳細については、トークン サービスに関するドキュメントを参照してください。 Authorization ヘッダーまたは access_token クエリ パラメーターを使用して、アクセス トークンを Translator サービスに渡します。 アクセス トークンは 10 分間有効です。 10 分ごとに新しいアクセス トークンを取得し、このような 10 分以内で繰り返す要求に対して同じアクセス トークンを使い続けます。
+- アクセス トークン。 **ステップ** 9 で参照されているサブスクリプション キーを使用して、承認サービスに POST 要求を行うことで、アクセス トークンを生成します。 詳細については、トークン サービスに関するドキュメントを参照してください。 Authorization ヘッダーまたは `access_token` クエリ パラメーターを使用して、アクセス トークンを Translator サービスに渡します。 アクセス トークンは 10 分間有効です。 10 分ごとに新しいアクセス トークンを取得し、このような 10 分間で繰り返す要求に対して同じアクセス トークンを使い続けます。
+- 直接のサブスクリプション キー。 サブスクリプション キーを、Translator API への要求に含まれる `Ocp-Apim-Subscription-Key` ヘッダー内の値として渡します。 このモードでは、アクセス トークンを生成するために認証トークン サービスを呼び出す必要はありません。
+- [Cognitive Services のマルチサービスのサブスクリプション](https://azure.microsoft.com/pricing/details/cognitive-services/)。 このモードでは、単一の秘密鍵を使用して複数のサービスの要求を認証することができます。 <br/>
+マルチサービスの秘密鍵を使用するときは、2 つの認証ヘッダーをお客様の要求に含める必要があります。 最初のヘッダーで、秘密鍵を渡します。 2 つ目のヘッダーでは、サブスクリプションに関連付けられているリージョンを指定します。
+   - `Ocp-Apim-Subscription-Key`
+   - `Ocp-Apim-Subscription-Region`
 
-* サブスクリプション キーを直接使用します。 サブスクリプション キーを、Translator API への要求に含まれる `Ocp-Apim-Subscription-Key` ヘッダー内の値として渡します。 このモードでは、アクセス トークンを生成するために認証トークン サービスを呼び出す必要はありません。
+マルチサービスの Text API サブスクリプションではリージョンが必須です。 マルチサービスのサブスクリプション キーを使用する場合、選択したリージョンでのみテキスト翻訳を使用でき、Azure portal を通してマルチサービスのサブスクリプションにサインアップしたときに選択したリージョンと同じにする必要があります。
+
+利用可能なリージョンは `australiaeast`、`brazilsouth`、`canadacentral`、`centralindia`、`centraluseuap`、`eastasia`、`eastus`、`eastus2`、`japaneast`、`northeurope`、`southcentralus`、`southeastasia`、`uksouth`、`westcentralus`、`westeurope`、`westus`、`westus2` です。
 
 サブスクリプション キーとアクセス トークンはシークレットと見なし、非表示にする必要があります。
 
@@ -145,7 +152,7 @@ string
 
 TranslateArray メソッドは、`Content-Type` に `application/xml` または `text/xml` を受け入れます。
 
-**戻り値:**`TranslateArrayResponse` 配列。 各 `TranslateArrayResponse` には次の要素があります。
+**戻り値:** `TranslateArrayResponse` 配列。 各 `TranslateArrayResponse` には次の要素があります。
 
 * `Error`:エラーが発生した場合に示します。 それ以外の場合は null に設定されます。
 * `OriginalSentenceLengths`:元のソース テキスト内の各文の長さを示す整数の配列。 配列の長さは、文の数を示します。
@@ -202,7 +209,7 @@ string
 
 要求 URI は `https://api.microsofttranslator.com/V2/Http.svc/GetLanguageNames` です。
 
-要求本文には、表示名を取得する ISO 639-1 言語コードを表す文字列配列が含まれています。 例: 
+要求本文には、表示名を取得する ISO 639-1 言語コードを表す文字列配列が含まれています。 例:
 
 ```
 <ArrayOfstring xmlns:i="https://www.w3.org/2001/XMLSchema-instance"  xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays">

@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: brjohnst
-ms.openlocfilehash: 25a156c4403b7a89f7a7bf7f6acf22fa34216791
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: d0921761b565d9e61374bf340f812af4d43f192a
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025124"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66426762"
 ---
 # <a name="how-to-use-azure-search-from-a-net-application"></a>.NET アプリケーションから Azure Search を使用する方法
 
@@ -33,14 +33,14 @@ SDK のその他の NuGet パッケージとしては以下があります｡
  
   - `Microsoft.Azure.Search.Data`:Azure Search を使用して .NET アプリケーションを開発していて、インデックス内のドキュメントのクエリまたは更新のみを行う必要がある場合は、このパッケージを使用します。 インデックス、シノニム マップ､またはサービス レベルのその他のリソースの作成や更新も行う必要がある場合は､代わりに `Microsoft.Azure.Search` パッケージを使用します｡
   - `Microsoft.Azure.Search.Service`:.NET で、Azure Search インデックス、シノニム マップ、インデクサー、データ ソース、またはサービスレベルのその他のリソースを管理するための自動化を開発する場合は、このパッケージを使用します。 インデックス内のドキュメントのクエリまたは更新のみを行う場合は､代わりに `Microsoft.Azure.Search.Data` パッケージを使用します｡ Azure Search のすべての機能が必要な場合は､代わりに `Microsoft.Azure.Search` パッケージを使用します｡
-  - `Microsoft.Azure.Search.Common`:Azure Search .NET ライブラリに必要な共通の型です。 このパッケージは、アプリケーションで直接使用する必要はないはずで、依存関係としての使用のみが想定されています｡
+  - `Microsoft.Azure.Search.Common`:Azure Search .NET ライブラリに必要な共通の型です。 このパッケージを直接アプリケーションで使用する必要はありません。 これは、依存関係としてのみ使用されるように考慮されています。
 
 各種クライアント ライブラリには、`Index`、`Field`、`Document` などのクラスや、 `SearchServiceClient` や `SearchIndexClient` クラスに対する `Indexes.Create` や `Documents.Search` などの操作が定義されています。 これらのクラスは、次の名前空間にまとめられています。
 
 * [Microsoft.Azure.Search](https://docs.microsoft.com/dotnet/api/microsoft.azure.search)
 * [Microsoft.Azure.Search.Models](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models)
 
-Azure Search .NET SDK の最新バージョンが一般公開されました。 次のバージョンに組み込むためにフィードバックを提供する場合は、 [フィードバック ページ](https://feedback.azure.com/forums/263029-azure-search/)を使用してください。
+Azure Search .NET SDK の最新バージョンが一般公開されました。 次のバージョンに組み込むためのフィードバックを提供する場合は、[フィードバック ページ](https://feedback.azure.com/forums/263029-azure-search/)を参照してください。
 
 .NET SDK は、バージョン `2017-11-11` の [Azure Search REST API](https://docs.microsoft.com/rest/api/searchservice/) をサポートします。 このバージョンには､シノニムのサポートや､インデクサーに対する漸進的な改良も反映されています｡ 
 
@@ -50,7 +50,7 @@ Azure Search .NET SDK の最新バージョンが一般公開されました。 
 古いバージョンの Azure Search .NET SDK を既に使用しており、一般公開された新しいバージョンにアップグレードする場合、方法については [この記事](search-dotnet-sdk-migration-version-5.md) をご覧ください。
 
 ## <a name="requirements-for-the-sdk"></a>SDK の要件
-1. Visual Studio 2017。
+1. Visual Studio 2017 以降。
 2. 自分が所有する Azure Search サービス。 SDK を使用するには、サービスの名前および 1 つまたは複数の API キーが必要です。 [ポータルでの Azure Search サービスの作成](search-create-service-portal.md) 」は、これらの手順の参考になります。
 3. Visual Studio の [NuGet パッケージの管理] を使用して、Azure Search .NET SDK の [NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Azure.Search) をダウンロードします。 NuGet.org でパッケージ名 `Microsoft.Azure.Search` (あるいは機能の一部のみ必要な場合は､上記のうちの対応するパッケージ名) を検索します｡
 
@@ -63,7 +63,7 @@ Azure Search .NET SDK は、.NET Framework 4.5.2 以上と .NET Core を対象�
 * インデックスへのドキュメントの設定
 * フルテキスト検索およびフィルターを使用したドキュメントの検索
 
-次のサンプル コードではこれらについて示します。 これらのコード スニペットを独自のアプリケーションに自由に使用してください。
+次のサンプル コードは、これらの各シナリオを示しています。 これらのコード スニペットを独自のアプリケーションに自由に使用してください。
 
 ### <a name="overview"></a>概要
 これから説明するサンプル アプリケーションは、"hotels" という名前のインデックスを新しく作成し、いくつかのドキュメントをそこに格納してから、検索クエリを実行します。 全体的な流れがわかるメイン プログラムを次に示します。
@@ -130,7 +130,7 @@ Console.WriteLine("{0}", "Creating index...\n");
 CreateHotelsIndex(serviceClient);
 ```
 
-次に、インデックスを設定する必要があります。 そのためには、 `SearchIndexClient`が必要です。 これを取得するには、作成する方法と、`SearchServiceClient` で `Indexes.GetClient` を呼び出す方法があります。 ここでは簡単な後者を使用します。
+次に、インデックスを設定する必要があります。 インデックスを設定するには、`SearchIndexClient` が必要です。 これを取得するには、作成する方法と、`SearchServiceClient` で `Indexes.GetClient` を呼び出す方法があります。 ここでは簡単な後者を使用します。
 
 ```csharp
 ISearchIndexClient indexClient = serviceClient.Indexes.GetClient("hotels");
@@ -141,7 +141,7 @@ ISearchIndexClient indexClient = serviceClient.Indexes.GetClient("hotels");
 > 
 > 
 
-`SearchIndexClient`を作成したので、インデックスを設定できます。 これは、後で説明する別のメソッドで行います。
+`SearchIndexClient`を作成したので、インデックスを設定できます。 インデックスの設定は、後で説明する別のメソッドによって実行されます。
 
 ```csharp
 Console.WriteLine("{0}", "Uploading documents...\n");
@@ -171,7 +171,7 @@ private static SearchIndexClient CreateSearchIndexClient(IConfigurationRoot conf
 
 ここでは、インデックスへの書き込みアクセスは不要であるため、クエリ キーを使用します。 この情報を、[サンプル アプリケーション](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo)の `appsettings.json` ファイルに入力できます。
 
-有効なサービス名と API キーを使用してこのアプリケーションを実行した場合、出力は次のようになります。
+有効なサービス名と API キーを使用してこのアプリケーションを実行すると、出力は次の例のようになります。
 
     Deleting index...
     
@@ -206,7 +206,7 @@ private static SearchIndexClient CreateSearchIndexClient(IConfigurationRoot conf
 次に、 `Main`によって呼び出される各メソッドを詳しく見ていきます。
 
 ### <a name="creating-an-index"></a>インデックスの作成
-`SearchServiceClient` を作成した後、`Main` は次に、"hotels" インデックスが既に存在する場合はそれを削除します。 この処理は次のメソッドで行います。
+`SearchServiceClient` を作成した後、`Main` は次に、"hotels" インデックスが既に存在する場合はそれを削除します。 その削除は、次のメソッドによって実行されます。
 
 ```csharp
 private static void DeleteHotelsIndexIfExists(SearchServiceClient serviceClient)
@@ -247,10 +247,10 @@ private static void CreateHotelsIndex(SearchServiceClient serviceClient)
 >
 > 
 
-フィールドに加えて、スコアリング プロファイル、サジェスター、または CORS オプションを Index に追加することもできます (簡潔さを優先し、サンプルではこれらは省略されています)。 Index オブジェクトとその構成要素の詳細については、[SDK リファレンス](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index)および [Azure Search REST API リファレンス](https://docs.microsoft.com/rest/api/searchservice/)をご覧ください。
+フィールドに加えて、スコアリング プロファイル、サジェスター、または CORS オプションも Index に追加できます (簡潔にするために、これらのパラメーターはサンプルから省略されています)。 Index オブジェクトとその構成要素の詳細については、[SDK リファレンス](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index)および [Azure Search REST API リファレンス](https://docs.microsoft.com/rest/api/searchservice/)をご覧ください。
 
 ### <a name="populating-the-index"></a>インデックスの設定
-`Main` の次の手順では、新しく作成したインデックスを設定します。 この処理は次のメソッドで行います。
+`Main` の次の手順では、新しく作成したインデックスを設定します。 このインデックス設定は、次のメソッドで実行されます。
 
 ```csharp
 private static void UploadDocuments(ISearchIndexClient indexClient)
@@ -325,7 +325,7 @@ private static void UploadDocuments(ISearchIndexClient indexClient)
 > 
 > 
 
-このメソッドの 3 番目の部分は、インデックス作成の重要なエラー ケースを処理する catch ブロックです。 Azure Search がバッチ内の一部のドキュメントのインデックス作成に失敗した場合、`Documents.Index` は `IndexBatchException` をスローします。 サービスの負荷が高いときにドキュメントのインデックスを作成すると、これが発生する場合があります。 **コードでこのケースを明示的に処理することを強くお勧めします。** しばらく待ってから失敗したドキュメントのインデックス作成を再試行したり、サンプルと同じようにログに記録してから続けることができます。または、アプリケーションのデータ整合性要件に応じて他の処理を行うこともできます。
+このメソッドの 3 番目の部分は、インデックス作成の重要なエラー ケースを処理する catch ブロックです。 Azure Search がバッチ内の一部のドキュメントのインデックス作成に失敗した場合、`Documents.Index` は `IndexBatchException` をスローします。 この例外は、サービスの負荷が高いときにドキュメントのインデックスを作成していると発生する場合があります。 **コードでこのケースを明示的に処理することを強くお勧めします。** しばらく待ってから失敗したドキュメントのインデックス作成を再試行したり、サンプルと同じようにログに記録してから続けることができます。または、アプリケーションのデータ整合性要件に応じて他の処理を行うこともできます。
 
 > [!NOTE]
 > [`FindFailedActionsToRetry`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.indexbatchexception.findfailedactionstoretry) メソッドを使用して、`Index` の前回の呼び出しで失敗したアクションだけを含む新しいバッチを作成できます。 このメソッドの適切な使用方法については、[StackOverflow](https://stackoverflow.com/questions/40012885/azure-search-net-sdk-how-to-use-findfailedactionstoretry) をご覧ください。
@@ -393,14 +393,14 @@ public partial class Hotel
 }
 ```
 
-最初に注目すべき点は、`Hotel` の各パブリック プロパティがインデックス定義のフィールドに対応していることですが、1 つ重要な違いがあります。各フィールドの名前が小文字で始まっている ("キャメル ケース") のに対し、`Hotel` の各パブリック プロパティの名前は大文字で始まっています ("パスカル ケース")。 これは、ターゲット スキーマをアプリケーション開発者が制御できない場合にデータ バインドを実行する .NET アプリケーションでの一般的なシナリオです。 プロパティ名を camel-case にして .NET の命名ガイドラインに違反するのではなく、プロパティ名を自動的に camel-case にマップするように `[SerializePropertyNamesAsCamelCase]` 属性で SDK に指示できます。
+最初に注目すべき点は、`Hotel` の各パブリック プロパティがインデックス定義のフィールドに対応していることですが、1 つ重要な違いがあります。各フィールドの名前が小文字で始まっている ("キャメル ケース") のに対し、`Hotel` の各パブリック プロパティの名前は大文字で始まっています ("パスカル ケース")。 このシナリオは、ターゲット スキーマがアプリケーション開発者の制御外にあるときにデータ バインドを実行する .NET アプリケーションでは一般的です。 プロパティ名を camel-case にして .NET の命名ガイドラインに違反するのではなく、プロパティ名を自動的に camel-case にマップするように `[SerializePropertyNamesAsCamelCase]` 属性で SDK に指示できます。
 
 > [!NOTE]
 > Azure Search .NET SDK は、 [NewtonSoft JSON.NET](https://www.newtonsoft.com/json/help/html/Introduction.htm) ライブラリを使用して、カスタムのモデル オブジェクトから JSON 形式へのシリアル化や JSON 形式からの逆シリアル化を行います。 必要に応じてこのシリアル化をカスタマイズできます。 詳細については、「[JSON.NET 使用したシリアル化のカスタマイズ](#JsonDotNet)」をご覧ください。
 > 
 > 
 
-次に注目すべき点は、各パブリック プロパティ (`IsFilterable`、`IsSearchable`、`Key`、`Analyzer` など) を装飾する属性です。 これらの属性は、[Azure Search インデックスの対応する属性](https://docs.microsoft.com/rest/api/searchservice/create-index#request)に直接マップされます。 `FieldBuilder` クラスでは、これらの属性を使用してインデックスのフィールド定義を作成します。
+次に注目すべき点は、各パブリック プロパティ (`IsFilterable`、`IsSearchable`、`Key`、`Analyzer` など) を装飾する属性です。 これらの属性は、[Azure Search インデックスの対応する属性](https://docs.microsoft.com/rest/api/searchservice/create-index#request)に直接マップされます。 `FieldBuilder` クラスは、これらのプロパティを使用してインデックスのフィールド定義を構築します。
 
 `Hotel` クラスに関する 3 番目の重要な点は、パブリック プロパティのデータ型です。 これらのプロパティの .NET 型は、インデックス定義でそれらと同等のフィールド型にマップします。 たとえば、`Category` 文字列プロパティは、`Edm.String` 型の `category` フィールドにマップします。 `bool?` と `Edm.Boolean`、`DateTimeOffset?` と `Edm.DateTimeOffset` などの間にも、同じような型のマッピングがあります。型のマッピングの具体的なルールについては、[Azure Search .NET SDK リファレンス](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.get)で `Documents.Get` メソッドを参照してください。 `FieldBuilder` クラスは、このマッピングに自動的に対処しますが、シリアル化の問題のトラブルシューティングを行う必要がある場合に、マッピングを理解しておくと役立ちます。
 
@@ -424,7 +424,7 @@ Azure Search インデックスにマップする独自のモデル クラスを
 <a name="JsonDotNet"></a>
 
 #### <a name="custom-serialization-with-jsonnet"></a>JSON.NET 使用したシリアル化のカスタマイズ
-SDK では、ドキュメントのシリアル化と逆シリアル化に JSON.NET を使用します。 独自の `JsonConverter` または `IContractResolver` を定義して、必要に応じてシリアル化と逆シリアル化をカスタマイズできます (詳細については、「[JSON.NET のドキュメント](https://www.newtonsoft.com/json/help/html/Introduction.htm)」をご覧ください)。 この機能は、アプリケーションの既存のモデル クラスを Azure Search 用に適合させる場合、およびその他の高度なシナリオに役立ちます。 たとえば、カスタム シリアル化を使用すると次のことが可能です。
+SDK では、ドキュメントのシリアル化と逆シリアル化に JSON.NET を使用します。 独自の `JsonConverter` または `IContractResolver` を定義することによって、必要に応じてシリアル化と逆シリアル化をカスタマイズできます。 詳細については、[JSON.NET のドキュメント](https://www.newtonsoft.com/json/help/html/Introduction.htm)を参照してください。 この機能は、アプリケーションの既存のモデル クラスを Azure Search 用に適合させる場合、およびその他の高度なシナリオに役立ちます。 たとえば、カスタム シリアル化を使用すると次のことが可能です。
 
 * ドキュメント フィールドとして格納されるものに、モデル クラスの特定のプロパティを含める、または除外する。
 * コードのプロパティ名とインデックスのフィールド名をマップする。
@@ -433,7 +433,7 @@ SDK では、ドキュメントのシリアル化と逆シリアル化に JSON.N
 Azure Search .NET SDK のユニット テストにカスタム シリアル化を実装する例については、GitHub を参照してください。 手始めとしては、[このフォルダー](https://github.com/Azure/azure-sdk-for-net/tree/AutoRest/src/Search/Search.Tests/Tests/Models)が適しています。 カスタム シリアル化のテストに使用されるクラスが含まれます。
 
 ### <a name="searching-for-documents-in-the-index"></a>インデックス内のドキュメントの検索
-サンプル アプリケーションでは最後に、インデックス内のいくつかのドキュメントを検索します。 次のメソッドがこれを行います。
+サンプル アプリケーションの最後の手順として、インデックス内のいくつかのドキュメントを検索します。
 
 ```csharp
 private static void RunQueries(ISearchIndexClient indexClient)
@@ -492,9 +492,9 @@ private static void RunQueries(ISearchIndexClient indexClient)
 }
 ```
 
-クエリを実行するたびに、このメソッドはまず新しい `SearchParameters` オブジェクトを作成します。 このオブジェクトは、並べ替え、フィルター処理、ページング、ファセットなどの追加オプションをクエリに対して指定するために使用されます。 このメソッドでは、さまざまなクエリの `Filter`、`Select`、`OrderBy`、`Top` の各プロパティを設定します。 `SearchParameters` のすべてのプロパティについては、[こちら](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.searchparameters)をご覧ください。
+クエリを実行するたびに、このメソッドはまず新しい `SearchParameters` オブジェクトを作成します。 このオブジェクトは、並べ替え、フィルター処理、ページング、ファセットなどの、クエリへの追加オプションを指定するために使用されます。 このメソッドでは、さまざまなクエリの `Filter`、`Select`、`OrderBy`、`Top` の各プロパティを設定します。 `SearchParameters` のすべてのプロパティについては、[こちら](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.searchparameters)をご覧ください。
 
-次の手順では、検索クエリを実際に実行します。 これは `Documents.Search` メソッドを使用して行われます。 各クエリでは、使用する検索テキストを文字列として渡し (検索テキストがない場合は `"*"`)、以前に作成した検索パラメーターも渡します。 また、`Documents.Search` に対する型パラメーターとして `Hotel` も指定します。これは、検索結果のドキュメントを `Hotel` 型のオブジェクトに逆シリアル化するように SDK に指示します。
+次の手順では、検索クエリを実際に実行します。 この検索は、`Documents.Search` メソッドを使用して実行されます。 各クエリでは、使用する検索テキストを文字列として渡し (検索テキストがない場合は `"*"`)、以前に作成した検索パラメーターも渡します。 また、`Documents.Search` に対する型パラメーターとして `Hotel` も指定します。これは、検索結果のドキュメントを `Hotel` 型のオブジェクトに逆シリアル化するように SDK に指示します。
 
 > [!NOTE]
 > 検索クエリ式の構文の詳細については、[こちら](https://docs.microsoft.com/rest/api/searchservice/Simple-query-syntax-in-Azure-Search)をご覧ください。

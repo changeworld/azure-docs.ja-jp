@@ -6,15 +6,15 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 12/31/2018
+ms.date: 06/03/2019
 ms.author: v-adgera
 ms.custom: seodec18
-ms.openlocfilehash: 6636c87493230e3e392c29ffaf182b489ab0ba34
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 842c35a1575c7bcf6f547fb04d5680178b3bee78
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65967764"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66730411"
 ---
 # <a name="azure-digital-twins-swagger-reference-documentation"></a>Azure Digital Twins Swagger リファレンス ドキュメント
 
@@ -42,15 +42,15 @@ Swagger は、Azure Digital Twins Management API に対して行われる呼び�
 
 簡潔な概要では、API について説明されています。
 
-![Swagger の最上部][1]
+[![Swagger の最上部](media/how-to-use-swagger/swagger_management_top.PNG)](media/how-to-use-swagger/swagger_management_top.PNG#lightbox)
 
 Management API オブジェクト モデルも一覧表示されます。
 
-![Swagger モデル][2]
+[![Swagger モデル](media/how-to-use-swagger/swagger_management_models.PNG)](media/how-to-use-swagger/swagger_management_models.PNG#lightbox)
 
 一覧表示されている各オブジェクト モデルを選択すると、キー属性の詳細な概要が表示されます。
 
-![Swagger モデル][3]
+[![Swagger モデル](media/how-to-use-swagger/swagger_management_model.PNG)](media/how-to-use-swagger/swagger_management_model.PNG#lightbox)
 
 生成された Swagger オブジェクト モデルは、Azure Digital Twins の使用可能なすべての[オブジェクトおよび API](./concepts-objectmodel-spatialgraph.md) を確認するのに便利です。 開発者は、Azure Digital Twins でソリューションを作成するときに、このリソースの使用できます。
 
@@ -64,7 +64,7 @@ Swagger では、Management API を構成するすべてのエンドポイント
 * 必須のパラメーターのデータ型。
 * リソースにアクセスする HTTP メソッド。
 
-![Swagger エンドポイント][4]
+[![Swagger エンドポイント](media/how-to-use-swagger/swagger_management_endpoints.PNG)](media/how-to-use-swagger/swagger_management_endpoints.PNG#lightbox)
 
 さらに詳細な概要を見るには、各リソースをクリックします。
 
@@ -72,13 +72,13 @@ Swagger では、Management API を構成するすべてのエンドポイント
 
 Swagger が提供する強力な機能の 1 つは、ドキュメントの UI から直接、API エンドポイントをテストできることです。
 
-特定のエンドポイントを選択すると、**[試してみる]** と表示されます。
+特定のエンドポイントを選択すると、 **[試してみる]** と表示されます。
 
-![Swagger の試用][5]
+[![Swagger の試用](media/how-to-use-swagger/swagger_management_try.PNG)](media/how-to-use-swagger/swagger_management_try.PNG#lightbox)
 
-そのセクションを展開すると、必須および省略可能な各パラメーターの入力フィールドが表示されます。 適切な値を入力し、**[Execute]\(実行\)** を選択します。
+そのセクションを展開すると、必須および省略可能な各パラメーターの入力フィールドが表示されます。 適切な値を入力し、 **[Execute]\(実行\)** を選択します。
 
-![Swagger の試用後][6]
+[![Swagger の試用後](media/how-to-use-swagger/swagger_management_tried.PNG)](media/how-to-use-swagger/swagger_management_tried.PNG#lightbox)
 
 テストを実行した後は、応答データを検証できます。
 
@@ -86,7 +86,7 @@ Swagger が提供する強力な機能の 1 つは、ドキュメントの UI �
 
 一覧表示されている各エンドポイントには、開発およびテストを検証するための応答本文データも含まれます。 これらの例には、HTTP 要求が成功したときに表示される状態コードと JSON が含まれます。
 
-![Swagger の応答][7]
+[![Swagger の応答](media/how-to-use-swagger/swagger_management_response.PNG)](media/how-to-use-swagger/swagger_management_response.PNG#lightbox)
 
 これらの例には、失敗したテストのデバッグまたは改善に役立つエラー コードも含まれます。
 
@@ -108,7 +108,7 @@ OAuth 2.0 によって保護された要求の対話的なテストに関する�
     |---------|---------|---------|
     | YOUR_SWAGGER_URL | ポータルで見つかった Management REST API ドキュメントの URL  | `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/swagger` |
 
-3. Azure Digital Twins にアクセスするアクセス許可をアプリに付与します。 **[必要なアクセス許可]** に「`Azure Digital Twins`」と入力して、**[委任されたアクセス許可]** を選択します。 その後、**[アクセス許可の付与]** を選択します。
+3. Azure Digital Twins にアクセスするアクセス許可をアプリに付与します。 **[必要なアクセス許可]** に「`Azure Digital Twins`」と入力して、 **[委任されたアクセス許可]** を選択します。 その後、 **[アクセス許可の付与]** を選択します。
 
     ![Azure AD のアプリ登録追加 API](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png)
 
@@ -118,31 +118,22 @@ OAuth 2.0 によって保護された要求の対話的なテストに関する�
 
 5. Azure AD アプリの ID をコピーします。
 
-6. Swagger ページで [承認] ボタンをクリックします。
+Azure Active Directory の登録を完了した後:
 
-    ![Swagger の [承認] ボタン](../../includes/media/digital-twins-permissions/swagger-select-authorize-btn.png)
+6. Swagger ページで **[Authorize]\(承認\)** ボタンをクリックします。
 
-7. アプリケーション ID を [client_id] フィールドに貼り付けます。
+    [![Swagger の [Authorize]\(承認\) ボタンをクリックする](media/how-to-use-swagger/swagger-select-authorize-btn.png)](media/how-to-use-swagger/swagger-select-authorize-btn.png#lightbox)
 
-    ![Swagger の [client_id] フィールド](../../includes/media/digital-twins-permissions/swagger-auth-form.png)
+7. アプリケーション ID を **[client_id]** フィールドに貼り付けます。
 
-    ![Swagger による アプリケーションのアクセス許可の付与](../../includes/media/digital-twins-permissions/swagger-grant-application-permissions.png)
+    [![Swagger の [client_id] フィールド](media/how-to-use-swagger/swagger-auth-form.png)](media/how-to-use-swagger/swagger-auth-form.png#lightbox)
 
-8. これで、認証ヘッダーに渡されたべアラー認証トークンとログインしたユーザーの ID が結果に表示されます。
+8. 次の成功のモーダルにリダイレクトされます。
 
-    ![Swagger トークンの結果](../../includes/media/digital-twins-permissions/swagger-token-example.png)
+    [![Swagger のリダイレクト モーダル](media/how-to-use-swagger/swagger_auth_redirect.PNG)](media/how-to-use-swagger/swagger_auth_redirect.PNG#lightbox)
 
 ## <a name="next-steps"></a>次の手順
 
 - Azure Digital Twins のオブジェクト モデルおよび空間インテリジェンス グラフについて詳しくは、[Azure Digital Twins オブジェクト モデル](./concepts-objectmodel-spatialgraph.md)に関する記事をご覧ください。
 
 - Management API を使用して認証を行う方法については、[API を使用した認証](./security-authenticating-apis.md)に関する記事をご覧ください。
-
-<!-- Images -->
-[1]: media/how-to-use-swagger/swagger_management_top.PNG
-[2]: media/how-to-use-swagger/swagger_management_models.PNG
-[3]: media/how-to-use-swagger/swagger_management_model.PNG
-[4]: media/how-to-use-swagger/swagger_management_endpoints.PNG
-[5]: media/how-to-use-swagger/swagger_management_try.PNG
-[6]: media/how-to-use-swagger/swagger_management_tried.PNG
-[7]: media/how-to-use-swagger/swagger_management_response.PNG

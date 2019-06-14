@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 08/31/2018
+ms.date: 06/03/2019
 ms.author: mbullwin
-ms.openlocfilehash: 47c83e6bc700f972e6dff83e4d067e61218c04bd
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: d1823779f8a8070149811e2349fc9f4281072d38
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54035255"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66497165"
 ---
 # <a name="application-insights-overview-dashboard"></a>Application Insights の概要ダッシュボード
 
@@ -35,7 +35,7 @@ Application Insights では常に、アプリケーションの正常性とパ�
 
 ![時間範囲](./media/overview-dashboard/app-insights-overview-dashboard-03.png)
 
-全体的なパフォーマンスが大幅に向上しました。 **検索**や **Analytics** のような人気のある機能に 1 回のクリックでアクセスできます。 既定の動的に更新される各 KPI タイルでは、Application Insights の対応する機能について把握できます。 失敗した要求の詳細については、**[調査]** ヘッダーの下の **[失敗]** を選択します。
+全体的なパフォーマンスが大幅に向上しました。 **検索**や **Analytics** のような人気のある機能に 1 回のクリックでアクセスできます。 既定の動的に更新される各 KPI タイルでは、Application Insights の対応する機能について把握できます。 失敗した要求の詳細については、 **[調査]** ヘッダーの下の **[失敗]** を選択します。
 
 ![エラー](./media/overview-dashboard/app-insights-overview-dashboard-04.png)
 
@@ -60,9 +60,12 @@ Application Insights では常に、アプリケーションの正常性とパ�
 
 ![[概要] ボタン](./media/overview-dashboard/app-insights-overview-dashboard-07.png)
 
+## <a name="troubleshooting"></a>トラブルシューティング
+
+**[タイル設定の構成]** を選択し、31 日を超えるカスタムの時間範囲を設定した場合、既定のデータ保有期間が 90 日であっても、ダッシュボードには 31 日を超えるデータは表示されません。 現時点では、この動作の回避策はありません。
+
 ## <a name="next-steps"></a>次の手順
 
 - [ファネル](../../azure-monitor/app/usage-funnels.md)
 - [保持](../../azure-monitor/app/usage-retention.md)
 - [ユーザー フロー](../../azure-monitor/app/usage-flows.md)
-- [ダッシュボード](../../azure-monitor/app/app-insights-dashboards.md)

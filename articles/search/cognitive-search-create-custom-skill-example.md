@@ -10,24 +10,24 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 82d49a6a82251f440c06db03edc92851fce87741
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: efa85491f4b183a044ec5d9e5e6e3d11eebedbe3
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65023627"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66428439"
 ---
 # <a name="example-create-a-custom-skill-using-the-text-translate-api"></a>例:Text Translate API を使用してカスタム スキルを作成する
 
-この例では、任意の言語のテキストを受け取って英語に翻訳する Web API カスタム スキルを作成する方法について説明します。 この例では、[Azure 関数](https://azure.microsoft.com/services/functions/)を使用して、[Translate Text API](https://azure.microsoft.com/services/cognitive-services/translator-text-api/) をラップし、カスタム スキル インターフェイスを実装します。
+この例では、Web API カスタム スキルを作成する方法について説明します。 このスキルは、任意の言語のテキストを受け取って英語に翻訳します。 この例では、[Azure 関数](https://azure.microsoft.com/services/functions/)を使用して、[Translate Text API](https://azure.microsoft.com/services/cognitive-services/translator-text-api/) をラップし、カスタム スキル インターフェイスを実装します。
 
 ## <a name="prerequisites"></a>前提条件
 
-+ カスタム スキルに実装する必要がある入出力インターフェイスがよくわからない場合は、[カスタム スキル インターフェイス](cognitive-search-custom-skill-interface.md)に関する記事を参照してください。
++ カスタム スキルで実装する必要がある入出力インターフェイスがよくわからない場合は、[カスタム スキル インターフェイス](cognitive-search-custom-skill-interface.md)に関する記事を参照してください。
 
 + [Translator Text API にサインアップ](../cognitive-services/translator/translator-text-how-to-signup.md)し、その API を利用するための API キーを取得します。
 
-+ Azure 開発のワークロードを備えた、[Visual Studio 2017 バージョン 15.5](https://www.visualstudio.com/vs/) 以降をインストールします。
++ Azure 開発のワークロードを備えた、[Visual Studio 2019](https://www.visualstudio.com/vs/) 以降をインストールします。
 
 ## <a name="create-an-azure-function"></a>Azure Function の作成
 
@@ -35,15 +35,15 @@ ms.locfileid: "65023627"
 
 ### <a name="create-a-function-app"></a>Function App を作成する
 
-1. Visual Studio で、[ファイル] メニューから **[新規]** > **[プロジェクト]** の順に選択します。
+1. Visual Studio で、[ファイル] メニューから **[新規]**  >  **[プロジェクト]** の順に選択します。
 
-1. [新しいプロジェクト] ダイアログで、**[インストール済み]** を選択し、**[Visual C#]** > **[クラウド]** の順に展開して **[Azure Functions]** を選択します。プロジェクトの名前を入力して、**[OK]** を選択します。 関数アプリ名は、C# 名前空間として有効である必要があります。そのため、アンダースコア、ハイフン、その他の英数字以外の文字は使用しないでください。
+1. [新しいプロジェクト] ダイアログで、 **[インストール済み]** を選択し、 **[Visual C#]**  >  **[クラウド]** の順に展開して **[Azure Functions]** を選択します。プロジェクトの名前を入力して、 **[OK]** を選択します。 関数アプリ名は、C# 名前空間として有効である必要があります。そのため、アンダースコア、ハイフン、その他の英数字以外の文字は使用しないでください。
 
 1. **[Azure Functions v2 (.NET Core)]** を選択します。 バージョン 1 でも同様の手順を実行できますが、以下に記述したコードは、v2 テンプレートに基づいています。
 
 1. 種類として **[HTTP Trigger]\(HTTP トリガー\)** を選択します。
 
-1. ストレージ アカウントについては、この関数にはストレージが不要なので、**[なし]** を選択できます。
+1. ストレージ アカウントについては、この関数にはストレージが不要なので、 **[なし]** を選択できます。
 
 1. **[OK]** を選択して、関数プロジェクトと、HTTP でトリガーされる関数を作成します。
 
@@ -237,11 +237,11 @@ POST https://localhost:7071/api/Translate
 
 関数の動作に満足したら、発行できます。
 
-1. **ソリューション エクスプローラー**で、プロジェクトを右クリックし、**[発行]** を選択します。 **[新規作成]** > **[発行]** の順に選択します。
+1. **ソリューション エクスプローラー**で、プロジェクトを右クリックし、 **[発行]** を選択します。 **[新規作成]**  >  **[発行]** の順に選択します。
 
-1. まだ Visual Studio を Azure アカウントに接続していない場合は、**[アカウントの追加]** を選択します。
+1. まだ Visual Studio を Azure アカウントに接続していない場合は、 **[アカウントの追加]** を選択します。
 
-1. 画面の指示に従います。 使用する Azure アカウント、リソース グループ、ホスティング プラン、ストレージ アカウントを指定するように求められます。 リソース グループ、ホスティング プラン、ストレージ アカウントをまだ作成していない場合は新しく作成できます。 終わったら、**[作成]** を選択します。
+1. 画面の指示に従います。 使用する Azure アカウント、リソース グループ、ホスティング プラン、ストレージ アカウントを指定するように求められます。 リソース グループ、ホスティング プラン、ストレージ アカウントをまだ作成していない場合は新しく作成できます。 終わったら、 **[作成]** を選択します。
 
 1. デプロイが完了したら、サイトの URL を書き留めておきます。 これが Azure における関数アプリのアドレスになります。 
 
@@ -270,7 +270,7 @@ POST https://translatecogsrch.azurewebsites.net/api/Translate?code=[enter defaul
 }
 ```
 
-これにより、以前にローカル環境で関数を実行したときと同じような結果が得られます。
+この例では、以前にローカル環境で関数を実行したときと同じような結果が得られるはずです。
 
 ## <a name="connect-to-your-pipeline"></a>パイプラインに接続する
 新しいカスタム スキルが作成できたので、スキルセットに追加できます。 下の例では、スキルを呼び出す方法を示しています。 スキルはバッチに対応していないので、一度に 1 つずつドキュメントを送信するために、最大バッチ サイズを ```1``` にする命令を追加します。

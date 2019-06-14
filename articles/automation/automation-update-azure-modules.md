@@ -6,19 +6,19 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 05/13/2019
+ms.date: 05/30/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a2f55891ddd383ea15da499495909b56ffb0e06d
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: c09c9df1b8af7adca5c0169cf31881121ba6cc99
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65786143"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66427490"
 ---
 # <a name="how-to-update-azure-powershell-modules-in-azure-automation"></a>Azure Automation の Azure PowerShell モジュールを更新する方法
 
-Automation アカウントの Azure モジュールを更新するには、オープン ソースとして利用可能な [Azure モジュールの更新 Runbook](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update) を使用する必要があります。 **Update-AutomationAzureModulesForAccount** Runbook を使用した Azure モジュールの更新を始めるには、Runbook を GitHub の [Update Azure modules runbook repository (Azure モジュールの更新 Runbook リポジトリ)](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update) からダウンロードします。 その後、それを Automation アカウントにインポートするか、スクリプトとして実行することができます。 これを行う方法の説明は、[Update Azure modules runbook repository (Azure モジュールの更新 Runbook リポジトリ)](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update) にあります。
+Automation アカウントの Azure モジュールを更新するには、オープン ソースとして利用可能な [Azure モジュールの更新 Runbook](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update) を使用する必要があります。 **Update-AutomationAzureModulesForAccount** Runbook を使用した Azure モジュールの更新を始めるには、Runbook を GitHub の [Update Azure modules runbook repository (Azure モジュールの更新 Runbook リポジトリ)](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update) からダウンロードします。 その後、それを Automation アカウントにインポートするか、スクリプトとして実行することができます。 Automation アカウントに Runbook をインポートする方法については、「[Runbook をインポートする](manage-runbooks.md#import-a-runbook)」をご覧ください。
 
 各 Automation アカウントでは、最も一般的な AzureRM PowerShell モジュールが既定で提供されます。 Azure チームは Azure モジュールを定期的に更新します。そのため、最新の状態に保つためには、[Update-AutomationAzureModulesForAccount](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update) Runbook を使用して Automation アカウントのモジュールを更新する必要があります。
 

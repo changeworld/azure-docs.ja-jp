@@ -1,18 +1,18 @@
 ---
-title: クイック スタート:Azure CLI を使用して Azure Data Explorer クラスターとデータベースを作成する
+title: Azure CLI を使用して Azure Data Explorer クラスターとデータベースを作成する
 description: Azure CLI を使用して Azure Data Explorer クラスターとデータベースを作成する方法を学習します
 author: radennis
 ms.author: radennis
 ms.reviewer: orspodek
 ms.service: data-explorer
-ms.topic: quickstart
-ms.date: 04/10/2019
-ms.openlocfilehash: 1fb9027ab3301bb860d260aed737ab7674039d9b
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.topic: conceptual
+ms.date: 06/03/2019
+ms.openlocfilehash: e771def95db00b5de8c27011641a628560952970
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59524720"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66494802"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-azure-cli"></a>Azure CLI を使用して Azure Data Explorer クラスターとデータベースを作成する
 
@@ -24,15 +24,15 @@ ms.locfileid: "59524720"
 > * [Python](create-cluster-database-python.md)
 >
 
-Azure Data Explorer は、アプリケーション、Web サイト、IoT デバイスなどからの大量のデータ ストリーミングをリアルタイムに分析するためのフル マネージドのデータ分析サービスです。 Azure Data Explorer を使用するには、最初にクラスターを作成し、そのクラスター内に 1 つまたは複数のデータベースを作成します。 その後、クエリを実行できるように、データをデータベースに取り込み (読み込み) ます。 このクイック スタートでは、Azure CLI を使用して、クラスターとデータベースを 1 つずつ作成します。
+Azure Data Explorer は、アプリケーション、Web サイト、IoT デバイスなどからの大量のデータ ストリーミングをリアルタイムに分析するためのフル マネージドのデータ分析サービスです。 Azure Data Explorer を使用するには、最初にクラスターを作成し、そのクラスター内に 1 つまたは複数のデータベースを作成します。 その後、クエリを実行できるように、データをデータベースに取り込み (読み込み) ます。 この記事では、Azure CLI を使用して、クラスターとデータベースを 1 つずつ作成します。
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイック スタートを完了するには、Azure サブスクリプションが必要です。 お持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
+この記事を完了するには、Azure サブスクリプションが必要です。 お持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Azure CLI をローカルにインストールして使用する場合、このクイック スタートでは、Azure CLI バージョン 2.0.4 以降を実行する必要があります。 バージョンを確認するには `az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli?view=azure-cli-latest)に関するページを参照してください。
+Azure CLI をローカルにインストールして使用する場合、この記事では、Azure CLI バージョン 2.0.4 以降が必要です。 バージョンを確認するには `az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli?view=azure-cli-latest)に関するページを参照してください。
 
 ## <a name="configure-the-cli-parameters"></a>CLI パラメーターを構成する
 
@@ -100,7 +100,7 @@ Azure Cloud Shell でコマンドを実行している場合、次の手順は�
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-* 他のクイック スタートやチュートリアルを行う場合は、作成したリソースをそのままにします。
+* 他の記事に進む場合は、作成したリソースをそのままにします。
 * リソースをクリーンアップするには、クラスターを削除します。 クラスターを削除するときに、その中に含まれるデータベースもすべて削除されます。 クラスターを削除するには次のコマンドを使います。
 
     ```azurecli-interactive
@@ -109,5 +109,4 @@ Azure Cloud Shell でコマンドを実行している場合、次の手順は�
 
 ## <a name="next-steps"></a>次の手順
 
-> [!div class="nextstepaction"]
-> [クイック スタート:Azure Data Explorer の Python ライブラリを使用してデータを取り込む](python-ingest-data.md)
+* [Azure Data Explorer の Python ライブラリを使用してデータを取り込む](python-ingest-data.md)

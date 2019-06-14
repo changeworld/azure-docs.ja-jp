@@ -10,12 +10,12 @@ author: anumjs
 ms.author: anjangsh
 ms.reviewer: jrasnick
 manager: craigg
-ms.openlocfilehash: 215f7c9c65658ddbb10498bb59f3d326bf3a10f1
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 9e5f10c2b4c2108626db79ad9821a8b07e57a2e3
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65988281"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66417704"
 ---
 # <a name="azure-sql-data-warehouse-release-notes"></a>Azure SQL Data Warehouse リリース ノート
 
@@ -38,6 +38,7 @@ ms.locfileid: "65988281"
 |**追加の T-SQL サポート**|SQL Data Warehouse の T-SQL 言語セキュリティが拡張され、次のサポートが含まれるようになりました。 </br> - [TRIM](/sql/t-sql/functions/trim-transact-sql?view=azure-sqldw-latest)|
 |**JSON 関数**|ビジネス アナリストは、Azure Data Warehouse で次の新しい JSON 関数を使用することにより、使い慣れた T-SQL 言語を使用して、JSON データとして書式設定されたドキュメントのクエリおよび操作を行えるようになりました。</br> - [ISJSON](/sql/t-sql/functions/isjson-transact-sql?view=azure-sqldw-latest)</br> - [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?view=azure-sqldw-latest)</br> -  [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?view=azure-sqldw-latest)</br> -  [JSON_MODIFY](/sql/t-sql/functions/json-modify-transact-sql?view=azure-sqldw-latest)</br> - [OPENJSON](/sql/t-sql/functions/openjson-transact-sql?view=azure-sqldw-latest)|
 |**結果セットのキャッシュ機能 (プレビュー)**|結果セットのキャッシュ機能により、ビジネス分析で分析情報を得るまでにかかる時間を短縮し、ユーザーを報告しながら、即時のクエリ応答が可能になります。 詳細については、次を参照してください。</br> - [ALTER DATABASE (Transact-SQL)](/sql/t-sql/statements/alter-database-transact-sql?view=azure-sqldw-latest)</br> - [ALTER DATABASE SET オプション (Transact SQL)](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest)</br> - [SET RESULT SET CACHING (Transact-SQL)](/sql/t-sql/statements/set-result-set-caching-transact-sql?view=azure-sqldw-latest)</br> - [SET ステートメント (Transact-SQL)](/sql/t-sql/statements/set-statements-transact-sql)</br> - [sys.databases (Transact-SQL)](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql?view=azure-sqldw-latest)|
+|**順序指定クラスター化列ストア インデックス (プレビュー)**|列ストアは、大量のデータの格納および効率的なクエリを実現する鍵となります。 テーブルごとに、受信データが行グループに分割され、行グループの各列がディスク上のセグメントを構成します。  順序指定クラスター化列ストア インデックスは、効率的なセグメントの除外を有効にすることにより、クエリの実行をさらに最適化します。   詳細については、次を参照してください。</br> -  [CREATE TABLE (Azure SQL Data Warehouse)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?view=azure-sqldw-latest)</br> -  [CREATE COLUMNSTORE INDEX (Transact-SQL)](/sql/t-sql/statements/create-columnstore-index-transact-sql?view=azure-sqldw-latest).|
 
 ## <a name="march-2019"></a>2019 年 3 月
 

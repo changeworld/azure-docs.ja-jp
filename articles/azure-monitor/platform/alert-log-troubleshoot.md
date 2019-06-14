@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: 1c7712fc2ce55a3d22995bb119a9ee485a064903
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 03a6ea45577b4a4bf57501b1834f91438feb4e2b
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64683392"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66477863"
 ---
 # <a name="troubleshoot-log-alerts-in-azure-monitor"></a>Azure Monitor のログ アラートのトラブルシューティング  
 
 この記事では、Azure Monitor 内でログ アラートを設定しているときによく発生する問題の解決方法について説明します。 また、ログ アラートの機能や構成でよく発生する問題の解決策も紹介しています。 
 
-*ログ アラート*という用語は、[Azure Log Analytics ワークスペース](../learn/tutorial-viewdata.md)または [Azure Application Insights](../../azure-monitor/app/analytics.md) のログ クエリで作動するアラートを指します。 機能、用語、種類については、「[Azure Monitor でのログ アラート](../platform/alerts-unified-log.md)」を参照してください。
+*ログ アラート*という用語は、[Azure Log Analytics ワークスペース](../learn/tutorial-viewdata.md)または [Azure Application Insights](../../azure-monitor/app/analytics.md) のログ クエリで作動するルールを指します。 機能、用語、種類については、「[Azure Monitor でのログ アラート](../platform/alerts-unified-log.md)」を参照してください。
 
 > [!NOTE]
 > この記事では、トリガーされ Azure portal に表示されたアラート ルールの通知が、関連付けられているアクション グループで対処されなかった場合については考慮していません。 このようなケースについては、「[Azure portal でのアクション グループの作成および管理](../platform/action-groups.md)」を参照してください。
@@ -181,6 +181,7 @@ Azure アクティビティ ログの次のサンプル イベントは、連続
 構成の一部として Azure Monitor に作成された各ログ アラート ルールでは、アラート サービスが定期的に実行する分析クエリが指定される必要があります。 分析クエリの構文は、ルールの作成時または更新時には正しく指定されているはずです。 しかし、しばらく時間が経過すると、ログ アラート ルールで指定したクエリで構文の問題が発生し、ルールの実行が失敗することがあります。 ログ アラート ルールで指定した分析クエリでエラーが発生する可能性がある一般的な理由をいくつか以下に示します。
 
 - クエリが[複数のリソースにわたって実行される](../log-query/cross-workspace-query.md)よう記述されています。 そして指定した 1 つ以上のリソースが存在しなくなりました。
+- アラート クエリを持つように構成された[メトリック測定タイプのログ アラート](../../azure-monitor/platform/alerts-unified-log.md#metric-measurement-alert-rules)が構文規範に準拠していません
 - 分析プラットフォームへのデータ フローがありません。 指定したクエリに対するデータがないので[クエリを実行するとエラーが発生します](https://dev.loganalytics.io/documentation/Using-the-API/Errors)。
 - [クエリ言語](https://docs.microsoft.com/azure/kusto/query/)が変更され、コマンドと関数の形式が変更されています。 したがって、アラート ルールで以前指定したクエリが無効になっています。
 

@@ -12,28 +12,22 @@ ms.devlang: dotNet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 7/10/2018
+ms.date: 6/05/2019
 ms.author: aljo
-ms.openlocfilehash: e94280f9df1d4ac59856a73f6f6c2b7f7a0b9cc0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a75b02b8173507a28204a3ec2030ce7ed9838495
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58107493"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66729863"
 ---
 # <a name="production-readiness-checklist"></a>運用環境の準備状況チェックリスト
 
 お使いのアプリケーションとクラスターは、運用環境のトラフィックに対応する準備ができていますか。 アプリケーションとクラスターを実行してテストしたからといって、必ずしも運用環境に移行するための準備ができているというわけではありません。 次のチェックリストを検討して、アプリケーションとクラスターが円滑に実行されるようにします。 これらの項目すべてをチェック済みにすることを強くお勧めします。 当然ながら、特定の項目に代替ソリューションを使用することができます (独自の診断フレームワークなど)。
 
 
-## <a name="pre-requisites-for-production"></a>運用環境の前提条件
-1. [Azure Service Fabric のセキュリティに関するベスト プラクティス](https://docs.microsoft.com/azure/security/azure-service-fabric-security-best-practices): 
-1. X.509 証明書を使用する
-1. セキュリティ ポリシーを構成する
-1. Azure Service Fabric の SSL を構成する
-1. Azure Service Fabric にネットワークの分離とセキュリティを使用する
-1. セキュリティ確保のために Azure Key Vault を設定する
-1. ロールへの Microsoft.Network/loadBalancersAssign ユーザー
+## <a name="prerequisites-for-production"></a>運用環境の前提条件
+1. Azure Service Fabric のベスト プラクティス:[アプリケーションの設計](./service-fabric-best-practices-applications.md)、[セキュリティ](./service-fabric-best-practices-security.md)、[ネットワーク](./service-fabric-best-practices-networking.md)、[キャパシティ プランニングとスケール](./service-fabric-best-practices-capacity-scaling.md)、[コードとしてのインフラストラクチャ](./service-fabric-best-practices-infrastructure-as-code.md)、および[監視と診断](./service-fabric-best-practices-monitoring.md)。 
 1. Actors プログラミング モデルを使用している場合に Reliable Actors のセキュリティ構成を実装する
 1. 20 を超えるコアまたは 10 個を超えるノードを持つクラスターの場合は、システム サービス用に専用のプライマリ ノード タイプを作成します。 [配置の制約](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md)を追加して、システム サービス用にプライマリ ノード タイプを予約します。
 1. プライマリ ノード タイプには D2v2 または上位の SKU を使用します。 少なくとも 50 GB のハード ディスク容量を持つ SKU を選択することをお勧めします。

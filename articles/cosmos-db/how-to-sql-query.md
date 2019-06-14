@@ -4,14 +4,14 @@ description: Azure Cosmos DB の SQL 構文、データベースの概念、お�
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 05/28/2019
 ms.author: mjbrown
-ms.openlocfilehash: bbca0239053b8f3164055a07b376abc597b0348f
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 943ed63aed0f64ae6cbd62c52731c6ec73ddd0bd
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65954137"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66388478"
 ---
 # <a name="sql-query-examples-for-azure-cosmos-db"></a>Azure Cosmos DB の SQL クエリの例
 
@@ -756,7 +756,7 @@ ANSI SQL の場合と同様に、クエリにオプションの ORDER BY 句を�
 
 ## <a id="OffsetLimitClause"></a>OFFSET LIMIT 句
 
-OFFSET LIMIT は、スキップした後、クエリからいくつかの値を取得するオプションの句です。 OFFSET LIMIT 句には、OFFSET の数と LIMIT の数が必要です。
+OFFSET LIMIT は、スキップした後、クエリからいくつかの値を取得するオプションの句です。 OFFSET LIMIT 句には、OFFSET の数と LIMIT の数が必要です。 現在、この句は単一パーティション内のクエリのみでサポートされており、クロス パーティション クエリではまだサポートしていません。 
 
 OFFSET LIMIT を ORDER BY 句と組み合わせて使用した場合、スキップが実行され、順序付けられた値を受け取る結果セットが生成されます。 ORDER BY 句を使用しない場合、決定論的順序の値になります。
 

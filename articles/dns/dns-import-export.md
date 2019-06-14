@@ -6,12 +6,12 @@ author: vhorne
 ms.service: dns
 ms.date: 4/3/2019
 ms.author: victorh
-ms.openlocfilehash: 25445415141372e1f231549c5b8f8575a89363c6
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 00ff5636f97b24c656ee4e5d8ceb2f6b22524538
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58905411"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66515345"
 ---
 # <a name="import-and-export-a-dns-zone-file-using-the-azure-cli"></a>Azure CLI を使用した DNS ゾーン ファイルのインポートとエクスポート
 
@@ -153,7 +153,7 @@ az network dns zone import -g <resource group> -n <zone name> -f <zone file name
 
 ## <a name="export-a-dns-zone-file-from-azure-dns"></a>Azure DNS からの DNS ゾーン ファイルのエクスポート
 
-DNS ゾーンをインポートする Azure CLI コマンドの形式は次のとおりです。
+DNS ゾーンをエクスポートする Azure CLI コマンドの形式は次のとおりです。
 
 ```azurecli
 az network dns zone export -g <resource group> -n <zone name> -f <zone file name>

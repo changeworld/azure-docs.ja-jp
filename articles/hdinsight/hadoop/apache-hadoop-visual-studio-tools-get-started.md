@@ -9,13 +9,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
-ms.date: 02/21/2019
-ms.openlocfilehash: 6fbbdb67478d0b45a2cc2ecb8a44fac140e72da5
-ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
+ms.date: 06/03/2019
+ms.openlocfilehash: 42ef03d604caacf5ba18773b88e892237b5f0eae
+ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65851842"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66688533"
 ---
 # <a name="use-data-lake-tools-for-visual-studio-to-connect-to-azure-hdinsight-and-run-apache-hive-queries"></a>Data Lake Tools for Visual Studio を使用して Azure HDInsight に接続し、Apache Hive クエリを実行する
 
@@ -33,10 +33,10 @@ Data Lake Tools for Visual Studio を使用して、Azure Data Lake Analytics �
 
 * Azure HDInsight クラスター。 HDInsight クラスターを作成するには、[Azure HDInsight での Apache Hadoop の使用](apache-hadoop-linux-tutorial-get-started.md)に関するページを参照してください。 対話型 Apache Hive クエリを実行するには、[HDInsight 対話型クエリ](../interactive-query/apache-interactive-query-get-started.md) クラスターが必要です。  
 
-* [Visual Studio](https://visualstudio.microsoft.com/downloads/) (2013 以降)。  [Visual Studio Community エディション](https://visualstudio.microsoft.com/vs/community/)は無料です。  「[Visual Studio 2017 のインストール](https://docs.microsoft.com/visualstudio/install/install-visual-studio)」と「[Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)」も参照してください。
+* [Visual Studio](https://visualstudio.microsoft.com/downloads/) (2013 以降)。  [Visual Studio Community エディション](https://visualstudio.microsoft.com/vs/community/)は無料です。  「[Visual Studio 2017 のインストール](https://docs.microsoft.com/visualstudio/install/install-visual-studio)」と「[Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)」も参照してください。 Visual Studio 2019 にはいくつかのインターフェイスのバリエーションがあります。
 
   > [!IMPORTANT]  
-  > Data Lake Tools は Visual Studio 2013 ではサポートされなくなりました。 
+  > Data Lake Tools は Visual Studio 2013 ではサポートされなくなりました。
 
 ## <a name="install-data-lake-tools-for-visual-studio"></a>Data Lake Tools for Visual Studio のインストール  
 <a name="install-or-update-data-lake-tools-for-visual-studio"></a>
@@ -93,19 +93,20 @@ Visual Studio から Azure Portal に接続するには:
 
 1. サーバー エクスプローラーから **[Azure]**  >  **[HDInsight]** に移動して、クラスターを選択します。
 
-2. HDInsight クラスターを右クリックし、 **[Azure Portal でのクラスターの管理]** を選択します。
+2. HDInsight クラスターを右クリックし、 **[Azure Portal でのクラスターの管理][sic]** を選択します。
 
 Visual Studio から質問をしたりフィードバックを提供したりするには:
 
 1. サーバー エクスプローラーから **[Azure]**  >  **[HDInsight]** に移動します。
 
 2. **[HDInsight]** を右クリックし、質問をするには **[MSDN フォーラム]** を、フィードバックを提供するには **[フィードバックの送信]** を選択してください。
+
 ## <a name="link-a-cluster"></a>クラスターのリンク
 クラスターをリンクするには、 **[HDInsight]** を右クリックして **[HDInsight クラスターをリンク]** を選択します。 **[接続 URL]** 、 **[ユーザー名]** 、 **[パスワード]** を入力し、 **[次へ]** をクリックし、 **[完了]** をクリックします。クラスターは HDInsight ノードの下に成功と表示されます。
 
 ![Data Lake Tools for Visual Studio のリンク クラスター ダイアログのスクリーンショット](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-link-cluster-dialog.png)
 
-リンクされたクラスターを右クリックし、 **[編集]** を選択します。ユーザーはクラスター情報を更新できます。 現在、HDInsight クラスターの追加は Hive のみをサポートしていることに注意してください。
+リンクされたクラスターを右クリックし、 **[編集]** を選択します。ユーザーはクラスター情報を更新できます。 現在、HDInsight クラスターの追加は Hive のみをサポートしています。
 
 ![Data Lake Tools for Visual Studio のリンク クラスターの更新のスクリーンショット](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-link-cluster-update.png)
 
@@ -170,7 +171,14 @@ Hive クエリを作成して実行するためのオプションは 2 つあり
 
 1. クエリを実行するクラスターを右クリックし、 **[Hive クエリの作成]** を選択します。  
 
-2. Hive クエリを入力します。  
+2. 次の Hive クエリを入力します。
+
+    ```sql
+    SELECT devicemodel, COUNT(devicemodel) AS deviceCount
+    FROM hivesampletable
+    GROUP BY devicemodel
+    ORDER BY devicemodel
+    ```
 
     Hive エディターは IntelliSense をサポートしています。 Data Lake Tools for Visual Studio では、Hive スクリプトの編集時にリモート メタデータの読み込みをサポートします。 たとえば、`SELECT * FROM` と入力すると、IntelliSense によってテーブル名の候補が一覧表示されます。 テーブル名を指定すると、Intellisense によって列名が一覧表示されます。 このツールは、Hive の DML ステートメント、サブクエリ、および組み込みの UDF の大半をサポートします。
 

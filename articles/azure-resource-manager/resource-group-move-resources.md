@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: tomfitz
-ms.openlocfilehash: 1ae1afe103d4c52a2a7d921ef4f34dc030f3c6f7
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: 046b8e75be0247f335bcf1d29117f5900b70aeb6
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65872635"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66477253"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>新しいリソース グループまたはサブスクリプションへのリソースの移動
 
@@ -168,6 +168,7 @@ ms.locfileid: "65872635"
 * 証明書が Key Vault に格納されている Virtual Machines は、同じサブスクリプション内の新しいリソース グループへの移動は可能ですが、サブスクリプション間の移動は可能ではありません。
 * Standard SKU Load Balancer または Standard SKU パブリック IP を使用した仮想マシン スケール セットを移動することはできません。
 * プランが添付された Marketplace リソースから作成された仮想マシンは、リソース グループまたはサブスクリプションの間で移動できません。 現在のサブスクリプションで仮想マシンをプロビジョニング解除し、新しいサブスクリプションにデプロイし直す必要があります。
+* ユーザーが仮想ネットワーク内のすべてのリソースを移動するつもりがない既存のネットワーク内の仮想マシン。
 
 Azure Backup で構成された仮想マシンを移動するには、次の対処法を使用します。
 
@@ -323,7 +324,7 @@ Web アプリの移動に推奨される手順のオプションを選択しま�
 
 ### <a name="recovery-services-limitations"></a>Recovery Services の制限事項
 
- Recovery Services コンテナーを移動するには、[限定パブリック プレビュー](../backup/backup-azure-move-recovery-services-vault.md)への登録が必要となります。
+ Recovery Services コンテナーを移動するには、次の手順に従います。[新しいリソース グループまたはサブスクリプションへのリソースに移動します](../backup/backup-azure-move-recovery-services-vault.md)。
 
 現在、一度に移動できる Recovery Services コンテナーはリージョンごとに 1 つです。 Azure Files、Azure File Sync、SQL を IaaS 仮想マシンにバックアップするコンテナーは移動できません。
 

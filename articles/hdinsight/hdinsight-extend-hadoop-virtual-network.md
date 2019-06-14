@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 03/29/2019
-ms.openlocfilehash: e586ab1bdcca9d6109cf42b6341c333fabb02993
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.date: 05/28/2019
+ms.openlocfilehash: 46fa1c5a4874508cf8e2d288a99c908744347b69
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65601670"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66480069"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Azure Virtual Network を使用した Azure HDInsight の拡張
 
@@ -211,41 +211,39 @@ Azure には、仮想ネットワークにインストールされている Azur
 
 ## <a id="networktraffic"></a>ネットワーク トラフィックのコントロール
 
+### <a name="controlling-inbound-traffic-to-hdinsight-clusters"></a>HDInsight クラスターへの受信トラフィックの制御
+
 Azure Virtual Network のネットワーク トラフィックは次のメソッドを使用してコントロールできます。
 
 * **ネットワーク セキュリティ グループ** (NSG) を使用すると、ネットワーク の送受信トラフィックをフィルター処理できます。 詳細については、「[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルタリング](../virtual-network/security-overview.md)」をご覧ください。
 
-    > [!WARNING]  
-    > HDInsight では、送信トラフィックの制限をサポートしていません。 すべての送信トラフィックを許可する必要があります。
-
-* **ユーザー定義ルート**(UDR) は、ネットワーク内のリソース間のトラフィックのフローを定義します。 ユーザー定義ルートの詳細については、「[user-defined routes and IP forwarding (ユーザー定義ルートと IP 転送)](../virtual-network/virtual-networks-udr-overview.md)」をご覧ください。
-
 * **ネットワーク仮想アプライアンス**は、ファイアウォールやルーターなどのデバイスの機能をレプリケートします。 詳細については、「[ネットワーク アプライアンス](https://azure.microsoft.com/solutions/network-appliances)」をご覧ください。
 
-マネージド サービスとして HDInsight には、VNET からの受信および送信トラフィックの両方に対して、HDInsight の正常性および管理サービスへの無制限アクセスが必要です。 NSG と UDR を使用する場合は、これらのサービスが引き続き HDInsight クラスターと通信できることを確認する必要があります。
+マネージド サービスとして HDInsight には、VNET からの受信および送信トラフィックの両方に対して、HDInsight の正常性および管理サービスへの無制限アクセスが必要です。 NSG を使用する場合は、これらのサービスが引き続き HDInsight クラスターと通信できることを確認する必要があります。
 
-### <a id="hdinsight-ip"></a>HDInsight でネットワーク セキュリティ グループとユーザー定義のルートを使用する
+![Azure のカスタム VNET に作成された HDInsight のエンティティの図](./media/hdinsight-virtual-network-architecture/vnet-diagram.png)
 
-**ネットワーク セキュリティ グループ**や**ユーザー定義ルート**を使用してネットワーク トラフィックを制御する予定の場合は、HDInsight をインストールする前に、次の操作を実行します。
+### <a id="hdinsight-ip"></a> HDInsight とネットワーク セキュリティ グループ
+
+**ネットワーク セキュリティ グループ**を使用してネットワーク トラフィックを制御する予定の場合は、HDInsight をインストールする前に、次の操作を実行します。
 
 1. HDInsight を使用する予定の Azure リージョンを特定します。
 
 2. HDInsight が必要とする IP アドレスを特定します。 詳細ついては、[HDInsight が必要とする IP アドレス](#hdinsight-ip)に関するセクションをご覧ください。
 
-3. HDInsight をインストールする予定のサブネットのネットワーク セキュリティ グループまたはユーザー定義のルートを作成または変更します。
+3. HDInsight をインストールする予定のサブネットのネットワーク セキュリティ グループを作成または変更します。
 
-    * __ネットワーク セキュリティ グループ__: IP アドレスからの __受信__ トラフィックをポート __443__ で許可します。 これにより、HDI 管理サービスが VNET の外部から、クラスターに確実に到達できます。
-    * __ユーザー定義のルート__:UDR を使用する予定がある場合は、IP アドレスごとにルートを作成し、__次ホップの種類__ を __インターネット__ に設定します。 その他の VNET からのすべての送信トラフィックを制限なしで許可する必要もあります。 たとえば、監視のために、その他のすべてのトラフィックを Azure ファイアウォールやネットワーク仮想アプライアンス (Azure でホストされている) にルーティングできますが、送信トラフィックがブロックされないようにする必要があります。
+    * __ネットワーク セキュリティ グループ__: IP アドレスからの __受信__ トラフィックをポート __443__ で許可します。 これにより、HDInsight 管理サービスが仮想ネットワークの外部から、クラスターに確実に到達できます。
 
-ネットワーク セキュリティ グループまたはユーザー定義のルートの詳細については、次のドキュメントをご覧ください。
+ネットワーク セキュリティ グループの詳細については、[ネットワーク セキュリティ グループの概要](../virtual-network/security-overview.md)に関する記事を参照してください。
 
-* [ネットワーク セキュリティ グループ](../virtual-network/security-overview.md)
+### <a name="controlling-outbound-traffic-from-hdinsight-clusters"></a>HDInsight クラスターからの送信トラフィックの制御
 
-* [ユーザー定義のルート](../virtual-network/virtual-networks-udr-overview.md)
+HDInsight クラスターからの送信トラフィックを制御する方法の詳細については、「[Azure HDInsight クラスターの送信ネットワーク トラフィック制限の構成](hdinsight-restrict-outbound-traffic.md)」を参照してください。
 
 #### <a name="forced-tunneling-to-on-premise"></a>オンプレミスへの強制トンネリング
 
-強制トンネリングは、サブネットからのすべてのトラフィックを強制的に、特定のネットワークまたは場所に送るユーザー定義のルーティングの構成です。 HDInsight では、オンプレミス ネットワークへの強制トンネリングはサポートされて__いません__。 Azure Firewall または Azure でホストされているネットワーク仮想アプライアンスを使用している場合は、UDR を使用して、監視のために、それにトラフィックをルーティングし、すべての送信トラフィックを許可できます。
+強制トンネリングは、サブネットからのすべてのトラフィックを強制的に、特定のネットワークまたは場所に送るユーザー定義のルーティングの構成です。 HDInsight では、オンプレミス ネットワークへのトラフィックの強制トンネリングはサポートされて__いません__。 
 
 ## <a id="hdinsight-ip"></a>必須 IP アドレス
 
@@ -274,7 +272,8 @@ Azure Virtual Network のネットワーク トラフィックは次のメソッ
     | ---- | ---- | ---- | ---- | ----- |
     | アジア | 東アジア | 23.102.235.122</br>52.175.38.134 | \*:443 | 受信 |
     | &nbsp; | 東南アジア | 13.76.245.160</br>13.76.136.249 | \*:443 | 受信 |
-    | オーストラリア | オーストラリア東部 | 104.210.84.115</br>13.75.152.195 | \*:443 | 受信 |
+    | オーストラリア | オーストラリア中部 | 20.36.36.33</br>20.36.36.196 | \*:443 | 受信 |
+    | &nbsp; | オーストラリア東部 | 104.210.84.115</br>13.75.152.195 | \*:443 | 受信 |
     | &nbsp; | オーストラリア南東部 | 13.77.2.56</br>13.77.2.94 | \*:443 | 受信 |
     | ブラジル | ブラジル南部 | 191.235.84.104</br>191.235.87.113 | \*:443 | 受信 |
     | カナダ | カナダ東部 | 52.229.127.96</br>52.229.123.172 | \*:443 | 受信 |

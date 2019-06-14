@@ -10,15 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/16/2019
+ms.date: 06/03/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b3f070cafa026679eb9322ac7ba2eafe4c7e233d
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 91880e43382662b5d55f112455ee8f4c92ad01c5
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65826760"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66471605"
 ---
 # <a name="transfer-ownership-of-an-azure-subscription-to-another-account"></a>Azure サブスクリプションの所有権を別のアカウントに譲渡する
 
@@ -102,7 +102,9 @@ ms.locfileid: "65826760"
 
 ### <a name="whoisaa"></a>サブスクリプションのアカウント管理者は誰ですか。
 
-アカウント管理者は、Azure サブスクリプションのサインアップまたは購入を行ったユーザーです。 [アカウント センター](https://account.azure.com/Subscriptions)にアクセスし、サブスクリプションの作成、サブスクリプションの取り消し、サブスクリプションの課金の変更、サービス管理者の変更などのさまざまな管理タスクを実行する権限を持ちます。 サブスクリプションのアカウント管理者が不明な場合は、次の手順で確認します。
+アカウント管理者は、Azure サブスクリプションのサインアップまたは購入を行ったユーザーです。 [アカウント センター](https://account.azure.com/Subscriptions)にアクセスし、サブスクリプションの作成、サブスクリプションの取り消し、サブスクリプションの課金の変更、サービス管理者の変更などのさまざまな管理タスクを実行する権限を持ちます。 管理者ロールとアクセス許可を理解するための詳細については、「[Azure Active Directory での管理者ロールのアクセス許可](../active-directory/users-groups-roles/directory-assign-admin-roles.md)」を参照してください。
+
+サブスクリプションのアカウント管理者が不明な場合は、次の手順で確認します。
 
 1. [Azure Portal の [サブスクリプション] ページ](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)にアクセスします。
 1. 確認するサブスクリプションを選択し、 **[設定]** を調べます。
@@ -114,7 +116,8 @@ VM、ディスク、Web サイトなどのすべてのリソースが、新し�
 
 ### <a id="no-button"></a>[サブスクリプションの譲渡] ボタンが表示されないのはなぜですか。
 
-残念ながら、セルフ サービスのサブスクリプションの譲渡は、お使いのオファーでは使用できません。 サポートされているオファーの一覧については、この記事の「[サポートされるオファー](#supported-offers)」セクションをご覧ください。
+残念ながら、セルフ サービスのサブスクリプションの譲渡は、お使いのオファーでは使用できません。 サポートされているオファーの一覧については、この記事の「[サポートされるオファー](#supported-offers)」セクションをご覧ください。 さらに、いかなる国へのサブスクリプションの譲渡も、Microsoft がブロックすることはありません。 ただし、国外への譲渡はサポートされていません。 サブスクリプションを国外に譲渡するには、[サポートにお問い合わせください](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。 
+
 
 ### <a name="can-i-transfer-ownership-to-an-account-in-another-country"></a>別の国のアカウントに所有権を譲渡できますか。
 

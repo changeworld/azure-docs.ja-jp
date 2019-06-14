@@ -16,12 +16,12 @@ ms.date: 06/21/2018
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5efbc3b78800caa9d603e870b81705424c4d3fd6
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 9d873f1dace3e3be6a8767e77d57db5ac554afd7
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66113223"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66473808"
 ---
 # <a name="manage-user-access-with-azure-ad-access-reviews"></a>Azure AD のアクセス レビューでユーザー アクセスを管理する
 
@@ -44,7 +44,7 @@ Azure Active Directory (Azure AD) を使用すると、ユーザーに適切な�
 
 2. 各ユーザーが自分自身のアクセスを確認するか、1 人以上のユーザーがすべてのユーザーのアクセスを確認するかを決定します。
 
-3. グローバル管理者またはユーザー管理者として[アクセス レビュー ページ](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/)に移動します。
+3. グローバル管理者またはユーザー管理者として [Identity Governance ページ](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/)に移動します。
 
 4. アクセス レビューを作成します。 詳細については、[グループまたはアプリケーションのアクセス レビューの作成](create-access-review.md)に関するページをご覧ください。
 

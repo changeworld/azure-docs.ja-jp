@@ -5,15 +5,15 @@ author: dkamstra
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 5/10/2019
+ms.date: 5/30/2019
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: fba5119feb1ff7a0170a573371e479caa5fc33eb
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: f4f10191ea28f73732f81eb9dc25321f82683652
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65544469"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66416962"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Azure Portal でのアクション グループの作成および管理
 ## <a name="overview"></a>概要 ##
@@ -35,9 +35,9 @@ Azure Resource Manager テンプレートを使用したアクション グル�
 1. [ポータル](https://portal.azure.com)で、 **[モニター]** を選択します。 **[モニター]** ウィンドウでは、すべての監視設定とデータが 1 つのビューにまとめられています。
 
     ![[モニター] サービス](./media/action-groups/home-monitor.png)
-1. **[アラート]** 、 **[アクション グループの管理]** の順に選択します。
+1. **[アラート]** 、 **[アクションの管理]** の順に選択します。
 
-    ![[アクション グループの管理] ボタン](./media/action-groups/manage-action-groups.png)
+    ![[アクションの管理] ボタン](./media/action-groups/manage-action-groups.png)
 1. **[アクション グループの追加]** を選択し、フィールドに入力します。
 
     ![[アクション グループの追加] コマンド](./media/action-groups/add-action-group.png)
@@ -102,6 +102,8 @@ Azure Resource Manager テンプレートを使用したアクション グル�
  - 13.106.57.196
  - 52.244.68.117
  - 52.244.65.137
+ - 52.183.31.0
+ - 52.184.145.166
  - 51.4.138.199
  - 51.5.148.86
  - 51.5.149.19

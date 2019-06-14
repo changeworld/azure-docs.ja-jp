@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: iainfou
-ms.openlocfilehash: eeb9f5fa91252bbc3c3038ab88bd2d7e802f263f
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: d8a8a2f005a92988158b3f9c36ce24936fb020b4
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65786392"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475634"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのサービス プリンシパル
 
@@ -136,6 +136,24 @@ AKS と Azure AD サービス プリンシパルを使用する場合は、以�
         ```azurecli
         az ad sp delete --id $(az aks show -g myResourceGroup -n myAKSCluster --query servicePrincipalProfile.clientId -o tsv)
         ```
+
+## <a name="troubleshoot"></a>トラブルシューティング
+
+AKS クラスターのサービス プリンシパルの資格情報は、Azure CLI によってキャッシュされます。 これらの資格情報が期限切れになると、AKS クラスターのデプロイ中にエラーが発生します。 [az aks create][az-aks-create] を実行しているときの次のエラー メッセージは、キャッシュされているサービス プリンシパルの資格情報に問題があることを示す可能性があります。
+
+```console
+Operation failed with status: 'Bad Request'.
+Details: The credentials in ServicePrincipalProfile were invalid. Please see https://aka.ms/aks-sp-help for more details.
+(Details: adal: Refresh request failed. Status Code = '401'.
+```
+
+次のコマンドを使用して、資格情報ファイルの有効期限を確認します。
+
+```console
+ls -la $HOME/.azure/aksServicePrincipal.json
+```
+
+サービス プリンシパルの資格情報の既定の有効期限は 1 年です。 *aksServicePrincipal.json* ファイルが 1 年よりも古い場合は、ファイルを削除して AKS クラスターを再度デプロイします。
 
 ## <a name="next-steps"></a>次の手順
 

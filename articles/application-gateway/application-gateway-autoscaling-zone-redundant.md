@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 5/22/2019
+ms.date: 6/1/2019
 ms.author: victorh
-ms.openlocfilehash: 8e17c5e34ec3e2397c3054b1d0e0d97dbf410db2
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 40564e52cbcde0e835ed97132196bf7ed084f5b7
+ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65986867"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66431201"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway"></a>自動スケーリングとゾーン冗長 Application Gateway 
 
@@ -54,6 +54,8 @@ v2 SKU では、価格モデルは従量課金方式であり、インスタン�
 > [!NOTE]
 > 各インスタンスは、現在、約 10 個の容量ユニットをサポートできます。
 > コンピューティング ユニットが処理できる要求の数は、TLS 証明書のキーのサイズ、キー交換アルゴリズム、ヘッダーの書き換え、WAF での着信要求のサイズなど、さまざまな条件に依存します。 アプリケーションのテストを実行し、コンピューティング ユニットあたりの要求レートを決定することをお勧めします。 容量ユニットとコンピューティング ユニットはどちらも、請求が始まる前に、メトリックとして使用できるようになります。
+
+次の表は、例示のみを目的として、価格の例を示しています。
 
 **米国東部での料金**:
 
@@ -142,6 +144,9 @@ Application Gateway と WAF は、2 つのモードでスケーリングする�
 |Netwatcher 統合|サポートされていません。|
 |Azure サポート センターの統合|まだ使用できません。
 
+## <a name="migrate-from-v1-to-v2"></a>v1 から v2 への移行
+
+Azure PowerShell スクリプトは PowerShell ギャラリー内で利用でき、v1 Application Gateway/WAF から v2 Autoscaling SKU への移行に役立ちます。 このスクリプトを利用して、v1 ゲートウェイから構成をコピーできます。 トラフィックの移行は引き続き、お客様の責任です。 詳しくは、[v1 から v2 への Azure Application Gateway の移行](migrate-v1-v2.md)に関するページをご覧ください。
 ## <a name="next-steps"></a>次の手順
 
 - [クイック スタート:Azure Application Gateway による Web トラフィックのルーティング - Azure portal](quick-create-portal.md)

@@ -3,19 +3,19 @@ title: Translator Text API の Translate メソッド
 titleSuffix: Azure Cognitive Services
 description: Translator Text API の Translate メソッドを使用します。
 services: cognitive-services
-author: v-pawal
+author: rajdeep-in
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
-ms.author: v-jansko
-ms.openlocfilehash: e7ab2eba54aafda6bb00696939bf9bc32bb627ca
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.author: v-pawal
+ms.openlocfilehash: be61d8932288b9a6b2cc96e53d3630124ec0f610
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65796999"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389751"
 ---
 # <a name="translator-text-api-30-translate"></a>Translator Text API 3.0: Translate
 
@@ -54,7 +54,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
   </tr>
   <tr>
     <td>category</td>
-    <td><em>省略可能なパラメーター</em>。<br/>翻訳のカテゴリ (ドメイン) を指定する文字列。 このパラメーターは、<a href="../customization.md">Custom Translator</a> でビルドしたカスタマイズされたシステムから翻訳を取得するために使用します。 デプロイ済みのカスタマイズされたシステムを使用するには、カスタム翻訳ツール プロジェクトからこのパラメーターにカテゴリ ID を追加します。 既定値は <code>general</code> です。</td>
+    <td><em>省略可能なパラメーター</em>。<br/>翻訳のカテゴリ (ドメイン) を指定する文字列。 このパラメーターは、<a href="../customization.md">Custom Translator</a> でビルドしたカスタマイズされたシステムから翻訳を取得するために使用します。 デプロイ済みのカスタマイズされたシステムを使用するには、カスタム翻訳ツール <a href="https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/how-to-create-project#view-project-details">プロジェクトの詳細</a>からこのパラメーターにカテゴリ ID を追加します。 既定値は <code>general</code> です。</td>
   </tr>
   <tr>
     <td>profanityAction</td>

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: raynew
-ms.openlocfilehash: c5c3f498f62d6399534333f8166a514a10f044c5
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 350e13a4b1c01329bef1ec270af5ba007cd788aa
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56310163"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399744"
 ---
 # <a name="monitor-alerts-for-azure-virtual-machine-backups"></a>Azure 仮想マシンのバックアップ アラートの監視
 
@@ -33,7 +33,7 @@ ms.locfileid: "56310163"
 
 1. コンテナーのダッシュボードから、 **[すべての設定]** をクリックします。 ![[すべての設定] ボタン](./media/backup-azure-monitor-vms/all-settings-button.png)
 2. **[設定]** ブレードで **[アラートとイベント]** をクリックします。 ![[アラートとイベント] ボタン](./media/backup-azure-monitor-vms/alerts-and-events-button.png)
-3. **[アラートとイベント]** ブレードで、**[バックアップ アラート]** をクリックします。 ![[バックアップ アラート] ボタン](./media/backup-azure-monitor-vms/backup-alerts.png)
+3. **[アラートとイベント]** ブレードで、 **[バックアップ アラート]** をクリックします。 ![[バックアップ アラート] ボタン](./media/backup-azure-monitor-vms/backup-alerts.png)
 
     **[バックアップ アラート]** セクションが開き、フィルター処理されたアラートが表示されます。
 
@@ -61,7 +61,7 @@ ms.locfileid: "56310163"
 
     受信者と重大度は必須情報であるため、そのダイアログの横には星マークが付いています。 1 つ以上の電子メール アドレスを指定し、1 つ以上の重大度を選択します。
 3. **[受信者 (メール)]** ダイアログ ボックスに、通知を受け取る電子メール アドレスを、 username@domainname.com の形式で入力します。 複数の電子メール アドレスを入力する場合は、セミコロン (;) で区切ります。
-4. 指定したアラートの発生時に通知を送信するには、**[通知]** 領域で **[アラートごと]** を選択します。過去 1 時間の概要を送信するには、**[1 時間ごとのダイジェスト]** を選択します。
+4. 指定したアラートの発生時に通知を送信するには、 **[通知]** 領域で **[アラートごと]** を選択します。過去 1 時間の概要を送信するには、 **[1 時間ごとのダイジェスト]** を選択します。
 5. **[重大度]** ダイアログ ボックスで、電子メール通知をトリガーする 1 つ以上のレベルを選択します。
 6. **[Save]** をクリックします。
 
@@ -70,7 +70,7 @@ ms.locfileid: "56310163"
    | アラート レベル | 送信されるアラート |
    | --- | --- |
    | 重大 | バックアップに失敗した場合、回復エラー |
-   | 警告 | 警告を伴って成功したバックアップ ジョブの場合 (例: スナップショットの作成中に一部の書き込みに失敗した) |
+   | 警告 | 現時点では、Azure VM バックアップに対して警告アラートは使用できません (例: スナップショットの作成中に一部のライターが失敗した) |
    | 情報 | 現時点では、Azure VM バックアップでは、情報通知のアラートは使用できません |
 
 ### <a name="situations-where-email-isnt-sent-even-if-notifications-are-configured"></a>通知が構成されていても電子メールが送信されない場合

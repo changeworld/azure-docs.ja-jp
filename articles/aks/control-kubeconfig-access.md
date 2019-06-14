@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 01/03/2019
+ms.date: 05/31/2019
 ms.author: iainfou
-ms.openlocfilehash: d4d3d9a3ff57a7a388e9703d0d145d8ce6eafd12
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: b55cc226cfbb462cdccd73b3b80cfb0d56c10711
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66143019"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475603"
 ---
 # <a name="use-azure-role-based-access-controls-to-define-access-to-the-kubernetes-configuration-file-in-azure-kubernetes-service-aks"></a>Azure のロールベースのアクセス制御を使用して Azure Kubernetes Service (AKS) 内の Kubernetes 構成ファイルに対するアクセス権を定義する
 
@@ -24,7 +24,7 @@ ms.locfileid: "66143019"
 
 この記事は、AKS クラスターがすでに存在していることを前提としています。 AKS クラスターが必要な場合は、[Azure CLI を使用して][ aks-quickstart-cli]または[Azure portal を使用して][aks-quickstart-portal] AKS のクイック スタートを参照してください。
 
-この記事では、Azure CLI バージョン 2.0.53 以降も実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli-install]に関するページを参照してください。
+この記事ではまた、Azure CLI バージョン 2.0.65 以降を実行していることも必要です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli-install]に関するページを参照してください。
 
 ## <a name="available-cluster-roles-permissions"></a>利用可能なクラスター ロールのアクセス許可
 
@@ -45,7 +45,7 @@ ms.locfileid: "66143019"
 
 ## <a name="assign-role-permissions-to-a-user-or-group"></a>ロールのアクセス許可をユーザーまたはグループに割り当てる
 
-使用可能なロールのいずれかを割り当てるには、AKS クラスターのリソース ID と、Azure AD ユーザー アカウントまたはグループの ID を取得する必要があります。 次の例に示したコマンドでは、次の処理が行われます。
+使用可能なロールのいずれかを割り当てるには、AKS クラスターのリソース ID と、Azure AD ユーザー アカウントまたはグループの ID を取得する必要があります。 次のコマンド例は以下のように機能します。
 
 * [az aks show][az-aks-show] コマンドを使用して、*myResourceGroup* リソース グループに存在する *myAKSCluster* という名前のクラスターのリソース ID を取得する。 必要に応じて、独自のクラスター名とリソース グループ名を指定してください。
 * [az account show][az-account-show] コマンドと [az ad user show][az-ad-user-show] コマンドを使用して、ユーザー ID を取得する。
@@ -69,7 +69,7 @@ az role assignment create \
 ```
 
 > [!TIP]
-> Azure AD グループにアクセス許可を割り当てる場合は、前の例に示されているようにユーザーではなく、グループのオブジェクト ID を使用して `--assignee` パラメーターを更新してください。 グループのオブジェクト ID を取得するには、[az ad group show][az-ad-group-show] コマンドを使用します。 次の例は、*appdev* という名前の Azure AD グループのオブジェクト ID を取得します。`az ad group show --group appdev --query objectId -o tsv`
+> Azure AD グループにアクセス許可を割り当てる場合は、*ユーザー*ではなく、*グループ*のオブジェクト ID を使用して、上の例で示した `--assignee` パラメーターを更新してください。 グループのオブジェクト ID を取得するには、[az ad group show][az-ad-group-show] コマンドを使用します。 次の例は、*appdev* という名前の Azure AD グループのオブジェクト ID を取得します。`az ad group show --group appdev --query objectId -o tsv`
 
 この割り当ては、必要に応じて "*クラスター ユーザー ロール*" に変更することもできます。
 

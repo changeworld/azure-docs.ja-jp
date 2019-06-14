@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 05/10/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 2677c993b759988b0a9906b357bcd352b243b5a7
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: fde10da8d46a3aa5d0163a89d1212911701c4b60
+ms.sourcegitcommit: 18a0d58358ec860c87961a45d10403079113164d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65792673"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66693226"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>QnA Maker ナレッジ ベースのベスト プラクティス
 [ナレッジ ベース開発ライフサイクル](../Concepts/development-lifecycle-knowledge-base.md)では、ナレッジ ベースを始まりから終わりまで管理する方法を紹介しています。 以下のベスト プラクティスを利用してナレッジ ベースを改善し、アプリケーション/チャット ボットのエンド ユーザーにより良い情報を提供します。
@@ -72,6 +72,9 @@ QnA Maker でサポートされている優先度付け機能を効果的に活�
 ### <a name="choosing-a-threshold"></a>しきい値の選択
 しきい値として使用される既定の信頼度スコアは 50 ですが、ナレッジ ベースのニーズに合わせてこの値を変更できます。 すべてのナレッジ ベースは異なっているため、ナレッジ ベースに最も適したしきい値をテストして選択する必要があります。 [信頼度スコア](../Concepts/confidence-score.md)の詳細をご覧ください。 
 
+### <a name="choosing-ranker-type"></a>ランカーの種類の選択
+既定では、QnA Maker は質問と回答を検索します。 質問のみを検索して、回答を生成する場合、GenerateAnswer 要求の POST 本文で `RankerType=QuestionOnly` を使用します。
+
 ### <a name="add-alternate-questions"></a>代わりの質問を追加する
 [代わりの質問](../How-To/edit-knowledge-base.md)を用意すること (別の表現で言い換えること) で、ユーザーからの問い合わせに一致する可能性が向上します。 代わりの質問は、同じ質問にさまざまな表現が使われるときに役立ちます。 これには、文の構造や言葉遣いの変化が含まれることがあります。
 
@@ -110,7 +113,7 @@ QnA Maker では、ユーザーはナレッジ ベースに[協力](../How-to/co
 
 ## <a name="active-learning"></a>アクティブ ラーニング
 
-[アクティブ ラーニング](../How-to/improve-knowledge-base.md)は、幅広い質と量のユーザー ベースのクエリがある場合に、代替の質問を提案するという最高の仕事をします。 クライアント アプリケーションのユーザー クエリが、検閲なしのアクティブ ラーニングのフィードバック ループに参加できるようにすることが重要です。 QnA Maker ポータルで質問が提案されたら、 **[提案によるフィルター処理](../How-To/improve-knowledge-base.md#add-active-learning-suggestion-to-knowledge-base)** を行い、それらの提案をレビューして、承認または拒否する必要があります。 
+[アクティブ ラーニング](../How-to/improve-knowledge-base.md)は、幅広い質と量のユーザー ベースのクエリがある場合に、代替の質問を提案するという最高の仕事をします。 クライアント アプリケーションのユーザー クエリが、検閲なしのアクティブ ラーニングのフィードバック ループに参加できるようにすることが重要です。 QnA Maker ポータルで質問が提案されたら、 **[提案によるフィルター処理](../How-To/improve-knowledge-base.md)** を行い、それらの提案をレビューして、承認または拒否する必要があります。 
 
 ## <a name="next-steps"></a>次の手順
 

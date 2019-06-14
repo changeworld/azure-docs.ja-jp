@@ -69,7 +69,7 @@ sections:
       - type: list
         style: unordered
         items:
-          - html: '(プレビュー) インスタンスの作成時に<a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-timezone">タイム ゾーンを構成します</a>。'
+          - html: 'インスタンスの作成時に<a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-timezone">タイム ゾーンを構成します</a>。'
           - html: '<a href="https://aka.ms/managed-instance-collation">任意のサーバーレベルの照合順序</a>を使用してインスタンスを作成します。'
           - html: 'Geo リストア機能を使用すると、<a href="https://medium.com/@jocapc/geo-restore-your-databases-on-azure-sql-instances-1451480e90fa">PowerShell を使用して、ご自身のデータベースを別のデータ センターに復元</a>できます。'
           - html: '(プレビュー) <a href="https://medium.com/@jocapc/re-create-dropped-databases-in-azure-sql-managed-instance-dc369ed60266">PowerShell を使用して、削除されたデータベースを再作成します</a>'

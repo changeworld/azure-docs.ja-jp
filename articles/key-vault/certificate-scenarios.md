@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: a0ff97eb17dcf2625e1bb75dabf3e4a9686b5b85
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 805f11d57a635f4e73309d025e185049b511570b
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64725722"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66427840"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Key Vault 証明書の概要
 次のシナリオでは、キー コンテナー内に最初の証明書を作成するために必要な追加の手順を含め、Key Vault の証明書管理サービスの主な使用方法をいくつか概説します。
@@ -39,8 +39,7 @@ ms.locfileid: "64725722"
 -   特定の会社 (たとえば、 Contoso など) の IT 管理者、PKI 管理者または CA のアカウントを管理する任意のユーザーとしてのオンボーディングは、Key Vault 証明書を使用するための前提条件です。  
     次の CA は、現在 Key Vault と提携しているプロバイダーです。  
     -   DigiCert - Key Vault は、DigiCert による OV SSL 証明書を提供します。  
-    -   GlobalSign - Key Vault は、GlobalSign による OV SSL 証明書を提供します  
-    -   WoSign - Key Vault は、顧客が WoSign ポータルの自分の WoSign アカウントで構成した設定に基づいて WoSign による OV SSL または EV SSL 証明書を提供します。  
+    -   Globaltrust - Key Vault は、Globaltrust による OV SSL 証明書を提供します。  
 
 **手順 2** - CA プロバイダーのアカウント管理者は、Key Vault が使用する資格証明を作成して、Key Vault を介して SSL 証明書を登録、更新、使用します。
 

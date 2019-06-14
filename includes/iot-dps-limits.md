@@ -4,12 +4,12 @@ ms.service: billing
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: 65c89730e7d3d492b91daa8aba50e5606ca700a1
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 610f5fcf80db8ffa0c7207d459b98087cbb4773b
+ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66238518"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66455175"
 ---
 次の表は、Azure IoT Hub Device Provisioning Service のリソースに適用される制限の一覧です。
 
@@ -20,6 +20,7 @@ ms.locfileid: "66238518"
 | 登録の最大数 | 1,000,000 |
 | 加入グループの最大数 | 100 |
 | CA の最大数 | 25 |
+| メッセージの最大サイズ | 96 KB|
 
 > [!NOTE]
 > お使いのサブスクリプションのインスタンス数を増やすには、[Microsoft サポート](https://azure.microsoft.com/support/options/)にお問い合わせください。

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 04/01/2019
+ms.date: 06/03/2019
 ms.author: diberry
-ms.openlocfilehash: 8c2ed8932e67a2e0c83fe4e3fdf6783c24e56a6e
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 294905ccfd0ce8db6da8737277b0ce978ba837ea
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956984"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66473519"
 ---
 # <a name="collaborating-with-other-authors"></a>他の作成者との共同作業
 
@@ -31,7 +31,7 @@ Active Directory ユーザー アカウントの詳細については、「[Azur
 
 ## <a name="luis-app-owner"></a>LUIS アプリ所有者
 
-アプリを作成するアカウントが所有者です。アプリごとに 1 人の所有者がいます。 所有者は、アプリの **[[設定]](luis-how-to-collaborate.md)** ページに表示されます。 所有者は、エンドポイント クォータが毎月の制限の 75% に達したときにアプリの受信メールを削除できます。 
+アプリを作成するアカウントが所有者です。アプリごとに 1 人の所有者がいます。 所有者は、アプリの **[[設定]](luis-how-to-collaborate.md)** ページに表示されます。 所有者は、エンドポイント クォータが毎月の制限の 75% に達したときにメールを受信します。 
 
 ## <a name="authorization-roles"></a>承認ロール
 LUIS では、1 つの例外を除き、所有者とコラボレーターの異なるロールをサポートしていません。 所有者はアプリを削除できる唯一のアカウントです。

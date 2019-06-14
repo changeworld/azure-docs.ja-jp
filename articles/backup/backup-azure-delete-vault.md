@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: raynew
-ms.openlocfilehash: e7cea725a25d48ac9f1ffad6acc434e21145890e
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: a7dd5530c3941fe55e8a649f8adb217159823f5d
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65473241"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66492789"
 ---
 # <a name="delete-a-recovery-services-vault"></a>Recovery Services コンテナーを削除する
 
@@ -62,7 +62,7 @@ ARMClient コマンドの詳細については、この[ドキュメント](http
 
 ### <a name="use-azure-resource-manager-client-to-delete-recovery-services-vault"></a>Azure Resource Manager クライアントを使用して Recovery Services コンテナーを削除する
 
-1. ご利用のサブスクリプション ID、リソース グループ名、コンテナー名を使用して、次のコマンドを実行します。 このコマンドを実行すると、依存関係がない場合にコンテナーが削除されます。
+1. ご利用のサブスクリプション ID、リソース グループ名、コンテナー名を使用して、次のコマンドを実行します。 このコマンドを実行すると、依存関係がなければ、そのコンテナーが削除されます。
 
    ```
    ARMClient.exe delete /subscriptions/<subscriptionID>/resourceGroups/<resourcegroupname>/providers/Microsoft.RecoveryServices/vaults/<recovery services vault name>?api-version=2015-03-15
@@ -84,19 +84,19 @@ ARMClient コマンドの詳細については、この[ドキュメント](http
 
 この手順では、Azure Files からバックアップ データを削除する方法を示す例を提供します。
 
-1. **[バックアップ アイテム]** > **[Azure Storage (Azure Files)]** の順にクリックします。
+1. **[バックアップ アイテム]**  >  **[Azure Storage (Azure Files)]** の順にクリックします。
 
     ![バックアップの種類を選択する](./media/backup-azure-delete-vault/azure-storage-selected-list.png)
 
-2. 削除する各 Azure Files アイテムを右クリックし、**[バックアップの停止]** をクリックします。
+2. 削除する各 Azure Files アイテムを右クリックし、 **[バックアップの停止]** をクリックします。
 
     ![バックアップの種類を選択する](./media/backup-azure-delete-vault/stop-backup-item.png)
 
 
-3. **[バックアップの停止]** > **[オプションの選択]** の順に進み、**[バックアップ データの削除]** を選択します。
-4. アイテムの名前を入力し、**[バックアップの停止]** をクリックします。
+3. **[バックアップの停止]**  >  **[オプションの選択]** の順に進み、 **[バックアップ データの削除]** を選択します。
+4. アイテムの名前を入力し、 **[バックアップの停止]** をクリックします。
    - これで、コンテナーの削除を希望していることが確認されます。
-   - 確認後、**[バックアップの停止]** ボタンがアクティブになります。
+   - 確認後、 **[バックアップの停止]** ボタンがアクティブになります。
    - データを保持し、データを削除しない場合、コンテナーを削除することはできません。
 
      ![[バックアップ データの削除]](./media/backup-azure-delete-vault/stop-backup-blade-delete-backup-data.png)
@@ -104,7 +104,7 @@ ARMClient コマンドの詳細については、この[ドキュメント](http
 5. 必要に応じて、データを削除する理由を入力し、コメントを追加します。
 6. 削除ジョブが完了したことを確認するには、Azure メッセージを調べます。 ![[バックアップ データの削除]](./media/backup-azure-delete-vault/messages.png)。
 7. ジョブが完了すると、"**バックアップ プロセスが停止されたことと、バックアップ データが削除されたこと**" を示すメッセージがサービスから送信されます。
-8. 一覧のアイテムを削除した後、**[Backup Items ]\(バックアップ アイテム\)** メニューの **[更新]** をクリックして、コンテナー内のアイテムを確認します。
+8. 一覧のアイテムを削除した後、 **[Backup Items ]\(バックアップ アイテム\)** メニューの **[更新]** をクリックして、コンテナー内のアイテムを確認します。
 
       ![[バックアップ データの削除]](./media/backup-azure-delete-vault/empty-items-list.png)
 
@@ -116,10 +116,10 @@ ARMClient コマンドの詳細については、この[ドキュメント](http
 
     ![目的のコンテナーを選択してそのダッシュボードを開く](./media/backup-azure-delete-vault/delete-backup-management-servers.png)
 
-3. アイテムを右クリックして、**[削除]** をクリックします。
+3. アイテムを右クリックして、 **[削除]** をクリックします。
 4. 削除ジョブが完了したことを確認するには、Azure メッセージを調べます。 ![[バックアップ データの削除]](./media/backup-azure-delete-vault/messages.png)。
 5. ジョブが完了すると、"**バックアップ プロセスが停止されたことと、バックアップ データが削除されたこと**" を示すメッセージがサービスから送信されます。
-6. 一覧のアイテムを削除した後、**[バックアップ インフラストラクチャ]** メニューの **[更新]** をクリックして、コンテナー内のアイテムを確認します。
+6. 一覧のアイテムを削除した後、 **[バックアップ インフラストラクチャ]** メニューの **[更新]** をクリックして、コンテナー内のアイテムを確認します。
 
 
 ### <a name="remove-azure-backup-agent-recovery-points"></a>Azure Backup エージェントの復旧ポイントを削除する
@@ -137,28 +137,28 @@ ARMClient コマンドの詳細については、この[ドキュメント](http
 
     ![特定の保護されたサーバーを選択する](./media/backup-azure-delete-vault/azure-backup-agent-protected-servers.png)
 
-5. 選択したサーバーのダッシュボードで、**[削除]** をクリックします。
+5. 選択したサーバーのダッシュボードで、 **[削除]** をクリックします。
 
     ![選択したサーバーを削除する](./media/backup-azure-delete-vault/selected-protected-server-click-delete.png)
 
-6. **[削除]** メニューで、アイテムの名前を入力し、**[削除]** をクリックします。
+6. **[削除]** メニューで、アイテムの名前を入力し、 **[削除]** をクリックします。
 
      ![[バックアップ データの削除]](./media/backup-azure-delete-vault/delete-protected-server-dialog.png)
 
 7. 必要に応じて、データを削除する理由を入力し、コメントを追加します。
 8. 削除ジョブが完了したことを確認するには、Azure メッセージを調べます。 ![[バックアップ データの削除]](./media/backup-azure-delete-vault/messages.png)。
-9. 一覧のアイテムを削除した後、**[バックアップ インフラストラクチャ]** メニューの **[更新]** をクリックして、コンテナー内のアイテムを確認します。
+9. 一覧のアイテムを削除した後、 **[バックアップ インフラストラクチャ]** メニューの **[更新]** をクリックして、コンテナー内のアイテムを確認します。
 
 ### <a name="delete-the-vault-after-removing-dependencies"></a>依存関係を削除してからコンテナーを削除する
 
 1. すべての依存関係が削除されたら、コンテナー メニュー内の **[Essentials]** ウィンドウにスクロールします。
-2. 一覧に **[バックアップ アイテム]**、**[バックアップ管理サーバー]**、**[レプリケートされたアイテム]** のどれも表示されないことを確認します。 コンテナー内にまだアイテムが表示されている場合は、それを削除します。
+2. 一覧に **[バックアップ アイテム]** 、 **[バックアップ管理サーバー]** 、 **[レプリケートされたアイテム]** のどれも表示されないことを確認します。 コンテナー内にまだアイテムが表示されている場合は、それを削除します。
 
 3. コンテナーにアイテムがなくなったら、コンテナー ダッシュボードで **[削除]** をクリックします。
 
     ![[バックアップ データの削除]](./media/backup-azure-delete-vault/vault-ready-to-delete.png)
 
-4. コンテナーを削除することを確認するために、**[はい]** をクリックします。 コンテナーが削除され、ポータルが **[新規]** サービス メニューに戻ります。
+4. コンテナーを削除することを確認するために、 **[はい]** をクリックします。 コンテナーが削除され、ポータルが **[新規]** サービス メニューに戻ります。
 
 ## <a name="what-if-i-stop-the-backup-process-but-retain-the-data"></a>バックアップ プロセスを停止した一方でデータを保持した場合の対処
 

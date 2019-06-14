@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: sngun
-ms.openlocfilehash: feab3ee1a21a52e8b18d59e67e8410fcbeb4ff5e
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: c8907f1b1c8069a3a3e92d01a5fa6341c06ec952
+ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65953789"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66688809"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Azure Cosmos DB と .NET のパフォーマンスに関するヒント
 
@@ -137,13 +137,21 @@ Azure Cosmos DB は、高速で柔軟性に優れた分散データベースで�
    <a id="tune-page-size"></a>
 1. **パフォーマンスを向上させるために、クエリ/読み取りフィードのページ サイズを調整する**
 
-    読み取りフィード機能 (ReadDocumentFeedAsync など) を使用してドキュメントの一括読み取りを実行したときや、SQL クエリを発行したときに、結果セットが大きすぎる場合、セグメント化された形式で結果が返されます。 既定では、100 項目または 1 MB (先に達した方) のチャンク単位で結果が返されます。
+   読み取りフィード機能 (ReadDocumentFeedAsync など) を使用してドキュメントの一括読み取りを実行したときや、SQL クエリを発行したときに、結果セットが大きすぎる場合、セグメント化された形式で結果が返されます。 既定では、100 項目または 1 MB (先に達した方) のチャンク単位で結果が返されます。
 
-    該当するすべての結果を取得するために必要なネットワーク ラウンド トリップの回数を減らすために、[x-ms-max-item-count](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) 要求ヘッダーを使用して、ページ サイズを最大 1,000 まで増やすことができます。 ごく少数の結果のみを表示する必要がある場合は (ユーザー インターフェイスやアプリケーション API が一度に 10 件しか結果を返さない場合など)、読み取りとクエリに使用されるスループットを減らすために、ページ サイズを 10 に減らすこともできます。
+   該当するすべての結果を取得するために必要なネットワーク ラウンド トリップの回数を減らすために、[x-ms-max-item-count](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) 要求ヘッダーを使用して、ページ サイズを最大 1,000 まで増やすことができます。 ごく少数の結果のみを表示する必要がある場合は (ユーザー インターフェイスやアプリケーション API が一度に 10 件しか結果を返さない場合など)、読み取りとクエリに使用されるスループットを減らすために、ページ サイズを 10 に減らすこともできます。
 
-    また、使用可能な Azure Cosmos DB SDK を使用してページ サイズを設定することもできます。  例:
+   > [!NOTE] 
+   > maxItemCount プロパティは、改ページ位置の自動修正の目的にのみ使用しないでください。 主な用途は、1 ページに返される項目の最大数を減らすことで、クエリのパフォーマンスを向上させることです。  
 
-        IQueryable<dynamic> authorResults = client.CreateDocumentQuery(documentCollection.SelfLink, "SELECT p.Author FROM Pages p WHERE p.Title = 'About Seattle'", new FeedOptions { MaxItemCount = 1000 });
+   また、使用可能な Azure Cosmos DB SDK を使用してページ サイズを設定することもできます。 FeedOptions の [MaxItemCount](/dotnet/api/microsoft.azure.documents.client.feedoptions.maxitemcount?view=azure-dotnet) プロパティでは、列挙操作で返される項目の最大数を設定できます。 `maxItemCount` が-1 に設定されている場合、ドキュメント サイズに応じて最適な値が SDK によって自動的に見つけられます。 例:
+    
+   ```csharp
+    IQueryable<dynamic> authorResults = client.CreateDocumentQuery(documentCollection.SelfLink, "SELECT p.Author FROM Pages p WHERE p.Title = 'About Seattle'", new FeedOptions { MaxItemCount = 1000 });
+   ```
+    
+   クエリが実行されると、結果のデータは TCP パケット内で送信されます。 `maxItemCount` に指定した値が小さすぎると、TCP パケット内でデータを送信するために必要なトリップ数が多くなり、パフォーマンスに影響します。 そのため、`maxItemCount` プロパティに設定する値がわからない場合は、-1 に設定して SDK で自動的に既定値を選択することをお勧めします。 
+
 10. **スレッド/タスクの数を増やす**
 
     「ネットワーク」の「[スレッド/タスクの数を増やす](#increase-threads)」を参照してください。

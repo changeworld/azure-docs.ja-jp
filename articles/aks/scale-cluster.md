@@ -5,22 +5,22 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 01/10/2019
+ms.date: 05/31/2019
 ms.author: iainfoulds
-ms.openlocfilehash: 558a3b6dc15293ab9a0895aa4f9f709ba2d0a51f
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: de3f8613c93715aecf7e9e066a8ad1d82e4379e3
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214625"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475139"
 ---
 # <a name="scale-the-node-count-in-an-azure-kubernetes-service-aks-cluster"></a>Azure Kubernetes Service (AKS) クラスターでノードの数をスケーリングする
 
-アプリケーションに必要なリソースが変化した場合は、AKS クラスターを手動でスケーリングし、異なる数のノードを実行できます。 スケール ダウンするときには、実行中のアプリケーションの中断を最小限に抑えるために、ノードは慎重に[切断およびドレインされます][kubernetes-drain]。 スケール アップするときには、ノードが Kubernetes クラスターによって `Ready` としてマークされるまで、`az` コマンドは待機します。
+アプリケーションに必要なリソースが変化した場合は、AKS クラスターを手動でスケーリングし、異なる数のノードを実行できます。 スケール ダウンするときには、実行中のアプリケーションの中断を最小限に抑えるために、ノードは慎重に[切断およびドレインされます][kubernetes-drain]。 スケールアップすると、AKS では、ノードが Kubernetes クラスターによって `Ready` とマークされるまで待機してから、それらに基づいてポッドがスケジュールされます。
 
 ## <a name="scale-the-cluster-nodes"></a>クラスター ノードのスケーリング
 
-最初に、[az aks show][az-aks-show] コマンドを使用してノードプールの*名前*を取得します。 次の例では、*myResourceGroup* リソース グループ内の *myAKSCluster* という名前のクラスターのノードプール名を取得します。
+最初に、[az aks show][az-aks-show] コマンドを使用してノード プールの*名前*を取得します。 次の例では、*myResourceGroup* リソース グループ内の *myAKSCluster* という名前のクラスターのノード プール名を取得します。
 
 ```azurecli-interactive
 az aks show --resource-group myResourceGroup --name myAKSCluster --query agentPoolProfiles
@@ -44,7 +44,7 @@ $ az aks show --resource-group myResourceGroup --name myAKSCluster --query agent
 ]
 ```
 
-`az aks scale` コマンドを使用してクラスター ノードをスケーリングします。 次の例では、*myAKSCluster* という名前のクラスターを単一のノードにスケーリングします。 前のコマンドの *--nodepool-name* に、*nodepool1* などの独自のノードプール名を指定します。
+[az aks scale][az-aks-scale] コマンドを使用してクラスター ノードをスケーリングします。 次の例では、*myAKSCluster* という名前のクラスターを単一のノードにスケーリングします。 前のコマンドの *--nodepool-name* に、*nodepool1* などの独自のノードプール名を指定します。
 
 ```azurecli-interactive
 az aks scale --resource-group myResourceGroup --name myAKSCluster --node-count 1 --nodepool-name <your node pool name>
@@ -68,49 +68,13 @@ az aks scale --resource-group myResourceGroup --name myAKSCluster --node-count 1
       "vnetSubnetId": null
     }
   ],
-  "dnsPrefix": "myAKSClust-myResourceGroup-19da35",
-  "enableRbac": true,
-  "fqdn": "myaksclust-myresourcegroup-19da35-0d60b16a.hcp.eastus.azmk8s.io",
-  "id": "/subscriptions/<guid>/resourcegroups/myResourceGroup/providers/Microsoft.ContainerService/managedClusters/myAKSCluster",
-  "kubernetesVersion": "1.9.11",
-  "linuxProfile": {
-    "adminUsername": "azureuser",
-    "ssh": {
-      "publicKeys": [
-        {
-          "keyData": "[...]"
-        }
-      ]
-    }
-  },
-  "location": "eastus",
-  "name": "myAKSCluster",
-  "networkProfile": {
-    "dnsServiceIp": "10.0.0.10",
-    "dockerBridgeCidr": "172.17.0.1/16",
-    "networkPlugin": "kubenet",
-    "networkPolicy": null,
-    "podCidr": "10.244.0.0/16",
-    "serviceCidr": "10.0.0.0/16"
-  },
-  "nodeResourceGroup": "MC_myResourceGroup_myAKSCluster_eastus",
-  "provisioningState": "Succeeded",
-  "resourceGroup": "myResourceGroup",
-  "servicePrincipalProfile": {
-    "clientId": "[...]",
-    "secret": null
-  },
-  "tags": null,
-  "type": "Microsoft.ContainerService/ManagedClusters"
+  [...]
 }
 ```
 
 ## <a name="next-steps"></a>次の手順
 
-AKS のデプロイと管理の詳細を AKS チュートリアルで確認してください。
-
-> [!div class="nextstepaction"]
-> [AKS チュートリアル][aks-tutorial]
+この記事では、AKS クラスターを手動でスケールしてノード数を増減しました。 [クラスターの自動スケーラー][cluster-autoscaler] (現在、AKS ではプレビュー段階) を使用してクラスターを自動的にスケールすることもできます。
 
 <!-- LINKS - external -->
 [kubernetes-drain]: https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/
@@ -118,3 +82,5 @@ AKS のデプロイと管理の詳細を AKS チュートリアルで確認し�
 <!-- LINKS - internal -->
 [aks-tutorial]: ./tutorial-kubernetes-prepare-app.md
 [az-aks-show]: /cli/azure/aks#az-aks-show
+[az-aks-scale]: /cli/azure/aks#az-aks-scale
+[cluster-autoscaler]: cluster-autoscaler.md

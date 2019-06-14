@@ -13,18 +13,18 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 6f743f7ea7fda368fc5895646145f553f3fb50fb
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: 20bb8d5380f5a905a827dfb12dcc032e327267e0
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65864860"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66418230"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>イベント ドリブンのバックグラウンド処理で Azure WebJobs SDK の使用を開始する
 
-この記事では、Visual Studio 2019 を使用し、Azure WebJobs SDK プロジェクトを作成し、それをローカルで実行し、[Azure App Service](overview.md) にデプロイする方法について説明します。 作成したプロジェクトは .NET Core コンソール アプリになります。このアプリでは、バージョン 3.x の WebJobs SDK が使用されます。 .NET Framework を使用するバージョン 2.x に興味がある場合、「[Visual Studio を使用して Web ジョブを開発してデプロイする - Azure App Service](webjobs-dotnet-deploy-vs.md)」を参照してください。
+この記事では、Visual Studio 2019 を使用し、Azure WebJobs SDK プロジェクトを作成し、それをローカルで実行し、[Azure App Service](overview.md) にデプロイする方法について説明します。 バージョン 3.x の WebJobs SDK は、.NET Core と .NET Framework の両方のコンソール アプリをサポートしています。 WebJobs SDK の使用方法については、「[イベント ドリブンのバックグラウンド処理に Azure WebJobs SDK を使用する方法](webjobs-sdk-how-to.md)」を参照してください。
 
-WebJobs SDK の使用方法については、「[イベント ドリブンのバックグラウンド処理に Azure WebJobs SDK を使用する方法](webjobs-sdk-how-to.md)」を参照してください。
+この記事では、.NET Core コンソール アプリとして Webjobs をデプロイする方法を示します。 .NET Framework コンソール アプリケーションとして Webjobs をデプロイするには、「[.NET Framework コンソール アプリとしての WebJobs](webjobs-dotnet-deploy-vs.md#webjobs-as-net-framework-console-apps)」を参照してください。 .NET Framework だけをサポートする WebJobs SDK バージョン 2.x に興味がある場合、「[Visual Studio を使用して Web ジョブを開発してデプロイする - Azure App Service](webjobs-dotnet-deploy-vs.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 

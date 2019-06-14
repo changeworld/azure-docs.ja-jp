@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 05/31/2019
 ms.author: abnarain
-ms.openlocfilehash: 6a7daae90254bb4192dbaf13e1c2f9202e2d2baa
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 7c86577abe1e8e158299e3a6aee2cff7f3568241
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65232430"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66427137"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Azure Data Factory の統合ランタイム
 Integration Runtime (IR) は、異なるネットワーク環境間で以下のデータ統合機能を提供するために Azure Data Factory によって使用されるコンピューティング インフラストラクチャです。
@@ -100,10 +100,10 @@ Azure-SSIS IR は、SSIS パッケージ実行専用の、Azure VM のフル マ
 
 Azure-SSIS ランタイムの詳細については、次の記事をご覧ください。 
 
-- [チュートリアル: SSIS パッケージを Azure にデプロイする](tutorial-create-azure-ssis-runtime-portal.md):  この記事では、Azure-SSIS IR を作成し、Azure SQL データベースを使って SSIS カタログをホストする手順が説明されています。 
+- [チュートリアル: SSIS パッケージを Azure にデプロイする](tutorial-create-azure-ssis-runtime-portal.md): この記事では、Azure-SSIS IR を作成し、Azure SQL データベースを使って SSIS カタログをホストする手順が説明されています。 
 - [方法:Azure-SSIS 統合ランタイムを作成する](create-azure-ssis-integration-runtime.md)。 この記事では、チュートリアルを基に、Azure SQL Database Managed Instance の使い方と、IR を仮想ネットワークに参加させる方法が説明されています。 
-- [Azure-SSIS IR を監視する](monitor-integration-runtime.md#azure-ssis-integration-runtime):  この記事では、Azure-SSIS IR に関する情報を取得する方法と、返された情報での状態が説明されています。 
-- [Azure-SSIS IR を管理する](manage-azure-ssis-integration-runtime.md):  この記事では、Azure-SSIS IR を停止、開始、削除する方法が説明されています。 また、IR にノードを追加することで Azure-SSIS IR をスケールアウトする方法も説明されています。 
+- [Azure-SSIS IR を監視する](monitor-integration-runtime.md#azure-ssis-integration-runtime): この記事では、Azure-SSIS IR に関する情報を取得する方法と、返された情報での状態が説明されています。 
+- [Azure-SSIS IR を管理する](manage-azure-ssis-integration-runtime.md): この記事では、Azure-SSIS IR を停止、開始、削除する方法が説明されています。 また、IR にノードを追加することで Azure-SSIS IR をスケールアウトする方法も説明されています。 
 - [仮想ネットワークへの Azure-SSIS IR の参加](join-azure-ssis-integration-runtime-virtual-network.md): この記事では、Azure 仮想ネットワークへの Azure-SSIS IR の参加に関する概念情報が説明されています。 Azure-SSIS IR が仮想ネットワークに参加できるように Azure Portal を使用して仮想ネットワークを構成する手順も説明されています。 
 
 ## <a name="integration-runtime-location"></a>統合ランタイムの場所
@@ -114,11 +114,11 @@ IR の場所は、そのバックエンドのコンピューティングの場�
 ### <a name="azure-ir-location"></a>Azure IR の場所
 Azure IR の特定の場所を設定することができます。その場合は、その特定のリージョンでデータの移動やアクティビティのディスパッチが行われます。 
 
-既定のとおり、自動解決の Azure IR を使用することにした場合、次のように処理されます。 
+既定の設定である**自動解決の Azure IR** を使用することを選択した場合は、次のようになります。 
 
 - コピー アクティビティでは、ADF は、シンクとソースのデータ ストアをベスト エフォートで自動的に検出して、同じリージョン内 (使用可能な場合) または同じ地理的な場所内の最も近いリージョン内で、最適な場所を選択します。検出できなかった場合は、代わりにデータ ファクトリのリージョンを使用します。
 
-- Lookup または GetMetadata アクティビティの実行と、変換アクティビティのディスパッチでは、ADF はデータ ファクトリのリージョンで IR を使用します。
+- Lookup/GetMetadata/Delete アクティビティの実行 (パイプライン アクティビティとも呼ばれます)、変換アクティビティのディスパッチ (外部アクティビティとも呼ばれます)、およびオーサリング操作 (接続のテスト、フォルダー一覧とテーブル一覧の参照、データのプレビュー) の場合、ADF はデータ ファクトリのリージョンで IR を使用します。
 
 - Data Flow の場合、ADF はデータ ファクトリのリージョンの IR を使用します。 
 

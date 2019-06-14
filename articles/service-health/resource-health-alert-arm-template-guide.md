@@ -6,12 +6,12 @@ ms.author: stbaron
 ms.topic: conceptual
 ms.service: service-health
 ms.date: 9/4/2018
-ms.openlocfilehash: 3d9a5ebb2e25cfbabf8cfdbd94c2d1d04ae1bbee
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: e552b90a4c98eff7b04cbeaef26aa10749ce672c
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65788467"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66493393"
 ---
 # <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>Resource Manager テンプレートを使用して Resource Health アラートを構成する
 
@@ -442,5 +442,7 @@ Resource Health に関する詳細情報を参照してください。
 -  [Azure Resource Health の概要](Resource-health-overview.md)
 -  [Azure Resource Health で利用できるリソースの種類と正常性チェック](resource-health-checks-resource-types.md)
 
+
 Service Health アラートを作成します。
 -  [Service Health のアラートの構成](../azure-monitor/platform/alerts-activity-log-service-notifications.md) 
+-  [Azure アクティビティ ログのイベント スキーマ](../azure-monitor/platform/activity-log-schema.md)

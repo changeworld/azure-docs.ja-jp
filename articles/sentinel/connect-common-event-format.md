@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/02/2019
 ms.author: rkarlin
-ms.openlocfilehash: 51fd1195942a7bae86bb4cc0af9df3146d6e45c2
-ms.sourcegitcommit: d73c46af1465c7fd879b5a97ddc45c38ec3f5c0d
+ms.openlocfilehash: 8e711c0586ce63d4293e2fb0914bbe884b55971f
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65921913"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389964"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>共通イベント形式を使用して外部ソリューションを接続する
 
@@ -44,6 +44,8 @@ Azure Sentinel とご利用の CEF アプライアンスとの間の接続では
 2. Syslog エージェントでは、データを収集して Log Analytics に安全に送信します。ここでデータが解析および改良されます。
 3. エージェントによってデータが Log Analytics ワークスペースに保存されるため、分析、相関ルール、ダッシュボードを使用して、必要に応じてクエリできます。
 
+> [!NOTE]
+> エージェントは、複数のソースからログを収集できますが、専用のプロキシ コンピューターにインストールする必要があります。
 
 ## <a name="step-1-connect-to-your-cef-appliance-via-dedicated-azure-vm"></a>手順 1:専用の Azure VM を介して CEF アプライアンスに接続する
 
@@ -61,7 +63,7 @@ Azure Sentinel とご利用の CEF アプライアンスとの間の接続では
 1. Azure Sentinel portal で、 **[Data connectors]\(データ コネクタ\)** をクリックして、お使いのアプライアンスの種類を選択します。 
 
 1. **[Linux Syslog agent configuration]** (Linux Syslog エージェント構成) の下で:
-   - Azure Sentinel エージェントが事前インストールされた、すべての必要な構成が含まれた新しいマシンを作成するには、前述の **[Automatic deployment]\(自動展開\)** を選択します。 **[Automatic deployment]\(自動展開\)** を選択して、 **[Automatic agent deployment]\(エージェントの自動展開\)** をクリックします。 これにより、お使いのワークスペースに自動的に接続される専用の Linux VM の購入ページに移動します。 VM は**標準 D2s v3 (2 vCPU、8 GB メモリ)** であり、パブリック IP アドレスを持っています。
+   - Azure Sentinel エージェントが事前インストールされた、すべての必要な構成が含まれた新しいマシンを作成するには、前述の **[Automatic deployment]\(自動展開\)** を選択します。 **[自動展開]** を選択して、 **[Automatic agent deployment]\(エージェントの自動展開\)** をクリックします。 これにより、お使いのワークスペースに自動的に接続される専用の Linux VM の購入ページに移動します。 VM は**標準 D2s v3 (2 vCPU、8 GB メモリ)** であり、パブリック IP アドレスを持っています。
       1. **[カスタム デプロイ]** ページで詳細を入力し、ユーザー名とパスワードを選択し、使用条件に同意する場合は、VM を購入します。
       1. 接続ページに一覧表示されている設定を使用して、ログを送信するようにアプライアンスを構成します。 標準の共通イベント形式コネクタの場合、以下の設定を使用します。
          - プロトコル = UDP
@@ -118,17 +120,24 @@ Azure を使用していない場合は、専用の Linux サーバーで実行�
   
  Log Analytics で CEF イベントに関連するスキーマを使用するために、`CommonSecurityLog` を検索します。
 
+## <a name="step-2-forward-common-event-format-cef-logs-to-syslog-agent"></a>手順 2:Common Event Format (CEF) ログを Syslog エージェントに転送する
+
+CEF 形式の Syslog メッセージを Syslog エージェントに送信するように、セキュリティ ソリューションを設定します。 エージェント構成に表示されているパラメーターと同じものを使用していることを確認します。 通常、これらは次のようになります。
+
+- ポート 514
+- ファシリティ local4
+
 ## <a name="step-3-validate-connectivity"></a>手順 3:接続の検証
 
 ログが Log Analytics に表示され始めるまで、20 分以上かかる場合があります。 
 
 1. 必ず正しいファシリティを使用してください。 ファシリティは、アプライアンスと Azure Sentinel で同じである必要があります。 どのファシリティ ファイルを Azure Sentinel で使用しているかをチェックし、ファイル `security-config-omsagent.conf` でそれを修正することができます。 
 
-2. Syslog エージェントで、自分のログが正しいポートに到達していることを確認します。 Syslog エージェント マシンで次のコマンドを実行します。`tcpdump -A -ni any  port 514 -vv` このコマンドでは、デバイスから Syslog マシンにストリーミングされるログを表示します。ログが、正しいポートとファシリティでソース アプライアンスから受信されていることを確認します。
+2. Syslog エージェントで、自分のログが正しいポートに到達していることを確認します。 Syslog エージェント マシンで次のコマンドを実行します。`tcpdump -A -ni any  port 514 -vv` このコマンドは、デバイスから Syslog マシンにストリーミングするログを表示します。 正しいポートと正しい機能でソース アプライアンスからログを受信していることを確認してください。
 
 3. 送信するログが [RFC 5424](https://tools.ietf.org/html/rfc542) に準拠していることを確認します。
 
-4. Syslog エージェントを実行しているコンピューターで、コマンド `netstat -a -n:` を使用して、これらのポート 514、25226 が開いており、リッスンしていることを確認します。 このコマンドの詳しい使用方法については、[netstat(8) - Linux man ページ](https://linux.die.netman/8/netstat)を参照してください。 正しくリッスンしている場合、次のように表示されます。
+4. Syslog エージェントを実行しているコンピューターで、コマンド `netstat -a -n:` を使用して、これらのポート 514、25226 が開いており、リッスンしていることを確認します。 このコマンドの詳しい使用方法については、[netstat(8) - Linux man ページ](https://linux.die.net/man/8/netstat)を参照してください。 正しくリッスンしている場合、次のように表示されます。
 
    ![Azure Sentinel ポート](./media/connect-cef/ports.png) 
 

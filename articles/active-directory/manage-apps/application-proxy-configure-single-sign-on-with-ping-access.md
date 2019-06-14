@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 365f017fe7d71500c17d0a9ccd9c5a0a26a78b75
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: ab08c93662988655154cf300ac4ee3758fbc7872
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65989585"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66472807"
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>アプリケーション プロキシと PingAccess を使用したシングル サインオン用のヘッダーベースの認証
 
@@ -158,9 +158,9 @@ PingAccess でアプリケーションを設定するには、次の 3 つの情
 
 ### <a name="update-graphapi-to-send-custom-fields-optional"></a>GraphAPI を更新してカスタム フィールドを送信する (省略可能)
 
-Azure AD が認証のために送信するセキュリティ トークンの一覧については、「[Microsoft ID プラットフォームの ID トークン](../develop/id-tokens.md)」を参照してください。 その他のトークンを送信するカスタム要求が必要な場合、`acceptMappedClaims` アプリケーション フィールドを `True` に設定します。 Graph エクスプローラーまたは Azure AD ポータルのアプリケーション マニフェストを使用して、この変更を行うことができます。
+PingAccess で消費される access_token 内のその他のトークンを送信するカスタム要求が必要な場合、`acceptMappedClaims` アプリケーション フィールドを `True` に設定します。 Graph エクスプローラーまたは Azure AD ポータルのアプリケーション マニフェストを使用して、この変更を行うことができます。
 
-次の例では、Graph Explorer を使用しています。
+**次の例では、Graph Explorer を使用しています。**
 
 ```
 PATCH https://graph.windows.net/myorganization/applications/<object_id_GUID_of_your_application>
@@ -170,7 +170,7 @@ PATCH https://graph.windows.net/myorganization/applications/<object_id_GUID_of_y
 }
 ```
 
-次の例では、[Azure Active Directory ポータル](https://aad.portal.azure.com/)を使用して `acceptMappedClaims` フィールドを更新します。
+**次の例では、[Azure Active Directory ポータル](https://aad.portal.azure.com/)を使用して `acceptMappedClaims` フィールドを更新します。**
 
 1. アプリケーション管理者として [Azure Active Directory ポータル](https://aad.portal.azure.com/)にサインインします。
 2. **[Azure Active Directory]**  >  **[アプリの登録]** の順に選択します。 アプリケーションの一覧を表示します。
@@ -179,7 +179,28 @@ PATCH https://graph.windows.net/myorganization/applications/<object_id_GUID_of_y
 5. `acceptMappedClaims` フィールドを検索し、値を `True` に変更します。
 6. **[保存]** を選択します。
 
-### <a name="use-a-custom-claim-optional"></a>カスタム要求 (省略可能) を使用します
+
+### <a name="use-of-optional-claims-optional"></a>省略可能な要求の使用 (省略可能)
+省略可能な要求を使用すると、すべてのユーザーとテナントが持つ、標準だが既定では含まれない要求を追加できます。 アプリケーション マニフェストを変更して、アプリケーションの省略可能な要求を構成することができます。 詳細については、[Azure AD アプリケーション マニフェストの概要に関する記事](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest/)を参照してください
+
+PingAccess が消費する access_token に、メール アドレスを含める例:
+```
+    "optionalClaims": {
+        "idToken": [],
+        "accessToken": [
+            {
+                "name": "email",
+                "source": null,
+                "essential": false,
+                "additionalProperties": []
+            }
+        ],
+        "saml2Token": []
+    },
+```
+
+### <a name="use-of-claims-mapping-policy-optional"></a>要求のマッピング ポリシーの使用 (省略可能)
+AzureAD に存在しない属性に対する[要求のマッピング ポリシー (プレビュー)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-claims-mapping#claims-mapping-policy-properties/)。 要求のマッピングでは、ADFS またはユーザー オブジェクトでサポートされるカスタム要求を追加することにより、古いオンプレミス アプリをクラウドに移行できます
 
 アプリケーションからカスタム要求を使用し、追加のフィールドを含めるには、[カスタム要求のマップ ポリシーも作成し、そのポリシーをアプリケーションに割り当てる](../develop/active-directory-claims-mapping.md#claims-mapping-policy-assignment)必要があります。
 
@@ -187,6 +208,16 @@ PATCH https://graph.windows.net/myorganization/applications/<object_id_GUID_of_y
 > カスタム要求を使用するには、カスタム ポリシーも定義し、アプリケーションに割り当てる必要があります。 このポリシーには、すべての必要なカスタム属性を含めます。
 >
 > PowerShell、Azure AD Graph Explorer、または Microsoft Graph から、ポリシーの定義と割り当てを行えます。 PowerShell でこの処理を実行するには、必要に応じてまず `New-AzureADPolicy` を使用してから、`Add-AzureADServicePrincipalPolicy` でアプリケーションに割り当てます。 詳細については、「[要求のマッピング ポリシーの割り当て](../develop/active-directory-claims-mapping.md#claims-mapping-policy-assignment)」を参照してください。
+
+例:
+```powershell
+$pol = New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"true", "ClaimsSchema": [{"Source":"user","ID":"employeeid","JwtClaimType":"employeeid"}]}}') -DisplayName "AdditionalClaims" -Type "ClaimsMappingPolicy"
+
+Add-AzureADServicePrincipalPolicy -Id "<<The object Id of the Enterprise Application you published in the previous step, which requires this claim>>" -RefObjectId $pol.Id 
+```
+
+### <a name="enable-pingaccess-to-use-custom-claims-optional-but-required-if-you-expect-the-application-to-consume-additional-claims"></a>PingAccess でカスタム要求を使用できるようにします (省略可能だが、アプリケーションが追加の要求を消費すると予想される場合は必須)
+次の手順で PingAccess を構成すると、作成する Web セッション ([設定] > [アクセス] > [Web セッション]) では、 **[Request Profile]** (プロファイルの要求) を選択解除し、 **[Refresh User Attributes]** (ユーザー属性の更新) を **[いいえ]** に設定する必要があります
 
 ## <a name="download-pingaccess-and-configure-your-application"></a>PingAccess をダウンロードしてアプリケーションを構成する
 

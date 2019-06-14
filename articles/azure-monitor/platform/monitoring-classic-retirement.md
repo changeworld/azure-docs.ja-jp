@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 2/7/2019
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: 82e6f28e00de725042a3d764a898b3c6486e1110
-ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
+ms.openlocfilehash: 1f29a12090ca37f25ea6f5f11e870df924b334f5
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66023199"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66497122"
 ---
 # <a name="unified-alerting--monitoring-in-azure-monitor-replaces-classic-alerting--monitoring"></a>Azure Monitor のアラートと監視の統合によるクラシックなアラートと監視の置換
 
@@ -59,15 +59,15 @@ Azure リソースの新しいメトリックは、以下のように使用で�
 - Application Insights の古い (クラシック) プラットフォームとカスタム メトリック、Azure portal の[アラート (クラシック) セクション](../../azure-monitor/platform/alerts-classic.overview.md) で現在使用でき、[microsoft.insights/alertrules](https://docs.microsoft.com/rest/api/monitor/alertrules) リソースとしてアクセス可能なアラート
 - Azure portal で [Application Insights 内のスマート検出](../../azure-monitor/app/proactive-diagnostics.md)として現在使用できる古い (クラシック) エラーの異常; Azure portal の[アラート (クラシック) セクション](../../azure-monitor/platform/alerts-classic.overview.md)に表示されるように構成されたアラート
 
-対応する [API](https://msdn.microsoft.com/library/azure/dn931945.aspx)、[PowerShell](../../azure-monitor/platform/alerts-classic-portal.md)、[CLI](../../azure-monitor/platform/alerts-classic-portal.md)、[Azure Portal ページ](../../azure-monitor/platform/alerts-classic-portal.md)、および[リソース テンプレート](../../azure-monitor/platform/alerts-enable-template.md)を含むすべてのクラシック監視およびアラート システムは、2019 年 6 月末まで使用可能なままです。 
+対応する [API](https://msdn.microsoft.com/library/azure/dn931945.aspx)、[PowerShell](../../azure-monitor/platform/alerts-classic-portal.md)、[CLI](../../azure-monitor/platform/alerts-classic-portal.md)、[Azure portal ページ](../../azure-monitor/platform/alerts-classic-portal.md)、および[リソース テンプレート](../../azure-monitor/platform/alerts-enable-template.md)を含むすべてのクラシック監視およびアラート システムは、2019 年 8 月末まで使用可能なままです。 
 
 2019 年 8 月末時点の Azure Monitor:
 
 - クラシック監視およびアラート サービスは廃止され、新しいアラート ルールの作成には使用可能できなくなります。
-- 2019 年 6 月の後もアラート (クラシック) に引き続き存在するアラート ルールはすべて、引き続き通知を実行して起動しますが、変更することはできなくなります。
-- 2019 年 9 月から、クラシック監視およびアラートの移行可能なアラート ルールは、Microsoft によって新しい Azure 監視プラットフォームにある同等のアラート ルールに自動的に移されます。 このプロセスは、ダウンタイムなしでシームレスに実行され、お客様の監視範囲が失われることはありません。
+- 2019 年 8 月の後もアラート (クラシック) に引き続き存在するアラート ルールの実行は継続され、通知が発行されますが、変更することはできなくなります。
+- 2019 年 9 月から、クラシック監視およびアラートの移行可能なアラート ルールは、Microsoft によって、新しい Azure 監視プラットフォームにある同等のアラート ルールに数週間にわたって段階的に移動されます。 このプロセスは、ダウンタイムなしでシームレスに実行され、お客様の監視範囲が失われることはありません。
 - 新しいアラート プラットフォームへのアラート ルールの移行によって、前のような監視範囲が実現されますが、新しいペイロードによる通知が発生します。 クラシック アラート ルールに関連付けられたメール アドレス、Webhook エンドポイント、ロジック アプリ リンクはすべて、移行時に引き継がれますが、新しいプラットフォームではアラートのペイロードが異なるため、正常に機能しない可能性があります
-- いくつかの[クラシック アラート ルールは自動的には移行できません](alerts-understand-migration.md#which-classic-alert-rules-can-be-migrated)。それらのルールは、ユーザーによる手動での措置が必要となり、引き続き 2020 年 6 月まで動作します。
+- [自動的に移行できないクラシック アラート ルール](alerts-understand-migration.md#which-classic-alert-rules-can-be-migrated)はユーザーによる手動アクションが必要であり、これらの実行は 2020 年 6 月まで継続されます。
 
 > [!IMPORTANT]
 > Microsoft Azure Monitor では、クラシック アラート ルールを新しいプラットフォームに[自主的に移行するためのツール](alerts-using-migration-tool.md)を段階的に展開してきました。 そして、2019 年 9 月から、まだ存在していて、かつ移行することができる従来のアラート ルールすべてに対して、それが強制的に実行されます。 お客様は、従来のアラート ルールの移行後、従来のアラート ルールのペイロードを使用するオートメーションが、[Application Insights でのメトリックとアラートの統合](#unified-metrics-and-alerts-in-application-insights)または[他の Azure リソースでのメトリックとアラートの統合](#unified-metrics-and-alerts-for-other-azure-resources)からの新しいペイロードの処理に合わせて改変されたことを確認する必要があります。 詳細については、[クラシック アラート ルールの移行に向けての準備](alerts-prepare-migration.md)に関するページを参照してください。

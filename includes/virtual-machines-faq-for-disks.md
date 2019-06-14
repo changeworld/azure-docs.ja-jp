@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 0ad006ca966cfcc2c817ae4e8bfd3dc2d477259e
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: b993b34f81298b40c8849084380b2d1770708351
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66145907"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66482363"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Azure IaaS VM ディスクと Premium マネージド ディスクおよびアンマネージド ディスクについてよく寄せられる質問
 
@@ -141,19 +141,9 @@ Azure Managed Disks では、現在、ローカル冗長ストレージ マネ�
 
 GPT パーティション分割は OS ディスクではなく、データ ディスクでのみ使用できます。 OS ディスクは、MBR パーティション分割のスタイルを使用する必要があります。
 
-## <a name="uploading-to-a-managed-disk"></a>マネージド ディスクへのアップロード
+**どのような種類のディスクでスナップショットがサポートされますか。**
 
-**既存のマネージド ディスクにデータをアップロードできますか?**
-
-いいえ。アップロードは、**ReadyToUpload** 状態を持つ新しい空のディスクの作成中にのみ使用できます。
-
-**VM がアップロード状態にある間、その VM にディスクを接続できますか?**
-
-いいえ。
-
-**アップロード状態にあるマネージド ディスクのスナップショットを取得できますか?**
-
-いいえ。
+Premium SSD、Standard SSD、および Standard HDD でスナップショットがサポートされます。 これらの 3 つのディスクの種類では、すべてのディスク サイズでスナップショットがサポートされます (最大 32 TiB のサイズのディスクを含みます)。 Ultra SSD では、スナップショットはサポートされません。
 
 ## <a name="standard-ssd-disks"></a>Standard SSD ディスク
 
@@ -353,7 +343,7 @@ P4 (32 GiB) および P6 (64 GiB) ディスク サイズは、アンマネージ
 
 **Azure Backup と Azure Site Recovery サービスでサポートされている最大ディスク サイズはどれくらいですか?**
 
-Azure Backup と Azure Site Recovery サービスでサポートされている最大ディスク サイズは、4 TiB です。 最大 32 TiB の大容量ディスクに対するサポートがまもなく追加される予定です。
+Azure Backup と Azure Site Recovery サービスでサポートされている最大ディスク サイズは、4 TiB です。 最大 32 TiB の大容量ディスクに対するサポートは、まだ利用できません。
 
 **大容量ディスク サイズ (> 4 TiB) の Standard SSD と Standard HDD ディスクで最適化されたディスク IOPS と帯域幅を実現するために推奨される VM サイズはどれくらいですか?**
 

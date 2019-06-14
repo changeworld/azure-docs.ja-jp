@@ -5,15 +5,15 @@ services: event-hubs
 author: sethmanheim
 ms.service: event-hubs
 ms.topic: include
-ms.date: 02/26/2018
-ms.author: sethm
+ms.date: 05/22/2019
+ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 38f7dd6eb1c4965eca003e5ba337ec5912a53420
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: e941ef11dd0dce8b252d301a609e4fe57f6cf671
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66148233"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66482463"
 ---
 次の表に、[Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) に固有のクォータと制限を示します。 Event Hubs の価格については、「[Event Hubs の価格](https://azure.microsoft.com/pricing/details/event-hubs/)」を参照してください。
 
@@ -31,3 +31,19 @@ ms.locfileid: "66148233"
 | 最大スループット ユニット |名前空間 |スループット ユニットの制限を超えると、データが調整され、[サーバー ビジー例外](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception)が生成されます。 Standard レベルに対してより多くのスループット ユニットを要求するには、[サポート リクエスト](/azure/azure-supportability/how-to-create-azure-support-request)を申請します。 [追加スループット ユニット](../articles/event-hubs/event-hubs-auto-inflate.md)は、20 単位で購入できます。 |20 |
 | 名前空間ごとの承認規則の数 |名前空間|上限を超えると承認規則の作成要求が拒否されます。|12 |
 | GetRuntimeInformation メソッドの呼び出し数 | エンティティ | - | 1 秒あたり 50 | 
+
+### <a name="event-hubs-dedicated---quotas-and-limits"></a>Event Hubs Dedicated - クォータと制限
+Event Hubs Dedicated オファリングは固定の月額料金で課金され、最低の使用量は 4 時間です。 Dedicated レベルの機能は Standard プランとすべて同じですが、要求の厳しいワークロードを実行するお客様向けにエンタープライズ スケールの容量と制限で提供されます。 
+
+| 機能 | 制限 |
+| --- | ---|
+| 帯域幅 |  20 CU |
+| 名前空間 | CU あたり 50 |
+| Event Hubs |  イベント ハブ/トピックに制限なし |
+| イングレス イベント | あり |
+| メッセージ サイズ | 100 万バイト |
+| パーティション | CU あたり 2,000 |
+| コンシューマー グループ | CU あたりの制限なし、イベント ハブあたり 1,000 |
+| 仲介型接続 | 100,000 (付属) |
+| メッセージのリテンション期間 | 最大 7 日間 (90日間に近日対応予定)、CU ごとに 10 TB を含む |
+| キャプチャ | あり |

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/14/2018
 ms.author: raynew
-ms.openlocfilehash: f5ec5a64f1de39cd0d196242fb1a93669dbab15d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: d850cb222b0028f862cdba302140ce12af8576db
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64681846"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66492738"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>バックアップされる SQL Server データベースを管理および監視する
 
@@ -89,6 +89,14 @@ Azure Backup では、 **[バックアップ ジョブ]** ポータルに、手�
     ![[バックアップの停止] メニューでデータを削除または保持する](./media/backup-azure-sql-database/stop-backup-button.png)
 
 6. **[バックアップの停止]** を選択する
+
+>
+> [!NOTE]
+データ削除オプションの詳細については、次の FAQ を参照してください。 <br/>
+* [自動保護されたインスタンスからデータベースを削除した場合、バックアップはどうなりますか?](faq-backup-sql-server.md#if-i-delete-a-database-from-an-autoprotected-instance-what-will-happen-to-the-backups)<br/>
+* [自動保護されたデータベースのバックアップ操作の停止を実行した場合、その動作はどうなりますか?](faq-backup-sql-server.md#if-i-change-the-name-of-the-database-after-it-has-been-protected-what-will-be-the-behavior)
+>
+>
 
 
 ## <a name="resume-protection-for-a-sql-database"></a>SQL Database での保護の再開

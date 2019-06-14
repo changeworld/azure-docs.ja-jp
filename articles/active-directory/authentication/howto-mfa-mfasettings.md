@@ -5,24 +5,24 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 11/26/2018
+ms.date: 06/03/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f1dbd4b6635d615cc7bed4cf5cc38234ec0c3f1
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c6a74548d0dc965127c5568708155341f60dbc65
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58885997"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66496746"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Azure Multi-Factor Authentication の設定を構成する
 
-この記事は、Azure portal で Multi-Factor Authentication の設定を管理するうえで役立ちます。 ここでは、Azure Multi-factor Authentication を最大限に活用するために役立つさまざまなトピックについて説明します。 すべてのバージョンの [Azure Multi-factor Authentication](concept-mfa-whichversion.md#what-features-do-i-need) ですべての機能を使用できるわけではありません。
+この記事は、Azure portal で Multi-Factor Authentication の設定を管理するうえで役立ちます。 ここでは、Azure Multi-factor Authentication を最大限に活用するために役立つさまざまなトピックについて説明します。 すべてのバージョンの Azure Multi-Factor Authentication ですべての機能を使用できるわけではありません。
 
-Azure portal で Multi-Factor Authentication に関連する設定にアクセスするには、 **[Azure Active Directory]**  >  **[MFA]** の順に移動します。
+Azure portal で Azure Multi-Factor Authentication に関連する設定にアクセスするには、 **[Azure Active Directory]**  >  **[MFA]** の順に移動します。
 
 ![Azure portal - Azure AD Multi-Factor Authentication の設定](./media/howto-mfa-mfasettings/multi-factor-authentication-settings-portal.png)
 
@@ -33,7 +33,7 @@ Azure portal で Multi-Factor Authentication に関連する設定にアクセ�
 | 機能 | 説明 |
 | ------- | ----------- |
 | アカウントのロックアウト | 連続して拒否された認証試行が多すぎる場合に、Multi-Factor Authentication サービス内でアカウントを一時的にロックします。 この機能は、認証のために PIN を入力するユーザーにのみ適用されます。 (MFA サーバー) |
-| [ユーザーのブロック/ブロック解除](#block-and-unblock-users) | MFA サーバー (オンプレミス) の特定のユーザーが Multi-Factor Authentication 要求を受信できないようにするために使用されます。 ブロックされているユーザーを認証しようとすると、自動的に拒否されます。 ユーザーはブロックされた時間から 90 日間ブロックされ続けます。 |
+| [ユーザーのブロック/ブロック解除](#block-and-unblock-users) | 特定のユーザーが Multi-Factor Authentication 要求を受信できないようにするために使用されます。 ブロックされているユーザーを認証しようとすると、自動的に拒否されます。 ユーザーはブロックされた時間から 90 日間ブロックされ続けます。 |
 | [不正アクセスのアラート](#fraud-alert) | ユーザーが不正な確認要求をレポートできるかどうかに関する設定を構成します |
 | 通知 | MFA サーバーからのイベントの通知を有効にします。 |
 | [OATH トークン](concept-authentication-methods.md#oath-hardware-tokens-public-preview) | クラウドベースの Azure MFA 環境で、ユーザーの OATH トークンを管理するために使用されます。 |

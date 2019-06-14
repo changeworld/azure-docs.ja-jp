@@ -9,22 +9,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/16/2019
+ms.date: 05/31/2019
 ms.author: kumud;tyao
-ms.openlocfilehash: 3701a69ab72abf20a4f1608a1cee56c9cea38aca
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: 903405c8fada6165b79e780a7828c6de3b95163e
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65523635"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66478926"
 ---
 # <a name="configure-a-web-application-firewall-rate-limit-rule-using-azure-powershell"></a>Azure PowerShell を使用して Web アプリケーション ファイアウォールのレート制限ルールを構成する
 Azure Front Door 用の Azure Web アプリケーション ファイアウォール (WAF) では、1 分間中に単一クライアント IP から送信できる要求数が制御されます。
 この記事では、Azure PowerShell を使用して WAF レート制限ルールを構成し、単一クライアントから Web アプリケーション (URL に */promo* が含まれる) に送信できる要求数を制御する方法を説明します。
-
-> [!IMPORTANT]
-> 現在、Azure Front Door 用の WAF レート制限ルール機能は、パブリック プレビューの段階です。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -65,10 +61,10 @@ URL 一致条件 (URL に /promo が含まれる) を定義するには、[New-A
      -MatchValue "/promo"
 ```
 ## <a name="create-a-custom-rate-limit-rule"></a>カスタム レート制限ルールを作成する
-レート制限を設定するには、[New-AzFrontDoorCustomRuleObject](/powershell/module/az.frontdoor/new-azfrontdoorwafcustomruleobject) を使用します。 次の例では、制限が 1000 に設定されています。 クライアントから promo ページへの要求数が 1 分間中に 1000 件を超えると、次の 1 分間が開始されるまでの間、要求がブロックされます。
+レート制限を設定するには、[New-AzFrontDoorWafCustomRuleObject](/powershell/module/az.frontdoor/new-azfrontdoorwafcustomruleobject) を使用します。 次の例では、制限が 1000 に設定されています。 クライアントから promo ページへの要求数が 1 分間中に 1000 件を超えると、次の 1 分間が開始されるまでの間、要求がブロックされます。
 
 ```powershell-interactive
-   $promoRateLimitRule = New-AzFrontDoorCustomRuleObject `
+   $promoRateLimitRule = New-AzFrontDoorWafCustomRuleObject `
      -Name "rateLimitRule" `
      -RuleType RateLimitRule `
      -MatchCondition $promoMatchCondition `

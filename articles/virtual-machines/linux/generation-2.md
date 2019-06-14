@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2019
+ms.date: 05/23/2019
 ms.author: lahugh
-ms.openlocfilehash: e6bb947503371e379e4d4972ddfc3614e129174b
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.openlocfilehash: 183e2144317bf3f1c9a60443d393bdcb3fd7c04a
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65835205"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66390562"
 ---
 # <a name="generation-2-vms-preview-on-azure"></a>Azure の第 2 世代 VM (プレビュー)
 
@@ -30,7 +30,7 @@ ms.locfileid: "65835205"
 
 Azure で第 2 世代 VM のサポートがパブリック プレビュー段階になりました。 作成後、仮想マシンの世代を変更することはできません。 そのため、世代を選択する前に[こちら](https://docs.microsoft.com/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)にある考慮事項とこのページの情報を確認することをお勧めします。
 
-第 2 世代 VM サポートの主な特徴: メモリの増加、Intel® Software Guard Extensions (SGX)、仮想永続メモリ (vPMEM)。これらは第 1 世代 VM ではサポートされていませんでした。 第 2 世代 VM には、まだ Azure でサポートされていない機能がいくつかあります。 詳細については、「[特徴と機能](#features-and-capabilities)」セクションを参照してください。 
+第 2 世代 VM では、第 1 世代 VM でサポートされていない重要な機能がサポートされています。これには、メモリの増加、Intel® Software Guard Extensions (SGX)、仮想永続メモリ (vPMEM) などがあります。 また、第 2 世代 VM には、まだ Azure でサポートされていない機能がいくつかあります。 詳細については、「[特徴と機能](#features-and-capabilities)」セクションを参照してください。
 
 第 2 世代 VM では、第 1 世代 VM で使用された BIOS ベースのブート アーキテクチャではなく、新しい UEFI ベースのアーキテクチャが使用されます。 第 1 世代と比較し、第 2 世代 VM では、起動時間とインストール時間が改善されることがあります。 第 2 世代 VM の概要と、第 1 世代と第 2 世代の主な違いについては、「[Hyper-V では、第 1 世代と第 2 世代の仮想マシンのどちらを作成するべきですか?](https://docs.microsoft.com/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)」を参照してください。
 
@@ -113,6 +113,29 @@ Azure では現在、第 2 世代 VM に対してオンプレミス Hyper-V で�
 第 2 世代 VM は、仮想マシン スケール セットを利用して作成することもできます。 Azure CLI から Azure 仮想マシン スケール セットを利用し、第 2 世代 VM を作成できます。
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
+
+* **第 2 世代 VM はすべての Azure リージョンで利用できますか?**  
+    はい。ただし、すべての[第 2 世代 VM のサイズ](#generation-2-vm-sizes)がどのリージョンでも利用できるわけではありません。 第 2 世代 VM の可用性は VM サイズの可用性に依存します。
+
+* **第 1 世代 VM と第 2 世代 VM の価格に違いはありますか?**  
+    第 1 世代 VM と第 2 世代 VM の価格に違いはありません。
+
+* **OS ディスク サイズを増やすにはどうすればよいですか?**  
+  2 TB を超える OS ディスクが、第 2 世代 VM で新たに加わりました。 既定では、第 2 世代 VM のほとんどの OS ディスクは 2 TB 未満ですが、ディスク サイズは 4 TB の推奨最大値 まで増やすことができます。 Azure CLI または Azure portal を使用して OS ディスク サイズを増やすことができます。 プログラムによるディスクの拡張の詳細については、[ディスクのサイズの変更](expand-disks.md)に関する記事をご覧ください。
+
+  Azure portal を使用して OS ディスク サイズを増やすには:
+
+  * Azure portal の VM プロパティ ページに移動します。
+
+  * **[停止]** ボタンを使用して、VM をシャットダウンし、VM の割り当てを解除します。
+
+  * **[ディスク]** セクションで、増量する OS ディスクを選択します。
+
+  * **[ディスク]** セクションで **[構成]** を選択し、 **[サイズ]** を目的の値に更新します。
+  
+  * VM プロパティ ページに戻り、VM を**開始**します。
+
+  2 TB を超える OS ディスクに対する警告が表示されることがあります。 この警告は、第 2 世代 VM には該当しません。ただし、4 TB を超える OS ディスク サイズは**お勧めしません。**
 
 * **第 2 世代 VM は高速ネットワークに対応していますか?**  
     はい。第 2 世代 VM は[高速ネットワーク](../../virtual-network/create-vm-accelerated-networking-cli.md)に対応しています。

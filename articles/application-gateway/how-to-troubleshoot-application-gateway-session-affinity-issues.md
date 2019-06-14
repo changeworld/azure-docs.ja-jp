@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/22/2019
 ms.author: absha
-ms.openlocfilehash: 07165a497e75934a65719e48a9af7d8d6906ee7b
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 66f61b5d6fcb86ed93e4dbae802ae7a80613c83d
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65538330"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66397851"
 ---
 # <a name="troubleshoot-azure-application-gateway-session-affinity-issues"></a>Azure Application Gateway のセッション アフィニティに関する問題をトラブルシューティングする
 
@@ -86,7 +86,7 @@ Cookie ベースのアフィニティ設定を有効にしており、Internet E
 
     ![troubleshoot-session-affinity-issues-3](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-3.png)
 
-        ![troubleshoot-session-affinity-issues-4](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-4.png)
+    ![troubleshoot-session-affinity-issues-4](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-4.png)
 
 アプリケーションは、応答を取得するまで、要求ごとに Cookie を設定しようとし続けます。
 
@@ -167,23 +167,23 @@ Fiddler などの Web デバッグ ツールは、インターネットとテス
 
 2. セットアップ実行可能ファイルを右クリックし、管理者として実行しインストールします。
 
-            ![troubleshoot-session-affinity-issues-12](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-12.png)
+    ![troubleshoot-session-affinity-issues-12](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-12.png)
 
 3. Fiddler を開くと、Fiddler はトラフィックのキャプチャを自動的に開始します (左下にある [キャプチャ] に注目してください)。 F12 キーを押して、トラフィックのキャプチャを開始または停止します。
 
-        ![troubleshoot-session-affinity-issues-13](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-13.png)
+    ![troubleshoot-session-affinity-issues-13](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-13.png)
 
 4. ほとんどの場合、関心があるのは復号化された HTTPS トラフィックであるので、 **[ツール]**  >  **[Fiddler オプション]** の順に選択し、 **[Decrypt HTTPS traffic]** (HTTPS トラフィックの復号化) チェックボックスをオンにして、HTTPS 復号化を有効にすることができます。
 
-        ![troubleshoot-session-affinity-issues-14](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-14.png)
+    ![troubleshoot-session-affinity-issues-14](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-14.png)
 
 5. 次のスクリーンショットに従って、 **[X]** (アイコン) > **[すべて削除]** をクリックすることにより、問題を再現する前に、関連付けられていない以前のセッションを削除できます。 
 
-        ![troubleshoot-session-affinity-issues-15](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-15.png)
+    ![troubleshoot-session-affinity-issues-15](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-15.png)
 
 6. 問題を再現したら、 **[ファイル]**  >  **[保存]**  >  **[すべてのセッション]** の順に選択することによりレビュー用のファイルを保存します。 
 
-        ![troubleshoot-session-affinity-issues-16](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-16.png)
+    ![troubleshoot-session-affinity-issues-16](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-16.png)
 
 7. セッション ログを確認および分析して、問題を特定します。
 
@@ -194,11 +194,11 @@ Fiddler などの Web デバッグ ツールは、インターネットとテス
    > [!NOTE]
    > この ARRAffinity 値は cookie-id であり、Application Gateway がクライアントに対して特定のバックエンド サーバーに送信されるように設定する値です。
 
-    ![troubleshoot-session-affinity-issues-17](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-17.png)
+   ![troubleshoot-session-affinity-issues-17](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-17.png)
 
 - **例 B:** 前のセッション ログが続く次のセッション ログは、Application Gateway に応答するクライアントであり、ARRAAFFINITY を設定しました。 ARRAffinity cookie-id が一致した場合、パケットは、以前に使用されていたものと同じバックエンド サーバーに送信されます。 HTTP 通信の次の数行を調べて、クライアントの ARRAffinity Cookie が変更されているかどうかを確認します。
 
-    ![troubleshoot-session-affinity-issues-18](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-18.png)
+   ![troubleshoot-session-affinity-issues-18](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-18.png)
 
 > [!NOTE]
 > 同じ通信セッションの場合、Cookie は変更しないでください。 右側にある上部のチェック ボックスをオンにして、[Cookies] タブを選択して、クライアントが Cookie を使用し Application Gateway に送信しているかどうかを確認します。 そうでない場合、クライアントのブラウザーは会話で Cookie を保持しておらず使用していません。 クライアントは嘘をつくことがあります。

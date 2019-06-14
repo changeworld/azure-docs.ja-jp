@@ -3,23 +3,23 @@ title: Azure Stream Analytics で JSON と AVRO を解析する
 description: この記事では、配列、JSON、CSV 形式のデータなどの複雑なデータ型を操作する方法について説明します。
 services: stream-analytics
 ms.service: stream-analytics
-author: jasonwhowell
+author: mamccrea
 ms.author: mamccrea
-manager: kfile
 ms.topic: conceptual
-ms.date: 08/03/2018
-ms.openlocfilehash: 3d4c1bfa8b376ec50efc7b3cddc8d22a40e70892
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.date: 06/03/2019
+ms.openlocfilehash: ad30d363c8e3ea0264ba79db5417e572614a6739
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57341420"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66496829"
 ---
 # <a name="parse-json-and-avro-data-in-azure-stream-analytics"></a>Azure Stream Analytics で JSON データと Avro データを解析する
 
 Azure Stream Analytics では、CSV、JSON、および Avro データ形式のイベントの処理をサポートしています。 JSON データと Avro データのどちらも、入れ子になったオブジェクト (レコード) や配列などの複合型を含めることができます。
 
 ## <a name="array-data-types"></a>配列データ型
+
 配列データ型は、順序が付けられた値のコレクションです。 配列値の一般的な操作の詳細を以下に示します。 これらの例では、入力イベントに、配列データ型である "arrayField" という名前のプロパティが含まれることが想定されています。
 
 これらの例では、関数 [GetArrayElement](https://msdn.microsoft.com/azure/stream-analytics/reference/getarrayelement-azure-stream-analytics)、[GetArrayElements](https://msdn.microsoft.com/azure/stream-analytics/reference/getarrayelements-azure-stream-analytics)、[GetArrayLength](https://msdn.microsoft.com/azure/stream-analytics/reference/getarraylength-azure-stream-analytics)、および [APPLY](https://msdn.microsoft.com/azure/stream-analytics/reference/apply-azure-stream-analytics) 演算子を使用しています。
@@ -73,7 +73,7 @@ CROSS APPLY GetArrayElements(event.arrayField) AS arrayElement
 ```
 
 ## <a name="examples"></a>例
-入れ子になったフィールドにアクセスするには、ドット表記 (.) を使用します。 たとえば、このクエリは、上記の JSON データの Location プロパティの Lat および Long 座標を選択します。
+入れ子になったフィールドにアクセスするには、ドット表記 (.) を使用します。 たとえば、このクエリでは、上記の JSON データの Location プロパティの緯度と経度の座標が選択されます。
 
 ```SQL
 SELECT

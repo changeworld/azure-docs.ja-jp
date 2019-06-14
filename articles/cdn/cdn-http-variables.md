@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: magattus
-ms.openlocfilehash: 8d4fc5fbdc3185c46f00d94537b197ec03f66755
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: d572da27cee33cf546933e55a59c27dac4c1efd9
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59528171"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475208"
 ---
 # <a name="http-variables-for-azure-cdn-rules-engine"></a>Azure CDN ルール エンジンの HTTP 変数
 HTTP 変数は、HTTP 要求と応答のメタデータを取得するための手段を提供します。 このメタデータを使用して、要求または応答を動的に変更できます。 HTTP 変数の使用は、次のルール エンジンの機能に限定されています。
 
-- [Cache-Key Rewrite (キャッシュキー書き換え)](cdn-rules-engine-reference-features.md#cache-key-rewrite)
-- [Modify Client Request Header (クライアント要求ヘッダーの修正)](cdn-rules-engine-reference-features.md#modify-client-request-header)
-- [Modify Client Response Header (クライアント応答ヘッダーの修正)](cdn-rules-engine-reference-features.md#modify-client-response-header)
-- [URL Redirect (URL リダイレクト)](cdn-rules-engine-reference-features.md#url-redirect)
-- [URL Rewrite (URL 書き換え)](cdn-rules-engine-reference-features.md#url-rewrite)
+- [Cache-Key Rewrite (キャッシュキー書き換え)](cdn-verizon-premium-rules-engine-reference-features.md#cache-key-rewrite)
+- [Modify Client Request Header (クライアント要求ヘッダーの修正)](cdn-verizon-premium-rules-engine-reference-features.md#modify-client-request-header)
+- [Modify Client Response Header (クライアント応答ヘッダーの修正)](cdn-verizon-premium-rules-engine-reference-features.md#modify-client-response-header)
+- [URL Redirect (URL リダイレクト)](cdn-verizon-premium-rules-engine-reference-features.md#url-redirect)
+- [URL Rewrite (URL 書き換え)](cdn-verizon-premium-rules-engine-reference-features.md#url-rewrite)
 
 ## <a name="definitions"></a>定義
 次の表で、サポートされている HTTP 変数について説明します。 GEO メタデータ (たとえば、郵便番号) が特定の要求に利用できない場合は、空白の値が返されます。
@@ -61,7 +61,7 @@ HTTP 変数は、HTTP 要求と応答のメタデータを取得するための�
 | 要求プロトコル | %{request_protocol} | 要求プロトコルを示します。 | HTTP/1.1 |
 | Request Scheme (要求スキーム) | %{scheme} | 要求スキームを示します。 |http |
 | 要求 URI (相対) | %{request_uri} | 要求 URI に定義されている相対パス (クエリ文字列を含む) を示します。 | /marketing/foo.js?loggedin=true |
-| 要求 URI (クエリ文字列なしの相対) | %{uri} | 要求されたコンテンツへの相対パスを示します。 <br /><br/>重要な情報: <br />- この相対パスはクエリ文字列を除外します。<br />- この相対パスは URL 書き換えを反映します。 URL は、次の条件下で書き換えられます。<br />  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- URL 書き換え機能:この機能は、要求 URI に定義されている相対パスを書き換えます。<br />    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- エッジ CNAME URL:この種類の要求は、対応する CDN URL に書き換えられます。 |/800001/corigin/rewrittendir/foo.js |
+| 要求 URI (クエリ文字列なしの相対) | %{uri} | 要求されたコンテンツへの相対パスを示します。 <br /><br/>重要な情報:<br />- この相対パスはクエリ文字列を除外します。<br />- この相対パスは URL 書き換えを反映します。 URL は、次の条件下で書き換えられます。<br />  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- URL 書き換え機能:この機能は、要求 URI に定義されている相対パスを書き換えます。<br />    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- エッジ CNAME URL:この種類の要求は、対応する CDN URL に書き換えられます。 |/800001/corigin/rewrittendir/foo.js |
 | 要求 URI | %{request} | 要求を説明します。 <br />構文:&lt;HTTP メソッド&gt; &lt;相対パス&gt; &lt;HTTP プロトコル&gt; | GET /marketing/foo.js?loggedin=true HTTP/1.1 |
 | 応答ヘッダー値 | %{resp_&lt;ResponseHeader&gt;} | &lt;ResponseHeader&gt; という語で識別される応答ヘッダーに対応する値を返します。 <br /><br />応答ヘッダーの名前にダッシュが含まれている (たとえば、User-Agent) 場合は、アンダースコアで置き換えます (たとえば、User_Agent)。 | 使用例: %{resp_Content_Length}<br /><br />値の例:100 |
 
@@ -113,7 +113,7 @@ HTTP 変数の後に区切り記号を指定することで、次のいずれか
 | 条件 | 説明 | 例 |
 | --------- | ----------- | --------|
 | % 記号のエスケープ | パーセント記号は、バックスラッシュを使用してエスケープすることができます。 <br />右側にある値の例は、HTTP 変数としてではなく、リテラル値として扱われます。| \%{host} |
-| 不明な変数 | 不明な変数には常に空の文字列が返されます。 | %{unknownvariable} |
+| 不明な変数 | 不明な変数には常に空の文字列が返されます。 | %{unknown_variable} |
 | 無効な文字または構文 | 無効な文字または構文が含まれている変数は、リテラル値として扱われます。 <br /><br />例 1:指定した値に、無効な文字 (たとえば、-) が含まれている。 <br /><br />例 2:指定した値に、2 つの中かっこのセットが含まれている。 <br /><br />例 3:指定した値に右中かっこがない。<br /> | 例 1: %{resp_user-agent} <br /><br />例 2: %{{host}} <br /><br />例 3: %{host |
 | 変数名が見つからない | 変数が指定されていない場合は、常に NULL 値が返されます。 | %{} |
 | 末尾の文字 | 変数の末尾の文字は、リテラル値として扱われます。 <br />右側にある値の例には、リテラル値として扱われる末尾の中かっこが含まれています。 | %{host}} |
@@ -127,9 +127,9 @@ HTTP 変数の後に区切り記号を指定することで、次のいずれか
 
 | 条件 | 構文 | 例 | 説明 |
 | --------- | ------ | --------| ----------- |
-| 次のいずれかの条件を満たしている場合は、ヘッダーを既定値に設定します。 <br /><br />- ヘッダーがない <br /><br />- ヘッダー値が NULL に設定されている。| %{Variable:=Value} | %{http_referer:=unspecified} | Referer ヘッダーは、見つからないか NULL に設定されている場合は *unspecified* のみに設定されます。 設定されている場合、アクションは行われません。 |
-| 見つからない場合は、ヘッダーを既定値に設定します。 | %{Variable=Value} | %{http_referer=unspecified} | Referer ヘッダーは、見つからない場合は *unspecified* のみに設定されます。 設定されている場合、アクションは行われません。 |
-| 次のどの条件も満たしていない場合は、ヘッダーを既定値に設定します。 <br /><br />- 見つからない<br /><br /> - NULL に設定されている。 | %{Variable:+Value} | %{http_referer:+unspecified} | Referer ヘッダーは、値が割り当てられている場合は *unspecified* のみに設定されます。 見つからないか NULL に設定されている場合、アクションは行われません。 |
+| 次のいずれかの条件を満たしている場合は、ヘッダーを既定値に設定します。 <br /><br />- ヘッダーがない <br /><br />- ヘッダー値が NULL に設定されている。| %{Variable:=Value} | %{http_referrer:=unspecified} | Referrer ヘッダーは、見つからないか NULL に設定されている場合は *unspecified* のみに設定されます。 設定されている場合、アクションは行われません。 |
+| 見つからない場合は、ヘッダーを既定値に設定します。 | %{Variable=Value} | %{http_referrer=unspecified} | Referrer ヘッダーは、見つからない場合は *unspecified* のみに設定されます。 設定されている場合、アクションは行われません。 |
+| 次のどの条件も満たしていない場合は、ヘッダーを既定値に設定します。 <br /><br />- 見つからない<br /><br /> - NULL に設定されている。 | %{Variable:+Value} | %{http_referrer:+unspecified} | Referrer ヘッダーは、値が割り当てられている場合は *unspecified* のみに設定されます。 見つからないか NULL に設定されている場合、アクションは行われません。 |
 
 ## <a name="manipulating-variables"></a>変数の操作
 変数は、次の方法で操作できます。
@@ -142,7 +142,7 @@ HTTP 変数の後に区切り記号を指定することで、次のいずれか
 
 `%<Variable>:<Offset>:<Length>}`
 
-重要な情報: 
+重要な情報:
 
 - Offset の語に割り当てられる値は、部分文字列の最初の文字を決定します。
 
@@ -214,7 +214,7 @@ https:\//www.mydomain.com/mobile/marketing/proposal.htm
 | %{Variable/$Find/Rewrite} | 指定したパターンが変数の末尾にあるときに、その検索、コピー、および書き換えを行います。 |
 | %{Variable/Find} | 指定したパターンのすべての出現箇所を検索し、削除します。 |
 
-重要な情報: 
+重要な情報:
 
 - ドル記号の後に整数を指定して (たとえば、$1)、指定したパターンに一致するテキストを展開します。
 

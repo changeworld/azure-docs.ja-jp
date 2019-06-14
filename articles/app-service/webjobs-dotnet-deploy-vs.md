@@ -14,12 +14,12 @@ ms.custom: vs-azure
 ms.workload: azure-vs
 ms.date: 02/18/2019
 ms.author: glenga;david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: 4d375b559019529bdc170ce6bab535481e0569e0
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: b8cc628ef7db198c5068bb3917cf41113ba1687a
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65873021"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66417088"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio---azure-app-service"></a>Visual Studio を使用して Web ジョブを開発してデプロイする - Azure App Service
 
@@ -27,7 +27,7 @@ ms.locfileid: "65873021"
 
 複数の Web ジョブを単一の Web アプリに発行することができます。 Web アプリの各 Web ジョブに一意の名前が付いていることを確認してください。
 
-バージョン 3.x の [Azure WebJobs SDK](webjobs-sdk-how-to.md) では .NET Core アプリとして実行される WebJobs を開発できますが、バージョン 2.x では .NET Framework のみがサポートされます。 WebJobs プロジェクトをデプロイする方法は、.NET Core プロジェクトと .NET Framework プロジェクトでは異なります。
+バージョン 3.x の [Azure WebJobs SDK](webjobs-sdk-how-to.md) では .NET Core アプリと .NET Framework アプリのどちらかとして実行される WebJobs を開発できますが、バージョン 2.x では .NET Framework のみがサポートされます。 WebJobs プロジェクトをデプロイする方法は、.NET Core プロジェクトと .NET Framework プロジェクトでは異なります。
 
 ## <a name="webjobs-as-net-core-console-apps"></a>.NET Core コンソール アプリとしての WebJobs
 

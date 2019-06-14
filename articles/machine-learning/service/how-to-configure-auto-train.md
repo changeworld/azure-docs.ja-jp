@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3fcc1926d580007750e7e1f5a3de06ef6578e1b5
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: c0f8a56df5b41236256115ced0d46a87c5ee91a5
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65957464"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66400248"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Python で自動 ML の実験を構成する
 
@@ -59,6 +59,14 @@ ms.locfileid: "65957464"
 [単純ベイズ](https://scikit-learn.org/stable/modules/naive_bayes.html#bernoulli-naive-bayes)|
 [確率的勾配降下法 (SGD)](https://scikit-learn.org/stable/modules/sgd.html#sgd)|
 
+`AutoMLConfig` コンストラクターで `task` パラメーターを使用して、実験の種類を指定します。
+
+```python
+from azureml.train.automl import AutoMLConfig
+
+# task can be one of classification, regression, forecasting
+automl_config = AutoMLConfig(task="classification")
+```
 
 ## <a name="data-source-and-format"></a>データ ソースと形式
 自動機械学習では、ローカル デスクトップ上またはクラウド (Azure Blob Storage など) に存在するデータがサポートされます。 データは、scikit-learn でサポートされているデータ形式に読み込むことができます。 次のものにデータを読み込めます。
@@ -121,7 +129,7 @@ automl_config = AutoMLConfig(****, data_script=project_folder + "/get_data.py", 
 ---|---|---|---
 X | Pandas データフレームまたは Numpy 配列 | data_train、label、columns |  トレーニングするすべての機能
 y | Pandas データフレームまたは Numpy 配列 |   label   | トレーニングするラベル データ。 分類の場合、整数の配列にする必要があります。
-X_valid | Pandas データフレームまたは Numpy 配列   | data_train、label | "_省略可能_" 検証するすべての機能。 指定しない場合、X はトレーニング間で分割されて検証されます
+X_valid | Pandas データフレームまたは Numpy 配列   | data_train、label | "_省略可能_" 検証セットを構成する特徴データ。 指定しない場合、X はトレーニング間で分割されて検証されます
 y_valid |   Pandas データフレームまたは Numpy 配列 | data_train、label | "_省略可能_" 検証するラベル データ。 指定しない場合、y はトレーニング間で分割されて検証されます
 sample_weight | Pandas データフレームまたは Numpy 配列 |   data_train、label、columns| "_省略可能_" 各サンプルの重み値。 データ ポイントに異なる重みを割り当てる場合に使用します
 sample_weight_valid | Pandas データフレームまたは Numpy 配列 | data_train、label、columns |    "_省略可能_" 各検証サンプルの重み値。 指定しない場合、sample_weight はトレーニング間で分割されて検証されます
@@ -129,30 +137,6 @@ data_train |    Pandas データフレーム |  X、y、X_valid、y_valid |    �
 label | string  | X、y、X_valid、y_valid |  data_train 内のどの列がラベルを表すか
 columns | 文字列の配列  ||  "_省略可能_" 機能に使用する列のホワイトリスト
 cv_splits_indices   | 整数の配列 ||  "_省略可能_" クロス検証用にデータを分割するためのインデックスのリスト
-
-### <a name="load-and-prepare-data-using-data-prep-sdk"></a>データ準備 SDK を使用してデータを読み込み、準備する
-自動機械学習の実験では、データ準備 SDK を使用したデータの読み込みと変換がサポートされます。 SDK を使用すると次の機能を実現できます。
-
->* パラメーターの推論 (エンコード、区切り、ヘッダー) を解析してさまざまな種類のファイルから読み込む
->* ファイルの読み込み中に推論を使用した型変換
->* MS SQL Server と Azure Data Lake Storage の接続のサポート
->* 式による列の追加
->* 欠損値の補完
->* 列の派生の例
->* Filtering
->* カスタム Python 変換
-
-データ準備 SDK の詳細については、[モデル化のためのデータの準備方法に関する記事](how-to-load-data.md)をご覧ください。
-データ準備 SDK を使用したデータの読み込みの例を次に示します。
-```python
-# The data referenced here was pulled from `sklearn.datasets.load_digits()`.
-simple_example_data_root = 'https://dprepdata.blob.core.windows.net/automl-notebook-data/'
-X = dprep.auto_read_file(simple_example_data_root + 'X.csv').skip(1)  # Remove the header row.
-# You can use `auto_read_file` which intelligently figures out delimiters and datatypes of a file.
-
-# Here we read a comma delimited file and convert all columns to integers.
-y = dprep.read_csv(simple_example_data_root + 'y.csv').to_long(dprep.ColumnSelector(term='.*', use_regex = True))
-```
 
 ## <a name="train-and-validation-data"></a>データをトレーニングして検証する
 
@@ -501,6 +485,8 @@ from azureml.widgets import RunDetails
 RunDetails(local_run).show()
 ```
 ![特徴の重要度のグラフ](./media/how-to-configure-auto-train/feature-importance.png)
+
+自動機械学習外の SDK の他の領域で、モデルの説明と特徴の重要度を有効にする方法については、解釈可能性の[概念](machine-learning-interpretability-explainability.md)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

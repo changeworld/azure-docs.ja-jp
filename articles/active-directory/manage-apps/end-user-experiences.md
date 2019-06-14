@@ -12,12 +12,12 @@ ms.date: 05/03/2019
 ms.author: mimart
 ms.reviewer: arvindh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 41dde1579fc98db37ab7d92ce362d0a4ce9a82cf
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 23e5fc24e426c87bbc5062183f2ee2db0e546484
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65824570"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66388211"
 ---
 # <a name="end-user-experiences-for-applications-in-azure-active-directory"></a>Azure Active Directory でのアプリケーションのエンド ユーザー エクスペリエンス
 Azure Active Directory (Azure AD) には、組織内のエンド ユーザーにアプリケーションをデプロイするためのカスタマイズ可能な方法が複数用意されています。
@@ -30,7 +30,7 @@ Azure Active Directory (Azure AD) には、組織内のエンド ユーザーに
 管理者は、自分の判断で、組織内でのデプロイにどの方法を使用するかを決定することができます。
 
 ## <a name="azure-ad-access-panel"></a>Azure AD アクセス パネル
-アクセス パネル (https://myapps.microsoft.com) は Web ベースのポータルで、Azure Active Directory の組織アカウントを持つエンド ユーザーが、Azure AD 管理者によってアクセスを許可されたクラウドベースのアプリケーションを表示および起動することができます。 [Azure Active Directory Premium](https://azure.microsoft.com/pricing/details/active-directory/) のエンド ユーザーの場合、アクセス パネルを介してセルフサービスのグループ管理機能を利用することもできます。
+アクセス パネル (https://myapps.microsoft.com ) は Web ベースのポータルで、Azure Active Directory の組織アカウントを持つエンド ユーザーが、Azure AD 管理者によってアクセスを許可されたクラウドベースのアプリケーションを表示および起動することができます。 [Azure Active Directory Premium](https://azure.microsoft.com/pricing/details/active-directory/) のエンド ユーザーの場合、アクセス パネルを介してセルフサービスのグループ管理機能を利用することもできます。
 
 ![Azure AD アクセス パネル](media/what-is-single-sign-on/azure-ad-access-panel.png)
 
@@ -48,7 +48,7 @@ Office 365 アプリケーション起動プログラムの詳細については
 ## <a name="direct-sign-on-to-federated-apps"></a>フェデレーション アプリへの直接サインオン
 SAML 2.0、WS-Federation、または OpenID Connect をサポートするほとんどのフェデレーション アプリでは、ユーザーがアプリケーションから開始し、自動リダイレクトかサインイン用リンクのクリックによって Azure AD 経由でサインインする機能もサポートしています。 これはサービス プロバイダーによって開始されるサインオンと呼ばれ、Azure AD アプリケーション ギャラリーのほとんどのフェデレーション アプリケーションでこの機能がサポートされています (詳細については、Azure portal のアプリのシングル サインオンの構成ウィザードからリンクされているドキュメントを参照してください)。
 
-![](./media/end-user-experiences/workdaymobile.png)
+![モバイル アプリ サインイン ページの例](./media/end-user-experiences/workdaymobile.png)
 
 ## <a name="direct-sign-on-links"></a>直接サインオンのリンク
 Azure AD では、パスワードベースのシングル サインオン、リンクされたシングル サインオン、任意の形式のフェデレーション シングル サインオンをサポートする個々のアプリケーションへの直接シングル サインオン リンクもサポートされます。

@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 165df03ec06081fe9b2e1ab84ffe7579ac457758
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 693be80e493a0ba259d147f432dc9d6c07ba876d
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57855488"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66427519"
 ---
 # <a name="data-exploration-and-visualization-tools-on-the-data-science-virtual-machine"></a>データ サイエンス仮想マシンの、データの探索と視覚化のツール。
 
-データ サイエンスの重要なステップは、データを理解することです。 視覚化およびデータ探索ツールは、データ理解の加速に役立ちます。 このキー ステップを促進する、DSVM で提供されるツールの一部をここで示します。 
+データ サイエンスの重要なステップは、データを理解することです。 視覚化およびデータ探索ツールは、データ理解の加速に役立ちます。 この重要なステップを容易にする、DSVM で提供されるいくつかのツールを次に示します。 
 
 ## <a name="apache-drill"></a>Apache Drill
 |    |           |
@@ -42,7 +42,7 @@ ms.locfileid: "57855488"
 | 紹介   |  Weka は、データ マイニング タスクのための機械学習アルゴリズムのコレクションです。 アルゴリズムはデータセットに直接適用するか、または独自の Java コードから呼び出すことができます。 Weka には、データの前処理、分類、回帰、クラスタリング、アソシエーション ルール、および視覚化のためのツールが含まれています。 |
 | サポートされている DSVM エディション     | Windows、Linux     |
 | 一般的な用途      | 一般的な ML ツール     |
-| 使用/実行方法      | Windows では、[スタート] メニューから Weka を探します。 Linux では、X2Go でログインした後、[Applications] \(アプリケーション) -> [Development] \(開発) -> [Weka] にアクセスします。 |
+| 使用/実行方法      | Windows では、[スタート] メニューから Weka を探します。 Linux では、X2Go にサインインした後、[アプリケーション] -> [開発] -> [Weka] に移動します。 |
 | サンプルへのリンク      | [Weka サンプル](https://www.cs.waikato.ac.nz/ml/weka/documentation.html) |
 | DSVM 上の関連ツール      |LightGBM、Rattle、Xgboost   |
 
@@ -56,12 +56,12 @@ ms.locfileid: "57855488"
 | サンプルへのリンク      | [Rattle](https://togaware.com/onepager/) |
 | DSVM 上の関連ツール      |LightGBM、Weka、Xgboost   |
 
-## <a name="powerbi-desktop"></a>PowerBI Desktop 
+## <a name="power-bi-desktop"></a>Power BI Desktop 
 |    |           |
 | ------------- | ------------- |
 | 紹介   | 対話型データ視覚化と BI ツール    |
 | サポートされている DSVM バージョン      | Windows  |
 | 一般的な用途      |  データ視覚化とダッシュボード構築   |
 | 使用/実行方法      | デスクトップ ショートカット (`C:\Program Files\Microsoft Power BI Desktop\bin\PBIDesktop.exe`)      |
-| DSVM 上の関連ツール      |   Visual Studio 2017、Visual Studio Code、Juno      |
+| DSVM 上の関連ツール      |   Visual Studio 2019、Visual Studio Code、Juno      |
 

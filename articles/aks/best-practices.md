@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 12/07/2018
 ms.author: iainfou
-ms.openlocfilehash: c73f2fea808944847fab6a675914ee57e537560b
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 20922f0fb6932191b8e522e4640b1ba4fecd5ca4
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56731329"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66514557"
 ---
 # <a name="cluster-operator-and-developer-best-practices-to-build-and-manage-applications-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのアプリケーションの構築および管理のためのクラスター オペレーターと開発者のベスト プラクティス
 
@@ -40,7 +40,7 @@ Azure Kubernetes Service (AKS) でのアプリケーションを構築して実�
 * [クラスターのセキュリティとアップグレードに関するベスト プラクティス](operator-best-practices-cluster-security.md)
     * API サーバーへのアクセスのセキュリティ保護、コンテナーへのアクセスの制限、アップグレードとノードの再起動の管理が含まれます。
 * [コンテナー イメージの管理とセキュリティに関するベスト プラクティス](operator-best-practices-container-image-management.md)
-    * イメージとランタイムのセキュリティ保護、信頼できるレジストリの使用、基本イメージの更新の自動ビルドが含まれます.
+    * イメージとランタイムのセキュリティ保護と基本イメージ更新プログラムの自動ビルドが含まれます。
 * [ポッドのセキュリティに関するベスト プラクティス](developer-best-practices-pod-security.md)
     * リソースへのアクセスのセキュリティ保護、資格情報の公開の制限、ポッド ID とデジタルのキー コンテナーの使用が含まれます。
 

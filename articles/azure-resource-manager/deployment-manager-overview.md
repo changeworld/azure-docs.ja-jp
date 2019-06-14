@@ -1,23 +1,18 @@
 ---
 title: リージョン全体で安全なデプロイを実施する - Azure Deployment Manager
 description: Azure Deployment Manager で多くのリージョンにわたってサービスをデプロイする方法について説明します すべてのリージョンにロール アウトする前に、デプロイの安定性を確認する安全なデプロイの実施方法について説明します。
-services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 05/13/2019
+ms.date: 05/31/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: d93d9999c407e64658b88025feda48d33e1a5ad1
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 52b132b45bd90d7d21bb072e9a94d8588d5cf301
+ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65595789"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66431174"
 ---
 # <a name="enable-safe-deployment-practices-with-azure-deployment-manager-public-preview"></a>Azure Deployment Manager で安全なデプロイを実施できるようにする (パブリック プレビュー)
 
@@ -25,7 +20,7 @@ ms.locfileid: "65595789"
 
 Deployment Manager は、Resource Manager の一機能です。 デプロイ中に機能を拡張します。 複数のリージョンにデプロイする必要のある複雑なサービスが存在する場合は、Deployment Manager を使用します。 サービスのロールアウトを段階的に行えば、すべてのリージョンにサービスがデプロイされる前に潜在的な問題を見つけることができます。 段階的なロールアウトの特別な注意事項が不要な場合は、Resource Manager の標準[デプロイ オプション](resource-group-template-deploy-portal.md)を使用してください。 Deployment Manager は、継続的インテグレーションと継続的デリバリー (CI/CD) のサービスなど、Resource Manager のデプロイをサポートするすべての既存のサードパーティ ツールとシームレスに統合します。 
 
-Azure Deployment Manager はプライベート プレビュー段階です。 Azure Deployment Manager を使用するには、[サインアップ フォーム](https://aka.ms/admsignup)に入力します。 [フィードバック](https://aka.ms/admfeedback)を提供して、機能の改善にご協力ください。
+Azure Deployment Manager はプレビュー段階です。 [フィードバック](https://aka.ms/admfeedback)を提供して、機能の改善にご協力ください。
 
 Deployment Manager を使用するには、次の 4 つのファイルを作成する必要があります。
 

@@ -9,20 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 05/30/2019
 ms.author: diberry
-ms.openlocfilehash: d546951cf283cf15874b1b6d95da75549a8a93ac
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 56ceb48be9d5cc9d1cdceed7505e2e3e918a7286
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55884938"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399655"
 ---
 # <a name="add-luis-results-to-application-insights-with-a-bot-in-c"></a>C# からボットを使用して LUIS の結果を Application Insights に追加する
 
-このチュートリアルでは、LUIS 応答の情報を [Application Insights](https://azure.microsoft.com/services/application-insights/) テレメトリ データ ストレージに追加します。 データを用意したら、Kusto 言語または PowerBI を使用して、意図および発話のエンティティについてリアルタイムで分析、集計、およびレポートできます。 この分析は、LUIS アプリの意図およびエンティティを追加または編集する必要があるかどうかの判断に役立ちます。
+このチュートリアルでは、LUIS 応答の情報を [Application Insights](https://azure.microsoft.com/services/application-insights/) テレメトリ データ ストレージに追加します。 そのデータを用意したら、Kusto 言語または Power BI でそれのクエリを実行し、意図および発話のエンティティについてリアルタイムで分析、集計、およびレポートすることができます。 この分析は、LUIS アプリの意図およびエンティティを追加または編集する必要があるかどうかの判断に役立ちます。
 
-ボットは、Bot Framework 3.x と Azure Web アプリ ボットで構築します。
+ボットは、Bot Framework 3.x と Azure Web アプリ ボットで構築します。 [LUIS を使用した Bot Framework 4.x のチュートリアル](luis-csharp-tutorial-bf-v4.md)も利用できます。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -51,13 +51,13 @@ ms.locfileid: "55884938"
 
 現在、Web アプリ ボット サービスの作成の一環として追加された Application Insights サービスで収集されるのは、ボット用の一般的な状態テレメトリです。 LUIS 応答情報は収集されません。 LUIS を分析および改善するには、LUIS 応答情報が必要です。  
 
-LUIS 応答をキャプチャするには、Web アプリ ボットで、**[Application Insights](https://www.nuget.org/packages/Microsoft.ApplicationInsights/)** がプロジェクト用にインストールおよび構成されている必要があります。
+LUIS 応答をキャプチャするには、Web アプリ ボットで、 **[Application Insights](https://www.nuget.org/packages/Microsoft.ApplicationInsights/)** がプロジェクト用にインストールおよび構成されている必要があります。
 
 ## <a name="download-web-app-bot"></a>Web アプリ ボットのダウンロード
 
 [Visual Studio 2017](https://www.visualstudio.com/downloads/) を使用して、Web アプリ ボット用に Application Insights を追加し、構成します。 Visual Studio で Web アプリ ボットを使用するには、Web アプリ ボット コードをダウンロードします。
 
-1. Azure portal で、Web アプリ ボットに対して、**[ビルド]** を選択します。
+1. Azure portal で、Web アプリ ボットに対して、 **[ビルド]** を選択します。
 
     ![ポータルで [ビルド] を選択する](./media/luis-tutorial-bot-csharp-appinsights/download-build-menu.png)
 
@@ -77,7 +77,7 @@ LUIS 応答をキャプチャするには、Web アプリ ボットで、**[Appl
 
     ![Visual Studio 2017 でソリューションを開く](./media/luis-tutorial-bot-csharp-appinsights/vs-2017-security-warning.png)
 
-3. Visual Studio では、依存関係をソリューションに追加する必要があります。 **ソリューション エクスプローラー**で、**[参照設定]** を右クリックし、**[NuGet パッケージの管理]** を選択します。
+3. Visual Studio では、依存関係をソリューションに追加する必要があります。 **ソリューション エクスプローラー**で、 **[参照設定]** を右クリックし、 **[NuGet パッケージの管理]** を選択します。
 
     ![Manage NuGet packages](./media/luis-tutorial-bot-csharp-appinsights/vs-2017-manage-nuget-packages.png)
 
@@ -89,9 +89,9 @@ LUIS 応答をキャプチャするには、Web アプリ ボットで、**[Appl
 
 Visual Studio で Application Insights をインストールし、構成します。
 
-1. Visual Studio 2017 の上部のメニューで、**[プロジェクト]** を選択し、**[Application Insights Telemetry の追加]** を選択します。
+1. Visual Studio 2017 の上部のメニューで、 **[プロジェクト]** を選択し、 **[Application Insights Telemetry の追加]** を選択します。
 
-2. **[Application Insights の構成]** ウィンドウで、**[無料で開始する]** を選択します
+2. **[Application Insights の構成]** ウィンドウで、 **[無料で開始する]** を選択します
 
     ![Application Insights の構成の開始](./media/luis-tutorial-bot-csharp-appinsights/vs-2017-configure-app-insights.png)
 
@@ -101,7 +101,7 @@ Visual Studio で Application Insights をインストールし、構成しま�
 
     ![Application Insights の状態](./media/luis-tutorial-bot-csharp-appinsights/vs-2017-adding-application-insights-to-project.png)
 
-    プロセスが完了したら、**[Application Insights の構成]** に進行状況が表示されます。
+    プロセスが完了したら、 **[Application Insights の構成]** に進行状況が表示されます。
 
     ![Application Insights の進行状況](./media/luis-tutorial-bot-csharp-appinsights/vs-2017-configured-application-insights-to-project.png)
 
@@ -109,7 +109,7 @@ Visual Studio で Application Insights をインストールし、構成しま�
 
 ## <a name="build-and-resolve-errors"></a>ビルドとエラーの解決
 
-1. ソリューションをビルドするには、**[ビルド]** メニューを選択し、**[ソリューションのリビルド]** を選択します。 ビルドが完了するまで待ちます。
+1. ソリューションをビルドするには、 **[ビルド]** メニューを選択し、 **[ソリューションのリビルド]** を選択します。 ビルドが完了するまで待ちます。
 
 2. ビルドが `CS0104` エラーで失敗した場合は、修正する必要があります。 `Controllers` フォルダーの `MessagesController.cs file` で、アクティビティの種類にプレフィックスとしてコネクタの種類を付けることで、`Activity` の種類の用途のあいまいさを明確にします。 これを行うには、22 行目から 36 行目までの `Activity` の名前を `Activity` から `Connector.Activity` に変更します。 ソリューションをもう一度ビルドします。 これでビルド エラーは発生しないはずです。
 
@@ -121,15 +121,15 @@ Visual Studio で Application Insights をインストールし、構成しま�
 
 Azure portal で **Application Insights** パッケージがプロジェクトに追加され、資格情報に対して適切に構成されました。 プロジェクトに対する変更は、Azure に再度発行する必要があります。
 
-1. **ソリューション エクスプローラー**で、プロジェクト名を右クリックし、**[発行]** を選択します。
+1. **ソリューション エクスプローラー**で、プロジェクト名を右クリックし、 **[発行]** を選択します。
 
     ![ポータルへのプロジェクトの発行](./media/luis-tutorial-bot-csharp-appinsights/vs-2017-publish.png)
 
-2. **[発行]** ウィンドウで、**[新しいプロファイルの作成]** を選択します。
+2. **[発行]** ウィンドウで、 **[新しいプロファイルの作成]** を選択します。
 
     ![発行の一部として、新しいプロファイルを作成します。](./media/luis-tutorial-bot-csharp-appinsights/vs-2017-publish-1.png)
 
-3. **[プロファイルのインポート]** を選択し、**[OK]** を選択します。
+3. **[プロファイルのインポート]** を選択し、 **[OK]** を選択します。
 
     ![発行の一部として、プロファイルをインポートします。](./media/luis-tutorial-bot-csharp-appinsights/vs-2017-publish-2.png)
 
@@ -167,7 +167,7 @@ Azure portal で、Web アプリ ボットを見つけて開きます。 次の�
 
 ## <a name="build-web-app-bot"></a>Web アプリ ボットのビルド
 
-1. 2 つの方法のいずれかで Web アプリ ボットをビルドします。 1 つは **App Service Editor** で `build.cmd` を右クリックし、**[Run from Console]\(コンソールから実行\)** を選択する方法です。 コンソールの出力が表示され、`Finished successfully.` で完了します
+1. 2 つの方法のいずれかで Web アプリ ボットをビルドします。 1 つは **App Service Editor** で `build.cmd` を右クリックし、 **[Run from Console]\(コンソールから実行\)** を選択する方法です。 コンソールの出力が表示され、`Finished successfully.` で完了します
 
 2. 正常に完了しない場合は、コンソールを開き、スクリプトに移動して、次の手順でそのスクリプトを実行します。 **App Service Editor** の上部の青いバーで、お使いのボットの名前を選択し、ドロップダウン リストで **[Open Kudu Console]\(Kudu コンソールを開く\)** を選択します。
 
@@ -202,9 +202,9 @@ Azure portal で、Web アプリ ボットを見つけて開きます。 次の�
 
 Application Insights を開いて、LUIS エントリを表示します。
 
-1. ポータルで、**[すべてのリソース]** を選択し、Web アプリ ボット名でフィルター処理します。 **Application Insights** 型のリソースをクリックします。 Application Insights のアイコンは電球です。
+1. ポータルで、 **[すべてのリソース]** を選択し、Web アプリ ボット名でフィルター処理します。 **Application Insights** 型のリソースをクリックします。 Application Insights のアイコンは電球です。
 
-    ![Azure Portal で Application Insights を探す](./media/luis-tutorial-bot-csharp-appinsights/portal-service-list-app-insights.png)
+    ![Azure portal でアプリ分析情報を探す](./media/luis-tutorial-bot-csharp-appinsights/portal-service-list-app-insights.png)
 
 2. リソースが開いたら、一番右のパネルにある虫眼鏡の**検索**アイコンをクリックします。 右側に新しいパネルが表示されます。 見つかったテレメトリ データの量に応じて、パネルが表示されるまでに少し間が空くことがあります。 `LUIS` を検索します。 このチュートリアルを使用して追加された LUIS クエリ結果だけに一覧が絞り込まれます。
 
@@ -217,11 +217,11 @@ Application Insights を開いて、LUIS エントリを表示します。
     終了したら、右端の上にある **X** を選択して、依存関係の項目の一覧に戻ります。
 
 > [!Tip]
-> 依存関係の一覧を保存し、後でその一覧に戻る場合は、**[詳細]**、**[お気に入りの保存]** の順にクリックします。
+> 依存関係の一覧を保存し、後でその一覧に戻る場合は、 **[詳細]** 、 **[お気に入りの保存]** の順にクリックします。
 
 ## <a name="query-application-insights-for-intent-score-and-utterance"></a>Application Insights で意図、スコア、および発話のクエリを実行する
 
-Application Insights を使用すると、[Kusto](https://docs.microsoft.com/azure/application-insights/app-insights-analytics#query-data-in-analytics) 言語を使用してデータにクエリを実行したり、[PowerBI](https://powerbi.microsoft.com) にデータをエクスポートしたりできます。
+Application Insights を使用すると、[Kusto](https://docs.microsoft.com/azure/application-insights/app-insights-analytics#query-data-in-analytics) 言語を使用してデータのクエリを実行したり、[Power BI](https://powerbi.microsoft.com) にデータをエクスポートしたりできます。
 
 1. フィルター ボックスの上の、依存関係の一覧の一番上にある **[分析]** をクリックします。
 
@@ -243,7 +243,7 @@ Application Insights を使用すると、[Kusto](https://docs.microsoft.com/azu
 
     ![カスタム分析レポート](./media/luis-tutorial-bot-csharp-appinsights/analytics-query-2.png)
 
-[Kusto クエリ言語](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries)または [PowerBI へのデータのエクスポート](https://docs.microsoft.com/azure/application-insights/app-insights-export-power-bi)の詳細を確認してください。
+[Kusto クエリ言語](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries)または [Power BI へのデータのエクスポート](https://docs.microsoft.com/azure/application-insights/app-insights-export-power-bi)の詳細を確認してください。
 
 ## <a name="learn-more-about-bot-framework"></a>Bot Framework の詳細
 

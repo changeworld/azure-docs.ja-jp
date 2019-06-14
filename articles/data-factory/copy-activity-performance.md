@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/28/2019
 ms.author: jingwang
-ms.openlocfilehash: 47b9ede2d529f78b14c21f53c6cd18ed691a3df3
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 81a5f99b0babd79af0034f684c45bfcf1bb25bd8
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58445840"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66425607"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>コピー アクティビティのパフォーマンスとチューニングに関するガイド
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -35,9 +35,9 @@ Azure によりエンタープライズ クラスのデータ ストレージお
 
 この記事では、次の内容について説明します。
 
-* [パフォーマンス参照番号](#performance-reference) 
+* [パフォーマンス参照番号](#performance-reference)
 * [データ統合単位](#data-integration-units)、[並列コピー](#parallel-copy)、[ステージング コピー](#staged-copy)などのさまざまなシナリオにおけるコピーのスループットを高める機能
-* [パフォーマンス チューニング ガイダンス](#performance-tuning-steps) 
+* [パフォーマンス チューニング ガイダンス](#performance-tuning-steps)
 
 > [!NOTE]
 > コピー アクティビティ全般に慣れていない場合は、この記事を読む前に、[コピー アクティビティの概要](copy-activity-overview.md)に関するページを参照してください。
@@ -93,7 +93,7 @@ Azure によりエンタープライズ クラスのデータ ストレージお
 アクティビティの実行の監視中に、コピー アクティビティの出力で、各コピー実行に実際に使用されたデータ統合単位を確認できます。 詳細については、[コピー アクティビティの監視](copy-activity-overview.md#monitoring)を参照してください。
 
 > [!NOTE]
-> 現在、**4 より大きい** DIU を設定できるのは、**複数のファイルを、Blob Storage/Data Lake Store/Amazon S3/クラウド FTP/クラウド SFTP から他の任意のクラウド データ ストアにコピーする**場合のみです。
+> **4 より大きい** DIU の設定は現在、**Azure Storage/Data Lake Storage/Amazon S3/Google Cloud Storage/クラウド FTP/クラウド SFTP から他の任意のクラウド データ ストアに複数のファイルをコピーする**場合にのみ適用されます。
 >
 
 **例:**
@@ -193,7 +193,7 @@ Azure によりエンタープライズ クラスのデータ ストレージお
 | **enableStaging** |中間ステージング ストアを経由してデータをコピーするかどうかを指定します。 |False |いいえ |
 | **linkedServiceName** |[AzureStorage ](connector-azure-blob-storage.md#linked-service-properties) のリンクされたサービスの名前を指定します。これは、中間ステージング ストアとして使用する Storage のインスタンスを表します。 <br/><br/> PolyBase を使用してデータを SQL Data Warehouse に読み込むために、Shared Access Signature を持つ Storage を使用することはできません。 それ以外のすべてのシナリオでは使用できます。 |該当なし |はい ( **enableStaging** が TRUE に設定されている場合) |
 | **path** |ステージング データを格納する Blob Storage のパスを指定します。 パスを指定しないと、一時データを格納するコンテナーがサービスによって作成されます。 <br/><br/> パスを指定するのは、Shared Access Signature を持つ Storage を使用する場合、または一時データを特定の場所に保存する必要がある場合のみです。 |該当なし |いいえ |
-| **enableCompression** |データをコピーする前に圧縮するかどうかを指定します。 この設定により、転送するデータの量が減ります。 |False |いいえ  |
+| **enableCompression** |データをコピーする前に圧縮するかどうかを指定します。 この設定により、転送するデータの量が減ります。 |False |いいえ |
 
 >[!NOTE]
 > 圧縮を有効にしてステージング コピーを使用する場合、サービスとリンクされたステージング Blob でのサービス プリンシパルと MSI 認証はサポートされません。
@@ -404,7 +404,7 @@ Data Factory で同じデータ ストアに同時に接続させる必要があ
 * Azure Storage (Blob Storage と Table Storage を含む): [Azure Storage のスケーラビリティのターゲット](../storage/common/storage-scalability-targets.md)に関する記事と [Azure Storage のパフォーマンスとスケーラビリティに対するチェック リスト](../storage/common/storage-performance-checklist.md)に関する記事
 * Azure SQL Database:[パフォーマンスを監視](../sql-database/sql-database-single-database-monitor.md)し、データベース トランザクション ユニット (DTU) の割合を確認できます。
 * Azure SQL Data Warehouse: 処理能力は Data Warehouse ユニット (DWU) で測定されます。[Azure SQL Data Warehouse でのコンピューティングの管理 (概要)](../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md) に関するページを参照してください。
-* Azure Cosmos DB は:[Azure Cosmos DB のパフォーマンス レベル](../cosmos-db/performance-levels.md)
+* Azure Cosmos DB:[Azure Cosmos DB のパフォーマンス レベル](../cosmos-db/performance-levels.md)
 * オンプレミスの SQL Server: [パフォーマンスの監視とチューニング](https://msdn.microsoft.com/library/ms189081.aspx)
 * オンプレミスのファイル サーバー: [ファイル サーバーのパフォーマンス チューニング](https://msdn.microsoft.com/library/dn567661.aspx)
 

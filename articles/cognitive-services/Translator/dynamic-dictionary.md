@@ -3,21 +3,21 @@ title: 動的ディクショナリ - Translator Text API
 titlesuffix: Azure Cognitive Services
 description: Translator Text API の動的ディクショナリ機能を使用する方法。
 services: cognitive-services
-author: v-pawal
+author: rajdeep-in
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 02/21/2019
-ms.author: v-jansko
-ms.openlocfilehash: 0b4362d78ef105c249aafb4c6b203f69754a56c8
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 06/04/2019
+ms.author: v-pawal
+ms.openlocfilehash: d3a77ee9273e9f587b6157bb6ed2294865b1fca5
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58916599"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66514256"
 ---
-# <a name="how-to-use-the-dynamic-dictionary-feature-of-the-translator-text-api"></a>Translator Text API の動的ディクショナリ機能を使用する方法
+# <a name="how-to-use-a-dynamic-dictionary"></a>動的ディクショナリを使用する方法
 
 単語や語句に適用する翻訳があらかじめわかっている場合は、それを要求内でマークアップとして指定することができます。 動的ディクショナリは、固有名詞や製品名のような複合名詞に対してのみ安全に使用できます。
 

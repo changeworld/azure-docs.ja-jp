@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 05/21/2019
+ms.date: 05/31/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 4685d02fa9a1f08d86bdbe2915b94f177235b864
-ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
+ms.openlocfilehash: 328da909449eb71df3139e06be2254eb302232a4
+ms.sourcegitcommit: 18a0d58358ec860c87961a45d10403079113164d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66016414"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66692910"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Azure Machine Learning service を使用してモデルをデプロイする
 
@@ -97,7 +97,7 @@ Web サービスとして Azure クラウドに、または IoT Edge デバイ�
 | [ローカル Web サービス](#local) | テスト/デバッグ | 制限付きのテストとトラブルシューティングに最適。
 | [Azure Kubernetes Service (AKS)](#aks) | リアルタイムの推論 | 高スケールの運用デプロイに適しています。 自動スケール、および高速な応答時間を実現します。 |
 | [Azure Container Instances (ACI)](#aci) | テスト | CPU ベースの小規模なワークロードに最適。 |
-| [Azure Machine Learning コンピューティング](how-to-run-batch-predictions.md) | (プレビュー) バッチ推論 | サーバーレス コンピューティングでバッチ スコアリングを実行します。 優先順位が中程度または低い VM をサポートします。 |
+| [Azure Machine Learning コンピューティング](how-to-run-batch-predictions.md) | バッチ推論 | サーバーレス コンピューティングでバッチ推論を実行します。 優先順位が中程度または低い VM をサポートします。 |
 | [Azure IoT Edge](#iotedge) | (プレビュー) IoT モジュール | IoT デバイスに ML モデルをデプロイし、サービスを提供します。 |
 
 
@@ -130,8 +130,9 @@ Web サービスのスキーマを自動生成するには、定義された型�
 スキーマ生成を使用するには、Conda 環境ファイルに `inference-schema` パッケージを追加します。 エントリ スクリプトで numpy というパラメーターの型が使用されているため、次の例では `[numpy-support]` が使用されています。 
 
 #### <a name="example-dependencies-file"></a>依存関係ファイルの例
-次は、推論のための Conda 依存関係ファイルの例です。
-```python
+次の YAML は、推論のための Conda 依存関係ファイルの例です。
+
+```YAML
 name: project_environment
 dependencies:
   - python=3.6.2
@@ -186,6 +187,48 @@ def run(data):
         return error
 ```
 
+#### <a name="example-script-with-dictionary-input-support-consumption-from-power-bi"></a>ディクショナリ入力を使用したスクリプト例 (Power BI からの従量課金のサポート)
+
+次の例では、Dataframe を使用して、<キー: 値> ディクショナリとして入力データを定義する方法を示しています。 この方法は、Power BI からのデプロイされた Web サービスの使用でサポートされています ([Power BI から Web サービスを使用する方法について](https://docs.microsoft.com/en-us/power-bi/service-machine-learning-integration))。
+
+```python
+import json
+import pickle
+import numpy as np
+import pandas as pd
+import azureml.train.automl
+from sklearn.externals import joblib
+from azureml.core.model import Model
+
+from inference_schema.schema_decorators import input_schema, output_schema
+from inference_schema.parameter_types.numpy_parameter_type import NumpyParameterType
+from inference_schema.parameter_types.pandas_parameter_type import PandasParameterType
+
+def init():
+    global model
+    model_path = Model.get_model_path('model_name')   # replace model_name with your actual model name, if needed
+    # deserialize the model file back into a sklearn model
+    model = joblib.load(model_path)
+
+input_sample = pd.DataFrame(data=[{
+              "input_name_1": 5.1,         # This is a decimal type sample. Use the data type that reflects this column in your data
+              "input_name_2": "value2",    # This is a string type sample. Use the data type that reflects this column in your data
+              "input_name_3": 3            # This is a integer type sample. Use the data type that reflects this column in your data
+            }])
+
+output_sample = np.array([0])              # This is a integer type sample. Use the data type that reflects the expected result
+
+@input_schema('data', PandasParameterType(input_sample))
+@output_schema(NumpyParameterType(output_sample))
+def run(data):
+    try:
+        result = model.predict(data)
+        # you can return any datatype as long as it is JSON-serializable
+        return result.tolist()
+    except Exception as e:
+        error = str(e)
+        return error
+```
 他にもスクリプトの例が必要であれば、次のサンプルをご覧ください。
 
 * Pytorch: [https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-pytorch](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-pytorch)
@@ -236,9 +279,6 @@ InferenceConfig 機能の詳細については、「[詳細な構成設定](#adv
 
 ローカルにデプロイするには、お使いのローカル コンピューターに **Docker がインストールされている**必要があります。
 
-このセクションの例では [deploy_from_image](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#deploy-from-model-workspace--name--models--image-config--deployment-config-none--deployment-target-none-) を使用します。これには、デプロイを実行する前にモデルとイメージを登録する必要があります。 その他のデプロイ方法の詳細については、「[deploy](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#deploy-workspace--name--model-paths--image-config--deployment-config-none--deployment-target-none-)」および「[deploy_from_model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#deploy-from-model-workspace--name--models--image-config--deployment-config-none--deployment-target-none-)」を参照してください。
-
-
 + **SDK を使用する**
 
   ```python
@@ -284,7 +324,7 @@ ACI の利用可能なクォータとリージョンを確認するには、[Azu
 
 詳細については、[AciWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice?view=azure-ml-py) クラスと [Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice?view=azure-ml-py) クラスのリファレンス ドキュメントを参照してください。
 
-### <a id="aks"></a>Azure Kubernetes Service (PRODUCTION)
+### <a id="aks"></a>Azure Kubernetes Service (DEVTEST & PRODUCTION)
 
 既存の AKS クラスターを使用するか、Azure Machine Learning SDK、CLI、または Azure portal を使用して新しいクラスターを作成できます。
 
@@ -296,6 +336,9 @@ AKS クラスターが既にアタッチされている場合は、それにデ�
 
   ```python
   aks_target = AksCompute(ws,"myaks")
+  # If deploying to a cluster configured for dev/test, ensure that it was created with enough
+  # cores and memory to handle this deployment configuration. Note that memory is also used by
+  # things such as dependencies and AML components.
   deployment_config = AksWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)
   service = Model.deploy(ws, "aksservice", [model], inference_config, deployment_config, aks_target)
   service.wait_for_deployment(show_output = True)
@@ -318,16 +361,23 @@ AKS デプロイおよびオートスケーリングの詳細情報について�
 #### 新しい AKS クラスターを作成する<a id="create-attach-aks"></a>
 **推定所要時間:** 約 5 分です。
 
-> [!IMPORTANT]
-> AKS クラスターの作成またはアタッチは、お使いのワークスペースでの 1 回限りのプロセスです。 複数のデプロイでこのクラスターを再利用できます。 クラスターまたはそれを含むリソース グループを削除した場合、次回デプロイする必要があるときに、新しいクラスターを作成する必要があります。
+AKS クラスターの作成またはアタッチは、お使いのワークスペースでの 1 回限りのプロセスです。 複数のデプロイでこのクラスターを再利用できます。 クラスターまたはそれを含むリソース グループを削除した場合、次回デプロイする必要があるときに、新しいクラスターを作成する必要があります。 複数の AKS クラスターをワークスペースに接続できます。
 
-`autoscale_target_utilization`、`autoscale_max_replicas`、および `autoscale_min_replicas` の設定の詳細については、[AksWebservice.deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py#deploy-configuration-autoscale-enabled-none--autoscale-min-replicas-none--autoscale-max-replicas-none--autoscale-refresh-seconds-none--autoscale-target-utilization-none--collect-model-data-none--auth-enabled-none--cpu-cores-none--memory-gb-none--enable-app-insights-none--scoring-timeout-ms-none--replica-max-concurrent-requests-none--max-request-wait-time-none--num-replicas-none--primary-key-none--secondary-key-none--tags-none--properties-none--description-none-) リファレンスを参照してください。
+開発、検証、およびテスト用に AKS クラスターを作成する場合、[`provisioning_configuration()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py) を使用するときに `cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST` を設定します。 この設定で作成されたクラスターにはノードは 1 つだけになります。
+
+> [!IMPORTANT]
+> `cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST` を設定すると、運用トラフィックの処理には適していない AKS クラスターが作成されます。 推論時間は、実稼働用に作成されたクラスターよりも長くなることがあります。 フォールト トレランスも開発/テスト クラスターでは保証されません。
+>
+> 開発/テスト用に作成されたクラスターでは、少なくとも 2 つの仮想 CPU を使用することをお勧めします。
+
 次の例では、新しい Azure Kubernetes Service クラスターを作成する方法が紹介されています。
 
 ```python
 from azureml.core.compute import AksCompute, ComputeTarget
 
-# Use the default configuration (you can also provide parameters to customize this)
+# Use the default configuration (you can also provide parameters to customize this).
+# For example, to create a dev/test cluster, use:
+# prov_config = AksCompute.provisioning_configuration(cluster_purpose = AksComputee.ClusterPurpose.DEV_TEST)
 prov_config = AksCompute.provisioning_configuration()
 
 aks_name = 'myaks'
@@ -344,6 +394,7 @@ Azure Machine Learning SDK の外部で AKS クラスターを作成する方法
 * [AKS クラスターの作成](https://docs.microsoft.com/cli/azure/aks?toc=%2Fazure%2Faks%2FTOC.json&bc=%2Fazure%2Fbread%2Ftoc.json&view=azure-cli-latest#az-aks-create)
 * [AKS クラスターの作成 (ポータル)](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough-portal?view=azure-cli-latest)
 
+`cluster_purpose` パラメーターの詳細については、[AksCompute.ClusterPurpose](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.akscompute.clusterpurpose?view=azure-ml-py) のリファレンスを参照してください。
 
 > [!IMPORTANT]
 > [`provisioning_configuration()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py) で、agent_count と vm_size にカスタム値を使用する場合は、agent_count と vm_size の積が 12 仮想 CPU 以上である必要があります。 たとえば、vm_size に "Standard_D3_v2" (4 仮想 CPU) を使用する場合、agent_count は 3 以上にする必要があります。
@@ -352,7 +403,16 @@ Azure Machine Learning SDK の外部で AKS クラスターを作成する方法
 
 #### <a name="attach-an-existing-aks-cluster"></a>既存の AKS クラスターをアタッチする
 
-お客様の Azure サブスクリプションに既に AKS クラスターがあり、そのバージョンが 1.12.## であり、12 以上の仮想 CPU を備えている場合は、それを使用してお客様のイメージをデプロイできます。 次のコードは、既存の AKS 1.12.## クラスターをお客様のワークスペースにアタッチする方法を示しています。
+お客様の Azure サブスクリプションに既に AKS クラスターがあり、そのバージョンが 1.12.## である場合は、それを使用してお客様のイメージをデプロイできます。
+
+> [!WARNING]
+> AKS クラスターをワークスペースに接続するときに、`cluster_purpose` パラメーターを設定することにより、クラスターを使用する方法を定義できます。
+>
+> `cluster_purpose` パラメーターを設定しない場合、または `cluster_purpose = AksCompute.ClusterPurpose.FAST_PROD` を設定した場合は、クラスターでは最低 12 の仮想 CPU が利用できる必要があります。
+>
+> `cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST` を設定した場合、クラスターには 12 の仮想 CPU は必要ありません。 ただし、開発/テスト用に構成されたクラスターは、運用レベルのトラフィックには適しておらず、推論時間が増えることがあります。
+
+次のコードは、既存の AKS 1.12.## クラスターをお客様のワークスペースにアタッチする方法を示しています。
 
 ```python
 from azureml.core.compute import AksCompute, ComputeTarget
@@ -360,11 +420,18 @@ from azureml.core.compute import AksCompute, ComputeTarget
 resource_group = 'myresourcegroup'
 cluster_name = 'mycluster'
 
-# Attach the cluster to your workgroup
+# Attach the cluster to your workgroup. If the cluster has less than 12 virtual CPUs, use the following instead:
+# attach_config = AksCompute.attach_configuration(resource_group = resource_group,
+#                                         cluster_name = cluster_name,
+#                                         cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST)
 attach_config = AksCompute.attach_configuration(resource_group = resource_group,
                                          cluster_name = cluster_name)
 aks_target = ComputeTarget.attach(ws, 'mycompute', attach_config)
 ```
+
+`attack_configuration()` の詳細については、[AksCompute.attach_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-) のリファレンスを参照してください。
+
+`cluster_purpose` パラメーターの詳細については、[AksCompute.ClusterPurpose](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.akscompute.clusterpurpose?view=azure-ml-py) のリファレンスを参照してください。
 
 ## <a name="consume-web-services"></a>Web サービスを使用する
 
@@ -398,7 +465,7 @@ print(response.json())
 詳細については、[Web サービスを使用するクライアント アプリケーションの作成](how-to-consume-web-service.md)に関するページを参照してください。
 
 
-### <a id="azuremlcompute"></a> バッチの使用量
+### <a id="azuremlcompute"></a> バッチ推論
 Azure Machine Learning のコンピューティング ターゲットは、Azure Machine Learning service によって作成され、管理されます。 これは Azure Machine Learning パイプラインからのバッチ予測に使用できます。
 
 Azure Machine Learning コンピューティングを使用したバッチ推論のチュートリアルについては、[バッチ予測を実行する方法](how-to-run-batch-predictions.md)に関する記事を参照してください。

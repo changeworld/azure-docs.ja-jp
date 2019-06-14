@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/16/2019
 ms.author: diberry
-ms.openlocfilehash: bdf2d87e558726937fa4221a0d95179216c66051
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: a148c849d0935978f049e01dd254c4c18800ee3b
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859202"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66496984"
 ---
 # <a name="convert-data-format-of-utterances"></a>発話のデータ形式を変換する
 LUIS では、Cognitive Services の音声サービスを使用して、予測の前に音声の発話からテキストの発話に発話を変換します。 
@@ -36,5 +36,5 @@ LUIS の音声テキスト変換を使用すると、音声の発話をエンド
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [音声テキスト変換の使用](luis-tutorial-speech-to-intent.md)
+> [データの抽出](luis-concept-data-extraction.md)
 

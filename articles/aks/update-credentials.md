@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 01/30/2019
+ms.date: 05/31/2019
 ms.author: iainfou
-ms.openlocfilehash: d880615d0d132403c935fe39e8478d7b3fc48dbe
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 189bcf2ddc7d301c8100f74e51374abd217a144f
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55490075"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475491"
 ---
 # <a name="update-or-rotate-the-credentials-for-a-service-principal-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) のサービス プリンシパル資格情報の更新またはローテーション
 
@@ -20,7 +20,7 @@ ms.locfileid: "55490075"
 
 ## <a name="before-you-begin"></a>開始する前に
 
-Azure CLI バージョン 2.0.56 以降がインストールされて構成されている必要があります。 バージョンを確認するには、 `az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「 [Azure CLI のインストール][install-azure-cli]」を参照してください。
+Azure CLI バージョン 2.0.65 以降がインストールされて構成されている必要があります。 バージョンを確認するには、 `az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「 [Azure CLI のインストール][install-azure-cli]」を参照してください。
 
 ## <a name="choose-to-update-or-create-a-service-principal"></a>サービス プリンシパルの更新または作成の選択
 
@@ -33,10 +33,11 @@ AKS クラスターの資格情報を更新する場合、以下の方法から�
 
 ### <a name="get-the-service-principal-id"></a>サービス プリンシパル ID の取得
 
-既存のサービス プリンシパル資格情報を更新するには、[az aks show][az-aks-show] コマンドを使用して、クラスターのサービス プリンシパル ID を取得します。 以下の例は、*myResourceGroup* リソース グループにある *myAKSCluster* という名前のクラスターの ID を取得します。 サービス プリンシパル ID は、追加コマンドで使用するための変数として設定されます。
+既存のサービス プリンシパル資格情報を更新するには、[az aks show][az-aks-show] コマンドを使用して、クラスターのサービス プリンシパル ID を取得します。 以下の例は、*myResourceGroup* リソース グループにある *myAKSCluster* という名前のクラスターの ID を取得します。 サービス プリンシパル ID は、追加コマンドで使用するための *SP_ID* という名前の変数として設定されます。
 
 ```azurecli-interactive
-SP_ID=$(az aks show -g myResourceGroup -n myAKSCluster --query servicePrincipalProfile.clientId -o tsv)
+SP_ID=$(az aks show --resource-group myResourceGroup --name myAKSCluster \
+    --query servicePrincipalProfile.clientId -o tsv)
 ```
 
 ### <a name="update-the-service-principal-credentials"></a>サービス プリンシパル資格情報の更新

@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5524576ef21830ae13526dad2d8ac8a1d0864cf1
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 907cb598d708bfa26f53d2e43fef5456258c21b1
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956875"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393044"
 ---
 # <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy-preview"></a>アプリケーション プロキシ (プレビュー) を使用したオンプレミスのアプリケーションに対する SAML シングル サインオン
 
@@ -50,14 +50,14 @@ SAML 認証でセキュリティ保護されているオンプレミスのアプ
 1. シングル サインオンの方法として、 **[SAML]** を選択します。
 1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** のデータを編集し、「[基本的な SAML 構成を入力する](configure-single-sign-on-non-gallery-applications.md#saml-based-single-sign-on)」の手順に従って、アプリケーションに対して SAML に基づく認証を構成します。
 
-   * **応答 URL** が、Application Proxy を介して発行したオンプレミス アプリケーションの**外部 URL** と一致するか、その下のパスであることを確認します。 
-   * アプリケーションで SAML 構成に別の**応答 URL** が必要な場合は、これを一覧の**追加の** URL として追加し、その横にあるチェックボックスをオンにして、IDP によって開始された SAML 応答を送信するプライマリ**応答 URL** として指定します。
-   * SP によって開始されたフローの場合、アプリケーションで認証トークンを受け取るために使用する適切な**応答 URL** または Assertion Consumer Service URL も指定されていることを確認します。
+   * **応答 URL** が、Application Proxy を介して発行したオンプレミス アプリケーションの**外部 URL** と一致するか、**外部 URL** の下のパスであることを確認します。
+   * アプリケーションで SAML 構成に別の**応答 URL** が必要になる、IDP によって開始されたフローの場合、これを一覧の**追加の** URL として追加し、その横にあるチェックボックスをオンにして、プライマリ**応答 URL** として指定します。
+   * SP によって開始されたフローの場合、バックエンド アプリケーションで認証トークンを受け取るために使用する適切な**応答 URL** または Assertion Consumer Service URL が指定されていることを確認します。
 
      ![基本的な SAML 構成データを入力する](./media/application-proxy-configure-single-sign-on-on-premises-apps/basic-saml-configuration.png)
 
     > [!NOTE]
-    > バックエンド アプリケーションで**応答 URL** が内部 URL である必要がある場合は、アプリによるセキュリティで保護されたサインイン拡張機能を、ユーザーのデバイスにインストールする必要があります。 この拡張機能では、適切なアプリケーション プロキシ サービスに自動的にリダイレクトされます。 拡張機能のインストールについては、「[マイ アプリによるセキュリティで保護されたサインイン拡張機能](../user-help/my-apps-portal-end-user-access.md#download-and-install-the-my-apps-secure-sign-in-extension)」をご覧ください。
+    > バックエンド アプリケーションで**応答 URL** が内部 URL である必要がある場合は、[カスタム ドメイン](application-proxy-configure-custom-domain.md)を使用して内部 URL と外部 URL を一致させるか、アプリによるセキュリティで保護されたサインイン拡張機能を、ユーザーのデバイスにインストールする必要があります。 この拡張機能では、適切なアプリケーション プロキシ サービスに自動的にリダイレクトされます。 拡張機能のインストールについては、「[マイ アプリによるセキュリティで保護されたサインイン拡張機能](../user-help/my-apps-portal-end-user-access.md#download-and-install-the-my-apps-secure-sign-in-extension)」をご覧ください。
 
 ## <a name="test-your-app"></a>アプリをテストする
 

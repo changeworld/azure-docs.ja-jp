@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/27/2018
 ms.author: kumud
-ms.openlocfilehash: da8433e6c03aec5c5b2ff5d290065804816ac724
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cb01aa84201c1e0727414215974a343e8cf3b724
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66122326"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475891"
 ---
 # <a name="create-an-internal-load-balancer-to-load-balance-vms-using-azure-cli"></a>Azure CLI を使用して VM の負荷を分散する内部ロード バランサーを作成する
 
@@ -60,7 +60,7 @@ CLI をローカルにインストールして使用する場合、このチュ�
 
 ### <a name="create-the-load-balancer"></a>ロード バランサーを作成する
 
-[az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) を使用して、**myLoadBalancer** という名前のパブリック Basic Load Balancer を作成します。これには、**myFrontEnd** という名前のフロントエンド IP 構成と、プライベート IP アドレス **10.0.0.7 に関連付けられている **myBackEndPool** という名前のバックエンド プールを含めます。
+[az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) を使用して、**myLoadBalancer** という名前の内部ロード バランサーを作成します。これには、**myFrontEnd** という名前のフロントエンド IP 構成と、プライベート IP アドレス **10.0.0.7 に関連付けられている **myBackEndPool** という名前のバックエンド プールを含めます。
 
 ```azurecli-interactive
   az network lb create \

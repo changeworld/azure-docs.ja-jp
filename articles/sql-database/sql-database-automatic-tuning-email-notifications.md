@@ -11,13 +11,13 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 03/12/2019
-ms.openlocfilehash: 2af8ef7d29d1ac506ddca654544bc938758aa0d8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 06/03/2019
+ms.openlocfilehash: 0050745ea9d624adb6b7a28d5db91924d1c54b0a
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66149830"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479451"
 ---
 # <a name="email-notifications-for-automatic-tuning"></a>自動チューニングの電子メール通知
 
@@ -46,7 +46,7 @@ Azure Automation を使用するには、まず Automation アカウントを作
 
 ![Azure Automation の追加](./media/sql-database-automatic-tuning-email-notifications/howto-email-01.png)
 
-- [Automation アカウントの作成] が表示されたら、**[作成]** をクリックします。
+- [Automation アカウントの作成] が表示されたら、 **[作成]** をクリックします。
 - 必要な情報を設定します。この Automation アカウントの名前を入力し、PowerShell スクリプトの実行に使用する Azure サブスクリプション ID と Azure リソースを選択します。
 - **[Azure 実行アカウントの作成]** オプションでは **[はい]** を選択し、Azure Automation を利用して PowerShell スクリプトを実行するためのアカウントの種類を構成します。 アカウントの種類について詳しくは、[実行アカウント](https://docs.microsoft.com/azure/automation/automation-create-runas-account)に関する記事をご覧ください。
 - **[作成]** をクリックして、Automation アカウントの作成を完了します。
@@ -59,14 +59,9 @@ Azure Automation を使用するには、まず Automation アカウントを作
 
 ## <a name="update-azure-automation-modules"></a>Azure Automation モジュールを更新する
 
-自動チューニング推奨情報を取得する PowerShell スクリプトは、[Get-AzResource](https://docs.microsoft.com/powershell/module/az.Resources/Get-azResource) コマンドと [Get-AzSqlDatabaseRecommendedAction](https://docs.microsoft.com/powershell/module/az.Sql/Get-azSqlDatabaseRecommendedAction) コマンドを使用します。これらのコマンドのためには Azure モジュールをバージョン 4 以上に更新することが必要です。
+自動チューニング推奨情報を取得する PowerShell スクリプトは、Azure モジュール バージョン 4 以降が必要な [Get-AzResource](https://docs.microsoft.com/powershell/module/az.Resources/Get-azResource) および [Get-AzSqlDatabaseRecommendedAction](https://docs.microsoft.com/powershell/module/az.Sql/Get-azSqlDatabaseRecommendedAction) コマンドを使用します。
 
-次の手順に従って Azure PowerShell モジュールを更新します。
-
-- Automation アプリ ウィンドウにアクセスし、左側のメニューで **[モジュール]** を選択します (このメニュー項目は [共有リソース] の下にあるのでスクロール ダウンします)。
-- [モジュール] ウィンドウで、一番上の **[Azure モジュールの更新]** をクリックし、[Azure モジュールが更新されました。] が表示されるまで待機します。 このプロセスが完了するまでに数分かかることがあります。
-
-![Azure Automation モジュールを更新する](./media/sql-database-automatic-tuning-email-notifications/howto-email-02.png)
+- Azure モジュールに更新が必要な場合は、「[Azure Automation での Az モジュールのサポート](../automation/az-modules.md)」を参照してください。
 
 ## <a name="create-azure-automation-runbook"></a>Azure Automation Runbook を作成する
 
@@ -76,7 +71,7 @@ Azure Automation を使用するには、まず Automation アカウントを作
 
 - 前の手順で作成した Azure Automation アカウントにアクセスします。
 - Automation アカウントのウィンドウが表示されたら、左側の **[Runbook]** メニュー項目をクリックして、PowerShell スクリプトを含む新しい Azure Automation Runbook を作成します。 Automation Runbook の作成について詳しくは、「[新しい Runbook の作成](../automation/manage-runbooks.md#create-a-runbook)」をご覧ください。
-- 新しい Runbook を追加するには、**[+ Runbook の追加]** メニュー オプションをクリックしてから、**[簡易作成 – 新しい Runbook の作成]** をクリックします。
+- 新しい Runbook を追加するには、 **[+ Runbook の追加]** メニュー オプションをクリックしてから、 **[簡易作成 – 新しい Runbook の作成]** をクリックします。
 - [Runbook] ウィンドウで、Runbook の名前 (この例のためには 「**AutomaticTuningEmailAutomation**」を使用) を入力し、Runbook の種類として **PowerShell** を選択し、この Runbook の目的を示す説明を入力します。
 - **[作成]** ボタンをクリックすると、新しい Runbook の作成が完了します。
 
@@ -176,7 +171,7 @@ $table = $results | Format-List
 Write-Output $table
 ```
 
-右上隅の **[保存]** ボタンをクリックして、スクリプトを保存します。 スクリプトに問題がなければ、**[公開]** ボタンをクリックしてこの Runbook を公開します。
+右上隅の **[保存]** ボタンをクリックして、スクリプトを保存します。 スクリプトに問題がなければ、 **[公開]** ボタンをクリックしてこの Runbook を公開します。
 
 Runbook のメイン ウィンドウで **[開始]** ボタンをクリックすると、スクリプトを**テスト**できます。 **[出力]** をクリックすると、実行したスクリプトの結果が表示されます。 この出力が電子メールの内容になります。 スクリプトのサンプル出力は、次のスクリーンショットで確認できます。
 
@@ -210,7 +205,7 @@ Microsoft Flow の機能について詳しくは、「[Microsoft Flow を使っ�
 
    - **[+ 新しいステップ]** を選択し、繰り返しフローのウィンドウで **[アクションの追加]** を順に選択します。
    - 検索フィールドに「**automation**」と入力し、検索結果から **[Azure Automation – ジョブの作成]** を選択します。
-   - [ジョブの作成] ウィンドウで、ジョブのプロパティを構成します。 この構成では、**[Automation アカウント] ウィンドウ**で**前に記録した** Azure サブスクリプション ID、リソース グループ、Automation アカウントの詳細が必要になります。 このセクションで指定できるオプションについて詳しくは、[Azure Automation でのジョブの作成](https://docs.microsoft.com/connectors/azureautomation/#create-job)に関する記事をご覧ください。
+   - [ジョブの作成] ウィンドウで、ジョブのプロパティを構成します。 この構成では、 **[Automation アカウント] ウィンドウ**で**前に記録した** Azure サブスクリプション ID、リソース グループ、Automation アカウントの詳細が必要になります。 このセクションで指定できるオプションについて詳しくは、[Azure Automation でのジョブの作成](https://docs.microsoft.com/connectors/azureautomation/#create-job)に関する記事をご覧ください。
    - **[フローの保存]** をクリックすると、このアクションの作成が完了します。
 
 2. 実行した PowerShell スクリプトの出力を取得するアクションを作成します。
@@ -227,7 +222,7 @@ Microsoft Flow の機能について詳しくは、「[Microsoft Flow を使っ�
    - 検索フィールドに「**電子メールの送信**」と入力し、検索結果から **[Office 365 Outlook – 電子メールの送信]** を選択します。
    - **[To]\(送信先\)** フィールドに、通知電子メールを送信する必要がある電子メール アドレスを入力します。
    - **[件名]** フィールドに、電子メールの件名、たとえば「自動チューニング推奨情報の電子メール通知」を入力します。
-   - **[本文]** フィールドの内側をクリックして、**[動的なコンテンツ]** メニューを表示します。 このメニューの **[Get job output]\(ジョブ出力の取得\)** で **[コンテンツ]** を選択します。
+   - **[本文]** フィールドの内側をクリックして、 **[動的なコンテンツ]** メニューを表示します。 このメニューの **[Get job output]\(ジョブ出力の取得\)** で **[コンテンツ]** を選択します。
    - **[フローの保存]** をクリックすると、このアクションの作成が完了します。
 
 > [!TIP]

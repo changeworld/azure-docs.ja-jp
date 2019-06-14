@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: bfe28f3ff994d518cb744233e88a6f04b5771a83
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: ed3301eb0e723e05e2a642ffea2f1609032553b4
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65967516"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66730164"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---visual-studio-code"></a>リモート監視ソリューション アクセラレータをローカルでデプロイする - Visual Studio Code
 
@@ -62,13 +62,14 @@ dotnet build -c Release
 次の手順では、Visual Studio Code のリモート監視マイクロサービスを実行する方法を示します。
 
 1. Visual Studio Code を起動します。
-1. VS Code でローカル コピーから **azure-iot-pcs-remote-monitoring-dotnet** モジュールを開きます。
-1. scripts\local\launch\idesettings\vscode から **launch.json** ファイルと **tasks.json** ファイルをコピーします。\. 新しいフォルダー **azure-iot-pcs-remote-monitoring-dotnet\.vscode** を作成して、そこにファイルを貼り付けます。
-1. VS Code で [デバッグ] パネルを開き、 **[Run all microservices]\(すべてのマイクロサービスを実行\)** 構成を実行します。 この構成は、デバイス シミュレーション マイクロサービスを Docker で実行し、他のマイクロサービスをデバッガーで実行します。
+1. VS Code で、**azure-iot-pcs-remote-monitoring-dotnet** フォルダーを開きます。
+1. **.vscode** という新しいフォルダーを **azure-iot-pcs-remote-monitoring-dotnet** フォルダー内に作成します。
+1. services\scripts\local\launch\idesettings\vscode から、作成したばかりの **.vscode** フォルダーに、**launch.json** ファイルと **tasks.json** ファイルをコピーします。
+1. VS Code で **[デバッグ] パネル**を開き、 **[Run all microservices]** (すべてのマイクロサービスを実行) 構成を実行します。 この構成は、デバイス シミュレーション マイクロサービスを Docker で実行し、他のマイクロサービスをデバッガーで実行します。
 
-たとえば**デバッグ コンソール**では、**Auth** サービスの出力が次のように表示されます。
+デバッグ コンソールでの **[Run All microservices]** (すべてのマイクロサービスを実行) を実行した出力は次のようになります。
 
-[![ローカル Auth サービスのデプロイ](./media/deploy-locally-vscode/auth-debug-results-inline.png)](./media/deploy-locally-vscode/auth-debug-results-expanded.png#lightbox)
+[![ローカル マイクロサービスのデプロイ](./media/deploy-locally-vscode/auth-debug-results-inline.png)](./media/deploy-locally-vscode/auth-debug-results-expanded.png#lightbox)
 
 ### <a name="run-the-web-ui"></a>Web UI を実行する
 

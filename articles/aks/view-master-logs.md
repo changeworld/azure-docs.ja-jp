@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: iainfou
-ms.openlocfilehash: 77908e24a19a48bf9b84d5d5b664bf0443159118
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 256101cce5588f56a8094a7a9a98e5fe69e6ec73
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57537764"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66497244"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での Kubernetes マスター ノード ログの有効化とレビュー
 
@@ -29,12 +29,11 @@ Azure Kubernetes Service (AKS) では、*kube-apiserver* や *kube-controller-ma
 Azure Monitor ログの有効化と管理は、Azure portal で行います。 AKS クラスターの Kubernetes マスター コンポーネントのログ収集を有効にするには、Web ブラウザーで Azure Portal を開き、次の手順を実行します。
 
 1. AKS クラスターのリソース グループを選択します (*myResourceGroup* など)。 個別の AKS クラスター リソースを含んだリソース グループは選択しないでください (*MC_myResourceGroup_myAKSCluster_eastus* など)。
-1. 左側で、**[診断設定]** を選択します。
-1. AKS クラスター (*myAKSCluster* など) を選択し、**[診断をオンにする]** を選択します。
-1. 名前 (*myAKSClusterLogs* など) を入力し、**[Send to Log Analytics workspace]\(Log Analytics ワークスペースに送信\)** オプションを選択します。
-    * Log Analytics ワークスペースの *[構成]* を選択し、既存のワークスペースまたは **[新しいワークスペースの作成]** を選択します。
-    * ワークスペースを作成する必要がある場合は、名前、リソース グループ、および場所を指定します。
-1. 使用可能なログの一覧から、有効にするログを選択します。 既定で、*kube-apiserver*、*kube-controller-manager*、および *kube-scheduler* ログが有効になっています。 *kube-audit* および *cluster-autoscaler* などの追加のログを有効にすることが可能です。 Log Analytics ワークスペースが有効になった後、構成画面に戻り、収集されるログを変更することもできます。
+1. 左側で、 **[診断設定]** を選択します。
+1. AKS クラスター (*myAKSCluster* など) を選択し、 **[診断設定を追加する]** を選択します。
+1. 名前 (*myAKSClusterLogs* など) を入力し、 **[Log Analytics への送信]** オプションを選択します。
+1. 既存のワークスペースを選択するか、新しいワークスペースを作成します。 ワークスペースを作成する場合は、ワークスペースの名前、リソース グループ、および場所を指定します。
+1. 使用可能なログの一覧から、有効にするログを選択します。 一般的なログには、*kube-apiserver*、*kube-controller-manager*、および *kube-scheduler* が含まれます。 *kube-audit* および *cluster-autoscaler* などの追加のログを有効にすることが可能です。 Log Analytics ワークスペースが有効になった後、構成画面に戻り、収集されるログを変更することもできます。
 1. 準備ができたら **[保存]** を選択し、選択したログの収集を有効にします。
 
 > [!NOTE]
@@ -50,7 +49,7 @@ Azure Monitor ログの有効化と管理は、Azure portal で行います。 A
 >
 > `az provider register --namespace Microsoft.ContainerService`
 
-次に示すポータルのスクリーン ショットは、*[診断設定]* ウィンドウと、Log Analytics ワークスペースを作成するオプションの例です。
+次に示すポータルのスクリーン ショットは、 *[診断設定]* ウィンドウの例です。
 
 ![AKS クラスターの Azure Monitor ログに使用する Log Analytics ワークスペースを有効にする](media/view-master-logs/enable-oms-log-analytics.png)
 
@@ -92,7 +91,7 @@ pod/nginx created
 
 ![AKS クラスターの Log Analytics ワークスペースを選択する](media/view-master-logs/select-log-analytics-workspace.png)
 
-左側で、**[ログ]** を選択します。 *kube-apiserver* を表示するには、テキスト ボックスに次のクエリを入力します。
+左側で、 **[ログ]** を選択します。 *kube-apiserver* を表示するには、テキスト ボックスに次のクエリを入力します。
 
 ```
 AzureDiagnostics

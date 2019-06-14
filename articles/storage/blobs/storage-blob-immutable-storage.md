@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 05/06/2019
+ms.date: 06/01/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: 60cf37e5f6375d08e73241f6e357ac39ea665e9b
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: d58c596421cec2e69210dd39a5d4a9708c154b44
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65192530"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66492754"
 ---
 # <a name="store-business-critical-data-in-azure-blob-storage"></a>ビジネスに不可欠なデータを Azure Blob Storage 内に保管する
 
@@ -34,9 +34,9 @@ Azure Blob Storage の不変ストレージを使用すると、ユーザーは�
 
 不変ストレージは以下のサポートがあります。
 
-- **[時間ベースのリテンション ポリシーのサポート](#time-based-retention)**:ユーザーは、指定した期間、データを保存するポリシーを設定できます。 時間ベースのリテンション ポリシーを設定すると、BLOB の作成と読み取りは可能ですが、変更または削除はできません。 保持期間の期限が切れた後は BLOB を削除できますが、上書きはできません。
+- **[時間ベースのリテンション ポリシーのサポート](#time-based-retention)** :ユーザーは、指定した期間、データを保存するポリシーを設定できます。 時間ベースのリテンション ポリシーを設定すると、BLOB の作成と読み取りは可能ですが、変更または削除はできません。 保持期間の期限が切れた後は BLOB を削除できますが、上書きはできません。
 
-- **[訴訟ホールド ポリシーのサポート](#legal-holds)**:保持間隔がわからない場合は、訴訟ホールドを設定することで、訴訟ホールドがクリアされるまでデータを不変状態で保存できます。  訴訟ホールド ポリシーを設定すると、BLOB の作成と読み取りは可能ですが、変更または削除はできません。 各訴訟ホールドは、識別子文字列として使用されるユーザー定義の英数字のタグ (事件 ID や事件名など) に関連付けられています。 
+- **[訴訟ホールド ポリシーのサポート](#legal-holds)** :保持間隔がわからない場合は、訴訟ホールドを設定することで、訴訟ホールドがクリアされるまでデータを不変状態で保存できます。  訴訟ホールド ポリシーを設定すると、BLOB の作成と読み取りは可能ですが、変更または削除はできません。 各訴訟ホールドは、識別子文字列として使用されるユーザー定義の英数字のタグ (事件 ID や事件名など) に関連付けられています。 
 
 - **すべての BLOB 層のサポート:** WORM ポリシーは Azure Blob Storage 層から独立しており、ホット、クール、アーカイブのすべての層に適用されます。 ユーザーは、データの不変性を維持しながら、ワークロードに対応する最もコストが最適化された層にデータを移行できます。
 
@@ -53,7 +53,7 @@ Azure Blob Storage の不変ストレージでは、時間ベースのリテン�
 ### <a name="time-based-retention"></a>時間ベースのリテンション
 
 > [!IMPORTANT]
-> SEC 17a-4(f) や他の規制を順守するために BLOB を不変 (書き込みおよび削除禁止) 状態にするには、時間ベースのリテンション ポリシーを"*ロック*"する必要があります。 適切な時間内 (通常は 24 時間以内) にポリシーをロックすることをお勧めします。 短期間の機能評価以外の目的で、"*ロック解除*"状態を使用しないことをお勧めします。
+> SEC 17a-4(f) や他の規制を順守するために BLOB を準拠した不変 (書き込みおよび削除禁止) 状態にするには、時間ベースのリテンション ポリシーを*ロック*する必要があります。 適切な期間 (通常は 24 時間未満) ポリシーをロックすることをお勧めします。 適用された時間ベースのリテンション ポリシーの初期状態の*ロックが解除*され、機能をテストし、ポリシーに変更を加えてから、それをロックすることができます。 *ロック解除*状態では不変保護が提供されますが、短期間の機能評価以外の目的で、*ロック解除*状態を使用しないことをお勧めします。 
 
 時間ベースのリテンション ポリシーをコンテナーに適用すると、"*有効な*"リテンション期間中、コンテナー内のすべての BLOB が不変状態のままになります。 既存の BLOB の有効な保有期間は、BLOB の変更時刻とユーザーが指定した保有期間の差になります。
 
@@ -65,6 +65,8 @@ Azure Blob Storage の不変ストレージでは、時間ベースのリテン�
 > そのコンテナー内の既存の BLOB である _testblob1_ は、1 年前に作成されました。 _testblob1_ の有効なリテンション期間は、4 年です。
 >
 > 新しい BLOB (_testblob2_) がコンテナーにアップロードされました。 この新しい BLOB の有効なリテンション期間は、5 年です。
+
+ロックされていない時間ベースのリテンション ポリシーは、機能テスト用にのみお勧めしており、SEC 17a-4(f) とその他の規制コンプライアンスに準拠するためには、ポリシーがロックされている必要があります。 時間ベースのリテンション ポリシーがロックされると、ポリシーを削除できなくなり、有効リテンション期間への最大 5 回の延長が許可されます。 時間ベースのリテンション ポリシーを設定およびロックする方法の詳細については、「[使用の開始](#getting-started)」セクションを参照してください。
 
 ### <a name="legal-holds"></a>訴訟ホールド
 
@@ -110,7 +112,7 @@ Azure Blob Storage の不変ストレージでは、時間ベースのリテン�
 
 1. 新しいコンテナーを作成するか、既存のコンテナーを選択して、不変状態に維持する必要がある BLOB を格納します。
  コンテナーは、GPv2 ストレージ アカウントまたは BLOB ストレージ アカウントに存在する必要があります。
-2. [コンテナーの設定] 内にある **[アクセス ポリシー]** を選択します。 次に、**[Immutable blob storage]\(不変 BLOB ストレージ\)** の下で **[+ Add policy]\(+ポリシーの追加\)** を選択します。
+2. [コンテナーの設定] 内にある **[アクセス ポリシー]** を選択します。 次に、 **[Immutable blob storage]\(不変 BLOB ストレージ\)** の下で **[+ Add policy]\(+ポリシーの追加\)** を選択します。
 
     ![ポータルでコンテナーの設定](media/storage-blob-immutable-storage/portal-image-1.png)
 
@@ -124,7 +126,7 @@ Azure Blob Storage の不変ストレージでは、時間ベースのリテン�
 
     ポリシーの初期状態のロックが解除されて、ロックする前に機能をテストし、ポリシーに変更を加えることができます。 ポリシーのロックは、SEC 17a-4 などの規制に準拠するために必要です。
 
-5. ポリシーをロックします。 省略記号 (**...**) を右クリックすると、追加のアクションと共に次のメニューが表示されます。
+5. ポリシーをロックします。 省略記号 ( **...** ) を右クリックすると、追加のアクションと共に次のメニューが表示されます。
 
     ![メニュー上の [ポリシーのロック]](media/storage-blob-immutable-storage/portal-image-4-lock-policy.png)
 
@@ -132,7 +134,7 @@ Azure Blob Storage の不変ストレージでは、時間ベースのリテン�
 
     ![メニューで [ポリシーのロック] を確認する](media/storage-blob-immutable-storage/portal-image-5-lock-policy.png)
 
-7. 訴訟ホールドを有効にするには、**[+ Add Policy]\(+ ポリシーの追加\)** を選択します。 ドロップダウン メニューから **[訴訟ホールド]** を選択します。
+7. 訴訟ホールドを有効にするには、 **[+ Add Policy]\(+ ポリシーの追加\)** を選択します。 ドロップダウン メニューから **[訴訟ホールド]** を選択します。
 
     ![[ポリシーの種類] の下のメニューにある [訴訟ホールド]](media/storage-blob-immutable-storage/portal-image-legal-hold-selection-7.png)
 
@@ -169,7 +171,7 @@ Azure Blob Storage の不変ストレージは、次のクライアント ライ
 
 **WORM コンプライアンスについてのドキュメントは提供できますか?**
 
-はい。 コンプライアンスを文書化するために、Microsoft は、記録管理と情報ガバナンスに特化した大手の独立系評価会社である Cohasset Associates を保有して、金融サービス業界に固有の要件に対して Azure の BLOB 向け不変ストレージとそのコンプライアンスを評価しました。 Cohasset では、Azure の BLOB 向け不変ストレージが、時間ベースの BLOB を WORM 状態に維持するために使用する場合、CFTC Rule 1.31(c)-(d)、FINRA Rule 4511、および 17a-4 の関連ストレージ要件を満たしていることを実証しました。 この一連のルールは金融機関のレコード保有期間に対する最も規範的なガイダンスを世界中に示すものであるため、Microsoft ではこれらのルールを対象としました。 Cohasset レポートは [Microsoft Service Trust Center](https://aka.ms/AzureWormStorage) で入手できます。
+はい。 コンプライアンスを文書化するために、Microsoft は、記録管理と情報ガバナンスに特化した大手の独立系評価会社である Cohasset Associates を保有して、金融サービス業界に固有の要件に対して Azure の BLOB 向け不変ストレージとそのコンプライアンスを評価しました。 Cohasset では、Azure の BLOB 向け不変ストレージが、時間ベースの BLOB を WORM 状態に維持するために使用する場合、CFTC Rule 1.31(c)-(d)、FINRA Rule 4511、および 17a-4 の関連ストレージ要件を満たしていることを実証しました。 この一連のルールは金融機関のレコード保有期間に対する最も規範的なガイダンスを世界中に示すものであるため、Microsoft ではこれらのルールを対象としました。 Cohasset レポートは [Microsoft Service Trust Center](https://aka.ms/AzureWormStorage) で入手できます。 WORM コンプライアンスに関する Microsoft からの構成証明の文書を要求するには、Azure サポートにお問い合わせください。
 
 **この機能が適用されるのはブロック BLOB だけですか? それとも、ページ BLOB と追加 BLOB にも適用されますか?**
 
@@ -186,6 +188,10 @@ Azure Blob Storage の不変ストレージは、次のクライアント ライ
 **訴訟ホールド ポリシーは訴訟手続き専用ですか? その他の使用のシナリオはありますか?**
 
 いいえ。訴訟ホールドは、時間ベース以外の保持ポリシーに対して使用される一般的な用語にすぎません。 訴訟関連の手続き専用で使用する必要はありません。 訴訟ホールド ポリシーは、保持期間が不明の重要な企業の WORM データを保護するために上書きと削除を無効にする場合に役立ちます。 ミッション クリティカルな WORM ワークロードを保護するための企業のポリシーとして使用することも、カスタムのイベント トリガーで時間ベースのリテンション ポリシーの使用が必要になる前のステージング ポリシーとして使用することもできます。 
+
+***ロックされた*時間ベースのリテンション ポリシーまたは訴訟ホールドを削除できますか?**
+
+コンテナーから削除できるのは、ロックされていない時間ベースのリテンション ポリシーのみです。 時間ベースのリテンション ポリシーがロックされると、削除できず、リテンション有効期間の延長のみが許可されます。 訴訟ホールド タグを削除できます。 有効なすべてのタグが削除されると、訴訟ホールドが削除されます。
 
 **"*ロック済み*" の時間ベースのリテンション ポリシーまたは訴訟ホールドが適用されたコンテナーを削除しようとするとどうなりますか?**
 
@@ -375,12 +381,12 @@ $policy = Set-AzRmStorageContainerImmutabilityPolicy -Container `
     $containerObject -ImmutabilityPeriod 13 -Etag $policy.Etag -ExtendPolicy
 ```
 
-不変ポリシーを削除します (プロンプトを無視するには、-Force を追加します)。
+ロックされていない不変ポリシーを削除します (プロンプトを無視するには、-Force を追加します)。
 ```powershell
 # with an immutability policy object
 $policy = Get-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName `
     $ResourceGroup -StorageAccountName $StorageAccount -ContainerName $container
-Remove-AzStorageContainerImmutabilityPolicy -ImmutabilityPolicy $policy
+Remove-AzRmStorageContainerImmutabilityPolicy -ImmutabilityPolicy $policy
 
 # with an account name or container name
 Remove-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName `

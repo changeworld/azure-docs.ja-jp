@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 04/27/2019
+ms.date: 05/30/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0b9baa48c13e317ba3fb54d998ee8f125d2093c7
-ms.sourcegitcommit: d73c46af1465c7fd879b5a97ddc45c38ec3f5c0d
+ms.openlocfilehash: efd3ff8a6e7ddf2aa6242cc322d8a6536a6bd26b
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65921058"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66474057"
 ---
 # <a name="what-is-azure-ad-entitlement-management-preview"></a>Azure AD エンタイトルメント管理とは (プレビュー)
 
@@ -70,22 +70,13 @@ ID ガバナンスとエンタイトルメント管理の概要については�
 
 - Azure AD セキュリティ グループ
 - Office 365 グループ
-- Azure AD エンタープライズ アプリケーション
-- SaaS アプリケーション
-- カスタム統合アプリケーション
-- SharePoint Online サイト コレクション
-- SharePoint Online サイト
+- SaaS アプリケーションや、フェデレーションまたはプロビジョニングをサポートするカスタム統合アプリケーションなどの、Azure AD エンタープライズ アプリケーション
+- SharePoint Online サイト コレクションとサイト
 
-## <a name="prerequisites"></a>前提条件
+Azure AD セキュリティ グループまたは Office 365 グループに依存するその他のリソースへのアクセスを制御することもできます。  例:
 
-Azure AD のエンタイトルメント管理 (プレビュー) を使用するには、次のいずれかのライセンスが必要です。
-
-- Azure AD Premium P2
-- Enterprise Mobility + Security (EMS) E5 ライセンス
-
-詳細については、[Azure Active Directory Premium エディションへのサインアップ](../fundamentals/active-directory-get-started-premium.md)または [Enterprise Mobility + Security E5 無料評価版](https://aka.ms/emse5trial)に関する記事を参照してください。
-
-Azure Government、Azure Germany、Azure China 21Vianet などの特殊なクラウドは現在、このプレビューではご利用いただけません。
+- Microsoft Office 365 のライセンスをユーザーに付与するには、アクセス パッケージで Azure AD セキュリティ グループを使用し、そのグループの[グループ ベース ライセンス](../users-groups-roles/licensing-groups-assign.md)を構成します
+- Azure リソースを管理するアクセス権をユーザーに付与するには、アクセス パッケージで Azure AD セキュリティ グループを使用し、そのグループの [Azure ロール割り当て](../../role-based-access-control/role-assignments-portal.md)を作成します
 
 ## <a name="what-are-access-packages-and-policies"></a>アクセス パッケージとポリシーとは何ですか?
 
@@ -173,6 +164,12 @@ Azure Government、Azure Germany、Azure China 21Vianet などの特殊なクラ
 | [リソースをカタログに追加/そこから削除する](entitlement-management-catalog-create.md#add-resources-to-a-catalog) | :heavy_check_mark: |  | :heavy_check_mark: |  |  |
 | [カタログ所有者またはアクセス パッケージ マネージャーを追加する](entitlement-management-catalog-create.md#add-catalog-owners-or-access-package-managers) | :heavy_check_mark: |  | :heavy_check_mark: |  |  |
 | [カタログを編集/削除する](entitlement-management-catalog-create.md#edit-a-catalog) | :heavy_check_mark: |  | :heavy_check_mark: |  |  |
+
+## <a name="license-requirements"></a>ライセンスの要件
+
+[!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)]
+
+Azure Government、Azure Germany、Azure China 21Vianet などの特殊なクラウドは現在、このプレビューではご利用いただけません。
 
 ## <a name="next-steps"></a>次の手順
 

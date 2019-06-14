@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 06b3a5110bfdea2a2067979c806701011dc16f3d
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 0a6b48dbba232c06945b00d5107581d8d0c017b0
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65987691"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66472418"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>Linux での Azure Files に関する問題のトラブルシューティング
 
@@ -110,14 +110,13 @@ Linux 用の SMB 3.0 の暗号化機能は 4.11 カーネルで導入されま�
 
 Linux SMB クライアントが暗号化をサポートしていない場合は、ファイル共有と同じデータ センターにある Azure Linux VM から SMB 2.1 を使用して Azure Files をマウントします。 ストレージ アカウントで [[安全な転送が必須]]( https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) 設定が無効になっていることを確認します。 
 
-<a id="accessdeniedportal"></a>
-## <a name="error-access-denied-when-browsing-to-an-azure-file-share-in-the-portal"></a>ポータルで Azure ファイル共有を参照すると、"アクセスが拒否されました" というエラーが発生する
+<a id="authorizationfailureportal"></a>
+## <a name="error-authorization-failure-when-browsing-to-an-azure-file-share-in-the-portal"></a>ポータルで Azure ファイル共有を参照すると、"承認エラー" エラーが発生する
 
 ポータルで Azure ファイル共有を参照すると、以下のエラーが発生する場合があります。
 
-アクセスが拒否されました  
-アクセス権がありません  
-このコンテンツを表示するためのアクセス権がないようです。 アクセス権を取得するには、所有者にご連絡ください。  
+承認エラー  
+アクセス権がありません
 
 ### <a name="cause-1-your-user-account-does-not-have-access-to-the-storage-account"></a>原因 1:現在のユーザー アカウントには、ストレージ アカウントへのアクセス権がありません
 
@@ -221,7 +220,7 @@ ls コマンドを使用して Azure ファイル共有のファイル一覧を�
 - 4.4.87 以降
 - 4.9.48 以降
 - 4.12.11 以降
-- 4.13 以降のすべてのバージョン
+- 4\.13 以降のすべてのバージョン
 
 ## <a name="cannot-create-symbolic-links---ln-failed-to-create-symbolic-link-t-operation-not-supported"></a>シンボリック リンクを作成できない - ln: failed to create symbolic link 't':操作がサポートされていません。
 

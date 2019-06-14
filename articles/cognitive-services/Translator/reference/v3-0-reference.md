@@ -3,19 +3,19 @@ title: Translator Text API V3.0 リファレンス
 titlesuffix: Azure Cognitive Services
 description: Translator Text API V3.0 のリファレンス ドキュメント。
 services: cognitive-services
-author: v-pawal
+author: rajdeep-in
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
-ms.author: v-jansko
-ms.openlocfilehash: b59e4d574264f82a5875edad65e99bfb57150197
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.author: v-pawal
+ms.openlocfilehash: 973d38413fa39fec1c50b5e9770b6114fa2c4c3d
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65796877"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66387513"
 ---
 # <a name="translator-text-api-v30"></a>Translator Text API v3.0
 
@@ -144,7 +144,7 @@ Authorization: Bearer <Base64-access_token>
 | 400036| ターゲット言語 ("To" フィールド) が見つからないか無効です｡|
 | 400042| 無効なオプション ("Options" フィールド) が指定されています｡|
 | 400043| クライアント トレース ID (ClientTraceId フィールドか X-ClientTranceId ヘッダー) が見つからないか無効です｡|
-| 400050| 入力テキストが長すぎます。|
+| 400050| 入力テキストが長すぎます。 「[要求の制限](../request-limits.md)」を参照してください。|
 | 400064| "translation" パラメーターが見つからないか無効です｡|
 | 400070| ターゲット スクリプトの個数 (ToScript パラメーター) がターゲット言語 (To パラメーター) の個数と一致しません｡|
 | 400071| TextType に対する値が無効です。|
@@ -152,14 +152,15 @@ Authorization: Bearer <Base64-access_token>
 | 400073| スクリプト パラメーターが無効です｡|
 | 400074| 要求の本体が有効な JSON ではありません｡|
 | 400075| 言語ペアとカテゴリの組み合わせが無効です｡|
-| 400077| 要求の最大サイズを超えています。|
+| 400077| 要求の最大サイズを超えています。 「[要求の制限](../request-limits.md)」を参照してください。|
 | 400079| from 言語と to 言語間の翻訳に要求されたカスタム システムは存在しません｡|
 | 401000| 資格情報が見つからないか無効なため、要求は許可されません｡|
 | 401015| ｢指定された資格情報は Speech API に対するものです｡ この要求には､Text API に対する資格情報が必要です｡ Translator Text API のサブスクリプションを使用してください｡｣|
 | 403000| この操作は許可されていません｡|
 | 403001| サブスクリプションが無料クォータを超えているため､この操作は許可されていません｡|
 | 405000| 要求リソースに対してこの要求メソッドを使用することはできません｡|
-| 408001| 要求されたカスタムの翻訳システムはまだ使用できません。 少し待ってからもう一度お試しください。|
+| 408001| 要求された翻訳システムを準備しています。 少し待ってからもう一度お試しください。|
+| 408002| 受信ストリームの待機中に要求がタイムアウトになりました。 サーバーが待機するように設定された時間以内に、クライアントは要求を生成しませんでした。 クライアントは、それ以降いつでも変更せずに要求を繰り返すことができます。|
 | 415000| Content-Type Content-type ヘッダーが見つからないか無効です。|
 | 429000､429001､429002| クライアントが要求の制限を超えたため、サーバーは要求を拒否しました。|
 | 500000| 予期しないエラーが発生しました。 エラーが解決しない場合は、エラーの発生日時と応答ヘッダーの要求識別子 X-RequestID、要求ヘッダーのクライアント識別子 X-ClientTraceID を添えてその旨をご報告ください。|

@@ -1,8 +1,8 @@
 ---
-title: Azure 実稼働環境での運用と管理
-description: この記事では、Azure 実稼働環境のネットワークの管理と運用に関する一般的な説明を行います。
+title: Azure 実稼働ネットワークの管理 - Microsoft Azure
+description: この記事では、Microsoft による Azure データセンターのセキュリティを確保するための Azure 実稼働ネットワークの管理と運用方法について説明します。
 services: security
-documentationcenter: na
+documentationcenter: n
 author: TerryLanfear
 manager: barbkess
 editor: TomSh
@@ -12,16 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/28/2018
+ms.date: 05/30/2019
 ms.author: terrylan
-ms.openlocfilehash: 0099eb61d97f813f7adca320b47c195fa1aabbdc
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 515896851c5bf7b9c847416ebadedf1242e0eeb9
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56104553"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66428272"
 ---
-# <a name="azure-production-operations-and-management"></a>Azure 実稼働環境での運用と管理    
+# <a name="management-and-operation-of-the-azure-production-network"></a>Azure 実稼働ネットワークの管理と運用    
+この記事では、Microsoft による Azure データセンターのセキュリティを確保するための Azure 実稼働ネットワークの管理と運用方法について説明します。
+
+## <a name="monitor-log-and-report"></a>監視、ログ、およびレポート
+
 Azure 実稼働環境のネットワークの管理と運用は、Azure と Azure SQL Database の運用チーム間での調整による作業です。 チームは、環境内でシステムとアプリケーションの複数のパフォーマンス監視ツールを使用します。 さらに、適切なツールを使用して、ネットワーク デバイス、サーバー、サービス、およびアプリケーション プロセスを監視します。
 
 次に示すアクションをはじめ、Azure 環境で実行されるサービスの安全な実行を保証するために、運用チームは、複数のレベルの監視、ログ記録、およびレポート作成を実装します。

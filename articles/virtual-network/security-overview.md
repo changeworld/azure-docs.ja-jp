@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/26/2018
 ms.author: malop;kumud
-ms.openlocfilehash: 73664359b206a9e149ebac6859df24a1263cd313
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 751a3a940dad74cbc8c7343ee70309736b381d5b
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59996783"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66478873"
 ---
 # <a name="security-groups"></a>セキュリティ グループ
 <a name="network-security-groups"></a>
@@ -72,7 +72,7 @@ ms.locfileid: "59996783"
 * **AzureContainerRegistry** (Resource Manager のみ):このタグは、Azure Container Registry サービスのアドレス プレフィックスを表します。 値として *AzureContainerRegistry* を指定した場合、AzureContainerRegistry へのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)の AzureContainerRegistry へのアクセスのみを許可する場合は、AzureContainerRegistry.[リージョン名] の形式でリージョンを指定できます。 
 * **AppService** (Resource Manager のみ):このタグは、Azure AppService サービスのアドレス プレフィックスを表します。 値として *AppService* を指定した場合、AppService へのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)の AppService へのアクセスのみを許可する場合は、AppService.[リージョン名] の形式でリージョンを指定できます。 
 * **AppServiceManagement** (Resource Manager のみ):このタグは、Azure AppService Management サービスのアドレス プレフィックスを表します。 値として *AppServiceManagement* を指定した場合、AppServiceManagement へのトラフィックが許可または拒否されます。 
-* **ApiManagement** (Resource Manager のみ):このタグは、Azure Api Management サービスのアドレス プレフィックスを表します。 値として *ApiManagement* を指定した場合、ApiManagement へのトラフィックが許可または拒否されます。  
+* **ApiManagement** (Resource Manager のみ):このタグは、Azure Api Management サービスのアドレス プレフィックスを表します。 値として *ApiManagement* を指定した場合、ApiManagement の管理インターフェイスからのトラフィックが許可または拒否されます。  
 * **AzureConnectors** (Resource Manager のみ):このタグは、Azure Connectors サービスのアドレス プレフィックスを表します。 値として *AzureConnectors* を指定した場合、AzureConnectors へのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)の AzureConnectors へのアクセスのみを許可する場合は、AzureConnectors.[リージョン名] の形式でリージョンを指定できます。 
 * **GatewayManager** (Resource Manager のみ):このタグは、Azure Gateway Manager サービスのアドレス プレフィックスを表します。 値として *GatewayManager* を指定した場合、GatewayManager へのトラフィックが許可または拒否されます。  
 * **AzureDataLake** (Resource Manager のみ):このタグは、Azure Data Lake サービスのアドレス プレフィックスを表します。 値として *AzureDataLake* を指定した場合、AzureDataLake へのトラフィックが許可または拒否されます。 
@@ -86,7 +86,7 @@ ms.locfileid: "59996783"
 > Azure サービスのサービス タグは、使用されている特定のクラウドからのアドレス プレフィックスを表します。 
 
 > [!NOTE]
-> Azure Storage や Azure SQL Database などのサービスの[仮想ネットワーク サービス エンドポイント](virtual-network-service-endpoints-overview.md)を実装する場合、Azure ではサービスの仮想ネットワーク サブネットに[ルート](virtual-networks-udr-overview.md#optional-default-routes)が追加します。 ルートのアドレス プレフィックスは、対応するサービス タグと同じアドレス プレフィックスまたは CIDR 範囲です。
+> Azure Storage や Azure SQL Database などのサービスの[仮想ネットワーク サービス エンドポイント](virtual-network-service-endpoints-overview.md)を実装する場合、Azure はサービスの仮想ネットワーク サブネットへの[ルート](virtual-networks-udr-overview.md#optional-default-routes)を追加します。 ルートのアドレス プレフィックスは、対応するサービス タグと同じアドレス プレフィックスまたは CIDR 範囲です。
 
 ## <a name="default-security-rules"></a>既定セキュリティ規則
 
@@ -219,7 +219,7 @@ Azure がネットワーク セキュリティ グループの受信規則と送
 ## <a name="azure-platform-considerations"></a>Azure プラットフォームに関する考慮事項
 
 - **ホスト ノードの仮想 IP**:DHCP、DNS、IMDS、正常性の監視などの基本的なインフラストラクチャ サービスは、仮想化されたホストの IP アドレス 168.63.129.16 および 169.254.169.254 を通じて提供されます。 これらの IP アドレスは Microsoft に属し、この目的のためにすべてのリージョンで使われる唯一の仮想化 IP アドレスです。
-- **ライセンス (キー管理サービス)**:仮想マシンで実行されている Windows イメージのライセンスを取得する必要があります。 ライセンスを適用するために、そのような問い合わせを処理するキー管理サービスのホスト サーバーには要求が送信されます。 この要求は、ポート 1688 を通じて送信されます。 [default route 0.0.0.0/0](virtual-networks-udr-overview.md#default-route) 構成を使用したデプロイに関しては、このプラットフォーム ルールは無効となります。
+- **ライセンス (キー管理サービス)** :仮想マシンで実行されている Windows イメージのライセンスを取得する必要があります。 ライセンスを適用するために、そのような問い合わせを処理するキー管理サービスのホスト サーバーには要求が送信されます。 この要求は、ポート 1688 を通じて送信されます。 [default route 0.0.0.0/0](virtual-networks-udr-overview.md#default-route) 構成を使用したデプロイに関しては、このプラットフォーム ルールは無効となります。
 - **負荷分散プール内の仮想マシン**:適用されるソース ポートおよびアドレス範囲は、元のコンピューターからのもので、ロード バランサーではありません。 ターゲット ポートとアドレス範囲は、ロード バランサーのものではなく、ターゲット コンピューターのものになります。
 - **Azure のサービス インスタンス**:HDInsight、Application Service Environments、および仮想マシン スケール セットなどの Azure サービスのインスタンスが仮想ネットワークのサブネットにデプロイされています。 仮想ネットワークにデプロイできるサービスの詳細な一覧については、[Azure サービスの仮想ネットワーク](virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network)に関するページをご覧ください。 リソースがデプロイされているサブネットにネットワーク セキュリティ グループを適用する前に、各サービスのポート要件を確認してください。 サービスに必要なポートを拒否すると、サービスは正しく機能しません。
 - **アウトバウンド メールの送信**:Azure Virtual Machines からのメール送信に関して、Microsoft では、Authenticated SMTP リレー サービスの利用を推奨しています (通常は、TCP ポート 587 で接続されますが、他のポートが使用されることもあります)。 SMTP リレー サービスは、送信者評価に特化することで、サード パーティのメール プロバイダーによってメッセージが拒否される可能性を最小限に抑えます。 そのような SMTP リレー サービスとしては、Exchange Online Protection や SendGrid が代表的ですが、他にもさまざまなリレー サービスが存在します。 Azure に限らず、またサブスクリプションの種類に限らず、SMTP リレー サービスは広く利用されています。 
@@ -227,7 +227,7 @@ Azure がネットワーク セキュリティ グループの受信規則と送
   2017 年 11 月 15 日より前に Azure サブスクリプションを作成した場合、SMTP リレー サービスが利用できるほか、TCP ポート 25 を使用して直接メールを送信することもできます。 2017 年 11 月 15 日以降に Azure サブスクリプションを作成した場合、ポート 25 を使用して直接メールを送信することはできません。 ポート 25 を使用したアウトバウンド通信の動作は、ご利用のサブスクリプションの種類によって次のように異なります。
 
      - **マイクロソフト エンタープライズ契約**:送信ポート 25 の通信が許可されます。 仮想マシンから外部のメール プロバイダーに直接アウトバウンド メールを送信できます。Azure プラットフォームによる制限はありません。 
-     - **従量課金制**:アウトバウンド ポート 25 の通信が、送信元となるすべてのリソースについてブロックされます。 外部のメール プロバイダーに仮想マシンから直接 (認証済み SMTP リレーを介さずに) メールを送信する必要がある場合は、申請によって制限を解除することができます。 申請は Microsoft の裁量にて審査および承認されます。また、申請が許可されるのは、詐欺行為防止チェックの実施後となります。 申請を行うには、*[Technical]\(技術\)*、*[Virtual Network Connectivity]\(仮想ネットワーク接続\)*、*[Cannot send e-mail (SMTP/Port 25)]\(メールを送信できない (SMTP/ポート 25)\)* を問題の種類とするサポート ケースを開いてください。 ご利用のサブスクリプションから Authenticated SMTP リレー経由ではなく直接メール プロバイダーにメールを送信することが必要である理由をサポート ケースに詳しく記してください。 ご利用のサブスクリプションが免除された場合に、ポート 25 を使用したアウトバウンド通信が許可されるのは、その免除日以降に作成された仮想マシンだけです。
+     - **従量課金制**:アウトバウンド ポート 25 の通信が、送信元となるすべてのリソースについてブロックされます。 外部のメール プロバイダーに仮想マシンから直接 (認証済み SMTP リレーを介さずに) メールを送信する必要がある場合は、申請によって制限を解除することができます。 申請は Microsoft の裁量にて審査および承認されます。また、申請が許可されるのは、詐欺行為防止チェックの実施後となります。 申請を行うには、 *[Technical]\(技術\)* 、 *[Virtual Network Connectivity]\(仮想ネットワーク接続\)* 、 *[Cannot send e-mail (SMTP/Port 25)]\(メールを送信できない (SMTP/ポート 25)\)* を問題の種類とするサポート ケースを開いてください。 ご利用のサブスクリプションから Authenticated SMTP リレー経由ではなく直接メール プロバイダーにメールを送信することが必要である理由をサポート ケースに詳しく記してください。 ご利用のサブスクリプションが免除された場合に、ポート 25 を使用したアウトバウンド通信が許可されるのは、その免除日以降に作成された仮想マシンだけです。
      - **MSDN、Azure Pass、Azure イン オープン プラン、Education、BizSpark、および無料試用版**:アウトバウンド ポート 25 の通信が、送信元となるすべてのリソースについてブロックされます。 制限解除を申請することはできません。申請は許可されません。 仮想マシンからメールを送信する必要がある場合は、SMTP リレー サービスを使用する必要があります。
      - **クラウド サービス プロバイダー**:クラウド サービス プロバイダーを介して Azure リソースを使用しているお客様は、クラウド サービス プロバイダーを相手方とするサポート ケースを作成できます。また、安全な SMTP リレーが利用できない場合は、お客様の代わりにプロバイダーがブロック解除のケースを作成するよう要求できます。
 

@@ -16,12 +16,12 @@ ms.date: 05/22/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bae204ec1789f227150adc560d4a292404d23b7e
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: ec3909ffbb624284f999360140b7454098643062
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66113295"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66473369"
 ---
 # <a name="complete-an-access-review-of-groups-or-applications-in-azure-ad-access-reviews"></a>グループまたはアプリケーションのアクセス レビューを Azure AD アクセス レビューに入力する
 
@@ -40,7 +40,7 @@ ms.locfileid: "66113295"
 
 レビュー担当者がレビューを完了したら、その進行状況を追跡できます。
 
-1. Azure portal にサインインして、[[アクセス レビュー] ページ](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/)を開きます。
+1. Azure portal にサインインして、[[Identity Governance] ページ](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/)を開きます。
 
 1. 左側のメニューで **[アクセス レビュー]** をクリックします。
 

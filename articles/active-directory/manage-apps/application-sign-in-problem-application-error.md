@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 234fc94a0a2ad3d3bee49853cf1dfc6a805a0166
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: aaaa00d6dcee6a3c03a357d22db2994a25c4427d
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65825400"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66729963"
 ---
 # <a name="error-on-an-applications-page-after-signing-in"></a>サインイン後、アプリケーションのページでエラーが発生する
 
@@ -43,13 +43,13 @@ Azure AD 応答で送信される属性を Azure AD の構成に追加するに�
 
 2. 左側のメイン ナビゲーション メニューの上部にある **[すべてのサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
 
-3. フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
+3. フィルター検索ボックスに「**Azure Active Directory**」と入力し、 **[Azure Active Directory]** 項目を選択します。
 
 4. Azure Active Directory の左側のナビゲーション メニューから **[エンタープライズ アプリケーション]** をクリックします。
 
 5. **[すべてのアプリケーション]** をクリックして、すべてのアプリケーションの一覧を表示します。
 
-   * ここに表示したいアプリケーションが表示されない場合は、**[All Applications List (すべてのアプリケーション リスト)]** の上部にある **[フィルター]** コントロールを使用して、**[表示]** オプションを **[すべてのアプリケーション]** に設定します。
+   * ここに表示したいアプリケーションが表示されない場合は、 **[All Applications List (すべてのアプリケーション リスト)]** の上部にある **[フィルター]** コントロールを使用して、 **[表示]** オプションを **[すべてのアプリケーション]** に設定します。
 
 6. シングル サインオンを構成するアプリケーションを選択します。
 
@@ -67,9 +67,11 @@ Azure AD 応答で送信される属性を Azure AD の構成に追加するに�
 
 次回ユーザーがアプリケーションにサインインするときに、Azure AD は SAML 応答で新しい属性を送信します。
 
-## <a name="the-application-expects-a-different-user-identifier-value-or-format"></a>アプリケーションが別のユーザー識別子の値または形式を想定する
+## <a name="the-application-doesnt-identify-the-user"></a>アプリケーションでユーザーが識別されない
 
-SAML 応答にロールなどの属性が欠落しているため、またはアプリケーションが EntityID 属性に別の形式を想定しているため、アプリケーションへのサインインが失敗します。
+SAML 応答にロールなどの属性が欠落しているため、またはアプリケーションが EntityID 属性に別の形式または値を想定しているため、アプリケーションへのサインインが失敗します。
+
+アプリケーション内のユーザーを作成、管理、削除するために [Azure AD 自動ユーザー プロビジョニング](https://docs.microsoft.com/en-us/azure/active-directory/manage-apps/user-provisioning)を使用している場合。 ユーザーが SaaS アプリケーションに正常にプロビジョニングされていることを確認します。 詳細については、「[Azure AD ギャラリー アプリケーションにユーザーがプロビジョニングされない](https://docs.microsoft.com/en-us/azure/active-directory/manage-apps/application-provisioning-config-problem-no-users-provisioned)」を参照してください。
 
 ## <a name="add-an-attribute-in-the-azure-ad-application-configuration"></a>Azure AD アプリケーションの構成に属性を追加する:
 
@@ -79,19 +81,19 @@ SAML 応答にロールなどの属性が欠落しているため、またはア
 
 2. 左側のメイン ナビゲーション メニューの上部にある **[すべてのサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
 
-3. フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
+3. フィルター検索ボックスに「**Azure Active Directory**」と入力し、 **[Azure Active Directory]** 項目を選択します。
 
 4. Azure Active Directory の左側のナビゲーション メニューから **[エンタープライズ アプリケーション]** をクリックします。
 
 5. **[すべてのアプリケーション]** をクリックして、すべてのアプリケーションの一覧を表示します。
 
-   * ここに表示したいアプリケーションが表示されない場合は、**[All Applications List (すべてのアプリケーション リスト)]** の上部にある **[フィルター]** コントロールを使用して、**[表示]** オプションを **[すべてのアプリケーション]** に設定します。
+   * ここに表示したいアプリケーションが表示されない場合は、 **[All Applications List (すべてのアプリケーション リスト)]** の上部にある **[フィルター]** コントロールを使用して、 **[表示]** オプションを **[すべてのアプリケーション]** に設定します。
 
 6. シングル サインオンを構成するアプリケーションを選択します。
 
 7. アプリケーションが読み込まれたら、アプリケーションの左側のナビゲーション メニューから **[シングル サインオン]** をクリックします。
 
-8. **[ユーザー属性]** で、**[ユーザー識別子]** ドロップダウンからユーザーの一意の識別子を選択します。
+8. **[ユーザー属性]** で、 **[ユーザー識別子]** ドロップダウンからユーザーの一意の識別子を選択します。
 
 ## <a name="change-entityid-user-identifier-format"></a>EntityID (ユーザー識別子) の形式を変更する
 
@@ -107,13 +109,13 @@ Azure Active Directory によってデジタル署名される SAML トークン
 
 2. 左側のメイン ナビゲーション メニューの上部にある **[すべてのサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
 
-3. フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
+3. フィルター検索ボックスに「**Azure Active Directory**」と入力し、 **[Azure Active Directory]** 項目を選択します。
 
 4. Azure Active Directory の左側のナビゲーション メニューから **[エンタープライズ アプリケーション]** をクリックします。
 
 5. **[すべてのアプリケーション]** をクリックして、すべてのアプリケーションの一覧を表示します。
 
-   * ここに表示したいアプリケーションが表示されない場合は、**[All Applications List (すべてのアプリケーション リスト)]** の上部にある **[フィルター]** コントロールを使用して、**[表示]** オプションを **[すべてのアプリケーション]** に設定します。
+   * ここに表示したいアプリケーションが表示されない場合は、 **[All Applications List (すべてのアプリケーション リスト)]** の上部にある **[フィルター]** コントロールを使用して、 **[表示]** オプションを **[すべてのアプリケーション]** に設定します。
 
 6. シングル サインオンを構成するアプリケーションを選択します。
 
@@ -141,13 +143,13 @@ Azure Active Directory によってデジタル署名される SAML トークン
 
 2. 左側のメイン ナビゲーション メニューの上部にある **[すべてのサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
 
-3. フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
+3. フィルター検索ボックスに「**Azure Active Directory**」と入力し、 **[Azure Active Directory]** 項目を選択します。
 
 4. Azure Active Directory の左側のナビゲーション メニューから **[エンタープライズ アプリケーション]** をクリックします。
 
 5. **[すべてのアプリケーション]** をクリックして、すべてのアプリケーションの一覧を表示します。
 
-   * ここに表示したいアプリケーションが表示されない場合は、**[All Applications List (すべてのアプリケーション リスト)]** の上部にある **[フィルター]** コントロールを使用して、**[表示]** オプションを **[すべてのアプリケーション]** に設定します。
+   * ここに表示したいアプリケーションが表示されない場合は、 **[All Applications List (すべてのアプリケーション リスト)]** の上部にある **[フィルター]** コントロールを使用して、 **[表示]** オプションを **[すべてのアプリケーション]** に設定します。
 
 6. シングル サインオンを構成するアプリケーションを選択します。
 

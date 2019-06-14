@@ -11,18 +11,16 @@ ms.workload: integration
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: apimpm
-ms.openlocfilehash: ebded5d1d58baf501ee5106d622162edc62d46ec
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 75a02abb6cce332daad12e1feb25fb425f89f7f4
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57310558"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393379"
 ---
 # <a name="use-managed-identities-in-azure-api-management"></a>Azure API Management でマネージド ID を使用する
 
 この記事では、API Management サービス インスタンスのマネージド ID を作成する方法と、その他のリソースにアクセスする方法について説明します。 Azure Active Directory (Azure AD) によって生成されたマネージド ID によって、API Management インスタンスは、Azure AD で保護された他のリソース (Azure Key Vault など) に簡単かつ安全にアクセスすることができます。 この ID は Azure によって管理され、ユーザーがシークレットをプロビジョニングしたりローテーションしたりする必要はありません。 マネージド ID の詳細については、「[Azure リソースのマネージド ID とは](../active-directory/managed-identities-azure-resources/overview.md)」を参照してください。
-
-[!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
 ## <a name="create-a-managed-identity-for-an-api-management-instance"></a>API Management インスタンスのマネージド ID を作成する
 
@@ -242,3 +240,4 @@ Set-AzureKeyVaultSecret -VaultName KEY_VAULT_NAME -Name KEY_VAULT_SECRET_NAME -S
 
 * [Azure リソースのマネージド ID とは](../active-directory/managed-identities-azure-resources/overview.md)
 * [Azure リソース マネージャーのテンプレート](https://github.com/Azure/azure-quickstart-templates)
+* [ポリシーでのマネージド ID による認証](./api-management-authentication-policies.md#ManagedIdentity)

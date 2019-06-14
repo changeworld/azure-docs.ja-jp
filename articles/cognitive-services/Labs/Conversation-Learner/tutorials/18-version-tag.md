@@ -1,21 +1,21 @@
 ---
-title: Conversation Learner モデルでバージョンのタグ付けを使用する方法 - Microsoft Cognitive Services | Microsoft Docs
+title: Conversation Learner モデルでバージョンのタグ付けを使用する方法 - Azure Cognitive Services | Microsoft Docs
 titleSuffix: Azure
 description: Conversation Learner モデルでバージョン管理とタグ付けを使用する方法について説明します。
 services: cognitive-services
-author: v-jaswel
+author: nitinme
 manager: nolachar
 ms.service: cognitive-services
 ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: v-jaswel
-ms.openlocfilehash: 5073d3ab967c4c4e1b90636c247839875a6aa0d7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: nitinme
+ms.openlocfilehash: 4067c7fb43cc200b8f49dbc14151c69a188e4e8e
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58086311"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475710"
 ---
 # <a name="how-to-use-version-tagging"></a>バージョンのタグ付けを使用する方法
 
@@ -109,4 +109,4 @@ ms.locfileid: "58086311"
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [デモ - パスワードのリセット](./demo-password-reset.md)
+> [列挙型のエンティティと SET ENTITY アクション](./tutorial-enum-set-entity.md)

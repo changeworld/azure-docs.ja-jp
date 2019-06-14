@@ -6,14 +6,14 @@ author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 08/14/2018
+ms.date: 05/31/2019
 ms.author: iainfou
-ms.openlocfilehash: f7a0269ff22987648d134cb7f4fba8e28e29fd8b
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: cc0c3becf21cb54b97a88e9ba35b38308af81a85
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956280"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475428"
 ---
 # <a name="use-virtual-kubelet-with-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での Virtual Kubelet の使用
 
@@ -30,9 +30,9 @@ Azure Container Instances に Virtual Kubelet プロバイダーを使用する�
 
 このドキュメントでは、AKS クラスターがあることを前提としています。 AKS クラスターが必要な場合は、[Azure Kubernetes Service (AKS) のクイック スタート][aks-quick-start]に関するページを参照してください。
 
-また、Azure CLI バージョン **2.0.33** 以降がインストールされている必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
+また、Azure CLI バージョン **2.0.65** 以降がインストールされている必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
 
-Virtual Kubelet をインストールするには、[Helm](https://docs.helm.sh/using_helm/#installing-helm) も必要です。
+Virtual Kubelet をインストールするには、AKS クラスターに [Helm][aks-helm] をインストールして構成します。 必要に応じて、Tiller が [Kubernetes RBAC で使用するために構成されている](#for-rbac-enabled-clusters)ことを確認します。
 
 ### <a name="register-container-instances-feature-provider"></a>Container Instances 機能プロバイダーを登録する
 
@@ -44,7 +44,7 @@ az provider list --query "[?contains(namespace,'Microsoft.ContainerInstance')]" 
 
 *Microsoft.ContainerInstance* プロバイダーは、次の出力の例で示すように *Registered* としてレポートします。
 
-```
+```console
 Namespace                    RegistrationState
 ---------------------------  -------------------
 Microsoft.ContainerInstance  Registered
@@ -83,7 +83,7 @@ subjects:
 
 次の例に示すように、[kubectl apply][kubectl-apply] でサービス アカウントとバインドを適用し、*rbac-virtual-kubelet.yaml* ファイルを指定します。
 
-```
+```console
 $ kubectl apply -f rbac-virtual-kubelet.yaml
 
 clusterrolebinding.rbac.authorization.k8s.io/tiller created
@@ -102,10 +102,14 @@ helm init --service-account tiller
 Virtual Kubelet をインストールするには、[az aks install-connector][aks-install-connector] コマンドを使用します。 次の例では、Linux と Windows 両方のコネクタを展開します。
 
 ```azurecli-interactive
-az aks install-connector --resource-group myAKSCluster --name myAKSCluster --connector-name virtual-kubelet --os-type Both
+az aks install-connector \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --connector-name virtual-kubelet \
+    --os-type Both
 ```
 
-これらの引数は `aks install-connector` コマンドに使用できます。
+これらの引数は、[az aks install-connector][aks-install-connector] コマンドに使用できます。
 
 | 引数: | 説明 | 必須 |
 |---|---|:---:|
@@ -124,15 +128,13 @@ az aks install-connector --resource-group myAKSCluster --name myAKSCluster --con
 
 Virtual Kubelet がインストールされていることを検証するには、[kubectl get nodes][kubectl-get] コマンドを使用して Kubernetes ノードの一覧を返します。
 
-```
+```console
 $ kubectl get nodes
 
-NAME                                    STATUS    ROLES     AGE       VERSION
-aks-nodepool1-23443254-0                Ready     agent     16d       v1.9.6
-aks-nodepool1-23443254-1                Ready     agent     16d       v1.9.6
-aks-nodepool1-23443254-2                Ready     agent     16d       v1.9.6
-virtual-kubelet-virtual-kubelet-linux   Ready     agent     4m        v1.8.3
-virtual-kubelet-virtual-kubelet-win     Ready     agent     4m        v1.8.3
+NAME                                             STATUS   ROLES   AGE   VERSION
+aks-nodepool1-56577038-0                         Ready    agent   11m   v1.12.8
+virtual-kubelet-virtual-kubelet-linux-eastus     Ready    agent   39s   v1.13.1-vk-v0.9.0-1-g7b92d1ee-dev
+virtual-kubelet-virtual-kubelet-windows-eastus   Ready    agent   37s   v1.13.1-vk-v0.9.0-1-g7b92d1ee-dev
 ```
 
 ## <a name="run-linux-container"></a>Linux コンテナーを実行する
@@ -178,11 +180,11 @@ kubectl create -f virtual-kubelet-linux.yaml
 
 `-o wide` 引数を指定して [kubectl get pods][kubectl-get] コマンドを使用し、スケジュールされたノードがあるポッドの一覧を出力します。 `aci-helloworld` ポッドは `virtual-kubelet-virtual-kubelet-linux` ノードでスケジュールされています。
 
-```
+```console
 $ kubectl get pods -o wide
 
-NAME                                READY     STATUS    RESTARTS   AGE       IP             NODE
-aci-helloworld-2559879000-8vmjw     1/1       Running   0          39s       52.179.3.180   virtual-kubelet-virtual-kubelet-linux
+NAME                              READY   STATUS    RESTARTS   AGE     IP               NODE
+aci-helloworld-7b9ffbf946-rx87g   1/1     Running   0          22s     52.224.147.210   virtual-kubelet-virtual-kubelet-linux-eastus
 ```
 
 ## <a name="run-windows-container"></a>Windows コンテナーを実行する
@@ -226,13 +228,13 @@ spec:
 kubectl create -f virtual-kubelet-windows.yaml
 ```
 
-`-o wide` 引数を指定して [kubectl get pods][kubectl-get] コマンドを使用し、スケジュールされたノードがあるポッドの一覧を出力します。 `nanoserver-iis` ポッドは `virtual-kubelet-virtual-kubelet-win` ノードでスケジュールされています。
+`-o wide` 引数を指定して [kubectl get pods][kubectl-get] コマンドを使用し、スケジュールされたノードがあるポッドの一覧を出力します。 `nanoserver-iis` ポッドは `virtual-kubelet-virtual-kubelet-windows` ノードでスケジュールされています。
 
-```
+```console
 $ kubectl get pods -o wide
 
-NAME                                READY     STATUS    RESTARTS   AGE       IP             NODE
-nanoserver-iis-868bc8d489-tq4st     1/1       Running   8         21m       138.91.121.91   virtual-kubelet-virtual-kubelet-win
+NAME                              READY   STATUS    RESTARTS   AGE     IP               NODE
+nanoserver-iis-5d999b87d7-6h8s9   1/1     Running   0          47s     52.224.143.39    virtual-kubelet-virtual-kubelet-windows-eastus
 ```
 
 ## <a name="remove-virtual-kubelet"></a>Virtual Kubelet を削除する
@@ -240,7 +242,11 @@ nanoserver-iis-868bc8d489-tq4st     1/1       Running   8         21m       138.
 Virtual Kubelet を削除するには、[az aks remove-connector][aks-remove-connector] コマンドを使用します。 引数の値を、コネクタ、AKS クラスター、および AKS クラスター リソース グループの名前に置き換えます。
 
 ```azurecli-interactive
-az aks remove-connector --resource-group myAKSCluster --name myAKSCluster --connector-name virtual-kubelet
+az aks remove-connector \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --connector-name virtual-kubelet \
+    --os-type Both
 ```
 
 > [!NOTE]
@@ -259,6 +265,9 @@ Virtual Kubelet で考えられる問題については、[既知の問題と回
 [aks-install-connector]: /cli/azure/aks#az-aks-install-connector
 [virtual-nodes-cli]: virtual-nodes-cli.md
 [virtual-nodes-portal]: virtual-nodes-portal.md
+[aks-helm]: kubernetes-helm.md
+[az-provider-list]: /cli/azure/provider#az-provider-list
+[az-provider-register]: /cli/azure/provider#az-provider-register
 
 <!-- LINKS - external -->
 [kubectl-create]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create

@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: anroth
-ms.openlocfilehash: d0f0f3b120187a7538989f219876a8c10569a98e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 3cb67b57f406774b4bcaf57c24b8e7741068ced6
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59051476"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66497307"
 ---
 # <a name="how-to-build-a-classifier-with-custom-vision"></a>Custom Vision で分類子を構築する方法
 
@@ -32,12 +32,12 @@ Custom Vision サービスを使用するには、[Azure portal](https://portal.
 
 ## <a name="create-a-new-project"></a>新しいプロジェクトを作成する
 
-Web ブラウザーで、[Custom Vision の Web ページ](https://customvision.ai)に移動し、__[サインイン]__ を選択します。 Azure portal にサインインしたのと同じアカウントでサインインします。
+Web ブラウザーで、[Custom Vision の Web ページ](https://customvision.ai)に移動し、 __[サインイン]__ を選択します。 Azure portal にサインインしたのと同じアカウントでサインインします。
 
 ![サインイン ページの画像](./media/browser-home.png)
 
 
-1. 最初のプロジェクトを作成するには、**[新しいプロジェクト]** を選択します。 **[新しいプロジェクトの作成]** ダイアログ ボックスが表示されます。
+1. 最初のプロジェクトを作成するには、 **[新しいプロジェクト]** を選択します。 **[新しいプロジェクトの作成]** ダイアログ ボックスが表示されます。
 
     ![[新しいプロジェクト] ダイアログ ボックスには、名前、説明、およびドメインのフィールドがあります。](./media/getting-started-build-a-classifier/new-project.png)
 
@@ -58,7 +58,7 @@ Web ブラウザーで、[Custom Vision の Web ページ](https://customvision.
     |__小売__|ショッピング カタログやショッピング Web サイトで見られる画像に最適化されています。 ドレス、ズボン、シャツを分類するときに高い精度が必要な場合に、このドメインを使用します。|
     |__コンパクト ドメイン__| モバイル デバイスでのリアルタイムの分類の制約に最適化されています。 コンパクト ドメインで生成されたモデルは、ローカルで実行するためにエクスポートできます。|
 
-1. 最後に、__[プロジェクトの作成]__ を選択します。
+1. 最後に、 __[プロジェクトの作成]__ を選択します。
 
 ## <a name="choose-training-images"></a>トレーニング画像を選択する
 
@@ -87,11 +87,11 @@ Web ブラウザーで、[Custom Vision の Web ページ](https://customvision.
     ![[Add Images]\(画像の追加) コントロールは左上に表示され、下部中央にもボタンとして表示されます。](./media/getting-started-build-a-classifier/add-images01.png)
 
 
-1. タグを作成するには、__マイ タグ__ フィールドにテキストを入力し、Enter キーを押します。 タグが既に存在する場合は、ドロップダウン メニューに表示されます。 マルチラベル プロジェクトでは画像に複数のタグを追加できますが、マルチクラス プロジェクトで追加できるのは 1 つだけです。 画像のアップロードを終えるには、__[数字] 個のファイルのアップロード__ ボタンを使用します。 
+1. タグを作成するには、__マイ タグ__ フィールドにテキストを入力し、Enter キーを押します。 タグが既に存在する場合は、ドロップダウン メニューに表示されます。 マルチラベル プロジェクトでは画像に複数のタグを追加できますが、マルチクラス プロジェクトで追加できるのは 1 つだけです。 画像のアップロードを終えるには、 __[数字] 個のファイルのアップロード__ ボタンを使用します。 
 
     ![タグの画像とアップロード ページ](./media/getting-started-build-a-classifier/add-images03.png)
 
-1. 画像がアップロードし終わったら、__[完了]__ を選択します。
+1. 画像がアップロードし終わったら、 __[完了]__ を選択します。
 
     ![進行状況バーには完了したすべてのタスクが表示されます。](./media/getting-started-build-a-classifier/add-images04.png)
 
@@ -99,11 +99,11 @@ Web ブラウザーで、[Custom Vision の Web ページ](https://customvision.
 
 ## <a name="train-the-classifier"></a>分類子をトレーニングする
 
-分類子をトレーニングするには、**[トレーニング]** ボタンを選択します。 分類子は、現在の画像をすべて使用し、各タグの視覚的特性を識別するモデルを作成します。
+分類子をトレーニングするには、 **[トレーニング]** ボタンを選択します。 分類子は、現在の画像をすべて使用し、各タグの視覚的特性を識別するモデルを作成します。
 
 ![Web ページのヘッダー ツールバーの右上にあるトレーニングのボタン](./media/getting-started-build-a-classifier/train01.png)
 
-トレーニング プロセスの所要時間は、わずか数分間のはずです。 この時間の間、**[パフォーマンス]** タブにトレーニング プロセスに関する情報が表示されます。
+トレーニング プロセスの所要時間は、わずか数分間のはずです。 この時間の間、 **[パフォーマンス]** タブにトレーニング プロセスに関する情報が表示されます。
 
 ![メイン セクションにトレーニング ダイアログが表示されたブラウザー ウィンドウ](./media/getting-started-build-a-classifier/train02.png)
 

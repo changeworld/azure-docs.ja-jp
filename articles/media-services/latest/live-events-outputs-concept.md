@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 05/11/2019
+ms.date: 06/04/2019
 ms.author: juliako
-ms.openlocfilehash: c025a4c6e2a5a06e12e25ce226a327b099b95306
-ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
+ms.openlocfilehash: f7f6aa000101f4c0de69d4d0922624b4020af8fb
+ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65550962"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66688673"
 ---
 # <a name="live-events-and-live-outputs"></a>ライブ イベントとライブ出力
 
@@ -79,15 +79,17 @@ Media Services によるライブ エンコードを使用する場合は、オ�
 
 非バニティ URL またはバニティ URL を使用できます。 
 
+> [!NOTE] 
+> 取り込み URL を予測的にするには、"バニティ" モードを設定します。
+
 * 非バニティ URL
 
     非バニティ URL は AMS v3 の既定モードです。 ライブ イベントをすばやく取得できる可能性がありますが、取り込み URL がわかるのはライブ イベントの開始時のみです。 ライブ イベントを停止または開始すると、URL は変わります。 <br/>非バニティは、エンド ユーザーが可能な限り早くライブ イベントを取得するアプリを使用してストリームしたいシナリオで、動的取り込み URL を使用しても問題にならない場合に役立ちます。
 * バニティ URL
 
     バニティ モードは、ハードウェア ブロードキャスト エンコーダーを使用していて、ライブ イベントの開始時にエンコーダーを再構成したくない大規模なメディア放送局に好まれています。 時間の経過と共に変化しない、予測的な取り込み URL が望まれています。
-
-> [!NOTE] 
-> 取り込み URL を予測的にするには、(URL 内のランダムなトークンを避けるため) "バニティ" モードを使用して独自のアクセス トークンを渡す必要があります。
+    
+    このモードを指定するには、作成時に `vanityUrl` を `true` に設定します (既定値は `false`)。 自身のアクセス トークンを渡す必要もあります (URL でのランダム トークンを避けるため)。 作成時に `LiveEventInput.accessToken` を一意の識別子に設定します。 モードはいったん設定されると、更新できません。
 
 ### <a name="live-ingest-url-naming-rules"></a>ライブ取り込み URL の名前付け規則
 

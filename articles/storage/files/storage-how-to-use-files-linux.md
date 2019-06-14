@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/29/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 75987c7838846aacb099b725e2a222967b32fe64
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 73ed98bf950f7c9f52e2b8eeb431fe4b36bfe324
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64691273"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66427929"
 ---
 # <a name="use-azure-files-with-linux"></a>Linux で Azure Files を使用する
 
@@ -81,56 +81,57 @@ ms.locfileid: "64691273"
 
 ## <a name="mount-the-azure-file-share-on-demand-with-mount"></a>Azure ファイル共有を `mount` を使用してオンデマンドでマウントする
 
-1. **[使用する Linux ディストリビューション用の cifs-utils パッケージをインストールします](#install-cifs-utils)**。
+1. **[使用する Linux ディストリビューション用の cifs-utils パッケージをインストールします](#install-cifs-utils)** 。
 
-1. **マウント ポイントのフォルダーを作成します**。マウント ポイント用のフォルダーはファイル システム上のどこにでも作成できますが、`/mnt` フォルダー下にこれを作成するのが一般的な規則です。 例: 
+1. **マウント ポイントのフォルダーを作成します**。マウント ポイント用のフォルダーはファイル システム上の任意の場所に作成できますが、一般的な方法ではこれを新しいフォルダーの下に作成します。 たとえば、次のコマンドは新しいディレクトリを作成し、 **<storage_account_name>** と **<file_share_name>** を環境の適切な情報に置き換えます。
 
     ```bash
-    mkdir /mnt/MyAzureFileShare
+    mkdir -p <storage_account_name>/<file_share_name>
     ```
 
-1. **mount コマンドを使用して Azure ファイル共有をマウントします**。`<storage-account-name>`、`<share-name>`、`<smb-version>`、`<storage-account-key>`、および `<mount-point>` は、実際の環境の適切な情報に置き換えてください。 お使いの Linux ディストリビューションで暗号化付き SMB 3.0 がサポートされている場合 (詳細は「[SMB クライアント要件を理解している](#smb-client-reqs)」を参照)、`<smb-version>`の `3.0` を使用します。 暗号化付き SMB 3.0 をサポートしていない Linux ディストリビューションの場合は、`<smb-version>`の `2.1`を使用します。 Azure ファイル共有は、SMB 3.0 がある Azure リージョン (オンプレミスを含むか、または別の Azure リージョン内にある) の外部でしかマウントできません。 
+1. **mount コマンドを使用して Azure ファイル共有をマウントします**。 **<storage_account_name>** 、 **<share_name>** 、 **<smb_version>** 、 **<storage_account_key>** 、および **<mount_point>** を環境の適切な情報に置き換えることを忘れないでください。 Linux ディストリビューションで暗号化付き SMB 3.0 がサポートされている場合は (詳細については [SMB クライアントの要件の概要](#smb-client-reqs)を参照)、 **<smb_version>** として **3.0** を使用します。 暗号化付き SMB 3.0 をサポートしていない Linux ディストリビューションの場合は、 **<smb_version>** として **2.1** を使用します。 Azure ファイル共有は、SMB 3.0 がある Azure リージョン (オンプレミスを含むか、または別の Azure リージョン内にある) の外部でしかマウントできません。 
 
     ```bash
-    sudo mount -t cifs //<storage-account-name>.file.core.windows.net/<share-name> <mount-point> -o vers=<smb-version>,username=<storage-account-name>,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino
+    sudo mount -t cifs //<storage_account_name>.file.core.windows.net/<share_name> <mount_point> -o vers=<smb_version>,username=<storage_account_name>,password=<storage_account_key>,dir_mode=0777,file_mode=0777,serverino
     ```
 
 > [!Note]  
-> Azure ファイル共有の使用を完了したら、`sudo umount <mount-point>` を使用して共有を解除できます。
+> Azure ファイル共有の使用を完了したら、`sudo umount <mount_point>` を使用して共有を解除できます。
 
 ## <a name="create-a-persistent-mount-point-for-the-azure-file-share-with-etcfstab"></a>`/etc/fstab` を使って Azure ファイル共有の永続的なマウント ポイントを作成する
 
-1. **[使用する Linux ディストリビューション用の cifs-utils パッケージをインストールします](#install-cifs-utils)**。
+1. **[使用する Linux ディストリビューション用の cifs-utils パッケージをインストールします](#install-cifs-utils)** 。
 
-1. **マウント ポイントのフォルダーを作成します**。マウント ポイント用のフォルダーはファイル システム上のどこにでも作成できますが、`/mnt` フォルダー下にこれを作成するのが一般的な規則です。 これをどこに作成する場合でも、フォルダーの絶対パスをメモしてください。 たとえば、以下のコマンドでは、`/mnt` 下に新しいフォルダーを作成します (パスは絶対パスです)。
+1. **マウント ポイントのフォルダーを作成します**。マウント ポイント用のフォルダーはファイル システム上の任意の場所に作成できますが、一般的な方法ではこれを新しいフォルダーの下に作成します。 これをどこに作成する場合でも、フォルダーの絶対パスをメモしてください。 たとえば、次のコマンドは新しいディレクトリを作成し、 **<storage_account_name>** と **<file_share_name>** を環境の適切な情報に置き換えます。
 
     ```bash
-    sudo mkdir /mnt/MyAzureFileShare
+    sudo mkdir -p <storage_account_name>/<file_share_name>
     ```
 
-1. **共有ファイル用のユーザー名 (ストレージ アカウント名) とパスワード (ストレージ アカウント キー) を格納する資格情報ファイルを作成します。** `<storage-account-name>` と `<storage-account-key>` をお使いの環境に適した情報に置き換えることを忘れないでください。 
+1. **共有ファイル用のユーザー名 (ストレージ アカウント名) とパスワード (ストレージ アカウント キー) を格納する資格情報ファイルを作成します。** **<storage_account_name>** と **<storage_account_key>** を環境の適切な情報に置き換えます。
 
     ```bash
     if [ ! -d "/etc/smbcredentials" ]; then
-        sudo mkdir /etc/smbcredentials
+    sudo mkdir /etc/smbcredentials
     fi
-
-    if [ ! -f "/etc/smbcredentials/<storage-account-name>.cred" ]; then
-        sudo bash -c 'echo "username=<storage-account-name>" >> /etc/smbcredentials/<storage-account-name>.cred'
-        sudo bash -c 'echo "password=<storage-account-key>" >> /etc/smbcredentials/<storage-account-name>.cred'
+    if [ ! -f "/etc/smbcredentials/<STORAGE ACCOUNT NAME>.cred" ]; then
+    sudo bash -c 'echo "username=<STORAGE ACCOUNT NAME>" >> /etc/smbcredentials/<STORAGE ACCOUNT NAME>.cred'
+    sudo bash -c 'echo "password=7wRbLU5ea4mgc<DRIVE LETTER>PIpUCNcuG9gk2W4S2tv7p0cTm62wXTK<DRIVE LETTER>CgJlBJPKYc4VMnwhyQd<DRIVE LETTER>UT<DRIVE LETTER>yR5/RtEHyT/EHtg2Q==" >> /etc/smbcredentials/<STORAGE ACCOUNT NAME>.cred'
     fi
     ```
 
 1. **資格情報ファイルのアクセス許可を変更して、ルートのみがパスワード ファイルの読み取りと変更を実行できるようにします。** ストレージ アカウント キーは、本質的にはストレージ アカウント キーのスーパー管理者パスワードであるため、ルートのみがアクセスできるようにファイルのアクセス許可を設定して、特権の低いユーザーがストレージ アカウント キーを取得できないようにすることが重要です。   
 
     ```bash
-    sudo chmod 600 /etc/smbcredentials/<storage-account-name>.cred
+    sudo chmod 600 /etc/smbcredentials/<storage_account_name>.cred
     ```
 
-1. **後続のコマンドを使用して、`/etc/fstab`** に下記の行を追加します。忘れずに、`<storage-account-name>`、`<share-name>`、`<smb-version>`、および `<mount-point>` を、実際の環境において適切な情報に置き換えてください。 お使いの Linux ディストリビューションで暗号化付き SMB 3.0 がサポートされている場合 (詳細は「[SMB クライアント要件を理解している](#smb-client-reqs)」を参照)、`<smb-version>`の `3.0` を使用します。 暗号化付き SMB 3.0 をサポートしていない Linux ディストリビューションの場合は、`<smb-version>`の `2.1`を使用します。 Azure ファイル共有は、SMB 3.0 がある Azure リージョン (オンプレミスを含むか、または別の Azure リージョン内にある) の外部でしかマウントできません。 
+1. **後続のコマンドを使用して、`/etc/fstab`** に下記の行を追加します。 **<storage_account_name>** 、 **<share_name>** 、 **<smb_version>** 、および **<mount_point>** を環境の適切な情報に置き換えることを忘れないでください。 Linux ディストリビューションで暗号化付き SMB 3.0 がサポートされている場合は (詳細については [SMB クライアントの要件の概要](#smb-client-reqs)を参照)、 **<smb_version>** として **3.0** を使用します。 暗号化付き SMB 3.0 をサポートしていない Linux ディストリビューションの場合は、 **<smb_version>** として **2.1** を使用します。 Azure ファイル共有は、SMB 3.0 がある Azure リージョン (オンプレミスを含むか、または別の Azure リージョン内にある) の外部でしかマウントできません。
 
     ```bash
-    sudo bash -c 'echo "//<storage-account-name>.file.core.windows.net/<share-name> <mount-point> cifs nofail,vers=<smb-version>,credentials=/etc/smbcredentials/<storage-account-name>.cred,dir_mode=0777,file_mode=0777,serverino" >> /etc/fstab'
+    sudo bash -c 'echo "//<STORAGE ACCOUNT NAME>.file.core.windows.net/<FILE SHARE NAME> /mount/<STORAGE ACCOUNT NAME>/<FILE SHARE NAME> cifs nofail,vers=3.0,credentials=/etc/smbcredentials/<STORAGE ACCOUNT NAME>.cred,dir_mode=0777,file_mode=0777,serverino" >> /etc/fstab'
+
+    sudo mount /mount/<STORAGE ACCOUNT NAME>/<FILE SHARE NAME>
     ```
 
 > [!Note]  

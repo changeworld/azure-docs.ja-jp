@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/20/2019
+ms.date: 05/30/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: 67cf15b00e597131afe421bf8306a5df4511af9a
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 81180d6930816a4a7715ce60313347019029fccd
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65965527"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66416100"
 ---
 # <a name="tutorial-optimize-costs-from-recommendations"></a>チュートリアル: 推奨事項に従ってコストを最適化する
 
@@ -41,15 +41,25 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com/)) にサイ�
 
 ## <a name="view-cost-optimization-recommendations"></a>コストの最適化に関する推奨事項を表示する
 
-サブスクリプションのコスト最適化の推奨事項を表示するには、Azure portal で目的のスコープを開き、**[Advisor recommendations] \(Advisor の推奨事項\)** を選択します。
+サブスクリプションのコスト最適化の推奨事項を表示するには、Azure portal で目的のスコープを開き、 **[Advisor recommendations] \(Advisor の推奨事項\)** を選択します。
 
-管理グループで推奨事項を確認するには、Azure portal で目的のスコープを開き、メニューで **[コスト分析]** を選択します。 別のスコープ (管理グループなど) に切り替えるには、**[スコープ]** ピルを使用します。 **[Advisor recommendations] \(Advisor の推奨事項\)** を選択します。 スコープの詳細については、「[Understand and work with scopes (スコープを理解して使用する)](understand-work-scopes.md)」を参照してください。
+管理グループで推奨事項を確認するには、Azure portal で目的のスコープを開き、メニューで **[コスト分析]** を選択します。 別のスコープ (管理グループなど) に切り替えるには、 **[スコープ]** ピルを使用します。 **[Advisor recommendations] \(Advisor の推奨事項\)** を選択します。 スコープの詳細については、「[Understand and work with scopes (スコープを理解して使用する)](understand-work-scopes.md)」を参照してください。
 
 ![Azure portal に表示される Cost Management の Advisor の推奨事項](./media/tutorial-acm-opt-recommendations/advisor-recommendations.png)
 
 推奨事項の一覧には、使用の非効率性が表示されます。また、さらに費用を節約するために役立つ購入に関する推奨事項が表示されます。 合計の **[年間の潜在的な削減額]** には、推奨事項ルールに一致するすべての VM をシャットダウンするか割り当てを解除した場合に節約できる合計額が表示されます。 シャットダウンしたくない場合は、より安価な VM SKU へとサイズを変更することを検討する必要があります。
 
-**[年間の潜在的な削減額]** と共に、**[影響]** カテゴリは、可能な限り節約できる可能性のある推奨事項を特定するために役立ちます。 影響が大きい推奨事項は、[従量課金のコストよりさらに費用を節約するために、予約仮想マシン インスタンスを購入する](../advisor/advisor-cost-recommendations.md#buy-reserved-virtual-machine-instances-to-save-money-over-pay-as-you-go-costs)と、[使用率が低いインスタンスをサイズ変更またはシャットダウンして仮想マシンの支出を最適化する](../advisor/advisor-cost-recommendations.md#optimize-virtual-machine-spend-by-resizing-or-shutting-down-underutilized-instances)です。 影響が中程度の推奨事項は、[プロビジョニングが解除された ExpressRoute 回線を排除してコストを削減する](../advisor/advisor-cost-recommendations.md#reduce-costs-by-eliminating-unprovisioned-expressroute-circuits)と、[アイドル状態の仮想ネットワーク ゲートウェイを削除または再構成してコストを削減する](../advisor/advisor-cost-recommendations.md#reduce-costs-by-deleting-or-reconfiguring-idle-virtual-network-gateways)です。
+**[年間の潜在的な削減額]** と共に、 **[影響]** カテゴリは、可能な限り節約できる可能性のある推奨事項を特定するために役立ちます。
+
+影響の大きい推奨事項は次のとおりです。
+- [従量課金のコストより費用を節約するために、予約仮想マシン インスタンスを購入する](../advisor/advisor-cost-recommendations.md#buy-reserved-virtual-machine-instances-to-save-money-over-pay-as-you-go-costs)
+- [使用率が低いインスタンスをサイズ変更またはシャットダウンして仮想マシンの支出を最適化する](../advisor/advisor-cost-recommendations.md#optimize-virtual-machine-spend-by-resizing-or-shutting-down-underutilized-instances)
+- [マネージド ディスクのスナップショットを格納するために Standard Storage を使用する](../advisor/advisor-cost-recommendations.md#use-standard-snapshots-for-managed-disks)
+
+影響が中程度の推奨事項は次のとおりです。
+- [障害が発生している Azure Data Factory パイプラインを削除する](../advisor/advisor-cost-recommendations.md#delete-azure-data-factory-pipelines-that-are-failing)
+- [プロビジョニングが解除された ExpressRoute 回線を排除してコストを削減する](../advisor/advisor-cost-recommendations.md#reduce-costs-by-eliminating-unprovisioned-expressroute-circuits)
+- [アイドル状態の仮想ネットワーク ゲートウェイを削除または再構成してコストを削減する](../advisor/advisor-cost-recommendations.md#reduce-costs-by-deleting-or-reconfiguring-idle-virtual-network-gateways)
 
 ## <a name="act-on-a-recommendation"></a>推奨事項に従う
 
@@ -76,7 +86,7 @@ VM の詳細で、仮想マシンの使用率を確認して、適切なサイ�
 
 ![サイズを選択できる使用可能な VM サイズの一覧の例](./media/tutorial-acm-opt-recommendations/choose-size.png)
 
-適切なサイズを選択したら、**[選択]** をクリックしてサイズ変更アクションを開始します。
+適切なサイズを選択したら、 **[選択]** をクリックしてサイズ変更アクションを開始します。
 
 サイズ変更には、アクティブに実行されている仮想マシンを再起動する必要があります。 仮想マシンが運用環境内にある場合は、営業時間後にサイズ変更操作を実行することをお勧めします。 再起動のスケジュールを設定すると、一時的な使用不能による中断を減らすことができます。
 
