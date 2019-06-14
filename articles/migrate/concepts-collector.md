@@ -4,15 +4,15 @@ description: Azure Migrate の Collector アプライアンスに関する情報
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 04/26/2019
+ms.date: 05/31/2019
 ms.author: snehaa
 services: azure-migrate
-ms.openlocfilehash: d00899e0ca358b4e2970caa8c63c98e375ea970c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 865e0679ed05823d115baeb9eea3c01d7fb5f2a5
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64728022"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66428465"
 ---
 # <a name="about-the-collector-appliance"></a>Collector アプライアンスについて
 
@@ -111,7 +111,7 @@ Collector が Azure Migrate サービスに接続し、検出されたデータ�
 --- | --- | ---
 *.portal.azure.com | Azure Global に適用されます。 Azure サービス、および時刻の同期との接続を確認します。 | URL へのアクセスが必要です。<br/><br/> 接続がないと、前提条件チェックは失敗します。
 *.portal.azure.us | Azure Government にのみ適用されます。 Azure サービス、および時刻の同期との接続を確認します。 | URL へのアクセスが必要です。<br/><br/> 接続がないと、前提条件チェックは失敗します。
-*.oneget.org:443<br/><br/> *.windows.net:443<br/><br/> *.windowsazure.com:443<br/><br/> *.powershellgallery.com:443<br/><br/> *.msecnd.net:443<br/><br/> *.visualstudio.com:443| PowerShell vCenter PowerCLI モジュールをダウンロードするために使用されます。 | URL へのアクセスが必要です。<br/><br/> 前提条件チェックは失敗しません。<br/><br/> Collector 仮想マシンで自動のモジュールのインストールは失敗します。 インターネットに接続しているマシンに手動でモジュールをインストールしたうえで、アプライアンスにモジュールをコピーする必要があります。 [詳細については、このトラブルシューティング ガイドの手順 4 を参照してください](https://docs.microsoft.com/azure/migrate/troubleshooting-general#error-unhandledexception-internal-error-occurred-systemiofilenotfoundexception)。
+*.oneget.org:443<br/><br/> *.github.com/oneget/oneget<br/><br/> *.windows.net:443<br/><br/> *.windowsazure.com:443<br/><br/> *.azure.microsoft.com<br/><br/> *.azure.microsoft.com/en-us<br/><br/> *.powershellgallery.com:443<br/><br/> *.msecnd.net:443<br/><br/> *.visualstudio.com:443<br/><br/> *.visualstudio.microsoft.com | PowerShell vCenter PowerCLI モジュールをダウンロードするために使用されます。 | URL へのアクセスが必要です。<br/><br/> 前提条件チェックは失敗しません。<br/><br/> Collector 仮想マシンで自動のモジュールのインストールは失敗します。 インターネットに接続しているマシンに手動でモジュールをインストールしたうえで、アプライアンスにモジュールをコピーする必要があります。 [詳細については、このトラブルシューティング ガイドの手順 4 を参照してください](https://docs.microsoft.com/azure/migrate/troubleshooting-general#error-unhandledexception-internal-error-occurred-systemiofilenotfoundexception)。
 
 
 ### <a name="install-vmware-powercli-module-manually"></a>VMware PowerCLI モジュールの手動でのインストール

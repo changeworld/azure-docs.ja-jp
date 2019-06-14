@@ -12,12 +12,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 02/24/2019
 ms.author: glenga
-ms.openlocfilehash: 635e72a8e8a70b8885afea282511fbfaf24d2f94
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: a021ed2be3a94add7500a98d71a962bb580078e9
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65957341"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66729477"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions の JavaScript 開発者向けガイド
 
@@ -110,7 +110,7 @@ JavaScript では、[バインド](functions-triggers-bindings.md)が構成さ�
 
 ### <a name="inputs"></a>入力
 Azure Functions では、入力は、トリガー入力と追加入力という 2 つのカテゴリに分けられます。 関数は、トリガーと他の入力バインド (`direction === "in"` のバインド) を 3 つの方法で読み取ることができます。
- - **_[推奨]_ 関数に渡されるパラメーターを使用します。** それらは、*function.json* に定義されている順序で関数に渡されます。 *function.json* で定義されている `name` プロパティは、パラメーターの名前と一致する方が望ましいですが、必ずしもそうする必要はありません。
+ - ** _[推奨]_ 関数に渡されるパラメーターを使用します。** それらは、*function.json* に定義されている順序で関数に渡されます。 *function.json* で定義されている `name` プロパティは、パラメーターの名前と一致する方が望ましいですが、必ずしもそうする必要はありません。
  
    ```javascript
    module.exports = async function(context, myTrigger, myInput, myOtherInput) { ... };
@@ -141,7 +141,7 @@ Azure Functions では、入力は、トリガー入力と追加入力という 
 
 次の方法のいずれかで (これらの方法を組み合わせることはできません)、出力バインドにデータを割り当てることができます。
 
-- **_[出力が複数の場合に推奨]_ オブジェクトを返します。** 非同期関数または Promise を返す関数を使用している場合は、割り当てられた出力データを含むオブジェクトを返すことができます。 次の例の出力バインドは、*function.json* で "httpResponse" および "queueOutput" という名前が付けられています。
+- ** _[出力が複数の場合に推奨]_ オブジェクトを返します。** 非同期関数または Promise を返す関数を使用している場合は、割り当てられた出力データを含むオブジェクトを返すことができます。 次の例の出力バインドは、*function.json* で "httpResponse" および "queueOutput" という名前が付けられています。
 
   ```javascript
   module.exports = async function(context) {
@@ -156,7 +156,7 @@ Azure Functions では、入力は、トリガー入力と追加入力という 
   ```
 
   同期関数を使用している場合、[`context.done`](#contextdone-method) を使用してこのオブジェクトを返すことができます (例を参照)。
-- **_[出力が 1 つの場合に推奨]_ 直接値を返し $return バインド名を使用します。** これは、関数を返す非同期/Promise でのみ機能します。 「[async function をエクスポートする](#exporting-an-async-function)」の例を参照してください。 
+- ** _[出力が 1 つの場合に推奨]_ 直接値を返し $return バインド名を使用します。** これは、関数を返す非同期/Promise でのみ機能します。 「[async function をエクスポートする](#exporting-an-async-function)」の例を参照してください。 
 - **`context.bindings` に値を割り当てます。** context.bindings に直接値を割り当てることができます。
 
   ```javascript
@@ -397,9 +397,9 @@ HTTP トリガーを使用する場合、HTTP 要求オブジェクトと応答�
     ```javascript
     context.bindings.response = { status: 201, body: "Insert succeeded." };
     ```
-+ **_[応答のみ]_ `context.res.send(body?: any)` の呼び出し。** HTTP の応答は、入力 `body` を応答本文として使用して作成されます。 `context.done()` は暗黙的に呼び出されます。
++ ** _[応答のみ]_ `context.res.send(body?: any)` の呼び出し。** HTTP の応答は、入力 `body` を応答本文として使用して作成されます。 `context.done()` は暗黙的に呼び出されます。
 
-+ **_[応答のみ]_ `context.done()` の呼び出し。** これは、`context.done()` メソッドに渡される応答を返す特殊な種類の HTTP バインディングです。 次の HTTP 出力バインディングで、`$return` 出力パラメーターを定義します。
++ ** _[応答のみ]_ `context.done()` の呼び出し。** これは、`context.done()` メソッドに渡される応答を返す特殊な種類の HTTP バインディングです。 次の HTTP 出力バインディングで、`$return` 出力パラメーターを定義します。
 
     ```json
     {
@@ -455,7 +455,7 @@ module.exports = function(context) {
 ### <a name="using-kudu"></a>Kudu を使用する
 1. `https://<function_app_name>.scm.azurewebsites.net` にアクセスします。
 
-2. **[デバッグ コンソール]** > **[CMD]** をクリックします。
+2. **[デバッグ コンソール]**  >  **[CMD]** をクリックします。
 
 3. `D:\home\site\wwwroot` に移動し、ページの上半分にある **wwwroot** フォルダーに package.json ファイルをドラッグします。  
     関数アプリにファイルをアップロードする方法は、他にもあります。 詳細については、「[関数アプリ ファイルを更新する方法](functions-reference.md#fileupdate)」を参照してください。 
@@ -465,23 +465,16 @@ module.exports = function(context) {
 
 ## <a name="environment-variables"></a>環境変数
 
-Functions では、サービス接続文字列などの[アプリ設定](functions-app-settings.md)は、実行中に環境変数として公開されます。 次の `GetEnvironmentVariable` 関数で示すように、これらの設定には `process.env` を使用してアクセスできます。
+Functions では、サービス接続文字列などの[アプリ設定](functions-app-settings.md)は、実行中に環境変数として公開されます。 2 つ目と 3 つ目の `context.log()` の呼び出しで示されているように、`process.env`を使用してこれらの設定にアクセスできます。ここでは `AzureWebJobsStorage` と `WEBSITE_SITE_NAME` の環境変数をログに記録します。
 
 ```javascript
-module.exports = function (context, myTimer) {
+module.exports = async function (context, myTimer) {
     var timeStamp = new Date().toISOString();
 
     context.log('Node.js timer trigger function ran!', timeStamp);
-    context.log(GetEnvironmentVariable("AzureWebJobsStorage"));
-    context.log(GetEnvironmentVariable("WEBSITE_SITE_NAME"));
-
-    context.done();
+    context.log("AzureWebJobsStorage: " + process.env["AzureWebJobsStorage"]);
+    context.log("WEBSITE_SITE_NAME: " + process.env["WEBSITE_SITE_NAME"]);
 };
-
-function GetEnvironmentVariable(name)
-{
-    return name + ": " + process.env[name];
-}
 ```
 
 [!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]

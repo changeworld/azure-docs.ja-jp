@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 5/13/2019
 ms.author: victorh
-ms.openlocfilehash: 847ad271dac4afc8c8baa2faa8702b3a3ab6cefa
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: b34baa6f1ba91935fc6307dbb1617393786043b9
+ms.sourcegitcommit: 18a0d58358ec860c87961a45d10403079113164d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65596710"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66692838"
 ---
 # <a name="azure-dns-alias-records-overview"></a>Azure DNS エイリアス レコードの概要
 
@@ -67,6 +67,9 @@ Traffic Manager プロファイルの場合と同様に、エイリアス レコ
 たとえば、静的な Web サイトの名前が www.contoso.com の場合、DNS 名の前に www を付ける必要はなく、ユーザーは contoso.com を使ってサイトにアクセスできます。
 
 前述のように、CNAME レコードはゾーンの頂点ではサポートされていません。 そのため、CNAME レコードを使用して contoso.com から CDN エンドポイントをポイントすることはできません。 代わりに、エイリアス レコードを使用して、ゾーンの頂点から直接 CDN エンドポイントをポイントすることができます。
+
+> [!NOTE]
+> Akamai から Azure CDN の CDN エンドポイントにゾーンの頂点をポイントすることは、現在サポートされていません。
 
 ## <a name="next-steps"></a>次の手順
 

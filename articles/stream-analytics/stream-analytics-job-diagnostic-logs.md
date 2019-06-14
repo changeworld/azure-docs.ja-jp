@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/15/2019
-ms.openlocfilehash: e784cfd2956479327cff9c97a09dd0ada6a154c2
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: ff2930fbe0e53c4b3c1223f87919c0913296d07c
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65826573"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66515915"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-diagnostics-logs"></a>診断ログを使用した Azure Stream Analytics のトラブルシューティング
 
@@ -46,7 +46,7 @@ Stream Analytics には 2 種類のログがあります。
 
    ![Stream Analytics アクティビティ ログ操作の概要](./media/stream-analytics-job-diagnostic-logs/operation-summary.png)
 
-4. JSON の **[プロパティ]** セクションまで下へスクロールして、失敗した操作の原因となったエラーの詳細を表示します。 この例では、失敗は範囲外の緯度値からのランタイム エラーが原因でした。
+4. JSON の **[プロパティ]** セクションまで下へスクロールして、失敗した操作の原因となったエラーの詳細を表示します。 この例では、失敗は範囲外の緯度値からのランタイム エラーが原因でした。 Stream Analytics ジョブによって処理されるデータに矛盾があると、データ エラーが発生します。 さまざまな[入力データと出力データのエラーとそれらの発生する理由](https://docs.microsoft.com/azure/stream-analytics/data-errors)を学習できます。
 
    ![JSON エラーの詳細](./media/stream-analytics-job-diagnostic-logs/error-details.png)
 

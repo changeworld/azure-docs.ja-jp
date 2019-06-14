@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 04/29/2019
 ms.author: absha
-ms.openlocfilehash: ebb14d97273851585e491e3bcd36f776ec9b61b4
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 9160d300270bf1ab5043bee632d27bcc4b7bf332
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66000968"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66476039"
 ---
 # <a name="rewrite-http-headers-with-application-gateway"></a>Application Gateway で HTTP ヘッダーを書き換える
 
@@ -153,11 +153,11 @@ HTTP 要求または応答ヘッダーを評価し、ヘッダーまたはサー
 
 ## <a name="limitations"></a>制限事項
 
+- 応答内に同じ名前のヘッダーが複数含まれている場合、これらのヘッダーのいずれかの値を書き換えると、応答内の他のヘッダーが破棄されます。 応答に複数の Set-Cookie ヘッダーを設定できるので、これは通常、Set-Cookie ヘッダーで発生します。 このようなシナリオの 1 つが、アプリ サービスをアプリケーション ゲートウェイとともに使用していて、アプリケーション ゲートウェイで Cookie ベースのセッション アフィニティを構成している場合です。 この場合、応答には 2 つの Set-Cookie ヘッダーが含まれ、1 つはアプリ サービスで使用されるもの (`Set-Cookie: ARRAffinity=ba127f1caf6ac822b2347cc18bba0364d699ca1ad44d20e0ec01ea80cda2a735;Path=/;HttpOnly;Domain=sitename.azurewebsites.net`) で、もう 1 つはアプリケーション ゲートウェイ アフィニティ用 (`Set-Cookie: ApplicationGatewayAffinity=c1a2bd51lfd396387f96bl9cc3d2c516; Path=/`) です。 このシナリオでどちらかの Set-Cookie ヘッダーを書き換えると、もう一方の Set-Cookie ヘッダーが応答から削除されることがあります。
+
 - Connection、Upgrade、および Host の各ヘッダーの書き換えは現在サポートされていません。
 
 - ヘッダー名には、任意の英数字と、[RFC 7230](https://tools.ietf.org/html/rfc7230#page-27) で定義されている特定の記号を含めることができます。 現在はヘッダー名内で特殊文字のアンダー スコア (\_) がサポートされていません。
-
-- 応答内に同じ名前のヘッダーが複数含まれている場合、これらのヘッダーのいずれかの値を書き換えると、応答内の他のヘッダーが破棄されます。
 
 ## <a name="next-steps"></a>次の手順
 
