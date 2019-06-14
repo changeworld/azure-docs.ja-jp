@@ -4,16 +4,16 @@ description: Update Management の問題をトラブルシューティングす�
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 05/07/2019
+ms.date: 05/31/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: f286877c6a9e787c06a8a846efaf94668c04fc4e
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 9bcc871ecc9413f02545e6aec4caa6342d563b44
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65787703"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66474571"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Update Management の問題をトラブルシューティングする
 
@@ -78,19 +78,48 @@ $s = New-AzureRmAutomationSchedule -ResourceGroupName mygroup -AutomationAccount
 New-AzureRmAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -AutomationAccountName $aa -Schedule $s -Windows -AzureVMResourceId $azureVMIdsW -NonAzureComputer $nonAzurecomputers -Duration (New-TimeSpan -Hours 2) -IncludedUpdateClassification Security,UpdateRollup -ExcludedKbNumber KB01,KB02 -IncludedKbNumber KB100
 ```
 
-### <a name="nologs"></a>シナリオ:マシンの Azure Monitor ログに表示されない Update Management データ
+### <a name="nologs"></a>シナリオ:Update Management のポータルにマシンが表示されない
 
 #### <a name="issue"></a>問題
 
-**[コンプライアンス]** の下に **[評価が行われていません]** と表示されるマシンがありますが、Hybrid Runbook Worker に対する Azure Monitor ログにハートビート データが表示され、Update Management には表示されません。
+次のシナリオが発生する場合があります。
+
+* VM の Update Management ビューで自分のマシンが **[構成されていません]** と表示される。
+
+* Automation アカウントの Update Management ビューに自分のマシンがない。
+
+* **[コンプライアンス]** の下に **[評価が行われていません]** と表示されるマシンがありますが、Hybrid Runbook Worker に対する Azure Monitor ログにハートビート データが表示され、Update Management には表示されません。
 
 #### <a name="cause"></a>原因
 
+これは、ローカル構成の潜在的な問題や正しく設定されなかったスコープ構成が原因で発生する可能性があります。
+
 Hybrid Runbook Worker の再登録と再インストールが必要な可能性があります。
+
+自分のワークスペースで定義したクォータに達していて、データの格納が停止している可能性があります。
 
 #### <a name="resolution"></a>解決策
 
-「[Windows Hybrid Runbook Worker をデプロイする](../automation-windows-hrw-install.md)」(Windows の場合) または「[Linux Hybrid Runbook Worker を展開する](../automation-linux-hrw-install.md)」(Linux の場合) の手順に従ってハイブリッド worker を再インストールしてください。
+* マシンが適切なワークスペースに対してレポートしていることを確認します。 自分のマシンのレポート先となるワークスペースを確認してください。 これを確認する方法については、「[Log Analytics へのエージェント接続を確認する](../../azure-monitor/platform/agent-windows.md#verify-agent-connectivity-to-log-analytics)」を参照してください。 次に、これが自分の Azure Automation アカウントにリンクされたワークスペースであることを確認します。 これを確認するには、自分の Automation アカウントに移動して、 **[関連リソース]** の **[リンクされたワークスペース]** をクリックします。
+
+* Log Analytics ワークスペースにマシンが表示されていることを確認します。 自分の Automation アカウントにリンクされた Log Analytics ワークスペースで、次のクエリを実行します。 クエリの結果に自分のマシンが表示されない場合、自分のマシンはハートビートを送信していません。これは、ローカル構成に問題がある可能性が最も高いことを意味します。 OS に応じて [Windows](update-agent-issues.md#troubleshoot-offline) 用または [Linux](update-agent-issues-linux.md#troubleshoot-offline) 用のトラブルシューティング ツールを実行できます。または、[エージェントを再インストール](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows)できます。 クエリ結果に自分のマシンが表示される場合は、以下の箇条書きで指定されているスコープ構成を確認する必要があります。
+
+  ```loganalytics
+  Heartbeat
+  | summarize by Computer, Solutions
+  ```
+
+* スコープ構成に問題がないかどうかを確認します。 [スコープ構成](../automation-onboard-solutions-from-automation-account.md#scope-configuration)では、どのマシンがソリューション用に構成されるかを決定します。 自分のワークスペースで表示されているマシンが表示されていない場合、スコープ構成を設定してそのマシンをターゲットにする必要があります。 これを行う方法については、「[ワークスペースでのマシンの配布準備](../automation-onboard-solutions-from-automation-account.md#onboard-machines-in-the-workspace)」を参照してください。
+
+* 上記の手順で問題が解決しないときは、「[Windows Hybrid Runbook Worker をデプロイする](../automation-windows-hrw-install.md)」(Windows の場合) または「[Linux Hybrid Runbook Worker を展開する](../automation-linux-hrw-install.md)」(Linux の場合) の手順に従って、ハイブリッド worker を再インストールしてください。
+
+* 自分のワークスペースで、次のクエリを実行します。 結果に `Data collection stopped due to daily limit of free data reached. Ingestion status = OverQuota` と表示される場合、自分のワークスペースで定義したクォータに達していて、データの保存が停止されています。 自分のワークスペースで **[使用量と推定コスト]**  >  **[データ ボリュームの管理]** の順に移動して、クォータを確認するか、または既存のクォータを削除します。
+
+  ```loganalytics
+  Operation
+  | where OperationCategory == 'Data Collection Status'
+  | sort by TimeGenerated desc
+  ```
 
 ## <a name="windows"></a>Windows
 
