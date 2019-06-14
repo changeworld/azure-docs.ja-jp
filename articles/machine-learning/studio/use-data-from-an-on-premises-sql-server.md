@@ -11,11 +11,11 @@ ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 03/13/2017
 ms.openlocfilehash: 9590728cec663b36c889dc26a6216c3d474244e4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57888350"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60735469"
 ---
 # <a name="perform-analytics-with-azure-machine-learning-studio-using-an-on-premises-sql-server-database"></a>オンプレミスの SQL Server データベースを使用して Azure Machine Learning Studio で分析を実行する
 
@@ -88,9 +88,9 @@ Data Factory セルフホステッド統合ランタイムを設定して使用�
 
     ![データ ゲートウェイをダウンロードして登録](./media/use-data-from-an-on-premises-sql-server/download-and-register-data-gateway.png)
 6. <span id="note-1" class="anchor"></span>まだ Microsoft Data Management Gateway をダウンロードしてインストールしていない場合は、 **[Download data management gateway (データ管理ゲートウェイのダウンロード)]** をクリックします。 Microsoft ダウンロード センターに移動するので、必要なゲートウェイのバージョンを選択し、それをダウンロードしてインストールします。 インストールの前提条件、インストールの手順、およびトラブルシューティングのヒントの詳細については、「 [Data Management Gateway を使用してオンプレミスのソースとクラウドの間でデータを移動する](../../data-factory/tutorial-hybrid-copy-portal.md)」という記事の冒頭のセクションを参照してください。
-7. ゲートウェイがインストールされると、Data Management Gateway 構成マネージャーが開き、 **[ゲートウェイの登録]** ダイアログが表示されます。 クリップボードにコピーした**ゲートウェイ登録キー**を貼り付け、**[登録]** をクリックします。
-8. 既にゲートウェイがインストールされている場合は、Data Management Gateway 構成マネージャーを実行します。 **[キーの変更]** をクリックして、前の手順でクリップボードにコピーした**ゲートウェイ登録キー**を貼り付け、**[OK]** をクリックします。
-9. インストールの完了時に、Microsoft Data Management Gateway 構成マネージャーの **[ゲートウェイの登録]** ダイアログが表示されます。 前の手順でクリップボードにコピーしたゲートウェイ登録キーを貼り付け、**[登録]** をクリックします。
+7. ゲートウェイがインストールされると、Data Management Gateway 構成マネージャーが開き、 **[ゲートウェイの登録]** ダイアログが表示されます。 クリップボードにコピーした**ゲートウェイ登録キー**を貼り付け、 **[登録]** をクリックします。
+8. 既にゲートウェイがインストールされている場合は、Data Management Gateway 構成マネージャーを実行します。 **[キーの変更]** をクリックして、前の手順でクリップボードにコピーした**ゲートウェイ登録キー**を貼り付け、 **[OK]** をクリックします。
+9. インストールの完了時に、Microsoft Data Management Gateway 構成マネージャーの **[ゲートウェイの登録]** ダイアログが表示されます。 前の手順でクリップボードにコピーしたゲートウェイ登録キーを貼り付け、 **[登録]** をクリックします。
 
     ![ゲートウェイを登録](./media/use-data-from-an-on-premises-sql-server/data-gateway-configuration-manager-register-gateway.png)
 10. Microsoft Data Management Gateway 構成マネージャーの **[ホーム]** タブで以下の値が設定されていれば、ゲートウェイの構成は完了です。
@@ -111,7 +111,7 @@ Data Factory セルフホステッド統合ランタイムを設定して使用�
 12. Microsoft Data Management Gateway 構成マネージャーで、 **[証明書]** タブに切り替えます。このタブで指定された証明書は、ポータルで指定したオンプレミス データ ストアの資格情報の暗号化/暗号解除に使用されます。 この証明書は、既定の証明書です。 これを、証明書管理システムにバックアップする独自の証明書に変更することをお勧めします。 代わりに独自の証明書を使用する場合は、 **[変更]** をクリックします。
 
     ![ゲートウェイ証明書を変更](./media/use-data-from-an-on-premises-sql-server/data-gateway-configuration-manager-certificate.png)
-13. (省略可能) ゲートウェイの問題をトラブルシューティングするために詳細ログを有効にする場合は、Microsoft Data Management Gateway 構成マネージャーで **[診断]** タブに切り替え、**[トラブルシューティングができるように詳細なログ記録を有効にします]** オプションをオンにします。 ログ情報については、Windows イベント ビューアーで **[アプリケーションとサービス ログ]** -&gt;**[Data Management Gateway]** ノードの下を参照してください。 **[診断]** タブを使用すると、ゲートウェイを使用してオンプレミスのデータ ソースへの接続をテストすることもできます。
+13. (省略可能) ゲートウェイの問題をトラブルシューティングするために詳細ログを有効にする場合は、Microsoft Data Management Gateway 構成マネージャーで **[診断]** タブに切り替え、 **[トラブルシューティングができるように詳細なログ記録を有効にします]** オプションをオンにします。 ログ情報については、Windows イベント ビューアーで **[アプリケーションとサービス ログ]**  -&gt; **[Data Management Gateway]** ノードの下を参照してください。 **[診断]** タブを使用すると、ゲートウェイを使用してオンプレミスのデータ ソースへの接続をテストすることもできます。
 
     ![詳細ログ記録を有効化](./media/use-data-from-an-on-premises-sql-server/data-gateway-configuration-manager-verbose-logging.png)
 
@@ -123,7 +123,7 @@ Studio で各ワークスペースに対して複数のゲートウェイを作�
 ### <a name="step-2-use-the-gateway-to-read-data-from-an-on-premises-data-source"></a>手順 2:ゲートウェイを使用してオンプレミス データ ソースからデータを読み取る
 ゲートウェイをセットアップした後は、オンプレミス SQL Server データベースからデータを入力する実験に **データのインポート** モジュールを追加できます。
 
-1. Machine Learning Studio で **[実験]** タブを選択し、左下隅の **[+ 新規]** をクリックして、**[Blank Experiment (空白の実験)]** を選択します (または使用可能ないくつかのサンプル実験のいずれかを選択します)。
+1. Machine Learning Studio で **[実験]** タブを選択し、左下隅の **[+ 新規]** をクリックして、 **[Blank Experiment (空白の実験)]** を選択します (または使用可能ないくつかのサンプル実験のいずれかを選択します)。
 2. **データのインポート** モジュールを見つけて、実験キャンバスにドラッグします。
 3. キャンバスの下にある **[名前を付けて保存]** をクリックします。 実験名として「Azure Machine Learning Studio オンプレミス SQL Server チュートリアル」と入力し、ワークスペースを選択して **OK** チェック マークをクリックします。
 
@@ -142,6 +142,6 @@ Studio で各ワークスペースに対して複数のゲートウェイを作�
    ![データのインポート モジュールのプロパティ](./media/use-data-from-an-on-premises-sql-server/import-data-properties-entered.png)
 8. **[実行]** をクリックして、実験を実行します。
 
-実験の実行が終了した後、**データのインポート** モジュールの出力ポートをクリックし、**[視覚化]** を選択すると、データベースからインポートしたデータを視覚化できます。
+実験の実行が終了した後、**データのインポート** モジュールの出力ポートをクリックし、 **[視覚化]** を選択すると、データベースからインポートしたデータを視覚化できます。
 
 実験の開発が完了したら、モデルをデプロイし、運用可能にすることができます。 **データのインポート** モジュールで構成されているオンプレミス SQL Server データベースのデータは、Batch Execution Service を使用して読み取られ、スコア付けに使用されます。 オンプレミス データのスコア付けには Request Response Service を使用できますが、代わりに [Excel アドイン](excel-add-in-for-web-services.md) を使用することをお勧めします。 現時点では、 **データのエクスポート** によるオンプレミス SQL Server データベースへの書き込みは、実験でも公開済み Web サービスでもサポートされていません。

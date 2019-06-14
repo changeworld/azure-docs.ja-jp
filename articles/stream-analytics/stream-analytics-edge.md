@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 4/2/2019
 ms.custom: seodec18
 ms.openlocfilehash: 4ecea8864a565997b8df119d870e7efee8448143
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58892230"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60804003"
 ---
 # <a name="azure-stream-analytics-on-iot-edge"></a>Azure Stream Analytics on IoT Edge
  
@@ -61,7 +61,7 @@ ASA では、IoT ハブを使用してエッジ ジョブをデバイスに展�
 ASA のコンパイルされたクエリとジョブ構成をエクスポートするには、ストレージ コンテナーが必要です。 これは、特定のクエリで ASA Docker イメージを構成するときに使用されます。 
 1. Azure Portal からストレージ アカウントを作成するには、[こちらの手順](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account)に従ってください。 ASA でアカウントを使用するために、オプションを変更する必要はありません。
 2. 新しく作成したストレージ アカウントで、Blob Storage コンテナーを作成します。
-    1. **[BLOB]**、**[+ コンテナー]** の順にクリックします。 
+    1. **[BLOB]** 、 **[+ コンテナー]** の順にクリックします。 
     2. 名前を入力し、コンテナーを **[プライベート]** のままにします。
 
 #### <a name="create-an-asa-edge-job"></a>ASA Edge ジョブを作成する
@@ -103,8 +103,8 @@ ASA のコンパイルされたクエリとジョブ構成をエクスポート�
 
 ####  <a name="deployment-asa-on-your-iot-edge-devices"></a>ASA を IoT Edge デバイスに展開する
 ##### <a name="add-asa-to-your-deployment"></a>ASA を展開に追加する
-- Azure portal で IoT Hub を開き、**[IoT Edge]** に移動して、この展開の対象となるデバイスをクリックします。
-- **[モジュールの設定]**、**[+ 追加]**、**[Azure Stream Analytics モジュール]** の順に選択します。
+- Azure portal で IoT Hub を開き、 **[IoT Edge]** に移動して、この展開の対象となるデバイスをクリックします。
+- **[モジュールの設定]** 、 **[+ 追加]** 、 **[Azure Stream Analytics モジュール]** の順に選択します。
 - サブスクリプションと、作成した ASA Edge ジョブを選択します。 [保存] をクリックします。
 ![ASA モジュールを展開に追加する](media/stream-analytics-edge/add-stream-analytics-module.png)
 

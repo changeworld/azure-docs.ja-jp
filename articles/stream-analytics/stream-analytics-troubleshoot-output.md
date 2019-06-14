@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
 ms.openlocfilehash: 92cb427149e6e6cbddfb96c6e4488017641e6482
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53164910"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60761745"
 ---
 # <a name="troubleshoot-azure-stream-analytics-outputs"></a>Azure Stream Analytics の出力のトラブルシューティング
 
@@ -75,7 +75,7 @@ Stream Analytics ジョブが開始されると、入力イベントが読み取
 - アップストリーム ソースが調整されているか
 - クエリの処理ロジックがコンピューティング集約型かどうか
 
-これらの詳細を確認するには、Azure Portal で、ストリーミング ジョブを選択して、**[ジョブ ダイアグラム]** を選択します。 各入力には、パーティションごとのバックログ イベント メトリックがあります。 バックログ イベント メトリックが継続的に増加している場合、システム リソースが制約を受けていることを示す指標になります。 出力のシンク調整または高使用率の CPU が原因になっている可能性があります。 ジョブ ダイアグラムの使用に関する詳細については、「[ジョブ ダイアグラムを使用したデータ主導型デバッグ](stream-analytics-job-diagram-with-metrics.md)」をご覧ください。
+これらの詳細を確認するには、Azure Portal で、ストリーミング ジョブを選択して、 **[ジョブ ダイアグラム]** を選択します。 各入力には、パーティションごとのバックログ イベント メトリックがあります。 バックログ イベント メトリックが継続的に増加している場合、システム リソースが制約を受けていることを示す指標になります。 出力のシンク調整または高使用率の CPU が原因になっている可能性があります。 ジョブ ダイアグラムの使用に関する詳細については、「[ジョブ ダイアグラムを使用したデータ主導型デバッグ](stream-analytics-job-diagram-with-metrics.md)」をご覧ください。
 
 ## <a name="key-violation-warning-with-azure-sql-database-output"></a>Azure SQL Database の出力でのキー違反の警告
 

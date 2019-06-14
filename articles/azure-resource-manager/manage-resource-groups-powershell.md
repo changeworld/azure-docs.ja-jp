@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
 ms.openlocfilehash: 8ae86d8bc7914a7a9c41eee93bb16b2f774993b9
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58651786"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60550497"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-azure-powershell"></a>Azure PowerShell を使用して Azure Resource Manager リソース グループを管理する
 
@@ -33,7 +33,7 @@ ms.locfileid: "58651786"
 
 リソース グループには、リソースについてのメタデータが格納されます。 そのため、リソース グループの場所を指定するとき、このメタデータが格納される場所を指定することになります。 コンプライアンス上の理由から、データは特定のリージョンに格納されるようにする必要があります。
 
-リソース グループには、リソースについてのメタデータが格納されます。 リソース グループの場所を指定するときは、このメタデータが格納されている場所を指定します。
+リソース グループには、リソースについてのメタデータが格納されます。 リソース グループの場所を指定するとき、このメタデータが格納される場所を指定することになります。
 
 ## <a name="create-resource-groups"></a>リソース グループを作成する
 
@@ -48,7 +48,7 @@ New-AzResourceGroup -Name $resourceGroupName -Location $location
 Get-AzResourceGroup -Name $resourceGroupName
 ```
 
-## <a name="list-resource-groups"></a>List resource groups
+## <a name="list-resource-groups"></a>リソース グループの一覧を表示する
 
 次の PowerShell スクリプトでは、サブスクリプションの下にリソース グループを一覧表示します。
 
@@ -124,7 +124,7 @@ Get-AzResourceLock -ResourceGroupName $resourceGroupName
 
 リソース グループを正常に設定したら、リソース グループの Resource Manager テンプレートを表示できます。 テンプレートのエクスポートには、2 つの利点があります。
 
-- テンプレートには完全なインフラストラクチャが含まれているため、ソリューションの将来のデプロイを自動化できます。
+- テンプレートに完全なインフラストラクチャが含まれているため、ソリューションの将来のデプロイを自動化します。
 - ソリューションを表す JavaScript Object Notation (JSON) を調べることで、テンプレートの構文を確認できます。
 
 ```azurepowershell-interactive
@@ -141,7 +141,7 @@ Export-AzResourceGroup -ResourceGroupName $resourceGroupName
 
 ## <a name="next-steps"></a>次の手順
 
-- Azure Resource Manager については、「[Azure Resource Manager の概要](./resource-group-overview.md)」をご覧ください。
-- Resource Manager テンプレートの構文については、「[Azure Resource Manager テンプレートの構造と構文の詳細](./resource-group-authoring-templates.md)」をご覧ください。
-- テンプレートを開発する方法については、[ステップバイステップのチュートリアル](/azure/azure-resource-manager/) をご覧ください。
-- Azure Resource Manager のテンプレートのスキーマを表示するには、[テンプレート リファレンス](/azure/templates/)をご覧ください。
+- Azure Resource Manager については、「[Azure Resource Manager の概要](./resource-group-overview.md)」を参照してください。
+- Resource Manager テンプレートの構文については、「[Azure Resource Manager テンプレートの構造と構文の詳細](./resource-group-authoring-templates.md)」を参照してください。
+- テンプレートを開発する方法については、[ステップバイステップのチュートリアル](/azure/azure-resource-manager/)のページをご覧ください。
+- Azure Resource Manager テンプレートのスキーマを表示するには、[テンプレート リファレンス](/azure/templates/)のページをご覧ください。

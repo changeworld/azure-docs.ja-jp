@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
 ms.openlocfilehash: a228c5b90e47c9c24c5da70484a1a28f9a3054b1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58100481"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60498834"
 ---
 # <a name="calchistogram-method"></a>CalcHistogram メソッド
 
@@ -33,11 +33,11 @@ https:// westus.api.cognitive.microsoft.com/academic/v1.0/calchistogram?
 Name  |値 | 必須  |説明
 -----------|----------|--------|----------
 **expr**    |テキスト文字列 | はい  |ヒストグラムの計算の対象となるエンティティを指定するクエリ式。
-**model** |テキスト文字列 | いいえ  |クエリを実行するモデルの名前を選択します。  現時点では、既定値は *latest* です。
-**attributes** | テキスト文字列 | いいえ <br>既定値: | 応答に含まれている属性値を指定するコンマ区切りリスト。 属性名の大文字と小文字は区別されます。
-**count** |Number | いいえ <br>既定値は10 |返す結果の数。
-**offset**  |Number | いいえ <br>既定値は0 |返す最初の結果のインデックス。
-**timeout**  |Number | いいえ <br>既定値は1,000 |タイムアウト (ミリ秒)。 タイムアウトが経過する前に見つかった解釈だけが返されます。
+**model** |テキスト文字列 | いいえ |クエリを実行するモデルの名前を選択します。  現時点では、既定値は *latest* です。
+**attributes** | テキスト文字列 | いいえ<br>既定値: | 応答に含まれている属性値を指定するコンマ区切りリスト。 属性名の大文字と小文字は区別されます。
+**count** |Number | いいえ<br>既定値は10 |返す結果の数。
+**offset**  |Number | いいえ<br>既定値は0 |返す最初の結果のインデックス。
+**timeout**  |Number | いいえ<br>既定値は1,000 |タイムアウト (ミリ秒)。 タイムアウトが経過する前に見つかった解釈だけが返されます。
 
 ## <a name="response-json"></a>応答 (JSON)
 

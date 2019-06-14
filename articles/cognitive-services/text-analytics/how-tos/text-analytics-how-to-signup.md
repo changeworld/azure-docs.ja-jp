@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: aahi
 ms.openlocfilehash: 53532a19482a33f8727e71d44ae169225b5b1c98
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57449965"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60829669"
 ---
 # <a name="how-to-sign-up-for-the-text-analytics-api"></a>Text Analytics API へのサインアップ方法
 
@@ -23,7 +23,7 @@ Text Analytics のリソースは、曜日を問わず 24 時間クラウドで�
 
 + まず Azure サブスクリプションを用意します。 [無料アカウント](https://azure.microsoft.com/free/)を作成して、無料で試すことができます。
 
-+ [Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)を作成します。その際、**[Text Analytics API]** を選択します。 サインアップするとキーが生成されます。
++ [Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)を作成します。その際、 **[Text Analytics API]** を選択します。 サインアップするとキーが生成されます。
 
 Text Analytics には、調査と評価を目的とした Free レベルと、運用環境のワークロードを目的とした請求対象のレベルとがあります。 それぞれのサブスクリプションで複数のサインアップ (1 つは無料、もう 1 つは有料など) を行うことができます。 要求の量が増加した場合は、より多くのトランザクション数が提供されているレベルに切り替えることができます。
 
@@ -39,7 +39,7 @@ Text Analytics には、調査と評価を目的とした Free レベルと、�
 
    ![左側のナビゲーション メニューの価格帯コマンド](../media/portal-pricing-tier.png)
 
-3. 価格帯を選択し、**[選択]** をクリックします。  選択内容が処理されるとすぐに新しい制限が有効となります。 
+3. 価格帯を選択し、 **[選択]** をクリックします。  選択内容が処理されるとすぐに新しい制限が有効となります。 
 
    ![価格帯選択ページのタイルと [選択] ボタン](../media/portal-choose-tier.png)
 

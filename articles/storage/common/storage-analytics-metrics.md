@@ -10,10 +10,10 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.openlocfilehash: f0dfed10190685c1d51822b8bec2b3c80cea7bb2
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65153937"
 ---
 # <a name="azure-storage-analytics-metrics-classic"></a>Azure Storage Analytics のメトリック (クラシック)
@@ -130,9 +130,9 @@ REST API を使用してストレージ メトリックを構成する方法に�
 ストレージ アカウントを監視するように Storage Analytics メトリックを構成すると、ストレージ アカウントのよく知られたテーブルのセットにメトリックが記録されます。 [Azure Portal](https://portal.azure.com) では、時間単位のメトリックを表示するようにグラフを構成できます。
 
 1. [Azure Portal](https://portal.azure.com) のストレージ アカウントに移動します。
-1. メトリックを表示するサービスの **[メニュー]** ブレードで、**[メトリック (クラシック)]** を選択します。
+1. メトリックを表示するサービスの **[メニュー]** ブレードで、 **[メトリック (クラシック)]** を選択します。
 1. 構成するグラフをクリックします。
-1. **[グラフの編集]** ブレードで、**[時間の範囲]**、**[グラフの種類]**、およびグラフに表示するメトリックを選択します。
+1. **[グラフの編集]** ブレードで、 **[時間の範囲]** 、 **[グラフの種類]** 、およびグラフに表示するメトリックを選択します。
 
 Azure Portal のストレージ アカウント メニュー ブレードの **[監視 (クラシック)]** セクションで、特定のメトリックが特定の値に達したときに通知するメール アラートの送信など、[アラート ルール](#metrics-alerts)を構成できます。
 
@@ -141,7 +141,7 @@ Azure Portal のストレージ アカウント メニュー ブレードの **[
 ||||  
 |-|-|-|  
 |**メトリック**|**テーブル名**|**メモ**|  
-|時間単位のメトリック|$MetricsHourPrimaryTransactionsBlob<br /><br /> $MetricsHourPrimaryTransactionsTable<br /><br /> $MetricsHourPrimaryTransactionsQueue<br /><br /> $MetricsHourPrimaryTransactionsFile|2013-08-15 より前のバージョンでは、これらのテーブルは以下のように呼ばれていました。<br /><br /> $MetricsTransactionsBlob <br /><br /> $MetricsTransactionsTable<br /><br /> $MetricsTransactionsQueue<br /><br /> ファイル サービスのメトリックは、バージョン 2015-04-05 以降で利用できます。|  
+|時間単位のメトリック|$MetricsHourPrimaryTransactionsBlob<br /><br /> $MetricsHourPrimaryTransactionsTable<br /><br /> $MetricsHourPrimaryTransactionsQueue<br /><br /> $MetricsHourPrimaryTransactionsFile|2013-08-15 より前のバージョンでは、これらのテーブルは以下のように呼ばれていました。<br /><br /> $MetricsTransactionsBlob<br /><br /> $MetricsTransactionsTable<br /><br /> $MetricsTransactionsQueue<br /><br /> ファイル サービスのメトリックは、バージョン 2015-04-05 以降で利用できます。|  
 |分単位のメトリック|$MetricsMinutePrimaryTransactionsBlob<br /><br /> $MetricsMinutePrimaryTransactionsTable<br /><br /> $MetricsMinutePrimaryTransactionsQueue<br /><br /> $MetricsMinutePrimaryTransactionsFile|Powershell を使用するか、プログラミングによってのみ有効にできます。<br /><br /> ファイル サービスのメトリックは、バージョン 2015-04-05 以降で利用できます。|  
 |容量|$MetricsCapacityBlob|BLOB サービスのみ。|  
 

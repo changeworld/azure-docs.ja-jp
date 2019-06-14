@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 06/18/2018
 ms.author: yexu
 ms.openlocfilehash: 107687c785433f81870449d1445136b5148a4d2c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58101756"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60787693"
 ---
 # <a name="copy-data-tool-in-azure-data-factory"></a>Azure Data Factory のデータのコピー ツール
 Azure Data Factory のデータのコピー ツールを使うと、通常はエンド ツー エンドのデータ統合シナリオの最初の手順である、Data Lake へのデータの取り込みプロセスが容易になり、最適化されます。  時間が短縮され、Azure Data Factory を使って初めてデータ ソースからデータを取り込むときに特に効果があります。 このツールには次のような利点があります。
@@ -78,7 +78,7 @@ Azure Data Factory のデータのコピー ツールを使うと、通常はエ
 ![データベース内のデータのフィルター処理](./media/copy-data-tool/filter-data-in-database.png)
 
 ### <a name="filter-data-in-an-azure-blob-folder"></a>Azure Blob フォルダー内のデータのフィルター処理
-フォルダー パスに変数を使って、フォルダーからデータをコピーできます。 サポートされている変数は、**{year}**、**{month}**、**{day}**、**{hour}**、**{minute}** です。 例: inputfolder/{year}/{month}/{day}。 
+フォルダー パスに変数を使って、フォルダーからデータをコピーできます。 サポートされている変数は、 **{year}** 、 **{month}** 、 **{day}** 、 **{hour}** 、 **{minute}** です。 例: inputfolder/{year}/{month}/{day}。 
 
 次の形式の入力フォルダーがあるとします。 
 
@@ -89,9 +89,9 @@ Azure Data Factory のデータのコピー ツールを使うと、通常はエ
 ...
 ```
 
-**[ファイルまたはフォルダー]** の **[参照]** ボタンをクリックして、これらのフォルダーのいずれか (例: 2016->03->01->02) を参照し、**[選択]** をクリックします。 テキスト ボックスに 2016/03/01/02 と表示されます。 
+**[ファイルまたはフォルダー]** の **[参照]** ボタンをクリックして、これらのフォルダーのいずれか (例: 2016->03->01->02) を参照し、 **[選択]** をクリックします。 テキスト ボックスに 2016/03/01/02 と表示されます。 
 
-次に、**2016** を **{year}**、**03** を **{month}**、**01** を **{day}**、**02** を **{hour}** にそれぞれ置き換え、**Tab** キーを押します。 この 4 つの変数の形式を選択するドロップダウン リストが表示されます。
+次に、**2016** を **{year}** 、**03** を **{month}** 、**01** を **{day}** 、**02** を **{hour}** にそれぞれ置き換え、**Tab** キーを押します。 この 4 つの変数の形式を選択するドロップダウン リストが表示されます。
 
 ![ファイルまたはフォルダーのフィルター処理](./media/copy-data-tool/filter-file-or-folder.png)
 

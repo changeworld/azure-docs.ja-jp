@@ -15,16 +15,16 @@ ms.workload: NA
 ms.date: 06/15/2017
 ms.author: anmola
 ms.openlocfilehash: 3581550779b2387515b4f300d211b4e0a894edc7
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662355"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60544832"
 ---
 # <a name="introduction-to-the-fault-analysis-service"></a>Fault Analysis Service の概要
 Fault Analysis Service は、Microsoft Azure Service Fabric で構築されたサービスをテストするために設計されています。 Fault Analysis Service を使用すると、アプリケーションに対して意味のある障害を誘発させ、完全なテスト シナリオを実行することができます。 これらのエラーとシナリオでは、サービスがその有効期間中に経験する多数の状態と遷移を、完全に管理された安全で一貫性のある方法で実行して検証します。
 
-アクションは、サービスをテストするための、そのサービスを対象にした個別のエラーです。 サービス開発者は、複雑なシナリオを記述するための構成要素としてアクションを使用できます。 例: 
+アクションは、サービスをテストするための、そのサービスを対象にした個別のエラーです。 サービス開発者は、複雑なシナリオを記述するための構成要素としてアクションを使用できます。 例:
 
 * ノードを再起動して、コンピューターまたは VM がリブートされる状況をシミュレートします。
 * ステートフル サービスのレプリカを移動して、負荷分散、フェールオーバー、またはアプリケーションのアップグレードをシミュレートします。

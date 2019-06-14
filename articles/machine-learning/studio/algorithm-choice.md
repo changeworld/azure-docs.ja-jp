@@ -11,11 +11,11 @@ ms.author: amlstudiodocs
 ms.custom: previous-ms.author=pakalra, previous-author=pakalra
 ms.date: 03/04/2019
 ms.openlocfilehash: 3bb88f2f9546ec25433061a0704bd144730bd34c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57894633"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60752973"
 ---
 # <a name="how-to-choose-algorithms-for-azure-machine-learning-studio"></a>Azure Machine Learning Studio のアルゴリズムの選択方法
 
@@ -41,7 +41,7 @@ Machine Learning Studio は、拡張性の高い強化された意思決定ツ�
 
 ### <a name="how-to-use-the-cheat-sheet"></a>チート シートの使用方法
 
-チャートのパス ラベルとアルゴリズム ラベルは、"*&lt;パス ラベル&gt;* の場合は *&lt;アルゴリズム&gt;* を使用する" と読んでください。 たとえば、"*速度重視*の場合は *Two class logistic regression* (2 クラス ロジスティック回帰) を使用する" といった具合です。 場合によっては複数の分岐が適用されます。
+チャートのパス ラベルとアルゴリズム ラベルは、" *&lt;パス ラベル&gt;* の場合は *&lt;アルゴリズム&gt;* を使用する" と読んでください。 たとえば、"*速度重視*の場合は *Two class logistic regression* (2 クラス ロジスティック回帰) を使用する" といった具合です。 場合によっては複数の分岐が適用されます。
 どれも完全に一致しない場合もあります。 大まかな推奨事項なので、正確さは気にしないでください。
 複数のデータ科学者が、最善のアルゴリズムを探す唯一の方法はすべてを試してみることであると言っています。
 

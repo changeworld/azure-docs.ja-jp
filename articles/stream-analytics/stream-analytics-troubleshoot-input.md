@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
 ms.openlocfilehash: b5ed614fdd378b36d8f95fc90ce7ff98d63ef31a
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59526406"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60761868"
 ---
 # <a name="troubleshoot-input-connections"></a>入力接続のトラブルシューティング
 
@@ -27,7 +27,7 @@ ms.locfileid: "59526406"
 
     入力データがイベント ハブに送信されていることを確認するために、[Service Bus エクスプローラー](https://code.msdn.microsoft.com/windowsapps/Service-Bus-Explorer-f2abca5a)を使用して、Azure イベント ハブに接続します (イベント ハブの入力を使用している場合)。
         
-    各入力の [**[サンプル データ]**](stream-analytics-sample-data-input.md) ボタンを使用して、入力のサンプル データをダウンロードします。
+    各入力の [ **[サンプル データ]** ](stream-analytics-sample-data-input.md) ボタンを使用して、入力のサンプル データをダウンロードします。
         
     サンプル データを調べて、データの構造 (スキーマおよび[データ型](https://msdn.microsoft.com/library/azure/dn835065.aspx)) を理解します。
 

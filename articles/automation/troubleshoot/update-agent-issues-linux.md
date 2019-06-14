@@ -10,10 +10,10 @@ ms.service: automation
 ms.subservice: update-management
 manager: carmonm
 ms.openlocfilehash: 075cf254dbf7c5d03f1afac64315f6c6f773159c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60597821"
 ---
 # <a name="understand-the-linux-agent-check-results-in-update-management"></a>Update Management での Linux エージェントのチェック結果について
@@ -31,12 +31,12 @@ Update Management でコンピューターに**準備完了**が表示されな�
 
 ## <a name="start-the-troubleshooter"></a>トラブルシューティングの開始
 
-Azure マシンの場合は、ポータルの **[Update エージェントの準備]** 列にある **[トラブルシューティング]** リンクをクリックすると、**[Update エージェントのトラブルシューティング]** ページが起動されます。 Azure 以外のマシンの場合は、リンクをクリックすると、この記事が表示されます。 Azure 以外のマシンをトラブルシューティングするには、オフラインの手順を参照してください。
+Azure マシンの場合は、ポータルの **[Update エージェントの準備]** 列にある **[トラブルシューティング]** リンクをクリックすると、 **[Update エージェントのトラブルシューティング]** ページが起動されます。 Azure 以外のマシンの場合は、リンクをクリックすると、この記事が表示されます。 Azure 以外のマシンをトラブルシューティングするには、オフラインの手順を参照してください。
 
 ![VM リスト ページ](../media/update-agent-issues-linux/vm-list.png)
 
 > [!NOTE]
-> 検査を行うには VM が実行中である必要があります。 VM が実行されていない場合、**[VM の開始]** ボタンが表示されます。
+> 検査を行うには VM が実行中である必要があります。 VM が実行されていない場合、 **[VM の開始]** ボタンが表示されます。
 
 **Troubleshoot Update Agent (Update エージェントのトラブルシューティング)** ページで **[チェックの実行]** をクリックすると、トラブルシューティング ツールが開始します。 トラブルシューティング ツールでは [[コマンドの実行]](../../virtual-machines/linux/run-command.md) を使ってマシンに対してスクリプトを実行し、エージェントの依存関係を検証します。 トラブルシューティング ツールの実行が完了すると、チェック結果が返されます。
 
@@ -50,7 +50,7 @@ Azure マシンの場合は、ポータルの **[Update エージェントの準
 
 ### <a name="operating-system"></a>オペレーティング システム
 
-OS チェックでは、Hybrid Runbook Worker が次のいずれかのオペレーティング システムを実行しているかどうかを検証します。 
+OS チェックでは、Hybrid Runbook Worker が次のいずれかのオペレーティング システムを実行しているかどうかを検証します。
 
 |オペレーティング システム  |メモ  |
 |---------|---------|

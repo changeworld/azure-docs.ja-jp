@@ -16,11 +16,11 @@ ms.date: 07/06/2016
 ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: 1e8bebdb3f54ac59ec19ef798cc3e794473bbec0
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53721463"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60832515"
 ---
 # <a name="restore-an-app-in-azure"></a>Azure でのアプリの復元
 この記事では、[Azure App Service](../app-service/overview.md) でアプリをバックアップから復元する方法を示します (バックアップについては「[Azure App Service での Web アプリのバックアップ](manage-backup.md)」を参照してください)。 リンクされたデータベースをオンデマンドで使用してアプリを以前の状態に戻したり、元のアプリのいずれかのバックアップに基づいて新しいアプリを作成したりできます。 Azure App Service では、次のデータベースのバックアップと復元がサポートされます。
@@ -34,7 +34,7 @@ ms.locfileid: "53721463"
 <a name="PreviousBackup"></a>
 
 ## <a name="restore-an-app-from-an-existing-backup"></a>既存のバックアップからのアプリの復元
-1. Azure Portal にあるアプリの **[設定]** ページで、**[バックアップ]** をクリックして **[バックアップ]** ページを表示します。 続けて **[復元]** をクリックしてください。
+1. Azure Portal にあるアプリの **[設定]** ページで、 **[バックアップ]** をクリックして **[バックアップ]** ページを表示します。 続けて **[復元]** をクリックしてください。
    
     ![今すぐ復元の選択][ChooseRestoreNow]
 2. **[復元]** ページで、最初にバックアップ ソースを選択します。
@@ -65,7 +65,7 @@ ms.locfileid: "53721463"
 <a name="StorageAccount"></a>
 
 ## <a name="download-or-delete-a-backup-from-a-storage-account"></a>ストレージ アカウントからバックアップをダウンロードまたは削除するには
-1. Azure Portal のメインの **[参照]** ページで、**[ストレージ アカウント]** を選択します。 既存のストレージ アカウントの一覧が表示されます。
+1. Azure Portal のメインの **[参照]** ページで、 **[ストレージ アカウント]** を選択します。 既存のストレージ アカウントの一覧が表示されます。
 2. ダウンロードまたは削除するバックアップが含まれているストレージ アカウントを選択します。 そのストレージ アカウントのページが表示されます。
 3. ストレージ アカウントのページで、必要なコンテナーを選択します。
    
@@ -73,7 +73,7 @@ ms.locfileid: "53721463"
 4. ダウンロードまたは削除するバックアップ ファイルを選択します。
    
     ![ViewContainers](./media/web-sites-restore/03ViewFiles.png)
-5. 目的に応じて、**[ダウンロード]** または **[削除]** をクリックします。  
+5. 目的に応じて、 **[ダウンロード]** または **[削除]** をクリックします。  
 
 <a name="OperationLogs"></a>
 

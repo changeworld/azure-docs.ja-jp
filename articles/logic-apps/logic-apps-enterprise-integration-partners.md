@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: b179325c-a511-4c1b-9796-f7484b4f6873
 ms.date: 07/08/2016
-ms.openlocfilehash: 20ca5e06cd1cd0d0abfe6d31f622cd6b61b4178f
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 137ed89c276338b534cad8fdf81ec31b5e5610b5
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43125263"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60846080"
 ---
 # <a name="add-trading-partners-for-integration-accounts-in-azure-logic-apps-with-enterprise-integration-pack"></a>Azure Logic Apps と Enterprise Integration Pack の統合アカウントに対して取引先を追加する
 
@@ -33,7 +33,7 @@ ms.locfileid: "43125263"
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 
-2. Azure のメイン メニューで、**[すべてのサービス]** を選びます。 検索ボックスに「統合」と入力し、"**統合アカウント**" を選びます。
+2. Azure のメイン メニューで、 **[すべてのサービス]** を選びます。 検索ボックスに「統合」と入力し、"**統合アカウント**" を選びます。
 
    ![統合アカウントの検索](./media/logic-apps-enterprise-integration-partners/account-1.png)
 
@@ -49,7 +49,7 @@ ms.locfileid: "43125263"
 
    ![[追加] の選択](./media/logic-apps-enterprise-integration-partners/partner-2.png)
 
-6. パートナーの名前を入力してから、**[Qualifier (修飾子)]** を選択します。 アプリが受け取るドキュメントを示す **[値]** を入力します。 完了したら、**[OK]** を選びます。
+6. パートナーの名前を入力してから、 **[Qualifier (修飾子)]** を選択します。 アプリが受け取るドキュメントを示す **[値]** を入力します。 完了したら、 **[OK]** を選びます。
 
    ![パートナーの詳細を追加する](./media/logic-apps-enterprise-integration-partners/partner-3.png)
 
@@ -72,11 +72,11 @@ ms.locfileid: "43125263"
    ![削除するパートナーを選ぶ](./media/logic-apps-enterprise-integration-partners/edit-1.png)
 
 3. **[パートナーの更新]** で、必要な変更を行います。
-完了したら、**[保存]** を選びます。 
+完了したら、 **[保存]** を選びます。 
 
    ![変更して保存する](./media/logic-apps-enterprise-integration-partners/edit-2.png)
 
-   変更を取り消すには、**[破棄]** を選びます。
+   変更を取り消すには、 **[破棄]** を選びます。
 
 ## <a name="delete-partner"></a>パートナーを削除する
 

@@ -9,11 +9,11 @@ ms.date: 11/27/2018
 ms.author: rajanaki
 ms.custom: mvc
 ms.openlocfilehash: 51754021f5029a751be90bfc4194ac6347c1e278
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58005203"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60772157"
 ---
 # <a name="protect-a-file-server-by-using-azure-site-recovery"></a>Azure Site Recovery を使用したファイル サーバーの保護 
 
@@ -64,12 +64,12 @@ DFSR では、Remote Differential Compression (RDC) という圧縮アルゴリ�
 ### <a name="site-recovery-support"></a>Site Recovery のサポート
 Site Recovery レプリケーションはアプリケーションに依存しないため、ここで紹介する推奨事項は次のシナリオに適用できます。
 
-| ソース    |セカンダリ サイトへ    |Azure へ
+| source    |セカンダリ サイトへ    |Azure へ
 |---------|---------|---------|
-|Azure| -|[はい]|
-|Hyper-V|   [はい] |[はい]
-|VMware |[はい]|   [はい]
-|物理サーバー|   [はい] |[はい]
+|Azure| -|はい|
+|Hyper-V|   はい |はい
+|VMware |はい|   はい
+|物理サーバー|   はい |はい
  
 
 > [!IMPORTANT]

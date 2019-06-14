@@ -11,13 +11,13 @@ ms.reviewer: klam, deli, LADocs
 ms.suite: integration
 ms.date: 10/05/2018
 ms.openlocfilehash: 0fec590523fa130af2e5670a92914c056df289d1
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50229619"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60512246"
 ---
-# <a name="quickstart-create-and-manage-automated-logic-app-workflows---visual-studio-code"></a>クイック スタート: 自動化されたロジック アプリ ワークフローの作成と管理 - Visual Studio Code
+# <a name="quickstart-create-and-manage-automated-logic-app-workflows---visual-studio-code"></a>クイック スタート:自動化されたロジック アプリ ワークフローの作成と管理 - Visual Studio Code
 
 [Azure Logic Apps](../logic-apps/logic-apps-overview.md) と Visual Studio Code を使用して、ロジック アプリを作成し、管理できます。ロジック アプリを使用すると、組織や企業間でアプリ、データ、システム、サービスを統合するためのタスク、ワークフロー、プロセスを自動化できます。 この記事では、コード ベースのエクスペリエンスで JavaScript Object Notation (JSON) のワークフロー定義スキーマを使用することによって、ロジック アプリのワークフロー定義を作成および編集する方法について説明します。 クラウドの <a href="https://docs.microsoft.com/azure/guides/developer/azure-developer-guide" target="_blank">Azure</a> に既にデプロイされている既存のロジック アプリを使用することもできます。 
 
@@ -62,17 +62,17 @@ ms.locfileid: "50229619"
 
    ![Azure アイコンを選択する](./media/create-logic-apps-visual-studio-code/open-extension.png)
 
-1. Azure ウィンドウで、**[Logic Apps]** の **[Sign in to Azure]\(Azure にサインインする\)** を選択します。 
+1. Azure ウィンドウで、 **[Logic Apps]** の **[Sign in to Azure]\(Azure にサインインする\)** を選択します。 
 
    ![[Sign in to Azure]\(Azure にサインインする\) を選択する](./media/create-logic-apps-visual-studio-code/sign-in-azure.png)
 
    提供された認証コードを使用してサインインするよう求められます。 
 
-1. 認証コードをコピーし、**[Copy & Open]\(コピーして開く\)** を選択すると、新しいブラウザー ウィンドウが開きます。
+1. 認証コードをコピーし、 **[Copy & Open]\(コピーして開く\)** を選択すると、新しいブラウザー ウィンドウが開きます。
 
    ![サインイン プロンプト](./media/create-logic-apps-visual-studio-code/sign-in-prompt.png)
 
-1. 認証コードを入力します。 メッセージが表示されたら、**[続行]** を選択します。
+1. 認証コードを入力します。 メッセージが表示されたら、 **[続行]** を選択します。
 
    ![コードを入力する](./media/create-logic-apps-visual-studio-code/authentication-code.png)
 
@@ -82,7 +82,7 @@ ms.locfileid: "50229619"
 
    ![サブスクリプションを選択します。](./media/create-logic-apps-visual-studio-code/select-azure-subscription.png)
 
-   必要なサブスクリプションが表示されていない場合は、**[Logic Apps]** ラベルの横の **[サブスクリプションの選択]** (フィルター アイコン) をクリックします。 目的のサブスクリプションを探して選択します。
+   必要なサブスクリプションが表示されていない場合は、 **[Logic Apps]** ラベルの横の **[サブスクリプションの選択]** (フィルター アイコン) をクリックします。 目的のサブスクリプションを探して選択します。
 
 1. Azure サブスクリプション内の既存のロジック アプリまたは統合アカウントを表示するには、サブスクリプションを展開します。
 
@@ -94,11 +94,11 @@ ms.locfileid: "50229619"
 
 1. Visual Studio Code 内から Azure サブスクリプションにサインインしていない場合は、この記事の手順に従って[今すぐサインイン](#sign-in-azure)します。
 
-1. サブスクリプションのコンテキスト メニューで、**[作成]** を選択します。
+1. サブスクリプションのコンテキスト メニューで、 **[作成]** を選択します。
 
    ![[作成] を選択する](./media/create-logic-apps-visual-studio-code/create-logic-app.png)
 
-1. サブスクリプション内の Azure リソース グループを示す一覧で、既存のリソース グループを選択するか、**[Create a new resource group]\(新しいリソース グループの作成\)** を選択します。 
+1. サブスクリプション内の Azure リソース グループを示す一覧で、既存のリソース グループを選択するか、 **[Create a new resource group]\(新しいリソース グループの作成\)** を選択します。 
 
    この例では、新しいリソース グループを作成します。
 
@@ -118,7 +118,7 @@ ms.locfileid: "50229619"
 
    Azure ウィンドウの Azure サブスクリプションの下に新しいロジック アプリが表示されます。 これで、ロジック アプリのワークフロー定義の作成を開始できます。
 
-1. ロジック アプリのショートカット メニューで、**[Open in Editor]\(エディターで開く\)** を選択します。 
+1. ロジック アプリのショートカット メニューで、 **[Open in Editor]\(エディターで開く\)** を選択します。 
 
    ![エディターでロジック アプリを開く](./media/create-logic-apps-visual-studio-code/open-new-logic-app.png)
 
@@ -186,7 +186,7 @@ ms.locfileid: "50229619"
    }   
    ```
 
-1. 完了したら、ロジック アプリ定義ファイルを保存します。 Azure サブスクリプションへのロジック アプリ定義のアップロードを確認するメッセージが表示されたら、**[アップロード]** を選択します。
+1. 完了したら、ロジック アプリ定義ファイルを保存します。 Azure サブスクリプションへのロジック アプリ定義のアップロードを確認するメッセージが表示されたら、 **[アップロード]** を選択します。
 
    ![新しいロジック アプリをアップロードする](./media/create-logic-apps-visual-studio-code/upload-new-logic-app.png)
 
@@ -204,7 +204,7 @@ Azure に既にデプロイされている既存のロジック アプリを操�
 
 1. Azure ウィンドウの **[Logic Apps]** で、Azure サブスクリプションを展開し、目的のロジック アプリを選択します。 
 
-1. ロジック アプリのメニューで、**[Open in Editor]\(エディターで開く\)** を選択します。 または、ロジック アプリ名の横の編集アイコンをクリックします。
+1. ロジック アプリのメニューで、 **[Open in Editor]\(エディターで開く\)** を選択します。 または、ロジック アプリ名の横の編集アイコンをクリックします。
 
    ![既存のロジック アプリのエディターを開く](./media/create-logic-apps-visual-studio-code/open-editor-existing-logic-app.png)
 
@@ -216,7 +216,7 @@ Azure に既にデプロイされている既存のロジック アプリを操�
 
 1. 完了したら、変更を保存します。
 
-1. Azure サブスクリプション内のロジック アプリ定義を更新するよう求められたら、**[アップロード]** を選択します。 
+1. Azure サブスクリプション内のロジック アプリ定義を更新するよう求められたら、 **[アップロード]** を選択します。 
 
    ![編集内容をアップロードする](./media/create-logic-apps-visual-studio-code/upload-logic-app-changes.png)
 

@@ -11,10 +11,10 @@ ms.author: zhanxia
 ms.date: 05/02/2019
 ROBOTS: NOINDEX
 ms.openlocfilehash: 95069bafa94770511c7ee40e82068960298fd6c5
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65027799"
 ---
 # <a name="normalize-data-module"></a>Normalize Data (データの正規化) モジュール
@@ -42,7 +42,7 @@ ms.locfileid: "65027799"
 
 このモジュールを使用するときは、1 つの正規化メソッドのみを適用できます。 そのため、同じ正規化メソッドが、選択したすべての列に適用されます。 異なる正規化メソッドを使用するには、**Normalize Data (データの正規化)** の 2 つ目のインスタンスを使用します。
 
-1. **Normalize Data (データの正規化)** モジュールを自分の実験に追加します。 Azure Machine Learning で、**[Data Transformation]\(データ変換\)** の下の **[Scale and Reduce]\(拡大縮小\)** カテゴリでそのモジュールを見つけることができます。
+1. **Normalize Data (データの正規化)** モジュールを自分の実験に追加します。 Azure Machine Learning で、 **[Data Transformation]\(データ変換\)** の下の **[Scale and Reduce]\(拡大縮小\)** カテゴリでそのモジュールを見つけることができます。
 
 2. すべての数値で少なくとも 1 列を含むデータセットに接続します。
 
@@ -55,7 +55,7 @@ ms.locfileid: "65027799"
     > [!TIP]
     > 特定の型の列が入力として確実に提供されようにするには、**Normalize Data (データの正規化)** の前に、[Select Columns in Dataset (データセット内の列の選択)](./select-columns-in-dataset.md) モジュールを使用するようにします。
 
-4. **Use 0 for constant columns when checked (チェック時に定数の列に 0 を使用する)**: 任意の数値列に 1 つの変更なしの値が含まれるときに、このオプションを選択します。 これにより、このような列は正規化の操作で使用されなくなります。
+4. **Use 0 for constant columns when checked (チェック時に定数の列に 0 を使用する)** : 任意の数値列に 1 つの変更なしの値が含まれるときに、このオプションを選択します。 これにより、このような列は正規化の操作で使用されなくなります。
 
 5. **[Transformation method]\(変換メソッド\)** ドロップダウン リストから、すべての選択した列に適用する 1 つの数学関数を選びます。 
   
@@ -99,11 +99,11 @@ ms.locfileid: "65027799"
 
 **Normalize Data (データの正規化)** モジュールでは、2 つの出力が生成されます。
 
-- 変換された値を表示するには、モジュールを右クリックして、**[Transformed dataset]\(変換後のデータセット\)** を選択し、**[Visualize]\(可視化\)** をクリックします。
+- 変換された値を表示するには、モジュールを右クリックして、 **[Transformed dataset]\(変換後のデータセット\)** を選択し、 **[Visualize]\(可視化\)** をクリックします。
 
     既定では、値はその場で変換されます。 変換された値を元の値と比較する場合は、[Add Columns (列の追加)](./add-columns.md) モジュールを使用して、データセットを再結合し、列を並べて表示します。
 
-- 別の同様のデータセットに同じ正規化メソッドを適用できるように、変換を保存するには、モジュールを右クリックして、**[Transformation function]\(変換関数\)** を選択し、**[Save as Transform]\(変換として保存\)** をクリックします。
+- 別の同様のデータセットに同じ正規化メソッドを適用できるように、変換を保存するには、モジュールを右クリックして、 **[Transformation function]\(変換関数\)** を選択し、 **[Save as Transform]\(変換として保存\)** をクリックします。
 
     ナビゲーション ウィンドウの左側の **[変換]** グループから保存された変換を読み込み、[./Apply Transformation](apply-transformation.md) を使用することで同じスキーマを使ってデータセットに適用することができます。  
 

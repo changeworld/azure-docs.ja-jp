@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: f502e3228274840d23b9f52512280fc0d9f0553b
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58309896"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60544696"
 ---
 # <a name="troubleshooting-guide-for-live-streaming"></a>ライブ ストリーミングのトラブルシューティング ガイド  
 
@@ -31,7 +31,7 @@ ms.locfileid: "58309896"
 * **潜在的な問題**:問題のデバッグに役立つ可能性のあるエンコーダーのログが見つかりません。
   
   * **Telestream Wirecast**: 通常、ログは C:\Users\{ユーザー名}\AppData\Roaming\Wirecast\ で見つけることができます。 
-  * **Elemental Live**: 管理ポータルでログへのリンクを見つけることができます。 **[統計]** をクリックし、**[ログ]** をクリックします。 **[ログ ファイル]** ページに、すべての LiveEvent 項目のログの一覧が表示されます。現在のセッションに一致するものを選択します。 
+  * **Elemental Live**: 管理ポータルでログへのリンクを見つけることができます。 **[統計]** をクリックし、 **[ログ]** をクリックします。 **[ログ ファイル]** ページに、すべての LiveEvent 項目のログの一覧が表示されます。現在のセッションに一致するものを選択します。 
   * **Flash Media Live Encoder**: **[エンコーディング ログ]** タブに移動することにより **[ログ ディレクトリ...]** を見つけることができます。
 
 ### <a name="problem-there-is-no-option-for-outputting-a-progressive-stream"></a>問題:プログレッシブ ストリームを出力するためのオプションがない

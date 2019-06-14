@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 11/08/2018
 ms.author: subramar
 ms.openlocfilehash: 9a93c0993ee45e72b11b023982dfbbe8c6528272
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670619"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60614396"
 ---
 # <a name="application-upgrade-parameters"></a>アプリケーション アップグレードのパラメーター
 この記事では、Azure Service Fabric アプリケーションのアップグレード中に適用されるさまざまなパラメーターについて説明します。 アプリケーション アップグレードのパラメーターは、アップグレード時に適用されるタイムアウトと正常性チェックを制御します。また、パラメーターには、アップグレードの失敗時に適用する必要があるポリシーを指定します。 アプリケーション パラメーターは、以下を使用したアップグレードに適用されます。
@@ -39,7 +39,7 @@ ms.locfileid: "58670619"
 
 PowerShell を使用する Service Fabric アプリケーションのアップグレードでは、[Start-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricapplicationupgrade) コマンドを使用します。 アップグレード モードを選択するには、**Monitored**、**UnmonitoredAuto**、または **UnmonitoredManual** パラメーターを [Start-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricapplicationupgrade) に渡します。
 
-Visual Studio Service Fabric のアプリケーション アップグレードのパラメーターを設定するには、Visual Studio の [アップグレード設定] ダイアログ ボックスで設定します。 Visual Studio のアップグレード モードを選択するには、**[アップグレード モード]** ドロップダウン ボックスで **[Monitored]**、**[UnmonitoredAuto]**、または **[UnmonitoredManual]** のいずれかを選択します。 詳細については、「[Visual Studio での Service Fabric アプリケーションのアップグレードの構成](service-fabric-visualstudio-configure-upgrade.md)」を参照してください。
+Visual Studio Service Fabric のアプリケーション アップグレードのパラメーターを設定するには、Visual Studio の [アップグレード設定] ダイアログ ボックスで設定します。 Visual Studio のアップグレード モードを選択するには、 **[アップグレード モード]** ドロップダウン ボックスで **[Monitored]** 、 **[UnmonitoredAuto]** 、または **[UnmonitoredManual]** のいずれかを選択します。 詳細については、「[Visual Studio での Service Fabric アプリケーションのアップグレードの構成](service-fabric-visualstudio-configure-upgrade.md)」を参照してください。
 
 ### <a name="required-parameters"></a>必須のパラメーター
 (PS=PowerShell、VS=Visual Studio)

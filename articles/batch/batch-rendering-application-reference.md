@@ -8,11 +8,11 @@ ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
 ms.openlocfilehash: 4c93abdfb5c523d48ce115ed7d3251a346937f5f
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57789592"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60775391"
 ---
 # <a name="rendering-applications"></a>アプリケーションをレンダリングする
 
@@ -33,7 +33,7 @@ ms.locfileid: "57789592"
 
 `3dsmaxcmdio.exe` アプリケーションを呼び出し、プール ノード上でコマンド ライン レンダリングを実行します。  このアプリケーションはタスクが実行されるときにはパス上にあります。 `3dsmaxcmdio.exe` アプリケーションでは `3dsmaxcmd.exe` アプリケーションと同じパラメーターを使用できます。これは、[3ds Max のヘルプ ドキュメント](https://help.autodesk.com/view/3DSMAX/2018/ENU/) (Rendering | Command-Line Rendering セクション) に記載されています。
 
-例: 
+例:
 
 ```
 3dsmaxcmdio.exe -v:5 -rfw:0 -start:{0} -end:{0} -bitmapPath:"%AZ_BATCH_JOB_PREP_WORKING_DIR%\sceneassets\images" -outputName:dragon.jpg -w:1280 -h:720 "%AZ_BATCH_JOB_PREP_WORKING_DIR%\scenes\dragon.max"

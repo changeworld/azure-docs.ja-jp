@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: raynew
 ms.openlocfilehash: d3a2ffdedda7f541fb1a3f37a8b40bc7af3dcb57
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59996511"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60852141"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Azure Stack への Azure Backup Server のインストール
 
@@ -109,7 +109,7 @@ Recovery Services コンテナーのストレージ レプリケーション オ
 ストレージ レプリケーション設定を編集するには、次の手順を実行します。
 
 1. コンテナーを選択して、コンテナーのダッシュボードと [設定] メニューを開きます。 **[設定]** メニューが開かない場合は、コンテナーのダッシュボードで **[すべての設定]** をクリックします。
-2. **[設定]** メニューで、**[バックアップ インフラストラクチャ]** > **[バックアップ構成]** をクリックして、**[バックアップ構成]** メニューを開きます。 **[バックアップ構成]** メニューで、コンテナーのストレージ レプリケーション オプションを選択します。
+2. **[設定]** メニューで、 **[バックアップ インフラストラクチャ]**  >  **[バックアップ構成]** をクリックして、 **[バックアップ構成]** メニューを開きます。 **[バックアップ構成]** メニューで、コンテナーのストレージ レプリケーション オプションを選択します。
 
     ![バックアップ コンテナーの一覧](./media/backup-azure-vms-first-look-arm/choose-storage-configuration-rs-vault.png)
 
@@ -118,7 +118,7 @@ Recovery Services コンテナーのストレージ レプリケーション オ
 Azure Backup Server インストーラーをダウンロードする方法は 2 つあります。 Azure Backup Server インストーラーは、[Microsoft ダウンロード センター](https://www.microsoft.com/en-us/download/details.aspx?id=55269)からダウンロードできます。 Azure Backup Server インストーラーは Recovery Services コンテナーの構成中にダウンロードすることもできます。 次の手順は、Recovery Services コンテナーの構成中に Azure Portal からインストーラーをダウンロードする方法について説明します。
 
 1. Azure Stack 仮想マシンから、[Azure Portal 内の Azure サブスクリプションにサインイン](https://portal.azure.com/)します。
-2. 左側のメニューで、**[すべてのサービス]** を選択します。
+2. 左側のメニューで、 **[すべてのサービス]** を選択します。
 
     ![メイン メニューの [すべてのサービス] オプションを選択する](./media/backup-mabs-install-azure-stack/click-all-services.png)
 
@@ -132,7 +132,7 @@ Azure Backup Server インストーラーをダウンロードする方法は 2 
 
     ![[すべてのサービス] ダイアログに「Recovery Services」と入力する](./media/backup-mabs-install-azure-stack/rs-vault-dashboard.png)
 
-5. コンテナーの [作業の開始] メニューで、**[バックアップ]** をクリックして [作業の開始] ウィザードを開きます。
+5. コンテナーの [作業の開始] メニューで、 **[バックアップ]** をクリックして [作業の開始] ウィザードを開きます。
 
     ![バックアップ作業の開始](./media/backup-mabs-install-azure-stack/getting-started-backup.png)
 
@@ -140,23 +140,23 @@ Azure Backup Server インストーラーをダウンロードする方法は 2 
 
     ![Backup-goals-default-opened](./media/backup-mabs-install-azure-stack/getting-started-menu.png)
 
-6. バックアップ メニューの **[Where is your workload running]\(ワークロードはどこで実行されていますか\)** メニューで、**[オンプレミス]** を選択します。 **[What do you want to backup?]\(何をバックアップしますか?\)** ドロップダウン メニューで、Azure Backup Server を使用して保護するワークロードを選択します。 選択するワークロードがわからない場合は、**[Hyper-V 仮想マシン]** をクリックし、**[インフラストラクチャの準備]** をクリックします。
+6. バックアップ メニューの **[Where is your workload running]\(ワークロードはどこで実行されていますか\)** メニューで、 **[オンプレミス]** を選択します。 **[What do you want to backup?]\(何をバックアップしますか?\)** ドロップダウン メニューで、Azure Backup Server を使用して保護するワークロードを選択します。 選択するワークロードがわからない場合は、 **[Hyper-V 仮想マシン]** をクリックし、 **[インフラストラクチャの準備]** をクリックします。
 
     ![目標としてのオンプレミスおよびワークロード](./media/backup-mabs-install-azure-stack/getting-started-menu-onprem-hyperv.png)
 
     **[インフラストラクチャの準備]** メニューが開きます。
 
-7. **[インフラストラクチャの準備]** メニューで、**[ダウンロード]** をクリックして Azure Backup Server のインストール ファイルをダウンロードする Web ページを開きます。
+7. **[インフラストラクチャの準備]** メニューで、 **[ダウンロード]** をクリックして Azure Backup Server のインストール ファイルをダウンロードする Web ページを開きます。
 
     ![作業の開始ウィザードの変更](./media/backup-mabs-install-azure-stack/prepare-infrastructure.png)
 
     Azure Backup Server のダウンロード可能なファイルをホストする Microsoft Web ページが開きます。
 
-8. Microsoft Azure Backup Server のダウンロード ページで、言語を選択し、**[ダウンロード]** をクリックします。
+8. Microsoft Azure Backup Server のダウンロード ページで、言語を選択し、 **[ダウンロード]** をクリックします。
 
     ![ダウンロード センターが開く](./media/backup-mabs-install-azure-stack/mabs-download-center-page.png)
 
-9. Azure Backup Server インストーラーは、8 つのファイル (インストーラーと 7 つの .bin ファイル) で構成されています。 **[ファイル名]** をオンにし、必要なすべてのファイルを選択して、**[次へ]** をクリックします。 すべてのファイルを同じフォルダーにダウンロードします。
+9. Azure Backup Server インストーラーは、8 つのファイル (インストーラーと 7 つの .bin ファイル) で構成されています。 **[ファイル名]** をオンにし、必要なすべてのファイルを選択して、 **[次へ]** をクリックします。 すべてのファイルを同じフォルダーにダウンロードします。
 
     ![Download center 1](./media/backup-mabs-install-azure-stack/download-center-selected-files.png)
 
@@ -174,15 +174,15 @@ Azure Backup Server インストーラーをダウンロードする方法は 2 
     > セットアップ ファイルを抽出するには、少なくとも 4 GB の空き領域が必要です。
     >
 
-2. Azure Backup Server ウィザードで、**[次へ]** をクリックして続行します。
+2. Azure Backup Server ウィザードで、 **[次へ]** をクリックして続行します。
 
     ![Microsoft Azure Backup セットアップ ウィザード](./media/backup-mabs-install-azure-stack/mabs-install-wiz-1.png)
 
-3. Azure Backup Server のファイルのパスを選択し、**[次へ]** をクリックします。
+3. Azure Backup Server のファイルのパスを選択し、 **[次へ]** をクリックします。
 
    ![Microsoft Azure Backup セットアップ ウィザード](./media/backup-mabs-install-azure-stack/mabs-install-wizard-select-destination-1.png)
 
-4. 展開場所を確認し、**[展開]** をクリックします。
+4. 展開場所を確認し、 **[展開]** をクリックします。
 
    ![Microsoft Azure Backup セットアップ ウィザード](./media/backup-mabs-install-azure-stack/mabs-install-wizard-extract-2.png)
 
@@ -190,23 +190,23 @@ Azure Backup Server インストーラーをダウンロードする方法は 2 
 
    ![Microsoft Azure Backup セットアップ ウィザード](./media/backup-mabs-install-azure-stack/mabs-install-wizard-install-3.png)
 
-6. 展開プロセスが完了したら、**[完了]** をクリックします。 既定では、**Execute setup.exe** が選択されています。 **[完了]** をクリックすると、Setup.exe が Microsoft Azure Backup Server を指定した場所にインストールします。
+6. 展開プロセスが完了したら、 **[完了]** をクリックします。 既定では、**Execute setup.exe** が選択されています。 **[完了]** をクリックすると、Setup.exe が Microsoft Azure Backup Server を指定した場所にインストールします。
 
    ![Microsoft Azure Backup セットアップ ウィザード](./media/backup-mabs-install-azure-stack/mabs-install-wizard-finish-4.png)
 
 ## <a name="install-the-software-package"></a>ソフトウェア パッケージをインストールする
 
-前の手順で、**[完了]** をクリックして展開フェーズを終了し、Azure Backup Server のセットアップ ウィザードを起動しました。
+前の手順で、 **[完了]** をクリックして展開フェーズを終了し、Azure Backup Server のセットアップ ウィザードを起動しました。
 
 ![Microsoft Azure Backup セットアップ ウィザード](./media/backup-mabs-install-azure-stack/mabs-install-wizard-local-5.png)
 
 Azure Backup Server は Data Protection Manager とコードを共有します。 Azure Backup Server インストーラーに Data Protection Manager と DPM への参照が表示されます。 Azure Backup Server と Data Protection Manager の別個の製品ですが、密接に関連しています。
 
-1. セットアップ ウィザードを起動するには、**[Microsoft Azure Backup Server]** をクリックします。
+1. セットアップ ウィザードを起動するには、 **[Microsoft Azure Backup Server]** をクリックします。
 
    ![Microsoft Azure Backup セットアップ ウィザード](./media/backup-mabs-install-azure-stack/mabs-install-wizard-local-5b.png)
 
-2. **[ようこそ]** 画面で、**[次へ]** をクリックします。
+2. **[ようこそ]** 画面で、 **[次へ]** をクリックします。
 
     ![Azure Backup Server - Welcome and Prerequisites check](./media/backup-mabs-install-azure-stack/mabs-install-wizard-setup-6.png)
 
@@ -218,11 +218,11 @@ Azure Backup Server は Data Protection Manager とコードを共有します�
 
     ![Azure Backup Server - 前提条件の確認に合格](./media/backup-mabs-install-azure-stack/mabs-install-wizard-pre-check-passed-8.png)
 
-    お使いの環境が必要な前提条件を満たしていない場合、問題のある部分が示されます。 満たしていない前提条件は、DpmSetup.log にも表示されます。 前提条件のエラーを解決し、**[再確認]** を実行します。 すべての前提条件が満たされるまで、インストールを続行できません。
+    お使いの環境が必要な前提条件を満たしていない場合、問題のある部分が示されます。 満たしていない前提条件は、DpmSetup.log にも表示されます。 前提条件のエラーを解決し、 **[再確認]** を実行します。 すべての前提条件が満たされるまで、インストールを続行できません。
 
     ![Azure Backup Server - インストールの前提条件を満たしていない](./media/backup-mabs-install-azure-stack/installation-errors.png)
 
-4. Microsoft Azure Backup Server には、SQL Server が必要です。 Azure Backup Server のインストール パッケージには、適切な SQL Server バイナリがバンドルされています。 自分で用意した SQL のインストールを使用することもできます。 ただし、SQL Server の新しいインスタンスの追加はインストーラーに任せることをお勧めします。 選択内容がお使いの環境で機能することを確認するには、**[確認してインストール]** をクリックします。
+4. Microsoft Azure Backup Server には、SQL Server が必要です。 Azure Backup Server のインストール パッケージには、適切な SQL Server バイナリがバンドルされています。 自分で用意した SQL のインストールを使用することもできます。 ただし、SQL Server の新しいインスタンスの追加はインストーラーに任せることをお勧めします。 選択内容がお使いの環境で機能することを確認するには、 **[確認してインストール]** をクリックします。
 
    > [!NOTE]
    > Azure Backup Server は、リモートの SQL Server インスタンスでは動作しません。 Azure Backup Server で使用されるインスタンスはローカルである必要があります。
@@ -230,19 +230,19 @@ Azure Backup Server は Data Protection Manager とコードを共有します�
 
     ![Azure Backup Server - Welcome and Prerequisites check](./media/backup-mabs-install-azure-stack/mabs-install-wizard-sql-install-9.png)
 
-    確認後、仮想マシンに Azure Backup Server をインストールするために必要な前提条件がある場合は、**[次へ]** をクリックします。
+    確認後、仮想マシンに Azure Backup Server をインストールするために必要な前提条件がある場合は、 **[次へ]** をクリックします。
 
     ![Azure Backup Server - Welcome and Prerequisites check](./media/backup-mabs-install-azure-stack/mabs-install-wizard-sql-ready-10.png)
 
-    エラーが発生し、コンピューターの再起動を推奨された場合は、コンピューターを再起動してください。 マシンを再起動後、インストーラーを再起動し、**[SQL の設定]** 画面で **[再確認]** をクリックします。
+    エラーが発生し、コンピューターの再起動を推奨された場合は、コンピューターを再起動してください。 マシンを再起動後、インストーラーを再起動し、 **[SQL の設定]** 画面で **[再確認]** をクリックします。
 
-5. **[インストールの設定]** で、Microsoft Azure Backup Server のファイルをインストールする場所を指定し、**[次へ]** をクリックします。
+5. **[インストールの設定]** で、Microsoft Azure Backup Server のファイルをインストールする場所を指定し、 **[次へ]** をクリックします。
 
     ![Microsoft Azure Backup PreReq2](./media/backup-mabs-install-azure-stack/mabs-install-wizard-settings-11.png)
 
     Azure にバックアップするにはスクラッチ場所が必要です。 スクラッチ場所のサイズが、Azure にバックアップする予定のデータの 5% 以上であることを確認します。 ディスクを保護するために、インストールが完了した後で個別のディスクを構成する必要があります。 記憶域プールの詳細については、「 [記憶域プールおよびディスク記憶域の構成](https://technet.microsoft.com/library/hh758075.aspx)」を参照してください。
 
-6. **[セキュリティの設定]** で、制限付きのローカル ユーザー アカウント用に強力なパスワードを指定し、**[次へ]** をクリックします。
+6. **[セキュリティの設定]** で、制限付きのローカル ユーザー アカウント用に強力なパスワードを指定し、 **[次へ]** をクリックします。
 
     ![Microsoft Azure Backup PreReq2](./media/backup-mabs-install-azure-stack/mabs-install-wizard-security-12.png)
 
@@ -260,35 +260,35 @@ Azure Backup Server は Data Protection Manager とコードを共有します�
 
     Azure Backup Server のインストールが完了すると、インストーラーはすぐに Microsoft Azure Recovery Services エージェントのインストーラーを起動します。
 
-9. Microsoft Azure Recovery Services エージェントのインストーラーが開き、インターネット接続を確認します。 インターネット接続が利用可能な場合は、インストールを続行します。 接続がない場合は、インターネットに接続するプロキシの詳細を指定します。 プロキシ設定を指定したら、**[次へ]** をクリックします。
+9. Microsoft Azure Recovery Services エージェントのインストーラーが開き、インターネット接続を確認します。 インターネット接続が利用可能な場合は、インストールを続行します。 接続がない場合は、インターネットに接続するプロキシの詳細を指定します。 プロキシ設定を指定したら、 **[次へ]** をクリックします。
 
     ![Microsoft Azure Backup PreReq2](./media/backup-mabs-install-azure-stack/mabs-install-wizard-proxy-15.png)
 
-10. Microsoft Azure Recovery Services エージェントをインストールするには、**[インストール]** をクリックします。
+10. Microsoft Azure Recovery Services エージェントをインストールするには、 **[インストール]** をクリックします。
 
     ![Azure Backup Server の前提条件 2](./media/backup-mabs-install-azure-stack/mabs-install-wizard-mars-agent-16.png)
 
     Microsoft Azure Recovery Services エージェントは Azure Backup エージェントとも呼ばれ、Azure Backup Server を Recovery Services コンテナーに構成します。 構成が完了すると、Azure Backup Server は常に同じ Recovery Services コンテナーにデータをバックアップします。
 
-11. Microsoft Azure Recovery Services エージェントのインストールが完了したら、**[次へ]** をクリックして次のフェーズを開始し、Azure Backup Server を Recovery Services コンテナーに登録します。
+11. Microsoft Azure Recovery Services エージェントのインストールが完了したら、 **[次へ]** をクリックして次のフェーズを開始し、Azure Backup Server を Recovery Services コンテナーに登録します。
 
     ![Azure Backup Server の前提条件 2](./media/backup-mabs-install-azure-stack/mabs-install-wizard-complete-16.png)
 
     インストーラーが **[サーバーの登録] ウィザード**を起動します。
 
-12. Azure サブスクリプションと Recovery Services コンテナーに切り替えます。 **[インフラストラクチャの準備]** メニューで、**[ダウンロード]** をクリックして資格情報コンテナーの資格情報をダウンロードします。 手順 2 の **[ダウンロード]** ボタンがアクティブでない場合は、**[Already downloaded or using the latest Azure Backup Server installation]\(ダウンロード済みまたは Azure Backup Server の最新インストールを使用する\)** を選択してボタンをアクティブにします。 資格情報コンテナーの資格情報は、ダウンロードを格納する場所にダウンロードします。 次の手順に必要であるため、この場所を把握しておいてください。
+12. Azure サブスクリプションと Recovery Services コンテナーに切り替えます。 **[インフラストラクチャの準備]** メニューで、 **[ダウンロード]** をクリックして資格情報コンテナーの資格情報をダウンロードします。 手順 2 の **[ダウンロード]** ボタンがアクティブでない場合は、 **[Already downloaded or using the latest Azure Backup Server installation]\(ダウンロード済みまたは Azure Backup Server の最新インストールを使用する\)** を選択してボタンをアクティブにします。 資格情報コンテナーの資格情報は、ダウンロードを格納する場所にダウンロードします。 次の手順に必要であるため、この場所を把握しておいてください。
 
     ![Azure Backup Server の前提条件 2](./media/backup-mabs-install-azure-stack/download-mars-credentials-17.png)
 
-13. **[資格情報コンテナーの識別]** メニューで、**[参照]** をクリックして Recovery Services の資格情報コンテナーの資格情報を見つけます。
+13. **[資格情報コンテナーの識別]** メニューで、 **[参照]** をクリックして Recovery Services の資格情報コンテナーの資格情報を見つけます。
 
     ![Azure Backup Server の前提条件 2](./media/backup-mabs-install-azure-stack/mabs-install-wizard-vault-id-18.png)
 
-    **[資格情報コンテナーの資格情報の選択]** ダイアログで、ダウンロード場所に移動し、資格情報コンテナーの資格情報を選択して、**[開く]** をクリックします。
+    **[資格情報コンテナーの資格情報の選択]** ダイアログで、ダウンロード場所に移動し、資格情報コンテナーの資格情報を選択して、 **[開く]** をクリックします。
 
     資格情報へのパスは、[資格情報コンテナーの識別] メニューに表示されます。 **[次へ]** をクリックして [暗号化の設定] に進みます。
 
-14. **[暗号化の設定]** ダイアログ ボックスで、バックアップの暗号化のパスフレーズと、そのパスフレーズを格納する場所を指定して、**[次へ]** をクリックします。
+14. **[暗号化の設定]** ダイアログ ボックスで、バックアップの暗号化のパスフレーズと、そのパスフレーズを格納する場所を指定して、 **[次へ]** をクリックします。
 
     ![Azure Backup Server の前提条件 2](./media/backup-mabs-install-azure-stack/mabs-install-wizard-encryption-19.png)
 
@@ -352,7 +352,7 @@ Azure サブスクリプションの状態が "*有効期限切れ*" または "
 ## <a name="troubleshooting"></a>トラブルシューティング
 
 Microsoft Azure Backup Server がセットアップ段階 (またはバックアップや復元) でエラーにより失敗した場合は、[エラー コードのドキュメント](https://support.microsoft.com/kb/3041338)を参照してください。
- [Azure Backup 関連の FAQ](backup-azure-backup-faq.md)
+[Azure Backup 関連の FAQ](backup-azure-backup-faq.md)
 
 ## <a name="next-steps"></a>次の手順
 

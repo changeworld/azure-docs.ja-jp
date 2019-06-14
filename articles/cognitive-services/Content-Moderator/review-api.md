@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: sajagtap
 ms.openlocfilehash: c1d4ef640e2ae072dacba7a665b6689e3224c55c
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58756289"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60607292"
 ---
 # <a name="content-moderation-reviews-workflows-and-jobs"></a>コンテンツ モデレーションのレビュー、ワークフロー、ジョブ
 
@@ -23,7 +23,7 @@ Content Moderator は、マシン支援型モデレーションと人間参加�
 
 ## <a name="reviews"></a>レビュー
 
-レビューでは、コンテンツがレビュー ツールにアップロードされ、**[レビュー]** タブに表示されます。ここから、ユーザーは適用されたタグを変更し、必要に応じて独自のカスタム タグを適用することができます。 ユーザーがレビューを送信すると、結果が指定のコールバック エンドポイントに送信され、コンテンツはサイトから削除されます。
+レビューでは、コンテンツがレビュー ツールにアップロードされ、 **[レビュー]** タブに表示されます。ここから、ユーザーは適用されたタグを変更し、必要に応じて独自のカスタム タグを適用することができます。 ユーザーがレビューを送信すると、結果が指定のコールバック エンドポイントに送信され、コンテンツはサイトから削除されます。
 
 ![レビュー ツールの Web サイトがブラウザーで開き、[レビュー] タブに表示されます。](./Review-Tool-user-Guide/images/image-workflow-review.png)
 
@@ -35,7 +35,7 @@ Content Moderator は、マシン支援型モデレーションと人間参加�
 
 ### <a name="view-workflows"></a>ワークフローを表示する
 
-既存のワークフローを表示するには、[レビュー ツール](https://contentmoderator.cognitive.microsoft.com/)に移動して **[設定]** > **[ワークフロー]** の順に選択します。
+既存のワークフローを表示するには、[レビュー ツール](https://contentmoderator.cognitive.microsoft.com/)に移動して **[設定]**  >  **[ワークフロー]** の順に選択します。
 
 ![既定のワークフロー](images/default-workflow-listed.PNG)
 

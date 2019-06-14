@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 03/13/2019
 ms.author: erikre
-ms.openlocfilehash: c92789c12f4454f5d76590e5323b78223b49c97f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 4bf76ac0bdd59764815f18a40a3e243d7cf9d920
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58113063"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60617391"
 ---
 # <a name="manage-costs-with-azure-budgets"></a>Azure Budgets でのコストの管理
 
@@ -46,23 +46,23 @@ ms.locfileid: "58113063"
 
 1. Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com/) にサインインします。
 2. Azure の左上にある **[リソースの作成]** ボタンをクリックします。
-3. **[管理ツール]** > **[オートメーション]** を選択します。
+3. **[管理ツール]**  >  **[オートメーション]** を選択します。
    > [!NOTE]
    > Azure アカウントがない場合は、[無料のアカウント](https://azure.microsoft.com/free/)を作成できます。
 4. アカウント情報を入力します。 **[Azure 実行アカウントの作成]** で **[はい]** を選択します。これで、Azure に対する認証を単純化するための設定が自動的に有効になります。
-5. 完了したら、**[作成]** をクリックして、Automation アカウントの展開を開始します。
+5. 完了したら、 **[作成]** をクリックして、Automation アカウントの展開を開始します。
 
 ### <a name="import-the-stop-azure-v2-vms-runbook"></a>Stop Azure V2 VMs Runbook をインポートする
 
 [Azure Automation Runbook](https://docs.microsoft.com/azure/automation/automation-runbook-types) を使用して、[Stop Azure V2 VMs](https://gallery.technet.microsoft.com/scriptcenter/Stop-Azure-ARM-VMs-1ba96d5b) グラフィカル Runbook をギャラリーからインポートします。
 
 1.  Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com/) にサインインします。
-2.  Automation アカウントを開くために、**[すべてのサービス]** > **[Automation アカウント]** を選択します。 Automation アカウントを選択します。
+2.  Automation アカウントを開くために、 **[すべてのサービス]**  >  **[Automation アカウント]** を選択します。 Automation アカウントを選択します。
 3.  **[プロセス オートメーション]** セクションの **[Runbook ギャラリー]** をクリックします。
-4.  **[ギャラリーのソース]** を **[スクリプト センター]** に設定し、**[OK]** を選択します。
+4.  **[ギャラリーのソース]** を **[スクリプト センター]** に設定し、 **[OK]** を選択します。
 5.  Azure portal 内で [Stop Azure V2 VMs](https://gallery.technet.microsoft.com/scriptcenter/Stop-Azure-ARM-VMs-1ba96d5b) ギャラリー アイテムを見つけて選択します。
-6.  **[インポート]** ボタンをクリックして **[インポート]** ブレードを表示し、**[OK]** を選択します。 Runbook の概要ブレードが表示されます。
-7.  Runbook のインポート処理が完了したら、**[編集]** を選択します。グラフィカル Runbook エディターと発行オプションが表示されます。
+6.  **[インポート]** ボタンをクリックして **[インポート]** ブレードを表示し、 **[OK]** を選択します。 Runbook の概要ブレードが表示されます。
+7.  Runbook のインポート処理が完了したら、 **[編集]** を選択します。グラフィカル Runbook エディターと発行オプションが表示されます。
 
     ![Azure - グラフィカル Runbook の編集](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-01.png)
 8.  **[発行]** ボタンをクリックして Runbook を発行し、確認を要求されたら **[はい]** をクリックします。 Runbook を発行すると、既存の発行済みバージョンよりもドラフト バージョンがオーバーライドされるようになります。 この例では、Runbook を作成したばかりであるため、発行済みバージョンはまだありません。
@@ -116,10 +116,10 @@ Azure Automation のセットアップが完了しました。 単純な Postman
 
 上記の手順を実行するロジック アプリを作成するには、次の手順が必要です。
 
-1.  [Azure portal](https://portal.azure.com/) で、**[リソースの作成]** > **[統合]** > **[Logic App]** を選択します。
+1.  [Azure portal](https://portal.azure.com/) で、 **[リソースの作成]**  >  **[統合]**  >  **[Logic App]** を選択します。
 
     ![Azure - ロジック アプリ リソースを選択する](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-03.png)
-2.  **[ロジック アプリの作成]** ブレードで、ロジック アプリを作成するための詳細情報を入力し、**[ダッシュ ボードにピン留めする]** をクリックし、**[作成]** をクリックします。
+2.  **[ロジック アプリの作成]** ブレードで、ロジック アプリを作成するための詳細情報を入力し、 **[ダッシュ ボードにピン留めする]** をクリックし、 **[作成]** をクリックします。
 
     ![Azure - ロジック アプリを作成する](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-03a.png)
 
@@ -129,14 +129,14 @@ Azure Automation のセットアップが完了しました。 単純な Postman
 
 すべてのロジック アプリは必ずトリガーから起動され、トリガーは、特定のイベントが発生するか特定の条件が満たされたときに起動されます。 トリガーが起動するたびに、Logic Apps エンジンによって、ワークフローを開始および実行するロジック アプリ インスタンスが作成されます。 アクションとは、トリガーの後に発生するステップすべてを指します。
 
-1.  **[Logic Apps デザイナー]** ブレードの **[テンプレート]** で、**[空のロジック アプリ]** を選択します。
-2.  [トリガー](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview#logic-app-concepts)を追加するために、**Logic Apps デザイナー**の検索ボックスに「http 要求」と入力して、**[要求 - HTTP 要求の受信時]** という名前のトリガーを見つけて選択します。
+1.  **[Logic Apps デザイナー]** ブレードの **[テンプレート]** で、 **[空のロジック アプリ]** を選択します。
+2.  [トリガー](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview#logic-app-concepts)を追加するために、**Logic Apps デザイナー**の検索ボックスに「http 要求」と入力して、 **[要求 - HTTP 要求の受信時]** という名前のトリガーを見つけて選択します。
 
     ![Azure - ロジック アプリ - Http トリガー](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-04.png)
-3.  **[新しいステップ]** > **[アクションの追加]** の順に選択します。
+3.  **[新しいステップ]**  >  **[アクションの追加]** の順に選択します。
 
     ![Azure - 新しいステップ - アクションの追加](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-05.png)
-4.  **Logic Apps デザイナー**の検索ボックスに「JSON の解析」と入力して検索し、**[データ操作] - [JSON の解析]** [アクション](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview#logic-app-concepts)を見つけて選択します。
+4.  **Logic Apps デザイナー**の検索ボックスに「JSON の解析」と入力して検索し、 **[データ操作] - [JSON の解析]** [アクション](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview#logic-app-concepts)を見つけて選択します。
 
     ![Azure - ロジック アプリ -JSON の解析アクションの追加](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-06.png)
 5.  「JSON の解析」ペイロードの**コンテンツ**名として「Payload」と入力とするか、動的なコンテンツから "Body" タグを使用します。
@@ -154,7 +154,7 @@ Azure Automation のセットアップが完了しました。 単純な Postman
 
 条件付きステートメントを使用して、しきい値と比較する値が予算の範囲の 80% 以上に到達し、かつ 100% 未満かどうかを調べます。 このしきい値に達している場合は、**Optional** という名前の Webhook を使用して HTTP POST を送信します。 このアクションは、**Optional** グループの VM をシャットダウンします。
 
-1.  **[新しいステップ]** > **[アクションの追加]** の順に選択します。
+1.  **[新しいステップ]**  >  **[アクションの追加]** の順に選択します。
 
     ![Azure - ロジック アプリ - 条件を追加する](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-09.png)
 2.  **[条件]** ボックスの中の、「**値の選択**」と表示されているテキスト ボックスをクリックします。選択できる値の一覧が表示されます。
@@ -176,8 +176,8 @@ Azure Automation のセットアップが完了しました。 単純な Postman
 
     ![Azure - ロジック アプリ - 浮動小数点式と値](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-12.png)
 
-8.  [条件] ボックスの **[追加]** > **[行の追加]** をクリックし、追加の追加部分を追加します。
-9.  **[条件]** ボックスで、**[次の値を含む]** が含まれるテキスト ボックスをクリックします。
+8.  [条件] ボックスの **[追加]**  >  **[行の追加]** をクリックし、追加の追加部分を追加します。
+9.  **[条件]** ボックスで、 **[次の値を含む]** が含まれるテキスト ボックスをクリックします。
 10. 一覧の最上部にある **[式]** をクリックし、式エディターに `float()` という式を入力します。
 11. **[動的なコンテンツ]** を選択し、カーソルをかっこ () 内に置いて、一覧から **[NotificationThresholdAmount]** を選択して式全体を入力します。
 12. **[OK]** を選択して式を設定します。
@@ -186,11 +186,11 @@ Azure Automation のセットアップが完了しました。 単純な Postman
 
     ![Azure - ロジック アプリ - 浮動小数点式と値](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-13.png)
 
-15. **[true の場合]** ボックスで、**[アクションの追加]** を選択します。 ここで追加するのは、必須ではない VM をシャットダウンする HTTP POST アクションです。
+15. **[true の場合]** ボックスで、 **[アクションの追加]** を選択します。 ここで追加するのは、必須ではない VM をシャットダウンする HTTP POST アクションです。
 
     ![Azure - ロジック アプリ - アクションを追加する](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-14.png)
 
-16. HTTP アクションを検索するために「**HTTP**」と入力し、**[HTTP - HTTP]** アクションを選択します。
+16. HTTP アクションを検索するために「**HTTP**」と入力し、 **[HTTP - HTTP]** アクションを選択します。
 
     ![Azure - ロジック アプリ - HTTP アクションを追加する](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-15.png)
 
@@ -199,7 +199,7 @@ Azure Automation のセットアップが完了しました。 単純な Postman
 
     ![Azure - ロジック アプリ - HTTP アクションの URI](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-16.png)
 
-19. **[true の場合]** ボックスで、**[アクションの追加]** を選択します。 ここで追加するのは、必須ではない VM がシャットダウンされたことを通知する電子メールを送信する電子メール アクションです。
+19. **[true の場合]** ボックスで、 **[アクションの追加]** を選択します。 ここで追加するのは、必須ではない VM がシャットダウンされたことを通知する電子メールを送信する電子メール アクションです。
 20. 「メールの送信」と入力して検索し、使用している電子メール サービスに基づいて *[電子メールの送信]* アクションを選択します。
 
     ![Azure - ロジック アプリ - メールの送信アクション](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-17.png)
@@ -210,7 +210,7 @@ Azure Automation のセットアップが完了しました。 単純な Postman
 
     ![Azure - ロジック アプリ - アクセスの注意事項](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-18.png)
 
-21. 必須ではない VM がシャットダウンされたことを通知する電子メールの **[宛先]**、**[件名]**、および **[本文]** を追加します。 動的コンテンツ **BudgetName** と **NotificationThresholdAmount** を使用して件名と本文のフィールドの内容を入力します。
+21. 必須ではない VM がシャットダウンされたことを通知する電子メールの **[宛先]** 、 **[件名]** 、および **[本文]** を追加します。 動的コンテンツ **BudgetName** と **NotificationThresholdAmount** を使用して件名と本文のフィールドの内容を入力します。
 
     ![Azure - ロジック アプリ - 電子メールの詳細](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-19.png)
 
@@ -218,7 +218,7 @@ Azure Automation のセットアップが完了しました。 単純な Postman
 
 条件付きステートメントを使用して、しきい値と比較する値が予算値の 100% 以上に達しているかどうかを調べます。 このしきい値に達している場合は、**Complete** という名前の Webhook を使用して HTTP POST を送信します。 このアクションは残りのすべての VM をシャットダウンします。
 
-1.  **[新しいステップ]** > **[条件の追加]** の順に選択します。
+1.  **[新しいステップ]**  >  **[条件の追加]** の順に選択します。
 
     ![Azure - ロジック アプリ - アクションを追加する](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-20.png)
 
@@ -235,19 +235,19 @@ Azure Automation のセットアップが完了しました。 単純な Postman
 
     ![Azure - ロジック アプリ - 条件の値の設定](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-21.png)
 
-8.  **[true の場合]** ボックスで、**[アクションの追加]** を選択します。 ここで追加するのは、残りのすべての VM をシャットダウンする HTTP POST アクションです。
+8.  **[true の場合]** ボックスで、 **[アクションの追加]** を選択します。 ここで追加するのは、残りのすべての VM をシャットダウンする HTTP POST アクションです。
 
     ![Azure - ロジック アプリ - アクションを追加する](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-22.png)
 
-9.  HTTP アクションを検索するために「**HTTP**」と入力し、**[HTTP - HTTP]** アクションを選択します。
+9.  HTTP アクションを検索するために「**HTTP**」と入力し、 **[HTTP - HTTP]** アクションを選択します。
 10. **[メソッド]** の値として **[Post]** を選択します。
 11. このチュートリアルで作成した **Complete** という名前の Webhook の URL を **[URI]** の値として入力します。
 
     ![Azure - ロジック アプリ - アクションを追加する](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-23.png)
 
-12. **[true の場合]** ボックスで、**[アクションの追加]** を選択します。 ここで追加するのは、残りの VM がシャットダウンされたことを通知する電子メールを送信する電子メール アクションです。
+12. **[true の場合]** ボックスで、 **[アクションの追加]** を選択します。 ここで追加するのは、残りの VM がシャットダウンされたことを通知する電子メールを送信する電子メール アクションです。
 13. 「メールの送信」と入力して検索し、使用している電子メール サービスに基づいて *[電子メールの送信]* アクションを選択します。
-14. 必須ではない VM がシャットダウンされたことを通知する電子メールの **[宛先]**、**[件名]**、および **[本文]** を追加します。 動的コンテンツ **BudgetName** と **NotificationThresholdAmount** を使用して件名と本文のフィールドの内容を入力します。
+14. 必須ではない VM がシャットダウンされたことを通知する電子メールの **[宛先]** 、 **[件名]** 、および **[本文]** を追加します。 動的コンテンツ **BudgetName** と **NotificationThresholdAmount** を使用して件名と本文のフィールドの内容を入力します。
 
     ![Azure - ロジック アプリ - メールの送信の詳細](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-24.png)
 
@@ -271,7 +271,7 @@ Azure Automation のセットアップが完了しました。 単純な Postman
 
 アクション グループを作成するときに、このチュートリアルで作成したロジック アプリを指定します。
 
-1.  [Azure portal](https://portal.azure.com/) にまだサインインしていない場合はサインインして、**[すべてのサービス]** > **[Monitor]** を選択します。
+1.  [Azure portal](https://portal.azure.com/) にまだサインインしていない場合はサインインして、 **[すべてのサービス]**  >  **[Monitor]** を選択します。
 2.  **[設定]** セクションの **[アクション グループ]** を選択します。
 3.  **[アクション グループ]** ブレードの **[アクション グループを追加する]** を選択します。
 4.  次の項目を追加して確認します。

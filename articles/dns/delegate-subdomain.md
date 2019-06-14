@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 2/7/2019
 ms.author: victorh
 ms.openlocfilehash: 31543db8e177701ddfe6beaaa3091d6465b0e9cd
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895482"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60790812"
 ---
 # <a name="delegate-an-azure-dns-subdomain"></a>Azure DNS サブドメインを委任する
 
@@ -32,9 +32,9 @@ Azure DNS サブドメインを委任するには、まずパブリック ドメ
 まず **engineering** サブドメインのゾーンを作成します。
 
 1. Azure portal から **[リソースの作成]** を選択します。
-2. 検索ボックスに、「**DNS**」と入力し、**[DNS ゾーン]** を選択します。
-3. **作成**を選択します。
-4. **[DNS ゾーンの作成]** ウィンドウで、**[名前]** ボックスに「**engineering.contoso.com**」と入力します。
+2. 検索ボックスに、「**DNS**」と入力し、 **[DNS ゾーン]** を選択します。
+3. **作成** を選択します。
+4. **[DNS ゾーンの作成]** ウィンドウで、 **[名前]** ボックスに「**engineering.contoso.com**」と入力します。
 5. ゾーンのリソース グループを選択します。 親ゾーンと同じリソース グループを使用して、似たリソースをまとめておくことができます。
 6. **Create** をクリックしてください。
 7. デプロイが成功したら、新しいゾーンに移動します。
@@ -55,7 +55,7 @@ Azure DNS サブドメインを委任するには、まずパブリック ドメ
 
 1. 親ドメインのゾーンに移動します。
 2. **+ [レコード セット]** を選択します。
-3. **[レコード セットの追加]** ウィンドウで、**[名前]** ボックスに「**engineering**」と入力します。
+3. **[レコード セットの追加]** ウィンドウで、 **[名前]** ボックスに「**engineering**」と入力します。
 4. **[種類]** には **[NS]** を選択します。
 5. **[ネーム サーバー]** で、以前にメモした **engineering** ゾーンの 4 つのネーム サーバーを入力します。
 6. Click **OK**.
