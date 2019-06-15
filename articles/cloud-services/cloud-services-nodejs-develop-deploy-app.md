@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 08/17/2017
 ms.author: jeconnoc
 ms.openlocfilehash: e235af8ae35a6ff8e310bac802484e6c3d0f5397
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65506930"
 ---
 # <a name="build-and-deploy-a-nodejs-application-to-an-azure-cloud-service"></a>Node.js アプリケーションの構築と Azure クラウド サービスへのデプロイ
@@ -48,7 +48,7 @@ Cloud Services の詳細と Azure の Web サイトおよび仮想マシンと�
 ## <a name="create-an-azure-cloud-service-project"></a>Azure クラウド サービス プロジェクトの作成
 新しい Azure クラウド サービス プロジェクトおよび基本的な Node.js スキャフォールディングを作成するには、次のタスクを実行します。
 
-1. **Windows PowerShell** を管理者として実行します。**[スタート] メニュー**または**スタート画面**で、「**Windows PowerShell**」を検索します。
+1. **Windows PowerShell** を管理者として実行します。 **[スタート] メニュー**または**スタート画面**で、「**Windows PowerShell**」を検索します。
 2. [PowerShell を接続します] 。
 3. 次の PowerShell コマンドレットを入力してプロジェクトを作成します。
 

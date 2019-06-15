@@ -14,10 +14,10 @@ ms.workload: infrastructure
 ms.date: 10/15/2018
 ms.author: genli
 ms.openlocfilehash: 1c97b1da094b759ccf85f310ceec4c7abfd91b9b
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65472290"
 ---
 # <a name="windows-reboot-loop-on-an-azure-vm"></a>Azure VM での Windows 再起動ループ
@@ -55,15 +55,15 @@ ms.locfileid: "65472290"
 
 ### <a name="solution-for-cause-1"></a>原因 1 の解決策
 
-1. OS ディスクを稼働中の VM に接続したら、[ディスクの管理] コンソールでディスクが **[オンライン]** になっていることを確認して、**\Windows** フォルダーを含むパーティションのドライブ名をメモします。
+1. OS ディスクを稼働中の VM に接続したら、[ディスクの管理] コンソールでディスクが **[オンライン]** になっていることを確認して、 **\Windows** フォルダーを含むパーティションのドライブ名をメモします。
 
-2. ディスクが **[オフライン]** に設定されている場合は、**[オンライン]** に設定します。
+2. ディスクが **[オフライン]** に設定されている場合は、 **[オンライン]** に設定します。
 
-3. 変更のロールバックが必要なケースに備えて、**\Windows\System32\config** フォルダーのコピーを作成します。
+3. 変更のロールバックが必要なケースに備えて、 **\Windows\System32\config** フォルダーのコピーを作成します。
 
 4. 復旧用 VM で、Windows レジストリ エディター (regedit) を開きます。
 
-5. "**HKEY_LOCAL_MACHINE**" キーを選択してから、**[ファイル]** > **[ハイブの読み込み]** をメニューから選択します。
+5. "**HKEY_LOCAL_MACHINE**" キーを選択してから、 **[ファイル]**  >  **[ハイブの読み込み]** をメニューから選択します。
 
 6. **\Windows\System32\config** フォルダーの SYSTEM ファイルを参照します。
 
@@ -87,7 +87,7 @@ ms.locfileid: "65472290"
     - `HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet00x\Services\AzureWLBackupInquirySvc\ErrorControl`
     - `HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet00x\Services\AzureWLBackupPluginSvc\ErrorControl`
 
-13. "**BROKENSYSTEM**" キーを選択してから、**[ファイル]** > **[ハイブの読み込み]** をメニューから選択します。
+13. "**BROKENSYSTEM**" キーを選択してから、 **[ファイル]**  >  **[ハイブの読み込み]** をメニューから選択します。
 
 14. トラブルシューティング用 VM と OS ディスクの接続を切断します。
 
@@ -107,9 +107,9 @@ VM を前回正常起動時の構成に復元してから、「[Azure Windows VM
 
 1. ディスクをトラブルシューティング用 VM に接続したら、[ディスクの管理] コンソールでそのディスクが **[オンライン]** になっていることを確認します。
 
-2. 変更のロールバックが必要なケースに備えて、**\Windows\System32\config** フォルダーのコピーを作成します。
+2. 変更のロールバックが必要なケースに備えて、 **\Windows\System32\config** フォルダーのコピーを作成します。
 
-3. **\Windows\System32\config\regback** フォルダー内のファイルをコピーし、**\Windows\System32\config** フォルダー内のファイルを置き換えます。
+3. **\Windows\System32\config\regback** フォルダー内のファイルをコピーし、 **\Windows\System32\config** フォルダー内のファイルを置き換えます。
 
 4. トラブルシューティング用 VM からディスクを取り出し、Azure がこのディスクを解放するまで約 2 分待ちます。
 

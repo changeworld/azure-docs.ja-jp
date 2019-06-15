@@ -10,10 +10,10 @@ ms.author: rogarana
 ms.reviewer: yuemlu
 ms.subservice: common
 ms.openlocfilehash: 5cfb96bd3115c8f3116a28926e93df89dff54351
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65153762"
 ---
 # <a name="migrating-to-azure-premium-storage-unmanaged-disks"></a>Azure Premium Storage への移行 (非管理対象ディスク)
@@ -135,7 +135,7 @@ Azure VM を作成するときに、特定の VM の設定を構成するよう�
     %windir%\system32\sysprep\sysprep.exe
     ```
 
-3. システム準備ツールで、システムの OOBE (Out-of-Box Experience) を選択し、[一般化する] チェック ボックスをオンにして、**[シャットダウン]** を選択してから、以下のイメージに示されているように **[OK]** をクリックします。 sysprep はオペレーティング システムを一般化し、システムをシャットダウンします。
+3. システム準備ツールで、システムの OOBE (Out-of-Box Experience) を選択し、[一般化する] チェック ボックスをオンにして、 **[シャットダウン]** を選択してから、以下のイメージに示されているように **[OK]** をクリックします。 sysprep はオペレーティング システムを一般化し、システムをシャットダウンします。
 
     ![][1]
 
@@ -159,7 +159,7 @@ VHD を管理するためにストレージ アカウントを作成します。
 データ ディスクの場合、一部のデータ ディスク (たとえば、負荷の軽いストレージのあるディスク) を Standard Storage アカウントで保持することもできますが、運用ワークロード用のすべてのデータを、Premium Storage を使うように移動することを強くお勧めします。
 
 #### <a name="copy-vhd-with-azcopy-or-powershell"></a>手順 3. AzCopy または PowerShell で VHD をコピーする
-これら 2 つのオプションを処理するには、コンテナーのパスとストレージ アカウント キーを検索する必要があります。 コンテナーのパスとストレージ アカウント キーは、**Azure Portal** > **[ストレージ]** で見つかります。 コンテナーの URL は、"https:\//myaccount.blob.core.windows.net/mycontainer/" のようになります。
+これら 2 つのオプションを処理するには、コンテナーのパスとストレージ アカウント キーを検索する必要があります。 コンテナーのパスとストレージ アカウント キーは、**Azure Portal** >  **[ストレージ]** で見つかります。 コンテナーの URL は、"https:\//myaccount.blob.core.windows.net/mycontainer/" のようになります。
 
 ##### <a name="option-1-copy-a-vhd-with-azcopy-asynchronous-copy"></a>オプション 1:AzCopy を使って VHD をコピーする (非同期コピー)
 AzCopy を使うと、インターネット経由で VHD を簡単にアップロードできます。 VHD のサイズによっては、この処理に時間がかかる場合があります。 このオプションを使用する場合は、ストレージ アカウントの送受信制限を確認することを忘れないでください。 詳細については、「 [Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](storage-scalability-targets.md) 」を参照してください。
@@ -180,11 +180,11 @@ AzCopy を使うと、インターネット経由で VHD を簡単にアップ�
 
     次に AzCopy コマンドで使用するパラメーターを示します。
 
-   * **/Source: *&lt;source&gt;:*** VHD が格納されているフォルダーの場所またはストレージ コンテナー URL。
-   * **/SourceKey: *&lt;source-account-key&gt;:*** コピー元ストレージ アカウントのストレージ アカウント キー。
-   * **/Dest: *&lt;destination&gt;:*** VHD のコピー先のストレージ コンテナー URL。
-   * **/DestKey: *&lt;dest-account-key&gt;:*** コピー先ストレージ アカウントのストレージ アカウント キー。
-   * **/Pattern: *&lt;file-name&gt;:*** コピーする VHD のファイル名を指定します。
+   * **/Source: *&lt;source&gt;:* **VHD が格納されているフォルダーの場所またはストレージ コンテナー URL。
+   * **/SourceKey: *&lt;source-account-key&gt;:* **コピー元ストレージ アカウントのストレージ アカウント キー。
+   * **/Dest: *&lt;destination&gt;:* **VHD のコピー先のストレージ コンテナー URL。
+   * **/DestKey: *&lt;dest-account-key&gt;:* **コピー先ストレージ アカウントのストレージ アカウント キー。
+   * **/Pattern: *&lt;file-name&gt;:* **コピーする VHD のファイル名を指定します。
 
 AzCopy ツールの使用の詳細については、「 [AzCopy コマンド ライン ユーティリティを使用してデータを転送する](storage-use-azcopy.md)」を参照してください。
 
@@ -228,7 +228,7 @@ Azure 以外のクラウド ストレージから Azure へ VHD を移行する�
       --export-to-s3-task DiskImageFormat=DISK_IMAGE_FORMAT,ContainerFormat=ova,S3Bucket=BUCKET,S3Prefix=PREFIX
     ```
 
-2. VHD ファイルを S3 バケットからダウンロードします。 VHD ファイルを選択し、**[操作]**、 > **[ダウンロード]** の順に選択します。
+2. VHD ファイルを S3 バケットからダウンロードします。 VHD ファイルを選択し、 **[操作]** 、 >  **[ダウンロード]** の順に選択します。
 
     ![][3]
 
@@ -277,12 +277,12 @@ AzCopy を使うと、インターネット経由で VHD を簡単にアップ�
 
     次に AzCopy コマンドで使用するパラメーターを示します。
 
-   * **/Source: *&lt;source&gt;:*** VHD が格納されているフォルダーの場所またはストレージ コンテナー URL。
-   * **/SourceKey: *&lt;source-account-key&gt;:*** コピー元ストレージ アカウントのストレージ アカウント キー。
-   * **/Dest: *&lt;destination&gt;:*** VHD のコピー先のストレージ コンテナー URL。
-   * **/DestKey: *&lt;dest-account-key&gt;:*** コピー先ストレージ アカウントのストレージ アカウント キー。
+   * **/Source: *&lt;source&gt;:* **VHD が格納されているフォルダーの場所またはストレージ コンテナー URL。
+   * **/SourceKey: *&lt;source-account-key&gt;:* **コピー元ストレージ アカウントのストレージ アカウント キー。
+   * **/Dest: *&lt;destination&gt;:* **VHD のコピー先のストレージ コンテナー URL。
+   * **/DestKey: *&lt;dest-account-key&gt;:* **コピー先ストレージ アカウントのストレージ アカウント キー。
    * **/BlobType: page:** コピー先がページ BLOB であることを指定します。
-   * **/Pattern: *&lt;file-name&gt;:*** コピーする VHD のファイル名を指定します。
+   * **/Pattern: *&lt;file-name&gt;:* **コピーする VHD のファイル名を指定します。
 
 AzCopy ツールの使用の詳細については、「 [AzCopy コマンド ライン ユーティリティを使用してデータを転送する](storage-use-azcopy.md)」を参照してください。
 
@@ -308,7 +308,7 @@ AzCopy ツールの使用の詳細については、「 [AzCopy コマンド ラ
 1. すべての VHD ディスクのコピーが完了するまで待ちます。
 2. 移行先のリージョンで Premium Storage が利用可能であることを確認します。
 3. 使用する新しい VM シリーズを決定します。 Premium Storage に対応している必要があり、サイズはリージョンでの可用性やニーズに応じたものにする必要があります。
-4. 使用する正確な VM サイズを決定します。 VM サイズは、所有するデータ ディスクの数がサポートされるように十分な大きさにする必要があります。 例:  データ ディスクが 4 つある場合、VM には 2 つ以上のコアが必要です。 さらに、処理能力、メモリ、ネットワーク帯域幅のニーズについても検討します。
+4. 使用する正確な VM サイズを決定します。 VM サイズは、所有するデータ ディスクの数がサポートされるように十分な大きさにする必要があります。 例: データ ディスクが 4 つある場合、VM には 2 つ以上のコアが必要です。 さらに、処理能力、メモリ、ネットワーク帯域幅のニーズについても検討します。
 5. 移行先のリージョンで Premium Storage アカウントを作成します。 これが新しい VM に使用するアカウントです。
 6. 現在の VM の詳細 (ディスクの一覧や対応する VHD BLOB など) を手元に用意します。
 
@@ -752,7 +752,7 @@ Update-AzureVM  -VM $vm
 ディスクのパフォーマンスを向上するためのアプリケーションの調整については、[高パフォーマンス用の設計](../../virtual-machines/windows/premium-storage-performance.md)に関する記事の最適化アプリケーションのパフォーマンスのセクションを参照してください。
 
 ### <a name="application-migrations"></a>アプリケーションの移行
-データベースやその他の複雑なアプリケーションを移行する場合は、アプリケーションの提供元が指定する特別な手順が必要になることがあります。 各アプリケーションのドキュメントを参照してください。 例:  通常、データベースは、バックアップと復元を使用して移行できます。
+データベースやその他の複雑なアプリケーションを移行する場合は、アプリケーションの提供元が指定する特別な手順が必要になることがあります。 各アプリケーションのドキュメントを参照してください。 例: 通常、データベースは、バックアップと復元を使用して移行できます。
 
 ## <a name="next-steps"></a>次の手順
 仮想マシンの移行に関する具体的なシナリオについては、次のリソースを参照してください。

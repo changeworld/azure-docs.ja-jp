@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: a5e5f4ab286289e223a2fe10ff8cf45f43309f04
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65785937"
 ---
 # <a name="azure-maps-geocoding-coverage"></a>Azure Maps でのジオコーディングの対象範囲
@@ -197,7 +197,7 @@ Azure Maps を使って位置情報を検索するとき、検索サービスで
 | ノルウェー                                              |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | ポーランド                                              |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | ポルトガル                                            |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
-| + アゾレス諸島とマデイラ諸島                                 |                 |                |       ✓      |      ✓     |          ✓         |
+| \+ アゾレス諸島とマデイラ諸島                                 |                 |                |       ✓      |      ✓     |          ✓         |
 | ルーマニア                                             |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | ロシア                                  |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | サンマリノ                                          |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |

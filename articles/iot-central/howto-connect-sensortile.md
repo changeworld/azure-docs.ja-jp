@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: sandeep.pujar
 ms.openlocfilehash: 8c1b4a4ab834b2203a7e0b6e4e9e366c3fc38774
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65472246"
 ---
 # <a name="connect-sensortilebox-device-to-your-azure-iot-central-application"></a>SensorTile.box デバイスを Azure IoT Central アプリケーションに接続する
@@ -26,7 +26,7 @@ ms.locfileid: "65472246"
 * SensorTile.box デバイス。 詳細については、[SensorTile.box](https://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mems-motion-sensor-eval-boards/steval-mksbox1v1.html) に関するページを参照してください。
 * Android デバイスにインストールされている ST BLE Sensor アプリ。[こちらからダウンロードできます](https://play.google.com/store/apps/details?id=com.st.bluems)。 詳細については、次を参照してください:「[STBLESensor](https://www.st.com/stblesensor)」
 * **DevKits** アプリケーション テンプレートから作成された Azure IoT Central アプリケーション。 詳細については、[アプリケーションの作成のクイック スタート](quick-deploy-iot-central.md)に関するページをご覧ください。
-* **[デバイス テンプレート]** ページにアクセスし、**[+ 新規]** をクリックし、**[SensorTile.box]** テンプレートを選択することで、IoT Central アプリケーションに **SensorTile.box** デバイス テンプレートを追加します。
+* **[デバイス テンプレート]** ページにアクセスし、 **[+ 新規]** をクリックし、 **[SensorTile.box]** テンプレートを選択することで、IoT Central アプリケーションに **SensorTile.box** デバイス テンプレートを追加します。
 
 ### <a name="get-your-device-connection-details"></a>デバイス接続の詳細の取得
 
@@ -49,7 +49,7 @@ Azure IoT Central アプリケーションでは、**SensorTile.box** デバイ�
 
 このセクションでは、デバイス上にアプリケーションのファームウェアをプッシュする方法を説明します。 その後さらに、Bluetooth Low Energy (BLE) 接続を利用して ST BLE Sensor モバイル アプリ経由で IoT Central にデバイス データを送信する方法を紹介します。
 
-1. ST BLE Sensor アプリを起動し、**[新しいアプリの作成]** ボタンを押します。
+1. ST BLE Sensor アプリを起動し、 **[新しいアプリの作成]** ボタンを押します。
 
     ![アプリを作成する](media/howto-connect-sensortile/create-app.png)
 
@@ -65,7 +65,7 @@ Azure IoT Central アプリケーションでは、**SensorTile.box** デバイ�
 
 このセクションでは、SensorTile.box をモバイル アプリケーションに接続し、モバイル アプリケーションをクラウドに接続する方法を説明します。
 
-1. 左側のメニューを使用し、**[クラウドのログ記録]** ボタンを選択します。
+1. 左側のメニューを使用し、 **[クラウドのログ記録]** ボタンを選択します。
 
     ![クラウドのログ記録](media/howto-connect-sensortile/cloud-logging.png)
 

@@ -8,10 +8,10 @@ ms.topic: article
 ms.service: virtual-machines-linux
 manager: jeconnoc
 ms.openlocfilehash: cf8264cbad3c5c88c58cff3b95cb5c68adf0686c
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65538293"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>更新:Azure Image Builder テンプレートを作成する 
@@ -269,7 +269,7 @@ OS のサポート: Linux
 OS のサポート:  Windows
  
 カスタマイズのプロパティ:
-- **[タイプ]**:WindowsRestart
+- **[タイプ]** :WindowsRestart
 - **restartCommand** - 再起動を実行するコマンド (省略可能)。 既定では、 `'shutdown /r /f /t 0 /c \"packer restart\"'`です。
 - **restartCheckCommand** - 再起動が成功したかどうかを確認するコマンド (省略可能)。 
 - **restartTimeout** - 大きさと単位の文字列として指定された再起動のタイムアウト。 たとえば、`5m` (5 分) や `2h` (2 時間) などです。 既定値は "5m" です
@@ -447,7 +447,7 @@ Azure 共有イメージ ギャラリーは新しいイメージ管理サービ�
 > [!NOTE]
 > ギャラリーとは別のリージョンで Azure Image Builder を使用できますが、Azure Image Builder サービスはデータセンター間でイメージを転送する必要があり、これには長い時間がかかります。 Image Builder ではモノトニックな整数に基づいて自動的にイメージのバージョンが設定され、それを指定することは現在はできません。 
 
-### <a name="distribute-vhd"></a>配布: VHD   
+### <a name="distribute-vhd"></a>配布: VHD  
 VHD に出力することができます。 その後、VHD をコピーし、それを使って Azure MarketPlace に発行したり、Azure Stack で使ったりできます。  
 
 ```json

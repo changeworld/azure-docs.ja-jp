@@ -9,10 +9,10 @@ ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: e1fc7809ad94d589483b87c638d027a39098164e
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65209538"
 ---
 # <a name="quickstart---configure-a-private-cloud-environment"></a>クイックスタート - プライベート クラウドの環境を構成する
@@ -27,7 +27,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 1. **[すべてのサービス]** を選択します。
 2. **CloudSimple Services** を検索します。
 3. プライベート クラウドを作成する CloudSimple サービスを選択します。
-4. 概要から、**[Create Private Cloud]\(プライベート クラウドの作成\)** をクリックして CloudSimple ポータルの新しいブラウザー タブを開きます。  メッセージが表示されたら、Azure サインインの資格情報でサインインします。  
+4. 概要から、 **[Create Private Cloud]\(プライベート クラウドの作成\)** をクリックして CloudSimple ポータルの新しいブラウザー タブを開きます。  メッセージが表示されたら、Azure サインインの資格情報でサインインします。  
 
     ![Azure からプライベート クラウドを作成する](media/create-private-cloud-from-azure.png)
 
@@ -44,7 +44,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
     ![プライベート クラウドを作成する - 詳細オプション](media/create-private-cloud-advanced-options.png)
 
 11. **[次へ:確認と作成]** を選択します。
-12. 設定を確認します。 設定を変更する必要がある場合は、**[前へ]** をクリックします。
+12. 設定を確認します。 設定を変更する必要がある場合は、 **[前へ]** をクリックします。
 13. **Create** をクリックしてください。
 
 プライベート クラウドのプロビジョニング プロセスが開始されます。  プライベート クラウドのプロビジョニングには、最大で 2 時間かかる場合があります。
@@ -56,7 +56,7 @@ Azure portal から CloudSimple ポータルにアクセスすることができ
 1. **[すべてのサービス]** を選択します。
 2. **CloudSimple Services** を検索します。
 3. プライベート クラウドを作成する CloudSimple サービスを選択します。
-4. 概要から、**[Go to the CloudSimple portal]\(CloudSimple ポータルに移動する\)** をクリックして CloudSimple ポータルの新しいブラウザー タブを開きます。  メッセージが表示されたら、Azure サインインの資格情報でサインインします。  
+4. 概要から、 **[Go to the CloudSimple portal]\(CloudSimple ポータルに移動する\)** をクリックして CloudSimple ポータルの新しいブラウザー タブを開きます。  メッセージが表示されたら、Azure サインインの資格情報でサインインします。  
 
     ![CloudSimple ポータルを起動する](media/launch-cloudsimple-portal.png)
 
@@ -66,30 +66,30 @@ Azure portal から CloudSimple ポータルにアクセスすることができ
 
 ### <a name="create-gateway"></a>ゲートウェイの作成
 
-1. CloudSimple ポータルを起動し、**[Network]\(ネットワーク\)** を選択します。
+1. CloudSimple ポータルを起動し、 **[Network]\(ネットワーク\)** を選択します。
 2. **[VPN Gateway]\(VPN ゲートウェイ\)** を選択します。
 3. **[New VPN Gateway]\(新しい VPN ゲートウェイ\)** をクリックします。
 
     ![VPN ゲートウェイを作成する](media/create-vpn-gateway.png)
 
-4. **[Gateway configuration]\(ゲートウェイの構成\)** で次の設定を指定して、**[次へ]** をクリックします。
+4. **[Gateway configuration]\(ゲートウェイの構成\)** で次の設定を指定して、 **[次へ]** をクリックします。
 
     * ゲートウェイの種類として **[Point-to-Site VPN]\(ポイント対サイト VPN\)** を選択します。
     * ゲートウェイを識別する名前を入力します。
     * CloudSimple サービスをデプロイする Azure の場所を選択します。
     * ポイント対サイト ゲートウェイ用のクライアント サブネットを指定します。  接続するときは、このサブネットから DHCP アドレスが提供されます。
 
-5. **[Connection/User]\(接続/ユーザー\)** で次の設定を指定して、**[次へ]** をクリックします。
+5. **[Connection/User]\(接続/ユーザー\)** で次の設定を指定して、 **[次へ]** をクリックします。
 
-    * 現在および将来のすべてのユーザーがこのポイント対サイト ゲートウェイ経由でプライベート クラウドにアクセスするのを自動的に許可するには、**[Automatically add all users]\(すべてのユーザーを自動的に追加する\)** を選択します。 このオプションを選択すると、[User]\(ユーザー\) 一覧のすべてのユーザーが自動的に選択されます。 一覧で個々のユーザーの選択を解除して、自動オプションをオーバーライドできます。
+    * 現在および将来のすべてのユーザーがこのポイント対サイト ゲートウェイ経由でプライベート クラウドにアクセスするのを自動的に許可するには、 **[Automatically add all users]\(すべてのユーザーを自動的に追加する\)** を選択します。 このオプションを選択すると、[User]\(ユーザー\) 一覧のすべてのユーザーが自動的に選択されます。 一覧で個々のユーザーの選択を解除して、自動オプションをオーバーライドできます。
     * 個々のユーザーのみを選択するには、[User]\(ユーザー\) 一覧でチェック ボックスをオンにします。
 
 6. [VLANs/Subnets]\(VLAN/サブネット\) セクションでは、ゲートウェイと接続に対する管理およびユーザーの VLAN/サブネットを指定できます。
 
     * **[Automatically add]\(自動的に追加する\)** オプションでは、このゲートウェイに対するグローバル ポリシーが設定されます。 現在のゲートウェイに設定が適用されます。 **[Select]\(選択\)** 領域で設定をオーバーライドできます。
     * **[Add management VLANs/Subnets of Private Clouds]\(プライベート クラウドの管理 VLAN/サブネットを追加する\)** を選択します。 
-    * ユーザー定義のすべての VLAN/サブネットを追加するには、**[Add user-defined VLANs/Subnets]\(ユーザー定義の VLAN/サブネットを追加する\)** をクリックします。 
-    * **[Automatically add]\(自動的に追加する\)** のグローバル設定は、**[Select]\(選択\)** の設定によってオーバーライドされます。 
+    * ユーザー定義のすべての VLAN/サブネットを追加するには、 **[Add user-defined VLANs/Subnets]\(ユーザー定義の VLAN/サブネットを追加する\)** をクリックします。 
+    * **[Automatically add]\(自動的に追加する\)** のグローバル設定は、 **[Select]\(選択\)** の設定によってオーバーライドされます。 
 
 7. **[次へ]** をクリックして、設定を確認します。 変更するには [編集] アイコンをクリックします。
 8. **[作成]** をクリックして、VPN ゲートウェイを作成します。
@@ -98,7 +98,7 @@ Azure portal から CloudSimple ポータルにアクセスすることができ
 
 お使いのコンピューターから CloudSimple に接続するには、VPN クライアントが必要です。  Windows 用の [OpenVPN クライアント](https://openvpn.net/community-downloads/)または macOS および OS X 用の [Viscosity](https://www.sparklabs.com/viscosity/download/) をダウンロードします。
 
-1. CloudSimple ポータルを起動し、**[Network]\(ネットワーク\)** を選択します。
+1. CloudSimple ポータルを起動し、 **[Network]\(ネットワーク\)** を選択します。
 2. **[VPN Gateway]\(VPN ゲートウェイ\)** を選択します。
 3. VPN ゲートウェイの一覧で、ポイント対サイト VPN ゲートウェイをクリックします。
 4. **[ユーザー]** を選択します。
@@ -117,7 +117,7 @@ Azure portal から CloudSimple ポータルにアクセスすることができ
 
 プライベート クラウドを作成した後は、ワークロード/アプリケーション VM をデプロイする VLAN を作成します。
 
-1. CloudSimple ポータルで、**[Network]\(ネットワーク\)** を選択します。
+1. CloudSimple ポータルで、 **[Network]\(ネットワーク\)** を選択します。
 2. **[VLAN/Subnets]\(VLAN/サブネット\)** をクリックします。
 3. **[Create VLAN/Subnet]\(VLAN/サブネットの作成\)** をクリックします
 
@@ -141,7 +141,7 @@ CloudSimple では、プライベート クラウドに対する ExpressRoute �
 
 vCenter にサインインして、仮想マシンとポリシーを設定できるようになりました。
 
-1. vCenter にアクセスするには、CloudSimple ポータルから始めます。 ホーム ページの **[Common Tasks]\(一般タスク\)** で、**[Launch vSphere Client]\(vSphere クライアントを起動\)** をクリックします。  プライベート クラウドを選択し、プライベート クラウドで **[Launch vSphere Client]\(vSphere クライアントを起動\)** をクリックします。
+1. vCenter にアクセスするには、CloudSimple ポータルから始めます。 ホーム ページの **[Common Tasks]\(一般タスク\)** で、 **[Launch vSphere Client]\(vSphere クライアントを起動\)** をクリックします。  プライベート クラウドを選択し、プライベート クラウドで **[Launch vSphere Client]\(vSphere クライアントを起動\)** をクリックします。
 
     ![vSphere Client を起動する](media/launch-vcenter-from-cloudsimple-portal.png)
 
@@ -180,7 +180,7 @@ NSX Manager は、既定のパスワードでデプロイされます。  プラ
 
 CloudSimple ポータルで、NSX Manager の完全修飾ドメイン名 (FQDN) と IP アドレスを検索できます。
 
-1. CloudSimple ポータルを起動し、**[Resources]\(リソース\)** を選択します。
+1. CloudSimple ポータルを起動し、 **[Resources]\(リソース\)** を選択します。
 2. 使用するプライベート クラウドをクリックします。
 3. **[vSphere management network]\(vSphere 管理ネットワーク\)** を選択します
 4. **NSX Manager** の FQDN または IP アドレスを使用し、Web ブラウザーを使って接続します。 

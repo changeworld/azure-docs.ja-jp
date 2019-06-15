@@ -8,10 +8,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 9cb0f89b4a48d7139adb35dcef48c0115b005c57
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65205621"
 ---
 # <a name="best-practices-to-use-azure-maps-search-service"></a>Azure Maps Search Service を使用するためのベスト プラクティス
@@ -70,7 +70,7 @@ Azure Maps Search Service を使用して、完全な住所または部分的な
        * `XStr` - **交差点**: 2 つの街路が交わる場所であるジャンクションを表します。
 
 
-       **使用例** : 
+       **使用例** :
 
        * idxSet=POI (目的地のみを検索します) 
 
@@ -242,7 +242,7 @@ https://atlas.microsoft.com/search/address/json?subscription-key={subscription-k
 
 交差点の住所を検索するには (つまり、"1st Avenue & Union Street, Seattle")、要求を送信する前に特殊文字 "&" をエンコードする必要があります。 URI で文字データをエンコードすることをお勧めします。その場合、すべての文字を、"%" 文字と、UTF-8 文字に対応する 2 文字の 16 進値を使用してエンコードします。
 
-**使用例**: 
+**使用例**:
 
 Get Search Address:
 
@@ -274,13 +274,13 @@ Java:
 URLEncoder.encode(query, "UTF-8") 
 ```
 
-Python: 
+Python:
 ```Python
 import urllib.parse 
 urllib.parse.quote(query)
 ```
 
-C++: 
+C++:
 ```C++
 #include <curl/curl.h>
 curl_easy_escape(query)

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: dc871b29cdafa57d337f9be6cf01e76212f31b67
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66167085"
 ---
 ## <a name="migrate-iaas-resources-from-the-classic-deployment-model-to-azure-resource-manager"></a>クラシック デプロイ モデルから Azure Resource Manager への IaaS リソースの移行
@@ -60,7 +60,7 @@ ms.locfileid: "66167085"
 |仮想ネットワークに ER ゲートウェイと VPN ゲートウェイの両方が割り当てられている。|
 |仮想ネットワーク ゲートウェイ接続が切断状態。|
 |Azure Resource Manager スタックにすべての ER 回線が事前に移行されている。|
-|Azure Resource Manager のネットワーク リソースのクォータ チェック  (例: 静的パブリック IP、動的パブリック IP、ロード バランサー、ネットワーク セキュリティ グループ、ルート テーブル、ネットワーク インターフェイス)。 |
+|Azure Resource Manager のネットワーク リソースのクォータ チェック (例: 静的パブリック IP、動的パブリック IP、ロード バランサー、ネットワーク セキュリティ グループ、ルート テーブル、ネットワーク インターフェイス)。 |
 | すべてのロード バランサー規則がデプロイと仮想ネットワークにわたって有効である。 |
 | 同じ仮想ネットワーク内にある停止済み (割り当て解除済み) VM 間のプライベート IP の競合。 |
 
