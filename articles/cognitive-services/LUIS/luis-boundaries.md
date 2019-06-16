@@ -12,10 +12,10 @@ ms.date: 04/18/2019
 ms.author: diberry
 ms.custom: seodec18
 ms.openlocfilehash: 357ed4c42cc2758766b9ccd45a3fafa541338d11
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65154568"
 ---
 # <a name="boundaries-for-your-luis-model-and-keys"></a>LUIS モデルとキーの境界
@@ -28,13 +28,13 @@ LUIS には、複数の境界領域があります。 1 つは[モデル境界](
 
 |領域|制限|
 |--|:--|
-| [アプリ名][luis-get-started-create-app] | * 既定の最大文字数 |
+| [アプリ名][luis-get-started-create-app] | \* 既定の最大文字数 |
 | [バッチ テスト][batch-testing]| 10 データセット、データセットあたり 1000 発話|
 | 明示的なリスト | アプリケーションあたり 50|
 | 外部エンティティ | 無制限 |
 | [意図][intents]|アプリケーションあたり 500:499 のカスタムの意図、および必須の意図 _なし_。<br>[ディスパッチ ベース](https://aka.ms/dispatch-tool) アプリケーションには対応するディスパッチ ソースが 500。|
 | [リスト エンティティ](./luis-concept-entity-types.md) | 親: 50、子: 20,000 項目。 Canonical 名は *既定の最大文字数。シノニム値は長さ制限なし。 |
-| [機械学習エンティティ + ロール](./luis-concept-entity-types.md): <br> 複合、<br>シンプル、<br>エンティティのロール|100 個の親エンティティの制限または 330 個のエンティティの制限のどちらかの、ユーザーが最初に達した制限。 ロールは、この境界の目的のためのエンティティとしてカウントされます。 例として、次のような 2 つのロールを持つシンプル エンティティで構成された複合があります。1 つの複合 + 1 つのシンプル + 2 つのロール = 330 エンティティのうちの 4 つ。|
+| [機械学習エンティティ + ロール](./luis-concept-entity-types.md):<br> 複合、<br>シンプル、<br>エンティティのロール|100 個の親エンティティの制限または 330 個のエンティティの制限のどちらかの、ユーザーが最初に達した制限。 ロールは、この境界の目的のためのエンティティとしてカウントされます。 例として、次のような 2 つのロールを持つシンプル エンティティで構成された複合があります。1 つの複合 + 1 つのシンプル + 2 つのロール = 330 エンティティのうちの 4 つ。|
 | [プレビュー - 動的なリスト エンティティ](https://aka.ms/luis-api-v3-doc#dynamic-lists-passed-in-at-prediction-time)|クエリ予測エンドポイント要求あたり最大 1K のうちの 2 つのリスト|
 | [パターン](luis-concept-patterns.md)|アプリケーションあたり 500 パターン。<br>パターンの最大文字数: 400 文字。<br>パターンあたり 3 Pattern.any エンティティ<br>パターン内の入れ子になった省略可能なテキストの最大数: 2|
 | [Pattern.any](./luis-concept-entity-types.md)|アプリケーションあたり 100、パターンあたり 3 Pattern.any エンティティ |
@@ -47,7 +47,7 @@ LUIS には、複数の境界領域があります。 1 つは[モデル境界](
 | [バージョン](luis-concept-version.md)| 制限なし |
 | [バージョン名][luis-how-to-manage-versions] | 10 文字。英数字とピリオド (.) に限定 |
 
-* 既定の最大文字数: 50 文字。 
+\* 既定の最大文字数: 50 文字。 
 
 <a name="intent-and-entity-naming"></a>
 
@@ -76,7 +76,7 @@ Language Understand には、作成用に 1 つの種類と、予測エンドポ
 |Language Understanding [サブスクリプション][pricing] - S0 - Basic レベル|無効|50/秒|ご自身の LUIS エンドポイントへのクエリの実行|
 |Cognitive Service [サブスクリプション][pricing] - S0 - Standard レベル|無効|50/秒|ご自身の LUIS エンドポイントへのクエリの実行|
 |[感情分析の統合](luis-how-to-publish-app.md#enable-sentiment-analysis)|無効|課金なし|キー フレーズ データの抽出など、センチメント情報の追加 |
-|音声統合|無効|5.50 米国ドル/1,000 エンドポイント要求|音声発話をテキスト発話に変換して、LUIS 結果を返す|
+|音声統合|無効|5\.50 米国ドル/1,000 エンドポイント要求|音声発話をテキスト発話に変換して、LUIS 結果を返す|
 
 ## <a name="keyboard-controls"></a>キーボード コントロール
 

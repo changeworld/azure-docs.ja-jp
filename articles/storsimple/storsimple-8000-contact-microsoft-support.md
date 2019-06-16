@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/09/2018
 ms.author: alkohli;
 ms.openlocfilehash: 77050ad37862394785cf348a242f585cc089ba26
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65606867"
 ---
 # <a name="contact-microsoft-support"></a>Microsoft サポートに問い合わせる

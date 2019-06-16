@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/13/2019
 ms.author: tomfitz
 ms.openlocfilehash: 7ff45be4eea5c6e8ab83093847164ede0e94579a
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65606602"
 ---
 # <a name="view-activity-logs-to-monitor-actions-on-resources"></a>リソースのアクションを監視するアクティビティ ログの表示

@@ -16,10 +16,10 @@ ms.workload: iaas-sql-server
 ms.date: 06/27/2017
 ms.author: mikeray
 ms.openlocfilehash: 379d3076559643b1445412074ed689e2e94a5ab2
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65408799"
 ---
 # <a name="high-availability-and-disaster-recovery-for-sql-server-in-azure-virtual-machines"></a>Azure 仮想マシンにおける SQL Server の高可用性とディザスター リカバリー
@@ -110,7 +110,7 @@ Azure の RFC に準拠していない DHCP サービスが原因で、特定の
 この場合でも、サービス インスタンスに直接接続することで、各可用性レプリカに個別に接続できます。 また、可用性グループはデータベース ミラーリング クライアントとの下位互換性があるため、レプリカがデータベース ミラーリングと同様に、次のように構成されていれば、データベース ミラーリング パートナーのように可用性レプリカに接続できます。
 
 * 1 つのプライマリ レプリカと 1 つのセカンダリ レプリカ
-* セカンダリ レプリカが読み取り不可として構成されている (**[読み取り可能なセカンダリ]** オプションが **[いいえ]** に設定されている)
+* セカンダリ レプリカが読み取り不可として構成されている ( **[読み取り可能なセカンダリ]** オプションが **[いいえ]** に設定されている)
 
 ADO.NET または SQL Server Native Client を使用する、このデータベース ミラーリングと同様の構成に対応するクライアント接続文字列の例を、次に示します。
 

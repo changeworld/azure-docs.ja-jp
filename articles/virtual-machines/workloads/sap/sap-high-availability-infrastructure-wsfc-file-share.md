@@ -18,10 +18,10 @@ ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: e1c6b1d55a4fbc673980908a981a9a96c869bee9
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65409609"
 ---
 # <a name="prepare-azure-infrastructure-for-sap-high-availability-by-using-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances"></a>Windows フェールオーバー クラスターと SAP ASCS/SCS インスタンスのファイル共有を使用して SAP の高可用性向けの Azure インフラストラクチャを準備します
@@ -325,7 +325,7 @@ Managed Disks を使用することをお勧めします。
 
 ![図 1:マネージド ディスクを備えたスケールアウト ファイル サーバー Resource Manager テンプレートの UI 画面][sap-ha-guide-figure-8010]
 
-"_**図 1**: マネージド ディスクを備えたスケールアウト ファイル サーバー Resource Manager テンプレートの UI 画面_"
+" _**図 1**: マネージド ディスクを備えたスケールアウト ファイル サーバー Resource Manager テンプレートの UI 画面_"
 
 このテンプレートで、次の操作を行います。
 1. **[VM 数]** ボックスに、最小数である「**2**」を入力します。
@@ -339,9 +339,9 @@ Managed Disks を使用することをお勧めします。
 
 ![図 2:マネージド ディスクを備えていないスケールアウト ファイル サーバー Azure Resource Manager テンプレートの UI 画面][sap-ha-guide-figure-8011]
 
-"_**図 2**: マネージド ディスクを備えていないスケールアウト ファイル サーバー Azure Resource Manager テンプレートの UI 画面_"
+" _**図 2**: マネージド ディスクを備えていないスケールアウト ファイル サーバー Azure Resource Manager テンプレートの UI 画面_"
 
-**[ストレージ アカウントの種類]** ボックスで、**[Premium Storage]** を選択します。 その他の設定は、マネージド ディスクと同じです。
+**[ストレージ アカウントの種類]** ボックスで、 **[Premium Storage]** を選択します。 その他の設定は、マネージド ディスクと同じです。
 
 ## <a name="adjust-cluster-timeout-settings"></a>クラスターのタイムアウトの設定を調整する
 

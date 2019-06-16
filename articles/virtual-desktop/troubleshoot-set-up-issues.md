@@ -8,10 +8,10 @@ ms.topic: troubleshoot
 ms.date: 04/08/2019
 ms.author: v-chjenk
 ms.openlocfilehash: 88e843c410a750387ecf58497dec79586e2a59d8
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65523325"
 ---
 # <a name="tenant-and-host-pool-creation"></a>テナントとホスト プールの作成
@@ -337,7 +337,7 @@ GitHub の Azure Resource Manager テンプレートを実行している場合�
 - Windows Virtual Desktop で仮想マシン (VM) の構成中に発生した問題を解決するには、「[セッション ホスト仮想マシンの構成](troubleshoot-vm-configuration.md)」を参照してください。
 - Windows Virtual Desktop クライアント接続の問題を解決するには、「[リモート デスクトップ クライアントの接続](troubleshoot-client-connection.md)」を参照してください。
 - Windows Virtual Desktop で PowerShell を使用しているときに発生した問題を解決するには、「[Windows Virtual Desktop PowerShell](troubleshoot-powershell.md)」を参照してください。
-- プレビュー サービスの詳細については、「[Windows Desktop プレビュー環境](https://docs.microsoft.com/azure/virtual-desktop/environment-setup)」を参照してください。
+- プレビュー サービスの詳細については、「[Windows Virtual Desktop プレビュー環境](https://docs.microsoft.com/azure/virtual-desktop/environment-setup)」を参照してください。
 - トラブルシューティング チュートリアルについては、「[Tutorial:Resource Manager テンプレート デプロイのトラブルシューティング](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-troubleshoot)」を参照してください。
 - 監査アクションについては、「 [リソース マネージャーの監査操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit)」をご覧ください。
 - デプロイ時にエラーが発生した場合の対応については、 [デプロイ操作の確認](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-operations)に関するページを参照してください。

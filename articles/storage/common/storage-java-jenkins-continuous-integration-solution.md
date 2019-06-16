@@ -10,10 +10,10 @@ custom: jenkins
 ms.date: 07/31/2018
 ms.subservice: common
 ms.openlocfilehash: d9ef6f5056fdbd7187c92c98d1c884a5314c29a0
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65153663"
 ---
 # <a name="using-azure-storage-with-a-jenkins-continuous-integration-solution"></a>Jenkins 継続的インテグレーション ソリューションでの Azure Storage の使用

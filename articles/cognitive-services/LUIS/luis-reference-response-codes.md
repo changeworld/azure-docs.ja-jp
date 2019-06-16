@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 03/04/2019
 ms.author: diberry
 ms.openlocfilehash: f6742bf64ce26e6cce93dfcdfd06756f3c340d9e
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65522981"
 ---
 # <a name="common-api-response-codes-and-their-meaning"></a>一般的な API 応答コードとその意味

@@ -11,10 +11,10 @@ ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 05/10/2019
 ms.openlocfilehash: 42724f5fcb3101015cef0d218a3d548f349646be
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65785819"
 ---
 # <a name="sample-5---classification-predict-churn-appetency-and-up-selling"></a>サンプル 5 - 分類: 顧客離れ、強い欲求、アップセルを予測する 
@@ -61,7 +61,7 @@ ms.locfileid: "65785819"
 
 ## <a name="results"></a>結果
 
-**モデルの評価**モジュールの出力を視覚化し、テスト セットでのモデルのパフォーマンスを確認します。 アップセル タスクについては、このモデルの方がランダム モデルより優れていることが ROC 曲線で示されています。 曲線下面積 (AUC) は 0.857 です。 0.5 のしきい値では、精度は 0.7、再現率は 0.463、F1 スコアは 0.545 です。
+**モデルの評価**モジュールの出力を視覚化し、テスト セットでのモデルのパフォーマンスを確認します。 アップセル タスクについては、このモデルの方がランダム モデルより優れていることが ROC 曲線で示されています。 曲線下面積 (AUC) は 0.857 です。 0\.5 のしきい値では、精度は 0.7、再現率は 0.463、F1 スコアは 0.545 です。
 
 ![結果を評価](./media/ui-sample-classification-predict-churn/evaluate-result.png)
 

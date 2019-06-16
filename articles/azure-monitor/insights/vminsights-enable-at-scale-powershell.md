@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 05/09/2019
 ms.author: magoedte
 ms.openlocfilehash: a22bc88fb066d9b845f7fdf1592e2194a03915bc
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65524045"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-using-azure-powershell-or-resource-manager-template"></a>Azure PowerShell または Resource Manager テンプレートを使用して Azure Monitor for VMs (プレビュー) を有効にする
@@ -355,4 +355,4 @@ Failed: (0)
 
 ## <a name="next-steps"></a>次の手順
 
-仮想マシンの監視が有効になったので、Azure Monitor for VMs での分析にこの情報を使用できます。 正常性機能の使用方法については、[Azure Monitor for VMs の正常性の表示](vminsights-health.md)に関する記事をご覧ください。 検出されたアプリケーションの依存関係を表示するには、[Azure Monitor for VMs のマップの表示](vminsights-maps.md)に関する記事をご覧くださいい。 VM のパフォーマンスのボトルネックや全体的な使用率を識別するには、[Azure VM のパフォーマンスの表示](vminsights-performance.md)に関するページを参照してください。または、検出されたアプリケーションの依存関係を表示するには、[VM 用 Azure Monitor のマップの表示](vminsights-maps.md)に関するページを参照してください。
+これで、仮想マシンに対する監視が有効になったので、この情報を Azure Monitor for VMs での分析に使用できます。 正常性機能の使用方法については、[Azure Monitor for VMs の正常性の表示](vminsights-health.md)に関する記事をご覧ください。 検出されたアプリケーションの依存関係を表示するには、[Azure Monitor for VMs のマップの表示](vminsights-maps.md)に関する記事をご覧くださいい。 VM のパフォーマンスのボトルネックや全体的な使用率を識別するには、[Azure VM のパフォーマンスの表示](vminsights-performance.md)に関するページを参照してください。または、検出されたアプリケーションの依存関係を表示するには、[VM 用 Azure Monitor のマップの表示](vminsights-maps.md)に関するページを参照してください。

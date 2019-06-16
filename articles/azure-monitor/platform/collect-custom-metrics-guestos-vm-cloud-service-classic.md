@@ -9,10 +9,10 @@ ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
 ms.openlocfilehash: 90e841628d989a16f504d2efd7a2c7b18335ff48
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66129505"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-classic-cloud-services"></a>Azure Monitor メトリック ストアの従来の Cloud Services にゲスト OS メトリックを送信する 
@@ -176,13 +176,13 @@ Set-AzureServiceDiagnosticsExtension -ServiceName <classicCloudServiceName> -Sto
 
 2. 左側のメニューで **[モニター]** を選択します。
 
-3. **[モニター]** ブレードで、**[メトリックのプレビュー]** タブを選択します。
+3. **[モニター]** ブレードで、 **[メトリックのプレビュー]** タブを選択します。
 
 4. リソースのドロップダウン メニューで、お使いのクラシック クラウド サービスを選択します。
 
-5. 名前空間のドロップダウン メニューで、**[azure.vm.windows.guest]** を選択します。 
+5. 名前空間のドロップダウン メニューで、 **[azure.vm.windows.guest]** を選択します。 
 
-6. メトリックのドロップダウン メニューで、**[Memory\Committed Bytes in Use]** を選択します。 
+6. メトリックのドロップダウン メニューで、 **[Memory\Committed Bytes in Use]** を選択します。 
 
 ディメンションのフィルタリング機能と分割機能を使用することで、特定のロールとロール インスタンスにより使用されている合計メモリを選択して表示することができます。 
 
