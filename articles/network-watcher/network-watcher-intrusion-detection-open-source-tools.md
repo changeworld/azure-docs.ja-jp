@@ -15,17 +15,17 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
 ms.openlocfilehash: b5dc885611c6654c1dc1d236e41ed75ef2717cc1
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65605703"
 ---
 # <a name="perform-network-intrusion-detection-with-network-watcher-and-open-source-tools"></a>Network Watcher とオープン ソース ツールを使用したネットワーク不正侵入検出の実行
 
 パケット キャプチャは、ネットワークの侵入検出システム (IDS) を実装し、ネットワーク セキュリティ監視 (NSM) を実行するうえで重要なコンポーネントです。 パケット キャプチャを処理し、ネットワークへの侵入と悪意のあるアクティビティの可能性を示すシグネチャを検出するオープン ソース IDS ツールは複数公開されています。 Network Watcher で取得したパケット キャプチャを使用して、害のある侵入または脆弱性に関してネットワークを分析できます。
 
-そのようなオープン ソース ツールの 1 つに Suricata があります。これは、ルール セットを使用してネットワーク トラフィックを監視し、疑わしいイベントが発生したときにアラートをトリガーする IDS エンジンです。 Suricata にはマルチスレッド エンジンがあるため、高速かつ高効率なネットワーク トラフィック分析を実行することができます。 Suricata とその機能の詳細については、Suricata の Web サイト (https://suricata-ids.org/) を参照してください。
+そのようなオープン ソース ツールの 1 つに Suricata があります。これは、ルール セットを使用してネットワーク トラフィックを監視し、疑わしいイベントが発生したときにアラートをトリガーする IDS エンジンです。 Suricata にはマルチスレッド エンジンがあるため、高速かつ高効率なネットワーク トラフィック分析を実行することができます。 Suricata とその機能の詳細については、Suricata の Web サイト (https://suricata-ids.org/ ) を参照してください。
 
 ## <a name="scenario"></a>シナリオ
 

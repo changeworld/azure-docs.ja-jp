@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: jgao
 ms.openlocfilehash: 559c1874c119eabef2c35a954961c1e669df3c06
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65507223"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-the-azure-portal"></a>Azure portal を使用して Azure Resource Manager リソース グループを管理する
@@ -47,24 +47,24 @@ ms.locfileid: "65507223"
 4. 次の値を入力します。
 
    - **サブスクリプション**:Azure サブスクリプションを選択します。 
-   - **[リソース グループ]**:新しいリソース グループの名前を入力します。 
-   - **[リージョン]**:**[米国中部]** など、Azure の場所を選択します。
+   - **[リソース グループ]** :新しいリソース グループの名前を入力します。 
+   - **[リージョン]** : **[米国中部]** など、Azure の場所を選択します。
 
-     ![リソース グループの作成 ](./media/manage-resource-groups-portal/manage-resource-groups-create-group.png)
+     ![リソース グループの作成](./media/manage-resource-groups-portal/manage-resource-groups-create-group.png)
 5. **[確認と作成]** を選択します
 6. **作成** を選択します。 リソース グループの作成には数秒かかります。
-7. 上部のメニューにある **[最新の情報に更新]** を選択してリソース グループの一覧を最新の状態に更新し、新しく作成されたリソース グループを選択してこれを開きます。 または、上部にある **[通知]** (ベルのアイコン) をクリックしてから、**[リソース グループに移動]** を選択して、新しく作成されたリソース グループを開きます
+7. 上部のメニューにある **[最新の情報に更新]** を選択してリソース グループの一覧を最新の状態に更新し、新しく作成されたリソース グループを選択してこれを開きます。 または、上部にある **[通知]** (ベルのアイコン) をクリックしてから、 **[リソース グループに移動]** を選択して、新しく作成されたリソース グループを開きます
 
     ![リソース グループに移動](./media/manage-resource-groups-portal/manage-resource-groups-add-group-go-to-resource-group.png)
 
 ## <a name="list-resource-groups"></a>リソース グループの一覧を表示する
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. リソース グループを表示するには、**[リソース グループ]** を選択します
+2. リソース グループを表示するには、 **[リソース グループ]** を選択します
 
     ![リソース グループの参照](./media/manage-resource-groups-portal/manage-resource-groups-list-groups.png)
 
-3. リソース グループについて表示される情報をカスタマイズするには、**[列の編集]** を選択します。 次のスクリーンショットは、表示に追加できる追加列を示しています。
+3. リソース グループについて表示される情報をカスタマイズするには、 **[列の編集]** を選択します。 次のスクリーンショットは、表示に追加できる追加列を示しています。
 
 ## <a name="open-resource-groups"></a>リソース グループを開く
 
@@ -94,9 +94,9 @@ Resource Manager テンプレートを作成した後に、Azure portal を使�
 ロックを適用することで、組織の他のユーザーが重要なリソース (Azure サブスクリプション、リソース グループ、リソースなど) を誤って削除または変更するのを防ぐことができます。 
 
 1. 削除するリソース グループを開きます。  「[リソース グループを開く](#open-resource-groups)」を参照してください。
-2. 左側のウィンドウで、**[ロック]** を選択します。
-3. ロックをリソース グループに追加するには、**[追加]** を選択します。
-4. **[ロック名]**、**[ロックの種類]**、**[メモ]** を入力します。 ロックの種類には、**[読み取り専用]** および **[削除]** が含まれます。
+2. 左側のウィンドウで、 **[ロック]** を選択します。
+3. ロックをリソース グループに追加するには、 **[追加]** を選択します。
+4. **[ロック名]** 、 **[ロックの種類]** 、 **[メモ]** を入力します。 ロックの種類には、 **[読み取り専用]** および **[削除]** が含まれます。
 
     ![Azure リソース グループをロックする](./media/manage-resource-groups-portal/manage-resource-groups-add-lock.png)
 

@@ -18,10 +18,10 @@ ms.author: ryanwi
 ms.reviewer: jlu, annaba, hirsin
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 84a8c2954473401a9e57cba045907c60862ed61f
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65546229"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>方法:Azure Access Control Service からの移行
@@ -105,7 +105,7 @@ Access Control の詳細については、「[Access Control Service 2.0](https:
 
     たとえば、名前空間の 1 つが contoso-test である場合は、`https://contoso-test.accesscontrol.windows.net` に移動します
 
-1. **[信頼関係]** で、**[証明書利用者アプリケーション]** を選択し、ACS の提供終了の影響を受けるアプリケーションの一覧を表示します。
+1. **[信頼関係]** で、 **[証明書利用者アプリケーション]** を選択し、ACS の提供終了の影響を受けるアプリケーションの一覧を表示します。
 1. その他に ACS 名前空間があれば、それらについて手順 1 ～ 2 を繰り返します。
 
 ## <a name="retirement-schedule"></a>提供終了のスケジュール

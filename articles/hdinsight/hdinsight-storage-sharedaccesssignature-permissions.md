@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: hrasheed
 ms.openlocfilehash: 7f7f6fe31afe35d9ccfd6ee33617bd7e4fbe46b7
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65409555"
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Azure Storage の Shared Access Signature を使用して HDInsight でのデータへのアクセスを制限する
@@ -209,7 +209,7 @@ Set-AzStorageblobcontent `
 
 1. Visual Studio でソリューションを開きます。
 
-2. ソリューション エクスプローラーで **[SASExample]** プロジェクトを右クリックし、**[プロパティ]** を選択します。
+2. ソリューション エクスプローラーで **[SASExample]** プロジェクトを右クリックし、 **[プロパティ]** を選択します。
 
 3. **[設定]** を選択し、次のエントリに値を追加します。
 
@@ -358,25 +358,25 @@ Remove-AzResourceGroup `
 
 1. クラスターの Ambari Web UI を開きます。 このページのアドレスは `https://YOURCLUSTERNAME.azurehdinsight.net` です。 入力を要求されたら、クラスターを作成するときに使用した管理者名 (admin) とパスワードを使用してクラスターを認証します。
 
-2. Ambari Web UI の左側から、**[HDFS]** を選択して、ページ中央にある **[Configs]** タブを選択します。
+2. Ambari Web UI の左側から、 **[HDFS]** を選択して、ページ中央にある **[Configs]** タブを選択します。
 
-3. **[詳細設定]** タブをクリックし、**[カスタム core-site]** セクションが表示されるまでスクロールします。
+3. **[詳細設定]** タブをクリックし、 **[カスタム core-site]** セクションが表示されるまでスクロールします。
 
-4. **[カスタム core-site]** セクションを展開して、最後までスクロールし、**[プロパティの追加...]** リンクを選択します。 **[キー]** と **[値]** フィールドに、次の値を使用します。
+4. **[カスタム core-site]** セクションを展開して、最後までスクロールし、 **[プロパティの追加...]** リンクを選択します。 **[キー]** と **[値]** フィールドに、次の値を使用します。
 
    * **キー**: `fs.azure.sas.CONTAINERNAME.STORAGEACCOUNTNAME.blob.core.windows.net`
    * **値**: これまでに実行したいずれかの方法で取得した SAS。
 
      `CONTAINERNAME` を C# または SAS のアプリケーションで使用したコンテナー名に置き換えます。 `STORAGEACCOUNTNAME` には、使用したストレージ アカウント名を指定します。
 
-5. **[追加]** ボタンをクリックしてこのキーと値を保存し、**[保存]** ボタンをクリックして構成の変更を保存します。 プロンプトが表示されたら、変更の説明 (「SAS ストレージ アクセスの追加」など) を追加し、**[保存]** をクリックします。
+5. **[追加]** ボタンをクリックしてこのキーと値を保存し、 **[保存]** ボタンをクリックして構成の変更を保存します。 プロンプトが表示されたら、変更の説明 (「SAS ストレージ アクセスの追加」など) を追加し、 **[保存]** をクリックします。
 
     変更が完了したら、 **[OK]** をクリックします。
 
    > [!IMPORTANT]  
    > 変更を有効にするには、複数のサービスを再起動する必要があります。
 
-6. Ambari Web UI で、左側の一覧から **[HDFS]** を選択して、右側の **[サービス アクション]** ドロップダウン リストから **[すべて再起動]** を選択します。 メッセージが表示されたら、__[Confirm Restart All]\(すべての再起動の確認\)__ を選択します。
+6. Ambari Web UI で、左側の一覧から **[HDFS]** を選択して、右側の **[サービス アクション]** ドロップダウン リストから **[すべて再起動]** を選択します。 メッセージが表示されたら、 __[Confirm Restart All]\(すべての再起動の確認\)__ を選択します。
 
     この手順を MapReduce2 と YARN に対して繰り返します。
 

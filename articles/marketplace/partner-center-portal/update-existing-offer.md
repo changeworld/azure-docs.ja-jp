@@ -8,10 +8,10 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.openlocfilehash: 22490599b6f7a8d87c546cd84ca2fc6fbb2bfa3c
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65804831"
 ---
 # <a name="update-an-existing-offer-in-the-commercial-marketplace"></a>Commercial Marketplace で既存のオファーを更新する
@@ -93,7 +93,7 @@ Marketplace で現在ライブになっている既存のオファーを更新�
 
 プランのプライベートの対象ユーザーを更新して同期するには、次の手順に従います。
 
-- + **[Add ID]\(ID の追加)** または **[顧客のインポート (csv)]** ボタンを使用して 1 つまたは複数のプライベート プランの対象ユーザーを変更してから、変更内容を保存します。
+- \+ **[Add ID]\(ID の追加)** または **[顧客のインポート (csv)]** ボタンを使用して 1 つまたは複数のプライベート プランの対象ユーザーを変更してから、変更内容を保存します。
 - **[Plan overview]\(プランの概要)** ページで **[Sync private audience]\(プライベート対象ユーザーの同期)** を選択します。
 
 **[Sync private audience]\(プライベート対象ユーザーの同期)** により、ドラフトのオファーに対して行われた可能性のあるその他の更新を発行することなく、プライベートの対象ユーザーだけに変更が発行されます。

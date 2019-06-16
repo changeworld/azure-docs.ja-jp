@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 01/23/2019
 ms.author: diberry
 ms.openlocfilehash: 3fc14b821064719f39eb877aa2253f8084496a66
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65523493"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>一般的な用語や概念に関する Language Understanding の用語集
@@ -177,7 +177,7 @@ LUIS クォータとは、[Azure サブスクリプション レベル](https://
 
 ## <a name="subscription-key"></a>サブスクリプション キー
 
-サブスクリプション キーは、[ユーザーが Azure で作成した](luis-how-to-azure-subscription.md) LUIS サービスに関連付けられた**エンドポイント** キーです。 このキーは[オーサリング キー](#programmatic-key)ではありません。 エンドポイント キーがある場合は、それをオーサリング キーの代わりに、すべてのエンドポイント要求に対して使用してください。 現在のエンドポイント キーは、[LUIS](luis-reference-regions.md) Web サイトの [**[Keys and endpoints]\(キーとエンドポイント\)** ページ](luis-how-to-azure-subscription.md)の一番下にあるエンドポイント URL の中で確認できます。 これは、**subscription-key** の名前/値ペアの値です。
+サブスクリプション キーは、[ユーザーが Azure で作成した](luis-how-to-azure-subscription.md) LUIS サービスに関連付けられた**エンドポイント** キーです。 このキーは[オーサリング キー](#programmatic-key)ではありません。 エンドポイント キーがある場合は、それをオーサリング キーの代わりに、すべてのエンドポイント要求に対して使用してください。 現在のエンドポイント キーは、[LUIS](luis-reference-regions.md) Web サイトの [ **[Keys and endpoints]\(キーとエンドポイント\)** ページ](luis-how-to-azure-subscription.md)の一番下にあるエンドポイント URL の中で確認できます。 これは、**subscription-key** の名前/値ペアの値です。
 
 ## <a name="test"></a>テスト
 

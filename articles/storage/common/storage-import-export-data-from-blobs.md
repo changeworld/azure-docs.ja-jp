@@ -9,10 +9,10 @@ ms.date: 04/08/2019
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: e542ad59f6fd64b52aef9438ed0f646e9e36fc4a
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65209621"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Azure Import/Export サービスを使用して Azure Blob Storage からデータをエクスポートする
@@ -37,7 +37,7 @@ Azure Blob Storage からデータを転送するエクスポート ジョブを
 
 以下の手順を実行して、Azure portal でエクスポート ジョブを作成します。
 
-1. [https://portal.azure.com/](https://portal.azure.com/) にログオンします。
+1. [https://portal.azure.com/](https://portal.azure.com/ ) にログオンします。
 2. **[すべてのサービス] > [ストレージ] > [インポート/エクスポート ジョブ]** の順に移動します。 
 
     ![インポート/エクスポートへの移動](./media/storage-import-export-data-from-blobs/export-from-blob1.png)

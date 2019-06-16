@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
 ms.openlocfilehash: 37e556ca458a5b0a171664e089d39cfb448d5f96
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65800113"
 ---
 # <a name="customize-a-person-model-with-the-video-indexer-website"></a>Video Indexer Web サイトを使用して人物モデルをカスタマイズする
@@ -47,7 +47,7 @@ Video Indexer Web サイトを使用すると、このトピックで説明さ�
     ![新しい人物を追加する](./media/customize-face-model/add-new-person2.png)
 
     新しい人物モデルが作成されました。 新しい人物モデルに顔を追加できるようになります。
-3. リスト メニュー ボタンをクリックし、**[+ 個人の追加]** を選択します。
+3. リスト メニュー ボタンをクリックし、 **[+ 個人の追加]** を選択します。
 
     ![新しい人物を追加する](./media/customize-face-model/add-new-person3.png)
     

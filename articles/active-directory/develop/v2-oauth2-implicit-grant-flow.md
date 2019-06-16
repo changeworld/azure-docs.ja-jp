@@ -19,10 +19,10 @@ ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6f73756373a145375aa2b3d0bcb1c8fa0ede5cdb
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65823481"
 ---
 # <a name="microsoft-identity-platform-and-implicit-grant-flow"></a>Microsoft ID プラットフォームと暗黙的な許可のフロー
@@ -55,7 +55,7 @@ Microsoft ID プラットフォーム エンドポイントを使ったシング
 最初にユーザーをアプリにサインインするために、[OpenID Connect](v2-protocols-oidc.md) 認証要求を送信し、Microsoft ID プラットフォーム エンドポイントから `id_token` を取得します。
 
 > [!IMPORTANT]
-> ID トークンを正しく要求するには、[Azure portal の [アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) ページで、**[暗黙の付与]** セクションの **[アクセス トークン]** と **[ID トークン]** を選択して、アプリ登録の暗黙的な許可フローを適切に有効にする必要があります。 それが有効でない場合は、`unsupported_response` エラー **The provided value for the input parameter 'response_type' is not allowed for this client.Expected value is 'code' (入力パラメーター 'response_type' に入力された値はこのクライアントで許可されません。入力できる値は 'code' です。)** が返されます
+> ID トークンを正しく要求するには、[Azure portal の [アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) ページで、 **[暗黙の付与]** セクションの **[アクセス トークン]** と **[ID トークン]** を選択して、アプリ登録の暗黙的な許可フローを適切に有効にする必要があります。 それが有効でない場合は、`unsupported_response` エラー **The provided value for the input parameter 'response_type' is not allowed for this client.Expected value is 'code' (入力パラメーター 'response_type' に入力された値はこのクライアントで許可されません。入力できる値は 'code' です。)** が返されます
 
 ```
 // Line breaks for legibility only
@@ -112,7 +112,7 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 | `token_type` |`response_type` に `token` が含まれる場合に含まれます。 常に `Bearer` になります。 |
 | `expires_in`|`response_type` に `token` が含まれる場合に含まれます。 キャッシュ用に有効なトークンの秒数を示します。 |
 | `scope` |`response_type` に `token` が含まれる場合に含まれます。 access_token が有効なスコープを示します。 要求されたスコープをユーザーに適用できなかった場合 (ログインのために個人アカウントが使用されているときに Azure AD のみのスコープが要求された場合)、必ずしもすべてのスコープが含まれないことがあります。 |
-| `id_token` | 署名付き JSON Web トークン (JWT)。 アプリは、このトークンのセグメントをデコードすることによって、サインインしたユーザーに関する情報を要求することができます。 この値をキャッシュして表示することはできますが、承認やセキュリティ境界の用途でこの値に依存することは避けてください。 id_token の詳細については、[`id_token reference`](id-tokens.md)を参照してください。 <br> **注:**`openid` スコープが要求された場合のみ提供されます。 |
+| `id_token` | 署名付き JSON Web トークン (JWT)。 アプリは、このトークンのセグメントをデコードすることによって、サインインしたユーザーに関する情報を要求することができます。 この値をキャッシュして表示することはできますが、承認やセキュリティ境界の用途でこの値に依存することは避けてください。 id_token の詳細については、[`id_token reference`](id-tokens.md)を参照してください。 <br> **注:** `openid` スコープが要求された場合のみ提供されます。 |
 | `state` |要求に state パラメーターが含まれている場合、同じ値が応答にも含まれることになります。 要求と応答に含まれる状態値が同一であることをアプリ側で確認する必要があります。 |
 
 #### <a name="error-response"></a>エラー応答
@@ -194,7 +194,7 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 | `token_type` | 常に `Bearer` になります。 |
 | `expires_in` | キャッシュ用に有効なトークンの秒数を示します。 |
 | `scope` | access_token が有効なスコープを示します。 要求されたスコープをユーザーに適用できなかった場合 (ログインのために個人アカウントが使用されているときに Azure AD のみのスコープが要求された場合)、必ずしもすべてのスコープが含まれないことがあります。 |
-| `id_token` | 署名付き JSON Web トークン (JWT)。 `response_type` に `id_token` が含まれる場合に含まれます。 アプリは、このトークンのセグメントをデコードすることによって、サインインしたユーザーに関する情報を要求することができます。 この値をキャッシュして表示することはできますが、承認やセキュリティ境界の用途でこの値に依存することは避けてください。 id_token の詳細については、[`id_token` のリファレンス](id-tokens.md)を参照してください。 <br> **注:**`openid` スコープが要求された場合のみ提供されます。 |
+| `id_token` | 署名付き JSON Web トークン (JWT)。 `response_type` に `id_token` が含まれる場合に含まれます。 アプリは、このトークンのセグメントをデコードすることによって、サインインしたユーザーに関する情報を要求することができます。 この値をキャッシュして表示することはできますが、承認やセキュリティ境界の用途でこの値に依存することは避けてください。 id_token の詳細については、[`id_token` のリファレンス](id-tokens.md)を参照してください。 <br> **注:** `openid` スコープが要求された場合のみ提供されます。 |
 | `state` |要求に state パラメーターが含まれている場合、同じ値が応答にも含まれることになります。 要求と応答に含まれる状態値が同一であることをアプリ側で確認する必要があります。 |
 
 #### <a name="error-response"></a>エラー応答

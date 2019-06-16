@@ -13,10 +13,10 @@ ms.reviewer: GeneMi
 ms.date: 03/12/2019
 manager: craigg
 ms.openlocfilehash: bc7274308b8a349d16866f107eac4a57e115be9e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66160858"
 ---
 # <a name="connect-to-azure-sql-database-with-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication を使用して Azure SQL Database に接続する
@@ -60,7 +60,7 @@ Azure AD 認証を使用するには、C# プログラムで Azure AD アプリ�
 
 アプリケーションに必要なアクセス許可を登録して設定するには:
 
-1. Azure Portal で、**[Azure Active Directory]** > **[アプリの登録]** > **[新しいアプリケーションの登録]** の順に選びます。
+1. Azure Portal で、 **[Azure Active Directory]**  >  **[アプリの登録]**  >  **[新しいアプリケーションの登録]** の順に選びます。
 
     ![アプリの登録](media/active-directory-interactive-connect-azure-sql-db/image1.png)
 
@@ -68,15 +68,15 @@ Azure AD 認証を使用するには、C# プログラムで Azure AD アプリ�
 
     ![表示されたアプリ ID](media/active-directory-interactive-connect-azure-sql-db/image2.png)
 
-2. **[登録済みのアプリ]** > **[設定]** > **[必要なアクセス許可]** > **[追加]** を選択します。
+2. **[登録済みのアプリ]**  >  **[設定]**  >  **[必要なアクセス許可]**  >  **[追加]** を選択します。
 
     ![登録済みのアプリのアクセス許可の設定](media/active-directory-interactive-connect-azure-sql-db/sshot-registered-app-settings-required-permissions-add-api-access-c32.png)
 
-3. **[必要なアクセス許可]** > **[追加]** > **[API を選択します]** > **[Azure SQL Database]** を選択します。
+3. **[必要なアクセス許可]**  >  **[追加]**  >  **[API を選択します]**  >  **[Azure SQL Database]** を選択します。
 
     ![Azure SQL Database の API へのアクセスの追加](media/active-directory-interactive-connect-azure-sql-db/sshot-registered-app-settings-required-permissions-add-api-access-Azure-sql-db-d11.png)
 
-4. **[API アクセス]** > **[アクセス許可の選択]** > **[委任されたアクセス許可]** を選択します。
+4. **[API アクセス]**  >  **[アクセス許可の選択]**  >  **[委任されたアクセス許可]** を選択します。
 
     ![Azure SQL Database の API へのアクセス許可の委任](media/active-directory-interactive-connect-azure-sql-db/sshot-add-api-access-azure-sql-db-delegated-permissions-checkbox-e14.png)
 
@@ -84,7 +84,7 @@ Azure AD 認証を使用するには、C# プログラムで Azure AD アプリ�
 
 C# プログラムを実行するには、Azure SQL サーバー管理者が SQL Database サーバーの Azure AD 管理者を割り当てる必要があります。 
 
-**[SQL Server]** ページで、**[Active Directory 管理者]** > **[管理者の設定]** を選択します。
+**[SQL Server]** ページで、 **[Active Directory 管理者]**  >  **[管理者の設定]** を選択します。
 
 Azure SQL Database の Azure AD 管理者とユーザーの詳細については、[SQL Database での Azure Active Directory 認証の構成と管理](sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)に関する記事のスクリーンショットをご覧ください。
 
@@ -118,11 +118,11 @@ C# プログラムを正常に実行するには、静的フィールドに適�
 
 | 静的フィールド名 | 値の例 | Azure portal 内の場所 |
 | :---------------- | :------------ | :-------------------- |
-| Az_SQLDB_svrName | "my-sqldb-svr.database.windows.net" | **[SQL Server]** > **[名前でフィルター]** |
-| AzureAD_UserID | "auser\@abc.onmicrosoft.com" | **[Azure Active Directory]** > **[ユーザー]** > **[新しいゲスト ユーザー]** |
-| Initial_DatabaseName | "myDatabase" | **[SQL Server]** > **[SQL データベース]** |
-| ClientApplicationID | "a94f9c62-97fe-4d19-b06d-111111111111" | **[Azure Active Directory]** > **[アプリの登録]** > **[名前で検索]** > **[アプリケーション ID]** |
-| RedirectUri | 新しい URI ("https://mywebserver.com/") | **[Azure Active Directory]** > **[アプリの登録]** > **[名前で検索]** > *"アプリの登録名"* > **[設定]** > **[RedirectURI]**<br /><br />この記事では使用されていないため、RedirectUri には任意の有効な値を指定できます。 |
+| Az_SQLDB_svrName | "my-sqldb-svr.database.windows.net" | **[SQL Server]**  >  **[名前でフィルター]** |
+| AzureAD_UserID | "auser\@abc.onmicrosoft.com" | **[Azure Active Directory]**  >  **[ユーザー]**  >  **[新しいゲスト ユーザー]** |
+| Initial_DatabaseName | "myDatabase" | **[SQL Server]**  >  **[SQL データベース]** |
+| ClientApplicationID | "a94f9c62-97fe-4d19-b06d-111111111111" | **[Azure Active Directory]**  >  **[アプリの登録]**  >  **[名前で検索]**  >  **[アプリケーション ID]** |
+| RedirectUri | 新しい URI ("https://mywebserver.com/") | **[Azure Active Directory]**  >  **[アプリの登録]**  >  **[名前で検索]**  >  *"アプリの登録名"*  >  **[設定]**  >  **[RedirectURI]**<br /><br />この記事では使用されていないため、RedirectUri には任意の有効な値を指定できます。 |
 | &nbsp; | &nbsp; | &nbsp; |
 
 ## <a name="verify-with-sql-server-management-studio"></a>SQL Server Management Studio で確認する
@@ -140,13 +140,13 @@ C# プログラムを実行する予定の場合、同じ構成で、同じコ�
 詳細については、「[SQL Server Management Studio と Azure AD 用に多要素認証を構成する](sql-database-ssms-mfa-authentication-configure.md)」をご覧ください。
 
 > [!NOTE]
-> データベースのゲスト ユーザーの場合は、データベースの Azure AD ドメイン名も指定する必要があります。**[オプション]** > **[AD ドメイン名またはテナント ID]** を選択します。 Azure portal でドメイン名を見つけるには、**[Azure Active Directory]** > **[カスタム ドメイン名]** の順に選択します。 この C# サンプル プログラムでは、ドメイン名を指定する必要はありません。
+> データベースのゲスト ユーザーの場合は、データベースの Azure AD ドメイン名も指定する必要があります。 **[オプション]**  >  **[AD ドメイン名またはテナント ID]** を選択します。 Azure portal でドメイン名を見つけるには、 **[Azure Active Directory]**  >  **[カスタム ドメイン名]** の順に選択します。 この C# サンプル プログラムでは、ドメイン名を指定する必要はありません。
 
 ## <a name="c-code-example"></a>C# コード例
 
 この C# サンプル プログラムでは、[*Microsoft.IdentityModel.Clients.ActiveDirectory*](https://docs.microsoft.com/dotnet/api/microsoft.identitymodel.clients.activedirectory) DLL アセンブリを利用します。
 
-このパッケージをインストールするには、Visual Studio で **[プロジェクト]** > **[NuGet パッケージの管理]** の順に選択します。 「**Microsoft.IdentityModel.Clients.ActiveDirectory**」を検索してインストールします。
+このパッケージをインストールするには、Visual Studio で **[プロジェクト]**  >  **[NuGet パッケージの管理]** の順に選択します。 「**Microsoft.IdentityModel.Clients.ActiveDirectory**」を検索してインストールします。
 
 これは C# のソース コードの例です。
 

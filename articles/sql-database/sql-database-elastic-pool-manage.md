@@ -13,10 +13,10 @@ ms.reviewer: carlrab
 manager: craigg
 ms.date: 03/12/2019
 ms.openlocfilehash: debf91f04cff3cb9705ebc5915e2e665679230a9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66143331"
 ---
 # <a name="manage-elastic-pools-in-azure-sql-database"></a>Azure SQL Database でのエラスティック プールの管理
@@ -25,7 +25,7 @@ ms.locfileid: "66143331"
 
 ## <a name="azure-portal-manage-elastic-pools-and-pooled-databases"></a>Azure portal: エラスティック プールとプールされたデータベースの管理
 
-すべてのプール設定は、**[プールの構成]** ブレードという 1 つの場所で見つけることができます。 このブレードを表示するには、ポータルでエラスティック プールを検索し、ブレードの上部または左側のリソース メニューのいずれかから **[プールの構成]** をクリックします。
+すべてのプール設定は、 **[プールの構成]** ブレードという 1 つの場所で見つけることができます。 このブレードを表示するには、ポータルでエラスティック プールを検索し、ブレードの上部または左側のリソース メニューのいずれかから **[プールの構成]** をクリックします。
 
 このブレードから、以下のような変更を任意に組み合わせて行い、そららの変更すべてを 1 回にまとめて保存できます。
 

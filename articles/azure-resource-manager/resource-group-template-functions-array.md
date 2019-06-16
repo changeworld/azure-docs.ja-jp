@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/8/2018
 ms.author: tomfitz
 ms.openlocfilehash: c80625fb36709f66319b4966e210785864f30d09
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66128697"
 ---
 # <a name="array-and-object-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートの配列とオブジェクトの関数
@@ -137,7 +137,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 | パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |整数、文字列、配列、オブジェクト |null かどうかがテストされる最初の値。 |
-| 残りの引数 |いいえ  |整数、文字列、配列、オブジェクト |null かどうかがテストされる残りの値。 |
+| 残りの引数 |いいえ |整数、文字列、配列、オブジェクト |null かどうかがテストされる残りの値。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -195,7 +195,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 | Name | Type | 値 |
 | ---- | ---- | ----- |
-| stringOutput | String | default |
+| stringOutput | string | default |
 | intOutput | int | 1 |
 | objectOutput | Object | {"first": "default"} |
 | arrayOutput | Array | [1] |
@@ -225,7 +225,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 | パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |配列または文字列 |連結する最初の配列または文字列。 |
-| 残りの引数 |いいえ  |配列または文字列 |順次連結する残りの配列または文字列。 |
+| 残りの引数 |いいえ |配列または文字列 |順次連結する残りの配列または文字列。 |
 
 この関数は、任意の数の引数を取ることができ、パラメーターに文字列または配列を使用できます。
 
@@ -313,7 +313,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 | Name | Type | 値 |
 | ---- | ---- | ----- |
-| concatOutput | String | prefix-5yj4yjf5mbg72 |
+| concatOutput | string | prefix-5yj4yjf5mbg72 |
 
 Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
@@ -433,7 +433,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 | パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |文字列、整数、配列、オブジェクト |配列の最初の値。 |
-| 残りの引数 |いいえ  |文字列、整数、配列、オブジェクト |配列の残りの値。 |
+| 残りの引数 |いいえ |文字列、整数、配列、オブジェクト |配列の残りの値。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -630,8 +630,8 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 | Name | Type | 値 |
 | ---- | ---- | ----- |
-| arrayOutput | String | one |
-| stringOutput | String | O |
+| arrayOutput | string | one |
+| stringOutput | string | O |
 
 Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
@@ -658,7 +658,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |配列またはオブジェクト |共通の要素の検索に使用する 1 番目の値。 |
 | arg2 |はい |配列またはオブジェクト |共通の要素の検索に使用する 2 番目の値。 |
-| 残りの引数 |いいえ  |配列またはオブジェクト |共通の要素の検索に使用する残りの値。 |
+| 残りの引数 |いいえ |配列またはオブジェクト |共通の要素の検索に使用する残りの値。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -847,8 +847,8 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 | Name | Type | 値 |
 | ---- | ---- | ----- |
-| arrayOutput | String | three |
-| stringOutput | String | e |
+| arrayOutput | string | three |
+| stringOutput | string | e |
 
 Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
@@ -1204,7 +1204,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 | Name | Type | 値 |
 | ---- | ---- | ----- |
 | arrayOutput | Array | ["three"] |
-| stringOutput | String | two three |
+| stringOutput | string | two three |
 
 Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
@@ -1285,7 +1285,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 | Name | Type | 値 |
 | ---- | ---- | ----- |
 | arrayOutput | Array | ["one", "two"] |
-| stringOutput | String | on |
+| stringOutput | string | on |
 
 Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
@@ -1312,7 +1312,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |配列またはオブジェクト |要素の結合に使用される 1 番目の値。 |
 | arg2 |はい |配列またはオブジェクト |要素の結合に使用される 2 番目の値。 |
-| 残りの引数 |いいえ  |配列またはオブジェクト |要素の結合に使用される残りの値。 |
+| 残りの引数 |いいえ |配列またはオブジェクト |要素の結合に使用される残りの値。 |
 
 ### <a name="return-value"></a>戻り値
 

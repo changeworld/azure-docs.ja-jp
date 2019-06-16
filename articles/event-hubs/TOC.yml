@@ -22,6 +22,7 @@
         - name: Azure PowerShell
           href: event-hubs-quickstart-powershell.md
         - name: Azure Resource Manager テンプレート
+          displayName: ARM
           href: event-hubs-resource-manager-namespace-event-hub.md
     - name: イベントの送受信
       items:

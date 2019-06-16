@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/27/2018
 ms.author: rajanaki
 ms.openlocfilehash: eabb7d194a3ef65282befab1ae59e85ba56f2f5b
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65472155"
 ---
 # <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>プライマリ リージョンに対してフェールオーバーされた Azure VM を再保護する
@@ -29,7 +29,7 @@ ms.locfileid: "65472155"
 
 ## <a name="reprotect-a-vm"></a>VM の再保護
 
-1. **[コンテナー]**  >  **[レプリケートされたアイテム]** で、フェールオーバーされた VM を右クリックし、**[再保護]** を選択します。 再保護の方向には、セカンダリからプライマリへの方向が示されています。
+1. **[コンテナー]**  >  **[レプリケートされたアイテム]** で、フェールオーバーされた VM を右クリックし、 **[再保護]** を選択します。 再保護の方向には、セカンダリからプライマリへの方向が示されています。
 
    ![再保護](./media/site-recovery-how-to-reprotect-azure-to-azure/reprotect.png)
 

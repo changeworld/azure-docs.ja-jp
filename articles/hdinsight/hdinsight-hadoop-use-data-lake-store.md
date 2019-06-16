@@ -9,10 +9,10 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.openlocfilehash: 890cd7080447649396855bfbe051dca4470a4564
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65546297"
 ---
 # <a name="use-data-lake-storage-gen1-with-azure-hdinsight-clusters"></a>Azure HDInsight クラスターで Data Lake Storage Gen1 を使用する
@@ -42,12 +42,12 @@ HDInsight クラスターでは、2 つの方法で Data Lake Storage Gen1 を�
 
 | HDInsight クラスターの種類 | 既定のストレージとしての Data Lake Storage Gen1 | 追加のストレージとしての Data Lake Storage Gen1| メモ |
 |------------------------|------------------------------------|---------------------------------------|------|
-| HDInsight バージョン 4.0 | いいえ  | いいえ  |ADLS Gen1 は、HDInsight 4.0 ではサポートされていません。 |
+| HDInsight バージョン 4.0 | いいえ | いいえ |ADLS Gen1 は、HDInsight 4.0 ではサポートされていません。 |
 | HDInsight Version 3.6 | はい | はい | HBase は例外|
 | HDInsight Version 3.5 | はい | はい | HBase は例外|
-| HDInsight Version 3.4 | いいえ  | はい | |
-| HDInsight Version 3.3 | いいえ  | いいえ  | |
-| HDInsight Version 3.2 | いいえ  | はい | |
+| HDInsight Version 3.4 | いいえ | はい | |
+| HDInsight Version 3.3 | いいえ | いいえ | |
+| HDInsight Version 3.2 | いいえ | はい | |
 | Storm | | |Data Lake Storage Gen1 を使って、Storm トポロジからデータを書き込むことができます。 また、Data Lake Storage を、Storm トポロジから読み取ることができる参照データとして使用することもできます。|
 
 > [!WARNING]  
@@ -108,13 +108,13 @@ New-AzResourceGroupDeployment `
 
 ## <a name="use-data-lake-storage-gen1-as-additional-storage"></a>追加のストレージとして Data Lake Storage Gen1 を使用する
 
-Data Lake Storage Gen1 を、クラスターの追加のストレージとして使用することもできます。 この場合、クラスターの既定のストレージとしては、Azure Storage Blob アカウントまたは Data Lake Storage アカウントを使うことができます。 追加のストレージとしての Data Lake Storage に格納されているデータに対して HDInsight ジョブを実行する場合は、ファイルへの完全修飾パスを使う必要があります。 例: 
+Data Lake Storage Gen1 を、クラスターの追加のストレージとして使用することもできます。 この場合、クラスターの既定のストレージとしては、Azure Storage Blob アカウントまたは Data Lake Storage アカウントを使うことができます。 追加のストレージとしての Data Lake Storage に格納されているデータに対して HDInsight ジョブを実行する場合は、ファイルへの完全修飾パスを使う必要があります。 例:
 
     adl://mydatalakestore.azuredatalakestore.net/<file_path>
 
 URL に **cluster_root_path** がないことに注意してください。 これは、Data Lake Storage が既定のストレージでないためです。必要な操作は、ファイルへのパスを指定することだけです。
 
-追加のストレージとして Data Lake Storage Gen1 を使うには、ファイルが保存されているパスへのアクセスをサービス プリンシパルに許可することだけが必要です。  例: 
+追加のストレージとして Data Lake Storage Gen1 を使うには、ファイルが保存されているパスへのアクセスをサービス プリンシパルに許可することだけが必要です。  例:
 
     adl://mydatalakestore.azuredatalakestore.net/<file_path>
 
