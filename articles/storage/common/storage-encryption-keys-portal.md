@@ -10,10 +10,10 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: baabc5a8e1d063cb51a3edea3a7218591e85aa1a
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65154166"
 ---
 # <a name="configure-customer-managed-keys-for-azure-storage-encryption-from-the-azure-portal"></a>Azure portal から Azure Storage 暗号化用にカスタマー マネージド キーを構成する
@@ -31,7 +31,7 @@ ms.locfileid: "65154166"
 Azure portal でカスタマー マネージド キーを有効にするには、次の手順のようにします。
 
 1. ストレージ アカウントに移動します。
-1. ストレージ アカウントの **[設定]** ブレードで、**[暗号化]** をクリックします。 以下の図に示すように、**[Use your own key]\(独自のキーの使用\)** オプションを選択します。
+1. ストレージ アカウントの **[設定]** ブレードで、 **[暗号化]** をクリックします。 以下の図に示すように、 **[Use your own key]\(独自のキーの使用\)** オプションを選択します。
 
     ![暗号化オプションが表示されているポータルのスクリーンショット](./media/storage-encryption-keys-portal/ssecmk1.png)
 
@@ -43,11 +43,11 @@ Azure portal でカスタマー マネージド キーを有効にするには�
 
 URI としてキーを指定するには、次の手順のようにします。
 
-1. Azure portal でキーの URI を調べるには、キー コンテナーに移動して、**[キー]** 設定を選択します。 目的のキーを選択し、キーをクリックしてその設定を表示します。 URI を示している **[キー識別子]** フィールドの値をコピーします。
+1. Azure portal でキーの URI を調べるには、キー コンテナーに移動して、 **[キー]** 設定を選択します。 目的のキーを選択し、キーをクリックしてその設定を表示します。 URI を示している **[キー識別子]** フィールドの値をコピーします。
 
     ![キー コンテナーのキー URI が表示されているスクリーンショット](media/storage-encryption-keys-portal/key-uri-portal.png)
 
-1. ストレージ アカウントの **[暗号化]** の設定で、**[キー URI を入力]** オプションを選択します。
+1. ストレージ アカウントの **[暗号化]** の設定で、 **[キー URI を入力]** オプションを選択します。
 1. **[キー URI]** フィールドで、URI を指定します。
 
    ![キー URI の入力方法が示されているスクリーンショット](./media/storage-encryption-keys-portal/ssecmk2.png)
@@ -66,7 +66,7 @@ URI としてキーを指定するには、次の手順のようにします。
 
 キーの新しいバージョンを作成した場合、その新しいバージョンを使用するには、ストレージ アカウントを更新する必要があります。 次の手順に従います。
 
-1. お使いのストレージ アカウントに移動し、**[暗号化]** の設定を表示します。
+1. お使いのストレージ アカウントに移動し、 **[暗号化]** の設定を表示します。
 1. 新しいキーのバージョンの URI を指定します。 または、キー コンテナーとキーを再び選択して、バージョンを更新してもかまいません。
 
 ## <a name="next-steps"></a>次の手順

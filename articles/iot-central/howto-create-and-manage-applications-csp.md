@@ -9,10 +9,10 @@ ms.date: 04/03/2019
 ms.topic: conceptual
 manager: philmea
 ms.openlocfilehash: 43fe0047022173cc20f58688920fa95b95cc6c22
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65473439"
 ---
 # <a name="as-a-csp-create-and-manage-an-azure-iot-central-application-on-behalf-of-your-customer"></a>CSP として、顧客に代わって Azure IoT Central アプリケーションを作成して管理する 
@@ -33,7 +33,7 @@ Azure IoT Central の [Application Manager]\(アプリケーション マネー�
 
 ![CSP のマネージャーの作成](media/howto-create-application-csp/image3.png)
 
-Azure IoT Central アプリケーションを作成するには、**[新しいアプリケーション]** タイルを選択します。 これによって、[Application Creation]\(アプリケーションの作成\) ページが読み込まれます。 このページのすべてのフィールドに入力してから、**[作成]** を選択する必要があります。 詳しくは、以下の各フィールドを参照してください。
+Azure IoT Central アプリケーションを作成するには、 **[新しいアプリケーション]** タイルを選択します。 これによって、[Application Creation]\(アプリケーションの作成\) ページが読み込まれます。 このページのすべてのフィールドに入力してから、 **[作成]** を選択する必要があります。 詳しくは、以下の各フィールドを参照してください。
 
 ![CSP 用のアプリケーションの作成ページ](media/howto-create-application-csp/image4.png)
 
@@ -45,7 +45,7 @@ CSP として作成できるのは、従量課金制のアプリケーション�
 
 ## <a name="application-name"></a>アプリケーション名
 
-アプリケーションの名前は、**[Application Manager] (アプリケーション マネージャー)** ページと、各 Azure IoT Central アプリケーション内に表示されます。 Azure IoT Central アプリケーションとして任意の名前を選択できます。 自分および組織内の他のユーザーにとって意味のある名前を選択してください。
+アプリケーションの名前は、 **[Application Manager] (アプリケーション マネージャー)** ページと、各 Azure IoT Central アプリケーション内に表示されます。 Azure IoT Central アプリケーションとして任意の名前を選択できます。 自分および組織内の他のユーザーにとって意味のある名前を選択してください。
 
 ## <a name="application-url"></a>アプリケーションの URL
 
@@ -65,7 +65,7 @@ Azure Active Directory テナントには、ユーザー ID、資格情報、お
 
 Azure サブスクリプションを使用すると、Azure サービスのインスタンスを作成できます。 Azure IoT Central は、ユーザーがアクセスできるすべての顧客の Azure サブスクリプションを自動的に検索し、それを **[アプリケーションの作成]** ページのドロップダウンに表示します。 新しい Azure IoT Central アプリケーションを作成するための Azure サブスクリプションを選択します。
 
-Azure サブスクリプションがない場合は、Microsoft パートナー センターで作成できます。 Azure サブスクリプションを作成したら、**[アプリケーションの作成]** ページに戻ります。 新しいサブスクリプションが **[Azure サブスクリプション]** ドロップダウンに表示されます。
+Azure サブスクリプションがない場合は、Microsoft パートナー センターで作成できます。 Azure サブスクリプションを作成したら、 **[アプリケーションの作成]** ページに戻ります。 新しいサブスクリプションが **[Azure サブスクリプション]** ドロップダウンに表示されます。
 
 詳細については、[Azure サブスクリプション](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing) に関するページを参照してください。
 

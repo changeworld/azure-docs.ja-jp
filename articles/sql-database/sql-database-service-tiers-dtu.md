@@ -13,10 +13,10 @@ ms.reviewer: carlrab
 manager: craigg
 ms.date: 5/10/2019
 ms.openlocfilehash: 5d769e2198b714d611b3004e11ccc624d4c6acdf
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65546449"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>DTU ベースの購入モデルでのサービス レベル
@@ -165,9 +165,9 @@ DTU の各測定に関連付けられている物理的な特性 (CPU、メモ�
 
 | サービスのクラス | スループットの測定 | 応答時間の要件 |
 | --- | --- | --- |
-| Premium |1 秒あたりのトランザクション数 |0.5 秒で第 95 百分位数 |
-| Standard |1 分あたりのトランザクション数 |1.0 秒で第 90 百分位数 |
-| 基本 |1 時間あたりのトランザクション数 |2.0 秒で第 80 百分位数 |
+| Premium |1 秒あたりのトランザクション数 |0\.5 秒で第 95 百分位数 |
+| Standard |1 分あたりのトランザクション数 |1\.0 秒で第 90 百分位数 |
+| 基本 |1 時間あたりのトランザクション数 |2\.0 秒で第 80 百分位数 |
 
 ## <a name="next-steps"></a>次の手順
 

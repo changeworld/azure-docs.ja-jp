@@ -9,10 +9,10 @@ ms.date: 01/31/2019
 ms.author: jeffpatt
 ms.subservice: files
 ms.openlocfilehash: 26055727e308f8c05aece31746434d7e9a0a5abd
-ms.sourcegitcommit: 9e8dfa1169a55c3c8af93a6c5f4e0dace4de48b2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/13/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65555957"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure File Sync のトラブルシューティング
@@ -142,7 +142,7 @@ Set-AzStorageSyncServerEndpoint `
 
 サーバー エンドポイントでは、次の理由により同期アクティビティが記録されない場合があります。
 
-- 4.3.0.0 またはそれよりも古いバージョンのエージェントがインストールされており、アクティブな VSS 同期セッション (SnapshotSync) がサーバーに存在している。 あるサーバー エンドポイントで VSS 同期セッションがアクティブな場合、その VSS 同期セッションが完了するまで、同じボリューム上の他のサーバー エンドポイントは同期セッションを開始できません。 この問題を解決するには、VSS 同期セッションがアクティブなときにボリュームで複数のサーバー エンドポイントの同期をサポートするエージェント バージョン 5.0.2.0 以降をインストールします。
+- 4\.3.0.0 またはそれよりも古いバージョンのエージェントがインストールされており、アクティブな VSS 同期セッション (SnapshotSync) がサーバーに存在している。 あるサーバー エンドポイントで VSS 同期セッションがアクティブな場合、その VSS 同期セッションが完了するまで、同じボリューム上の他のサーバー エンドポイントは同期セッションを開始できません。 この問題を解決するには、VSS 同期セッションがアクティブなときにボリュームで複数のサーバー エンドポイントの同期をサポートするエージェント バージョン 5.0.2.0 以降をインストールします。
 
     サーバー上の現在の同期アクティビティを確認するには、「[現在の同期セッションの進行状況を監視するにはどうすればよいですか。](#how-do-i-monitor-the-progress-of-a-current-sync-session)」を参照してください。
 

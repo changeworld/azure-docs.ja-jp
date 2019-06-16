@@ -17,10 +17,10 @@ ms.reviewer: asteen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 90000f34ff247fdd5939dc19971c170aa4b70386
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65824655"
 ---
 # <a name="disable-user-sign-ins-for-an-enterprise-app-in-azure-active-directory"></a>Azure Active Directory でエンタープライズ アプリのユーザー サインインを無効にする
@@ -29,10 +29,10 @@ Azure Active Directory (Azure AD) で、ユーザーがサインインできな�
 ## <a name="how-do-i-disable-user-sign-ins"></a>ユーザー サインインを無効にする方法
 1. ディレクトリの全体管理者であるアカウントで [Azure Portal](https://portal.azure.com) にサインインします。
 1. **[すべてのサービス]** を選択し、テキスト ボックスに「**Azure Active Directory**」と入力して、**Enter** キーを押します。
-1. **[Azure Active Directory** -  ***directoryname]*** ウィンドウ (管理対象のディレクトリの Azure AD ウィンドウ) で、**[エンタープライズ アプリケーション]** を選択します。
+1. **[Azure Active Directory** -  ***directoryname]*** ウィンドウ (管理対象のディレクトリの Azure AD ウィンドウ) で、 **[エンタープライズ アプリケーション]** を選択します。
 1. **[エンタープライズ アプリケーション - すべてのアプリケーション]** ウィンドウには、管理できるアプリのリストが表示されます。 アプリを選択します。
-1. [***appname***] ウィンドウ (選択したアプリの名前がタイトルに含まれるページ) で、**[プロパティ]** を選択します。
-1. [***appname*** - **プロパティ**] ウィンドウで、**[ユーザーのサインインが有効になっていますか?]** の **[いいえ]** を選択します。
+1. [***appname***] ウィンドウ (選択したアプリの名前がタイトルに含まれるページ) で、 **[プロパティ]** を選択します。
+1. [***appname*** - **プロパティ**] ウィンドウで、 **[ユーザーのサインインが有効になっていますか?]** の **[いいえ]** を選択します。
 1. **[保存]** をクリックします。
 
 ## <a name="next-steps"></a>次の手順

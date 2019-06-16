@@ -14,10 +14,10 @@ ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8b770ee476fc5c1c334f53904539cc34cf962c62
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65546197"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>方法:テナントの特定のアプリケーションに対するトークンに出力された要求のカスタマイズ (プレビュー)
@@ -284,7 +284,7 @@ ID 要素により、ソースのどのプロパティが要求の値を提供�
 
 #### <a name="table-3-valid-id-values-per-source"></a>表 3:ソースごとに有効な ID 値
 
-| ソース | ID | 説明 |
+| source | ID | 説明 |
 |-----|-----|-----|
 | User | surname | 姓 |
 | User | givenname | 名 |
@@ -384,7 +384,7 @@ ID 要素により、ソースのどのプロパティが要求の値を提供�
 
 #### <a name="table-5-attributes-allowed-as-a-data-source-for-saml-nameid"></a>表 5:SAML NameID のデータ ソースとして許可されている属性
 
-|ソース|ID|説明|
+|source|ID|説明|
 |-----|-----|-----|
 | User | mail|電子メール アドレス|
 | User | userprincipalname|ユーザー プリンシパル名|
