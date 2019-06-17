@@ -114,7 +114,7 @@ GitHub または Azure Storage などスクリプトを外部でダウンロー�
 | type | CustomScript | 文字列 |
 | typeHandlerVersion | 2.0 | int |
 | fileUris (例) | https://github.com/MyProject/Archive/MyPythonScript.py | array |
-| commandToExecute (例) | python MyPythonScript.py <my-param1> | 文字列 |
+| commandToExecute (例) | python MyPythonScript.py \<my-param1> | 文字列 |
 | script | IyEvYmluL3NoCmVjaG8gIlVwZGF0aW5nIHBhY2thZ2VzIC4uLiIKYXB0IHVwZGF0ZQphcHQgdXBncmFkZSAteQo= | 文字列 |
 | skipDos2Unix (例:) | false | ブール値 |
 | timestamp (例:) | 123456789 | 32 ビットの整数 |
