@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
 ms.openlocfilehash: 92c55c7f15b3f350ad802157bf401f3e75983789
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65606435"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager の体験版
@@ -89,7 +89,7 @@ Azure Resource Manager 体験版の作成に関する最も重要な部分は、
 | **password**    | secure string    | 新しいランダムなパスワード | Lp!ACS\^2kh     |
 | **session id**   | string          | 一意の体験版 ID (GUID)    | b8c8693e-5673-449c-badd-257a405a6dee |
 
-#### <a name="username"></a>ユーザー名
+#### <a name="username"></a>username
 
 体験版はこのパラメーターをデプロイ パッケージの**ベース URI** で初期化するので、このパラメーターを使用して、パッケージに含まれるすべてのファイルの URI を作成できます。
 
@@ -116,7 +116,7 @@ Azure Resource Manager 体験版の作成に関する最も重要な部分は、
 }
 ```
 
-#### <a name="username"></a>ユーザー名
+#### <a name="username"></a>username
 
 体験版では、このパラメーターは新しいランダムなユーザー名で初期化されます。
 
