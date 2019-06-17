@@ -18,7 +18,7 @@ ms.locfileid: "66145363"
 | サポートされている Authorization ヘッダー | 音声テキスト変換 | テキスト読み上げ |
 |------------------------|----------------|----------------|
 | Ocp-Apim-Subscription-Key | はい | いいえ |
-| Authorization:ベアラー | はい | はい |
+| Authorization: Bearer | はい | はい |
 
 `Ocp-Apim-Subscription-Key` ヘッダーを使用する場合、指定する必要があるのはサブスクリプション キーだけです。 例: 
 
