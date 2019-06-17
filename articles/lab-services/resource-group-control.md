@@ -10,14 +10,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2019
+ms.date: 06/03/2019
 ms.author: spelluru
-ms.openlocfilehash: 1001e6aec7ba2f6ce62eb267d218149296048bb9
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 574cc0c41ce645c71302178afcf6e7deaec69d8e
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58485885"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66476088"
 ---
 # <a name="specify-a-resource-group-for-lab-virtual-machines-in-azure-devtest-labs"></a>Azure DevTest Labs でラボの仮想マシンのリソース グループを指定する
 
@@ -30,17 +30,20 @@ ms.locfileid: "58485885"
 
 この機能では、スクリプトを使用して、すべてのラボ VM に対して、Azure サブスクリプション内の新規または既存のリソース グループを指定できます。 現在、Azure DevTest Labs では、この機能は API を使用することによってサポートされています。
 
+> [!NOTE]
+> DevTest Labs でラボを作成する場合、すべてのサブスクリプション制限が適用されます。 ラボは、お使いのサブスクリプション内の他のリソースと考えてください。 リソース グループの場合、制限は、[1 つのサブスクリプションにつき 980 個のリソース グループ](../azure-subscription-service-limits.md#subscription-limits---azure-resource-manager)になります。 
+
 ## <a name="use-azure-portal"></a>Azure Portal の使用
 次の手順に従って、ラボで作成されたすべての VM のリソース グループを指定します。 
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. 左側のナビゲーション メニューで、**[すべてのサービス]** を選択します。 
+2. 左側のナビゲーション メニューで、 **[すべてのサービス]** を選択します。 
 3. 一覧で **[DevTest Labs]** を選択します。
 4. ラボの一覧で、目的の**ラボ**を選択します。  
-5. 左側のメニューの **[設定]** セクションで、**[構成とポリシー]** を選択します。 
+5. 左側のメニューの **[設定]** セクションで、 **[構成とポリシー]** を選択します。 
 6. 左側のメニューで **[ラボの設定]** を選択します。 
 7. **[1 つのリソース グループ内のすべての仮想マシン]** を選択します。 
-8. ドロップダウン リストで既存のリソース グループを選択するか、**[新規作成]** を選択し、リソース グループの**名前**を入力して、**[OK]** をクリックします。 
+8. ドロップダウン リストで既存のリソース グループを選択するか、 **[新規作成]** を選択し、リソース グループの**名前**を入力して、 **[OK]** をクリックします。 
 
     ![すべてのラボ VM のリソース グループの選択](./media/resource-group-control/select-resource-group.png)
 

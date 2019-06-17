@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 7d607b4370d51ea2605fae6543bd3336853b0806
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 574dd9fd6189b6d0f1e5d455146d6d083ad7ff77
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65954206"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389460"
 ---
 # <a name="work-with-databases-containers-and-items-in-azure-cosmos-db"></a>Azure Cosmos DB のデータベース、コンテナー、項目の操作
 
@@ -54,6 +54,9 @@ Azure Cosmos コンテナーを作成するときには、次のいずれかの�
 * **専用プロビジョニング スループット モード**: コンテナーにプロビジョニングされたスループットは、そのコンテナー専用に予約され、SLA によってバックアップされます。 詳細については、[Azure Cosmos コンテナーのスループットをプロビジョニングする方法](how-to-provision-container-throughput.md)に関するページを参照してください。
 
 * **共有プロビジョニング スループット モード**: これらのコンテナーでは、同じデータベース内の他のコンテナー (専用プロビジョニング スループットで構成されたコンテナーを除く) とプロビジョニング スループットを共有します。 つまり、データベース上のプロビジョニング スループットは、すべての "共有スループット" コンテナー間で共有されます。 詳細については、[Azure Cosmos データベースのスループットをプロビジョニングする方法](how-to-provision-database-throughput.md)に関するページを参照してください。
+
+> [!NOTE]
+> 共有および専用のスループットを構成できるのは、データベースとコンテナーを作成する場合のみになります。 コンテナーを作成した後に専用スループット モードから共有スループット モード (またはその逆) に切り替えるには、新しいコンテナーを作成して、その新しいコンテナーにデータを移行する必要があります。 データの移行は、Azure Cosmos DB の変更フィード機能を使用して行うことができます。
 
 Azure Cosmos コンテナーでは、コンテナーを専用または共有のどちらのプロビジョニング スループット モードで作成していても、柔軟にスケーリングできます。
 
