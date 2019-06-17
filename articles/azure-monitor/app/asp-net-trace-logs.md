@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: mbullwin
 ms.openlocfilehash: d366f363b7bd1d5306d598c9b38258eb78076b7c
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65472051"
 ---
 # <a name="explore-netnet-core-trace-logs-in-application-insights"></a>Application Insights で .NET/.NET Core のトレース ログを調べる
@@ -24,7 +24,7 @@ ms.locfileid: "65472051"
 ASP.NET/ASP.NET Core アプリケーションの診断トレース ログを ILogger、NLog、log4Net、または System.Diagnostics.Trace から [Azure Application Insights][start] に送信します。 その後、探索して検索できます。 これらのログはアプリケーションからの他のログ ファイルと結合されます。したがって、各ユーザー要求に関連付けられているトレースを特定し、それらを他のイベントや例外レポートに関連付けることができます。
 
 > [!NOTE]
-> ログ キャプチャ モジュールは必要ですか。 これは、サード パーティ製のロガーの場合に便利なアダプターです。 しかし、NLog、log4Net、または System.Diagnostics.Trace をまだ使用していない場合は、単に [**Application Insights TrackTrace()**](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace) を直接呼び出すことを検討してください。
+> ログ キャプチャ モジュールは必要ですか。 これは、サード パーティ製のロガーの場合に便利なアダプターです。 しかし、NLog、log4Net、または System.Diagnostics.Trace をまだ使用していない場合は、単に [**Application Insights TrackTrace()** ](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace) を直接呼び出すことを検討してください。
 >
 >
 ## <a name="install-logging-on-your-app"></a>アプリにログ記録フレームワークをインストールする
@@ -48,13 +48,13 @@ ASP.NET/ASP.NET Core アプリケーションの診断トレース ログを ILo
 または、ソリューション エクスプローラーでプロジェクトを右クリックし、**Application Insights を構成**します。 **[トレース コレクションの構成]** オプションを選択します。
 
 > [!NOTE]
-> Application Insights のメニューやログ コレクターのオプションが表示されない場合は、  [トラブルシューティング](#troubleshooting)をお試しください。
+> Application Insights のメニューやログ コレクターのオプションが表示されない場合は、 [トラブルシューティング](#troubleshooting)をお試しください。
 
 ## <a name="manual-installation"></a>手動のインストール
 Application Insights インストーラーでサポートされていない種類のプロジェクト (Windows デスクトップ プロジェクトなど) の場合は、手動でインストールします。
 
 1. log4Net または NLog を使用する場合は、プロジェクト内にインストールします。
-2. ソリューション エクスプローラーで、プロジェクトを右クリックし、**[NuGet パッケージの管理]** を選択します。
+2. ソリューション エクスプローラーで、プロジェクトを右クリックし、 **[NuGet パッケージの管理]** を選択します。
 3. "Application Insights" を検索します。
 4. 次のいずれかのパッケージを選択します。
 
@@ -140,14 +140,14 @@ Application Insights にトレースとして送信される Event Tracing for W
 ## <a name="use-the-trace-api-directly"></a>トレース API を直接使用する
 Application Insights トレース API を直接呼び出すことができます。 ログ記録のアダプターはこの API を使用します。
 
-例: 
+例:
 
     var telemetry = new Microsoft.ApplicationInsights.TelemetryClient();
     telemetry.TrackTrace("Slow response - database01");
 
 TrackTrace の利点は、比較的長いデータをメッセージの中に配置できることです。 たとえば、メッセージ中で POST データをエンコードできます。
 
-メッセージに重大度レベルを追加することもできます。 また、他のテレメトリと同様、プロパティ値を追加することで、さまざまなトレース セットをフィルター処理したり、検索したりすることができます。 例: 
+メッセージに重大度レベルを追加することもできます。 また、他のテレメトリと同様、プロパティ値を追加することで、さまざまなトレース セットをフィルター処理したり、検索したりすることができます。 例:
 
     var telemetry = new Microsoft.ApplicationInsights.TelemetryClient();
     telemetry.TrackTrace("Slow database response",
@@ -177,16 +177,16 @@ TrackTrace の利点は、比較的長いデータをメッセージの中に配
 [Java ログ アダプター](../../azure-monitor/app/java-trace-logs.md)を使用します。
 
 ### <a name="theres-no-application-insights-option-on-the-project-context-menu"></a>プロジェクトのコンテキスト メニューに Application Insights のオプションがありません
-* 開発用マシンに Developer Analytics Tools がインストールしてあることを確認します。 Visual Studio の **[ツール]** > **[拡張機能と更新プログラム]** で、**Developer Analytics Tools** を探します。 **[インストール済み]** タブにない場合は、**[オンライン]** タブを開いてインストールします。
+* 開発用マシンに Developer Analytics Tools がインストールしてあることを確認します。 Visual Studio の **[ツール]**  >  **[拡張機能と更新プログラム]** で、**Developer Analytics Tools** を探します。 **[インストール済み]** タブにない場合は、 **[オンライン]** タブを開いてインストールします。
 * これは、Developer Analytics Tools でサポートされていない種類のプロジェクトの可能性があります。 [手動でインストール](#manual-installation)してください。
 
 ### <a name="theres-no-log-adapter-option-in-the-configuration-tool"></a>構成ツールにログ アダプターのオプションがありません
 * まず、ログ記録フレームワークをインストールします。
 * System.Diagnostics.Trace を使用している場合は、[*web.config* で構成済み](https://msdn.microsoft.com/library/system.diagnostics.eventlogtracelistener.aspx)であることを確認します。
-* 最新バージョンの Application Insights があることを確認します。 Visual Studio で、**[ツール]** > **[拡張機能と更新プログラム]** の順に移動し、**[更新]** タブを開きます。そこに **Developer Analytics Tools** がある場合は、それを選択して更新します。
+* 最新バージョンの Application Insights があることを確認します。 Visual Studio で、 **[ツール]**  >  **[拡張機能と更新プログラム]** の順に移動し、 **[更新]** タブを開きます。そこに **Developer Analytics Tools** がある場合は、それを選択して更新します。
 
 ### <a name="emptykey"></a>"インストルメンテーション キーは空にできません" というエラーメッセージが表示されました
-Application Insights をインストールしないでログ アダプターの Nuget パッケージをインストールした可能性があります。 ソリューション エクスプローラーで、*ApplicationInsights.config* を右クリックし、**[Application Insights の更新]** を選択します。 Azure にサインインし、Application Insights リソースを作成するか、既存のものを再利用することを求めるメッセージが表示されます。 これで問題は修正されます。
+Application Insights をインストールしないでログ アダプターの Nuget パッケージをインストールした可能性があります。 ソリューション エクスプローラーで、*ApplicationInsights.config* を右クリックし、 **[Application Insights の更新]** を選択します。 Azure にサインインし、Application Insights リソースを作成するか、既存のものを再利用することを求めるメッセージが表示されます。 これで問題は修正されます。
 
 ### <a name="i-can-see-traces-but-not-other-events-in-diagnostic-search"></a>診断検索にトレースが表示されますが、他のイベントがありません
 すべてのイベントと要求がパイプラインを通過するまでしばらく時間がかかることがあります。

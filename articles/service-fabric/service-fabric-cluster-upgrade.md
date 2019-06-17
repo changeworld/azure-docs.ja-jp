@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/12/2018
 ms.author: aljo
 ms.openlocfilehash: 8fa461d8c3a70d4b0d2d9973a840ffc7d1ff6470
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65472762"
 ---
 # <a name="upgrading-and-updating-an-azure-service-fabric-cluster"></a>Azure Service Fabric クラスターのアップグレードと更新
@@ -103,9 +103,9 @@ Service Fabric では、クラスターの作成時に指定した [X.509 server
 
 
 ## <a name="next-steps"></a>次の手順
-*  [Service Fabric クラスターのファブリック設定](service-fabric-cluster-fabric-settings.md)
-*  [クラスターのスケールアップとスケールダウン](service-fabric-cluster-scale-up-down.md)
-*  [アプリケーションのアップグレード](service-fabric-application-upgrade.md)
+* [Service Fabric クラスターのファブリック設定](service-fabric-cluster-fabric-settings.md)
+* [クラスターのスケールアップとスケールダウン](service-fabric-cluster-scale-up-down.md)
+* [アプリケーションのアップグレード](service-fabric-application-upgrade.md)
 
 <!--Image references-->
 [CertificateUpgrade]: ./media/service-fabric-cluster-upgrade/CertificateUpgrade2.png
