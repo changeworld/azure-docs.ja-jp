@@ -41,7 +41,7 @@ ASP.NET Core では、アプリケーションによって指定される 1 つ�
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. **[Configuration Explorer]\(構成エクスプローラー)\** > **[+ 作成]** の順に選択して、次のキーと値のペアを追加します。
+6. **[Configuration Explorer]\(構成エクスプローラー)**  >  **[+ 作成]** の順に選択して、次のキーと値のペアを追加します。
 
     | キー | 値 |
     |---|---|
@@ -98,7 +98,7 @@ ASP.NET Core では、アプリケーションによって指定される 1 つ�
 
     このシークレットには、アプリ構成ストアにアクセスするための接続文字列が格納されます。 次のコマンドの値を、自分のアプリ構成ストアの接続文字列に置き換えます。
 
-    このコマンドは、*.csproj* ファイルと同じディレクトリで実行する必要があります。
+    このコマンドは、 *.csproj* ファイルと同じディレクトリで実行する必要があります。
 
         dotnet user-secrets set ConnectionStrings:AppConfig <your_connection_string>
 

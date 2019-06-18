@@ -32,10 +32,10 @@ Azure Active Directory (Azure AD) で、エンタープライズ アプリケー
 ## <a name="how-do-i-remove-a-user-or-group-assignment-to-an-enterprise-app-in-the-azure-portal"></a>Azure Portal でエンタープライズ アプリに対するユーザーまたはグループの割り当てを削除する方法
 1. ディレクトリの全体管理者であるアカウントで [Azure Portal](https://portal.azure.com) にサインインします。
 1. **[すべてのサービス]** を選択し、テキスト ボックスに「**Azure Active Directory**」と入力して、**Enter** キーを押します。
-1. **[Azure Active Directory - \*directoryname\*]** ページ (管理対象のディレクトリの Azure AD ページ) で、**[エンタープライズ アプリケーション]** を選択します。
+1. **[Azure Active Directory - *directoryname*]** ページ (管理対象のディレクトリの Azure AD ページ) で、 **[エンタープライズ アプリケーション]** を選択します。
 1. **[エンタープライズ アプリケーション - すべてのアプリケーション]** ページに、管理できるアプリのリストが表示されます。 アプリを選択します。
-1. ***[appname]*** 概要ページ (選択したアプリの名前がタイトルに含まれるページ) で、**[ユーザーとグループ]** を選択します。
-1. [***appname*** - **ユーザーとグループの割り当て**] ページで、1 人以上のユーザーまたは 1 つ以上のグループを選択し、**[削除]** をクリックします。 確認メッセージが表示されたら、削除を確定します。
+1. ***[appname]*** 概要ページ (選択したアプリの名前がタイトルに含まれるページ) で、 **[ユーザーとグループ]** を選択します。
+1. [***appname*** - **ユーザーとグループの割り当て**] ページで、1 人以上のユーザーまたは 1 つ以上のグループを選択し、 **[削除]** をクリックします。 確認メッセージが表示されたら、削除を確定します。
 
 ## <a name="how-do-i-remove-a-user-or-group-assignment-to-an-enterprise-app-using-powershell"></a>PowerShell を使用してエンタープライズ アプリに対するユーザーまたはグループの割り当てを削除する方法
 1. 管理者特権での Windows PowerShell コマンド プロンプトを開きます。
