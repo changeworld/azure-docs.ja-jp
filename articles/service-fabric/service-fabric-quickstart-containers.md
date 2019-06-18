@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/31/2019
 ms.author: aljo
 ms.custom: mvc
-ms.openlocfilehash: 03f2f6bb572c46a1683d73ba42f435eca59829e5
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.openlocfilehash: 4795952faa91d62b76f267795660db5ab4075e79
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66428104"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66734492"
 ---
 # <a name="quickstart-deploy-windows-containers-to-service-fabric"></a>クイック スタート:Service Fabric に Windows コンテナーをデプロイする
 
@@ -57,7 +57,7 @@ Service Fabric SDK およびツールには、コンテナーを Service Fabric 
 
 **[ホスト コンテナーとアプリケーション]** テンプレートから **[コンテナー]** を選択します。
 
-**[イメージ名]** に「mcr.microsoft.com/windows/servercore/iis:windowservercore-ltsc2016」と入力します。これが [Windows Server Core Server と IIS の基本イメージ](https://hub.docker.com/r/microsoft-windows-servercore-iis)になります。
+**[イメージ名]** に「mcr.microsoft.com/windows/servercore/iis:windowsservercore-ltsc2016」と入力します。これが [Windows Server Core Server と IIS の基本イメージ](https://hub.docker.com/_/microsoft-windows-servercore-iis)になります。
 
 ポート 80 で受信するサービスへの要求が、コンテナーのポート 80 にマッピングされるように、コンテナーとホストとの間のポート マッピングを構成します。  **[Container Port] (コンテナー ポート)** を "80" に設定し、 **[ホスト ポート]** を "80" に設定します。  
 
@@ -77,14 +77,14 @@ Microsoft は、異なるバージョンの Windows Server 上に構築された
     <ContainerHostPolicies CodePackageRef="Code"> 
       <ImageOverrides> 
         ...
-          <Image Name="mcr.microsoft.com/windows/servercore/iis:windowservercore-1803" /> 
-          <Image Name= "mcr.microsoft.com/windows/servercore/iis:windowservercore-ltsc2016" Os="14393" /> 
-          <Image Name="mcr.microsoft.com/windows/servercore/iis:windowservercore-1709" Os="16299" /> 
+          <Image Name="mcr.microsoft.com/windows/servercore/iis:windowsservercore-1803" /> 
+          <Image Name= "mcr.microsoft.com/windows/servercore/iis:windowsservercore-ltsc2016" Os="14393" /> 
+          <Image Name="mcr.microsoft.com/windows/servercore/iis:windowsservercore-1709" Os="16299" /> 
       </ImageOverrides> 
     </ContainerHostPolicies> 
 ```
 
-サービス マニフェストは、引き続きナノサーバーの 1 つのイメージ `mcr.microsoft.com/windows/servercore/iis:windowservercore-ltsc2016` のみを指定します。
+サービス マニフェストは、引き続きナノサーバーの 1 つのイメージ `mcr.microsoft.com/windows/servercore/iis:windowsservercore-ltsc2016` のみを指定します。
 
 また、*ApplicationManifest.xml* ファイルで、**PasswordEncrypted** を **false** に変更します。 Docker Hub にあるパブリック コンテナー イメージのアカウントとパスワードは空白です。空白のパスワードを暗号化するとビルド エラーが発生するため、暗号化を無効にします。
 

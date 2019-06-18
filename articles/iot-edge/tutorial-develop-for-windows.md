@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 891b64b8e31266360d718255dcd8e8a1f9fb597c
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 81d660857eff63e0dfeeda400b168ea424152081
+ms.sourcegitcommit: f9448a4d87226362a02b14d88290ad6b1aea9d82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306571"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66808604"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-windows-devices"></a>チュートリアル:Windows デバイス用の IoT Edge モジュールを開発する
 
@@ -122,7 +122,7 @@ Visual Studio 2019 の IoT 拡張機能を使用して、IoT Edge モジュー�
 
 ## <a name="create-a-new-module-project"></a>新しいモジュール プロジェクトを作成する
 
-Azure IoT Edge Tools の拡張機能により、Visual Studio でサポートされているすべての IoT Edge モジュール言語のプロジェクト テンプレートが提供されます。 これらのテンプレートは、作業モジュールをデプロイして IoT Edge をテストするために必要なすべてのファイルとコードを含んでいます。または、独自のビジネス ロジックでテンプレートをカスタマイズするための開始点を提供します。 
+Azure IoT Edge Tools の拡張機能により、Visual Studio でサポートされているすべての IoT Edge モジュール言語のプロジェクト テンプレートが提供されます。 これらのテンプレートは、作業モジュールをデプロイして IoT Edge をテストするために必要なすべてのファイルとコードを含んでいます。または、独自のビジネス ロジックを使用してテンプレートをカスタマイズするための開始点を提供します。 
 
 1. **[ファイル]**  >  **[新規作成]**  >  **[プロジェクト]** の順に選択します。
 
@@ -140,7 +140,7 @@ Azure IoT Edge Tools の拡張機能により、Visual Studio でサポートさ
    | フィールド | 値 |
    | ----- | ----- |
 
-   | テンプレートの選択 | **[C Module]\(C モジュール\)** を選択します。 | | Module project name (モジュール プロジェクト名) | 既定の **IoTEdgeModule1** をそのまま使用します。 | | Docker image repository (Docker イメージ リポジトリ) | イメージ リポジトリには、コンテナー レジストリの名前とコンテナー イメージの名前が含まれます。 コンテナー イメージは、モジュール プロジェクト名の値で事前に設定されます。 **localhost:5000** を、Azure コンテナー レジストリのログイン サーバーの値に置き換えます。 Azure portal で、コンテナー レジストリの概要ページからログイン サーバーを取得できます。 <br><br> 最終的なイメージ リポジトリは、\<レジストリ名\>.azurecr.io/iotedgemodule1 のようになります。 |
+   | テンプレートの選択 | **[C Module]\(C モジュール\)** を選択します。 | | Module project name (モジュール プロジェクト名) | 既定の **IoTEdgeModule1** をそのまま使用します。 | | Docker image repository (Docker イメージ リポジトリ) | イメージ リポジトリには、コンテナー レジストリの名前とコンテナー イメージの名前が含まれます。 コンテナー イメージは、モジュール プロジェクト名の値から事前に入力されています。 **localhost:5000** を、Azure コンテナー レジストリのログイン サーバーの値に置き換えます。 Azure portal で、コンテナー レジストリの概要ページからログイン サーバーを取得できます。 <br><br> 最終的なイメージ リポジトリは、\<レジストリ名\>.azurecr.io/iotedgemodule1 のようになります。 |
 
    ![ターゲット デバイス、モジュール タイプ、コンテナー レジストリに対してプロジェクトを構成する](./media/tutorial-develop-for-windows/add-application-and-module.png)
 
@@ -163,7 +163,7 @@ IoT Edge ランタイムでは、コンテナー イメージを IoT Edge デバ
 
 2. $edgeAgent の必要なプロパティで、**registryCredentials** プロパティを見つけます。 
 
-3. 次の形式で、自分の資格情報を使用してプロパティを更新します。 
+3. 次の形式に従って、自分の資格情報でプロパティを更新します。 
 
    ```json
    "registryCredentials": {
@@ -173,53 +173,54 @@ IoT Edge ランタイムでは、コンテナー イメージを IoT Edge デバ
        "address": "<registry name>.azurecr.io"
      }
    }
+   ```
 
-4. Save the deployment.template.json file. 
+4. deployment.template.json ファイルを保存します。 
 
-### Review the sample code
+### <a name="review-the-sample-code"></a>サンプル コードを確認する
 
-The solution template that you created includes sample code for an IoT Edge module. This sample module simply receives messages and then passes them on. The pipeline functionality demonstrates an important concept in IoT Edge, which is how modules communicate with each other.
+作成したソリューション テンプレートには、IoT Edge モジュールのサンプル コードが含まれています。 このサンプル モジュールは、単にメッセージを受け取って渡すだけです。 パイプライン機能は、モジュールがどのようにして相互に通信を行うかという、IoT Edge での重要な概念を示します。
 
-Each module can have multiple *input* and *output* queues declared in their code. The IoT Edge hub running on the device routes messages from the output of one module into the input of one or more modules. The specific language for declaring inputs and outputs varies between languages, but the concept is the same across all modules. For more information about routing between modules, see [Declare routes](module-composition.md#declare-routes).
+各モジュールは、コードで宣言された複数の *入力*キューと *出力*キューを持つことができます。 デバイスで実行されている IoT Edge ハブは、1 つのモジュールの出力から、1 つ以上のモジュールの入力にメッセージをルーティングします。 入力と出力を宣言するための特定の言語は、言語によって異なりますが、その概念はすべてのモジュールで同じです。 モジュール間のルーティングの詳細については、[ルートの宣言](module-composition.md#declare-routes)に関する記事を参照してください。
 
-1. In the **main.c** file, find the **SetupCallbacksForModule** function.
+1. **main.c** ファイルで、**SetupCallbacksForModule** 関数を見つけます。
 
-2. This function sets up an input queue to receive incoming messages. It calls the C SDK module client function [SetInputMessageCallback](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-ll-h/iothubmoduleclient-ll-setinputmessagecallback). Review this function and see that it initializes an input queue called **input1**. 
+2. この関数では、受信メッセージを受信するための入力キューを設定します。 C SDK モジュール クライアント関数 [SetInputMessageCallback](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-ll-h/iothubmoduleclient-ll-setinputmessagecallback) が呼び出されます。 この関数を確認し、**input1** と呼ばれる入力キューが初期化されることを確かめます。 
 
-   ![Find the input name in the SetInputMessageCallback constructor](./media/tutorial-develop-for-windows/declare-input-queue.png)
+   ![SetInputMessageCallback コンストラクターで入力名を見つける](./media/tutorial-develop-for-windows/declare-input-queue.png)
 
-3. Next, find the **InputQueue1Callback** function.
+3. 次に、**InputQueue1Callback** 関数を見つけます。
 
-4. This function processes received messages and sets up an output queue to pass them along. It calls the C SDK module client function [SendEventToOutputAsync](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-ll-h/iothubmoduleclient-ll-sendeventtooutputasync). Review this function and see that it initializes an output queue called **output1**. 
+4. この関数では、受信したメッセージを処理し、それらを渡すための出力キューを設定します。 C SDK モジュール クライアント関数 [SendEventToOutputAsync](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-ll-h/iothubmoduleclient-ll-sendeventtooutputasync) が呼び出されます。 この関数を確認し、**output1** と呼ばれる出力キューが初期化されることを確かめます。 
 
-   ![Find the output name in the SendEventToOutputAsync constructor](./media/tutorial-develop-for-windows/declare-output-queue.png)
+   ![SendEventToOutputAsync コンストラクターで出力名を見つける](./media/tutorial-develop-for-windows/declare-output-queue.png)
 
-5. Open the **deployment.template.json** file.
+5. **deployment.template.json** ファイルを開きます。
 
-6. Find the **modules** property of the $edgeAgent desired properties. 
+6. $edgeAgent の必要なプロパティの **modules** プロパティを見つけます。 
 
-   There should be two modules listed here. The first is **tempSensor**, which is included in all the templates by default to provide simulated temperature data that you can use to test your modules. The second is the **IotEdgeModule1** module that you created as part of this project.
+   ここには 2 つのモジュールがリストされているはずです。 1 つ目は **tempSensor** で、これは既定ですべてのテンプレートに含まれており、モジュールをテストするために使用できるシミュレートされた温度データを提供します。 2 つ目は、このプロジェクトの一部として作成した **IotEdgeModule1** モジュールです。
 
-   This modules property declares which modules should be included in the deployment to your device or devices. 
+   このモジュールのプロパティでは、デバイスへのデプロイにどのモジュールを含めるかを宣言します。 
 
-7. Find the **routes** property of the $edgeHub desired properties. 
+7. $edgeHub の必要なプロパティから **routes** プロパティを見つけます。 
 
-   One of the functions if the IoT Edge hub module is to route messages between all the modules in a deployment. Review the values in the routes property. The first route, **IotEdgeModule1ToIoTHub**, uses a wildcard character (**\***) to include any message coming from any output queue in the IoTEdgeModule1 module. These messages go into *$upstream*, which is a reserved name that indicates IoT Hub. The second route, **sensorToIotEdgeModule1**, takes messages coming from the tempSensor module and routes them to the *input1* input queue of the IotEdgeModule1 module. 
+   IoT Edge ハブ モジュールの機能の 1 つは、デプロイ内のすべてのモジュール間でメッセージをルーティングすることです。 routes プロパティの値を確認します。 最初のルートである **IotEdgeModule1ToIoTHub** では、IoTEdgeModule1 モジュールの出力キューから送信されるすべてのメッセージを対象にするために、ワイルドカード文字 ( **\*** ) を使用します。 これらのメッセージは、IoT Hub を示す予約名である *$upstream* に入ります。 2 つ目のルートである **sensorToIotEdgeModule1** では、tempSensor モジュールから送信されたメッセージを受け取り、それらを IotEdgeModule1 モジュールの *input1* 入力キューにルーティングします。 
 
-   ![Review routes in deployment.template.json](./media/tutorial-develop-for-windows/deployment-routes.png)
+   ![deployment.template.json でルートを確認する](./media/tutorial-develop-for-windows/deployment-routes.png)
 
 
-## Build and push your solution
+## <a name="build-and-push-your-solution"></a>ソリューションをビルドしてプッシュする
 
-You've reviewed the module code and the deployment template to understand some key deployment concepts. Now, you're ready to build the IotEdgeModule1 container image and push it to your container registry. With the IoT tools extension for Visual Studio, this step also generates the deployment manifest based on the information in the template file and the module information from the solution files. 
+モジュール コードとデプロイ テンプレートを確認して、重要なデプロイの概念を理解しました。 これで、IotEdgeModule1 コンテナー イメージをビルドして、コンテナー レジストリにプッシュする準備ができました。 Visual Studio の IoT ツール拡張機能を使用して、この手順では、テンプレート ファイルの情報とソリューション ファイルのモジュール情報に基づいて配置マニフェストも生成します。 
 
-### Sign in to Docker
+### <a name="sign-in-to-docker"></a>Docker にサインインする
 
-Provide your container registry credentials to Docker on your development machine so that it can push your container image to be stored in the registry. 
+コンテナー イメージをレジストリにプッシュして格納できるように、開発マシン上の Docker にコンテナー レジストリの資格情報を入力します。 
 
-1. Open PowerShell or a command prompt.
+1. PowerShell またはコマンド プロンプトを開きます。
 
-2. Sign in to Docker with the Azure container registry credentials that you saved after creating the registry. 
+2. レジストリを作成した後に保存した Azure コンテナー レジステリの資格情報を使用して Docker にサインインします。 
 
    ```cmd
    docker login -u <ACR username> -p <ACR password> <ACR login server>
@@ -235,7 +236,7 @@ Provide your container registry credentials to Docker on your development machin
 
    ![IoT Edge モジュールをビルドしてプッシュする](./media/tutorial-develop-for-windows/build-and-push-modules.png)
 
-   ビルドおよびプッシュ コマンドは、3 つの操作を開始します。 最初に、**config** という新しいフォルダーをソリューション内に作成します。これは、デプロイ テンプレートと他のソリューション ファイルの情報からビルドされた完全な配置マニフェストを保持します。 次に、`docker build` を実行して、ターゲット アーキテクチャ用の適切な Dockerfile に基づいてコンテナー イメージをビルドします。 次に、`docker push` を実行して、イメージ リポジトリをコンテナー レジストリにプッシュします。 
+   ビルドおよびプッシュ コマンドは、3 つの操作を開始します。 最初に、デプロイ テンプレートと他のソリューション ファイルの情報からビルドされた完全な配置マニフェストを保持する、**config** という新しいフォルダーをソリューション内に作成します。 次に、`docker build` を実行して、お使いのターゲット アーキテクチャ用の適切な Dockerfile に基づいてコンテナー イメージをビルドします。 次に、`docker push` を実行して、イメージ リポジトリをコンテナー レジストリにプッシュします。 
 
    このプロセスは、初回は数分間かかる可能性がありますが、次回これらのコマンドを実行するときは、それより速くなります。 
 

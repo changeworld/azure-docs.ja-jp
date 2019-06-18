@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ae4b57d86461526b285e77aa408373b5d7f5aedf
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 600d6b9f1eb8d8073e1658dd5b8196a3d8137e42
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66513379"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66733714"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>チュートリアル:フェデレーション ドメイン用のハイブリッド Azure Active Directory 参加の構成
 
@@ -71,7 +71,7 @@ Azure AD にデバイスを設定して、クラウドとオンプレミスの�
 
 Windows 10 1803 以降、AD FS を使用したフェデレーション ドメインの即時的なハイブリッド Azure AD 参加が失敗した場合は、Azure AD Connect を利用して Azure AD のコンピューター オブジェクトを同期させます。これは後で、ハイブリッド Azure AD 参加のデバイス登録を完了するために使用されます。 Azure AD Connect が、Azure AD に参加するハイブリッド Azure AD にするデバイスのコンピューター オブジェクトを同期済みであることを確認します。 コンピューター オブジェクトが特定の組織単位 (OU) に属している場合、これらの OU を Azure AD Connect についても構成する必要があります。 Azure AD Connect を使用してコンピューター オブジェクトを同期する方法の詳細については、[Azure AD Connect を使用したフィルタリングの構成](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-configure-filtering#organizational-unitbased-filtering)に関する記事を参照してください。
 
-組織が送信プロキシを介してインターネットにアクセスする必要がある場合、Microsoft は、Windows 10 コンピューターを Azure AD にデバイス登録できるように [Web プロキシ自動発見 (WPAD) を実装](https://docs.microsoft.com/previous-versions/tn-archive/cc995261(v%3dtechnet.10))することをお勧めします。 WPAD の構成と管理に関する問題が発生する場合、「[troubleshooting automatic detection (自動検出のトラブルシューティング)](https://docs.microsoft.com/previous-versions/tn-archive/cc302643(v=technet.10)」をご覧ください。 
+組織が送信プロキシを介してインターネットにアクセスする必要がある場合、Microsoft は、Windows 10 コンピューターを Azure AD にデバイス登録できるように [Web プロキシ自動発見 (WPAD) を実装](https://docs.microsoft.com/previous-versions/tn-archive/cc995261(v%3dtechnet.10))することをお勧めします。 WPAD の構成と管理に関する問題が発生する場合は、「[Troubleshooting Automatic Detection (自動検出のトラブルシューティング)](https://docs.microsoft.com/previous-versions/tn-archive/cc302643(v=technet.10))」を参照してください。 
 
 Windows 10 1709 以降では、WPAD を使用しておらず、自分のコンピューター上でプロキシ設定を構成する必要がある場合、[グループ ポリシー オブジェクト (GPO) を使用して WinHTTP 設定を構成する](https://blogs.technet.microsoft.com/netgeeks/2018/06/19/winhttp-proxy-settings-deployed-by-gpo/)ことでそれを行えます。
 
@@ -165,7 +165,7 @@ Azure テナントのデバイス登録状態を確認するには、 **[Azure A
 
 **Get-MSolDevice** コマンドレットを使用してサービスの詳細を確認する場合:
 
-- Windows クライアントの ID と一致する**デバイス ID** を持つオブジェクトが存在する必要があります。
+- Windows クライアントの ID と一致する**デバイス ID** を備えたオブジェクトが存在する必要があります。
 - **DeviceTrustType** の値は **[ドメイン参加済み]** でなければなりません。 これは、Azure AD ポータルの [デバイス] ページの **[ハイブリッド Azure AD 参加済み]** 状態に相当します。
 - 条件付きアクセスで使用されるデバイスの **Enabled** の値は **True**、**DeviceTrustLevel**の値は **Managed** でなければなりません。
 

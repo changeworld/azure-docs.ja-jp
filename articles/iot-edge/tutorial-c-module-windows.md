@@ -9,12 +9,12 @@ ms.date: 05/28/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 79f3b125a4cb88b3555cf13aa4d4bc5c430df166
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 49f853341edab7c7dc92f72472b81f7fb22c0ad8
+ms.sourcegitcommit: f9448a4d87226362a02b14d88290ad6b1aea9d82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66303885"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66808762"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>チュートリアル:Windows デバイス用の C IoT Edge モジュールを開発する
 
@@ -70,7 +70,7 @@ Azure IoT Edge モジュールを使用して、ビジネス ロジックを実�
 
    ![新しい Azure IoT Edge プロジェクトを作成する](./media/tutorial-c-module-windows/new-project.png)
 
-3. [新しいプロジェクトの構成] ウィンドウで、プロジェクトとソリューションを、**CTutorialApp** のようなわかりやすい名前に変更します。 **[作成]** をクリックしてプロジェクトを作成します。 
+3. [新しいプロジェクトを構成します] ウィンドウで、プロジェクトとソリューションを、**CTutorialApp** のように、わかりやすい名前に変更します。 **[作成]** をクリックしてプロジェクトを作成します。 
 
    ![新しい Azure IoT Edge プロジェクトを構成する](./media/tutorial-c-module-windows/configure-project.png)
 
@@ -104,29 +104,33 @@ Azure IoT Edge モジュールを使用して、ビジネス ロジックを実�
        "address": "<registry name>.azurecr.io"
      }
    }
+   ```
 
-4. Save the deployment.template.json file. 
+4. deployment.template.json ファイルを保存します。 
 
-### Update the module with custom code
+### <a name="update-the-module-with-custom-code"></a>カスタム コードでモジュールを更新する
 
-The default module code receives messages on an input queue and passes them along through an output queue. Let's add some additional code so that the module processes the messages at the edge before forwarding them to IoT Hub. Update the module so that it analyzes the temperature data in each message, and only sends the message to IoT Hub if the temperature exceeds a certain threshold. 
+既定のモジュール コードは、入力キュー上のメッセージを受け取り、出力キューを介してそれらを渡します。 モジュールがメッセージを IoT Hub に転送する前に、エッジでそれらを処理できるように、追加のコードを追加してみましょう。 メッセージごとに温度データを分析し、温度が特定のしきい値を超えた場合にのみ IoT Hub にメッセージを送信するように、モジュールを更新します。 
 
 
-1. The data from the sensor in this scenario comes in JSON format. To filter messages in JSON format, import a JSON library for C. This tutorial uses Parson.
+1. このシナリオでは、センサーからのデータは JSON 形式で提供されます。 JSON 形式のメッセージをフィルター処理するには、C 用の JSON ライブラリをインポートします。このチュートリアルでは、Parson を使用します。
 
-   1. Download the [Parson GitHub repository](https://github.com/kgabis/parson). Copy the **parson.c** and **parson.h** files into the **CModule** project.
+   1. [Parson GitHub リポジトリ](https://github.com/kgabis/parson)をダウンロードします。 **parson.c** と **parson.h** ファイルを **CModule** プロジェクトにコピーします。
 
-   2. In Visual Studio, open the **CMakeLists.txt** file from the CModule project folder. At the top of the file, import the Parson files as a library called **my_parson**.
+   2. Visual Studio で、CModule プロジェクト フォルダーの **CMakeLists.txt** ファイルを開きます。 ファイルの先頭で、**my_parson** という名前のライブラリとして Parson ファイルをインポートします。
 
       ```
-      add_library(my_parson        parson.c        parson.h    )
+      add_library(my_parson
+          parson.c
+          parson.h
+      )
       ```
 
-   3. Add **my_parson** to the list of libraries in the **target_link_libraries** section of the CMakeLists.txt file.
+   3. CMakeLists.txt ファイルの **target_link_libraries** セクション内のライブラリの一覧に **my_parson** を追加します。
 
-   4. Save the **CMakeLists.txt** file.
+   4. **CMakeLists.txt** ファイルを保存します。
 
-   5. Open **CModule** > **main.c**. At the bottom of the list of include statements, add a new one to include `parson.h` for JSON support:
+   5. **[CModule]**  >  **[main.c]** の順に開きます。 include ステートメントの一覧の一番下に、JSON サポート用の `parson.h` をインクルードするための新しいステートメントを追加します。
 
       ```c
       #include "parson.h"

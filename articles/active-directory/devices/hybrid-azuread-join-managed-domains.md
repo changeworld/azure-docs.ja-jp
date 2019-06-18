@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: efa653ecf306f5ac5eefaddd61d98e81f919876d
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 6f9daeb5e0de9c53f16efff46e02015acfa7c521
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66513302"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66734607"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>チュートリアル:マネージド ドメイン用のハイブリッド Azure Active Directory 参加の構成
 
@@ -65,7 +65,7 @@ Azure AD Connect が、Azure AD に参加するハイブリッド Azure AD に�
 - `https://device.login.microsoftonline.com`
 - [https://autologon.microsoftazuread-sso.com](`https://autologon.microsoftazuread-sso.com`) (シームレス SSO を使用している場合、または使用する予定の場合)
 
-組織が送信プロキシを介してインターネットにアクセスする必要がある場合、Microsoft は、Windows 10 コンピューターを Azure AD にデバイス登録できるように [Web プロキシ自動発見 (WPAD) を実装](https://docs.microsoft.com/previous-versions/tn-archive/cc995261(v%3dtechnet.10))することをお勧めします。 WPAD の構成と管理に関する問題が発生する場合、「[troubleshooting automatic detection (自動検出のトラブルシューティング)](https://docs.microsoft.com/previous-versions/tn-archive/cc302643(v=technet.10)」をご覧ください。 
+組織が送信プロキシを介してインターネットにアクセスする必要がある場合、Microsoft は、Windows 10 コンピューターを Azure AD にデバイス登録できるように [Web プロキシ自動発見 (WPAD) を実装](https://docs.microsoft.com/previous-versions/tn-archive/cc995261(v%3dtechnet.10))することをお勧めします。 WPAD の構成と管理に関する問題が発生する場合は、「[Troubleshooting Automatic Detection (自動検出のトラブルシューティング)](https://docs.microsoft.com/previous-versions/tn-archive/cc302643(v=technet.10))」を参照してください。 
 
 Windows 10 1709 以降では、WPAD を使用しておらず、自分のコンピューター上でプロキシ設定を構成する必要がある場合、[グループ ポリシー オブジェクト (GPO) を使用して WinHTTP 設定を構成する](https://blogs.technet.microsoft.com/netgeeks/2018/06/19/winhttp-proxy-settings-deployed-by-gpo/)ことでそれを行えます。
 

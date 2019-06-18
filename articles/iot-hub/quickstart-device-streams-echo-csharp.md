@@ -1,6 +1,6 @@
 ---
 title: Azure IoT Hub デバイス ストリームを介して C# でデバイス アプリと通信する (プレビュー) | Microsoft Docs
-description: このクイック スタートでは、IoT Hub を通じて確立されたデバイス ストリームを介して通信する 2 つのサンプル C# アプリケーションを実行します。
+description: このクイックスタートでは、IoT Hub を通じて確立されたデバイス ストリームを介して通信する 2 つのサンプル C# アプリケーションを実行します。
 author: rezasherafat
 manager: briz
 ms.service: iot-hub
@@ -10,20 +10,20 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: rezas
-ms.openlocfilehash: 8df57d3d36dcae851c9c0e23ea609e200a429605
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.openlocfilehash: 74a8fc40cff12070f7cea99981eb4e8321d7c1ef
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65832902"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66735148"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-c-via-iot-hub-device-streams-preview"></a>クイック スタート:IoT Hub デバイス ストリームを介して C# でデバイス アプリケーションと通信する (プレビュー)
 
 [!INCLUDE [iot-hub-quickstarts-3-selector](../../includes/iot-hub-quickstarts-3-selector.md)]
 
-Microsoft Azure IoT Hub は現在、[プレビュー機能](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)としてデバイス ストリームをサポートしています。
+Azure IoT Hub は現在、[プレビュー機能](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)としてデバイス ストリームをサポートしています。
 
-[IoT Hub デバイス ストリーム](./iot-hub-device-streams-overview.md)を使用すると、サービス アプリケーションとデバイス アプリケーションが、安全でファイアウォールに対応した方法で通信できます。 このクイック スタートには、デバイス ストリームを利用してデータをやり取り (エコー) する 2 つの C# プログラムが含まれています。
+[IoT Hub デバイス ストリーム](./iot-hub-device-streams-overview.md)を使用すると、サービス アプリケーションとデバイス アプリケーションが、安全でファイアウォールに対応した方法で通信できます。 このクイックスタートには、デバイス ストリームを利用してデータをやり取り (エコー) する 2 つの C# アプリケーションが含まれています。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -31,29 +31,25 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 ## <a name="prerequisites"></a>前提条件
 
-*  デバイス ストリームのプレビューは現在、次のリージョンで作成された IoT Hub に対してのみサポートされています。
+* デバイス ストリームのプレビューは現在、以下のリージョンで作成された IoT ハブに対してのみサポートされています。
+  * 米国中部
+  * 米国中部 EUAP
 
-   *  **米国中部**
+* このクイックスタートで実行する 2 つのサンプル アプリケーションは、C# を使って書かれています。 開発マシン上に .NET Core SDK 2.1.0 以降が必要です。
+  * [複数のプラットフォームに対応する .NET Core SDK を .NET から](https://www.microsoft.com/net/download/all)ダウンロードします。
+  * 次のコマンドを使用して、開発マシンの C# の現在のバージョンを確認します。
 
-   *  **米国中部 EUAP**
+   ```
+   dotnet --version
+   ```
 
-このクイック スタートで実行する 2 つのサンプル アプリケーションは、C# を使って書かれています。 開発用コンピューター上に .NET Core SDK 2.1.0 以降が必要です。
-
-*  [複数のプラットフォームに対応する .NET Core SDK を .NET から](https://www.microsoft.com/net/download/all)ダウンロードします。
-
-開発コンピューターに現在インストールされている C# のバージョンは、次のコマンドを使って確認できます。
-
-```
-dotnet --version
-```
-
-*  次のコマンドを実行して、Microsoft Azure IoT Extension for Azure CLI を Cloud Shell インスタンスに追加します。 IoT Hub、IoT Edge、IoT Device Provisioning Service (DPS) 固有のコマンドが Azure CLI に追加されます。
+* 次のコマンドを実行して、Azure IoT Extension for Azure CLI を Cloud Shell インスタンスに追加します。 IoT Hub、IoT Edge、IoT Device Provisioning Service (DPS) 固有のコマンドが Azure CLI に追加されます。
 
     ```azurecli-interactive
     az extension add --name azure-cli-iot-ext
     ```
 
-* https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip からサンプル C# プロジェクトをダウンロードし、ZIP アーカイブを抽出します。 デバイス側とサービス側の両方で必要になります。
+* [サンプル C# プロジェクトをダウンロード](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)し、ZIP アーカイブを抽出します。 デバイス側とサービス側の両方で必要になります。
 
 ## <a name="create-an-iot-hub"></a>IoT Hub の作成
 
@@ -61,56 +57,56 @@ dotnet --version
 
 ## <a name="register-a-device"></a>デバイスの登録
 
-デバイスを IoT ハブに接続するには、あらかじめ IoT ハブに登録しておく必要があります。 このクイック スタートでは、Azure Cloud Shell を使用して、シミュレートされたデバイスを登録します。
+デバイスを IoT ハブに接続するには、あらかじめ IoT ハブに登録しておく必要があります。 このセクションでは、Azure Cloud Shell を使用して、シミュレートされたデバイスを登録します。
 
-1. Azure Cloud Shell で次のコマンドを実行してデバイス ID を作成します。
+1. Cloud Shell で次のコマンドを実行してデバイス ID を作成します。
 
-   **YourIoTHubName**: このプレースホルダーは、実際の IoT ハブに対して選んだ名前に置き換えてください。
-
-   **MyDevice**: これは、登録済みデバイスに付けられた名前です。 示されているように、MyDevice を使用します。 デバイスに別の名前を選択した場合は、この記事全体でその名前を使用する必要があります。また、サンプル アプリケーションを実行する前に、アプリケーション内のデバイス名を更新してください。
+   > [!NOTE]
+   > * *YourIoTHubName* プレースホルダーを、IoT ハブ用に選択した名前に置き換えます。
+   > * 示されているように、*MyDevice* を使用します。 これは、登録済みデバイスに付けられた名前です。 デバイスに別の名前を選択した場合は、この記事全体でその名前を使用し、サンプル アプリケーションを実行する前に、アプリケーション内のデバイス名を更新します。
 
     ```azurecli-interactive
     az iot hub device-identity create --hub-name YourIoTHubName --device-id MyDevice
     ```
 
-2. Azure Cloud Shell で次のコマンドを実行して、登録したデバイスの "_デバイス接続文字列_" を取得します。
+1. 登録したデバイスの "*デバイス接続文字列*" を取得するには、Cloud Shell で次のコマンドを実行します。
 
-   **YourIoTHubName**: このプレースホルダーは、実際の IoT ハブに対して選んだ名前に置き換えてください。
+   > [!NOTE]
+   > *YourIoTHubName* プレースホルダーを、IoT ハブ用に選択した名前に置き換えます。
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyDevice --output table
     ```
 
-    次の例のような、デバイスの接続文字列をメモしておきます。
+    このクイックスタートの後の方で使用できるように、デバイス接続文字列を書き留めておきます。 次の例のようになります。
 
    `HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyDevice;SharedAccessKey={YourSharedAccessKey}`
 
-    この値は、このクイック スタートの後の方で使います。
-
 3. また、サービス側アプリケーションが IoT ハブに接続してデバイス ストリームを確立できるようにするには、IoT ハブの "*サービス接続文字列*" も必要です。 次のコマンドを実行すると、自分の IoT ハブのこの値が取得されます。
 
-   **YourIoTHubName**: このプレースホルダーは、実際の IoT ハブに対して選んだ名前に置き換えてください。
+   > [!NOTE]
+   > *YourIoTHubName* プレースホルダーを、IoT ハブ用に選択した名前に置き換えます。
 
     ```azurecli-interactive
     az iot hub show-connection-string --policy-name service --name YourIoTHubName
     ```
 
-    次のような戻り値をメモしておきます。
+    このクイックスタートの後の方で使用するために、返された値を書き留めておきます。 次の例のようになります。
 
    `"HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey={YourSharedAccessKey}"`
 
-## <a name="communicate-between-device-and-service-via-device-streams"></a>デバイス ストリームを介したデバイスとサービスの間の通信
+## <a name="communicate-between-the-device-and-the-service-via-device-streams"></a>デバイス ストリームを介したデバイスとサービスの間の通信
 
 このセクションでは、デバイス側アプリケーションとサービス側アプリケーションの両方を実行し、両者間で通信します。
 
 ### <a name="run-the-service-side-application"></a>サービス側アプリケーションの実行
 
-解凍したプロジェクト フォルダーの `iot-hub/Quickstarts/device-streams-echo/service` に移動します。 以下の情報が必要になります。
+解凍したプロジェクト フォルダーの *iot-hub/Quickstarts/device-streams-echo/service* ディレクトリに移動します。 以下の情報を手元に用意しておいてください。
 
 | パラメーター名 | パラメーター値 |
 |----------------|-----------------|
 | `ServiceConnectionString` | お使いの IoT ハブのサービス接続文字列を指定します。 |
-| `DeviceId` | 前に作成したデバイスの ID を指定します (例: MyDevice)。 |
+| `DeviceId` | 前に作成したデバイスの ID を指定します (例: *MyDevice*)。 |
 
 次のようにコードをコンパイルして実行します。
 
@@ -121,7 +117,7 @@ cd ./iot-hub/Quickstarts/device-streams-echo/service/
 dotnet build
 
 # Run the application
-# In Linux/MacOS
+# In Linux or macOS
 dotnet run "<ServiceConnectionString>" "<MyDevice>"
 
 # In Windows
@@ -133,7 +129,7 @@ dotnet run <ServiceConnectionString> <MyDevice>
 
 ### <a name="run-the-device-side-application"></a>デバイス側アプリケーションの実行
 
-解凍したプロジェクト フォルダーの `iot-hub/Quickstarts/device-streams-echo/device` ディレクトリに移動します。 以下の情報が必要になります。
+解凍したプロジェクト フォルダーの *iot-hub/Quickstarts/device-streams-echo/device* ディレクトリに移動します。 以下の情報を手元に用意しておいてください。
 
 | パラメーター名 | パラメーター値 |
 |----------------|-----------------|
@@ -148,22 +144,24 @@ cd ./iot-hub/Quickstarts/device-streams-echo/device/
 dotnet build
 
 # Run the application
-# In Linux/MacOS
+# In Linux or macOS
 dotnet run "<DeviceConnectionString>"
 
 # In Windows
 dotnet run <DeviceConnectionString>
 ```
 
-最後の手順の終わりに、サービス側プログラムはデバイスへのストリームを開始し、確立後はストリームを介してサービスに文字列バッファーを送信します。 このサンプルでは、​​サービス側プログラムは単に同じデータをデバイスにエコーバックして、2 つのアプリケーション間の双方向の通信が成功したことを示します。 次の図を見てください。
+最後の手順の最後で、サービス側のアプリケーションによってデバイスへのストリームが開始されます。 ストリームが確立された後、アプリケーションはストリーム経由でサービスに文字列バッファーを送信します。 このサンプルでは、​​サービス側アプリケーションは単に同じデータをデバイスにエコーバックします。これは、2 つのアプリケーション間の双方向通信が成功したことを示します。
 
 デバイス側でのコンソール出力:
 
-![デバイス側のコンソール出力](./media/quickstart-device-streams-echo-csharp/device-console-output.png)
+![デバイス側でのコンソール出力](./media/quickstart-device-streams-echo-csharp/device-console-output.png)
 
-サービス側でのコンソール出力:![サービス側でのコンソール出力](./media/quickstart-device-streams-echo-csharp/service-console-output.png )
+サービス側でのコンソール出力:
 
-ストリームを介して送信されるトラフィックは、直接送信されるのではなく、IoT Hub を通じてトンネリングされます。 提供されるベネフィットについては、[デバイス ストリームのベネフィット](./iot-hub-device-streams-overview.md#benefits)に関する記事で詳しく説明しています。
+![サービス側でのコンソール出力](./media/quickstart-device-streams-echo-csharp/service-console-output.png)
+
+ストリームを介して送信されるトラフィックは、直接送信されるのではなく、IoT ハブを通じてトンネリングされます。 提供されるベネフィットについては、[デバイス ストリームのベネフィット](./iot-hub-device-streams-overview.md#benefits)に関する記事で詳しく説明しています。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
@@ -171,9 +169,9 @@ dotnet run <DeviceConnectionString>
 
 ## <a name="next-steps"></a>次の手順
 
-このクイック スタートでは、IoT ハブの設定、デバイスの登録、デバイス側とサービス側の C# アプリケーション間のデバイス ストリームの確立、そのストリームを使用したアプリケーション間のデータのやり取りを行いました。
+このクイックスタートでは、IoT ハブの設定、デバイスの登録、デバイス側とサービス側の C# アプリケーション間のデバイス ストリームの確立、そのストリームを使用したアプリケーション間のデータのやり取りを行いました。
 
-以下のリンクを使用して、デバイス ストリームについてさらに詳しく学習します。
+デバイス ストリームについて詳しく学習するには、次を参照してください。
 
 > [!div class="nextstepaction"]
 > [デバイス ストリームの概要](./iot-hub-device-streams-overview.md)

@@ -13,15 +13,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: tutorial
-ms.date: 06/18/2018
+ms.date: 06/06/201
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 962955a405d12365f69519b004ea8f95d529a97c
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 1b43463537f620eb59f78184de41ec37c26b97ed
+ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66475519"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66742820"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>チュートリアル:既存のカスタム DNS 名を Azure App Service にマップする
 
@@ -119,7 +119,7 @@ App Service プランが **F1** レベルではない場合は、 **[スケー�
 
 #### <a name="create-the-cname-record"></a>CNAME レコードを作成する
 
-サブドメインをアプリの既定のホスト名 (`<app_name>.azurewebsites.net`、`<app_name>` はアプリの名前) にマップするための CNAME レコードを追加します。
+サブドメインをアプリの既定のドメイン名 (`<app_name>.azurewebsites.net`、`<app_name>` はアプリの名前) にマップするための CNAME レコードを追加します。
 
 `www.contoso.com` ドメインの例では、名前 `www` を `<app_name>.azurewebsites.net` にマップする CNAME レコードを追加します。
 
@@ -129,13 +129,13 @@ CNAME を追加した後の DNS レコード ページは次の例のように�
 
 #### <a name="enable-the-cname-record-mapping-in-azure"></a>Azure で CNAME レコード マッピングを有効にする
 
-Azure Portal のアプリ ページの左側のナビゲーションで、 **[カスタム ドメイン]** を選択します。 
+Azure Portal のアプリ ページの左側のナビゲーションで、 **[カスタム ドメイン]** を選択します。
 
 ![[カスタム ドメイン] メニュー](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
 アプリの **[カスタム ドメイン]** ページで、完全修飾カスタム DNS 名 (`www.contoso.com`) を一覧に追加します。
 
-**[ホスト名の追加]** の横の **+** アイコンを選択します。
+**[カスタム ドメインの追加]** の横の **+** アイコンを選択します。
 
 ![ホスト名の追加](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
 
@@ -143,15 +143,15 @@ Azure Portal のアプリ ページの左側のナビゲーションで、 **[�
 
 **[検証]** を選択します。
 
-**[ホスト名の追加]** ページが表示されます 
+**[カスタム ドメインの追加]** ページが開きます。
 
 **[ホスト名レコード タイプ]** が **[CNAME (www\.example.com または任意のサブドメイン)]** に設定されていることを確認します。
 
-**[ホスト名の追加]** を選択します。
+**[カスタム ドメインの追加]** を選択します。
 
 ![アプリへの DNS 名の追加](./media/app-service-web-tutorial-custom-domain/validate-domain-name-cname.png)
 
-アプリの **[カスタム ドメイン]** ページに新しいホスト名が反映されるまで時間がかかることがあります。 データを更新するために、ブラウザーの表示を更新してみてください。
+アプリの **[カスタム ドメイン]** ページに新しいカスタム ドメインが反映されるまで時間がかかることがあります。 データを更新するために、ブラウザーの表示を更新してみてください。
 
 ![追加された CNAME レコード](./media/app-service-web-tutorial-custom-domain/cname-record-added.png)
 
@@ -191,7 +191,7 @@ Azure Portal のアプリ ページの左側のナビゲーションで、 **[�
 A レコードをアプリにマップする場合、App Service では **2 つ**の DNS レコードが必要になります。
 
 - アプリの IP アドレスにマップするための **A** レコード。
-- アプリの既定のホスト名 `<app_name>.azurewebsites.net` にマップするための **TXT** レコード。 App Service は、このレコードを、カスタム ドメインの所有者であることを検証するために構成時にのみ使用します。 App Service でカスタム ドメインが検証されて構成された後は、この TXT レコードを削除できます。
+- アプリの既定のドメイン名 `<app_name>.azurewebsites.net` にマップするための **TXT** レコード。 App Service は、このレコードを、カスタム ドメインの所有者であることを検証するために構成時にのみ使用します。 App Service でカスタム ドメインが検証されて構成された後は、この TXT レコードを削除できます。
 
 `contoso.com` ドメインの場合、次の表に従って A および TXT レコードを作成します (`@` は、通常、ルート ドメインを表します)。
 
@@ -219,23 +219,23 @@ A レコードをアプリにマップする場合、App Service では **2 つ*
 
 Azure Portal のアプリの **[カスタム ドメイン]** ページに戻り、完全修飾カスタム DNS 名 (たとえば、`contoso.com`) を一覧に追加します。
 
-**[ホスト名の追加]** の横の **+** アイコンを選択します。
+**[カスタム ドメインの追加]** の横の **+** アイコンを選択します。
 
-![ホスト名の追加](./media/app-service-web-tutorial-custom-domain/add-host-name.png)
+![ホスト名の追加](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
 
 先ほど A レコードを構成した完全修飾ドメイン名 (`contoso.com` など) を入力します。
 
 **[検証]** を選択します。
 
-**[ホスト名の追加]** ページが表示されます 
+**[カスタム ドメインの追加]** ページが開きます。
 
 **[ホスト名レコード タイプ]** が **[A レコード (example.com)]** に設定されていることを確認します。
 
-**[ホスト名の追加]** を選択します。
+**[カスタム ドメインの追加]** を選択します。
 
 ![アプリへの DNS 名の追加](./media/app-service-web-tutorial-custom-domain/validate-domain-name.png)
 
-アプリの **[カスタム ドメイン]** ページに新しいホスト名が反映されるまで時間がかかることがあります。 データを更新するために、ブラウザーの表示を更新してみてください。
+アプリの **[カスタム ドメイン]** ページに新しいカスタム ドメインが反映されるまで時間がかかることがあります。 データを更新するために、ブラウザーの表示を更新してみてください。
 
 ![追加された A レコード](./media/app-service-web-tutorial-custom-domain/a-record-added.png)
 
@@ -258,7 +258,7 @@ Azure Portal のアプリの **[カスタム ドメイン]** ページに戻り�
 
 #### <a name="create-the-cname-record"></a>CNAME レコードを作成する
 
-ワイルドカード名をアプリの既定のホスト名 (`<app_name>.azurewebsites.net`) にマップするための CNAME レコードを追加します。
+ワイルドカード名をアプリの既定のドメイン名 (`<app_name>.azurewebsites.net`) にマップするための CNAME レコードを追加します。
 
 `*.contoso.com` ドメインの例では、CNAME レコードは名前 `*` を `<app_name>.azurewebsites.net` にマップします。
 
@@ -274,23 +274,23 @@ Azure Portal のアプリ ページの左側のナビゲーションで、 **[�
 
 ![[カスタム ドメイン] メニュー](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
-**[ホスト名の追加]** の横の **+** アイコンを選択します。
+**[カスタム ドメインの追加]** の横の **+** アイコンを選択します。
 
 ![ホスト名の追加](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
 
 ワイルドカード ドメインと一致する完全修飾ドメイン名 (たとえば `sub1.contoso.com`) を入力し、 **[検証]** を選択します。
 
-**[ホスト名の追加]** ボタンがアクティブになります。 
+**[カスタム ドメインの追加]** ボタンがアクティブになります。
 
 **[ホスト名レコード タイプ]** が **[CNAME レコード (www\.example.com または任意のサブドメイン)]** に設定されていることを確認します。
 
-**[ホスト名の追加]** を選択します。
+**[カスタム ドメインの追加]** を選択します。
 
 ![アプリへの DNS 名の追加](./media/app-service-web-tutorial-custom-domain/validate-domain-name-cname-wildcard.png)
 
-アプリの **[カスタム ドメイン]** ページに新しいホスト名が反映されるまで時間がかかることがあります。 データを更新するために、ブラウザーの表示を更新してみてください。
+アプリの **[カスタム ドメイン]** ページに新しいカスタム ドメインが反映されるまで時間がかかることがあります。 データを更新するために、ブラウザーの表示を更新してみてください。
 
-**+** アイコンをもう一度選択して、ワイルドカード ドメインと一致する別のホスト名を追加します。 たとえば、`sub2.contoso.com` を追加します。
+**+** アイコンをもう一度選択して、ワイルドカード ドメインと一致する別のカスタム ドメインを追加します。 たとえば、`sub2.contoso.com` を追加します。
 
 ![追加された CNAME レコード](./media/app-service-web-tutorial-custom-domain/cname-record-added-wildcard2.png)
 

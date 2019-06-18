@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 04/12/2019
 ms.author: erhopf
-ms.openlocfilehash: 29fcbd058651c428b488f5ce1c767105cb7921a6
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: 6cf3ab6480900aa763598120e6ff7e308f5044e1
+ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59580989"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66743219"
 ---
 # <a name="swagger-documentation"></a>Swagger ドキュメント
 
@@ -26,12 +26,12 @@ Speech Services では、データのインポート、モデルの作成、モ�
 
 ## <a name="generating-code-from-the-swagger-specification"></a>Swagger 仕様からコードを生成する
 
-[Swager 仕様](https://cris.ai/swagger/ui/index)には、さまざまなパスをすばやくテストできるオプションが用意されています。 ただし、すべてのパスのコードを生成し、今後のソリューションの基盤にできる呼び出しの 1 つのライブラリを作成することが望ましい場合があります。 Python ライブラリを生成するプロセスを見てみましょう。
+[Swagger 仕様](https://cris.ai/swagger/ui/index)には、さまざまなパスをすばやくテストできるオプションが用意されています。 ただし、すべてのパスのコードを生成し、今後のソリューションの基盤にできる呼び出しの 1 つのライブラリを作成することが望ましい場合があります。 Python ライブラリを生成するプロセスを見てみましょう。
 
 ご利用の Speech Service サブスクリプションと同じリージョンに Swagger を設定する必要があります。 Azure portal 内のご利用の Speech Service リソースの下でご利用のリージョンを確認できます。 サポートされているリージョンの完全な一覧については、[リージョン](regions.md)に関するページをご覧ください。
 
 1. https://editor.swagger.io に移動します
-2. **[File]\(ファイル\)**、**[Import]\(インポート\)** の順にクリックします
+2. **[File]\(ファイル\)** 、 **[Import]\(インポート\)** の順にクリックします
 3. ご利用の Speech Service サブスクリプションのリージョンを含む Swagger URL を入力します `https://<your-region>.cris.ai/docs/v2.0/swagger`
 4. **[Generate Client]\(クライアントの生成\)** をクリックし、[Python] を選択します
 5. クライアント ライブラリを保存する
