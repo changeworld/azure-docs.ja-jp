@@ -48,16 +48,31 @@ sections:
             image:
               src: media/index/mongodb-api.svg
             title: Azure Cosmos DB の MongoDB 用 API
-          - href: /azure/cosmos-db/table-introduction/
-            html: <p>Azure Table Storage から Azure Cosmos DB の Premium Table サービスにデータを移行する場合は、テーブル API を使用します。</p>
-            image:
-              src: media/index/table-api.svg
-            title: テーブル API
           - href: /azure/cosmos-db/cassandra-introduction/
             html: <p>Cassandra から Azure Cosmos DB のフル マネージドのサービスにデータを移行する場合は、Cassandra API を使用します。</p>
             image:
               src: media/index/cassandra-api.png
             title: Cassandra API
+          - href: /azure/cosmos-db/table-introduction/
+            html: <p>Azure Table Storage から Azure Cosmos DB の Premium Table サービスにデータを移行する場合は、テーブル API を使用します。</p>
+            image:
+              src: media/index/table-api.svg
+            title: テーブル API
+          - href: /azure/cosmos-db/spark-api-introduction/
+            html: <p>Apache Spark の組み込みのサポートを使用して、Azure Cosmos アカウントに格納されたデータに対して分析を実行します。 </p>
+            image:
+              src: media/index/spark-logo.png
+            title: Apache Spark による組み込みの分析
+          - href: /azure/cosmos-db/change-feed/
+            html: <p>変更された順に並べ替えられた Azure Cosmos DB コンテナー内のドキュメントの一覧を読み込むことで、変更フィードを使用してリアルタイム分析を実行します。 </p>
+            image:
+              src: media/index/change-feed-logo.png
+            title: Change Feed
+          - href: /azure/cosmos-db/etcd-api-introduction/
+            html: <p> etcd API では、Azure Cosmos DB を Azure Kubernetes のバックエンド ストアとして使用できます。</p>
+            image:
+              src: media/index/etcd-logo.png
+            title: etcd API
   - title: 5 分間のクイック スタート
     items:
       - type: paragraph

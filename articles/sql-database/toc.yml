@@ -83,22 +83,26 @@
           href: sql-database-design-first-database.md
         - name: .NET を使用したデータベースの設計
           href: sql-database-design-first-database-csharp.md
-    - name: SQL Database への移行
+    - name: 単一データベース
       items:
         - name: DMS を使用して単一データベースまたはプールされたデータベースに移行する
           href: ../dms/tutorial-sql-server-to-azure-sql.md?toc=/azure/sql-database/toc.json
-        - name: DMS を使用してマネージド インスタンスに移行する
+        - name: 地理的に分散したデータベースの実装
+          href: sql-database-implement-geo-distributed-database.md
+        - name: Azure SQL Data Sync の設定
+          href: sql-database-get-started-sql-data-sync.md
+    - name: マネージド インスタンス
+      items:
+        - name: DMS を使用したオンライン移行
           href: ../dms/tutorial-sql-server-to-managed-instance.md?toc=/azure/sql-database/toc.json
+        - name: トランザクション レプリケーションの構成
+          href: replication-with-sql-database-managed-instance.md
     - name: SQL Database のセキュリティ
       items:
         - name: 単一データベースとプールされたデータベースのセキュリティ
           href: sql-database-security-tutorial.md
         - name: Managed Instance のセキュリティ
           href: sql-database-managed-instance-aad-security-tutorial.md
-    - name: 地理的に分散したデータベースの実装
-      href: sql-database-implement-geo-distributed-database.md
-    - name: Azure SQL Data Sync の設定
-      href: sql-database-get-started-sql-data-sync.md
     - name: Machine Learning サービス
       items:
         - name: R で予測モデルを作成する
@@ -500,8 +504,6 @@
           href: sql-database-managed-instance-find-management-endpoint-ip-address.md
         - name: 組み込みのファイアウォール保護の確認
           href: sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md
-        - name: トランザクション レプリケーション
-          href: replication-with-sql-database-managed-instance.md
         - name: 脅威検出の構成
           href: sql-database-managed-instance-threat-detection.md
         - name: アプリケーションの接続

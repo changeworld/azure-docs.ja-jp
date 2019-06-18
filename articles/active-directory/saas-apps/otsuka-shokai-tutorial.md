@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 05/31/2019
+ms.date: 06/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0411e1ab76d010eae26142d681dc157a1eb776a8
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: bec4cb17f2d25cd00ef115a78736c95eaf26d95f
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66481938"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66752449"
 ---
 # <a name="tutorial-integrate-otsuka-shokai-with-azure-active-directory"></a>チュートリアル:Otsuka Shokai と Azure Active Directory の統合
 
@@ -79,14 +79,7 @@ Otsuka Shokai に対する Azure AD SSO を構成してテストするには、�
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. **[SAML でシングル サインオンをセットアップします]** ページで、次の手順を実行します。
-
-    a. **[識別子]** ボックスに、`https://<SUBDOMAIN>.otsuka-shokai.co.jp/S000000100` の形式で URL を入力します。
-
-    b. **[応答 URL]** ボックスに、`https://<SUBDOMAIN>.otsuka-shokai.co.jp/ResponseOffice365` のパターンを使用して URL を入力します
-
-    > [!NOTE]
-    > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 これらの値を取得するには、[Otsuka Shokai クライアント サポート チーム](mailto:Tatsuya.Satoh@otsuka-shokai.co.jp)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+1. **[SAML でシングル サインオンをセットアップします]** ページでは、アプリケーションは事前に構成されており、必要な URL は既に Azure で事前に設定されています。 構成を保存するには、 **[保存]** ボタンをクリックします。
 
 1. Otsuka Shokai アプリケーションは、特定の形式の SAML アサーションを使用するため、SAML トークン属性の構成にカスタム属性マッピングを追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、 **nameidentifier**  は  **user.userprincipalname** にマップされています。 Otsuka Shokai アプリケーションでは、 **nameidentifier**  が  **user.objectid** にマップされると想定されているため、 **[編集]**   アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
 
@@ -139,7 +132,7 @@ Otsuka Shokai に対する Azure AD SSO を構成してテストするには、�
 1. 画面の上部にある **[新しいユーザー]** を選択します。
 1. **[ユーザー]** プロパティで、以下の手順を実行します。
    1. **[名前]** フィールドに「`B. Simon`」と入力します。  
-   1. **[ユーザー名]** フィールドに「username@companydomain.extension」と入力します。 たとえば、「 `BrittaSimon@contoso.com` 」のように入力します。
+   1. **[ユーザー名]** フィールドに「username@companydomain.extension」と入力します。 たとえば、「 `B.Simon@contoso.com` 」のように入力します。
    1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
    1. **Create** をクリックしてください。
 
@@ -163,7 +156,7 @@ Otsuka Shokai に対する Azure AD SSO を構成してテストするには、�
 
 ### <a name="create-otsuka-shokai-test-user"></a>Otsuka Shokai テスト ユーザーの作成
 
-このセクションでは、Otsuka Shokai で Britta Simon というユーザーを作成します。 Otsuka Shokai プラットフォームにユーザーを追加するには、 [Otsuka Shokai サポート チーム](mailto:Tatsuya.Satoh@otsuka-shokai.co.jp)にお問い合わせください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Otsuka Shokai で B.Simon というユーザーを作成します。 Otsuka Shokai プラットフォームにユーザーを追加するには、 [Otsuka Shokai サポート チーム](mailto:Tatsuya.Satoh@otsuka-shokai.co.jp)にお問い合わせください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="test-sso"></a>SSO のテスト
 

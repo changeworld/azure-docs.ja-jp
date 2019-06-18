@@ -233,7 +233,7 @@
           href: search-query-lucene-examples.md
         - name: moreLikeThis (プレビュー)
           href: search-more-like-this.md
-    - name: データのフィルター処理と並べ替え
+    - name: フィルターの使用
       items:
         - name: フィルターの概要
           href: search-filters.md
@@ -241,8 +241,10 @@
           href: search-filters-facets.md
         - name: ファセット ナビゲーションの追加
           href: search-faceted-navigation.md
-        - name: フィルターと OrderBy 式の構文と例
-          href: query-odata-filter-orderby-syntax.md
+        - name: コレクション フィルターのトラブルシューティング
+          href: search-query-troubleshoot-collection-filters.md
+        - name: コレクション フィルターについて
+          href: search-query-understand-collection-filters.md
     - name: 結果を処理する
       items:
         - name: ページ関連の機能
@@ -283,6 +285,32 @@
       href: search-api-preview.md
     - name: Resource Manager テンプレート
       href: /azure/templates/microsoft.search/searchservices
+    - name: OData 言語のリファレンス
+      items:
+        - name: 概要
+          href: query-odata-filter-orderby-syntax.md
+        - name: $filter
+          href: search-query-odata-filter.md
+        - name: $orderby
+          href: search-query-odata-orderby.md
+        - name: $select
+          href: search-query-odata-select.md
+        - name: any、all
+          href: search-query-odata-collection-operators.md
+        - name: eq、ne、gt、lt、ge、le
+          href: search-query-odata-comparison-operators.md
+        - name: search.ismatch、search.ismatchscoring
+          href: search-query-odata-full-text-search-functions.md
+        - name: geo.distance、geo.intersects
+          href: search-query-odata-geo-spatial-functions.md
+        - name: and、or、not
+          href: search-query-odata-logical-operators.md
+        - name: search.in
+          href: search-query-odata-search-in-function.md
+        - name: search.score
+          href: search-query-odata-search-score-function.md
+        - name: OData 言語の文法
+          href: search-query-odata-syntax-reference.md
     - name: コグニティブ スキルのリファレンス
       href: cognitive-search-predefined-skills.md
       items:

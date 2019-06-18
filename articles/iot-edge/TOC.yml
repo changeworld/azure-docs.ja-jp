@@ -51,6 +51,22 @@
           href: tutorial-deploy-custom-vision.md
         - name: SQL を使用したローカルへのデータの格納
           href: tutorial-store-data-sql-server.md
+    - name: 4. エッジにおける機械学習のエンドツーエンドの例
+      items:
+        - name: はじめに
+          href: tutorial-machine-learning-edge-01-intro.md
+        - name: 開発マシンと Azure サービスを設定する
+          href: tutorial-machine-learning-edge-02-prepare-environment.md
+        - name: シミュレートされたデバイスのデータを生成する
+          href: tutorial-machine-learning-edge-03-generate-data.md
+        - name: Azure Machine Learning モデルをトレーニングしてデプロイする
+          href: tutorial-machine-learning-edge-04-train-model.md
+        - name: 透過的なゲートウェイの構成
+          href: tutorial-machine-learning-edge-05-configure-edge-device.md
+        - name: IoT Edge モジュールを作成してデプロイする
+          href: tutorial-machine-learning-edge-06-custom-modules.md
+        - name: 透過的なゲートウェイを介してデータを IoT Hub に送信する
+          href: tutorial-machine-learning-edge-07-send-data-to-hub.md
 - name: 概念
   items:
     - name: IoT Edge ランタイム
@@ -149,6 +165,8 @@
       items:
         - name: 透過的なゲートウェイの構成
           href: how-to-create-transparent-gateway.md
+        - name: ダウンストリーム デバイスの認証
+          href: how-to-authenticate-downstream-device.md
         - name: ダウンストリームのデバイスを接続する
           href: how-to-connect-downstream-device.md
         - name: Modbus プロトコル ゲートウェイ

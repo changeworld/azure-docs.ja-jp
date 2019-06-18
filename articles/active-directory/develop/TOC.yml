@@ -139,6 +139,8 @@
                   href: scenario-protected-web-api-app-registration.md
                 - name: コード構成
                   href: scenario-protected-web-api-app-configuration.md
+                - name: スコープまたはアプリ ロールの確認
+                  href: scenario-protected-web-api-verification-scope-app-roles.md
                 - name: 運用環境に移行する
                   href: scenario-protected-web-api-production.md
             - name: Web API を呼び出す Web API

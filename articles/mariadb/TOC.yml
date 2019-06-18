@@ -59,12 +59,20 @@
           href: concepts-business-continuity.md
         - name: バックアップと復元
           href: concepts-backup.md
-    - name: 監視
+    - name: 監視と調整
       items:
         - name: 監視
           href: concepts-monitoring.md
-        - name: サーバー ログ
+        - name: 低速クエリ ログ
           href: concepts-server-logs.md
+        - name: 監査ログ
+          href: concepts-audit-logs.md
+        - name: クエリ ストア
+          href: concepts-query-store.md
+        - name: Query Performance Insight
+          href: concepts-query-performance-insight.md
+        - name: パフォーマンスに関する推奨事項
+          href: concepts-performance-recommendations.md
     - name: 開発
       items:
         - name: ドライバーとツールの互換性
@@ -75,6 +83,8 @@
       items:
         - name: データイン レプリケーション
           href: concepts-data-in-replication.md
+        - name: 読み取りレプリカ
+          href: concepts-read-replicas.md
 - name: ハウツー ガイド
   items:
     - name: ファイアウォール規則
@@ -113,10 +123,16 @@
           href: howto-auto-grow-storage-portal.md
     - name: サーバー ログへのアクセス
       items:
-        - name: Azure ポータル
-          href: howto-configure-server-logs-portal.md
-        - name: Azure CLI
-          href: howto-configure-server-logs-cli.md
+        - name: 低速クエリ ログ
+          items:
+            - name: Azure ポータル
+              href: howto-configure-server-logs-portal.md
+            - name: Azure CLI
+              href: howto-configure-server-logs-cli.md
+        - name: 監査ログ
+          items:
+            - name: Azure ポータル
+              href: howto-configure-audit-logs-portal.md
     - name: 監視
       items:
         - name: メトリックに基づいたアラートの作成
@@ -125,6 +141,8 @@
       items:
         - name: データイン レプリケーションの構成
           href: howto-data-in-replication.md
+        - name: Azure portal を使用した読み取りレプリカの作成
+          href: howto-read-replicas-portal.md
     - name: トラブルシューティング
       items:
         - name: 接続エラーのトラブルシューティング

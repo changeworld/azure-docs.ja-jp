@@ -54,8 +54,14 @@
               href: azure-security-disk-encryption-overview.md
             - name: クイック スタート
               items:
-                - name: VM の暗号化 - Azure PowerShell
-                  href: quick-encrypt-vm-powershell.md
+                - name: Azure CLI を使用して Linux VM を暗号化する
+                  href: azure-disk-encryption-linux-cli-quickstart.md
+                - name: Azure PowerShell を使用して Linux VM を暗号化する
+                  href: azure-disk-encryption-linux-powershell-quickstart.md
+                - name: Azure CLI を使用して Windows VM を暗号化する
+                  href: azure-disk-encryption-windows-cli-quickstart.md
+                - name: Azure PowerShell を使用して Windows VM を暗号化する
+                  href: azure-disk-encryption-windows-powershell-quickstart.md
             - name: Azure Disk Encryption
               items:
                 - name: ディスク暗号化の前提条件

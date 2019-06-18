@@ -89,12 +89,14 @@
               href: container-registry-auth-aks.md
         - name: コンテンツの信頼
           href: container-registry-content-trust.md
-    - name: ビルドと修正プログラム
+    - name: ACR タスク
       items:
-        - name: ACR タスク
+        - name: ACR タスクの概要
           href: container-registry-tasks-overview.md
         - name: 複数ステップのタスク
           href: container-registry-tasks-multi-step.md
+        - name: マネージド ID との使用
+          href: container-registry-tasks-authentication-managed-identity.md
     - name: レジストリと他の Azure サービス
       items:
         - name: Azure Container Instances

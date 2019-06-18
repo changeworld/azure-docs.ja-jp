@@ -17,11 +17,11 @@ ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
 ms.openlocfilehash: 27e0deae9c35ad8fa00659e3e3e505cace6e9014
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55733435"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60516495"
 ---
 # <a name="data-platforms-supported-on-the-data-science-virtual-machine"></a>Data Science Virtual Machine でサポートされているデータ プラットフォーム
 
@@ -34,7 +34,7 @@ DSVM でサポートされているデータ プラットフォーム ツール�
 | | |
 | ------------- | ------------- |
 | 紹介   | ローカルのリレーショナル データベース インスタンス      |
-| サポートされている DSVM エディション      |  Windows      |
+| サポートされている DSVM エディション      | Windows      |
 | 一般的な用途      | 比較的小さなデータセットを使用したローカルでの迅速開発 <br/> In-Database R の実行   |
 | サンプルへのリンク      |    New York City Dataset の小さなサンプルが、SQL データベース `nyctaxi` に読み込まれます。 <br/> Microsoft R および In-Database の分析を示す Jupyter サンプルは次の場所にあります。<br/> `~notebooks/SQL_R_Services_End_to_End_Tutorial.ipynb`  |
 | DSVM 上の関連ツール       | SQL Server Management Studio <br/> ODBC/JDBC ドライバー<br/> pyodbc、RODBC<br />Apache Drill      |
@@ -101,7 +101,7 @@ Hadoop 関連サービスが不要な場合は、```systemctl stop hadoop-nameno
 ### <a name="how-is-it-configured--installed-on-the-dsvm"></a>DSVM での構成/インストール方法 
 |プラットフォーム|インストール場所 ($SPARK_HOME)|
 |:--------|:--------|
-| Windows | c:\dsvm\tools\spark-X.X.X-bin-hadoopX.X|
+|Windows | c:\dsvm\tools\spark-X.X.X-bin-hadoopX.X|
 |Linux   | /dsvm/tools/spark-X.X.X-bin-hadoopX.X|
 
 

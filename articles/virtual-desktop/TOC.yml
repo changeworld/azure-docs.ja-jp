@@ -16,6 +16,10 @@
       href: manage-app-groups.md
     - name: 5. サービスの更新プログラムを検証するためのホスト プールを作成する
       href: create-validation-host-pool.md
+    - name: 6. 管理ツールをデプロイする
+      href: manage-resources-using-ui.md
+    - name: 7. サービス アラートを設定する
+      href: set-up-service-alerts.md
 - name: 操作方法
   items:
     - name: Windows Virtual Desktop リソースに接続する
@@ -40,6 +44,8 @@
       href: configure-vm-gpu.md
     - name: セッション ホストを自動的にスケーリングする
       href: set-up-scaling-script.md
+    - name: RDP プロパティをカスタマイズする
+      href: customize-rdp-properties.md
 - name: 概念
   items:
     - name: Windows Virtual Desktop の環境

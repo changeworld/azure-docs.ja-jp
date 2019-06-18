@@ -79,8 +79,7 @@
           displayName: 'Basic Sample, training, classification, sample 5'
           href: ui-sample-classification-predict-churn.md
     - name: Azure Open Datasets
-      href: 'https://docs.microsoft.com/azure/open-datasets/samples'
-      maintainContext: true
+      href: /azure/open-datasets/samples?context=azure/machine-learning/service/context/ml-context
 - name: 概念
   items:
     - name: ワークスペース
@@ -98,7 +97,7 @@
     - name: モデル管理 (MLOps)
       displayName: 'deploy, deployment, mlops, operationalize, operationalization'
       href: concept-model-management-and-deployment.md
-    - name: 再使用可能な ML パイプライン
+    - name: ML パイプライン
       href: concept-ml-pipelines.md
     - name: モデルの解釈可能性
       displayName: explainability
@@ -119,6 +118,8 @@
           href: how-to-enable-virtual-network.md
         - name: SSL を使用して Web サービスをセキュリティで保護する
           href: how-to-secure-web-service.md
+        - name: ストレージ アクセス キーの再生成
+          href: how-to-change-storage-access-key.md
 - name: ハウツー ガイド
   items:
     - name: ワークスペースを管理する
@@ -177,10 +178,12 @@
           href: how-to-set-up-training-targets.md
         - name: トレーニングでの推定器の作成
           href: how-to-train-ml-models.md
-        - name: PyTorch の使用
-          href: how-to-train-pytorch.md
         - name: Tensorflow の使用
           href: how-to-train-tensorflow.md
+        - name: Keras の使用
+          href: how-to-train-keras.md
+        - name: PyTorch の使用
+          href: how-to-train-pytorch.md
         - name: ハイパーパラメーターを調整する
           displayName: parameter
           href: how-to-tune-hyperparameters.md
@@ -191,6 +194,9 @@
           href: how-to-manage-runs.md
         - name: トレーニング実行のメトリックを記録する
           href: how-to-track-experiments.md
+        - name: MLflow を使用して実験を追跡する
+          displayName: 'log, monitor, metrics'
+          href: how-to-use-mlflow.md
     - name: 機械学習の自動化
       displayName: 'automl, auto ml'
       items:
@@ -215,8 +221,9 @@
         - name: FPGA
           href: how-to-deploy-fpga-web-service.md
         - name: IoT Edge
-          href: ../../iot-edge/tutorial-deploy-machine-learning.md
-          maintainContext: true
+          href: /azure/iot-edge/tutorial-deploy-machine-learning?context=azure/machine-learning/service/context/ml-context
+        - name: カスタム Docker イメージ
+          href: how-to-deploy-custom-docker-image.md
         - name: トラブルシューティング
           href: how-to-troubleshoot-deployment.md
     - name: Web サービスを使用する
@@ -241,8 +248,7 @@
           href: how-to-create-your-first-pipeline.md
         - name: Azure Pipelines を使用した ML ワークフローの CI/CD
           displayName: 'continuous, integration, delivery'
-          href: /azure/devops/pipelines/targets/azure-machine-learning
-          mainContext: true
+          href: /azure/devops/pipelines/targets/azure-machine-learning?context=azure/machine-learning/service/context/ml-context
     - name: リソース クォータを管理する
       displayName: limits
       href: how-to-manage-quotas.md
@@ -366,8 +372,7 @@
     - name: スタック オーバーフロー
       href: 'https://stackoverflow.com/questions/tagged/azure-machine-learning'
     - name: Microsoft の ML 製品の比較
-      href: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning
-      maintainContext: true
+      href: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure/machine-learning/service/context/ml-context
     - name: Workbench の変更点
       displayName: desktop ui Workbench upgrade update transfer
       href: overview-what-happened-to-workbench.md

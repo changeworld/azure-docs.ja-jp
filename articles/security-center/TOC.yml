@@ -74,8 +74,9 @@
     - name: テナント全体の可視性
       href: security-center-management-groups.md
     - name: セキュリティの推奨事項を実装する
-      href: security-center-recommendations.md
       items:
+        - name: セキュリティに関する推奨事項とは
+          href: security-center-recommendations.md
         - name: セキュリティ体制の強化
           href: security-center-monitoring.md
         - name: マシンとアプリの保護
@@ -181,6 +182,8 @@
       href: /learn/browse/?term=securityS
     - name: ユーザー データを管理する
       href: security-center-privacy.md
+    - name: IoT を管理する
+      href: 'https://docs.microsoft.com/en-us/azure/asc-for-iot/'
     - name: FAQ
       href: security-center-faq.md
     - name: Azure Security

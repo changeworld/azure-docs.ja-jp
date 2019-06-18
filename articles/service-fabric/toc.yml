@@ -517,6 +517,8 @@
               href: service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md
             - name: Windows での Linux クラスターの設定
               href: service-fabric-local-linux-cluster-windows.md
+            - name: VS からリモート Linux クラスターに .NET Core アプリをデプロイする
+              href: service-fabric-how-to-publish-linux-app-vs.md
         - name: Linux/Eclipse 開発環境での作業
           items:
             - name: Java 開発用の Eclipse プラグインの使用
@@ -842,8 +844,8 @@
       href: 'https://azure.microsoft.com/pricing/details/service-fabric/'
     - name: 料金計算ツール
       href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: トラブルシューティング ガイド
-      href: 'https://github.com/Azure/Service-Fabric-Troubleshooting-Guides'
+    - name: リリース ノート
+      href: release-notes.md
     - name: サンプル コード
       href: 'https://aka.ms/servicefabricsamples'
     - name: サポート オプション
@@ -852,5 +854,7 @@
       href: service-fabric-versions.md
     - name: サービスの更新情報
       href: 'https://azure.microsoft.com/updates/?product=service-fabric'
+    - name: トラブルシューティング ガイド
+      href: 'https://github.com/Azure/Service-Fabric-Troubleshooting-Guides'
     - name: ビデオ
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=service-fabric'

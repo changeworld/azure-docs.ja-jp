@@ -50,6 +50,10 @@
       items:
         - name: DevTest ラボの概念
           href: devtest-lab-concepts.md
+        - name: 分散型および協力型の開発のベスト プラクティス
+          href: best-practices-distributive-collaborative-development-environment.md
+        - name: Azure DevOps との統合
+          href: devtest-lab-dev-ops.md
         - name: シナリオ
           items:
             - name: DevTest Labs を使用する一般的なシナリオ
@@ -92,6 +96,8 @@
               href: classroom-labs/how-to-use-shared-image-gallery.md
             - name: Linux のリモート デスクトップ接続を有効にする
               href: classroom-labs/how-to-enable-remote-desktop-linux.md
+            - name: 仮想マシンのパスワードを設定またはリセットする
+              href: classroom-labs/how-to-set-virtual-machine-passwords.md
     - name: DevTest Labs
       items:
         - name: ラボ仮想マシンのリソース グループを指定する
@@ -106,6 +112,8 @@
           href: personal-data-delete-export.md
         - name: 別のラボから仮想マシンをインポートする
           href: import-virtual-machines-from-another-lab.md
+        - name: リモート デスクトップ ゲートウェイを使用するためにラボを構成する
+          href: configure-lab-remote-desktop-gateway.md
         - name: イメージ ファクトリを作成する
           href: image-factory-create.md
           items:

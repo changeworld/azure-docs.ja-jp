@@ -83,6 +83,10 @@
           href: plan-sso-deployment.md
     - name: エンドユーザーのポータル
       href: end-user-experiences.md
+    - name: One Click SSO
+      items:
+        - name: One Click SSO とは
+          href: one-click-sso-tutorial.md
 - name: ハウツー ガイド
   items:
     - name: クラウド アプリの追加

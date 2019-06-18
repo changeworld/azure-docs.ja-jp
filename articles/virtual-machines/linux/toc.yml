@@ -85,9 +85,10 @@
           items:
             - name: パフォーマンスを最適化する
               href: storage-performance.md
-        - name: GPU 最適化
-          href: sizes-gpu.md
+        - name: 高速コンピューティング
           items:
+            - name: GPU 最適化
+              href: sizes-gpu.md
             - name: GPU ドライバーの設定
               href: n-series-driver-setup.md
         - name: ハイ パフォーマンス コンピューティング

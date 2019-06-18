@@ -205,7 +205,7 @@
           href: iot-accelerators-device-simulation-advanced-device.md
         - name: Time Series Insights によるテレメトリの視覚化
           href: iot-accelerators-device-simulation-time-series-insights.md
-        - name: Protbuf を使用してテレメトリをシリアル化する
+        - name: Protobuf を使用したテレメトリのシリアル化
           href: iot-accelerators-device-simulation-protobuf.md
         - name: カスタム Docker イメージのデプロイ
           href: iot-accelerators-device-simulation-deploy-image.md

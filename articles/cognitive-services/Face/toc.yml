@@ -59,7 +59,7 @@
       href: Face-API-How-to-Topics/HowtoIdentifyFacesinImage.md
     - name: 顔を追加する
       href: Face-API-How-to-Topics/how-to-add-faces.md
-    - name: HeadPose を使用して四角形を回転させる
+    - name: HeadPose 属性を使用する
       href: Face-API-How-to-Topics/how-to-use-headpose.md
     - name: 顔認識モデルを指定する
       href: Face-API-How-to-Topics/specify-recognition-model.md

@@ -43,6 +43,8 @@
         - name: オフライン評価
           href: concepts-offline-evaluation.md
           displayName: 'learning policy, Counterfactual, features'
+    - name: スケーラビリティとパフォーマンス
+      href: concepts-scalability-performance.md
 - name: ハウツー ガイド
   items:
     - name: Personalizer の作成と構成
