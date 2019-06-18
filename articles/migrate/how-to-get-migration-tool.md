@@ -7,11 +7,11 @@ ms.topic: article
 ms.date: 09/17/2018
 ms.author: raynew
 ms.openlocfilehash: 068b55e40afc96dbcfae26c8bf7da8a1b9ea349a
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53249779"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60598327"
 ---
 # <a name="migrate-machines-after-assessment"></a>評価後のマシンの移行
 
@@ -37,7 +37,7 @@ ms.locfileid: "53249779"
 ## <a name="review-suggested-migration-methods"></a>推奨される移行方法のレビュー
 
 1. 推奨される移行方法を取得する前に、Azure Migrate プロジェクトを作成し、オンプレミスのマシンを検出し、移行評価を実行する必要があります。 [詳細情報](tutorial-assessment-vmware.md)。
-2. 評価が作成されたら、[プロジェクト] > **[概要]**  > **[ダッシュボード]** を選択して表示します。 **[Assessment Readiness]\(アセスメントの準備状態\)** をクリックします。
+2. 評価が作成されたら、[プロジェクト] > **[概要]**  >  **[ダッシュボード]** を選択して表示します。 **[Assessment Readiness]\(アセスメントの準備状態\)** をクリックします。
 
     ![アセスメントの準備状態](./media/tutorial-assessment-vmware/assessment-report.png)  
 

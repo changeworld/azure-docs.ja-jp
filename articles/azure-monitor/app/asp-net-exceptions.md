@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 09/19/2017
 ms.author: mbullwin
 ms.openlocfilehash: cb32069de295b883cdc6d3a9fa495b1bea719c39
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54116988"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60691812"
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>Application Insights を利用し、Web アプリの例外を診断する
 ライブ Web アプリの例外は、[Application Insights](../../azure-monitor/app/app-insights-overview.md) によって報告されます。 要求の失敗をクライアントとサーバーの両方の例外やその他のイベントに相互に関連付け、原因をすばやく診断できます。
@@ -191,7 +191,7 @@ Web フォームの場合、HTTP モジュールは、CustomErrors で構成さ�
 ## <a name="mvc"></a>MVC
 Application Insights Web SDK バージョン 2.6 (beta3 以降) では、Application Insights は、MVC 5+ コントローラーのメソッドでスローされた未処理の例外を自動的に収集します。 そのような例外 (次の例を参照) を追跡するためにカスタム ハンドラーを以前に追加した場合、例外を二重で追跡しないようにハンドラーを取り除くことができます。
 
-例外フィルターが処理できないケースがあります。 例: 
+例外フィルターが処理できないケースがあります。 例:
 
 * コントローラー コンストラクターからスローされる例外。
 * メッセージ ハンドラーからスローされる例外。
@@ -283,7 +283,7 @@ FilterConfig.cs で AiHandleErrorAttribute をグローバル フィルターと
 ## <a name="web-api"></a>Web API
 Application Insights Web SDK バージョン 2.6 (beta3 以降) では、Application Insights は、WebAPI 2+ についてコントローラーのメソッドでスローされた未処理の例外を自動的に収集します。 そのような例外 (次の例を参照) を追跡するためにカスタム ハンドラーを以前に追加した場合、例外を二重で追跡しないようにハンドラーを取り除くことができます。
 
-例外フィルターが処理できないケースがあります。 例: 
+例外フィルターが処理できないケースがあります。 例:
 
 * コントローラー コンストラクターからスローされる例外。
 * メッセージ ハンドラーからスローされる例外。

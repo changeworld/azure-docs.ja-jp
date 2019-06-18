@@ -11,11 +11,11 @@ description: カスタム NuGet フィードを使用して、Azure Dev Space �
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, コンテナー
 manager: ghogen
 ms.openlocfilehash: 1a000e378a9b8ecfb09d778fd6444e3f24b3df7b
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57772468"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60686459"
 ---
 #  <a name="use-a-custom-nuget-feed-in-an-azure-dev-space"></a>Azure Dev Space でのカスタム NuGet フィードの使用
 

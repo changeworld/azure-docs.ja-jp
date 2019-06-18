@@ -10,11 +10,11 @@ ms.assetid: bcd0b01e-1755-4112-8e8a-a5cabdca4df2
 ms.topic: conceptual
 ms.date: 11/30/2017
 ms.openlocfilehash: 5417f66696191cebadc2af9c6d634419a0eb8e5b
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59526454"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60615325"
 ---
 # <a name="debug-user-defined-c-code-for-failed-u-sql-jobs"></a>失敗した U-SQL ジョブに対するユーザー定義の C# コードをデバッグする
 
@@ -35,7 +35,7 @@ U-SQL は C# を使用した機能拡張モデルを提供しています。 U-S
 
 Azure Data Lake Tools for Visual Studio で失敗したジョブを開くと、詳細なエラー メッセージが記載された警告バーがエラー タブに表示されます。
 
-1. **[ダウンロード]** をクリックして必要なリソースと入力ストリームをすべてダウンロードします。 ダウンロードが完了しない場合は、**[再試行]** をクリックします。
+1. **[ダウンロード]** をクリックして必要なリソースと入力ストリームをすべてダウンロードします。 ダウンロードが完了しない場合は、 **[再試行]** をクリックします。
 
 2. ダウンロードが完了したら **[開く]** をクリックし、ローカルのデバッグ環境を生成します。 新しいデバッグ ソリューションが開きます。Visual Studio で既存のソリューションを開いている場合は、デバッグする前に必ず保存してから閉じてください。
 

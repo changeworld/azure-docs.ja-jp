@@ -11,11 +11,11 @@ ms.topic: reference
 ms.date: 03/29/2018
 ms.author: rosh
 ms.openlocfilehash: 69db722295c9c81d45913bd078fe9cc5ab74c512
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58104711"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60462590"
 ---
 # <a name="project-url-preview-v7-reference"></a>Project URL Preview v7 のリファレンス
 
@@ -73,12 +73,12 @@ q - プレビューされる URL を特定するクエリ
 ## <a name="query-parameters"></a>クエリ パラメーター
 要求には次のクエリ パラメーターを含めることができます。 必須のパラメーターについては、必須の列を参照してください。 クエリ パラメーターは URL エンコードする必要があります。 クエリは、HTTP または HTTPS スキームを備えた絶対 URL である必要があります。Microsoft は相対 URL や他のスキーム (ftp:// など) をサポートしません。
 
-|Name|値|type|必須|
+|Name|値|Type|必須|
 |----------|-----------|----------|--------------|
-|<a name="mkt" />mkt|結果の取得元の市場。 <br /><br />可能な市場の値の一覧については、市場コードに関するページを参照してください。<br /><br /> **注:** 現在 URL Preview API でサポートされるのは米国地域および英語のみです。<br /><br />|String|はい|
-|<a name="query" />q|プレビューする URL|String|はい|
-|<a name="responseformat" />responseFormat|応答に使用するメディアの種類。 次の値を指定できます。大文字と小文字は区別されません。<br /><ul><li>JSON</li><li>JSONLD</li></ul><br /> 既定値は JSON です。 応答に含まれる JSON オブジェクトについては、「[応答オブジェクト](#response-objects)」を参照してください。<br /><br />JsonLd を指定すると、検索結果が含まれている JSON-LD オブジェクトが応答本文に含まれます。 JSON-LD については、[JSON-LD](https://json-ld.org/) に関するページを参照してください。|String|いいえ |
-|<a name="safesearch"/>safeSearch|違法な成人向けコンテンツや海賊版コンテンツはエラー コード 400 でブロックされ、*isFamilyFriendly* フラグは返されません。 <p>合法的な成人向けコンテンツの場合は、次のような動作になります。 状態コード 200 が返され、*isFamilyFriendly* フラグが false に設定されます。<ul><li>safeSearch=strict:タイトル、説明、URL、画像は返されません。</li><li>safeSearch=moderate: タイトル、URL、説明は取得しますが、説明的な画像は取得しません。</li><li>safeSearch=off: すべての応答オブジェクト/要素 (タイトル、URL、説明、画像) を取得します。</li></ul> |String|不要。 </br> 既定値は safeSearch=strict です。|
+|<a name="mkt" />mkt|結果の取得元の市場。 <br /><br />可能な市場の値の一覧については、市場コードに関するページを参照してください。<br /><br /> **注:** 現在 URL Preview API でサポートされるのは米国地域および英語のみです。<br /><br />|string|はい|
+|<a name="query" />q|プレビューする URL|string|はい|
+|<a name="responseformat" />responseFormat|応答に使用するメディアの種類。 次の値を指定できます。大文字と小文字は区別されません。<br /><ul><li>JSON</li><li>JSONLD</li></ul><br /> 既定値は JSON です。 応答に含まれる JSON オブジェクトについては、「[応答オブジェクト](#response-objects)」を参照してください。<br /><br />JsonLd を指定すると、検索結果が含まれている JSON-LD オブジェクトが応答本文に含まれます。 JSON-LD については、[JSON-LD](https://json-ld.org/) に関するページを参照してください。|string|いいえ|
+|<a name="safesearch"/>safeSearch|違法な成人向けコンテンツや海賊版コンテンツはエラー コード 400 でブロックされ、*isFamilyFriendly* フラグは返されません。 <p>合法的な成人向けコンテンツの場合は、次のような動作になります。 状態コード 200 が返され、*isFamilyFriendly* フラグが false に設定されます。<ul><li>safeSearch=strict:タイトル、説明、URL、画像は返されません。</li><li>safeSearch=moderate: タイトル、URL、説明は取得しますが、説明的な画像は取得しません。</li><li>safeSearch=off: すべての応答オブジェクト/要素 (タイトル、URL、説明、画像) を取得します。</li></ul> |string|不要。 </br> 既定値は safeSearch=strict です。|
 
 ## <a name="response-objects"></a>応答オブジェクト
 Web Search API では、応答スキーマは [WebPage] と ErrorResponse のいずれかです。 要求が失敗した場合、最上位レベルのオブジェクトは [ErrorResponse](#errorresponse) オブジェクトになります。
@@ -90,38 +90,38 @@ Web Search API では、応答スキーマは [WebPage] と ErrorResponse のい
 ### <a name="error"></a>Error
 発生したエラーを定義します。
 
-|要素|説明|type|
+|要素|説明|Type|
 |-------------|-----------------|----------|
-|<a name="error-code" />code|エラーのカテゴリを特定するエラー コード。 考えられるコードの一覧については、「[エラー コード](#error-codes)」を参照してください。|String|
-|<a name="error-message" />message|エラーの説明。|String|
-|<a name="error-moredetails" />moreDetails|エラーに関する追加情報を提供する説明。|String|
-|<a name="error-parameter" />parameter|エラーを引き起こした要求内のクエリ パラメーター。|String|
-|<a name="error-subcode" />subCode|エラーを特定するエラー コード。 たとえば、`code` が InvalidRequest の場合、`subCode` は ParameterInvalid か ParameterInvalidValue の場合があります。 |String|
-|<a name="error-value" />value|有効でなかったクエリ パラメーター値。|String|
+|<a name="error-code" />code|エラーのカテゴリを特定するエラー コード。 考えられるコードの一覧については、「[エラー コード](#error-codes)」を参照してください。|string|
+|<a name="error-message" />message|エラーの説明。|string|
+|<a name="error-moredetails" />moreDetails|エラーに関する追加情報を提供する説明。|string|
+|<a name="error-parameter" />parameter|エラーを引き起こした要求内のクエリ パラメーター。|string|
+|<a name="error-subcode" />subCode|エラーを特定するエラー コード。 たとえば、`code` が InvalidRequest の場合、`subCode` は ParameterInvalid か ParameterInvalidValue の場合があります。 |string|
+|<a name="error-value" />value|有効でなかったクエリ パラメーター値。|string|
 
 ### <a name="errorresponse"></a>ErrorResponse
 要求が失敗したときの応答に含まれている最上位レベルのオブジェクト。
 
-|Name|値|type|
+|Name|値|Type|
 |----------|-----------|----------|
-|_type|種類のヒント。|String|
+|_type|種類のヒント。|string|
 |<a name="errors" />errors|要求が失敗した理由を示すエラーの一覧。|[エラー](#error)[]|
 
 ### <a name="webpage"></a>WebPage
 プレビューの Web ページに関する情報を定義します。
 
-|Name|値|type|
+|Name|値|Type|
 |----------|-----------|----------|
-|name|ページ タイトル (必ずしも HTML タイトルではありません)|String|
-|url|実際にクロールされた URL (要求はリダイレクトされた可能性があります)|String|
-|description|ページとコンテンツの簡単な説明|String|
+|name|ページ タイトル (必ずしも HTML タイトルではありません)|string|
+|url|実際にクロールされた URL (要求はリダイレクトされた可能性があります)|string|
+|description|ページとコンテンツの簡単な説明|string|
 |isFamilyFriendly|Web インデックスの項目で最も正確です。この検出は、ページのコンテンツではなく URL のみに基づいて、リアルタイム フェッチによって実行されます|ブール値|
-|primaryImageOfPage/contentUrl|プレビューに含まれる代表的な画像への URL|String|
+|primaryImageOfPage/contentUrl|プレビューに含まれる代表的な画像への URL|string|
 
 ### <a name="identifiable"></a>Identifiable
-|Name|値|type|
+|Name|値|Type|
 |-------------|-----------------|----------|
-|id|リソース識別子|String|
+|id|リソース識別子|string|
 
 ## <a name="error-codes"></a>エラー コード
 

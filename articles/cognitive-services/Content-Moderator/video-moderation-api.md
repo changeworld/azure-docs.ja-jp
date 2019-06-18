@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: sajagtap
 ms.openlocfilehash: 7e987c1249360b14fddf8af57c61fdd1a46ee6c5
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55864794"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60605312"
 ---
 # <a name="analyze-video-content-for-objectionable-material-in-c"></a>C# で好ましくない要素を検出するためにビデオ コンテンツを分析する
 
@@ -38,9 +38,9 @@ Content Moderator のビデオのモデレーション機能は、Azure Media Se
 
 Azure portal で新しい AMS サブスクリプションに移動し、サイド メニューから **[API アクセス]** を選択します。 **[サービス プリンシパルを使って Azure Media Services に接続する]** を選択します。 **[REST API エンドポイント]** フィールドの値をメモします。この値は後で必要になります。
 
-**[Azure AD アプリ]** セクションで、**[新規作成]** を選択し、新しい Azure AD アプリケーションの登録に名前を付けます ("VideoModADApp" など)。 **[保存]** をクリックして、アプリケーションが構成されるまで数分待ちます。 その後、ページの **[Azure AD アプリ]** セクションの下に、新しいアプリの登録が表示されるはずです。
+**[Azure AD アプリ]** セクションで、 **[新規作成]** を選択し、新しい Azure AD アプリケーションの登録に名前を付けます ("VideoModADApp" など)。 **[保存]** をクリックして、アプリケーションが構成されるまで数分待ちます。 その後、ページの **[Azure AD アプリ]** セクションの下に、新しいアプリの登録が表示されるはずです。
 
-アプリの登録を選択し、その下の **[アプリケーションの管理]** ボタンをクリックします。 **[アプリケーション ID]** フィールドの値をメモします。この値は後で必要になります。 **[設定]** > **[キー]** の順に選択し、新しいキーの説明 ("VideoModKey" など) を入力します。 **[保存]** をクリックして、新しいキー値に注目します。 この文字列をコピーし、それをどこか安全な場所に保存します。
+アプリの登録を選択し、その下の **[アプリケーションの管理]** ボタンをクリックします。 **[アプリケーション ID]** フィールドの値をメモします。この値は後で必要になります。 **[設定]**  >  **[キー]** の順に選択し、新しいキーの説明 ("VideoModKey" など) を入力します。 **[保存]** をクリックして、新しいキー値に注目します。 この文字列をコピーし、それをどこか安全な場所に保存します。
 
 上記のプロセスのより詳細なチュートリアルについては、[Azure AD 認証を開始する](https://docs.microsoft.com/azure/media-services/media-services-portal-get-started-with-aad)のページを参照してください。
 
@@ -56,7 +56,7 @@ Azure Media Services エクスプローラーは、AMS のユーザー フレン
 
 1. Visual Studio で、新しい**コンソール アプリ (.NET Framework)** プロジェクトを作成し、**VideoModeration** という名前を付けます。 
 1. ソリューションに他のプロジェクトがある場合は、このプロジェクトを単一のスタートアップ プロジェクトとして選択します。
-1. 必須の NuGet パッケージを入手します。 ソリューション エクスプローラーでプロジェクトを右クリックし、**[NuGet パッケージの管理]** を選択します。次のパッケージを見つけてインストールします。
+1. 必須の NuGet パッケージを入手します。 ソリューション エクスプローラーでプロジェクトを右クリックし、 **[NuGet パッケージの管理]** を選択します。次のパッケージを見つけてインストールします。
     - windowsazure.mediaservices
     - windowsazure.mediaservices.extensions
 
@@ -120,7 +120,7 @@ private static readonly string CONTENT_MODERATOR_PRESET_FILE = "preset.json";
 
 ローカル ビデオ ファイルを使用する場合 (最も簡単な場合) は、そのファイルをプロジェクトに追加して、そのパスを `INPUT_FILE` 値として入力します (相対パスは実行ディレクトリを基準とします)。
 
-現在のディレクトリに _preset.json_ ファイルを作成し、それを使用してバージョン番号を指定する必要もあります。 例: 
+現在のディレクトリに _preset.json_ ファイルを作成し、それを使用してバージョン番号を指定する必要もあります。 例:
 
 ```JSON
 {

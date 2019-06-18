@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: mbullwin
 ms.openlocfilehash: eb8e98f66d000290ce7eb07d3d73e82fbc43514a
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59548713"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60693380"
 ---
 # <a name="set-alerts-in-application-insights"></a>Application Insights のアラートの設定
 [Azure Application Insights][start] では、Web アプリのパフォーマンスまたは使用状況のメトリックの変化についてアラートを発行できます。 
@@ -95,7 +95,7 @@ Application Insights は、[さまざまなプラットフォーム][platforms]�
 このセクションでは、例外アラートに基づいてクエリを設定する方法を説明します。 この例では、過去 24 時間の失敗率が 10% を超える場合にアラートを表示します。
 
 1. Azure portal の Application Insight リソースに移動します。
-2. 左側の [構成] で、**[アラート]** をクリックします。
+2. 左側の [構成] で、 **[アラート]** をクリックします。
 
     ![左側の [構成] で、[アラート] をクリックする](./media/alerts/1appinsightalert.png)
 
@@ -103,11 +103,11 @@ Application Insights は、[さまざまなプラットフォーム][platforms]�
 
      ![[アラート] タブの先頭にある [新しいアラート ルール] をクリックする](./media/alerts/2createalert.png)
 
-4. リソースは自動的に選択されます。 条件を設定するには、**[条件の追加]** をクリックします。
+4. リソースは自動的に選択されます。 条件を設定するには、 **[条件の追加]** をクリックします。
 
     ![[条件の追加] をクリックする](./media/alerts/3addcondition.png)
 
-5. [シグナル ロジックの構成] タブで、**[カスタム ログ検索]** を選択します
+5. [シグナル ロジックの構成] タブで、 **[カスタム ログ検索]** を選択します
 
     ![[カスタム ログ検索] をクリックする](./media/alerts/4customlogsearch.png)
 
@@ -133,7 +133,7 @@ Application Insights は、[さまざまなプラットフォーム][platforms]�
 
     ![[アラート ロジック] で、基準と条件で提供されるオプションから選択し、しきい値を入力する](./media/alerts/6alertlogic.png)
 
-8. [評価基準] で、期間と頻度を設定します。 この期間は、上記のクエリの期間に対して設定した値と一致する必要があります。 次に、**[完了]** をクリックします。
+8. [評価基準] で、期間と頻度を設定します。 この期間は、上記のクエリの期間に対して設定した値と一致する必要があります。 次に、 **[完了]** をクリックします。
 
     ![下部で期間と頻度を設定し、[完了] をクリックする](./media/alerts/7evaluate.png)
 
@@ -157,7 +157,7 @@ Application Insights は、[さまざまなプラットフォーム][platforms]�
 
 ![アラート通知のスクリーンショット](./media/alerts/alert-notification.png)
 
-セキュリティとプライバシーをより細かく制御するには、**[通知メールの受信者]** フィールドでクラシック アラートの通知メールの受信者を明示的に指定することが一般的に推奨されます。 特定の役割を持つすべてのユーザーに通知するオプションは、旧バージョンとの互換性のために提供されています。
+セキュリティとプライバシーをより細かく制御するには、 **[通知メールの受信者]** フィールドでクラシック アラートの通知メールの受信者を明示的に指定することが一般的に推奨されます。 特定の役割を持つすべてのユーザーに通知するオプションは、旧バージョンとの互換性のために提供されています。
 
 特定のアラート ルールによって生成される通知メールの登録を解除するには、自分のメール アドレスを **[通知メールの受信者]** フィールドから削除します。
 

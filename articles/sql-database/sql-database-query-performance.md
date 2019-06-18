@@ -13,11 +13,11 @@ ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 01/03/2019
 ms.openlocfilehash: 5d892005881436dec89c0d0d010f7f02e7bdebf9
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54039199"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60585380"
 ---
 # <a name="query-performance-insight-for-azure-sql-database"></a>Azure SQL Database の Query Performance Insight
 
@@ -53,13 +53,13 @@ Query Performance Insight を使用するには、次の[ロール ベースの�
 Query Performance Insight は簡単に使用できます。
 
 1. [Azure portal](https://portal.azure.com/) を開き、調査するデータベースを見つけます。
-2. 左側のメニューから、**[インテリジェント パフォーマンス]** > **[Query Performance Insight]** の順に開きます。
+2. 左側のメニューから、 **[インテリジェント パフォーマンス]**  >  **[Query Performance Insight]** の順に開きます。
   
    ![メニューの [Query Performance Insight]](./media/sql-database-query-performance/tile.png)
 
 3. 最初のタブで、リソース消費量が上位のクエリの一覧を確認します。
 4. 個別のクエリを選択して詳細を表示します。
-5. **[インテリジェント パフォーマンス]** > **[パフォーマンスの推奨事項]** の順に開き、パフォーマンスの推奨事項が利用可能かどうかを確認します。 組み込みのパフォーマンスの推奨事項について詳しくは、[SQL Database Advisor](sql-database-advisor.md) に関するページを参照してください。
+5. **[インテリジェント パフォーマンス]**  >  **[パフォーマンスの推奨事項]** の順に開き、パフォーマンスの推奨事項が利用可能かどうかを確認します。 組み込みのパフォーマンスの推奨事項について詳しくは、[SQL Database Advisor](sql-database-advisor.md) に関するページを参照してください。
 6. スライダーまたはズーム アイコンを使用して、監視間隔を変更します。
 
    ![パフォーマンス ダッシュボード](./media/sql-database-query-performance/performance.png)
@@ -73,7 +73,7 @@ Query Performance Insight は簡単に使用できます。
 
 1. グラフに表示する個別のクエリを選別するには、チェック ボックスをオンまたはオフにします。
 
-    上の折れ線は、データベース全体の DTU の割合を示しています。 棒グラフは、選択された期間に選択されたクエリで消費された CPU の割合を示しています。 たとえば、**[過去 1 週間]** が選択されている場合、各棒は 1 日を表します。
+    上の折れ線は、データベース全体の DTU の割合を示しています。 棒グラフは、選択された期間に選択されたクエリで消費された CPU の割合を示しています。 たとえば、 **[過去 1 週間]** が選択されている場合、各棒は 1 日を表します。
 
     ![上位のクエリ](./media/sql-database-query-performance/top-queries.png)
 
@@ -84,7 +84,7 @@ Query Performance Insight は簡単に使用できます。
    >
    > より細かく比較する場合 (最大で 1 分間) は、次のようにして、カスタム DTU 使用率のグラフを作成することを検討してください。
    >
-   > 1. Azure portal で、**[Azure SQL Database]** > **[監視]** の順に選択します。
+   > 1. Azure portal で、 **[Azure SQL Database]**  >  **[監視]** の順に選択します。
    > 2. **[メトリック]** を選びます。
    > 3. **[+ グラフの追加]** を選択します。
    > 4. グラフの DTU の割合を選択します。
@@ -99,13 +99,13 @@ Query Performance Insight は簡単に使用できます。
    * 1 つのクエリの実行時間。これも集計関数に依存します。
    * 特定のクエリの実行回数の合計。
 
-2. データが古くなった場合は、**[更新]** ボタンを選択します。
+2. データが古くなった場合は、 **[更新]** ボタンを選択します。
 
 3. 監視間隔を変更して消費量の急増を調べるには、スライダーとズーム ボタンを使用します。
 
    ![間隔を変更するためのスライダーとズーム ボタン](./media/sql-database-query-performance/zoom.png)
 
-4. 必要に応じて、**[カスタム]** タブを選択し、以下を表示するようにビューをカスタマイズすることができます。
+4. 必要に応じて、 **[カスタム]** タブを選択し、以下を表示するようにビューをカスタマイズすることができます。
 
    * メトリック (CPU、実行時間、実行回数)。
    * 時間間隔 (過去 24 時間、過去 1 週間、過去 1 か月)。
@@ -144,7 +144,7 @@ Query Performance Insight は簡単に使用できます。
 
    ![クエリの詳細](./media/sql-database-query-performance/query-details.png)
 
-3. 必要に応じて、スライダーやズーム ボタンを使用するか、**[設定]** を選択してクエリ データの表示方法をカスタマイズするか、別の時間範囲を選びます。
+3. 必要に応じて、スライダーやズーム ボタンを使用するか、 **[設定]** を選択してクエリ データの表示方法をカスタマイズするか、別の時間範囲を選びます。
 
    > [!IMPORTANT]
    > Query Performance Insight ではどの DDL クエリもキャプチャされません。 場合によっては、アドホック クエリがすべてキャプチャされない可能性があります。
@@ -176,7 +176,7 @@ Query Performance Insight の 2 つのメトリック (実行時間と実行回�
    >
    > データベースの DTU 消費量をより詳しく確認する場合 (最大で 1 分間) は、次のように Azure portal でカスタム グラフを作成することを検討してください。
    >
-   > 1. **[Azure SQL Database]** > **[監視]** の順に選択します。
+   > 1. **[Azure SQL Database]**  >  **[監視]** の順に選択します。
    > 2. **[メトリック]** を選びます。
    > 3. **[+ グラフの追加]** を選択します。
    > 4. グラフの DTU の割合を選択します。
@@ -227,7 +227,7 @@ Query Performance Insight を使用しているときに、次のようなクエ
 
 これらのメッセージは、通常、クエリ ストアで新しいデータを収集できないときに表示されます。
 
-1 つ目は、クエリ ストアが読み取り専用状態にあり、パラメーターが最適に設定されている場合に発生します。 これは、データ ストアのサイズを増やすか、クエリ ストアを消去することで修正できます  (クエリ ストアを消去すると、以前に収集されたテレメトリがすべて失われます)。
+1 つ目は、クエリ ストアが読み取り専用状態にあり、パラメーターが最適に設定されている場合に発生します。 これは、データ ストアのサイズを増やすか、クエリ ストアを消去することで修正できます (クエリ ストアを消去すると、以前に収集されたテレメトリがすべて失われます)。
 
    ![クエリ ストアの詳細](./media/sql-database-query-performance/qds-off.png)
 
@@ -246,7 +246,7 @@ Query Performance Insight を使用しているときに、次のようなクエ
 * **自動**:クエリ ストアでは、低頻度のクエリおよびコンパイル期間と実行期間が重要ではないクエリは無視されます。 実行回数、コンパイル期間、実行期間のしきい値は内部的に決定されます。 これが既定のオプションです。
 * **なし**:クエリ ストアでは新しいクエリのキャプチャが停止されます。しかし、既にキャプチャされているクエリの実行時統計は引き続き収集されます。
 
-[SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) または Azure portal から以下のコマンドを実行して、すべてのポリシーを **AUTO** に設定し、クリーンアップ ポリシーを 30 日に設定することをお勧めします  (`YourDB` はデータベース名に置き換えてください)。
+[SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) または Azure portal から以下のコマンドを実行して、すべてのポリシーを **AUTO** に設定し、クリーンアップ ポリシーを 30 日に設定することをお勧めします (`YourDB` はデータベース名に置き換えてください)。
 
 ```sql
     ALTER DATABASE [YourDB]
@@ -259,7 +259,7 @@ Query Performance Insight を使用しているときに、次のようなクエ
     SET QUERY_STORE (QUERY_CAPTURE_MODE = AUTO);
 ```
 
-[SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) または Azure portal 経由でデータベースに接続し、以下のクエリを実行して、クエリ ストアのサイズを増やします  (`YourDB` はデータベース名に置き換えてください)。
+[SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) または Azure portal 経由でデータベースに接続し、以下のクエリを実行して、クエリ ストアのサイズを増やします (`YourDB` はデータベース名に置き換えてください)。
 
 ```T-SQL
     ALTER DATABASE [YourDB]

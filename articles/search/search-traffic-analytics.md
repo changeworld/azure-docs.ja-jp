@@ -10,11 +10,11 @@ ms.date: 01/25/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: c30c8bae3e76778a31cdd0695acde52b5b1c6b02
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55079666"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60749616"
 ---
 # <a name="implement-search-traffic-analytics-in-azure-search"></a>Azure Search で検索トラフィックの分析を実装する
 検索トラフィックの分析は、検索サービスのフィードバック ループの実装パターンです。 このパターンでは、必要なデータと、Application Insights を使用してデータを収集する方法を示します。Application Insights は、複数のプラットフォームでサービスを監視する業界最先端のサービスです。
@@ -94,7 +94,7 @@ Azure Search サービスの[ポータル](https://portal.azure.com) ページ�
     request.setRequestHeader("Access-Control-Expose-Headers", "x-ms-azs-searchid");
     var searchId = request.getResponseHeader('x-ms-azs-searchid');
 
-**手順 3:検索イベントをログに記録する**: 
+**手順 3:検索イベントをログに記録する**:
 
 ユーザーによって検索要求が発行されるたびに、Application Insights のカスタム イベントで次のスキーマを使用して、検索要求を検索イベントとしてログに記録します。
 
@@ -131,7 +131,7 @@ Azure Search サービスの[ポータル](https://portal.azure.com) ページ�
     ScoringProfile: <scoring profile used>
     });
 
-**手順 4:クリック イベントをログに記録する**: 
+**手順 4:クリック イベントをログに記録する**:
 
 ユーザーがドキュメントをクリックするたびに、それをシグナルとして、検索分析用にログに記録する必要があります。 Application Insights のカスタム イベントで次のスキーマを使用して、これらのイベントをログに記録します。
 
@@ -166,13 +166,13 @@ Azure Search サービスの[ポータル](https://portal.azure.com) ページ�
 
 ログ データを分析できるように、Azure Search には監視用 [Power BI コンテンツ パック](https://app.powerbi.com/getdata/services/azure-search)が用意されています。 コンテンツ パックでは、検索トラフィックの分析用にキャプチャされた追加データの分析に役立つ定義済みのグラフとテーブルが追加されます。 詳しくは、[コンテンツ パックのヘルプ ページ](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-search/)をご覧ください。 
 
-1. Azure Search ダッシュボードの左側のナビゲーション ウィンドウで、**[設定]** の **[検索トラフィックの分析]** をクリックします。
+1. Azure Search ダッシュボードの左側のナビゲーション ウィンドウで、 **[設定]** の **[検索トラフィックの分析]** をクリックします。
 
-2. **[検索トラフィックの分析]** ページのステップ 3 で、**[Get Power BI Desktop]\(Power BI Desktop の取得\)** をクリックして Power BI をインストールします。
+2. **[検索トラフィックの分析]** ページのステップ 3 で、 **[Get Power BI Desktop]\(Power BI Desktop の取得\)** をクリックして Power BI をインストールします。
 
    ![Power BI レポートを取得する](./media/search-traffic-analytics/get-use-power-bi.png "Power BI レポートを取得する")
 
-2. 同じページで、**[PowerBI レポートのダウンロード]** をクリックします。
+2. 同じページで、 **[PowerBI レポートのダウンロード]** をクリックします。
 
 3. Power BI Desktop でレポートが開かれ、Application Insights に接続するよう求められます。 この情報は、Azure portal の Application Insights リソースに関するページで見つかります。
 

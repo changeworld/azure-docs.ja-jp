@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 01/23/2019
 ms.author: aschhab
 ms.openlocfilehash: c99f4491af8fe3e5f0f0ed7a264995ae3ec5911f
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55658268"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60749446"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>Azure Service Bus と Event Hubs における AMQP 1.0 プロトコル ガイド
 
@@ -144,49 +144,49 @@ API レベルでの "receive" 呼び出しは、*flow* パフォーマティブ�
 
 #### <a name="create-message-receiver"></a>メッセージの受信側の作成
 
-| クライアント | Service Bus |
+| Client | Service Bus |
 | --- | --- |
 | --> attach(<br/>name={link name},<br/>handle={numeric handle},<br/>role=**receiver**,<br/>source={entity name},<br/>target={client link ID}<br/>) |クライアントがエンティティに受信側として接続 |
 | Service Bus がそのリンクの終端を接続して応答 |<-- attach(<br/>name={link name},<br/>handle={numeric handle},<br/>role=**sender**,<br/>source={entity name},<br/>target={client link ID}<br/>) |
 
 #### <a name="create-message-sender"></a>メッセージの送信側の作成
 
-| クライアント | Service Bus |
+| Client | Service Bus |
 | --- | --- |
 | --> attach(<br/>name={link name},<br/>handle={numeric handle},<br/>role=**sender**,<br/>source={client link ID},<br/>target={entity name}<br/>) |アクションなし |
 | アクションなし |<-- attach(<br/>name={link name},<br/>handle={numeric handle},<br/>role=**receiver**,<br/>source={client link ID},<br/>target={entity name}<br/>) |
 
 #### <a name="create-message-sender-error"></a>メッセージの送信側の作成 (エラー)
 
-| クライアント | Service Bus |
+| Client | Service Bus |
 | --- | --- |
 | --> attach(<br/>name={link name},<br/>handle={numeric handle},<br/>role=**sender**,<br/>source={client link ID},<br/>target={entity name}<br/>) |アクションなし |
 | アクションなし |<-- attach(<br/>name={link name},<br/>handle={numeric handle},<br/>role=**receiver**,<br/>source=null,<br/>target=null<br/>)<br/><br/><-- detach(<br/>handle={numeric handle},<br/>closed=**true**,<br/>error={error info}<br/>) |
 
 #### <a name="close-message-receiversender"></a>メッセージ受信側/送信側のクローズ
 
-| クライアント | Service Bus |
+| Client | Service Bus |
 | --- | --- |
 | --> detach(<br/>handle={numeric handle},<br/>closed=**true**<br/>) |アクションなし |
 | アクションなし |<-- detach(<br/>handle={numeric handle},<br/>closed=**true**<br/>) |
 
 #### <a name="send-success"></a>送信 (成功)
 
-| クライアント | Service Bus |
+| Client | Service Bus |
 | --- | --- |
 | --> transfer(<br/>delivery-id={numeric handle},<br/>delivery-tag={binary handle},<br/>settled=**false**,,more=**false**,<br/>state=**null**,<br/>resume=**false**<br/>) |アクションなし |
 | アクションなし |<-- disposition(<br/>role=receiver,<br/>first={delivery ID},<br/>last={delivery ID},<br/>settled=**true**,<br/>state=**accepted**<br/>) |
 
 #### <a name="send-error"></a>送信 (エラー)
 
-| クライアント | Service Bus |
+| Client | Service Bus |
 | --- | --- |
 | --> transfer(<br/>delivery-id={numeric handle},<br/>delivery-tag={binary handle},<br/>settled=**false**,,more=**false**,<br/>state=**null**,<br/>resume=**false**<br/>) |アクションなし |
 | アクションなし |<-- disposition(<br/>role=receiver,<br/>first={delivery ID},<br/>last={delivery ID},<br/>settled=**true**,<br/>state=**rejected**(<br/>error={error info}<br/>)<br/>) |
 
 #### <a name="receive"></a>受信
 
-| クライアント | Service Bus |
+| Client | Service Bus |
 | --- | --- |
 | --> flow(<br/>link-credit=1<br/>) |アクションなし |
 | アクションなし |< transfer(<br/>delivery-id={numeric handle},<br/>delivery-tag={binary handle},<br/>settled=**false**,<br/>more=**false**,<br/>state=**null**,<br/>resume=**false**<br/>) |
@@ -194,7 +194,7 @@ API レベルでの "receive" 呼び出しは、*flow* パフォーマティブ�
 
 #### <a name="multi-message-receive"></a>複数メッセージの受信
 
-| クライアント | Service Bus |
+| Client | Service Bus |
 | --- | --- |
 | --> flow(<br/>link-credit=3<br/>) |アクションなし |
 | アクションなし |< transfer(<br/>delivery-id={numeric handle},<br/>delivery-tag={binary handle},<br/>settled=**false**,<br/>more=**false**,<br/>state=**null**,<br/>resume=**false**<br/>) |
@@ -270,7 +270,7 @@ AMQP メッセージ プロパティの一部ではなく、かつ、メッセ�
 | --- | --- | --- |
 | attach(<br/>name={link name},<br/>... ,<br/>role=**sender**,<br/>target=**Coordinator**<br/>) | ------> |  |
 |  | <------ | attach(<br/>name={link name},<br/>... ,<br/>target=Coordinator()<br/>) |
-| transfer(<br/>delivery-id=0, ...)<br/>{ AmqpValue (**Declare()**)}| ------> |  |
+| transfer(<br/>delivery-id=0, ...)<br/>{ AmqpValue (**Declare()** )}| ------> |  |
 |  | <------ | disposition( <br/> first=0, last=0, <br/>state=**Declared**(<br/>**txn-id**={transaction ID}<br/>))|
 
 #### <a name="discharging-a-transaction"></a>トランザクションの送信
@@ -284,8 +284,8 @@ AMQP メッセージ プロパティの一部ではなく、かつ、メッセ�
 | transfer(<br/>delivery-id=0, ...)<br/>{ AmqpValue (Declare())}| ------> |  |
 |  | <------ | disposition( <br/> first=0, last=0, <br/>state=Declared(<br/>txn-id={transaction ID}<br/>))|
 | | 。 . 。 <br/>トランザクション作業<br/>(別のリンク上で)<br/> 。 . 。 |
-| transfer(<br/>delivery-id=57, ...)<br/>{ AmqpValue (<br/>**Discharge(txn-id=0,<br/>fail=false)**)}| ------> |  |
-| | <------ | disposition( <br/> first=57, last=57, <br/>state=**Accepted()**)|
+| transfer(<br/>delivery-id=57, ...)<br/>{ AmqpValue (<br/>**Discharge(txn-id=0,<br/>fail=false)** )}| ------> |  |
+| | <------ | disposition( <br/> first=57, last=57, <br/>state=**Accepted()** )|
 
 #### <a name="sending-a-message-in-a-transaction"></a>トランザクションでのメッセージの送信
 
@@ -295,8 +295,8 @@ AMQP メッセージ プロパティの一部ではなく、かつ、メッセ�
 | --- | --- | --- |
 | transfer(<br/>delivery-id=0, ...)<br/>{ AmqpValue (Declare())}| ------> |  |
 |  | <------ | disposition( <br/> first=0, last=0, <br/>state=Declared(<br/>txn-id={transaction ID}<br/>))|
-| transfer(<br/>handle=1,<br/>delivery-id=1, <br/>**state=<br/>TransactionalState(<br/>txn-id=0)**)<br/>{ payload }| ------> |  |
-| | <------ | disposition( <br/> first=1, last=1, <br/>state=**TransactionalState(<br/>txn-id=0,<br/>outcome=Accepted()**))|
+| transfer(<br/>handle=1,<br/>delivery-id=1, <br/>**state=<br/>TransactionalState(<br/>txn-id=0)** )<br/>{ payload }| ------> |  |
+| | <------ | disposition( <br/> first=1, last=1, <br/>state=**TransactionalState(<br/>txn-id=0,<br/>outcome=Accepted()** ))|
 
 #### <a name="disposing-a-message-in-a-transaction"></a>トランザクションでのメッセージの処理
 
@@ -307,7 +307,7 @@ AMQP メッセージ プロパティの一部ではなく、かつ、メッセ�
 | transfer(<br/>delivery-id=0, ...)<br/>{ AmqpValue (Declare())}| ------> |  |
 |  | <------ | disposition( <br/> first=0, last=0, <br/>state=Declared(<br/>txn-id={transaction ID}<br/>))|
 | | <------ |transfer(<br/>handle=2,<br/>delivery-id=11, <br/>state=null)<br/>{ payload }|  
-| disposition( <br/> first=11, last=11, <br/>state=**TransactionalState(<br/>txn-id=0,<br/>outcome=Accepted()**))| ------> |
+| disposition( <br/> first=11, last=11, <br/>state=**TransactionalState(<br/>txn-id=0,<br/>outcome=Accepted()** ))| ------> |
 
 
 ## <a name="advanced-service-bus-capabilities"></a>Advanced Service Bus の機能
@@ -325,7 +325,7 @@ AMQP メッセージ プロパティの一部ではなく、かつ、メッセ�
 
 これらのジェスチャにはいずれも、クライアントとメッセージング インフラストラクチャとの間で要求/応答の対話を伴います。そのため、この仕様には、その対話パターンを AMQP 上にモデル化する方法 (つまりクライアントがメッセージング インフラストラクチャに接続し、セッションを開始した後、リンクのペアを作成する) が定義されています。 クライアントは、一方のリンクでは送信側として機能し、もう一方のリンクでは受信側として機能します。こうして形成された一対のリンクが双方向チャネルとしての役割を果たします。
 
-| 論理操作 | クライアント | Service Bus |
+| 論理操作 | Client | Service Bus |
 | --- | --- | --- |
 | 要求の応答経路を作成 |--> attach(<br/>name={*link name*},<br/>handle={*numeric handle*},<br/>role=**sender**,<br/>source=**null**,<br/>target=”myentity/$management”<br/>) |アクションなし |
 | 要求の応答経路を作成 |アクションなし |\<-- attach(<br/>name={*link name*},<br/>handle={*numeric handle*},<br/>role=**receiver**,<br/>source=null,<br/>target=”myentity”<br/>) |
@@ -355,15 +355,15 @@ Service Bus によって実装される AMQP CBS 仕様により、これらの�
 
 CBS には、メッセージング インフラストラクチャによって提供される *$cbs* という名前の仮想管理ノードが定義されています。 トークンの受理は、この管理ノードがメッセージング インフラストラクチャ内の他のノードに代わって行います。
 
-このプロトコル ジェスチャは、管理仕様で規定されている要求/応答のやり取りです。 つまりクライアントは、*$cbs* ノードとの間に 2 本のリンクを確立し、送信リンクで要求を渡した後、受信リンクで応答を待機します。
+このプロトコル ジェスチャは、管理仕様で規定されている要求/応答のやり取りです。 つまりクライアントは、 *$cbs* ノードとの間に 2 本のリンクを確立し、送信リンクで要求を渡した後、受信リンクで応答を待機します。
 
 要求メッセージには、次のアプリケーション プロパティがあります。
 
 | キー | 省略可能 | 値の型 | 値の内容 |
 | --- | --- | --- | --- |
-| operation |いいえ  |文字列 |**put-token** |
-| type |いいえ  |文字列 |格納されるトークンの種類。 |
-| name |いいえ  |文字列 |発行先 (トークンの適用先)。 |
+| operation |いいえ |string |**put-token** |
+| type |いいえ |string |格納されるトークンの種類。 |
+| name |いいえ |string |発行先 (トークンの適用先)。 |
 | expiration |はい |timestamp |トークンの有効期限。 |
 
 トークンの関連付けの対象となるエンティティは、*name* プロパティによって識別されます。 Service Bus では、キュー (またはトピック/サブスクリプション) のパスになります。 トークンの種類は、*type* プロパティによって識別されます。
@@ -380,8 +380,8 @@ CBS には、メッセージング インフラストラクチャによって提
 
 | キー | 省略可能 | 値の型 | 値の内容 |
 | --- | --- | --- | --- |
-| status-code |いいえ  |int |HTTP 応答コード **[RFC2616]**。 |
-| status-description |はい |文字列 |ステータスの説明。 |
+| status-code |いいえ |int |HTTP 応答コード **[RFC2616]** 。 |
+| status-description |はい |string |ステータスの説明。 |
 
 クライアントは、メッセージング インフラストラクチャ内の任意のエンティティに対し、*put-token* を繰り返し呼び出すことができます。 トークンの有効範囲は現在のクライアントに限定され、現在の接続に固定されます。つまり、保持されているトークンは、接続が失われた時点でサーバーによって破棄されます。
 
@@ -389,7 +389,7 @@ Service Bus の現在の実装では、SASL の "ANONYMOUS" 方式との組み�
 
 したがって、選択した AMQP 1.0 クライアントが ANONYMOUS のメカニズムをサポートしている必要があります。 匿名アクセスは、だれが接続を作成しているのかを Service Bus が関知しない状況下で、初回接続ハンドシェイク (初回セッションの作成を含む) が実行されることを意味します。
 
-許可される操作は、接続とセッションが確立された後、*$cbs* ノードにリンクを割り当て、*put-token* 要求を送信することだけです。 接続が確立されてから 20 秒以内に、*put-token* 要求を使用して特定のエンティティ ノードに有効なトークンを正しく設定する必要があります。それに失敗すると、接続は Service Bus によって一方的に破棄されます。
+許可される操作は、接続とセッションが確立された後、 *$cbs* ノードにリンクを割り当て、*put-token* 要求を送信することだけです。 接続が確立されてから 20 秒以内に、*put-token* 要求を使用して特定のエンティティ ノードに有効なトークンを正しく設定する必要があります。それに失敗すると、接続は Service Bus によって一方的に破棄されます。
 
 以後トークンの期限を追跡する役割は、クライアントが果たすこととなります。 トークンの有効期限が切れるとすぐ、個々のエンティティとの間でその接続上に形成されていたリンクはすべて Service Bus によって破棄されます。 問題の発生を防ぐためにクライアントは随時、仮想 *$cbs* 管理ノードを介し、同じ *put-token* ジェスチャを使用して、ノードのトークンを新しいトークンに差し替えることができます。このとき、他のリンク上を流れるペイロード トラフィックの障害になることはありません。
 
@@ -401,9 +401,9 @@ Service Bus の現在の実装では、SASL の "ANONYMOUS" 方式との組み�
 
 > 注:このリンクを確立する前に、*via-entity* と *destination-entity* の両方に対して認証が実行される必要があります。
 
-| クライアント | | Service Bus |
+| Client | | Service Bus |
 | --- | --- | --- |
-| attach(<br/>name={link name},<br/>role=sender,<br/>source={client link ID},<br/>target=**{via-entity}**,<br/>**properties=map [(<br/>com.microsoft:transfer-destination-address=<br/>{destination-entity} )]** ) | ------> | |
+| attach(<br/>name={link name},<br/>role=sender,<br/>source={client link ID},<br/>target= **{via-entity}** ,<br/>**properties=map [(<br/>com.microsoft:transfer-destination-address=<br/>{destination-entity} )]** ) | ------> | |
 | | <------ | attach(<br/>name={link name},<br/>role=receiver,<br/>source={client link ID},<br/>target={via-entity},<br/>properties=map [(<br/>com.microsoft:transfer-destination-address=<br/>{destination-entity} )] ) |
 
 ## <a name="next-steps"></a>次の手順

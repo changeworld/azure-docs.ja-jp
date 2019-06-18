@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 05/17/2018
 ms.author: saurse
 ms.openlocfilehash: b6f0ce1939b2a78ca191d2feb0140506d130b9b0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58107459"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60648352"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Azure Backup でのオフライン バックアップのワークフロー
 Azure Backup はさまざまな面で効率性に優れ、Azure への初回完全バックアップ時にネットワークとストレージのコストを抑えます。 初回完全バックアップでは通常、大量のデータが転送されます。その後の差分/増分のみを転送するバックアップと比べると、多くのネットワーク帯域幅が必要です。 オフライン シード処理プロセスにより、Azure Backup はディスクを使ってオフライン バックアップ データを Azure にアップロードすることができます。
@@ -58,8 +58,8 @@ Azure Backup の次の機能またはワークロードは、オフライン バ
 * Azure ストレージ アカウントを含むサブスクリプションに Microsoft.ImportExport リソース プロバイダーを登録します。 リソース プロバイダーを登録するには:
     1. メイン メニューで **[サブスクリプション]** をクリックします。
     2. 複数のサブスクリプションをサブスクライブしている場合は、オフライン バックアップに使っているサブスクリプションを選びます。 使っているサブスクリプションが 1 つだけの場合は、そのサブスクリプションが表示されます。
-    3. サブスクリプションのメニューで、**[リソース プロバイダー]** をクリックしてプロバイダーの一覧を表示します。
-    4. プロバイダーの一覧で、Microsoft.ImportExport まで下にスクロールします。 状態が [NotRegistered]\(未登録\) の場合は、**[登録]** をクリックします。
+    3. サブスクリプションのメニューで、 **[リソース プロバイダー]** をクリックしてプロバイダーの一覧を表示します。
+    4. プロバイダーの一覧で、Microsoft.ImportExport まで下にスクロールします。 状態が [NotRegistered]\(未登録\) の場合は、 **[登録]** をクリックします。
     ![リソース プロバイダーの登録](./media/backup-azure-backup-import-export/registerimportexport.png)
 * ステージング場所 (ネットワーク共有、または最初のコピーを保持するのに十分なディスク領域がある内部または外部コンピューター上の追加ドライブ) が作成されていること。 ステージング場所には、初期コピーを保持するのに十分なディスク領域があることを確認します。 たとえば、500 GB のファイル サーバーをバックアップする場合は、ステージング領域が 500 GB 以上あることを確認します (圧縮処理により、使用量はこれよりも少なくなります)。
 * ディスクを Azure に送付するときは、2.5 インチの SSD、あるいは 2.5 インチまたは 3.5 インチの SATA II/III 内蔵ハード ドライブのみを使用ってください。 最大 10 TB のハード ドライブを使用できます。 サービスでサポートされている最新のドライブについては、[Azure Import/Export サービスのドキュメント](../storage/common/storage-import-export-requirements.md#supported-hardware)をご覧ください。
@@ -81,7 +81,7 @@ Azure Backup の次の機能またはワークロードは、オフライン バ
     * **Azure サブスクリプション ID**:Azure ストレージ アカウントを作成する Azure サブスクリプションの ID。
     * **Azure インポート ジョブ名**:ディスクを使用して Azure に送信されたデータを、Azure インポート サービスと Azure Backup が追跡するときに使用する一意の名前。 
   
-   画面で情報を入力し、**[次へ]** をクリックします。 ディスクの準備に必要な情報であるため、指定した "*ステージング場所*" と "*Azure インポート ジョブ名*" を保存します。
+   画面で情報を入力し、 **[次へ]** をクリックします。 ディスクの準備に必要な情報であるため、指定した "*ステージング場所*" と "*Azure インポート ジョブ名*" を保存します。
 
 2. メッセージ表示されたら、Azure サブスクリプションにサインインします。 Azure Backup が Azure Active Directory アプリケーションを作成し、Azure インポート サービスへのアクセスに必要なアクセス許可を提供できるようにするため、サインインする必要があります。
 
@@ -91,7 +91,7 @@ Azure Backup の次の機能またはワークロードは、オフライン バ
 
     ![今すぐバックアップ](./media/backup-azure-backup-import-export/backupnow.png)
 
-4. ウィザードの [確認] ページで、**[バックアップ]** をクリックします。 初期バックアップが、セットアップの一部としてステージング領域に書き込まれます。
+4. ウィザードの [確認] ページで、 **[バックアップ]** をクリックします。 初期バックアップが、セットアップの一部としてステージング領域に書き込まれます。
 
    ![バックアップの準備ができたことを確認する](./media/backup-azure-backup-import-export/backupnow-confirmation.png)
 
@@ -168,7 +168,7 @@ Azure Backup の次の機能またはワークロードは、オフライン バ
 
     ![発送情報の確認](./media/backup-azure-backup-import-export/import-job-found.png)<br/>
 
-4. インポート ジョブの [設定] メニューで、**[発送情報の管理]** をクリックして、返送の詳細を入力します。
+4. インポート ジョブの [設定] メニューで、 **[発送情報の管理]** をクリックして、返送の詳細を入力します。
 
     ![発送情報の格納](./media/backup-azure-backup-import-export/shipping-info.png)<br/>
 

@@ -83,7 +83,7 @@
     - name: プラン
       items:
         - name: Web アプリケーションのアーキテクチャ
-          href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/managed-web-app/'
+          href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/app-service-web-app/basic-web-app'
         - name: VM のアーキテクチャ
           href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/virtual-machines-windows/'
         - name: オンプレミス ネットワークへの接続

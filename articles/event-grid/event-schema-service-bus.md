@@ -9,11 +9,11 @@ ms.topic: reference
 ms.date: 01/17/2019
 ms.author: babanisa
 ms.openlocfilehash: f44d2c1c5be6ac895b6f5ea9feca29c0f8ed09f3
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54467742"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60561763"
 ---
 # <a name="azure-event-grid-event-schema-for-service-bus"></a>Service Bus 用の Azure Event Grid イベント スキーマ
 
@@ -80,27 +80,27 @@ Service Bus から出力されるイベントの種類は次のとおりです�
 
 イベントのトップレベルのデータを次に示します。
 
-| プロパティ | type | 説明 |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
-| topic | 文字列 | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
-| subject | 文字列 | 発行元が定義したイベントの対象のパス。 |
-| eventType | 文字列 | このイベント ソース用に登録されたイベントの種類のいずれか。 |
-| eventTime | 文字列 | プロバイダーの UTC 時刻に基づくイベントの生成時刻。 |
-| id | 文字列 | イベントの一意識別子。 |
-| data | オブジェクト | Blob Storage イベントのデータ。 |
-| dataVersion | 文字列 | データ オブジェクトのスキーマ バージョン。 スキーマ バージョンは発行元によって定義されます。 |
-| metadataVersion | 文字列 | イベント メタデータのスキーマ バージョン。 最上位プロパティのスキーマは Event Grid によって定義されます。 この値は Event Grid によって指定されます。 |
+| topic | string | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
+| subject | string | 発行元が定義したイベントの対象のパス。 |
+| eventType | string | このイベント ソース用に登録されたイベントの種類のいずれか。 |
+| eventTime | string | プロバイダーの UTC 時刻に基づくイベントの生成時刻。 |
+| id | string | イベントの一意識別子。 |
+| data | object | Blob Storage イベントのデータ。 |
+| dataVersion | string | データ オブジェクトのスキーマ バージョン。 スキーマ バージョンは発行元によって定義されます。 |
+| metadataVersion | string | イベント メタデータのスキーマ バージョン。 最上位プロパティのスキーマは Event Grid によって定義されます。 この値は Event Grid によって指定されます。 |
 
 データ オブジェクトには、次のプロパティがあります。
 
-| プロパティ | type | 説明 |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
-| namespaceName | 文字列 | リソースが存在する Service Bus 名前空間。 |
-| requestUri | 文字列 | イベントを生成している特定のキューまたはサブスクリプションの URI。 |
-| entityType | 文字列 | イベントを生成している Service Bus エンティティの種類 (キューまたはサブスクリプション)。 |
-| queueName | 文字列 | キューをサブスクライブしている場合、アクティブなメッセージのあるキュー。 トピック/サブスクリプションを使っている場合は値 null。 |
-| topicName | 文字列 | アクティブなメッセージのある Service Bus サブスクリプションが属しているトピック。 キューを使っている場合は値 null。 |
-| subscriptionName | 文字列 | アクティブなメッセージのある Service Bus サブスクリプション。 キューを使っている場合は値 null。 |
+| namespaceName | string | リソースが存在する Service Bus 名前空間。 |
+| requestUri | string | イベントを生成している特定のキューまたはサブスクリプションの URI。 |
+| entityType | string | イベントを生成している Service Bus エンティティの種類 (キューまたはサブスクリプション)。 |
+| queueName | string | キューをサブスクライブしている場合、アクティブなメッセージのあるキュー。 トピック/サブスクリプションを使っている場合は値 null。 |
+| topicName | string | アクティブなメッセージのある Service Bus サブスクリプションが属しているトピック。 キューを使っている場合は値 null。 |
+| subscriptionName | string | アクティブなメッセージのある Service Bus サブスクリプション。 キューを使っている場合は値 null。 |
 
 ## <a name="next-steps"></a>次の手順
 

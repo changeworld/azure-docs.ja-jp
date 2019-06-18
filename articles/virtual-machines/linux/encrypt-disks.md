@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 10/30/2018
 ms.author: cynthn
 ms.openlocfilehash: 15bd3cf2ab6ea5285662610c2c0a850bb180e2f8
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55658771"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60731619"
 ---
 # <a name="how-to-encrypt-a-linux-virtual-machine-in-azure"></a>Azure で Linux 仮想マシンを暗号化する方法
 

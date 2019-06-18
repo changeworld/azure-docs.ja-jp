@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 1bd049e6f929b6c3247ca1842412d5527605e643
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58669981"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60516595"
 ---
 # <a name="service-movement-cost"></a>サービスの移動コスト
 クラスターに対してどのような変更を行うかを決定するときに Service Fabric Cluster Resource Manager が考慮する要因は、それらの変更のコストです。 "コスト" の概念は、クラスターをどの程度向上させることができるかとのトレードオフです。 コストは、均衡化、デフラグ、およびその他の要件に対応するためにサービスを移動するときに考慮されます。 その目標は、中断が最も少ない方法またはコストがかからない方法で要件を満たすことです。 

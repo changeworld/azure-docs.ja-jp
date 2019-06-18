@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 05/31/2018
 ms.author: cynthn
 ms.openlocfilehash: b7ec3a6919a27633fc36ba7fb1551ead10e06ffe
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55769451"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60542715"
 ---
 # <a name="virtual-machine-vcpu-quotas"></a>仮想マシンの vCPU クォータ
 

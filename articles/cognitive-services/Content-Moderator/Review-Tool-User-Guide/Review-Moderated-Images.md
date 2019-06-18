@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 03/15/2019
 ms.author: sajagtap
 ms.openlocfilehash: a482ecf4a0d321525ab7e392695d2c4c0eebeadc
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58758482"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60629045"
 ---
 # <a name="create-human-reviews"></a>目視レビューを作成する
 
@@ -27,8 +27,8 @@ ms.locfileid: "58758482"
 
 ## <a name="image-reviews"></a>画像のレビュー
 
-1. [レビュー ツール](https://contentmoderator.cognitive.microsoft.com/)に移動し、**[Try]\(試す\)** タブを選択して、レビューするいくつかの画像をアップロードします。
-1. アップロードされた画像の処理が完了したら、**[レビュー]** タブに移動し、**[画像]** を選択します。
+1. [レビュー ツール](https://contentmoderator.cognitive.microsoft.com/)に移動し、 **[Try]\(試す\)** タブを選択して、レビューするいくつかの画像をアップロードします。
+1. アップロードされた画像の処理が完了したら、 **[レビュー]** タブに移動し、 **[画像]** を選択します。
 
     ![Review Image オプションが強調表示されたレビュー ツールを示す Chrome ブラウザー](images/review-images-1.png)
 
@@ -38,7 +38,7 @@ ms.locfileid: "58758482"
 
     ![レビュー用のタグが付いた画像とレビュー ツールが表示された Chrome ブラウザー](images/review-images-2.png)
 
-1. 画像の詳細を表示するには、サムネイル内の省略記号をクリックし、**[詳細の表示]** をクリックします。 **[移動先]** オプションを使用して、サブチームに画像を割り当てることができます (サブチームの詳細については、[チーム](./configure.md#manage-team-and-subteams)に関するセクションを参照してください)。
+1. 画像の詳細を表示するには、サムネイル内の省略記号をクリックし、 **[詳細の表示]** をクリックします。 **[移動先]** オプションを使用して、サブチームに画像を割り当てることができます (サブチームの詳細については、[チーム](./configure.md#manage-team-and-subteams)に関するセクションを参照してください)。
 
     ![[詳細の表示] オプションが強調表示された画像](images/review-images-3.png)
 
@@ -46,7 +46,7 @@ ms.locfileid: "58758482"
 
     ![別のウィンドウにモデレーションの詳細が一覧表示された画像](images/review-images-4.png)
 
-1. タグの割り当てをレビューし、必要に応じて更新したら、**[次へ]** をクリックしてレビューを送信します。 送信後、約 5 秒間は **[前へ]** をクリックして前の画面に戻り、画像をもう一度レビューできます。 その後、画像は送信キューになくなり、**[前へ]** ボタンは使用できなくなります。
+1. タグの割り当てをレビューし、必要に応じて更新したら、 **[次へ]** をクリックしてレビューを送信します。 送信後、約 5 秒間は **[前へ]** をクリックして前の画面に戻り、画像をもう一度レビューできます。 その後、画像は送信キューになくなり、 **[前へ]** ボタンは使用できなくなります。
 
 ## <a name="text-reviews"></a>テキストのレビュー
 

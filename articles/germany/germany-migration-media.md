@@ -10,11 +10,11 @@ ms.date: 08/15/2018
 ms.topic: article
 ms.custom: bfmigrate
 ms.openlocfilehash: 9c1426391edb42ecc3e74ee84649bb69196c45dd
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "58408434"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60686335"
 ---
 # <a name="migrate-media-resources-to-global-azure"></a>メディア リソースをグローバル Azure に移行する
 
@@ -38,7 +38,7 @@ Azure Media Player では、複数のエンドポイントを選択できます�
 
 ## <a name="next-steps"></a>次の手順
 
-次のサービス カテゴリのリソースを移行するためのツール、テクニック、および推奨事項を確認します。
+次のサービス カテゴリのリソースを移行するためのツール、テクニック、および推奨事項について学習します。
 
 - [Compute](./germany-migration-compute.md)
 - [ネットワーク](./germany-migration-networking.md)

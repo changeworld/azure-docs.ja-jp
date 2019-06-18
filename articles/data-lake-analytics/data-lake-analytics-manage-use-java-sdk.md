@@ -10,11 +10,11 @@ ms.assetid: 07830b36-2fe3-4809-a846-129cf67b6a9e
 ms.topic: conceptual
 ms.date: 06/18/2017
 ms.openlocfilehash: f2a4b98404139abead411c20648b82d9081481f9
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230191"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60614989"
 ---
 # <a name="manage-azure-data-lake-analytics-using-a-java-app"></a>Java アプリケーション を使用して Azure Data Lake Analytics を管理する
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -32,8 +32,8 @@ ms.locfileid: "51230191"
 
 ## <a name="create-a-java-application"></a>Java アプリケーションの作成
 1. IntelliJ を開き、**コマンド ライン アプリ** テンプレートを使って Java プロジェクトを作成します。
-2. 画面の左側にあるプロジェクトを右クリックし、 **[フレームワーク サポートの追加]** をクリックします。 **[Maven]** を選択し、**[OK]** をクリックします。
-3. 新しく作成された **"pom.xml"** ファイルを開き、**\</version>** タグと **\</project>** タグの間に、次のテキストのスニペットを追加します。
+2. 画面の左側にあるプロジェクトを右クリックし、 **[フレームワーク サポートの追加]** をクリックします。 **[Maven]** を選択し、 **[OK]** をクリックします。
+3. 新しく作成された **"pom.xml"** ファイルを開き、 **\</version>** タグと **\</project>** タグの間に、次のテキストのスニペットを追加します。
 
 ```
 <repositories>

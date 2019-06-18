@@ -13,11 +13,11 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
 ms.openlocfilehash: fe9098592fcfde2d5e23b78a3e33f2b4ebb9e2dc
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55468650"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60584966"
 ---
 # <a name="use-data-dependent-routing-to-route-a-query-to-appropriate-database"></a>データ依存ルーティングを使用して、クエリを適切なデータベースにルーティングする
 

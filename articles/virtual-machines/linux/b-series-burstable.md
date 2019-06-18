@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 09/07/2017
 ms.author: ayshak
 ms.openlocfilehash: 7cbab5c6b3a724c2219648873fd45ca6bde90339
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59683153"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60731798"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>負荷の急増に対応できる B シリーズ仮想マシンのサイズ
 

@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 01/23/2019
 ms.author: aschhab
 ms.openlocfilehash: 7c5a45504b7c44d97ff2250663ef9c47ef6e3595
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54851557"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60714508"
 ---
 # <a name="service-bus-authentication-and-authorization"></a>Service Bus の認証と承認
 
@@ -41,7 +41,7 @@ SAS を使用するには、名前空間、キュー、トピックで [SharedAc
 * *KeyName*: ルールを識別します。
 * *PrimaryKey*: SAS トークンの署名または検証に使用される暗号化キー。
 * *SecondaryKey*: SAS トークンの署名または検証に使用される暗号化キー。
-* *Rights*: 付与されている**リッスン**、**送信、**、または**管理**権限を表します。
+* *Rights*: 付与されている**リッスン**、**送信、** 、または**管理**権限を表します。
 
 名前空間レベルで構成された承認規則では、対応するキーを使用して署名されたトークンによって、クライアントの名前空間内のすべてのエンティティへのアクセス権を付与できます。 Service Bus の名前空間、キュー、またはトピックでは、このような承認規則を最大 12 個構成できます。 既定では、すべての権限を持つ [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) は、最初にプロビジョニングするときに、各名前空間用に構成されます。
 

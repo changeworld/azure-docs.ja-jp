@@ -12,11 +12,11 @@ ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 01/25/2019
 ms.openlocfilehash: adbccd5f9cfd5ddd1912e304f800f3ebe04912c7
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55453010"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60584802"
 ---
 # <a name="monitor-and-improve-performance"></a>パフォーマンスの監視と向上
 
@@ -40,10 +40,10 @@ Azure SQL Database は、データベース内の潜在的な問題を識別し�
 
 ![パフォーマンス](./media/sql-database-performance/performance.png)
 
-* **[推奨事項]** タイルには、データベースのチューニングに関する推奨事項の内訳が表示されます (推奨事項が 4 つ以上ある場合は、上から 3 番目までが表示されます)。 このタイルをクリックすると、**[[パフォーマンスの推奨事項]](#performance-recommendations)** が表示されます。 
+* **[推奨事項]** タイルには、データベースのチューニングに関する推奨事項の内訳が表示されます (推奨事項が 4 つ以上ある場合は、上から 3 番目までが表示されます)。 このタイルをクリックすると、 **[[パフォーマンスの推奨事項]](#performance-recommendations)** が表示されます。 
 * **[Tuning activity]** タイルには、データベースに対して進行中のチューニング操作と完了したチューニング操作の概要が表示され、チューニング操作の履歴を簡単に確認できます。 このタイルをクリックすると、データベースのチューニング履歴がすべて表示されます。
 * **[Auto-tuning]\(自動チューニング\)** タイルには、データベースの[自動チューニング構成](sql-database-automatic-tuning-enable.md) (データベースに自動的に適用されるチューニング オプション) が表示されます。 このタイルをクリックすると、自動構成のダイアログが開きます。
-* **[Database queries]** タイルには、データベースのクエリ パフォーマンスの概要 (全体的な DTU 使用量と上位のリソース消費に関するクエリ) が表示されます。 このタイルをクリックすると、**[[Query Performance Insight]](#query-performance-insight)** が表示されます。
+* **[Database queries]** タイルには、データベースのクエリ パフォーマンスの概要 (全体的な DTU 使用量と上位のリソース消費に関するクエリ) が表示されます。 このタイルをクリックすると、 **[[Query Performance Insight]](#query-performance-insight)** が表示されます。
 
 ## <a name="performance-recommendations"></a>パフォーマンスに関する推奨事項
 
@@ -73,7 +73,7 @@ Azure SQL データベースでは、[パフォーマンスの推奨事項](sql-
 
   ![パフォーマンス ダッシュボード](./media/sql-database-query-performance/performance.png)
 
-このページの詳細については、**[Query Performance Insight の使用方法](sql-database-query-performance.md)** に関する記事を参照してください。
+このページの詳細については、 **[Query Performance Insight の使用方法](sql-database-query-performance.md)** に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

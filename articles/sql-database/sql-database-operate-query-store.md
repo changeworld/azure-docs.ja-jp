@@ -13,11 +13,11 @@ ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 12/19/2018
 ms.openlocfilehash: 3ceb8569d952f2947870ce7314f869623b2d87f9
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55562948"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60584745"
 ---
 # <a name="operating-the-query-store-in-azure-sql-database"></a>Azure SQL Database のクエリ ストアの動作
 

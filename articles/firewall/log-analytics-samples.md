@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 2/15/2019
 ms.author: victorh
 ms.openlocfilehash: 3f329d3dd4af1faef8f77d08db655cc7d6ef79fd
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59793833"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60461536"
 ---
 # <a name="azure-firewall-log-analytics-samples"></a>Azure Firewall ログ分析のサンプル
 
@@ -22,7 +22,7 @@ ms.locfileid: "59793833"
 
 ## <a name="azure-monitor-logs-view"></a>Azure Monitor ログのビュー
 
-Azure Monitor ログの視覚化の例を構成する方法を次に示します。 視覚化の例は、[azure-docs-json-samples](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-firewall/AzureFirewall.omsview) リポジトリからダウンロードできます。 最も簡単な方法は、このページのハイパーリンクを右クリックし、*[名前を付けてて保存]* を選択し、**AzureFirewall.omsview** のような名前を指定することです。 
+Azure Monitor ログの視覚化の例を構成する方法を次に示します。 視覚化の例は、[azure-docs-json-samples](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-firewall/AzureFirewall.omsview) リポジトリからダウンロードできます。 最も簡単な方法は、このページのハイパーリンクを右クリックし、 *[名前を付けてて保存]* を選択し、**AzureFirewall.omsview** のような名前を指定することです。 
 
 次の手順を実行して、Log Analytics ワークスペースにビューを追加します。
 

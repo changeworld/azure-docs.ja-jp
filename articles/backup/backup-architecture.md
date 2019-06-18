@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: raynew
 ms.openlocfilehash: 98ffe145103b4be04014627ed04d04dcf7542015
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58368959"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60647405"
 ---
 # <a name="azure-backup-architecture"></a>Azure Backup のアーキテクチャ
 
@@ -49,8 +49,8 @@ Recovery Services コンテナーには、次の機能があります。
 - Azure VM とオンプレミスのマシンを含む、コンテナーでバックアップされたアイテムを監視することができます。
 - Azure の[ロールベースのアクセス制御 (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) を使用して、コンテナーのアクセスを管理できます。
 - 冗長性のためにコンテナー内のデータをレプリケートする方法を指定します。
-    - **ローカル冗長ストレージ (LRS)**: データセンターの障害から保護するために、LRS を使用できます。 LRS では、ストレージ スケール ユニットにデータをレプリケートします。 [詳細情報](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs)。
-    - **geo 冗長ストレージ (GRS)**:リージョン全体の障害から保護するために、GRS を使用できます。 GRS ではデータがセカンダリ リージョンにレプリケートされます。 [詳細情報](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs)。 
+    - **ローカル冗長ストレージ (LRS)** : データセンターの障害から保護するために、LRS を使用できます。 LRS では、ストレージ スケール ユニットにデータをレプリケートします。 [詳細情報](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs)。
+    - **geo 冗長ストレージ (GRS)** :リージョン全体の障害から保護するために、GRS を使用できます。 GRS ではデータがセカンダリ リージョンにレプリケートされます。 [詳細情報](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs)。 
     - 既定では、Recovery Services コンテナーでは GRS が使用されます。 
 
 ## <a name="backup-agents"></a>Backup のエージェント

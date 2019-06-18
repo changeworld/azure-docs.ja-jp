@@ -10,11 +10,11 @@ ms.date: 12/09/2016
 ms.author: bburns
 ms.custom: mvc
 ms.openlocfilehash: 6a682c199b40035bfd44fc5611a7d44b49f7b3ab
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52995354"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60712340"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-cluster-with-datadog"></a>(非推奨) DataDog を使用した Azure Container Service クラスターの監視
 
