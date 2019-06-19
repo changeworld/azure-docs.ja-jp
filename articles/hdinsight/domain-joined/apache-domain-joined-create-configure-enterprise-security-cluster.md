@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: howto
 ms.date: 05/09/2019
-ms.openlocfilehash: 5b5b83fe0028e43ca35bf883b29cb71bad6ca2c8
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: 7457c06f9f151cb310704a985c79572c7b770859
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66253698"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67166231"
 ---
 # <a name="create-and-configure-enterprise-security-package-clusters-in-azure-hdinsight"></a>Azure HDInsight で Enterprise セキュリティ パッケージ クラスターを作成および構成する
 
@@ -332,7 +332,7 @@ New-SelfSignedCertificate -Subject hdifabrikam.com `
     $virtualNetwork | Set-AzVirtualNetwork
     ```
 
-1. AADDS をホストしている仮想ネットワーク (`HDIFabrikam-AADDSVNET`) と ESP 対応の HDInsight クラスターをホストする仮想ネットワーク (`HDIFabrikam-HDIVNet `) の間にピア関係を作成します。 これら 2 つの仮想ネットワークをピア接続するには、次の PowerShell コードを使用します。
+1. AADDS をホストしている仮想ネットワーク (`HDIFabrikam-AADDSVNET`) と ESP 対応の HDInsight クラスターをホストする仮想ネットワーク (`HDIFabrikam-HDIVNet`) の間にピア関係を作成します。 これら 2 つの仮想ネットワークをピア接続するには、次の PowerShell コードを使用します。
 
     ```powershell
     Add-AzVirtualNetworkPeering -Name 'HDIVNet-AADDSVNet' -RemoteVirtualNetworkId (Get-AzVirtualNetwork -ResourceGroupName 'HDIFabrikam-CentralUS').Id -VirtualNetwork (Get-AzVirtualNetwork -ResourceGroupName 'HDIFabrikam-WestUS')

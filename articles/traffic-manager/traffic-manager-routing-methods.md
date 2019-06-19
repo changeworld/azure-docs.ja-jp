@@ -2,20 +2,20 @@
 title: Azure Traffic Manager - トラフィックのルーティング方法
 description: この記事では、Traffic Manager で使用されるさまざまなトラフィック ルーティング方法について説明します。
 services: traffic-manager
-author: KumudD
+author: asudbring
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
-ms.author: kumud
-ms.openlocfilehash: 3cabfeda458011c5d3006642085f78dc74f3451e
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.author: allensu
+ms.openlocfilehash: 9068cb0dad742ac6e5eeae0b3a1b801d08d4734c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54054726"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67070991"
 ---
 # <a name="traffic-manager-routing-methods"></a>Traffic Manager のルーティング方法
 
@@ -23,12 +23,12 @@ Azure Traffic Manager では、さまざまなサービス エンドポイント
 
 Traffic Manager では、次のトラフィック ルーティング方法を使用できます。
 
-* **[[優先順位]](#priority):** すべてのトラフィックにプライマリ サービス エンドポイントを使用し、プライマリまたはバックアップ エンドポイントが使用できない場合に備えてバックアップを提供する場合は、**[優先順位]** を選択します。
-* **[[重み付け]](#weighted):** 一連のエンドポイントにまたがって均等に、またはユーザーが定義する重みに従ってトラフィックを分散させる場合は、**[重み付け]** を選択します。
-* **[[パフォーマンス]](#performance):** 地理的にさまざまな場所にエンドポイントがあり、エンド ユーザーがネットワーク待ち時間が最も短いという点で "最も近い" エンドポイントを使用するようにしたい場合は、**[パフォーマンス]** を選択します。
-* **[[Geographic] (地理的)](#geographic):** DNS クエリの発信元の地理的な場所に基づいて、ユーザーを特定の (Azure、外部、または入れ子になった) エンドポイントに割り当てる場合は、**[Geographic] (地理的)** を選択します。 こうすることで、Traffic Manager の利用者は、ユーザーのリージョンを把握し、そのリージョンに基づいてユーザーをルーティングすることが重要なシナリオを実現できます。 データ主権規制、コンテンツおよびユーザー エクスペリエンスのローカライズ、さまざまなリージョンからのトラフィックの測定がその例に挙げられます。
-* **[[複数値]](#multivalue):** エンドポイントとして IPv4/IPv6 アドレスしか持てない Traffic Manager プロファイルの場合は、**[複数値]** を選択します。 このプロファイルに対するクエリが受信されると、正常なエンドポイントがすべて返されます。
-* **[[サブネット]](#subnet):** エンド ユーザーの一連の IP アドレス範囲を Traffic Manager プロファイル内の特定のエンドポイントにマップする場合は、**[サブネット]** のトラフィック ルーティング方法を選択します。 要求が受信されたときに返されるエンドポイントは、その要求の送信元 IP アドレスにマップされているものです。 
+* **[[優先順位]](#priority):** すべてのトラフィックにプライマリ サービス エンドポイントを使用し、プライマリまたはバックアップ エンドポイントが使用できない場合に備えてバックアップを提供する場合は、 **[優先順位]** を選択します。
+* **[[重み付け]](#weighted):** 一連のエンドポイントにまたがって均等に、またはユーザーが定義する重みに従ってトラフィックを分散させる場合は、 **[重み付け]** を選択します。
+* **[[パフォーマンス]](#performance):** 地理的にさまざまな場所にエンドポイントがあり、エンド ユーザーがネットワーク待ち時間が最も短いという点で "最も近い" エンドポイントを使用するようにしたい場合は、 **[パフォーマンス]** を選択します。
+* **[[Geographic] (地理的)](#geographic):** DNS クエリの発信元の地理的な場所に基づいて、ユーザーを特定の (Azure、外部、または入れ子になった) エンドポイントに割り当てる場合は、 **[Geographic] (地理的)** を選択します。 こうすることで、Traffic Manager の利用者は、ユーザーのリージョンを把握し、そのリージョンに基づいてユーザーをルーティングすることが重要なシナリオを実現できます。 データ主権規制、コンテンツおよびユーザー エクスペリエンスのローカライズ、さまざまなリージョンからのトラフィックの測定がその例に挙げられます。
+* **[[複数値]](#multivalue):** エンドポイントとして IPv4/IPv6 アドレスしか持てない Traffic Manager プロファイルの場合は、 **[複数値]** を選択します。 このプロファイルに対するクエリが受信されると、正常なエンドポイントがすべて返されます。
+* **[[サブネット]](#subnet):** エンド ユーザーの一連の IP アドレス範囲を Traffic Manager プロファイル内の特定のエンドポイントにマップする場合は、 **[サブネット]** のトラフィック ルーティング方法を選択します。 要求が受信されたときに返されるエンドポイントは、その要求の送信元 IP アドレスにマップされているものです。 
 
 
 すべての Traffic Manager プロファイルには、エンドポイントの正常性とエンドポイントの自動フェールオーバーの監視が含まれます。 詳細については、 [Traffic Manager のエンドポイント監視](traffic-manager-monitoring.md)に関する記事をご覧ください。 1 つの Traffic Manager プロファイルで使用できるトラフィック ルーティング方法は 1 つに限られます。 プロファイルの別のトラフィック ルーティング方法をいつでも選択できます。 変更は 1 分以内に適用され、ダウンタイムは発生しません。 入れ子になった Traffic Manager プロファイルを使用することで、トラフィック ルーティング方法を組み合わせることができます。 入れ子にすることで、高度で柔軟性のあるトラフィック ルーティング構成が可能になり、より大規模で複雑なアプリケーションのニーズに対応できます。 詳細については、「 [入れ子になった Traffic Manager プロファイル](traffic-manager-nested-profiles.md)」をご覧ください。
@@ -136,7 +136,7 @@ Traffic Manager は DNS クエリの発信元 IP アドレスを読み取り、�
 
 ## <a name="next-steps"></a>次の手順
 
- [Traffic Manager endpoint monitoring](traffic-manager-monitoring.md)
+[Traffic Manager endpoint monitoring](traffic-manager-monitoring.md)
 
 
 

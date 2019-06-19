@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 64accb70561d4c0282b3ee45935d955dba1c67c4
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66474542"
 ---
 # <a name="security-attributes-for-azure-services"></a>Azure サービスのセキュリティ属性
@@ -195,7 +195,7 @@ ms.locfileid: "66474542"
 
 | セキュリティ属性 | はい/いいえ | メモ|
 |---|---|--|
-| Azure 監視サポート (Log analytics や App Insights など)| はい | Log Analytics は、診断ログを通じてサポートされます。 詳細については、Log Analytics を使用した Azure Backup で保護されているワークロードの監視に関するページ (https://azure.microsoft.com/blog/monitor-all-azure-backup-protected-workloads-using-log-analytics/)) を参照してください。 |
+| Azure 監視サポート (Log analytics や App Insights など)| はい | Log Analytics は、診断ログを通じてサポートされます。 詳細については、Log Analytics を使用した Azure Backup で保護されているワークロードの監視に関するページ (https://azure.microsoft.com/blog/monitor-all-azure-backup-protected-workloads-using-log-analytics/) ) を参照してください。 |
 
 ### <a name="identity-and-access-management"></a>ID 管理とアクセス管理
 
