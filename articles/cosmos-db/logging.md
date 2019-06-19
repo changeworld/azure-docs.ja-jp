@@ -8,10 +8,10 @@ ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: seodec18
 ms.openlocfilehash: 67a6eec938a4a18455e4063925e21e26fe362f76
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66243482"
 ---
 # <a name="diagnostic-logging-in-azure-cosmos-db"></a>Azure Cosmos DB での診断ログ 
@@ -266,7 +266,7 @@ Name              : resourceId=/SUBSCRIPTIONS/<subscription-ID>/RESOURCEGROUPS/C
 
 同じストレージ アカウントを使用して複数のリソースのログを収集することができるので、必要な特定の BLOB にアクセスしたり、ダウンロードしたりするには、BLOB 名の完全修飾リソース ID を使うことができます。 その前に、すべての BLOB をダウンロードする方法を説明します。
 
-まず、フォルダーを作成して BLOB をダウンロードします。 例: 
+まず、フォルダーを作成して BLOB をダウンロードします。 例:
 
 ```powershell
 New-Item -Path 'C:\Users\username\ContosoCosmosDBLogs'`
@@ -288,7 +288,7 @@ $blobs | Get-AzStorageBlobContent `
 
 この 2 番目のコマンドを実行すると、BLOB 名に含まれる **/** 区切り記号によって、宛先フォルダーの下にフォルダー構造全体が作成されます。 このフォルダー構造は、BLOB をファイルとしてダウンロードし、保存するために使用されます。
 
-BLOB を選択的にダウンロードするには、ワイルドカードを使用します。 例: 
+BLOB を選択的にダウンロードするには、ワイルドカードを使用します。 例:
 
 * 複数のデータベースを持っている場合に、**CONTOSOCOSMOSDB3** という名前のデータベースのみについてログをダウンロードするには、次のコマンドを使います。
 

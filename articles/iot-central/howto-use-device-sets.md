@@ -3,17 +3,17 @@ title: Azure IoT Central アプリケーションでデバイス セットを使
 description: オペレーターとして、Azure IoT Central アプリケーションでデバイス セットを使用する方法。
 author: ellenfosborne
 ms.author: elfarber
-ms.date: 02/05/2019
+ms.date: 06/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpfr
-ms.openlocfilehash: a28cf68eb449b563d93a139b830752748c448dd6
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 68599a539b3d79b759142d2178aa753f895ea37f
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57759817"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67052947"
 ---
 # <a name="use-device-sets-in-your-azure-iot-central-application"></a>Azure IoT Central アプリケーションでデバイス セットを使用する
 

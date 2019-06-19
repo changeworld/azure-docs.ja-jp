@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 05/15/2019
-ms.openlocfilehash: 0b158a1d713e0de8f3d1b2672aed442fce66e724
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: be07e0f3438ea93312d4eb440e7e63b8f98e11b8
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65917105"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67077375"
 ---
 # <a name="what-is-the-visual-interface-for-azure-machine-learning-service"></a>Azure Machine Learning service 用のビジュアル インターフェイスとは 
 
@@ -27,7 +27,7 @@ Azure Machine Learning service 用のビジュアル インターフェイス (�
 + ワークスペースに示す[実験](#experiment)の成果物を作成する
 + [データセット](#dataset)にアクセスする
 + ワークスペースで[コンピューティング リソース](#compute)を使用して実験を実行する 
-+ [モデル](concept-azure-machine-learning-architecture.md#model)を登録する
++ [モデル](concept-azure-machine-learning-architecture.md#models)を登録する
 + ワークスペース内のコンピューティング リソースでモデルを Web サービスとして[デプロイ](#deployment)する
 
 ![ビジュアル インターフェイスの概要](media/ui-concept-visual-interface/overview.png)

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 0a2e2a3d817140a6ab15dab0093b4025a3bfd76c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 1d78ab917589af0eae72eb70e3cdc2cc751072eb
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58916656"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67076435"
 ---
 # <a name="common-cloud-service-startup-tasks"></a>クラウド サービス共通のスタートアップ タスク
 この記事では、クラウド サービスで実行できる共通のスタートアップ タスクの例を示します。 スタートアップ タスクを使用して、ロールを開始する前の操作を実行できます。 対象となる操作としては、コンポーネントのインストール、COM コンポーネントの登録、レジストリ キーの設定、実行時間の長いプロセスの開始などがあります。 
@@ -73,7 +73,7 @@ ms.locfileid: "58916656"
 ### <a name="example-of-managing-the-error-level"></a>エラー レベルの管理の例
 この例では *Web.config* に JSON 用の圧縮セクションと圧縮エントリを追加し、エラー処理とログ記録を示します。
 
-ここに示す [ServiceDefinition.csdef] ファイルの関連セクションでは、[executionContext](/previous-versions/azure/reference/gg557552(v=azure.100)#Task) 属性を `elevated` に設定し、*AppCmd.exe* に *Web.config* ファイルの設定を変更する十分なアクセス許可を与えます。
+ここに示す [ServiceDefinition.csdef] ファイルの関連セクションでは、[executionContext](/previous-versions/azure/reference/gg557552(v=azure.100)#task) 属性を `elevated` に設定し、*AppCmd.exe* に *Web.config* ファイルの設定を変更する十分なアクセス許可を与えます。
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -328,7 +328,7 @@ string fileContent = System.IO.File.ReadAllText(System.IO.Path.Combine(localStor
 </ServiceDefinition>
 ```
 
-これで、タスクは、**%ComputeEmulatorRunning%** 環境変数をチェックして、ロールがクラウドで実行されるかエミュレーターで実行されるかに基づいて異なるアクションを実行できます。 環境変数をチェックする .cmd シェル スクリプトはこちらです。
+これで、タスクは、 **%ComputeEmulatorRunning%** 環境変数をチェックして、ロールがクラウドで実行されるかエミュレーターで実行されるかに基づいて異なるアクションを実行できます。 環境変数をチェックする .cmd シェル スクリプトはこちらです。
 
 ```cmd
 REM   Check if this task is running on the compute emulator.

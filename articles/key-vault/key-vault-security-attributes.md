@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 1c2265ff5f4c444121bf70c35145703f1b9fe981
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66000193"
 ---
 # <a name="security-attributes-for-azure-key-vault"></a>Azure Key Vault のセキュリティ属性
@@ -50,8 +50,8 @@ ms.locfileid: "66000193"
 
 | セキュリティ属性 | はい/いいえ | メモ|
 |---|---|--|
-| 認証| はい | 認証は Azure Active Directory を介して行われます。 |
-| 承認| はい | Key Vault アクセス ポリシーを使用します。 |
+| Authentication| はい | 認証は Azure Active Directory を介して行われます。 |
+| Authorization| はい | Key Vault アクセス ポリシーを使用します。 |
 
 
 ## <a name="audit-trail"></a>監査証跡

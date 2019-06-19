@@ -8,21 +8,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: a1b816656e019a214e8c0dc72b79575c49d99e68
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 62c9dcc039c68b0b6c8b8bf29ed9f13f88936723
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64719612"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67059543"
 ---
 # <a name="enable-heap-dumps-for-apache-hadoop-services-on-linux-based-hdinsight"></a>Linux ベースの HDInsight で Apache Hadoop サービスのヒープ ダンプを有効にする
 
 [!INCLUDE [heapdump-selector](../../includes/hdinsight-selector-heap-dump.md)]
 
 ヒープ ダンプには、ダンプが作成された時点の変数の値を含む、アプリケーションのメモリのスナップショットが含まれています。 これらは、実行時に発生する問題を診断するのに便利です。
-
-> [!IMPORTANT]  
-> このドキュメントの手順は、Linux を使用する HDInsight クラスターでのみ機能します。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
 ## <a name="whichServices"></a>サービス
 
@@ -112,7 +109,7 @@ HDInsight によって実行されるマップと削減のプロセスに対し�
 
     ![再起動が必要アイコンと [再起動] ボタン](./media/hdinsight-hadoop-heap-dump-linux/restartrequiredicon.png)
 
-6. 再起動が必要な各サービスを選択し、**[サービス アクション]** ボタンを使用して **[メンテナンス モードの有効化]** を選択します。 メンテナンス モードは、再起動したときに、このサービスからアラートが生成されないようにします。
+6. 再起動が必要な各サービスを選択し、 **[サービス アクション]** ボタンを使用して **[メンテナンス モードの有効化]** を選択します。 メンテナンス モードは、再起動したときに、このサービスからアラートが生成されないようにします。
 
     ![[メンテナンス モードの有効化] メニュー](./media/hdinsight-hadoop-heap-dump-linux/maintenancemode.png)
 
@@ -123,5 +120,5 @@ HDInsight によって実行されるマップと削減のプロセスに対し�
    > [!NOTE]  
    > **[再起動]** ボタンのエントリは、サービスによって異なる場合があります。
 
-8. サービスが再開したら、**[サービス アクション]** ボタンを使用して **[メンテナンス モードの無効化]** を選択します。 これにより、Ambari はサービスのアラートの監視を再開します。
+8. サービスが再開したら、 **[サービス アクション]** ボタンを使用して **[メンテナンス モードの無効化]** を選択します。 これにより、Ambari はサービスのアラートの監視を再開します。
 

@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: c26aef777df3ef5c7df6575b8d939a329740a97e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: d3a09ee83d4a1f05781c885eaa708e6e024b7f97
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/17/2019
 ms.locfileid: "64719799"
 ---
 # <a name="monitor-vpn-gateways-with-network-watcher-troubleshooting"></a>Network Watcher のトラブルシューティングを使用した VPN ゲートウェイの監視
@@ -56,7 +56,7 @@ VPN トンネルの接続状態を確認するスクリプトが含まれた Run
 
 ### <a name="step-1"></a>手順 1
 
-[Azure Portal](https://portal.azure.com) で Azure Automation に移動して、**[Runbook]** をクリックします。
+[Azure Portal](https://portal.azure.com) で Azure Automation に移動して、 **[Runbook]** をクリックします。
 
 ![Automation アカウントの概要][1]
 
@@ -82,7 +82,7 @@ VPN トンネルの接続状態を確認するスクリプトが含まれた Run
 
 この手順では Runbook を作成します。次のコード例には、ここで必要なすべてのコードがあります。 \<値\>が含まれたコードの項目は、実際のサブスクリプションの値に置き換える必要があります。
 
-次のコードを使用して、**[保存]** をクリックします。
+次のコードを使用して、 **[保存]** をクリックします。
 
 ```powershell
 # Set these variables to the proper values for your environment
@@ -146,7 +146,7 @@ else
 
 ### <a name="step-6"></a>手順 6.
 
-Runbook を保存したら、スケジュールをそれにリンクして Runbook の開始を自動化する必要があります。 プロセスを開始するには、**[スケジュール]** をクリックします。
+Runbook を保存したら、スケジュールをそれにリンクして Runbook の開始を自動化する必要があります。 プロセスを開始するには、 **[スケジュール]** をクリックします。
 
 ![手順 6.][6]
 
@@ -158,7 +158,7 @@ Runbook を保存したら、スケジュールをそれにリンクして Runbo
 
 ### <a name="step-1"></a>手順 1
 
-**[スケジュール]** ブレードで、**[新しいスケジュールを作成します]** をクリックします。
+**[スケジュール]** ブレードで、 **[新しいスケジュールを作成します]** をクリックします。
 
 ![手順 8.][8]
 
@@ -169,7 +169,7 @@ Runbook を保存したら、スケジュールをそれにリンクして Runbo
 - **[名前]** - スケジュールのフレンドリ名です。
 - **[説明]** - スケジュールの説明。
 - **[開始]** - この値は、スケジュールがトリガーされる時間を構成する、日付、時刻、タイム ゾーンを組み合わせたものです。
-- **[繰り返し]** - この値でスケジュールの繰り返しを指定します。  有効な値は、**[1 回のみ]** と **[定期的]** のいずれかです。
+- **[繰り返し]** - この値でスケジュールの繰り返しを指定します。  有効な値は、 **[1 回のみ]** と **[定期的]** のいずれかです。
 - **[繰り返し間隔]** - 時間、日、週、または月で指定するスケジュールの繰り返し間隔。
 - **[有効期限の設定]** - この値で、スケジュールに有効期限を設けるどうかを指定します。 **[はい]** と **[いいえ]** のいずれかに設定できます。 [はい] を選んだ場合、有効な日付と時刻を入力する必要があります。
 

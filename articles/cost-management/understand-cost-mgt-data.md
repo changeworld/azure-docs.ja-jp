@@ -11,10 +11,10 @@ ms.service: cost-management
 manager: micflan
 ms.custom: ''
 ms.openlocfilehash: f4c296aeefacc9516303ad75dd8b7d67325e38ee
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65969060"
 ---
 # <a name="understand-cost-management-data"></a>Cost Management のデータを理解する
@@ -27,7 +27,7 @@ Cost Management には、すべての使用量と購入の他に、Enterprise Ag
 
 Azure Cost Management で現在サポートされている [Microsoft Azure のプラン](https://azure.microsoft.com/support/legal/offer-details/)を次に示します。  Azure プランとは、ご利用の Azure サブスクリプションの種類です。
 
-| カテゴリ  | **プラン名** | **クォータ ID** | **プラン番号** |
+| Category  | **プラン名** | **クォータ ID** | **プラン番号** |
 | --- | --- | --- | --- |
 | **Azure Germany** | [Azure Germany 従量課金制](https://azure.microsoft.com/offers/ms-azr-de-0003p)      | PayAsYouGo_2014-09-01 | MS-AZR-DE-0003P |
 | **Azure Government** | Azure Government Enterprise                                                         | EnterpriseAgreement_2014-09-01 | MS-AZR-USGOV-0017P |
@@ -51,7 +51,7 @@ Azure Cost Management で現在サポートされている [Microsoft Azure の�
 
 サポート対象外のプランを次の表に示します。
 
-| カテゴリ  | **プラン名** | **クォータ ID** | **プラン番号** |
+| Category  | **プラン名** | **クォータ ID** | **プラン番号** |
 | --- | --- | --- | --- |
 | **クラウド ソリューション プロバイダー (CSP)** | Microsoft Azure                                    | CSP_2015-05-01 | MS-AZR-0145P |
 | **クラウド ソリューション プロバイダー (CSP)** | Azure Government CSP                               | CSP_2015-05-01 | MS-AZR-USGOV-0145P |

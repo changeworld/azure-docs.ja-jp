@@ -11,10 +11,10 @@ ms.date: 03/22/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.openlocfilehash: 94646c41d9894dd00018ff5ca44d76534d35e8c5
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65873262"
 ---
 # <a name="use-azure-stream-analytics-with-sql-data-warehouse"></a>SQL Data Warehouse での Azure Stream Analytics の使用
@@ -34,7 +34,7 @@ Azure Stream Analytics は、待機時間の短縮、高可用性、クラウド
 
 ## <a name="specify-job-output-azure-sql-data-warehouse-database"></a>ジョブの出力の指定:Azure SQL Data Warehouse データベース
 ### <a name="step-1"></a>手順 1
-Stream Analytics ジョブで、ページ上部の **[出力]** をクリックし、**[追加]** をクリックします。
+Stream Analytics ジョブで、ページ上部の **[出力]** をクリックし、 **[追加]** をクリックします。
 
 ### <a name="step-2"></a>手順 2.
 SQL Database を選択します。
@@ -42,12 +42,12 @@ SQL Database を選択します。
 ### <a name="step-3"></a>手順 3.
 次の値を次のページに入力します。
 
-* *[出力のエイリアス]*:このジョブの出力のフレンドリ名を入力します。
+* *[出力のエイリアス]* :このジョブの出力のフレンドリ名を入力します。
 * *サブスクリプション*:
   * SQL Data Warehouse データベースが Stream Analytics ジョブと同じサブスクリプション内に存在する場合は、[現在のサブスクリプションの SQL データベースを使用] を選択します。
   * データベースが別のサブスクリプション内にある場合は、[別のサブスクリプションの SQL データベースを使用] を選択します。
 * *データベース*:宛先データベースの名前を指定します。
-* *[サーバー名]*: 指定したデータベース用のサーバー名を指定します。 これは、Azure Portal を使って見つけることができます。
+* *[サーバー名]* : 指定したデータベース用のサーバー名を指定します。 これは、Azure Portal を使って見つけることができます。
 
 ![][server-name]
 

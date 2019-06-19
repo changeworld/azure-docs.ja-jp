@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 07/12/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 2943a1501e1d81ff4884c21b5aa3861e16523bbb
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: d3e9b3b2db4a4adc01ad3b1f348b66496658f0f5
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65827730"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190930"
 ---
 # <a name="automate-management-tasks-on-azure-virtual-machines-with-the-sql-server-agent-extension-resource-manager"></a>SQL Server Agent 拡張機能 (Resource Manager) による Azure Virtual Machines での管理タスクの自動化
 > [!div class="op_single_selector"]
@@ -54,6 +54,7 @@ VM で SQL Server IaaS Agent 拡張機能を使用するための要件:
 * Windows Server 2012
 * Windows Server 2012 R2
 * Windows Server 2016
+* Windows Server 2019 
 
 **SQL Server のバージョン**:
 
@@ -62,6 +63,7 @@ VM で SQL Server IaaS Agent 拡張機能を使用するための要件:
 * SQL Server 2012
 * SQL Server 2014
 * SQL Server 2016
+* SQL Server 2017
 
 **Azure PowerShell**:
 
@@ -100,7 +102,7 @@ SQL Server の名前付きインスタンスを使用するには、次の手順
    1. Azure portal 内から、IaaS 拡張機能をインストールします。  
 
 ## <a name="status"></a>Status
-拡張機能がインストールされていることを確認する 1 つの方法は、Azure ポータルにエージェントの状態を表示することです。 仮想マシンのウィンドウで **[すべての設定]** を選択し、**[拡張機能]** をクリックします。 **SqlIaasExtension** 拡張機能が一覧表示されます。
+拡張機能がインストールされていることを確認する 1 つの方法は、Azure ポータルにエージェントの状態を表示することです。 仮想マシンのウィンドウで **[すべての設定]** を選択し、 **[拡張機能]** をクリックします。 **SqlIaasExtension** 拡張機能が一覧表示されます。
 
 ![Azure ポータルでの SQL Server IaaS Agent 拡張機能](./media/virtual-machines-windows-sql-server-agent-extension/azure-rm-sql-server-iaas-agent-portal.png)
 

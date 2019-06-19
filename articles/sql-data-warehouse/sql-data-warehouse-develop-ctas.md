@@ -12,10 +12,10 @@ ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seoapril2019
 ms.openlocfilehash: 91de474cc0610099b4264cc6d0dfbd26e8df0618
-ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65851445"
 ---
 # <a name="create-table-as-select-ctas-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse での CREATE TABLE AS SELECT (CTAS)
@@ -127,7 +127,7 @@ DROP TABLE FactInternetSales_old;
 
 CTAS を使用して、下記のサポートされていない多くの機能を回避することもできます。 この方法は、多くの場合、コードが準拠するだけでなく、SQL Data Warehouse 上でより高速に実行されるため、有益です。 このパフォーマンスは、完全並列化設計の結果となります。 シナリオには以下が含まれます。
 
-* ANSI JOINS を使用した UPDATE    
+* ANSI JOINS を使用した UPDATE
 * ANSI JOIN を使用した DELETE
 * MERGE ステートメント
 
@@ -214,7 +214,7 @@ DROP TABLE CTAS_acs
 ;
 ```
 
-## <a name="ansi-join-replacement-for-delete-statements"></a>DELETE ステートメントの代わりに使用する ANSI JOIN 
+## <a name="ansi-join-replacement-for-delete-statements"></a>DELETE ステートメントの代わりに使用する ANSI JOIN
 
 CTAS を使用するのが、データを削除する最適な方法である場合があります。特に、ANSI JOIN 構文が使用される `DELETE` ステートメントの場合です。 これは、SQL Data Warehouse では、`DELETE` ステートメントの `FROM` 句での ANSI JOIN がサポートされていないためです。 データを削除するのではなく、保持したいデータを選択します。
 

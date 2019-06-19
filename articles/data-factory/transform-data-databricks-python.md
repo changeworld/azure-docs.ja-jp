@@ -13,10 +13,10 @@ ms.author: gamal
 ms.reviewer: maghan
 manager: craigg
 ms.openlocfilehash: 3ab3ec5380fbc90dffd4f258073ad8b477e2318a
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66002843"
 ---
 # <a name="transform-data-by-running-a-python-activity-in-azure-databricks"></a>Azure Databricks で Python アクティビティを実行してデータを変換する
@@ -65,12 +65,12 @@ Databricks Python アクティビティのサンプルの JSON 定義を次に�
 |プロパティ|説明|必須|
 |---|---|---|
 |name|パイプラインのアクティビティの名前。|はい|
-|description|アクティビティの動作を説明するテキスト。|いいえ |
+|description|アクティビティの動作を説明するテキスト。|いいえ|
 |type|Databricks Python アクティビティでは、アクティビティの種類は DatabricksSparkPython です。|はい|
 |linkedServiceName|Python アクティビティが実行されている Databricks リンク サービスの名前です。 このリンクされたサービスの詳細については、 [コンピューティングのリンクされたサービス](compute-linked-services.md) に関する記事をご覧ください。|はい|
 |pythonFile|実行される Python ファイルの URI。 DBFS パスのみがサポートされています。|はい|
-|parameters|Python ファイルに渡されるコマンド ライン パラメーター。 文字列の配列です。|いいえ |
-|libraries|ジョブを実行するクラスターにインストールされるライブラリのリスト。 <文字列, オブジェクト> の配列を指定できます。|いいえ |
+|parameters|Python ファイルに渡されるコマンド ライン パラメーター。 文字列の配列です。|いいえ|
+|libraries|ジョブを実行するクラスターにインストールされるライブラリのリスト。 <文字列, オブジェクト> の配列を指定できます。|いいえ|
 
 ## <a name="supported-libraries-for-databricks-activities"></a>databricks アクティビティでサポートされるライブラリ
 

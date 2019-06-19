@@ -9,19 +9,16 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 12/11/2017
 ms.author: hrasheed
-ms.openlocfilehash: b0354803a117e8e2c2382ae888bde94a502f24c6
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 74ccf2af2d379b3c1966543885df6ebe5cf0f47a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64724583"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67059426"
 ---
 # <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>HDInsight Hadoop クラスターに Hue をインストールして使用する
 
 HDInsight クラスターに Hue をインストールし、トンネリングを利用して Hue に要求を送信する方法について学習します。
-
-> [!IMPORTANT]  
-> このドキュメントの手順では、Linux を使用する HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
 ## <a name="what-is-hue"></a>Hue とは
 Hue は Apache Hadoop クラスターとの情報のやりとりに使用される一連の Web アプリケーションです。 Hue を使用すると、Hadoop クラスターに関連付けられているストレージ (HDInsight クラスターでは WASB) を参照したり、Hive ジョブや Pig スクリプトを実行したりすることができます。 HDInsight Hadoop クラスターにインストールした Hue では次のコンポーネントが利用可能です。
@@ -42,7 +39,7 @@ Hue は Apache Hadoop クラスターとの情報のやりとりに使用され�
 
 ## <a name="install-hue-using-script-actions"></a>スクリプト アクションを使用した Hue のインストール
 
-Linux ベースの HDInsight クラスターに Hue をインストールするスクリプトは https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.shにあります。このスクリプトを使用すると、既定のストレージとして Azure Storage Blob (WASB) または Azure Data Lake Storage を使用してクラスターに Hue をインストールできます。
+Linux ベースの HDInsight クラスターに Hue をインストールするスクリプトは https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh にあります。このスクリプトを使用すると、既定のストレージとして Azure Storage Blob (WASB) または Azure Data Lake Storage を使用してクラスターに Hue をインストールできます。
 
 このセクションでは、Azure Portal を使ってクラスターをプロビジョニングする際にこのスクリプトを使用する方法について説明します。
 
@@ -61,13 +58,13 @@ Linux ベースの HDInsight クラスターに Hue をインストールする�
 
     ![Hue のスクリプト アクション パラメーターを指定する](./media/hdinsight-hadoop-hue-linux/hue-script-action.png "Hue のスクリプト アクション パラメーターを指定する")
 
-   * **[名前]**:スクリプト アクションのフレンドリ名を入力します。
-   * **[スクリプト URI]**: https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh
-   * **[ヘッド]**:このオプションをオンにします。
-   * **[ワーカー]**:空白のままにします。
-   * **[Zookeeper]**:空白のままにします。
-   * **[パラメーター]**:空白のままにします。
-3. **[スクリプト アクション]** の下部で、**[選択]** を使用して構成を保存します。 最後に、**[オプションの構成]** ブレードの下部にある **[選択]** を使用して、オプションの構成情報を保存します。
+   * **[名前]** :スクリプト アクションのフレンドリ名を入力します。
+   * **[スクリプト URI]** : https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh
+   * **[ヘッド]** :このオプションをオンにします。
+   * **[ワーカー]** :空白のままにします。
+   * **[Zookeeper]** :空白のままにします。
+   * **[パラメーター]** :空白のままにします。
+3. **[スクリプト アクション]** の下部で、 **[選択]** を使用して構成を保存します。 最後に、 **[オプションの構成]** ブレードの下部にある **[選択]** を使用して、オプションの構成情報を保存します。
 4. 「[Linux の HDInsight クラスターのプロビジョニング](hdinsight-hadoop-provision-linux-clusters.md)」の説明に従って、クラスターのプロビジョニングを続行します。
 
 ## <a name="use-hue-with-hdinsight-clusters"></a>HDInsight クラスターで Hue を使用する
@@ -104,7 +101,7 @@ SSH トンネリングは、実行後、クラスターの Hue にアクセス�
     ![Hue ポータルにログインする](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-login.png "Hue ポータルの資格情報を指定する")
 
 ### <a name="run-a-hive-query"></a>Hive クエリを実行する
-1. Hue ポータルから、**[クエリ エディター]** をクリックし、**[Hive]** をクリックして Hive エディターを開きます。
+1. Hue ポータルから、 **[クエリ エディター]** をクリックし、 **[Hive]** をクリックして Hive エディターを開きます。
 
     ![Hive を使用する](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-use-hive.png "Hive を使用する")
 2. **[支援]** タブの **[データベース]** に **hivesampletable** が表示されるはずです。 これは HDInsight のすべての Hadoop クラスターに含まれるサンプル テーブルです。 右ペインでサンプル クエリを入力します。スクリーン キャプチャに示すように、下のペインの **[結果]** タブに出力が表示されます。

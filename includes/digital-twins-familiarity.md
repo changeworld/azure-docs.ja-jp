@@ -9,11 +9,11 @@ ms.date: 01/09/2019
 ms.author: adgera
 ms.custom: include file
 ms.openlocfilehash: 0d5f483f074f90c51f500e8f8142bb54f9f6bb1e
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66157924"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181818"
 ---
 この記事は、Azure Digital Twins Management API シリーズを使用した認証についてある程度の知識があることを前提としています。
 

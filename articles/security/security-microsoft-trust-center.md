@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: 794c78e6e31c58563b68a58774db90af98a44d95
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 289b9b0cb2532069c01fc9c687c844bd917355f7
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56111035"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "64706296"
 ---
 # <a name="microsoft-trust-center"></a>Microsoft セキュリティ センター
 Azure.com の Azure セキュリティ情報サイトでは、クラウド ソリューションを安全に計画、設計、デプロイ、構成、管理するための情報を提供します。 Microsoft セキュリティ センターでは、サービスを実行する Azure プラットフォームの安全性を確保するために必要な情報も提供します。

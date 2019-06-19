@@ -13,10 +13,10 @@ ms.author: mimart
 ms.reviewer: arvindh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bd84b44c89c856036640757b7760d7c10bd36173
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65824844"
 ---
 # <a name="configure-the-way-end-users-consent-to-an-application-in-azure-active-directory"></a>Azure Active Directory でエンド ユーザーがアプリケーションに同意する方法を構成する
@@ -36,7 +36,7 @@ ms.locfileid: "65824844"
 
 1. 全体管理者、アプリケーション管理者、またはクラウド アプリケーション管理者として [Azure portal](https://portal.azure.com) にサインインします。
 2. 左側のナビゲーション メニューの上部にある **[すべてのサービス]** をクリックします。 **[Azure Active Directory 拡張機能]** が開きます。
-3. フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
+3. フィルター検索ボックスに「**Azure Active Directory**」と入力し、 **[Azure Active Directory]** 項目を選択します。
 4. ナビゲーション メニューで **[エンタープライズ アプリケーション]** をクリックします。
 5. **[管理者の同意の付与]** をクリックします。 アプリケーションを管理するためにサインインするようプロンプトが表示されます。
 6. アプリケーションに対する管理者の同意を付与する権限が与えられているアカウントでサインインします。 

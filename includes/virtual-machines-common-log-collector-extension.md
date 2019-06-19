@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 072864d565e2edbddd4b7df851ad0e30daf7e5fa
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58505763"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181199"
 ---
 Microsoft Azure クラウド サービスに関する問題を診断するためには、仮想マシン上で問題の発生に伴って生成されるクラウド サービスのログ ファイルを収集する必要があります。 AzureLogCollector 拡張機能をオンデマンドで使用し、クラウド サービスの VM (Web ロールと worker ロールの両方) からログを一度に収集して、Azure ストレージ アカウントにその収集したファイルを転送することができます。このとき、リモートから VM にログオンする必要は一切ありません。
 
@@ -20,8 +20,8 @@ Microsoft Azure クラウド サービスに関する問題を診断するため
 
 収集モードは 2 つあり、どちらが使用されるかは、収集するファイルの種類によって異なります。
 
-* **Azure ゲスト エージェント ログのみ (GA)**。 Azure のゲスト エージェントとその他の Azure コンポーネントに関連したすべてのログが対象となります。
-* **すべてのログ (Full)**。 GA モードで収集されるすべてのファイルに加え、次のファイルが収集されます。
+* **Azure ゲスト エージェント ログのみ (GA)** 。 Azure のゲスト エージェントとその他の Azure コンポーネントに関連したすべてのログが対象となります。
+* **すべてのログ (Full)** 。 GA モードで収集されるすべてのファイルに加え、次のファイルが収集されます。
   
   * システムとアプリケーションのイベント ログ
   * HTTP エラー ログ
@@ -31,8 +31,8 @@ Microsoft Azure クラウド サービスに関する問題を診断するため
 
 いずれの収集モードも、次の構造体を使用してデータ収集フォルダーを追加指定できます。
 
-* **[名前]**:収集の名前。収集されたファイルを含む zip ファイル内のサブフォルダーの名前として使用されます。
-* **[場所]**:収集されるファイルがある仮想マシン上のフォルダーのパス。
+* **[名前]** :収集の名前。収集されたファイルを含む zip ファイル内のサブフォルダーの名前として使用されます。
+* **[場所]** :収集されるファイルがある仮想マシン上のフォルダーのパス。
 * **SearchPattern**:収集対象ファイルの名前のパターン。 既定値は "\*" です
 * **Recursive**: 収集されたファイルを、指定された場所で再帰的に配置するかどうか。
 
@@ -181,7 +181,7 @@ param (
 * **Roles**:ロールの一覧 (“WebRole1” または ”WorkerRole1” など)。
 * **Instances**:コンマで区切られたロール インスタンスの名前の一覧。すべてのロール インスタンスを指定するときは、ワイルドカード文字列 (“*”) を使用してください。
 * **Slot**:スロット名。 “Production” または “Staging”。
-* **[モード]**:収集モード。 “Full” または “GA”。
+* **[モード]** :収集モード。 “Full” または “GA”。
 * **StorageAccountName**:収集されたデータを格納するための Azure ストレージ アカウントの名前。
 * **StorageAccountKey**:Azure ストレージ アカウント キーの名前。
 * **AdditionalDataLocationList**:次の構造の一覧:
@@ -261,7 +261,7 @@ param (
 
 * **ServiceName**:クラウド サービス名。
 * **VMName**:VM の名前。
-* **[モード]**:収集モード。 “Full” または “GA”。
+* **[モード]** :収集モード。 “Full” または “GA”。
 * **StorageAccountName**:収集されたデータを格納するための Azure ストレージ アカウントの名前。
 * **StorageAccountKey**:Azure ストレージ アカウント キーの名前。
 * **AdditionalDataLocationList**:次の構造の一覧:

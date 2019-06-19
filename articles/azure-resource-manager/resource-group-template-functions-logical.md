@@ -12,11 +12,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/15/2019
 ms.author: tomfitz
-ms.openlocfilehash: 4684c38fe506ed912c6827f1e60b94b847024347
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 2ccdd337d5c01a0ac0253fe1d1e131fa4e6d51a7
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/17/2019
 ms.locfileid: "65405666"
 ---
 # <a name="logical-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートの論理関数
@@ -41,7 +41,7 @@ Resource Manager には、テンプレートで比較を行うための関数が
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |ブール値 |true かどうかを確認する最初の値。 |
 | arg2 |はい |ブール値 |true かどうかを確認する 2 番目の値。 |
-| 残りの引数 |いいえ  |ブール値 |true かどうかを確認する追加の引数。 |
+| 残りの引数 |いいえ |ブール値 |true かどうかを確認する追加の引数。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -188,15 +188,15 @@ Resource Manager には、テンプレートで比較を行うための関数が
 
 | Name | Type | 値 |
 | ---- | ---- | ----- |
-| yesOutput | String | はい |
-| noOutput | String | × |
+| yesOutput | string | はい |
+| noOutput | string | × |
 | objectOutput | Object | { "test": "value1" } |
 
 次の[テンプレート例](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/conditionWithReference.json)では、条件付きで有効な式限定で、この関数を使用する方法を示しています。
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "vmName": {
@@ -324,7 +324,7 @@ Resource Manager には、テンプレートで比較を行うための関数が
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |ブール値 |true かどうかを確認する最初の値。 |
 | arg2 |はい |ブール値 |true かどうかを確認する 2 番目の値。 |
-| 残りの引数 |いいえ  |ブール値 |true かどうかを確認する追加の引数。 |
+| 残りの引数 |いいえ |ブール値 |true かどうかを確認する追加の引数。 |
 
 ### <a name="return-value"></a>戻り値
 

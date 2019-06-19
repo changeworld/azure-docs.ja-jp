@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 04/29/2019
 ms.author: raynew
 ms.openlocfilehash: 6e31308800f72d60381f1e4ecd540482ba263851
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65969372"
 ---
 # <a name="troubleshoot-the-process-server"></a>プロセス サーバーのトラブルシューティング
@@ -168,7 +168,7 @@ telnet が成功してもプロセス サーバーに到達できないことが
 
   1. プロセス サーバー上で、タスク マネージャーを開きます (Ctrl + Shift + Esc キーを押します)。
   2. **[パフォーマンス]** タブ > **[リソース モニターを開く]** の順に選択します。
-  3. **[リソース モニター]** ページで **[ネットワーク]** タブを選択します。**[Processes with Network Activity]\(ネットワーク活動を伴うプロセス\)** の下で、cbengine.exe により大量の vNotolume データがアクティブに送信されているかどうかを確認します。
+  3. **[リソース モニター]** ページで **[ネットワーク]** タブを選択します。 **[Processes with Network Activity]\(ネットワーク活動を伴うプロセス\)** の下で、cbengine.exe により大量の vNotolume データがアクティブに送信されているかどうかを確認します。
 
        ![ネットワーク活動を処理中のボリューム](./media/vmware-physical-azure-troubleshoot-process-server/cbengine.png)
 
@@ -176,7 +176,7 @@ telnet が成功してもプロセス サーバーに到達できないことが
 
 ## <a name="step-9-check-the-process-server-connection-to-azure-blob-storage"></a>手順 9:プロセス サーバーの Azure Blob Storage への接続の確認
 
-1. リソース モニターで、**[cbengine.exe]** を選択します。
+1. リソース モニターで、 **[cbengine.exe]** を選択します。
 2. **[TCP 接続]** の下で、プロセス サーバーから Azure Storage への接続があるかどうかを確認します。
 
   ![cbengine.exe と Azure Blob Storage の URL 間の接続](./media/vmware-physical-azure-troubleshoot-process-server/rmonitor.png)
@@ -185,7 +185,7 @@ telnet が成功してもプロセス サーバーに到達できないことが
 
 プロセス サーバーから Azure Blob Storage の URL への接続が存在しない場合は、サービスが実行されているかを確認します。
 
-1. コントロール パネルで、**[サービス]** をクリックします。
+1. コントロール パネルで、 **[サービス]** をクリックします。
 2. 次のサービスが実行中であることを確認します。
 
     - cxprocessserver
@@ -199,7 +199,7 @@ telnet が成功してもプロセス サーバーに到達できないことが
 
 ## <a name="step-10-check-the-process-server-connection-to-azure-public-ip-address"></a>手順 10: プロセス サーバーの Azure パブリック IP アドレスへの接続の確認
 
-1. プロセス サーバーで、**%programfiles%\Microsoft Azure Recovery Services Agent\Temp** から最新の CBEngineCurr.errlog ファイルを開きます。
+1. プロセス サーバーで、 **%programfiles%\Microsoft Azure Recovery Services Agent\Temp** から最新の CBEngineCurr.errlog ファイルを開きます。
 2. このファイル内で、**443** または **connection attempt failed** という文字列を検索します。
 
   ![Temp フォルダー内のエラー ログ](./media/vmware-physical-azure-troubleshoot-process-server/logdetails1.png)
@@ -235,7 +235,7 @@ telnet が成功してもプロセス サーバーに到達できないことが
 
     a) **Microsoft Azure Backup** を検索します。
 
-    b) **Microsoft Azure Backup** を開き、**[アクション]** > **[プロパティの変更]** の順に選択します。
+    b) **Microsoft Azure Backup** を開き、 **[アクション]**  >  **[プロパティの変更]** の順に選択します。
 
     c) **[プロキシの構成]** タブで、プロキシのアドレスはレジストリ設定に表示されるプロキシのアドレスと同じでなければなりません。 同じでない場合は、同じアドレスに変更してください。
 

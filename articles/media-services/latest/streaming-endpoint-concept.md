@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 04/27/2019
 ms.author: juliako
 ms.openlocfilehash: 3e1a5d8ba8b6d0ec8e3ec1ba9506a88ee87d8ed1
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66515741"
 ---
 # <a name="streaming-endpoints"></a>ストリーミング エンドポイント 
@@ -79,7 +79,7 @@ IP フィルタリング/G20/カスタム ホスト  <sup>2</sup>|はい|はい
     すべてのデータ センターが Azure CDN 統合をサポートしているわけではありません。 対象のデータ センターで Azure CDN 統合を利用できるかどうかを確認するには、次の操作を行います。
  
   - `cdnEnabled` を true に設定してみます。
-  - - "Streaming endpoint CdnEnabled property cannot be set to true as CDN capability is not available in the current region"\(現在のリージョンで CDN 機能を利用できないため、ストリーミング エンドポイントの cdnEnabled プロパティを true に設定できません\) というメッセージと共に返された `HTTP Error Code 412` (PreconditionFailed) の結果を確認します。 
+  - \- "Streaming endpoint CdnEnabled property cannot be set to true as CDN capability is not available in the current region"\(現在のリージョンで CDN 機能を利用できないため、ストリーミング エンドポイントの cdnEnabled プロパティを true に設定できません\) というメッセージと共に返された `HTTP Error Code 412` (PreconditionFailed) の結果を確認します。 
 
     このエラーが発生した場合、そのデータ センターはサポートされていません。 別のデータ センターをお試しください。
 - `cdnProfile` - `cdnEnabled` が true に設定されている場合は、`cdnProfile` の値を渡すこともできます。 `cdnProfile` は CDN エンドポイントのポイントが作成される、CDN プロファイルの名前です。 既存の cdnProfile を指定するか、新しいものを使用できます。 値が NULL で `cdnEnabled` が true の場合、既定値 "AzureMediaStreamingPlatformCdnProfile" が使用されます。 指定された `cdnProfile` が既に存在する場合、その下にエンドポイントが作成されます。 プロファイルが存在しない場合は、新しいプロファイルが自動的に作成されます。

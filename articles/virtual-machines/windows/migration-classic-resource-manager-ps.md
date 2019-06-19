@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: kasing
-ms.openlocfilehash: 02b3f4b0db46d05751569d465abf09310be91e8a
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 7cc8970e739d2e762fb08e563ef0498948ac8251
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57549775"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "64692888"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-azure-powershell"></a>Azure PowerShell を使用してクラシックから Azure Resource Manager へ IaaS リソースを移行する
 以下の手順では、Azure PowerShell コマンドを使用して、サービスとしてのインフラストラクチャ (IaaS) のリソースをクラシック デプロイ モデルから Azure Resource Manager デプロイ モデルに移行する方法を説明します。
@@ -36,7 +36,7 @@ ms.locfileid: "57549775"
 
 ![Screenshot that shows the migration steps](media/migration-classic-resource-manager/migration-flow.png)
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="step-1-plan-for-migration"></a>手順 1:移行の計画
 ここでは、クラシックから Resource Manager への IaaS リソースの移行を評価するときに推奨できるベスト プラクティスをいくつか紹介します。
@@ -60,8 +60,8 @@ Azure PowerShell をインストールするための主なオプションは 2 
 この移行を実行には、[Azure ポータル](https://portal.azure.com)で自分をサブスクリプションの共同管理者として追加する必要があります。
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. ハブ メニューで、 **[サブスクリプション]** を選択します。 表示されない場合は、**[すべてのサービス]** を選択します。
-3. 適切なサブスクリプションのエントリを検索し、を見て、**[MY ROLE]** (自分のロール) フィールドを確認します。 共同管理者の場合は、この値は _[アカウント管理者]_ です。
+2. ハブ メニューで、 **[サブスクリプション]** を選択します。 表示されない場合は、 **[すべてのサービス]** を選択します。
+3. 適切なサブスクリプションのエントリを検索し、を見て、 **[MY ROLE]** (自分のロール) フィールドを確認します。 共同管理者の場合は、この値は _[アカウント管理者]_ です。
 
 共同管理者を追加できない場合は、サービス管理者またはサブスクリプションの共同管理者に連絡して、追加してもらってください。   
 

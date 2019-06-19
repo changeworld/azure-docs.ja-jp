@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: rimman
 ms.openlocfilehash: 6ccb9afb528edf67b29c781217ca1de97b81e017
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65969205"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>Azure Cosmos DB のデータへのアクセスをセキュリティで保護する
@@ -178,9 +178,9 @@ DocumentClient userClient = new DocumentClient(new Uri(endpointUrl), permList);
 ユーザー アカウントに Azure Cosmos DB アカウントの閲覧者アクセス権を追加するには、サブスクリプションの所有者が Azure Portal で以下の手順を実行します。
 
 1. Azure Portal を開き、Azure Cosmos DB アカウントを選択します。
-2. **[アクセス制御 (IAM)]** タブをクリックし、**[+ ロール割り当ての追加]** をクリックします。
-3. **[ロール割り当ての追加]** ウィンドウの **[ロール]** ボックスで、**[Cosmos DB アカウントの閲覧者ロール]** を選択します。
-4. **[アクセスの割り当て先]** ボックスで、**[Azure AD のユーザー、グループ、またはアプリケーション]** を選択します。
+2. **[アクセス制御 (IAM)]** タブをクリックし、 **[+ ロール割り当ての追加]** をクリックします。
+3. **[ロール割り当ての追加]** ウィンドウの **[ロール]** ボックスで、 **[Cosmos DB アカウントの閲覧者ロール]** を選択します。
+4. **[アクセスの割り当て先]** ボックスで、 **[Azure AD のユーザー、グループ、またはアプリケーション]** を選択します。
 5. ディレクトリで、アクセス権を付与するユーザー、グループ、またはアプリケーションを選択します。  ディレクトリは、表示名、電子メール アドレス、およびオブジェクト識別子を使用して検索できます。
     選択したメンバー、グループ、またはアプリケーションが、選択したメンバー一覧に表示されます。
 6. **[Save]** をクリックします。

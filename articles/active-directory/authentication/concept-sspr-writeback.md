@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 749216d3fe9164857bd4abce7ba7c766e466e7d3
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 2dbf27301e738978e7f03d2423a4d23fd63c97b5
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65823296"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67113497"
 ---
 # <a name="what-is-password-writeback"></a>パスワード ライトバックとは
 
@@ -152,7 +152,6 @@ ms.locfileid: "65823296"
    * 管理者による強制的なパスワード変更 (パスワードの期限切れなど)
    * 管理者により[パスワード リセット ポータル](https://passwordreset.microsoftonline.com)から実行された管理者によるセルフサービスによるパスワードのリセット
    * [Azure Portal](https://portal.azure.com) から管理者が開始したエンドユーザーのパスワードのリセット
-   * [Microsoft 365 管理センター](https://admin.microsoft.com)から管理者が開始したエンドユーザーのパスワードのリセット
 
 ## <a name="unsupported-writeback-operations"></a>サポートされないライトバック操作
 
@@ -162,6 +161,7 @@ ms.locfileid: "65823296"
    * PowerShell バージョン 1、バージョン 2、または Azure AD Graph API を使った、エンドユーザーによるパスワードのリセット
 * **サポートされない管理者の操作**
    * PowerShell バージョン 1、バージョン 2、または Azure AD Graph API から管理者が開始したエンド ユーザーのパスワードのリセット
+   * [Microsoft 365 管理センター](https://admin.microsoft.com)から管理者が開始したエンドユーザーのパスワードのリセット
 
 > [!WARNING]
 > [Active Directory ユーザーとコンピューター] や [Active Directory 管理センター] などのオンプレミスの Active Directory 管理ツールでの [ユーザーは次回ログオン時にパスワードの変更が必要] チェックボックスの使用はサポートされていません。 オンプレミスでパスワードを変更するときは、このオプションをオンにしないでください。

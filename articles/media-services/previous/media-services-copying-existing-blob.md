@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 15d2f16b2c4133e40c7f77390e83504397c47980
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: a1da207a295b40f8d455635d687083bf69e90fdf
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64868151"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67068891"
 ---
 # <a name="copying-existing-blobs-into-a-media-services-asset"></a>既存の BLOB を Media Services 資産にコピーする
 
@@ -311,7 +311,7 @@ namespace CopyExistingBlobsIntoAsset
             // set the .ism file to be the primary file. 
             // If we, for example, copied an .mp4, then the mp4 would be the primary file. 
             var ismAssetFile = asset.AssetFiles.ToList().
-                Where(f => f.Name.EndsWith(".ism", StringComparison.OrdinalIgnoreCase)).ToArray().FirstOrDefault();
+                Where(f => f.Name.EndsWith(".ism", StringComparison.OrdinalIgnoreCase)).FirstOrDefault();
 
             // The following code assigns the first .ism file as the primary file in the asset.
             // An asset should have one .ism file.  

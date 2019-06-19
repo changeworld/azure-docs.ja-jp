@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 683580ba65ad775ccec105c78cc1af66fbb63c37
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: cfbd42a67f9c9d6c66df3787b53575dc9e918e35
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64691874"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67067988"
 ---
 # <a name="understand-and-resolve-errors-received-from-webhcat-on-hdinsight"></a>HDInsight で WebHCat から受信したエラーの説明と解決策
 
@@ -32,8 +32,6 @@ HDInsight で WebHCat を使用しているときに受信するエラーとそ�
 
 * **Linux** クラスターの場合:Apache Ambari (Web または REST API) を使用して値を変更します。 詳細については、「[Apache Ambari を使用した HDInsight の管理](hdinsight-hadoop-manage-ambari.md)」を参照してください
 
-> [!IMPORTANT]  
-> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
 ### <a name="default-configuration"></a>既定の構成
 

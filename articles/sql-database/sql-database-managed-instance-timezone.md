@@ -12,10 +12,10 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 05/22/2019
 ms.openlocfilehash: 8499d99ab82fa89062d74c7dc5db5d7dd11e770c
-ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66016393"
 ---
 # <a name="time-zones-in-azure-sql-database-managed-instance"></a>Azure SQL Database Managed Instance のタイム ゾーン

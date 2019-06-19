@@ -9,10 +9,10 @@ ms.topic: reference
 ms.date: 01/20/2019
 ms.author: babanisa
 ms.openlocfilehash: 4a795221790a9d56bcbfe30a50b0c838fb8d9e56
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66304246"
 ---
 # <a name="azure-event-grid-event-schema"></a>Azure Event Grid イベント スキーマ
@@ -22,7 +22,7 @@ ms.locfileid: "66304246"
 イベント ソースは、複数のイベント オブジェクトを含めることができる配列で Azure Event Grid にイベントを送信します。 Event Grid トピックへイベントを送信する際の、配列の合計サイズの上限は 1 MB です。 配列内の各イベントは 64 KB (一般提供) または 1 MB (プレビュー) に制限されます。 イベントまたは配列がサイズ制限を超えた場合は、 **[413 ペイロードが大きすぎます]** という応答を受信します。
 
 > [!NOTE]
-> 一般提供 (GA) のサービス レベル アグリーメント (SLA) では、最大 64 KB のサイズのイベントが有効範囲に含まれます。 現在、プレビューでサポートされるイベントの最大サイズは 1 MB です。 64 KB を超えるイベントは、64 KB の増分単位で課金されます。 
+> 一般提供 (GA) のサービス レベル アグリーメント (SLA) では、最大 64 KB のサイズのイベントが有効範囲に含まれます。 最大 1 MB のサイズのイベントのサポートは現在、プレビュー段階です。 64 KB を超えるイベントは、64 KB の増分単位で課金されます。 
 
 Event Grid は、1 つのイベントを含む配列でサブスクライバーにイベントを送信します。 この動作は、今後変更される可能性があります。
 

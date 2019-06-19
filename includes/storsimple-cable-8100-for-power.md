@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: db2104020e9478b1fedf68e1c9467f75e16044e2
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66155809"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181212"
 ---
 #### <a name="to-cable-for-power"></a>電源ケーブル接続を行うには
 1. 各 PCM (電源および冷却モジュール) の電源スイッチが OFF の位置になっていることを確認します。

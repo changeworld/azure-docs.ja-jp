@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 922273e3805004f6af068ea748c16f5675810144
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66001456"
 ---
 # <a name="security-attributes-for-azure-storage"></a>Azure Storage のセキュリティ属性
@@ -51,8 +51,8 @@ ms.locfileid: "66001456"
 
 | セキュリティ属性 | はい/いいえ | メモ|
 |---|---|--|
-| 認証| はい | Azure Active Directory、共有キー、共有アクセス トークン。 |
-| 承認| はい | RBAC、POSIX ACL、SAS トークンを使用した承認をサポートします |
+| Authentication| はい | Azure Active Directory、共有キー、共有アクセス トークン。 |
+| Authorization| はい | RBAC、POSIX ACL、SAS トークンを使用した承認をサポートします |
 
 
 ## <a name="audit-trail"></a>監査証跡

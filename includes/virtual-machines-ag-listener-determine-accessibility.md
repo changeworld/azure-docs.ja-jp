@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 8861396db6f6b680ddb55ce020e5579dc25b118e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66165431"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181128"
 ---
 Azure では、可用性グループ リスナーを構成する方法が 2 つあることを理解することが重要です。 これらの方法は、リスナーを作成するときに使用する Azure Load Balancer の種類によって異なります。 次の表で、その違いを説明します。
 

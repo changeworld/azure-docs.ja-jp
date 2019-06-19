@@ -9,10 +9,10 @@ ms.date: 05/20/2019
 ms.reviewer: sngun
 ms.custom: seodec18
 ms.openlocfilehash: 51a554586c67842ead40cd4a1bfaaa51bbdd8a18
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65954401"
 ---
 # <a name="change-feed-in-azure-cosmos-db---overview"></a>Azure Cosmos DB の変更フィード - 概要
@@ -35,10 +35,10 @@ Azure Cosmos DB の変更フィードにより、次の図のようにこれら�
 
 | **クライアント ドライバー** | **Azure CLI** | **SQL API** | **Cassandra API** | **Azure Cosmos DB の MongoDB 用 API** | **Gremlin API**|**テーブル API** |
 | --- | --- | --- | --- | --- | --- | --- |
-| .NET | NA | はい | いいえ  | いいえ  | はい | いいえ  |
-|Java|NA|はい|いいえ |いいえ |はい|いいえ |
-|Python|NA|はい|いいえ |いいえ |はい|いいえ |
-|Node/JS|NA|はい|いいえ |いいえ |はい|いいえ |
+| .NET | NA | はい | いいえ | いいえ | はい | いいえ |
+|Java|NA|はい|いいえ|いいえ|はい|いいえ|
+|Python|NA|はい|いいえ|いいえ|はい|いいえ|
+|Node/JS|NA|はい|いいえ|いいえ|はい|いいえ|
 
 ## <a name="change-feed-and-different-operations"></a>変更フィードとさまざまな操作
 

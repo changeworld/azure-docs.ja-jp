@@ -3,20 +3,20 @@ title: Docker コンテナーの設定
 titleSuffix: Language Understanding - Azure Cognitive Services
 description: LUIS コンテナーのランタイム環境は、`docker run` コマンドの引数を使用して構成されます。 LUIS には、いくつかの必須の設定と省略可能な設定があります。
 services: cognitive-services
-author: diberry
+author: IEvangelist
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/23/2019
-ms.author: diberry
-ms.openlocfilehash: afd29c1689d6d467a42a7c3c60f9a1dccd1a66f0
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.date: 06/11/2019
+ms.author: dapine
+ms.openlocfilehash: 4a9f7762b7960c74acad8203f70bc1e7c7cbd90f
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66242612"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67063222"
 ---
 # <a name="configure-language-understanding-docker-containers"></a>Language Understanding の Docker コンテナーの構成 
 
@@ -30,7 +30,7 @@ ms.locfileid: "66242612"
 |--|--|--|
 |はい|[ApiKey](#apikey-setting)|課金情報の追跡に使用されます。|
 |いいえ|[ApplicationInsights](#applicationinsights-setting)|[Azure Application Insights](https://docs.microsoft.com/azure/application-insights) テレメトリ サポートをお客様のコンテナーに追加できます。|
-|はい|[課金](#billing-setting)|Azure 上のサービス リソースのエンドポイント URI を指定します。|
+|はい|[Billing](#billing-setting)|Azure 上のサービス リソースのエンドポイント URI を指定します。|
 |はい|[Eula](#eula-setting)| コンテナーのライセンスに同意していることを示します。|
 |いいえ|[Fluentd](#fluentd-settings)|ログと (必要に応じて) メトリック データを Fluentd サーバーに書き込みます。|
 |いいえ|[HTTP プロキシ](#http-proxy-credentials-settings)|送信要求を行うために、HTTP プロキシを構成します。|
@@ -69,7 +69,7 @@ ms.locfileid: "66242612"
 
 |必須| Name | データ型 | 説明 |
 |--|------|-----------|-------------|
-|はい| `Billing` | String | 課金エンドポイント URI<br><br>例:<br>`Billing=https://westus.api.cognitive.microsoft.com/luis/v2.0` |
+|はい| `Billing` | string | 課金エンドポイント URI<br><br>例:<br>`Billing=https://westus.api.cognitive.microsoft.com/luis/v2.0` |
 
 ## <a name="eula-setting"></a>Eula 設定
 
@@ -101,8 +101,8 @@ LUIS コンテナーでは、トレーニングやサービスのデータを格
 
 |必須| Name | データ型 | 説明 |
 |-------|------|-----------|-------------|
-|はい| `Input` | String | 入力マウントのターゲット。 既定値は `/input` です。 これは LUIS パッケージ ファイルの保存先です。 <br><br>例:<br>`--mount type=bind,src=c:\input,target=/input`|
-|いいえ| `Output` | String | 出力マウントのターゲット。 既定値は `/output` です。 これはログの保存先です。 LUIS のクエリ ログやコンテナー ログが含まれます。 <br><br>例:<br>`--mount type=bind,src=c:\output,target=/output`|
+|はい| `Input` | string | 入力マウントのターゲット。 既定値は `/input` です。 これは LUIS パッケージ ファイルの保存先です。 <br><br>例:<br>`--mount type=bind,src=c:\input,target=/input`|
+|いいえ| `Output` | string | 出力マウントのターゲット。 既定値は `/output` です。 これはログの保存先です。 LUIS のクエリ ログやコンテナー ログが含まれます。 <br><br>例:<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>docker run コマンドの例
 
@@ -110,7 +110,7 @@ LUIS コンテナーでは、トレーニングやサービスのデータを格
 
 * これらの例では、Windows 上のアクセス許可の競合を防ぐために、`c:` ドライブのディレクトリを使用しています。 特定のディレクトリを入力ディレクトリとして使用する必要がある場合は、Docker サービスのアクセス許可の付与が必要なことがあります。 
 * Docker コンテナーについて高度な知識がある場合を除き、引数の順序は変更しないでください。
-* 別のオペレーティング システムを使用している場合は、正しいコンソール/ターミナル、マウント用のフォルダー構文、およびシステムの行連結文字を使用してください。 これらの例では、行連結文字 `^` を使用した Windows コンソールを想定しています。 コンテナーは Linux オペレーティング システムであるため、ターゲット マウントでは Linux スタイルのフォルダー構文を使用します。
+* 別のオペレーティング システムを使用している場合は、正しいコンソール/ターミナル、マウント用のフォルダー構文、ご利用のシステムの行連結文字を使用します。 これらの例では、行連結文字 `^` を使用した Windows コンソールを想定しています。 コンテナーは Linux オペレーティング システムであるため、ターゲット マウントでは Linux スタイルのフォルダー構文を使用します。
 
 次の表に示したように、URL には、忘れずに `luis/v2.0` ルーティングを含めてください。
 

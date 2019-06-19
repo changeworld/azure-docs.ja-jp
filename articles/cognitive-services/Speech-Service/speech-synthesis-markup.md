@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 9871e0106ee6caf11c5a1e24459fbd2044f5f3d7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a748250a25c483f61489351943e8ef29a5d5edbe
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65021436"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165066"
 ---
 # <a name="speech-synthesis-markup-language-ssml"></a>音声合成マークアップ言語 (SSML)
 
@@ -42,7 +42,7 @@ ms.locfileid: "65021436"
 | `en-US-JessaNeural` | type=`cheerful` | ポジティブで幸せな感情を示します |
 | | type=`empathy` | 思いやりと理解を示します |
 | `zh-CN-XiaoxiaoNeural` | type=`newscast` | ニュース放送に似たフォーマルなトーンを示します |
-| | type=`sentiment ` | 感動的なメッセージやストーリーを伝えます |
+| | type=`sentiment` | 感動的なメッセージやストーリーを伝えます |
 
 ```xml
 <speak version='1.0' xmlns="https://www.w3.org/2001/10/synthesis" xmlns:mstts="https://www.w3.org/2001/mstts" xml:lang="en-US">

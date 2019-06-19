@@ -7,36 +7,33 @@ ms.reviewer: kgremban
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 03/29/2019
+ms.date: 06/12/2019
 ms.author: gregman
-ms.openlocfilehash: be7479d3f042d6e64428a07e0509907b78595200
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 9e3f7e3b23cba3fab87ee35aa2a15b6305d9ece4
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65157909"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67054178"
 ---
 # <a name="run-azure-iot-edge-on-windows-server-virtual-machines"></a>Windows Server 仮想マシンで Azure IoT Edge を実行する
 Azure IoT Edge ランタイムを使用すると、デバイスを IoT Edge デバイスに変えることができます。 このランタイムは、Raspberry Pi のような小型デバイスにも、産業用サーバーのような大型デバイスにもデプロイすることができます。 IoT Edge ランタイムを使用してデバイスを構成すると、クラウドからデバイスへのビジネス ロジックのデプロイを開始できます。
 
 IoT Edge ランタイムの動作とランタイムに含まれるコンポーネントについては、「[Azure IoT Edge ランタイムとそのアーキテクチャの概要](iot-edge-runtime.md)」を参照してください。
 
-この記事では、[Windows Server](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.WindowsServer?tab=Overview) Azure Marketplace オファーを使用して Windows Server 2019 仮想マシンで Azure IoT Edge ランタイムを実行する手順を紹介します。 他のバージョンで使用する場合は、Windows に [Azure IoT Edge ランタイムをインストール](how-to-install-iot-edge-windows.md)する手順に従ってください。
-
-> [!NOTE]
-> Windows Server 上の IoT Edge ランタイムは、[パブリック プレビュー](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)段階にあります。
+この記事では、[Windows Server](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview) Azure Marketplace オファーを使用して Windows Server 2019 仮想マシンで Azure IoT Edge ランタイムを実行する手順を紹介します。 他のバージョンで使用する場合は、Windows に [Azure IoT Edge ランタイムをインストール](how-to-install-iot-edge-windows.md)する手順に従ってください。
 
 ## <a name="deploy-from-the-azure-marketplace"></a>Azure Marketplace からデプロイする
-1.  [Windows Server](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.WindowsServer?tab=Overview) Azure Marketplace オファーに移動するか、[Azure Marketplace](https://azuremarketplace.microsoft.com/) で “Windows Server” を検索します。
+1.  [Windows Server](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview) Azure Marketplace オファーに移動するか、[Azure Marketplace](https://azuremarketplace.microsoft.com/) で “Windows Server” を検索します。
 2.  **[今すぐ入手する]** を選択します。 
 3.  **ソフトウェア プラン**で、「Windows Server 2019 Datacenter Server Core with Containers」を検索し、次のダイアログで **[続行]** を選択します。
     * 他のバージョンの Windows Server with Containers でこれらの手順を使用することもできます。
-4.  Azure portal に移動したら、**[作成]** を選択し、ウィザードに従って VM をデプロイします。 
+4.  Azure portal に移動したら、 **[作成]** を選択し、ウィザードに従って VM をデプロイします。 
     *   VM を初めて試す場合は、パスワードを使用し、パブリック受信ポート メニューで RDP と SSH を有効にするのが最も簡単です。 
     *   リソース消費の激しいワークロードがある場合は、CPU やメモリを追加して、仮想マシンのサイズをアップグレードしてください。
 5.  仮想マシンがデプロイされたら、IoT Hub に接続するように構成します。
     1.  IoT Hub で作成された IoT Edge デバイスから、デバイス接続文字列をコピーします (このプロセスに詳しくない場合は、[Azure portal から新しい Azure IoT Edge デバイスを登録する](how-to-register-device-portal.md)方法のハウツー ガイドをご覧ください)
-    1.  Azure portal から新しく作成された仮想マシン リソースを選択し、**[実行コマンド]** オプションを開きます
+    1.  Azure portal から新しく作成された仮想マシン リソースを選択し、 **[実行コマンド]** オプションを開きます
     1.  **[RunPowerShellScript]** オプションを選択します
     1.  使用するデバイスの接続文字列を使用して、下記のスクリプトをコマンド ウィンドウにコピーします。 
         ```powershell
@@ -49,7 +46,7 @@ IoT Edge ランタイムの動作とランタイムに含まれるコンポー�
 
 ## <a name="deploy-from-the-azure-portal"></a>Azure portal からデプロイする
 1. Azure portal で "Windows Server" を検索し、**Windows Server 2019 Datacenter** を選択して VM の作成ワークフローを開始します。 
-2. **ソフトウェア プランの選択**で、"Windows Server 2019 Datacenter Server Core with Containers" を選択してから、**[作成]** を選択します。
+2. **ソフトウェア プランの選択**で、"Windows Server 2019 Datacenter Server Core with Containers" を選択してから、 **[作成]** を選択します。
 3. 上記の説明の「Azure Marketplace からデプロイする」にある手順 5 を実行します。
 
 ## <a name="deploy-from-azure-cli"></a>Azure CLI からデプロイする

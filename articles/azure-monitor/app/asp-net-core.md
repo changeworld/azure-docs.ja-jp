@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: mbullwin
-ms.openlocfilehash: cb7ace20fd0a59dafff3d7f8240f54c3c8e12492
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 2da253c058329b80c6175b9066b76816940dc3d5
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66226395"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67154006"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights for ASP.NET Core アプリケーション
 
@@ -59,7 +59,7 @@ ms.locfileid: "66226395"
 
     ```xml
         <ItemGroup>
-          <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.6.1" />
+          <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.7.0" />
         </ItemGroup>
     ```
 
@@ -352,7 +352,7 @@ public class HomeController : Controller
 
 ### <a name="i-have-an-aspnet-core-20-application-isnt-application-insights-automatically-enabled-without-me-doing-anything"></a>ASP.NET Core 2.0 アプリケーションを持っています。 何もしなくても Application Insights は自動的に有効になりますか。
 
-`Microsoft.AspNetCore.All` 2.0 メタパッケージには、Application Insights SDK (バージョン 2.1.0) が含まれていました。そして、アプリケーションを Visual Studio デバッガーの下で実行すると、Visual Studio は Application Insights を有効にし、テレメトリを IDE 自体にローカルに表示します。 テレメトリは、インストルメンテーション キーが明示的に指定されない限り、Application Insights サービスに送信されませんでした。 2.0 アプリについても、この記事の指示に従って Application Insights を有効にすることをお勧めします。
+`Microsoft.AspNetCore.All` 2.0 メタパッケージには、Application Insights SDK (バージョン 2.1.0) が含まれていました。そして、アプリケーションを Visual Studio デバッガーの下で実行すると、Visual Studio は Application Insights を有効にし、テレメトリを IDE 自体にローカルに表示します。 テレメトリは、インストルメンテーション キーが明示的に指定されない限り、Application Insights サービスに送信されませんでした。 2\.0 アプリについても、この記事の指示に従って Application Insights を有効にすることをお勧めします。
 
 ### <a name="i-run-my-application-in-linux-are-all-features-supported-in-linux-as-well"></a>Linux でアプリケーションを実行しています。 Linux でもすべての機能がサポートされていますか?
 

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: mavoge
 ms.openlocfilehash: 03b5693fe016cfb11d6f685f9088fe6e94f03b90
-ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66688600"
 ---
 # <a name="enable-multitenant-applications-with-azure-digital-twins"></a>Azure Digital Twins でマルチテナント アプリケーションを有効にする

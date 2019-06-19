@@ -8,10 +8,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/24/2019
 ms.openlocfilehash: cfbd68e66730fc338130bc16849fe0b2f4abd6be
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66244404"
 ---
 # <a name="os-patching-for-hdinsight"></a>HDInsight 用の OS の修正プログラム 
@@ -32,7 +32,7 @@ HDInsight クラスターの仮想マシンは、重要なセキュリティ更�
 ## <a name="how-to-use-the-script"></a>スクリプトの使用方法 
 
 このスクリプトを使用するには、次の情報が必要です。
-1. スクリプトの場所: https://hdiconfigactions.blob.core.windows.net/linuxospatchingrebootconfigv02/os-patching-reboot-config.sh。HDInsight では、この URI を使用してクラスター内のすべての仮想マシンでスクリプトを検索して実行します。
+1. スクリプトの場所: https://hdiconfigactions.blob.core.windows.net/linuxospatchingrebootconfigv02/os-patching-reboot-config.sh 。HDInsight では、この URI を使用してクラスター内のすべての仮想マシンでスクリプトを検索して実行します。
   
 2. スクリプトが適用されるクラスター ノードの種類: headnode、workernode、zookeeper。 このスクリプトは、クラスター内のすべてのノードの種類に適用する必要があります。 ノードの種類に適用しないと、そのノードの種類の仮想マシンは更新されません。
 

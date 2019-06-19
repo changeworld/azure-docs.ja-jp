@@ -2,20 +2,20 @@
 title: Azure Traffic Manager のメトリックとアラート
 description: この記事では、Azure の Traffic Manager で使用できるメトリックについて説明します。
 services: traffic-manager
-author: KumudD
+author: asudbring
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/11/2018
-ms.author: kumud
-ms.openlocfilehash: 1c0c48efc7abf4b810e92b5cd04d1538577c71d3
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: allensu
+ms.openlocfilehash: e689398a38030a712ec6beb651131d0424e44476
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59268287"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67071117"
 ---
 # <a name="traffic-manager-metrics-and-alerts"></a>Traffic Manager のメトリックとアラート
 

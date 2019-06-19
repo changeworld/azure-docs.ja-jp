@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 3/28/2019
 ms.author: v-mohabe
 ms.openlocfilehash: b07a89491343220c5c3411b5fc525f9b43f54e30
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65968471"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>Just-In-Time を使用した仮想マシン アクセスの管理
@@ -59,7 +59,7 @@ Just-In-Time が有効になっている場合、Security Center では NSG ル�
 
 1. **[Security Center]** ダッシュボードを開きます。
 
-2. 左のウィンドウで、**[Just-in-time VM access] (Just-In-Time VM アクセス)** を選択します。
+2. 左のウィンドウで、 **[Just-in-time VM access] (Just-In-Time VM アクセス)** を選択します。
 
 ![[Just-in-time VM access] (Just-In-Time VM アクセス) タイル](./media/security-center-just-in-time/just-in-time.png)
 
@@ -91,7 +91,7 @@ Just-In-Time が有効になっている場合、Security Center では NSG ル�
       - 3389 - RDP
       - 5985 - WinRM 
       - 5986 - WinRM
-   2. カスタム ポートを構成することもできます。 これを行うには、**[追加]** を選択します。 
+   2. カスタム ポートを構成することもできます。 これを行うには、 **[追加]** を選択します。 
    3. **[ポート構成の追加]** で、既定でもカスタムでも構成するポートごとに、以下の設定をカスタマイズできます。
       - **[プロトコルの種類]** - 要求が承認されたときにこのポートで許可されるプロトコル。
       - **[Allowed source IP addresses] (許可されるソース IP アドレス)** - 要求が承認されたときにこのポートで許可される IP 範囲。
@@ -107,7 +107,7 @@ Just-In-Time が有効になっている場合、Security Center では NSG ル�
 ### <a name="request-jit-access-to-a-vm"></a>VM への JIT アクセスを要求する
 
 VM へのアクセス権を要求するには、以下の手順に従います。
-1.  **[Just-in-time VM access] (Just-In-Time VM アクセス)** で、**[構成済み]** を選択します。
+1.  **[Just-in-time VM access] (Just-In-Time VM アクセス)** で、 **[構成済み]** を選択します。
 2.  **[VM]** で、Just-In-Time アクセスを有効にする VM を確認します。
 3.  **[アクセス権の要求]** を選択します。 
   ![VM へのアクセス権を要求する](./media/security-center-just-in-time/request-access-to-a-vm.png)
@@ -134,7 +134,7 @@ VM の既存の Just-In-Time ポリシーを編集するには:
 ### <a name="configuring-a-just-in-time-access-policy"></a>Just-In-Time アクセス ポリシーの構成 
 VM への Just-In-Time アクセスのロールアウトを容易にするには、VM 内からの直接的な Just-In-Time アクセスのみを許可するように VM を設定できます。
 
-1. Azure portal で、**[仮想マシン]** を選択します。
+1. Azure portal で、 **[仮想マシン]** を選択します。
 2. Just-In-Time アクセスに制限する仮想マシンをクリックします。
 3. メニューで **[構成]** をクリックします。
 4. **[Just-In-Time アクセス]** で **[Just-In-Time ポリシーを有効にする]** をクリックします。 
@@ -162,10 +162,10 @@ Azure portal では、VM に接続しようとすると、Azure は、Just-In-Ti
 
   ![JIT プロンプト](./media/security-center-just-in-time/jit-prompt.png)
 
-- VM 上で JIT を構成している場合、**[アクセスの要求]** をクリックして、その VM 用に設定された JIT ポリシーに従ってアクセス可能にすることができます。 アクセスは、次の規定のパラメーターを使用して要求します。
+- VM 上で JIT を構成している場合、 **[アクセスの要求]** をクリックして、その VM 用に設定された JIT ポリシーに従ってアクセス可能にすることができます。 アクセスは、次の規定のパラメーターを使用して要求します。
     - **接続元 IP アドレス**:"任意" (*) (変更できません)
     - **時間範囲**:3 時間 (変更できません)
-    - **ポート番号**: Windows の場合は RDP ポート 3389/Linux の場合はポート 22 (ポート番号は、**[仮想マシンに接続する]** ダイアログ ボックスで変更できます。)
+    - **ポート番号**: Windows の場合は RDP ポート 3389/Linux の場合はポート 22 (ポート番号は、 **[仮想マシンに接続する]** ダイアログ ボックスで変更できます。)
 
 
   >![JIT のアクセスの要求](./media/security-center-just-in-time/jit-request-access.png)
@@ -174,7 +174,7 @@ Azure portal では、VM に接続しようとすると、Azure は、Just-In-Ti
 
 ログ検索を使用して VM アクティビティについての情報が得ることができます。 ログを表示するには、以下の手順に従います。
 
-1. **[Just-in-time VM access] (Just-In-Time VM アクセス)** で、**[構成済み]** タブを選択します。
+1. **[Just-in-time VM access] (Just-In-Time VM アクセス)** で、 **[構成済み]** タブを選択します。
 2. **[VM]** で、情報を表示する VM の行内にある 3 つの点をクリックしてその VM を選択します。 メニューが開きます。
 3. メニューで **[アクティビティ ログ]** を選択します。 **[アクティビティ ログ]** が開きます。
 
@@ -184,7 +184,7 @@ Azure portal では、VM に接続しようとすると、Azure は、Just-In-Ti
 
 **[すべての項目を csv としてダウンロードするにはここをクリックしてください。]** を選択すると、ログ情報をダウンロードできます。
 
-フィルターを変更し、**[適用]** を選択して検索ログを作成します。
+フィルターを変更し、 **[適用]** を選択して検索ログを作成します。
 
 
 ## <a name="permissions-needed-to-configure-and-use-jit"></a>JIT を構成および使用するために必要なアクセス許可

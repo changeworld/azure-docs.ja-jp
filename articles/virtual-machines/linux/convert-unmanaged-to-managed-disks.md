@@ -17,10 +17,10 @@ ms.date: 12/15/2017
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: eb6a5ed74073a1a31fc9bb1972266e76c7bc2782
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66418472"
 ---
 # <a name="convert-a-linux-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Linux 仮想マシンを非管理対象ディスクからマネージド ディスクに変換する
@@ -34,7 +34,7 @@ ms.locfileid: "66418472"
 
 [!INCLUDE [virtual-machines-common-convert-disks-considerations](../../../includes/virtual-machines-common-convert-disks-considerations.md)]
 
-* 変換前の VM で使用されていた元の VHD とストレージ アカウントは削除されません。 その後も料金が発生します。 これらのアーティファクトに対して課金されないように、変換が完了したことを確認したら、元の VHD BLOB は削除してください。 削除するためにこれらのアタッチされていないディスクを探す必要がある場合は、「[接続されていない Azure マネージド ディスクおよびアンマネージド ディスクを見つけて削除する](find-unattached-disks.md)」をご覧ください。
+* 変換前の VM で使用されていた元の VHD とストレージ アカウントは削除されません。 その後も料金が発生します。 これらのアーティファクトに対して課金されないように、変換が完了したことを確認したら、元の VHD BLOB は削除してください。 削除するためにこれらのアタッチされていないディスクを探す必要がある場合は、「[Find and delete unattached Azure managed and unmanaged disks (接続されていない Azure マネージド ディスクおよびアンマネージド ディスクを見つけて削除する)](find-unattached-disks.md)」を参照してください。
 
 ## <a name="convert-single-instance-vms"></a>単一インスタンスの VM を変換する
 このセクションでは、単一インスタンスの Azure VM を非管理対象ディスクからマネージド ディスクに変換する方法について説明します。 (VM が可用性セットに含まれている場合は次のセクションを参照してください。)このプロセスを使用して、VM を非管理対象の Premium (SSD) ディスクから Premium マネージド ディスクに、または非管理対象の標準 (HDD) ディスクから標準マネージド ディスクに変換できます。

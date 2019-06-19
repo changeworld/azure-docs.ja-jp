@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cffef4028a684e27c0941c234df551d844f13420
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65896868"
 ---
 # <a name="azure-ad-activity-logs-in-azure-monitor"></a>Azure Monitor の Azure AD アクティビティ ログ
@@ -78,9 +78,9 @@ Azure Active Directory (Azure AD) のアクティビティ ログを複数のエ
 
 | ログのカテゴリ | ユーザーの数 | 1 日あたりのイベント | 1 か月あたりのデータ量 (概算) | 1 か月あたりのコスト (概算) | 1 年あたりのコスト (概算) |
 |--------------|-----------------|----------------------|--------------------------------------|----------------------------|---------------------------|
-| Audit | 100,000 | 150 万&nbsp; | 90 GB | 1.93 ドル | 23.12 ドル |
-| Audit | 1,000 | 15,000 | 900 MB | 0.02 ドル | 0.24 ドル |
-| サインイン | 1,000 | 34,800 | 4 GB | 0.13 ドル | 1.56 ドル |
+| Audit | 100,000 | 150 万&nbsp; | 90 GB | 1\.93 ドル | 23.12 ドル |
+| Audit | 1,000 | 15,000 | 900 MB | 0\.02 ドル | 0\.24 ドル |
+| サインイン | 1,000 | 34,800 | 4 GB | 0\.13 ドル | 1\.56 ドル |
 | サインイン | 100,000 | 1,500 万&nbsp; | 1.7 TB | 35.41 ドル | 424.92 ドル |
  
 

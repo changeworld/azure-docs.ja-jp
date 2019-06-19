@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/19/2018
 ms.author: aljo
-ms.openlocfilehash: d5aa09f3ff899766e6eb6d1784e4417f7b48eac0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 456eac4a8d3a6cb8cbaca13ad4e4f3b2ae0309bc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66110274"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67125590"
 ---
 # <a name="service-fabric-networking-patterns"></a>Service Fabric のネットワーク パターン
 Azure Service Fabric クラスターを Azure の他のネットワーク機能と統合できます。 この記事では、次の機能を使用するクラスターを作成する方法について説明します。
@@ -200,7 +200,7 @@ DnsSettings              : {
     }
     ```
 
-2. `dnsName` パラメーターを削除します  (静的 IP アドレスには既にパラメーターがあります)。
+2. `dnsName` パラメーターを削除します (静的 IP アドレスには既にパラメーターがあります)。
 
     ```json
     /*
@@ -268,7 +268,7 @@ DnsSettings              : {
                     ],
     ```
 
-7. `Microsoft.ServiceFabric/clusters` リソースで、`managementEndpoint` を静的 IP アドレスの DNS FQDN に変更します。 セキュリティで保護されたクラスターを使用している場合は、*http://* を *https://* に必ず変更してください  (この手順は Service Fabric クラスターにのみ適用されます。 仮想マシン スケール セットを使用している場合は、この手順をスキップしてください)。
+7. `Microsoft.ServiceFabric/clusters` リソースで、`managementEndpoint` を静的 IP アドレスの DNS FQDN に変更します。 セキュリティで保護されたクラスターを使用している場合は、*http://* を *https://* に必ず変更してください (この手順は Service Fabric クラスターにのみ適用されます。 仮想マシン スケール セットを使用している場合は、この手順をスキップしてください)。
 
     ```json
                     "fabricSettings": [],
@@ -295,7 +295,7 @@ DnsSettings              : {
 
 このシナリオでは、既定の Service Fabric テンプレートの外部ロード バランサーを内部専用ロード バランサーに置き換えます。 Azure Portal と Service Fabric リソースプロバイダーへの影響については、前のセクションをご覧ください。
 
-1. `dnsName` パラメーターを削除します  (不要です)。
+1. `dnsName` パラメーターを削除します (不要です)。
 
     ```json
     /*
@@ -370,7 +370,7 @@ DnsSettings              : {
                     ],
     ```
 
-6. `Microsoft.ServiceFabric/clusters` リソースで、内部ロード バランサーのアドレスを指すように `managementEndpoint` を変更します。 セキュリティで保護されたクラスターを使用している場合は、*http://* を *https://* に必ず変更してください  (この手順は Service Fabric クラスターにのみ適用されます。 仮想マシン スケール セットを使用している場合は、この手順をスキップしてください)。
+6. `Microsoft.ServiceFabric/clusters` リソースで、内部ロード バランサーのアドレスを指すように `managementEndpoint` を変更します。 セキュリティで保護されたクラスターを使用している場合は、*http://* を *https://* に必ず変更してください (この手順は Service Fabric クラスターにのみ適用されます。 仮想マシン スケール セットを使用している場合は、この手順をスキップしてください)。
 
     ```json
                     "fabricSettings": [],
@@ -395,7 +395,7 @@ DnsSettings              : {
 
 2 ノード タイプのクラスターでは、ノード タイプの 1 つを外部ロード バランサーに配置し、 もう 1 つのノード タイプを内部ロード バランサーに配置します。 2 ノード タイプのクラスターを使用するには、ポータルで作成された (2 つのロード バランサーを含む) 2 ノード タイプ テンプレートで、2 つ目のロード バランサーを内部ロード バランサーに切り替えます。 詳細については、「[内部ロード バランサー](#internallb)」をご覧ください。
 
-1. 内部ロード バランサーの静的 IP アドレス パラメーターを追加します  (動的 IP アドレスの使用に関する注意事項については、この記事の前のセクションをご覧ください)。
+1. 内部ロード バランサーの静的 IP アドレス パラメーターを追加します (動的 IP アドレスの使用に関する注意事項については、この記事の前のセクションをご覧ください)。
 
     ```json
             "internalLBAddress": {
@@ -606,10 +606,7 @@ DnsSettings              : {
 デプロイが完了すると、リソース グループに 2 つのロード バランサーが表示されます。 ロード バランサーを参照すると、パブリック IP アドレスと、パブリック IP アドレスに割り当てられている管理エンドポイント (ポート 19000 と 19080) を確認できます。 また、静的内部 IP アドレスと、内部ロード バランサーに割り当てられているアプリケーション エンドポイント (ポート 80) も確認できます。 ロード バランサーはどちらも同じ仮想マシン スケール セットのバックエンド プールを使用します。
 
 ## <a name="next-steps"></a>次の手順
-[クラスター](service-fabric-cluster-creation-via-arm.md) ternalLB.json の作成
-    ```
+[クラスターの作成](service-fabric-cluster-creation-via-arm.md)
 
 デプロイが完了すると、リソース グループに 2 つのロード バランサーが表示されます。 ロード バランサーを参照すると、パブリック IP アドレスと、パブリック IP アドレスに割り当てられている管理エンドポイント (ポート 19000 と 19080) を確認できます。 また、静的内部 IP アドレスと、内部ロード バランサーに割り当てられているアプリケーション エンドポイント (ポート 80) も確認できます。 ロード バランサーはどちらも同じ仮想マシン スケール セットのバックエンド プールを使用します。
 
-## <a name="next-steps"></a>次の手順
-[クラスターの作成](service-fabric-cluster-creation-via-arm.md)

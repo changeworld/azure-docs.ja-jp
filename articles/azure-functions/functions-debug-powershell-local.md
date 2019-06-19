@@ -10,12 +10,12 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: tyleonha, glenga
-ms.openlocfilehash: f02d2eed2030a5d2f54b3bee85885bbb572ac762
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 8e9e5b96eaf5a25661af721950029a670d0df5f1
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66476678"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67063236"
 ---
 # <a name="debug-powershell-azure-functions-locally"></a>PowerShell Azure Functions をローカル環境でデバッグする
 
@@ -99,7 +99,7 @@ Visual Studio Code で PowerShell 関数をデバッグするには、以下が�
 
 * [Visual Studio Code 用 PowerShell 拡張機能](/powershell/scripting/components/vscode/using-vscode)
 * [Visual Studio Code 用 Azure Functions 拡張機能](functions-create-first-function-vs-code.md)
-* [PowerShell Core 6.2 以降](/powershell/scripting/install/installing-powershell#powershell-core)
+* [PowerShell Core 6.2 以降](/powershell/scripting/install/installing-powershell-core-on-windows)
 
 これらの依存関係をインストールした後、既存の PowerShell 関数プロジェクトを読み込むか、[Azure で初めての PowerShell 関数を作成します](functions-create-first-function-powershell.md)。
 

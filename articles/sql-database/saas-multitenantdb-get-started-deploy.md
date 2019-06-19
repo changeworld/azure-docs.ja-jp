@@ -13,10 +13,10 @@ ms.reviewer: billgib, stein
 manager: craigg
 ms.date: 10/16/2018
 ms.openlocfilehash: 350e67f5a1e7e1eab7abe27a6ca851ed2420af84
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65978523"
 ---
 # <a name="deploy-and-explore-a-sharded-multi-tenant-application"></a>シャード化されたマルチテナント アプリケーションをデプロイおよび操作する
@@ -125,7 +125,7 @@ Wingtip アプリでは、テナントは会場です。 会場は、イベン�
 中心となる **Events Hub** Web ページには、特定のデプロイのテナントへのリンク一覧が表示されます。 **Events Hub** Web ページや個別の Web アプリを体験するには、次の手順に従います。
 
 1. Web ブラウザーで **Events Hub** を開きます。
-   - http://events.wingtip-mt.&lt;user&gt;.trafficmanager.net &nbsp; *(&lt;user&gt; は実際のデプロイのユーザー値に置き換えてください)。*
+   - http://events.wingtip-mt.&lt ;user&gt;.trafficmanager.net &nbsp; *(&lt; user&gt; は実際のデプロイのユーザー値に置き換えてください)。*
 
      ![Events Hub](media/saas-multitenantdb-get-started-deploy/events-hub.png)
 
@@ -137,7 +137,7 @@ Wingtip アプリでは、テナントは会場です。 会場は、イベン�
 
 Wingtip アプリは、受信要求の配布を制御するために [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) を使用します。 各テナントのイベント ページには、URL にテナント名が含まれています。 各 URL には、固有のユーザー値も含まれています。 各 URL は、以下の手順で、次に示す形式に従います。
 
-- http://events.wingtip-mt.&lt;user&gt;.trafficmanager.net/*fabrikamjazzclub*
+- http://events.wingtip-mt.&lt ;user&gt;.trafficmanager.net/*fabrikamjazzclub*
 
 1. イベント アプリによって、URL からテナント名が解析されます。 前の URL の例では、テナント名は *fabrikamjazzclub* です。
 2. アプリはテナント名をハッシュして、[シャード マップ管理](sql-database-elastic-scale-shard-map-management.md)を使用するカタログにアクセスするためのキーを作成します。

@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 05/23/2019
 ms.author: jureid
 ms.openlocfilehash: 81f3edcfcffad1b9b6d0ab4b49769601196049ad
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66238054"
 ---
 # <a name="grant-access-to-create-azure-enterprise-subscriptions-preview"></a>Azure Enterprise サブスクリプションを作成する権限を付与する (プレビュー)
@@ -36,7 +36,7 @@ ms.locfileid: "66238054"
 
     # <a name="resttabrest"></a>[REST](#tab/rest)
 
-    自分がアクセスできるすべての登録アカウントの一覧表示を要求します。
+    自分がアクセスできるすべての登録アカウントを一覧表示するための要求:
 
     ```json
     GET https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts?api-version=2018-03-01-preview
@@ -67,7 +67,7 @@ ms.locfileid: "66238054"
     }
     ```
 
-    `principalName` プロパティを使用して、RBAC 所有者のアクセス権を付与するアカウントを指定します。 そのアカウントの `name` をコピーします。 たとえば、SignUpEngineering@contoso.com 登録アカウントに RBAC 所有者のアクセス権を付与する場合、```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` をコピーします。 これは登録アカウントのオブジェクト ID です。 次の手順で `enrollmentAccountObjectId` として使用できるように、この値をどこかに貼り付けておきます。
+    `principalName` プロパティを使用して、RBAC 所有者のアクセス権を付与するアカウントを指定します。 そのアカウントの `name` をコピーします。 たとえば、SignUpEngineering@contoso.com 登録アカウントに RBAC 所有者のアクセス権を付与する場合、```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` をコピーします。 これは登録アカウントのオブジェクト ID です。 次のステップでこの値を `enrollmentAccountObjectId` として使用できるよう、どこかに貼り付けておきます。
 
     # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -116,7 +116,7 @@ ms.locfileid: "66238054"
 
     ---
 
-    `principalName` プロパティを使用して、RBAC 所有者のアクセス権を付与するアカウントを指定します。 そのアカウントの `name` をコピーします。 たとえば、SignUpEngineering@contoso.com 登録アカウントに RBAC 所有者のアクセス権を付与する場合、```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` をコピーします。 これは登録アカウントのオブジェクト ID です。 次の手順で `enrollmentAccountObjectId` として使用できるように、この値をどこかに貼り付けておきます。
+    `principalName` プロパティを使用して、RBAC 所有者のアクセス権を付与するアカウントを指定します。 そのアカウントの `name` をコピーします。 たとえば、SignUpEngineering@contoso.com 登録アカウントに RBAC 所有者のアクセス権を付与する場合、```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` をコピーします。 これは登録アカウントのオブジェクト ID です。 次のステップでこの値を `enrollmentAccountObjectId` として使用できるよう、どこかに貼り付けておきます。
 
 1. <a id="userObjectId"></a>RBAC 所有者ロールを付与するユーザーまたはグループのオブジェクト ID を取得します
 

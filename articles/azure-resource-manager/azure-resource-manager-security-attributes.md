@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: mbaldwin
 ms.openlocfilehash: a771d4c2ae22b7bf149c13c80fe5286ef52a4545
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66002253"
 ---
 # <a name="security-attributes-for-azure-resource-manager"></a>Azure Resource Manager のセキュリティ属性
@@ -27,7 +27,7 @@ ms.locfileid: "66002253"
 |---|---|--|
 | 保存時の暗号化:<ul><li>サーバー側暗号化</li><li>ユーザーが管理するキーによるサーバー側暗号化</li><li>その他の暗号化機能 (クライアント側や常に暗号化など)</ul>| はい |  |
 | 転送中の暗号化:<ul><li>Express Route 暗号化</li><li>VNet 内の暗号化</li><li>VNet 間暗号化</ul>| はい | HTTPS/TLS。 |
-| 暗号化キーの処理 (CMK や BYOK など)| 該当なし | Azure Resource Manager では、制御データのみが格納され、ユーザーのコンテンツは格納されません。 |
+| 暗号化キーの処理 (CMK や BYOK など)| 該当なし | Azure Resource Manager では、制御データのみが格納され、お客様のコンテンツは格納されません。 |
 | 列レベルの暗号化 (Azure Data Services)| はい | |
 | API 呼び出しの暗号化| はい | |
 
@@ -50,8 +50,8 @@ ms.locfileid: "66002253"
 
 | セキュリティ属性 | はい/いいえ | メモ|
 |---|---|--|
-| 認証| はい | [Azure Active Directory](/azure/active-directory) ベース。|
-| 承認| はい | |
+| Authentication| はい | [Azure Active Directory](/azure/active-directory) ベース。|
+| Authorization| はい | |
 
 
 ## <a name="audit-trail"></a>監査証跡

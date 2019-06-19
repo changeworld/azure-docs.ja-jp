@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/06/2018
 ms.author: robinsh
 ms.openlocfilehash: f21f1eed6babee52f30c6eccc79f88dc7bee5d58
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65864475"
 ---
 # <a name="schedule-and-broadcast-jobs-netnet"></a>ジョブのスケジュールとブロードキャスト (.NET/.NET)
@@ -72,7 +72,7 @@ Azure IoT Hub を使用して、数百万のデバイスを更新するジョブ
    
     ![New Visual C# Windows Classic device app](./media/iot-hub-csharp-csharp-schedule-jobs/create-device-app.png)
     
-2. ソリューション エクスプローラーで **[SimulateDeviceMethods]** プロジェクトを右クリックし、**[NuGet パッケージの管理...]** をクリックします。
+2. ソリューション エクスプローラーで **[SimulateDeviceMethods]** プロジェクトを右クリックし、 **[NuGet パッケージの管理...]** をクリックします。
 
 3. **[NuGet パッケージ マネージャー]** ウィンドウで **[参照]** を選択し、**Microsoft.Azure.Devices.Client** を検索します。 **[インストール]** を選択して、**Microsoft.Azure.Devices.Client** パッケージをインストールし、使用条件に同意します。 この手順により、パッケージのダウンロードとインストールが実行され、[Azure IoT device SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/) NuGet パッケージへの参照とその依存関係が追加されます。
    
@@ -159,9 +159,9 @@ Azure IoT Hub を使用して、数百万のデバイスを更新するジョブ
 
     ![New Visual C# Windows Classic Desktop project](./media/iot-hub-csharp-csharp-schedule-jobs/createnetapp.png)
 
-2. ソリューション エクスプローラーで **ScheduleJob** プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。
+2. ソリューション エクスプローラーで **ScheduleJob** プロジェクトを右クリックし、 **[NuGet パッケージの管理]** をクリックします。
 
-3. **[NuGet パッケージ マネージャー]** ウィンドウで **[参照]** を選択し、**Microsoft.Azure.Devices** を検索します。**[インストール]** を選択して **Microsoft.Azure.Devices** パッケージをインストールし、使用条件に同意します。 この手順により、パッケージのダウンロードとインストールが実行され、[Azure IoT service SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices/) NuGet パッケージへの参照とその依存関係が追加されます。
+3. **[NuGet パッケージ マネージャー]** ウィンドウで **[参照]** を選択し、**Microsoft.Azure.Devices** を検索します。 **[インストール]** を選択して **Microsoft.Azure.Devices** パッケージをインストールし、使用条件に同意します。 この手順により、パッケージのダウンロードとインストールが実行され、[Azure IoT service SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices/) NuGet パッケージへの参照とその依存関係が追加されます。
 
     ![NuGet Package Manager window](./media/iot-hub-csharp-csharp-schedule-jobs/servicesdknuget.png)
 
@@ -279,9 +279,9 @@ Azure IoT Hub を使用して、数百万のデバイスを更新するジョブ
 
 これで、アプリを実行する準備が整いました。
 
-1. Visual Studio のソリューション エクスプローラーでソリューションを右クリックし、**[ビルド]** をクリックします。 **[マルチ スタートアップ プロジェクト]** を選択します。 `SimulateDeviceMethods` が一覧の一番上にあり、その後に `ScheduleJob` があることを確認します。 両方のアクションを **[開始]** に設定し、**[OK]** をクリックします。
+1. Visual Studio のソリューション エクスプローラーでソリューションを右クリックし、 **[ビルド]** をクリックします。 **[マルチ スタートアップ プロジェクト]** を選択します。 `SimulateDeviceMethods` が一覧の一番上にあり、その後に `ScheduleJob` があることを確認します。 両方のアクションを **[開始]** に設定し、 **[OK]** をクリックします。
 
-2. **[開始]** をクリックしてプロジェクトを実行するか、**[デバッグ]** メニューに移動し、**[デバッグの開始]** をクリックします。
+2. **[開始]** をクリックしてプロジェクトを実行するか、 **[デバッグ]** メニューに移動し、 **[デバッグの開始]** をクリックします。
 
 3. デバイスとバックエンド アプリの両方からの出力が表示されます。
 

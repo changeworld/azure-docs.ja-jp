@@ -9,11 +9,11 @@ ms.date: 04/25/2019
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: 499aeccdf00980eeb66ac6ee06e45267fd515143
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66145899"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181139"
 ---
 共有イメージ ギャラリーでは、RBAC を使用してイメージを共有できます。 RBAC を使用すると、テナント内でイメージを共有できます。また、テナントの外部にいる個人と共有することもできます。 ただし、Azure テナントの外部で大規模にイメージを共有する場合は、共有を容易にするためにアプリ登録を作成することをお勧めします。  アプリ登録を使用すると、次のようにより複雑な共有シナリオが可能になります。 
 

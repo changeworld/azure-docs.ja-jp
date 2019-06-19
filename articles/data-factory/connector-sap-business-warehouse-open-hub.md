@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: jingwang
 ms.openlocfilehash: 6fb989632d3165ac5e54e540aae4385fc2258c85
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66256906"
 ---
 # <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>Azure Data Factory を使用するオープン ハブを介して SAP Business Warehouse からデータをコピーする
@@ -211,14 +211,14 @@ SAP BW オープン ハブからデータをコピーするときには、以下
 
 | SAP ABAP の型 | Data Factory の中間データ型 |
 |:--- |:--- |
-| C (String) | String |
+| C (String) | string |
 | I (integer) | Int32 |
 | F (Float) | Double |
-| D (Date) | String |
-| T (Time) | String |
+| D (Date) | string |
+| T (Time) | string |
 | P (BCD Packed、Currency、Decimal、Qty) | Decimal |
-| N (Numc) | String |
-| X (Binary および Raw) | String |
+| N (Numc) | string |
+| X (Binary および Raw) | string |
 
 ## <a name="next-steps"></a>次の手順
 Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。

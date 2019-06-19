@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 10/29/2018
 ms.author: yijenj
 ms.openlocfilehash: bd8cdbec42ea7df34ceee3ab82a1c6cac60ab59e
-ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65849714"
 ---
 # <a name="azure-marketplace-commercial-transaction-capabilities-and-considerations"></a>Azure Marketplace ‎商用トランザクションの機能と考慮事項
@@ -96,18 +96,18 @@ Marketplace を通じて処理される注文は、顧客の Azure インフラ�
 
 * 従量課金制オプションを有効にした場合、コスト構造は次のようになります。
 
-|ライセンス コスト  | 1.00 ドル/時間  |
+|ライセンス コスト  | 1\.00 ドル/時間  |
 |---------|---------|
-|Azure 使用コスト (D1/1 コア)    |   0.14 ドル/時間     |
+|Azure 使用コスト (D1/1 コア)    |   0\.14 ドル/時間     |
 |*顧客は Microsoft から請求されます*    |  *1.14 ドル/時間*       |
 
 * このシナリオでは、Microsoft は公開された VM イメージの使用に対して 1 時間あたり 1.14 ドルを請求します。
 
-|Microsoft からの請求額  | 1.14 ドル/時間  |
+|Microsoft からの請求額  | 1\.14 ドル/時間  |
 |---------|---------|
-|Microsoft は、ライセンス コストの 80% をパブリッシャーに支払います|   0.80 ドル/時間     |
-|Microsoft は、ライセンス コストの 20% を受け取ります  |  0.20 ドル/時間       |
-|Microsoft は、Azure 使用コストの 100% を受け取ります | 0.14 ドル/時間 |
+|Microsoft は、ライセンス コストの 80% をパブリッシャーに支払います|   0\.80 ドル/時間     |
+|Microsoft は、ライセンス コストの 20% を受け取ります  |  0\.20 ドル/時間       |
+|Microsoft は、Azure 使用コストの 100% を受け取ります | 0\.14 ドル/時間 |
 
 **ライセンス持ち込み (BYOL)**
 
@@ -115,15 +115,15 @@ Marketplace を通じて処理される注文は、顧客の Azure インフラ�
 
 |ライセンス コスト  | ライセンス料金は公開元によって交渉および請求されます  |
 |---------|---------|
-|Azure 使用コスト (D1/1 コア)    |   0.14 ドル/時間     |
+|Azure 使用コスト (D1/1 コア)    |   0\.14 ドル/時間     |
 |*顧客は Microsoft から請求されます*    |  *0.14 ドル/時間*       |
 
 * このシナリオでは、Microsoft は公開された VM イメージの使用に対して 1 時間あたり 0.14 ドルを請求します。
 
-|Microsoft からの請求額  | 0.14 ドル/時間  |
+|Microsoft からの請求額  | 0\.14 ドル/時間  |
 |---------|---------|
-|Microsoft は、Azure の使用コストを受け取ります    |   0.14 ドル/時間     |
-|Microsoft は、ライセンス コストの 0% を受け取ります   |  0.00 ドル/時間       |
+|Microsoft は、Azure の使用コストを受け取ります    |   0\.14 ドル/時間     |
+|Microsoft は、ライセンス コストの 0% を受け取ります   |  0\.00 ドル/時間       |
 
 **SaaS アプリのサブスクリプション (Azure を経由した販売)**
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/28/2017
-ms.openlocfilehash: 30d52f1ac6a68a3202de59a0b4cab8edfb7ed042
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 28f154c4bd8bb1675eac509bd9d6dab9bb6af026
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64701096"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67066225"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-debug-apache-spark-applications-remotely-in-hdinsight-through-vpn"></a>Azure Toolkit for IntelliJ を使用して HDInsight 上で VPN を介して Apache Spark アプリケーションをリモートでデバッグする
 
@@ -47,10 +47,10 @@ SSH を使用して [Apache Spark](https://spark.apache.org/) アプリケーシ
 先ほど作成した Azure 仮想ネットワークに属する Apache Spark クラスターも Azure HDInsight で作成することをお勧めします。 詳しくは、[HDInsight での Linux ベースの Hadoop クラスターの作成](../hdinsight-hadoop-provision-linux-clusters.md)に関するページを参照してください。 オプションの構成の一環として、前の手順で作成した Azure 仮想ネットワークを選択します。
 
 ## <a name="step-3-verify-the-connectivity-between-the-cluster-head-node-and-your-desktop"></a>手順 3:クラスターのヘッド ノードとデスクトップの間の接続を確認する
-1. ヘッド ノードの IP アドレスを取得します。 クラスターの Ambari UI を開きます。 クラスター ブレードから、**[ダッシュボード]** を選択します。
+1. ヘッド ノードの IP アドレスを取得します。 クラスターの Ambari UI を開きます。 クラスター ブレードから、 **[ダッシュボード]** を選択します。
 
     ![Ambari で [ダッシュボード] を選択する](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/launch-ambari-ui.png)
-1. Ambari UI から、**[Hosts]\(ホスト\)** を選択します。
+1. Ambari UI から、 **[Hosts]\(ホスト\)** を選択します。
 
     ![Ambari で [Hosts]\(ホスト\) を選択する](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/ambari-hosts.png)
 1. ヘッド ノード、ワーカー ノード、Zookeeper ノードの一覧が表示されます。 ヘッド ノードには **hn*** プレフィックスが付いています。 最初のヘッド ノードを選択します。
@@ -85,10 +85,10 @@ SSH を使用して [Apache Spark](https://spark.apache.org/) アプリケーシ
 
     ![IntelliJ IDEA で新しいプロジェクト テンプレートを選択する](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/create-hdi-scala-app.png)
 
-    a. **[HDInsight]** > **[Spark on HDInsight (Scala)]\(HDInsight の Spark (Scala)\)** を選択します。
+    a. **[HDInsight]**  >  **[Spark on HDInsight (Scala)]\(HDInsight の Spark (Scala)\)** を選択します。
 
     b. **[次へ]** を選択します。
-1. 次の **[新しいプロジェクト]** ダイアログ ボックスで以下の手順を実行し、**[Finish]\(完了\)** を選択します。
+1. 次の **[新しいプロジェクト]** ダイアログ ボックスで以下の手順を実行し、 **[Finish]\(完了\)** を選択します。
 
     - プロジェクト名とプロジェクトの場所を入力します。
 
@@ -102,16 +102,16 @@ SSH を使用して [Apache Spark](https://spark.apache.org/) アプリケーシ
 
     a. **[File]\(ファイル\)** メニューの **[Project Structure]\(プロジェクトの構造\)** を選択します。
 
-    b. **[Project Structure]\(プロジェクトの構造)** ダイアログ ボックスで、**[Artifacts]\(アーティファクト)** を選択すると、作成された既定のアーティファクトが表示されます。 プラス記号 (**+**) をクリックして、独自のアーティファクトを作成することもできます。
+    b. **[Project Structure]\(プロジェクトの構造)** ダイアログ ボックスで、 **[Artifacts]\(アーティファクト)** を選択すると、作成された既定のアーティファクトが表示されます。 プラス記号 ( **+** ) をクリックして、独自のアーティファクトを作成することもできます。
 
    ![JAR の作成](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/default-artifact.png)
 
 
 1. プロジェクトにライブラリを追加します。 ライブラリを追加するには、以下の手順を実行します。
 
-    a. プロジェクト ツリーのプロジェクト名を右クリックし、**[Open Module Settings]\(モジュール設定を開く\)** を選択します。 
+    a. プロジェクト ツリーのプロジェクト名を右クリックし、 **[Open Module Settings]\(モジュール設定を開く\)** を選択します。 
 
-    b. **[Project Structure]\(プロジェクトの構造\)** ダイアログ ボックスで、**[Libraries]\(ライブラリ\)**、(**+**) 記号、**[From Maven]\(Maven から\)** の順に選択します。
+    b. **[Project Structure]\(プロジェクトの構造\)** ダイアログ ボックスで、 **[Libraries]\(ライブラリ\)** 、( **+** ) 記号、 **[From Maven]\(Maven から\)** の順に選択します。
 
     ![ライブラリの追加](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/add-library.png)
 
@@ -154,10 +154,10 @@ SSH を使用して [Apache Spark](https://spark.apache.org/) アプリケーシ
                  <value>/etc/hadoop/conf/topology_script.py</value>
            </property>
    c. ファイルを保存します。
-1. アプリケーションに main クラスを追加します。 **Project Explorer** で、**[src]** を右クリックし、**[New]\(新規\)** をポイントして、**[Scala class]\(Scala クラス\)** を選択します。
+1. アプリケーションに main クラスを追加します。 **Project Explorer** で、 **[src]** を右クリックし、 **[New]\(新規\)** をポイントして、 **[Scala class]\(Scala クラス\)** を選択します。
 
     ![main クラスを選択する](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/hdi-spark-scala-code.png)
-1. **[Create New Scala Class]\(新規 Scala クラスの作成\)** ダイアログ ボックスで、名前を指定し、**[Kind]\(種類\)** ボックスの一覧で **[Object]\(オブジェクト\)** を選択して、**[OK]** をクリックします。
+1. **[Create New Scala Class]\(新規 Scala クラスの作成\)** ダイアログ ボックスで、名前を指定し、 **[Kind]\(種類\)** ボックスの一覧で **[Object]\(オブジェクト\)** を選択して、 **[OK]** をクリックします。
 
     ![新しい Scala クラスを作成する](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/hdi-spark-scala-code-object.png)
 1. 以下のコードを `MyClusterAppMain.scala` ファイルに貼り付けます。 このコードは Spark コンテキストを作成し、`SparkSample` オブジェクトから `executeJob` メソッドを開きます。
@@ -220,14 +220,14 @@ SSH を使用して [Apache Spark](https://spark.apache.org/) アプリケーシ
 
       * `.set("spark.yarn.jar", "wasb:///hdp/apps/2.4.2.0-258/spark-assembly-1.6.1.2.4.2.0-258-hadoop2.7.1.2.4.2.0-258.jar")`では、指定されたパスのクラスター ストレージで Spark アセンブリ JAR が使用可能であることを確認します。
       * `setJars` では、アーティファクト JAR が作成される場所を指定します。 通常は `<Your IntelliJ project directory>\out\<project name>_DefaultArtifact\default_artifact.jar` です。
-1. `*RemoteClusterDebugging` クラスで `test` キーワードを右クリックし、**[Create RemoteClusterDebugging Configuration]\(RemoteClusterDebugging 構成の作成\)** を選択します。
+1. `*RemoteClusterDebugging` クラスで `test` キーワードを右クリックし、 **[Create RemoteClusterDebugging Configuration]\(RemoteClusterDebugging 構成の作成\)** を選択します。
 
     ![リモート構成を作成する](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/create-remote-config.png)
 
-1. **[Create RemoteClusterDebugging Configuration]\(RemoteClusterDebugging 構成の作成\)** ダイアログ ボックスで、構成の名前を指定し、**[Test name]\(テスト名\)** として **[Test kind]\(テストの種類\)** を選択します。 他の値はすべて規定の設定のままにします。 **[Apply]\(適用\)** を選択し、次に **[OK]** を選択します。
+1. **[Create RemoteClusterDebugging Configuration]\(RemoteClusterDebugging 構成の作成\)** ダイアログ ボックスで、構成の名前を指定し、 **[Test name]\(テスト名\)** として **[Test kind]\(テストの種類\)** を選択します。 他の値はすべて規定の設定のままにします。 **[Apply]\(適用\)** を選択し、次に **[OK]** を選択します。
 
     ![構成の詳細を追加する](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/provide-config-value.png)
-1. メニュー バーに、**[Remote Run]\(リモート実行\)** の構成のドロップダウン リストが表示されます。
+1. メニュー バーに、 **[Remote Run]\(リモート実行\)** の構成のドロップダウン リストが表示されます。
 
     ![[Remote run]\(リモート実行\) ドロップダウン リスト](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/config-run.png)
 
@@ -235,15 +235,15 @@ SSH を使用して [Apache Spark](https://spark.apache.org/) アプリケーシ
 1. IntelliJ IDEA プロジェクトで、`SparkSample.scala` を開き、`val rdd1` の次にブレークポイントを作成します。 **[Create Breakpoint for]\(ブレークポイントの作成対象\)** ポップアップ メニューで **[line in function executeJob]\(executeJob 関数内の行\)** を選択します。
 
     ![Add a breakpoint](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/create-breakpoint.png)
-1. アプリケーションを実行するには、**[Remote Run]\(リモート実行\)** の構成のドロップダウンの横にある **[Debug Run]\(デバッグを実行\)** ボタンを選択します。
+1. アプリケーションを実行するには、 **[Remote Run]\(リモート実行\)** の構成のドロップダウンの横にある **[Debug Run]\(デバッグを実行\)** ボタンを選択します。
 
     ![[Debug Run]\(デバッグを実行\) ボタンを選択する](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-run-mode.png)
 1. プログラムの実行がブレークポイントに到達すると、下部のウィンドウに **[Debugger]\(デバッガー\)** タブが表示されます。
 
     ![[Debugger]\(デバッガー\) タブを表示する](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-add-watch.png)
-1. ウォッチ式を追加するには、(**+**) アイコンを選択します。
+1. ウォッチ式を追加するには、( **+** ) アイコンを選択します。
 
-    ![+ アイコンを選択する](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-add-watch-variable.png)
+    ![\+ アイコンを選択する](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-add-watch-variable.png)
 
     この例では、変数 `rdd1` が作成される前にアプリケーションは停止しています。 このウォッチ式を使用して、変数 `rdd` の最初の 5 行を見ることができます。 **[Enter]** を選択します。
 
@@ -277,7 +277,6 @@ SSH を使用して [Apache Spark](https://spark.apache.org/) アプリケーシ
 ### <a name="tools-and-extensions"></a>ツールと拡張機能
 * [Azure Toolkit for IntelliJ を使用して HDInsight クラスター向けの Apache Spark アプリケーションを作成する](apache-spark-intellij-tool-plugin.md)
 * [Azure Toolkit for IntelliJ を使用して SSH 経由で Apache Spark アプリケーションをリモートでデバッグする](apache-spark-intellij-tool-debug-remotely-through-ssh.md)
-* [Hortonworks Sandbox と IntelliJ 用 HDInsight ツールを使用する](../hadoop/hdinsight-tools-for-intellij-with-hortonworks-sandbox.md)
 * [Azure Toolkit for Eclipse 上の HDInsight Tools を使用して Apache Spark アプリケーションを作成する](../hdinsight-apache-spark-eclipse-tool-plugin.md)
 * [HDInsight 上の Apache Spark クラスターで Apache Zeppelin Notebook を使用する](apache-spark-zeppelin-notebook.md)
 * [HDInsight 用の Apache Spark クラスター内の Jupyter Notebook で使用可能なカーネル](apache-spark-jupyter-notebook-kernels.md)

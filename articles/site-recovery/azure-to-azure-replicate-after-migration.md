@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 05/30/2019
 ms.author: raynew
 ms.openlocfilehash: 4b764c8e7c3d97ff521add05033265f705c4136f
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66399533"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-after-migration-to-azure"></a>Azure への移行後に Azure VM のディザスター リカバリーをセットアップする 
@@ -35,7 +35,7 @@ ms.locfileid: "66399533"
 
 ### <a name="install-the-agent-on-windows-vms"></a>Windows VM にエージェントをインストールする
 
-9.7.0.0 より前のバージョンの Site Recovery モビリティ サービスを実行しているか、またはエージェントを手動でインストールするその他の何らかの必要性がある場合、次の操作を行います。  
+9\.7.0.0 より前のバージョンの Site Recovery モビリティ サービスを実行しているか、またはエージェントを手動でインストールするその他の何らかの必要性がある場合、次の操作を行います。  
 
 1. VM の管理者特権があることを確認します。
 2. [VM エージェント インストーラー](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)をダウンロードします。

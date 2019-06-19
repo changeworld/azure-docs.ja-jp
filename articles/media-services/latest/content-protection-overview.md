@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 05/28/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 99aea38ec877074075eaec8cf9ab8da077901acf
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: 140e6c338d12732d1e41ccd9dabef1de7d5cf8d8
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393106"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67068846"
 ---
 # <a name="content-protection-with-dynamic-encryption"></a>動的暗号化によるコンテンツ保護
 

@@ -11,10 +11,10 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.openlocfilehash: 64ea7c175b733f974eba6c081ee2c98814cbcda2
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65873715"
 ---
 # <a name="connect-to-sql-data-warehouse-with-sql-server-management-studio-ssms"></a>SQL Server Management Studio (SSMS) で SQL Data Warehouse に接続する
@@ -38,16 +38,16 @@ SQL Server Management Studio (SSMS) を使用して Azure SQL Data Warehouse に
 
 ## <a name="1-connect-to-your-sql-data-warehouse"></a>1.SQL Data Warehouse への接続
 1. SSMS を開きます。
-2. オブジェクト エクスプローラーを開きます。 これを行うには、[**ファイル]**、 > **[オブジェクト エクスプローラーを接続]** の順に選択します。
+2. オブジェクト エクスプローラーを開きます。 これを行うには、[**ファイル]** 、 >  **[オブジェクト エクスプローラーを接続]** の順に選択します。
    
     ![[SQL Server オブジェクト エクスプローラー]][1]
 3. [サーバーへの接続] ウィンドウのフィールドに入力します。
    
     ![[サーバーへの接続]][2]
    
-   * **[サーバー名]**:  前の手順で特定した**サーバー名**を入力します。
-   * **[認証]**:  **[SQL Server 認証]** または **[Active Directory 統合認証]** を選択します。
-   * **[ユーザー名]** と **[パスワード]**:  先ほど [SQL Server 認証] を選択した場合は、ユーザー名とパスワードを入力します。
+   * **[サーバー名]** : 前の手順で特定した**サーバー名**を入力します。
+   * **[認証]** : **[SQL Server 認証]** または **[Active Directory 統合認証]** を選択します。
+   * **[ユーザー名]** と **[パスワード]** : 先ほど [SQL Server 認証] を選択した場合は、ユーザー名とパスワードを入力します。
    * **[接続]** をクリックします。
 4. 確認のために、Azure SQL Server を展開します。 サーバーに関連付けられているデータベースが表示されます。 AdventureWorksDW を展開すると、サンプル データベース内のテーブルが表示されます。
    

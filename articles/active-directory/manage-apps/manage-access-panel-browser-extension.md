@@ -17,10 +17,10 @@ ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f08a02842c97b0f4076a1b311aa918df6d83c592
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65824509"
 ---
 # <a name="troubleshoot-the-access-panel-extension-for-internet-explorer"></a>Internet Explorer 用アクセス パネル拡張機能のトラブルシューティング
@@ -42,23 +42,23 @@ ms.locfileid: "65824509"
 
 2. ファイルを開き、コンピューターにコンテンツを抽出します。
    
-3. ツールを実行するには、*AccessPanelExtensionDiagnosticTool.js* という名前のファイルを右クリックし、**[プログラムから開く]** > **[Microsoft Windows Based Script Host]** の順に選択します。
+3. ツールを実行するには、*AccessPanelExtensionDiagnosticTool.js* という名前のファイルを右クリックし、 **[プログラムから開く]**  >  **[Microsoft Windows Based Script Host]** の順に選択します。
    
     ![[プログラムから開く] > [Microsoft Windows Based Script Host]](./media/manage-access-panel-browser-extension/open-access-panel-extension-diagnostic-tool.png)
 
-4. 表示された診断結果を確認し、**[はい]** を選択して問題を修正します。 拡張機能が動作しない場合は、対処方法に関する情報を含む **[検査結果]** ダイアログ ボックスが表示されます。  
+4. 表示された診断結果を確認し、 **[はい]** を選択して問題を修正します。 拡張機能が動作しない場合は、対処方法に関する情報を含む **[検査結果]** ダイアログ ボックスが表示されます。  
 
-5. メッセージを確認し、**[OK]** を選択します。
+5. メッセージを確認し、 **[OK]** を選択します。
 
 ## <a name="check-that-the-access-panel-extension-is-enabled"></a>アクセス パネル拡張機能が有効になっていることを確認する
 
 Internet Explorer でアクセス パネル拡張機能が有効になっていることを確認するには、次の手順を実行します。
 
-1. Internet Explorer で、ウィンドウの右上隅の**歯車アイコン**を選択し、**[インターネット オプション]** を選択します。
+1. Internet Explorer で、ウィンドウの右上隅の**歯車アイコン**を選択し、 **[インターネット オプション]** を選択します。
    
 2. **[プログラム]** タブに移動して **[アドオンの管理]** を選択します。
    
-3. **[Microsoft Corporation]** セクションで **[アクセス パネル拡張機能]** を選択し、**[有効にする]** を選択します。
+3. **[Microsoft Corporation]** セクションで **[アクセス パネル拡張機能]** を選択し、 **[有効にする]** を選択します。
    
 4. 変更を保存するには、開いているすべての Internet Explorer ブラウザーのウィンドウを閉じます。 変更は、次回 Internet Explorer を開いたときに有効になります。
 
@@ -66,9 +66,9 @@ Internet Explorer でアクセス パネル拡張機能が有効になってい�
 
 InPrivate ブラウズで拡張機能を有効にするには、次の手順を実行します。
 
-1. Internet Explorer で、ウィンドウの右上隅の**歯車アイコン**を選択し、**[インターネット オプション]** を選択します。
+1. Internet Explorer で、ウィンドウの右上隅の**歯車アイコン**を選択し、 **[インターネット オプション]** を選択します。
    
-2. **[プライバシー]** タブに移動し、**[InPrivate ブラウズの開始時に、ツール バーと拡張機能を無効にする]** がオフになっていることを確認します。
+2. **[プライバシー]** タブに移動し、 **[InPrivate ブラウズの開始時に、ツール バーと拡張機能を無効にする]** がオフになっていることを確認します。
    
 3.  変更を保存するには、開いているすべての Internet Explorer ブラウザーのウィンドウを閉じます。 変更は、次回 Internet Explorer を開いたときに有効になります。
 
@@ -78,11 +78,11 @@ InPrivate ブラウズで拡張機能を有効にするには、次の手順を�
 
 1. コントロール パネルで *[アンインストール]* を検索します。 
 
-2. 検索結果で、**[プログラムのアンインストール]** を選択します。
+2. 検索結果で、 **[プログラムのアンインストール]** を選択します。
    
     ![アンインストール プログラムを検索します。](./media/manage-access-panel-browser-extension/uninstall-program-control-panel.png)
 
-3. 一覧から **[アクセス パネル拡張機能]** を選択し、**[アンインストール]** を選択します。
+3. 一覧から **[アクセス パネル拡張機能]** を選択し、 **[アンインストール]** を選択します。
 
     ![アクセス パネル拡張機能をアンインストールする。](./media/manage-access-panel-browser-extension/uninstall-access-panel-extension.png)
    

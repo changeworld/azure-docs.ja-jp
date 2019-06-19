@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 02/01/2016
 ms.author: cynthn
 ms.openlocfilehash: 21ad3f9baf4b8e117f881d9a36fc606af04e17a5
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66158438"
 ---
 # <a name="how-to-install-mysql-on-azure"></a>MySQL を Azure でインストールする方法

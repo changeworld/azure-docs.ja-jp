@@ -8,10 +8,10 @@ ms.author: mbaldwin
 ms.date: 03/12/2019
 ms.custom: seodec18
 ms.openlocfilehash: 35d494702673d59290a0073c55135138f533b8bf
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65956693"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Azure Disk Encryption トラブルシューティング ガイド
@@ -52,7 +52,7 @@ uname -a
 
 ## <a name="update-the-azure-virtual-machine-agent-and-extension-versions"></a>Azure 仮想マシン エージェントおよび拡張機能のバージョンを更新する
 
-Azure 仮想マシン エージェントのサポートされていないバージョンを使用した仮想マシン イメージでは、Azure Disk Encryption 操作が失敗する場合があります。 2.2.38 より前のエージェント バージョンを使用した Linux イメージは、暗号化を有効にする前に更新する必要があります。 詳細については、「[VM で Azure Linux エージェントを更新する方法](../virtual-machines/extensions/update-linux-agent.md)」および「[Azure の仮想マシンのエージェントの最小バージョンのサポート](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)」を参照してください。
+Azure 仮想マシン エージェントのサポートされていないバージョンを使用した仮想マシン イメージでは、Azure Disk Encryption 操作が失敗する場合があります。 2\.2.38 より前のエージェント バージョンを使用した Linux イメージは、暗号化を有効にする前に更新する必要があります。 詳細については、「[VM で Azure Linux エージェントを更新する方法](../virtual-machines/extensions/update-linux-agent.md)」および「[Azure の仮想マシンのエージェントの最小バージョンのサポート](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)」を参照してください。
 
 Microsoft.Azure.Security.AzureDiskEncryption または Microsoft.Azure.Security.AzureDiskEncryptionForLinux ゲスト エージェント拡張機能の適切なバージョンも必要です。 Azure 仮想マシン エージェントの前提条件が満たされ、サポートされているバージョンの仮想マシン エージェントが使用されている場合は、拡張機能のバージョンがプラットフォームによって自動的に管理および更新されます。
 

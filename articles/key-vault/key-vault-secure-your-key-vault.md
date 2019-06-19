@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: ambapat
-ms.openlocfilehash: a88451403f242c39212c80e3c7425a901c6819cc
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 67925f2123f2a4f2524002eb075754c38fad4b42
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64725277"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67118982"
 ---
 # <a name="secure-access-to-a-key-vault"></a>キー コンテナーへのアクセスをセキュリティで保護する
 
@@ -63,7 +63,7 @@ Azure サブスクリプション内でキー コンテナーを作成すると�
 リソース グループ内にキー コンテナーを作成し、Azure AD を使用してアクセスを管理します。 リソース グループ内のキー コンテナーを管理する権限をユーザーまたはグループに付与します。 適切な RBAC ロールを割り当てることにより、特定のスコープ レベルでアクセス権を付与します。 キー コンテナーを管理するためのアクセス権をユーザーに付与するには、定義済みの `key vault Contributor` ロールを特定のスコープでそのユーザーに割り当てます。 RBAC ロールには、次のスコープ レベルを割り当てることができます。
 
 - **サブスクリプション**:サブスクリプション レベルで割り当てられた RBAC ロールは、そのサブスクリプション内のすべてのリソース グループとリソースに適用されます。
-- **[リソース グループ]**:リソース グループ レベルで割り当てられた RBAC ロールは、そのリソース グループ内のすべてのリソースに適用されます。
+- **[リソース グループ]** :リソース グループ レベルで割り当てられた RBAC ロールは、そのリソース グループ内のすべてのリソースに適用されます。
 - **特定のリソース**: 特定のリソースに対して割り当てられた RBAC ロールは、そのリソースに適用されます。 この場合、リソースは特定のキー コンテナーです。
 
 定義済みのロールが複数あります。 定義済みのロールがニーズに合わない場合は、独自のロールを定義できます。 詳細については、[RBAC: 組み込みのロール](../role-based-access-control/built-in-roles.md)に関するページをご覧ください。

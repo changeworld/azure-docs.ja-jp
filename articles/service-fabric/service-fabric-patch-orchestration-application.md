@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 2/01/2019
 ms.author: brkhande
 ms.openlocfilehash: ccc0399b6ac886ec8d9ef7d207c3539f1d078070
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65951922"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Service Fabric クラスターでの Windows オペレーティング システムへのパッチの適用
@@ -293,7 +293,7 @@ NodeAgentNTService は、[修復タスク](https://docs.microsoft.com/dotnet/api
 
    さらに確認する必要がある場合は、特定の VM (複数可) にサインインして、Windows イベント ログを使用して問題の詳細を見つけます。 上記の修復タスクは、以下の実行プログラムのサブステートだけを持つことができます。
 
-      ExecutorSubState | 詳細
+      ExecutorSubState | Detail
     -- | -- 
       None=1 |  ノードに実行中の操作がなかったことを意味します。 可能な状態遷移。
       DownloadCompleted=2 | ダウンロード操作が成功したか、一部失敗したか、失敗したかを示します。

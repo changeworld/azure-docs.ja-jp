@@ -15,10 +15,10 @@ ms.reviewer: maghan
 manager: craigg
 robots: noindex
 ms.openlocfilehash: 5f2627932eb2fd427d934eba322230222b5e6958
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66002944"
 ---
 # <a name="troubleshoot-data-factory-issues"></a>Data Factory のトラブルシューティング
@@ -63,7 +63,7 @@ Data Management Gateway の高速セットアップを起動するには、Inter
 * ポータルの同じブレードに表示される **[手動セットアップ]** リンクを使用します。 この方法を使用して、インストール ファイルをダウンロードし、手動で実行します。 インストールが成功すると、[Data Management Gateway Configuration (Data Management Gateway の構成)] ダイアログ ボックスが表示されます。 ポータル画面の **キー** をコピーし、構成マネージャーでそれを使用して、手動でゲートウェイをサービスに登録します。  
 
 ### <a name="problem-fail-to-connect-to-on-premises-sql-server"></a>問題:オンプレミス SQL Server に接続できない
-ゲートウェイ コンピューターで **Data Management Gateway 構成マネージャー**を起動し、**[トラブルシューティング]** タブを使用して、ゲートウェイ コンピューターから SQL Server への接続をテストします。 接続/ゲートウェイに関する問題のトラブルシューティングのヒントについては、 [ゲートウェイの問題のトラブルシューティング](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) に関するセクションをご覧ください。   
+ゲートウェイ コンピューターで **Data Management Gateway 構成マネージャー**を起動し、 **[トラブルシューティング]** タブを使用して、ゲートウェイ コンピューターから SQL Server への接続をテストします。 接続/ゲートウェイに関する問題のトラブルシューティングのヒントについては、 [ゲートウェイの問題のトラブルシューティング](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) に関するセクションをご覧ください。   
 
 ### <a name="problem-input-slices-are-in-waiting-state-for-ever"></a>問題:入力スライスの状態が Waiting のままになっている
 このスライスの状態は、さまざまな理由から **Waiting** になっている可能性があります。 一般的な理由の 1 つとして、**external** プロパティが **true** に設定されていないことが挙げられます。 Azure Data Factory の範囲外で生成されるデータセットの場合、 **external** プロパティによるマーキングが必要です。 このプロパティは、データが外部データであり、データ ファクトリ内のパイプラインでサポートされていないことを示します。 それぞれのストアでデータが使用可能になると、データ スライスは **Ready** とマーキングされます。

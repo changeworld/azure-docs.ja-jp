@@ -7,13 +7,13 @@ ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 01/29/2018
-ms.openlocfilehash: 883e81572218e39d84ad8793423b02468d49d00a
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.date: 06/10/2019
+ms.openlocfilehash: fbc68b551db1f68fe253a833ad26c88de1b92f30
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58294061"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67055370"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>IoT Hub のデバイス ツインの理解と使用
 
@@ -119,7 +119,7 @@ ms.locfileid: "58294061"
 
 ### <a name="desired-property-example"></a>必要なプロパティの例
 
-上記の例では、ソリューション バックエンドとデバイス アプリが `telemetryConfig` デバイス ツインの必要なプロパティと報告されたプロパティを使用して、デバイスのテレメトリ構成を同期しています。 例: 
+上記の例では、ソリューション バックエンドとデバイス アプリが `telemetryConfig` デバイス ツインの必要なプロパティと報告されたプロパティを使用して、デバイスのテレメトリ構成を同期しています。 例:
 
 1. ソリューション バックエンドでは、必要なプロパティが必要な構成値で設定されます。 以下は、ドキュメント内の必要なプロパティ セットを使用した部分です。
 
@@ -285,7 +285,7 @@ ms.locfileid: "58294061"
 
 IoT Hub は、各 JSON オブジェクトが最後に更新されたときのタイムスタンプを、デバイス ツインの必要なプロパティと報告されるプロパティで保持します。 タイムスタンプは UTC であり、[ISO8601](https://en.wikipedia.org/wiki/ISO_8601) 形式の `YYYY-MM-DDTHH:MM:SS.mmmZ` でエンコードされます。
 
-例: 
+例:
 
 ```json
 {

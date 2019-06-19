@@ -8,10 +8,10 @@ ms.date: 05/21/2019
 ms.author: rimman
 ms.reviewer: sngun
 ms.openlocfilehash: 7944980ec1806d2c8c4ab908c71efd971ee0d7aa
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65968959"
 ---
 # <a name="optimize-cost-with-reserved-capacity-in-azure-cosmos-db"></a>Azure Cosmos DB の予約容量でコストを最適化する
@@ -42,9 +42,9 @@ Azure Cosmos DB の予約容量は、[Azure portal](https://portal.azure.com) �
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。  
 
-2. **[すべてのサービス]** > **[予約]** > **[追加]** を選択します。  
+2. **[すべてのサービス]**  >  **[予約]**  >  **[追加]** を選択します。  
 
-3. **[製品の種類を選択してください]** ウィンドウで **[Azure Cosmos DB]** > **[選択]** をクリックして新しい予約を購入します。  
+3. **[製品の種類を選択してください]** ウィンドウで **[Azure Cosmos DB]**  >  **[選択]** をクリックして新しい予約を購入します。  
 
 4. 次の表で説明するように、必須フィールドに入力します。
 

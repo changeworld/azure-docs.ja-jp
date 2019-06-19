@@ -11,10 +11,10 @@ ms.service: cost-management
 manager: alavital
 ms.custom: ''
 ms.openlocfilehash: f1bf62596b6edcc6fff6572e431f3a777be93f05
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66002083"
 ---
 # <a name="use-cost-alerts-to-monitor-usage-and-spending"></a>コストのアラートを使用して使用量と支出を監視する
@@ -49,7 +49,7 @@ Azure portal では、予算はコストによって定義されます。 Azure 
 
 ## <a name="view-cost-alerts"></a>コストのアラートを表示する
 
-コストのアラートを表示表示するには、Azure portal で目的のスコープを開き、メニューの **[予算]** を選択します。 別のスコープに切り替えるには、**[スコープ]** ピルを使用します。 メニューの **[コストのアラート]** を選択します。 スコープの詳細については、「[Understand and work with scopes (スコープを理解して使用する)](understand-work-scopes.md)」を参照してください。
+コストのアラートを表示表示するには、Azure portal で目的のスコープを開き、メニューの **[予算]** を選択します。 別のスコープに切り替えるには、 **[スコープ]** ピルを使用します。 メニューの **[コストのアラート]** を選択します。 スコープの詳細については、「[Understand and work with scopes (スコープを理解して使用する)](understand-work-scopes.md)」を参照してください。
 
 ![Cost Management に表示されるアラートの例の画像](./media/cost-mgt-alerts-monitor-usage-spending/budget-alerts-fullscreen.png)
 

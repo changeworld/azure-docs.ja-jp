@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 05/30/2019
 ms.author: raynew
 ms.openlocfilehash: d2f7f83654f397cc6b93adbbebc25193155bcedb
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66399370"
 ---
 # <a name="prepare-network-mapping-for-hyper-v-vm-disaster-recovery-to-azure"></a>Hyper-V VM の Azure へのディザスター リカバリーのためにネットワーク マッピングを準備する
@@ -54,7 +54,7 @@ Azure にレプリケートすると、ネットワーク マッピングによ�
 
 このメカニズムを説明するために、次に例を示します。 ニューヨークとシカゴという 2 つの拠点がある組織を例にします。
 
-**場所** | **VMM サーバー** | **VM ネットワーク** | **マップ先**
+**Location** | **VMM サーバー** | **VM ネットワーク** | **マップ先**
 ---|---|---|---
 ニューヨーク | VMM-NewYork| VMNetwork1-NewYork | VMNetwork1-Chicago にマップされています
  |  | VMNetwork2-NewYork | マッピングなし
@@ -79,7 +79,7 @@ SilverCloud2 | <p>NA</p><p></p> | <p>LogicalNetwork1-NewYork</p><p>LogicalNetwor
 
 ### <a name="logical-and-vm-network-settings"></a>論理設定と VM ネットワークの設定
 
-**場所** | **論理ネットワーク** | **関連付けられた VM ネットワーク**
+**Location** | **論理ネットワーク** | **関連付けられた VM ネットワーク**
 ---|---|---
 ニューヨーク | LogicalNetwork1-NewYork | VMNetwork1-NewYork
 シカゴ | LogicalNetwork1-Chicago | VMNetwork1-Chicago

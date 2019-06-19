@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 05/26/2019
 ms.author: tomfitz
 ms.openlocfilehash: 3d0a6d97440404904c041369a4631fdd3fb618b4
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66257560"
 ---
 # <a name="create-azure-portal-user-interface-for-your-managed-application"></a>マネージド アプリケーション用の Azure ポータルのユーザー インターフェイスを作成する

@@ -9,11 +9,11 @@ ms.date: 10/24/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 35f987f26ce47c19e3d5eb1ca5d2bb32d0c7ad1b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66170179"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181032"
 ---
 1. ポータル ページの左側の **+** をクリックし、検索ボックスに「Virtual Network ゲートウェイ」と入力します。 **[結果]** から **[Virtual Network ゲートウェイ]** を探してクリックします。
 2. [仮想ネットワーク ゲートウェイ] ページの下部にある **[作成]** をクリックします。 **[仮想ネットワーク ゲートウェイの作成]** ページが開きます。

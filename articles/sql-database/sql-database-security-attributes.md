@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 6c495456a5a3295abe5460ff6b5586e41fab2d95
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66001033"
 ---
 # <a name="security-attributes-for-azure-sql-database"></a>Azure SQL Database のセキュリティ属性
@@ -52,8 +52,8 @@ Azure SQL Database には、[単一データベース](sql-database-single-index
 
 | セキュリティ属性 | はい/いいえ | メモ|
 |---|---|--|
-| 認証| はい | Azure Active Directory。 |
-| 承認| はい |  |
+| Authentication| はい | Azure Active Directory。 |
+| Authorization| はい |  |
 
 
 ## <a name="audit-trail"></a>監査証跡

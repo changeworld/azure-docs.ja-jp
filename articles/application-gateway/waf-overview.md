@@ -8,10 +8,10 @@ ms.date: 5/22/2019
 ms.author: amsriva
 ms.topic: conceptual
 ms.openlocfilehash: 9c2759222198f5df682d9e7a5363c0d9679e0fad
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65991399"
 ---
 # <a name="web-application-firewall-for-azure-application-gateway"></a>Azure Application Gateway の Web アプリケーション ファイアウォール

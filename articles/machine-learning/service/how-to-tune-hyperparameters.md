@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
 ms.openlocfilehash: cf9ac0271e140d719da9a72424e1c01021fdf6c4
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65957428"
 ---
 # <a name="tune-hyperparameters-for-your-model-with-azure-machine-learning-service"></a>Azure Machine Learning service でモデルのハイパーパラメーターを調整する
@@ -194,7 +194,7 @@ Azure Machine Learning サービスは、以下の早期終了ポリシーをサ
 
 * `slack_factor` または `slack_amount`: パフォーマンスが最高のトレーニング実行に関して許可される Slack。 `slack_factor` は、許可される Slack を比率として指定します。 `slack_amount` は、許可される Slack を比率ではなく絶対量として指定します。
 
-    たとえば、間隔 10 でバンディット ポリシーが適用されているとします。 主要メトリックを最大化するという目標があり、間隔 10 で最高のパフォーマンスになる実行で主要メトリック 0.8 が報告されたとします。 0.2 の `slack_factor` を使用してポリシーが指定された場合、間隔 10 の最高のメトリックを持つトレーニング実行のうち、0.66 (0.8/(1+`slack_factor`)) 未満のトレーニングが終了されます。 代わりに 0.2 の `slack_amount` を使用してポリシーが指定された場合、間隔 10 の最高のメトリックを持つトレーニング実行のうち、0.6 (0.8 - `slack_amount`) 未満のトレーニングが終了されます。
+    たとえば、間隔 10 でバンディット ポリシーが適用されているとします。 主要メトリックを最大化するという目標があり、間隔 10 で最高のパフォーマンスになる実行で主要メトリック 0.8 が報告されたとします。 0\.2 の `slack_factor` を使用してポリシーが指定された場合、間隔 10 の最高のメトリックを持つトレーニング実行のうち、0.66 (0.8/(1+`slack_factor`)) 未満のトレーニングが終了されます。 代わりに 0.2 の `slack_amount` を使用してポリシーが指定された場合、間隔 10 の最高のメトリックを持つトレーニング実行のうち、0.6 (0.8 - `slack_amount`) 未満のトレーニングが終了されます。
 * `evaluation_interval`: ポリシーを適用する頻度 (省略可能なパラメーター)。
 * `delay_evaluation`: 指定した間隔数の期間、最初のポリシー評価を遅延させます (省略可能なパラメーター)。
 

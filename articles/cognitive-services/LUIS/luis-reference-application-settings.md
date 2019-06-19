@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 05/29/2019
 ms.author: diberry
-ms.openlocfilehash: c19d328c3a5f4dd6dbe14ca94809e42c5655ea72
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: a8a1f6fe9372d013d310c557161ceb813b8a478b
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66391120"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67163635"
 ---
 # <a name="application-settings"></a>アプリケーションの設定
 
@@ -107,8 +107,8 @@ LUIS JSON アプリ ファイルに対して、分音記号の発話の正規化
 |分音記号を false に設定|分音記号を false に設定|
 |--|--|
 |`ä`|`a`|
-|`ö `|`o`| 
-|`ü `|`u`| 
+|`ö`|`o`| 
+|`ü`|`u`| 
 
 #### <a name="italian-it-it-diacritics"></a>イタリア語 `it-it` の分音記号
 
@@ -121,7 +121,7 @@ LUIS JSON アプリ ファイルに対して、分音記号の発話の正規化
 |`í`|`i`| 
 |`î`|`i`| 
 |`ò`|`o`| 
-|`ó `|`o`| 
+|`ó`|`o`| 
 |`ù`|`u`|
 |`ú`|`u`|
 
@@ -134,7 +134,7 @@ LUIS JSON アプリ ファイルに対して、分音記号の発話の正規化
 |`á`|`a`|
 |`é`|`e`|
 |`í`|`i`| 
-|`ó `|`o`| 
+|`ó`|`o`| 
 |`ú`|`u`|
 |`ü`|`u`|
 |`ñ`|`u`|

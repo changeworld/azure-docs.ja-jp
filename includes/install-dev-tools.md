@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: jeconnoc
 ms.openlocfilehash: 26910fe2b0b45a6e31f9c907ac31d83a74a95775
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66125373"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181515"
 ---
 > [!NOTE]
 > このセクションを適切に実行するには、正常に動作している Node.js のインストールと、ご利用のプラットフォーム用の Azure SDK for Node.js が必要です。

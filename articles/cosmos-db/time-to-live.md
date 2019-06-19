@@ -8,10 +8,10 @@ ms.date: 05/21/2019
 ms.author: rimman
 ms.reviewer: sngun
 ms.openlocfilehash: 692e0ec575904ff0a70b8c73268d2df62e776bb6
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65978790"
 ---
 # <a name="time-to-live-ttl-in-azure-cosmos-db"></a>Azure Cosmos DB の Time to Live (TTL) 
@@ -28,7 +28,7 @@ Time to Live 値は秒数で設定され、項目が最後に変更された時�
 
    - 値が存在し "-1" (無限) に設定されている場合、既定で項目は期限切れになりません。
 
-   - 設定されており、値がいずれかの数 (*"n"*) に設定されている場合、項目は最終変更時刻から *"n"* 秒後に期限切れになります。
+   - 設定されており、値がいずれかの数 ( *"n"* ) に設定されている場合、項目は最終変更時刻から *"n"* 秒後に期限切れになります。
 
 2. **項目の Time to Live** (`ttl` を使用):
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 37455c278d665d05636ec120ca91b76153e53d16
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c21a923f06a768c0a9a0f2843a24583df7a7821d
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58894920"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67059651"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Azure App Service でのアプリの診断ログの有効化
 ## <a name="overview"></a>概要
@@ -39,7 +39,7 @@ App Service は、Web サーバーと Web アプリケーションの両方の�
 * **Web サーバーのログ記録** - [W3C 拡張ログ ファイル形式](/windows/desktop/Http/w3c-logging)を使用した、HTTP トランザクションに関する情報。 これは、処理された要求の数や特定の IP アドレスからの要求の数などの、全体的なサイト メトリックを調べるときに役立ちます。
 
 ### <a name="application-diagnostics"></a>アプリケーション診断
-アプリケーション診断では、Web アプリケーションによって生成された情報を取り込むことができます。 ASP.NET アプリケーションは、 [System.Diagnostics.Trace](/dotnet/api/system.diagnostics.trace) クラスを使用して、情報をアプリケーション診断ログに記録できます。 例: 
+アプリケーション診断では、Web アプリケーションによって生成された情報を取り込むことができます。 ASP.NET アプリケーションは、 [System.Diagnostics.Trace](/dotnet/api/system.diagnostics.trace) クラスを使用して、情報をアプリケーション診断ログに記録できます。 例:
 
     System.Diagnostics.Trace.TraceError("If you're seeing this, something bad happened");
 
@@ -48,7 +48,7 @@ App Service は、Web サーバーと Web アプリケーションの両方の�
 App Service では、アプリにコンテンツを発行したときのデプロイ情報もログに記録されます。 これは自動的に行われ、デプロイ ログの構成設定はありません。 デプロイ ログでは、デプロイが失敗した理由を特定できます。 たとえば、カスタムのデプロイ スクリプトを使用している場合は、デプロイ ログを使用して、スクリプトでエラーが発生する理由を特定できることがあります。
 
 ## <a name="enablediag"></a>診断を有効にする方法
-[Azure portal](https://portal.azure.com) で診断を有効にするには、アプリのページに移動し、**[設定]、[診断ログ]** の順にクリックします。
+[Azure portal](https://portal.azure.com) で診断を有効にするには、アプリのページに移動し、 **[設定]、[診断ログ]** の順にクリックします。
 
 <!-- todo:cleanup dogfood addresses in screenshot -->
 ![ログ パーツ](./media/web-sites-enable-diagnostic-log/logspart.png)
@@ -71,11 +71,11 @@ App Service では、アプリにコンテンツを発行したときのデプ�
 >
 >
 
-**Web サーバー ログ**の場合、**[ストレージ]** または **[ファイル システム]** を選択できます。 **[ストレージ]** を選択すると、ストレージ アカウントを選択でき、ログ書き込み先の BLOB コンテナーを指定できます。 
+**Web サーバー ログ**の場合、 **[ストレージ]** または **[ファイル システム]** を選択できます。 **[ストレージ]** を選択すると、ストレージ アカウントを選択でき、ログ書き込み先の BLOB コンテナーを指定できます。 
 
 ログをファイル システムに保存した場合、これらのファイルは、FTP によってアクセスするか、Azure CLI を使用して Zip アーカイブとしてダウンロードできます。
 
-既定で、ログは自動的に削除されません (**アプリケーション ログ (ファイルシステム)** を除く)。 ログを自動的に削除するには、**[リテンション期間 (日)]** フィールドを設定します。
+既定で、ログは自動的に削除されません (**アプリケーション ログ (ファイルシステム)** を除く)。 ログを自動的に削除するには、 **[リテンション期間 (日)]** フィールドを設定します。
 
 > [!NOTE]
 > [ストレージ アカウントのアクセス キーを再生成する](../storage/common/storage-create-storage-account.md)場合は、該当するログ構成を更新後のキーを使用するように設定し直す必要があります。 これを行うには、次の手順を実行します。
@@ -130,7 +130,7 @@ Visual Studio Application Insights には、ログをフィルターおよび検
 2. トレース リスナーのパッケージをプロジェクトに追加します。
    * プロジェクトを右クリックし、[NuGet パッケージの管理] を選択します。 ログを自動的に削除するには、 `Microsoft.ApplicationInsights.TraceListener` [詳細情報](../azure-monitor/app/asp-net-trace-logs.md)
 3. プロジェクトをアップロードして実行し、ログ データを生成します。
-4. [Azure Portal](https://portal.azure.com/) で、新しい Application Insights リソースを参照し、**[検索]** を開きます。 ログ データが、要求、使用状況、およびその他の製品利用統計情報と共に表示されます。 一部の製品利用統計情報については、表示されるまで数分かかる場合があります。[更新] をクリックします。 [詳細情報](../azure-monitor/app/diagnostic-search.md)
+4. [Azure Portal](https://portal.azure.com/) で、新しい Application Insights リソースを参照し、 **[検索]** を開きます。 ログ データが、要求、使用状況、およびその他の製品利用統計情報と共に表示されます。 一部の製品利用統計情報については、表示されるまで数分かかる場合があります。[更新] をクリックします。 [詳細情報](../azure-monitor/app/diagnostic-search.md)
 
 [Application Insights でのパフォーマンス追跡についての詳細情報](../azure-monitor/app/azure-web-apps.md)
 
@@ -152,11 +152,11 @@ Visual Studio Application Insights には、ログをフィルターおよび検
 
 このコマンドで、"appname" という名前のアプリに接続され、ログ イベントがアプリで発生したら、ウィンドウへの情報のストリーミングが開始されます。 /LogFiles ディレクトリ (d:/home/logfiles) に格納されており、末尾が .txt、.log、.htm のいずれかになっているファイルに書き込まれた情報は、ローカル コンソールにストリーミングされます。
 
-特定のイベント (エラーなど) をフィルター処理するには、 **-Filter** パラメーターを使用します。 例: 
+特定のイベント (エラーなど) をフィルター処理するには、 **-Filter** パラメーターを使用します。 例:
 
     az webapp log tail --name appname --resource-group myResourceGroup --filter Error
 
-特定のログの種類 (HTTP など) をフィルター処理するには、 **--Path** パラメーターを使用します。 例: 
+特定のログの種類 (HTTP など) をフィルター処理するには、 **--Path** パラメーターを使用します。 例:
 
     az webapp log tail --name appname --resource-group myResourceGroup --path http
 
@@ -205,7 +205,7 @@ BLOB に格納されるデータは次の例のようになります。
     2014-01-30T16:36:52,Error,mywebapp,6ee38a,635266966128818593,0,3096,9,An error occurred
 
 > [!NOTE]
-> ASP.NET Core の場合、ログ記録は [Microsoft.Extensions.Logging.AzureAppServices](https://www.nuget.org/packages/Microsoft.Extensions.Logging.AzureAppServices) プロバイダーを使用して実現されます。このプロバイダーは、BLOB コンテナーに追加のログ ファイルを置きます。 詳しくは、[Azure 内での ASP.NET Core のログ記録](/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#logging-in-azure)に関するページをご覧ください。
+> ASP.NET Core の場合、ログ記録は [Microsoft.Extensions.Logging.AzureAppServices](https://www.nuget.org/packages/Microsoft.Extensions.Logging.AzureAppServices) プロバイダーを使用して実現されます。このプロバイダーは、BLOB コンテナーに追加のログ ファイルを置きます。 詳しくは、[Azure 内での ASP.NET Core のログ記録](/aspnet/core/fundamentals/logging)に関するページをご覧ください。
 >
 >
 
@@ -215,7 +215,7 @@ BLOB に格納されるデータは次の例のようになります。
 ![失敗した要求をブラウザーで表示したところ](./media/web-sites-enable-diagnostic-log/tws-failedrequestinbrowser.png)
 
 > [!NOTE]
-> 失敗した要求の書式設定済みのトレースを表示する簡単な方法として、ポータル内のアプリのページに移動します。 左側のメニューから、**[問題の診断と解決]** を選択し、**[Failed Request Tracing Logs]\(失敗した要求トレースのログ\)** を検索し、アイコンをクリックして目的のトレースを参照して表示します。
+> 失敗した要求の書式設定済みのトレースを表示する簡単な方法として、ポータル内のアプリのページに移動します。 左側のメニューから、 **[問題の診断と解決]** を選択し、 **[Failed Request Tracing Logs]\(失敗した要求トレースのログ\)** を検索し、アイコンをクリックして目的のトレースを参照して表示します。
 >
 
 ### <a name="detailed-error-logs"></a>詳細なエラー ログ

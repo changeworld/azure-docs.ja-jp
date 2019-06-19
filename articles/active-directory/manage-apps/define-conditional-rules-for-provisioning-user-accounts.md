@@ -16,10 +16,10 @@ ms.author: mimart
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2c831fc7ab1a646d41c0dc08d0e1a66380fe1232
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65824732"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>スコープ フィルターを使用した属性ベースのアプリケーション プロビジョニング
@@ -65,7 +65,7 @@ Azure AD プロビジョニング サービスによって処理されるユー�
 スコープ フィルターは各 Azure AD ユーザー プロビジョニング コネクタの属性マッピングで設定されます。 次の手順では、[サポートされているアプリケーションの 1 つ](../saas-apps/tutorial-list.md)に自動プロビジョニングを既に設定しており、それにスコープ フィルターを追加するものと想定しています。
 
 ### <a name="create-a-scoping-filter"></a>スコープ フィルターを作成する
-1. [Azure ポータル](https://portal.azure.com)で、**[Azure Active Directory]** > **[エンタープライズ アプリケーション]** > **[すべてのアプリケーション]** セクションに移動します。
+1. [Azure ポータル](https://portal.azure.com)で、 **[Azure Active Directory]**  >  **[エンタープライズ アプリケーション]**  >  **[すべてのアプリケーション]** セクションに移動します。
 
 2. 自動プロビジョニングを設定しているアプリケーションを選択します (例: "ServiceNow")。
 
@@ -77,7 +77,7 @@ Azure AD プロビジョニング サービスによって処理されるユー�
 
 6. **[スコープ フィルターの追加]** を選択します。
 
-7. 照合対象としてソースの **[属性名]**、**[演算子]**、**[属性値]** を選択し、句を定義します。 次の演算子がサポートされています。
+7. 照合対象としてソースの **[属性名]** 、 **[演算子]** 、 **[属性値]** を選択し、句を定義します。 次の演算子がサポートされています。
 
    a. **EQUALS**。 評価される属性が (大文字と小文字の区別を含めて) 入力文字列値と完全に一致する場合、句は "true" を返します。
 

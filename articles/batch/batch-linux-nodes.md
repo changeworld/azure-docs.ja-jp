@@ -15,12 +15,12 @@ ms.workload: na
 ms.date: 06/01/2018
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e228e73283685988247c8d419ba0a97b8c7b2974
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 24576a46b47b22ef447793b4105730ed2755701d
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57546967"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67050637"
 ---
 # <a name="provision-linux-compute-nodes-in-batch-pools"></a>Batch プールでの Linux コンピューティング ノードのプロビジョニング
 
@@ -48,7 +48,7 @@ Batch サービスでは、[仮想マシン スケール セット](../virtual-m
 | Publisher |Canonical |
 | プラン |UbuntuServer |
 | SKU |14.04.4-LTS |
-| Version |latest |
+| バージョン |latest |
 
 > [!TIP]
 > これらのプロパティと、Marketplace イメージを一覧表示する方法の詳細については、「[CLI または PowerShell を使用した Azure での Linux 仮想マシン イメージへの移動と選択](../virtual-machines/linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。 現時点では、すべての Marketplace イメージに Batch との互換性があるわけではありません。 詳細については、「 [ノード エージェント SKU](#node-agent-sku)」を参照してください。
@@ -91,8 +91,8 @@ node_count = 1
 
 # Initialize the Batch client
 creds = batchauth.SharedKeyCredentials(account, key)
-config = batch.BatchServiceClientConfiguration(creds, base_url = batch_url)
-client = batch.BatchServiceClient(config)
+config = batch.BatchServiceClientConfiguration(creds, batch_url)
+client = batch.BatchServiceClient(creds, batch_url)
 
 # Create the unbound pool
 new_pool = batchmodels.PoolAddParameter(id = pool_id, vm_size = vm_size)

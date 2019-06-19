@@ -11,10 +11,10 @@ ms.date: 04/01/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.openlocfilehash: 56c15a9505b3f0e4344c9164268082da1ff7cc22
-ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65851564"
 ---
 # <a name="temporary-tables-in-sql-data-warehouse"></a>SQL Data Warehouse の一時テーブル
@@ -24,7 +24,7 @@ ms.locfileid: "65851564"
 特に、中間結果が一時的なものである変換中にデータを処理する場合に、一時テーブルが役立ちます。 SQL Data Warehouse では、一時テーブルはセッション レベルで存在します。  作成されたセッションのみで参照でき、セッションをログオフすると自動的に削除されます。  一時テーブルは、リモート ストレージではなくローカル ストレージに結果が書き込まれるため、パフォーマンス上の利点があります。
 
 ## <a name="create-a-temporary-table"></a>一時テーブルを作成する
-一時テーブルは、テーブル名にプレフィックス `#` を付けることで作成できます。  例: 
+一時テーブルは、テーブル名にプレフィックス `#` を付けることで作成できます。  例:
 
 ```sql
 CREATE TABLE #stats_ddl

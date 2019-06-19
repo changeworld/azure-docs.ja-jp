@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 03/28/2019
 ms.author: kumud
 ms.openlocfilehash: 266630cb7c9601af69073a6c9beb7d7ada9b8034
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65957472"
 ---
 # <a name="azure-standard-load-balancer-overview"></a>Azure Standard Load Balancer の概要
@@ -68,7 +68,7 @@ Standard Load Balancer バックエンド プールは、仮想ネットワー�
   
 Standard Load Balancer では、HTTPS アプリケーションを正確に監視するための [HTTPS 正常性プローブ](load-balancer-custom-probe-overview.md#httpprobe) (トランスポート層セキュリティ (TLS) ラッパーを使用する HTTP プローブ) のサポートが追加されます。  
 
-また、バックエンド プール全体で[プローブがダウン](load-balancer-custom-probe-overview.md#probedown)したときに、Standard Load Balancer は確立されたすべての TCP 接続の続行を許可します  (Basic Load Balancer は、すべてのインスタンスへのすべての TCP 接続を終了します)。
+また、バックエンド プール全体で[プローブがダウン](load-balancer-custom-probe-overview.md#probedown)したときに、Standard Load Balancer は確立されたすべての TCP 接続の続行を許可します (Basic Load Balancer は、すべてのインスタンスへのすべての TCP 接続を終了します)。
 
 詳しくは、「[Load Balancer の正常性プローブ](load-balancer-custom-probe-overview.md)」をご覧ください。
 

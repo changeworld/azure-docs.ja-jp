@@ -16,10 +16,10 @@ ms.date: 03/27/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9540cf882af6b11f0e8624e477ad336f6d5d9ad3
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65963685"
 ---
 # <a name="tutorial-configure-lucidchart-for-automatic-user-provisioning"></a>チュートリアル:LucidChart を構成し、自動ユーザー プロビジョニングに対応させる
@@ -57,21 +57,21 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 ### <a name="configure-automatic-user-account-provisioning-to-lucidchart-in-azure-ad"></a>Azure AD で LucidChart への自動ユーザー アカウント プロビジョニングを構成する
 
-1. [Azure Portal](https://portal.azure.com) で、**[Azure Active Directory]、[エンタープライズ アプリ]、[すべてのアプリケーション]** セクションの順に移動します。
+1. [Azure Portal](https://portal.azure.com) で、 **[Azure Active Directory]、[エンタープライズ アプリ]、[すべてのアプリケーション]** セクションの順に移動します。
 
-2. シングル サインオンのために LucidChart を既に構成している場合は、検索フィールドで LucidChart のインスタンスを検索します。 構成していない場合は、**[追加]** を選択してアプリケーション ギャラリーで **LucidChart** を検索します。 検索結果から LucidChart を選択してアプリケーションの一覧に追加します。
+2. シングル サインオンのために LucidChart を既に構成している場合は、検索フィールドで LucidChart のインスタンスを検索します。 構成していない場合は、 **[追加]** を選択してアプリケーション ギャラリーで **LucidChart** を検索します。 検索結果から LucidChart を選択してアプリケーションの一覧に追加します。
 
-3. LucidChart のインスタンスを選択してから、**[プロビジョニング]** タブを選択します。
+3. LucidChart のインスタンスを選択してから、 **[プロビジョニング]** タブを選択します。
 
 4. **[プロビジョニング モード]** を **[自動]** に設定します。
 
     ![LucidChart のプロビジョニング](./media/lucidchart-provisioning-tutorial/LucidChart1.png)
 
-5. **[管理者資格情報]** セクションで、LucidChart のアカウントによって生成された **[シークレット トークン]** を入力します (トークンは、LucidChart アカウントの **[チーム]** > **[アプリの統合]** > **[SCIM]** で確認できます)。
+5. **[管理者資格情報]** セクションで、LucidChart のアカウントによって生成された **[シークレット トークン]** を入力します (トークンは、LucidChart アカウントの **[チーム]**  >  **[アプリの統合]**  >  **[SCIM]** で確認できます)。
 
     ![LucidChart のプロビジョニング](./media/lucidchart-provisioning-tutorial/LucidChart2.png)
 
-6. Azure Portal で、**[テスト接続]** をクリックして Azure AD が LucidChart アプリに接続できることを確認します。 接続できない場合は、使用中の LucidChart アカウントに管理者アクセス許可があることを確認してから、手順 5 をもう一度試します。
+6. Azure Portal で、 **[テスト接続]** をクリックして Azure AD が LucidChart アプリに接続できることを確認します。 接続できない場合は、使用中の LucidChart アカウントに管理者アクセス許可があることを確認してから、手順 5 をもう一度試します。
 
 7. プロビジョニングのエラー通知を受け取るユーザーまたはグループの電子メール アドレスを **[通知用メール]** フィールドに入力して、[エラーが発生したときにメール通知を送信します] チェック ボックスをオンにします。
 
@@ -81,7 +81,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 10. **[属性マッピング]** セクションで、Azure AD から LucidChart に同期されるユーザー属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新処理で LucidChart のユーザー アカウントとの照合に使用されます。 [保存] ボタンをクリックして変更をコミットします。
 
-11. LucidChart に対して Azure AD プロビジョニング サービスを有効にするには、**[設定]** セクションで **[プロビジョニングの状態]** を **[オン]** に変更します。
+11. LucidChart に対して Azure AD プロビジョニング サービスを有効にするには、 **[設定]** セクションで **[プロビジョニングの状態]** を **[オン]** に変更します。
 
 12. **[Save]** をクリックします。
 

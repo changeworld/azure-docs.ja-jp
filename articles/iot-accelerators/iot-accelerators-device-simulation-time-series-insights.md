@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.openlocfilehash: 5d20adc11e0d679e12fd060e719593a50180db8e
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65834805"
 ---
 # <a name="use-time-series-insights-to-visualize-telemetry-sent-from-the-device-simulation-solution-accelerator"></a>Time Series Insights を使用して、デバイス シミュレーション ソリューション アクセラレータから送信されたテレメトリを視覚化する
@@ -57,7 +57,7 @@ Time Series Insights にテレメトリをストリーム配信するには、�
 
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
 
-1. **[リソースの作成]** > **[モノのインターネット (IoT)]** > **[Time Series Insights]** を選択します。
+1. **[リソースの作成]**  >  **[モノのインターネット (IoT)]**  >  **[Time Series Insights]** を選択します。
 
     ![新しい Time Series Insights](./media/iot-accelerators-device-simulation-time-series-insights/new-time-series-insights.png)
 
@@ -68,7 +68,7 @@ Time Series Insights にテレメトリをストリーム配信するには、�
     | 環境名 | 次のスクリーンショットでは、**Contoso-TSI** という名前を使用しています。 この手順を完了したら、独自の一意の名前を選択してください。 |
     | サブスクリプション | ドロップダウンから Azure サブスクリプションを選択します。 |
     | リソース グループ | **contoso-simulation**。 使用しているソリューション アクセラレータの名前を使用します。 |
-    | Location | この記事では、**[米国東部]** を使用します。 環境は、デバイス シミュレーション アクセラレータと同じリージョンに作成します。 |
+    | Location | この記事では、 **[米国東部]** を使用します。 環境は、デバイス シミュレーション アクセラレータと同じリージョンに作成します。 |
     | Sku |**S1** |
     | 容量 | **1** |
 
@@ -85,7 +85,7 @@ IoT Hub に接続する新しいイベント ソースを作成します。 前�
 
 1. Azure portal で、新しい Time Series 環境に移動します。
 
-1. 左側で、**[イベント ソース]** をクリックします。
+1. 左側で、 **[イベント ソース]** をクリックします。
 
     ![イベント ソースを表示する](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-event-sources.png)
 
@@ -98,7 +98,7 @@ IoT Hub に接続する新しいイベント ソースを作成します。 前�
     | Setting | 値 |
     | ------- | ----- |
     | イベント ソース名 | 次のスクリーンショットでは、**contoso-iot-hub** という名前を使用しています。 この手順を完了したら、独自の一意の名前を使用してください。 |
-    | ソース | **IoT Hub** |
+    | source | **IoT Hub** |
     | インポート オプション | **使用可能なサブスクリプションの IoT Hub を使用する** |
     | サブスクリプション ID | ドロップダウンから Azure サブスクリプションを選択します。 |
     | IoT Hub 名 | **contoso-simulation7d894**。 デバイス シミュレーション ソリューション アクセラレータからの実際の IoT Hub の名前を使用してください。 |
@@ -127,19 +127,19 @@ Time Series Insights エクスプローラーは、テレメトリを視覚化�
 
 1. Azure portal で、Time Series Insights の **[概要]** タブを選択します。
 
-1. Time Series Insights エクスプローラー Web アプリを開くには、**[環境を開く]** をクリックします。
+1. Time Series Insights エクスプローラー Web アプリを開くには、 **[環境を開く]** をクリックします。
 
     ![Time Series Insights エクスプローラー](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-environment.png)
 
-1. 時間選択パネルで、クイック タイム メニューから **[過去 30 分間]** を選択し、**[検索]** をクリックします。
+1. 時間選択パネルで、クイック タイム メニューから **[過去 30 分間]** を選択し、 **[検索]** をクリックします。
 
     ![Time Series Insights エクスプローラーでの検索](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-search-time.png)
 
-1. 左側の条件パネルで、**[メジャー]** として **[温度]** を選択し、**[分割基準]** の値として **[iothub-connection-device-id]** を選択します。
+1. 左側の条件パネルで、 **[メジャー]** として **[温度]** を選択し、 **[分割基準]** の値として **[iothub-connection-device-id]** を選択します。
 
     ![Time Series Insights エクスプローラーでのクエリ](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-query1.png)
 
-1. グラフを右クリックし、**[イベントの探索]** を選択します。
+1. グラフを右クリックし、 **[イベントの探索]** を選択します。
 
     ![Time Series Insights エクスプローラーでのイベント](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-explore-events.png)
 
@@ -155,7 +155,7 @@ Time Series Insights エクスプローラーは、テレメトリを視覚化�
 
     ![Time Series Insights エクスプローラーでのクエリの追加](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-new-query.png)
 
-1. 時間間隔として **[過去 30 分間]** を選択し、**[メジャー]** として **[湿度]** を選択し、**[分割基準]** の値として **[iothub-connection-device-id]** を選択します。
+1. 時間間隔として **[過去 30 分間]** を選択し、 **[メジャー]** として **[湿度]** を選択し、 **[分割基準]** の値として **[iothub-connection-device-id]** を選択します。
 
     ![Time Series Insights エクスプローラーでのクエリ](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-query2.png)
 
@@ -167,7 +167,7 @@ Time Series Insights エクスプローラーは、テレメトリを視覚化�
 
 さらに調べる場合は、ソリューション アクセラレータをデプロイしたままにします。
 
-ソリューション アクセラレータが不要になった場合は、[[プロビジョニングされたソリューション]](https://www.azureiotsolutions.com/Accelerators#dashboard) ページでそれを選択し、**[ソリューションの削除]** をクリックして削除してください。
+ソリューション アクセラレータが不要になった場合は、[[プロビジョニングされたソリューション]](https://www.azureiotsolutions.com/Accelerators#dashboard) ページでそれを選択し、 **[ソリューションの削除]** をクリックして削除してください。
 
 Time Series Insights 環境をソリューション アクセラレータのリソース グループに追加している場合、ソリューション アクセラレータを削除するとこの環境も自動的に削除されます。 それ以外の場合は、Azure portal から Time Series Insights 環境を手動で削除する必要があります。
 

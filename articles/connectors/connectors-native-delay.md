@@ -11,10 +11,10 @@ tags: connectors
 ms.topic: conceptual
 ms.date: 05/25/2019
 ms.openlocfilehash: 27475fb3f086dbc5166a473e9d657d2dab723938
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66297594"
 ---
 # <a name="delay-running-the-next-action-in-azure-logic-apps"></a>Azure Logic Apps で次のアクションの実行を遅延させる
@@ -56,7 +56,7 @@ ms.locfileid: "66297594"
    | プロパティ | JSON での名前 | 必須 | Type | 説明 |
    |----------|-----------|----------|------|-------------|
    | Count | count | はい | 整数 | 遅延する時間の単位数 |
-   | 単位 | unit | はい | String | 時間の単位 (`Second`、`Minute`、`Hour`、`Day`、`Week`、`Month` など) |
+   | 単位 | unit | はい | string | 時間の単位 (`Second`、`Minute`、`Hour`、`Day`、`Week`、`Month` など) |
    ||||||
 
 1. ワークフローで実行する他のすべてのアクションを追加します。
@@ -81,7 +81,7 @@ ms.locfileid: "66297594"
 
    | プロパティ | JSON での名前 | 必須 | Type | 説明 |
    |----------|-----------|----------|------|-------------|
-   | Timestamp | timestamp | はい | String | ワークフローを再開するための終了の日付と時刻であり、 <p>YYYY-MM-DDThh:mm:ssZ の形式を使用 <p>たとえば、2017 年 9 月 18 日午後 2:00 にする場合は、"2017-09-18T14:00:00Z" と指定します。 <p>**注:** この時間の形式は、[UTC の日付と時刻の形式](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) (ただし、[UTC オフセット](https://en.wikipedia.org/wiki/UTC_offset)を除く) で[日付と時刻に関する ISO 8601 規格](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)に従っている必要があります。 タイム ゾーンがない場合は、最後にスペースなしで文字 "Z" を追加する必要があります。 この "Z" は、同等の[航海時間](https://en.wikipedia.org/wiki/Nautical_time)を表します。 |
+   | Timestamp | timestamp | はい | string | ワークフローを再開するための終了の日付と時刻であり、 <p>YYYY-MM-DDThh:mm:ssZ の形式を使用 <p>たとえば、2017 年 9 月 18 日午後 2:00 にする場合は、"2017-09-18T14:00:00Z" と指定します。 <p>**注:** この時間の形式は、[UTC の日付と時刻の形式](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) (ただし、[UTC オフセット](https://en.wikipedia.org/wiki/UTC_offset)を除く) で[日付と時刻に関する ISO 8601 規格](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)に従っている必要があります。 タイム ゾーンがない場合は、最後にスペースなしで文字 "Z" を追加する必要があります。 この "Z" は、同等の[航海時間](https://en.wikipedia.org/wiki/Nautical_time)を表します。 |
    ||||||
 
 1. ワークフローで実行する他のすべてのアクションを追加します。

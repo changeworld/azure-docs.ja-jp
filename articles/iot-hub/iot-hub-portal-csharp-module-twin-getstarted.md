@@ -10,10 +10,10 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.openlocfilehash: 3b1872699b8b3ac72424f00cd74bb90b8b7be87f
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65873172"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-the-portal-and-net-device"></a>ポータルと .NET デバイスを使用した Azure IoT Hub モジュール ID とモジュール ツインの概要
@@ -65,7 +65,7 @@ IoT Hub 内にモジュール ID が正常に作成されたら、 シミュレ�
 
 ## <a name="create-a-visual-studio-project"></a>Visual Studio プロジェクトを作成する
 
-Visual Studio で、**[Console App (.NET Framework)]** プロジェクト テンプレートを使用し、Visual C# Windows クラシック デスクトップ プロジェクトを既存のソリューションに追加します。 .NET Framework のバージョンが 4.6.1 以降であることを確認します。 プロジェクトの名前を **UpdateModuleTwinReportedProperties** に設定します。
+Visual Studio で、 **[Console App (.NET Framework)]** プロジェクト テンプレートを使用し、Visual C# Windows クラシック デスクトップ プロジェクトを既存のソリューションに追加します。 .NET Framework のバージョンが 4.6.1 以降であることを確認します。 プロジェクトの名前を **UpdateModuleTwinReportedProperties** に設定します。
 
   ![Visual Studio プロジェクトを作成する](./media/iot-hub-csharp-csharp-module-twin-getstarted/update-twins-csharp1.png)
 
@@ -159,7 +159,7 @@ private static void ConnectionStatusChangeHandler(ConnectionStatus status, Conne
 
 ## <a name="run-the-apps"></a>アプリの実行
 
-これで、アプリを実行する準備が整いました。 Visual Studio のソリューション エクスプローラーでソリューションを右クリックし、 **[スタートアップ プロジェクトの設定]** をクリックします。 コンソール アプリの動作として、**[マルチ スタートアップ プロジェクト]** を選択し、**[起動する]** を選択します。 次に、F5 キーを押して、両方のアプリケーションを実行します。
+これで、アプリを実行する準備が整いました。 Visual Studio のソリューション エクスプローラーでソリューションを右クリックし、 **[スタートアップ プロジェクトの設定]** をクリックします。 コンソール アプリの動作として、 **[マルチ スタートアップ プロジェクト]** を選択し、 **[起動する]** を選択します。 次に、F5 キーを押して、両方のアプリケーションを実行します。
 
 ## <a name="next-steps"></a>次の手順
 

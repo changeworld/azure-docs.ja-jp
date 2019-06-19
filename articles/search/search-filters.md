@@ -6,15 +6,15 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 05/13/2019
+ms.date: 06/13/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 1871fee2734d347ff54d6aa70d90d1c28bd1f6f1
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 8676ad48bc4fab6149db00d778349ac1acd7223d
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65597285"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67062390"
 ---
 # <a name="filters-in-azure-search"></a>Azure Search のフィルター 
 
@@ -158,11 +158,11 @@ REST API では、フィルター可能の設定は単純型フィールドの�
 
 ### <a name="approaches-for-filtering-on-text"></a>テキストをフィルター処理するためのアプローチ
 
-| アプローチ | 説明 | いつ使用するか | 
+| アプローチ | 説明 | いつ使用するか |
 |----------|-------------|-------------|
-| [search.in](query-odata-filter-orderby-syntax.md) | 区切られた文字列のリストに対してフィールドを照合する関数です。 | [セキュリティ フィルター](search-security-trimming-for-azure-search.md)や、多数の未加工テキスト値を文字列フィールドと照合する必要があるフィルターに推奨されます。 **search.in** 関数は、速度を重視して設計されているため、`eq` と `or` を使用して各文字列とフィールドを明示的に比較するよりもはるかに高速です。 | 
-| [search.ismatch](query-odata-filter-orderby-syntax.md) | フルテキスト検索操作と、厳格なブール型フィルター操作を同じフィルター式に混在させることができる関数です。 | 1 つの要求で複数の検索フィルターを組み合わせる場合は、**search.ismatch** (または、このスコア付けバージョンである **search.ismatchscoring**) を使用します。 また、*contains* フィルターに使用して、大きな文字列内の一部の文字列をフィルターすることができます。 |
-| [$filter = フィールド演算子文字列](query-odata-filter-orderby-syntax.md) | ユーザー定義の式は、フィールド、演算子、および値で構成されます。 | 文字列フィールドと文字列値の間の完全一致を検索する場合は、これを使用します。 |
+| [`search.in`](search-query-odata-search-in-function.md) | 区切られた文字列のリストに対してフィールドを照合する関数です。 | [セキュリティ フィルター](search-security-trimming-for-azure-search.md)や、多数の未加工テキスト値を文字列フィールドと照合する必要があるフィルターに推奨されます。 **search.in** 関数は、速度を重視して設計されているため、`eq` と `or` を使用して各文字列とフィールドを明示的に比較するよりもはるかに高速です。 | 
+| [`search.ismatch`](search-query-odata-full-text-search-functions.md) | フルテキスト検索操作と、厳格なブール型フィルター操作を同じフィルター式に混在させることができる関数です。 | 1 つの要求で複数の検索フィルターを組み合わせる場合は、**search.ismatch** (または、このスコア付けバージョンである **search.ismatchscoring**) を使用します。 また、*contains* フィルターに使用して、大きな文字列内の一部の文字列をフィルターすることができます。 |
+| [`$filter=field operator string`](search-query-odata-comparison-operators.md) | ユーザー定義の式は、フィールド、演算子、および値で構成されます。 | 文字列フィールドと文字列値の間の完全一致を検索する場合は、これを使用します。 |
 
 ## <a name="numeric-filter-fundamentals"></a>数値フィルターの基礎
 

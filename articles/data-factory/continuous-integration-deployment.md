@@ -13,10 +13,10 @@ ms.author: gamal
 ms.reviewer: maghan
 manager: craigg
 ms.openlocfilehash: 76962975705ff53a292f41a0a54e42c5f2991a2c
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66002778"
 ---
 # <a name="continuous-integration-and-delivery-cicd-in-azure-data-factory"></a>Azure Data Factory における継続的インテグレーションと継続的デリバリー (CI/CD)
@@ -36,11 +36,11 @@ Azure Data Factory では、継続的インテグレーションと継続的デ�
 
 ![](media/continuous-integration-deployment/continuous-integration-image1.png)
 
-次に、テスト データ ファクトリと実稼働データ ファクトリに移動し、**[ARM テンプレートのインポート]** を選択します。
+次に、テスト データ ファクトリと実稼働データ ファクトリに移動し、 **[ARM テンプレートのインポート]** を選択します。
 
 ![](media/continuous-integration-deployment/continuous-integration-image2.png)
 
-このアクションによって Azure Portal に移動して、エクスポートされたテンプレートをインポートできます。 **[Build your own template in the editor]\(エディターで独自のテンプレートをビルド\)**、**[ファイルの読み込み]** の順に選択し、生成された Resource Manager テンプレートを選択します。 設定を入力します。データ ファクトリとパイプライン全体が、実稼働環境にインポートされます。
+このアクションによって Azure Portal に移動して、エクスポートされたテンプレートをインポートできます。 **[Build your own template in the editor]\(エディターで独自のテンプレートをビルド\)** 、 **[ファイルの読み込み]** の順に選択し、生成された Resource Manager テンプレートを選択します。 設定を入力します。データ ファクトリとパイプライン全体が、実稼働環境にインポートされます。
 
 ![](media/continuous-integration-deployment/continuous-integration-image3.png)
 
@@ -50,7 +50,7 @@ Azure Data Factory では、継続的インテグレーションと継続的デ�
 
 ![](media/continuous-integration-deployment/continuous-integration-image5.png)
 
-**[接続文字列]**。 接続文字列の作成に必要な情報は、各コネクタに関する記事で見つかります。 たとえば、Azure SQL Database の場合は、「[Azure Data Factory を使用した Azure SQL Database との間でのデータのコピー](connector-azure-sql-database.md)」をご覧ください。 正しい接続文字列は、Data Factory UI でリソースに対するコード ビューを開いて確認することもできます (リンクされたサービスの場合など)。 ただし、コード ビューでは、接続文字列のパスワードまたはアカウント キーの部分は削除されます。 コード ビューを開くには、次のスクリーンショットで強調表示されているアイコンを選択します。
+**[接続文字列]** 。 接続文字列の作成に必要な情報は、各コネクタに関する記事で見つかります。 たとえば、Azure SQL Database の場合は、「[Azure Data Factory を使用した Azure SQL Database との間でのデータのコピー](connector-azure-sql-database.md)」をご覧ください。 正しい接続文字列は、Data Factory UI でリソースに対するコード ビューを開いて確認することもできます (リンクされたサービスの場合など)。 ただし、コード ビューでは、接続文字列のパスワードまたはアカウント キーの部分は削除されます。 コード ビューを開くには、次のスクリーンショットで強調表示されているアイコンを選択します。
 
 ![コード ビューを開いて接続文字列を確認する](media/continuous-integration-deployment/continuous-integration-codeview.png)
 
@@ -59,11 +59,11 @@ Data Factory UI で Azure Repos Git 統合を有効にした後で使用でき�
 
 1.  すべての開発者がパイプラインやデータセットなどの Data Factory リソースを作成できる開発データ ファクトリを Azure Repos で設定します。
 
-1.  開発者は、パイプラインなどのリソースを変更できます。 開発者は、変更を行った後、**[デバッグ]** を選択して、最新の変更を行ったパイプラインがどのように実行されるかを確認できます。
+1.  開発者は、パイプラインなどのリソースを変更できます。 開発者は、変更を行った後、 **[デバッグ]** を選択して、最新の変更を行ったパイプラインがどのように実行されるかを確認できます。
 
 1.  開発者は、変更の結果に満足したら、各自のブランチからマスター ブランチ (または、コラボレーション ブランチ) への pull request を作成して、同僚が変更をレビューできるようにします。
 
-1.  変更がマスター ブランチに反映されたら、開発者は、**[発行]** を選択して、開発ファクトリに発行できます。
+1.  変更がマスター ブランチに反映されたら、開発者は、 **[発行]** を選択して、開発ファクトリに発行できます。
 
 1.  チームは、変更をテスト ファクトリと実稼働ファクトリにレベル上げする準備ができたら、マスター ブランチから Resource Manager テンプレートをエクスポートできます。マスター ブランチがライブ開発 Data Factory に戻っている場合は、他のブランチからエクスポートできます。
 
@@ -107,11 +107,11 @@ Data Factory UI で Azure Repos Git 統合を有効にした後で使用でき�
 
     c.  **[リソース グループの作成または更新]** アクションを選択します。
 
-    d.  **[…]** を選択します  (**[テンプレート]** フィールドにあります)。 ポータルでの発行操作によって作成された Resource Manager テンプレートを参照します (*ARMTemplateForFactory.json*)。 `adf_publish` ブランチの `<FactoryName>` フォルダーでこのファイルを探します。
+    d.  **[…]** を選択します ( **[テンプレート]** フィールドにあります)。 ポータルでの発行操作によって作成された Resource Manager テンプレートを参照します (*ARMTemplateForFactory.json*)。 `adf_publish` ブランチの `<FactoryName>` フォルダーでこのファイルを探します。
 
     e.  パラメーター ファイルに対して同じことを行います。 コピーを作成したか既定のファイル *ARMTemplateParametersForFactory.json* を使用しているかに応じて、適切なファイルを選択します。
 
-    f.  **[…]** を選択します  (**[テンプレート パラメーターのオーバーライド]** フィールドの横にあります)。ターゲットの Data Factory の情報を入力します。 キー コンテナー の資格情報については、シークレットと同じ名前を次の形式で使用します。たとえばシークレットの名前が `cred1` の場合は、`"$(cred1)"` と入力します (引用符で囲みます)。
+    f.  **[…]** を選択します ( **[テンプレート パラメーターのオーバーライド]** フィールドの横にあります)。ターゲットの Data Factory の情報を入力します。 キー コンテナー の資格情報については、シークレットと同じ名前を次の形式で使用します。たとえばシークレットの名前が `cred1` の場合は、`"$(cred1)"` と入力します (引用符で囲みます)。
 
     ![](media/continuous-integration-deployment/continuous-integration-image9.png)
 
@@ -164,12 +164,12 @@ Azure Resource Manager テンプレートに渡すシークレットがある場
     ![](media/continuous-integration-deployment/continuous-integration-image8.png)
 
 ### <a name="grant-permissions-to-the-azure-pipelines-agent"></a>Azure Pipelines エージェントにアクセス許可を与える
-Azure Key Vault タスクは、初回はアクセス拒否エラーで失敗する可能性があります。 リリースのログをダウンロードし、Azure Pipelines エージェントへのアクセス許可を与えるコマンドがある `.ps1` ファイルを探します。 コマンドは直接実行するか、ファイルからプリンシパル ID をコピーし、Azure Portal でアクセス ポリシーを手動で追加できます  (必要な最低限のアクセス許可は、*Get*と*List* です)。
+Azure Key Vault タスクは、初回はアクセス拒否エラーで失敗する可能性があります。 リリースのログをダウンロードし、Azure Pipelines エージェントへのアクセス許可を与えるコマンドがある `.ps1` ファイルを探します。 コマンドは直接実行するか、ファイルからプリンシパル ID をコピーし、Azure Portal でアクセス ポリシーを手動で追加できます (必要な最低限のアクセス許可は、*Get*と*List* です)。
 
 ### <a name="update-active-triggers"></a>アクティブなトリガーを更新する
 アクティブなトリガーを更新しようとした場合、デプロイは失敗します。 アクティブなトリガーを更新するには、手動でそれらを停止し、デプロイ後に起動する必要があります。 次の例に示すように、この目的のための Azure Powershell タスクを追加できます。
 
-1.  リリースの [タスク] タブで、**[Azure Powershell]** を探します。
+1.  リリースの [タスク] タブで、 **[Azure Powershell]** を探します。
 
 1.  接続の種類として **[Azure Resource Manager]** を選択し、サブスクリプションを選択します。
 
@@ -1191,7 +1191,7 @@ Git が構成されている場合は、リンクされたテンプレートが�
 
 Data Factory のスクリプトは、必ず CI/CD パイプラインのデプロイ タスクの前後に追加してください。
 
-Git が構成されていない場合は、**[ARM テンプレートのエクスポート]** によって、リンクされたテンプレートにアクセスできます。
+Git が構成されていない場合は、 **[ARM テンプレートのエクスポート]** によって、リンクされたテンプレートにアクセスできます。
 
 ## <a name="best-practices-for-cicd"></a>CI/CD のベスト プラクティス
 

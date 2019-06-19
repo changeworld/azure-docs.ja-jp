@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 927987237b51a47d0c8b7c66054842b0a7ff09a7
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66473033"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Azure Active Directory Connect (同期): Office 365 リソースの優先されるデータの場所の構成
@@ -137,7 +137,7 @@ Multi-Geo で使用できる Office 365 の geo を次に示します。
 5. すべてのオブジェクトを含めるために、 **[スコープ フィルター]** は空のままにします。 スコープ フィルターは、実際の Azure AD Connect のデプロイに応じて調整が必要となる場合があります。
 6. **[変換]** タブに移動し、次の変換規則を実装します。
 
-    | フローの種類 | ターゲット属性 | ソース | 1 度だけ適用する | マージの種類 |
+    | フローの種類 | ターゲット属性 | source | 1 度だけ適用する | マージの種類 |
     | --- | --- | --- | --- | --- |
     |直接 | preferredDataLocation | ソース属性を選択します | オフ | アップデート |
 
@@ -174,7 +174,7 @@ Multi-Geo で使用できる Office 365 の geo を次に示します。
 
 6. **[変換]** タブに移動し、次の変換規則を実装します。
 
-    | フローの種類 | ターゲット属性 | ソース | 1 度だけ適用する | マージの種類 |
+    | フローの種類 | ターゲット属性 | source | 1 度だけ適用する | マージの種類 |
     | --- | --- | --- | --- | --- |
     | 直接 | preferredDataLocation | preferredDataLocation | オフ | プライマリの |
 

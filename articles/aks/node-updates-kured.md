@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 02/28/2019
 ms.author: iainfou
-ms.openlocfilehash: 1702d9558e27452006a2f015fd3312ac19362871
-ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
+ms.openlocfilehash: aee793dcfc5040b4a5f0f29fdae3247a5647e257
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65849867"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67055641"
 ---
 # <a name="apply-security-and-kernel-updates-to-linux-nodes-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) の Linux ノードにセキュリティとカーネルの更新を適用します
 
@@ -37,7 +37,7 @@ AKS クラスターでは、お客様の Kubernetes ノードが Azure 仮想マ
 
 ![kured を使用した AKS ノードの更新と再起動のプロセス](media/node-updates-kured/node-reboot-process.png)
 
-カーネルの更新プログラムなど、一部のセキュリティ更新プログラムでは、プロセスの最後にノードを再起動する必要があります。 再起動が必要な Linux ノードでは、*/var/run/reboot-required* という名前のファイルが作成されます。 この再起動プロセスは自動的には実行されません。
+カーネルの更新プログラムなど、一部のセキュリティ更新プログラムでは、プロセスの最後にノードを再起動する必要があります。 再起動が必要な Linux ノードでは、 */var/run/reboot-required* という名前のファイルが作成されます。 この再起動プロセスは自動的には実行されません。
 
 お客様独自のワークフローとプロセスを使用してノードの再起動を管理するか、`kured` を使用してプロセスを調整することができます。 `kured` を使用すると、クラスター内の各 Linux ノードでポッドを実行する [DaemonSet][DaemonSet] がデプロイされます。 DaemonSet 内のこれらのポッドによって */var/run/reboot-required* ファイルの存在が監視され、ノードの再起動プロセスが開始されます。
 
@@ -58,18 +58,19 @@ AKS には別途、クラスターを "*アップグレード*" するための�
 
 ```console
 kubectl apply -f https://github.com/weaveworks/kured/releases/download/1.2.0/kured-1.2.0-dockerhub.yaml
+```
 
-You can also configure additional parameters for `kured`, such as integration with Prometheus or Slack. For more information about additional configuration parameters, see the [kured installation docs][kured-install].
+`kured` には、Prometheus や Slack との統合など、追加のパラメーターを構成することもできます。 追加の構成パラメーターの詳細については、[kured のインストール ドキュメント][kured-install]を参照してください。
 
-## Update cluster nodes
+## <a name="update-cluster-nodes"></a>クラスター ノードを更新する
 
-By default, Linux nodes in AKS check for updates every evening. If you don't want to wait, you can manually perform an update to check that `kured` runs correctly. First, follow the steps to [SSH to one of your AKS nodes][aks-ssh]. Once you have an SSH connection to the Linux node, check for updates and apply them as follows:
+既定では、AKS の Linux ノードによって更新プログラムの有無が毎晩チェックされます。 待ちたくない場合は、手動で更新を行うことで、`kured` が正常に実行されていることを確認できます。 まず、[お客様の AKS ノードのいずれかに SSH で接続][aks-ssh]する手順に従ってください。 Linux ノードに SSH で接続したら、次のように更新プログラムの有無をチェックして適用します。
 
 ```console
 sudo apt-get update && sudo apt-get upgrade -y
 ```
 
-ノードの再起動を必要とする更新プログラムが適用された場合、*/var/run/reboot-required* にファイルが書き込まれます。 既定では、再起動を必要とするノードの有無が `Kured` によって 60 分おきにチェックされます。
+ノードの再起動を必要とする更新プログラムが適用された場合、 */var/run/reboot-required* にファイルが書き込まれます。 既定では、再起動を必要とするノードの有無が `Kured` によって 60 分おきにチェックされます。
 
 ## <a name="monitor-and-review-reboot-process"></a>再起動プロセスを監視、確認する
 

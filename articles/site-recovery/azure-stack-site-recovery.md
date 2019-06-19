@@ -9,10 +9,10 @@ ms.service: site-recovery
 ms.date: 05/30/2019
 ms.author: raynew
 ms.openlocfilehash: 11d409f904c43c0df4bbbd44fdb24531f2f989f6
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66399594"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>Azure Stack VM を Azure にレプリケートする
@@ -68,7 +68,7 @@ Site Recovery は、事業継続とディザスター リカバリー (BCDR) 戦
 **要件** | **詳細**
 --- | ---
 **Azure サブスクリプション アカウント** | Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/pricing/free-trial/)を作成してください。
-**Azure アカウントのアクセス許可** | 使用する Azure アカウントには、次を実行するためのアクセス許可が必要です。<br/><br/> - Recovery Services コンテナーを作成する<br/><br/> - このシナリオで使用する仮想マシンをリソース グループと仮想ネットワーク内に作成する<br/><br/> - 指定したストレージ アカウントに書き込む<br/><br/> 以下の点に注意してください。<br/><br/> - アカウントを作成した場合は、作成者がサブスクリプションの管理者となり、すべてのアクションを実行できます。<br/><br/> - 既存のサブスクリプションを使用するが、管理者でない場合は、管理者に依頼して所有者アクセス許可または共同作成者アクセス許可を割り当ててもらう必要があります。<br/><br/> - さらに詳細なアクセス許可が必要な場合は、[こちらの記事](https://docs.microsoft.com/azure/site-recovery/site-recovery-role-based-linked-access-control)をご覧ください。 
+**Azure アカウントのアクセス許可** | 使用する Azure アカウントには、次を実行するためのアクセス許可が必要です。<br/><br/> - Recovery Services コンテナーを作成する<br/><br/> - このシナリオで使用する仮想マシンをリソース グループと仮想ネットワーク内に作成する<br/><br/> - 指定したストレージ アカウントに書き込む<br/><br/> 以下の点に注意してください。<br/><br/> \- アカウントを作成した場合は、作成者がサブスクリプションの管理者となり、すべてのアクションを実行できます。<br/><br/> - 既存のサブスクリプションを使用するが、管理者でない場合は、管理者に依頼して所有者アクセス許可または共同作成者アクセス許可を割り当ててもらう必要があります。<br/><br/> - さらに詳細なアクセス許可が必要な場合は、[こちらの記事](https://docs.microsoft.com/azure/site-recovery/site-recovery-role-based-linked-access-control)をご覧ください。 
 **Azure Stack VM** | テナント サブスクリプション内に、Site Recovery 構成サーバーとしてデプロイされる Azure Stack VM が必要です。 
 
 

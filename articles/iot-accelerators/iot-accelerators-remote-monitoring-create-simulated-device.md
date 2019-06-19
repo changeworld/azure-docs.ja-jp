@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
 ms.openlocfilehash: 5044f8b85e59911633a4ffab509efc000948144a
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65832575"
 ---
 # <a name="create-and-test-a-new-simulated-device"></a>新しいシミュレートされたデバイスの作成とテスト
@@ -105,11 +105,11 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 ### <a name="run-the-storage-adapter-microservice"></a>ストレージ アダプター マイクロサービスを実行する
 
-Visual Studio Code で **remote-monitoring-services-dotnet-master\storage-adapter** フォルダーを開きます。 未解決の依存関係がある場合は、**[復元]** ボタンをクリックして修正します。
+Visual Studio Code で **remote-monitoring-services-dotnet-master\storage-adapter** フォルダーを開きます。 未解決の依存関係がある場合は、 **[復元]** ボタンをクリックして修正します。
 
 **storage-adapter/WebService/appsettings.ini** ファイルを開き、Cosmos DB 接続文字列を **documentDBConnectionString** 変数に割り当てます。
 
-マイクロサービスをローカルで実行するために、**[デバッグ] > [デバッグの開始]** をクリックします。
+マイクロサービスをローカルで実行するために、 **[デバッグ] > [デバッグの開始]** をクリックします。
 
 Visual Studio Code の**ターミナル** ウィンドウに、実行中のマイクロサービスからの出力が表示されます。これに、Web サービスの正常性チェック用の URL ([http://127.0.0.1:9022/v1/status](http://127.0.0.1:9022/v1/status)) が含まれます。 このアドレスに移動すると、状態が "OK: Alive and well" と表示されます。
 
@@ -123,7 +123,7 @@ Visual Studio Code の**ターミナル** ウィンドウに、実行中のマ�
 
 1. ダウンロードしたデバイス シミュレーション マイクロサービスのコピーから、次のファイルを新しいフォルダーにコピーします。
 
-    | ソース | 宛先 |
+    | source | 宛先 |
     | ------ | ----------- |
     | Services\data\devicemodels\chiller-01.json | C:\temp\devicemodels\chiller-01.json |
     | Services\data\devicemodels\scripts\chiller-01-state.js | C:\temp\devicemodels\scripts\chiller-01-state.js |
@@ -422,7 +422,7 @@ Visual Studio Code の**ターミナル** ウィンドウに、実行中のマ�
 
 ### <a name="run-the-device-simulation-microservice"></a>デバイス シミュレーション マイクロサービスを実行する
 
-Visual Studio Code の新しいインスタンスで、GitHub からダウンロードした **device-simulation-dotnet-master** フォルダーを開きます。 未解決の依存関係がある場合は、**[復元]** ボタンをクリックして修正します。
+Visual Studio Code の新しいインスタンスで、GitHub からダウンロードした **device-simulation-dotnet-master** フォルダーを開きます。 未解決の依存関係がある場合は、 **[復元]** ボタンをクリックして修正します。
 
 **WebService/appsettings.ini** ファイルを開き、Cosmos DB 接続文字列を **documentdb_connstring** 変数に割り当て、次のように設定を変更します。
 
@@ -432,7 +432,7 @@ device_models_folder = C:\temp\devicemodels\
 device_models_scripts_folder = C:\temp\devicemodels\scripts\
 ```
 
-マイクロサービスをローカルで実行するために、**[デバッグ] > [デバッグの開始]** をクリックします。
+マイクロサービスをローカルで実行するために、 **[デバッグ] > [デバッグの開始]** をクリックします。
 
 Visual Studio Code の**ターミナル** ウィンドウに、実行中のマイクロサービスからの出力が表示されます。
 
@@ -462,23 +462,23 @@ Postman を設定するには:
 
 1. ローカル コンピューターで Postman を開きます。
 
-1. **[File]\(ファイル\) > [Import]\(インポート\)** をクリックします。 次に、**[Choose Files]\(ファイルの選択\)** をクリックします。
+1. **[File]\(ファイル\) > [Import]\(インポート\)** をクリックします。 次に、 **[Choose Files]\(ファイルの選択\)** をクリックします。
 
-1. **device-simulation-dotnet-master/docs/postman** フォルダーに移動します。 **Azure IoT Device Simulation solution accelerator.postman_collection** と **Azure IoT Device Simulation solution accelerator.postman_environment** を選択し、**[Open]\(開く\)** をクリックします。
+1. **device-simulation-dotnet-master/docs/postman** フォルダーに移動します。 **Azure IoT Device Simulation solution accelerator.postman_collection** と **Azure IoT Device Simulation solution accelerator.postman_environment** を選択し、 **[Open]\(開く\)** をクリックします。
 
 1. **[Azure IoT Device Simulation solution accelerator]\(Azure IoT デバイス シミュレーション ソリューション アクセラレータ\)** を、送信可能な要求に展開します。
 
-1. **[No Environment]\(環境なし\)** をクリックし、**[Azure IoT Device Simulation solution accelerator]\(Azure IoT デバイス シミュレーション ソリューション アクセラレータ\)** を選択します。
+1. **[No Environment]\(環境なし\)** をクリックし、 **[Azure IoT Device Simulation solution accelerator]\(Azure IoT デバイス シミュレーション ソリューション アクセラレータ\)** を選択します。
 
 これで、デバイス シミュレーション マイクロサービスとやり取りするためのコレクションと環境が Postman ワークスペースに読み込まれました。
 
 シミュレーションを構成および実行するには:
 
-1. Postman コレクション内で、**[Create modified chiller simulation]\(変更された chiller シミュレーションの作成\)** を選択し、**[Send]\(送信\)** をクリックします。 この要求により、シミュレートされた chiller デバイスの種類のインスタンスが 4 つ作成されます。
+1. Postman コレクション内で、 **[Create modified chiller simulation]\(変更された chiller シミュレーションの作成\)** を選択し、 **[Send]\(送信\)** をクリックします。 この要求により、シミュレートされた chiller デバイスの種類のインスタンスが 4 つ作成されます。
 
 1. Azure CLI ウィンドウのイベント モニター出力に、新しい **internal_temperature** 値を含む、シミュレートされたデバイスからのテレメトリが表示されます。
 
-シミュレーションを停止するには、Postman で **[Stop simulation]\(シミュレーションの停止\)** 要求を選択し、**[Send]\(送信\)** をクリックします。
+シミュレーションを停止するには、Postman で **[Stop simulation]\(シミュレーションの停止\)** 要求を選択し、 **[Send]\(送信\)** をクリックします。
 
 ### <a name="create-a-simulation-with-the-lightbulb-device-type"></a>lightbulb デバイスの種類を使用してシミュレーションを作成する
 
@@ -486,15 +486,15 @@ Postman を設定するには:
 
 シミュレーションを構成および実行するには:
 
-1. Postman コレクション内で、**[Create lightbulb simulation]\(lightbulb シミュレーションの作成\)** を選択し、**[Send]\(送信\)** をクリックします。 この要求により、シミュレートされた lightbulb デバイスの種類のインスタンスが 2 つ作成されます。
+1. Postman コレクション内で、 **[Create lightbulb simulation]\(lightbulb シミュレーションの作成\)** を選択し、 **[Send]\(送信\)** をクリックします。 この要求により、シミュレートされた lightbulb デバイスの種類のインスタンスが 2 つ作成されます。
 
 1. Azure CLI ウィンドウのイベント モニター出力に、シミュレートされた lightbulb からのテレメトリが表示されます。
 
-シミュレーションを停止するには、Postman で **[Stop simulation]\(シミュレーションの停止\)** 要求を選択し、**[Send]\(送信\)** をクリックします。
+シミュレーションを停止するには、Postman で **[Stop simulation]\(シミュレーションの停止\)** 要求を選択し、 **[Send]\(送信\)** をクリックします。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-ローカルで実行されている 2 つのマイクロサービスを Visual Studio Code インスタンスで停止することができます (**[デバッグ] > [デバッグの停止]**)。
+ローカルで実行されている 2 つのマイクロサービスを Visual Studio Code インスタンスで停止することができます ( **[デバッグ] > [デバッグの停止]** )。
 
 IoT Hub および Cosmos DB のインスタンスが必要でなくなった場合は、不必要な課金を回避するために、Azure サブスクリプションからそれらを削除します。
 

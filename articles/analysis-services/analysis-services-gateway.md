@@ -8,19 +8,19 @@ ms.topic: conceptual
 ms.date: 04/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b35977061b7e5806d15f4b7b0087fcafa4f291ef
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 190394481f17310784f87c9e2f642eeea0b2597f
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65141157"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67062239"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>オンプレミス データ ゲートウェイを使用してオンプレミスのデータ ソースに接続する
 オンプレミスのデータ ゲートウェイでは、オンプレミスのデータ ソースとクラウドの Azure Analysis Services サーバーの間のセキュリティで保護されたデータ転送を提供します。 同じリージョン内の複数の Azure Analysis Services サーバーで機能するだけでなく、最新バージョンのゲートウェイは、Azure Logic Apps、Power BI、Power Apps、および Microsoft Flow でも機能します。 同じサブスクリプションと同じリージョン内の複数のサービスを 1 つのゲートウェイに関連付けることができます。 
 
 ゲートウェイの初回のセットアップは、4 つのパートで構成されるプロセスです。
 
-- **ダウンロードしてセットアップする**: この手順では、組織のコンピューターにゲートウェイ サービスをインストールします。 また、お使いの[テナントの](/previous-versions/azure/azure-services/jj573650(v=azure.100)#BKMK_WhatIsAnAzureADTenant) Azure AD アカウントを使用して Azure にサインインします。 Azure の B2B (ゲスト) アカウントはサポートされていません。
+- **ダウンロードしてセットアップする**: この手順では、組織のコンピューターにゲートウェイ サービスをインストールします。 また、お使いの[テナントの](/previous-versions/azure/azure-services/jj573650(v=azure.100)#what-is-an-azure-ad-tenant) Azure AD アカウントを使用して Azure にサインインします。 Azure の B2B (ゲスト) アカウントはサポートされていません。
 
 - **ゲートウェイを登録する**: この手順では、ゲートウェイの名前と回復キーを指定し、リージョンを選択し、ゲートウェイを Gateway Cloud Service に登録します。 ゲートウェイ リソースは任意のリージョンに登録できますが、Analysis Services サーバーと同じリージョンに登録することをお勧めします。 
 
@@ -178,7 +178,7 @@ ms.locfileid: "65141157"
 
 #### <a name="event-logs"></a>イベント ログ
 
-Data Management Gateway と PowerBIGateway のログは、**[アプリケーションとサービス ログ]** で確認できます。
+Data Management Gateway と PowerBIGateway のログは、 **[アプリケーションとサービス ログ]** で確認できます。
 
 ## <a name="next-steps"></a>次の手順
 * [オンプレミスのデータ ゲートウェイをインストールして構成する](analysis-services-gateway-install.md)   

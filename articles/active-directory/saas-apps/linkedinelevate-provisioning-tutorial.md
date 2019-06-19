@@ -16,10 +16,10 @@ ms.date: 03/28/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: adefb0c88e88a8bfb4b896c0788654e478ff4555
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65963691"
 ---
 # <a name="tutorial-configure-linkedin-elevate-for-automatic-user-provisioning"></a>チュートリアル:LinkedIn Elevate を構成し、自動ユーザー プロビジョニングに対応させる
@@ -59,7 +59,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 ### <a name="to-configure-automatic-user-account-provisioning-to-linkedin-elevate-in-azure-ad"></a>Azure AD で LinkedIn Elevate への自動ユーザー アカウント プロビジョニングを構成するには
 
-まず最初に、LinkedIn アクセス トークンを取得します。 エンタープライズ管理者の場合は、アクセス トークンをセルフ プロビジョニングできます。 アカウント センターで、**[設定] &gt; [グローバル設定]** をクリックすると、**[SCIM セットアップ]** パネルが開きます。
+まず最初に、LinkedIn アクセス トークンを取得します。 エンタープライズ管理者の場合は、アクセス トークンをセルフ プロビジョニングできます。 アカウント センターで、 **[設定] &gt; [グローバル設定]** をクリックすると、 **[SCIM セットアップ]** パネルが開きます。
 
 > [!NOTE]
 > リンクからではなく、アカウント センターに直接アクセスしている場合は、次の手順を使用してアクセスできます。
@@ -86,11 +86,11 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 6. ページを離れる前に、クリップボードまたはコンピューターにアクセス トークンを保存します。
 
-7. 次に、[Azure Portal](https://portal.azure.com) にサインインし、**[Azure Active Directory] > [エンタープライズ アプリ] > [すべてのアプリケーション]** セクションに移動します。
+7. 次に、[Azure Portal](https://portal.azure.com) にサインインし、 **[Azure Active Directory] > [エンタープライズ アプリ] > [すべてのアプリケーション]** セクションに移動します。
 
-8. シングル サインオンのために LinkedIn Elevate を既に構成している場合は、検索フィールドで LinkedIn Elevate のインスタンスを検索します。 構成していない場合は、**[追加]** を選択してアプリケーション ギャラリーで **LinkedIn Elevate** を検索します。 検索結果から LinkedIn Elevate を選択してアプリケーションの一覧に追加します。
+8. シングル サインオンのために LinkedIn Elevate を既に構成している場合は、検索フィールドで LinkedIn Elevate のインスタンスを検索します。 構成していない場合は、 **[追加]** を選択してアプリケーション ギャラリーで **LinkedIn Elevate** を検索します。 検索結果から LinkedIn Elevate を選択してアプリケーションの一覧に追加します。
 
-9. LinkedIn Elevate のインスタンスを選択してから、**[プロビジョニング]** タブを選択します。
+9. LinkedIn Elevate のインスタンスを選択してから、 **[プロビジョニング]** タブを選択します。
 
 10. **[プロビジョニング モード]** を **[自動]** に設定します。
 
@@ -100,7 +100,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
     * **[テナント URL]** フィールドに、「`https://api.linkedin.com`」と入力します。
 
-    * **[シークレット トークン]** フィールドに、手順 1 で生成したアクセス トークンを入力し、**[テスト接続]** をクリックします。
+    * **[シークレット トークン]** フィールドに、手順 1 で生成したアクセス トークンを入力し、 **[テスト接続]** をクリックします。
 
     * ポータルの右上に成功通知が表示されます。
 
@@ -112,7 +112,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
     ![LinkedIn Elevate のプロビジョニング](./media/linkedinelevate-provisioning-tutorial/linkedin_elevate4.PNG)
 
-15. LinkedIn Elevate に対して Azure AD プロビジョニング サービスを有効にするには、**[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
+15. LinkedIn Elevate に対して Azure AD プロビジョニング サービスを有効にするには、 **[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
 
 16. **[Save]** をクリックします。
 

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/19/2019
 ms.author: rkarlin
 ms.openlocfilehash: fd04e380b0b5732db1e39ffc9b5aa6047c7ef777
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66382982"
 ---
 # <a name="connect-your-cisco-asa-appliance"></a>Cisco ASA アプライアンスを接続する 

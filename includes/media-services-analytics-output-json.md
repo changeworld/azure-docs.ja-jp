@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: juliako
 ms.openlocfilehash: 065cb4daa9501ee658d364dad43b9e03798e4083
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66160954"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181589"
 ---
 このジョブでは、検出および追跡された顔に関するメタデータを含む JSON 出力ファイルを生成します。 そのメタデータには、画像内での顔の位置を示す座標と、追跡対象の個人を識別する顔 ID 番号が含まれます。 顔 ID 番号は、前向きの顔が失われたりフレーム内で重なったりするとリセットされる場合があり、同じ顔に複数の ID が割り当てられる可能性があります。
 

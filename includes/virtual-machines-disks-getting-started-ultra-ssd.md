@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/10/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 326382339e2b4aeaa488d3d7f76b7ff35f9bc620
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 7515c061467419412608bb8103136791845ae093
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66147771"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67133451"
 ---
 # <a name="enable-and-deploy-azure-ultra-ssds-preview"></a>Azure Ultra SSD を有効にしてデプロイする (プレビュー)
 
@@ -37,7 +37,8 @@ CLI: `az vm list-skus --resource-type disks --query "[?name=='UltraSSD_LRS'].loc
 |---------|---------|---------|---------|---------|---------|---------|
 |disks     |UltraSSD_LRS         |eastus2         |X         |         |         |         |
 
-コマンドから応答がなかった場合は、機能に対する登録がまだ保留中か、まだ承認されていません。
+> [!NOTE]
+> コマンドから応答がなかった場合は、機能に対する登録がまだ保留中か、まだ承認されていません。
 
 デプロイするゾーンがわかったので、この記事のデプロイ手順に従い、Ultra SSD を使用して最初の VM をデプロイします。
 

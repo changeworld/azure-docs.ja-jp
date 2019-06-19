@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: raynew
 ms.openlocfilehash: 67cbd37becb1fe87a7f4f554f574b6e5219c9243
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66399932"
 ---
 # <a name="run-a-disaster-recovery-drill-to-azure"></a>Azure へのディザスター リカバリー訓練を実行する 
@@ -62,7 +62,7 @@ ms.locfileid: "66399932"
 
 以下のシナリオでは、フェールオーバーに、通常 8 ～ 10 分かかる特別な中間ステップが必要となります。
 
-* 9.8 よりも前のバージョンのモビリティ サービスを実行している VMware VM
+* 9\.8 よりも前のバージョンのモビリティ サービスを実行している VMware VM
 * 物理サーバー
 * VMware Linux VM
 * 物理サーバーとして保護されている Hyper-V VM
@@ -104,7 +104,7 @@ ms.locfileid: "66399932"
 
 フェールオーバー後に RDP/SSH を使用して Azure VM に接続する場合は、表にまとめられている要件に従います。
 
-**フェールオーバー** | **場所** | **アクション**
+**フェールオーバー** | **Location** | **アクション**
 --- | --- | ---
 **Windows で実行中の Azure VM** | フェールオーバー前のオンプレミスのコンピューター | インターネット経由で Azure VM にアクセスするには、RDP を有効にし、TCP と UDP の規則が **[パブリック]** に追加されていることを確認し、 **[Windows ファイアウォール]**  >  **[許可されたアプリ]** のすべてのプロファイルで RDP が許可されていることを確認します。<br/><br/> サイト間接続で Azure VM にアクセスするには、コンピューターで RDP を有効にし、 **[Windows ファイアウォール]**  ->  **[許可されたアプリおよび機能]** の **[ドメイン] と [プライベート]** ネットワークで RDP が許可されていることを確認します。<br/><br/>  オペレーティング システムの SAN ポリシーが **[OnlineAll]** に設定されていることを確認します。 [詳細情報](https://support.microsoft.com/kb/3031135)。<br/><br/> フェールオーバーを開始する際は、実行待ちの Windows Update が VM にないことを確認してください。 フェールオーバーの実行時に Windows Update が開始された場合、更新が完了するまで VM にログインできなくなります。
 **Windows で実行中の Azure VM** | フェールオーバー後に Azure VM で |  VM の[パブリック IP アドレスを追加](https://aka.ms/addpublicip)します。<br/><br/> フェールオーバーされる VM (およびその接続先となる Azure サブネット) は、そのネットワーク セキュリティ グループの規則で、RDP ポートへの受信接続を許可する必要があります。<br/><br/> **[ブート診断]** をオンにして、VM のスクリーンショットを確認します。<br/><br/> 接続できない場合は、VM が実行中であることを確認したうえで、[トラブルシューティングのヒント](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx)を確認してください。
