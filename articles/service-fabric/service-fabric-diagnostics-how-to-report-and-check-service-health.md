@@ -94,7 +94,7 @@ Visual Studio の Service Fabric プロジェクト テンプレートには、�
         this.Partition.ReportInstanceHealth(healthInformation);
     }
     ```
-1. サービスが管理者特権で実行されている場合、またはクラスターが[セキュリティで保護`FabricClient`されていない場合は、次の手順に示すように、](service-fabric-cluster-security.md) を利用して正常性をレポートすることもできます。  
+1. サービスが管理者特権で実行されている場合、またはクラスターが[セキュリティで保護](service-fabric-cluster-security.md) されていない場合は、次の手順に示すように、`FabricClient` を利用して正常性をレポートすることもできます。  
    
     a. `var myDictionary` 宣言の後に `FabricClient` インスタンスを作成します。
    
