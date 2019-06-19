@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/14/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 5d11d5c0da350b9abf2e2b06a11a1690cf3f6922
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 69d7136396c3d989e63b8956d3e703cc7f9666c8
+ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66245460"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66687936"
 ---
 # <a name="transfer-data-with-azcopy-and-file-storage"></a>AzCopy とファイル ストレージでデータを転送する 
 
@@ -32,13 +32,13 @@ AzCopy `make` コマンドを使用し、ファイル共有を作成できます
 
 ## <a name="upload-files"></a>ファイルをアップロードする
 
-AzCopy `copy` コマンドを使用し、ローカル コンピューターからファイルやフォルダーをアップロードできます。
+AzCopy `copy` コマンドを使用して、ローカル コンピューターからファイルやディレクトリをアップロードすることができます。
 
 このセクションには、次の例が含まれています。
 
 > [!div class="checklist"]
 > * ファイルをアップロードする
-> * フォルダーをアップロードする
+> * ディレクトリをアップロードする
 > * ワイルドカード文字を使用してファイルをアップロードする
 
 > [!NOTE]
@@ -49,46 +49,46 @@ AzCopy `copy` コマンドを使用し、ローカル コンピューターか�
 |    |     |
 |--------|-----------|
 | **構文** | `azcopy cp "<local-file-path>" "https://<storage-account-name>.file.core.windows.net/<file-share-name>/<file-name>?<SAS-token>"` |
-| **例** | `azcopy copy "C:\myFolder\myTextFile.txt" "https://mystorageaccount.file.core.windows.net/myfileshare/myTextFile.txt?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D"` |
+| **例** | `azcopy copy "C:\myDirectory\myTextFile.txt" "https://mystorageaccount.file.core.windows.net/myfileshare/myTextFile.txt?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D"` |
 
-### <a name="upload-a-folder"></a>フォルダーをアップロードする
+### <a name="upload-a-directory"></a>ディレクトリをアップロードする
 
-この例では、フォルダー (とそのフォルダー内のすべてのファイル) がファイル共有にコピーされます。 結果的に、同じ名前でファイル共有にフォルダーが生成されます。
-
-|    |     |
-|--------|-----------|
-| **構文** | `azcopy copy "<local-folder-path>" "https://<storage-account-name>.file.core.windows.net/<file-share-name>?<SAS-token>" --recursive` |
-| **例** | `azcopy copy "C:\myFolder" "https://mystorageaccount.file.core.windows.net/myfileshare?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D" --recursive` |
-
-ファイル共有内のフォルダーにコピーするには、コマンド文字列でそのフォルダーの名前を指定します。
+この例では、ディレクトリ (とそのディレクトリ内のすべてのファイル) がファイル共有にコピーされます。 その結果、同じ名前でファイル共有にディレクトリが生成されます。
 
 |    |     |
 |--------|-----------|
-| **例** | `azcopy copy "C:\myFolder" "https://mystorageaccount.file.core.windows.net/myfileshare/myFileShareFolder?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D" --recursive` |
+| **構文** | `azcopy copy "<local-directory-path>" "https://<storage-account-name>.file.core.windows.net/<file-share-name>?<SAS-token>" --recursive` |
+| **例** | `azcopy copy "C:\myDirectory" "https://mystorageaccount.file.core.windows.net/myfileshare?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D" --recursive` |
 
-ファイル共有に存在しないフォルダーの名前を指定すると、AzCopy では、その名前で新しいフォルダーが作成されます。
-
-### <a name="upload-the-contents-of-a-folder"></a>フォルダーの内容をアップロードする
-
-ワイルドカード記号 (*) を使用することで、フォルダー自体をコピーせずにフォルダーの内容をアップロードできます。
+ファイル共有内のディレクトリにコピーするには、コマンド文字列でそのディレクトリの名前を指定します。
 
 |    |     |
 |--------|-----------|
-| **構文** | `azcopy copy "<local-folder-path>/*" "https://<storage-account-name>.file.core.windows.net/<file-share-name>/<folder-path>?<SAS-token>` |
-| **例** | `azcopy copy "C:\myFolder\*" "https://mystorageaccount.file.core.windows.net/myfileshare/myFileShareFolder?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D"` |
+| **例** | `azcopy copy "C:\myDirectory" "https://mystorageaccount.file.core.windows.net/myfileshare/myFileShareDirectory?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D" --recursive` |
+
+ファイル共有に存在しないディレクトリの名前を指定すると、AzCopy は、その名前で新しいディレクトリを作成します。
+
+### <a name="upload-the-contents-of-a-directory"></a>ディレクトリの内容をアップロードする
+
+ワイルドカード記号 (*) を使用することで、ディレクトリ自体をコピーせずにディレクトリの内容をアップロードできます。
+
+|    |     |
+|--------|-----------|
+| **構文** | `azcopy copy "<local-directory-path>/*" "https://<storage-account-name>.file.core.windows.net/<file-share-name>/<directory-path>?<SAS-token>` |
+| **例** | `azcopy copy "C:\myDirectory\*" "https://mystorageaccount.file.core.windows.net/myfileshare/myFileShareDirectory?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D"` |
 
 > [!NOTE]
-> すべてのサブフォルダーのファイルをアップロードするには、`--recursive` フラグを追加します。
+> すべてのサブディレクトリのファイルをアップロードするには、`--recursive` フラグを追加します。
 
 ## <a name="download-files"></a>ファイルをダウンロードする
 
-AzCopy `copy` コマンドを使用し、ファイル、フォルダー、ファイル共有をローカル コンピューターにダウンロードできます。
+AzCopy `copy` コマンドを使用して、ファイル、ディレクトリ、ファイル共有をローカル コンピューターにダウンロードできます。
 
 このセクションには、次の例が含まれています。
 
 > [!div class="checklist"]
 > * ファイルをダウンロードする
-> * フォルダーをダウンロードする
+> * ディレクトリをダウンロードする
 > * ワイルドカード文字を使用してファイルをダウンロードする
 
 > [!NOTE]
@@ -99,28 +99,28 @@ AzCopy `copy` コマンドを使用し、ファイル、フォルダー、ファ
 |    |     |
 |--------|-----------|
 | **構文** | `azcopy copy "https://<storage-account-name>.file.core.windows.net/<file-share-name>/<file-path>?<SAS-token>" "<local-file-path>"` |
-| **例** | `azcopy copy "https://mystorageaccount.file.core.windows.net/myfileshare/myTextFile.txt?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D" "C:\myFolder\myTextFile.txt"` |
+| **例** | `azcopy copy "https://mystorageaccount.file.core.windows.net/myfileshare/myTextFile.txt?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D" "C:\myDirectory\myTextFile.txt"` |
 
-### <a name="download-a-folder"></a>フォルダーをダウンロードする
-
-|    |     |
-|--------|-----------|
-| **構文** | `azcopy copy "https://<storage-account-name>.file.core.windows.net/<file-share-name>/<folder-path>?<SAS-token>" "<local-folder-path>" --recursive` |
-| **例** | `azcopy copy "https://mystorageaccount.file.core.windows.net/myfileshare/myFileShareFolder?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D" "C:\myFolder"  --recursive` |
-
-この例では結果的に、ダウンロードしたファイルがすべて含まれる `C:\myFolder\myFileShareFolder` という名前のフォルダーが生成されます。
-
-### <a name="download-the-contents-of-a-folder"></a>フォルダーの内容をダウンロードする
-
-ワイルドカード記号 (*) を使用することで、フォルダー自体をコピーせずにフォルダーの内容をダウンロードできます。
+### <a name="download-a-directory"></a>ディレクトリをダウンロードする
 
 |    |     |
 |--------|-----------|
-| **構文** | `azcopy copy "https://<storage-account-name>.file.core.windows.net/<file-share-name>/*?<SAS-token>" "<local-folder-path>/"` |
-| **例** | `azcopy copy "https://mystorageaccount.file.core.windows.net/myfileshare/myFileShareFolder/*?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D" "C:\myFolder"` |
+| **構文** | `azcopy copy "https://<storage-account-name>.file.core.windows.net/<file-share-name>/<directory-path>?<SAS-token>" "<local-directory-path>" --recursive` |
+| **例** | `azcopy copy "https://mystorageaccount.file.core.windows.net/myfileshare/myFileShareDirectory?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D" "C:\myDirectory"  --recursive` |
+
+この例では結果的に、ダウンロードしたファイルがすべて含まれる `C:\myDirectory\myFileShareDirectory` という名前のディレクトリが生成されます。
+
+### <a name="download-the-contents-of-a-directory"></a>ディレクトリの内容をダウンロードする
+
+ワイルドカード記号 (*) を使用することで、ディレクトリ自体をコピーせずにディレクトリの内容をダウンロードできます。
+
+|    |     |
+|--------|-----------|
+| **構文** | `azcopy copy "https://<storage-account-name>.file.core.windows.net/<file-share-name>/*?<SAS-token>" "<local-directory-path>/"` |
+| **例** | `azcopy copy "https://mystorageaccount.file.core.windows.net/myfileshare/myFileShareDirectory/*?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D" "C:\myDirectory"` |
 
 > [!NOTE]
-> すべてのサブフォルダーのファイルをダウンロードするには、`--recursive` フラグを追加します。
+> すべてのサブディレクトリのファイルをダウンロードするには、`--recursive` フラグを追加します。
 
 ## <a name="next-steps"></a>次の手順
 

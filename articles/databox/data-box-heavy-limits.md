@@ -8,14 +8,15 @@ ms.subservice: heavy
 ms.topic: article
 ms.date: 05/21/2019
 ms.author: alkohli
-ms.openlocfilehash: 115c1a3ab9a7ffe564924edce47f9915448f97e9
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: da518de4702925ebad29727e2bdce99e67d40249
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66245580"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66427750"
 ---
-# <a name="azure-data-box-heavy-limits"></a>Azure Data Box Heavy の制限
+# <a name="azure-data-box-heavy-limits-preview"></a>Azure Data Box Heavy の制限 (プレビュー)
+
 
 Azure Data Box Heavy デバイスをデプロイおよび運用する際には、以下の制限事項を考慮してください。 次の表で、Data Box の制限について説明します。
 

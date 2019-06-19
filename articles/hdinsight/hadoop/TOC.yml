@@ -2,23 +2,14 @@
   href: /azure/hdinsight
 - name: 概要
   items:
-    - name: HDInsight 上の Apache Hadoop について
+    - name: HDInsight の Apache Hadoop とは
       href: apache-hadoop-introduction.md
-      maintainContext: true
-    - name: HDInsight の Apache Hadoop アーキテクチャ
-      href: ../hdinsight-hadoop-architecture.md
-      maintainContext: true
-    - name: HDInsight の Apache Hadoop コンポーネント
-      href: ../hdinsight-component-versioning.md
-      maintainContext: true
-    - name: HDInsight 4.0
-      href: ../hdinsight-version-release.md
       maintainContext: true
 - name: クイック スタート
   items:
     - name: Apache Hadoop クラスターの作成 - ポータル
       href: apache-hadoop-linux-create-cluster-get-started-portal.md
-    - name: Apache Hadoop クラスターの作成 - Resource Manager テンプレート
+    - name: Apache Hadoop クラスターの作成 - テンプレート
       displayName: 'resource manager template, arm template, resource manager group'
       href: apache-hadoop-linux-tutorial-get-started.md
 - name: チュートリアル
@@ -45,6 +36,15 @@
       maintainContext: true
 - name: 概念
   items:
+    - name: HDInsight 4.0
+      href: ../hdinsight-version-release.md
+      maintainContext: true
+    - name: HDInsight の Apache Hadoop アーキテクチャ
+      href: ../hdinsight-hadoop-architecture.md
+      maintainContext: true
+    - name: HDInsight の Apache Hadoop コンポーネント
+      href: ../hdinsight-component-versioning.md
+      maintainContext: true
     - name: クラスターの容量計画
       href: ../hdinsight-capacity-planning.md
       maintainContext: true
@@ -471,9 +471,6 @@
   items:
     - name: Windows クラスター
       items:
-        - name: Windows クラスターを Linux クラスターに移行する
-          href: ../hdinsight-migrate-from-windows-to-linux.md
-          maintainContext: true
         - name: .NET ソリューションを Linux クラスターに移行する
           href: ../hdinsight-hadoop-migrate-dotnet-to-linux.md
           maintainContext: true

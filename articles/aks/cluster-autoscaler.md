@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 01/29/2019
+ms.date: 05/31/2019
 ms.author: iainfou
-ms.openlocfilehash: 23922ec02f7406b5cbc482c938dbcf6a56cad6d7
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 58552914f369c49eed33ccefbb7736cf8dbf1fc6
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66234153"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475648"
 ---
 # <a name="preview---automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>プレビュー - Azure Kubernetes Service (AKS) でのアプリケーションの需要を満たすようにクラスターを自動的にスケーリングする
 
@@ -21,18 +21,18 @@ Azure Kubernetes Service (AKS) のアプリケーションの需要に対応す�
 この記事では、AKS クラスターでクラスター オートスケーラーを有効にして管理する方法について説明します。 クラスター オートスケーラーはプレビューで、単一ノード プールがある AKS クラスターでのみテストする必要があります。
 
 > [!IMPORTANT]
-> AKS のプレビュー機能は、セルフサービス、オプトインです。 これらは、コミュニティからフィードバックやバグを収集するために提供されています。 プレビューで、これらの機能は、運用環境での使用を意図していません。 パブリック プレビュー段階の機能は、"ベスト エフォート" のサポートに該当します。 AKS テクニカル サポート チームによるサポートは、太平洋タイム ゾーン (PST) での営業時間内のみで利用できます。 詳細については、次のサポートに関する記事を参照してください。
+> AKS のプレビュー機能は、セルフサービス、オプトインです。 これらは、コミュニティからフィードバックやバグを収集するために提供されています。 プレビューで、これらの機能は、運用環境での使用を意図していません。 パブリック プレビュー段階の機能は、'ベスト エフォート' のサポートに該当します。 AKS テクニカル サポート チームによるサポートは、太平洋タイム ゾーン (PST) での営業時間内のみで利用できます。 詳細については、次のサポートに関する記事を参照してください。
 >
 > * [AKS サポート ポリシー][aks-support-policies]
 > * [Azure サポートに関する FAQ][aks-faq]
 
 ## <a name="before-you-begin"></a>開始する前に
 
-この記事では、Azure CLI バージョン 2.0.55 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli-install]に関するページを参照してください。
+この記事では、Azure CLI バージョン 2.0.65 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli-install]に関するページを参照してください。
 
 ### <a name="install-aks-preview-cli-extension"></a>aks-preview CLI 拡張機能をインストールする
 
-クラスター オートスケーラーをサポートする AKS クラスターは、仮想マシン スケール セットを使用し、かつ Kubernetes バージョン *1.12.4* 以降を実行している必要があります。 このスケール セット サポートはプレビュー段階です。 スケール セットを使用するクラスターをオプトインして作成するには、最初に以下の例に示すように、[az extension add][az-extension-add] コマンドを使用して *aks-preview* Azure CLI 拡張機能をインストールします。
+クラスター オートスケーラーをサポートする AKS クラスターは、仮想マシン スケール セットを使用し、かつ Kubernetes バージョン *1.12.7* 以降を実行している必要があります。 このスケール セット サポートはプレビュー段階です。 スケール セットを使用するクラスターをオプトインして作成するには、最初に以下の例に示すように、[az extension add][az-extension-add] コマンドを使用して *aks-preview* Azure CLI 拡張機能をインストールします。
 
 ```azurecli-interactive
 az extension add --name aks-preview
@@ -63,9 +63,10 @@ az provider register --namespace Microsoft.ContainerService
 
 ## <a name="limitations"></a>制限事項
 
-仮想マシン スケール セットを使用する AKS クラスターを作成および管理する際は、次の制限が適用されます。
+クラスター オートスケーラーを使用する AKS クラスターを作成および管理する場合には、次の制限が適用されます。
 
 * HTTP アプリケーションのルーティング アドオンは使用できません。
+* 複数のノード プール (現在、AKS でプレビュー段階) は、現在使用できません。
 
 ## <a name="about-the-cluster-autoscaler"></a>クラスター オートスケーラーについて
 

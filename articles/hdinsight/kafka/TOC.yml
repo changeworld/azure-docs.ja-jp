@@ -11,7 +11,7 @@
       href: apache-kafka-get-started.md
     - name: Apache Kafka クラスターの作成 - PowerShell
       href: apache-kafka-quickstart-powershell.md
-    - name: Apache Kafka クラスターの作成 - Resource Manager テンプレート
+    - name: Apache Kafka クラスターの作成 - テンプレート
       displayName: 'resource manager template, arm template, resource manager group'
       href: apache-kafka-quickstart-resource-manager-template.md
 - name: チュートリアル

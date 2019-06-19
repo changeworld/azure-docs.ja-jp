@@ -8,14 +8,14 @@ ms.subservice: heavy
 ms.topic: article
 ms.date: 05/22/2019
 ms.author: alkohli
-ms.openlocfilehash: 8cd2f96954cde367eb99d89e89bcf672b53dd590
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: b9e249885bd0e930773d4b374f85d72e60abdbdc
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66245578"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66427745"
 ---
-# <a name="azure-data-box-heavy-system-requirements"></a>Azure Data Box Heavy のシステム要件
+# <a name="azure-data-box-heavy-system-requirements-preview"></a>Azure Data Box Heavy のシステム要件 (プレビュー)
 
 この記事では、Azure Data Box Heavy デバイスとそのデバイスに接続するクライアントの重要なシステム要件について説明します。 この情報は、Data Box Heavy をデプロイする前によく確認し、デプロイ時やそれ以降の操作時にも、必要に応じて繰り返し参照することをお勧めします。
 

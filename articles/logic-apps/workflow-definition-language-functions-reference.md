@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: reference
 ms.date: 08/15/2018
-ms.openlocfilehash: b42d376be0d26c8ced60344793dbc8f7dd4a3d53
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 24e0a0ae2a6af964d3ed87d1817de6e5f403c9b1
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66303773"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66416350"
 ---
 # <a name="functions-reference-for-workflow-definition-language-in-azure-logic-apps-and-microsoft-flow"></a>Azure Logic Apps および Microsoft Flow でのワークフロー定義言語の関数リファレンス
 
@@ -246,7 +246,8 @@ Logic Apps が変換時にコンテンツ タイプを処理する方法の詳�
 | [formDataMultiValues](../logic-apps/workflow-definition-language-functions-reference.md#formDataMultiValues) | *form-data* または *form-encoded* アクション出力内のキー名と一致する値を含む配列を作成します。 |
 | [formDataValue](../logic-apps/workflow-definition-language-functions-reference.md#formDataValue) | アクションの *form-data* 出力または *form-encoded* 出力内のキー名と一致する単一の値を返します。 |
 | [item](../logic-apps/workflow-definition-language-functions-reference.md#item) | 配列に対する繰り返しアクションの内部で使うと、アクションの現在の繰り返しの間に配列の現在の項目を返します。 |
-| [items](../logic-apps/workflow-definition-language-functions-reference.md#items) | for-each または do-until ループの内部で使用すると、指定したループから現在の項目を返します。|
+| [items](../logic-apps/workflow-definition-language-functions-reference.md#items) | Foreach ループまたは Until ループ内で使用すると、指定したループから現在の項目を返します。|
+| [iterationIndexes](../logic-apps/workflow-definition-language-functions-reference.md#iterationIndexes) | Until ループ内で使用すると、現在の繰り返しのインデックス値を返します。 この関数は、入れ子になった Until ループ内で使用できます。 |
 | [listCallbackUrl](../logic-apps/workflow-definition-language-functions-reference.md#listCallbackUrl) | トリガーまたはアクションを呼び出す "コールバック URL" を返します。 |
 | [multipartBody](../logic-apps/workflow-definition-language-functions-reference.md#multipartBody) | 複数の部分を持つアクションの出力の特定の部分に対する本文を返します。 |
 | [parameters](../logic-apps/workflow-definition-language-functions-reference.md#parameters) | ワークフローの定義で記述されているパラメーターの値を返します。 |
@@ -2280,6 +2281,96 @@ items('<loopName>')
 items('myForEachLoopName')
 ```
 
+<a name="iterationIndexes"></a>
+
+### <a name="iterationindexes"></a>iterationIndexes
+
+Until ループ内の現在の繰り返しのインデックス値を返します。 この関数は、入れ子になった Until ループ内で使用できます。 
+
+```
+iterationIndexes('<loopName>')
+```
+
+| パラメーター | 必須 | Type | 説明 | 
+| --------- | -------- | ---- | ----------- | 
+| <*loopName*> | はい | String | Until ループの名前 | 
+||||| 
+
+| 戻り値 | Type | 説明 | 
+| ------------ | ---- | ----------- | 
+| <*index*> | 整数 | 指定された Until ループ内の現在の繰り返しのインデックス値 | 
+|||| 
+
+*例* 
+
+この例では、カウンター変数を作成し、カウンター値が 5 に達するまで、Until ループ内の各繰り返しの間に 1 つずつその変数を増分します。 また、この例では各繰り返しの現在のインデックスを追跡する変数も作成します。 Until ループで、各繰り返しの間にカウンターを増分し、カウンターの値を現在のインデックス値に割り当ててから、カウンターを増分します。 いつでも、現在のインデックス値を取得することによって、現在の繰り返しの回数を判別できます。
+
+```
+{
+   "actions": {
+      "Create_counter_variable": {
+         "type": "InitializeVariable",
+         "inputs": {
+            "variables": [ 
+               {
+                  "name": "myCounter",
+                  "type": "Integer",
+                  "value": 0
+               }
+            ]
+         },
+         "runAfter": {}
+      },
+      "Create_current_index_variable": {
+         "type": "InitializeVariable",
+         "inputs": {
+            "variables": [
+               {
+                  "name": "myCurrentLoopIndex",
+                  "type": "Integer",
+                  "value": 0
+               }
+            ]
+         },
+         "runAfter": {
+            "Create_counter_variable": [ "Succeeded" ]
+         }
+      },
+      "Until": {
+         "type": "Until",
+         "actions": {
+            "Assign_current_index_to_counter": {
+               "type": "SetVariable",
+               "inputs": {
+                  "name": "myCurrentLoopIndex",
+                  "value": "@variables('myCounter')"
+               },
+               "runAfter": {
+                  "Increment_variable": [ "Succeeded" ]
+               }
+            },
+            "Increment_variable": {
+               "type": "IncrementVariable",
+               "inputs": {
+                  "name": "myCounter",
+                  "value": 1
+               },
+               "runAfter": {}
+            }
+         },
+         "expression": "@equals(variables('myCounter'), 5),
+         "limit": {
+            "count": 60,
+            "timeout": "PT1H"
+         },
+         "runAfter": {
+            "Create_current_index_variable": [ "Succeeded" ]
+         }
+      }
+   }
+}
+```
+
 <a name="json"></a>
 
 ### <a name="json"></a>json
@@ -4093,7 +4184,7 @@ workflow().run.name
 
 <a name="xml"></a>
 
-### <a name="xml"></a>xml
+### <a name="xml"></a>Xml
 
 JSON オブジェクトを含む文字列の XML バージョンを返します。
 

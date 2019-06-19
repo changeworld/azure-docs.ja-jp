@@ -4,6 +4,11 @@
   items:
     - name: HDInsight での Apache Storm とは
       href: apache-storm-overview.md
+- name: クイック スタート
+  expanded: true
+  items:
+    - name: HDInsight での Apache Storm トポロジの作成
+      href: ./apache-storm-quickstart.md
 - name: 作業開始
   items:
     - name: Apache Storm クラスターを作成する

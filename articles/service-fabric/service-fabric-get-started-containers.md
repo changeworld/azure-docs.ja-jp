@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/25/2019
 ms.author: aljo
-ms.openlocfilehash: dbc8363052556f29633c069bcd82af5249a3406f
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 3bc67d7fdc582b6d45596b152bb5d58e41152a46
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306871"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66428120"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Windows で初めての Service Fabric コンテナー アプリケーションを作成する
 
@@ -38,7 +38,7 @@ ms.locfileid: "66306871"
 ## <a name="prerequisites"></a>前提条件
 
 * 次のものを実行している開発コンピューター。
-  * Visual Studio 2015 または Visual Studio 2017。
+  * Visual Studio 2015 または Visual Studio 2019。
   * [Service Fabric SDK およびツール](service-fabric-get-started.md)。
   *  Docker for Windows。 [Docker CE for Windows (安定版) を入手します](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description)。 Docker をインストールして起動したら、トレイ アイコンを右クリックし、 **[Switch to Windows containers]\(Windows コンテナーに切り替える\)** を選択します。 この手順は、Windows に基づいて Docker イメージを実行するために必要です。
 
@@ -338,7 +338,7 @@ NtTvlzhk11LIlae/5kjPv95r3lw6DHmV4kXLwiCNlcWPYIWBGIuspwyG+28EWSrHmN7Dt2WqEWqeNQ==
 
 ### <a name="configure-cluster-wide-credentials"></a>クラスター全体の資格情報を構成する
 
-6.3 ランタイム以降、Service Fabric では、アプリケーションから既定のリポジトリ資格情報として使用できるクラスター全体の資格情報を構成できるようになりました。
+6\.3 ランタイム以降、Service Fabric では、アプリケーションから既定のリポジトリ資格情報として使用できるクラスター全体の資格情報を構成できるようになりました。
 
 `true` または `false` の値を指定した `UseDefaultRepositoryCredentials` 属性を ApplicationManifest.xml の `ContainerHostPolicies` に追加することで、この機能を有効または無効にすることができます。
 
@@ -482,7 +482,7 @@ docker rmi myregistry.azurecr.io/samples/helloworldapp
 Windows Server コンテナーは、ホスト OS のすべてのバージョンで互換性はありません。 例:
  
 - Windows Server バージョン 1709 を使用してビルドされた Windows Server コンテナーは、Windows Server バージョン 2016 を実行しているホスト上では機能しません。 
-- Windows Server バージョン 2016 を使用してビルドされた Windows Server コンテナーは、Windows Server バージョン 1709 を実行しているホスト上で HYPER-V 分離モードでのみ機能します。 
+- Windows Server 2016 を使用してビルドされた Windows Server コンテナーは、Windows Server バージョン 1709 を実行しているホスト上で Hyper-V 分離モードでのみ機能します。 
 - Windows Server 2016 を使用してビルドされた Windows Server コンテナーでは、Windows Server 2016 で実行されているホスト上でプロセス分離モードで実行しているときに、コンテナーの OS とホスト OS のリビジョンが同じであることを確認する必要がある場合があります。
  
 詳細については、「[Windows コンテナーのバージョンの互換性](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility)」を参照してください。

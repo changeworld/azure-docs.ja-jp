@@ -2,14 +2,14 @@
 author: vhorne
 ms.service: application-gateway
 ms.topic: include
-ms.date: 3/26/2019
+ms.date: 6/5/2019
 ms.author: victorh
-ms.openlocfilehash: 65ed28c967164be4d239cd4d59b6b36f06caeced
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 592e1973344b231693077f8286a41dfd67a8d188
+ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66238172"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66689111"
 ---
 | Resource | 既定/上限 | Note |
 | --- | --- | --- |
@@ -37,5 +37,6 @@ ms.locfileid: "66238172"
 | 最大ファイル アップロード サイズ (標準) |2 GB | |
 | 最大ファイル アップロード サイズ (WAF) |中規模の WAF ゲートウェイ - 100 MB<br>大規模の WAF ゲートウェイ - 500 MB| |
 | WAF の本文サイズの制限 (ファイルがない場合)|128 KB||
+|WAF カスタム規則の最大数|100||
 
 <sup>1</sup> WAF 対応 SKU の場合は、最適なパフォーマンスを確保するためにリソース数を 40 に制限することをお勧めします。

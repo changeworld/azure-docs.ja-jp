@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/14/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: cc65d6d3f7e7dcc08ea29ecc8a299b556563135b
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 7d14de200f5301781130e01e75f1b7813389fa76
+ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66236302"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66688196"
 ---
 # <a name="get-started-with-azcopy"></a>AzCopy を使ってみる
 
@@ -28,7 +28,7 @@ AzCopy は、ストレージ アカウント間の BLOB またはファイル �
 
 ## <a name="download-azcopy"></a>AzCopy をダウンロードする
 
-まず、お使いのコンピューター上のフォルダーに AzCopy V10 実行可能ファイルをダウンロードします。 利便性のため、AzCopy のフォルダーの場所をシステム パスに追加して使いやすくすることを検討してください。
+まず、お使いのコンピューター上の任意のディレクトリに AzCopy V10 実行可能ファイルをダウンロードします。 利便性のため、AzCopy ディレクトリの場所をシステム パスに追加して使いやすくすることを検討してください。
 
 - [Windows](https://aka.ms/downloadazcopy-v10-windows) (zip)
 - [Linux](https://aka.ms/downloadazcopy-v10-linux) (tar)
@@ -41,11 +41,11 @@ AzCopy は、ストレージ アカウント間の BLOB またはファイル �
 
 コマンド プロンプトから、ファイルをダウンロードしたディレクトリに移動します。
 
-AzCopy コマンドの一覧を表示するには、「`azCopy`」と入力し、ENTER キーを押します。
+コマンドの一覧を表示するには、「`azcopy -h`」と入力し、ENTER キーを押します。
 
-特定のコマンドの詳細については、「`azCopy`」と入力し、その後ろにコマンドの名前を続けて入力します。
+特定のコマンドの情報を知るには、単にコマンドの名前を含めてください (例: `azcopy list -h`)。
 
-たとえば、`copy` コマンドの詳細については、「`azcopy copy`」と入力し、ENTER キーを押します。
+![インライン ヘルプ](media/storage-use-azcopy-v10/azcopy-inline-help.png)
 
 AzCopy を使用して意味のある動作を行う前に、ストレージ サービスに認証資格情報を提供する方法を決定する必要があります。
 
@@ -81,7 +81,7 @@ AzCopy を使用して意味のある動作を行う前に、ストレージ サ
 
 ロールを確認し、割り当てる方法については、「[Azure portal で RBAC を使用して Azure BLOB とキューのデータへのアクセスを付与する](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」を参照してください。
 
-ターゲット コンテナーまたはフォルダーのアクセス制御リスト (ACL) に ID が追加されている場合、これらのいずれかのロールを ID に割り当てる必要はありません。 ACL では、ターゲット フォルダーの書き込みアクセス許可とコンテナーおよび各親フォルダーの実行アクセス許可がご自分の ID に必要になります。
+ターゲット コンテナーまたはディレクトリのアクセス制御リスト (ACL) にお使いの ID が追加されている場合は、これらのロールのいずれかが ID に割り当てられている必要はありません。 ACL では、ID には、ターゲット ディレクトリの書き込みアクセス許可と、コンテナーおよび各親ディレクトリの実行アクセス許可が必要になります。
 
 詳細については、[Azure Data Lake Storage Gen2 でのアクセス制御](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)に関するページを参照してください。
 
@@ -102,7 +102,7 @@ AzCopy を使用して意味のある動作を行う前に、ストレージ サ
 
 ロールを確認し、割り当てる方法については、「[Azure portal で RBAC を使用して Azure BLOB とキューのデータへのアクセスを付与する](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」を参照してください。
 
-ターゲット コンテナーまたはフォルダーのアクセス制御リスト (ACL) に ID が追加されている場合、これらのいずれかのロールを ID に割り当てる必要はありません。 ACL では、ターゲット フォルダーの読み取りアクセス許可とコンテナーおよび各親フォルダーの実行アクセス許可が自分の ID に必要になります。
+ターゲット コンテナーまたはディレクトリのアクセス制御リスト (ACL) にお使いの ID が追加されている場合は、これらのロールのいずれかが ID に割り当てられている必要はありません。 ACL では、ID には、ターゲット ディレクトリの読み取りアクセス許可と、コンテナーおよび各親ディレクトリの実行アクセス許可が必要になります。
 
 詳細については、[Azure Data Lake Storage Gen2 でのアクセス制御](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)に関するページを参照してください。
 
@@ -118,7 +118,7 @@ azcopy login
 
 ![コンテナーを作成する](media/storage-use-azcopy-v10/azcopy-login.png)
 
-サインイン ウィンドウが表示されます。 そのウィンドウで、Azure アカウント資格情報を使用し、Azure アカウントにサインインします。 正常にサインインしたら、ブラウザー ウィンドウを閉じ、AzCopy の使用を開始できます。
+サインイン ウィンドウが表示されます。 そのウィンドウで、Azure アカウント資格情報を使用して、Azure アカウントにサインインします。 正常にサインインしたら、ブラウザー ウィンドウを閉じ、AzCopy の使用を開始できます。
 
 ### <a name="option-2-use-a-sas-token"></a>オプション 2:SAS トークンを使用する
 

@@ -145,6 +145,12 @@
             - name: インデックス作成ポリシー
               displayName: 'consistent, none'
               href: index-policy.md
+        - name: データの種類
+          items:
+            - name: DateTime
+              href: working-with-dates.md
+            - name: GeoSpatial
+              href: geospatial.md
         - name: Time to Live
           displayName: 'delete, delete data, ttl'
           href: time-to-live.md
@@ -164,7 +170,11 @@
           displayName: change feed
           href: change-feed-functions.md
     - name: Apache Spark による組み込みの分析
-      href: spark-api-introduction.md
+      items:
+        - name: はじめに
+          href: spark-api-introduction.md
+        - name: ラムダ アーキテクチャ
+          href: lambda-architecture.md
     - name: サーバー側プログラミング
       items:
         - name: ストアド プロシージャ、トリガー、UDF
@@ -480,8 +490,16 @@
           href: bootstrap-kubernetes-cluster.md
 - name: ハウツー ガイド
   items:
-    - name: Azure Cosmos アカウントを管理する
+    - name: Azure Cosmos アカウントの使用
       href: how-to-manage-database-account.md
+    - name: Azure Cosmos DB リソースの使用
+      items:
+        - name: PowerShell の使用
+          href: manage-with-powershell.md
+        - name: Azure CLI の使用
+          href: manage-with-cli.md
+        - name: Resource Manager テンプレートの使用
+          href: manage-sql-with-resource-manager.md
     - name: グローバル配信
       items:
         - name: マルチマスターを構成する
@@ -504,8 +522,14 @@
         - name: 要求ユニット使用量を確認する
           displayName: 'request units, RUs, RU, charge, consumption'
           href: find-request-unit-charge.md
-    - name: コンテナーとアイテムの操作
+    - name: コンテナーと項目を操作する
       items:
+        - name: Cosmos DB のデータを操作する
+          items:
+            - name: Azure Storage Explorer を使ってデータを操作する
+              href: storage-explorer.md
+            - name: Azure Cosmos Explorer を使ってデータを操作する
+              href: data-explorer.md
         - name: コンテナーを作成する
           href: how-to-create-container.md
         - name: 大規模なパーティション キーを備えたコンテナーを作成する
@@ -520,10 +544,6 @@
         - name: Time to Live の構成
           displayName: 'delete, delete data, ttl'
           href: how-to-time-to-live.md
-        - name: Azure Storage Explorer を使ってデータを操作する
-          href: storage-explorer.md
-        - name: Azure Cosmos Explorer を使ってデータを操作する
-          href: data-explorer.md
         - name: インデックス作成ポリシーの管理
           href: how-to-manage-indexing-policy.md
         - name: 一意のキーの定義
@@ -531,14 +551,48 @@
         - name: SQL サブクエリの例
           displayName: 'subquery, exists'
           href: how-to-sql-subquery.md
+    - name: ベスト プラクティス
+      items:
+        - name: パフォーマンスに関するヒント
+          items:
+            - name: クエリ実行メトリックの取得
+              displayName: 'query profile, profile'
+              href: profile-sql-api-query.md
+            - name: クエリ パフォーマンスの調整
+              href: sql-api-query-metrics.md
+            - name: .NET SDK のパフォーマンスに関するヒント
+              href: performance-tips.md
+            - name: Java SDK のパフォーマンスに関するヒント
+              href: performance-tips-java.md
+            - name: Async Java SDK のパフォーマンスに関するヒント
+              href: performance-tips-async-java.md
+            - name: パフォーマンス テスト - サンプル アプリ
+              href: performance-testing.md
+        - name: コスト効率の優れた読み取りと書き込み
+          href: key-value-store-cost.md
+    - name: トラブルシューティング
+      items:
+        - name: Java Async SDK のトラブルシューティング
+          href: troubleshoot-java-async-sdk.md
+        - name: .NET SDK のトラブルシューティング
+          href: troubleshoot-dot-net-sdk.md
     - name: 変更フィード
       items:
+        - name: Azure Cosmos DB トリガーのログ
+          href: how-to-configure-cosmos-db-trigger-logs.md
         - name: Azure Cosmos DB トリガーの接続ポリシー
           href: how-to-configure-cosmos-db-trigger-connection-policy.md
         - name: 複数の Azure Cosmos DB トリガー
           href: how-to-create-multiple-cosmos-db-triggers.md
         - name: Azure Cosmos DB トリガーのトラブルシューティング
           href: troubleshoot-changefeed-functions.md
+    - name: Apache Spark による組み込みの分析
+      items:
+        - name: Azure Databricks の Spark コネクタ
+          href: spark-connector.md
+        - name: Apache Kafka と Cosmos DB を使用したストリーミング
+          href: /azure/hdinsight/apache-kafka-spark-structured-streaming-cosmosdb
+          maintainContext: true
     - name: サーバー側プログラミング
       items:
         - name: ストアド プロシージャ、トリガー、UDF を書き込む
@@ -557,18 +611,12 @@
           href: how-to-configure-cross-origin-resource-sharing.md
         - name: Key Vault を使用して Azure Cosmos キーをセキュリティ保護する
           href: access-secrets-from-keyvault.md
+        - name: Azure AD による証明書ベースの認証
+          href: certificate-based-authentication.md
     - name: エンタープライズ対応
       items:
         - name: バックアップからデータを復元する
           href: how-to-backup-and-restore.md
-    - name: Azure Cosmos DB リソースの管理
-      items:
-        - name: PowerShell を使用して管理する
-          href: manage-with-powershell.md
-        - name: Azure CLI を使用して管理する
-          href: manage-with-cli.md
-        - name: Resource Manager テンプレートを使用して管理する
-          href: manage-sql-with-resource-manager.md
     - name: ログの記録
       items:
         - name: 診断ログの記録
@@ -592,30 +640,6 @@
           href: 'https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb'
     - name: Azure DevOps CI/CD パイプラインの設定
       href: tutorial-setup-ci-cd.md
-    - name: データの種類
-      items:
-        - name: DateTime
-          href: working-with-dates.md
-        - name: GeoSpatial
-          href: geospatial.md
-    - name: ベスト プラクティス
-      items:
-        - name: パフォーマンスに関するヒント
-          items:
-            - name: クエリ実行メトリックの取得
-              href: profile-sql-api-query.md
-            - name: クエリ パフォーマンスの調整
-              href: sql-api-query-metrics.md
-            - name: .NET SDK のパフォーマンスに関するヒント
-              href: performance-tips.md
-            - name: Java SDK のパフォーマンスに関するヒント
-              href: performance-tips-java.md
-            - name: Async Java SDK のパフォーマンスに関するヒント
-              href: performance-tips-async-java.md
-            - name: パフォーマンス テスト - サンプル アプリ
-              href: performance-testing.md
-        - name: コスト効率の優れた読み取りと書き込み
-          href: key-value-store-cost.md
     - name: Cosmos DB のデータを視覚化する
       items:
         - name: Power BI を使用する
@@ -651,13 +675,6 @@
         - name: Spring Boot Starter の使用
           href: /java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db
           maintainContext: true
-        - name: ラムダ アーキテクチャ
-          href: lambda-architecture.md
-        - name: Azure Databricks (Spark コネクタ)
-          href: spark-connector.md
-        - name: Spark と Kafka
-          href: /azure/hdinsight/apache-kafka-spark-structured-streaming-cosmosdb
-          maintainContext: true
         - name: ODBC ドライバー
           href: odbc-driver.md
     - name: Bulk Executor ライブラリ
@@ -668,12 +685,6 @@
           href: bulk-executor-dot-net.md
         - name: Bulk Executor - Java ライブラリ
           href: bulk-executor-java.md
-    - name: トラブルシューティング
-      items:
-        - name: Java Async SDK のトラブルシューティング
-          href: troubleshoot-java-async-sdk.md
-        - name: .NET SDK のトラブルシューティング
-          href: troubleshoot-dot-net-sdk.md
 - name: リファレンス
   items:
     - name: .NET

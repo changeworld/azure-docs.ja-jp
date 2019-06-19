@@ -111,8 +111,16 @@
           items:
             - name: Azure Portal で管理する
               href: data-box-portal-ui-admin.md
-            - name: Data Box Disk の問題のトラブルシューティング
-              href: data-box-disk-troubleshoot.md
+            - name: トラブルシューティング
+              items:
+                - name: ロック解除の問題
+                  href: data-box-disk-troubleshoot-unlock.md
+                - name: データ コピーの問題
+                  href: data-box-disk-troubleshoot-data-copy.md
+                - name: 検証の問題
+                  href: data-box-disk-troubleshoot.md
+                - name: アップロードの問題
+                  href: data-box-disk-troubleshoot-upload.md
             - name: サポートに問い合わせる
               href: data-box-disk-contact-microsoft-support.md
     - name: Data Box Heavy

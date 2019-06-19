@@ -7,16 +7,16 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 05/16/2019
 ms.author: v-chjenk
-ms.openlocfilehash: c3f31e8d260ea5e462e8782fadd9f61f34d03add
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: b3032aa796b3c79572bbf8b2beb85efc252ff73b
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66307562"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66497530"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>FSLogix プロファイル コンテナーと Azure のファイル
 
-Windows Virtual Desktop プレビュー サービスでは、ユーザー プロファイル ソリューションとして FSLogix プロファイル コンテナーが推奨されています。 FSLogix は、Windows Virtual Desktop などのリモート コンピューティング環境でプロファイルをローミングするように設計されています。 1 つのコンテナーに完全なユーザー プロファイルが格納されます。 サインイン時、コンテナーは、ネイティブのゲスト内 Microsoft サービスである仮想ハード ディスク (VHD) および Hyper-V 仮想ハード ディスク (VHDX) を使用して、コンピューティング環境に動的に接続されます。 ユーザー プロファイルはすぐに利用できるようになり、ネイティブのユーザー プロファイルとまったく同じようにシステムに表示されます。
+Windows Virtual Desktop プレビュー サービスでは、ユーザー プロファイル ソリューションとして FSLogix プロファイル コンテナーが推奨されています。 FSLogix は、Windows Virtual Desktop などのリモート コンピューティング環境でプロファイルをローミングするように設計されています。 1 つのコンテナーに完全なユーザー プロファイルが格納されます。 サインイン時、このコンテナーは、ネイティブにサポートされた仮想ハード ディスク (VHD) と Hyper-V 仮想ハード ディスク (VHDX) を使用して、コンピューティング環境に動的に接続されます。 ユーザー プロファイルはすぐに利用できるようになり、ネイティブのユーザー プロファイルとまったく同じようにシステムに表示されます。
 
 この記事では、Azure Files で使用する FSLogix プロファイル コンテナーについて説明します。 この情報は、[3 月 21 日に発表](https://www.microsoft.com/microsoft-365/blog/2019/03/21/windows-virtual-desktop-public-preview/)された Windows Virtual Desktop のコンテキストに基づいています。
 
@@ -67,7 +67,7 @@ S2D クラスターでは、オペレーティング システムが、修正プ
 
 ## <a name="fslogix-profile-containers"></a>FSLogix プロファイル コンテナー
 
-2018 年 11 月 19 日に、[Microsoft は FSLogix](https://blogs.microsoft.com/blog/2018/11/19/microsoft-acquires-fslogix-to-enhance-the-office-365-virtualization-experience/) を買収しました。 FSLogix は多くのプロファイル コンテナーの課題に対処しています。その中でも重要なのは次のとおりです。
+2018 年 11 月 19 日、[Microsoft は FSLogix を買収しました](https://blogs.microsoft.com/blog/2018/11/19/microsoft-acquires-fslogix-to-enhance-the-office-365-virtualization-experience/)。 FSLogix は多くのプロファイル コンテナーの課題に対処しています。 その中でも重要なものは次のとおりです。
 
 - **パフォーマンス:** [FSLogix プロファイル コンテナー](https://fslogix.com/products/profile-containers)はハイ パフォーマンスであり、これによって、これまで Exchange キャッシュ モードの妨げになっていたパフォーマンスの問題が解決されます。
 - **OneDrive:** FSLogix プロファイル コンテナーがなければ、非永続的な RDSH または VDI 環境内で OneDrive for Business はサポートされません。 「[OneDrive for Business and FSLogix best practices](https://fslogix.com/products/technical-faqs/284-onedrive-for-business-and-fslogix-best-practices)」 (OneDrive for Business と FSLogix のベストプラクティス) には、それらがやりとりする方法が説明されています。 詳細については、「[仮想デスクトップ上で同期クライアントを使用する](https://docs.microsoft.com/deployoffice/rds-onedrive-business-vdi)」を参照してください。

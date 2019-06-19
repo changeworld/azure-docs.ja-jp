@@ -4,6 +4,8 @@
   items:
     - name: Azure DNS とは
       href: dns-overview.md
+    - name: Azure プライベート DNS とは
+      href: private-dns-overview.md
 - name: クイック スタート
   expanded: true
   items:
@@ -20,7 +22,7 @@
     - name: Web アプリのカスタム DNS レコードを作成する
       href: dns-web-sites-custom-domain.md
     - name: プライベート DNS ゾーンとレコードを作成する
-      href: private-dns-getstarted-powershell.md
+      href: private-dns-portal.md
     - name: Traffic Manager のエイリアス レコード
       href: tutorial-alias-tm.md
     - name: パブリック IP アドレスのエイリアス レコード
@@ -33,6 +35,12 @@
       href: cli-samples.md
 - name: 概念
   items:
+    - name: プライベート DNS
+      items:
+        - name: FAQ - プライベート DNS
+          href: dns-faq-private.md
+        - name: プライベート DNS のシナリオ
+          href: private-dns-scenarios.md
     - name: ゾーンとレコード
       href: dns-zones-records.md
     - name: エイリアス レコード
@@ -41,10 +49,6 @@
       href: dns-domain-delegation.md
     - name: FAQ
       href: dns-faq.md
-    - name: プライベート DNS ゾーンの使用
-      href: private-dns-overview.md
-    - name: プライベート DNS のシナリオ
-      href: private-dns-scenarios.md
     - name: DNS メトリックとアラート
       href: dns-alerts-metrics.md
     - name: 逆引き DNS
@@ -53,8 +57,12 @@
       href: ../networking/disaster-recovery-dns-traffic-manager.md
 - name: 方法
   items:
-    - name: プライベート DNS ゾーンとレコードの作成 - Azure CLI
-      href: private-dns-getstarted-cli.md
+    - name: プライベート DNS
+      items:
+        - name: プライベート ゾーンの作成 - CLI
+          href: private-dns-getstarted-cli.md
+        - name: プライベート ゾーンの作成 - PowerShell
+          href: private-dns-getstarted-powershell.md
     - name: 負荷分散された Web アプリのエイリアス レコード
       href: dns-alias-appservice.md
     - name: DNS ゾーンの管理

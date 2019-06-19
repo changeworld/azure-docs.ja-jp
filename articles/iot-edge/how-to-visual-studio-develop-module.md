@@ -9,12 +9,12 @@ ms.date: 05/27/2019
 ms.topic: article
 ms.service: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 96a67a9a593655b3b187fe1bb0decfc7252d2d10
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: 4014827366afc492d73757a0ac5e1acb64262c51
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66253058"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66474786"
 ---
 # <a name="use-visual-studio-2019-to-develop-and-debug-modules-for-azure-iot-edge-preview"></a>Visual Studio 2019 を使用して Azure IoT Edge 用のモジュールを開発してデバッグする (プレビュー)
 
@@ -95,20 +95,19 @@ Visual Studio 2019 の準備ができたら、次のツールとコンポーネ�
 
 Visual Studio の Azure IoT Edge プロジェクト テンプレートでは、Azure IoT Hub の Azure IoT Edge デバイスにデプロイできるプロジェクトが作成されます。 最初に Azure IoT Edge ソリューションを作成した後、そのソリューションで最初のモジュールを生成します。 各 IoT Edge ソリューションには、複数のモジュールを含めることができます。
 
-1. Visual Studio の新しいプロジェクト ダイアログで、 **[Azure IoT Edge]** を検索して選択し、自分のプロジェクトの名前を入力して場所を指定し、 **[OK]** を選択します。 既定のプロジェクト名は **AzureIoTEdgeApp1** です。
+1. Visual Studio の新しいプロジェクト ダイアログで、 **[Azure IoT Edge]** プロジェクトを検索して選択し、 **[次へ]** をクリックします。 プロジェクトの構成ウィンドウで、プロジェクトの名前を入力し、場所を指定して、 **[作成]** を選択します。 既定のプロジェクト名は **AzureIoTEdgeApp1** です。
 
-1. **[Add IoT Edge Application and Module]\(IoT Edge アプリケーションとモジュールの追加\)** ウィンドウで、 **[Linux Amd64]** または **[Windows Amd64]** 、または両方をアプリケーション プラットフォームとして選択します。 両方を選択した場合は、それぞれ既定のコード モジュールを参照する 2 つのプロジェクトを持つソリューションを 1 つ作成します。
+   ![新しいプロジェクトの作成](./media/how-to-visual-studio-develop-csharp-module/create-new.png)
 
-   > [!TIP]
-   > Visual Studio 向けの Azure IoT Edge 拡張機能では、ARM プラットフォーム用のプロジェクトの作成は現在サポートされていません。 Visual Studio Code を使用して ARM32v7/armhf 用のソリューションを開発する例については、この [IoT 開発者のブログ エントリ](https://devblogs.microsoft.com/iotdev/easily-build-and-debug-iot-edge-modules-on-your-remote-device-with-azure-iot-edge-for-vs-code-1-9-0/)を参照してください。
+1. **[IoT Edge アプリケーションとモジュールの追加]\(Add IoT Edge Application and Module\)** ウィンドウで、 **[C# Module]\(C# モジュール\)** または **[C Module]\(C モジュール\)** を選択し、モジュール名とモジュール イメージ リポジトリを指定します。 Visual Studio により、モジュール名には自動的に **localhost:5000/<対象のモジュール名\>** が設定されます。 独自のレジストリ情報に置き換えます。 テスト用に Docker のローカル レジストリを使用する場合、**localhost** で問題ありません。 Azure Container Registry を使用する場合、お使いのレジストリの設定のログイン サーバーを使用します。 ログイン サーバーは * **\<レジストリ名\>*.azurecr.io** のようになります。 この文字列の **localhost:5000** 部分だけを置き換えて、最終的な結果が * *\<* レジストリ名 *\>.azurecr.io/\<* 対象のモジュール名*\>** になるようにします。 既定のモジュール名は **IoTEdgeModule1** です。
 
-1. **[C# Module]\(C# モジュール\)** または **[C Module]\(C モジュール\)** を選択し、モジュール名とモジュール イメージ リポジトリを指定します。 Visual Studio により、モジュール名には自動的に **localhost:5000/<対象のモジュール名\>** が設定されます。 独自のレジストリ情報に置き換えます。 テスト用に Docker のローカル レジストリを使用する場合、**localhost** で問題ありません。 Azure Container Registry を使用する場合、お使いのレジストリの設定のログイン サーバーを使用します。 ログイン サーバーは * **\<レジストリ名\>*.azurecr.io** のようになります。 この文字列の **localhost:5000** 部分だけを置き換えて、最終的な結果が * *\<* レジストリ名 *\>.azurecr.io/\<* 対象のモジュール名*\>** になるようにします。 既定のモジュール名は **IoTEdgeModule1** です。
+   ![アプリケーションとモジュールの追加](./media/how-to-visual-studio-develop-csharp-module/add-application-and-module.png)
 
 1. **[OK]** を選択して、C# または C を使用したモジュールを含む Azure IoT Edge ソリューションを作成します。
 
-これでソリューション内に、**AzureIoTEdgeApp1.Linux.Amd64** プロジェクトまたは **AzureIoTEdgeApp1.Windows.Amd64** プロジェクト、または両方のプロジェクトが作成され、**IoTEdgeModule1** プロジェクトも作成されました。 各 **AzureIoTEdgeApp1** プロジェクトには `deployment.template.json` ファイルが存在します。このファイルでは、IoT Edge ソリューション用にビルドしてデプロイするモジュールのほか、モジュール間のルートも定義されています。 既定のソリューションには、**tempSensor** モジュールと **IoTEdgeModule1** モジュールが含まれます。 **tempSensor** モジュールでは、**IoTEdgeModule1** モジュールに対するシミュレートされたデータが生成されるのに対し、**IoTEdgeModule1** モジュールの既定のコードでは、受信したメッセージが Azure IoT Hub に直接パイプされます。
+これで、**AzureIoTEdgeApp1.Linux.Amd64** プロジェクトまたは **AzureIoTEdgeApp1.Windows.Amd64** プロジェクト、および **IoTEdgeModule1** プロジェクトもソリューション内に作成されました。 各 **AzureIoTEdgeApp1** プロジェクトには `deployment.template.json` ファイルが存在します。このファイルでは、IoT Edge ソリューション用にビルドしてデプロイするモジュールのほか、モジュール間のルートも定義されています。 既定のソリューションには、**tempSensor** モジュールと **IoTEdgeModule1** モジュールが含まれます。 **tempSensor** モジュールでは、**IoTEdgeModule1** モジュールに対するシミュレートされたデータが生成されるのに対し、**IoTEdgeModule1** モジュールの既定のコードでは、受信したメッセージが Azure IoT Hub に直接パイプされます。
 
-**IoTEdgeModule1** プロジェクトは、.NET Core 2.1 のコンソール アプリケーションです。 IoT Edge デバイスが Windows コンテナーまたは Linux コンテナーで実行されるために必要な Docker ファイルが含まれています。 `module.json` ファイルでは、モジュールのメタデータが記述されています。 依存関係として Azure IoT Device SDK を取得する実際のモジュール コードは、`Program.cs` または `main.c` ファイル内に含まれています。
+C# モジュールの場合、**IoTEdgeModule1** プロジェクトは .NET Core 2.1 のコンソール アプリケーションです。 IoT Edge デバイスが Windows コンテナーまたは Linux コンテナーで実行されるために必要な Docker ファイルが含まれています。 `module.json` ファイルでは、モジュールのメタデータが記述されています。 依存関係として Azure IoT Device SDK を取得する実際のモジュール コードは、`Program.cs` または `main.c` ファイル内に含まれています。
 
 ## <a name="develop-your-module"></a>モジュールの開発
 

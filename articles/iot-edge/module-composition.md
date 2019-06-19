@@ -4,25 +4,28 @@ description: デプロイ マニフェストを使ってデプロイするモジ
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 03/28/2019
+ms.date: 05/28/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 18d72d46c46149aded0efcdd54f6f9d1119f8d3e
-ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
+ms.openlocfilehash: f4828b59ffa43365f48c002262368d383dfcff05
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66357658"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389365"
 ---
 # <a name="learn-how-to-deploy-modules-and-establish-routes-in-iot-edge"></a>IoT Edge にモジュールをデプロイしてルートを確立する方法について説明します。
 
-各 IoT Edge デバイスでは、$edgeAgent と $edgeHub という少なくとも 2 つのモジュールが実行されます。これらは IoT Edge ランタイムに含まれています。 加えて、IoT Edge デバイスでは複数のモジュールを実行して、任意の数のプロセスを実行できます。 デバイスには、これらすべてのモジュールを一度にデプロイすることになります。そのため IoT Edge には、どのモジュールをインストールし、それらをどのように構成して連携させるかを宣言するための手段が用意されています。 
+各 IoT Edge デバイスでは、$edgeAgent と $edgeHub という少なくとも 2 つのモジュールが実行されます。これらは IoT Edge ランタイムに含まれています。 IoT Edge デバイスは、任意の数のプロセスに対して複数の追加モジュールを実行できます。 インストールするモジュールとそれらを連携させるための構成方法をデバイスに伝えるには、配置マニフェストを使用します。 
 
 *デプロイ マニフェスト*は、次の内容が記述された JSON ドキュメントです。
 
-* **IoT Edge エージェント** モジュール ツイン。各モジュールのコンテナー イメージ、プライベート コンテナー レジストリにアクセスするための資格情報、および各モジュールを作成し、管理する方法についての手順が含まれます。
+* 3 つのコンポーネントを含む **IoT Edge エージェント** モジュール ツイン。 
+  * デバイスで実行される各モジュールのコンテナー イメージ。
+  * モジュール イメージを含むプライベート コンテナー レジストリにアクセスするための資格情報。
+  * 各モジュールの作成と管理の方法に関する指示。
 * **IoT Edge ハブ** モジュール ツイン。モジュール間および最終的には IoT Hub へのメッセージ フローの方法が含まれます。
 * さらに別のモジュール ツインがある場合は、オプションとして、その必要なプロパティ。
 
@@ -134,7 +137,9 @@ IoT Edge ハブは、モジュール、IoT ハブ、リーフ デバイス間の
 
 ### <a name="source"></a>ソース
 
-ソースでは、メッセージがどこから送信されるのかを指定します。 IoT Edge は、リーフ デバイスまたはモジュールからのメッセージをルーティングすることができます。
+ソースでは、メッセージがどこから送信されるのかを指定します。 IoT Edge は、モジュールまたはリーフ デバイスからメッセージをルーティングすることができます。 
+
+IoT SDK を使用することにより、モジュールは、ModuleClient クラスを使用してメッセージの特定の出力キューを宣言することができます。 出力キューは必要ではありませんが、複数のルートを管理するのに役立ちます。 リーフ デバイスは、IoT SDK の DeviceClient クラスを使用して、IoT Hub にメッセージを送信するのと同じ方法で IoT Edge ゲートウェイ デバイスにメッセージを送信することができます。 詳細については、「[Azure IoT Hub SDK の概要と使用方法](../iot-hub/iot-hub-devguide-sdks.md)」を参照してください。
 
 ソース プロパティは、次のいずれかの値にすることができます。
 
@@ -142,7 +147,7 @@ IoT Edge ハブは、モジュール、IoT ハブ、リーフ デバイス間の
 | ------ | ----------- |
 | `/*` | 任意のモジュールまたはリーフ デバイスからのすべての device-to-cloud メッセージまたはツイン変更通知 |
 | `/twinChangeNotifications` | 任意のモジュールまたはリーフ デバイスから送信されるツイン変更 (reported プロパティ) |
-| `/messages/*` | なんらかの出力を通じて、または出力なしでモジュールまたはリーフ デバイスによって送信される任意の device-to-cloud メッセージ |
+| `/messages/*` | モジュールによって (なんらかの出力を通じてまたは出力なしで) 送信される、またはリーフ デバイスによって送信される device-to-cloud メッセージ |
 | `/messages/modules/*` | 何らかの出力と共に、または出力なしでモジュールによって送信された、デバイスからクラウドへの任意のメッセージ |
 | `/messages/modules/<moduleId>/*` | なんらかの出力を通じて、または出力なしで特定のモジュールによって送信される任意の device-to-cloud メッセージ |
 | `/messages/modules/<moduleId>/outputs/*` | なんらかの出力を通じて特定のモジュールによって送信される任意の device-to-cloud メッセージ |

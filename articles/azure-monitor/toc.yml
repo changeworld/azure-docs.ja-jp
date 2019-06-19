@@ -115,12 +115,8 @@
       href: visualizations.md
     - name: パートナー統合
       href: platform/partners.md
-    - name: OMS ポータルの移行
-      items:
-        - name: 概要
-          href: platform/oms-portal-transition.md
-        - name: 一般的な質問
-          href: platform/oms-portal-faq.md
+    - name: OMS ポータルの廃止
+      href: platform/oms-portal-transition.md
     - name: FAQ
       items:
         - name: Log Analytics
@@ -249,6 +245,8 @@
               items:
                 - name: Log Analytics VM 拡張機能
                   href: platform/vmext-troubleshoot.md
+                - name: Log Analytics Windows エージェント
+                  href: platform/agent-windows-troubleshoot.md
                 - name: Log Analytics Linux エージェント
                   href: platform/agent-linux-troubleshoot.md
         - name: エージェントのデータ ソース
@@ -985,6 +983,8 @@
           href: app/nuget.md
         - name: プラットフォームのサポート
           href: app/platforms.md
+        - name: エンドポイントのオーバーライド
+          href: app/custom-endpoints.md
     - name: Application Insights データ モデル
       items:
         - name: 概要

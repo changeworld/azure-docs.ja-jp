@@ -2,11 +2,8 @@
   href: /azure/hdinsight
 - name: 概要
   items:
-    - name: HDInsight の Apache Hadoop コンポーネント
-      href: ../hdinsight-component-versioning.md
-      maintainContext: true
-    - name: HDInsight 4.0
-      href: ../hdinsight-version-release.md
+    - name: HDInsight での対話型クエリとは
+      href: ./apache-interactive-query-get-started.md
       maintainContext: true
 - name: クイック スタート
   items:
@@ -14,8 +11,6 @@
       href: ./hdinsight-connect-hive-zeppelin.md
 - name: 作業開始
   items:
-    - name: 対話型クエリの開始
-      href: ./apache-interactive-query-get-started.md
     - name: HDInsight アプリをインストールする
       href: ../hdinsight-apps-install-applications.md
       maintainContext: true

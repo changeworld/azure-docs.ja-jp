@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 05/26/2019
+ms.date: 06/04/2019
 ms.author: juliako
-ms.openlocfilehash: dd632051ebce6afc3c1f7be118fe8d31cd806ec9
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.openlocfilehash: e34e0f9fee1d09e66dcdd5069e800dc1f3f750cb
+ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66296800"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66688654"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 リリース ノート
 
@@ -36,15 +36,22 @@ ms.locfileid: "66296800"
 
 ## <a name="may-2019"></a>2019 年 5 月
 
-### <a name="hls-v4-and-above-support-in-dynamic-packaging"></a>ダイナミック パッケージでの HLS v4 以降のサポート 
+### <a name="azure-monitor-support-for-media-services-diagnostic-logs-and-metrics"></a>Media Services の診断ログとメトリックに対する Azure Monitor のサポート
 
-ダイナミック パッケージに、複数のオーディオ トラックと複数のコーデックおよび言語を備えた資産に対する HLS (バージョン 4 以降) のサポートが追加されました。
+Media Services で出力されたテレメトリ データを Azure Monitor を使用して表示できるようになりました。
 
-詳細については、「[ダイナミック パッケージ](dynamic-packaging-overview.md)」を参照してください。
+* Azure Monitor の診断ログを使用して、Media Services のキー配信エンドポイントによって送信された要求を監視します。 
+* Media Services の[ストリーミング エンドポイント](streaming-endpoint-concept.md)によって出力されたメトリックを監視します。   
 
-### <a name="media-services-availability-in-korea-central-region"></a>韓国中部リージョンでの Media Services の可用性
+詳細については、「[Media Services のメトリックと診断ログの監視](media-services-metrics-diagnostic-logs.md)」を参照してください。
 
-Media Services が韓国中部リージョンで使用できるようになりました。 
+### <a name="multi-audio-tracks-support-in-dynamic-packaging"></a>ダイナミック パッケージでの複数のオーディオ トラックのサポート 
+
+複数のコーデックと言語を使用する複数のオーディオ トラックを持つ資産をストリーミングするとき、[ダイナミック パッケージ](dynamic-packaging-overview.md)では、HLS 出力 (バージョン 4 以上) 用の複数のオーディオ トラックがサポートされるようになりました。
+
+### <a name="korea-regional-pair-is-open-for-media-services"></a>韓国のリージョン ペアで Media Services を提供開始 
+
+Media Services が、韓国中部と韓国南部のリージョンで利用できるようになりました。 
 
 詳細については、「[Media Services v3 が存在するクラウドとリージョン](azure-clouds-regions.md)」を参照してください。
 

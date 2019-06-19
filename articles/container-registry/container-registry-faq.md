@@ -8,12 +8,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 5/13/2019
 ms.author: sajaya
-ms.openlocfilehash: 86efb6b655405500f994a5a5ec7acbd18c645004
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 1400c023e43179a9c8490334e262711486c75a2d
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65957558"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66417930"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Azure Container Registry に関するよく寄せられる質問
 
@@ -253,10 +253,11 @@ ACR は、さまざまなレベルのアクセス許可を提供する[カスタ
 - [更新の直後に新しいユーザー アクセス許可が有効にならない場合がある](#new-user-permissions-may-not-be-effective-immediately-after-updating)
 - [REST API の直接呼び出しで認証情報が正しい形式で提供されない](#authentication-information-is-not-given-in-the-correct-format-on-direct-rest-api-calls)
 - [Azure Portal にすべてのリポジトリまたはタグが一覧表示されないのはなぜですか?](#why-does-the-azure-portal-not-list-all-my-repositories-or-tags)
+- [Windows で http トレースを収集するにはどうすればよいですか?](#how-do-i-collect-http-traces-on-windows)
 
 ### <a name="docker-pull-fails-with-error-nethttp-request-canceled-while-waiting-for-connection-clienttimeout-exceeded-while-awaiting-headers"></a>docker pull が "net/http: 接続の待機中に要求が取り消されました (ヘッダーの待機中に Client.Timeout を超えました)" というエラーで失敗する
 
- - このエラーが一時的な問題である場合は、再試行が成功します。 
+ - このエラーが一時的な問題である場合は、再試行が成功します。
  - `docker pull` が引き続き失敗する場合は、docker デーモンの問題である可能性があります。 この問題は一般に、docker デーモンを再起動することによって緩和されます。 
  - docker デーモンを再起動してもこの問題が引き続き表示される場合は、コンピューターとの何らかのネットワーク接続の問題である可能性があります。 コンピューター上の一般的なネットワークが正常かどうかを確認するには、`ping www.bing.com` などのコマンドを試行します。
  - すべての docker クライアント操作に対して常に再試行メカニズムを用意する必要があります。
@@ -386,7 +387,29 @@ curl $redirect_url
 
 ### <a name="why-does-the-azure-portal-not-list-all-my-repositories-or-tags"></a>Azure Portal にすべてのリポジトリまたはタグが一覧表示されないのはなぜですか? 
 
-Edge ブラウザーを使用している場合は、多くとも 100 個のリポジトリまたはタグが一覧表示されていることを確認できます。 レジストリに 100 を超えるリポジトリまたはタグが含まれている場合は、すべてを一覧表示するために Firefox または Chrome ブラウザーを使用することをお勧めします。
+Microsoft Edge ブラウザーを使用している場合は、最大で 100 個のリポジトリまたはタグを一覧表示できます。 レジストリに 100 を超えるリポジトリまたはタグが含まれている場合は、すべてを一覧表示するために Firefox または Chrome ブラウザーを使用することをお勧めします。
+
+### <a name="how-do-i-collect-http-traces-on-windows"></a>Windows で http トレースを収集するにはどうすればよいですか?
+
+#### <a name="prerequisites"></a>前提条件
+
+- Fiddler で https の復号化を有効にします: <https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/DecryptHTTPS>
+- Docker UI を使用して、Docker によるプロキシの使用を有効にします: <https://docs.docker.com/docker-for-windows/#proxies>
+- 完了したら必ず元に戻してください。  これが有効になっていて、Fiddler が実行されていない場合、Docker は機能しません。
+
+#### <a name="windows-containers"></a>Windows コンテナー
+
+Docker プロキシを 127.0.0.1:8888 に構成します。
+
+#### <a name="linux-containers"></a>Linux コンテナー
+
+Docker VM 仮想スイッチの IP を見つけます。
+
+```powershell
+(Get-NetIPAddress -InterfaceAlias "*Docker*" -AddressFamily IPv4).IPAddress
+```
+
+Docker プロキシを前のコマンドの出力とポート 8888 に構成します (たとえば、10.0.75.1:8888)。
 
 ## <a name="tasks"></a>タスク
 

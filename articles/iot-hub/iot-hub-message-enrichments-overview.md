@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: 2de945d2ef1d87b47ea81aac034916466d3c9bda
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: c29543bf37b568b7ed11abe8e11183a0869d21d9
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66259343"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479843"
 ---
 # <a name="message-enrichments-for-device-to-cloud-iot-hub-messages-preview"></a>device-to-cloud IoT Hub のメッセージ エンリッチメント (プレビュー)
 
@@ -48,6 +48,8 @@ ms.locfileid: "66259343"
 * デバイスのライフサイクル イベント (デバイスが作成または削除された日時など)
 
 エンリッチメントは、IoT ハブの組み込みのエンドポイントに向かうメッセージのほか、カスタム エンドポイントにルーティングされるメッセージ (Azure Blob Storage、Service Bus キュー、Service Bus トピックなど) に追加できます。
+
+また、エンドポイントを Event Grid として選択することにより、Event Grid にパブリッシュされるメッセージにエンリッチメントを追加することもできます。 詳細については、[IoT Hub と Event Grid](iot-hub-event-grid.md) に関するページを参照してください。
 
 エンリッチメントは、エンドポイントごとに適用されます。 特定のエンドポイントに関して適用される 5 つのエンリッチメントを指定した場合、そのエンドポイントに向かうすべてのメッセージに同じ 5 つのエンリッチメントを含んだスタンプが適用されます。
 

@@ -5,14 +5,14 @@ services: container-service
 author: tylermsft
 ms.service: container-service
 ms.topic: article
-ms.date: 05/06/2019
+ms.date: 06/04/2019
 ms.author: twhitney
-ms.openlocfilehash: 6b5ebbab717a3db7c9b50549d2762df61c274131
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 11f6869d4d5a2ee0ef2e986ee8268c7a001ea015
+ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66307572"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66688638"
 ---
 # <a name="connect-with-rdp-to-azure-kubernetes-service-aks-cluster-windows-server-nodes-for-maintenance-or-troubleshooting"></a>メンテナンスまたはトラブルシューティングのために RDP を使用して Azure Kubernetes Service (AKS) クラスターの Windows Server ノードに接続する
 
@@ -32,7 +32,18 @@ Azure Kubernetes Service (AKS) クラスターのライフサイクル全体を�
 
 AKS クラスターの Windows Server ノードには、外部からアクセスできる IP アドレスはありません。 RDP 接続を作成するには、Windows Server ノードと同じサブネットに、パブリックにアクセス可能な IP アドレスを持つ仮想マシンをデプロイします。
 
-次の例では、リソース グループ *myResourceGroup*に *myVM* という名前の仮想マシンを作成します。 *$SUBNET_ID* を、Windows Server ノード プールで使用されるサブネットの ID に置き換えます。
+次の例では、リソース グループ *myResourceGroup*に *myVM* という名前の仮想マシンを作成します。
+
+最初に、Windows Server ノード プールで使用されるサブネットを取得します。 サブネット ID を取得するには、サブネットの名前が必要です。 サブネットの名前を取得するには、vnet の名前が必要です。 クラスターでネットワークの一覧のクエリを実行して、vnet の名前を取得します。 クラスターのクエリを実行するには、その名前が必要です。 Azure Cloud Shell で次を実行することで、これらをすべて取得できます。
+
+```azurecli-interactive
+CLUSTER_RG=$(az aks show -g myResourceGroup -n myAKSCluster --query nodeResourceGroup -o tsv)
+VNET_NAME=$(az network vnet list -g $CLUSTER_RG --query [0].name -o tsv)
+SUBNET_NAME=$(az network vnet subnet list -g $CLUSTER_RG --vnet-name $VNET_NAME --query [0].name -o tsv)
+SUBNET_ID=$(az network vnet subnet show -g $CLUSTER_RG --vnet-name $VNET_NAME --name $SUBNET_NAME --query id -o tsv)
+```
+
+SUBNET_ID を取得したので、同じ Azure Cloud Shell ウィンドウで次のコマンドを実行して VM を作成します。
 
 ```azurecli-interactive
 az vm create \

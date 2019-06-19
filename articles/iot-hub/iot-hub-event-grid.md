@@ -8,28 +8,28 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: kgremban
-ms.openlocfilehash: 01c58636ae9a28cd18b11285421bdd06cc048365
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: fcd656dd230231944b489b30c423988bdb07fba3
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66257670"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479859"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>Event Grid を使用し IoT Hub のイベントに対応してアクションをトリガーする
 
-他のサービスにイベント通知を送信して、ダウンストリームのプロセスをトリガーできるように、Azure IoT Hub は Azure Event Grid と統合します。 信頼性が高く、スケーラブルで、安全な方法により、重大なイベントに対応できるよう、IoT Hub のイベントをリッスンするようにビジネス アプリケーションを構成します。 たとえば、新しい IoT デバイスが IoT Hub に登録されるたびに、データベースの更新、作業チケットの作成、メール通知の配信などを実行するよう、アプリケーションを構築します。 
+他のサービスにイベント通知を送信して、ダウンストリームのプロセスをトリガーできるように、Azure IoT Hub は Azure Event Grid と統合します。 信頼性が高く、スケーラブルで、安全な方法により、重大なイベントに対応できるよう、IoT Hub のイベントをリッスンするようにビジネス アプリケーションを構成します。 たとえば、新しい IoT デバイスが IoT Hub に登録されるたびに、データベースの更新、作業チケットの作成、メール通知の配信などを実行するよう、アプリケーションを構築します。
 
-[Azure Event Grid](../event-grid/overview.md) は、発行-サブスクライブ モデルを使う、フル マネージドのイベント ルーティング サービスです。 Event Grid は、[Azure Functions](../azure-functions/functions-overview.md) や [Azure Logic Apps](../logic-apps/logic-apps-what-are-logic-apps.md) などの Azure s サービスの組み込みサポートを備えており、webhook を使って Azure 以外のサービスにイベント アラートを配信できます。 Event Grid がサポートするイベント ハンドラーの完全な一覧については、「[Azure Event Grid の概要](../event-grid/overview.md)」をご覧ください。 
+[Azure Event Grid](../event-grid/overview.md) は、発行-サブスクライブ モデルを使う、フル マネージドのイベント ルーティング サービスです。 Event Grid は、[Azure Functions](../azure-functions/functions-overview.md) や [Azure Logic Apps](../logic-apps/logic-apps-what-are-logic-apps.md) などの Azure s サービスの組み込みサポートを備えており、webhook を使って Azure 以外のサービスにイベント アラートを配信できます。 Event Grid がサポートするイベント ハンドラーの完全な一覧については、「[Azure Event Grid の概要](../event-grid/overview.md)」をご覧ください。
 
 ![Azure Event Grid のアーキテクチャ](./media/iot-hub-event-grid/event-grid-functional-model.png)
 
 ## <a name="regional-availability"></a>リージョン別の提供状況
 
-Event Grid の統合は、Event Grid イベントグリッドがサポートされている地域にある IoT ハブで利用できます。 最新のリージョン一覧については、「[Azure Event Grid の概要](../event-grid/overview.md)」を参照してください。 
+Event Grid の統合は、Event Grid イベントグリッドがサポートされている地域にある IoT ハブで利用できます。 デバイス テレメトリ イベントを除くすべてのデバイス イベントが一般提供されています。 デバイス テレメトリ イベントはパブリック プレビュー段階であり、米国東部、米国西部、西ヨーロッパ、[Azure Government](/azure-government/documentation-government-welcome.md)、[Azure China 21Vianet](/azure/china/china-welcome.md)、[Azure Germany](https://azure.microsoft.com/global-infrastructure/germany/) を除くすべてのリージョンで利用できます。 最新のリージョン一覧については、「[Azure Event Grid の概要](../event-grid/overview.md)」を参照してください。
 
 ## <a name="event-types"></a>イベントの種類
 
-IoT Hub は次のイベントの種類を発行します。 
+IoT Hub は次のイベントの種類を発行します。
 
 | イベントの種類 | 説明 |
 | ---------- | ----------- |
@@ -47,15 +47,15 @@ IoT Hub イベントには、デバイスのライフサイクルの変更に対
 
 ### <a name="device-connected-schema"></a>デバイス接続スキーマ
 
-次の例では、デバイス接続イベントのスキーマを示します。 
+次の例では、デバイス接続イベントのスキーマを示します。
 
 ```json
 [{  
-  "id": "f6bbf8f4-d365-520d-a878-17bf7238abd8", 
-  "topic": "/SUBSCRIPTIONS/<subscription ID>/RESOURCEGROUPS/<resource group name>/PROVIDERS/MICROSOFT.DEVICES/IOTHUBS/<hub name>", 
-  "subject": "devices/LogicAppTestDevice", 
-  "eventType": "Microsoft.Devices.DeviceConnected", 
-  "eventTime": "2018-06-02T19:17:44.4383997Z", 
+  "id": "f6bbf8f4-d365-520d-a878-17bf7238abd8",
+  "topic": "/SUBSCRIPTIONS/<subscription ID>/RESOURCEGROUPS/<resource group name>/PROVIDERS/MICROSOFT.DEVICES/IOTHUBS/<hub name>",
+  "subject": "devices/LogicAppTestDevice",
+  "eventType": "Microsoft.Devices.DeviceConnected",
+  "eventTime": "2018-06-02T19:17:44.4383997Z",
   "data": {
       "deviceConnectionStateEventInfo": {
         "sequenceNumber":
@@ -65,41 +65,45 @@ IoT Hub イベントには、デバイスのライフサイクルの変更に対
     "deviceId": "LogicAppTestDevice",
     "moduleId" : "DeviceModuleID",
   }, 
-  "dataVersion": "1", 
-  "metadataVersion": "1" 
+  "dataVersion": "1",
+  "metadataVersion": "1"
 }]
 ```
 
 ### <a name="device-telemetry-schema"></a>デバイス テレメトリ スキーマ
 
-次の例に、デバイス テレメトリ イベントのスキーマを示します。 
+デバイス テレメトリ メッセージは、メッセージの[システム プロパティ](iot-hub-devguide-routing-query-syntax.md#system-properties)で contentType が JSON に設定され、contentEncoding が UTF-8 に設定された有効な JSON 形式でなければなりません。 これが設定されていない場合、IoT Hub は Base 64 エンコード形式でメッセージを書き込みます。
+
+エンドポイントを Event Grid として選択してデバイス テレメトリ イベントを Event Grid に発行する前に、それらをエンリッチすることができます。 詳細については、[メッセージ エンリッチメントの概要](iot-hub-message-enrichments-overview.md)に関するページを参照してください。
+
+次の例に、デバイス テレメトリ イベントのスキーマを示します。
 
 ```json
 [{  
   "id": "9af86784-8d40-fe2g-8b2a-bab65e106785",
   "topic": "/SUBSCRIPTIONS/<subscription ID>/RESOURCEGROUPS/<resource group name>/PROVIDERS/MICROSOFT.DEVICES/IOTHUBS/<hub name>",
-  "subject": "devices/LogicAppTestDevice", 
+  "subject": "devices/LogicAppTestDevice",
   "eventType": "Microsoft.Devices.DeviceTelemetry",
   "eventTime": "2019-01-07T20:58:30.48Z",
-  "data": {        
-      "body": {            
-          "Weather": {                
-              "Temperature": 900            
+  "data": {
+      "body": {
+          "Weather": {
+              "Temperature": 900
             },
-            "Location": "USA"        
+            "Location": "USA"
         },
-        "properties": {            
-            "Status": "Active"        
+        "properties": {
+            "Status": "Active"
         },
-        "systemProperties": {            
+        "systemProperties": {
           "iothub-content-type": "application/json",
           "iothub-content-encoding": "utf-8",
           "iothub-connection-device-id": "d1",
           "iothub-connection-auth-method": "{\"scope\":\"device\",\"type\":\"sas\",\"issuer\":\"iothub\",\"acceptingIpFilterRule\":null}",
           "iothub-connection-auth-generation-id": "123455432199234570",
           "iothub-enqueuedtime": "2019-01-07T20:58:30.48Z",
-          "iothub-message-source": "Telemetry"        
-        }    
+          "iothub-message-source": "Telemetry"
+        }
   },
   "dataVersion": "",
   "metadataVersion": "1"
@@ -108,7 +112,7 @@ IoT Hub イベントには、デバイスのライフサイクルの変更に対
 
 ### <a name="device-created-schema"></a>デバイスで作成されたスキーマ
 
-次の例では、デバイス作成スキーマを示します。 
+次の例では、デバイス作成スキーマを示します。
 
 ```json
 [{
@@ -162,7 +166,7 @@ IoT Hub イベントには、デバイスのライフサイクルの変更に対
 
 IoT Hub イベント サブスクリプションでは、イベントの種類、データ コンテンツ、およびサブジェクト (デバイス名) に基づいてイベントをフィルター処理できます。
 
-Event Grid により、イベントの種類、サブジェクト、およびデータ コンテンツで[フィルター処理](../event-grid/event-filtering.md)できます。 Event Grid サブスクリプションの作成時に、選択した IoT イベントにサブスクライブするように選択できます。 Event Grid のサブジェクト フィルターは、**Begins With** (プレフィックス) と **Ends With** (サフィックス) の一致に基づいて動作します。 フィルターは `AND` 演算子を使用するため、プレフィックスとサフィックスの両方に一致するサブジェクトを持つイベントがサブスクライバーに配信されます。 
+Event Grid により、イベントの種類、サブジェクト、およびデータ コンテンツで[フィルター処理](../event-grid/event-filtering.md)できます。 Event Grid サブスクリプションの作成時に、選択した IoT イベントにサブスクライブするように選択できます。 Event Grid のサブジェクト フィルターは、**Begins With** (プレフィックス) と **Ends With** (サフィックス) の一致に基づいて動作します。 フィルターは `AND` 演算子を使用するため、プレフィックスとサフィックスの両方に一致するサブジェクトを持つイベントがサブスクライバーに配信されます。
 
 IoT イベントのサブジェクトには次の形式が使われます。
 
@@ -170,22 +174,21 @@ IoT イベントのサブジェクトには次の形式が使われます。
 devices/{deviceId}
 ```
 
-さらに、Event Grid では、データ コンテンツなどの各イベントの属性でフィルター処理することもできます。 これにより、テレメトリ メッセージの内容に基づいて配信されるイベントを選択することができます。 [高度なフィルター処理](../event-grid/event-filtering.md#advanced-filtering)を参照して、例を確認してください。 
+さらに、Event Grid では、データ コンテンツなどの各イベントの属性でフィルター処理することもできます。 これにより、テレメトリ メッセージの内容に基づいて配信されるイベントを選択することができます。 [高度なフィルター処理](../event-grid/event-filtering.md#advanced-filtering)を参照して、例を確認してください。
 
 DeviceConnected、DeviceDisconnected、DeviceCreated、DeviceDeleted のような非テレメトリ イベントの場合、サブスクリプションの作成時に Event Grid のフィルター処理を使用できます。 テレメトリ イベントの場合、Event Grid でのフィルター処理に加えて、ユーザーは、メッセージ ルーティング クエリ経由で、デバイス ツイン、メッセージのプロパティと本文に対してフィルター処理することもできます。 デバイス テレメトリへの Event Grid サブスクリプションに基づいて、IoT Hub に既定の[ルート](iot-hub-devguide-messages-d2c.md)を作成します。 この単一のルートによって、すべての Event Grid サブスクリプションを処理できます。 テレメトリ データが送信される前に、メッセージをフィルター処理するために、[ルーティング クエリ](iot-hub-devguide-routing-query-syntax.md)を更新できます。 ルーティング クエリは本文が JSON である場合にのみ、メッセージ本文に適用できることに注意してください。
 
-
 ## <a name="limitations-for-device-connected-and-device-disconnected-events"></a>デバイス接続イベントおよびデバイス切断イベントの制限事項
 
-デバイス接続イベントおよびデバイス切断イベントを受信するには、デバイスの D2C リンクまたは C2D リンクを開く必要があります。 デバイスが MQTT プロトコルを使用している場合、IoT Hub は C2D リンクを開いたままにします。 AMQP の場合は、[非同期受信 API](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.receiveasync?view=azure-dotnet) を呼び出して C2D リンクを開くことができます。 
+デバイス接続イベントおよびデバイス切断イベントを受信するには、デバイスの D2C リンクまたは C2D リンクを開く必要があります。 デバイスが MQTT プロトコルを使用している場合、IoT Hub は C2D リンクを開いたままにします。 AMQP の場合は、[非同期受信 API](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.receiveasync?view=azure-dotnet) を呼び出して C2D リンクを開くことができます。
 
-テレメトリを送信する場合は、D2C リンクが開いています。 デバイスの接続状態が頻繁に変化する場合、つまりデバイスが頻繁に接続されたり切断されたりする場合、すべての単一の接続状態は送信されず、1 分ごとのスナップショットが作成された接続状態が公開されます。 IoT Hub が停止した場合、停止が解消されるとすぐにデバイスの接続状態が公開されます。 その停止中にデバイスが切断された場合は、デバイス切断イベントが 10 分以内に発行されます。
+テレメトリを送信する場合は、D2C リンクが開いています。 デバイスの接続状態が頻繁に変化する場合、つまりデバイスが頻繁に接続されたり切断されたりする場合は、1 つ 1 つの接続状態を送信されるのではなく、スナップショットが毎分取られる接続状態が公開されます。 IoT Hub が停止した場合、停止が解消されるとすぐにデバイスの接続状態が公開されます。 その停止中にデバイスが切断された場合は、デバイス切断イベントが 10 分以内に発行されます。
 
 ## <a name="tips-for-consuming-events"></a>イベントの使用に関するヒント
 
 IoT Hub イベントを処理するアプリケーションは、以下の推奨される手法に従う必要があります。
 
-* 同じイベント ハンドラーにイベントをルーティングするように複数のサブスクリプションを構成できるので、イベントが特定のソースからであると想定しないでください。 常にメッセージ トピックをチェックし、予期される IoT Hub からものであることを確認してください。 
+* 同じイベント ハンドラーにイベントをルーティングするように複数のサブスクリプションを構成できるので、イベントが特定のソースからであると想定しないでください。 常にメッセージ トピックをチェックし、予期される IoT Hub からものであることを確認してください。
 
 * 受信するすべてのイベントが予期する種類であると想定してはいけません。 メッセージを処理する前に、常に eventType をチェックしてください。
 
@@ -194,6 +197,9 @@ IoT Hub イベントを処理するアプリケーションは、以下の推奨
 ## <a name="next-steps"></a>次の手順
 
 * [IoT Hub イベントのチュートリアルを試します](../event-grid/publish-iot-hub-events-to-logic-apps.md)
+
 * [デバイス接続イベントおよびデバイス切断イベントの順序を設定する方法を確認します](iot-hub-how-to-order-connection-state-events.md)
+
 * [Event Grid の詳細を確認します](../event-grid/overview.md)
+
 * [IoT Hub のイベントとメッセージのルーティングの違いを比較します](iot-hub-event-grid-routing-comparison.md)

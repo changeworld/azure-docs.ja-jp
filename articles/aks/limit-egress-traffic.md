@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/14/2019
 ms.author: iainfou
-ms.openlocfilehash: 4c2dad687d31597954b023dde9d1b9d69788fe04
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: b5a203150906758bde33431a1dab717e090f2e28
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66241401"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475577"
 ---
 # <a name="preview---limit-egress-traffic-for-cluster-nodes-and-control-access-to-required-ports-and-services-in-azure-kubernetes-service-aks"></a>プレビュー - Azure Kubernetes Service (AKS) でクラスター ノードのエグレス トラフィックを制限し、必要なポートとサービスへのアクセスを制御する
 
@@ -21,7 +21,7 @@ ms.locfileid: "66241401"
 この記事では、AKS クラスターでエグレス トラフィックを制限する場合に必要なネットワーク ポートと完全修飾ドメイン名 (FQDN) について説明します。  現在、この機能はプレビュー段階にあります。
 
 > [!IMPORTANT]
-> AKS のプレビュー機能は、セルフサービス、オプトインです。 これらは、コミュニティからフィードバックやバグを収集するために提供されています。 プレビューで、これらの機能は、運用環境での使用を意図していません。 パブリック プレビュー段階の機能は、'ベスト エフォート' のサポートに該当します。 AKS テクニカル サポート チームによるサポートは営業時間内の太平洋タイム ゾーン (PST) でのみ利用できます。 詳細については、次のサポートに関する記事を参照してください。
+> AKS のプレビュー機能は、セルフサービス、オプトインです。 これらは、コミュニティからフィードバックやバグを収集するために提供されています。 プレビューで、これらの機能は、運用環境での使用を意図していません。 パブリック プレビュー段階の機能は、'ベスト エフォート' のサポートに該当します。 AKS テクニカル サポート チームによるサポートは、太平洋タイム ゾーン (PST) での営業時間内のみで利用できます。 詳細については、次のサポートに関する記事を参照してください。
 >
 > * [AKS サポート ポリシー][aks-support-policies]
 > * [Azure サポートに関する FAQ][aks-faq]
@@ -69,13 +69,13 @@ AKS には、2 組のポートとアドレスがあります。
 AKS クラスターには、次の送信ポート/ネットワーク規則が必要です。
 
 * TCP ポート *443*
-* トンネル フロント ポッドが API サーバー上のトンネルの終端と通信するための TCP ポート *9000*
+* トンネル フロント ポッドが API サーバー上のトンネルの終端と通信するための TCP ポート *9000* と TCP ポート *22*。
 
 次の FQDN/アプリケーション規則が必要です。
 
 | FQDN                      | Port      | 用途      |
 |---------------------------|-----------|----------|
-| *.azmk8s.io               | HTTPS: 443 | このアドレスは API サーバー エンドポイントです。 |
+| *.azmk8s.io               | HTTPS:443,22,9000 | このアドレスは API サーバー エンドポイントです。 |
 | aksrepos.azurecr.io       | HTTPS: 443 | このアドレスは、Azure Container Registry (ACR) 内のイメージにアクセスするために必要です。 |
 | *.blob.core.windows.net   | HTTPS: 443 | このアドレスは ACR に保存されているイメージのバックエンド ストアです。 |
 | mcr.microsoft.com         | HTTPS: 443 | このアドレスは、Microsoft Container Registry (MCR) のイメージにアクセスするために必要です。 |

@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 05/29/2019
+ms.date: 05/31/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: ddaead7a0e616b3138dca0b18a58d64e38a46f9e
-ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
+ms.openlocfilehash: 68f62a6945f3b651781414e3194104b6d2e6295c
+ms.sourcegitcommit: ec7b0bf593645c0d1ef401a3350f162e02c7e9b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66356424"
+ms.lasthandoff: 06/01/2019
+ms.locfileid: "66455799"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Azure Import/Export サービスを使用して Azure Blob Storage にデータをインポートする
 
@@ -58,7 +58,7 @@ Azure Blob Storage にデータを転送するインポート ジョブを作成
 6.  ディスクを準備するには、次のコマンドを実行します。 **データ サイズによっては、数時間から数日かかることがあります。** 
 
     ```
-    ./WAImportExport.exe PrepImport /j:<journal file name> /id:session#<session number> /t:<Drive letter> /bk:<BitLocker key> /srcdir:<Drive letter>:\ /dstdir:<Container name>/ /skipwrite /enablecontentmd5 
+    ./WAImportExport.exe PrepImport /j:<journal file name> /id:session#<session number> /t:<Drive letter> /bk:<BitLocker key> /srcdir:<Drive letter>:\ /dstdir:<Container name>/ /blobtype:<BlockBlob or PageBlob> /skipwrite /enablecontentmd5 
     ```
     ジャーナル ファイルは、ツールを実行したフォルダーと同じフォルダーに作成されます。 *.xml* ファイル (ツールを実行するフォルダー) と *drive-manifest.xml* ファイル (データが保存されているフォルダー) の 2 つのファイルも作成されます。
     
@@ -72,6 +72,7 @@ Azure Blob Storage にデータを転送するインポート ジョブを作成
     |/bk:     |ドライブの BitLocker キー。 `manage-bde -protectors -get D:` の出力からの数値パスワードです      |
     |/srcdir:     |送付するディスクのドライブ文字の末尾に `:\` を付けます。 たとえば、「 `D:\` 」のように入力します。         |
     |/dstdir:     |Azure Storage 内の保存先コンテナーの名前。         |
+    |/blobtype:     |このオプションは、データをインポートする BLOB の種類を指定します。 これは、ブロック BLOB の場合は `BlockBlob` で、ページ BLOB の場合は `PagaBlob` です。         |
     |/skipwrite:     |コピーする必要がある新しいデータがなく、ディスク上の既存のデータを準備する必要があることを指定するオプション。          |
     |/enablecontentmd5:     |有効になっていると、このオプションにより、ブロック BLOB の Azure へのアップロード中に MD5 が確実に計算されるようになります。          |
 7. 送付する必要があるディスクごとに前の手順を繰り返します。 コマンド行の実行ごとに、指定された名前のジャーナル ファイルが作成されます。

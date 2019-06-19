@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: reference
 ms.date: 05/23/2019
 ms.author: evansma
-ms.openlocfilehash: ae477068e2413678d5dd755cb5a7334f85655c74
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: 1aba0ab7083c437210166d2d5a2d77e7a657afe9
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66259397"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66474588"
 ---
 # <a name="saas-fulfillment-apis-version-2"></a>SaaS Fulfillment API バージョン 2 
 
@@ -774,26 +774,35 @@ Response body:
 
 ```json
 {
-    "operationId": "<guid>",
-    "activityId": "<guid>",
-    "subscriptionId":"<guid>",
-    "offerId": "offer1",
-    "publisherId": "contoso",
-    "planId": "silver",
-    "quantity": "20"  ,
-    "action": "Subscribe",
-    "timeStamp": "2018-12-01T00:00:00"
+  "id": "<this is a Guid operation id, you can call operations API with this to get status>",
+  "activityId": "<this is a Guid correlation id>",
+  "subscriptionId": "<Guid to uniquely identify this resource>",
+  "publisherId": "<this is the publisher’s name>",
+  "offerId": "<this is the offer name>",
+  "planId": "<this is the plan id>",
+  "quantity": "<the number of seats, will be null if not per-seat saas offer>",
+  "timeStamp": "2019-04-15T20:17:31.7350641Z",
+  "action": "Unsubscribe",
+  "status": "NotStarted"  
+
 }
 ```
-
 ここで、アクションは次のいずれかです。 
-- `Subscribe` (リソースがアクティブ化されたとき)
-- `Unsubscribe` (リソースが削除されたとき)
-- `ChangePlan` (プランの変更操作が完了したとき)
-- `ChangeQuantity` (数量の変更操作が完了したとき)
-- `Suspend` (リソースが中断されたとき)
-- `Reinstate` (リソースが中断後に再開されたとき)
+- `Subscribe` (リソースがアクティブ化されているとき)
+- `Unsubscribe` (リソースが削除されているとき)
+- `ChangePlan` (プランの変更操作が完了しているとき)
+- `ChangeQuantity` (数量の変更操作が完了しているとき)
+- `Suspend` (リソースが中断されているとき)
+- `Reinstate` (リソースが中断後に再開されているとき)
 
+ここで、状態は次のいずれかになります。 <br>
+        - NotStarted <br>
+        - InProgress <br>
+        - Succeeded <br>
+        - Failed <br>
+        - Conflict <br>
+
+アクション可能な状態は、Webhook 通知内の Succeeded と Failed です。 操作のライフ サイクルは、NotStarted から、Succeeded/Failed/Conflict などの最終状態までです。 NotStarted または InProgress を受け取った場合は、操作が最終状態に達するまで GET 操作 API を使用して状態の要求を続行してから、アクションを実行してください。 
 
 ## <a name="mock-api"></a>モック API
 

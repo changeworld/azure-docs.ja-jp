@@ -44,6 +44,8 @@
       href: configure-vm-gpu.md
     - name: セッション ホストを自動的にスケーリングする
       href: set-up-scaling-script.md
+    - name: Windows Virtual Desktop ユーザー用のフィードをカスタマイズする
+      href: customize-feed-for-virtual-desktop-users.md
     - name: RDP プロパティをカスタマイズする
       href: customize-rdp-properties.md
 - name: 概念
