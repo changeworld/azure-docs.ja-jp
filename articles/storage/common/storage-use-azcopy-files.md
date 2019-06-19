@@ -9,10 +9,10 @@ ms.date: 05/14/2019
 ms.author: normesta
 ms.subservice: common
 ms.openlocfilehash: 69d7136396c3d989e63b8956d3e703cc7f9666c8
-ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66687936"
 ---
 # <a name="transfer-data-with-azcopy-and-file-storage"></a>AzCopy とファイル ストレージでデータを転送する 
@@ -42,7 +42,7 @@ AzCopy `copy` コマンドを使用して、ローカル コンピューター�
 > * ワイルドカード文字を使用してファイルをアップロードする
 
 > [!NOTE]
-> AzCopy では、ファイルの md5 ハッシュ コードが自動的に計算され、保存されることはありません。 AzCopy にそれを行わせる場合、各コピー コマンドの先頭に `--put-md5` フラグを追加します。 そうすることで、ファイルがダウンロードされたとき、AzCopy では、ダウンロードするデータの MD5 ハッシュが計算され、ファイルの `Content-md5` プロパティに格納されている MD5 ハッシュが計算されたハッシュに一致するかどうかが検証されます。
+> AzCopy では、ファイルの md5 ハッシュ コードが自動的に計算されたり、保存されたりすることはありません。 AzCopy にそれを行わせる場合、各コピー コマンドの先頭に `--put-md5` フラグを追加します。 そうすることで、ファイルがダウンロードされたとき、AzCopy では、ダウンロードするデータの MD5 ハッシュが計算され、ファイルの `Content-md5` プロパティに格納されている MD5 ハッシュが計算されたハッシュに一致するかどうかが検証されます。
 
 ### <a name="upload-a-file"></a>ファイルをアップロードする
 

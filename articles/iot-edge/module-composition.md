@@ -10,10 +10,10 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
 ms.openlocfilehash: f4828b59ffa43365f48c002262368d383dfcff05
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66389365"
 ---
 # <a name="learn-how-to-deploy-modules-and-establish-routes-in-iot-edge"></a>IoT Edge にモジュールをデプロイしてルートを確立する方法について説明します。
@@ -135,7 +135,7 @@ IoT Edge ハブは、モジュール、IoT ハブ、リーフ デバイス間の
 ソースとシンクはすべてのルートに必要ですが、条件は、メッセージをフィルター処理するために使用できる省略可能な部分です。 
 
 
-### <a name="source"></a>ソース
+### <a name="source"></a>source
 
 ソースでは、メッセージがどこから送信されるのかを指定します。 IoT Edge は、モジュールまたはリーフ デバイスからメッセージをルーティングすることができます。 
 
@@ -143,7 +143,7 @@ IoT SDK を使用することにより、モジュールは、ModuleClient ク�
 
 ソース プロパティは、次のいずれかの値にすることができます。
 
-| ソース | 説明 |
+| source | 説明 |
 | ------ | ----------- |
 | `/*` | 任意のモジュールまたはリーフ デバイスからのすべての device-to-cloud メッセージまたはツイン変更通知 |
 | `/twinChangeNotifications` | 任意のモジュールまたはリーフ デバイスから送信されるツイン変更 (reported プロパティ) |

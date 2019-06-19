@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 05/21/2019
 ms.author: alkohli
 ms.openlocfilehash: da518de4702925ebad29727e2bdce99e67d40249
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/31/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66427750"
 ---
 # <a name="azure-data-box-heavy-limits-preview"></a>Azure Data Box Heavy の制限 (プレビュー)

@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/22/2019
+ms.date: 06/03/2019
 ms.author: juliako
-ms.openlocfilehash: 25c0fe7a179db484f18c1aca16471e39a739052c
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.openlocfilehash: ac08ddf4719b8d17519c5d487a6fb824efb3139a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66299182"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67068862"
 ---
 # <a name="dynamic-packaging"></a>ダイナミック パッケージ
 
@@ -114,10 +114,10 @@ Media Encoder Standard の形式とコーデックの一覧については、[�
     * DTS Express (dtse)
     * DTS-HD Lossless (コアなし) (dtsl)
 
-### <a name="hls-support"></a>HLS サポート
+### <a name="multi-audio-tracks"></a>複数のオーディオ トラック
 
-ダイナミック パッケージでは、複数のオーディオ トラック、複数のコーデック、複数の言語を持つ資産の HLS (バージョン 4 以上) がサポートされています。
-
+複数のコーデックと言語を使用する複数のオーディオ トラックを持つ資産をストリーミングするとき、ダイナミック パッケージでは、HLS 出力 (バージョン 4 以上) 用の複数のオーディオ トラックがサポートされます。
+ 
 ### <a name="not-supported"></a>サポートされていません
 
 ダイナミック パッケージでは、[Dolby Digital](https://en.wikipedia.org/wiki/Dolby_Digital) (AC3) オーディオ (古いコーデック) を含むファイルはサポートされていません。

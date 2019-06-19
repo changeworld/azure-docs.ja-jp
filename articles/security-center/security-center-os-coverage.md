@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 5/27/2019
+ms.date: 6/03/2019
 ms.author: monhaber
-ms.openlocfilehash: 807bde76bb6bb50490ee599768273a59c49d5e45
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: e2d66db2ae3c379db86d40603d919489fdf15eed
+ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66258701"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67144259"
 ---
 # <a name="platforms-and-features-supported-by-azure-security-center"></a>Azure Security Center でサポートされている機能とプラットフォーム
 
@@ -78,7 +78,7 @@ ms.locfileid: "66258701"
 > [!div class="mx-tableFixed"]
 > 
 
-|サーバー|Windows||Linux||||価格|
+|サーバー|Windows|||Linux|||価格|
 |----|----|----|----|----|----|----|----|
 |**Environment**|**Azure**||**Azure 以外**|**Azure**||**Azure 以外**||
 ||**仮想マシン**|**Virtual Machine Scale Set**||**仮想マシン**|**Virtual Machine Scale Set**|
@@ -129,7 +129,7 @@ ms.locfileid: "66258701"
 |SQL|✔| ✔|
 |PostGreSQL*|✔| ✔|
 |MySQL*|✔| ✔|
-|Azure BLOB ストレージ アカウント*|✔| ✔|
+|Azure BLOB ストレージ アカウント|✔| ✔|
 |App Services|✔| ✔|
 |Cloud Services|✔| X|
 |VNet|✔| NA|
@@ -137,7 +137,6 @@ ms.locfileid: "66258701"
 |NIC|✔| NA|
 |NSG|✔| NA|
 |サブスクリプション|✔ **| ✔|
-|App Service|✔| NA|
 |Batch|✔| NA|
 |Service Fabric|✔| NA|
 |Automation アカウント|✔| NA|
@@ -147,14 +146,9 @@ ms.locfileid: "66258701"
 |Stream Analytics|✔| NA|
 |イベント ハブ|✔| NA|
 |ロジック アプリ|✔| NA|
-|Subnet|✔| NA|
-|VNet|✔| NA|
 |ストレージ アカウント|✔| NA|
 |Redis|✔| NA|
-|SQL|✔| NA|
 |Data Lake Analytics|✔| NA|
-|ストレージ アカウント|✔| NA|
-|サブスクリプション|✔| NA|
 |Key Vault|✔| NA|
 
 

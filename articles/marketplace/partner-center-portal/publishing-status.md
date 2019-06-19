@@ -8,10 +8,10 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.openlocfilehash: 9bf3136969974abbe9a99a5632478e3cbb22307e
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66474527"
 ---
 # <a name="check-the-publishing-status-of-your-commercial-marketplace-offer"></a>Commercial Marketplace のオファーの発行状態を確認する
