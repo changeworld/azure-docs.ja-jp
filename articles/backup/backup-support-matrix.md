@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/17/2019
 ms.author: raynew
 ms.openlocfilehash: 99dd3c0b07307f2d0bf97dbff697e32e648705ae
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66400174"
 ---
 # <a name="azure-backup-support-matrix"></a>Azure Backup のサポート マトリックス
@@ -46,7 +46,7 @@ Azure Backup では、Recovery Services コンテナーを使用して、バッ�
 
 オンプレミス マシンをバックアップしたい場合に何がサポートされるかを以下に示します。
 
-**マシン** | **バックアップされる項目** | **場所** | **機能**
+**マシン** | **バックアップされる項目** | **Location** | **機能**
 --- | --- | --- | ---
 **MARS エージェントを使用した Windows マシンの直接バックアップ** | ファイル、フォルダー、システム状態 | Recovery Services コンテナーへのバックアップ。 | 1 日に 3 回のバックアップ<br/><br/> アプリ対応のバックアップなし<br/><br/> ファイル、フォルダー、ボリュームの復元
 **MARS エージェントを使用した Linux マシンの直接バックアップ** | バックアップはサポートされていません
@@ -66,7 +66,7 @@ Azure Backup では、Recovery Services コンテナーを使用して、バッ�
 
 Azure VM をバックアップしたい場合に何がサポートされるかを以下に示します。
 
-**マシン** | **バックアップされる項目** | **場所** | **機能**
+**マシン** | **バックアップされる項目** | **Location** | **機能**
 --- | --- | --- | ---
 **VM 拡張機能を使用した Azure VM のバックアップ** | VM 全体 | コンテナーへのバックアップ。 | VM のバックアップを有効にするときにインストールされる拡張機能。<br/><br/> 1 日 1 回のバックアップ。<br/><br/> Windows VM の場合はアプリ対応バックアップ、Linux VM の場合はファイル整合性バックアップ。 Linux マシンでは、カスタム スクリプトを使用して、アプリ整合性を構成できます。<br/><br/> VM またはディスクの復元。<br/><br/> Azure VM は、オンプレミスの場所へはバックアップできません。
 **MARS エージェントを使用する Azure VM のバックアップ** | ファイル、フォルダー、システム状態 | コンテナーへのバックアップ。 | 1 日に 3 回のバックアップ。<br/><br/> VM 全体ではなく特定のファイルまたはフォルダーをバックアップしたい場合は、MARS エージェントを VM 拡張機能と共に実行できます。

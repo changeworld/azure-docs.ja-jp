@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: kumud
-ms.openlocfilehash: 88acfebcc6dd8489703014d790f09313ab9302ec
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: e4e9ef4f3a50aeac4db4d2cc2f2b6cbafcc47268
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64939905"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67051626"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Traffic Analytics についてよく寄せられる質問
 
@@ -95,12 +95,19 @@ NSG のトラフィック分析は、次のサポートされているどのリ�
 Log Analytics ワークスペースは、次のリージョンに存在する必要があります。
 - カナダ中部
 - 米国中西部
+- 米国西部
 - 米国西部 2
+- 米国中南部
+- 米国中部
 - 米国東部
+- 米国東部 2
 - フランス中部
 - 西ヨーロッパ
+- 北ヨーロッパ
 - 英国南部
+- オーストラリア東部
 - オーストラリア南東部
+- 東アジア
 - 東南アジア 
 - 韓国中部
 - インド中部

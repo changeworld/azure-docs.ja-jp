@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2019
 ms.author: spelluru
-ms.openlocfilehash: fba969b70ae052c928f33888d3c93eb7683ae9f7
-ms.sourcegitcommit: ec7b0bf593645c0d1ef401a3350f162e02c7e9b8
+ms.openlocfilehash: de857498aeb51c9b3711c90338d983e85b61cb70
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2019
-ms.locfileid: "66455723"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67065430"
 ---
 # <a name="configure-a-shared-image-gallery-in-azure-devtest-labs"></a>Azure DevTest Labs での共有イメージ ギャラリーの構成
-DevTest Labs で[共有イメージ ギャラリー](/virtual-machines/windows/shared-image-galleries.md)機能がサポートされるようになりました。 ラボ ユーザーは、ラボ リソースの作成中に共有の場所からイメージにアクセスできます。 また、カスタム マネージド VM イメージに関連する構造および組織を構築できます。 共有イメージ ギャラリー機能では、次がサポートされています。
+DevTest Labs で[共有イメージ ギャラリー](../virtual-machines/windows/shared-image-galleries.md)機能がサポートされるようになりました。 ラボ ユーザーは、ラボ リソースの作成中に共有の場所からイメージにアクセスできます。 また、カスタム マネージド VM イメージに関連する構造および組織を構築できます。 共有イメージ ギャラリー機能では、次がサポートされています。
 
 - イメージのマネージド グローバル レプリケーション
 - 容易な管理のためのイメージのバージョン管理とグループ化

@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 04/30/2018
 ms.author: nitinme
 ms.openlocfilehash: 5522f762f3893f1d67cd3755b1e022f0118cc004
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66385317"
 ---
 # <a name="how-to-deploy-a-conversation-learner-bot"></a>Conversation Learner ボットをデプロイする方法
@@ -98,7 +98,7 @@ Conversation Learner UI の外部でボットを実行するには、ボット�
 
 Conversation Learner Bot を Azure にデプロイするための手順を以下に示します。  これらの手順では、Azure DevOps Services、GitHub、BitBucket、OneDrive などのクラウド ベースのソースからご自分のボット ソースを使用できることを前提とし、継続的デプロイ用にボットを構成します。
 
-1. [https://portal.azure.com](https://portal.azure.com)で、Azure Portal にログインします。
+1. [https://portal.azure.com](https://portal.azure.com )で、Azure Portal にログインします。
 
 2. 次の手順を実行して、新しい "Web App Bot" リソースを作成します。 
 
@@ -115,7 +115,7 @@ Conversation Learner Bot を Azure にデプロイするための手順を以下
 
        環境変数 | value
        --- | --- 
-       CONVERSATION_LEARNER_SERVICE_URI | "https://westus.api.cognitive.microsoft.com/conversationlearner/v1.0/"
+       CONVERSATION_LEARNER_SERVICE_URI | "https://westus.api.cognitive.microsoft.com/conversationlearner/v1.0/ "
        CONVERSATION_LEARNER_MODEL_ID      | アプリケーション ID の GUID。モデルの [設定] の下にある Conversation Learner UI から取得される>
        LUIS_AUTHORING_KEY               | このモデルの LUIS オーサリング キー
        LUIS_SUBSCRIPTION_KEY            | 必須ではありませんが、公開されたボットで作成クォータの使用を回避するために推奨されています。

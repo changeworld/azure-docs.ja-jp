@@ -16,10 +16,10 @@ ms.pm_owner: daviste;NumberByColors
 ms.reviewer: mbullwin
 ms.author: daviste
 ms.openlocfilehash: 1b2f429129c0bb9098f4f5029cb07ce06bc5db13
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66255133"
 ---
 # <a name="debug-your-applications-with-azure-application-insights-in-visual-studio"></a>Visual Studio の Azure Application Insights でアプリケーションをデバッグする
@@ -39,7 +39,7 @@ Visual Studio では、プロジェクトの Application Insights モジュー�
 このボタンをクリックして、テレメトリを検索します。 
 
 ## <a name="application-insights-search"></a>Application Insights での検索
-[Application Insights の検索] ウィンドウには、ログに記録されたイベントが表示されます  (Application Insights を設定する際に Azure にサインインした場合は、Azure Portal でも同じイベントを検索できます)。
+[Application Insights の検索] ウィンドウには、ログに記録されたイベントが表示されます (Application Insights を設定する際に Azure にサインインした場合は、Azure Portal でも同じイベントを検索できます)。
 
 ![プロジェクトを右クリックし、[Application Insights]、[検索] を選択する](./media/visual-studio/34.png)
 
@@ -60,7 +60,7 @@ Web アプリに対する要求では、クリックしてコードを表示で�
 ![[要求の詳細] で下にスクロールし、関連する項目を表示する](./media/visual-studio/41.png)
 
 ## <a name="view-exceptions-and-failed-requests"></a>例外と失敗した要求を表示する
-例外のレポートは、[検索] ウィンドウに表示されます  (古い種類の ASP.NET アプリケーションの一部では、フレームワークによって処理される例外が表示されるように、[例外の監視を設定する](../../azure-monitor/app/asp-net-exceptions.md)する必要があります)。
+例外のレポートは、[検索] ウィンドウに表示されます (古い種類の ASP.NET アプリケーションの一部では、フレームワークによって処理される例外が表示されるように、[例外の監視を設定する](../../azure-monitor/app/asp-net-exceptions.md)する必要があります)。
 
 スタック トレースを取得するには、例外をクリックします。 Visual Studio でアプリのコードが開かれている場合は、コードの該当する行をスタック トレースからクリックできます。
 

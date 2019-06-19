@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: danlep
 ms.openlocfilehash: f903828285b0d4fdc8fbd932fa7c85056e937481
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66148834"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181732"
 ---
 # <a name="deprecated-container-service-frequently-asked-questions"></a>(非推奨) Container Service についてよく寄せられる質問
 
@@ -93,13 +93,13 @@ Azure Portal や Azure Resource Explorer などの Azure ツールではクラ�
 
 1. Azure Portal の場合は、クラスター デプロイのリソース グループに移動します。  
 
-2. **[概要]** をクリックし、**[要点]** にある **[デプロイ]** のリンクをクリックします。 
+2. **[概要]** をクリックし、 **[要点]** にある **[デプロイ]** のリンクをクリックします。 
 
 3. **[デプロイ履歴]** ブレードで、名前が **microsoft-acs** で始まり、その後にデプロイ日が付加されているデプロイをクリックします。 例: microsoft-acs-201701310000  
 
 4. **[概要]** ページの **[出力]** に、いくつかのクラスター リンクが用意されています。 **SSHMaster0** は、コンテナー サービス クラスター内の 1 つ目のマスターに対する SSH 接続文字列です。 
 
-前述のとおり、Azure ツールを使用して、マスターの FQDN を確認することもできます。 マスターへの SSH 接続は、マスターの FQDN と、クラスターの作成時に指定したユーザー名を使用して作成します。 例: 
+前述のとおり、Azure ツールを使用して、マスターの FQDN を確認することもできます。 マスターへの SSH 接続は、マスターの FQDN と、クラスターの作成時に指定したユーザー名を使用して作成します。 例:
 
 ```bash
 ssh userName@masterFQDN –A –p 22 

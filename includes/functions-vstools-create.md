@@ -9,11 +9,11 @@ ms.date: 03/05/2019
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: 6c430f22a9d4fa0fad95bcaa41675545fffd91ec
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66131824"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67180944"
 ---
 Visual Studio の Azure Functions プロジェクト テンプレートでは、Azure の関数アプリに発行できるプロジェクトを作成します。 関数アプリを使用すると、リソースを管理、デプロイ、および共有するための論理ユニットとして関数をグループ化できます。
 

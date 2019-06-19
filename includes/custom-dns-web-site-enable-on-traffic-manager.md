@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: cephalin
 ms.openlocfilehash: 67b9c0ba2566206b0e70db51844b21e5d5d3c261
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66136240"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181752"
 ---
 ドメイン名のレコードが反映されると、カスタム ドメイン名を使用して対象の Azure App Services の Web アプリにアクセスできることをブラウザーで確認できます。
 
@@ -26,7 +26,7 @@ ms.locfileid: "66136240"
 > 
 
 1. ブラウザーで、[Azure Portal](https://portal.azure.com) を開きます。
-2. **[Web Apps]** タブで、Web アプリの名前をクリックし、**[設定]**、**[カスタム ドメイン]** の順に選択します。
+2. **[Web Apps]** タブで、Web アプリの名前をクリックし、 **[設定]** 、 **[カスタム ドメイン]** の順に選択します。
    
     ![](./media/custom-dns-web-site/dncmntask-cname-6.png)
 3. **[カスタム ドメイン]** ブレードで **[ホスト名の追加]** をクリックします。

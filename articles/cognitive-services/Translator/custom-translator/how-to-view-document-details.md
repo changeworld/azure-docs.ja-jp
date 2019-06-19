@@ -10,10 +10,10 @@ ms.date: 02/21/2019
 ms.author: v-pawal
 ms.topic: conceptual
 ms.openlocfilehash: 0995d65dc9723922a691ff31a422dfa55b35c82c
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66384076"
 ---
 # <a name="view-document-details"></a>ドキュメントの詳細の表示

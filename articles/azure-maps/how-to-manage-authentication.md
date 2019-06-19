@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: 617adbcda70799aa07248945bbc27f9d95aa77a3
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65952569"
 ---
 # <a name="manage-authentication-in-azure-maps"></a>Azure Maps での認証の管理
@@ -21,7 +21,7 @@ Azure Maps アカウントを作成した後、Azure Active Directory (Azure AD)
 
 ## <a name="view-authentication-details"></a>認証の詳細を表示する
 
-認証の詳細は、Azure portal で確認できます。 自分のアカウントにアクセスして、**[設定]** メニューで **[認証]** を選択します。
+認証の詳細は、Azure portal で確認できます。 自分のアカウントにアクセスして、 **[設定]** メニューで **[認証]** を選択します。
 
 ![認証の詳細](./media/how-to-manage-authentication/how-to-view-auth.png)
 
@@ -38,11 +38,11 @@ Azure Maps アカウントを作成したら、Azure AD テナントと Azure Ma
 
     ![アプリの登録の詳細](./media/how-to-manage-authentication/app-create.png)
 
-2. 委任された API アクセス許可を Azure Maps に割り当てるには、**[アプリの登録]** の下にあるアプリケーションに移動して **[設定]** を選択します。  **[必要なアクセス許可]**、**[追加]** の順に選択します。 **[API を選択します]** で「**Azure Maps**」を検索して選択し、**[選択]** ボタンを選択します。
+2. 委任された API アクセス許可を Azure Maps に割り当てるには、 **[アプリの登録]** の下にあるアプリケーションに移動して **[設定]** を選択します。  **[必要なアクセス許可]** 、 **[追加]** の順に選択します。 **[API を選択します]** で「**Azure Maps**」を検索して選択し、 **[選択]** ボタンを選択します。
 
     ![アプリの API アクセス許可](./media/how-to-manage-authentication/app-permissions.png)
 
-3. **[アクセス許可の選択]** の下で **[Access Azure Maps]\(Azure Maps へのアクセス\)** を選び、**[選択]** ボタンを選択します。
+3. **[アクセス許可の選択]** の下で **[Access Azure Maps]\(Azure Maps へのアクセス\)** を選び、 **[選択]** ボタンを選択します。
 
     ![アプリの API アクセス許可の選択](./media/how-to-manage-authentication/select-app-permissions.png)
 
@@ -52,7 +52,7 @@ Azure Maps アカウントを作成したら、Azure AD テナントと Azure Ma
     
        ![アプリ マニフェスト](./media/how-to-manage-authentication/app-manifest.png)
 
-    2. アプリケーションでサーバー/アプリケーション認証を使用する場合は、アプリの登録の **[キー]** ブレードに移動し、パスワードを作成するか、公開キー証明書をアプリの登録にアップロードします。 パスワードを作成する場合は、**[保存]** を選択した後に、後のためにパスワードをコピーして安全に保管します。 Azure AD からトークンを取得するには、このパスワードを使用します。
+    2. アプリケーションでサーバー/アプリケーション認証を使用する場合は、アプリの登録の **[キー]** ブレードに移動し、パスワードを作成するか、公開キー証明書をアプリの登録にアップロードします。 パスワードを作成する場合は、 **[保存]** を選択した後に、後のためにパスワードをコピーして安全に保管します。 Azure AD からトークンを取得するには、このパスワードを使用します。
 
        ![アプリ キー](./media/how-to-manage-authentication/app-keys.png)
 
@@ -61,17 +61,17 @@ Azure Maps アカウントを作成したら、Azure AD テナントと Azure Ma
 
 Azure Maps アカウントをお使いの Azure AD テナントに関連付けると、1 つまたは複数の Azure Maps のアクセス制御ロールにユーザーまたはアプリケーションを割り当てることで、アクセス制御を付与することができます。
 
-1. **[アクセス制御 (IAM)]** に移動し、**[ロールの割り当て]**、**[ロールの割り当ての追加]** の順に選択します。
+1. **[アクセス制御 (IAM)]** に移動し、 **[ロールの割り当て]** 、 **[ロールの割り当ての追加]** の順に選択します。
 
     ![RBAC の付与](./media/how-to-manage-authentication/how-to-grant-rbac.png)
 
-2. **[ロールの割り当ての追加]** ウィンドウの **[ロール]** の下で、**[Azure Maps Date Reader (Preview)]\(Azure Maps Date Reader (プレビュー)\)** を選択します。 **[アクセスの割り当て先]** で **[Azure AD user, group, or service principal]\(Azure AD のユーザー、グループ、またはサービス プリンシパル\)** を選択します。 **[選択]** の下でユーザーまたはアプリケーションを選択します。 **[保存]** を選択します。
+2. **[ロールの割り当ての追加]** ウィンドウの **[ロール]** の下で、 **[Azure Maps Date Reader (Preview)]\(Azure Maps Date Reader (プレビュー)\)** を選択します。 **[アクセスの割り当て先]** で **[Azure AD user, group, or service principal]\(Azure AD のユーザー、グループ、またはサービス プリンシパル\)** を選択します。 **[選択]** の下でユーザーまたはアプリケーションを選択します。 **[保存]** を選択します。
 
     ![ロールの割り当ての追加](./media/how-to-manage-authentication/add-role-assignment.png)
 
 ## <a name="view-available-azure-maps-rbac-roles"></a>使用可能な Azure Maps RBAC ロールを表示する
 
-Azure Maps に使用できるロールベースのアクセス制御 (RBAC) ロールを表示するには、**[アクセス制御 (IAM)]** に移動し、**[ロール]** を選択し、「**Azure Maps**」で始まるロールを検索します。 これらがアクセス権を付与できるロールです。
+Azure Maps に使用できるロールベースのアクセス制御 (RBAC) ロールを表示するには、 **[アクセス制御 (IAM)]** に移動し、 **[ロール]** を選択し、「**Azure Maps**」で始まるロールを検索します。 これらがアクセス権を付与できるロールです。
 
 ![使用可能なロールの表示](./media/how-to-manage-authentication/how-to-view-avail-roles.png)
 
@@ -80,7 +80,7 @@ Azure Maps に使用できるロールベースのアクセス制御 (RBAC) ロ�
 
 RBAC は詳細なアクセス制御を提供します。
 
-Azure Maps の RBAC が付与されているユーザーまたはアプリを表示するには、**[アクセス制御 (IAM)]** に移動し、**[ロールの割り当て]** を選択して、「**Azure Maps**」でフィルター処理します。
+Azure Maps の RBAC が付与されているユーザーまたはアプリを表示するには、 **[アクセス制御 (IAM)]** に移動し、 **[ロールの割り当て]** を選択して、「**Azure Maps**」でフィルター処理します。
 
 ![RBAC が付与されたユーザーとアプリのビュー](./media/how-to-manage-authentication/how-to-view-amrbac.png)
 

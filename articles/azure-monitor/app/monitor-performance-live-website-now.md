@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 09/05/2018
+ms.date: 05/24/2019
 ms.author: mbullwin
-ms.openlocfilehash: 3f4ef7f333525d7408d0345b917102cddb295386
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: 6ad2ab00060528557f618eb684ccfa710c3f09b9
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66255464"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67074177"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-status-monitor"></a>Application Insights Status Monitor を使用した実行時の Web アプリのインストルメント化
 

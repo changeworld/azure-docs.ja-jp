@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/26/2018
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: e10717b0fe14d2ed6ee720a2414e753bdd2474f1
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 77bbb333157f5c8cec9fa87e5f76fa4ae2678058
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64708900"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67070609"
 ---
 # <a name="analyze-twitter-data-using-apache-hive-and-apache-hadoop-on-hdinsight"></a>HDInsight で Apache Hive と Apache Hadoop を使用して Twitter データを分析する
 
@@ -21,8 +21,6 @@ ms.locfileid: "64708900"
 
 > [!IMPORTANT]  
 > このドキュメントの手順は、HDInsight 3.6 でテストされています。
->
-> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
 ## <a name="get-the-data"></a>データを取得する
 
@@ -30,7 +28,7 @@ Twitter では、REST API を使用して、JavaScript Object Notation (JSON) �
 
 ### <a name="create-a-twitter-application"></a>Twitter アプリケーションを作成する
 
-1. Web ブラウザーで、[https://apps.twitter.com/](https://apps.twitter.com/) にサインインします。 Twitter アカウントを持っていない場合は、**[今すぐ登録]** リンクをクリックします。
+1. Web ブラウザーで、[https://apps.twitter.com/](https://apps.twitter.com/) にサインインします。 Twitter アカウントを持っていない場合は、 **[今すぐ登録]** リンクをクリックします。
 
 2. **[Create New App]** をクリックします。
 
@@ -42,7 +40,7 @@ Twitter では、REST API を使用して、JavaScript Object Notation (JSON) �
    | 説明 |MyHDInsightApp |
    | Web サイト |https:\//www.myhdinsightapp.com |
 
-4. **[Yes, I agree]** をオンにして、**[Create your Twitter application]** をクリックします。
+4. **[Yes, I agree]** をオンにして、 **[Create your Twitter application]** をクリックします。
 
 5. **[Permissions]** タブをクリックします。既定のアクセス許可は **読み取り専用**です。
 

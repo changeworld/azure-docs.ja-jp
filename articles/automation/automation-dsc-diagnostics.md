@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0dad74f75fd7b73e7dab0b2dddbdfda193d5b2ec
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 50779f8a37713bda8b27c1cfd2ca37eed4edbd11
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58445799"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67054703"
 ---
 # <a name="forward-azure-automation-state-configuration-reporting-data-to-azure-monitor-logs"></a>Azure Monitor ログへの Azure Automation State Configuration レポート データの転送
 
@@ -37,7 +37,7 @@ Azure Monitor ログへの Automation State Configuration レポートの送信�
 
 - 2016 年 11 月以降のリリースの [Azure PowerShell](/powershell/azure/overview) (v2.3.0)。
 - Azure Automation アカウント。 詳しくは、「[Azure Automation の概要](automation-offering-get-started.md)」をご覧ください。
-- **Automation &amp;amp; Control** サービス プラン付きの Log Analytics ワークスペース。 詳細については、[Azure Monitor ログの概要](../log-analytics/log-analytics-get-started.md)に関するページを参照してください。
+- **Automation &amp; Control** サービス プラン付きの Log Analytics ワークスペース。 詳細については、[Azure Monitor ログの概要](../log-analytics/log-analytics-get-started.md)に関するページを参照してください。
 - 1 つ以上の Azure Automation State Configuration ノード。 詳細については、「[Azure Automation State Configuration による管理のためのマシンのオンボード](automation-dsc-onboarding.md)」をご覧ください。
 
 ## <a name="set-up-integration-with-azure-monitor-logs"></a>Azure Monitor ログとの統合を設定する
@@ -49,26 +49,26 @@ Azure Automation DSC から Azure Monitor ログへのデータのインポー�
 
    ```powershell
    # Find the ResourceId for the Automation Account
-   Get-AzureRmResource -ResourceType 'Microsoft.Automation/automationAccounts'
+   Get-AzResource -ResourceType 'Microsoft.Automation/automationAccounts'
    ```
 
 1. 次の PowerShell コマンドを実行して、Log Analytics ワークスペースの _ResourceId_ を取得します (ワークスペースが 1 つ以上ある場合は、構成するワークスペースの _ResourceID_ を選択します)。
 
    ```powershell
    # Find the ResourceId for the Log Analytics workspace
-   Get-AzureRmResource -ResourceType 'Microsoft.OperationalInsights/workspaces'
+   Get-AzResource -ResourceType 'Microsoft.OperationalInsights/workspaces'
    ```
 
 1. 次の PowerShell コマンドを実行します。`<AutomationResourceId>` と `<WorkspaceResourceId>` はそれぞれ前の手順で取得した _ResourceId_ の値と置き換えます。
 
    ```powershell
-   Set-AzureRmDiagnosticSetting -ResourceId <AutomationResourceId> -WorkspaceId <WorkspaceResourceId> -Enabled $true -Categories 'DscNodeStatus'
+   Set-AzDiagnosticSetting -ResourceId <AutomationResourceId> -WorkspaceId <WorkspaceResourceId> -Enabled $true -Category 'DscNodeStatus'
    ```
 
 Azure Automation State Configuration から Azure Monitor ログへのデータのインポートを停止するには、次の PowerShell コマンドを実行します。
 
 ```powershell
-Set-AzureRmDiagnosticSetting -ResourceId <AutomationResourceId> -WorkspaceId <WorkspaceResourceId> -Enabled $false -Categories 'DscNodeStatus'
+Set-AzDiagnosticSetting -ResourceId <AutomationResourceId> -WorkspaceId <WorkspaceResourceId> -Enabled $false -Category 'DscNodeStatus'
 ```
 
 ## <a name="view-the-state-configuration-logs"></a>State Configuration ログを表示する
@@ -95,7 +95,7 @@ State Configuration のログを検索するには、次のクエリを入力し
 
 アラート ルールを作成するには、まずアラートを呼び出す State Configuration レポートのレコードに対するログ検索を作成します。 **[+ New Alert Rule]\(新しいアラート ルール\)** をクリックし、アラート ルールを作成して構成します。
 
-1. Log Analytics ワークスペースの [概要] ページで、**[ログ]** をクリックします。
+1. Log Analytics ワークスペースの [概要] ページで、 **[ログ]** をクリックします。
 1. クエリ フィールドに次のように入力して、アラートに対するログ検索クエリを作成します。`Type=AzureDiagnostics Category='DscNodeStatus' NodeName_s='DSCTEST1' OperationName='DscNodeStatusData' ResultType='Failed'`
 
    複数の Automation アカウントまたはサブスクリプションからワークスペースへのログをセットアップしてある場合は、サブスクリプションおよび Automation アカウントごとにアラートをグループ化することができます。  
@@ -107,7 +107,7 @@ State Configuration のログを検索するには、次のクエリを入力し
 Azure Monitor ログを使用する利点の 1 つは、失敗したチェックをノードを越えて検索できることです。
 失敗した DSC リソースのすべてのインスタンスを見つけるには、次のようにします。
 
-1. Log Analytics ワークスペースの [概要] ページで、**[ログ]** をクリックします。
+1. Log Analytics ワークスペースの [概要] ページで、 **[ログ]** をクリックします。
 1. クエリ フィールドに次のように入力して、アラートに対するログ検索クエリを作成します。`Type=AzureDiagnostics Category='DscNodeStatus' OperationName='DscResourceStatusData' ResultType='Failed'`
 
 ### <a name="view-historical-dsc-node-status"></a>DSC ノードの状態の履歴を表示する
@@ -133,7 +133,7 @@ Azure Automation からの診断により、Azure Monitor ログに 2 つのカ�
 | NodeName_s |管理対象ノードの名前。 |
 | NodeComplianceStatus_s |ノードが準拠しているかどうか。 |
 | DscReportStatus |コンプライアンス チェックが正常に実行されたかどうか。 |
-| ConfigurationMode | ノードに構成が適用される方法。 指定できる値は、__"ApplyOnly"__、__"ApplyandMonitior"__、および __"ApplyandAutoCorrect"__ です。 <ul><li>__ApplyOnly__:DSC が構成を適用し、以降は新しい構成がターゲット ノードにプッシュない限り、または新しい構成がサーバーからプルされるまで何もしません。 新しい構成が最初に適用された後、DSC は以前の構成された状態からの誤差を確認しません。 DSC は __ApplyOnly__ が有効になる前に、構成の適用を成功するまで試行します。 </li><li> __ApplyAndMonitor__:これが既定値です。 LCM が任意の新しい構成を適用します。 新しい構成が最初に適用された後、ターゲット ノードが目的の状態から変わった場合、DSC はログに不一致を報告します。 DSC は __ApplyAndMonitor__ が有効になる前に、構成の適用を成功するまで試行します。</li><li>__ApplyAndAutoCorrect__:DSC が任意の新しい構成を適用します。 新しい構成が最初に適用された後、ターゲット ノードが目的の状態から変わった場合、DSC はログに不一致を報告し、現在の構成を再適用します。</li></ul> |
+| ConfigurationMode | ノードに構成が適用される方法。 指定できる値は、 __"ApplyOnly"__ 、 __"ApplyandMonitior"__ 、および __"ApplyandAutoCorrect"__ です。 <ul><li>__ApplyOnly__:DSC が構成を適用し、以降は新しい構成がターゲット ノードにプッシュない限り、または新しい構成がサーバーからプルされるまで何もしません。 新しい構成が最初に適用された後、DSC は以前の構成された状態からの誤差を確認しません。 DSC は __ApplyOnly__ が有効になる前に、構成の適用を成功するまで試行します。 </li><li> __ApplyAndMonitor__:これが既定値です。 LCM が任意の新しい構成を適用します。 新しい構成が最初に適用された後、ターゲット ノードが目的の状態から変わった場合、DSC はログに不一致を報告します。 DSC は __ApplyAndMonitor__ が有効になる前に、構成の適用を成功するまで試行します。</li><li>__ApplyAndAutoCorrect__:DSC が任意の新しい構成を適用します。 新しい構成が最初に適用された後、ターゲット ノードが目的の状態から変わった場合、DSC はログに不一致を報告し、現在の構成を再適用します。</li></ul> |
 | HostName_s | 管理対象ノードの名前。 |
 | IPAddress | 管理対象ノードの IPv4 アドレス。 |
 | Category | DscNodeStatus |

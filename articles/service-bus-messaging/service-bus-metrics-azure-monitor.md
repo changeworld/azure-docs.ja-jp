@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 11/06/2018
 ms.author: aschhab
 ms.openlocfilehash: fdb0152ef398dbd53a8a2a99a10d90254252908b
-ms.sourcegitcommit: d73c46af1465c7fd879b5a97ddc45c38ec3f5c0d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65921235"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor-preview"></a>Azure Monitor での Azure Service Bus メトリック (プレビュー)

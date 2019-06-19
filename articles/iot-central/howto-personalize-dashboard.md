@@ -3,17 +3,17 @@ title: Azure IoT Central の個人用ダッシュボードの作成 | Microsoft 
 description: ユーザーが個人用ダッシュボードを作成して管理する方法について説明します。
 author: dominicbetts
 ms.author: dobett
-ms.date: 02/13/2019
+ms.date: 06/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: fb74669dcaa802ad06a9c4dff3ffdf25726f518c
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: a1641c4f3ae4eaa175657db8ff4064fa2202aea6
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57316067"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67053002"
 ---
 # <a name="create-and-manage-personal-dashboards"></a>個人用ダッシュボードの作成と管理
 
@@ -29,7 +29,7 @@ ms.locfileid: "57316067"
 
 ![ダッシュボード ライブラリ](media/howto-personalize-dashboard/dashboardeditor.png)
 
-たとえば、**[デバイス設定とプロパティ]** タイルを追加して、自分が管理するデバイスの設定とプロパティの値を表示できます。 これを行うには、まず **[デバイス テンプレート]** を選択し、次に **[デバイス インスタンス]** を選択します。 次に、タイルのタイトルを指定し、表示する**設定**または**プロパティ**を選択します。 次のスクリーンショットでは、タイルに追加するために選択された**ファン速度**の設定を示しています。 **[完了]** を選択して、ダッシュボードへの変更を保存します。
+たとえば、 **[デバイス設定とプロパティ]** タイルを追加して、自分が管理するデバイスの設定とプロパティの値を表示できます。 これを行うには、まず **[デバイス テンプレート]** を選択し、次に **[デバイス インスタンス]** を選択します。 次に、タイルのタイトルを指定し、表示する**設定**または**プロパティ**を選択します。 次のスクリーンショットでは、タイルに追加するために選択された**ファン速度**の設定を示しています。 **[完了]** を選択して、ダッシュボードへの変更を保存します。
 
 ![設定とプロパティの詳細が表示された [Configure Device Details]\(デバイスの詳細の構成\) フォーム](media/howto-personalize-dashboard/dashboardsetting.png)
 

@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
 ms.openlocfilehash: 7f89dc33c105a82646c8f12422f88a06efdca18b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66238542"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181567"
 ---
 Azure Data Lake Analytics により、分散インフラストラクチャや複雑なコードの管理という複雑なタスクも簡単に行うことができます。 リソースを動的にプロビジョニングするので、これを使用してエクサバイト規模のデータも分析できます。 ジョブが完了するとリソースが自動的に縮小されます。 使用した処理能力の分だけの支払いですみます。 保存するデータのサイズや使用するコンピューティングの量を増やしたり減らしたりする際に、コードを書き直す必要はありません。 サブスクリプションの既定の制限を引き上げるには、サポートにお問い合わせください。
 

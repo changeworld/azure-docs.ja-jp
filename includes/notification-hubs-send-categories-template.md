@@ -9,21 +9,21 @@ ms.date: 03/30/2018
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: f0ff729084d194ff2e05e89eadc45782f775b1c5
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66156744"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181420"
 ---
 このセクションでは、.NET コンソール アプリから、タグ付けされたテンプレート通知としてニュース速報を送信します。 
 
-1. Visual Studio で、Visual C# の新しいコンソール アプリケーションを作成します。a. メニューで、**[ファイル]** > **[新規作成]** > **[プロジェクト]** を選択します。
-    b. **[Visual C#]** を展開し、**[Windows デスクトップ]** を選択します。 
+1. Visual Studio で、Visual C# の新しいコンソール アプリケーションを作成します。a. メニューで、 **[ファイル]**  >  **[新規作成]**  >  **[プロジェクト]** を選択します。
+    b. **[Visual C#]** を展開し、 **[Windows デスクトップ]** を選択します。 
     c. テンプレートの一覧から **[コンソール アプリ (.NET Framework)]** を選択します。 
     d. アプリの**名前**を入力します。 
     e. アプリの**フォルダー**を選択します。
     f. **[OK]** を選択してプロジェクトを作成します。 
-2. Visual Studio のメイン メニューで、**[ツール]** > **[NuGet Package Manager]** > **[パッケージ マネージャー コンソール]** の順に選択してから、コンソール ウィンドウで次の文字列を入力します。
+2. Visual Studio のメイン メニューで、 **[ツール]**  >  **[NuGet Package Manager]**  >  **[パッケージ マネージャー コンソール]** の順に選択してから、コンソール ウィンドウで次の文字列を入力します。
    
     ```
     Install-Package Microsoft.Azure.NotificationHubs

@@ -9,11 +9,11 @@ ms.date: 03/09/2018
 ms.author: azcspmt;ayshak;cynthn
 ms.custom: include file
 ms.openlocfilehash: ecf70bbbeae8fd68309f3343615f021038fb10b6
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66111445"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181171"
 ---
 B シリーズ VM ファミリでは、ワークロードで必要とされるベース レベル パフォーマンスを備えた VM を選べるだけでなく、負荷が急増した場合に Intel® Broadwell E5-2673 v4 2.3 GHz または Intel® Haswell 2.4 GHz E5-2673 v3 プロセッサ vCPU の CPU パフォーマンスを 100% 引き出すことができます。
 

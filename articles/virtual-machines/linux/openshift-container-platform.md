@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/18/2019
 ms.author: haroldw
-ms.openlocfilehash: 664099322bef3ac85d980fbe5e43dcc49cba862b
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 296bc42313ef80425004d3c9b43c6792cbaf97f4
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/17/2019
 ms.locfileid: "65411560"
 ---
 # <a name="deploy-openshift-container-platform-in-azure"></a>OpenShift Container Platform の Azure へのデプロイ
@@ -66,7 +66,7 @@ Resource Manager テンプレートを使用してデプロイするには、パ
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "_artifactsLocation": {

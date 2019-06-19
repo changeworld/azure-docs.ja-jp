@@ -3,21 +3,22 @@ title: Visual Studio Mobile Center での Azure Traffic Manager への Real User
 description: Real User Measurements を Traffic Manager に送信するように、Visual Studio Mobile Center を使用して開発されたモバイル アプリケーションを設定します
 services: traffic-manager
 documentationcenter: traffic-manager
-author: KumudD
+author: asudbring
+manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 03/16/2018
-ms.author: kumud
+ms.author: allensu
 ms.custom: ''
-ms.openlocfilehash: 1a5b883a8c9688d4545c0e98c00f78a2e982a611
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 95207cea5988a22b0b3caa23be39b481f9fd687b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58079717"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67071252"
 ---
 # <a name="how-to-send-real-user-measurements-to-traffic-manager-with-visual-studio-mobile-center"></a>Visual Studio Mobile Center で Real User Measurements を Traffic Manager に送信する方法
 
@@ -35,7 +36,7 @@ Real User Measurements を構成するには、キーを取得し、RUM パッ�
 Azure Portal を使用して RUM キーを取得するには、次の手順を実行します。
 1. ブラウザーから Azure Portal にサインインします。 まだアカウントを持っていない場合は、1 か月間の無料試用版にサインアップできます。
 2. ポータルの検索バーで、変更の対象となる Traffic Manager プロファイル名を検索し、表示された結果内で Traffic Manager プロファイルをクリックします。
-3. Traffic Manager プロファイル ページで、**[設定]** で **[Real User Measurements]** をクリックします。
+3. Traffic Manager プロファイル ページで、 **[設定]** で **[Real User Measurements]** をクリックします。
 4. **[キーの生成]** をクリックして、新しい RUM キーを作成します。
         
    ![Real User Measurements キーの生成](./media/traffic-manager-create-rum-visual-studio/generate-rum-key.png)

@@ -10,10 +10,10 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: 38a120747734cbe4af8804a3e7596fc11a2c2eb3
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66306658"
 ---
 # <a name="using-the-azure-storage-rest-api"></a>Azure Storage REST API の使用
@@ -65,7 +65,7 @@ REST API リファレンスの [ListContainers](/rest/api/storageservices/List-C
 
 **要求メソッド**: GET。 この動詞は、要求オブジェクトのプロパティとして指定する HTTP メソッドです。 この動詞の他の値としては、呼び出す API に応じて HEAD、PUT、DELETE などがあります。
 
-**要求 URI**: https://myaccount.blob.core.windows.net/?comp=list  これは、Blob Storage アカウント エンドポイント `http://myaccount.blob.core.windows.net` とリソース文字列 `/?comp=list` から作成されています。
+**要求 URI**: https://myaccount.blob.core.windows.net/?comp=list   これは、Blob Storage アカウント エンドポイント `http://myaccount.blob.core.windows.net` とリソース文字列 `/?comp=list` から作成されています。
 
 [URI パラメーター](/rest/api/storageservices/List-Containers2#uri-parameters): ListContainers を呼び出すときに使うことができる追加のクエリ パラメーターがあります。 そのうちの 2 つは、呼び出しの *timeout* (タイムアウト、秒単位) と、フィルター処理に使われる *prefix* (プレフィックス) です。
 

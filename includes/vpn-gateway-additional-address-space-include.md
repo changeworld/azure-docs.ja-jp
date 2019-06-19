@@ -9,11 +9,11 @@ ms.date: 11/30/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: cc17df68280c342f863e69e6a253788d20caeba8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66171602"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181018"
 ---
 ### <a name="to-add-additional-address-space"></a>追加のアドレス空間を追加するには
 

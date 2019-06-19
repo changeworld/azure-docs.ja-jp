@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 6f2ad6426c2c93fa595648af374df5566c45e57f
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66157770"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181203"
 ---
 #### <a name="to-install-updates-via-the-azure-portal"></a>Azure Portal を使用して更新プログラムをインストールするには
 
-1. StorSimple デバイス マネージャーに移動し、**[デバイス]** を選択します。 サービスに接続されているデバイスの一覧から、更新するデバイスを選択してクリックします。 
+1. StorSimple デバイス マネージャーに移動し、 **[デバイス]** を選択します。 サービスに接続されているデバイスの一覧から、更新するデバイスを選択してクリックします。 
 
     ![デバイスの更新](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate1m.png) 
 
@@ -21,7 +21,7 @@ ms.locfileid: "66157770"
 
     ![デバイスの更新](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate2m.png)  
 
-3. ソフトウェアの更新プログラムが利用可能な場合は、メッセージが表示されます。 更新プログラムを確認するには、**[スキャン]** をクリックします。
+3. ソフトウェアの更新プログラムが利用可能な場合は、メッセージが表示されます。 更新プログラムを確認するには、 **[スキャン]** をクリックします。
 
     ![デバイスの更新](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate3m1.png)
 
@@ -29,7 +29,7 @@ ms.locfileid: "66157770"
 
     ![デバイスの更新](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate5m.png)
 
-4. 更新プログラムのスキャンが完了したら、**[更新プログラムのダウンロード]** をクリックします。 
+4. 更新プログラムのスキャンが完了したら、 **[更新プログラムのダウンロード]** をクリックします。 
 
     ![デバイスの更新](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate6m.png)
 
@@ -53,7 +53,7 @@ ms.locfileid: "66157770"
 
     ![デバイスの更新](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate13m.png)
 
-8.  インストール ジョブが正常に完了したら、**[デバイスの更新プログラム]** ブレードの **[ジョブの表示]** リンクをクリックして、インストールを監視します。 
+8.  インストール ジョブが正常に完了したら、 **[デバイスの更新プログラム]** ブレードの **[ジョブの表示]** リンクをクリックして、インストールを監視します。 
 
     ![デバイスの更新](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate15m1.png)
 

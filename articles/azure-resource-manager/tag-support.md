@@ -4,14 +4,14 @@ description: タグをサポートしている Azure リソースの種類を示
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 05/10/2019
+ms.date: 06/07/2019
 ms.author: tomfitz
-ms.openlocfilehash: 7ef37323fb8150e3a6b52800bfafa2585ae328c2
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: 8b7e6d234984e84f5b238d657281dd8b1b9ec423
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65523236"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67056874"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure リソースでのタグのサポート
 この記事では、リソースの種類が[タグ](resource-group-using-tags.md)をサポートしているかどうかについて説明します。 「**タグのサポート**」というラベルが付けられた列は、リソースの種類にタグのプロパティがあるかどうかを示します。 「**コスト レポートのタグ**」というラベルが付けられた列は、リソースの種類がタグをコスト レポートに渡すかどうかを示します。
@@ -1231,7 +1231,7 @@ ms.locfileid: "65523236"
 | customApis | はい | はい |
 | deletedSites | いいえ |  いいえ |
 | functions | いいえ |  いいえ |
-| hostingEnvironments | はい | いいえ |
+| hostingEnvironments | はい | はい |
 | hostingEnvironments/multiRolePools | いいえ |  いいえ |
 | hostingEnvironments/multiRolePools/instances | いいえ |  いいえ |
 | hostingEnvironments/workerPools | いいえ |  いいえ |

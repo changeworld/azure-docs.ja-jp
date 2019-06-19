@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 03/28/2019
 ms.author: danlep
 ms.openlocfilehash: bdf88657c11bdb5ab5bcde97c155780328065c7e
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65954476"
 ---
 # <a name="acr-tasks-reference-yaml"></a>ACR タスクの参照:YAML

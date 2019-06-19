@@ -11,10 +11,10 @@ ms.date: 11/14/2018
 ms.author: martinle
 ms.reviewer: igorstan
 ms.openlocfilehash: 62213ca1910ff26287bcd398d89fe7f8caf3cfac
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66514674"
 ---
 # <a name="sql-data-warehouse-capacity-limits"></a>SQL Data Warehouse の容量制限
@@ -59,9 +59,9 @@ Azure SQL Data Warehouse のさまざまなコンポーネントで使用でき�
 ## <a name="queries"></a>クエリ
 | Category | 説明 | 最大値 |
 |:--- |:--- |:--- |
-| Query |ユーザー テーブルに対する、キューに置かれるクエリ数 |1,000 |
+| Query |ユーザー テーブルに対する、キューに置かれるクエリ数 |1000 |
 | Query |システム ビューに対する同時クエリ数 |100 |
-| Query |システム ビューに対する、キューに置かれるクエリ数 |1,000 |
+| Query |システム ビューに対する、キューに置かれるクエリ数 |1000 |
 | Query |パラメーターの最大個数 |2098 |
 | Batch |最大サイズ |65,536*4096 |
 | SELECT の結果セット |行あたりの列数 |4096<br/><br/>SELECT の結果セットで、許容される行あたりの列数の上限は 4096 個です。 常に 4096 個が保証されるわけではありません。 クエリ プランで一時テーブルが必要な場合、テーブルあたりの列数の最大値として 1024 が適用される可能性があります。 |

@@ -9,18 +9,18 @@ ms.date: 10/09/2018
 ms.author: danlep
 ms.custom: include file
 ms.openlocfilehash: 50d71a3967e61e5d531f4bfeae3582b56230a0d2
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66117297"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181168"
 ---
 ## <a name="terminology"></a>用語集
 
 Azure Marketplace イメージには、次の属性があります。
 
-* **[発行者]**: イメージを作成した組織。 次に例を示します。Canonical、MicrosoftWindowsServer
-* **[プラン]**: 発行元によって作成された関連するイメージのグループ名です。 次に例を示します。UbuntuServer、WindowsServer
+* **[発行者]** : イメージを作成した組織。 次に例を示します。Canonical、MicrosoftWindowsServer
+* **[プラン]** : 発行元によって作成された関連するイメージのグループ名です。 次に例を示します。UbuntuServer、WindowsServer
 * **SKU**:ディストリビューションのメジャー リリースなど、プランのインスタンス。 次に例を示します。18.04-LTS、2019-Datacenter
 * **バージョン**:イメージの SKU のバージョン番号。 
 

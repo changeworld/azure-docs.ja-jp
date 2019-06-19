@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 04/30/2018
 ms.author: nitinme
 ms.openlocfilehash: ebdc1e1c100329e95bd19359408cb138d233b1c2
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66385438"
 ---
 # <a name="default-values-and-boundaries"></a>既定値と境界
@@ -39,7 +39,7 @@ ms.locfileid: "66385438"
 モデルあたりの作成済みのエンティティの最大数 | [LUIS の境界に関するドキュメント](https://docs.microsoft.com/azure/cognitive-services/luis/luis-boundaries)を参照してください。
 モデルあたりのエンティティの最大数 (合計数) | 100
 モデルあたりのアクションの最大数 | 32
-モデルあたりのトレーニング会話の最大数 | 1,000
+モデルあたりのトレーニング会話の最大数 | 1000
 トレーニング ダイアログあたりのユーザーのターンの最大数 | 100
 モデルあたりのログ会話の最大数 | 制限は設定されていません。ログ ダイアログは一定期間のみ保持され、その期間が経過すると破棄されます。  また、Conversation Learner UI では一度に 100 件のログ ダイアログが表示されます。 
 ユーザーあたりのモデルの最大数 | 制限は設定されていません。

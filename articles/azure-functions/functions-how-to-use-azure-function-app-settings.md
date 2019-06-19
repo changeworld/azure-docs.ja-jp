@@ -12,10 +12,10 @@ ms.date: 03/28/2018
 ms.author: glenga
 ms.custom: cc996988-fb4f-47
 ms.openlocfilehash: 92ca09040836dfc55a9d709b12a0ee01192d6bac
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65957396"
 ---
 # <a name="how-to-manage-a-function-app-in-the-azure-portal"></a>Azure Portal で関数アプリを管理する方法 
@@ -26,7 +26,7 @@ Azure Functions では、関数アプリに個々の関数の実行コンテキ�
 
 ![Azure Portal の関数アプリの概要](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-main.png)
 
-関数アプリの管理に必要なすべての機能には、概要ページからアクセスできます (特に **[[アプリケーションの設定]](#settings)** と **[[プラットフォーム機能]](#platform-features)**)。
+関数アプリの管理に必要なすべての機能には、概要ページからアクセスできます (特に **[[アプリケーションの設定]](#settings)** と **[[プラットフォーム機能]](#platform-features)** )。
 
 ## <a name="settings"></a>アプリケーションの設定
 
@@ -36,7 +36,7 @@ Azure Functions では、関数アプリに個々の関数の実行コンテキ�
 
 これらの設定は暗号化されて格納されているため、ポータルで値を表示するには **[値を表示する]** を選択する必要があります。
 
-設定を追加するには、**[新しいアプリケーション設定]** を選択して新しいキーと値のペアを追加します。
+設定を追加するには、 **[新しいアプリケーション設定]** を選択して新しいキーと値のペアを追加します。
 
 [!INCLUDE [functions-environment-variables](../../includes/functions-environment-variables.md)]
 

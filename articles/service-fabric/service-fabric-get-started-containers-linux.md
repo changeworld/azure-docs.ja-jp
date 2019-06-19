@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 1/4/2019
 ms.author: aljo
 ms.openlocfilehash: 58af752d8b7fcec5c681e2b8975d109a0f731878
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66302272"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>Linux で初めての Service Fabric コンテナー アプリケーションを作成する
@@ -200,7 +200,7 @@ Service Fabric コンテナー アプリケーションを作成するには、�
 service-fabric-get-started-containers.md#configure-cluster-wide-credentials)を参照してください
 
 ## <a name="configure-isolation-mode"></a>分離モードの構成
-6.3 のランタイム リリースでは、Linux コンテナーで VM 分離がサポートされています。つまり、process と hyperv の 2 つの分離モードがサポートされています。 hyperv 分離モードでは、各コンテナーとコンテナー ホスト間でカーネルが分離されます。 hyperv 分離は、[Clear Containers](https://software.intel.com/en-us/articles/intel-clear-containers-2-using-clear-containers-with-docker) を使用して実装されています。 分離モードは、Linux クラスター用にアプリケーション マニフェスト ファイルの `ServicePackageContainerPolicy` 要素に指定されます。 指定できる分離モードは、`process`、`hyperv`、および `default` です。 既定は、プロセス分離モードです。 以下のスニペットは、アプリケーション マニフェスト ファイルで分離モードがどのように指定されるかを示しています。
+6\.3 のランタイム リリースでは、Linux コンテナーで VM 分離がサポートされています。つまり、process と hyperv の 2 つの分離モードがサポートされています。 hyperv 分離モードでは、各コンテナーとコンテナー ホスト間でカーネルが分離されます。 hyperv 分離は、[Clear Containers](https://software.intel.com/en-us/articles/intel-clear-containers-2-using-clear-containers-with-docker) を使用して実装されています。 分離モードは、Linux クラスター用にアプリケーション マニフェスト ファイルの `ServicePackageContainerPolicy` 要素に指定されます。 指定できる分離モードは、`process`、`hyperv`、および `default` です。 既定は、プロセス分離モードです。 以下のスニペットは、アプリケーション マニフェスト ファイルで分離モードがどのように指定されるかを示しています。
 
 ```xml
 <ServiceManifestImport>

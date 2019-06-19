@@ -9,11 +9,11 @@ ms.date: 07/02/2018
 ms.author: shants
 ms.custom: include file
 ms.openlocfilehash: 50a215175d7305834a64b7e0cfbc153431b10b7c
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66116962"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181154"
 ---
 ## <a name="view-vms-scheduled-for-maintenance-in-the-portal"></a>ポータルでメンテナンスがスケジュールされている VM を表示する
 
@@ -51,13 +51,13 @@ Azure Portal を使用して、VM のメンテナンス スケジュールを検
 
 Azure は、サブスクリプション所有者と共同所有者グループに電子メールを送信することで、計画済みメンテナンスのスケジュールを伝えます。 Azure アクティビティ ログ アラートを作成して、この通信にその他の受信者とチャネルを追加することができます。 詳細については、「[サービス通知のアクティビティ ログ アラートを作成する](../articles/azure-monitor/platform/alerts-activity-log-service-notifications.md)」を参照してください。
 
-**[イベントの種類]** が **[計画済みメンテナンス]** に設定され、**[サービス]** が **[Virtual Machine Scale Sets]** または **[Virtual Machines]** に設定されていることを確認します
+**[イベントの種類]** が **[計画済みメンテナンス]** に設定され、 **[サービス]** が **[Virtual Machine Scale Sets]** または **[Virtual Machines]** に設定されていることを確認します
     
     
 ## <a name="start-maintenance-on-your-vm-from-the-portal"></a>ポータルから VM に対するメンテナンスを開始する
 
 VM の詳細情報を見ているときに、メンテナンスに関連する詳細情報をさらに表示することができます。  
-VM が計画済みメンテナンス ウェーブに含まれる場合、VM の詳細ビューの上部には、新しい通知リボンが追加されます。 また、可能な場合にメンテナンスを開始する新しいオプションが追加されます。  
+VM が計画済みメンテナンス ウェーブに含まれる場合、VM の詳細ビューの上部には、新しい通知リボンが追加されます。 また、可能な場合にメンテナンスを開始する新しいオプションが追加されます。 
 
 
 メンテナンス通知をクリックすると、計画メンテナンスの詳細情報が記載されたメンテナンス ページが表示されます。 そこから、VM で**メンテナンスを開始**できます。

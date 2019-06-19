@@ -16,10 +16,10 @@ ms.date: 05/28/2019
 ms.author: barclayn
 ms.custom: azlog
 ms.openlocfilehash: b1df35c82ffb8b98f8b7bf86c21694b62b3804e4
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66298296"
 ---
 # <a name="azure-log-integration-with-azure-diagnostics-logging-and-windows-event-forwarding"></a>Azure Log Integration と Azure Diagnostics ログおよび Windows イベント転送

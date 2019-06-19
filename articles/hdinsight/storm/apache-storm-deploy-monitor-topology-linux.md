@@ -8,21 +8,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/22/2018
-ms.openlocfilehash: 8b27ad34bdc6fcbd7a1eb46515fbf33c96d02528
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: c8b05886ae338bb73b0f4ddce4d02a1f1a926a45
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64682893"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67078237"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>Azure HDInsight での Apache Storm トポロジのデプロイと管理 
 
 このドキュメントでは、HDInsight クラスターの Storm 上で実行されている [Apache Storm](https://storm.apache.org/) トポロジの管理および監視の基本について説明します。
-
-> [!IMPORTANT]  
-> この記事の手順では、HDInsight クラスター上の Linux ベースの Storm が必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](../hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。 
->
-
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -54,9 +49,9 @@ HDInsight Tools は、C# またはハイブリッド トポロジを Storm ク�
     >
     > Data Lake Tools for Visual Studio は、Visual Studio 2017 用の __Azure ワークロード__ に含まれています。
 
-2. Visual Studio で、**[ファイル]** > **[新規]** > **[プロジェクト]** を選択します。
+2. Visual Studio で、 **[ファイル]**  >  **[新規]**  >  **[プロジェクト]** を選択します。
 
-3. **[新しいプロジェクト]** ダイアログで、**[インストール済]** > **[テンプレート]** の順に展開して **[HDInsight]** を選択します。 テンプレートの一覧から **[Storm Sample]** を選択します。 ダイアログ ボックスの下部に、アプリケーションの名前を入力します。
+3. **[新しいプロジェクト]** ダイアログで、 **[インストール済]**  >  **[テンプレート]** の順に展開して **[HDInsight]** を選択します。 テンプレートの一覧から **[Storm Sample]** を選択します。 ダイアログ ボックスの下部に、アプリケーションの名前を入力します。
 
     ![image](./media/apache-storm-deploy-monitor-topology-linux/sample.png)
 
@@ -65,7 +60,7 @@ HDInsight Tools は、C# またはハイブリッド トポロジを Storm ク�
    > [!NOTE]  
    > メッセージが表示されたら、Azure サブスクリプションのログイン資格情報を入力します。 2 つ以上のサブスクリプションをお持ちの場合は、HDInsight クラスターの Storm があるサブスクリプションにログインします。
 
-5. **[Storm クラスター]** ドロップダウン リストから HDInsight クラスターの Storm を選択して、**[送信]** を選択します。 送信が成功したかどうかは、 **[出力]** ウィンドウを使用して確認できます。
+5. **[Storm クラスター]** ドロップダウン リストから HDInsight クラスターの Storm を選択して、 **[送信]** を選択します。 送信が成功したかどうかは、 **[出力]** ウィンドウを使用して確認できます。
 
 ## <a name="submit-a-topology-ssh-and-the-storm-command"></a>トポロジの送信:SSH と Storm コマンド
 
@@ -97,7 +92,7 @@ Visual Studio を使用してトポロジが送信されたら、**Storm トポ�
 ![Visual Studio モニター](./media/apache-storm-deploy-monitor-topology-linux/vsmonitor.png)
 
 > [!NOTE]  
-> また、**Storm トポロジ**は、**[サーバー エクスプローラー]** で **[Azure]** > **[HDInsight]** の順に展開して、HDInsight クラスターの Storm を右クリックして **[View Storm Topologies]** を選択して表示できます。
+> また、**Storm トポロジ**は、 **[サーバー エクスプローラー]** で **[Azure]**  >  **[HDInsight]** の順に展開して、HDInsight クラスターの Storm を右クリックして **[View Storm Topologies]** を選択して表示できます。
 
 情報を表示するスパウトまたはボルト コンポーネントの形状を選択します。 各アイテムを選択すると新しいウィンドウが開きます。
 
@@ -109,14 +104,14 @@ Visual Studio を使用してトポロジが送信されたら、**Storm トポ�
 
 トポロジを再調整すると、トポロジの並列処理が変更されます。 たとえば、クラスターのサイズを変更してノートを追加すると、再調整によってトポロジに新しいノードが表示されます。
 
-トポロジを再調整するには、__[トポロジの概要]__ の上部にある __[再調整]__ ボタンを使用します。
+トポロジを再調整するには、 __[トポロジの概要]__ の上部にある __[再調整]__ ボタンを使用します。
 
 > [!WARNING]  
 > トポロジを再調整すると、まずトポロジのアクティブ化が解除され、worker がクラスター全体に平均的に再分配され、最終的に、トポロジは再調整の発生前の状態に戻ります。 そのため、トポロジがアクティブであった場合は、再度アクティブになります。 非アクティブであった場合は、非アクティブのままになります。
 
 ### <a name="kill-a-topology"></a>トポロジの強制終了
 
-Storm トポロジは停止されるまで、またはクラスターが削除されるまで実行し続けます。 トポロジを停止するには、__[トポロジの概要]__ の上部にある __[強制終了]__ ボタンを使用します。
+Storm トポロジは停止されるまで、またはクラスターが削除されるまで実行し続けます。 トポロジを停止するには、 __[トポロジの概要]__ の上部にある __[強制終了]__ ボタンを使用します。
 
 ## <a name="monitor-and-manage-ssh-and-the-storm-command"></a>監視と管理:SSH と Storm コマンド
 
@@ -186,7 +181,7 @@ Storm UI のメイン ページには、次の情報が表示されます。
 
     詳細については、<a href="https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html" target="_blank">Apache Storm トポロジの並列処理の理解</a>に関するページを参照してください。
   * **強制終了**:指定したタイムアウト後に Storm トポロジを停止します。
-* **トポロジの統計**:トポロジに関する統計。 ページで残りのエントリの時間枠を設定するには、**[Window]** 列にあるリンクを使用します。
+* **トポロジの統計**:トポロジに関する統計。 ページで残りのエントリの時間枠を設定するには、 **[Window]** 列にあるリンクを使用します。
 * **スパウト**:トポロジで使用するスパウト。 このセクションにあるリンクを使用して、各スパウトの詳細情報を表示します。
 * **ボルト**:トポロジで使用するボルト。 このセクションにあるリンクを使用して、各ボルトの詳細情報を表示します。
 * **トポロジの構成**:選択したトポロジの構成。
@@ -196,7 +191,7 @@ Storm UI のメイン ページには、次の情報が表示されます。
 **[スパウト]** または **[ボルト]** セクションでアイテムを選択すると、そのアイテムに関する次の情報が表示されます。
 
 * **コンポーネントの概要**:スパウトやボルトの基本情報。
-* **スパウト/ボルトの統計**:スパウトやボルトの統計。 ページで残りのエントリの時間枠を設定するには、**[Window]** 列にあるリンクを使用します。
+* **スパウト/ボルトの統計**:スパウトやボルトの統計。 ページで残りのエントリの時間枠を設定するには、 **[Window]** 列にあるリンクを使用します。
 * **入力の統計** (ボルトのみ):ボルトが消費する入力ストリームに関する情報。
 * **出力の統計**:このスパウトやボルトから出力されるストリームに関する情報。
 * **エグゼキュータ**:スパウトやボルトのインスタンスに関する情報。 特定のエグゼキュータの **[ポート]** エントリを選択して、このインスタンスで生成された診断情報のログを閲覧します
@@ -218,7 +213,7 @@ Linux ベースの HDInsight クラスターの REST API のベース URI は、
 クラスター ヘッド ノードの完全修飾ドメイン名 (FQDN) はいくつかの方法で確認できます。
 
 * **SSH セッションから**:SSH セッションからクラスターに `headnode -f` コマンドを使用します。
-* **Ambari Web から**:ページの一番上から **[サービス]** を選択し、**[Storm]** を選択します。 **[概要 ]** タブで **[Storm UI Server]** を選択します。 Storm UI と REST API をホストするノードの FQDN はページの一番上で確認できます。
+* **Ambari Web から**:ページの一番上から **[サービス]** を選択し、 **[Storm]** を選択します。 **[概要 ]** タブで **[Storm UI Server]** を選択します。 Storm UI と REST API をホストするノードの FQDN はページの一番上で確認できます。
 * **Ambari REST API から**:`curl -u admin -G "https:\//CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/STORM/components/STORM_UI_SERVER"` コマンドを使用し、Storm UI と REST API が実行されているノードに関する情報を取得します。 **CLUSTERNAME** をクラスター名に置き換えます。 メッセージが表示されたら、ログイン (管理者) アカウントのパスワードを入力します。 応答の「host_name」エントリにノードの FQDN が含まれます。
 
 ### <a name="authentication"></a>Authentication

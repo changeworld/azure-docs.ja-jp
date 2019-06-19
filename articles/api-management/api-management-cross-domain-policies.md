@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: ecbc1af97ce5ed158138f2bcf47f5729842c0fe9
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: 871294703a4be36e274df1e34b9cc9bee7d19783
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56098538"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67071953"
 ---
 # <a name="api-management-cross-domain-policies"></a>API Management cross domain policies (API Management のクロス ドメイン ポリシー)
 このトピックでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](https://go.microsoft.com/fwlink/?LinkID=398186)」をご覧ください。
@@ -128,24 +128,24 @@ CORS を使用すると、ブラウザーとサーバーは、やり取りを介
 |cors|ルート要素。|はい|該当なし|
 |allowed-origins|クロス ドメイン要求で許可される配信元を示す `origin` 要素を含みます。 `allowed-origins` に含めることができるのは、すべての配信元を許可する `*`を含む 1 つの `origin` 要素か、URI を含む 1 つ以上の `origin` 要素です。|はい|該当なし|
 |origin|値として使用できるのは、すべての配信元を許可する `*` か、1 つの配信元を指定する URI です。 URI には、スキーム、ホスト、およびポートを含める必要があります。|はい|URI でポートが省略されると、HTTP ではポート 80、HTTPS ではポート 443 が使用されます。|
-|allowed-methods|この要素は、GET または POST 以外のメソッドが許可される場合に必須です。 サポートされる HTTP 動詞を指定する `method` 要素が含まれます。|いいえ |このセクションが存在しない場合、GET と POST がサポートされます。|
+|allowed-methods|この要素は、GET または POST 以外のメソッドが許可される場合に必須です。 サポートされる HTTP 動詞を指定する `method` 要素が含まれます。|いいえ|このセクションが存在しない場合、GET と POST がサポートされます。|
 |method|HTTP 動詞を指定します。|`allowed-methods` セクションが存在する場合、少なくとも 1 つの `method` 要素が必要です。|該当なし|
-|allowed-headers|この要素には、要求に組み込むことができるヘッダーの名前を指定する `header` 要素が含まれます。|いいえ |該当なし|
-|expose-headers|この要素には、クライアントがアクセスできるヘッダーの名前を指定する `header` 要素が含まれます。|いいえ |該当なし|
+|allowed-headers|この要素には、要求に組み込むことができるヘッダーの名前を指定する `header` 要素が含まれます。|いいえ|該当なし|
+|expose-headers|この要素には、クライアントがアクセスできるヘッダーの名前を指定する `header` 要素が含まれます。|いいえ|該当なし|
 |header|ヘッダー名を指定します。|セクションが存在する場合、少なくとも 1 つの `header` 要素が `allowed-headers` または `expose-headers` に必要です。|該当なし|
 
 ### <a name="attributes"></a>属性
 
 |Name|説明|必須|既定値|
 |----------|-----------------|--------------|-------------|
-|allow-credentials|事前応答内の `Access-Control-Allow-Credentials` ヘッダーが、この属性の値に設定されます。これは、クライアントがクロス ドメイン要求で資格情報を送信できるかどうかに影響します。|いいえ |false|
-|preflight-result-max-age|事前応答内の `Access-Control-Max-Age` ヘッダーが、この属性の値に設定されます。これは、ユーザー エージェントが事前応答をキャッシュできるかどうかに影響します。|いいえ |0|
+|allow-credentials|事前応答内の `Access-Control-Allow-Credentials` ヘッダーが、この属性の値に設定されます。これは、クライアントがクロス ドメイン要求で資格情報を送信できるかどうかに影響します。|いいえ|false|
+|preflight-result-max-age|事前応答内の `Access-Control-Max-Age` ヘッダーが、この属性の値に設定されます。これは、ユーザー エージェントが事前応答をキャッシュできるかどうかに影響します。|いいえ|0|
 
 ### <a name="usage"></a>使用法
 このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
 
 - **ポリシー セクション:** inbound
-- **ポリシー スコープ:** グローバル、API、操作
+- **ポリシー スコープ:** グローバル、製品、API、操作
 
 ## <a name="JSONP"></a> JSONP
 `jsonp`ポリシーは、JSON with padding (JSONP) のサポートを操作または API に追加して、JavaScript ブラウザーベースのクライアントからのクロス ドメイン呼び出しを可能にします。 JSONP は、異なるドメインのサーバーのデータを要求するために JavaScript プログラムで使用される方法です。 JSONP を使用すると、Web ページへのアクセスが同じドメイン内である必要があるという、ほとんどの Web ブラウザーで適用される制限を回避できます。

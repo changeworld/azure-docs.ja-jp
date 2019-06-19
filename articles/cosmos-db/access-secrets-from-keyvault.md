@@ -10,10 +10,10 @@ ms.date: 05/23/2019
 ms.author: rimman
 ms.reviewer: sngun
 ms.openlocfilehash: 157ccd284c25cb5c7275aa942823ade2a40795cc
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66239850"
 ---
 # <a name="secure-azure-cosmos-keys-using-azure-key-vault"></a>Azure Key Vault を使用して Azure Cosmos キーをセキュリティ保護する 

@@ -5,17 +5,17 @@ ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
 ms.openlocfilehash: d1dcd7895025ea608e5f6c4db5e0967817934f2a
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66141190"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181688"
 ---
 バックエンド プロジェクトの種類 ([.NET バックエンド](#dotnet)または [Node.js バックエンド](#nodejs)のいずれか) に応じた手順を使用します。
 
 ### <a name="dotnet"></a>.NET バックエンド プロジェクト
 
-1. Visual Studio でサーバー プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。 `Microsoft.Azure.NotificationHubs` を検索し、**[インストール]** をクリックします。 これにより、Notification Hubs のクライアント ライブラリがインストールされます。
+1. Visual Studio でサーバー プロジェクトを右クリックし、 **[NuGet パッケージの管理]** をクリックします。 `Microsoft.Azure.NotificationHubs` を検索し、 **[インストール]** をクリックします。 これにより、Notification Hubs のクライアント ライブラリがインストールされます。
 2. Controllers フォルダーで、TodoItemController.cs を開き、次の `using` ステートメントを追加します。
 
     ```csharp

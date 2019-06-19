@@ -3,21 +3,21 @@ title: Azure Traffic Manager のリアル ユーザー測定
 description: Traffic Manager の Real User Measurements の概要
 services: traffic-manager
 documentationcenter: traffic-manager
-author: KumudD
+author: asudbring
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 03/16/2018
-ms.author: kumud
+ms.author: allensu
 ms.custom: ''
-ms.openlocfilehash: fd37ef739522955ae8227db39a41aecf199d65c3
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: cbde96f135aa52ada9bb10b47ca81687992e5833
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54052821"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67070977"
 ---
 # <a name="traffic-manager-real-user-measurements-overview"></a>Traffic Manager の Real User Measurements の概要
 
@@ -37,8 +37,8 @@ Real User Measurements を使用する場合は、Traffic Manager に送信さ�
 
 ## <a name="next-steps"></a>次の手順
 - [Web ページで Real User Measurements](traffic-manager-create-rum-web-pages.md) を使用する方法を確認する
--  [Traffic Manager のしくみ](traffic-manager-overview.md)
+- [Traffic Manager のしくみ](traffic-manager-overview.md)
 - [Mobile Center](https://docs.microsoft.com/mobile-center/) について確認する
 - Traffic Manager でサポートされている [トラフィック ルーティング方法](traffic-manager-routing-methods.md) の詳細を確認する。
--  [Traffic Manager プロファイルの作成](traffic-manager-create-profile.md)
+- [Traffic Manager プロファイルの作成](traffic-manager-create-profile.md)
 

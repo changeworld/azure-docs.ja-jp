@@ -9,10 +9,10 @@ ms.date: 05/23/2019
 ms.author: evansma
 ROBOTS: NOINDEX
 ms.openlocfilehash: 78162983601e9126bd34cb737e74783df982bacb
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66259355"
 ---
 # <a name="saas-fulfillment-apis-version-1-deprecated"></a>SaaS Fulfillment API バージョン 1 (非推奨)
@@ -473,10 +473,10 @@ Azure Marketplace API のエンドポイントは、`https://marketplaceapi.micr
 
 | **パラメーター名**     | **データの種類** | **説明**                               |
 |------------------------|---------------|-----------------------------------------------|
-| id                     | String        | Azure の SaaS サブスクリプション リソースの ID    |
-| offerId                | String        | ユーザーがサブスクライブするオファー ID         |
-| planId                 | String        | ユーザーがサブスクライブするプラン ID          |
-| saasSubscriptionName   | String        | SaaS サブスクリプションの名前                |
+| id                     | string        | Azure の SaaS サブスクリプション リソースの ID    |
+| offerId                | string        | ユーザーがサブスクライブするオファー ID         |
+| planId                 | string        | ユーザーがサブスクライブするプラン ID          |
+| saasSubscriptionName   | string        | SaaS サブスクリプションの名前                |
 | saasSubscriptionStatus | 列挙型          | 操作の状態。  次のいずれか:  <br/> - `Subscribed`:サブスクリプションがアクティブです。  <br/> - `Pending`:ユーザーがリソースを作成しますが、ISV によってアクティブ化されません。   <br/> - `Unsubscribed`:ユーザーがサブスクライブを解除しました。   <br/> - `Suspended`:ユーザーがサブスクリプションを中断しました。   <br/> - `Deactivated`:Azure サブスクリプションが中断されました。  |
 | created                | DateTime      | サブスクリプション作成のタイムスタンプ値 (UTC) |
 | lastModified           | DateTime      | サブスクリプション変更のタイムスタンプ値 (UTC) |
@@ -523,14 +523,14 @@ SaaS の webhook は、SaaS サービスに事前に変更を通知するため�
 
 | **パラメーター名**     | **データの種類** | **説明**                               |
 |------------------------|---------------|-----------------------------------------------|
-| id  | String       | トリガーされた操作の一意の ID。                |
-| activityId   | String        | サービスからの要求を追跡するための一意の文字列値。 これは、任意の調整に使用されます。               |
-| subscriptionId                     | String        | Azure の SaaS サブスクリプション リソースの ID。    |
+| id  | string       | トリガーされた操作の一意の ID。                |
+| activityId   | string        | サービスからの要求を追跡するための一意の文字列値。 これは、任意の調整に使用されます。               |
+| subscriptionId                     | string        | Azure の SaaS サブスクリプション リソースの ID。    |
 | offerId                | String        | ユーザーがサブスクライブするオファー ID。 「更新」アクションでのみ指定されます。        |
-| publisherId                | String        | SaaS オファーのパブリッシャー ID         |
+| publisherId                | string        | SaaS オファーのパブリッシャー ID         |
 | planId                 | String        | ユーザーがサブスクライブするプラン ID。 「更新」アクションでのみ指定されます。          |
-| action                 | String        | この通知をトリガーするアクション。 指定できる値 - Activate (アクティブ化)、Delete (削除)、Suspend (中断)、Reinstate (再開)、Update (更新)          |
-| timeStamp                 | String        | この通知がトリガーされたときのタイムスタンプ値 (UTC)。          |
+| action                 | string        | この通知をトリガーするアクション。 指定できる値 - Activate (アクティブ化)、Delete (削除)、Suspend (中断)、Reinstate (再開)、Update (更新)          |
+| timeStamp                 | string        | この通知がトリガーされたときのタイムスタンプ値 (UTC)。          |
 |  |  |  |
 
 

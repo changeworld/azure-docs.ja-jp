@@ -13,10 +13,10 @@ ms.reviewer: sstein
 manager: craigg
 ms.date: 12/18/2018
 ms.openlocfilehash: 4834688496330210b273f40f1d6f11230a6ae1c8
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66234126"
 ---
 # <a name="multi-tenant-applications-with-elastic-database-tools-and-row-level-security"></a>弾力性データベース ツールと行レベルのセキュリティを使用したマルチテナント アプリケーション
@@ -339,7 +339,7 @@ GO
 ```
 
 
-### <a name="maintenance"></a>メンテナンス 
+### <a name="maintenance"></a>メンテナンス
 
 - **新しいシャードの追加**:すべての新しいシャードで RLS を有効にするための T-SQL スクリプトを実行します。この操作を行わないと、これらのシャードに対するクエリはフィルター処理されません。
 - **新しいテーブルの追加**:新しいテーブルを作成するたびに、すべてのシャードのセキュリティ ポリシーに FILTER 述語と BLOCK 述語を追加します。 そうしないと、新しいテーブルに対するクエリはフィルター処理されません。 この追加は、DDL トリガーを使用して自動化できます。詳細については、[新しく作成したテーブルに自動的に行レベルのセキュリティを適用する方法に関するブログ記事](https://blogs.msdn.com/b/sqlsecurity/archive/20../../apply-row-level-security-automatically-to-newly-created-tables.aspx)を参照してください。

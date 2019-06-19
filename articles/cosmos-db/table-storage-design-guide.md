@@ -9,10 +9,10 @@ author: wmengmsft
 ms.author: wmeng
 ms.custom: seodec18
 ms.openlocfilehash: af155b5adb2e4b45412a8b84818852ed1b1c5e72
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65966100"
 ---
 # <a name="azure-storage-table-design-guide-designing-scalable-and-performant-tables"></a>Azure ストレージ テーブルの設計ガイド:拡張性があり、パフォーマンスに優れたテーブルを設計する
@@ -200,12 +200,12 @@ Table service ソリューションでは、読み取り、書き込み、また
 
 | *列名* | *データの種類* |
 | --- | --- |
-| **PartitionKey** (部門名) |String |
-| **RowKey** (従業員 ID) |String |
-| **FirstName** |String |
-| **LastName** |String |
+| **PartitionKey** (部門名) |string |
+| **RowKey** (従業員 ID) |string |
+| **FirstName** |string |
+| **LastName** |string |
 | **Age** |整数 |
-| **EmailAddress** |String |
+| **EmailAddress** |string |
 
 最初の方のセクション「Azure Table の概要」では、クエリの設計に直接影響を与える Azure Table サービスの主な機能の一部について説明します。 ここから、Table service のクエリを設計する際には、次のような一般的なガイドラインが考えられます。 以下の例で使用しているフィルター構文は、Table service REST API の構文です。詳細については、「[Query Entities](https://msdn.microsoft.com/library/azure/dd179421.aspx)」(エンティティの照会) を参照してください。  
 
@@ -653,7 +653,7 @@ Table service は **PartitionKey** と **RowKey** 値を使用して自動的に
 ![部署エンティティと従業員エンティティ][16]
 
 #### <a name="solution"></a>解決策
-データを 2 つのエンティティに格納する代わりに、データを非正規化し、部署エンティティにマネージャーの詳細のコピーを保持します。 例:   
+データを 2 つのエンティティに格納する代わりに、データを非正規化し、部署エンティティにマネージャーの詳細のコピーを保持します。 例:  
 
 ![非正規化され、結合された部署エンティティ][17]
 

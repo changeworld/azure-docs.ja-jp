@@ -3,8 +3,8 @@ title: Azure AD ギャラリー アプリケーションのパスワード シ�
 description: Azure AD アプリケーション ギャラリーに既に表示されている場合に、セキュリティで保護されたパスワード ベースのシングル サインオン用にアプリケーションを構成する方法
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2017
-ms.author: celested
+ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64fc7104427fd14bcb6989298a2896ec82c34f17
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d53dbcddf2025ddc3111bc585655e2c157844b18
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60291944"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190172"
 ---
 # <a name="how-to-configure-password-single-sign-on-for-an-azure-ad-gallery-application"></a>Azure AD ギャラリー アプリケーションのパスワード シングル サインオンを構成する方法
 

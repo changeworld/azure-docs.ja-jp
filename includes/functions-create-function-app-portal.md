@@ -9,13 +9,13 @@ ms.date: 05/05/2019
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: 2bfca370e8e89d98f700c8c5adfd29129e810d9b
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66131582"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67180940"
 ---
-1. Azure portal の左上にある **[リソースの作成]** ボタンを選択し、**[コンピューティング]** > **[Function App]** を選択します。
+1. Azure portal の左上にある **[リソースの作成]** ボタンを選択し、 **[コンピューティング]**  >  **[Function App]** を選択します。
 
     ![Azure ポータルでの関数アプリの作成](./media/functions-create-function-app-portal/function-app-create-flow.png)
 
@@ -30,10 +30,10 @@ ms.locfileid: "66131582"
     | **[リソース グループ](../articles/azure-resource-manager/resource-group-overview.md)** |  myResourceGroup | Function App を作成するための新しいリソース グループの名前。 |
     | **OS** | Windows | Linux 上のサーバーレス ホスティングは現在、プレビュー段階です。 詳細については、[この考慮事項の記事](https://aka.ms/funclinux)を参照してください。|
     | **[ホスティング プラン](../articles/azure-functions/functions-scale.md)** | 従量課金プラン | Function App にどのようにリソースが割り当てられるかを定義するホスティング プラン。 既定の **[従量課金プラン]** では、リソースは関数の必要に応じて動的に追加されます。 この[サーバーなしの](https://azure.microsoft.com/overview/serverless-computing/) ホスティングでは、関数が実行された時間にのみ課金されます。 App Service プランで実行する場合は、[関数アプリのスケーリング](../articles/azure-functions/functions-scale.md)を管理する必要があります。  |
-    | **場所** | 西ヨーロッパ | ユーザーに近い[リージョン](https://azure.microsoft.com/regions/)、または関数がアクセスする他のサービスの近くのリージョンを選択します。 |
+    | **Location** | 西ヨーロッパ | ユーザーに近い[リージョン](https://azure.microsoft.com/regions/)、または関数がアクセスする他のサービスの近くのリージョンを選択します。 |
     | **ランタイム スタック** | 優先言語 | お気に入りの関数プログラミング言語をサポートするランタイムを選択します。 C# および F# 関数用の **[.NET]** を選択します。 |
     | **[Storage](../articles/storage/common/storage-quickstart-create-account.md)** |  グローバルに一意の名前 |  関数アプリで使用されるストレージ アカウントを作成します。 ストレージ アカウント名の長さは 3 ～ 24 文字で、数字と小文字のみを使用できます。 既存のアカウントを使用することもできますが、[ストレージ アカウントの要件](../articles/azure-functions/functions-scale.md#storage-account-requirements)を満たしている必要があります。 |
-    | **[Application Insights](../articles/azure-functions/functions-monitoring.md)** | 既定値 | 最も近いサポートされているリージョン内に同じ*アプリ名*の Application Insights リソースを作成します。 この設定を展開することによって、**[新しいリソース名]** を変更するか、またはデータを格納する [Azure 地理的環境](https://azure.microsoft.com/global-infrastructure/geographies/)内の別の **[場所]** を選択することができます。 |
+    | **[Application Insights](../articles/azure-functions/functions-monitoring.md)** | 既定値 | 最も近いサポートされているリージョン内に同じ*アプリ名*の Application Insights リソースを作成します。 この設定を展開することによって、 **[新しいリソース名]** を変更するか、またはデータを格納する [Azure 地理的環境](https://azure.microsoft.com/global-infrastructure/geographies/)内の別の **[場所]** を選択することができます。 |
 
 3. **[作成]** を選択して、Function App をプロビジョニングし、デプロイします。
 
@@ -41,4 +41,4 @@ ms.locfileid: "66131582"
 
     ![新しい関数アプリの設定を定義する](./media/functions-create-function-app-portal/function-app-create-notification.png)
 
-5. **[リソースに移動]** を選択して、新しい関数アプリを確認します。 また、**[ダッシュボードにピン留めする]** を選択することもできます。 ピン留めすると、ダッシュボードからこの関数アプリ リソースに戻るのが容易になります。
+5. **[リソースに移動]** を選択して、新しい関数アプリを確認します。 また、 **[ダッシュボードにピン留めする]** を選択することもできます。 ピン留めすると、ダッシュボードからこの関数アプリ リソースに戻るのが容易になります。

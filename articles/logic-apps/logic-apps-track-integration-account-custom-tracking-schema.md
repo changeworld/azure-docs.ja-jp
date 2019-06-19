@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: 433ae852-a833-44d3-a3c3-14cca33403a2
 ms.date: 01/27/2017
-ms.openlocfilehash: f919e9a7cca210fa5920bcc6bed05a9a41fba8bf
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 1e75e0be5404ca7107d3f3201d248088b48da12c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57192386"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67067896"
 ---
 # <a name="create-custom-tracking-schemas-that-monitor-end-to-end-workflows-in-azure-logic-apps"></a>Azure Logic Apps でエンド ツー エンドのワークフローを監視するカスタム追跡スキーマを作成する
 
@@ -56,18 +56,18 @@ ms.locfileid: "57192386"
 }
 ```
 
-| プロパティ | type | 説明 |
+| プロパティ | Type | 説明 |
 | --- | --- | --- |
 | sourceType |   | 実行ソースのタイプ。 許可されている値は、**Microsoft.Logic/workflows** と **custom** です。 (必須) |
 | source |   | ソースのタイプが **Microsoft.Logic/workflows** である場合は、このスキーマの後にソース情報を続ける必要があります。 ソースのタイプが **custom** の場合、スキーマは JToken です。 (必須) |
-| systemId | String | ロジック アプリのシステム ID。 (必須) |
-| runId | String | ロジック アプリの実行 ID。 (必須) |
-| operationName | String | 操作の名前 (アクションやトリガーなど)。 (必須) |
-| repeatItemScopeName | String | アクションが `foreach`/`until` ループ内にある場合の繰り返し項目名。 (必須) |
+| systemId | string | ロジック アプリのシステム ID。 (必須) |
+| runId | string | ロジック アプリの実行 ID。 (必須) |
+| operationName | string | 操作の名前 (アクションやトリガーなど)。 (必須) |
+| repeatItemScopeName | string | アクションが `foreach`/`until` ループ内にある場合の繰り返し項目名。 (必須) |
 | repeatItemIndex | 整数 | アクションが `foreach`/`until` ループ内にあるかどうか。 繰り返される項目のインデックスを示します。 (必須) |
-| trackingId | String | 追跡 ID (メッセージを関連付けるために使用します)。 (省略可能) |
-| correlationId | String | 関連付け ID (メッセージを関連付けるために使用します)。 (省略可能) |
-| clientRequestId | String | クライアントがメッセージを関連付けるために設定できます。 (省略可能) |
+| trackingId | string | 追跡 ID (メッセージを関連付けるために使用します)。 (省略可能) |
+| correlationId | string | 関連付け ID (メッセージを関連付けるために使用します)。 (省略可能) |
+| clientRequestId | string | クライアントがメッセージを関連付けるために設定できます。 (省略可能) |
 | eventLevel |   | イベントのレベル。 (必須) |
 | eventTime |   | イベントの時刻 (YYYY-MM-DDTHH:MM:SS.00000Z という UTC 形式で示します)。 (必須) |
 | recordType |   | 追跡レコードのタイプ。 許可されている値は **custom** です。 (必須) |

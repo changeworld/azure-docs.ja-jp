@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/17/2019
 ms.author: joelpell
-ms.openlocfilehash: f84e81a5a9e9c9cf6f477adefa0869d776f7dd71
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: ec6a6ea5d00d43f6dffa3aabc367d94ebb8db198
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60013076"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67075605"
 ---
 # <a name="optimize-performance-on-the-lsv2-series-virtual-machines"></a>Lsv2 シリーズの仮想マシン上でパフォーマンスを最適化する
 
@@ -24,7 +24,7 @@ Lsv2 シリーズの仮想マシンは、幅広いアプリケーションや業
 
 Lsv2 シリーズの仮想マシン (VM) の設計は、AMD EPYC™ 7551 プロセッサを最大限活用し、プロセッサ、メモリ、NVMe デバイス、VM の間で最善のパフォーマンスを実現できるようになっています。 Lsv2 シリーズの VM は、ハードウェアのパフォーマンス最大化だけでなく、Windows および Linux オペレーティング システムでハードウェアとソフトウェアを使ってパフォーマンスを改善したいというニーズにも対応できる設計になっています。
 
-ソフトウェアとハードウェアのチューニングを経て、2018 年 12 月初旬には Azure Marketplace に [Windows Server 2019 Datacenter](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.WindowsServer?tab=Overview) の最適化済みバージョンをリリースしました。これは、Lsv2 シリーズ VM 内の NVMe デバイスに最大のパフォーマンスを実現するものです。
+ソフトウェアとハードウェアのチューニングを経て、2018 年 12 月初旬には Azure Marketplace に [Windows Server 2019 Datacenter](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview) の最適化済みバージョンをリリースしました。これは、Lsv2 シリーズ VM 内の NVMe デバイスに最大のパフォーマンスを実現するものです。
 
 この記事では、ワークロードとアプリケーションで VM の設計に応じた最大限のパフォーマンスを実現するためのヒントと推奨事項を紹介します。 このページに掲載した情報は、最適化済みの Lsv2 イメージが Azure Marketplace に追加されるのに応じて随時更新していく予定です。
 

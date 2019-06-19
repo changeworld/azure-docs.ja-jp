@@ -9,11 +9,11 @@ ms.date: 02/12/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 192a6f4841e9dc3a478da5e4b53594362955ca71
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66119511"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67180993"
 ---
 ### <a name="is-bgp-supported-on-all-azure-vpn-gateway-skus"></a>BGP はすべての Azure VPN Gateway SKU でサポートされていますか。
 いいえ、BGP は Azure **VpnGw1**、**VpnGw2**、**VpnGw3**、**Standard**、**HighPerformance** の各 VPN ゲートウェイでサポートされています。 **Basic** SKU はサポートされていません。

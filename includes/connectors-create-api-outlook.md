@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/03/2016
 ms.author: estfan
 ms.openlocfilehash: 187906a912c999142d764de6ad5da3daccf63ba7
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66146781"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181429"
 ---
 1. 検索ボックスに、フィルターとして「outlook.com」と入力します。 この例では、このトリガーを選択します。 **[When a new email arrives (新しい電子メールが届いたとき)]**
 

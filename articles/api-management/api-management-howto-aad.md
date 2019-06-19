@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/16/2018
 ms.author: apimpm
 ms.openlocfilehash: d267ff3a43438d9fe6e4e21f0ac023cfa6675f19
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65956303"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Azure API Management で Azure Active Directory を使用して開発者アカウントを承認する
@@ -72,7 +72,7 @@ ms.locfileid: "65956303"
 19. **[ID プロバイダーの追加]** ウィンドウには、 **[許可されているテナント]** テキスト ボックスもあります。 ここには、API Management サービス インスタンスの API へのアクセスを許可する Azure AD インスタンスのドメインを指定します。 複数のドメインを指定する場合は、改行文字、スペース、またはコンマで区切ります。
 
 > [!NOTE]
-> **[許可されているテナント]** セクションには、複数のドメインを指定できます。 アプリケーションが登録されている元のドメインとは別のドメインからユーザーがサインインするには、別のドメインの全体管理者がアプリケーションにディレクトリ データへのアクセス許可を付与する必要があります。 アクセス許可を付与するために、全体管理者は次の操作を行う必要があります。a. `https://<URL of your developer portal>/aadadminconsent` に移動します (例: https://contoso.portal.azure-api.net/aadadminconsent)。
+> **[許可されているテナント]** セクションには、複数のドメインを指定できます。 アプリケーションが登録されている元のドメインとは別のドメインからユーザーがサインインするには、別のドメインの全体管理者がアプリケーションにディレクトリ データへのアクセス許可を付与する必要があります。 アクセス許可を付与するために、全体管理者は次の操作を行う必要があります。a. `https://<URL of your developer portal>/aadadminconsent` に移動します (例: https://contoso.portal.azure-api.net/aadadminconsent) 。
 > b. アクセスを許可する Azure AD テナントのドメイン名を入力します。
 > c. **[Submit]\(送信\)** をクリックします。 
 

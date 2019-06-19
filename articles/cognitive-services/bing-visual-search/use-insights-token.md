@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 4/26/2019
 ms.author: scottwhi
 ms.openlocfilehash: 1860b788b9f33a6a2ec806be68a67aa2df10cbd4
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65914276"
 ---
 # <a name="use-an-insights-token-to-get-insights-for-an-image"></a>分析情報トークンを使用して画像についての分析情報を取得する

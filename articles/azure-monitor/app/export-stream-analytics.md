@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 01/04/2018
+ms.date: 01/08/2019
 ms.author: mbullwin
-ms.openlocfilehash: 58eaec32fee149c845dc77a83763f2fcd8133a06
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: b791d74c2b3e94465a1903299d5db0b281ec9355
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54120786"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67053315"
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>Application Insights からエクスポートされたデータを、Stream Analytics を使って処理する
 [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) は、[Application Insights からエクスポートされた](export-telemetry.md)データを処理するのに理想的なツールです。 Stream Analytics は、さまざまなソースからデータを取り込むことができます。 Stream Analytics は、データを変換してフィルター処理し、さまざまなシンクにルーティングできます。
@@ -67,7 +67,7 @@ ms.locfileid: "54120786"
 1. データを蓄積します。 しばらく待機し、ユーザーにアプリケーションを使用してもらいます。 テレメトリが開始し、統計グラフが[メトリックス エクスプローラー](../../azure-monitor/app/metrics-explorer.md)に表示され、個々のイベントが[診断検索](../../azure-monitor/app/diagnostic-search.md)に表示されます。 
    
     また、データはストレージにもエクスポートされます。 
-2. エクスポートされたデータを検査します。 Visual Studio で、**[表示]、[Cloud Explorer]** の順に選びます。[Azure]、[Storage] の順に開きます  (このメニュー オプションがない場合は、Azure SDK をインストールする必要があります:[新しいプロジェクト] ダイアログを開き、[Visual C#]、[クラウド]、[Microsoft Azure SDK for .NET の取得] の順に開きます)。
+2. エクスポートされたデータを検査します。 Visual Studio で、 **[表示]、[Cloud Explorer]** の順に選びます。[Azure]、[Storage] の順に開きます (このメニュー オプションがない場合は、Azure SDK をインストールする必要があります:[新しいプロジェクト] ダイアログを開き、[Visual C#]、[クラウド]、[Microsoft Azure SDK for .NET の取得] の順に開きます)。
    
     ![](./media/export-stream-analytics/04-data.png)
    
@@ -82,7 +82,7 @@ ms.locfileid: "54120786"
 
 ![](./media/export-stream-analytics/SA002.png)
 
-新しいジョブが作成されたら、**[リソースに移動]** を選びます。
+新しいジョブが作成されたら、 **[リソースに移動]** を選びます。
 
 ![](./media/export-stream-analytics/SA003.png)
 
@@ -116,7 +116,7 @@ ms.locfileid: "54120786"
 > 
 
 ## <a name="add-new-output"></a>新しい出力を追加する
-ジョブを選んでから、**[出力]** > **[追加]** の順に選びます。
+ジョブを選んでから、 **[出力]**  >  **[追加]** の順に選びます。
 
 ![](./media/export-stream-analytics/SA006.png)
 

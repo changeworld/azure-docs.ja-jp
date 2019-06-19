@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/14/2018
 ms.author: mblythe
 ms.openlocfilehash: 9624856841ec7473543575c31928c6eefd1404c1
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66120594"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67180916"
 ---
 Power BI Desktop にデータを取り込んだら、そのデータに基づいてレポートを作成することができます。 州ごとの作物の被害を示す縦棒グラフを使った単純なレポートを作成します。
 

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pafarley
 ms.openlocfilehash: fa38c492530cb8938e49bc15e13fdd39ed5b6f1c
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65890886"
 ---
 # <a name="face-recognition-concepts"></a>顔認識の概念
