@@ -81,7 +81,7 @@ Azure AD アカウントの使用に切り替えるには、図内で強調表�
 
 ![Azure AD アカウントがアクセスをサポートしていないかどうかを示すエラー](media/storage-access-blobs-queues-portal/auth-error-azure-ad.png)
 
-BLOB は Azure AD アカウントにそれらを表示するアクセス許可がない場合には表示されないことに注意してください。 認証に再度アクセス キーを使用するには、 **[Switch to access key]\(アクセス キーへの切り替え)\** リンクをクリックします。
+BLOB は Azure AD アカウントにそれらを表示するアクセス許可がない場合には表示されないことに注意してください。 認証に再度アクセス キーを使用するには、 **[Switch to access key]\(アクセス キーへの切り替え\)** リンクをクリックします。
 
 ### <a name="azure-ad-account"></a>Azure AD アカウント
 

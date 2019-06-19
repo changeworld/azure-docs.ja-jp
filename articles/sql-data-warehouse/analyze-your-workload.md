@@ -11,10 +11,10 @@ ms.date: 03/13/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.openlocfilehash: f470670ae3d526f3b66badf219a01a471c24db0d
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66242232"
 ---
 # <a name="analyze-your-workload-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse の ワークロードの分析 | Microsoft Docs
@@ -27,7 +27,7 @@ SQL Data Warehouse には、システム リソースをクエリに割り当て
 
 ## <a name="queued-query-detection-and-other-dmvs"></a>キューに配置されたクエリの検出とその他の DMV
 
-ph x="1" /&gt; DMV を使用すると、コンカレンシー キューで待機中のクエリを特定できます。 コンカレンシー スロットを待機しているクエリは、**中断**状態になります。
+`sys.dm_pdw_exec_requests` DMV を使用すると、コンカレンシー キューで待機中のクエリを特定できます。 コンカレンシー スロットを待機しているクエリは、**中断**状態になります。
 
 ```sql
 SELECT  r.[request_id]                           AS Request_ID
