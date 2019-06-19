@@ -16,10 +16,10 @@ ms.author: mimart
 ms.reviewer: richagi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4a340663a1ec4ddf748c6dc2bc3a4e2ce0c4228e
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65824379"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>テナント制限を使用して SaaS クラウド アプリケーションへのアクセスを管理する
@@ -79,7 +79,7 @@ login.microsoftonline.com、login.microsoft.com、login.windows.net への各受
 - *Restrict-Access-Context* には、どのテナントでテナント制限を設定するかを宣言している、1 つのディレクトリ ID の値を使用します。 たとえば、テナント制限ポリシーを設定するテナントとして Contoso を宣言するには、名前と値のペアは  `Restrict-Access-Context: 456ff232-35l2-5h23-b3b3-3236w0826f3d` のようになります。  
 
 > [!TIP]
-> ディレクトリ ID は、[Azure Active Directory ポータル](https://aad.portal.azure.com/)で見つけることができます。 管理者としてサインインし、**[Azure Active Directory]** を選択して、**[プロパティ]** を選択します。
+> ディレクトリ ID は、[Azure Active Directory ポータル](https://aad.portal.azure.com/)で見つけることができます。 管理者としてサインインし、 **[Azure Active Directory]** を選択して、 **[プロパティ]** を選択します。
 
 ユーザーが未承認のテナントを含む独自の HTTP ヘッダーを挿入できないようにするために、受信要求に *Restrict-Access-To-Tenants* ヘッダーが既に存在する場合、プロキシはそのヘッダーを置き換える必要があります。
 
@@ -99,9 +99,9 @@ login.microsoftonline.com、login.microsoft.com、login.windows.net へのすべ
 
 1. [Azure Active Directory ポータル](https://aad.portal.azure.com/)にサインインします。 **Azure Active Directory 管理センター** ダッシュボードが表示されます。
 
-2. 左ウィンドウで、**[Azure Active Directory]** を選択します。 [Azure Active Directory] 概要ページが表示されます。
+2. 左ウィンドウで、 **[Azure Active Directory]** を選択します。 [Azure Active Directory] 概要ページが表示されます。
 
-3. **[その他の機能]** 見出しで、**[テナント制限]** を選択します。
+3. **[その他の機能]** 見出しで、 **[テナント制限]** を選択します。
 
 Restricted-Access-Context テナントとして指定されたテナントの管理者は、このレポートを使用して、テナント制限ポリシーのためにブロックされたサインイン (使用された ID やターゲット ディレクトリ ID を含む) を確認できます。 制限を設定するテナントがサインインのユーザー テナントまたはリソース テナントのいずれかである場合は、サインインが含まれます。
 
@@ -118,7 +118,7 @@ Azure Portal の他のレポートと同様に、フィルターを使用して�
 - **IP アドレス**
 - **クライアント**
 - **ユーザー名**
-- **場所**
+- **Location**
 - **ターゲット テナント ID**
 
 ## <a name="office-365-support"></a>Office 365 サポート
@@ -150,7 +150,7 @@ Fiddler は無料の Web デバッグ プロキシです。Fiddler を使用し�
 
 3. カスタム ルールを使用して、*Restrict-Access-To-Tenants* と *Restrict-Access-Context* の各ヘッダーを挿入するように Fiddler を構成します。
 
-   1. Fiddler Web Debugger ツールで、**[Rules]** メニューを選択し、**[Customize Rules…]** を選択して CustomRules ファイルを開きます。
+   1. Fiddler Web Debugger ツールで、 **[Rules]** メニューを選択し、 **[Customize Rules…]** を選択して CustomRules ファイルを開きます。
 
    2. `OnBeforeRequest` 関数の先頭に次の行を追加します。 \<tenant domain\> をテナントに登録されているドメイン (`contoso.onmicrosoft.com` など) に置き換えます。 \<directory ID\> を、テナントの Azure AD GUID 識別子に置き換えます。
 
@@ -166,13 +166,13 @@ Fiddler は無料の Web デバッグ プロキシです。Fiddler を使用し�
       }
       ```
 
-      複数のテナントを許可する必要がある場合は、テナント名をコンマで区切ります。 例: 
+      複数のテナントを許可する必要がある場合は、テナント名をコンマで区切ります。 例:
 
       `oSession.oRequest["Restrict-Access-To-Tenants"] = "contoso.onmicrosoft.com,fabrikam.onmicrosoft.com";`
 
 4. CustomRules ファイルを保存して閉じます。
 
-Fiddler を構成したら、**[File]** メニューに移動し、**[Capture Traffic]** を選択することでトラフィックをキャプチャできます。
+Fiddler を構成したら、 **[File]** メニューに移動し、 **[Capture Traffic]** を選択することでトラフィックをキャプチャできます。
 
 ### <a name="staged-rollout-of-proxy-settings"></a>プロキシ設定の段階的なロールアウト
 

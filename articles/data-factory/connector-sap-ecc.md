@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: jingwang
 ms.openlocfilehash: 7c75793a696137a1d4cc24fa94877a7fb4e4247a
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66243919"
 ---
 # <a name="copy-data-from-sap-ecc-using-azure-data-factory"></a>Azure Data Factory を使用して SAP ECC からデータをコピーする
@@ -58,7 +58,7 @@ SAP ECC のリンクされたサービスでは、次のプロパティがサポ
 |:--- |:--- |:--- |
 | type | type プロパティは、次のように設定する必要があります:**SapEcc** | はい |
 | url | SAP ECC OData サービスの URL。 | はい |
-| userName | SAP ECC への接続に使うユーザー名。 | いいえ |
+| username | SAP ECC への接続に使うユーザー名。 | いいえ |
 | password | SAP ECC への接続に使うプレーンテキスト パスワード。 | いいえ |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 セルフホステッド統合ランタイムまたは Azure 統合ランタイム (データ ストアがパブリックにアクセスできる場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ |
 
@@ -164,19 +164,19 @@ SAP ECC からデータをコピーするとき、次の SAP ECC データの OD
 
 | OData のデータ型 | Data Factory の中間データ型 |
 |:--- |:--- |
-| Edm.Binary | String |
+| Edm.Binary | string |
 | Edm.Boolean | Bool |
-| Edm.Byte | String |
+| Edm.Byte | string |
 | Edm.DateTime | DateTime |
 | Edm.Decimal | Decimal |
 | Edm.Double | Double |
 | Edm.Single | Single |
-| Edm.Guid | String |
+| Edm.Guid | string |
 | Edm.Int16 | Int16 |
 | Edm.Int32 | Int32 |
 | Edm.Int64 | Int64 |
 | Edm.SByte | Int16 |
-| Edm.String | String |
+| Edm.String | string |
 | Edm.Time | TimeSpan |
 | Edm.DateTimeOffset | DateTimeOffset |
 

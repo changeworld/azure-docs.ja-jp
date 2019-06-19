@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: spelluru
 ms.openlocfilehash: b8cf4217ca6c80be998b92e71c3ba29c4f68bce2
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66111518"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181424"
 ---
 ## <a name="webapi-project"></a>Web API プロジェクト
 1. Visual Studio で、**ユーザーへの通知**に関するチュートリアルで作成した **AppBackend** プロジェクトを開きます。
@@ -91,5 +91,5 @@ ms.locfileid: "66111518"
 `Post` メソッドは、トースト通知を送信しません。 通知 ID のみを含み、慎重な扱いを要するコンテンツは含まない直接通知を送信します。 また、通知ハブで資格情報を構成していないプラットフォームの送信操作は必ずコメント アウトしてください。そうしないと、エラーになります。
 
 1. 次に、このアプリを Azure の Web サイトにもう一度デプロイして、すべてのデバイスからアクセスできるようにします。 **AppBackend** プロジェクトを右クリックして **[発行]** を選択します。
-2. 発行先として Azure の Web サイトを選択します。 Azure アカウントでサインインし、既存または新規の Web サイトを選択します。**[接続]** タブの **[宛先 URL]** プロパティをメモしておきます。後で、この URL を *バックエンド エンドポイント* として参照します。 **[発行]** をクリックします。
+2. 発行先として Azure の Web サイトを選択します。 Azure アカウントでサインインし、既存または新規の Web サイトを選択します。 **[接続]** タブの **[宛先 URL]** プロパティをメモしておきます。後で、この URL を *バックエンド エンドポイント* として参照します。 **[発行]** をクリックします。
 

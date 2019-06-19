@@ -3,17 +3,17 @@ title: Azure IoT Central アプリケーションでデバイス を管理する
 description: オペレーターとして、Azure IoT Central アプリケーションでデバイスを管理する方法について説明します。
 author: ellenfosborne
 ms.author: elfarber
-ms.date: 01/30/2019
+ms.date: 06/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: e4746620f083996bf64e77617ec472c3d3894d91
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: a4a22cc2161af444ba2169cc2f83124e80c7ec11
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65464233"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67052999"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>Azure IoT Central アプリケーションでデバイスを管理する
 
@@ -62,7 +62,7 @@ Azure IoT Central アプリケーションへ新しいデバイスを追加す�
 1. 左側のパネルで一括作成するデバイスのデバイス テンプレートを選択します。
 
     > [!NOTE]
-    > まだデバイス テンプレートがない場合は、**[関連付けが解除されているデバイス]** でデバイスをインポートし、テンプレートなしでデバイスを登録できます。 デバイスをインポートした後は、テンプレートと関連付けることができます。
+    > まだデバイス テンプレートがない場合は、 **[関連付けが解除されているデバイス]** でデバイスをインポートし、テンプレートなしでデバイスを登録できます。 デバイスをインポートした後は、テンプレートと関連付けることができます。
 
 1. **[インポート]** を選択します。
 
@@ -84,7 +84,7 @@ Azure IoT Central アプリケーションへ新しいデバイスを追加す�
 
 1. 左側のナビゲーション メニューで **[Device Explorer]** を選択します。
 
-1. 左側のパネルで、**[関連付けが解除されているデバイス]** を選択します。
+1. 左側のパネルで、 **[関連付けが解除されているデバイス]** を選択します。
 
     ![関連付けが解除されているデバイス](./media/howto-manage-devices/unassociateddevices1a.png)
 
@@ -94,7 +94,7 @@ Azure IoT Central アプリケーションへ新しいデバイスを追加す�
 
     ![デバイスの関連付け](./media/howto-manage-devices/unassociateddevices2a.png)
 
-1. 使用可能なテンプレートの一覧からテンプレートを選択し、**[関連付け]** を選択します。
+1. 使用可能なテンプレートの一覧からテンプレートを選択し、 **[関連付け]** を選択します。
 
 1. 選択したデバイスが、選択したデバイス テンプレートと関連付けられます。
 
@@ -111,7 +111,7 @@ Azure IoT Central アプリケーションへ新しいデバイスを追加す�
 
 1. 左側のパネルで、デバイスをエクスポートするデバイス テンプレートを選択します。
 
-1. エクスポートするデバイスを選択して、**[エクスポート]** アクションを選択します。
+1. エクスポートするデバイスを選択して、 **[エクスポート]** アクションを選択します。
 
     ![エクスポート](./media/howto-manage-devices/export1a.png)
 

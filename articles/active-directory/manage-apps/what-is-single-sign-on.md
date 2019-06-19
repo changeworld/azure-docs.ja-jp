@@ -12,12 +12,12 @@ ms.date: 05/15/2019
 ms.author: mimart
 ms.reviewer: arvindh, japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51b3066a529183d7a8a13e4673d7879136aa0d7a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2576a33e62b370bc2fd91c5d155e9f8d6e52c0f8
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65824162"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190268"
 ---
 # <a name="single-sign-on-to-applications-in-azure-active-directory"></a>Azure Active Directory でのアプリケーションへのシングル サインオン
 
@@ -95,7 +95,7 @@ SAML プロトコルの詳細については、「[シングル サインオン�
 - Chrome - Windows 7 以降、MacOS X 以降
 - Firefox 26.0 以降 - Windows XP SP2 以降、Mac os X 10.6 以降
 
-パスワード ベースのシングル サインオンのためにクラウド アプリケーションを構成するには、「[パスワード シングル サインオンに対応するようにアプリケーションを構成する](application-sign-in-problem-password-sso-gallery.md#configure-the-application-for-password-single-sign-on)」を参照してください。
+パスワード ベースのシングル サインオンのためにクラウド アプリケーションを構成するには、「[パスワード シングル サインオンに対応するようにアプリケーションを構成する](application-sign-in-problem-password-sso-gallery.md#configure-the-app-for-password-sso)」を参照してください。
 
 アプリケーション プロキシ経由のシングル サインオンのためにオンプレミス アプリケーションを構成するには、「[アプリケーション プロキシを使用したシングル サインオン用のパスワードの保管](application-proxy-configure-single-sign-on-password-vaulting.md)」を参照してください
 

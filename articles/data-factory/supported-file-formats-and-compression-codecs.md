@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: jingwang
 ms.openlocfilehash: 9f6edc45316eaeceb75da643ed64b39382712852
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66165953"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Azure Data Factory でサポートされるファイル形式と圧縮コーデック
@@ -460,7 +460,7 @@ Parquet ファイルのシリアル化/逆シリアル化を使用してセル�
 | Single | Float | 該当なし | 該当なし |
 | Double | Double | 該当なし | 該当なし |
 | Decimal | Binary | Decimal | Decimal |
-| String | Binary | Utf8 | Utf8 |
+| string | Binary | Utf8 | Utf8 |
 | DateTime | Int96 | 該当なし | 該当なし |
 | TimeSpan | Int96 | 該当なし | 該当なし |
 | DateTimeOffset | Int96 | 該当なし | 該当なし |
@@ -506,16 +506,16 @@ ORC ファイルのシリアル化/逆シリアル化を使用してセルフホ
 | Int32 | int |
 | UInt32 | long |
 | Int64 | long |
-| UInt64 | String |
+| UInt64 | string |
 | Single | Float |
 | Double | Double |
 | Decimal | Decimal |
-| String | String |
+| string | string |
 | DateTime | Timestamp |
 | DateTimeOffset | Timestamp |
 | TimeSpan | Timestamp |
 | ByteArray | Binary |
-| Guid | String |
+| Guid | string |
 | Char | Char(1) |
 
 ## <a name="avro-format"></a>AVRO 形式

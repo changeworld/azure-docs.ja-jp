@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/21/2019
-ms.openlocfilehash: 1610678b0ae1d94c3f3b8f91913beceb211d08d6
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 7d26d4c924ba2b7116b95e0b396652e49ca1b8f2
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64701702"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67059389"
 ---
 # <a name="optimize-apache-hive-queries-in-azure-hdinsight"></a>Azure HDInsight での Apache Hive クエリの最適化
 
@@ -39,7 +39,7 @@ HDInsight のスケーリングについて詳しくは、[HDInsight クラス�
 
 ## <a name="use-apache-tez-instead-of-map-reduce"></a>Map Reduce の代わりに Apache Tez を使用する
 
-[Apache Tez](https://hortonworks.com/hadoop/tez/) は、MapReduce エンジンに代わる実行エンジンです。 Linux ベースの HDInsight クラスターでは、Tez は既定で有効になっています。
+[Apache Tez](https://tez.apache.org/) は、MapReduce エンジンに代わる実行エンジンです。 Linux ベースの HDInsight クラスターでは、Tez は既定で有効になっています。
 
 ![tez_1][image-hdi-optimize-hive-tez_1]
 
@@ -51,7 +51,7 @@ Tez はより高速です。それは次の理由によります。
 * **コンテナーを再利用できます**。 コンテナーの起動による待ち時間を軽減するため、可能なときは常にTez はコンテナーを再利用できます。
 * **継続的な最適化手法を使用します**。 これまで、最適化はコンパイル フェーズで行われていました。 しかし最適化を向上させるための入力に関する詳細は、実行時に入手できます。 Tez は、実行時フェーズでプランをさらに最適化する継続的な最適化手法を使用します。
 
-この概念の詳細については、[Apache TEZ](https://hortonworks.com/hadoop/tez/) のサイトを参照してください。
+この概念の詳細については、[Apache TEZ](https://tez.apache.org/) のサイトを参照してください。
 
 次の set コマンドでクエリにプレフィックスを付けることで、Hive クエリで Tez を有効にできます。
 
@@ -121,7 +121,7 @@ Hive パーティション分割は、生データを新しいディレクトリ
 詳細については、「[Partitioned Tables (パーティション テーブル)](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL#LanguageManualDDL-PartitionedTables)」を参照してください。
 
 ## <a name="use-the-orcfile-format"></a>ORCFile 形式の使用
-Hive は、さまざまなファイル形式をサポートしています。 例: 
+Hive は、さまざまなファイル形式をサポートしています。 例:
 
 * **テキスト**: 既定のファイル形式で、ほとんどのシナリオで使用できます。
 * **Avro**: 相互運用性シナリオで使用できます。
@@ -147,7 +147,7 @@ ORC 形式を有効にするにはまず、 *Stored as ORC*句でテーブルを
    STORED AS ORC;
    ```
    
-次に、データをステージング テーブルから ORC テーブルに挿入します。 例: 
+次に、データをステージング テーブルから ORC テーブルに挿入します。 例:
 
    ```hive
    INSERT INTO TABLE lineitem_orc

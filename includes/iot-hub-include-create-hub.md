@@ -9,17 +9,17 @@ ms.date: 11/02/2018
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: cc83d94acd25914ee57473de53afbc018f310887
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66117444"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181275"
 ---
 ここでは、[Azure portal](https://portal.azure.com) を使用して IoT ハブを作成する方法について説明します。
 
 1. [Azure Portal](https://portal.azure.com) にログインします。 
 
-2. + **リソースの作成**を選択してから、*Marketplace* で **IoT Hub** を検索します。
+2. \+ **リソースの作成**を選択してから、*Marketplace* で **IoT Hub** を検索します。
 
 3. **[IoT Hub]** を選択し、 **[作成]** をクリックします。 IoT ハブを作成するための最初の画面が表示されます。
 

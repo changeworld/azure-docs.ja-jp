@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 12/07/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: eddafdc651eb2cd0fbdf400f7f7e933a91021faf
-ms.sourcegitcommit: f9448a4d87226362a02b14d88290ad6b1aea9d82
+ms.openlocfilehash: 9d9e30bb8b31939b14d347369bbe88e23fcec49c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66808156"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67050529"
 ---
 # <a name="create-queries-to-list-batch-resources-efficiently"></a>効率的に Batch リソースを一覧表示するクエリを作成する
 
@@ -89,7 +89,7 @@ expand 文字列は、特定の情報を取得するために必要な API 呼�
 * たとえば、一覧の各項目の統計情報が返されるように指定する場合、expand 文字列は `stats`のようになります。
 
 > [!NOTE]
-> 3 種類のクエリ文字列 (filter、select、expand) のいずれかを組み立てる際に、プロパティ名および大文字と小文字が REST API 要素と一致することを確認する必要があります。 たとえば、.NET [CloudTask](/dotnet/api/microsoft.azure.batch.cloudtask#Microsoft_Azure_Batch_CloudTask) クラスを使用する場合は、.NET プロパティが [CloudTask.State](/dotnet/api/microsoft.azure.batch.cloudtask.state#Microsoft_Azure_Batch_CloudTask_State) であっても、**State** の代わりに **state** を指定する必要があります。 .NET と REST API 間のプロパティ マッピングについては、以下の表を参照してください。
+> 3 種類のクエリ文字列 (filter、select、expand) のいずれかを組み立てる際に、プロパティ名および大文字と小文字が REST API 要素と一致することを確認する必要があります。 たとえば、.NET [CloudTask](/dotnet/api/microsoft.azure.batch.cloudtask) クラスを使用する場合は、.NET プロパティが [CloudTask.State](/dotnet/api/microsoft.azure.batch.cloudtask.state#Microsoft_Azure_Batch_CloudTask_State) であっても、**State** の代わりに **state** を指定する必要があります。 .NET と REST API 間のプロパティ マッピングについては、以下の表を参照してください。
 > 
 > 
 

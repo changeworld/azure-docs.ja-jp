@@ -9,11 +9,11 @@ ms.date: 02/12/2019
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: 124f5c01b7718f729094de1c02391946ff50cef4
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66113786"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181251"
 ---
 ローカル冗長ストレージ (LRS) では、オブジェクトに年間 99.999999999% (9 が 11 個) 以上の持続性が提供されます。 LRS では、データをストレージ スケール ユニットにレプリケートすることで、ストレージこのオブジェクトの持続性が提供されます。 ストレージ アカウントを作成したリージョンのデータセンターでは、ストレージ スケール ユニットがホストされています。 LRS ストレージ アカウントへの書き込み要求は、データがすべてのレプリカに書き込まれた後にのみ、正常に返されます。 レプリカはそれぞれ、ストレージ スケール ユニット内の異なる障害ドメインとアップグレード ドメインに存在します。
 

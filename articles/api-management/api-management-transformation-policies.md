@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
 ms.openlocfilehash: 28720098206c7afdefacbd47de283b2ef8d5a606
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66243240"
 ---
 # <a name="api-management-transformation-policies"></a>API Management の変換ポリシー
@@ -79,8 +79,8 @@ ms.locfileid: "66243240"
 |Name|説明|必須|既定値|
 |----------|-----------------|--------------|-------------|
 |apply|この属性の値は次のいずれかに設定する必要があります。<br /><br /> -   always - 常に変換を適用します。<br />-   content-type-json - 応答の Content-Type ヘッダーに JSON の存在が示されている場合のみ変換を行います。|はい|該当なし|
-|consider-accept-header|この属性の値は次のいずれかに設定する必要があります。<br /><br /> -   true - 要求の Accept ヘッダーで JSON が要求されている場合に変換を適用します。<br />-   false - 常に変換を適用します。|いいえ |true|
-|parse-date|`false` に設定すると、変換中、日付値がコピーされます。|いいえ |true|
+|consider-accept-header|この属性の値は次のいずれかに設定する必要があります。<br /><br /> -   true - 要求の Accept ヘッダーで JSON が要求されている場合に変換を適用します。<br />-   false - 常に変換を適用します。|いいえ|true|
+|parse-date|`false` に設定すると、変換中、日付値がコピーされます。|いいえ|true|
 
 ### <a name="usage"></a>使用法
  このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
@@ -124,7 +124,7 @@ ms.locfileid: "66243240"
 |----------|-----------------|--------------|-------------|
 |kind|この属性の値は次のいずれかに設定する必要があります。<br /><br /> -   javascript-friendly - 変換後の JSON が JavaScript 開発者にとってわかりやすい形になります。<br />-   direct - 変換後の JSON に元の XML ドキュメントの構造が反映されます。|はい|該当なし|
 |apply|この属性の値は次のいずれかに設定する必要があります。<br /><br /> -   always - 常に変換します。<br />-   content-type-xml - 応答の Content-Type ヘッダーに XML の存在が示されている場合のみ変換を行います。|はい|該当なし|
-|consider-accept-header|この属性の値は次のいずれかに設定する必要があります。<br /><br /> -   true - 要求の Accept ヘッダーで XML が要求されている場合に変換を適用します。<br />-   false - 常に変換を適用します。|いいえ |true|
+|consider-accept-header|この属性の値は次のいずれかに設定する必要があります。<br /><br /> -   true - 要求の Accept ヘッダーで XML が要求されている場合に変換を適用します。<br />-   false - 常に変換を適用します。|いいえ|true|
 
 ### <a name="usage"></a>使用法
  このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
@@ -271,11 +271,11 @@ or
 |----------|-----------------|--------------|-------------|
 |base-url|バックエンド サービスの新しいベース URL。|`base-url` または `backend-id` のいずれかが存在しなければなりません。|該当なし|
 |backend-id|ルーティング先のバックエンドの識別子。 (バックエンド エンティティは、[API](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/backend) と [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement) を使用して管理できます)。|`base-url` または `backend-id` のいずれかが存在しなければなりません。|該当なし|
-|sf-partition-key|バックエンドが Service Fabric サービスで、'backend-id' を使って指定されている場合にのみ適用されます。 名前解決サービスからの特定のパーティションを解決するために使います。|いいえ |該当なし|
-|sf-replica-type|バックエンドが Service Fabric サービスで、'backend-id' を使って指定されている場合にのみ適用されます。 要求をパーティションのプライマリ レプリカとセカンダリ レプリカのどちらに送信する必要があるかを制御します。 |いいえ |該当なし|
-|sf-resolve-condition|バックエンドが Service Fabric サービスの場合にのみ適用されます。 Service Fabric バックエンドへの呼び出しを新しい解決で繰り返す必要があるかどうかを識別する条件です。|いいえ |該当なし|
-|sf-service-instance-name|バックエンドが Service Fabric サービスの場合にのみ適用されます。 実行時にサービス インスタンスを変更できます。 |いいえ |該当なし|
-|sf-listener-name|バックエンドが Service Fabric サービスで、"backend-id" を使って指定されている場合にのみ適用されます。 Service Fabric Reliable Services では、サービス内に複数のリスナーを作成できます。 この属性は、バックエンドのリライアブル サービスに複数のリスナーがある場合に、特定のリスナーを選択するために使用されます。 この属性が指定されていない場合、API Management によって名前のないリスナーの使用が試行されます。 リスナーが 1 つのみのリライアブル サービスでは、通常、リスナーに名前がありません。 |いいえ |該当なし|
+|sf-partition-key|バックエンドが Service Fabric サービスで、'backend-id' を使って指定されている場合にのみ適用されます。 名前解決サービスからの特定のパーティションを解決するために使います。|いいえ|該当なし|
+|sf-replica-type|バックエンドが Service Fabric サービスで、'backend-id' を使って指定されている場合にのみ適用されます。 要求をパーティションのプライマリ レプリカとセカンダリ レプリカのどちらに送信する必要があるかを制御します。 |いいえ|該当なし|
+|sf-resolve-condition|バックエンドが Service Fabric サービスの場合にのみ適用されます。 Service Fabric バックエンドへの呼び出しを新しい解決で繰り返す必要があるかどうかを識別する条件です。|いいえ|該当なし|
+|sf-service-instance-name|バックエンドが Service Fabric サービスの場合にのみ適用されます。 実行時にサービス インスタンスを変更できます。 |いいえ|該当なし|
+|sf-listener-name|バックエンドが Service Fabric サービスで、"backend-id" を使って指定されている場合にのみ適用されます。 Service Fabric Reliable Services では、サービス内に複数のリスナーを作成できます。 この属性は、バックエンドのリライアブル サービスに複数のリスナーがある場合に、特定のリスナーを選択するために使用されます。 この属性が指定されていない場合、API Management によって名前のないリスナーの使用が試行されます。 リスナーが 1 つのみのリライアブル サービスでは、通常、リスナーに名前がありません。 |いいえ|該当なし|
 
 ### <a name="usage"></a>使用法
  このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
@@ -405,7 +405,7 @@ or
 
 |Name|説明|必須|既定値|
 |----------|-----------------|--------------|-------------|
-|template|本文の設定ポリシーが実行されるテンプレート作成モードの変更に使用されます。 現在サポートされている値:<br /><br />- liquid - 本文の設定ポリシーでは、liquid テンプレート作成エンジンが使用されます |いいえ ||
+|template|本文の設定ポリシーが実行されるテンプレート作成モードの変更に使用されます。 現在サポートされている値:<br /><br />- liquid - 本文の設定ポリシーでは、liquid テンプレート作成エンジンが使用されます |いいえ||
 
 要求と応答に関する情報にアクセスするために、Liquid テンプレートは次のプロパティでコンテキスト オブジェクトにバインドできます。 <br />
 <pre>context.
@@ -513,7 +513,7 @@ OriginalUrl.
 
 |Name|説明|必須|既定値|
 |----------|-----------------|--------------|-------------|
-|exists-action|対象のヘッダーが既に指定されている場合の操作を指定します。 この属性の値は次のいずれかに設定する必要があります。<br /><br /> -   override - 既存のヘッダーの値を置き換えます。<br />-   skip - 既存のヘッダーの値を置き換えません。<br />-   append - 既存のヘッダーの値に値を追加します。<br />-   delete - 要求からヘッダーを削除します。<br /><br /> `override` に設定した場合、同じ名前の複数のエントリを記載すると、すべてのエントリに従ってヘッダーが設定されます (複数回記載されます)。結果に設定されるのは記載した値のみです。|いいえ |override|
+|exists-action|対象のヘッダーが既に指定されている場合の操作を指定します。 この属性の値は次のいずれかに設定する必要があります。<br /><br /> -   override - 既存のヘッダーの値を置き換えます。<br />-   skip - 既存のヘッダーの値を置き換えません。<br />-   append - 既存のヘッダーの値に値を追加します。<br />-   delete - 要求からヘッダーを削除します。<br /><br /> `override` に設定した場合、同じ名前の複数のエントリを記載すると、すべてのエントリに従ってヘッダーが設定されます (複数回記載されます)。結果に設定されるのは記載した値のみです。|いいえ|override|
 |name|設定するヘッダーの名前を指定します。|はい|該当なし|
 
 ### <a name="usage"></a>使用法
@@ -573,7 +573,7 @@ OriginalUrl.
 
 |Name|説明|必須|既定値|
 |----------|-----------------|--------------|-------------|
-|exists-action|対象のクエリ パラメーターが既に指定されている場合の操作を指定します。 この属性の値は次のいずれかに設定する必要があります。<br /><br /> -   override - 既存のパラメーターの値を置き換えます。<br />-   skip - 既存のクエリ パラメーターの値を置き換えません。<br />-   append - 既存のクエリ パラメーターの値に値を追加します。<br />-   delete - 要求からクエリ パラメーターを削除します。<br /><br /> `override` に設定した場合、同じ名前の複数のエントリを記載すると、すべてのエントリに従ってクエリ パラメーターが設定されます (複数回記載されます)。結果に設定されるのは記載した値のみです。|いいえ |override|
+|exists-action|対象のクエリ パラメーターが既に指定されている場合の操作を指定します。 この属性の値は次のいずれかに設定する必要があります。<br /><br /> -   override - 既存のパラメーターの値を置き換えます。<br />-   skip - 既存のクエリ パラメーターの値を置き換えません。<br />-   append - 既存のクエリ パラメーターの値に値を追加します。<br />-   delete - 要求からクエリ パラメーターを削除します。<br /><br /> `override` に設定した場合、同じ名前の複数のエントリを記載すると、すべてのエントリに従ってクエリ パラメーターが設定されます (複数回記載されます)。結果に設定されるのは記載した値のみです。|いいえ|override|
 |name|設定するクエリ パラメーターの名前を指定します。|はい|該当なし|
 
 ### <a name="usage"></a>使用法
@@ -652,7 +652,7 @@ OriginalUrl.
 |Attribute|説明|必須|既定値|
 |---------------|-----------------|--------------|-------------|
 |template|クエリ文字列パラメーターを設定した実際の Web サービス URL。 式を使用する場合は、値の全体が式である必要があります。|はい|該当なし|
-|copy-unmatched-params|元の URL テンプレートに存在しない着信要求のクエリ パラメーターを、書き換えテンプレートで定義されている URL に追加するかどうかを指定します。|いいえ |true|
+|copy-unmatched-params|元の URL テンプレートに存在しない着信要求のクエリ パラメーターを、書き換えテンプレートで定義されている URL に追加するかどうかを指定します。|いいえ|true|
 
 ### <a name="usage"></a>使用法
  このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。
@@ -715,7 +715,7 @@ OriginalUrl.
 |Name|説明|必須|
 |----------|-----------------|--------------|
 |xsl-transform|ルート要素。|はい|
-|パラメーター|変換で使用する変数の定義に使用します。|いいえ |
+|パラメーター|変換で使用する変数の定義に使用します。|いいえ|
 |xsl:stylesheet|ルート スタイルシート要素。 この中で定義する要素と属性はすべて、標準的な [XSLT の仕様](https://www.w3.org/TR/xslt)に従う必要があります。|はい|
 
 ### <a name="usage"></a>使用法

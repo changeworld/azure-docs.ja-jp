@@ -13,10 +13,10 @@ ms.author: celested
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e34e6257b4800387470cdc1b7d624bf3ebd1d3e6
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65989228"
 ---
 # <a name="configure-single-sign-on-to-non-gallery-applications-in-microsoft-identity-platform"></a>Microsoft ID プラットフォームの非ギャラリー アプリケーションへのシングル サインオンを構成する
@@ -250,6 +250,6 @@ HTML サインイン ページがある Web アプリケーションの [パス�
 
 ## <a name="related-articles"></a>関連記事
 
-- [方法:エンタープライズ アプリケーションの SAML トークンで発行された要求のカスタマイズ](../develop/active-directory-saml-claims-customization.md)」を参照してください。
+- [方法: エンタープライズ アプリケーションの SAML トークンで発行された要求のカスタマイズ](../develop/active-directory-saml-claims-customization.md)」を参照してください。
 - [Azure Active Directory のアプリケーションに対する SAML に基づいたシングル サインオンをデバッグする](../develop/howto-v1-debug-saml-sso-issues.md)
 - [Microsoft ID プラットフォーム (旧称: 開発者向け Azure Active Directory)](../develop/index.yml)

@@ -15,12 +15,12 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: bdeba401e99ad16555b9f6ea00017fc525302983
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: bc5266bc37a0b58913feb08452e173949b64c112
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59995005"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67061597"
 ---
 # <a name="sending-push-notifications-with-azure-notification-hubs-and-nodejs"></a>Azure Notification Hubs と Node.js でのプッシュ通知の送信
 
@@ -106,7 +106,7 @@ var notificationHubService = azure.createNotificationHubService('hubname','conne
 - **Payload** - メッセージの JSON または未加工の文字列ペイロード
 - **Callback** - コールバック関数。
 
-ペイロード形式の詳細については、「 **Implementing GCM Server (GCM サーバーの実装)** 」ドキュメントの「 [Payload (ペイロード)](https://developer.android.com/google/gcm/server.html#payload) 」のセクションを参照してください。
+ペイロード形式の詳細については、「 **Implementing GCM Server (GCM サーバーの実装)** 」ドキュメントの「 [Payload (ペイロード)](https://developers.google.com/cloud-messaging/) 」のセクションを参照してください。
 
 次のコードは、`NotificationHubService` によって公開されている `GcmService` インスタンスを使用して、登録されているすべてのクライアントにプッシュ通知を送信します。
 

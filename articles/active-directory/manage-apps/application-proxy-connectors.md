@@ -13,10 +13,10 @@ ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 51ad6ea2abcc18b985e9c45fbfb1ffba98fb2c1f
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66113081"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Azure AD アプリケーション プロキシ コネクタを理解する
@@ -34,7 +34,7 @@ ms.locfileid: "66113081"
 ### <a name="windows-server"></a>Windows サーバー
 Windows Server 2012 R2 以降が実行されていて、アプリケーション プロキシ コネクタをインストールできるサーバーが必要です。 サーバーは、Azure 内のアプリケーション プロキシ サービスと、公開するオンプレミス アプリケーションに接続する必要があります。
 
-アプリケーション プロキシ コネクタをインストールするには、Windows サーバーで TLS 1.2 が有効になっている必要があります。 1.5.612.0 以下のバージョンを使用した既存のコネクタは、今後さらなる通知があるまで、以前のバージョンの TLS で引き続き使用できます。 TLS 1.2 を有効にするには、次の手順に従います。
+アプリケーション プロキシ コネクタをインストールするには、Windows サーバーで TLS 1.2 が有効になっている必要があります。 1\.5.612.0 以下のバージョンを使用した既存のコネクタは、今後さらなる通知があるまで、以前のバージョンの TLS で引き続き使用できます。 TLS 1.2 を有効にするには、次の手順に従います。
 
 1. 次のレジストリ キーを設定します。
     

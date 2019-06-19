@@ -11,10 +11,10 @@ ms.date: 03/27/2019
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.openlocfilehash: 5593d6e392915448845adcac95da869e72a11310
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65873795"
 ---
 # <a name="sql-data-warehouse-data-integration-partners"></a>SQL Data Warehouse データ統合パートナー
@@ -24,7 +24,7 @@ ms.locfileid: "65873795"
 | パートナー | 説明 | Web サイト/製品リンク |
 | ------- | ----------- | -------------------- |
 | ![Alooma][7] |**Alooma**<br> Alooma は、データ チームがさまざまなデータ サイロから SQL Data Warehouse へ、すべてリアル タイムでデータを統合、強化、およびストリーミングできる ETL ソリューションです。 |[製品ページ][alooma_website] |
-| ![Alteryx][1] |**Alteryx**<br>  Alteryx Designer は、セルフサービス型データ分析のための再現可能なワークフローの提供を通じて、従来のアプローチのように分析に数週間も費やすことなく、数時間で深い洞察をもたらします。 Alteryx Designer は、統一された直観的なユーザー インターフェースを使用した、データ準備、データ ブレンド、予測分析、統計分析、および空間分析を組み合わせることにより、データ アナリストを支援します。 |[製品ページ][alteryx_designer_website]<br>[Azure Marketplace][alteryx_marketplace]<br>|
+| ![Alteryx][1] |**Alteryx**<br> Alteryx Designer は、セルフサービス型データ分析のための再現可能なワークフローの提供を通じて、従来のアプローチのように分析に数週間も費やすことなく、数時間で深い洞察をもたらします。 Alteryx Designer は、統一された直観的なユーザー インターフェースを使用した、データ準備、データ ブレンド、予測分析、統計分析、および空間分析を組み合わせることにより、データ アナリストを支援します。 |[製品ページ][alteryx_designer_website]<br>[Azure Marketplace][alteryx_marketplace]<br>|
 | ![Attunity][2] |**Attunity (CloudBeam)**<br>Attunity CloudBeam では、SQL Data Warehouse にデータを読み込むための、自動化されたソリューションを提供します。 SQL Server、Oracle、DB2、Sybase、MySQL などの多数のソースからの、データのバッチ読み込みと増分レプリケーションを簡素化します。 |[製品ページ][attunity_cloudbeam_website]<br>[Azure Marketplace][attunity_marketplace]<br> |
 | ![Denodo][3] |**Denodo**<br>Denodo では、組織のさまざまなデータ ソースにわたるデータへのリアルタイムのアクセスを提供します。 データの仮想化を利用して、レプリケーションを伴わずに多数のソースにわたるデータをブリッジします。 企業内に存在する構造化および非構造化データ、ビッグ データ、クラウド ソースに対して、バッチおよびリアル タイムの両方で広範なアクセスを提供します。|[製品ページ][denodo_website]<br>[Azure Marketplace][denodo_marketplace]<br> |
 | ![Fivetran][8] |**Fivetran**<br>Fivetran では、さまざまなソースからのデータを一元管理できます。 一般的なすべてのデータ ソースに対する組み込みのコネクターの一覧を蓄積して、メンテナンス不要、構成データ不要のパイプライン製品であることが特長です。 データ ソースとターゲット データ ウェアハウスに対して認証した後、セットアップに 5 分かかります。|[製品ページ][fivetran_website]<br> |

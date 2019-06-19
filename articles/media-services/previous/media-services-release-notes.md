@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: c519cf88f40928bbd556b0accfa30d9f8c5c0f11
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65991911"
 ---
 # <a name="azure-media-services-release-notes"></a>Azure Media Services リリース ノート
@@ -123,7 +123,7 @@ Media Services では、ストリーミング エンドポイントは、コン�
 
 ストリーミング エンドポイントには 1.0 と 2.0 の 2 つのバージョンがあります。 2017 年 1 月 10 日以降、新しく作成された Media Services アカウントには、バージョン 2.0 が既定のストリーミング エンドポイントとして含まれます。 このアカウントに追加する追加のストリーミング エンドポイントも、バージョン 2.0 になります。 この変更は、既存のアカウントには影響しません。 既存のストリーミング エンドポイントはバージョン 1.0 になり、バージョン 2.0 にアップグレードできます。 この変更により、動作、課金、および機能が変更されます。 詳しくは、「[ストリーミング エンドポイントの概要](media-services-streaming-endpoints-overview.md)」をご覧ください。
 
-2.15 バージョン以降の Media Services では、ストリーミング エンドポイントのエンティティに次のプロパティが追加されました。
+2\.15 バージョン以降の Media Services では、ストリーミング エンドポイントのエンティティに次のプロパティが追加されました。
 
 * CdnProvider 
 * CdnProfile
@@ -399,7 +399,7 @@ Media Services .NET SDK が 3.0.0.5 にバージョン アップしました。 
 
 ## <a id="jan_feb_changes_14"></a>2014 年 1 月と 2 月のリリース
 ### <a name="jan_fab_14_donnet_changes"></a>Media Services .NET SDK 3.0.0.1、3.0.0.2、および 3.0.0.3
-3.0.0.1 および 3.0.0.2 における変更:
+3\.0.0.1 および 3.0.0.2 における変更:
 
 * OrderBy ステートメントでの LINQ クエリの使用に関する問題が修正されました。
 * [GitHub] のテスト ソリューションが、ユニットベースのテストとシナリオベースのテストに分割されました。
@@ -409,12 +409,12 @@ Media Services .NET SDK が 3.0.0.5 にバージョン アップしました。 
 バージョン 3.0.0.3 では次の点が変更されました。
 
 * バージョン 3.0.3.0 を使用するように Azure Storage の依存関係がアップグレードされました。
-* 3.0. *.* リリースの下位互換性の問題が修正されました。
+* 3\.0. *.* リリースの下位互換性の問題が修正されました。
 
 ## <a id="december_changes_13"></a>2013 年 12 月のリリース
 ### <a name="dec_13_donnet_changes"></a>Media Services .NET SDK 3.0.0.0
 > [!NOTE]
-> 3.0.x.x リリースには、2.4.x.x リリースとの下位互換性がありません。
+> 3\.0.x.x リリースには、2.4.x.x リリースとの下位互換性がありません。
 > 
 > 
 

@@ -17,10 +17,10 @@ ms.workload: infrastructure-services
 ms.date: 05/16/2019
 ms.author: jonbeck
 ms.openlocfilehash: 3201183bbd012340575ee2c117b4b2083ceea711
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65832138"
 ---
 # <a name="memory-optimized-virtual-machine-sizes"></a>メモリ最適化済み仮想マシンのサイズ

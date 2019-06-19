@@ -13,10 +13,10 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 03/20/2019
 ms.openlocfilehash: 0e4d87ee0d0d09a84e960d511ded87dc226515ea
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65762664"
 ---
 # <a name="resource-limits-for-single-databases-using-the-dtu-based-purchasing-model"></a>DTU ベースの購入モデルを使用した単一データベースに対するリソース制限
@@ -72,7 +72,7 @@ ms.locfileid: "65762664"
 
 | **コンピューティング サイズ** | **P1** | **P2** | **P4** | **P6** | **P11** | **P15** |
 | :--- |---:|---:|---:|---:|---:|---:|
-| 最大 DTU 数 | 125 | 250 | 500 | 1,000 | 1750 | 4000 |
+| 最大 DTU 数 | 125 | 250 | 500 | 1000 | 1750 | 4000 |
 | 付属ストレージ (GB) | 500 | 500 | 500 | 500 | 4,096* | 4,096* |
 | 選択可能な最大ストレージ容量 (GB) | 500、750、1024 | 500、750、1024 | 500、750、1024 | 500、750、1024 | 4,096* | 4,096* |
 | 最大インメモリ OLTP ストレージ容量 (GB) | 1 | 2 | 4 | 8 | 14 | 32 |

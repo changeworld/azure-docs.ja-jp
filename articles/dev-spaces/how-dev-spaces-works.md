@@ -10,12 +10,12 @@ ms.date: 03/04/2019
 ms.topic: conceptual
 description: Azure Dev Spaces の使用を開始するためのプロセスおよび azds.yaml 構成ファイルでのそれらの構成方法について説明します
 keywords: azds.yaml, Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
-ms.openlocfilehash: e437a53d640bbdad3cdeeba8fd73e1f9ffef4023
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: 083ed45a8fa95ac5fc26af6547b5765acf80e43b
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66399835"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67154559"
 ---
 # <a name="how-azure-dev-spaces-works-and-is-configured"></a>Azure Dev Spaces のしくみと構成方法
 
@@ -210,7 +210,7 @@ azds up
 1. アプリケーション用のコンテナーをビルドする。
 1. アプリケーションを開発スペースにデプロイする。
 1. アプリケーション エンドポイント (構成済みの場合) 用に、パブリックにアクセス可能な DNS 名を作成する。
-1. *port-forward* を使用して、 http://locahost によるアプリケーション エンドポイントへのアクセスを提供する。
+1. *port-forward* を使用して、 http://localhost によるアプリケーション エンドポイントへのアクセスを提供する。
 1. stdout と stderr をクライアント側ツールに転送する。
 
 

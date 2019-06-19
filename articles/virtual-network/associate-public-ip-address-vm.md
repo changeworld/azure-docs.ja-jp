@@ -12,11 +12,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2019
 ms.author: kumud
-ms.openlocfilehash: 69460a111e6fd879807b4025d6832b3ac515a9b4
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 1b201957a33acd609eed8a2373c8201bdefe9d7d
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/17/2019
 ms.locfileid: "64691978"
 ---
 # <a name="associate-a-public-ip-address-to-a-virtual-machine"></a>仮想マシンへのパブリック IP アドレスの関連付け
@@ -29,21 +29,21 @@ ms.locfileid: "64691978"
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. パブリック IP アドレスを追加する仮想マシンを参照または検索して、選択します。
-3. 以下の画像に示すように、**[設定]** 下にある **[ネットワーク]** を選択して、パブリック IP アドレスを追加するネットワーク インターフェイスを選択します。
+3. 以下の画像に示すように、 **[設定]** 下にある **[ネットワーク]** を選択して、パブリック IP アドレスを追加するネットワーク インターフェイスを選択します。
 
    ![ネットワーク インターフェイスを選択する](./media/associate-public-ip-address-vm/select-nic.png)
 
    > [!NOTE]
    > パブリック IP アドレスは、VM にアタッチされたネットワーク インターフェイスに関連付けられます。 上記の画像では、VM には 1 つのネットワーク インターフェイスしかありません。 VM に複数のネットワーク インターフェイスがある場合は、それらすべてが表示され、パブリック IP アドレスを関連付けるネットワーク インターフェイスを選択します。
 
-4. 以下の画像に示すように、**[IP 構成]** を選択してから、1 つの IP 構成を選択します。
+4. 以下の画像に示すように、 **[IP 構成]** を選択してから、1 つの IP 構成を選択します。
 
    ![IP 構成を選択する](./media/associate-public-ip-address-vm/select-ip-configuration.png)
 
    > [!NOTE]
    > パブリック IP アドレスは、ネットワーク インターフェイスに対応する IP 構成に関連付けられます。 上記の画像では、ネットワーク インターフェイスに IP 構成が 1 つしかありません。 ネットワーク インターフェイスに複数の IP 構成がある場合は、それらすべてが表示され、パブリック IP アドレスを関連付ける IP 構成を選択します。
 
-5. **[有効]** を選択して、**[IP アドレス] ("*[必要な設定の構成]*")** を選択します。 既存のパブリック IP アドレスを選択します。**[パブリック IP アドレスの選択]** ボックスは自動的に閉じられます。 使用可能なパブリック IP アドレスが一覧に何も表示されない場合は、作成する必要があります。 方法については、「[パブリック IP アドレスの作成](virtual-network-public-ip-address.md#create-a-public-ip-address)」をご覧ください。 以下の画像に示すように、**[保存]** を選択してから、IP 構成のボックスを閉じます。
+5. **[有効]** を選択して、 **[IP アドレス] (" *[必要な設定の構成]* ")** を選択します。 既存のパブリック IP アドレスを選択します。 **[パブリック IP アドレスの選択]** ボックスは自動的に閉じられます。 使用可能なパブリック IP アドレスが一覧に何も表示されない場合は、作成する必要があります。 方法については、「[パブリック IP アドレスの作成](virtual-network-public-ip-address.md#create-a-public-ip-address)」をご覧ください。 以下の画像に示すように、 **[保存]** を選択してから、IP 構成のボックスを閉じます。
 
    ![パブリック IP アドレスを有効にする](./media/associate-public-ip-address-vm/enable-public-ip-address.png)
 

@@ -12,16 +12,16 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: v-wingf
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77dab6ad0480bc1565c219766d17211995dcfc20
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 8cb695fafe042c93f1b11d99296b0545e1674d9a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59278414"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67053679"
 ---
 # <a name="tutorial-configure-cisco-spark-for-automatic-user-provisioning"></a>チュートリアル:自動的にユーザーをプロビジョニングするように Cisco Spark を構成する
 
@@ -47,11 +47,11 @@ Azure AD を使用して自動的にユーザー プロビジョニングを行�
 
 **Azure AD アプリケーション ギャラリーからの Cisco Spark を追加するには、以下の手順を実行します。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
     ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
+2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -59,7 +59,7 @@ Azure AD を使用して自動的にユーザー プロビジョニングを行�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Cisco Spark**」と入力して、結果パネルから **[Cisco Spark]** を選択し、**[追加]** をクリックしてアプリケーションを追加します。
+4. 検索ボックスに「**Cisco Spark**」と入力して、結果パネルから **[Cisco Spark]** を選択し、 **[追加]** をクリックしてアプリケーションを追加します。
 
     ![結果リスト内の Cisco Spark](common/search-new-app.png)
 
@@ -83,7 +83,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 ### <a name="to-configure-automatic-user-provisioning-for-cisco-spark-in-azure-ad"></a>Azure AD で Cisco Spark の自動ユーザー プロビジョニングを構成するには:
 
-1. [Azure portal](https://portal.azure.com) にサインインし、**[エンタープライズ アプリケーション]**、**[すべてのアプリケーション]**、**[Cisco Spark]** の順に選択します。
+1. [Azure portal](https://portal.azure.com) にサインインし、 **[エンタープライズ アプリケーション]** 、 **[すべてのアプリケーション]** 、 **[Cisco Spark]** の順に選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -137,11 +137,11 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
      }
      ```
 
-7. 手順 5 のフィールドに入力したら、**[テスト接続]** をクリックして Azure AD が Cisco Spark に接続できることを確認します。 接続できない場合は、使用中の Cisco Spark アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
+7. 手順 5 のフィールドに入力したら、 **[テスト接続]** をクリックして Azure AD が Cisco Spark に接続できることを確認します。 接続できない場合は、使用中の Cisco Spark アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
     ![Cisco Spark プロビジョニング](./media/cisco-spark-provisioning-tutorial/TestConnection.png)
 
-8. **[通知用メール]** フィールドに、プロビジョニングのエラー通知を受け取るユーザーまたはグループの電子メール アドレスを入力して、**[エラーが発生したときにメール通知を送信します]** チェック ボックスをオンにします。
+8. **[通知用メール]** フィールドに、プロビジョニングのエラー通知を受け取るユーザーまたはグループの電子メール アドレスを入力して、 **[エラーが発生したときにメール通知を送信します]** チェック ボックスをオンにします。
 
     ![Cisco Spark プロビジョニング](./media/cisco-spark-provisioning-tutorial/EmailNotification.png)
 
@@ -157,7 +157,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 12. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)の次の手順を参照してください。
 
-13. Cisco Spark に対して Azure AD プロビジョニング サービスを有効にするには、**[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
+13. Cisco Spark に対して Azure AD プロビジョニング サービスを有効にするには、 **[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
 
     ![Cisco Spark プロビジョニング](./media/cisco-spark-provisioning-tutorial/ProvisioningStatus.png)
 
@@ -165,11 +165,11 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
     ![Cisco Spark プロビジョニング](./media/cisco-spark-provisioning-tutorial/SyncScope.png)
 
-15. プロビジョニングの準備ができたら、**[保存]** をクリックします。
+15. プロビジョニングの準備ができたら、 **[保存]** をクリックします。
 
     ![Cisco Spark プロビジョニング](./media/cisco-spark-provisioning-tutorial/Save.png)
 
-これにより、**[設定]** セクションの **[スコープ]** で 定義したユーザーやグループの初期同期が開始されます。 初期同期は後続の同期よりも実行に時間がかかります。後続の同期は、Azure AD のプロビジョニング サービスが実行されている限り約 40 分ごとに実行されます。 **[同期の詳細]** セクションを使用すると、進行状況を監視できるほか、リンクをクリックしてプロビジョニング アクティビティ レポートを取得できます。このレポートには、Azure AD プロビジョニング サービスによって Cisco Spark に対して実行されたすべてのアクションが記載されています。
+これにより、 **[設定]** セクションの **[スコープ]** で 定義したユーザーやグループの初期同期が開始されます。 初期同期は後続の同期よりも実行に時間がかかります。後続の同期は、Azure AD のプロビジョニング サービスが実行されている限り約 40 分ごとに実行されます。 **[同期の詳細]** セクションを使用すると、進行状況を監視できるほか、リンクをクリックしてプロビジョニング アクティビティ レポートを取得できます。このレポートには、Azure AD プロビジョニング サービスによって Cisco Spark に対して実行されたすべてのアクションが記載されています。
 
 Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](../manage-apps/check-status-user-account-provisioning.md)」をご覧ください。
 

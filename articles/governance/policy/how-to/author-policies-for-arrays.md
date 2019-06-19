@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.openlocfilehash: 479f77791a0b035f2d1de6085dfb12f5196288ee
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65979325"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>Azure リソースの配列プロパティのポリシーを作成する
@@ -20,7 +20,7 @@ ms.locfileid: "65979325"
 
 - 複数のオプションを提供する、[定義パラメーター](../concepts/definition-structure.md#parameters)の型
 - **in** または **notIn** の条件を使用した[ポリシー ルール](../concepts/definition-structure.md#policy-rule)の一部
-- **[なし]**、**[任意]**、**[すべて]** など、特定のシナリオを評価するために、[\[\*\] エイリアス](../concepts/definition-structure.md#understanding-the--alias)を評価するポリシー ルールの一部
+- **[なし]** 、 **[任意]** 、 **[すべて]** など、特定のシナリオを評価するために、[\[\*\] エイリアス](../concepts/definition-structure.md#understanding-the--alias)を評価するポリシー ルールの一部
 - 既存の配列を置き換えたり追加する [append 効果](../concepts/effects.md#append)において
 
 この記事では、Azure Policy によるそれぞれの使用について説明し、複数の定義例を紹介します。
@@ -77,7 +77,7 @@ ms.locfileid: "65979325"
 
 ### <a name="pass-values-to-a-parameter-array-during-assignment"></a>割り当て中にパラメーター配列に値を渡す
 
-Azure portal からポリシーを割り当てるときに、**type** _array_ のパラメーターは単一のテキストボックスとして表示されます。 ヒントには「値を区切るには ; を使用してください  (例: ロンドン;New York)」と示されます。 _eastus2_、_eastus_、および _westus2_ の許可されている場所の値をパラメーターに渡すには、次の文字列を使用します。
+Azure portal からポリシーを割り当てるときに、**type** _array_ のパラメーターは単一のテキストボックスとして表示されます。 ヒントには「値を区切るには ; を使用してください (例: ロンドン;New York)」と示されます。 _eastus2_、_eastus_、および _westus2_ の許可されている場所の値をパラメーターに渡すには、次の文字列を使用します。
 
 `eastus2;eastus;westus2`
 
@@ -142,10 +142,10 @@ Azure portal からこのポリシー定義を作成しようとすると、次�
 
 ### <a name="evaluating-the--alias"></a>[*] エイリアスの評価
 
-名前に **[\*]** が付けられたエイリアスは、**type** が _array_ であることを示します。 配列全体の値を評価する代わりに、**[\*]** は配列の各要素を評価できるようにします。 この項目ごとの評価が役立つシナリオは次の 3 つあります。なし、任意、すべて。
+名前に **[\*]** が付けられたエイリアスは、**type** が _array_ であることを示します。 配列全体の値を評価する代わりに、 **[\*]** は配列の各要素を評価できるようにします。 この項目ごとの評価が役立つシナリオは次の 3 つあります。なし、任意、すべて。
 
 **if** ルールが true として評価された場合にのみ、ポリシー エンジンは **then** 内の **effect** をトリガーします。
-このファクトは、**[\*]** が配列の各個々の要素を評価する方法というテキストで理解するために重要になります。
+このファクトは、 **[\*]** が配列の各個々の要素を評価する方法というテキストで理解するために重要になります。
 
 下のシナリオ テーブルのポリシー ルール例:
 

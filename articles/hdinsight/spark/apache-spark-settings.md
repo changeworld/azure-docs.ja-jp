@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/06/2018
-ms.openlocfilehash: 77f4ec9cce5d02ea4cbcc4968d02773a13edfe5b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/17/2019
+ms.openlocfilehash: d5dca3f4517f3d24b765652f420a38c258ad9a2e
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64681299"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190918"
 ---
 # <a name="configure-apache-spark-settings"></a>Apache Spark の設定を構成する
 

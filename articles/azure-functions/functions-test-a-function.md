@@ -11,11 +11,11 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: cshoe
-ms.openlocfilehash: 7489f42719223dbd7f9cc2908f666dca53fe7c04
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 9a078579fff355d7ddb996316af2a2136fb62335
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66496386"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Azure Functions のコードをテストするための戦略
@@ -312,7 +312,7 @@ module.exports = {
 ```
 このモジュールは、偽のタイマー インスタンスである `IsPastDue` プロパティを実装します。
 
-次に、VS Code の Functions 拡張機能を使用して、[JavaScript HTTP 関数を新規作成](https://docs.microsoft.com/azure/azure-functions/tutorial-javascript-vscode-get-started)して *HttpTrigger* という名前を付けます。 関数を作成した後、**index.test.js** という名前の同じフォルダーに新しいファイルを追加し、次のコードを追加します。
+次に、VS Code の Functions 拡張機能を使用して、[JavaScript HTTP 関数を新規作成](https://code.visualstudio.com/tutorials/functions-extension/getting-started)して *HttpTrigger* という名前を付けます。 関数を作成した後、**index.test.js** という名前の同じフォルダーに新しいファイルを追加し、次のコードを追加します。
 
 ```javascript
 const httpFunction = require('./index');

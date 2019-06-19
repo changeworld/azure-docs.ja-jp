@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: wolfma
 ms.openlocfilehash: 2bfe111cbe1e352c16c9cbdd6d2ecc999bbe444f
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66003006"
 ---
 # <a name="about-the-speech-sdk"></a>Speech SDK について
@@ -27,7 +27,7 @@ Speech ソフトウェア開発キット (SDK) は、音声認識対応のソフ
 
 ## <a name="get-the-sdk"></a>SDK の取得
 
-### <a name="windows"></a> Windows
+### <a name="windows"></a>Windows
 
 Windows の場合、次の言語がサポートされています。
 

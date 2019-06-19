@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/14/2019
 ms.author: raynew
 ms.openlocfilehash: e96aafe61c0d8547ffca9e97bfd9e90c9529155f
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66237280"
 ---
 # <a name="set-up-disaster-recovery-at-scale-for-vmware-vmsphysical-servers"></a>VMware VM/物理サーバーの大規模なディザスター リカバリーを設定する
@@ -101,7 +101,7 @@ Deployment Planner は、VMware のオンプレミス環境に関する情報を
 **マシンが Azure に準拠しているかどうか** | **Azure VM の上限 (マネージド ディスクのフェールオーバー)**
 --- | --- 
 はい | 2000
-いいえ | 1,000
+いいえ | 1000
 
 - 上限は、サブスクリプションのターゲット リージョンで進行中のその他のジョブが最小限であることを前提としています。
 - 一部の Azure リージョンはより小さく、上限が若干低い場合があります。

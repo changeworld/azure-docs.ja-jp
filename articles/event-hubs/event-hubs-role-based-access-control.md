@@ -12,10 +12,10 @@ ms.custom: seodec18
 ms.date: 05/21/2019
 ms.author: shvija
 ms.openlocfilehash: ae970b9612154a6463c4bf44a65da71a20c81635
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65978310"
 ---
 # <a name="active-directory-role-based-access-control-preview"></a>Active Directory のロールベースのアクセス制御 (プレビュー)
@@ -32,7 +32,7 @@ Azure では、Event Hubs 名前空間へのアクセスを承認するための
 [Event Hubs データ所有者 (プレビュー)](../role-based-access-control/built-in-roles.md#service-bus-data-owner) ロールでは、Event Hubs 名前空間とそのエンティティ (キュー、トピック、サブスクリプション、およびフィルター) へのデータ アクセスが可能です。
 
 >[!IMPORTANT]
-> 以前は、**所有者**または**共同作成者**ロールへのマネージド ID の追加がサポートされていました。 しかし、**所有者**と**共同作成者**ロールに対するデータ アクセス特権は受け入れられなくなりました。 **所有者**または**共同作成者**ロールを使用している場合は、**Event Hubs データ所有者**ロールの使用に切り替えてください。
+> 以前は、**所有者**または**共同作成者**ロールへのマネージド ID の追加がサポートされていました。 しかし、**所有者**ロールと**共同作成者**ロールのデータ アクセス特権は受け入れられなくなりました。 **所有者**または**共同作成者**ロールを使用している場合は、**Event Hubs データ所有者**ロールの使用に切り替えてください。
 
 
 ## <a name="use-event-hubs-with-an-azure-ad-domain-user-account"></a>Azure AD ドメイン ユーザー アカウントで Event Hubs を使用する

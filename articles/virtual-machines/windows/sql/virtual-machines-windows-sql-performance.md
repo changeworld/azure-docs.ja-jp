@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 09/26/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 8d31f04c355b47720a1c9b0334042ba2f6654768
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 3fda34e46ddb7ea17c98795ad6632841b79764eb
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58448570"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67076909"
 ---
 # <a name="performance-guidelines-for-sql-server-in-azure-virtual-machines"></a>Azure Virtual Machines における SQL Server のパフォーマンスに関するガイドライン
 
@@ -55,7 +55,7 @@ Azure Virtual Machines で SQL Server の最適なパフォーマンスを実現
 * **SQL Server Enterprise エディション**:DS3_v2 以降
 * **SQL Server Standard および Web エディション**:DS2_v2 以降
 
-[DSv2 シリーズ](../sizes-general.md#dsv2-series)の VM では、Premium Storage をサポートしています。最適なパフォーマンスを得るには、これをお勧めします。 ここで推奨されるサイズが基準ですが、選択する実際のマシン サイズはワークロードの必要に応じて異なります。 DSv2 シリーズの VM がさまざまなワークロードに適している汎用 VM であるのに対して、その他のマシン サイズは特定のワークロードの種類用に最適化されています。 たとえば、[M シリーズ](../sizes-memory.md#m-series)では、最大の SQL Server ワークロードに対して最大の vCPU 数とメモリを提供します。 [GS シリーズ](../sizes-memory.md#gs-series)と [DSv2 シリーズ 11-15](../sizes-memory.md#dsv2-series-11-15) は、大量のメモリ要件のために最適化されています。 また、これらのシリーズはどちらも、[制約付きの主要なサイズ](../../windows/constrained-vcpu.md)で利用することができ、低いコンピューティング要求のワークロードの場合は節約できます。 [Ls シリーズ](../sizes-storage.md)のマシンは、高いディスク スループットと IO 用に最適化されています。 特定の SQL Server ワークロードを考慮し、VM シリーズとサイズの選択に適用することが重要です。
+[DSv2 シリーズ](../sizes-general.md#dsv2-series)の VM では、Premium Storage をサポートしています。最適なパフォーマンスを得るには、これをお勧めします。 ここで推奨されるサイズが基準ですが、選択する実際のマシン サイズはワークロードの必要に応じて異なります。 DSv2 シリーズの VM がさまざまなワークロードに適している汎用 VM であるのに対して、その他のマシン サイズは特定のワークロードの種類用に最適化されています。 たとえば、[M シリーズ](../sizes-memory.md#m-series)では、最大の SQL Server ワークロードに対して最大の vCPU 数とメモリを提供します。 [GS シリーズ](../sizes-previous-gen.md#gs-series)と [DSv2 シリーズ 11-15](../sizes-memory.md#dsv2-series-11-15) は、大量のメモリ要件のために最適化されています。 また、これらのシリーズはどちらも、[制約付きの主要なサイズ](../../windows/constrained-vcpu.md)で利用することができ、低いコンピューティング要求のワークロードの場合は節約できます。 [Ls シリーズ](../sizes-storage.md)のマシンは、高いディスク スループットと IO 用に最適化されています。 特定の SQL Server ワークロードを考慮し、VM シリーズとサイズの選択に適用することが重要です。
 
 ## <a name="storage-guidance"></a>ストレージのガイダンス
 
@@ -154,7 +154,7 @@ Premium SSD がサポートされる VM (DS シリーズ、DSv2 シリーズ、�
 
 * I/O 集中型ワークロードのパフォーマンスを向上させるために、 [データベース ページの圧縮](https://msdn.microsoft.com/library/cc280449.aspx) を使用することを検討します。 ただし、データ圧縮を使用すると、データベース サーバーでの CPU 消費量が増加する場合があります。
 
-* 初期ファイル割り当てに必要な時間を短縮するために、ファイルの瞬時初期化を有効にすることを検討します。 ファイルの瞬時初期化を利用するには、SQL Server (MSSQLSERVER) サービス アカウントに SE_MANAGE_VOLUME_NAME を付与し、**[ボリュームの保守タスクを実行]** セキュリティ ポリシーにそのサービス アカウントを追加します。 Azure の SQL Server プラットフォーム イメージを使用している場合、既定のサービス アカウント (NT Service\MSSQLSERVER) は、**[ボリュームの保守タスクを実行]** セキュリティ ポリシーに追加されません。 つまり、SQL Server Azure プラットフォーム イメージでは、ファイルの瞬時初期化は有効になりません。 **[ボリュームの保守タスクを実行]** セキュリティ ポリシーに SQL Server サービス アカウントを追加したら、SQL Server サービスを再起動します。 この機能を使用する場合、セキュリティに関する考慮事項があります。 詳細については、「 [データベース ファイルの初期化](https://msdn.microsoft.com/library/ms175935.aspx)」をご覧ください。
+* 初期ファイル割り当てに必要な時間を短縮するために、ファイルの瞬時初期化を有効にすることを検討します。 ファイルの瞬時初期化を利用するには、SQL Server (MSSQLSERVER) サービス アカウントに SE_MANAGE_VOLUME_NAME を付与し、 **[ボリュームの保守タスクを実行]** セキュリティ ポリシーにそのサービス アカウントを追加します。 Azure の SQL Server プラットフォーム イメージを使用している場合、既定のサービス アカウント (NT Service\MSSQLSERVER) は、 **[ボリュームの保守タスクを実行]** セキュリティ ポリシーに追加されません。 つまり、SQL Server Azure プラットフォーム イメージでは、ファイルの瞬時初期化は有効になりません。 **[ボリュームの保守タスクを実行]** セキュリティ ポリシーに SQL Server サービス アカウントを追加したら、SQL Server サービスを再起動します。 この機能を使用する場合、セキュリティに関する考慮事項があります。 詳細については、「 [データベース ファイルの初期化](https://msdn.microsoft.com/library/ms175935.aspx)」をご覧ください。
 
 * **自動拡張** は、予想外の増加に付随するものと見なされています。 自動拡張を使用して、データやログの増加に日常的に対処しないでください。 自動拡張を使用する場合は、Size スイッチを使用してファイルを事前に拡張します。
 
@@ -179,11 +179,22 @@ Premium SSD がサポートされる VM (DS シリーズ、DSv2 シリーズ、�
 
 一部のデプロイでは、より高度な構成手法を使用することで、パフォーマンスがさらに向上する場合があります。 パフォーマンスの向上を実現する際に役立つ SQL Server の機能を次に示します。
 
-* **Azure Storage へのバックアップ**:Azure 仮想マシンで実行される SQL Server のバックアップを実行する際は、[SQL Server Backup to URL](https://msdn.microsoft.com/library/dn435916.aspx) を使用できます。 SQL Server 2012 SP1 CU2 以降で使用できるこの機能は、接続されているデータ ディスクにバックアップする場合に推奨されます。 Azure Storage との間でバックアップと復元を行うときは、「 [SQL Server Backup to URL に関するベスト プラクティスとトラブルシューティング](https://msdn.microsoft.com/library/jj919149.aspx)」に記載されている推奨事項に従ってください。 [Azure Virtual Machines での SQL Server の自動バックアップ](virtual-machines-windows-sql-automated-backup.md)を使用して、バックアップを自動化することもできます。
+### <a name="backup-to-azure-storage"></a>Azure Storage へのバックアップ
+Azure 仮想マシンで実行される SQL Server のバックアップを実行する際は、[SQL Server Backup to URL](https://msdn.microsoft.com/library/dn435916.aspx) を使用できます。 SQL Server 2012 SP1 CU2 以降で使用できるこの機能は、接続されているデータ ディスクにバックアップする場合に推奨されます。 Azure Storage との間でバックアップと復元を行うときは、「 [SQL Server Backup to URL に関するベスト プラクティスとトラブルシューティング](https://msdn.microsoft.com/library/jj919149.aspx)」に記載されている推奨事項に従ってください。 [Azure Virtual Machines での SQL Server の自動バックアップ](virtual-machines-windows-sql-automated-backup.md)を使用して、バックアップを自動化することもできます。
 
-    SQL Server 2012 より前のバージョンでは、 [SQL Server Backup to Azure Tool](https://www.microsoft.com/download/details.aspx?id=40740)を使用できます。 このツールでは、複数のバックアップ ストライプ ターゲットを使用することで、バックアップ スループットを向上させることができます。
+SQL Server 2012 より前のバージョンでは、 [SQL Server Backup to Azure Tool](https://www.microsoft.com/download/details.aspx?id=40740)を使用できます。 このツールでは、複数のバックアップ ストライプ ターゲットを使用することで、バックアップ スループットを向上させることができます。
 
-* **Azure 内の SQL Server データ ファイル**:[Azure 内の SQL Server データ ファイル](https://msdn.microsoft.com/library/dn385720.aspx)は、SQL Server 2014 以降で使用できる新機能です。 Azure 内のデータ ファイルを使用して SQL Server を実行すると、Azure データ ディスクを使用する場合と同等のパフォーマンス特性が得られます。
+### <a name="sql-server-data-files-in-azure"></a>Azure 内の SQL Server データ ファイル
+
+[Azure 内の SQL Server データ ファイル](https://msdn.microsoft.com/library/dn385720.aspx)は、SQL Server 2014 以降で使用できる新機能です。 Azure 内のデータ ファイルを使用して SQL Server を実行すると、Azure データ ディスクを使用する場合と同等のパフォーマンス特性が得られます。
+
+### <a name="failover-cluster-instance-and-storage-spaces"></a>フェールオーバー クラスター インスタンスと記憶域スペース
+
+記憶域スペースを使用している場合は、 **[確認]** ページでクラスターにノードを追加するときに、 **[使用可能な記憶域をすべてクラスターに追加する]** チェック ボックスをオフにします。 
+
+![使用可能な記憶域をオフにする](media/virtual-machines-windows-sql-performance/uncheck-eligible-cluster-storage.png)
+
+記憶域スペースを使っている場合に、 **[使用可能な記憶域をすべてクラスターに追加する]** をオフにしないと、Windows はクラスター作成処理中に仮想ディスクをデタッチします。 その結果、記憶域スペースがクラスターから削除され、PowerShell を使って再アタッチされるまで、仮想ディスクはディスク マネージャーやエクスプローラーに表示されなくなります。 記憶域スペースは、複数のディスクを記憶域プールにグループ化します。 詳細については、[記憶域スペース](/windows-server/storage/storage-spaces/overview)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

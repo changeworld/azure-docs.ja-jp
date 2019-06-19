@@ -6,18 +6,18 @@ services: time-series-insights
 author: ashannon7
 ms.author: dpalled
 manager: cshankar
-ms.reviewer: v-mamcge, jasonh, kfile, anshan
+ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: cbb6d75b2ed6b73ce7e3421596520f6a3f1bf3b1
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: a7905213d67fd1cb97a8e50c938427b7ad775924
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66399817"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165787"
 ---
 # <a name="azure-time-series-insights-explorer"></a>Azure Time Series Insights エクスプローラー
 
@@ -76,7 +76,7 @@ Time Series Insights エクスプローラーを使用するための前提条�
          |`<`、`>`、`<=`, `>=`     |  Double、DateTime、TimeSpan       |         |
          |`=`、`!=`、`<>`     | String、Bool、Double、DateTime、TimeSpan、NULL        |         |
          |IN     | String、Bool、Double、DateTime、TimeSpan、NULL        |  すべてのオペランドは同じ型か NULL 定数である必要があります。        |
-         |HAS     | String        |  右側には定数文字列リテラルのみが許可されます。 空の文字列や NULL は許可されません。       |
+         |HAS     | string        |  右側には定数文字列リテラルのみが許可されます。 空の文字列や NULL は許可されません。       |
 
       - **クエリの例**
 

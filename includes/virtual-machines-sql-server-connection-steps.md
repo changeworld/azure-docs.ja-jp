@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: jroth
 ms.openlocfilehash: 297317ff33d88d6390220980ef35f2538579e310
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66165499"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181116"
 ---
 ### <a name="open-tcp-ports-in-the-windows-firewall-for-the-default-instance-of-the-database-engine"></a>データベース エンジンの既定のインスタンス用に Windows ファイアウォールで TCP ポートを開く
 1. リモート デスクトップを使用して仮想マシンに接続します。 VM への接続の詳しい手順については、[リモート デスクトップを使用して SQL VM を開く方法](../articles/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision.md#remotedesktop)に関するページを参照してください。

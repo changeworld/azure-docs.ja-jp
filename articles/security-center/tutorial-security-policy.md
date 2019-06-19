@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 5/05/2019
 ms.author: v-mohabe
 ms.openlocfilehash: 7f738350743b0b80bf39a322043c514081721def
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65967867"
 ---
 # <a name="working-with-security-policies"></a>セキュリティ ポリシーの操作
@@ -71,7 +71,7 @@ Security Center でセキュリティ ポリシーを表示するには:
    **[ポリシー管理]** 画面には、管理グループ、サブスクリプション、およびワークスペースの数、および管理グループの構造が表示されます。
 
    > [!NOTE]
-   > - Security Center のダッシュボードの **[サブスクリプションの対象範囲]** に表示されるサブスクリプション数が、**[ポリシー管理]** に表示されるサブスクリプション数より多い場合があります。 [サブスクリプションの対象範囲] は、Standard、Free、および "対象外の" サブスクリプションの数を示します。 "対象外の" サブスクリプションでは、Security Center が有効になっておらず、**[ポリシー管理]** に表示されません。
+   > - Security Center のダッシュボードの **[サブスクリプションの対象範囲]** に表示されるサブスクリプション数が、 **[ポリシー管理]** に表示されるサブスクリプション数より多い場合があります。 [サブスクリプションの対象範囲] は、Standard、Free、および "対象外の" サブスクリプションの数を示します。 "対象外の" サブスクリプションでは、Security Center が有効になっておらず、 **[ポリシー管理]** に表示されません。
    >
 
    表には次の列が表示されます。

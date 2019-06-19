@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 1/27/2019
 ms.author: v-mohabe
 ms.openlocfilehash: b18267b1443b257a575bf2e1199b9f8fa8c419fc
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65966821"
 ---
 # <a name="protect-app-service-with-azure-security-center"></a>Azure Security Center で App Service を保護する
@@ -48,7 +48,7 @@ Security Center は App Service とネイティブで統合されており、デ
 
 1. Azure で Security Center を選択します。
 2. **[セキュリティ ポリシー]** に進み、サブスクリプションを選択します。
-3. サブスクリプションの行の終わりで、**[設定の編集]** をクリックします。
+3. サブスクリプションの行の終わりで、 **[設定の編集]** をクリックします。
 4. **[価格レベル]** の **[App Service]** 行でプランを **[有効]** に切り替えます。
 
 ![アプリ サービスを切り替える](./media/security-center-app-services/app-services-toggle.png)
@@ -56,7 +56,7 @@ Security Center は App Service とネイティブで統合されており、デ
 >[!NOTE]
 > リソース数量に一覧表示されているインスタンスの数は、価格レベル ブレードを開いた時点でアクティブなアプリ サービスの関連インスタンス数となります。 この数は選択したスケーリング オプションに基づいて変わる可能性があるため、課金されるインスタンスの数もそれに応じて変わります。
 
-App Service の監視と推奨を無効にするには、このプロセスを繰り返し、**[App Service]** プランを **[無効]** に切り替えます。
+App Service の監視と推奨を無効にするには、このプロセスを繰り返し、 **[App Service]** プランを **[無効]** に切り替えます。
 
 
 

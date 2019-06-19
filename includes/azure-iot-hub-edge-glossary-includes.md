@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: dobett
 ms.openlocfilehash: c95bca125ea70cf32acad0d5ea67c3ad195ed704
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66146572"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181294"
 ---
 ## <a name="automatic-device-management"></a>自動デバイス管理
 Azure IoT Hub の自動デバイス管理は、大規模なデバイス集団のライフサイクル全体を管理する複雑な反復タスクの多くを自動化します。 自動デバイス管理を利用すると、プロパティに基づいて対象のデバイス セットを設定し、必要な構成を定義して、デバイスがスコープ内になったときにいつでも IoT Hub がデバイスを更新できるようにすることができます。  [自動デバイス構成](../articles/iot-hub/iot-hub-auto-device-config.md)と [IoT Edge の自動展開](../articles/iot-edge/how-to-deploy-monitor.md)で構成されます。

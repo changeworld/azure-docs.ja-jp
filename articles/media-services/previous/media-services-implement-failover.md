@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: f09391bf18910bf9151c99b8df91f92b2582e823
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: ea5238df50ff050140453ce655ea041669f6080c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58189837"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67051643"
 ---
 # <a name="implement-failover-streaming-with-media-services"></a>Media Services でフェールオーバー ストリーミングを実装する 
 
@@ -59,9 +59,9 @@ ms.locfileid: "58189837"
 ## <a name="set-up-your-project"></a>プロジェクトの設定
 このセクションでは、C# コンソール アプリケーション プロジェクトを作成、設定できます。
 
-1. Visual Studio を使用すると、C# コンソール アプリケーション プロジェクトを含む新しいソリューションを作成できます。 名前に「**HandleRedundancyForOnDemandStreaming**」と入力し、**[OK]** をクリックします。
-2. **HandleRedundancyForOnDemandStreaming.csproj** プロジェクト ファイルと同じレベルに **SupportFiles** フォルダーを作成します。 **SupportFiles** フォルダーの下に **OutputFiles** と **MP4Files** フォルダーを作成します。 .mp4 ファイルを **MP4Files** フォルダーにコピーします  (この例では、**BigBuckBunny.mp4** ファイルを使用します)。 
-3. **NuGet** を使用して Media Services 関連の DLL への参照を追加します。 **Visual Studio のメイン メニュー**で、**[ツール]** > **[ライブラリ パッケージ マネージャー]** > **[パッケージ マネージャー コンソール]** の順に選択します。 コンソール ウィンドウで「**Install-Package windowsazure.mediaservices**」と入力し、Enter キーを押します。
+1. Visual Studio を使用すると、C# コンソール アプリケーション プロジェクトを含む新しいソリューションを作成できます。 名前に「**HandleRedundancyForOnDemandStreaming**」と入力し、 **[OK]** をクリックします。
+2. **HandleRedundancyForOnDemandStreaming.csproj** プロジェクト ファイルと同じレベルに **SupportFiles** フォルダーを作成します。 **SupportFiles** フォルダーの下に **OutputFiles** と **MP4Files** フォルダーを作成します。 .mp4 ファイルを **MP4Files** フォルダーにコピーします (この例では、**BigBuckBunny.mp4** ファイルを使用します)。 
+3. **NuGet** を使用して Media Services 関連の DLL への参照を追加します。 **Visual Studio のメイン メニュー**で、 **[ツール]**  >  **[ライブラリ パッケージ マネージャー]**  >  **[パッケージ マネージャー コンソール]** の順に選択します。 コンソール ウィンドウで「**Install-Package windowsazure.mediaservices**」と入力し、Enter キーを押します。
 4. このプロジェクト (System.Configuration、System.Runtime.Serialization および System.Web) に必要なその他の参照を追加します。
 5. **Programs.cs** ファイルに既定で追加された **using** ステートメントを次の内容に置き換えます。
    
@@ -409,8 +409,7 @@ ms.locfileid: "58189837"
         {
 
             var ismAssetFiles = asset.AssetFiles.ToList().
-                        Where(f => f.Name.EndsWith(".ism", StringComparison.OrdinalIgnoreCase))
-                        .ToArray();
+                        Where(f => f.Name.EndsWith(".ism", StringComparison.OrdinalIgnoreCase));
 
             if (ismAssetFiles.Count() != 1)
                 throw new ArgumentException("The asset should have only one, .ism file");
@@ -421,15 +420,12 @@ ms.locfileid: "58189837"
 
         public static IAssetFile GetPrimaryFile(IAsset asset)
         {
-            var theManifest =
-                    from f in asset.AssetFiles
-                    where f.Name.EndsWith(".ism")
-                    select f;
-
             // Cast the reference to a true IAssetFile type. 
-            IAssetFile manifestFile = theManifest.First();
+        IAssetFile theManifest = asset.AssetFiles.ToList().
+                Where(f => f.Name.EndsWith(".ism", StringComparison.OrdinalIgnoreCase)).
+                FirstOrDefault();   
 
-            return manifestFile;
+            return theManifest;
         }
 
         public static IAsset RefreshAsset(CloudMediaContext context, IAsset asset)

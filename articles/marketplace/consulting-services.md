@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 10/29/2018
 ms.author: yijenj
 ms.openlocfilehash: 225a4936bbbb8d068caa0ee2a3280c395dbd490e
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65964120"
 ---
 # <a name="consulting-services-for-azure-marketplace-and-appsource"></a>Azure Marketplace および AppSource 向けコンサルティング サービス
@@ -35,7 +35,7 @@ Azure Marketplace および AppSource では、Microsoft のシステム イン�
 Microsoft Dynamics 365、Office 365、Power BI に基づくサービス プランは、AppSource に掲載される資格があります。 詳細については、[Microsoft AppSource のコンサルティング サービスの掲載に関するガイドライン](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf)を参照してください。 
 
 > [!Note]
-> Azure Marketplace のコンサルティング サービスでは、*Azure の技術的なソリューションとサービス*に焦点を当て、**技術者を対象にしたサービスを活用する必要があります。 * * AppSource のコンサルティング サービスでは、Dynamics 365、Power BI、または PowerApps の品質ソリューションを提供する専門家に向けたプランを活用し、AppSouce 上でのコンサルティング サービス プランの一覧を示しています
+> Azure Marketplace のコンサルティング サービスでは、*Azure の技術的なソリューションとサービス*に焦点を当て、**技術者を対象にしたサービスを活用する必要があります。 \* * AppSource のコンサルティング サービスでは、Dynamics 365、Power BI、または PowerApps の品質ソリューションを提供する専門家に向けたプランを活用し、AppSouce 上でのコンサルティング サービス プランの一覧を示しています
 > 
 > 
 > [!TIP]
@@ -166,7 +166,7 @@ Cloud パートナー ポータルでは、[Markdown](https://docs.microsoft.com
 * ### <a name="space-for-heading-ex-spaceagendadeliverables"></a>見出しのスペース (例: ###(スペース)議題/成果物)
 * 見出しの後の改行
 * ** = 太字 
-* * プランの概要を斜体にします
+* \* プランの概要を斜体にします
 
 
 ## <a name="next-steps"></a>次の手順

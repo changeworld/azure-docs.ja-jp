@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 09/24/2018
 ms.author: panarasi
 ms.openlocfilehash: 2945cefc18a378b31700104049f1a14a1f320136
-ms.sourcegitcommit: db3fe303b251c92e94072b160e546cec15361c2c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66019785"
 ---
 # <a name="add-authentication-to-your-xamarin-forms-app"></a>Xamarin Forms アプリに認証を追加する
@@ -121,7 +121,7 @@ Xamarin Forms プロジェクトで認証するには、アプリのポータブ
 ## <a name="add-authentication-to-the-android-app"></a>Android アプリに認証を追加する
 このセクションでは、Android アプリ プロジェクト内に **IAuthenticate** インターフェイスを実装する方法について説明します。 Android デバイスをサポートしない場合、このセクションはスキップしてください。
 
-1. Visual Studio または Xamarin Studio で、**droid** プロジェクトを右クリックし、**[スタートアップ プロジェクトに設定]** をクリックします。
+1. Visual Studio または Xamarin Studio で、**droid** プロジェクトを右クリックし、 **[スタートアップ プロジェクトに設定]** をクリックします。
 2. F5 キーを押してデバッガーでプロジェクトを開始し、アプリの開始後に、状態コード 401 のハンドルされない例外 (許可されていません) が発生することを確認します。 401 コードは、バックエンドへのアクセスが承認済みのユーザーのみに制限されているために生成されます。
 3. Android プロジェクトの MainActivity.cs を開き、次の `using` ステートメントを追加します。
 
@@ -197,7 +197,7 @@ Xamarin Forms プロジェクトで認証するには、アプリのポータブ
 ## <a name="add-authentication-to-the-ios-app"></a>iOS アプリに認証を追加する
 このセクションでは、iOS アプリ プロジェクト内に **IAuthenticate** インターフェイスを実装する方法について説明します。 iOS デバイスをサポートしない場合、このセクションはスキップしてください。
 
-1. Visual Studio または Xamarin Studio で、**iOS** プロジェクトを右クリックし、**[スタートアップ プロジェクトに設定]** をクリックします。
+1. Visual Studio または Xamarin Studio で、**iOS** プロジェクトを右クリックし、 **[スタートアップ プロジェクトに設定]** をクリックします。
 2. F5 キーを押してデバッガーでプロジェクトを開始し、アプリの開始後に、状態コード 401 のハンドルされない例外 (許可されていません) が発生することを確認します。 401 応答は、バックエンドへのアクセスが承認済みのユーザーのみに制限されているために生成されます。
 3. iOS プロジェクトの AppDelegate.cs を開き、次の `using` ステートメントを追加します。
 
@@ -258,14 +258,14 @@ Xamarin Forms プロジェクトで認証するには、アプリのポータブ
 
     このコードにより、アプリの読み込み前に Authenticator が初期化されるようになります。
 
-8. Info.plist を開き、**[URL Type]** を追加します。 **[Identifier]** を任意の名前に、**[URL Schemes]** をアプリの URL スキームに、**[Role]** を [None] に設定します。
+8. Info.plist を開き、 **[URL Type]** を追加します。 **[Identifier]** を任意の名前に、 **[URL Schemes]** をアプリの URL スキームに、 **[Role]** を [None] に設定します。
 
 9. アプリをリビルドして実行します。その後で、選択した認証プロバイダーを使用してサインインし、認証されたユーザーとしてデータにアクセスできることを確認します。
 
 ## <a name="add-authentication-to-windows-10-including-phone-app-projects"></a>Windows 10 (Phone を含む) アプリ プロジェクトに認証を追加する
 このセクションでは、Windows 10 アプリ プロジェクト内に **IAuthenticate** インターフェイスを実装する方法について説明します。 同じ手順をユニバーサル Windows プラットフォーム (UWP) プロジェクトにも適用できますが、**UWP** プロジェクトを使用します (相違点が注記されています)。 Windows デバイスをサポートしない場合、このセクションはスキップしてください。
 
-1. Visual Studio で、**UWP** プロジェクトを右クリックし、**[スタートアップ プロジェクトに設定]** をクリックします。
+1. Visual Studio で、**UWP** プロジェクトを右クリックし、 **[スタートアップ プロジェクトに設定]** をクリックします。
 2. F5 キーを押してデバッガーでプロジェクトを開始し、アプリの開始後に、状態コード 401 のハンドルされない例外 (許可されていません) が発生することを確認します。 401 応答は、バックエンドへのアクセスが承認済みのユーザーのみに制限されているために発生します。
 3. Windows アプリ プロジェクトの MainPage.xaml.cs を開き、次の `using` ステートメントを追加します。
 
@@ -336,7 +336,7 @@ Xamarin Forms プロジェクトで認証するには、アプリのポータブ
             }
        }
 
-3. Package.appxmanifest を開き、**[プロトコル]** 宣言を追加します。 **[表示名]** を任意の名前に設定し、**[名前]** をアプリの URL スキームに設定します。
+3. Package.appxmanifest を開き、 **[プロトコル]** 宣言を追加します。 **[表示名]** を任意の名前に設定し、 **[名前]** をアプリの URL スキームに設定します。
 
 4. アプリをリビルドして実行します。その後で、選択した認証プロバイダーを使用してサインインし、認証されたユーザーとしてデータにアクセスできることを確認します。
 

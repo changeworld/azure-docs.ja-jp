@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 03/05/2019
 ms.author: alkohli
 ms.openlocfilehash: 880b630ae48eda086f6454f0d7108d27d3403b77
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66161136"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181843"
 ---
 非 DHCP 環境内で起動する場合は、次の手順に従って、ご使用の Data Box Gateway の仮想マシンをデプロイします。
 

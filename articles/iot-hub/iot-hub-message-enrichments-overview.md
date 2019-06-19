@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: c29543bf37b568b7ed11abe8e11183a0869d21d9
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 13e35ab93fc37541548785c6355489eaf3a3efc2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66479843"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66754556"
 ---
 # <a name="message-enrichments-for-device-to-cloud-iot-hub-messages-preview"></a>device-to-cloud IoT Hub のメッセージ エンリッチメント (プレビュー)
 
@@ -77,7 +77,7 @@ ms.locfileid: "66479843"
 
 ## <a name="availability"></a>可用性
 
-この機能はプレビューとして提供され、米国東部、米国西部、西ヨーロッパ、[Azure Government](/azure-government/documentation-government-welcome.md)、[Azure China 21Vianet](/azure/china/china-welcome.md)、[Azure Germany](https://azure.microsoft.com/global-infrastructure/germany/) を除くすべてのリージョンで利用できます。
+この機能はプレビューとして提供され、米国東部、米国西部、西ヨーロッパ、[Azure Government](/azure/azure-government/documentation-government-welcome)、[Azure China 21Vianet](/azure/china)、[Azure Germany](https://azure.microsoft.com/global-infrastructure/germany/) を除くすべてのリージョンで利用できます。
 
 ## <a name="next-steps"></a>次の手順
 

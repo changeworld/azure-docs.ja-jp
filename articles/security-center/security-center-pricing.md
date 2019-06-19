@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/17/2019
 ms.author: v-mohabe
 ms.openlocfilehash: 8f6f94fa8602dcc2b8eed19262f595cb18c40b57
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65968310"
 ---
 # <a name="upgrade-to-security-centers-standard-tier-for-enhanced-security"></a>Azure Security Center を Standard レベルへアップグレードすることによるセキュリティ強化
@@ -40,9 +40,9 @@ Azure サブスクリプション全体を Standard レベルにアップグレ�
 
 Standard レベルを取得するには
 
-1. **Security Center** のメイン メニューで、**[セキュリティ ポリシー]** を選択します。
+1. **Security Center** のメイン メニューで、 **[セキュリティ ポリシー]** を選択します。
 2. Standard レベルにアップグレードするサブスクリプションを選択します。
-3. **[Security policy]** ブレードで、**[価格レベル]** を選択します。
+3. **[Security policy]** ブレードで、 **[価格レベル]** を選択します。
 4. **[Standard]** を選択してアップグレードします。
 5. **[Save]** をクリックします。
 

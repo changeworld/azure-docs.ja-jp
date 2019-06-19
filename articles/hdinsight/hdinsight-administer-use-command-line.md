@@ -8,12 +8,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.author: tyfox
-ms.openlocfilehash: 7c12831c43762ddc776e8d5701f002be97992cbc
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: 5ae97b17d06fa0a9934a58ac662ef12116cce4f6
+ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65859957"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67137400"
 ---
 # <a name="manage-azure-hdinsight-clusters-using-azure-cli"></a>Azure CLI を使用した Azure HDInsight クラスターの管理
 
@@ -85,7 +85,7 @@ az group delete --name RESOURCE_GROUP_NAME
 [az hdinsight resize](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize) を使用して、指定した HDInsight クラスターのサイズを指定のサイズに変更します。 次のコマンドを編集して、`RESOURCE_GROUP_NAME` と `CLUSTER_NAME` を関連する情報に置き換えます。 `TARGET_INSTANCE_COUNT` を、お使いのクラスターに必要なワーカー ノードの数に置き換えます。 クラスターのスケーリングの詳細については、[HDInsight クラスターのスケーリング](./hdinsight-scaling-best-practices.md)に関するページを参照してください。 次のコマンドを入力します。
 
 ```azurecli-interactive
-az hdinsight delete --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME --target-instance-count TARGET_INSTANCE_COUNT
+az hdinsight resize --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME --target-instance-count TARGET_INSTANCE_COUNT
 ```
 
 ## <a name="next-steps"></a>次の手順

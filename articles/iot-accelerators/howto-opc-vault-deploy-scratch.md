@@ -9,10 +9,10 @@ ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 990b13d362b796f5e71f1bd41eb35fce9720fff4
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65835160"
 ---
 # <a name="deploy-opc-vault-from-scratch"></a>OPC Vault をゼロからデプロイする
@@ -39,7 +39,7 @@ OPC Vault は、OPC UA サーバーとクライアント アプリケーショ�
 
 - Visual Studio:環境変数は、Visual Studio の [プロジェクト プロパティ] からも設定できます。左側のウィンドウで [構成プロパティ]、[環境] の順に選択し、複数の変数を追加できるセクションにアクセスします。
 
-- IntelliJ Rider:IntelliJ IDEA (https://www.jetbrains.com/help/idea/run-debug-configuration-application.html) と同様に、各実行構成で環境変数を設定できます
+- IntelliJ Rider:IntelliJ IDEA (https://www.jetbrains.com/help/idea/run-debug-configuration-application.html ) と同様に、各実行構成で環境変数を設定できます
 
 ## <a name="run-and-debug-with-visual-studio"></a>Visual Studio で実行およびデバッグする
 

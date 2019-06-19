@@ -9,13 +9,13 @@ ms.date: 05/05/2019
 ms.author: wgries
 ms.custom: include file
 ms.openlocfilehash: 2614c9290bf31813d59ee753a31622bccf0682b8
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66114497"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181382"
 ---
-| リソース | ターゲット | ハード制限 |
+| Resource | ターゲット | ハード制限 |
 |----------|--------------|------------|
 | リージョンあたりのストレージ同期サービス数 | 20 のストレージ同期サービス | はい |
 | ストレージ同期サービスごとの同期グループ数 | 100 の同期グループ | はい |

@@ -9,21 +9,18 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: 40757c80878ef5a06d3368d4c20f65ebfa11e47b
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 299e8990d9211eadc33a7e3348ba0364adfafb92
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64708242"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67078170"
 ---
 # <a name="get-started-with-apache-storm-on-hdinsight-using-the-storm-starter-examples"></a>storm-starter の例を使って HDInsight で Apache Storm の使用を開始する
 
 storm-starter の例を使用して HDInsight で [Apache Storm](https://storm.apache.org/) を使用する方法について説明します。
 
 Apache Storm は、データ ストリームの処理を目的とし、スケーラビリティとフォールト トレランスに優れた、分散型のリアルタイム計算システムです。 Azure HDInsight の Storm を使用して、Storm でリアルタイムで ビッグ データ分析を実行するクラウドベースの Storm クラスターを作成できます。
-
-> [!IMPORTANT]  
-> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](../hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,40 +36,40 @@ HDInsight で Storm クラスターを作成するには、次の手順に従い
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 
-1. **[+ リソースの作成]** > **[Analytics]** > **[HDInsight]** に移動します。
+1. **[+ リソースの作成]**  >  **[Analytics]**  >  **[HDInsight]** に移動します。
 
     ![HDInsight クラスターの作成](./media/apache-storm-tutorial-get-started-linux/create-hdinsight.png)
 
 2. **[基本]** セクションで、次の情報を入力します。
 
-    * **[クラスター名]**: HDInsight クラスターの名前。
+    * **[クラスター名]** : HDInsight クラスターの名前。
     * **サブスクリプション**:使用するサブスクリプションを選択します。
     * **クラスター ログイン ユーザー名**および**クラスター ログイン パスワード**:HTTPS 経由でクラスターにアクセスする場合のログイン。 これらの資格情報を使用して、Ambari Web UI や REST API などのサービスにアクセスします。
-    * **[Secure Shell (SSH) ユーザー名]**: SSH 経由でクラスターにアクセスする際に使用されるログイン。 既定では、このパスワードは、クラスター ログイン パスワードと同じです。
+    * **[Secure Shell (SSH) ユーザー名]** : SSH 経由でクラスターにアクセスする際に使用されるログイン。 既定では、このパスワードは、クラスター ログイン パスワードと同じです。
     * **リソース グループ**:クラスターが作成されるリソース グループ。
-    * **[場所]**:クラスターが作成される Azure リージョン。
+    * **[場所]** :クラスターが作成される Azure リージョン。
 
    ![サブスクリプションを選択します。](./media/apache-storm-tutorial-get-started-linux/hdinsight-basic-configuration.png)
 
-3. **[クラスターの種類]** を選択し、**[クラスターの構成]** セクションで次の値を設定します。
+3. **[クラスターの種類]** を選択し、 **[クラスターの構成]** セクションで次の値を設定します。
 
-    * **[クラスターの種類]**: Storm
+    * **[クラスターの種類]** : Storm
 
-    * **[オペレーティング システム]**:Linux
+    * **[オペレーティング システム]** :Linux
 
     * **バージョン**:Storm 1.1.0 (HDI 3.6)
 
-   最後に、**[選択]** ボタンをクリックして設定を保存します。
+   最後に、 **[選択]** ボタンをクリックして設定を保存します。
 
     ![クラスターの種類の選択](./media/apache-storm-tutorial-get-started-linux/set-hdinsight-cluster-type.png)
 
-4. クラスターの種類を選択したら、__[選択]__ ボタンを使用してクラスターの種類を設定します。 次に、__[次へ]__ ボタンを使用して、基本的な構成を完了します。
+4. クラスターの種類を選択したら、 __[選択]__ ボタンを使用してクラスターの種類を設定します。 次に、 __[次へ]__ ボタンを使用して、基本的な構成を完了します。
 
 5. **[ストレージ]** セクションで、ストレージ アカウントを選択または作成します。 このドキュメントの手順では、このセクションの他のフィールドを既定値のままにします。 __[次へ]__ ボタンを使用して、ストレージの構成を保存します。 Data Lake Storage Gen2 の使用の詳細については、「[クイック スタート:HDInsight のクラスターを設定する](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)」をご覧ください。
 
     ![HDInsight のストレージ アカウント設定](./media/apache-storm-tutorial-get-started-linux/set-hdinsight-storage-account.png)
 
-6. **[概要]** セクションで、クラスターの構成を確認します。 間違った設定を変更するには、__[編集]__ リンクを使用します。 最後に、__[作成]__ ボタンを使用してクラスターを作成します。
+6. **[概要]** セクションで、クラスターの構成を確認します。 間違った設定を変更するには、 __[編集]__ リンクを使用します。 最後に、 __[作成]__ ボタンを使用してクラスターを作成します。
 
     ![クラスター構成の概要](./media/apache-storm-tutorial-get-started-linux/hdinsight-configuration-summary.png)
 
@@ -117,7 +114,7 @@ Storm UI には、トポロジの実行を操作する Web インターフェイ
     > [!NOTE]  
     > ユーザー名とパスワードの入力が求められたら、クラスターの作成時に使用したクラスター管理者名 (admin) とパスワードを入力します。
 
-2. **[トポロジの概要]** で、**[名前]** 列の **[wordcount]** エントリを選択します。 トポロジの情報が表示されます。
+2. **[トポロジの概要]** で、 **[名前]** 列の **[wordcount]** エントリを選択します。 トポロジの情報が表示されます。
 
     ![storm-starter WordCount トポロジの情報が含まれている Storm ダッシュボード。](./media/apache-storm-tutorial-get-started-linux/topology-summary.png)
 
@@ -144,7 +141,7 @@ Storm UI には、トポロジの実行を操作する Web インターフェイ
 
    * **強制終了** - 指定したタイムアウト後に Storm トポロジを停止します。
 
-3. このページで、**[スパウト]** または **[ボルト]** セクションからエントリを選択します。 選択したコンポーネントに関する情報が表示されます。
+3. このページで、 **[スパウト]** または **[ボルト]** セクションからエントリを選択します。 選択したコンポーネントに関する情報が表示されます。
 
     ![選択したコンポーネントに関する情報が含まれている Storm ダッシュボード。](./media/apache-storm-tutorial-get-started-linux/component-summary.png)
 
@@ -163,7 +160,7 @@ Storm UI には、トポロジの実行を操作する Web インターフェイ
 
     * **エラー** - このコンポーネントで生成されたエラー。
 
-4. スパウトまたはボルトの詳細を表示したら、**[エグゼキュータ]** セクションの **[ポート]** 列でエントリを選択して、コンポーネントの特定のインスタンスの詳細を表示します。
+4. スパウトまたはボルトの詳細を表示したら、 **[エグゼキュータ]** セクションの **[ポート]** 列でエントリを選択して、コンポーネントの特定のインスタンスの詳細を表示します。
 
         2015-01-27 14:18:02 b.s.d.task [INFO] Emitting: split default ["with"]
         2015-01-27 14:18:02 b.s.d.task [INFO] Emitting: split default ["nature"]
@@ -178,7 +175,7 @@ Storm UI には、トポロジの実行を操作する Web インターフェイ
 
 ## <a name="stop-the-topology"></a>トポロジを停止する
 
-ワードカウント トポロジの **[トポロジの概要]** ページに戻り、**[トポロジのアクション]** セクションで **[強制終了]** ボタンを選択します。 メッセージが表示されたら、トポロジを停止するまでの待機秒数として「10」を入力します。 タイムアウト期間後は、ダッシュボードの **[Storm UI]** セクションにアクセスしても、トポロジは表示されません。
+ワードカウント トポロジの **[トポロジの概要]** ページに戻り、 **[トポロジのアクション]** セクションで **[強制終了]** ボタンを選択します。 メッセージが表示されたら、トポロジを停止するまでの待機秒数として「10」を入力します。 タイムアウト期間後は、ダッシュボードの **[Storm UI]** セクションにアクセスしても、トポロジは表示されません。
 
 ## <a name="delete-the-cluster"></a>クラスターを削除する
 

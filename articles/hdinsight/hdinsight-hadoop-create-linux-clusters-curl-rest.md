@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/02/2018
 ms.author: hrasheed
-ms.openlocfilehash: acf121c2954b3f324682578dd3ab2b4d8b1f63f2
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: d771d91feaba942b88a0ddb68f0d997fad4a981e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64707338"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67059416"
 ---
 # <a name="create-apache-hadoop-clusters-using-the-azure-rest-api"></a>Azure REST API を使用して Apache Hadoop クラスターを作成する
 
@@ -22,9 +22,6 @@ ms.locfileid: "64707338"
 Azure Resource Manager テンプレートと Azure REST API を使用して HDInsight クラスターを作成する方法について説明します。
 
 Azure REST API を使用すると、Azure プラットフォームでホストされたサービスで、HDInsight クラスターなど新しいリソースの作成を含む管理操作を実行できます。
-
-> [!IMPORTANT]  
-> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
 > [!NOTE]  
 > このドキュメントの手順では、[curl (https://curl.haxx.se/)](https://curl.haxx.se/) ユーティリティを使用して Azure REST API と通信します。
@@ -215,7 +212,7 @@ Azure Resource Manager テンプレートは、**リソース グループ**と�
 >
 > ノードのサイズと関連コストに関する詳細については、「 [HDInsight の価格](https://azure.microsoft.com/pricing/details/hdinsight/)」を参照してください。
 
-## <a name="log-in-to-your-azure-subscription"></a>Azure サブスクリプションにログイン
+## <a name="sign-in-to-your-azure-subscription"></a>Azure サブスクリプションにサインインします。
 
 「[Azure CLI の概要](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)」に記載されている手順に従って、`az login` コマンドを使用して自分のサブスクリプションに接続します。
 

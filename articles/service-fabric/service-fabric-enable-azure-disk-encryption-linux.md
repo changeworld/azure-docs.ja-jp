@@ -14,10 +14,10 @@ ms.workload: NA
 ms.date: 03/22/2019
 ms.author: aljo
 ms.openlocfilehash: 47b07188d1757708fb494c6a66e93379657e806a
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66258761"
 ---
 # <a name="enable-disk-encryption-for-azure-service-fabric-cluster-nodes-in-linux"></a>Linux での Azure Service Fabric クラスター ノードのディスク暗号化の有効化 
@@ -62,10 +62,10 @@ ms.locfileid: "66258761"
     ```
 2. 新しい暗号化コマンドが含まれている、最新バージョンの [Azure CLI](/cli/azure/install-azure-cli) をインストールします。
 
-3. [Azure PowerShell の Azure SDK](https://github.com/Azure/azure-powershell/releases) リリースの最新バージョンをインストールします。 暗号化の有効化 ([set](/powershell/module/az.compute/set-azvmssdiskencryptionextension))、暗号化状態の取得 ([get](/powershell/module/az.compute/get-azvmssvmdiskencryption))、および暗号化の削除 ([disable](/powershell/module/az.compute/disable-azvmssdiskencryption)) をスケール セット インスタンスで行うための仮想マシン スケール セット Azure Disk Encryption コマンドレットを以下に示します。
+3. [Azure PowerShell の Azure SDK](https://github.com/Azure/azure-powershell/releases) リリースの最新バージョンをインストールします。 暗号化の有効化 ([set](/powershell/module/az.compute/set-azvmssdiskencryptionextension))、暗号化状態の取得 ([get](/powershell/module/az.compute/get-azvmssvmdiskencryption))、および暗号化の削除 ([disable](/powershell/module/az.compute/disable-azvmssdiskencryption)) をスケール セット インスタンスに対して行うための仮想マシン スケール セット Azure Disk Encryption コマンドレットを以下に示します。
 
 
-| command | バージョン |  ソース  |
+| command | バージョン |  source  |
 | ------------- |-------------| ------------|
 | Get-AzVmssDiskEncryptionStatus   | 1.0.0 以降 | Az.Compute |
 | Get-AzVmssVMDiskEncryptionStatus   | 1.0.0 以降 | Az.Compute |

@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/02/2019
+ms.date: 06/10/2019
 ms.author: kumud;tyao
-ms.openlocfilehash: 05d01851d0a3dc9df6c396e862ce93defd957c70
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 91ee8b6e614cf12deccd1429ad67323c277954a0
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59788923"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67061484"
 ---
 # <a name="frequently-asked-questions-for-azure-web-application-firewall"></a>Azure Web アプリケーション ファイアウォールに関してよく寄せられる質問
 
@@ -31,9 +31,6 @@ Azure WAF ポリシーは、Application Gateway または Azure Front Door Servi
 ## <a name="what-is-waf-for-azure-front-door-service"></a>Azure Front Door Service 用の WAF とは何ですか? 
 
 Azure Front Door は、高度にスケーラブルでグローバルに分散したアプリケーションおよびコンテンツ配信ネットワークです。 Azure WAF を Front Door と統合すると、サービス拒否攻撃や標的型アプリケーション攻撃がユーザーの仮想ネットワークに侵入する前に攻撃元に近い Azure ネットワーク エッジで阻止し、パフォーマンスを犠牲にすることなく保護を提供できます。
-
-## <a name="how-will-i-be-charged-for-azure-waf-for-front-door"></a>Front Door 用の Azure WAF の料金はどのように請求されますか?
-パブリック プレビューの間は、Front Door での WAF の使用料金は無料です。 Front Door の料金は追加で発生することにご注意ください。 Front Door Service の価格については、[こちらを参照してください](https://azure.microsoft.com/pricing/details/frontdoor/)。
 
 ## <a name="does-azure-waf-support-https"></a>Azure WAF では HTTPS がサポートされますか?
 

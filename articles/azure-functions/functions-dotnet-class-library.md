@@ -12,10 +12,10 @@ ms.topic: reference
 ms.date: 09/12/2018
 ms.author: glenga
 ms.openlocfilehash: 2a6d670ba9f2f496cc94d2790eb6f66d46305746
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65872799"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Azure Functions C# developer reference (Azure Functions C# 開発者向けリファレンス)
@@ -156,7 +156,7 @@ public static class BindingExpressionsExample
 
 *function.json* ファイルの生成は、NuGet パッケージ ([Microsoft\.NET\.Sdk\.Functions](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions)) によって実行されます。 
 
-Functions ランタイムのバージョン 1.x と 2.x では同じパッケージが使用されます。 1.x プロジェクトと 2.x プロジェクトの違いはターゲット フレームワークです。 次に示すのは *.csproj* ファイルの関連する部分で、ターゲット フレームが異なっていることと、`Sdk` パッケージが同じであることがわかります。
+Functions ランタイムのバージョン 1.x と 2.x では同じパッケージが使用されます。 1\.x プロジェクトと 2.x プロジェクトの違いはターゲット フレームワークです。 次に示すのは *.csproj* ファイルの関連する部分で、ターゲット フレームが異なっていることと、`Sdk` パッケージが同じであることがわかります。
 
 **Functions 1.x**
 
@@ -181,7 +181,7 @@ Functions ランタイムのバージョン 1.x と 2.x では同じパッケー
 </ItemGroup>
 ```
 
-`Sdk` パッケージ間の依存関係はトリガーとバインドです。 1.x のトリガーとバインドの対象は .NET Framework であるため、1.x プロジェクトは 1.x のトリガーとバインドを参照します。一方、2.x のトリガーとバインドの対象は .NET Core です。
+`Sdk` パッケージ間の依存関係はトリガーとバインドです。 1\.x のトリガーとバインドの対象は .NET Framework であるため、1.x プロジェクトは 1.x のトリガーとバインドを参照します。一方、2.x のトリガーとバインドの対象は .NET Core です。
 
 `Sdk` パッケージも、[Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json) に依存しており、間接的に [WindowsAzure.Storage](https://www.nuget.org/packages/WindowsAzure.Storage) に依存します。 これらの依存関係により、ユーザーのプロジェクトでは、必ずそのプロジェクト用の Functions ランタイム バージョンで動作するパッケージ バージョンが使用されます。 たとえば、`Newtonsoft.Json` のバージョンが .NET Framework 4.6.1 用のバージョン 11 だとします。ところが、.NET Framework 4.6.1 を対象とする Functions ランタイムは `Newtonsoft.Json` 9.0.1 としか互換性がありません。 この場合は、そのプロジェクトの関数コードも `Newtonsoft.Json` 9.0.1 を使用する必要があります。
 
@@ -191,7 +191,7 @@ Functions ランタイムのバージョン 1.x と 2.x では同じパッケー
 
 Visual Studio では、[Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools) を使用して、Functions プロジェクトを実行します。 Core Tools は、Functions ランタイム用のコマンド ライン インターフェイスです。
 
-npm を使用して Core Tools をインストールする場合、これは Visual Studio で使用される Core Tools バージョンには影響しません。 Functions ランタイム バージョン 1.x の場合、Visual Studio は Core Tools のバージョンを *%USERPROFILE%\AppData\Local\Azure.Functions.Cli* に格納し、そこに格納されている中で最も新しいバージョンを使用します。 Functions 2.x の場合、Core Tools は **Azure Functions と Web ジョブ ツール**の拡張機能に含まれます。 1.x と 2.x の両方について、使用されているバージョンは、Functions プロジェクトを実行するときに、コンソール出力で確認できます。
+npm を使用して Core Tools をインストールする場合、これは Visual Studio で使用される Core Tools バージョンには影響しません。 Functions ランタイム バージョン 1.x の場合、Visual Studio は Core Tools のバージョンを *%USERPROFILE%\AppData\Local\Azure.Functions.Cli* に格納し、そこに格納されている中で最も新しいバージョンを使用します。 Functions 2.x の場合、Core Tools は **Azure Functions と Web ジョブ ツール**の拡張機能に含まれます。 1\.x と 2.x の両方について、使用されているバージョンは、Functions プロジェクトを実行するときに、コンソール出力で確認できます。
 
 ```terminal
 [3/1/2018 9:59:53 AM] Starting Host (HostId=contoso2-1518597420, Version=2.0.11353.0, ProcessId=22020, Debug=False, Attempt=0, FunctionsExtensionVersion=)

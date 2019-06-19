@@ -10,10 +10,10 @@ ms.author: sihhu
 author: MayMSFT
 ms.date: 05/23/2019
 ms.openlocfilehash: 525660be0f38c9458590e52cfcd575acb4cf5444
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66162057"
 ---
 # <a name="compare-data-and-ensure-reproducibility-with-snapshots-preview"></a>スナップショット (プレビュー) を使用したデータの比較と再現性の確保

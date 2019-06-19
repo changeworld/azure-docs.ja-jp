@@ -25,7 +25,7 @@ ms.locfileid: "64939789"
 
 ASP.NET Core は、オープンソースでクロスプラットフォームのフレームワークです。 このフレームワークは、Web アプリ、IoT アプリ、モバイル バックエンドなど、クラウドベースのインターネットに接続されたアプリケーションを構築することを目的に設計されています。
 
-この記事は、Service Fabric Reliable Services で ASP.NET Core サービスをホスティングするための詳細なガイドであり、**Microsoft.ServiceFabric.AspNetCore.** * セットの NuGet パッケージを使います。
+この記事は、Service Fabric Reliable Services で ASP.NET Core サービスをホスティングするための詳細なガイドであり、**Microsoft.ServiceFabric.AspNetCore.** セットの NuGet パッケージを使います。
 
 Service Fabric の ASP.NET Core の入門チュートリアルと、開発環境のセットアップ方法については、「[チュートリアル: ASP.NET Core Web API フロントエンド サービスとステートフルなバックエンド サービスを含むアプリケーションを作成およびデプロイする](service-fabric-tutorial-create-dotnet-app.md)」をご覧ください。
 

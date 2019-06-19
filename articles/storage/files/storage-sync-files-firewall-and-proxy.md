@@ -63,7 +63,7 @@ Set-StorageSyncProxyConfiguration -Address <url> -Port <port number> -ProxyCrede
      C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config  
      C:\Windows\Microsoft.NET\Framework\v4.0.30319\Config\machine.config
 
-   - <system.net> セクションを machine.config ファイルに追加します (<system.serviceModel> セクションの下)。  127\.0.01:8888 をプロキシ サーバーの IP アドレスとポートに変更します。 
+   - <system.net> セクションを machine.config ファイルに追加します (<system.serviceModel> セクションの下)。  127.0.01:8888 をプロキシ サーバーの IP アドレスとポートに変更します。 
      ```
       <system.net>
         <defaultProxy enabled="true" useDefaultCredentials="true">
@@ -134,9 +134,9 @@ Set-StorageSyncProxyConfiguration -Address <url> -Port <port number> -ProxyCrede
 
 **例:** ストレージ同期サービスを `"West US"` にデプロイしてそこにサーバーを登録するとします。 この場合、サーバーには、次の URL との通信を許可することになります。
 
-> - https://kailani.one.microsoft.com (プライマリ エンドポイント: 米国西部)
-> - https://kailani1.one.microsoft.com (ペア フェールオーバー リージョン: 米国東部)
-> - https://tm-kailani.one.microsoft.com (プライマリ リージョンの検出 URL)
+> - [https://kailani.one.microsoft.com](https://kailani.one.microsoft.com ) (プライマリ エンドポイント: 米国西部)
+> - [https://kailani1.one.microsoft.com](https://kailani1.one.microsoft.com ) (ペア フェールオーバー リージョン: 米国東部)
+> - [https://tm-kailani.one.microsoft.com](https://tm-kailani.one.microsoft.com ) (プライマリ リージョンの検出 URL)
 
 ## <a name="summary-and-risk-limitation"></a>概要とリスクの制限
 このドキュメントで前述したリストは、現時点で Azure File Sync が通信する URL を記載したものです。 ファイアウォールで、これらのドメインに向かうトラフィックを許可する必要があります。 Microsoft は、このリストを最新の内容に保つよう努めます。
