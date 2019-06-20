@@ -5,19 +5,23 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 03/18/2019
+ms.date: 06/07/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: a89a5d753eaa241b11eb4c7eed9500c9715d405d
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 9d8482fdf8e914801fb77e2ab1712145fa3ccea0
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66150786"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67077488"
 ---
 ### <a name="what-is-the-difference-between-an-azure-virtual-network-gateway-vpn-gateway-and-an-azure-virtual-wan-vpngateway"></a>Azure 仮想ネットワーク ゲートウェイ (VPN Gateway) と Azure Virtual WAN vpngateway の違いは何ですか。
 
 Virtual WAN は、大規模なサイト間接続を提供し、スループット、スケーラビリティ、使いやすさを考慮して構築されています。 ExpressRoute とポイント対サイト接続の機能は、現在プレビュー中です。 CPE 支店のデバイスは自動的にプロビジョニングされ、Azure Virtual WAN に接続されます。 これらのデバイスは、拡大を続ける SD-WAN および VPN パートナーのエコシステムから利用できます。 [推奨されるパートナーの一覧](https://go.microsoft.com/fwlink/p/?linkid=2019615)を参照してください。
+
+### <a name="what-is-a-branch-connection-to-azure-virtual-wan"></a>Azure Virtual WAN への支店接続とは
+
+2 つのアクティブ/アクティブ IPsec トンネルで構成された、支店のデバイスから Azure Virtual WAN への接続。
 
 ### <a name="which-device-providers-virtual-wan-partners-are-supported-at-launch-time"></a>ローンチ段階でどのデバイス プロバイダー (Virtual WAN パートナー) がサポートされていますか。
 
@@ -105,7 +109,7 @@ azurevirtualwan@microsoft.com に電子メールを送信する。 理想的な�
 
 ### <a name="how-is-virtual-wan-different-from-the-existing-azure-virtual-network-gateway"></a>Virtual WAN と既存の Azure Virtual Network Gateway は、どんな点が違いますか。
 
-Virtual Network Gateway VPN は、トンネル数が 30 に制限されています。 大規模な VPN の場合、接続するには、Virtual WAN を使用する必要があります。 中西部リージョンを除くすべてのリージョンで、ハブ内で最大 1,000 個の支店接続を 2 Gbps で接続できます。 中西部リージョンでは、20 Gbps が利用可能です。 将来的には、他のリージョンにも 20 Gbps がロールアウトされる予定です。 接続は、オンプレミス VPN デバイスから仮想ハブへのアクティブ/アクティブ型トンネルです。 リージョンごとに 1 つのハブを持つことができます。これは、ハブ間で 1,000 を超える支店を接続できることを意味します。
+Virtual Network Gateway VPN は、トンネル数が 30 に制限されています。 大規模な VPN の場合、接続するには、Virtual WAN を使用する必要があります。 中西部リージョンを除くすべてのリージョンで、ハブ内で最大 1,000 件の支店接続を 2 Gbps で接続できます。 中西部リージョンでは、20 Gbps が利用可能です。 将来的には、他のリージョンにも 20 Gbps がロールアウトされる予定です。 接続は、オンプレミス VPN デバイスから仮想ハブへのアクティブ/アクティブ型トンネルです。 リージョンごとに 1 つのハブを持つことができます。これは、ハブ全体で 1,000 を超える支店を接続できることを意味します。
 
 ### <a name="how-is-virtual-wan-supporting-sd-wan-devices"></a>Virtual WAN では SD-WAN デバイスがどのようにサポートされますか。
 
@@ -118,6 +122,14 @@ Virtual WAN パートナーによって、Azure VPN エンドポイントへの 
 ### <a name="is-there-a-network-throughput-limit-when-using-azure-virtual-wan"></a>Azure Virtual WAN を使用する場合、ネットワーク スループットに制限はありますか。
 
 支店の数は、ハブ/リージョンあたり 1,000 接続に制限されています。ハブ内では合計 2 G までです。 米国中西部は例外で、合計で 20 Gbps を利用できます。 将来的には、他のリージョンにも 20 Gbps がロールアウトされる予定です。
+
+### <a name="how-many-vpn-connections-does-a-virtual-wan-hub-support"></a>Virtual WAN ハブでサポートされる VPN 接続の数を教えてください。
+
+Azure Virtual WAN ハブでは、最大で 1,000 件のサイト間接続と 10,000 件のポイント対サイト接続を同時にサポートできます。
+
+### <a name="what-is-the-total-vpn-throughput-of-a-vpn-tunnel-and-a-connection"></a>VPN トンネルおよび接続の VPN スループットの合計を教えてください。
+
+ハブの VPN スループットの合計は、選択されたスケール ユニットに基づき、最大で 20 Gbps です。 スループットはすべての既存の接続によって共有されます。
 
 ### <a name="does-virtual-wan-allow-the-on-premises-device-to-utilize-multiple-isps-in-parallel-or-is-it-always-a-single-vpn-tunnel"></a>Virtual WAN では、オンプレミス デバイスで複数の ISP を並行して利用できますか、それとも常に単一の VPN トンネルですか。
 

@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 6140a8aea3fe0fe0a8f1c01cd1c97404c41f7a69
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 5248b9546ffe931b72123778d0d23574e5238405
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65804799"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66742405"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-that-send-notifications"></a>通知を送信するカスタム ルールを使用して Azure IoT Central を拡張する
 
@@ -353,4 +353,4 @@ Contoso テンプレートから作成した [IoT Central アプリケーショ�
 * デバイスがデータの送信を停止したときに検出する Stream Analytics クエリを作成します。
 * Azure Functions と SendGrid サービスを使用してメール通知を送信します。
 
-カスタム ルールと通知を作成する方法がわかったので、次は [Azure IoT Central データを Power BI ダッシュボードに視覚化する](howto-connect-powerbi.md)方法を学習することをお勧めします。
+カスタム ルールと通知を作成する方法がわかったので、次は [カスタム分析を使用して Azure IoT Central を拡張する](howto-create-custom-analytics.md)方法を学習することをお勧めします。

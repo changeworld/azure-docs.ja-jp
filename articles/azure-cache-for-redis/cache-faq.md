@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/29/2019
 ms.author: yegu
-ms.openlocfilehash: cdf0ce26ab3a8056fb40bc54ba6336b7cfd69ec0
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 6b27b27fedf622908fa5c06bd2562d9049a4366b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65230115"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67052053"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Azure Cache for Redis に関する FAQ
 Azure Cache for Redis についてよく寄せられる質問に対する回答、パターン、ベスト プラクティスについて説明します。
@@ -133,7 +133,7 @@ Cache のオプションを選択するときの考慮事項を次に示しま�
 * Redis クラスタリングでは、クラスターのシャード (ノード) の数を増やすと、スループットもそれに比例して増加する。 たとえば、10 個のシャードから成る P4 クラスターを作成すると、利用可能なスループットは 400,000 * 10 = 4 百万 RPS になります。
 * キー サイズを大きくしたときのスループットは、Standard レベルより Premium レベルのほうが高い。
 
-| 価格レベル  | Size | CPU コア数 | 使用可能な帯域幅 | 1 KB 値サイズ | 1 KB 値サイズ |
+| 価格レベル | Size | CPU コア数 | 使用可能な帯域幅 | 1 KB 値サイズ | 1 KB 値サイズ |
 | --- | --- | --- | --- | --- | --- |
 | **Standard のキャッシュ サイズ** | | |**メガビット/秒 (Mb/s) / メガバイト/秒 (MB/s)** |**1 秒あたりの要求数 (RPS) 非 SSL** |**1 秒あたりの要求数 (RPS) SSL** |
 | C0 | 250 MB | 共有 | 100 / 12.5  |  15,000 |   7,500 |
@@ -203,7 +203,7 @@ StackExchange.Redis には多くのオプションが用意されています。
   * アプリケーションに対して ConnectionMultiplexer インスタンスを 1 つ使用します。 「 [ConnectionMultiplexer クラスを使用してキャッシュに接続する](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache)」に示されているように、LazyConnection を使用して、Connection プロパティから返される単一のインスタンスを作成できます。
   * 診断用には、 `ConnectionMultiplexer.ClientName` プロパティを、アプリ インスタンスの一意な名前に設定します。
   * カスタム ワークロードに対しては複数の `ConnectionMultiplexer` インスタンスを使用します。
-      * アプリケーションの負荷が変化する場合は、このモデルに従うことができます。 例: 
+      * アプリケーションの負荷が変化する場合は、このモデルに従うことができます。 例:
       * 1 つのマルチプレクサーを使用して、サイズの大きなキーを処理できます。
       * 1 つのマルチプレクサーを使用して、サイズの小さなキーを処理できます。
       * 使用する ConnectionMultiplexer ごとに、異なる接続タイムアウト値と再試行ロジックを設定できます。
@@ -251,7 +251,7 @@ Azure Cache for Redis のローカル エミュレーターがなくても、ロ
 * `redis-cli -h <Azure Cache for Redis name>.redis.cache.windows.net -a <key>`
 
 > [!NOTE]
-> Redis コマンド ライン ツールは SSL ポートを使用できません。ただし、`stunnel` などのユーティリティを使用すると、ツールを SSL ポートに安全に接続することができます。詳細については、ブログ記事「[Announcing ASP.NET Session State Provider for Redis Preview Release (Redis 向け ASP.NET セッション状態プロバイダー プレビュー リリースの発表)](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx)」を参照してください。
+> Redis コマンド ライン ツールは SSL ポートを使用できません。ただし、`stunnel` などのユーティリティを使用すると、ツールを SSL ポートに安全に接続することができます。詳細については、ブログ記事「[Azure Cache for Redis で Redis コマンドライン ツールを使用する方法](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-redis-cli-tool)」の記事を参照してください。
 >
 >
 
@@ -388,7 +388,7 @@ IOCP スレッドまたは WORKER スレッドの拡大がスロットルされ�
 
 この設定を構成する方法
 
-* この設定は、`global.asax.cs` 内の [ThreadPool.SetMinThreads (...)](/dotnet/api/system.threading.threadpool.setminthreads#System_Threading_ThreadPool_SetMinThreads_System_Int32_System_Int32_) メソッドを使用してプログラムによって変更することをお勧めします。 例: 
+* この設定は、`global.asax.cs` 内の [ThreadPool.SetMinThreads (...)](/dotnet/api/system.threading.threadpool.setminthreads#System_Threading_ThreadPool_SetMinThreads_System_Int32_System_Int32_) メソッドを使用してプログラムによって変更することをお勧めします。 例:
 
 ```cs
 private readonly int minThreads = 200;
