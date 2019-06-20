@@ -9,12 +9,12 @@ ms.date: 05/10/2019
 ms.topic: conceptual
 ms.service: openshift
 manager: jeconnoc
-ms.openlocfilehash: f0ef421d7954aa33cf69e7de2f4902a86ed8b580
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 21ccd7b2919714610dbd51c62701c4bb32d330d6
+ms.sourcegitcommit: f9448a4d87226362a02b14d88290ad6b1aea9d82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306399"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66808821"
 ---
 # <a name="set-up-your-azure-red-hat-openshift-dev-environment"></a>Azure Red Hat OpenShift 開発環境の設定
 
@@ -22,7 +22,7 @@ Microsoft Azure Red Hat OpenShift アプリケーションをビルドして実�
 
 * Azure 仮想マシンの予約インスタンスを購入します。
 * Azure CLI のバージョン 2.0.65 (またはそれ以降) をインストールします (または、Azure Cloud Shell を使用します)。
-* `openshiftmanagedcluster` 機能および関連付けられているリソース プロバイダーに登録します。
+* `AROGA` 機能および関連付けられているリソース プロバイダーに登録します。
 * Azure Active Directory (Azure AD) テナントを作成します。
 * Azure AD アプリケーション オブジェクトを作成します。
 * Azure AD ユーザーを作成します。
@@ -55,7 +55,7 @@ az --version
 
 ## <a name="register-providers-and-features"></a>プロバイダーと機能の登録
 
-初めての Azure Red Hat OpenShift クラスターをデプロイする前に、`Microsoft.ContainerService openshiftmanagedcluster` 機能、`Microsoft.Solutions`、および `Microsoft.Network` プロバイダーを手動でサブスクリプションに登録する必要があります。
+初めての Azure Red Hat OpenShift クラスターをデプロイする前に、`Microsoft.ContainerService AROGA` 機能、`Microsoft.Solutions`、`Microsoft.Compute`、`Microsoft.Storage`、`Microsoft.KeyVault`、および `Microsoft.Network` プロバイダーを手動でサブスクリプションに登録する必要があります。
 
 これらのプロバイダーと機能を手動で登録するには、CLI をインストール済みの場合は Bash シェルから、または Azure portal 上で Azure Cloud Shell (Bash) セッションから、次の手順を使用します。
 
@@ -65,10 +65,10 @@ az --version
     az account set --subscription <SUBSCRIPTION ID>
     ```
 
-1. Microsoft.ContainerService openshiftmanagedcluster 機能を登録します。
+1. Microsoft.ContainerService AROGA 機能を登録します。
 
     ```bash
-    az feature register --namespace Microsoft.ContainerService -n openshiftmanagedcluster
+    az feature register --namespace Microsoft.ContainerService -n AROGA
     ```
 
 1. Microsoft.Storage プロバイダーを登録します。

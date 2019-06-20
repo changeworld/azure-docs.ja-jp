@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: f60146e4e11e50b2f2254a0d8d7f59c01ba74464
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 832be20f78d1e88a3bb6d1c25c7aaf5d7354e857
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66479940"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66753984"
 ---
 # <a name="indexing-documents-in-azure-blob-storage-with-azure-search"></a>Azure Blob Storage 内ドキュメントのインデックスを Azure Search で作成する
 この記事では、Azure Search を使用して、Azure Blob Storage に格納されているドキュメント (PDF や Microsoft Office ドキュメント、その他のよく使用されている形式など) のインデックスを作成する方法を説明します。 まず、BLOB インデクサーの設定と構成の基礎を説明します。 次に、発生する可能性のある動作とシナリオについて詳しく説明します。
@@ -116,6 +116,8 @@ Shared Access Signature について詳しくは、「[Shared Access Signature �
 
 インデクサー作成 API の詳細については、「 [インデクサーの作成](https://docs.microsoft.com/rest/api/searchservice/create-indexer)」をご覧ください。
 
+インデクサーのスケジュールの定義の詳細については、「[Azure Search のインデクサーのスケジュールを設定する方法](search-howto-schedule-indexers.md)」を参照してください。
+
 ## <a name="how-azure-search-indexes-blobs"></a>Azure Search で BLOB のインデックスを作成する方法
 
 [インデクサー構成](#PartsOfBlobToIndex)に応じて、BLOB インデクサーでは、ストレージ メタデータのみ (メタデータのみに注意すればよく、BLOB のコンテンツにインデックスを作成する必要がないときに便利です)、ストレージとコンテンツ メタデータ、またはメタデータとテキスト コンテンツの両方にインデックスを作成することができます。 インデクサーは、既定では、メタデータとコンテンツの両方を抽出します。
@@ -139,7 +141,8 @@ Shared Access Signature について詳しくは、「[Shared Access Signature �
   * **metadata\_storage\_last\_modified** (Edm.DateTimeOffset) - 前回変更時の BLOB のタイムスタンプ。 インデックスの初回作成後に最初から作成し直さなくても済むよう、変更された BLOB を Azure Search が特定するために、このタイムスタンプが使用されます。
   * **metadata\_storage\_size** (Edm.Int64) - BLOB のサイズ (バイト単位)。
   * **metadata\_storage\_content\_md5** (Edm.String) - BLOB コンテンツの MD5 ハッシュ (利用可能な場合)。
-  * **metadata\_storage\_sas\_token** (Edm.String) - BLOB に対して適切にアクセスするために、[カスタム スキル](cognitive-search-custom-skill-interface.md)で使用できる一時的なトークン。 この SAS トークンは、有効期限付きのため、後で使用するために保存しておくことはできません。
+  * **metadata\_storage\_sas\_token** (Edm.String) - BLOB に対してアクセスするために、[カスタム スキル](cognitive-search-custom-skill-interface.md)で使用できる一時的な SAS トークン。 このトークンは、有効期限が切れる可能性があるため、後で使用するために保存しないでください。
+
 * 各ドキュメント形式に固有のメタデータのプロパティは、[こちら](#ContentSpecificMetadata)に記載したフィールドに抽出されます。
 
 検索インデックスに対し、ここに挙げたすべてのプロパティのフィールドを定義する必要はありません。実際のアプリケーションで必要となるプロパティだけを取り込んでください。

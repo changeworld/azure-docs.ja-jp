@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 5/6/2019
-ms.openlocfilehash: 13580289144d798a57e636f15ab5bce629ff3572
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.date: 06/05/2019
+ms.openlocfilehash: 75a3c8a9912fe9ace70e411983996167da755128
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66242293"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66734651"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL (単一サーバー) の読み取りレプリカ
 
@@ -40,7 +40,7 @@ BI ワークロードおよび分析ワークロードでレポート用のデ�
 
 レプリカ作成ワークフローを開始すると、空の Azure Database for PostgreSQL サーバーが作成されます。 新しいサーバーには、マスター サーバー上にあったデータが設定されます。 作成時間は、マスター上のデータ量と、最後の週次完全バックアップからの経過時間に依存します。 時間の範囲は、数分から数時間になる可能性があります。
 
-すべてのレプリカで、ストレージの[自動拡張](concepts-pricing-tiers.md#storage-auto-grow)が有効です。 自動拡張機能によって、レプリカにレプリケートされるデータをレプリカで保持し続けることができ、ストレージ不足エラーを原因とするレプリケーションの中断を防ぐことができます。
+すべてのレプリカでストレージの[自動拡張](concepts-pricing-tiers.md#storage-auto-grow)が有効になっています。 自動拡張機能によって、レプリカにレプリケートされるデータをレプリカで保持し続けることができ、ストレージ不足エラーを原因とするレプリケーションの中断を防ぐことができます。
 
 読み取りレプリカ機能では、PostgreSQL の (論理レプリケーションではなく) 物理レプリケーションが使用されます。 レプリケーション スロットを使用したストリーミング レプリケーションが、既定の動作モードです。 必要に応じて、遅れを取り戻すためにログ配布が使用されます。
 
@@ -60,17 +60,15 @@ psql -h myreplica.postgres.database.azure.com -U myadmin@myreplica -d postgres
 メッセージが表示されたら、ユーザー アカウントのパスワードを入力します。
 
 ## <a name="monitor-replication"></a>レプリケーションを監視します
-Azure Database for PostgreSQL は、Azure Monitor に **Max Lag Across Replicas (レプリカ間の最大ラグ)** メトリックを提供します。 このメトリックは、マスター サーバーのみで使用できます。 そのメトリックでは、マスターと最も遅れているレプリカの間のラグがバイト単位で示されます。 
+Azure Database for PostgreSQL には、レプリケーションを監視するための 2 つのメトリックがあります。 2 つのメトリックは **[Max Lag Across Replicas]\(レプリカ間の最大ラグ\)** と **[Replica Lag]\(レプリカ間のラグ\)** です。 これらのメソッドを表示する方法については、[読み取りレプリカのハウツー記事](howto-read-replicas-portal.md)の「**レプリカの監視**」セクションを参照してください。
 
-Azure Database for PostgreSQL は、Azure Monitor に**Replica Lag (レプリカ ラグ)** メトリックも提供します。 このメトリックは、レプリカのみで使用できます。 
+**[Max lag across replicas]\(レプリカ間の最大ラグ\)** メトリックは、マスターと最も遅れているレプリカの間のラグをバイト単位で示します。 このメトリックは、マスター サーバーのみで使用できます。
 
-メトリックは、`pg_stat_wal_receiver` ビューから計算されます。
+**[Replica Lag]\(レプリカのラグ\)** メトリックでは最後に再生されたトランザクションからの時間が表示されます。 マスター サーバーでトランザクションが発生していない場合、メトリックにはこのタイム ラグが反映されます。 このメトリックは、レプリカ サーバーのみで使用できます。 レプリカのラグは、`pg_stat_wal_receiver` ビューから計算されます。
 
 ```SQL
 EXTRACT (EPOCH FROM now() - pg_last_xact_replay_timestamp());
 ```
-
-Replica Lag (レプリカ ラグ) メトリックでは最後に再生されたトランザクションからの時間が表示されます。 マスター サーバーでトランザクションが発生していない場合、メトリックにはこのタイム ラグが反映されます。
 
 レプリカのラグがワークロードに対して許容できない値に達したときに通知されるアラートを設定します。 
 

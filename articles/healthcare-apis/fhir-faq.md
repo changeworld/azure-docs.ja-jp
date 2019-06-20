@@ -7,12 +7,12 @@ ms.service: healthcare-apis
 ms.topic: reference
 ms.date: 02/07/2019
 ms.author: mihansen
-ms.openlocfilehash: e3889ed9f758ce2c374eae106674930ba67f7620
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 50a610c3fb92b65b62e17a986ea1c0f70d0a0f1d
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878784"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66753747"
 ---
 # <a name="frequently-asked-questions-about-azure-api-for-fhir"></a>Azure API for FHIR についてよく寄せられる質問
 
@@ -26,7 +26,11 @@ ms.locfileid: "55878784"
 
 ## <a name="supported-fhir-version"></a>サポートされている FHIR バージョン
 
-現在、バージョン 3.0.1 をサポートしています。 詳細については、「[サポートされる機能](fhir-features-supported.md)」を参照してください。
+Azure API for FHIR (PaaS):バージョン 3.0.1 をサポートしています
+
+FHIR Server for Azure (OSS):バージョン 3.0.1 に加え、FHIR 仕様の最新バージョンであるバージョン 4.0.0 をサポートしています。
+
+詳細については、「[サポートされる機能](fhir-features-supported.md)」を参照してください。 バージョン間の変更点については [HL7 FHIR のバージョン履歴](http://hl7.org/fhir/R4/history.html)に関する記事を参照してください。
 
 ## <a name="oss-and-azure-api-for-fhir"></a>OSS と Azure API for FHIR
 

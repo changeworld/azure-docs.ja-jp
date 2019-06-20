@@ -7,12 +7,12 @@ ms.service: healthcare-apis
 ms.topic: reference
 ms.date: 02/07/2019
 ms.author: mihansen
-ms.openlocfilehash: 1752ec8b2f846b51ef8222c54a00d5a5a0cdd05a
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 74a17c4a433ebe1c1107230739086375fe165ed9
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55875197"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66753728"
 ---
 # <a name="features"></a>機能
 
@@ -20,7 +20,9 @@ Azure API for FHIR は、Microsoft FHIR Server for Azure の完全管理型デ�
 
 ## <a name="fhir-version"></a>FHIR のバージョン
 
-現在のバージョン: `3.0.1`
+サポートされている最新バージョン (OSS 実装でのみ使用可能): `4.0.0`
+
+現在もサポートされている以前のバージョンの一部 (PaaS と OSS の両方の実装で使用可能): `3.0.1`
 
 ## <a name="rest-api"></a>REST API
 
@@ -30,19 +32,19 @@ Azure API for FHIR は、Microsoft FHIR Server for Azure の完全管理型デ�
 | vread                          | はい       |         |
 | update                         | はい       |         |
 | オプティミスティック ロック付きの update | はい       |         |
-| update (条件付き)           | いいえ         |         |
-| patch                          | いいえ         |         |
+| update (条件付き)           | いいえ        |         |
+| patch                          | いいえ        |         |
 | delete                         | はい       |         |
-| delete (条件付き)           | いいえ         |         |
+| delete (条件付き)           | いいえ        |         |
 | create                         | はい       | POST/PUT の両方をサポートします |
-| create (条件付き)           | いいえ         |         |
+| create (条件付き)           | いいえ        |         |
 | 検索                         | 部分的   | 下記参照 |
 | capabilities                   | はい       |         |
-| batch (バッチ)                          | いいえ         |         |
-| transaction                    | いいえ         |         |
+| batch (バッチ)                          | いいえ        |         |
+| transaction                    | いいえ        |         |
 | history                        | はい       |         |
 | paging                         | 部分的   | `self` と `next` がサポートされています |
-| intermediaries                 | いいえ         |         |
+| intermediaries                 | いいえ        |         |
 
 ## <a name="search"></a>Search
 
@@ -52,11 +54,11 @@ Azure API for FHIR は、Microsoft FHIR Server for Azure の完全管理型デ�
 |-----------------------|-----------|---------|
 | Number                | はい       |         |
 | Date/DateTime         | はい       |         |
-| String                | はい       |         |
+| string                | はい       |         |
 | トークン                 | はい       |         |
 | リファレンス             | はい       |         |
-| 複合             | はい       |         |
-| 数量              | はい       | イシュー [#103](https://github.com/Microsoft/fhir-server/issues/103) |
+| Composite             | はい       |         |
+| Quantity              | はい       | イシュー [#103](https://github.com/Microsoft/fhir-server/issues/103) |
 | URI                   | はい       |         |
 
 
@@ -66,13 +68,13 @@ Azure API for FHIR は、Microsoft FHIR Server for Azure の完全管理型デ�
 |`:exact`               | はい       |         |
 |`:contains`            | はい       |         |
 |`:text`                | はい       |         |
-|`:in` (トークン)          | いいえ         |         |
-|`:below` (トークン)       | いいえ         |         |
-|`:above` (トークン)       | いいえ         |         |
-|`:not-in` (トークン)      | いいえ         |         |
-|`:[type]` (参照)  | いいえ         |         |
+|`:in` (トークン)          | いいえ        |         |
+|`:below` (トークン)       | いいえ        |         |
+|`:above` (トークン)       | いいえ        |         |
+|`:not-in` (トークン)      | いいえ        |         |
+|`:[type]` (参照)  | いいえ        |         |
 |`:below` (URI)         | はい       |         |
-|`:above` (URI)         | いいえ         | イシュー [#158](https://github.com/Microsoft/fhir-server/issues/158) |
+|`:above` (URI)         | いいえ        | イシュー [#158](https://github.com/Microsoft/fhir-server/issues/158) |
 
 | 一般的な検索パラメーター | サポートされています | Comment (コメント) |
 |-------------------------| ----------|---------|
@@ -81,24 +83,24 @@ Azure API for FHIR は、Microsoft FHIR Server for Azure の完全管理型デ�
 | `_tag`                  | はい       |         |
 | `_profile`              | はい       |         |
 | `_security`             | はい       |         |
-| `_text`                 | いいえ         |         |
-| `_content`              | いいえ         |         |
-| `_list`                 | いいえ         |         |
-| `_has`                  | いいえ         |         |
+| `_text`                 | いいえ        |         |
+| `_content`              | いいえ        |         |
+| `_list`                 | いいえ        |         |
+| `_has`                  | いいえ        |         |
 | `_type`                 | はい       |         |
-| `_query`                | いいえ         |         |
+| `_query`                | いいえ        |         |
 
 | 検索操作       | サポートされています | Comment (コメント) |
 |-------------------------|-----------|---------|
-| `_filter`               | いいえ         |         |
-| `_sort`                 | いいえ         |         |
-| `_score`                | いいえ         |         |
+| `_filter`               | いいえ        |         |
+| `_sort`                 | いいえ        |         |
+| `_score`                | いいえ        |         |
 | `_count`                | はい       |         |
 | `_summary`              | 部分的   | `_summary=count` がサポートされています |
-| `_include`              | いいえ         |         |
-| `_revinclude`           | いいえ         |         |
-| `_contained`            | いいえ         |         |
-| `_elements`             | いいえ         |         |
+| `_include`              | いいえ        |         |
+| `_revinclude`           | いいえ        |         |
+| `_contained`            | いいえ        |         |
+| `_elements`             | いいえ        |         |
 
 ## <a name="persistence"></a>永続化
 

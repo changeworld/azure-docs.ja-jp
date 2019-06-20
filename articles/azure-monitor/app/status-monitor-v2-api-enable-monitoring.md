@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 5393bf854b0bff40ee5e5ad78fc4865d22cd8334
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: e87bfad11eee5b86d35e6b4f2846b094c467e0ef
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66514353"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66734183"
 ---
 # <a name="status-monitor-v2-api-enable-applicationinsightsmonitoring-v021-alpha"></a>Status Monitor v2 API:Enable-ApplicationInsightsMonitoring (v0.2.1-alpha)
 
@@ -45,7 +45,7 @@ IIS は起動時に RedfieldModule を読み込みます。これにより、ア
 > - このコマンドレットでは、ライセンスおよびプライバシーに関する声明を確認して同意する必要があります。
 
 > [!IMPORTANT] 
-> このコマンドレットでは、管理者権限と昇格された実行ポリシーを備えた PowerShell セッションが必要です。 詳細については、[昇格された実行ポリシーを備えた管理者として PowerShell を実行する方法](status-monitor-v2-detailed-instructions.md#run-powershell-as-administrator-with-an-elevated-execution-policy)に関するページを参照してください。
+> このコマンドレットでは、管理者権限と昇格された実行ポリシーを備えた PowerShell セッションが必要です。 詳細については、[昇格された実行ポリシーを備えた管理者として PowerShell を実行する方法](status-monitor-v2-detailed-instructions.md#run-powershell-as-admin-with-an-elevated-execution-policy)に関するページを参照してください。
 
 ## <a name="examples"></a>例
 
@@ -109,7 +109,7 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap
 **省略可能。** ヘッドレス インストールでライセンスおよびプライバシーに関する声明に同意する場合は、このスイッチを使用します。
 
 ### <a name="-verbose"></a>-Verbose
-**共通パラメーター。** 詳細なログを出力する場合はこのスイッチを使用します。
+**共通パラメーター。** 詳細なログを表示するにはこのスイッチを使用します。
 
 ### <a name="-whatif"></a>-WhatIf 
 **共通パラメーター。** 実際に監視を有効にせずに、入力パラメーターをテストして検証する場合は、このスイッチを使用します。
@@ -155,7 +155,7 @@ Successfully enabled Application Insights Status Monitor
   テレメトリの表示:
  - パフォーマンスと使用状況を監視するための[メトリックを探索](../../azure-monitor/app/metrics-explorer.md)します。
 - 問題を診断するために[イベントとログを検索](../../azure-monitor/app/diagnostic-search.md)します。
-- より高度なクエリのために[分析](../../azure-monitor/app/analytics.md)を使用します。
+- より高度なクエリのために[分析を使用](../../azure-monitor/app/analytics.md)します。
 - [ダッシュボードを作成](../../azure-monitor/app/overview-dashboard.md)します。
  
  テレメトリの追加:

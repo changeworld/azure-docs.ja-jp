@@ -4,14 +4,14 @@ description: Azure Resource Manager を使用して、リソースを新しい�
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 05/17/2019
+ms.date: 06/13/2019
 ms.author: tomfitz
-ms.openlocfilehash: 046b8e75be0247f335bcf1d29117f5900b70aeb6
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: bb7715a7eaa2cb499ed80b78130571f315ef0c95
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66477253"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67083539"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>新しいリソース グループまたはサブスクリプションへのリソースの移動
 
@@ -88,7 +88,6 @@ ms.locfileid: "66477253"
 * Logic Apps
 * Machine Learning - Machine Learning Studio Web サービスは、同じサブスクリプション内のリソース グループには移動できますが、別のサブスクリプションには移動できません。 他の Machine Learning リソースは、異なるサブスクリプションに移動できます。
 * マネージド ディスク - 可用性ゾーン内のマネージド ディスクを別のサブスクリプションに移動することはできません
-* マネージド ID - ユーザー割り当て
 * Media Services
 * 監視 - 新しいサブスクリプションへの移動が[サブスクリプション クォータ](../azure-subscription-service-limits.md#monitor-limits)を超えないようにします
 * Notification Hubs
@@ -141,6 +140,7 @@ ms.locfileid: "66477253"
 * ExpressRoute
 * Lab Services のクラスルーム ラボを、新しいリソース グループまたはサブスクリプションに移動することはできません。 DevTest Labs は、同じサブスクリプション内の新しいリソース グループへの移動は可能ですが、サブスクリプション間の移動は可能ではありません。
 * Managed Applications
+* マネージド ID - ユーザー割り当て
 * Microsoft Genomics
 * セキュリティ
 * Site Recovery

@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 07989b06b756e1e360ac3c37927a8267c84d9162
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: 0610f57e264189961a6803bee5bb93c1ec9fb103
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65522832"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66753989"
 ---
 # <a name="how-to-index-cosmos-db-using-an-azure-search-indexer"></a>Azure Search インデクサーを使用して Cosmos DB のインデックスを作成する方法
 
@@ -258,7 +258,7 @@ SQL クエリを指定すると、ネストされたプロパティや配列の�
 | Bool |Edm.Boolean、Edm.String |
 | 整数などの数値 |Edm.Int32、Edm.Int64、Edm.String |
 | 浮動小数点などの数値 |Edm.Double、Edm.String |
-| String |Edm.String |
+| string |Edm.String |
 | プリミティブ型の配列。例: ["a"、"b"、"c"] |Collection(Edm.String) |
 | 日付などの文字列 |Edm.DateTimeOffset、Edm.String |
 | GeoJSON オブジェクト。例: { "type": "Point", "coordinates": [long, lat] } |Edm.GeographyPoint |
@@ -282,6 +282,8 @@ SQL クエリを指定すると、ネストされたプロパティや配列の�
 このインデクサーは 2 時間ごとに実行されます (スケジュールの間隔が "PT2H" に設定されています)。 インデクサーを 30 分ごとに実行するには、間隔を "PT30M" に設定します。 サポートされている最短の間隔は 5 分です。 スケジュールは省略可能です。省略した場合、インデクサーは作成時に一度だけ実行されます。 ただし、いつでもオンデマンドでインデクサーを実行できます。   
 
 インデクサー作成 API の詳細については、「 [インデクサーの作成](https://docs.microsoft.com/rest/api/searchservice/create-indexer)」をご覧ください。
+
+インデクサーのスケジュールの定義の詳細については、「[Azure Search のインデクサーのスケジュールを設定する方法](search-howto-schedule-indexers.md)」を参照してください。
 
 ## <a name="use-net"></a>.NET の使用
 

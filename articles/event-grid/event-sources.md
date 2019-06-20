@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: spelluru
-ms.openlocfilehash: f6c00f4ada0590df91fce0c36281d0c0cac67b77
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: 3611072759c62f42294730405f1dc402c496acce
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66257944"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66735000"
 ---
 # <a name="event-sources-in-azure-event-grid"></a>Azure Event Grid のイベント ソース
 
@@ -140,6 +140,15 @@ BLOB の作成および削除のイベントに対応するために、Blob Stor
 | [Event Grid を使用して Azure Maps イベントに反応する](../azure-maps/azure-maps-event-grid-integration.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Azure Maps と Event Grid の統合の概要。 |
 | [チュートリアル:ジオフェンスを設定する](../azure-maps/tutorial-geofence.md?toc=%2fazure%2fevent-grid%2ftoc.json) | このチュートリアルでは、Azure Maps を使用してジオフェンスを設定するための基本的な手順について説明します。 Azure Event Grid を使用してジオフェンスの結果をストリーミングし、ジオフェンスの結果に基づいて通知を設定します。 |
 | [イベント スキーマ](event-schema-azure-maps.md) | Azure Maps イベントでのフィールドを示します。 |
+
+## <a name="app-configuration"></a>App Configuration
+Azure App Configuration イベントをサブスクライブして、キーと値の変更イベントに応答します。
+
+|タイトル | 説明 |
+|---------|---------|
+| [Event Grid を使用して Azure App Configuration イベントに応答する](../azure-app-configuration/concept-app-configuration-event.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Azure App Configuration と Event Grid の統合の概要。 |
+| [クイックスタート: Azure CLI を使用して Azure App Configuration イベントをカスタム Web エンドポイントにルーティングする](../azure-app-configuration/howto-app-configuration-event.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Azure CLI を使って Azure App Configuration イベントを Webhook に送信する方法を示します。 |
+| [イベント スキーマ](event-schema-app-configuration.md) | Azure App Configuration イベントのフィールドを表示します。 |
 
 
 ## <a name="next-steps"></a>次の手順

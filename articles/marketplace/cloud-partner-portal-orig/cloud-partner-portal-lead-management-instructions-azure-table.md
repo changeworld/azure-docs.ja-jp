@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: pabutler
-ms.openlocfilehash: a1bcab9816627b453ba8b20b7bcd9402c2dfd151
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 08f9d794822dfd7879efc7c4813ecc46f92f6a45
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66240483"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147895"
 ---
 # <a name="lead-management-instructions-for-azure-table"></a>Azure テーブルでの潜在顧客管理の手順
 
@@ -97,7 +97,7 @@ DefaultEndpointsProtocol=https;AccountName=myAccountName;AccountKey=myAccountKey
 
      ![Azure テーブル名のカスタム値を選択する](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-getentities-table-name.png)
 
-   - **[フィルター クエリ]** – このフィールドをクリックすると、ポップアップ ウィンドウに **[過去の時間を取得]** アイコンが表示されます。 **[Past time] (過去の時間)** を選択して、これをクエリのフィルター処理のタイムスタンプとして使用します。 あるいは、そのフィールドに次の関数を貼り付けてもかまいません。CreatedTime `gt datetime'@{body('Get_past_time')}'` 
+   - **[フィルター クエリ]** – このフィールドをクリックすると、ポップアップ ウィンドウに **[過去の時間を取得]** アイコンが表示されます。 **[Past time] (過去の時間)** を選択して、これをクエリのフィルター処理のタイムスタンプとして使用します。 あるいは、そのフィールドに次の関数を貼り付けてもかまいません。CreatedTime `Timestamp gt datetime'@{body('Get_past_time')}'` 
 
      ![フィルター クエリ関数を設定する](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-getentities-filterquery.png)
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: anantr
 ms.component: alerts
-ms.openlocfilehash: f8d7b00de24c566cab204c66371dac9b569c42c9
-ms.sourcegitcommit: 3675daec6c6efa3f2d2bf65279e36ca06ecefb41
+ms.openlocfilehash: 6e97826499842a257f6402bd5268edc4cd6a486e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65620006"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66734914"
 ---
 # <a name="action-rules-preview"></a>アクション ルール (プレビュー)
 
@@ -134,6 +134,9 @@ Contoso では、[サブスクリプション レベルでメトリック アラ
 * スコープ = "ContosoRG"
 * フィルターなし
 * アクション グループを "ContosoActionGroup" に設定
+
+> [!NOTE]
+> **アクション ルールとアラート ルールで定義されているアクション グループは独立して動作し、重複は除去されません**。 上記のシナリオでは、アラート ルールに定義されたアクション グループがある場合、アクション ルールに定義されたアクション グループと連動してトリガーされます。 
 
 ## <a name="managing-your-action-rules"></a>アクション ルールの管理
 

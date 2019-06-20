@@ -7,15 +7,15 @@ manager: shivamg
 keywords: Log Analytics; Azure Backup; アラート; 診断設定; アクション グループ
 ms.service: backup
 ms.topic: conceptual
-ms.date: 02/26/2019
+ms.date: 06/04/2019
 ms.author: pullabhk
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: 94fde7714f3efe0a460983966923071bce1afcc6
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 1e85b633024b5a3e85874707ae9a1f068e7a328d
+ms.sourcegitcommit: f9448a4d87226362a02b14d88290ad6b1aea9d82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190503"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66808524"
 ---
 # <a name="monitoring-at-scale-using-azure-monitor"></a>Azure Monitor を使用した大規模な監視
 
@@ -39,14 +39,14 @@ Azure Recovery Services コンテナーなどの Azure Resource Manager リソ�
 
 ![送信先が LA になっている RS コンテナーの診断設定](media/backup-azure-monitoring-laworkspace/rs-vault-diagnostic-setting.png)
 
-送信先として別のサブスクリプションの LA ワークスペースを選択できます。 "*複数の RS コンテナーに対して同じ LA ワークスペースを選択することで、サブスクリプションにまたがったコンテナーを一箇所で監視できます。*" ログとして AzureBackupReport を選択して、すべての Azure Backup 関連情報を LA ワークスペースに送ります。
+送信先として別のサブスクリプションの LA ワークスペースを選択できます。 "*複数の RS コンテナーに対して同じ LA ワークスペースを選択することで、サブスクリプションにまたがったコンテナーを一箇所で監視できます。* " ログとして AzureBackupReport を選択して、すべての Azure Backup 関連情報を LA ワークスペースに送ります。
 
 > [!IMPORTANT]
 > 構成を完了した後で、最初のデータ プッシュが完了するまで 24 時間待つ必要があります。 その後は、[頻度に関するセクション](#diagnostic-data-update-frequency)で説明しているようにすべてのイベントがプッシュされます。
 
 ### <a name="deploying-solution-to-log-analytics-workspace"></a>Log Analytics ワークスペースにソリューションをデプロイする
 
-データが LA ワークスペースに入ったら、LA に [github テンプレートをデプロイ](https://azure.microsoft.com/resources/templates/101-backup-oms-monitoring/)してデータを視覚化します。 同じリソース グループ、ワークスペース名、ワークスペースの場所を指定して、ワークスペースを正しく示していることを確認してから、このテンプレートをインストールします。
+データが LA ワークスペースに入ったら、LA に [GitHub テンプレートをデプロイ](https://azure.microsoft.com/resources/templates/101-backup-oms-monitoring/)してデータを視覚化します。 同じリソース グループ、ワークスペース名、ワークスペースの場所を指定して、ワークスペースを正しく示していることを確認してから、このテンプレートをインストールします。
 
 ### <a name="view-azure-backup-data-using-log-analytics-la"></a>Log Analytics (LA) を使用して Azure Backup データを表示する
 
@@ -242,13 +242,13 @@ Azure portal にサインインし、関連する Azure Recovery Services コン
 
 ![Azure VM バックアップのアクティビティ ログ](media/backup-azure-monitoring-laworkspace/activitylogs-azurebackup-vmbackups.png)
 
-[JSON] セグメントをクリックすると、より詳細な情報を取得して、それをコピーしてテキスト エディターに貼り付けることによって見ることができます。 コンテナーの詳細と、アクティビティ ログをトリガーした項目 (バックアップ項目) が表示されます。
+操作名をクリックすると、操作と関連する詳細情報が表示されます。
 
-[アクティビティ ログ アラートの追加] をクリックし、このようなすべてのログに対しアラートを生成します。
+![新しいアラート ルール](media/backup-azure-monitoring-laworkspace/new-alert-rule.png)
 
-上に示されている [アクティビティ ログ アラートの追加] をクリックすると、[前述した](#create-alerts-using-log-analytics)アラート作成画面と似たアラート作成画面が開きます。
+**[新しいアラート ルール]** をクリックして **[ルールの作成]** 画面を開きます。この画面では、この[記事](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)で説明されている手順を使用してアラートを作成できます。
 
-ここでは、リソースは RS コンテナーそのものです。したがって、アクティビティ ログを介して通知しようとするすべてのコンテナーについて同じ操作を繰り返す必要があります。 これはイベントベースのアラートであるため、しきい値、期間、頻度は条件に含めません。 関連するアクティビティ ログが生成されるとすぐに、アラートが発生します。
+ここでは、リソースは Recovery Service コンテナーそのものです。したがって、アクティビティ ログを介して通知しようとするすべてのコンテナーについて同じ操作を繰り返す必要があります。 これはイベントベースのアラートであるため、しきい値、期間、頻度は条件に含めません。 関連するアクティビティ ログが生成されるとすぐに、アラートが発生します。
 
 ## <a name="recommendation"></a>推奨
 
@@ -257,7 +257,7 @@ Azure portal にサインインし、関連する Azure Recovery Services コン
 アクティビティ ログを介した通知を使用できる一方で、"***Azure Backup サービスでは、以下の理由から大規模な監視のためにはアクティビティ ログではなく LA を使用することを強く推奨します***"。
 
 - **シナリオの制限:** Azure VM バックアップにしか適用できず、すべての RS コンテナーで繰り返す必要があります。
-- **定義の一致:** スケジュール済みバックアップ アクティビティは、アクティビティ ログの最新定義と一致せず、[診断ログ](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview#what-are-azure-monitor-diagnostic-logs)に対応しています。 これにより、以下で説明するアクティビティ ログ チャネルを介したデータ ポンプの変更に伴って、予期しない影響が生じます。
+- **定義の一致:** スケジュール済みバックアップ アクティビティは、アクティビティ ログの最新定義と一致せず、[診断ログ](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview#what-you-can-do-with-diagnostic-logs)に対応しています。 これにより、以下で説明するアクティビティ ログ チャネルを介したデータ ポンプの変更に伴って、予期しない影響が生じます。
 - **アクティビティ ログ チャネルの問題:** Azure Backup からのアクティビティ ログを Recovery Services コンテナーで汲み上げる新しいモデルに移行しました。 残念ながら、Azure ソブリン クラウドでは、この移行によって、アクティビティ ログの生成に影響が生じています。 Azure ソブリン クラウドのユーザーが、アクティビティ ログからのアラートを Azure Monitor 経由で作成または構成した場合、それらのアラートはトリガーされません。 また、すべての Azure パブリック リージョンにおいて、ユーザーが Recovery Services のアクティビティ ログを Log Analytics ワークスペースに収集している場合 ([こちら](https://docs.microsoft.com/azure/azure-monitor/platform/collect-activity-logs)を参照)、それらのログも表示されません。
 
 このように、Azure Backup で保護されるすべてのワークロードでは、大規模な監視とアラートでは Log Analytic ワークスペースを使用することを強くお勧めします。

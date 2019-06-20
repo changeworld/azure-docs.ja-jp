@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: mstephen
 ms.openlocfilehash: 295a991e610e76971413a2abdba1e2fcc5f9eba6
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66245404"
 ---
 # <a name="synchronization-in-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services のマネージド ドメインでの同期
@@ -60,7 +60,7 @@ Azure AD Connect Sync は、ユーザー アカウント、グループ メン�
 ## <a name="how-specific-attributes-are-synchronized-to-your-managed-domain"></a>特定の属性がマネージド ドメインに同期される方法
 次の表では、一般的な属性の一部を示し、これらがマネージド ドメインに同期される方法を説明します。
 
-| マネージド ドメイン内の属性 | ソース | メモ |
+| マネージド ドメイン内の属性 | source | メモ |
 |:--- |:--- |:--- |
 | UPN |Azure AD テナントのユーザーの UPN 属性 |Azure AD テナントの UPN 属性は、そのままマネージド ドメインに同期されます。 そのため、UPN を使用することが、マネージド ドメインにサインインする最も確実な方法になります。 |
 | SAMAccountName |Azure AD テナントのユーザーに設定、または自動生成された mailNickname 属性 |SAMAccountName 属性は、Azure AD テナントの mailNickname 属性を同期元とします。 複数のユーザー アカウントで mailNickname 属性が同じ場合は、SAMAccountName が自動生成されます。 ユーザーの mailNickname または UPN プレフィックスが 20 文字を超える場合は、SAMAccountName 属性の 20 文字以下の制限を満たすために SAMAccountName が自動生成されます。 |

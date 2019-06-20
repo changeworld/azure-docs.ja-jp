@@ -1,6 +1,6 @@
 ---
 title: Office 365 グループに対するグループの名前付けポリシーの強制 - Azure Active Directory | Microsoft Docs
-description: Azure Active Directory で Office 365 グループの名前付けポリシーを設定する方法 (プレビュー)
+description: Azure Active Directory で Office 365 グループの名前付けポリシーを設定する方法
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d21616938978e501cc112fde105be4db4499b2a
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 0c13b95028975c5463217455c940bb84c3867899
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65605554"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66734780"
 ---
 # <a name="enforce-a-naming-policy-on-office-365-groups-in-azure-active-directory"></a>Azure Active Directory での Office 365 グループに対する名前付けポリシーの強制
 
@@ -76,12 +76,12 @@ ms.locfileid: "65605554"
 - ユーザー管理者
 - ディレクトリ ライター
 
-## <a name="configure-naming-policy-in-azure-portal-preview"></a>Azure portal で名前付けポリシーを構成する (プレビュー)
+## <a name="configure-naming-policy-in-azure-portal"></a>Azure portal で名前付けポリシーを構成する
 
 1. ユーザー管理者アカウントを使用して [Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
 1. **[グループ]** を選択し、 **[名前付けポリシー]** を選択して [名前付けポリシー] ページを開きます。
 
-    ![管理センターで [名前付けポリシー] ページを開く](./media/groups-naming-policy/policy-preview.png)
+    ![管理センターで [名前付けポリシー] ページを開く](./media/groups-naming-policy/policy.png)
 
 ### <a name="view-or-edit-the-prefix-suffix-naming-policy"></a>プレフィックス/サフィックス名前付けポリシーを表示または編集する
 
@@ -94,7 +94,7 @@ ms.locfileid: "65605554"
 
 1. **[名前付けポリシー]** ページで、 **[ブロックされている単語]** を選択します。
 
-    ![名前付けポリシーのブロックされている単語の一覧の編集とアップロード](./media/groups-naming-policy/blockedwords-preview.png)
+    ![名前付けポリシーのブロックされている単語の一覧の編集とアップロード](./media/groups-naming-policy/blockedwords.png)
 
 1. **[ダウンロード]** を選択して、現在のカスタムのブロックされている単語の一覧を表示または編集します。
 1. ファイル アイコンを選択して、カスタムのブロックされている単語の新しい一覧をアップロードします。
@@ -198,7 +198,7 @@ Set-AzureADDirectorySetting -Id $Settings.Id -DirectorySetting $Settings
 
 ## <a name="remove-the-naming-policy"></a>名前付けポリシーを削除する
 
-### <a name="remove-the-naming-policy-using-azure-portal-preview"></a>Azure portal を使用して名前付けポリシーを削除する (プレビュー)
+### <a name="remove-the-naming-policy-using-azure-portal"></a>Azure portal を使用して名前付けポリシーを削除する
 
 1. **[名前付けポリシー]** ページで、 **[ポリシーの削除]** を選択します。
 1. 削除を確定すると、すべてのプレフィックス/サフィックス名前付けポリシーとカスタムのブロックされている単語を含め、名前付けポリシーが削除されます。

@@ -14,10 +14,10 @@ ms.date: 05/16/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 07c1a726e33eb8287634b63ef2e309483c05c3f3
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65962119"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Azure Resource Manager のリソース プロバイダー操作
@@ -2285,7 +2285,7 @@ ms.locfileid: "65962119"
 > | Action | Microsoft.DocumentDB/databaseAccounts/apis/databases/collections/settings/throughput/read | コレクションのスループットを読み取ります。 API の種類 "mongodb" にのみ適用可能です。 |
 > | Action | Microsoft.DocumentDB/databaseAccounts/apis/databases/collections/settings/throughput/write | コレクションのスループットを更新します。 API の種類 "mongodb" にのみ適用可能です。 |
 > | Action | Microsoft.DocumentDB/databaseAccounts/apis/databases/collections/write | コレクションを作成または更新します。 API の種類 "mongodb" にのみ適用可能です。 |
-> | Action | Microsoft.DocumentDB/databaseAccounts/apis/databases/containers/delete | コンテナーを削除します。 にのみ適用可能ですAPI の種類 "sql" にのみ適用可能です。 |
+> | Action | Microsoft.DocumentDB/databaseAccounts/apis/databases/containers/delete | コンテナーを削除します。 API の種類 "sql" にのみ適用可能です。 |
 > | Action | Microsoft.DocumentDB/databaseAccounts/apis/databases/containers/read | コンテナーを読み取るか、すべてのコンテナーを一覧表示します。 API の種類 "sql" にのみ適用可能です。 |
 > | Action | Microsoft.DocumentDB/databaseAccounts/apis/databases/containers/settings/throughput/read | コンテナーのスループットを読み取ります。 API の種類 "sql" にのみ適用可能です。 |
 > | Action | Microsoft.DocumentDB/databaseAccounts/apis/databases/containers/settings/throughput/write | コンテナーのスループットを更新します。 API の種類 "sql" にのみ適用可能です。 |

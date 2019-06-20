@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 04/08/2019
 ms.author: tomfitz
 ms.openlocfilehash: 82b9403a3d5a5b6938f5b95bbfce888d1e70e451
-ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/31/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66431217"
 ---
 # <a name="string-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートの文字列関数
@@ -118,8 +118,8 @@ base64 形式を含む文字列。
 
 | Name | Type | 値 |
 | ---- | ---- | ----- |
-| base64Output | String | b25lLCB0d28sIHRocmVl |
-| toStringOutput | String | one, two, three |
+| base64Output | string | b25lLCB0d28sIHRocmVl |
+| toStringOutput | string | one, two, three |
 | toJsonOutput | Object | {"one": "a", "two": "b"} |
 
 ## <a name="base64tojson"></a>base64ToJson
@@ -183,8 +183,8 @@ JSON オブジェクト。
 
 | Name | Type | 値 |
 | ---- | ---- | ----- |
-| base64Output | String | b25lLCB0d28sIHRocmVl |
-| toStringOutput | String | one, two, three |
+| base64Output | string | b25lLCB0d28sIHRocmVl |
+| toStringOutput | string | one, two, three |
 | toJsonOutput | Object | {"one": "a", "two": "b"} |
 
 ## <a name="base64tostring"></a>base64ToString
@@ -248,8 +248,8 @@ base64 形式を文字列に変換します。
 
 | Name | Type | 値 |
 | ---- | ---- | ----- |
-| base64Output | String | b25lLCB0d28sIHRocmVl |
-| toStringOutput | String | one, two, three |
+| base64Output | string | b25lLCB0d28sIHRocmVl |
+| toStringOutput | string | one, two, three |
 | toJsonOutput | Object | {"one": "a", "two": "b"} |
 
 ## <a name="concat"></a>concat
@@ -296,7 +296,7 @@ base64 形式を文字列に変換します。
 
 | Name | Type | 値 |
 | ---- | ---- | ----- |
-| concatOutput | String | prefix-5yj4yjf5mbg72 |
+| concatOutput | string | prefix-5yj4yjf5mbg72 |
 
 次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/concat-array.json)では、2 つの配列を結合する方法を示します。
 
@@ -472,8 +472,8 @@ base64 形式を文字列に変換します。
 
 | Name | Type | 値 |
 | ---- | ---- | ----- |
-| dataUriOutput | String | data:text/plain;charset=utf8;base64,SGVsbG8= |
-| toStringOutput | String | Hello, World! |
+| dataUriOutput | string | data:text/plain;charset=utf8;base64,SGVsbG8= |
+| toStringOutput | string | Hello, World! |
 
 ## <a name="datauritostring"></a>dataUriToString
 
@@ -527,8 +527,8 @@ base64 形式を文字列に変換します。
 
 | Name | Type | 値 |
 | ---- | ---- | ----- |
-| dataUriOutput | String | data:text/plain;charset=utf8;base64,SGVsbG8= |
-| toStringOutput | String | Hello, World! |
+| dataUriOutput | string | data:text/plain;charset=utf8;base64,SGVsbG8= |
+| toStringOutput | string | Hello, World! |
 
 ## <a name="empty"></a>empty
 
@@ -710,8 +710,8 @@ base64 形式を文字列に変換します。
 
 | Name | Type | 値 |
 | ---- | ---- | ----- |
-| arrayOutput | String | one |
-| stringOutput | String | O |
+| arrayOutput | string | one |
+| stringOutput | string | O |
 
 ## <a name="format"></a>format
 
@@ -768,7 +768,7 @@ base64 形式を文字列に変換します。
 
 | Name | Type | 値 |
 | ---- | ---- | ----- |
-| formatTest | String | Hello, User. Formatted number:8,175,133 |
+| formatTest | string | Hello, User. Formatted number:8,175,133 |
 
 ## <a name="guid"></a>guid
 
@@ -951,8 +951,8 @@ base64 形式を文字列に変換します。
 
 | Name | Type | 値 |
 | ---- | ---- | ----- |
-| arrayOutput | String | three |
-| stringOutput | String | e |
+| arrayOutput | string | three |
+| stringOutput | string | e |
 
 ## <a name="lastindexof"></a>lastIndexOf
 
@@ -1219,7 +1219,7 @@ newGuid 関数は、パラメーターを受け取らない点が [guid](#guid) 
 
 | Name | Type | 値 |
 | ---- | ---- | ----- |
-| stringOutput | String | 0000000123 |
+| stringOutput | string | 0000000123 |
 
 ## <a name="replace"></a>replace
 
@@ -1271,8 +1271,8 @@ newGuid 関数は、パラメーターを受け取らない点が [guid](#guid) 
 
 | Name | Type | 値 |
 | ---- | ---- | ----- |
-| firstOutput | String | 1231231234 |
-| secondOutput | String | 123-123-xxxx |
+| firstOutput | string | 1231231234 |
+| secondOutput | string | 123-123-xxxx |
 
 ## <a name="skip"></a>skip
 
@@ -1340,7 +1340,7 @@ newGuid 関数は、パラメーターを受け取らない点が [guid](#guid) 
 | Name | Type | 値 |
 | ---- | ---- | ----- |
 | arrayOutput | Array | ["three"] |
-| stringOutput | String | two three |
+| stringOutput | string | two three |
 
 ## <a name="split"></a>split
 
@@ -1534,9 +1534,9 @@ newGuid 関数は、パラメーターを受け取らない点が [guid](#guid) 
 
 | Name | Type | 値 |
 | ---- | ---- | ----- |
-| objectOutput | String | {"valueA":10,"valueB":"Example Text"} |
-| arrayOutput | String | ["a","b","c"] |
-| intOutput | String | 5 |
+| objectOutput | string | {"valueA":10,"valueB":"Example Text"} |
+| arrayOutput | string | ["a","b","c"] |
+| intOutput | string | 5 |
 
 ## <a name="substring"></a>substring
 
@@ -1597,7 +1597,7 @@ newGuid 関数は、パラメーターを受け取らない点が [guid](#guid) 
 
 | Name | Type | 値 |
 | ---- | ---- | ----- |
-| substringOutput | String | two |
+| substringOutput | string | two |
 
 ## <a name="take"></a>take
 
@@ -1665,7 +1665,7 @@ newGuid 関数は、パラメーターを受け取らない点が [guid](#guid) 
 | Name | Type | 値 |
 | ---- | ---- | ----- |
 | arrayOutput | Array | ["one", "two"] |
-| stringOutput | String | on |
+| stringOutput | string | on |
 
 ## <a name="tolower"></a>toLower
 
@@ -1715,8 +1715,8 @@ newGuid 関数は、パラメーターを受け取らない点が [guid](#guid) 
 
 | Name | Type | 値 |
 | ---- | ---- | ----- |
-| toLowerOutput | String | one two three |
-| toUpperOutput | String | ONE TWO THREE |
+| toLowerOutput | string | one two three |
+| toUpperOutput | string | ONE TWO THREE |
 
 ## <a name="toupper"></a>toUpper
 
@@ -1766,8 +1766,8 @@ newGuid 関数は、パラメーターを受け取らない点が [guid](#guid) 
 
 | Name | Type | 値 |
 | ---- | ---- | ----- |
-| toLowerOutput | String | one two three |
-| toUpperOutput | String | ONE TWO THREE |
+| toLowerOutput | string | one two three |
+| toUpperOutput | string | ONE TWO THREE |
 
 ## <a name="trim"></a>trim
 
@@ -1813,7 +1813,7 @@ newGuid 関数は、パラメーターを受け取らない点が [guid](#guid) 
 
 | Name | Type | 値 |
 | ---- | ---- | ----- |
-| 戻り値 | String | one two three |
+| 戻り値 | string | one two three |
 
 ## <a name="uniquestring"></a>uniqueString
 
@@ -1953,9 +1953,9 @@ baseUri と relativeUri の文字列を組み合わせることにより、絶�
 
 | Name | Type | 値 |
 | ---- | ---- | ----- |
-| uriOutput | String | http://contoso.com/resources/nested/azuredeploy.json |
-| componentOutput | String | http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json |
-| toStringOutput | String | http://contoso.com/resources/nested/azuredeploy.json |
+| uriOutput | string | http://contoso.com/resources/nested/azuredeploy.json |
+| componentOutput | string | http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json |
+| toStringOutput | string | http://contoso.com/resources/nested/azuredeploy.json |
 
 ## <a name="uricomponent"></a>uriComponent
 
@@ -2008,9 +2008,9 @@ URI エンコードされた値の文字列。
 
 | Name | Type | 値 |
 | ---- | ---- | ----- |
-| uriOutput | String | http://contoso.com/resources/nested/azuredeploy.json |
-| componentOutput | String | http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json |
-| toStringOutput | String | http://contoso.com/resources/nested/azuredeploy.json |
+| uriOutput | string | http://contoso.com/resources/nested/azuredeploy.json |
+| componentOutput | string | http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json |
+| toStringOutput | string | http://contoso.com/resources/nested/azuredeploy.json |
 
 ## <a name="uricomponenttostring"></a>uriComponentToString
 
@@ -2063,9 +2063,9 @@ URI エンコードされた値のデコード済み文字列。
 
 | Name | Type | 値 |
 | ---- | ---- | ----- |
-| uriOutput | String | http://contoso.com/resources/nested/azuredeploy.json |
-| componentOutput | String | http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json |
-| toStringOutput | String | http://contoso.com/resources/nested/azuredeploy.json |
+| uriOutput | string | http://contoso.com/resources/nested/azuredeploy.json |
+| componentOutput | string | http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json |
+| toStringOutput | string | http://contoso.com/resources/nested/azuredeploy.json |
 
 ## <a name="utcnow"></a>utcNow
 

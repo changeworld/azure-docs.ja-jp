@@ -10,10 +10,10 @@ ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.openlocfilehash: 7e48809537acc21edbcf12d299a333df486c258f
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66257151"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>Azure Cosmos DB .NET SDK の使用時の問題を診断しトラブルシューティングする
@@ -49,7 +49,7 @@ ms.locfileid: "66257151"
 RequestTimeout は、通常ダイレクト/TCP を使用するときに発生しますが、ゲートウェイ モードで起きることがあります。 以下は、一般的な既知の原因と、問題の解決方法に関する推奨事項です。
 
 * CPU 使用率が高くなっているため、待ち時間または要求タイムアウト、あるいはその両方が発生しています。 顧客がホスト マシンをスケールアップしてリソースを増やすか、複数のマシンに負荷を分散できます。
-* ソケット・ポートの可用性が低下している可能性があります。 2.0 バージョン以前にリリースされた .NET SDK を使用している場合、Azure で実行しているクライアントで、[Azure SNAT (PAT) ポート不足]が発生することがあります。 これが、常に最新の SDK バージョンを実行することをお勧めする理由のひとつです。
+* ソケット・ポートの可用性が低下している可能性があります。 2\.0 バージョン以前にリリースされた .NET SDK を使用している場合、Azure で実行しているクライアントで、[Azure SNAT (PAT) ポート不足]が発生することがあります。 これが、常に最新の SDK バージョンを実行することをお勧めする理由のひとつです。
 * 複数の DocumentClient インスタンスを作成すると、接続の競合およびタイムアウトの問題を招くおそれがあります。 [パフォーマンスに関するヒント](performance-tips.md)に従って、プロセス全体で単一の DocumentClient インスタンスを使用します。
 * コレクションのプロビジョニングが不十分であり、バックエンドが要求を調整し、クライアントがこれを呼び出し側に表面化させることなく内部的に再試行するので、ユーザーは待ち時間または要求タイムアウトの増大を経験することがあります。 [ポータルのメトリック](monitor-accounts.md)を確認します。
 * Azure Cosmos DB は、プロビジョニングされたスループット全体を物理パーティション間で均等に分散します。 ポータルのメトリックを調べて、ワークロードでホットな[パーティション キー](partition-data.md)が発生しているかどうかを確認します。 これにより、消費済みスループットの集計 (RU/秒) がプロビジョニングされた RU より低く表示されますが、単一パーティションの消費済みスループット (RU/秒) はプロビジョニングされたスループットを超過します。 
@@ -61,7 +61,7 @@ RequestTimeout は、通常ダイレクト/TCP を使用するときに発生し
         * さらに、[トレース リスナー](https://github.com/Azure/azure-cosmosdb-dotnet/blob/master/docs/documentdb-sdk_capture_etl.md)を通じて SDK ログをキャプチャし、詳細を取得できます。
 
 ### <a name="connection-throttling"></a>接続の帯域幅調整
-接続の帯域幅調整は、ホスト マシンの接続制限が原因で発生します。 2.0 以前では、Azure で実行しているクライアントに、[Azure SNAT (PAT) ポート不足]が発生する可能性があります。
+接続の帯域幅調整は、ホスト マシンの接続制限が原因で発生します。 2\.0 以前では、Azure で実行しているクライアントに、[Azure SNAT (PAT) ポート不足]が発生する可能性があります。
 
 ### <a name="snat"></a>Azure SNAT (PAT) ポート不足
 

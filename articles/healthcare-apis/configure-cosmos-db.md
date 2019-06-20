@@ -7,10 +7,10 @@ ms.topic: reference
 ms.date: 05/22/2019
 ms.author: matjazl
 ms.openlocfilehash: 3d4f2ade64c55c757634e9c2b68aa9dcef51f117
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66299597"
 ---
 # <a name="configure-cosmos-db-settings"></a>Cosmos DB の設定を構成する 

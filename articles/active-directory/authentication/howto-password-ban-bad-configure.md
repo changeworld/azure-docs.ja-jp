@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a7f6dbc869db4a0a444d09a2dc234e171758c706
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 28201e09a4025c0c8820abc6836a5923e48eb885
+ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58316492"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66742291"
 ---
 # <a name="configuring-the-custom-banned-password-list"></a>カスタムの禁止パスワード リストを構成する
 
@@ -26,7 +26,7 @@ ms.locfileid: "58316492"
 
 カスタム禁止パスワード リストを構成するには、Azure Active Directory Premium P1 または P2 ライセンスが必要です。 Azure Active Directory のライセンスの詳細については、[Azure Active Directory の価格ページ](https://azure.microsoft.com/pricing/details/active-directory/)を参照してください。
 
-1. [Azure portal](https://portal.azure.com) にサインインし、**[Azure Active Directory]**、**[認証方法]**、**[パスワード保護]** の順に選択します。
+1. [Azure portal](https://portal.azure.com) にサインインし、 **[Azure Active Directory]** 、 **[認証方法]** 、 **[パスワード保護]** の順に選択します。
 1. オプション **[Enforce custom list]\(カスタム リストを適用する\)** を **[はい]** に設定します。
 1. **[Custom banned password list]\(カスタム禁止パスワード リスト\)** に文字列 (1 行に 1 文字列) を追加します。
    * カスタム禁止パスワード リストには、最大 1,000 語を含めることができます。
@@ -34,7 +34,7 @@ ms.locfileid: "58316492"
    * カスタム禁止パスワード リストでは、一般的な文字の代替が考慮されています。
       * 例: "o" と "0"、"a" と "\@"
    * 最短文字数は 4 文字で、最長文字数は 16 文字です。
-1. すべての文字列を追加したら、**[保存]** をクリックします。
+1. すべての文字列を追加したら、 **[保存]** をクリックします。
 
 > [!NOTE]
 > カスタム禁止パスワード リストの更新が適用されるまでに数時間かかることがあります。

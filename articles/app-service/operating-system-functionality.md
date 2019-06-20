@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: e5ab6651503766844b2aeef1849bffff9cf4d7bb
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: f8087afc541dba41d23eacd2dd0f50e8f0180af1
+ms.sourcegitcommit: f9448a4d87226362a02b14d88290ad6b1aea9d82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54901787"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66808396"
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Azure App Service におけるオペレーティング システムの機能
 この記事では、 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714)上で動作するすべての Windows アプリが利用できる基本的なオペレーティング システムの機能について説明します。 これらの機能には、ファイル アクセス、ネットワーク アクセス、レジストリ アクセス、診断ログ、イベントがあります。 
@@ -61,11 +61,11 @@ App Service には、ローカル ドライブやネットワーク ドライブ
 - App Service によって排他的に使用される (顧客はアクセスできない) Azure Package cspkg ファイルを含むアプリケーション ドライブ。
 - "ユーザー" ドライブ (C:\ ドライブ)。このサイズは、VM のサイズによって変わります。 
 
-アプリケーションの成長に伴い、ディスク使用率を監視することが重要です。 ディスク クォータに達すると、アプリケーションに悪影響が及ぶ可能性があります。 例:  
+アプリケーションの成長に伴い、ディスク使用率を監視することが重要です。 ディスク クォータに達すると、アプリケーションに悪影響が及ぶ可能性があります。 例: 
 
 - ディスク上の領域が不足していることを示すエラーがアプリからスローされることがあります。
 - ブラウザーで Kudu コンソールにアクセスするときにディスク エラーが表示されることがあります。
-- VSTS または Visual Studio からのデプロイが失敗することがあります (`ERROR_NOT_ENOUGH_DISK_SPACE: Web deployment task failed. (Web Deploy detected insufficient space on disk)`)。
+- Azure DevOps または Visual Studio からのデプロイが失敗することがあります (`ERROR_NOT_ENOUGH_DISK_SPACE: Web deployment task failed. (Web Deploy detected insufficient space on disk)`)。
 - アプリのパフォーマンスが低下することがあります。
 
 <a id="NetworkDrives"></a>

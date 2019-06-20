@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/22/2019
+ms.date: 06/06/2019
 ms.author: magoedte
-ms.openlocfilehash: b410dab40d5434a6f23950a9f151e50240ace63b
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 436685f3bba58ed7d06dfe834d808e7fe422176b
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64916378"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66751985"
 ---
 # <a name="collect-log-data-with-the-azure-log-analytics-agent"></a>Azure Log Analytics エージェントを使用してログ データを収集する
 
@@ -59,7 +59,8 @@ Windows エージェントでは、次のバージョンの Windows オペレー
 * AMI の新しいバージョンはサポートされません。  
 * 既定で SSL 1.x を実行するバージョンのみが、サポートされます。
 
-現在サポートされていないディストリビューションまたはバージョンを使用しており、サポート モデルに準拠していない場合、Microsoft サポートは、支援機能にフォークされたエージェント バージョンを提供していることを認識したうえで、このレポジトリをフォークすることをお勧めします。
+>[!NOTE]
+>現在サポートされていないディストリビューションまたはバージョンを使用しており、サポート モデルに準拠していない場合、Microsoft サポートは、支援機能にフォークされたエージェント バージョンを提供していることを認識したうえで、このレポジトリをフォークすることをお勧めします。
 
 * Amazon Linux 2017.09 (x64)
 * CentOS Linux 6 (x86/x64) および 7 (x64)  
@@ -72,6 +73,21 @@ Windows エージェントでは、次のバージョンの Windows オペレー
 >[!NOTE]
 >OpenSSL 1.1.0 は x86_x64 プラットフォーム (64-bit) 上のみでサポートされ、1.x より前の OpenSSL は、どのプラットフォーム上でもサポートされません。
 >
+
+### <a name="agent-prerequisites"></a>エージェントの前提条件
+
+次の表には、エージェントがインストールされるサポートされている Linux ディストリビューションに必要なパッケージが明記されています。
+
+|必須パッケージ |説明 |最小バージョン |
+|-----------------|------------|----------------|
+|Glibc |    GNU C ライブラリ | 2.5-12 
+|Openssl    | OpenSSL ライブラリ | 1.0.x または 1.1.x |
+|Curl | cURL Web クライアント | 7.15.5 |
+|Python-ctypes | | 
+|PAM | Pluggable Authentication Module (プラグ可能な認証モジュール) | | 
+
+>[!NOTE]
+>syslog メッセージを収集するには、rsyslog または syslog-ng が必要となります。 syslog イベントの収集に関して、バージョン 5 の Red Hat Enterprise Linux、CentOS、Oracle Linux 版の既定の syslog デーモン (sysklog) はサポートされません。 このバージョンの各種ディストリビューションから syslog データを収集するには、rsyslog デーモンをインストールし、sysklog を置き換えるように構成する必要があります。
 
 ## <a name="tls-12-protocol"></a>TLS 1.2 プロトコル
 Azure Monitor ログに転送中のデータのセキュリティを確保するには、エージェントを、少なくともトランスポート層セキュリティ (TLS) 1.2 を使用するように構成することを強くお勧めします。 以前のバージョンの TLS/SSL (Secure Sockets Layer) は脆弱であることが確認されています。現在、これらは下位互換性を維持するために使用可能ですが、**推奨されていません**。  詳細については、「[TLS 1.2 を使用して安全にデータを送信する](../../azure-monitor/platform/data-security.md#sending-data-securely-using-tls-12)」を参照してください。 
@@ -115,7 +131,7 @@ Linux エージェントの場合、プロキシ サーバーは、インスト�
 ## <a name="install-and-configure-agent"></a>エージェントをインストールして構成する 
 Azure Monitor ログを直接、Azure サブスクリプションまたはハイブリッド環境内のマシンに接続することは、要件に応じてさまざまな方法を使用して実現できます。 次の表は、どの方法が組織で最も効果的であるかを判断できるように、各方法について説明しています。
 
-|ソース | Method | 説明|
+|source | Method | 説明|
 |-------|-------------|-------------|
 |Azure VM| - Azure CLI または Azure Resource Manager テンプレートを使用する [Windows](../../virtual-machines/extensions/oms-windows.md) または [Linux](../../virtual-machines/extensions/oms-linux.md) 用の Log Analytics VM 拡張機能<br>- [Azure portal から手動で](../../azure-monitor/learn/quick-collect-azurevm.md?toc=/azure/azure-monitor/toc.json) | この拡張機能では、Azure 仮想マシンに Log Analytics エージェントがインストールされ、仮想マシンが既存の Azure Monitor ワークスペースに登録されます。|
 | ハイブリッド Windows コンピューター|- [手動インストール](agent-windows.md)<br>- [Azure Automation DSC](agent-windows.md#install-the-agent-using-dsc-in-azure-automation)<br>- [Azure Stack を使用する Azure Resource Manager テンプレート](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/MicrosoftMonitoringAgent-ext-win) |コマンド ラインから、または Azure Automation DSC や [System Center Configuration Manager](https://docs.microsoft.com/sccm/apps/deploy-use/deploy-applications) などの自動化された方法を使用して、Microsoft Monitoring エージェントをインストールします。データセンターに Microsoft Azure Stack が配置されている場合は、Azure Resource Manager テンプレートも使用できます。| 

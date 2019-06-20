@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 06/05/2019
 ms.author: juliako
-ms.openlocfilehash: 5acd9b68368f56000a0a32d1ade310cf30143950
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 6b5422e2eb67eb309c086c023df9f733940e5e44
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65799377"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66735073"
 ---
 # <a name="embed-video-indexer-widgets-into-your-applications"></a>アプリケーションに Video Indexer ウィジェットを埋め込む
 
@@ -62,6 +62,9 @@ ms.locfileid: "65799377"
 
     ![ウィジェット](./media/video-indexer-embed-widgets/video-indexer-widget02.png)
 
+> [!NOTE]
+> 動画の URL の共有に問題がある場合は、リンクに 'location' パラメーターを追加してみてください。 このパラメーターは、[Video Indexer が存在する Azure リージョン](regions.md)に設定する必要があります。 たとえば、「 `https://www.videoindexer.ai/accounts/00000000-0000-0000-0000-000000000000/videos/b2b2c74b8e/?location=trial` 」のように入力します。
+
 ## <a name="embedding-private-content"></a>プライベート コンテンツの埋め込み
 
 (前のセクションで示した) 埋め込みポップアップから埋め込みコードを取得できるのは、**パブリック** ビデオの場合のみです。 
@@ -72,7 +75,7 @@ ms.locfileid: "65799377"
     
 [**Get Insights Widget**](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget) API を使用してコグニティブな分析情報ウィジェットのコンテンツを取得します。または、[**Get Video Access Token**](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Video-Access-Token?) を使用して、それを上に示した URL にクエリ パラメーターとして追加します。 この URL を、**iframe** の **src** 値として指定します。
 
-埋め込んだウィジェットで (Web アプリケーションにあるような) 分析情報の編集機能を提供したい場合は、編集アクセス許可を持つアクセス トークンを渡す必要があります。 [**Get Insights Widget**](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget) または [**Get Video Access Token**](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Video-Access-Token?) を、**&allowEdit=true** を指定して使用します。 
+埋め込んだウィジェットで (Web アプリケーションにあるような) 分析情報の編集機能を提供したい場合は、編集アクセス許可を持つアクセス トークンを渡す必要があります。 [**Get Insights Widget**](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget) または [**Get Video Access Token**](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Video-Access-Token?) を、 **&allowEdit=true** を指定して使用します。 
 
 ## <a name="widgets-interaction"></a>ウィジェットの対話
 
@@ -173,7 +176,7 @@ Video Indexer ウィジェットが他のコンポーネントと通信できる
         </video>    
 
 2. コグニティブな分析情報ウィジェットを埋め込みます。
-3. "メッセージ" イベントをリッスンして、プレーヤー用の通信を実装します。 例: 
+3. "メッセージ" イベントをリッスンして、プレーヤー用の通信を実装します。 例:
 
         <script>
     
@@ -234,7 +237,7 @@ iframe ウィンドウのタイトルも、iframe の URL に `&title=<YourTitle
 
 Video Indexer プレーヤーを埋め込む場合は、iframe のサイズを指定することで、プレーヤーのサイズを選択できます。
 
-例: 
+例:
 
 `<iframe width="640" height="360" src="https://www.videoindexer.ai/embed/player/<accountId>/<videoId>/" frameborder="0" allowfullscreen />`
 

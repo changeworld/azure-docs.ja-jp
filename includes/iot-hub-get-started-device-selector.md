@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 02/14/2019
 ms.author: robinsh
 ms.openlocfilehash: ed001c74d0a351bc1fb687810177cfcd76178b31
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66156354"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181271"
 ---
 > [!div class="op_single_selector"]
 > * [Raspberry Pi Web シミュレーター](../articles/iot-hub/iot-hub-raspberry-pi-web-simulator-get-started.md)   

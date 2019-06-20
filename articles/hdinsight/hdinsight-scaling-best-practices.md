@@ -6,13 +6,13 @@ ms.author: ashish
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 05/13/2019
-ms.openlocfilehash: 622261d0f7e602635aa6a638357278a9c63a6ecd
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.date: 06/10/2019
+ms.openlocfilehash: b85277a4238351b6448c2cf29676ae3d8c118385
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65990505"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67077199"
 ---
 # <a name="scale-hdinsight-clusters"></a>HDInsight クラスターのスケーリング
 
@@ -21,6 +21,9 @@ HDInsight では、クラスター内のワーカー ノードの数をスケー
 定期的なバッチ処理がある場合は、操作の数分前に HDInsight クラスターをスケールアップして、クラスターに十分なメモリと CPU パワーを持たせることができます。  その後、処理が完了し、使用量が再び減少したら、HDInsight クラスターをスケールダウンしてワーカー ノードの数を減らすことができます。
 
 以下に示す方法のいずれかを使用して、クラスターを手動でスケーリングできます。または、[自動スケーリング](hdinsight-autoscale-clusters.md) オプションを使用して、CPU、メモリ、およびその他のメトリックに応じてシステムを自動的にスケールアップ/ダウンします。
+
+> [!NOTE]  
+> HDInsight バージョン 3.1.3 以降を使用しているクラスターのみがサポートされます。 クラスターのバージョンがわからない場合、[プロパティ] ページを確認できます。
 
 ## <a name="utilities-to-scale-clusters"></a>クラスターをスケーリングするユーティリティ
 
@@ -48,6 +51,50 @@ Microsoft では、クラスターをスケーリングするための次のユ�
 
 ノードを**削除** (スケールダウン) すると、保留中または実行中のジョブは、スケーリング操作の完了時に失敗します。 この失敗の原因は、スケーリング処理中にいくつかのサービスが再起動されることにあります。 手動のスケーリング操作中に、クラスターがセーフ モードでスタックするリスクもあります。
 
+データ ノード数を変更した場合の影響は、HDInsight でサポートされているクラスターの種類ごとに異なります。
+
+* Apache Hadoop
+
+    保留中または実行中のジョブに影響を与えることなく、実行中の Hadoop クラスター内の worker ノードの数をシームレスに増加できます。 処理の進行中に新しいジョブを送信することもできます。 スケール設定処理の失敗は正常に処理され、クラスターは常に機能状態になります。
+
+    データ ノードの数を減らして Hadoop クラスターのスケールを小さくした場合、クラスター内の一部のサービスが再起動されます。 この動作により、スケール設定処理の完了時に、実行中および保留中のすべてのジョブが失敗します。 ただし、処理が完了した後にジョブを再送信できます。
+
+* Apache HBase
+
+    実行中の HBase クラスターに対して、ノードの追加または削除をシームレスに実行できます。 地域サーバーは、スケール設定処理の完了の数分以内に自動的に分散されます。 ただし、クラスターのヘッドノードにログインし、コマンド プロンプト ウィンドウから次のコマンドを実行して、地域サーバーを手動で分散することもできます。
+
+    ```bash
+    pushd %HBASE_HOME%\bin
+    hbase shell
+    balancer
+    ```
+
+    HBase シェルの使用の詳細については、「[HDInsight で Apache HBase の例を使用する](hbase/apache-hbase-tutorial-get-started-linux.md)」を参照してください。
+
+* Apache Storm
+
+    実行中の Storm クラスターに対して、データ ノードの追加または削除をシームレスに実行できます。 ただし、スケール設定処理が正常に完了した後、トポロジのバランス再調整が必要になります。
+
+    バランス再調整は、次の 2 つの方法で実行できます。
+
+  * Storm Web UI
+  * コマンド ライン インターフェイス (CLI) ツール
+
+    詳細については、[Apache Storm に関するドキュメント](https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html)を参照してください。
+
+    Storm Web UI は、HDInsight クラスターで使用できます。
+
+    ![HDInsight Storm のスケールのバランス調整](./media/hdinsight-scaling-best-practices/hdinsight-portal-scale-cluster-storm-rebalance.png)
+
+    Storm トポロジのバランスを再調整する CLI コマンドの例を次に示します。
+
+    ```cli
+    ## Reconfigure the topology "mytopology" to use 5 worker processes,
+    ## the spout "blue-spout" to use 3 executors, and
+    ## the bolt "yellow-bolt" to use 10 executors
+    $ storm rebalance mytopology -n 5 -e blue-spout=3 -e yellow-bolt=10
+    ```
+
 ## <a name="how-to-safely-scale-down-a-cluster"></a>クラスターを安全にスケールする方法
 
 ### <a name="scale-down-a-cluster-with-running-jobs"></a>ジョブを実行してクラスターをスケールダウンする
@@ -58,13 +105,12 @@ Microsoft では、クラスターをスケーリングするための次のユ�
 1. ジョブを手動で終了する。
 1. スケーリング操作の完了後に、ジョブを再送信する。
 
-保留中または実行中のジョブの一覧を表示するには、次の手順に従って **YARN ResourceManager UI** を使用できます。
+保留中または実行中のジョブの一覧を表示するには、次の手順に従って YARN **Resource Manager UI** を使用できます。
 
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
-2. 左側から、 **[すべてのサービス]**  >  **[分析]**  >  **[HDInsight クラスター]** に移動し、クラスターを選択します。
-3. メイン ビューから、 **[クラスター ダッシュボード]**  >  **[Ambari ホーム]** に移動します。 クラスターの資格情報を入力します。
-4. Ambari UI から、左側のメニューにあるサービスの一覧で **[YARN]** を選択します。  
-5. [YARN] ページから **[クイック リンク]** を選択し、アクティブなヘッド ノードにポインターを置き、 **[ResourceManager UI]** を選択します。
+1. [Azure portal](https://portal.azure.com/) でご自身のクラスターを選択します。  手順については、「[クラスターの一覧と表示](./hdinsight-administer-use-portal-linux.md#showClusters)」を参照してください。 クラスターは新しいポータル ページで開きます。
+2. メイン ビューから、 **[クラスター ダッシュボード]**  >  **[Ambari ホーム]** に移動します。 クラスターの資格情報を入力します。
+3. Ambari UI から、左側のメニューにあるサービスの一覧で **[YARN]** を選択します。  
+4. [YARN] ページから **[クイック リンク]** を選択し、アクティブなヘッド ノードにポインターを置き、 **[ResourceManager UI]** を選択します。
 
     ![ResourceManager UI](./media/hdinsight-scaling-best-practices/resourcemanager-ui.png)
 
@@ -141,13 +187,13 @@ Hive で一時ファイルが残っている場合は、これらのファイル
 1. Hive サービスを停止し、すべてのクエリとジョブが完了していることを確認します。
 2. 上記で見つかったスクラッチ ディレクトリ `hdfs://mycluster/tmp/hive/` のコンテンツを一覧表示して、ファイルが含まれているかどうかを確認します。
 
-    ```
+    ```bash
     hadoop fs -ls -R hdfs://mycluster/tmp/hive/hive
     ```
 
     ファイルが存在する場合の出力例は次のとおりです。
 
-    ```
+    ```output
     sshuser@hn0-scalin:~$ hadoop fs -ls -R hdfs://mycluster/tmp/hive/hive
     drwx------   - hive hdfs          0 2017-07-06 13:40 hdfs://mycluster/tmp/hive/hive/4f3f4253-e6d0-42ac-88bc-90f0ea03602c
     drwx------   - hive hdfs          0 2017-07-06 13:40 hdfs://mycluster/tmp/hive/hive/4f3f4253-e6d0-42ac-88bc-90f0ea03602c/_tmp_space.db
@@ -161,7 +207,7 @@ Hive で一時ファイルが残っている場合は、これらのファイル
 
     HDFS からファイルを削除するコマンドラインの例:
 
-    ```
+    ```bash
     hadoop fs -rm -r -skipTrash hdfs://mycluster/tmp/hive/
     ```
 
@@ -174,7 +220,6 @@ Hive で一時ファイルが残っている場合は、これらのファイル
 #### <a name="run-the-command-to-leave-safe-mode"></a>セーフ モードを終了するコマンドを実行する
 
 最後のオプションは、セーフ モードを終了するコマンドを実行することです。 HDFS がセーフ モードになる原因が、レプリケーション中の Hive ファイルだということがわかっている場合は、次のコマンドを実行してセーフ モードを終了することができます。
-
 
 ```bash
 hdfs dfsadmin -D 'fs.default.name=hdfs://mycluster/' -safemode leave
@@ -202,4 +247,3 @@ hdfs dfsadmin -D 'fs.default.name=hdfs://mycluster/' -safemode leave
 
 * [Azure HDInsight クラスターを自動的にスケーリングする](hdinsight-autoscale-clusters.md)
 * [Azure HDInsight の概要](hadoop/apache-hadoop-introduction.md)
-* [クラスターのスケーリング](hdinsight-administer-use-portal-linux.md#scale-clusters)

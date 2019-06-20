@@ -17,10 +17,10 @@ ms.date: 05/24/2019
 ms.author: manayar
 ms.custom: na
 ms.openlocfilehash: 0674d8c98f4bf37bbf9417de60ff4c60910d802a
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66258285"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure Virtual Machine Scale Sets の FAQ
@@ -232,8 +232,8 @@ SSH 公開キーは、Linux VM の作成時にプレーン テキストで提供
 linuxConfiguration の要素名 | 必須 | Type | 説明
 --- | --- | --- | ---
 ssh | いいえ | コレクション | Linux OS の SSH キーの構成を指定します。
-path | はい | String | SSH キーまたは証明書を配置する Linux ファイル パスを指定します。
-keyData | はい | String | Base64 でエンコードされた SSH 公開キーを指定します。
+path | はい | string | SSH キーまたは証明書を配置する Linux ファイル パスを指定します。
+keyData | はい | string | Base64 でエンコードされた SSH 公開キーを指定します。
 
 実際の例については、[GitHub の 101-vm-sshkey クイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-sshkey/azuredeploy.json)を参照してください。
 
