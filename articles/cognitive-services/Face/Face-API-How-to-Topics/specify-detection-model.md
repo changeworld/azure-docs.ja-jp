@@ -75,7 +75,7 @@ await client.PersonGroupPerson.AddFaceFromUrlAsync(personGroupId, personId, imag
 このコードは、ID `mypersongroupid` を持つ **PersonGroup** を作成し、それに **Person** を追加します。 次に、`detection_02` モデルを使用して、この **Person** に顔を追加します。 *detectionModel* パラメーターを指定しない場合、API は既定のモデルである `detection_01` を使用します。
 
 > [!NOTE]
-> **Person** オブジェクト内のすべての顔に同じ検出モデルを使用する必要はありません。また、([Face - 識別] API などで) **Person** オブジェクトと比較するために新しい顔を検出するときに、同じ検出モデルを使用する必要もありません。
+> **Person** オブジェクト内のすべての顔に同じ検出モデルを使用する必要はありません。また、([Face - Identify] API などで) **Person** オブジェクトと比較するために新しい顔を検出するときに、同じ検出モデルを使用する必要もありません。
 
 ## <a name="add-face-to-facelist-with-specified-model"></a>指定したモデルを使用して FaceList に顔を追加する
 
@@ -114,7 +114,7 @@ await client.FaceList.AddFaceFromUrlAsync(faceListId, imageUrl, detectionModel: 
 
 [Face - Detect]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d
 [Face - Find Similar]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237
-[Face - 識別]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239
+[Face - Identify]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239
 [Face - Verify]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a
 [PersonGroup - Create]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244
 [PersonGroup - Get]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395246
