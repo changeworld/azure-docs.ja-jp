@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 09/07/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 40a5416f15b0e2d66d6ce4b4787573560ee4af00
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: b2bce9788006a564def9bd8c1375a85dc4184b67
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66156398"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66814783"
 ---
 ## <a name="create-a-device-identity"></a>デバイス ID の作成
 
-このセクションでは、Azure CLI を使用して、このチュートリアル用のデバイス ID を作成します。 Azure CLI は、[Azure Cloud Shell](~/articles/cloud-shell/overview.md) にプレインストールされています。また、[ローカルにインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)することもできます。 デバイス ID には大文字と小文字の区別があります。
+このセクションでは、Azure CLI を使用して、このチュートリアル用のデバイス ID を作成します。 Azure CLI は、[Azure Cloud Shell](~/articles/cloud-shell/overview.md) にプレインストールされています。また、[Azure CLI をローカルにインストール](/cli/azure/install-azure-cli)することもできます。 デバイス ID には大文字と小文字の区別があります。
 
 1. Azure CLI を使用して IoT 拡張機能をインストールするには、コマンド ライン環境で、次のコマンドを実行します。
 

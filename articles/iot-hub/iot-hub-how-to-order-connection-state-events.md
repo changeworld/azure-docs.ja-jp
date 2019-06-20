@@ -7,12 +7,12 @@ author: ash2017
 ms.topic: conceptual
 ms.date: 04/11/2019
 ms.author: asrastog
-ms.openlocfilehash: ff8f8c6656c4cd095749b3e048c72572d113f1ad
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: f4baab6e0909144efc613572207e7f24c4b4fe1f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "66015264"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66743259"
 ---
 # <a name="order-device-connection-events-from-azure-iot-hub-using-azure-cosmos-db"></a>Azure IoT Hub から Azure Cosmos DB を使用してデバイス接続イベントを順序付ける
 
@@ -38,7 +38,7 @@ Azure Event Grid を使用すると、イベント ベースのアプリケー�
 
    ![ストアド プロシージャを作成する](./media/iot-hub-how-to-order-connection-state-events/create-stored-procedure.png)
 
-2. ストアド プロシージャ ID に **LatestDeviceConnectionState** を入力し、**ストアド プロシージャの本文**に次のコードを貼り付けます。 このコードでストアド プロシージャ本文のすべての既存のコードを置き換える必要があることに注意してください。 このコードでは、デバイス ID ごとに 1 行を維持し、最も大きなシーケンス番号を識別することによってそのデバイス ID の最新の接続状態を記録します。
+2. ストアド プロシージャ ID の **LatestDeviceConnectionState** を入力し、**ストアド プロシージャの本文**に次のコードを貼り付けます。 このコードでストアド プロシージャ本文のすべての既存のコードを置き換える必要があることに注意してください。 このコードでは、デバイス ID ごとに 1 行を維持し、最も大きなシーケンス番号を識別することによってそのデバイス ID の最新の接続状態を記録します。
 
     ```javascript
     // SAMPLE STORED PROCEDURE
@@ -224,7 +224,7 @@ Azure Event Grid を使用すると、イベント ベースのアプリケー�
 
    **Sproc ID**:LatestDeviceConnectionState
 
-5. **[新しいパラメーターの追加]** を選択します。 表示されたドロップダウンで、 **[パーティション キー]** と **[ストアド プロシージャのパラメーター]** の横のボックスをチェックし、画面の任意の場所をクリックします。これにより、パーティション キー値のフィールドとストアド プロシージャのパラメーターのフィールドが追加されます。
+5. **[新しいパラメーターの追加]** を選択します。 表示されたドロップダウンで、 **[パーティション キー]** と **[ストアド プロシージャのパラメーター]** の横のボックスをチェックし、画面の任意の場所をクリックっします。これにより、パーティション キー値のフィールドとストアド プロシージャーのパラメーターのフィールドが追加されます。
 
    ![ロジック アプリのアクションを設定する](./media/iot-hub-how-to-order-connection-state-events/logicapp-stored-procedure.png)
 
@@ -266,13 +266,13 @@ Logic Apps デザイナーを終了する前に、ロジック アプリがト�
 
 4. **[イベント サブスクリプションの詳細]** を入力します。わかりやすい名前を指定し、 **[イベント グリッド スキーマ]** を選択します。
 
-5. **[イベントの種類]** フィールドに入力します。 **[すべてのイベントの種類を購読します]** をオフにして、メニューから **[Device Connected]\(デバイスの接続\)** と **[Device Disconnected]\(デバイスの切断\)** を選択します。
+5. **[イベントの種類]** フィールドに入力します。 ドロップダウン リストで、 **[Device Connected]\(デバイスの接続\)** および **[Device Disconnected]\(デバイスの切断\)** のみをメニューから選択します。 画面の他の場所をクリックしてリストを閉じ、選択内容を保存します。
 
    ![検索するイベントの種類を設定する](./media/iot-hub-how-to-order-connection-state-events/set-event-types.png)
 
 6. **[エンドポイントの詳細]** で、 [エンドポイントのタイプ] として **[web hook]** を選択し、[エンドポイントの選択] をクリックして、ロジック アプリからコピーした URL を貼り付けて選択を確認します。
 
-   ![エンドポイントの URL を選択する](./media/iot-hub-how-to-order-connection-state-events/endpoint-url.png)
+   ![エンドポイントの URL を選択する](./media/iot-hub-how-to-order-connection-state-events/endpoint-select.png)
 
 7. これで、フォームは次の例のようになります。
 
@@ -302,11 +302,9 @@ Logic Apps デザイナーを終了する前に、ロジック アプリがト�
 
    ![デバイスの接続文字列](./media/iot-hub-how-to-order-connection-state-events/DeviceConnString.png)
 
-HostName=test-eventgrid-hub.azure-devices.net;DeviceId=Demo-Device-1;SharedAccessKey=cv8uPNixe7E2R9EHtimoY/PlJfBV/lOYCMajVOp/Cuw=
-
 ### <a name="start-raspberry-pi-simulator"></a>Raspberry Pi シミュレーターを起動する
 
-1. Raspberry Pi Web シミュレーターを使用してデバイス接続をシミュレートしましょう。
+Raspberry Pi Web シミュレーターを使用してデバイス接続をシミュレートしましょう。
 
 [Raspberry Pi シミュレーターの起動](https://azure-samples.github.io/raspberry-pi-web-simulator/#Getstarted)
 

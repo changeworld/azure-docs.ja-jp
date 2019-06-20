@@ -15,10 +15,10 @@ ms.devlang: azurecli
 ms.date: 06/06/2019
 ms.author: cynthn
 ms.openlocfilehash: 167370a4eebded3dba898ed47dede7a36900d976
-ms.sourcegitcommit: f9448a4d87226362a02b14d88290ad6b1aea9d82
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66808219"
 ---
 # <a name="workloads-on-azure-virtual-machines"></a>Azure Virtual Machines 上のワークロード

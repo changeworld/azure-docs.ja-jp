@@ -8,10 +8,10 @@ ms.topic: reference
 ms.date: 02/07/2019
 ms.author: mihansen
 ms.openlocfilehash: 74a17c4a433ebe1c1107230739086375fe165ed9
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66753728"
 ---
 # <a name="features"></a>機能

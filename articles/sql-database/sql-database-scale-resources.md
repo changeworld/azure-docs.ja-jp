@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: e476f27e2a1945135bd90435078d5bcd47c4b3de
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: c918abdc635e7a4a831e367e159354bb752e95e6
+ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "65073138"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66743104"
 ---
 # <a name="dynamically-scale-database-resources-with-minimal-downtime"></a>最小限のダウンタイムでデータベースのリソースを動的にスケーリングする
 
@@ -55,6 +55,9 @@ Azure SQL Database の 3 種類すべてに、データベースを動的にス�
 - [単一データベース](sql-database-single-database-scale.md)では、[DTU](sql-database-dtu-resource-limits-single-databases.md) モデルまたは[仮想コア](sql-database-vcore-resource-limits-single-databases.md) モデルを使って、各データベースに割り当てられる最大リソース量を定義できます。
 - [マネージド インスタンス](sql-database-managed-instance.md)では[仮想コア](sql-database-managed-instance.md#vcore-based-purchasing-model) モードが使用されており、インスタンスに割り当てられる最大 CPU コア数と最大ストレージ量を定義できます。 インスタンス内のすべてのデータベースが、インスタンスに割り当てられたリソースを共有します。
 - [エラスティック プール](sql-database-elastic-pool-scale.md)を使用すると、プール内のデータベースのグループごとの最大リソース制限を定義できます。
+
+> [!NOTE]
+> スケールアップ/スケールダウン処理が完了するとき、短時間の接続の中断が予想されます。 [標準の一時的なエラーのための再試行ロジック](sql-database-connectivity-issues.md#retry-logic-for-transient-errors)を実装している場合、フェールオーバーを意識することはありません。
 
 ## <a name="alternative-scale-methods"></a>別のスケーリング方法
 

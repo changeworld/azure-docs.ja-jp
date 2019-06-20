@@ -1,25 +1,18 @@
 ---
-title: Azure Application Gateway PowerShell のサンプル | Microsoft Docs
+title: Azure Application Gateway PowerShell のサンプル
 description: Azure Application Gateway PowerShell のサンプル
 services: application-gateway
-documentationcenter: networking
 author: vhorne
-manager: jpconnock
-editor: tysonn
-tags: azure-resource-manager
 ms.service: application-gateway
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
-ms.workload: infrastructure
-ms.date: 01/29/2018
+ms.date: 6/7/2019
 ms.author: victorh
-ms.custom: mvc
-ms.openlocfilehash: 54505f108757fc67b07e44ef3b603bc353b9aec5
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 4f747bd570f02d90718766b5cf35d363c08594e4
+ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33200656"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66743075"
 ---
 # <a name="azure-application-gateway-powershell-samples"></a>Azure Application Gateway PowerShell のサンプル
 
@@ -29,5 +22,5 @@ ms.locfileid: "33200656"
 |---|---|
 | [Web トラフィックを管理する](./scripts/create-vmss-powershell.md) | アプリケーション ゲートウェイとすべての関連リソースを作成します。|
 | [Web トラフィックを制限する](./scripts/create-vmss-waf-powershell.md) | OWASP 規則を使用してトラフィックを制限するアプリケーション ゲートウェイを作成します。|
+|[WAF カスタム規則](scripts/waf-custom-rules-powershell.md)|カスタム ルールを使用してアプリケーション ゲートウェイの Web アプリケーション ファイアウォールを作成します。
 | | |
-

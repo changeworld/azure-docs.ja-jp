@@ -6,15 +6,15 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 01/11/2019
+ms.date: 06/05/2019
 ms.author: v-adgera
 ms.custom: seodec18
-ms.openlocfilehash: b77960961a7c032faad7000f7a2ce297802a1497
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 9490772226ecdb90cdd2e0b98fe8336b91db6044
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65967056"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66754519"
 ---
 # <a name="add-blobs-to-objects-in-azure-digital-twins"></a>Azure Digital Twins 内のオブジェクトに BLOB を追加する
 
@@ -36,7 +36,7 @@ Azure Digital Twins では、デバイス、スペース、ユーザーへの BL
 
 4 つの主な JSON スキーマは次のとおりです。
 
-![JSON スキーマ][1]
+[![JSON スキーマ](media/how-to-add-blobs/blob-models.PNG)](media/how-to-add-blobs/blob-models.PNG#lightbox)
 
 JSON BLOB のメタデータは、次のモデルに準拠しています。
 
@@ -53,14 +53,14 @@ JSON BLOB のメタデータは、次のモデルに準拠しています。
 
 | Attribute | Type | 説明 |
 | --- | --- | --- |
-| **parentId** | String | BLOB を (スペース、デバイス、またはユーザー) と関連付ける親エンティティ |
-| **name** |String | BLOB のわかりやすい名前 |
-| **type** | String | BLOB の種類。*type* と *typeId* は使用できません  |
+| **parentId** | string | BLOB を (スペース、デバイス、またはユーザー) と関連付ける親エンティティ |
+| **name** |string | BLOB のわかりやすい名前 |
+| **type** | string | BLOB の種類。*type* と *typeId* は使用できません  |
 | **typeId** | 整数 | BLOB の種類の ID。*type* と *typeId* は使用できません |
-| **subtype** | String | BLOB のサブタイプ。*subtype* と *subtypeId* は使用できません |
+| **subtype** | string | BLOB のサブタイプ。*subtype* と *subtypeId* は使用できません |
 | **subtypeId** | 整数 | BLOB のサブタイプ ID。*subtype* と *subtypeId* は使用できません |
-| **description** | String | BLOB のカスタマイズした説明 |
-| **sharing** | String | BLOB を共有できるかどうか - 列挙型 [`None`、`Tree`、`Global`] |
+| **description** | string | BLOB のカスタマイズした説明 |
+| **sharing** | string | BLOB を共有できるかどうか - 列挙型 [`None`、`Tree`、`Global`] |
 
 BLOB のメタデータは常に最初のチャンクとして指定されます。**Content-type** `application/json` で、または `.json` ファイルとして指定されます。 ファイル データは 2 番目のチャンクで供給され、サポートされているいずれかの MIME の種類である可能性があります。
 
@@ -110,18 +110,18 @@ Swagger のドキュメントでは、これらのモデル スキーマが詳�
 
 | Attribute | Type | 説明 |
 | --- | --- | --- |
-| **id** | String | BLOB の一意識別子 |
-| **name** |String | BLOB のわかりやすい名前 |
-| **parentId** | String | BLOB を (スペース、デバイス、またはユーザー) と関連付ける親エンティティ |
-| **type** | String | BLOB の種類。*type* と *typeId* は使用できません  |
+| **id** | string | BLOB の一意識別子 |
+| **name** |string | BLOB のわかりやすい名前 |
+| **parentId** | string | BLOB を (スペース、デバイス、またはユーザー) と関連付ける親エンティティ |
+| **type** | string | BLOB の種類。*type* と *typeId* は使用できません  |
 | **typeId** | 整数 | BLOB の種類の ID。*type* と *typeId* は使用できません |
-| **subtype** | String | BLOB のサブタイプ。*subtype* と *subtypeId* は使用できません |
+| **subtype** | string | BLOB のサブタイプ。*subtype* と *subtypeId* は使用できません |
 | **subtypeId** | 整数 | BLOB のサブタイプ ID。*subtype* と *subtypeId* は使用できません |
-| **sharing** | String | BLOB を共有できるかどうか - 列挙型 [`None`、`Tree`、`Global`] |
-| **description** | String | BLOB のカスタマイズした説明 |
+| **sharing** | string | BLOB を共有できるかどうか - 列挙型 [`None`、`Tree`、`Global`] |
+| **description** | string | BLOB のカスタマイズした説明 |
 | **contentInfos** | Array | バージョンを含む構造化されていないメタデータ情報を指定します |
-| **fullName** | String | BLOB の完全な名前 |
-| **spacePaths** | String | スペース パス |
+| **fullName** | string | BLOB の完全な名前 |
+| **spacePaths** | string | スペース パス |
 
 BLOB のメタデータは常に最初のチャンクとして指定されます。**Content-type** `application/json` で、または `.json` ファイルとして指定されます。 ファイル データは 2 番目のチャンクで供給され、サポートされているいずれかの MIME の種類である可能性があります。
 
@@ -183,7 +183,7 @@ var response = await httpClient.PostAsync("spaces/blobs", multipartContent);
 
 最後に、[cURL](https://curl.haxx.se/) ユーザーは、同じ方法でマルチパート フォーム要求を行うことができます。
 
-![デバイスの BLOB][5]
+[![デバイスの BLOB](media/how-to-add-blobs/curl.PNG)](media/how-to-add-blobs/curl.PNG#lightbox)
 
 ```bash
 curl
@@ -211,7 +211,7 @@ POST が成功すると、新しい BLOB の ID が返されます (前に赤で
 
 BLOB をデバイスにアタッチできます。 次の図では、Management API に関する Swagger のリファレンス ドキュメントを示します。 BLOB を使用するためのデバイス関連の API エンドポイントと、それらに渡す必要があるパス パラメーターが指定されています。
 
-![デバイスの BLOB][2]
+[![デバイスの BLOB](media/how-to-add-blobs/blobs-device-api.PNG)](media/how-to-add-blobs/blobs-device-api.PNG#lightbox)
 
 たとえば、BLOB を更新または作成して、BLOB をデバイスにアタッチするために、以下に対して認証済みの HTTP PATCH 要求を行います。
 
@@ -229,7 +229,7 @@ YOUR_MANAGEMENT_API_URL/devices/blobs/YOUR_BLOB_ID
 
 スペースに BLOB をアタッチすることもできます。 次の図では、BLOB を処理するすべてのスペース API エンドポイントの一覧を示します。 また、それらのエンドポイントに渡すすべてのパス パラメーターの一覧も示します。
 
-![スペース BLOB][3]
+[![スペース BLOB](media/how-to-add-blobs/blobs-space-api.PNG)](media/how-to-add-blobs/blobs-space-api.PNG#lightbox)
 
 たとえば、スペースにアタッチされている BLOB を返すには、以下に対して認証済みの HTTP GET 要求を行います。
 
@@ -249,7 +249,7 @@ YOUR_MANAGEMENT_API_URL/spaces/blobs/YOUR_BLOB_ID
 
 BLOB を (たとえば、プロファイル画像を関連付けるために) ユーザー モデルにアタッチできます。 次の図では、関連するユーザー API エンドポイントと、`id` などの必須のパス パラメーターを示します。
 
-![ユーザー BLOB][4]
+[![ユーザー BLOB](media/how-to-add-blobs/blobs-users-api.PNG)](media/how-to-add-blobs/blobs-users-api.PNG#lightbox)
 
 たとえば、ユーザーにアタッチされている BLOB をフェッチするには、必要なフォーム データを使用して認証済みの HTTP GET 要求を行います。
 
@@ -288,10 +288,3 @@ YOUR_MANAGEMENT_API_URL/users/blobs/YOUR_BLOB_ID
 - Azure Digital Twins に関する Swagger の参照ドキュメントについて詳しくは、[Azure Digital Twins Swagger の使用方法](how-to-use-swagger.md)に関する記事をご覧ください。
 
 - Postman を通して BLOB をアップロードする場合は、[Postman を構成する方法](./how-to-configure-postman.md)に関するページを参照してください。
-
-<!-- Images -->
-[1]: media/how-to-add-blobs/blob-models.PNG
-[2]: media/how-to-add-blobs/blobs-device-api.PNG
-[3]: media/how-to-add-blobs/blobs-space-api.PNG
-[4]: media/how-to-add-blobs/blobs-users-api.PNG
-[5]: media/how-to-add-blobs/curl.PNG

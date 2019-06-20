@@ -13,16 +13,16 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 11/13/2018
+ms.date: 06/07/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78676ac2f2dcff74a27e0260a5d83e924f7c246f
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 6ee49ae56122fe596a4490914677d91d2f0348f6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58434825"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66807528"
 ---
 # <a name="troubleshooting-azure-active-directory-activity-logs-content-pack-errors"></a>Azure Active Directory アクティビティ ログ コンテンツ パックのエラーのトラブルシューティングを行う 
 
@@ -47,7 +47,7 @@ Azure Active Directory (Azure AD) の Power BI コンテンツ パックを操�
 | 原因 | 修正方法 |
 | ---   | ---        |
 | 更新失敗エラーは、コンテンツ パックに接続するユーザーの資格情報がリセットされたが、コンテンツ パックの接続設定が更新されていないときに発生することがあります。 | Power BI で、Azure Active Directory アクティビティ ログ ダッシュボード (**Azure Active Directory のアクティビティ ログ**) に対応するデータセットを検索し、[更新のスケジュール設定] を選択し、Azure AD 資格情報を入力します。 |
-| 更新は、基になるコンテンツ パックのデータの問題が原因で失敗することがあります。 | [サポート チケットを提出](../fundamentals/active-directory-troubleshooting-support-howto.md)します。|
+| 大規模なデータセットが原因で更新が失敗します。 | 現時点において、Power BI を使用した Azure AD コンテンツ パックでは、Power BI サービスのタイムアウトに関するいくつかの制限のため、小さなデータ セットのみ (500,00 行未満) のみサポートできます。 調整エラーが発生した場合、またはタイムアウトの問題で更新に失敗した場合は、大規模なデータセットをフェッチしようとしていることが原因の可能性があります。 クエリの時間を短縮し、もう一度やり直してください。|
  
  
 ## <a name="failed-to-update-data-source-credentials"></a>データ ソースの資格情報を更新できませんでした 
@@ -63,7 +63,7 @@ Azure Active Directory (Azure AD) の Power BI コンテンツ パックを操�
 
 ## <a name="data-import-is-too-slow"></a>データのインポートが遅すぎます 
  
-**このエラーがどのように表面化するか**:Power BI でコンテンツ パックに接続した後、Azure AD アクティビティ ログ用のダッシュボードを準備するためのデータ インポート処理が開始されます。 次のメッセージが表示されます。**[データをインポートしています...]**。これ以上は進みません。  
+**このエラーがどのように表面化するか**:Power BI でコンテンツ パックに接続した後、Azure AD アクティビティ ログ用のダッシュボードを準備するためのデータ インポート処理が開始されます。 次のメッセージが表示されます。 **[データをインポートしています...]** 。これ以上は進みません。  
 
 | 原因 | 修正方法 |
 | ---   | ---        |

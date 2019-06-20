@@ -8,10 +8,10 @@ ms.topic: reference
 ms.date: 02/07/2019
 ms.author: mihansen
 ms.openlocfilehash: 50a610c3fb92b65b62e17a986ea1c0f70d0a0f1d
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66753747"
 ---
 # <a name="frequently-asked-questions-about-azure-api-for-fhir"></a>Azure API for FHIR についてよく寄せられる質問

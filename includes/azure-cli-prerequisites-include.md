@@ -1,21 +1,20 @@
 ---
-author: genlin
-ms.service: virtual-network
+author: sptramer
 ms.topic: include
-ms.date: 11/09/2018
-ms.author: genli
-ms.openlocfilehash: 147eb5321853706b59fac7d3d49a761a251987fa
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.date: 05/31/2019
+ms.author: sttramer
+ms.openlocfilehash: 4152d2da91d70533801304c15345600bd625b9a6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66170896"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66814877"
 ---
 ## <a name="prerequisite-install-the-azure-cli"></a>前提条件:Azure CLI のインストール
-この記事の手順を実行するには、[Mac、Linux、Windows 用の Azure コマンド ライン インターフェイス (Azure CLI) をインストール](../articles/cli-install-nodejs.md)し、[Azure にサインイン](/cli/azure/authenticate-azure-cli)する必要があります。 
+
+この記事の手順を実行するには、[Azure CLI をインストール](/cli/azure/install-azure-cli)して、[Azure にサインイン](/cli/azure/authenticate-azure-cli)します。 
 
 > [!NOTE]
-> Azure アカウントをお持ちでない場合は、取得する必要があります。 [ここで無料試用版](../articles/active-directory/fundamentals/sign-up-organization.md)にサインアップしてください。 さらに、完全に理解するために、 [jq](https://stedolan.github.io/jq/) または他のいくつかの JSON 解析ツールまたはライブラリをインストールする必要があります。
-> 
-> 
+> Azure アカウントをお持ちでない場合は、取得する必要があります。 [ここで無料試用版](../articles/active-directory/fundamentals/sign-up-organization.md)にサインアップしてください。
+> さらに、理解するために、[jq](https://stedolan.github.io/jq/) または他のいくつかの JSON 解析ツールまたはライブラリをインストールする必要があります。
 

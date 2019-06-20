@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 11/17/2018
 ms.author: yijenj
-ms.openlocfilehash: 09ce4cdc6ab4556f0ba68507bb23d09e02ae0357
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.openlocfilehash: 45d575488db8d740069fba961203842899024747
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66296823"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66807185"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Azure パートナーの顧客の使用状況の属性
 
@@ -267,11 +267,13 @@ foreach ($deployment in $deployments){
 
 ## <a name="get-support"></a>サポートを受ける
 
-レポートまたはパートナー センターへのサインインに関する問題が発生した場合は、[https://partner.microsoft.com/en-US/support](https://partner.microsoft.com/support) でパートナー センター サポート チームにサポート リクエストを作成します。
+発生した問題に応じて 2 つのサポート チャネルがあります。
+
+パートナー センターの問題 (顧客の利用状況属性レポートの表示やサインインなど) が発生した場合は、[https://partner.microsoft.com/en-US/support](https://partner.microsoft.com/support) でパートナー センター サポート チームにサポート要求を作成します。
 
 ![](./media/marketplace-publishers-guide/partner-center-log-in-support.png)
 
-マーケットプレースのオンボードや顧客の使用状況の属性についてサポートが必要な場合は、以下の手順に従います。
+マーケットプレースのオンボードや、顧客の使用状況の属性全般 (顧客の使用状況の属性の設定方法など) についてのサポートが必要な場合は、次の手順に従います。
 
 1. [サポート ページ](https://go.microsoft.com/fwlink/?linkid=844975)に移動します。
 

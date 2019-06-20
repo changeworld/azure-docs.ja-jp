@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 05/02/2019
 ms.author: v-chjenk
-ms.openlocfilehash: 92a0ba8c0f43e26b7a1bbe82cc52f61d390fc04d
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: cb9edbb508ddd993dcefbf69eb06b4f0d4156485
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65827332"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66742549"
 ---
 # <a name="install-office-on-a-master-vhd-image"></a>マスター VHD イメージに Office をインストールする
 
@@ -29,7 +29,9 @@ ms.locfileid: "65827332"
 
 共有コンピューターのライセンス認証により、組織内で複数のユーザーによってアクセスされるコンピューターに Office 365 ProPlus をデプロイすることができます。 共有コンピューターのライセンス認証の詳細については、「[Office 365 ProPlus に対する共有コンピューターのライセンス認証の概要](https://docs.microsoft.com/DeployOffice/overview-of-shared-computer-activation-for-office-365-proplus)」を参照してください。
 
-[Office 展開ツール](https://www.microsoft.com/download/details.aspx?id=49117)を使用して Office をインストールします。 Windows 10 Enterprise マルチセッションでは、Office 365 ProPlus のみがサポートされています。
+[Office 展開ツール](https://www.microsoft.com/download/details.aspx?id=49117)を使用して Office をインストールします。 Windows 10 Enterprise マルチセッションでは次のバージョンの Office のみがサポートされています。
+- Office 365 ProPlus
+- Microsoft 365 Business サブスクリプションに付属している Office 365 Business
 
 Office 展開ツールには、構成 XML ファイルが必要です。 次のサンプルをカスタマイズするには、「[Office 展開ツールの構成オプション](https://docs.microsoft.com/deployoffice/configuration-options-for-the-office-2016-deployment-tool)」をご覧ください。
 
