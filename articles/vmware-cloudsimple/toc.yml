@@ -10,7 +10,7 @@
     - name: クイック スタート
       expanded: true
       items:
-        - name: 初期化と容量の購入
+        - name: 初期化と容量のプロビジョニング
           href: quickstart-create-cloudsimple-service.md
         - name: プライベート クラウド環境の構成
           href: quickstart-create-private-cloud.md
@@ -62,7 +62,7 @@
           href: access-cloudsimple-portal.md
         - name: ノードを管理する
           items:
-            - name: ノードを購入する
+            - name: ノードのプロビジョニング
               href: create-nodes.md
         - name: プライベート クラウドのリソースを管理する
           items:

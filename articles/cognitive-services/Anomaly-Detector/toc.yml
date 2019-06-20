@@ -58,6 +58,8 @@
       href: 'https://aka.ms/adpricing'
     - name: リージョン別の提供状況
       href: 'https://aka.ms/adregion'
+    - name: Microsoft Teams 上での Anomaly Detector Advisors グループへの参加
+      href: 'https://aka.ms/adadvisorsjoin'
     - name: ソリューション アーキテクチャの参照
       href: 'https://azure.microsoft.com/solutions/architecture/anomaly-detector-process/'
     - name: コンプライアンス
@@ -66,8 +68,6 @@
   items:
     - name: サポートを受ける
       href: 'https://aka.ms/adsupport'
-    - name: パブリック コミュニティに参加する
-      href: 'https://aka.ms/adadvisorsjoin'
     - name: スタック オーバーフロー
       href: 'https://aka.ms/adso'
     - name: MSDN

@@ -31,6 +31,14 @@
       href: search-get-started-python.md
 - name: チュートリアル
   items:
+    - name: 最初のアプリを作成する
+      items:
+        - name: 1 - 基本的な検索ページ
+          href: tutorial-csharp-create-first-app.md
+        - name: 2 - 結果のページングの追加
+          href: tutorial-csharp-paging.md
+        - name: 3 - 入力候補の追加
+          href: tutorial-csharp-type-ahead-and-suggestions.md
     - name: Azure SQL Database のインデックスを作成する
       href: search-indexer-tutorial.md
     - name: Azure JSON BLOB のインデックスを作成する

@@ -7,8 +7,28 @@
       href: Welcome.md
     - name: 言語のサポート
       href: language-support.md
+- name: コンテナー サポート
+  items:
     - name: コンテナー サポート
       href: cognitive-services-container-support.md
+    - name: コンテナーのレシピ
+      items:
+        - name: コンテナーの再利用
+          href: ./containers/container-reuse-recipe.md
+        - name: Azure コンテナー インスタンスへのデプロイ
+          href: ./containers/azure-container-instance-recipe.md
+        - name: Azure Kubernetes へのデプロイ
+          href: ./containers/azure-kubernetes-recipe.md
+        - name: Docker Compose を使用したデプロイ
+          href: ./containers/docker-compose-recipe.md
+    - name: その他のコンテナー サービス
+      items:
+        - name: Azure Container Instances
+          href: ../container-instances/container-instances-tutorial-prepare-app.md
+        - name: Azure Container Registry
+          href: ../container-registry/container-registry-get-started-azure-cli.md
+        - name: Azure Kubernetes Service (AKS)
+          href: ../aks/tutorial-kubernetes-prepare-app.md
 - name: クイック スタート
   items:
     - name: アカウントの作成
