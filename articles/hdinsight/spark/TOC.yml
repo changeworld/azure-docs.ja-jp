@@ -20,8 +20,6 @@
   items:
     - name: Apache Spark クラスターに対するクエリの実行
       href: apache-spark-load-data-run-query.md
-    - name: VSCode を使用した Apache Spark クエリの実行
-      href: ../hdinsight-for-vscode.md
     - name: IntelliJ を使用した Apache Spark クエリの実行
       href: apache-spark-intellij-tool-plugin.md
     - name: BI ツールを使用したデータの分析
@@ -32,6 +30,8 @@
       href: apache-spark-ipython-notebook-machine-learning.md
     - name: IntelliJ での Apache Spark アプリの作成
       href: apache-spark-create-standalone-application.md
+    - name: VSCode を使用した Apache Spark クエリの実行
+      href: ../hdinsight-for-vscode.md
     - name: Ambari と Azure Monitor のログを使用してクラスターの可用性を監視する
       href: ../hdinsight-cluster-availability.md
 - name: サンプル

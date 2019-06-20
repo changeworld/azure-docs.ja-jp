@@ -19,29 +19,19 @@
         - name: Node.js の場合
           href: stream-files-nodejs-quickstart.md
     - name: アップロードされたファイルのエンコードとビデオのストリーム配信
-      items:
-        - name: .NET の場合
-          displayName: 'encode, encoding, job, transform'
-          href: stream-files-tutorial-with-api.md
+      displayName: 'encode, encoding, job, transform'
+      href: stream-files-tutorial-with-api.md
     - name: ライブ ストリーム配信
-      items:
-        - name: .NET の場合
-          href: stream-live-tutorial-with-api.md
-          displayName: 'Live Events, Live Outputs, ingest'
+      href: stream-live-tutorial-with-api.md
+      displayName: 'Live Events, Live Outputs, ingest'
     - name: ビデオの分析
-      items:
-        - name: .NET の場合
-          displayName: 'job, transform, VideoAnalyzerPreset, AudioAnalyzerPreset'
-          href: analyze-videos-tutorial-with-api.md
+      displayName: 'job, transform, VideoAnalyzerPreset, AudioAnalyzerPreset'
+      href: analyze-videos-tutorial-with-api.md
     - name: AES-128 を使用した動的な暗号化
-      items:
-        - name: .NET の場合
-          href: protect-with-aes128.md
+      href: protect-with-aes128.md
     - name: DRM を使用した動的な暗号化
-      items:
-        - name: .NET の場合
-          displayName: 'PlayReady, Widevine, FairPlay'
-          href: protect-with-drm.md
+      displayName: 'PlayReady, Widevine, FairPlay'
+      href: protect-with-drm.md
 - name: 概念
   items:
     - name: 概要
