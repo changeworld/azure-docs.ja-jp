@@ -1,5 +1,5 @@
 ---
-title: ブループリント サンプルのインデックス
+title: Blueprints サンプルのインデックス
 description: Azure Blueprints を使用してデプロイするためのコンプライアンスおよび標準環境のインデックス。
 author: DCtheGeek
 manager: carmonm
