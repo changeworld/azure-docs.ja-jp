@@ -1,0 +1,27 @@
+- name: Immersive Reader のドキュメント
+  href: index.yml
+- name: 概要
+  items:
+    - name: Immersive Reader とは
+      href: Overview.md
+- name: クイック スタート
+  expanded: true
+  items:
+    - name: 'C# の使用'
+      href: Quickstart.md
+- name: チュートリアル
+  items:
+    - name: Immersive Reader の起動 (Node.js)
+      href: tutorial.md
+- name: リファレンス
+  items:
+    - name: SDK リファレンス
+      href: reference.md
+- name: リソース
+  items:
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/en-us/updates/?product=cognitive-services'
+    - name: 言語のサポート
+      href: 'https://aka.ms/ltlangsupport'
+    - name: リージョン別の提供状況
+      href: 'https://azure.microsoft.com/en-us/global-infrastructure/services/?products=cognitive-services'

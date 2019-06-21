@@ -624,10 +624,12 @@
         - name: Logic Apps を使用したアプリケーション ログ記録
           href: /azure/logic-apps/logic-apps-scenario-error-and-exception-handling
           maintainContext: true
-    - name: 監視
+    - name: メトリックを使用した監視
       items:
-        - name: メトリックを使用した監視
+        - name: Cosmos DB アカウントからメトリックを表示する
           href: use-metrics.md
+        - name: Azure Monitor からメトリックを表示する
+          href: cosmos-db-azure-monitor-metrics.md
         - name: SLA の監視
           href: monitor-accounts.md
     - name: ローカルでの開発

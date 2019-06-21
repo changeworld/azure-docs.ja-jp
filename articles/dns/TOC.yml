@@ -17,44 +17,50 @@
       href: dns-getstarted-cli.md
 - name: チュートリアル
   items:
-    - name: Azure DNS でドメインをホストする
-      href: dns-delegate-domain-azure-dns.md
-    - name: Web アプリのカスタム DNS レコードを作成する
-      href: dns-web-sites-custom-domain.md
-    - name: プライベート DNS ゾーンとレコードを作成する
-      href: private-dns-portal.md
-    - name: Traffic Manager のエイリアス レコード
-      href: tutorial-alias-tm.md
-    - name: パブリック IP アドレスのエイリアス レコード
-      href: tutorial-alias-pip.md
-    - name: ゾーン レコードのエイリアス レコード
-      href: tutorial-alias-rr.md
+    - name: パブリック DNS
+      items:
+        - name: Azure DNS でドメインをホストする
+          href: dns-delegate-domain-azure-dns.md
+        - name: Web アプリのカスタム DNS レコードを作成する
+          href: dns-web-sites-custom-domain.md
+        - name: Traffic Manager のエイリアス レコード
+          href: tutorial-alias-tm.md
+        - name: パブリック IP アドレスのエイリアス レコード
+          href: tutorial-alias-pip.md
+        - name: ゾーン レコードのエイリアス レコード
+          href: tutorial-alias-rr.md
+    - name: プライベート DNS
+      items:
+        - name: プライベート DNS ゾーンとレコードを作成する
+          href: private-dns-portal.md
 - name: サンプル
   items:
     - name: Azure CLI
       href: cli-samples.md
 - name: 概念
   items:
+    - name: パブリック DNS
+      items:
+        - name: ゾーンとレコード
+          href: dns-zones-records.md
+        - name: エイリアス レコード
+          href: dns-alias.md
+        - name: Azure DNS による委任
+          href: dns-domain-delegation.md
+        - name: FAQ
+          href: dns-faq.md
+        - name: DNS メトリックとアラート
+          href: dns-alerts-metrics.md
+        - name: 逆引き DNS
+          href: dns-reverse-dns-overview.md
+        - name: Azure DNS と Traffic Manager を使用したディザスター リカバリー
+          href: ../networking/disaster-recovery-dns-traffic-manager.md
     - name: プライベート DNS
       items:
         - name: FAQ - プライベート DNS
           href: dns-faq-private.md
         - name: プライベート DNS のシナリオ
           href: private-dns-scenarios.md
-    - name: ゾーンとレコード
-      href: dns-zones-records.md
-    - name: エイリアス レコード
-      href: dns-alias.md
-    - name: Azure DNS による委任
-      href: dns-domain-delegation.md
-    - name: FAQ
-      href: dns-faq.md
-    - name: DNS メトリックとアラート
-      href: dns-alerts-metrics.md
-    - name: 逆引き DNS
-      href: dns-reverse-dns-overview.md
-    - name: Azure DNS と Traffic Manager を使用したディザスター リカバリー
-      href: ../networking/disaster-recovery-dns-traffic-manager.md
 - name: 方法
   items:
     - name: プライベート DNS
@@ -63,70 +69,84 @@
           href: private-dns-getstarted-cli.md
         - name: プライベート ゾーンの作成 - PowerShell
           href: private-dns-getstarted-powershell.md
-    - name: 負荷分散された Web アプリのエイリアス レコード
-      href: dns-alias-appservice.md
-    - name: DNS ゾーンの管理
+    - name: パブリック DNS
       items:
-        - name: Azure ポータル
-          href: dns-operations-dnszones-portal.md
-        - name: Azure PowerShell
-          href: dns-operations-dnszones.md
-        - name: Azure CLI
-          href: dns-operations-dnszones-cli.md
-    - name: DNS レコードの管理
-      items:
-        - name: Azure ポータル
-          href: dns-operations-recordsets-portal.md
-        - name: Azure PowerShell
-          href: dns-operations-recordsets.md
-        - name: Azure CLI
-          href: dns-operations-recordsets-cli.md
-    - name: 逆引き DNS の管理
-      items:
-        - name: Azure DNS での逆引き参照ゾーンのホスト
-          href: dns-reverse-dns-hosting.md
-        - name: Azure サービスの逆引き DNS レコードの管理
-          href: dns-reverse-dns-for-azure-services.md
-    - name: DNS ゾーン ファイルのインポートとエクスポート
-      href: dns-import-export.md
-    - name: サブドメインの委任
-      href: delegate-subdomain.md
-    - name: PowerShell を使用したサブドメインの委任
-      href: delegate-subdomain-ps.md
-    - name: 他の Azure サービスとの統合
-      href: dns-for-azure-services.md
-    - name: DNS ゾーンとレコードを保護する
-      href: dns-protect-zones-recordsets.md
-    - name: .NET SDK で DNS 操作を自動化する
-      href: dns-sdk.md
-    - name: Azure リソースのカスタム ドメイン
-      href: dns-custom-domain.md
+        - name: 負荷分散された Web アプリのエイリアス レコード
+          href: dns-alias-appservice.md
+        - name: DNS ゾーンの管理
+          items:
+            - name: Azure ポータル
+              href: dns-operations-dnszones-portal.md
+            - name: Azure PowerShell
+              href: dns-operations-dnszones.md
+            - name: Azure CLI
+              href: dns-operations-dnszones-cli.md
+        - name: DNS レコードの管理
+          items:
+            - name: Azure ポータル
+              href: dns-operations-recordsets-portal.md
+            - name: Azure PowerShell
+              href: dns-operations-recordsets.md
+            - name: Azure CLI
+              href: dns-operations-recordsets-cli.md
+        - name: 逆引き DNS の管理
+          items:
+            - name: Azure DNS での逆引き参照ゾーンのホスト
+              href: dns-reverse-dns-hosting.md
+            - name: Azure サービスの逆引き DNS レコードの管理
+              href: dns-reverse-dns-for-azure-services.md
+        - name: DNS ゾーン ファイルのインポートとエクスポート
+          href: dns-import-export.md
+        - name: サブドメインの委任
+          href: delegate-subdomain.md
+        - name: PowerShell を使用したサブドメインの委任
+          href: delegate-subdomain-ps.md
+        - name: 他の Azure サービスとの統合
+          href: dns-for-azure-services.md
+        - name: DNS ゾーンとレコードを保護する
+          href: dns-protect-zones-recordsets.md
+        - name: .NET SDK で DNS 操作を自動化する
+          href: dns-sdk.md
+        - name: Azure リソースのカスタム ドメイン
+          href: dns-custom-domain.md
     - name: トラブルシューティング
       items:
         - name: トラブルシューティング ガイド
           href: dns-troubleshoot.md
 - name: リファレンス
   items:
-    - name: コード サンプル
-      href: 'https://azure.microsoft.com/resources/samples/?service=dns'
-    - name: Azure PowerShell
-      href: /powershell/module/az.dns
-    - name: Azure CLI
-      href: /cli/azure/network/dns
-    - name: .NET
-      href: /dotnet/api/microsoft.azure.management.dns.models
-    - name: Java
-      href: /java/api/com.microsoft.azure.management.dns
-    - name: Node.js
-      href: 'https://azure.github.io/azure-sdk-for-node/azure-arm-dns/latest/'
-    - name: Ruby
-      href: 'https://www.rubydoc.info/gems/azure_mgmt_dns/0.8.0'
-    - name: Python
-      href: 'http://azure-sdk-for-python.readthedocs.io/en/latest/sample_azure-mgmt-dns.html'
-    - name: REST
-      href: /rest/api/dns/
-    - name: Resource Manager テンプレート
-      href: /azure/templates/microsoft.network/dns-allversions
+    - name: パブリック DNS
+      items:
+        - name: コード サンプル
+          href: 'https://azure.microsoft.com/resources/samples/?service=dns'
+        - name: Azure PowerShell
+          href: /powershell/module/az.dns
+        - name: Azure CLI
+          href: /cli/azure/network/dns
+        - name: .NET
+          href: /dotnet/api/microsoft.azure.management.dns.models
+        - name: Java
+          href: /java/api/com.microsoft.azure.management.dns
+        - name: Node.js
+          href: 'https://azure.github.io/azure-sdk-for-node/azure-arm-dns/latest/'
+        - name: Ruby
+          href: 'https://www.rubydoc.info/gems/azure_mgmt_dns/0.8.0'
+        - name: Python
+          href: 'http://azure-sdk-for-python.readthedocs.io/en/latest/sample_azure-mgmt-dns.html'
+        - name: REST
+          href: /rest/api/dns/
+        - name: Resource Manager テンプレート
+          href: /azure/templates/microsoft.network/dns-allversions
+    - name: プライベート DNS
+      items:
+        - name: Azure CLI
+          href: /cli/azure/network/private-dns
+        - name: Azure PowerShell
+          href: /powershell/module/az.PrivateDns
+        - name: .NET
+          href: /dotnet/api/overview/azure/privatedns/management
+        - name: REST
+          href: /rest/api/dns/privatedns/privatezones
 - name: 関連項目
   items:
     - name: Application Gateway
@@ -157,3 +177,5 @@
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: サービスの更新情報
       href: 'https://azure.microsoft.com/updates/?product=dns'
+    - name: プライベート DNS ゾーンの移行ガイド
+      href: private-dns-migration-guide.md

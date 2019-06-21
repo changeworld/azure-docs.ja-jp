@@ -26,6 +26,8 @@
       href: tutorial-restore-files.md
     - name: Azure VM 上の SQL Server のバックアップ
       href: tutorial-sql-backup.md
+    - name: Azure Files のファイル共有のバックアップ
+      href: tutorial-backup-azure-files.md
     - name: Windows Server のバックアップ
       href: tutorial-backup-windows-server-to-azure.md
     - name: Windows Server へのファイルの復元

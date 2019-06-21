@@ -43,6 +43,10 @@
       href: deploy-cli.md
     - name: テンプレートを使用したデプロイ
       href: deploy-template.md
+    - name: 複数のパブリック IP を使用したデプロイ
+      href: deploy-multi-public-ip-powershell.md
+    - name: Availability Zones を使用したデプロイ
+      href: deploy-availability-zone-powershell.md
     - name: Load Balancer との統合
       href: integrate-lb.md
 - name: リファレンス

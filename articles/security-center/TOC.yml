@@ -45,7 +45,7 @@
       href: security-center-onboarding.md
     - name: Windows Defender ATP でのサーバーの保護
       href: security-center-wdatp.md
-    - name: IaaS 向けの Advanced Data Security
+    - name: Azure VM 上の SQL 向けの Advanced Data Security (パブリック プレビュー)
       href: security-center-iaas-advanced-data.md
     - name: App Service の保護
       href: security-center-app-services.md
@@ -83,7 +83,7 @@
           href: security-center-virtual-machine-protection.md
         - name: ネットワーク リソースの保護
           href: security-center-network-recommendations.md
-        - name: SQL サービスとデータの保護
+        - name: データおよびストレージ サービスの保護
           href: security-center-sql-service-recommendations.md
         - name: ID とアクセス権限の保護
           href: security-center-identity-access.md

@@ -73,10 +73,14 @@
           href: service-fabric-tutorial-upgrade-cluster.md
         - name: 5 - クラスターの削除
           href: service-fabric-tutorial-delete-cluster.md
-    - name: AWS でのスタンドアロン クラスターの作成
+    - name: スタンドアロン クラスターを作成する
       items:
-        - name: 1- AWS でのインフラストラクチャの作成
-          href: service-fabric-tutorial-standalone-create-infrastructure.md
+        - name: 1 - インフラストラクチャの作成
+          items:
+            - name: AWS を使用する
+              href: service-fabric-tutorial-standalone-create-infrastructure.md
+            - name: Azure を使用する
+              href: service-fabric-tutorial-standalone-azure-create-infrastructure.md
         - name: 2- Service Fabric の設定
           href: service-fabric-tutorial-standalone-create-service-fabric-cluster.md
         - name: 3- クラスターへのアプリケーションのデプロイ
@@ -695,6 +699,8 @@
       items:
         - name: 一般的なシナリオの診断
           href: service-fabric-diagnostics-common-scenarios.md
+        - name: コード パッケージのエラーの診断
+          href: service-fabric-diagnostics-code-package-errors.md
         - name: アプリケーションの監視
           items:
             - name: アプリケーションへのログ記録の追加
