@@ -93,7 +93,7 @@ Azure AD アカウントを使用して認証を行う場合は、ポータル�
 
 ![アカウント キーへのアクセスがない場合に表示されるエラー](media/storage-access-blobs-queues-portal/auth-error-access-key.png)
 
-アカウント キーへのアクセスがない場合は、BLOB は一覧表示されないことに注意してください。 認証に再度 Azure AD アカウントを使用するには、 **[Switch to Azure AD User Account]\(Azure AD ユーザー アカウントへの切り替え)\** リンクをクリックします。
+アカウント キーへのアクセスがない場合は、BLOB は一覧表示されないことに注意してください。 認証に再度 Azure AD アカウントを使用するには、 **[Switch to Azure AD User Account]\(Azure AD ユーザー アカウントへの切り替え\)** リンクをクリックします。
 
 ## <a name="next-steps"></a>次の手順
 
