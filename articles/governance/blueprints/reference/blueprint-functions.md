@@ -25,7 +25,7 @@ Azure Blueprints では、ブループリントの定義をより動的にする
 - [parameters](#parameters)
 - [resourceGroup](#resourcegroup)
 - [resourceGroups](#resourcegroups)
-- [サブスクリプション](#subscription)
+- [subscription](#subscription)
 
 ## <a name="artifacts"></a>artifacts
 
@@ -151,7 +151,7 @@ Azure Blueprint 関数は、文字列でのみ動作する点が、Azure Resourc
 
 | パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
-| parameterName |あり |string |返されるパラメーターの名前。 |
+| parameterName |はい |string |返されるパラメーターの名前。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -324,7 +324,7 @@ Azure Blueprint 関数は、Azure Resource Manager テンプレート関数と�
 }
 ```
 
-## <a name="subscription"></a>サブスクリプション
+## <a name="subscription"></a>subscription
 
 `subscription()`
 
