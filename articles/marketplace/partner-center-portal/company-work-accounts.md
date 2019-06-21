@@ -23,7 +23,7 @@ ms.locfileid: "65804847"
 会社が Azure、Microsoft Intune、Office 365 などの Microsoft クラウド サービスにサブスクライブしている場合、パートナー センターで使用できる職場の電子メール アカウント ドメイン (Azure Active Directory テナントとも呼ばれます) は既にあります。
 
 確認するには、次の手順に従います。
-1. https://portal.azure.com から Azure 管理ポータルにサインインします。
+1. [https://portal.azure.com](https://portal.azure.com ) から Azure 管理ポータルにサインインします。
 2. 左側のナビゲーション メニューから **[Azure Active Directory]** を選択し、 **[カスタム ドメイン名]** を選択します。
 3. 既に職場アカウントがある場合は、ドメイン名が表示されます。
 

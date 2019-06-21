@@ -172,7 +172,7 @@ Azure VM では、エラー応答に次の JSON 形式を使用します。
 |  OperationNotAllowed  |  要求されたサイズ {0} は、VM が現在割り当てられているクラスターで利用できないため、VM のサイズ変更ができません。 VM を {1} へサイズ変更するには、割り当ての解除 (Azure Portal での停止操作) を実行し、もう一度サイズ変更の操作をしてみてください。 VM のサイズ変更の方針について詳しくは、 https://aka.ms/azure-resizevm をご覧ください。  |
 |  OSProvisioningClientError  |  VM '{0}' に OS をプロビジョニングできませんでした。現在、ゲスト OS をプロビジョニングしています。  |
 |  OSProvisioningClientError  |  VM '{0}' の OS をプロビジョニングできませんでした。 エラーの詳細:{1}。イメージが適切に準備 (一般化) されていることも確認してください。 <ul><li>Windows 向けの手順: https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/  </li></ul> |
-|  OSProvisioningClientError  |  SSH ホスト キーの生成に失敗しました。 エラーの詳細: {0}。 この問題を解決するには、Linux エージェントが適切にセットアップされていることを確かめてください。 <ul><li>https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux/ で手順を確認することができます </li></ul> |
+|  OSProvisioningClientError  |  SSH ホスト キーの生成に失敗しました。 エラーの詳細: {0}。 この問題を解決するには、Linux エージェントが適切にセットアップされていることを確かめてください。 <ul><li>[https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux/](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux/ ) で手順を確認することができます </li></ul> |
 |  OSProvisioningClientError  |  VM に指定されたユーザー名は、この Linux ディストリビューションに関しては無効です。 エラーの詳細: {0}。  |
 |  OSProvisioningInternalError  |  内部エラーが発生したため、VM '{0}' の OS をプロビジョニングできませんでした。  |
 |  OSProvisioningTimedOut  |  割り当てられた時間内に VM '{0}' の OS のプロビジョニングが終了しませんでした。 まだプロビジョニングが正常に完了する可能性があります。 後でプロビジョニングの状態を確認してください。  |

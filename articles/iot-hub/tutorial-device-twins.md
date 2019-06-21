@@ -53,7 +53,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 node --version
 ```
 
-https://github.com/Azure-Samples/azure-iot-samples-node/archive/master.zip からサンプル Node.js プロジェクトをダウンロードし、ZIP アーカイブを抽出します。
+[https://github.com/Azure-Samples/azure-iot-samples-node/archive/master.zip](https://github.com/Azure-Samples/azure-iot-samples-node/archive/master.zip ) からサンプル Node.js プロジェクトをダウンロードし、ZIP アーカイブを抽出します。
 
 ## <a name="set-up-azure-resources"></a>Azure リソースの設定
 

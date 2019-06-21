@@ -73,7 +73,7 @@ SAP LaMa は、SAP ランドスケープの操作と監視のために多くの�
 
 Azure コネクタは SAP LaMa 3.0 SP05 以降に付属しています。 SAP LaMa 3.0 用の最新のサポート パッケージとパッチを常にインストールすることをお勧めします。 Azure コネクタは、サービス プリンシパルを使用して Microsoft Azure を承認します。 次の手順に従って、SAP Landscape Management (LaMa) 用のサービス プリンシパルを作成してください。
 
-1. https://portal.azure.com に移動します
+1. [https://portal.azure.com](https://portal.azure.com ) に移動します
 1. [Azure Active Directory] ブレードを開きます
 1. [アプリの登録] をクリックします
 1. [追加] をクリックします
@@ -86,7 +86,7 @@ Azure コネクタは SAP LaMa 3.0 SP05 以降に付属しています。 SAP La
 
 既定では、サービス プリンシパルには、Azure のリソースにアクセスする権限はありません。 それらにアクセスするためのサービス プリンシパルの権限を付与する必要があります。
 
-1. https://portal.azure.com に移動します
+1. [https://portal.azure.com](https://portal.azure.com ) に移動します
 1. [リソース グループ] ブレードを開きます
 1. 使用するリソース グループを選択します
 1. [アクセス制御 (IAM)] を選択します

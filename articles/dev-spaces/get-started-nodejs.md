@@ -91,7 +91,7 @@ VS Code を使用する .NET Core および Node.js の開発者は、Kubernetes
 このセクションでは、Node.js Web アプリを作成し、Kubernetes のコンテナーで実行します。
 
 ### <a name="create-a-nodejs-web-app"></a>Node.js Web アプリを作成する
-https://github.com/Azure/dev-spaces に移動して GitHub からコードをダウンロードし、 **[Clone or download]** クリックして GitHub リポジトリをローカル環境にダウンロードします。 このガイドのコードは、 `samples/nodejs/getting-started/webfrontend` にあります。
+[https://github.com/Azure/dev-spaces](https://github.com/Azure/dev-spaces ) に移動して GitHub からコードをダウンロードし、 **[Clone or download]** クリックして GitHub リポジトリをローカル環境にダウンロードします。 このガイドのコードは、 `samples/nodejs/getting-started/webfrontend` にあります。
 
 ## <a name="prepare-code-for-docker-and-kubernetes-development"></a>Docker および Kubernetes 開発用コードの準備
 ここまでで、ローカルで実行できる基本的な Web アプリを用意しました。 ここで、アプリのコンテナーと、それを Kubernetes にデプロイする方法を定義するアセットを作成して、それをコンテナー化します。 このタスクは Azure Dev Spaces で行うのが容易です。 
