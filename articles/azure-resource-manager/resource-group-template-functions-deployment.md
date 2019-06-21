@@ -167,7 +167,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 | パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
-| parameterName |あり |string |返されるパラメーターの名前。 |
+| parameterName |はい |string |返されるパラメーターの名前。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -254,11 +254,11 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 | Name | Type | 値 |
 | ---- | ---- | ----- |
-| stringOutput | string | 方法 1 |
+| stringOutput | string | option 1 |
 | intOutput | int | 1 |
 | objectOutput | Object | {"one": "a", "two": "b"} |
 | arrayOutput | Array | [1, 2, 3] |
-| crossOutput | string | 方法 1 |
+| crossOutput | string | option 1 |
 
 Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
