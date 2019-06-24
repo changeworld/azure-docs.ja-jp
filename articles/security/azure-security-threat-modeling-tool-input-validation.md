@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.openlocfilehash: 0803ade7613480621a0cd87f9944ee5f55bf432c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57899487"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60586307"
 ---
 # <a name="security-frame-input-validation--mitigations"></a>セキュリティ フレーム:入力の検証 | 軽減策 
 | 製品/サービス | 記事 |
@@ -39,7 +39,7 @@ ms.locfileid: "57899487"
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | [XSLT のセキュリティ](https://msdn.microsoft.com/library/ms763800(v=vs.85).aspx)[XsltSettings.EnableScript プロパティ](https://msdn.microsoft.com/library/system.xml.xsl.xsltsettings.enablescript.aspx) |
-| **手順** | XSLT では、`<msxml:script>` 要素を使用したスタイル シート内でのスクリプト作成をサポートしています。 これにより、XSLT 変換でカスタム関数を使用できます。 スクリプトは、変換を実行するプロセスのコンテキストで実行されます。 信頼できないコードの実行を防ぐために、信頼できない環境では XSLT スクリプトを無効にする必要があります。 "*.NET を使用している場合:*" XSLT スクリプトは既定で無効になっています。ただし、`XsltSettings.EnableScript` プロパティによって明示的に有効にされていないことを確認する必要があります。|
+| **手順** | XSLT では、`<msxml:script>` 要素を使用したスタイル シート内でのスクリプト作成をサポートしています。 これにより、XSLT 変換でカスタム関数を使用できます。 スクリプトは、変換を実行するプロセスのコンテキストで実行されます。 信頼できないコードの実行を防ぐために、信頼できない環境では XSLT スクリプトを無効にする必要があります。 " *.NET を使用している場合:* " XSLT スクリプトは既定で無効になっています。ただし、`XsltSettings.EnableScript` プロパティによって明示的に有効にされていないことを確認する必要があります。|
 
 ### <a name="example"></a>例 
 
@@ -182,7 +182,7 @@ XmlReader reader = XmlReader.Create(stream, settings);
 ```
 
 ### <a name="example"></a>例
-インライン エンティティを解決する必要があり、外部エンティティは解決する必要がない場合は、XmlReaderSettings.XmlResolver プロパティを null に設定します。 例:  
+インライン エンティティを解決する必要があり、外部エンティティは解決する必要がない場合は、XmlReaderSettings.XmlResolver プロパティを null に設定します。 例: 
 
 ```csharp
 XmlReaderSettings settings = new XmlReaderSettings();

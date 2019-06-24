@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 05/01/2018
 ms.author: magattus
 ms.openlocfilehash: 9793348b47763e6de10992b9a8a4606fc532cc4d
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49094022"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60636753"
 ---
 # <a name="large-file-download-optimization-with-azure-cdn"></a>Azure CDN を使用した大きなファイルのダウンロードの最適化
 
@@ -87,7 +87,7 @@ Complete Cache Fill は、サイズの大きな資産に対して最も有効的
 
     ![新しいエンドポイント](./media/cdn-large-file-optimization/cdn-new-akamai-endpoint.png)    
  
-2. **[最適化対象]** ドロップダウン リストで、**[大容量ファイルのダウンロード]** を選択します。
+2. **[最適化対象]** ドロップダウン リストで、 **[大容量ファイルのダウンロード]** を選択します。
 
     ![大きなファイルの最適化を選択](./media/cdn-large-file-optimization/cdn-large-file-select.png)
 
@@ -110,8 +110,8 @@ CDN は受信したチャンクをすべてキャッシュします。 ファイ
 
 |    | 一般 Web | 大きなファイルの最適化 
 --- | --- | --- 
-キャッシュ: 正の値 <br> HTTP 200、203、300、 <br> 301、302、410 | 7 日 |1 日  
-キャッシュ: 負の値 <br> HTTP 204、305、404、 <br> 405 | なし | 1 秒 
+キャッシュ:Positive <br> HTTP 200、203、300、 <br> 301、302、410 | 7 日 |1 日  
+キャッシュ:Negative <br> HTTP 204、305、404、 <br> 405 | なし | 1 秒 
 
 ### <a name="deal-with-origin-failure"></a>配信元のエラーの処理
 

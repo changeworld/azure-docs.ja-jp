@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.openlocfilehash: 608792d8389a87bad3521d3a48947b20dd036d67
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57887104"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62121216"
 ---
 # <a name="security-frame-cryptography--mitigations"></a>セキュリティ フレーム: 暗号化 | 軽減策 
 
@@ -174,7 +174,7 @@ ms.locfileid: "57887104"
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | デバイスの OS - Windows IoT Core、デバイスの接続 - Azure IoT device SDK |
 | **参照**              | [Windows IoT Core 上の TPM](https://developer.microsoft.com/windows/iot/docs/tpm)、[Windows IoT Core 上での TPM のセットアップ](https://docs.microsoft.com/windows/iot-core/secure-your-device/setuptpm)、[Azure IoT device SDK の TPM](https://github.com/Azure/azure-iot-hub-vs-cs/wiki/Device-Provisioning-with-TPM) |
-| **手順** | 対称秘密キーまたは証明書の秘密キーは、TPM やスマート カード チップのようなハードウェアで保護された記憶域に安全に保存します。 Windows 10 IoT Core では TPM の使用をサポートしています。いくつかの互換性のある TPM を使用できます (https://docs.microsoft.com/windows/iot-core/secure-your-device/tpm#discrete-tpm-dtpm)。 ファームウェア TPM またはディスクリート TPM を使用することをお勧めします。 ソフトウェア TPM は、開発およびテストにのみ使用します。 TPM が使用可能であり、キーがプロビジョニングされたら、機密情報をハードコーディングせずに、トークンを生成するコードを作成する必要があります。 | 
+| **手順** | 対称秘密キーまたは証明書の秘密キーは、TPM やスマート カード チップのようなハードウェアで保護された記憶域に安全に保存します。 Windows 10 IoT Core では TPM の使用をサポートしています。いくつかの互換性のある TPM を使用できます (https://docs.microsoft.com/windows/iot-core/secure-your-device/tpm#discrete-tpm-dtpm )。 ファームウェア TPM またはディスクリート TPM を使用することをお勧めします。 ソフトウェア TPM は、開発およびテストにのみ使用します。 TPM が使用可能であり、キーがプロビジョニングされたら、機密情報をハードコーディングせずに、トークンを生成するコードを作成する必要があります。 | 
 
 ### <a name="example"></a>例
 ```

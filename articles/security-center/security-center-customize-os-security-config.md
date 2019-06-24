@@ -14,16 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/20/2019
 ms.author: rkarlin
-ms.openlocfilehash: c0c37724e61490c8c33b5e2d37879549bbc6d7ce
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: d9dc9f3a4ab964b66e3a2cb03f4aad442c5665e9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58402118"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64573595"
 ---
 # <a name="customize-os-security-configurations-in-azure-security-center-preview"></a>Azure Security Center での OS セキュリティ構成のカスタマイズ (プレビュー)
 
 このチュートリアルでは、Azure Security Center で OS セキュリティ構成の評価をカスタマイズする方法について説明します。
+
+> [!NOTE]
+> OS セキュリティ構成をカスタマイズする機能は、2019 年 7 月 31 日に廃止されます。 詳細および代替サービスについては、「[Security Center の機能の廃止 (2019 年 7 月)](security-center-features-retirement-july2019.md#menu_securityconfigurations)」を参照してください。
 
 ## <a name="what-are-os-security-configurations"></a>OS セキュリティ構成とは
 
@@ -53,7 +56,7 @@ Security Center で既定の OS セキュリティ構成をカスタマイズす
 
 1.  **[Security Center]** ダッシュボードを開きます。
 
-2.  左側のウィンドウで、**[セキュリティ ポリシー]** を選択します。      
+2.  左側のウィンドウで、 **[セキュリティ ポリシー]** を選択します。      
 
     ![セキュリティ ポリシー一覧](media/security-center-customize-os-security-config/manual-provision.png)
 
@@ -69,13 +72,13 @@ Security Center で既定の OS セキュリティ構成をカスタマイズす
    > 既定では、ダウンロードする構成ファイルは *json* 形式です。 このファイルの変更に関する手順については、「[構成ファイルのカスタマイズ](#customize-the-configuration-file)」をご覧ください。
    >
 
-6. 変更をコミットするには、**[保存]** を選択します。 そうしないと、ポリシーは保存されません。
+6. 変更をコミットするには、 **[保存]** を選択します。 そうしないと、ポリシーは保存されません。
 
     ![[保存] ボタン](media/security-center-customize-os-security-config/save-successfully.png)
 
    ファイルを正常に保存すると、サブスクリプションの下にあるワークスペースに接続されたすべての VM とコンピューターにその構成が適用されます。 このプロセスには通常数分かかりますが、インフラストラクチャの規模によってはそれ以上に時間がかかることがあります。
 
-いつでも現在のポリシー構成を既定の状態にリセットできます。 そうするためには、**[OS セキュリティ構成規則の編集]** ウィンドウで **[リセット]** を選択します。 確認のポップアップ ウィンドウで **[はい]** を選択して、このオプションを確定します。
+いつでも現在のポリシー構成を既定の状態にリセットできます。 そうするためには、 **[OS セキュリティ構成規則の編集]** ウィンドウで **[リセット]** を選択します。 確認のポップアップ ウィンドウで **[はい]** を選択して、このオプションを確定します。
 
 ![リセット確認ウィンドウ](media/security-center-customize-os-security-config/edit-alert.png)
 
@@ -281,7 +284,7 @@ Security Center で既定の OS セキュリティ構成をカスタマイズす
 | BaselineRuleCceIdNotUniqueError          | CCE-ID *{0}* が一意ではありません。                                                                                                                  |
 | BaselineRuleEmptyProperty                | プロパティ *{0}* がないか、無効です。                                                                                                       |
 | BaselineRuleIdNotInDefault               | 規則にはソース プロパティ *Microsoft* がありますが、Microsoft の既定の規則セットには見つかりませんでした。                                                   |
-| BaselineRuleIdNotUniqueError             | 規則 ID が一意ではありません。                                                                                                                       |
+| BaselineRuleIdNotUniqueError             | ルール ID が固有ではありません。                                                                                                                       |
 | BaselineRuleInvalidGuid                  | 無効なプロパティ *{0}* が見つかりました。 値が有効な GUID ではありません。                                                                             |
 | BaselineRuleInvalidHive                  | Hive には LocalMachine を指定する必要があります。                                                                                                                   |
 | BaselineRuleNameNotUniqueError           | 規則名が一意ではありません。                                                                                                                 |

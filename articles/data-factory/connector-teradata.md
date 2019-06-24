@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
 ms.openlocfilehash: e9fd818990c8a985a77c2e7eeea19bf63c440e4e
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54018995"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61347753"
 ---
 # <a name="copy-data-from-teradata-using-azure-data-factory"></a>Azure Data Factory を使用して Teradata からデータをコピーする
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](v1/data-factory-onprem-teradata-connector.md)
 > * [現在のバージョン](connector-teradata.md)
 
@@ -55,7 +55,7 @@ Teradata のリンクされたサービスでは、次のプロパティがサ�
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | type プロパティは、次のように設定する必要があります:**Teradata** | はい |
-| server | Teradata のサーバーの名前です。 | はい |
+| サーバー | Teradata のサーバーの名前です。 | はい |
 | authenticationType | Teradata データベースへの接続に使用される認証の種類です。<br/>使用できる値は、以下のとおりです。**Basic** および **Windows**。 | はい |
 | username | Teradata データベースに接続するユーザー名を指定します。 | はい |
 | password | ユーザー名に指定したユーザー アカウントのパスワードを指定します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
@@ -164,44 +164,44 @@ Teradata からデータをコピーするとき、Teradata のデータ型か�
 | Teradata のデータ型 | Data Factory の中間データ型 |
 |:--- |:--- |
 | BigInt |Int64 |
-| BLOB |Byte[] |
+| Blob |Byte[] |
 | Byte |Byte[] |
 | ByteInt |Int16 |
-| Char |String |
-| Clob |String |
-| Date |Datetime |
+| Char |string |
+| Clob |string |
+| Date |DateTime |
 | Decimal |Decimal |
 | Double |Double |
-| Graphic |String |
+| Graphic |string |
 | Integer |Int32 |
-| Interval Day |timespan |
-| Interval Day To Hour |timespan |
-| Interval Day To Minute |timespan |
-| Interval Day To Second |timespan |
-| Interval Hour |timespan |
-| Interval Hour To Minute |timespan |
-| Interval Hour To Second |timespan |
-| Interval Minute |timespan |
-| Interval Minute To Second |timespan |
-| Interval Month |String |
-| Interval Second |timespan |
-| Interval Year |String |
-| Interval Year To Month |String |
+| Interval Day |TimeSpan |
+| Interval Day To Hour |TimeSpan |
+| Interval Day To Minute |TimeSpan |
+| Interval Day To Second |TimeSpan |
+| Interval Hour |TimeSpan |
+| Interval Hour To Minute |TimeSpan |
+| Interval Hour To Second |TimeSpan |
+| Interval Minute |TimeSpan |
+| Interval Minute To Second |TimeSpan |
+| Interval Month |string |
+| Interval Second |TimeSpan |
+| Interval Year |string |
+| Interval Year To Month |string |
 | Number |Double |
-| Period(Date) |String |
-| Period(Time) |String |
-| Period(Time With Time Zone) |String |
-| Period(Timestamp) |String |
-| Period(Timestamp With Time Zone) |String |
+| Period(Date) |string |
+| Period(Time) |string |
+| Period(Time With Time Zone) |string |
+| Period(Timestamp) |string |
+| Period(Timestamp With Time Zone) |string |
 | SmallInt |Int16 |
-| Time |timespan |
-| Time With Time Zone |String |
-| Timestamp |Datetime |
+| Time |TimeSpan |
+| Time With Time Zone |string |
+| Timestamp |DateTime |
 | Timestamp With Time Zone |DateTimeOffset |
 | VarByte |Byte[] |
-| VarChar |String |
-| VarGraphic |String |
-| xml |String |
+| VarChar |string |
+| VarGraphic |string |
+| Xml |string |
 
 
 ## <a name="next-steps"></a>次の手順

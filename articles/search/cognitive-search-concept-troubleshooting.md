@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: ebc0ca718ab8edf5ef644993c71b0353861265b8
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: c97ccd82a9c09e10572733040e238443cbf777da
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56961854"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64696595"
 ---
 # <a name="troubleshooting-tips-for-cognitive-search"></a>コグニティブ検索のトラブルシューティングのヒント
 
@@ -84,7 +84,7 @@ https://docs.microsoft.com/azure/search/search-howto-indexing-azure-blob-storage
 
 コンテンツの不足は、インデックス作成中にドキュメントが削除された結果である可能性があります。 Free および Basic レベルでは、ドキュメントのサイズの制限が低く設定されています。 制限を超えるファイルは、インデックス作成中に削除されます。 削除されたドキュメントは、Azure portal で確認できます。 検索サービス ダッシュボードで、インデクサーのタイルをダブルクリックします。 インデックス付けが成功したドキュメントの割合を確認します。 100% でない場合は、割合をクリックすると詳細が表示されます。 
 
-問題がファイル サイズに関連している場合は、"The blob <file-name> has the size of <file-size> bytes, which exceeds the maximum size for document extraction for your current service tier."(BLOB <ファイル名> のサイズが <ファイル サイズ> バイトです。現在のサービス レベルでのドキュメント抽出の最大サイズを超えています。) のようなエラーが表示されることがあります。 インデクサーの制限の詳細については、[サービスの制限](search-limits-quotas-capacity.md)に関するページを参照してください。
+問題がファイル サイズに関連している場合は、"The blob \<file-name> has the size of \<file-size> bytes, which exceeds the maximum size for document extraction for your current service tier."(BLOB <ファイル名> のサイズが <ファイル サイズ> バイトです。現在のサービス レベルでのドキュメント抽出の最大サイズを超えています。) のようなエラーが表示されることがあります。 インデクサーの制限の詳細については、[サービスの制限](search-limits-quotas-capacity.md)に関するページを参照してください。
 
 コンテンツが表示されない 2 つ目の理由として考えられるのは、関連する入力/出力マッピング エラーです。 たとえば、出力ターゲットの名前が "People" で、インデックス フィールド名が小文字の "people" である場合です。 システムはパイプライン全体に対して 201 成功メッセージを返す場合があるため、インデックス作成が成功したと思っても、実際にはフィールドが空になっています。 
 
