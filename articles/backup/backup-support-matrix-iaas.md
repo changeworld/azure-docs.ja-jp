@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: raynew
-ms.openlocfilehash: 96b05ff6e08b3a35bdcfb43f78066679914ca63a
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: ef522785d5074187871c25c54deae84b156d69b1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66477482"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66743175"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM バックアップのサポート マトリックス
 [Azure Backup サービス](backup-overview.md)を使用すると、オンプレミスのコンピューターとワークロード、および Azure 仮想マシン (VM) をバックアップできます。 この記事では、Azure Backup を使用して Azure VM をバックアップする場合のサポート設定と制限事項について概説します。
@@ -54,6 +54,8 @@ VM のバックアップ ポリシーを変更する | サポートされてい�
 毎月/毎年のバックアップ   | Azure VM 拡張機能を使用してバックアップする場合、サポートされません。 毎日および毎週のみサポートされます。<br/><br/> 毎月/毎年のリテンション期間の間、毎日/毎週のバックアップを保持するようにポリシーを設定できます。
 クロックの自動調整 | サポートされていません。<br/><br/> Azure Backup では、VM をバックアップするとき、夏時間変更に合わせた自動調整は行われません。<br/><br/>  必要に応じて手動でポリシーを変更してください。
 [ハイブリッド バックアップのセキュリティ機能](https://docs.microsoft.com/azure/backup/backup-azure-security-feature) |  セキュリティ機能の無効化はサポートされていません。
+コンピューター時間が変更された VM をバックアップする | サポートされていません。<br/><br/> その VM のバックアップを有効にした後にコンピューター時間が将来の日付/時刻に変更されている場合。ただし、時間の変更が元に戻された場合でも、バックアップの成功は保証されません。  
+
 
 ## <a name="operating-system-support-windows"></a>オペレーティング システムのサポート (Windows)
 

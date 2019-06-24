@@ -5,13 +5,13 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 12/04/2018
+ms.date: 5/6/2019
 ms.author: iainfou
-ms.openlocfilehash: 7476747de31819907cf144e5a6b33cb29e1f866f
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: e7f45a3a0e62b2b559002b71bd8816e050f062ab
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65072646"
 ---
 # <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Services (AKS) のストレージとバックアップに関するベスト プラクティス
@@ -34,12 +34,12 @@ Azure Kubernetes Service (AKS) でクラスターを作成して管理する際�
 
 次の表に、使用可能なストレージの種類とその機能の概要を示します。
 
-| ユース ケース | ボリューム プラグイン | 読み取り/書き込み (1 回のみ) | 読み取り専用 (複数回) | 読み取り/書き込み (複数回) |
-|----------|---------------|-----------------|----------------|-----------------|
-| 共有構成       | Azure Files   | はい | はい | はい |
-| 構造化されたアプリ データ        | Azure ディスク   | はい | いいえ   | いいえ   |
-| アプリ データ、読み取り専用で共有 | [dysk (プレビュー)][dysk] | はい | はい | いいえ   |
-| 非構造化データ、ファイル システム操作 | [BlobFuse (プレビュー)][blobfuse] | はい | はい | はい |
+| ユース ケース | ボリューム プラグイン | 読み取り/書き込み (1 回のみ) | 読み取り専用 (複数回) | 読み取り/書き込み (複数回) | Windows Server コンテナーのサポート |
+|----------|---------------|-----------------|----------------|-----------------|--------------------|
+| 共有構成       | Azure Files   | はい | はい | はい | はい |
+| 構造化されたアプリ データ        | Azure ディスク   | はい | いいえ  | いいえ  | はい |
+| アプリ データ、読み取り専用で共有 | [dysk (プレビュー)][dysk] | はい | はい | いいえ  | いいえ |
+| 非構造化データ、ファイル システム操作 | [BlobFuse (プレビュー)][blobfuse] | はい | はい | はい | いいえ |
 
 AKS のボリュームに対して提供される、2 つの主な種類のストレージが、Azure ディスクまたは Azure ファイルでサポートされます。 セキュリティを向上させるため、両方の種類のストレージでは既定で Azure Storage Service Encryption (SSE) が使用され、保存データが暗号化されます。 ディスクは現在、AKS ノード レベルで Azure Disk Encryption を使用して暗号化することはできません。
 

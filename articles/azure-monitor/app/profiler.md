@@ -13,11 +13,11 @@ ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
 ms.openlocfilehash: b8f6a2d12e1a9920421e6491432b516520ae110b
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59493741"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60730192"
 ---
 # <a name="profile-live-azure-app-service-apps-with-application-insights"></a>Application Insights を使用したライブ Azure App Service アプリのプロファイリング
 
@@ -37,7 +37,7 @@ Application Insights Profiler は、App Services ランタイムの一部とし�
 
    ![App Service ポータルで App Insights を有効にする](./media/profiler/AppInsights-AppServices.png)
 
-1. ウィンドウの指示に従って新しいリソースを作成するか、既存の App Insights リソースを選択してアプリを監視します。 また、Profiler が**オン**になっていることを確認します。 Application Insights リソースと App Service のサブスクリプションが異なる場合、このページを使用して Application Insights を構成することはできません。 ただし、必要なアプリの設定を手動で作成することにより、手動で行うことはできます。 [次のセクションでは、Profiler を手動で有効にする手順を説明します。](#enable-profiler-manually-or-with-azure-resource-manager) 
+1. ウィンドウの指示に従って新しいリソースを作成するか、既存の App Insights リソースを選択してアプリを監視します。 また、Profiler が**オン**になっていることを確認します。 Application Insights リソースと App Service のサブスクリプションが異なる場合、このページを使用して Application Insights を構成することはできません。 ただし、必要なアプリの設定を手動で作成することにより、手動で行うことはできます。 [次のセクションには、Profiler を手動で有効にするための手順が含まれています。](#enable-profiler-manually-or-with-azure-resource-manager) 
 
    ![App Insights のサイト拡張機能を追加する][Enablement UI]
 
@@ -61,7 +61,7 @@ Profiler を有効にするために必要な設定は次のとおりです。
 
 ## <a name="disable-profiler"></a>Profiler を無効にする
 
-個々の Web アプリのインスタンスで Profiler を停止または再起動するには、**[Web ジョブ]** で Web Apps リソースに移動します。 Profiler を削除するには、**[拡張機能]** に移動します。
+個々の Web アプリのインスタンスで Profiler を停止または再起動するには、 **[Web ジョブ]** で Web Apps リソースに移動します。 Profiler を削除するには、 **[拡張機能]** に移動します。
 
 ![Web ジョブで Profiler を無効にする][disable-profiler-webjob]
 

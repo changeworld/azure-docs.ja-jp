@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/13/2017
 ms.author: v-dabosl
-ms.openlocfilehash: 753d6abcdd063d5c092b0c90770396d176bc52e8
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 243b6b7846719d3f848073e3aa973c9406ca59c7
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2017
-ms.locfileid: "26129942"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60586607"
 ---
 # <a name="how-to-log-a-security-event-support-ticket"></a>セキュリティ イベント サポート チケットをログに記録する方法
 
@@ -28,11 +28,11 @@ ms.locfileid: "26129942"
 
     ![イベントの種類と定義][1]
 
-3. 問題の種類とカテゴリを選択したら、'**[Start request]\(要求の開始\)**' をクリックします。 Microsoft が問題を適切に把握するために、次の情報を提供してください。
+3. 問題の種類とカテゴリを選択したら、' **[Start request]\(要求の開始\)** ' をクリックします。 Microsoft が問題を適切に把握するために、次の情報を提供してください。
 
     i. どんな問題および/または脆弱性ですか。
 
-    ii. 脆弱性については CVE (mitre.org) または CVSS3 v3 計算機 (https://www.first.org/cvss/calculator/3.0) を使用して情報を提供してください。
+    ii. 脆弱性の場合は、CVE (mitre.org) または入力済みの CVSS3 v3 計算ツール (https://www.first.org/cvss/calculator/3.0) ) を提供してください。
 
     iii. 解決策または軽減策はありますか。 はいの場合は、修復の手順をご提供ください。
 

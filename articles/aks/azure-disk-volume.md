@@ -7,11 +7,11 @@ ms.service: container-service
 ms.topic: article
 ms.date: 03/01/2019
 ms.author: iainfou
-ms.openlocfilehash: 02a863a4ddf59fb36c5f2ae7f3092896d2e1d860
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: b166f70186b063782fb2c2245e351d6dfca6f978
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65072154"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で Azure ディスクを含むボリュームの手動での作成および使用
@@ -41,12 +41,12 @@ $ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeR
 MC_myResourceGroup_myAKSCluster_eastus
 ```
 
-ここで、[az disk create][az-disk-create] コマンドを使用してディスクを作成します。 上記コマンドで取得したノードのリソース グループ名を指定して､そのディスク リソースに対して､*myAKSDisk* などの名前を指定します｡ 次の例では、*20* GiB のディスクを作成し、作成後にディスクの ID を出力します。
+ここで、[az disk create][az-disk-create] コマンドを使用してディスクを作成します。 上記コマンドで取得したノードのリソース グループ名を指定して､そのディスク リソースに対して､*myAKSDisk* などの名前を指定します｡ 次の例では、*20* GiB のディスクを作成し、作成後にそのディスクの ID を出力します。 Windows Server コンテナー (現在 AKS でプレビュー段階) で使用されるディスクを作成する必要がある場合は、ディスクを適切にフォーマットするために `--os-type windows` パラメーターを追加します。
 
 ```azurecli-interactive
 az disk create \
   --resource-group MC_myResourceGroup_myAKSCluster_eastus \
-  --name myAKSDisk  \
+  --name myAKSDisk \
   --size-gb 20 \
   --query id --output tsv
 ```
@@ -62,7 +62,7 @@ az disk create \
 
 ## <a name="mount-disk-as-volume"></a>ディスクをボリュームとしてマウントする
 
-Azure ディスクをポッドにマウントするには、コンテナーの指定でボリュームを構成します。次の内容で、`azure-disk-pod.yaml` という名前の新しいファイルを作成します。 前の手順で作成したディスクの名前で `diskName` を更新し、ディスク作成コマンドの出力に示されたディスク ID で `diskURI` を更新します。 必要な場合は、`mountPath` を更新します。これは Azure ディスクがポッドにマウントされているパスです。
+Azure ディスクをポッドにマウントするには、コンテナーの指定でボリュームを構成します。次の内容で、`azure-disk-pod.yaml` という名前の新しいファイルを作成します。 前の手順で作成したディスクの名前で `diskName` を更新し、ディスク作成コマンドの出力に示されたディスク ID で `diskURI` を更新します。 必要な場合は、`mountPath` を更新します。これは Azure ディスクがポッドにマウントされているパスです。 Windows Server コンテナー (AKS では現在プレビュー段階) の場合、 *'D:'* などの Windows パス規則を使用して、*mountPath* を指定します。
 
 ```yaml
 apiVersion: v1

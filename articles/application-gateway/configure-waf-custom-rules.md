@@ -1,18 +1,18 @@
 ---
-title: Azure PowerShell を使用して WAF のカスタム規則を構成する
+title: Azure PowerShell を使用して Web アプリケーション ファイアウォールのカスタム規則を構成する
 description: Azure PowerShell を使用して WAF のカスタム規則を構成する方法について説明します
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 6/5/2019
+ms.date: 6/7/2019
 ms.author: victorh
-ms.openlocfilehash: 0700341d5410710e2187e775e772da922dfaf86a
-ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
+ms.openlocfilehash: f7215c4f35d36486b8dda483f34bc487cc16fc69
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66688930"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66743055"
 ---
 # <a name="configure-web-application-firewall-with-a-custom-rule-using-azure-powershell"></a>Azure PowerShell を使用して Web アプリケーション ファイアウォールのカスタム規則を構成する
 
@@ -24,7 +24,7 @@ ms.locfileid: "66688930"
 
 その他のカスタム規則の例については、[Web アプリケーション ファイアウォールのカスタム規則の作成と使用](create-custom-waf-rules.md)に関するページを参照してください
 
-<!--- If you want run the Azure PowerShell in this article in one continuous script that you can copy, paste, and run, [see link to Samples]. --->
+コピー、貼り付け、および実行が可能な 1 つの連続したスクリプトでこの記事の Azure PowerShell を実行する場合は、「[Azure Application Gateway PowerShell のサンプル](powershell-samples.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
