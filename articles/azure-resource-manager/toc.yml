@@ -212,7 +212,7 @@
 - name: リファレンス
   items:
     - name: テンプレート リファレンス
-      href: subtoc/toc.yml
+      href: /azure/templates/
     - name: テンプレート関数
       items:
         - name: すべての関数
