@@ -103,7 +103,7 @@ bigint | Number (JavaScript では最大 2^53 の精度の整数しか表現で�
 DateTime | Date (JavaScript ではミリ秒のみサポートされています)
 double | Number
 nvarchar(MAX) | String
-レコード | Object
+Record | Object
 Array | Array
 NULL | Null
 
@@ -116,9 +116,9 @@ JavaScript | Stream Analytics
 Number | Bigint (値が四捨五入され、long.MinValue と long.MaxValue の間の場合。それ以外の場合は double)
 Date | DateTime
 String | nvarchar(MAX)
-Object | レコード
+Object | Record
 Array | Array
-Null、未定義 | NULL
+Null, Undefined | NULL
 他のすべての種類 (関数やエラーなど) | サポート対象外 (ランタイム エラーが発生します)
 
 ## <a name="troubleshooting"></a>トラブルシューティング
