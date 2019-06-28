@@ -144,8 +144,6 @@
           items:
             - name: Azure VM のバックアップを管理する
               href: backup-azure-manage-vms.md
-            - name: Azure VM のバックアップに関するアラートの監視
-              href: backup-azure-monitor-vms.md
         - name: Azure VM の復元
           items:
             - name: ポータルで Azure VM を復元する

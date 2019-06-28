@@ -94,7 +94,7 @@ Azure Dev Spaces で Java アプリケーションをデバッグするには、
 このセクションでは、Java Web アプリケーションを作成し、Kubernetes のコンテナーで実行します。
 
 ### <a name="create-a-java-web-app"></a>Java Web アプリを作成する
-https://github.com/Azure/dev-spaces に移動して GitHub からコードをダウンロードし、 **[Clone or download]** クリックして GitHub リポジトリをローカル環境にダウンロードします。 このガイドのコードは、 `samples/java/getting-started/webfrontend` にあります。
+[https://github.com/Azure/dev-spaces](https://github.com/Azure/dev-spaces ) に移動して GitHub からコードをダウンロードし、 **[Clone or download]** クリックして GitHub リポジトリをローカル環境にダウンロードします。 このガイドのコードは、 `samples/java/getting-started/webfrontend` にあります。
 
 ## <a name="preparing-code-for-docker-and-kubernetes-development"></a>Docker および Kubernetes 開発用コードの準備
 ここまでで、ローカルで実行できる基本的な Web アプリを用意しました。 ここで、アプリのコンテナーと、それを Kubernetes にデプロイする方法を定義するアセットを作成して、それをコンテナー化します。 このタスクは Azure Dev Spaces で行うのが容易です。 

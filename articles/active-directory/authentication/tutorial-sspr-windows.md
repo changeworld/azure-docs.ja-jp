@@ -152,4 +152,4 @@ v1809 より前のバージョンの Windows 10 のポリシーで Ctrl + Alt + 
 > [サインイン時にリスクを評価する](tutorial-risk-based-sspr-mfa.md)
 
 [Assignment]: ./media/tutorial-sspr-windows/profile-assignment.png "Intune デバイス構成ポリシーを Windows 10 デバイスのグループに割り当てる"
-[LoginScreen]: ./media/tutorial-sspr-windows/logon-reset-password.png "Windows 10 ログイン画面に表示される "パスワードのリセット" リンク"
+[LoginScreen]: ./media/tutorial-sspr-windows/logon-reset-password.png "Windows 10 ログイン画面に表示される パスワードのリセット リンク"

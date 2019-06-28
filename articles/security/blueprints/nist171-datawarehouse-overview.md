@@ -56,7 +56,7 @@ VM の 1 つは管理要塞ホストとして機能します。 要塞ホスト�
 - Azure Load Balancer
 - Azure Storage
 - Azure Virtual Machines
-    - (1) 要塞ホスト
+    - (1) 踏み台ホスト
     - (2) Active Directory ドメイン コントローラー
     - (2) SQL Server クラスター ノード
     - (1) SQL Server 監視
@@ -79,7 +79,7 @@ VM の 1 つは管理要塞ホストとして機能します。 要塞ホスト�
 
 **要塞ホスト**:要塞ホストは、この環境にデプロイされているリソースへのアクセスに利用できる単一エントリ ポイントです。 要塞ホストは、セーフ リスト上のパブリック IP アドレスからのリモート トラフィックのみを許可することで、デプロイ済みのリソースへのセキュリティで保護された接続を提供します。 リモート デスクトップ トラフィックを許可するには、トラフィックのソースがネットワーク セキュリティ グループに定義されている必要があります。
 
-このソリューションでは、次の構成を使用して､1 つの仮想マシンがドメイン参加済み要塞ホストとして作成されます。
+このソリューションでは、次の構成を使用して､1 つの仮想マシンがドメイン参加済み踏み台ホストとして作成されます。
 -   [マルウェア対策拡張機能](https://docs.microsoft.com/azure/security/azure-security-antimalware)
 -   [Azure Diagnostics 拡張機能](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-extensions-diagnostics-template)
 -   Azure Key Vault を使用した [Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption)
@@ -91,7 +91,7 @@ VM の 1 つは管理要塞ホストとして機能します。 要塞ホスト�
 
 **ネットワーク セキュリティ グループ**:[ネットワーク セキュリティ グループ (NSG)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) には、仮想ネットワーク内のトラフィックを許可または拒否するアクセス制御リストが含まれています。 NSG を使用して、サブネットまたは個々の VM レベルでトラフィックを保護できます。 次の NSG が存在します。
   - データ層 (SQL Server クラスター、SQL Server 監視、および SQL Load Balancer) 用の NSG
-  - 管理要塞ホスト用の NSG
+  - 管理踏み台ホスト用の NSG
   - Active Directory 用の NSG
   - SQL Server Reporting Services 用の NSG
 
