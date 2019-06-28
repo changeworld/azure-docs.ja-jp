@@ -109,7 +109,7 @@ applicationsScoping //this brings data from Application Insights resources
 | AvailabilityTestId | id |
 | AvailabilityTestName | name |
 | AvailabilityTimestamp | timestamp |
-| ブラウザー | client_browser |
+| Browser | client_browser |
 | City | client_city |
 | ClientIP | client_IP |
 | Computer | cloud_RoleInstance | 
@@ -134,7 +134,7 @@ applicationsScoping //this brings data from Application Insights resources
 | RequestDuration | duration | 
 | RequestID | id | 
 | RequestName | name | 
-| RequestSuccess | 成功 | 
+| RequestSuccess | success | 
 | ResponseCode | resultCode | 
 | Role | cloud_RoleName |
 | RoleInstance | cloud_RoleInstance |
