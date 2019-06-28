@@ -46,7 +46,7 @@ Android デバイスに Widevine 用のオフライン DRM を実装する前に
 - Widevine DRM を使ったオンライン コンテンツ保護に対して導入される概念をよく理解します。 これについては、次のドキュメント/サンプルで詳しく説明されています。
     - [アクセス制御を使用したマルチ DRM コンテンツ保護システムの設計](design-multi-drm-system-with-access-control.md)
     - [DRM 動的暗号化とライセンス配信サービスの使用](protect-with-drm.md)
-- https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials.git を複製します。
+- [https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials.git](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials.git ) を複製します。
 
     [.NET を使用した DRM の暗号化](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/tree/master/AMSV3Tutorials/EncryptWithDRM)に関する記事にあるコードを変更して Widevine の構成を追加する必要があります。  
 - Widevine DRM のオフライン再生をサポートする機能を持つオープンソースのビデオ プレーヤー SDK である Google ExoPlayer SDK for Android についてよく理解します。 

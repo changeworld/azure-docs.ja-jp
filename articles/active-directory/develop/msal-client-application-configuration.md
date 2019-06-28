@@ -38,10 +38,10 @@ ms.locfileid: "66430809"
 ## <a name="authority"></a>Authority
 機関は、MSAL がトークンを要求できるディレクトリを示す URL です。 一般的な機関を次に示します。
 
-- https://login.microsoftonline.com/&lt ;テナント&gt; /。&lt; テナント&gt; は、Azure Active Directory (Azure AD) テナントのテナント ID か、この Azure AD テナントに関連付けられたドメインです。 特定の組織のユーザーをサインインする場合にのみ使用されます。
-- https://login.microsoftonline.com/common/ 職場および学校アカウント、または個人用 Microsoft アカウントを持つユーザーのサインインに使用されます。
-- https://login.microsoftonline.com/organizations/ 職場および学校アカウントを持つユーザーをサインインする場合に使用されます。
-- https://login.microsoftonline.com/consumers/ 個人用 Microsoft アカウント (以前の Windows Live ID アカウント) のみを持つユーザーのサインインに使用されます。
+- [https://login.microsoftonline.com/&amp;l](https://login.microsoftonline.com/&lt );テナント&gt; /。&lt; テナント&gt; は、Azure Active Directory (Azure AD) テナントのテナント ID か、この Azure AD テナントに関連付けられたドメインです。 特定の組織のユーザーをサインインする場合にのみ使用されます。
+- [https://login.microsoftonline.com/common/](https://login.microsoftonline.com/common/ ) 職場および学校アカウント、または個人用 Microsoft アカウントを持つユーザーのサインインに使用されます。
+- [https://login.microsoftonline.com/organizations/](https://login.microsoftonline.com/organizations/ ) 職場および学校アカウントを持つユーザーをサインインする場合に使用されます。
+- [https://login.microsoftonline.com/consumers/](https://login.microsoftonline.com/consumers/ ) 個人用 Microsoft アカウント (以前の Windows Live ID アカウント) のみを持つユーザーのサインインに使用されます。
 
 機関の設定は、アプリケーション登録ポータルで宣言されているものと一致している必要があります。
 
