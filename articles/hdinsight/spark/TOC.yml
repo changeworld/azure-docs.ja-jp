@@ -30,10 +30,6 @@
       href: apache-spark-ipython-notebook-machine-learning.md
     - name: IntelliJ での Apache Spark アプリの作成
       href: apache-spark-create-standalone-application.md
-    - name: VSCode を使用した Apache Spark クエリの実行
-      href: ../hdinsight-for-vscode.md
-    - name: Ambari と Azure Monitor のログを使用してクラスターの可用性を監視する
-      href: ../hdinsight-cluster-availability.md
 - name: サンプル
   items:
     - name: .NET のサンプル
@@ -52,6 +48,8 @@
       href: ../hdinsight-component-versioning.md
     - name: HDInsight 4.0
       href: ../hdinsight-version-release.md
+    - name: Ambari と Azure Monitor のログを使用してクラスターの可用性を監視する
+      href: ../hdinsight-cluster-availability.md
 - name: 方法
   items:
     - name: クラスター ストレージの使用
@@ -158,8 +156,6 @@
               href: ../hdinsight-hadoop-customize-cluster-linux.md
             - name: スクリプト アクションを開発する
               href: ../hdinsight-hadoop-script-actions-linux.md
-            - name: Presto をインストールして使用する
-              href: ../hdinsight-hadoop-install-presto.md
             - name: Apache Hive ライブラリを追加する
               href: ../hdinsight-hadoop-add-hive-libraries.md
             - name: Apache Giraph を使用する

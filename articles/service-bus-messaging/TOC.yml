@@ -19,6 +19,8 @@
               href: service-bus-quickstart-powershell.md
             - name: Azure CLI
               href: service-bus-quickstart-cli.md
+            - name: Azure Resource Manager テンプレート
+              href: service-bus-resource-manager-namespace-queue.md
         - name: メッセージを送受信する
           items:
             - name: .NET
@@ -40,7 +42,11 @@
     - name: Service Bus トピックとサブスクリプション
       items:
         - name: トピックとサブスクリプションを作成する
-          href: service-bus-quickstart-topics-subscriptions-portal.md
+          items:
+            - name: Azure ポータル
+              href: service-bus-quickstart-topics-subscriptions-portal.md
+            - name: Azure Resource Manager テンプレート
+              href: service-bus-resource-manager-namespace-topic.md
         - name: メッセージの発行とサブスクライブ
           items:
             - name: .NET
@@ -187,10 +193,6 @@
           items:
             - name: 名前空間の作成
               href: service-bus-resource-manager-namespace.md
-            - name: 名前空間とキューの作成
-              href: service-bus-resource-manager-namespace-queue.md
-            - name: トピックとサブスクリプションを含んだ名前空間の作成
-              href: service-bus-resource-manager-namespace-topic.md
             - name: 名前空間とキューの承認規則の作成
               href: service-bus-resource-manager-namespace-auth-rule.md
             - name: トピック、サブスクリプション、ルールを含んだ名前空間の作成
