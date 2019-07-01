@@ -66,7 +66,7 @@ REST API または Resource Manager テンプレートを使用している場�
 | sendToSubscriptionAdministrator |はい |値は "true" または "false" にする必要があります。 |
 | sendToSubscriptionCoAdministrators |はい |値は "true" または "false" にする必要があります。 |
 | customEmails |はい |値として null [] または電子メールの文字列配列を指定できます。 |
-| Webhook |はい |値として null または有効な URI を指定できます。 |
+| webhooks |はい |値として null または有効な URI を指定できます。 |
 | serviceUri |はい |有効な https URI を指定します。 |
 | properties |はい |値は空 {} にするか、キーと値のペアを指定できます。 |
 
@@ -111,7 +111,7 @@ webhook はトークンベースの認証を利用して認証できます。ク
 | timestamp |はい |自動スケール操作がトリガーされたときのタイム スタンプ。 |
 | id |はい |自動スケール設定の Resource Manager ID |
 | name |はい |自動スケール設定の名前。 |
-| 詳細 |はい |自動スケール サービスが実行した操作とインスタンス数の変更の説明。 |
+| details |はい |自動スケール サービスが実行した操作とインスタンス数の変更の説明。 |
 | subscriptionId |はい |スケールされるターゲット リソースのサブスクリプション ID。 |
 | resourceGroupName |はい |スケールされるターゲット リソースのリソース グループ名。 |
 | resourceName |はい |スケールされるターゲット リソースの名前。 |
@@ -120,5 +120,5 @@ webhook はトークンベースの認証を利用して認証できます。ク
 | portalLink |はい |ターゲット リソースの概要ページへの Azure ポータルのリンク。 |
 | oldCapacity |はい |自動スケールによってスケール操作が実行された時点の (以前の) インスタンス数。 |
 | newCapacity |はい |自動スケールによってリソースがスケールされた後の新しいインスタンス数。 |
-| Properties |いいえ |省略可能。 <Key, Value> ペアのセット (例: Dictionary <String, String>)。 properties フィールドは省略可能です。 カスタム ユーザー インターフェイスまたはロジック アプリ ベースのワークフローでは、ペイロードを使用して渡すことのできるキーと値を入力できます。 Webhook URI 自体を (クエリ パラメーターとして) 使用して、カスタム プロパティを送信 Webhook 呼び出しに戻すこともできます。 |
+| properties |いいえ |省略可能。 <Key, Value> ペアのセット (例: Dictionary <String, String>)。 properties フィールドは省略可能です。 カスタム ユーザー インターフェイスまたはロジック アプリ ベースのワークフローでは、ペイロードを使用して渡すことのできるキーと値を入力できます。 Webhook URI 自体を (クエリ パラメーターとして) 使用して、カスタム プロパティを送信 Webhook 呼び出しに戻すこともできます。 |
 
