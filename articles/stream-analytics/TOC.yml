@@ -88,7 +88,7 @@
           href: stream-analytics-test-query.md
         - name: ダッシュボードに結果を表示する
           href: stream-analytics-power-bi-dashboard.md
-        - name: ジョブをクリーンアップする
+        - name: ジョブを停止または削除する
           href: stream-analytics-clean-up-your-job.md
         - name: ジョブをペアリングして信頼性を高める
           href: stream-analytics-job-reliability.md

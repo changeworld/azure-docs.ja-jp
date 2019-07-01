@@ -17,12 +17,12 @@ ms.date: 01/29/2019
 ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d9b0c80522a988447b2753953c0c51b058fdd43
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 8a1154e6484ebc86743202239dcd94f0772c8011
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "66015206"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67204513"
 ---
 # <a name="what-is-azure-active-directory-identity-protection"></a>Azure Active Directory Identity Protection とは
 
@@ -69,7 +69,7 @@ Azure Active Directory Identity Protection は単なる監視とレポート作�
 
 Identity Protection 実装の管理アクティビティの負荷を分散するため、いくつかのロールを割り当てることができます。 Azure AD Identity Protection は、3 つのディレクトリ ロールをサポートします。
 
-| ロール | できること | できないこと |
+| Role | できること | できないこと |
 | :-- | --- | --- |
 | 全体管理者 | Identity Protection へのフル アクセス、Identity Protection の配布準備| |
 | セキュリティ管理者 | Identity Protection へのフル アクセス | Identity Protection の配布準備、ユーザーのパスワードのリセット |

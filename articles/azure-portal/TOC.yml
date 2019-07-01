@@ -30,6 +30,8 @@
   items:
     - name: キーボード ショートカット
       href: azure-portal-keyboard-shortcuts.md
+    - name: Azure portal の URL をセーフリストに追加する
+      href: azure-portal-safelist-urls.md
     - name: Azure ダッシュボードの構造
       href: azure-portal-dashboards-structure.md
 - name: リソース

@@ -223,6 +223,14 @@
             - name: REST の場合
               displayName: 'encode, encoding, custom, transform'
               href: custom-preset-rest-howto.md
+        - name: ビデオをサブクリップする
+          items:
+            - name: .NET の場合
+              href: subclip-video-dotnet-howto.md
+              displayName: 'subclipping, clip, edit, trim, clipping'
+            - name: REST の場合
+              href: subclip-video-rest-howto.md
+              displayName: 'subclipping, clip, edit, trim, clipping'
     - name: Event Grid の使用
       items:
         - name: イベントの監視 - ポータル

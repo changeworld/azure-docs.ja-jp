@@ -447,6 +447,18 @@
                   href: app/proactive-arm-config.md
                 - name: メール通知
                   href: app/proactive-email-notification.md
+            - name: 可用性
+              items:
+                - name: URL テスト
+                  href: app/monitor-web-app-availability.md
+                - name: 複数ステップ テスト
+                  href: app/availability-multistep.md
+                - name: 可用性のアラート
+                  href: app/availability-alerts.md
+                - name: トラブルシューティング
+                  href: app/troubleshoot-availability.md
+            - name: パフォーマンス テスト
+              href: app/performance-testing.md
             - name: リソースの作成
               href: app/create-new-resource.md
             - name: アプリケーション データを Log Analytics に送信する
@@ -554,6 +566,8 @@
                       href: insights/container-insights-enable-existing-clusters.md
                 - name: 分析
                   href: insights/container-insights-analyze.md
+                - name: エージェント コレクションの設定を構成する
+                  href: insights/container-insights-agent-config.md
                 - name: 監視を無効にする
                   href: insights/container-insights-optout.md
                 - name: ライブ ログを表示する
@@ -795,8 +809,6 @@
           items:
             - name: アプリケーション アラート ルール
               items:
-                - name: 可用性
-                  href: app/monitor-web-app-availability.md
                 - name: メトリック アラート
                   href: app/alerts.md
             - name: プラットフォームのメトリック アラート ルール
