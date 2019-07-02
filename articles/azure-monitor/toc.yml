@@ -564,6 +564,8 @@
                       href: insights/container-insights-enable-new-cluster.md
                     - name: 既存のクラスターでの有効化
                       href: insights/container-insights-enable-existing-clusters.md
+                    - name: リージョンのマッピング
+                      href: insights/container-insights-region-mapping.md
                 - name: 分析
                   href: insights/container-insights-analyze.md
                 - name: エージェント コレクションの設定を構成する
