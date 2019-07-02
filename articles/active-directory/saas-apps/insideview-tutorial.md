@@ -145,7 +145,7 @@ InsideView に対する Azure AD シングル サインオンを構成するに�
 
     1. **[Crm User Id Mapping]\(Crm ユーザー ID マッピング\)** ボックスに、「 **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress** 」と入力します。
 
-    1. **[Crm Email Mapping]\(Crm メール マッピング)\** ボックスに、「 **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress** 」と入力します。
+    1. **[Crm Email Mapping]\(Crm メール マッピング\)** ボックスに、「 **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress** 」と入力します。
 
     1. **[Crm First Name Mapping]\(Crm 名マッピング\)** ボックスに、「 **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname** 」と入力します。
 
