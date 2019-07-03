@@ -36,6 +36,8 @@
   items:
     - name: ストリーミング分析テクノロジの選択
       href: streaming-technologies.md
+    - name: ジョブ開発ツールの選択
+      href: feature-comparison.md
     - name: ジョブの入力の種類
       items:
         - name: 入力の概要

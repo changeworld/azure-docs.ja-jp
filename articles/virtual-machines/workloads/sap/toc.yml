@@ -168,6 +168,8 @@
               href: high-availability-guide-suse-netapp-files.md
             - name: (A)SCS インスタンス用の Red Hat Enterprise Linux の HA
               href: high-availability-guide-rhel.md
+            - name: Azure NetApp Files を使用した (A)SCS インスタンス用の Red Hat Enterprise Linux の HA
+              href: high-availability-guide-rhel-netapp-files.md
         - name: Azure インフラストラクチャの準備
           items:
             - name: (A)SCS インスタンス用の共有ディスクを使用した Windows
@@ -194,6 +196,8 @@
               href: high-availability-guide-suse-netapp-files.md
             - name: Red Hat Enterprise Linux での SAP NetWeaver の高可用性
               href: high-availability-guide-rhel.md
+            - name: Azure NetApp Files を使用した (A)SCS インスタンス用の NFS を使用した Red Hat Enterprise Linux
+              href: high-availability-guide-rhel-netapp-files.md
         - name: SAP マルチ SID
           items:
             - name: (A)SCS インスタンス用の共有ディスクを使用した Windows

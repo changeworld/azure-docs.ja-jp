@@ -93,6 +93,8 @@
       items:
         - name: ACR タスクの概要
           href: container-registry-tasks-overview.md
+        - name: スケジュールされたタスク
+          href: container-registry-tasks-scheduled.md
         - name: 複数ステップのタスク
           href: container-registry-tasks-multi-step.md
         - name: マネージド ID との使用
