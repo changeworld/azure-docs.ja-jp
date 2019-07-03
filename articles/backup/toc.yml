@@ -252,6 +252,8 @@
           href: troubleshoot-azure-files.md
         - name: SQL Server
           href: backup-sql-server-azure-troubleshoot.md
+        - name: Azure VM での SAP HANA のバックアップ
+          href: backup-azure-sap-hana-database-troubleshoot.md
         - name: システム状態
           href: backup-azure-system-state-troubleshoot.md
     - name: Azure Backup ワークロードの監視

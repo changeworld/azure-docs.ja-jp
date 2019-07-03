@@ -300,8 +300,10 @@
           href: luis-reference-prebuilt-keyphrase.md
         - name: number エンティティ
           href: luis-reference-prebuilt-number.md
-        - name: 序数エンティティ
+        - name: ordinal エンティティ
           href: luis-reference-prebuilt-ordinal.md
+        - name: ordinal V2 エンティティ
+          href: luis-reference-prebuilt-ordinal-v2.md
         - name: percentage エンティティ
           href: luis-reference-prebuilt-percentage.md
         - name: personName エンティティ

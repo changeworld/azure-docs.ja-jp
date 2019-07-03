@@ -25,6 +25,8 @@
       href: billing-understand-your-invoice.md
     - name: 請求条件の説明 - Microsoft 顧客契約のみ
       href: billing-mca-understand-your-invoice.md
+    - name: 請求金額を支払う方法 - Microsoft 顧客契約のみ
+      href: billing-how-to-pay-bill.md
     - name: Microsoft 顧客契約の請求先アカウント
       href: billing-mca-overview.md
 - name: コストを管理する
@@ -79,7 +81,7 @@
               href: billing-understand-suse-reservation-charges.md
         - name: 含まれないソフトウェアのコスト
           href: billing-reserved-instance-windows-software-costs.md
-        - name: 従量課金制の使用量
+        - name: 個々のサブスクリプションの使用状況
           href: billing-understand-reserved-instance-usage.md
         - name: エンタープライズの場合の使用量
           href: billing-understand-reserved-instance-usage-ea.md
