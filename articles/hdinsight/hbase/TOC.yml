@@ -11,16 +11,16 @@
       href: apache-hbase-phoenix-squirrel-linux.md
     - name: Apache HBase のクエリ - HBase シェル
       href: ./query-hbase-with-hbase-shell.md
-- name: 作業開始
+- name: チュートリアル
   items:
-    - name: Apache HBase & NoSQL の開始
+    - name: HDInsight での Apache HBase の使用
       href: apache-hbase-tutorial-get-started-linux.md
+- name: 概念
+  items:
     - name: HDInsight アプリをインストールする
       href: ../hdinsight-apps-install-applications.md
     - name: クラスターの容量計画
       href: ../hdinsight-capacity-planning.md
-- name: 概念
-  items:
     - name: HDInsight の Apache Hadoop コンポーネント
       href: ../hdinsight-component-versioning.md
     - name: HDInsight 4.0

@@ -26,6 +26,10 @@
       href: oracle-backup-recovery.md
     - name: Oracle のディザスター リカバリー オプション
       href: oracle-disaster-recovery.md
+- name: ハウツー ガイド
+  items:
+    - name: Azure と OCI の相互接続 - プレビュー
+      href: configure-azure-oci-networking.md
 - name: リソース
   items:
     - name: Azure のロードマップ

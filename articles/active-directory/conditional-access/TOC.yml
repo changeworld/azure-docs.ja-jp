@@ -19,6 +19,8 @@
 - name: 概念
   expanded: false
   items:
+    - name: 条件付きアクセスの導入
+      href: howto-conditional-access-adoption-kit.md
     - name: ベースライン保護ポリシー
       href: concept-baseline-protection.md
     - name: 条件

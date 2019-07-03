@@ -260,6 +260,9 @@
     - name: Policy の効果について
       displayName: 'order, evaluation'
       href: ./concepts/effects.md
+    - name: Kubernetes 用の Azure Policy
+      displayName: 'aks, rego, k8s, opa, open policy agent, gatekeeper'
+      href: ./concepts/rego-for-aks.md
     - name: ゲスト構成を使用した VM の監査
       displayName: 'provider, tools, definition'
       href: ./concepts/guest-configuration.md

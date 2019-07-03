@@ -58,6 +58,12 @@
       href: cross-network-connectivity.md
     - name: Azure の一般的なセキュリティ属性
       href: expressroute-security-attributes.md
+    - name: 高可用性を実現する設計
+      href: designing-for-high-availability-with-expressroute.md
+    - name: ディザスター リカバリーの設計
+      items:
+        - name: プライベート ピアリング
+          href: designing-for-disaster-recovery-with-expressroute-privatepeering.md
 - name: ハウツー ガイド
   items:
     - name: 回線の作成と変更

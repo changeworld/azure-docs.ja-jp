@@ -70,8 +70,16 @@
           href: how-tos/text-analytics-how-to-install-containers.md
         - name: コンテナーを構成する
           href: text-analytics-resource-container-config.md
-        - name: Azure Kubernetes Service での実行方法
-          href: How-tos/text-analytics-how-to-use-container-instance.md
+        - name: Container Instances (ACI) の使用
+          items:
+            - name: センチメント分析
+              href: how-tos/use-sentiment-analysis-on-aci.md
+        - name: Kubernetes サービス (AKS) の使用
+          items:
+            - name: 言語検出
+              href: how-tos/use-language-detection-on-aks.md
+            - name: センチメント分析
+              href: how-tos/use-sentiment-analysis-on-aks.md
     - name: Text Analytics 接続済みサービスを使用する
       href: vs-text-connected-service.md
 - name: リファレンス

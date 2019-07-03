@@ -43,6 +43,11 @@ sections:
             image:
               src: ../media/index/i_get-started.svg
             title: コンテナーのインストールと実行
+          - href: /azure/cognitive-services/form-recognizer/build-training-data-set
+            html: <p>カスタム モデルをトレーニングするために最適化されたデータ セットの作成。</p>
+            image:
+              src: ../media/index/i_overview.svg
+            title: トレーニング データ セットの作成
   - title: 5 分間のクイック スタート
     items:
       - type: paragraph

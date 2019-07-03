@@ -274,13 +274,13 @@
           items:
             - name: 概要
               href: image-builder-overview.md
-            - name: CLI の使用
+            - name: Azure CLI の使用
               href: image-builder.md
             - name: テンプレート リファレンス
               href: image-builder-json.md
-            - name: ギャラリーと共に使用する
+            - name: イメージ ギャラリー用のビルド
               href: image-builder-gallery.md
-            - name: イメージ バージョンを更新する
+            - name: 既存のイメージの更新
               href: image-builder-gallery-update-image-version.md
             - name: トラブルシューティング
               href: 'https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md'

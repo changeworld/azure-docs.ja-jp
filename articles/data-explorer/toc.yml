@@ -2,7 +2,7 @@
   href: index.yml
 - name: 概要
   items:
-    - name: データ エクスプローラーとは
+    - name: Azure データ エクスプローラーとは
       href: data-explorer-overview.md
 - name: クイック スタート
   expanded: true
@@ -15,8 +15,6 @@
       items:
         - name: Web UI
           href: web-query-data.md
-        - name: Python
-          href: python-query-data.md
 - name: チュートリアル
   items:
     - name: コードを使用せずにデータを取り込む
@@ -68,12 +66,18 @@
       items:
         - name: クエリを作成する
           href: write-queries.md
-        - name: 時系列分析
-          href: time-series-analysis.md
-        - name: 異常検出と予測
-          href: anomaly-detection.md
-        - name: 機械学習
-          href: machine-learning-clustering.md
+        - name: Azure Data Lake でデータのクエリを実行する
+          href: data-lake-query-data.md
+        - name: Python
+          href: python-query-data.md
+        - name: 時系列分析と機械学習
+          items:
+            - name: 時系列分析
+              href: time-series-analysis.md
+            - name: 異常検出と予測
+              href: anomaly-detection.md
+            - name: 機械学習
+              href: machine-learning-clustering.md
     - name: データの視覚化
       items:
         - name: Power BI

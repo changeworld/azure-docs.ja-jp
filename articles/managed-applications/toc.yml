@@ -29,10 +29,18 @@
       href: sample-projects.md
 - name: 概念
   items:
-    - name: カスタム プロバイダー
+    - name: Azure Custom Resource Providers
       href: custom-providers-overview.md
+    - name: ビュー定義アーティファクト
+      href: concepts-view-definition.md
 - name: ハウツー ガイド
   items:
+    - name: カスタム リソース プロバイダー
+      items:
+        - name: カスタム アクションを Azure に追加する
+          href: custom-providers-action-endpoint-how-to.md
+        - name: カスタム リソースを Azure に追加する
+          href: custom-providers-resources-endpoint-how-to.md
     - name: 発行元
       items:
         - name: ポータルのインターフェイスを作成する
@@ -57,6 +65,12 @@
           href: approve-just-in-time-access.md
 - name: リファレンス
   items:
+    - name: カスタム リソース プロバイダー
+      items:
+        - name: カスタム リソースのプロキシのリファレンス
+          href: custom-providers-proxy-resource-endpoint-reference.md
+        - name: カスタム リソースのキャッシュのリファレンス
+          href: custom-providers-proxy-cache-resource-endpoint-reference.md
     - name: Azure CLI
       href: /cli/azure/managedapp
     - name: PowerShell

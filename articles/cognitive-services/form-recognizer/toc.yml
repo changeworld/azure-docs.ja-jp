@@ -17,6 +17,8 @@
               href: quickstarts/python-train-extract.md
 - name: ハウツー ガイド
   items:
+    - name: トレーニング データ セットの作成
+      href: build-training-data-set.md
     - name: コンテナーの使用
       items:
         - name: コンテナーのインストールと実行
