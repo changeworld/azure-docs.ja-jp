@@ -176,7 +176,7 @@ function AssetTransfer(string description, uint256 price, PropertyTypeEnum prope
 
 | フィールド | Description | 必須 |
 |-------|-------------|:--------:|
-| parameters | スマート コントラクトを開始するために必要な[識別子](#identifiers)のコレクション。 | はい |
+| Parameters | スマート コントラクトを開始するために必要な[識別子](#identifiers)のコレクション。 | はい |
 
 ### <a name="constructor-example"></a>コンストラクターの例
 
