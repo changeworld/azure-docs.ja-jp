@@ -72,6 +72,8 @@
               href: manage-private-cloud.md
             - name: プライベート クラウドを拡大する
               href: expand-private-cloud.md
+            - name: プライベート クラウドを縮小する
+              href: shrink-private-cloud.md
             - name: Azure サブスクリプションをマッピングする
               href: azure-subscription-mapping.md
             - name: 権限をエスカレートする
