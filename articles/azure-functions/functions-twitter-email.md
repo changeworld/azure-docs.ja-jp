@@ -1,6 +1,6 @@
 ---
 title: Azure Logic Apps と統合される関数を作成する
-description: Azure Logic Apps および Azure Cognitive Services と統合し、ツイートのセンチメントを分類して、センチメントが良くない場合に通知を送信する関数を作成します。
+description: Azure Logic Apps および Azure Cognitive Services と統合し、ツイートの感情を分類して、感情が良くない場合に通知を送信する関数を作成します。
 services: functions, logic-apps, cognitive-services
 keywords: ワークフロー, クラウド アプリ, クラウド サービス, ビジネス プロセス, システム統合, エンタープライズ アプリケーション統合, EAI
 author: craigshoemaker
@@ -22,7 +22,7 @@ ms.locfileid: "58087093"
 
 Azure Functions は、Logic Apps デザイナーで Azure Logic Apps と統合できます。 この統合により、他の Azure サービスやサードパーティ製のサービスとのオーケストレーションにおいて、Functions のコンピューティング機能を使用することができます。 
 
-このチュートリアルでは、Azure 上で Functions と Logic Apps、Cognitive Services を使用することで、Twitter 投稿の感情分析を実行する方法を説明します。 HTTP によってトリガーされる関数は、センチメント スコアに基づいて、ツイートを緑、黄、赤に分類します。 ネガティブなセンチメントが検出されると、電子メールが送信されます。 
+このチュートリアルでは、Azure 上で Functions と Logic Apps、Cognitive Services を使用することで、Twitter 投稿の感情分析を実行する方法を説明します。 HTTP によってトリガーされる関数は、感情 スコアに基づいて、ツイートを緑、黄、赤に分類します。 ネガティブな感情が検出されると、電子メールが送信されます。 
 
 ![Logic Apps デザイナーでのアプリの最初の 2 つの手順の画像](media/functions-twitter-email/00-logic-app-overview.png)
 
@@ -30,9 +30,9 @@ Azure Functions は、Logic Apps デザイナーで Azure Logic Apps と統合�
 
 > [!div class="checklist"]
 > * Cognitive Services API リソースを作成します。
-> * ツイートのセンチメントを分類する関数を作成します。
+> * ツイートの感情を分類する関数を作成します。
 > * Twitter に接続するロジック アプリを作成します。
-> * センチメントの検出をロジック アプリに追加します。 
+> * 感情の検出をロジック アプリに追加します。 
 > * ロジック アプリを関数に接続します。
 > * 関数からの応答に基づいて電子メールを送信します。
 
@@ -45,7 +45,7 @@ Azure Functions は、Logic Apps デザイナーで Azure Logic Apps と統合�
 
 ## <a name="create-a-cognitive-services-resource"></a>Cognitive Services リソースの作成
 
-Cognitive Services APIs は、個々のリソースとして Azure で使用できます。 Text Analytics API を使用して、監視されているツイートのセンチメントを検出します。
+Cognitive Services APIs は、個々のリソースとして Azure で使用できます。 Text Analytics API を使用して、監視されているツイートの感情を検出します。
 
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
 
@@ -74,7 +74,7 @@ Cognitive Services APIs は、個々のリソースとして Azure で使用で�
 
 ## <a name="create-the-function-app"></a>Function App の作成
 
-関数は、Logic Apps ワークフローの処理タスクをオフロードするのに役立ちます。 このチュートリアルでは、HTTP によってトリガーされる関数を使用して、Cognitive Services からのツイート センチメント スコアを処理し、カテゴリ値を返します。  
+関数は、Logic Apps ワークフローの処理タスクをオフロードするのに役立ちます。 このチュートリアルでは、HTTP によってトリガーされる関数を使用して、Cognitive Services からのツイート 感情 スコアを処理し、カテゴリ値を返します。  
 
 [!INCLUDE [Create function app Azure portal](../../includes/functions-create-function-app-portal.md)]
 
@@ -123,13 +123,13 @@ Cognitive Services APIs は、個々のリソースとして Azure で使用で�
             : new BadRequestObjectResult("Please pass a value on the query string or in the request body");
     }
     ```
-    この関数コードは、要求で受信したセンチメント スコアに基づいて、色のカテゴリを返します。 
+    この関数コードは、要求で受信した感情 スコアに基づいて、色のカテゴリを返します。 
 
 4. 関数をテストするには、一番右の **[テスト]** をクリックして [テスト] タブを展開します。**[要求本文]** に「`0.2`」という値を入力し、**[実行]** をクリックします。 応答本文で **RED** という値が返されます。 
 
     ![Azure Portal で関数をテストする](./media/functions-twitter-email/07-function-test.png)
 
-これで、センチメント スコアを分類する関数が作成できました。 次に、Twitter および Cognitive Services API に関数を統合するロジック アプリを作成します。 
+これで、感情 スコアを分類する関数が作成できました。 次に、Twitter および Cognitive Services API に関数を統合するロジック アプリを作成します。 
 
 ## <a name="create-a-logic-app"></a>ロジック アプリを作成します   
 
@@ -173,9 +173,9 @@ Cognitive Services APIs は、個々のリソースとして Azure で使用で�
 
 3.  **[保存]** をクリックして、Twitter アカウントに接続します。 
 
-これで、アプリが Twitter に接続されました。 次はテキスト分析に接続し、収集されたツイートのセンチメントを検出します。
+これで、アプリが Twitter に接続されました。 次はテキスト分析に接続し、収集されたツイートの感情を検出します。
 
-## <a name="add-sentiment-detection"></a>センチメントの検出を追加する
+## <a name="add-sentiment-detection"></a>感情の検出を追加する
 
 1. **[新しいステップ]**、**[アクションの追加]** の順にクリックします。
 
@@ -191,13 +191,13 @@ Cognitive Services APIs は、個々のリソースとして Azure で使用で�
 
     ![分析するテキストを定義する](media/functions-twitter-email/13-analyze-tweet-text.png)
 
-これでセンチメントの検出が構成されたので、センチメント スコアの出力を使用する関数への接続を追加できます。
+これで感情の検出が構成されたので、感情スコアの出力を使用する関数への接続を追加できます。
 
-## <a name="connect-sentiment-output-to-your-function"></a>センチメントの出力を関数に接続する
+## <a name="connect-sentiment-output-to-your-function"></a>感情の出力を関数に接続する
 
 1. Logic Apps デザイナーで、**[新しいステップ]** > **[アクションの追加]** の順にクリックし、**[Azure Functions]** を条件としてフィルター処理して、**[Azure 関数を選択する]** をクリックします。
 
-    ![センチメントを検出する](media/functions-twitter-email/14-azure-functions.png)
+    ![感情を検出する](media/functions-twitter-email/14-azure-functions.png)
   
 4. 先ほど作成した関数アプリを選択します。
 
@@ -211,11 +211,11 @@ Cognitive Services APIs は、個々のリソースとして Azure で使用で�
 
     ![Score](media/functions-twitter-email/17-function-input-score.png)
 
-これで、ロジック アプリからセンチメント スコアが送信されたときに、関数がトリガーされます。 関数によって、色分けされたカテゴリがロジック アプリに返されます。 次に、関数からセンチメントの値 **RED** が返されたときに送信される電子メール通知を追加します。 
+これで、ロジック アプリから感情スコアが送信されたときに、関数がトリガーされます。 関数によって、色分けされたカテゴリがロジック アプリに返されます。 次に、関数から感情の値 **RED** が返されたときに送信される電子メール通知を追加します。 
 
 ## <a name="add-email-notifications"></a>電子メール通知を追加する
 
-ワークフローの最後の部分では、センチメント スコアが _RED_ だったときに電子メールがトリガーされます。 このトピックでは Outlook.com コネクタを使用します。 Gmail や Office 365 の Outlook コネクタを使用して同様の手順を実行することもできます。   
+ワークフローの最後の部分では、感情スコアが _RED_ だったときに電子メールがトリガーされます。 このトピックでは Outlook.com コネクタを使用します。 Gmail や Office 365 の Outlook コネクタを使用して同様の手順を実行することもできます。   
 
 1. Logic Apps デザイナーで、**[新しいステップ]** > **[条件の追加]** をクリックします。 
 
@@ -239,7 +239,7 @@ Cognitive Services APIs は、個々のリソースとして Azure で使用で�
 | Setting      |  推奨値   | 説明  |
 | ----------------- | ------------ | ------------- |
 | **To** | メール アドレスを入力します。 | 通知を受け取る電子メール アドレス。 |
-| **[件名]** | "ネガティブなツイートのセンチメントを検出しました"  | 電子メール通知の件名。  |
+| **[件名]** | "ネガティブなツイートの感情を検出しました"  | 電子メール通知の件名。  |
 | **本文** | [ツイート テキスト]、[場所] | **[ツイート テキスト]** パラメーターと **[場所]** パラメーターをクリックします。 |
 
 1. **[Save]** をクリックします。
@@ -256,11 +256,11 @@ Cognitive Services APIs は、個々のリソースとして Azure で使用で�
 
 3. (省略可能) 実行中のいずれかをクリックすると、その実行に関する詳細が表示されます。
 
-4. 関数に移動し、ログを表示して、センチメント値の受信と処理が行われたことを確認します。
+4. 関数に移動し、ログを表示して、感情スコアの受信と処理が行われたことを確認します。
  
     ![関数のログを表示する](media/functions-twitter-email/sent.png)
 
-5. ネガティブである可能性のあるセンチメントが検出されると、電子メールが届きます。 電子メールが届かない場合は、関数コードを変更して、毎回 RED が返されるようにすることができます。
+5. ネガティブである可能性のある感情が検出されると、電子メールが届きます。 電子メールが届かない場合は、関数コードを変更して、毎回 RED が返されるようにすることができます。
 
     ```csharp
     return (ActionResult)new OkObjectResult("RED");
@@ -291,9 +291,9 @@ Cognitive Services APIs は、個々のリソースとして Azure で使用で�
 
 > [!div class="checklist"]
 > * Cognitive Services API リソースを作成します。
-> * ツイートのセンチメントを分類する関数を作成します。
+> * ツイートの感情を分類する関数を作成します。
 > * Twitter に接続するロジック アプリを作成します。
-> * センチメントの検出をロジック アプリに追加します。 
+> * 感情の検出をロジック アプリに追加します。 
 > * ロジック アプリを関数に接続します。
 > * 関数からの応答に基づいて電子メールを送信します。
 
