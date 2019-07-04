@@ -10,12 +10,12 @@ ms.topic: quickstart
 description: Azure のコンテナーとマイクロサービスを使用したチーム Kubernetes 開発
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
 manager: jeconnoc
-ms.openlocfilehash: e9f9198f8e086bee6c6b02b67ae7dd9cf523416c
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 8160e72657be83af6f9af5226b7cd77c692dcd82
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66480368"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67061845"
 ---
 # <a name="quickstart-team-development-on-kubernetes-using-azure-dev-spaces"></a>クイック スタート:Azure Dev Spaces を使用した Kubernetes 上でのチーム開発
 
@@ -90,7 +90,7 @@ Kubernetes でサンプル アプリケーションを実行するためのコ�
 ```cmd
 cd charts/
 helm init --wait
-helm install -n bikesharing . --dep-up --namespace dev --atomic --wait
+helm install -n bikesharing . --dep-up --namespace dev --atomic 
 ```
 > [!Note]
 > **RBAC が有効になっているクラスターを使用している場合は**、必ず [Tiller のサービス アカウント](https://helm.sh/docs/using_helm/#role-based-access-control)を構成してください。 そうしなければ、`helm` コマンドは失敗します。
@@ -103,7 +103,7 @@ $ helm init --wait
 ...
 Happy Helming!
 
-$ helm install -n bikesharing . --dep-up --namespace dev --atomic --wait
+$ helm install -n bikesharing . --dep-up --namespace dev --atomic
 
 Hang tight while we grab the latest from your chart repositories...
 ...
