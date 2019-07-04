@@ -8,6 +8,8 @@
       href: sql-database-paas-vs-sql-server-iaas.md
     - name: リリース ノート
       href: sql-database-release-notes.md
+    - name: ゲートウェイの IP 移行に関する更新情報
+      href: sql-database-gateway-migration.md
 - name: クイック スタート
   expanded: true
   items:

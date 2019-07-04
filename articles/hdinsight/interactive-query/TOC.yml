@@ -24,6 +24,9 @@
       maintainContext: true
 - name: 方法
   items:
+    - name: Hive ワークロードを HDInsight 4.0 に移行する
+      href: apache-hive-migrate-workloads.md
+      maintainContext: true
     - name: クラスター ストレージの使用
       items:
         - name: Azure Storage を使用する
@@ -100,6 +103,9 @@
           href: ./apache-hadoop-connect-hive-power-bi-directquery.md
         - name: Power BI を Apache Hadoop に接続する
           href: ../hadoop/apache-hadoop-connect-hive-power-bi.md
+          maintainContext: true
+        - name: PowerShell と ODBC を使用して Hive に対してクエリを実行する
+          href: apache-hive-query-odbc-driver-powershell.md
           maintainContext: true
         - name: Excel を Apache Hadoop に接続する
           href: ../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md
@@ -333,11 +339,6 @@
         - name: クラスター パフォーマンスの監視
           href: ../hdinsight-key-scenarios-to-monitor.md
           maintainContext: true
-- name: 方法
-  items:
-    - name: Hive ワークロードを HDInsight 4.0 に移行する
-      href: apache-hive-migrate-workloads.md
-      maintainContext: true
 - name: リファレンス
   items:
     - name: コード サンプル

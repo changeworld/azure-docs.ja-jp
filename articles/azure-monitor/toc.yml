@@ -122,8 +122,6 @@
       href: visualizations.md
     - name: パートナー統合
       href: platform/partners.md
-    - name: OMS ポータルの廃止
-      href: platform/oms-portal-transition.md
     - name: FAQ
       items:
         - name: Log Analytics
@@ -837,10 +835,12 @@
               items:
                 - name: アクティビティ ログ イベントのアラート
                   href: platform/alerts-activity-log.md
-                - name: 管理イベントをアクティビティ ログ アラートに移行する
-                  href: platform/migrate-management-alerts.md
-                - name: サービス正常性通知のアラート
-                  href: platform/alerts-activity-log-service-notifications.md
+            - name: アクティビティ ログのサービス正常性通知
+              items:
+                - name: サービス正常性通知を確認する
+                  href: ../service-health/service-notifications.md?toc=%2fazure%2fazure-monitor%2ftoc.json
+                - name: サービス正常性アラートのルールを構成する
+                  href: ../service-health/alerts-activity-log-service-notifications.md?toc=%2fazure%2fazure-monitor%2ftoc.json
             - name: アクション グループの使用
               items:
                 - name: アクション グループの作成
@@ -885,12 +885,6 @@
                   href: platform/alerts-enable-template.md
                 - name: Webhook を呼び出すクラシック メトリック アラート
                   href: platform/alerts-webhooks.md
-        - name: アクティビティ ログのサービス正常性通知
-          items:
-            - name: 通知の表示
-              href: platform/service-notifications.md
-            - name: 通知イベントでのアラートの構成
-              href: platform/alerts-activity-log-service-notifications.md
         - name: 自動スケール
           items:
             - name: チュートリアル
@@ -1076,12 +1070,10 @@
           href: ./platform/classic-api-retirement-metrics-autoscale.md
         - name: 従来のアラートと監視
           href: platform/monitoring-classic-retirement.md
-        - name: Log Analytics から Azure へのアラートの拡張
-          href: platform/alerts-extend.md
-        - name: OMS ポータルから Azure Portal にアラートをコピーする
-          href: platform/alerts-extend-tool.md
         - name: ログ アラートの API 設定の切り替え
           href: platform/alerts-log-api-switch.md
+        - name: OMS ポータルの廃止
+          href: platform/oms-portal-transition.md
 - name: リソース
   items:
     - name: Azure のロードマップ

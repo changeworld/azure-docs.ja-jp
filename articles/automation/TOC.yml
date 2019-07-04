@@ -124,6 +124,8 @@
         - name: Runbook のトラブルシューティング
           href: troubleshoot/runbooks.md
           displayName: troubleshoot
+        - name: VM の開始/停止
+          href: troubleshoot/start-stop-vm.md
 - name: 更新管理
   items:
     - name: Update Management の概要
@@ -313,6 +315,8 @@
   items:
     - name: Log Analytics に Azure Automation のジョブ データを転送する
       href: automation-manage-send-joblogs-log-analytics.md
+    - name: Log Analytics ワークスペースのマッピングがサポートされるリージョン
+      href: how-to/region-mappings.md
 - name: 移行
   items:
     - name: Orchestrator から移行する

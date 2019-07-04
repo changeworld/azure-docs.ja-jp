@@ -460,10 +460,12 @@
               href: tutorial-query-graph.md
         - name: ハウツー ガイド
           items:
-            - name: グラフ データのインポート
-              href: bulk-executor-graph-dotnet.md
+            - name: グラフ データのモデリング
+              href: graph-modeling.md
             - name: グラフ データのパーティション分割
               href: graph-partitioning.md
+            - name: グラフ データのインポート
+              href: bulk-executor-graph-dotnet.md
             - name: Gremlin クエリの最適化
               href: graph-execution-profile.md
             - name: Spring Data の格納と管理

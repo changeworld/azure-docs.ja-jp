@@ -7,7 +7,7 @@
 - name: クイック スタート
   expaned: true
   items:
-    - name: モデルをトレーニングしてデータを抽出する
+    - name: カスタム モデルをトレーニングしてデータを抽出する
       items:
         - name: REST API の使用
           items:
@@ -15,6 +15,14 @@
               href: quickstarts/curl-train-extract.md
             - name: Python
               href: quickstarts/python-train-extract.md
+    - name: レシートに関する事前構築済みモデルを使用する
+      items:
+        - name: REST API の使用
+          items:
+            - name: cURL
+              href: quickstarts/curl-receipts.md
+            - name: Python
+              href: quickstarts/python-receipts.md
 - name: ハウツー ガイド
   items:
     - name: トレーニング データ セットの作成

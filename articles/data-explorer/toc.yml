@@ -11,10 +11,8 @@
       href: create-cluster-database-portal.md
     - name: サンプル データを取り込む
       href: ingest-sample-data.md
-    - name: データのクエリを実行する
-      items:
-        - name: Web UI
-          href: web-query-data.md
+    - name: Web UI を使用してデータに対してクエリを実行する
+      href: web-query-data.md
 - name: チュートリアル
   items:
     - name: コードを使用せずにデータを取り込む
@@ -88,14 +86,14 @@
               href: power-bi-imported-query.md
             - name: SQL クエリ
               href: power-bi-sql-query.md
-        - name: ODBC コネクタ
-          href: connect-odbc.md
-        - name: SiSense
-          href: sisense.md
         - name: Grafana
           href: grafana.md
+        - name: ODBC コネクタ
+          href: connect-odbc.md
         - name: Tableau
           href: tableau.md
+        - name: SiSense
+          href: sisense.md
     - name: 管理
       items:
         - name: データベースのアクセス許可を管理する
