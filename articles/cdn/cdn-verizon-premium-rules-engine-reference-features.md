@@ -7,12 +7,12 @@ ms.service: cdn
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: magattus
-ms.openlocfilehash: 3dcce64d86574a3e898531b2e2587b81d04f098d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7e75a6ffe28aa74ea2fad30bbe2728317712d86b
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67080783"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443488"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-features"></a>Azure CDN from Verizon Premium ルール エンジンの機能
 
@@ -1128,7 +1128,7 @@ Disabled|既定の動作を復元します。 既定の動作では、要求時�
 
 指定されたヘッダーの名前が次のいずれの名前とも一致しないことを確認してください。
 
-- 標準的な要求ヘッダー名。 標準的なヘッダー名の一覧は [RFC 2616](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html) に記載されています。
+- 標準的な要求ヘッダー名。 標準的なヘッダー名の一覧は [RFC 2616](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html) に記載されています。
 - 予約済みのヘッダー名:
     - forwarded-for
     - host

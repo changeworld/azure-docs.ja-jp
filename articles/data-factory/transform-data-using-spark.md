@@ -11,12 +11,12 @@ ms.date: 05/31/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: cdf4dba3996668b3c9fe31df10050ff2cbff6cb3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c493dbc99edc794dd5a261dfc004c2c8c1cb6d52
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60387827"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67312087"
 ---
 # <a name="transform-data-using-spark-activity-in-azure-data-factory"></a>Azure Data Factory での Spark アクティビティを使用したデータの変換
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -25,8 +25,6 @@ ms.locfileid: "60387827"
 
 Data Factory [パイプライン](concepts-pipelines-activities.md)の Spark アクティビティでは、[独自の](compute-linked-services.md#azure-hdinsight-linked-service)または[オンデマンドの](compute-linked-services.md#azure-hdinsight-on-demand-linked-service) HDInsight クラスターで Spark プログラムを実行します。 この記事は、データ変換とサポートされる変換アクティビティの概要を説明する、 [データ変換アクティビティ](transform-data.md) に関する記事に基づいています。 オンデマンドの Spark のリンクされたサービスを使用すると、Data Factory は自動的に Spark クラスターを作成し、ジャストインタイムでデータを処理し、処理が完了するとクラスターを削除します。 
 
-> [!IMPORTANT]
-> Spark アクティビティでは、Azure Data Lake Store をプライマリ ストレージとして使用する HDInsight Spark クラスターはサポートされません。
 
 ## <a name="spark-activity-properties"></a>Spark アクティビティのプロパティ
 Spark アクティビティのサンプルの JSON 定義を次に示します。    
@@ -45,7 +43,7 @@ Spark アクティビティのサンプルの JSON 定義を次に示します�
             "referenceName": "MyAzureStorageLinkedService",
             "type": "LinkedServiceReference"
         },
-        "rootPath": "adfspark\\pyFiles",
+        "rootPath": "adfspark",
         "entryFilePath": "test.py",
         "sparkConfig": {
             "ConfigItem1": "Value"
@@ -62,7 +60,7 @@ Spark アクティビティのサンプルの JSON 定義を次に示します�
 
 | プロパティ              | 説明                              | 必須 |
 | --------------------- | ---------------------------------------- | -------- |
-| name                  | パイプラインのアクティビティの名前。    | はい      |
+| 名前                  | パイプラインのアクティビティの名前。    | はい      |
 | description           | アクティビティの動作を説明するテキスト。  | いいえ       |
 | type                  | Spark アクティビティの場合、アクティビティの種類は HDInsightSpark です。 | はい      |
 | linkedServiceName     | Spark プログラムが実行されている HDInsight Spark のリンクされたサービスの名前。 このリンクされたサービスの詳細については、[計算のリンクされたサービス](compute-linked-services.md)に関する記事をご覧ください。 | はい      |

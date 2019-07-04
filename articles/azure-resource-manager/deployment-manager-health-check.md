@@ -5,18 +5,15 @@ services: azure-resource-manager
 documentationcenter: na
 author: mumian
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 05/08/19
 ms.author: jgao
-ms.openlocfilehash: 41b16498fb79166b2c77c77a517ee5c443ebec75
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4c2c38754b2051a4f61249f623f60f21e9690f5e
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65796249"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206626"
 ---
 # <a name="introduce-health-integration-rollout-to-azure-deployment-manager-public-preview"></a>Azure Deployment Manager に正常性統合ロールアウトを導入する (パブリック プレビュー)
 

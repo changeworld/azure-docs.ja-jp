@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ca69fc23d580b61e74fe56b3d0c3524fdfad747
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 296486755f0935e4eb8dcdb663da46ef60ef38bc
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66235534"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441007"
 ---
 # <a name="planning-a-cloud-based-azure-multi-factor-authentication-deployment"></a>クラウド ベースの Azure Multi-Factor Authentication のデプロイの計画
 
@@ -86,7 +86,7 @@ Microsoft では、組織が条件付きアクセスを使用し、[ネームド
 
 1. Azure portal で **[Azure Active Directory]** を開きます
 2. **[条件付きアクセス]** をクリックします
-3. **[名前付きの場所]** をクリックします
+3. **[ネームド ロケーション]** をクリックします
 4. **[新しい場所]** をクリックします
 5. **[名前]** フィールドに、わかりやすい名前を入力します
 6. 場所の定義に IP 範囲または国/地域のどちらを使用するかを選択します
@@ -182,7 +182,7 @@ Get-MsolUser -All | Set-MfaState -State Enforced
 
 # Wrapper to disable MFA with the option to keep the MFA
 # methods (to avoid having to proof-up again later)
-function Disable-Mfa {
+function Disable-MFA {
 
     [CmdletBinding()]
     param(
