@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: reference
 ms.date: 6/6/2019
 ms.author: tomfitz
-ms.openlocfilehash: 314b28edbd5770186d96fb2a2b203f26ff27bda0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9ab8fbd8fa0453ca6c89f3e7ad91bea95b0b9096
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66752357"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67331996"
 ---
 # <a name="move-operation-support-for-resources"></a>リソースの操作のサポートの移動
 この記事では、Azure リソースの種類は、移動操作をサポートしているかどうかを示します。 リソースの種類には、移動操作がサポートされていても、リソースが移動されることを妨げている条件がある可能性があります。 移動操作に影響する条件の詳細については、[新しいリソース グループまたはサブスクリプションへリソースを移動](resource-group-move-resources.md)を参照してください。
@@ -564,8 +564,8 @@ ms.locfileid: "66752357"
 | expressroutecrossconnections | いいえ | いいえ |
 | expressroutegateways | いいえ | いいえ |
 | expressrouteports | いいえ | いいえ |
-| frontdoors | はい | はい |
-| frontdoorwebapplicationfirewallpolicies | はい | はい |
+| frontdoors | いいえ | いいえ |
+| frontdoorwebapplicationfirewallpolicies | いいえ | いいえ |
 | loadbalancers | はい | はい |
 | localnetworkgateways | はい | はい |
 | natgateways | はい | はい |

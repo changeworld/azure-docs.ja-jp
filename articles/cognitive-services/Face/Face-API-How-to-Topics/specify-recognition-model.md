@@ -10,12 +10,12 @@ ms.component: face-api
 ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: longl
-ms.openlocfilehash: 88b0ac853c64e1e32a2d1c429bdf8655158f030d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e8d5c416183a7d475a46c5e538577069612baf8e
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65411466"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449010"
 ---
 # <a name="specify-a-face-recognition-model"></a>顔認識モデルを指定する
 
@@ -53,7 +53,7 @@ AI による顔の検出と識別の概念を理解している必要があり�
 
 ```csharp
 string imageUrl = "https://news.microsoft.com/ceo/assets/photos/06_web.jpg";
-var faces = await faceServiceClient.Face.DetectWithUrlAsync(imageUrl, true, true, recognitionModel: "recognition_02", returnRecognitionModel: true);
+var faces = await faceClient.Face.DetectWithUrlAsync(imageUrl, true, true, recognitionModel: "recognition_02", returnRecognitionModel: true);
 ```
 
 ## <a name="identify-faces-with-specified-model"></a>指定されたモデルで顔を識別する
@@ -67,7 +67,7 @@ Face API は画像から顔データを抽出し、([Add face](https://westus.de
 ```csharp
 // Create an empty PersonGroup with "recognition_02" model
 string personGroupId = "mypersongroupid";
-await faceServiceClient.PersonGroup.CreateAsync(personGroupId, "My Person Group Name", recognitionModel: "recognition_02");
+await faceClient.PersonGroup.CreateAsync(personGroupId, "My Person Group Name", recognitionModel: "recognition_02");
 ```
 
 このコードでは、`mypersongroupid` という ID の **PersonGroup** を作成し、_recognition_02_ モデルを使用して顔の特徴を抽出するように設定します。
@@ -83,7 +83,7 @@ await faceServiceClient.PersonGroup.CreateAsync(personGroupId, "My Person Group 
 .NET クライアント ライブラリの次のコード例を参照してください。
 
 ```csharp
-await faceServiceClient.FaceList.CreateAsync(faceListId, "My face collection", recognitionModel: "recognition_02");
+await faceClient.FaceList.CreateAsync(faceListId, "My face collection", recognitionModel: "recognition_02");
 ```
 
 このコードは、特徴抽出のための _recognition_02_ モデルを使用して、`My face collection` という名前の顔リストを作成します。 新しく検出された顔に似た顔をこの顔リストから検索するときは、その顔が _recognition_02_ モデルを使用して検出 ([Face - Detect]) 済みである必要があります。 前のセクションと同様に、モデルは一貫している必要があります。

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 05/29/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 650dfa7284b41407e9b128a2096548d7acfc1567
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: fd81115f4e811366b6b115d1c73a9be7ca26698b
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393793"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485619"
 ---
 # <a name="create-an-azure-search-service-in-the-portal"></a>ポータルでの Azure Search サービスの作成
 
@@ -94,7 +94,7 @@ Azure サービスの 1 つである Azure Search は、世界中のデータ �
 
 ## <a name="get-a-key-and-url-endpoint"></a>キーと URL エンドポイントを取得する
 
-いくつかの例外はありますが、新しいサービスを使用するためには、URL エンドポイントと認可の API キーを指定する必要があります。 クイック スタート、チュートリアル ([Azure Search REST API の探索 (Postman)](search-fiddler.md) や [.NET から Azure Search を使用する方法](search-howto-dotnet-sdk.md)に関するページなど)、サンプル、カスタム コードはいずれも、特定のリソースで実行するためにはエンドポイントとキーが必要です。
+いくつかの例外はありますが、新しいサービスを使用するためには、URL エンドポイントと認可の API キーを指定する必要があります。 クイック スタート、チュートリアル ([Azure Search REST API の探索 (Postman)](search-get-started-postman.md) や [.NET から Azure Search を使用する方法](search-howto-dotnet-sdk.md)に関するページなど)、サンプル、カスタム コードはいずれも、特定のリソースで実行するためにはエンドポイントとキーが必要です。
 
 1. サービス概要ページの右側から、URL エンドポイントを探してコピーします。
 

@@ -4,17 +4,17 @@ description: この記事では、PowerShell またはポータルを使用し�
 services: automation
 ms.service: automation
 ms.subservice: shared-capabilities
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 05/24/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 140b1263047849e13a44441c368e6357078574d8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6fceee819762e10809a94f72d944e7625cb7e67c
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66240808"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67478562"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>Azure Automation の実行アカウントを管理する
 

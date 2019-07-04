@@ -11,12 +11,12 @@ ms.topic: quickstart
 description: Azure でコンテナー、マイクロサービス、Java を使用した迅速な Kubernetes 開発
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Java, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
 manager: jeconnoc
-ms.openlocfilehash: 2a7ff71a8143883226c10754afc9757aea310c63
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: b3074fc280098d0aa55292c48a1562b8dfeb3cc0
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393472"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67503087"
 ---
 # <a name="quickstart-develop-with-java-on-kubernetes-using-azure-dev-spaces"></a>クイック スタート:Azure Dev Spaces を使用して Kubernetes 上で Java の開発を行う
 
@@ -195,7 +195,7 @@ return "Hello from webfrontend in Azure while debugging!";
 
 ファイルを保存します。 *[デバッグ]* 、 *[デバッグの再起動]* の順にクリックします。または、 *[デバッグ] ツール バー*で、 *[デバッグの再起動]* ボタンをクリックします。
 
-![デバッグの更新](media/get-started-java/debug-action-refresh.png)
+![デバッグの更新](media/common/debug-action-refresh.png)
 
 ブラウザーでサービスを開き、更新されたメッセージが表示されることに注目します。
 

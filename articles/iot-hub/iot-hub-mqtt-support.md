@@ -1,19 +1,18 @@
 ---
 title: Azure IoT Hub の MQTT サポートについて | Microsoft Docs
 description: 開発者ガイド - MQTT プロトコルを使用して IoT Hub デバイスに接続されているエンドポイントに接続するデバイスのサポート。 Azure IoT デバイス SDK での組み込み MQTT サポートについての情報も含まれます。
-author: rezasherafat
-manager: ''
+author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 10/12/2018
-ms.author: rezas
-ms.openlocfilehash: 1a0b6cf8ce272733c259283fdec9c215ac2b0fd8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: robinsh
+ms.openlocfilehash: 238627f5cb57a614d5f82f0eeba1ea6b4e32f458
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61442564"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67445476"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>MQTT プロトコルを使用した IoT Hub との通信
 
@@ -45,7 +44,7 @@ MQTT プロトコルをサポートする[デバイス SDK](https://github.com/A
 
 | 言語 | プロトコル パラメーター |
 | --- | --- |
-| [Node.js](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/simple_sample_device.js) |azure-iot-device-mqtt |
+| [Node.JS](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/simple_sample_device.js) |azure-iot-device-mqtt |
 | [Java](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/send-receive-sample/src/main/java/samples/com/microsoft/azure/sdk/iot/SendReceive.java) |IotHubClientProtocol.MQTT |
 | [C](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/iothub_client_sample_mqtt_dm) |MQTT_Protocol |
 | [C#](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/device/samples) |TransportType.Mqtt |

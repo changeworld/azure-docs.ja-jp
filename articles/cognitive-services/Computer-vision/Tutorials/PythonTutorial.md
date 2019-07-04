@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 11/06/2018
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: b55b1fdf3b93d3865bdb115e43ff8583af61b45d
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: b5333557355aa816245b5086836eac980d90540a
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56326427"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341482"
 ---
 # <a name="tutorial-computer-vision-api-python"></a>チュートリアル:Computer Vision API Python
 
@@ -35,7 +35,7 @@ ms.locfileid: "56326427"
 3. コマンド プロンプトを開き、**Cognitive-Vision-Python\Jupyter Notebook** フォルダーに移動します。
 1. コマンド プロンプトから `pip install requests opencv-python numpy matplotlib` コマンドを実行して、必要なライブラリがすべてあることを確認します。
 1. コマンド プロンプトから `jupyter notebook` コマンドを実行して Jupyter を起動します。
-1. Jupyter のウィンドウで、_[Computer Vision API Example.ipynb]_ をクリックしてチュートリアル ノートブックを開きます。
+1. Jupyter のウィンドウで、 _[Computer Vision API Example.ipynb]_ をクリックしてチュートリアル ノートブックを開きます。
 
 ## <a name="run-the-tutorial"></a>チュートリアルを実行する
 
@@ -45,9 +45,10 @@ ms.locfileid: "56326427"
 
 ```python
 # Variables
-_region = 'westcentralus' #Here you enter the region of your subscription
-_url = 'https://{}.api.cognitive.microsoft.com/vision/v2.0/analyze'.format(_region)
-_key = None #Here you have to paste your primary key
+_region = 'westcentralus'  # Here you enter the region of your subscription
+_url = 'https://{}.api.cognitive.microsoft.com/vision/v2.0/analyze'.format(
+    _region)
+_key = None  # Here you have to paste your primary key
 _maxNumRetries = 10
 ```
 

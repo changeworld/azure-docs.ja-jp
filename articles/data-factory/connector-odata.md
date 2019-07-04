@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/13/2018
+ms.date: 07/02/2019
 ms.author: jingwang
-ms.openlocfilehash: eeab0311519d7e3410ddb625c1801101ad63ad18
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5a54892c1d6e05e27e349e519d41ebd937ff64c7
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61400116"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509210"
 ---
 # <a name="copy-data-from-an-odata-source-by-using-azure-data-factory"></a>Azure Data Factory を使用して OData ソースからデータをコピーする
 
@@ -233,7 +233,7 @@ OData からデータをコピーするには、コピー アクティビティ�
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | コピー アクティビティのソースの **type** プロパティは **RelationalSource** に設定する必要があります。 | はい |
-| query | データをフィルター処理するための OData クエリ オプション。 例: `"?$select=Name,Description&$top=5"`.<br/><br/>**メモ**:OData コネクタは、次の結合された URL からデータをコピーします。`[URL specified in linked service]/[path specified in dataset][query specified in copy activity source]` 詳細については、[OData の URL コンポーネント](https://www.odata.org/documentation/odata-version-3-0/url-conventions/)に関するページを参照してください。 | いいえ |
+| query | データをフィルター処理するための OData クエリ オプション。 例: `"$select=Name,Description&$top=5"`.<br/><br/>**メモ**:OData コネクタは、次の結合された URL からデータをコピーします。`[URL specified in linked service]/[path specified in dataset]?[query specified in copy activity source]` 詳細については、[OData の URL コンポーネント](https://www.odata.org/documentation/odata-version-3-0/url-conventions/)に関するページを参照してください。 | いいえ |
 
 **例**
 
@@ -257,7 +257,7 @@ OData からデータをコピーするには、コピー アクティビティ�
         "typeProperties": {
             "source": {
                 "type": "RelationalSource",
-                "query": "?$select=Name,Description&$top=5"
+                "query": "$select=Name,Description&$top=5"
             },
             "sink": {
                 "type": "<sink type>"

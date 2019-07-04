@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 04/29/2019
 ms.author: cephalin
-ms.openlocfilehash: b704e9074c8ef88d8fefd97f466884af952c46f8
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: e74c32226815fe799529084da75dbc196771dc53
+ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64919605"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67514542"
 ---
 # <a name="create-a-python-app-in-azure-app-service-on-linux"></a>Azure App Service on Linux で Python アプリを作成する
 
@@ -170,7 +170,7 @@ return "Hello Azure!"
 
 変更内容を保存し、エディターを終了します。 コマンド `^S` を使用して保存し、`^Q` を使用して終了します。
 
-[`az webapp up`](/cli/azure/ext/webapp/webapp?view=azure-cli-latest.md#ext-webapp-az-webapp-up) コマンドを使用してアプリを再デプロイします。 `<app-name>` は実際のアプリの名前に置き換え、`<location-name>` には、[`az account list-locations`](/cli/azure/appservice?view=azure-cli-latest.md#az-appservice-list-locations) コマンドから表示されるいずれかの値を使用して実際の場所を指定してください。
+[`az webapp up`](/cli/azure/webapp#az-webapp-up) コマンドを使用してアプリを再デプロイします。 `<app-name>` は実際のアプリの名前に置き換え、`<location-name>` には、[`az account list-locations`](/cli/azure/appservice?view=azure-cli-latest.md#az-appservice-list-locations) コマンドから表示されるいずれかの値を使用して実際の場所を指定してください。
 
 ```bash
 az webapp up -n <app-name> -l <location-name>

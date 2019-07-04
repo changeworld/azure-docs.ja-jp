@@ -9,11 +9,11 @@ ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: ae36adc78d8c87d85c64fd61cb3a50dfcae60b85
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66170558"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181054"
 ---
 料金は 2 つの要素に対して課金されます。1 つは仮想ネットワーク ゲートウェイに対する時間単位のコンピューティング コスト、もう 1 つは仮想ネットワーク ゲートウェイからのエグレス (送信) データ転送のコストです。 料金情報については、[価格](https://azure.microsoft.com/pricing/details/vpn-gateway)に関するページをご覧ください。
 

@@ -6,14 +6,14 @@ author: anuragm
 manager: shivamg
 ms.service: backup
 ms.topic: article
-ms.date: 05/27/2019
+ms.date: 06/18/2019
 ms.author: anuragm
-ms.openlocfilehash: 8459bb451c4ff462ee816b986cafdbf776603917
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9ed30a35f30d1b6b9fdcd43110ed93618a10dbc3
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66306969"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204193"
 ---
 # <a name="troubleshoot-back-up-sql-server-on-azure"></a>SQL Server を Azure にバックアップする場合のトラブルシューティング
 
@@ -25,8 +25,7 @@ ms.locfileid: "66306969"
 
 ## <a name="sql-server-permissions"></a>SQL Server のアクセス許可
 
-仮想マシン上で SQL Server データベースの保護を構成するには、その仮想マシンに **AzureBackupWindowsWorkload** 拡張機能をインストールする必要があります。 **UserErrorSQLNoSysadminMembership** エラーが発生した場合は、必要なバックアップ アクセス許可が SQL インスタンスにないことを意味します。 このエラーを修正するには、[マーケットプレース以外の SQL VM にアクセス許可を設定する](backup-azure-sql-database.md#fix-sql-sysadmin-permissions)手順に従います。
-
+仮想マシン上で SQL Server データベースの保護を構成するには、その仮想マシンに **AzureBackupWindowsWorkload** 拡張機能をインストールする必要があります。 **UserErrorSQLNoSysadminMembership** エラーが発生した場合は、必要なバックアップ アクセス許可が SQL インスタンスにないことを意味します。 このエラーを修正するには、[マーケットプレース以外の SQL VM にアクセス許可を設定する](backup-azure-sql-database.md#set-vm-permissions)手順に従います。
 
 ## <a name="backup-type-unsupported"></a>バックアップの種類がサポートされていません
 

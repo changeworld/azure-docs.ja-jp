@@ -11,12 +11,12 @@ ms.topic: quickstart
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
 manager: jeconnoc
-ms.openlocfilehash: 3f502b84145b81153d5e39a03cca104d4285c581
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: bab7b4daf8b03115c73b6fbaefe352cecc761b6f
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393425"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67503010"
 ---
 # <a name="quickstart-develop-with-net-core-on-kubernetes-using-azure-dev-spaces-visual-studio-code"></a>クイック スタート:Azure Dev Spaces を使用して Kubernetes 上で .NET Core の開発を行う (Visual Studio Code)
 
@@ -191,7 +191,7 @@ ViewData["Message"] = "Your application description page in Azure while debuggin
 
 ファイルを保存します。 *[デバッグ]* 、 *[デバッグの再起動]* の順にクリックします。または、 *[デバッグ] ツール バー*で、 *[デバッグの再起動]* ボタンをクリックします。
 
-![](media/get-started-netcore/debug-action-refresh.png)
+![](media/common/debug-action-refresh.png)
 
 ブラウザーでサービスを開き、更新されたメッセージが表示されることに注目します。
 

@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 1822bfe9f2d6d337db74ba94d43644b0b3567c71
-ms.sourcegitcommit: ec7b0bf593645c0d1ef401a3350f162e02c7e9b8
+ms.openlocfilehash: bfdebacb4de205fa42fe96ceb9970d2d109536e8
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2019
-ms.locfileid: "66455624"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67296162"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>Stream Analytics に入力としてデータをストリーム配信する
 
@@ -38,7 +38,7 @@ Stream Analytics では、すべてのデータ ストリーム入力ソース�
 
 Azure Event Hubs はスケーラブルな発行/サブスクライブ イベント インジェスターを提供します。 接続されたデバイスとアプリケーションによって生成される大量のデータを処理および分析できるように、イベント ハブでは 1 秒間に数百万件のイベントを収集できます。 Event Hubs と Stream Analytics を一緒に使用することで、リアルタイム分析用のエンド ツー エンドのソリューションが提供されます。 Event Hubs で Azure にイベントをリアルタイムでフィードし、Stream Analytics ジョブでこれらのイベントをリアルタイムで処理できます。 たとえば、Web クリック、センサーの読み取り、オンライン ログ イベントを Event Hubs に送信できます。 続いて、リアルタイムのフィルター処理、集計、相関関係に入力データ ストリームとして Event Hubs を使用する Stream Analytics ジョブを作成できます。
 
-`EventEnqueuedUtcTime` は、イベントが Event Hubs に到着したときのタイムスタンプであり、Event Hubs から Stream Analytics に送信されるイベントの既定のタイムスタンプです。 イベント ペイロードのタイムスタンプを利用してデータをストリームとして処理するには、[TIMESTAMP BY](https://msdn.microsoft.com/library/azure/dn834998.aspx) キーワードを使用する必要があります。
+`EventEnqueuedUtcTime` は、イベントが Event Hubs に到着したときのタイムスタンプであり、Event Hubs から Stream Analytics に送信されるイベントの既定のタイムスタンプです。 イベント ペイロードのタイムスタンプを利用してデータをストリームとして処理するには、[TIMESTAMP BY](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics) キーワードを使用する必要があります。
 
 ### <a name="event-hubs-consumer-groups"></a>Event Hubs コンシューマー グループ
 
@@ -86,7 +86,7 @@ FROM Input
 
 Azure IoT Hub は、IoT シナリオ向けに最適化された高度にスケーラブルな発行/サブスクライブ イベント インジェスターです。
 
-IoT Hub から Stream Analytics に着信するイベントの既定のタイムスタンプは、このイベントが IoT Hub に到達したときのタイムスタンプです。このタイムスタンプが `EventEnqueuedUtcTime` です。 イベント ペイロードのタイムスタンプを利用してデータをストリームとして処理するには、[TIMESTAMP BY](https://msdn.microsoft.com/library/azure/dn834998.aspx) キーワードを使用する必要があります。
+IoT Hub から Stream Analytics に着信するイベントの既定のタイムスタンプは、このイベントが IoT Hub に到達したときのタイムスタンプです。このタイムスタンプが `EventEnqueuedUtcTime` です。 イベント ペイロードのタイムスタンプを利用してデータをストリームとして処理するには、[TIMESTAMP BY](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics) キーワードを使用する必要があります。
 
 ### <a name="iot-hub-consumer-groups"></a>IoT Hub コンシューマー グループ
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: e7f292db06d4da9206aabd14a68e6acde867f92d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5b2618807a39f20de041a78204dcc40793b22843
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60822014"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275429"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Azure Event Hubs の機能と用語
 
@@ -152,38 +152,11 @@ Event Hubs の発行/サブスクライブのメカニズムは、"*コンシュ
 
 ユーザーはオフセットを管理する必要があります。
 
-## <a name="scaling-with-event-hubs"></a>Event Hubs によるスケーリング
-
-Event Hubs によるスケーリングに影響する 2 つの要素があります。
-*   スループット ユニット
-*   パーティション
-
-### <a name="throughput-units"></a>スループット ユニット
-
-Event Hubs のスループット容量は、"*スループット ユニット*" によって制御されます。 スループット ユニットとは、購入済みの容量ユニットのことです。 1 つのスループットでは次が可能です。
-
-* イングレス: 1 秒あたり最大で 1 MB または 1,000 イベント (どちらか先に到達した方)
-* エグレス: 1 秒あたり最大で 2 MB または 4,096 イベント
-
-購入済みのスループット ユニットの容量を超えると、イングレスが調整され、[ServerBusyException](/dotnet/api/microsoft.azure.eventhubs.serverbusyexception) が返されます。 エグレスではスロットル例外は発生しませんが、購入済みのスループット ユニットの容量に制限されます。 発行率の例外を受信するか、より高いエグレスが予想される場合は、名前空間に対して購入したスループット ユニットの数を確認してください。 スループット ユニットは、[Azure Portal](https://portal.azure.com) の名前空間の **[スケール]** ブレードで管理できます。 [Event Hubs API](event-hubs-api-overview.md) を使用して、プログラムでスループット ユニットを管理することもできます。
-
-スループット ユニットは事前に購入し、1 時間ごとに課金されます。 スループット ユニットを購入すると、少なくとも 1 時間の料金が課金されます。 Event Hubs の名前空間に対して最大 20 のスループット ユニットを購入でき、その名前空間内のすべてのイベント ハブで共有されます。
-
-### <a name="partitions"></a>パーティション
-
-パーティションにより、ダウン ストリーム処理用にスケールできます。 Event Hubs がパーティションによって提供するパーティション分割されたコンシューマー モデルのため、イベントの処理中に同時にスケール アウトできます。 Event Hubs には、最大 32 個のパーティションを指定できます。
-
-最適なスケールを実現するために、スループット ユニットとパーティションのバランスを 1:1 に保つことをお勧めします。 単一のパーティションには、最大で 1 つのスループット ユニットのイングレスとエグレスが保証されます。 パーティションでより高いスループットを実現することもできますが、パフォーマンスは保証されません。 このため、イベント ハブのパーティションの数は、スループット ユニットの数以上にすることを強くお勧めします。
-
-合計スループットを必要に応じて計画するとして、必要なスループット ユニットの数と最小数のパーティションはわかりますが、パーティションはいくつ必要でしょうか。 実現したいダウンストリーム並列処理だけでなく、将来のスループットのニーズに基づいて、パーティションの数を選択します。 Event Hubs 内にあるパーティションの数に対して料金はかかりません。
-
-Event Hubs の価格の詳細については、「[Event Hubs の価格](https://azure.microsoft.com/pricing/details/event-hubs/)」を参照してください。
-
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Event Hubs の詳細については、次のリンクを参照してください。
 
-* [Event Hubs の使用に関するチュートリアル][Event Hubs tutorial]
+* [Event Hubs のチュートリアル][Event Hubs tutorial]を開始する
 * [Event Hubs のプログラミング ガイド](event-hubs-programming-guide.md)
 * [Event Hubs における可用性と一貫性](event-hubs-availability-and-consistency.md)
 * [Event Hubs の FAQ](event-hubs-faq.md)

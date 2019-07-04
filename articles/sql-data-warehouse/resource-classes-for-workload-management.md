@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload management
-ms.date: 05/22/2019
+ms.date: 06/20/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: 1c15778eb2ce38efb65e777578008b61e7066d67
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d1983f0842f8c04d627e66727ddddf618969992d
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66244520"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67303297"
 ---
 # <a name="workload-management-with-resource-classes-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse のリソース クラスでのワークロード管理
 
@@ -275,7 +275,7 @@ EXEC dbo.prc_workload_management_by_DWU NULL, NULL, NULL;
 -------------------------------------------------------------------------------
 -- Dropping prc_workload_management_by_DWU procedure if it exists.
 -------------------------------------------------------------------------------
-IF EXISTS (SELECT -FROM sys.objects WHERE type = 'P' AND name = 'prc_workload_management_by_DWU')
+IF EXISTS (SELECT * FROM sys.objects WHERE type = 'P' AND name = 'prc_workload_management_by_DWU')
 DROP PROCEDURE dbo.prc_workload_management_by_DWU
 GO
 

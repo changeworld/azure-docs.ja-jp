@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ASP.NET Core
 ms.workload: tbd
 ms.date: 04/19/2019
 ms.author: yegu
-ms.openlocfilehash: f83283dbf2a78b3717ba719f21dd9249a8a09d1f
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: bd812ad1194f88b14d88f067583ca6eee4bb0c74
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393328"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274210"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>クイック スタート:ASP.NET Core アプリに機能フラグを追加する
 
@@ -87,9 +87,9 @@ ms.locfileid: "66393328"
 1. 次のコマンドを実行して、`Microsoft.Extensions.Configuration.AzureAppConfiguration` パッケージと `Microsoft.FeatureManagement` NuGet パッケージへの参照を追加します。
 
     ```
-    dotnet add package Microsoft.Extensions.Configuration.AzureAppConfiguration --version 1.0.0-preview-008520001
+    dotnet add package Microsoft.Extensions.Configuration.AzureAppConfiguration --version 1.0.0-preview-008920001-990
 
-    dotnet add package Microsoft.FeatureManagement.AspNetCore --version 1.0.0-preview-008560001-910
+    dotnet add package Microsoft.FeatureManagement.AspNetCore --version 1.0.0-preview-009000001-1251
     ```
 
 1. 次のコマンドを実行して、プロジェクトのパッケージを復元します。
@@ -165,7 +165,8 @@ ms.locfileid: "66393328"
 
     ```csharp
     using Microsoft.AspNetCore.Mvc;
-    using Microsoft.FeatureManagement.AspNetCore;
+    using Microsoft.FeatureManagement;
+    using Microsoft.FeatureManagement.Mvc;
 
     namespace TestFeatureFlags.Controllers
     {
@@ -178,7 +179,7 @@ ms.locfileid: "66393328"
                 _featureManager = featureManager;
             }
 
-            [Feature(MyFeatureFlags.Beta)]
+            [FeatureGate(MyFeatureFlags.Beta)]
             public IActionResult Index()
             {
                 return View();

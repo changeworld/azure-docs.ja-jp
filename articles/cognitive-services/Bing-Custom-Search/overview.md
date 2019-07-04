@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: overview
-ms.date: 03/4/2019
+ms.date: 06/27/2019
 ms.author: aahi
-ms.openlocfilehash: 93af1cce37c69691fb39f62270f4de6c9c73cf32
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 067693c3c02d19f3bdab77f315c920b25078e7f5
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66388600"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67542704"
 ---
 # <a name="what-is-the-bing-custom-search-api"></a>Bing Custom Search API とは
 
@@ -48,6 +48,8 @@ Bing Custom Search API を使用すると、関心のあるトピックに合わ
 既存のサービスやアプリケーションにおける検索結果の使用については、[Bing の利用と表示の要件](./use-and-display-requirements.md)に関するページを必ずお読みください。
 
 各カスタム検索エンドポイントのリファレンス コンテンツをよく理解してください。 リファレンスには、検索結果を要求するときに使用するエンドポイント、ヘッダー、クエリ パラメーターが記載されています。 また、応答オブジェクトの定義も記載されています。
+
+[!INCLUDE [cognitive-services-bing-url-note](../../../includes/cognitive-services-bing-url-note.md)]
 
 - [Custom Search API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference)
 - [Custom Image API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-images-api-v7-reference)

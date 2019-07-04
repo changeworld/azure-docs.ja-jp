@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: sngun
-ms.openlocfilehash: 7574985dbcc502d03bc886c7651c859b22968c5f
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 60c7e6b32f60d6f42d706489c41dbeea4af0d15d
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65596096"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67342116"
 ---
 # <a name="build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account"></a>.NET コンソール アプリをビルドして Azure Cosmos DB SQL API アカウントのデータを管理する
 
@@ -24,7 +24,7 @@ ms.locfileid: "65596096"
 > * [.NET Core (プレビュー)](sql-api-dotnet-core-get-started-preview.md)
 > * [Java](sql-api-java-get-started.md)
 > * [Async Java](sql-api-async-java-get-started.md)
-> * [Node.js](sql-api-nodejs-get-started.md)
+> * [Node.JS](sql-api-nodejs-get-started.md)
 > 
 
 Azure Cosmos DB SQL API を実際に使ってみるチュートリアルへようこそ。 このチュートリアルを完了すると、Azure Cosmos DB リソースを作成し、クエリを実行するコンソール アプリが完成します。
@@ -123,18 +123,18 @@ Azure サブスクリプションまたは Cosmos DB の無料試用版アカウ
       private DocumentClient client;
    ```
    
-1. エンドポイント URL とプライマリ キーにより、ご自分のアプリがご使用の Azure Cosmos DB アカウントに接続でき、Azure Cosmos DB アカウントはその接続を信頼することができます。 [Azure portal](https://portal.azure.com) からキーをコピーし、ご自分のコードに貼り付けます。 
+1. エンドポイント URL とプライマリ キーにより、ご自分のアプリがご使用の Azure Cosmos DB アカウントに接続し、Azure Cosmos DB アカウントがその接続を信頼できます。 [Azure portal](https://portal.azure.com) からキーをコピーし、ご自分のコードに貼り付けます。 
 
    
    1. ご使用の Azure Cosmos DB アカウントの左側のナビゲーションにある **[キー]** を選択します。
       
       ![Azure portal 内でアクセス キーを表示およびコピーする](./media/sql-api-get-started/nosql-tutorial-keys.png)
       
-   1. **[読み取り/書き込みキー]** の下にある **[URI]** の値を右側にあるコピー ボタンを使用してコピーし、*Program.cs* 内の `<your endpoint URL>` に貼り付けます。 例:  
+   1. **[読み取り/書き込みキー]** の下にある **[URI]** の値を右側にあるコピー ボタンを使用してコピーし、*Program.cs* 内の `<your endpoint URL>` に貼り付けます。 例: 
       
       `private const string EndpointUrl = "https://mysqlapicosmosdb.documents.azure.com:443/";`
       
-   1. **[プライマリ キー]** の値をコピーし、*Program.cs* 内の `<your primary key>` に貼り付けます。 例:  
+   1. **[プライマリ キー]** の値をコピーし、*Program.cs* 内の `<your primary key>` に貼り付けます。 例: 
       
       `private const string PrimaryKey = "19ZDNJAiYL26tmnRvoez6hmtIfBGwjun50PWRjNYMC2ig8Ob9hYk7Fq1RYSv8FcIYnh1TdBISvCh7s6yyb0000==";`
    
@@ -450,7 +450,7 @@ Azure Cosmos DB では、コレクションに格納された JSON ドキュメ�
 
 ![C# コンソール アプリケーションを作成するために NoSQL チュートリアルで使用されるクエリの範囲と意味を示す図](./media/sql-api-get-started/nosql-tutorial-collection-documents.png)
 
-Azure Cosmos DB クエリのスコープは既に 1 つのコレクションに設定されているので、SQL クエリでは [FROM](how-to-sql-query.md#FromClause) キーワードを省略できます。 `FROM Families f` を `FROM root r` や、任意の他の変数名に交換できます。 Azure Cosmos DB では、`Families`、`root`、または任意の変数名が現在のコレクションを参照しているものと推測されます。
+Azure Cosmos DB クエリのスコープは既に 1 つのコレクションに設定されているので、SQL クエリでは [FROM](sql-query-from.md) キーワードを省略できます。 `FROM Families f` を `FROM root r` や、任意の他の変数名に交換できます。 Azure Cosmos DB では、`Families`、`root`、または任意の変数名が現在のコレクションを参照しているものと推測されます。
 
 ## <a id="ReplaceDocument"></a>JSON ドキュメントを更新する
 

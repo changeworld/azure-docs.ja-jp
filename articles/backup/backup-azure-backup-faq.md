@@ -2,18 +2,18 @@
 title: Azure Backup の FAQ
 description: '一般的な質問への回答:Recovery Services コンテナーを含む Azure Backup の機能、バックアップの対象、しくみ、暗号化、制限。 '
 services: backup
-author: rayne-wiselman
+author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.author: raynew
-ms.openlocfilehash: a0a2bc58603a81ba23ff3f1feb05f4d2350cfe72
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: dacurwin
+ms.openlocfilehash: c4e79d166d92a88934e5c5330ca852da8900c6f3
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66688731"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275554"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup - よく寄せられる質問
 この記事では、Azure Backup サービスについてよく寄せられる質問への回答を示します。

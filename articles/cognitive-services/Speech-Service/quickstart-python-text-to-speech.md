@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 03/13/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: c71d76539a4486527d2c8954c62db82a52ca3a4e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8086e67753821cd6dd87192835b8a2180014db17
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67056818"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67338624"
 ---
 # <a name="quickstart-convert-text-to-speech-using-python"></a>クイック スタート: Python を使用してテキストを音声に変換する
 
@@ -37,7 +37,9 @@ ms.locfileid: "67056818"
 普段使用している IDE またはエディターで、新しい Python プロジェクトを作成します。 次に、このコード スニペットをプロジェクトの `tts.py` という名前のファイルにコピーします。
 
 ```python
-import os, requests, time
+import os
+import requests
+import time
 from xml.etree import ElementTree
 ```
 
@@ -51,8 +53,10 @@ from xml.etree import ElementTree
 以降いくつかのセクションで、承認を処理して Text to Speech API を呼び出し、応答を検証するためのメソッドを作成します。 まず、このサンプルが Python 2.7.x と 3.x で動作することを確認するコードを追加します。
 
 ```python
-try: input = raw_input
-except NameError: pass
+try:
+    input = raw_input
+except NameError:
+    pass
 ```
 
 次にクラスを作成しましょう。 トークンを交換したり Text to Speech API を呼び出したりするためのメソッドは、ここに記述します。
@@ -120,7 +124,8 @@ def save_audio(self):
     xml_body.set('{http://www.w3.org/XML/1998/namespace}lang', 'en-us')
     voice = ElementTree.SubElement(xml_body, 'voice')
     voice.set('{http://www.w3.org/XML/1998/namespace}lang', 'en-US')
-    voice.set('name', 'Microsoft Server Speech Text to Speech Voice (en-US, Guy24KRUS)')
+    voice.set(
+        'name', 'Microsoft Server Speech Text to Speech Voice (en-US, Guy24KRUS)')
     voice.text = self.tts
     body = ElementTree.tostring(xml_body)
 
@@ -128,9 +133,11 @@ def save_audio(self):
     if response.status_code == 200:
         with open('sample-' + self.timestr + '.wav', 'wb') as audio:
             audio.write(response.content)
-            print("\nStatus code: " + str(response.status_code) + "\nYour TTS is ready for playback.\n")
+            print("\nStatus code: " + str(response.status_code) +
+                  "\nYour TTS is ready for playback.\n")
     else:
-        print("\nStatus code: " + str(response.status_code) + "\nSomething went wrong. Check your subscription key and headers.\n")
+        print("\nStatus code: " + str(response.status_code) +
+              "\nSomething went wrong. Check your subscription key and headers.\n")
 ```
 
 ## <a name="put-it-all-together"></a>すべてをまとめた配置

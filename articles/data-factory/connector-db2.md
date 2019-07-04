@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: jingwang
-ms.openlocfilehash: 4bf4c5c8339c8c56d91737fa1ff62f55b9c38696
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 797db8d0dd321676a3fa436a328a9981a3d3ca3b
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60786375"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67312046"
 ---
 # <a name="copy-data-from-db2-by-using-azure-data-factory"></a>Azure Data Factory を使用して DB2 からデータをコピーする
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください。"]
@@ -34,6 +34,7 @@ DB2 データベースのデータを、サポートされているシンク デ
 
 * IBM DB2 for z/OS 11.1
 * IBM DB2 for z/OS 10.1
+* IBM DB2 for i 7.3
 * IBM DB2 for i 7.2
 * IBM DB2 for i 7.1
 * IBM DB2 for LUW 11
