@@ -9,11 +9,11 @@ ms.date: 10/01/2018
 ms.author: jingwang
 ms.custom: include file
 ms.openlocfilehash: c1ae8e1d06fca79b586208a3eaee0c5d26975ea1
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66119353"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181646"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -21,7 +21,7 @@ ms.locfileid: "66119353"
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
 
 ### <a name="azure-roles"></a>Azure ロール
-Data Factory インスタンスを作成するには、Azure へのサインインに使用するユーザー アカウントが、"*共同作成者*" ロールまたは "*所有者*" ロールのメンバーであるか、Azure サブスクリプションの "*管理者*" である必要があります。 サブスクリプションで自分が持っているアクセス許可を表示するには、Azure portal で右上隅にあるユーザー名を選択し、**[アクセス許可]** を選択します。 複数のサブスクリプションにアクセスできる場合は、適切なサブスクリプションを選択します。 
+Data Factory インスタンスを作成するには、Azure へのサインインに使用するユーザー アカウントが、"*共同作成者*" ロールまたは "*所有者*" ロールのメンバーであるか、Azure サブスクリプションの "*管理者*" である必要があります。 サブスクリプションで自分が持っているアクセス許可を表示するには、Azure portal で右上隅にあるユーザー名を選択し、 **[アクセス許可]** を選択します。 複数のサブスクリプションにアクセスできる場合は、適切なサブスクリプションを選択します。 
 
 データセット、リンクされたサービス、パイプライン、トリガー、および統合ランタイムを含む Data Factory の子リソースを作成および管理するには、次の要件が適用されます。
 - Azure portal で子リソースを作成および管理するには、リソース グループ レベル以上で **Data Factory 共同作成者**ロールに属している必要があります。
@@ -40,7 +40,7 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
 このクイック スタートには、Azure Storage アカウントの名前とキーが必要です。 以下の手順に従って、ご利用のストレージ アカウントの名前とキーを取得してください。 
 
 1. Web ブラウザーで、[Azure Portal](https://portal.azure.com) に移動します。 Azure のユーザー名とパスワードを使用してサインインします。 
-2. 左側のメニューの **[すべてのサービス]** を選択し、"**ストレージ**" というキーワードでフィルター処理して、**[ストレージ アカウント]** を選択します。
+2. 左側のメニューの **[すべてのサービス]** を選択し、"**ストレージ**" というキーワードでフィルター処理して、 **[ストレージ アカウント]** を選択します。
 
    ![ストレージ アカウントを検索](media/data-factory-quickstart-prerequisites/search-storage-account.png)
 3. ストレージ アカウントの一覧で、ご利用のストレージ アカウントを (必要に応じて) フィルターで抽出し、該当するストレージ アカウントを選択します。 
@@ -52,22 +52,22 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
 #### <a name="create-the-input-folder-and-files"></a>入力フォルダーとファイルの作成
 このセクションでは、**adftutorial** という名前の BLOB コンテナーを Azure Blob Storage に作成します。 そのコンテナーに **input** という名前のフォルダーを作成し、input フォルダーにサンプル ファイルをアップロードします。 
 
-1. **[ストレージ アカウント]** ページで **[概要]** に切り替え、**[BLOB]** を選択します。 
+1. **[ストレージ アカウント]** ページで **[概要]** に切り替え、 **[BLOB]** を選択します。 
 
    ![BLOB オプションを選択する](media/data-factory-quickstart-prerequisites/select-blobs.png)
-2. **[Blob service]** ページのツール バーで、**[+ コンテナー]** を選択します。 
+2. **[Blob service]** ページのツール バーで、 **[+ コンテナー]** を選択します。 
 
    ![コンテナーの追加ボタン](media/data-factory-quickstart-prerequisites/add-container-button.png)    
-3. **[新しいコンテナー]** ダイアログ ボックスで、名前に「**adftutorial**」と入力し、**[OK]** を選択します。 
+3. **[新しいコンテナー]** ダイアログ ボックスで、名前に「**adftutorial**」と入力し、 **[OK]** を選択します。 
 
    ![コンテナー名を入力する](media/data-factory-quickstart-prerequisites/new-container-dialog.png)
 4. コンテナーの一覧で **[adftutorial]** を選択します。 
 
    ![コンテナーを選択する](media/data-factory-quickstart-prerequisites/select-adftutorial-container.png)
-5. **[コンテナー]** ページのツール バーで、**[アップロード]** を選択します。  
+5. **[コンテナー]** ページのツール バーで、 **[アップロード]** を選択します。  
 
    ![[アップロード] ボタン](media/data-factory-quickstart-prerequisites/upload-toolbar-button.png)
-6. **[BLOB のアップロード]** ページで、**[詳細設定]** を選択します。
+6. **[BLOB のアップロード]** ページで、 **[詳細設定]** を選択します。
 
    ![[詳細設定] リンクの選択](media/data-factory-quickstart-prerequisites/upload-blob-advanced.png)
 7. **メモ帳**を起動し、**emp.txt** という名前のファイルを作成して次の内容を入力します。 それを **c:\ADFv2QuickStartPSH** フォルダーに保存します。 まだ存在しない場合、**ADFv2QuickStartPSH** フォルダーを作成します。
@@ -80,10 +80,10 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
 9. **[アップロード先のフォルダー]** ボックスの値として、「**input**」と入力します。 
 
     ![BLOB のアップロードの設定](media/data-factory-quickstart-prerequisites/upload-blob-settings.png)    
-10. フォルダーが **input** で、ファイルが **emp.txt** であることを確認し、**[アップロード]** を選択します。
+10. フォルダーが **input** で、ファイルが **emp.txt** であることを確認し、 **[アップロード]** を選択します。
     
     一覧に **emp.txt** ファイルとアップロードの状態が表示されます。 
-12. 隅の **[X]** をクリックして、**[BLOB のアップロード]** ページを閉じます。 
+12. 隅の **[X]** をクリックして、 **[BLOB のアップロード]** ページを閉じます。 
 
     ![BLOB のアップロード ページを閉じる](media/data-factory-quickstart-prerequisites/close-upload-blob.png)
 1. **[コンテナー]** ページを開いたままにしておきます。 このクイックスタートの最後で、このページを使用して出力を確認します。
