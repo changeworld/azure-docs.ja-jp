@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 05/02/2019
 ms.author: v-chjenk
-ms.openlocfilehash: cb9edbb508ddd993dcefbf69eb06b4f0d4156485
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6d2bb7efdd5567da377e1e15fec4935b7d4a3a6f
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66742549"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444124"
 ---
 # <a name="install-office-on-a-master-vhd-image"></a>マスター VHD イメージに Office をインストールする
 
@@ -67,7 +67,7 @@ Setup.exe /configure configuration.xml
 
 ```xml
 <Configuration>
-    <Add OfficeClientEdition="64" SourcePath="http://officecdn.microsoft.com/pr/5440fd1f-7ecb-4221-8110-145efaa6372f">
+    <Add OfficeClientEdition="64" SourcePath="https://officecdn.microsoft.com/pr/5440fd1f-7ecb-4221-8110-145efaa6372f">
         <Product ID="O365ProPlusRetail">
             <Language ID="en-US" />
             <Language ID="MatchOS" Fallback = "en-US"/>
@@ -91,7 +91,7 @@ Setup.exe /configure configuration.xml
         </Product>
     </Add>
     <RemoveMSI All="True" />
-    <Updates Enabled="FALSE" UpdatePath="http://officecdn.microsoft.com/pr/5440fd1f-7ecb-4221-8110-145efaa6372f" />
+    <Updates Enabled="FALSE" UpdatePath="https://officecdn.microsoft.com/pr/5440fd1f-7ecb-4221-8110-145efaa6372f" />
     <Display Level="None" AcceptEULA="TRUE" />
     <Logging Level="Verbose" Path="%temp%\WVDOfficeInstall" />
     <Property Value="TRUE" Name="FORCEAPPSHUTDOWN"/>

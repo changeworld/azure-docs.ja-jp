@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2016
 ms.author: kasing
-ms.openlocfilehash: 7e006b8bc05d00de3e5fba20985e30fd5e96c1df
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c4df3d6a55021cafa04bb6bcba643be41dc0e612
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64708675"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273764"
 ---
 # <a name="setting-up-winrm-access-for-virtual-machines-in-azure-resource-manager"></a>Azure Resource Manager の仮想マシンの WinRM アクセスを設定する
 
@@ -93,7 +93,7 @@ VM をプロビジョニングするときに、Microsoft.Compute リソース �
 #### <a name="powershell"></a>PowerShell
 次の PowerShell コマンドを使用して、この URL を取得することができます
 
-    $secretURL = (Get-AzureKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>").Id
+    $secretURL = (Get-AzKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>").Id
 
 ## <a name="step-5-reference-your-self-signed-certificates-url-while-creating-a-vm"></a>手順 5:VM を作成するときに、自己署名証明書の URL を参照する
 #### <a name="azure-resource-manager-templates"></a>Azure Resource Manager のテンプレート
@@ -138,7 +138,7 @@ VM をプロビジョニングするときに、Microsoft.Compute リソース �
 #### <a name="powershell"></a>PowerShell
     $vm = New-AzVMConfig -VMName "<VM name>" -VMSize "<VM Size>"
     $credential = Get-Credential
-    $secretURL = (Get-AzureKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>").Id
+    $secretURL = (Get-AzKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>").Id
     $vm = Set-AzVMOperatingSystem -VM $vm -Windows -ComputerName "<Computer Name>" -Credential $credential -WinRMHttp -WinRMHttps -WinRMCertificateUrl $secretURL
     $sourceVaultId = (Get-AzKeyVault -ResourceGroupName "<Resource Group name>" -VaultName "<Vault Name>").ResourceId
     $CertificateStore = "My"
