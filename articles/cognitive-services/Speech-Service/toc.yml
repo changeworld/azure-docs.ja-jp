@@ -59,11 +59,14 @@
             - name: Objective-C (iOS)
               href: quickstart-objectivec-ios.md
               displayName: 'recognize speech, speech recognition, speech-to-text, stt, xcode'
+            - name: Objective-C (macOS)
+              href: quickstart-objective-c-macos.md
+              displayName: 'recognize speech, speech recognition, speech-to-text, stt, xcode'
             - name: Swift (iOS)
               href: quickstart-swift-ios.md
               displayName: 'recognize speech, speech recognition, speech-to-text, stt, xcode'
-            - name: Objective-C (macOS)
-              href: quickstart-objective-c-macos.md
+            - name: Swift (macOS)
+              href: quickstart-swift-macos.md
               displayName: 'recognize speech, speech recognition, speech-to-text, stt, xcode'
             - name: Python
               href: quickstart-python.md
@@ -285,7 +288,7 @@
         - name: 会話の文字起こし
           href: 'https://signature.centralus.cts.speech.microsoft.com/UI/index.html'
           displayName: 'Conversation transcription, signature generation'
-        - name: Webhook
+        - name: webhooks
           href: webhooks.md
     - name: Swagger ドキュメント
       href: swagger-documentation.md

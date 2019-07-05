@@ -197,7 +197,7 @@
         - name: MLflow を使用して実験を追跡する
           displayName: 'log, monitor, metrics'
           href: how-to-use-mlflow.md
-        - name: TensorBoard を使用して実験を視覚化する
+        - name: TensorBoard を使用して実行を視覚化する
           displayName: 'log, monitor, metrics'
           href: how-to-monitor-tensorboard.md
     - name: 機械学習の自動化
