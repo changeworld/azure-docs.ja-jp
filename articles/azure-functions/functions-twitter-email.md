@@ -45,7 +45,7 @@ Azure Functions は、Logic Apps デザイナーで Azure Logic Apps と統合�
 
 ## <a name="create-a-cognitive-services-resource"></a>Cognitive Services リソースの作成
 
-Cognitive Services APIs は、個々のリソースとして Azure で使用できます。 Text Analytics API を使用して、監視されているツイートの感情を検出します。
+Cognitive Services API は、個々のリソースとして Azure で使用できます。 Text Analytics API を使用して、監視されているツイートの感情を検出します。
 
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
 
