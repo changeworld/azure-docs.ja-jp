@@ -180,11 +180,11 @@ AzCopy を使うと、インターネット経由で VHD を簡単にアップ�
 
     次に AzCopy コマンドで使用するパラメーターを示します。
 
-   * **/Source: *&lt;source&gt;:* **VHD が格納されているフォルダーの場所またはストレージ コンテナー URL。
-   * **/SourceKey: *&lt;source-account-key&gt;:* **コピー元ストレージ アカウントのストレージ アカウント キー。
-   * **/Dest: *&lt;destination&gt;:* **VHD のコピー先のストレージ コンテナー URL。
-   * **/DestKey: *&lt;dest-account-key&gt;:* **コピー先ストレージ アカウントのストレージ アカウント キー。
-   * **/Pattern: *&lt;file-name&gt;:* **コピーする VHD のファイル名を指定します。
+   * **/Source:** *&lt;source&gt;:* VHD が格納されているフォルダーの場所またはストレージ コンテナー URL。
+   * **/SourceKey:** *&lt;source-account-key&gt;:* コピー元ストレージ アカウントのストレージ アカウント キー。
+   * **/Dest:** *&lt;destination&gt;:* VHD のコピー先のストレージ コンテナー URL。
+   * **/DestKey:** *&lt;dest-account-key&gt;:* コピー先ストレージ アカウントのストレージ アカウント キー。
+   * **/Pattern:** *&lt;file-name&gt;:* コピーする VHD のファイル名を指定します。
 
 AzCopy ツールの使用の詳細については、「 [AzCopy コマンド ライン ユーティリティを使用してデータを転送する](storage-use-azcopy.md)」を参照してください。
 
@@ -277,12 +277,12 @@ AzCopy を使うと、インターネット経由で VHD を簡単にアップ�
 
     次に AzCopy コマンドで使用するパラメーターを示します。
 
-   * **/Source: *&lt;source&gt;:* **VHD が格納されているフォルダーの場所またはストレージ コンテナー URL。
-   * **/SourceKey: *&lt;source-account-key&gt;:* **コピー元ストレージ アカウントのストレージ アカウント キー。
-   * **/Dest: *&lt;destination&gt;:* **VHD のコピー先のストレージ コンテナー URL。
-   * **/DestKey: *&lt;dest-account-key&gt;:* **コピー先ストレージ アカウントのストレージ アカウント キー。
+   * **/Source:** *&lt;source&gt;:* VHD が格納されているフォルダーの場所またはストレージ コンテナー URL。
+   * **/SourceKey:** *&lt;source-account-key&gt;:* コピー元ストレージ アカウントのストレージ アカウント キー。
+   * **/Dest:** *&lt;destination&gt;:* VHD のコピー先のストレージ コンテナー URL。
+   * **/DestKey:** *&lt;dest-account-key&gt;:* コピー先ストレージ アカウントのストレージ アカウント キー。
    * **/BlobType: page:** コピー先がページ BLOB であることを指定します。
-   * **/Pattern: *&lt;file-name&gt;:* **コピーする VHD のファイル名を指定します。
+   * **/Pattern:** *&lt;file-name&gt;:* コピーする VHD のファイル名を指定します。
 
 AzCopy ツールの使用の詳細については、「 [AzCopy コマンド ライン ユーティリティを使用してデータを転送する](storage-use-azcopy.md)」を参照してください。
 
