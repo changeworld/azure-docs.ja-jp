@@ -190,6 +190,8 @@
       href: 'https://msdn.microsoft.com/library/azure/mt586720'
     - name: REST (クラシック)
       href: 'https://msdn.microsoft.com/library/azure/dn606310'
+    - name: Resource Manager テンプレート
+      href: /azure/templates/microsoft.network/expressroutecircuits
 - name: リソース
   items:
     - name: ExpressRoute の FAQ
