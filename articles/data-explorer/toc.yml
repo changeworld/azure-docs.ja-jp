@@ -100,10 +100,10 @@
           href: manage-database-permissions.md
         - name: クラスターの正常性を確認する
           href: check-cluster-health.md
-        - name: クラスターのスケールアウトの管理
-          href: manage-cluster-scale-out.md
-        - name: クラスターのスケールアップの管理
-          href: manage-cluster-scale-up.md
+        - name: クラスターの水平スケーリングを管理する
+          href: manage-cluster-horizontal-scaling.md
+        - name: クラスターの垂直スケーリングを管理する
+          href: manage-cluster-vertical-scaling.md
         - name: データの削除
           href: delete-data.md
         - name: 重複したデータを処理する

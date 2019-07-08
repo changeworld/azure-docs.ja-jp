@@ -62,6 +62,8 @@
           href: backup-azure-files-faq.md
         - name: FAQ - Azure VM 上の SQL Server データベースのバックアップ
           href: faq-backup-sql-server.md
+        - name: FAQ - Azure Backup Server と DPM
+          href: backup-azure-dpm-azure-server-faq.md
     - name: Backup のアーキテクチャ
       href: backup-architecture.md
     - name: ロールベースのアクセス制御
