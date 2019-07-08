@@ -51,6 +51,9 @@
   items:
     - name: 管理
       items:
+        - name: アカウント
+          displayName: subscription
+          href: media-services-account-concept.md
         - name: エンティティ
           items:
             - name: .NET
