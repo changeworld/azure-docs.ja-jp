@@ -304,13 +304,13 @@ New-SelfSignedCertificate -Subject hdifabrikam.com `
 
         | プロパティ | 値 |
         |---|---|
-        | ソース | 任意 |
-        | ソース ポート範囲 | * |
-        | 宛先 | 任意 |
-        | 送信先ポート範囲 | 636 |
-        | Protocol | 任意 |
-        | Action | ALLOW |
-        | 優先順位 | <Desired Number> |
+        | Source | Any |
+        | Source port ranges | * |
+        | Destination | Any |
+        | Destination port range | 636 |
+        | Protocol | Any |
+        | Action | Allow |
+        | Priority | \<Desired Number> |
         | Name | Port_LDAP_636 |
 
     ![受信セキュリティ規則](./media/apache-domain-joined-create-configure-enterprise-security-cluster/add-inbound-security-rule.png)
