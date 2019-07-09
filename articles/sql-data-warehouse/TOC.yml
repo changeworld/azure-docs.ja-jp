@@ -127,6 +127,14 @@
           href: sql-data-warehouse-overview-develop.md
         - name: ベスト プラクティス
           href: sql-data-warehouse-best-practices-development.md
+        - name: 具体化されたビュー
+          items:
+            - name: CREATE MATERIALIZED VIEW AS SELECT (Transact-SQL)
+              href: /sql/t-sql/statements/create-materialized-view-as-select-transact-sql
+            - name: CREATE MATERIALIZED VIEW AS SELECT (Transact-SQL)
+              href: /sql/t-sql/statements/alter-materialized-view-transact-sql
+        - name: 結果セットのキャッシュ
+          href: /sql/t-sql/statements/set-result-set-caching-transact-sql
         - name: テーブル
           items:
             - name: 概要

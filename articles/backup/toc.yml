@@ -64,6 +64,8 @@
           href: faq-backup-sql-server.md
         - name: FAQ - Azure Backup Server と DPM
           href: backup-azure-dpm-azure-server-faq.md
+        - name: FAQ - Azure Backup の監視アラート
+          href: backup-azure-monitor-alert-faq.md
     - name: Backup のアーキテクチャ
       href: backup-architecture.md
     - name: ロールベースのアクセス制御
