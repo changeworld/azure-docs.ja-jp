@@ -220,6 +220,8 @@
           href: application-gateway-troubleshooting-502.md
         - name: Web アプリケーション ファイアウォール (WAF)
           href: web-application-firewall-troubleshoot.md
+        - name: リソース正常性
+          href: resource-health-overview.md
     - name: v1 から v2 への移行
       href: migrate-v1-v2.md
 - name: リファレンス

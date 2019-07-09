@@ -74,6 +74,9 @@
           href: expressroute-howto-circuit-arm.md
         - name: Azure CLI
           href: howto-circuit-cli.md
+        - name: Azure Resource Manager テンプレート
+          displayName: 'ARM,resource manager template'
+          href: expressroute-howto-circuit-resource-manager-template.md
     - name: ピアリング構成の作成と変更
       items:
         - name: Azure ポータル
@@ -191,6 +194,7 @@
     - name: REST (クラシック)
       href: 'https://msdn.microsoft.com/library/azure/dn606310'
     - name: Resource Manager テンプレート
+      displayName: 'ARM,resource manager template'
       href: /azure/templates/microsoft.network/expressroutecircuits
 - name: リソース
   items:

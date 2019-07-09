@@ -155,6 +155,8 @@
               href: data-box-heavy-deploy-picked-up.md
         - name: 概念
           items:
+            - name: 安全性のガイドラインを読む
+              href: data-box-heavy-safety.md
             - name: 追跡とログ記録を確認する
               href: data-box-logs.md
             - name: 要件を確認する
