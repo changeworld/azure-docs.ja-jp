@@ -49,6 +49,8 @@
       href: deploy-availability-zone-powershell.md
     - name: Load Balancer との統合
       href: integrate-lb.md
+    - name: SQL FQDN を使用したアプリケーション規則
+      href: sql-fqdn-filtering.md
 - name: リファレンス
   items:
     - name: Azure CLI

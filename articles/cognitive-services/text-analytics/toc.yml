@@ -70,10 +70,10 @@
           href: how-tos/text-analytics-how-to-install-containers.md
         - name: コンテナーを構成する
           href: text-analytics-resource-container-config.md
-        - name: Container Instances (ACI) の使用
+        - name: Container Instances の使用
           items:
             - name: センチメント分析
-              href: how-tos/use-sentiment-analysis-on-aci.md
+              href: how-tos/deploy-sentiment-analysis-on-container-instances.md
         - name: Kubernetes サービス (AKS) の使用
           items:
             - name: 言語検出

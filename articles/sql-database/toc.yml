@@ -209,6 +209,8 @@
           href: sql-database-managed-instance-index.yml
         - name: マネージド インスタンスの機能
           href: sql-database-managed-instance.md
+        - name: マネージド インスタンスの FAQ
+          href: sql-database-managed-instance-faq.md
         - name: Management API リファレンス
           href: sql-database-managed-instance-create-manage.md
         - name: リソース制限

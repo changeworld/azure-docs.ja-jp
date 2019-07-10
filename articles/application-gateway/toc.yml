@@ -222,6 +222,8 @@
           href: web-application-firewall-troubleshoot.md
         - name: リソース正常性
           href: resource-health-overview.md
+        - name: Log Analytics の使用
+          href: log-analytics.md
     - name: v1 から v2 への移行
       href: migrate-v1-v2.md
 - name: リファレンス

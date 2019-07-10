@@ -35,6 +35,8 @@
         - name: コンテナーを構成する
           href: form-recognizer-container-configuration.md
           displayName: 'docker, container, run, billing, apikey, logging'
+        - name: Container Instances の使用
+          href: deploy-form-recognizer-on-container-instances.md
 - name: リファレンス
   items:
     - name: Form Recognizer API

@@ -147,6 +147,8 @@
           href: computer-vision-how-to-install-containers.md
         - name: コンテナーを構成する
           href: computer-vision-resource-container-config.md
+        - name: Container Instances の使用
+          href: deploy-computer-vision-on-container-instances.md
     - name: Computer Vision Connected Service の使用
       href: vs-computer-vision-connected-service.md
     - name: リアルタイムでビデオを分析する
