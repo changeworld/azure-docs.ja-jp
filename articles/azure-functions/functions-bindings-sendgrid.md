@@ -261,8 +261,8 @@ public static void Run(
 |**apiKey**|**ApiKey**| API キーを含むアプリ設定の名前。 設定されていない場合、既定のアプリの設定名は"AzureWebJobsSendGridApiKey" です。|
 |**to**|**To**| 受信者の電子メール アドレス。 |
 |**from**|**From**| 送信者の電子メール アドレス。 |
-|**subject**|**[件名]**| 電子メールの件名。 |
-|**text**|**テキスト**| 電子メールの本文。 |
+|**subject**|**Subject**| 電子メールの件名。 |
+|**text**|**Text**| 電子メールの本文。 |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
