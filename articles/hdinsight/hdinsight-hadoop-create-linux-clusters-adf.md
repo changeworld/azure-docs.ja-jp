@@ -190,9 +190,9 @@ Azure Data Factory では、データ ファクトリに 1 つまたは複数の
     |プロパティ  |値  |
     |---------|---------|
     |Name | データ ファクトリの名前を入力します。 この名前はグローバルに一意である必要があります。|
-    |サブスクリプション | Azure サブスクリプションを選択します。 |
-    |リソース グループ | **[既存のものを使用]** を選択し、PowerShell スクリプトを使用して作成したリソース グループを選択します。 |
-    |バージョン | **V2**のままにします。 |
+    |Subscription | Azure サブスクリプションを選択します。 |
+    |Resource group | **[既存のものを使用]** を選択し、PowerShell スクリプトを使用して作成したリソース グループを選択します。 |
+    |Version | **V2**のままにします。 |
     |Location | 場所は、リソース グループの作成時に指定した場所に自動的に設定されます。 このチュートリアルでは、場所は **[米国東部]** に設定されます。 |
 
     ![Azure Portal を使用して Azure Data Factory を作成する](./media/hdinsight-hadoop-create-linux-clusters-adf/create-data-factory-portal.png "Azure Portal を使用して Azure Data Factory を作成する")
