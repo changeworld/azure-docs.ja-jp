@@ -242,6 +242,12 @@
           href: monitor-events-portal-how-to.md
         - name: イベントの監視 - CLI
           href: job-state-events-cli-how-to.md
+    - name: Azure Monitor の使用
+      items:
+        - name: 監視メトリック
+          href: media-services-metrics-howto.md
+        - name: 診断ログの監視
+          href: media-services-diagnostic-logs-howto.md
     - name: コンテンツの保護
       items:
         - name: コンテンツ キー ポリシーの取得 - .NET
