@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 5/24/2019
+ms.date: 07/05/2019
 ms.author: travisw
-ms.openlocfilehash: 7e82b2ef9500defe0d08351da1e3487e4671155f
-ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
+ms.openlocfilehash: c62402faa1995e1e992c8251ed87160a8f33d3a7
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67467038"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67602741"
 ---
 # <a name="quickstart-create-a-voice-first-virtual-assistant-in-java-on-android-by-using-the-speech-sdk"></a>クイック スタート:Speech SDK を使用して Android 上で Java を使用して音声優先仮想アシスタントを作成する
 
@@ -30,7 +30,7 @@ ms.locfileid: "67467038"
 
 ## <a name="prerequisites"></a>前提条件
 
-* Speech Services 用の Azure サブスクリプション キー。 [無償で入手する](get-started.md)か、[Azure portal](https://portal.azure.com) 上に作成します。
+* Speech Services 用の Azure サブスクリプション キー。 [無料で入手する](get-started.md)か、[Azure portal](https://portal.azure.com) 上に作成します。
 * [Direct Line Speech チャネル](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)で構成された、以前に作成済みのボット
 * [Android Studio](https://developer.android.com/studio/) v3.3 以降
 

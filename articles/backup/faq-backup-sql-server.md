@@ -7,13 +7,13 @@ manager: vijayts
 ms.service: backup
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.author: sachdevaswati
-ms.openlocfilehash: 649e50634d901ab48f1cb36c39d7331401c0cc51
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: vijayts
+ms.openlocfilehash: b5e6b1b07f986228eef66e2e92fb9ac3caef32fa
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64700170"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67704838"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Azure VM バックアップ上で実行されている SQL Server データベースに関する FAQ
 

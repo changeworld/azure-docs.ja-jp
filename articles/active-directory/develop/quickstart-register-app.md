@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ec1d5fb13d7fb191bfee6194e69a217bcaddbb9
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 541253cf3a8f2628ea0e76f1115ddc4a290daf62
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67482568"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67655481"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>クイック スタート:Microsoft ID プラットフォームにアプリケーションを登録する
 
@@ -50,7 +50,7 @@ ms.locfileid: "67482568"
        - Web アプリケーションの場合は、アプリのベース URL を指定します。 ローカル マシンで実行されている Web アプリの URL であれば、たとえば `http://localhost:31544` のようになります。 ユーザーはこの URL を使用して、Web クライアント アプリケーションにサインインすることになります。
        - パブリック クライアント アプリケーションの場合は、トークン応答を返すために Azure AD によって使用される URI を指定します。 アプリケーション固有の値 (たとえば、`myapp://auth`) を入力します。
 
-     Web アプリケーションまたはネイティブ アプリケーションの具体的な例を見るには、[クイック スタート](https://docs.microsoft.com/azure/active-directory/develop/#quickstarts)を参照してください。
+     Web アプリケーションまたはネイティブ アプリケーションの具体的な例を見るには、[クイック スタート](https://docs.microsoft.com/azure/active-directory/develop)を参照してください。
 
 1. 終了したら、 **[登録]** を選択します。
 
@@ -67,6 +67,6 @@ Azure AD によりアプリに一意のアプリケーション (クライアン
     - [Web API にアクセスするようにクライアント アプリケーションを構成する](quickstart-configure-app-access-web-apis.md)
     - [Web API を公開するようにアプリケーションを構成する](quickstart-configure-app-expose-web-apis.md)
     - [アプリケーションによってサポートされるアカウントを変更する](quickstart-modify-supported-accounts.md)
-- 迅速にアプリを構築し、トークンの取得、トークンの更新、ユーザーへのサインイン、ユーザー情報の表示などの機能を追加するには、[クイック スタート](https://docs.microsoft.com/azure/active-directory/develop/#quickstarts)を選択します。
+- 迅速にアプリを構築し、トークンの取得、トークンの更新、ユーザーへのサインイン、ユーザー情報の表示などの機能を追加するには、[クイック スタート](https://docs.microsoft.com/azure/active-directory/develop)を選択します。
 - 登録されたアプリケーションを表す 2 つの Azure AD オブジェクトと、両者間の関係については、[Application objects and service principal objects](app-objects-and-service-principals.md)\(アプリケーション オブジェクトとサービス プリンシパル オブジェクト\) を参照してください。
 - アプリを開発するときに使用するブランド化ガイドラインについては、「[アプリケーションのブランド化ガイドライン](howto-add-branding-in-azure-ad-apps.md)」を参照してください。

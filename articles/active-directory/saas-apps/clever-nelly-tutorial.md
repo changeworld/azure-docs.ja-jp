@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 06/27/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9e76b36d03f9d1d08e506be4e09933cbe56b8199
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: ac9647bf6a9e2e763bcfb6e3d840cdccd2b6c305
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67544613"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67595004"
 ---
 # <a name="tutorial-integrate-clever-nelly-with-azure-active-directory"></a>チュートリアル:Clever Nelly と Azure Active Directory の統合
 
@@ -120,7 +120,7 @@ Clever Nelly で Azure AD SSO を構成してテストするには、次の構�
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
-このセクションでは、Azure portal で B.Simon というテスト ユーザーを作成します。
+このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
 
 1. Azure portal の左側のウィンドウから、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 1. 画面の上部にある **[新しいユーザー]** を選択します。
@@ -162,6 +162,6 @@ Clever Nelly で Azure AD SSO を構成してテストするには、次の構�
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

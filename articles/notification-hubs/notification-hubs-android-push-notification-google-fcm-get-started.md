@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/30/2019
 ms.author: jowargo
-ms.openlocfilehash: c21b1e38077575fc49221150a61693a23aa408a3
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: f2efa9b7e1e534f93e4ea01ba52740c8c5ac7b02
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509133"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67653896"
 ---
 # <a name="tutorial-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-firebase-cloud-messaging"></a>チュートリアル:Azure Notification Hubs と Google Firebase Cloud Messaging を使用して Android デバイスにプッシュ通知を送信する
 
@@ -88,7 +88,26 @@ ms.locfileid: "67509133"
 
 ### <a name="add-google-play-services-to-the-project"></a>プロジェクトへの Google Play Services の追加
 
-[!INCLUDE [Add Play Services](../../includes/notification-hubs-android-studio-add-google-play-services.md)]
+1. Android Studio で、メニューから **[ツール]** を選択し、 **[SDK Manager]** を選択します。 
+2. 自分のプロジェクトで使用される Android SDK のターゲット バージョンを選択します。 次に、 **[パッケージの詳細ページの表示]** を選択します。 
+
+    ![Android SDK Manager - ターゲット バージョンを選択する](./media/notification-hubs-android-studio-add-google-play-services/notification-hubs-android-studio-sdk-manager.png)
+3. まだインストールされていない場合は、 **[Google API]** を選択します。
+
+    ![Android SDK Manager - Google API の選択](./media/notification-hubs-android-studio-add-google-play-services/googole-apis-selected.png)
+4. **[SDK Tools]\(SDK ツール\)** タブに切り替えます。Google Play 開発者サービスをまだインストールしていない場合は、次の図に示すように **[Google Play 開発者サービス]** を選択します。 次に、 **[適用]** をクリックしてインストールします。 SDK のパスは後の手順で使用するので、メモしておいてください。
+
+    ![Android SDK Manager - Google Play 開発者サービスの選択](./media/notification-hubs-android-studio-add-google-play-services/google-play-services-selected.png)
+3. **[Confirm Change]\(変更の確認\)** ダイアログ ボックスが表示される場合は、 **[OK]** を選択します。 コンポーネント インストーラーによって、要求したコンポーネントがインストールされます。 コンポーネントがインストールされた後、 **[Finish]\(完了\)** を選択します。
+4. **[OK]** を選択して、 **[Settings for New Projects]\(新しいプロジェクトの設定\)** ダイアログ ボックスを閉じます。  
+5. ツール バーの **[今すぐ同期]** アイコンを選択します。
+1. AndroidManifest.xml ファイルを開き、次のタグを *application* タグに追加します。
+
+    ```xml
+    <meta-data android:name="com.google.android.gms.version"
+         android:value="@integer/google_play_services_version" />
+    ```
+
 
 ### <a name="add-azure-notification-hubs-libraries"></a>Azure Notification Hubs ライブラリの追加
 
@@ -354,7 +373,6 @@ ms.locfileid: "67509133"
 
         mainActivity = this;
         registerWithNotificationHubs();
-        MyHandler.createChannelAndHandleNotifications(getApplicationContext());
     }
     ```
 
@@ -526,7 +544,7 @@ ms.locfileid: "67509133"
 このチュートリアルでは、Firebase Cloud Messaging を使用して、このサービスに登録されたすべての Android デバイスに通知をブロードキャストしました。 特定のデバイスにプッシュ通知を送信する方法を学習するには、次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
->[チュートリアル:特定の Android デバイスにプッシュ通知を送信する](notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md)
+>[チュートリアル:特定の Android デバイスにプッシュ通知を送信する](push-notifications-android-specific-devices-firebase-cloud-messaging.md)
 
 <!-- Images. -->
 
