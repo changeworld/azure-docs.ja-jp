@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 04/12/2019
+ms.date: 06/28/2019
 ms.author: alkohli
-ms.openlocfilehash: cd4d84d6698ddeda2fb00a8452fbe8cd02771e4b
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 3972f9f93cc6323601102f1a54bb067a8995d9e4
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59544570"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67484756"
 ---
 # <a name="what-is-azure-data-box-edge"></a>Azure Data Box Edge とは 
 
@@ -34,7 +34,7 @@ Azure Data Box Edge は、ネットワーク データ転送の機能を備え�
     - クラウドでのより深い分析に必要なデータをサブセット化して転送します。
     - 分析して、IoT イベントに対応します。 
 
-- **Inference Azure Machine Learning** - Data Box Edge により、Machine Learning (ML) モデルを実行して、データがクラウドに送信される前に対応できるように、迅速な結果を得ることができます。 ML モデルを再調整して改善し続けるために、データ セット全体が転送されます。
+- **Inference Azure Machine Learning** - Data Box Edge により、Machine Learning (ML) モデルを実行して、データがクラウドに送信される前に対応できるように、迅速な結果を得ることができます。 ML モデルを再調整して改善し続けるために、データ セット全体を転送することができます。 Databox Edge デバイスで Azure ML ハードウェア アクセラレータ モデルを使用する方法の詳細については、[Databox Edge への Azure ML ハードウェア アクセラレーション対応モデルのデプロイ](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-fpga-web-service#deploy-to-a-local-edge-server)に関するページを参照してください。
 
 - **ネットワーク経由でデータを Azure に転送する** - 計算や分析をさらに可能にするか、アーカイブ目的のために、Data Box Edge を使用して、Azure にデータを簡単かつ迅速に転送します。 
 
@@ -55,7 +55,7 @@ Data Box Edge には次の機能があります。
 |機能 |説明  |
 |---------|---------|
 |高性能     | 完全に自動化され、高度に最適化されたデータ転送と帯域幅。|
-|サポートされるプロトコル     | データ インジェストのために、標準の SMB プロトコルと NFS プロトコルをサポートします。 <br> サポート対象のバージョンについては、「[Data Box Edge のシステム要件](https://aka.ms/dbe-docs)」を参照してください。|
+|サポートされるプロトコル     | データ インジェストのために、標準の SMB プロトコルと NFS プロトコルをサポートします。 <br> サポート対象のバージョンについては、「[Data Box Edge のシステム要件](data-box-edge-system-requirements.md)」を参照してください。|
 |コンピューティング       |データの分析、処理、フィルター処理が可能です。|
 |データ アクセス     | クラウドでデータをさらに処理するために、クラウド API を使用して、Azure Storage Blob と Azure ファイルからデータを直接アクセスします。|
 |高速アクセス     | 最近使用されたファイルを高速にアクセスするために、デバイス上でローカル キャッシュを行います。|
@@ -75,13 +75,13 @@ Data Box Edge ソリューションは、Data Box Edge リソース、Data Box E
 
     <!--![The Data Box Edge service in Azure portal](media/data-box-overview/data-box-Edge-service1.png)-->
 
-    詳細については、「[Data Box Edge サービスを使用した Data Box Edge デバイスの管理](https://aka.ms/dbe-docs)」を参照してください。
+    詳細については、[Data Box Edge デバイスの注文の作成](data-box-edge-deploy-prep.md#create-a-new-resource)に関するページを参照してください。
 
 * **Data Box ローカル Web UI** - ローカル Web UI を使用して、診断の実行、Data Box Edge デバイスのシャットダウンと再起動し、コピー ログの表示、Microsoft サポートへの連絡とサービス要求の提出を行います。
 
     <!--![The Data Box Edge local web UI](media/data-box-Edge-overview/data-box-Edge-local-web-ui.png)-->
 
-    Web ベース UI の使用については、「[Web ベース UI を使用した Data Box の管理](https://aka.ms/dbe-docs)」を参照してください。
+    Web ベース UI の使用については、「[Web ベース UI を使用した Data Box の管理](data-box-edge-manage-access-power-connectivity-mode.md)」を参照してください。
 
 
 ## <a name="region-availability"></a>利用可能なリージョン

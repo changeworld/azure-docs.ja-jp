@@ -7,12 +7,12 @@ ms.date: 02/08/2019
 ms.topic: overview
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 960b8145e5f53c6c37820604fd634ccf5fd77c6b
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 5f403ee7d2bf4a0730ceaa9b5a95b3e7b11f3695
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "60876241"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67428775"
 ---
 # <a name="overview-of-the-azure-blueprints-service"></a>Azure Blueprints サービスの概要
 
@@ -109,7 +109,7 @@ Resource Manager テンプレートとブループリントのどちらかを選
 **所有者**ロールには、上記のアクセス許可のすべてが含まれています。 **共同作成者**ロールにはブループリントの作成と削除を実行するアクセス許可がありますが、ブループリントの割り当てを実行するアクセス許可はありません。 これらの組み込みロールが自分のセキュリティ ニーズに適合しない場合は、[カスタム ロール](../../role-based-access-control/custom-roles.md)を作成することを検討してください。
 
 > [!NOTE]
-> Azure Blueprints のサービス プリンシパルにより、デプロイを有効にするには、割り当てられたサブスクリプションで**所有者**のロールが必要です。 ポータルを使用する場合、デプロイに対するこのロールの付与と取り消しは自動的に行われます。 REST API を使用する場合はこのロールを手動で付与する必要がありますが、取り消しはデプロイ完了後に自動的に行われます。
+> システム割り当てのマネージド ID を使用している場合、Azure Blueprints のサービス プリンシパルがデプロイを有効にするには、割り当てられたサブスクリプションに対して**所有者**ロールが必要です。 ポータルを使用する場合、デプロイに対するこのロールの付与と取り消しは自動的に行われます。 REST API を使用する場合はこのロールを手動で付与する必要がありますが、取り消しはデプロイ完了後に自動的に行われます。 ユーザー割り当てのマネージド ID を使用している場合、ブループリントの割り当てを作成するユーザーにのみ**所有者**アクセス許可が必要です。
 
 ## <a name="video-overview"></a>ビデオの概要
 

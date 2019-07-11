@@ -4,7 +4,7 @@ description: Azure 上のハイ パフォーマンス コンピューティン�
 services: virtual-machines
 documentationcenter: ''
 author: vermagit
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines
@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: amverma
-ms.openlocfilehash: e8ff4147130dfeff14be41ed292b51ed34966df0
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: 10549abfbdacf1fc1ae6b99f4cab20a290c32a2d
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67537668"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67707822"
 ---
 # <a name="optimization-for-linux"></a>Linux 向けの最適化
 

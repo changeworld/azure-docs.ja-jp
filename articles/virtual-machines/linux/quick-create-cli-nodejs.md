@@ -4,7 +4,7 @@ description: Azure クラシック CLI を使用した Azure での Linux VM の
 services: virtual-machines-linux
 documentationcenter: ''
 author: vlivech
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: facb1115-2b4e-4ef3-9905-330e42beb686
 ms.service: virtual-machines-linux
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/15/2016
 ms.author: v-livech
-ms.openlocfilehash: 569e90c7908ce435689a80f7917b20275703f537
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a757e156d48eb27a9e4d9b38cb08d5417f1e35b6
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61473741"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67671067"
 ---
 # <a name="create-a-linux-vm-using-the-azure-classic-cli"></a>Azure クラシック CLI を使用して Linux VM を作成する
 
@@ -67,7 +67,7 @@ azure vm quick-create -M ~/.ssh/id_rsa.pub -Q CoreOS
 * VM 名
 * 場所 (`westus`、`westeurope` など)
 * linux (必要な OS を Azure に通知します)。
-* username
+* userName
 
 次の例では、さらに入力を要求しなくて済むように、すべての値を指定しています。 `~/.ssh/id_rsa.pub` が ssh-rsa 形式の公開キー ファイルであれば、これは現状のまま機能します。
 

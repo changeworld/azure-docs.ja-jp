@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 78ee2c1ce402a29f1a9dfdd29f31daef09134eba
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 09fd569ebfe8bc7f287eeb2a0b830399250c3a7a
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60611332"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67701490"
 ---
 # <a name="transform-data-using-pig-activity-in-azure-data-factory"></a>Azure Data Factory での Pig アクティビティを使用したデータ変換
 > [!div class="op_single_selector" title1="変換アクティビティ"]
@@ -85,7 +85,7 @@ Data Factory [パイプライン](data-factory-create-pipelines.md)の HDInsight
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| name |アクティビティの名前 |はい |
+| 名前 |アクティビティの名前 |はい |
 | description |アクティビティの用途を説明するテキストです。 |いいえ |
 | type |HDInsightPig |はい |
 | inputs |Pig のアクティビティによって使用される 1 つ以上の入力 |いいえ |

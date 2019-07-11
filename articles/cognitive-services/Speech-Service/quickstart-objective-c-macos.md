@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 04/03/2019
+ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: 49e39a40093f2efdf0fabbbf9f383576b2cebe22
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 25f341d167cecd765fd89d9286708d0bd8df6dd2
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67484987"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603030"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-macos-using-the-speech-sdk"></a>クイック スタート:macOS で Objective-C と Speech SDK を使用して音声を認識する
 
@@ -88,4 +88,3 @@ Xcode を起動し、 **[File]**  >  **[New]**  >  **[Project]** の順にクリ
 
 > [!div class="nextstepaction"]
 > [GitHub で Objective-C のサンプルを詳しく見てみる](https://aka.ms/csspeech/samples)
-

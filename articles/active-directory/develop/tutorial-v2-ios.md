@@ -16,12 +16,12 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 780da9359aaf645abc9b685fa9d90bbea9199759
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: b7d68f6f7079872b81b750ba71997117aaa27d33
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65962164"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67550571"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-from-an-ios-app"></a>iOS アプリからユーザーにサインインして Microsoft Graph を呼び出す
 
@@ -56,10 +56,10 @@ ms.locfileid: "65962164"
 
 ### <a name="create-a-new-project"></a>新しいプロジェクトを作成する
 
-1. Xcode を開き、**[Create a new Xcode project (新しい Xcode プロジェクトを作成)]** を選択します。
-2. **[iOS] > [Single View Application (単一ビュー アプリケーション)]** を選択し、**[次へ]** を選択します。
-3. 製品に名前を付け、**[次へ]** を選択します。
-4. アプリを作成するフォルダーを選択し、*[作成]* をクリックします。
+1. Xcode を開き、 **[Create a new Xcode project (新しい Xcode プロジェクトを作成)]** を選択します。
+2. **[iOS] > [Single View Application (単一ビュー アプリケーション)]** を選択し、 **[次へ]** を選択します。
+3. 製品に名前を付け、 **[次へ]** を選択します。
+4. アプリを作成するフォルダーを選択し、 *[作成]* をクリックします。
 
 ## <a name="register-your-application"></a>アプリケーションの登録 
 
@@ -382,7 +382,7 @@ MSAL では、トークンを取得するための主要なメソッドとして
 
 | ヘッダー キー    | value                 |
 | ------------- | --------------------- |
-| Authorization | Bearer <access-token> |
+| Authorization | Bearer \<access-token> |
 
 次を `ViewController.swift` に追加します。
 

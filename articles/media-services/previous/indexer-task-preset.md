@@ -12,13 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/14/2019
-ms.author: adsolank;juliako;
-ms.openlocfilehash: 8ce3ea3847e4c8c022f17375676d8415372dec85
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: adsolank
+ms.reviewer: juliako
+ms.openlocfilehash: 129694edacb390aa62c061941810b8c98be7e96c
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61466308"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67619160"
 ---
 # <a name="task-preset-for-azure-media-indexer"></a>Azure Media Indexer 用のタスク プリセット 
 

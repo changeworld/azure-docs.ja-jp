@@ -6,14 +6,14 @@ author: omidm1
 ms.author: omidm
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
-ms.topic: conceptual
-ms.date: 04/19/2019
-ms.openlocfilehash: 0582fa8b26bee05e4d2948037cc39a71ed656fce
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.topic: overview
+ms.date: 06/12/2019
+ms.openlocfilehash: 266d6160562d5a97bde75597216338214f3d988d
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66243951"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441425"
 ---
 # <a name="what-is-enterprise-security-package-in-azure-hdinsight"></a>Azure HDInsight での Enterprise セキュリティ パッケージとは
 
@@ -21,10 +21,9 @@ ms.locfileid: "66243951"
 
 Active Directory ドメインに参加する HDInsight クラスターを、Enterprise セキュリティ パッケージ (ESP) を使用して作成できます。 その後、Azure Active Directory を介した認証を通じて HDInsight クラスターにサインインできる企業の従業員の一覧を構成できるようになります。 社外のユーザーは、HDInsight クラスターにサインインすることもアクセスすることもできません。 
 
-エンタープライズ管理者は、[Apache Ranger](https://hortonworks.com/apache/ranger/) を使用して Apache Hive のセキュリティを確保するためのロールベースのアクセス制御 (RBAC) を構成できます。 RBAC を構成すると、必要な内容へのデータ アクセスのみに制限されます。 最後に、管理者は従業員によるデータ アクセスとアクセス制御ポリシーに加えられた変更を監査できます。 その後、管理者は企業リソースにおいて高度なガバナンスを実現できます。
+エンタープライズ管理者は、[Apache Ranger](https://ranger.apache.org/) を使用して Apache Hive のセキュリティを確保するためのロールベースのアクセス制御 (RBAC) を構成できます。 RBAC を構成すると、必要な内容へのデータ アクセスのみに制限されます。 最後に、管理者は従業員によるデータ アクセスとアクセス制御ポリシーに加えられた変更を監査できます。 その後、管理者は企業リソースにおいて高度なガバナンスを実現できます。
 
-> [!NOTE]  
-> Apache Oozie は、ESP クラスターで使用できるようになりました。 Oozie Web UI にアクセスするには、[トンネリング](../hdinsight-linux-ambari-ssh-tunnel.md)を有効にする必要があります。
+Apache Oozie は、ESP クラスターで使用できるようになりました。 Oozie Web UI にアクセスするには、[トンネリング](../hdinsight-linux-ambari-ssh-tunnel.md)を有効にする必要があります。
 
 エンタープライズ セキュリティには、境界セキュリティ、認証、承認、暗号化の 4 つの大きな柱があります。
 
@@ -43,14 +42,14 @@ HDInsight の境界セキュリティは、仮想ネットワークと Azure VPN
 ## <a name="authorization"></a>Authorization
 ほとんどの企業では、すべての従業員がすべてのエンタープライズ リソースにはアクセスできないようにするベスト プラクティスに従っています。 同様に、管理者はクラスター リソースのロールベースのアクセス制御ポリシーを定義できます。 
 
-たとえば、管理者は [Apache Ranger](https://hortonworks.com/apache/ranger/) を構成して Hive のアクセス制御ポリシーを設定できます。 この機能により、従業員は仕事を順調に進めるために必要な量のデータにのみアクセスできます。 クラスターへの SSH アクセスも管理者だけに制限されます。
+たとえば、管理者は [Apache Ranger](https://ranger.apache.org/) を構成して Hive のアクセス制御ポリシーを設定できます。 この機能により、従業員は仕事を順調に進めるために必要な量のデータにのみアクセスできます。 クラスターへの SSH アクセスも管理者だけに制限されます。
 
 ## <a name="auditing"></a>監査
 リソースにおいて許可されていないアクセスや意図しないアクセスを追跡するには、クラスター リソース、およびデータへのアクセスをすべて監査する必要があります。 HDInsight クラスター リソースを許可されていないユーザーから保護し、データをセキュリティで保護することが重要です。 
 
 管理者は HDInsight クラスター リソースとデータへのすべてのアクセスを表示し、レポートを作成できます。 また、管理者は Apache Ranger のサポートされているエンドポイントで作成されたアクセス制御ポリシーのすべての変更を表示し、レポートを作成することもできます。 
 
-ESP を使用する HDInsight クラスターでは、使い慣れた Apache Ranger UI を使用して監査ログを検索します。 バックエンドでは、Ranger はログの保存と検索に [Apache Solr](https://hortonworks.com/apache/solr/) を使用します。
+ESP を使用する HDInsight クラスターでは、使い慣れた Apache Ranger UI を使用して監査ログを検索します。 バックエンドでは、Ranger はログの保存と検索に [Apache Solr](https://lucene.apache.org/solr/) を使用します。
 
 ## <a name="encryption"></a>暗号化
 データの保護は、組織のセキュリティとコンプライアンス要件を満たすために重要です。 許可されていない従業員からデータへのアクセスを制限すると共に、暗号化する必要があります。 
@@ -62,6 +61,3 @@ HDInsight クラスターのデータ ストア (Azure BLOB ストレージお�
 * [ESP を使用する HDInsight クラスターを計画する](apache-domain-joined-architecture.md)
 * [ESP を使用する HDInsight クラスターを構成する](apache-domain-joined-configure.md)
 * [ESP を使用する HDInsight クラスターを管理する](apache-domain-joined-manage.md)
-* [ESP を使用する HDInsight クラスターのために Apache Hive ポリシーを構成する](apache-domain-joined-run-hive.md)
-* [HDInsight で SSH を使用する](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined)
-

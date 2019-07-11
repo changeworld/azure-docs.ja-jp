@@ -16,12 +16,12 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6112facfc0c10d7a0a0495cd778fa6c3cb6130a7
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: d8f8c8e98a7a99fc1b94bd5ae84062843ebabbc1
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65962139"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67550584"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-from-an-android-app"></a>Android アプリケーションからユーザーにサインインし、Microsoft Graph を呼び出す
 
@@ -64,10 +64,10 @@ ms.locfileid: "65962139"
 
 ### <a name="create-a-new-project"></a>新しいプロジェクトを作成する
 
-1. Android Studio を開き、**[Start a new Android Studio project]\(新しい Android Studio プロジェクトを開始する\)** を選択します。
-    - Android Studio を既に開いている場合は、**[File]\(ファイル\)** > **[New]\(新規\)** > **[New Project]\(新しいプロジェクト\)** を選択します。
-2. **[Empty Activity]\(空のアクティビティ\)** をそのままにして、**[Next]\(次へ\)** を選択します。
-3. アプリケーションに名前を付け、`Minimum API level` を **API 19 以降**に設定して、**[Finish]\(完了\)** をクリックします。
+1. Android Studio を開き、 **[Start a new Android Studio project]\(新しい Android Studio プロジェクトを開始する\)** を選択します。
+    - Android Studio を既に開いている場合は、 **[File]\(ファイル\)**  >  **[New]\(新規\)**  >  **[New Project]\(新しいプロジェクト\)** を選択します。
+2. **[Empty Activity]\(空のアクティビティ\)** をそのままにして、 **[Next]\(次へ\)** を選択します。
+3. アプリケーションに名前を付け、`Minimum API level` を **API 19 以降**に設定して、 **[Finish]\(完了\)** をクリックします。
 5. `app/build.gradle` で、`targetedSdkVersion` を 27 に設定します。 
 
 ## <a name="register-your-application"></a>アプリケーションの登録
@@ -87,10 +87,10 @@ ms.locfileid: "65962139"
 
 ### <a name="configure-your-android-app"></a>お使いの Android アプリを構成する
 
-1. **[res]** を右クリックし、 > **[New]\(新規\)** > **[Folder]\(フォルダー\)** > **[Raw Resources Folder]\(生のリソース フォルダー\)** を選択します。
-2. **[app]\(アプリ\)** > **[res]** > **[raw]\(生\)** で、`auth_config.json` という新しい JSON ファイルを作成して、お使いの ***MSAL の構成***を貼り付けます。 詳細については、[MSAL の構成](https://github.com/AzureAD/microsoft-authentication-library-for-android/wiki/Configuring-your-app)に関するページを参照してください。
+1. **[res]** を右クリックし、 >  **[New]\(新規\)**  >  **[Folder]\(フォルダー\)**  >  **[Raw Resources Folder]\(生のリソース フォルダー\)** を選択します。
+2. **[app]\(アプリ\)**  >  **[res]**  >  **[raw]\(生\)** で、`auth_config.json` という新しい JSON ファイルを作成して、お使いの ***MSAL の構成***を貼り付けます。 詳細については、[MSAL の構成](https://github.com/AzureAD/microsoft-authentication-library-for-android/wiki/Configuring-your-app)に関するページを参照してください。
    <!-- Workaround for Docs conversion bug -->
-3. **[app]\(アプリ\)** > **[manifests]\(マニフェスト\)** > **[AndroidManifest.xml]** で、以下の `BrowserTabActivity` アクティビティを追加します。 このエントリにより、Microsoft は認証の完了後にアプリケーションにコールバックできます。
+3. **[app]\(アプリ\)**  >  **[manifests]\(マニフェスト\)**  >  **[AndroidManifest.xml]** で、以下の `BrowserTabActivity` アクティビティを追加します。 このエントリにより、Microsoft は認証の完了後にアプリケーションにコールバックできます。
 
     ```xml
     <!--Intent filter to capture System Browser or Authenticator calling back to our app after sign-in-->
@@ -120,7 +120,7 @@ ms.locfileid: "65962139"
 
 ### <a name="create-the-apps-ui"></a>アプリケーションの UI を作成する
 
-1. **[res]** > **[layout]** に移動し、**activity_main.xml** を開きます。
+1. **[res]**  >  **[layout]** に移動し、**activity_main.xml** を開きます。
 2. アクティビティのレイアウトを `android.support.constraint.ConstraintLayout` などから `LinearLayout` に変更します。
 3. `android:orientation="vertical"` プロパティを `LinearLayout` ノードに追加します。
 4. `LinearLayout` ノードに次のコードを貼り付け、現在の内容を置き換えます。
@@ -178,7 +178,7 @@ ms.locfileid: "65962139"
 
 ### <a name="add-msal-to-your-project"></a>プロジェクトに MSAL を追加する
 
-1. Android Studio で、**[Gradle Scripts]\(Gradle スクリプト\)** > **build.gradle (Module: app)** を選択します。
+1. Android Studio で、 **[Gradle Scripts]\(Gradle スクリプト\)**  > **build.gradle (Module: app)** を選択します。
 2. **[Dependencies]\(依存関係\)** で、次のコードを貼り付けます。
 
     ```gradle  
@@ -465,7 +465,7 @@ private void onSignOutClicked() {
 
 | ヘッダー キー    | value                 |
 | ------------- | --------------------- |
-| Authorization | Bearer <access-token> |
+| Authorization | Bearer \<access-token> |
 
 コードでこれを行うには、次の 2 つのメソッドをお使いのアプリに追加し、グラフを呼び出して UI を更新します。 
 

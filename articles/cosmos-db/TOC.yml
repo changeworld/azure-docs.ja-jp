@@ -797,6 +797,8 @@
       href: 'https://azure.microsoft.com/try/cosmosdb/'
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/cosmos-db/'
+    - name: マルチマスターの利点
+      href: multi-master-benefits.md
     - name: ユース ケース
       items:
         - name: 一般的なユース ケース

@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 01/03/2018
+ms.date: 07/10/2018
 ms.author: juliako
-ms.openlocfilehash: fd5bf9f7bca9c667191d0d3f83be6e29a96c8dbe
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e72085d3ac9815b3ec5fd89c678860bd75761f73
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64926525"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798100"
 ---
 # <a name="azure-media-player-overview"></a>Azure Media Player の概要
 
@@ -30,7 +30,7 @@ Microsoft Azure Media Services では、HLS、DASH、スムーズ ストリー�
 
 ### <a name="start-using"></a>使用を開始する
 
-[Azure Media Player のデモ ページ](https://aka.ms/amp)を使用して、Azure Media Services のサンプルや独自のストリームを再生することができます。  
+[Azure Media Player のデモ ページ](https://ampdemo.azureedge.net/azuremediaplayer.html)を使用して、Azure Media Services のサンプルや独自のストリームを再生することができます。  
 
 新しいビデオを再生するには、別の URL を貼り付けて **[Update]\(更新する)** を押します。
 
@@ -40,7 +40,7 @@ Microsoft Azure Media Services では、HLS、DASH、スムーズ ストリー�
 
 ### <a name="monitor-diagnostics-of-a-video-stream"></a>ビデオ ストリームの診断を監視する
 
-[Azure Media Player のデモ ページ](https://aka.ms/amp)を使用して、ビデオ ストリームの診断を監視します。 
+[Azure Media Player のデモ ページ](https://ampdemo.azureedge.net/azuremediaplayer.html)を使用して、ビデオ ストリームの診断を監視します。 
 
 ![Azure Media Player の診断](./media/azure-media-player/diagnostics.png)
 

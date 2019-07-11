@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: d1c10e056de1bc61b5365550bf2543d2cdf61229
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 002e2e06201688638df98e16c45282187f593a3a
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59783904"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444279"
 ---
 # <a name="opc-twin-architecture"></a>OPC Twin のアーキテクチャ
 
@@ -35,6 +35,6 @@ ms.locfileid: "59783904"
 
    ![OPC Twin のしくみ](media/overview-opc-twin-architecture/opc-twin3.png)
 
-1. ツイン サービス REST インターフェイスを使用して、OPC Publisher で監視対象の項目とサブスクリプションを作成することもできます。 OPC Publisher では、OPC UA サーバー システムから IoT Hub にテレメトリを送信できます。 OPC Publisher の詳細については、GitHub の [OPC Publisher](https://github.com/Azure/iot-edge-opc-publisher) のリポジトリを参照してください。
+1. ツイン サービス REST インターフェイスを使用して、OPC Publisher で監視対象の項目とサブスクリプションを作成することもできます。 OPC Publisher では、OPC UA サーバー システムから IoT Hub にテレメトリを送信できます。 OPC Publisher の詳細については、「[What is OPC Publisher (OPC Publisher の概要)](overview-opc-publisher.md)」を参照してください。
 
    ![OPC Twin のしくみ](media/overview-opc-twin-architecture/opc-twin4.png)
