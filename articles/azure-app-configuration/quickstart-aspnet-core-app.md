@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ASP.NET Core
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 19e0814f6e4da364a70c41e1d99fb6f1897bf0c9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1b2a076427d8e4e845096c40cdbdf56b62a1723e
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67052081"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67795720"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>クイック スタート:Azure App Configuration を使用して ASP.NET Core アプリを作成する
 
@@ -86,9 +86,9 @@ ASP.NET Core では、アプリケーションによって指定される 1 つ�
 
 ## <a name="connect-to-an-app-configuration-store"></a>アプリ構成ストアに接続する
 
-1. 次のコマンドを実行して、`Microsoft.Extensions.Configuration.AzureAppConfiguration` NuGet パッケージへの参照を追加します。
+1. 次のコマンドを実行して、`Microsoft.Azure.AppConfiguration.AspNetCore` NuGet パッケージへの参照を追加します。
 
-        dotnet add package Microsoft.Extensions.Configuration.AzureAppConfiguration --version 1.0.0-preview-008520001
+        dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 2.0.0-preview-009200001-7
 
 2. 次のコマンドを実行して、プロジェクトのパッケージを復元します。
 

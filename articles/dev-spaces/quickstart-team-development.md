@@ -9,13 +9,13 @@ ms.date: 04/25/2019
 ms.topic: quickstart
 description: Azure のコンテナーとマイクロサービスを使用したチーム Kubernetes 開発
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
-manager: jeconnoc
-ms.openlocfilehash: 8160e72657be83af6f9af5226b7cd77c692dcd82
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+manager: gwallace
+ms.openlocfilehash: cb1cc62125e668544eb4af9f84b477b273bfe30e
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67061845"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706254"
 ---
 # <a name="quickstart-team-development-on-kubernetes-using-azure-dev-spaces"></a>クイック スタート:Azure Dev Spaces を使用した Kubernetes 上でのチーム開発
 
@@ -35,7 +35,7 @@ ms.locfileid: "67061845"
 
 ## <a name="create-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service クラスターを作成する
 
-AKS クラスターは、[サポートされているリージョン][supported-regions]に作成する必要があります。 下記のコマンドを使用すると、*MyResourceGroup* というリソース グループと *MyAKS* という AKS クラスターが作成されます。
+[サポートされているリージョン][supported-regions]で AKS クラスターを作成する必要があります。 下記のコマンドを使用すると、*MyResourceGroup* というリソース グループと *MyAKS* という AKS クラスターが作成されます。
 
 ```cmd
 az group create --name MyResourceGroup --location eastus
