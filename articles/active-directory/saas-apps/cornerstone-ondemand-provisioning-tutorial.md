@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2019
-ms.author: v-ant
+ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 85ddcf3aff7d15c946230cedb0da190bca6aeab7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8170fc094f1515783fa51a0d579bc12094aab836
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64721944"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672936"
 ---
 # <a name="tutorial-configure-cornerstone-ondemand-for-automatic-user-provisioning"></a>チュートリアル:Cornerstone OnDemand を構成し、自動ユーザー プロビジョニングに対応させる
 

@@ -5,7 +5,7 @@ keywords: リモート デスクトップ エラー,リモート デスクトッ
 services: virtual-machines-windows
 documentationcenter: ''
 author: genlin
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: top-support-issue,azure-service-management,azure-resource-manager
 ms.assetid: 5feb1d64-ee6f-4907-949a-a7cffcbc6153
@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: f4d733e29d2ba8213e1832f2c604b726283ab3e1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ea8a2fa3a37815f3a7a48078e408e6607dc37eb4
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60318699"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709277"
 ---
 # <a name="troubleshooting-specific-rdp-error-messages-to-a-windows-vm-in-azure"></a>Azure の Windows VM に対する特定の RDP エラー メッセージのトラブルシューティング
 Azure の Windows 仮想マシン (VM) に対してリモート デスクトップ接続を使用すると、特定のエラー メッセージが表示される場合があります。 この記事では、よく発生するエラー メッセージのいくつかと、それを解決するためのトラブルシューティング手順について詳しく説明します。 RDP を使用した VM への接続で問題が発生していても、特定のエラー メッセージが表示されない場合は、[リモート デスクトップのトラブルシューティング ガイド](troubleshoot-rdp-connection.md)を参照してください。

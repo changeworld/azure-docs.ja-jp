@@ -4,7 +4,7 @@ description: Windows ソフトウェア アシュアランスの特典を最大�
 services: virtual-machines-windows
 documentationcenter: ''
 author: xujing
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: 332583b6-15a3-4efb-80c3-9082587828b0
 ms.service: virtual-machines-windows
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 4/22/2018
 ms.author: xujing-ms
-ms.openlocfilehash: 64eb89612765f9a47d0eaac2b9cbceb6341c4155
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 739c867171d7b59a68f7e4d11bbf50a189568ce7
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64681282"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67722766"
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>Windows Server 向け Azure Hybrid Benefit
 ソフトウェア アシュアランスを取得したお客様は、Windows Server 向け Azure Hybrid Benefit により、オンプレミスの Windows Server ライセンスを使用し、Azure で Windows 仮想マシンを低コストで実行することができます。 Windows Server 向け Azure ハイブリッド特典を使用して、Windows OS 搭載の新しい仮想マシンをデプロイすることができます。 この記事では、Windows Server 向け Azure ハイブリッド特典での新しい VM のデプロイ方法と、既存の稼働中 VM を更新する方法について説明します。 Windows Server 向け Azure Hybrid Benefit のライセンスとコスト削減について詳しくは、[Windows Server 向け Azure Hybrid Benefit のライセンス ページ](https://azure.microsoft.com/pricing/hybrid-use-benefit/)をご覧ください。

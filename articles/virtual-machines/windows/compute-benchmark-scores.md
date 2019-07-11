@@ -4,7 +4,7 @@ description: Windows Server を実行する Azure VM の SPECint コンピュー
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: 69ae72ec-e8be-4e46-a8f0-e744aebb5cc2
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/09/2018
 ms.author: cynthn;davberg
-ms.openlocfilehash: 041906120ea156a00d272e2d3da15dc5174b6585
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e24266a46d192addebfe63f1caab3ac66eca2beb
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64866297"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67719080"
 ---
 # <a name="compute-benchmark-scores-for-windows-vms"></a>Windows VM のコンピューティング ベンチマーク スコア
 次の SPECInt ベンチマーク スコアは、Windows Server を実行している Azure VM の計算性能を示します。 コンピューティング ベンチマーク スコアは [Linux VM](../linux/compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)にも利用できます。

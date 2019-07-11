@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 25cf9c3b7968be16dcc22f4140725efc22d785f2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f43bf3e9158b7d02f6b0f6147559962da855bfbb
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66156532"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67701748"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Azure Data Factory - JSON スクリプトのリファレンス
 > [!NOTE]
@@ -247,7 +247,7 @@ typeProperties セクションは、アクティビティごとに異なりま�
 
 | プロパティ | 説明 | 必須 |
 | -------- | ----------- | -------- |
-| name | リンクされたサービスの名前。 | はい |
+| 名前 | リンクされたサービスの名前。 | はい |
 | properties - type | リンクされたサービスの種類 例: Azure Storage、Azure SQL Database。 |
 | typeProperties | typeProperties セクション内の要素は、データ ストアまたはコンピューティング環境ごとに異なります。 データ ストアのリンクされたすべてのサービスについては「データ ストア」セクション、コンピューティングのリンクされたすべてのサービスについては、「[コンピューティング環境](#compute-environments)」を参照してください。 |
 
@@ -286,7 +286,7 @@ Azure Data Factory のデータセットは次のように定義されます。
 
 | プロパティ | 説明 | 必須 | 既定値 |
 | --- | --- | --- | --- |
-| name | データセットの名前。 名前付け規則については、「 [Azure Data Factory - 名前付け規則](data-factory-naming-rules.md) 」を参照してください。 |はい |NA |
+| 名前 | データセットの名前。 名前付け規則については、「 [Azure Data Factory - 名前付け規則](data-factory-naming-rules.md) 」を参照してください。 |はい |NA |
 | type | データセットの型。 Azure Data Factory でサポートされている型のいずれかを指定します (たとえば、AzureBlob、AzureSqlTable)。 Data Factory でサポートされるデータ ストアとデータセットの種類の全一覧については、「[データ ストア](#data-stores)」セクションを参照してください。 |
 | structure | データセットのスキーマ。 列やその型が含まれます。 | いいえ |NA |
 | typeProperties | 選択された型に対応するプロパティ。 サポートされている型とそのプロパティについては、「[データ ストア](#data-stores)」セクションを参照してください。 |はい |NA |
@@ -298,7 +298,7 @@ Azure Data Factory のデータセットは次のように定義されます。
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| name |列の名前です。 |はい |
+| 名前 |列の名前です。 |はい |
 | type |列のデータ型です。  |いいえ |
 | culture |型を指定するときに使用される .NET ベースのカルチャ。 .NET 型の `Datetime` または `Datetimeoffset` です。 既定値は `en-us` です。 |いいえ |
 | format |型を指定するときに使用される書式指定文字列。 .NET 型の `Datetime` または `Datetimeoffset` です。 |いいえ |
@@ -1826,7 +1826,7 @@ MySQL のリンクされたサービスを定義するには、リンクされ�
 | database |MySQL データベースの名前です。 |はい |
 | schema |データベース内のスキーマの名前です。 |いいえ |
 | authenticationType |MySQL データベースへの接続に使用される認証の種類です。 次のいずれかの値になります。`Basic` |はい |
-| username |MySQL データベースに接続するユーザー名を指定します。 |はい |
+| userName |MySQL データベースに接続するユーザー名を指定します。 |はい |
 | password |指定したユーザー アカウントのパスワードを指定します。 |はい |
 | gatewayName |Data Factory サービスが、オンプレミスの MySQL データベースへの接続に使用するゲートウェイの名前です。 |はい |
 

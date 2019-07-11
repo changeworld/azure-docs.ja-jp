@@ -4,7 +4,7 @@ description: Azure Policy を使用して拡張機能の展開を制限できま
 services: virtual-machines-linux
 documentationcenter: ''
 author: roiyz-msft
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/23/2018
 ms.author: roiyz;cynthn
-ms.openlocfilehash: dfaeff5e8f90e72645293d15c454f78f17b08fb0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e0fcc53df27e46c56066fb0eedc87a3970a7c409
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64717675"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706025"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-windows-vms"></a>Azure Policy を使用して Windows VM への拡張機能のインストールを制限する
 

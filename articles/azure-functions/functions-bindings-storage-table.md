@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
-ms.openlocfilehash: 002ea00364056f0780146b79936a6bc04e289973
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: b815ce95da24b20ff18ea03d637ad85bfe72cb00
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67480075"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67654260"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Azure Functions における Azure Table Storage のバインド
 
@@ -537,7 +537,7 @@ Table Storage の入力バインドは、次のシナリオをサポートして
 Azure Table Storage の出力バインドを使用して、Azure Storage アカウントのテーブルにエンティティを書き込みます。
 
 > [!NOTE]
-> この出力バインドでは、既存のエンティティの更新はサポートされていません。 既存のエンティティを更新するには、[Azure Storage SDK](https://docs.microsoft.com/azure/cosmos-db/table-storage-how-to-use-dotnet#replace-an-entity) の `TableOperation.Replace` 操作を使ってください。   
+> この出力バインドでは、既存のエンティティの更新はサポートされていません。 既存のエンティティを更新するには、[Azure Storage SDK](https://docs.microsoft.com/azure/cosmos-db/tutorial-develop-table-dotnet#delete-an-entity) の `TableOperation.Replace` 操作を使ってください。   
 
 ## <a name="output---example"></a>出力 - 例
 

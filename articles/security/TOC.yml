@@ -142,6 +142,9 @@
         - name: セキュリティ チェックリスト
           displayName: 'identity, active directory, password'
           href: azure-ad-secure-steps.md
+        - name: パスワードなしの選択
+          displayName: 'identity, active directory, passwordless'
+          href: azure-ad-passwordless.md
         - name: ベスト プラクティス
           displayName: 'password, identity, active directory'
           href: azure-security-identity-management-best-practices.md

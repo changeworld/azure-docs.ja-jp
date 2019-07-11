@@ -3,17 +3,17 @@ title: Azure 仮想マシンのバックアップ エラーのトラブルシュ
 description: Azure 仮想マシンのバックアップと復元のトラブルシューティング
 services: backup
 author: srinathvasireddy
-manager: vijayts
+manager: sivan
 ms.service: backup
 ms.topic: conceptual
-ms.date: 05/22/2019
-ms.author: srinathvasireddy
-ms.openlocfilehash: 23137cd686bcdba59880ff705a43b16ced992b59
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 07/05/2019
+ms.author: srinathv
+ms.openlocfilehash: d7b99e7076e52db004bba7155922f4b144f2ad0a
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66303989"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67704898"
 ---
 # <a name="troubleshoot-azure-virtual-machine-backup"></a>Azure 仮想マシンのバックアップのトラブルシューティング
 次の情報を使って、Azure Backup の使用中に発生したエラーのトラブルシューティングを行うことができます。

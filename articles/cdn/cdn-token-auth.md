@@ -7,19 +7,19 @@ author: zhangmanling
 manager: zhangmanling
 editor: ''
 ms.assetid: 837018e3-03e6-4f9c-a23e-4b63d5707a64
-ms.service: cdn
+ms.service: azure-cdn
 ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 11/17/2017
 ms.author: mezha
-ms.openlocfilehash: b55685bc9cfdc8c31e6658050be94cbe49062f89
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fa71f472294b91baebc2a6075ddb2b50123e545d
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66472157"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593391"
 ---
 # <a name="securing-azure-cdn-assets-with-token-authentication"></a>トークン認証による Azure CDN 資産の保護
 

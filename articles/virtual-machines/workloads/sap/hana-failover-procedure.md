@@ -4,7 +4,7 @@ description: SAP HANA on Azure (L インスタンス) 用ディザスター リ�
 services: virtual-machines-linux
 documentationcenter: ''
 author: saghorpa
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 04/22/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f7d4f6216b4a57796ab5c0296713316dd97c47a8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6454c82e3d9c73d1b5a4b2224abf1ab63a798355
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64987889"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709646"
 ---
 # <a name="disaster-recovery-failover-procedure"></a>ディザスター リカバリーのフェールオーバー手順
 

@@ -4,7 +4,7 @@ description: カスタム スクリプト拡張機能 v2 を使用して Linux V
 services: virtual-machines-linux
 documentationcenter: ''
 author: roiyz-msft
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: cf17ab2b-8d7e-4078-b6df-955c6d5071c2
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: roiyz
-ms.openlocfilehash: b9bc3ef0cf5dd54802d32058afb904800c364c19
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c94c0bdb4979d932049e4b1c1e16fbd9e8096ca3
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64725234"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706054"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>Linux 仮想マシンで Azure カスタム スクリプト拡張機能 v2 を使用する
 カスタム スクリプト拡張機能バージョン 2 は、スクリプトをダウンロードし、Azure 仮想マシン上で実行します。 この拡張機能は、展開後の構成、ソフトウェアのインストール、その他の構成タスクや管理タスクに役立ちます。 スクリプトは、Azure Storage や他のアクセス可能なインターネットの場所からダウンロードできます。または、実行時に拡張機能に提供することもできます。 

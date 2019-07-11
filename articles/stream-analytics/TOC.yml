@@ -119,6 +119,9 @@
         - name: Kafka イベントを処理する
           href: ../event-hubs/event-hubs-kafka-stream-analytics.md
           maintainContext: true
+        - name: Event Hubs データの処理
+          href: ../event-hubs/process-data-azure-stream-analytics.md
+          maintainContext: true
         - name: 地理空間のシナリオ
           href: geospatial-scenarios.md
     - name: 監視
