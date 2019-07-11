@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 06/16/2019
 ms.author: diberry
-ms.openlocfilehash: 5459fb5d8304a35b3f009354c446514a2831c513
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: cfed5477df75350f24e77786117e85b9c728c49a
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67155279"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657753"
 ---
 # <a name="add-luis-results-to-application-insights-from-a-bot-in-nodejs"></a>Node.js でボットから Application Insights に LUIS の結果を追加する
 このチュートリアルでは、ボットおよび Language Understanding の情報を [Application Insights](https://azure.microsoft.com/services/application-insights/) テレメトリ データ ストレージに追加します。 そのデータを用意したら、Kusto 言語または Power BI でそれのクエリを実行し、意図および発話のエンティティについてリアルタイムで分析、集計、およびレポートすることができます。 この分析は、LUIS アプリの意図およびエンティティを追加または編集する必要があるかどうかの判断に役立ちます。
@@ -205,7 +205,7 @@ Application Insights を開いて、LUIS エントリを表示します。 Appli
     ![Application Insights に格納されている LUIS のカスタム プロパティを確認する](./media/luis-tutorial-appinsights/application-insights-luis-trace-custom-properties-nodejs.png)
 
 ## <a name="query-application-insights-for-intent-score-and-utterance"></a>Application Insights で意図、スコア、および発話のクエリを実行する
-Application Insights を使用すると、[Kusto](https://docs.microsoft.com/azure/application-insights/app-insights-analytics#query-data-in-analytics) 言語を使用してデータのクエリを実行したり、[Power BI](https://powerbi.microsoft.com) にデータをエクスポートしたりできます。 
+Application Insights を使用すると、[Kusto](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview#what-language-do-log-queries-use) 言語を使用してデータのクエリを実行したり、[Power BI](https://powerbi.microsoft.com) にデータをエクスポートしたりできます。 
 
 1. **[Log (Analytics)]** を選択します。 新しいウィンドウが開きます。このウィンドウは、上部にクエリ ウィンドウがあり、その下にデータ テーブル ウィンドウがあります。 データベースを使用したことがある方は、よくご存じの配置でしょう。 このクエリは、以前のフィルター選択されたデータを表します。 ボットと LUIS の情報は、**CustomDimensions** 列にあります。
 1. 最上位の意図、スコア、および発話を引き出すには、クエリ ウィンドウで、最後の行 (`|top...` 行) のすぐ上に次を追加します。

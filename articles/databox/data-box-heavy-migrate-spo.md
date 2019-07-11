@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: tutorial
-ms.date: 06/05/2019
+ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 1c432ee5851115e029b55722b6b238b4672e8345
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: d74539ec1de8f503b0d0e423adf6273d1422fed5
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446708"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67592333"
 ---
 # <a name="use-the-azure-data-box-heavy-to-migrate-your-file-share-content-to-sharepoint-online"></a>Azure Data Box Heavy を使用してファイル共有のコンテンツを SharePoint Online に移行する
 
@@ -23,7 +23,7 @@ Microsoft Azure Data Box は、Microsoft Azure portal からデバイスを注�
 
 - [Data Box Disk](https://docs.microsoft.com/azure/databox/data-box-disk-overview) は小規模から中規模のデータセット向けで、注文 1 件につき 35 TB の容量を使用できます。
 - [Data Box](https://docs.microsoft.com/azure/databox/data-box-overview) は中規模から大規模のデータセット向けで、デバイス 1 台につき 80 TB の容量を使用できます。
-- [Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-overview) は大規模のデータセット向けで、デバイス 1 台につき 770 TB の容量を使用できます。 Data Box Heavy は現在、プレビュー段階です。
+- [Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-overview) は大規模のデータセット向けで、デバイス 1 台につき 770 TB の容量を使用できます。
 
 この記事では、特に Data Box Heavy を使用してファイル共有のコンテンツを SharePoint Online に移行する方法について説明します。
 

@@ -6,13 +6,13 @@ ms.author: tarcher
 ms.service: jenkins
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 06/18/19
-ms.openlocfilehash: 49d4e56dabf046675970c65f2be71cea5094e9ef
-ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
+ms.date: 06/18/2019
+ms.openlocfilehash: f5f74ebeb803a5c493f1dbedb6501adf3a88c215
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67550871"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67785667"
 ---
 <!-- GMinchAQ, 06/18/19 -->
 
@@ -63,7 +63,7 @@ Azure Dev Spaces では、Azure Kubernetes Service (AKS) で実行されるマ�
     az group create --name MyResourceGroup --location westus2
     ```
 
-2. AKS クラスターを作成します。 [Dev Spaces がサポートされるリージョン](https://docs.microsoft.com/azure/dev-spaces/#a-rapid,-iterative-kubernetes-development-experience-for-teams)で AKS クラスターを作成します。
+2. AKS クラスターを作成します。 [Dev Spaces がサポートされるリージョン](../dev-spaces/about.md#supported-regions-and-configurations)で AKS クラスターを作成します。
 
     ```bash
     az aks create --resource-group MyResourceGroup --name MyAKS --location westus2 --kubernetes-version 1.11.9 --enable-addons http_application_routing --generate-ssh-keys --node-count 1 --node-vm-size Standard_D1_v2

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 2/20/2019
+ms.date: 07/05/2019
 ms.author: wolfma
-ms.openlocfilehash: dd8e760e658715b89bf45718ac571ccaeb5ade96
-ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
+ms.openlocfilehash: b55c6535184a905790f575b98c1b5a60a83f5daf
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67465569"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606382"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-unity-beta"></a>クイック スタート:Unity 用 Speech SDK (ベータ版) を使用して音声を認識する
 
@@ -37,7 +37,7 @@ Unity に慣れていない場合は、アプリケーションの開発を始�
 
 * [Unity 2018.3 以降](https://store.unity.com/)および [UWP ARM64 のサポートを追加する Unity 2019.1](https://blogs.unity3d.com/2019/04/16/introducing-unity-2019-1/#universal)
 * [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
-     * ARM64 をサポートするために、[ARM64 用のオプションのビルド ツール、および ARM64 用の Windows10 SDK](https://blogs.windows.com/buildingapps/2018/11/15/official-support-for-windows-10-on-arm-development/) をインストールします 
+     * ARM64 をサポートするために、[ARM64 用のオプションのビルド ツール、および ARM64 用の Windows10 SDK](https://blogs.windows.com/buildingapps/2018/11/15/official-support-for-windows-10-on-arm-development/) をインストールします
 * 音声サービス用のサブスクリプション キー。 [無料で 1 つ取得します](get-started.md)。
 * お使いのコンピューターに備わっているマイクへのアクセス。
 

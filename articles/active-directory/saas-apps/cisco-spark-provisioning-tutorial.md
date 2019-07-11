@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
-ms.author: v-wingf
+ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8cb695fafe042c93f1b11d99296b0545e1674d9a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7263968725a1892a5184a5f97ee760a1667feeab
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67053679"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672670"
 ---
 # <a name="tutorial-configure-cisco-spark-for-automatic-user-provisioning"></a>チュートリアル:自動的にユーザーをプロビジョニングするように Cisco Spark を構成する
 

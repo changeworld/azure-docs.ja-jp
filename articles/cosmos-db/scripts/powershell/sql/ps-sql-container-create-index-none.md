@@ -1,19 +1,19 @@
 ---
-title: Azure PowerShell スクリプト - Azure Cosmos アカウントのアカウント キーと接続文字列の操作
-description: Azure PowerShell スクリプト サンプル - Azure Cosmos アカウントのアカウント キーと接続文字列の操作
+title: Azure PowerShell スクリプト - Azure Cosmos アカウントにインデックスがオフになっているコンテナーを作成する
+description: Azure PowerShell サンプル スクリプト - Azure Cosmos アカウントにインデックスがオフになっているコンテナーを作成する
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 05/20/2019
+ms.date: 05/06/2019
 ms.author: mjbrown
-ms.openlocfilehash: 55f28ef6c6ff82f0b82b10ac1dd7931ac46aa2fc
+ms.openlocfilehash: 7cec954bc85873d300a4abb96396025600e17201
 ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 07/05/2019
-ms.locfileid: "67602505"
+ms.locfileid: "67603859"
 ---
-# <a name="connection-string-and-account-key-operations-for-an-azure-cosmos-account-using-powershell"></a>PowerShell を使用する、Azure Cosmos アカウントの接続文字列とアカウント キーの操作
+# <a name="create-a-container-indexing-turned-off-in-an-azure-cosmos-account-using-powershell"></a>PowerShell を使用して Azure Cosmos アカウントにインデックスがオフになっているコンテナーを作成する
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -21,9 +21,7 @@ ms.locfileid: "67602505"
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
-このサンプルでは、リソース グループとアカウントが存在することが必須となります。 既存の PowerShell 作成サンプルを使用し、最初にアカウントをプロビジョニングしてください。
-
-[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/common/ps-account-keys-connection-strings.ps1 "Connection strings and account keys for Azure Cosmos account")]
+[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/sql/ps-container-create-index-none.ps1 "Create a container indexing turned off in an Azure Cosmos account")]
 
 ## <a name="clean-up-deployment"></a>デプロイのクリーンアップ
 
@@ -40,7 +38,7 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 | command | メモ |
 |---|---|
 |**Azure リソース**| |
-| [Invoke-AzResourceAction](https://docs.microsoft.com/powershell/module/az.resources/invoke-azresourceaction) | リソースに対するアクションを呼び出します。 |
+| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | リソースを作成します。 |
 |**Azure リソース グループ**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 |||
