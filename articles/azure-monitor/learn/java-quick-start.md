@@ -11,12 +11,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: dd1644ad9b7fcee951b31997ab549f117530f635
-ms.sourcegitcommit: f9448a4d87226362a02b14d88290ad6b1aea9d82
+ms.openlocfilehash: fc47b00bb266bb57ecffbb522667ca67ac7c8c97
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66808383"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67656738"
 ---
 # <a name="start-monitoring-your-java-web-application"></a>Java Web アプリケーションの監視を開始する
 
@@ -57,9 +57,8 @@ Application Insights は、オンプレミスとクラウドのどちらで実�
     | 設定        | 値           | 説明  |
    | ------------- |:-------------|:-----|
    | **Name**      | グローバルに一意の値 | 監視しているアプリを識別する名前 |
-   | **アプリケーションの種類** | Java Web アプリケーション | 監視しているアプリの種類 |
    | **リソース グループ**     | myResourceGroup      | App Insights データをホストする新しいリソース グループの名前 |
-   | **場所** | 米国東部 | 近くにある場所か、アプリがホストされている場所の近くを選択します。 |
+   | **Location** | East US | 近くにある場所か、アプリがホストされている場所の近くを選択します。 |
 
 2. **Create** をクリックしてください。
 

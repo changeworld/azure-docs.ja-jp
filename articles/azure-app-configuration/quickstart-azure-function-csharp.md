@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Azure Functions
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: c09cb0f93f05a9574543ebabb398148638092c73
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: a4900964fb6feeb4c7cb0f147d3681031cac6a7b
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65864788"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798422"
 ---
 # <a name="quickstart-create-an-azure-function-with-app-configuration"></a>クイック スタート:App Configuration で Azure Function を作成する
 
@@ -56,7 +56,7 @@ Azure App Configuration は、Azure 内にあるマネージド構成サービ�
 1. プロジェクトを右クリックし、 **[NuGet パッケージの管理]** を選択します。 **[参照]** タブで以下の NuGet パッケージを検索し、プロジェクトに追加します。 見つからない場合は、 **[プレリリースを含める]** チェック ボックスをオンにします。
 
     ```
-    Microsoft.Extensions.Configuration.AzureAppConfiguration 1.0.0 preview or later
+    Microsoft.Extensions.Configuration.AzureAppConfiguration 2.0.0-preview-009200001-1437 or later
     ```
 
 2. *Function1.cs* を開き、.NET Core App Configuration プロバイダーへの参照を追加します。

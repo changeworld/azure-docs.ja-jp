@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5e2eca253bc5d1495d26506e0e6f8a83762e8bc5
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 83f5b08e5fee17c0ea5577d4d56d4d3208a818e3
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66001102"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67625306"
 ---
 # <a name="quickstart-build-a-net-web-api-that-integrates-with-azure-ad-for-authentication-and-authorization"></a>クイック スタート:認証と認可のために Azure AD と連携する .NET Web API を構築する
 
@@ -79,7 +79,7 @@ ASP.NET Web アプリでは、こうした保護を、.NET Framework 4.5 に含�
 
 2. OWIN Startup クラスを TodoListService プロジェクト ( `Startup.cs`) に追加します。  プロジェクトを右クリックし、 **[追加]、[新しい項目]** の順に選択して、**OWIN** を検索します。 アプリが起動すると、OWIN ミドルウェアは `Configuration(…)` メソッドを呼び出します。
 
-3. クラスの宣言を `public partial class Startup` に変更します。 このクラスの部分は、別のファイルに実装済みです。 `Configuration(…)` メソッドで、Web アプリ用の認証を設定する `ConfgureAuth(…)` への呼び出しを作成します。
+3. クラスの宣言を `public partial class Startup` に変更します。 このクラスの部分は、別のファイルに実装済みです。 `Configuration(…)` メソッドで、Web アプリ用の認証を設定する `ConfigureAuth(…)` への呼び出しを作成します。
 
     ```csharp
     public partial class Startup

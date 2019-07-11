@@ -3,17 +3,17 @@ title: インクルード ファイル
 description: インクルード ファイル
 services: functions
 author: ggailey777
-ms.service: functions
+ms.service: azure-functions
 ms.topic: include
 ms.date: 11/02/2018
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 5c513a76537eb5b28e85e6289a610e318ab790d4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f1a8ecd0e53d28aed66546c41f95cc3855d1783a
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67050707"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67608260"
 ---
 1. **ソリューション エクスプローラー**で、プロジェクトを右クリックし、 **[発行]** を選択します。
 
