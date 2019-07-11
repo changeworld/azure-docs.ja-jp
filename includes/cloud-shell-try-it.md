@@ -4,16 +4,16 @@ ms.service: azure
 ms.topic: include
 ms.date: 05/31/2019
 ms.author: sttramer
-ms.openlocfilehash: 4a52041f773529c2a72c8019da27d56f98b6b53d
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: 977caddde316384815c8248dffe243d2a7817226
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147447"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341519"
 ---
 ## <a name="open-azure-cloud-shell"></a>Azure Cloud Shell を開く
 
-Azure Cloud Shell は、Azure でホストされる対話型のシェル環境で、ブラウザーを介して使用されます。 Azure Cloud Shell では、`bash` または `PowerShell` のいずれかのシェルを使用して、Azure サービスで動作するさまざまなツールを実行できます。 Azure Cloud Shell にはコマンドがプレインストールされており、ローカル環境に何もインストールしなくても、この記事の内容を実行できるようになっています。
+Azure でホストされる対話型のシェル環境である Azure Cloud Shell は、ブラウザーを介して使用されます。 Azure Cloud Shell では、`bash` または `PowerShell` のいずれかのシェルを使用して、Azure サービスで動作するさまざまなツールを実行できます。 Azure Cloud Shell にはコマンドがプレインストールされており、ローカル環境に何もインストールしなくても、この記事の内容を実行できるようになっています。
 
 この記事に含まれるコードを Azure Cloud Shell で実行するには、Cloud Shell セッションを開き、コード ブロック上の **[コピー]** ボタンを使ってコードをコピーし、__Ctrl + Shift + V__ キー (Windows と Linux) または __command + Shift + V__ キー (macOS) を押して Cloud Shell セッションに貼り付けます。 テキストを貼り付けても自動的には実行されません。コードを実行するには、**Enter** キーを押します。
 

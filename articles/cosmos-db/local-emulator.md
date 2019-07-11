@@ -5,13 +5,13 @@ ms.service: cosmos-db
 ms.topic: tutorial
 author: deborahc
 ms.author: dech
-ms.date: 05/20/2019
-ms.openlocfilehash: 9e7342ebcbcf536b26e6cf7fb89e3cf58666d24f
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.date: 06/21/2019
+ms.openlocfilehash: d7d9d62525161e6871cafd65cf5cd2c403cf0579
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65953963"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67331770"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>ローカルでの開発とテストに Azure Cosmos Emulator を使用する
 
@@ -284,9 +284,9 @@ Azure Cosmos Emulator で作成できるコンテナーの数の既定値は、�
 
 Azure Cosmos Emulator で利用可能なコンテナーの数を変更する手順は次のとおりです。
 
-1. システム トレイの **[Azure Cosmos DB Emulator]** アイコンを右クリックし、**[Reset Data]\(データのリセット\)** をクリックして、ローカルの Azure Cosmos Emulator データをすべて削除します。
+1. システム トレイの **[Azure Cosmos DB Emulator]** アイコンを右クリックし、 **[Reset Data]\(データのリセット\)** をクリックして、ローカルの Azure Cosmos Emulator データをすべて削除します。
 2. フォルダー `%LOCALAPPDATA%\CosmosDBEmulator` にあるエミュレーターのデータをすべて削除します。
-3. システム トレイの **[Azure Cosmos DB Emulator]** アイコンを右クリックし、**[終了]** をクリックし、開いているインスタンスをすべて終了します。 すべてのインスタンスが終了するまでしばらく時間がかかる場合があります。
+3. システム トレイの **[Azure Cosmos DB Emulator]** アイコンを右クリックし、 **[終了]** をクリックし、開いているインスタンスをすべて終了します。 すべてのインスタンスが終了するまでしばらく時間がかかる場合があります。
 4. 最新版の [Azure Cosmos Emulator](https://aka.ms/cosmosdb-emulator) をインストールします。
 5. PartitionCount フラグの値を 250 以下に設定して、エミュレーターを起動します。 (例: `C:\Program Files\Azure Cosmos DB Emulator> CosmosDB.Emulator.exe /PartitionCount=100`)。
 
@@ -352,7 +352,7 @@ PowerShell からエミュレーターを制御するためのコマンドの概
 
 Azure Cosmos Emulator は、Docker for Windows 上で実行できます。 エミュレーターは、Docker for Oracle Linux では機能しません。
 
-[Docker for Windows](https://www.docker.com/docker-windows) をインストールしたら、ツール バーの Docker アイコンを右クリックし、**[Switch to Windows containers]\(Windows コンテナーに切り替える\)** を選択して Windows コンテナーに切り替えます。
+[Docker for Windows](https://www.docker.com/docker-windows) をインストールしたら、ツール バーの Docker アイコンを右クリックし、 **[Switch to Windows containers]\(Windows コンテナーに切り替える\)** を選択して Windows コンテナーに切り替えます。
 
 次に、普段利用しているシェルから次のコマンドを実行し、Docker Hub からエミュレーター イメージをプルします。
 
@@ -413,6 +413,57 @@ cd $env:LOCALAPPDATA\CosmosDBEmulator\bind-mount
 
     https://<emulator endpoint provided in response>/_explorer/index.html
 
+## Mac または Linux 上での実行<a id="mac"></a>
+
+現在、Cosmos エミュレーターは Windows でのみ実行できます。 Mac または Linux を実行するユーザーは、Windows 仮想マシンによってホストされる、Parallels や VirtualBox などのハイパーバイザー内でエミュレーターを実行できます。 これを有効にする手順は、次のとおりです。
+
+Windows VM 内で以下のコマンドを実行して、IPv4 アドレスをメモします。
+
+```cmd
+ipconfig.exe
+```
+
+アプリケーション内で、`ipconfig.exe` によって返される IPv4 アドレスを使用するには、DocumentClient オブジェクトの URI を変更する必要があります。 次の手順では、DocumentClient オブジェクトを構築するときに、CA 検証を回避します。 このためには、HttpClientHandler を、ServerCertificateCustomValidationCallback のその独自の実装を持つ DocumentClient コンストラクターに指定する必要があります。
+
+下は必要なコードの例です。
+
+```csharp
+using System;
+using Microsoft.Azure.Documents;
+using Microsoft.Azure.Documents.Client;
+using System.Net.Http;
+
+namespace emulator
+{
+    class Program
+    {
+        static async void Main(string[] args)
+        {
+            string strEndpoint = "https://10.135.16.197:8081/";  //IPv4 address from ipconfig.exe
+            string strKey = "C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==";
+
+            //Work around the CA validation
+            var httpHandler = new HttpClientHandler()
+            {
+                ServerCertificateCustomValidationCallback = (req,cert,chain,errors) => true
+            };
+
+            //Pass http handler to document client
+            using (DocumentClient client = new DocumentClient(new Uri(strEndpoint), strKey, httpHandler))
+            {
+                Database database = await client.CreateDatabaseIfNotExistsAsync(new Database { Id = "myDatabase" });
+                Console.WriteLine($"Created Database: id - {database.Id} and selfLink - {database.SelfLink}");
+            }
+        }
+    }
+}
+```
+
+最後に、Windows VM 内から、次のオプションを使用してコマンド ラインから Cosmos エミュレーターを起動します。
+
+```cmd
+Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /Key=C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==
+```
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
@@ -432,7 +483,7 @@ cd $env:LOCALAPPDATA\CosmosDBEmulator\bind-mount
 
 - "**サービス利用不可**" というメッセージが表示された場合、エミュレーターがネットワーク スタックの初期化に失敗している可能性があります。 Pulse Secure クライアントまたは Juniper Networks クライアントのネットワーク フィルター ドライバーが問題の原因である可能性があるため、これらのクライアントがインストールされているかどうかを確認してください。 通常、サード パーティのネットワーク フィルター ドライバーをアンインストールすると、問題が解決されます。 このほか、/DisableRIO オプションを指定してエミュレーターを起動する方法もあります。このオプションを使うと、エミュレーターのネットワーク通信が通常の Winsock に切り替わります。 
 
-- エミュレーターの実行中に、ご利用のコンピューターがスリープ モードになった場合や、そのコンピューターで OS を更新した場合、"**サービスは現在使用できません**" というメッセージが表示される可能性があります。 Windows 通知トレイに表示されているアイコンを右クリックし、**[Reset Data]\(データのリセット\)** を選択して、エミュレーターのデータをリセットします。
+- エミュレーターの実行中に、ご利用のコンピューターがスリープ モードになった場合や、そのコンピューターで OS を更新した場合、"**サービスは現在使用できません**" というメッセージが表示される可能性があります。 Windows 通知トレイに表示されているアイコンを右クリックし、 **[Reset Data]\(データのリセット\)** を選択して、エミュレーターのデータをリセットします。
 
 ### <a id="trace-files"></a>トレース ファイルの収集
 
@@ -451,7 +502,7 @@ cd $env:LOCALAPPDATA\CosmosDBEmulator\bind-mount
 
 1. システム トレイの Azure Cosmos Emulator アイコンを右クリックし、[終了] をクリックして、開いているローカル エミュレーターのインスタンスをすべて終了します。 すべてのインスタンスが終了するまでしばらく時間がかかる場合があります。
 2. Windows 検索ボックスに「**アプリと機能**」と入力し、**アプリと機能 (システム設定)** の検索結果をクリックします。
-3. アプリの一覧で、**Azure Cosmos DB Emulator** までスクロールして選択し、**[アンインストール]** をクリックし、確認して再度、**[アンインストール]** をクリックします。
+3. アプリの一覧で、**Azure Cosmos DB Emulator** までスクロールして選択し、 **[アンインストール]** をクリックし、確認して再度、 **[アンインストール]** をクリックします。
 4. アプリがアンインストールされたら、`%LOCALAPPDATA%\CosmosDBEmulator` に移動して、フォルダーを削除します。
 
 ## <a name="next-steps"></a>次の手順

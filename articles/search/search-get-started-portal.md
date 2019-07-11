@@ -1,6 +1,6 @@
 ---
-title: クイック スタート:Azure portal でのインデックスの作成、読み込み、およびクエリの実行 - Azure Search
-description: Azure portal のデータ インポート ウィザードと組み込みのサンプル データを使用して、初めてのインデックスを Azure Search に作成し、クエリを実行します。
+title: クイック スタート:Azure portal を使用したインデックスの作成、読み込み、およびクエリの実行 - Azure Search
+description: Azure portal のデータ インポート ウィザードを使用して、初めてのインデックスを Azure Search に作成して読み込み、クエリを実行します。
 author: HeidiSteen
 manager: cgronlun
 tags: azure-portal
@@ -10,18 +10,18 @@ ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: e5baa0876dc976553e8e541cef6b481329500bf6
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 4a1944c5c5f169274cf45bd3ebfb6df47942dd5a
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65606450"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485649"
 ---
-# <a name="quickstart-use-built-in-portal-tools-for-azure-search-import-indexing-and-queries"></a>クイック スタート:ポータルのビルトイン ツールを使用した Azure Search のインポート、インデックス作成、クエリ
+# <a name="quickstart-create-an-azure-search-index-using-the-azure-portal"></a>クイック スタート:Azure portal を利用して Azure Search インデックスを作成する
 > [!div class="op_single_selector"]
 > * [ポータル](search-get-started-portal.md)
 > * [PowerShell](search-howto-dotnet-sdk.md)
-> * [Postman](search-fiddler.md)
+> * [Postman](search-get-started-postman.md)
 > * [C#](search-create-index-dotnet.md)
 >*
 
@@ -34,7 +34,7 @@ Azure Search の概念をすばやく把握するために、Azure portal のビ
 > * 既存のインデックスとそれを変更するためのオプションを表示する
 > * **Search エクスプローラー**を使用して、フルテキスト検索、フィルター、ファセット、あいまい検索、地理空間検索について確認する
 
-必要な機能が不足している場合は、[.NET での Azure Search のプログラミングに関するコーディングを前提とした概要記事](search-howto-dotnet-sdk.md)を参照するか、または [REST API 呼び出しを行うための Postman または Fiddler](search-fiddler.md) の利用をご検討ください。
+必要な機能が不足している場合は、[.NET での Azure Search のプログラミングに関するコーディングを前提とした概要記事](search-howto-dotnet-sdk.md)を参照するか、または [REST API 呼び出しを行うための Postman または Fiddler](search-get-started-postman.md) の利用をご検討ください。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。 また、「[Azure Search Overview (Azure Search の概要)](https://channel9.msdn.com/Events/Connect/2016/138)」ビデオで、このチュートリアルの手順のデモをご覧いただけます (約 3 分目から 6 分間)。
 
@@ -274,4 +274,4 @@ Azure portal の **Search エクスプローラー**を使って、フィルタ�
 
 * [.NET SDK を使用してインデックスを作成する](https://docs.microsoft.com/azure/search/search-create-index-dotnet)
 * [REST API を使用してインデックスを作成する](https://docs.microsoft.com/azure/search/search-create-index-rest-api)
-* [Postman または Fiddler と Azure Search REST API を使用してインデックスを作成する](search-fiddler.md)
+* [Postman または Fiddler と Azure Search REST API を使用してインデックスを作成する](search-get-started-postman.md)
