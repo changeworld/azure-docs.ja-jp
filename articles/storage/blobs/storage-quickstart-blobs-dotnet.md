@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 06/20/2019
 ms.author: mhopkins
 ms.subservice: blobs
-ms.openlocfilehash: c5e9981c6854ff778775631f1d671189830e564b
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 70afb39be696b660d3f85ae0c4b2c108bceb318c
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67435770"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67625673"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-for-net"></a>クイック スタート:.NET 用 Azure Blob Storage クライアント ライブラリ
 
@@ -179,7 +179,7 @@ Azure Blob Storage は、大量の非構造化データを格納するために�
 * [CloudStorageAccount](/dotnet/api/microsoft.azure.storage.cloudstorageaccount): **CloudStorageAccount** クラスは、Azure Storage アカウントを表します。 アカウント アクセス キーを使用して BLOB ストレージへのアクセスを承認するには、このクラスを使用します。
 * [CloudBlobClient](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient): **CloudBlobClient** クラスは、コード内の Blob service へのアクセス ポイントを提供します。
 * [CloudBlobContainer](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer): **CloudBlobContainer** クラスは、コード内の BLOB コンテナーを表します。
-* [CloudBlockBlob](//dotnet/api/microsoft.azure.storage.blob.cloudblockblob): **CloudBlockBlob** オブジェクトは、コード内のブロック BLOB を表します。 ブロック BLOB は、個別に管理できるデータ ブロックで構成されます。
+* [CloudBlockBlob](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob): **CloudBlockBlob** オブジェクトは、コード内のブロック BLOB を表します。 ブロック BLOB は、個別に管理できるデータ ブロックで構成されます。
 
 ## <a name="code-examples"></a>コード例
 
