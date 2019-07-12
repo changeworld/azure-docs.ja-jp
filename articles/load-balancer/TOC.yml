@@ -61,6 +61,8 @@
       href: load-balancer-standard-availability-zones.md
     - name: Standard Load Balancer のメトリックと診断
       href: load-balancer-standard-diagnostics.md
+    - name: セキュリティ属性
+      href: load-balancer-security-attributes.md
 - name: 方法
   items:
     - name: ゾーン冗長パブリック Standard Load Balancer を作成する

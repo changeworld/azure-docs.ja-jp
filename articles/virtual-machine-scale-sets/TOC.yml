@@ -156,6 +156,8 @@
           maintainContext: true
     - name: スケール セットの FAQ
       href: virtual-machine-scale-sets-faq.md
+    - name: セキュリティ属性
+      href: virtual-machine-scale-sets-security-attributes.md
 - name: 方法
   items:
     - name: 計画と設計
