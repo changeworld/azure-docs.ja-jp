@@ -48,7 +48,7 @@ CocoaPods を使用して必要なポッドをインストールします。
 
 # <a name="swifttabopenproject-swift"></a>[Swift](#tab/openproject-swift)
 
-[https://test-cors.org](`iOS/Swift/`) に移動します。
+`iOS/Swift/` に移動します。
 
 ```bash
 cd ./iOS/Swift/
