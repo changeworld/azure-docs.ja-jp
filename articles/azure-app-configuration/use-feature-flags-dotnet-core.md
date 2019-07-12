@@ -14,14 +14,14 @@ ms.topic: tutorial
 ms.date: 04/19/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: fc5215f71af45d3273da437fc796bf0d396ba3f9
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: 5e27c6a1ab5fc9dff779c6e5d04689683d5c8e6d
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393509"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274149"
 ---
-# <a name="tutorial-use-feature-flags-in-a-net-core-app"></a>チュートリアル:.NET Core アプリ内で機能フラグを使用する
+# <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>チュートリアル:ASP.NET Core アプリ内で機能フラグを使用する
 
 .NET Core 機能管理ライブラリでは、.NET または ASP.NET Core アプリケーションで機能フラグを実装するための慣用的なサポートが提供されます。 これらのライブラリにより、機能フラグを宣言的にコードに追加できるため、それらに対するすべての `if` ステートメントを手動で記述する必要がなくなります。
 
@@ -109,7 +109,7 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
 config.AddAzureAppConfiguration(options => {
     options.Connect(settings["ConnectionStrings:AppConfig"])
            .UseFeatureFlags(featureFlagOptions => {
-                featureFlagOptions.PollInterval = TimeSpan.FromSeconds(5);
+                featureFlagOptions.PollInterval = TimeSpan.FromSeconds(300);
            });
 });
 ```
@@ -189,10 +189,10 @@ public class HomeController : Controller
 
 ## <a name="controller-actions"></a>コントローラー アクション
 
-MVC コントローラーでは、`Feature` 属性を使用して、コントローラー クラス全体を有効にするか、特定のアクションを有効にするかを制御できます。 次の `HomeController` コントローラーでは、コントローラー クラスに含まれるアクションを実行するには、`FeatureA` が "*オン*" になっている必要があります。
+MVC コントローラーでは、`FeatureGate` 属性を使用して、コントローラー クラス全体を有効にするか、特定のアクションを有効にするかを制御できます。 次の `HomeController` コントローラーでは、コントローラー クラスに含まれるアクションを実行するには、`FeatureA` が "*オン*" になっている必要があります。
 
 ```csharp
-[Feature(MyFeatureFlags.FeatureA)]
+[FeatureGate(MyFeatureFlags.FeatureA)]
 public class HomeController : Controller
 {
     ...
@@ -202,7 +202,7 @@ public class HomeController : Controller
 次の `Index` アクションを実行するには、`FeatureA` が "*オン*" になっている必要があります。
 
 ```csharp
-[Feature(MyFeatureFlags.FeatureA)]
+[FeatureGate(MyFeatureFlags.FeatureA)]
 public IActionResult Index()
 {
     return View();
@@ -218,6 +218,25 @@ MVC ビューでは、`<feature>` タグを使用して、機能フラグが有�
 ```html
 <feature name="FeatureA">
     <p>This can only be seen if 'FeatureA' is enabled.</p>
+</feature>
+```
+
+要件が満たされていないときに代替コンテンツを表示するには、`negate` 属性を使用できます。
+
+```html
+<feature name="FeatureA" negate="true">
+    <p>This will be shown if 'FeatureA' is disabled.</p>
+</feature>
+```
+
+一覧内のいずれかまたはすべての機能が有効になっている場合は、機能 `<feature>` タグを使用してコンテンツを表示することもできます。
+
+```html
+<feature name="FeatureA, FeatureB" requirement="All">
+    <p>This can only be seen if 'FeatureA' and 'FeatureB' are enabled.</p>
+</feature>
+<feature name="FeatureA, FeatureB" requirement="Any">
+    <p>This can be seen if 'FeatureA', 'FeatureB', or both are enabled.</p>
 </feature>
 ```
 

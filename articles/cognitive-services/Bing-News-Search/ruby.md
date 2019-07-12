@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:Ruby を使ってニュース検索を実行する - Bing News Search REST API
+title: クイック スタート:Ruby と Bing News Search REST API を使用してニュース検索を実行する
 titlesuffix: Azure Cognitive Services
 description: このクイック スタートを使用して、Ruby を使って Bing News Search REST API に要求を送信し、JSON 応答を受信します。
 services: cognitive-services
@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 1/10/2019
+ms.date: 6/19/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 9ed658c6613d270ab3de67a8800263d677d70bac
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 5db8d9055ff973c3de1b995340d77004d889aa3d
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55867020"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67272736"
 ---
 # <a name="quickstart-perform-a-news-search-using-ruby-and-the-bing-news-search-rest-api"></a>クイック スタート:Ruby と Bing News Search REST API を使用してニュース検索を実行する
 

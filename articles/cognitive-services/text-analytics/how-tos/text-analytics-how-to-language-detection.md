@@ -9,12 +9,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 02/26/2019
 ms.author: aahi
-ms.openlocfilehash: 481f7a7589a58baac922001d230f95198ed45eb7
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 6f1e71b75aa68c8f4ea1fa8ed373da25dbb3c24b
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66417952"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67304042"
 ---
 # <a name="example-how-to-detect-language-with-text-analytics"></a>例:Text Analytics で言語を検出する方法
 
@@ -79,7 +79,7 @@ JSON ドキュメントは、次の形式である必要があります: ID、�
 
 ## <a name="step-2-post-the-request"></a>手順 2:要求を投稿する
 
-要求が受信されると分析が実行されます。 サービスは、1 分あたり最大 100 個の要求を受け付けます。 各要求の最大サイズは 1 MB です。
+要求が受信されると分析が実行されます。 分単位および秒単位で送信できる要求のサイズと数については、概要の「[データ制限](../overview.md#data-limits)」セクションを参照してください。
 
 サービスはステートレスであることを思い出してください。 ユーザーのアカウントに保存されるデータはありません。 結果はすぐに、応答で返されます。
 

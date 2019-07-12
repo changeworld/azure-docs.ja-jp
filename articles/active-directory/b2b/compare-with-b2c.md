@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e48a26b2eea3004d5f2203409603ffe623a8cb5c
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: d2fb881678c694754c8cfc0714038c030d4b2218
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65811895"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67113140"
 ---
 # <a name="compare-b2b-collaboration-and-b2c-in-azure-active-directory"></a>Azure Active Directory での B2B コラボレーションと B2C の比較
 
@@ -36,7 +36,7 @@ B2B コラボレーション機能 |     Azure AD B2C スタンドアロン製�
 外部ユーザーは、従業員と同じディレクトリで管理されますが、特別な注釈が付与されます。 従業員と同じように管理し、同じグループに追加するなどの操作を実行できます。  | 外部ユーザーはアプリケーション ディレクトリで管理されます。 組織の従業員やパートナーのディレクトリ (存在する場合) とは別に管理されます。
 あらゆる Azure AD 接続アプリへのシングル サインオン (SSO) がサポートされています。 たとえば、Office 365 またはオンプレミスのアプリケーションや、Salesforce、Workday などの SaaS アプリへのアクセスを提供できます。  |  Azure AD B2C テナント内のお客様所有のアプリへの SSO をサポートします。 Office 365 やその他のマイクロソフトおよびマイクロソフト以外の SaaS アプリへの SSO はサポートされていません。
 パートナーのライフサイクル: ホスト/招待元の組織によって管理されます。  | お客様のライフサイクル: セルフサービスまたはアプリケーションによって管理されます。
-セキュリティ ポリシーとコンプライアンス: ホスト/招待元の組織によって管理されます ([条件付きアクセス ポリシー](https://docs.microsoft.com/azure/active-directory/b2b/conditional-access)を使用するなど)。  | セキュリティ ポリシーとコンプライアンス: アプリケーションによって管理されます。
+セキュリティ ポリシーとコンプライアンス: ホストまたは招待元の組織によって管理されます ([条件付きアクセス ポリシー](https://docs.microsoft.com/azure/active-directory/b2b/conditional-access)を使用するなど)。  | セキュリティ ポリシーとコンプライアンス: アプリケーションによって管理されます。
 ブランド化: ホスト/招待元の組織のブランドが使用されます。  |    ブランド化: アプリケーションによって管理されます。 一般的には製品によりブランド化される傾向があり、組織は目立たなくなります。
 詳細情報: [ブログ記事](https://blogs.technet.microsoft.com/enterprisemobility/2017/02/01/azure-ad-b2b-new-updates-make-cross-business-collab-easy/)、[ドキュメント](what-is-b2b.md)  | 詳細情報: [製品ページ](https://azure.microsoft.com/services/active-directory-b2c/)、[ドキュメント](https://docs.microsoft.com/azure/active-directory-b2c/)
 

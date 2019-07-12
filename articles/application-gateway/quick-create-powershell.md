@@ -1,19 +1,19 @@
 ---
 title: クイック スタート - Azure Application Gateway による Web トラフィックのルーティング - PowerShell | Microsoft Docs
-description: Azure PowerShell を使用して、Web トラフィックをバックエンド プール内の仮想マシンにルーティングする Azure Application Gateway を作成する方法を説明します。
+description: Azure PowerShell を使用して、Web トラフィックをバックエンド プール内の仮想マシンにルーティングする Azure アプリケーション ゲートウェイを作成する方法を説明します。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-ms.date: 1/11/2019
+ms.date: 06/11/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 6c472c30514e6acd3b21822e31f2cefc0da5bc98
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: c0e80b1354302f227cb448391c7a92100049cc3a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66729657"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67053340"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-powershell"></a>クイック スタート:Azure Application Gateway による Web トラフィックの転送 - Azure PowerShell
 
@@ -109,7 +109,7 @@ for ($i=1; $i -le 2; $i++)
   Add-AzVMNetworkInterface `
     -VM $vm `
     -Id $nic.Id
-  Set-AzVMBootDiagnostics `
+  Set-AzVMBootDiagnostic `
     -VM $vm `
     -Disable
   New-AzVM -ResourceGroupName myResourceGroupAG -Location EastUS -VM $vm

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: overview
-ms.date: 01/11/2019
+ms.date: 06/19/2019
 ms.author: scottwhi
-ms.openlocfilehash: 77f8e41b2271770e49c2e5c4d1591c213eaa257d
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: da1dd68b8e155e121f26f5599207691877fbf0ca
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66383415"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274154"
 ---
 # <a name="search-for-news-with-the-bing-news-search-api"></a>Bing News Search API でニュースを検索する
 
@@ -51,7 +51,7 @@ Host: api.cognitive.microsoft.com
 GET https://api.cognitive.microsoft.com/bing/v7.0/news/search?q=sailing+dinghies+site:contososailing.com&mkt=en-us HTTP/1.1
 ```
 
-前のクエリに対する応答を次に示します。 Bing Search APIs の[利用と表示の要件](../useanddisplayrequirements.md)上、それぞれのニュース記事は、応答で返された順に表示する必要があります。 記事にクラスター化されている記事が含まれる場合、関連する記事が存在することを示し、要求された時点でそれらを表示する必要があります。
+前のクエリに対する応答を次の JSON サンプルに示します。 Bing Search APIs の[利用と表示の要件](../useanddisplayrequirements.md)上、それぞれのニュース記事は、応答で返された順に表示する必要があります。 記事にクラスター化されている記事が含まれる場合、関連する記事が存在することを示し、要求された時点でそれらを表示する必要があります。
 
 ```json
 {
@@ -107,7 +107,7 @@ Bing がニュース記事のカテゴリを決定できる場合、記事に `c
 
 ## <a name="get-todays-top-news"></a>今日のトップ ニュースを取得する
 
-今日のトップ ニュース記事を取得するには、`q` を設定しない点を除き、通常のニュースを取得するのと同じ要求を行います。
+今日のトップ ニュース記事を入手するには、`q` パラメーターを設定せずに、以前と同じ通常のニュース要求を送信します。
 
 ```http
 GET https://api.cognitive.microsoft.com/bing/v7.0/news/search?q=&mkt=en-us HTTP/1.1
@@ -119,7 +119,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com
 ```
 
-トップ ニュースを取得する際の応答は、通常のニュースを取得する場合とほとんど同じです。 ただし、結果の数は決まっているので、`news` 応答に `totalEstimatedMatches` フィールドは含まれません。 トップ ニュース記事の数は、ニュース サイクルによって異なる場合があります。 必ず `provider` を使用して記事の帰属を示すようにしてください。
+トップ ニュースを取得する際の応答は、通常のニュースを取得する場合とほとんど同じです。 ただし、結果の数は決まっているので、`news` 応答に `totalEstimatedMatches` フィールドは含まれません。 トップ ニュース記事の数は、ニュース サイクルによって異なる場合があります。 必ず `provider` フィールドを使用して、記事の帰属を示すようにしてください。
 
 ## <a name="get-news-by-category"></a>カテゴリ別のニュースを取得する
 

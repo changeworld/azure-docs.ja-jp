@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec8c2fc2c2dbbfd2c98184215f696aaf18a87193
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 498650ce8a22f4804773bb66db3d640cd63bab8c
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67105550"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67655834"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-webex-meetings"></a>チュートリアル:Azure Active Directory と Cisco Webex Meetings の統合
 
@@ -122,7 +122,7 @@ Cisco Webex Meetings で Azure AD シングル サインオンを構成するに
 
     **[サインオン URL]** テキストボックスに、SP メタデータ ファイルのアップロードによって自動入力される **[応答 URL]** の値を貼り付けます。
 
-5. Cisco Webex Meetings アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。  **[編集]**   アイコンをクリックして属性を追加します。
+5. Cisco Webex Meetings アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。 **[編集]** アイコンをクリックして属性を追加します。
 
     ![image](common/edit-attribute.png)
 

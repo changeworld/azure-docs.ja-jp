@@ -12,12 +12,12 @@ ms.date: 06/05/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 80680de6602b26488a8bade8a69fdd85b7f83ed1
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: 9246d7bd48579def171986606e88c09593029aa2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66729939"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108146"
 ---
 # <a name="application-management-with-azure-active-directory"></a>Azure Active Directory によるアプリケーションの管理
 

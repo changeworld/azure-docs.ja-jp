@@ -7,14 +7,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-ms.date: 05/20/2019
+ms.date: 06/19/2019
 ms.author: alkohli
-ms.openlocfilehash: 0f71d9b4400041db50cb3e24940e922acde55edc
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 94ba0040b1de7e1f03825f1cd2ef2a6536343d96
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65991683"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67271748"
 ---
 # <a name="what-is-azure-data-box-heavy-preview"></a>Azure Data Box Heavy とは (プレビュー)
 
@@ -62,14 +62,14 @@ Data Box Heavy は、ネットワークにほとんどまたはまったく影�
 
 | 仕様                                          | 説明              |
 |---------------------------------------------------------|--------------------------|
-| Weight                                                  | 最大 500 ポンド                |
+| Weight                                                  | 最大 500 ポンド <br>輸送用ロッキング ホイール上のデバイス|
 | Dimensions                                              | 幅:26 インチ 高さ:28 インチ 長さ:48 インチ |
-| ラック スペース                                              | ラック マウント不可|
-| 必要なケーブル                                         | 4 X 接地 120 V/10 A 電源コード (NEMA 5-15) 付属 <br> デバイスは最大 240 V 電源をサポートし、C-13 電源レセプタクルを備える <br> [Mellanox MCX314 A-BCCT](https://store.mellanox.com/products/mellanox-mcx314a-bcct-connectx-3-pro-en-network-interface-card-40-56gbe-dual-port-qsfp-pcie3-0-x8-8gt-s-rohs-r6.html) と互換性のあるネットワーク ケーブルを使用  |
-|累乗                                                    | 両方のデバイス ノードで共有される 4 基の内蔵電源装置 (PSU)|
+| ラック スペース                                              | ラックマウント不可|
+| 必要なケーブル                                         | 接地 120 V、10 A 電源コード (NEMA 5-15) 付属 x 4 <br> デバイスは最大 240 V 電源をサポートし、C-13 電源レセプタクルを備える <br> [Mellanox MCX314 A-BCCT](https://store.mellanox.com/products/mellanox-mcx314a-bcct-connectx-3-pro-en-network-interface-card-40-56gbe-dual-port-qsfp-pcie3-0-x8-8gt-s-rohs-r6.html) と互換性のあるネットワーク ケーブルを使用  |
+| 累乗                                                    | 両方のデバイス ノードで共有される 4 基の内蔵電源装置 (PSU) <br> 1,200 ワット定格消費電力|
 | ストレージの容量                                        | 最大 1 PB (ロー)、各 14 TB のディスク 70 台 <br> 使用可能な容量は 770 TB|
-|ノードの数                                          | デバイスごとに 2 つの独立したノード (各 500 TB) |
-| ノードあたりのネットワーク インターフェイス数                             | ノードあたり 4 つのネットワーク インターフェイス <br> MGMT、DATA3 <ul><li> 2 X 1 GbE インターフェイス </li><li> MGMT は管理用、ユーザー構成不可、初期セットアップに使用 </li><li> DATA3 はユーザー構成可能なデータ インターフェイス、既定では動的ホスト構成プロトコル (DHCP)</li><li>1 GbE ネットワーク インターフェイスは 10 GbE インターフェイスとしての構成も可能</li></ul>DATA1、DATA2 データ インターフェイス <ul><li>2 X 40 GbE インターフェイス </li><li> DHCP (既定) または静的でユーザー構成可能なデータ インターフェイス</li>|
+| ノードの数                                          | デバイスごとに 2 つの独立したノード (各 500 TB) |
+| ノードあたりのネットワーク インターフェイス数                             | ノードあたり 4 つのネットワーク インターフェイス <br><br> MGMT、DATA3 <ul><li> 2 X 1 GbE インターフェイス </li><li> MGMT は管理および初期セットアップ用、ユーザー構成不可 </li><li> DATA3 はユーザー構成可能であり、既定では動的ホスト構成プロトコル (DHCP)</li><li>1 GbE ネットワーク インターフェイスは 10 GbE インターフェイスとしての構成も可能</li></ul>DATA1、DATA2 データ インターフェイス <ul><li>2 X 40 GbE インターフェイス </li><li> ユーザー構成可能 (既定値の DHCP の場合)、または静的</li></ul>|
 
 
 ## <a name="components"></a>コンポーネント
@@ -117,7 +117,7 @@ Data Box Heavy の提供状況に関するリージョン別の最新情報に�
 
 Data Box Heavy はプレビュー段階であり、サインアップする必要があります。 Data Box Heavy にサインアップするには、次の手順を実行します。
 
-1. Azure portal (https://aka.ms/azuredatabox) にサインインします。
+1. Azure portal (https://aka.ms/azuredatabox ) にサインインします。
 2. **[+ リソースの作成]** をクリックして新しいリソースを作成します。 **Azure Data Box** を検索します。 **Azure Data Box** サービスを選択します。
 
     <!--![The Data Box Heavy sign up 1]()-->

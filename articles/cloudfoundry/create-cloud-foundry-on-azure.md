@@ -14,12 +14,12 @@ ms.service: azure
 ms.tgt_pltfrm: multiple
 ms.topic: tutorial
 ms.workload: web
-ms.openlocfilehash: 382e342f2144bcc6eeedafd74790bb442b8f9308
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 11c8fdca595840389f318ce9810674d53ac7f2d2
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59784860"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273357"
 ---
 # <a name="create-a-pivotal-cloud-foundry-cluster-on-azure"></a>Azure で Pivotal Cloud Foundry クラスターを作成する
 
@@ -64,7 +64,7 @@ ssh-keygen -t rsa -b 2048
 
     > [!NOTE]
     >
-    > 独自のアプリケーションのホーム ページと識別子 URI (http://www.contoso.com など) を選択します。
+    > 独自のアプリケーションのホーム ページと識別子 URI ([http://www.contoso.com](http://www.contoso.com) など) を選択します。
 
 4. 新しいアプリ ID でサービス プリンシパルを作成します。
 
@@ -123,7 +123,7 @@ ssh-keygen -t rsa -b 2048
          
     > [!NOTE]
     >
-    > "サイトが安全でない" という警告メッセージのために Internet Explorer ブラウザーが失敗する場合は、**[詳細]** を選択して Web ページに移動します。 Firefox の場合は、**[Advance]** を選択し、証明書を追加して続行します。
+    > "サイトが安全でない" という警告メッセージのために Internet Explorer ブラウザーが失敗する場合は、 **[詳細]** を選択して Web ページに移動します。 Firefox の場合は、 **[Advance]** を選択し、証明書を追加して続行します。
 
 5. PCF Ops Manager には、デプロイされた Azure インスタンスが表示されます。 これで、アプリケーションをここでデプロイして管理できます。
                

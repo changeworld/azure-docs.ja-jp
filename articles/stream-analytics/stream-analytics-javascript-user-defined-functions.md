@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.reviewer: mamccrea
 ms.custom: mvc
 ms.date: 04/01/2018
-ms.openlocfilehash: ff8e61c53774429087ffe1a9137d40b155eb3f68
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: c7414ee159303465d6698ce9c47d04ba37c0c46e
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57192277"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67329376"
 ---
 # <a name="tutorial-azure-stream-analytics-javascript-user-defined-functions"></a>チュートリアル:Azure Stream Analytics の JavaScript ユーザー定義関数
  
@@ -102,7 +102,7 @@ Stream Analytics | JavaScript
 bigint | Number (JavaScript では最大 2^53 の精度の整数しか表現できません)
 DateTime | Date (JavaScript ではミリ秒のみサポートされています)
 double | Number
-nvarchar(MAX) | String
+nvarchar(MAX) | string
 Record | Object
 Array | Array
 NULL | Null
@@ -115,11 +115,13 @@ JavaScript | Stream Analytics
 --- | ---
 Number | Bigint (値が四捨五入され、long.MinValue と long.MaxValue の間の場合。それ以外の場合は double)
 Date | DateTime
-String | nvarchar(MAX)
+string | nvarchar(MAX)
 Object | Record
 Array | Array
 Null, Undefined | NULL
 他のすべての種類 (関数やエラーなど) | サポート対象外 (ランタイム エラーが発生します)
+
+JavaScript 言語は大文字と小文字を区別し、JavaScript コード内のオブジェクト フィールドの大文字と小文字は、受信データのフィールドの大文字と小文字に一致する必要があります。 互換性レベル 1.0 のジョブは SQL SELECT ステートメントのフィールドを小文字に変換することに注意してください。 互換性レベル 1.1 以降では、SELECT ステートメントのフィールドが SQL クエリでの指定と同じ大文字と小文字になります。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 JavaScript ランタイム エラーは致命的とみなされ、アクティビティ ログに表示されます。 Azure Portal からログを取得するには、ジョブに移動し、 **[アクティビティ ログ]** を選択します。

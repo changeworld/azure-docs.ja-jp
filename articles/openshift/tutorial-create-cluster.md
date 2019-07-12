@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.topic: tutorial
 ms.service: openshift
 ms.date: 05/14/2019
-ms.openlocfilehash: 651236c25ed912ebd7399d351677a67e3826278c
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 9094fa441ff5ffdd5f579fd072ffaa303961314d
+ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306197"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67304268"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-cluster"></a>チュートリアル:Azure Red Hat OpenShift クラスターを作成する
 
@@ -106,6 +106,10 @@ az group create --name $CLUSTER_NAME --location $LOCATION
 ### <a name="optional-connect-the-clusters-virtual-network-to-an-existing-virtual-network"></a>省略可能:クラスターの仮想ネットワークを既存の仮想ネットワークに接続する
 
 作成したクラスターの仮想ネットワーク (VNET) をピアリングによって既存の VNET に接続する必要がない場合は、この手順をスキップします。
+
+ネットワークへのピアリングを既定のサブスクリプション以外で行ってからそのサブスクリプションで行う場合は、Microsoft.ContainerService プロバイダーの登録も必要になります。 これを行うには、そのサブスクリプションで以下のコマンドを実行します。 それ以外に、ピアリング対象の VNET が同じサブスクリプションにある場合は、登録手順をスキップできます。 
+
+`az provider register -n Microsoft.ContainerService --wait`
 
 最初に、既存の VNET の識別子を取得します。 この識別子は、`/subscriptions/{subscription id}/resourceGroups/{resource group of VNET}/providers/Microsoft.Network/virtualNetworks/{VNET name}` の形式になります。
 
