@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08-04-2019
+ms.date: 04/08/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2eb38ca490190054ea78b5e1c71c09c94621419b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d0b407f29e4dda532ef12019f8d0a2a273832987
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67088947"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67595249"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-teamworkcom"></a>チュートリアル:Azure Active Directory と Teamwork.com の統合
 

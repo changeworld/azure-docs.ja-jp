@@ -7,15 +7,15 @@ author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: overview
-ms.date: 05/02/2019
+ms.topic: conceptual
+ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 055d141cab8ece3fcb462573f6ed4d8941c19751
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 37d68a4d2b7658542ebcfdb5d22a10676a8e4d52
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67064123"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603306"
 ---
 # <a name="speech-services-for-telephony-data"></a>電話データのための Speech Services
 
@@ -36,7 +36,7 @@ ms.locfileid: "67064123"
 
 コール センターで利用されるとき、機能的な面を除く Speech Services の主な目的は、顧客体験を改善することにあります。 この点については、3 つの分野に明確に分かれています。
 
-* 通話後の分析。つまり、通話記録のバッチ処理です。 
+* 通話後の分析。つまり、通話記録のバッチ処理です。
 * リアルタイム分析。通話が行われている間に音声信号を処理し、さまざまな分析情報を抽出します。重要なユース ケースにセンチメントがあります。
 * 仮想アシスタント (ボット)。顧客とボットの間の対話を進め、エージェントが関与することなく顧客の問題の解決を試みるか、AI プロトコルのアプリケーションとしてエージェントを支援します。
 
@@ -44,9 +44,9 @@ ms.locfileid: "67064123"
 
 ## <a name="speech-analytics-technology-components"></a>音声分析テクノロジのコンポーネント
 
-分野が通話後であってもリアルタイムであっても、Azure は新しくも完成された一連のテクノロジを提供し、顧客体験を改善します。 
+分野が通話後であってもリアルタイムであっても、Azure は新しくも完成された一連のテクノロジを提供し、顧客体験を改善します。
 
-### <a name="speech-to-text-stt"></a>音声テキスト変換 (STT) 
+### <a name="speech-to-text-stt"></a>音声テキスト変換 (STT)
 
 [音声テキスト変換](speech-to-text.md)はあらゆるコール センター ソリューションで最も求められている機能です。 ダウンストリーム分析プロセスの多くは書き起こされたテキストに依存しているため、ワード エラー率 (WER) が最も重要となります。 コール センターで文字起こしを難しくしている要因には、コール センター内の騒音 (たとえば、他のエージェントが後ろで話しています)、多様な言語ロケールと方言、実際の電話信号の低品質があります。 WER は、特定のロケールを対象に音響と言語のモデルがどの程度トレーニングされているかに密接に関係します。そのため、モデルを自分のロケールに合わせてカスタマイズできることが重要になります。 最新の Unified バージョン 4.x モデルは、文字起こしの精度の問題と遅延の問題を両方解決しています。 非常に大量の音響データと語彙情報でトレーニングされた Unified モデルは、市場に出回っているモデルの中で最も高い精度でコール センター データを文字に起こします。
 
@@ -60,9 +60,9 @@ ms.locfileid: "67064123"
 デリバリー マネージャーが世界中の顧客体験を理解できるよう、外国語のサポート コールの翻訳を試している企業もあります。 Microsoft の[翻訳](translation.md)機能にまさるものはありません。 さまざまなロケールの音声を音声に変換したり、音声をテキストに変換したりできます。
 
 ### <a name="text-to-speech"></a>テキストから音声へ
-顧客とやりとりするボットを実装するにあたり、もう 1 つの重要な分野が[テキスト読み上げ](text-to-speech.md)です。 通常、顧客が話し、その声がテキストに書き写され、テキストの意図が分析され、認められた意図に基づいて応答が合成され、アセットが顧客に提示されるか、合成された音声による応答が生成されるという過程になります。 当然ですが、以上の動作は一瞬で行われなければなりません。そのため、こうしたシステムを成功させるには待ち時間が重要な要素となります。 
+顧客とやりとりするボットを実装するにあたり、もう 1 つの重要な分野が[テキスト読み上げ](text-to-speech.md)です。 通常、顧客が話し、その声がテキストに書き写され、テキストの意図が分析され、認められた意図に基づいて応答が合成され、アセットが顧客に提示されるか、合成された音声による応答が生成されるという過程になります。 当然ですが、以上の動作は一瞬で行われなければなりません。そのため、こうしたシステムを成功させるには待ち時間が重要な要素となります。
 
-[音声認識](speech-to-text.md)、[LUIS](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/)、[Bot Framework](https://dev.botframework.com/)、[テキスト読み上げ](text-to-speech.md)など、さまざまなテクノロジが利用されていることを考慮すると、Microsoft サービスのエンドツーエンドの待ち時間はとても短いと言えます。 
+[音声認識](speech-to-text.md)、[LUIS](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/)、[Bot Framework](https://dev.botframework.com/)、[テキスト読み上げ](text-to-speech.md)など、さまざまなテクノロジが利用されていることを考慮すると、Microsoft サービスのエンドツーエンドの待ち時間はとても短いと言えます。
 
 また、新しい合成音声は人間と区別が付かなくなっています。 各種音声を使いこなすことで自分のボットに個性を与えることができます。
 
