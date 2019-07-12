@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0efc69aa7fb081303df6fc6327253fd5b8336999
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 016f4fe5e0d1e8c84a13ca97d8f910c29d5984d8
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65902791"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67091132"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-servicenow"></a>チュートリアル:Azure Active Directory と ServiceNow の統合
 
@@ -59,11 +59,11 @@ Azure AD への ServiceNow の統合を構成するには、ギャラリーか�
 
 **ギャラリーから ServiceNow を追加するには、次の手順に従います。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
     ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
+2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -71,7 +71,7 @@ Azure AD への ServiceNow の統合を構成するには、ギャラリーか�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**ServiceNow**」と入力し、結果ウィンドウで **[ServiceNow]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**ServiceNow**」と入力し、結果ウィンドウで **[ServiceNow]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の ServiceNow](common/search-new-app.png)
 
@@ -97,15 +97,15 @@ ServiceNow で Azure AD のシングル サインオンを構成してテスト�
 
 ServiceNow で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **ServiceNow** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **ServiceNow** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
-2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
+2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
     ![シングル サインオン選択モード](common/select-saml-option.png)
 
-3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -120,7 +120,7 @@ ServiceNow で Azure AD シングル サインオンを構成するには、次�
     > [!NOTE]
     > これらは実際の値ではありません。 これらの値を、このチュートリアルの後半で説明する実際のサインオン URL と識別子に更新する必要があります。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
+5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
@@ -144,7 +144,7 @@ ServiceNow で Azure AD シングル サインオンを構成するには、次�
 
 2. **[Integration - Multiple Provider Single Sign-On Installer (統合 - 複数プロバイダーのシングル サインオン インストーラー)]** プラグインをアクティブ化するには、次の手順に従います。
 
-    a. 左側のナビゲーション ウィンドウの検索バーで **}[System Definition]\(システム定義\)** セクションを検索し、**[Plugins]\(プラグイン\)** をクリックします。
+    a. 左側のナビゲーション ウィンドウの検索バーで **}[System Definition]\(システム定義\)** セクションを検索し、 **[Plugins]\(プラグイン\)** をクリックします。
 
     ![プラグインをアクティブにする](./media/servicenow-tutorial/tutorial_servicenow_03.png "プラグインをアクティブにする")
 
@@ -160,7 +160,7 @@ ServiceNow で Azure AD シングル サインオンを構成するには、次�
 
      ![プラグインをアクティブにする](./media/servicenow-tutorial/tutorial_activate1.png "プラグインをアクティブにする")
 
-3. 左側のナビゲーション ウィンドウの検索バーで **[Multi-Provider SSO]** セクションを検索し、**[Properties]** をクリックします。
+3. 左側のナビゲーション ウィンドウの検索バーで **[Multi-Provider SSO]** セクションを検索し、 **[Properties]** をクリックします。
 
     ![アプリケーション URL の構成](./media/servicenow-tutorial/tutorial_servicenow_06.png "Configure app URL")
 
@@ -170,7 +170,7 @@ ServiceNow で Azure AD シングル サインオンを構成するには、次�
 
     * **[Enable multiple provider SSO]** で **[Yes]** を選択します。
   
-    * **[Enable Auto Importing of users from all identity providers into the user table]** で、**[Yes]** を選択します。
+    * **[Enable Auto Importing of users from all identity providers into the user table]** で、 **[Yes]** を選択します。
 
     * **[Enable debug logging for the multiple provider SSO integration]** で **[Yes]** を選択します。
 
@@ -184,19 +184,19 @@ ServiceNow で Azure AD シングル サインオンを構成するには、次�
 
     * Azure Portal で **ServiceNow** の [シングル サインオン] ページに戻ります。
 
-    * SAML ベースの認証に対応するため、Azure AD による ServiceNow の自動構成を行う ServiceNow 用のワン クリック構成サービスが提供されています。 このサービスを有効にするには、**[ServiceNow 構成]** セクションに移動し、**[ServiceNow を構成する]** をクリックして [サインオンの構成] ウィンドウを開きます。
+    * SAML ベースの認証に対応するため、Azure AD による ServiceNow の自動構成を行う ServiceNow 用のワン クリック構成サービスが提供されています。 このサービスを有効にするには、 **[ServiceNow 構成]** セクションに移動し、 **[ServiceNow を構成する]** をクリックして [サインオンの構成] ウィンドウを開きます。
 
         ![Configure single sign-on](./media/servicenow-tutorial/tutorial_servicenow_configure.png)
 
-    * ServiceNow のインスタンス名、管理者のユーザー名、および管理者パスワードを **[サインオンの構成]** フォームに入力し、**[今すぐ構成]** をクリックします。 ここで指定する管理者のユーザー名には、ServiceNow で **security_admin** ロールが割り当てられている必要があります。 これとは別に、ServiceNow を手動で構成して Azure AD を SAML ID プロバイダーとして使用させる方法があります。**[シングル サインオンを手動で構成する]** をクリックして、[クイック リファレンス] セクションから**サインアウト URL、SAML エンティティ ID、および SAML シングル サインオン サービス URL** をコピーします。
+    * ServiceNow のインスタンス名、管理者のユーザー名、および管理者パスワードを **[サインオンの構成]** フォームに入力し、 **[今すぐ構成]** をクリックします。 ここで指定する管理者のユーザー名には、ServiceNow で **security_admin** ロールが割り当てられている必要があります。 これとは別に、ServiceNow を手動で構成して Azure AD を SAML ID プロバイダーとして使用させる方法があります。 **[シングル サインオンを手動で構成する]** をクリックして、[クイック リファレンス] セクションから**サインアウト URL、SAML エンティティ ID、および SAML シングル サインオン サービス URL** をコピーします。
 
         ![アプリケーション URL の構成](./media/servicenow-tutorial/configure.png "Configure app URL")
 
     * ServiceNow アプリケーションに管理者としてサインオンします。
 
-    * 自動構成では、必要なすべての設定が **ServiceNow** 側で構成されますが、**[X.509 証明書]** は既定で無効です。 ServiceNow でご使用の ID プロバイダーに手動でマップする必要があります。 同様に次の手順に従ってください。
+    * 自動構成では、必要なすべての設定が **ServiceNow** 側で構成されますが、 **[X.509 証明書]** は既定で無効です。 ServiceNow でご使用の ID プロバイダーに手動でマップする必要があります。 同様に次の手順に従ってください。
 
-    * 左側のナビゲーション ウィンドウの検索バーで **[Multi-Provider SSO]** セクションを検索し、**[ID プロバイダー]** をクリックします。
+    * 左側のナビゲーション ウィンドウの検索バーで **[Multi-Provider SSO]** セクションを検索し、 **[ID プロバイダー]** をクリックします。
 
         ![シングル サインオンの構成](./media/servicenow-tutorial/tutorial_servicenow_07.png "Configure single sign-on")
 
@@ -221,7 +221,7 @@ ServiceNow で Azure AD シングル サインオンを構成するには、次�
 
         * **[NameID Policy]** の値は必ず `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified` に設定してください。 
 
-    * **[X.509 証明書]** セクションまで下にスクロールし、**[編集]** を選択します。
+    * **[X.509 証明書]** セクションまで下にスクロールし、 **[編集]** を選択します。
 
         ![シングル サインオンの構成](./media/servicenow-tutorial/tutorial_servicenow_09.png "Configure single sign-on")
 
@@ -235,7 +235,7 @@ ServiceNow で Azure AD シングル サインオンを構成するには、次�
 
         ![プラグインをアクティブにする](./media/servicenow-tutorial/tutorial_activate2.png "プラグインをアクティブにする")
 
-    * **[接続のテスト]** をクリックすると、資格情報を入力する必要があるポップアップ ウィンドウが表示され、下のページに結果が表示されます。 **SSO ログアウト テスト結果** エラーが予期されます。このエラーは無視して、**[アクティブ化]** ボタンをクリックしてください。
+    * **[接続のテスト]** をクリックすると、資格情報を入力する必要があるポップアップ ウィンドウが表示され、下のページに結果が表示されます。 **SSO ログアウト テスト結果** エラーが予期されます。このエラーは無視して、 **[アクティブ化]** ボタンをクリックしてください。
 
         ![シングル サインオンの構成](./media/servicenow-tutorial/servicenowactivate.png "Configure single sign-on")
   
@@ -247,11 +247,11 @@ ServiceNow で Azure AD シングル サインオンを構成するには、次�
 
         ![シングル サインオンの構成](./media/servicenow-tutorial/tutorial_servicenow_07.png "Configure single sign-on")
 
-    * **[Identity Providers]\(ID プロバイダー\)** ダイアログ ボックスで、**[New]\(新規\)** をクリックします。
+    * **[Identity Providers]\(ID プロバイダー\)** ダイアログ ボックスで、 **[New]\(新規\)** をクリックします。
 
         ![シングル サインオンの構成](./media/servicenow-tutorial/ic7694977.png "Configure single sign-on")
 
-    * **[ID プロバイダー]** ダイアログ ボックスで、**[SAML]** をクリックします。
+    * **[ID プロバイダー]** ダイアログ ボックスで、 **[SAML]** をクリックします。
 
         ![シングル サインオンの構成](./media/servicenow-tutorial/ic7694978.png "Configure single sign-on")
 
@@ -280,28 +280,28 @@ ServiceNow で Azure AD シングル サインオンを構成するには、次�
 
         * **[NameID Policy]** の値は必ず `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified` に設定してください。
 
-        * **[詳細設定]** をクリックします。 ServiceNow のデプロイでユーザーを一意に識別するためのフィールドに応じて、**[User Field]** ボックスに「**email**」または「**user_id**」と入力します。
+        * **[詳細設定]** をクリックします。 ServiceNow のデプロイでユーザーを一意に識別するためのフィールドに応じて、 **[User Field]** ボックスに「**email**」または「**user_id**」と入力します。
 
             > [!NOTE]
             > SAML トークンの一意の識別子として Azure AD ユーザー ID (ユーザーのプリンシパル名) か電子メール アドレスを出力するように Azure AD を構成できます。そのためには、Azure Portal で **[ServiceNow]、[属性]、[シングル サインオン]** セクションの順に移動し、目的のフィールドを **nameidentifier** 属性にマッピングします。 Azure AD に格納される選択した属性 (ユーザー プリンシパル名など) の値と、ServiceNow に格納される入力したフィールド (user_name など) の値が一致している必要があります。
 
         * ページの右上隅にある **[接続をテスト]** をクリックします。
 
-        * **[接続のテスト]** をクリックすると、資格情報を入力する必要があるポップアップ ウィンドウが表示され、下のページに結果が表示されます。 **SSO ログアウト テスト結果** エラーが予期されます。このエラーは無視して、**[アクティブ化]** ボタンをクリックしてください。
+        * **[接続のテスト]** をクリックすると、資格情報を入力する必要があるポップアップ ウィンドウが表示され、下のページに結果が表示されます。 **SSO ログアウト テスト結果** エラーが予期されます。このエラーは無視して、 **[アクティブ化]** ボタンをクリックしてください。
 
           ![シングル サインオンの構成](./media/servicenow-tutorial/servicenowactivate.png "Configure single sign-on")
 
 ### <a name="configure-azure-ad-single-sign-on-for-servicenow-express"></a>ServiceNow Express 向け Azure AD シングル サインオンの構成
 
-1. [Azure portal](https://portal.azure.com/) の **ServiceNow** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **ServiceNow** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
-2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
+2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
     ![シングル サインオン選択モード](common/select-saml-option.png)
 
-3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -316,15 +316,15 @@ ServiceNow で Azure AD シングル サインオンを構成するには、次�
     > [!NOTE]
     > これらは実際の値ではありません。 これらの値を、このチュートリアルの後半で説明する実際のサインオン URL と識別子に更新する必要があります。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
+5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
-6. SAML ベースの認証に対応するため、Azure AD による ServiceNow の自動構成を行う ServiceNow 用のワン クリック構成サービスが提供されています。 このサービスを有効にするには、**ServiceNow の設定** セクションで、**[ステップ バイ ステップの手順を表示]** をクリックして [サインオンの構成] ウィンドウを開きます。
+6. SAML ベースの認証に対応するため、Azure AD による ServiceNow の自動構成を行う ServiceNow 用のワン クリック構成サービスが提供されています。 このサービスを有効にするには、**ServiceNow の設定** セクションで、 **[ステップ バイ ステップの手順を表示]** をクリックして [サインオンの構成] ウィンドウを開きます。
 
     ![Configure single sign-on](./media/servicenow-tutorial/tutorial_servicenow_configure.png)
 
-7. ServiceNow のインスタンス名、管理者のユーザー名、および管理者パスワードを **[サインオンの構成]** フォームに入力し、**[今すぐ構成]** をクリックします。 ここで指定する管理者のユーザー名には、ServiceNow で **security_admin** ロールが割り当てられている必要があります。 これとは別に、ServiceNow を手動で構成して Azure AD を SAML ID プロバイダーとして使用させる方法があります。**[シングル サインオンを手動で構成する]** をクリックして、[クイック リファレンス] セクションから**サインアウト URL、SAML エンティティ ID、および SAML シングル サインオン サービス URL** をコピーします。
+7. ServiceNow のインスタンス名、管理者のユーザー名、および管理者パスワードを **[サインオンの構成]** フォームに入力し、 **[今すぐ構成]** をクリックします。 ここで指定する管理者のユーザー名には、ServiceNow で **security_admin** ロールが割り当てられている必要があります。 これとは別に、ServiceNow を手動で構成して Azure AD を SAML ID プロバイダーとして使用させる方法があります。 **[シングル サインオンを手動で構成する]** をクリックして、[クイック リファレンス] セクションから**サインアウト URL、SAML エンティティ ID、および SAML シングル サインオン サービス URL** をコピーします。
 
     ![アプリケーション URL の構成](./media/servicenow-tutorial/configure.png "Configure app URL")
 
@@ -332,7 +332,7 @@ ServiceNow で Azure AD シングル サインオンを構成するには、次�
 
 1. ServiceNow Express アプリケーションに管理者としてサインオンします。
 
-2. 左側にあるナビゲーション ウィンドウで、**[Single Sign-On (シングル サインオン)]** をクリックします。
+2. 左側にあるナビゲーション ウィンドウで、 **[Single Sign-On (シングル サインオン)]** をクリックします。
 
     ![アプリケーション URL の構成](./media/servicenow-tutorial/ic7694980ex.png "Configure app URL")
 
@@ -346,7 +346,7 @@ ServiceNow で Azure AD シングル サインオンを構成するには、次�
 
     c. **[The field on the user table that...]** ボックスに、「**user_name**」と入力します。
 
-4. **[Single Sign-On (シングル サインオン)]** ダイアログで、**[Add New Certificate (新しい証明書の追加)]** をクリックします。
+4. **[Single Sign-On (シングル サインオン)]** ダイアログで、 **[Add New Certificate (新しい証明書の追加)]** をクリックします。
 
     ![シングル サインオンの構成](./media/servicenow-tutorial/ic7694973ex.png "Configure single sign-on")
 
@@ -362,11 +362,11 @@ ServiceNow で Azure AD シングル サインオンを構成するには、次�
 
     d. **[Type]** で **[Trust Store Cert]** を選択します。
 
-    e. Azure Portal からダウンロードした Base64 エンコードの証明書をメモ帳で開き、その内容をクリップボードにコピーして、**[PEM Certificate]** ボックスに貼り付けます。
+    e. Azure Portal からダウンロードした Base64 エンコードの証明書をメモ帳で開き、その内容をクリップボードにコピーして、 **[PEM Certificate]** ボックスに貼り付けます。
 
     f. **[Update]\(更新\)** をクリックします。
 
-6. **[Single Sign-On (シングル サインオン)]** ダイアログで、**[Add New IdP (新しい IdP の追加)]** をクリックします。
+6. **[Single Sign-On (シングル サインオン)]** ダイアログで、 **[Add New IdP (新しい IdP の追加)]** をクリックします。
 
     ![シングル サインオンの構成](./media/servicenow-tutorial/ic7694976ex.png "Configure single sign-on")
 
@@ -384,7 +384,7 @@ ServiceNow で Azure AD シングル サインオンを構成するには、次�
 
     e. **[Identity Provider Certificate (ID プロバイダー証明書)]** で、前の手順で作成した証明書を選択します。
 
-8. **[Advanced Settings (詳細設定)]** をクリックし、**[Additional Identity Provider Properties (追加の ID プロバイダーのプロパティ)]** で、次の手順に従います。
+8. **[Advanced Settings (詳細設定)]** をクリックし、 **[Additional Identity Provider Properties (追加の ID プロバイダーのプロパティ)]** で、次の手順に従います。
 
     ![シングル サインオンの構成](./media/servicenow-tutorial/ic7694983ex.png "Configure single sign-on")
 
@@ -411,7 +411,7 @@ ServiceNow で Azure AD シングル サインオンを構成するには、次�
 
     d. **[Clock Skew]** ボックスに「**60**」と入力します。
 
-    e. ServiceNow のデプロイでユーザーを一意に識別するためのフィールドに応じて、**[User Field]** ボックスに「**email**」または「**user_id**」と入力します。
+    e. ServiceNow のデプロイでユーザーを一意に識別するためのフィールドに応じて、 **[User Field]** ボックスに「**email**」または「**user_id**」と入力します。
 
     > [!NOTE]
     > SAML トークンの一意の識別子として Azure AD ユーザー ID (ユーザーのプリンシパル名) か電子メール アドレスを出力するように Azure AD を構成できます。そのためには、Azure Portal で **[ServiceNow]、[属性]、[シングル サインオン]** セクションの順に移動し、目的のフィールドを **nameidentifier** 属性にマッピングします。 Azure AD に格納される選択した属性 (ユーザー プリンシパル名など) の値と、ServiceNow に格納される入力したフィールド (user_name など) の値が一致している必要があります。
@@ -422,7 +422,7 @@ ServiceNow で Azure AD シングル サインオンを構成するには、次�
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
+1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
@@ -447,7 +447,7 @@ ServiceNow で Azure AD シングル サインオンを構成するには、次�
 
 このセクションでは、Britta Simon に ServiceNow へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[ServiceNow]** を選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[ServiceNow]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -459,15 +459,15 @@ ServiceNow で Azure AD シングル サインオンを構成するには、次�
 
     ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
 5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
+6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
 
-7. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンをクリックします。
+7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
 
 ### <a name="create-servicenow-test-user"></a>ServiceNow テスト ユーザーの作成
 

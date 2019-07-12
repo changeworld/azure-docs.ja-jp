@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 52c49bdd51bda7876d19a681bde79c9dbeeb4ea7
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: e51c37f983162b82747760b05e2ec5e4e6553c0b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65901290"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67106939"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-answerhub"></a>チュートリアル:Azure Active Directory と AnswerHub の統合
 

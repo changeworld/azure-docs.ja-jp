@@ -4,14 +4,14 @@ description: Azure Cosmos コンテナーに対して実行した操作の要求
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 05/23/2019
+ms.date: 06/14/2019
 ms.author: thweiss
-ms.openlocfilehash: 0671556a1ad049782090ffede509072adbac4c6a
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 07ca6278da6dd1f50f017f389c2c1389a42196f4
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66416039"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67163833"
 ---
 # <a name="find-the-request-unit-charge-in-azure-cosmos-db"></a>Azure Cosmos DB の要求ユニット使用量を確認する
 
@@ -302,3 +302,4 @@ RU 使用量を最適化する方法については、次の記事をご覧く�
 * [プロビジョニングされたスループットのグローバルなスケーリング](scaling-throughput.md)
 * [コンテナーとデータベースのスループットのプロビジョニング](set-throughput.md)
 * [特定のコンテナーに対してスループットをプロビジョニングする](how-to-provision-container-throughput.md)
+* [Azure Cosmos DB のメトリックを使用した監視とデバッグ](use-metrics.md)

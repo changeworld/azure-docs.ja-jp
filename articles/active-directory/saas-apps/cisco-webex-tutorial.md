@@ -15,19 +15,19 @@ ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 308f745489fba2e2b539a2f2615b65228565dcf9
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: ec8c2fc2c2dbbfd2c98184215f696aaf18a87193
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65900101"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67105550"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-webex-meetings"></a>チュートリアル:Azure Active Directory と Cisco Webex Meetings の統合
 
 このチュートリアルでは、Cisco Webex Meetings と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Cisco Webex Meetings と Azure AD の統合には、次の利点があります。
 
-* Cisco Webex Meetings にアクセスするユーザーを Azure AD で制御できます。
+* Cisco Webex Meetings にアクセスする Azure AD ユーザーを制御できます。
 * ユーザーが自分の Azure AD アカウントで Cisco Webex Meetings に自動的にサインイン (シングル サインオン) するように設定できます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
@@ -74,7 +74,7 @@ Azure AD への Cisco Webex Meetings の統合を構成するには、ギャラ�
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
 このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Cisco Webex Meetings で Azure AD のシングル サインオンを構成し、テストします。
-シングル サインオンを機能させるには、Azure AD ユーザーと Cisco Webex Meetings 内の関連ユーザーとの間にリンク関係を確立する必要があります。
+シングル サインオンを機能させるには、Azure AD ユーザーと Cisco Webex Meetings 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 Cisco Webex Meetings で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
@@ -171,7 +171,7 @@ Cisco Webex Meetings で Azure AD シングル サインオンを構成するに
 
 1. 管理者権限を備えた資格情報を使って [Cisco Cloud Collaboration Management](https://www.webex.com/go/connectadmin) に移動します。
 
-2. **[Security Settings]** に進み、 **[フェデレーション Web SSO 構成]** に移動します。
+2. **[Security Settings]** に進み、 **[フェデレーション Web SSO 構成]** にナビゲートします。
  
     ![Configure single sign-on](./media/cisco-webex-tutorial/tutorial-cisco-webex-10.png)
 

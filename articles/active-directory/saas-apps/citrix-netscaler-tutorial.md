@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 6d434295a6a46ee5b7089608cbf788ff91589fb7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cc32f464044149e263db60fc2de237b473da5ab2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "65863406"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67105490"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-citrix-netscaler"></a>チュートリアル:Azure Active Directory と Citrix Netscaler の統合
 
@@ -55,11 +55,11 @@ Azure AD への Citrix Netscaler の統合を構成するには、ギャラリ�
 
 **ギャラリーから Citrix Netscaler を追加するには、次の手順を行います。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
     ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
+2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -67,7 +67,7 @@ Azure AD への Citrix Netscaler の統合を構成するには、ギャラリ�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Citrix Netscaler**」と入力し、結果パネルから **[Citrix Netscaler]** を選び、**[追加]** ボタンをクリックしてアプリケーションを追加します。
+4. 検索ボックスに「**Citrix Netscaler**」と入力し、結果パネルから **[Citrix Netscaler]** を選び、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
 
      ![結果リストの Citrix Netscaler](common/search-new-app.png)
 
@@ -91,15 +91,15 @@ Citrix Netscaler で Azure AD シングル サインオンを構成してテス�
 
 Citrix Netscaler で Azure AD シングル サインオンを構成するには、次の手順を行います。
 
-1. [Azure portal](https://portal.azure.com/) の **Citrix Netscaler** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Citrix Netscaler** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
-2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
+2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
     ![シングル サインオン選択モード](common/select-saml-option.png)
 
-3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -119,7 +119,7 @@ Citrix Netscaler で Azure AD シングル サインオンを構成するには�
     > [!NOTE]
     > SSO を動作させるには、パブリック サイトからこれらの URL にアクセスできる必要があります。 Netscaler 側でファイアウォールまたは他のセキュリティ設定を有効にし、Azure AD で構成済みの ACS URL にトークンをポストできるようにする必要があります。
 
-5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
+5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
@@ -167,7 +167,7 @@ Citrix Netscaler で Azure AD シングル サインオンを構成するには�
 
     c. **[Single Logout URL]\(シングル ログアウト URL\)** テキストボックスに、Azure portal からコピーした**ログアウト URL** の値を貼り付けます。
 
-    d. **[IDP Certificate Name]\(IDP 証明書名\)** で、**[+]** 記号をクリックし、Azure portal からダウンロードした証明書を追加します。 アップロードされた後、ドロップダウンから証明書を選択してください。
+    d. **[IDP Certificate Name]\(IDP 証明書名\)** で、 **[+]** 記号をクリックし、Azure portal からダウンロードした証明書を追加します。 アップロードされた後、ドロップダウンから証明書を選択してください。
 
     e. このページでさらに以下のフィールドを設定する必要があります
 
@@ -191,15 +191,15 @@ Citrix Netscaler で Azure AD シングル サインオンを構成するには�
 
     b. **[Client Experience]\(クライアント エクスペリエンス\)** タブで、次のスクリーンショットに示すように変更します。
 
-    c. 以下のように **[General]\(全般\) タブ**で変更を続行し、**[OK]** をクリックします
+    c. 以下のように **[General]\(全般\) タブ**で変更を続行し、 **[OK]** をクリックします
 
     ![Configure single sign-on](./media/citrix-netscaler-tutorial/configure07.png)
 
-    d. **[Published Applications]\(公開されたアプリケーション\)** タブで、以下のスクリーンショットに示すように変更し、**[OK]** をクリックします。
+    d. **[Published Applications]\(公開されたアプリケーション\)** タブで、以下のスクリーンショットに示すように変更し、 **[OK]** をクリックします。
 
     ![Configure single sign-on](./media/citrix-netscaler-tutorial/configure08.png)
 
-    e. **[Security]\(セキュリティ\)** タブで、以下のスクリーンショットに示すように変更し、**[OK]** をクリックします。
+    e. **[Security]\(セキュリティ\)** タブで、以下のスクリーンショットに示すように変更し、 **[OK]** をクリックします。
 
     ![Configure single sign-on](./media/citrix-netscaler-tutorial/configure09.png)
 
@@ -207,15 +207,15 @@ Citrix Netscaler で Azure AD シングル サインオンを構成するには�
 
     ![Configure single sign-on](./media/citrix-netscaler-tutorial/configure10.png)
 
-8. 以下のスクリーンショットに示すように、**[SAML]** セクションで**サーバー**を追加します。
+8. 以下のスクリーンショットに示すように、 **[SAML]** セクションで**サーバー**を追加します。
 
     ![Configure single sign-on](./media/citrix-netscaler-tutorial/configure11.png)
 
-9. 以下のスクリーンショットに示すように、**[SAML]** セクションで**ポリシー**を追加します。
+9. 以下のスクリーンショットに示すように、 **[SAML]** セクションで**ポリシー**を追加します。
 
      ![Configure single sign-on](./media/citrix-netscaler-tutorial/configure12.png)
 
-10. **[Global Settings]\(グローバル設定\)** ページで、**[Clientless Access]\(クライアントレス アクセス\)** セクションに移動します。
+10. **[Global Settings]\(グローバル設定\)** ページで、 **[Clientless Access]\(クライアントレス アクセス\)** セクションに移動します。
 
     ![Configure single sign-on](./media/citrix-netscaler-tutorial/configure13.png)
 
@@ -229,7 +229,7 @@ Citrix Netscaler で Azure AD シングル サインオンを構成するには�
 
     c. Click **OK**.
 
-12. 以下のスクリーンショットに示すように、**[Receiver for Web Sites]\(Receiver for Web サイト\)** の設定が **[StoreFront]** になっていることを確認します。
+12. 以下のスクリーンショットに示すように、 **[Receiver for Web Sites]\(Receiver for Web サイト\)** の設定が **[StoreFront]** になっていることを確認します。
 
     ![Configure single sign-on](./media/citrix-netscaler-tutorial/configure15.png)
 
@@ -249,7 +249,7 @@ Citrix Netscaler で Azure AD シングル サインオンを構成するには�
 
     a. **[Trusted domains only]\(信頼できるドメインのみ\)** を選択します。
 
-    b. **[Add]\(追加\)** をクリックし、**[Trusted domains]\(信頼できるドメイン\)** テキストボックスでドメインを追加します。
+    b. **[Add]\(追加\)** をクリックし、 **[Trusted domains]\(信頼できるドメイン\)** テキストボックスでドメインを追加します。
 
     c. **[Default domain]\(既定のドメイン\)** リストから既定のドメインを選択します。
 
@@ -261,7 +261,7 @@ Citrix Netscaler で Azure AD シングル サインオンを構成するには�
 
     ![Configure single sign-on](./media/citrix-netscaler-tutorial/configure18.png)
 
-    a. **[Add]\(追加\)** をクリックし、**[NetScaler Gateways]\(NetScaler ゲートウェイ\)** テキストボックスで NetScaler ゲートウェイを追加します。
+    a. **[Add]\(追加\)** をクリックし、 **[NetScaler Gateways]\(NetScaler ゲートウェイ\)** テキストボックスで NetScaler ゲートウェイを追加します。
 
     b. **[閉じる]** をクリックします。
 
@@ -273,7 +273,7 @@ Citrix Netscaler で Azure AD シングル サインオンを構成するには�
 
     b. **[NetScaler Gateway URL]\(NetScaler ゲートウェイの URL\)** テキストボックスに、NetScaler ゲートウェイの URL を入力します。
 
-    c. **[Usage or role]\(使用方法またはロール\)** で、**[Authentication and HDX routing]\(認証と HDX ルーティング\)** を選択します。
+    c. **[Usage or role]\(使用方法またはロール\)** で、 **[Authentication and HDX routing]\(認証と HDX ルーティング\)** を選択します。
 
     d. Click **OK**.
 
@@ -313,7 +313,7 @@ Citrix Netscaler で Azure AD シングル サインオンを構成するには�
 
     a. **[Internal beacon]\(内部ビーコン\)** で **[Use the service URL]\(サービス URL を使用する\)** を選択します。
 
-    b. **[Add]\(追加\)** をクリックし、**[External beacons]\(外部ビーコン\)** テキストボックスで URL を追加します。
+    b. **[Add]\(追加\)** をクリックし、 **[External beacons]\(外部ビーコン\)** テキストボックスで URL を追加します。
 
     c. Click **OK**.
 
@@ -321,7 +321,7 @@ Citrix Netscaler で Azure AD シングル サインオンを構成するには�
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
+1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
@@ -335,7 +335,7 @@ Citrix Netscaler で Azure AD シングル サインオンを構成するには�
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
+    b. **[ユーザー名]** フィールドに **brittasimon@yourcompanydomain.extension** と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -346,11 +346,11 @@ Citrix Netscaler で Azure AD シングル サインオンを構成するには�
 
 このセクションでは、Britta Simon に Citrix Netscaler へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]**、**[すべてのアプリケーション]**、**[Citrix Netscaler]** の順に選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** 、 **[すべてのアプリケーション]** 、 **[Citrix Netscaler]** の順に選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-2. アプリケーション リストで、**[Citrix Netscaler]** を選択します。
+2. アプリケーション リストで、 **[Citrix Netscaler]** を選択します。
 
     ![アプリケーション リストの Citrix Netscaler リンク](common/all-applications.png)
 
@@ -358,15 +358,15 @@ Citrix Netscaler で Azure AD シングル サインオンを構成するには�
 
     ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
 5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
+6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
 
-7. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンをクリックします。
+7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
 
 ### <a name="create-citrix-netscaler-test-user"></a>Citrix Netscaler テスト ユーザーを作成する
 

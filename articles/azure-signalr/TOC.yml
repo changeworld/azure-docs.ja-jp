@@ -53,6 +53,8 @@
       href: signalr-concept-performance.md
     - name: Authentication
       href: signalr-concept-authenticate-oauth.md
+    - name: イベント処理
+      href: signalr-concept-event-grid-integration.md
 - name: ハウツー ガイド
   items:
     - name: スケール
@@ -67,6 +69,8 @@
       items:
         - name: Azure Functions のバインド
           href: signalr-concept-azure-functions.md
+        - name: Event Grid の統合
+          href: signalr-howto-event-grid-integration.md
 - name: 参照
   items:
     - name: Azure CLI

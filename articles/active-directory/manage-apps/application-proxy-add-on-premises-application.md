@@ -12,12 +12,12 @@ ms.date: 05/21/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82c7b698f655b82ba95f66127f27a921def02cde
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 11bb99ada76131000f49be5a1216a1bb71fbb88a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66472983"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108724"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>チュートリアル:Azure Active Directory のアプリケーション プロキシを使用してリモート アクセスするためのオンプレミス アプリケーションを追加する
 
@@ -87,7 +87,7 @@ Azure AD アプリケーション プロキシの環境を準備するには、�
 
 ファイアウォールが送信元ユーザーに応じてトラフィックを処理している場合は、ネットワーク サービスとして実行されている Windows サービスからのトラフィック用にポート 80 と 443 も開きます。
 
-既にアプリケーション プロキシを使用している場合、古いバージョンのコネクタがインストールされている可能性があります。 このチュートリアルに従って、最新バージョンのコネクタをインストールしてください。 1.5.132.0 より前のバージョンでは、次のポートも開く必要があります。5671、8080、9090 ～ 9091、9350、9352、10100 ～ 10120。 
+既にアプリケーション プロキシを使用している場合、古いバージョンのコネクタがインストールされている可能性があります。 このチュートリアルに従って、最新バージョンのコネクタをインストールしてください。 1\.5.132.0 より前のバージョンでは、次のポートも開く必要があります。5671、8080、9090 ～ 9091、9350、9352、10100 ～ 10120。 
 
 ### <a name="allow-access-to-urls"></a>URL へのアクセスを許可する
 

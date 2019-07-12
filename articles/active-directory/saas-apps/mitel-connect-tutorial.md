@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/03/2019
 ms.author: jeedes
-ms.openlocfilehash: 611867cf5606d5a1078706e1c0f67f673a7fa500
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: aa3548a71e403728cbec4b8df2b0dce1cf6abde7
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66254552"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164473"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mitel-micloud-connect"></a>チュートリアル:Azure Active Directory と Mitel MiCloud Connect の統合
 
@@ -210,7 +210,7 @@ Mitel アカウント ポータルでのユーザーの追加の詳細につい�
 * **勤務先のメール アドレス:** `brittasimon@<yourcompanydomain>.<extension>`   
 (例: [brittasimon@contoso.com](mailto:brittasimon@contoso.com))
 
-* **ユーザー名:** `brittasimon@<yourcompanydomain>.<extension> `  
+* **ユーザー名:** `brittasimon@<yourcompanydomain>.<extension>`  
 (例: [brittasimon@contoso.com](mailto:brittasimon@contoso.com)。ユーザー名は通常、ユーザーの勤務先のメール アドレスと同じ)
 
 **注:** MiCloud Connect のユーザー名は、Azure 内のユーザーのメール アドレスと同じである必要があります。

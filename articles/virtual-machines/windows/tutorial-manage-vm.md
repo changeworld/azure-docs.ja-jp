@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 06/06/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 6a23ca469aab582fed4b4e72f48bc2dd0b9dafe0
-ms.sourcegitcommit: f9448a4d87226362a02b14d88290ad6b1aea9d82
+ms.openlocfilehash: 3055b629865344bef43c3d06ec88ed394e498348
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66807787"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67075616"
 ---
 # <a name="tutorial-create-and-manage-windows-vms-with-azure-powershell"></a>チュートリアル:Azure PowerShell を使用して Windows VM を作成および管理する
 
@@ -184,10 +184,10 @@ VM のサイズにより、CPU、GPU、メモリなど、VM で利用できる�
 | Type                     | 一般的なサイズ           |    説明       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [汎用](sizes-general.md)         |B、Dsv3、Dv3、DSv2、Dv2、Av2、DC| CPU とメモリのバランスがとれています。 開発/テスト環境や、小中規模のアプリケーションとデータ ソリューションに最適です。  |
-| [コンピューティングの最適化](sizes-compute.md)   | Fsv2            | メモリに対する CPU の比が大きくなっています。 トラフィックが中程度のアプリケーション、ネットワーク アプライアンス、バッチ処理に適しています。        |
-| [メモリの最適化](sizes-memory.md)    | Esv3、Ev3、M、GS、G、DSv2、Dv2  | コアに対するメモリの比が大きくなっています。 リレーショナル データベース、中から大規模のキャッシュ、およびインメモリ分析に適しています。                 |
-| [ストレージの最適化](sizes-storage.md)      | Lsv2、Ls                | 高いディスク スループットと IO。 ビッグ データ、SQL、および NoSQL のデータベースに最適です。                                                         |
-| [GPU](sizes-gpu.md)          | NV、NVv2、NC、NCv2、NCv3、NDv2、ND   | 負荷の高いグラフィック処理やビデオ編集に特化した VM です。       |
+| [コンピューティングの最適化](sizes-compute.md)   | Fsv2          | メモリに対する CPU の比が大きくなっています。 トラフィックが中程度のアプリケーション、ネットワーク アプライアンス、バッチ処理に適しています。        |
+| [メモリの最適化](sizes-memory.md)    | Esv3、Ev3、M、DSv2、Dv2  | コアに対するメモリの比が大きくなっています。 リレーショナル データベース、中から大規模のキャッシュ、およびインメモリ分析に適しています。                 |
+| [ストレージの最適化](sizes-storage.md)      | Lsv2、Ls              | 高いディスク スループットと IO。 ビッグ データ、SQL、および NoSQL のデータベースに最適です。                                                         |
+| [GPU](sizes-gpu.md)          | NV、NVv2、NC、NCv2、NCv3、ND            | 負荷の高いグラフィック処理やビデオ編集に特化した VM です。       |
 | [高性能](sizes-hpc.md) | H        | オプションで高スループットのネットワーク インターフェイス (RDMA) を備えた、最も強力な CPU VM です。 |
 
 ### <a name="find-available-vm-sizes"></a>使用可能な VM サイズを確認する
