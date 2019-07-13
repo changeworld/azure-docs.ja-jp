@@ -45,7 +45,8 @@
 - name: ハウツー ガイド
   items:
     - name: サムネイルのサイズ変更とトリミング
-      href: resize-and-crop-thumbnails.md
+      maintainContext: true
+      href: ../bing-web-search/resize-and-crop-thumbnails.md
 - name: 概念
   items:
     - name: エンティティの検索
