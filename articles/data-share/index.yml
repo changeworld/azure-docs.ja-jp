@@ -10,7 +10,7 @@ metadata:
   ms.topic: landing-page
   ms.date: 07/10/2019
 abstract:
-  description: <p>Azure Data Share プレビューは、サードパーティの組織とデータを共有するためのセキュリティで保護された安全なサービスです。 データ共有の関係を管理、監視、制御する機能を使用して、共有するデータセットの選択、受信者の追加、データ共有の開始を実行します。 </p><p>Microsoft のチュートリアルを通じて Azure Data Share の使用方法を学習しましょう。</p>
+  description: <p>Azure Data Share プレビューは、サードパーティの組織とデータを共有するためのセキュリティで保護された安全なサービスです。 データ共有の関係を管理、監視、制御する機能を使用して、共有するデータセットの選択、受信者の追加、データ共有の開始を実行します。 </p><p>Microsoft のチュートリアルと攻略ガイドを通じて Azure Data Share の使用方法を学習しましょう。</p>
   aside:
     image:
       alt: null

@@ -358,6 +358,8 @@
                       href: app/status-monitor-v2-api-get-status.md
                     - name: API Set-ApplicationInsightsMonitoringConfig
                       href: app/status-monitor-v2-api-set-config.md
+                    - name: API Start-ApplicationInsightsMonitoringTrace
+                      href: app/status-monitor-v2-api-start-trace.md
                 - name: Windows デスクトップ
                   href: app/windows-desktop.md
                 - name: コンソール
@@ -460,6 +462,19 @@
             - name: アプリケーション データを Log Analytics に送信する
               href: platform/app-insights-connector.md
             - name: アプリケーション データをエクスポートする
+              items:
+                - name: 連続エクスポート
+                  href: app/export-telemetry.md
+                  items:
+                    - name: コード サンプル
+                      items:
+                        - name: Stream Analytics を使用して SQL にエクスポートする
+                          href: app/code-sample-export-sql-stream-analytics.md
+                        - name: Stream Analytics にエクスポートする
+                          href: app/export-stream-analytics.md
+                - name: データのエクスポート モデル
+                  href: app/export-data-model.md
+            - name: トラブルシューティング
               items:
                 - name: .NET のデータがない
                   href: app/asp-net-troubleshoot-no-data.md

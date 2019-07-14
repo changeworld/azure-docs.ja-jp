@@ -30,6 +30,8 @@
       items:
         - name: サーバーレベルの IP ファイアウォール規則
           href: sql-database-server-level-firewall-rule.md
+        - name: Managed Instance でのパブリック エンドポイントの構成
+          href: sql-database-managed-instance-public-endpoint-configure.md
         - name: マネージド インスタンスへのクライアント VM 接続
           href: sql-database-managed-instance-configure-vm.md
         - name: マネージド インスタンスへのポイント対サイト接続
@@ -512,8 +514,6 @@
           href: sql-database-managed-instance-threat-detection.md
         - name: アプリケーションの接続
           href: sql-database-managed-instance-connect-app.md
-        - name: パブリック エンドポイントの構成
-          href: sql-database-managed-instance-public-endpoint-configure.md
     - name: データの読み込みと移動
       items:
         - name: Azure 内でのデータベースのコピー

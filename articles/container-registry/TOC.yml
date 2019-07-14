@@ -41,10 +41,14 @@
   items:
     - name: Container Registry の SKU
       href: container-registry-skus.md
+    - name: レジストリ、リポジトリ、イメージ
+      href: container-registry-concepts.md
     - name: イメージ ストレージ
       href: container-registry-storage.md
     - name: コンテンツの形式
       href: container-registry-image-formats.md
+    - name: タグとバージョンのイメージ
+      href: container-registry-image-tag-version.md
     - name: geo レプリケーション
       href: container-registry-geo-replication.md
     - name: レジストリのベスト プラクティス

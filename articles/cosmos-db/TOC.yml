@@ -285,7 +285,7 @@
           href: online-backup-and-restore.md
         - name: コンプライアンス
           href: compliance.md
-    - name: リソース制限
+    - name: サービス クォータ
       href: concepts-limits.md
 - name: Cassandra、MongoDB、およびその他の API
   expanded: true
@@ -632,6 +632,8 @@
           href: key-value-store-cost.md
     - name: トラブルシューティング
       items:
+        - name: クエリ パフォーマンスのトラブルシューティング
+          href: troubleshoot-query-performance.md
         - name: Java Async SDK のトラブルシューティング
           href: troubleshoot-java-async-sdk.md
         - name: .NET SDK のトラブルシューティング
