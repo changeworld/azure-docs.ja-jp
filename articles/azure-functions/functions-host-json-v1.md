@@ -213,7 +213,7 @@ host.json の一部の設定は、[local.settings.json](functions-run-local.md#l
 |プロパティ  |既定値 | 説明 |
 |---------|---------|---------| 
 |categoryFilter|該当なし|カテゴリ別のフィルターを指定します| 
-|defaultLevel|情報|`categoryLevels` 配列に指定されていないカテゴリの場合、このレベル以上のログを Application Insights に送信します。| 
+|defaultLevel|Information|`categoryLevels` 配列に指定されていないカテゴリの場合、このレベル以上のログを Application Insights に送信します。| 
 |categoryLevels|該当なし|各カテゴリの Application Insights に送信される最小ログ レベルを指定するカテゴリの配列。 ここで指定されるカテゴリは、同じ値で始まるすべてのカテゴリを制御し、長い値の方が優先されます。 前述のサンプル *host.json* ファイルでは、`Information` レベルの "Host.Aggregator" で始まるすべてのカテゴリ。 `Error` レベルのログである、"Host.Executor" など "Host" で始まるその他すべてのカテゴリ。| 
 
 ## <a name="queues"></a>queues
