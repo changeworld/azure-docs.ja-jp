@@ -99,7 +99,7 @@ Get-AzEnvironment -Name AzureGermanCloud
 |プロパティ名|値|
 |----|----|
 | Name | AzureGermanCloud |
-| Name | False |
+| EnableAdfsAuthentication | False |
 | ActiveDirectoryServiceEndpointResourceI | http://management.core.cloudapi.de/ |
 | GalleryURL | https://gallery.cloudapi.de/ |
 | ManagementPortalUrl | https://portal.microsoftazure.de/ | 
