@@ -84,7 +84,7 @@ Azure Blob Storage にデータを転送するインポート ジョブを作成
 
 次の手順を実行して、Azure portal でインポート ジョブを作成します。
 
-1. https://portal.azure.com/ にログオンします。
+1. [https://portal.azure.com/](https://portal.azure.com/ ) にログオンします。
 2. **[すべてのサービス] > [ストレージ] > [インポート/エクスポート ジョブ]** の順に移動します。 
     
     ![インポート/エクスポートへの移動](./media/storage-import-export-data-to-blobs/import-to-blob1.png)
