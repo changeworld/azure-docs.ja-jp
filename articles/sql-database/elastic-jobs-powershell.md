@@ -292,7 +292,7 @@ $JobExecution | Get-AzSqlElasticJobTargetExecution -Count 2
 
 |状態|説明|
 |:---|:---|
-|**作成日時** | ジョブの実行は作成されたばかりで、まだ進行中ではありません。|
+|**Created** | ジョブの実行は作成されたばかりで、まだ進行中ではありません。|
 |**InProgress** | ジョブの実行は現在進行中です。|
 |**WaitingForRetry** | ジョブ実行はそのアクションを完了できず、再試行を待機しています。|
 |**Succeeded** | ジョブの実行は正常に完了しました。|

@@ -75,7 +75,7 @@ Recovery Services コンテナーの作成または更新操作には、2 種類
 |Name  |Type  |説明  |
 |---------|---------|---------|
 |200 OK     |   [コンテナー](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vault)      | OK        |
-|201 Created     | [コンテナー](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vault)        |   作成日時      |
+|201 Created     | [コンテナー](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vault)        |   作成されました      |
 
 REST API の応答の詳細については、「[Process the response message](/rest/api/azure/#process-the-response-message)」(応答メッセージを処理する) を参照してください。
 
