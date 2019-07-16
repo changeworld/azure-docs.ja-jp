@@ -137,10 +137,14 @@
           href: how-to-update-iot-edge.md
     - name: DPS による自動プロビジョニング
       items:
-        - name: Linux
-          href: how-to-auto-provision-simulated-device-linux.md
-        - name: Windows
-          href: how-to-auto-provision-simulated-device-windows.md
+        - name: 対称キーの構成証明
+          href: how-to-auto-provision-symmetric-keys.md
+        - name: TPM の構成証明
+          items:
+            - name: Linux
+              href: how-to-auto-provision-simulated-device-linux.md
+            - name: Windows
+              href: how-to-auto-provision-simulated-device-windows.md
     - name: カスタム モジュールの開発とデバッグ
       items:
         - name: Visual Studio 2019
