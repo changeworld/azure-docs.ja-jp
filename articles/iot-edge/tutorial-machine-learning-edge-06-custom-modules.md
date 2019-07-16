@@ -314,7 +314,7 @@ Avro Writer モジュールには、ソリューションにおいて、メッ�
 
 ### <a name="create-module-and-copy-files"></a>モジュールを作成してファイルをコピーする
 
-1. コマンド パレットで、「Python: Select Interpreter」を検索し、選択します。**Select Interpreter**」と入力します。
+1. コマンド パレットで、「**Python: Select Interpreter**」を検索し、選択します。
 
 1. C:\\Python37 に見つかったインタープリターを選択します。
 
