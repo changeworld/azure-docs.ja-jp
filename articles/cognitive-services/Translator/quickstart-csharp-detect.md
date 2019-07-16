@@ -10,18 +10,21 @@ ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/13/2019
 ms.author: swmachan
-ms.openlocfilehash: eaf9fa86437d2c69a9a1a68fba797f69c1339dd1
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: a445d9244e08e6cd8a71334aa1fabddb677544c4
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448254"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67705689"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-detect-text-language-using-c"></a>クイック スタート:Translator Text API と C# を使用してテキストの言語を検出する
 
 このクイックスタートでは、.NET Core、C# 7.1 以降、および Translator Text REST API を使用して、指定されたテキストの言語を検出する方法について説明します。
 
 このクイック スタートでは、[Azure Cognitive Services アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と Translator Text リソースが必要になります。 アカウントを持っていない場合は、[無料試用版](https://azure.microsoft.com/try/cognitive-services/)を使用してサブスクリプション キーを取得できます。
+
+>[!TIP]
+> すべてのコードを一度に見たい場合は、このサンプルのソース コードを [GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-C-Sharp) で入手できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -178,7 +181,7 @@ foreach (DetectResult o in deserializedOutput)
 }
 ```
 
-Cognitive Services のマルチサービス サブスクリプションを使用している場合は、要求のパラメーターに `Ocp-Apim-Subscription-Region` も含める必要があります。 [マルチサービス サブスクリプションを使用した認証の詳細を参照してください](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication)。 
+Cognitive Services のマルチサービス サブスクリプションを使用している場合は、要求のパラメーターに `Ocp-Apim-Subscription-Region` も含める必要があります。 [マルチサービス サブスクリプションを使用した認証の詳細を参照してください](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication)。
 
 ## <a name="put-it-all-together"></a>すべてをまとめた配置
 
@@ -261,10 +264,10 @@ Transliteration supported: False.
 
 ## <a name="next-steps"></a>次の手順
 
-このクイック スタートをはじめとする各種ドキュメントで翻訳と表記変換を含んだサンプル コードを詳しく見てみましょう。GitHub にある Translator Text の各種サンプル プロジェクトもご覧ください。
+API のリファレンスを見て、Translator Text API でできるすべてのことを理解してください。
 
 > [!div class="nextstepaction"]
-> [GitHub で C# のコード例を詳しく見てみる](https://aka.ms/TranslatorGitHub?type=&language=c%23)
+> [API リファレンス](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)
 
 ## <a name="see-also"></a>関連項目
 

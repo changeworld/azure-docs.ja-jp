@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 06/28/2019
+ms.date: 07/09/2019
 ms.author: alkohli
-ms.openlocfilehash: 3972f9f93cc6323601102f1a54bb067a8995d9e4
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: bc6b9662a5d67f6ed315c33444bcb061115fe6d4
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67484756"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67701475"
 ---
 # <a name="what-is-azure-data-box-edge"></a>Azure Data Box Edge とは 
 
@@ -34,7 +34,7 @@ Azure Data Box Edge は、ネットワーク データ転送の機能を備え�
     - クラウドでのより深い分析に必要なデータをサブセット化して転送します。
     - 分析して、IoT イベントに対応します。 
 
-- **Inference Azure Machine Learning** - Data Box Edge により、Machine Learning (ML) モデルを実行して、データがクラウドに送信される前に対応できるように、迅速な結果を得ることができます。 ML モデルを再調整して改善し続けるために、データ セット全体を転送することができます。 Databox Edge デバイスで Azure ML ハードウェア アクセラレータ モデルを使用する方法の詳細については、[Databox Edge への Azure ML ハードウェア アクセラレーション対応モデルのデプロイ](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-fpga-web-service#deploy-to-a-local-edge-server)に関するページを参照してください。
+- **Inference Azure Machine Learning** - Data Box Edge により、Machine Learning (ML) モデルを実行して、データがクラウドに送信される前に対応できるように、迅速な結果を得ることができます。 ML モデルを再調整して改善し続けるために、データ セット全体を転送することができます。 Data Box Edge デバイスで Azure ML ハードウェア アクセラレータ モデルを使用する方法の詳細については、[Data Box Edge への Azure ML ハードウェア アクセラレーション対応モデルのデプロイ](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-fpga-web-service#deploy-to-a-local-edge-server)に関するページを参照してください。
 
 - **ネットワーク経由でデータを Azure に転送する** - 計算や分析をさらに可能にするか、アーカイブ目的のために、Data Box Edge を使用して、Azure にデータを簡単かつ迅速に転送します。 
 
@@ -88,16 +88,9 @@ Data Box Edge ソリューションは、Data Box Edge リソース、Data Box E
 
 Data Box Edge 物理デバイス、Azure リソース、データ転送先のターゲット ストレージ アカウントは、すべて同じ地域にある必要はありません。
 
-- **リソースの可用性** - このリリースでは、Data Box Edge リソースは次の地域で利用できます。
-    - **米国** - 米国東部
-    - **欧州連合** - 欧州西部
-    - **アジア太平洋** - 東南アジア
+- **リソースの使用可能性** - Data Box Edge リソースを使用できるすべてのリージョンの一覧については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)」をご覧ください。 Data Box Edge は、Azure Government クラウドにデプロイすることもできます。 詳細については、「[What is Azure Government? (Azure Government とは)](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)」を参照してください。
     
-    Data Box Edge は、Azure Government クラウドにデプロイすることもできます。 詳細については、「[What is Azure Government? (Azure Government とは)](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)」を参照してください。
-    
-- **転送先ストレージ アカウント** - データを格納するストレージ アカウントは、すべての Azure 地域で利用できます。 
-
-    最適なパフォーマンスを得るには、ストレージ アカウントが Data Box データを格納する地域は、デバイスが配置されている場所の近くでなければなりません。 デバイスから離れた場所にあるストレージ アカウントは、待ち時間が長くなり、パフォーマンスが低下します。 
+- **転送先ストレージ アカウント** - データを格納するストレージ アカウントは、すべての Azure 地域で利用できます。 パフォーマンスを最適にするには、ストレージ アカウントによって Data Box Edge のデータが格納されるリージョンと、デバイスが配置されている場所を、近くにする必要があります。 デバイスから離れた場所にあるストレージ アカウントは、待ち時間が長くなり、パフォーマンスが低下します。 
 
 
 ## <a name="next-steps"></a>次の手順

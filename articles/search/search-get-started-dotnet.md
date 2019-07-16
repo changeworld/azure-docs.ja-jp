@@ -9,13 +9,13 @@ services: search
 ms.service: search
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 06/20/2019
-ms.openlocfilehash: a5cbd2036f92c27709d92d0cf415cc9837645fb8
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.date: 07/09/2019
+ms.openlocfilehash: d3236f4782cc4fd9113329f03e36515a91bad528
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485612"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798769"
 ---
 # <a name="quickstart-create-an-azure-search-index-in-c-using-the-net-sdk"></a>クイック スタート:.NET SDK を使用して C# で Azure Search インデックスを作成する
 > [!div class="op_single_selector"]
@@ -39,7 +39,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 + [Visual Studio](https://visualstudio.microsoft.com/downloads/) (任意のエディション)。 サンプル コードと手順については、無料の Community エディションでテストされています。
 
-+ サンプルのインデックスとドキュメントは、この記事、およびこのクイックスタート用の [Visual Studio ソリューション](https://github.com/Azure-Samples/azure-search-dotnet-samples/quickstart)に含まれています。
++ サンプルのインデックスとドキュメントは、この記事、およびこのクイックスタート用の [Visual Studio ソリューション](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/quickstart)に含まれています。
 
 + [Azure Search サービスを作成](search-create-service-portal.md)するか、現在のサブスクリプションから[既存のサービスを見つけます](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 このクイック スタート用には、無料のサービスを使用できます。
 
@@ -550,13 +550,11 @@ Azure Search では、ドキュメントにはインデックス作成の入力�
 
 ## <a name="clean-up"></a>クリーンアップ
 
-インデックスが不要になり、それを削除する場合は、`SearchServiceClient` で `Indexes.Delete` を呼び出します。
+独自のサブスクリプションを使用している場合は、プロジェクトの最後に、作成したリソースがまだ必要かどうかを確認してください。 リソースを実行したままにすると、お金がかかる場合があります。 リソースは個別に削除することも、リソース グループを削除してリソースのセット全体を削除することもできます。
 
-```csharp
-serviceClient.Indexes.Delete("hotels");
-```
+ポータルの左側のナビゲーション ウィンドウにある **[すべてのリソース]** または **[リソース グループ]** リンクを使って、リソースを検索および管理できます。
 
-検索サービスも使い終わっている場合は、Azure portal からリソースを削除できます。
+無料サービスを使っている場合は、3 つのインデックス、インデクサー、およびデータソースに制限されることに注意してください。 ポータルで個別の項目を削除して、制限を超えないようにすることができます。 
 
 ## <a name="next-steps"></a>次の手順
 

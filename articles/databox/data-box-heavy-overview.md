@@ -5,28 +5,27 @@ services: databox
 documentationcenter: NA
 author: alkohli
 ms.service: databox
-ms.subservice: pod
+ms.subservice: heavy
 ms.topic: overview
-ms.date: 06/19/2019
+ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 94ba0040b1de7e1f03825f1cd2ef2a6536343d96
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 0f4657cdd71a104ca111f62a6e9757b5a33b46e8
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67271748"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67592311"
 ---
-# <a name="what-is-azure-data-box-heavy-preview"></a>Azure Data Box Heavy とは (プレビュー)
+# <a name="what-is-azure-data-box-heavy"></a>Azure Data Box Heavy とは
 
 Azure Data Box Heavy では、信頼性が高く、迅速かつ安価な方法で、数百テラバイトのデータを Azure に送信できます。 1 PB のストレージ容量を持つ Data Box Heavy デバイスがお客様に出荷され、お客様がこのデバイスにデータを入力して Microsoft に返送することによって、データが Azure に転送されます。 デバイスは堅牢な筐体で保護され、転送中のデータはセキュリティで保護されます。
 
-Data Box Heavy は現在、プレビュー段階です。 Azure portal からデバイスをリクエストするには、サインアップしてください。 データセンターでデバイスを受け取ったら、ローカル Web UI を使用して設定します。 データをサーバーからデバイスにコピーし、デバイスを Azure に返送します。 Azure データセンターで、お客様のデータがお客様の Azure Storage アカウントにアップロードされます。 お客様は Azure portal でエンドツーエンドのプロセス全体を追跡できます。
+データセンターでデバイスを受け取ったら、ローカル Web UI を使用して設定します。 データをサーバーからデバイスにコピーし、デバイスを Azure に返送します。 Azure データセンターで、お客様のデータがお客様の Azure Storage アカウントにアップロードされます。 お客様は Azure portal でエンドツーエンドのプロセス全体を追跡できます。
 
 
 > [!IMPORTANT]
-> - Data Box Heavy はプレビュー段階です。 このソリューションを展開する前に、[プレビューに関する Azure のサービス利用規約](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)を確認してください。
-> - デバイスを要求するには、[Preview portal](https://aka.ms/azuredatabox) でサインアップします。
-> - プレビュー期間中、Data Box Heavy は、米国および欧州連合のお客様に出荷できます。 詳細については、「[Region availability (利用可能なリージョン)](#region-availability)」をご覧ください。
+> - デバイスを要求するには、[Azure portal](https://portal.azure.com) でサインアップします。
+
 
 ## <a name="use-cases"></a>ユース ケース
 
@@ -115,25 +114,14 @@ Data Box Heavy の提供状況に関するリージョン別の最新情報に�
 
 ## <a name="sign-up"></a>サインアップ
 
-Data Box Heavy はプレビュー段階であり、サインアップする必要があります。 Data Box Heavy にサインアップするには、次の手順を実行します。
+Data Box Heavy にサインアップするには、次の手順を実行します。
 
-1. Azure portal (https://aka.ms/azuredatabox ) にサインインします。
+1. Azure portal (https://portal.azure.com ) にサインインします。
 2. **[+ リソースの作成]** をクリックして新しいリソースを作成します。 **Azure Data Box** を検索します。 **Azure Data Box** サービスを選択します。
-
-    <!--![The Data Box Heavy sign up 1]()-->
-
 3. **Create** をクリックしてください。
-
-    <!--![The Data Box Heavy sign up 2]()-->
-
-4. Data Box Heavy プレビューに使用するサブスクリプションを選択します。 Data Box Heavy リソースをデプロイするリージョンを選択します。 **[Data Box Heavy]** オプションで、 **[サインアップ]** をクリックします。
-
-   <!--![The Data Box Heavy sign up 3]()-->
-
+4. Data Box Heavy に使用するサブスクリプションを選択します。 Data Box Heavy リソースをデプロイするリージョンを選択します。 **[Data Box Heavy]** オプションで、 **[サインアップ]** をクリックします。
 5. データ所在国/地域、時間枠、ターゲットの Azure サービス (データ転送、ネットワーク帯域幅、データ転送頻度) に関する質問に回答します。 プライバシーと利用規約を確認し、[Microsoft はお客様の電子メール アドレスを使用してお客様にご連絡いたします] のチェックボックスを選択します。
 
-    <!--![The Data Box Heavy sign up 4]()-->
-
-サインアップしてプレビューが有効になると、Data Box Heavy を注文できます。
+サインアップすると、Data Box Heavy を注文できます。
 
     

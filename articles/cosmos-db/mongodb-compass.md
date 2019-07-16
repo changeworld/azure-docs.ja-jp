@@ -7,14 +7,14 @@ ms.topic: overview
 ms.date: 06/24/2019
 author: roaror
 ms.author: roaror
-ms.openlocfilehash: ad302df3144787fd231166c7052ecfde268f4086
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 102d3fdc2e36f812e9a86286383a06f9930a1947
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67451673"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67665927"
 ---
-# <a name="use-compass-to-connect-to-your-cosmos-db-account"></a>Compass を使用して Cosmos DB アカウントに接続する
+# <a name="use-mongodb-compass-to-connect-to-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB Compass を使用して Azure Cosmos DB の MongoDB 用 API に接続する 
 
 このチュートリアルでは、Cosmos DB にデータを保存および管理するときに [MongoDB Compass](https://www.mongodb.com/products/compass) を使用する方法を説明します。 このチュートリアルでは、Azure Cosmos DB の MongoDB 用 API を使用します。 ご存じない方に説明すると、Compass は MongoDB の GUI です。 データの管理と共に、データの視覚化、アドホック クエリの実行によく使用されます。 
 

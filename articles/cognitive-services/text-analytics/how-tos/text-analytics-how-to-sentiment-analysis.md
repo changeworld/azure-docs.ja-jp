@@ -9,12 +9,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 02/26/2019
 ms.author: aahi
-ms.openlocfilehash: d4269a99a8e535692e4897630a7edd9b27347d41
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: e17b68dfd63952d0c8c81415b090b047c5808e2e
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67304034"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797805"
 ---
 # <a name="example-how-to-detect-sentiment-with-text-analytics"></a>例:Text Analytics でセンチメントを検出する方法
 
@@ -103,7 +103,7 @@ JSON ドキュメントは、次の形式である必要があります: ID、�
 
 次の例では、この記事のドキュメント コレクションへの応答を示します。
 
-```
+```json
 {
     "documents": [
         {
@@ -130,6 +130,133 @@ JSON ドキュメントは、次の形式である必要があります: ID、�
     "errors": []
 }
 ```
+
+## <a name="sentiment-analysis-v3-public-preview"></a>感情分析 V3 のパブリック プレビュー
+
+現在、[感情分析の次期バージョン](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-preview/operations/56f30ceeeda5650db055a3c9)はパブリック プレビューで利用できます。API のテキスト分類とスコア付けの精度と詳細が向上しました。 
+
+> [!NOTE]
+> * 感情分析 v3 の要求の形式と[データ制限](../overview.md#data-limits)は以前のバージョンと同じです。
+> * 現時点では、感情分析 V3 には以下の制限があります。 
+>    * 現在、英語のみがサポートされています。  
+>    * 以下のリージョンで利用できます: `Central US`、`Central Canada`、`East Asia` 
+
+|機能 |説明  |
+|---------|---------|
+|精度の向上     | テキスト ドキュメントでの肯定的、中立、否定的、および混合センチメントの検出が以前のバージョンより大幅に向上しています。           |
+|ドキュメントおよび文章レベルでのセンチメント スコア     | ドキュメントおよびその個々の文章の両方のセンチメントを検出します。 ドキュメントに複数の文が含まれる場合、各文にセンチメント スコアが割り当てられています。         |
+|センチメント カテゴリ     | API で、センチメント スコアに加え、センチメント カテゴリ (`positive`、`negative`、`neutral`、および `mixed`) がテキストに対して返されるようになりました。        |
+| 改善された出力 | 感情分析で、テキスト ドキュメント全体とその各文章の両方の情報が返されるようになりました。 |
+
+### <a name="sentiment-labeling"></a>センチメント ラベル付け
+
+感情分析 V3 では、文章およびドキュメント レベルでスコアとラベル (`positive`、`negative`、および`neutral`) が返されます。 ドキュメント レベルでは、`mixed` センチメント ラベル (スコアではなく) も返されます。 ドキュメントのセンチメントは、その文章のスコアを集計することによって決定されます。
+
+| 文章のセンチメント                                                        | 返されるドキュメントのラベル |
+|---------------------------------------------------------------------------|----------------|
+| 少なくとも 1 つが肯定文で、残りの文は中立。 | `positive`     |
+| 少なくとも 1 つが否定文で、残りの文は中立。  | `negative`     |
+| 少なくとも 1 つが否定文で少なくとも 1 つが肯定文。         | `mixed`        |
+| すべての文が中立。                                                 | `neutral`      |
+
+### <a name="sentiment-analysis-v3-example-request"></a>感情分析 V3 の要求の例
+
+次の JSON は、新しいバージョンの感情分析に行われた要求の例です。 要求の形式が、以前のバージョンと同じであることに注意してください。
+
+```json
+{
+  "documents": [
+    {
+      "language": "en",
+      "id": "1",
+      "text": "Hello world. This is some input text that I love."
+    },
+    {
+      "language": "en",
+      "id": "2",
+      "text": "It's incredibly sunny outside! I'm so happy."
+    }
+  ]
+}
+```
+
+### <a name="sentiment-analysis-v3-example-response"></a>感情分析 V3 の応答の例
+
+要求の形式は以前のバージョンと同じですが、応答の形式は変わりました。 次の JSON は、新しいバージョンの API からの応答の例です。
+
+```json
+{
+    "documents": [
+        {
+            "id": "1",
+            "sentiment": "positive",
+            "documentScores": {
+                "positive": 0.98570585250854492,
+                "neutral": 0.0001625834556762,
+                "negative": 0.0141316400840878
+            },
+            "sentences": [
+                {
+                    "sentiment": "neutral",
+                    "sentenceScores": {
+                        "positive": 0.0785155147314072,
+                        "neutral": 0.89702343940734863,
+                        "negative": 0.0244610067456961
+                    },
+                    "offset": 0,
+                    "length": 12
+                },
+                {
+                    "sentiment": "positive",
+                    "sentenceScores": {
+                        "positive": 0.98570585250854492,
+                        "neutral": 0.0001625834556762,
+                        "negative": 0.0141316400840878
+                    },
+                    "offset": 13,
+                    "length": 36
+                }
+            ]
+        },
+        {
+            "id": "2",
+            "sentiment": "positive",
+            "documentScores": {
+                "positive": 0.89198976755142212,
+                "neutral": 0.103382371366024,
+                "negative": 0.0046278294175863
+            },
+            "sentences": [
+                {
+                    "sentiment": "positive",
+                    "sentenceScores": {
+                        "positive": 0.78401315212249756,
+                        "neutral": 0.2067587077617645,
+                        "negative": 0.0092281140387058
+                    },
+                    "offset": 0,
+                    "length": 30
+                },
+                {
+                    "sentiment": "positive",
+                    "sentenceScores": {
+                        "positive": 0.99996638298034668,
+                        "neutral": 0.0000060341349126,
+                        "negative": 0.0000275444017461
+                    },
+                    "offset": 31,
+                    "length": 13
+                }
+            ]
+        }
+    ],
+    "errors": []
+}
+```
+
+### <a name="example-c-code"></a>C# のコード例
+
+このバージョンの感情分析を呼び出す C# アプリケーションの例については、[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/dotnet/Language/SentimentV3.cs) をご覧ください。
 
 ## <a name="summary"></a>まとめ
 

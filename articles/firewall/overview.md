@@ -6,15 +6,15 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc
-ms.date: 6/26/2019
+ms.date: 7/10/2019
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: 9a875f4450b700fc9db74b4402471e282f8e9dab
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: da82f6c93045b38aed887860c6d5c45c93b2260b
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442910"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67703952"
 ---
 # <a name="what-is-azure-firewall"></a>Azure Firewall とは
 
@@ -30,7 +30,7 @@ Azure Firewall では次の機能が提供されます。
 
 高可用性が組み込まれているため、追加のロード バランサーは必要なく、構成すべきものもありません。
 
-## <a name="availability-zones-public-preview"></a>Availability Zones (パブリック プレビュー)
+## <a name="availability-zones"></a>可用性ゾーン
 
 Azure Firewall は、可用性を高めるために、複数の Availability Zones にまたがるようにデプロイ時に構成できます。 Availability Zones を使用すると、可用性が高まり 99.99% のアップタイムが実現します。 詳細については、Azure Firewall の[サービス レベル アグリーメント (SLA)](https://azure.microsoft.com/support/legal/sla/azure-firewall/v1_0/) に関するページをご覧ください。 2 つ以上の Availability Zones を選択すると、稼働率 99.99% の SLA が提供されます。
 
@@ -51,7 +51,7 @@ Azure Firewall では、必要に応じてスケールアップしてネット�
 
 ## <a name="application-fqdn-filtering-rules"></a>アプリケーションの FQDN のフィルタリング規則
 
-ワイルド カードが含まれた完全修飾ドメイン名 (FQDN) の指定した一覧に、送信 HTTP/S トラフィックを制限できます。 この機能に SSL 終了は必要ありません。
+ワイルド カードも含まれる完全修飾ドメイン名 (FQDN) の指定された一覧に、送信 HTTP/S トラフィックまたは Azure SQL トラフィック (プレビュー) を制限できます。 この機能に SSL 終了は必要ありません。
 
 ## <a name="network-traffic-filtering-rules"></a>ネットワーク トラフィックのフィルタリング規則
 
@@ -77,7 +77,11 @@ FQDN のタグにより、ファイアウォール経由の既知の Azure サ�
 
 ファイアウォールのパブリック IP アドレスへの着信ネットワーク トラフィックは、変換され (宛先ネットワーク アドレス変換)、仮想ネットワークのプライベート IP アドレスでフィルター処理されます。
 
-## <a name="multiple-public-ips-public-preview"></a>複数のパブリック IP (パブリック プレビュー)
+## <a name="multiple-public-ip-addresses"></a>複数のパブリック IP アドレス
+
+> [!IMPORTANT]
+> Azure PowerShell、Azure CLI、REST、およびテンプレートで、複数のパブリック IP アドレスを持つ Azure Firewall を使用できます。 ポータルのユーザー インターフェイスは、段階的にリージョンに追加されており、ロールアウトが完了すればすべてのリージョンで利用できるようになります。
+
 
 複数のパブリック IP アドレス (最大 100) をファイアウォールに関連付けることができます。
 
@@ -85,9 +89,6 @@ FQDN のタグにより、ファイアウォール経由の既知の Azure サ�
 
 - **DNAT** - 複数の標準ポート インスタンスをバックエンド サーバーに変換できます。 たとえば、2 つのパブリック IP アドレスがある場合、両方の IP アドレス用の TCP ポート 3389 (RDP) を変換できます。
 - **SNAT** -追加のポートを送信 SNAT 接続に対して使用でき、SNAT ポートが不足する可能性を低減できます。 現時点では、Azure Firewall は、接続に使用する送信元パブリック IP アドレスをランダムに選択します。 ネットワークにダウンストリーム フィルターがある場合、ファイアウォールに関連付けられているすべてのパブリック IP アドレスを許可する必要があります。
-
-> [!NOTE]
-> パブリック プレビュー時に、実行中のファイアウォールに対してパブリック IP アドレスを追加または削除すると、DNAT ルールを使用する既存の受信接続が 40 ～ 120 秒間機能しない場合があります。 ファイアウォールが割り当て解除または削除されない限り、ファイアウォールに割り当てられている最初のパブリック IP アドレスは削除できません。
 
 ## <a name="azure-monitor-logging"></a>Azure Monitor ログ記録
 
@@ -108,10 +109,10 @@ TCP/UDP 以外のプロトコル (ICMP など) に関するネットワーク �
 |脅威インテリジェンス アラートがマスクされることがある|アラートのみのモードに構成されている場合、送信フィルター処理用の宛先 80/443 のネットワーク ルールによって脅威インテリジェンス アラートがマスクされます。|アプリケーション ルールを使用して 80/443 の送信フィルター処理を作成します。 または、脅威インテリジェンス モードを **[Alert and Deny]\(アラートと拒否\)** に変更します。|
 |Azure Firewall では名前解決に Azure DNS のみが使用される|Azure Firewall では、Azure DNS のみを使用して FQDN が解決されます。 カスタム DNS サーバーはサポートされていません。 他のサブネット上の DNS 解決への影響はありません。|現在、この制限を緩和するように取り組んでいます。|
 |Azure Firewall SNAT/DNAT がプライベート IP 送信先で機能しない|Azure Firewall SNAT/DNAT のサポートは、インターネット エグレスまたはイングレスに制限されています。 現在、SNAT/DNAT はプライベート IP 送信先で機能しません。 たとえば、スポークからスポークです。|これは現在の制限です。|
-|最初のパブリック IP アドレスは削除できない|ファイアウォールが割り当て解除または削除されない限り、ファイアウォールに割り当てられている最初のパブリック IP アドレスは削除できません。|これは設計によるものです。|
-|パブリック IP アドレスを追加または削除すると、DNAT ルールが一時的に機能しない場合がある。| 実行中のファイアウォールに対してパブリック IP アドレスを追加または削除すると、DNAT ルールを使用する既存の受信接続が 40 から 120 秒間機能しない場合があります。|これは、この機能のパブリック プレビューの制限です。|
-|Availability Zones は、デプロイ時にのみ構成できる。|Availability Zones は、デプロイ時にのみ構成できます。 ファイアウォールがデプロイされた後、Availability Zones を構成することはできません。|これは設計によるものです。|
+|最初のパブリック IP の構成を削除できない|Azure Firewall の各パブリック IP アドレスは、"*IP 構成*" に割り当てられています。  最初の IP 構成はファイアウォールのデプロイ中に割り当てられ、通常、それにはファイアウォールのサブネットへの参照も含まれます (テンプレートのデプロイによって別に明示的に構成されていない場合)。 この IP 構成を削除するとファイアウォールの割り当てが解除されるため、削除できません。 ただし、ファイアウォールで使用できるパブリック IP アドレスが他に 1 つ以上ある場合は、この IP 構成に関連付けられているパブリック IP アドレスを変更または削除できます。|これは設計によるものです。|
+|Availability Zones は、デプロイ時にのみ構成できます。|Availability Zones は、デプロイ時にのみ構成できます。 ファイアウォールがデプロイされた後、Availability Zones を構成することはできません。|これは設計によるものです。|
 |受信接続での SNAT|DNAT に加えて、ファイアウォールのパブリック IP アドレスを使用した (受信) 接続は SNAT によっていずれかのファイアウォールのプライベート IP に変換されます。 対称的なルーティングを実現するために、現在このような要件が (アクティブ/アクティブ NVA に対しても) 適用されます。|HTTP/S の元の送信元を保持するには、[XFF](https://en.wikipedia.org/wiki/X-Forwarded-For) ヘッダーを使用することを検討します。 たとえば、ファイアウォールの直前に [Azure Front Door](../frontdoor/front-door-http-headers-protocol.md#front-door-service-to-backend) などのサービスを使用します。 Azure Front Door とチェーンの一部としてファイアウォールに WAF を追加することもできます。
+|SQL の FQDN のフィルター処理がプロキシ モードでのみサポートされる (ポート 1433)|Azure SQL Database、Azure SQL Data Warehouse、Azure SQL Managed Instance の場合:<br><br>プレビュー期間中、SQL の FQDN のフィルター処理は、プロキシ モードでのみサポートされます (ポート 1433)。<br><br>Azure SQL IaaS の場合:<br><br>標準以外のポートを使っている場合は、アプリケーション ルールでそれらのポートを指定できます。|リダイレクト モードの SQL では (Azure 内から接続する場合の既定)、代わりに Azure Firewall ネットワーク ルールの一部として SQL サービス タグを使ってアクセスをフィルター処理できます。
 
 ## <a name="next-steps"></a>次の手順
 

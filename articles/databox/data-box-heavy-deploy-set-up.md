@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: tutorial
-ms.date: 06/19/2019
+ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: d4cdc9b6c31c62080fed5a8528577fef72c01c3f
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 3e6bfe4a93ab8c97bcffb84bda08977f8d811fa8
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67271709"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67592367"
 ---
-# <a name="tutorial-cable-and-connect-to-your-azure-data-box-heavy-preview"></a>チュートリアル:ケーブルを配線して Azure Data Box Heavy に接続する (プレビュー)
+# <a name="tutorial-cable-and-connect-to-your-azure-data-box-heavy"></a>チュートリアル:Azure Data Box Heavy に配線して接続する
 
 
 このチュートリアルでは、Azure Data Box Heavy のケーブル配線、接続、起動の方法について説明します。
@@ -30,7 +30,7 @@ ms.locfileid: "67271709"
 
 開始する前に次の点を確認します。
 
-1. [Azure Data Box Heavy の注文に関するチュートリアル](data-box-heavy-deploy-ordered.md)を完了していること。
+1. [Azure Data Box の設定に関する](data-box-heavy-deploy-ordered.md)を完了していること。
 2. Data Box Heavy の受け取りが済んでいて、ポータル内での注文の状態が **[配送済み]** であること。
 3. [Data Box Heavy の安全性に関するガイドライン](data-box-safety.md)を確認していること。
 4. データセンター内に、これだけの設置面積を占めるデバイスを収容可能な平らな場所があり、その近くに使用可能なネットワーク接続用設備があること。 このデバイスはラックにマウントできません。

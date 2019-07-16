@@ -9,12 +9,12 @@ ms.devlang: python
 ms.topic: tutorial
 ms.date: 06/04/2019
 ms.author: v-lilei
-ms.openlocfilehash: 7f8ac2b7973ddd21f16f2914b01618b2b005cd13
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: b1166e0acdbc9371b1c7ca2361fc6ebb7479b6a7
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485790"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672080"
 ---
 # <a name="python-tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline"></a>Python のチュートリアル: Azure Search のインデックス パイプラインで Cognitive Services API を呼び出す
 
@@ -508,4 +508,4 @@ pprint(json.dumps(r.json(), indent=1))
 カスタム スキルを使ってパイプラインをカスタマイズまたは拡張します。 カスタム スキルを作成してスキルセットに追加すると、自分で作成したテキストまたは画像分析をオンボードできます。
 
 > [!div class="nextstepaction"]
-> [例: カスタム スキルの作成](cognitive-search-create-custom-skill-example.md)
+> [例:コグニティブ検索用のカスタム スキルを作成する](cognitive-search-create-custom-skill-example.md)

@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 04/19/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 5e27c6a1ab5fc9dff779c6e5d04689683d5c8e6d
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 99559c0c77c3e4b29badec1c0be2d741df1f0621
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67274149"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798375"
 ---
 # <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>チュートリアル:ASP.NET Core アプリ内で機能フラグを使用する
 
@@ -86,30 +86,42 @@ public class Startup
 
 機能フラグはアプリケーションの外部で保持し、別々に管理することをお勧めします。 そうすることで、フラグの状態をいつでも変更して、アプリケーションにその変更をすぐに反映させることができます。 App Configuration は、専用のポータル UI を介してすべての機能フラグを一元的に整理および制御するための場所を提供します。 また、App Configuration は、その .NET Core クライアント ライブラリを介してお使いのアプリケーションに直接フラグを配信します。
 
-App Configuration に ASP.NET Core アプリケーションを接続する最も簡単な方法は、構成プロバイダー `Microsoft.Extensions.Configuration.AzureAppConfiguration` を使用することです。 この NuGet パッケージを使用するには、次のコードを *Program.cs* ファイルに追加します。
+App Configuration に ASP.NET Core アプリケーションを接続する最も簡単な方法は、構成プロバイダー `Microsoft.Azure.AppConfiguration.AspNetCore` を使用することです。 NuGet パッケージを使用するには次の手順に従います。
 
-```csharp
-using Microsoft.Extensions.Configuration.AzureAppConfiguration;
+1. *Program.cs* ファイルを開いて、次のコードを追加します。
 
-public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-    WebHost.CreateDefaultBuilder(args)
-           .ConfigureAppConfiguration((hostingContext, config) => {
-               var settings = config.Build();
-               config.AddAzureAppConfiguration(options => {
-                   options.Connect(settings["ConnectionStrings:AppConfig"])
-                          .UseFeatureFlags();
-                });
-           })
-           .UseStartup<Startup>();
-```
+   ```csharp
+   using Microsoft.Extensions.Configuration.AzureAppConfiguration;
 
-機能フラグの値は、時間の経過とともに変化することが予想されます。 既定では、機能マネージャーは 30 秒ごとに機能フラグの値を更新します。 次のコードは、`options.UseFeatureFlags()` 呼び出しでポーリング間隔を 5 秒に変更する方法を示しています。
+   public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+       WebHost.CreateDefaultBuilder(args)
+              .ConfigureAppConfiguration((hostingContext, config) => {
+                  var settings = config.Build();
+                  config.AddAzureAppConfiguration(options => {
+                      options.Connect(settings["ConnectionStrings:AppConfig"])
+                             .UseFeatureFlags();
+                   });
+              })
+              .UseStartup<Startup>();
+   ```
+
+2. *Startup.cs* を開き、`Configure` メソッドを更新してミドルウェアを追加し、ASP.NET Core Web アプリで要求の受信が続けられている間、定期的に機能フラグの値を更新できるようにします。
+
+   ```csharp
+   public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+   {
+       app.UseAzureAppConfiguration();
+       app.UseMvc();
+   }
+   ```
+
+機能フラグの値は、時間の経過とともに変化することが予想されます。 既定では、機能フラグの値は 30 秒間キャッシュされるため、ミドルウェアで要求が受け取られるときにトリガーされる更新操作では、キャッシュされた値の有効期限が切れるまで、値は更新されません。 次のコードは、`options.UseFeatureFlags()` 呼び出しでキャッシュの有効期間またはポーリング間隔を 5 分に変更する方法を示しています。
 
 ```csharp
 config.AddAzureAppConfiguration(options => {
     options.Connect(settings["ConnectionStrings:AppConfig"])
            .UseFeatureFlags(featureFlagOptions => {
-                featureFlagOptions.PollInterval = TimeSpan.FromSeconds(300);
+                featureFlagOptions.CacheExpirationTime = TimeSpan.FromMinutes(5);
            });
 });
 ```
