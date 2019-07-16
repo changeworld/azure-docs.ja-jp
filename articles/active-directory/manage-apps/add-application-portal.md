@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 04/09/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d1688cc9317306e7f524536754854b6147ad3dd5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3de6a2cbdfe7a6d006a3bbfab16792376eda0d07
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67108766"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67702528"
 ---
 # <a name="quickstart-add-an-application-to-your-azure-active-directory-tenant"></a>クイック スタート:Azure Active Directory テナントにアプリケーションを追加する
 
@@ -43,27 +43,21 @@ Azure AD テナントの全体管理者、クラウド アプリケーション�
 Azure AD テナントにギャラリー アプリケーションを追加するには:
 
 1. [Azure portal](https://portal.azure.com) の左側のナビゲーション パネルで、 **[Azure Active Directory]** を選択します。
-
 1. **[Azure Active Directory]** ウィンドウで、 **[エンタープライズ アプリケーション]** を選択します。
+1. **[すべてのアプリケーション]** ウィンドウが開き、Azure AD テナントのアプリケーションのランダム サンプルが表示されます。 **[すべてのアプリケーション]** ウィンドウの上部にある **[新しいアプリケーション]** を選択して、アプリケーションをテナントに追加します。
 
-    ![エンタープライズ アプリケーションを開く](media/add-application-portal/open-enterprise-apps.png)
+    ![[新しいアプリケーション] を選択してテナントにギャラリー アプリケーションを追加](media/add-application-portal/new-application.png)
 
-1. **[すべてのアプリケーション]** ウィンドウが開き、Azure AD テナントのアプリケーションのランダム サンプルが表示されます。 **[すべてのアプリケーション]** ウィンドウの上部にある **[新しいアプリケーション]** を選択します。
+1. **[カテゴリ]** ウィンドウの **[注目のアプリケーション]** 領域には、ギャラリー アプリケーションのランダムなサンプルのアイコンが表示されます。 アプリケーションをさらに表示するために **[Show more]\(さらに表示\)** を選択できますが、ギャラリー内に何千ものアプリケーションがあるため、この方法での検索はお勧めしません。
 
-    ![新規アプリケーション](media/add-application-portal/new-application.png)
-
-1. **[カテゴリ]** ウィンドウの **[注目のアプリケーション]** 領域には、ギャラリー アプリケーションのランダムなサンプルのアイコンが表示されます。  他のアプリケーションを表示するには、 **[さらに表示]** を選択します。 ただし、ギャラリーには何千ものアプリケーションがあるので、この方法で検索することはお勧めしません。
-
-    ![名前またはカテゴリによる検索](media/add-application-portal/categories.png)
+    ![名前またはカテゴリーでアプリを検索する](media/add-application-portal/categories.png)
 
 1. アプリケーションを検索するには、 **[ギャラリーから追加する]** の下のボックスに、追加するアプリケーションの名前を入力します。 結果からアプリケーションを選択し、 **[追加]** を選択します。 次の例は、github.com を検索した後に表示された**アプリの追加**フォームを示しています。
 
-    ![アプリケーションを追加する](media/add-application-portal/add-an-application.png)
+    ![ギャラリーからアプリケーションを追加する方法を示します](media/add-application-portal/add-an-application.png)
 
 1. アプリケーションに固有のフォームでは、プロパティ情報を変更できます。 たとえば、組織のニーズに合わせてアプリケーションの名前を編集できます。 この例では、**GitHub-test** という名前を使用しています。
-
 1. プロパティの変更が完了したら、 **[追加]** を選択します。
-
 1. [作業の開始] ページが表示され、組織のアプリケーションを構成するためのオプションが表示されます。
 
 アプリケーションの追加が完了しました。 ここでいったん休憩しましょう。 次のセクションでは、アプリケーションのロゴを変更し、他のプロパティを編集する方法を示します。
@@ -73,17 +67,12 @@ Azure AD テナントにギャラリー アプリケーションを追加する�
 いったんアプリケーションから離れ、後でアプリケーションの構成を続けると仮定します。 最初に行うのは、アプリケーションを見つけることです。
 
 1. **[Azure portal](https://portal.azure.com)** の左側のナビゲーション パネルで、 **[Azure Active Directory]** を選択します。
-
 1. **[Azure Active Directory]** ウィンドウで、 **[エンタープライズ アプリケーション]** を選択します。
-
 1. **[アプリケーションの種類]** ドロップダウン メニューの **[すべてのアプリケーション]** を選択した後、 **[適用]** を選択します。 表示オプションの詳細については、[テナント アプリケーションの表示](view-applications-portal.md)に関するページを参照してください。
-
 1. Azure AD テナント内のすべてのアプリケーションの一覧が表示されました。 一覧はランダム サンプルです。 他のアプリケーションを表示するには、 **[さらに表示]** を 1 回以上選択します。
-
 1. テナント内のアプリケーションをすばやく見つけるには、検索ボックスにアプリケーション名を入力し、 **[適用]** を選択します。 この例では、以前に追加した GitHub-test アプリケーションを検索しています。
 
-    ![アプリケーションを検索する](media/add-application-portal/find-application.png)
-
+    ![検索ボックスを使用してアプリケーションを検索する方法を示します](media/add-application-portal/find-application.png)
 
 ## <a name="configure-user-sign-in-properties"></a>ユーザーのサインイン プロパティを構成する
 
@@ -94,7 +83,7 @@ Azure AD テナントにギャラリー アプリケーションを追加する�
 1. アプリケーションを選択して開きます。
 1. **[プロパティ]** を選択して、編集用のプロパティ ウィンドウを開きます。
 
-    ![プロパティの編集ウィンドウ](media/add-application-portal/edit-properties.png)
+    ![[プロパティ] 画面と編集可能なアプリのプロパティを示します](media/add-application-portal/edit-properties.png)
 
 1. ここで、サインイン オプションについて理解しておきましょう。 そのオプションにより、アプリケーションに割り当てられているユーザーまたは割り当てられていないユーザーがアプリケーションにサインインする方法が決まります。 また、そのオプションでは、ユーザーのアクセス パネルにアプリケーションが表示されるかどうかも決まります。
 
@@ -144,8 +133,7 @@ Azure AD テナントにギャラリー アプリケーションを追加する�
 1. ロゴをアップロードします。
 1. 完了したら、 **[保存]** をクリックします。
 
-    ![ロゴを変更する](media/add-application-portal/change-logo.png)
-
+    ![アプリケーションの [プロパティ] ページからロゴを変更する方法を示します](media/add-application-portal/change-logo.png)
 
 ## <a name="next-steps"></a>次の手順
 
@@ -155,5 +143,3 @@ Azure AD テナントにギャラリー アプリケーションを追加する�
 
 > [!div class="nextstepaction"]
 > [シングル サインオンの構成](configure-single-sign-on-portal.md)
-
-
