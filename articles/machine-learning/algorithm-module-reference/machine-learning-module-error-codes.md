@@ -1681,7 +1681,7 @@ Azure Machine Learning では、サポートされていない方法を使って
 |------------------------|  
 |Module definition file contains errors. (モジュール定義ファイルにエラーが含まれます。)|  
 |Module definition file '{0}' contains errors. (モジュール定義ファイル '\{0\}' にエラーが含まれます。)|  
-|Module definition file '{0}' contains errors. (モジュール定義ファイル '\{0\}' にエラーが含まれます。) [https://login.microsoftonline.com/tfp/00000000-0000-0000-0000-000000000000/b2c_1a_tp_sign-up-or-sign-in/v2.0/]({1})|  
+|Module definition file '{0}' contains errors. (モジュール定義ファイル '\{0\}' にエラーが含まれます。) {1}|  
   
 
 ## <a name="error-0114"></a>エラー 0114  
@@ -2082,7 +2082,7 @@ Azure Machine Learning では、サポートされていない方法を使って
 |例外メッセージ|  
 |------------------------|  
 |GitHub access error. (GitHub アクセス エラー。)|  
-|GitHub access error. (GitHub アクセス エラー。) [https://login.microsoftonline.com/tfp/00000000-0000-0000-0000-000000000000/b2c_1a_tp_sign-up-or-sign-in/v2.0/]({0})|  
+|GitHub access error. (GitHub アクセス エラー。) {0}|  
   
 
 ## <a name="error-0148"></a>エラー 0148  

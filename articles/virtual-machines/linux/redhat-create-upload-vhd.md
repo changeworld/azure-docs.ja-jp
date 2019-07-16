@@ -742,7 +742,7 @@ ms.locfileid: "67670974"
 1. 仮想マシンをシャットダウンし、VMDK ファイルを VHD 形式に変換します。
 
 > [!NOTE]
-> qemu-img のバージョン 2.2.1 以降には VHD が適切にフォーマットされないというバグがあることがわかっています。 この問題は QEMU 2.6 で修正されています。 qemu-img 2.2.0 以前を使用するか、2.6 以降に更新することをお勧めします。 [https://bugs.launchpad.net/qemu/+bug/1490611]https://bugs.launchpad.net/qemu/+bug/1490611 を参照してください。
+> qemu-img のバージョン 2.2.1 以降には VHD が適切にフォーマットされないというバグがあることがわかっています。 この問題は QEMU 2.6 で修正されています。 qemu-img 2.2.0 以前を使用するか、2.6 以降に更新することをお勧めします。 [https://bugs.launchpad.net/qemu/+bug/1490611](https://bugs.launchpad.net/qemu/+bug/1490611 ) を参照してください。
 >
 
 

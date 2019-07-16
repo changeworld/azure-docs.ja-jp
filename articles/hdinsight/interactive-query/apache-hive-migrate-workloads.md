@@ -30,7 +30,7 @@ ms.locfileid: "67672554"
 Hive の利点の 1 つは、外部データベース (Hive Metastore と呼ばれます) にメタデータをエクスポートする機能です。 **Hive Metastore** は、テーブル ストレージの場所、列名、テーブルのインデックス情報を含む、テーブルの統計情報の格納を担当します。 メタストア データベース スキーマは、Hive のバージョンによって異なります。 HDInsight 4.0 と互換になるように HDInsight 3.6 Hive Metastore をアップグレードするには、次の操作を行います。
 
 1. 外部メタストアの新しいコピーを作成します。 HDInsight 3.6 と HDInsight 4.0 には異なるメタストア スキーマが必要で、1 つのメタストアを共有することはできません。 HDInsight クラスターへの外部メタストアのアタッチについて詳しくは、「[Azure HDInsight での外部メタデータ ストアの使用](../hdinsight-use-external-metadata-stores.md)」をご覧ください。 
-2. 実行のノードの種類として "ヘッド ノード" を使用して、HDI 3.6 クラスターに対してスクリプト アクションを起動します。 https://hdiconfigactions.blob.core.windows.net/hivemetastoreschemaupgrade/launch-schema-upgrade.sh の URI を、"Bash スクリプト URI" とマークされたテキスト ボックスに貼り付けます。"引数" とマークされたテキストボックスに、**コピーした** Hive metastore のサーバー名、データベース、ユーザー名、およびパスワードをスペース区切りで入力します。 サーバー名を指定するときに ".database.windows.net" を含めないでください。
+2. 実行のノードの種類として "ヘッド ノード" を使用して、HDI 3.6 クラスターに対してスクリプト アクションを起動します。 [https://hdiconfigactions.blob.core.windows.net/hivemetastoreschemaupgrade/launch-schema-upgrade.sh](https://hdiconfigactions.blob.core.windows.net/hivemetastoreschemaupgrade/launch-schema-upgrade.sh ) の URI を、"Bash スクリプト URI" とマークされたテキスト ボックスに貼り付けます。"引数" とマークされたテキストボックスに、**コピーした** Hive metastore のサーバー名、データベース、ユーザー名、およびパスワードをスペース区切りで入力します。 サーバー名を指定するときに ".database.windows.net" を含めないでください。
 
 > [!Warning]
 > HDInsight 3.6 のメタデータ スキーマを HDInsight 4.0 のスキーマに変換するアップグレードを元に戻すことはできません。

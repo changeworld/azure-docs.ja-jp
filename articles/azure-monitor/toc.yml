@@ -280,8 +280,10 @@
               href: platform/custom-fields.md
         - name: アプリケーションの構成
           items:
-            - name: Azure アプリ
+            - name: Azure でホストされるアプリ
               items:
+                - name: Azure VM と Azure 仮想マシン スケール セット
+                  href: app/azure-vm-vmss-apps.md
                 - name: Azure App Service
                   href: app/azure-web-apps.md
                 - name: Azure クラウド サービス
@@ -709,8 +711,8 @@
               href: platform/metrics-getting-started.md
             - name: メトリックス エクスプローラーの高度な機能
               href: platform/metrics-charts.md
-            - name: メトリック グラフの例
-              href: platform/metric-chart-samples.md
+            - name: ログベースのメトリック
+              href: platform/app-insights-metrics.md
             - name: メトリック グラフのトラブルシューティング
               href: platform/metrics-troubleshoot.md
         - name: ログ

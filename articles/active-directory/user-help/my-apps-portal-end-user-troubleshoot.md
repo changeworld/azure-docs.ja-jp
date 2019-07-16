@@ -42,7 +42,7 @@ My Apps によるセキュリティで保護されたサインイン拡張機能
 ## <a name="i-cant-sign-in-to-the-my-apps-portal"></a>**My Apps** ポータルにサインインできません
 **My Apps** ポータルにサインインできない場合、次をお試しください。
 
-- 使用している URL が正しいことを確認します。 https://myapps.microsoft.com のようになるか、 https://myapps.microsoft.com/contoso.com のような組織向けにカスタマイズされたページになるはずです。
+- 使用している URL が正しいことを確認します。 [https://myapps.microsoft.com](https://myapps.microsoft.com ) のようになるか、 https://myapps.microsoft.com/contoso.com のような組織向けにカスタマイズされたページになるはずです。
 
 - パスワードが正しいことと有効期限が切れていないことを確認します。 詳細については、「[職場または学校のパスワードをリセットする](active-directory-passwords-update-your-own-password.md)」を参照してください。
 

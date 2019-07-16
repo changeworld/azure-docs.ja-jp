@@ -102,6 +102,8 @@
           href: manage-database-permissions.md
         - name: クラスターの正常性を確認する
           href: check-cluster-health.md
+        - name: クラスター VM の SKU を選択する
+          href: manage-cluster-choose-sku.md
         - name: クラスターの水平スケーリングを管理する
           href: manage-cluster-horizontal-scaling.md
         - name: クラスターの垂直スケーリングを管理する

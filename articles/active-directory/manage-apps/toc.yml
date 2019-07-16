@@ -59,9 +59,9 @@
           href: isv-create-sso-documentation.md
         - name: シングル サインオンのデプロイの計画
           href: plan-sso-deployment.md
-    - name: One Click SSO
+    - name: ワンクリック SSO
       items:
-        - name: One Click SSO とは
+        - name: ワンクリック SSO の構成
           href: one-click-sso-tutorial.md
     - name: ユーザーとグループのプロビジョニング
       items:
