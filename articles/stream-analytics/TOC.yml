@@ -94,10 +94,12 @@
           href: stream-analytics-clean-up-your-job.md
         - name: ジョブをペアリングして信頼性を高める
           href: stream-analytics-job-reliability.md
-        - name: マネージド ID による認証
+        - name: マネージド ID による認証 - ADLS Gen 1 の出力
           href: stream-analytics-managed-identities-adls.md
         - name: SQL リファレンス データを使用する
           href: sql-reference-data.md
+        - name: マネージド ID による認証 - BLOB の出力
+          href: blob-output-managed-identity.md
     - name: ソリューションを構築する
       items:
         - name: Twitter センチメントの分析

@@ -81,8 +81,8 @@
       href: sample-v2-code.md
     - name: 概念
       items:
-        - name: アプリケーションの種類
-          href: v2-app-types.md
+        - name: 認証フローとアプリ シナリオ
+          href: authentication-flows-app-scenarios.md
         - name: アプリケーションのシナリオ
           items:
             - name: サインイン対象ユーザー
@@ -227,6 +227,8 @@
                   href: msal-client-application-configuration.md
                 - name: アプリケーションの初期化 (.NET)
                   href: msal-net-initializing-client-applications.md
+                - name: クライアント アサーション (.NET)
+                  href: msal-net-client-assertions.md
                 - name: アプリケーションの初期化 (JS)
                   href: msal-js-initializing-client-applications.md
             - name: エラーと例外を処理する
@@ -267,10 +269,12 @@
                       href: msal-js-known-issues-ie-edge-browsers.md
                     - name: 既知の問題 - Safari
                       href: msal-js-known-issues-safari-browser.md
-        - name: Authentication
+        - name: 認証プロトコル
           items:
             - name: 認証の基本
               href: authentication-scenarios.md
+            - name: アプリケーションの種類と OAuth2.0
+              href: v2-app-types.md
             - name: OAuth 2.0 と OpenID Connect プロトコル
               href: active-directory-v2-protocols.md
             - name: OpenID Connect

@@ -68,6 +68,10 @@
       href: howto-conditional-access-session-lifetime.md
     - name: クラシック ポリシーを移行する
       href: policy-migration.md
+    - name: トラブルシューティング
+      items:
+        - name: What If ツールを使用したトラブルシューティング
+          href: troubleshoot-conditional-access-what-if.md
 - name: リファレンス
   items:
     - name: テクニカル リファレンス

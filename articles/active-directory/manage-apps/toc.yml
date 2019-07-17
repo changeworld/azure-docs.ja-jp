@@ -49,7 +49,7 @@
       items:
         - name: シングル サインオンとは
           href: what-is-single-sign-on.md
-        - name: マルチテナント アプリケーションの SSO を有効にする
+        - name: マルチテナント アプリケーション用の SSO を有効にする
           href: isv-sso-content.md
         - name: マルチテナント アプリケーション用に Azure テナントを作成する
           href: isv-tenant-multi-tenant-app.md
@@ -57,7 +57,7 @@
           href: isv-choose-multi-tenant-federation.md
         - name: マルチテナント アプリケーション用のドキュメントを作成する
           href: isv-create-sso-documentation.md
-        - name: シングル サインオンのデプロイの計画
+        - name: シングル サインオンのデプロイを計画する
           href: plan-sso-deployment.md
     - name: ワンクリック SSO
       items:
@@ -81,20 +81,6 @@
           href: tenant-restrictions.md
         - name: SAML トークン暗号化 (プレビュー) の構成
           href: howto-saml-token-encryption.md
-    - name: シングル サインオン
-      items:
-        - name: シングル サインオンとは
-          href: what-is-single-sign-on.md
-        - name: シングル サインオンのデプロイの計画
-          href: plan-sso-deployment.md
-        - name: マルチテナント アプリケーションでシングル サインオンを有効にする
-          href: isv-sso-content.md
-        - name: 適切な SSO フェデレーション プロトコルを選択する
-          href: isv-choose-multi-tenant-federation.md
-        - name: マルチテナント アプリケーション用に Azure テナントを作成する
-          href: isv-tenant-multi-tenant-app.md
-        - name: アプリケーション用の SSO のドキュメントを作成して発行する
-          href: isv-create-sso-documentation.md
     - name: エンドユーザーのポータル
       href: end-user-experiences.md
 - name: ハウツー ガイド

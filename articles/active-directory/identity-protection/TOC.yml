@@ -17,6 +17,8 @@
       href: notifications.md
     - name: サインイン エクスペリエンスとは
       href: flows.md
+    - name: Identity Protection と B2B ユーザー
+      href: concept-identity-protection-b2b.md
 - name: ハウツー ガイド
   expanded: true
   items:
