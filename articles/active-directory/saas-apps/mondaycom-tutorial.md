@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 06/17/2019
+ms.date: 07/08/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4cdc605c059857c826056fece782bbb9a9c86a15
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 93c5e473c62dc6b38f0b2c2906560d6099842d49
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67275836"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67718503"
 ---
 # <a name="tutorial-integrate-mondaycom-with-azure-active-directory"></a>チュートリアル:monday.com と Azure Active Directory を統合する
 
@@ -78,7 +78,7 @@ monday.com で Azure AD SSO を構成してテストするには、次の構成�
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-4. **[基本的な SAML 構成]** ウィンドウで、サービス プロバイダー メタデータ ファイルがあり、**IDP 開始モード**で構成する場合、次の手順を実行します。
+1. **[基本的な SAML 構成]** ウィンドウで、サービス プロバイダー メタデータ ファイルがあり、**IDP 開始モード**で構成する場合、次の手順を実行します。
 
     1. **[メタデータ ファイルをアップロードする]** を選択します。
 
@@ -89,7 +89,7 @@ monday.com で Azure AD SSO を構成してテストするには、次の構成�
        > [!Note]
        > **識別子**と**応答 URL** の値が自動的に設定されない場合は、手動で値を入力してください。 **識別子**と**応答 URL** は同じであり、その値は `https://<your-domain>.monday.com/saml/saml_callback` というパターンになっています。
 
-5. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
+1. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
     **[サインオン URL]** ボックスに、`https://<your-domain>.monday.com` という形式で URL を入力します。
 
@@ -100,7 +100,7 @@ monday.com で Azure AD SSO を構成してテストするには、次の構成�
 
     ![[ユーザー属性] ウィンドウ](common/edit-attribute.png)
 
-6. その他に、monday.com アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。 **[ユーザー属性]** ダイアログの **[ユーザー要求]** セクションで、以下の手順を実行して、以下の表のように SAML トークン属性を追加します。
+1. その他に、monday.com アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。 **[ユーザー属性]** ダイアログの **[ユーザー要求]** セクションで、以下の手順を実行して、以下の表のように SAML トークン属性を追加します。
 
     | Name | ソース属性|
     | ---------------| --------------- |
@@ -109,10 +109,6 @@ monday.com で Azure AD SSO を構成してテストするには、次の構成�
     | LastName | User.surname |
 
     a. **[新しい要求の追加]** をクリックして **[ユーザー要求の管理]** ダイアログを開きます。
-
-    ![image](./media/mondaycom-tutorial/attribute01.png)
-
-    ![image](common/new-attribute-details.png)
 
     b. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
 
@@ -136,17 +132,25 @@ monday.com で Azure AD SSO を構成してテストするには、次の構成�
 
 ### <a name="configure-mondaycom"></a>monday.com の構成
 
-1. 別の Web ブラウザー ウィンドウで、管理者として monday.com にサインインします。
+1. monday.com 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして**マイアプリによるセキュリティで保護された Sign-in ブラウザー拡張機能**をインストールする必要があります。
 
-2. ページの右上隅にある **[プロファイル]** に移動し、 **[管理者]** をクリックします。
+    ![マイ アプリの拡張機能](common/install-myappssecure-extension.png)
 
-     ![monday.com の構成](./media/mondaycom-tutorial/configuration01.png)
+1. ブラウザーに拡張機能を追加した後、 **[Setup monday.com]\(monday.com のセットアップ\)** をクリックすると、monday.com アプリケーションに移動します。 そこから、管理者の資格情報を入力して monday.com にサインインします。 ブラウザー拡張機能によりアプリケーションが自動的に構成され、手順 3 から 6 が自動化されます。
 
-3. **[セキュリティ]** を選択し、SAML の横の **[開く]** をクリックします。
+    ![セットアップの構成](common/setup-sso.png)
+
+1. monday.com を手動でセットアップする場合は、新しい Web ブラウザー ウィンドウを開き、管理者として monday.com サイトにサインインして、次の手順を実行します。
+
+1. ページの右上隅にある **[プロファイル]** に移動し、 **[管理者]** をクリックします。
+
+    ![monday.com の構成](./media/mondaycom-tutorial/configuration01.png)
+
+1. **[セキュリティ]** を選択し、SAML の横の **[開く]** をクリックします。
 
     ![monday.com の構成](./media/mondaycom-tutorial/configuration02.png)
 
-4. 実際の IDP から、以下の詳細を入力します。
+1. 実際の IDP から、以下の詳細を入力します。
 
     ![monday.com の構成](./media/mondaycom-tutorial/configuration03.png)
 

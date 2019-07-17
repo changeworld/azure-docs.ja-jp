@@ -1,6 +1,7 @@
 ---
-title: クイック スタート:Anomaly Detector REST API と Python を使用して異常を検出する | Microsoft Docs
-description: Anomaly Detector API を使用して、バッチとしてまたはストリーミング データに対してデータ系列内の以上を検出します。
+title: クイック スタート:Anomaly Detector REST API と Python を使用して異常を検出する
+titleSuffix: Azure Cognitive Services
+description: Anomaly Detector API を使用して、データ系列の異常をバッチとして、またはストリーミング データで検出します。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -9,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: quickstart
 ms.date: 03/26/2019
 ms.author: aahi
-ms.openlocfilehash: 0ab39a7bb86671efb6258e3171e3bf7847aa241f
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: c69bc4db35a198d73f9b29ee3ed2fa6b6f71be49
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341739"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67721455"
 ---
 # <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-python"></a>クイック スタート:Anomaly Detector REST API および Python を使用し、時系列データ内の異常を検出する
 
