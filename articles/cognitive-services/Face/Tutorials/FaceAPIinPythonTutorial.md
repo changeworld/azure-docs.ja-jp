@@ -1,25 +1,25 @@
 ---
 title: 'クイック スタート: Python SDK を使用して画像内の顔を検出してフレームに収める'
 titleSuffix: Azure Cognitive Services
-description: このクイック スタートでは、Face API を使用してリモート画像内の顔を検出してフレームに収める、シンプルな Python スクリプトを作成します。
+description: このクイック スタートでは、Face API を使用してリモート画像内の顔を検出してフレームに収める、Python スクリプトを作成します。
 services: cognitive-services
 author: SteveMSFT
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 11/13/2018
+ms.date: 07/03/2018
 ms.author: sbowles
-ms.openlocfilehash: b816f4b78921c4bace1d15dd408b3fd701a3d6c5
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 741dd18a3b8da5e44d77c24d46adb8d550322281
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67339366"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603293"
 ---
-# <a name="quickstart-create-a-python-script-to-detect-and-frame-faces-in-an-image"></a>クイック スタート: 画像内の顔を検出してフレームに収める Python スクリプトの作成
+# <a name="quickstart-create-a-python-script-to-detect-and-frame-faces-in-an-image"></a>クイック スタート:画像内の顔を検出してフレームに収める Python スクリプトの作成
 
-このクイック スタートでは、リモート画像内の人の顔を検出するシンプルな Python スクリプトを作成します。このスクリプトでは、Python SDK を介して Azure Face API を使用します。 このアプリケーションでは、選択した画像が表示され、検出されたそれぞれの顔の周囲にフレームが描画されます。
+このクイック スタートでは、リモート画像内の人の顔を検出する Python スクリプトを作成します。このスクリプトでは、Python SDK を介して Azure Face API を使用します。 このアプリケーションでは、選択した画像が表示され、検出されたそれぞれの顔の周囲にフレームが描画されます。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。 
 
@@ -39,7 +39,7 @@ pip install cognitive_face
 
 ## <a name="detect-faces-in-an-image"></a>画像内の顔を検出する
 
-_FaceQuickstart.py_ という名前の新しい Python スクリプトを作成し、次のコードを追加します。 これは、顔検出のコア機能です。 `<Subscription Key>` は、実際のキーの値に置き換える必要があります。 また、`BASE_URL` の値も、実際のキーに合った正しいリージョン識別子を使用するように変更する必要があります (全リージョンのエンドポイント一覧については、[Face API のドキュメント](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)を参照)。 無料試用版のサブスクリプション キーは、**westus** リージョンで生成されます。 必要に応じて、`img_url` を、使用する任意の画像の URL に設定します。
+_FaceQuickstart.py_ という名前の新しい Python スクリプトを作成し、次のコードを追加します。 このコードでは、顔検出のコア機能を処理します。 `<Subscription Key>` は、実際のキーの値に置き換える必要があります。 また、`BASE_URL` の値も、実際のキーに合った正しいリージョン識別子を使用するように変更する必要があります (全リージョンのエンドポイント一覧については、[Face API のドキュメント](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)を参照)。 無料試用版のサブスクリプション キーは、**westus** リージョンで生成されます。 必要に応じて、`img_url` を、使用する任意の画像の URL に設定します。
 
 このスクリプトでは、**cognitive_face.face.detect** メソッドを呼び出して顔を検出します。これは、[Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) REST API をラップし、顔のリストを返します。
 
@@ -64,11 +64,11 @@ print(faces)
 
 `python FaceQuickstart.py` コマンドを使用してアプリを実行します。 次のように、コンソール ウィンドウにはテキスト応答が表示されます。
 
-```shell
+```console
 [{'faceId': '26d8face-9714-4f3e-bfa1-f19a7a7aa240', 'faceRectangle': {'top': 124, 'left': 459, 'width': 227, 'height': 227}}]
 ```
 
-これは、検出された顔のリストです。 リスト内の各項目は **dict** インスタンスであり、ここでは `faceId` は検出された顔の一意の ID で、`faceRectangle` は検出された顔の位置を示します。 
+出力には検出された顔の一覧が示されます。 リスト内の各項目は **dict** インスタンスであり、ここでは `faceId` は検出された顔の一意の ID で、`faceRectangle` は検出された顔の位置を示します。 
 
 > [!NOTE]
 > Face ID は 24 時間後に有効期限が切れます。顔のデータを長期間保持する場合は、明示的にそれを保存する必要があります。
@@ -83,7 +83,7 @@ from io import BytesIO
 from PIL import Image, ImageDraw
 ```
 
-次に、スクリプトの末尾に次のコードを追加します。 これにより、四角形の座標を解析するための単純な関数が作成され、Pillow を使用して元の画像の上に四角形が描画されます。 その後、その画像が既定の画像ビューアーに表示されます。
+次に、スクリプトの末尾に次のコードを追加します。 このコードにより、四角形の座標を解析するためのシンプルな関数が作成され、Pillow を使用して元の画像の上に四角形が描画されます。 その後、その画像が既定の画像ビューアーに表示されます。
 
 ```python
 # Convert width height to a point in a rectangle
