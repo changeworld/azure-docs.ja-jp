@@ -54,34 +54,32 @@
       href: migrate-replication-appliance.md
     - name: 評価のベスト プラクティス
       href: best-practices-assessment.md
-    - name: 評価の計算
+    - name: 評価の概要
       href: concepts-assessment-calculation.md
     - name: 依存関係の視覚化
       href: concepts-dependency-visualization.md
 - name: ハウツー ガイド
   items:
-    - name: '移行の例: Contoso シリーズ'
-      href: contoso-migration-overview.md
-    - name: VMware 評価/移行 (エージェントレス) のためのアプライアンスのデプロイ
+    - name: 以前のバージョンの使用
+      href: migrate-v1.md
+    - name: VMware アプライアンスのデプロイ
       href: how-to-set-up-appliance-vmware.md
-    - name: Hyper-V 評価/移行のためのアプライアンスのデプロイ
+    - name: Hyper-V アプライアンスのデプロイ
       href: how-to-set-up-appliance-hyper-v.md
-    - name: 評価/移行ツールの初回追加
+    - name: ツールの初回追加
       href: how-to-add-tool-first-time.md
     - name: 評価ツールの追加
       href: how-to-assess.md
-    - name: 移行ツールの追加
-      href: how-to-migrate.md
     - name: アセスメントためのマシンのグループ化
-      items:
-        - name: グループの作成
-          href: how-to-create-a-group.md
-        - name: マシンの依存関係を使用したマシンのグループ化
-          href: how-to-create-group-machine-dependencies.md
-        - name: グループの依存関係を使用したグループの絞り込み
-          href: how-to-create-group-dependencies.md
+      href: how-to-create-a-group.md
+    - name: 依存関係の視覚化を使用したマシンのグループ化
+      href: how-to-create-group-machine-dependencies.md
+    - name: 評価を作成する
+      href: how-to-create-assessment.md
     - name: 評価のカスタマイズ
       href: how-to-modify-assessment.md
+    - name: 移行ツールの追加
+      href: how-to-migrate.md
     - name: 評価の移行のスケール
       items:
         - name: 大量の VMware VM を評価する
@@ -90,6 +88,10 @@
           href: scale-hyper-v-assessment.md
         - name: 多数の VM の移行の自動化
           href: how-to-migrate-at-scale.md
+    - name: '移行の例: Contoso シリーズ'
+      href: contoso-migration-overview.md
+- name: トラブルシューティング
+  items:
     - name: Azure Migrate のトラブルシューティング
       href: troubleshooting-general.md
 - name: リソース

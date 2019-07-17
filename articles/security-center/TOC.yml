@@ -127,16 +127,38 @@
           href: security-center-apply-disk-encryption.md
         - name: システムの更新の適用
           href: security-center-apply-system-updates.md
+        - name: ストレージ アカウントの暗号化の有効化
+          href: security-center-enable-encryption-for-storage-account.md
+        - name: VM エージェントの有効化
+          href: security-center-enable-vm-agent.md
         - name: Endpoint Protection をインストールします
           href: security-center-install-endpoint-protection.md
         - name: システムの更新後に再起動する
           href: 'security-center-apply-system-updates.md#reboot-after-system-updates'
+        - name: セキュリティ構成の修復
+          href: security-center-remediate-os-vulnerabilities.md
+        - name: OS バージョンの更新
+          href: security-center-update-os-version.md
         - name: 脆弱性評価がインストールされていない
           href: security-center-vulnerability-assessment-recommendations.md
+        - name: Web アプリケーション ファイアウォールの追加
+          href: security-center-add-web-application-firewall.md
         - name: アプリケーション保護を完了する
           href: 'security-center-add-web-application-firewall.md#finalize-application-protection'
+        - name: 次世代ファイアウォールを追加する
+          href: security-center-add-next-generation-firewall.md
+        - name: Enable Network Security Groups
+          href: security-center-enable-network-security-groups.md
+        - name: インターネット接続エンドポイント経由のアクセスを制限する
+          href: security-center-restrict-access-through-internet-facing-endpoints.md
         - name: NGFW 経由に限定したトラフィックのルーティング
           href: 'security-center-add-next-generation-firewall.md#route-traffic-through-ngfw-only'
+        - name: SQL データベースの監査と脅威検出を有効にする
+          href: security-center-enable-auditing-on-sql-databases.md
+        - name: SQL サーバーの監査と脅威検出を有効にする
+          href: security-center-enable-auditing-on-sql-servers.md
+        - name: Transparent Data Encryption の有効化
+          href: security-center-enable-transparent-data-encryption.md
         - name: 脅威レポート
           href: security-center-threat-report.md
         - name: カスタム アラート

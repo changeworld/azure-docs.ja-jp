@@ -56,6 +56,8 @@
           href: best-practices-distributive-collaborative-development-environment.md
         - name: Azure DevOps との統合
           href: devtest-lab-dev-ops.md
+        - name: 要求機能の使用
+          href: devtest-lab-use-claim-capabilities.md
         - name: シナリオ
           items:
             - name: DevTest Labs を使用する一般的なシナリオ

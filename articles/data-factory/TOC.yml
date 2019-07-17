@@ -564,6 +564,8 @@
           href: solution-template-copy-files-multiple-containers.md
         - name: LastModifiedDate を基準に新しいファイルをコピーする
           href: solution-template-copy-new-files-lastmodifieddate.md
+        - name: ファイルの移動
+          href: solution-template-move-files.md
         - name: 制御テーブルを使用した一括コピー
           href: solution-template-bulk-copy-with-control-table.md
         - name: 制御テーブルを使用した差分コピー
@@ -574,6 +576,8 @@
       items:
         - name: アクティビティのトラブルシューティング
           href: data-factory-troubleshoot-guide.md
+        - name: Azure SSIS IR の管理に関するトラブルシューティング
+          href: ssis-integration-runtime-management-troubleshoot.md
         - name: Azure-SSIS IR でのパッケージ実行に関するトラブルシューティング
           href: ssis-integration-runtime-ssis-activity-faq.md
 - name: リファレンス

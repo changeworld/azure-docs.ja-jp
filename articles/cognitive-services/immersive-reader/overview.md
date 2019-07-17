@@ -1,20 +1,21 @@
 ---
-title: イマーシブ リーダーの概要
-titlesuffix: Azure Cognitive Services
-description: イマーシブ リーダーについて説明します
+title: イマーシブ リーダー API とは
+titleSuffix: Azure Cognitive Services
+description: イマーシブ リーダー API について説明します。
 services: cognitive-services
 author: metanMSFT
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: immersive-reader
 ms.topic: overview
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 38056f701b76f3fc2cf1f617a6977321445f78ff
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 4500b6213c549ab9977fe8f2d849ffa8089d04b9
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67296919"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67718436"
 ---
 # <a name="what-is-immersive-reader"></a>Immersive Reader とは
 

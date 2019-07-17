@@ -22,7 +22,7 @@ Azure Automation には、オペレーティング システムのセキュリ�
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-https://portal.azure.com で Azure にサインインします
+[https://portal.azure.com ](https://portal.azure.com) で Azure にサインインします
 
 ## <a name="enable-solutions"></a>ソリューションの有効化
 

@@ -27,7 +27,7 @@
       href: tutorial-rendering-batchexplorer-blender.md
     - name: 並列 R シミュレーション
       href: tutorial-r-doazureparallel.md
-    - name: Batch と Azure Functions を使用した OCR
+    - name: Batch と Functions を使用した OCR
       href: tutorial-batch-functions.md
 - name: サンプル
   items:

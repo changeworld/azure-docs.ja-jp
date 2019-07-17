@@ -126,6 +126,8 @@
           href: virtual-kubelet.md
         - name: クラスター オートスケーラーの使用 (プレビュー)
           href: cluster-autoscaler.md
+        - name: Availability Zones (プレビュー) の使用
+          href: availability-zones.md
         - name: 複数のノード プールの使用 (プレビュー)
           href: use-multiple-node-pools.md
         - name: Terraform を使用した AKS のデプロイ
@@ -315,6 +317,8 @@
         - name: Azure DevOps プロジェクト
           href: ../devops-project/azure-devops-project-aks.md
           maintainContext: true
+        - name: デプロイ センター ランチャー
+          href: deployment-center-launcher.md
     - name: トラブルシューティング
       items:
         - name: 一般的な問題

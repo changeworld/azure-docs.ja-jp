@@ -1,26 +1,27 @@
 ---
-title: クイック スタート:イマーシブ リーダーを起動する Web アプリを作成する (C#)
+title: クイック スタート:C# を使用してイマーシブ リーダーを起動する Web アプリを作成する
 titlesuffix: Azure Cognitive Services
-description: このクイックスタートでは、Web アプリを一から構築してイマーシブ リーダー機能を追加します。
+description: このクイックスタートでは、Web アプリを一から構築してイマーシブ リーダー API 機能を追加します。
 services: cognitive-services
 author: metanMSFT
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: immersive-reader
 ms.topic: quickstart
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 77d95383c801038c256ccb2bf386ddf06048cf78
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.openlocfilehash: 3b408de6b60e7e7704ee228b52c399e5b80e3a9e
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67311802"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67718420"
 ---
 # <a name="quickstart-create-a-web-app-that-launches-the-immersive-reader-c"></a>クイック スタート:イマーシブ リーダーを起動する Web アプリを作成する (C#)
 
 [イマーシブ リーダー](https://www.onenote.com/learningtools)は、読解力向上のために実証済みの手法を実装する、包括的に設計されたツールです。
 
-このクイックスタートでは、Web アプリを一から構築し、Immersive Reader SDK を使用してイマーシブ リーダー機能を統合します。 このクイック スタートの完全なサンプルは[こちら](https://github.com/Microsoft/immersive-reader-sdk/samples/quickstart-csharp)で入手できます。
+このクイックスタートでは、Web アプリを一から構築し、Immersive Reader SDK を使用してイマーシブ リーダー機能を統合します。 このクイック スタートの完全なサンプルは[こちら](https://github.com/microsoft/immersive-reader-sdk/tree/master/samples/quickstart-csharp)で入手できます。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 

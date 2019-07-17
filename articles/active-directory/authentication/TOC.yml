@@ -16,8 +16,6 @@
       href: tutorial-sspr-pilot.md
     - name: SSPR オンプレミス統合を有効にする
       href: tutorial-enable-writeback.md
-    - name: Windows 10 のパスワード リセットを有効にする
-      href: tutorial-sspr-windows.md
     - name: Azure Identity Protection を統合する
       href: tutorial-risk-based-sspr-mfa.md
 - name: 概念
@@ -73,8 +71,8 @@
           href: howto-sspr-authenticationdata.md
         - name: パスワード ライトバックの有効化
           href: howto-sspr-writeback.md
-        - name: Windows 7、8、8.1 用の SSPR
-          href: howto-sspr-windows-7-8.md
+        - name: Windows クライアント用 SSPR
+          href: howto-sspr-windows.md
     - name: クラウドベースの MFA
       items:
         - name: クラウドベースの MFA のデプロイ

@@ -1,20 +1,21 @@
 ---
-title: チュートリアル:Immersive Reader の起動 (Node.js)
+title: チュートリアル:Node.js を使用して Immersive Reader を起動する
 titleSuffix: Azure Cognitive Services
 description: このチュートリアルでは、イマーシブ リーダーを起動する Node.js アプリケーションを作成します。
 services: cognitive-services
 author: metanMSFT
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: ac90496c950d8a563bf8794b4c1bb105b6c12232
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: f8697042ed46e0ff333f736454346908d76cf039
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67444060"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67718382"
 ---
 # <a name="tutorial-launch-the-immersive-reader-nodejs"></a>チュートリアル:Immersive Reader の起動 (Node.js)
 
