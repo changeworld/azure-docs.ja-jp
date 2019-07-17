@@ -59,6 +59,8 @@
   items:
     - name: Event Hubs の用語
       href: event-hubs-features.md
+    - name: イベント プロセッサ ホスト
+      href: event-hubs-event-processor-host.md
     - name: 可用性と一貫性
       href: event-hubs-availability-and-consistency.md
     - name: スケーラビリティ
@@ -90,8 +92,6 @@
           href: event-hubs-exchange-events-different-protocols.md
         - name: プログラミング ガイド
           href: event-hubs-programming-guide.md
-        - name: イベント プロセッサ ホストを使用してイベントを受信する
-          href: event-hubs-event-processor-host.md
     - name: データを処理する
       items:
         - name: Azure Stream Analytics を使用したデータの処理
