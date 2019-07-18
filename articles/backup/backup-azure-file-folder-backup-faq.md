@@ -5,34 +5,30 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 05/28/2019
+ms.date: 07/02/2019
 ms.author: dacurwin
-ms.openlocfilehash: 56dc87b1cdf36d761c46133004a05f8fa225a091
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d4d1044a30d4ebc551cf1305993aba2a201c4c94
+ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66808301"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67514456"
 ---
-# <a name="common-questions-about-backing-up-files-and-folders"></a>ファイルとフォルダーのバックアップに関する一般的な質問 
+# <a name="common-questions-about-backing-up-files-and-folders"></a>ファイルとフォルダーのバックアップに関する一般的な質問
 
 この記事では、[Azure Backup](backup-overview.md) サービスにある Microsoft Azure Recovery Services (MARS) エージェントを使ったファイルとフォルダーのバックアップに関する一般的な質問への回答を示します。
 
 ## <a name="general"></a>全般
 
-### <a name="why-does-the-mars-agent-need-net-framework-452-or-higher"></a>MARS エージェントでは、どうして .NET framework 4.5.2 以降が必要なのですか。
-
-[インスタンス リストア](backup-azure-restore-windows-server.md#use-instant-restore-to-recover-data-to-the-same-machine)で使用できる新しい機能では、.NET Framework 4.5.2 以降が必要です。
-
 ## <a name="configure-backups"></a>バックアップを構成する
 
-### <a name="where-can-i-download-the-latest-version-of-the-mars-agent"></a>最新バージョンの MARS エージェントは、どこでダウンロードできますか。 
-Windows Server マシン、System Center DPM、および Microsoft Azure Backup サーバーをバックアップするときに使用される最新の MARS エージェントは、[ダウンロード](https://aka.ms/azurebackup_agent)のページから入手できます。 
+### <a name="where-can-i-download-the-latest-version-of-the-mars-agent"></a>最新バージョンの MARS エージェントは、どこでダウンロードできますか。
+Windows Server マシン、System Center DPM、および Microsoft Azure Backup サーバーをバックアップするときに使用される最新の MARS エージェントは、[ダウンロード](https://aka.ms/azurebackup_agent)のページから入手できます。
 
 ### <a name="how-long-are-vault-credentials-valid"></a>コンテナー資格情報の有効期間はどのくらいですか。
 コンテナー資格情報は 48 時間後に有効期限が切れます。 資格情報ファイルが期限切れになったら、Azure portal から再度ファイルをダウンロードしてください。
 
-### <a name="from-what-drives-can-i-back-up-files-and-folders"></a>どのようなドライブからファイルとフォルダーをバックアップできますか。 
+### <a name="from-what-drives-can-i-back-up-files-and-folders"></a>どのようなドライブからファイルとフォルダーをバックアップできますか。
 
 次の種類のドライブおよびボリュームをバックアップすることはできません。
 
@@ -45,24 +41,15 @@ Windows Server マシン、System Center DPM、および Microsoft Azure Backup 
 
 ### <a name="what-file-and-folder-types-are-supported"></a>どのようなファイルとフォルダーの種類がサポートされますか。
 
-次の種類がサポートされています。
-
-* 暗号化
-* 圧縮
-* スパース
-* 圧縮 + スパース
-* ハード リンク:サポートされていません。スキップされます。
-* 再解析ポイント:サポートされていません。スキップされます。
-* 暗号化 + スパース:サポートされていません。スキップされます。
-* 圧縮されたストリーム:サポートされていません。スキップされます。
-* DFS リンクおよび接合ポイントを含む、再解析ポイント
-
+バックアップでサポートされているファイルとフォルダーの種類についての[詳細を確認](backup-support-matrix-mars-agent.md#supported-file-types-for-backup)してください。
 
 ### <a name="can-i-use-the-mars-agent-to-back-up-files-and-folders-on-an-azure-vm"></a>MARS エージェントを使用して、Azure VM 上にファイルおよびフォルダーをバックアップできますか。  
-はい。 Azure Backup では、Azure VM エージェント対応の VM 拡張機能を使用している Azure VM には、VM レベルのバックアップを提供しています。 VM にあるゲスト Windows オペレーティング システム上にファイルとフォルダーをバックアップする場合は、MARS エージェントをインストールして実現できます。 
+はい。 Azure Backup では、Azure VM エージェント対応の VM 拡張機能を使用している Azure VM には、VM レベルのバックアップを提供しています。 VM にあるゲスト Windows オペレーティング システム上にファイルとフォルダーをバックアップする場合は、MARS エージェントをインストールして実現できます。
 
-### <a name="can-i-use-the-mars-agent-to-back-up-files-and-folders-on-temporary-storage-for-the-azure-vm"></a>MARS エージェントを使用して、Azure VM 用の一時ストレージ上にファイルおよびフォルダーをバックアップできますか。 
-はい。 MARS エージェントをインストールして、ゲスト Windows オペレーティング システムにあるファイルおよびフォルダーを一時ストレージにバックアップします。 - 一時ストレージのデータについては、消去されると、バックアップ ジョブは失敗します。
+### <a name="can-i-use-the-mars-agent-to-back-up-files-and-folders-on-temporary-storage-for-the-azure-vm"></a>MARS エージェントを使用して、Azure VM 用の一時ストレージ上にファイルおよびフォルダーをバックアップできますか。
+はい。 MARS エージェントをインストールして、ゲスト Windows オペレーティング システムにあるファイルおよびフォルダーを一時ストレージにバックアップします。
+
+- 一時ストレージのデータが消去されると、バックアップ ジョブは失敗します。
 - 一時ストレージのデータが削除された場合、非揮発性ストレージにしか復元できません。
 
 ### <a name="how-do-i-register-a-server-to-another-region"></a>別のリージョンにサーバーを登録する方法を教えてください。
@@ -80,7 +67,7 @@ Windows マシンの名前を変更すると、現在構成されているすべ
 
 - Backup コンテナーに新しいマシン名を登録する必要があります。
 - コンテナーに新しい名前を登録すると、最初の操作は "*完全*" バックアップになります。
-- 以前のサーバー名を使ってコンテナーにバックアップしたデータを回復する必要がある場合は、データの回復ウィザードで別の場所に復元するためのオプションを使用します。 [詳細情報](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine)。 
+- 以前のサーバー名を使ってコンテナーにバックアップしたデータを回復する必要がある場合は、データの回復ウィザードで別の場所に復元するためのオプションを使用します。 [詳細情報](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine)。
 
 ### <a name="what-is-the-maximum-file-path-length-for-backup"></a>バックアップするファイル パスの最大長はいくつですか。
 MARS エージェントは NTFS に依存しており、[Windows API](/windows/desktop/FileIO/naming-a-file#fully-qualified-vs-relative-paths) によって制限されているファイルパス長の仕様を利用します。 保護するファイルが許可された値よりも長くなる場合は、親フォルダーまたはディスク ドライブをバックアップします。  
@@ -143,8 +130,8 @@ MARS エージェントは NTFS に依存しており、ファイルの名前/�
 キャッシュ フォルダーとメタデータ VHD には Azure Backup エージェントに必要な属性はありません。
 
 ### <a name="is-there-a-way-to-adjust-the-amount-of-bandwidth-used-for-backup"></a>バックアップに使用される帯域幅の量を調整する方法はありますか。
- 
-はい。帯域幅とタイミングを調整するには、MARS エージェントにある **[プロパティの変更]** オプションを使用できます。 [詳細を確認](backup-configure-vault.md#enable-network-throttling)してください**。
+
+はい。帯域幅とタイミングを調整するには、MARS エージェントにある **[プロパティの変更]** オプションを使用できます。 [詳細情報](backup-configure-vault.md#enable-network-throttling)。
 
 ## <a name="restore"></a>復元
 

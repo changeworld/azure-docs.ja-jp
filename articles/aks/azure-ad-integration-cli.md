@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/16/2019
 ms.author: iainfou
-ms.openlocfilehash: d80ad5abecc968a9fe3c82d62ddd8577856a3c54
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: afb554307fd255d1863fc1508cef3703d4dc9f9e
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65835195"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67561163"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli"></a>Azure CLI を使用して Azure Active Directory と Azure Kubernetes Service を統合する
 
@@ -49,7 +49,7 @@ Kubernetes クラスターの内部からは、webhook トークン認証を使�
 
 AKS と統合するには、ID 要求のエンドポイントとして機能する Azure AD アプリケーションを作成して使用します。 必要な最初の Azure AD アプリケーションが、ユーザーの Azure AD グループ メンバーシップを取得します。
 
-[az ad app create][az-ad-app-create] コマンドを使用してサーバー アプリケーション コンポーネントを作成し、[az ad app update][az-ad-app-update] コマンドを使用してそのグループ メンバーシップの要求を更新します。 次の例では、「[開始する前に](#before-you-begin)」セクションで定義した *aksname* 変数を使用して変数を作成します。
+[az ad app create][az-ad-app-create] コマンドを使用して、サーバー アプリケーション コンポーネントを作成します。command, then update the group membership claims using the [az ad app update][az-ad-app-update] 次の例では、「[開始する前に](#before-you-begin)」セクションで定義した *aksname* 変数を使用して変数を作成します。
 
 ```azurecli-interactive
 # Create the Azure AD application
@@ -62,7 +62,7 @@ serverApplicationId=$(az ad app create \
 az ad app update --id $serverApplicationId --set groupMembershipClaims=All
 ```
 
-ここで、[az ad sp create][az-ad-sp-create] コマンドを使用して、サーバー アプリのサービス プリンシパルを作成します。 このサービス プリンシパルは、Azure プラットフォーム内で自身を認証するために使用されます。 次に、[az ad sp credential reset][az-ad-sp-credential-reset] コマンドを使用して、サービス プリンシパルのシークレットを取得し、次のいずれかのステップで使用するために *serverApplicationSecret* という名前の変数を割り当てます。
+次に、[az ad sp create][az-ad-sp-create] コマンドを使用してサーバー アプリのサービス プリンシパルを作成し、*serverApplicationSecret* という名前の変数に割り当てて、次のいずれかの手順で使用します。command. This service principal is used to authenticate itself within the Azure platform. Then, get the service principal secret using the [az ad sp credential reset][az-ad-sp-credential-reset]
 
 ```azurecli-interactive
 # Create a service principal for the Azure AD application
@@ -80,7 +80,7 @@ Azure AD には、次のアクションを実行するためのアクセス許�
 * ディレクトリ データの読み取り
 * サインインとユーザー プロファイルの読み取り
 
-[az ad app permission add][az-ad-app-permission-add] コマンドを使用してこれらのアクセス許可を割り当てます。
+[az ad app permission add][az-ad-app-permission-add] コマンドを使用して、これらのアクセス許可を割り当てます。
 
 ```azurecli-interactive
 az ad app permission add \
@@ -89,7 +89,7 @@ az ad app permission add \
     --api-permissions e1fe6dd8-ba31-4d61-89e7-88639da4683d=Scope 06da0dbc-49e2-44d2-8312-53f166ab848a=Scope 7ab1d382-f21e-4acd-a863-ba3e13f7da61=Role
 ```
 
-最後に、[az ad app permission grant][az-ad-app-permission-grant] コマンドを使用して、前の手順で割り当てたアクセス許可をサーバー アプリケーションに付与します。 現在のアカウントがテナント管理者ではない場合、このステップは失敗します。また、情報を要求するには、Azure AD に対するアクセス許可を追加する必要もあります。ない場合は、[az ad app permission admin-consent][az-ad-app-permission-admin-consent] を使用して管理者の同意が必要になる場合があります。
+最後に、[az ad app permission grant][az-ad-app-permission-grant] を使用して、前の手順で割り当てたアクセス許可をサーバー アプリケーションに付与します。command. This step fails if the current account is not a tenant admin. You also need to add permissions for Azure AD application to request information that may otherwise require administrative consent using the [az ad app permission admin-consent][az-ad-app-permission-admin-consent]
 
 ```azurecli-interactive
 az ad app permission grant --id $serverApplicationId --api 00000003-0000-0000-c000-000000000000
@@ -120,7 +120,7 @@ az ad sp create --id $clientApplicationId
 oAuthPermissionId=$(az ad app show --id $serverApplicationId --query "oauth2Permissions[0].id" -o tsv)
 ```
 
-oAuth2 の通信フローを使用するため、[az ad app permission add][az-ad-app-permission-add] コマンドを使用して、クライアント アプリケーションおよびサーバー アプリケーションのコンポーネントのアクセス許可を追加します。 次に、[az ad app permission grant][az-ad-app-permission-grant] コマンドを使用して、サーバー アプリケーションと通信するためにクライアント アプリケーションにアクセス許可を付与します。
+oAuth2 の通信フローを使用するため、[az ad app permission add][az-ad-app-permission-add] コマンドを使用して、クライアント アプリケーションおよびサーバー アプリケーションのコンポーネントのアクセス許可を追加します。command. Then, grant permissions for the client application to communication with the server application using the [az ad app permission grant][az-ad-app-permission-grant]
 
 ```azurecli-interactive
 az ad app permission add --id $clientApplicationId --api $serverApplicationId --api-permissions $oAuthPermissionId=Scope
@@ -137,7 +137,7 @@ az ad app permission grant --id $clientApplicationId --api $serverApplicationId
 az group create --name myResourceGroup --location EastUS
 ```
 
-[az account show][az-account-show] コマンドを使用して、Azure サブスクリプションのテナント ID を取得します。 次に、[az aks create][az-aks-create] コマンドを使用して、AKS クラスターを作成します。 AKS クラスターを作成するコマンドは、サーバーとクライアント アプリケーションの ID、サーバー アプリケーション サービス プリンシパルのシークレット、およびテナント ID を提供します。
+[az account show][az-account-show] コマンドを使用して、Azure サブスクリプションのテナント ID を取得します。command. Then, create the AKS cluster using the [az aks create][az-aks-create] AKS クラスターを作成するコマンドは、サーバーとクライアント アプリケーションの ID、サーバー アプリケーション サービス プリンシパルのシークレット、およびテナント ID を提供します。
 
 ```azurecli-interactive
 tenantId=$(az account show --query tenantId -o tsv)
@@ -161,7 +161,7 @@ az aks get-credentials --resource-group myResourceGroup --name $aksname --admin
 
 ## <a name="create-rbac-binding"></a>RBAC のバインドを作成する
 
-Azure Active Directory アカウントを AKS クラスターで使用できるようにするには、その前にまず、ロールのバインドまたはクラスター ロールのバインドを作成する必要があります。 付与するアクセス許可を "*ロール*" によって定義し、それらを "*バインド*" によって目的のユーザーに適用します。 これらの割り当ては、特定の名前空間に適用することも、クラスター全体に適用することもできます。 詳細については、「[Using RBAC authorization (RBAC 認可の使用)][rbac-authorization]」を参照してください。
+Azure Active Directory アカウントを AKS クラスターで使用できるようにするには、その前にまず、ロールのバインドまたはクラスター ロールのバインドを作成する必要があります。 付与するアクセス許可を "*ロール*" によって定義し、それらを "*バインド*" によって目的のユーザーに適用します。 これらの割り当ては、特定の名前空間に適用することも、クラスター全体に適用することもできます。 詳細については、[RBAC 承認の使用][rbac-authorization]に関するページを参照してください。
 
 [az ad signed-in-user show][az-ad-signed-in-user-show] コマンドを使用して、現在ログインしているユーザーのユーザー プリンシパル名 (UPN) を取得します。 このユーザー アカウントは、次のステップで Azure AD の統合に対して有効化されます。
 
@@ -244,11 +244,11 @@ error: You must be logged in to the server (Unauthorized)
 
 この記事で示されているコマンドを含む完全なスクリプトについては、[AKS サンプル リポジトリの Azure AD 統合スクリプト][complete-script]に関するページを参照してください。
 
-Azure AD ユーザーとグループを使用してクラスター リソースへのアクセスを制御するには、「[Control access to cluster resources using role-based access control and Azure AD identities in AKS][azure-ad-rbac]」 (AKS でロールベースのアクセス制御と Azure AD の ID を使用してクラスター リソースへのアクセス制御する) を参照してください。
+Azure AD ユーザーとグループを使用してクラスター リソースへのアクセスを制御するには、[AKS でロールベースのアクセス制御と Azure AD の ID を使用してクラスター リソースへのアクセスを制限する][azure-ad-rbac]方法に関するページを参照してください。
 
-Kubernetes クラスターをセキュリティで保護する方法の詳細については、「[Azure Kubernetes Service (AKS) でのアクセスと ID オプション][rbac-authorization]」のページを参照してください。
+Kubernetes クラスターをセキュリティで保護する方法の詳細については、[AKS でのアクセスと ID オプション][rbac-authorization]に関するページを参照してください。
 
-ID とリソース コントロールに関するベスト プラクティスについては、[Azure Kubernetes Service (AKS) の認証と認可のベスト プラクティス][operator-best-practices-identity]に関する記事を参照してください。
+ID とリソース管理に関するベスト プラクティスについては、[AKS での認証と承認のベスト プラクティス][operator-best-practices-identity]に関するページを参照してください。
 
 <!-- LINKS - external -->
 [kubernetes-webhook]:https://kubernetes.io/docs/reference/access-authn-authz/authentication/#webhook-token-authentication

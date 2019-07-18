@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: gracez
-ms.openlocfilehash: 6324da55c8af4934185fa39a106939844788adba
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 33907437ab330278bdf7b023f6a93bd96e78cbad
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60653718"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67561337"
 ---
 # <a name="migrate-from-bing-speech-to-the-speech-service"></a>Bing Speech から Speech Service に移行する
 
@@ -69,7 +69,7 @@ Speech Services WebSockets プロトコルも Bing Speech が使用している�
 
 ただし、特定のプログラミング言語で Bing Speech クライアント ライブラリを使用している場合、[Speech SDK](speech-sdk.md) に移行するには、API が異なるため、アプリケーションそのものを変更する必要があります。 Speech SDK により、新しい機能を利用できる一方でコードを簡略化できるようになります。
 
-現在､Speech SDK は C# (Windows 10､UWP､.NET Standard) と Java (Android とカスタム デバイス)､, Objective C (iOS)､C++ (Windows と Linux)､および JavaScript に対応しています｡ どのプラットフォームの API も似ており､マルチプラットフォーム開発が容易になります｡
+現在、Speech SDK は C# ([詳細はこちら](https://aka.ms/csspeech)) と Java (Android とカスタム デバイス)、Objective C (iOS)、C++ (Windows と Linux)、および JavaScript に対応しています。 どのプラットフォームの API も似ており､マルチプラットフォーム開発が容易になります｡
 
 Speech Services では、グローバル エンドポイントは提供されません。 アプリケーションのすべてのトラフィックに単一のリージョン エンドポイントを使用しているときにアプリケーションが効率的に機能するかどうかを判断します。 効率的に機能しない場合は､geolocation を使って最も効率的なエンドポイントを探してください｡ 使用するリージョンごとに Speech Services サブスクリプションが必要になります。
 

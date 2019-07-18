@@ -292,6 +292,14 @@
               href: ../common/storage-account-manage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: ストレージ アカウントのアップグレード
               href: ../common/storage-account-upgrade.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: コンテナーの作成と管理
+          items:
+            - name: コンテナーの作成または削除 (.NET)
+              href: storage-blob-container-create.md
+            - name: コンテナーの一覧表示 (.NET)
+              href: storage-blob-containers-list.md
+            - name: プロパティとメタデータの管理 (.NET)
+              href: storage-blob-container-properties-metadata.md
         - name: BLOB データのセキュリティ保護
           items:
             - name: BLOB データへのアクセスの承認
@@ -358,8 +366,6 @@
               href: ../common/storage-use-azurite.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Azure Storage エミュレーターを使用する
               href: ../common/storage-use-emulator.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: プロパティおよびメタデータを設定および取得する
-          href: storage-properties-metadata.md
         - name: 静的 Web サイトのホスト
           href: storage-blob-static-website-how-to.md
         - name: HTTPS 経由でアクセスするために Azure CDN をカスタム ドメインにマッピングする

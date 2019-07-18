@@ -6,14 +6,14 @@ author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 06/03/2019
+ms.date: 07/03/2019
 ms.author: iainfou
-ms.openlocfilehash: 1cc03cbcffc5253e8b357b6702cd21c45740ff81
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: d4fa365e1ed055fa8ddeb8fd475e152af84a3b71
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66514501"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67560444"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) についてよく寄せられる質問
 
@@ -25,31 +25,33 @@ ms.locfileid: "66514501"
 
 ## <a name="does-aks-support-node-autoscaling"></a>AKS はノードの自動スケールをサポートしていますか?
 
-はい、自動スケールは、Kubernetes 1.10 以降、[Kubernetes autoscaler][auto-scaler] 経由で使用できます。 クラスターの自動スケーラーを手動で構成して使用する方法の詳細については、[AKS のクラスター自動スケーリング][aks-cluster-autoscale]に関するページを参照してください。
-
-ノードのスケーリングを管理するために、組み込みのクラスターの自動スケーラー (現在、AKS ではプレビュー中) を使用することもできます。 詳細については、[AKS でのアプリケーションの需要を満たすようにクラスターを自動的にスケーリング][aks-cluster-autoscaler]に関するページを参照してください。
-
-## <a name="does-aks-support-kubernetes-rbac"></a>AKS では Kubernetes RBAC はサポートされていますか?
-
-はい、Azure CLI でクラスターを作成すると、Kubernetes のロールベースのアクセス制御 (RBAC) が既定で有効になります。 Azure portal またはテンプレートを使って作成したクラスターで RBAC を有効にすることができます。
+はい、AKS でエージェント ノードを自動的に水平方向にスケーリングする機能は、現在プレビューで利用できます。 [AKS でアプリケーションの需要を満たすためのクラスターの自動スケーリング][aks-cluster-autoscaler]に関するページを参照してください。for instructions. AKS autoscaling is based on the [Kubernetes autoscaler][auto-scaler]
 
 ## <a name="can-i-deploy-aks-into-my-existing-virtual-network"></a>既存の仮想ネットワークに AKS をデプロイできますか?
 
 はい、[高度なネットワーク機能][aks-advanced-networking]を使用して、既存の仮想ネットワークに AKS クラスターをデプロイできます。
 
+## <a name="can-i-limit-who-has-access-to-the-kubernetes-api-server"></a>Kubernetes API サーバーにアクセスできるユーザーを制限できますか?
+
+はい、現在プレビュー中の [API サーバーの許可された IP 範囲][api-server-authorized-ip-ranges]を使用して、Kubernetes API サーバーへのアクセスを制限できます。
+
 ## <a name="can-i-make-the-kubernetes-api-server-accessible-only-within-my-virtual-network"></a>Kubernetes API サーバーを仮想ネットワーク内でのみアクセスできるようにできますか?
 
-現時点ではありません。 Kubernetes API サーバーは、パブリックの完全修飾ドメイン名 (FQDN) として公開されます。 クラスターへのアクセスは、[Kubernetes の RBAC と Azure Active Directory (Azure AD)][aks-rbac-aad] を使って制御できます。
+現時点ではできませんが、計画されています。 進捗状況は、[AKS GitHub リポジトリ][private-clusters-github-issue]で追跡できます。
+
+## <a name="can-i-have-different-vm-sizes-in-a-single-cluster"></a>1 つのクラスター内で、異なる VM サイズを設定できますか?
+
+はい、現在プレビュー中の[複数のノード プール][multi-node-pools]を作成することで、AKS クラスター内で異なる仮想マシン サイズを使用できます。
 
 ## <a name="are-security-updates-applied-to-aks-agent-nodes"></a>AKS エージェント ノードにセキュリティ更新プログラムは適用されますか?
 
 Azure では、セキュリティ更新プログラムが夜間スケジュールでご利用のクラスター内の Linux ノードに自動的に適用されます。 ただし、必要な場合は、それらの Linux ノードが確実に再起動されるようにする必要があります。 ノードを再起動するにはいくつかのオプションがあります。
 
 - Azure Portal または Azure CLI から手動で行います。
-- AKS クラスターをアップグレードします。 クラスターでは、[cordon ノードと drain ノード][cordon-drain]が自動的にアップグレードされてから、最新の Ubuntu イメージと、新しいパッチ バージョンまたは Kubernetes のマイナー バージョンで、新しいノードがオンラインにされます。 詳細については、「[AKS クラスターのアップグレード][aks-upgrade]」を参照してください。
+- AKS クラスターをアップグレードします。 クラスターは、[cordon および drain ノード][cordon-drain]をアップグレードします。automatically and then bring a new node online with the latest Ubuntu image and a new patch version or a minor Kubernetes version. For more information, see [Upgrade an AKS cluster][aks-upgrade]
 - Kubernetes 用のオープン ソースの再起動デーモンである [Kured](https://github.com/weaveworks/kured) を使用します。 Kured は [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) として実行され、再起動が必要であることを示すファイルの存在が各ノードで監視されます。 クラスター全体で、クラスターのアップグレードと同じ [cordon および drain プロセス][cordon-drain]によって OS の再起動が管理されます。
 
-Kured の使用について詳しくは、[AKS 上のノードへのセキュリティおよびカーネルの更新プログラムの適用][node-updates-kured]に関する記事をご覧ください。
+Kured の使用の詳細については、[AKS 上のノードへのセキュリティおよびカーネルの更新プログラムの適用][node-updates-kured]に関する記事を参照してください。
 
 ### <a name="windows-server-nodes"></a>Windows Server ノード
 
@@ -68,7 +70,7 @@ Windows Server ノードでは (現在、AKS ではプレビュー中)、Windows
 
 はい。 既定では、AKS リソース プロバイダーによってデプロイの間にセカンダリ リソース グループ (*MC_myResourceGroup_myAKSCluster_eastus* など) が自動的に作成されます。 企業ポリシーに準拠するために、この管理対象クラスター (*MC_* ) リソース グループに独自の名前を指定できます。
 
-独自のリソース グループ名を指定するには、[aks-preview][aks-preview-cli] Azure CLI 拡張機能バージョン *0.3.2* 以降をインストールします。 [az aks create][az-aks-create] コマンドを使って AKS クラスターを作成するときに、 *--node-resource-group* パラメーターを使ってリソース グループの名前を指定します。 [Azure Resource Manager テンプレートを使って][aks-rm-template] AKS クラスターをデプロイする場合は、*nodeResourceGroup* プロパティを使ってリソース グループ名を定義できます。
+独自のリソース グループ名を指定するには、[aks-preview][aks-preview-cli] Azure CLI 拡張機能バージョン *0.3.2* 以降をインストールします。 [az aks create][az-aks-create] コマンドを使用して AKS クラスターを作成するときに、 *--node-resource-group* パラメーターを使用してリソース グループの名前を指定します。 [Azure Resource Manager テンプレートを使用][aks-rm-template]して AKS クラスターをデプロイする場合は、*nodeResourceGroup* プロパティを使用してリソース グループ名を定義できます。
 
 * セカンダリ リソース グループは、自分のサブスクリプションの Azure リソース プロバイダーによって自動的に作成されます。
 * カスタム リソース グループの名前を指定できるのは、クラスターを作成するときだけです。
@@ -87,7 +89,7 @@ Windows Server ノードでは (現在、AKS ではプレビュー中)、Windows
 
 ## <a name="what-kubernetes-admission-controllers-does-aks-support-can-admission-controllers-be-added-or-removed"></a>AKS ではどのような Kubernetes アドミッション コントローラーがサポートされますか? アドミッション コントローラーの追加や削除はできますか?
 
-AKS では、次の[アドミッション コントローラー][admission-controllers]をサポートします。
+AKS では、以下の[アドミッション コントローラー][admission-controllers]がサポートされています。
 
 - *NamespaceLifecycle*
 - *LimitRanger*
@@ -104,11 +106,11 @@ AKS では、次の[アドミッション コントローラー][admission-contr
 
 ## <a name="is-azure-key-vault-integrated-with-aks"></a>AKS には Azure Key Vault が統合されているのですか?
 
-AKS は現在、Azure Key Vault とネイティブに統合されていません。 ただし、[Kubernetes プロジェクト用の Azure Key Vault FlexVolume][keyvault-flexvolume] を使って、Kubernetes ポッドから Key Vault のシークレットに直接統合することはできます。
+AKS は現在、Azure Key Vault とネイティブに統合されていません。 ただし、[Kubernetes プロジェクト用の Azure Key Vault FlexVolume][keyvault-flexvolume] を使用して、Kubernetes ポッドから Key Vault のシークレットに直接統合することはできます。
 
 ## <a name="can-i-run-windows-server-containers-on-aks"></a>AKS で Windows Server コンテナーを実行できますか?
 
-はい、Windows Server コンテナーはプレビューでご利用になれます。 AKS で Windows Server コンテナーを実行するには、Windows Server をゲスト OS として実行するノード プールを作成します。 Windows Server コンテナーでは、Windows Server 2019 のみを使用できます。 開始するには、[Windows Server ノード プールでの AKS クラスターの作成][aks-windows-cli]に関する記事をご覧ください。
+はい、Windows Server コンテナーはプレビューでご利用になれます。 AKS で Windows Server コンテナーを実行するには、Windows Server をゲスト OS として実行するノード プールを作成します。 Windows Server コンテナーでは、Windows Server 2019 のみを使用できます。 開始するには、[Windows Server ノード プールでの AKS クラスターの作成][aks-windows-cli]に関するページを参照してください。
 
 Window Server によるノード プールのサポートには、Kubernetes プロジェクトの上流の Windows Server の一部であるいくつかの制限が含まれます。 これらの制限の詳細については、[AKS での Windows Server コンテナーの制限事項][aks-windows-limitations]に関するページを参照してください。
 
@@ -144,12 +146,14 @@ AKS エージェント ノードは、標準の Azure 仮想マシンとして�
 [node-updates-kured]: node-updates-kured.md
 [aks-preview-cli]: /cli/azure/ext/aks-preview/aks
 [az-aks-create]: /cli/azure/aks#az-aks-create
-[aks-rm-template]: /rest/api/aks/managedclusters/createorupdate#managedcluster
+[aks-rm-template]: /azure/templates/microsoft.containerservice/2019-06-01/managedclusters
 [aks-cluster-autoscaler]: cluster-autoscaler.md
 [nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
 [aks-windows-cli]: windows-container-cli.md
 [aks-windows-limitations]: windows-node-limitations.md
 [reservation-discounts]: ../billing/billing-save-compute-costs-reservations.md
+[api-server-authorized-ip-ranges]: ./api-server-authorized-ip-ranges.md
+[multi-node-pools]: ./use-multiple-node-pools.md
 
 <!-- LINKS - external -->
 
@@ -158,3 +162,4 @@ AKS エージェント ノードは、標準の Azure 仮想マシンとして�
 [hexadite]: https://github.com/Hexadite/acs-keyvault-agent
 [admission-controllers]: https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/
 [keyvault-flexvolume]: https://github.com/Azure/kubernetes-keyvault-flexvol
+[private-clusters-github-issue]: https://github.com/Azure/AKS/issues/948

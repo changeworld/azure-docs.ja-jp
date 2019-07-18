@@ -131,6 +131,8 @@
           href: search-what-is-an-index.md
         - name: インデックスの作成 (ポータル)
           href: search-create-index-portal.md
+        - name: 複数言語インデックスの作成
+          href: search-language-support.md
         - name: アナライザー
           items:
             - name: アナライザーの追加
@@ -193,6 +195,8 @@
           href: search-howto-schedule-indexers.md
         - name: フィールドのマッピング
           href: search-indexer-field-mappings.md
+        - name: SQL Managed Instance への接続
+          href: search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md
         - name: SQL Server VM への接続
           href: search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md
         - name: インデクサーの監視
@@ -360,6 +364,8 @@
       href: 'https://azure.microsoft.com/support/community/?product=search'
     - name: Azure の更新情報
       href: 'https://azure.microsoft.com/updates/?product=search'
+    - name: フィードバック フォーラム (UserVoice)
+      href: 'https://feedback.azure.com/forums/263029-azure-search'
     - name: デモ サイト
       items:
         - name: 財務ファイルのデモ

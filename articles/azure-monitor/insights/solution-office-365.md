@@ -10,14 +10,14 @@ ms.service: operations-management-suite
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 05/29/2019
+ms.date: 07/01/2019
 ms.author: bwren
-ms.openlocfilehash: 4c7e1225a8da1e20bc90986d1530b781f7f2c11a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 34c7ecbf235bed838af9ed2f848ca492916583f6
+ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66357575"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67514217"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Azure の Office 365 管理ソリューション (プレビュー)
 
@@ -25,7 +25,7 @@ ms.locfileid: "66357575"
 
 
 > [!NOTE]
-> Office 365 ソリューションをインストールして構成する手段としては、この記事の各手順を使用するのではなく、[Azure Sentinel](../../sentinel/overview.md) で [Office 365 コネクタ](../../sentinel/connect-office-365.md)を有効にする方法が推奨されます。 これは、構成エクスペリエンスが向上した最新版の Office 365 ソリューションです。 Azure AD ログを接続するには、[Azure Sentinel Azure AD コネクタ](../../sentinel/connect-azure-active-directory.md)を使用します。これにより、Office 365 管理ログよりも豊富なログ データが提供されます。 
+> Office 365 ソリューションをインストールして構成する手段としては、この記事の各手順を使用するのではなく、[Azure Sentinel](../../sentinel/overview.md) で [Office 365 コネクタ](../../sentinel/connect-office-365.md)を有効にする方法が推奨されます。 これは、構成エクスペリエンスが向上した最新版の Office 365 ソリューションです。 Azure AD ログを接続するには、[Azure Sentinel Azure AD コネクタ](../../sentinel/connect-azure-active-directory.md)を使用するか、[Azure AD 診断設定](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)を構成します。これにより、Office 365 管理ログよりも豊富なログ データが提供されます。 
 >
 > [Azure Sentinel をオンボード](../../sentinel/quickstart-onboard.md)する際は、Office 365 ソリューションのインストール先となる Log Analytics ワークスペースを指定します。 コネクタを有効にすると、ワークスペースでソリューションが利用できるようになります。使い方は、既にインストールされている他の監視ソリューションとまったく同じです。
 >

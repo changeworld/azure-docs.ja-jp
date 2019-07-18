@@ -292,6 +292,8 @@
       displayName: 'module, import'
 - name: コンポーネント間のシナリオ
   items:
+    - name: SendGrid を使用して Runbook からメールを送信する
+      href: automation-send-email.md
     - name: Runbook ギャラリー
       href: automation-runbook-gallery.md
     - name: メトリック アラートによる Runbook の監視
