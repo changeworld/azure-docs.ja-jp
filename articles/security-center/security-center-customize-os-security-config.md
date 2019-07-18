@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/20/2019
 ms.author: rkarlin
-ms.openlocfilehash: d9dc9f3a4ab964b66e3a2cb03f4aad442c5665e9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7095992253fbbe5aafce1eab889965250f5d59a8
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64573595"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67551393"
 ---
 # <a name="customize-os-security-configurations-in-azure-security-center-preview"></a>Azure Security Center での OS セキュリティ構成のカスタマイズ (プレビュー)
 
@@ -56,13 +56,11 @@ Security Center で既定の OS セキュリティ構成をカスタマイズす
 
 1.  **[Security Center]** ダッシュボードを開きます。
 
-2.  左側のウィンドウで、 **[セキュリティ ポリシー]** を選択します。      
+2.  左側のウィンドウで、 **[Pricing & settings]\(価格と設定\)** を選択します。
 
     ![セキュリティ ポリシー一覧](media/security-center-customize-os-security-config/manual-provision.png)
 
-3.  カスタマイズするサブスクリプションの行で、**設定の編集**をクリックします。
-
-4. **[セキュリティ構成の編集]** を選択します。  
+4. 適切なサブスクリプションを選択し、 **[セキュリティ構成の編集]** を選択します。  
 
     ![[セキュリティ構成の編集] ウィンドウ](media/security-center-customize-os-security-config/blade.png)
 

@@ -5,27 +5,27 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/20/2019
+ms.date: 07/01/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: f4c296aeefacc9516303ad75dd8b7d67325e38ee
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4c1c987befe928d316b11c6ecd379be76f8f80d4
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65969060"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490146"
 ---
 # <a name="understand-cost-management-data"></a>Cost Management のデータを理解する
 
-この記事では、Azure Cost Management に含まれるデータについて詳しく説明します。 また、データが処理、収集、表示、およびクローズされる頻度についても説明します。 お客様は、Azure の使用量に対して毎月課金されます。 ただし、請求月の最終日は、ご利用の Azure サブスクリプションの種類に応じて異なります。 Cost Management が使用状況データを受信する頻度は、さまざまな要因に基づいて決まります。 このような要因には、データの処理にかかる時間や、Azure サービスから請求システムに使用状況が送信される頻度などがあります。
+この記事では、Azure Cost Management に含まれる Azure のコストと使用状況のデータについて詳しく説明します。 また、データが処理、収集、表示、クローズされる頻度についても説明します。 お客様は、Azure の使用量に対して毎月課金されます。 請求期間は月単位ですが、期間の開始日と終了日はサブスクリプションの種類によって異なります。 Cost Management が使用状況データを受信する頻度は、さまざまな要因に基づいて決まります。 このような要因には、データの処理にかかる時間や、Azure サービスから請求システムに使用状況が送信される頻度などがあります。
 
-Cost Management には、すべての使用量と購入の他に、Enterprise Agreement (EA) アカウント向けの予約とサード パーティ製品が含まれています。 Microsoft 顧客契約 (MCA) アカウントと従量課金制サブスクリプションには、Azure サービスと Marketplace サービスの使用量のみが含まれます。 サポート コストとその他のコストは含まれません。 コストは請求書が生成されるまで推定され、クレジットは考慮されません。
+Cost Management には、すべての使用量と購入の他に、Enterprise Agreement (EA) アカウント向けの予約とサード パーティ製品が含まれています。 Microsoft Customer Agreement (MCA) アカウントと従量課金制料金の個々のサブスクリプションには、Azure サービスと Marketplace サービスの使用量のみが含まれます。 サポート コストとその他のコストは含まれません。 コストは請求書が生成されるまで推定され、クレジットは考慮されません。
 
-## <a name="supported-microsoft-offers"></a>サポート対象の Microsoft プラン
+## <a name="supported-microsoft-azure-offers"></a>サポートされている Microsoft Azure プラン
 
-Azure Cost Management で現在サポートされている [Microsoft Azure のプラン](https://azure.microsoft.com/support/legal/offer-details/)を次に示します。  Azure プランとは、ご利用の Azure サブスクリプションの種類です。
+Azure Cost Management で現在サポートされている [Microsoft Azure プラン](https://azure.microsoft.com/support/legal/offer-details/)を次に示します。 Azure プランの署名済みの契約によって、ご利用の Azure サブスクリプションの種類が決まります。
 
 | Category  | **プラン名** | **クォータ ID** | **プラン番号** |
 | --- | --- | --- | --- |
@@ -49,7 +49,7 @@ Azure Cost Management で現在サポートされている [Microsoft Azure の�
 | **Visual Studio** | [Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p)            | MSDN_2014-09-01 | MS-AZR-0063P |
 | **Visual Studio** | [Visual Studio Enterprise:BizSpark](https://azure.microsoft.com/offers/ms-azr-0064p)  | MSDN_2014-09-01 | MS-AZR-0064P |
 
-サポート対象外のプランを次の表に示します。
+次の表に、Cost Management でサポートされていない Azure プランを示します。
 
 | Category  | **プラン名** | **クォータ ID** | **プラン番号** |
 | --- | --- | --- | --- |
@@ -66,7 +66,7 @@ Azure Cost Management で現在サポートされている [Microsoft Azure の�
 | **サポート プラン** | Azure Government Pro-Direct サポート | Default_2014-09-01 | MS-AZR-USGOV-0042P |
 | **サポート プラン** | Azure Government Developer サポート  | Default_2014-09-01 | MS-AZR-USGOV-0043P |
 
-従量課金制、MSDN、および Visual Studio のオファー カテゴリのお客様の場合、2018 年 10 月 2 からデータを Cost Management で使用できます。 2018 年 10 月 2 日より前にサブスクリプションのデータにアクセスするには、[Azure アカウント センター](https://account.azure.com/subscriptions)を使用して使用量の詳細を CSV ファイルでダウンロードするか、[Usage Details API](/rest/api/consumption/usagedetails) を使用することができます。
+従量課金制、MSDN、Visual Studio のプラン カテゴリをご利用のお客様の場合、2018 年 10 月 2 日から Cost Management でデータを使用できます。 2018 年 10 月 2 日より前にサブスクリプションのデータにアクセスするには、[Azure アカウント センター](https://account.azure.com/subscriptions)を使用して使用量の詳細を CSV ファイルでダウンロードするか、[Usage Details API](/rest/api/consumption/usagedetails) を使用することができます。
 
 ## <a name="determine-your-offer-type"></a>オファーの種類を決定する
 サブスクリプションのデータが表示されず、ご利用のサブスクリプションがサポート対象のプランに該当するかどうかわからない場合は、ご利用のサブスクリプションがサポート対象かどうかを検証することができます。 Azure サブスクリプションがサポート対象かどうかを検証するには、[Azure portal](https://portal.azure.com) にサインインします。 次に、左側のメニュー ウィンドウにある **[すべてのサービス]** を選択します。 サービスの一覧で **[サブスクリプション]** を選択します。 [サブスクリプション] の一覧で、検証するサブスクリプションを選択します。 選択したサブスクリプションが [概要] タブに表示され、**プラン**と**プラン ID** を確認できます。 次に例を示します。
@@ -116,7 +116,7 @@ Enterprise Agreement (EA) サブスクリプション – 請求月が 3 月 31 
 
 ### <a name="rerated-data"></a>データの再評価
 
-[Cost Management API](https://aka.ms/costmgmt/docs)、Power BI、Azure portal のどの方法でデータを取得する場合でも、請求書がクローズされるまでは、現在の請求期間の料金が再評価され、その結果変更される可能性があります。
+[Cost Management API](index.yml)、Power BI、Azure portal のどの方法でデータを取得する場合でも、請求書がクローズされるまでは、現在の請求期間の料金が再評価され、その結果変更される可能性があります。
 
 ## <a name="usage-data-update-frequency-varies"></a>使用状況データの更新頻度は一定ではない
 
@@ -129,7 +129,7 @@ Cost Management に使用状況データが表示されるタイミングは、�
 
 ## <a name="historical-data-might-not-match-invoice"></a>履歴データが請求書と一致しない場合がある
 
-クレジットベースの前払い制オファーの履歴データは、請求書と一致しない場合があります。 いくつかの Azure 従量課金制、MSDN、および Visual Studio のオファーでは、Azure クレジットと前払いを請求書に適用できます。 しかし、Cost Management に示される履歴データは、従量課金による推定請求金額のみに基づきます。 Cost Management の履歴データには、支払いとクレジットは含まれていません。 その結果、以下のオファーに対して示される履歴データが、請求書と完全に一致しない場合があります。
+クレジットベースの前払い制オファーの履歴データは、請求書と一致しない場合があります。 Azure 従量課金制、MSDN、Visual Studio の一部のプランでは、Azure クレジットと前払いを請求書に適用できます。 しかし、Cost Management に示される履歴データは、従量課金による推定請求金額のみに基づきます。 Cost Management の履歴データには、支払いとクレジットは含まれていません。 その結果、以下のオファーに対して示される履歴データが、請求書と完全に一致しない場合があります。
 
 -   MS-AZR-0029P
 -   MS-AZR-0064P

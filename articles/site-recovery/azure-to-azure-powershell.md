@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 3/29/2019
 ms.author: sutalasi
-ms.openlocfilehash: c585b300a65091bee3320a21b7bce7ba94d269ec
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 766b004217d6679dcba00c581ade4fe911b5f8b9
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66258797"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491867"
 ---
 # <a name="set-up-disaster-recovery-for-azure-virtual-machines-using-azure-powershell"></a>Azure PowerShell を使用して Azure 仮想マシンのディザスター リカバリーを設定する
 
@@ -600,6 +600,14 @@ Update-AzRecoveryServicesAsrProtectionDirection -ReplicationProtectedItem $Repli
 ```
 
 再保護が完了したら、逆方向 (米国西部から米国東部) でのフェールオーバーとソース リージョンへのフェールバックを開始できます。
+
+## <a name="disable-replication"></a>レプリケーションを無効にする
+
+レプリケーションを無効にするには、Remove-ASRReplicationProtectedItem コマンドレットを使用します。
+
+```azurepowershell
+Remove-ASRReplicationProtectedItem -ReplicationProtectedItem $ReplicatedItem
+```
 
 ## <a name="next-steps"></a>次の手順
 PowerShell による復旧計画の作成や復旧計画のフェールオーバーのテストなど、他のタスクの実行方法については、[Azure Site Recovery PowerShell のリファレンス](https://docs.microsoft.com/powershell/module/az.RecoveryServices)をご覧ください。

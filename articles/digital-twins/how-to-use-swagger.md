@@ -6,15 +6,15 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 06/03/2019
+ms.date: 06/29/2019
 ms.author: v-adgera
 ms.custom: seodec18
-ms.openlocfilehash: 842c35a1575c7bcf6f547fb04d5680178b3bee78
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: 0b8c2b50e00c8e9727b09a454504d214a3060fe4
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66730411"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67502699"
 ---
 # <a name="azure-digital-twins-swagger-reference-documentation"></a>Azure Digital Twins Swagger リファレンス ドキュメント
 
@@ -92,14 +92,12 @@ Swagger が提供する強力な機能の 1 つは、ドキュメントの UI �
 
 ## <a name="swagger-oauth-20-authorization"></a>Swagger OAuth 2.0 承認
 
-OAuth 2.0 によって保護された要求の対話的なテストに関する詳細については、[公式ドキュメント](https://swagger.io/docs/specification/authentication/oauth2/)を参照してください。
-
 > [!NOTE]
-> Azure Digital Twins リソースを作成したユーザー プリンシパルにはスペース管理者ロールが割り当てられ、他のユーザーに対して追加のロール割り当てを作成できます。
+> * Azure Digital Twins リソースを作成したユーザー プリンシパルにはスペース管理者ロールが割り当てられ、他のユーザーに対して追加のロール割り当てを作成できます。 このようなユーザーとそのロールには、API の呼び出しを許可することができます。
 
-1. [こちらのクイック スタート](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad)の手順に従って、種類が ***Web アプリ/API*** である Azure AD アプリケーションを作成します。 既存のアプリの登録を再利用することもできます。
+1. [こちらのクイック スタート](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad)の手順に従うか、[Azure Digital Twins アプリを Azure Active Directory レガシに登録](./how-to-use-legacy-aad.md)して、Azure AD アプリケーションを作成し、構成します。 または、既存のアプリの登録を再利用することもできます。
 
-2. 次の応答 URL をアプリの登録に追加します。
+1. 次の応答 URL をアプリの登録に追加します。
 
     ```plaintext
     https://YOUR_SWAGGER_URL/ui/oauth2-redirect-html
@@ -108,29 +106,23 @@ OAuth 2.0 によって保護された要求の対話的なテストに関する�
     |---------|---------|---------|
     | YOUR_SWAGGER_URL | ポータルで見つかった Management REST API ドキュメントの URL  | `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/swagger` |
 
-3. Azure Digital Twins にアクセスするアクセス許可をアプリに付与します。 **[必要なアクセス許可]** に「`Azure Digital Twins`」と入力して、 **[委任されたアクセス許可]** を選択します。 その後、 **[アクセス許可の付与]** を選択します。
-
-    ![Azure AD のアプリ登録追加 API](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png)
-
-4. OAuth 2.0 暗黙的フローを許可するようにアプリケーション マニフェストを構成します。 **[マニフェスト]** をクリックして、アプリのアプリケーション マニフェストを開きます。 *oauth2AllowImplicitFlow* を `true` に設定します。
-
-    ![Azure AD の暗黙的なフロー](../../includes/media/digital-twins-permissions/aad-app-allow-implicit-flow.png)
-
-5. Azure AD アプリの ID をコピーします。
+1. Azure AD アプリの ID をコピーします。
 
 Azure Active Directory の登録を完了した後:
 
-6. Swagger ページで **[Authorize]\(承認\)** ボタンをクリックします。
+1. Swagger ページで **[Authorize]\(承認\)** ボタンをクリックします。
 
     [![Swagger の [Authorize]\(承認\) ボタンをクリックする](media/how-to-use-swagger/swagger-select-authorize-btn.png)](media/how-to-use-swagger/swagger-select-authorize-btn.png#lightbox)
 
-7. アプリケーション ID を **[client_id]** フィールドに貼り付けます。
+1. アプリケーション ID を **[client_id]** フィールドに貼り付けます。
 
     [![Swagger の [client_id] フィールド](media/how-to-use-swagger/swagger-auth-form.png)](media/how-to-use-swagger/swagger-auth-form.png#lightbox)
 
-8. 次の成功のモーダルにリダイレクトされます。
+1. 次の成功のモーダルにリダイレクトされます。
 
-    [![Swagger のリダイレクト モーダル](media/how-to-use-swagger/swagger_auth_redirect.PNG)](media/how-to-use-swagger/swagger_auth_redirect.PNG#lightbox)
+    [![Swagger のリダイレクト モーダル](media/how-to-use-swagger/swagger_auth_redirect.png)](media/how-to-use-swagger/swagger_auth_redirect.png#lightbox)
+
+OAuth 2.0 によって保護された要求の対話的なテストに関する詳細については、[公式ドキュメント](https://swagger.io/docs/specification/authentication/oauth2/)を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

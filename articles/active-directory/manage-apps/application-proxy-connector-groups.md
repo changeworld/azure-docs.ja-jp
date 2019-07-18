@@ -14,12 +14,12 @@ ms.date: 11/08/2018
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c22d44b02b3cc25c855361cab17132c46fa04794
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d896a45931512b925491e05ff6e5eef8a856d83d
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65783697"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67481321"
 ---
 # <a name="publish-applications-on-separate-networks-and-locations-using-connector-groups"></a>コネクタ グループを使用して別のネットワークや場所にアプリケーションを発行する
 
@@ -42,7 +42,7 @@ Azure AD のアプリケーション プロキシは、ますます多くのシ�
 1. **[Azure Active Directory]**  >  **[エンタープライズ アプリケーション]**  >  **[アプリケーション プロキシ]** を選択します。
 2. **[新しいコネクタ グループ]** を選択します。 [New Connector Group (新しいコネクタ グループ)] ブレードが表示されます。
 
-   ![新しいコネクタ グループの選択](./media/application-proxy-connector-groups/new-group.png)
+   ![新しいコネクタ グループを選択するための画面の表示](./media/application-proxy-connector-groups/new-group.png)
 
 3. 新しいコネクタ グループに名前を付け、ドロップダウン メニューを使用して、このグループに含めるコネクタを選択します。
 4. **[保存]** を選択します。
@@ -74,7 +74,7 @@ Azure AD のアプリケーション プロキシは、ますます多くのシ�
 
 独自の IaaS 上でホストされている仮想ネットワークに接続された複数の仮想マシンを保有する組織の例を見てみましょう。 従業員がこれらのアプリケーションを使用できるようにするために、これらのプライベート ネットワークは、サイト間 VPN を使用して企業ネットワークに接続されます。 これにより、オンプレミスの従業員に良好なエクスペリエンスが提供されます。 しかし、これはリモートの従業員にとっては必ずしも理想的な方法ではありません。次の図に示すように、アクセスをルーティングするための追加のオンプレミス インフラストラクチャが必要になるためです。
 
-![Azure AD IaaS ネットワーク](./media/application-proxy-connector-groups/application-proxy-iaas-network.png)
+![Azure AD IaaS ネットワークを示す図](./media/application-proxy-connector-groups/application-proxy-iaas-network.png)
   
 Azure AD アプリケーション プロキシ コネクタ グループを使用すると、一般的なサービスですべてのアプリケーションへのアクセスを保護できます。企業ネットワークに対する依存関係がそれ以上生じることもありません。
 
@@ -85,14 +85,14 @@ Azure AD アプリケーション プロキシ コネクタ グループを使�
 アプリケーション プロキシをデプロイしているほとんどのお客様は、Kerberos の制約付き委任 (KCD) を実行してシングル サインオン (SSO) 機能を使用しています。 これを実現するには、ユーザーをアプリケーションに委任できるドメインにコネクタのマシンを参加させる必要があります。 KCD は、フォレスト間の機能をサポートしています。 しかし、企業の個々のマルチフォレスト環境の間に信頼関係がない場合、単一のコネクタをすべてのフォレストに使用することはできません。 
 
 この場合、特定のコネクタをフォレスト単位でデプロイし、その特定のフォレストのユーザーに対応範囲が限定される、発行済みのアプリケーションに対応するように設定できます。 それぞれのコネクタ グループは異なるフォレストを表します。 エクスペリエンスのほとんどとテナントはすべてのフォレストで統一されますが、Azure AD グループを使用してユーザーをフォレストのアプリケーションに割り当てることができます。
- 
+
 ### <a name="disaster-recovery-sites"></a>ディザスター リカバリーサイト
 
 ディザスター リカバリー (DR) サイトに対しては、サイトの実装方法に応じて 2 つの異なるアプローチを使用できます。
 
 * DR サイトが (メイン サイトとまったく同じで、同じネットワークおよび AD 設定が使用される) アクティブ/アクティブ モードで構築されている場合、メイン サイトと同じコネクタ グループの DR サイトにコネクタを作成できます。 これにより、Azure AD はフェールオーバーを検出できます。
 * DR サイトがメイン サイトから切り離されている場合は、DR サイトに異なるコネクタ グループを作成し、1) バックアップ アプリケーションを用意するか、2) 必要に応じて既存のアプリケーションを DR コネクタ グループに手動で切り替えることができます。
- 
+
 ### <a name="serve-multiple-companies-from-a-single-tenant"></a>単一のテナントから複数の企業にサービスを提供する
 
 単一のサービス プロバイダーが複数の企業向けに Azure AD 関連サービスをデプロイして維持するモデルを実装するには、さまざまな方法があります。 コネクタ グループは、管理者がコネクタとアプリケーションを異なるグループに分けるのに役立ちます。 小規模な企業に適した 1 つの方法として、Azure AD テナントを 1 つ用意し、企業ごとに独自のドメイン名とネットワークを提供する方法があります。 これは、M&A のシナリオや、単一の IT 部門が規制または事業上の理由で複数の企業にサービスを提供する状況にも当てはまります。 
@@ -100,32 +100,30 @@ Azure AD アプリケーション プロキシ コネクタ グループを使�
 ## <a name="sample-configurations"></a>サンプルの構成
 
 実装できるいくつかの例には、次のコネクタ グループが含まれています。
- 
+
 ### <a name="default-configuration--no-use-for-connector-groups"></a>既定の構成 – コネクタ グループを使用しない
 
 コネクタ グループを使用しない場合、構成は次のようになります。
 
-![Azure AD: コネクタ グループなし](./media/application-proxy-connector-groups/application-proxy-sample-config-1.png)
- 
+![コネクタ グループを使用しない Azure AD の例](./media/application-proxy-connector-groups/application-proxy-sample-config-1.png)
+
 小規模なデプロイとテストにはこの構成で十分です。 また、この構成は、組織のネットワーク トポロジがフラットな場合にも効果的に動作します。
- 
+
 ### <a name="default-configuration-and-an-isolated-network"></a>既定の構成と分離されたネットワーク
 
-この構成は既定の構成を発展させたものです。この構成には、IaaS 仮想ネットワークなどの分離されたネットワークで実行される特定のアプリケーションがあります。 
+この構成は既定の構成を発展させたものです。この構成には、IaaS 仮想ネットワークなどの分離されたネットワークで実行される特定のアプリケーションがあります。
 
-![Azure AD: コネクタ グループなし](./media/application-proxy-connector-groups/application-proxy-sample-config-2.png)
- 
+![コネクタ グループを使用しない Azure AD の例](./media/application-proxy-connector-groups/application-proxy-sample-config-2.png)
+
 ### <a name="recommended-configuration--several-specific-groups-and-a-default-group-for-idle"></a>推奨構成 - 複数の特定のグループとアイドル コネクタ用の既定のグループ
 
 大規模で複雑な組織に対しては、アプリケーションに対応しないグループを既定のコネクタ グループとして構成し、これをアイドル コネクタまたは新規にインストールされたコネクタ用に使用することをお勧めします。 すべてのアプリケーションへの対応は、カスタマイズされたコネクタ グループを通じて行われます。 これにより、上記の複雑なシナリオすべてに対応可能です。
 
-2 つのデータセンター A と B を保有している企業の例を次に示します。各サイトへの対応は 2 つのコネクタによって行われています。 各サイトでは、それぞれ異なるアプリケーションが実行されています。 
+2 つのデータセンター A と B を保有している企業の例を次に示します。各サイトへの対応は 2 つのコネクタによって行われています。 各サイトでは、それぞれ異なるアプリケーションが実行されています。
 
-![Azure AD: コネクタ グループなし](./media/application-proxy-connector-groups/application-proxy-sample-config-3.png)
- 
+![2 つのデータセンターがあり、2 つのコネクタを使用している企業の例](./media/application-proxy-connector-groups/application-proxy-sample-config-3.png)
+
 ## <a name="next-steps"></a>次の手順
 
 * [Azure AD アプリケーション プロキシ コネクタについて](application-proxy-connectors.md)
 * [シングル サインオンを有効にする](what-is-single-sign-on.md)
-
-

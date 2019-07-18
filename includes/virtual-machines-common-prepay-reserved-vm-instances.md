@@ -3,13 +3,13 @@ author: yashesvi
 ms.author: banders
 ms.service: virtual-machines-windows
 ms.topic: include
-ms.date: 05/14/2019
-ms.openlocfilehash: c7ff7ab0800449c2a3aa9d58bd036981caccaa1c
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.date: 07/01/2019
+ms.openlocfilehash: 9e0caa8b98133dad3af083e8910d0603bbd2563b
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67181143"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67489926"
 ---
 # <a name="prepay-for-virtual-machines-with-azure-reserved-vm-instances-ri"></a>Azure Reserved VM Instances (RI) による仮想マシンの前払い
 
@@ -17,7 +17,7 @@ Azure Reserved Virtual Machine (VM) Instances を使って、仮想マシンの�
 
 予約 VM インスタンスは [Azure Portal](https://portal.azure.com) から購入できます。 インスタンスを購入する場合、次のことが必要です。
 
-- 少なくとも 1 つのエンタープライズ サブスクリプションまたは従量課金制サブスクリプションで所有者ロールである必要があります。
+- 少なくとも 1 つのエンタープライズ サブスクリプションまたは従量課金制料金のサブスクリプションの所有者ロールである必要があります。
 - Enterprise サブスクリプションの場合、[EA ポータル](https://ea.azure.com)で **[予約インスタンスを追加します]** を有効にする必要があります。 または、その設定が無効になっている場合は、ユーザーはサブスクリプションの EA 管理者である必要があります。
 - クラウド ソリューション プロバイダー (CSP) プログラムの場合、管理エージェントまたはセールス エージェントのみが予約購入できます。
 
@@ -68,13 +68,13 @@ Azure Reserved Virtual Machine (VM) Instances を使って、仮想マシンの�
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. **[すべてのサービス]**  >  **[予約]** を選択します。
 3. **[追加]** を選択して新しい予約を購入します。
-4. 必須フィールドに必要事項を入力します。 選択した属性と一致する VM インスタンスを実行することで、予約割引を受けることができます。 割引を受ける VM インスタンスの実際の数は、選択したスコープと数量によって変わります。
+4. 必須フィールドに入力します。 選択した属性と一致する VM インスタンスを実行することで、予約割引を受けることができます。 割引を受ける VM インスタンスの実際の数は、選択したスコープと数量によって変わります。
 
     | フィールド      | 説明|
     |------------|--------------|
     |Name        |この予約の名前。|
-    |サブスクリプション|予約の支払いに使用するサブスクリプション。 サブスクリプションの支払方法に対して、予約の初期コストが課金されます。 サブスクリプションの種類は、マイクロソフト エンタープライズ契約 (プラン番号:MS-AZR-0017P または MS-AZR-0148P) または従量課金制 (プラン番号:MS-AZR-0003P または MS-AZR-0023P)。 エンタープライズ サブスクリプションの場合、登録の年額コミットメント残高から料金が差し引かれるか、超過料金として課金されます。 従量課金制サブスクリプションの場合、クレジット カードまたはサブスクリプションの請求書に記載されている支払方法に料金が課金されます。|    
-    |Scope (スコープ)       |1 つのサブスクリプションまたは複数のサブスクリプション (共有スコープ) を予約のスコープにすることができます。 以下を選択した場合: <ul><li>1 つのサブスクリプション - 予約割引はこのサブスクリプションの VM に適用されます。 </li><li>共有 - 予約割引は、課金のコンテキスト内にある任意のサブスクリプションで実行されている VM に適用されます。 エンタープライズのお客様の場合、共有スコープが対象の登録であり、登録内のすべてのサブスクリプションが含まれます。 従量課金制のお客様の場合、共有スコープは、アカウント管理者が作成するすべての従量課金制サブスクリプションです。</li></ul>|
+    |サブスクリプション|予約の支払いに使用するサブスクリプション。 サブスクリプションの支払方法に対して、予約の初期コストが課金されます。 サブスクリプションの種類は、マイクロソフト エンタープライズ契約 (プラン番号:MS-AZR-0017P または MS-AZR-0148P) または従来課金制の個々のサブスクリプション (プラン番号: MS-AZR-0003P または MS-AZR-0023P)。 エンタープライズ サブスクリプションの場合、登録の年額コミットメント残高から料金が差し引かれるか、超過料金として課金されます。 従量課金制料金のサブスクリプションの場合、クレジット カードまたはサブスクリプションの請求書に記載されている支払方法に料金が課金されます。|    
+    |Scope (スコープ)       |1 つのサブスクリプションまたは複数のサブスクリプション (共有スコープ) を予約のスコープにすることができます。 以下を選択した場合: <ul><li>1 つのサブスクリプション - 予約割引はこのサブスクリプションの VM に適用されます。 </li><li>共有 - 予約割引は、課金のコンテキスト内にある任意のサブスクリプションで実行されている VM に適用されます。 エンタープライズのお客様の場合、共有スコープが対象の登録であり、登録内のすべてのサブスクリプションが含まれます。 従量課金制料金のサブスクリプションをご利用のお客様の場合、共有スコープはアカウント管理者が作成した従量課金制料金のすべてのサブスクリプションです。</li></ul>|
     |リージョン    |予約の対象となる Azure リージョン。|    
     |VM サイズ     |VM インスタンスのサイズ|
     |最適化の対象     |VM インスタンス サイズの柔軟性によって、予約割引が、同じ [VM サイズ グループ](https://aka.ms/RIVMGroups)内の他の VM に適用されます。 容量の優先度では、デプロイ用のデータ センターの容量が優先されます。 これにより、必要なときに VM インスタンスを起動する能力に対する信頼が高まります。 容量の優先順位は、予約のスコープが単一サブスクリプションに設定されている場合にのみ使用できます。 |
@@ -121,7 +121,7 @@ Azure Reserved Virtual Machine (VM) Instances を使って、仮想マシンの�
     - [Azure の予約とは](../articles/billing/billing-save-compute-costs-reservations.md)
     - [Azure での予約の管理](../articles/billing/billing-manage-reserved-vm-instance.md)
     - [予約割引の適用方法について](../articles/billing/billing-understand-vm-reservation-charges.md)
-    - [従量課金制サブスクリプションの予約使用量について](../articles/billing/billing-understand-reserved-instance-usage.md)
+    - [従量課金制料金のサブスクリプションの予約の使用状況について](../articles/billing/billing-understand-reserved-instance-usage.md)
     - [エンタープライズ加入契約の予約使用量について](../articles/billing/billing-understand-reserved-instance-usage-ea.md)
     - [予約に含まれない Windows ソフトウェアのコスト](../articles/billing/billing-reserved-instance-windows-software-costs.md)
     - [パートナー センターのクラウド ソリューション プロバイダー (CSP) プログラムでの Azure の予約](https://docs.microsoft.com/partner-center/azure-reservations)
