@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 01/24/2019
-ms.openlocfilehash: 6de16b7264c7ae7ead06b4e131e7fa46c664cedd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 07/02/2019
+ms.openlocfilehash: 2c1b7e8f777f1975a20bbf63919a3dbfe543e683
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64573341"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67537744"
 ---
 # <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mariadb"></a>Azure Database for MariaDB に安全に接続するためにご利用のアプリケーション内で SSL 接続を構成する
 Azure Database for MariaDB では、Secure Sockets Layer (SSL) を使用して、クライアント アプリケーションにご利用の Azure Database for MariaDB サーバーを接続することがサポートされています。 データベース サーバーとクライアント アプリケーション間に SSL 接続を適用すると、サーバーとアプリケーション間のデータ ストリームが暗号化されて、"man in the middle" 攻撃から保護されます。
@@ -21,9 +21,19 @@ SSL 経由で Azure Database for MariaDB サーバーと通信するために必
 **Microsoft Internet Explorer と Microsoft Edge の場合:** ダウンロードが完了したら、証明書の名前を BaltimoreCyberTrustRoot.crt.pem に変更します。
 
 ## <a name="bind-ssl"></a>SSL をバインドする
-### <a name="connecting-to-server-using-the-mysql-workbench-over-ssl"></a>MySQL Workbench による SSL 経由でのサーバーへの接続
-SSL 経由で安全に接続するように MySQL Workbench を構成します。 [Setup New Connection]\(新しい接続のセットアップ\) ダイアログから、 **[SSL]** タブに移動します。 **[SSL CA File:]\(SSL CA ファイル:\)** フィールドに **BaltimoreCyberTrustRoot.crt.pem** ファイルの場所を入力します。 
-![カスタマイズされたタイル保存](./media/howto-configure-ssl/mysql-workbench-ssl.png) 既存の接続に SSL をバインドするには、接続アイコンを右クリックして編集を選択します。 次に **[SSL]** タブに移動して証明書ファイルをバインドします。
+
+### <a name="connecting-to-server-using-mysql-workbench-over-ssl"></a>MySQL Workbench を使用した SSL 経由でのサーバーへの接続
+SSL 経由で安全に接続するように MySQL Workbench を構成します。 
+
+1. [Setup New Connection]\(新しい接続のセットアップ\) ダイアログから、 **[SSL]** タブに移動します。 
+
+1. **[SSL の使用]** フィールドを [必須] に更新します。
+
+1. **[SSL CA File:]\(SSL CA ファイル:\)** フィールドに **BaltimoreCyberTrustRoot.crt.pem** ファイルの場所を入力します。 
+    
+    ![SSL 構成の保存](./media/howto-configure-ssl/mysql-workbench-ssl.png)
+
+既存の接続の場合、SSL をバインドするには、接続アイコンを右クリックして編集を選択します。 次に **[SSL]** タブに移動して証明書ファイルをバインドします。
 
 ### <a name="connecting-to-server-using-the-mysql-cli-over-ssl"></a>MySQL CLI による SSL 経由でのサーバーへの接続
 SSL 証明書をバインドする別の方法として、次のコマンドを実行して MySQL コマンド ライン インターフェイスを使用します。 

@@ -152,6 +152,12 @@
               href: ./move-limitations/virtual-machines-move-limitations.md
             - name: 仮想ネットワーク
               href: ./move-limitations/virtual-network-move-limitations.md
+    - name: Tags
+      items:
+        - name: リソースへのタグ付け
+          href: resource-group-using-tags.md
+        - name: タグのサポート
+          href: tag-support.md
     - name: 管理
       items:
         - name: リソース グループの管理
@@ -176,9 +182,6 @@
             - name: Azure PowerShell の使用
               displayName: 'open,delete,deploy,move,lock,tag'
               href: manage-resources-powershell.md
-        - name: リソースの編成
-          displayName: tags
-          href: resource-group-using-tags.md
         - name: リソースのロック
           href: resource-group-lock-resources.md
         - name: サブスクリプションにアクセスするための認証 API
@@ -251,12 +254,8 @@
           href: resource-group-template-functions-resource.md
         - name: 文字列関数
           href: resource-group-template-functions-string.md
-    - name: リソースの機能
-      items:
-        - name: 完全モードの削除
-          href: complete-mode-deletion.md
-        - name: タグのサポート
-          href: tag-support.md
+    - name: 完全モードの削除
+      href: complete-mode-deletion.md
     - name: サービスごとのリソース プロバイダー
       href: azure-services-resource-providers.md
     - name: REST - Resource Manager
