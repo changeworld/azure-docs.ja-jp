@@ -139,7 +139,7 @@ Azure CLI を使用すると、コマンド プロンプトで、またはスク
 
 1. JSON ファイルをダウンロードします。
 
-    https://github.com/MicrosoftAzureBackup/VMSnapshotPluginConfig から VMSnapshotScriptPluginConfig.json をダウンロードします。 ファイルの内容は、次のようになります。
+    [https://github.com/MicrosoftAzureBackup/VMSnapshotPluginConfig](https://github.com/MicrosoftAzureBackup/VMSnapshotPluginConfig ) から VMSnapshotScriptPluginConfig.json をダウンロードします。 ファイルの内容は、次のようになります。
 
     ```azurecli
     {

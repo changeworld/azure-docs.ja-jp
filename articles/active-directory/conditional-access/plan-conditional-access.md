@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martincoetzer
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 56ddc2738305600c611cab1e09d654164f78b3d6
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 3fca84a71e1ede572e3889f973248db158115bec
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509436"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67655495"
 ---
 # <a name="how-to-plan-your-conditional-access-deployment-in-azure-active-directory"></a>方法:Azure Active Directory の条件付きアクセスの展開を計画する
 
@@ -162,7 +162,7 @@ Azure AD では、レガシ認証を含め、最も広く使用されている�
 |---|---|---|---|
 |[社外ネットワークからの利用は MFA を要求する](https://docs.microsoft.com/azure/active-directory/conditional-access/untrusted-networks)|承認済みユーザーが信頼できる場所または社内にいるときに "*アプリ*" にサインインする|ユーザーに MFA は求められません| |
 |[社外ネットワークからの利用は MFA を要求する](https://docs.microsoft.com/azure/active-directory/conditional-access/untrusted-networks)|承認済みユーザーが信頼できる場所または社内にいないときに "*アプリ*" にサインインする|ユーザーには MFA が求められ、正常にサインインできます| |
-|[(管理者に) MFA を要求する](https://docs.microsoft.com/azure/active-directory/conditional-access/baseline-protection#require-mfa-for-admins)|全体管理者が "*アプリ*" にサインインする|管理者に MFA が求められます| |
+|[(管理者に) MFA を要求する](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-baseline-protect-administrators)|全体管理者が "*アプリ*" にサインインする|管理者に MFA が求められます| |
 |[リスクの高いサインイン](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-sign-in-risk-policy)|ユーザーが [Tor ブラウザー](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection-playbook)を使用して "*アプリ*" にサインインする|管理者に MFA が求められます| |
 |[デバイス管理](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices)|承認済みユーザーが承認済みデバイスからサインインしようとする|アクセスが許可されます| |
 |[デバイス管理](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices)|承認済みユーザーが承認されていないデバイスからサインインしようとする|アクセスはブロックされます| |

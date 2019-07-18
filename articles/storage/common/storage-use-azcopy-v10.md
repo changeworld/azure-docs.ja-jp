@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/14/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 56b8099d1b777eff935c2b7ae075f8d104e50439
-ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
+ms.openlocfilehash: 94aca33b2f12c1c39297221a856296dcca052b0f
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 07/04/2019
-ms.locfileid: "67561507"
+ms.locfileid: "67565794"
 ---
 # <a name="get-started-with-azcopy"></a>AzCopy を使ってみる
 
@@ -84,10 +84,13 @@ Azure AD を使用すると、各コマンドに SAS トークンを追加する
 
 - コンテナー (ファイル システム)
 - ストレージ アカウント
-- リソース グループ
-- サブスクリプション
+- Resource group
+- Subscription
 
 ロールを確認し、割り当てる方法については、「[Azure portal で RBAC を使用して Azure BLOB とキューのデータへのアクセスを付与する](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」を参照してください。
+
+> [!NOTE] 
+> RBAC ロールの割り当ての反映には最大で 5 分かかる場合があることに留意してください。
 
 ターゲット コンテナーまたはディレクトリのアクセス制御リスト (ACL) にご自分のセキュリティ プリンシパルが追加されている場合は、これらのロールのいずれかがご自分のセキュリティ プリンシパルに割り当てられている必要はありません。 ACL では、ご自分のセキュリティ プリンシパルには、ターゲット ディレクトリの書き込みアクセス許可と、コンテナーおよび各親ディレクトリの実行アクセス許可が必要になります。
 

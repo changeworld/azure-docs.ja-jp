@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 06/24/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1dc537a631cd083da0f902fb4fcd44d47756eeba
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 9bf8b4d696a3784988a92fc24de1ae6964786e07
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67471760"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67836422"
 ---
 # <a name="tutorial-integrate-cisco-webex-with-azure-active-directory"></a>チュートリアル:Cisco Webex を Azure Active Directory と統合する
 
@@ -97,7 +97,7 @@ Cisco Webex で Azure AD SSO を構成してテストするには、次の構成
 
 6. その他に、Cisco Webex アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。 **[ユーザー属性]** ダイアログの **[ユーザー要求]** セクションで、以下の手順を実行して、以下の表のように SAML トークン属性を追加します。
     
-    | Name |  ソース属性|
+    | EnableAdfsAuthentication |  ソース属性|
     | ---------------|--------- |
     | uid | user.userprincipalname |
 
@@ -133,13 +133,13 @@ Cisco Webex で Azure AD SSO を構成してテストするには、次の構成
 
 2. **[設定]** を選択し、 **[認証]** セクションの下で **[変更]** をクリックします。
 
-    ![Configure single sign-on](./media/cisco-spark-tutorial/tutorial_cisco_spark_10.png)
+    ![Configure single sign-on](./media/cisco-spark-tutorial/tutorial-cisco-spark-10.png)
   
 3. **[Integrate a 3rd-party identity provider.(Advanced)] \(サード パーティの ID プロバイダーを統合する。(詳細))** を選択して、次の画面に移動します。
 
 4. **[Import Idp Metadata] \(Idp メタデータのインポート)** ページで、ページ上に Azure AD メタデータ ファイルをドラッグ アンド ドロップするか、ファイルのブラウザー オプションを使用して Azure AD メタデータ ファイルを見つけてアップロードします。 次に、 **[Require certificate signed by a certificate authority in Metadata (more secure)(証明機関の署名付き証明書がメタデータに必要 (高セキュリティ))]** を選択し、 **[Next (次へ)]** をクリックします。
 
-    ![Configure single sign-on](./media/cisco-spark-tutorial/tutorial_cisco_spark_11.png)
+    ![Configure single sign-on](./media/cisco-spark-tutorial/tutorial-cisco-spark-11.png)
 
 5. **[Test SSO Connection (SSO 接続のテスト)]** を選択し、ブラウザーの新しいタブが開いたら、サインインして Azure AD で認証します。
 
@@ -182,13 +182,13 @@ Cisco Webex で Azure AD SSO を構成してテストするには、次の構成
 
 2. **[Users]\(ユーザー\)** と **[Manage Users ]\(ユーザーの管理\)** を順にクリックします。
    
-    ![Configure single sign-on](./media/cisco-spark-tutorial/tutorial_cisco_spark_12.png) 
+    ![Configure single sign-on](./media/cisco-spark-tutorial/tutorial-cisco-spark-12.png) 
 
 3. **[Manage User (ユーザーの管理)]** ウィンドウで、 **[Manually add or modify users (ユーザーを手動で追加または変更)]** を選択し、 **[Next (次へ)]** をクリックします。
 
 4. **[Names and Email address (名前と電子メール アドレス)]** を選択します。 次のようにテキスト ボックスに入力します。
 
-    ![Configure single sign-on](./media/cisco-spark-tutorial/tutorial_cisco_spark_13.png) 
+    ![Configure single sign-on](./media/cisco-spark-tutorial/tutorial-cisco-spark-13.png) 
 
     a. **[First Name]\(名\)** ボックスに、ユーザーの名を入力します (この例では **B**)。
 
