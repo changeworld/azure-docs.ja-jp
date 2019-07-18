@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: overview
-ms.date: 06/19/2019
+ms.date: 06/24/2019
 ms.author: aahi
-ms.openlocfilehash: 71d7ebb8cb797e2166fc91fdfdefdba5f22d82ec
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: bf0f74fe76ec7a83e0ce23ca83141276a677a5df
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67272706"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67868080"
 ---
 # <a name="search-for-videos-with-the-bing-video-search-api"></a>Bing Video Search API で動画を検索する
 
@@ -98,7 +98,7 @@ GET https://api.cognitive.microsoft.com/bing/v7.0/videos/search?q=sailing+dinghi
 
 ## <a name="video-thumbnails"></a>動画のサムネイル
 
-Bing Video Search API から返された動画のサムネイルは、すべて表示することも、サブセットを表示することもできます。 サブセットを表示する場合、残りの動画を表示するためのオプションをユーザーに提供します。 Bing API の[利用と表示の要件](../UseAndDisplayRequirements.md)上、動画は、応答で返された順に表示する必要があります。 サムネイルのサイズ変更については、[サムネイルのサイズ変更とクロップ](../resize-and-crop-thumbnails.md)に関するページを参照してください。 
+Bing Video Search API から返された動画のサムネイルは、すべて表示することも、サブセットを表示することもできます。 サブセットを表示する場合、残りの動画を表示するためのオプションをユーザーに提供します。 Bing API の[利用と表示の要件](../UseAndDisplayRequirements.md)上、動画は、応答で返された順に表示する必要があります。 サムネイルのサイズ変更については、[サムネイルのサイズ変更とクロップ](../../bing-web-search/resize-and-crop-thumbnails.md)に関するページを参照してください。 
 
 ユーザーがサムネイルにマウス ポインターを重ねたときに、[motionThumbnailUrl](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video-motionthumbnailurl) を使用して、サムネイル バージョンの動画を再生することができます。 動画のサムネイルを表示するときは、必ずその帰属を示すようにしてください。
 

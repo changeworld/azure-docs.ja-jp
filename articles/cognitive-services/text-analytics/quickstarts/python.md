@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 06/28/2019
 ms.author: aahi
-ms.openlocfilehash: 835dc8d25ad1d6a30020408636b556c3f247200d
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: fdef4bc582a61033a45b88d2ab7dcf9da92a91f1
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67478374"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68305495"
 ---
 # <a name="quickstart-using-the-python-rest-api-to-call-the-text-analytics-cognitive-service"></a>クイック スタート:Python REST API を使用して Text Analytics Cognitive Service を呼び出す 
 <a name="HOLTop"></a>
@@ -287,6 +287,7 @@ documents = {"documents" : [
 headers   = {"Ocp-Apim-Subscription-Key": subscription_key}
 response  = requests.post(entities_url, headers=headers, json=documents)
 entities = response.json()
+pprint(entities)
 ```
 
 ### <a name="output"></a>Output

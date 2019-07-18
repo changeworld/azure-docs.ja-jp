@@ -9,13 +9,13 @@ ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: tutorial
 ms.date: 02/20/2019
-ms.author: v-jaswel
-ms.openlocfilehash: 8a338eb6ea3dfeea2027d44487138f290f6c8803
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.author: nitinme
+ms.openlocfilehash: a4ea2661986272374ca7f265896d4d6cc4713dc2
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57010380"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67845785"
 ---
 # <a name="tutorial-get-search-suggestions-on-a-web-page"></a>チュートリアル:Web ページ上で検索候補を取得する
 
@@ -283,7 +283,7 @@ Bing ロゴを表示します。
 
 ## <a name="display-results"></a>結果を表示する
 
-ブラウザーで Web ページを開きます。 プロンプトで、Bing Autosuggest API サブスクリプション キーを入力します。 次に、**[Autosuggest]** テキスト ボックスにクエリ (例: "sail") を入力します。 入力すると、Web ページが自動的に更新されて、Autosuggest の結果が表示されます。
+ブラウザーで Web ページを開きます。 プロンプトで、Bing Autosuggest API サブスクリプション キーを入力します。 次に、 **[Autosuggest]** テキスト ボックスにクエリ (例: "sail") を入力します。 入力すると、Web ページが自動的に更新されて、Autosuggest の結果が表示されます。
 
 ```json
 {

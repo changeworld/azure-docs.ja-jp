@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 04/10/2019
 ms.author: sbowles
-ms.openlocfilehash: f02f6ebb83f7fbc274797e944d59a5f1e973075c
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 5806c17b0532f4d18b7ac57fbf70c92ed9d47daa
+ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67438485"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67827494"
 ---
 # <a name="example-identify-faces-in-images"></a>例:画像内の顔を識別する
 
@@ -120,7 +120,7 @@ while(true)
 {
     trainingStatus = await faceClient.PersonGroup.GetTrainingStatusAsync(personGroupId);
  
-    if (trainingStatus.Status != Status.Running)
+    if (trainingStatus.Status != TrainingStatusType.Running)
     {
         break;
     }

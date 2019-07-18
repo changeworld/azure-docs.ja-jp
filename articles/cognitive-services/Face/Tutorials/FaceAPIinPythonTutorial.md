@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 07/03/2018
+ms.date: 07/15/2019
 ms.author: sbowles
-ms.openlocfilehash: 741dd18a3b8da5e44d77c24d46adb8d550322281
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 2f2245b4f6e4b38e0b071678ac0f3bddeb72f7ec
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603293"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68277521"
 ---
 # <a name="quickstart-create-a-python-script-to-detect-and-frame-faces-in-an-image"></a>クイック スタート:画像内の顔を検出してフレームに収める Python スクリプトの作成
 
