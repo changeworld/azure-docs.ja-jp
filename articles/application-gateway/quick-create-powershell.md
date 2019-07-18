@@ -5,15 +5,15 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-ms.date: 06/11/2019
+ms.date: 07/17/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: c0e80b1354302f227cb448391c7a92100049cc3a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1da7a2648fe8f97372f877a4e9c7894c4b2a4aed
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67053340"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68276570"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-powershell"></a>クイック スタート:Azure Application Gateway による Web トラフィックの転送 - Azure PowerShell
 
@@ -34,7 +34,7 @@ Azure PowerShell をローカルにインストールして使用する場合、
 1. バージョンを確認するには、`Get-Module -ListAvailable Az` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)に関するページを参照してください。 
 2. Azure との接続を作成するには、`Login-AzAccount` を実行します。
 
-### <a name="resource-group"></a>リソース グループ
+### <a name="resource-group"></a>Resource group
 
 Azure で、関連するリソースをリソース グループに割り当てます。 既存のリソース グループを使用することも、新しいリソース グループを作成することもできます。 この例では、次のように [New-AzResourceGroup](/powershell/module/Az.resources/new-Azresourcegroup) コマンドレットを使用して新しいリソース グループを作成します。 
 
@@ -67,7 +67,8 @@ New-AzPublicIpAddress `
   -ResourceGroupName myResourceGroupAG `
   -Location eastus `
   -Name myAGPublicIPAddress `
-  -AllocationMethod Dynamic
+  -AllocationMethod Static
+  -Sku Standard
 ```
 ### <a name="backend-servers"></a>バックエンド サーバー
 
@@ -197,8 +198,8 @@ $frontendRule = New-AzApplicationGatewayRequestRoutingRule `
 
 ```azurepowershell-interactive
 $sku = New-AzApplicationGatewaySku `
-  -Name Standard_Medium `
-  -Tier Standard `
+  -Name Standard_v2 `
+  -Tier Standard_v2 `
   -Capacity 2
 New-AzApplicationGateway `
   -Name myAppGateway `

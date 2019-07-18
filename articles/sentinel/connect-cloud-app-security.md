@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/07/2019
+ms.date: 07/10/2019
 ms.author: rkarlin
-ms.openlocfilehash: 4e75c9003103e267e864a98c7ee5c1bef2176bae
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 92de4120d73af70c5de013488344a15ba46513c7
+ms.sourcegitcommit: 1b7b0e1c915f586a906c33d7315a5dc7050a2f34
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612399"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67881082"
 ---
 # <a name="connect-data-from-microsoft-cloud-app-security"></a>Microsoft Cloud App Security からデータを接続する 
 

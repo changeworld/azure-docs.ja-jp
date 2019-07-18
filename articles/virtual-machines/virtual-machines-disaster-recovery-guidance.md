@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/31/2017
-ms.author: kmouss;aglick
+ms.author: gwallace
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f071e1ae97228a16799d391e226ba44b99f6096e
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: bc9ca5f5a638f0b36a28d58172fe8052b3d1522f
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67721185"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67875450"
 ---
 # <a name="what-to-do-in-the-event-that-an-azure-service-disruption-impacts-azure-vms"></a>Azure サービスの中断が Azure VM に影響を与える場合の対処方法
 Microsoft では、必要なときにサービスがいつでも使用できるように取り組んでいますが、 やむを得ない事情により、計画されていないサービス中断が発生することがあります。

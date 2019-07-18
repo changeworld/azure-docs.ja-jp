@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: vinigam
-ms.openlocfilehash: a5d5a9e07c28ab3059872f4d187c96586456a200
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a1a69e02a2630ab2b0466856ca87e8f88fc4d9d8
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64916757"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68304809"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Azure の Network Performance Monitor ソリューション
 
@@ -45,7 +45,7 @@ Network Performance Monitor では、次の 3 つの広範な機能が提供さ�
 NPM は、次のリージョンのいずれかでホストされているワークスペースから、世界の任意の部分のネットワークまたはアプリケーション間の接続を監視できます。
 * 西ヨーロッパ
 * 米国中西部
-* 米国東部
+* East US
 * 東日本
 * 東南アジア
 * オーストラリア南東部
@@ -249,7 +249,7 @@ Network Performance Monitor では、送信元と宛先のエンドポイント�
 
 Network Performance Monitor は、[Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts) のアラート機能を使用します。
 
-これは、すべての通知が[アクション グループ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups#overview)を使用して管理されることを意味します。  
+これは、すべての通知が[アクション グループ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups)を使用して管理されることを意味します。  
 
 Log Analytics を介してアラートを作成する NPM ユーザーの場合: 
 1. Azure portal にリダイレクトするリンクが表示されます。 それをクリックしてポータルにアクセスします。

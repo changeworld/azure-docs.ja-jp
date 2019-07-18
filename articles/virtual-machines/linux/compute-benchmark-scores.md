@@ -14,13 +14,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/09/2018
-ms.author: cynthn;davberg
-ms.openlocfilehash: 54c15ecf458ed2cc5ffd549b3b1e4ee696c3e015
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.author: cynthn
+ms.reviewer: davberg
+ms.openlocfilehash: 662e8365ef3c5642df58f4cea8a7d831bbfa6970
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67668155"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67870885"
 ---
 # <a name="compute-benchmark-scores-for-linux-vms"></a>Linux VM のコンピューティング ベンチマーク スコア
 次の CoreMark ベンチマーク スコアは、Ubuntu を実行している、Azure の 高パフォーマンス VM ラインアップについてのコンピューティング パフォーマンスを示します。 コンピューティング ベンチマーク スコアは [Windows VM](../windows/compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)にも利用できます。

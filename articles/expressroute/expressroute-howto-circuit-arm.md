@@ -6,14 +6,15 @@ author: cherylmc
 ms.service: expressroute
 ms.topic: article
 ms.date: 02/20/2019
-ms.author: ganesr;cherylmc
+ms.author: cherylmc
+ms.reviewer: ganesr
 ms.custom: seodec18
-ms.openlocfilehash: 06f49dc00b83ee2190f6361ebb8e6f052384402a
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 2ff22a3c0087ff7e24517f792ba9abacbae76e3a
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67657299"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67846638"
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-powershell"></a>PowerShell を使用した ExpressRoute 回線の作成と変更
 > [!div class="op_single_selector"]
@@ -53,7 +54,7 @@ Get-AzExpressRouteServiceProvider
 
 接続プロバイダーがそこにリストされているかどうかを確認します。 以下の項目は、回線を作成する際に後で必要になるため、書き留めておいてください。
 
-* Name
+* EnableAdfsAuthentication
 * PeeringLocations
 * BandwidthsOffered
 

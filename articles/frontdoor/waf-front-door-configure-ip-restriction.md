@@ -10,13 +10,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/31/2019
-ms.author: kumud;tyao
-ms.openlocfilehash: 73ef16aeb9a6014e98c0d40314bc174c6b5bf307
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: kumud
+ms.reviewer: tyao
+ms.openlocfilehash: 611a52f43b5b0e076ae37df9df86479ec894c6f4
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66808353"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849165"
 ---
 # <a name="configure-an-ip-restriction-rule-with-a-web-application-firewall-for-azure-front-door-service"></a>Azure Front Door Service 用の Web アプリケーション ファイアウォールで IP 制限規則を構成する
 この記事では、Azure CLI、Azure PowerShell、または Azure Resource Manager テンプレートを使って、Azure Front Door Service 用の Web アプリケーション ファイアウォール (WAF) で IP 制限規則を構成する方法を示します。

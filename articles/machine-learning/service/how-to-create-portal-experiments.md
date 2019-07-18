@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.author: tsikiksr
+ms.author: cgronlun
 author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/02/2019
-ms.openlocfilehash: 714283628e1b2ac445d36d0b07fe299b589a1cf0
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.openlocfilehash: 5eb3e94ff65e8a8b74f357a4cb8a517fd3837c5a
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67312812"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67871810"
 ---
 # <a name="create-and-explore-automated-machine-learning-experiments-in-the-azure-portal-preview"></a>Azure portal で自動化された機械学習の実験を作成および参照する (プレビュー)
 

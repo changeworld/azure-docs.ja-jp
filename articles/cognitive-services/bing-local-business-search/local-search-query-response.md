@@ -8,13 +8,13 @@ manager: nitinme
 ms.service: cognitive-services
 ms.topic: article
 ms.date: 06/26/2018
-ms.author: rosh; v-gedod
-ms.openlocfilehash: e2911ebe9157507534717a4177d4380813dd2ff6
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.author: rosh
+ms.openlocfilehash: cf622f658208ab85fe0a0670a0e034bd58a5047d
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67541553"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849933"
 ---
 # <a name="sending-and-using-bing-local-business-search-api-queries-and-responses"></a>Bing Local Business Search API クエリと応答の送信と使用
 

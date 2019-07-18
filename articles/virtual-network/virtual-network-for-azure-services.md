@@ -11,13 +11,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
-ms.author: malop;kumud
-ms.openlocfilehash: 357122abba483a96dd9f2d602a793ee06e80b245
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.author: malop
+ms.reviewer: kumud
+ms.openlocfilehash: 80d89914f33273fcb033ab47098a8864b11974c9
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67785546"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876160"
 ---
 # <a name="virtual-network-integration-for-azure-services"></a>Azure サービスの仮想ネットワーク統合
 

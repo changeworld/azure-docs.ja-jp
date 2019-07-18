@@ -7,13 +7,13 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/17/2019
-ms.author: tylerfox
-ms.openlocfilehash: f7c894bcb3183714a76578a6750c8e85493e3094
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.author: tyfox
+ms.openlocfilehash: 2035f5c7666d93068fd8007555bfe1aadae58ff1
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67508076"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67873934"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-azure-powershell"></a>Azure PowerShell を使用して HDInsight の Apache Hadoop クラスターを管理する
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]

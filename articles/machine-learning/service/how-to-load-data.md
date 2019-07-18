@@ -10,14 +10,14 @@ ms.author: sihhu
 author: MayMSFT
 manager: cgronlun
 ms.reviewer: jmartens
-ms.date: 02/22/2019
+ms.date: 07/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: fef3281f1f4e727b58878439e3f6456fee3b6241
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0fa60198af66154e0ddc703f90224adf5be89447
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66752941"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876407"
 ---
 # <a name="load-and-read-data-with-the-azure-machine-learning-data-prep-sdk"></a>Azure Machine Learning Data Prep SDK でのデータの読み込みと読み取り
 この記事では、Azure Machine Learning Data Prep SDK を使用してデータを読み込むさまざまな方法について説明します。  SDK では、次のような複数のデータ インジェスト機能がサポートされます。
@@ -28,7 +28,7 @@ ms.locfileid: "66752941"
 
 > [!Important]
 > 新しいソリューションを構築している場合は、データの探索と準備に [Azure Machine Learning Datasets](how-to-explore-prepare-data.md) (プレビュー) をお試しください。 Datasets は、次のバージョンのデータデータ準備 SDK であり、AI ソリューションでデータセットを管理するための拡張機能が提供されます。
-> `azureml-datasets` パッケージを使用してデータセットを作成するのではなく、`azureml-dataprep` パッケージを使用し、変換を使用してデータフローを作成した場合、後でスナップショットまたはバージョン管理されたデータセットを使用することはできません。
+
 
 次の表は、一般的なファイル タイプからのデータの読み込みに使用される関数の選択を示します。
 
@@ -128,7 +128,7 @@ dflow.dtypes
 
 既定では、Azure Machine Learning Data Prep SDK ではデータ型は変更されません。 ここで読み込むデータ ソースはテキスト ファイルなので、SDK ではすべての値が文字列として読み取られます。 この例では、数値列を数値として解析する必要があります。 `inference_arguments` パラメーターを `InferenceArguments.current_culture()` に設定して、ファイルの読み取り中に列の型を自動的に推測し、変換します。
 
-```
+```python
 dflow = dprep.read_csv(path='https://dpreptestfiles.blob.core.windows.net/testfiles/read_csv_duplicate_headers.csv',
                           skip_rows=1,
                           inference_arguments=dprep.InferenceArguments.current_culture())
@@ -228,7 +228,7 @@ dflow = dprep.read_sql(ds, "SELECT top 100 * FROM [SalesLT].[Product]")
 dflow.head(5)
 ```
 
-| |ProductID|Name|ProductNumber|色|StandardCost|ListPrice|Size|Weight|ProductCategoryID|ProductModelID|SellStartDate|SellEndDate|DiscontinuedDate|ThumbNailPhoto|ThumbnailPhotoFileName|rowguid|ModifiedDate| |
+| |ProductID|EnableAdfsAuthentication|ProductNumber|色|StandardCost|ListPrice|Size|Weight|ProductCategoryID|ProductModelID|SellStartDate|SellEndDate|DiscontinuedDate|ThumbNailPhoto|ThumbnailPhotoFileName|rowguid|ModifiedDate| |
 |-|---------|----|-------------|-----|------------|---------|----|------|-----------------|--------------|-------------|-----------|----------------|--------------|----------------------|-------|------------|-|
 |0|680|HL Road Frame - Black, 58|FR-R92B-58|黒|1059.3100|1431.50|58|1016.04|18|6|2002-06-01 00:00:00+00:00|なし|なし|b'GIF89aP\x001\x00\xf7\x00\x00\x00\x00\x00\x80...|no_image_available_small.gif|43dd68d6-14a4-461f-9069-55309d90ea7e|2008-03-11 |0:01:36.827000+00:00|
 |1|706|HL Road Frame - Red, 58|FR-R92R-58|赤|1059.3100|1431.50|58|1016.04|18|6|2002-06-01 00:00:00+00:00|なし|なし|b'GIF89aP\x001\x00\xf7\x00\x00\x00\x00\x00\x80...|no_image_available_small.gif|9540ff17-2712-4c90-a3d1-8ce5568b2462|2008-03-11 |10:01:36.827000+00:00|

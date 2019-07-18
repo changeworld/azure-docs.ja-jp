@@ -13,13 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
 ms.date: 10/30/2014
-ms.author: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork
-ms.openlocfilehash: 0cb75c1acb731432ed524560698e3355699b2500
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: erikre
+ms.reviewer: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork
+ms.openlocfilehash: 8ae948e9c79cff4cd0c896b250743fd9dc521752
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60931213"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876519"
 ---
 # <a name="how-to-send-email-using-sendgrid-from-java"></a>Java から SendGrid を使用して電子メールを送信する方法
 このガイドでは、Azure の SendGrid 電子メール サービスを使用して一般的なプログラム タスクを実行する方法を紹介します。 コード サンプルは Java で記述されています。 紹介するシナリオは、**電子メールの作成**、**電子メールの送信**、**添付ファイルの追加**、**フィルターの使用**、および**プロパティの更新**です。 SendGrid と電子メールの送信の詳細については、「 [次のステップ](#next-steps) 」を参照してください。
@@ -131,7 +132,7 @@ javax.mail ライブラリを <https://www.oracle.com/technetwork/java/javamail>
     multipart.addBodyPart(attachmentPart);
 
 ## <a name="how-to-use-filters-to-enable-footers-tracking-and-analytics"></a>方法:フィルターを使用してフッター、追跡、および分析を有効にする
-SendGrid では、 *フィルター*を使用することでその他の電子メール機能も利用することができます。 その設定を電子メール メッセージに追加することで、クリック追跡、Google 分析、サブスクリプション追跡などの独自の機能を有効にすることができます。 すべてのフィルターの一覧については、[フィルター設定][Filter Settings]に関するページを参照してください。
+SendGrid では、 *フィルター*を使用することでその他の電子メール機能も利用することができます。 その設定を電子メール メッセージに追加することで、クリック追跡、Google 分析、サブスクリプション追跡などの独自の機能を有効にすることができます。 すべてのフィルターの一覧については、 [フィルター設定][Filter Settings]に関するページを参照してください。
 
 * 次のコードでは、フッター フィルターを挿入して、送信される電子メールの 下部に HTML テキストが追加されるようにしています。
 
@@ -174,7 +175,7 @@ SendGrid では、 *フィルター*を使用することでその他の電子�
     InternetAddress("john@contoso.com"));
 
 ## <a name="how-to-use-additional-sendgrid-services"></a>方法:その他の SendGrid サービスを使用する
-SendGrid の Web ベース API を使用して、Azure アプリケーションからその他の SendGrid 機能を利用することができます。 詳細については、[SendGrid API に関するドキュメント][SendGrid API documentation]を参照してください。
+SendGrid の Web ベース API を使用して、Azure アプリケーションからその他の SendGrid 機能を利用することができます。 詳細については、 [SendGrid API に関するドキュメント][SendGrid API documentation]を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 これで、SendGrid 電子メール サービスの基本を学習できました。さらに詳細な情報が必要な場合は、次のリンク先を参照してください。

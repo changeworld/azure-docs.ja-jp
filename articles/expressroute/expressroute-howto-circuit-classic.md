@@ -6,14 +6,15 @@ author: ganesr
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.author: ganesr;cherylmc
+ms.author: ganesr
+ms.reviewer: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: e7c3368408b06f13139b9126dfecad0a82857134
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 7468338e7bc39128564e71831abe61bb1714ff72
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67657286"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849236"
 ---
 # <a name="modify-an-expressroute-circuit-using-powershell-classic"></a>PowerShell を使用した ExpressRoute 回線の変更 (クラシック)
 

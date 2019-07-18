@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 4b622a5925aebd140fed2ac74eaf7cc186803b90
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a63ef969f17fc48145174d99fec53e77b61885a4
+ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60236150"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67827973"
 ---
 # <a name="transform-data-using-hive-activity-in-azure-data-factory"></a>Azure Data Factory での Hive アクティビティを使用したデータ変換 
 > [!div class="op_single_selector" title1="変換アクティビティ"]
@@ -75,7 +75,7 @@ Data Factory [パイプライン](data-factory-create-pipelines.md) の HDInsigh
 ## <a name="syntax-details"></a>構文の詳細
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| name |アクティビティの名前 |はい |
+| 名前 |アクティビティの名前 |はい |
 | description |アクティビティの用途を説明するテキストです。 |いいえ |
 | type |HDinsightHive |はい |
 | inputs |Hive アクティビティによって使用される入力 |いいえ |

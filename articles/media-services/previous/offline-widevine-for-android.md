@@ -13,13 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2019
-ms.author: willzhan, dwgeo
-ms.openlocfilehash: 64c5bff0e48f55406476e71c82763bd8f3c03afd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: willzhan
+ms.reviewer: dwgeo
+ms.openlocfilehash: 694cdf054f74db50bcf1781e60df0f93810ae60c
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64937240"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67875190"
 ---
 # <a name="offline-widevine-streaming-for-android"></a>Android 用のオフラインの Widevine ストリーミング  
 

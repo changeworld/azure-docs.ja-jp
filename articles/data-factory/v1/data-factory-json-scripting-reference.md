@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: f43bf3e9158b7d02f6b0f6147559962da855bfbb
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 279a016d60ecb1bc80baf92a7fa60365145e397d
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67701748"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67836259"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Azure Data Factory - JSON スクリプトのリファレンス
 > [!NOTE]
@@ -5698,5 +5698,5 @@ U-SQL アクティビティの JSON 定義では、以下のプロパティを�
 ## <a name="next-steps"></a>次の手順
 次のチュートリアルを参照してください。
 
-- [チュートリアル: コピー アクティビティを含んだパイプラインを作成する](data-factory-copy-activity-tutorial-using-azure-portal.md)
-- [チュートリアル: Hive アクティビティを含んだパイプラインを作成する](data-factory-build-your-first-pipeline-using-editor.md)
+- [チュートリアル: コピー アクティビティを含んだパイプラインを作成する](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
+- [チュートリアル: Hive アクティビティを含んだパイプラインを作成する](data-factory-build-your-first-pipeline.md)

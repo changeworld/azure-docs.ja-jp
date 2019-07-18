@@ -7,13 +7,13 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.author: lyrana
-ms.openlocfilehash: 4ea4479d77e06940bed50859341952ffbcbbda46
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: lyhughes
+ms.openlocfilehash: 114edc072524552fab35e9cad6fc85573c4e8d0e
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60533829"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67846542"
 ---
 # <a name="connect-and-authenticate-to-apis"></a>API に接続および認証する
 

@@ -8,17 +8,17 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
-ms.date: 05/02/2019
+ms.date: 07/01/2019
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 5f171ea930eabd4d0d918a20bf3074e190d5265e
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: a318743876761a3a9b68d40fd963f43a527f0c7a
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67667880"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67805866"
 ---
-# <a name="preview-ephemeral-os-disks-for-azure-vms"></a>更新:Azure VM のエフェメラル OS ディスク
+# <a name="ephemeral-os-disks-for-azure-vms"></a>Azure VM のエフェメラル OS ディスク
 
 [!INCLUDE [virtual-machines-common-ephemeral](../../../includes/virtual-machines-common-ephemeral.md)]
  

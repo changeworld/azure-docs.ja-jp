@@ -14,13 +14,13 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: article
 ms.date: 02/16/2017
-ms.author: v-livech
-ms.openlocfilehash: c180c129e4e2c434cffe2ea2ca823904e8faae89
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.author: gwallace
+ms.openlocfilehash: d53c4c2120701ca99d0865e2c074c85e629ae81c
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708700"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67875168"
 ---
 # <a name="create-virtual-network-interface-cards-and-use-internal-dns-for-vm-name-resolution-on-azure"></a>仮想ネットワーク インターフェイス カードを作成して Azure での VM の名前解決に内部 DNS を使用する
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: iainfou
-ms.openlocfilehash: 38403efd72843e7cd6d1afff5ff65a15af39c107
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 6b808126fe4366d3ca3cc19c674b489ec3055665
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67473967"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68234150"
 ---
 # <a name="check-the-health-of-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services のマネージド ドメインの正常性を確認する
 
@@ -43,10 +43,10 @@ Azure Portal の正常性ページを使用して、マネージド ドメイン
 
 | Status | アイコン | 説明 |
 | --- | :----: | --- |
-| 実行中 | <img src= "./media/active-directory-domain-services-alerts/running-icon.png" width = "15"> | マネージド ドメインはスムーズに実行されています。重大なアラートまたは警告アラートはありません。 このドメインでは、情報アラートが発生している場合があります。 |
-| 要注意 (警告) | <img src= "./media/active-directory-domain-services-alerts/warning-icon.png" width = "15"> | マネージド ドメインに重大なアラートはありませんが、対処する必要がある 1 つ以上の警告アラートがあります。 |
-| 要注意 (重大) | <img src= "./media/active-directory-domain-services-alerts/critical-icon.png" width = "15"> | マネージド ドメインに 1 つ以上の重大なアラートがあります。 警告/情報アラートが発生している場合もあります。 |
-| デプロイ中 | <img src= "./media/active-directory-domain-services-alerts/deploying-icon.png" width = "15"> | ドメインはデプロイ中です。 |
+| 実行中 | <img src= "./media/active-directory-domain-services-alerts/running-icon.png" width = "15" alt="Green check mark for running"> | マネージド ドメインはスムーズに実行されています。重大なアラートまたは警告アラートはありません。 このドメインでは、情報アラートが発生している場合があります。 |
+| 要注意 (警告) | <img src= "./media/active-directory-domain-services-alerts/warning-icon.png" width = "15" alt="Yellow exclamation mark for warning"> | マネージド ドメインに重大なアラートはありませんが、対処する必要がある 1 つ以上の警告アラートがあります。 |
+| 要注意 (重大) | <img src= "./media/active-directory-domain-services-alerts/critical-icon.png" width = "15" alt="Red exclamation mark for critical"> | マネージド ドメインに 1 つ以上の重大なアラートがあります。 警告/情報アラートが発生している場合もあります。 |
+| デプロイ中 | <img src= "./media/active-directory-domain-services-alerts/deploying-icon.png" width = "15" alt="Blue circular arrows for deploying"> | ドメインはデプロイ中です。 |
 
 ## <a name="monitors"></a>モニター
 モニターは、Azure AD Domain Services が定期的に監視するマネージド ドメインの諸側面です。 モニターを正常な状態に保つには、マネージド ドメインのアクティブなアラートを解決するのが最も効果的です。

@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cccd5ddc2f268eda48bd9803596a1db1c5ee9395
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 1ae5e16aa00147d6ea434090720b51af06e8e0c5
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67481173"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807566"
 ---
 # <a name="view-your-azure-active-directory-tenant-applications"></a>Azure Active Directory テナントのアプリケーションの表示
 
@@ -39,20 +39,16 @@ Azure AD テナント アプリケーションは、Azure portal の **[エン�
 
 テナント アプリケーションを表示するには:
 
-1. **[Azure portal](https://portal.azure.com)** の左側のナビゲーション パネルで、 **[Azure Active Directory]** を選択します。 
-
-1. **[Azure Active Directory]** ウィンドウで、 **[エンタープライズ アプリケーション]** を選択します。 
-
+1. **[Azure portal](https://portal.azure.com)** の左側のナビゲーション パネルで、 **[Azure Active Directory]** を選択します。
+1. **[Azure Active Directory]** ウィンドウで、 **[エンタープライズ アプリケーション]** を選択します。
 1. **[アプリケーションの種類]** ドロップダウン メニューの **[すべてのアプリケーション]** を選択し、 **[適用]** を選択します。 テナント アプリケーションのランダム サンプルが表示されます。
-   
 1. 他のアプリケーションを表示するには、一覧の一番下にある **[さらに読み込む]** を選択します。 テナント内のアプリケーションの数によっては、一覧をスクロールするよりも[特定のアプリケーションを検索する](#search-for-a-tenant-application)方が簡単な場合があります。
 
 ## <a name="select-viewing-options"></a>表示オプションを選択する
 
 探しているものに応じてオプションを選択します。
 
-1. **[アプリケーションの種類]** 、 **[アプリケーションの状態]** 、 **[アプリケーションの可視性]** によってアプリケーションを表示できます。 
-
+1. **[アプリケーションの種類]** 、 **[アプリケーションの状態]** 、 **[アプリケーションの可視性]** によってアプリケーションを表示できます。
 1. **[アプリケーションの種類]** で、次のいずれかのオプションを選択します。
 
     - **[エンタープライズ アプリケーション]** には、Microsoft 以外のアプリケーションが表示されます。
@@ -60,9 +56,7 @@ Azure AD テナント アプリケーションは、Azure portal の **[エン�
     - **[すべてのアプリケーション]** には、Microsoft 以外のアプリケーションと Microsoft アプリケーションの両方が表示されます。
 
 1. **[アプリケーションの状態]** で **[任意]** 、 **[無効]** 、または **[有効]** を選択します。 **[任意]** オプションでは、無効なアプリケーションと有効なアプリケーションの両方が含まれます。
-
 1. **[アプリケーションの可視性]** で、 **[任意]** または **[非表示]** を選択します。 **[非表示]** オプションは、テナントに存在するにもかかわらずユーザーには表示されないアプリケーションを示します。
-
 1. 必要なオプションを選択したら、 **[適用]** を選択します。
 
 ## <a name="search-for-a-tenant-application"></a>テナント アプリケーションを検索する
@@ -70,7 +64,6 @@ Azure AD テナント アプリケーションは、Azure portal の **[エン�
 特定のアプリケーションを検索するには:
 
 1. **[アプリケーションの種類]** メニューの **[すべてのアプリケーション]** を選択し、 **[適用]** を選択します。
-
 1. 検索するアプリケーションの名前を入力します。 アプリケーションが Azure AD テナントに追加されている場合は、それが検索結果に表示されます。 この例は、GitHub がテナント アプリケーションに追加されていないことを示しています。
 
     ![テナントにアプリが追加されていないことを表示する例](media/view-applications-portal/search-for-tenant-application.png)

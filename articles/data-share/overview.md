@@ -6,12 +6,12 @@ ms.service: data-share
 ms.topic: overview
 ms.date: 07/10/2019
 ms.author: joanpo
-ms.openlocfilehash: 1e0d640c5434c27695b90ee7fd4c20a4959c24b3
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: 7d4e51ec9564bfb123cf73d9fe89d040f42fe650
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67788986"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807539"
 ---
 # <a name="what-is-azure-data-share-preview"></a>Azure Data Share プレビューとは
 
@@ -78,14 +78,6 @@ Azure Data Share では、保存時と転送中のデータを保護するため
 Azure Data Share のリソース レベルでアクセス制御を設定し、承認されたユーザーだけによってアクセスされることを保証できます。 
 
 Azure Data Share では、Azure Active Directory での自動 ID 管理用に、Azure リソースのマネージド ID (旧称 MSI) を利用します。 Azure リソースのマネージド ID は、データ共有に使われているストレージ アカウントにアクセスするために利用されます。 データ プロバイダーとデータ コンシューマーの間で資格情報が交換されることはありません。 詳しくは、[Azure リソースのマネージド ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities) に関するページをご覧ください。 
-
-## <a name="pricing"></a>価格
-
-Azure Data Share プレビューでは、2 つのコンポーネントについて課金されます。 1 つ目のコンポーネントは、データ共有の管理用です。 プレビュー期間中は、データ共有の管理は無料です。
-
-2 つ目のコンポーネントは、移動用です。 Azure Data Share では、データ プロバイダーの Azure テナントからデータ コンシューマーの Azure テナントへのデータの移動に対して課金されます。 データセット移動操作ごとのデータセットの移動と、データセットの移動に必要なコンピューティングに対して、料金を支払います。 データセット移動のコンピューティングは、仮想コア時間あたりで課金されます。 データセット移動コンピューティングの料金は、分単位で切り上げ請求されます。 プレビュー期間中は、データセットの移動操作は無料です。 
-
-価格について詳しくは、Azure Data Share の[価格のページ](https://azure.microsoft.com/pricing/)をご覧ください。
 
 ## <a name="supported-regions"></a>サポートされているリージョン
 

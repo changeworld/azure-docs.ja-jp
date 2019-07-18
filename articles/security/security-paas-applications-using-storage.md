@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/28/2018
-ms.author: TomShinder
-ms.openlocfilehash: 3ad97c7adb5901c1da1d174d12d5d6a91831cc74
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: tomsh
+ms.openlocfilehash: 7fb8a1fe844a6fbbb2c5259b4aa7f63edd7cc237
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60445419"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876389"
 ---
 # <a name="best-practices-for-securing-paas-web-and-mobile-applications-using-azure-storage"></a>Azure Storage を使用して PaaS の Web アプリケーションとモバイル アプリケーションをセキュリティで保護するベスト プラクティス
 この記事では、PaaS (platform-as-a-service) の Web アプリケーションとモバイル アプリケーションをセキュリティ保護するための、Azure Storage の一連のセキュリティ ベスト プラクティスについて説明します。 このベスト プラクティスは、Azure に関して Microsoft が蓄積してきたノウハウと、ユーザーの皆様の経験に基づいています。

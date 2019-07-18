@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/14/2017
-ms.author: echuvyrov
-ms.openlocfilehash: 66c5161f1e8f6eba735e6989f36b8d8008d4b975
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.author: gwallace
+ms.openlocfilehash: be8bfd8b6a0ba8afa43869366b4482e1b202727f
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708629"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876327"
 ---
 # <a name="create-a-complete-linux-virtual-machine-infrastructure-in-azure-with-terraform"></a>Terraform によって Azure に完全な Linux 仮想マシンのインフラストラクチャを作成する
 

@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 05/16/2019
 ms.author: yluiu
-ms.openlocfilehash: fbefbea171a8559466117c55703a14268b4c4c99
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 26ab3cb247309aa21791ca5a984f39ef40ce9a78
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592937"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68249627"
 ---
 # <a name="specify-a-face-detection-model"></a>顔検出モデルを指定する
 
@@ -45,8 +45,7 @@ AI による顔検出の概念を理解している必要があります。 そ�
 
 [Face - Detect] REST API の要求 URL は次のようになります。
 
-`https://westus.api.cognitive.microsoft.com/face/v1.0/detect[?returnFaceId][&returnFaceLandmarks][&returnFaceAttributes][&recognitionModel][&returnRecognitionModel][&detectionModel]
-&subscription-key=<Subscription key>`
+`https://westus.api.cognitive.microsoft.com/face/v1.0/detect[?returnFaceId][&returnFaceLandmarks][&returnFaceAttributes][&recognitionModel][&returnRecognitionModel][&detectionModel]&subscription-key=<Subscription key>`
 
 クライアント ライブラリを使用している場合は、適切な文字列を渡すことによって `detectionModel` の値を割り当てることができます。 未割り当てのままにした場合、API は既定のモデル バージョン (`detection_01`) を使用します。 .NET クライアント ライブラリの次のコード例を参照してください。
 

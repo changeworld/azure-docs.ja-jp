@@ -9,14 +9,14 @@ displayName: chat history, history, chat logs, logs
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 02/04/2019
+ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 07ee6c27006d8444881d9d3b94cb623f0b0d0b1f
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 5fc473fb1a1b1af84b0966bde4ecf02f4f221bf1
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447460"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68296405"
 ---
 # <a name="get-analytics-on-your-knowledge-base"></a>ナレッジ ベースに関する分析の取得
 
@@ -33,16 +33,17 @@ ms.locfileid: "67447460"
 3. 次のクエリを貼り付けて、実行します。
 
     ```query
-        requests
-        | where url endswith "generateAnswer"
-        | project timestamp, id, name, resultCode, duration
-        | parse kind = regex name with *"(?i)knowledgebases/"KbId"/generateAnswer"
-        | join kind= inner (
-        traces | extend id = operation_ParentId
-        ) on id
-        | extend question = tostring(customDimensions['Question'])
-        | extend answer = tostring(customDimensions['Answer'])
-        | project KbId, timestamp, resultCode, duration, question, answer
+    requests
+    | where url endswith "generateAnswer"
+    | project timestamp, id, name, resultCode, duration, performanceBucket
+    | parse kind = regex name with *"(?i)knowledgebases/"KbId"/generateAnswer"
+    | join kind= inner (
+    traces | extend id = operation_ParentId
+    ) on id
+    | extend question = tostring(customDimensions['Question'])
+    | extend answer = tostring(customDimensions['Answer'])
+    | extend score = tostring(customDimensions['Score'])
+    | project timestamp, resultCode, duration, id, question, answer, score, performanceBucket,KbId 
     ```
 
     **[実行]** を選択して、クエリを実行します。

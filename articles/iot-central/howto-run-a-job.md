@@ -5,15 +5,15 @@ ms.service: iot-central
 services: iot-central
 author: sarahhubbard
 ms.author: sahubbar
-ms.date: 03/18/2019
+ms.date: 07/08/2019
 ms.topic: conceptual
 manager: peterpr
-ms.openlocfilehash: 903b4f1ea1484aec827c4b2d54c8dd8a9dd69d8f
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 298770b1b2da816ddef9154fafb20d7c6cb82df3
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509532"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849039"
 ---
 # <a name="create-and-run-a-job-in-your-azure-iot-central-application"></a>Azure IoT Central アプリケーションでのジョブの作成と実行
 

@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 6b16b6c4de8c8d2d7a821dd476f07c8ab1135408
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f88d83a851ad878ac9ee9b0195816d2ca35e4c13
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60487273"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839373"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Azure Data Factory のデータセット
-> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください。"]
 > * [Version 1](data-factory-create-datasets.md)
 > * [バージョン 2 (最新バージョン)](../concepts-datasets-linked-services.md)
 
@@ -81,7 +81,7 @@ Data Factory のデータセットは JSON 形式では次のように定義さ�
 
 | プロパティ | 説明 | 必須 | 既定値 |
 | --- | --- | --- | --- |
-| name |データセットの名前。 名前付け規則については、「 [Azure Data Factory - 名前付け規則](data-factory-naming-rules.md) 」を参照してください。 |はい |NA |
+| 名前 |データセットの名前。 名前付け規則については、「 [Azure Data Factory - 名前付け規則](data-factory-naming-rules.md) 」を参照してください。 |はい |NA |
 | type |データセットの型。 Data Factory でサポートされている型のいずれかを指定します (たとえば、AzureBlob、AzureSqlTable)。 <br/><br/>詳細については、「[データセットの型](#Type)」セクションを参照してください。 |はい |NA |
 | structure |データセットのスキーマ。<br/><br/>詳細については、「[データセット構造](#Structure)」セクションを参照してください。 |いいえ |NA |
 | typeProperties | 型のプロパティは型によって異なります (たとえば、Azure Blob、Azure SQL テーブル)。 サポートされている型とそのプロパティの詳細については、「[データセットの型](#Type)」セクションを参照してください。 |はい |NA |
@@ -193,7 +193,7 @@ structure の各列には次のプロパティが含まれます。
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| name |列の名前です。 |はい |
+| 名前 |列の名前です。 |はい |
 | type |列のデータ型です。  |いいえ |
 | culture |.NET 型 (`Datetime` または `Datetimeoffset`) の場合に使用される .NET ベースのカルチャ。 既定では、 `en-us`です。 |いいえ |
 | format |.NET 型 (`Datetime` または `Datetimeoffset`) の場合に使用される書式設定文字列。 |いいえ |
@@ -316,7 +316,7 @@ structure の各列には次のプロパティが含まれます。
 
 データセットは Data Factory で作成されている場合を除き、**external** とマークされます。 この設定は通常、パイプライン内の最初のアクティビティの入力に適用されます (アクティビティまたはパイプラインの連鎖が使用されている場合を除く)。
 
-| Name | 説明 | 必須 | Default value |
+| EnableAdfsAuthentication | 説明 | 必須 | Default value |
 | --- | --- | --- | --- |
 | dataDelay |特定のスライスの外部データの可用性チェックを遅らせる時間。 たとえば、この設定を使用して、時間単位のチェックを延期することができます。<br/><br/>この設定は、現在の時刻にのみ適用されます。 たとえば、現在時刻が午後 1 時 00 分で、この値が 10 分の場合、検証は午後 1 時 10 分に開始されます。<br/><br/>注: この設定は、過去のスライスには影響しません。 **スライス終了時間** + **dataDelay** < **現在時刻**であるスライスは、遅延なく処理されます。<br/><br/>23 時間 59 分を超える時間は、`day.hours:minutes:seconds` 形式で指定してください。 たとえば、24 時間を指定する場合は、24:00:00 を使用するのではなく、 1\.00:00:00 を使用してください。 24:00:00 を使用した場合は、24 日間 (24.00:00:00) として処理されます。 1 日と 4 時間の場合は 1:04:00:00 と指定します。 |いいえ |0 |
 | retryInterval |エラーから次の試行までの待機時間です。 この設定は、現在の時刻に適用されます。 前の試行が失敗した場合に、次に試行できるのは **retryInterval** が経過した後です。 <br/><br/>現在時刻が午後 1 時 00 分の場合に最初の試行を開始したとします。 最初の検証チェックを完了するための時間が 1 分のとき、操作に失敗した場合、次の再試行は "午後 1 時 00 分 + 1 分 (チェック時間) + 1 分 (再試行間隔) = 午後 1 時 02 分" になります。 <br/><br/>過去のスライスの場合、遅延はありません。 再試行は直ちに行われます。 |いいえ |00:01:00 (1 分) |
@@ -328,7 +328,6 @@ structure の各列には次のプロパティが含まれます。
 次のツールや SDK のいずれかを使用してデータセットを作成できます。
 
 - コピー ウィザード
-- Azure ポータル
 - Visual Studio
 - PowerShell
 - Azure Resource Manager テンプレート

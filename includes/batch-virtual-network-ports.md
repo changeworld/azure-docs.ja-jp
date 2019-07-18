@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: ''
-ms.date: 04/10/2019
+ms.date: 07/16/2019
 ms.author: lahugh
 ms.custom: include file
-ms.openlocfilehash: a794852e68fdb2bf52717aaa6441880bd1d51139
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 48f5d9b4c1ef68b8295d531a5e5b447fed3a7945
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67436264"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68286341"
 ---
 ### <a name="general-requirements"></a>一般的な要件
 
@@ -28,9 +28,9 @@ ms.locfileid: "67436264"
 
 * VNET を使用するプールには最大 4,096 ノードを含めることができます。
 
-* プールに指定されたサブネットには、プールの対象となる VM 数 (つまり、プールの `targetDedicatedNodes` および `targetLowPriorityNodes` プロパティの合計) に対応できる十分な未割り当て IP アドレスが必要です。 サブネットの未割り当て IP アドレスが十分でない場合、プールによってコンピューティング ノードが部分的に割り当てられ、サイズ変更エラーが発生します。 
+* プールに指定されたサブネットには、プールの対象となる VM 数 (つまり、プールの `targetDedicatedNodes` および `targetLowPriorityNodes` プロパティの合計) に対応できる十分な未割り当て IP アドレスが必要です。 サブネットの未割り当て IP アドレスが十分でない場合、プールによってコンピューティング ノードが部分的に割り当てられ、サイズ変更エラーが発生します。 
 
-* VNET を提供するカスタムの DNS サーバーが、Azure Storage エンドポイントを解決できることが必要です。 具体的には、フォーム `<account>.table.core.windows.net`、`<account>.queue.core.windows.net`、`<account>.blob.core.windows.net` の URL を解決できる必要があります。 
+* VNET を提供するカスタムの DNS サーバーが、Azure Storage エンドポイントを解決できることが必要です。 具体的には、フォーム `<account>.table.core.windows.net`、`<account>.queue.core.windows.net`、`<account>.blob.core.windows.net` の URL を解決できる必要があります。 
 
 その他の VNET 要件は、Batch プールが仮想マシンの構成にあるかクラウド サービスの構成にあるかによって異なります。 VNET に新しいプールをデプロイする場合は、仮想マシンの構成が推奨されます。
 
@@ -82,10 +82,10 @@ ms.locfileid: "67436264"
 **サブネット ID** - Batch API を使用してサブネットを指定するときに、そのサブネットの "*リソース識別子*" を使用します。 サブネット識別子の形式は次のとおりです。
 
   ```
-  /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.ClassicVirtualNetwork /virtualNetworks/{network}/subnets/{subnet}
+  /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.ClassicNetwork /virtualNetworks/{network}/subnets/{subnet}
   ```
 
-**アクセス許可** - `MicrosoftAzureBatch` サービス プリンシパルに、指定された VNET に対する `Classic Virtual Machine Contributor` ロールベースのアクセス制御 (RBAC) のロールが付与されている必要があります。
+**アクセス許可** - `Microsoft Azure Batch` サービス プリンシパルに、指定された VNET に対する `Classic Virtual Machine Contributor` ロールベースのアクセス制御 (RBAC) のロールが付与されている必要があります。
 
 #### <a name="network-security-groups"></a>ネットワーク セキュリティ グループ
 

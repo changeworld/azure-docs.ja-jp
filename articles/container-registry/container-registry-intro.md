@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 06/28/2019
 ms.author: stevelas
 ms.custom: seodec18, mvc
-ms.openlocfilehash: b8b4b5fc3ec15d921ff5580aff4d0202be1d38b9
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 3502a2ec7c56d01abe2ceb9f61db9c1c2d8179a0
+ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67797900"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68302331"
 ---
 # <a name="introduction-to-private-docker-container-registries-in-azure"></a>Azure のプライベート Docker コンテナー レジストリの概要
 
@@ -30,7 +30,7 @@ Azure コンテナー レジストリからさまざまなデプロイ ターゲ
 * [Kubernetes](https://kubernetes.io/docs/)、[DC/OS](https://docs.mesosphere.com/)、[Docker Swarm](https://docs.docker.com/swarm/) など、ホストから成るクラスターにわたってコンテナー化されたアプリケーションを管理する**スケーラブルなオーケストレーション システム**。
 * [Azure Kubernetes Service (AKS)](../aks/index.yml) や  [App Service](../app-service/index.yml)､[Batch](../batch/index.yml)､[Service Fabric](/azure/service-fabric/) など､大規模なアプリケーション のビルドと実行をサポートしている **Azure サービス**｡
 
-開発者は、コンテナー開発ワークフローの一環としてコンテナー レジストリにプッシュすることもできます。 たとえば、[Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines.md) や [Jenkins](https://jenkins.io/) などの継続的インテグレーションと継続的配信ツールからコンテナー レジストリを対象にします。
+開発者は、コンテナー開発ワークフローの一環としてコンテナー レジストリにプッシュすることもできます。 たとえば、[Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines) や [Jenkins](https://jenkins.io/) などの継続的インテグレーションと継続的配信ツールからコンテナー レジストリを対象にします。
 
 ベース イメージが更新されたときに自動的にアプリケーション イメージをリビルドするように ACR タスクを構成するか、チームがコードを Git リポジトリにコミットしたときのイメージ ビルドを自動化します。 複数のコンテナー イメージのビルド、テスト、および修正プログラム適用をクラウドで並列で自動的に行うために、マルチステップ タスクを作成します。
 

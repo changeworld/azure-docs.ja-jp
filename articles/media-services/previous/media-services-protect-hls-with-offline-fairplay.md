@@ -13,13 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2019
-ms.author: willzhan, dwgeo
-ms.openlocfilehash: bc939011f87f03ef1de7e728fc52fc0c9887dd31
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: willzhan
+ms.reviewer: dwgeo
+ms.openlocfilehash: 228b00a19bac9c773fce8e502d302314821fbf39
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935400"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67871635"
 ---
 # <a name="offline-fairplay-streaming-for-ios"></a>オフラインの iOS 用 FairPlay Streaming 
 

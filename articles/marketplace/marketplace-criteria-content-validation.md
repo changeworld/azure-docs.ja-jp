@@ -7,13 +7,13 @@ manager: nunoc
 ms.service: marketplace
 ms.topic: article
 ms.date: 10/05/2018
-ms.author: yijenj
-ms.openlocfilehash: 97fb4dc37f3c9f776e4abf433f916ceaf177a70b
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.author: pabutler
+ms.openlocfilehash: 0aa7cec4dcdb480555cd0ecb7dee8d00a5a9ec2c
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67202673"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67870842"
 ---
 # <a name="azure-marketplace-listing-guidelines"></a>Azure Marketplace の掲載に関するガイドライン
 
