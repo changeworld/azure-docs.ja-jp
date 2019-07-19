@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 06/25/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: b9562a1686c4de4f4e2ef57a7d91bbf18dce63ef
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 7e40af9b2362ee52a1d00f29cdc112d3c2b9a842
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447596"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67565850"
 ---
 # <a name="what-is-a-qna-maker-knowledge-base"></a>QnA Maker ナレッジ ベースとは
 
@@ -40,7 +40,7 @@ QnA Maker のナレッジ ベースは、一連の質問と回答 (QnA) のペ�
 
 ## <a name="how-qna-maker-processes-a-user-query-to-select-the-best-answer"></a>QnA Maker がユーザー クエリを処理して最適な回答を選択する方法
 
-トレーニングされ、[公開された](/quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) QnA Maker ナレッジ ベースは、[GenerateAnswer API](/how-to/metadata-generateanswer-usage.md#get-answer-predictions-with-the-generateanswer-api) で、ボットまたはその他のクライアント アプリケーションからユーザー クエリを受け取ります。 次の図は、ユーザー クエリを受け取ったときのプロセスを示しています。
+トレーニングされ、[公開された](/azure/cognitive-services/qnamaker/quickstarts/create-publish-knowledge-base#publish-the-knowledge-base) QnA Maker ナレッジ ベースは、[GenerateAnswer API](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage) で、ボットまたはその他のクライアント アプリケーションからユーザー クエリを受け取ります。 次の図は、ユーザー クエリを受け取ったときのプロセスを示しています。
 
 ![ユーザー クエリのランク付けプロセス](../media/qnamaker-concepts-knowledgebase/rank-user-query-first-with-azure-search-then-with-qna-maker.png)
 
@@ -48,7 +48,7 @@ QnA Maker のナレッジ ベースは、一連の質問と回答 (QnA) のペ�
 
 |手順|目的|
 |--|--|
-|1|クライアント アプリケーションがユーザー クエリを [GenerateAnswer API](/how-to/metadata-generateanswer-usage.md#get-answer-predictions-with-the-generateanswer-api) に送信します。|
+|1|クライアント アプリケーションがユーザー クエリを [GenerateAnswer API](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage) に送信します。|
 |2|Qna Maker が、言語検出、スペル チェック プログラム、およびワード ブレーカーを使用してユーザー クエリを前処理します。|
 |3|この前処理は、ユーザー クエリを変更して最適な検索結果を得るために行われます。|
 |4|この変更されたクエリが Azure Search インデックスに送信され、`top` の数の結果を受け取ります。 正しい回答がこれらの結果にない場合、`top` の値をわずかに増やします。 一般的に `top` の値として 10 を使用すれば、90% のクエリに対応できます。|

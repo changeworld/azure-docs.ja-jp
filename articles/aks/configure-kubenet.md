@@ -2,18 +2,18 @@
 title: Azure Kubernetes Service (AKS) で kubenet ネットワークを構成する
 description: Azure Kubernetes Service (AKS) で kubenet (基本) ネットワークを構成して、既存の仮想ネットワークおよびサブネットに AKS クラスターをデプロイする方法について説明します。
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 06/26/2019
-ms.author: iainfou
+ms.author: mlearned
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: 269dd670ed82234b77e06c389ae1c9a5c294010c
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: e1279261de8e26b9e11f55100ce01277650e251b
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67441949"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67615752"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) の独自の IP アドレス範囲で kubenet ネットワークを使用する
 

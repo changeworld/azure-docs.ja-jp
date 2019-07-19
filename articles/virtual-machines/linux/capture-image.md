@@ -4,7 +4,7 @@ description: Azure CLI を使用し、Azure VM のイメージをキャプチャ
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: e608116f-f478-41be-b787-c2ad91b5a802
@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: cynthn
-ms.openlocfilehash: 461df93400380ac74fa87eebc81fa06f77d7bf76
-ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
+ms.openlocfilehash: 96169f8f52ea9d45d8804a7d4fc08827a4f1ea03
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67551664"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67668409"
 ---
 # <a name="how-to-create-an-image-of-a-virtual-machine-or-vhd"></a>仮想マシンまたは VHD のイメージを作成する方法
 

@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: reference
 ms.date: 06/07/2019
 ms.author: tomfitz
-ms.openlocfilehash: 4f1bc1415fbb875120d7b64128cae69e1e3f442c
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 72bb11cd064c90c2bbe1e9e6452dcbf07fe37817
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67339844"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68304862"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure リソースでのタグのサポート
 この記事では、リソースの種類が[タグ](resource-group-using-tags.md)をサポートしているかどうかについて説明します。 「**タグのサポート**」というラベルが付けられた列は、リソースの種類にタグのプロパティがあるかどうかを示します。 「**コスト レポートのタグ**」というラベルが付けられた列は、リソースの種類がタグをコスト レポートに渡すかどうかを示します。
@@ -890,7 +890,7 @@ ms.locfileid: "67339844"
 | trafficmanagerprofiles | はい | はい |
 | trafficmanagerprofiles/heatMaps | いいえ |  いいえ |
 | virtualHubs | はい | はい |
-| virtualNetworkGateways | はい | いいえ |
+| virtualNetworkGateways | はい | はい |
 | virtualNetworks | はい | はい |
 | virtualNetworks/subnets | いいえ |  いいえ |
 | virtualNetworkTaps | はい | はい |

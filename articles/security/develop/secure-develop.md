@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: f68f6c366571b8f0f04f8507606c1a4008ab0405
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: f4add4bf07178aa616e86f8a64b313630466824f
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443257"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67653267"
 ---
 # <a name="develop-secure-applications-on-azure"></a>セキュリティで保護されたアプリケーションを Azure 上で開発する
 この記事では、クラウド向けのアプリケーションを開発するときに考慮するセキュリティ アクティビティとコントロールについて説明します。 Microsoft [セキュリティ開発ライフサイクル (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) の実装と検証のフェーズ中に考慮するセキュリティの質問と概念について説明します。 目標は、より安全なアプリケーションの開発に使用できるアクティビティと Azure サービスの定義を手助けすることです。
@@ -88,7 +88,7 @@ Server、X-Powered-By、X-AspNet-Version などのヘッダーによって、サ
 
 ブルート フォース攻撃や辞書ベース推測を防ぐには、ユーザーが必ず複雑なパスワード (例: 12 文字以上、英数字と特殊文字) を設定するように、強力なパスワード ポリシーを実装する必要があります。
 
-ID フレームワークを使用して、パスワード ポリシーを作成し、適用できます。 Azure AD B2C では、[組み込みポリシー](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-policies#create-a-password-reset-policy)、[パスワード リセットのセルフサービス](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-sspr)、その他が提供されて、パスワード管理に役立ちます。
+ID フレームワークを使用して、パスワード ポリシーを作成し、適用できます。 Azure AD B2C では、[組み込みポリシー](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-user-flows#create-a-password-reset-user-flow)、[パスワード リセットのセルフサービス](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-sspr)、その他が提供されて、パスワード管理に役立ちます。
 
 既定のアカウントへの攻撃を防ぐには、すべてのキーやパスワードが置換可能で、リソースをインストールした後で生成または置換されたことを確認します。
 

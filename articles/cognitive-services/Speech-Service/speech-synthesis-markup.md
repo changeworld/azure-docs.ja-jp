@@ -8,15 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/15/2019
+ms.date: 07/05/2019
 ms.author: erhopf
-ms.custom: seodec18
-ms.openlocfilehash: 488cbf1874e023cf3a665bc9f2087900b30b3d3d
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 8285a76f8cd07863874f9c8e8eebe96f1cb968dd
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204919"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604813"
 ---
 # <a name="speech-synthesis-markup-language-ssml"></a>音声合成マークアップ言語 (SSML)
 

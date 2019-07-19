@@ -3,17 +3,17 @@ title: Azure IoT Central アプリケーション ダッシュボードを構成
 description: 開発者として、既定の Azure IoT Central アプリケーション ダッシュボードを構成する方法を学習します。
 author: dominicbetts
 ms.author: dobett
-ms.date: 02/13/2019
+ms.date: 07/10/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: e6947a4f15797028274d49069d9e2787b143860d
-ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
+ms.openlocfilehash: 94ad51ac11687dfe060176132e2030d61b8d4ffc
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67503225"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67850211"
 ---
 # <a name="configure-the-application-dashboard"></a>アプリケーション ダッシュボードの構成
 

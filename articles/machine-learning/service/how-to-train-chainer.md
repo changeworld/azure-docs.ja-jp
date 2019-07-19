@@ -6,15 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.author: sgilley
-author: sdgilley
+ms.author: maxluk
+author: maxluk
+ms.reviewer: sdgilley
 ms.date: 06/15/2019
-ms.openlocfilehash: 5057a8cf6c8769761a1a1a9f513ec46d152289ab
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: 8ecefccbdf5f02652e935858b6ae8fb4cdfde640
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67488673"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67840035"
 ---
 # <a name="train-and-register-chainer-models-at-scale-with-azure-machine-learning-service"></a>Azure Machine Learning service を使用して Chainer モデルを大規模にトレーニングし、登録する
 
@@ -44,7 +45,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="set-up-the-experiment"></a>実験を設定する
 
-このセクションでは、必要な python パッケージを読み込み、ワークスペースを初期化し、実験を作成し、トレーニング データとトレーニング スクリプトをアップロードすることで、トレーニング実験を設定します。
+このセクションでは、必要な Python パッケージを読み込み、ワークスペースを初期化し、実験を作成し、トレーニング データとトレーニング スクリプトをアップロードすることで、トレーニング実験を設定します。
 
 ### <a name="import-packages"></a>パッケージをインポートする
 

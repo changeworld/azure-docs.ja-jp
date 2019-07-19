@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/27/2019
+ms.date: 07/11/2019
 ms.author: juliako
-ms.openlocfilehash: ab74b778757aefc22f66e8b52d1f1d922526f14a
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 831ba217e99d1610383320ddf5706c6acfcdf48a
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67296148"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67848904"
 ---
 # <a name="streaming-endpoints"></a>ストリーミング エンドポイント 
 
@@ -55,19 +55,17 @@ SLA については、[価格と SLA](https://azure.microsoft.com/pricing/detail
 
 機能|Standard|Premium
 ---|---|---
-最初の 15 日間無料 <sup>1</sup>| はい |いいえ
 スループット |最大 600 Mbps であり、CDN を使用した場合に実効スループットが大幅に向上します。|ストリーミング ユニット (SU) あたり 200 Mbps。 CDN を使用した場合に実効スループットが大幅に向上します。
 CDN|Azure CDN、サード パーティ製 CDN、または CDN なし。|Azure CDN、サード パーティ製 CDN、または CDN なし。
 課金は日割り計算| 毎日|毎日
 動的な暗号化|はい|はい
 動的パッケージ|はい|はい
 スケール|対象スループットまで自動スケールアップ。|追加の SU
-IP フィルタリング/G20/カスタム ホスト  <sup>2</sup>|はい|はい
+IP フィルタリング/G20/カスタム ホスト  <sup>1</sup>|はい|はい
 プログレッシブ ダウンロード|はい|はい
 推奨使用量 |大半のストリーミング シナリオに推奨。|プロフェッショナルな使用量。
 
-<sup>1</sup> 無料試用版は、新しく作成したメディア サービス アカウントと既定のストリーミング エンドポイントにのみ適用されます。<br/>
-<sup>2</sup> エンドポイントで CDN が有効でない場合にのみ、ストリーミング エンドポイントで直接使用します。<br/>
+<sup>1</sup> エンドポイントで CDN が有効でない場合にのみ、ストリーミング エンドポイントで直接使用します。<br/>
 
 ## <a name="properties"></a>properties 
 

@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: 5da09d705246ffd5002a1a21daab2266525f579e
-ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
+ms.openlocfilehash: 3d478c2421066c8347622f9064c479bb8255b112
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2019
-ms.locfileid: "67357514"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621744"
 ---
 # <a name="scale-your-stream-analytics-job-with-azure-machine-learning-studio-functions"></a>Azure Machine Learning Studio 関数を使用した Stream Analytics ジョブのスケーリング
 
@@ -145,5 +145,5 @@ Stream Analytics の詳細については、以下を参照してください。
 
 * [Azure Stream Analytics の使用](stream-analytics-real-time-fraud-detection.md)
 * [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
-* [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)

@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 04/08/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: ecb7030fa3652525a36ce15d66ea6e5daf9c3296
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: b16fecd6db1f4bed319c832795a2252f8de96c6c
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67304220"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67607130"
 ---
 # <a name="extend-support-for-sql-server-2008-and-sql-server-2008-r2-with-azure"></a>Azure での SQL Server 2008 および SQL Server 2008 R2 のサポート延長
 
@@ -43,7 +43,7 @@ Marketplace からデプロイされたイメージには、SQL IaaS 拡張機�
 ## <a name="licensing"></a>ライセンス
 従量課金制の SQL Server 2008 R2 のデプロイは、[Azure ハイブリッド特典 (AHB)](https://azure.microsoft.com/pricing/hybrid-benefit/) に変換できます。
 
-ソフトウェア アシュアランス (SA) ベースのライセンスを従量課金制に変換する場合、お客様は SQL VM [リソース プロバイダー](virtual-machines-windows-sql-ahb.md#register-sql-server-vm-with-sql-resource-provider)に登録する必要があります。 SQL VM リソース プロバイダーに登録すると、SQL ライセンスの種類が AHB と従量課金制の間で交換可能になります。
+ソフトウェア アシュアランス (SA) ベースのライセンスを従量課金制に変換する場合、お客様は SQL VM [リソース プロバイダー](virtual-machines-windows-sql-register-with-resource-provider.md)に登録する必要があります。 SQL VM リソース プロバイダーに登録すると、SQL ライセンスの種類が AHB と従量課金制の間で交換可能になります。
 
 Azure VM に自分でインストールした SQL Server 2008 または SQL Server 2008 R2 のインスタンスは、SQL リソース プロバイダーに登録して、ライセンスの種類を従量課金制に変換することができます。
 
@@ -69,7 +69,7 @@ Azure VM 上の EOS SQL Server のディザスター リカバリー ソリュ�
 - **Azure Site Recovery**:Azure Site Recovery のレプリケーションによって、ゾーンとリージョン間で VM をレプリケートできます。 SQL Server には、障害の発生時に回復を保証するために、アプリ整合性スナップショットが必要です。 Azure Site Recovery は、EOS SQL Server の DR で最小 1 時間の RPO と、2 時間 + SQL Server の復旧時間の RTO を実現します。
 
 ## <a name="security-patching"></a>セキュリティ修正
-SQL Server VM の延長セキュリティ更新プログラムは、SQL Server VM が SQL [リソース プロバイダー](virtual-machines-windows-sql-ahb.md#register-sql-server-vm-with-sql-resource-provider)に登録された後、Microsoft Update チャンネルを通じて配信されます。 修正プログラムは、手動または自動的にダウンロードできます。
+SQL Server VM の延長セキュリティ更新プログラムは、SQL Server VM が SQL [リソース プロバイダー](virtual-machines-windows-sql-register-with-resource-provider.md)に登録された後、Microsoft Update チャンネルを通じて配信されます。 修正プログラムは、手動または自動的にダウンロードできます。
 
 **[自動修正]** は、既定で有効になります。 自動修正を有効にすると、Azure は SQL Server とオペレーティング システムに修正プログラムを自動的に適用します。 SQL IaaS 拡張機能がインストールされている場合は、メンテナンス期間の曜日、時刻、および期間を指定できます。 Azure は、修正プログラムの適用をこのメンテナンス ウィンドウで実行します。 メンテナンス ウィンドウのスケジュールでは、VM のロケールが時刻に使用されます。  詳細については、 [Azure Virtual Machines での SQL Server の自動修正](virtual-machines-windows-sql-automated-patching.md)に関するページを参照してください。
 

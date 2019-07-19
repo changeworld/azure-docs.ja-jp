@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 7dbb04a9d002fdcff49d28f69ee0975500bb7ed0
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: a07ac40ad3adda486b5216e83d683e00ec93265d
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67340784"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620784"
 ---
 # <a name="troubleshoot-azure-stream-analytics-outputs"></a>Azure Stream Analytics の出力のトラブルシューティング
 
@@ -79,7 +79,7 @@ Stream Analytics ジョブが開始されると、入力イベントが読み取
 
 ## <a name="key-violation-warning-with-azure-sql-database-output"></a>Azure SQL Database の出力でのキー違反の警告
 
-Azure SQL データベースを Stream Analytics ジョブへの出力として構成すると、宛先テーブルにレコードが一括挿入されます。 通常、Azure Stream Analytics では、出力シンクに対して[最低 1 回の配信]( https://msdn.microsoft.com/azure/stream-analytics/reference/event-delivery-guarantees-azure-stream-analytics)が保証されますが、SQL テーブルで一意制約が定義されている場合は、[厳密に 1 回だけの配信を保証]( https://blogs.msdn.microsoft.com/streamanalytics/2017/01/13/how-to-achieve-exactly-once-delivery-for-sql-output/)することもできます。 
+Azure SQL データベースを Stream Analytics ジョブへの出力として構成すると、宛先テーブルにレコードが一括挿入されます。 通常、Azure Stream Analytics では、出力シンクに対して[最低 1 回の配信](https://docs.microsoft.com/stream-analytics-query/event-delivery-guarantees-azure-stream-analytics)が保証されますが、SQL テーブルで一意制約が定義されている場合は、[厳密に 1 回だけの配信を保証]( https://blogs.msdn.microsoft.com/streamanalytics/2017/01/13/how-to-achieve-exactly-once-delivery-for-sql-output/)することもできます。 
 
 SQL テーブルに一意キー制約が設定された後に、SQL テーブルに挿入される重複したレコードがあると、Azure Stream Analytics によって重複したレコードは削除されます。 データはバッチに分割され、単一の重複レコードが見つかるでバッチの再帰的な挿入が行われます。 ストリーミング ジョブに多数の重複行が含まれる場合は、この分割と挿入の処理で重複を 1 つずつ無視する必要があり、効率が低下して時間がかかってしまいます。 過去 1 時間以内のアクティビティ ログにキー違反の警告メッセージが複数ある場合は、SQL 出力によってジョブ全体の速度が低下している可能性があります。 
 
@@ -104,5 +104,5 @@ IGNORE_DUP_KEY を構成する際には、一部のインデックスに関す�
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)
 * [Azure Stream Analytics の使用](stream-analytics-real-time-fraud-detection.md)
 * [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
-* [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)

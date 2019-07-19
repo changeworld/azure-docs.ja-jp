@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 134ab2a5f0b1b1569cdf4747f5bbe3f895ba4e8f
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 8487f82b123b42f9d6a6f0fbd6d6cbb240bf9fdc
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67293015"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67785517"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Azure AD のパスワード保護をデプロイする
 
@@ -44,7 +44,7 @@ ms.locfileid: "67293015"
    > ドメイン コントローラーにインターネットへの直接の送信接続があった場合でも、Azure AD パスワード保護のデプロイには、プロキシ サービスの展開が必須要件です。 
    >
 * Azure AD パスワード保護プロキシ サービスがインストールされるすべてのマシンには、.NET 4.7 をインストールしておく必要があります。
-  .NET 4.7 は、完全に更新された Windows Server には既にインストールされています。 そうでない場合には、「[The .NET Framework 4.7 offline installer for Windows (Windows 用 .NET Framework 4.7 オフライン インストーラー)](https://support.microsoft.com/en-us/help/3186497/the-net-framework-4-7-offline-installer-for-windows)」にあるインストーラーをダウンロードして実行してください。
+  .NET 4.7 は、完全に更新された Windows Server には既にインストールされています。 そうでない場合には、「[The .NET Framework 4.7 offline installer for Windows (Windows 用 .NET Framework 4.7 オフライン インストーラー)](https://support.microsoft.com/help/3186497/the-net-framework-4-7-offline-installer-for-windows)」にあるインストーラーをダウンロードして実行してください。
 * ドメイン コントローラーを含め、Azure AD パスワード保護コンポーネントがインストールされるすべてのマシンに、ユニバーサル C ランタイムがインストールされている必要があります。 Windows Update からすべての更新プログラムを確実に取得することでランタイムを入手できます。 または、OS 固有の更新プログラム パッケージで入手できます。 詳しくは、「[Update for Universal C Runtime in Windows (Windows のユニバーサル C ランタイムの更新プログラム)](https://support.microsoft.com/help/2999226/update-for-uniersal-c-runtime-in-windows)」をご覧ください。
 * 各ドメイン内の少なくとも 1 つのドメイン コントローラーと、パスワード保護用のプロキシ サービスをホストする少なくとも 1 つのサーバーとの間に、ネットワーク接続が存在する必要があります。 この接続では、ドメイン コントローラーがプロキシ サービス上の RPC エンドポイント マッパー ポート 135 および RPC サーバー ポートにアクセスできるようにする必要があります。 RPC サーバー ポートは、既定では動的 RPC ポートですが、[静的ポートを使用](#static)するように構成することができます。
 * プロキシ サービスをホストしているすべてのマシンに、次のエンドポイントへのネットワーク アクセスが必要です。

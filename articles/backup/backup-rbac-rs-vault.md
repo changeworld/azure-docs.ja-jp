@@ -2,18 +2,18 @@
 title: Azure のロールベースのアクセス制御を使用したバックアップの管理
 description: ロールベースのアクセス制御を使用して、Recovery Services コンテナーのバックアップ管理操作へのアクセスを管理します。
 services: backup
-author: trinadhk
+author: utraghuv
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
 ms.date: 06/24/2019
-ms.author: trinadhk
-ms.openlocfilehash: 6ca4de7dfb948f49ebf1c91e29cc0537e67a3c21
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.author: utraghuv
+ms.openlocfilehash: 3b4585422a36992241fb4839238b1f6aa46c659f
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67436199"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67565654"
 ---
 # <a name="use-role-based-access-control-to-manage-azure-backup-recovery-points"></a>ロール ベースのアクセス制御を使用した Azure Backup の回復ポイントの管理
 Azure のロールベースのアクセス制御 (RBAC) では、Azure のアクセス権の詳細な管理を実現します。 RBAC を使用して、チーム内で職務を分離し、職務に必要なアクセス許可のみをユーザーに付与します。

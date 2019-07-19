@@ -4,7 +4,7 @@ description: cloud-init でデプロイするために既存の Azure VM イメ�
 services: virtual-machines-linux
 documentationcenter: ''
 author: danis
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
@@ -14,12 +14,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 06/24/2019
 ms.author: danis
-ms.openlocfilehash: a64fb40c905fbe98dc594ab3626666723d1628d0
-ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
+ms.openlocfilehash: 1f9f6042b52c722280a8227754960ffb270e94b8
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2019
-ms.locfileid: "67357263"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67668247"
 ---
 # <a name="prepare-an-existing-linux-azure-vm-image-for-use-with-cloud-init"></a>cloud-init で使用するための既存の Linux Azure VM イメージの準備
 この記事では、cloud-init を使用するように既存の Azure 仮想マシンを再デプロイおよび準備する方法を示します。 生成されるイメージを使用して、新しい仮想マシンまたは仮想マシン スケール セットをデプロイできます。そのどちらも、デプロイ時に cloud-init によってさらにカスタマイズできます。  これらの cloud-init スクリプトは、リソースが Azure によってプロビジョニングされた後の最初の起動時に実行されます。 cloud-init が Azure およびサポートされている Linux ディストリビューションでネイティブに動作する方法の詳細については、[cloud-init の概要](using-cloud-init.md)に関するページをご覧ください

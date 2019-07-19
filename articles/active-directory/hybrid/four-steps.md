@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/20/2019
 ms.subservice: hybrid
-ms.author: martincoetzer
+ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 96b5e8ab63c1784ff073c7ba38cd4a6319db43c5
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: a20a1a1009949aa2e6de8586040e918ae15c8d39
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67454254"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67655942"
 ---
 # <a name="four-steps-to-a-strong-identity-foundation-with-azure-active-directory"></a>Azure Active Directory を使って強固な ID 基盤を構築するための 4 つのステップ
 
@@ -147,7 +147,7 @@ MFA の[サインイン レポート](https://docs.microsoft.com/azure/active-di
 
 ### <a name="self-service-app-management"></a>セルフサービス アプリの管理
 
-ユーザーがアクセス パネルからアプリケーションを自己検出できるようにする前に、ユーザーによる自己検出およびアクセス権の要求を許可するアプリケーションに対して、[アプリケーションのセルフ サービス アクセス](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-manage-self-service-access)を有効にする必要があります。 アプリケーションのセルフ サービス アクセスは、ユーザーにアプリケーションの自己検出を許可したり、必要に応じてビジネス グループによるこれらのアプリケーションへのアクセス承認を許可したりする場合に優れた方法です。 ユーザーに割り当てられた[パスワード シングル サインオン アプリケーション](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-problem-password-sso-gallery#configure-the-application-for-password-single-sign-on)の資格情報をビジネス グループがアクセス パネルから直接管理できるように許可できます。
+ユーザーがアクセス パネルからアプリケーションを自己検出できるようにする前に、ユーザーによる自己検出およびアクセス権の要求を許可するアプリケーションに対して、[アプリケーションのセルフ サービス アクセス](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-manage-self-service-access)を有効にする必要があります。 アプリケーションのセルフ サービス アクセスは、ユーザーにアプリケーションの自己検出を許可したり、必要に応じてビジネス グループによるこれらのアプリケーションへのアクセス承認を許可したりする場合に優れた方法です。 ユーザーに割り当てられた[パスワード シングル サインオン アプリケーション](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-problem-password-sso-gallery#configure-password-sso-for-an-azure-ad-gallery-app)の資格情報をビジネス グループがアクセス パネルから直接管理できるように許可できます。
 
 ### <a name="self-service-group-management"></a>セルフサービスのグループ管理
 

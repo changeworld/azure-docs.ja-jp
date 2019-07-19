@@ -10,13 +10,14 @@ ms.service: azure-functions
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 05/28/2019
-ms.author: jehollan, cshoe
-ms.openlocfilehash: 781bcdc158cb362b7c46e1ba9771b6a92ebc56a8
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.author: cshoe
+ms.reviewer: jehollan
+ms.openlocfilehash: 1ebb2fd77830074648a580dddad98e05e10c9c75
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67479612"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67850019"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>.NET Azure Functions で依存関係の挿入を使用する
 

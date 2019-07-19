@@ -7,13 +7,13 @@ manager: nuno costa
 ms.service: marketplace
 ms.topic: article
 ms.date: 10/29/2018
-ms.author: yijenj
-ms.openlocfilehash: d266b314f19979578b7e7b8de4e7a7090200c9d2
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.author: pabutler
+ms.openlocfilehash: c58a36988e3aee9b122446e3ee3c4878a582b8ad
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67445455"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67871024"
 ---
 # <a name="commercial-marketplace-transaction-capabilities-and-considerations"></a>商用マーケットプレース トランザクションの機能と考慮事項
 

@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 5b2c153646021aeb8ee0dbb787cfce41af19568d
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 4b250a5e14ab37553d93453d05f8ff388bf1ba84
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443668"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620524"
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>Stream Analytics を使って IoT ソリューションを構築する
 
@@ -164,7 +164,7 @@ Azure クレジットを最適に利用できるよう、この記事の最後�
 
    このクエリの意図は、料金所ブースに入る車両の台数をカウントする必要があると言い換えることができます。 高速道路の料金所ブースには車両が次々と入ってくるため、これらの入り口イベントは、止まることがない流れに似ています。 この流れを定量化するには、測定する "期間" を定義する必要があります。 質問を "3 分間で料金所ブースに入る車両は何台あるか" に絞り込んでみましょう。 これを一般に "タンブリング カウント" といいます。
 
-   ご覧のとおり、Azure Stream Analytics には SQL に似たクエリ言語が使用されており、さらに、時間に関連したクエリ要素を指定するための拡張機能がいくつか追加されています。  詳細については、クエリで使われる[時間管理](https://msdn.microsoft.com/library/azure/mt582045.aspx)と[時間枠](https://msdn.microsoft.com/library/azure/dn835019.aspx)コンストラクトをご覧ください。
+   ご覧のとおり、Azure Stream Analytics には SQL に似たクエリ言語が使用されており、さらに、時間に関連したクエリ要素を指定するための拡張機能がいくつか追加されています。  詳細については、クエリで使われる[時間管理](https://docs.microsoft.com/stream-analytics-query/time-management-azure-stream-analytics)と[時間枠](https://docs.microsoft.com/stream-analytics-query/windowing-azure-stream-analytics)コンストラクトをご覧ください。
 
 3. TollApp サンプル ジョブの入力を調べます。 現在のクエリでは、EntryStream 入力だけが使用されています。
    - **EntryStream** 入力は、車両が高速道路の料金所ブースに入ったことを表すデータをキュー処理する Event Hub 接続です。 このイベントは、サンプルの一部である Web アプリによって作成され、そのデータが Event Hub でキュー処理されます。 この入力がストリーミング クエリの FROM 句でクエリ処理されることに注意してください。

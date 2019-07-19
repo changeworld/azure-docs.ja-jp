@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c476c2b326045db37c54a358d68f4b5f8bbaed9a
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: abb050eb527e65b4fd31f3251d37fef7d51e867e
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509590"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67655977"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>方法:Hybrid Azure Active Directory 参加の実装を計画する
 
@@ -87,7 +87,7 @@ Hybrid Azure AD 参加は、FIPS に準拠している TPM ではサポートさ
 
 仮想マシン (VM) のスナップショットを利用して追加の VM を作成する場合は、そのスナップショットが、既にハイブリッド Azure AD 参加として Azure AD に登録されている VM からのものではないことを確認します。
 
-Windows 10 ドメイン参加済みデバイスが既にテナントへの [Azure AD 登録済み](https://docs.microsoft.com/azure/active-directory/devices/overview#azure-ad-registered-devices)である場合、Hybrid Azure AD 参加を有効にする前に、その状態の削除を検討することを強くお勧めします。 Windows 10 1809 リリース以降では、この二重状態を回避するために次の変更が行われています。
+Windows 10 ドメイン参加済みデバイスが既にテナントへの [Azure AD 登録済み](https://docs.microsoft.com/azure/active-directory/devices/overview#getting-devices-in-azure-ad)である場合、Hybrid Azure AD 参加を有効にする前に、その状態の削除を検討することを強くお勧めします。 Windows 10 1809 リリース以降では、この二重状態を回避するために次の変更が行われています。
 
 - デバイスが Hybrid Azure AD 参加済みになった後、既存の Azure AD 登録済み状態は自動的に削除されます。
 - レジストリ キー HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin, "BlockAADWorkplaceJoin"=dword:00000001 を追加することで、ドメイン参加済みデバイスが Azure AD 登録済みになることを防ぐことができます。

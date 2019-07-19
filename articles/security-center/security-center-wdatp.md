@@ -12,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/27/2018
-ms.author: monhaber
-ms.openlocfilehash: 1737856067b2490db4a993b4383b320cb13a7774
-ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
+ms.author: v-mohabe
+ms.openlocfilehash: 87f5a14bcd6003ad81b663ed97e5349dcbff2a30
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67551762"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68296529"
 ---
 # <a name="windows-defender-advanced-threat-protection-with-azure-security-center"></a>Windows Defender Advanced Threat Protection と Azure Security Center
 

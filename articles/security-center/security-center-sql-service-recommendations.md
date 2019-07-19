@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/19/2019
-ms.author: monhaber
-ms.openlocfilehash: 2ac0e4ebaafb8b0c9c79e885cecbefc5a65c1823
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.author: v-mohabe
+ms.openlocfilehash: 9e48114d0d4159d40006710f9c8194dea0d775f8
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67275243"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68295631"
 ---
 # <a name="protect-azure-data-and-storage-services-in-azure-security-center"></a>Azure Security Center で Azure データと記憶域サービスを保護する
 このトピックでは、データと記憶域リソースのセキュリティに関する推奨事項を表示および実装する方法を示します。 Azure Security Center は、Azure リソースのセキュリティ状態を分析する際に、セキュリティに関する推奨事項を検出します。

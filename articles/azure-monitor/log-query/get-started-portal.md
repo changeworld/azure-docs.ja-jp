@@ -8,12 +8,12 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.date: 08/20/2018
 ms.author: bwren
-ms.openlocfilehash: 17b5c0b459e70909d9f305beb8bf87b83f1cf65c
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 2e2d13e6923535a8993a6477cbbfb921f6092d66
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67296515"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67565603"
 ---
 # <a name="get-started-with-log-analytics-in-azure-monitor"></a>Azure Monitor で Log Analytics の使用を開始する
 
@@ -55,7 +55,7 @@ Event | search "error"
 
 このクエリは、_Event_ テーブルの任意のプロパティに _error_ という用語が含まれるレコードを検索します。
 
-クエリは、テーブル名または [search](/kusto/query/searchoperator) コマンドから始めることができます。 上の例は、テーブル名 _Event_ で始まり、Event テーブルのすべてのレコードが取得されます。 複数のコマンドは、パイプ (|) 文字で区切ります。そのため、最初のコマンドの出力は次のコマンドの入力になります。 1 つのクエリに任意の数のコマンドを追加できます。
+クエリは、テーブル名または [search](/azure/kusto/query/searchoperator) コマンドから始めることができます。 上の例は、テーブル名 _Event_ で始まり、Event テーブルのすべてのレコードが取得されます。 複数のコマンドは、パイプ (|) 文字で区切ります。そのため、最初のコマンドの出力は次のコマンドの入力になります。 1 つのクエリに任意の数のコマンドを追加できます。
 
 同じクエリは、次のように記述することもできます。
 

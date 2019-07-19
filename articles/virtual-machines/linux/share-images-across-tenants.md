@@ -3,19 +3,19 @@ title: Azure のテナント間でギャラリー イメージを共有する |M
 description: 共有イメージ ギャラリーを使用して、Azure テナント間で VM イメージを共有する方法について説明します。
 services: virtual-machines-linux
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 04/05/2019
 ms.author: cynthn
-ms.openlocfilehash: 88596a4bda3c9ebae99403e95b3539f068cad665
-ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
+ms.openlocfilehash: cbf42de406ecb0caed67b77743f376284ab64608
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67465472"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706550"
 ---
 # <a name="share-gallery-vm-images-across-azure-tenants"></a>Azure テナント間でギャラリー VM イメージを共有する
 

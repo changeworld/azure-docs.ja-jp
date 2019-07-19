@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.author: minxia
-author: mx-iao
+ms.author: maxluk
+author: maxluk
 ms.date: 06/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: a13afe56e007e2371b3193003ee95266b0750569
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: 67263df319063cdf21dadea257dcab05ba0d5f7b
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67543788"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839994"
 ---
 # <a name="train-and-register-tensorflow-models-at-scale-with-azure-machine-learning-service"></a>Azure Machine Learning service を使用して TensorFlow モデルを大規模にトレーニングおよび登録する
 

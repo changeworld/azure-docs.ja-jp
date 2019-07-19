@@ -7,12 +7,12 @@ ms.date: 04/01/2019
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: 9accdc19062cba7bb313afac3da056798c325a4c
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: d04f46dbc60a7242e44d76915e15281cc6248d20
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67274420"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67786545"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>大規模な Azure リソース データ セットの処理
 
@@ -82,7 +82,7 @@ Search-AzGraph -Query "project id, name | order by id asc" -First 1000 -Skip 300
 > [!IMPORTANT]
 > 改ページ位置の自動修正が機能するためには、**id** フィールドをクエリに**反映する**必要があります。 それがクエリにないと、応答には **$skipToken** が含まれません。
 
-例については、REST API のドキュメントの「[Next page query (次のページのクエリ)](/rest/api/azureresourcegraph/resources/resources#next_page_query)」をご覧ください。
+例については、REST API のドキュメントの「[Next page query (次のページのクエリ)](/rest/api/azureresourcegraph/resources/resources#next-page-query)」をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -9,13 +9,14 @@ ms.service: azure-functions
 ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 04/22/2019
-ms.author: tyleonha, glenga
-ms.openlocfilehash: 489c94f37b6c88db001dee437cc6ed89383e6053
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.author: tyleonha
+ms.reviewer: glenga
+ms.openlocfilehash: a75bdaf0e26193a5b2792b52923c085eff89b83f
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442176"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706394"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Functions の PowerShell 開発者向けガイド
 
@@ -133,7 +134,7 @@ Produce-MyOutputValue | Push-OutputBinding -Name myQueue
 
 `Push-OutputBinding` の呼び出しに使用できる有効なパラメーターを次に示します。
 
-| Name | Type | 位置 | 説明 |
+| EnableAdfsAuthentication | Type | 位置 | 説明 |
 | ---- | ---- |  -------- | ----------- |
 | **`-Name`** | string | 1 | 設定する出力バインディングの名前。 |
 | **`-Value`** | Object | 2 | 設定する出力バインディングの値。パイプライン ByValue から受け取ります。 |
@@ -242,7 +243,7 @@ PowerShell 関数におけるログは、通常の PowerShell のログと同様
 | ------------- | -------------- |
 | Error | **`Write-Error`** |
 | 警告 | **`Write-Warning`**  | 
-| 情報 | **`Write-Information`** <br/> **`Write-Host`** <br /> **`Write-Output`**      | 情報 | "_情報_" レベル ログへの書き込み |
+| Information | **`Write-Information`** <br/> **`Write-Host`** <br /> **`Write-Output`**      | Information | "_情報_" レベル ログへの書き込み |
 | デバッグ | **`Write-Debug`** |
 | Trace | **`Write-Progress`** <br /> **`Write-Verbose`** |
 

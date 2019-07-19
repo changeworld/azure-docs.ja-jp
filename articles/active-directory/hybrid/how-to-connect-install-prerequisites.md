@@ -16,12 +16,12 @@ ms.date: 05/08/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f2916c9aba7d404ff4ad380d249bd507fadf71ea
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.openlocfilehash: b0392a40ef948d96e613da9127629f52b02deb97
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67310077"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67655815"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Azure AD Connect の前提条件
 このトピックでは、Azure AD Connect を使用するための前提条件とハードウェア要件について説明します。
@@ -49,7 +49,7 @@ Azure AD Connect をインストールする前に、いくつか必要な項目
 
 ### <a name="azure-ad-connect-server"></a>Azure AD Connect サーバー
 >[!IMPORTANT]
->Azure AD Connect サーバーは、重要な ID データを格納するため、[Active Directory 管理階層モデル](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#ADATM_BM)の説明に従い、階層 0 のコンポーネントとして取り扱う必要があります。
+>Azure AD Connect サーバーは、重要な ID データを格納するため、[Active Directory 管理階層モデル](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)の説明に従い、階層 0 のコンポーネントとして取り扱う必要があります。
 
 * Small Business Server または 2019 より前の Windows Server Essentials には、Azure AD Connect をインストールできません (Windows Server Essentials 2019 はサポートされます)。 サーバーは Windows Server Standard 以上を使用する必要があります。
 * Azure AD Connect をドメイン コントローラーにインストールすることはお勧めできません。これは、セキュリティの慣例上の理由に加え、設定に通常よりも厳しい制限があるために、Azure AD Connect を正しくインストールできないためです。

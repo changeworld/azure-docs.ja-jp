@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: larryfr
 author: Blackmist
-ms.date: 04/16/2019
+ms.date: 07/16/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 4e0af3b395ec640fd037a1e76365408c10613340
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 0e78d9cfce59615a53534fe9815205e39f64853d
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67477010"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67868834"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning-service"></a>Azure Resource Manager テンプレートを使用して Azure Machine Learning service のワークスペースを作成します。
 

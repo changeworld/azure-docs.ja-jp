@@ -8,12 +8,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: 26e8e004f917b1c138bc27389cac1cc52672f3d4
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 0fd489d856a16953a5a450a347c9737fe440ad28
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67329868"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621770"
 ---
 # <a name="set-up-alerts-for-azure-stream-analytics-jobs"></a>Azure Stream Analytics ジョブのアラートを設定する
 
@@ -75,6 +75,6 @@ Azure Portal でのアラートの構成の詳細については、「[アラー
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)
 * [Azure Stream Analytics の使用](stream-analytics-get-started.md)
 * [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
-* [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 

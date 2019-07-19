@@ -3,7 +3,6 @@ title: Azure SQL Database Managed Instance の削除後にサブネットを削�
 description: Azure SQL Database Managed Instance の削除後に Azure 仮想ネットワークを削除する方法について説明します。
 services: sql-database
 ms.service: sql-database
-ms.subservice: management
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +11,12 @@ ms.author: danil
 ms.reviewer: douglas, carlrab, sstein
 manager: craigg
 ms.date: 06/26/2019
-ms.openlocfilehash: 4679ecda210fa78aad4315bc6602b67dd1795ce9
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: ead7ea91e172f608c5364e4d5164d2a71dbf2f5f
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67427969"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68297622"
 ---
 # <a name="delete-a-subnet-after-deleting-an-azure-sql-database-managed-instance"></a>Azure SQL Database Managed Instance の削除後にサブネットを削除する
 

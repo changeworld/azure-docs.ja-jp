@@ -9,14 +9,14 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9c003ebaed645fcdefb379eb100220ccc2207d82
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 0d9019a6b4a32066480a70f72562bc5a7a9a1e8b
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67202977"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797647"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Python で自動 ML の実験を構成する
 
@@ -40,7 +40,7 @@ ms.locfileid: "67202977"
 
 実験を始める前に、解決する機械学習の問題の種類を決める必要があります。 自動機械学習でサポートされるタスクの種類は、分類、回帰、予測です。
 
-自動機械学習では、自動化とチューニングのプロセス中に次のアルゴリズムがサポートされています。 ユーザーは、アルゴリズムを指定する必要はありません。 DNN アルゴリズムはトレーニング中に使用できますが、自動 ML は DNN モデルをビルドしません。
+自動機械学習では、自動化とチューニングのプロセス中に次のアルゴリズムがサポートされています。 ユーザーは、アルゴリズムを指定する必要はありません。 
 
 分類 | 回帰 | 時系列予測
 |-- |-- |--

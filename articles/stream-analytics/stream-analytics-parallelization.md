@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/07/2018
-ms.openlocfilehash: 4fd862c2442d2637d799a1f690d5f0a091c80562
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 5eba5601a50640261fa1b488d959f606d4514737
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67449193"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612214"
 ---
 # <a name="leverage-query-parallelization-in-azure-stream-analytics"></a>Azure Stream Analytics でのクエリの並列処理の活用
 この記事では、Azure Stream Analytics で並列処理を活用する方法を示します。 入力パーティションの構成と分析クエリ定義のチューニングによって Stream Analytics ジョブをスケールする方法について説明します。
@@ -303,7 +303,7 @@ Stream Analytics から出力される [Cosmos DB](https://github.com/Azure-Samp
 
 ### <a name="identifying-bottlenecks"></a>ボトルネックの特定
 
-Azure Stream Analytics ジョブの [メトリックス] ウィンドウを使用して、パイプラインのボトルネックを特定します。 スループットについての **[Input/Output Events]\(入出力イベント\)** および [[透かしの遅延]](https://azure.microsoft.com/blog/new-metric-in-azure-stream-analytics-tracks-latency-of-your-streaming-pipeline/) または **[Backlogged Events]\(バックログされたイベント\)** を確認して、ジョブが入力速度に対応しているかどうかを確認します。 イベント ハブのメトリックスについては、 **[Throttled Requests]\(スロットルされた要求数\)** を検索し、必要に応じてしきい値ユニットを調整します。 Cosmos DB メトリックスについては、スループットの下の **[パーティション キーの範囲ごとの使用された最大 RU/秒]** を確認して、パーティション キーの範囲が均一に消費されていることを確認します。 Azure SQL DB については、 **[ログ IO]** および **[CPU]** を監視します。
+Azure Stream Analytics ジョブの [メトリックス] ウィンドウを使用して、パイプラインのボトルネックを特定します。 スループットについての **[Input/Output Events]\(入出力イベント\)** および [[透かしの遅延]](https://azure.microsoft.com/blog/new-metric-in-azure-stream-analytics-tracks-latency-of-your-streaming-pipeline/) または **[Backlogged Events]\(バックログされたイベント\)** を確認して、ジョブが入力速度に対応しているかどうかを確認します。 イベント ハブのメトリックスについては、 **[Throttled Requests] (スロットルされた要求数)** を検索し、必要に応じてしきい値ユニットを調整します。 Cosmos DB メトリックスについては、スループットの下の **[パーティション キーの範囲ごとの使用された最大 RU/秒]** を確認して、パーティション キーの範囲が均一に消費されていることを確認します。 Azure SQL DB については、 **[ログ IO]** および **[CPU]** を監視します。
 
 ## <a name="get-help"></a>問い合わせ
 
@@ -312,7 +312,7 @@ Azure Stream Analytics ジョブの [メトリックス] ウィンドウを使�
 ## <a name="next-steps"></a>次のステップ
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)
 * [Azure Stream Analytics の使用](stream-analytics-real-time-fraud-detection.md)
-* [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
 <!--Image references-->

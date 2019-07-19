@@ -6,13 +6,13 @@ author: keithcharlie
 ms.service: marketplace
 ms.topic: article
 ms.date: 07/09/2018
-ms.author: keithcharlie
-ms.openlocfilehash: d2b44b89443b5e7e82d303e1447533546d27ec9a
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.author: kevidal
+ms.openlocfilehash: 92c3452e07dee126666e6ee1fe0c46b1f8f6dfa4
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67445743"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876529"
 ---
 # <a name="saas-applications-offer-publishing-guide"></a>SaaS アプリケーションのオファー発行ガイド
 

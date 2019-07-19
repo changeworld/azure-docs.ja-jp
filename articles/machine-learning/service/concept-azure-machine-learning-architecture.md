@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: larryfr
 author: Blackmist
-ms.date: 04/15/2019
+ms.date: 07/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2196e375db582202997b838d05c902db95b3a3ad
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: 887c27c765855424dbfb9a77f0b452da0f5de647
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67461487"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67868863"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Azure Machine Learning service のしくみ:アーキテクチャと概念
 

@@ -8,16 +8,16 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
-ms.author: sahsan
+ms.author: sstein
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 06/03/2019
-ms.openlocfilehash: 6a4d3fd0f7b670bbb0b01385252b405829a91baa
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: dc82ace4c5bf1204075bfa5e34d0b1489a3acb98
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442313"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876268"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-an-azure-sql-database"></a>トランザクション上一貫性のある Azure SQL データベースのコピーを作成する
 

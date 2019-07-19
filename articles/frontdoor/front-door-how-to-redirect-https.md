@@ -3,16 +3,16 @@ title: Azure portal を使用して HTTP から HTTPS にリダイレクトす�
 description: Azure portal を使用して、HTTP から HTTPS にトラフィックがリダイレクトされる Front Door を作成する方法について説明します。
 services: front-door
 author: sharad4u
-ms.service: front-door
+ms.service: frontdoor
 ms.topic: article
 ms.date: 5/21/2019
 ms.author: sharadag
-ms.openlocfilehash: a07b19c49630cc925e719aaa1d46476a1edc58f5
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 7fabc1e3445d3dbd357700ffde3caeb985cc60c4
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67332211"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67601967"
 ---
 # <a name="create-a-front-door-with-http-to-https-redirection-using-the-azure-portal"></a>Azure portal を使用して HTTP から HTTPS にリダイレクトする Front Door を作成する
 
@@ -84,7 +84,7 @@ CNAME を追加した後の DNS レコード ページは次の例のように�
 
 ![[カスタム ドメイン] メニュー](./media/front-door-url-redirect/front-door-add-custom-domain.png)
 
-### <a name="enable-https-on-your-custom-domain"></a>カスタム ドメインで HTTPS を有効化する
+### <a name="enable-https-on-your-custom-domain"></a>カスタム ドメインで HTTPS を有効にする
 
 1. 追加されたカスタム ドメインをクリックし、 **[カスタム ドメイン HTTPS]** セクションで、状態を **[有効]** に変更します。
 2. Front Door によって維持、管理、およびオートローテーションされる無料の証明書については、 **[証明書の管理の種類]** を _[Front Door managed]/(Front Door による管理/)_ のままにすることができます。 また、Azure Key Vault に格納されている独自のカスタム SSL 証明を使用することもできます。 このチュートリアルでは、Front Door によって管理される証明書を使用することを前提としています。

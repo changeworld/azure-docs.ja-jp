@@ -7,13 +7,13 @@ manager: pabutler
 ms.service: marketplace
 ms.topic: article
 ms.date: 11/13/2018
-ms.author: qianw211
-ms.openlocfilehash: 7a6a4c1366f23336072e00d1af59bbaa4bd5c7a4
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.author: pabutler
+ms.openlocfilehash: 4864e2c040ad6771ad187269de43d5978fc6324f
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442066"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876054"
 ---
 # <a name="publishing-guide-by-offer-type"></a>プランの種類別の公開ガイド
 

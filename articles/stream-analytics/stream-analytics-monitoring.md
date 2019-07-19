@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 6/21/2018
 ms.custom: seodec18
-ms.openlocfilehash: 54ff94cad3034e3679e57e5596ca13f3430cbbb3
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: a4fc6db300a24d483e88efe668645d2cdb62496b
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67340557"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612276"
 ---
 # <a name="understand-stream-analytics-job-monitoring-and-how-to-monitor-queries"></a>Stream Analytics ジョブ監視とクエリの監視方法の概要
 
@@ -66,5 +66,5 @@ Azure portal は、クエリとジョブ パフォーマンスの監視とトラ
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)
 * [Azure Stream Analytics の使用](stream-analytics-real-time-fraud-detection.md)
 * [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
-* [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)

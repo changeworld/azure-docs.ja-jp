@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: a91d0f75b7e27065bd2ee0ea430a859d265afacb
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 2eae81f357904bd5034d7409ef42b681d1085930
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67332048"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67695218"
 ---
 # <a name="vpn-gateways-overview"></a>VPN ゲートウェイの概要
 
@@ -43,8 +43,6 @@ VPN ゲートウェイでは、プライベート クラウド上のオンプレ
 > TCP MSS は 1,078 バイト以下で固定する必要があります。 お使いの VPN デバイスで MSS クランプがサポートされていない場合は、別の方法として、トンネル インターフェイスの MTU を 1,118 バイトに設定することができます。 
 
 ### <a name="cryptographic-parameters"></a>暗号化パラメーター
-
-サイト間 VPN 接続では、セキュリティで保護された接続を確立するために、次の既定の暗号化パラメーターを使用します。  オンプレミス VPN デバイスからの接続を作成するときには、パラメーターが一致している必要があります。
 
 サイト間 VPN 接続では、セキュリティで保護された接続を確立するために、次の既定の暗号化パラメーターを使用します。  オンプレミス VPN デバイスからの接続を作成する場合は、オンプレミス VPN ゲートウェイでサポートされている次のパラメーターのいずれかを使用します。
 

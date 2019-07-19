@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: mbullwin
-ms.openlocfilehash: 3c0c670cf9d6ea9ff8ada292777211c69b3edb2a
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: a233299b86100c7e43291ffb6448d576ef6072f0
+ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67445902"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68302562"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>Azure Application Insights での依存関係の追跡 
 
@@ -33,7 +33,7 @@ ms.locfileid: "67445902"
 |---------------|-------|
 |Http/Https | ローカルまたはリモートの http/https 呼び出し |
 |WCF 呼び出し| Http ベースのバインディングを使用する場合にのみ自動追跡されます。|
-|SQL | `SqlClient` で行われる呼び出し。 SQL クエリのキャプチャについては[こちら](##advanced-sql-tracking-to-get-full-sql-query)を参照してください。  |
+|SQL | `SqlClient` で行われる呼び出し。 SQL クエリのキャプチャについては[こちら](#advanced-sql-tracking-to-get-full-sql-query)を参照してください。  |
 |[Azure Storage (BLOB、テーブル、キュー)](https://www.nuget.org/packages/WindowsAzure.Storage/) | Azure Storage Client で行われる呼び出し。 |
 |[EventHub Client SDK](https://www.nuget.org/packages/Microsoft.Azure.EventHubs) | バージョン 1.1.0 以上。 |
 |[ServiceBus Client SDK](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus)| バージョン 3.0.0 以上。 |
@@ -104,7 +104,7 @@ ASP.NET アプリケーションの場合、インストルメンテーション
 | --- | --- |
 | Azure Web アプリ |Web アプリのコントロール パネルで [Application Insights ブレードを開き](../../azure-monitor/app/azure-web-apps.md)、SQL コマンドを .NET |
 | IIS Server (Azure VM やオンプレミスなど) の下で有効にします。 | [アプリケーションが実行されているサーバーに Status Monitor をインストールし](../../azure-monitor/app/monitor-performance-live-website-now.md)、IIS を再起動します。
-| Azure Cloud Services | [StatusMonitor をインストールするスタートアップ タスク](../../azure-monitor/app/cloudservices.md#set-up-status-monitor-to-collect-full-sql-queries-optional)を追加します <br> ビルド時に [ASP.NET](https://docs.microsoft.com/azure/azure-monitor/app/asp-net) または [ASP.NET Core アプリケーション](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core.)用の NuGet パッケージをインストールすることで、アプリを ApplicationInsights SDK にオンボードする必要があります。 |
+| Azure Cloud Services | [StatusMonitor をインストールするスタートアップ タスク](../../azure-monitor/app/cloudservices.md#set-up-status-monitor-to-collect-full-sql-queries-optional)を追加します <br> ビルド時に [ASP.NET](https://docs.microsoft.com/azure/azure-monitor/app/asp-net) または [ASP.NET Core アプリケーション](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)用の NuGet パッケージをインストールすることで、アプリを ApplicationInsights SDK にオンボードする必要があります。 |
 | IIS Express | サポートされていません
 
 上記の例では、インストルメンテーション エンジンが正しくインストールされていることを検証する適切な方法は、収集された `DependencyTelemetry` の SDK バージョンが "rddp" であることを確認することです。 "rdddsd" または "rddf" は、DiagnosticSource または EventSource コールバックを介して依存関係が収集されること、そのため、完全な SQL クエリはキャプチャされないことを示します。

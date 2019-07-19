@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c43498a7829a43fad331841aca045f52ae680be
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 54a99d001f8cb59af3042ce8b6849a2cd9480e99
+ms.sourcegitcommit: 0ebc62257be0ab52f524235f8d8ef3353fdaf89e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67481465"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67723996"
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>アプリケーション プロキシと PingAccess を使用したシングル サインオン用のヘッダーベースの認証
 
@@ -53,10 +53,11 @@ PingAccess for Azure AD を使用すると、認証にヘッダーを使用す�
 アプリケーション プロキシ コネクタは、遠隔にいる従業員からのトラフィックを発行済みアプリケーションに誘導する Windows Server サービスです。 インストール手順の詳細については、[チュートリアル: Azure Active Directory のアプリケーション プロキシを使用してリモート アクセスするためのオンプレミス アプリケーションを追加する](application-proxy-add-on-premises-application.md)を参照してください。
 
 1. アプリケーション管理者として [Azure Active Directory ポータル](https://aad.portal.azure.com/)にサインインします。 **Azure Active Directory 管理センター**のページが表示されます。
-2. **[Azure Active Directory]**  >  **[アプリケーション プロキシ]**  >  **[コネクタ サービスのダウンロード]** の順に選択します。 **[アプリケーション プロキシ コネクタのダウンロード]** ページが表示されます。
+1. **[Azure Active Directory]**  >  **[アプリケーション プロキシ]**  >  **[コネクタ サービスのダウンロード]** の順に選択します。 **[アプリケーション プロキシ コネクタのダウンロード]** ページが表示されます。
 
    ![アプリケーション プロキシ コネクタのダウンロード](./media/application-proxy-configure-single-sign-on-with-ping-access/application-proxy-connector-download.png)
-3. 画面の指示に従ってインストールしてください。
+
+1. 画面の指示に従ってインストールしてください。
 
 通常、コネクタをダウンロードすれば、ディレクトリに対してアプリケーション プロキシが自動的に有効になります。有効にならなかった場合は、 **[アプリケーション プロキシの有効化]** を選択してください。
 
@@ -205,7 +206,7 @@ PingAccess が消費する access_token に、メール アドレスを含める
 
 ### <a name="use-of-claims-mapping-policy-optional"></a>要求のマッピング ポリシーの使用 (省略可能)
 
-AzureAD に存在しない属性に対する[要求のマッピング ポリシー (プレビュー)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-claims-mapping#claims-mapping-policy-properties/)。 要求のマッピングでは、ADFS またはユーザー オブジェクトでサポートされるカスタム要求を追加することにより、古いオンプレミス アプリをクラウドに移行できます
+AzureAD に存在しない属性に対する[要求のマッピング ポリシー (プレビュー)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-claims-mapping#claims-mapping-policy-properties)。 要求のマッピングでは、ADFS またはユーザー オブジェクトでサポートされるカスタム要求を追加することにより、古いオンプレミス アプリをクラウドに移行できます
 
 アプリケーションからカスタム要求を使用し、追加のフィールドを含めるには、[カスタム要求のマップ ポリシーも作成し、そのポリシーをアプリケーションに割り当てる](../develop/active-directory-claims-mapping.md#claims-mapping-policy-assignment)必要があります。
 

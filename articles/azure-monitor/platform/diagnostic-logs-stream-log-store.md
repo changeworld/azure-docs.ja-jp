@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: 13eb1a8fcea2f74cda5921a51b8c2e8816be975f
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: e8e6276a38f06b5c6ebb24c89f3733b9fd7220f7
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67303713"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612841"
 ---
 # <a name="stream-azure-diagnostic-logs-to-log-analytics-workspace-in-azure-monitor"></a>Azure Monitor の Log Analytics ワークスペースに Azure 診断ログをストリーミングする
 
@@ -98,6 +98,30 @@ az monitor diagnostic-settings create --name <diagnostic name> \
 ## <a name="how-do-i-query-the-data-from-a-log-analytics-workspace"></a>Log Analytics ワークスペースのデータのクエリを実行する方法
 
 Azure Monitor ポータルの [ログ] ブレードでは、AzureDiagnostics テーブルでの Log Management ソリューションの一部として診断ログのクエリを実行することができます。 他にも、[Azure リソース向けの監視ソリューションがいくつか](../../azure-monitor/insights/solutions.md)存在します。それをインストールすることで、Azure Monitor に送信されているログ データからすぐに分析情報を得ることができます。
+
+### <a name="examples"></a>例
+
+```Kusto
+// Resources that collect diagnostic logs into this Log Analytics workspace, using Diagnostic Settings
+AzureDiagnostics
+| distinct _ResourceId
+```
+```Kusto
+// Resource providers collecting diagnostic logs into this Log Analytics worksapce, with log volume per category
+AzureDiagnostics
+| summarize count() by ResourceProvider, Category
+```
+```Kusto
+// Resource types collecting diagnostic logs into this Log Analytics workspace, with number of resources onboarded
+AzureDiagnostics
+| summarize ResourcesOnboarded=dcount(_ResourceId) by ResourceType
+```
+```Kusto
+// Operations logged by specific resource provider, in this example - KeyVault
+AzureDiagnostics
+| where ResourceProvider == "MICROSOFT.KEYVAULT"
+| distinct OperationName
+```
 
 ## <a name="azure-diagnostics-vs-resource-specific"></a>Azure Diagnostics とリソース固有  
 Azure Diagnostics の構成で Log Analytics の宛先を有効にした後、データは、明確に異なる 2 つ方法でワークスペースに表示されます。  

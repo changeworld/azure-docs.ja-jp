@@ -8,16 +8,16 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: e4a6d169b50eff1b0e166bea098e28e65bad8cab
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: ed50dfd7e3c423c1c26a7dc19ae60dcb319f1850
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67329298"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621613"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Stream Analytics での参照に参照データを使用する
 
-参照データ (別名、ルックアップ テーブル) は、静的または本来はあまり変更されない有限のデータ セットであり、データ ストリームのルックアップや増大を行うために使用されます。 たとえば、IoT のシナリオでは、センサーに関する (変化が頻繁ではない) メタデータを参照データに格納し、リアルタイムの IoT データ ストリームと結合することができます。 Azure Stream Analytics は、参照データをメモリに読み込んで、待機時間の短いストリーム処理を実現します。 Azure Stream Analytics ジョブで参照データを使用するには、一般にクエリで[参照データの結合](https://msdn.microsoft.com/library/azure/dn949258.aspx)を使用します。 
+参照データ (別名、ルックアップ テーブル) は、静的または本来はあまり変更されない有限のデータ セットであり、データ ストリームのルックアップや増大を行うために使用されます。 たとえば、IoT のシナリオでは、センサーに関する (変化が頻繁ではない) メタデータを参照データに格納し、リアルタイムの IoT データ ストリームと結合することができます。 Azure Stream Analytics は、参照データをメモリに読み込んで、待機時間の短いストリーム処理を実現します。 Azure Stream Analytics ジョブで参照データを使用するには、一般にクエリで[参照データの結合](https://docs.microsoft.com/stream-analytics-query/reference-data-join-azure-stream-analytics)を使用します。 
 
 Stream Analytics は、参照データの格納レイヤーとして Azure BLOB ストレージおよび Azure SQL Database をサポートします。 [任意の数のクラウド ベースおよびオンプレミスのデータ ストア](../data-factory/copy-activity-overview.md)を使用するために、Azure Data Factory から参照データを BLOB ストレージに変換またはコピー (あるいは両方) することもできます。
 
@@ -89,7 +89,7 @@ SQL Database 参照データを構成するには、まず**参照データ**入
 |**プロパティ名**|**説明**  |
 |---------|---------|
 |入力のエイリアス|この入力を参照するジョブ クエリで使用されるわかりやすい名前。|
-|サブスクリプション|サブスクリプションの選択|
+|Subscription|サブスクリプションの選択|
 |Database|参照データを含む Azure SQL Database。|
 |ユーザー名|Azure SQL Database に関連付けられているユーザー名。|
 |パスワード|Azure SQL Database に関連付けられているパスワード。|

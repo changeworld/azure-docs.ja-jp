@@ -7,19 +7,19 @@ author: mdgattuso
 manager: danielgi
 editor: sohamnchatterjee
 ms.assetid: 669ef140-a6dd-4b62-9b9d-3f375a14215e
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/19/2019
 ms.author: magattus
-ms.openlocfilehash: 63f6156e6e1a94c49b2147f7c25da35c247c701d
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: b6b4db89210bcc572e3780667f7a3e88dc5f1d28
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67331871"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68226573"
 ---
 # <a name="azure-cdn-coverage-by-metro"></a>都市別の Azure CDN のカバレッジ 
 > [!div class="op_single_selector"]
@@ -44,7 +44,7 @@ ms.locfileid: "67331871"
 | アフリカ | ケープタウン (南アフリカ)<br />ヨハネスバーグ (南アフリカ) | ヨハネスバーグ (南アフリカ) | 南アフリカ |
 | 中東 | ドバイ (アラブ首長国連邦) | マスカット (オマーン)<br />フジャイラ (アラブ首長国連邦) | カタール<br />アラブ首長国連邦 |
 | インド | チェンナイ (インド)<br />ハイデラーバード (インド)<br />ムンバイ (インド)<br />ニュー デリー (インド) | ベンガルール (バンガロール) (インド)<br />チェンナイ (インド)<br />ムンバイ (インド)<br />ニュー デリー (インド)<br /> | インド |
-| アジア | 香港特別行政区<br />大阪 (日本)<br />東京 (日本)<br />クアラルンプール (シンガポール)<br />マニラ ( フィリピン)<br />シンガポール<br />釜山 (韓国)<br />ソウル (韓国)<br />台北 (台湾)<br />バンコク (タイ) | 香港特別行政区<br />バタム (インドネシア)<br />ジャカルタ (インドネシア)<br />大阪 (日本)<br />東京 (日本)<br />シンガポール<br />ソウル (韓国)<br />高雄 (台湾) | 香港特別行政区<br />インドネシア<br />イスラエル<br />日本<br />マカオ<br />マレーシア<br />フィリピン<br />シンガポール<br />韓国<br />台湾<br />タイ<br />トルコ<br />ベトナム |
+| アジア | 香港特別行政区<br />大阪 (日本)<br />東京 (日本)<br />クアラルンプール (シンガポール)<br />マニラ ( フィリピン)<br />シンガポール<br />釜山 (韓国)<br />ソウル (韓国)<br />台北 (台湾)<br />バンコク (タイ) | 香港特別行政区<br />バタム (インドネシア)<br />ジャカルタ (インドネシア)<br />大阪 (日本)<br />東京 (日本)<br />シンガポール<br />ソウル (韓国)<br />高雄 (台湾)<br />台北 (台湾) | 香港特別行政区<br />インドネシア<br />イスラエル<br />日本<br />マカオ<br />マレーシア<br />フィリピン<br />シンガポール<br />韓国<br />台湾<br />タイ<br />トルコ<br />ベトナム |
 | オーストラリアとニュージーランド | ブリスベン (オーストラリア)<br />メルボルン (オーストラリア)<br />パース (オーストラリア)<br />シドニー (オーストラリア)<br />オークランド (ニュージーランド) | メルボルン (オーストラリア)<br />シドニー (オーストラリア)<br />オークランド (ニュージーランド) | オーストラリア<br />ニュージーランド |
 
 

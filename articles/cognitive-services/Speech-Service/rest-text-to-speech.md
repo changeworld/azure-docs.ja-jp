@@ -8,15 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/26/2019
+ms.date: 07/05/2019
 ms.author: erhopf
-ms.custom: seodec18
-ms.openlocfilehash: 08bf1363f3c6c9b68243cc10ffb2785f53e02107
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 684ddcd49d3cd3c3d4f0a8d6f4675e1e27bdb7b9
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342186"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604883"
 ---
 # <a name="text-to-speech-rest-api"></a>Text to Speech REST API
 
@@ -225,7 +224,7 @@ Authorization: Bearer [Base64 access_token]
 | 400 | 正しくない要求 | 必須パラメーターが指定されていない、空、または null です。 または、必須またはオプションのパラメーターに渡された値が無効です。 よくある問題はヘッダーが長すぎることです。 |
 | 401 | 権限がありません | 要求が承認されていません。 サブスクリプション キーまたはトークンが有効であり、正しいリージョンにあることを確認してください。 |
 | 413 | 要求のエンティティが大きすぎます | SSML 入力が 1024 文字を超えています |
-| 415 | サポートされていないメディアの種類です | 間違った `Content-Type` が提供された可能性があります。 `Content-Type` は `application/ssml+xml` に設定する必要があります。 | 
+| 415 | サポートされていないメディアの種類です | 間違った `Content-Type` が提供された可能性があります。 `Content-Type` は `application/ssml+xml` に設定する必要があります。 |
 | 429 | 要求が多すぎます | 使用中のサブスクリプションで許可されている要求のクォータまたは速度を超えています。 |
 | 502 | 無効なゲートウェイ | ネットワークまたはサーバー側の問題です。 無効なヘッダーを示す場合もあります。 |
 

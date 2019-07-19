@@ -3,18 +3,17 @@ title: Azure Automation でモジュールを管理する
 description: この記事では、Azure Automation でモジュールを管理する方法について説明します
 services: automation
 ms.service: automation
-ms.subservice: shared-resources
 author: bobbytreed
 ms.author: robreed
 ms.date: 06/05/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 69817d1412aa13d0e7983aa3ad27c15e59185432
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: cd085164fc9804e0c1c822df1c72d3ef94093a07
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67478167"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672797"
 ---
 # <a name="manage-modules-in-azure-automation"></a>Azure Automation でモジュールを管理する
 
@@ -71,7 +70,7 @@ Remove-AzureRmAutomationModule -Name <moduleName> -AutomationAccountName <automa
 
 以下に、すべての Automation アカウントにインポートされる内部 `Orchestrator.AssetManagement.Cmdlets` モジュール内のコマンドレットの一覧を示します。 これらのコマンドレットは、Runbook および DSC 構成でアクセスでき、Automation アカウント内のアセットを操作できるようにします。 さらに、内部コマンドレットは、暗号化された **[変数]** 値、 **[資格情報]** 、および暗号化された **[接続]** フィールドからシークレットを取得できるようにします。 Azure PowerShell コマンドレットはこれらのシークレットを取得できません。 これらのコマンドレットでは、使用するときに、暗黙的に Azure に接続する必要はありません。 これは、Azure に対する認証に使用する必要がある実行アカウントなど、接続しているシナリオに役立ちます。
 
-|Name|説明|
+|EnableAdfsAuthentication|説明|
 |---|---|
 |Get-AutomationCertificate|`Get-AutomationCertificate [-Name] <string> [<CommonParameters>]`|
 |Get-AutomationConnection|`Get-AutomationConnection [-Name] <string> [-DoNotDecrypt] [<CommonParameters>]` |
@@ -230,7 +229,7 @@ Azure Automation で使用するための PowerShell モジュールを作成す
 
 次の表は、Automation アカウントが作成されるときに既定でインポートされるモジュールの一覧です。 以下の一覧にあるモジュールについては、新しいバージョンをインポートできます。ただし、元のバージョンは、新しいバージョンを削除した場合であっても、Automation アカウントから削除することはできません。
 
-|モジュール名|バージョン|
+|モジュール名|Version|
 |---|---|
 | AuditPolicyDsc | 1.1.0.0 |
 | Azure | 1.0.3 |

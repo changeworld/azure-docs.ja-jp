@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: 8ba4763e8d4835911d33d21c0f5bb431851a649b
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: fe0af4ca7b6860fff19f4df3165a975c42b54a03
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67444711"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68277775"
 ---
 # <a name="capacity-planning-and-scaling-for-azure-service-fabric"></a>Azure Service Fabric の容量計画とスケーリング
 
@@ -80,15 +80,6 @@ Resource Manager テンプレートの次のスニペットに、宣言するプ
 4. 必要に応じて手順 1. ～ 3. を繰り返します。ただし、プライマリ ノードの種類のインスタンス数を、信頼性レベルで保証するよりも少ない数にスケールダウンしないでください。 推奨されるインスタンスの一覧については、「[Service Fabric クラスターの容量計画](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity)」を参照してください。
 5. すべての VM が削除されると ("ダウン" と示されます)、fabric:/System/InfrastructureService/[ノード名] でエラー状態が示されます。 その後、クラスター リソースを更新してノードの種類を削除できます。 ARM テンプレート デプロイを使用するか、[Azure Resource Manager](https://resources.azure.com) によってクラスター リソースを編集することができます。 これにより、クラスターのアップグレードが開始され、エラー状態の fabric:/System/InfrastructureService/[ノードの種類] サービスが削除されます。
  6. その後、必要に応じて VMScaleSet を削除できますが、Service Fabric Explorer ビューではノードが "ダウン" と表示されます。 最後の手順は、`Remove-ServiceFabricNodeState` コマンドを使用してこれらをクリーンアップすることです。
-
-### <a name="example-scenario"></a>サンプル シナリオ
-垂直スケーリング操作を実行する状況についてサポートされているシナリオは、次のとおりです。Service Fabric クラスターとアプリケーションを、アプリケーションのダウンタイムなしで、アンマネージド ディスクからマネージド ディスクに移行する必要がある場合です。 
-
-マネージド ディスクで新しい仮想マシン スケール セットをプロビジョニングし、プロビジョニング済みの容量を対象とする配置制約を使用してアプリケーションのアップグレードを実行できます。 その後、Service Fabric クラスターは、アプリケーションのダウンタイムなしで、アップグレード ドメインによってロールアウトされるプロビジョニング済みクラスター ノード容量のワークロードをスケジュールできます。 
-
-[Azure Load Balancer Basic SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview#skus) のバックエンド プール エンドポイントは、単一の可用性セットまたは仮想マシン スケール セット内の仮想マシンにすることができます。 つまり、スケール セット間で Service Fabric システム アプリケーションを移動する場合、Basic SKU ロード バランサーを使用するときは必ず、Service Fabric クラスター管理エンドポイントに一時的にアクセスできなります。 これは、クラスターとそのアプリケーションがまだ実行中であっても当てはまります。
-
-一般に、ユーザーは、Basic SKU ロード バランサー リソースと Standard SKU ロード バランサー リソースの間で仮想 IP アドレス (VIP) スワップを実行する場合、Standard SKU ロード バランサーをプロビジョニングします。 この手法により、将来的にアクセスできなくなる時間は、VIP スワップに必要な約 30 秒に制限されます。
 
 ## <a name="horizontal-scaling"></a>水平スケーリング
 

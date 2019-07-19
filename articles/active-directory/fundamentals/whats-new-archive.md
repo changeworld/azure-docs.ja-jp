@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68be46b406e7a5caaabbc0726a6aece0fd0423ce
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: a6935d2a89968b55dec1626d23b3f290261cf66f
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67472177"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67655443"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Azure Active Directory の新着情報のアーカイブ
 
@@ -2213,7 +2213,7 @@ Azure Portal では次の機能が提供されています。
 **サービス カテゴリ:** マイ アプリ  
 **製品の機能:** シングル サインオン  
 
-Azure AD は、HTML ユーザー名とパスワード フィールドをレンダリングするアプリケーションのサインイン フィールドの自動検出をサポートしています。 この手順は「[アプリケーションのサインイン フィールドを自動的にキャプチャする方法](https://docs.microsoft.com/azure/active-directory/application-config-sso-problem-configure-password-sso-non-gallery#how-to-manually-capture-sign-in-fields-for-an-application)」に示されています。 この機能は、[Azure Portal](https://aad.portal.azure.com) の **[エンタープライズ アプリケーション]** ページで*ギャラリー以外のアプリケーション*を追加することで表示されます。 さらに、Web URL を入力してページを保存することにより、この新しいアプリケーションの**シングル サインオン** モードを**パスワード ベースのシングル サインオン**を実行するように構成できます。
+Azure AD は、HTML ユーザー名とパスワード フィールドをレンダリングするアプリケーションのサインイン フィールドの自動検出をサポートしています。 この手順は「[アプリケーションのサインイン フィールドを自動的にキャプチャする方法](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-password-single-sign-on-non-gallery-applications-problems#manually-capture-sign-in-fields-for-an-app)」に示されています。 この機能は、[Azure Portal](https://aad.portal.azure.com) の **[エンタープライズ アプリケーション]** ページで*ギャラリー以外のアプリケーション*を追加することで表示されます。 さらに、Web URL を入力してページを保存することにより、この新しいアプリケーションの**シングル サインオン** モードを**パスワード ベースのシングル サインオン**を実行するように構成できます。
  
 サービスの問題により、この機能は一時的に無効化されていました。 問題が解決されたため、サインイン フィールドの自動検出が再び利用可能になりました。
 

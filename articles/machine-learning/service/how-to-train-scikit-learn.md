@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.author: minxia
-author: mx-iao
+ms.author: maxluk
+author: maxluk
 ms.date: 06/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: d2c9b104d1fe9333221bc20e7e23b436358c9ece
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: c9e983f7981c1155964617694d2cce86aba741b7
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67514027"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67840019"
 ---
 # <a name="train-and-register-scikit-learn-models-at-scale-with-azure-machine-learning-service"></a>Azure Machine Learning service を使用して Scikit-learn モデルを大規模にトレーニングおよび登録する
 
@@ -42,7 +42,7 @@ Scikit-learn モデルをゼロから開発する場合でも、既存のモデ�
 
 ## <a name="set-up-the-experiment"></a>実験を設定する
 
-このセクションでは、必要な python パッケージを読み込み、ワークスペースを初期化し、実験を作成し、トレーニング データとトレーニング スクリプトをアップロードすることで、トレーニング実験を設定します。
+このセクションでは、必要な Python パッケージを読み込み、ワークスペースを初期化し、実験を作成し、トレーニング データとトレーニング スクリプトをアップロードすることで、トレーニング実験を設定します。
 
 ### <a name="import-packages"></a>パッケージをインポートする
 

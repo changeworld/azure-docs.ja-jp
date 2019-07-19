@@ -2,17 +2,17 @@
 title: Azure Kubernetes Service (AKS) での Windows Server ノード プールの制限事項
 description: Windows Server ノード プールとアプリケーション ワークロードを Azure Kubernetes Service (AKS) 内で実行するときの既知の制限事項について説明します
 services: container-service
-author: tylermsft
+author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 05/31/2019
-ms.author: twhitney
-ms.openlocfilehash: 457a908a70fccd9f4209121d9b99e5e53905500b
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.author: mlearned
+ms.openlocfilehash: 0d79b4d76249bd4a79f8adbd5df0cfa1ae133760
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67444102"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67613731"
 ---
 # <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での Windows Server ノード プールとアプリケーション ワークロードについての現在の制限事項
 

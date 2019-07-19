@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: raynew
-ms.openlocfilehash: a16ed7134fc9f3c159715f58f116de3fb30e8aca
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 1c5c38e9af58aa9468fb0e22491327d3a35f0dda
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67481136"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67656662"
 ---
 # <a name="back-up-an-sap-hana-database"></a>SAP HANA データベースをバックアップする
 
@@ -26,7 +26,7 @@ ms.locfileid: "67481136"
 
 **サポート** | **詳細**
 --- | ---
-**サポートされている地域** | オーストラリア南東部、オーストラリア東部 <br> ブラジル南部 <br> カナダ中部、カナダ東部 <br> 東南アジア、東アジア <br> 米国東部、米国東部 2、米国中西部、米国西部、米国西部 2、米国中北部、米国中部、米国中南部<br> インド中部、インド南部 <br> 東日本、西日本<br> 韓国中部、韓国南部 <br> 北ヨーロッパ、西ヨーロッパ <br> 英国南部、英国西部
+**サポートされている地域** | オーストラリア南東部、オーストラリア東部 <br> ブラジル南部 <br> カナダ中部、カナダ東部 <br> 東南アジア、東アジア <br> 米国東部、米国東部 2、米国中西部、米国西部、米国西部 2、米国中北部、米国中部、米国中南部<br> インド中部、インド南部 <br> 東日本、西日本<br> 韓国中部、韓国南部 <br> 北ヨーロッパ、西ヨーロッパ <br> 英国南部、英国西部
 **サポートされている VM オペレーティング システム** | SLES 12 SP2 または SP3。
 **サポートされている HANA のバージョン** | HANA 1.x の場合は SDC、HANA 2.x SPS03 以下の場合は MDC
 
