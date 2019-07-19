@@ -81,6 +81,8 @@
       href: sample-v2-code.md
     - name: 概念
       items:
+        - name: 認証の基本
+          href: authentication-scenarios.md
         - name: 認証フローとアプリ シナリオ
           href: authentication-flows-app-scenarios.md
         - name: アプリケーションのシナリオ
@@ -271,8 +273,6 @@
                       href: msal-js-known-issues-safari-browser.md
         - name: 認証プロトコル
           items:
-            - name: 認証の基本
-              href: authentication-scenarios.md
             - name: アプリケーションの種類と OAuth2.0
               href: v2-app-types.md
             - name: OAuth 2.0 と OpenID Connect プロトコル

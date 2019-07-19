@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/13/2017
-ms.author: vidarmsft
-ms.openlocfilehash: 8c82170cf9cff1870739bb13db9ac0e348a46c07
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.author: alkohli
+ms.openlocfilehash: 650798fdb884e6494990efb533335a1dd8b4d89f
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443062"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67875391"
 ---
 # <a name="automated-disaster-recovery-solution-using-azure-site-recovery-for-file-shares-hosted-on-storsimple"></a>StorSimple でホストされたファイル共有向けの Azure Site Recovery を使用した自動ディザスター リカバリー ソリューション
 
@@ -174,7 +174,7 @@ ASR で復旧計画を作成し、ファイル共有のフェールオーバー 
    - _RecoveryPlanName_ **-ResourceGroupName**: StorSimple リソースを含む Resource Manager グループ。
    - _RecoveryPlanName_ **-ManagerName**: StorSimple デバイスを含む StorSimple リソース。
    - _RecoveryPlanName_ **-DeviceName**: フェールオーバーする必要のある StorSimple デバイス。
-   - _RecoveryPlanName_ **-DeviceIpAddress**: デバイスの IP アドレス (StorSimple デバイス マネージャー セクション &gt; **[設定]** &gt; **[ネットワーク]** &gt; **[DNS 設定]** グループの下の **[デバイス]** タブで見つかります)。
+   - _RecoveryPlanName_ **-DeviceIpAddress**: デバイスの IP アドレス (StorSimple デバイス マネージャー セクション &gt; **[設定]** &gt; **[ネットワーク]** &gt; **[DNS 設定]** グループの下の [デバイス]** タブで見つかります)。
    - _RecoveryPlanName_ **-VolumeContainers**: フェールオーバーする必要があるデバイスのボリューム コンテナーの、コンマで区切られた文字列 (例: volcon1、volcon2、volcon3)。
    - _RecoveryPlanName_ **-TargetDeviceName**: フェールオーバーされるコンテナーが含まれる StorSimple Cloud Appliance。
    - _RecoveryPlanName_ **-TargetDeviceIpAddress**: ターゲット デバイスの IP アドレス (これは、 **[仮想マシン]** セクション &gt; **[設定]** グループ &gt; **[ネットワーキング]** タブで見つかります)。
