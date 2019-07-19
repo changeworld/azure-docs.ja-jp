@@ -14,13 +14,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/26/2017
-ms.author: malop; kumud
-ms.openlocfilehash: 07c8087043526a8eb0bf7a1963a761c40c11a925
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.author: malop
+ms.reviewer: kumud
+ms.openlocfilehash: b26f876fbe07b1667a579fc040562f1d6ee8a85e
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67202851"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67871792"
 ---
 # <a name="virtual-network-traffic-routing"></a>仮想ネットワーク トラフィックのルーティング
 
@@ -98,7 +99,7 @@ Azure でカスタム (ユーザー定義) ルートを作成して、Azure の�
 
 ユーザー定義ルートでは、次ホップの種類として **VNet ピアリング**または **VirtualNetworkServiceEndpoint** を指定することはできません。 次ホップの種類が **VNet ピアリング**または **VirtualNetworkServiceEndpoint** のルートは、仮想ネットワーク ピアリングまたはサービス エンドポイントを構成したときに、Azure によって作成されます。
 
-## <a name="next-hop-types-across-azure-tools"></a>**Azure ツールにおける次ホップの種類**
+## <a name="next-hop-types-across-azure-tools"></a>Azure ツールにおける次ホップの種類
 
 次ホップの種類として表示および参照される名前は、Azure Portal とコマンド ライン ツール、および Azure Resource Manager デプロイ モデルとクラシック デプロイ モデルで異なります。 各種ツールと[デプロイメント モデル](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)で各次ホップの種類を指す際に使用される名前を次の表に示します。
 

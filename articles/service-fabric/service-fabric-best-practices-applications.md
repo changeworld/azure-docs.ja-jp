@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/18/2019
-ms.author: msfussell
-ms.openlocfilehash: 30d696337061ade6b79c7ec0e4c4de67651f0dad
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.author: mfussell
+ms.openlocfilehash: 06af1f4326e3f6a6dcb53c8710a126f43e2d2f6a
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67203454"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67875096"
 ---
 # <a name="azure-service-fabric-application-design-best-practices"></a>Azure Service Fabric アプリケーションの設計に関するベスト プラクティス
 
