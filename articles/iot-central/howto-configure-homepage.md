@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: b1edd4777839c947cf8f60bb6857f939553e2603
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e6947a4f15797028274d49069d9e2787b143860d
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65467621"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67503225"
 ---
 # <a name="configure-the-application-dashboard"></a>アプリケーション ダッシュボードの構成
 
@@ -41,6 +41,8 @@ ms.locfileid: "65467621"
 ![タイルの設定とプロパティが表示された [Dashboard]\(ダッシュボード\) タブ](media/howto-configure-homepage/image4a.png)
 
 ライブラリ内の他のタイルの種類を調べて、既定のアプリケーション ダッシュボードをカスタマイズする方法を確認することができます。
+
+Azure IoT Central でタイルを使用する方法の詳細については、「[ダッシュボード タイルの使用](howto-use-tiles.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

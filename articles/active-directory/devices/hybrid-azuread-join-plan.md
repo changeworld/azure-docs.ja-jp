@@ -2,27 +2,21 @@
 title: Azure Active Directory (Azure AD) で Hybrid Azure Active Directory 参加の実装を計画する方法 | Microsoft Docs
 description: ハイブリッド Azure Active Directory 参加済みデバイスの構成方法について説明します。
 services: active-directory
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-editor: ''
-ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
 ms.subservice: devices
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 04/10/2019
+ms.topic: conceptual
+ms.date: 06/28/2019
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64dd8067654246f7c9a077d027c068df820f439d
-ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
+ms.openlocfilehash: c476c2b326045db37c54a358d68f4b5f8bbaed9a
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66688702"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509590"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>方法:Hybrid Azure Active Directory 参加の実装を計画する
 
@@ -83,7 +77,7 @@ ID データを複数の Azure AD テナントに同期する単一 AD フォレ
 
 仮想デスクトップ インフラストラクチャ (VDI) を使用している場合、ハイブリッド Azure AD 参加は現在サポートされていません。
 
-Hybrid Azure AD は、FIPS に準拠している TPM ではサポートされていません。 FIPS に準拠している TPM がデバイスにある場合は、Hybrid Azure AD 参加を進める前に、それらを無効にする必要があります。 TPM の FIPS モードを無効にするためのツールは、TPM の製造元に依存するため、Microsoft では用意していません。 サポートが必要な場合は、お使いのハードウェアの OEM にお問い合わせください。
+Hybrid Azure AD 参加は、FIPS に準拠している TPM ではサポートされていません。 FIPS に準拠している TPM がデバイスにある場合は、Hybrid Azure AD 参加を進める前に、それらを無効にする必要があります。 TPM の FIPS モードを無効にするためのツールは、TPM の製造元に依存するため、Microsoft では用意していません。 サポートが必要な場合は、お使いのハードウェアの OEM にお問い合わせください。
 
 ハイブリッド Azure AD 参加は、ドメイン コントローラー (DC) ロールを実行している Windows Server ではサポートされていません。
 
@@ -99,13 +93,11 @@ Windows 10 ドメイン参加済みデバイスが既にテナントへの [Azur
 - レジストリ キー HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin, "BlockAADWorkplaceJoin"=dword:00000001 を追加することで、ドメイン参加済みデバイスが Azure AD 登録済みになることを防ぐことができます。
 - この変更は現在、KB4489894 が適用された Windows 10 1803 リリースでご利用いただけます。 ただし、Windows Hello for Business が構成されている場合、二重状態のクリーンアップ後に Windows Hello for Business を再設定する必要があります。
 
-
 ## <a name="review-controlled-validation-of-hybrid-azure-ad-join"></a>ハイブリッド Azure AD 参加の制御された検証を確認する
 
 すべての前提条件がそろったら、Windows デバイスが、Azure AD テナントにデバイスとして自動的に登録されます。 Azure AD でのこれらのデバイス ID の状態は、ハイブリッド Azure AD 参加と呼ばれます。 この記事で説明する概念の詳細については、[Azure Active Directory でのデバイス ID 管理の概要](overview.md)と [Hybrid Azure Active Directory 参加の実装の計画](hybrid-azuread-join-plan.md)に関する記事を参照してください。
 
 組織では、ハイブリッド Azure AD 参加を組織全体で同時に有効にする前に、その制御された検証を実行する必要がある場合があります。 実行方法については、[ハイブリッド Azure AD 参加の制御された検証](hybrid-azuread-join-control.md)に関する記事を参照してください。
-
 
 ## <a name="select-your-scenario-based-on-your-identity-infrastructure"></a>ID インフラストラクチャに基づいてシナリオを選択する
 
@@ -135,8 +127,6 @@ Active Directory フェデレーション サービス (AD FS) を使用して�
 
 - [フェデレーション環境用のハイブリッド Azure Active Directory 参加を構成する](hybrid-azuread-join-federated-domains.md)
 - [マネージド環境用のハイブリッド Azure Active Directory 参加を構成する](hybrid-azuread-join-managed-domains.md)
-
-
 
 ## <a name="review-on-premises-ad-upn-support-for-hybrid-azure-ad-join"></a>ハイブリッド Azure AD 参加でのオンプレミス AD UPN サポートを確認する
 
