@@ -36,7 +36,7 @@ GitHub から直接テンプレートをデプロイするだけで、変更を�
 
 ![シナリオ](./media/application-gateway-create-gateway-arm-template/scenario.png)
 
-## <a name="download-and-understand-the-azure-resource-manager-template"></a>Azure リソース マネージャー テンプレートのダウンロードと理解
+## <a name="download-and-understand-the-azure-resource-manager-template"></a>Azure Resource Manager テンプレートのダウンロードと理解
 
 GitHub から既存の Azure リソース マネージャー テンプレートをダウンロードして仮想ネットワークと 2 つのサブネットを作成し、そのテンプレートに変更を加えて再利用することができます。 そのためには、次の手順を実行してください。
 

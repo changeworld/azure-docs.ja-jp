@@ -5,14 +5,14 @@ services: container-service
 author: tylermsft
 ms.service: container-service
 ms.topic: article
-ms.date: 06/06/2019
+ms.date: 06/17/2019
 ms.author: twhitney
-ms.openlocfilehash: cdcc1b985c570d1af4bbb33ac29a37e63b1dfa90
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b753d643b4651cd6665b5b85dcb8b7c5f0b3583d
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66752393"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444140"
 ---
 # <a name="preview---create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>プレビュー - Azure CLI を使用して Azure Kubernetes Service (AKS) クラスター上に Windows Server コンテナーを作成する
 
@@ -22,7 +22,7 @@ Azure Kubernetes Service (AKS) は、クラスターをすばやくデプロイ�
 
 ![ASP.NET サンプル アプリケーションを参照している画像](media/windows-container/asp-net-sample-app.png)
 
-この記事では、Kubernetes の基本的な概念を理解していることを前提としています。 詳しくは、「[Azure Kubernetes Services (AKS) における Kubernetes の中心概念][kubernetes-concepts]」をご覧ください。
+この記事では、Kubernetes の基本的な概念を理解していることを前提としています。 詳細については、「[Azure Kubernetes Services (AKS) における Kubernetes の中心概念][kubernetes-concepts]」を参照してください。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -35,21 +35,22 @@ CLI をローカルにインストールして使用する場合、この記事�
 Windows Server コンテナーを実行できるクラスターを作成したら、さらにノード プールを追加する必要があります。 ノード プールをさらに追加する手順については後述しますが、まず、いくつかのプレビュー機能を有効にする必要があります。
 
 > [!IMPORTANT]
-> AKS のプレビュー機能は、セルフサービス、オプトインです。 これらは、コミュニティからフィードバックやバグを収集するために提供されています。 プレビューで、これらの機能は、運用環境での使用を意図していません。 パブリック プレビュー段階の機能は、'ベスト エフォート' のサポートに該当します。 AKS テクニカル サポート チームによるサポートは、太平洋タイム ゾーン (PST) での営業時間内のみで利用できます。 詳細については、次のサポートに関する記事を参照してください。
+> AKS のプレビュー機能は、セルフサービス、オプトインです。 これらは、コミュニティからフィードバックやバグを収集するために提供されています。 これらの機能はプレビュー段階であり、運用環境での使用を意図していません。 パブリック プレビュー段階の機能は、"ベスト エフォート" のサポートに該当します。 AKS テクニカル サポート チームによるサポートは、太平洋タイム ゾーン (PST) での営業時間内のみで利用できます。 詳細については、次のサポートに関する記事を参照してください。
 >
-> * [AKS サポート ポリシー][aks-support-policies]
+> * [AKS のサポート ポリシー][aks-support-policies]
 > * [Azure サポートに関する FAQ][aks-faq]
 
 ### <a name="install-aks-preview-cli-extension"></a>aks-preview CLI 拡張機能をインストールする
-    
-*aks-preview* CLI 拡張機能には、複数のノード プールを作成および管理する CLI コマンドがあります。 次の例に示すように、[az extension add][az-extension-add] コマンドを使用して *aks-preview* Azure CLI 拡張機能をインストールします。
+
+Windows Server コンテナーを使用するには、*aks-preview* CLI 拡張機能のバージョン 0.4.1 以降が必要です。 [az extension add][az-extension-add] コマンドを使用して *aks-preview* Azure CLI 拡張機能をインストールしてから、az extension update コマンドを使用して使用可能な更新プログラムを確認します。
 
 ```azurecli-interactive
+# Install the aks-preview extension
 az extension add --name aks-preview
-```
 
-> [!NOTE]
-> 以前に *aks-preview* 拡張機能をインストール済みの場合は、`az extension update --name aks-preview` コマンドを使用して、利用可能な更新プログラムをインストールできます。
+# Update the extension to make sure you have the latest version installed
+az extension update --name aks-preview
+```
 
 ### <a name="register-windows-preview-feature"></a>Windows のプレビュー機能を登録する
 
@@ -62,13 +63,13 @@ az feature register --name WindowsPreview --namespace Microsoft.ContainerService
 > [!NOTE]
 > *WindowsPreview* 機能フラグが正常に登録された後で作成するすべての AKS クラスターでは、このプレビュー クラスター エクスペリエンスが使用されます。 完全にサポートされた通常のクラスターを引き続き作成するには、運用サブスクリプションでプレビュー機能を有効にしないでください。 プレビュー機能のテストには、別のテストまたは開発用 Azure サブスクリプションを使用します。
 
-状態が *[登録済み]* と表示されるまでに数分かかります。 登録状態を確認するには、[az feature list][az-feature-list] コマンドを使用します。
+登録が完了するまでに数分かかります。 [az feature list][az-feature-list] コマンドを使用して、登録状態を確認します。
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/WindowsPreview')].{Name:name,State:properties.state}"
 ```
 
-準備ができたら、[az provider register][az-provider-register] コマンドを使用して、*Microsoft.ContainerService* リソース プロバイダーの登録を更新します。
+登録状態が `Registered` の場合、Ctrl + C キーを押して状態の監視を停止します。  次に、[az provider register][az-provider-register] コマンドを使用して、*Microsoft.ContainerService* リソース プロバイダーの登録を更新します。
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
@@ -93,6 +94,10 @@ Azure リソース グループとは、Azure リソースのデプロイと管�
 
 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
 
+> [!NOTE]
+> この記事では、このチュートリアルのコマンドに対して Bash 構文を使用します。
+> Azure Cloud Shell を使用する場合、[Cloud Shell] ウィンドウの左上のドロップダウンが **[Bash]** に設定されていることを確認してください。
+
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
@@ -113,12 +118,13 @@ az group create --name myResourceGroup --location eastus
 }
 ```
 
-## <a name="create-aks-cluster"></a>AKS クラスターの作成
-Windows Server コンテナー用のノード プールをサポートする AKS クラスターを実行するには、[Azure CNI][azure-cni-about] の (高度な) ネットワーク プラグインを使用するネットワーク ポリシーを、ご利用のクラスターで使用する必要があります。 必要なサブネット範囲とネットワークに関する考慮事項を計画するのに役立つ詳細情報については、[Azure CNI ネットワークの構成][use-advanced-networking]に関するページを参照してください。 *myAKSCluster* という名前の AKS クラスターを作成するには、[az aks create][az-aks-create] コマンドを使用します。 このコマンドでは、必要なネットワーク リソースが存在しない場合、それらが作成されます。
+## <a name="create-an-aks-cluster"></a>AKS クラスターの作成
+
+Windows Server コンテナー用のノード プールをサポートする AKS クラスターを実行するには、[Azure CNI][azure-cni-about] を使用するネットワーク ポリシーを、ご利用のクラスターで使用する必要があります (advanced) network plugin. For more detailed information to help plan out the required subnet ranges and network considerations, see [configure Azure CNI networking][use-advanced-networking]。 *myAKSCluster* という名前の AKS クラスターを作成するには、[az aks create][az-aks-create] コマンドを使用します。 このコマンドでは、必要なネットワーク リソースが存在しない場合、それらが作成されます。
   * クラスターは 1 つのノードを使用して構成されます。
   * クラスター上に作成された Windows Server コンテナーの管理者資格情報が、*windows-admin-password* パラメーターと *windows-admin-username* パラメーターによって設定されます。
 
-独自の安全な *PASSWORD_WIN* を指定してください。
+独自の安全な *PASSWORD_WIN* を指定します (この記事のコマンドは BASH シェルに入力するということに注意してください)。
 
 ```azurecli-interactive
 PASSWORD_WIN="P@ssw0rd1234"
@@ -135,6 +141,10 @@ az aks create \
     --enable-vmss \
     --network-plugin azure
 ```
+
+> [!Note]
+> パスワード検証エラーが発生した場合は、別のリージョンでリソース グループを作成してください。
+> その後、新しいリソース グループを使用してクラスターを作成してください。
 
 数分後、コマンドが完了し、クラスターに関する情報が JSON 形式で返されます。
 
@@ -168,7 +178,7 @@ Kubernetes クラスターに接続するように `kubectl` を構成するに�
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-クラスターへの接続を確認するには、[kubectl get][kubectl-get] コマンドを使って、クラスター ノードの一覧を取得します。
+クラスターへの接続を確認するには、[kubectl get][kubectl-get] コマンドを使用して、クラスター ノードの一覧を返します。
 
 ```azurecli-interactive
 kubectl get nodes
@@ -184,7 +194,7 @@ aksnpwin987654                      Ready    agent   108s   v1.14.0
 
 ## <a name="run-the-application"></a>アプリケーションの実行
 
-Kubernetes のマニフェスト ファイルでは、どのコンテナー イメージを実行するかなど、クラスターの望ましい状態を定義します。 この記事では、Windows Server コンテナー内で ASP.NET サンプル アプリケーションを実行するために必要なすべてのオブジェクトを作成するのにマニフェストを使用します。 このマニフェストには、ASP.NET サンプル アプリケーションの [Kubernetes デプロイ][kubernetes-deployment]と、インターネットからアプリケーションにアクセスするための外部 [Kubernetes サービス][kubernetes-service]が含まれています。
+Kubernetes のマニフェスト ファイルでは、どのコンテナー イメージを実行するかなど、クラスターの望ましい状態を定義します。 この記事では、Windows Server コンテナー内で ASP.NET サンプル アプリケーションを実行するために必要なすべてのオブジェクトを作成するのにマニフェストを使用します。 このマニフェストには、ASP.NET サンプル アプリケーションの [Kubernetes デプロイ][kubernetes-deployment]と、インターネットからアプリケーションにアクセスするための外部 Kubernetes サービスが含まれています。
 
 ASP.NET サンプル アプリケーションは、[.NET Framework のサンプル][dotnet-samples]の一部として提供され、Windows Server コンテナー内で実行されます。 AKS では、Windows Server コンテナーは *Windows Server 2019* 以降のイメージをベースにしている必要があります。 Kubernetes マニフェスト ファイルではまた、[ノード セレクター][node-selector]を定義する必要があり、この定義では、Windows Server コンテナーを実行できるノード上でご利用の ASP.NET サンプル アプリケーションのポッドを実行するように AKS クラスターに指示します。
 
@@ -213,10 +223,10 @@ spec:
         resources:
           limits:
             cpu: 1
-            memory: 800m
+            memory: 800M
           requests:
             cpu: .1
-            memory: 300m
+            memory: 300M
         ports:
           - containerPort: 80
   selector:
@@ -253,7 +263,7 @@ service/sample created
 
 アプリケーションが実行されると、Kubernetes サービスによってアプリケーション フロント エンドがインターネットに公開されます。 このプロセスが完了するまでに数分かかることがあります。
 
-進行状況を監視するには、[kubectl get service][kubectl-get] コマンドと `--watch` 引数を使います。
+進行状況を監視するには、[kubectl get service][kubectl-get] コマンドを `--watch` 引数と一緒に使用します。
 
 ```azurecli-interactive
 kubectl get service sample --watch
@@ -329,3 +339,5 @@ AKS の詳細を参照し、デプロイの例の完全なコードを確認す�
 [use-advanced-networking]: configure-advanced-networking.md
 [aks-support-policies]: support-policies.md
 [aks-faq]: faq.md
+[az-extension-add]: /cli/azure/extension#az-extension-add
+[az-extension-update]: /cli/azure/extension#az-extension-update

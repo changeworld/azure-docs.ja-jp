@@ -76,7 +76,7 @@ az group create \
 
 ### <a name="vision"></a>視覚
 
-| Service                    | 種類                      |
+| サービス                    | 種類                      |
 |----------------------------|---------------------------|
 | Computer Vision            | `ComputerVision`          |
 | Custom Vision - Prediction | `CustomVision.Prediction` |
@@ -87,7 +87,7 @@ az group create \
 
 ### <a name="search"></a>Search
 
-| Service            | 種類                  |
+| サービス            | 種類                  |
 |--------------------|-----------------------|
 | Bing Autosuggest   | `Bing.Autosuggest.v7` |
 | Bing Custom Search | `Bing.CustomSearch`   |
@@ -97,14 +97,14 @@ az group create \
 
 ### <a name="speech"></a>音声
 
-| Service            | 種類                 |
+| サービス            | 種類                 |
 |--------------------|----------------------|
 | Speech Services    | `SpeechServices`     |
 | 音声認識 | `SpeakerRecognition` |
 
 ### <a name="language"></a>言語
 
-| Service            | 種類                |
+| サービス            | 種類                |
 |--------------------|---------------------|
 | Form Understanding | `FormUnderstanding` |
 | LUIS               | `LUIS`              |
@@ -114,7 +114,7 @@ az group create \
 
 ### <a name="decision"></a>決定
 
-| Service           | 種類               |
+| サービス           | 種類               |
 |-------------------|--------------------|
 | Anomaly Detector  | `AnomalyDetector`  |
 | Content Moderator | `ContentModerator` |

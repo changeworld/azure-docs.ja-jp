@@ -3,20 +3,20 @@ title: FAQ - QnA Maker
 titleSuffix: Azure Cognitive Services
 description: QnA Maker サービスについてきわめて多く寄せられる質問を精選した一覧です。サービスの採用にかかる期間を短縮し、成果を上げるためにお役立てください。
 services: cognitive-services
-author: tulasim88
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 04/11/2019
-ms.author: tulasim
+ms.date: 06/11/2019
+ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 8104497a1808aa4e92d62f45e37525dba2f47742
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.openlocfilehash: d96c5829dfaa57e66b4afec203c27110b8627ac1
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59607171"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447558"
 ---
 # <a name="frequently-asked-questions-for-qna-maker"></a>QnA Maker に関してよく寄せられる質問
 
@@ -32,7 +32,7 @@ QnA Maker では、QnA Maker ポータルで役に立つ**ヘルプ** ボット�
 
 ### <a name="i-accidentally-deleted-a-part-of-my-qna-maker-what-should-i-do"></a>自分の QnA Maker の一部を誤って削除しました。どうしたらいいでしょうか。 
 
-質問と回答のペア、ファイル、URL、カスタムの質問と回答、ナレッジ ベース、Azure リソースを含め、削除はすべて永続的です。 ナレッジ ベースの一部を削除する前に、**[設定]** ページから確実にナレッジ ベースをエクスポートしてください。 
+質問と回答のペア、ファイル、URL、カスタムの質問と回答、ナレッジ ベース、Azure リソースを含め、削除はすべて永続的です。 ナレッジ ベースの一部を削除する前に、 **[設定]** ページから確実にナレッジ ベースをエクスポートしてください。 
 
 ### <a name="why-is-my-urlsfiles-not-extracting-question-answer-pairs"></a>指定した URL/ファイルから質問とその回答のペアが抽出されません。なぜでしょうか。
 
@@ -114,7 +114,7 @@ Azure Search リソースの名前は、QnA Maker リソース名の後にいく
 
 ### <a name="do-i-need-to-use-bot-framework-in-order-to-use-qna-maker"></a>QnA Maker を利用するには Bot Framework を使う必要がありますか?
 
-いいえ。QnA Maker に関して Bot Framework を使用する必要はありません。 ただし、QnA Maker は Azure Bot Service に用意されているいくつかのテンプレートの 1 つとして提供されています。 Bot Service では、Microsoft Bot Framework を使用してインテリジェントなボットを迅速に開発し、サーバーレス環境で実行することができます。
+いいえ。QnA Maker に関して [Bot Framework](https://github.com/Microsoft/botbuilder-dotnet) を使用する必要はありません。 ただし、QnA Maker は  [Azure Bot Service](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0) に用意されているいくつかのテンプレートの 1 つとして提供されています。 Bot Service では、Microsoft Bot Framework を使用してインテリジェントなボットを迅速に開発し、サーバーレス環境で実行することができます。
 
 ### <a name="how-can-i-create-a-bot-with-qna-maker"></a>QnA Maker でボットを作成するにはどうすればよいですか?
 

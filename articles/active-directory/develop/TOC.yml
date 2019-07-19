@@ -408,7 +408,7 @@
         - name: 重大な変更
           href: reference-breaking-changes.md
 - name: v1.0
-  expanded: true
+  expanded: false
   items:
     - name: 概要
       href: v1-overview.md
