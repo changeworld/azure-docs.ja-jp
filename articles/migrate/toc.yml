@@ -22,7 +22,7 @@
               href: tutorial-migrate-vmware.md
             - name: エージェントベース移行で VMware VM を移行する
               href: tutorial-migrate-vmware-agent.md
-    - name: Hyper-V の評価と移行
+    - name: Hyper-V VM の評価と移行
       items:
         - name: Hyper-V の評価と移行の準備をする
           href: tutorial-prepare-hyper-v.md
@@ -30,7 +30,7 @@
           href: tutorial-assess-hyper-v.md
         - name: Hyper-V VM を移行する
           href: tutorial-migrate-hyper-v.md
-    - name: 物理サーバーと仮想マシンを移行する
+    - name: 物理サーバーと VM の移行
       href: tutorial-migrate-physical-virtual-machines.md
 - name: 概念
   items:

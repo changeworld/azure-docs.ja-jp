@@ -55,7 +55,9 @@
       items:
         - name: ハイブリッド Azure AD 参加済みの最新 Windows デバイスのトラブルシューティングを行う
           href: troubleshoot-hybrid-join-windows-current.md
-        - name: ハイブリッド Azure AD 参加済みのレガシ Windows デバイスのトラブルシューティングを行う
+        - name: dsregcmd を使用したトラブルシューティング
+          href: troubleshoot-device-dsregcmd.md
+        - name: ハイブリッド Azure AD 参加済みのダウンレベル Windows デバイスのトラブルシューティング
           href: troubleshoot-hybrid-join-windows-legacy.md
         - name: Enterprise State Roaming に関する問題のトラブルシューティング
           href: enterprise-state-roaming-troubleshooting.md

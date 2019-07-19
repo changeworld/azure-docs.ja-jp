@@ -388,18 +388,26 @@
               items:
                 - name: Web Apps
                   href: app/java-get-started.md
+                - name: Web アプリ (2.5.0-BETA)
+                  href: app/java-get-started-25-beta.md
                 - name: Docker アプリ
                   href: app/docker.md
                 - name: ログ トレース
                   href: app/java-trace-logs.md
+                - name: ログ トレース (2.5.0-BETA)
+                  href: app/java-trace-logs-25-beta.md
                 - name: Unix メトリック
                   href: app/java-collectd.md
                 - name: 依存関係
                   href: app/java-agent.md
+                - name: 依存関係 (2.5.0-BETA)
+                  href: app/java-agent-25-beta.md
                 - name: テレメトリのフィルター処理
                   href: app/java-filter-telemetry.md
                 - name: Micrometer メトリック
                   href: app/micrometer-java.md
+                - name: Micrometer メトリック (2.5.0-BETA)
+                  href: app/micrometer-java-25-beta.md
                 - name: Spring Boot Initializer アプリの構成
                   href: /java/azure/spring-framework/configure-spring-boot-java-applicationinsights
             - name: Node.js アプリ

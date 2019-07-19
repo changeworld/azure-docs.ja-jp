@@ -8,12 +8,13 @@ ms.service: app-service
 ms.topic: conceptual
 ms.date: 06/17/2019
 ms.author: barclayn
-ms.openlocfilehash: f50532a21d11d2f7142fa3ee7ed08f759df36d52
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.custom: security-recommendations
+ms.openlocfilehash: 53cd2b1dde1158a1c46f798e57911dad110dc87e
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67207393"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67718250"
 ---
 # <a name="security-recommendations-for-app-service"></a>App Service のセキュリティに関する推奨事項
 
