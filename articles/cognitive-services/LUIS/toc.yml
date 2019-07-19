@@ -21,6 +21,8 @@
           displayName: 'assign key, assign resource, add key, add resource, test, deploy, endpoint, query, publish'
     - name: .NET SDK の使用
       items:
+        - name: アプリの作成と管理
+          href: sdk-csharp-quickstart-authoring-app.md
         - name: 予測エンドポイントに対するクエリの実行
           href: sdk-csharp-quickstart-query-prediction-endpoint.md
     - name: REST API の使用

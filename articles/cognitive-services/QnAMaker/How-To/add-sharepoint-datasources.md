@@ -3,19 +3,19 @@ title: SharePoint ファイル - QnA Maker
 titleSuffix: Azure Cognitive Services
 description: ご自分のサポート情報にセキュリティで保護された SharePoint データ ソースを追加して、Active Directory によりセキュリティで保護されている可能性がある質問と回答でサポート情報を補強できます。
 services: cognitive-services
-author: tulasim88
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 04/05/2019
-ms.author: tulasim
-ms.openlocfilehash: e479cf1729b7dcd2ed2f2470f2a935bdf94af80b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/24/2019
+ms.author: diberry
+ms.openlocfilehash: 3e5aa1cc78efeb6e8158155b5e0676c8a63cf6e6
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65954954"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447545"
 ---
 # <a name="add-a-secured-sharepoint-data-source-to-your-knowledge-base"></a>ご自分のサポート情報にセキュリティで保護された SharePoint データ ソースを追加する
 
@@ -35,6 +35,20 @@ SharePoint サーバーからご自分のサポート情報に、QnA Maker で�
     ![ファイルの省略記号メニューを選択し、次いで URL をコピーして、SharePoint ファイルの URL を取得します。](../media/add-sharepoint-datasources/get-sharepoint-file-url.png)
 
 1. QnA Maker ポータルの **[設定]** ページでサポート情報に [URL を追加](edit-knowledge-base.md#add-datasource)します。 
+
+### <a name="images-with-sharepoint-files"></a>Sharepoint ファイルでのイメージ
+
+ファイルにイメージが含まれる場合、それらは抽出されません。 ファイルが QnA ペアに抽出された後、QnA Maker ポータルからイメージを追加できます。
+
+次のマークダウン構文を使用してイメージを追加します。 
+
+```markdown
+![Explanation or description of image](URL of public image)
+```
+
+角かっこ `[]` 内のテキストは、イメージについての説明です。 かっこ `()` 内の URL は、イメージへの直接リンクです。 
+
+QnA Maker ポータルのインタラクティブ テスト パネルで QnA ペアをテストすると、マークダウン テキストではなくイメージが表示されます。 これにより、クライアント アプリケーションからイメージをパブリックに取得できることが検証されます。
 
 ## <a name="permissions"></a>アクセス許可
 

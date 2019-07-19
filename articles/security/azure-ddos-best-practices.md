@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2018
 ms.author: barclayn
-ms.openlocfilehash: 11f3dcefd283ada00e915c2d6cb8abf654590ec1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b8d5d1b3c3f505b66e07f7aa226cfa001af94af8
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60588161"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449340"
 ---
 # <a name="azure-ddos-protection-best-practices-and-reference-architectures"></a>Azure DDoS Protection:ベスト プラクティスと参照アーキテクチャ
 
@@ -224,6 +224,8 @@ Azure DDoS Protection Standard は、ユーザーの介入がなくても DDoS �
 - ネットワーク トラフィックが大幅に増大するバイラル イベントを計画している場合。
 
 - リソースに対して DDoS 攻撃を行うという脅迫が攻撃者からあった場合。
+
+- Azure DDoS Protection Standard の IP または IP 範囲をホワイトリストに登録する必要がある場合。 一般的なシナリオは、トラフィックが外部クラウドの WAF から Azure にルーティングされる場合に IP をホワイトリストに登録する場合です。 
 
 ビジネスに重大な影響を及ぼす攻撃については、重大度 A の[サポート チケット](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)を作成してください。
 

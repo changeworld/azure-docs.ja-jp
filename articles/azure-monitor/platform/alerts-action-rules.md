@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: anantr
 ms.component: alerts
-ms.openlocfilehash: 6e97826499842a257f6402bd5268edc4cd6a486e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 212e6b042caec5f24a620dc491dc674417816df7
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66734914"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67310382"
 ---
 # <a name="action-rules-preview"></a>アクション ルール (プレビュー)
 
@@ -30,6 +30,8 @@ ms.locfileid: "66734914"
 
 アラート ルールを使用すると、アラート生成時にトリガーされるアクション グループを定義できますが、顧客は多くの場合、業務スコープ全体にわたる共通のアクション グループを持つ傾向があります。 たとえば、リソース グループ 'ContosoRG' の担当チームはおそらく、'ContosoRG' 内で定義されているすべてのアラート ルールに対して同じアクション グループを定義します。 アクション ルールを使用すれば、構成されたスコープで生成されたすべてのアラートに対してアクション グループをトリガーできるよう、アクションを大規模に定義できるようになるため、このプロセスを簡略化できます。 前の例に戻ると、チームは 'ContosoRG' に、その中で生成されたすべてのアラートに対して同じアクション グループをトリガーする 1 つのアクション ルールを定義できるようになります。
 
+> [!NOTE]
+> アクション ルールは、現在、サービス正常性アラートには適用されません。
 
 ## <a name="configuring-an-action-rule"></a>アクション ルールの構成
 

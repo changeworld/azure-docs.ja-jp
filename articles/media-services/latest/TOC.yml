@@ -93,12 +93,13 @@
           href: streaming-policy-concept.md
         - name: ストリーミング エンドポイントのエラー コード
           href: streaming-endpoint-error-codes.md
-    - name: 動的暗号化とキー配信
+    - name: コンテンツ保護
       items:
-        - name: ストリーミング プロトコルと暗号化の種類
-          displayName: 'dynamic, encryption, content protection, PlayReady, Widevine, FairPlay'
+        - name: 動的暗号化とキー配信
+          displayName: 'content protection, streaming protocols, encryption types, content protection, PlayReady, Widevine, FairPlay'
           href: content-protection-overview.md
-        - name: アクセス制御を使用したマルチ DRM システム
+        - name: マルチ DRM システムの設計
+          displayName: 'drm, access control'
           href: design-multi-drm-system-with-access-control.md
         - name: DRM ライセンス
           items:
