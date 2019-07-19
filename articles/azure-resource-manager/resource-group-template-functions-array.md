@@ -394,7 +394,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 | Name | Type | 値 |
 | ---- | ---- | ----- |
-| stringTrue | ブール値 | True |
+| stringTrue | Bool | True |
 | stringFalse | Bool | False |
 | objectTrue | Bool | True |
 | objectFalse | Bool | False |
