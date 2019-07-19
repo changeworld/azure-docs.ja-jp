@@ -61,7 +61,7 @@ Azure Blockchain Workbench アプリケーションは、構成メタデータ�
 | Initiators | [ApplicationRoles](#application-roles) のコレクション。 ワークフローでコントラクトを作成する権限を持つユーザーに割り当てられるロール。 | はい | |
 | StartState | ワークフローの初期状態の名前。 | はい | |
 | Properties | [識別子](#identifiers)のコレクション。 ユーザー エクスペリエンス ツールでオフチェーンの読み取りまたは視覚化を実行できるデータを表します。 | はい | |
-| Constructorー | ワークフローのインスタンスを作成するための入力パラメーターを定義します。 | はい | |
+| Constructor | ワークフローのインスタンスを作成するための入力パラメーターを定義します。 | はい | |
 | Functions | ワークフローで実行できる[関数](#functions)のコレクション。 | はい | |
 | States | ワークフローの[状態](#states)のコレクション。 | はい | |
 
