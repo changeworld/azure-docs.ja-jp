@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: jingwang
-ms.openlocfilehash: 1ff20322f1d4f6024d4f41037ca18c327a0cc21f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3be075b78d8388b7146a9a3180ca825fc6476108
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65233188"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206045"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-by-using-azure-data-factory"></a>Azure Data Factory を使用した Azure Blob Storage との間でのデータのコピー
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -60,7 +60,10 @@ Azure BLOB コネクタは、次の認証の種類をサポートします。詳
 - [Azure リソースのマネージド ID 認証](#managed-identity)
 
 >[!NOTE]
->HDInsights、Azure Machine Learning、および Azure SQL Data Warehouse の PolyBase 読み込みは、Azure BLOB ストレージ アカウント キー認証のみをサポートします。
+>ソースまたはステージング BLOB ストレージが Virtual Network エンドポイントで構成されており、PolyBase を使用して SQL Data Warehouse にデータを読み込む場合、PolyBase で要求されるマネージド ID 認証とバージョン 3.18 以降のセルフホステッド統合ランタイムを使用する必要があります。 構成の前提条件の詳細については、[マネージド ID 認証](#managed-identity)セクションを参照してください。
+
+>[!NOTE]
+>HDInsights および Azure Machine Learning のアクティビティは、Azure BLOB ストレージ アカウント キー認証のみをサポートします。
 
 ### <a name="account-key-authentication"></a>アカウント キー認証
 
@@ -272,6 +275,9 @@ Azure BLOB ストレージのリンクされたサービスでは、次のプロ
 
     - **ソースとして**、[アクセス制御 (IAM)] で、少なくとも**ストレージ BLOB データ閲覧者**ロールを付与します。
     - **シンクとして**、[アクセス制御 (IAM)] で、少なくとも**ストレージ BLOB データ共同作成者**ロールを付与します。
+
+>[!IMPORTANT]
+>PolyBase を使用して BLOB (ソースまたはステージングとして) から SQL Data Warehouse にデータを読み込む場合、BLOB にマネージド ID 認証を使用しているときは、[こちらのガイダンス](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)の手順 1 と 2 にも従って、1) SQL Database サーバーを Azure Active Directory (Azure AD) に登録し、2) SQL Database サーバーにストレージ BLOB データ共同作成者のロールを割り当ててください。残りの部分は Data Factory によって処理されます。 お使いの BLOB ストレージが Azure Virtual Network エンドポイントで構成されている場合、PolyBase を使用してそこからデータを読み込むには、PolyBase で要求されるマネージド ID 認証を使用する必要があります。
 
 Azure BLOB ストレージのリンクされたサービスでは、次のプロパティがサポートされます。
 

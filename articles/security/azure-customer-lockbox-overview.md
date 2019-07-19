@@ -6,13 +6,13 @@ ms.service: security
 ms.topic: article
 ms.author: cabailey
 manager: barbkess
-ms.date: 05/07/2019
-ms.openlocfilehash: 468e392cd2c45d79cbb24f8d737a6e83fbcd2725
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/20/2019
+ms.openlocfilehash: 0ee2dde5a941d069f5b745eafb35df780f657a47
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65080685"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67312633"
 ---
 # <a name="customer-lockbox-for-microsoft-azure"></a>Microsoft Azure 用カスタマー ロックボックス
 
@@ -97,7 +97,7 @@ Microsoft Azure 用カスタマー ロックボックスには、お客様が顧
 ### <a name="remote-desktop-access-to-virtual-machines"></a>仮想マシンへのリモート デスクトップ アクセス
 
 カスタマー ロックボックスは、現在、仮想マシンへのリモート デスクトップ アクセス要求に対して使用できます。 次のワークロードがサポートされています。
-- サービスとしてのプラットフォーム (PaaS) - バージョン 1
+- サービスとしてのプラットフォーム (PaaS) - Azure Cloud Services (Web ロールと worker ロール)
 - サービスとしてのインフラストラクチャ (IaaS) - Windows と Linux (Azure Resource Manager のみ)
 - 仮想マシン スケール セット - Windows と Linux
 

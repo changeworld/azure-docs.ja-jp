@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 02/13/2019
+ms.date: 06/18/2019
 ms.author: aahi
-ms.openlocfilehash: 69c14c6b98b572bc413f5a35696269e13344387e
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 5e4f231db781b96fe204802555b56238b9e27e52
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66417316"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442667"
 ---
 # <a name="language-and-region-support-for-the-text-analytics-api"></a>Text Analytics API の言語と地域のサポート
 
@@ -31,7 +31,14 @@ Text Analytics API では、広範囲の言語、異形、方言、およびい�
 
 ## <a name="sentiment-analysis-key-phrase-extraction-and-named-entity-recognition"></a>感情分析、キー フレーズ抽出、および名前付きエンティティ認識
 
-感情分析、キー フレーズ抽出、エンティティ認識設定については、追加言語の言語規則に対応する目的でアナライザーの精度が上げられるため、サポートされる言語の一覧は対象がさらにしぼられます。
+感情分析、キー フレーズ抽出、エンティティ認識設定については、追加言語の言語規則に対応する目的でアナライザーの精度が上げられるため、サポートされる言語の一覧は対象がさらにしぼられます。 [エンティティ型](how-tos/text-analytics-how-to-entity-linking.md#supported-types-for-named-entity-recognition)の完全なセットのサポートは、現在のところ次の言語に限定されています。 
+* 英語
+* 簡体字中国語
+* フランス語
+* ドイツ語
+* スペイン語
+
+他の言語の場合は、`Person`、`Location`、および `Organization` の名前付きエンティティのみが返されます。
 
 ## <a name="language-list-and-status"></a>言語の一覧と状態
 
@@ -58,13 +65,13 @@ Text Analytics API では、広範囲の言語、異形、方言、およびい�
 | ポルトガル語 (ポルトガル) | `pt-PT`| ✔        |  ✔          | ✔ \*      |`pt` も可能|
 | ポルトガル語 (ブラジル)   | `pt-BR`|          |  ✔   |  ✔ \*       |     |
 | ロシア語     | `ru`          | ✔ \*     | ✔           |  ✔ \*           |     |
-| スペイン語     | `es`          | ✔        |            |   ✔ \*\*      |     | 
+| スペイン語     | `es`          | ✔        | ✔           |   ✔ \*\*      |     | 
 | スウェーデン語     | `sv`          | ✔ \*     | ✔           |   ✔ \*          |     |
 | トルコ語     | `tr`          | ✔ \*     |             |   ✔ \*          |  |
 
 \* 言語サポートはプレビュー段階です
 
-\*\* 名前付きエンティティ認識と[エンティティ リンク設定](how-tos/text-analytics-how-to-entity-linking.md)の両方を、この言語で使用できます。    
+\*\* [名前付きエンティティ認識](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-ner)と[エンティティ リンク設定](how-tos/text-analytics-how-to-entity-linking.md#entity-linking)の両方を、この言語で使用できます。    
 
 ## <a name="see-also"></a>関連項目
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: pullabhk
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: 8a47d3cf346d7961e9f8b1c4fa615a2faa6b1da0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 295c4fed9ab674f0c9e812c02f6b82ee53ef1b91
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60646777"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274850"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>REST API を通して Azure Backup を使用して Azure VM をバックアップする
 
@@ -108,13 +108,13 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 *GET* URI には、すべての必須パラメーターが含まれます。 追加の要求本文は必要ありません。
 
-#### <a name="responses"></a>Responses
+##### <a name="responses-1"></a>応答
 
 |Name  |Type  |説明  |
 |---------|---------|---------|
 |200 OK     | [WorkloadProtectableItemResourceList](https://docs.microsoft.com/rest/api/backup/backupprotectableitems/list#workloadprotectableitemresourcelist)        |       OK |
 
-##### <a name="example-responses"></a>応答の例
+##### <a name="example-responses-1"></a>応答の例
 
 *GET* 要求を送信すると、200 (OK) 応答が返されます。
 
@@ -329,7 +329,7 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 |---------|---------|---------|
 |202 受理されました     |         |     承認済み    |
 
-#### <a name="example-responses"></a>応答の例
+##### <a name="example-responses-3"></a>応答の例
 
 オンデマンド バックアップの *POST* 要求を送信したときの最初の応答は、場所のヘッダーまたは Azure-async-header を含む 202 (Accepted) です。
 
@@ -439,7 +439,7 @@ DELETE https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroup
 DELETE https://management.azure.com//Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;iaasvmcontainerv2;testRG;testVM?api-version=2016-12-01
 ```
 
-### <a name="responses"></a>Responses
+### <a name="responses-2"> </a>応答
 
 保護の *DELETE* は[非同期操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations)です。 つまり、この操作では、個別に追跡する必要がある別の操作が作成されます。
 

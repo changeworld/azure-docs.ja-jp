@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 256215b1976598b961ada7210e5ee92c9f72d440
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 134ab2a5f0b1b1569cdf4747f5bbe3f895ba4e8f
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65506870"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67293015"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Azure AD のパスワード保護をデプロイする
 
@@ -36,6 +36,7 @@ ms.locfileid: "65506870"
 
 ## <a name="deployment-requirements"></a>デプロイ要件
 
+* Azure AD パスワード保護でのライセンス要件については、[組織内の不適切なパスワードの排除](concept-password-ban-bad.md#license-requirements)に関する記事を参照してください。
 * Azure AD パスワード保護用の DC エージェント サービスがインストールされるすべてのドメイン コントローラーでは、Windows Server 2012 以降を実行している必要があります。 この要件は、Active Directory ドメインまたはフォレストも Windows Server 2012 ドメインまたはフォレストの機能レベルにする必要があることを意味するものではありません。 「[設計原則](concept-password-ban-bad-on-premises.md#design-principles)」で説明されているように、DC エージェントまたはプロキシ ソフトウェアが実行するために必要な最低限の DFL または FFL はありません。
 * DC エージェント サービスがインストールされるすべてのマシンには、.NET 4.5 をインストールする必要があります。
 * Azure AD パスワード保護用のプロキシ サービスがインストールされるすべてのマシンでは、Windows Server 2012 R2 以降を実行している必要があります。
@@ -144,7 +145,7 @@ Azure AD パスワード保護には 2 つのインストーラーが必要で�
    > このコマンドレットを特定の Azure テナントに対して最初に実行するときは、完了するまでにかなり時間がかかることがあります。 エラーが報告されない限り、この遅延については心配しないでください。
 
 1. フォレストを登録します。
-   * `Register-AzureADPasswordProtectionForest` PowerShell コマンドレットを使用して、Azure と通信するために必要な資格情報で、オンプレミスの Active Directory フォレストを初期化する必要があります。 このコマンドレットでは、Azure テナントのグローバル管理者の資格情報が必要です。 また、フォレスト ルート ドメイン内のオンプレミス Active Directory ドメイン管理者特権も必要です。 この手順は、フォレストごとに 1 回実行されます。
+   * `Register-AzureADPasswordProtectionForest` PowerShell コマンドレットを使用して、Azure と通信するために必要な資格情報で、オンプレミスの Active Directory フォレストを初期化する必要があります。 このコマンドレットでは、Azure テナントのグローバル管理者の資格情報が必要です。 また、オンプレミスの Active Directory のエンタープライズ管理者特権も必要です。 この手順は、フォレストごとに 1 回実行されます。
 
       `Register-AzureADPasswordProtectionForest` コマンドレットでは、以下の 3 つの認証モードがサポートされます。
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 5/30/2019
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: f4f10191ea28f73732f81eb9dc25321f82683652
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 796ae0e3be3a2e43d7f27d5932cdba0cf660f36b
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66416962"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441902"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Azure Portal でのアクション グループの作成および管理
 ## <a name="overview"></a>概要 ##
@@ -56,6 +56,8 @@ Azure Resource Manager テンプレートを使用したアクション グル�
     b. **[アクションの種類]** : 電子メール/SMS/プッシュ/音声、ロジック アプリ、Webhook、ITSM、または Automation Runbook を選択します。
 
     c. **[詳細]** : アクションの種類に基づいて、電話番号、メール アドレス、Webhook の URI、Azure アプリ、ITSM 接続、または Automation Runbook を入力します。 ITSM アクションの場合は、さらに ITSM ツールで必要な **[作業項目]** および他のフィールドを指定します。
+    
+    d. **[共通アラート スキーマ]** : [共通アラート スキーマ](https://aka.ms/commonAlertSchemaDocs)を有効にすることを選択できます。これは、Azure Monitor のすべてのアラート サービスにわたって 1 つの拡張可能で、かつ統合されたアラート ペイロードを持つ利点を提供します。
 
 1. **[OK]** を選択して、アクション グループを作成します。
 

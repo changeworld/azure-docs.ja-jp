@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: ca9b3607041f75b1c866aa2813308312ad5d1017
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8bea47467d141869b1a668668bc57451a882a54b
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65023762"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448449"
 ---
 #  <a name="how-to-process-and-extract-information-from-images-in-cognitive-search-scenarios"></a>コグニティブ検索のシナリオで画像からの情報を処理し、抽出する方法
 
@@ -30,7 +30,7 @@ ms.locfileid: "65023762"
 
 ドキュメント クラッキングでは、ファイルに埋め込まれた画像や画像ファイルを操作するための、新しいインデクサー構成パラメーター セットを使用できます。 これらのパラメーターは、下流の処理で画像を正規化するために使用されます。 画像を正規化することで、画像の画一性が高まります。 大きい画像は、高さと幅の最大値に応じてサイズ変更され、扱いやすくなります。 向きについてのメタデータがある画像は、画像の回転が垂直方向の読み込み用に調整されます。 メタデータの調整結果は、各画像用に作成された複合型に取得されます。 
 
-画像の正規化をオフにすることはできません。 画像を反復処理するスキルでは、正規化された画像が受け付けられます。
+画像の正規化をオフにすることはできません。 画像を反復処理するスキルでは、正規化された画像が受け付けられます。 インデクサーで画像の正規化を有効にするには、そのインデクサーにスキルセットがアタッチされている必要があります。
 
 | 構成パラメーター | 説明 |
 |--------------------|-------------|

@@ -4,14 +4,14 @@ description: Azure Resource Manager を使用して、リソースを新しい�
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 06/13/2019
+ms.date: 06/24/2019
 ms.author: tomfitz
-ms.openlocfilehash: bb7715a7eaa2cb499ed80b78130571f315ef0c95
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6cb2f49113a67a8dc6cea70ae58bd440f420a1d2
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67083539"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442789"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>新しいリソース グループまたはサブスクリプションへのリソースの移動
 
@@ -49,6 +49,7 @@ ms.locfileid: "67083539"
 * API Management
 * App Service アプリ (Web Apps) - 「 [App Service の制限事項](#app-service-limitations)
 * App Service 証明書 - 「[App Service 証明書の制限事項](#app-service-certificate-limitations)」
+* App Service ドメイン
 * Automation - Runbook は Automation アカウントと同じリソース グループに存在する必要があります。
 * Azure Active Directory B2C
 * Azure Cache for Redis - 仮想ネットワークを使用して Azure Cache for Redis インスタンスが構成されている場合、インスタンスを別のサブスクリプションに移動させることはできません。 [Virtual Networks の制限事項](#virtual-networks-limitations)を参照してください。
@@ -79,7 +80,6 @@ ms.locfileid: "67083539"
 * DNS
 * Event Grid
 * Event Hubs
-* フロントドア
 * HDInsight クラスター - 「[HDInsight の制限事項](#hdinsight-limitations)」を参照
 * Iot Central
 * IoT Hub
@@ -89,14 +89,14 @@ ms.locfileid: "67083539"
 * Machine Learning - Machine Learning Studio Web サービスは、同じサブスクリプション内のリソース グループには移動できますが、別のサブスクリプションには移動できません。 他の Machine Learning リソースは、異なるサブスクリプションに移動できます。
 * マネージド ディスク - 可用性ゾーン内のマネージド ディスクを別のサブスクリプションに移動することはできません
 * Media Services
-* 監視 - 新しいサブスクリプションへの移動が[サブスクリプション クォータ](../azure-subscription-service-limits.md#monitor-limits)を超えないようにします
+* 監視 - 新しいサブスクリプションへの移動が[サブスクリプション クォータ](../azure-subscription-service-limits.md#azure-monitor-limits)を超えないようにします
 * Notification Hubs
 * Operational Insights
 * Operations Management
 * ポータルのダッシュボード
 * Power BI - Power BI Embedded と Power BI ワークスペース コレクションの両方
 * パブリック IP - Basic SKU のパブリック IP は移動できます。 Standard SKU のパブリック IP は移動できません。
-* Recovery Services コンテナー - [プレビュー](#recovery-services-limitations)に登録します。
+* Recovery Services コンテナー - [制限](#recovery-services-limitations)を参照してください。
 * SAP HANA on Azure
 * Scheduler
 * 検索 - 1 回の操作で異なるリージョンにあるいくつかの Search リソースを一度に移動することはできません。 代わりに、別の操作で移動します。
@@ -104,7 +104,7 @@ ms.locfileid: "67083539"
 * Service Fabric
 * Service Fabric Mesh
 * SignalR Service
-* ストレージ - 別のリージョンのストレージ アカウントは、同一操作で移動させることはできません。 その代わり、リージョンごとの個別操作を使用します。
+* Storage
 * Storage (クラシック) - 「 [クラシック デプロイメントの制限事項](#classic-deployment-limitations)
 * ストレージ同期サービス
 * Stream Analytics - 実行中状態の Stream Analytics ジョブは移動できません。
@@ -138,6 +138,7 @@ ms.locfileid: "67083539"
 * Dev Spaces
 * Dynamics LCS
 * ExpressRoute
+* フロントドア
 * Lab Services のクラスルーム ラボを、新しいリソース グループまたはサブスクリプションに移動することはできません。 DevTest Labs は、同じサブスクリプション内の新しいリソース グループへの移動は可能ですが、サブスクリプション間の移動は可能ではありません。
 * Managed Applications
 * マネージド ID - ユーザー割り当て

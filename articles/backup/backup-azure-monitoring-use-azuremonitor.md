@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: pullabhk
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: 1e85b633024b5a3e85874707ae9a1f068e7a328d
-ms.sourcegitcommit: f9448a4d87226362a02b14d88290ad6b1aea9d82
+ms.openlocfilehash: 7c53d8fe0ee5bbfdbe180aa4d18d8c7b7fab29c2
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66808524"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295290"
 ---
 # <a name="monitoring-at-scale-using-azure-monitor"></a>Azure Monitor を使用した大規模な監視
 
@@ -29,7 +29,7 @@ ms.locfileid: "66808524"
 ## <a name="using-log-analytics-workspace"></a>Log Analytics ワークスペースを使用する
 
 > [!NOTE]
-> Azure VM バックアップ、MAB エージェント、System Center DPM (SC-DPM)、Azure VM の SQL バックアップのデータは、診断設定によって Log Analytics ワークスペースに送られます。 Azure ファイル共有のバックアップ、Microsoft Azure Backup Server (MABS) のサポートはまもなく提供される予定です。
+> Azure VM バックアップ、MAB エージェント、System Center DPM (SC-DPM)、Azure VM の SQL バックアップ、および Azure ファイル共有のバックアップのデータは、診断設定によって Log Analytics ワークスペースに送られます。 Microsoft Azure Backup Server (MABS) のサポートはまもなく提供される予定です。
 
 大規模な監視のためには、**診断設定** (複数の Azure Resource Manager リソースから別のリソースへデータを送信) および **Log Analytics** (LA、カスタム アラートを生成し、アクション グループを使用して他の通知チャネルを定義できる) という 2 つの Azure サービスの機能を活用します。 以下のセクションでは、LA を使用して Azure Backup の大規模な監視を行う方法を詳しく説明します。
 
@@ -47,6 +47,9 @@ Azure Recovery Services コンテナーなどの Azure Resource Manager リソ�
 ### <a name="deploying-solution-to-log-analytics-workspace"></a>Log Analytics ワークスペースにソリューションをデプロイする
 
 データが LA ワークスペースに入ったら、LA に [GitHub テンプレートをデプロイ](https://azure.microsoft.com/resources/templates/101-backup-oms-monitoring/)してデータを視覚化します。 同じリソース グループ、ワークスペース名、ワークスペースの場所を指定して、ワークスペースを正しく示していることを確認してから、このテンプレートをインストールします。
+
+> [!NOTE]
+> LA ワークスペースにアラートまたはバックアップ/復元ジョブがないユーザーには、ポータルで "BadArgumentError" というコードのエラーが表示されることがあります。 ユーザーはこのエラーを無視し、ソリューションの使用を続けることができます。 関連する型のデータがワークスペースに流入し始めると、視覚化によって同じ内容が反映されて、ユーザーにはこのエラーが表示されなくなります。
 
 ### <a name="view-azure-backup-data-using-log-analytics-la"></a>Log Analytics (LA) を使用して Azure Backup データを表示する
 

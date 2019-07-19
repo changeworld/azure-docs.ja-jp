@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 04/27/2019
 ms.author: juliako
-ms.openlocfilehash: 3e1a5d8ba8b6d0ec8e3ec1ba9506a88ee87d8ed1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ab74b778757aefc22f66e8b52d1f1d922526f14a
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66515741"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67296148"
 ---
 # <a name="streaming-endpoints"></a>ストリーミング エンドポイント 
 
@@ -69,7 +69,7 @@ IP フィルタリング/G20/カスタム ホスト  <sup>2</sup>|はい|はい
 <sup>1</sup> 無料試用版は、新しく作成したメディア サービス アカウントと既定のストリーミング エンドポイントにのみ適用されます。<br/>
 <sup>2</sup> エンドポイントで CDN が有効でない場合にのみ、ストリーミング エンドポイントで直接使用します。<br/>
 
-## <a name="properties"></a>Properties 
+## <a name="properties"></a>properties 
 
 このセクションでは、ストリーミング エンドポイントの一部のプロパティについて詳しく説明します。 新しいストリーミング エンドポイントを作成する方法の例と全プロパティの説明については、[ストリーミング エンドポイント](https://docs.microsoft.com/rest/api/media/streamingendpoints/create)に関する記事をご覧ください。 
 

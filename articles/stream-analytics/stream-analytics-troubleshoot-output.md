@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 92cb427149e6e6cbddfb96c6e4488017641e6482
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7dbb04a9d002fdcff49d28f69ee0975500bb7ed0
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60761745"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67340784"
 ---
 # <a name="troubleshoot-azure-stream-analytics-outputs"></a>Azure Stream Analytics の出力のトラブルシューティング
 
@@ -90,6 +90,10 @@ IGNORE_DUP_KEY を構成する際には、一部のインデックスに関す�
 * ALTER INDEX を使用する主キーや一意制約については、IGNORE_DUP_KEY を設定することはできません。インデックスをドロップし、再作成する必要があります。  
 * 一意なインデックスについては、IGNORE_DUP_KEY オプションを設定できます。このインデックスは、主キー/一意制約とは異なり、CREATE INDEX または INDEX 定義を使用して作成されます。  
 * IGNORE_DUP_KEY は、列ストア インデックスには適用されません (このようなインデックスに対して一意性を強制することはできないため)。  
+
+## <a name="column-names-are-lower-cased-by-azure-stream-analytics"></a>列名は Azure Stream Analytics によって小文字に変換されます
+元の互換性レベル (1.0) を使用していたとき、Azure Stream Analytics は列名を小文字に変更するために使用していました。 この動作は、以降の互換性レベルで修正されました。 大文字と小文字を保持するためには、お客様が互換性レベル 1.1 以降に移行することをお勧めします。 詳細については、「[Azure Stream Analytics ジョブの互換性レベル](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-compatibility-level)」を参照してください。
+
 
 ## <a name="get-help"></a>問い合わせ
 

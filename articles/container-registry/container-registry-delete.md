@@ -5,14 +5,14 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: article
-ms.date: 04/04/2019
+ms.date: 06/17/2019
 ms.author: danlep
-ms.openlocfilehash: 1e496002c869c5d2c072773d37ed5fd5d4a5841e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c544c8ed6fbfcb859ff1ff01e7bedf46cfb21418
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60430807"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295141"
 ---
 # <a name="delete-container-images-in-azure-container-registry"></a>Azure Container Registry のコンテナー イメージを削除する
 
@@ -106,10 +106,6 @@ $ az acr repository show-manifests --name myregistry --repository acr-helloworld
 ]
 ```
 
-ここで説明したマニフェストは、Azure portal または [docker manifest inspect][docker-manifest-inspect] で表示できるイメージ マニフェストとは異なります。 次のセクションで使われている "マニフェスト ダイジェスト" という用語は、イメージ マニフェストの *config.digest* ではなく、プッシュ操作によって生成されるダイジェストを示します。 config.digest ではなく、**マニフェスト ダイジェスト**によってイメージをプルおよび削除できます。 次の図では、2 種類のダイジェストが示されています。
-
-![Azure portal でのマニフェスト ダイジェストと config.digest][manifest-digest]
-
 ### <a name="manifest-digest"></a>マニフェスト ダイジェスト
 
 マニフェストは、一意の SHA-256 ハッシュつまり "*マニフェスト ダイジェスト*" によって識別されます。 各イメージは、タグ付きかどうかにかかわらず、そのダイジェストによって識別されます。 ダイジェストの値は、イメージのレイヤー データが別のイメージと同じ場合であっても一意です。 このメカニズムにより、同じタグが付けられたイメージをレジストリに繰り返しプッシュできます。 たとえば、各イメージはその一意のダイジェストによって識別されるため、`myimage:latest` をレジストリに繰り返しプッシュしてもエラーにはなりません。
@@ -135,9 +131,9 @@ $ docker pull myregistry.azurecr.io/acr-helloworld@sha256:0a2e01852872580b2c2fea
 
 ## <a name="delete-repository"></a>リポジトリを削除する
 
-リポジトリを削除すると、タグ、一意のレイヤー、マニフェストのすべてを含め、リポジトリ内のすべてのイメージが削除されます。 リポジトリを削除すると、そのリポジトリに存在したイメージによって使われていたストレージ領域が回復されます。
+リポジトリを削除すると、タグ、一意のレイヤー、マニフェストのすべてを含め、リポジトリ内のすべてのイメージが削除されます。 リポジトリを削除すると、そのリポジトリ内の一意レイヤーを参照するイメージによって使われていたストレージ領域が回復されます。
 
-次の Azure CLI コマンドは、"acr-helloworld" リポジトリと、そのリポジトリ内のすべてタグとマニフェストを削除します。 削除されるマニフェストによって参照されているレイヤーが、レジストリ内の他のイメージによって参照されていない場合、そのレイヤーのデータも削除されます。
+次の Azure CLI コマンドは、"acr-helloworld" リポジトリと、そのリポジトリ内のすべてタグとマニフェストを削除します。 削除されるマニフェストによって参照されているレイヤーが、レジストリ内の他のイメージによって参照されていない場合、そのレイヤーのデータも削除されて、ストレージ領域が回復されます。
 
 ```azurecli
  az acr repository delete --name myregistry --repository acr-helloworld
@@ -203,7 +199,7 @@ Are you sure you want to continue? (y/n): y
 
 `acr-helloworld:v2` イメージがレジストリから削除され、そのイメージに固有のレイヤー データも削除されます。 マニフェストが複数のタグに関連付けられている場合は、関連付けられているすべてのタグも削除されます。
 
-### <a name="list-digests-by-timestamp"></a>ダイジェストをタイムスタンプ順に一覧表示する
+## <a name="delete-digests-by-timestamp"></a>ダイジェストをタイムスタンプに基づいて削除する
 
 リポジトリまたはレジストリのサイズを維持するためには、特定の日付よりも古いマニフェスト ダイジェストを定期的に削除する必要があります。
 
@@ -213,8 +209,6 @@ Are you sure you want to continue? (y/n): y
 az acr repository show-manifests --name <acrName> --repository <repositoryName> \
 --orderby time_asc -o tsv --query "[?timestamp < '2019-04-05'].[digest, timestamp]"
 ```
-
-### <a name="delete-digests-by-timestamp"></a>ダイジェストをタイムスタンプに基づいて削除する
 
 古いマニフェスト ダイジェストを特定した後、次の Bash スクリプトを実行することで、指定のタイムスタンプより古いマニフェスト ダイジェストを削除することができます。 Azure CLI と **xargs** が必要です。 既定では、このスクリプトは削除を実行しません。 イメージの削除を有効にするには、`ENABLE_DELETE` の値を `true` に変更します。
 
@@ -296,7 +290,7 @@ fi
 
 シーケンスの最後のステップの出力を見るとわかるように、`"tags"` プロパティが空のリストである孤立したマニフェストが存在します。 このマニフェストは、それが参照する一意レイヤーのデータと共に、レジストリ内に依然として存在します。 **このような孤立したイメージとそのレイヤー データを削除するには、マニフェスト ダイジェストを使って削除する必要があります**。
 
-### <a name="list-untagged-images"></a>タグの付いていないイメージを一覧表示する
+## <a name="delete-all-untagged-images"></a>タグの付いていないイメージをすべて削除する
 
 次の Azure CLI コマンドを使用して、リポジトリ内に存在するタグの付いていないすべてのイメージを一覧表示できます。 `<acrName>` と `<repositoryName>` は、環境に適した値に置き換えます。
 
@@ -304,7 +298,7 @@ fi
 az acr repository show-manifests --name <acrName> --repository <repositoryName> --query "[?tags[0]==null].digest"
 ```
 
-### <a name="delete-all-untagged-images"></a>タグの付いていないイメージをすべて削除する
+スクリプトでこのコマンドを使用すると、リポジトリ内のタグ付けされていないすべてのイメージを削除できます。
 
 > [!WARNING]
 > 次のサンプル スクリプトを使用するときは注意してください。削除したイメージ データを元に戻すことはできません。 (イメージ名ではなく) マニフェスト ダイジェストを使用してイメージをプルするシステムの場合は、これらのスクリプトを実行しないでください。 このようなシステムでは、タグの付いていないイメージを削除すると、レジストリからイメージをプルできなくなります。 マニフェストでプルするのではなく、*一意のタグ付け*スキームの[推奨されるベスト プラクティス][tagging-best-practices]を採用することを検討してください。
@@ -333,7 +327,10 @@ then
     az acr repository show-manifests --name $REGISTRY --repository $REPOSITORY  --query "[?tags[0]==null].digest" -o tsv \
     | xargs -I% az acr repository delete --name $REGISTRY --image $REPOSITORY@% --yes
 else
-    echo "No data deleted. Set ENABLE_DELETE=true to enable image deletion."
+    else
+    echo "No data deleted."
+    echo "Set ENABLE_DELETE=true to enable image deletion of these images in $REPOSITORY:"
+    az acr repository show-manifests --name $REGISTRY --repository $REPOSITORY --query "[?tags[0]==null]" -o tsv
 fi
 ```
 
@@ -357,7 +354,9 @@ if ($enableDelete) {
     az acr repository show-manifests --name $registry --repository $repository --query "[?tags[0]==null].digest" -o tsv `
     | %{ az acr repository delete --name $registry --image $repository@$_ --yes }
 } else {
-    Write-Host "No data deleted. Set `$enableDelete = `$TRUE to enable image deletion."
+    Write-Host "No data deleted."
+    Write-Host "Set `$enableDelete = `$TRUE to enable image deletion."
+    az acr repository show-manifests --name $registry --repository $repository --query "[?tags[0]==null]" -o tsv
 }
 ```
 
@@ -371,7 +370,7 @@ Azure Container Registry でのイメージ ストレージの詳細について
 <!-- LINKS - External -->
 [docker-manifest-inspect]: https://docs.docker.com/edge/engine/reference/commandline/manifest/#manifest-inspect
 [portal]: https://portal.azure.com
-[tagging-best-practices]: https://blogs.msdn.microsoft.com/stevelasker/2018/03/01/docker-tagging-best-practices-for-tagging-and-versioning-docker-images/
+[tagging-best-practices]: https://stevelasker.blog/2018/03/01/docker-tagging-best-practices-for-tagging-and-versioning-docker-images/
 
 <!-- LINKS - Internal -->
 [az-acr-repository-delete]: /cli/azure/acr/repository#az-acr-repository-delete

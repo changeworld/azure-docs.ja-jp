@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: aelnably
 ms.custom: ''
-ms.openlocfilehash: 27b5dc9ccee8647d4fbb617063865df18b80bc5d
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 9806a982982971b1b3ac9c28454e17813b2ad2a5
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65990273"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67479883"
 ---
 # <a name="continuous-delivery-using-azure-devops"></a>Azure DevOps を使用した継続的デリバリー
 
@@ -36,9 +36,7 @@ Azure Pipelines でのアプリのビルドは、アプリのプログラミン�
 次のサンプルを使用して、.NET アプリをビルドする YAML ファイルを作成できます。
 
 ```yaml
-jobs:
-  - job: Build
-    pool:
+pool:
       vmImage: 'VS2017-Win2016'
 steps:
 - script: |
@@ -69,9 +67,7 @@ steps:
 次のサンプルを使用して、JavaScript アプリをビルドする YAML ファイルを作成できます。
 
 ```yaml
-jobs:
-  - job: Build
-    pool:
+pool:
       vmImage: ubuntu-16.04 # Use 'VS2017-Win2016' if you have Windows native +Node modules
 steps:
 - bash: |
@@ -99,9 +95,7 @@ steps:
 次のサンプルを使用して、Python アプリをビルドする YAML ファイルを作成できます。Python は Linux の Azure Functions でのみサポートされます。
 
 ```yaml
-jobs:
-  - job: Build
-    pool:
+pool:
       vmImage: ubuntu-16.04
 steps:
 - task: UsePythonVersion@0
@@ -129,6 +123,25 @@ steps:
     PathtoPublish: '$(System.DefaultWorkingDirectory)/build$(Build.BuildId).zip'
     name: 'drop'
 ```
+#### <a name="powershell"></a>PowerShell
+
+次のサンプルを使用して、PowerShell アプリをパッケージ化する YAML ファイルを作成できます。PowerShell は Windows の Azure Functions でのみサポートされます。
+
+```yaml
+pool:
+      vmImage: 'VS2017-Win2016'
+steps:
+- task: ArchiveFiles@2
+  displayName: "Archive files"
+  inputs:
+    rootFolderOrFile: "$(System.DefaultWorkingDirectory)"
+    includeRootFolder: false
+    archiveFile: "$(System.DefaultWorkingDirectory)/build$(Build.BuildId).zip"
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(System.DefaultWorkingDirectory)/build$(Build.BuildId).zip'
+    name: 'drop'
+```
 
 ### <a name="deploy-your-app"></a>アプリをデプロイする
 
@@ -145,6 +158,10 @@ steps:
     azureSubscription: '<Azure service connection>'
     appType: functionApp
     appName: '<Name of function app>'
+    #Uncomment the next lines to deploy to a deployment slot
+    #deployToSlotOrASE: true
+    #resourceGroupName: '<Resource Group Name>'
+    #slotName: '<Slot name>'
 ```
 
 #### <a name="linux-function-app"></a>Linux の関数アプリ
@@ -158,6 +175,11 @@ steps:
     azureSubscription: '<Azure service connection>'
     appType: functionAppLinux
     appName: '<Name of function app>'
+    #Uncomment the next lines to deploy to a deployment slot
+    #Note that deployment slots is not supported for Linux Dynamic SKU
+    #deployToSlotOrASE: true
+    #resourceGroupName: '<Resource Group Name>'
+    #slotName: '<Slot name>'
 ```
 
 ## <a name="template-based-pipeline"></a>テンプレート ベースのパイプライン
@@ -175,6 +197,10 @@ Azure Pipelines でのアプリのビルドは、アプリのプログラミン�
 
 ![Azure Functions ビルド テンプレート](media/functions-how-to-azure-devops/build-templates.png)
 
+場合によっては、ビルド成果物に特定のフォルダー構造があるため、 **[Prepend root folder name to archive paths]\(アーカイブ パスの前にルート フォルダー名を付加する\)** オプションをオンにする必要があります。
+
+![ルート フォルダーを付加する](media/functions-how-to-azure-devops/prepend-root-folder.png)
+
 #### <a name="javascript-apps"></a>JavaScript アプリ
 
 JavaScript アプリに Windows のネイティブ モジュールへの依存関係がある場合は、次を更新する必要があります。
@@ -183,19 +209,17 @@ JavaScript アプリに Windows のネイティブ モジュールへの依存�
 
   ![ビルド エージェントの OS を変更](media/functions-how-to-azure-devops/change-agent.png)
 
-- テンプレート内の**ビルドの拡張**ステップのスクリプトを `IF EXIST *.csproj dotnet build extensions.csproj --output ./bin` にする
-
-  ![変更スクリプト](media/functions-how-to-azure-devops/change-script.png)
-
 ### <a name="deploy-your-app"></a>アプリをデプロイする
 
 新しいリリース パイプラインを作成するときに、Azure Functions のリリース テンプレートを検索します。
 
 ![](media/functions-how-to-azure-devops/release-template.png)
 
+リリース テンプレートでは、デプロイ スロットへのデプロイはサポートされていません。
+
 ## <a name="creating-an-azure-pipeline-using-the-azure-cli"></a>Azure CLI を使用して Azure パイプラインを作成する
 
-`az functionapp devops-pipeline create` [コマンド](/cli/azure/functionapp/devops-pipeline#az-functionapp-devops-pipeline-create)を使用すると、リポジトリ内の任意のコード変更をビルドおよびリリースする Azure パイプラインが作成されます。 このコマンドにより、ビルドとリリース パイプラインを定義し、それをリポジトリにコミットする新しい YAML ファイルが生成されます。
+`az functionapp devops-pipeline create` [コマンド](/cli/azure/functionapp/devops-pipeline#az-functionapp-devops-pipeline-create)を使用すると、リポジトリ内の任意のコード変更をビルドおよびリリースする Azure パイプラインが作成されます。 このコマンドにより、ビルドとリリース パイプラインを定義し、それをリポジトリにコミットする新しい YAML ファイルが生成されます。 デプロイ スロットへのデプロイは、Azure CLI コマンドではサポートされていません。
 このコマンドの前提条件は、コードの場所によって異なります。
 
 - コードが GitHub にある場合:
@@ -206,7 +230,7 @@ JavaScript アプリに Windows のネイティブ モジュールへの依存�
 
     - 十分なアクセス許可を持つ GitHub 個人用アクセス トークンを作成するアクセス許可を持ちます。 [GitHub PAT アクセス許可の要件。](https://aka.ms/azure-devops-source-repos)
 
-    - 自動生成された YAML ファイルをコミットする GitHub リポジトリのマスター ブランチにコミットするためのアクセス許可があります。
+    - 自動生成された YAML ファイルをコミットする GitHub リポジトリのマスター ブランチにコミットするためのアクセス許可を持っています。
 
 - コードが Azure Repos にある場合:
 

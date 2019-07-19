@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/08/2019
 ms.author: willzhan
-ms.openlocfilehash: 5102720242edd3ffc0a377bbddf0f7f3ade68b63
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9e90951f810c5101a46c29570af8ad71b42be637
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64937218"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341028"
 ---
 # <a name="offline-widevine-streaming-for-android"></a>Android 用のオフラインの Widevine ストリーミング
 
@@ -38,6 +38,9 @@ Android Player アプリを構築するには、3 つのオプションがあり
 > * Chrome モバイル ブラウザー v62 以降の Encrypted Media Extension (EME) と Media Source Extension (MSE) を使ってプレーヤーを構築します
 
 この記事では、Widevine で保護されたコンテンツのオフライン ストリーミングに関連する一般的な質問にもお答えします。
+
+> [!NOTE]
+> オフライン DRM は、コンテンツをダウンロードするときの 1 ライセンスのために、1 つの要求を発行することに対してのみ課金されます。 どのエラーにも課金は行われません。
 
 ## <a name="prerequisites"></a>前提条件 
 

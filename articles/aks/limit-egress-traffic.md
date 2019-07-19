@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/06/2019
 ms.author: iainfou
-ms.openlocfilehash: 43ba7593336372bbbd7a3a4bb9821665a42bbf29
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 52a9ba20b60e8ef6cdb743546cd842e4ee24b3fd
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66752185"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441915"
 ---
 # <a name="preview---limit-egress-traffic-for-cluster-nodes-and-control-access-to-required-ports-and-services-in-azure-kubernetes-service-aks"></a>プレビュー - Azure Kubernetes Service (AKS) でクラスター ノードのエグレス トラフィックを制限し、必要なポートとサービスへのアクセスを制御する
 
@@ -23,7 +23,7 @@ ms.locfileid: "66752185"
 > [!IMPORTANT]
 > AKS のプレビュー機能は、セルフサービスのオプトインです。 これらは、コミュニティからフィードバックやバグを収集するために提供されています。 これらの機能はプレビュー段階であり、運用環境での使用を意図していません。 パブリック プレビュー段階の機能は、"ベスト エフォート" のサポートに該当します。 AKS テクニカル サポート チームによるサポートは、太平洋タイム ゾーン (PST) での営業時間内のみで利用できます。 詳細については、次のサポートに関する記事を参照してください。
 >
-> * [AKS サポート ポリシー][aks-support-policies]
+> * [AKS のサポート ポリシー][aks-support-policies]
 > * [Azure サポートに関する FAQ][aks-faq]
 
 ## <a name="before-you-begin"></a>開始する前に
@@ -31,6 +31,9 @@ ms.locfileid: "66752185"
 Azure CLI バージョン 2.0.66 以降がインストールされて構成されている必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][install-azure-cli]に関するページを参照してください。
 
 エグレス トラフィックを制限できる AKS クラスターを作成するには、まずサブスクリプションの機能フラグを有効にします。 この機能の登録によって、作成する AKS クラスターは、MCR または ACR のベース システム コンテナー イメージを使用するように構成されます。 *AKSLockingDownEgressPreview* 機能フラグを登録するには、次の例に示すように [az feature register][az-feature-register] コマンドを使用します。
+
+> [!CAUTION]
+> サブスクリプションで機能を登録する場合、現時点ではその機能の登録解除を行うことができません。 一部のプレビュー機能を有効にした後、すべての AKS クラスターに対して既定値が使用され、サブスクリプション内に作成されます。 運用サブスクリプションではプレビュー機能を有効にしないでください。 プレビュー機能をテストし、フィードバックを集めるには、別のサブスクリプションを使用してください。
 
 ```azurecli-interactive
 az feature register --name AKSLockingDownEgressPreview --namespace Microsoft.ContainerService

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: b-juche
-ms.openlocfilehash: fa2de14ada5d24531dfecc7f2f709a87f39ea6cb
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 207fb003eb1fdaafe4f43f7cd41dd4b7662eddf9
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65826435"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67331977"
 ---
 # <a name="guidelines-for-azure-netapp-files-network-planning"></a>Azure NetApp Files のネットワーク計画のガイドライン
 
@@ -42,7 +42,7 @@ Azure NetApp Files ネットワークを計画するときは、いくつかの�
 
 Azure NetApp Files には、次のネットワーク制限が適用されます。
 
-* (VNet を使用して、またはピアリングされた VNet にまたがって) ボリュームに接続できる VM の数は 1000 を超えることはできません。
+* Azure NetApp Files で使用される VNet の IP の数は (ピアリング VNet も含めて) 1,000 を超えることはできません。
 * 各 Azure Virtual Network (VNet) で、1 つのサブネットだけを Azure NetApp Files に委任できます。
 
 
@@ -81,7 +81,7 @@ VNet が別の VNet とピアリングされている場合、VNet アドレス�
 
 ### <a name="udrs-and-nsgs"></a>UDR と NSG
 
-次ホップを持つネットワーク セキュリティ グループ (NSG) は、Azure NetApp Files の委任されたサブネットとして使用できません。 同様に、ユーザー定義ルート (UDR) もサポートされていません。 
+Azure NetApp Files 用の委任サブネットでは、ユーザー定義ルート (UDR) とネットワーク セキュリティ グループ (NSG) はサポートされていません。
 
 回避策として、Azure NetApp Files の委任されたサブネットとの間のトラフィックを許可または拒否する他のサブネットに NSG を適用することができます。  
 
@@ -103,13 +103,13 @@ VNet が別の VNet とピアリングされている場合、VNet アドレス�
 
 さらに、同じリージョンで VNet 1 が VNet 2 とピアリングされており、VNet 2 が VNet 3 とピアリングされているシナリオを考えます。 VNet 1 のリソースは VNet 2 のリソースに接続できますが、VNet 1 と VNet 3 がピアリングされていない限り、VNet 3 のリソースには接続できません。 
 
-上の図で、VM 3 はボリューム 1 に接続できますが、VM 4 はボリューム 2 に接続できません。  理由は、スポーク VNet がピアリングされておらず、_トランジット ルーティングは VNet ピアリング経由ではサポートされていない_からです。
+上の図で、VM 3 はボリューム 1 に接続できますが、VM 4 はボリューム 2 に接続できません。  この理由は、スポーク VNet がピアリングされておらず、_トランジット ルーティングが VNet ピアリング経由ではサポートされない_からです。
 
 ## <a name="hybrid-environments"></a>ハイブリッド環境
 
 次の図は、ハイブリッド環境を示しています。 
 
-![ハイブリッド ネットワーク環境](../media/azure-netapp-files/azure-netapp-files-networ-hybrid-environment.png)
+![ハイブリッド ネットワーク環境](../media/azure-netapp-files/azure-netapp-files-network-hybrid-environment.png)
 
 ハイブリッド シナリオでは、オンプレミスのデータ センターのアプリケーションが Azure のリソースにアクセスする必要があります。  これは、データ センターを Azure に拡張したいのか、Azure ネイティブ サービスを使用したいのか、それともディザスター リカバリーが目的なのかに関係なく当てはまります。 サイト間 VPN または ExpressRoute 経由でオンプレミスの複数のリソースを Azure のリソースに接続する方法については、[VPN Gateway の計画オプション](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways?toc=%2fazure%2fvirtual-network%2ftoc.json#planningtable)に関するページを参照してください。
 
@@ -117,10 +117,10 @@ VNet が別の VNet とピアリングされている場合、VNet アドレス�
 
 構成によって異なります。 オンプレミスのリソースを、ハブおよびスポークのリソースに接続できます。
 
-上に示したトポロジでは、オンプレミス ネットワークは Azure のハブ VNet に接続されており、ハブ VNet とピアリングされている 2 つのスポーク VNet があります。  このシナリオで、Azure NetApp Files ボリュームに対してサポートされている接続オプションは次のとおりです。
+上に示したトポロジでは、オンプレミス ネットワークは Azure のハブ VNet に接続されており、ハブ VNet とピアリングされているのと同じリージョンに 2 つのスポーク VNet があります。  このシナリオで、Azure NetApp Files ボリュームに対してサポートされている接続オプションは次のとおりです。
 
-* オンプレミス リソース VM 1 および VM 2 は、サイト間 VPN または ExpressRoute 経由でハブのボリューム 1 に接続できます。 
-* オンプレミス リソース VM 1 および VM 2 は、ボリューム 2 またはボリューム 3 に接続できます。
+* オンプレミス リソースの VM 1 と VM 2 を、サイト間 VPN または Express Route 経由でハブのボリューム 1 に接続できます。 
+* オンプレミス リソースの VM 1 と VM 2 を、サイト間 VPN とリージョンの VNet ピアリング経由でハブのボリューム 2 とボリューム 3 に接続できます。
 * ハブ VNet 内の VM 3 は、スポーク VNet 1 内のボリューム 2 と、スポーク VNet 2 内のボリューム 3 に接続できます。
 * スポーク VNet 1 の VM 4 と、スポーク VNet 2 の VM 5 は、ハブ VNet 内のボリューム 1 に接続できます。
 

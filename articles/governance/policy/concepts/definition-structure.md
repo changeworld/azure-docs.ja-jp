@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 91dd1ebc457bfeed5c9e8d0d62ecc23740ca5d8d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 398efd36e6c8d82a5090b7446c95abb2d1bfbca1
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65979547"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67428760"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy の定義の構造
 
@@ -72,6 +72,10 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
 
 ## <a name="mode"></a>Mode
 
+**Mode** は、ポリシーが Azure Resource Manager のプロパティまたはリソース プロバイダーのプロパティのどちらをターゲットにしているかどうかに応じて構成されます。
+
+### <a name="resource-manager-modes"></a>Resource Manager のモード
+
 **mode** では、ポリシーに対して評価されるリソースの種類を決定します。 サポートされているモードは次のとおりです。
 
 - `all`: リソース グループとすべてのリソースの種類を評価します
@@ -80,6 +84,13 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
 ほとんどの場合、**mode** は `all` に設定することをお勧めします。 ポータルを使用して作成されるポリシーの定義はすべて、`all` モードを使用します。 PowerShell または Azure CLI を使用する場合、**mode** パラメーターを手動で指定することができます。 ポリシー定義に **mode** 値が含まれていない場合、既定値として Azure PowerShell では `all` が、Azure CLI では `null` が使用されます。 `null` モードは、下位互換性をサポートするために `indexed` を使用するのと同じです。
 
 タグまたは場所を適用するポリシーを作成する場合は、`indexed` を使用してください。 これは必須ではありませんが、それによって、タグまたは場所をサポートしていないリソースが、コンプライアンス結果に非準拠として表示されることを回避できます。 例外は**リソース グループ**です。 リソース グループに対して場所またはタグを適用するポリシーでは、**mode** を `all` に設定し、明確に `Microsoft.Resources/subscriptions/resourceGroups` 型をターゲットにする必要があります。 例については、[リソース グループのタグを適用する](../samples/enforce-tag-rg.md)ことに関する記事を参照してください。 タグをサポートするリソースの一覧については、「[Azure リソースでのタグのサポート](../../../azure-resource-manager/tag-support.md)」を参照してください。
+
+### <a name="resource-provider-modes"></a>リソース プロバイダーのモード
+
+現在サポートされている唯一のリソース プロバイダーのモードは、[Azure Kubernetes Service](../../../aks/intro-kubernetes.md) のアドミッション コントローラー規則を管理するための `Microsoft.ContainerService.Data` です。
+
+> [!NOTE]
+> [Kubernetes 用の Azure Policy](rego-for-aks.md) はパブリック プレビューで、組み込みのポリシー定義のみをサポートします。
 
 ## <a name="parameters"></a>parameters
 
@@ -389,6 +400,7 @@ Azure Policy では、次の種類の効果をサポートしています。
 - **AuditIfNotExists**: リソースが存在しない場合に監査を有効にします。
 - **DeployIfNotExists**: リソースが存在しない場合にリソースをデプロイします。
 - **Disabled**: リソースがポリシー規則に準拠しているかどうかを評価しません。
+- **EnforceRegoPolicy**: Azure Kubernetes Service の Open Policy Agent アドミッション コントローラーを構成します (プレビュー)
 
 **append** の場合、次のように詳細を指定する必要があります。
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/13/2019
-ms.openlocfilehash: adc5a601a04936a376d7c69b26c2429940ebdf6e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b79efa6ee1f4c052a0037a971fc36d8a9ae0ce58
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66306466"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67458725"
 ---
 # <a name="azure-active-directory-integration-for-azure-red-hat-openshift"></a>Azure Red Hat OpenShift の Azure Active Directory 統合
 
@@ -83,17 +83,34 @@ Azure Active Directory に対してアプリを認証するためのクライア
 4. **[有効期限]** を任意の期間に設定します。たとえば、 **[年 2]** にします。
 5. **[追加]** をクリックします。ページの **[クライアント シークレット]** セクションにキー値が表示されます。
 6. キー値をコピーします。 [Azure Red Hat OpenShift クラスターの作成](tutorial-create-cluster.md)のチュートリアルでは、この値を `SECRET` と呼びます。
- 
+
 ![[証明書とシークレット] ウィンドウのスクリーンショット](./media/howto-create-tenant/create-key.png)
- 
+
 Azure アプリケーション オブジェクトの詳細については、「[Azure Active Directory のアプリケーション オブジェクトとサービス プリンシパル オブジェクト](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)」を参照してください。
 
 新しい Azure AD アプリケーションの作成の詳細については、[Azure Active Directory v1.0 エンドポイントへのアプリの登録](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-add-azure-ad-app)に関する記事を参照してください。
 
+## <a name="add-api-permissions"></a>API アクセス許可を追加する
+
+1. **[管理]** セクションで **[API のアクセス許可]** をクリックします。
+2. **[アクセス許可の追加]** をクリックし、 **[Azure Active Directory Graph]** 、 **[委任されたアクセス許可]** の順に選択します。
+3. 下の一覧で **[ユーザー]** を展開し、**User.Read** が有効であることを確認します。
+4. 上にスクロールして **[アプリケーションのアクセス許可]** を選択します。
+5. 下のリストで **[ディレクトリ]** を展開し、**Directory.ReadAll** を有効にします。
+6. **[アクセス許可の追加]** をクリックして変更を適用します。
+7. この時点で、API アクセス許可パネルに *User.Read* と *Directory.ReadAll* の両方が表示されているはずです。 *Directory.ReadAll* の隣の **[Admin consent required]\(管理者の同意が必要\)** 列の警告に注意してください。
+8. *Azure サブスクリプション管理者*である場合、下の **[Grant admin consent for *Subscription Name*]\(<サブスクリプション名> に管理者の同意を付与する\)** をクリックします。 *Azure サブスクリプション管理者*でない場合、管理者からの同意を要求します。
+![API アクセス許可パネルのスクリーンショット。 User.Read および Directory.ReadAll アクセス許可が追加され、Directory.ReadAll に管理者の同意が必要](./media/howto-aad-app-configuration/permissions-required.png)
+
+> [!IMPORTANT]
+> クラスター管理者グループの同期は、同意が付与された後でないと機能しません。 チェックマークが付いた緑色の円と、"Granted for *Subscription Name*" (<サブスクリプション名> に許可済み) というメッセージが *[Admin consent required]\(管理者の同意が必要\)* 列に表示されます。
+
+管理者およびその他のロールの管理の詳細については、[Azure サブスクリプション管理者の追加または変更](https://docs.microsoft.com/azure/billing/billing-add-change-azure-subscription-administrator)に関する記事を参照してください。
+
 ## <a name="resources"></a>リソース
 
-* [Azure Active Directory のアプリケーション オブジェクトとサービス プリンシパル オブジェクト](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)  
-* [クイック スタート:Azure Active Directory v1.0 エンドポイントを使用してアプリを登録する](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-add-azure-ad-app)  
+* [Azure Active Directory のアプリケーション オブジェクトとサービス プリンシパル オブジェクト](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)
+* [クイック スタート:Azure Active Directory v1.0 エンドポイントを使用してアプリを登録する](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-add-azure-ad-app)
 
 ## <a name="next-steps"></a>次の手順
 
