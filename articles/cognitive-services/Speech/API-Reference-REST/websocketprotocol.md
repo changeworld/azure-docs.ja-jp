@@ -332,7 +332,7 @@ return SDK.CreateRecognizerWithCustomAudioSource(
 | WebSocket message encoding | Text |
 | Path | `speech.startDetected` |
 | Content-Type | application/json; charset=utf-8 |
-| 本文 | 発話の開始が検出された状況に関する情報を含んだ JSON 構造体。 この構造体の *Offset* フィールドは、音声ストリーム内で発話が検知された箇所のオフセット (100 ナノ秒単位) を示します。このオフセットは、音声ストリームの先頭からの相対位置で示されます。 |
+| Body | 発話の開始が検出された状況に関する情報を含んだ JSON 構造体。 この構造体の *Offset* フィールドは、音声ストリーム内で発話が検知された箇所のオフセット (100 ナノ秒単位) を示します。このオフセットは、音声ストリームの先頭からの相対位置で示されます。 |
 
 #### <a name="sample-message"></a>サンプル メッセージ
 
