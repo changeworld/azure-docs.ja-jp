@@ -217,8 +217,8 @@
         - name: 予測モデルを自動トレーニングする
           displayName: time series
           href: how-to-auto-train-forecast.md
-        - name: 精度メトリックを表示する
-          href: how-to-understand-accuracy-metrics.md
+        - name: グラフとメトリックを理解する
+          href: how-to-understand-automated-ml.md
     - name: モデルをデプロイおよび提供する
       items:
         - name: デプロイする場所と方法

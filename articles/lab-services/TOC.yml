@@ -56,8 +56,6 @@
           href: best-practices-distributive-collaborative-development-environment.md
         - name: Azure DevOps との統合
           href: devtest-lab-dev-ops.md
-        - name: 要求機能の使用
-          href: devtest-lab-use-claim-capabilities.md
         - name: シナリオ
           items:
             - name: DevTest Labs を使用する一般的なシナリオ
@@ -68,6 +66,8 @@
               href: devtest-lab-test-env.md
             - name: トレーニングでのラボの使用
               href: devtest-lab-training-lab.md
+            - name: クレーム可能 VM を使用するシナリオ
+              href: devtest-lab-use-claim-capabilities.md
 - name: ハウツー ガイド
   items:
     - name: クラスルーム ラボ
@@ -158,11 +158,11 @@
           items:
             - name: VM の作成 - Azure portal
               href: devtest-lab-add-vm.md
-            - name: Azure PowerShell を使用した VM の作成
+            - name: VM の作成 - Azure PowerShell
               href: devtest-lab-vm-powershell.md
-            - name: Azure CLI を使用した VM の作成と管理
+            - name: VM の作成 - Azure CLI
               href: devtest-lab-vmcli.md
-            - name: Resource Manager テンプレートを使用した VM の作成
+            - name: VM の作成 - Resource Manager テンプレート
               href: devtest-lab-use-resource-manager-template.md
             - name: PowerShell または CLI を使用して VM を開始/停止する
               href: use-command-line-start-stop-virtual-machines.md
@@ -172,6 +172,8 @@
               href: devtest-lab-resize-vm.md
             - name: VM を再デプロイする
               href: devtest-lab-redeploy-vm.md
+            - name: VM の自動シャットダウンの構成
+              href: devtest-lab-auto-shutdown-vm.md
             - name: クレーム可能 VM の作成と管理
               href: devtest-lab-add-claimable-vm.md
             - name: シークレットの構成
@@ -210,9 +212,9 @@
               items:
                 - name: VM からカスタム イメージを作成する
                   href: devtest-lab-create-custom-image-from-vm-using-portal.md
-                - name: Azure Portal を使用して VHD からカスタム イメージを作成する
+                - name: VHD からカスタム イメージを作成する - Azure portal
                   href: devtest-lab-create-template.md
-                - name: PowerShell を使用して VHD からカスタム イメージを作成する
+                - name: VHD からカスタム イメージを作成する - PowerShell
                   href: devtest-lab-create-custom-image-from-vhd-using-powershell.md
                 - name: AzCopy を使用して VHD ファイルをアップロードする
                   href: devtest-lab-upload-vhd-using-azcopy.md

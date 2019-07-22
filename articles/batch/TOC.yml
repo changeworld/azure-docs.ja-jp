@@ -61,6 +61,8 @@
           href: batch-account-create-portal.md
         - name: Batch Management .NET で Batch アカウントを管理する
           href: batch-management-dotnet.md
+        - name: コスト分析と予算
+          href: budget.md
     - name: Azure AD による認証
       items:
         - name: Batch サービスでの Azure AD
