@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:Anomaly Detector ライブラリと Python を使用してデータの異常を検出する | Microsoft Docs
+title: クイック スタート:Anomaly Detector ライブラリと Python を使用してデータの異常を検出する
 titleSuffix: Azure Cognitive Services
 description: Anomaly Detector API を使用して、データ系列の異常をバッチとして、またはストリーミング データで検出します。
 services: cognitive-services
@@ -7,15 +7,15 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
-ms.topic: article
+ms.topic: quickstart
 ms.date: 07/01/2019
 ms.author: aahi
-ms.openlocfilehash: 1d89ed8f40547142d41af9c587fc8fc000fa4dd9
-ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
+ms.openlocfilehash: 9176ab84dd3f493604bd655e0498f5ad476776d0
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67503664"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67721513"
 ---
 # <a name="quickstart-anomaly-detector-client-library-for-python"></a>クイック スタート:Python 用 Anomaly Detector クライアント ライブラリ
 
@@ -88,7 +88,7 @@ Azure の場所の変数をエンドポイントに追加し、キーを使用�
 
 ### <a name="load-time-series-data-from-a-file"></a>ファイルから時系列データ セットを読み込む
 
-このクイック スタートのサンプル データを [GitHub](https://github.com/Azure-Samples/AnomalyDetector/blob/master/example-data/request-data.csv) からダウンロードします。
+このクイックスタートのサンプル データを [GitHub](https://github.com/Azure-Samples/AnomalyDetector/blob/master/example-data/request-data.csv) からダウンロードします。
 1. ブラウザーで、 **[Raw]\(未加工\)** を右クリックします。
 2. **[名前を付けてリンク先を保存]** をクリックします。
 3. ファイルを .csv ファイルとしてアプリケーション ディレクトリに保存します。
@@ -121,12 +121,12 @@ IDE で、またはコマンド ラインで `python` コマンドとファイ�
  
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-Cognitive Services サブスクリプションをクリーンアップして削除する必要がある場合、リソースまたはリソース グループを削除することができます。 リソース グループを削除すると、そのリソース グループに関連付けられた他のリソースも削除されます。
+Cognitive Services サブスクリプションをクリーンアップして削除したい場合は、リソースまたはリソース グループを削除することができます。 リソース グループを削除すると、そのリソース グループに関連付けられている他のリソースも削除されます。
 
 * [ポータル](../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-次のクラウド シェル コマンドを実行して、リソース グループとそれに関連付けられたリソースを削除することもできます。 これが完了するまで数分かかる場合があります。 
+次のクラウド シェル コマンドを実行して、リソース グループとそれに関連付けられているリソースを削除することもできます。 これは完了するまでに数分かかる場合があります。 
 
 ```azurecli-interactive
 az group delete --name example-anomaly-detector-resource-group
@@ -137,6 +137,6 @@ az group delete --name example-anomaly-detector-resource-group
 > [!div class="nextstepaction"]
 >[Azure Databricks を使用した異常検出のストリーム配信](../tutorials/anomaly-detection-streaming-databricks.md)
 
-* [Anomaly Detector API](../overview.md) とは何か?
-* Anomaly Detector API を使用する場合の [ベスト プラクティス](../concepts/anomaly-detection-best-practices.md)。
+* [Anomaly Detector API](../overview.md) とは
+* Anomaly Detector API を使用する場合の[ベスト プラクティス](../concepts/anomaly-detection-best-practices.md)。
 * このサンプルのソース コードは、[GitHub](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/sdk/csharp-sdk-sample.cs) にあります。
