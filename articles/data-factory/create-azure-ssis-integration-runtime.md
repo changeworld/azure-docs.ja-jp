@@ -23,7 +23,7 @@ ms.locfileid: "67484833"
 
 このチュートリアルでは、Azure-SQL Server Integration Services (SSIS) 統合ランタイム (IR) を Azure Data Factory (ADF) にプロビジョニングする手順について説明します。 Azure-SSIS IR では、Azure SQL Database サーバー/Managed Instance によってホストされている SSIS カタログ (SSISDB) にデプロイされたパッケージ (プロジェクト デプロイ モデル) と、ファイル システム/ファイル共有/Azure Files にデプロイされたパッケージ (パッケージ デプロイ モデル) の実行がサポートされます。 Azure-SSIS IR がプロビジョニングされると、SQL Server Data Tools (SSDT)/SQL Server Management Studio (SSMS) などの使い慣れたツールや `dtinstall`/`dtutil`/`dtexec` などのコマンド ライン ユーティリティを使用して、Azure でパッケージをデプロイして実行できます。
 
-「[チュートリアル:Azure-SSIS IR のプロビジョニング](tutorial-create-azure-ssis-runtime-portal.md)」では、Azure portal/ADF アプリ経由で Azure-SSIS IR を作成する方法と、必要に応じて Azure SQL Database サーバー/Managed Instance を使用して SSISDB をホストする方法を示します。 この記事では、チュートリアルをさらに掘り下げ、次の操作を行う方法を示します。
+[Azure-SSIS IR のプロビジョニングに関するチュートリアル](tutorial-create-azure-ssis-runtime-portal.md)では、Azure portal/ADF アプリ経由で Azure-SSIS IR を作成する方法と、必要に応じて Azure SQL Database サーバー/Managed Instance を使用して SSISDB をホストする方法を示します。 この記事では、チュートリアルをさらに掘り下げ、次の操作を行う方法を示します。
 
 - 必要に応じて、仮想ネットワーク サービス エンドポイント/仮想ネットワーク内の Managed Instance で Azure SQL Database サーバーを使用して、SSISDB をホストします。 前提条件として、Azure-SSIS IR を仮想ネットワークに参加させるために、仮想ネットワークのアクセス許可/設定を構成する必要があります。
 
@@ -74,7 +74,7 @@ ADF と Azure-SSIS IR が現在使用可能な Azure リージョンの一覧に
 
 このセクションでは、Azure portal、具体的には ADF ユーザー インターフェイス (UI)/アプリを使用して、Azure-SSIS IR を作成します。
 
-### <a name="create-a-data-factory"></a>Data Factory を作成する。
+### <a name="create-a-data-factory"></a>Data Factory の作成
 
 1. Web ブラウザー (**Microsoft Edge** または **Google Chrome**) を起動します。 現在、Data Factory の UI がサポートされる Web ブラウザーは Microsoft Edge と Google Chrome だけです。
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
@@ -265,7 +265,7 @@ $SSISDBServerAdminPassword = "[your server admin password for SQL authentication
 $SSISDBPricingTier = "[Basic|S0|S1|S2|S3|S4|S6|S7|S9|S12|P1|P2|P4|P6|P11|P15|…|ELASTIC_POOL(name = <elastic_pool_name>) for Azure SQL Database server or leave it empty for Managed Instance]"
 ```
 
-### <a name="sign-in-and-select-subscription"></a>サインインしてサブスクリプションを選択します。
+### <a name="sign-in-and-select-subscription"></a>サインインしてサブスクリプションを選択する
 
 サインインして Azure サブスクリプションを選択するには、スクリプトに次のコードを追加します。
 
@@ -341,7 +341,7 @@ if(![string]::IsNullOrEmpty($VnetId) -and ![string]::IsNullOrEmpty($SubnetName))
 New-AzResourceGroup -Location $DataFactoryLocation -Name $ResourceGroupName
 ```
 
-### <a name="create-a-data-factory"></a>Data Factory を作成する。
+### <a name="create-a-data-factory"></a>Data Factory の作成
 
 次のコマンドを実行して、データ ファクトリを作成します。
 
