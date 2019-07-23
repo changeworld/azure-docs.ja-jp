@@ -23,13 +23,13 @@ ms.locfileid: "67274850"
 
 新しいコンテナーやポリシーを作成する場合は、[コンテナーの作成](backup-azure-arm-userestapi-createorupdatevault.md)と[ポリシーの作成する](backup-azure-arm-userestapi-createorupdatepolicy.md)に関する REST API のチュートリアルを参照してください。
 
-既定のポリシー (名前は "DefaultPolicy") を使用して、リソース グループ "testVaultRG" 内に存在する Recovery Services コンテナー "testVault" に対して、"testRG" リソース グループの "testVM" という VM を保護すると仮定します。
+既定のポリシー (名前は "DefaultPolicy") を使用し、リソース グループ "testVaultRG" 内に存在する Recovery Services コンテナー "testVault" に対して、リソース グループ "testRG" の "testVM" という VM を保護すると仮定します。
 
 ## <a name="configure-backup-for-an-unprotected-azure-vm-using-rest-api"></a>REST API を使用して保護されていない Azure VM のバックアップを構成する
 
 ### <a name="discover-unprotected-azure-vms"></a>保護されていない Azure VM を検出する
 
-最初に、コンテナーが Azure VM を識別できる必要があります。 これは、[refresh 操作](https://docs.microsoft.com/rest/api/backup/protectioncontainers/refresh)を使用してトリガーされます。 これは、現在のサブスクリプション内で保護されていないすべての VM の最新の一覧を取得し、それらが "キャッシュ" されるようにする、非同期の *POST* 操作です。 VM が ''キャッシュ" されると、Recovery Services は VM にアクセスし、それを保護できるようになります。
+最初に、コンテナーが Azure VM を識別できるようにする必要があります。 これは、[refresh 操作](https://docs.microsoft.com/rest/api/backup/protectioncontainers/refresh)を使用してトリガーされます。 これは、現在のサブスクリプション内で保護されていない全ての VM の最新の一覧を取得し、それらが "キャッシュ" されるようにする非同期の *POST* 操作です。 VM が "キャッシュ" されると、Recovery Services は VM にアクセスし、それを保護できるようになります。
 
 ```http
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{vaultresourceGroupname}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/refreshContainers?api-version=2016-12-01
@@ -321,13 +321,13 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 
 ### <a name="responses"></a>Responses
 
-オンデマンド バックアップをトリガーすることは、[非同期操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations)です。 つまり、この操作では、個別に追跡する必要がある別の操作が作成されます。
+オンデマンド バックアップのトリガーは[非同期操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations)として扱われます。 つまり、この操作では、個別に追跡する必要がある別の操作が作成されます。
 
 これにより、2 つの応答が返されます。別の操作が作成されたときは 202 (Accepted)、その操作が完了したときは 200 (OK) です。
 
 |Name  |Type  |説明  |
 |---------|---------|---------|
-|202 受理されました     |         |     承認済み    |
+|202 Accepted     |         |     承認済み    |
 
 ##### <a name="example-responses-3"></a>応答の例
 
