@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 05/20/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 490b96698268fb8717bc1169c2cceb932aad913c
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 70f6e26d423781ba53865304a3fe8440fb120a7a
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67273795"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67705168"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure Monitor のサポートされるメトリック
 
@@ -908,15 +908,19 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 |メトリック|メトリックの表示名|単位|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
-|ClusterDataCapacityFactor|キャッシュ使用率|Percent|平均|クラスター スコープ内の使用率レベル|ディメンションなし|
-|QueryDuration|クエリ実行時間|ミリ秒|平均|クエリの実行時間 (秒単位)|QueryStatus|
-|IngestionsLoadFactor|インジェストの使用率|Percent|平均|クラスターでのインジェスト スロットの使用率|ディメンションなし|
-|IsEngineAnsweringQuery|キープ アライブ|Count|平均|サニティ チェックでは、クラスターがクエリに応答していることが示されます|ディメンションなし|
-|IngestCommandOriginalSizeInMb|インジェストの量 (MB 単位)|Count|合計|クラスターに取り込まれたデータの全体的な量 (MB 単位)|ディメンションなし|
-|IngestedEventAgeSeconds|インジェストの待機時間 (秒単位)|Seconds|平均|ソース (メッセージが EventHub 内にある場合など) からクラスターへのインジェスト時間 (秒単位)|ディメンションなし|
-|EventRecievedFromEventHub|(Event Hubs の) 処理されたイベント|Count|合計|Event Hub からのインジェスト時に、クラスターによって処理されたイベントの数|ディメンションなし|
-|IngestionResult|インジェストの結果|Count|Count|インジェスト操作の回数|IngestionResultDetails|
-|EngineCPU|CPU|Percent|平均|CPU 使用率レベル|ディメンションなし|
+|CacheUtilization|キャッシュ使用率|Percent|平均|クラスター スコープ内の使用率レベル|なし|
+|QueryDuration|クエリ実行時間|ミリ秒|平均|クエリの実行時間 (秒単位)|クエリの状態|
+|IngestionUtilization|インジェストの使用率|Percent|平均|クラスターでのインジェスト スロットの使用率|なし|
+|KeepAlive|キープ アライブ|Count|平均|サニティ チェックでは、クラスターがクエリに応答していることが示されます|なし|
+|IngestionVolumeInMB|インジェストの量 (MB 単位)|Count|合計|クラスターに取り込まれたデータの全体的な量 (MB 単位)|Database|
+|IngestionLatencyInSeconds|インジェストの待機時間 (秒単位)|Seconds|平均|ソース (メッセージが EventHub 内にある場合など) からクラスターへのインジェスト時間 (秒単位)|なし|
+|EventProcessedForEventHubs|(Event Hubs の) 処理されたイベント|Count|合計|Event Hub からのインジェスト時に、クラスターによって処理されたイベントの数|なし|
+|IngestionResult|インジェストの結果|Count|Count|インジェスト操作の回数|Status|
+|CPU|CPU|Percent|平均|CPU 使用率レベル|なし|
+| ContinuousExportNumOfRecordsExported | 連続エクスポートでエクスポートされたレコードの数 | Count | 合計 | エクスポート操作中に作成されたすべてのストレージ アーティファクトについてエクスポートされたレコードの数  | なし |
+| ExportUtilization | エクスポート使用率 | Percent | 最大値 | エクスポート使用率 | なし |
+| ContinuousExportPendingCount | 保留中の連続エクスポートの数 | Count | 最大値 | 実行の準備ができている保留中の連続エクスポート ジョブの数 | なし |
+| ContinuousExportMaxLatenessMinutes | 連続エクスポートの最大遅延分数 | Count | 最大値 | 保留中で実行準備ができているすべての連続エクスポートの最大時間 (分) | なし |
 
 ## <a name="microsoftlocationbasedservicesaccounts"></a>Microsoft.LocationBasedServices/accounts
 

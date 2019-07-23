@@ -10,16 +10,16 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 06/26/2019
 ms.author: dapine
-ms.openlocfilehash: 45a03a0912681b4fc33ef8df88fa00fd5458f720
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 288894705e1108d6dd511b60cd2bc3bcee4c6d41
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67445831"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67704348"
 ---
-# <a name="deploy-and-run-container-on-azure-container-instance-aci"></a>Azure コンテナー インスタンス (ACI) にコンテナーをデプロイして実行する
+# <a name="deploy-and-run-container-on-azure-container-instance"></a>Azure コンテナー インスタンスにコンテナーをデプロイして実行する
 
-次の手順に従い、Azure [コンテナー インスタンス](https://docs.microsoft.com/azure/container-instances/) (ACI) を使用してクラウド内の Azure Cognitive Services アプリケーションを簡単にスケールできます。 これにより、インフラストラクチャの管理ではなくアプリケーションの構築に集中することができます。
+次の手順に従い、Azure [コンテナー インスタンス](https://docs.microsoft.com/azure/container-instances/) を使用してクラウド内の Azure Cognitive Services アプリケーションを簡単にスケールできます。 これにより、インフラストラクチャの管理ではなくアプリケーションの構築に集中することができます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -35,7 +35,7 @@ ms.locfileid: "67445831"
 
 山かっこ `<>` 内のすべての変数は、ご自分の値に置き換える必要があります。 この置き換えには山かっこも含まれます。
 
-[!INCLUDE [Create a Text Analytics Containers on Azure Container Instances (ACI)](./includes/create-aci-resource.md)]
+[!INCLUDE [Create a Text Analytics Containers on Azure Container Instances](includes/create-container-instances-resource.md)]
 
 ## <a name="use-the-container-instance"></a>コンテナー インスタンスを使用する
 

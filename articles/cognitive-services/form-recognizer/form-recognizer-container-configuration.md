@@ -1,20 +1,20 @@
 ---
-title: コンテナーの構成 - Form Recognizer
+title: Form Recognizer 向けコンテナーの構成方法
 titleSuffix: Azure Cognitive Services
 description: Form Recognizer コンテナーを構成してフォームとテーブルのデータを解析する方法を学習します。
 author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
-ms.subservice: form-recognizer
+ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: 7e8e7a13cd02a6f3b109a84829dba2a81fd36aaa
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 7752b09dd1bf20d796b19d03e62426b098486c39
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67296249"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67718458"
 ---
 # <a name="configure-form-recognizer-containers"></a>Form Recognizer コンテナーの構成
 
@@ -45,7 +45,7 @@ Form Recognizer コンテナーのランタイム環境は、`docker run` コマ
 
 この設定は、Azure portal で、**Form Recognizer の [概要]** の **[エンドポイント]** で確認できます。
 
-|必須| Name | データ型 | 説明 |
+|必須| EnableAdfsAuthentication | データ型 | 説明 |
 |--|------|-----------|-------------|
 |はい| `Billing` | string | 課金エンドポイント URI<br><br>例:<br>`Billing=https://westus2.api.cognitive.microsoft.com/` |
 
@@ -74,7 +74,7 @@ Form Recognizer コンテナーには、入力マウントと出力マウント�
 
 ホストのマウント場所の厳密な構文は、ホスト オペレーティング システムによって異なります。 また、Docker サービス アカウントのアクセス許可とホストのマウント場所のアクセス許可が競合するために、[ホスト コンピューター](form-recognizer-container-howto.md#the-host-computer)のマウント場所にアクセスできない場合があります。
 
-|省略可能| Name | データ型 | 説明 |
+|省略可能| EnableAdfsAuthentication | データ型 | 説明 |
 |-------|------|-----------|-------------|
 |必須| `Input` | string | 入力マウントのターゲット。 既定値は `/input` です。    <br><br>例:<br>`--mount type=bind,src=c:\input,target=/input`|
 |必須| `Output` | string | 出力マウントのターゲット。 既定値は `/output` です。  <br><br>例:<br>`--mount type=bind,src=c:\output,target=/output`|

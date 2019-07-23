@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 06/18/2019
+ms.date: 07/10/2019
 ms.author: diberry
-ms.openlocfilehash: 7f82bf5a40df0554d4f98b2d835fcbd69279be43
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: dedc498ebc910b448b1684136c288b2045780e00
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204157"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797950"
 ---
 # <a name="using-subscription-keys-with-your-luis-app"></a>LUIS アプリでのサブスクリプション キーの使用
 
@@ -32,6 +32,8 @@ Language Understanding (LUIS) を初めて使用するときは、サブスク�
 
 [予測エンドポイント リソース](get-started-portal-deploy-app.md#create-the-endpoint-resource)は、Azure portal 内で作成します。 このリソースは、エンドポイントの予測クエリでのみ使用します。 このアプリに変更を加えるために、このリソースを使用しないでください。
 
+Language Understanding リソースまたは Cognitive Services リソースを作成できます。 Language Understanding リソースを作成する場合、リソース名の後にリソースの種類を設定することをお勧めします。 
+
 <a name="programmatic-key" ></a>
 <a name="authoring-key" ></a>
 <a name="endpoint-key" ></a>
@@ -45,6 +47,15 @@ Language Understanding (LUIS) を初めて使用するときは、サブスク�
 <a name="assign-endpoint-key"></a>
 <a name="assign-resource"></a>
 
+### <a name="using-resource-from-luis-portal"></a>LUIS ポータルからリソースを使用する
+
+LUIS ポータルからリソースを使用する場合は、キーと場所を把握しておく必要はありません。 代わりに、リソース テナント、サブスクリプション、リソース名を把握しておく必要があります。
+
+LUIS ポータルで LUIS アプリにリソースを[割り当てる](#assign-resource-key-to-luis-app-in-luis-portal)と、キーと場所は [管理] セクションの **[Keys and Endpoint settings]\(キーとエンドポイントの設定\)** ページのクエリ予測エンドポイント URL の一部として設定されます。
+ 
+### <a name="using-resource-from-rest-api-or-sdk"></a>REST API または SDK からリソースを使用する
+
+REST API または SDK からリソースを使用する場合は、キーと場所を把握しておく必要があります。 この情報は、[管理] セクションの **[Keys and Endpoint settings]\(キーとエンドポイントの設定\)** ページおよび Azure portal のリソースの [概要] ページや [キー] ページのクエリ予測エンドポイント URL の一部として設定されます。
 
 ## <a name="assign-resource-key-to-luis-app-in-luis-portal"></a>LUIS ポータルの LUIS アプリにリソース キーを割り当てる
 

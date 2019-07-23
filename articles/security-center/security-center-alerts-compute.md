@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/02/2019
-ms.author: monhaber
-ms.openlocfilehash: bc3cb66d43e71777e06c6bd63dcff35e2ff19df8
-ms.sourcegitcommit: 1e347ed89854dca2a6180106228bfafadc07c6e5
+ms.author: v-mohabe
+ms.openlocfilehash: 14433806a28e31cef1a278e16cb69e7c9b1a2458
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67571317"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68295838"
 ---
 # <a name="threat-detection-for-cloud-native-compute-in-azure-security-center"></a>Azure Security Center でのクラウド ネイティブ コンピューティングの脅威検出
 
