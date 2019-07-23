@@ -5,14 +5,14 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 07/02/2019
+ms.date: 07/09/2019
 ms.author: dacurwin
-ms.openlocfilehash: d4d1044a30d4ebc551cf1305993aba2a201c4c94
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: dd800c0eeb18fe45b44a72aeb58b500623b2b366
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67514456"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67705093"
 ---
 # <a name="common-questions-about-backing-up-files-and-folders"></a>ファイルとフォルダーのバックアップに関する一般的な質問
 
@@ -88,9 +88,19 @@ MARS エージェントは NTFS に依存しており、ファイルの名前/�
 キャッシュ フォルダーのサイズによって、バックアップするデータ量が決まります。
 - キャッシュ フォルダー ボリュームには、バックアップ データの合計サイズの少なくとも 5 から 10% に相当する空き領域が必要になります。
 - ボリュームの空き領域が 5% 未満の場合は、ボリューム サイズを増やすか、十分な容量があるボリュームにキャッシュ フォルダーを移動します。
-- Windows のシステム状態をバックアップする場合は、キャッシュ フォルダーを含むボリューム内に 30 ～ 35 GB の追加の空き領域が必要になります。
-### <a name="how-do-i-change-the-cache-location-for-the-mars-agent"></a>MARS エージェント用のキャッシュの場所を変更する方法を教えてください。
+- Windows のシステム状態をバックアップする場合は、キャッシュ フォルダーを含むボリューム内に 30 - 35 GB の追加の空き領域が必要になります。
 
+### <a name="how-to-check-if-scratch-folder-is-valid-and-accessible"></a>スクラッチ フォルダーが有効でアクセス可能かどうかを確認する方法
+
+1. 既定では、スクラッチ フォルダーは `\Program Files\Microsoft Azure Recovery Services Agent\Scratch` にあります。
+2. スクラッチ フォルダーの場所のパスが、次に示すレジストリ キー エントリの値と一致していることを確認します。
+
+  | レジストリ パス | レジストリ キー | 値 |
+  | --- | --- | --- |
+  | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` |ScratchLocation |*新しいキャッシュ フォルダーの場所* |
+  | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` |ScratchLocation |*新しいキャッシュ フォルダーの場所* |
+
+### <a name="how-do-i-change-the-cache-location-for-the-mars-agent"></a>MARS エージェント用のキャッシュの場所を変更する方法を教えてください。
 
 1. 管理者特権のコマンド プロンプトで次のコマンドを実行して、Backup エンジンを停止します。
 

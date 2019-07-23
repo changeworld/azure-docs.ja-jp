@@ -12,12 +12,12 @@ author: wenjiefu
 ms.author: wenjiefu
 ms.reviewer: sawinark
 manager: craigg
-ms.openlocfilehash: 68a5d5278e1181695695647cff187d4b95624b40
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: 05723a90725992e6b955524a2d35c82d3378ee3d
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67537638"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621850"
 ---
 # <a name="troubleshoot-package-execution-in-the-ssis-integration-runtime"></a>SSIS 統合ランタイムでのパッケージ実行のトラブルシューティング
 
@@ -57,11 +57,33 @@ Azure Data Factory ポータルを使用して、SSIS パッケージの実行�
 
 以前のバージョンの SQL Server Management Studio (SSMS) における既知の問題によってこのエラーが発生する可能性があります。 このパッケージに、デプロイの実行に SSMS を使用するマシンにインストールされていないカスタム コンポーネント (SSIS Azure Feature Pack やパートナー コンポーネントなど) が含まれている場合、SSMS ではそのコンポーネントが削除され、エラーが発生します。 [SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) を、この問題が解決されている最新バージョンにアップグレードしてください。
 
+### <a name="error-messagessis-executor-exit-code--1073741819"></a>エラー メッセージ: "SSIS 実行プログラムの実行コード: -1073741819"
+
+* 考えられる原因と推奨される操作:
+  * このエラーは、複数の Excel ソースまたは宛先がマルチスレッドで並列で実行されているときに、Excel のソースと宛先の制限によって発生する場合があります。 この制限を回避するには、順番に実行されるように Excel コンポーネントを変更するか、別々のパッケージに分割して、ExecuteOutOfProcess プロパティを True に設定して "パッケージ実行タスク" を通じてトリガーします。
+
 ### <a name="error-message-there-is-not-enough-space-on-the-disk"></a>エラー メッセージ:"There is not enough space on the disk (ディスクに十分な領域がありません)"
 
 このエラーは、ローカル ディスクが SSIS 統合ランタイム ノードで使い果たされていることを意味します。 お使いのパッケージまたはカスタム セットアップによってディスク領域が大量に消費されているかどうかを確認します。
 * ディスクがお使いのパッケージによって消費されている場合は、パッケージの実行が終了した後に解放されます。
 * ディスクがお使いのカスタム セットアップによって消費されている場合は、SSIS 統合ランタイムを停止し、スクリプトを変更してから、もう一度統合ランタイムを開始する必要があります。 カスタム セットアップ用に指定した Azure BLOB コンテナー全体が SSIS 統合ランタイム ノードにコピーされるため、そのコンテナーの下に不要なコンテンツがないかどうかを確認してください。
+
+### <a name="error-message-failed-to-retrieve-resource-from-master-microsoftsqlserverintegrationservicesscalescaleoutcontractcommonmasterresponsefailedexception-code300004-descriptionload-file--failed"></a>エラー メッセージ:マスターからリソースを取得できませんでした。 Microsoft.SqlServer.IntegrationServices.Scale.ScaleoutContract.Common.MasterResponseFailedException:Code:300004。 Description:Load ファイル "***" が失敗しました"
+
+* 考えられる原因と推奨される操作:
+  * SSIS アクティビティがファイル システム (パッケージ ファイルまたはプロジェクト ファイル) からパッケージを実行している場合、プロジェクト、パッケージ、または構成ファイルに SSIS アクティビティで指定したパッケージ アクセス資格情報でにアクセスできない場合にこのエラーが発生します。
+    * Azure File を使用する場合:
+      * ファイル パスは、\\\\\<ストレージ アカウント名\>.file.core.windows.net\\\<ファイル共有パス\> で開始する必要があります。
+      * ドメインは "Azure" にします
+      * ユーザー名は \<ストレージ アカウント名\> である必要があります
+      * パスワードは \<ストレージ アクセス キー\> である必要があります
+    * オンプレミスのファイルを使用する場合は、Azure-SSIS 統合ランタイムがオンプレミスのファイル共有にアクセスできるように、VNet、パッケージ アクセス資格情報、およびアクセス許可が適切に構成されていることを確認してください。
+
+### <a name="error-message-the-file-name--specified-in-the-connection-was-not-valid"></a>エラー メッセージ:"接続に指定されたファイル名 '...' は無効です"
+
+* 考えられる原因と推奨される操作:
+  * 無効なファイル名が指定されている
+  * 接続マネージャー内で、短い時間ではなく FQDN (完全修飾ドメイン名) を使用していることを確認します。
 
 ### <a name="error-message-cannot-open-file-"></a>エラー メッセージ:"Cannot open file '...' (ファイル '...' を開けません)"
 

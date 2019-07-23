@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 06/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 98acc7f6dd5ec7cf3702bbcbe60e2739732512e2
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: c28cf4326593897dcbc90902737fc4846356078d
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67294909"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67653382"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>IaaS VM のための Azure Disk Encryption に関してよくあるご質問
 
@@ -33,6 +33,10 @@ Azure Disk Encryption を使用して VM ディスクを暗号化するための
 ## <a name="how-can-i-start-using-azure-disk-encryption"></a>Azure Disk Encryption の使用を開始するにはどうすればよいですか。
 
 最初に、[Azure Disk Encryption の概要](azure-security-disk-encryption-overview.md)をお読みください。
+
+## <a name="what-vm-sizes-and-operating-systems-support-azure-disk-encryption"></a>Azure Disk Encryption がサポートされる VM サイズとオペレーティングシステムを教えてください。
+
+[Azure Disk Encryption の前提条件](azure-security-disk-encryption-prerequisites.md)の記事には、Azure Disk Encryption をサポートする [VM のサイズ](azure-security-disk-encryption-prerequisites.md#supported-vm-sizes)と [VM オペレーティング システム](azure-security-disk-encryption-prerequisites.md#supported-operating-systems)の一覧が記載されています。
 
 ## <a name="can-i-encrypt-both-boot-and-data-volumes-with-azure-disk-encryption"></a>Azure Disk Encryption でブート ボリュームとデータ ボリュームの両方を暗号化できますか。
 

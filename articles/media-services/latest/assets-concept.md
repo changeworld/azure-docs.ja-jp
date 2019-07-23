@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 07/02/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: e88863fbbc29287baaf1c3c98dbdae04539e08e5
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: d0a81d5d7ce8e7569b77007b6ad9c322cf626f16
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67542592"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67670692"
 ---
 # <a name="assets"></a>アセット
 
@@ -93,15 +93,15 @@ curl -X PUT \
 
 |v3 のプロパティ|v2 のプロパティ|
 |---|---|
-|id - (一意) Azure Resource Manager の完全なパス<br/>`"id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Media/mediaservices/contosomedia/assets/ClimbingMountLogan"`||
+|id - (一意) Azure Resource Manager の完全なパス。「[資産](https://docs.microsoft.com/rest/api/media/assets/createorupdate)」の例を参照してください||
 |name - (一意)「[名前付け規則](media-services-apis-overview.md#naming-conventions)」を参照してください ||
 |alternateId|AlternateId|
 |assetId|Id - (一意) 値は `nb:cid:UUID:` プレフィックスで始まります。|
-|created|作成日時|
-|description|Name|
+|created|作成されました|
+|description|EnableAdfsAuthentication|
 |lastModified|LastModified|
 |storageAccountName|StorageAccountName|
-|storageEncryptionFormat| Options - 作成オプション|
+|storageEncryptionFormat| Options (作成オプション)|
 |type||
 
 ## <a name="storage-side-encryption"></a>ストレージ側の暗号化

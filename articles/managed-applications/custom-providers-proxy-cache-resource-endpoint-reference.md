@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
-ms.openlocfilehash: 6a3d570d9695516a293b601b3d34c2bcba6b058d
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 2970e69e825dacb6f548b3e66a830f221ece0b1c
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67479100"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67795224"
 ---
 # <a name="custom-resource-cache-reference"></a>カスタム リソースのキャッシュのリファレンス
 
@@ -237,6 +237,7 @@ Content-Type: application/json; charset=utf-8
 ## <a name="next-steps"></a>次の手順
 
 - [Azure カスタム リソースプロバイダーの概要](./custom-providers-overview.md)
-- [チュートリアル:Azure カスタム リソースプロバイダーの作成とカスタム リソースのデプロイ](./create-custom-provider.md)
+- [クイック スタート:Azure カスタム リソースプロバイダーの作成とカスタム リソースのデプロイ](./create-custom-provider.md)
+- [チュートリアル:Azure でカスタム アクションとカスタム リソースを作成する](./tutorial-custom-providers-101.md)
 - [方法:カスタム アクションを Azure REST API に追加する](./custom-providers-action-endpoint-how-to.md)
 - [リファレンス: カスタム リソースのプロキシのリファレンス](./custom-providers-proxy-resource-endpoint-reference.md)

@@ -7,14 +7,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.topic: quickstart
-ms.date: 06/12/2019
+ms.date: 07/02/2019
 ms.author: hrasheed
-ms.openlocfilehash: e178326c4a165a9bebbef6b0162cc79c1f9a0727
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: f92cb247afb25562a96373c28534549a2f16d8c9
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67459507"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67805590"
 ---
 # <a name="quickstart-create-apache-hadoop-cluster-in-azure-hdinsight-using-azure-portal"></a>クイック スタート:Azure portal を使用して Azure HDInsight 内に Apache Hadoop クラスターを作成する
 
@@ -41,12 +41,12 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     |プロパティ  |説明  |
     |---------|---------|
     |クラスター名   | Hadoop クラスターの名前を入力します。 HDInsight のすべてのクラスターでは同じ DNS 名前空間が共有されるため、この名前は一意である必要があります。 この名前は、文字、数字、ハイフンを含む最大 59 文字で構成できます。 名前の先頭と末尾の文字をハイフンにすることはできません。 |
-    |サブスクリプション    |  Azure サブスクリプションを選択します。 |
+    |Subscription    |  Azure サブスクリプションを選択します。 |
     |クラスターの種類     | ここでは、スキップします。 この手順説明の次の手順で入力します。|
     |クラスター ログイン ユーザー名とパスワード    | 既定のログイン名は **admin** です。パスワードは 10 文字以上で、数字、大文字、小文字、英数字以外の文字 (' " ` を除く\) が少なくとも 1 つずつ含まれる必要があります。 "Pass@word1" などのよく使われるパスワードを**指定していない**ことを確認してください。|
     |Secure Shell (SSH) ユーザー名 | 既定のユーザー名は **sshuser** です。  SSH ユーザー名に別の名前を指定できます。 |
     |SSH にクラスター ログイン パスワードを使用する| クラスター ログイン ユーザーに指定したのと同じパスワードを SSH ユーザーに使用する場合は、このチェック ボックスをオンにします。|
-    |リソース グループ     | リソース グループを作成するか、既存のリソース グループを選択します。  リソース グループとは、Azure コンポーネントのコンテナーです。  この場合、リソース グループには、HDInsight クラスターおよび依存する Azure ストレージ アカウントが含まれています。 |
+    |Resource group     | リソース グループを作成するか、既存のリソース グループを選択します。  リソース グループとは、Azure コンポーネントのコンテナーです。  この場合、リソース グループには、HDInsight クラスターおよび依存する Azure ストレージ アカウントが含まれています。 |
     |Location    | クラスターを作成する Azure の場所を選択します。  パフォーマンスを向上させるため、お近くの場所を選択してください。 |
 
     ![HDInsight Linux の使用。クラスターの基本的な値の指定](./media/apache-hadoop-linux-create-cluster-get-started-portal/quick-create-basics.png "HDInsight クラスターを作成するための基本的な値の指定")
@@ -56,7 +56,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     |プロパティ  |説明  |
     |---------|---------|
     |クラスターの種類     | **[Hadoop]** を選択します |
-    |バージョン     | **[Hadoop 2.7.3 (HDI 3.6)]** を選択します。|
+    |Version     | **[Hadoop 2.7.3 (HDI 3.6)]** を選択します。|
 
     ![HDInsight Linux の使用。クラスターの基本的な値の指定](./media/apache-hadoop-linux-create-cluster-get-started-portal/cluster-configuration-hadoop.png "HDInsight クラスターを作成するための基本的な値の指定")
 
@@ -68,7 +68,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     |---------|---------|
     |プライマリ ストレージの種類    | この記事では、Azure Storage を選択して、Azure Storage Blob を既定のストレージ アカウントとして使用します。 Azure Data Lake Storage を既定のストレージとして使用することもできます。 |
     |メソッドの選択     |  この記事では、 **[個人用サブスクリプション]** を選択して、Azure サブスクリプションのストレージ アカウントを使用します。 他のサブスクリプションのストレージ アカウントを使用するには、 **[アクセス キー]** を選択し、そのアカウントのアクセス キーを指定します。 |
-    |ストレージ アカウントの選択   | **[ストレージ アカウントの選択]** を選択して既存のストレージ アカウントを選択するか、 **[新規作成]** を選択します。|
+    |ストレージ アカウントの選択   | **[ストレージ アカウントの選択]** を選択して既存のストレージ アカウントを選択するか、 **[新規作成]** を選択します。 新しいアカウントの作成時には、名前の長さは 3 から 24 文字とし、数字と小文字のみを使用できます。|
 
     他の値はすべて既定値のままにして、 **[次へ]** を選択して概要ページに進みます。
 
