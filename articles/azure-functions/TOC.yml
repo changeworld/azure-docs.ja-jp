@@ -53,6 +53,8 @@
       href: functions-twitter-email.md
     - name: サーバーレス API の作成
       href: functions-create-serverless-api.md
+    - name: VS Code での Python 関数の開発
+      href: tutorial-vs-code-serverless-python.md
     - name: OpenAPI 定義の作成
       href: functions-openapi-definition.md
     - name: 仮想ネットワークへの接続

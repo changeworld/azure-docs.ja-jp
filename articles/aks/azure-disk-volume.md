@@ -2,30 +2,30 @@
 title: Azure Kubernetes Service (AKS) のポッド用の静的ボリュームを作成する
 description: Azure Kubernetes Service (AKS) のポッドで使用するための Azure ディスクを含むボリュームを手動で作成する方法について説明します
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 03/01/2019
-ms.author: iainfou
-ms.openlocfilehash: b166f70186b063782fb2c2245e351d6dfca6f978
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: mlearned
+ms.openlocfilehash: 9017c8cf721fbb9c493dc18da769b9d6e83ddf05
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65072154"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67616131"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で Azure ディスクを含むボリュームの手動での作成および使用
 
 コンテナーベースのアプリケーションは、データへのアクセスとデータの永続化の手段として、外部データ ボリュームが必要になることが少なくありません。 単一のポッドでストレージにアクセスする必要がある場合は、Azure ディスクを使用してアプリケーションが使用できるネイティブ ボリュームを表すことができます。 この記事では、手動で Azure ディスクを作成し、AKS のポッドにアタッチする方法を示します。
 
 > [!NOTE]
-> Azure ディスクは、一度に 1 つのポッドにのみマウントできます。 複数のポッド間で永続的なボリュームを共有する必要がある場合は、[Azure Files][azure-files-volume] を使用します。
+> Azure ディスクは、一度に 1 つのポッドにのみマウントできます。 複数のポッド間で永続的なボリュームを共有する必要がある場合は、[Azure Files][azure-files-volume] を使用してください。
 
 Kubernetes ボリュームの詳細については、[AKS でのアプリケーションのストレージ オプション][concepts-storage]に関するページを参照してください。
 
 ## <a name="before-you-begin"></a>開始する前に
 
-この記事は、AKS クラスターがすでに存在していることを前提としています。 AKS クラスターが必要な場合は、[Azure CLI を使用して][ aks-quickstart-cli]または[Azure portal を使用して][aks-quickstart-portal] AKS のクイック スタートを参照してください。
+この記事は、AKS クラスターがすでに存在していることを前提としています。 AKS クラスターが必要な場合は、[Azure CLI を使用][aks-quickstart-cli] or [using the Azure portal][aks-quickstart-portal]して、AKS のクイックスタートを参照してください。
 
 また、Azure CLI バージョン 2.0.59 以降がインストールされ、構成されている必要もあります。 バージョンを確認するには、 `az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「 [Azure CLI のインストール][install-azure-cli]」を参照してください。
 
@@ -33,7 +33,7 @@ Kubernetes ボリュームの詳細については、[AKS でのアプリケー�
 
 AKS で使用するための Azure ディスクを作成する場合は、**ノード** リソース グループ内にディスク リソースを作成することができます。 この方法により、AKS クラスターがディスク リソースにアクセスおよび管理できるようになります。 代わりに独立したリソース グループにディスクを作成する場合は、クラスターの Azure Kubernetes Service (AKS) サービス プリンシパルに、ディスクのリソース グループに対する `Contributor` ロールを付与する必要があります。
 
-この記事では、ノード リソース グループ内にディスクを作成します。 最初に、[az aks show][az-aks-show] コマンドを使用してリソース グループ名を取得し、`--query nodeResourceGroup` クエリ パラメーターを追加します｡ 次の例では、リソース グループ名 *myResourceGroup* にある AKS クラスター名のノード リソース グループ *myAKSCluster* を取得しています｡
+この記事では、ノード リソース グループ内にディスクを作成します。 最初に、[az aks show][az-aks-show] コマンドを使用してリソース グループ名を取得し、`--query nodeResourceGroup` クエリ パラメーターを追加します。 次の例では、リソース グループ名 *myResourceGroup* にある AKS クラスター名のノード リソース グループ *myAKSCluster* を取得しています｡
 
 ```azurecli-interactive
 $ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
@@ -52,7 +52,7 @@ az disk create \
 ```
 
 > [!NOTE]
-> Azure ディスクは、特定サイズの SKU 単位で課金されます。 これらの SKU の範囲は、S4 または P4 ディスクの 32 GiB から、S80 または P80 ディスクの 32 TiB までです (プレビュー中)。 Premium 管理ディスクのスループットと IOPS パフォーマンスは、SKU と AKS クラスターのノードのインスタンスのサイズに依存します。 「[Managed Disks の価格 ][managed-disk-pricing-performance]」を参照してください。
+> Azure ディスクは、特定サイズの SKU 単位で課金されます。 これらの SKU の範囲は、S4 または P4 ディスクの 32 GiB から、S80 または P80 ディスクの 32 TiB までです (プレビュー中)。 Premium 管理ディスクのスループットと IOPS パフォーマンスは、SKU と AKS クラスターのノードのインスタンスのサイズに依存します。 [Managed Disks の価格とパフォーマンス ][managed-disk-pricing-performance]に関するページを参照してください。
 
 次の出力例に示すように、コマンドが正常に完了すると、ディスク リソース ID が表示されます。 このディスク ID は、次の手順でディスクをマウントするために使用します。
 
@@ -126,7 +126,7 @@ Events:
 
 ## <a name="next-steps"></a>次の手順
 
-関連するベスト プラクティスについては、[AKS のストレージとバックアップに関するベスト プラクティス][operator-best-practices-storage]に関する記事を参照してください。
+関連するベスト プラクティスについては、[AKS のストレージとバックアップに関するベスト プラクティス][operator-best-practices-storage]に関するページを参照してください。
 
 AKS クラスターと Azure ディスクの操作の詳細については、[Azure ディスク対応の Kubernetes プラグイン][kubernetes-disks]に関するページを参照してください。
 

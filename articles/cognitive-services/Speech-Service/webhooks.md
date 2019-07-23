@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/11/2019
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 7b47d4fc3aa4a1a50e441e668a856703c67045ae
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: fbe6fe25b5ff0cd5148e3bba22dec4648399510d
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59580999"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67072303"
 ---
 # <a name="webhooks-for-speech-services"></a>Speech Services の Webhook
 
@@ -38,6 +38,8 @@ Speech Services は、すべての長期実行操作で Webhook をサポート�
 ## <a name="create-a-webhook"></a>webhook を作成する
 
 オフラインの文字起こし用の Webhook を作成してみましょう。 シナリオ: ユーザーが、バッチ文字起こし API で非同期に文字起こしする可能性が高い長期実行のオーディオ ファイルを持っているとします。 
+
+Webhook は、POST 要求を https://\<region\>.cris.ai/api/speechtotext/v2.1/transcriptions/hooks に送信することで作成できます。
 
 要求の構成パラメーターは JSON として提供されます。
 
@@ -133,6 +135,50 @@ POST https://westus.cris.ai/api/speechtotext/v2.1/transcriptions/hooks/:id/test 
 ### <a name="run-a-test"></a>テストを実行する
 
 https://bin.webhookrelay.com の Web サイトを使用して、簡単なテストを行うことができます。 そこから、このドキュメントで前述した Webhook を作成するための HTTP POST にパラメーターとして渡すコールバック URL を取得できます。
+
+[Create Bucket] (バケットの作成) をクリックし、画面の指示に従ってフックを取得します。 次に、このページで提供される情報を使用して、フックを Speech サービスに登録します。 文字起こしの完了に応答して、リレー メッセージのペイロードは次のようになります。
+
+```json
+{
+    "results": [],
+    "recordingsUrls": [
+        "my recording URL"
+    ],
+    "models": [
+        {
+            "modelKind": "AcousticAndLanguage",
+            "datasets": [],
+            "id": "a09c8c8b-1090-443c-895c-3b1cf442dec4",
+            "createdDateTime": "2019-03-26T12:48:46Z",
+            "lastActionDateTime": "2019-03-26T14:04:47Z",
+            "status": "Succeeded",
+            "locale": "en-US",
+            "name": "v4.13 Unified",
+            "description": "Unified",
+            "properties": {
+                "Purpose": "OnlineTranscription,BatchTranscription,LanguageAdaptation",
+                "ModelClass": "unified-v4"
+            }
+        }
+    ],
+    "statusMessage": "None.",
+    "id": "d41615e1-a60e-444b-b063-129649810b3a",
+    "createdDateTime": "2019-04-16T09:35:51Z",
+    "lastActionDateTime": "2019-04-16T09:38:09Z",
+    "status": "Succeeded",
+    "locale": "en-US",
+    "name": "Simple transcription",
+    "description": "Simple transcription description",
+    "properties": {
+        "PunctuationMode": "DictatedAndAutomatic",
+        "ProfanityFilterMode": "Masked",
+        "AddWordLevelTimestamps": "True",
+        "AddSentiment": "True",
+        "Duration": "00:00:02"
+    }
+}
+```
+メッセージには、録音 URL と、その録音の文字起こしに使われたモデルが含まれています。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -29,6 +29,8 @@
       href: publish-service-catalog-app.md
     - name: マーケットプレース アプリケーションの発行
       href: publish-marketplace-app.md
+    - name: カスタム プロバイダーを使用してマネージド アプリケーションを作成する
+      href: tutorial-create-managed-app-with-custom-provider.md
 - name: サンプル
   items:
     - name: Azure CLI
@@ -83,6 +85,14 @@
           href: custom-providers-proxy-cache-resource-endpoint-reference.md
         - name: カスタム プロバイダー RESTful エンドポイント参照
           href: reference-custom-providers-csharp-endpoint.md
+    - name: アプリケーションの成果物
+      items:
+        - name: ユーザー インターフェイスの要素
+          href: reference-createuidefinition-artifact.md
+        - name: デプロイ テンプレート
+          href: reference-main-template-artifact.md
+        - name: 定義の表示
+          href: reference-view-definition-artifact.md
     - name: Azure CLI
       href: /cli/azure/managedapp
     - name: PowerShell

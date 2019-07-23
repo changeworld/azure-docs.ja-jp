@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:イメージの操作を実行する - Python
+title: イメージの操作を実行する - Python
 titlesuffix: Azure Cognitive Services
 description: Jupyter Notebook を使用することで、Computer Vision API を Python で使用する方法について説明します。 人気のあるライブラリを使用して結果を視覚化します。
 services: cognitive-services
@@ -7,20 +7,20 @@ author: KellyDF
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
-ms.topic: tutorial
-ms.date: 11/06/2018
+ms.topic: conceptual
+ms.date: 07/03/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: b5333557355aa816245b5086836eac980d90540a
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: b18f41db772c1c214bdf48c9bb765b1ce7e6d2c2
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341482"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604148"
 ---
-# <a name="tutorial-computer-vision-api-python"></a>チュートリアル:Computer Vision API Python
+# <a name="computer-vision-api-jupyter-notebook"></a>Computer Vision API の Jupyter Notebook
 
-このチュートリアルでは、Python で Computer Vision API を使用する方法と、広く使われているライブラリを使用して結果を視覚化する方法を示します。 チュートリアルの実行には、Jupyter を使用します。 対話型の Jupyter Notebook を使い始める方法については、[Jupyter のドキュメント](https://jupyter.readthedocs.io/en/latest/index.html)を参照してください。
+このガイドでは、Python で Computer Vision API を使用する方法と、広く使われているライブラリを使用して結果を視覚化する方法を示します。 チュートリアルの実行には、Jupyter を使用します。 対話型の Jupyter Notebook を使い始める方法については、[Jupyter のドキュメント](https://jupyter.readthedocs.io/en/latest/index.html)を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -28,7 +28,7 @@ ms.locfileid: "67341482"
 - [pip](https://pip.pypa.io/en/stable/installing/) ツール
 - [Jupyter Notebook](https://jupyter.org/install) がインストールされていること
 
-## <a name="open-the-tutorial-notebook-in-jupyter"></a>Jupyter でチュートリアル ノートブックを開く 
+## <a name="open-the-notebook-in-jupyter"></a>Jupyter でノートブックを開く 
 
 1. [Cognitive Vision Python](https://github.com/Microsoft/Cognitive-Vision-Python) GitHub リポジトリにアクセスします。 
 2. 緑色のボタンをクリックして、リポジトリを複製またはダウンロードします。 
@@ -37,7 +37,7 @@ ms.locfileid: "67341482"
 1. コマンド プロンプトから `jupyter notebook` コマンドを実行して Jupyter を起動します。
 1. Jupyter のウィンドウで、 _[Computer Vision API Example.ipynb]_ をクリックしてチュートリアル ノートブックを開きます。
 
-## <a name="run-the-tutorial"></a>チュートリアルを実行する
+## <a name="run-the-notebook"></a>ノートブックを実行する
 
 このノートブック使用するには、Computer Vision API のサブスクリプション キーが必要です。 サインアップするため、[サブスクリプション ページ](https://azure.microsoft.com/try/cognitive-services/)に移動します。 **[サインイン]** ページで、Microsoft アカウントを使用してサインインすると、サブスクライブして無料のキーを取得できます。 サインアップ プロセスを完了したら、ノートブックの `Variables` セクション (下の例を参照) にキーを貼り付けます。 プライマリ キーとセカンダリ キーのどちらでもかまいません。 キーは引用符で囲み、文字列になるようにしてください。
 

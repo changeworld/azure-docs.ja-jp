@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: magottei
 ms.custom: seodec2018
-ms.openlocfilehash: 256a38320c9b3ca826ee9c12ac0a437957f988e2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4ed18b5f83bdb052f2db6847a320c26a8e49f83e
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65539264"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147539"
 ---
 # <a name="troubleshooting-common-indexer-issues-in-azure-search"></a>Azure Search のインデクサーの一般的な問題のトラブルシューティング
 
@@ -35,14 +35,11 @@ Azure Storage では、構成可能なファイアウォールが提供されま
 
 ファイアウォールが有効になっているとき、特定のエラー メッセージはありません。 通常、ファイアウォールのエラーは `The remote server returned an error: (403) Forbidden` のようなものです。
 
-ファイアウォールが有効であることは[ポータル](https://docs.microsoft.com/azure/storage/common/storage-network-security#azure-portal)で確認できます。 ファイアウォールが有効である場合、この問題を回避するために 2 つの方法があります。
+ファイアウォールが有効であることは[ポータル](https://docs.microsoft.com/azure/storage/common/storage-network-security#azure-portal)で確認できます。 唯一のサポートされている回避策は、[[すべてのネットワーク]](https://docs.microsoft.com/azure/storage/common/storage-network-security#azure-portal) からのアクセスを許可することを選択して、ファイアウォールを無効にすることです。
 
-1. [[すべてのネットワーク]](https://docs.microsoft.com/azure/storage/common/storage-network-security#azure-portal) からのアクセスを許可することを選択して、ファイアウォールを無効にします。
-1. 検索サービスの IP アドレスを[例外として追加](https://docs.microsoft.com/azure/storage/common/storage-network-security#managing-ip-network-rules)します。 この IP アドレスを検索するには、次のコマンドを使用します。
+インデクサーにスキルセットが添付されていない場合、検索サービスの IP アドレスの[例外を追加](https://docs.microsoft.com/azure/storage/common/storage-network-security#managing-ip-network-rules)してみる_ことができます_。 ただし、このシナリオはサポートされておらず、動作は保証されていません。
 
-`nslookup <service name>.search.windows.net`
-
-[認知検索](cognitive-search-concept-intro.md)では、例外は機能しません。 唯一の回避策はファイアウォールを無効にすることです。
+検索サービスの IP アドレスは、その FQDN (`<your-search-service-name>.search.windows.net`) を ping することで確認できます。
 
 ### <a name="cosmos-db"></a>Cosmos DB
 

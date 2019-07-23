@@ -31,9 +31,9 @@
           href: ../aks/tutorial-kubernetes-prepare-app.md
 - name: クイック スタート
   items:
-    - name: Azure portal を使用してアカウントを作成する
+    - name: Azure portal を使用して新しいリソースを作成する
       href: cognitive-services-apis-create-account.md
-    - name: Azure CLI を使用してアカウントを作成する
+    - name: Azure CLI を使用して新しいリソースを作成する
       href: cognitive-services-apis-create-account-cli.md
     - name: Authentication
       href: authentication.md

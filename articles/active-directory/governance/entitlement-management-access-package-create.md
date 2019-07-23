@@ -16,12 +16,12 @@ ms.date: 05/16/2019
 ms.author: rolyon
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 312658bd653d94f3e1a32204b3c5ae4ae290558e
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.openlocfilehash: 1b5ff842d1645d2b47a436eca4fc8dc614a9fb63
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65832666"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190376"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management-preview"></a>Azure AD エンタイトルメント管理 (プレビュー) で新しいアクセス パッケージを作成する
 
@@ -126,5 +126,6 @@ ms.locfileid: "65832666"
 
 ## <a name="next-steps"></a>次の手順
 
-- [既存のアクセス パッケージを編集して管理する](entitlement-management-access-package-edit.md)
+- [既存のアクセス パッケージの編集および管理](entitlement-management-access-package-edit.md)
+- [カタログ所有者またはアクセス パッケージ マネージャーを追加する](entitlement-management-delegate.md#add-a-catalog-owner-or-an-access-package-manager)
 - [カタログを作成および管理する](entitlement-management-catalog-create.md)

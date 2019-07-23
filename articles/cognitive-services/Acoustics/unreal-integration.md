@@ -7,15 +7,15 @@ author: kegodin
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
-ms.topic: how-to
+ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: c6baa9f8330338c1e5fdc9ee0b5a8cc8b344e871
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6207808efb9bee327afd2de21ffa59535acf4e55
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61436140"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67704804"
 ---
 # <a name="project-acoustics-unreal-and-wwise-integration"></a>Project Acoustics Unreal と Wwise の統合
 ここでは、既存の Unreal と Wwise のゲーム プロジェクトへの Project Acoustics プラグイン パッケージの詳しい統合手順を示します。 
@@ -26,7 +26,7 @@ ms.locfileid: "61436140"
 * [Unreal 用の Wwise プラグイン](https://www.audiokinetic.com/library/?source=UE4&id=index.html)
   * Wwise Unreal プラグインを使用する代わりに Wwise SDK の直接統合を使用する場合は、Project Acoustics Unreal プラグインを調べて、Wwise API 呼び出しを調整します。
 
-Wwise 以外のオーディオ エンジンと共に Project Acoustics を使用する場合は、[Project Acoustics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=projectacoustics)に投稿してください。 Project Acoustics Unreal プラグインを使用して音響データのクエリを実行してから、エンジンに対して API 呼び出しを行うことができます。
+Wwise 以外のオーディオ エンジンと共に Project Acoustics を使用する場合は、[Project Acoustics ディスカッション フォーラム](https://github.com/microsoft/ProjectAcoustics/issues)で機能強化要求を行ってください。 Project Acoustics Unreal プラグインを使用して音響データのクエリを実行してから、エンジンに対して API 呼び出しを行うことができます。
 
 ## <a name="download-project-acoustics"></a>Project Acoustics のダウンロード
 まだ行っていない場合は、[Project Acoustics Unreal & Wwise プラグイン パッケージ](https://www.microsoft.com/download/details.aspx?id=58090)をダウンロードします。 

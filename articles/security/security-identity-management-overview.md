@@ -15,12 +15,12 @@ ms.workload: na
 ms.date: 09/19/2018
 ms.author: terrylan
 Customer intent: As an IT Pro or decision maker I am trying to learn about identity management capabilities in Azure
-ms.openlocfilehash: 29c04fc04b5d277e982a37402a128b2dbe787e2c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 758ed2e44718da709acec1379cfc79936c8b7cdf
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57898501"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67083637"
 ---
 # <a name="azure-identity-management-security-overview"></a>Azure ID 管理のセキュリティの概要
 
@@ -105,7 +105,7 @@ Azure portal では、レポートは次のカテゴリに分類されます。
 * **統合アプリケーション レポート**: 組織内のクラウド アプリケーションの使用状況に関する分析情報を提供します。 Azure AD は、何千ものクラウド アプリケーションとの統合を提供します。
 * **エラー レポート**: 外部アプリケーションにアカウントをプロビジョニングするときに発生することがあるエラーを示します。
 * **ユーザー固有レポート**: 特定のユーザーのデバイス サインイン アクティビティ データを表示します。
-* **[アクティビティ ログ]**:過去 24 時間、過去 7 日間、または過去 30 日間のすべての監査イベントの記録、グループのアクティビティの変更、およびパスワードのリセットと登録のアクティビティが含まれます。
+* **[アクティビティ ログ]** :過去 24 時間、過去 7 日間、または過去 30 日間のすべての監査イベントの記録、グループのアクティビティの変更、およびパスワードのリセットと登録のアクティビティが含まれます。
 
 詳細情報:
 

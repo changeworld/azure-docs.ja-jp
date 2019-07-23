@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: 682f3df362a7fbb0e95a07aa8a8f3a068367eef2
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 132e355abbdbe147a843c51efd018cc759c06836
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025681"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67064035"
 ---
 # <a name="inspect-custom-speech-data"></a>Custom Speech データを検査する
 
@@ -46,7 +46,7 @@ Custom Speech には、オーディオ データを対応する認識結果と�
 
 並べた比較を検査しやすくするために、挿入、削除、置換を含むさまざまなエラーの種類を切り替えることができます。 オーディオを聞きながら ("人間" とラベルが付いた文字起こしと 2 つの音声変換モデルの結果が表示される) 各列の認識結果を比較すると、どちらのモデルがニーズに合い、改善が必要な部分を判断できます。
 
-品質テストの検査は、音声認識エンドポイントの品質がアプリケーションに十分かどうかを検証するために役立ちます。  正確性の客観的な尺度のためには、文字起こしされたオーディオが必要です。テストの正確性の評価に関する記事に記載されている手順を実行てください。
+品質テストの検査は、音声認識エンドポイントの品質がアプリケーションに十分かどうかを検証するために役立ちます。  文字起こしされたオーディオが必要な正確性の客観的な尺度を得るには、[正確性の評価](how-to-custom-speech-evaluate-data.md)に関するページの手順に従ってください。
 
 ## <a name="next-steps"></a>次の手順
 

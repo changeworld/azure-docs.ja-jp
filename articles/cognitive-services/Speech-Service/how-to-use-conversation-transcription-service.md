@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.author: jhakulin
-ms.openlocfilehash: 80ec606fee30c239d47bca94188d3b9cbb7c82d5
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: f0838d345abfcfdf69ca6ea44d3206c23010b457
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65604416"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67073085"
 ---
 # <a name="transcribe-multi-participant-conversations-with-the-speech-sdk"></a>Speech SDK で複数参加者の会話を文字起こしする
 
@@ -43,7 +43,7 @@ Speech SDK の **ConversationTranscriber** API を使用すると、会議や会
 * 声紋を作成するための入力音声 wave ファイルは、16 ビットのサンプル、16 kHz のサンプル レート、およびシングル チャンネル (モノラル) 形式である必要があります。
 * 各オーディオ サンプルの推奨される長さは、30 秒から 2 分です。
 
-次の例は、C# で REST API (https://aka.ms/cts/signaturegenservice)) を使用して声紋を作成する 2 つの異なる方法を示しています。
+次の例は、C# から [REST API を使用](https://aka.ms/cts/signaturegenservice)して声紋を作成するための 2 つの異なる方法を示しています。
 
 ```csharp
 class Program

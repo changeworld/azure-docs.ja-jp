@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 02/01/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 76e12dc6bf9bcb50dc58e7730f3a08dd6a9d4440
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: ceae908b37c825721a42c49db4503382eb35c71c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66512195"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67055100"
 ---
 # <a name="tutorial-add-identity-providers-to-your-applications-in-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C でアプリケーションに ID プロバイダーを追加する
 
@@ -46,7 +46,7 @@ Azure AD のユーザーのサインインを有効にするには、Azure AD �
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. お使いの Azure AD テナントを含むディレクトリを使用していることを確認してください。確認のために、トップ メニューにある **[ディレクトリとサブスクリプション フィルター]** をクリックして、お使いの Azure AD テナントを含むディレクトリを選択します。
-3. Azure portal の左上隅にある **[すべてのサービス]** を選択し、 **[アプリの登録]** を検索して選択します。
+3. Azure portal の左上隅にある **[すべてのサービス]** を選択し、 **[アプリの登録 (レガシ)]** を検索して選択します。
 4. **[新しいアプリケーションの登録]** を選択します。
 5. アプリケーションの名前を入力します。 たとえば、「 `Azure AD B2C App` 」のように入力します。
 6. **[アプリケーションの種類]** には `Web app / API` を選択します。
@@ -106,7 +106,7 @@ Azure AD B2C で ID プロバイダーとして Facebook アカウントを使�
     たとえば、「 `https://login.microsoftonline.com/contoso.onmicrosoft.com/.well-known/openid-configuration` 」のように入力します。
 
 8. **[クライアント ID]** には、先ほどメモしたアプリケーション ID を入力し、 **[クライアント シークレット]** には、先ほどメモしたキーの値を入力します。
-9. 必要に応じて、**Domain_hint** に値を入力します。 たとえば、「 `ContosoAD` 」のように入力します。 
+9. 必要に応じて、**Domain_hint** に値を入力します。 たとえば、「 `ContosoAD` 」のように入力します。 ドメイン ヒント (https://docs.microsoft.com/azure/active-directory/manage-apps/configure-authentication-for-federated-users-portal) ) は、アプリケーションからの認証要求に含まれるディレクティブです。 ドメイン ヒントを使用して、ユーザーのフェデレーション IdP サインイン ページへの移動を高速化できます。 または、マルチテナント アプリケーションで使用して、テナント用にブランディングされた Azure AD サインイン ページをすぐに表示することができます。
 10. Click **OK**.
 11. **[この ID プロバイダーの要求をマップする]** を選択し、次の要求を設定します。
     

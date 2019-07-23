@@ -1,26 +1,26 @@
 ---
-title: Azure PowerShell を使用して Web アプリケーション ファイアウォールのカスタム規則を構成する
-description: Azure PowerShell を使用して WAF のカスタム規則を構成する方法について説明します
+title: Azure PowerShell を使用して Web アプリケーション ファイアウォール v2 のカスタム規則を構成する
+description: Azure PowerShell を使用して WAF v2 のカスタム規則を構成する方法について説明します。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 6/7/2019
+ms.date: 6/18/2019
 ms.author: victorh
-ms.openlocfilehash: f7215c4f35d36486b8dda483f34bc487cc16fc69
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f4d2fd7342e0efe95a1bc69e0dba77692053cf14
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66743055"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164744"
 ---
-# <a name="configure-web-application-firewall-with-a-custom-rule-using-azure-powershell"></a>Azure PowerShell を使用して Web アプリケーション ファイアウォールのカスタム規則を構成する
+# <a name="configure-web-application-firewall-v2--with-a-custom-rule-using-azure-powershell"></a>Azure PowerShell を使用して Web アプリケーション ファイアウォール v2 のカスタム規則を構成する
 
 <!--- If you make any changes to the PowerShell in this article, also make the change in the corresponding Sample file: azure-docs-powershell-samples/application-gateway/waf-rules/waf-custom-rules.ps1 --->
 
-カスタム規則では、Web アプリケーション ファイアウォール (WAF) を通過する要求ごとに評価される独自の規則を作成できます。 これらの規則は、マネージド規則セット内の他の規則よりも高い優先度を持ちます。 カスタム規則はアクション (許可またはブロック)、一致条件、および演算子で構成され、完全なカスタマイズが可能です。
+カスタム規則を使用すると、Web アプリケーション ファイアウォール (WAF) v2 を通過する要求ごとに評価される独自の規則を作成できます。 これらの規則は、マネージド規則セット内の他の規則よりも高い優先度を持ちます。 カスタム規則はアクション (許可またはブロック)、一致条件、および演算子で構成され、完全なカスタマイズが可能です。
 
-この記事では、カスタム規則を使用する Application Gateway WAF を作成します。 要求ヘッダーに User-Agent *evilbot* が含まれている場合、カスタム規則はトラフィックをブロックします。
+この記事では、カスタム規則を使用する Application Gateway WAF v2 を作成します。 要求ヘッダーに User-Agent *evilbot* が含まれている場合、カスタム規則はトラフィックをブロックします。
 
 その他のカスタム規則の例については、[Web アプリケーション ファイアウォールのカスタム規則の作成と使用](create-custom-waf-rules.md)に関するページを参照してください
 

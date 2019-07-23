@@ -334,8 +334,6 @@
           href: cognitive-search-skill-keyphrases.md
         - name: 言語検出
           href: cognitive-search-skill-language-detection.md
-        - name: 名前付きエンティティの認識
-          href: cognitive-search-skill-named-entity-recognition.md
         - name: エンティティの認識
           href: cognitive-search-skill-entity-recognition.md
         - name: テキスト マージャー
@@ -344,6 +342,8 @@
           href: cognitive-search-skill-textsplit.md
         - name: センチメント
           href: cognitive-search-skill-sentiment.md
+        - name: テキスト翻訳 (プレビュー)
+          href: cognitive-search-skill-text-translation.md
         - name: 画像分析
           href: cognitive-search-skill-image-analysis.md
         - name: OCR
@@ -352,12 +352,15 @@
           href: cognitive-search-skill-shaper.md
         - name: 条件付き
           href: cognitive-search-skill-conditional.md
-        - name: 非推奨のスキル
-          href: cognitive-search-skill-deprecated.md
     - name: カスタム スキル
       items:
         - name: カスタム Web API
           href: cognitive-search-custom-skill-web-api.md
+    - name: 非推奨のスキル
+      href: cognitive-search-skill-deprecated.md
+      items:
+        - name: 名前付きエンティティの認識
+          href: cognitive-search-skill-named-entity-recognition.md
 - name: リソース
   items:
     - name: Azure コミュニティ サポート

@@ -16,12 +16,12 @@ ms.date: 04/23/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a50f4a8a63022668dac68c974f8c828c72777c9
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 27d54d51a16f4ed94f24f9afa005c63b22778cf9
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66473141"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190365"
 ---
 # <a name="common-scenarios-in-azure-ad-entitlement-management-preview"></a>Azure AD エンタイトルメント管理 (プレビュー) での一般的なシナリオ
 
@@ -123,5 +123,5 @@ ms.locfileid: "66473141"
 
 ## <a name="next-steps"></a>次の手順
 
-- [チュートリアル:最初のアクセス パッケージの作成](entitlement-management-access-package-first.md)
-- [既存のアクセス パッケージの編集および管理](entitlement-management-access-package-edit.md)
+- [チュートリアル:最初のアクセス パッケージを作成する](entitlement-management-access-package-first.md)
+- [タスクを委任する](entitlement-management-delegate.md)

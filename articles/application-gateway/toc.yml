@@ -212,7 +212,7 @@
       items:
         - name: ILB と App Service Environment
           href: create-gateway-internal-load-balancer-app-service-environment.md
-        - name: App Service の URL へのリダイレクト
+        - name: アプリ サービスに関する問題
           href: troubleshoot-app-service-redirection-app-service-url.md
         - name: セッション アフィニティの問題
           href: how-to-troubleshoot-application-gateway-session-affinity-issues.md
