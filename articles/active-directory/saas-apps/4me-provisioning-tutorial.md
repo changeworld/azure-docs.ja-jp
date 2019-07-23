@@ -8,19 +8,19 @@ writer: zchia
 manager: beatrizd
 ms.assetid: na
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/3/2019
-ms.author: zchia
-ms.openlocfilehash: 0cfd760eb9d631bf6ab098afef0ef9b66c92cfa6
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.author: jeedes
+ms.openlocfilehash: 55aab6546efa323d1ddcd242cf75281c15e8e0e1
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67167219"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849657"
 ---
 # <a name="tutorial-configure-4me-for-automatic-user-provisioning"></a>チュートリアル:4me を構成し、自動ユーザー プロビジョニングに対応させる
 

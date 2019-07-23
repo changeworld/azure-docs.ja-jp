@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/26/2018
+ms.date: 07/05/2019
 ms.author: wolfma
-ms.openlocfilehash: 4099bc7bfce6de620504e03be3afc5392281d8d8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9e975bbdcec2b45d67f910ac1a83a71ed252ebda
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67072374"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606258"
 ---
 # <a name="support-and-help-options"></a>サポート オプションとヘルプ オプション
 
@@ -71,7 +71,7 @@ Stack Overflow は、開発関連の質問を投稿するのに適したチャ�
 |音声翻訳 |[[microsoft-cognitive+translation]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+translation)|
 |音声意図 |[[microsoft-cognitive+luis]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+luis)|
 |General Speech SDK |[[microsoft-cognitive+microsoft-speech-api]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+microsoft-speech-api)|
-| 音声優先仮想アシスタント (プレビュー) | [[microsoft-cognitive+virtual-assistant+botframework]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+virtual-assistant+botframework) | 
+| 音声優先仮想アシスタント (プレビュー) | [[microsoft-cognitive+virtual-assistant+botframework]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+virtual-assistant+botframework) |
 
 > [!TIP]
 > Stack Overflow の次の投稿では、質問の作成方法やソース コードの追加方法に関するヒントが示されています。 これらのガイドラインに従うと、コミュニティ メンバーからの評価や回答がより早く返ってくる可能性があります。  

@@ -4,7 +4,7 @@ description: 第 2 世代 VM に対する Azure のサポートの概要
 services: virtual-machines-windows
 documentationcenter: ''
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-windows
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2019
 ms.author: lahugh
-ms.openlocfilehash: d8991a6e3137953aae18b91f9cc19e81f0440c75
-ms.sourcegitcommit: 6e6813f8e5fa1f6f4661a640a49dc4c864f8a6cb
+ms.openlocfilehash: 7abc1b7cd3be775af03aeaf558f631060cc6f81c
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67151213"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67722736"
 ---
 # <a name="support-for-generation-2-vms-preview-on-azure"></a>Azure での第 2 世代 VM (プレビュー) のサポート
 
@@ -41,7 +41,7 @@ ms.locfileid: "67151213"
 * [Dsv2 シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general#dsv2-series) および [Dsv3 シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general#dsv3-series-1)
 * [Esv3 シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory#esv3-series)
 * [Fsv2 シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-compute#fsv2-series-1)
-* [GS シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory#gs-series)
+* [GS シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-previous-gen#gs-series)
 * [Ls シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-previous-gen#ls-series)と [Lsv2 シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-storage#lsv2-series)
 * [Mv2 シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory#mv2-series)
 

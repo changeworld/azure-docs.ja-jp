@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 06/14/2019
 ms.author: erhopf
-ms.openlocfilehash: e1a6a44d7ff9d5786388fc47245ef5c79cb9be82
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: 3be912f053bf206999546678e1e407548af181bf
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67155720"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657677"
 ---
 # <a name="enable-diagnostic-logging-for-azure-cognitive-services"></a>Azure Cognitive Services の診断ログを有効にする
 
@@ -28,14 +28,14 @@ ms.locfileid: "67155720"
 * [Log Analytics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-stream-diagnostic-logs-log-analytics) - Azure リソースによって生成された生ログの分析を可能にする柔軟なログ検索および分析ツール。
 
 > [!NOTE]
-> その他の構成オプションも使用できます。 詳細については、[Azure リソースからのログ データの収集と使用](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)に関するページを参照してください。
+> その他の構成オプションも使用できます。 詳細については、[Azure リソースからのログ データの収集と使用](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview)に関するページを参照してください。
 
 ## <a name="enable-diagnostic-log-collection"></a>診断ログの収集を有効にする  
 
 最初に、Azure portal を使用して診断ログを有効にします。
 
 > [!NOTE]
-> PowerShell または Azure CLI を使用してこの機能を有効にするには、[Azure リソースからのログ データの収集と使用](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs#how-to-enable-collection-of-diagnostic-logs)に関するページに示されている手順を使用します。
+> PowerShell または Azure CLI を使用してこの機能を有効にするには、[Azure リソースからのログ データの収集と使用](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview#diagnostic-settings)に関するページに示されている手順を使用します。
 
 1. Azure Portal に移動します。 次に、Cognitive Services リソースを見つけて選択します。 たとえば、Bing Web Search へのサブスクリプションを選択します。   
 2. 次に、左側のナビゲーション メニューから、 **[監視]** を見つけて **[診断設定]** を選択します。 この画面には、このリソースに対して前に作成したすべての診断設定が含まれています。

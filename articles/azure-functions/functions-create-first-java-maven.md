@@ -13,12 +13,12 @@ ms.date: 08/10/2018
 ms.author: routlaw
 ms.reviewer: glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: da4de9185ba7371281c140c5f2456d85661c0af4
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: fcbf181601230493dc52bde06e4f35db062f9a32
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706433"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807172"
 ---
 # <a name="create-your-first-function-with-java-and-maven"></a>Java と Maven を使用して初めての関数を作成する
 
@@ -72,17 +72,25 @@ Maven によって、プロジェクトの生成を終了するために必要�
 以下の `com.fabrikam.functions` および `fabrikam-functions` 識別子は例として使用されており、このクイック スタートの後の方の手順を読みやすくしています。 この手順では、Maven に独自の値を指定することをお勧めします。
 
 ```Output
-Define value for property 'groupId': com.fabrikam.functions
-Define value for property 'artifactId' : fabrikam-functions
+Define value for property 'groupId' (should match expression '[A-Za-z0-9_\-\.]+'): com.fabrikam.functions
+Define value for property 'artifactId' (should match expression '[A-Za-z0-9_\-\.]+'): fabrikam-functions
 Define value for property 'version' 1.0-SNAPSHOT : 
 Define value for property 'package': com.fabrikam.functions
 Define value for property 'appName' fabrikam-functions-20170927220323382:
+Define value for property 'appRegion' westus: :
+Define value for property 'resourceGroup' java-functions-group: :
 Confirm properties configuration: Y
 ```
 
-Maven は、この例 `fabrikam-functions` の場合、_artifactId_ という名前の新しいフォルダーにプロジェクト ファイルを作成します。 このプロジェクトで生成されたコードを実行できる準備が整っているのは、要求の本文をエコーする [HTTP トリガー](/azure/azure-functions/functions-bindings-http-webhook)関数です。
+Maven は、この例 `fabrikam-functions` の場合、_artifactId_ という名前の新しいフォルダーにプロジェクト ファイルを作成します。 このプロジェクトで生成されたコードを実行できる準備が整っているのは、要求の本文をエコーする [HTTP トリガー](/azure/azure-functions/functions-bindings-http-webhook)関数です。 *src/main/java/com/fabrikam/functions/Function.java* を次のコードに置き換えます。 
 
 ```java
+package com.fabrikam.functions;
+
+import java.util.*;
+import com.microsoft.azure.functions.annotation.*;
+import com.microsoft.azure.functions.*;
+
 public class Function {
     /**
      * This function listens at endpoint "/api/hello". Two ways to invoke it using "curl" command in bash:
@@ -206,7 +214,7 @@ return request.createResponse(200, "Hi, " + name);
 変更を保存します。 mvn クリーン パッケージを実行し、前と同様にターミナルから `azure-functions:deploy` を実行して再デプロイします。 関数アプリが更新されます。次の要求を実行してみましょう。
 
 ```bash
-curl -w '\n' -d AzureFunctionsTest https://fabrikam-functions-20170920120101928.azurewebsites.net/api/HttpTrigger-Java
+curl -w '\n' -d AzureFunctionsTest https://fabrikam-functions-20170920120101928.azurewebsites.net/api/hello
 ```
 
 出力結果が更新されていることがわかります。

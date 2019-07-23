@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: c3e77a8ec46ae18cb9daa855d842969cc2ba4bb9
-ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.openlocfilehash: 6e1ffa11456fc6a021e370d674624d297463ac73
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67137252"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603193"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Custom Speech 用のテスト データを準備する
 
@@ -148,7 +148,7 @@ Microsoft 音声認識の精度をテストしているか、または独自の�
 
 カスタマイズされた発音は、英語 (en-US) とドイツ語 (de-DE) で使用できます。 この表に、言語ごとにサポートされている文字を示します。
 
-| 言語 | ロケール | 文字 |
+| 言語 | Locale | 文字 |
 |----------|--------|------------|
 | 英語 | en-US | a、b、c、d、e、f、g、h、i、j、k、l、m、n、o、p、q、r、s、t、u、v、w、x、y、z |
 | ドイツ語 | de-DE | ä、ö、ü、a、b、c、d、e、f、g、h、i、j、k、l、m、n、o、p、q、r、s、t、u、v、w、x、y、z |

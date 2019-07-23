@@ -1,5 +1,6 @@
 ---
 title: チュートリアル:Azure Databricks を使用した、ストリーミング データの異常検出
+titleSuffix: Azure Cognitive Services
 description: Anomaly Detector API と Azure Databricks を使用して、データ内の異常を監視します。
 titlesuffix: Azure Cognitive Services
 services: cognitive-services
@@ -10,12 +11,12 @@ ms.subservice: anomaly-detector
 ms.topic: tutorial
 ms.date: 05/08/2019
 ms.author: aahi
-ms.openlocfilehash: 7009771f2b647bb582b3d8091edce99fe901a9f1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8d3f5d0e10fadd31fd8bde77339b872c1b90451f
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67080788"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67721474"
 ---
 # <a name="tutorial-anomaly-detection-on-streaming-data-using-azure-databricks"></a>チュートリアル:Azure Databricks を使用した、ストリーミング データの異常検出
 
@@ -164,11 +165,11 @@ Twitter アプリケーションについて取得した値を保存します。
 
     |値 |説明  |
     |---------|---------|
-    |Name     | Anomaly Detector リソースの名前。        |
-    |サブスクリプション     | リソースが関連付けられる Azure サブスクリプション。        |
+    |EnableAdfsAuthentication     | Anomaly Detector リソースの名前。        |
+    |Subscription     | リソースが関連付けられる Azure サブスクリプション。        |
     |Location     | Azure の場所。        |
     |価格レベル     | サービスの価格レベル。 Anomaly Detector の価格の詳細については、[料金ページ](https://azure.microsoft.com/pricing/details/cognitive-services/anomaly-detector/)を参照してください。        |
-    |リソース グループ     | 新しいリソース グループを作成するか、既存のリソース グループを選択するかを指定します。        |
+    |Resource group     | 新しいリソース グループを作成するか、既存のリソース グループを選択するかを指定します。        |
 
 
      **作成** を選択します。

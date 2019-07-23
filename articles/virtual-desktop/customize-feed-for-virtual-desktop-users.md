@@ -4,15 +4,15 @@ description: PowerShell コマンドレットで Windows Virtual Desktop ユー�
 services: virtual-desktop
 author: v-hevem
 ms.service: virtual-desktop
-ms.topic: how-to
+ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: v-hevem
-ms.openlocfilehash: 869760a12089ed7453199ad8a3fa18a6cca87511
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: 5fe2a8b8ee5870ff7986ca2d91739f82a5128882
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67155754"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67618963"
 ---
 # <a name="customize-feed-for-windows-virtual-desktop-users"></a>Windows Virtual Desktop ユーザー用のフィードをカスタマイズする
 

@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: b637f547de06d9347a1c74ad7da560be97f16881
-ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
+ms.openlocfilehash: 12b9793cabb261368c437bd2ae2dbb39cf078bef
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67144669"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67653277"
 ---
 # <a name="design-secure-applications-on-azure"></a>セキュリティで保護されたアプリケーションを Azure 上で設計する
 この記事では、クラウド向けのアプリケーションを設計するときに考慮すべきセキュリティ アクティビティと制御について説明します。 Microsoft [セキュリティ開発ライフサイクル (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) の要件と設計のフェーズ中に考慮すべきセキュリティの質問と概念に加えて、トレーニング用のリソースについて説明します。 目標は、より安全なアプリケーションの設計に使用できるアクティビティと Azure サービスの定義を手助けすることです。
@@ -39,7 +39,7 @@ ms.locfileid: "67144669"
 
   - [SDK/ツール](https://docs.microsoft.com/azure/index#pivot=sdkstools)では、Azure で使用できるツールについて説明しています。
 
-  - [Azure DevOps Services](https://docs.microsoft.com/azure/devops/?view=vsts#pivot=index&panel=indexA) では、開発用の共同作業ツールを提供しています。 これらのツールには、高性能パイプライン、無料の Git リポジトリ、構成可能なかんばんボード、広範囲で自動化されたクラウドベースのロード テスト機能などがあります。
+  - [Azure DevOps Services](https://docs.microsoft.com/azure/devops/) では、開発用の共同作業ツールを提供しています。 これらのツールには、高性能パイプライン、無料の Git リポジトリ、構成可能なかんばんボード、広範囲で自動化されたクラウドベースのロード テスト機能などがあります。
     [DevOps リソース センター](https://docs.microsoft.com/azure/devops/learn/)では、DevOps 手法、Git バージョン管理、アジャイル方式、Microsoft での DevOps の取り組み、独自の DevOps の進行状況を評価するための方法を学習するためのリソースがまとめられています。
 
   - [運用環境に移行する前にセキュリティ面で考慮すべき項目上位 5](https://docs.microsoft.com/learn/modules/top-5-security-items-to-consider/index?WT.mc_id=Learn-Blog-tajanca) では、Azure 上の Web アプリケーションをセキュリティで保護して、最も一般的で危険な Web アプリケーションへの攻撃からアプリを保護する方法を示しています。

@@ -8,15 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 04/11/2019
+ms.date: 07/05/2019
 ms.author: panosper
-ms.custom: seodec18
-ms.openlocfilehash: fbe6fe25b5ff0cd5148e3bba22dec4648399510d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a100049ddfc9d4859e303546c1b10e814cf96ebb
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67072303"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606222"
 ---
 # <a name="webhooks-for-speech-services"></a>Speech Services の Webhook
 
@@ -24,7 +23,7 @@ Webhook は、アプリケーションが使用可能になったときに Speec
 
 ## <a name="supported-operations"></a>サポート対象の操作
 
-Speech Services は、すべての長期実行操作で Webhook をサポートします。 下に示した操作のそれぞれで、完了時に HTTP コールバックをトリガーできます。 
+Speech Services は、すべての長期実行操作で Webhook をサポートします。 下に示した操作のそれぞれで、完了時に HTTP コールバックをトリガーできます。
 
 * DataImportCompletion
 * ModelAdaptationCompletion
@@ -37,7 +36,7 @@ Speech Services は、すべての長期実行操作で Webhook をサポート�
 
 ## <a name="create-a-webhook"></a>webhook を作成する
 
-オフラインの文字起こし用の Webhook を作成してみましょう。 シナリオ: ユーザーが、バッチ文字起こし API で非同期に文字起こしする可能性が高い長期実行のオーディオ ファイルを持っているとします。 
+オフラインの文字起こし用の Webhook を作成してみましょう。 シナリオ: ユーザーが、バッチ文字起こし API で非同期に文字起こしする可能性が高い長期実行のオーディオ ファイルを持っているとします。
 
 Webhook は、POST 要求を https://\<region\>.cris.ai/api/speechtotext/v2.1/transcriptions/hooks に送信することで作成できます。
 
@@ -65,7 +64,7 @@ Webhook は、POST 要求を https://\<region\>.cris.ai/api/speechtotext/v2.1/tr
 
 `Active` プロパティは、Webhook 登録を削除して再作成しなくても、URL へのコールバックのオンとオフを切り替えるために使用されます。 プロセスの完了後に 1 度コールバックすればよい場合は、Webhook を削除して、`Active` プロパティを false に切り替えます。
 
-イベントの種類 `TranscriptionCompletion` がイベント アレイで指定されます。 文字起こしが終了状態 (`Succeeded` または `Failed`) になったときに、エンドポイントにコールバックします。 登録済み URL にコールバックすると、登録されたいずれかのイベントの種類を含んだ `X-MicrosoftSpeechServices-Event` ヘッダーが、要求に含まれます。 登録済みのイベントの種類ごとに 1 つの要求があります。 
+イベントの種類 `TranscriptionCompletion` がイベント アレイで指定されます。 文字起こしが終了状態 (`Succeeded` または `Failed`) になったときに、エンドポイントにコールバックします。 登録済み URL にコールバックすると、登録されたいずれかのイベントの種類を含んだ `X-MicrosoftSpeechServices-Event` ヘッダーが、要求に含まれます。 登録済みのイベントの種類ごとに 1 つの要求があります。
 
 サブスクライブできないイベントの種類が 1 つあります。 それは `Ping` のイベントの種類です。 この種類を含む要求は、ping URL (下記参照) の使用時に、Webhook の作成が完了すると URL に送信されます。  
 
@@ -94,7 +93,7 @@ public async Task<IActionResult> PostAsync([FromHeader(Name = EventTypeHeaderNam
             var validated = contentHash.SequenceEqual(storedHash);
         }
     }
- 
+
     switch (eventTypeHeader)
     {
         case WebHookEventType.Ping:
@@ -106,7 +105,7 @@ public async Task<IActionResult> PostAsync([FromHeader(Name = EventTypeHeaderNam
         default:
             break;
     }
- 
+
     return this.Ok();
 }
 
@@ -121,12 +120,12 @@ public async Task<IActionResult> PostAsync([FromHeader(Name = EventTypeHeaderNam
 
 1 つの特定の Webhook を削除するには:DELETE https://westus.cris.ai/api/speechtotext/v2.1/transcriptions/hooks/:id
 
-> [!Note] 
+> [!Note]
 > 上記の例では、リージョンは 'westus' です。 これは、Azure portal で Speech Services リソースを作成したリージョンに置き換える必要があります。
 
 POST https://westus.cris.ai/api/speechtotext/v2.1/transcriptions/hooks/:id/ping Body: empty
 
-登録済みの URL に POST 要求を送信します。 要求には、`X-MicrosoftSpeechServices-Event` ヘッダーと値の ping が含まれます。 Webhook は、シークレットに登録された場合、シークレットを HMAC キーとして使用したペイロードの SHA256 ハッシュと共に `X-MicrosoftSpeechServices-Signature` ヘッダーを含みます。 ハッシュは、Base64 でエンコードされます。 
+登録済みの URL に POST 要求を送信します。 要求には、`X-MicrosoftSpeechServices-Event` ヘッダーと値の ping が含まれます。 Webhook は、シークレットに登録された場合、シークレットを HMAC キーとして使用したペイロードの SHA256 ハッシュと共に `X-MicrosoftSpeechServices-Signature` ヘッダーを含みます。 ハッシュは、Base64 でエンコードされます。
 
 POST https://westus.cris.ai/api/speechtotext/v2.1/transcriptions/hooks/:id/test Body: empty
 
