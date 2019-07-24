@@ -1,6 +1,6 @@
 ---
 title: チュートリアル:Azure HDInsight の Spark コンピューティング コンテキストで R を使用する
-description: チュートリアル - ML Services で R と Spark を使用してみます。
+description: チュートリアル - Azure HDInsight Machine Learning service クラスター上で R と Spark の使用を開始します。
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,24 +8,24 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/21/2019
-ms.openlocfilehash: 244c62467f187417bbb9f0e54173aad5a7d26d0a
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: f072b6905881da7b7854b0e51d690dbbd40dffb5
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67451743"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68227437"
 ---
 # <a name="tutorial-use-r-in-a-spark-compute-context-in-azure-hdinsight"></a>チュートリアル:Azure HDInsight の Spark コンピューティング コンテキストで R を使用する
 
-このチュートリアルでは、Azure HDInsight の ML Services クラスター上で実行されている Apache Spark で R 関数を使用するための詳しい手順を示します。
+このチュートリアルでは、Azure HDInsight Machine Learning service クラスター上で実行される Apache Spark 内で R 関数を使用する方法をステップバイステップで説明します。
 
 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * ローカル ストレージにサンプル データをダウンロードする
 > * 既定のストレージにデータをコピーする
-> * データ セットを設定する
-> * データ ソースの作成
+> * データセットをセットアップする
+> * データソースを作成する
 > * Spark のコンピューティング コンテキストを作成する
 > * 線形モデルを適合させる
 > * 複合 XDF ファイルを使用する
@@ -33,23 +33,23 @@ ms.locfileid: "67451743"
 
 ## <a name="prerequisites"></a>前提条件
 
-* HDInsight 上の ML Services クラスター。 [Azure portal を使用した Apache Hadoop クラスターの作成](../hdinsight-hadoop-create-linux-clusters-portal.md)に関するページを参照し、 **[クラスターの種類]** で **[ML Services]** を選択してください。
+* Azure HDInsight Machine Learning service クラスター。 [Azure portal を使用した Apache Hadoop クラスターの作成](../hdinsight-hadoop-create-linux-clusters-portal.md)に関するページに移動し、 **[クラスターの種類]** に対して **[ML Services]** を選択します。
 
 ## <a name="connect-to-rstudio-server"></a>RStudio Server に接続する
 
-RStudio Server は、クラスターのエッジ ノード上で実行されます。 次の URL に移動します (`CLUSTERNAME` は、作成した ML Services クラスターの名前)。
+RStudio Server は、クラスターのエッジ ノード上で実行されます。 次のサイトに移動します (URL 内の *CLUSTERNAME* は、作成した HDInsight Machine Learning service クラスターの名前です)。
 
 ```
 https://CLUSTERNAME.azurehdinsight.net/rstudio/
 ```
 
-初めてサインインするときは認証を 2 回行う必要があります。 最初の認証プロンプトでは、クラスター管理者のログインとパスワードを指定します。既定では `admin` です。 2 つ目の認証プロンプトでは、SSH ログインとパスワードを指定します。既定では `sshuser` です。 以降のサインインでは、SSH 資格情報のみが求められます。
+最初にサインインするときは、認証が 2 回実行されます。 最初の認証プロンプトでは、クラスター管理者のユーザー名とパスワードを入力します (既定値は *admin* です)。 2 番目の認証プロンプトでは、SSH のユーザー名とパスワードを入力します (既定値は *sshuser* です)。 以降のサインインでは、SSH 資格情報のみが必要になります。
 
-## <a name="download-sample-data"></a>サンプル データをダウンロードする
+## <a name="download-the-sample-data-to-local-storage"></a>ローカル ストレージにサンプル データをダウンロードする
 
-*Airline 2012 On-Time Data Set* は、12 個のコンマ区切りファイルで構成されており、各ファイルには 2012 年の米国内の全民間飛行便の発着情報が入っています。 これは、600 万件を超える観察データが含まれるビッグ データ セットです。
+*Airline 2012 On-Time Data Set* は、12 個のコンマ区切りファイルで構成されており、各ファイルには 2012 年の米国内の全民間飛行便の発着情報が入っています。 このデータセットは規模が大きく、含まれる観測値は 600 万を超えています。
 
-1. いくつかの環境変数を初期化します。 RStudio Server コンソールに以下のコードを入力します。
+1. いくつかの環境変数を初期化します。 RStudio Server コンソールで以下のコードを入力します。
 
     ```R
     bigDataDirRoot <- "/tutorial/data" # root directory on cluster default storage
@@ -57,11 +57,11 @@ https://CLUSTERNAME.azurehdinsight.net/rstudio/
     remoteDir <- "https://packages.revolutionanalytics.com/datasets/AirOnTimeCSV2012" # location of data
     ```
 
-    変数は、画面の右側の **[環境]** タブに表示されます。
+1. 右側のウィンドウで **[環境]** タブを選択します。変数は **[値]** の下に表示されます。
 
     ![RStudio](./media/ml-services-tutorial-spark-compute/rstudio.png)
 
-2.  ローカル ディレクトリを作成し、サンプル データをダウンロードします。 RStudio に次のコードを入力します。
+1.  ローカル ディレクトリを作成し、サンプル データをダウンロードします。 RStudio に次のコードを入力します。
 
     ```R
     # Create local directory
@@ -82,11 +82,11 @@ https://CLUSTERNAME.azurehdinsight.net/rstudio/
     download.file(file.path(remoteDir, "airOT201212.csv"), file.path(localDir, "airOT201212.csv"))
     ```
 
-    ダウンロードは約 9 分半で完了します。
+    ダウンロードは約 9.5 分で完了します。
 
-## <a name="copy-data-to-default-storage"></a>既定のストレージにデータをコピーする
+## <a name="copy-the-data-to-default-storage"></a>既定のストレージにデータをコピーする
 
-HDFS の場所は、`airDataDir` 変数で指定します。 RStudio に次のコードを入力します。
+Hadoop 分散ファイル システム (HDFS) の場所は、`airDataDir` 変数で指定します。 RStudio に次のコードを入力します。
 
 ```R
 # Set directory in bigDataDirRoot to load the data into
@@ -102,9 +102,9 @@ rxHadoopCopyFromLocal(localDir, bigDataDirRoot)
 rxHadoopListFiles(airDataDir)
 ```
 
-この手順は、約 10 秒で完了します。
+この手順は約 10 秒で完了します。
 
-## <a name="set-up-data-set"></a>データ セットを設定する
+## <a name="set-up-a-dataset"></a>データセットをセットアップする
 
 1. 既定値を使用するファイル システム オブジェクトを作成します。 RStudio に次のコードを入力します。
 
@@ -113,7 +113,7 @@ rxHadoopListFiles(airDataDir)
     hdfsFS <- RxHdfsFileSystem()
     ```
 
-2. 元の CSV ファイルにはかなり扱いにくい変数名が付いているので、管理しやすくするために `colInfo` という一覧を用意しました。 RStudio に次のコードを入力します。
+1. 元の CSV ファイルにはかなり扱いにくい変数名が付いているので、管理しやすくするために *colInfo* という一覧を用意しました。 RStudio に次のコードを入力します。
 
     ```R
     airlineColInfo <- list(
@@ -156,9 +156,9 @@ rxHadoopListFiles(airDataDir)
     varNames <- names(airlineColInfo)
     ```
 
-## <a name="create-data-source"></a>データ ソースの作成
+## <a name="create-data-sources"></a>データソースを作成する
 
-Spark コンピューティング コンテキストでは、以下の関数を使用してデータ ソースを作成できます。
+Spark コンピューティング コンテキストでは、次の関数を使用してデータ ソースを作成できます。
 
 |Function | 説明 |
 |---------|-------------|
@@ -177,9 +177,9 @@ airDS <- RxTextData( airDataDir,
                         fileSystem = hdfsFS ) 
 ```
 
-## <a name="create-compute-context-for-spark"></a>Spark のコンピューティング コンテキストを作成する
+## <a name="create-a-compute-context-for-spark"></a>Spark のコンピューティング コンテキストを作成する
 
-ワーカー ノード上でデータを読み込んで分析を実行するには、スクリプトのコンピューティング コンテキストを [RxSpark](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxspark) に設定します。 このコンテキストでは、R 関数はすべてのワーカー ノード全体でワークロードを自動的に分散します。ジョブまたはキューを管理するための組み込み要件はありません。 Spark コンピューティング コンテキストは、`RxSpark` または `rxSparkConnect()` を通じて確立され、`rxSparkDisconnect()` を使用してローカル コンピューティング コンテキストに戻ります。 RStudio に次のコードを入力します。
+ワーカー ノード上でデータを読み込んで分析を実行するには、スクリプトのコンピューティング コンテキストを [RxSpark](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxspark) に設定します。 このコンテキストでは、R 関数はすべてのワーカー ノード全体でワークロードを自動的に分散します。ジョブまたはキューを管理するための組み込み要件はありません。 Spark コンピューティング コンテキストは、`RxSpark` または `rxSparkConnect()` を通じて設定および作成され、`rxSparkDisconnect()` を使用してローカル コンピューティング コンテキストに戻ります。 RStudio に次のコードを入力します。
 
 ```R
 # Define the Spark compute context
@@ -200,7 +200,7 @@ rxSetComputeContext(mySparkCluster)
     )
     ```
     
-    この手順は、2、3 分で完了します。
+    この手順は、2 ～ 3 分で完了します。
 
 1. 結果を表示します。 RStudio に次のコードを入力します。
 
@@ -241,11 +241,13 @@ rxSetComputeContext(mySparkCluster)
     Condition number: 1 
     ```
 
-    ご覧のように、この結果は、指定したディレクトリ内のすべての .csv ファイルを使用して、600 万件すべての観察データが処理されたことを示しています。 また、`cube = TRUE` を指定したため、曜日ごとに推定係数 (切片ではありません) があることもわかります。
+    この結果は、指定したディレクトリ内のすべての CSV ファイルを使用して、600 万件すべての観察データが処理されたことを示しています。 `cube = TRUE` を指定したため、曜日ごとに推定係数 (切片ではありません) があります。
 
 ## <a name="use-composite-xdf-files"></a>複合 XDF ファイルを使用する
 
-これまで見てきたように、Hadoop 上で R を使用して CSV ファイルを直接分析することができますが、データがより効率的な形式で格納されていると、より迅速に分析できます。 R .xdf 形式はきわめて効率的ですが、個々のファイルが単一の HDFS ブロック内に保持されるように、HDFS 用に多少修正されています (HDFS ブロック サイズはインストールごとに異なりますが、通常は 64 MB か 128 MB です)。Hadoop で [rxImport](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rximport) を使用する場合は、inData として `AirDS` のような `RxTextData` データ ソースを指定し、outFile 引数として fileSystem が HDFS ファイル システムに設定された `RxXdfData` データ ソースを指定して、複合 .xdf ファイルのセットを作成します。 その後、`RxXdfData` オブジェクトは、後続の R 分析でデータ引数として使用できます。
+ご覧のように、Hadoop 上で R を使用して CSV ファイルを直接分析できます。 ただし、より効率的な形式でデータを格納すると、分析をより迅速に実行できます。 R XDF ファイル形式は効率的ですが、個々のファイルが単一の HDFS ブロック内に保持されるように、HDFS 用に多少修正されています (HDFS ブロック サイズはインストールごとに異なりますが、通常は 64 MB か 128 MB です)。 
+
+Hadoop 上で [rxImport](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rximport) を使用して一連の複合 XDF ファイルを作成する場合は、inData として `AirDS` のような `RxTextData` データ ソースを指定し、outFile 引数として fileSystem が HDFS ファイル システムに設定された `RxXdfData` データ ソースを指定します。 その後、`RxXdfData` オブジェクトは、後続の R 分析でデータ引数として使用できます。
 
 1. `RxXdfData` オブジェクトを定義します。 RStudio に次のコードを入力します。
 
@@ -296,11 +298,11 @@ rxSetComputeContext(mySparkCluster)
 
 ### <a name="in-a-spark-context"></a>Spark コンテキストで
 
-分析の実行中の効率を活かすために CSV を XDF に変換したものの、データを CSV に戻したい場合は、[rxDataStep](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxdatastep) を使用して変換できます。
+分析実行時の効率化のために CSV ファイルを XDF ファイル形式に変換したが、データを元の CSV に戻したい場合は、[rxDataStep](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxdatastep) を使用します。
 
-CSV ファイルのフォルダーを作成するには、まずファイル引数としてディレクトリ名を使用して `RxTextData` オブジェクトを作成します。これは、CSV ファイルの作成先となるフォルダーを表します。 `rxDataStep` を実行すると、このディレクトリが作成されます。 次に、`rxDataStep` の `outFile` 引数で、この `RxTextData` オブジェクトを指し示します。 作成された各 CSV には、ディレクトリ名に基づいて名前が付けられ、その後に番号が付けられます。
+CSV ファイルのフォルダーを作成するには、まず、ファイル引数としてディレクトリ名を使用して `RxTextData` オブジェクトを作成します。 このオブジェクトは、CSV ファイルを作成するフォルダーを表します。 `rxDataStep` を実行すると、このディレクトリが作成されます。 次に、`rxDataStep` の `outFile` 引数で、この `RxTextData` オブジェクトを指し示します。 作成された各 CSV には、ディレクトリ名に基づいて名前が付けられ、その後に番号が付けられます。
 
-ロジスティック回帰と予測を実行した後、`airDataXdf` 複合 XDF から HDFS に CSV のフォルダーを書き出して、新しい CSV ファイルに予測値と残差が含まれるようにしたいとします。 RStudio に次のコードを入力します。
+ロジスティック回帰と予測を実行した後、`airDataXdf` 複合 XDF から HDFS に CSV ファイルのフォルダーを書き出して、新しい CSV ファイルに予測値と残差が含まれるようにしたいとします。 RStudio に次のコードを入力します。
 
 ```R
 airDataCsvDir <- file.path(bigDataDirRoot,"AirDataCSV2012")
@@ -308,13 +310,13 @@ airDataCsvDS <- RxTextData(airDataCsvDir,fileSystem=hdfsFS)
 rxDataStep(inData=airDataXdf, outFile=airDataCsvDS)
 ```
 
-この手順は、約 2 分半で完了します。
+この手順は、約 2.5 分で完了します。
 
-`rxDataStep` によって入力複合 XDF ファイル内の .xdfd ファイルごとに 1 つの CSV が書き出されたことがわかります。 これは、コンピューティング コンテキストが `RxSpark` に設定されている場合に、複合 XDF から HDFS に CSV を書き込む際の既定の動作です。
+`rxDataStep` によって入力複合 XDF ファイル内の XDFD ファイルごとに 1 つの CSV が書き出されました。 これは、コンピューティング コンテキストが `RxSpark` に設定されている場合に、複合 XDF ファイルから HDFS に CSV ファイルを書き込む際の既定の動作です。
 
 ### <a name="in-a-local-context"></a>ローカル コンテキストで
 
-一方、分析の実行を終えたらコンピューティング コンテキストを `local` に戻し、CSV ファイルを HDFS に書き出すときにもう少し細かい制御ができる 2 つの引数 (`createFileSet` と `rowsPerOutFile`) を `RxTextData` 内で利用することもできます。 `createFileSet` を `TRUE` に設定すると、CSV ファイルのフォルダーは指定したディレクトリに作成されます。 `createFileSet` を `FALSE` に設定すると、単一の CSV ファイルが書き込まれます。 2 つ目の引数の `rowsPerOutFile` に整数を指定すると、`createFileSet` が `TRUE` である場合に各 CSV ファイルに書き込む行数を指定できます。
+一方、分析の実行を終えたらコンピューティング コンテキストを `local` に戻し、CSV ファイルを HDFS に書き出すときにもう少し細かい制御ができる 2 つの引数 (`createFileSet` と `rowsPerOutFile`) を `RxTextData` 内で利用することもできます。 `createFileSet` を `TRUE` に設定すると、CSV ファイルのフォルダーは指定したディレクトリに作成されます。 `createFileSet` を `FALSE` に設定すると、単一の CSV ファイルが作成されます。 2 つ目の引数の `rowsPerOutFile` に整数を設定すると、`createFileSet` が `TRUE` である場合に各 CSV ファイルに書き込む行数を指定できます。
 
 RStudio に次のコードを入力します。
 
@@ -327,7 +329,7 @@ rxDataStep(inData=airDataXdf, outFile=airDataCsvRowsDS)
 
 この手順は、約 10 分で完了します。
 
-`RxSpark` コンピューティング コンテキストを使用している場合、`createFileSet` は既定で `TRUE` になり、`rowsPerOutFile` は効果がありません。 そのため、単一の CSV を作成したり、ファイルごとの行数をカスタマイズしたりする場合は、`local` コンピューティング コンテキストで `rxDataStep` を実行する必要があります (その場合でもデータは HDFS に置くことができます)。
+`RxSpark` コンピューティング コンテキストを使用している場合、`createFileSet` は既定で `TRUE` になり、`rowsPerOutFile` は効果がありません。 そのため、単一の CSV を作成したり、ファイルごとの行数をカスタマイズしたりする場合は、`local` コンピューティング コンテキスト内で `rxDataStep` を実行します (その場合でもデータは HDFS 内に置くことができます)。
 
 ## <a name="final-steps"></a>最終手順
 
@@ -355,13 +357,13 @@ rxDataStep(inData=airDataXdf, outFile=airDataCsvRowsDS)
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-チュートリアルを完了したら、必要に応じてクラスターを削除できます。 HDInsight を使用すると、データは Azure Storage に格納されるため、クラスターは、使用されていない場合に安全に削除できます。 また、HDInsight クラスターは、使用していない場合でも課金されます。 クラスターの料金は Storage の料金の何倍にもなるため、クラスターを使用しない場合は削除するのが経済的にも合理的です。
+チュートリアルを完了したら、必要に応じてクラスターを削除できます。 HDInsight を使用すると、データは Azure Storage 内に格納されます。そのため、クラスターは、使用していなければ、削除しても問題ありません。 また、HDInsight クラスターは、使用していない場合でも課金されます。 クラスターの料金は Storage の料金の何倍にもなるため、クラスターを使用しない場合は削除するのが経済的にも合理的です。
 
-クラスターを削除するには、「[ブラウザー、PowerShell、または Azure CLI を使用して HDInsight クラスターを削除する](../hdinsight-delete-cluster.md)」を参照してください。
+クラスターを削除するには、「[Delete an HDInsight cluster by using your browser, PowerShell, or the Azure CLI (ブラウザー、PowerShell、または Azure CLI を使用して HDInsight クラスターを削除する)](../hdinsight-delete-cluster.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、Azure HDInsight の ML Services クラスター上で実行されている Apache Spark で R 関数を使用する方法を説明しました。 詳細については、次の記事を参照してください。
+このチュートリアルでは、HDInsight Machine Learning service クラスター上で実行されている Apache Spark 内で R 関数を使用する方法を説明しました。 詳細については、次の記事を参照してください。
 
-* [HDInsight 上の ML Services 向けのコンピューティング コンテキスト オプション](r-server-compute-contexts.md)
+* [Azure HDInsight Machine Learning service クラスターのコンピューティング コンテキスト オプション](r-server-compute-contexts.md)
 * [Hadoop 上の Spark 用の R 関数](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/revoscaler-hadoop-functions)

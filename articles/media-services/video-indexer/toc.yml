@@ -21,6 +21,8 @@
       href: compare-video-indexer-with-media-services-presets.md
     - name: 複数のテナントの管理
       href: manage-multiple-tenants.md
+    - name: 言語識別モデル
+      href: language-identification-model.md
     - name: コンテンツ モデルのカスタマイズ
       items:
         - name: 概要

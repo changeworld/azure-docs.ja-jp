@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: quickstart
-ms.date: 07/09/2019
+ms.date: 07/11/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: ee3c4da96629910801413cbbad69963defb87dfe
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 5a61f5476551d785f2db0ef52dff45554302fd07
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67798795"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849804"
 ---
 # <a name="quickstart-create-an-azure-search-index-in-postman-using-rest-apis"></a>クイック スタート:REST API を使用して Postman に Azure Search インデックスを作成する
 > [!div class="op_single_selector"]
@@ -28,15 +28,17 @@ ms.locfileid: "67798795"
 
 [Azure Search REST API](https://docs.microsoft.com/rest/api/searchservice) を調査するための最も簡単な方法の 1 つは、Postman または別の Web テスト ツールを使用して HTTP 要求を作成し、その応答を検査することです。 適切なツールと以下の手順を利用すると、コードを記述する前に要求を送信して応答を確認できます。
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成し、[Azure Search にサインアップ](search-create-service-portal.md)してください。
+この記事では、要求を対話形式で作成する方法について説明します。 または、[Postman コレクションをダウンロードしてインポート](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/Quickstart)し、定義済みの要求を使用することもできます。
+
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイック スタートでは、次のサービスとツールを使用します。 
-
-+ [Azure Search サービスを作成](search-create-service-portal.md)するか、現在のサブスクリプションから[既存のサービスを見つけます](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 このクイック スタート用には、無料のサービスを使用できます。 
+このクイックスタートでは、次のサービスとツールが必要です。 
 
 + [Postman デスクトップ アプリ](https://www.getpostman.com/)は、Azure Search に要求を送信するために使用されます。
+
++ [Azure Search サービスを作成](search-create-service-portal.md)するか、現在のサブスクリプションから[既存のサービスを見つけます](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 このクイック スタート用には、無料のサービスを使用できます。 
 
 ## <a name="get-a-key-and-url"></a>キーと URL を入手する
 
@@ -54,20 +56,20 @@ REST 呼び出しには、要求ごとにサービス URL とアクセス キー
 
 このセクションでは、任意の Web ツールを使用して、Azure Search への接続を設定します。 各ツールには、セッションの要求ヘッダー情報が保持されます。つまり、API キーとコンテンツタイプの入力は 1 度だけで済みます。
 
-いずれかのツールでコマンド (GET、POST、PUT など) を選択し、URL エンドポイントを指定し、一部のタスクでは要求の本文に JSON を入力する必要があります。 検索サービス名 (YOUR-SEARCH-SERVICE-NAME) を有効な値に置き換えます。 
+いずれかのツールでコマンド (GET、POST、PUT など) を選択し、URL エンドポイントを指定し、一部のタスクでは要求の本文に JSON を入力する必要があります。 検索サービス名 (YOUR-SEARCH-SERVICE-NAME) を有効な値に置き換えます。 各インデックスの名前だけを返すには、`$select=name` を追加します。 
 
-    https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes?api-version=2019-05-06
+    https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes?api-version=2019-05-06&$select=name
 
 HTTPS プレフィックス、サービスの名前、オブジェクト (この例では、インデックス コレクション) の名前、[API バージョン](search-api-versions.md)に注目してください。 API バージョンは必須の小文字の文字列で、最新バージョンの場合は `?api-version=2019-05-06` として指定します。 API バージョンは定期的に更新されます。 各要求に API バージョンを含めるので、使用するバージョンが完全に制御されます。  
 
-要求ヘッダーの構成には、コンテンツの種類に加えて、Azure Search への認証に使用される API キーの 2 つの要素が含まれます。 管理者 API キー (YOUR-ADMIN-API-KEY) を有効な値に置き換えます。 
+要求ヘッダーの構成には、コンテンツの種類に加えて、Azure Search への認証に使用される API キーの 2 つの要素が含まれます。 管理者 API キー (YOUR-AZURE-SEARCH-ADMIN-API-KEY) を有効な値に置き換えます。 
 
-    api-key: <YOUR-ADMIN-API-KEY>
+    api-key: <YOUR-AZURE-SEARCH-ADMIN-API-KEY>
     Content-Type: application/json
 
 Postman で、次のスクリーンショットのように要求を作成します。 動詞として **GET** を選択し、URL を入力し、 **[Send]\(送信\)** をクリックします。 このコマンドは Azure Search に接続し、インデックス コレクションを読み取り、接続が成功すると HTTP 状態コード 200 を返します。 ご使用のサービスにインデックスが既に作成されている場合、応答にはインデックスの定義も含まれます。
 
-![Postman の要求ヘッダー][6]
+![Postman の要求 URL とヘッダー](media/search-get-started-postman/postman-url.png "Postman の要求 URL とヘッダー")
 
 ## <a name="1---create-an-index"></a>1 - インデックスの作成
 
@@ -81,11 +83,11 @@ Postman でこれを行うには:
 
 2. URL `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels?api-version=2019-05-06` をコピーします。
 
-3. 要求の本文にインデックス定義 (下に示します) を指定します。
+3. 要求の本文にインデックス定義 (コピーできるコードを下に示します) を指定します。
 
 4. **[送信]** をクリックします。
 
-![Postman の要求本文][8]
+![要求本文の JSON ドキュメントのインデックスを作成する](media/search-get-started-postman/postman-request.png "要求本文の JSON ドキュメントのインデックスを作成する")
 
 ### <a name="index-definition"></a>インデックスの定義
 
@@ -93,23 +95,30 @@ Postman でこれを行うには:
 
 フィールドの属性によって、使用できるアクションが決まります。 REST API は、既定で多くのアクションを使用できます。 たとえば、すべての文字列は既定で検索可能、取得可能、フィルター可能、およびファセット可能です。 動作を無効にする必要がある場合は、属性を設定するだけで済むことがよくあります。
 
-          {
-         "name": "hotels",  
-         "fields": [
-           {"name": "hotelId", "type": "Edm.String", "key":true, "searchable": false},
-           {"name": "baseRate", "type": "Edm.Double"},
-           {"name": "description", "type": "Edm.String", "filterable": false, "sortable": false, "facetable": false},
-           {"name": "description_fr", "type": "Edm.String", "filterable": false, "sortable": false, "facetable": false, "analyzer": "fr.lucene"},
-           {"name": "hotelName", "type": "Edm.String"},
-           {"name": "category", "type": "Edm.String"},
-           {"name": "tags", "type": "Collection(Edm.String)"},
-           {"name": "parkingIncluded", "type": "Edm.Boolean"},
-           {"name": "smokingAllowed", "type": "Edm.Boolean"},
-           {"name": "lastRenovationDate", "type": "Edm.DateTimeOffset"},
-           {"name": "rating", "type": "Edm.Int32"},
-           {"name": "location", "type": "Edm.GeographyPoint"}
-          ]
-         }
+```json
+{
+    "name": "hotels-quickstart",  
+    "fields": [
+        {"name": "HotelId", "type": "Edm.String", "key": true, "filterable": true},
+        {"name": "HotelName", "type": "Edm.String", "searchable": true, "filterable": false, "sortable": true, "facetable": false},
+        {"name": "Description", "type": "Edm.String", "searchable": true, "filterable": false, "sortable": false, "facetable": false, "analyzer": "en.lucene"},
+        {"name": "Category", "type": "Edm.String", "searchable": true, "filterable": true, "sortable": true, "facetable": true},
+        {"name": "Tags", "type": "Collection(Edm.String)", "searchable": true, "filterable": true, "sortable": false, "facetable": true},
+        {"name": "ParkingIncluded", "type": "Edm.Boolean", "filterable": true, "sortable": true, "facetable": true},
+        {"name": "LastRenovationDate", "type": "Edm.DateTimeOffset", "filterable": true, "sortable": true, "facetable": true},
+        {"name": "Rating", "type": "Edm.Double", "filterable": true, "sortable": true, "facetable": true},
+        {"name": "Address", "type": "Edm.ComplexType", 
+        "fields": [
+        {"name": "StreetAddress", "type": "Edm.String", "filterable": false, "sortable": false, "facetable": false, "searchable": true},
+        {"name": "City", "type": "Edm.String", "searchable": true, "filterable": true, "sortable": true, "facetable": true},
+        {"name": "StateProvince", "type": "Edm.String", "searchable": true, "filterable": true, "sortable": true, "facetable": true},
+        {"name": "PostalCode", "type": "Edm.String", "searchable": true, "filterable": true, "sortable": true, "facetable": true},
+        {"name": "Country", "type": "Edm.String", "searchable": true, "filterable": true, "sortable": true, "facetable": true}
+        ]
+     }
+  ]
+}
+```
 
 この要求を送信すると、インデックスが正常に作成されたことを示す HTTP 201 応答が返されます。 ポータルでこのアクションを確認することもできますが、ポータル ページには更新間隔があるので、最新情報が表示されるまでに 1 ～ 2 分かかる可能性があります。
 
@@ -126,82 +135,102 @@ Postman でこれを行うには:
 
 1. 動詞を **POST** に変更します。
 
-2. URL `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels/docs/index?api-version=2019-05-06` をコピーします。
+2. URL `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart/docs/index?api-version=2019-05-06` をコピーします。
 
-3. 要求の本文に JSON ドキュメント (下に示します) を指定します。
+3. 要求の本文に JSON ドキュメント (コピーできるコードを下に示します) を指定します。
 
 4. **[送信]** をクリックします。
 
-![Postman の要求ペイロード][10]
+![要求本文内の JSON ドキュメント](media/search-get-started-postman/postman-docs.png "要求本文内の JSON ドキュメント")
 
 ### <a name="json-documents-to-load-into-the-index"></a>インデックスに読み込む JSON ドキュメント
 
 要求の本文には、hotels インデックスに追加する 4 つのドキュメントが含まれています。
 
-         {
-         "value": [
-         {
-             "@search.action": "upload",
-             "hotelId": "1",
-             "baseRate": 199.0,
-             "description": "Best hotel in town",
-             "description_fr": "Meilleur hôtel en ville",
-             "hotelName": "Fancy Stay",
-             "category": "Luxury",
-             "tags": ["pool", "view", "wifi", "concierge"],
-             "parkingIncluded": false,
-             "smokingAllowed": false,
-             "lastRenovationDate": "2010-06-27T00:00:00Z",
-             "rating": 5,
-             "location": { "type": "Point", "coordinates": [-122.131577, 47.678581] }
-           },
-           {
-             "@search.action": "upload",
-             "hotelId": "2",
-             "baseRate": 79.99,
-             "description": "Cheapest hotel in town",
-             "description_fr": "Hôtel le moins cher en ville",
-             "hotelName": "Roach Motel",
-             "category": "Budget",
-             "tags": ["motel", "budget"],
-             "parkingIncluded": true,
-             "smokingAllowed": true,
-             "lastRenovationDate": "1982-04-28T00:00:00Z",
-             "rating": 1,
-             "location": { "type": "Point", "coordinates": [-122.131577, 49.678581] }
-           },
-           {
-             "@search.action": "upload",
-             "hotelId": "3",
-             "baseRate": 279.99,
-             "description": "Surprisingly expensive",
-             "hotelName": "Dew Drop Inn",
-             "category": "Bed and Breakfast",
-             "tags": ["charming", "quaint"],
-             "parkingIncluded": true,
-             "smokingAllowed": false,
-             "lastRenovationDate": null,
-             "rating": 4,
-             "location": { "type": "Point", "coordinates": [-122.33207, 47.60621] }
-           },
-           {
-             "@search.action": "upload",
-             "hotelId": "4",
-             "baseRate": 220.00,
-             "description": "This could be the one",
-             "hotelName": "A Hotel for Everyone",
-             "category": "Basic hotel",
-             "tags": ["pool", "wifi"],
-             "parkingIncluded": true,
-             "smokingAllowed": false,
-             "lastRenovationDate": null,
-             "rating": 4,
-             "location": { "type": "Point", "coordinates": [-122.12151, 47.67399] }
-           }
-          ]
-         }
+```json
+{
+    "value": [
+    {
+    "@search.action": "upload",
+    "HotelId": "1",
+    "HotelName": "Secret Point Motel",
+    "Description": "The hotel is ideally located on the main commercial artery of the city in the heart of New York. A few minutes away is Time's Square and the historic centre of the city, as well as other places of interest that make New York one of America's most attractive and cosmopolitan cities.",
+    "Category": "Boutique",
+    "Tags": [ "pool", "air conditioning", "concierge" ],
+    "ParkingIncluded": false,
+    "LastRenovationDate": "1970-01-18T00:00:00Z",
+    "Rating": 3.60,
+    "Address": 
+        {
+        "StreetAddress": "677 5th Ave",
+        "City": "New York",
+        "StateProvince": "NY",
+        "PostalCode": "10022",
+        "Country": "USA"
+        } 
+    },
+    {
+    "@search.action": "upload",
+    "HotelId": "2",
+    "HotelName": "Twin Dome Motel",
+    "Description": "The hotel is situated in a  nineteenth century plaza, which has been expanded and renovated to the highest architectural standards to create a modern, functional and first-class hotel in which art and unique historical elements coexist with the most modern comforts.",
+    "Category": "Boutique",
+    "Tags": [ "pool", "free wifi", "concierge" ],
+    "ParkingIncluded": false,
+    "LastRenovationDate": "1979-02-18T00:00:00Z",
+    "Rating": 3.60,
+    "Address": 
+        {
+        "StreetAddress": "140 University Town Center Dr",
+        "City": "Sarasota",
+        "StateProvince": "FL",
+        "PostalCode": "34243",
+        "Country": "USA"
+        } 
+    },
+    {
+    "@search.action": "upload",
+    "HotelId": "3",
+    "HotelName": "Triple Landscape Hotel",
+    "Description": "The Hotel stands out for its gastronomic excellence under the management of William Dough, who advises on and oversees all of the Hotel’s restaurant services.",
+    "Category": "Resort and Spa",
+    "Tags": [ "air conditioning", "bar", "continental breakfast" ],
+    "ParkingIncluded": true,
+    "LastRenovationDate": "2015-09-20T00:00:00Z",
+    "Rating": 4.80,
+    "Address": 
+        {
+        "StreetAddress": "3393 Peachtree Rd",
+        "City": "Atlanta",
+        "StateProvince": "GA",
+        "PostalCode": "30326",
+        "Country": "USA"
+        } 
+    },
+    {
+    "@search.action": "upload",
+    "HotelId": "4",
+    "HotelName": "Sublime Cliff Hotel",
+    "Description": "Sublime Cliff Hotel is located in the heart of the historic center of Sublime in an extremely vibrant and lively area within short walking distance to the sites and landmarks of the city and is surrounded by the extraordinary beauty of churches, buildings, shops and monuments. Sublime Cliff is part of a lovingly restored 1800 palace.",
+    "Category": "Boutique",
+    "Tags": [ "concierge", "view", "24-hour front desk service" ],
+    "ParkingIncluded": true,
+    "LastRenovationDate": "1960-02-06T00:00:00Z",
+    "Rating": 4.60,
+    "Address": 
+        {
+        "StreetAddress": "7400 San Pedro Ave",
+        "City": "San Antonio",
+        "StateProvince": "TX",
+        "PostalCode": "78216",
+        "Country": "USA"
+        }
+    }
+  ]
+}
+```
 
-数秒で、セッション一覧に HTTP 200 応答が表示されます。 この応答は、ドキュメントが正常に作成されたことを示します。 
+数秒で、セッション一覧に HTTP 201 応答が表示されます。 この応答は、ドキュメントが正常に作成されたことを示します。 
 
 207 が表示された場合は、少なくとも 1 つのドキュメントのアップロードが失敗しています。 404 が表示された場合は、要求のヘッダーまたは本文に構文エラーがあります。`/docs/index` を含めるようにエンドポイントを変更したことを確認してください。
 
@@ -213,30 +242,52 @@ Postman でこれを行うには:
 
 これでインデックスとドキュメントが読み込まれたので、[ドキュメントの検索 REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents) を使用して、それらに対してクエリを発行できます。
 
-URL を拡張して、検索演算子を使用して指定されたクエリ文字列を含めます。
+URL を拡張して、検索演算子を使用して指定されたクエリ式を含めます。
 
 Postman でこれを行うには:
 
 1. 動詞を **GET** に変更します。
 
-2. URL `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels/docs?search=motel&$count=true&api-version=2019-05-06` をコピーします。
+2. URL `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart/docs?search=*&$count=true&api-version=2019-05-06` をコピーします。
 
 3. **[送信]** をクリックします。
 
-このクエリでは、"motel" という用語を検索し、検索結果でドキュメント数を返します。 Postman で **[Send]\(送信\)** をクリックすると、要求と応答は次のスクリーンショットのようになります。 状態コードは 200 になります。
+このクエリは空であり、検索結果ではドキュメントの数が返されます。 Postman で **[Send]\(送信\)** をクリックすると、要求と応答は次のスクリーンショットのようになります。 状態コードは 200 になります。
 
- ![Postman のクエリ応答][11]
+ ![GET と URL の検索文字列](media/search-get-started-postman/postman-query.png "GET と URL の検索文字列")
+
+構文について大まかに把握するため、その他のクエリ例をいくつか試してください。 文字列の検索、逐語的な $filter クエリの実行、結果セットの制限、特定のフィールドへの検索範囲の設定などを行うことができます。
+
+現在の URL を次のものに置き換え、毎回 **[送信]** をクリックして結果を表示します。
+
+```
+# Query example 1 - Search on restaurant and wifi
+# Return only the HotelName, Description, and Tags fields
+https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?search=restaurant wifi&$count=true&$select=HotelName,Description,Tags&api-version=2019-05-06
+
+# Query example 2 - Apply a filter to the index to find hotels rated 4 or highter
+# Returns the HotelName and Rating. Two documents match
+https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?search=*&$filter=Rating gt 4&$select=HotelName,Rating&api-version=2019-05-06
+
+# Query example 3 - Take the top two results, and show only HotelName and Category in the results
+https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?search=boutique&$top=2&$select=HotelName,Category&api-version=2019-05-06
+
+# Query example 4 - Sort by a specific field (Address/City) in ascending order
+https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?search=pool&$orderby=Address/City asc&$select=HotelName, Address/City, Tags, Rating&api-version=2019-05-06
+```
 
 ## <a name="get-index-properties"></a>インデックス プロパティの取得
-システム情報のクエリを実行して、ドキュメント数とストレージ消費を取得することもできます。`https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels/stats?api-version=2019-05-06`
+[統計情報の取得](https://docs.microsoft.com/rest/api/searchservice/get-index-statistics)を使用して、ドキュメント数とインデックス サイズを照会することもできます。 
 
-Postman の場合、要求は次のようになります。また、応答にはドキュメント数とバイト単位の使用領域が含まれます。
+```
+https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart/stats?api-version=2019-05-06`
+```
 
- ![Postman のシステム クエリ][12]
+URL に `/stats` を追加すると、インデックスの情報が返されます。 Postman の場合、要求は次のようになります。また、応答にはドキュメント数とバイト単位の使用領域が含まれます。
+
+ ![インデックス情報の取得](media/search-get-started-postman/postman-system-query.png "インデックス情報の取得")
 
 API バージョンの構文が異なる点に注目してください。 この要求では、`?` を使用して API バージョンを付加しています。 `?` により、URL パスとクエリ文字列を区切り、& により、クエリ文字列内の各 "名前=値" ペアを区切ります。 このクエリのクエリ文字列では、API バージョンは最初で唯一の項目です。
-
-この API の詳細については、[インデックス統計の取得 REST API](https://docs.microsoft.com/rest/api/searchservice/get-index-statistics) に関するページを参照してください。
 
 ## <a name="clean-up"></a>クリーンアップ
 
@@ -250,19 +301,4 @@ API バージョンの構文が異なる点に注目してください。 この
 
 REST クライアントは即時の探索にとても有効です。この記事で REST API のしくみを理解したら、次はコードに進みましょう。 次のステップについては、以下のリンクを参照してください。
 
-+ [クイック スタート:.NET SDK を使用してインデックスを作成する](search-create-index-dotnet.md)
-+ [クイック スタート:PowerShell を使用して、インデックス (REST) を作成する](search-create-index-rest-api.md)
-
-<!--Image References-->
-[1]: ./media/search-get-started-postman/fiddler-url.png
-[2]: ./media/search-get-started-postman/AzureSearch_Fiddler2_PostDocs.png
-[3]: ./media/search-get-started-postman/AzureSearch_Fiddler3_Query.png
-[4]: ./media/search-get-started-postman/AzureSearch_Fiddler4_QueryResults.png
-[5]: ./media/search-get-started-postman/AzureSearch_Fiddler5_QueryStats.png
-[6]: ./media/search-get-started-postman/postman-url.png
-[7]: ./media/search-get-started-postman/fiddler-request.png
-[8]: ./media/search-get-started-postman/postman-request.png
-[9]: ./media/search-get-started-postman/fiddler-docs.png
-[10]: ./media/search-get-started-postman/postman-docs.png
-[11]: ./media/search-get-started-postman/postman-query.png
-[12]: ./media/search-get-started-postman/postman-system-query.png
++ [クイック スタート:.NET SDK を使用してインデックスを作成する](search-get-started-dotnet.md)

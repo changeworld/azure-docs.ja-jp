@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: tutorial
-ms.date: 06/19/2019
+ms.date: 07/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 144ad8761b4d462012963e040b7699e38587831b
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 10798b471012d53b5820b078b4be7c9c648d3233
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67272780"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67868356"
 ---
 # <a name="tutorial-create-a-single-page-web-app"></a>チュートリアル:単一ページの Web アプリの作成
 
@@ -381,7 +381,7 @@ searchItemRenderers = {
 > * 画像およびその画像が含まれるページにリンクされる HTML `<a>` タグをビルドします。
 > * 画像およびその画像が存在するサイトに関する情報を示す説明をビルドします。
 
-サムネイルのサイズは、サムネイルの URL 内の `<img>` タグに加えて、`h` および `w` フィールドで使用されます。 その後、[Bing サムネイル サービス](resize-and-crop-thumbnails.md)から、そのサイズのとおりのサムネイルが提供されます。
+サムネイルのサイズは、サムネイルの URL 内の `<img>` タグに加えて、`h` および `w` フィールドで使用されます。 その後、[Bing サムネイル サービス](../bing-web-search/resize-and-crop-thumbnails.md)から、そのサイズのとおりのサムネイルが提供されます。
 
 ## <a name="persisting-client-id"></a>クライアント ID の永続化
 Bing Search API からの応答には、`X-MSEdge-ClientID` ヘッダーが含まれることがあり、このヘッダーは後続の要求で API に送り返す必要があります。 複数の Bing Search API を使用している場合、可能であれば、それらすべてで同じクライアント ID を使用する必要があります。
@@ -397,7 +397,7 @@ Bing Search API からの応答には、`X-MSEdge-ClientID` ヘッダーが含�
 > [!NOTE]
 > 運用環境の Web アプリケーションでは、要求サーバー側を実行する必要があります。 そうしないと、Web ページに Bing Search API キーを含める必要があり、ソースを表示した人ならだれでもキーを使用できるようになってしまいます。 権限のない者によって行われた要求であっても、すべての利用に対してユーザーの API サブスクリプション キーに基づいて料金が発生するため、キーは公開しないようにする必要があります。
 
-開発目的の場合は、CORS プロキシを介して Bing Web Search API 要求を行うことができます。 このようなプロキシからの応答には、応答ヘッダーをホワイトリストに登録して JavaScript で使用できるようにする `Access-Control-Expose-Headers` ヘッダーが含まれています。
+開発目的の場合は、CORS プロキシを介して Bing Web Search API 要求を行うことができます。 そのようなプロキシからの応答には、応答ヘッダーを許可して JavaScript で使用できるようにする `Access-Control-Expose-Headers` ヘッダーが含まれています。
 
 CORS プロキシをインストールして、チュートリアル アプリがクライアント ID ヘッダーにアクセスできるようにするのは簡単です。 まず、[Node.js をインストールします](https://nodejs.org/en/download/) (まだインストールしていない場合)。 さらに、コマンド ウィンドウで次のコマンドを発行します。
 

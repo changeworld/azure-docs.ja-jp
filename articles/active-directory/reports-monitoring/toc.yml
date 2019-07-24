@@ -27,6 +27,8 @@
       href: tutorial-azure-monitor-stream-logs-to-event-hub.md
 - name: 概念
   items:
+    - name: レポートと監視のデプロイを計画する
+      href: plan-monitoring-and-reporting.md
     - name: 監査ログ
       href: concept-audit-logs.md
     - name: サインイン ログ

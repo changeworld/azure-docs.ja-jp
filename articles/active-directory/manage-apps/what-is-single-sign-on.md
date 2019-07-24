@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/15/2019
+ms.date: 07/17/2019
 ms.author: mimart
 ms.reviewer: arvindh, japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01477ad3a5a0c4643721815fa2b0943512c0c520
-ms.sourcegitcommit: 0ebc62257be0ab52f524235f8d8ef3353fdaf89e
+ms.openlocfilehash: f3b23aa7db29390ef50a72f73fb153fef5301b92
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67723989"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68304830"
 ---
 # <a name="single-sign-on-to-applications-in-azure-active-directory"></a>Azure Active Directory でのアプリケーションへのシングル サインオン
 
@@ -93,6 +93,9 @@ SAML プロトコルの詳細については、「[シングル サインオン�
 パスワードベースのシングル サインオンは、HTML ベースのサインイン ページを持つどのクラウド ベース アプリケーションでもサポートされます。 ユーザーは、以下の任意のブラウザーを使用できます。
 
 - Internet Explorer 11 - Windows 7 以降
+   > [!NOTE]
+   > Internet Explorer は制限付きサポートとなっており、新しいソフトウェア更新プログラムは提供されなくなりました。 Microsoft Edge が推奨されるブラウザーです。
+
 - Microsoft Edge - Windows 10 Anniversary Edition 以降
 - Chrome - Windows 7 以降、MacOS X 以降
 - Firefox 26.0 以降 - Windows XP SP2 以降、Mac os X 10.6 以降

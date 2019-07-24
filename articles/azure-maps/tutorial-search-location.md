@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 21c7e996cfe2f07d9a5b056d8cbc22f238bb48fd
-ms.sourcegitcommit: 8e76be591034b618f5c11f4e66668f48c090ddfd
+ms.openlocfilehash: e787366694b55d3dcd61eec2c5a5b42dd187ec55
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66357616"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68226850"
 ---
 # <a name="search-nearby-points-of-interest-using-azure-maps"></a>Azure Maps を使用して近くの目的地を検索する
 
@@ -239,9 +239,9 @@ Maps アカウントが正常に作成されたら、Maps API のクエリを実
     map.events.add('mouseover', resultLayer, showPopup);
     ```
 
-    API `sup` は、マップ上の目的の位置に固定された情報ウィンドウを提供します。 
+    API `*atlas.Popup` は、マップ上の目的の位置に固定された情報ウィンドウを提供します。 
 
-2. *script* タグの `GetMap` 関数に続けて、次のコードを追加します。これは、マウス オーバーした結果の情報をポップアップに表示するものです。
+2. `GetMap` 関数内に次のコードを追加します。これは、マウス オーバーした結果の情報をポップアップに表示するものです。
 
     ```JavaScript
     function showPopup(e) {

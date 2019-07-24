@@ -1,6 +1,6 @@
 ---
-title: チュートリアル:Azure Active Directory と Citrix Netscaler の統合 | Microsoft Docs
-description: Azure Active Directory と Citrix Netscaler の間でシングル サインオンを構成する方法について学習します。
+title: チュートリアル:Azure Active Directory と Citrix NetScaler の統合 | Microsoft Docs
+description: Azure Active Directory と Citrix NetScaler の間でシングル サインオンを構成する方法について学習します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,20 +15,20 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: cc32f464044149e263db60fc2de237b473da5ab2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 64dd67680626857db7f39fa7fd721b28a02d1561
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67105490"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68276898"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-citrix-netscaler"></a>チュートリアル:Azure Active Directory と Citrix Netscaler の統合
+# <a name="tutorial-azure-active-directory-integration-with-citrix-netscaler"></a>チュートリアル:Azure Active Directory と Citrix NetScaler の統合
 
-このチュートリアルでは、Citrix Netscaler と Azure Active Directory (Azure AD) を統合する方法について学習します。
-Citrix Netscaler と Azure AD の統合には、次の利点があります。
+このチュートリアルでは、Citrix NetScaler と Azure Active Directory (Azure AD) を統合する方法について学習します。
+Citrix NetScaler と Azure AD の統合には、次の利点があります。
 
-* Citrix Netscaler にアクセスできるユーザーを Azure AD で制御できます。
-* ユーザーが Azure AD アカウントで自動的に Citrix Netscaler にサインインできるようにします (シングル サインオン)。
+* Citrix NetScaler にアクセスできるユーザーを Azure AD で制御できます。
+* ユーザーが Azure AD アカウントで自動的に Citrix NetScaler にサインインできるようにします (シングル サインオン)。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
 SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
@@ -36,24 +36,24 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure AD と Citrix Netscaler の統合を構成するには、次のものが必要です。
+Azure AD と Citrix NetScaler の統合を構成するには、次のものが必要です。
 
 * Azure AD サブスクリプション。 Azure AD の環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます
-* Citrix Netscaler でのシングル サインオンが有効なサブスクリプション
+* Citrix NetScaler でのシングル サインオンが有効なサブスクリプション
 
 ## <a name="scenario-description"></a>シナリオの説明
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Citrix Netscaler では、**SP** によって開始される SSO がサポートされます
+* Citrix NetScaler では、**SP** によって開始される SSO がサポートされます
 
-* Citrix Netscaler では、**Just In Time** ユーザー プロビジョニングがサポートされます
+* Citrix NetScaler では、**Just In Time** ユーザー プロビジョニングがサポートされます
 
-## <a name="adding-citrix-netscaler-from-the-gallery"></a>ギャラリーからの Citrix Netscaler の追加
+## <a name="adding-citrix-netscaler-from-the-gallery"></a>ギャラリーからの Citrix NetScaler の追加
 
-Azure AD への Citrix Netscaler の統合を構成するには、ギャラリーから管理対象 SaaS アプリのリストに Citrix Netscaler を追加する必要があります。
+Azure AD への Citrix NetScaler の統合を構成するには、ギャラリーから管理対象 SaaS アプリのリストに Citrix NetScaler を追加する必要があります。
 
-**ギャラリーから Citrix Netscaler を追加するには、次の手順を行います。**
+**ギャラリーから Citrix NetScaler を追加するには、次の手順を実行します。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
@@ -67,31 +67,31 @@ Azure AD への Citrix Netscaler の統合を構成するには、ギャラリ�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Citrix Netscaler**」と入力し、結果パネルから **[Citrix Netscaler]** を選び、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
+4. 検索ボックスに「**Citrix NetScaler**」と入力し、結果パネルから **[Citrix NetScaler]** を選択し、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
 
-     ![結果リストの Citrix Netscaler](common/search-new-app.png)
+     ![結果リストの Citrix NetScaler](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Citrix Netscaler で Azure AD シングル サインオンを構成し、テストします。
-シングル サインオンを機能させるには、Azure AD ユーザーと Citrix Netscaler 内の関連ユーザー間にリンク関係が確立されている必要があります。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Citrix NetScaler で Azure AD シングル サインオンを構成し、テストします。
+シングル サインオンを機能させるには、Azure AD ユーザーと Citrix NetScaler 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
-Citrix Netscaler で Azure AD シングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
+Citrix NetScaler で Azure AD シングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Citrix Netscaler シングル サインオンの構成](#configure-citrix-netscaler-single-sign-on)** - アプリケーション側でシングル サインオン設定を構成します。
+2. **[Citrix NetScaler シングル サインオンの構成](#configure-citrix-netscaler-single-sign-on)** - アプリケーション側でシングル サインオン設定を構成します。
 3. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[Citrix Netscaler テスト ユーザーの作成](#create-citrix-netscaler-test-user)** - Citrix Netscaler で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+5. **[Citrix NetScaler テスト ユーザーの作成](#create-citrix-netscaler-test-user)** - Citrix NetScaler で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 6. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
 このセクションでは、Azure portal 上で Azure AD のシングル サインオンを有効にします。
 
-Citrix Netscaler で Azure AD シングル サインオンを構成するには、次の手順を行います。
+Citrix NetScaler で Azure AD シングル サインオンを構成するには、次の手順を行います。
 
-1. [Azure portal](https://portal.azure.com/) の **Citrix Netscaler** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Citrix NetScaler** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -105,7 +105,7 @@ Citrix Netscaler で Azure AD シングル サインオンを構成するには�
 
 4. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
 
-    ![Citrix Netscaler のドメインと URL のシングル サインオン情報](common/sp-identifier-reply.png)
+    ![Citrix NetScaler のドメインと URL のシングル サインオン情報](common/sp-identifier-reply.png)
 
     a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<<Your FQDN>>/CitrixAuthService/AuthService.asmx`
     
@@ -114,7 +114,7 @@ Citrix Netscaler で Azure AD シングル サインオンを構成するには�
     c. **[応答 URL (Assertion Consumer Service URL)]** テキスト ボックスに、`https://<<Your FQDN>>/CitrixAuthService/AuthService.asmx` というパターンを使用して URL を入力します。
     
     > [!NOTE]
-    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得する場合は、[Citrix Netscaler クライアント サポート チーム](https://www.citrix.com/contact/technical-support.html)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得する場合は、[Citrix NetScaler クライアント サポート チーム](https://www.citrix.com/contact/technical-support.html)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
     > [!NOTE]
     > SSO を動作させるには、パブリック サイトからこれらの URL にアクセスできる必要があります。 Netscaler 側でファイアウォールまたは他のセキュリティ設定を有効にし、Azure AD で構成済みの ACS URL にトークンをポストできるようにする必要があります。
@@ -123,7 +123,7 @@ Citrix Netscaler で Azure AD シングル サインオンを構成するには�
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
-6. **[Set up Citrix Netscaler]\(Citrix Netscaler のセットアップ\)** セクションで、要件のとおりに適切な URL をコピーします。
+6. **[Set up Citrix NetScaler]\(Citrix NetScaler のセットアップ\)** セクションで、要件のとおりに適切な URL をコピーします。
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
 
@@ -133,9 +133,9 @@ Citrix Netscaler で Azure AD シングル サインオンを構成するには�
 
     c. ログアウト URL
 
-### <a name="configure-citrix-netscaler-single-sign-on"></a>Citrix Netscaler のシングル サインオンの構成
+### <a name="configure-citrix-netscaler-single-sign-on"></a>Citrix NetScaler のシングル サインオンの構成
 
-1. 別の Web ブラウザーのウィンドウで、管理者として Citrix Netscaler テナントにサインオンします。
+1. 別の Web ブラウザーのウィンドウで、管理者として Citrix NetScaler テナントにサインオンします。
 
 2. **NetScaler ファームウェアのバージョンが NS12.1:ビルド 48.13.nc** であることを確認します。
 
@@ -344,15 +344,15 @@ Citrix Netscaler で Azure AD シングル サインオンを構成するには�
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
-このセクションでは、Britta Simon に Citrix Netscaler へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
+このセクションでは、Britta Simon に Citrix NetScaler へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** 、 **[すべてのアプリケーション]** 、 **[Citrix Netscaler]** の順に選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** 、 **[すべてのアプリケーション]** 、 **[Citrix NetScaler]** の順に選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-2. アプリケーション リストで、 **[Citrix Netscaler]** を選択します。
+2. アプリケーション リストで、 **[Citrix NetScaler]** を選択します。
 
-    ![アプリケーション リストの Citrix Netscaler リンク](common/all-applications.png)
+    ![アプリケーション リストの Citrix NetScaler リンク](common/all-applications.png)
 
 3. 左側のメニューで **[ユーザーとグループ]** を選びます。
 
@@ -368,18 +368,18 @@ Citrix Netscaler で Azure AD シングル サインオンを構成するには�
 
 7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
 
-### <a name="create-citrix-netscaler-test-user"></a>Citrix Netscaler テスト ユーザーを作成する
+### <a name="create-citrix-netscaler-test-user"></a>Citrix NetScaler テスト ユーザーを作成する
 
-このセクションでは、Britta Simon というユーザーを Citrix Netscaler に作成します。 Citrix Netscaler では、Just-In-Time ユーザー プロビジョニングがサポートされています。これは既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 Citrix Netscaler にユーザーがまだ存在していない場合は、認証後に新しく作成されます。
+このセクションでは、Britta Simon というユーザーを Citrix NetScaler に作成します。 Citrix NetScaler では、Just-In-Time ユーザー プロビジョニングがサポートされています。これは既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 Citrix NetScaler にユーザーがまだ存在していない場合は、認証後に新しく作成されます。
 
 >[!NOTE]
->ユーザーを手動で作成する必要がある場合は、[Citrix Netscaler クライアント サポート チーム](https://www.citrix.com/contact/technical-support.html)に問い合わせる必要があります。
+>ユーザーを手動で作成する必要がある場合は、[Citrix NetScaler クライアント サポート チーム](https://www.citrix.com/contact/technical-support.html)に問い合わせる必要があります。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [Citrix Netscaler] タイルをクリックすると、SSO を設定した Citrix Netscaler に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [Citrix NetScaler] タイルをクリックすると、SSO を設定した Citrix NetScaler に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

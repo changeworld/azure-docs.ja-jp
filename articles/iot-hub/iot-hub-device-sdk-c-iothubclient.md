@@ -8,12 +8,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 08/29/2017
 ms.author: yizhon
-ms.openlocfilehash: dd3b693271326c85688a275a65b67ad6257220e3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ff766375dd9ad7cb3bbdf1ef686abb77d1206099
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60400696"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797864"
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-iothubclient"></a>C 用 Azure IoT device SDK – IoTHubClient の詳細
 
@@ -264,7 +264,7 @@ IoTHubClient_LL_SetOption(iotHubClientHandle, "timeout", &timeout);
 
 よく使用されるオプションがいくつかあります。
 
-* **SetBatching** (ブール値): **true** の場合、IoT Hub に送信されるデータはバッチで送信されます。 **false** の場合は、メッセージは個別に送信されます。 既定値は **false** です。 **SetBatching** オプションが適用されるのは HTTPS プロトコルだけであることに注意してください。AMQP プロトコルや MQTT プロトコルには適用されません。
+* **SetBatching** (ブール値): **true** の場合、IoT Hub に送信されるデータはバッチで送信されます。 **false** の場合は、メッセージは個別に送信されます。 既定値は **false** です。 AMQP や AMQP-WS によるバッチ処理と D2C メッセージへのシステム プロパティの追加がサポートされています。
 
 * **Timeout** (符号なし整数): この値はミリ秒単位で表現されます。 HTTPS 要求の送信や応答の受信にこの時間より長くかかる場合は、接続がタイムアウトします。
 

@@ -7,13 +7,13 @@ ms.author: chenyl
 ms.reviewer: zhshang
 ms.date: 06/12/2019
 ms.topic: conceptual
-ms.service: azure-signalr
-ms.openlocfilehash: 02f88c5953d499b30f2ea3408318f70a72f42b0f
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.service: signalr
+ms.openlocfilehash: a3d0669a1a89f2fc5aaca0a96e00b731d2d40830
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67788550"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68296827"
 ---
 # <a name="reacting-to-azure-signalr-service-events"></a>Azure SignalR Service のイベントに対応する
 

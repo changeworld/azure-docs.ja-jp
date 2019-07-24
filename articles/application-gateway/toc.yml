@@ -122,10 +122,12 @@
               href: application-gateway-end-to-end-ssl-powershell.md
         - name: 証明書の管理
           items:
-            - name: バックエンドのホワイトリスト登録のための証明書を作成する
+            - name: バックエンド用の証明書
               href: certificates-for-backend-authentication.md
             - name: 証明書の更新
               href: renew-certificates.md
+            - name: 自己署名証明書の生成
+              href: self-signed-certificates.md
         - name: SSL ポリシー
           items:
             - name: SSL ポリシーを構成する

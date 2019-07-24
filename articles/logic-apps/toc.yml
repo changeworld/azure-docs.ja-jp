@@ -303,10 +303,12 @@
           href: test-logic-apps-mock-data-static-results.md
     - name: デプロイ
       items:
+        - name: 概要 - ロジック アプリ デプロイの自動化
+          href: logic-apps-azure-resource-manager-templates-overview.md
         - name: ロジック アプリ テンプレートの作成
-          href: logic-apps-create-deploy-template.md
+          href: logic-apps-create-azure-resource-manager-templates.md
         - name: ロジック アプリ テンプレートのデプロイ
-          href: logic-apps-create-deploy-azure-resource-manager-templates.md
+          href: logic-apps-deploy-azure-resource-manager-templates.md
     - name: 監視
       items:
         - name: ロジック アプリの監視
@@ -377,7 +379,7 @@
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/'
     - name: MSDN フォーラム
-      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azurelogicapps'
+      href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=azurelogicapps'
     - name: スタック オーバーフロー
       href: 'https://stackoverflow.com/questions/tagged/azure-logic-apps'
     - name: Twitter

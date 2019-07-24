@@ -11,12 +11,12 @@ ms.reviewer: klam, LADocs
 ms.topic: overview
 ms.custom: mvc
 ms.date: 6/29/2018
-ms.openlocfilehash: 2892dc3b8f25624e7925c9b4aa86110c167ad616
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.openlocfilehash: 90287ab45341f203905aaf32eb6325edd3687231
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66299109"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68273145"
 ---
 # <a name="what-is-azure-logic-apps"></a>Azure Logic Apps とは
 
@@ -29,7 +29,7 @@ ms.locfileid: "66299109"
 * アップロードされたファイルを SFTP サーバーまたは FTP サーバーから Azure Storage に移動する。 
 * 特定の話題のツイートを監視したり、そこに込められた感情を分析したり、確認が必要な項目についてアラートやタスクを作成したりする。
 
-Azure Logic Apps を使用してエンタープライズ統合ソリューションを構築する際には、[200 を超えるコネクタ](../connectors/apis-list.md)がある、現在も増加中のギャラリーから選択できます。このギャラリーには、Azure Service Bus、Functions、Storage といったサービスのほか、SQL、Office 365、Dynamics、Salesforce、BizTalk、SAP、Oracle DB、ファイル共有などが用意されています。 [コネクタ](#logic-app-concepts)には、データにリアル タイムで安全にアクセスして処理するロジック アプリを作成するための[トリガー](#logic-app-concepts)、[アクション](#logic-app-concepts)、またはその両方が備わっています。
+Azure Logic Apps を使用してエンタープライズ統合ソリューションを構築する際には、[数百のすぐに使えるコネクタ](../connectors/apis-list.md)がある、現在も増加中のギャラリーから選択できます。このギャラリーには、Azure Service Bus、Functions、Storage といったサービスのほか、SQL、Office 365、Dynamics、Salesforce、BizTalk、SAP、Oracle DB、ファイル共有などが用意されています。 [コネクタ](#logic-app-concepts)には、データにリアル タイムで安全にアクセスして処理するロジック アプリを作成するための[トリガー](#logic-app-concepts)、[アクション](#logic-app-concepts)、またはその両方が備わっています。
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Introducing-Azure-Logic-Apps/player]
 

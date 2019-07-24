@@ -13,14 +13,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: mimart
-ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79db7e90ce2dbc591ea5c040bcb117bdccb0a2c2
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 2e535d8cce4e2aa56305283651b9cc21dfc301a4
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 07/11/2019
-ms.locfileid: "67795150"
+ms.locfileid: "67807619"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Azure Active Directory の SaaS アプリケーションに対するユーザー プロビジョニング属性マッピングのカスタマイズ
 

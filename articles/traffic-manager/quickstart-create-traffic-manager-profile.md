@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: allensu
-ms.openlocfilehash: d9b1d0624aa94884c269eb33131f8b61671e99ee
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1f7fd3398c24eb82b1a2308f3b52df382c0aab7e
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67050995"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68224690"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-using-the-azure-portal"></a>クイック スタート:Azure portal を使用した Traffic Manager プロファイルの作成
 
@@ -36,42 +36,25 @@ Azure サブスクリプションをお持ちでない場合は、ここで[無�
 このクイック スタートでは、2 つの異なる Azure リージョン ("*米国東部*" と "*西ヨーロッパ*") にデプロイされた、2 つの Web アプリケーション インスタンスが必要になります。 これらインスタンスは、それぞれ Traffic Manager のプライマリとフェールオーバーのエンドポイントとして機能します。
 
 1. 画面の左上で、 **[リソースの作成]**  >  **[Web]**  >  **[Web アプリ]** を選択します。
-2. **[Web アプリ]** で、次の設定を入力または選択します。
 
-    | Setting | 値 |
-    | ------- | ----- |
-    | アプリの名前 | Web アプリの一意の名前を入力します。  |
-    | サブスクリプション | Web アプリの適用先となるサブスクリプションを選択します。 |
-    | リソース グループ | **[新規作成]** を選択し、「*myResourceGroupTM1*」と入力します。 |
-    | OS | オペレーティング システムとして、 **[Windows]** を選択します。 |
-    | [発行] | 発行する形式として、 **[コード]** を選択します。 |
+1. **[Web アプリの作成]** の **[基本]** タブで、次の値を入力または選択します。
 
-3. **[App Service プラン/場所]** を選択します。
-4. **[App Service プラン]** で、 **[新規作成]** を選択します。
-5. **[新しい App Service プラン]** で、次の設定を入力または選択します。
+   - **[サブスクリプション]**  >  **[リソース グループ]** : **[新規作成]** を選択し、「**myResourceGroupTM1**」と入力します。
+   - **[インスタンスの詳細]**  >  **[名前]** :「*myWebAppEastUS*」と入力します。
+   - **[インスタンスの詳細]**  >  **[公開]** : **[コード]** を選択します。
+   - **[インスタンスの詳細]**  >  **[ランタイム スタック]** : **[ASP.NET V4.7]** を選択します。
+   - **[インスタンスの詳細]**  >  **[オペレーティング システム]** : **[Windows]** を選択します。
+   - **[インスタンスの詳細]**  >  **[リージョン]** : **[米国東部]** を選択します。
+   - **[App Service プラン]**  >  **[Windows Plan (East US)]\(Windows プラン (米国東部)\)** : **[新規作成]** を選択し、「**myAppServicePlanEastUS**」と入力します。
+   - **[App Service プラン]**  >  **[SKU とサイズ]** : **[Standard S1]** を選択します。
+   
+3. **[監視]** タブを選択するか、または **[Next:Monitoring]\(次へ: 監視\)** を選択します。  **[監視]** の下で **[Application Insights]**  >  **[Application Insights を有効にする]** を **[いいえ]** に設定します。
 
-    | Setting | 値 |
-    | ------- | ----- |
-    | App Service プラン | 「*myAppServicePlanEastUS*」と入力します。 |
-    | Location | 米国東部 |
-    | [価格レベル] | S1 Standard |
+4. **[確認と作成]** を選択します。
 
-6. **[OK]** を選択します。
+5. 設定を確認し、 **[作成]** をクリックします。  Web アプリが正常にデプロイされると、既定の Web サイトが作成されます。
 
-7. **[Web アプリ]** で、 **[作成]** を選択します。 Web アプリが正常にデプロイされると、既定の Web サイトが作成されます。
-
-8. 別の Azure リージョンに 2 つ目の Web サイトを作成するには、次の設定を使用して、手順 1. から手順 7. を繰り返します。
-
-    | Setting | 値 |
-    | --------| ----- |
-    | Name | Web アプリの一意の名前を入力します。 |
-    | サブスクリプション | Web アプリの適用先となるサブスクリプションを選択します。 |
-    | リソース グループ | **[新規作成]** を選択し、「*myResourceGroupTM2*」と入力します。 |
-    | OS | オペレーティング システムとして、 **[Windows]** を選択します。 |
-    | [発行] | 発行する形式として、 **[コード]** を選択します。 |
-    | App Service プラン/場所 | 「*myAppServicePlanWestEurope*」と入力します。 |
-    | Location | 西ヨーロッパ |
-    | [価格レベル] | S1 Standard |
+6. 上記の手順に従って、Web アプリをもう 1 つ作成します。作成する Web アプリの名前は *myWebAppWestEurope*、 **[リソース グループ]** の名前は *myResourceGroupTM2*、 **[リージョン]** は " *[西ヨーロッパ]* "、 **[App Service プラン]** の名前は **myAppServicePlanWestEurope**、それ以外のすべての設定は *myWebAppEastUS* と同じです。
 
 ## <a name="create-a-traffic-manager-profile"></a>Traffic Manager プロファイルの作成
 

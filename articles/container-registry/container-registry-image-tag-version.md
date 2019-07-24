@@ -6,13 +6,13 @@ author: stevelasker
 ms.service: container-registry
 ms.topic: article
 ms.date: 07/10/2019
-ms.author: steve.lasker
-ms.openlocfilehash: bd00fd4f8dd247c766eb34849ecf9de603c5171b
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.author: stevelas
+ms.openlocfilehash: ea7c0831f4ecc345cbcd8a9b8eb6d6566e8c5023
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67799956"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68297761"
 ---
 # <a name="recommendations-for-tagging-and-versioning-container-images"></a>コンテナー イメージのタグ付けとバージョン管理に関する推奨事項
 

@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 7/11/2019
+ms.date: 7/17/2019
 ms.author: victorh
-ms.openlocfilehash: e188a5dda8f936ad369aa2b9222bc726bb0d6a5e
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: 6dbc855fb1eb2ee9bcd292c896706b31f819aa5a
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67786578"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68253129"
 ---
 # <a name="configure-azure-firewall-application-rules-with-sql-fqdns"></a>SQL FQDN を使用して Azure Firewall アプリケーション規則を構成する
 
@@ -46,6 +46,8 @@ SQL IaaS のトラフィックに既定以外のポートを使用する場合�
 3. SQL FQDN を使用して SQL サーバーへのアクセスを許可するアプリケーション規則を構成します。
 
    ```azurecli
+   az extension add -n azure-firewall
+
    az network firewall application-rule create \
    -g FWRG \
    -f azfirewall \

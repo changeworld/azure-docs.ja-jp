@@ -4,20 +4,20 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 07/10/2019
 ms.author: mbaldwin
-ms.openlocfilehash: df11493fa9663d3fcbf0a2f74a5acbead55a25fb
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 642f63966533416be7b86bae362d24cd286706b3
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67799920"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68306111"
 ---
 ## <a name="preventative"></a>予防
 
 | セキュリティ属性 | はい/いいえ | メモ |
 |---|---|--|
-| 保存時の暗号化 (サーバー側暗号化、お客様が管理するキーによるサーバー側暗号化、およびその他の暗号化機能) | はい | 「[Azure で Linux 仮想マシンを暗号化する方法](/azure/virtual-machines/linux/encrypt-disks.md)」および「[Windows VM の仮想ディスクを暗号化する](/azure/virtual-machines/windows/encrypt-disks.md)」を参照してください。 |
-| 転送中の暗号化 (ExpressRoute 暗号化、VNet 内の暗号化、および VNet 間暗号化など)| はい | Azure Virtual Machines では、[ExpressRoute](/azure/expressroute) と VNET の暗号化がサポートされています。 「[VM での転送中の暗号化](/azure/security/security-azure-encryption-overview.md#in-transit-encryption-in-vms)」を参照してください。 |
-| 暗号化キーの処理 (CMK や BYOK など)| はい | カスタマー マネージド キーは、サポートされている Azure の暗号化シナリオです。「[Azure の暗号化の概要](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms.md)」を参照してください。|
+| 保存時の暗号化 (サーバー側暗号化、お客様が管理するキーによるサーバー側暗号化、およびその他の暗号化機能) | はい | 「[Azure で Linux 仮想マシンを暗号化する方法](/azure/virtual-machines/linux/encrypt-disks)」および「[Windows VM の仮想ディスクを暗号化する](/azure/virtual-machines/windows/encrypt-disks)」を参照してください。 |
+| 転送中の暗号化 (ExpressRoute 暗号化、VNet 内の暗号化、および VNet 間暗号化など)| はい | Azure Virtual Machines では、[ExpressRoute](/azure/expressroute) と VNET の暗号化がサポートされています。 「[VM での転送中の暗号化](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms)」を参照してください。 |
+| 暗号化キーの処理 (CMK や BYOK など)| はい | カスタマー マネージド キーは、サポートされている Azure の暗号化シナリオです。「[Azure の暗号化の概要](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms)」を参照してください。|
 | 列レベルの暗号化 (Azure Data Services)| 該当なし | |
 | API 呼び出しの暗号化| はい | HTTPS および SSL 経由。 |
 
@@ -28,13 +28,13 @@ ms.locfileid: "67799920"
 | サービス エンドポイントのサポート| はい | |
 | VNet インジェクションのサポート| はい | 。 |
 | ネットワークの分離とファイアウォールのサポート| はい |  |
-| 強制トンネリングのサポート| はい | 「[Azure Resource Manager デプロイ モデルを使用した強制トンネリングの構成](/azure/vpn-gateway/vpn-gateway-forced-tunneling-rm.md)」を参照してください。 |
+| 強制トンネリングのサポート| はい | 「[Azure Resource Manager デプロイ モデルを使用した強制トンネリングの構成](/azure/vpn-gateway/vpn-gateway-forced-tunneling-rm)」を参照してください。 |
 
 ## <a name="detection"></a>検出
 
 | セキュリティ属性 | はい/いいえ | メモ|
 |---|---|--|
-| Azure 監視サポート (Log analytics や App Insights など)| はい | 「[Azure で Linux 仮想マシンの監視と更新を行う](/azure/virtual-machines/linux/tutorial-monitoring.md)」および「[Azure で Windows 仮想マシンの監視と更新を行う](/azure/virtual-machines/windows/tutorial-monitoring.md)」を参照してください。 |
+| Azure 監視サポート (Log analytics や App Insights など)| はい | 「[Azure で Linux 仮想マシンの監視と更新を行う](/azure/virtual-machines/linux/tutorial-monitoring)」および「[Azure で Windows 仮想マシンの監視と更新を行う](/azure/virtual-machines/windows/tutorial-monitoring)」を参照してください。 |
 
 ## <a name="identity-and-access-management"></a>ID 管理とアクセス管理
 

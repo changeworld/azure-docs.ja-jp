@@ -9,13 +9,13 @@ services: search
 ms.service: search
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 07/09/2019
-ms.openlocfilehash: d3236f4782cc4fd9113329f03e36515a91bad528
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.date: 07/11/2019
+ms.openlocfilehash: 6138df5b80f479a54683ec0408b832dd78bff8e4
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67798769"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67847076"
 ---
 # <a name="quickstart-create-an-azure-search-index-in-c-using-the-net-sdk"></a>クイック スタート:.NET SDK を使用して C# で Azure Search インデックスを作成する
 > [!div class="op_single_selector"]
@@ -35,11 +35,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイック スタートでは、次のサービス、ツール、およびデータを使用します。 
+このクイックスタートでは、次のサービスとツールが必要です。
 
 + [Visual Studio](https://visualstudio.microsoft.com/downloads/) (任意のエディション)。 サンプル コードと手順については、無料の Community エディションでテストされています。
-
-+ サンプルのインデックスとドキュメントは、この記事、およびこのクイックスタート用の [Visual Studio ソリューション](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/quickstart)に含まれています。
 
 + [Azure Search サービスを作成](search-create-service-portal.md)するか、現在のサブスクリプションから[既存のサービスを見つけます](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 このクイック スタート用には、無料のサービスを使用できます。
 
@@ -195,11 +193,14 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     }
     ```
 
-    フィールドは、その属性によって、アプリケーション内でどのように使用できるかが決まります。 たとえば、フルテキスト検索に含める必要があるすべてのフィールドには、`IsSearchable` 属性が割り当てられています。 .NET SDK の場合、既定では、明示的に有効にされていないフィールドの動作は無効になります。
+    フィールドは、その属性によって、アプリケーション内でどのように使用できるかが決まります。 たとえば、フルテキスト検索に含める必要があるすべてのフィールドに、`IsSearchable` 属性を割り当てる必要があります。 
+    
+    > [!NOTE]
+    > .NET SDK では、フィールドに [`IsSearchable`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.issearchable?view=azure-dotnet)、[`IsFilterable`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.isfilterable?view=azure-dotnet)、[`IsSortable`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.issortable?view=azure-dotnet)、[`IsFacetable`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.isfacetable?view=azure-dotnet) の属性を明示的に付ける必要があります。 この動作は、データ型に基づいて暗黙的に属性が有効になる REST API とは対照的です (たとえば、単純な文字列フィールドは自動的に検索可能です)。
 
     実際のインデックス内の `string` 型のフィールドを 1 つだけ、各ドキュメントを一意に識別する "*キー*" フィールドにする必要があります。 このスキーマでは、キーは `HotelId` です。
 
-    このインデックスの説明フィールドでは、既定の標準 Lucene アナライザーをオーバーライドする場合に指定する、オプションのアナライザー プロパティを使用します。 `description_fr` フィールドでは、フランス語のテキストを格納するため、フランス語の Lucene アナライザー ([FrLucene](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername.frlucene?view=azure-dotnet)) を使用します。 `description` では、オプションの Microsoft 言語アナライザー ([EnMicrosoft](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername.enmicrosoft?view=azure-dotnet)) を使用します。
+    このインデックスの説明フィールドでは、既定の標準 Lucene アナライザーをオーバーライドする場合に指定する、オプションの [`analyzer`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.analyzer?view=azure-dotnet) プロパティを使用します。 `description_fr` フィールドでは、フランス語のテキストを格納するため、フランス語の Lucene アナライザー ([FrLucene](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername.frlucene?view=azure-dotnet)) を使用します。 `description` では、オプションの Microsoft 言語アナライザー ([EnMicrosoft](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername.enmicrosoft?view=azure-dotnet)) を使用します。
 
 1. Program.cs で、アプリケーションの構成ファイル (appsettings.json) に格納されている値を使用して、サービスに接続する [`SearchServiceClient`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient?view=azure-dotnet) クラスのインスタンスを作成します。 
 

@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-author: sihhu
-ms.author: MayMSFT
+author: MayMSFT
+ms.author: sihhu
 ms.reviewer: trbye
-ms.date: 03/29/2019
+ms.date: 07/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8b7bf5a0ece3927c7dbafdec9716b7c6f8dfbc0e
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 55bece47ad2a9965e5137ad720631d9b5f5add48
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66474711"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68297884"
 ---
 # <a name="tutorial-prepare-data-for-regression-modeling"></a>チュートリアル:回帰モデリングのためにデータを準備する
 
@@ -112,6 +112,9 @@ yellow_df_raw = dprep.auto_read_file(path=yellow_path)
 display(green_df_raw.head(5))
 display(yellow_df_raw.head(5))
 ```
+
+> [!Note]
+> この同じ例の URL は完全な URL ではありません。 代わりに、BLOB の demo フォルダーが参照されます。 一部のデータの完全な URL は、 https://dprepdata.blob.core.windows.net/demo/green-small/green_tripdata_2013-08.csv です
 
 `Dataflow` オブジェクトはデータフレームに類似しており、データに対して遅延評価される一連の不変の操作を表します。 操作は、異なる変換を呼び出して、利用可能なメソッドをフィルター処理することで追加できます。 `Dataflow` に対する操作の追加の結果は常に、新しい `Dataflow` オブジェクトです。
 

@@ -98,8 +98,6 @@
           href: sisense.md
     - name: 管理
       items:
-        - name: データベースのアクセス許可を管理する
-          href: manage-database-permissions.md
         - name: クラスターの正常性を確認する
           href: check-cluster-health.md
         - name: クラスター VM の SKU を選択する
@@ -108,6 +106,10 @@
           href: manage-cluster-horizontal-scaling.md
         - name: クラスターの垂直スケーリングを管理する
           href: manage-cluster-vertical-scaling.md
+        - name: クラスターのセキュリティを管理する
+          href: manage-cluster-security.md
+        - name: データベースのアクセス許可を管理する
+          href: manage-database-permissions.md
         - name: データの削除
           href: delete-data.md
         - name: 重複したデータを処理する

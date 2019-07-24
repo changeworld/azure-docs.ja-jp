@@ -10,12 +10,12 @@ ms.topic: overview
 description: Azure Dev Spaces の概要
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 33ac5a7aa6d823105b87325ba52aa77cd9b9b3a3
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: c96115f2eba6f8c8a028251d146ca3f766eba044
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706297"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68305468"
 ---
 # <a name="azure-dev-spaces"></a>Azure Dev Spaces
 
@@ -43,7 +43,7 @@ Azure Dev Spaces のしくみについては、「[Azure Dev Spaces のしくみ
 
 ## <a name="supported-regions-and-configurations"></a>サポートされているリージョンと構成
 
-Azure Dev Spaces は、**米国東部**、**米国東部 2**、**米国中部**、**米国西部 2**、**北ヨーロッパ**、**西ヨーロッパ**、**英国南部**、**東南アジア**、**オーストラリア東部**、**カナダ中部**、**カナダ東部**のリージョンの AKS クラスターでのみサポートされます。 Azure Dev Spaces では、AKS でアプリケーションをビルドして実行するために、Linux、MacOS、または Windows 8 以上にインストールされた [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) または [Visual Studio Code](https://code.visualstudio.com/download) および [Azure Dev Spaces 拡張機能](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds)の使用がサポートされます。 Windows 8 以上にインストールされた [Visual Studio](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs) の使用もサポートされています。 Visual Studio 2019 の場合、Azure 開発ワークロードが必要です。 Visual Studio 2017 の場合、Web 開発ワークロードと [Visual Studio Tools for Kubernetes](https://aka.ms/get-vsk8stools) が必要です。
+Azure Dev Spaces は、**米国東部**、**米国東部 2**、**米国中部**、**米国中南部**、**米国西部 2**、**北ヨーロッパ**、**西ヨーロッパ**、**英国南部**、**東南アジア**、**オーストラリア東部**、**カナダ中部**、**カナダ東部**のリージョンの AKS クラスターでのみサポートされます。 Azure Dev Spaces では、AKS でアプリケーションをビルドして実行するために、Linux、MacOS、または Windows 8 以上にインストールされた [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) または [Visual Studio Code](https://code.visualstudio.com/download) および [Azure Dev Spaces 拡張機能](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds)の使用がサポートされます。 Windows 8 以上にインストールされた [Visual Studio](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs) の使用もサポートされています。 Visual Studio 2019 の場合、Azure 開発ワークロードが必要です。 Visual Studio 2017 の場合、Web 開発ワークロードと [Visual Studio Tools for Kubernetes](https://aka.ms/get-vsk8stools) が必要です。
 
 ## <a name="next-steps"></a>次の手順
 

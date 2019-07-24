@@ -193,6 +193,18 @@
                   href: scenario-mobile-overview.md
                 - name: アプリの登録
                   href: scenario-mobile-app-registration.md
+                - name: コード構成
+                  href: scenario-mobile-app-configuration.md
+                - name: モバイル プラットフォーム固有の構成
+                  items:
+                    - name: Xamarin Android
+                      href: msal-net-xamarin-android-considerations.md
+                    - name: Android のシステム ブラウザー
+                      href: msal-net-system-browser-android-considerations.md
+                    - name: Xamarin iOS
+                      href: msal-net-xamarin-ios-considerations.md
+                    - name: ユニバーサル Windows プラットフォーム
+                      href: msal-net-uwp-considerations.md
                 - name: アプリのトークンの取得
                   href: scenario-mobile-acquire-token.md
                 - name: Web API の呼び出し
@@ -255,14 +267,6 @@
                   items:
                     - name: Web ブラウザー
                       href: msal-net-web-browsers.md
-                    - name: Xamarin Android
-                      href: msal-net-xamarin-android-considerations.md
-                    - name: Android のシステム ブラウザー
-                      href: msal-net-system-browser-android-considerations.md
-                    - name: Xamarin iOS
-                      href: msal-net-xamarin-ios-considerations.md
-                    - name: ユニバーサル Windows プラットフォーム
-                      href: msal-net-uwp-considerations.md
                 - name: MSAL.js
                   items:
                     - name: IE の使用に関する考慮事項

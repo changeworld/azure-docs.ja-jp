@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 11/23/2016
 ms.author: mbullwin
-ms.openlocfilehash: 062b565369c3b6e877d36f883a152ca6c013e0cf
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: d1c4005651518eb27eebde0005bd70b4adad6432
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67479652"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798361"
 ---
 # <a name="filtering-and-preprocessing-telemetry-in-the-application-insights-sdk"></a>Application Insights SDK におけるテレメトリのフィルター処理および前処理
 
@@ -96,7 +96,10 @@ public class SuccessfulDependencyFilter : ITelemetryProcessor
     }
 }
 ```
-3. 次の内容を ApplicationInsights.config に挿入します
+
+3. プロセッサを追加します。
+
+**ASP.NET アプリ**: 次の内容を ApplicationInsights.config に挿入します。
 
 ```xml
 <TelemetryProcessors>
@@ -129,6 +132,26 @@ builder.Build();
 ```
 
 この時点より後に作成された TelemetryClients はプロセッサを使用します。
+
+**ASP.NET Core アプリ**
+
+> [!NOTE]
+> `ApplicationInsights.config` または `TelemetryConfiguration.Active` を使用して初期化子を追加することは、ASP.NET Core アプリケーションでは無効です。 
+
+
+[ASP.NET Core](asp-net-core.md#adding-telemetry-processors) アプリケーションの場合、新しい `TelemetryInitializer` を追加するには、次に示すように Dependency Injection コンテナーに追加します。 これは `Startup.cs` クラスの `ConfigureServices` メソッドで行われます。
+
+```csharp
+    public void ConfigureServices(IServiceCollection services)
+    {
+        // ...
+        services.AddApplicationInsightsTelemetry();
+        services.AddApplicationInsightsTelemetryProcessor<SuccessfulDependencyFilter>();
+
+        // If you have more processors:
+        services.AddApplicationInsightsTelemetryProcessor<AnotherProcessor>();
+    }
+```
 
 ### <a name="example-filters"></a>フィルターの例
 #### <a name="synthetic-requests"></a>人工的な要求
@@ -237,7 +260,7 @@ namespace MvcWebRole.Telemetry
 }
 ```
 
-**初期化子を読み込む**
+**ASP.NET アプリ: 初期化子を読み込む**
 
 ApplicationInsights.config で:
 
@@ -257,15 +280,27 @@ ApplicationInsights.config で:
 protected void Application_Start()
 {
     // ...
-    TelemetryConfiguration.Active.TelemetryInitializers
-    .Add(new MyTelemetryInitializer());
+    TelemetryConfiguration.Active.TelemetryInitializers.Add(new MyTelemetryInitializer());
 }
 ```
 
-
 [このトピックのその他のサンプルについては、こちらをご覧ください。](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/MvcWebRole)
 
-<a name="js-initializer"></a>
+**ASP.NET Core アプリ: 初期化子を読み込む**
+
+> [!NOTE]
+> `ApplicationInsights.config` または `TelemetryConfiguration.Active` を使用して初期化子を追加することは、ASP.NET Core アプリケーションでは無効です。 
+
+[ASP.NET Core](asp-net-core.md#adding-telemetryinitializers) アプリケーションの場合、新しい `TelemetryInitializer` を追加するには、次に示すように Dependency Injection コンテナーに追加します。 これは `Startup.cs` クラスの `ConfigureServices` メソッドで行われます。
+
+```csharp
+ using Microsoft.ApplicationInsights.Extensibility;
+ using CustomInitializer.Telemetry;
+ public void ConfigureServices(IServiceCollection services)
+{
+    services.AddSingleton<ITelemetryInitializer, MyTelemetryInitializer>();
+}
+```
 
 ### <a name="java-telemetry-initializers"></a>Java テレメトリの初期化子
 
